@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChlDbWRNdWx0aXBsZURyb3BUeXBlLnByb3RvKuYBChNDbWRNdWx0aXBsZURy",
             "b3BUeXBlEhsKF0FDSU1GR0ZOUERGX05MQ0RHSVBHRkRKEAASHAoXQUNJTUZH",
-            "Rk5QREZfRkVLQk1OSFBJSEgQnCQSHAoXQUNJTUZHRk5QREZfRUtFTUdLT1BI",
-            "RlAQkyQSHAoXQUNJTUZHRk5QREZfS0JKQkRBT1BIR0cQhSQSHAoXQUNJTUZH",
-            "Rk5QREZfTlBLTUJBT0FQTEQQwSQSHAoXQUNJTUZHRk5QREZfRE9JQ05FSU9E",
-            "REgQ+yMSHAoXQUNJTUZHRk5QREZfSUVLRUhFR0JFS0YQyCRCFqoCE01hcmNo",
+            "Rk5QREZfTlBLTUJBT0FQTEQQkSQSHAoXQUNJTUZHRk5QREZfRkVLQk1OSFBJ",
+            "SEgQ0CQSHAoXQUNJTUZHRk5QREZfRE9JQ05FSU9EREgQxiQSHAoXQUNJTUZH",
+            "Rk5QREZfS0JKQkRBT1BIR0cQySQSHAoXQUNJTUZHRk5QREZfRUtFTUdLT1BI",
+            "RlAQsiQSHAoXQUNJTUZHRk5QREZfSUVLRUhFR0JFS0YQ1SRCFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdMultipleDropType {
     [pbr::OriginalName("ACIMFGFNPDF_NLCDGIPGFDJ")] AcimfgfnpdfNlcdgipgfdj = 0,
-    [pbr::OriginalName("ACIMFGFNPDF_FEKBMNHPIHH")] AcimfgfnpdfFekbmnhpihh = 4636,
-    [pbr::OriginalName("ACIMFGFNPDF_EKEMGKOPHFP")] AcimfgfnpdfEkemgkophfp = 4627,
-    [pbr::OriginalName("ACIMFGFNPDF_KBJBDAOPHGG")] AcimfgfnpdfKbjbdaophgg = 4613,
-    [pbr::OriginalName("ACIMFGFNPDF_NPKMBAOAPLD")] AcimfgfnpdfNpkmbaoapld = 4673,
-    [pbr::OriginalName("ACIMFGFNPDF_DOICNEIODDH")] AcimfgfnpdfDoicneioddh = 4603,
-    [pbr::OriginalName("ACIMFGFNPDF_IEKEHEGBEKF")] AcimfgfnpdfIekehegbekf = 4680,
+    [pbr::OriginalName("ACIMFGFNPDF_NPKMBAOAPLD")] AcimfgfnpdfNpkmbaoapld = 4625,
+    [pbr::OriginalName("ACIMFGFNPDF_FEKBMNHPIHH")] AcimfgfnpdfFekbmnhpihh = 4688,
+    [pbr::OriginalName("ACIMFGFNPDF_DOICNEIODDH")] AcimfgfnpdfDoicneioddh = 4678,
+    [pbr::OriginalName("ACIMFGFNPDF_KBJBDAOPHGG")] AcimfgfnpdfKbjbdaophgg = 4681,
+    [pbr::OriginalName("ACIMFGFNPDF_EKEMGKOPHFP")] AcimfgfnpdfEkemgkophfp = 4658,
+    [pbr::OriginalName("ACIMFGFNPDF_IEKEHEGBEKF")] AcimfgfnpdfIekehegbekf = 4693,
   }
 
   #endregion

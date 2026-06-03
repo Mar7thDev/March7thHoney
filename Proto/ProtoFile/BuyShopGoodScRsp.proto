@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NJEBDKOJNGA.proto";
 
 message BuyShopGoodScRsp {
-    repeated NJEBDKOJNGA OPNFOBJOPCB = 15;
-    uint32 retcode = 13;
+    uint32 retcode = 4;
+    repeated NJEBDKOJNGA OPNFOBJOPCB = 11;
 }

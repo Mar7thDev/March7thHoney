@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJSb2d1ZVRvdXJuQ29uZmlybVNldHRsZUNzUmVxLnByb3RvIlIKHFJvZ3Vl",
-            "VG91cm5Db25maXJtU2V0dGxlQ3NSZXESDAoEbmFtZRgEIAEoCRITCgtOUEhB",
-            "SkVLQ0JLRhgCIAEoDRIPCgdhcmVhX2lkGAwgASgNQhaqAhNNYXJjaDd0aEhv",
+            "VG91cm5Db25maXJtU2V0dGxlQ3NSZXESDAoEbmFtZRgGIAEoCRITCgtOUEhB",
+            "SkVLQ0JLRhgJIAEoDRIPCgdhcmVhX2lkGAsgASgNQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 4;
+    public const int NameFieldNumber = 6;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NPHAJEKCBKF" field.</summary>
-    public const int NPHAJEKCBKFFieldNumber = 2;
+    public const int NPHAJEKCBKFFieldNumber = 9;
     private uint nPHAJEKCBKF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 12;
+    public const int AreaIdFieldNumber = 11;
     private uint areaId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NPHAJEKCBKF != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(NPHAJEKCBKF);
-      }
       if (Name.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteString(Name);
       }
+      if (NPHAJEKCBKF != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(NPHAJEKCBKF);
+      }
       if (AreaId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NPHAJEKCBKF != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(NPHAJEKCBKF);
-      }
       if (Name.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteString(Name);
       }
+      if (NPHAJEKCBKF != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(NPHAJEKCBKF);
+      }
       if (AreaId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            NPHAJEKCBKF = input.ReadUInt32();
-            break;
-          }
-          case 34: {
+          case 50: {
             Name = input.ReadString();
             break;
           }
-          case 96: {
+          case 72: {
+            NPHAJEKCBKF = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             AreaId = input.ReadUInt32();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            NPHAJEKCBKF = input.ReadUInt32();
-            break;
-          }
-          case 34: {
+          case 50: {
             Name = input.ReadString();
             break;
           }
-          case 96: {
+          case 72: {
+            NPHAJEKCBKF = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             AreaId = input.ReadUInt32();
             break;
           }

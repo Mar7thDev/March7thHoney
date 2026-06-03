@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GridFightWeeklyExtraSeasonExpScRsp {
-    uint32 ACDOIGCBGEB = 11;
+    uint32 ACDOIGCBGEB = 5;
 }

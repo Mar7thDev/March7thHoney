@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetAssistCsReq {
-    uint32 avatar_id = 3;
-    uint32 uid = 1;
+    uint32 uid = 8;
+    uint32 avatar_id = 10;
 }

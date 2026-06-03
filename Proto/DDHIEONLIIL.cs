@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static DDHIEONLIILReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFEREhJRU9OTElJTC5wcm90byJQCgtEREhJRU9OTElJTBITCgtIRU1PSEZK",
-            "Sk1KRxgEIAEoBBIXCg9pc190YWtlbl9yZXdhcmQYDCABKAgSEwoLRERLR0tP",
-            "RkFHTUgYDiABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFEREhJRU9OTElJTC5wcm90byJQCgtEREhJRU9OTElJTBIXCg9pc190YWtl",
+            "bl9yZXdhcmQYAyABKAgSEwoLRERLR0tPRkFHTUgYCCABKAgSEwoLSEVNT0hG",
+            "SkpNSkcYDyABKARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DDHIEONLIIL), global::March7thHoney.Proto.DDHIEONLIIL.Parser, new[]{ "HEMOHFJJMJG", "IsTakenReward", "DDKGKOFAGMH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DDHIEONLIIL), global::March7thHoney.Proto.DDHIEONLIIL.Parser, new[]{ "IsTakenReward", "DDKGKOFAGMH", "HEMOHFJJMJG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DDHIEONLIIL(DDHIEONLIIL other) : this() {
-      hEMOHFJJMJG_ = other.hEMOHFJJMJG_;
       isTakenReward_ = other.isTakenReward_;
       dDKGKOFAGMH_ = other.dDKGKOFAGMH_;
+      hEMOHFJJMJG_ = other.hEMOHFJJMJG_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new DDHIEONLIIL(this);
     }
 
-    /// <summary>Field number for the "HEMOHFJJMJG" field.</summary>
-    public const int HEMOHFJJMJGFieldNumber = 4;
-    private ulong hEMOHFJJMJG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong HEMOHFJJMJG {
-      get { return hEMOHFJJMJG_; }
-      set {
-        hEMOHFJJMJG_ = value;
-      }
-    }
-
     /// <summary>Field number for the "is_taken_reward" field.</summary>
-    public const int IsTakenRewardFieldNumber = 12;
+    public const int IsTakenRewardFieldNumber = 3;
     private bool isTakenReward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DDKGKOFAGMH" field.</summary>
-    public const int DDKGKOFAGMHFieldNumber = 14;
+    public const int DDKGKOFAGMHFieldNumber = 8;
     private bool dDKGKOFAGMH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return dDKGKOFAGMH_; }
       set {
         dDKGKOFAGMH_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HEMOHFJJMJG" field.</summary>
+    public const int HEMOHFJJMJGFieldNumber = 15;
+    private ulong hEMOHFJJMJG_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong HEMOHFJJMJG {
+      get { return hEMOHFJJMJG_; }
+      set {
+        hEMOHFJJMJG_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HEMOHFJJMJG != other.HEMOHFJJMJG) return false;
       if (IsTakenReward != other.IsTakenReward) return false;
       if (DDKGKOFAGMH != other.DDKGKOFAGMH) return false;
+      if (HEMOHFJJMJG != other.HEMOHFJJMJG) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HEMOHFJJMJG != 0UL) hash ^= HEMOHFJJMJG.GetHashCode();
       if (IsTakenReward != false) hash ^= IsTakenReward.GetHashCode();
       if (DDKGKOFAGMH != false) hash ^= DDKGKOFAGMH.GetHashCode();
+      if (HEMOHFJJMJG != 0UL) hash ^= HEMOHFJJMJG.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HEMOHFJJMJG != 0UL) {
-        output.WriteRawTag(32);
-        output.WriteUInt64(HEMOHFJJMJG);
-      }
       if (IsTakenReward != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteBool(IsTakenReward);
       }
       if (DDKGKOFAGMH != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(64);
         output.WriteBool(DDKGKOFAGMH);
+      }
+      if (HEMOHFJJMJG != 0UL) {
+        output.WriteRawTag(120);
+        output.WriteUInt64(HEMOHFJJMJG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HEMOHFJJMJG != 0UL) {
-        output.WriteRawTag(32);
-        output.WriteUInt64(HEMOHFJJMJG);
-      }
       if (IsTakenReward != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteBool(IsTakenReward);
       }
       if (DDKGKOFAGMH != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(64);
         output.WriteBool(DDKGKOFAGMH);
+      }
+      if (HEMOHFJJMJG != 0UL) {
+        output.WriteRawTag(120);
+        output.WriteUInt64(HEMOHFJJMJG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HEMOHFJJMJG != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(HEMOHFJJMJG);
-      }
       if (IsTakenReward != false) {
         size += 1 + 1;
       }
       if (DDKGKOFAGMH != false) {
         size += 1 + 1;
+      }
+      if (HEMOHFJJMJG != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(HEMOHFJJMJG);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HEMOHFJJMJG != 0UL) {
-        HEMOHFJJMJG = other.HEMOHFJJMJG;
-      }
       if (other.IsTakenReward != false) {
         IsTakenReward = other.IsTakenReward;
       }
       if (other.DDKGKOFAGMH != false) {
         DDKGKOFAGMH = other.DDKGKOFAGMH;
+      }
+      if (other.HEMOHFJJMJG != 0UL) {
+        HEMOHFJJMJG = other.HEMOHFJJMJG;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            HEMOHFJJMJG = input.ReadUInt64();
-            break;
-          }
-          case 96: {
+          case 24: {
             IsTakenReward = input.ReadBool();
             break;
           }
-          case 112: {
+          case 64: {
             DDKGKOFAGMH = input.ReadBool();
+            break;
+          }
+          case 120: {
+            HEMOHFJJMJG = input.ReadUInt64();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            HEMOHFJJMJG = input.ReadUInt64();
-            break;
-          }
-          case 96: {
+          case 24: {
             IsTakenReward = input.ReadBool();
             break;
           }
-          case 112: {
+          case 64: {
             DDKGKOFAGMH = input.ReadBool();
+            break;
+          }
+          case 120: {
+            HEMOHFJJMJG = input.ReadUInt64();
             break;
           }
         }

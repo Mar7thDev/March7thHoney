@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GGHOBPBFFOB.proto";
 
 message ENPJFKDKLOB {
-    GGHOBPBFFOB IAOBHCOOMJP = 11;
+    GGHOBPBFFOB game_data = 6;
     uint32 retcode = 12;
 }

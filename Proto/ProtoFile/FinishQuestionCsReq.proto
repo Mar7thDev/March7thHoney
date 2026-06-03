@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishQuestionCsReq {
-    uint32 JMBGMIPLLJI = 12;
-    uint32 PDICFEGEPNM = 7;
-    uint32 CJAINJMLDFC = 6;
-    bool DJNDDEBIMGA = 1;
+    uint32 CJAINJMLDFC = 8;
+    uint32 PDICFEGEPNM = 11;
+    bool DJNDDEBIMGA = 12;
+    uint32 JMBGMIPLLJI = 13;
 }

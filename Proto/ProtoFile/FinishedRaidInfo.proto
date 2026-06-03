@@ -4,6 +4,6 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message FinishedRaidInfo {
     repeated uint32 NGKBFPFOOPK = 6;
-    uint32 raid_id = 1;
-    uint32 world_level = 3;
+    uint32 world_level = 13;
+    uint32 raid_id = 15;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ACKPCFFEMHB.proto";
 
 message GetTrainVisitorRegisterCsReq {
-    ACKPCFFEMHB type = 13;
+    ACKPCFFEMHB type = 6;
 }

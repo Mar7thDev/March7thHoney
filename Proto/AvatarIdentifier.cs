@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZBdmF0YXJJZGVudGlmaWVyLnByb3RvGhBBdmF0YXJUeXBlLnByb3RvIlQK",
-            "EEF2YXRhcklkZW50aWZpZXISEgoKYXNzaXN0X3VpZBgOIAEoDRIgCgthdmF0",
-            "YXJfdHlwZRgJIAEoDjILLkF2YXRhclR5cGUSCgoCaWQYBSABKA1CFqoCE01h",
+            "EEF2YXRhcklkZW50aWZpZXISIAoLYXZhdGFyX3R5cGUYAyABKA4yCy5BdmF0",
+            "YXJUeXBlEhIKCmFzc2lzdF91aWQYByABKA0SCgoCaWQYCSABKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarIdentifier), global::March7thHoney.Proto.AvatarIdentifier.Parser, new[]{ "AssistUid", "AvatarType", "Id" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarIdentifier), global::March7thHoney.Proto.AvatarIdentifier.Parser, new[]{ "AvatarType", "AssistUid", "Id" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AvatarIdentifier(AvatarIdentifier other) : this() {
-      assistUid_ = other.assistUid_;
       avatarType_ = other.avatarType_;
+      assistUid_ = other.assistUid_;
       id_ = other.id_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new AvatarIdentifier(this);
     }
 
-    /// <summary>Field number for the "assist_uid" field.</summary>
-    public const int AssistUidFieldNumber = 14;
-    private uint assistUid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AssistUid {
-      get { return assistUid_; }
-      set {
-        assistUid_ = value;
-      }
-    }
-
     /// <summary>Field number for the "avatar_type" field.</summary>
-    public const int AvatarTypeFieldNumber = 9;
+    public const int AvatarTypeFieldNumber = 3;
     private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,8 +97,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "assist_uid" field.</summary>
+    public const int AssistUidFieldNumber = 7;
+    private uint assistUid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AssistUid {
+      get { return assistUid_; }
+      set {
+        assistUid_ = value;
+      }
+    }
+
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 5;
+    public const int IdFieldNumber = 9;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AssistUid != other.AssistUid) return false;
       if (AvatarType != other.AvatarType) return false;
+      if (AssistUid != other.AssistUid) return false;
       if (Id != other.Id) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AssistUid != 0) hash ^= AssistUid.GetHashCode();
       if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
+      if (AssistUid != 0) hash ^= AssistUid.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Id != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Id);
-      }
       if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(24);
         output.WriteEnum((int) AvatarType);
       }
       if (AssistUid != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(56);
         output.WriteUInt32(AssistUid);
+      }
+      if (Id != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Id);
-      }
       if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(24);
         output.WriteEnum((int) AvatarType);
       }
       if (AssistUid != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(56);
         output.WriteUInt32(AssistUid);
+      }
+      if (Id != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,11 +211,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AssistUid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AssistUid);
-      }
       if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
+      }
+      if (AssistUid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AssistUid);
       }
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.AssistUid != 0) {
-        AssistUid = other.AssistUid;
-      }
       if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
         AvatarType = other.AvatarType;
+      }
+      if (other.AssistUid != 0) {
+        AssistUid = other.AssistUid;
       }
       if (other.Id != 0) {
         Id = other.Id;
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            Id = input.ReadUInt32();
-            break;
-          }
-          case 72: {
+          case 24: {
             AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
-          case 112: {
+          case 56: {
             AssistUid = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Id = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            Id = input.ReadUInt32();
-            break;
-          }
-          case 72: {
+          case 24: {
             AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
             break;
           }
-          case 112: {
+          case 56: {
             AssistUid = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Id = input.ReadUInt32();
             break;
           }
         }

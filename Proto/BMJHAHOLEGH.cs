@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static BMJHAHOLEGHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCTUpIQUhPTEVHSC5wcm90byJeCgtCTUpIQUhPTEVHSBIQCghwYW5lbF9p",
-            "ZBgJIAEoDRITCgtORUtDT05NRkZGRRgLIAEoDRITCgtBQUROSUZGSEhERBgE",
-            "IAEoDRITCgtLRkJJT0RJQ0tHQxgMIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "ChFCTUpIQUhPTEVHSC5wcm90byJeCgtCTUpIQUhPTEVHSBITCgtORUtDT05N",
+            "RkZGRRgBIAEoDRITCgtLRkJJT0RJQ0tHQxgEIAEoDRIQCghwYW5lbF9pZBgK",
+            "IAEoDRITCgt0b3RhbF9jb3VudBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BMJHAHOLEGH), global::March7thHoney.Proto.BMJHAHOLEGH.Parser, new[]{ "PanelId", "NEKCONMFFFE", "AADNIFFHHDD", "KFBIODICKGC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BMJHAHOLEGH), global::March7thHoney.Proto.BMJHAHOLEGH.Parser, new[]{ "NEKCONMFFFE", "KFBIODICKGC", "PanelId", "TotalCount" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BMJHAHOLEGH(BMJHAHOLEGH other) : this() {
-      panelId_ = other.panelId_;
       nEKCONMFFFE_ = other.nEKCONMFFFE_;
-      aADNIFFHHDD_ = other.aADNIFFHHDD_;
       kFBIODICKGC_ = other.kFBIODICKGC_;
+      panelId_ = other.panelId_;
+      totalCount_ = other.totalCount_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new BMJHAHOLEGH(this);
     }
 
-    /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 9;
-    private uint panelId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PanelId {
-      get { return panelId_; }
-      set {
-        panelId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "NEKCONMFFFE" field.</summary>
-    public const int NEKCONMFFFEFieldNumber = 11;
+    public const int NEKCONMFFFEFieldNumber = 1;
     private uint nEKCONMFFFE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,20 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "AADNIFFHHDD" field.</summary>
-    public const int AADNIFFHHDDFieldNumber = 4;
-    private uint aADNIFFHHDD_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AADNIFFHHDD {
-      get { return aADNIFFHHDD_; }
-      set {
-        aADNIFFHHDD_ = value;
-      }
-    }
-
     /// <summary>Field number for the "KFBIODICKGC" field.</summary>
-    public const int KFBIODICKGCFieldNumber = 12;
+    public const int KFBIODICKGCFieldNumber = 4;
     private uint kFBIODICKGC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +107,30 @@ namespace March7thHoney.Proto {
       get { return kFBIODICKGC_; }
       set {
         kFBIODICKGC_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "panel_id" field.</summary>
+    public const int PanelIdFieldNumber = 10;
+    private uint panelId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PanelId {
+      get { return panelId_; }
+      set {
+        panelId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total_count" field.</summary>
+    public const int TotalCountFieldNumber = 15;
+    private uint totalCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TotalCount {
+      get { return totalCount_; }
+      set {
+        totalCount_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PanelId != other.PanelId) return false;
       if (NEKCONMFFFE != other.NEKCONMFFFE) return false;
-      if (AADNIFFHHDD != other.AADNIFFHHDD) return false;
       if (KFBIODICKGC != other.KFBIODICKGC) return false;
+      if (PanelId != other.PanelId) return false;
+      if (TotalCount != other.TotalCount) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PanelId != 0) hash ^= PanelId.GetHashCode();
       if (NEKCONMFFFE != 0) hash ^= NEKCONMFFFE.GetHashCode();
-      if (AADNIFFHHDD != 0) hash ^= AADNIFFHHDD.GetHashCode();
       if (KFBIODICKGC != 0) hash ^= KFBIODICKGC.GetHashCode();
+      if (PanelId != 0) hash ^= PanelId.GetHashCode();
+      if (TotalCount != 0) hash ^= TotalCount.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AADNIFFHHDD != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(AADNIFFHHDD);
-      }
-      if (PanelId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(PanelId);
-      }
       if (NEKCONMFFFE != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(8);
         output.WriteUInt32(NEKCONMFFFE);
       }
       if (KFBIODICKGC != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteUInt32(KFBIODICKGC);
+      }
+      if (PanelId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(PanelId);
+      }
+      if (TotalCount != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TotalCount);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AADNIFFHHDD != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(AADNIFFHHDD);
-      }
-      if (PanelId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(PanelId);
-      }
       if (NEKCONMFFFE != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(8);
         output.WriteUInt32(NEKCONMFFFE);
       }
       if (KFBIODICKGC != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteUInt32(KFBIODICKGC);
+      }
+      if (PanelId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(PanelId);
+      }
+      if (TotalCount != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TotalCount);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PanelId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
-      }
       if (NEKCONMFFFE != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NEKCONMFFFE);
       }
-      if (AADNIFFHHDD != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AADNIFFHHDD);
-      }
       if (KFBIODICKGC != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KFBIODICKGC);
+      }
+      if (PanelId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
+      }
+      if (TotalCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TotalCount);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PanelId != 0) {
-        PanelId = other.PanelId;
-      }
       if (other.NEKCONMFFFE != 0) {
         NEKCONMFFFE = other.NEKCONMFFFE;
       }
-      if (other.AADNIFFHHDD != 0) {
-        AADNIFFHHDD = other.AADNIFFHHDD;
-      }
       if (other.KFBIODICKGC != 0) {
         KFBIODICKGC = other.KFBIODICKGC;
+      }
+      if (other.PanelId != 0) {
+        PanelId = other.PanelId;
+      }
+      if (other.TotalCount != 0) {
+        TotalCount = other.TotalCount;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            AADNIFFHHDD = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            PanelId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 8: {
             NEKCONMFFFE = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 32: {
             KFBIODICKGC = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            PanelId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            TotalCount = input.ReadUInt32();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            AADNIFFHHDD = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            PanelId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 8: {
             NEKCONMFFFE = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 32: {
             KFBIODICKGC = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            PanelId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            TotalCount = input.ReadUInt32();
             break;
           }
         }

@@ -3,7 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KCLHMJHIDOB {
-    uint32 BKPDKFLDLDD = 10;
-    uint32 KBBDABKELKB = 14;
-    uint32 IDNHBBMLNJK = 11;
+    uint32 IDNHBBMLNJK = 7;
+    uint32 BKPDKFLDLDD = 8;
 }

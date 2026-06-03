@@ -7,7 +7,7 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message EEILAINOLPO {
-    FHEGNOPNICH JNKLNLKHGBB = 14;
     SceneInfo scene = 5;
     LineupInfo lineup = 9;
+    FHEGNOPNICH JNKLNLKHGBB = 13;
 }

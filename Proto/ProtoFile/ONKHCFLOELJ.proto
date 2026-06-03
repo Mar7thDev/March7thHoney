@@ -2,10 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "KOFMGCNIMIN.proto";
-
 message ONKHCFLOELJ {
-    KOFMGCNIMIN HLCPFLOPGBM = 12;
-    uint32 BJIBCOHEGIJ = 13;
-    bool BKCNAAMGHKJ = 5;
+    bool BKCNAAMGHKJ = 14;
 }

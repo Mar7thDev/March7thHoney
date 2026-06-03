@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DKIGCLFPGFO {
-    uint32 passenger_id = 12;
     uint32 num = 3;
+    uint32 passenger_id = 8;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CBNNMKNBLDI.proto";
 
 message KLNNIAHJBCO {
-    CBNNMKNBLDI GGMPEGMEHPD = 11;
-    uint32 PNIPCNLLKKD = 14;
-    uint32 OJBJHGBEMJN = 4;
+    CBNNMKNBLDI equip = 2;
+    uint32 PNIPCNLLKKD = 6;
+    uint32 OJBJHGBEMJN = 15;
 }

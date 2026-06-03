@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhMb2dpc3RpY3NHYW1lQ3NSZXEucHJvdG8aEUlPREFGSUJQQUdNLnByb3Rv",
-            "IkwKEkxvZ2lzdGljc0dhbWVDc1JlcRIhCgtNRE5CT0JGR0tGThgPIAMoCzIM",
-            "LklPREFGSUJQQUdNEhMKC0NOQ0pLR0VERUlJGAkgASgIQhaqAhNNYXJjaDd0",
+            "IkwKEkxvZ2lzdGljc0dhbWVDc1JlcRIhCgtNRE5CT0JGR0tGThgJIAMoCzIM",
+            "LklPREFGSUJQQUdNEhMKC0NOQ0pLR0VERUlJGA8gASgIQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.IODAFIBPAGMReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MDNBOBFGKFN" field.</summary>
-    public const int MDNBOBFGKFNFieldNumber = 15;
+    public const int MDNBOBFGKFNFieldNumber = 9;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.IODAFIBPAGM> _repeated_mDNBOBFGKFN_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.IODAFIBPAGM.Parser);
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.IODAFIBPAGM.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.IODAFIBPAGM> mDNBOBFGKFN_ = new pbc::RepeatedField<global::March7thHoney.Proto.IODAFIBPAGM>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CNCJKGEDEII" field.</summary>
-    public const int CNCJKGEDEIIFieldNumber = 9;
+    public const int CNCJKGEDEIIFieldNumber = 15;
     private bool cNCJKGEDEII_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      mDNBOBFGKFN_.WriteTo(output, _repeated_mDNBOBFGKFN_codec);
       if (CNCJKGEDEII != false) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteBool(CNCJKGEDEII);
       }
-      mDNBOBFGKFN_.WriteTo(output, _repeated_mDNBOBFGKFN_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      mDNBOBFGKFN_.WriteTo(ref output, _repeated_mDNBOBFGKFN_codec);
       if (CNCJKGEDEII != false) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteBool(CNCJKGEDEII);
       }
-      mDNBOBFGKFN_.WriteTo(ref output, _repeated_mDNBOBFGKFN_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            CNCJKGEDEII = input.ReadBool();
+          case 74: {
+            mDNBOBFGKFN_.AddEntriesFrom(input, _repeated_mDNBOBFGKFN_codec);
             break;
           }
-          case 122: {
-            mDNBOBFGKFN_.AddEntriesFrom(input, _repeated_mDNBOBFGKFN_codec);
+          case 120: {
+            CNCJKGEDEII = input.ReadBool();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            CNCJKGEDEII = input.ReadBool();
+          case 74: {
+            mDNBOBFGKFN_.AddEntriesFrom(ref input, _repeated_mDNBOBFGKFN_codec);
             break;
           }
-          case 122: {
-            mDNBOBFGKFN_.AddEntriesFrom(ref input, _repeated_mDNBOBFGKFN_codec);
+          case 120: {
+            CNCJKGEDEII = input.ReadBool();
             break;
           }
         }

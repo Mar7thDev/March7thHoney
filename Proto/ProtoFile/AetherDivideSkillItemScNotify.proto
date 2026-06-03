@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AetherDivideSkillItemScNotify {
-    uint32 num = 12;
-    uint32 item_id = 13;
+    uint32 num = 6;
+    uint32 item_id = 15;
 }

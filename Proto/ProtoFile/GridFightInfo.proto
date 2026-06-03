@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BattleAvatar.proto";
+import "GridFightAugmentInfo.proto";
+import "GridFightNPCInfo.proto";
+import "GridFightPortalInfo.proto";
+import "GridFightProjectionInfo.proto";
+import "GridFightRoleInfo.proto";
+import "GridFightTraitInfo.proto";
+import "MIPDJDJLGPL.proto";
+
+message GridFightInfo {
+    repeated BattleAvatar OPHONCKPNMG = 1;
+    uint32 battle_wave_id = 2;
+    uint32 grid_fight_lineup_hp = 3;
+    uint32 EHNJDIDABHD = 4;
+    repeated GridFightTraitInfo grid_fight_trait_info = 7;
+    repeated GridFightRoleInfo grid_game_role_list = 8;
+    uint32 IFIIOIIKJHO = 9;
+    repeated GridFightAugmentInfo sync_augment_info = 10;
+    MIPDJDJLGPL IOCKDJCDMAH = 11;
+    uint32 HHEPCDMBJFI = 12;
+    uint32 LJNGPCKPJLF = 13;
+    repeated GridFightPortalInfo grid_fight_portal_buff_list = 14;
+    bool is_overlock = 15;
+    uint32 AACGBEBGDPE = 16;
+    repeated GridFightNPCInfo grid_game_npc_list = 17;
+    repeated GridFightProjectionInfo KCOMPKMJCMC = 18;
+    uint32 LODNFLMBIEH = 19;
+    map<string, uint32> POCKGKDFLKK = 20;
+    uint32 NFBJINKLLLK = 21;
+    bool MEHFNAEMMFE = 22;
+}

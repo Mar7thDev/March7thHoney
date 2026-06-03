@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message ICGOLPHCKIL {
-    ItemList item_list = 12;
-    uint32 level = 15;
+    ItemList item_list = 6;
+    uint32 level = 12;
 }

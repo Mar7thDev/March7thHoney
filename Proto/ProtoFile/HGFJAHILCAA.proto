@@ -6,8 +6,7 @@ import "AJNOEKPLPCL.proto";
 import "BBCOLCHCEFP.proto";
 
 message HGFJAHILCAA {
-    BBCOLCHCEFP BHHHNHMMDMH = 9;
-    AJNOEKPLPCL PMKGMLELPPI = 10;
-    uint32 panel_id = 6;
-    uint32 area_id = 12;
+    BBCOLCHCEFP BHHHNHMMDMH = 8;
+    uint32 area_id = 9;
+    AJNOEKPLPCL PMKGMLELPPI = 13;
 }

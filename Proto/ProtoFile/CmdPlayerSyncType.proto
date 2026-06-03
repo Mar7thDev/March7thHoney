@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 enum CmdPlayerSyncType {
     OFHDDJMLOGG_LIDGOKIFPOJ = 0;
-    OFHDDJMLOGG_LMDPMECFOGM = 673;
+    OFHDDJMLOGG_LMDPMECFOGM = 625;
 }

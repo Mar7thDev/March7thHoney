@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFQbGFuZXRGZXNHYW1lQmluZ29GbGlwU2NSc3AucHJvdG8aEUdOTUNJRVBF",
             "QlBLLnByb3RvInYKG1BsYW5ldEZlc0dhbWVCaW5nb0ZsaXBTY1JzcBIcCgZy",
-            "ZXdhcmQYBiABKAsyDC5HTk1DSUVQRUJQSxIPCgdyZXRjb2RlGAUgASgNEhMK",
-            "C0JERUZBRkZEQkNDGAsgASgIEhMKC0xLRklHQkdQRUpCGAIgASgNQhaqAhNN",
+            "ZXdhcmQYAyABKAsyDC5HTk1DSUVQRUJQSxIPCgdyZXRjb2RlGAggASgNEhMK",
+            "C0JERUZBRkZEQkNDGAogASgIEhMKC0xLRklHQkdQRUpCGA4gASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GNMCIEPEBPKReflection.Descriptor, },
@@ -88,7 +88,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 6;
+    public const int RewardFieldNumber = 3;
     private global::March7thHoney.Proto.GNMCIEPEBPK reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -100,7 +100,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
+    public const int RetcodeFieldNumber = 8;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,7 +112,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BDEFAFFDBCC" field.</summary>
-    public const int BDEFAFFDBCCFieldNumber = 11;
+    public const int BDEFAFFDBCCFieldNumber = 10;
     private bool bDEFAFFDBCC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LKFIGBGPEJB" field.</summary>
-    public const int LKFIGBGPEJBFieldNumber = 2;
+    public const int LKFIGBGPEJBFieldNumber = 14;
     private uint lKFIGBGPEJB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LKFIGBGPEJB != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(LKFIGBGPEJB);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Retcode);
-      }
       if (reward_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(26);
         output.WriteMessage(Reward);
       }
+      if (Retcode != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Retcode);
+      }
       if (BDEFAFFDBCC != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteBool(BDEFAFFDBCC);
+      }
+      if (LKFIGBGPEJB != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(LKFIGBGPEJB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LKFIGBGPEJB != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(LKFIGBGPEJB);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Retcode);
-      }
       if (reward_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(26);
         output.WriteMessage(Reward);
       }
+      if (Retcode != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Retcode);
+      }
       if (BDEFAFFDBCC != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteBool(BDEFAFFDBCC);
+      }
+      if (LKFIGBGPEJB != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(LKFIGBGPEJB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -293,23 +293,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            LKFIGBGPEJB = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 50: {
+          case 26: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.GNMCIEPEBPK();
             }
             input.ReadMessage(Reward);
             break;
           }
-          case 88: {
+          case 64: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 80: {
             BDEFAFFDBCC = input.ReadBool();
+            break;
+          }
+          case 112: {
+            LKFIGBGPEJB = input.ReadUInt32();
             break;
           }
         }
@@ -331,23 +331,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            LKFIGBGPEJB = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 50: {
+          case 26: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.GNMCIEPEBPK();
             }
             input.ReadMessage(Reward);
             break;
           }
-          case 88: {
+          case 64: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 80: {
             BDEFAFFDBCC = input.ReadBool();
+            break;
+          }
+          case 112: {
+            LKFIGBGPEJB = input.ReadUInt32();
             break;
           }
         }

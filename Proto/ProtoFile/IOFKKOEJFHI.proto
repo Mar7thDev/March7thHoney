@@ -6,6 +6,6 @@ import "JOLHIMGJGBO.proto";
 import "PJCMNENIEHH.proto";
 
 message IOFKKOEJFHI {
+    PJCMNENIEHH game_mode = 1;
     repeated JOLHIMGJGBO lineup_list = 2;
-    PJCMNENIEHH HKEACDBJCOD = 1;
 }

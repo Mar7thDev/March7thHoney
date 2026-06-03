@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNDbWRNYXJibGVUeXBlLnByb3RvKtgCCg1DbWRNYXJibGVUeXBlEhsKF05J",
-            "RUJQUEFQSk9GX05MQ0RHSVBHRkRKEAASHAoXTklFQlBQQVBKT0ZfRE5QTENP",
-            "TkdLTkQQ2UASHAoXTklFQlBQQVBKT0ZfRERJT0JLQUFEQUwQ2kASHAoXTklF",
-            "QlBQQVBKT0ZfSkdOUE9DQUZLT04Q1EASHAoXTklFQlBQQVBKT0ZfRExCRUdN",
-            "R0lFUEUQ4UASHAoXTklFQlBQQVBKT0ZfQ0NKTUlGTEpGS0MQ0kASHAoXTklF",
-            "QlBQQVBKT0ZfQUdES0lDQkNJQ0QQ3kASHAoXTklFQlBQQVBKT0ZfRExKTkpG",
-            "T01BRUcQ4EASHAoXTklFQlBQQVBKT0ZfSkhDRENJS05FRU0Q4kASHAoXTklF",
-            "QlBQQVBKT0ZfRE1FQ0JKTkxJSkoQ3EASHAoXTklFQlBQQVBKT0ZfS0hOUEdF",
-            "UExDTEQQ0EBCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "RUJQUEFQSk9GX05MQ0RHSVBHRkRKEAASHAoXTklFQlBQQVBKT0ZfRExKTkpG",
+            "T01BRUcQ4EASHAoXTklFQlBQQVBKT0ZfQUdES0lDQkNJQ0QQ0UASHAoXTklF",
+            "QlBQQVBKT0ZfQ0NKTUlGTEpGS0MQ2UASHAoXTklFQlBQQVBKT0ZfS0hOUEdF",
+            "UExDTEQQ0EASHAoXTklFQlBQQVBKT0ZfRExCRUdNR0lFUEUQ30ASHAoXTklF",
+            "QlBQQVBKT0ZfRE5QTENPTkdLTkQQ3UASHAoXTklFQlBQQVBKT0ZfRERJT0JL",
+            "QUFEQUwQ00ASHAoXTklFQlBQQVBKT0ZfRE1FQ0JKTkxJSkoQ0kASHAoXTklF",
+            "QlBQQVBKT0ZfSkdOUE9DQUZLT04Q1kASHAoXTklFQlBQQVBKT0ZfSkhDRENJ",
+            "S05FRU0Q2kBCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMarbleType), }, null, null));
@@ -43,16 +43,16 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdMarbleType {
     [pbr::OriginalName("NIEBPPAPJOF_NLCDGIPGFDJ")] NiebppapjofNlcdgipgfdj = 0,
-    [pbr::OriginalName("NIEBPPAPJOF_DNPLCONGKND")] NiebppapjofDnplcongknd = 8281,
-    [pbr::OriginalName("NIEBPPAPJOF_DDIOBKAADAL")] NiebppapjofDdiobkaadal = 8282,
-    [pbr::OriginalName("NIEBPPAPJOF_JGNPOCAFKON")] NiebppapjofJgnpocafkon = 8276,
-    [pbr::OriginalName("NIEBPPAPJOF_DLBEGMGIEPE")] NiebppapjofDlbegmgiepe = 8289,
-    [pbr::OriginalName("NIEBPPAPJOF_CCJMIFLJFKC")] NiebppapjofCcjmifljfkc = 8274,
-    [pbr::OriginalName("NIEBPPAPJOF_AGDKICBCICD")] NiebppapjofAgdkicbcicd = 8286,
     [pbr::OriginalName("NIEBPPAPJOF_DLJNJFOMAEG")] NiebppapjofDljnjfomaeg = 8288,
-    [pbr::OriginalName("NIEBPPAPJOF_JHCDCIKNEEM")] NiebppapjofJhcdcikneem = 8290,
-    [pbr::OriginalName("NIEBPPAPJOF_DMECBJNLIJJ")] NiebppapjofDmecbjnlijj = 8284,
+    [pbr::OriginalName("NIEBPPAPJOF_AGDKICBCICD")] NiebppapjofAgdkicbcicd = 8273,
+    [pbr::OriginalName("NIEBPPAPJOF_CCJMIFLJFKC")] NiebppapjofCcjmifljfkc = 8281,
     [pbr::OriginalName("NIEBPPAPJOF_KHNPGEPLCLD")] NiebppapjofKhnpgeplcld = 8272,
+    [pbr::OriginalName("NIEBPPAPJOF_DLBEGMGIEPE")] NiebppapjofDlbegmgiepe = 8287,
+    [pbr::OriginalName("NIEBPPAPJOF_DNPLCONGKND")] NiebppapjofDnplcongknd = 8285,
+    [pbr::OriginalName("NIEBPPAPJOF_DDIOBKAADAL")] NiebppapjofDdiobkaadal = 8275,
+    [pbr::OriginalName("NIEBPPAPJOF_DMECBJNLIJJ")] NiebppapjofDmecbjnlijj = 8274,
+    [pbr::OriginalName("NIEBPPAPJOF_JGNPOCAFKON")] NiebppapjofJgnpocafkon = 8278,
+    [pbr::OriginalName("NIEBPPAPJOF_JHCDCIKNEEM")] NiebppapjofJhcdcikneem = 8282,
   }
 
   #endregion

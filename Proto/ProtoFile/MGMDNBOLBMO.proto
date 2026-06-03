@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MGMDNBOLBMO {
-    uint32 MONFBLGFKGB = 9;
+    uint32 MONFBLGFKGB = 2;
 }

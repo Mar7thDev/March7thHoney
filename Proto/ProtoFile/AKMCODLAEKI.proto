@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AKMCODLAEKI {
-    string key = 1;
-    double value = 9;
+    double value = 2;
+    string key = 3;
 }

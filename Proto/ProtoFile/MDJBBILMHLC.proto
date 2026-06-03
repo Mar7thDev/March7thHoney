@@ -2,10 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "KKBGIPCAGGH.proto";
+import "GridFightEncounterInfo.proto";
 
 message MDJBBILMHLC {
-    repeated KKBGIPCAGGH BPDABHGFBFO = 14;
-    uint32 MOADBALHMFD = 10;
-    uint32 LNDKCPBJDKH = 7;
+    uint32 LNDKCPBJDKH = 3;
+    uint32 MOADBALHMFD = 7;
+    repeated GridFightEncounterInfo BPDABHGFBFO = 10;
 }

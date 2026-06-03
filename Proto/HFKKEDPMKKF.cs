@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static HFKKEDPMKKFReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFIRktLRURQTUtLRi5wcm90byI+CgtIRktLRURQTUtLRhITCgtKQkpOSEpO",
-            "TVBBUBgFIAMoDRIaChJnYW1lX3N0b3J5X2xpbmVfaWQYAiABKA1CFqoCE01h",
+            "ChFIRktLRURQTUtLRi5wcm90byI+CgtIRktLRURQTUtLRhIaChJnYW1lX3N0",
+            "b3J5X2xpbmVfaWQYDSABKA0SEwoLSkJKTkhKTk1QQVAYDiADKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HFKKEDPMKKF), global::March7thHoney.Proto.HFKKEDPMKKF.Parser, new[]{ "JBJNHJNMPAP", "GameStoryLineId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HFKKEDPMKKF), global::March7thHoney.Proto.HFKKEDPMKKF.Parser, new[]{ "GameStoryLineId", "JBJNHJNMPAP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HFKKEDPMKKF(HFKKEDPMKKF other) : this() {
-      jBJNHJNMPAP_ = other.jBJNHJNMPAP_.Clone();
       gameStoryLineId_ = other.gameStoryLineId_;
+      jBJNHJNMPAP_ = other.jBJNHJNMPAP_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,19 +83,8 @@ namespace March7thHoney.Proto {
       return new HFKKEDPMKKF(this);
     }
 
-    /// <summary>Field number for the "JBJNHJNMPAP" field.</summary>
-    public const int JBJNHJNMPAPFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_jBJNHJNMPAP_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> jBJNHJNMPAP_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> JBJNHJNMPAP {
-      get { return jBJNHJNMPAP_; }
-    }
-
     /// <summary>Field number for the "game_story_line_id" field.</summary>
-    public const int GameStoryLineIdFieldNumber = 2;
+    public const int GameStoryLineIdFieldNumber = 13;
     private uint gameStoryLineId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +93,17 @@ namespace March7thHoney.Proto {
       set {
         gameStoryLineId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "JBJNHJNMPAP" field.</summary>
+    public const int JBJNHJNMPAPFieldNumber = 14;
+    private static readonly pb::FieldCodec<uint> _repeated_jBJNHJNMPAP_codec
+        = pb::FieldCodec.ForUInt32(114);
+    private readonly pbc::RepeatedField<uint> jBJNHJNMPAP_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> JBJNHJNMPAP {
+      get { return jBJNHJNMPAP_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!jBJNHJNMPAP_.Equals(other.jBJNHJNMPAP_)) return false;
       if (GameStoryLineId != other.GameStoryLineId) return false;
+      if(!jBJNHJNMPAP_.Equals(other.jBJNHJNMPAP_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= jBJNHJNMPAP_.GetHashCode();
       if (GameStoryLineId != 0) hash ^= GameStoryLineId.GetHashCode();
+      hash ^= jBJNHJNMPAP_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GameStoryLineId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(104);
         output.WriteUInt32(GameStoryLineId);
       }
       jBJNHJNMPAP_.WriteTo(output, _repeated_jBJNHJNMPAP_codec);
@@ -166,7 +166,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GameStoryLineId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(104);
         output.WriteUInt32(GameStoryLineId);
       }
       jBJNHJNMPAP_.WriteTo(ref output, _repeated_jBJNHJNMPAP_codec);
@@ -180,10 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += jBJNHJNMPAP_.CalculateSize(_repeated_jBJNHJNMPAP_codec);
       if (GameStoryLineId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GameStoryLineId);
       }
+      size += jBJNHJNMPAP_.CalculateSize(_repeated_jBJNHJNMPAP_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -196,10 +196,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      jBJNHJNMPAP_.Add(other.jBJNHJNMPAP_);
       if (other.GameStoryLineId != 0) {
         GameStoryLineId = other.GameStoryLineId;
       }
+      jBJNHJNMPAP_.Add(other.jBJNHJNMPAP_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 104: {
             GameStoryLineId = input.ReadUInt32();
             break;
           }
-          case 42:
-          case 40: {
+          case 114:
+          case 112: {
             jBJNHJNMPAP_.AddEntriesFrom(input, _repeated_jBJNHJNMPAP_codec);
             break;
           }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 104: {
             GameStoryLineId = input.ReadUInt32();
             break;
           }
-          case 42:
-          case 40: {
+          case 114:
+          case 112: {
             jBJNHJNMPAP_.AddEntriesFrom(ref input, _repeated_jBJNHJNMPAP_codec);
             break;
           }

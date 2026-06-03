@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NIJHCCNMEGA {
-    repeated uint32 KCNEKEGGAGG = 14;
-    uint32 card_id = 9;
-    uint32 NPCBECNBIJK = 15;
+    uint32 NPCBECNBIJK = 5;
+    repeated uint32 KCNEKEGGAGG = 6;
+    uint32 card_id = 8;
 }

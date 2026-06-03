@@ -8,11 +8,11 @@ import "RotaterData.proto";
 import "RotaterEnergyInfo.proto";
 
 message FHEGNOPNICH {
-    RotaterEnergyInfo energy_info = 4;
-    RotateMapInfo COOOMDKGODF = 3;
-    repeated RotaterData CEDGGDFMILP = 12;
-    repeated ChargerInfo EGAGKNADAHJ = 13;
-    uint32 JPPMEKJGJFD = 7;
-    int32 LJHKNKFLGDE = 11;
-    bool MJIPOJPBKNB = 14;
+    bool MJIPOJPBKNB = 1;
+    int32 region_id = 2;
+    RotaterEnergyInfo energy_info = 6;
+    repeated RotaterData CEDGGDFMILP = 9;
+    uint32 JPPMEKJGJFD = 11;
+    RotateMapInfo COOOMDKGODF = 14;
+    repeated ChargerInfo EGAGKNADAHJ = 15;
 }

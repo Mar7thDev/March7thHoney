@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TrainRefreshTimeNotify {
-    uint64 IAMKNFKCLCH = 2;
+    uint64 IAMKNFKCLCH = 10;
 }

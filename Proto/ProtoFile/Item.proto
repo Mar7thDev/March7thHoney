@@ -3,11 +3,11 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message Item {
-    uint32 item_id = 14;
-    uint32 level = 13;
-    uint32 num = 2;
-    uint32 promotion = 6;
-    uint32 main_affix_id = 3;
-    uint32 rank = 9;
-    uint32 unique_id = 7;
+    uint32 promotion = 2;
+    uint32 unique_id = 3;
+    uint32 item_id = 5;
+    uint32 main_affix_id = 6;
+    uint32 num = 9;
+    uint32 level = 11;
+    uint32 rank = 13;
 }

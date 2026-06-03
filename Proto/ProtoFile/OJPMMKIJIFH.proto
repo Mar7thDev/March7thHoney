@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message OJPMMKIJIFH {
-    map<uint32, ItemCostData> BHPELIMODBC = 10;
+    map<uint32, ItemCostData> BHPELIMODBC = 4;
     ItemCostData PKAMBCBEKME = 6;
-    int32 LIAGGDDILGO = 11;
-    uint32 JFIGNBBLCIM = 7;
+    int32 LIAGGDDILGO = 9;
+    uint32 JFIGNBBLCIM = 14;
 }

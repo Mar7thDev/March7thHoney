@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LECIGPPCMAB {
-    repeated uint32 AOLIEDBCNBN = 2;
-    uint32 interacted_prop_entity_id = 11;
+    uint32 interacted_prop_entity_id = 7;
+    repeated uint32 AOLIEDBCNBN = 13;
 }

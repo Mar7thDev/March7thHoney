@@ -2,28 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "GADFFIFFNHM.proto";
-import "GCFGCHAMNOL.proto";
-import "HDIOKENOFNJ.proto";
-import "ONNMLLIEENI.proto";
-
 message GetDataScRsp {
-    repeated ONNMLLIEENI CMBJOLCGMAI = 8;
-    GCFGCHAMNOL lineup = 4;
-    repeated uint32 ICBIMKIEOEP = 11;
-    repeated GADFFIFFNHM JCOAGOJEAPB = 5;
-    uint32 FBNEKMPIAKD = 14;
-    HDIOKENOFNJ HFPGDCJMNIK = 12;
-    uint32 ENMLPFBMPNI = 1970;
-    uint32 JIDBIMNMLJP = 1;
-    uint32 PIGPKIDNMDH = 10;
-    uint32 IOMEILDMBNE = 3;
-    uint32 CJLBLDFGELH = 7;
-    uint32 GGPKMPBBENP = 1497;
-    uint32 NMPCJAOIOHJ = 105;
-    uint32 IMCGJPMBPPJ = 6;
-    uint32 retcode = 15;
-    uint32 KCCACINBEEA = 1812;
-    uint32 MMFKMEGECOI = 9;
-    uint32 HCENDLKKHOC = 2;
+    uint32 retcode = 7;
+    bool is_taken_reward = 10;
+    uint32 avatar_id = 13;
 }

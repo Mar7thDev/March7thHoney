@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IFCNLKPPPHK.proto";
 
 message RogueMagicAreaUpdateScNotify {
-    repeated IFCNLKPPPHK DANNIDIPFAL = 3;
+    repeated IFCNLKPPPHK DANNIDIPFAL = 4;
 }

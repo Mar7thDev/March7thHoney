@@ -24,17 +24,18 @@ namespace March7thHoney.Proto {
     static CmdChenLingFesTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbWRDaGVuTGluZ0Zlc1R5cGUucHJvdG8qmQMKEkNtZENoZW5MaW5nRmVz",
+            "ChhDbWRDaGVuTGluZ0Zlc1R5cGUucHJvdG8qtwMKEkNtZENoZW5MaW5nRmVz",
             "VHlwZRIbChdMQ09JSUVHSkFPS19OTENER0lQR0ZEShAAEhwKF0xDT0lJRUdK",
-            "QU9LX0VBRU9HS1BFQUVHENlNEhwKF0xDT0lJRUdKQU9LX0FHR0hHQUxDTE9D",
-            "ENdNEhwKF0xDT0lJRUdKQU9LX0JIQkFCTkhLTUlHEM5NEhwKF0xDT0lJRUdK",
-            "QU9LX0pQTUFDQ01PSlBKEMNNEhwKF0xDT0lJRUdKQU9LX0lPRExLSk5QR0xD",
-            "EMlNEhwKF0xDT0lJRUdKQU9LX0FJSFBLQUVESEdGENhNEhwKF0xDT0lJRUdK",
-            "QU9LX0ZHRUtEQklFREVKEMdNEhwKF0xDT0lJRUdKQU9LX0JKQ09GSlBLT0xJ",
-            "ELVNEhwKF0xDT0lJRUdKQU9LX1BGTU1PUERISk9KELNNEhwKF0xDT0lJRUdK",
-            "QU9LX0xLTk1QTU9QR0FLEL9NEhwKF0xDT0lJRUdKQU9LX05FTUFISk1JQk5B",
-            "ENZNEhwKF0xDT0lJRUdKQU9LX0RHT0ZBTENJTkFPEMxNQhaqAhNNYXJjaDd0",
-            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "QU9LX1BGTU1PUERISk9KENFNEhwKF0xDT0lJRUdKQU9LX0ZHRUtEQklFREVK",
+            "ENxNEhwKF0xDT0lJRUdKQU9LX0lGTE1CR0dFSk5GEL1NEhwKF0xDT0lJRUdK",
+            "QU9LX0RHT0ZBTENJTkFPELVNEhwKF0xDT0lJRUdKQU9LX0pQTUFDQ01PSlBK",
+            "ENhNEhwKF0xDT0lJRUdKQU9LX0FHR0hHQUxDTE9DEMRNEhwKF0xDT0lJRUdK",
+            "QU9LX0xLTk1QTU9QR0FLEK9NEhwKF0xDT0lJRUdKQU9LX05FTUFISk1JQk5B",
+            "EMNNEhwKF0xDT0lJRUdKQU9LX0FJSFBLQUVESEdGEL9NEhwKF0xDT0lJRUdK",
+            "QU9LX0lPRExLSk5QR0xDEMFNEhwKF0xDT0lJRUdKQU9LX0VBRU9HS1BFQUVH",
+            "ELNNEhwKF0xDT0lJRUdKQU9LX0JKQ09GSlBLT0xJELZNEhwKF0xDT0lJRUdK",
+            "QU9LX0JIQkFCTkhLTUlHEMBNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdChenLingFesType), }, null, null));
@@ -45,18 +46,19 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdChenLingFesType {
     [pbr::OriginalName("LCOIIEGJAOK_NLCDGIPGFDJ")] LcoiiegjaokNlcdgipgfdj = 0,
-    [pbr::OriginalName("LCOIIEGJAOK_EAEOGKPEAEG")] LcoiiegjaokEaeogkpeaeg = 9945,
-    [pbr::OriginalName("LCOIIEGJAOK_AGGHGALCLOC")] LcoiiegjaokAgghgalcloc = 9943,
-    [pbr::OriginalName("LCOIIEGJAOK_BHBABNHKMIG")] LcoiiegjaokBhbabnhkmig = 9934,
-    [pbr::OriginalName("LCOIIEGJAOK_JPMACCMOJPJ")] LcoiiegjaokJpmaccmojpj = 9923,
-    [pbr::OriginalName("LCOIIEGJAOK_IODLKJNPGLC")] LcoiiegjaokIodlkjnpglc = 9929,
-    [pbr::OriginalName("LCOIIEGJAOK_AIHPKAEDHGF")] LcoiiegjaokAihpkaedhgf = 9944,
-    [pbr::OriginalName("LCOIIEGJAOK_FGEKDBIEDEJ")] LcoiiegjaokFgekdbiedej = 9927,
-    [pbr::OriginalName("LCOIIEGJAOK_BJCOFJPKOLI")] LcoiiegjaokBjcofjpkoli = 9909,
-    [pbr::OriginalName("LCOIIEGJAOK_PFMMOPDHJOJ")] LcoiiegjaokPfmmopdhjoj = 9907,
-    [pbr::OriginalName("LCOIIEGJAOK_LKNMPMOPGAK")] LcoiiegjaokLknmpmopgak = 9919,
-    [pbr::OriginalName("LCOIIEGJAOK_NEMAHJMIBNA")] LcoiiegjaokNemahjmibna = 9942,
-    [pbr::OriginalName("LCOIIEGJAOK_DGOFALCINAO")] LcoiiegjaokDgofalcinao = 9932,
+    [pbr::OriginalName("LCOIIEGJAOK_PFMMOPDHJOJ")] LcoiiegjaokPfmmopdhjoj = 9937,
+    [pbr::OriginalName("LCOIIEGJAOK_FGEKDBIEDEJ")] LcoiiegjaokFgekdbiedej = 9948,
+    [pbr::OriginalName("LCOIIEGJAOK_IFLMBGGEJNF")] LcoiiegjaokIflmbggejnf = 9917,
+    [pbr::OriginalName("LCOIIEGJAOK_DGOFALCINAO")] LcoiiegjaokDgofalcinao = 9909,
+    [pbr::OriginalName("LCOIIEGJAOK_JPMACCMOJPJ")] LcoiiegjaokJpmaccmojpj = 9944,
+    [pbr::OriginalName("LCOIIEGJAOK_AGGHGALCLOC")] LcoiiegjaokAgghgalcloc = 9924,
+    [pbr::OriginalName("LCOIIEGJAOK_LKNMPMOPGAK")] LcoiiegjaokLknmpmopgak = 9903,
+    [pbr::OriginalName("LCOIIEGJAOK_NEMAHJMIBNA")] LcoiiegjaokNemahjmibna = 9923,
+    [pbr::OriginalName("LCOIIEGJAOK_AIHPKAEDHGF")] LcoiiegjaokAihpkaedhgf = 9919,
+    [pbr::OriginalName("LCOIIEGJAOK_IODLKJNPGLC")] LcoiiegjaokIodlkjnpglc = 9921,
+    [pbr::OriginalName("LCOIIEGJAOK_EAEOGKPEAEG")] LcoiiegjaokEaeogkpeaeg = 9907,
+    [pbr::OriginalName("LCOIIEGJAOK_BJCOFJPKOLI")] LcoiiegjaokBjcofjpkoli = 9910,
+    [pbr::OriginalName("LCOIIEGJAOK_BHBABNHKMIG")] LcoiiegjaokBhbabnhkmig = 9920,
   }
 
   #endregion

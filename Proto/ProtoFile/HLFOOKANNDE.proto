@@ -4,6 +4,6 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message HLFOOKANNDE {
     uint32 JGDOICIEMAH = 1;
-    double KADNIAEJACG = 3;
     double damage = 2;
+    double KADNIAEJACG = 3;
 }

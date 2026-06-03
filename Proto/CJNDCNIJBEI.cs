@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFDSk5EQ05JSkJFSS5wcm90bxoRT05LREFQT0tHQUMucHJvdG8iTgoLQ0pO",
-            "RENOSUpCRUkSHAoUZmluaXNoZWRfdGFyZ2V0X2xpc3QYBiADKA0SIQoLYXZh",
-            "dGFyX2xpc3QYBCADKAsyDC5PTktEQVBPS0dBQ0IWqgITTWFyY2g3dGhIb25l",
+            "RENOSUpCRUkSHAoUZmluaXNoZWRfdGFyZ2V0X2xpc3QYCSADKA0SIQoLYXZh",
+            "dGFyX2xpc3QYDyADKAsyDC5PTktEQVBPS0dBQ0IWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ONKDAPOKGACReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 6;
+    public const int FinishedTargetListFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(50);
+        = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,9 +96,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 4;
+    public const int AvatarListFieldNumber = 15;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ONKDAPOKGAC> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.ONKDAPOKGAC.Parser);
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.ONKDAPOKGAC.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ONKDAPOKGAC> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ONKDAPOKGAC>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,8 +150,8 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
+      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -162,8 +162,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
+      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -209,13 +209,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
-            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
+          case 74:
+          case 72: {
+            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
             break;
           }
-          case 50:
-          case 48: {
-            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
+          case 122: {
+            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
         }
@@ -237,13 +237,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
-            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
+          case 74:
+          case 72: {
+            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
             break;
           }
-          case 50:
-          case 48: {
-            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
+          case 122: {
+            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
         }

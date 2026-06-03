@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static AGPKFBLGDIHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBR1BLRkJMR0RJSC5wcm90bxoRUExNQU1IQkxKS1AucHJvdG8iQgoLQUdQ",
-            "S0ZCTEdESUgSIQoLS0JHQVBIRklQSkYYCyADKAsyDC5QTE1BTUhCTEpLUBIQ",
-            "Cgh0cmFpdF9pZBgEIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
-            "dG8z"));
+            "ChFBR1BLRkJMR0RJSC5wcm90bxobQWN0aXZlVHJhaXRTb3VyY2VMaXN0LnBy",
+            "b3RvIkwKC0FHUEtGQkxHRElIEisKC0tCR0FQSEZJUEpGGAIgAygLMhYuQWN0",
+            "aXZlVHJhaXRTb3VyY2VMaXN0EhAKCHRyYWl0X2lkGA8gASgNQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.PLMAMHBLJKPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ActiveTraitSourceListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AGPKFBLGDIH), global::March7thHoney.Proto.AGPKFBLGDIH.Parser, new[]{ "KBGAPHFIPJF", "TraitId" }, null, null, null, null)
           }));
@@ -85,18 +85,18 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KBGAPHFIPJF" field.</summary>
-    public const int KBGAPHFIPJFFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.PLMAMHBLJKP> _repeated_kBGAPHFIPJF_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.PLMAMHBLJKP.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.PLMAMHBLJKP> kBGAPHFIPJF_ = new pbc::RepeatedField<global::March7thHoney.Proto.PLMAMHBLJKP>();
+    public const int KBGAPHFIPJFFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ActiveTraitSourceList> _repeated_kBGAPHFIPJF_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ActiveTraitSourceList.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ActiveTraitSourceList> kBGAPHFIPJF_ = new pbc::RepeatedField<global::March7thHoney.Proto.ActiveTraitSourceList>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.PLMAMHBLJKP> KBGAPHFIPJF {
+    public pbc::RepeatedField<global::March7thHoney.Proto.ActiveTraitSourceList> KBGAPHFIPJF {
       get { return kBGAPHFIPJF_; }
     }
 
     /// <summary>Field number for the "trait_id" field.</summary>
-    public const int TraitIdFieldNumber = 4;
+    public const int TraitIdFieldNumber = 15;
     private uint traitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      kBGAPHFIPJF_.WriteTo(output, _repeated_kBGAPHFIPJF_codec);
       if (TraitId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(120);
         output.WriteUInt32(TraitId);
       }
-      kBGAPHFIPJF_.WriteTo(output, _repeated_kBGAPHFIPJF_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      kBGAPHFIPJF_.WriteTo(ref output, _repeated_kBGAPHFIPJF_codec);
       if (TraitId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(120);
         output.WriteUInt32(TraitId);
       }
-      kBGAPHFIPJF_.WriteTo(ref output, _repeated_kBGAPHFIPJF_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            TraitId = input.ReadUInt32();
+          case 18: {
+            kBGAPHFIPJF_.AddEntriesFrom(input, _repeated_kBGAPHFIPJF_codec);
             break;
           }
-          case 90: {
-            kBGAPHFIPJF_.AddEntriesFrom(input, _repeated_kBGAPHFIPJF_codec);
+          case 120: {
+            TraitId = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            TraitId = input.ReadUInt32();
+          case 18: {
+            kBGAPHFIPJF_.AddEntriesFrom(ref input, _repeated_kBGAPHFIPJF_codec);
             break;
           }
-          case 90: {
-            kBGAPHFIPJF_.AddEntriesFrom(ref input, _repeated_kBGAPHFIPJF_codec);
+          case 120: {
+            TraitId = input.ReadUInt32();
             break;
           }
         }

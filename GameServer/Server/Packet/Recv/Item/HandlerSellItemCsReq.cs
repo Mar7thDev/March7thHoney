@@ -10,7 +10,7 @@ public class HandlerSellItemCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         var req = SellItemCsReq.Parser.ParseFrom(data);
-        var items = await connection.Player!.InventoryManager!.SellItem(req.CostData, req.ToMaterial);
+        var items = await connection.Player!.InventoryManager!.SellItem(req.CostData, req.HNLKAEBKKBL);
         await connection.SendPacket(new PacketSellItemScRsp(items));
     }
 }

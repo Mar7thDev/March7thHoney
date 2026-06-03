@@ -6,12 +6,12 @@ import "AvatarPathSkillTree.proto";
 import "EquipRelic.proto";
 
 message AvatarPathData {
-    repeated AvatarPathSkillTree avatar_path_skill_tree = 9;
-    repeated EquipRelic equip_relic_list = 11;
-    uint32 unk_enhanced_id = 3;
-    uint32 path_equipment_id = 14;
-    uint64 unlock_timestamp = 6;
-    uint32 rank = 2;
-    uint32 avatar_id = 5;
-    uint32 dressed_skin_id = 8;
+    uint32 path_equipment_id = 1;
+    repeated EquipRelic equip_relic_list = 4;
+    repeated AvatarPathSkillTree avatar_path_skill_tree = 6;
+    uint32 avatar_id = 8;
+    uint32 rank = 9;
+    uint32 dressed_skin_id = 12;
+    uint64 unlock_time = 13;
+    uint32 unk_enhanced_id = 15;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BMKNANGPDGH.proto";
 
 message OFFMDBMMNFM {
-    repeated BMKNANGPDGH lineup_list = 15;
+    repeated BMKNANGPDGH lineup_list = 9;
 }

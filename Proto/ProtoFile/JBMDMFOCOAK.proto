@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AOJEODENHPL.proto";
 
 message JBMDMFOCOAK {
-    AOJEODENHPL LMMNDOFIMBN = 10;
-    uint32 PGIEEGCGCDI = 6;
+    AOJEODENHPL LMMNDOFIMBN = 6;
+    uint32 PGIEEGCGCDI = 8;
 }

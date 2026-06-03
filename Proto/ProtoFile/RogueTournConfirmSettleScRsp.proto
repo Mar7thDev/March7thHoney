@@ -7,9 +7,9 @@ import "JGAMMPGMCNI.proto";
 import "MJMGOBMOPDL.proto";
 
 message RogueTournConfirmSettleScRsp {
-    ItemList AELJFOPMDJG = 13;
-    MJMGOBMOPDL BLPDBPHMCGA = 12;
-    JGAMMPGMCNI IDCMACCPCBH = 5;
-    ItemList IIOMCJPCFML = 14;
-    uint32 retcode = 3;
+    ItemList IIOMCJPCFML = 1;
+    JGAMMPGMCNI IDCMACCPCBH = 4;
+    MJMGOBMOPDL BLPDBPHMCGA = 8;
+    ItemList AELJFOPMDJG = 10;
+    uint32 retcode = 15;
 }

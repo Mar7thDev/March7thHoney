@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BattleLogReportScRsp {
-    uint32 retcode = 6;
-    bool JPGGLLELMPC = 3;
-}

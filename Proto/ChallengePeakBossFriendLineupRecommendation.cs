@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CjFDaGFsbGVuZ2VQZWFrQm9zc0ZyaWVuZExpbmV1cFJlY29tbWVuZGF0aW9u",
             "LnByb3RvGhFPTktEQVBPS0dBQy5wcm90byKzAQorQ2hhbGxlbmdlUGVha0Jv",
-            "c3NGcmllbmRMaW5ldXBSZWNvbW1lbmRhdGlvbhIcChRmaW5pc2hlZF90YXJn",
-            "ZXRfbGlzdBgJIAMoDRIhCgthdmF0YXJfbGlzdBgIIAMoCzIMLk9OS0RBUE9L",
-            "R0FDEg8KB2J1ZmZfaWQYCiABKA0SFAoMaXNfaGFyZF9tb2RlGAEgASgIEhwK",
-            "FGhhcmRfbW9kZV9oYXNfcGFzc2VkGAMgASgIQhaqAhNNYXJjaDd0aEhvbmV5",
+            "c3NGcmllbmRMaW5ldXBSZWNvbW1lbmRhdGlvbhIPCgdidWZmX2lkGAMgASgN",
+            "EhwKFGhhcmRfbW9kZV9oYXNfcGFzc2VkGAcgASgIEiEKC2F2YXRhcl9saXN0",
+            "GAkgAygLMgwuT05LREFQT0tHQUMSFAoMaXNfaGFyZF9tb2RlGAwgASgIEhwK",
+            "FGZpbmlzaGVkX3RhcmdldF9saXN0GA8gAygNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ONKDAPOKGACReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBossFriendLineupRecommendation), global::March7thHoney.Proto.ChallengePeakBossFriendLineupRecommendation.Parser, new[]{ "FinishedTargetList", "AvatarList", "BuffId", "IsHardMode", "HardModeHasPassed" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBossFriendLineupRecommendation), global::March7thHoney.Proto.ChallengePeakBossFriendLineupRecommendation.Parser, new[]{ "BuffId", "HardModeHasPassed", "AvatarList", "IsHardMode", "FinishedTargetList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,11 +76,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakBossFriendLineupRecommendation(ChallengePeakBossFriendLineupRecommendation other) : this() {
-      finishedTargetList_ = other.finishedTargetList_.Clone();
-      avatarList_ = other.avatarList_.Clone();
       buffId_ = other.buffId_;
-      isHardMode_ = other.isHardMode_;
       hardModeHasPassed_ = other.hardModeHasPassed_;
+      avatarList_ = other.avatarList_.Clone();
+      isHardMode_ = other.isHardMode_;
+      finishedTargetList_ = other.finishedTargetList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,30 +90,8 @@ namespace March7thHoney.Proto {
       return new ChallengePeakBossFriendLineupRecommendation(this);
     }
 
-    /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 9;
-    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(74);
-    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FinishedTargetList {
-      get { return finishedTargetList_; }
-    }
-
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 8;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ONKDAPOKGAC> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.ONKDAPOKGAC.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ONKDAPOKGAC> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ONKDAPOKGAC>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ONKDAPOKGAC> AvatarList {
-      get { return avatarList_; }
-    }
-
     /// <summary>Field number for the "buff_id" field.</summary>
-    public const int BuffIdFieldNumber = 10;
+    public const int BuffIdFieldNumber = 3;
     private uint buffId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,8 +102,31 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "hard_mode_has_passed" field.</summary>
+    public const int HardModeHasPassedFieldNumber = 7;
+    private bool hardModeHasPassed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HardModeHasPassed {
+      get { return hardModeHasPassed_; }
+      set {
+        hardModeHasPassed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ONKDAPOKGAC> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ONKDAPOKGAC.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ONKDAPOKGAC> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ONKDAPOKGAC>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ONKDAPOKGAC> AvatarList {
+      get { return avatarList_; }
+    }
+
     /// <summary>Field number for the "is_hard_mode" field.</summary>
-    public const int IsHardModeFieldNumber = 1;
+    public const int IsHardModeFieldNumber = 12;
     private bool isHardMode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,16 +137,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "hard_mode_has_passed" field.</summary>
-    public const int HardModeHasPassedFieldNumber = 3;
-    private bool hardModeHasPassed_;
+    /// <summary>Field number for the "finished_target_list" field.</summary>
+    public const int FinishedTargetListFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HardModeHasPassed {
-      get { return hardModeHasPassed_; }
-      set {
-        hardModeHasPassed_ = value;
-      }
+    public pbc::RepeatedField<uint> FinishedTargetList {
+      get { return finishedTargetList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
-      if(!avatarList_.Equals(other.avatarList_)) return false;
       if (BuffId != other.BuffId) return false;
-      if (IsHardMode != other.IsHardMode) return false;
       if (HardModeHasPassed != other.HardModeHasPassed) return false;
+      if(!avatarList_.Equals(other.avatarList_)) return false;
+      if (IsHardMode != other.IsHardMode) return false;
+      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= finishedTargetList_.GetHashCode();
-      hash ^= avatarList_.GetHashCode();
       if (BuffId != 0) hash ^= BuffId.GetHashCode();
-      if (IsHardMode != false) hash ^= IsHardMode.GetHashCode();
       if (HardModeHasPassed != false) hash ^= HardModeHasPassed.GetHashCode();
+      hash ^= avatarList_.GetHashCode();
+      if (IsHardMode != false) hash ^= IsHardMode.GetHashCode();
+      hash ^= finishedTargetList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,20 +198,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsHardMode != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(IsHardMode);
+      if (BuffId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(BuffId);
       }
       if (HardModeHasPassed != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteBool(HardModeHasPassed);
       }
       avatarList_.WriteTo(output, _repeated_avatarList_codec);
-      finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
-      if (BuffId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(BuffId);
+      if (IsHardMode != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsHardMode);
       }
+      finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -222,20 +222,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsHardMode != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(IsHardMode);
+      if (BuffId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(BuffId);
       }
       if (HardModeHasPassed != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteBool(HardModeHasPassed);
       }
       avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
-      finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
-      if (BuffId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(BuffId);
+      if (IsHardMode != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsHardMode);
       }
+      finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -246,17 +246,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
-      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
       if (BuffId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
-      }
-      if (IsHardMode != false) {
-        size += 1 + 1;
       }
       if (HardModeHasPassed != false) {
         size += 1 + 1;
       }
+      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
+      if (IsHardMode != false) {
+        size += 1 + 1;
+      }
+      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -269,17 +269,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      finishedTargetList_.Add(other.finishedTargetList_);
-      avatarList_.Add(other.avatarList_);
       if (other.BuffId != 0) {
         BuffId = other.BuffId;
-      }
-      if (other.IsHardMode != false) {
-        IsHardMode = other.IsHardMode;
       }
       if (other.HardModeHasPassed != false) {
         HardModeHasPassed = other.HardModeHasPassed;
       }
+      avatarList_.Add(other.avatarList_);
+      if (other.IsHardMode != false) {
+        IsHardMode = other.IsHardMode;
+      }
+      finishedTargetList_.Add(other.finishedTargetList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -299,25 +299,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            IsHardMode = input.ReadBool();
+          case 24: {
+            BuffId = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 56: {
             HardModeHasPassed = input.ReadBool();
             break;
           }
-          case 66: {
+          case 74: {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
-          case 74:
-          case 72: {
-            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
+          case 96: {
+            IsHardMode = input.ReadBool();
             break;
           }
-          case 80: {
-            BuffId = input.ReadUInt32();
+          case 122:
+          case 120: {
+            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
             break;
           }
         }
@@ -339,25 +339,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            IsHardMode = input.ReadBool();
+          case 24: {
+            BuffId = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 56: {
             HardModeHasPassed = input.ReadBool();
             break;
           }
-          case 66: {
+          case 74: {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
-          case 74:
-          case 72: {
-            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
+          case 96: {
+            IsHardMode = input.ReadBool();
             break;
           }
-          case 80: {
-            BuffId = input.ReadUInt32();
+          case 122:
+          case 120: {
+            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
             break;
           }
         }

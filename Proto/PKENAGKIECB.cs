@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static PKENAGKIECBReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFQS0VOQUdLSUVDQi5wcm90byI8CgtQS0VOQUdLSUVDQhIYChB1bmxvY2tf",
-            "dGltZXN0YW1wGA0gASgDEhMKC0NMRUtBS0xQTkJQGAcgASgNQhaqAhNNYXJj",
-            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChFQS0VOQUdLSUVDQi5wcm90byI3CgtQS0VOQUdLSUVDQhITCgtDTEVLQUtM",
+            "UE5CUBgKIAEoDRITCgt1bmxvY2tfdGltZRgPIAEoA0IWqgITTWFyY2g3dGhI",
+            "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PKENAGKIECB), global::March7thHoney.Proto.PKENAGKIECB.Parser, new[]{ "UnlockTimestamp", "CLEKAKLPNBP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PKENAGKIECB), global::March7thHoney.Proto.PKENAGKIECB.Parser, new[]{ "CLEKAKLPNBP", "UnlockTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PKENAGKIECB(PKENAGKIECB other) : this() {
-      unlockTimestamp_ = other.unlockTimestamp_;
       cLEKAKLPNBP_ = other.cLEKAKLPNBP_;
+      unlockTime_ = other.unlockTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new PKENAGKIECB(this);
     }
 
-    /// <summary>Field number for the "unlock_timestamp" field.</summary>
-    public const int UnlockTimestampFieldNumber = 13;
-    private long unlockTimestamp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long UnlockTimestamp {
-      get { return unlockTimestamp_; }
-      set {
-        unlockTimestamp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "CLEKAKLPNBP" field.</summary>
-    public const int CLEKAKLPNBPFieldNumber = 7;
+    public const int CLEKAKLPNBPFieldNumber = 10;
     private uint cLEKAKLPNBP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return cLEKAKLPNBP_; }
       set {
         cLEKAKLPNBP_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unlock_time" field.</summary>
+    public const int UnlockTimeFieldNumber = 15;
+    private long unlockTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long UnlockTime {
+      get { return unlockTime_; }
+      set {
+        unlockTime_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (UnlockTimestamp != other.UnlockTimestamp) return false;
       if (CLEKAKLPNBP != other.CLEKAKLPNBP) return false;
+      if (UnlockTime != other.UnlockTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (UnlockTimestamp != 0L) hash ^= UnlockTimestamp.GetHashCode();
       if (CLEKAKLPNBP != 0) hash ^= CLEKAKLPNBP.GetHashCode();
+      if (UnlockTime != 0L) hash ^= UnlockTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CLEKAKLPNBP != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(80);
         output.WriteUInt32(CLEKAKLPNBP);
       }
-      if (UnlockTimestamp != 0L) {
-        output.WriteRawTag(104);
-        output.WriteInt64(UnlockTimestamp);
+      if (UnlockTime != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(UnlockTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CLEKAKLPNBP != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(80);
         output.WriteUInt32(CLEKAKLPNBP);
       }
-      if (UnlockTimestamp != 0L) {
-        output.WriteRawTag(104);
-        output.WriteInt64(UnlockTimestamp);
+      if (UnlockTime != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(UnlockTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (UnlockTimestamp != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnlockTimestamp);
-      }
       if (CLEKAKLPNBP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CLEKAKLPNBP);
+      }
+      if (UnlockTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnlockTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.UnlockTimestamp != 0L) {
-        UnlockTimestamp = other.UnlockTimestamp;
-      }
       if (other.CLEKAKLPNBP != 0) {
         CLEKAKLPNBP = other.CLEKAKLPNBP;
+      }
+      if (other.UnlockTime != 0L) {
+        UnlockTime = other.UnlockTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 80: {
             CLEKAKLPNBP = input.ReadUInt32();
             break;
           }
-          case 104: {
-            UnlockTimestamp = input.ReadInt64();
+          case 120: {
+            UnlockTime = input.ReadInt64();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 80: {
             CLEKAKLPNBP = input.ReadUInt32();
             break;
           }
-          case 104: {
-            UnlockTimestamp = input.ReadInt64();
+          case 120: {
+            UnlockTime = input.ReadInt64();
             break;
           }
         }

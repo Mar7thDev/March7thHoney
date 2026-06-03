@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TrainCakeCatchDiyLikeScRsp {
-    repeated uint32 BPAOGJPLENJ = 4;
-    uint32 retcode = 10;
+    uint32 retcode = 4;
+    repeated uint32 BPAOGJPLENJ = 8;
 }

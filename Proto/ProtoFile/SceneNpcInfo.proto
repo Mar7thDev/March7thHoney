@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NpcExtraInfo.proto";
 
 message SceneNpcInfo {
-    NpcExtraInfo extra_info = 3;
-    uint32 npc_id = 4;
+    NpcExtraInfo extra_info = 6;
+    uint32 npc_id = 8;
 }

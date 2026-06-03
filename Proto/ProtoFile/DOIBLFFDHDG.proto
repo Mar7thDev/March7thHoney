@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AvatarType.proto";
 
 message DOIBLFFDHDG {
-    AvatarType avatar_type = 4;
-    uint32 avatar_id = 15;
+    uint32 avatar_id = 3;
+    AvatarType avatar_type = 15;
 }

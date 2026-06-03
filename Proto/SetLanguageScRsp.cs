@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZTZXRMYW5ndWFnZVNjUnNwLnByb3RvGhJMYW5ndWFnZVR5cGUucHJvdG8i",
-            "RwoQU2V0TGFuZ3VhZ2VTY1JzcBIiCgtIT0ZFTU5BSUlIQhgDIAEoDjINLkxh",
-            "bmd1YWdlVHlwZRIPCgdyZXRjb2RlGAUgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "RwoQU2V0TGFuZ3VhZ2VTY1JzcBIPCgdyZXRjb2RlGAMgASgNEiIKC0hPRkVN",
+            "TkFJSUhCGAQgASgOMg0uTGFuZ3VhZ2VUeXBlQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LanguageTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetLanguageScRsp), global::March7thHoney.Proto.SetLanguageScRsp.Parser, new[]{ "HOFEMNAIIHB", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetLanguageScRsp), global::March7thHoney.Proto.SetLanguageScRsp.Parser, new[]{ "Retcode", "HOFEMNAIIHB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetLanguageScRsp(SetLanguageScRsp other) : this() {
-      hOFEMNAIIHB_ = other.hOFEMNAIIHB_;
       retcode_ = other.retcode_;
+      hOFEMNAIIHB_ = other.hOFEMNAIIHB_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new SetLanguageScRsp(this);
     }
 
-    /// <summary>Field number for the "HOFEMNAIIHB" field.</summary>
-    public const int HOFEMNAIIHBFieldNumber = 3;
-    private global::March7thHoney.Proto.LanguageType hOFEMNAIIHB_ = global::March7thHoney.Proto.LanguageType.LanguageNone;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.LanguageType HOFEMNAIIHB {
-      get { return hOFEMNAIIHB_; }
-      set {
-        hOFEMNAIIHB_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
+    public const int RetcodeFieldNumber = 3;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HOFEMNAIIHB" field.</summary>
+    public const int HOFEMNAIIHBFieldNumber = 4;
+    private global::March7thHoney.Proto.LanguageType hOFEMNAIIHB_ = global::March7thHoney.Proto.LanguageType.LanguageNone;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.LanguageType HOFEMNAIIHB {
+      get { return hOFEMNAIIHB_; }
+      set {
+        hOFEMNAIIHB_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HOFEMNAIIHB != other.HOFEMNAIIHB) return false;
       if (Retcode != other.Retcode) return false;
+      if (HOFEMNAIIHB != other.HOFEMNAIIHB) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) hash ^= HOFEMNAIIHB.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) hash ^= HOFEMNAIIHB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) HOFEMNAIIHB);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
+      }
+      if (HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) HOFEMNAIIHB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) HOFEMNAIIHB);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
+      }
+      if (HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) HOFEMNAIIHB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HOFEMNAIIHB);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HOFEMNAIIHB);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
-        HOFEMNAIIHB = other.HOFEMNAIIHB;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.HOFEMNAIIHB != global::March7thHoney.Proto.LanguageType.LanguageNone) {
+        HOFEMNAIIHB = other.HOFEMNAIIHB;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            HOFEMNAIIHB = (global::March7thHoney.Proto.LanguageType) input.ReadEnum();
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 40: {
-            Retcode = input.ReadUInt32();
+          case 32: {
+            HOFEMNAIIHB = (global::March7thHoney.Proto.LanguageType) input.ReadEnum();
             break;
           }
         }
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            HOFEMNAIIHB = (global::March7thHoney.Proto.LanguageType) input.ReadEnum();
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 40: {
-            Retcode = input.ReadUInt32();
+          case 32: {
+            HOFEMNAIIHB = (global::March7thHoney.Proto.LanguageType) input.ReadEnum();
             break;
           }
         }

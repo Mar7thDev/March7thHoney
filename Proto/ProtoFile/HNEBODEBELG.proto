@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BCCONKJHDJL.proto";
 
 message HNEBODEBELG {
-    repeated BCCONKJHDJL IEBNOGOOEMO = 14;
-    uint32 role_star = 8;
+    repeated BCCONKJHDJL IEBNOGOOEMO = 5;
+    uint32 role_star = 11;
 }

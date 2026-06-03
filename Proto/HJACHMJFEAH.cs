@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static HJACHMJFEAHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFISkFDSE1KRkVBSC5wcm90byIwCgtISkFDSE1KRkVBSBIMCgRzbG90GAIg",
-            "ASgNEhMKC1BDUERIRUlFSkZPGAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "ChFISkFDSE1KRkVBSC5wcm90byIwCgtISkFDSE1KRkVBSBITCgtQQ1BESEVJ",
+            "RUpGTxgBIAEoDRIMCgRzbG90GAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HJACHMJFEAH), global::March7thHoney.Proto.HJACHMJFEAH.Parser, new[]{ "Slot", "PCPDHEIEJFO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HJACHMJFEAH), global::March7thHoney.Proto.HJACHMJFEAH.Parser, new[]{ "PCPDHEIEJFO", "Slot" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HJACHMJFEAH(HJACHMJFEAH other) : this() {
-      slot_ = other.slot_;
       pCPDHEIEJFO_ = other.pCPDHEIEJFO_;
+      slot_ = other.slot_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HJACHMJFEAH Clone() {
       return new HJACHMJFEAH(this);
-    }
-
-    /// <summary>Field number for the "slot" field.</summary>
-    public const int SlotFieldNumber = 2;
-    private uint slot_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Slot {
-      get { return slot_; }
-      set {
-        slot_ = value;
-      }
     }
 
     /// <summary>Field number for the "PCPDHEIEJFO" field.</summary>
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return pCPDHEIEJFO_; }
       set {
         pCPDHEIEJFO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "slot" field.</summary>
+    public const int SlotFieldNumber = 2;
+    private uint slot_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Slot {
+      get { return slot_; }
+      set {
+        slot_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Slot != other.Slot) return false;
       if (PCPDHEIEJFO != other.PCPDHEIEJFO) return false;
+      if (Slot != other.Slot) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Slot != 0) hash ^= Slot.GetHashCode();
       if (PCPDHEIEJFO != 0) hash ^= PCPDHEIEJFO.GetHashCode();
+      if (Slot != 0) hash ^= Slot.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Slot != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Slot);
-      }
       if (PCPDHEIEJFO != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PCPDHEIEJFO);
+      }
+      if (Slot != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Slot);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Slot != 0) {
-        Slot = other.Slot;
-      }
       if (other.PCPDHEIEJFO != 0) {
         PCPDHEIEJFO = other.PCPDHEIEJFO;
+      }
+      if (other.Slot != 0) {
+        Slot = other.Slot;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

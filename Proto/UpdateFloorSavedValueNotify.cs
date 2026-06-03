@@ -27,14 +27,14 @@ namespace March7thHoney.Proto {
             "CiFVcGRhdGVGbG9vclNhdmVkVmFsdWVOb3RpZnkucHJvdG8izQEKG1VwZGF0",
             "ZUZsb29yU2F2ZWRWYWx1ZU5vdGlmeRJBCgtzYXZlZF92YWx1ZRgDIAMoCzIs",
             "LlVwZGF0ZUZsb29yU2F2ZWRWYWx1ZU5vdGlmeS5TYXZlZFZhbHVlRW50cnkS",
-            "EAoIZmxvb3JfaWQYCyABKA0SFAoMZGltZW5zaW9uX2lkGAIgASgNEhAKCHBs",
-            "YW5lX2lkGAkgASgNGjEKD1NhdmVkVmFsdWVFbnRyeRILCgNrZXkYASABKAkS",
+            "FAoMZGltZW5zaW9uX2lkGAUgASgNEhAKCGZsb29yX2lkGAogASgNEhAKCHBs",
+            "YW5lX2lkGA4gASgNGjEKD1NhdmVkVmFsdWVFbnRyeRILCgNrZXkYASABKAkS",
             "DQoFdmFsdWUYAiABKAU6AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateFloorSavedValueNotify), global::March7thHoney.Proto.UpdateFloorSavedValueNotify.Parser, new[]{ "SavedValue", "FloorId", "DimensionId", "PlaneId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateFloorSavedValueNotify), global::March7thHoney.Proto.UpdateFloorSavedValueNotify.Parser, new[]{ "SavedValue", "DimensionId", "FloorId", "PlaneId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -77,8 +77,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateFloorSavedValueNotify(UpdateFloorSavedValueNotify other) : this() {
       savedValue_ = other.savedValue_.Clone();
-      floorId_ = other.floorId_;
       dimensionId_ = other.dimensionId_;
+      floorId_ = other.floorId_;
       planeId_ = other.planeId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -100,20 +100,8 @@ namespace March7thHoney.Proto {
       get { return savedValue_; }
     }
 
-    /// <summary>Field number for the "floor_id" field.</summary>
-    public const int FloorIdFieldNumber = 11;
-    private uint floorId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FloorId {
-      get { return floorId_; }
-      set {
-        floorId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "dimension_id" field.</summary>
-    public const int DimensionIdFieldNumber = 2;
+    public const int DimensionIdFieldNumber = 5;
     private uint dimensionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,8 +112,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "floor_id" field.</summary>
+    public const int FloorIdFieldNumber = 10;
+    private uint floorId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FloorId {
+      get { return floorId_; }
+      set {
+        floorId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 9;
+    public const int PlaneIdFieldNumber = 14;
     private uint planeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,8 +152,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!SavedValue.Equals(other.SavedValue)) return false;
-      if (FloorId != other.FloorId) return false;
       if (DimensionId != other.DimensionId) return false;
+      if (FloorId != other.FloorId) return false;
       if (PlaneId != other.PlaneId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -163,8 +163,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= SavedValue.GetHashCode();
-      if (FloorId != 0) hash ^= FloorId.GetHashCode();
       if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
+      if (FloorId != 0) hash ^= FloorId.GetHashCode();
       if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -184,18 +184,18 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      savedValue_.WriteTo(output, _map_savedValue_codec);
       if (DimensionId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(40);
         output.WriteUInt32(DimensionId);
       }
-      savedValue_.WriteTo(output, _map_savedValue_codec);
-      if (PlaneId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(PlaneId);
-      }
       if (FloorId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(FloorId);
+      }
+      if (PlaneId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(PlaneId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -207,18 +207,18 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      savedValue_.WriteTo(ref output, _map_savedValue_codec);
       if (DimensionId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(40);
         output.WriteUInt32(DimensionId);
       }
-      savedValue_.WriteTo(ref output, _map_savedValue_codec);
-      if (PlaneId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(PlaneId);
-      }
       if (FloorId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(80);
         output.WriteUInt32(FloorId);
+      }
+      if (PlaneId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(PlaneId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += savedValue_.CalculateSize(_map_savedValue_codec);
-      if (FloorId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
-      }
       if (DimensionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
+      }
+      if (FloorId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
       }
       if (PlaneId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
@@ -253,11 +253,11 @@ namespace March7thHoney.Proto {
         return;
       }
       savedValue_.MergeFrom(other.savedValue_);
-      if (other.FloorId != 0) {
-        FloorId = other.FloorId;
-      }
       if (other.DimensionId != 0) {
         DimensionId = other.DimensionId;
+      }
+      if (other.FloorId != 0) {
+        FloorId = other.FloorId;
       }
       if (other.PlaneId != 0) {
         PlaneId = other.PlaneId;
@@ -281,20 +281,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            DimensionId = input.ReadUInt32();
-            break;
-          }
           case 26: {
             savedValue_.AddEntriesFrom(input, _map_savedValue_codec);
             break;
           }
-          case 72: {
-            PlaneId = input.ReadUInt32();
+          case 40: {
+            DimensionId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 80: {
             FloorId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            PlaneId = input.ReadUInt32();
             break;
           }
         }
@@ -316,20 +316,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            DimensionId = input.ReadUInt32();
-            break;
-          }
           case 26: {
             savedValue_.AddEntriesFrom(ref input, _map_savedValue_codec);
             break;
           }
-          case 72: {
-            PlaneId = input.ReadUInt32();
+          case 40: {
+            DimensionId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 80: {
             FloorId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            PlaneId = input.ReadUInt32();
             break;
           }
         }

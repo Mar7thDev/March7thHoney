@@ -3,17 +3,17 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LGOKJFKMCBE {
-    uint32 BJGOOFNOGMJ = 9;
     uint32 KJGDBFEFHPJ = 1;
-    double MINCPOKEPDP = 11;
-    uint32 OLPDBDEDCOG = 10;
-    uint32 OEBAIDCOPLC = 12;
-    uint32 HKAENABCBHL = 7;
-    uint32 IBHKMLKHKJB = 13;
-    uint32 GMJGPDKJAEE = 6;
-    uint32 NBKOOPBPNPL = 5;
-    uint32 IBOPDGOFDOD = 4;
-    double AEPMEGILLOJ = 8;
     double HIFNHNLNDPN = 2;
     double JGFKNDMDHHP = 3;
+    uint32 IBOPDGOFDOD = 4;
+    uint32 NBKOOPBPNPL = 5;
+    uint32 GMJGPDKJAEE = 6;
+    uint32 HKAENABCBHL = 7;
+    double AEPMEGILLOJ = 8;
+    uint32 BJGOOFNOGMJ = 9;
+    uint32 OLPDBDEDCOG = 10;
+    double MINCPOKEPDP = 11;
+    uint32 OEBAIDCOPLC = 12;
+    uint32 IBHKMLKHKJB = 13;
 }

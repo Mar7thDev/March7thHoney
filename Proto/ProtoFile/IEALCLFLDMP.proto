@@ -6,7 +6,7 @@ import "GOCNLGIDBLM.proto";
 import "SwordTrainingDailyPhaseType.proto";
 
 message IEALCLFLDMP {
-    repeated uint32 JAJNHOKCAHH = 3;
-    repeated GOCNLGIDBLM COOMKNFDNLH = 10;
-    SwordTrainingDailyPhaseType LLBJAJNCEAL = 5;
+    repeated GOCNLGIDBLM COOMKNFDNLH = 4;
+    repeated uint32 JAJNHOKCAHH = 6;
+    SwordTrainingDailyPhaseType cur_phase = 12;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GameplayCounterUpdateReason.proto";
 
 message ILCCPICILFF {
-    uint32 BIKALOGMMDA = 11;
-    GameplayCounterUpdateReason reason = 13;
     uint32 OFBPKCNCGFG = 1;
+    GameplayCounterUpdateReason reason = 7;
+    uint32 BIKALOGMMDA = 10;
 }

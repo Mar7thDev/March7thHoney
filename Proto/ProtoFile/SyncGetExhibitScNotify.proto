@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SyncGetExhibitScNotify {
-    uint32 MMNBPCGIONF = 8;
+    uint32 MMNBPCGIONF = 4;
 }

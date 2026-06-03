@@ -24,15 +24,14 @@ namespace March7thHoney.Proto {
     static GEOOCKILLEFReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHRU9PQ0tJTExFRi5wcm90byrMAgoLR0VPT0NLSUxMRUYSGwoXR0VPT0NL",
+            "ChFHRU9PQ0tJTExFRi5wcm90byqvAgoLR0VPT0NLSUxMRUYSGwoXR0VPT0NL",
             "SUxMRUZfREFKSUVHTEpGQUsQABIbChdHRU9PQ0tJTExFRl9BSUFOTkFJTkdL",
             "SxABEhsKF0dFT09DS0lMTEVGX0JHT0RQRE1FRUhEEAISGwoXR0VPT0NLSUxM",
             "RUZfQ0tOQk9ESE5PQUsQAxIbChdHRU9PQ0tJTExFRl9ERExKSUNJQUxGQRAE",
             "EhsKF0dFT09DS0lMTEVGX01LTkxJRkhCTk5IEAUSGwoXR0VPT0NLSUxMRUZf",
             "RlBDQ0hHQ1BFTE8QBhIbChdHRU9PQ0tJTExFRl9GTU1HUEZQTEFKSRAHEhsK",
-            "F0dFT09DS0lMTEVGX0dLTkJPT0RMSkxDEAgSGwoXR0VPT0NLSUxMRUZfRkFH",
-            "TkdIRURFSVAQCRIbChdHRU9PQ0tJTExFRl9MQUhMUFBFREdHTxAKQhaqAhNN",
-            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "F0dFT09DS0lMTEVGX0ZBR05HSEVERUlQEAkSGwoXR0VPT0NLSUxMRUZfTEFI",
+            "TFBQRURHR08QCkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.GEOOCKILLEF), }, null, null));
@@ -50,7 +49,6 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("GEOOCKILLEF_MKNLIFHBNNH")] Mknlifhbnnh = 5,
     [pbr::OriginalName("GEOOCKILLEF_FPCCHGCPELO")] Fpcchgcpelo = 6,
     [pbr::OriginalName("GEOOCKILLEF_FMMGPFPLAJI")] Fmmgpfplaji = 7,
-    [pbr::OriginalName("GEOOCKILLEF_GKNBOODLJLC")] Gknboodljlc = 8,
     [pbr::OriginalName("GEOOCKILLEF_FAGNGHEDEIP")] Fagnghedeip = 9,
     [pbr::OriginalName("GEOOCKILLEF_LAHLPPEDGGO")] Lahlppedggo = 10,
   }

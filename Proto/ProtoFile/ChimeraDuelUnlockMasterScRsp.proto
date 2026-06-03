@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChimeraDuelUnlockMasterScRsp {
-    uint32 IPINHNFCIOE = 1;
-    uint32 retcode = 14;
+    uint32 retcode = 1;
+    uint32 IPINHNFCIOE = 11;
 }

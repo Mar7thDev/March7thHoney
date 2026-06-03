@@ -7,7 +7,7 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message EnterSceneByServerScNotify {
-    SceneInfo scene = 5;
+    EnterSceneReason reason = 2;
     LineupInfo lineup = 10;
-    EnterSceneReason reason = 11;
+    SceneInfo scene = 11;
 }

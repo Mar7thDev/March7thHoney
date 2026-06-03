@@ -6,7 +6,7 @@ import "FOJDKLCHCKG.proto";
 import "LMLNNHKJEIP.proto";
 
 message PKBJOGHCFOA {
-    FOJDKLCHCKG KHEFAHCPHBL = 7;
-    repeated LMLNNHKJEIP DFLEOIGPLNM = 5;
-    uint32 retcode = 8;
+    FOJDKLCHCKG KHEFAHCPHBL = 5;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 14;
+    uint32 retcode = 15;
 }

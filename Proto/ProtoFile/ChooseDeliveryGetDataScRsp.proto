@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ChooseDeliveryGetDataScRsp {
+    repeated uint32 PCOJLMKPAEL = 5;
+    uint32 retcode = 10;
+}

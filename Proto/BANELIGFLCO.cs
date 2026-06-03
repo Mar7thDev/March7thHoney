@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static BANELIGFLCOReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCQU5FTElHRkxDTy5wcm90byJGCgtCQU5FTElHRkxDTxITCgtNRktIREFO",
-            "UENJQxgFIAEoDRITCgtDQklMUE1JQ0VLQxgCIAEoDRINCgVsZXZlbBgPIAEo",
+            "ChFCQU5FTElHRkxDTy5wcm90byJGCgtCQU5FTElHRkxDTxITCgtDQklMUE1J",
+            "Q0VLQxgEIAEoDRINCgVsZXZlbBgKIAEoDRITCgtNRktIREFOUENJQxgMIAEo",
             "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BANELIGFLCO), global::March7thHoney.Proto.BANELIGFLCO.Parser, new[]{ "MFKHDANPCIC", "CBILPMICEKC", "Level" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BANELIGFLCO), global::March7thHoney.Proto.BANELIGFLCO.Parser, new[]{ "CBILPMICEKC", "Level", "MFKHDANPCIC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BANELIGFLCO(BANELIGFLCO other) : this() {
-      mFKHDANPCIC_ = other.mFKHDANPCIC_;
       cBILPMICEKC_ = other.cBILPMICEKC_;
       level_ = other.level_;
+      mFKHDANPCIC_ = other.mFKHDANPCIC_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new BANELIGFLCO(this);
     }
 
-    /// <summary>Field number for the "MFKHDANPCIC" field.</summary>
-    public const int MFKHDANPCICFieldNumber = 5;
-    private uint mFKHDANPCIC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MFKHDANPCIC {
-      get { return mFKHDANPCIC_; }
-      set {
-        mFKHDANPCIC_ = value;
-      }
-    }
-
     /// <summary>Field number for the "CBILPMICEKC" field.</summary>
-    public const int CBILPMICEKCFieldNumber = 2;
+    public const int CBILPMICEKCFieldNumber = 4;
     private uint cBILPMICEKC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 15;
+    public const int LevelFieldNumber = 10;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return level_; }
       set {
         level_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MFKHDANPCIC" field.</summary>
+    public const int MFKHDANPCICFieldNumber = 12;
+    private uint mFKHDANPCIC_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MFKHDANPCIC {
+      get { return mFKHDANPCIC_; }
+      set {
+        mFKHDANPCIC_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MFKHDANPCIC != other.MFKHDANPCIC) return false;
       if (CBILPMICEKC != other.CBILPMICEKC) return false;
       if (Level != other.Level) return false;
+      if (MFKHDANPCIC != other.MFKHDANPCIC) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MFKHDANPCIC != 0) hash ^= MFKHDANPCIC.GetHashCode();
       if (CBILPMICEKC != 0) hash ^= CBILPMICEKC.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
+      if (MFKHDANPCIC != 0) hash ^= MFKHDANPCIC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CBILPMICEKC != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteUInt32(CBILPMICEKC);
       }
-      if (MFKHDANPCIC != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(MFKHDANPCIC);
-      }
       if (Level != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(80);
         output.WriteUInt32(Level);
+      }
+      if (MFKHDANPCIC != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(MFKHDANPCIC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CBILPMICEKC != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteUInt32(CBILPMICEKC);
       }
-      if (MFKHDANPCIC != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(MFKHDANPCIC);
-      }
       if (Level != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(80);
         output.WriteUInt32(Level);
+      }
+      if (MFKHDANPCIC != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(MFKHDANPCIC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MFKHDANPCIC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MFKHDANPCIC);
-      }
       if (CBILPMICEKC != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CBILPMICEKC);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      }
+      if (MFKHDANPCIC != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MFKHDANPCIC);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MFKHDANPCIC != 0) {
-        MFKHDANPCIC = other.MFKHDANPCIC;
-      }
       if (other.CBILPMICEKC != 0) {
         CBILPMICEKC = other.CBILPMICEKC;
       }
       if (other.Level != 0) {
         Level = other.Level;
+      }
+      if (other.MFKHDANPCIC != 0) {
+        MFKHDANPCIC = other.MFKHDANPCIC;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 32: {
             CBILPMICEKC = input.ReadUInt32();
             break;
           }
-          case 40: {
-            MFKHDANPCIC = input.ReadUInt32();
+          case 80: {
+            Level = input.ReadUInt32();
             break;
           }
-          case 120: {
-            Level = input.ReadUInt32();
+          case 96: {
+            MFKHDANPCIC = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 32: {
             CBILPMICEKC = input.ReadUInt32();
             break;
           }
-          case 40: {
-            MFKHDANPCIC = input.ReadUInt32();
+          case 80: {
+            Level = input.ReadUInt32();
             break;
           }
-          case 120: {
-            Level = input.ReadUInt32();
+          case 96: {
+            MFKHDANPCIC = input.ReadUInt32();
             break;
           }
         }

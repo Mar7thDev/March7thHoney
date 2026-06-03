@@ -6,6 +6,6 @@ import "Vector.proto";
 import "Vector4.proto";
 
 message RotateMapInfo {
-    Vector4 MIACNFDGKCE = 11;
-    Vector ELFDIEFKCMH = 6;
+    Vector ELFDIEFKCMH = 2;
+    Vector4 MIACNFDGKCE = 10;
 }

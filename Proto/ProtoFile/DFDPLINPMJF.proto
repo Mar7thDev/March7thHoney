@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CMIKEILGNGK.proto";
 
 message DFDPLINPMJF {
-    repeated CMIKEILGNGK KGIELMEOPEH = 3;
     uint32 INGDHDPEGOK = 1;
     uint32 IGPNFJDACIE = 2;
+    repeated CMIKEILGNGK KGIELMEOPEH = 3;
 }

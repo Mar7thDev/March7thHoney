@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KGLIOOODBPN.proto";
 
 message PBMGACMAMBE {
-    repeated KGLIOOODBPN JKFNAKBGIBF = 12;
-    uint32 IOJPOKCDFHM = 5;
+    uint32 IOJPOKCDFHM = 7;
+    repeated KGLIOOODBPN JKFNAKBGIBF = 13;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HFKKEDPMKKF {
-    repeated uint32 JBJNHJNMPAP = 5;
-    uint32 game_story_line_id = 2;
+    uint32 game_story_line_id = 13;
+    repeated uint32 JBJNHJNMPAP = 14;
 }

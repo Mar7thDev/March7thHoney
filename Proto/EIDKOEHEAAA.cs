@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFSURLT0VIRUFBQS5wcm90bxoRREVGRkZMR0pBRU0ucHJvdG8iQQoLRUlE",
-            "S09FSEVBQUESIQoLTFBPTEtGTkNFQUIYCiADKAsyDC5ERUZGRkxHSkFFTRIP",
-            "CgdyZXRjb2RlGAkgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "S09FSEVBQUESIQoLTFBPTEtGTkNFQUIYAyADKAsyDC5ERUZGRkxHSkFFTRIP",
+            "CgdyZXRjb2RlGAsgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DEFFFLGJAEMReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LPOLKFNCEAB" field.</summary>
-    public const int LPOLKFNCEABFieldNumber = 10;
+    public const int LPOLKFNCEABFieldNumber = 3;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.DEFFFLGJAEM> _repeated_lPOLKFNCEAB_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.DEFFFLGJAEM.Parser);
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.DEFFFLGJAEM.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.DEFFFLGJAEM> lPOLKFNCEAB_ = new pbc::RepeatedField<global::March7thHoney.Proto.DEFFFLGJAEM>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      lPOLKFNCEAB_.WriteTo(output, _repeated_lPOLKFNCEAB_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      lPOLKFNCEAB_.WriteTo(output, _repeated_lPOLKFNCEAB_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      lPOLKFNCEAB_.WriteTo(ref output, _repeated_lPOLKFNCEAB_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      lPOLKFNCEAB_.WriteTo(ref output, _repeated_lPOLKFNCEAB_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            Retcode = input.ReadUInt32();
+          case 26: {
+            lPOLKFNCEAB_.AddEntriesFrom(input, _repeated_lPOLKFNCEAB_codec);
             break;
           }
-          case 82: {
-            lPOLKFNCEAB_.AddEntriesFrom(input, _repeated_lPOLKFNCEAB_codec);
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            Retcode = input.ReadUInt32();
+          case 26: {
+            lPOLKFNCEAB_.AddEntriesFrom(ref input, _repeated_lPOLKFNCEAB_codec);
             break;
           }
-          case 82: {
-            lPOLKFNCEAB_.AddEntriesFrom(ref input, _repeated_lPOLKFNCEAB_codec);
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

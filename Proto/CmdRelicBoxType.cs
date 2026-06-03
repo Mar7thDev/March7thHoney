@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVDbWRSZWxpY0JveFR5cGUucHJvdG8qtAMKD0NtZFJlbGljQm94VHlwZRIb",
-            "ChdNSE1BT1BQSUJDTF9OTENER0lQR0ZEShAAEhwKF01ITUFPUFBJQkNMX09K",
-            "Q0lLSkpNS1BFEIFGEhwKF01ITUFPUFBJQkNMX0FMQk5ESkNGSENKEPxFEhwK",
-            "F01ITUFPUFBJQkNMX0ZHQ0xPUEhNSUFGEP1FEhwKF01ITUFPUFBJQkNMX0lE",
-            "REdMRUNQTURBEIBGEhwKF01ITUFPUFBJQkNMX0FMTU5MRExPSkVLEIhGEhwK",
-            "F01ITUFPUFBJQkNMX05KREJNSUJKTUZDEIpGEhwKF01ITUFPUFBJQkNMX0FO",
-            "TEtCUEtFQUdHEPhFEhwKF01ITUFPUFBJQkNMX0JLSU9GTkZMQkxGEIdGEhwK",
-            "F01ITUFPUFBJQkNMX0pDQ0xNTElMSEZIEIVGEhwKF01ITUFPUFBJQkNMX0JE",
-            "TElMRENFT1BKEPlFEhwKF01ITUFPUFBJQkNMX01QSE1FQkFFSk9QEPpFEhwK",
-            "F01ITUFPUFBJQkNMX0RMTUdFRUdQQUtLEIlGEhwKF01ITUFPUFBJQkNMX05J",
-            "TkFKQUJPS0NHEIZGQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChdNSE1BT1BQSUJDTF9OTENER0lQR0ZEShAAEhwKF01ITUFPUFBJQkNMX0FO",
+            "TEtCUEtFQUdHEPhFEhwKF01ITUFPUFBJQkNMX0JLSU9GTkZMQkxGEPdFEhwK",
+            "F01ITUFPUFBJQkNMX0FMTU5MRExPSkVLEIhGEhwKF01ITUFPUFBJQkNMX0pD",
+            "Q0xNTElMSEZIEIRGEhwKF01ITUFPUFBJQkNMX0FMQk5ESkNGSENKEP5FEhwK",
+            "F01ITUFPUFBJQkNMX09KQ0lLSkpNS1BFEIVGEhwKF01ITUFPUFBJQkNMX0RM",
+            "TUdFRUdQQUtLEIdGEhwKF01ITUFPUFBJQkNMX05KREJNSUJKTUZDEIJGEhwK",
+            "F01ITUFPUFBJQkNMX0lEREdMRUNQTURBEP1FEhwKF01ITUFPUFBJQkNMX05J",
+            "TkFKQUJPS0NHEPlFEhwKF01ITUFPUFBJQkNMX0JETElMRENFT1BKEP9FEhwK",
+            "F01ITUFPUFBJQkNMX01QSE1FQkFFSk9QEIFGEhwKF01ITUFPUFBJQkNMX0ZH",
+            "Q0xPUEhNSUFGEIBGQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRelicBoxType), }, null, null));
@@ -45,19 +45,19 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdRelicBoxType {
     [pbr::OriginalName("MHMAOPPIBCL_NLCDGIPGFDJ")] MhmaoppibclNlcdgipgfdj = 0,
-    [pbr::OriginalName("MHMAOPPIBCL_OJCIKJJMKPE")] MhmaoppibclOjcikjjmkpe = 8961,
-    [pbr::OriginalName("MHMAOPPIBCL_ALBNDJCFHCJ")] MhmaoppibclAlbndjcfhcj = 8956,
-    [pbr::OriginalName("MHMAOPPIBCL_FGCLOPHMIAF")] MhmaoppibclFgclophmiaf = 8957,
-    [pbr::OriginalName("MHMAOPPIBCL_IDDGLECPMDA")] MhmaoppibclIddglecpmda = 8960,
-    [pbr::OriginalName("MHMAOPPIBCL_ALMNLDLOJEK")] MhmaoppibclAlmnldlojek = 8968,
-    [pbr::OriginalName("MHMAOPPIBCL_NJDBMIBJMFC")] MhmaoppibclNjdbmibjmfc = 8970,
     [pbr::OriginalName("MHMAOPPIBCL_ANLKBPKEAGG")] MhmaoppibclAnlkbpkeagg = 8952,
-    [pbr::OriginalName("MHMAOPPIBCL_BKIOFNFLBLF")] MhmaoppibclBkiofnflblf = 8967,
-    [pbr::OriginalName("MHMAOPPIBCL_JCCLMLILHFH")] MhmaoppibclJcclmlilhfh = 8965,
-    [pbr::OriginalName("MHMAOPPIBCL_BDLILDCEOPJ")] MhmaoppibclBdlildceopj = 8953,
-    [pbr::OriginalName("MHMAOPPIBCL_MPHMEBAEJOP")] MhmaoppibclMphmebaejop = 8954,
-    [pbr::OriginalName("MHMAOPPIBCL_DLMGEEGPAKK")] MhmaoppibclDlmgeegpakk = 8969,
-    [pbr::OriginalName("MHMAOPPIBCL_NINAJABOKCG")] MhmaoppibclNinajabokcg = 8966,
+    [pbr::OriginalName("MHMAOPPIBCL_BKIOFNFLBLF")] MhmaoppibclBkiofnflblf = 8951,
+    [pbr::OriginalName("MHMAOPPIBCL_ALMNLDLOJEK")] MhmaoppibclAlmnldlojek = 8968,
+    [pbr::OriginalName("MHMAOPPIBCL_JCCLMLILHFH")] MhmaoppibclJcclmlilhfh = 8964,
+    [pbr::OriginalName("MHMAOPPIBCL_ALBNDJCFHCJ")] MhmaoppibclAlbndjcfhcj = 8958,
+    [pbr::OriginalName("MHMAOPPIBCL_OJCIKJJMKPE")] MhmaoppibclOjcikjjmkpe = 8965,
+    [pbr::OriginalName("MHMAOPPIBCL_DLMGEEGPAKK")] MhmaoppibclDlmgeegpakk = 8967,
+    [pbr::OriginalName("MHMAOPPIBCL_NJDBMIBJMFC")] MhmaoppibclNjdbmibjmfc = 8962,
+    [pbr::OriginalName("MHMAOPPIBCL_IDDGLECPMDA")] MhmaoppibclIddglecpmda = 8957,
+    [pbr::OriginalName("MHMAOPPIBCL_NINAJABOKCG")] MhmaoppibclNinajabokcg = 8953,
+    [pbr::OriginalName("MHMAOPPIBCL_BDLILDCEOPJ")] MhmaoppibclBdlildceopj = 8959,
+    [pbr::OriginalName("MHMAOPPIBCL_MPHMEBAEJOP")] MhmaoppibclMphmebaejop = 8961,
+    [pbr::OriginalName("MHMAOPPIBCL_FGCLOPHMIAF")] MhmaoppibclFgclophmiaf = 8960,
   }
 
   #endregion

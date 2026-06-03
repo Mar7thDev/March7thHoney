@@ -7,7 +7,7 @@ import "BattleBuff.proto";
 import "BattleMonsterWave.proto";
 
 message OJHHHPLBIEJ {
+    repeated AetherAvatarInfo avatar_list = 1;
     repeated BattleMonsterWave monster_wave_list = 2;
     repeated BattleBuff buff_list = 3;
-    repeated AetherAvatarInfo avatar_list = 1;
 }

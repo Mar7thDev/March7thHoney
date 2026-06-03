@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ReviveRogueAvatarCsReq {
-    repeated uint32 NOEPBNMJFGL = 13;
-    uint32 interacted_prop_entity_id = 7;
+    repeated uint32 NOEPBNMJFGL = 2;
+    uint32 interacted_prop_entity_id = 14;
 }

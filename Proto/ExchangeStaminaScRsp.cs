@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpFeGNoYW5nZVN0YW1pbmFTY1JzcC5wcm90bxoOSXRlbUNvc3QucHJvdG8i",
-            "kgEKFEV4Y2hhbmdlU3RhbWluYVNjUnNwEiEKDml0ZW1fY29zdF9saXN0GAcg",
-            "AygLMgkuSXRlbUNvc3QSFgoOZXhjaGFuZ2VfdGltZXMYASABKA0SGQoRbGFz",
-            "dF9yZWNvdmVyX3RpbWUYBCABKAMSEwoLc3RhbWluYV9hZGQYAiABKA0SDwoH",
-            "cmV0Y29kZRgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "kgEKFEV4Y2hhbmdlU3RhbWluYVNjUnNwEhYKDmV4Y2hhbmdlX3RpbWVzGAIg",
+            "ASgNEg8KB3JldGNvZGUYAyABKA0SGQoRbGFzdF9yZWNvdmVyX3RpbWUYBiAB",
+            "KAMSEwoLc3RhbWluYV9hZGQYCiABKA0SIQoOaXRlbV9jb3N0X2xpc3QYDSAD",
+            "KAsyCS5JdGVtQ29zdEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExchangeStaminaScRsp), global::March7thHoney.Proto.ExchangeStaminaScRsp.Parser, new[]{ "ItemCostList", "ExchangeTimes", "LastRecoverTime", "StaminaAdd", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExchangeStaminaScRsp), global::March7thHoney.Proto.ExchangeStaminaScRsp.Parser, new[]{ "ExchangeTimes", "Retcode", "LastRecoverTime", "StaminaAdd", "ItemCostList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ExchangeStaminaScRsp(ExchangeStaminaScRsp other) : this() {
-      itemCostList_ = other.itemCostList_.Clone();
       exchangeTimes_ = other.exchangeTimes_;
+      retcode_ = other.retcode_;
       lastRecoverTime_ = other.lastRecoverTime_;
       staminaAdd_ = other.staminaAdd_;
-      retcode_ = other.retcode_;
+      itemCostList_ = other.itemCostList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,19 +88,8 @@ namespace March7thHoney.Proto {
       return new ExchangeStaminaScRsp(this);
     }
 
-    /// <summary>Field number for the "item_cost_list" field.</summary>
-    public const int ItemCostListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ItemCost> _repeated_itemCostList_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.ItemCost.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ItemCost> itemCostList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ItemCost>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ItemCost> ItemCostList {
-      get { return itemCostList_; }
-    }
-
     /// <summary>Field number for the "exchange_times" field.</summary>
-    public const int ExchangeTimesFieldNumber = 1;
+    public const int ExchangeTimesFieldNumber = 2;
     private uint exchangeTimes_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,8 +100,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 3;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
     /// <summary>Field number for the "last_recover_time" field.</summary>
-    public const int LastRecoverTimeFieldNumber = 4;
+    public const int LastRecoverTimeFieldNumber = 6;
     private long lastRecoverTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,7 +125,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "stamina_add" field.</summary>
-    public const int StaminaAddFieldNumber = 2;
+    public const int StaminaAddFieldNumber = 10;
     private uint staminaAdd_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,16 +136,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
-    private uint retcode_;
+    /// <summary>Field number for the "item_cost_list" field.</summary>
+    public const int ItemCostListFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ItemCost> _repeated_itemCostList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ItemCost.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ItemCost> itemCostList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ItemCost>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.ItemCost> ItemCostList {
+      get { return itemCostList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!itemCostList_.Equals(other.itemCostList_)) return false;
       if (ExchangeTimes != other.ExchangeTimes) return false;
+      if (Retcode != other.Retcode) return false;
       if (LastRecoverTime != other.LastRecoverTime) return false;
       if (StaminaAdd != other.StaminaAdd) return false;
-      if (Retcode != other.Retcode) return false;
+      if(!itemCostList_.Equals(other.itemCostList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= itemCostList_.GetHashCode();
       if (ExchangeTimes != 0) hash ^= ExchangeTimes.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (LastRecoverTime != 0L) hash ^= LastRecoverTime.GetHashCode();
       if (StaminaAdd != 0) hash ^= StaminaAdd.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= itemCostList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,22 +198,22 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ExchangeTimes != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteUInt32(ExchangeTimes);
       }
-      if (StaminaAdd != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(StaminaAdd);
-      }
-      if (LastRecoverTime != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(LastRecoverTime);
-      }
-      itemCostList_.WriteTo(output, _repeated_itemCostList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
+      if (LastRecoverTime != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(LastRecoverTime);
+      }
+      if (StaminaAdd != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(StaminaAdd);
+      }
+      itemCostList_.WriteTo(output, _repeated_itemCostList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -225,22 +225,22 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ExchangeTimes != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteUInt32(ExchangeTimes);
       }
-      if (StaminaAdd != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(StaminaAdd);
-      }
-      if (LastRecoverTime != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(LastRecoverTime);
-      }
-      itemCostList_.WriteTo(ref output, _repeated_itemCostList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
+      if (LastRecoverTime != 0L) {
+        output.WriteRawTag(48);
+        output.WriteInt64(LastRecoverTime);
+      }
+      if (StaminaAdd != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(StaminaAdd);
+      }
+      itemCostList_.WriteTo(ref output, _repeated_itemCostList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -251,9 +251,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += itemCostList_.CalculateSize(_repeated_itemCostList_codec);
       if (ExchangeTimes != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ExchangeTimes);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (LastRecoverTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastRecoverTime);
@@ -261,9 +263,7 @@ namespace March7thHoney.Proto {
       if (StaminaAdd != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StaminaAdd);
       }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
+      size += itemCostList_.CalculateSize(_repeated_itemCostList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -276,9 +276,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      itemCostList_.Add(other.itemCostList_);
       if (other.ExchangeTimes != 0) {
         ExchangeTimes = other.ExchangeTimes;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       if (other.LastRecoverTime != 0L) {
         LastRecoverTime = other.LastRecoverTime;
@@ -286,9 +288,7 @@ namespace March7thHoney.Proto {
       if (other.StaminaAdd != 0) {
         StaminaAdd = other.StaminaAdd;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
+      itemCostList_.Add(other.itemCostList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -308,24 +308,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 16: {
             ExchangeTimes = input.ReadUInt32();
             break;
           }
-          case 16: {
-            StaminaAdd = input.ReadUInt32();
+          case 24: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 48: {
             LastRecoverTime = input.ReadInt64();
             break;
           }
-          case 58: {
-            itemCostList_.AddEntriesFrom(input, _repeated_itemCostList_codec);
+          case 80: {
+            StaminaAdd = input.ReadUInt32();
             break;
           }
-          case 88: {
-            Retcode = input.ReadUInt32();
+          case 106: {
+            itemCostList_.AddEntriesFrom(input, _repeated_itemCostList_codec);
             break;
           }
         }
@@ -347,24 +347,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 16: {
             ExchangeTimes = input.ReadUInt32();
             break;
           }
-          case 16: {
-            StaminaAdd = input.ReadUInt32();
+          case 24: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 48: {
             LastRecoverTime = input.ReadInt64();
             break;
           }
-          case 58: {
-            itemCostList_.AddEntriesFrom(ref input, _repeated_itemCostList_codec);
+          case 80: {
+            StaminaAdd = input.ReadUInt32();
             break;
           }
-          case 88: {
-            Retcode = input.ReadUInt32();
+          case 106: {
+            itemCostList_.AddEntriesFrom(ref input, _repeated_itemCostList_codec);
             break;
           }
         }

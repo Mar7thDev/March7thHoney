@@ -6,7 +6,7 @@ import "EDJKFOBBDJF.proto";
 import "GOMKGHJBNFM.proto";
 
 message LMMLGKHALLA {
-    repeated GOMKGHJBNFM CEPCGLMFPBC = 6;
-    EDJKFOBBDJF HFPEJIDDDJG = 3;
-    uint32 item_value = 10;
+    uint32 item_value = 6;
+    EDJKFOBBDJF HFPEJIDDDJG = 8;
+    repeated GOMKGHJBNFM CEPCGLMFPBC = 15;
 }

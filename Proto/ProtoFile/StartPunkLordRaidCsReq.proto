@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message StartPunkLordRaidCsReq {
-    uint32 monster_id = 7;
-    bool IDMPMEOCJIK = 15;
-    uint32 uid = 2;
+    uint32 uid = 1;
+    uint32 monster_id = 4;
+    bool IDMPMEOCJIK = 5;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JKPOIHGIFFG.proto";
 
 message ACCMEOICEOD {
-    repeated JKPOIHGIFFG GKJIDBEGBJP = 6;
+    repeated JKPOIHGIFFG GKJIDBEGBJP = 2;
 }

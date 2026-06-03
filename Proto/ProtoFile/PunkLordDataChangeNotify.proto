@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PunkLordDataChangeNotify {
-    uint32 MGBHJPPJHEA = 7;
-    uint32 BPCOIOLGEMK = 15;
-    uint32 GIIIFDGFJPG = 5;
+    uint32 MGBHJPPJHEA = 3;
+    uint32 BPCOIOLGEMK = 8;
+    uint32 GIIIFDGFJPG = 10;
 }

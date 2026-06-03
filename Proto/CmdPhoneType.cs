@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJDbWRQaG9uZVR5cGUucHJvdG8q9QIKDENtZFBob25lVHlwZRIbChdKQURJ",
-            "SU5CTEFMQl9OTENER0lQR0ZEShAAEhwKF0pBRElJTkJMQUxCX0lNSktQT0VE",
-            "RkRIEO8nEhwKF0pBRElJTkJMQUxCX0xCQkZFT0lCSEdLEPknEhwKF0pBRElJ",
-            "TkJMQUxCX0ZNR0FISkhLQUNQEIcoEhwKF0pBRElJTkJMQUxCX0hGQ0dKTUFM",
-            "QUZHELwoEhwKF0pBRElJTkJMQUxCX0hBR0NLTkhLRU9HEPYnEhwKF0pBRElJ",
-            "TkJMQUxCX0xFRk9OTUxCSUdCEMMoEhwKF0pBRElJTkJMQUxCX0lOQkxDSkpH",
-            "TUtKELUoEhwKF0pBRElJTkJMQUxCX0lOT0RLSUNOS0NJEIkoEhwKF0pBRElJ",
-            "TkJMQUxCX0VISkxLTU1IR0ZNEPsnEhwKF0pBRElJTkJMQUxCX0hCSEVDQ09J",
-            "UEJDEJAoEhwKF0pBRElJTkJMQUxCX0dKSEJITENBRlBHEL0oQhaqAhNNYXJj",
+            "SU5CTEFMQl9OTENER0lQR0ZEShAAEhwKF0pBRElJTkJMQUxCX0xCQkZFT0lC",
+            "SEdLEL0oEhwKF0pBRElJTkJMQUxCX0lNSktQT0VERkRIELooEhwKF0pBRElJ",
+            "TkJMQUxCX0lOQkxDSkpHTUtKEIUoEhwKF0pBRElJTkJMQUxCX0xFRk9OTUxC",
+            "SUdCEPknEhwKF0pBRElJTkJMQUxCX0VISkxLTU1IR0ZNEMIoEhwKF0pBRElJ",
+            "TkJMQUxCX0hBR0NLTkhLRU9HEIYoEhwKF0pBRElJTkJMQUxCX0hGQ0dKTUFM",
+            "QUZHEMkoEhwKF0pBRElJTkJMQUxCX0hCSEVDQ09JUEJDEMQoEhwKF0pBRElJ",
+            "TkJMQUxCX0lOT0RLSUNOS0NJELMoEhwKF0pBRElJTkJMQUxCX0dKSEJITENB",
+            "RlBHEJsoEhwKF0pBRElJTkJMQUxCX0ZNR0FISkhLQUNQEKYoQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -44,17 +44,17 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPhoneType {
     [pbr::OriginalName("JADIINBLALB_NLCDGIPGFDJ")] JadiinblalbNlcdgipgfdj = 0,
-    [pbr::OriginalName("JADIINBLALB_IMJKPOEDFDH")] JadiinblalbImjkpoedfdh = 5103,
-    [pbr::OriginalName("JADIINBLALB_LBBFEOIBHGK")] JadiinblalbLbbfeoibhgk = 5113,
-    [pbr::OriginalName("JADIINBLALB_FMGAHJHKACP")] JadiinblalbFmgahjhkacp = 5127,
-    [pbr::OriginalName("JADIINBLALB_HFCGJMALAFG")] JadiinblalbHfcgjmalafg = 5180,
-    [pbr::OriginalName("JADIINBLALB_HAGCKNHKEOG")] JadiinblalbHagcknhkeog = 5110,
-    [pbr::OriginalName("JADIINBLALB_LEFONMLBIGB")] JadiinblalbLefonmlbigb = 5187,
-    [pbr::OriginalName("JADIINBLALB_INBLCJJGMKJ")] JadiinblalbInblcjjgmkj = 5173,
-    [pbr::OriginalName("JADIINBLALB_INODKICNKCI")] JadiinblalbInodkicnkci = 5129,
-    [pbr::OriginalName("JADIINBLALB_EHJLKMMHGFM")] JadiinblalbEhjlkmmhgfm = 5115,
-    [pbr::OriginalName("JADIINBLALB_HBHECCOIPBC")] JadiinblalbHbheccoipbc = 5136,
-    [pbr::OriginalName("JADIINBLALB_GJHBHLCAFPG")] JadiinblalbGjhbhlcafpg = 5181,
+    [pbr::OriginalName("JADIINBLALB_LBBFEOIBHGK")] JadiinblalbLbbfeoibhgk = 5181,
+    [pbr::OriginalName("JADIINBLALB_IMJKPOEDFDH")] JadiinblalbImjkpoedfdh = 5178,
+    [pbr::OriginalName("JADIINBLALB_INBLCJJGMKJ")] JadiinblalbInblcjjgmkj = 5125,
+    [pbr::OriginalName("JADIINBLALB_LEFONMLBIGB")] JadiinblalbLefonmlbigb = 5113,
+    [pbr::OriginalName("JADIINBLALB_EHJLKMMHGFM")] JadiinblalbEhjlkmmhgfm = 5186,
+    [pbr::OriginalName("JADIINBLALB_HAGCKNHKEOG")] JadiinblalbHagcknhkeog = 5126,
+    [pbr::OriginalName("JADIINBLALB_HFCGJMALAFG")] JadiinblalbHfcgjmalafg = 5193,
+    [pbr::OriginalName("JADIINBLALB_HBHECCOIPBC")] JadiinblalbHbheccoipbc = 5188,
+    [pbr::OriginalName("JADIINBLALB_INODKICNKCI")] JadiinblalbInodkicnkci = 5171,
+    [pbr::OriginalName("JADIINBLALB_GJHBHLCAFPG")] JadiinblalbGjhbhlcafpg = 5147,
+    [pbr::OriginalName("JADIINBLALB_FMGAHJHKACP")] JadiinblalbFmgahjhkacp = 5158,
   }
 
   #endregion

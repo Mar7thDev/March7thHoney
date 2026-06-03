@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DEGFFGKMFJJ.proto";
 
 message ClockParkGetInfoScRsp {
-    repeated uint32 HPEKLHNPDAJ = 7;
-    repeated DEGFFGKMFJJ DCGDHFJLHCN = 8;
-    uint32 LNKAKGOCAOF = 13;
-    uint32 progress = 15;
+    repeated DEGFFGKMFJJ DCGDHFJLHCN = 1;
+    uint32 progress = 3;
+    uint32 LNKAKGOCAOF = 4;
+    uint32 CDGICHDIIHH = 6;
+    repeated uint32 HPEKLHNPDAJ = 9;
     uint32 retcode = 14;
-    uint32 CDGICHDIIHH = 12;
 }

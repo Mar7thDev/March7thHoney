@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JoinBenefitActivityCsReq {
-    uint32 JALHKMEOOPN = 15;
+    uint32 JALHKMEOOPN = 2;
 }

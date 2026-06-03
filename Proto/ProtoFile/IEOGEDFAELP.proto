@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JECNOELJLKO.proto";
 
 message IEOGEDFAELP {
-    JECNOELJLKO EHIELLKLPCK = 14;
+    JECNOELJLKO EHIELLKLPCK = 3;
 }

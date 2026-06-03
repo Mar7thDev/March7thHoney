@@ -6,8 +6,8 @@ import "ItemList.proto";
 import "MessageItem.proto";
 
 message FinishPerformSectionIdScRsp {
-    ItemList reward = 14;
-    repeated MessageItem item_list = 12;
-    uint32 section_id = 5;
-    uint32 retcode = 13;
+    ItemList reward = 3;
+    uint32 retcode = 5;
+    uint32 section_id = 9;
+    repeated MessageItem item_list = 11;
 }

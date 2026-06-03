@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChtHZXRBbGxSZWREb3REYXRhU2NSc3AucHJvdG8aEUdGT0FNS05IQkZFLnBy",
             "b3RvIksKFUdldEFsbFJlZERvdERhdGFTY1JzcBIhCgtLR09OT0JFQUdBSRgD",
-            "IAMoCzIMLkdGT0FNS05IQkZFEg8KB3JldGNvZGUYCCABKA1CFqoCE01hcmNo",
+            "IAMoCzIMLkdGT0FNS05IQkZFEg8KB3JldGNvZGUYBSABKA1CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GFOAMKNHBFEReflection.Descriptor, },
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 8;
+    public const int RetcodeFieldNumber = 5;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
     #else
       kGONOBEAGAI_.WriteTo(output, _repeated_kGONOBEAGAI_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -168,7 +168,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       kGONOBEAGAI_.WriteTo(ref output, _repeated_kGONOBEAGAI_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
             kGONOBEAGAI_.AddEntriesFrom(input, _repeated_kGONOBEAGAI_codec);
             break;
           }
-          case 64: {
+          case 40: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -251,7 +251,7 @@ namespace March7thHoney.Proto {
             kGONOBEAGAI_.AddEntriesFrom(ref input, _repeated_kGONOBEAGAI_codec);
             break;
           }
-          case 64: {
+          case 40: {
             Retcode = input.ReadUInt32();
             break;
           }

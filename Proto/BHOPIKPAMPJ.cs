@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCSE9QSUtQQU1QSi5wcm90bxoVQXJlYUR5bmFtaWNJbmZvLnByb3RvIkUK",
-            "C0JIT1BJS1BBTVBKEiUKC09PRlBQUENFSURQGAwgASgLMhAuQXJlYUR5bmFt",
-            "aWNJbmZvEg8KB2FyZWFfaWQYCCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "C0JIT1BJS1BBTVBKEg8KB2FyZWFfaWQYByABKA0SJQoLT09GUFBQQ0VJRFAY",
+            "CiABKAsyEC5BcmVhRHluYW1pY0luZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AreaDynamicInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BHOPIKPAMPJ), global::March7thHoney.Proto.BHOPIKPAMPJ.Parser, new[]{ "OOFPPPCEIDP", "AreaId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BHOPIKPAMPJ), global::March7thHoney.Proto.BHOPIKPAMPJ.Parser, new[]{ "AreaId", "OOFPPPCEIDP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BHOPIKPAMPJ(BHOPIKPAMPJ other) : this() {
-      oOFPPPCEIDP_ = other.oOFPPPCEIDP_ != null ? other.oOFPPPCEIDP_.Clone() : null;
       areaId_ = other.areaId_;
+      oOFPPPCEIDP_ = other.oOFPPPCEIDP_ != null ? other.oOFPPPCEIDP_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new BHOPIKPAMPJ(this);
     }
 
-    /// <summary>Field number for the "OOFPPPCEIDP" field.</summary>
-    public const int OOFPPPCEIDPFieldNumber = 12;
-    private global::March7thHoney.Proto.AreaDynamicInfo oOFPPPCEIDP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.AreaDynamicInfo OOFPPPCEIDP {
-      get { return oOFPPPCEIDP_; }
-      set {
-        oOFPPPCEIDP_ = value;
-      }
-    }
-
     /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 8;
+    public const int AreaIdFieldNumber = 7;
     private uint areaId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return areaId_; }
       set {
         areaId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "OOFPPPCEIDP" field.</summary>
+    public const int OOFPPPCEIDPFieldNumber = 10;
+    private global::March7thHoney.Proto.AreaDynamicInfo oOFPPPCEIDP_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.AreaDynamicInfo OOFPPPCEIDP {
+      get { return oOFPPPCEIDP_; }
+      set {
+        oOFPPPCEIDP_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(OOFPPPCEIDP, other.OOFPPPCEIDP)) return false;
       if (AreaId != other.AreaId) return false;
+      if (!object.Equals(OOFPPPCEIDP, other.OOFPPPCEIDP)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (oOFPPPCEIDP_ != null) hash ^= OOFPPPCEIDP.GetHashCode();
       if (AreaId != 0) hash ^= AreaId.GetHashCode();
+      if (oOFPPPCEIDP_ != null) hash ^= OOFPPPCEIDP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (AreaId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(56);
         output.WriteUInt32(AreaId);
       }
       if (oOFPPPCEIDP_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(82);
         output.WriteMessage(OOFPPPCEIDP);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (AreaId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(56);
         output.WriteUInt32(AreaId);
       }
       if (oOFPPPCEIDP_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(82);
         output.WriteMessage(OOFPPPCEIDP);
       }
       if (_unknownFields != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (oOFPPPCEIDP_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OOFPPPCEIDP);
-      }
       if (AreaId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AreaId);
+      }
+      if (oOFPPPCEIDP_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OOFPPPCEIDP);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.AreaId != 0) {
+        AreaId = other.AreaId;
+      }
       if (other.oOFPPPCEIDP_ != null) {
         if (oOFPPPCEIDP_ == null) {
           OOFPPPCEIDP = new global::March7thHoney.Proto.AreaDynamicInfo();
         }
         OOFPPPCEIDP.MergeFrom(other.OOFPPPCEIDP);
-      }
-      if (other.AreaId != 0) {
-        AreaId = other.AreaId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
+          case 56: {
             AreaId = input.ReadUInt32();
             break;
           }
-          case 98: {
+          case 82: {
             if (oOFPPPCEIDP_ == null) {
               OOFPPPCEIDP = new global::March7thHoney.Proto.AreaDynamicInfo();
             }
@@ -264,11 +264,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
+          case 56: {
             AreaId = input.ReadUInt32();
             break;
           }
-          case 98: {
+          case 82: {
             if (oOFPPPCEIDP_ == null) {
               OOFPPPCEIDP = new global::March7thHoney.Proto.AreaDynamicInfo();
             }

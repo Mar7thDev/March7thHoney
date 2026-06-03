@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NHDGNBKBNDB.proto";
 
 message PNCNGIAMLCA {
-    repeated uint32 AJFJLCKPNAM = 9;
-    repeated NHDGNBKBNDB BCGOAIPKGIK = 8;
     uint32 IPINHNFCIOE = 3;
+    repeated uint32 AJFJLCKPNAM = 12;
+    repeated NHDGNBKBNDB BCGOAIPKGIK = 15;
 }

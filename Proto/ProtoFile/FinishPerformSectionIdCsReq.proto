@@ -6,5 +6,5 @@ import "MessageItem.proto";
 
 message FinishPerformSectionIdCsReq {
     repeated MessageItem item_list = 12;
-    uint32 section_id = 6;
+    uint32 section_id = 13;
 }

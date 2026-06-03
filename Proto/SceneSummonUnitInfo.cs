@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlTY2VuZVN1bW1vblVuaXRJbmZvLnByb3RvIqoBChNTY2VuZVN1bW1vblVu",
-            "aXRJbmZvEhkKEXRyaWdnZXJfbmFtZV9saXN0GA4gAygJEhgKEGNhc3Rlcl9l",
-            "bnRpdHlfaWQYAyABKA0SGAoQYXR0YWNoX2VudGl0eV9pZBgJIAEoDRIWCg5j",
-            "cmVhdGVfdGltZV9tcxgIIAEoBBIUCgxsaWZlX3RpbWVfbXMYBiABKAUSFgoO",
-            "c3VtbW9uX3VuaXRfaWQYAiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "aXRJbmZvEhgKEGNhc3Rlcl9lbnRpdHlfaWQYASABKA0SGQoRdHJpZ2dlcl9u",
+            "YW1lX2xpc3QYBCADKAkSGAoQYXR0YWNoX2VudGl0eV9pZBgGIAEoDRIUCgxs",
+            "aWZlX3RpbWVfbXMYByABKAUSFgoOY3JlYXRlX3RpbWVfbXMYCyABKAQSFgoO",
+            "c3VtbW9uX3VuaXRfaWQYDSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneSummonUnitInfo), global::March7thHoney.Proto.SceneSummonUnitInfo.Parser, new[]{ "TriggerNameList", "CasterEntityId", "AttachEntityId", "CreateTimeMs", "LifeTimeMs", "SummonUnitId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneSummonUnitInfo), global::March7thHoney.Proto.SceneSummonUnitInfo.Parser, new[]{ "CasterEntityId", "TriggerNameList", "AttachEntityId", "LifeTimeMs", "CreateTimeMs", "SummonUnitId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneSummonUnitInfo(SceneSummonUnitInfo other) : this() {
-      triggerNameList_ = other.triggerNameList_.Clone();
       casterEntityId_ = other.casterEntityId_;
+      triggerNameList_ = other.triggerNameList_.Clone();
       attachEntityId_ = other.attachEntityId_;
-      createTimeMs_ = other.createTimeMs_;
       lifeTimeMs_ = other.lifeTimeMs_;
+      createTimeMs_ = other.createTimeMs_;
       summonUnitId_ = other.summonUnitId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -90,19 +90,8 @@ namespace March7thHoney.Proto {
       return new SceneSummonUnitInfo(this);
     }
 
-    /// <summary>Field number for the "trigger_name_list" field.</summary>
-    public const int TriggerNameListFieldNumber = 14;
-    private static readonly pb::FieldCodec<string> _repeated_triggerNameList_codec
-        = pb::FieldCodec.ForString(114);
-    private readonly pbc::RepeatedField<string> triggerNameList_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> TriggerNameList {
-      get { return triggerNameList_; }
-    }
-
     /// <summary>Field number for the "caster_entity_id" field.</summary>
-    public const int CasterEntityIdFieldNumber = 3;
+    public const int CasterEntityIdFieldNumber = 1;
     private uint casterEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -113,8 +102,19 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "trigger_name_list" field.</summary>
+    public const int TriggerNameListFieldNumber = 4;
+    private static readonly pb::FieldCodec<string> _repeated_triggerNameList_codec
+        = pb::FieldCodec.ForString(34);
+    private readonly pbc::RepeatedField<string> triggerNameList_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> TriggerNameList {
+      get { return triggerNameList_; }
+    }
+
     /// <summary>Field number for the "attach_entity_id" field.</summary>
-    public const int AttachEntityIdFieldNumber = 9;
+    public const int AttachEntityIdFieldNumber = 6;
     private uint attachEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -125,20 +125,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "create_time_ms" field.</summary>
-    public const int CreateTimeMsFieldNumber = 8;
-    private ulong createTimeMs_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong CreateTimeMs {
-      get { return createTimeMs_; }
-      set {
-        createTimeMs_ = value;
-      }
-    }
-
     /// <summary>Field number for the "life_time_ms" field.</summary>
-    public const int LifeTimeMsFieldNumber = 6;
+    public const int LifeTimeMsFieldNumber = 7;
     private int lifeTimeMs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,8 +137,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "create_time_ms" field.</summary>
+    public const int CreateTimeMsFieldNumber = 11;
+    private ulong createTimeMs_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong CreateTimeMs {
+      get { return createTimeMs_; }
+      set {
+        createTimeMs_ = value;
+      }
+    }
+
     /// <summary>Field number for the "summon_unit_id" field.</summary>
-    public const int SummonUnitIdFieldNumber = 2;
+    public const int SummonUnitIdFieldNumber = 13;
     private uint summonUnitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -176,11 +176,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!triggerNameList_.Equals(other.triggerNameList_)) return false;
       if (CasterEntityId != other.CasterEntityId) return false;
+      if(!triggerNameList_.Equals(other.triggerNameList_)) return false;
       if (AttachEntityId != other.AttachEntityId) return false;
-      if (CreateTimeMs != other.CreateTimeMs) return false;
       if (LifeTimeMs != other.LifeTimeMs) return false;
+      if (CreateTimeMs != other.CreateTimeMs) return false;
       if (SummonUnitId != other.SummonUnitId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -189,11 +189,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= triggerNameList_.GetHashCode();
       if (CasterEntityId != 0) hash ^= CasterEntityId.GetHashCode();
+      hash ^= triggerNameList_.GetHashCode();
       if (AttachEntityId != 0) hash ^= AttachEntityId.GetHashCode();
-      if (CreateTimeMs != 0UL) hash ^= CreateTimeMs.GetHashCode();
       if (LifeTimeMs != 0) hash ^= LifeTimeMs.GetHashCode();
+      if (CreateTimeMs != 0UL) hash ^= CreateTimeMs.GetHashCode();
       if (SummonUnitId != 0) hash ^= SummonUnitId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -213,27 +213,27 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SummonUnitId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(SummonUnitId);
-      }
       if (CasterEntityId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(CasterEntityId);
       }
-      if (LifeTimeMs != 0) {
+      triggerNameList_.WriteTo(output, _repeated_triggerNameList_codec);
+      if (AttachEntityId != 0) {
         output.WriteRawTag(48);
+        output.WriteUInt32(AttachEntityId);
+      }
+      if (LifeTimeMs != 0) {
+        output.WriteRawTag(56);
         output.WriteInt32(LifeTimeMs);
       }
       if (CreateTimeMs != 0UL) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt64(CreateTimeMs);
       }
-      if (AttachEntityId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(AttachEntityId);
+      if (SummonUnitId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(SummonUnitId);
       }
-      triggerNameList_.WriteTo(output, _repeated_triggerNameList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -244,27 +244,27 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SummonUnitId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(SummonUnitId);
-      }
       if (CasterEntityId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(CasterEntityId);
       }
-      if (LifeTimeMs != 0) {
+      triggerNameList_.WriteTo(ref output, _repeated_triggerNameList_codec);
+      if (AttachEntityId != 0) {
         output.WriteRawTag(48);
+        output.WriteUInt32(AttachEntityId);
+      }
+      if (LifeTimeMs != 0) {
+        output.WriteRawTag(56);
         output.WriteInt32(LifeTimeMs);
       }
       if (CreateTimeMs != 0UL) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt64(CreateTimeMs);
       }
-      if (AttachEntityId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(AttachEntityId);
+      if (SummonUnitId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(SummonUnitId);
       }
-      triggerNameList_.WriteTo(ref output, _repeated_triggerNameList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -275,18 +275,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += triggerNameList_.CalculateSize(_repeated_triggerNameList_codec);
       if (CasterEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CasterEntityId);
       }
+      size += triggerNameList_.CalculateSize(_repeated_triggerNameList_codec);
       if (AttachEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AttachEntityId);
       }
-      if (CreateTimeMs != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreateTimeMs);
-      }
       if (LifeTimeMs != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(LifeTimeMs);
+      }
+      if (CreateTimeMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreateTimeMs);
       }
       if (SummonUnitId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SummonUnitId);
@@ -303,18 +303,18 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      triggerNameList_.Add(other.triggerNameList_);
       if (other.CasterEntityId != 0) {
         CasterEntityId = other.CasterEntityId;
       }
+      triggerNameList_.Add(other.triggerNameList_);
       if (other.AttachEntityId != 0) {
         AttachEntityId = other.AttachEntityId;
       }
-      if (other.CreateTimeMs != 0UL) {
-        CreateTimeMs = other.CreateTimeMs;
-      }
       if (other.LifeTimeMs != 0) {
         LifeTimeMs = other.LifeTimeMs;
+      }
+      if (other.CreateTimeMs != 0UL) {
+        CreateTimeMs = other.CreateTimeMs;
       }
       if (other.SummonUnitId != 0) {
         SummonUnitId = other.SummonUnitId;
@@ -338,28 +338,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            SummonUnitId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
+          case 8: {
             CasterEntityId = input.ReadUInt32();
             break;
           }
+          case 34: {
+            triggerNameList_.AddEntriesFrom(input, _repeated_triggerNameList_codec);
+            break;
+          }
           case 48: {
-            LifeTimeMs = input.ReadInt32();
-            break;
-          }
-          case 64: {
-            CreateTimeMs = input.ReadUInt64();
-            break;
-          }
-          case 72: {
             AttachEntityId = input.ReadUInt32();
             break;
           }
-          case 114: {
-            triggerNameList_.AddEntriesFrom(input, _repeated_triggerNameList_codec);
+          case 56: {
+            LifeTimeMs = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            CreateTimeMs = input.ReadUInt64();
+            break;
+          }
+          case 104: {
+            SummonUnitId = input.ReadUInt32();
             break;
           }
         }
@@ -381,28 +381,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            SummonUnitId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
+          case 8: {
             CasterEntityId = input.ReadUInt32();
             break;
           }
+          case 34: {
+            triggerNameList_.AddEntriesFrom(ref input, _repeated_triggerNameList_codec);
+            break;
+          }
           case 48: {
-            LifeTimeMs = input.ReadInt32();
-            break;
-          }
-          case 64: {
-            CreateTimeMs = input.ReadUInt64();
-            break;
-          }
-          case 72: {
             AttachEntityId = input.ReadUInt32();
             break;
           }
-          case 114: {
-            triggerNameList_.AddEntriesFrom(ref input, _repeated_triggerNameList_codec);
+          case 56: {
+            LifeTimeMs = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            CreateTimeMs = input.ReadUInt64();
+            break;
+          }
+          case 104: {
+            SummonUnitId = input.ReadUInt32();
             break;
           }
         }

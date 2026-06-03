@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SwordTrainingDialogueSelectOptionCsReq {
-    uint32 HAFOKMHCGFM = 2;
+    uint32 HAFOKMHCGFM = 12;
 }

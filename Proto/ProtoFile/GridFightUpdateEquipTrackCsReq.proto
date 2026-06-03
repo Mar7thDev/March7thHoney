@@ -6,6 +6,6 @@ import "GridFightEquipTrackSource.proto";
 import "HLHHLIGPNOM.proto";
 
 message GridFightUpdateEquipTrackCsReq {
-    repeated HLHHLIGPNOM DKEIDONNDCJ = 15;
+    repeated HLHHLIGPNOM DKEIDONNDCJ = 9;
     GridFightEquipTrackSource source = 14;
 }

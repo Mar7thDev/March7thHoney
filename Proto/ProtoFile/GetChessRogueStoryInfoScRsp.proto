@@ -6,7 +6,7 @@ import "CHHBLFHDFEK.proto";
 import "EPHFHKDJKMD.proto";
 
 message GetChessRogueStoryInfoScRsp {
-    repeated CHHBLFHDFEK FNKLMMACCMJ = 4;
-    repeated EPHFHKDJKMD POABJDELNGH = 12;
-    uint32 retcode = 8;
+    repeated CHHBLFHDFEK FNKLMMACCMJ = 1;
+    repeated EPHFHKDJKMD POABJDELNGH = 5;
+    uint32 retcode = 7;
 }

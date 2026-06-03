@@ -7,7 +7,7 @@ public class PacketUnlockSkilltreeScRsp : BasePacket
 {
     public PacketUnlockSkilltreeScRsp(Retcode retCode) : base(CmdIds.UnlockSkilltreeScRsp)
     {
-        var proto = new UnlockSkilltreeScRsp
+        var proto = new UnlockSkillTreeScRsp
         {
             Retcode = (uint)retCode
         };
@@ -17,7 +17,7 @@ public class PacketUnlockSkilltreeScRsp : BasePacket
 
     public PacketUnlockSkilltreeScRsp(uint pointId, uint level) : base(CmdIds.UnlockSkilltreeScRsp)
     {
-        var proto = new UnlockSkilltreeScRsp
+        var proto = new UnlockSkillTreeScRsp
         {
             PointId = pointId,
             Level = level

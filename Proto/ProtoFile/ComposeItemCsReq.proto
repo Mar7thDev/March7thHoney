@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message ComposeItemCsReq {
-    ItemCostData convert_item_list = 8;
-    ItemCostData compose_item_list = 11;
-    uint32 compose_id = 7;
-    uint32 count = 2;
+    ItemCostData compose_item_list = 3;
+    ItemCostData convert_item_list = 13;
+    uint32 count = 14;
+    uint32 compose_id = 15;
 }

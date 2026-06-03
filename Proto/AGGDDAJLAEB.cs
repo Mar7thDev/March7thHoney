@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFBR0dEREFKTEFFQi5wcm90byI3CgtBR0dEREFKTEFFQhITCgtJTkxIUEpN",
-            "T09NTxgDIAEoDRITCgtJRE9ORkZPQUNJTBgHIAEoAUIWqgITTWFyY2g3dGhI",
+            "T09NTxgKIAEoDRITCgtJRE9ORkZPQUNJTBgMIAEoAUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "INLHPJMOOMO" field.</summary>
-    public const int INLHPJMOOMOFieldNumber = 3;
+    public const int INLHPJMOOMOFieldNumber = 10;
     private uint iNLHPJMOOMO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IDONFFOACIL" field.</summary>
-    public const int IDONFFOACILFieldNumber = 7;
+    public const int IDONFFOACILFieldNumber = 12;
     private double iDONFFOACIL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (INLHPJMOOMO != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(80);
         output.WriteUInt32(INLHPJMOOMO);
       }
       if (IDONFFOACIL != 0D) {
-        output.WriteRawTag(57);
+        output.WriteRawTag(97);
         output.WriteDouble(IDONFFOACIL);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (INLHPJMOOMO != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(80);
         output.WriteUInt32(INLHPJMOOMO);
       }
       if (IDONFFOACIL != 0D) {
-        output.WriteRawTag(57);
+        output.WriteRawTag(97);
         output.WriteDouble(IDONFFOACIL);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 80: {
             INLHPJMOOMO = input.ReadUInt32();
             break;
           }
-          case 57: {
+          case 97: {
             IDONFFOACIL = input.ReadDouble();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 80: {
             INLHPJMOOMO = input.ReadUInt32();
             break;
           }
-          case 57: {
+          case 97: {
             IDONFFOACIL = input.ReadDouble();
             break;
           }

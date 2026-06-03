@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpEcmVzc0F2YXRhclNraW5Dc1JlcS5wcm90byI6ChREcmVzc0F2YXRhclNr",
-            "aW5Dc1JlcRIRCglhdmF0YXJfaWQYDiABKA0SDwoHc2tpbl9pZBgMIAEoDUIW",
+            "aW5Dc1JlcRIRCglhdmF0YXJfaWQYASABKA0SDwoHc2tpbl9pZBgCIAEoDUIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 14;
+    public const int AvatarIdFieldNumber = 1;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "skin_id" field.</summary>
-    public const int SkinIdFieldNumber = 12;
+    public const int SkinIdFieldNumber = 2;
     private uint skinId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SkinId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(SkinId);
-      }
       if (AvatarId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteUInt32(AvatarId);
+      }
+      if (SkinId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(SkinId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SkinId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(SkinId);
-      }
       if (AvatarId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteUInt32(AvatarId);
+      }
+      if (SkinId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(SkinId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
-            SkinId = input.ReadUInt32();
+          case 8: {
+            AvatarId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            AvatarId = input.ReadUInt32();
+          case 16: {
+            SkinId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
-            SkinId = input.ReadUInt32();
+          case 8: {
+            AvatarId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            AvatarId = input.ReadUInt32();
+          case 16: {
+            SkinId = input.ReadUInt32();
             break;
           }
         }

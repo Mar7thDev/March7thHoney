@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ICKLANINJDB {
-    bytes LNBKFFIDEEJ = 2;
+    uint32 OMFPICKPOCP = 3;
+    bytes LNBKFFIDEEJ = 9;
     uint32 retcode = 11;
-    uint32 OMFPICKPOCP = 13;
 }

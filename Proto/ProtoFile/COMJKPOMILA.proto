@@ -3,6 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message COMJKPOMILA {
+    uint32 server_tick = 3;
     bytes LNBKFFIDEEJ = 6;
-    uint32 OMFPICKPOCP = 8;
+    uint64 server_time_ms = 10;
+    uint32 OMFPICKPOCP = 12;
 }

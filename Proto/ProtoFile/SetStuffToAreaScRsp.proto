@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GBAEPOLFFMG.proto";
 
 message SetStuffToAreaScRsp {
-    uint32 CEAMLKCMMGD = 15;
-    uint32 retcode = 3;
-    GBAEPOLFFMG pos_index = 8;
-    uint32 PIKEPJNDJPE = 4;
+    uint32 PIKEPJNDJPE = 5;
+    uint32 retcode = 8;
+    uint32 CEAMLKCMMGD = 12;
+    GBAEPOLFFMG pos = 13;
 }

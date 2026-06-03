@@ -6,8 +6,8 @@ import "SceneEntityInfo.proto";
 
 message SceneEntityRefreshInfo {
     oneof refresh_type {
-        SceneEntityInfo add_entity = 13;
-        uint32 delete_entity = 11;
+        SceneEntityInfo add_entity = 6;
+        uint32 delete_entity = 5;
         uint32 BEEANADAHPL = 14;
     }
 }

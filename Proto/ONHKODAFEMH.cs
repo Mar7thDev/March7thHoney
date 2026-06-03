@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPTkhLT0RBRkVNSC5wcm90bxoYTWlzc2lvbkN1c3RvbVZhbHVlLnByb3Rv",
-            "Ij0KC09OSEtPREFGRU1IEi4KEWN1c3RvbV92YWx1ZV9saXN0GAcgAygLMhMu",
+            "Ij0KC09OSEtPREFGRU1IEi4KEWN1c3RvbV92YWx1ZV9saXN0GAggAygLMhMu",
             "TWlzc2lvbkN1c3RvbVZhbHVlQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "custom_value_list" field.</summary>
-    public const int CustomValueListFieldNumber = 7;
+    public const int CustomValueListFieldNumber = 8;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MissionCustomValue> _repeated_customValueList_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.MissionCustomValue.Parser);
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.MissionCustomValue.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue> customValueList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValue>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 66: {
             customValueList_.AddEntriesFrom(input, _repeated_customValueList_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 66: {
             customValueList_.AddEntriesFrom(ref input, _repeated_customValueList_codec);
             break;
           }

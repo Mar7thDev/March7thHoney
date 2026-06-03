@@ -8,9 +8,9 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message StartChallengeScRsp {
-    ChallengeStageInfo stage_info = 6;
-    SceneInfo scene = 2;
-    repeated LineupInfo lineup_list = 13;
+    repeated LineupInfo lineup_list = 2;
+    uint32 retcode = 3;
     CurChallenge cur_challenge = 10;
-    uint32 retcode = 15;
+    ChallengeStageInfo stage_info = 11;
+    SceneInfo scene = 14;
 }

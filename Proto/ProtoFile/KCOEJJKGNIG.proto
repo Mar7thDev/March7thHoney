@@ -6,7 +6,7 @@ import "ABOFJEIMLLJ.proto";
 import "ALBLEFHHJIC.proto";
 
 message KCOEJJKGNIG {
-    repeated ABOFJEIMLLJ buff_list = 7;
-    repeated ALBLEFHHJIC avatar_list = 11;
-    repeated uint32 MAJGMMCOCIG = 5;
+    repeated uint32 MAJGMMCOCIG = 1;
+    repeated ALBLEFHHJIC avatar_list = 13;
+    repeated ABOFJEIMLLJ buff_list = 14;
 }

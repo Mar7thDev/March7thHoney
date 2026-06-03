@@ -7,10 +7,10 @@ import "EBPBMFBFEJA.proto";
 import "LCEDDGELBMJ.proto";
 
 message ChimeraDuelEndRoundBattleStageScRsp {
-    uint32 retcode = 2;
-    DIIKFKNEHHG NONPIMDDJNN = 8;
+    uint32 retcode = 7;
+    DIIKFKNEHHG NONPIMDDJNN = 12;
     oneof KKNBOACNCON {
-        LCEDDGELBMJ CFDIKLBINHK = 1613;
-        EBPBMFBFEJA CECFDNCDBEI = 873;
+        LCEDDGELBMJ CFDIKLBINHK = 1274;
+        EBPBMFBFEJA CECFDNCDBEI = 1115;
     }
 }

@@ -6,6 +6,6 @@ import "MotionInfo.proto";
 import "RotateMapInfo.proto";
 
 message ResetMapRotationRegionCsReq {
-    RotateMapInfo COOOMDKGODF = 2;
-    MotionInfo motion = 12;
+    RotateMapInfo COOOMDKGODF = 6;
+    MotionInfo motion = 8;
 }

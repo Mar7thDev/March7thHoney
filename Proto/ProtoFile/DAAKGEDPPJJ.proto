@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DAAKGEDPPJJ {
-    uint32 func_id = 5;
-    bool KKKIONIDKFA = 8;
+    bool is_valid = 1;
+    uint32 func_id = 14;
 }

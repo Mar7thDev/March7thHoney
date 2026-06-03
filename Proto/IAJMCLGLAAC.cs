@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFJQUpNQ0xHTEFBQy5wcm90bxoRRkhIR0JNSUVCT0UucHJvdG8ieQoLSUFK",
-            "TUNMR0xBQUMSKwoVZnJpZW5kX3JlY29tbWVuZF9saXN0GAQgAygLMgwuRkhI",
-            "R0JNSUVCT0USEwoLRFBIQUpQRUFEQUYYCSABKA0SEwoLUEhPS0dLRkJISkYY",
-            "ASABKA0SEwoLUEhITUtITlBKSksYBiABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "TUNMR0xBQUMSEwoLUEhPS0dLRkJISkYYASABKA0SEwoLUEhITUtITlBKSksY",
+            "AiABKA0SKwoVZnJpZW5kX3JlY29tbWVuZF9saXN0GAggAygLMgwuRkhIR0JN",
+            "SUVCT0USEwoLRFBIQUpQRUFEQUYYCiABKA1CFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FHHGBMIEBOEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IAJMCLGLAAC), global::March7thHoney.Proto.IAJMCLGLAAC.Parser, new[]{ "FriendRecommendList", "DPHAJPEADAF", "PHOKGKFBHJF", "PHHMKHNPJJK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IAJMCLGLAAC), global::March7thHoney.Proto.IAJMCLGLAAC.Parser, new[]{ "PHOKGKFBHJF", "PHHMKHNPJJK", "FriendRecommendList", "DPHAJPEADAF" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IAJMCLGLAAC(IAJMCLGLAAC other) : this() {
-      friendRecommendList_ = other.friendRecommendList_.Clone();
-      dPHAJPEADAF_ = other.dPHAJPEADAF_;
       pHOKGKFBHJF_ = other.pHOKGKFBHJF_;
       pHHMKHNPJJK_ = other.pHHMKHNPJJK_;
+      friendRecommendList_ = other.friendRecommendList_.Clone();
+      dPHAJPEADAF_ = other.dPHAJPEADAF_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,29 +85,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IAJMCLGLAAC Clone() {
       return new IAJMCLGLAAC(this);
-    }
-
-    /// <summary>Field number for the "friend_recommend_list" field.</summary>
-    public const int FriendRecommendListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FHHGBMIEBOE> _repeated_friendRecommendList_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.FHHGBMIEBOE.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FHHGBMIEBOE> friendRecommendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FHHGBMIEBOE>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.FHHGBMIEBOE> FriendRecommendList {
-      get { return friendRecommendList_; }
-    }
-
-    /// <summary>Field number for the "DPHAJPEADAF" field.</summary>
-    public const int DPHAJPEADAFFieldNumber = 9;
-    private uint dPHAJPEADAF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DPHAJPEADAF {
-      get { return dPHAJPEADAF_; }
-      set {
-        dPHAJPEADAF_ = value;
-      }
     }
 
     /// <summary>Field number for the "PHOKGKFBHJF" field.</summary>
@@ -123,7 +100,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PHHMKHNPJJK" field.</summary>
-    public const int PHHMKHNPJJKFieldNumber = 6;
+    public const int PHHMKHNPJJKFieldNumber = 2;
     private uint pHHMKHNPJJK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +108,29 @@ namespace March7thHoney.Proto {
       get { return pHHMKHNPJJK_; }
       set {
         pHHMKHNPJJK_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "friend_recommend_list" field.</summary>
+    public const int FriendRecommendListFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FHHGBMIEBOE> _repeated_friendRecommendList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.FHHGBMIEBOE.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FHHGBMIEBOE> friendRecommendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FHHGBMIEBOE>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.FHHGBMIEBOE> FriendRecommendList {
+      get { return friendRecommendList_; }
+    }
+
+    /// <summary>Field number for the "DPHAJPEADAF" field.</summary>
+    public const int DPHAJPEADAFFieldNumber = 10;
+    private uint dPHAJPEADAF_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DPHAJPEADAF {
+      get { return dPHAJPEADAF_; }
+      set {
+        dPHAJPEADAF_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!friendRecommendList_.Equals(other.friendRecommendList_)) return false;
-      if (DPHAJPEADAF != other.DPHAJPEADAF) return false;
       if (PHOKGKFBHJF != other.PHOKGKFBHJF) return false;
       if (PHHMKHNPJJK != other.PHHMKHNPJJK) return false;
+      if(!friendRecommendList_.Equals(other.friendRecommendList_)) return false;
+      if (DPHAJPEADAF != other.DPHAJPEADAF) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= friendRecommendList_.GetHashCode();
-      if (DPHAJPEADAF != 0) hash ^= DPHAJPEADAF.GetHashCode();
       if (PHOKGKFBHJF != 0) hash ^= PHOKGKFBHJF.GetHashCode();
       if (PHHMKHNPJJK != 0) hash ^= PHHMKHNPJJK.GetHashCode();
+      hash ^= friendRecommendList_.GetHashCode();
+      if (DPHAJPEADAF != 0) hash ^= DPHAJPEADAF.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -186,13 +186,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(PHOKGKFBHJF);
       }
-      friendRecommendList_.WriteTo(output, _repeated_friendRecommendList_codec);
       if (PHHMKHNPJJK != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(16);
         output.WriteUInt32(PHHMKHNPJJK);
       }
+      friendRecommendList_.WriteTo(output, _repeated_friendRecommendList_codec);
       if (DPHAJPEADAF != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(DPHAJPEADAF);
       }
       if (_unknownFields != null) {
@@ -209,13 +209,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(PHOKGKFBHJF);
       }
-      friendRecommendList_.WriteTo(ref output, _repeated_friendRecommendList_codec);
       if (PHHMKHNPJJK != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(16);
         output.WriteUInt32(PHHMKHNPJJK);
       }
+      friendRecommendList_.WriteTo(ref output, _repeated_friendRecommendList_codec);
       if (DPHAJPEADAF != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(DPHAJPEADAF);
       }
       if (_unknownFields != null) {
@@ -228,15 +228,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += friendRecommendList_.CalculateSize(_repeated_friendRecommendList_codec);
-      if (DPHAJPEADAF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DPHAJPEADAF);
-      }
       if (PHOKGKFBHJF != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PHOKGKFBHJF);
       }
       if (PHHMKHNPJJK != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PHHMKHNPJJK);
+      }
+      size += friendRecommendList_.CalculateSize(_repeated_friendRecommendList_codec);
+      if (DPHAJPEADAF != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DPHAJPEADAF);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -250,15 +250,15 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      friendRecommendList_.Add(other.friendRecommendList_);
-      if (other.DPHAJPEADAF != 0) {
-        DPHAJPEADAF = other.DPHAJPEADAF;
-      }
       if (other.PHOKGKFBHJF != 0) {
         PHOKGKFBHJF = other.PHOKGKFBHJF;
       }
       if (other.PHHMKHNPJJK != 0) {
         PHHMKHNPJJK = other.PHHMKHNPJJK;
+      }
+      friendRecommendList_.Add(other.friendRecommendList_);
+      if (other.DPHAJPEADAF != 0) {
+        DPHAJPEADAF = other.DPHAJPEADAF;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -283,15 +283,15 @@ namespace March7thHoney.Proto {
             PHOKGKFBHJF = input.ReadUInt32();
             break;
           }
-          case 34: {
-            friendRecommendList_.AddEntriesFrom(input, _repeated_friendRecommendList_codec);
-            break;
-          }
-          case 48: {
+          case 16: {
             PHHMKHNPJJK = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 66: {
+            friendRecommendList_.AddEntriesFrom(input, _repeated_friendRecommendList_codec);
+            break;
+          }
+          case 80: {
             DPHAJPEADAF = input.ReadUInt32();
             break;
           }
@@ -318,15 +318,15 @@ namespace March7thHoney.Proto {
             PHOKGKFBHJF = input.ReadUInt32();
             break;
           }
-          case 34: {
-            friendRecommendList_.AddEntriesFrom(ref input, _repeated_friendRecommendList_codec);
-            break;
-          }
-          case 48: {
+          case 16: {
             PHHMKHNPJJK = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 66: {
+            friendRecommendList_.AddEntriesFrom(ref input, _repeated_friendRecommendList_codec);
+            break;
+          }
+          case 80: {
             DPHAJPEADAF = input.ReadUInt32();
             break;
           }

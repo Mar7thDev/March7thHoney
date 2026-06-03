@@ -7,10 +7,10 @@ import "JAMINGBJHBK.proto";
 import "PFKHKAMBHBN.proto";
 
 message KDHAIFIOKDN {
-    repeated GPEPGKCPBPB NNFFPJOLDHK = 6;
-    JAMINGBJHBK reason = 13;
-    PFKHKAMBHBN status = 11;
-    uint32 JDPHADIIAPE = 12;
-    uint32 BJHMFOAGMBF = 10;
-    uint32 JJLEDNENPJK = 14;
+    uint32 JDPHADIIAPE = 2;
+    uint32 JJLEDNENPJK = 3;
+    PFKHKAMBHBN status = 6;
+    JAMINGBJHBK reason = 9;
+    repeated GPEPGKCPBPB NNFFPJOLDHK = 13;
+    uint32 BJHMFOAGMBF = 15;
 }

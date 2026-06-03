@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiNDaGltZXJhRHVlbFN5bmNDaGFuZ2VTY05vdGlmeS5wcm90bxoRTEdFREtO",
             "TEJDQU4ucHJvdG8iQgodQ2hpbWVyYUR1ZWxTeW5jQ2hhbmdlU2NOb3RpZnkS",
-            "IQoLREdOR01KTVBGR0sYBiADKAsyDC5MR0VES05MQkNBTkIWqgITTWFyY2g3",
+            "IQoLREdOR01KTVBGR0sYDyADKAsyDC5MR0VES05MQkNBTkIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LGEDKNLBCANReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DGNGMJMPFGK" field.</summary>
-    public const int DGNGMJMPFGKFieldNumber = 6;
+    public const int DGNGMJMPFGKFieldNumber = 15;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.LGEDKNLBCAN> _repeated_dGNGMJMPFGK_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.LGEDKNLBCAN.Parser);
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.LGEDKNLBCAN.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.LGEDKNLBCAN> dGNGMJMPFGK_ = new pbc::RepeatedField<global::March7thHoney.Proto.LGEDKNLBCAN>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 122: {
             dGNGMJMPFGK_.AddEntriesFrom(input, _repeated_dGNGMJMPFGK_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 122: {
             dGNGMJMPFGK_.AddEntriesFrom(ref input, _repeated_dGNGMJMPFGK_codec);
             break;
           }

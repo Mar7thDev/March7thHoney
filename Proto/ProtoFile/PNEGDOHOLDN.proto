@@ -5,14 +5,16 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ECOAKLBOLDA.proto";
 import "FightGameMode.proto";
 import "JCNLJNELKEO.proto";
+import "JJIJAMHKNGO.proto";
 import "PJLEILDLONN.proto";
 
 message PNEGDOHOLDN {
+    uint32 panel_id = 13;
     FightGameMode GJNMHILINHC = 14;
-    uint32 panel_id = 4;
     oneof AELHFLGJMJN {
-        PJLEILDLONN ODLONPLECJB = 13;
-        ECOAKLBOLDA OCGCLKAHGBK = 5;
-        JCNLJNELKEO ICNFMLIAAKE = 3;
+        PJLEILDLONN ODLONPLECJB = 11;
+        ECOAKLBOLDA OCGCLKAHGBK = 4;
+        JCNLJNELKEO ICNFMLIAAKE = 6;
+        JJIJAMHKNGO GMDCKAOEGNF = 3;
     }
 }

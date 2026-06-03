@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "CLFABOEKMJI.proto";
+import "GridFightGameData.proto";
+import "GridFightGameInfo.proto";
+import "GridFightPendingAction.proto";
+
+message GridFightCurrentInfo {
+    CLFABOEKMJI JLDDDLDNFEF = 2;
+    uint32 LJNGPCKPJLF = 3;
+    GridFightPendingAction FMIGOKIDKJL = 6;
+    uint32 unique_id = 7;
+    repeated GridFightGameInfo NAGDJGMMCBE = 8;
+    bool is_overlock = 12;
+    uint32 division_id = 14;
+    GridFightGameData CAAGABEPPPE = 15;
+}

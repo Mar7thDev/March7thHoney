@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFLRUhPR0lFTkRLQy5wcm90bxoRTU1MQVBERUJGSk0ucHJvdG8iWgoLS0VI",
-            "T0dJRU5ES0MSIQoLYXV0aGtleV92ZXIYCSABKA4yDC5NTUxBUERFQkZKTRIT",
-            "CgtBSUJKRUZBUEdNThgFIAEoDRITCgtEQUNDR01DT05CUBgGIAEoDUIWqgIT",
+            "T0dJRU5ES0MSEwoLREFDQ0dNQ09OQlAYCiABKA0SEwoLQUlCSkVGQVBHTU4Y",
+            "DCABKA0SIQoLYXV0aGtleV92ZXIYDyABKA4yDC5NTUxBUERFQkZKTUIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MMLAPDEBFJMReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KEHOGIENDKC), global::March7thHoney.Proto.KEHOGIENDKC.Parser, new[]{ "AuthkeyVer", "AIBJEFAPGMN", "DACCGMCONBP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KEHOGIENDKC), global::March7thHoney.Proto.KEHOGIENDKC.Parser, new[]{ "DACCGMCONBP", "AIBJEFAPGMN", "AuthkeyVer" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KEHOGIENDKC(KEHOGIENDKC other) : this() {
-      authkeyVer_ = other.authkeyVer_;
-      aIBJEFAPGMN_ = other.aIBJEFAPGMN_;
       dACCGMCONBP_ = other.dACCGMCONBP_;
+      aIBJEFAPGMN_ = other.aIBJEFAPGMN_;
+      authkeyVer_ = other.authkeyVer_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,20 @@ namespace March7thHoney.Proto {
       return new KEHOGIENDKC(this);
     }
 
-    /// <summary>Field number for the "authkey_ver" field.</summary>
-    public const int AuthkeyVerFieldNumber = 9;
-    private global::March7thHoney.Proto.MMLAPDEBFJM authkeyVer_ = global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj;
+    /// <summary>Field number for the "DACCGMCONBP" field.</summary>
+    public const int DACCGMCONBPFieldNumber = 10;
+    private uint dACCGMCONBP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MMLAPDEBFJM AuthkeyVer {
-      get { return authkeyVer_; }
+    public uint DACCGMCONBP {
+      get { return dACCGMCONBP_; }
       set {
-        authkeyVer_ = value;
+        dACCGMCONBP_ = value;
       }
     }
 
     /// <summary>Field number for the "AIBJEFAPGMN" field.</summary>
-    public const int AIBJEFAPGMNFieldNumber = 5;
+    public const int AIBJEFAPGMNFieldNumber = 12;
     private uint aIBJEFAPGMN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,15 +109,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DACCGMCONBP" field.</summary>
-    public const int DACCGMCONBPFieldNumber = 6;
-    private uint dACCGMCONBP_;
+    /// <summary>Field number for the "authkey_ver" field.</summary>
+    public const int AuthkeyVerFieldNumber = 15;
+    private global::March7thHoney.Proto.MMLAPDEBFJM authkeyVer_ = global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DACCGMCONBP {
-      get { return dACCGMCONBP_; }
+    public global::March7thHoney.Proto.MMLAPDEBFJM AuthkeyVer {
+      get { return authkeyVer_; }
       set {
-        dACCGMCONBP_ = value;
+        authkeyVer_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AuthkeyVer != other.AuthkeyVer) return false;
-      if (AIBJEFAPGMN != other.AIBJEFAPGMN) return false;
       if (DACCGMCONBP != other.DACCGMCONBP) return false;
+      if (AIBJEFAPGMN != other.AIBJEFAPGMN) return false;
+      if (AuthkeyVer != other.AuthkeyVer) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AuthkeyVer != global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj) hash ^= AuthkeyVer.GetHashCode();
-      if (AIBJEFAPGMN != 0) hash ^= AIBJEFAPGMN.GetHashCode();
       if (DACCGMCONBP != 0) hash ^= DACCGMCONBP.GetHashCode();
+      if (AIBJEFAPGMN != 0) hash ^= AIBJEFAPGMN.GetHashCode();
+      if (AuthkeyVer != global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj) hash ^= AuthkeyVer.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AIBJEFAPGMN != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(AIBJEFAPGMN);
-      }
       if (DACCGMCONBP != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(80);
         output.WriteUInt32(DACCGMCONBP);
       }
+      if (AIBJEFAPGMN != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(AIBJEFAPGMN);
+      }
       if (AuthkeyVer != global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteEnum((int) AuthkeyVer);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AIBJEFAPGMN != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(AIBJEFAPGMN);
-      }
       if (DACCGMCONBP != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(80);
         output.WriteUInt32(DACCGMCONBP);
       }
+      if (AIBJEFAPGMN != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(AIBJEFAPGMN);
+      }
       if (AuthkeyVer != global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteEnum((int) AuthkeyVer);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AuthkeyVer != global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AuthkeyVer);
+      if (DACCGMCONBP != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DACCGMCONBP);
       }
       if (AIBJEFAPGMN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AIBJEFAPGMN);
       }
-      if (DACCGMCONBP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DACCGMCONBP);
+      if (AuthkeyVer != global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AuthkeyVer);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.AuthkeyVer != global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj) {
-        AuthkeyVer = other.AuthkeyVer;
+      if (other.DACCGMCONBP != 0) {
+        DACCGMCONBP = other.DACCGMCONBP;
       }
       if (other.AIBJEFAPGMN != 0) {
         AIBJEFAPGMN = other.AIBJEFAPGMN;
       }
-      if (other.DACCGMCONBP != 0) {
-        DACCGMCONBP = other.DACCGMCONBP;
+      if (other.AuthkeyVer != global::March7thHoney.Proto.MMLAPDEBFJM.Nlcdgipgfdj) {
+        AuthkeyVer = other.AuthkeyVer;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            AIBJEFAPGMN = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 80: {
             DACCGMCONBP = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 96: {
+            AIBJEFAPGMN = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             AuthkeyVer = (global::March7thHoney.Proto.MMLAPDEBFJM) input.ReadEnum();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            AIBJEFAPGMN = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 80: {
             DACCGMCONBP = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 96: {
+            AIBJEFAPGMN = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             AuthkeyVer = (global::March7thHoney.Proto.MMLAPDEBFJM) input.ReadEnum();
             break;
           }

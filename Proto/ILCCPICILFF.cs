@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFJTENDUElDSUxGRi5wcm90bxohR2FtZXBsYXlDb3VudGVyVXBkYXRlUmVh",
-            "c29uLnByb3RvImUKC0lMQ0NQSUNJTEZGEhMKC0JJS0FMT0dNTURBGAsgASgN",
-            "EiwKBnJlYXNvbhgNIAEoDjIcLkdhbWVwbGF5Q291bnRlclVwZGF0ZVJlYXNv",
-            "bhITCgtPRkJQS0NOQ0dGRxgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "c29uLnByb3RvImUKC0lMQ0NQSUNJTEZGEhMKC09GQlBLQ05DR0ZHGAEgASgN",
+            "EiwKBnJlYXNvbhgHIAEoDjIcLkdhbWVwbGF5Q291bnRlclVwZGF0ZVJlYXNv",
+            "bhITCgtCSUtBTE9HTU1EQRgKIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GameplayCounterUpdateReasonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ILCCPICILFF), global::March7thHoney.Proto.ILCCPICILFF.Parser, new[]{ "BIKALOGMMDA", "Reason", "OFBPKCNCGFG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ILCCPICILFF), global::March7thHoney.Proto.ILCCPICILFF.Parser, new[]{ "OFBPKCNCGFG", "Reason", "BIKALOGMMDA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ILCCPICILFF(ILCCPICILFF other) : this() {
-      bIKALOGMMDA_ = other.bIKALOGMMDA_;
-      reason_ = other.reason_;
       oFBPKCNCGFG_ = other.oFBPKCNCGFG_;
+      reason_ = other.reason_;
+      bIKALOGMMDA_ = other.bIKALOGMMDA_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,30 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ILCCPICILFF Clone() {
       return new ILCCPICILFF(this);
-    }
-
-    /// <summary>Field number for the "BIKALOGMMDA" field.</summary>
-    public const int BIKALOGMMDAFieldNumber = 11;
-    private uint bIKALOGMMDA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BIKALOGMMDA {
-      get { return bIKALOGMMDA_; }
-      set {
-        bIKALOGMMDA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 13;
-    private global::March7thHoney.Proto.GameplayCounterUpdateReason reason_ = global::March7thHoney.Proto.GameplayCounterUpdateReason.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GameplayCounterUpdateReason Reason {
-      get { return reason_; }
-      set {
-        reason_ = value;
-      }
     }
 
     /// <summary>Field number for the "OFBPKCNCGFG" field.</summary>
@@ -119,6 +95,30 @@ namespace March7thHoney.Proto {
       get { return oFBPKCNCGFG_; }
       set {
         oFBPKCNCGFG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "reason" field.</summary>
+    public const int ReasonFieldNumber = 7;
+    private global::March7thHoney.Proto.GameplayCounterUpdateReason reason_ = global::March7thHoney.Proto.GameplayCounterUpdateReason.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.GameplayCounterUpdateReason Reason {
+      get { return reason_; }
+      set {
+        reason_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BIKALOGMMDA" field.</summary>
+    public const int BIKALOGMMDAFieldNumber = 10;
+    private uint bIKALOGMMDA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BIKALOGMMDA {
+      get { return bIKALOGMMDA_; }
+      set {
+        bIKALOGMMDA_ = value;
       }
     }
 
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (BIKALOGMMDA != other.BIKALOGMMDA) return false;
-      if (Reason != other.Reason) return false;
       if (OFBPKCNCGFG != other.OFBPKCNCGFG) return false;
+      if (Reason != other.Reason) return false;
+      if (BIKALOGMMDA != other.BIKALOGMMDA) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (BIKALOGMMDA != 0) hash ^= BIKALOGMMDA.GetHashCode();
-      if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) hash ^= Reason.GetHashCode();
       if (OFBPKCNCGFG != 0) hash ^= OFBPKCNCGFG.GetHashCode();
+      if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) hash ^= Reason.GetHashCode();
+      if (BIKALOGMMDA != 0) hash ^= BIKALOGMMDA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -172,13 +172,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(OFBPKCNCGFG);
       }
-      if (BIKALOGMMDA != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(BIKALOGMMDA);
-      }
       if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteEnum((int) Reason);
+      }
+      if (BIKALOGMMDA != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(BIKALOGMMDA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -194,13 +194,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(OFBPKCNCGFG);
       }
-      if (BIKALOGMMDA != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(BIKALOGMMDA);
-      }
       if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteEnum((int) Reason);
+      }
+      if (BIKALOGMMDA != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(BIKALOGMMDA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -212,14 +212,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (BIKALOGMMDA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BIKALOGMMDA);
+      if (OFBPKCNCGFG != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OFBPKCNCGFG);
       }
       if (Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Reason);
       }
-      if (OFBPKCNCGFG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OFBPKCNCGFG);
+      if (BIKALOGMMDA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BIKALOGMMDA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -233,14 +233,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.BIKALOGMMDA != 0) {
-        BIKALOGMMDA = other.BIKALOGMMDA;
+      if (other.OFBPKCNCGFG != 0) {
+        OFBPKCNCGFG = other.OFBPKCNCGFG;
       }
       if (other.Reason != global::March7thHoney.Proto.GameplayCounterUpdateReason.None) {
         Reason = other.Reason;
       }
-      if (other.OFBPKCNCGFG != 0) {
-        OFBPKCNCGFG = other.OFBPKCNCGFG;
+      if (other.BIKALOGMMDA != 0) {
+        BIKALOGMMDA = other.BIKALOGMMDA;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -265,12 +265,12 @@ namespace March7thHoney.Proto {
             OFBPKCNCGFG = input.ReadUInt32();
             break;
           }
-          case 88: {
-            BIKALOGMMDA = input.ReadUInt32();
+          case 56: {
+            Reason = (global::March7thHoney.Proto.GameplayCounterUpdateReason) input.ReadEnum();
             break;
           }
-          case 104: {
-            Reason = (global::March7thHoney.Proto.GameplayCounterUpdateReason) input.ReadEnum();
+          case 80: {
+            BIKALOGMMDA = input.ReadUInt32();
             break;
           }
         }
@@ -296,12 +296,12 @@ namespace March7thHoney.Proto {
             OFBPKCNCGFG = input.ReadUInt32();
             break;
           }
-          case 88: {
-            BIKALOGMMDA = input.ReadUInt32();
+          case 56: {
+            Reason = (global::March7thHoney.Proto.GameplayCounterUpdateReason) input.ReadEnum();
             break;
           }
-          case 104: {
-            Reason = (global::March7thHoney.Proto.GameplayCounterUpdateReason) input.ReadEnum();
+          case 80: {
+            BIKALOGMMDA = input.ReadUInt32();
             break;
           }
         }

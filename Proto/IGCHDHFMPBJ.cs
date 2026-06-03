@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFJR0NIREhGTVBCSi5wcm90bxoRREtPUEdEUEtKSEIucHJvdG8iTwoLSUdD",
-            "SERIRk1QQkoSEQoJc3RvcF9kZXNjGAIgASgJEhEKCWF2YXRhcl9pZBgDIAEo",
-            "DRIaCgR0eXBlGAEgASgOMgwuREtPUEdEUEtKSEJCFqoCE01hcmNoN3RoSG9u",
+            "SERIRk1QQkoSGgoEdHlwZRgBIAEoDjIMLkRLT1BHRFBLSkhCEhEKCXN0b3Bf",
+            "ZGVzYxgCIAEoCRIRCglhdmF0YXJfaWQYAyABKA1CFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DKOPGDPKJHBReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IGCHDHFMPBJ), global::March7thHoney.Proto.IGCHDHFMPBJ.Parser, new[]{ "StopDesc", "AvatarId", "Type" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IGCHDHFMPBJ), global::March7thHoney.Proto.IGCHDHFMPBJ.Parser, new[]{ "Type", "StopDesc", "AvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IGCHDHFMPBJ(IGCHDHFMPBJ other) : this() {
+      type_ = other.type_;
       stopDesc_ = other.stopDesc_;
       avatarId_ = other.avatarId_;
-      type_ = other.type_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,6 +83,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IGCHDHFMPBJ Clone() {
       return new IGCHDHFMPBJ(this);
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 1;
+    private global::March7thHoney.Proto.DKOPGDPKJHB type_ = global::March7thHoney.Proto.DKOPGDPKJHB.Cgbikocdabb;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.DKOPGDPKJHB Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
     }
 
     /// <summary>Field number for the "stop_desc" field.</summary>
@@ -109,18 +121,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 1;
-    private global::March7thHoney.Proto.DKOPGDPKJHB type_ = global::March7thHoney.Proto.DKOPGDPKJHB.Cgbikocdabb;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DKOPGDPKJHB Type {
-      get { return type_; }
-      set {
-        type_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Type != other.Type) return false;
       if (StopDesc != other.StopDesc) return false;
       if (AvatarId != other.AvatarId) return false;
-      if (Type != other.Type) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Type != global::March7thHoney.Proto.DKOPGDPKJHB.Cgbikocdabb) hash ^= Type.GetHashCode();
       if (StopDesc.Length != 0) hash ^= StopDesc.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
-      if (Type != global::March7thHoney.Proto.DKOPGDPKJHB.Cgbikocdabb) hash ^= Type.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Type != global::March7thHoney.Proto.DKOPGDPKJHB.Cgbikocdabb) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
       if (StopDesc.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(StopDesc);
       }
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
-      }
-      if (Type != global::March7thHoney.Proto.DKOPGDPKJHB.Cgbikocdabb) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Type != global::March7thHoney.Proto.DKOPGDPKJHB.Cgbikocdabb) {
+        Type = other.Type;
+      }
       if (other.StopDesc.Length != 0) {
         StopDesc = other.StopDesc;
       }
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
-      }
-      if (other.Type != global::March7thHoney.Proto.DKOPGDPKJHB.Cgbikocdabb) {
-        Type = other.Type;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

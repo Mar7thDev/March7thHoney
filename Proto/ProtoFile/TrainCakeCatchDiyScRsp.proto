@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BFAKMCIJFCB.proto";
 
 message TrainCakeCatchDiyScRsp {
-    BFAKMCIJFCB NLJBJMDPBGN = 13;
-    uint32 retcode = 11;
+    BFAKMCIJFCB NLJBJMDPBGN = 2;
+    uint32 retcode = 14;
 }

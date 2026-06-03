@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OOLJJHMLHBH.proto";
 
 message RogueTournSaveBuildRefCsReq {
-    string name = 10;
-    OOLJJHMLHBH MPOEFPFPEND = 11;
-    uint32 NPHAJEKCBKF = 6;
+    OOLJJHMLHBH MPOEFPFPEND = 3;
+    string name = 6;
+    uint32 NPHAJEKCBKF = 15;
 }

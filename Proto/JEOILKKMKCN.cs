@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static JEOILKKMKCNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFKRU9JTEtLTUtDTi5wcm90byJ+CgtKRU9JTEtLTUtDThIbChNzZXJ2ZXJf",
-            "dGltZXN0YW1wX21zGAggASgEEhMKC0tETlBQTkhMTk9BGAQgASgIEhMKC01M",
-            "S0xCSkpIR0lPGAkgASgNEg8KB3JldGNvZGUYBiABKA0SFwoPc2VjcmV0X2tl",
-            "eV9zZWVkGAsgASgEQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChFKRU9JTEtLTUtDTi5wcm90byJpCgtKRU9JTEtLTUtDThIPCgdyZXRjb2Rl",
+            "GAggASgNEhcKD3NlY3JldF9rZXlfc2VlZBgJIAEoBBITCgtNTEtMQkpKSEdJ",
+            "TxgLIAEoDRIbChNzZXJ2ZXJfdGltZXN0YW1wX21zGA4gASgEQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JEOILKKMKCN), global::March7thHoney.Proto.JEOILKKMKCN.Parser, new[]{ "ServerTimestampMs", "KDNPPNHLNOA", "MLKLBJJHGIO", "Retcode", "SecretKeySeed" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JEOILKKMKCN), global::March7thHoney.Proto.JEOILKKMKCN.Parser, new[]{ "Retcode", "SecretKeySeed", "MLKLBJJHGIO", "ServerTimestampMs" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JEOILKKMKCN(JEOILKKMKCN other) : this() {
-      serverTimestampMs_ = other.serverTimestampMs_;
-      kDNPPNHLNOA_ = other.kDNPPNHLNOA_;
-      mLKLBJJHGIO_ = other.mLKLBJJHGIO_;
       retcode_ = other.retcode_;
       secretKeySeed_ = other.secretKeySeed_;
+      mLKLBJJHGIO_ = other.mLKLBJJHGIO_;
+      serverTimestampMs_ = other.serverTimestampMs_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,44 +86,8 @@ namespace March7thHoney.Proto {
       return new JEOILKKMKCN(this);
     }
 
-    /// <summary>Field number for the "server_timestamp_ms" field.</summary>
-    public const int ServerTimestampMsFieldNumber = 8;
-    private ulong serverTimestampMs_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong ServerTimestampMs {
-      get { return serverTimestampMs_; }
-      set {
-        serverTimestampMs_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "KDNPPNHLNOA" field.</summary>
-    public const int KDNPPNHLNOAFieldNumber = 4;
-    private bool kDNPPNHLNOA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool KDNPPNHLNOA {
-      get { return kDNPPNHLNOA_; }
-      set {
-        kDNPPNHLNOA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "MLKLBJJHGIO" field.</summary>
-    public const int MLKLBJJHGIOFieldNumber = 9;
-    private uint mLKLBJJHGIO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MLKLBJJHGIO {
-      get { return mLKLBJJHGIO_; }
-      set {
-        mLKLBJJHGIO_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 8;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "secret_key_seed" field.</summary>
-    public const int SecretKeySeedFieldNumber = 11;
+    public const int SecretKeySeedFieldNumber = 9;
     private ulong secretKeySeed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -144,6 +107,30 @@ namespace March7thHoney.Proto {
       get { return secretKeySeed_; }
       set {
         secretKeySeed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MLKLBJJHGIO" field.</summary>
+    public const int MLKLBJJHGIOFieldNumber = 11;
+    private uint mLKLBJJHGIO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MLKLBJJHGIO {
+      get { return mLKLBJJHGIO_; }
+      set {
+        mLKLBJJHGIO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "server_timestamp_ms" field.</summary>
+    public const int ServerTimestampMsFieldNumber = 14;
+    private ulong serverTimestampMs_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong ServerTimestampMs {
+      get { return serverTimestampMs_; }
+      set {
+        serverTimestampMs_ = value;
       }
     }
 
@@ -162,11 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ServerTimestampMs != other.ServerTimestampMs) return false;
-      if (KDNPPNHLNOA != other.KDNPPNHLNOA) return false;
-      if (MLKLBJJHGIO != other.MLKLBJJHGIO) return false;
       if (Retcode != other.Retcode) return false;
       if (SecretKeySeed != other.SecretKeySeed) return false;
+      if (MLKLBJJHGIO != other.MLKLBJJHGIO) return false;
+      if (ServerTimestampMs != other.ServerTimestampMs) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ServerTimestampMs != 0UL) hash ^= ServerTimestampMs.GetHashCode();
-      if (KDNPPNHLNOA != false) hash ^= KDNPPNHLNOA.GetHashCode();
-      if (MLKLBJJHGIO != 0) hash ^= MLKLBJJHGIO.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (SecretKeySeed != 0UL) hash ^= SecretKeySeed.GetHashCode();
+      if (MLKLBJJHGIO != 0) hash ^= MLKLBJJHGIO.GetHashCode();
+      if (ServerTimestampMs != 0UL) hash ^= ServerTimestampMs.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,25 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (KDNPPNHLNOA != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(KDNPPNHLNOA);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
-      if (ServerTimestampMs != 0UL) {
-        output.WriteRawTag(64);
-        output.WriteUInt64(ServerTimestampMs);
+      if (SecretKeySeed != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(SecretKeySeed);
       }
       if (MLKLBJJHGIO != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(MLKLBJJHGIO);
       }
-      if (SecretKeySeed != 0UL) {
-        output.WriteRawTag(88);
-        output.WriteUInt64(SecretKeySeed);
+      if (ServerTimestampMs != 0UL) {
+        output.WriteRawTag(112);
+        output.WriteUInt64(ServerTimestampMs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -227,25 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (KDNPPNHLNOA != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(KDNPPNHLNOA);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
-      if (ServerTimestampMs != 0UL) {
-        output.WriteRawTag(64);
-        output.WriteUInt64(ServerTimestampMs);
+      if (SecretKeySeed != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(SecretKeySeed);
       }
       if (MLKLBJJHGIO != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(MLKLBJJHGIO);
       }
-      if (SecretKeySeed != 0UL) {
-        output.WriteRawTag(88);
-        output.WriteUInt64(SecretKeySeed);
+      if (ServerTimestampMs != 0UL) {
+        output.WriteRawTag(112);
+        output.WriteUInt64(ServerTimestampMs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -257,20 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ServerTimestampMs != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ServerTimestampMs);
-      }
-      if (KDNPPNHLNOA != false) {
-        size += 1 + 1;
-      }
-      if (MLKLBJJHGIO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MLKLBJJHGIO);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (SecretKeySeed != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(SecretKeySeed);
+      }
+      if (MLKLBJJHGIO != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MLKLBJJHGIO);
+      }
+      if (ServerTimestampMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ServerTimestampMs);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,20 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ServerTimestampMs != 0UL) {
-        ServerTimestampMs = other.ServerTimestampMs;
-      }
-      if (other.KDNPPNHLNOA != false) {
-        KDNPPNHLNOA = other.KDNPPNHLNOA;
-      }
-      if (other.MLKLBJJHGIO != 0) {
-        MLKLBJJHGIO = other.MLKLBJJHGIO;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
       if (other.SecretKeySeed != 0UL) {
         SecretKeySeed = other.SecretKeySeed;
+      }
+      if (other.MLKLBJJHGIO != 0) {
+        MLKLBJJHGIO = other.MLKLBJJHGIO;
+      }
+      if (other.ServerTimestampMs != 0UL) {
+        ServerTimestampMs = other.ServerTimestampMs;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -318,24 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            KDNPPNHLNOA = input.ReadBool();
-            break;
-          }
-          case 48: {
+          case 64: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
-            ServerTimestampMs = input.ReadUInt64();
-            break;
-          }
           case 72: {
-            MLKLBJJHGIO = input.ReadUInt32();
+            SecretKeySeed = input.ReadUInt64();
             break;
           }
           case 88: {
-            SecretKeySeed = input.ReadUInt64();
+            MLKLBJJHGIO = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            ServerTimestampMs = input.ReadUInt64();
             break;
           }
         }
@@ -357,24 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            KDNPPNHLNOA = input.ReadBool();
-            break;
-          }
-          case 48: {
+          case 64: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
-            ServerTimestampMs = input.ReadUInt64();
-            break;
-          }
           case 72: {
-            MLKLBJJHGIO = input.ReadUInt32();
+            SecretKeySeed = input.ReadUInt64();
             break;
           }
           case 88: {
-            SecretKeySeed = input.ReadUInt64();
+            MLKLBJJHGIO = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            ServerTimestampMs = input.ReadUInt64();
             break;
           }
         }

@@ -3,7 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HLEBBGFAKAK {
-    uint32 PMFOKBMPILF = 9;
-    uint32 PGGDEHKKINP = 12;
-    uint32 GNCFHIKODKE = 5;
+    uint32 GNCFHIKODKE = 2;
 }

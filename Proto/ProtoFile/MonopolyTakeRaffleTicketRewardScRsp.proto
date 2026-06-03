@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message MonopolyTakeRaffleTicketRewardScRsp {
-    ItemList reward_list = 14;
-    uint32 retcode = 8;
-    uint32 GACKJLBPKGD = 7;
-    uint32 BBPGHFJOADI = 6;
+    uint32 retcode = 5;
+    uint32 pool_id = 6;
+    uint32 BBPGHFJOADI = 7;
+    ItemList reward_list = 9;
 }

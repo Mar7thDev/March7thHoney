@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CABBOOKAODO.proto";
 
 message RelicSmartWearUpdatePinRelicScNotify {
-    repeated CABBOOKAODO PLNCNCNIPKN = 12;
-    repeated CABBOOKAODO ANCHGOGNLFP = 6;
-    uint32 relic_unique_id = 9;
+    repeated CABBOOKAODO ANCHGOGNLFP = 3;
+    repeated CABBOOKAODO PLNCNCNIPKN = 4;
+    uint32 relic_unique_id = 10;
 }

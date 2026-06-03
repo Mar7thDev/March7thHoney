@@ -6,6 +6,6 @@ import "ENHOPAHGCMA.proto";
 import "OENDLKLJHPF.proto";
 
 message GetSwitchHandUpdateCsReq {
-    OENDLKLJHPF NCADGIPIALO = 4;
-    ENHOPAHGCMA IINKHPOJOGP = 11;
+    OENDLKLJHPF NCADGIPIALO = 5;
+    ENHOPAHGCMA IINKHPOJOGP = 10;
 }

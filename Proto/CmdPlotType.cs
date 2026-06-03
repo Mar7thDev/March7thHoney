@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChFDbWRQbG90VHlwZS5wcm90bypmCgtDbWRQbG90VHlwZRIbChdNRU5NS0pP",
             "SUpCRV9OTENER0lQR0ZEShAAEhwKF01FTk1LSk9JSkJFX09DRUlHRU5CSEhH",
-            "EM8IEhwKF01FTk1LSk9JSkJFX0hMQkRKQ0NCTkpQEJUJQhaqAhNNYXJjaDd0",
+            "EJoJEhwKF01FTk1LSk9JSkJFX0hMQkRKQ0NCTkpQEOUIQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,8 +38,8 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPlotType {
     [pbr::OriginalName("MENMKJOIJBE_NLCDGIPGFDJ")] MenmkjoijbeNlcdgipgfdj = 0,
-    [pbr::OriginalName("MENMKJOIJBE_OCEIGENBHHG")] MenmkjoijbeOceigenbhhg = 1103,
-    [pbr::OriginalName("MENMKJOIJBE_HLBDJCCBNJP")] MenmkjoijbeHlbdjccbnjp = 1173,
+    [pbr::OriginalName("MENMKJOIJBE_OCEIGENBHHG")] MenmkjoijbeOceigenbhhg = 1178,
+    [pbr::OriginalName("MENMKJOIJBE_HLBDJCCBNJP")] MenmkjoijbeHlbdjccbnjp = 1125,
   }
 
   #endregion

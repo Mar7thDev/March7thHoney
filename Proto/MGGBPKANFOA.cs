@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNR0dCUEtBTkZPQS5wcm90bxoRQUtNQ09ETEFFS0kucHJvdG8iMAoLTUdH",
-            "QlBLQU5GT0ESIQoLR0ZLQUZJRk1ITkYYCyADKAsyDC5BS01DT0RMQUVLSUIW",
+            "QlBLQU5GT0ESIQoLR0ZLQUZJRk1ITkYYByADKAsyDC5BS01DT0RMQUVLSUIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AKMCODLAEKIReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GFKAFIFMHNF" field.</summary>
-    public const int GFKAFIFMHNFFieldNumber = 11;
+    public const int GFKAFIFMHNFFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.AKMCODLAEKI> _repeated_gFKAFIFMHNF_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.AKMCODLAEKI.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.AKMCODLAEKI.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.AKMCODLAEKI> gFKAFIFMHNF_ = new pbc::RepeatedField<global::March7thHoney.Proto.AKMCODLAEKI>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 90: {
+          case 58: {
             gFKAFIFMHNF_.AddEntriesFrom(input, _repeated_gFKAFIFMHNF_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 90: {
+          case 58: {
             gFKAFIFMHNF_.AddEntriesFrom(ref input, _repeated_gFKAFIFMHNF_codec);
             break;
           }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KLBPBDLHKBG.proto";
 
 message PixAirSyncChangeScNotify {
-    repeated KLBPBDLHKBG DGNGMJMPFGK = 4;
+    repeated KLBPBDLHKBG DGNGMJMPFGK = 8;
 }

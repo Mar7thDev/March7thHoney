@@ -6,8 +6,8 @@ import "EKNABKLPEEL.proto";
 import "MessageChatData.proto";
 
 message ChatMessageData {
+    uint64 create_time = 4;
+    repeated MessageChatData message_datas = 9;
     EKNABKLPEEL CKHPFFENOBE = 10;
     EKNABKLPEEL BKOALKHDLOB = 11;
-    repeated MessageChatData message_datas = 9;
-    uint64 create_time = 4;
 }

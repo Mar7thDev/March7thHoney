@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FBDLJKEBPHM {
-    map<uint32, uint32> JPIHLKGCBPC = 14;
-    uint32 MDNAGANGNKK = 1;
-    uint32 role_id = 6;
+    uint32 role_id = 2;
+    uint32 MDNAGANGNKK = 4;
+    map<uint32, uint32> JPIHLKGCBPC = 10;
 }

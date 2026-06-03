@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NNDKLIBALLC.proto";
 
 message JGKNADEDNHB {
-    repeated NNDKLIBALLC OLGHCHMMMIA = 3;
-    repeated uint32 HDAKGBMLKKI = 10;
-    uint32 KPGNEABOECG = 2;
-    uint32 KOMEOMHBCEC = 15;
-    uint32 AHAPDFNPICG = 8;
-    uint32 GHKNBIOFLGA = 4;
+    uint32 KPGNEABOECG = 1;
+    uint32 AHAPDFNPICG = 7;
+    uint32 GHKNBIOFLGA = 10;
+    repeated NNDKLIBALLC OLGHCHMMMIA = 11;
+    uint32 KOMEOMHBCEC = 12;
+    repeated uint32 HDAKGBMLKKI = 15;
 }

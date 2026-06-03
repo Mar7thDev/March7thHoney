@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5DdXJUcmlhbEFjdGl2aXR5U2NOb3RpZnkucHJvdG8aGVRyaWFsQWN0aXZp",
             "dHlTdGF0dXMucHJvdG8iWwoYQ3VyVHJpYWxBY3Rpdml0eVNjTm90aWZ5EhkK",
-            "EWFjdGl2aXR5X3N0YWdlX2lkGAUgASgNEiQKBnN0YXR1cxgPIAEoDjIULlRy",
+            "EWFjdGl2aXR5X3N0YWdlX2lkGAggASgNEiQKBnN0YXR1cxgJIAEoDjIULlRy",
             "aWFsQWN0aXZpdHlTdGF0dXNCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "activity_stage_id" field.</summary>
-    public const int ActivityStageIdFieldNumber = 5;
+    public const int ActivityStageIdFieldNumber = 8;
     private uint activityStageId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 15;
+    public const int StatusFieldNumber = 9;
     private global::March7thHoney.Proto.TrialActivityStatus status_ = global::March7thHoney.Proto.TrialActivityStatus.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -154,11 +154,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ActivityStageId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteUInt32(ActivityStageId);
       }
       if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ActivityStageId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteUInt32(ActivityStageId);
       }
       if (Status != global::March7thHoney.Proto.TrialActivityStatus.None) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 64: {
             ActivityStageId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 72: {
             Status = (global::March7thHoney.Proto.TrialActivityStatus) input.ReadEnum();
             break;
           }
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 64: {
             ActivityStageId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 72: {
             Status = (global::March7thHoney.Proto.TrialActivityStatus) input.ReadEnum();
             break;
           }

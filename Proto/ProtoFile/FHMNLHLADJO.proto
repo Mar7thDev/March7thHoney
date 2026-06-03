@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FHMNLHLADJO {
-    uint32 AJIMPLLIFIE = 13;
-    uint32 FKIIFFFJKJH = 3;
+    uint32 AJIMPLLIFIE = 2;
+    uint32 FKIIFFFJKJH = 14;
 }

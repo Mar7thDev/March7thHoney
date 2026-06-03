@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NHKIADBINML {
-    uint32 retcode = 14;
-    uint32 AFDNFCBCFBF = 2;
+    uint32 ratio = 4;
+    uint32 retcode = 12;
 }

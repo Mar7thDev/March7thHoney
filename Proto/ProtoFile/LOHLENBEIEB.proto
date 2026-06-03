@@ -3,9 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LOHLENBEIEB {
-    bool KKKIONIDKFA = 1;
-    float AFDNFCBCFBF = 7;
-    int32 MNLINFEODPJ = 6;
-    uint32 rogue_dialogue_event_id = 8;
-    uint32 arg_id = 15;
+    int32 MNLINFEODPJ = 1;
+    float ratio = 7;
+    bool is_valid = 14;
 }

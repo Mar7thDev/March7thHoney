@@ -6,10 +6,10 @@ import "GNMCIEPEBPK.proto";
 import "OJHHACMHFKA.proto";
 
 message PlanetFesChooseAvatarEventOptionScRsp {
-    OJHHACMHFKA GLOAGDBEKDP = 15;
+    uint32 IIBJDCKHAKE = 2;
+    uint32 HHGAHEBNAIL = 3;
+    uint32 retcode = 6;
+    OJHHACMHFKA GLOAGDBEKDP = 8;
     GNMCIEPEBPK reward = 10;
-    uint32 DNLAFCPNPOE = 8;
-    uint32 HHGAHEBNAIL = 14;
-    uint32 retcode = 4;
-    uint32 IIBJDCKHAKE = 5;
+    uint32 DNLAFCPNPOE = 12;
 }

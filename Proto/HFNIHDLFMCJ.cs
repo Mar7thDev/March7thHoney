@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFIRk5JSERMRk1DSi5wcm90bxoRTkRMTklLQ0NBTEsucHJvdG8iQQoLSEZO",
-            "SUhETEZNQ0oSIQoLTUdCTkVBSENETUEYBCABKAsyDC5ORExOSUtDQ0FMSxIP",
-            "CgdyZXRjb2RlGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "SUhETEZNQ0oSDwoHcmV0Y29kZRgJIAEoDRIhCgtNR0JORUFIQ0RNQRgOIAEo",
+            "CzIMLk5ETE5JS0NDQUxLQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.NDLNIKCCALKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HFNIHDLFMCJ), global::March7thHoney.Proto.HFNIHDLFMCJ.Parser, new[]{ "MGBNEAHCDMA", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HFNIHDLFMCJ), global::March7thHoney.Proto.HFNIHDLFMCJ.Parser, new[]{ "Retcode", "MGBNEAHCDMA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HFNIHDLFMCJ(HFNIHDLFMCJ other) : this() {
-      mGBNEAHCDMA_ = other.mGBNEAHCDMA_ != null ? other.mGBNEAHCDMA_.Clone() : null;
       retcode_ = other.retcode_;
+      mGBNEAHCDMA_ = other.mGBNEAHCDMA_ != null ? other.mGBNEAHCDMA_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new HFNIHDLFMCJ(this);
     }
 
-    /// <summary>Field number for the "MGBNEAHCDMA" field.</summary>
-    public const int MGBNEAHCDMAFieldNumber = 4;
-    private global::March7thHoney.Proto.NDLNIKCCALK mGBNEAHCDMA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.NDLNIKCCALK MGBNEAHCDMA {
-      get { return mGBNEAHCDMA_; }
-      set {
-        mGBNEAHCDMA_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MGBNEAHCDMA" field.</summary>
+    public const int MGBNEAHCDMAFieldNumber = 14;
+    private global::March7thHoney.Proto.NDLNIKCCALK mGBNEAHCDMA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.NDLNIKCCALK MGBNEAHCDMA {
+      get { return mGBNEAHCDMA_; }
+      set {
+        mGBNEAHCDMA_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(MGBNEAHCDMA, other.MGBNEAHCDMA)) return false;
       if (Retcode != other.Retcode) return false;
+      if (!object.Equals(MGBNEAHCDMA, other.MGBNEAHCDMA)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (mGBNEAHCDMA_ != null) hash ^= MGBNEAHCDMA.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (mGBNEAHCDMA_ != null) hash ^= MGBNEAHCDMA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (mGBNEAHCDMA_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(MGBNEAHCDMA);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
+      }
+      if (mGBNEAHCDMA_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(MGBNEAHCDMA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (mGBNEAHCDMA_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(MGBNEAHCDMA);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
+      }
+      if (mGBNEAHCDMA_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(MGBNEAHCDMA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (mGBNEAHCDMA_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MGBNEAHCDMA);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (mGBNEAHCDMA_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MGBNEAHCDMA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
       if (other.mGBNEAHCDMA_ != null) {
         if (mGBNEAHCDMA_ == null) {
           MGBNEAHCDMA = new global::March7thHoney.Proto.NDLNIKCCALK();
         }
         MGBNEAHCDMA.MergeFrom(other.MGBNEAHCDMA);
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 72: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 114: {
             if (mGBNEAHCDMA_ == null) {
               MGBNEAHCDMA = new global::March7thHoney.Proto.NDLNIKCCALK();
             }
             input.ReadMessage(MGBNEAHCDMA);
-            break;
-          }
-          case 112: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 72: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 114: {
             if (mGBNEAHCDMA_ == null) {
               MGBNEAHCDMA = new global::March7thHoney.Proto.NDLNIKCCALK();
             }
             input.ReadMessage(MGBNEAHCDMA);
-            break;
-          }
-          case 112: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }

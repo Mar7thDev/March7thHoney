@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFOSExHRURMS09LSS5wcm90bxoUR3JvdXBTdGF0ZUluZm8ucHJvdG8aEE1v",
-            "dGlvbkluZm8ucHJvdG8idgoLTkhMR0VETEtPS0kSKQoQZ3JvdXBfc3RhdGVf",
-            "aW5mbxgOIAEoCzIPLkdyb3VwU3RhdGVJbmZvEhsKBm1vdGlvbhgKIAEoCzIL",
-            "Lk1vdGlvbkluZm8SCgoCaWQYCSABKA0SEwoLTENQUE5EUEtIUEgYAyABKAhC",
-            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "dGlvbkluZm8ucHJvdG8iYQoLTkhMR0VETEtPS0kSGwoGbW90aW9uGAMgASgL",
+            "MgsuTW90aW9uSW5mbxIKCgJpZBgGIAEoDRIpChBncm91cF9zdGF0ZV9pbmZv",
+            "GAkgASgLMg8uR3JvdXBTdGF0ZUluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GroupStateInfoReflection.Descriptor, global::March7thHoney.Proto.MotionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NHLGEDLKOKI), global::March7thHoney.Proto.NHLGEDLKOKI.Parser, new[]{ "GroupStateInfo", "Motion", "Id", "LCPPNDPKHPH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NHLGEDLKOKI), global::March7thHoney.Proto.NHLGEDLKOKI.Parser, new[]{ "Motion", "Id", "GroupStateInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NHLGEDLKOKI(NHLGEDLKOKI other) : this() {
-      groupStateInfo_ = other.groupStateInfo_ != null ? other.groupStateInfo_.Clone() : null;
       motion_ = other.motion_ != null ? other.motion_.Clone() : null;
       id_ = other.id_;
-      lCPPNDPKHPH_ = other.lCPPNDPKHPH_;
+      groupStateInfo_ = other.groupStateInfo_ != null ? other.groupStateInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,20 +86,8 @@ namespace March7thHoney.Proto {
       return new NHLGEDLKOKI(this);
     }
 
-    /// <summary>Field number for the "group_state_info" field.</summary>
-    public const int GroupStateInfoFieldNumber = 14;
-    private global::March7thHoney.Proto.GroupStateInfo groupStateInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GroupStateInfo GroupStateInfo {
-      get { return groupStateInfo_; }
-      set {
-        groupStateInfo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "motion" field.</summary>
-    public const int MotionFieldNumber = 10;
+    public const int MotionFieldNumber = 3;
     private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 9;
+    public const int IdFieldNumber = 6;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,15 +110,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LCPPNDPKHPH" field.</summary>
-    public const int LCPPNDPKHPHFieldNumber = 3;
-    private bool lCPPNDPKHPH_;
+    /// <summary>Field number for the "group_state_info" field.</summary>
+    public const int GroupStateInfoFieldNumber = 9;
+    private global::March7thHoney.Proto.GroupStateInfo groupStateInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool LCPPNDPKHPH {
-      get { return lCPPNDPKHPH_; }
+    public global::March7thHoney.Proto.GroupStateInfo GroupStateInfo {
+      get { return groupStateInfo_; }
       set {
-        lCPPNDPKHPH_ = value;
+        groupStateInfo_ = value;
       }
     }
 
@@ -150,10 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(GroupStateInfo, other.GroupStateInfo)) return false;
       if (!object.Equals(Motion, other.Motion)) return false;
       if (Id != other.Id) return false;
-      if (LCPPNDPKHPH != other.LCPPNDPKHPH) return false;
+      if (!object.Equals(GroupStateInfo, other.GroupStateInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,10 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (groupStateInfo_ != null) hash ^= GroupStateInfo.GetHashCode();
       if (motion_ != null) hash ^= Motion.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (LCPPNDPKHPH != false) hash ^= LCPPNDPKHPH.GetHashCode();
+      if (groupStateInfo_ != null) hash ^= GroupStateInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,20 +168,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LCPPNDPKHPH != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(LCPPNDPKHPH);
-      }
-      if (Id != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Id);
-      }
       if (motion_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(26);
         output.WriteMessage(Motion);
       }
+      if (Id != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Id);
+      }
       if (groupStateInfo_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(74);
         output.WriteMessage(GroupStateInfo);
       }
       if (_unknownFields != null) {
@@ -209,20 +190,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LCPPNDPKHPH != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(LCPPNDPKHPH);
-      }
-      if (Id != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Id);
-      }
       if (motion_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(26);
         output.WriteMessage(Motion);
       }
+      if (Id != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Id);
+      }
       if (groupStateInfo_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(74);
         output.WriteMessage(GroupStateInfo);
       }
       if (_unknownFields != null) {
@@ -235,17 +212,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (groupStateInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GroupStateInfo);
-      }
       if (motion_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Motion);
       }
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
-      if (LCPPNDPKHPH != false) {
-        size += 1 + 1;
+      if (groupStateInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GroupStateInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -259,12 +233,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.groupStateInfo_ != null) {
-        if (groupStateInfo_ == null) {
-          GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
-        }
-        GroupStateInfo.MergeFrom(other.GroupStateInfo);
-      }
       if (other.motion_ != null) {
         if (motion_ == null) {
           Motion = new global::March7thHoney.Proto.MotionInfo();
@@ -274,8 +242,11 @@ namespace March7thHoney.Proto {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.LCPPNDPKHPH != false) {
-        LCPPNDPKHPH = other.LCPPNDPKHPH;
+      if (other.groupStateInfo_ != null) {
+        if (groupStateInfo_ == null) {
+          GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
+        }
+        GroupStateInfo.MergeFrom(other.GroupStateInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -296,22 +267,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            LCPPNDPKHPH = input.ReadBool();
-            break;
-          }
-          case 72: {
-            Id = input.ReadUInt32();
-            break;
-          }
-          case 82: {
+          case 26: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
             break;
           }
-          case 114: {
+          case 48: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 74: {
             if (groupStateInfo_ == null) {
               GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
             }
@@ -337,22 +304,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            LCPPNDPKHPH = input.ReadBool();
-            break;
-          }
-          case 72: {
-            Id = input.ReadUInt32();
-            break;
-          }
-          case 82: {
+          case 26: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
             break;
           }
-          case 114: {
+          case 48: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 74: {
             if (groupStateInfo_ == null) {
               GroupStateInfo = new global::March7thHoney.Proto.GroupStateInfo();
             }

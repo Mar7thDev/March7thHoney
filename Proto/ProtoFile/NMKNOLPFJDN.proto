@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NMKNOLPFJDN {
-    repeated uint32 CKLIEKOIGOG = 2;
-    repeated uint32 HGDNMKBNMBK = 6;
-    uint32 JCKKPPELFHC = 10;
-    uint32 KOHGFNGKFPE = 1;
+    uint32 KOHGFNGKFPE = 2;
+    repeated uint32 CKLIEKOIGOG = 9;
+    uint32 JCKKPPELFHC = 14;
+    repeated uint32 HGDNMKBNMBK = 15;
 }

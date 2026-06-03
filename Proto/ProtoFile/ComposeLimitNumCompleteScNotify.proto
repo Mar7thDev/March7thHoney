@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DPGAHDIJJDL.proto";
 
 message ComposeLimitNumCompleteScNotify {
-    repeated DPGAHDIJJDL MGLCGPMNHBB = 15;
+    repeated DPGAHDIJJDL MGLCGPMNHBB = 3;
 }

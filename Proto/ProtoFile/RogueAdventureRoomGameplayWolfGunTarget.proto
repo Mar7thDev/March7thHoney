@@ -9,9 +9,9 @@ import "MNGNLOCLNOF.proto";
 
 message RogueAdventureRoomGameplayWolfGunTarget {
     oneof target_impl {
-        MNGNLOCLNOF target_none = 13;
-        FEIJPEJBDDH target_coin = 5;
-        JMPNGBAILBG target_miracle = 3;
-        FENFEHCCOCA target_ruanmei = 12;
+        MNGNLOCLNOF target_none = 15;
+        FEIJPEJBDDH target_coin = 12;
+        JMPNGBAILBG target_miracle = 6;
+        FENFEHCCOCA target_ruanmei = 5;
     }
 }

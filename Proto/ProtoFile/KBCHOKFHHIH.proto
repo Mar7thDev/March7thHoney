@@ -5,11 +5,11 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FDFGIHJBHEL.proto";
 
 message KBCHOKFHHIH {
-    repeated FDFGIHJBHEL MKIOMOINKOF = 5;
-    uint32 EECIJBLGLNG = 3;
     uint32 GDBNHOJPKIE = 1;
+    uint32 EAGEFHOHCOA = 2;
+    uint32 EECIJBLGLNG = 3;
     uint32 OPHFDHGBLPJ = 4;
+    repeated FDFGIHJBHEL MKIOMOINKOF = 5;
     uint32 IHEGLJHMKPP = 6;
     uint32 MFECHJLACLC = 7;
-    uint32 EAGEFHOHCOA = 2;
 }

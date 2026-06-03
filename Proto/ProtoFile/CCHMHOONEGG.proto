@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CCHMHOONEGG {
-    uint32 OCJLBKDCKHL = 6;
-    uint32 num = 12;
+    uint32 num = 4;
+    uint32 OCJLBKDCKHL = 5;
 }

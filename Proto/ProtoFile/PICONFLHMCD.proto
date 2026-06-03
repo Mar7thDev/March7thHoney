@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PICONFLHMCD {
-    repeated uint32 JKCEBHFIENI = 3;
+    repeated uint32 JKCEBHFIENI = 7;
 }

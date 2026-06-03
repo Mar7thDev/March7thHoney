@@ -4,6 +4,6 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message JPGACKPLGCD {
     bool KALACJBAPOA = 1;
-    bool IBLGOCFBOCO = 3;
     bool FOKJIPGMKAN = 2;
+    bool IBLGOCFBOCO = 3;
 }

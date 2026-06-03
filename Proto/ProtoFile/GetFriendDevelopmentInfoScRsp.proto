@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NJMOBNILIHI.proto";
 
 message GetFriendDevelopmentInfoScRsp {
-    repeated NJMOBNILIHI EMBPENNEIJH = 11;
-    uint32 uid = 12;
-    uint32 retcode = 14;
+    repeated NJMOBNILIHI EMBPENNEIJH = 2;
+    uint32 uid = 7;
+    uint32 retcode = 10;
 }

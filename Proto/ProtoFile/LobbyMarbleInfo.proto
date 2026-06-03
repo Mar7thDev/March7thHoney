@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LobbyMarbleInfo {
-    repeated uint32 CIPEHBBKFIH = 3;
     uint32 GDBNHOJPKIE = 1;
-    uint32 score_id = 4;
     uint32 rank = 2;
+    repeated uint32 CIPEHBBKFIH = 3;
+    uint32 score_id = 4;
 }

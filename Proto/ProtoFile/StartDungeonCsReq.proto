@@ -2,11 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
+import "KVP.proto";
 
 message StartDungeonCsReq {
-    repeated uint32 JAJDGPAKNLL = 2;
-    repeated APAMFCKFHLL COLOHMBFKIH = 5;
-    repeated APAMFCKFHLL ENCINPIHHDF = 4;
-    uint32 EICEKDBENKM = 1;
+    repeated KVP COLOHMBFKIH = 1;
+    repeated KVP ENCINPIHHDF = 2;
+    repeated uint32 JAJDGPAKNLL = 6;
+    uint32 EICEKDBENKM = 8;
 }

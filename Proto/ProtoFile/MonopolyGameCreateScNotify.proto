@@ -6,6 +6,6 @@ import "CCOHBABCHAI.proto";
 import "GLMGJFEEJHD.proto";
 
 message MonopolyGameCreateScNotify {
-    CCOHBABCHAI IBLHLCMNMAJ = 10;
-    GLMGJFEEJHD AJGOEJHKOKE = 6;
+    CCOHBABCHAI IBLHLCMNMAJ = 7;
+    GLMGJFEEJHD AJGOEJHKOKE = 10;
 }

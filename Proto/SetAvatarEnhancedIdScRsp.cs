@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5TZXRBdmF0YXJFbmhhbmNlZElkU2NSc3AucHJvdG8iXgoYU2V0QXZhdGFy",
-            "RW5oYW5jZWRJZFNjUnNwEhcKD3Vua19lbmhhbmNlZF9pZBgOIAEoDRIYChBn",
-            "cm93dGhfYXZhdGFyX2lkGAogASgNEg8KB3JldGNvZGUYDyABKA1CFqoCE01h",
+            "RW5oYW5jZWRJZFNjUnNwEg8KB3JldGNvZGUYAiABKA0SGAoQZ3Jvd3RoX2F2",
+            "YXRhcl9pZBgHIAEoDRIXCg91bmtfZW5oYW5jZWRfaWQYCiABKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetAvatarEnhancedIdScRsp), global::March7thHoney.Proto.SetAvatarEnhancedIdScRsp.Parser, new[]{ "UnkEnhancedId", "GrowthAvatarId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetAvatarEnhancedIdScRsp), global::March7thHoney.Proto.SetAvatarEnhancedIdScRsp.Parser, new[]{ "Retcode", "GrowthAvatarId", "UnkEnhancedId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetAvatarEnhancedIdScRsp(SetAvatarEnhancedIdScRsp other) : this() {
-      unkEnhancedId_ = other.unkEnhancedId_;
-      growthAvatarId_ = other.growthAvatarId_;
       retcode_ = other.retcode_;
+      growthAvatarId_ = other.growthAvatarId_;
+      unkEnhancedId_ = other.unkEnhancedId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,20 @@ namespace March7thHoney.Proto {
       return new SetAvatarEnhancedIdScRsp(this);
     }
 
-    /// <summary>Field number for the "unk_enhanced_id" field.</summary>
-    public const int UnkEnhancedIdFieldNumber = 14;
-    private uint unkEnhancedId_;
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 2;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint UnkEnhancedId {
-      get { return unkEnhancedId_; }
+    public uint Retcode {
+      get { return retcode_; }
       set {
-        unkEnhancedId_ = value;
+        retcode_ = value;
       }
     }
 
     /// <summary>Field number for the "growth_avatar_id" field.</summary>
-    public const int GrowthAvatarIdFieldNumber = 10;
+    public const int GrowthAvatarIdFieldNumber = 7;
     private uint growthAvatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,15 +109,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
-    private uint retcode_;
+    /// <summary>Field number for the "unk_enhanced_id" field.</summary>
+    public const int UnkEnhancedIdFieldNumber = 10;
+    private uint unkEnhancedId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
+    public uint UnkEnhancedId {
+      get { return unkEnhancedId_; }
       set {
-        retcode_ = value;
+        unkEnhancedId_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (UnkEnhancedId != other.UnkEnhancedId) return false;
-      if (GrowthAvatarId != other.GrowthAvatarId) return false;
       if (Retcode != other.Retcode) return false;
+      if (GrowthAvatarId != other.GrowthAvatarId) return false;
+      if (UnkEnhancedId != other.UnkEnhancedId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (UnkEnhancedId != 0) hash ^= UnkEnhancedId.GetHashCode();
-      if (GrowthAvatarId != 0) hash ^= GrowthAvatarId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (GrowthAvatarId != 0) hash ^= GrowthAvatarId.GetHashCode();
+      if (UnkEnhancedId != 0) hash ^= UnkEnhancedId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Retcode != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Retcode);
+      }
       if (GrowthAvatarId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(56);
         output.WriteUInt32(GrowthAvatarId);
       }
       if (UnkEnhancedId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteUInt32(UnkEnhancedId);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Retcode != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Retcode);
+      }
       if (GrowthAvatarId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(56);
         output.WriteUInt32(GrowthAvatarId);
       }
       if (UnkEnhancedId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteUInt32(UnkEnhancedId);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (UnkEnhancedId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UnkEnhancedId);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (GrowthAvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GrowthAvatarId);
       }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      if (UnkEnhancedId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UnkEnhancedId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.UnkEnhancedId != 0) {
-        UnkEnhancedId = other.UnkEnhancedId;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       if (other.GrowthAvatarId != 0) {
         GrowthAvatarId = other.GrowthAvatarId;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
+      if (other.UnkEnhancedId != 0) {
+        UnkEnhancedId = other.UnkEnhancedId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 16: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             GrowthAvatarId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 80: {
             UnkEnhancedId = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 16: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             GrowthAvatarId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 80: {
             UnkEnhancedId = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }

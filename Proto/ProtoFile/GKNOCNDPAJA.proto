@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GKNOCNDPAJA {
-    uint64 IEPAPOPIFHH = 6;
-    uint32 level = 12;
-    uint32 HCBADDHNIDG = 13;
+    uint64 IEPAPOPIFHH = 3;
+    uint32 max_level = 7;
+    uint32 level = 10;
 }

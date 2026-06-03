@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LGEDKNLBCAN.proto";
 
 message ChimeraDuelSyncChangeScNotify {
-    repeated LGEDKNLBCAN DGNGMJMPFGK = 6;
+    repeated LGEDKNLBCAN DGNGMJMPFGK = 15;
 }

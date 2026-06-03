@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EGMOEMCIINO.proto";
 
 message FloorCustomValueSnapshot {
-    string str_val = 5;
     string name = 1;
-    float float_val = 4;
     EGMOEMCIINO type = 2;
     bool bool_val = 3;
+    float float_val = 4;
+    string str_val = 5;
 }

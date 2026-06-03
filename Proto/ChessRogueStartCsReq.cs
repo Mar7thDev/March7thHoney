@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpDaGVzc1JvZ3VlU3RhcnRDc1JlcS5wcm90byKyAQoUQ2hlc3NSb2d1ZVN0",
-            "YXJ0Q3NSZXESEwoLT0NFR0VLS0ZMQUwYAyADKA0SEwoLSktQSVBOTUdHT0EY",
-            "DSADKA0SJQoddW5maW5pc2hlZF9zdG9yeV9saW5lX2lkX2xpc3QYCyADKA0S",
-            "EwoLTk9FUEJOTUpGR0wYCSADKA0SEwoLUERGQUhFS05ITkoYCCABKA0SEwoL",
-            "QUZFTUJMRkNDQ0gYBSABKA0SCgoCaWQYByABKA1CFqoCE01hcmNoN3RoSG9u",
+            "YXJ0Q3NSZXESEwoLTk9FUEJOTUpGR0wYASADKA0SJQoddW5maW5pc2hlZF9z",
+            "dG9yeV9saW5lX2lkX2xpc3QYAyADKA0SCgoCaWQYBCABKA0SEwoLT0NFR0VL",
+            "S0ZMQUwYBSADKA0SEwoLUERGQUhFS05ITkoYCSABKA0SEwoLSktQSVBOTUdH",
+            "T0EYDCADKA0SEwoLQUZFTUJMRkNDQ0gYDiABKA1CFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChessRogueStartCsReq), global::March7thHoney.Proto.ChessRogueStartCsReq.Parser, new[]{ "OCEGEKKFLAL", "JKPIPNMGGOA", "UnfinishedStoryLineIdList", "NOEPBNMJFGL", "PDFAHEKNHNJ", "AFEMBLFCCCH", "Id" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChessRogueStartCsReq), global::March7thHoney.Proto.ChessRogueStartCsReq.Parser, new[]{ "NOEPBNMJFGL", "UnfinishedStoryLineIdList", "Id", "OCEGEKKFLAL", "PDFAHEKNHNJ", "JKPIPNMGGOA", "AFEMBLFCCCH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,13 +75,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChessRogueStartCsReq(ChessRogueStartCsReq other) : this() {
-      oCEGEKKFLAL_ = other.oCEGEKKFLAL_.Clone();
-      jKPIPNMGGOA_ = other.jKPIPNMGGOA_.Clone();
-      unfinishedStoryLineIdList_ = other.unfinishedStoryLineIdList_.Clone();
       nOEPBNMJFGL_ = other.nOEPBNMJFGL_.Clone();
-      pDFAHEKNHNJ_ = other.pDFAHEKNHNJ_;
-      aFEMBLFCCCH_ = other.aFEMBLFCCCH_;
+      unfinishedStoryLineIdList_ = other.unfinishedStoryLineIdList_.Clone();
       id_ = other.id_;
+      oCEGEKKFLAL_ = other.oCEGEKKFLAL_.Clone();
+      pDFAHEKNHNJ_ = other.pDFAHEKNHNJ_;
+      jKPIPNMGGOA_ = other.jKPIPNMGGOA_.Clone();
+      aFEMBLFCCCH_ = other.aFEMBLFCCCH_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,43 +91,10 @@ namespace March7thHoney.Proto {
       return new ChessRogueStartCsReq(this);
     }
 
-    /// <summary>Field number for the "OCEGEKKFLAL" field.</summary>
-    public const int OCEGEKKFLALFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_oCEGEKKFLAL_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> oCEGEKKFLAL_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OCEGEKKFLAL {
-      get { return oCEGEKKFLAL_; }
-    }
-
-    /// <summary>Field number for the "JKPIPNMGGOA" field.</summary>
-    public const int JKPIPNMGGOAFieldNumber = 13;
-    private static readonly pb::FieldCodec<uint> _repeated_jKPIPNMGGOA_codec
-        = pb::FieldCodec.ForUInt32(106);
-    private readonly pbc::RepeatedField<uint> jKPIPNMGGOA_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> JKPIPNMGGOA {
-      get { return jKPIPNMGGOA_; }
-    }
-
-    /// <summary>Field number for the "unfinished_story_line_id_list" field.</summary>
-    public const int UnfinishedStoryLineIdListFieldNumber = 11;
-    private static readonly pb::FieldCodec<uint> _repeated_unfinishedStoryLineIdList_codec
-        = pb::FieldCodec.ForUInt32(90);
-    private readonly pbc::RepeatedField<uint> unfinishedStoryLineIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnfinishedStoryLineIdList {
-      get { return unfinishedStoryLineIdList_; }
-    }
-
     /// <summary>Field number for the "NOEPBNMJFGL" field.</summary>
-    public const int NOEPBNMJFGLFieldNumber = 9;
+    public const int NOEPBNMJFGLFieldNumber = 1;
     private static readonly pb::FieldCodec<uint> _repeated_nOEPBNMJFGL_codec
-        = pb::FieldCodec.ForUInt32(74);
+        = pb::FieldCodec.ForUInt32(10);
     private readonly pbc::RepeatedField<uint> nOEPBNMJFGL_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,8 +102,42 @@ namespace March7thHoney.Proto {
       get { return nOEPBNMJFGL_; }
     }
 
+    /// <summary>Field number for the "unfinished_story_line_id_list" field.</summary>
+    public const int UnfinishedStoryLineIdListFieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_unfinishedStoryLineIdList_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> unfinishedStoryLineIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UnfinishedStoryLineIdList {
+      get { return unfinishedStoryLineIdList_; }
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 4;
+    private uint id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "OCEGEKKFLAL" field.</summary>
+    public const int OCEGEKKFLALFieldNumber = 5;
+    private static readonly pb::FieldCodec<uint> _repeated_oCEGEKKFLAL_codec
+        = pb::FieldCodec.ForUInt32(42);
+    private readonly pbc::RepeatedField<uint> oCEGEKKFLAL_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OCEGEKKFLAL {
+      get { return oCEGEKKFLAL_; }
+    }
+
     /// <summary>Field number for the "PDFAHEKNHNJ" field.</summary>
-    public const int PDFAHEKNHNJFieldNumber = 8;
+    public const int PDFAHEKNHNJFieldNumber = 9;
     private uint pDFAHEKNHNJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -147,8 +148,19 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "JKPIPNMGGOA" field.</summary>
+    public const int JKPIPNMGGOAFieldNumber = 12;
+    private static readonly pb::FieldCodec<uint> _repeated_jKPIPNMGGOA_codec
+        = pb::FieldCodec.ForUInt32(98);
+    private readonly pbc::RepeatedField<uint> jKPIPNMGGOA_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> JKPIPNMGGOA {
+      get { return jKPIPNMGGOA_; }
+    }
+
     /// <summary>Field number for the "AFEMBLFCCCH" field.</summary>
-    public const int AFEMBLFCCCHFieldNumber = 5;
+    public const int AFEMBLFCCCHFieldNumber = 14;
     private uint aFEMBLFCCCH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,18 +168,6 @@ namespace March7thHoney.Proto {
       get { return aFEMBLFCCCH_; }
       set {
         aFEMBLFCCCH_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 7;
-    private uint id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Id {
-      get { return id_; }
-      set {
-        id_ = value;
       }
     }
 
@@ -186,13 +186,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!oCEGEKKFLAL_.Equals(other.oCEGEKKFLAL_)) return false;
-      if(!jKPIPNMGGOA_.Equals(other.jKPIPNMGGOA_)) return false;
-      if(!unfinishedStoryLineIdList_.Equals(other.unfinishedStoryLineIdList_)) return false;
       if(!nOEPBNMJFGL_.Equals(other.nOEPBNMJFGL_)) return false;
-      if (PDFAHEKNHNJ != other.PDFAHEKNHNJ) return false;
-      if (AFEMBLFCCCH != other.AFEMBLFCCCH) return false;
+      if(!unfinishedStoryLineIdList_.Equals(other.unfinishedStoryLineIdList_)) return false;
       if (Id != other.Id) return false;
+      if(!oCEGEKKFLAL_.Equals(other.oCEGEKKFLAL_)) return false;
+      if (PDFAHEKNHNJ != other.PDFAHEKNHNJ) return false;
+      if(!jKPIPNMGGOA_.Equals(other.jKPIPNMGGOA_)) return false;
+      if (AFEMBLFCCCH != other.AFEMBLFCCCH) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -200,13 +200,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= oCEGEKKFLAL_.GetHashCode();
-      hash ^= jKPIPNMGGOA_.GetHashCode();
-      hash ^= unfinishedStoryLineIdList_.GetHashCode();
       hash ^= nOEPBNMJFGL_.GetHashCode();
-      if (PDFAHEKNHNJ != 0) hash ^= PDFAHEKNHNJ.GetHashCode();
-      if (AFEMBLFCCCH != 0) hash ^= AFEMBLFCCCH.GetHashCode();
+      hash ^= unfinishedStoryLineIdList_.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
+      hash ^= oCEGEKKFLAL_.GetHashCode();
+      if (PDFAHEKNHNJ != 0) hash ^= PDFAHEKNHNJ.GetHashCode();
+      hash ^= jKPIPNMGGOA_.GetHashCode();
+      if (AFEMBLFCCCH != 0) hash ^= AFEMBLFCCCH.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -225,22 +225,22 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      oCEGEKKFLAL_.WriteTo(output, _repeated_oCEGEKKFLAL_codec);
-      if (AFEMBLFCCCH != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(AFEMBLFCCCH);
-      }
-      if (Id != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Id);
-      }
-      if (PDFAHEKNHNJ != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PDFAHEKNHNJ);
-      }
       nOEPBNMJFGL_.WriteTo(output, _repeated_nOEPBNMJFGL_codec);
       unfinishedStoryLineIdList_.WriteTo(output, _repeated_unfinishedStoryLineIdList_codec);
+      if (Id != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Id);
+      }
+      oCEGEKKFLAL_.WriteTo(output, _repeated_oCEGEKKFLAL_codec);
+      if (PDFAHEKNHNJ != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(PDFAHEKNHNJ);
+      }
       jKPIPNMGGOA_.WriteTo(output, _repeated_jKPIPNMGGOA_codec);
+      if (AFEMBLFCCCH != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(AFEMBLFCCCH);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -251,22 +251,22 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      oCEGEKKFLAL_.WriteTo(ref output, _repeated_oCEGEKKFLAL_codec);
-      if (AFEMBLFCCCH != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(AFEMBLFCCCH);
-      }
-      if (Id != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Id);
-      }
-      if (PDFAHEKNHNJ != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PDFAHEKNHNJ);
-      }
       nOEPBNMJFGL_.WriteTo(ref output, _repeated_nOEPBNMJFGL_codec);
       unfinishedStoryLineIdList_.WriteTo(ref output, _repeated_unfinishedStoryLineIdList_codec);
+      if (Id != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Id);
+      }
+      oCEGEKKFLAL_.WriteTo(ref output, _repeated_oCEGEKKFLAL_codec);
+      if (PDFAHEKNHNJ != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(PDFAHEKNHNJ);
+      }
       jKPIPNMGGOA_.WriteTo(ref output, _repeated_jKPIPNMGGOA_codec);
+      if (AFEMBLFCCCH != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(AFEMBLFCCCH);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -277,18 +277,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += oCEGEKKFLAL_.CalculateSize(_repeated_oCEGEKKFLAL_codec);
-      size += jKPIPNMGGOA_.CalculateSize(_repeated_jKPIPNMGGOA_codec);
-      size += unfinishedStoryLineIdList_.CalculateSize(_repeated_unfinishedStoryLineIdList_codec);
       size += nOEPBNMJFGL_.CalculateSize(_repeated_nOEPBNMJFGL_codec);
+      size += unfinishedStoryLineIdList_.CalculateSize(_repeated_unfinishedStoryLineIdList_codec);
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
+      size += oCEGEKKFLAL_.CalculateSize(_repeated_oCEGEKKFLAL_codec);
       if (PDFAHEKNHNJ != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PDFAHEKNHNJ);
       }
+      size += jKPIPNMGGOA_.CalculateSize(_repeated_jKPIPNMGGOA_codec);
       if (AFEMBLFCCCH != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AFEMBLFCCCH);
-      }
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -302,18 +302,18 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      oCEGEKKFLAL_.Add(other.oCEGEKKFLAL_);
-      jKPIPNMGGOA_.Add(other.jKPIPNMGGOA_);
-      unfinishedStoryLineIdList_.Add(other.unfinishedStoryLineIdList_);
       nOEPBNMJFGL_.Add(other.nOEPBNMJFGL_);
+      unfinishedStoryLineIdList_.Add(other.unfinishedStoryLineIdList_);
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      oCEGEKKFLAL_.Add(other.oCEGEKKFLAL_);
       if (other.PDFAHEKNHNJ != 0) {
         PDFAHEKNHNJ = other.PDFAHEKNHNJ;
       }
+      jKPIPNMGGOA_.Add(other.jKPIPNMGGOA_);
       if (other.AFEMBLFCCCH != 0) {
         AFEMBLFCCCH = other.AFEMBLFCCCH;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -334,36 +334,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26:
-          case 24: {
-            oCEGEKKFLAL_.AddEntriesFrom(input, _repeated_oCEGEKKFLAL_codec);
-            break;
-          }
-          case 40: {
-            AFEMBLFCCCH = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            Id = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            PDFAHEKNHNJ = input.ReadUInt32();
-            break;
-          }
-          case 74:
-          case 72: {
+          case 10:
+          case 8: {
             nOEPBNMJFGL_.AddEntriesFrom(input, _repeated_nOEPBNMJFGL_codec);
             break;
           }
-          case 90:
-          case 88: {
+          case 26:
+          case 24: {
             unfinishedStoryLineIdList_.AddEntriesFrom(input, _repeated_unfinishedStoryLineIdList_codec);
             break;
           }
-          case 106:
-          case 104: {
+          case 32: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 42:
+          case 40: {
+            oCEGEKKFLAL_.AddEntriesFrom(input, _repeated_oCEGEKKFLAL_codec);
+            break;
+          }
+          case 72: {
+            PDFAHEKNHNJ = input.ReadUInt32();
+            break;
+          }
+          case 98:
+          case 96: {
             jKPIPNMGGOA_.AddEntriesFrom(input, _repeated_jKPIPNMGGOA_codec);
+            break;
+          }
+          case 112: {
+            AFEMBLFCCCH = input.ReadUInt32();
             break;
           }
         }
@@ -385,36 +385,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26:
-          case 24: {
-            oCEGEKKFLAL_.AddEntriesFrom(ref input, _repeated_oCEGEKKFLAL_codec);
-            break;
-          }
-          case 40: {
-            AFEMBLFCCCH = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            Id = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            PDFAHEKNHNJ = input.ReadUInt32();
-            break;
-          }
-          case 74:
-          case 72: {
+          case 10:
+          case 8: {
             nOEPBNMJFGL_.AddEntriesFrom(ref input, _repeated_nOEPBNMJFGL_codec);
             break;
           }
-          case 90:
-          case 88: {
+          case 26:
+          case 24: {
             unfinishedStoryLineIdList_.AddEntriesFrom(ref input, _repeated_unfinishedStoryLineIdList_codec);
             break;
           }
-          case 106:
-          case 104: {
+          case 32: {
+            Id = input.ReadUInt32();
+            break;
+          }
+          case 42:
+          case 40: {
+            oCEGEKKFLAL_.AddEntriesFrom(ref input, _repeated_oCEGEKKFLAL_codec);
+            break;
+          }
+          case 72: {
+            PDFAHEKNHNJ = input.ReadUInt32();
+            break;
+          }
+          case 98:
+          case 96: {
             jKPIPNMGGOA_.AddEntriesFrom(ref input, _repeated_jKPIPNMGGOA_codec);
+            break;
+          }
+          case 112: {
+            AFEMBLFCCCH = input.ReadUInt32();
             break;
           }
         }

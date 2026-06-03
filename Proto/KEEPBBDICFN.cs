@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static KEEPBBDICFNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFLRUVQQkJESUNGTi5wcm90byI3CgtLRUVQQkJESUNGThITCgtMT0dITEdL",
-            "SUZFThgLIAEoDRITCgtQRElBT0xETUJMTBgNIAEoDUIWqgITTWFyY2g3dGhI",
+            "ChFLRUVQQkJESUNGTi5wcm90byI3CgtLRUVQQkJESUNGThITCgtQRElBT0xE",
+            "TUJMTBgJIAEoDRITCgtMT0dITEdLSUZFThgLIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KEEPBBDICFN), global::March7thHoney.Proto.KEEPBBDICFN.Parser, new[]{ "LOGHLGKIFEN", "PDIAOLDMBLL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KEEPBBDICFN), global::March7thHoney.Proto.KEEPBBDICFN.Parser, new[]{ "PDIAOLDMBLL", "LOGHLGKIFEN" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KEEPBBDICFN(KEEPBBDICFN other) : this() {
-      lOGHLGKIFEN_ = other.lOGHLGKIFEN_;
       pDIAOLDMBLL_ = other.pDIAOLDMBLL_;
+      lOGHLGKIFEN_ = other.lOGHLGKIFEN_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,6 +81,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KEEPBBDICFN Clone() {
       return new KEEPBBDICFN(this);
+    }
+
+    /// <summary>Field number for the "PDIAOLDMBLL" field.</summary>
+    public const int PDIAOLDMBLLFieldNumber = 9;
+    private uint pDIAOLDMBLL_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PDIAOLDMBLL {
+      get { return pDIAOLDMBLL_; }
+      set {
+        pDIAOLDMBLL_ = value;
+      }
     }
 
     /// <summary>Field number for the "LOGHLGKIFEN" field.</summary>
@@ -92,18 +104,6 @@ namespace March7thHoney.Proto {
       get { return lOGHLGKIFEN_; }
       set {
         lOGHLGKIFEN_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "PDIAOLDMBLL" field.</summary>
-    public const int PDIAOLDMBLLFieldNumber = 13;
-    private uint pDIAOLDMBLL_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PDIAOLDMBLL {
-      get { return pDIAOLDMBLL_; }
-      set {
-        pDIAOLDMBLL_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (LOGHLGKIFEN != other.LOGHLGKIFEN) return false;
       if (PDIAOLDMBLL != other.PDIAOLDMBLL) return false;
+      if (LOGHLGKIFEN != other.LOGHLGKIFEN) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LOGHLGKIFEN != 0) hash ^= LOGHLGKIFEN.GetHashCode();
       if (PDIAOLDMBLL != 0) hash ^= PDIAOLDMBLL.GetHashCode();
+      if (LOGHLGKIFEN != 0) hash ^= LOGHLGKIFEN.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (PDIAOLDMBLL != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(PDIAOLDMBLL);
+      }
       if (LOGHLGKIFEN != 0) {
         output.WriteRawTag(88);
         output.WriteUInt32(LOGHLGKIFEN);
-      }
-      if (PDIAOLDMBLL != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(PDIAOLDMBLL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PDIAOLDMBLL != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(PDIAOLDMBLL);
+      }
       if (LOGHLGKIFEN != 0) {
         output.WriteRawTag(88);
         output.WriteUInt32(LOGHLGKIFEN);
-      }
-      if (PDIAOLDMBLL != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(PDIAOLDMBLL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LOGHLGKIFEN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LOGHLGKIFEN);
-      }
       if (PDIAOLDMBLL != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PDIAOLDMBLL);
+      }
+      if (LOGHLGKIFEN != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LOGHLGKIFEN);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.LOGHLGKIFEN != 0) {
-        LOGHLGKIFEN = other.LOGHLGKIFEN;
-      }
       if (other.PDIAOLDMBLL != 0) {
         PDIAOLDMBLL = other.PDIAOLDMBLL;
+      }
+      if (other.LOGHLGKIFEN != 0) {
+        LOGHLGKIFEN = other.LOGHLGKIFEN;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
-            LOGHLGKIFEN = input.ReadUInt32();
+          case 72: {
+            PDIAOLDMBLL = input.ReadUInt32();
             break;
           }
-          case 104: {
-            PDIAOLDMBLL = input.ReadUInt32();
+          case 88: {
+            LOGHLGKIFEN = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
-            LOGHLGKIFEN = input.ReadUInt32();
+          case 72: {
+            PDIAOLDMBLL = input.ReadUInt32();
             break;
           }
-          case 104: {
-            PDIAOLDMBLL = input.ReadUInt32();
+          case 88: {
+            LOGHLGKIFEN = input.ReadUInt32();
             break;
           }
         }

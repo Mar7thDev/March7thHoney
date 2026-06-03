@@ -31,30 +31,29 @@ namespace March7thHoney.Proto {
             "RENGTkNQLnByb3RvGhFOTExMQUFFSk9CUC5wcm90bxoRUEZOSENPSk9CS0gu",
             "cHJvdG8aFVBsYXllckJhc2ljSW5mby5wcm90bxobUGxheWVyQm9hcmRNb2R1",
             "bGVTeW5jLnByb3RvGgtRdWVzdC5wcm90bxoLUmVsaWMucHJvdG8aEFN5bmNT",
-            "dGF0dXMucHJvdG8aFVdhaXREZWxSZXNvdXJjZS5wcm90byKZBgoSUGxheWVy",
-            "U3luY1NjTm90aWZ5EiIKC0RIS0ZDREFHSERNGKQCIAEoCzIMLkNKTENQTURH",
-            "SUJPEiEKC3N5bmNfc3RhdHVzGJ8HIAEoCzILLlN5bmNTdGF0dXMSHwoLRkhI",
-            "R0RBQ01KRUQYpgUgASgLMgkuSXRlbUxpc3QSFwoOZGVsX3JlbGljX2xpc3QY",
-            "iwcgAygNEiAKDW1hdGVyaWFsX2xpc3QYCyADKAsyCS5NYXRlcmlhbBIiCgxt",
-            "aXNzaW9uX3N5bmMYDiABKAsyDC5NaXNzaW9uU3luYxIiCgtFUEJHTEZIRUZK",
-            "ShiXDSADKAsyDC5OTExMQUFFSk9CUBIkCgpiYXNpY19pbmZvGA8gASgLMhAu",
-            "UGxheWVyQmFzaWNJbmZvEhoKEmRlbF9lcXVpcG1lbnRfbGlzdBgDIAMoDRIi",
-            "Cg5lcXVpcG1lbnRfbGlzdBgFIAMoCzIKLkVxdWlwbWVudBIiCgtOTUJBRkpH",
-            "Rk9JSBiDDiADKAsyDC5OS0RORkRDRk5DUBI4ChdwbGF5ZXJib2FyZF9tb2R1",
-            "bGVfc3luYxj9AyABKAsyFi5QbGF5ZXJCb2FyZE1vZHVsZVN5bmMSMAoWd2Fp",
-            "dF9kZWxfcmVzb3VyY2VfbGlzdBgIIAMoCzIQLldhaXREZWxSZXNvdXJjZRIa",
-            "CgpxdWVzdF9saXN0GAEgAygLMgYuUXVlc3QSGgoKcmVsaWNfbGlzdBgGIAMo",
-            "CzIGLlJlbGljEhMKC1BKT0xFR0ZKQUpGGAQgAygNEh8KC05BSkZNSUlGSUVD",
-            "GNUGIAMoCzIJLk1hdGVyaWFsEiAKC2F2YXRhcl9zeW5jGAcgASgLMgsuQXZh",
-            "dGFyU3luYxIrChFiYXNpY19tb2R1bGVfc3luYxgCIAEoCzIQLkJhc2ljTW9k",
-            "dWxlU3luYxIhCgtKSUVPSEJCREpEQRg4IAMoCzIMLkNDSE1IT09ORUdHEiIK",
-            "C09GRkhPSEdITkRIGLEEIAEoCzIMLlBGTkhDT0pPQktIEh4KFXRvdGFsX2Fj",
-            "aGlldmVtZW50X2V4cBixCSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
-            "BnByb3RvMw=="));
+            "dGF0dXMucHJvdG8aFVdhaXREZWxSZXNvdXJjZS5wcm90byKMBgoSUGxheWVy",
+            "U3luY1NjTm90aWZ5EiUKC0pISk5NT0ZNUE1PGAIgASgLMhAuQmFzaWNNb2R1",
+            "bGVTeW5jEhYKDmRlbF9yZWxpY19saXN0GAUgAygNEiIKDG1pc3Npb25fc3lu",
+            "YxgGIAEoCzIMLk1pc3Npb25TeW5jEjAKFndhaXRfZGVsX3Jlc291cmNlX2xp",
+            "c3QYByADKAsyEC5XYWl0RGVsUmVzb3VyY2USGgoKcmVsaWNfbGlzdBgIIAMo",
+            "CzIGLlJlbGljEiAKC2F2YXRhcl9zeW5jGAkgASgLMgsuQXZhdGFyU3luYxIa",
+            "CgpxdWVzdF9saXN0GAogAygLMgYuUXVlc3QSJAoKYmFzaWNfaW5mbxgLIAEo",
+            "CzIQLlBsYXllckJhc2ljSW5mbxIiCg5lcXVpcG1lbnRfbGlzdBgMIAMoCzIK",
+            "LkVxdWlwbWVudBIgCg1tYXRlcmlhbF9saXN0GA4gAygLMgkuTWF0ZXJpYWwS",
+            "GgoSZGVsX2VxdWlwbWVudF9saXN0GA8gAygNEiIKC05NQkFGSkdGT0lIGPAB",
+            "IAMoCzIMLk5LRE5GRENGTkNQEkAKH3VwZGF0ZV9wbGF5ZXJfYm9hcmRfbW9k",
+            "dWxlX2xpc3QYxQIgASgLMhYuUGxheWVyQm9hcmRNb2R1bGVTeW5jEh8KC05B",
+            "SkZNSUlGSUVDGI0EIAMoCzIJLk1hdGVyaWFsEiIKC0pJRU9IQkJESkRBGOAE",
+            "IAMoCzIMLkNDSE1IT09ORUdHEjcKIHVwZGF0ZV9wbGF0Zm9ybV9ib3VuZF9n",
+            "aWZ0c19saXN0GL4IIAMoCzIMLk5MTExBQUVKT0JQEh8KC0ZISEdEQUNNSkVE",
+            "GOoIIAEoCzIJLkl0ZW1MaXN0EiEKC3N5bmNfc3RhdHVzGP0KIAEoCzILLlN5",
+            "bmNTdGF0dXMSMwocdXBkYXRlX3BldF9zdW1tb25faXRlbXNfbGlzdBisCyAB",
+            "KAsyDC5QRk5IQ09KT0JLSBIiCgtESEtGQ0RBR0hETRiqDyABKAsyDC5DSkxD",
+            "UE1ER0lCT0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarSyncReflection.Descriptor, global::March7thHoney.Proto.BasicModuleSyncReflection.Descriptor, global::March7thHoney.Proto.CCHMHOONEGGReflection.Descriptor, global::March7thHoney.Proto.CJLCPMDGIBOReflection.Descriptor, global::March7thHoney.Proto.EquipmentReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.MaterialReflection.Descriptor, global::March7thHoney.Proto.MissionSyncReflection.Descriptor, global::March7thHoney.Proto.NKDNFDCFNCPReflection.Descriptor, global::March7thHoney.Proto.NLLLAAEJOBPReflection.Descriptor, global::March7thHoney.Proto.PFNHCOJOBKHReflection.Descriptor, global::March7thHoney.Proto.PlayerBasicInfoReflection.Descriptor, global::March7thHoney.Proto.PlayerBoardModuleSyncReflection.Descriptor, global::March7thHoney.Proto.QuestReflection.Descriptor, global::March7thHoney.Proto.RelicReflection.Descriptor, global::March7thHoney.Proto.SyncStatusReflection.Descriptor, global::March7thHoney.Proto.WaitDelResourceReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSyncScNotify), global::March7thHoney.Proto.PlayerSyncScNotify.Parser, new[]{ "DHKFCDAGHDM", "SyncStatus", "FHHGDACMJED", "DelRelicList", "MaterialList", "MissionSync", "EPBGLFHEFJJ", "BasicInfo", "DelEquipmentList", "EquipmentList", "NMBAFJGFOIH", "PlayerboardModuleSync", "WaitDelResourceList", "QuestList", "RelicList", "PJOLEGFJAJF", "NAJFMIIFIEC", "AvatarSync", "BasicModuleSync", "JIEOHBBDJDA", "OFFHOHGHNDH", "TotalAchievementExp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerSyncScNotify), global::March7thHoney.Proto.PlayerSyncScNotify.Parser, new[]{ "JHJNMOFMPMO", "DelRelicList", "MissionSync", "WaitDelResourceList", "RelicList", "AvatarSync", "QuestList", "BasicInfo", "EquipmentList", "MaterialList", "DelEquipmentList", "NMBAFJGFOIH", "UpdatePlayerBoardModuleList", "NAJFMIIFIEC", "JIEOHBBDJDA", "UpdatePlatformBoundGiftsList", "FHHGDACMJED", "SyncStatus", "UpdatePetSummonItemsList", "DHKFCDAGHDM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -96,28 +95,26 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerSyncScNotify(PlayerSyncScNotify other) : this() {
-      dHKFCDAGHDM_ = other.dHKFCDAGHDM_ != null ? other.dHKFCDAGHDM_.Clone() : null;
-      syncStatus_ = other.syncStatus_ != null ? other.syncStatus_.Clone() : null;
-      fHHGDACMJED_ = other.fHHGDACMJED_ != null ? other.fHHGDACMJED_.Clone() : null;
+      jHJNMOFMPMO_ = other.jHJNMOFMPMO_ != null ? other.jHJNMOFMPMO_.Clone() : null;
       delRelicList_ = other.delRelicList_.Clone();
-      materialList_ = other.materialList_.Clone();
       missionSync_ = other.missionSync_ != null ? other.missionSync_.Clone() : null;
-      ePBGLFHEFJJ_ = other.ePBGLFHEFJJ_.Clone();
-      basicInfo_ = other.basicInfo_ != null ? other.basicInfo_.Clone() : null;
-      delEquipmentList_ = other.delEquipmentList_.Clone();
-      equipmentList_ = other.equipmentList_.Clone();
-      nMBAFJGFOIH_ = other.nMBAFJGFOIH_.Clone();
-      playerboardModuleSync_ = other.playerboardModuleSync_ != null ? other.playerboardModuleSync_.Clone() : null;
       waitDelResourceList_ = other.waitDelResourceList_.Clone();
-      questList_ = other.questList_.Clone();
       relicList_ = other.relicList_.Clone();
-      pJOLEGFJAJF_ = other.pJOLEGFJAJF_.Clone();
-      nAJFMIIFIEC_ = other.nAJFMIIFIEC_.Clone();
       avatarSync_ = other.avatarSync_ != null ? other.avatarSync_.Clone() : null;
-      basicModuleSync_ = other.basicModuleSync_ != null ? other.basicModuleSync_.Clone() : null;
+      questList_ = other.questList_.Clone();
+      basicInfo_ = other.basicInfo_ != null ? other.basicInfo_.Clone() : null;
+      equipmentList_ = other.equipmentList_.Clone();
+      materialList_ = other.materialList_.Clone();
+      delEquipmentList_ = other.delEquipmentList_.Clone();
+      nMBAFJGFOIH_ = other.nMBAFJGFOIH_.Clone();
+      updatePlayerBoardModuleList_ = other.updatePlayerBoardModuleList_ != null ? other.updatePlayerBoardModuleList_.Clone() : null;
+      nAJFMIIFIEC_ = other.nAJFMIIFIEC_.Clone();
       jIEOHBBDJDA_ = other.jIEOHBBDJDA_.Clone();
-      oFFHOHGHNDH_ = other.oFFHOHGHNDH_ != null ? other.oFFHOHGHNDH_.Clone() : null;
-      totalAchievementExp_ = other.totalAchievementExp_;
+      updatePlatformBoundGiftsList_ = other.updatePlatformBoundGiftsList_.Clone();
+      fHHGDACMJED_ = other.fHHGDACMJED_ != null ? other.fHHGDACMJED_.Clone() : null;
+      syncStatus_ = other.syncStatus_ != null ? other.syncStatus_.Clone() : null;
+      updatePetSummonItemsList_ = other.updatePetSummonItemsList_ != null ? other.updatePetSummonItemsList_.Clone() : null;
+      dHKFCDAGHDM_ = other.dHKFCDAGHDM_ != null ? other.dHKFCDAGHDM_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -127,46 +124,22 @@ namespace March7thHoney.Proto {
       return new PlayerSyncScNotify(this);
     }
 
-    /// <summary>Field number for the "DHKFCDAGHDM" field.</summary>
-    public const int DHKFCDAGHDMFieldNumber = 292;
-    private global::March7thHoney.Proto.CJLCPMDGIBO dHKFCDAGHDM_;
+    /// <summary>Field number for the "JHJNMOFMPMO" field.</summary>
+    public const int JHJNMOFMPMOFieldNumber = 2;
+    private global::March7thHoney.Proto.BasicModuleSync jHJNMOFMPMO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.CJLCPMDGIBO DHKFCDAGHDM {
-      get { return dHKFCDAGHDM_; }
+    public global::March7thHoney.Proto.BasicModuleSync JHJNMOFMPMO {
+      get { return jHJNMOFMPMO_; }
       set {
-        dHKFCDAGHDM_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "sync_status" field.</summary>
-    public const int SyncStatusFieldNumber = 927;
-    private global::March7thHoney.Proto.SyncStatus syncStatus_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SyncStatus SyncStatus {
-      get { return syncStatus_; }
-      set {
-        syncStatus_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "FHHGDACMJED" field.</summary>
-    public const int FHHGDACMJEDFieldNumber = 678;
-    private global::March7thHoney.Proto.ItemList fHHGDACMJED_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ItemList FHHGDACMJED {
-      get { return fHHGDACMJED_; }
-      set {
-        fHHGDACMJED_ = value;
+        jHJNMOFMPMO_ = value;
       }
     }
 
     /// <summary>Field number for the "del_relic_list" field.</summary>
-    public const int DelRelicListFieldNumber = 907;
+    public const int DelRelicListFieldNumber = 5;
     private static readonly pb::FieldCodec<uint> _repeated_delRelicList_codec
-        = pb::FieldCodec.ForUInt32(7258);
+        = pb::FieldCodec.ForUInt32(42);
     private readonly pbc::RepeatedField<uint> delRelicList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -174,19 +147,8 @@ namespace March7thHoney.Proto {
       get { return delRelicList_; }
     }
 
-    /// <summary>Field number for the "material_list" field.</summary>
-    public const int MaterialListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Material> _repeated_materialList_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.Material.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Material> materialList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Material>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.Material> MaterialList {
-      get { return materialList_; }
-    }
-
     /// <summary>Field number for the "mission_sync" field.</summary>
-    public const int MissionSyncFieldNumber = 14;
+    public const int MissionSyncFieldNumber = 6;
     private global::March7thHoney.Proto.MissionSync missionSync_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -197,78 +159,10 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "EPBGLFHEFJJ" field.</summary>
-    public const int EPBGLFHEFJJFieldNumber = 1687;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NLLLAAEJOBP> _repeated_ePBGLFHEFJJ_codec
-        = pb::FieldCodec.ForMessage(13498, global::March7thHoney.Proto.NLLLAAEJOBP.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NLLLAAEJOBP> ePBGLFHEFJJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.NLLLAAEJOBP>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.NLLLAAEJOBP> EPBGLFHEFJJ {
-      get { return ePBGLFHEFJJ_; }
-    }
-
-    /// <summary>Field number for the "basic_info" field.</summary>
-    public const int BasicInfoFieldNumber = 15;
-    private global::March7thHoney.Proto.PlayerBasicInfo basicInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlayerBasicInfo BasicInfo {
-      get { return basicInfo_; }
-      set {
-        basicInfo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "del_equipment_list" field.</summary>
-    public const int DelEquipmentListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_delEquipmentList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> delEquipmentList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> DelEquipmentList {
-      get { return delEquipmentList_; }
-    }
-
-    /// <summary>Field number for the "equipment_list" field.</summary>
-    public const int EquipmentListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Equipment> _repeated_equipmentList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.Equipment.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Equipment> equipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Equipment>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.Equipment> EquipmentList {
-      get { return equipmentList_; }
-    }
-
-    /// <summary>Field number for the "NMBAFJGFOIH" field.</summary>
-    public const int NMBAFJGFOIHFieldNumber = 1795;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NKDNFDCFNCP> _repeated_nMBAFJGFOIH_codec
-        = pb::FieldCodec.ForMessage(14362, global::March7thHoney.Proto.NKDNFDCFNCP.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NKDNFDCFNCP> nMBAFJGFOIH_ = new pbc::RepeatedField<global::March7thHoney.Proto.NKDNFDCFNCP>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.NKDNFDCFNCP> NMBAFJGFOIH {
-      get { return nMBAFJGFOIH_; }
-    }
-
-    /// <summary>Field number for the "playerboard_module_sync" field.</summary>
-    public const int PlayerboardModuleSyncFieldNumber = 509;
-    private global::March7thHoney.Proto.PlayerBoardModuleSync playerboardModuleSync_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlayerBoardModuleSync PlayerboardModuleSync {
-      get { return playerboardModuleSync_; }
-      set {
-        playerboardModuleSync_ = value;
-      }
-    }
-
     /// <summary>Field number for the "wait_del_resource_list" field.</summary>
-    public const int WaitDelResourceListFieldNumber = 8;
+    public const int WaitDelResourceListFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.WaitDelResource> _repeated_waitDelResourceList_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.WaitDelResource.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.WaitDelResource.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.WaitDelResource> waitDelResourceList_ = new pbc::RepeatedField<global::March7thHoney.Proto.WaitDelResource>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -276,21 +170,10 @@ namespace March7thHoney.Proto {
       get { return waitDelResourceList_; }
     }
 
-    /// <summary>Field number for the "quest_list" field.</summary>
-    public const int QuestListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Quest> _repeated_questList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.Quest.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Quest> questList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Quest>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.Quest> QuestList {
-      get { return questList_; }
-    }
-
     /// <summary>Field number for the "relic_list" field.</summary>
-    public const int RelicListFieldNumber = 6;
+    public const int RelicListFieldNumber = 8;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.Relic> _repeated_relicList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.Relic.Parser);
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.Relic.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.Relic> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Relic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -298,30 +181,8 @@ namespace March7thHoney.Proto {
       get { return relicList_; }
     }
 
-    /// <summary>Field number for the "PJOLEGFJAJF" field.</summary>
-    public const int PJOLEGFJAJFFieldNumber = 4;
-    private static readonly pb::FieldCodec<uint> _repeated_pJOLEGFJAJF_codec
-        = pb::FieldCodec.ForUInt32(34);
-    private readonly pbc::RepeatedField<uint> pJOLEGFJAJF_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> PJOLEGFJAJF {
-      get { return pJOLEGFJAJF_; }
-    }
-
-    /// <summary>Field number for the "NAJFMIIFIEC" field.</summary>
-    public const int NAJFMIIFIECFieldNumber = 853;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Material> _repeated_nAJFMIIFIEC_codec
-        = pb::FieldCodec.ForMessage(6826, global::March7thHoney.Proto.Material.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Material> nAJFMIIFIEC_ = new pbc::RepeatedField<global::March7thHoney.Proto.Material>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.Material> NAJFMIIFIEC {
-      get { return nAJFMIIFIEC_; }
-    }
-
     /// <summary>Field number for the "avatar_sync" field.</summary>
-    public const int AvatarSyncFieldNumber = 7;
+    public const int AvatarSyncFieldNumber = 9;
     private global::March7thHoney.Proto.AvatarSync avatarSync_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -332,22 +193,100 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "basic_module_sync" field.</summary>
-    public const int BasicModuleSyncFieldNumber = 2;
-    private global::March7thHoney.Proto.BasicModuleSync basicModuleSync_;
+    /// <summary>Field number for the "quest_list" field.</summary>
+    public const int QuestListFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Quest> _repeated_questList_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.Quest.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Quest> questList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Quest>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BasicModuleSync BasicModuleSync {
-      get { return basicModuleSync_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.Quest> QuestList {
+      get { return questList_; }
+    }
+
+    /// <summary>Field number for the "basic_info" field.</summary>
+    public const int BasicInfoFieldNumber = 11;
+    private global::March7thHoney.Proto.PlayerBasicInfo basicInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PlayerBasicInfo BasicInfo {
+      get { return basicInfo_; }
       set {
-        basicModuleSync_ = value;
+        basicInfo_ = value;
       }
     }
 
+    /// <summary>Field number for the "equipment_list" field.</summary>
+    public const int EquipmentListFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Equipment> _repeated_equipmentList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.Equipment.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Equipment> equipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Equipment>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.Equipment> EquipmentList {
+      get { return equipmentList_; }
+    }
+
+    /// <summary>Field number for the "material_list" field.</summary>
+    public const int MaterialListFieldNumber = 14;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Material> _repeated_materialList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.Material.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Material> materialList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Material>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.Material> MaterialList {
+      get { return materialList_; }
+    }
+
+    /// <summary>Field number for the "del_equipment_list" field.</summary>
+    public const int DelEquipmentListFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_delEquipmentList_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> delEquipmentList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> DelEquipmentList {
+      get { return delEquipmentList_; }
+    }
+
+    /// <summary>Field number for the "NMBAFJGFOIH" field.</summary>
+    public const int NMBAFJGFOIHFieldNumber = 240;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NKDNFDCFNCP> _repeated_nMBAFJGFOIH_codec
+        = pb::FieldCodec.ForMessage(1922, global::March7thHoney.Proto.NKDNFDCFNCP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NKDNFDCFNCP> nMBAFJGFOIH_ = new pbc::RepeatedField<global::March7thHoney.Proto.NKDNFDCFNCP>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.NKDNFDCFNCP> NMBAFJGFOIH {
+      get { return nMBAFJGFOIH_; }
+    }
+
+    /// <summary>Field number for the "update_player_board_module_list" field.</summary>
+    public const int UpdatePlayerBoardModuleListFieldNumber = 325;
+    private global::March7thHoney.Proto.PlayerBoardModuleSync updatePlayerBoardModuleList_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PlayerBoardModuleSync UpdatePlayerBoardModuleList {
+      get { return updatePlayerBoardModuleList_; }
+      set {
+        updatePlayerBoardModuleList_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NAJFMIIFIEC" field.</summary>
+    public const int NAJFMIIFIECFieldNumber = 525;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Material> _repeated_nAJFMIIFIEC_codec
+        = pb::FieldCodec.ForMessage(4202, global::March7thHoney.Proto.Material.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Material> nAJFMIIFIEC_ = new pbc::RepeatedField<global::March7thHoney.Proto.Material>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.Material> NAJFMIIFIEC {
+      get { return nAJFMIIFIEC_; }
+    }
+
     /// <summary>Field number for the "JIEOHBBDJDA" field.</summary>
-    public const int JIEOHBBDJDAFieldNumber = 56;
+    public const int JIEOHBBDJDAFieldNumber = 608;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.CCHMHOONEGG> _repeated_jIEOHBBDJDA_codec
-        = pb::FieldCodec.ForMessage(450, global::March7thHoney.Proto.CCHMHOONEGG.Parser);
+        = pb::FieldCodec.ForMessage(4866, global::March7thHoney.Proto.CCHMHOONEGG.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.CCHMHOONEGG> jIEOHBBDJDA_ = new pbc::RepeatedField<global::March7thHoney.Proto.CCHMHOONEGG>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -355,27 +294,62 @@ namespace March7thHoney.Proto {
       get { return jIEOHBBDJDA_; }
     }
 
-    /// <summary>Field number for the "OFFHOHGHNDH" field.</summary>
-    public const int OFFHOHGHNDHFieldNumber = 561;
-    private global::March7thHoney.Proto.PFNHCOJOBKH oFFHOHGHNDH_;
+    /// <summary>Field number for the "update_platform_bound_gifts_list" field.</summary>
+    public const int UpdatePlatformBoundGiftsListFieldNumber = 1086;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.NLLLAAEJOBP> _repeated_updatePlatformBoundGiftsList_codec
+        = pb::FieldCodec.ForMessage(8690, global::March7thHoney.Proto.NLLLAAEJOBP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.NLLLAAEJOBP> updatePlatformBoundGiftsList_ = new pbc::RepeatedField<global::March7thHoney.Proto.NLLLAAEJOBP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PFNHCOJOBKH OFFHOHGHNDH {
-      get { return oFFHOHGHNDH_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.NLLLAAEJOBP> UpdatePlatformBoundGiftsList {
+      get { return updatePlatformBoundGiftsList_; }
+    }
+
+    /// <summary>Field number for the "FHHGDACMJED" field.</summary>
+    public const int FHHGDACMJEDFieldNumber = 1130;
+    private global::March7thHoney.Proto.ItemList fHHGDACMJED_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ItemList FHHGDACMJED {
+      get { return fHHGDACMJED_; }
       set {
-        oFFHOHGHNDH_ = value;
+        fHHGDACMJED_ = value;
       }
     }
 
-    /// <summary>Field number for the "total_achievement_exp" field.</summary>
-    public const int TotalAchievementExpFieldNumber = 1201;
-    private uint totalAchievementExp_;
+    /// <summary>Field number for the "sync_status" field.</summary>
+    public const int SyncStatusFieldNumber = 1405;
+    private global::March7thHoney.Proto.SyncStatus syncStatus_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TotalAchievementExp {
-      get { return totalAchievementExp_; }
+    public global::March7thHoney.Proto.SyncStatus SyncStatus {
+      get { return syncStatus_; }
       set {
-        totalAchievementExp_ = value;
+        syncStatus_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "update_pet_summon_items_list" field.</summary>
+    public const int UpdatePetSummonItemsListFieldNumber = 1452;
+    private global::March7thHoney.Proto.PFNHCOJOBKH updatePetSummonItemsList_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PFNHCOJOBKH UpdatePetSummonItemsList {
+      get { return updatePetSummonItemsList_; }
+      set {
+        updatePetSummonItemsList_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "DHKFCDAGHDM" field.</summary>
+    public const int DHKFCDAGHDMFieldNumber = 1962;
+    private global::March7thHoney.Proto.CJLCPMDGIBO dHKFCDAGHDM_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.CJLCPMDGIBO DHKFCDAGHDM {
+      get { return dHKFCDAGHDM_; }
+      set {
+        dHKFCDAGHDM_ = value;
       }
     }
 
@@ -394,28 +368,26 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(DHKFCDAGHDM, other.DHKFCDAGHDM)) return false;
-      if (!object.Equals(SyncStatus, other.SyncStatus)) return false;
-      if (!object.Equals(FHHGDACMJED, other.FHHGDACMJED)) return false;
+      if (!object.Equals(JHJNMOFMPMO, other.JHJNMOFMPMO)) return false;
       if(!delRelicList_.Equals(other.delRelicList_)) return false;
-      if(!materialList_.Equals(other.materialList_)) return false;
       if (!object.Equals(MissionSync, other.MissionSync)) return false;
-      if(!ePBGLFHEFJJ_.Equals(other.ePBGLFHEFJJ_)) return false;
-      if (!object.Equals(BasicInfo, other.BasicInfo)) return false;
-      if(!delEquipmentList_.Equals(other.delEquipmentList_)) return false;
-      if(!equipmentList_.Equals(other.equipmentList_)) return false;
-      if(!nMBAFJGFOIH_.Equals(other.nMBAFJGFOIH_)) return false;
-      if (!object.Equals(PlayerboardModuleSync, other.PlayerboardModuleSync)) return false;
       if(!waitDelResourceList_.Equals(other.waitDelResourceList_)) return false;
-      if(!questList_.Equals(other.questList_)) return false;
       if(!relicList_.Equals(other.relicList_)) return false;
-      if(!pJOLEGFJAJF_.Equals(other.pJOLEGFJAJF_)) return false;
-      if(!nAJFMIIFIEC_.Equals(other.nAJFMIIFIEC_)) return false;
       if (!object.Equals(AvatarSync, other.AvatarSync)) return false;
-      if (!object.Equals(BasicModuleSync, other.BasicModuleSync)) return false;
+      if(!questList_.Equals(other.questList_)) return false;
+      if (!object.Equals(BasicInfo, other.BasicInfo)) return false;
+      if(!equipmentList_.Equals(other.equipmentList_)) return false;
+      if(!materialList_.Equals(other.materialList_)) return false;
+      if(!delEquipmentList_.Equals(other.delEquipmentList_)) return false;
+      if(!nMBAFJGFOIH_.Equals(other.nMBAFJGFOIH_)) return false;
+      if (!object.Equals(UpdatePlayerBoardModuleList, other.UpdatePlayerBoardModuleList)) return false;
+      if(!nAJFMIIFIEC_.Equals(other.nAJFMIIFIEC_)) return false;
       if(!jIEOHBBDJDA_.Equals(other.jIEOHBBDJDA_)) return false;
-      if (!object.Equals(OFFHOHGHNDH, other.OFFHOHGHNDH)) return false;
-      if (TotalAchievementExp != other.TotalAchievementExp) return false;
+      if(!updatePlatformBoundGiftsList_.Equals(other.updatePlatformBoundGiftsList_)) return false;
+      if (!object.Equals(FHHGDACMJED, other.FHHGDACMJED)) return false;
+      if (!object.Equals(SyncStatus, other.SyncStatus)) return false;
+      if (!object.Equals(UpdatePetSummonItemsList, other.UpdatePetSummonItemsList)) return false;
+      if (!object.Equals(DHKFCDAGHDM, other.DHKFCDAGHDM)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -423,28 +395,26 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (dHKFCDAGHDM_ != null) hash ^= DHKFCDAGHDM.GetHashCode();
-      if (syncStatus_ != null) hash ^= SyncStatus.GetHashCode();
-      if (fHHGDACMJED_ != null) hash ^= FHHGDACMJED.GetHashCode();
+      if (jHJNMOFMPMO_ != null) hash ^= JHJNMOFMPMO.GetHashCode();
       hash ^= delRelicList_.GetHashCode();
-      hash ^= materialList_.GetHashCode();
       if (missionSync_ != null) hash ^= MissionSync.GetHashCode();
-      hash ^= ePBGLFHEFJJ_.GetHashCode();
-      if (basicInfo_ != null) hash ^= BasicInfo.GetHashCode();
-      hash ^= delEquipmentList_.GetHashCode();
-      hash ^= equipmentList_.GetHashCode();
-      hash ^= nMBAFJGFOIH_.GetHashCode();
-      if (playerboardModuleSync_ != null) hash ^= PlayerboardModuleSync.GetHashCode();
       hash ^= waitDelResourceList_.GetHashCode();
-      hash ^= questList_.GetHashCode();
       hash ^= relicList_.GetHashCode();
-      hash ^= pJOLEGFJAJF_.GetHashCode();
-      hash ^= nAJFMIIFIEC_.GetHashCode();
       if (avatarSync_ != null) hash ^= AvatarSync.GetHashCode();
-      if (basicModuleSync_ != null) hash ^= BasicModuleSync.GetHashCode();
+      hash ^= questList_.GetHashCode();
+      if (basicInfo_ != null) hash ^= BasicInfo.GetHashCode();
+      hash ^= equipmentList_.GetHashCode();
+      hash ^= materialList_.GetHashCode();
+      hash ^= delEquipmentList_.GetHashCode();
+      hash ^= nMBAFJGFOIH_.GetHashCode();
+      if (updatePlayerBoardModuleList_ != null) hash ^= UpdatePlayerBoardModuleList.GetHashCode();
+      hash ^= nAJFMIIFIEC_.GetHashCode();
       hash ^= jIEOHBBDJDA_.GetHashCode();
-      if (oFFHOHGHNDH_ != null) hash ^= OFFHOHGHNDH.GetHashCode();
-      if (TotalAchievementExp != 0) hash ^= TotalAchievementExp.GetHashCode();
+      hash ^= updatePlatformBoundGiftsList_.GetHashCode();
+      if (fHHGDACMJED_ != null) hash ^= FHHGDACMJED.GetHashCode();
+      if (syncStatus_ != null) hash ^= SyncStatus.GetHashCode();
+      if (updatePetSummonItemsList_ != null) hash ^= UpdatePetSummonItemsList.GetHashCode();
+      if (dHKFCDAGHDM_ != null) hash ^= DHKFCDAGHDM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -463,58 +433,53 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      questList_.WriteTo(output, _repeated_questList_codec);
-      if (basicModuleSync_ != null) {
+      if (jHJNMOFMPMO_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(BasicModuleSync);
+        output.WriteMessage(JHJNMOFMPMO);
       }
-      delEquipmentList_.WriteTo(output, _repeated_delEquipmentList_codec);
-      pJOLEGFJAJF_.WriteTo(output, _repeated_pJOLEGFJAJF_codec);
-      equipmentList_.WriteTo(output, _repeated_equipmentList_codec);
-      relicList_.WriteTo(output, _repeated_relicList_codec);
-      if (avatarSync_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(AvatarSync);
-      }
-      waitDelResourceList_.WriteTo(output, _repeated_waitDelResourceList_codec);
-      materialList_.WriteTo(output, _repeated_materialList_codec);
+      delRelicList_.WriteTo(output, _repeated_delRelicList_codec);
       if (missionSync_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(50);
         output.WriteMessage(MissionSync);
       }
+      waitDelResourceList_.WriteTo(output, _repeated_waitDelResourceList_codec);
+      relicList_.WriteTo(output, _repeated_relicList_codec);
+      if (avatarSync_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(AvatarSync);
+      }
+      questList_.WriteTo(output, _repeated_questList_codec);
       if (basicInfo_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(90);
         output.WriteMessage(BasicInfo);
       }
-      jIEOHBBDJDA_.WriteTo(output, _repeated_jIEOHBBDJDA_codec);
-      if (dHKFCDAGHDM_ != null) {
-        output.WriteRawTag(162, 18);
-        output.WriteMessage(DHKFCDAGHDM);
-      }
-      if (playerboardModuleSync_ != null) {
-        output.WriteRawTag(234, 31);
-        output.WriteMessage(PlayerboardModuleSync);
-      }
-      if (oFFHOHGHNDH_ != null) {
-        output.WriteRawTag(138, 35);
-        output.WriteMessage(OFFHOHGHNDH);
-      }
-      if (fHHGDACMJED_ != null) {
-        output.WriteRawTag(178, 42);
-        output.WriteMessage(FHHGDACMJED);
+      equipmentList_.WriteTo(output, _repeated_equipmentList_codec);
+      materialList_.WriteTo(output, _repeated_materialList_codec);
+      delEquipmentList_.WriteTo(output, _repeated_delEquipmentList_codec);
+      nMBAFJGFOIH_.WriteTo(output, _repeated_nMBAFJGFOIH_codec);
+      if (updatePlayerBoardModuleList_ != null) {
+        output.WriteRawTag(170, 20);
+        output.WriteMessage(UpdatePlayerBoardModuleList);
       }
       nAJFMIIFIEC_.WriteTo(output, _repeated_nAJFMIIFIEC_codec);
-      delRelicList_.WriteTo(output, _repeated_delRelicList_codec);
+      jIEOHBBDJDA_.WriteTo(output, _repeated_jIEOHBBDJDA_codec);
+      updatePlatformBoundGiftsList_.WriteTo(output, _repeated_updatePlatformBoundGiftsList_codec);
+      if (fHHGDACMJED_ != null) {
+        output.WriteRawTag(210, 70);
+        output.WriteMessage(FHHGDACMJED);
+      }
       if (syncStatus_ != null) {
-        output.WriteRawTag(250, 57);
+        output.WriteRawTag(234, 87);
         output.WriteMessage(SyncStatus);
       }
-      if (TotalAchievementExp != 0) {
-        output.WriteRawTag(136, 75);
-        output.WriteUInt32(TotalAchievementExp);
+      if (updatePetSummonItemsList_ != null) {
+        output.WriteRawTag(226, 90);
+        output.WriteMessage(UpdatePetSummonItemsList);
       }
-      ePBGLFHEFJJ_.WriteTo(output, _repeated_ePBGLFHEFJJ_codec);
-      nMBAFJGFOIH_.WriteTo(output, _repeated_nMBAFJGFOIH_codec);
+      if (dHKFCDAGHDM_ != null) {
+        output.WriteRawTag(210, 122);
+        output.WriteMessage(DHKFCDAGHDM);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -525,58 +490,53 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      questList_.WriteTo(ref output, _repeated_questList_codec);
-      if (basicModuleSync_ != null) {
+      if (jHJNMOFMPMO_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(BasicModuleSync);
+        output.WriteMessage(JHJNMOFMPMO);
       }
-      delEquipmentList_.WriteTo(ref output, _repeated_delEquipmentList_codec);
-      pJOLEGFJAJF_.WriteTo(ref output, _repeated_pJOLEGFJAJF_codec);
-      equipmentList_.WriteTo(ref output, _repeated_equipmentList_codec);
-      relicList_.WriteTo(ref output, _repeated_relicList_codec);
-      if (avatarSync_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(AvatarSync);
-      }
-      waitDelResourceList_.WriteTo(ref output, _repeated_waitDelResourceList_codec);
-      materialList_.WriteTo(ref output, _repeated_materialList_codec);
+      delRelicList_.WriteTo(ref output, _repeated_delRelicList_codec);
       if (missionSync_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(50);
         output.WriteMessage(MissionSync);
       }
+      waitDelResourceList_.WriteTo(ref output, _repeated_waitDelResourceList_codec);
+      relicList_.WriteTo(ref output, _repeated_relicList_codec);
+      if (avatarSync_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(AvatarSync);
+      }
+      questList_.WriteTo(ref output, _repeated_questList_codec);
       if (basicInfo_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(90);
         output.WriteMessage(BasicInfo);
       }
-      jIEOHBBDJDA_.WriteTo(ref output, _repeated_jIEOHBBDJDA_codec);
-      if (dHKFCDAGHDM_ != null) {
-        output.WriteRawTag(162, 18);
-        output.WriteMessage(DHKFCDAGHDM);
-      }
-      if (playerboardModuleSync_ != null) {
-        output.WriteRawTag(234, 31);
-        output.WriteMessage(PlayerboardModuleSync);
-      }
-      if (oFFHOHGHNDH_ != null) {
-        output.WriteRawTag(138, 35);
-        output.WriteMessage(OFFHOHGHNDH);
-      }
-      if (fHHGDACMJED_ != null) {
-        output.WriteRawTag(178, 42);
-        output.WriteMessage(FHHGDACMJED);
+      equipmentList_.WriteTo(ref output, _repeated_equipmentList_codec);
+      materialList_.WriteTo(ref output, _repeated_materialList_codec);
+      delEquipmentList_.WriteTo(ref output, _repeated_delEquipmentList_codec);
+      nMBAFJGFOIH_.WriteTo(ref output, _repeated_nMBAFJGFOIH_codec);
+      if (updatePlayerBoardModuleList_ != null) {
+        output.WriteRawTag(170, 20);
+        output.WriteMessage(UpdatePlayerBoardModuleList);
       }
       nAJFMIIFIEC_.WriteTo(ref output, _repeated_nAJFMIIFIEC_codec);
-      delRelicList_.WriteTo(ref output, _repeated_delRelicList_codec);
+      jIEOHBBDJDA_.WriteTo(ref output, _repeated_jIEOHBBDJDA_codec);
+      updatePlatformBoundGiftsList_.WriteTo(ref output, _repeated_updatePlatformBoundGiftsList_codec);
+      if (fHHGDACMJED_ != null) {
+        output.WriteRawTag(210, 70);
+        output.WriteMessage(FHHGDACMJED);
+      }
       if (syncStatus_ != null) {
-        output.WriteRawTag(250, 57);
+        output.WriteRawTag(234, 87);
         output.WriteMessage(SyncStatus);
       }
-      if (TotalAchievementExp != 0) {
-        output.WriteRawTag(136, 75);
-        output.WriteUInt32(TotalAchievementExp);
+      if (updatePetSummonItemsList_ != null) {
+        output.WriteRawTag(226, 90);
+        output.WriteMessage(UpdatePetSummonItemsList);
       }
-      ePBGLFHEFJJ_.WriteTo(ref output, _repeated_ePBGLFHEFJJ_codec);
-      nMBAFJGFOIH_.WriteTo(ref output, _repeated_nMBAFJGFOIH_codec);
+      if (dHKFCDAGHDM_ != null) {
+        output.WriteRawTag(210, 122);
+        output.WriteMessage(DHKFCDAGHDM);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -587,47 +547,43 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (dHKFCDAGHDM_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(DHKFCDAGHDM);
+      if (jHJNMOFMPMO_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(JHJNMOFMPMO);
+      }
+      size += delRelicList_.CalculateSize(_repeated_delRelicList_codec);
+      if (missionSync_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MissionSync);
+      }
+      size += waitDelResourceList_.CalculateSize(_repeated_waitDelResourceList_codec);
+      size += relicList_.CalculateSize(_repeated_relicList_codec);
+      if (avatarSync_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AvatarSync);
+      }
+      size += questList_.CalculateSize(_repeated_questList_codec);
+      if (basicInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BasicInfo);
+      }
+      size += equipmentList_.CalculateSize(_repeated_equipmentList_codec);
+      size += materialList_.CalculateSize(_repeated_materialList_codec);
+      size += delEquipmentList_.CalculateSize(_repeated_delEquipmentList_codec);
+      size += nMBAFJGFOIH_.CalculateSize(_repeated_nMBAFJGFOIH_codec);
+      if (updatePlayerBoardModuleList_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UpdatePlayerBoardModuleList);
+      }
+      size += nAJFMIIFIEC_.CalculateSize(_repeated_nAJFMIIFIEC_codec);
+      size += jIEOHBBDJDA_.CalculateSize(_repeated_jIEOHBBDJDA_codec);
+      size += updatePlatformBoundGiftsList_.CalculateSize(_repeated_updatePlatformBoundGiftsList_codec);
+      if (fHHGDACMJED_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(FHHGDACMJED);
       }
       if (syncStatus_ != null) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(SyncStatus);
       }
-      if (fHHGDACMJED_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(FHHGDACMJED);
+      if (updatePetSummonItemsList_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UpdatePetSummonItemsList);
       }
-      size += delRelicList_.CalculateSize(_repeated_delRelicList_codec);
-      size += materialList_.CalculateSize(_repeated_materialList_codec);
-      if (missionSync_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MissionSync);
-      }
-      size += ePBGLFHEFJJ_.CalculateSize(_repeated_ePBGLFHEFJJ_codec);
-      if (basicInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BasicInfo);
-      }
-      size += delEquipmentList_.CalculateSize(_repeated_delEquipmentList_codec);
-      size += equipmentList_.CalculateSize(_repeated_equipmentList_codec);
-      size += nMBAFJGFOIH_.CalculateSize(_repeated_nMBAFJGFOIH_codec);
-      if (playerboardModuleSync_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(PlayerboardModuleSync);
-      }
-      size += waitDelResourceList_.CalculateSize(_repeated_waitDelResourceList_codec);
-      size += questList_.CalculateSize(_repeated_questList_codec);
-      size += relicList_.CalculateSize(_repeated_relicList_codec);
-      size += pJOLEGFJAJF_.CalculateSize(_repeated_pJOLEGFJAJF_codec);
-      size += nAJFMIIFIEC_.CalculateSize(_repeated_nAJFMIIFIEC_codec);
-      if (avatarSync_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AvatarSync);
-      }
-      if (basicModuleSync_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BasicModuleSync);
-      }
-      size += jIEOHBBDJDA_.CalculateSize(_repeated_jIEOHBBDJDA_codec);
-      if (oFFHOHGHNDH_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(OFFHOHGHNDH);
-      }
-      if (TotalAchievementExp != 0) {
-        size += 2 + pb::CodedOutputStream.ComputeUInt32Size(TotalAchievementExp);
+      if (dHKFCDAGHDM_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(DHKFCDAGHDM);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -641,11 +597,52 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.dHKFCDAGHDM_ != null) {
-        if (dHKFCDAGHDM_ == null) {
-          DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
+      if (other.jHJNMOFMPMO_ != null) {
+        if (jHJNMOFMPMO_ == null) {
+          JHJNMOFMPMO = new global::March7thHoney.Proto.BasicModuleSync();
         }
-        DHKFCDAGHDM.MergeFrom(other.DHKFCDAGHDM);
+        JHJNMOFMPMO.MergeFrom(other.JHJNMOFMPMO);
+      }
+      delRelicList_.Add(other.delRelicList_);
+      if (other.missionSync_ != null) {
+        if (missionSync_ == null) {
+          MissionSync = new global::March7thHoney.Proto.MissionSync();
+        }
+        MissionSync.MergeFrom(other.MissionSync);
+      }
+      waitDelResourceList_.Add(other.waitDelResourceList_);
+      relicList_.Add(other.relicList_);
+      if (other.avatarSync_ != null) {
+        if (avatarSync_ == null) {
+          AvatarSync = new global::March7thHoney.Proto.AvatarSync();
+        }
+        AvatarSync.MergeFrom(other.AvatarSync);
+      }
+      questList_.Add(other.questList_);
+      if (other.basicInfo_ != null) {
+        if (basicInfo_ == null) {
+          BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
+        }
+        BasicInfo.MergeFrom(other.BasicInfo);
+      }
+      equipmentList_.Add(other.equipmentList_);
+      materialList_.Add(other.materialList_);
+      delEquipmentList_.Add(other.delEquipmentList_);
+      nMBAFJGFOIH_.Add(other.nMBAFJGFOIH_);
+      if (other.updatePlayerBoardModuleList_ != null) {
+        if (updatePlayerBoardModuleList_ == null) {
+          UpdatePlayerBoardModuleList = new global::March7thHoney.Proto.PlayerBoardModuleSync();
+        }
+        UpdatePlayerBoardModuleList.MergeFrom(other.UpdatePlayerBoardModuleList);
+      }
+      nAJFMIIFIEC_.Add(other.nAJFMIIFIEC_);
+      jIEOHBBDJDA_.Add(other.jIEOHBBDJDA_);
+      updatePlatformBoundGiftsList_.Add(other.updatePlatformBoundGiftsList_);
+      if (other.fHHGDACMJED_ != null) {
+        if (fHHGDACMJED_ == null) {
+          FHHGDACMJED = new global::March7thHoney.Proto.ItemList();
+        }
+        FHHGDACMJED.MergeFrom(other.FHHGDACMJED);
       }
       if (other.syncStatus_ != null) {
         if (syncStatus_ == null) {
@@ -653,62 +650,17 @@ namespace March7thHoney.Proto {
         }
         SyncStatus.MergeFrom(other.SyncStatus);
       }
-      if (other.fHHGDACMJED_ != null) {
-        if (fHHGDACMJED_ == null) {
-          FHHGDACMJED = new global::March7thHoney.Proto.ItemList();
+      if (other.updatePetSummonItemsList_ != null) {
+        if (updatePetSummonItemsList_ == null) {
+          UpdatePetSummonItemsList = new global::March7thHoney.Proto.PFNHCOJOBKH();
         }
-        FHHGDACMJED.MergeFrom(other.FHHGDACMJED);
+        UpdatePetSummonItemsList.MergeFrom(other.UpdatePetSummonItemsList);
       }
-      delRelicList_.Add(other.delRelicList_);
-      materialList_.Add(other.materialList_);
-      if (other.missionSync_ != null) {
-        if (missionSync_ == null) {
-          MissionSync = new global::March7thHoney.Proto.MissionSync();
+      if (other.dHKFCDAGHDM_ != null) {
+        if (dHKFCDAGHDM_ == null) {
+          DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
         }
-        MissionSync.MergeFrom(other.MissionSync);
-      }
-      ePBGLFHEFJJ_.Add(other.ePBGLFHEFJJ_);
-      if (other.basicInfo_ != null) {
-        if (basicInfo_ == null) {
-          BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
-        }
-        BasicInfo.MergeFrom(other.BasicInfo);
-      }
-      delEquipmentList_.Add(other.delEquipmentList_);
-      equipmentList_.Add(other.equipmentList_);
-      nMBAFJGFOIH_.Add(other.nMBAFJGFOIH_);
-      if (other.playerboardModuleSync_ != null) {
-        if (playerboardModuleSync_ == null) {
-          PlayerboardModuleSync = new global::March7thHoney.Proto.PlayerBoardModuleSync();
-        }
-        PlayerboardModuleSync.MergeFrom(other.PlayerboardModuleSync);
-      }
-      waitDelResourceList_.Add(other.waitDelResourceList_);
-      questList_.Add(other.questList_);
-      relicList_.Add(other.relicList_);
-      pJOLEGFJAJF_.Add(other.pJOLEGFJAJF_);
-      nAJFMIIFIEC_.Add(other.nAJFMIIFIEC_);
-      if (other.avatarSync_ != null) {
-        if (avatarSync_ == null) {
-          AvatarSync = new global::March7thHoney.Proto.AvatarSync();
-        }
-        AvatarSync.MergeFrom(other.AvatarSync);
-      }
-      if (other.basicModuleSync_ != null) {
-        if (basicModuleSync_ == null) {
-          BasicModuleSync = new global::March7thHoney.Proto.BasicModuleSync();
-        }
-        BasicModuleSync.MergeFrom(other.BasicModuleSync);
-      }
-      jIEOHBBDJDA_.Add(other.jIEOHBBDJDA_);
-      if (other.oFFHOHGHNDH_ != null) {
-        if (oFFHOHGHNDH_ == null) {
-          OFFHOHGHNDH = new global::March7thHoney.Proto.PFNHCOJOBKH();
-        }
-        OFFHOHGHNDH.MergeFrom(other.OFFHOHGHNDH);
-      }
-      if (other.TotalAchievementExp != 0) {
-        TotalAchievementExp = other.TotalAchievementExp;
+        DHKFCDAGHDM.MergeFrom(other.DHKFCDAGHDM);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -729,122 +681,113 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            questList_.AddEntriesFrom(input, _repeated_questList_codec);
-            break;
-          }
           case 18: {
-            if (basicModuleSync_ == null) {
-              BasicModuleSync = new global::March7thHoney.Proto.BasicModuleSync();
+            if (jHJNMOFMPMO_ == null) {
+              JHJNMOFMPMO = new global::March7thHoney.Proto.BasicModuleSync();
             }
-            input.ReadMessage(BasicModuleSync);
+            input.ReadMessage(JHJNMOFMPMO);
             break;
           }
-          case 26:
-          case 24: {
-            delEquipmentList_.AddEntriesFrom(input, _repeated_delEquipmentList_codec);
-            break;
-          }
-          case 34:
-          case 32: {
-            pJOLEGFJAJF_.AddEntriesFrom(input, _repeated_pJOLEGFJAJF_codec);
-            break;
-          }
-          case 42: {
-            equipmentList_.AddEntriesFrom(input, _repeated_equipmentList_codec);
+          case 42:
+          case 40: {
+            delRelicList_.AddEntriesFrom(input, _repeated_delRelicList_codec);
             break;
           }
           case 50: {
-            relicList_.AddEntriesFrom(input, _repeated_relicList_codec);
-            break;
-          }
-          case 58: {
-            if (avatarSync_ == null) {
-              AvatarSync = new global::March7thHoney.Proto.AvatarSync();
-            }
-            input.ReadMessage(AvatarSync);
-            break;
-          }
-          case 66: {
-            waitDelResourceList_.AddEntriesFrom(input, _repeated_waitDelResourceList_codec);
-            break;
-          }
-          case 90: {
-            materialList_.AddEntriesFrom(input, _repeated_materialList_codec);
-            break;
-          }
-          case 114: {
             if (missionSync_ == null) {
               MissionSync = new global::March7thHoney.Proto.MissionSync();
             }
             input.ReadMessage(MissionSync);
             break;
           }
-          case 122: {
+          case 58: {
+            waitDelResourceList_.AddEntriesFrom(input, _repeated_waitDelResourceList_codec);
+            break;
+          }
+          case 66: {
+            relicList_.AddEntriesFrom(input, _repeated_relicList_codec);
+            break;
+          }
+          case 74: {
+            if (avatarSync_ == null) {
+              AvatarSync = new global::March7thHoney.Proto.AvatarSync();
+            }
+            input.ReadMessage(AvatarSync);
+            break;
+          }
+          case 82: {
+            questList_.AddEntriesFrom(input, _repeated_questList_codec);
+            break;
+          }
+          case 90: {
             if (basicInfo_ == null) {
               BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
             }
             input.ReadMessage(BasicInfo);
             break;
           }
-          case 450: {
+          case 98: {
+            equipmentList_.AddEntriesFrom(input, _repeated_equipmentList_codec);
+            break;
+          }
+          case 114: {
+            materialList_.AddEntriesFrom(input, _repeated_materialList_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            delEquipmentList_.AddEntriesFrom(input, _repeated_delEquipmentList_codec);
+            break;
+          }
+          case 1922: {
+            nMBAFJGFOIH_.AddEntriesFrom(input, _repeated_nMBAFJGFOIH_codec);
+            break;
+          }
+          case 2602: {
+            if (updatePlayerBoardModuleList_ == null) {
+              UpdatePlayerBoardModuleList = new global::March7thHoney.Proto.PlayerBoardModuleSync();
+            }
+            input.ReadMessage(UpdatePlayerBoardModuleList);
+            break;
+          }
+          case 4202: {
+            nAJFMIIFIEC_.AddEntriesFrom(input, _repeated_nAJFMIIFIEC_codec);
+            break;
+          }
+          case 4866: {
             jIEOHBBDJDA_.AddEntriesFrom(input, _repeated_jIEOHBBDJDA_codec);
             break;
           }
-          case 2338: {
-            if (dHKFCDAGHDM_ == null) {
-              DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
-            }
-            input.ReadMessage(DHKFCDAGHDM);
+          case 8690: {
+            updatePlatformBoundGiftsList_.AddEntriesFrom(input, _repeated_updatePlatformBoundGiftsList_codec);
             break;
           }
-          case 4074: {
-            if (playerboardModuleSync_ == null) {
-              PlayerboardModuleSync = new global::March7thHoney.Proto.PlayerBoardModuleSync();
-            }
-            input.ReadMessage(PlayerboardModuleSync);
-            break;
-          }
-          case 4490: {
-            if (oFFHOHGHNDH_ == null) {
-              OFFHOHGHNDH = new global::March7thHoney.Proto.PFNHCOJOBKH();
-            }
-            input.ReadMessage(OFFHOHGHNDH);
-            break;
-          }
-          case 5426: {
+          case 9042: {
             if (fHHGDACMJED_ == null) {
               FHHGDACMJED = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(FHHGDACMJED);
             break;
           }
-          case 6826: {
-            nAJFMIIFIEC_.AddEntriesFrom(input, _repeated_nAJFMIIFIEC_codec);
-            break;
-          }
-          case 7258:
-          case 7256: {
-            delRelicList_.AddEntriesFrom(input, _repeated_delRelicList_codec);
-            break;
-          }
-          case 7418: {
+          case 11242: {
             if (syncStatus_ == null) {
               SyncStatus = new global::March7thHoney.Proto.SyncStatus();
             }
             input.ReadMessage(SyncStatus);
             break;
           }
-          case 9608: {
-            TotalAchievementExp = input.ReadUInt32();
+          case 11618: {
+            if (updatePetSummonItemsList_ == null) {
+              UpdatePetSummonItemsList = new global::March7thHoney.Proto.PFNHCOJOBKH();
+            }
+            input.ReadMessage(UpdatePetSummonItemsList);
             break;
           }
-          case 13498: {
-            ePBGLFHEFJJ_.AddEntriesFrom(input, _repeated_ePBGLFHEFJJ_codec);
-            break;
-          }
-          case 14362: {
-            nMBAFJGFOIH_.AddEntriesFrom(input, _repeated_nMBAFJGFOIH_codec);
+          case 15698: {
+            if (dHKFCDAGHDM_ == null) {
+              DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
+            }
+            input.ReadMessage(DHKFCDAGHDM);
             break;
           }
         }
@@ -866,122 +809,113 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            questList_.AddEntriesFrom(ref input, _repeated_questList_codec);
-            break;
-          }
           case 18: {
-            if (basicModuleSync_ == null) {
-              BasicModuleSync = new global::March7thHoney.Proto.BasicModuleSync();
+            if (jHJNMOFMPMO_ == null) {
+              JHJNMOFMPMO = new global::March7thHoney.Proto.BasicModuleSync();
             }
-            input.ReadMessage(BasicModuleSync);
+            input.ReadMessage(JHJNMOFMPMO);
             break;
           }
-          case 26:
-          case 24: {
-            delEquipmentList_.AddEntriesFrom(ref input, _repeated_delEquipmentList_codec);
-            break;
-          }
-          case 34:
-          case 32: {
-            pJOLEGFJAJF_.AddEntriesFrom(ref input, _repeated_pJOLEGFJAJF_codec);
-            break;
-          }
-          case 42: {
-            equipmentList_.AddEntriesFrom(ref input, _repeated_equipmentList_codec);
+          case 42:
+          case 40: {
+            delRelicList_.AddEntriesFrom(ref input, _repeated_delRelicList_codec);
             break;
           }
           case 50: {
-            relicList_.AddEntriesFrom(ref input, _repeated_relicList_codec);
-            break;
-          }
-          case 58: {
-            if (avatarSync_ == null) {
-              AvatarSync = new global::March7thHoney.Proto.AvatarSync();
-            }
-            input.ReadMessage(AvatarSync);
-            break;
-          }
-          case 66: {
-            waitDelResourceList_.AddEntriesFrom(ref input, _repeated_waitDelResourceList_codec);
-            break;
-          }
-          case 90: {
-            materialList_.AddEntriesFrom(ref input, _repeated_materialList_codec);
-            break;
-          }
-          case 114: {
             if (missionSync_ == null) {
               MissionSync = new global::March7thHoney.Proto.MissionSync();
             }
             input.ReadMessage(MissionSync);
             break;
           }
-          case 122: {
+          case 58: {
+            waitDelResourceList_.AddEntriesFrom(ref input, _repeated_waitDelResourceList_codec);
+            break;
+          }
+          case 66: {
+            relicList_.AddEntriesFrom(ref input, _repeated_relicList_codec);
+            break;
+          }
+          case 74: {
+            if (avatarSync_ == null) {
+              AvatarSync = new global::March7thHoney.Proto.AvatarSync();
+            }
+            input.ReadMessage(AvatarSync);
+            break;
+          }
+          case 82: {
+            questList_.AddEntriesFrom(ref input, _repeated_questList_codec);
+            break;
+          }
+          case 90: {
             if (basicInfo_ == null) {
               BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
             }
             input.ReadMessage(BasicInfo);
             break;
           }
-          case 450: {
+          case 98: {
+            equipmentList_.AddEntriesFrom(ref input, _repeated_equipmentList_codec);
+            break;
+          }
+          case 114: {
+            materialList_.AddEntriesFrom(ref input, _repeated_materialList_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            delEquipmentList_.AddEntriesFrom(ref input, _repeated_delEquipmentList_codec);
+            break;
+          }
+          case 1922: {
+            nMBAFJGFOIH_.AddEntriesFrom(ref input, _repeated_nMBAFJGFOIH_codec);
+            break;
+          }
+          case 2602: {
+            if (updatePlayerBoardModuleList_ == null) {
+              UpdatePlayerBoardModuleList = new global::March7thHoney.Proto.PlayerBoardModuleSync();
+            }
+            input.ReadMessage(UpdatePlayerBoardModuleList);
+            break;
+          }
+          case 4202: {
+            nAJFMIIFIEC_.AddEntriesFrom(ref input, _repeated_nAJFMIIFIEC_codec);
+            break;
+          }
+          case 4866: {
             jIEOHBBDJDA_.AddEntriesFrom(ref input, _repeated_jIEOHBBDJDA_codec);
             break;
           }
-          case 2338: {
-            if (dHKFCDAGHDM_ == null) {
-              DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
-            }
-            input.ReadMessage(DHKFCDAGHDM);
+          case 8690: {
+            updatePlatformBoundGiftsList_.AddEntriesFrom(ref input, _repeated_updatePlatformBoundGiftsList_codec);
             break;
           }
-          case 4074: {
-            if (playerboardModuleSync_ == null) {
-              PlayerboardModuleSync = new global::March7thHoney.Proto.PlayerBoardModuleSync();
-            }
-            input.ReadMessage(PlayerboardModuleSync);
-            break;
-          }
-          case 4490: {
-            if (oFFHOHGHNDH_ == null) {
-              OFFHOHGHNDH = new global::March7thHoney.Proto.PFNHCOJOBKH();
-            }
-            input.ReadMessage(OFFHOHGHNDH);
-            break;
-          }
-          case 5426: {
+          case 9042: {
             if (fHHGDACMJED_ == null) {
               FHHGDACMJED = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(FHHGDACMJED);
             break;
           }
-          case 6826: {
-            nAJFMIIFIEC_.AddEntriesFrom(ref input, _repeated_nAJFMIIFIEC_codec);
-            break;
-          }
-          case 7258:
-          case 7256: {
-            delRelicList_.AddEntriesFrom(ref input, _repeated_delRelicList_codec);
-            break;
-          }
-          case 7418: {
+          case 11242: {
             if (syncStatus_ == null) {
               SyncStatus = new global::March7thHoney.Proto.SyncStatus();
             }
             input.ReadMessage(SyncStatus);
             break;
           }
-          case 9608: {
-            TotalAchievementExp = input.ReadUInt32();
+          case 11618: {
+            if (updatePetSummonItemsList_ == null) {
+              UpdatePetSummonItemsList = new global::March7thHoney.Proto.PFNHCOJOBKH();
+            }
+            input.ReadMessage(UpdatePetSummonItemsList);
             break;
           }
-          case 13498: {
-            ePBGLFHEFJJ_.AddEntriesFrom(ref input, _repeated_ePBGLFHEFJJ_codec);
-            break;
-          }
-          case 14362: {
-            nMBAFJGFOIH_.AddEntriesFrom(ref input, _repeated_nMBAFJGFOIH_codec);
+          case 15698: {
+            if (dHKFCDAGHDM_ == null) {
+              DHKFCDAGHDM = new global::March7thHoney.Proto.CJLCPMDGIBO();
+            }
+            input.ReadMessage(DHKFCDAGHDM);
             break;
           }
         }

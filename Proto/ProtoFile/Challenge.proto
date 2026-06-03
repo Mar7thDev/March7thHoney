@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengeStageInfo.proto";
 
 message Challenge {
-    ChallengeStageInfo stage_info = 13;
-    uint32 record_id = 8;
-    uint32 challenge_id = 12;
-    uint32 star = 1;
-    uint32 score_id = 11;
-    uint32 score_two = 7;
-    uint32 taken_reward = 14;
-    bool HGPKMHFPMBJ = 9;
+    uint32 record_id = 1;
+    uint32 score_id = 2;
+    bool HGPKMHFPMBJ = 4;
+    uint32 challenge_id = 5;
+    uint32 taken_reward = 9;
+    uint32 star = 11;
+    ChallengeStageInfo stage_info = 14;
+    uint32 score_two = 15;
 }

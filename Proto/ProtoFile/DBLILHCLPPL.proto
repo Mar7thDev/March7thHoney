@@ -3,10 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DBLILHCLPPL {
-    repeated uint32 DLPCPDGEADG = 5;
-    repeated uint32 item_list = 1;
-    uint32 BBMELNJBGAL = 10;
-    bool PKKAJKHKBMN = 9;
-    uint32 unique_id = 14;
-    uint32 DNNCAGJIOAP = 15;
+    repeated uint32 item_list = 3;
+    uint32 unique_id = 6;
+    uint32 DNNCAGJIOAP = 7;
+    bool PKKAJKHKBMN = 10;
+    repeated uint32 DLPCPDGEADG = 11;
+    uint32 BBMELNJBGAL = 12;
 }

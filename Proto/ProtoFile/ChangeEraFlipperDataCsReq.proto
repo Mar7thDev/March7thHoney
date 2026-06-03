@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KKFMGCNDHGH.proto";
 
 message ChangeEraFlipperDataCsReq {
-    KKFMGCNDHGH data = 4;
+    KKFMGCNDHGH data = 1;
 }

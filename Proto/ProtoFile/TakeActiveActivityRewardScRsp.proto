@@ -6,7 +6,7 @@ import "ActiveActivityData.proto";
 import "ItemList.proto";
 
 message TakeActiveActivityRewardScRsp {
-    ActiveActivityData ANFFLNDCGLG = 1;
-    ItemList reward = 12;
     uint32 retcode = 2;
+    ActiveActivityData ANFFLNDCGLG = 9;
+    ItemList reward = 14;
 }

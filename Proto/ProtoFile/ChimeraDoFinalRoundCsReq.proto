@@ -7,10 +7,10 @@ import "GCFGCHAMNOL.proto";
 import "HFBJNFJHKPO.proto";
 
 message ChimeraDoFinalRoundCsReq {
-    HFBJNFJHKPO stt = 8;
-    GCFGCHAMNOL lineup = 6;
-    repeated DEJGMBKPHEC FJLPLIGMPHB = 12;
-    repeated uint32 PKKGGLIGKKN = 4;
+    bool CJEILDIOIOE = 1;
+    repeated uint32 PKKGGLIGKKN = 6;
+    GCFGCHAMNOL lineup = 9;
+    HFBJNFJHKPO stt = 11;
     uint32 NMPCJAOIOHJ = 14;
-    bool CJEILDIOIOE = 9;
+    repeated DEJGMBKPHEC FJLPLIGMPHB = 15;
 }

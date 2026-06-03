@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TrainPartyUseCardScRsp {
-    uint32 retcode = 11;
-    uint32 FGIHKKKOGJD = 8;
+    uint32 retcode = 1;
+    uint32 FGIHKKKOGJD = 5;
 }

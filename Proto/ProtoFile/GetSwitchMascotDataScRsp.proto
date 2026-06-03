@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BKAHEDAHNHL.proto";
 
 message GetSwitchMascotDataScRsp {
-    repeated BKAHEDAHNHL JNOEHPJJPOF = 7;
+    repeated BKAHEDAHNHL JNOEHPJJPOF = 8;
+    uint32 retcode = 10;
     uint32 NBFJHDJBLCF = 14;
-    uint32 retcode = 5;
 }

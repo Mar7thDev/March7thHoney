@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NCFKHDIKCNI.proto";
 
 message DAGGFIOGHGE {
-    NCFKHDIKCNI EJPENDJNLIH = 6;
-    NCFKHDIKCNI GAMNCJJJPEN = 15;
-    uint32 FNABEJNJBKN = 11;
-    int64 MGHNNENOOGB = 9;
+    int64 MGHNNENOOGB = 1;
+    NCFKHDIKCNI GAMNCJJJPEN = 6;
+    uint32 FNABEJNJBKN = 9;
+    NCFKHDIKCNI EJPENDJNLIH = 13;
 }

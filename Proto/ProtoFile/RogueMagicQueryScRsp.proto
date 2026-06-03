@@ -6,7 +6,7 @@ import "CILKBJMGNGL.proto";
 import "GCBCKOKEAJH.proto";
 
 message RogueMagicQueryScRsp {
+    uint32 retcode = 3;
+    GCBCKOKEAJH PHGJIJELKDB = 6;
     CILKBJMGNGL LFLCDNGALME = 15;
-    GCBCKOKEAJH PHGJIJELKDB = 1;
-    uint32 retcode = 7;
 }

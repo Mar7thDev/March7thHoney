@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBFbnRlcmVkU2NlbmVDaGFuZ2VTY05vdGlmeS5wcm90bxoWRW50ZXJlZFNj",
             "ZW5lSW5mby5wcm90byJQChpFbnRlcmVkU2NlbmVDaGFuZ2VTY05vdGlmeRIy",
-            "ChdlbnRlcmVkX3NjZW5lX2luZm9fbGlzdBgOIAMoCzIRLkVudGVyZWRTY2Vu",
+            "ChdlbnRlcmVkX3NjZW5lX2luZm9fbGlzdBgKIAMoCzIRLkVudGVyZWRTY2Vu",
             "ZUluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EnteredSceneInfoReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "entered_scene_info_list" field.</summary>
-    public const int EnteredSceneInfoListFieldNumber = 14;
+    public const int EnteredSceneInfoListFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.EnteredSceneInfo> _repeated_enteredSceneInfoList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.EnteredSceneInfo.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.EnteredSceneInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.EnteredSceneInfo> enteredSceneInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EnteredSceneInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 114: {
+          case 82: {
             enteredSceneInfoList_.AddEntriesFrom(input, _repeated_enteredSceneInfoList_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 114: {
+          case 82: {
             enteredSceneInfoList_.AddEntriesFrom(ref input, _repeated_enteredSceneInfoList_codec);
             break;
           }

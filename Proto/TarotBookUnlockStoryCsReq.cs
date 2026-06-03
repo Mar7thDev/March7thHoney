@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9UYXJvdEJvb2tVbmxvY2tTdG9yeUNzUmVxLnByb3RvIjAKGVRhcm90Qm9v",
-            "a1VubG9ja1N0b3J5Q3NSZXESEwoLQkhGSEZPTkdITUwYCSADKA1CFqoCE01h",
+            "a1VubG9ja1N0b3J5Q3NSZXESEwoLQkhGSEZPTkdITUwYDSADKA1CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BHFHFONGHML" field.</summary>
-    public const int BHFHFONGHMLFieldNumber = 9;
+    public const int BHFHFONGHMLFieldNumber = 13;
     private static readonly pb::FieldCodec<uint> _repeated_bHFHFONGHML_codec
-        = pb::FieldCodec.ForUInt32(74);
+        = pb::FieldCodec.ForUInt32(106);
     private readonly pbc::RepeatedField<uint> bHFHFONGHML_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74:
-          case 72: {
+          case 106:
+          case 104: {
             bHFHFONGHML_.AddEntriesFrom(input, _repeated_bHFHFONGHML_codec);
             break;
           }
@@ -214,8 +214,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74:
-          case 72: {
+          case 106:
+          case 104: {
             bHFHFONGHML_.AddEntriesFrom(ref input, _repeated_bHFHFONGHML_codec);
             break;
           }

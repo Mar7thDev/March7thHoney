@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJSb2d1ZVRvdXJuUmVuYW1lQXJjaGl2ZVNjUnNwLnByb3RvIlIKHFJvZ3Vl",
-            "VG91cm5SZW5hbWVBcmNoaXZlU2NSc3ASDAoEbmFtZRgIIAEoCRITCgtOUEhB",
-            "SkVLQ0JLRhgEIAEoDRIPCgdyZXRjb2RlGAcgASgNQhaqAhNNYXJjaDd0aEhv",
+            "VG91cm5SZW5hbWVBcmNoaXZlU2NSc3ASDAoEbmFtZRgLIAEoCRITCgtOUEhB",
+            "SkVLQ0JLRhgOIAEoDRIPCgdyZXRjb2RlGA8gASgNQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 8;
+    public const int NameFieldNumber = 11;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NPHAJEKCBKF" field.</summary>
-    public const int NPHAJEKCBKFFieldNumber = 4;
+    public const int NPHAJEKCBKFFieldNumber = 14;
     private uint nPHAJEKCBKF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 15;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Name.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(Name);
+      }
       if (NPHAJEKCBKF != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(112);
         output.WriteUInt32(NPHAJEKCBKF);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
-      }
-      if (Name.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(Name);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(Name);
+      }
       if (NPHAJEKCBKF != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(112);
         output.WriteUInt32(NPHAJEKCBKF);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
-      }
-      if (Name.Length != 0) {
-        output.WriteRawTag(66);
-        output.WriteString(Name);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 90: {
+            Name = input.ReadString();
+            break;
+          }
+          case 112: {
             NPHAJEKCBKF = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 120: {
             Retcode = input.ReadUInt32();
-            break;
-          }
-          case 66: {
-            Name = input.ReadString();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 90: {
+            Name = input.ReadString();
+            break;
+          }
+          case 112: {
             NPHAJEKCBKF = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 120: {
             Retcode = input.ReadUInt32();
-            break;
-          }
-          case 66: {
-            Name = input.ReadString();
             break;
           }
         }

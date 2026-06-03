@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AOJEODENHPL {
-    bool has_passed = 12;
-    uint32 KJJJPMAPFOH = 5;
-    uint32 IKKEJKOGBNO = 6;
-    uint32 event_id = 2;
-    uint32 CGDNMDDIHKA = 7;
+    uint32 event_id = 5;
+    uint32 chapter_index = 7;
+    uint32 IKKEJKOGBNO = 8;
+    bool has_passed = 11;
+    uint32 KJJJPMAPFOH = 13;
 }

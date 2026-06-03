@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdFcXVpcG1lbnRQcm9wZXJ0eS5wcm90byJPChFFcXVpcG1lbnRQcm9wZXJ0",
-            "eRIKCgJpZBgBIAEoDRINCgVsZXZlbBgEIAEoDRIRCglwcm9tb3Rpb24YAyAB",
-            "KA0SDAoEcmFuaxgCIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "eRIKCgJpZBgBIAEoDRIMCgRyYW5rGAIgASgNEhEKCXByb21vdGlvbhgDIAEo",
+            "DRINCgVsZXZlbBgEIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EquipmentProperty), global::March7thHoney.Proto.EquipmentProperty.Parser, new[]{ "Id", "Level", "Promotion", "Rank" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EquipmentProperty), global::March7thHoney.Proto.EquipmentProperty.Parser, new[]{ "Id", "Rank", "Promotion", "Level" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EquipmentProperty(EquipmentProperty other) : this() {
       id_ = other.id_;
-      level_ = other.level_;
-      promotion_ = other.promotion_;
       rank_ = other.rank_;
+      promotion_ = other.promotion_;
+      level_ = other.level_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -98,15 +98,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 4;
-    private uint level_;
+    /// <summary>Field number for the "rank" field.</summary>
+    public const int RankFieldNumber = 2;
+    private uint rank_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Level {
-      get { return level_; }
+    public uint Rank {
+      get { return rank_; }
       set {
-        level_ = value;
+        rank_ = value;
       }
     }
 
@@ -122,15 +122,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "rank" field.</summary>
-    public const int RankFieldNumber = 2;
-    private uint rank_;
+    /// <summary>Field number for the "level" field.</summary>
+    public const int LevelFieldNumber = 4;
+    private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Rank {
-      get { return rank_; }
+    public uint Level {
+      get { return level_; }
       set {
-        rank_ = value;
+        level_ = value;
       }
     }
 
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Id != other.Id) return false;
-      if (Level != other.Level) return false;
-      if (Promotion != other.Promotion) return false;
       if (Rank != other.Rank) return false;
+      if (Promotion != other.Promotion) return false;
+      if (Level != other.Level) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,9 +161,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
-      if (Promotion != 0) hash ^= Promotion.GetHashCode();
       if (Rank != 0) hash ^= Rank.GetHashCode();
+      if (Promotion != 0) hash ^= Promotion.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -237,14 +237,14 @@ namespace March7thHoney.Proto {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      if (Rank != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
       }
       if (Promotion != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Promotion);
       }
-      if (Rank != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -261,14 +261,14 @@ namespace March7thHoney.Proto {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.Level != 0) {
-        Level = other.Level;
+      if (other.Rank != 0) {
+        Rank = other.Rank;
       }
       if (other.Promotion != 0) {
         Promotion = other.Promotion;
       }
-      if (other.Rank != 0) {
-        Rank = other.Rank;
+      if (other.Level != 0) {
+        Level = other.Level;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

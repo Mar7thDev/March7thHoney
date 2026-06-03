@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "COMJKPOMILA.proto";
 
 message AJJMGKHEBFH {
-    COMJKPOMILA DIEDPKCLDBF = 5;
-    repeated uint32 FJKDOIDEBJC = 1;
+    repeated uint32 FJKDOIDEBJC = 6;
+    COMJKPOMILA DIEDPKCLDBF = 13;
 }

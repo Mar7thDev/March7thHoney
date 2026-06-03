@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MNDMNDKLKIE.proto";
 
 message SceneMonster {
-    MNDMNDKLKIE extra_info = 10;
-    uint32 max_hp = 13;
+    uint32 max_hp = 2;
+    uint32 cur_hp = 10;
+    MNDMNDKLKIE extra_info = 11;
     uint32 monster_id = 12;
-    uint32 cur_hp = 9;
 }

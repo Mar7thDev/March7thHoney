@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFJT0RBRklCUEFHTS5wcm90bxoRSk9NRUdOR0pLSksucHJvdG8iUwoLSU9E",
-            "QUZJQlBBR00SIQoLSk5HTkdNSkNBQUkYBiADKAsyDC5KT01FR05HSktKSxIO",
-            "CgZtYXBfaWQYCSABKA0SEQoJY29zdF90aW1lGA4gASgNQhaqAhNNYXJjaDd0",
+            "QUZJQlBBR00SEQoJY29zdF90aW1lGAYgASgNEg4KBm1hcF9pZBgNIAEoDRIh",
+            "CgtKTkdOR01KQ0FBSRgOIAMoCzIMLkpPTUVHTkdKS0pLQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JOMEGNGJKJKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IODAFIBPAGM), global::March7thHoney.Proto.IODAFIBPAGM.Parser, new[]{ "JNGNGMJCAAI", "MapId", "CostTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IODAFIBPAGM), global::March7thHoney.Proto.IODAFIBPAGM.Parser, new[]{ "CostTime", "MapId", "JNGNGMJCAAI" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IODAFIBPAGM(IODAFIBPAGM other) : this() {
-      jNGNGMJCAAI_ = other.jNGNGMJCAAI_.Clone();
-      mapId_ = other.mapId_;
       costTime_ = other.costTime_;
+      mapId_ = other.mapId_;
+      jNGNGMJCAAI_ = other.jNGNGMJCAAI_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,19 +85,20 @@ namespace March7thHoney.Proto {
       return new IODAFIBPAGM(this);
     }
 
-    /// <summary>Field number for the "JNGNGMJCAAI" field.</summary>
-    public const int JNGNGMJCAAIFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JOMEGNGJKJK> _repeated_jNGNGMJCAAI_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.JOMEGNGJKJK.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JOMEGNGJKJK> jNGNGMJCAAI_ = new pbc::RepeatedField<global::March7thHoney.Proto.JOMEGNGJKJK>();
+    /// <summary>Field number for the "cost_time" field.</summary>
+    public const int CostTimeFieldNumber = 6;
+    private uint costTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.JOMEGNGJKJK> JNGNGMJCAAI {
-      get { return jNGNGMJCAAI_; }
+    public uint CostTime {
+      get { return costTime_; }
+      set {
+        costTime_ = value;
+      }
     }
 
     /// <summary>Field number for the "map_id" field.</summary>
-    public const int MapIdFieldNumber = 9;
+    public const int MapIdFieldNumber = 13;
     private uint mapId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,16 +109,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cost_time" field.</summary>
-    public const int CostTimeFieldNumber = 14;
-    private uint costTime_;
+    /// <summary>Field number for the "JNGNGMJCAAI" field.</summary>
+    public const int JNGNGMJCAAIFieldNumber = 14;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JOMEGNGJKJK> _repeated_jNGNGMJCAAI_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.JOMEGNGJKJK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JOMEGNGJKJK> jNGNGMJCAAI_ = new pbc::RepeatedField<global::March7thHoney.Proto.JOMEGNGJKJK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CostTime {
-      get { return costTime_; }
-      set {
-        costTime_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.JOMEGNGJKJK> JNGNGMJCAAI {
+      get { return jNGNGMJCAAI_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!jNGNGMJCAAI_.Equals(other.jNGNGMJCAAI_)) return false;
-      if (MapId != other.MapId) return false;
       if (CostTime != other.CostTime) return false;
+      if (MapId != other.MapId) return false;
+      if(!jNGNGMJCAAI_.Equals(other.jNGNGMJCAAI_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= jNGNGMJCAAI_.GetHashCode();
-      if (MapId != 0) hash ^= MapId.GetHashCode();
       if (CostTime != 0) hash ^= CostTime.GetHashCode();
+      if (MapId != 0) hash ^= MapId.GetHashCode();
+      hash ^= jNGNGMJCAAI_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,15 +166,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      jNGNGMJCAAI_.WriteTo(output, _repeated_jNGNGMJCAAI_codec);
-      if (MapId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(MapId);
-      }
       if (CostTime != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(48);
         output.WriteUInt32(CostTime);
       }
+      if (MapId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(MapId);
+      }
+      jNGNGMJCAAI_.WriteTo(output, _repeated_jNGNGMJCAAI_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -185,15 +185,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      jNGNGMJCAAI_.WriteTo(ref output, _repeated_jNGNGMJCAAI_codec);
-      if (MapId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(MapId);
-      }
       if (CostTime != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(48);
         output.WriteUInt32(CostTime);
       }
+      if (MapId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(MapId);
+      }
+      jNGNGMJCAAI_.WriteTo(ref output, _repeated_jNGNGMJCAAI_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -204,13 +204,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += jNGNGMJCAAI_.CalculateSize(_repeated_jNGNGMJCAAI_codec);
-      if (MapId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapId);
-      }
       if (CostTime != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CostTime);
       }
+      if (MapId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapId);
+      }
+      size += jNGNGMJCAAI_.CalculateSize(_repeated_jNGNGMJCAAI_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -223,13 +223,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      jNGNGMJCAAI_.Add(other.jNGNGMJCAAI_);
-      if (other.MapId != 0) {
-        MapId = other.MapId;
-      }
       if (other.CostTime != 0) {
         CostTime = other.CostTime;
       }
+      if (other.MapId != 0) {
+        MapId = other.MapId;
+      }
+      jNGNGMJCAAI_.Add(other.jNGNGMJCAAI_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
-            jNGNGMJCAAI_.AddEntriesFrom(input, _repeated_jNGNGMJCAAI_codec);
+          case 48: {
+            CostTime = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 104: {
             MapId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            CostTime = input.ReadUInt32();
+          case 114: {
+            jNGNGMJCAAI_.AddEntriesFrom(input, _repeated_jNGNGMJCAAI_codec);
             break;
           }
         }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
-            jNGNGMJCAAI_.AddEntriesFrom(ref input, _repeated_jNGNGMJCAAI_codec);
+          case 48: {
+            CostTime = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 104: {
             MapId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            CostTime = input.ReadUInt32();
+          case 114: {
+            jNGNGMJCAAI_.AddEntriesFrom(ref input, _repeated_jNGNGMJCAAI_codec);
             break;
           }
         }

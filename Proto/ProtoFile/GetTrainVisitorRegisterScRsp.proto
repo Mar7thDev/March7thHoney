@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MNKGDKAIELH.proto";
 
 message GetTrainVisitorRegisterScRsp {
-    repeated uint32 BLKHPCPALDN = 2;
-    repeated MNKGDKAIELH NEDBIFJPBDJ = 6;
-    uint32 retcode = 7;
+    uint32 retcode = 1;
+    repeated uint32 BLKHPCPALDN = 6;
+    repeated MNKGDKAIELH NEDBIFJPBDJ = 15;
 }

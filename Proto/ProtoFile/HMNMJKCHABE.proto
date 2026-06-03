@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HMNMJKCHABE {
-    repeated uint32 LOAFKKAFBOK = 10;
+    repeated uint32 LOAFKKAFBOK = 3;
 }

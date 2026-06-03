@@ -6,7 +6,7 @@ import "AAKECCJELLI.proto";
 import "KHADHDLCNOI.proto";
 
 message MNCBEDBDDHL {
-    repeated AAKECCJELLI NNJCEINOEHH = 2;
     KHADHDLCNOI JKNLCEEDAHJ = 1;
+    repeated AAKECCJELLI NNJCEINOEHH = 2;
     bool PGPNCNABHAM = 3;
 }

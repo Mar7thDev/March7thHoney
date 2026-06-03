@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CIEEKOEECHB.proto";
 
 message BoxingClubChallengeUpdateScNotify {
-    CIEEKOEECHB OCDLPDDMCLP = 7;
+    CIEEKOEECHB OCDLPDDMCLP = 2;
 }

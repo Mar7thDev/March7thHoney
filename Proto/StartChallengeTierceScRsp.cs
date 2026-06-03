@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch9TdGFydENoYWxsZW5nZVRpZXJjZVNjUnNwLnByb3RvGiJDaGFsbGVuZ2VU",
             "aWVyY2VDaGFsbGVuZ2VJbmZvLnByb3RvGg9TY2VuZUluZm8ucHJvdG8ihQEK",
-            "GVN0YXJ0Q2hhbGxlbmdlVGllcmNlU2NSc3ASPAoVY2hhbGxlbmdlX3RpZXJj",
-            "ZV9pbmZvGAsgASgLMh0uQ2hhbGxlbmdlVGllcmNlQ2hhbGxlbmdlSW5mbxIZ",
-            "CgVzY2VuZRgFIAEoCzIKLlNjZW5lSW5mbxIPCgdyZXRjb2RlGA0gASgNQhaq",
+            "GVN0YXJ0Q2hhbGxlbmdlVGllcmNlU2NSc3ASDwoHcmV0Y29kZRgEIAEoDRIZ",
+            "CgVzY2VuZRgHIAEoCzIKLlNjZW5lSW5mbxI8ChVjaGFsbGVuZ2VfdGllcmNl",
+            "X2luZm8YDCABKAsyHS5DaGFsbGVuZ2VUaWVyY2VDaGFsbGVuZ2VJbmZvQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeTierceChallengeInfoReflection.Descriptor, global::March7thHoney.Proto.SceneInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengeTierceScRsp), global::March7thHoney.Proto.StartChallengeTierceScRsp.Parser, new[]{ "ChallengeTierceInfo", "Scene", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengeTierceScRsp), global::March7thHoney.Proto.StartChallengeTierceScRsp.Parser, new[]{ "Retcode", "Scene", "ChallengeTierceInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartChallengeTierceScRsp(StartChallengeTierceScRsp other) : this() {
-      challengeTierceInfo_ = other.challengeTierceInfo_ != null ? other.challengeTierceInfo_.Clone() : null;
-      scene_ = other.scene_ != null ? other.scene_.Clone() : null;
       retcode_ = other.retcode_;
+      scene_ = other.scene_ != null ? other.scene_.Clone() : null;
+      challengeTierceInfo_ = other.challengeTierceInfo_ != null ? other.challengeTierceInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,20 +87,20 @@ namespace March7thHoney.Proto {
       return new StartChallengeTierceScRsp(this);
     }
 
-    /// <summary>Field number for the "challenge_tierce_info" field.</summary>
-    public const int ChallengeTierceInfoFieldNumber = 11;
-    private global::March7thHoney.Proto.ChallengeTierceChallengeInfo challengeTierceInfo_;
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 4;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengeTierceChallengeInfo ChallengeTierceInfo {
-      get { return challengeTierceInfo_; }
+    public uint Retcode {
+      get { return retcode_; }
       set {
-        challengeTierceInfo_ = value;
+        retcode_ = value;
       }
     }
 
     /// <summary>Field number for the "scene" field.</summary>
-    public const int SceneFieldNumber = 5;
+    public const int SceneFieldNumber = 7;
     private global::March7thHoney.Proto.SceneInfo scene_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,15 +111,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
-    private uint retcode_;
+    /// <summary>Field number for the "challenge_tierce_info" field.</summary>
+    public const int ChallengeTierceInfoFieldNumber = 12;
+    private global::March7thHoney.Proto.ChallengeTierceChallengeInfo challengeTierceInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
+    public global::March7thHoney.Proto.ChallengeTierceChallengeInfo ChallengeTierceInfo {
+      get { return challengeTierceInfo_; }
       set {
-        retcode_ = value;
+        challengeTierceInfo_ = value;
       }
     }
 
@@ -138,9 +138,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ChallengeTierceInfo, other.ChallengeTierceInfo)) return false;
-      if (!object.Equals(Scene, other.Scene)) return false;
       if (Retcode != other.Retcode) return false;
+      if (!object.Equals(Scene, other.Scene)) return false;
+      if (!object.Equals(ChallengeTierceInfo, other.ChallengeTierceInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,9 +148,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (challengeTierceInfo_ != null) hash ^= ChallengeTierceInfo.GetHashCode();
-      if (scene_ != null) hash ^= Scene.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (scene_ != null) hash ^= Scene.GetHashCode();
+      if (challengeTierceInfo_ != null) hash ^= ChallengeTierceInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,17 +169,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Retcode != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Retcode);
+      }
       if (scene_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(58);
         output.WriteMessage(Scene);
       }
       if (challengeTierceInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(98);
         output.WriteMessage(ChallengeTierceInfo);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -191,17 +191,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Retcode != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Retcode);
+      }
       if (scene_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(58);
         output.WriteMessage(Scene);
       }
       if (challengeTierceInfo_ != null) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(98);
         output.WriteMessage(ChallengeTierceInfo);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -213,14 +213,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (challengeTierceInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChallengeTierceInfo);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (scene_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Scene);
       }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      if (challengeTierceInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChallengeTierceInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -234,11 +234,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.challengeTierceInfo_ != null) {
-        if (challengeTierceInfo_ == null) {
-          ChallengeTierceInfo = new global::March7thHoney.Proto.ChallengeTierceChallengeInfo();
-        }
-        ChallengeTierceInfo.MergeFrom(other.ChallengeTierceInfo);
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       if (other.scene_ != null) {
         if (scene_ == null) {
@@ -246,8 +243,11 @@ namespace March7thHoney.Proto {
         }
         Scene.MergeFrom(other.Scene);
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
+      if (other.challengeTierceInfo_ != null) {
+        if (challengeTierceInfo_ == null) {
+          ChallengeTierceInfo = new global::March7thHoney.Proto.ChallengeTierceChallengeInfo();
+        }
+        ChallengeTierceInfo.MergeFrom(other.ChallengeTierceInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -268,22 +268,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 32: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 58: {
             if (scene_ == null) {
               Scene = new global::March7thHoney.Proto.SceneInfo();
             }
             input.ReadMessage(Scene);
             break;
           }
-          case 90: {
+          case 98: {
             if (challengeTierceInfo_ == null) {
               ChallengeTierceInfo = new global::March7thHoney.Proto.ChallengeTierceChallengeInfo();
             }
             input.ReadMessage(ChallengeTierceInfo);
-            break;
-          }
-          case 104: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -305,22 +305,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 32: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 58: {
             if (scene_ == null) {
               Scene = new global::March7thHoney.Proto.SceneInfo();
             }
             input.ReadMessage(Scene);
             break;
           }
-          case 90: {
+          case 98: {
             if (challengeTierceInfo_ == null) {
               ChallengeTierceInfo = new global::March7thHoney.Proto.ChallengeTierceChallengeInfo();
             }
             input.ReadMessage(ChallengeTierceInfo);
-            break;
-          }
-          case 104: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }

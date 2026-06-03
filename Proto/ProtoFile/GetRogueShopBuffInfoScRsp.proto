@@ -6,9 +6,9 @@ import "DAENHKENJHK.proto";
 import "ItemCostData.proto";
 
 message GetRogueShopBuffInfoScRsp {
-    DAENHKENJHK HABJHGPFGEB = 2;
-    ItemCostData JOMDKGINNEK = 11;
-    int32 KCBOHFNFJEA = 13;
-    int32 APMGPHFHENP = 14;
-    uint32 retcode = 9;
+    DAENHKENJHK HABJHGPFGEB = 3;
+    int32 KCBOHFNFJEA = 10;
+    int32 APMGPHFHENP = 11;
+    uint32 retcode = 12;
+    ItemCostData JOMDKGINNEK = 15;
 }

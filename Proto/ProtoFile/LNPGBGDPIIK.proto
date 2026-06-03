@@ -6,8 +6,8 @@ import "ItemCostData.proto";
 import "OCBPJLLLJGO.proto";
 
 message LNPGBGDPIIK {
-    ItemCostData IOJFGBDPPHI = 1;
-    ItemCostData cost_data = 9;
-    OCBPJLLLJGO DDLADFJMEEC = 12;
-    bool IFIGFODOPBB = 10;
+    ItemCostData cost_data = 1;
+    ItemCostData IOJFGBDPPHI = 2;
+    bool IFIGFODOPBB = 12;
+    OCBPJLLLJGO DDLADFJMEEC = 13;
 }

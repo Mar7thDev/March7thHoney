@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SocialPlayPreCheckEnterRoomScRsp {
-    int64 CMHKFNFKGOI = 14;
-    uint32 retcode = 15;
+    uint32 retcode = 8;
+    int64 CMHKFNFKGOI = 15;
 }

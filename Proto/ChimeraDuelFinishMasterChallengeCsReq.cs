@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CitDaGltZXJhRHVlbEZpbmlzaE1hc3RlckNoYWxsZW5nZUNzUmVxLnByb3Rv",
             "IjwKJUNoaW1lcmFEdWVsRmluaXNoTWFzdGVyQ2hhbGxlbmdlQ3NSZXESEwoL",
-            "SVBJTkhORkNJT0UYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "SVBJTkhORkNJT0UYCyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IPINHNFCIOE" field.</summary>
-    public const int IPINHNFCIOEFieldNumber = 15;
+    public const int IPINHNFCIOEFieldNumber = 11;
     private uint iPINHNFCIOE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (IPINHNFCIOE != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(IPINHNFCIOE);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (IPINHNFCIOE != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(IPINHNFCIOE);
       }
       if (_unknownFields != null) {
@@ -202,7 +202,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 120: {
+          case 88: {
             IPINHNFCIOE = input.ReadUInt32();
             break;
           }
@@ -225,7 +225,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 120: {
+          case 88: {
             IPINHNFCIOE = input.ReadUInt32();
             break;
           }

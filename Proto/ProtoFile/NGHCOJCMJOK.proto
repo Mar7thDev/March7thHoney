@@ -7,8 +7,8 @@ import "IPMLDNLACFO.proto";
 import "NCFKHDIKCNI.proto";
 
 message NGHCOJCMJOK {
-    repeated EKPBGMKJGDL HAINMHKIOMJ = 15;
-    NCFKHDIKCNI OPOIDCHIMEK = 13;
-    repeated IPMLDNLACFO FAJLFDNKFGJ = 1;
-    repeated uint32 BNCOJCEGBPG = 8;
+    repeated EKPBGMKJGDL HAINMHKIOMJ = 8;
+    repeated uint32 BNCOJCEGBPG = 9;
+    NCFKHDIKCNI OPOIDCHIMEK = 12;
+    repeated IPMLDNLACFO FAJLFDNKFGJ = 15;
 }

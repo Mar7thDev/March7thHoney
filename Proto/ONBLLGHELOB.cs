@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPTkJMTEdIRUxPQi5wcm90byI3CgtPTkJMTEdIRUxPQhITCgtOR09OQU5L",
-            "QktNRhgIIAMoDRITCgtFTkdFUE1QQ0pQQxgNIAEoDUIWqgITTWFyY2g3dGhI",
+            "QktNRhgBIAMoDRITCgtFTkdFUE1QQ0pQQxgGIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NGONANKBKMF" field.</summary>
-    public const int NGONANKBKMFFieldNumber = 8;
+    public const int NGONANKBKMFFieldNumber = 1;
     private static readonly pb::FieldCodec<uint> _repeated_nGONANKBKMF_codec
-        = pb::FieldCodec.ForUInt32(66);
+        = pb::FieldCodec.ForUInt32(10);
     private readonly pbc::RepeatedField<uint> nGONANKBKMF_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "ENGEPMPCJPC" field.</summary>
-    public const int ENGEPMPCJPCFieldNumber = 13;
+    public const int ENGEPMPCJPCFieldNumber = 6;
     private uint eNGEPMPCJPC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     #else
       nGONANKBKMF_.WriteTo(output, _repeated_nGONANKBKMF_codec);
       if (ENGEPMPCJPC != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(48);
         output.WriteUInt32(ENGEPMPCJPC);
       }
       if (_unknownFields != null) {
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       nGONANKBKMF_.WriteTo(ref output, _repeated_nGONANKBKMF_codec);
       if (ENGEPMPCJPC != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(48);
         output.WriteUInt32(ENGEPMPCJPC);
       }
       if (_unknownFields != null) {
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 66:
-          case 64: {
+          case 10:
+          case 8: {
             nGONANKBKMF_.AddEntriesFrom(input, _repeated_nGONANKBKMF_codec);
             break;
           }
-          case 104: {
+          case 48: {
             ENGEPMPCJPC = input.ReadUInt32();
             break;
           }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 66:
-          case 64: {
+          case 10:
+          case 8: {
             nGONANKBKMF_.AddEntriesFrom(ref input, _repeated_nGONANKBKMF_codec);
             break;
           }
-          case 104: {
+          case 48: {
             ENGEPMPCJPC = input.ReadUInt32();
             break;
           }

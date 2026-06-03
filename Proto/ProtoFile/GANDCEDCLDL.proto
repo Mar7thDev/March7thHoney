@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GANDCEDCLDL {
-    uint32 FHPMEIECKLG = 2;
     uint32 KAAHKLDJPJE = 1;
+    uint32 FHPMEIECKLG = 2;
     uint32 entity_id = 3;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFTU5OTkNITlBLUC5wcm90bxoRSkJDSEhHREhLSUcucHJvdG8iVgoLRU1O",
-            "Tk5DSE5QS1ASIQoLT1BNR0ROTkFFSkYYBCABKAsyDC5KQkNISEdESEtJRxIT",
-            "CgtCSUFDS0xCTU1BUBgMIAEoDRIPCgdpdGVtX2lkGAEgASgNQhaqAhNNYXJj",
+            "Tk5DSE5QS1ASDwoHaXRlbV9pZBgBIAEoDRIhCgtPUE1HRE5OQUVKRhgIIAEo",
+            "CzIMLkpCQ0hIR0RIS0lHEhMKC0JJQUNLTEJNTUFQGA4gASgNQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JBCHHGDHKIGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EMNNNCHNPKP), global::March7thHoney.Proto.EMNNNCHNPKP.Parser, new[]{ "OPMGDNNAEJF", "BIACKLBMMAP", "ItemId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EMNNNCHNPKP), global::March7thHoney.Proto.EMNNNCHNPKP.Parser, new[]{ "ItemId", "OPMGDNNAEJF", "BIACKLBMMAP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EMNNNCHNPKP(EMNNNCHNPKP other) : this() {
+      itemId_ = other.itemId_;
       oPMGDNNAEJF_ = other.oPMGDNNAEJF_ != null ? other.oPMGDNNAEJF_.Clone() : null;
       bIACKLBMMAP_ = other.bIACKLBMMAP_;
-      itemId_ = other.itemId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,30 +83,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EMNNNCHNPKP Clone() {
       return new EMNNNCHNPKP(this);
-    }
-
-    /// <summary>Field number for the "OPMGDNNAEJF" field.</summary>
-    public const int OPMGDNNAEJFFieldNumber = 4;
-    private global::March7thHoney.Proto.JBCHHGDHKIG oPMGDNNAEJF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.JBCHHGDHKIG OPMGDNNAEJF {
-      get { return oPMGDNNAEJF_; }
-      set {
-        oPMGDNNAEJF_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "BIACKLBMMAP" field.</summary>
-    public const int BIACKLBMMAPFieldNumber = 12;
-    private uint bIACKLBMMAP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BIACKLBMMAP {
-      get { return bIACKLBMMAP_; }
-      set {
-        bIACKLBMMAP_ = value;
-      }
     }
 
     /// <summary>Field number for the "item_id" field.</summary>
@@ -118,6 +94,30 @@ namespace March7thHoney.Proto {
       get { return itemId_; }
       set {
         itemId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "OPMGDNNAEJF" field.</summary>
+    public const int OPMGDNNAEJFFieldNumber = 8;
+    private global::March7thHoney.Proto.JBCHHGDHKIG oPMGDNNAEJF_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.JBCHHGDHKIG OPMGDNNAEJF {
+      get { return oPMGDNNAEJF_; }
+      set {
+        oPMGDNNAEJF_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BIACKLBMMAP" field.</summary>
+    public const int BIACKLBMMAPFieldNumber = 14;
+    private uint bIACKLBMMAP_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BIACKLBMMAP {
+      get { return bIACKLBMMAP_; }
+      set {
+        bIACKLBMMAP_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ItemId != other.ItemId) return false;
       if (!object.Equals(OPMGDNNAEJF, other.OPMGDNNAEJF)) return false;
       if (BIACKLBMMAP != other.BIACKLBMMAP) return false;
-      if (ItemId != other.ItemId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (ItemId != 0) hash ^= ItemId.GetHashCode();
       if (oPMGDNNAEJF_ != null) hash ^= OPMGDNNAEJF.GetHashCode();
       if (BIACKLBMMAP != 0) hash ^= BIACKLBMMAP.GetHashCode();
-      if (ItemId != 0) hash ^= ItemId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(ItemId);
       }
       if (oPMGDNNAEJF_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(OPMGDNNAEJF);
       }
       if (BIACKLBMMAP != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteUInt32(BIACKLBMMAP);
       }
       if (_unknownFields != null) {
@@ -194,11 +194,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(ItemId);
       }
       if (oPMGDNNAEJF_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(OPMGDNNAEJF);
       }
       if (BIACKLBMMAP != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(112);
         output.WriteUInt32(BIACKLBMMAP);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (ItemId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ItemId);
+      }
       if (oPMGDNNAEJF_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(OPMGDNNAEJF);
       }
       if (BIACKLBMMAP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BIACKLBMMAP);
-      }
-      if (ItemId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ItemId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,6 +232,9 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.ItemId != 0) {
+        ItemId = other.ItemId;
+      }
       if (other.oPMGDNNAEJF_ != null) {
         if (oPMGDNNAEJF_ == null) {
           OPMGDNNAEJF = new global::March7thHoney.Proto.JBCHHGDHKIG();
@@ -240,9 +243,6 @@ namespace March7thHoney.Proto {
       }
       if (other.BIACKLBMMAP != 0) {
         BIACKLBMMAP = other.BIACKLBMMAP;
-      }
-      if (other.ItemId != 0) {
-        ItemId = other.ItemId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -267,14 +267,14 @@ namespace March7thHoney.Proto {
             ItemId = input.ReadUInt32();
             break;
           }
-          case 34: {
+          case 66: {
             if (oPMGDNNAEJF_ == null) {
               OPMGDNNAEJF = new global::March7thHoney.Proto.JBCHHGDHKIG();
             }
             input.ReadMessage(OPMGDNNAEJF);
             break;
           }
-          case 96: {
+          case 112: {
             BIACKLBMMAP = input.ReadUInt32();
             break;
           }
@@ -301,14 +301,14 @@ namespace March7thHoney.Proto {
             ItemId = input.ReadUInt32();
             break;
           }
-          case 34: {
+          case 66: {
             if (oPMGDNNAEJF_ == null) {
               OPMGDNNAEJF = new global::March7thHoney.Proto.JBCHHGDHKIG();
             }
             input.ReadMessage(OPMGDNNAEJF);
             break;
           }
-          case 96: {
+          case 112: {
             BIACKLBMMAP = input.ReadUInt32();
             break;
           }

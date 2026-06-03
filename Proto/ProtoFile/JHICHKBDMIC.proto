@@ -6,8 +6,8 @@ import "DEJGMBKPHEC.proto";
 import "GCFGCHAMNOL.proto";
 
 message JHICHKBDMIC {
+    repeated DEJGMBKPHEC FJLPLIGMPHB = 1;
+    uint32 DCOONCCIKGL = 4;
     GCFGCHAMNOL lineup = 6;
-    repeated DEJGMBKPHEC FJLPLIGMPHB = 9;
-    uint32 FHCKFMDKPPO = 14;
-    uint32 DCOONCCIKGL = 8;
+    uint32 FHCKFMDKPPO = 9;
 }

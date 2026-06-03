@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch9Db21wb3NlU2VsZWN0ZWRSZWxpY0NzUmVxLnByb3RvGhJJdGVtQ29zdERh",
             "dGEucHJvdG8i2QEKGUNvbXBvc2VTZWxlY3RlZFJlbGljQ3NSZXESIwoMd3Jf",
-            "aXRlbV9saXN0GA0gASgLMg0uSXRlbUNvc3REYXRhEhkKEXN1Yl9hZmZpeF9p",
-            "ZF9saXN0GAYgAygNEigKEWNvbXBvc2VfaXRlbV9saXN0GA8gASgLMg0uSXRl",
-            "bUNvc3REYXRhEg0KBWNvdW50GAkgASgNEhUKDW1haW5fYWZmaXhfaWQYAyAB",
-            "KA0SEgoKY29tcG9zZV9pZBgCIAEoDRIYChBjb21wb3NlX3JlbGljX2lkGAUg",
+            "aXRlbV9saXN0GAEgASgLMg0uSXRlbUNvc3REYXRhEg0KBWNvdW50GAUgASgN",
+            "EhIKCmNvbXBvc2VfaWQYBiABKA0SKAoRY29tcG9zZV9pdGVtX2xpc3QYByAB",
+            "KAsyDS5JdGVtQ29zdERhdGESGAoQY29tcG9zZV9yZWxpY19pZBgKIAEoDRIZ",
+            "ChFzdWJfYWZmaXhfaWRfbGlzdBgLIAMoDRIVCg1tYWluX2FmZml4X2lkGA0g",
             "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ComposeSelectedRelicCsReq), global::March7thHoney.Proto.ComposeSelectedRelicCsReq.Parser, new[]{ "WrItemList", "SubAffixIdList", "ComposeItemList", "Count", "MainAffixId", "ComposeId", "ComposeRelicId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ComposeSelectedRelicCsReq), global::March7thHoney.Proto.ComposeSelectedRelicCsReq.Parser, new[]{ "WrItemList", "Count", "ComposeId", "ComposeItemList", "ComposeRelicId", "SubAffixIdList", "MainAffixId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,12 +77,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ComposeSelectedRelicCsReq(ComposeSelectedRelicCsReq other) : this() {
       wrItemList_ = other.wrItemList_ != null ? other.wrItemList_.Clone() : null;
-      subAffixIdList_ = other.subAffixIdList_.Clone();
-      composeItemList_ = other.composeItemList_ != null ? other.composeItemList_.Clone() : null;
       count_ = other.count_;
-      mainAffixId_ = other.mainAffixId_;
       composeId_ = other.composeId_;
+      composeItemList_ = other.composeItemList_ != null ? other.composeItemList_.Clone() : null;
       composeRelicId_ = other.composeRelicId_;
+      subAffixIdList_ = other.subAffixIdList_.Clone();
+      mainAffixId_ = other.mainAffixId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -93,7 +93,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "wr_item_list" field.</summary>
-    public const int WrItemListFieldNumber = 13;
+    public const int WrItemListFieldNumber = 1;
     private global::March7thHoney.Proto.ItemCostData wrItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,31 +104,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "sub_affix_id_list" field.</summary>
-    public const int SubAffixIdListFieldNumber = 6;
-    private static readonly pb::FieldCodec<uint> _repeated_subAffixIdList_codec
-        = pb::FieldCodec.ForUInt32(50);
-    private readonly pbc::RepeatedField<uint> subAffixIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> SubAffixIdList {
-      get { return subAffixIdList_; }
-    }
-
-    /// <summary>Field number for the "compose_item_list" field.</summary>
-    public const int ComposeItemListFieldNumber = 15;
-    private global::March7thHoney.Proto.ItemCostData composeItemList_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ItemCostData ComposeItemList {
-      get { return composeItemList_; }
-      set {
-        composeItemList_ = value;
-      }
-    }
-
     /// <summary>Field number for the "count" field.</summary>
-    public const int CountFieldNumber = 9;
+    public const int CountFieldNumber = 5;
     private uint count_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -139,20 +116,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "main_affix_id" field.</summary>
-    public const int MainAffixIdFieldNumber = 3;
-    private uint mainAffixId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MainAffixId {
-      get { return mainAffixId_; }
-      set {
-        mainAffixId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "compose_id" field.</summary>
-    public const int ComposeIdFieldNumber = 2;
+    public const int ComposeIdFieldNumber = 6;
     private uint composeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -163,8 +128,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "compose_item_list" field.</summary>
+    public const int ComposeItemListFieldNumber = 7;
+    private global::March7thHoney.Proto.ItemCostData composeItemList_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ItemCostData ComposeItemList {
+      get { return composeItemList_; }
+      set {
+        composeItemList_ = value;
+      }
+    }
+
     /// <summary>Field number for the "compose_relic_id" field.</summary>
-    public const int ComposeRelicIdFieldNumber = 5;
+    public const int ComposeRelicIdFieldNumber = 10;
     private uint composeRelicId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -172,6 +149,29 @@ namespace March7thHoney.Proto {
       get { return composeRelicId_; }
       set {
         composeRelicId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sub_affix_id_list" field.</summary>
+    public const int SubAffixIdListFieldNumber = 11;
+    private static readonly pb::FieldCodec<uint> _repeated_subAffixIdList_codec
+        = pb::FieldCodec.ForUInt32(90);
+    private readonly pbc::RepeatedField<uint> subAffixIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> SubAffixIdList {
+      get { return subAffixIdList_; }
+    }
+
+    /// <summary>Field number for the "main_affix_id" field.</summary>
+    public const int MainAffixIdFieldNumber = 13;
+    private uint mainAffixId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MainAffixId {
+      get { return mainAffixId_; }
+      set {
+        mainAffixId_ = value;
       }
     }
 
@@ -191,12 +191,12 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(WrItemList, other.WrItemList)) return false;
-      if(!subAffixIdList_.Equals(other.subAffixIdList_)) return false;
-      if (!object.Equals(ComposeItemList, other.ComposeItemList)) return false;
       if (Count != other.Count) return false;
-      if (MainAffixId != other.MainAffixId) return false;
       if (ComposeId != other.ComposeId) return false;
+      if (!object.Equals(ComposeItemList, other.ComposeItemList)) return false;
       if (ComposeRelicId != other.ComposeRelicId) return false;
+      if(!subAffixIdList_.Equals(other.subAffixIdList_)) return false;
+      if (MainAffixId != other.MainAffixId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -205,12 +205,12 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (wrItemList_ != null) hash ^= WrItemList.GetHashCode();
-      hash ^= subAffixIdList_.GetHashCode();
-      if (composeItemList_ != null) hash ^= ComposeItemList.GetHashCode();
       if (Count != 0) hash ^= Count.GetHashCode();
-      if (MainAffixId != 0) hash ^= MainAffixId.GetHashCode();
       if (ComposeId != 0) hash ^= ComposeId.GetHashCode();
+      if (composeItemList_ != null) hash ^= ComposeItemList.GetHashCode();
       if (ComposeRelicId != 0) hash ^= ComposeRelicId.GetHashCode();
+      hash ^= subAffixIdList_.GetHashCode();
+      if (MainAffixId != 0) hash ^= MainAffixId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -229,30 +229,30 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (wrItemList_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(WrItemList);
+      }
+      if (Count != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(Count);
+      }
       if (ComposeId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(48);
         output.WriteUInt32(ComposeId);
       }
-      if (MainAffixId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(MainAffixId);
+      if (composeItemList_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(ComposeItemList);
       }
       if (ComposeRelicId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(80);
         output.WriteUInt32(ComposeRelicId);
       }
       subAffixIdList_.WriteTo(output, _repeated_subAffixIdList_codec);
-      if (Count != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Count);
-      }
-      if (wrItemList_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(WrItemList);
-      }
-      if (composeItemList_ != null) {
-        output.WriteRawTag(122);
-        output.WriteMessage(ComposeItemList);
+      if (MainAffixId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(MainAffixId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -264,30 +264,30 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (wrItemList_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(WrItemList);
+      }
+      if (Count != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(Count);
+      }
       if (ComposeId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(48);
         output.WriteUInt32(ComposeId);
       }
-      if (MainAffixId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(MainAffixId);
+      if (composeItemList_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(ComposeItemList);
       }
       if (ComposeRelicId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(80);
         output.WriteUInt32(ComposeRelicId);
       }
       subAffixIdList_.WriteTo(ref output, _repeated_subAffixIdList_codec);
-      if (Count != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Count);
-      }
-      if (wrItemList_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(WrItemList);
-      }
-      if (composeItemList_ != null) {
-        output.WriteRawTag(122);
-        output.WriteMessage(ComposeItemList);
+      if (MainAffixId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(MainAffixId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -302,21 +302,21 @@ namespace March7thHoney.Proto {
       if (wrItemList_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(WrItemList);
       }
-      size += subAffixIdList_.CalculateSize(_repeated_subAffixIdList_codec);
-      if (composeItemList_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ComposeItemList);
-      }
       if (Count != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Count);
-      }
-      if (MainAffixId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainAffixId);
       }
       if (ComposeId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ComposeId);
       }
+      if (composeItemList_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ComposeItemList);
+      }
       if (ComposeRelicId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ComposeRelicId);
+      }
+      size += subAffixIdList_.CalculateSize(_repeated_subAffixIdList_codec);
+      if (MainAffixId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainAffixId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -336,24 +336,24 @@ namespace March7thHoney.Proto {
         }
         WrItemList.MergeFrom(other.WrItemList);
       }
-      subAffixIdList_.Add(other.subAffixIdList_);
+      if (other.Count != 0) {
+        Count = other.Count;
+      }
+      if (other.ComposeId != 0) {
+        ComposeId = other.ComposeId;
+      }
       if (other.composeItemList_ != null) {
         if (composeItemList_ == null) {
           ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
         }
         ComposeItemList.MergeFrom(other.ComposeItemList);
       }
-      if (other.Count != 0) {
-        Count = other.Count;
-      }
-      if (other.MainAffixId != 0) {
-        MainAffixId = other.MainAffixId;
-      }
-      if (other.ComposeId != 0) {
-        ComposeId = other.ComposeId;
-      }
       if (other.ComposeRelicId != 0) {
         ComposeRelicId = other.ComposeRelicId;
+      }
+      subAffixIdList_.Add(other.subAffixIdList_);
+      if (other.MainAffixId != 0) {
+        MainAffixId = other.MainAffixId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -374,39 +374,39 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            ComposeId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            MainAffixId = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            ComposeRelicId = input.ReadUInt32();
-            break;
-          }
-          case 50:
-          case 48: {
-            subAffixIdList_.AddEntriesFrom(input, _repeated_subAffixIdList_codec);
-            break;
-          }
-          case 72: {
-            Count = input.ReadUInt32();
-            break;
-          }
-          case 106: {
+          case 10: {
             if (wrItemList_ == null) {
               WrItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(WrItemList);
             break;
           }
-          case 122: {
+          case 40: {
+            Count = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            ComposeId = input.ReadUInt32();
+            break;
+          }
+          case 58: {
             if (composeItemList_ == null) {
               ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ComposeItemList);
+            break;
+          }
+          case 80: {
+            ComposeRelicId = input.ReadUInt32();
+            break;
+          }
+          case 90:
+          case 88: {
+            subAffixIdList_.AddEntriesFrom(input, _repeated_subAffixIdList_codec);
+            break;
+          }
+          case 104: {
+            MainAffixId = input.ReadUInt32();
             break;
           }
         }
@@ -428,39 +428,39 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            ComposeId = input.ReadUInt32();
-            break;
-          }
-          case 24: {
-            MainAffixId = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            ComposeRelicId = input.ReadUInt32();
-            break;
-          }
-          case 50:
-          case 48: {
-            subAffixIdList_.AddEntriesFrom(ref input, _repeated_subAffixIdList_codec);
-            break;
-          }
-          case 72: {
-            Count = input.ReadUInt32();
-            break;
-          }
-          case 106: {
+          case 10: {
             if (wrItemList_ == null) {
               WrItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(WrItemList);
             break;
           }
-          case 122: {
+          case 40: {
+            Count = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            ComposeId = input.ReadUInt32();
+            break;
+          }
+          case 58: {
             if (composeItemList_ == null) {
               ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ComposeItemList);
+            break;
+          }
+          case 80: {
+            ComposeRelicId = input.ReadUInt32();
+            break;
+          }
+          case 90:
+          case 88: {
+            subAffixIdList_.AddEntriesFrom(ref input, _repeated_subAffixIdList_codec);
+            break;
+          }
+          case 104: {
+            MainAffixId = input.ReadUInt32();
             break;
           }
         }

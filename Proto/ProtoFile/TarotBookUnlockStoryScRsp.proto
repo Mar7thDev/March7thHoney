@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LIONJNJEBBF.proto";
 
 message TarotBookUnlockStoryScRsp {
-    map<uint32, uint32> IMNNLHCAKML = 1;
-    map<uint32, uint32> IJOJMJOMELA = 8;
-    LIONJNJEBBF CLLIKPONHOC = 13;
-    repeated uint32 BHFHFONGHML = 4;
-    uint32 retcode = 5;
+    LIONJNJEBBF CLLIKPONHOC = 1;
+    map<uint32, uint32> IJOJMJOMELA = 3;
+    repeated uint32 BHFHFONGHML = 6;
+    uint32 retcode = 9;
+    map<uint32, uint32> IMNNLHCAKML = 12;
 }

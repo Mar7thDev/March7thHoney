@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpVcGdyYWRlQXJlYVN0YXRDc1JlcS5wcm90bxoOU3RhdFR5cGUucHJvdG8i",
-            "VgoUVXBncmFkZUFyZWFTdGF0Q3NSZXESDQoFbGV2ZWwYAyABKA0SDwoHYXJl",
-            "YV9pZBgEIAEoDRIeCgtHTkJLRENITERHTBgGIAEoDjIJLlN0YXRUeXBlQhaq",
+            "VgoUVXBncmFkZUFyZWFTdGF0Q3NSZXESDQoFbGV2ZWwYByABKA0SDwoHYXJl",
+            "YV9pZBgJIAEoDRIeCgtHTkJLRENITERHTBgNIAEoDjIJLlN0YXRUeXBlQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.StatTypeReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 3;
+    public const int LevelFieldNumber = 7;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 4;
+    public const int AreaIdFieldNumber = 9;
     private uint areaId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GNBKDCHLDGL" field.</summary>
-    public const int GNBKDCHLDGLFieldNumber = 6;
+    public const int GNBKDCHLDGLFieldNumber = 13;
     private global::March7thHoney.Proto.StatType gNBKDCHLDGL_ = global::March7thHoney.Proto.StatType.GophgihidppNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -168,15 +168,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Level != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteUInt32(Level);
       }
       if (AreaId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(72);
         output.WriteUInt32(AreaId);
       }
       if (GNBKDCHLDGL != global::March7thHoney.Proto.StatType.GophgihidppNlcdgipgfdj) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(104);
         output.WriteEnum((int) GNBKDCHLDGL);
       }
       if (_unknownFields != null) {
@@ -190,15 +190,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Level != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteUInt32(Level);
       }
       if (AreaId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(72);
         output.WriteUInt32(AreaId);
       }
       if (GNBKDCHLDGL != global::March7thHoney.Proto.StatType.GophgihidppNlcdgipgfdj) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(104);
         output.WriteEnum((int) GNBKDCHLDGL);
       }
       if (_unknownFields != null) {
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 56: {
             Level = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 72: {
             AreaId = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 104: {
             GNBKDCHLDGL = (global::March7thHoney.Proto.StatType) input.ReadEnum();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 56: {
             Level = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 72: {
             AreaId = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 104: {
             GNBKDCHLDGL = (global::March7thHoney.Proto.StatType) input.ReadEnum();
             break;
           }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OFMCKLEMOMP.proto";
 
 message PAGJKBPPOKL {
-    OFMCKLEMOMP FNEOOMHHGGB = 5;
+    OFMCKLEMOMP FNEOOMHHGGB = 4;
 }

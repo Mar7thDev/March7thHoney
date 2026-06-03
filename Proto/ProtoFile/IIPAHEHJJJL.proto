@@ -7,13 +7,13 @@ import "ECOGPFKDJDF.proto";
 import "MNIAIAGFEBP.proto";
 
 message IIPAHEHJJJL {
-    repeated ECOGPFKDJDF MBGGCJIJEAK = 5;
     string room_id = 1;
+    uint32 LOPNADHJKBF = 2;
+    uint32 section_id = 3;
     MNIAIAGFEBP player_info = 4;
-    repeated DBNNBCGMIGP GDLMMADBEMM = 9;
+    repeated ECOGPFKDJDF MBGGCJIJEAK = 5;
     repeated uint32 KPOJFEJNIHK = 6;
     repeated uint32 GMDPHHPGGFE = 7;
     repeated uint32 GGGMDECDEBB = 8;
-    uint32 LOPNADHJKBF = 2;
-    uint32 section_id = 3;
+    repeated DBNNBCGMIGP GDLMMADBEMM = 9;
 }

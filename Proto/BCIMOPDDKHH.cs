@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCQ0lNT1BEREtISC5wcm90byIvCgtCQ0lNT1BEREtISBITCgtGRU9ERElL",
-            "UEFPQRgKIAMoDRILCgN1aWQYBiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "UEFPQRgKIAMoDRILCgN1aWQYDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 6;
+    public const int UidFieldNumber = 12;
     private uint uid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,11 +150,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      fEODDIKPAOA_.WriteTo(output, _repeated_fEODDIKPAOA_codec);
       if (Uid != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(96);
         output.WriteUInt32(Uid);
       }
-      fEODDIKPAOA_.WriteTo(output, _repeated_fEODDIKPAOA_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -165,11 +165,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      fEODDIKPAOA_.WriteTo(ref output, _repeated_fEODDIKPAOA_codec);
       if (Uid != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(96);
         output.WriteUInt32(Uid);
       }
-      fEODDIKPAOA_.WriteTo(ref output, _repeated_fEODDIKPAOA_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -219,13 +219,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            Uid = input.ReadUInt32();
-            break;
-          }
           case 82:
           case 80: {
             fEODDIKPAOA_.AddEntriesFrom(input, _repeated_fEODDIKPAOA_codec);
+            break;
+          }
+          case 96: {
+            Uid = input.ReadUInt32();
             break;
           }
         }
@@ -247,13 +247,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            Uid = input.ReadUInt32();
-            break;
-          }
           case 82:
           case 80: {
             fEODDIKPAOA_.AddEntriesFrom(ref input, _repeated_fEODDIKPAOA_codec);
+            break;
+          }
+          case 96: {
+            Uid = input.ReadUInt32();
             break;
           }
         }

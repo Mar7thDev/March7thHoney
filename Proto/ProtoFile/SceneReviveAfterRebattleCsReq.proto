@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RebattleType.proto";
 
 message SceneReviveAfterRebattleCsReq {
-    RebattleType NKDAAAGPCDB = 9;
+    RebattleType NKDAAAGPCDB = 10;
 }

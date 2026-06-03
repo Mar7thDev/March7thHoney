@@ -24,14 +24,15 @@ namespace March7thHoney.Proto {
     static FightGameModeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNGaWdodEdhbWVNb2RlLnByb3RvKpQCCg1GaWdodEdhbWVNb2RlEhsKF0ZK",
+            "ChNGaWdodEdhbWVNb2RlLnByb3RvKrECCg1GaWdodEdhbWVNb2RlEhsKF0ZK",
             "UE1KUEVLTEpMX05MQ0RHSVBHRkRKEAASGwoXRkpQTUpQRUtMSkxfRUFNQ1BP",
             "UFBIRU4QARIbChdGSlBNSlBFS0xKTF9LUEVLTlBPREVLShACEhsKF0ZKUE1K",
             "UEVLTEpMX05IQUFEUEtPQ01LEAMSGwoXRkpQTUpQRUtMSkxfR0NNTktFSklN",
             "RkkQBBIbChdGSlBNSlBFS0xKTF9CQkVBSU9PSERCRRAFEhsKF0ZKUE1KUEVL",
             "TEpMX0JMQk1BUEFNRkhFEAYSGwoXRkpQTUpQRUtMSkxfRkJQR0lMS0lHQkUQ",
-            "BxIbChdGSlBNSlBFS0xKTF9NS0hMQUxOTE9MQRAIQhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "BxIbChdGSlBNSlBFS0xKTF9NS0hMQUxOTE9MQRAIEhsKF0ZKUE1KUEVLTEpM",
+            "X0FBSERMTE5FSkVMEAlCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.FightGameMode), }, null, null));
@@ -50,6 +51,7 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("FJPMJPEKLJL_BLBMAPAMFHE")] FjpmjpekljlBlbmapamfhe = 6,
     [pbr::OriginalName("FJPMJPEKLJL_FBPGILKIGBE")] FjpmjpekljlFbpgilkigbe = 7,
     [pbr::OriginalName("FJPMJPEKLJL_MKHLALNLOLA")] FjpmjpekljlMkhlalnlola = 8,
+    [pbr::OriginalName("FJPMJPEKLJL_AAHDLLNEJEL")] FjpmjpekljlAahdllnejel = 9,
   }
 
   #endregion

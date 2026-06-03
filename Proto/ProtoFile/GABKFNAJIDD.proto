@@ -6,11 +6,11 @@ import "BNAILMNNGIF.proto";
 import "KJDLIPEIAAK.proto";
 
 message GABKFNAJIDD {
-    BNAILMNNGIF LJKNDCIOOCG = 15;
-    KJDLIPEIAAK MJPKBIGCFOM = 6;
-    string name = 1;
-    uint32 NPHAJEKCBKF = 9;
-    bool is_marked = 14;
-    uint32 GFEENEDNJGF = 2;
-    int64 BNCALAMGIOC = 10;
+    BNAILMNNGIF settings = 1;
+    KJDLIPEIAAK icon = 2;
+    uint32 NPHAJEKCBKF = 5;
+    int64 BNCALAMGIOC = 6;
+    string name = 10;
+    bool is_marked = 11;
+    uint32 GFEENEDNJGF = 12;
 }

@@ -7,12 +7,11 @@ import "INHBMHCJJCN.proto";
 import "NCHGLFJCGIJ.proto";
 
 message CBOLONJDHHL {
-    NCHGLFJCGIJ ILIIOLJMKME = 10;
-    string FPPECOIAHEP = 7;
-    INHBMHCJJCN FMIGOKIDKJL = 4;
-    GMIMDEJMFCO AAPEEIFFKJD = 5;
-    uint32 OAPEDNOPOLN = 6;
+    uint32 ICGCMEIBJLC = 1;
+    uint32 LJOBBEFACPG = 4;
+    NCHGLFJCGIJ modifier = 7;
+    GMIMDEJMFCO blackboard = 8;
+    INHBMHCJJCN FMIGOKIDKJL = 10;
     uint32 DLOJFEEHLIJ = 12;
-    uint32 ICGCMEIBJLC = 9;
-    uint32 LJOBBEFACPG = 2;
+    string trans_no = 14;
 }

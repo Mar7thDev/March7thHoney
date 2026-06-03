@@ -6,7 +6,7 @@ import "JECNOELJLKO.proto";
 import "LMLNNHKJEIP.proto";
 
 message BMBCNFKFABK {
-    JECNOELJLKO data = 10;
-    repeated LMLNNHKJEIP DFLEOIGPLNM = 2;
-    uint32 retcode = 9;
+    JECNOELJLKO data = 6;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 9;
+    uint32 retcode = 12;
 }

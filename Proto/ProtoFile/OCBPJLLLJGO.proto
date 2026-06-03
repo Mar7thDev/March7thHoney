@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OCBPJLLLJGO {
-    uint32 level = 4;
-    uint32 GCAHKLNGFCK = 6;
+    uint32 GCAHKLNGFCK = 3;
+    uint32 level = 5;
 }

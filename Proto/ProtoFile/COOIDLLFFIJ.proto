@@ -4,7 +4,7 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message COOIDLLFFIJ {
     oneof AJOABBCKHCK {
-        uint32 KNILAKJMEEP = 8;
-        uint32 PGGDEHKKINP = 5;
+        uint32 KNILAKJMEEP = 13;
+        uint32 PGGDEHKKINP = 2;
     }
 }

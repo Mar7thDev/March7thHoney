@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MultiPathAvatarType.proto";
 
 message SetPlayerInfoScRsp {
-    MultiPathAvatarType cur_avatar_path = 14;
-    uint32 retcode = 2;
-    bool is_modify = 12;
-    int64 set_time = 1;
+    uint32 retcode = 1;
+    bool is_modify = 5;
+    MultiPathAvatarType cur_avatar_path = 7;
+    int64 set_time = 10;
 }

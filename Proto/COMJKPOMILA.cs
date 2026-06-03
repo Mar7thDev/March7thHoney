@@ -24,13 +24,14 @@ namespace March7thHoney.Proto {
     static COMJKPOMILAReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDT01KS1BPTUlMQS5wcm90byI3CgtDT01KS1BPTUlMQRITCgtMTkJLRkZJ",
-            "REVFShgGIAEoDBITCgtPTUZQSUNLUE9DUBgIIAEoDUIWqgITTWFyY2g3dGhI",
+            "ChFDT01KS1BPTUlMQS5wcm90byJkCgtDT01KS1BPTUlMQRITCgtzZXJ2ZXJf",
+            "dGljaxgDIAEoDRITCgtMTkJLRkZJREVFShgGIAEoDBIWCg5zZXJ2ZXJfdGlt",
+            "ZV9tcxgKIAEoBBITCgtPTUZQSUNLUE9DUBgMIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.COMJKPOMILA), global::March7thHoney.Proto.COMJKPOMILA.Parser, new[]{ "LNBKFFIDEEJ", "OMFPICKPOCP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.COMJKPOMILA), global::March7thHoney.Proto.COMJKPOMILA.Parser, new[]{ "ServerTick", "LNBKFFIDEEJ", "ServerTimeMs", "OMFPICKPOCP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public COMJKPOMILA(COMJKPOMILA other) : this() {
+      serverTick_ = other.serverTick_;
       lNBKFFIDEEJ_ = other.lNBKFFIDEEJ_;
+      serverTimeMs_ = other.serverTimeMs_;
       oMFPICKPOCP_ = other.oMFPICKPOCP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -81,6 +84,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public COMJKPOMILA Clone() {
       return new COMJKPOMILA(this);
+    }
+
+    /// <summary>Field number for the "server_tick" field.</summary>
+    public const int ServerTickFieldNumber = 3;
+    private uint serverTick_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ServerTick {
+      get { return serverTick_; }
+      set {
+        serverTick_ = value;
+      }
     }
 
     /// <summary>Field number for the "LNBKFFIDEEJ" field.</summary>
@@ -95,8 +110,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "server_time_ms" field.</summary>
+    public const int ServerTimeMsFieldNumber = 10;
+    private ulong serverTimeMs_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong ServerTimeMs {
+      get { return serverTimeMs_; }
+      set {
+        serverTimeMs_ = value;
+      }
+    }
+
     /// <summary>Field number for the "OMFPICKPOCP" field.</summary>
-    public const int OMFPICKPOCPFieldNumber = 8;
+    public const int OMFPICKPOCPFieldNumber = 12;
     private uint oMFPICKPOCP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +149,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ServerTick != other.ServerTick) return false;
       if (LNBKFFIDEEJ != other.LNBKFFIDEEJ) return false;
+      if (ServerTimeMs != other.ServerTimeMs) return false;
       if (OMFPICKPOCP != other.OMFPICKPOCP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +160,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (ServerTick != 0) hash ^= ServerTick.GetHashCode();
       if (LNBKFFIDEEJ.Length != 0) hash ^= LNBKFFIDEEJ.GetHashCode();
+      if (ServerTimeMs != 0UL) hash ^= ServerTimeMs.GetHashCode();
       if (OMFPICKPOCP != 0) hash ^= OMFPICKPOCP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,12 +182,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (ServerTick != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(ServerTick);
+      }
       if (LNBKFFIDEEJ.Length != 0) {
         output.WriteRawTag(50);
         output.WriteBytes(LNBKFFIDEEJ);
       }
+      if (ServerTimeMs != 0UL) {
+        output.WriteRawTag(80);
+        output.WriteUInt64(ServerTimeMs);
+      }
       if (OMFPICKPOCP != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(96);
         output.WriteUInt32(OMFPICKPOCP);
       }
       if (_unknownFields != null) {
@@ -169,12 +208,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ServerTick != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(ServerTick);
+      }
       if (LNBKFFIDEEJ.Length != 0) {
         output.WriteRawTag(50);
         output.WriteBytes(LNBKFFIDEEJ);
       }
+      if (ServerTimeMs != 0UL) {
+        output.WriteRawTag(80);
+        output.WriteUInt64(ServerTimeMs);
+      }
       if (OMFPICKPOCP != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(96);
         output.WriteUInt32(OMFPICKPOCP);
       }
       if (_unknownFields != null) {
@@ -187,8 +234,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (ServerTick != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ServerTick);
+      }
       if (LNBKFFIDEEJ.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(LNBKFFIDEEJ);
+      }
+      if (ServerTimeMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ServerTimeMs);
       }
       if (OMFPICKPOCP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OMFPICKPOCP);
@@ -205,8 +258,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.ServerTick != 0) {
+        ServerTick = other.ServerTick;
+      }
       if (other.LNBKFFIDEEJ.Length != 0) {
         LNBKFFIDEEJ = other.LNBKFFIDEEJ;
+      }
+      if (other.ServerTimeMs != 0UL) {
+        ServerTimeMs = other.ServerTimeMs;
       }
       if (other.OMFPICKPOCP != 0) {
         OMFPICKPOCP = other.OMFPICKPOCP;
@@ -230,11 +289,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 24: {
+            ServerTick = input.ReadUInt32();
+            break;
+          }
           case 50: {
             LNBKFFIDEEJ = input.ReadBytes();
             break;
           }
-          case 64: {
+          case 80: {
+            ServerTimeMs = input.ReadUInt64();
+            break;
+          }
+          case 96: {
             OMFPICKPOCP = input.ReadUInt32();
             break;
           }
@@ -257,11 +324,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 24: {
+            ServerTick = input.ReadUInt32();
+            break;
+          }
           case 50: {
             LNBKFFIDEEJ = input.ReadBytes();
             break;
           }
-          case 64: {
+          case 80: {
+            ServerTimeMs = input.ReadUInt64();
+            break;
+          }
+          case 96: {
             OMFPICKPOCP = input.ReadUInt32();
             break;
           }

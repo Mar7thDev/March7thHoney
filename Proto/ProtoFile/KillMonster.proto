@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KillMonster {
-    uint32 kill_num = 10;
-    uint32 monster_id = 11;
+    uint32 monster_id = 2;
+    uint32 kill_num = 14;
 }

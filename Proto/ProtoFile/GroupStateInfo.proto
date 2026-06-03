@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GroupStateInfo {
-    uint32 GMEHAMCHJBK = 14;
-    uint32 entry_id = 9;
+    uint32 group_id = 2;
+    uint32 GMEHAMCHJBK = 6;
     uint32 group_state = 11;
-    uint32 group_id = 12;
+    uint32 entry_id = 13;
 }

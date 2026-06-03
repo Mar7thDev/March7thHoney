@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TarotBookFinishInteractionScRsp {
-    uint32 retcode = 9;
-    uint32 INJAGFDOFEJ = 6;
+    uint32 retcode = 4;
+    uint32 INJAGFDOFEJ = 15;
 }

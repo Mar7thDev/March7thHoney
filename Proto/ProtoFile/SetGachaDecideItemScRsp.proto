@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NEIMLKNMDBM.proto";
 
 message SetGachaDecideItemScRsp {
-    NEIMLKNMDBM NBLOJLDLBEB = 15;
-    uint32 retcode = 2;
+    NEIMLKNMDBM NBLOJLDLBEB = 4;
+    uint32 retcode = 12;
 }

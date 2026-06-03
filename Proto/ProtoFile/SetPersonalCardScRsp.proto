@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetPersonalCardScRsp {
-    uint32 retcode = 5;
-    uint32 current_personal_card_id = 3;
+    uint32 retcode = 9;
+    uint32 current_personal_card_id = 13;
 }

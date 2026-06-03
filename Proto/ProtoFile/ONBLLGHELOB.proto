@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ONBLLGHELOB {
-    repeated uint32 NGONANKBKMF = 8;
-    uint32 ENGEPMPCJPC = 13;
+    repeated uint32 NGONANKBKMF = 1;
+    uint32 ENGEPMPCJPC = 6;
 }

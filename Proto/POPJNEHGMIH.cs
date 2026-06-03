@@ -24,7 +24,7 @@ namespace March7thHoney.Proto {
     static POPJNEHGMIHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFQT1BKTkVIR01JSC5wcm90byIsCgtQT1BKTkVIR01JSBIMCgRzbG90GAcg",
+            "ChFQT1BKTkVIR01JSC5wcm90byIsCgtQT1BKTkVIR01JSBIMCgRzbG90GAMg",
             "ASgNEg8KB2l0ZW1faWQYBSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "slot" field.</summary>
-    public const int SlotFieldNumber = 7;
+    public const int SlotFieldNumber = 3;
     private uint slot_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Slot != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Slot);
+      }
       if (ItemId != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(ItemId);
-      }
-      if (Slot != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Slot);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Slot != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Slot);
+      }
       if (ItemId != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(ItemId);
-      }
-      if (Slot != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Slot);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            ItemId = input.ReadUInt32();
+          case 24: {
+            Slot = input.ReadUInt32();
             break;
           }
-          case 56: {
-            Slot = input.ReadUInt32();
+          case 40: {
+            ItemId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            ItemId = input.ReadUInt32();
+          case 24: {
+            Slot = input.ReadUInt32();
             break;
           }
-          case 56: {
-            Slot = input.ReadUInt32();
+          case 40: {
+            ItemId = input.ReadUInt32();
             break;
           }
         }

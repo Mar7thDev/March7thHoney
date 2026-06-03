@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFNb25vcG9seURhaWx5U2V0dGxlU2NOb3RpZnkucHJvdG8aEU5KSEFHS0dI",
             "S0pKLnByb3RvIlUKG01vbm9wb2x5RGFpbHlTZXR0bGVTY05vdGlmeRIhCgtP",
-            "TEFPTkxHTEFKTxgIIAEoCzIMLk5KSEFHS0dIS0pKEhMKC0lDUEFQQ0FKRktL",
-            "GAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "TEFPTkxHTEFKTxgKIAEoCzIMLk5KSEFHS0dIS0pKEhMKC0lDUEFQQ0FKRktL",
+            "GAsgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.NJHAGKGHKJJReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OLAONLGLAJO" field.</summary>
-    public const int OLAONLGLAJOFieldNumber = 8;
+    public const int OLAONLGLAJOFieldNumber = 10;
     private global::March7thHoney.Proto.NJHAGKGHKJJ oLAONLGLAJO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "ICPAPCAJFKK" field.</summary>
-    public const int ICPAPCAJFKKFieldNumber = 3;
+    public const int ICPAPCAJFKKFieldNumber = 11;
     private uint iCPAPCAJFKK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ICPAPCAJFKK != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(ICPAPCAJFKK);
-      }
       if (oLAONLGLAJO_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(82);
         output.WriteMessage(OLAONLGLAJO);
+      }
+      if (ICPAPCAJFKK != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(ICPAPCAJFKK);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ICPAPCAJFKK != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(ICPAPCAJFKK);
-      }
       if (oLAONLGLAJO_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(82);
         output.WriteMessage(OLAONLGLAJO);
+      }
+      if (ICPAPCAJFKK != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(ICPAPCAJFKK);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            ICPAPCAJFKK = input.ReadUInt32();
-            break;
-          }
-          case 66: {
+          case 82: {
             if (oLAONLGLAJO_ == null) {
               OLAONLGLAJO = new global::March7thHoney.Proto.NJHAGKGHKJJ();
             }
             input.ReadMessage(OLAONLGLAJO);
+            break;
+          }
+          case 88: {
+            ICPAPCAJFKK = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            ICPAPCAJFKK = input.ReadUInt32();
-            break;
-          }
-          case 66: {
+          case 82: {
             if (oLAONLGLAJO_ == null) {
               OLAONLGLAJO = new global::March7thHoney.Proto.NJHAGKGHKJJ();
             }
             input.ReadMessage(OLAONLGLAJO);
+            break;
+          }
+          case 88: {
+            ICPAPCAJFKK = input.ReadUInt32();
             break;
           }
         }

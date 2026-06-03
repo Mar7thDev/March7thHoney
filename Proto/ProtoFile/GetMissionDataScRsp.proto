@@ -6,10 +6,12 @@ import "MainMission.proto";
 import "Mission.proto";
 
 message GetMissionDataScRsp {
+    uint32 GKFPKBGJBGN = 1;
+    repeated uint32 KBDGNGMPFEH = 2;
+    repeated MainMission main_mission_list = 4;
+    repeated uint32 OLKALABEDOA = 5;
+    uint32 retcode = 10;
+    repeated uint32 finished_main_mission_id_list = 11;
+    uint32 track_mission_id = 12;
     repeated Mission mission_list = 13;
-    repeated uint32 KBDGNGMPFEH = 4;
-    repeated MainMission main_mission_list = 5;
-    uint32 GKFPKBGJBGN = 10;
-    uint32 track_mission_id = 15;
-    uint32 retcode = 12;
 }

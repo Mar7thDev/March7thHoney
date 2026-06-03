@@ -6,8 +6,8 @@ import "Item.proto";
 import "ItemList.proto";
 
 message GachaItem {
-    ItemList token_item = 7;
-    ItemList transfer_item_list = 8;
-    Item gacha_item = 9;
-    bool is_new = 10;
+    ItemList transfer_item_list = 1;
+    ItemList token_item = 2;
+    Item gacha_item = 3;
+    bool is_new = 6;
 }

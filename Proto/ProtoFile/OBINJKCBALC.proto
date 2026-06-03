@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "FAMLGHGHIOD.proto";
-
-message OBINJKCBALC {
-    repeated FAMLGHGHIOD buff_list = 2;
-}

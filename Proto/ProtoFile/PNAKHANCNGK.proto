@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AHKDPCIIELA.proto";
 
 message PNAKHANCNGK {
-    repeated AHKDPCIIELA PBLBBDBDLEK = 3;
-    uint32 OCPEPEMNNEK = 13;
+    uint32 OCPEPEMNNEK = 8;
+    repeated AHKDPCIIELA PBLBBDBDLEK = 15;
 }

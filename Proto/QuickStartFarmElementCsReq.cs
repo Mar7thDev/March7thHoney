@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBRdWlja1N0YXJ0RmFybUVsZW1lbnRDc1JlcS5wcm90byJbChpRdWlja1N0",
-            "YXJ0RmFybUVsZW1lbnRDc1JlcRITCgtIRUNDT0JGQkpGSRgEIAEoDRITCgtQ",
-            "QU9GSEZMRkZIRBgKIAEoDRITCgt3b3JsZF9sZXZlbBgBIAEoDUIWqgITTWFy",
+            "YXJ0RmFybUVsZW1lbnRDc1JlcRITCgtIRUNDT0JGQkpGSRgBIAEoDRITCgtQ",
+            "QU9GSEZMRkZIRBgGIAEoDRITCgt3b3JsZF9sZXZlbBgMIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HECCOBFBJFI" field.</summary>
-    public const int HECCOBFBJFIFieldNumber = 4;
+    public const int HECCOBFBJFIFieldNumber = 1;
     private uint hECCOBFBJFI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PAOFHFLFFHD" field.</summary>
-    public const int PAOFHFLFFHDFieldNumber = 10;
+    public const int PAOFHFLFFHDFieldNumber = 6;
     private uint pAOFHFLFFHD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "world_level" field.</summary>
-    public const int WorldLevelFieldNumber = 1;
+    public const int WorldLevelFieldNumber = 12;
     private uint worldLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (WorldLevel != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(WorldLevel);
-      }
       if (HECCOBFBJFI != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(8);
         output.WriteUInt32(HECCOBFBJFI);
       }
       if (PAOFHFLFFHD != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(PAOFHFLFFHD);
+      }
+      if (WorldLevel != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(WorldLevel);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (WorldLevel != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(WorldLevel);
-      }
       if (HECCOBFBJFI != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(8);
         output.WriteUInt32(HECCOBFBJFI);
       }
       if (PAOFHFLFFHD != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(PAOFHFLFFHD);
+      }
+      if (WorldLevel != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(WorldLevel);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -261,15 +261,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            WorldLevel = input.ReadUInt32();
-            break;
-          }
-          case 32: {
             HECCOBFBJFI = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 48: {
             PAOFHFLFFHD = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            WorldLevel = input.ReadUInt32();
             break;
           }
         }
@@ -292,15 +292,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            WorldLevel = input.ReadUInt32();
-            break;
-          }
-          case 32: {
             HECCOBFBJFI = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 48: {
             PAOFHFLFFHD = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            WorldLevel = input.ReadUInt32();
             break;
           }
         }

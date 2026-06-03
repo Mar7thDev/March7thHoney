@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ConfirmChallengePeakSettleCsReq {
-    uint32 peak_id = 8;
-    bool IOBCIMIPEOM = 12;
+    bool IOBCIMIPEOM = 1;
+    uint32 peak_id = 13;
 }

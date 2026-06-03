@@ -2,9 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "LMIFHAMFCFE.proto";
+import "GridFightConsumableTargetInfo.proto";
 
 message MOIONLDJGJI {
-    LMIFHAMFCFE display_value = 6;
-    uint32 item_id = 15;
+    GridFightConsumableTargetInfo param = 2;
+    uint32 item_id = 10;
+    uint32 group_id = 12;
 }

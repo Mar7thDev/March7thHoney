@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVNZXNzYWdlQ2hhdERhdGEucHJvdG8aDkNoYXREYXRhLnByb3RvGg1Nc2dU",
-            "eXBlLnByb3RvIk8KD01lc3NhZ2VDaGF0RGF0YRIcCgljaGF0X2RhdGEYAiAB",
-            "KAsyCS5DaGF0RGF0YRIeCgxtZXNzYWdlX3R5cGUYASABKA4yCC5Nc2dUeXBl",
+            "eXBlLnByb3RvIk8KD01lc3NhZ2VDaGF0RGF0YRIeCgxtZXNzYWdlX3R5cGUY",
+            "ASABKA4yCC5Nc2dUeXBlEhwKCWNoYXRfZGF0YRgCIAEoCzIJLkNoYXREYXRh",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChatDataReflection.Descriptor, global::March7thHoney.Proto.MsgTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MessageChatData), global::March7thHoney.Proto.MessageChatData.Parser, new[]{ "ChatData", "MessageType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MessageChatData), global::March7thHoney.Proto.MessageChatData.Parser, new[]{ "MessageType", "ChatData" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MessageChatData(MessageChatData other) : this() {
-      chatData_ = other.chatData_ != null ? other.chatData_.Clone() : null;
       messageType_ = other.messageType_;
+      chatData_ = other.chatData_ != null ? other.chatData_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,18 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MessageChatData Clone() {
       return new MessageChatData(this);
-    }
-
-    /// <summary>Field number for the "chat_data" field.</summary>
-    public const int ChatDataFieldNumber = 2;
-    private global::March7thHoney.Proto.ChatData chatData_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChatData ChatData {
-      get { return chatData_; }
-      set {
-        chatData_ = value;
-      }
     }
 
     /// <summary>Field number for the "message_type" field.</summary>
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return messageType_; }
       set {
         messageType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "chat_data" field.</summary>
+    public const int ChatDataFieldNumber = 2;
+    private global::March7thHoney.Proto.ChatData chatData_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChatData ChatData {
+      get { return chatData_; }
+      set {
+        chatData_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ChatData, other.ChatData)) return false;
       if (MessageType != other.MessageType) return false;
+      if (!object.Equals(ChatData, other.ChatData)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (chatData_ != null) hash ^= ChatData.GetHashCode();
       if (MessageType != global::March7thHoney.Proto.MsgType.None) hash ^= MessageType.GetHashCode();
+      if (chatData_ != null) hash ^= ChatData.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (chatData_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChatData);
-      }
       if (MessageType != global::March7thHoney.Proto.MsgType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MessageType);
+      }
+      if (chatData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChatData);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.MessageType != global::March7thHoney.Proto.MsgType.None) {
+        MessageType = other.MessageType;
+      }
       if (other.chatData_ != null) {
         if (chatData_ == null) {
           ChatData = new global::March7thHoney.Proto.ChatData();
         }
         ChatData.MergeFrom(other.ChatData);
-      }
-      if (other.MessageType != global::March7thHoney.Proto.MsgType.None) {
-        MessageType = other.MessageType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

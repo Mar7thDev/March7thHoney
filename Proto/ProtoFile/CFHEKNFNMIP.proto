@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CFHEKNFNMIP {
-    bool is_locked = 15;
+    bool is_locked = 8;
 }

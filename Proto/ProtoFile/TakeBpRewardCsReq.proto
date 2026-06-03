@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BpRewardType.proto";
 
 message TakeBpRewardCsReq {
-    uint32 optional_reward_id = 2;
-    uint32 level = 12;
-    BpRewardType type = 13;
+    BpRewardType type = 2;
+    uint32 level = 8;
+    uint32 optional_reward_id = 13;
 }

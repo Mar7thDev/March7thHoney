@@ -8,8 +8,8 @@ import "HeartDialScriptInfo.proto";
 import "HeartDialUnlockStatus.proto";
 
 message HeartDialScriptChangeScNotify {
-    repeated HeartDialScriptInfo changed_script_info_list = 9;
-    repeated EAJEMNNNEBM EBLMNLBBFNL = 13;
-    repeated HeartDialDialogueInfo changed_dialogue_info_list = 11;
-    HeartDialUnlockStatus unlock_status = 15;
+    repeated EAJEMNNNEBM EBLMNLBBFNL = 6;
+    repeated HeartDialDialogueInfo changed_dialogue_info_list = 7;
+    HeartDialUnlockStatus unlock_status = 12;
+    repeated HeartDialScriptInfo changed_script_info_list = 15;
 }

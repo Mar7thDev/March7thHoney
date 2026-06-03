@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhTeW5jVHVybkZvb2ROb3RpZnkucHJvdG8aFFR1cm5Gb29kU3dpdGNoLnBy",
-            "b3RvIk8KElN5bmNUdXJuRm9vZE5vdGlmeRITCgtDQU1FR0FHS1BHTBgNIAMo",
-            "DRIkCgtFT0pCRkxIQk5NQhgEIAMoDjIPLlR1cm5Gb29kU3dpdGNoQhaqAhNN",
+            "b3RvIk8KElN5bmNUdXJuRm9vZE5vdGlmeRITCgtDQU1FR0FHS1BHTBgCIAMo",
+            "DRIkCgtFT0pCRkxIQk5NQhgLIAMoDjIPLlR1cm5Gb29kU3dpdGNoQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TurnFoodSwitchReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CAMEGAGKPGL" field.</summary>
-    public const int CAMEGAGKPGLFieldNumber = 13;
+    public const int CAMEGAGKPGLFieldNumber = 2;
     private static readonly pb::FieldCodec<uint> _repeated_cAMEGAGKPGL_codec
-        = pb::FieldCodec.ForUInt32(106);
+        = pb::FieldCodec.ForUInt32(18);
     private readonly pbc::RepeatedField<uint> cAMEGAGKPGL_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,9 +96,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "EOJBFLHBNMB" field.</summary>
-    public const int EOJBFLHBNMBFieldNumber = 4;
+    public const int EOJBFLHBNMBFieldNumber = 11;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.TurnFoodSwitch> _repeated_eOJBFLHBNMB_codec
-        = pb::FieldCodec.ForEnum(34, x => (int) x, x => (global::March7thHoney.Proto.TurnFoodSwitch) x);
+        = pb::FieldCodec.ForEnum(90, x => (int) x, x => (global::March7thHoney.Proto.TurnFoodSwitch) x);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.TurnFoodSwitch> eOJBFLHBNMB_ = new pbc::RepeatedField<global::March7thHoney.Proto.TurnFoodSwitch>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,8 +150,8 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      eOJBFLHBNMB_.WriteTo(output, _repeated_eOJBFLHBNMB_codec);
       cAMEGAGKPGL_.WriteTo(output, _repeated_cAMEGAGKPGL_codec);
+      eOJBFLHBNMB_.WriteTo(output, _repeated_eOJBFLHBNMB_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -162,8 +162,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      eOJBFLHBNMB_.WriteTo(ref output, _repeated_eOJBFLHBNMB_codec);
       cAMEGAGKPGL_.WriteTo(ref output, _repeated_cAMEGAGKPGL_codec);
+      eOJBFLHBNMB_.WriteTo(ref output, _repeated_eOJBFLHBNMB_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -209,14 +209,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34:
-          case 32: {
-            eOJBFLHBNMB_.AddEntriesFrom(input, _repeated_eOJBFLHBNMB_codec);
+          case 18:
+          case 16: {
+            cAMEGAGKPGL_.AddEntriesFrom(input, _repeated_cAMEGAGKPGL_codec);
             break;
           }
-          case 106:
-          case 104: {
-            cAMEGAGKPGL_.AddEntriesFrom(input, _repeated_cAMEGAGKPGL_codec);
+          case 90:
+          case 88: {
+            eOJBFLHBNMB_.AddEntriesFrom(input, _repeated_eOJBFLHBNMB_codec);
             break;
           }
         }
@@ -238,14 +238,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34:
-          case 32: {
-            eOJBFLHBNMB_.AddEntriesFrom(ref input, _repeated_eOJBFLHBNMB_codec);
+          case 18:
+          case 16: {
+            cAMEGAGKPGL_.AddEntriesFrom(ref input, _repeated_cAMEGAGKPGL_codec);
             break;
           }
-          case 106:
-          case 104: {
-            cAMEGAGKPGL_.AddEntriesFrom(ref input, _repeated_cAMEGAGKPGL_codec);
+          case 90:
+          case 88: {
+            eOJBFLHBNMB_.AddEntriesFrom(ref input, _repeated_eOJBFLHBNMB_codec);
             break;
           }
         }

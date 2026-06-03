@@ -24,11 +24,12 @@ namespace March7thHoney.Proto {
     static MDKHMNKAECPReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFNREtITU5LQUVDUC5wcm90bxoRSkpPQkhHRk9HSFAucHJvdG8iMAoLTURL",
-            "SE1OS0FFQ1ASIQoLTUlJRElNT0NQRUIYDyADKAsyDC5KSk9CSEdGT0dIUEIW",
-            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFNREtITU5LQUVDUC5wcm90bxocUm9sZVRyYWNrRXF1aXBtZW50SW5mby5w",
+            "cm90byI7CgtNREtITU5LQUVDUBIsCgtNSUlESU1PQ1BFQhgGIAMoCzIXLlJv",
+            "bGVUcmFja0VxdWlwbWVudEluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.JJOBHGFOGHPReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.RoleTrackEquipmentInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MDKHMNKAECP), global::March7thHoney.Proto.MDKHMNKAECP.Parser, new[]{ "MIIDIMOCPEB" }, null, null, null, null)
           }));
@@ -83,13 +84,13 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MIIDIMOCPEB" field.</summary>
-    public const int MIIDIMOCPEBFieldNumber = 15;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JJOBHGFOGHP> _repeated_mIIDIMOCPEB_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.JJOBHGFOGHP.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JJOBHGFOGHP> mIIDIMOCPEB_ = new pbc::RepeatedField<global::March7thHoney.Proto.JJOBHGFOGHP>();
+    public const int MIIDIMOCPEBFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RoleTrackEquipmentInfo> _repeated_mIIDIMOCPEB_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.RoleTrackEquipmentInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo> mIIDIMOCPEB_ = new pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.JJOBHGFOGHP> MIIDIMOCPEB {
+    public pbc::RepeatedField<global::March7thHoney.Proto.RoleTrackEquipmentInfo> MIIDIMOCPEB {
       get { return mIIDIMOCPEB_; }
     }
 
@@ -190,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 122: {
+          case 50: {
             mIIDIMOCPEB_.AddEntriesFrom(input, _repeated_mIIDIMOCPEB_codec);
             break;
           }
@@ -213,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 122: {
+          case 50: {
             mIIDIMOCPEB_.AddEntriesFrom(ref input, _repeated_mIIDIMOCPEB_codec);
             break;
           }

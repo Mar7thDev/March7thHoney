@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message TakeQuestRewardScRsp {
-    repeated uint32 succ_quest_id_list = 14;
-    repeated uint32 NNOLOKOCEPO = 9;
-    ItemList reward = 3;
-    uint32 retcode = 15;
+    repeated uint32 succ_quest_id_list = 5;
+    ItemList reward = 9;
+    uint32 retcode = 10;
+    repeated uint32 quest_id_list = 13;
 }

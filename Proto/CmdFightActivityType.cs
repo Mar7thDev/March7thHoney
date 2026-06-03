@@ -26,11 +26,11 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpDbWRGaWdodEFjdGl2aXR5VHlwZS5wcm90byqFAgoUQ21kRmlnaHRBY3Rp",
             "dml0eVR5cGUSGwoXRUpOQ0VBRFBLRkVfTkxDREdJUEdGREoQABIcChdFSk5D",
-            "RUFEUEtGRV9IRkJFTEdLQURMRhC0HBIcChdFSk5DRUFEUEtGRV9ORUJDRUNC",
-            "SkVHUBDZHBIcChdFSk5DRUFEUEtGRV9LT1BGTEtFSEtFRhDgHBIcChdFSk5D",
-            "RUFEUEtGRV9DRkZLUExNQ05KSRCdHBIcChdFSk5DRUFEUEtGRV9GQ0xLSUNK",
-            "TktCQxCfHBIcChdFSk5DRUFEUEtGRV9JRFBCSUpPQUhBQxCTHBIcChdFSk5D",
-            "RUFEUEtGRV9JSkJPQk9GTEVBRRCrHEIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "RUFEUEtGRV9IRkJFTEdLQURMRhDoHBIcChdFSk5DRUFEUEtGRV9JSkJPQk9G",
+            "TEVBRRDKHBIcChdFSk5DRUFEUEtGRV9ORUJDRUNCSkVHUBCpHBIcChdFSk5D",
+            "RUFEUEtGRV9DRkZLUExNQ05KSRDhHBIcChdFSk5DRUFEUEtGRV9LT1BGTEtF",
+            "SEtFRhDtHBIcChdFSk5DRUFEUEtGRV9GQ0xLSUNKTktCQxDmHBIcChdFSk5D",
+            "RUFEUEtGRV9JRFBCSUpPQUhBQxDeHEIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -42,13 +42,13 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdFightActivityType {
     [pbr::OriginalName("EJNCEADPKFE_NLCDGIPGFDJ")] EjnceadpkfeNlcdgipgfdj = 0,
-    [pbr::OriginalName("EJNCEADPKFE_HFBELGKADLF")] EjnceadpkfeHfbelgkadlf = 3636,
-    [pbr::OriginalName("EJNCEADPKFE_NEBCECBJEGP")] EjnceadpkfeNebcecbjegp = 3673,
-    [pbr::OriginalName("EJNCEADPKFE_KOPFLKEHKEF")] EjnceadpkfeKopflkehkef = 3680,
-    [pbr::OriginalName("EJNCEADPKFE_CFFKPLMCNJI")] EjnceadpkfeCffkplmcnji = 3613,
-    [pbr::OriginalName("EJNCEADPKFE_FCLKICJNKBC")] EjnceadpkfeFclkicjnkbc = 3615,
-    [pbr::OriginalName("EJNCEADPKFE_IDPBIJOAHAC")] EjnceadpkfeIdpbijoahac = 3603,
-    [pbr::OriginalName("EJNCEADPKFE_IJBOBOFLEAE")] EjnceadpkfeIjbobofleae = 3627,
+    [pbr::OriginalName("EJNCEADPKFE_HFBELGKADLF")] EjnceadpkfeHfbelgkadlf = 3688,
+    [pbr::OriginalName("EJNCEADPKFE_IJBOBOFLEAE")] EjnceadpkfeIjbobofleae = 3658,
+    [pbr::OriginalName("EJNCEADPKFE_NEBCECBJEGP")] EjnceadpkfeNebcecbjegp = 3625,
+    [pbr::OriginalName("EJNCEADPKFE_CFFKPLMCNJI")] EjnceadpkfeCffkplmcnji = 3681,
+    [pbr::OriginalName("EJNCEADPKFE_KOPFLKEHKEF")] EjnceadpkfeKopflkehkef = 3693,
+    [pbr::OriginalName("EJNCEADPKFE_FCLKICJNKBC")] EjnceadpkfeFclkicjnkbc = 3686,
+    [pbr::OriginalName("EJNCEADPKFE_IDPBIJOAHAC")] EjnceadpkfeIdpbijoahac = 3678,
   }
 
   #endregion

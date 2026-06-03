@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JDFNPICGCGI.proto";
 
 message OBNEOHHDAIP {
-    JDFNPICGCGI IFPBFMOAJOP = 15;
+    JDFNPICGCGI IFPBFMOAJOP = 12;
 }

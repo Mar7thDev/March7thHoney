@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RogueTournDeleteArchiveScRsp {
-    uint32 retcode = 13;
-    uint32 NPHAJEKCBKF = 6;
+    uint32 NPHAJEKCBKF = 5;
+    uint32 retcode = 7;
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CEKMLMOCLHF.proto";
 
 message ElfRestaurantHarvestCropScRsp {
-    repeated CEKMLMOCLHF LGPOMBCJPKL = 4;
-    uint32 retcode = 11;
+    uint32 retcode = 10;
+    repeated CEKMLMOCLHF LGPOMBCJPKL = 13;
 }

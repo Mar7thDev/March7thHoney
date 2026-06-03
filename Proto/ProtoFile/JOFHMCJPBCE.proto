@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JOFHMCJPBCE {
-    uint32 count = 7;
-    uint32 PCPDHEIEJFO = 11;
+    uint32 count = 4;
+    uint32 PCPDHEIEJFO = 12;
 }

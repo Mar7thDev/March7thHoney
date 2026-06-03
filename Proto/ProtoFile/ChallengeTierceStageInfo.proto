@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AvatarIdentifier.proto";
 
 message ChallengeTierceStageInfo {
-    repeated uint32 peak_avatar_id_list = 5;
-    repeated AvatarIdentifier lineup = 15;
-    uint32 stage_index = 12;
-    uint32 buff_id = 7;
+    repeated uint32 peak_avatar_id_list = 1;
+    repeated AvatarIdentifier lineup = 5;
+    uint32 buff_id = 8;
+    uint32 stage_index = 14;
 }

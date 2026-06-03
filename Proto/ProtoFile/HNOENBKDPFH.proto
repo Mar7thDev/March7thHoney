@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HNOENBKDPFH {
-    repeated uint32 CPIKEIGHMGB = 13;
-    uint32 item_id = 6;
+    uint32 item_id = 1;
+    repeated uint32 CPIKEIGHMGB = 4;
 }

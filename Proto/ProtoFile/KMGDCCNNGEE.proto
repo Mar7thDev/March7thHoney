@@ -6,21 +6,21 @@ import "OGHAIFPHMPE.proto";
 import "PFPHCDCNOBN.proto";
 
 message KMGDCCNNGEE {
-    repeated OGHAIFPHMPE ALHIONICLCM = 8;
-    repeated PFPHCDCNOBN GOMOIKPMFBA = 13;
-    repeated OGHAIFPHMPE BJODJNFGMCB = 5;
-    uint32 ILLEDJLNGNF = 9;
-    uint32 FOCAJAMHKKA = 15;
-    uint64 CKLCDAGMFKP = 2;
-    uint32 level_id = 3;
-    int32 score_id = 11;
-    uint64 GAENFKKAKOI = 7;
-    uint32 rank = 6;
-    int32 record_score = 12;
-    uint32 GNAMNBDIEKG = 4;
-    uint32 ICBIJEMFLPM = 17;
     uint32 monster_battle_type = 1;
-    uint32 JCHFCNFHCMM = 10;
-    uint32 HJPBAJEPAGE = 14;
+    uint64 room_uid = 2;
+    uint32 level_id = 3;
+    uint32 GNAMNBDIEKG = 4;
+    repeated OGHAIFPHMPE BJODJNFGMCB = 5;
+    uint32 rank = 6;
+    uint64 GAENFKKAKOI = 7;
+    repeated OGHAIFPHMPE ALHIONICLCM = 8;
+    uint32 ILLEDJLNGNF = 9;
+    uint32 result = 10;
+    int32 score_id = 11;
+    int32 total_score = 12;
+    repeated PFPHCDCNOBN GOMOIKPMFBA = 13;
+    uint32 turn = 14;
+    uint32 FOCAJAMHKKA = 15;
     uint32 BKIKJGAFKJD = 16;
+    uint32 ICBIJEMFLPM = 17;
 }

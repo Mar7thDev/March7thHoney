@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NEIMLKNMDBM {
-    repeated uint32 OJNEFBJHCCK = 9;
-    repeated uint32 EJGNMCAMELA = 12;
-    uint32 MMELNCHIDNC = 15;
-    uint32 GFANBHAEKOK = 6;
+    uint32 GFANBHAEKOK = 10;
+    repeated uint32 OJNEFBJHCCK = 12;
+    uint32 MMELNCHIDNC = 13;
+    repeated uint32 EJGNMCAMELA = 14;
 }

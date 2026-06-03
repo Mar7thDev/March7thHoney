@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AMKBFMCOIHK.proto";
 
 message DifficultyAdjustmentUpdateDataCsReq {
-    AMKBFMCOIHK data = 6;
+    AMKBFMCOIHK data = 8;
 }

@@ -4,6 +4,6 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message GetChessRogueStoryAeonTalkInfoScRsp {
     map<uint32, uint32> LDPAJKIEPIP = 4;
+    uint32 OEANPIHCHHF = 9;
     uint32 retcode = 14;
-    uint32 OEANPIHCHHF = 15;
 }

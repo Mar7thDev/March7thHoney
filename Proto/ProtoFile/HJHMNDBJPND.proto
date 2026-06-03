@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HJHMNDBJPND {
-    map<uint32, uint32> LJDLJKCMIIC = 13;
-    repeated uint32 DKJEDBHLOPP = 14;
+    map<uint32, uint32> LJDLJKCMIIC = 2;
+    uint32 total_count = 3;
     uint32 KAENLKDNOMF = 4;
-    uint32 AADNIFFHHDD = 11;
+    repeated uint32 DKJEDBHLOPP = 12;
 }

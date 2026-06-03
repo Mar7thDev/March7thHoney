@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNTZWNyZXRLZXlJbmZvLnByb3RvGhNTZWNyZXRLZXlUeXBlLnByb3RvIkEK",
-            "DVNlY3JldEtleUluZm8SEgoKc2VjcmV0X2tleRgBIAEoCRIcCgR0eXBlGA8g",
-            "ASgOMg4uU2VjcmV0S2V5VHlwZUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "DVNlY3JldEtleUluZm8SHAoEdHlwZRgDIAEoDjIOLlNlY3JldEtleVR5cGUS",
+            "EgoKc2VjcmV0X2tleRgNIAEoCUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SecretKeyTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SecretKeyInfo), global::March7thHoney.Proto.SecretKeyInfo.Parser, new[]{ "SecretKey", "Type" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SecretKeyInfo), global::March7thHoney.Proto.SecretKeyInfo.Parser, new[]{ "Type", "SecretKey" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SecretKeyInfo(SecretKeyInfo other) : this() {
-      secretKey_ = other.secretKey_;
       type_ = other.type_;
+      secretKey_ = other.secretKey_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new SecretKeyInfo(this);
     }
 
-    /// <summary>Field number for the "secret_key" field.</summary>
-    public const int SecretKeyFieldNumber = 1;
-    private string secretKey_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string SecretKey {
-      get { return secretKey_; }
-      set {
-        secretKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 15;
+    public const int TypeFieldNumber = 3;
     private global::March7thHoney.Proto.SecretKeyType type_ = global::March7thHoney.Proto.SecretKeyType.SecretKeyNone;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return type_; }
       set {
         type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "secret_key" field.</summary>
+    public const int SecretKeyFieldNumber = 13;
+    private string secretKey_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string SecretKey {
+      get { return secretKey_; }
+      set {
+        secretKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (SecretKey != other.SecretKey) return false;
       if (Type != other.Type) return false;
+      if (SecretKey != other.SecretKey) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SecretKey.Length != 0) hash ^= SecretKey.GetHashCode();
       if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) hash ^= Type.GetHashCode();
+      if (SecretKey.Length != 0) hash ^= SecretKey.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SecretKey.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(SecretKey);
-      }
       if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(24);
         output.WriteEnum((int) Type);
+      }
+      if (SecretKey.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(SecretKey);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SecretKey.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(SecretKey);
-      }
       if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(24);
         output.WriteEnum((int) Type);
+      }
+      if (SecretKey.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(SecretKey);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SecretKey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(SecretKey);
-      }
       if (Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      if (SecretKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SecretKey);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.SecretKey.Length != 0) {
-        SecretKey = other.SecretKey;
-      }
       if (other.Type != global::March7thHoney.Proto.SecretKeyType.SecretKeyNone) {
         Type = other.Type;
+      }
+      if (other.SecretKey.Length != 0) {
+        SecretKey = other.SecretKey;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            SecretKey = input.ReadString();
+          case 24: {
+            Type = (global::March7thHoney.Proto.SecretKeyType) input.ReadEnum();
             break;
           }
-          case 120: {
-            Type = (global::March7thHoney.Proto.SecretKeyType) input.ReadEnum();
+          case 106: {
+            SecretKey = input.ReadString();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            SecretKey = input.ReadString();
+          case 24: {
+            Type = (global::March7thHoney.Proto.SecretKeyType) input.ReadEnum();
             break;
           }
-          case 120: {
-            Type = (global::March7thHoney.Proto.SecretKeyType) input.ReadEnum();
+          case 106: {
+            SecretKey = input.ReadString();
             break;
           }
         }

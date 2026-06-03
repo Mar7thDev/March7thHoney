@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFVcGRhdGVUcmFja01haW5NaXNzaW9uQ3NSZXEucHJvdG8aJFRyYWNrTWFp",
             "bk1pc3Npb25VcGRhdGVSZWFzb25JZC5wcm90byKCAQobVXBkYXRlVHJhY2tN",
-            "YWluTWlzc2lvbkNzUmVxEjQKC1BPUE5DTklCTk1KGAsgASgOMh8uVHJhY2tN",
-            "YWluTWlzc2lvblVwZGF0ZVJlYXNvbklkEhgKEHRyYWNrX21pc3Npb25faWQY",
-            "BCABKA0SEwoLSkZPTkRFQkRJT08YByABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "YWluTWlzc2lvbkNzUmVxEhgKEHRyYWNrX21pc3Npb25faWQYCCABKA0SEwoL",
+            "SkZPTkRFQkRJT08YCiABKA0SNAoLUE9QTkNOSUJOTUoYDyABKA4yHy5UcmFj",
+            "a01haW5NaXNzaW9uVXBkYXRlUmVhc29uSWRCFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrackMainMissionUpdateReasonIdReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateTrackMainMissionCsReq), global::March7thHoney.Proto.UpdateTrackMainMissionCsReq.Parser, new[]{ "POPNCNIBNMJ", "TrackMissionId", "JFONDEBDIOO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateTrackMainMissionCsReq), global::March7thHoney.Proto.UpdateTrackMainMissionCsReq.Parser, new[]{ "TrackMissionId", "JFONDEBDIOO", "POPNCNIBNMJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateTrackMainMissionCsReq(UpdateTrackMainMissionCsReq other) : this() {
-      pOPNCNIBNMJ_ = other.pOPNCNIBNMJ_;
       trackMissionId_ = other.trackMissionId_;
       jFONDEBDIOO_ = other.jFONDEBDIOO_;
+      pOPNCNIBNMJ_ = other.pOPNCNIBNMJ_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,20 +87,8 @@ namespace March7thHoney.Proto {
       return new UpdateTrackMainMissionCsReq(this);
     }
 
-    /// <summary>Field number for the "POPNCNIBNMJ" field.</summary>
-    public const int POPNCNIBNMJFieldNumber = 11;
-    private global::March7thHoney.Proto.TrackMainMissionUpdateReasonId pOPNCNIBNMJ_ = global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.TrackMainMissionUpdateReasonId POPNCNIBNMJ {
-      get { return pOPNCNIBNMJ_; }
-      set {
-        pOPNCNIBNMJ_ = value;
-      }
-    }
-
     /// <summary>Field number for the "track_mission_id" field.</summary>
-    public const int TrackMissionIdFieldNumber = 4;
+    public const int TrackMissionIdFieldNumber = 8;
     private uint trackMissionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,7 +100,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "JFONDEBDIOO" field.</summary>
-    public const int JFONDEBDIOOFieldNumber = 7;
+    public const int JFONDEBDIOOFieldNumber = 10;
     private uint jFONDEBDIOO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -120,6 +108,18 @@ namespace March7thHoney.Proto {
       get { return jFONDEBDIOO_; }
       set {
         jFONDEBDIOO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "POPNCNIBNMJ" field.</summary>
+    public const int POPNCNIBNMJFieldNumber = 15;
+    private global::March7thHoney.Proto.TrackMainMissionUpdateReasonId pOPNCNIBNMJ_ = global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.TrackMainMissionUpdateReasonId POPNCNIBNMJ {
+      get { return pOPNCNIBNMJ_; }
+      set {
+        pOPNCNIBNMJ_ = value;
       }
     }
 
@@ -138,9 +138,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (POPNCNIBNMJ != other.POPNCNIBNMJ) return false;
       if (TrackMissionId != other.TrackMissionId) return false;
       if (JFONDEBDIOO != other.JFONDEBDIOO) return false;
+      if (POPNCNIBNMJ != other.POPNCNIBNMJ) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,9 +148,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (POPNCNIBNMJ != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi) hash ^= POPNCNIBNMJ.GetHashCode();
       if (TrackMissionId != 0) hash ^= TrackMissionId.GetHashCode();
       if (JFONDEBDIOO != 0) hash ^= JFONDEBDIOO.GetHashCode();
+      if (POPNCNIBNMJ != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi) hash ^= POPNCNIBNMJ.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -170,15 +170,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (TrackMissionId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteUInt32(TrackMissionId);
       }
       if (JFONDEBDIOO != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(80);
         output.WriteUInt32(JFONDEBDIOO);
       }
       if (POPNCNIBNMJ != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteEnum((int) POPNCNIBNMJ);
       }
       if (_unknownFields != null) {
@@ -192,15 +192,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (TrackMissionId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteUInt32(TrackMissionId);
       }
       if (JFONDEBDIOO != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(80);
         output.WriteUInt32(JFONDEBDIOO);
       }
       if (POPNCNIBNMJ != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteEnum((int) POPNCNIBNMJ);
       }
       if (_unknownFields != null) {
@@ -213,14 +213,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (POPNCNIBNMJ != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) POPNCNIBNMJ);
-      }
       if (TrackMissionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TrackMissionId);
       }
       if (JFONDEBDIOO != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JFONDEBDIOO);
+      }
+      if (POPNCNIBNMJ != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) POPNCNIBNMJ);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.POPNCNIBNMJ != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi) {
-        POPNCNIBNMJ = other.POPNCNIBNMJ;
-      }
       if (other.TrackMissionId != 0) {
         TrackMissionId = other.TrackMissionId;
       }
       if (other.JFONDEBDIOO != 0) {
         JFONDEBDIOO = other.JFONDEBDIOO;
+      }
+      if (other.POPNCNIBNMJ != global::March7thHoney.Proto.TrackMainMissionUpdateReasonId.AphbpmbmlomDjaokmdalmi) {
+        POPNCNIBNMJ = other.POPNCNIBNMJ;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -262,15 +262,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 64: {
             TrackMissionId = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 80: {
             JFONDEBDIOO = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             POPNCNIBNMJ = (global::March7thHoney.Proto.TrackMainMissionUpdateReasonId) input.ReadEnum();
             break;
           }
@@ -293,15 +293,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 64: {
             TrackMissionId = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 80: {
             JFONDEBDIOO = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             POPNCNIBNMJ = (global::March7thHoney.Proto.TrackMainMissionUpdateReasonId) input.ReadEnum();
             break;
           }

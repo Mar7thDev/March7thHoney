@@ -24,15 +24,14 @@ namespace March7thHoney.Proto {
     static SelectChessRogueSubStoryScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiNTZWxlY3RDaGVzc1JvZ3VlU3ViU3RvcnlTY1JzcC5wcm90byKQAQodU2Vs",
-            "ZWN0Q2hlc3NSb2d1ZVN1YlN0b3J5U2NSc3ASEwoLRUNLRFBJUE1CT0MYDyAB",
-            "KA0SEwoLSE9OQ0RNS1BCRUcYDSABKA0SDwoHcmV0Y29kZRgDIAEoDRITCgtK",
-            "R0NDSU1NRURJShgBIAEoDRIfChdyb2d1ZV9kaWFsb2d1ZV9ldmVudF9pZBgI",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "CiNTZWxlY3RDaGVzc1JvZ3VlU3ViU3RvcnlTY1JzcC5wcm90byJRCh1TZWxl",
+            "Y3RDaGVzc1JvZ3VlU3ViU3RvcnlTY1JzcBIfChdyb2d1ZV9kaWFsb2d1ZV9l",
+            "dmVudF9pZBgDIAEoDRIPCgdyZXRjb2RlGAggASgNQhaqAhNNYXJjaDd0aEhv",
+            "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectChessRogueSubStoryScRsp), global::March7thHoney.Proto.SelectChessRogueSubStoryScRsp.Parser, new[]{ "ECKDPIPMBOC", "HONCDMKPBEG", "Retcode", "JGCCIMMEDIJ", "RogueDialogueEventId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectChessRogueSubStoryScRsp), global::March7thHoney.Proto.SelectChessRogueSubStoryScRsp.Parser, new[]{ "RogueDialogueEventId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectChessRogueSubStoryScRsp(SelectChessRogueSubStoryScRsp other) : this() {
-      eCKDPIPMBOC_ = other.eCKDPIPMBOC_;
-      hONCDMKPBEG_ = other.hONCDMKPBEG_;
-      retcode_ = other.retcode_;
-      jGCCIMMEDIJ_ = other.jGCCIMMEDIJ_;
       rogueDialogueEventId_ = other.rogueDialogueEventId_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,56 +84,8 @@ namespace March7thHoney.Proto {
       return new SelectChessRogueSubStoryScRsp(this);
     }
 
-    /// <summary>Field number for the "ECKDPIPMBOC" field.</summary>
-    public const int ECKDPIPMBOCFieldNumber = 15;
-    private uint eCKDPIPMBOC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ECKDPIPMBOC {
-      get { return eCKDPIPMBOC_; }
-      set {
-        eCKDPIPMBOC_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "HONCDMKPBEG" field.</summary>
-    public const int HONCDMKPBEGFieldNumber = 13;
-    private uint hONCDMKPBEG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint HONCDMKPBEG {
-      get { return hONCDMKPBEG_; }
-      set {
-        hONCDMKPBEG_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "JGCCIMMEDIJ" field.</summary>
-    public const int JGCCIMMEDIJFieldNumber = 1;
-    private uint jGCCIMMEDIJ_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint JGCCIMMEDIJ {
-      get { return jGCCIMMEDIJ_; }
-      set {
-        jGCCIMMEDIJ_ = value;
-      }
-    }
-
     /// <summary>Field number for the "rogue_dialogue_event_id" field.</summary>
-    public const int RogueDialogueEventIdFieldNumber = 8;
+    public const int RogueDialogueEventIdFieldNumber = 3;
     private uint rogueDialogueEventId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -145,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return rogueDialogueEventId_; }
       set {
         rogueDialogueEventId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 8;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -163,11 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ECKDPIPMBOC != other.ECKDPIPMBOC) return false;
-      if (HONCDMKPBEG != other.HONCDMKPBEG) return false;
-      if (Retcode != other.Retcode) return false;
-      if (JGCCIMMEDIJ != other.JGCCIMMEDIJ) return false;
       if (RogueDialogueEventId != other.RogueDialogueEventId) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ECKDPIPMBOC != 0) hash ^= ECKDPIPMBOC.GetHashCode();
-      if (HONCDMKPBEG != 0) hash ^= HONCDMKPBEG.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (JGCCIMMEDIJ != 0) hash ^= JGCCIMMEDIJ.GetHashCode();
       if (RogueDialogueEventId != 0) hash ^= RogueDialogueEventId.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,25 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (JGCCIMMEDIJ != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(JGCCIMMEDIJ);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Retcode);
-      }
       if (RogueDialogueEventId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(24);
         output.WriteUInt32(RogueDialogueEventId);
       }
-      if (HONCDMKPBEG != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(HONCDMKPBEG);
-      }
-      if (ECKDPIPMBOC != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(ECKDPIPMBOC);
+      if (Retcode != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -228,25 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (JGCCIMMEDIJ != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(JGCCIMMEDIJ);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Retcode);
-      }
       if (RogueDialogueEventId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(24);
         output.WriteUInt32(RogueDialogueEventId);
       }
-      if (HONCDMKPBEG != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(HONCDMKPBEG);
-      }
-      if (ECKDPIPMBOC != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(ECKDPIPMBOC);
+      if (Retcode != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -258,20 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ECKDPIPMBOC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ECKDPIPMBOC);
-      }
-      if (HONCDMKPBEG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HONCDMKPBEG);
+      if (RogueDialogueEventId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RogueDialogueEventId);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (JGCCIMMEDIJ != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JGCCIMMEDIJ);
-      }
-      if (RogueDialogueEventId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RogueDialogueEventId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -285,20 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ECKDPIPMBOC != 0) {
-        ECKDPIPMBOC = other.ECKDPIPMBOC;
-      }
-      if (other.HONCDMKPBEG != 0) {
-        HONCDMKPBEG = other.HONCDMKPBEG;
+      if (other.RogueDialogueEventId != 0) {
+        RogueDialogueEventId = other.RogueDialogueEventId;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      if (other.JGCCIMMEDIJ != 0) {
-        JGCCIMMEDIJ = other.JGCCIMMEDIJ;
-      }
-      if (other.RogueDialogueEventId != 0) {
-        RogueDialogueEventId = other.RogueDialogueEventId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -319,24 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            JGCCIMMEDIJ = input.ReadUInt32();
-            break;
-          }
           case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 64: {
             RogueDialogueEventId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            HONCDMKPBEG = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            ECKDPIPMBOC = input.ReadUInt32();
+          case 64: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -358,24 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            JGCCIMMEDIJ = input.ReadUInt32();
-            break;
-          }
           case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 64: {
             RogueDialogueEventId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            HONCDMKPBEG = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            ECKDPIPMBOC = input.ReadUInt32();
+          case 64: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

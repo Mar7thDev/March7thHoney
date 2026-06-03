@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CilTd29yZFRyYWluaW5nRGFpbHlQaGFzZUNvbmZpcm1Dc1JlcS5wcm90bxoh",
             "U3dvcmRUcmFpbmluZ0RhaWx5UGhhc2VUeXBlLnByb3RvIlgKI1N3b3JkVHJh",
-            "aW5pbmdEYWlseVBoYXNlQ29uZmlybUNzUmVxEjEKC0dDQkhGS0tHUEhDGAYg",
+            "aW5pbmdEYWlseVBoYXNlQ29uZmlybUNzUmVxEjEKC0dDQkhGS0tHUEhDGAEg",
             "ASgOMhwuU3dvcmRUcmFpbmluZ0RhaWx5UGhhc2VUeXBlQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GCBHFKKGPHC" field.</summary>
-    public const int GCBHFKKGPHCFieldNumber = 6;
+    public const int GCBHFKKGPHCFieldNumber = 1;
     private global::March7thHoney.Proto.SwordTrainingDailyPhaseType gCBHFKKGPHC_ = global::March7thHoney.Proto.SwordTrainingDailyPhaseType.GfekoongjblNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -139,7 +139,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GCBHFKKGPHC != global::March7thHoney.Proto.SwordTrainingDailyPhaseType.GfekoongjblNlcdgipgfdj) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteEnum((int) GCBHFKKGPHC);
       }
       if (_unknownFields != null) {
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GCBHFKKGPHC != global::March7thHoney.Proto.SwordTrainingDailyPhaseType.GfekoongjblNlcdgipgfdj) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteEnum((int) GCBHFKKGPHC);
       }
       if (_unknownFields != null) {
@@ -203,7 +203,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 8: {
             GCBHFKKGPHC = (global::March7thHoney.Proto.SwordTrainingDailyPhaseType) input.ReadEnum();
             break;
           }
@@ -226,7 +226,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 8: {
             GCBHFKKGPHC = (global::March7thHoney.Proto.SwordTrainingDailyPhaseType) input.ReadEnum();
             break;
           }

@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidDbWRJbnRlcmFjdGl2ZVRyaWdnZXJNYXplQnVmZlR5cGUucHJvdG8qfAoh",
             "Q21kSW50ZXJhY3RpdmVUcmlnZ2VyTWF6ZUJ1ZmZUeXBlEhsKF0VGREhGT0VN",
-            "S0hIX05MQ0RHSVBHRkRKEAASHAoXRUZESEZPRU1LSEhfR0RJTkZNRkRPUEQQ",
-            "h0oSHAoXRUZESEZPRU1LSEhfRExEQUlDQUZNUFAQhkpCFqoCE01hcmNoN3Ro",
+            "S0hIX05MQ0RHSVBHRkRKEAASHAoXRUZESEZPRU1LSEhfRExEQUlDQUZNUFAQ",
+            "/0kSHAoXRUZESEZPRU1LSEhfR0RJTkZNRkRPUEQQiEpCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,8 +39,8 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdInteractiveTriggerMazeBuffType {
     [pbr::OriginalName("EFDHFOEMKHH_NLCDGIPGFDJ")] EfdhfoemkhhNlcdgipgfdj = 0,
-    [pbr::OriginalName("EFDHFOEMKHH_GDINFMFDOPD")] EfdhfoemkhhGdinfmfdopd = 9479,
-    [pbr::OriginalName("EFDHFOEMKHH_DLDAICAFMPP")] EfdhfoemkhhDldaicafmpp = 9478,
+    [pbr::OriginalName("EFDHFOEMKHH_DLDAICAFMPP")] EfdhfoemkhhDldaicafmpp = 9471,
+    [pbr::OriginalName("EFDHFOEMKHH_GDINFMFDOPD")] EfdhfoemkhhGdinfmfdopd = 9480,
   }
 
   #endregion

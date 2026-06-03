@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GroupStateInfo.proto";
 
 message GroupStateChangeScRsp {
-    GroupStateInfo group_state_info = 3;
-    uint32 retcode = 10;
+    uint32 retcode = 13;
+    GroupStateInfo group_state_info = 15;
 }

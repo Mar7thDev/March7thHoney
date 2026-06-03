@@ -5,13 +5,13 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NHDGNBKBNDB.proto";
 
 message GLLDHGHJLOA {
-    repeated NHDGNBKBNDB BCGOAIPKGIK = 11;
-    repeated uint32 AJFJLCKPNAM = 10;
-    string nickname = 13;
-    uint32 head_icon = 4;
-    uint32 uid = 12;
-    uint32 rank = 5;
-    uint32 KIMKENNLHEH = 7;
-    uint32 hp = 8;
-    uint32 IPINHNFCIOE = 9;
+    string nickname = 2;
+    uint32 uid = 5;
+    uint32 IPINHNFCIOE = 6;
+    repeated NHDGNBKBNDB BCGOAIPKGIK = 7;
+    repeated uint32 AJFJLCKPNAM = 8;
+    uint32 hp = 10;
+    uint32 KIMKENNLHEH = 11;
+    uint32 head_icon = 12;
+    uint32 rank = 13;
 }

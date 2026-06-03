@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBDbGllbnREb3dubG9hZERhdGFTY05vdGlmeS5wcm90bxoYQ2xpZW50RG93",
             "bmxvYWREYXRhLnByb3RvIkgKGkNsaWVudERvd25sb2FkRGF0YVNjTm90aWZ5",
-            "EioKDWRvd25sb2FkX2RhdGEYDCABKAsyEy5DbGllbnREb3dubG9hZERhdGFC",
+            "EioKDWRvd25sb2FkX2RhdGEYDiABKAsyEy5DbGllbnREb3dubG9hZERhdGFC",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ClientDownloadDataReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "download_data" field.</summary>
-    public const int DownloadDataFieldNumber = 12;
+    public const int DownloadDataFieldNumber = 14;
     private global::March7thHoney.Proto.ClientDownloadData downloadData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (downloadData_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(114);
         output.WriteMessage(DownloadData);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (downloadData_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(114);
         output.WriteMessage(DownloadData);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 98: {
+          case 114: {
             if (downloadData_ == null) {
               DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 98: {
+          case 114: {
             if (downloadData_ == null) {
               DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
             }

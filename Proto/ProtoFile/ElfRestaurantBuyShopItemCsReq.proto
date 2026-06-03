@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ElfRestaurantBuyShopItemCsReq {
-    uint32 ICNCMMEEJKM = 7;
-    uint32 ICAILDEHHBN = 9;
+    uint32 ICAILDEHHBN = 3;
+    uint32 ICNCMMEEJKM = 14;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PFPPACPMFDJ {
-    int32 y = 15;
-    int32 x = 14;
+    int32 y = 5;
+    int32 x = 11;
 }

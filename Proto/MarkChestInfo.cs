@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNNYXJrQ2hlc3RJbmZvLnByb3RvIm0KDU1hcmtDaGVzdEluZm8SEAoIZ3Jv",
-            "dXBfaWQYByABKA0SEQoJY29uZmlnX2lkGAMgASgNEhAKCGZsb29yX2lkGAsg",
-            "ASgNEhMKC0hGSkVMQkdER0hQGAkgASgNEhAKCHBsYW5lX2lkGAUgASgNQhaq",
+            "dXBfaWQYAyABKA0SEAoIcGxhbmVfaWQYBSABKA0SEQoJY29uZmlnX2lkGAgg",
+            "ASgNEhMKC0hGSkVMQkdER0hQGAkgASgNEhAKCGZsb29yX2lkGA0gASgNQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MarkChestInfo), global::March7thHoney.Proto.MarkChestInfo.Parser, new[]{ "GroupId", "ConfigId", "FloorId", "HFJELBGDGHP", "PlaneId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MarkChestInfo), global::March7thHoney.Proto.MarkChestInfo.Parser, new[]{ "GroupId", "PlaneId", "ConfigId", "HFJELBGDGHP", "FloorId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MarkChestInfo(MarkChestInfo other) : this() {
       groupId_ = other.groupId_;
-      configId_ = other.configId_;
-      floorId_ = other.floorId_;
-      hFJELBGDGHP_ = other.hFJELBGDGHP_;
       planeId_ = other.planeId_;
+      configId_ = other.configId_;
+      hFJELBGDGHP_ = other.hFJELBGDGHP_;
+      floorId_ = other.floorId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,7 +88,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 7;
+    public const int GroupIdFieldNumber = 3;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,8 +99,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "plane_id" field.</summary>
+    public const int PlaneIdFieldNumber = 5;
+    private uint planeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PlaneId {
+      get { return planeId_; }
+      set {
+        planeId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "config_id" field.</summary>
-    public const int ConfigIdFieldNumber = 3;
+    public const int ConfigIdFieldNumber = 8;
     private uint configId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,18 +120,6 @@ namespace March7thHoney.Proto {
       get { return configId_; }
       set {
         configId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "floor_id" field.</summary>
-    public const int FloorIdFieldNumber = 11;
-    private uint floorId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FloorId {
-      get { return floorId_; }
-      set {
-        floorId_ = value;
       }
     }
 
@@ -135,15 +135,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 5;
-    private uint planeId_;
+    /// <summary>Field number for the "floor_id" field.</summary>
+    public const int FloorIdFieldNumber = 13;
+    private uint floorId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlaneId {
-      get { return planeId_; }
+    public uint FloorId {
+      get { return floorId_; }
       set {
-        planeId_ = value;
+        floorId_ = value;
       }
     }
 
@@ -163,10 +163,10 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (GroupId != other.GroupId) return false;
-      if (ConfigId != other.ConfigId) return false;
-      if (FloorId != other.FloorId) return false;
-      if (HFJELBGDGHP != other.HFJELBGDGHP) return false;
       if (PlaneId != other.PlaneId) return false;
+      if (ConfigId != other.ConfigId) return false;
+      if (HFJELBGDGHP != other.HFJELBGDGHP) return false;
+      if (FloorId != other.FloorId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,10 +175,10 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
-      if (FloorId != 0) hash ^= FloorId.GetHashCode();
-      if (HFJELBGDGHP != 0) hash ^= HFJELBGDGHP.GetHashCode();
       if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
+      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
+      if (HFJELBGDGHP != 0) hash ^= HFJELBGDGHP.GetHashCode();
+      if (FloorId != 0) hash ^= FloorId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,24 +197,24 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ConfigId != 0) {
+      if (GroupId != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(ConfigId);
+        output.WriteUInt32(GroupId);
       }
       if (PlaneId != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(PlaneId);
       }
-      if (GroupId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(GroupId);
+      if (ConfigId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(ConfigId);
       }
       if (HFJELBGDGHP != 0) {
         output.WriteRawTag(72);
         output.WriteUInt32(HFJELBGDGHP);
       }
       if (FloorId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(104);
         output.WriteUInt32(FloorId);
       }
       if (_unknownFields != null) {
@@ -227,24 +227,24 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ConfigId != 0) {
+      if (GroupId != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(ConfigId);
+        output.WriteUInt32(GroupId);
       }
       if (PlaneId != 0) {
         output.WriteRawTag(40);
         output.WriteUInt32(PlaneId);
       }
-      if (GroupId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(GroupId);
+      if (ConfigId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(ConfigId);
       }
       if (HFJELBGDGHP != 0) {
         output.WriteRawTag(72);
         output.WriteUInt32(HFJELBGDGHP);
       }
       if (FloorId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(104);
         output.WriteUInt32(FloorId);
       }
       if (_unknownFields != null) {
@@ -260,17 +260,17 @@ namespace March7thHoney.Proto {
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
+      if (PlaneId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
+      }
       if (ConfigId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
-      }
-      if (FloorId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
       }
       if (HFJELBGDGHP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HFJELBGDGHP);
       }
-      if (PlaneId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
+      if (FloorId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -287,17 +287,17 @@ namespace March7thHoney.Proto {
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
       }
+      if (other.PlaneId != 0) {
+        PlaneId = other.PlaneId;
+      }
       if (other.ConfigId != 0) {
         ConfigId = other.ConfigId;
-      }
-      if (other.FloorId != 0) {
-        FloorId = other.FloorId;
       }
       if (other.HFJELBGDGHP != 0) {
         HFJELBGDGHP = other.HFJELBGDGHP;
       }
-      if (other.PlaneId != 0) {
-        PlaneId = other.PlaneId;
+      if (other.FloorId != 0) {
+        FloorId = other.FloorId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -319,22 +319,22 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            ConfigId = input.ReadUInt32();
+            GroupId = input.ReadUInt32();
             break;
           }
           case 40: {
             PlaneId = input.ReadUInt32();
             break;
           }
-          case 56: {
-            GroupId = input.ReadUInt32();
+          case 64: {
+            ConfigId = input.ReadUInt32();
             break;
           }
           case 72: {
             HFJELBGDGHP = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 104: {
             FloorId = input.ReadUInt32();
             break;
           }
@@ -358,22 +358,22 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            ConfigId = input.ReadUInt32();
+            GroupId = input.ReadUInt32();
             break;
           }
           case 40: {
             PlaneId = input.ReadUInt32();
             break;
           }
-          case 56: {
-            GroupId = input.ReadUInt32();
+          case 64: {
+            ConfigId = input.ReadUInt32();
             break;
           }
           case 72: {
             HFJELBGDGHP = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 104: {
             FloorId = input.ReadUInt32();
             break;
           }

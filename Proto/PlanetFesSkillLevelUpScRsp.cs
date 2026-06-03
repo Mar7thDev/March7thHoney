@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBQbGFuZXRGZXNTa2lsbExldmVsVXBTY1JzcC5wcm90bxoRRk1LTUVGTU9K",
             "R0oucHJvdG8idQoaUGxhbmV0RmVzU2tpbGxMZXZlbFVwU2NSc3ASHwoJaXRl",
-            "bV9jb3N0GAIgASgLMgwuRk1LTUVGTU9KR0oSEAoIc2tpbGxfaWQYASABKA0S",
-            "EwoLc2tpbGxfbGV2ZWwYBCABKA0SDwoHcmV0Y29kZRgKIAEoDUIWqgITTWFy",
+            "bV9jb3N0GAIgASgLMgwuRk1LTUVGTU9KR0oSEAoIc2tpbGxfaWQYBCABKA0S",
+            "EwoLc2tpbGxfbGV2ZWwYCCABKA0SDwoHcmV0Y29kZRgMIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FMKMEFMOJGJReflection.Descriptor, },
@@ -100,7 +100,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "skill_id" field.</summary>
-    public const int SkillIdFieldNumber = 1;
+    public const int SkillIdFieldNumber = 4;
     private uint skillId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,7 +112,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "skill_level" field.</summary>
-    public const int SkillLevelFieldNumber = 4;
+    public const int SkillLevelFieldNumber = 8;
     private uint skillLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -183,20 +183,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SkillId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(SkillId);
-      }
       if (itemCost_ != null) {
         output.WriteRawTag(18);
         output.WriteMessage(ItemCost);
       }
-      if (SkillLevel != 0) {
+      if (SkillId != 0) {
         output.WriteRawTag(32);
+        output.WriteUInt32(SkillId);
+      }
+      if (SkillLevel != 0) {
+        output.WriteRawTag(64);
         output.WriteUInt32(SkillLevel);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -209,20 +209,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SkillId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(SkillId);
-      }
       if (itemCost_ != null) {
         output.WriteRawTag(18);
         output.WriteMessage(ItemCost);
       }
-      if (SkillLevel != 0) {
+      if (SkillId != 0) {
         output.WriteRawTag(32);
+        output.WriteUInt32(SkillId);
+      }
+      if (SkillLevel != 0) {
+        output.WriteRawTag(64);
         output.WriteUInt32(SkillLevel);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -293,10 +293,6 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            SkillId = input.ReadUInt32();
-            break;
-          }
           case 18: {
             if (itemCost_ == null) {
               ItemCost = new global::March7thHoney.Proto.FMKMEFMOJGJ();
@@ -305,10 +301,14 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
+            SkillId = input.ReadUInt32();
+            break;
+          }
+          case 64: {
             SkillLevel = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -331,10 +331,6 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            SkillId = input.ReadUInt32();
-            break;
-          }
           case 18: {
             if (itemCost_ == null) {
               ItemCost = new global::March7thHoney.Proto.FMKMEFMOJGJ();
@@ -343,10 +339,14 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
+            SkillId = input.ReadUInt32();
+            break;
+          }
+          case 64: {
             SkillLevel = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LJBOELCMGFK {
-    repeated uint32 GCDGGBLOJIC = 9;
-    uint32 KDIDDHIDNCG = 12;
+    repeated uint32 GCDGGBLOJIC = 4;
+    uint32 KDIDDHIDNCG = 6;
 }

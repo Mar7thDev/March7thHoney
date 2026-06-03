@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlNYWluTWlzc2lvblNuYXBzaG90LnByb3RvGhhTdWJNaXNzaW9uU25hcHNo",
-            "b3QucHJvdG8iXQoTTWFpbk1pc3Npb25TbmFwc2hvdBItChBzdWJfbWlzc2lv",
-            "bl9saXN0GAIgAygLMhMuU3ViTWlzc2lvblNuYXBzaG90EhcKD21haW5fbWlz",
-            "c2lvbl9pZBgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "b3QucHJvdG8iXQoTTWFpbk1pc3Npb25TbmFwc2hvdBIXCg9tYWluX21pc3Np",
+            "b25faWQYASABKA0SLQoQc3ViX21pc3Npb25fbGlzdBgCIAMoCzITLlN1Yk1p",
+            "c3Npb25TbmFwc2hvdEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SubMissionSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MainMissionSnapshot), global::March7thHoney.Proto.MainMissionSnapshot.Parser, new[]{ "SubMissionList", "MainMissionId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MainMissionSnapshot), global::March7thHoney.Proto.MainMissionSnapshot.Parser, new[]{ "MainMissionId", "SubMissionList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MainMissionSnapshot(MainMissionSnapshot other) : this() {
-      subMissionList_ = other.subMissionList_.Clone();
       mainMissionId_ = other.mainMissionId_;
+      subMissionList_ = other.subMissionList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,17 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MainMissionSnapshot Clone() {
       return new MainMissionSnapshot(this);
-    }
-
-    /// <summary>Field number for the "sub_mission_list" field.</summary>
-    public const int SubMissionListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SubMissionSnapshot> _repeated_subMissionList_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SubMissionSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot> subMissionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot> SubMissionList {
-      get { return subMissionList_; }
     }
 
     /// <summary>Field number for the "main_mission_id" field.</summary>
@@ -105,6 +94,17 @@ namespace March7thHoney.Proto {
       set {
         mainMissionId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "sub_mission_list" field.</summary>
+    public const int SubMissionListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SubMissionSnapshot> _repeated_subMissionList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SubMissionSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot> subMissionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot> SubMissionList {
+      get { return subMissionList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!subMissionList_.Equals(other.subMissionList_)) return false;
       if (MainMissionId != other.MainMissionId) return false;
+      if(!subMissionList_.Equals(other.subMissionList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= subMissionList_.GetHashCode();
       if (MainMissionId != 0) hash ^= MainMissionId.GetHashCode();
+      hash ^= subMissionList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += subMissionList_.CalculateSize(_repeated_subMissionList_codec);
       if (MainMissionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainMissionId);
       }
+      size += subMissionList_.CalculateSize(_repeated_subMissionList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      subMissionList_.Add(other.subMissionList_);
       if (other.MainMissionId != 0) {
         MainMissionId = other.MainMissionId;
       }
+      subMissionList_.Add(other.subMissionList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

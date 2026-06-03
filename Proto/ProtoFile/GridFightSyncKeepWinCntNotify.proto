@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GridFightSyncKeepWinCntNotify {
-    uint32 EHBLJGIENPI = 15;
+    uint32 EHBLJGIENPI = 14;
 }

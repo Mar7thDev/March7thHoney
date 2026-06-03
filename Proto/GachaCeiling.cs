@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJHYWNoYUNlaWxpbmcucHJvdG8aGEdhY2hhQ2VpbGluZ0F2YXRhci5wcm90",
-            "byJhCgxHYWNoYUNlaWxpbmcSKAoLYXZhdGFyX2xpc3QYBSADKAsyEy5HYWNo",
-            "YUNlaWxpbmdBdmF0YXISEwoLY2VpbGluZ19udW0YCCABKA0SEgoKaXNfY2xh",
-            "aW1lZBgDIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "byJhCgxHYWNoYUNlaWxpbmcSKAoLYXZhdGFyX2xpc3QYAyADKAsyEy5HYWNo",
+            "YUNlaWxpbmdBdmF0YXISEwoLY2VpbGluZ19udW0YByABKA0SEgoKaXNfY2xh",
+            "aW1lZBgLIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GachaCeilingAvatarReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 5;
+    public const int AvatarListFieldNumber = 3;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.GachaCeilingAvatar> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.GachaCeilingAvatar.Parser);
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.GachaCeilingAvatar.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.GachaCeilingAvatar> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GachaCeilingAvatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "ceiling_num" field.</summary>
-    public const int CeilingNumFieldNumber = 8;
+    public const int CeilingNumFieldNumber = 7;
     private uint ceilingNum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_claimed" field.</summary>
-    public const int IsClaimedFieldNumber = 3;
+    public const int IsClaimedFieldNumber = 11;
     private bool isClaimed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -166,14 +166,14 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsClaimed != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(IsClaimed);
-      }
       avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (CeilingNum != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(56);
         output.WriteUInt32(CeilingNum);
+      }
+      if (IsClaimed != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(IsClaimed);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -185,14 +185,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsClaimed != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(IsClaimed);
-      }
       avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (CeilingNum != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(56);
         output.WriteUInt32(CeilingNum);
+      }
+      if (IsClaimed != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(IsClaimed);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            IsClaimed = input.ReadBool();
-            break;
-          }
-          case 42: {
+          case 26: {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
-          case 64: {
+          case 56: {
             CeilingNum = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            IsClaimed = input.ReadBool();
             break;
           }
         }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            IsClaimed = input.ReadBool();
-            break;
-          }
-          case 42: {
+          case 26: {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
-          case 64: {
+          case 56: {
             CeilingNum = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            IsClaimed = input.ReadBool();
             break;
           }
         }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhTZXRQbGF5ZXJJbmZvQ3NSZXEucHJvdG8aDEdlbmRlci5wcm90byJSChJT",
-            "ZXRQbGF5ZXJJbmZvQ3NSZXESEAoIbmlja25hbWUYASABKAkSFwoGZ2VuZGVy",
-            "GAcgASgOMgcuR2VuZGVyEhEKCWlzX21vZGlmeRgIIAEoCEIWqgITTWFyY2g3",
+            "ZXRQbGF5ZXJJbmZvQ3NSZXESEQoJaXNfbW9kaWZ5GAMgASgIEhcKBmdlbmRl",
+            "chgIIAEoDjIHLkdlbmRlchIQCghuaWNrbmFtZRgLIAEoCUIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GenderReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerInfoCsReq), global::March7thHoney.Proto.SetPlayerInfoCsReq.Parser, new[]{ "Nickname", "Gender", "IsModify" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetPlayerInfoCsReq), global::March7thHoney.Proto.SetPlayerInfoCsReq.Parser, new[]{ "IsModify", "Gender", "Nickname" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetPlayerInfoCsReq(SetPlayerInfoCsReq other) : this() {
-      nickname_ = other.nickname_;
-      gender_ = other.gender_;
       isModify_ = other.isModify_;
+      gender_ = other.gender_;
+      nickname_ = other.nickname_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,20 @@ namespace March7thHoney.Proto {
       return new SetPlayerInfoCsReq(this);
     }
 
-    /// <summary>Field number for the "nickname" field.</summary>
-    public const int NicknameFieldNumber = 1;
-    private string nickname_ = "";
+    /// <summary>Field number for the "is_modify" field.</summary>
+    public const int IsModifyFieldNumber = 3;
+    private bool isModify_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Nickname {
-      get { return nickname_; }
+    public bool IsModify {
+      get { return isModify_; }
       set {
-        nickname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        isModify_ = value;
       }
     }
 
     /// <summary>Field number for the "gender" field.</summary>
-    public const int GenderFieldNumber = 7;
+    public const int GenderFieldNumber = 8;
     private global::March7thHoney.Proto.Gender gender_ = global::March7thHoney.Proto.Gender.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,15 +109,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "is_modify" field.</summary>
-    public const int IsModifyFieldNumber = 8;
-    private bool isModify_;
+    /// <summary>Field number for the "nickname" field.</summary>
+    public const int NicknameFieldNumber = 11;
+    private string nickname_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsModify {
-      get { return isModify_; }
+    public string Nickname {
+      get { return nickname_; }
       set {
-        isModify_ = value;
+        nickname_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Nickname != other.Nickname) return false;
-      if (Gender != other.Gender) return false;
       if (IsModify != other.IsModify) return false;
+      if (Gender != other.Gender) return false;
+      if (Nickname != other.Nickname) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Nickname.Length != 0) hash ^= Nickname.GetHashCode();
-      if (Gender != global::March7thHoney.Proto.Gender.None) hash ^= Gender.GetHashCode();
       if (IsModify != false) hash ^= IsModify.GetHashCode();
+      if (Gender != global::March7thHoney.Proto.Gender.None) hash ^= Gender.GetHashCode();
+      if (Nickname.Length != 0) hash ^= Nickname.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Nickname.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Nickname);
+      if (IsModify != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsModify);
       }
       if (Gender != global::March7thHoney.Proto.Gender.None) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteEnum((int) Gender);
       }
-      if (IsModify != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(IsModify);
+      if (Nickname.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(Nickname);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Nickname.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Nickname);
+      if (IsModify != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsModify);
       }
       if (Gender != global::March7thHoney.Proto.Gender.None) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteEnum((int) Gender);
       }
-      if (IsModify != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(IsModify);
+      if (Nickname.Length != 0) {
+        output.WriteRawTag(90);
+        output.WriteString(Nickname);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Nickname.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nickname);
+      if (IsModify != false) {
+        size += 1 + 1;
       }
       if (Gender != global::March7thHoney.Proto.Gender.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Gender);
       }
-      if (IsModify != false) {
-        size += 1 + 1;
+      if (Nickname.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Nickname);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Nickname.Length != 0) {
-        Nickname = other.Nickname;
+      if (other.IsModify != false) {
+        IsModify = other.IsModify;
       }
       if (other.Gender != global::March7thHoney.Proto.Gender.None) {
         Gender = other.Gender;
       }
-      if (other.IsModify != false) {
-        IsModify = other.IsModify;
+      if (other.Nickname.Length != 0) {
+        Nickname = other.Nickname;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            Nickname = input.ReadString();
-            break;
-          }
-          case 56: {
-            Gender = (global::March7thHoney.Proto.Gender) input.ReadEnum();
+          case 24: {
+            IsModify = input.ReadBool();
             break;
           }
           case 64: {
-            IsModify = input.ReadBool();
+            Gender = (global::March7thHoney.Proto.Gender) input.ReadEnum();
+            break;
+          }
+          case 90: {
+            Nickname = input.ReadString();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            Nickname = input.ReadString();
-            break;
-          }
-          case 56: {
-            Gender = (global::March7thHoney.Proto.Gender) input.ReadEnum();
+          case 24: {
+            IsModify = input.ReadBool();
             break;
           }
           case 64: {
-            IsModify = input.ReadBool();
+            Gender = (global::March7thHoney.Proto.Gender) input.ReadEnum();
+            break;
+          }
+          case 90: {
+            Nickname = input.ReadString();
             break;
           }
         }

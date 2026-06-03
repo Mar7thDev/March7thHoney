@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NJHAGKGHKJJ.proto";
 
 message MonopolyDailySettleScNotify {
-    NJHAGKGHKJJ OLAONLGLAJO = 8;
-    uint32 ICPAPCAJFKK = 3;
+    NJHAGKGHKJJ OLAONLGLAJO = 10;
+    uint32 ICPAPCAJFKK = 11;
 }

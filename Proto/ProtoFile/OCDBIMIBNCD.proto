@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OCDBIMIBNCD {
-    repeated uint32 POHBLAMKNJH = 13;
-    repeated uint32 LEIJJGDJECI = 6;
+    repeated uint32 LEIJJGDJECI = 10;
+    repeated uint32 POHBLAMKNJH = 15;
 }

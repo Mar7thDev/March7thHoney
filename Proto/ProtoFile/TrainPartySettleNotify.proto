@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HLNFNACOFFF.proto";
 
 message TrainPartySettleNotify {
-    HLNFNACOFFF CBFPJAJAKGI = 14;
-    uint32 FGIHKKKOGJD = 4;
+    uint32 FGIHKKKOGJD = 6;
+    HLNFNACOFFF CBFPJAJAKGI = 12;
 }

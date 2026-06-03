@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LMKECAPDMAC.proto";
 
 message FLPMBEPBPGN {
-    repeated LMKECAPDMAC APHGAEAPLJF = 13;
+    repeated LMKECAPDMAC skill_list = 7;
 }

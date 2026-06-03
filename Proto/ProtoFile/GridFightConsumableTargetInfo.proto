@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AMFIFNOCDOF.proto";
+import "BDDDLOFNCHN.proto";
+import "BEBIJAKFNLO.proto";
+import "GBJHJGCOJBC.proto";
+import "HPJKBFKAKJH.proto";
+
+message GridFightConsumableTargetInfo {
+    oneof NEBNJDMFELO {
+        BDDDLOFNCHN AALCFBOGFKP = 1461;
+        HPJKBFKAKJH IMILGHELNBJ = 1646;
+        BEBIJAKFNLO KMCBBKIHBKF = 453;
+        GBJHJGCOJBC AEOIKFNKAAP = 1600;
+        AMFIFNOCDOF HLKKCAFGCIJ = 1794;
+    }
+}

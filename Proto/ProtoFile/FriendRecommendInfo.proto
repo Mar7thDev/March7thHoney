@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PlayerSimpleInfo.proto";
 
 message FriendRecommendInfo {
-    PlayerSimpleInfo player_info = 1;
-    bool JINLAHLMDLN = 14;
+    bool JINLAHLMDLN = 1;
+    PlayerSimpleInfo player_info = 10;
 }

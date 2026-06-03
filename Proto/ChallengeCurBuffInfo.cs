@@ -26,9 +26,9 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpDaGFsbGVuZ2VDdXJCdWZmSW5mby5wcm90bxobQ2hhbGxlbmdlQm9zc0J1",
             "ZmZMaXN0LnByb3RvGhxDaGFsbGVuZ2VTdG9yeUJ1ZmZMaXN0LnByb3RvIosB",
-            "ChRDaGFsbGVuZ2VDdXJCdWZmSW5mbxIyCg9jdXJfc3RvcnlfYnVmZnMYCSAB",
+            "ChRDaGFsbGVuZ2VDdXJCdWZmSW5mbxIyCg9jdXJfc3RvcnlfYnVmZnMYASAB",
             "KAsyFy5DaGFsbGVuZ2VTdG9yeUJ1ZmZMaXN0SAASMAoOY3VyX2Jvc3NfYnVm",
-            "ZnMYBSABKAsyFi5DaGFsbGVuZ2VCb3NzQnVmZkxpc3RIAEINCgtLS05CT0FD",
+            "ZnMYCSABKAsyFi5DaGFsbGVuZ2VCb3NzQnVmZkxpc3RIAEINCgtLS05CT0FD",
             "TkNPTkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeBossBuffListReflection.Descriptor, global::March7thHoney.Proto.ChallengeStoryBuffListReflection.Descriptor, },
@@ -94,7 +94,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cur_story_buffs" field.</summary>
-    public const int CurStoryBuffsFieldNumber = 9;
+    public const int CurStoryBuffsFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ChallengeStoryBuffList CurStoryBuffs {
@@ -106,7 +106,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cur_boss_buffs" field.</summary>
-    public const int CurBossBuffsFieldNumber = 5;
+    public const int CurBossBuffsFieldNumber = 9;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ChallengeBossBuffList CurBossBuffs {
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
     public enum KKNBOACNCONOneofCase {
       None = 0,
-      CurStoryBuffs = 9,
-      CurBossBuffs = 5,
+      CurStoryBuffs = 1,
+      CurBossBuffs = 9,
     }
     private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -184,13 +184,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurBossBuffs) {
-        output.WriteRawTag(42);
-        output.WriteMessage(CurBossBuffs);
-      }
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurStoryBuffs) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(10);
         output.WriteMessage(CurStoryBuffs);
+      }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurBossBuffs) {
+        output.WriteRawTag(74);
+        output.WriteMessage(CurBossBuffs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -202,13 +202,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurBossBuffs) {
-        output.WriteRawTag(42);
-        output.WriteMessage(CurBossBuffs);
-      }
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurStoryBuffs) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(10);
         output.WriteMessage(CurStoryBuffs);
+      }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurBossBuffs) {
+        output.WriteRawTag(74);
+        output.WriteMessage(CurBossBuffs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -272,22 +272,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
-            global::March7thHoney.Proto.ChallengeBossBuffList subBuilder = new global::March7thHoney.Proto.ChallengeBossBuffList();
-            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurBossBuffs) {
-              subBuilder.MergeFrom(CurBossBuffs);
-            }
-            input.ReadMessage(subBuilder);
-            CurBossBuffs = subBuilder;
-            break;
-          }
-          case 74: {
+          case 10: {
             global::March7thHoney.Proto.ChallengeStoryBuffList subBuilder = new global::March7thHoney.Proto.ChallengeStoryBuffList();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurStoryBuffs) {
               subBuilder.MergeFrom(CurStoryBuffs);
             }
             input.ReadMessage(subBuilder);
             CurStoryBuffs = subBuilder;
+            break;
+          }
+          case 74: {
+            global::March7thHoney.Proto.ChallengeBossBuffList subBuilder = new global::March7thHoney.Proto.ChallengeBossBuffList();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurBossBuffs) {
+              subBuilder.MergeFrom(CurBossBuffs);
+            }
+            input.ReadMessage(subBuilder);
+            CurBossBuffs = subBuilder;
             break;
           }
         }
@@ -309,22 +309,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
-            global::March7thHoney.Proto.ChallengeBossBuffList subBuilder = new global::March7thHoney.Proto.ChallengeBossBuffList();
-            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurBossBuffs) {
-              subBuilder.MergeFrom(CurBossBuffs);
-            }
-            input.ReadMessage(subBuilder);
-            CurBossBuffs = subBuilder;
-            break;
-          }
-          case 74: {
+          case 10: {
             global::March7thHoney.Proto.ChallengeStoryBuffList subBuilder = new global::March7thHoney.Proto.ChallengeStoryBuffList();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurStoryBuffs) {
               subBuilder.MergeFrom(CurStoryBuffs);
             }
             input.ReadMessage(subBuilder);
             CurStoryBuffs = subBuilder;
+            break;
+          }
+          case 74: {
+            global::March7thHoney.Proto.ChallengeBossBuffList subBuilder = new global::March7thHoney.Proto.ChallengeBossBuffList();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.CurBossBuffs) {
+              subBuilder.MergeFrom(CurBossBuffs);
+            }
+            input.ReadMessage(subBuilder);
+            CurBossBuffs = subBuilder;
             break;
           }
         }

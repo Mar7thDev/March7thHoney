@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PNHBCBIDFBE {
-    repeated uint32 NIKICHNOGJD = 9;
-    uint32 DPHAJPEADAF = 4;
-    uint32 MDKFLGDEJCN = 5;
+    uint32 DPHAJPEADAF = 2;
+    repeated uint32 NIKICHNOGJD = 3;
+    uint32 MDKFLGDEJCN = 11;
 }

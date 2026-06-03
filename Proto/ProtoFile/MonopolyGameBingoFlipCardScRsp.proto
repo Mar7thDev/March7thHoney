@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyGameBingoFlipCardScRsp {
-    repeated uint32 KNJMPBHKHCJ = 11;
-    bool BDEFAFFDBCC = 9;
-    uint32 record_score = 5;
-    uint32 retcode = 4;
+    uint32 retcode = 3;
+    repeated uint32 KNJMPBHKHCJ = 5;
+    bool BDEFAFFDBCC = 11;
+    uint32 total_score = 14;
 }

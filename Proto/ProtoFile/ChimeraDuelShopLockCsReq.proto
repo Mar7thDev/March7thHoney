@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChimeraDuelShopLockCsReq {
-    bool is_locked = 14;
+    bool is_locked = 10;
     oneof KKNBOACNCON {
-        uint32 NDJGKJMPPHJ = 6;
-        uint32 AGBAIFPNKII = 5;
+        uint32 NDJGKJMPPHJ = 9;
+        uint32 AGBAIFPNKII = 1;
     }
 }

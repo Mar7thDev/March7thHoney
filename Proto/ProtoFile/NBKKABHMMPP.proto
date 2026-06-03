@@ -6,12 +6,12 @@ import "GJIGHKNMILJ.proto";
 import "ItemList.proto";
 
 message NBKKABHMMPP {
-    ItemList reward = 11;
+    uint32 NJPMPAAGCCD = 1;
+    uint32 score_id = 4;
+    ItemList reward = 5;
     uint32 ALOFCOLHAGA = 6;
-    uint32 HGBHCLHCGBB = 1214;
-    uint32 OACBLHIIIEH = 366;
-    uint32 NJPMPAAGCCD = 12;
-    uint32 GMLCJEOOCHJ = 2;
-    GJIGHKNMILJ reason = 9;
-    uint32 score_id = 1;
+    uint32 GMLCJEOOCHJ = 7;
+    GJIGHKNMILJ reason = 11;
+    uint32 OACBLHIIIEH = 223;
+    uint32 HGBHCLHCGBB = 555;
 }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RogueModifierDelNotify {
-    uint64 FCHLCANJIGL = 9;
+    uint64 FCHLCANJIGL = 10;
 }

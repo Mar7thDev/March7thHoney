@@ -7,7 +7,7 @@ import "HJACHMJFEAH.proto";
 import "IIONNFELFEF.proto";
 
 message BFAKMCIJFCB {
-    repeated HJACHMJFEAH PNHLAAMNGFE = 2;
     repeated IIONNFELFEF PKMHMGAEAGO = 1;
+    repeated HJACHMJFEAH PNHLAAMNGFE = 2;
     BOMHOLBACKF GLOGEMFDMJG = 3;
 }

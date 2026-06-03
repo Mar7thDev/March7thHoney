@@ -6,7 +6,7 @@ import "LHCOHLJIAII.proto";
 import "NBNLDHBELLO.proto";
 
 message CNOAPAMNDOA {
-    repeated LHCOHLJIAII KGOEHKJIONM = 5;
-    repeated NBNLDHBELLO LFJLNAHJNBE = 12;
-    uint32 retcode = 15;
+    repeated NBNLDHBELLO LFJLNAHJNBE = 10;
+    repeated LHCOHLJIAII KGOEHKJIONM = 12;
+    uint32 retcode = 14;
 }

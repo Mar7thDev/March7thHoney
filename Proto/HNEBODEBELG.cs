@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFITkVCT0RFQkVMRy5wcm90bxoRQkNDT05LSkhESkwucHJvdG8iQwoLSE5F",
-            "Qk9ERUJFTEcSIQoLSUVCTk9HT09FTU8YDiADKAsyDC5CQ0NPTktKSERKTBIR",
-            "Cglyb2xlX3N0YXIYCCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "Qk9ERUJFTEcSIQoLSUVCTk9HT09FTU8YBSADKAsyDC5CQ0NPTktKSERKTBIR",
+            "Cglyb2xlX3N0YXIYCyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BCCONKJHDJLReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IEBNOGOOEMO" field.</summary>
-    public const int IEBNOGOOEMOFieldNumber = 14;
+    public const int IEBNOGOOEMOFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.BCCONKJHDJL> _repeated_iEBNOGOOEMO_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.BCCONKJHDJL.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.BCCONKJHDJL.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.BCCONKJHDJL> iEBNOGOOEMO_ = new pbc::RepeatedField<global::March7thHoney.Proto.BCCONKJHDJL>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "role_star" field.</summary>
-    public const int RoleStarFieldNumber = 8;
+    public const int RoleStarFieldNumber = 11;
     private uint roleStar_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      iEBNOGOOEMO_.WriteTo(output, _repeated_iEBNOGOOEMO_codec);
       if (RoleStar != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(RoleStar);
       }
-      iEBNOGOOEMO_.WriteTo(output, _repeated_iEBNOGOOEMO_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      iEBNOGOOEMO_.WriteTo(ref output, _repeated_iEBNOGOOEMO_codec);
       if (RoleStar != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(RoleStar);
       }
-      iEBNOGOOEMO_.WriteTo(ref output, _repeated_iEBNOGOOEMO_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            RoleStar = input.ReadUInt32();
+          case 42: {
+            iEBNOGOOEMO_.AddEntriesFrom(input, _repeated_iEBNOGOOEMO_codec);
             break;
           }
-          case 114: {
-            iEBNOGOOEMO_.AddEntriesFrom(input, _repeated_iEBNOGOOEMO_codec);
+          case 88: {
+            RoleStar = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            RoleStar = input.ReadUInt32();
+          case 42: {
+            iEBNOGOOEMO_.AddEntriesFrom(ref input, _repeated_iEBNOGOOEMO_codec);
             break;
           }
-          case 114: {
-            iEBNOGOOEMO_.AddEntriesFrom(ref input, _repeated_iEBNOGOOEMO_codec);
+          case 88: {
+            RoleStar = input.ReadUInt32();
             break;
           }
         }

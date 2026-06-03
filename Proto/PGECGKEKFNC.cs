@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static PGECGKEKFNCReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFQR0VDR0tFS0ZOQy5wcm90byIzCgtQR0VDR0tFS0ZOQxIPCgdyb2xlX2lk",
-            "GAcgASgNEhMKC0xQRkdJR0pETEZNGAogASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "ChFQR0VDR0tFS0ZOQy5wcm90byIzCgtQR0VDR0tFS0ZOQxITCgtMUEZHSUdK",
+            "RExGTRgBIAEoDRIPCgdyb2xlX2lkGAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PGECGKEKFNC), global::March7thHoney.Proto.PGECGKEKFNC.Parser, new[]{ "RoleId", "LPFGIGJDLFM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PGECGKEKFNC), global::March7thHoney.Proto.PGECGKEKFNC.Parser, new[]{ "LPFGIGJDLFM", "RoleId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PGECGKEKFNC(PGECGKEKFNC other) : this() {
-      roleId_ = other.roleId_;
       lPFGIGJDLFM_ = other.lPFGIGJDLFM_;
+      roleId_ = other.roleId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new PGECGKEKFNC(this);
     }
 
-    /// <summary>Field number for the "role_id" field.</summary>
-    public const int RoleIdFieldNumber = 7;
-    private uint roleId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RoleId {
-      get { return roleId_; }
-      set {
-        roleId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "LPFGIGJDLFM" field.</summary>
-    public const int LPFGIGJDLFMFieldNumber = 10;
+    public const int LPFGIGJDLFMFieldNumber = 1;
     private uint lPFGIGJDLFM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return lPFGIGJDLFM_; }
       set {
         lPFGIGJDLFM_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "role_id" field.</summary>
+    public const int RoleIdFieldNumber = 2;
+    private uint roleId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RoleId {
+      get { return roleId_; }
+      set {
+        roleId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (RoleId != other.RoleId) return false;
       if (LPFGIGJDLFM != other.LPFGIGJDLFM) return false;
+      if (RoleId != other.RoleId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (RoleId != 0) hash ^= RoleId.GetHashCode();
       if (LPFGIGJDLFM != 0) hash ^= LPFGIGJDLFM.GetHashCode();
+      if (RoleId != 0) hash ^= RoleId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RoleId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(RoleId);
-      }
       if (LPFGIGJDLFM != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(8);
         output.WriteUInt32(LPFGIGJDLFM);
+      }
+      if (RoleId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(RoleId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RoleId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(RoleId);
-      }
       if (LPFGIGJDLFM != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(8);
         output.WriteUInt32(LPFGIGJDLFM);
+      }
+      if (RoleId != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(RoleId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (RoleId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleId);
-      }
       if (LPFGIGJDLFM != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LPFGIGJDLFM);
+      }
+      if (RoleId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.RoleId != 0) {
-        RoleId = other.RoleId;
-      }
       if (other.LPFGIGJDLFM != 0) {
         LPFGIGJDLFM = other.LPFGIGJDLFM;
+      }
+      if (other.RoleId != 0) {
+        RoleId = other.RoleId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            RoleId = input.ReadUInt32();
+          case 8: {
+            LPFGIGJDLFM = input.ReadUInt32();
             break;
           }
-          case 80: {
-            LPFGIGJDLFM = input.ReadUInt32();
+          case 16: {
+            RoleId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            RoleId = input.ReadUInt32();
+          case 8: {
+            LPFGIGJDLFM = input.ReadUInt32();
             break;
           }
-          case 80: {
-            LPFGIGJDLFM = input.ReadUInt32();
+          case 16: {
+            RoleId = input.ReadUInt32();
             break;
           }
         }

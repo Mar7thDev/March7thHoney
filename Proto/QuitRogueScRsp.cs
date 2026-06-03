@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRRdWl0Um9ndWVTY1JzcC5wcm90bxoRQUdFSEdCS09CRUYucHJvdG8iSAoO",
-            "UXVpdFJvZ3VlU2NSc3ASJQoPcm9ndWVfZ2FtZV9pbmZvGAogASgLMgwuQUdF",
+            "UXVpdFJvZ3VlU2NSc3ASJQoPcm9ndWVfZ2FtZV9pbmZvGAggASgLMgwuQUdF",
             "SEdCS09CRUYSDwoHcmV0Y29kZRgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "rogue_game_info" field.</summary>
-    public const int RogueGameInfoFieldNumber = 10;
+    public const int RogueGameInfoFieldNumber = 8;
     private global::March7thHoney.Proto.AGEHGBKOBEF rogueGameInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (rogueGameInfo_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(66);
         output.WriteMessage(RogueGameInfo);
       }
       if (Retcode != 0) {
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (rogueGameInfo_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(66);
         output.WriteMessage(RogueGameInfo);
       }
       if (Retcode != 0) {
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82: {
+          case 66: {
             if (rogueGameInfo_ == null) {
               RogueGameInfo = new global::March7thHoney.Proto.AGEHGBKOBEF();
             }
@@ -264,7 +264,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82: {
+          case 66: {
             if (rogueGameInfo_ == null) {
               RogueGameInfo = new global::March7thHoney.Proto.AGEHGBKOBEF();
             }

@@ -7,8 +7,8 @@ import "PAKHPLAHGBN.proto";
 import "PunkLordMonsterBasicInfo.proto";
 
 message PunkLordMonsterInfoScNotify {
-    repeated uint32 FNMGMNABAJG = 12;
-    CJDIAHDLCNJ FDJHMFAGEOA = 7;
-    PunkLordMonsterBasicInfo basic_info = 13;
-    PAKHPLAHGBN reason = 1;
+    CJDIAHDLCNJ FDJHMFAGEOA = 3;
+    PunkLordMonsterBasicInfo basic_info = 7;
+    repeated uint32 FNMGMNABAJG = 13;
+    PAKHPLAHGBN reason = 15;
 }

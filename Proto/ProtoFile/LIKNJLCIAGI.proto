@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LIKNJLCIAGI {
-    uint64 MFCHJFPOCIA = 2;
-    float NJDHHMLEHFL = 15;
-    float y = 7;
-    float z = 12;
-    float x = 6;
+    uint64 time_stamp = 1;
+    float x = 4;
+    float y = 6;
+    float z = 10;
+    float NJDHHMLEHFL = 13;
 }

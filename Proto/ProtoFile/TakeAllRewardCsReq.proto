@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OptionalReward.proto";
 
 message TakeAllRewardCsReq {
-    repeated OptionalReward EIKKALADEHM = 3;
+    repeated OptionalReward EIKKALADEHM = 9;
 }

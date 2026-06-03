@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TravelBrochurePageUnlockScNotify {
-    uint32 DCIJEFMACME = 10;
+    uint32 DCIJEFMACME = 6;
 }

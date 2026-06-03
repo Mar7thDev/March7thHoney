@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HGCIAPKELAF.proto";
 
 message ChessRogueNousEditDiceScRsp {
-    HGCIAPKELAF IOCCACNJIGD = 11;
+    HGCIAPKELAF IOCCACNJIGD = 5;
     uint32 retcode = 12;
 }

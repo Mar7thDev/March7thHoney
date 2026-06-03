@@ -2,15 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
+import "KVP.proto";
 
 message LNCAAKDIMBL {
-    repeated APAMFCKFHLL DBOBKAAGPJH = 5;
-    uint32 ADGNNEOEAFO = 4;
-    uint32 BIOFDPICHLC = 6;
-    uint32 IHHKFADNADN = 11;
-    uint32 AOOLKNMJLNI = 7;
-    uint32 IFGMFCOGNJF = 1;
-    bool PLIEODDEEHG = 8;
-    bool FKLNFMAHKGD = 9;
+    uint32 BIOFDPICHLC = 4;
+    uint32 IFGMFCOGNJF = 9;
+    bool FKLNFMAHKGD = 10;
+    uint32 ADGNNEOEAFO = 11;
+    repeated KVP DBOBKAAGPJH = 12;
+    bool PLIEODDEEHG = 13;
+    uint32 AOOLKNMJLNI = 14;
+    uint32 IHHKFADNADN = 15;
 }

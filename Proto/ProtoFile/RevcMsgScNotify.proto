@@ -6,7 +6,7 @@ import "ChatMessageData.proto";
 import "ChatType.proto";
 
 message RevcMsgScNotify {
-    ChatMessageData recv_message_data = 11;
-    ChatType chat_type = 14;
-    uint32 source_uid = 10;
+    uint32 source_uid = 2;
+    ChatType chat_type = 4;
+    ChatMessageData recv_message_data = 12;
 }

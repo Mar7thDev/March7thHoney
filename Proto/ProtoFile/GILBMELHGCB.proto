@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GILBMELHGCB {
-    repeated uint32 JMMBAALIOJL = 2;
-    uint32 stage_id = 1;
+    uint32 stage_id = 14;
+    repeated uint32 JMMBAALIOJL = 15;
 }

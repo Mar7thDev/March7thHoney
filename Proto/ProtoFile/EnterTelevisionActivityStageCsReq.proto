@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CBIKIIMGKHH.proto";
 
 message EnterTelevisionActivityStageCsReq {
-    repeated uint32 buff_list = 1;
-    repeated CBIKIIMGKHH avatar_list = 4;
-    uint32 KKNGIFOJLGJ = 12;
+    uint32 KKNGIFOJLGJ = 7;
+    repeated uint32 buff_list = 10;
+    repeated CBIKIIMGKHH avatar_list = 14;
 }

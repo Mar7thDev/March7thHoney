@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GGGBAIAPDLO.proto";
 
 message FKOGDINOBDF {
-    GGGBAIAPDLO PCHGEGFBKLF = 11;
+    GGGBAIAPDLO PCHGEGFBKLF = 1;
 }

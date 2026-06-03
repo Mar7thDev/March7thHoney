@@ -13,15 +13,15 @@ import "PropRogueInfo.proto";
 import "PropTimelineInfo.proto";
 
 message PropExtraInfo {
-    PropTimelineInfo timeline_info = 12;
+    PropTimelineInfo timeline_info = 11;
     oneof KKNBOACNCON {
-        PropRogueInfo rogue_game_info = 11;
-        HLFAKEOBFAB AEFMMOHKCHJ = 14;
-        BGFLAKMOIGC OGLJIOJBIEN = 4;
-        EBBOJACNHEC ADNHHAELLNC = 5;
+        PropRogueInfo rogue_game_info = 14;
+        HLFAKEOBFAB AEFMMOHKCHJ = 12;
+        BGFLAKMOIGC OGLJIOJBIEN = 1;
+        EBBOJACNHEC ADNHHAELLNC = 13;
         APKENKIDMGC ACJPMKHJLDB = 15;
-        NBDKNCJGOMN OEMHOKEMBKM = 8;
-        ONNEJIPGHCK MFCPLGHHPNP = 6;
-        PGLLFCMEFKG IDMAELPELLA = 10;
+        NBDKNCJGOMN OEMHOKEMBKM = 4;
+        ONNEJIPGHCK MFCPLGHHPNP = 2;
+        PGLLFCMEFKG IDMAELPELLA = 9;
     }
 }

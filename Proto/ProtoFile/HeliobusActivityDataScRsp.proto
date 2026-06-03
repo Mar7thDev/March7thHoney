@@ -3,19 +3,19 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 import "BGOMIHEFHPA.proto";
-import "FPIBAIPJCMD.proto";
+import "HeliobusChallengeData.proto";
 import "HeliobusChallengeLineup.proto";
 import "ONBLLGHELOB.proto";
 
 message HeliobusActivityDataScRsp {
-    ONBLLGHELOB skill_info = 15;
-    repeated FPIBAIPJCMD challenge_list = 12;
-    repeated HeliobusChallengeLineup DJKMBPEFCKL = 6;
-    repeated BGOMIHEFHPA AAHPCIOOLHB = 5;
-    uint32 level = 11;
-    uint32 IMGDMDDKHDL = 10;
-    uint32 OMMNAFNIKPH = 13;
-    uint32 phase = 9;
-    uint32 AFMLOAPAAPM = 2;
-    uint32 retcode = 14;
+    uint32 OMMNAFNIKPH = 2;
+    uint32 level = 3;
+    ONBLLGHELOB skill_info = 4;
+    repeated HeliobusChallengeData challenge_list = 5;
+    repeated BGOMIHEFHPA AAHPCIOOLHB = 6;
+    uint32 phase = 7;
+    uint32 retcode = 10;
+    uint32 AFMLOAPAAPM = 12;
+    uint32 IMGDMDDKHDL = 13;
+    repeated HeliobusChallengeLineup DJKMBPEFCKL = 14;
 }

@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChZQbGF5ZXJBc3Npc3RJbmZvLnByb3RvGh1EaXNwbGF5QXZhdGFyRGV0YWls",
             "SW5mby5wcm90bxoWUGxheWVyU2ltcGxlSW5mby5wcm90byJrChBQbGF5ZXJB",
-            "c3Npc3RJbmZvEi8KDWFzc2lzdF9hdmF0YXIYBCABKAsyGC5EaXNwbGF5QXZh",
-            "dGFyRGV0YWlsSW5mbxImCgtwbGF5ZXJfaW5mbxgNIAEoCzIRLlBsYXllclNp",
-            "bXBsZUluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "c3Npc3RJbmZvEiYKC3BsYXllcl9pbmZvGAogASgLMhEuUGxheWVyU2ltcGxl",
+            "SW5mbxIvCg1hc3Npc3RfYXZhdGFyGAwgASgLMhguRGlzcGxheUF2YXRhckRl",
+            "dGFpbEluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DisplayAvatarDetailInfoReflection.Descriptor, global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerAssistInfo), global::March7thHoney.Proto.PlayerAssistInfo.Parser, new[]{ "AssistAvatar", "PlayerInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerAssistInfo), global::March7thHoney.Proto.PlayerAssistInfo.Parser, new[]{ "PlayerInfo", "AssistAvatar" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerAssistInfo(PlayerAssistInfo other) : this() {
-      assistAvatar_ = other.assistAvatar_ != null ? other.assistAvatar_.Clone() : null;
       playerInfo_ = other.playerInfo_ != null ? other.playerInfo_.Clone() : null;
+      assistAvatar_ = other.assistAvatar_ != null ? other.assistAvatar_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new PlayerAssistInfo(this);
     }
 
-    /// <summary>Field number for the "assist_avatar" field.</summary>
-    public const int AssistAvatarFieldNumber = 4;
-    private global::March7thHoney.Proto.DisplayAvatarDetailInfo assistAvatar_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DisplayAvatarDetailInfo AssistAvatar {
-      get { return assistAvatar_; }
-      set {
-        assistAvatar_ = value;
-      }
-    }
-
     /// <summary>Field number for the "player_info" field.</summary>
-    public const int PlayerInfoFieldNumber = 13;
+    public const int PlayerInfoFieldNumber = 10;
     private global::March7thHoney.Proto.PlayerSimpleInfo playerInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,6 +94,18 @@ namespace March7thHoney.Proto {
       get { return playerInfo_; }
       set {
         playerInfo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "assist_avatar" field.</summary>
+    public const int AssistAvatarFieldNumber = 12;
+    private global::March7thHoney.Proto.DisplayAvatarDetailInfo assistAvatar_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.DisplayAvatarDetailInfo AssistAvatar {
+      get { return assistAvatar_; }
+      set {
+        assistAvatar_ = value;
       }
     }
 
@@ -124,8 +124,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(AssistAvatar, other.AssistAvatar)) return false;
       if (!object.Equals(PlayerInfo, other.PlayerInfo)) return false;
+      if (!object.Equals(AssistAvatar, other.AssistAvatar)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,8 +133,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (assistAvatar_ != null) hash ^= AssistAvatar.GetHashCode();
       if (playerInfo_ != null) hash ^= PlayerInfo.GetHashCode();
+      if (assistAvatar_ != null) hash ^= AssistAvatar.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,13 +153,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (assistAvatar_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(AssistAvatar);
-      }
       if (playerInfo_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(82);
         output.WriteMessage(PlayerInfo);
+      }
+      if (assistAvatar_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(AssistAvatar);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (assistAvatar_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(AssistAvatar);
-      }
       if (playerInfo_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(82);
         output.WriteMessage(PlayerInfo);
+      }
+      if (assistAvatar_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(AssistAvatar);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -189,11 +189,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (assistAvatar_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AssistAvatar);
-      }
       if (playerInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerInfo);
+      }
+      if (assistAvatar_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AssistAvatar);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -207,17 +207,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.assistAvatar_ != null) {
-        if (assistAvatar_ == null) {
-          AssistAvatar = new global::March7thHoney.Proto.DisplayAvatarDetailInfo();
-        }
-        AssistAvatar.MergeFrom(other.AssistAvatar);
-      }
       if (other.playerInfo_ != null) {
         if (playerInfo_ == null) {
           PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
         }
         PlayerInfo.MergeFrom(other.PlayerInfo);
+      }
+      if (other.assistAvatar_ != null) {
+        if (assistAvatar_ == null) {
+          AssistAvatar = new global::March7thHoney.Proto.DisplayAvatarDetailInfo();
+        }
+        AssistAvatar.MergeFrom(other.AssistAvatar);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -238,18 +238,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
-            if (assistAvatar_ == null) {
-              AssistAvatar = new global::March7thHoney.Proto.DisplayAvatarDetailInfo();
-            }
-            input.ReadMessage(AssistAvatar);
-            break;
-          }
-          case 106: {
+          case 82: {
             if (playerInfo_ == null) {
               PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
             }
             input.ReadMessage(PlayerInfo);
+            break;
+          }
+          case 98: {
+            if (assistAvatar_ == null) {
+              AssistAvatar = new global::March7thHoney.Proto.DisplayAvatarDetailInfo();
+            }
+            input.ReadMessage(AssistAvatar);
             break;
           }
         }
@@ -271,18 +271,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
-            if (assistAvatar_ == null) {
-              AssistAvatar = new global::March7thHoney.Proto.DisplayAvatarDetailInfo();
-            }
-            input.ReadMessage(AssistAvatar);
-            break;
-          }
-          case 106: {
+          case 82: {
             if (playerInfo_ == null) {
               PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
             }
             input.ReadMessage(PlayerInfo);
+            break;
+          }
+          case 98: {
+            if (assistAvatar_ == null) {
+              AssistAvatar = new global::March7thHoney.Proto.DisplayAvatarDetailInfo();
+            }
+            input.ReadMessage(AssistAvatar);
             break;
           }
         }

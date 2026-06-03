@@ -6,7 +6,7 @@ import "ChatType.proto";
 import "MessageChatData.proto";
 
 message SendMsgCsReq {
-    MessageChatData message_datas = 6;
-    repeated uint32 target_list = 3;
-    ChatType chat_type = 5;
+    ChatType chat_type = 3;
+    MessageChatData message_datas = 5;
+    repeated uint32 target_list = 8;
 }

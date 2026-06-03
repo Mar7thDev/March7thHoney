@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BGOMIHEFHPA.proto";
 
 message HeliobusInfoChangedScNotify {
-    repeated BGOMIHEFHPA KGKLBGOADCE = 15;
-    uint32 OMMNAFNIKPH = 2;
-    uint32 phase = 10;
-    uint32 IMGDMDDKHDL = 5;
+    uint32 IMGDMDDKHDL = 3;
+    uint32 OMMNAFNIKPH = 4;
+    repeated BGOMIHEFHPA KGKLBGOADCE = 12;
+    uint32 phase = 13;
 }

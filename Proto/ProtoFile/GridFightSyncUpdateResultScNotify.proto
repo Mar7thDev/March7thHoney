@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ABPLALCHNFA.proto";
 
 message GridFightSyncUpdateResultScNotify {
-    repeated ABPLALCHNFA GCPNIHHBGGD = 13;
+    repeated ABPLALCHNFA GCPNIHHBGGD = 6;
 }

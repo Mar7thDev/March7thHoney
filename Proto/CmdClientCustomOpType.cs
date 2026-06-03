@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChtDbWRDbGllbnRDdXN0b21PcFR5cGUucHJvdG8qUgoVQ21kQ2xpZW50Q3Vz",
             "dG9tT3BUeXBlEhsKF0JIS0dBS0RPQUxQX0dHS01GQUZPSU5QEAASHAoXQkhL",
-            "R0FLRE9BTFBfSFBMUE1ERUpPSksQ70xCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "R0FLRE9BTFBfSFBMUE1ERUpPSksQ8ExCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,7 +38,7 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdClientCustomOpType {
     [pbr::OriginalName("BHKGAKDOALP_GGKMFAFOINP")] BhkgakdoalpGgkmfafoinp = 0,
-    [pbr::OriginalName("BHKGAKDOALP_HPLPMDEJOJK")] BhkgakdoalpHplpmdejojk = 9839,
+    [pbr::OriginalName("BHKGAKDOALP_HPLPMDEJOJK")] BhkgakdoalpHplpmdejojk = 9840,
   }
 
   #endregion

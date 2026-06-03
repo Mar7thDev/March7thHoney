@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BADOONPCDLO.proto";
 
 message ParkourGetDataScRsp {
-    repeated BADOONPCDLO CGIPFMLDPNA = 5;
-    uint32 retcode = 7;
+    repeated BADOONPCDLO CGIPFMLDPNA = 8;
+    uint32 retcode = 12;
 }

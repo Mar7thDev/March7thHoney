@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static AIBNHPAGDOLReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBSUJOSFBBR0RPTC5wcm90byI3CgtBSUJOSFBBR0RPTBITCgtHS0VQUE5P",
-            "TE5IRhgLIAEoCBITCgtEUENKRkZQT0xGRxgOIAEoDUIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFBSUJOSFBBR0RPTC5wcm90byI5CgtBSUJOSFBBR0RPTBITCgtHS0VQUE5P",
+            "TE5IRhgEIAEoCBIVCg1mb3JiaWRfcmVhc29uGAUgASgNQhaqAhNNYXJjaDd0",
+            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AIBNHPAGDOL), global::March7thHoney.Proto.AIBNHPAGDOL.Parser, new[]{ "GKEPPNOLNHF", "DPCJFFPOLFG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AIBNHPAGDOL), global::March7thHoney.Proto.AIBNHPAGDOL.Parser, new[]{ "GKEPPNOLNHF", "ForbidReason" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AIBNHPAGDOL(AIBNHPAGDOL other) : this() {
       gKEPPNOLNHF_ = other.gKEPPNOLNHF_;
-      dPCJFFPOLFG_ = other.dPCJFFPOLFG_;
+      forbidReason_ = other.forbidReason_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GKEPPNOLNHF" field.</summary>
-    public const int GKEPPNOLNHFFieldNumber = 11;
+    public const int GKEPPNOLNHFFieldNumber = 4;
     private bool gKEPPNOLNHF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DPCJFFPOLFG" field.</summary>
-    public const int DPCJFFPOLFGFieldNumber = 14;
-    private uint dPCJFFPOLFG_;
+    /// <summary>Field number for the "forbid_reason" field.</summary>
+    public const int ForbidReasonFieldNumber = 5;
+    private uint forbidReason_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DPCJFFPOLFG {
-      get { return dPCJFFPOLFG_; }
+    public uint ForbidReason {
+      get { return forbidReason_; }
       set {
-        dPCJFFPOLFG_ = value;
+        forbidReason_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (GKEPPNOLNHF != other.GKEPPNOLNHF) return false;
-      if (DPCJFFPOLFG != other.DPCJFFPOLFG) return false;
+      if (ForbidReason != other.ForbidReason) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (GKEPPNOLNHF != false) hash ^= GKEPPNOLNHF.GetHashCode();
-      if (DPCJFFPOLFG != 0) hash ^= DPCJFFPOLFG.GetHashCode();
+      if (ForbidReason != 0) hash ^= ForbidReason.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GKEPPNOLNHF != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteBool(GKEPPNOLNHF);
       }
-      if (DPCJFFPOLFG != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(DPCJFFPOLFG);
+      if (ForbidReason != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(ForbidReason);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GKEPPNOLNHF != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteBool(GKEPPNOLNHF);
       }
-      if (DPCJFFPOLFG != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(DPCJFFPOLFG);
+      if (ForbidReason != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(ForbidReason);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
       if (GKEPPNOLNHF != false) {
         size += 1 + 1;
       }
-      if (DPCJFFPOLFG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DPCJFFPOLFG);
+      if (ForbidReason != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ForbidReason);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.GKEPPNOLNHF != false) {
         GKEPPNOLNHF = other.GKEPPNOLNHF;
       }
-      if (other.DPCJFFPOLFG != 0) {
-        DPCJFFPOLFG = other.DPCJFFPOLFG;
+      if (other.ForbidReason != 0) {
+        ForbidReason = other.ForbidReason;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
+          case 32: {
             GKEPPNOLNHF = input.ReadBool();
             break;
           }
-          case 112: {
-            DPCJFFPOLFG = input.ReadUInt32();
+          case 40: {
+            ForbidReason = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
+          case 32: {
             GKEPPNOLNHF = input.ReadBool();
             break;
           }
-          case 112: {
-            DPCJFFPOLFG = input.ReadUInt32();
+          case 40: {
+            ForbidReason = input.ReadUInt32();
             break;
           }
         }

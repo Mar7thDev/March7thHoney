@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PAAIMLDHJCI.proto";
 
 message TelevisionActivityBattleEndScNotify {
-    PAAIMLDHJCI GBHAIBBFPHJ = 10;
-    uint32 turn_left = 2;
-    uint32 record_score = 11;
-    uint32 BFNNIFEPAEC = 8;
-    uint32 AAJFIPMBMHC = 4;
+    uint32 turn_left = 1;
+    uint32 round_score = 3;
+    uint32 AAJFIPMBMHC = 6;
+    PAAIMLDHJCI GBHAIBBFPHJ = 8;
+    uint32 total_score = 12;
 }

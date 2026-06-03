@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static GFNAPELNFICReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHRk5BUEVMTkZJQy5wcm90bxoRREtQSEFGUEdETE8ucHJvdG8iWgoLR0ZO",
-            "QVBFTE5GSUMSIQoLSkJOTUFPRk9GUEUYAyABKAsyDC5ES1BIQUZQR0RMTxIT",
-            "CgtDTEZCQkFQRVBNTBgBIAEoDRITCgtBQUxDQ1BKQ0JNRRgCIAEoCEIWqgIT",
-            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFHRk5BUEVMTkZJQy5wcm90bxoRREtQSEFGUEdETE8ucHJvdG8iWAoLR0ZO",
+            "QVBFTE5GSUMSEwoLQ0xGQkJBUEVQTUwYASABKA0SEQoJaXNfbG9ja2VkGAIg",
+            "ASgIEiEKC0pCTk1BT0ZPRlBFGAMgASgLMgwuREtQSEFGUEdETE9CFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DKPHAFPGDLOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GFNAPELNFIC), global::March7thHoney.Proto.GFNAPELNFIC.Parser, new[]{ "JBNMAOFOFPE", "CLFBBAPEPML", "AALCCPJCBME" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GFNAPELNFIC), global::March7thHoney.Proto.GFNAPELNFIC.Parser, new[]{ "CLFBBAPEPML", "IsLocked", "JBNMAOFOFPE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GFNAPELNFIC(GFNAPELNFIC other) : this() {
-      jBNMAOFOFPE_ = other.jBNMAOFOFPE_ != null ? other.jBNMAOFOFPE_.Clone() : null;
       cLFBBAPEPML_ = other.cLFBBAPEPML_;
-      aALCCPJCBME_ = other.aALCCPJCBME_;
+      isLocked_ = other.isLocked_;
+      jBNMAOFOFPE_ = other.jBNMAOFOFPE_ != null ? other.jBNMAOFOFPE_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,18 +83,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GFNAPELNFIC Clone() {
       return new GFNAPELNFIC(this);
-    }
-
-    /// <summary>Field number for the "JBNMAOFOFPE" field.</summary>
-    public const int JBNMAOFOFPEFieldNumber = 3;
-    private global::March7thHoney.Proto.DKPHAFPGDLO jBNMAOFOFPE_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.DKPHAFPGDLO JBNMAOFOFPE {
-      get { return jBNMAOFOFPE_; }
-      set {
-        jBNMAOFOFPE_ = value;
-      }
     }
 
     /// <summary>Field number for the "CLFBBAPEPML" field.</summary>
@@ -109,15 +97,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "AALCCPJCBME" field.</summary>
-    public const int AALCCPJCBMEFieldNumber = 2;
-    private bool aALCCPJCBME_;
+    /// <summary>Field number for the "is_locked" field.</summary>
+    public const int IsLockedFieldNumber = 2;
+    private bool isLocked_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool AALCCPJCBME {
-      get { return aALCCPJCBME_; }
+    public bool IsLocked {
+      get { return isLocked_; }
       set {
-        aALCCPJCBME_ = value;
+        isLocked_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "JBNMAOFOFPE" field.</summary>
+    public const int JBNMAOFOFPEFieldNumber = 3;
+    private global::March7thHoney.Proto.DKPHAFPGDLO jBNMAOFOFPE_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.DKPHAFPGDLO JBNMAOFOFPE {
+      get { return jBNMAOFOFPE_; }
+      set {
+        jBNMAOFOFPE_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(JBNMAOFOFPE, other.JBNMAOFOFPE)) return false;
       if (CLFBBAPEPML != other.CLFBBAPEPML) return false;
-      if (AALCCPJCBME != other.AALCCPJCBME) return false;
+      if (IsLocked != other.IsLocked) return false;
+      if (!object.Equals(JBNMAOFOFPE, other.JBNMAOFOFPE)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (jBNMAOFOFPE_ != null) hash ^= JBNMAOFOFPE.GetHashCode();
       if (CLFBBAPEPML != 0) hash ^= CLFBBAPEPML.GetHashCode();
-      if (AALCCPJCBME != false) hash ^= AALCCPJCBME.GetHashCode();
+      if (IsLocked != false) hash ^= IsLocked.GetHashCode();
+      if (jBNMAOFOFPE_ != null) hash ^= JBNMAOFOFPE.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -171,9 +171,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(CLFBBAPEPML);
       }
-      if (AALCCPJCBME != false) {
+      if (IsLocked != false) {
         output.WriteRawTag(16);
-        output.WriteBool(AALCCPJCBME);
+        output.WriteBool(IsLocked);
       }
       if (jBNMAOFOFPE_ != null) {
         output.WriteRawTag(26);
@@ -193,9 +193,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(CLFBBAPEPML);
       }
-      if (AALCCPJCBME != false) {
+      if (IsLocked != false) {
         output.WriteRawTag(16);
-        output.WriteBool(AALCCPJCBME);
+        output.WriteBool(IsLocked);
       }
       if (jBNMAOFOFPE_ != null) {
         output.WriteRawTag(26);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (jBNMAOFOFPE_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(JBNMAOFOFPE);
-      }
       if (CLFBBAPEPML != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CLFBBAPEPML);
       }
-      if (AALCCPJCBME != false) {
+      if (IsLocked != false) {
         size += 1 + 1;
+      }
+      if (jBNMAOFOFPE_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(JBNMAOFOFPE);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,17 +232,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.CLFBBAPEPML != 0) {
+        CLFBBAPEPML = other.CLFBBAPEPML;
+      }
+      if (other.IsLocked != false) {
+        IsLocked = other.IsLocked;
+      }
       if (other.jBNMAOFOFPE_ != null) {
         if (jBNMAOFOFPE_ == null) {
           JBNMAOFOFPE = new global::March7thHoney.Proto.DKPHAFPGDLO();
         }
         JBNMAOFOFPE.MergeFrom(other.JBNMAOFOFPE);
-      }
-      if (other.CLFBBAPEPML != 0) {
-        CLFBBAPEPML = other.CLFBBAPEPML;
-      }
-      if (other.AALCCPJCBME != false) {
-        AALCCPJCBME = other.AALCCPJCBME;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -268,7 +268,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            AALCCPJCBME = input.ReadBool();
+            IsLocked = input.ReadBool();
             break;
           }
           case 26: {
@@ -302,7 +302,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            AALCCPJCBME = input.ReadBool();
+            IsLocked = input.ReadBool();
             break;
           }
           case 26: {

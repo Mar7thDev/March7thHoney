@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KGOBMEOAEBL {
-    bool ONDCOEBNAPJ = 7;
+    bool ONDCOEBNAPJ = 5;
 }

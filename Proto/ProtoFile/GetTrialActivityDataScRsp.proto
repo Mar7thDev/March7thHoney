@@ -6,9 +6,8 @@ import "PAALDKHKOLE.proto";
 import "TrialActivityInfo.proto";
 
 message GetTrialActivityDataScRsp {
-    repeated PAALDKHKOLE OBOPMFBGBAE = 8;
-    repeated uint32 EBNNNJJHIBM = 11;
-    repeated TrialActivityInfo trial_activity_info_list = 2;
-    uint32 retcode = 1;
-    uint32 activity_stage_id = 6;
+    uint32 activity_stage_id = 1;
+    repeated TrialActivityInfo trial_activity_info_list = 7;
+    repeated PAALDKHKOLE OBOPMFBGBAE = 10;
+    uint32 retcode = 15;
 }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message FinishEmotionDialoguePerformanceScRsp {
-    ItemList reward_list = 1;
-    uint32 script_id = 8;
-    uint32 dialogue_id = 9;
-    uint32 retcode = 12;
+    uint32 retcode = 5;
+    uint32 script_id = 7;
+    ItemList reward_list = 8;
+    uint32 dialogue_id = 12;
 }

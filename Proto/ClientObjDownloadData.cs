@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtDbGllbnRPYmpEb3dubG9hZERhdGEucHJvdG8aGENsaWVudERvd25sb2Fk",
-            "RGF0YS5wcm90byKGAQoVQ2xpZW50T2JqRG93bmxvYWREYXRhEiUKCGR5bl9j",
-            "b2RlGAMgAygLMhMuQ2xpZW50RG93bmxvYWREYXRhEjUKGGNsaWVudF9vYmpf",
-            "ZG93bmxvYWRfZGF0YRgCIAEoCzITLkNsaWVudERvd25sb2FkRGF0YRIPCgdz",
-            "Y19pbmZvGAEgASgMQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "RGF0YS5wcm90byKGAQoVQ2xpZW50T2JqRG93bmxvYWREYXRhEg8KB3NjX2lu",
+            "Zm8YASABKAwSNQoYY2xpZW50X29ial9kb3dubG9hZF9kYXRhGAIgASgLMhMu",
+            "Q2xpZW50RG93bmxvYWREYXRhEiUKCGR5bl9jb2RlGAMgAygLMhMuQ2xpZW50",
+            "RG93bmxvYWREYXRhQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ClientDownloadDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientObjDownloadData), global::March7thHoney.Proto.ClientObjDownloadData.Parser, new[]{ "DynCode", "ClientObjDownloadData_", "ScInfo" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientObjDownloadData), global::March7thHoney.Proto.ClientObjDownloadData.Parser, new[]{ "ScInfo", "ClientObjDownloadData_", "DynCode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientObjDownloadData(ClientObjDownloadData other) : this() {
-      dynCode_ = other.dynCode_.Clone();
-      clientObjDownloadData_ = other.clientObjDownloadData_ != null ? other.clientObjDownloadData_.Clone() : null;
       scInfo_ = other.scInfo_;
+      clientObjDownloadData_ = other.clientObjDownloadData_ != null ? other.clientObjDownloadData_.Clone() : null;
+      dynCode_ = other.dynCode_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,15 +86,16 @@ namespace March7thHoney.Proto {
       return new ClientObjDownloadData(this);
     }
 
-    /// <summary>Field number for the "dyn_code" field.</summary>
-    public const int DynCodeFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ClientDownloadData> _repeated_dynCode_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.ClientDownloadData.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData> dynCode_ = new pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData>();
+    /// <summary>Field number for the "sc_info" field.</summary>
+    public const int ScInfoFieldNumber = 1;
+    private pb::ByteString scInfo_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData> DynCode {
-      get { return dynCode_; }
+    public pb::ByteString ScInfo {
+      get { return scInfo_; }
+      set {
+        scInfo_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     /// <summary>Field number for the "client_obj_download_data" field.</summary>
@@ -109,16 +110,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "sc_info" field.</summary>
-    public const int ScInfoFieldNumber = 1;
-    private pb::ByteString scInfo_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "dyn_code" field.</summary>
+    public const int DynCodeFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ClientDownloadData> _repeated_dynCode_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.ClientDownloadData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData> dynCode_ = new pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pb::ByteString ScInfo {
-      get { return scInfo_; }
-      set {
-        scInfo_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.ClientDownloadData> DynCode {
+      get { return dynCode_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!dynCode_.Equals(other.dynCode_)) return false;
-      if (!object.Equals(ClientObjDownloadData_, other.ClientObjDownloadData_)) return false;
       if (ScInfo != other.ScInfo) return false;
+      if (!object.Equals(ClientObjDownloadData_, other.ClientObjDownloadData_)) return false;
+      if(!dynCode_.Equals(other.dynCode_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= dynCode_.GetHashCode();
-      if (clientObjDownloadData_ != null) hash ^= ClientObjDownloadData_.GetHashCode();
       if (ScInfo.Length != 0) hash ^= ScInfo.GetHashCode();
+      if (clientObjDownloadData_ != null) hash ^= ClientObjDownloadData_.GetHashCode();
+      hash ^= dynCode_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -205,13 +205,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += dynCode_.CalculateSize(_repeated_dynCode_codec);
-      if (clientObjDownloadData_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ClientObjDownloadData_);
-      }
       if (ScInfo.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(ScInfo);
       }
+      if (clientObjDownloadData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ClientObjDownloadData_);
+      }
+      size += dynCode_.CalculateSize(_repeated_dynCode_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -224,16 +224,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      dynCode_.Add(other.dynCode_);
+      if (other.ScInfo.Length != 0) {
+        ScInfo = other.ScInfo;
+      }
       if (other.clientObjDownloadData_ != null) {
         if (clientObjDownloadData_ == null) {
           ClientObjDownloadData_ = new global::March7thHoney.Proto.ClientDownloadData();
         }
         ClientObjDownloadData_.MergeFrom(other.ClientObjDownloadData_);
       }
-      if (other.ScInfo.Length != 0) {
-        ScInfo = other.ScInfo;
-      }
+      dynCode_.Add(other.dynCode_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PFMAAAJFLOA.proto";
 
 message LLOLFGCKKJB {
-    repeated PFMAAAJFLOA CNLNDHJCPAF = 9;
+    repeated PFMAAAJFLOA CNLNDHJCPAF = 6;
 }

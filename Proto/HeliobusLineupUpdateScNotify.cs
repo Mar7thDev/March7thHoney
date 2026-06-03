@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiJIZWxpb2J1c0xpbmV1cFVwZGF0ZVNjTm90aWZ5LnByb3RvGh1IZWxpb2J1",
             "c0NoYWxsZW5nZUxpbmV1cC5wcm90byJIChxIZWxpb2J1c0xpbmV1cFVwZGF0",
-            "ZVNjTm90aWZ5EigKBmxpbmV1cBgJIAEoCzIYLkhlbGlvYnVzQ2hhbGxlbmdl",
+            "ZVNjTm90aWZ5EigKBmxpbmV1cBgLIAEoCzIYLkhlbGlvYnVzQ2hhbGxlbmdl",
             "TGluZXVwQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeliobusChallengeLineupReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "lineup" field.</summary>
-    public const int LineupFieldNumber = 9;
+    public const int LineupFieldNumber = 11;
     private global::March7thHoney.Proto.HeliobusChallengeLineup lineup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (lineup_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(90);
         output.WriteMessage(Lineup);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (lineup_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(90);
         output.WriteMessage(Lineup);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74: {
+          case 90: {
             if (lineup_ == null) {
               Lineup = new global::March7thHoney.Proto.HeliobusChallengeLineup();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74: {
+          case 90: {
             if (lineup_ == null) {
               Lineup = new global::March7thHoney.Proto.HeliobusChallengeLineup();
             }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KJAMNOGFAMJ.proto";
 
 message APNCCNFJBKO {
-    repeated KJAMNOGFAMJ buff_list = 8;
+    repeated KJAMNOGFAMJ buff_list = 12;
 }

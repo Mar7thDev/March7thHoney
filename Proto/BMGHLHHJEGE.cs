@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static BMGHLHHJEGEReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCTUdITEhISkVHRS5wcm90byI3CgtCTUdITEhISkVHRRITCgtMQU9BQ05Q",
-            "RE9MRBgIIAEoDRITCgtQUEZBRU1HREFPRhgDIAEoCEIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFCTUdITEhISkVHRS5wcm90byI+CgtCTUdITEhISkVHRRISCgpldmVudF90",
+            "eXBlGAcgASgNEhsKE2lzX2Rpc2FwcGVhcmVkX29uY2UYDCABKAhCFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BMGHLHHJEGE), global::March7thHoney.Proto.BMGHLHHJEGE.Parser, new[]{ "LAOACNPDOLD", "PPFAEMGDAOF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BMGHLHHJEGE), global::March7thHoney.Proto.BMGHLHHJEGE.Parser, new[]{ "EventType", "IsDisappearedOnce" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BMGHLHHJEGE(BMGHLHHJEGE other) : this() {
-      lAOACNPDOLD_ = other.lAOACNPDOLD_;
-      pPFAEMGDAOF_ = other.pPFAEMGDAOF_;
+      eventType_ = other.eventType_;
+      isDisappearedOnce_ = other.isDisappearedOnce_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,27 +83,27 @@ namespace March7thHoney.Proto {
       return new BMGHLHHJEGE(this);
     }
 
-    /// <summary>Field number for the "LAOACNPDOLD" field.</summary>
-    public const int LAOACNPDOLDFieldNumber = 8;
-    private uint lAOACNPDOLD_;
+    /// <summary>Field number for the "event_type" field.</summary>
+    public const int EventTypeFieldNumber = 7;
+    private uint eventType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LAOACNPDOLD {
-      get { return lAOACNPDOLD_; }
+    public uint EventType {
+      get { return eventType_; }
       set {
-        lAOACNPDOLD_ = value;
+        eventType_ = value;
       }
     }
 
-    /// <summary>Field number for the "PPFAEMGDAOF" field.</summary>
-    public const int PPFAEMGDAOFFieldNumber = 3;
-    private bool pPFAEMGDAOF_;
+    /// <summary>Field number for the "is_disappeared_once" field.</summary>
+    public const int IsDisappearedOnceFieldNumber = 12;
+    private bool isDisappearedOnce_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool PPFAEMGDAOF {
-      get { return pPFAEMGDAOF_; }
+    public bool IsDisappearedOnce {
+      get { return isDisappearedOnce_; }
       set {
-        pPFAEMGDAOF_ = value;
+        isDisappearedOnce_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (LAOACNPDOLD != other.LAOACNPDOLD) return false;
-      if (PPFAEMGDAOF != other.PPFAEMGDAOF) return false;
+      if (EventType != other.EventType) return false;
+      if (IsDisappearedOnce != other.IsDisappearedOnce) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LAOACNPDOLD != 0) hash ^= LAOACNPDOLD.GetHashCode();
-      if (PPFAEMGDAOF != false) hash ^= PPFAEMGDAOF.GetHashCode();
+      if (EventType != 0) hash ^= EventType.GetHashCode();
+      if (IsDisappearedOnce != false) hash ^= IsDisappearedOnce.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PPFAEMGDAOF != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(PPFAEMGDAOF);
+      if (EventType != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(EventType);
       }
-      if (LAOACNPDOLD != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(LAOACNPDOLD);
+      if (IsDisappearedOnce != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsDisappearedOnce);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PPFAEMGDAOF != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(PPFAEMGDAOF);
+      if (EventType != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(EventType);
       }
-      if (LAOACNPDOLD != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(LAOACNPDOLD);
+      if (IsDisappearedOnce != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsDisappearedOnce);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,10 +187,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LAOACNPDOLD != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LAOACNPDOLD);
+      if (EventType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EventType);
       }
-      if (PPFAEMGDAOF != false) {
+      if (IsDisappearedOnce != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.LAOACNPDOLD != 0) {
-        LAOACNPDOLD = other.LAOACNPDOLD;
+      if (other.EventType != 0) {
+        EventType = other.EventType;
       }
-      if (other.PPFAEMGDAOF != false) {
-        PPFAEMGDAOF = other.PPFAEMGDAOF;
+      if (other.IsDisappearedOnce != false) {
+        IsDisappearedOnce = other.IsDisappearedOnce;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            PPFAEMGDAOF = input.ReadBool();
+          case 56: {
+            EventType = input.ReadUInt32();
             break;
           }
-          case 64: {
-            LAOACNPDOLD = input.ReadUInt32();
+          case 96: {
+            IsDisappearedOnce = input.ReadBool();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            PPFAEMGDAOF = input.ReadBool();
+          case 56: {
+            EventType = input.ReadUInt32();
             break;
           }
-          case 64: {
-            LAOACNPDOLD = input.ReadUInt32();
+          case 96: {
+            IsDisappearedOnce = input.ReadBool();
             break;
           }
         }

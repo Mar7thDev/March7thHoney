@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MotionInfo.proto";
 
 message EntityMotion {
-    MotionInfo motion = 5;
-    uint32 entity_id = 10;
-    bool FJOEOEDLNED = 11;
-    uint32 map_layer = 3;
+    bool FJOEOEDLNED = 4;
+    MotionInfo motion = 7;
+    uint32 map_layer = 8;
+    uint32 entity_id = 9;
 }

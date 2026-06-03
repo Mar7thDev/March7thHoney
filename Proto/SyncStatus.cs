@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChBTeW5jU3RhdHVzLnByb3RvGhFHcm91cFN0YXR1cy5wcm90bxoTU2VjdGlv",
-            "blN0YXR1cy5wcm90byKKAQoKU3luY1N0YXR1cxITCgtCR1BBQ0JJSkRDSBgH",
-            "IAMoDRIqChRtZXNzYWdlX2dyb3VwX3N0YXR1cxgOIAMoCzIMLkdyb3VwU3Rh",
-            "dHVzEiYKDnNlY3Rpb25fc3RhdHVzGAIgAygLMg4uU2VjdGlvblN0YXR1cxIT",
-            "CgtNREFOR0lFSU1JRhgPIAMoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "blN0YXR1cy5wcm90byKKAQoKU3luY1N0YXR1cxImCg5zZWN0aW9uX3N0YXR1",
+            "cxgFIAMoCzIOLlNlY3Rpb25TdGF0dXMSKgoUbWVzc2FnZV9ncm91cF9zdGF0",
+            "dXMYCiADKAsyDC5Hcm91cFN0YXR1cxITCgtNREFOR0lFSU1JRhgNIAMoDRIT",
+            "CgtCR1BBQ0JJSkRDSBgOIAMoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GroupStatusReflection.Descriptor, global::March7thHoney.Proto.SectionStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SyncStatus), global::March7thHoney.Proto.SyncStatus.Parser, new[]{ "BGPACBIJDCH", "MessageGroupStatus", "SectionStatus", "MDANGIEIMIF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SyncStatus), global::March7thHoney.Proto.SyncStatus.Parser, new[]{ "SectionStatus", "MessageGroupStatus", "MDANGIEIMIF", "BGPACBIJDCH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,10 +75,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SyncStatus(SyncStatus other) : this() {
-      bGPACBIJDCH_ = other.bGPACBIJDCH_.Clone();
-      messageGroupStatus_ = other.messageGroupStatus_.Clone();
       sectionStatus_ = other.sectionStatus_.Clone();
+      messageGroupStatus_ = other.messageGroupStatus_.Clone();
       mDANGIEIMIF_ = other.mDANGIEIMIF_.Clone();
+      bGPACBIJDCH_ = other.bGPACBIJDCH_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,32 +88,10 @@ namespace March7thHoney.Proto {
       return new SyncStatus(this);
     }
 
-    /// <summary>Field number for the "BGPACBIJDCH" field.</summary>
-    public const int BGPACBIJDCHFieldNumber = 7;
-    private static readonly pb::FieldCodec<uint> _repeated_bGPACBIJDCH_codec
-        = pb::FieldCodec.ForUInt32(58);
-    private readonly pbc::RepeatedField<uint> bGPACBIJDCH_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> BGPACBIJDCH {
-      get { return bGPACBIJDCH_; }
-    }
-
-    /// <summary>Field number for the "message_group_status" field.</summary>
-    public const int MessageGroupStatusFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupStatus> _repeated_messageGroupStatus_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.GroupStatus.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupStatus> messageGroupStatus_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupStatus>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GroupStatus> MessageGroupStatus {
-      get { return messageGroupStatus_; }
-    }
-
     /// <summary>Field number for the "section_status" field.</summary>
-    public const int SectionStatusFieldNumber = 2;
+    public const int SectionStatusFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.SectionStatus> _repeated_sectionStatus_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SectionStatus.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.SectionStatus.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.SectionStatus> sectionStatus_ = new pbc::RepeatedField<global::March7thHoney.Proto.SectionStatus>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -121,15 +99,37 @@ namespace March7thHoney.Proto {
       get { return sectionStatus_; }
     }
 
+    /// <summary>Field number for the "message_group_status" field.</summary>
+    public const int MessageGroupStatusFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupStatus> _repeated_messageGroupStatus_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.GroupStatus.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupStatus> messageGroupStatus_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupStatus>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupStatus> MessageGroupStatus {
+      get { return messageGroupStatus_; }
+    }
+
     /// <summary>Field number for the "MDANGIEIMIF" field.</summary>
-    public const int MDANGIEIMIFFieldNumber = 15;
+    public const int MDANGIEIMIFFieldNumber = 13;
     private static readonly pb::FieldCodec<uint> _repeated_mDANGIEIMIF_codec
-        = pb::FieldCodec.ForUInt32(122);
+        = pb::FieldCodec.ForUInt32(106);
     private readonly pbc::RepeatedField<uint> mDANGIEIMIF_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> MDANGIEIMIF {
       get { return mDANGIEIMIF_; }
+    }
+
+    /// <summary>Field number for the "BGPACBIJDCH" field.</summary>
+    public const int BGPACBIJDCHFieldNumber = 14;
+    private static readonly pb::FieldCodec<uint> _repeated_bGPACBIJDCH_codec
+        = pb::FieldCodec.ForUInt32(114);
+    private readonly pbc::RepeatedField<uint> bGPACBIJDCH_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> BGPACBIJDCH {
+      get { return bGPACBIJDCH_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -147,10 +147,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!bGPACBIJDCH_.Equals(other.bGPACBIJDCH_)) return false;
-      if(!messageGroupStatus_.Equals(other.messageGroupStatus_)) return false;
       if(!sectionStatus_.Equals(other.sectionStatus_)) return false;
+      if(!messageGroupStatus_.Equals(other.messageGroupStatus_)) return false;
       if(!mDANGIEIMIF_.Equals(other.mDANGIEIMIF_)) return false;
+      if(!bGPACBIJDCH_.Equals(other.bGPACBIJDCH_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -158,10 +158,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= bGPACBIJDCH_.GetHashCode();
-      hash ^= messageGroupStatus_.GetHashCode();
       hash ^= sectionStatus_.GetHashCode();
+      hash ^= messageGroupStatus_.GetHashCode();
       hash ^= mDANGIEIMIF_.GetHashCode();
+      hash ^= bGPACBIJDCH_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -181,9 +181,9 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       sectionStatus_.WriteTo(output, _repeated_sectionStatus_codec);
-      bGPACBIJDCH_.WriteTo(output, _repeated_bGPACBIJDCH_codec);
       messageGroupStatus_.WriteTo(output, _repeated_messageGroupStatus_codec);
       mDANGIEIMIF_.WriteTo(output, _repeated_mDANGIEIMIF_codec);
+      bGPACBIJDCH_.WriteTo(output, _repeated_bGPACBIJDCH_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -195,9 +195,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       sectionStatus_.WriteTo(ref output, _repeated_sectionStatus_codec);
-      bGPACBIJDCH_.WriteTo(ref output, _repeated_bGPACBIJDCH_codec);
       messageGroupStatus_.WriteTo(ref output, _repeated_messageGroupStatus_codec);
       mDANGIEIMIF_.WriteTo(ref output, _repeated_mDANGIEIMIF_codec);
+      bGPACBIJDCH_.WriteTo(ref output, _repeated_bGPACBIJDCH_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -208,10 +208,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += bGPACBIJDCH_.CalculateSize(_repeated_bGPACBIJDCH_codec);
-      size += messageGroupStatus_.CalculateSize(_repeated_messageGroupStatus_codec);
       size += sectionStatus_.CalculateSize(_repeated_sectionStatus_codec);
+      size += messageGroupStatus_.CalculateSize(_repeated_messageGroupStatus_codec);
       size += mDANGIEIMIF_.CalculateSize(_repeated_mDANGIEIMIF_codec);
+      size += bGPACBIJDCH_.CalculateSize(_repeated_bGPACBIJDCH_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -224,10 +224,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      bGPACBIJDCH_.Add(other.bGPACBIJDCH_);
-      messageGroupStatus_.Add(other.messageGroupStatus_);
       sectionStatus_.Add(other.sectionStatus_);
+      messageGroupStatus_.Add(other.messageGroupStatus_);
       mDANGIEIMIF_.Add(other.mDANGIEIMIF_);
+      bGPACBIJDCH_.Add(other.bGPACBIJDCH_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -247,22 +247,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 42: {
             sectionStatus_.AddEntriesFrom(input, _repeated_sectionStatus_codec);
             break;
           }
-          case 58:
-          case 56: {
-            bGPACBIJDCH_.AddEntriesFrom(input, _repeated_bGPACBIJDCH_codec);
-            break;
-          }
-          case 114: {
+          case 82: {
             messageGroupStatus_.AddEntriesFrom(input, _repeated_messageGroupStatus_codec);
             break;
           }
-          case 122:
-          case 120: {
+          case 106:
+          case 104: {
             mDANGIEIMIF_.AddEntriesFrom(input, _repeated_mDANGIEIMIF_codec);
+            break;
+          }
+          case 114:
+          case 112: {
+            bGPACBIJDCH_.AddEntriesFrom(input, _repeated_bGPACBIJDCH_codec);
             break;
           }
         }
@@ -284,22 +284,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 42: {
             sectionStatus_.AddEntriesFrom(ref input, _repeated_sectionStatus_codec);
             break;
           }
-          case 58:
-          case 56: {
-            bGPACBIJDCH_.AddEntriesFrom(ref input, _repeated_bGPACBIJDCH_codec);
-            break;
-          }
-          case 114: {
+          case 82: {
             messageGroupStatus_.AddEntriesFrom(ref input, _repeated_messageGroupStatus_codec);
             break;
           }
-          case 122:
-          case 120: {
+          case 106:
+          case 104: {
             mDANGIEIMIF_.AddEntriesFrom(ref input, _repeated_mDANGIEIMIF_codec);
+            break;
+          }
+          case 114:
+          case 112: {
+            bGPACBIJDCH_.AddEntriesFrom(ref input, _repeated_bGPACBIJDCH_codec);
             break;
           }
         }

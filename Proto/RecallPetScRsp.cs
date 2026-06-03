@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static RecallPetScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRSZWNhbGxQZXRTY1JzcC5wcm90byJMCg5SZWNhbGxQZXRTY1JzcBIVCg1z",
-            "ZWxlY3RfcGV0X2lkGAsgASgNEg8KB3JldGNvZGUYByABKA0SEgoKY3VyX3Bl",
-            "dF9pZBgIIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChRSZWNhbGxQZXRTY1JzcC5wcm90byJMCg5SZWNhbGxQZXRTY1JzcBIPCgdy",
+            "ZXRjb2RlGAQgASgNEhIKCmN1cl9wZXRfaWQYCCABKA0SFQoNc2VsZWN0X3Bl",
+            "dF9pZBgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RecallPetScRsp), global::March7thHoney.Proto.RecallPetScRsp.Parser, new[]{ "SelectPetId", "Retcode", "CurPetId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RecallPetScRsp), global::March7thHoney.Proto.RecallPetScRsp.Parser, new[]{ "Retcode", "CurPetId", "SelectPetId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RecallPetScRsp(RecallPetScRsp other) : this() {
-      selectPetId_ = other.selectPetId_;
       retcode_ = other.retcode_;
       curPetId_ = other.curPetId_;
+      selectPetId_ = other.selectPetId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new RecallPetScRsp(this);
     }
 
-    /// <summary>Field number for the "select_pet_id" field.</summary>
-    public const int SelectPetIdFieldNumber = 11;
-    private uint selectPetId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SelectPetId {
-      get { return selectPetId_; }
-      set {
-        selectPetId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 4;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -120,6 +108,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "select_pet_id" field.</summary>
+    public const int SelectPetIdFieldNumber = 14;
+    private uint selectPetId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SelectPetId {
+      get { return selectPetId_; }
+      set {
+        selectPetId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (SelectPetId != other.SelectPetId) return false;
       if (Retcode != other.Retcode) return false;
       if (CurPetId != other.CurPetId) return false;
+      if (SelectPetId != other.SelectPetId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SelectPetId != 0) hash ^= SelectPetId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (CurPetId != 0) hash ^= CurPetId.GetHashCode();
+      if (SelectPetId != 0) hash ^= SelectPetId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (CurPetId != 0) {
@@ -175,7 +175,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(CurPetId);
       }
       if (SelectPetId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(112);
         output.WriteUInt32(SelectPetId);
       }
       if (_unknownFields != null) {
@@ -189,7 +189,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(Retcode);
       }
       if (CurPetId != 0) {
@@ -197,7 +197,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(CurPetId);
       }
       if (SelectPetId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(112);
         output.WriteUInt32(SelectPetId);
       }
       if (_unknownFields != null) {
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SelectPetId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SelectPetId);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (CurPetId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurPetId);
+      }
+      if (SelectPetId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SelectPetId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.SelectPetId != 0) {
-        SelectPetId = other.SelectPetId;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
       if (other.CurPetId != 0) {
         CurPetId = other.CurPetId;
+      }
+      if (other.SelectPetId != 0) {
+        SelectPetId = other.SelectPetId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,7 +259,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -267,7 +267,7 @@ namespace March7thHoney.Proto {
             CurPetId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 112: {
             SelectPetId = input.ReadUInt32();
             break;
           }
@@ -290,7 +290,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 32: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -298,7 +298,7 @@ namespace March7thHoney.Proto {
             CurPetId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 112: {
             SelectPetId = input.ReadUInt32();
             break;
           }

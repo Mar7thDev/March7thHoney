@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCost.proto";
 
 message ItemCostData {
-    repeated ItemCost item_list = 10;
+    repeated ItemCost item_list = 7;
 }

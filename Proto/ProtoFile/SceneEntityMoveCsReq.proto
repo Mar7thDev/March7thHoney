@@ -5,8 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EntityMotion.proto";
 
 message SceneEntityMoveCsReq {
-    repeated EntityMotion entity_motion_list = 3;
-    uint64 OBJFFFGAJCB = 11;
-    uint32 entry_id = 8;
-    uint64 interact_id = 5;
+    uint64 interact_id = 1;
+    uint32 entry_id = 7;
+    repeated EntityMotion entity_motion_list = 11;
 }

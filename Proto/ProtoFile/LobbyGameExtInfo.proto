@@ -7,6 +7,7 @@ import "JMFPICAMLIG.proto";
 import "LobbyGridFightInfo.proto";
 import "LobbyMarbleInfo.proto";
 import "LobbyMarchInfo.proto";
+import "PCBLIKPEEJA.proto";
 
 message LobbyGameExtInfo {
     repeated string MLAFBFEBNHB = 1;
@@ -17,5 +18,6 @@ message LobbyGameExtInfo {
         JMFPICAMLIG PHIBAOMGNOH = 1003;
         LobbyGridFightInfo lobby_grid_fight_info = 1004;
         IPIJFDIPNDE GOKJCFBPHCJ = 1005;
+        PCBLIKPEEJA MPNPIIHHFPN = 1006;
     }
 }

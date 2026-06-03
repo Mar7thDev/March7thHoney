@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5NYXJrQ2hlc3RDaGFuZ2VkU2NOb3RpZnkucHJvdG8aF01hcmtDaGVzdEZ1",
             "bmNJbmZvLnByb3RvIkwKGE1hcmtDaGVzdENoYW5nZWRTY05vdGlmeRIwChRt",
-            "YXJrX2NoZXN0X2Z1bmNfaW5mbxgLIAMoCzISLk1hcmtDaGVzdEZ1bmNJbmZv",
+            "YXJrX2NoZXN0X2Z1bmNfaW5mbxgPIAMoCzISLk1hcmtDaGVzdEZ1bmNJbmZv",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MarkChestFuncInfoReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "mark_chest_func_info" field.</summary>
-    public const int MarkChestFuncInfoFieldNumber = 11;
+    public const int MarkChestFuncInfoFieldNumber = 15;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MarkChestFuncInfo> _repeated_markChestFuncInfo_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.MarkChestFuncInfo.Parser);
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.MarkChestFuncInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MarkChestFuncInfo> markChestFuncInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.MarkChestFuncInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 90: {
+          case 122: {
             markChestFuncInfo_.AddEntriesFrom(input, _repeated_markChestFuncInfo_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 90: {
+          case 122: {
             markChestFuncInfo_.AddEntriesFrom(ref input, _repeated_markChestFuncInfo_codec);
             break;
           }

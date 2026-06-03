@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MIKGMGBHLEN.proto";
 
 message SocialPlayTalkCsReq {
-    MIKGMGBHLEN PHKCDLPHMPA = 1;
+    MIKGMGBHLEN PHKCDLPHMPA = 13;
 }

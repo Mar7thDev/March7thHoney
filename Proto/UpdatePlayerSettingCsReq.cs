@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5VcGRhdGVQbGF5ZXJTZXR0aW5nQ3NSZXEucHJvdG8aGVVwZGF0ZVBsYXll",
             "clNldHRpbmcucHJvdG8iSAoYVXBkYXRlUGxheWVyU2V0dGluZ0NzUmVxEiwK",
-            "DnBsYXllcl9zZXR0aW5nGAEgASgLMhQuVXBkYXRlUGxheWVyU2V0dGluZ0IW",
+            "DnBsYXllcl9zZXR0aW5nGAMgASgLMhQuVXBkYXRlUGxheWVyU2V0dGluZ0IW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.UpdatePlayerSettingReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "player_setting" field.</summary>
-    public const int PlayerSettingFieldNumber = 1;
+    public const int PlayerSettingFieldNumber = 3;
     private global::March7thHoney.Proto.UpdatePlayerSetting playerSetting_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (playerSetting_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(26);
         output.WriteMessage(PlayerSetting);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (playerSetting_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(26);
         output.WriteMessage(PlayerSetting);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 26: {
             if (playerSetting_ == null) {
               PlayerSetting = new global::March7thHoney.Proto.UpdatePlayerSetting();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 26: {
             if (playerSetting_ == null) {
               PlayerSetting = new global::March7thHoney.Proto.UpdatePlayerSetting();
             }

@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static BuyGoodsCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNCdXlHb29kc0NzUmVxLnByb3RvIo4BCg1CdXlHb29kc0NzUmVxEhMKC0FM",
-            "SEJFS0tMSktLGAYgAygNEhAKCGdvb2RzX2lkGA4gASgNEg8KB2l0ZW1faWQY",
-            "ByABKA0SIQoZaW50ZXJhY3RlZF9wcm9wX2VudGl0eV9pZBgNIAEoDRIPCgdz",
-            "aG9wX2lkGAogASgNEhEKCWdvb2RzX251bRgJIAEoDUIWqgITTWFyY2g3dGhI",
+            "ChNCdXlHb29kc0NzUmVxLnByb3RvIo4BCg1CdXlHb29kc0NzUmVxEhAKCGdv",
+            "b2RzX2lkGAEgASgNEhEKCWdvb2RzX251bRgEIAEoDRITCgtBTEhCRUtLTEpL",
+            "SxgGIAMoDRIPCgdzaG9wX2lkGAggASgNEiEKGWludGVyYWN0ZWRfcHJvcF9l",
+            "bnRpdHlfaWQYDCABKA0SDwoHaXRlbV9pZBgOIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuyGoodsCsReq), global::March7thHoney.Proto.BuyGoodsCsReq.Parser, new[]{ "ALHBEKKLJKK", "GoodsId", "ItemId", "InteractedPropEntityId", "ShopId", "GoodsNum" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BuyGoodsCsReq), global::March7thHoney.Proto.BuyGoodsCsReq.Parser, new[]{ "GoodsId", "GoodsNum", "ALHBEKKLJKK", "ShopId", "InteractedPropEntityId", "ItemId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,12 +74,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BuyGoodsCsReq(BuyGoodsCsReq other) : this() {
-      aLHBEKKLJKK_ = other.aLHBEKKLJKK_.Clone();
       goodsId_ = other.goodsId_;
-      itemId_ = other.itemId_;
-      interactedPropEntityId_ = other.interactedPropEntityId_;
-      shopId_ = other.shopId_;
       goodsNum_ = other.goodsNum_;
+      aLHBEKKLJKK_ = other.aLHBEKKLJKK_.Clone();
+      shopId_ = other.shopId_;
+      interactedPropEntityId_ = other.interactedPropEntityId_;
+      itemId_ = other.itemId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,6 +87,30 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BuyGoodsCsReq Clone() {
       return new BuyGoodsCsReq(this);
+    }
+
+    /// <summary>Field number for the "goods_id" field.</summary>
+    public const int GoodsIdFieldNumber = 1;
+    private uint goodsId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GoodsId {
+      get { return goodsId_; }
+      set {
+        goodsId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "goods_num" field.</summary>
+    public const int GoodsNumFieldNumber = 4;
+    private uint goodsNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GoodsNum {
+      get { return goodsNum_; }
+      set {
+        goodsNum_ = value;
+      }
     }
 
     /// <summary>Field number for the "ALHBEKKLJKK" field.</summary>
@@ -100,44 +124,8 @@ namespace March7thHoney.Proto {
       get { return aLHBEKKLJKK_; }
     }
 
-    /// <summary>Field number for the "goods_id" field.</summary>
-    public const int GoodsIdFieldNumber = 14;
-    private uint goodsId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GoodsId {
-      get { return goodsId_; }
-      set {
-        goodsId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "item_id" field.</summary>
-    public const int ItemIdFieldNumber = 7;
-    private uint itemId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ItemId {
-      get { return itemId_; }
-      set {
-        itemId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "interacted_prop_entity_id" field.</summary>
-    public const int InteractedPropEntityIdFieldNumber = 13;
-    private uint interactedPropEntityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint InteractedPropEntityId {
-      get { return interactedPropEntityId_; }
-      set {
-        interactedPropEntityId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "shop_id" field.</summary>
-    public const int ShopIdFieldNumber = 10;
+    public const int ShopIdFieldNumber = 8;
     private uint shopId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -148,15 +136,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "goods_num" field.</summary>
-    public const int GoodsNumFieldNumber = 9;
-    private uint goodsNum_;
+    /// <summary>Field number for the "interacted_prop_entity_id" field.</summary>
+    public const int InteractedPropEntityIdFieldNumber = 12;
+    private uint interactedPropEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GoodsNum {
-      get { return goodsNum_; }
+    public uint InteractedPropEntityId {
+      get { return interactedPropEntityId_; }
       set {
-        goodsNum_ = value;
+        interactedPropEntityId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "item_id" field.</summary>
+    public const int ItemIdFieldNumber = 14;
+    private uint itemId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ItemId {
+      get { return itemId_; }
+      set {
+        itemId_ = value;
       }
     }
 
@@ -175,12 +175,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!aLHBEKKLJKK_.Equals(other.aLHBEKKLJKK_)) return false;
       if (GoodsId != other.GoodsId) return false;
-      if (ItemId != other.ItemId) return false;
-      if (InteractedPropEntityId != other.InteractedPropEntityId) return false;
-      if (ShopId != other.ShopId) return false;
       if (GoodsNum != other.GoodsNum) return false;
+      if(!aLHBEKKLJKK_.Equals(other.aLHBEKKLJKK_)) return false;
+      if (ShopId != other.ShopId) return false;
+      if (InteractedPropEntityId != other.InteractedPropEntityId) return false;
+      if (ItemId != other.ItemId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -188,12 +188,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= aLHBEKKLJKK_.GetHashCode();
       if (GoodsId != 0) hash ^= GoodsId.GetHashCode();
-      if (ItemId != 0) hash ^= ItemId.GetHashCode();
-      if (InteractedPropEntityId != 0) hash ^= InteractedPropEntityId.GetHashCode();
-      if (ShopId != 0) hash ^= ShopId.GetHashCode();
       if (GoodsNum != 0) hash ^= GoodsNum.GetHashCode();
+      hash ^= aLHBEKKLJKK_.GetHashCode();
+      if (ShopId != 0) hash ^= ShopId.GetHashCode();
+      if (InteractedPropEntityId != 0) hash ^= InteractedPropEntityId.GetHashCode();
+      if (ItemId != 0) hash ^= ItemId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -212,26 +212,26 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      aLHBEKKLJKK_.WriteTo(output, _repeated_aLHBEKKLJKK_codec);
-      if (ItemId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(ItemId);
+      if (GoodsId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(GoodsId);
       }
       if (GoodsNum != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(32);
         output.WriteUInt32(GoodsNum);
       }
+      aLHBEKKLJKK_.WriteTo(output, _repeated_aLHBEKKLJKK_codec);
       if (ShopId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(ShopId);
       }
       if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(InteractedPropEntityId);
       }
-      if (GoodsId != 0) {
+      if (ItemId != 0) {
         output.WriteRawTag(112);
-        output.WriteUInt32(GoodsId);
+        output.WriteUInt32(ItemId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -243,26 +243,26 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      aLHBEKKLJKK_.WriteTo(ref output, _repeated_aLHBEKKLJKK_codec);
-      if (ItemId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(ItemId);
+      if (GoodsId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(GoodsId);
       }
       if (GoodsNum != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(32);
         output.WriteUInt32(GoodsNum);
       }
+      aLHBEKKLJKK_.WriteTo(ref output, _repeated_aLHBEKKLJKK_codec);
       if (ShopId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(ShopId);
       }
       if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(InteractedPropEntityId);
       }
-      if (GoodsId != 0) {
+      if (ItemId != 0) {
         output.WriteRawTag(112);
-        output.WriteUInt32(GoodsId);
+        output.WriteUInt32(ItemId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -274,21 +274,21 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += aLHBEKKLJKK_.CalculateSize(_repeated_aLHBEKKLJKK_codec);
       if (GoodsId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GoodsId);
       }
-      if (ItemId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ItemId);
+      if (GoodsNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GoodsNum);
+      }
+      size += aLHBEKKLJKK_.CalculateSize(_repeated_aLHBEKKLJKK_codec);
+      if (ShopId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShopId);
       }
       if (InteractedPropEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InteractedPropEntityId);
       }
-      if (ShopId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShopId);
-      }
-      if (GoodsNum != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GoodsNum);
+      if (ItemId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ItemId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -302,21 +302,21 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      aLHBEKKLJKK_.Add(other.aLHBEKKLJKK_);
       if (other.GoodsId != 0) {
         GoodsId = other.GoodsId;
       }
-      if (other.ItemId != 0) {
-        ItemId = other.ItemId;
+      if (other.GoodsNum != 0) {
+        GoodsNum = other.GoodsNum;
+      }
+      aLHBEKKLJKK_.Add(other.aLHBEKKLJKK_);
+      if (other.ShopId != 0) {
+        ShopId = other.ShopId;
       }
       if (other.InteractedPropEntityId != 0) {
         InteractedPropEntityId = other.InteractedPropEntityId;
       }
-      if (other.ShopId != 0) {
-        ShopId = other.ShopId;
-      }
-      if (other.GoodsNum != 0) {
-        GoodsNum = other.GoodsNum;
+      if (other.ItemId != 0) {
+        ItemId = other.ItemId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -337,29 +337,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            GoodsId = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            GoodsNum = input.ReadUInt32();
+            break;
+          }
           case 50:
           case 48: {
             aLHBEKKLJKK_.AddEntriesFrom(input, _repeated_aLHBEKKLJKK_codec);
             break;
           }
-          case 56: {
-            ItemId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            GoodsNum = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 64: {
             ShopId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 96: {
             InteractedPropEntityId = input.ReadUInt32();
             break;
           }
           case 112: {
-            GoodsId = input.ReadUInt32();
+            ItemId = input.ReadUInt32();
             break;
           }
         }
@@ -381,29 +381,29 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            GoodsId = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            GoodsNum = input.ReadUInt32();
+            break;
+          }
           case 50:
           case 48: {
             aLHBEKKLJKK_.AddEntriesFrom(ref input, _repeated_aLHBEKKLJKK_codec);
             break;
           }
-          case 56: {
-            ItemId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            GoodsNum = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 64: {
             ShopId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 96: {
             InteractedPropEntityId = input.ReadUInt32();
             break;
           }
           case 112: {
-            GoodsId = input.ReadUInt32();
+            ItemId = input.ReadUInt32();
             break;
           }
         }

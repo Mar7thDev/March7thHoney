@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpQbGF5ZXJIZWFydEJlYXRTY1JzcC5wcm90bxoYQ2xpZW50RG93bmxvYWRE",
-            "YXRhLnByb3RvIoMBChRQbGF5ZXJIZWFydEJlYXRTY1JzcBIqCg1kb3dubG9h",
-            "ZF9kYXRhGAYgASgLMhMuQ2xpZW50RG93bmxvYWREYXRhEhYKDnNlcnZlcl90",
-            "aW1lX21zGAcgASgEEg8KB3JldGNvZGUYAiABKA0SFgoOY2xpZW50X3RpbWVf",
+            "YXRhLnByb3RvIoMBChRQbGF5ZXJIZWFydEJlYXRTY1JzcBIWCg5jbGllbnRf",
+            "dGltZV9tcxgFIAEoBBIqCg1kb3dubG9hZF9kYXRhGAYgASgLMhMuQ2xpZW50",
+            "RG93bmxvYWREYXRhEg8KB3JldGNvZGUYCSABKA0SFgoOc2VydmVyX3RpbWVf",
             "bXMYDSABKARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ClientDownloadDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerHeartBeatScRsp), global::March7thHoney.Proto.PlayerHeartBeatScRsp.Parser, new[]{ "DownloadData", "ServerTimeMs", "Retcode", "ClientTimeMs" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerHeartBeatScRsp), global::March7thHoney.Proto.PlayerHeartBeatScRsp.Parser, new[]{ "ClientTimeMs", "DownloadData", "Retcode", "ServerTimeMs" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerHeartBeatScRsp(PlayerHeartBeatScRsp other) : this() {
-      downloadData_ = other.downloadData_ != null ? other.downloadData_.Clone() : null;
-      serverTimeMs_ = other.serverTimeMs_;
-      retcode_ = other.retcode_;
       clientTimeMs_ = other.clientTimeMs_;
+      downloadData_ = other.downloadData_ != null ? other.downloadData_.Clone() : null;
+      retcode_ = other.retcode_;
+      serverTimeMs_ = other.serverTimeMs_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,6 +85,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerHeartBeatScRsp Clone() {
       return new PlayerHeartBeatScRsp(this);
+    }
+
+    /// <summary>Field number for the "client_time_ms" field.</summary>
+    public const int ClientTimeMsFieldNumber = 5;
+    private ulong clientTimeMs_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong ClientTimeMs {
+      get { return clientTimeMs_; }
+      set {
+        clientTimeMs_ = value;
+      }
     }
 
     /// <summary>Field number for the "download_data" field.</summary>
@@ -99,20 +111,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "server_time_ms" field.</summary>
-    public const int ServerTimeMsFieldNumber = 7;
-    private ulong serverTimeMs_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong ServerTimeMs {
-      get { return serverTimeMs_; }
-      set {
-        serverTimeMs_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,15 +123,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "client_time_ms" field.</summary>
-    public const int ClientTimeMsFieldNumber = 13;
-    private ulong clientTimeMs_;
+    /// <summary>Field number for the "server_time_ms" field.</summary>
+    public const int ServerTimeMsFieldNumber = 13;
+    private ulong serverTimeMs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong ClientTimeMs {
-      get { return clientTimeMs_; }
+    public ulong ServerTimeMs {
+      get { return serverTimeMs_; }
       set {
-        clientTimeMs_ = value;
+        serverTimeMs_ = value;
       }
     }
 
@@ -150,10 +150,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(DownloadData, other.DownloadData)) return false;
-      if (ServerTimeMs != other.ServerTimeMs) return false;
-      if (Retcode != other.Retcode) return false;
       if (ClientTimeMs != other.ClientTimeMs) return false;
+      if (!object.Equals(DownloadData, other.DownloadData)) return false;
+      if (Retcode != other.Retcode) return false;
+      if (ServerTimeMs != other.ServerTimeMs) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,10 +161,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (downloadData_ != null) hash ^= DownloadData.GetHashCode();
-      if (ServerTimeMs != 0UL) hash ^= ServerTimeMs.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (ClientTimeMs != 0UL) hash ^= ClientTimeMs.GetHashCode();
+      if (downloadData_ != null) hash ^= DownloadData.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (ServerTimeMs != 0UL) hash ^= ServerTimeMs.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
+      if (ClientTimeMs != 0UL) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(ClientTimeMs);
       }
       if (downloadData_ != null) {
         output.WriteRawTag(50);
         output.WriteMessage(DownloadData);
       }
-      if (ServerTimeMs != 0UL) {
-        output.WriteRawTag(56);
-        output.WriteUInt64(ServerTimeMs);
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
       }
-      if (ClientTimeMs != 0UL) {
+      if (ServerTimeMs != 0UL) {
         output.WriteRawTag(104);
-        output.WriteUInt64(ClientTimeMs);
+        output.WriteUInt64(ServerTimeMs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
+      if (ClientTimeMs != 0UL) {
+        output.WriteRawTag(40);
+        output.WriteUInt64(ClientTimeMs);
       }
       if (downloadData_ != null) {
         output.WriteRawTag(50);
         output.WriteMessage(DownloadData);
       }
-      if (ServerTimeMs != 0UL) {
-        output.WriteRawTag(56);
-        output.WriteUInt64(ServerTimeMs);
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
       }
-      if (ClientTimeMs != 0UL) {
+      if (ServerTimeMs != 0UL) {
         output.WriteRawTag(104);
-        output.WriteUInt64(ClientTimeMs);
+        output.WriteUInt64(ServerTimeMs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,17 +235,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (ClientTimeMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ClientTimeMs);
+      }
       if (downloadData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(DownloadData);
-      }
-      if (ServerTimeMs != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ServerTimeMs);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (ClientTimeMs != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ClientTimeMs);
+      if (ServerTimeMs != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ServerTimeMs);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -259,20 +259,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.ClientTimeMs != 0UL) {
+        ClientTimeMs = other.ClientTimeMs;
+      }
       if (other.downloadData_ != null) {
         if (downloadData_ == null) {
           DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
         }
         DownloadData.MergeFrom(other.DownloadData);
       }
-      if (other.ServerTimeMs != 0UL) {
-        ServerTimeMs = other.ServerTimeMs;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.ClientTimeMs != 0UL) {
-        ClientTimeMs = other.ClientTimeMs;
+      if (other.ServerTimeMs != 0UL) {
+        ServerTimeMs = other.ServerTimeMs;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -293,8 +293,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 40: {
+            ClientTimeMs = input.ReadUInt64();
             break;
           }
           case 50: {
@@ -304,12 +304,12 @@ namespace March7thHoney.Proto {
             input.ReadMessage(DownloadData);
             break;
           }
-          case 56: {
-            ServerTimeMs = input.ReadUInt64();
+          case 72: {
+            Retcode = input.ReadUInt32();
             break;
           }
           case 104: {
-            ClientTimeMs = input.ReadUInt64();
+            ServerTimeMs = input.ReadUInt64();
             break;
           }
         }
@@ -331,8 +331,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 40: {
+            ClientTimeMs = input.ReadUInt64();
             break;
           }
           case 50: {
@@ -342,12 +342,12 @@ namespace March7thHoney.Proto {
             input.ReadMessage(DownloadData);
             break;
           }
-          case 56: {
-            ServerTimeMs = input.ReadUInt64();
+          case 72: {
+            Retcode = input.ReadUInt32();
             break;
           }
           case 104: {
-            ClientTimeMs = input.ReadUInt64();
+            ServerTimeMs = input.ReadUInt64();
             break;
           }
         }

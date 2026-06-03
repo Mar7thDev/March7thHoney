@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "DILHPBMCOFK.proto";
+import "HDLCAPDIKJI.proto";
+
+message BOINNCFONAE {
+    uint32 CJPDGBPLFIG = 2;
+    DILHPBMCOFK IPDDIKPHGPE = 3;
+    uint64 DHJANOFGDNP = 8;
+    repeated HDLCAPDIKJI cast_skill_info_list = 10;
+    uint32 MNHPDBEDJLB = 15;
+}

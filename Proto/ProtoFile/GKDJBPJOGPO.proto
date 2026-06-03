@@ -3,6 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GKDJBPJOGPO {
-    uint32 room_id = 2;
-    uint32 IHAOMLEPHOM = 6;
+    uint32 IHAOMLEPHOM = 7;
 }

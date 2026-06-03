@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFBT0FPQlBHRkhMQS5wcm90bxoRSkFPTkVMSkpBRksucHJvdG8ihAEKC0FP",
-            "QU9CUEdGSExBEiEKC0VMT0dPRkZJSkJCGAMgASgLMgwuSkFPTkVMSkpBRksS",
-            "JAoOc3ViX2FmZml4X2xpc3QYBCADKAsyDC5KQU9ORUxKSkFGSxIYChBjb21w",
-            "b3NlX3JlbGljX2lkGAEgASgNEhIKCnJlbGljX3R5cGUYAiABKA1CFqoCE01h",
+            "QU9CUEdGSExBEhgKEGNvbXBvc2VfcmVsaWNfaWQYASABKA0SEgoKcmVsaWNf",
+            "dHlwZRgCIAEoDRIhCgtFTE9HT0ZGSUpCQhgDIAEoCzIMLkpBT05FTEpKQUZL",
+            "EiQKDnN1Yl9hZmZpeF9saXN0GAQgAygLMgwuSkFPTkVMSkpBRktCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JAONELJJAFKReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOAOBPGFHLA), global::March7thHoney.Proto.AOAOBPGFHLA.Parser, new[]{ "ELOGOFFIJBB", "SubAffixList", "ComposeRelicId", "RelicType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOAOBPGFHLA), global::March7thHoney.Proto.AOAOBPGFHLA.Parser, new[]{ "ComposeRelicId", "RelicType", "ELOGOFFIJBB", "SubAffixList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AOAOBPGFHLA(AOAOBPGFHLA other) : this() {
-      eLOGOFFIJBB_ = other.eLOGOFFIJBB_ != null ? other.eLOGOFFIJBB_.Clone() : null;
-      subAffixList_ = other.subAffixList_.Clone();
       composeRelicId_ = other.composeRelicId_;
       relicType_ = other.relicType_;
+      eLOGOFFIJBB_ = other.eLOGOFFIJBB_ != null ? other.eLOGOFFIJBB_.Clone() : null;
+      subAffixList_ = other.subAffixList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,29 +85,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AOAOBPGFHLA Clone() {
       return new AOAOBPGFHLA(this);
-    }
-
-    /// <summary>Field number for the "ELOGOFFIJBB" field.</summary>
-    public const int ELOGOFFIJBBFieldNumber = 3;
-    private global::March7thHoney.Proto.JAONELJJAFK eLOGOFFIJBB_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.JAONELJJAFK ELOGOFFIJBB {
-      get { return eLOGOFFIJBB_; }
-      set {
-        eLOGOFFIJBB_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "sub_affix_list" field.</summary>
-    public const int SubAffixListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JAONELJJAFK> _repeated_subAffixList_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.JAONELJJAFK.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JAONELJJAFK> subAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JAONELJJAFK>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.JAONELJJAFK> SubAffixList {
-      get { return subAffixList_; }
     }
 
     /// <summary>Field number for the "compose_relic_id" field.</summary>
@@ -134,6 +111,29 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "ELOGOFFIJBB" field.</summary>
+    public const int ELOGOFFIJBBFieldNumber = 3;
+    private global::March7thHoney.Proto.JAONELJJAFK eLOGOFFIJBB_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.JAONELJJAFK ELOGOFFIJBB {
+      get { return eLOGOFFIJBB_; }
+      set {
+        eLOGOFFIJBB_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sub_affix_list" field.</summary>
+    public const int SubAffixListFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JAONELJJAFK> _repeated_subAffixList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.JAONELJJAFK.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JAONELJJAFK> subAffixList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JAONELJJAFK>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.JAONELJJAFK> SubAffixList {
+      get { return subAffixList_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ELOGOFFIJBB, other.ELOGOFFIJBB)) return false;
-      if(!subAffixList_.Equals(other.subAffixList_)) return false;
       if (ComposeRelicId != other.ComposeRelicId) return false;
       if (RelicType != other.RelicType) return false;
+      if (!object.Equals(ELOGOFFIJBB, other.ELOGOFFIJBB)) return false;
+      if(!subAffixList_.Equals(other.subAffixList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (eLOGOFFIJBB_ != null) hash ^= ELOGOFFIJBB.GetHashCode();
-      hash ^= subAffixList_.GetHashCode();
       if (ComposeRelicId != 0) hash ^= ComposeRelicId.GetHashCode();
       if (RelicType != 0) hash ^= RelicType.GetHashCode();
+      if (eLOGOFFIJBB_ != null) hash ^= ELOGOFFIJBB.GetHashCode();
+      hash ^= subAffixList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -228,16 +228,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (eLOGOFFIJBB_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ELOGOFFIJBB);
-      }
-      size += subAffixList_.CalculateSize(_repeated_subAffixList_codec);
       if (ComposeRelicId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ComposeRelicId);
       }
       if (RelicType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RelicType);
       }
+      if (eLOGOFFIJBB_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ELOGOFFIJBB);
+      }
+      size += subAffixList_.CalculateSize(_repeated_subAffixList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -250,6 +250,12 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.ComposeRelicId != 0) {
+        ComposeRelicId = other.ComposeRelicId;
+      }
+      if (other.RelicType != 0) {
+        RelicType = other.RelicType;
+      }
       if (other.eLOGOFFIJBB_ != null) {
         if (eLOGOFFIJBB_ == null) {
           ELOGOFFIJBB = new global::March7thHoney.Proto.JAONELJJAFK();
@@ -257,12 +263,6 @@ namespace March7thHoney.Proto {
         ELOGOFFIJBB.MergeFrom(other.ELOGOFFIJBB);
       }
       subAffixList_.Add(other.subAffixList_);
-      if (other.ComposeRelicId != 0) {
-        ComposeRelicId = other.ComposeRelicId;
-      }
-      if (other.RelicType != 0) {
-        RelicType = other.RelicType;
-      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

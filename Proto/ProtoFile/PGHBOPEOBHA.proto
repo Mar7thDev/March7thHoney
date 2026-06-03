@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message PGHBOPEOBHA {
+    uint32 script_id = 1;
+    uint64 unique_id = 4;
+    uint32 JGPHDBDHKKO = 13;
+}

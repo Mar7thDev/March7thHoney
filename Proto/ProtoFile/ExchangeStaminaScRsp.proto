@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCost.proto";
 
 message ExchangeStaminaScRsp {
-    repeated ItemCost item_cost_list = 7;
-    uint32 exchange_times = 1;
-    int64 last_recover_time = 4;
-    uint32 stamina_add = 2;
-    uint32 retcode = 11;
+    uint32 exchange_times = 2;
+    uint32 retcode = 3;
+    int64 last_recover_time = 6;
+    uint32 stamina_add = 10;
+    repeated ItemCost item_cost_list = 13;
 }

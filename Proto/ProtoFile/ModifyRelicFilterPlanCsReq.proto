@@ -6,10 +6,10 @@ import "BNAILMNNGIF.proto";
 import "KJDLIPEIAAK.proto";
 
 message ModifyRelicFilterPlanCsReq {
-    uint32 NPHAJEKCBKF = 14;
+    uint32 NPHAJEKCBKF = 5;
     oneof KKNBOACNCON {
-        string name = 7;
-        KJDLIPEIAAK MJPKBIGCFOM = 15;
-        BNAILMNNGIF LJKNDCIOOCG = 10;
+        string name = 9;
+        KJDLIPEIAAK MJPKBIGCFOM = 12;
+        BNAILMNNGIF LJKNDCIOOCG = 3;
     }
 }

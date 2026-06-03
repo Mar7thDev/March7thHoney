@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVEcmVzc1JlbGljUGFyYW0ucHJvdG8iPgoPRHJlc3NSZWxpY1BhcmFtEhcK",
-            "D3JlbGljX3VuaXF1ZV9pZBgCIAEoDRISCgpyZWxpY190eXBlGAEgASgNQhaq",
+            "D3JlbGljX3VuaXF1ZV9pZBgBIAEoDRISCgpyZWxpY190eXBlGA4gASgNQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_unique_id" field.</summary>
-    public const int RelicUniqueIdFieldNumber = 2;
+    public const int RelicUniqueIdFieldNumber = 1;
     private uint relicUniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_type" field.</summary>
-    public const int RelicTypeFieldNumber = 1;
+    public const int RelicTypeFieldNumber = 14;
     private uint relicType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RelicType != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(RelicType);
-      }
       if (RelicUniqueId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(RelicUniqueId);
+      }
+      if (RelicType != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(RelicType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RelicType != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(RelicType);
-      }
       if (RelicUniqueId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(RelicUniqueId);
+      }
+      if (RelicType != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(RelicType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            RelicType = input.ReadUInt32();
+            RelicUniqueId = input.ReadUInt32();
             break;
           }
-          case 16: {
-            RelicUniqueId = input.ReadUInt32();
+          case 112: {
+            RelicType = input.ReadUInt32();
             break;
           }
         }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            RelicType = input.ReadUInt32();
+            RelicUniqueId = input.ReadUInt32();
             break;
           }
-          case 16: {
-            RelicUniqueId = input.ReadUInt32();
+          case 112: {
+            RelicType = input.ReadUInt32();
             break;
           }
         }

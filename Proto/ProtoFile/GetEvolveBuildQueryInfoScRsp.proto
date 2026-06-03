@@ -6,7 +6,7 @@ import "CJJHNFICDIM.proto";
 import "LDLCMMOPKNG.proto";
 
 message GetEvolveBuildQueryInfoScRsp {
-    repeated LDLCMMOPKNG JPDOIGJNGNP = 9;
-    CJJHNFICDIM CFDIKLBINHK = 8;
-    uint32 retcode = 4;
+    repeated LDLCMMOPKNG JPDOIGJNGNP = 3;
+    uint32 retcode = 6;
+    CJJHNFICDIM CFDIKLBINHK = 9;
 }

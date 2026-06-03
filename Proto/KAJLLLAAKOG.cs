@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFLQUpMTExBQUtPRy5wcm90bxoRQUdQS0ZCTEdESUgucHJvdG8iRQoLS0FK",
-            "TExMQUFLT0cSIQoLQkZOSU5FTENCQ04YASADKAsyDC5BR1BLRkJMR0RJSBIT",
+            "TExMQUFLT0cSIQoLQkZOSU5FTENCQ04YByADKAsyDC5BR1BLRkJMR0RJSBIT",
             "CgtDSkJJTkNPS0ZQTxgIIAMoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BFNINELCBCN" field.</summary>
-    public const int BFNINELCBCNFieldNumber = 1;
+    public const int BFNINELCBCNFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.AGPKFBLGDIH> _repeated_bFNINELCBCN_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AGPKFBLGDIH.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.AGPKFBLGDIH.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.AGPKFBLGDIH> bFNINELCBCN_ = new pbc::RepeatedField<global::March7thHoney.Proto.AGPKFBLGDIH>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -209,7 +209,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 58: {
             bFNINELCBCN_.AddEntriesFrom(input, _repeated_bFNINELCBCN_codec);
             break;
           }
@@ -237,7 +237,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 58: {
             bFNINELCBCN_.AddEntriesFrom(ref input, _repeated_bFNINELCBCN_codec);
             break;
           }

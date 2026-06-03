@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ContentPackageStatus.proto";
 
 message ContentPackageInfo {
-    uint32 content_id = 12;
-    ContentPackageStatus status = 14;
+    ContentPackageStatus status = 7;
+    uint32 content_id = 15;
 }

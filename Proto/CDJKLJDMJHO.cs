@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static CDJKLJDMJHOReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDREpLTEpETUpITy5wcm90bxoRSkJPQkhJUEhHUEIucHJvdG8iQQoLQ0RK",
-            "S0xKRE1KSE8SIQoLSUFPQkhDT09NSlAYCiABKAsyDC5KQk9CSElQSEdQQhIP",
-            "CgdyZXRjb2RlGAsgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
-            "bzM="));
+            "ChFDREpLTEpETUpITy5wcm90bxoRSkJPQkhJUEhHUEIucHJvdG8iPwoLQ0RK",
+            "S0xKRE1KSE8SHwoJZ2FtZV9kYXRhGAMgASgLMgwuSkJPQkhJUEhHUEISDwoH",
+            "cmV0Y29kZRgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JBOBHIPHGPBReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CDJKLJDMJHO), global::March7thHoney.Proto.CDJKLJDMJHO.Parser, new[]{ "IAOBHCOOMJP", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CDJKLJDMJHO), global::March7thHoney.Proto.CDJKLJDMJHO.Parser, new[]{ "GameData", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CDJKLJDMJHO(CDJKLJDMJHO other) : this() {
-      iAOBHCOOMJP_ = other.iAOBHCOOMJP_ != null ? other.iAOBHCOOMJP_.Clone() : null;
+      gameData_ = other.gameData_ != null ? other.gameData_.Clone() : null;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,15 +83,15 @@ namespace March7thHoney.Proto {
       return new CDJKLJDMJHO(this);
     }
 
-    /// <summary>Field number for the "IAOBHCOOMJP" field.</summary>
-    public const int IAOBHCOOMJPFieldNumber = 10;
-    private global::March7thHoney.Proto.JBOBHIPHGPB iAOBHCOOMJP_;
+    /// <summary>Field number for the "game_data" field.</summary>
+    public const int GameDataFieldNumber = 3;
+    private global::March7thHoney.Proto.JBOBHIPHGPB gameData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.JBOBHIPHGPB IAOBHCOOMJP {
-      get { return iAOBHCOOMJP_; }
+    public global::March7thHoney.Proto.JBOBHIPHGPB GameData {
+      get { return gameData_; }
       set {
-        iAOBHCOOMJP_ = value;
+        gameData_ = value;
       }
     }
 
@@ -123,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(IAOBHCOOMJP, other.IAOBHCOOMJP)) return false;
+      if (!object.Equals(GameData, other.GameData)) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -132,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (iAOBHCOOMJP_ != null) hash ^= IAOBHCOOMJP.GetHashCode();
+      if (gameData_ != null) hash ^= GameData.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -152,9 +151,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (iAOBHCOOMJP_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(IAOBHCOOMJP);
+      if (gameData_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(GameData);
       }
       if (Retcode != 0) {
         output.WriteRawTag(88);
@@ -170,9 +169,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (iAOBHCOOMJP_ != null) {
-        output.WriteRawTag(82);
-        output.WriteMessage(IAOBHCOOMJP);
+      if (gameData_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(GameData);
       }
       if (Retcode != 0) {
         output.WriteRawTag(88);
@@ -188,8 +187,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (iAOBHCOOMJP_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(IAOBHCOOMJP);
+      if (gameData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GameData);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
@@ -206,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.iAOBHCOOMJP_ != null) {
-        if (iAOBHCOOMJP_ == null) {
-          IAOBHCOOMJP = new global::March7thHoney.Proto.JBOBHIPHGPB();
+      if (other.gameData_ != null) {
+        if (gameData_ == null) {
+          GameData = new global::March7thHoney.Proto.JBOBHIPHGPB();
         }
-        IAOBHCOOMJP.MergeFrom(other.IAOBHCOOMJP);
+        GameData.MergeFrom(other.GameData);
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
@@ -234,11 +233,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82: {
-            if (iAOBHCOOMJP_ == null) {
-              IAOBHCOOMJP = new global::March7thHoney.Proto.JBOBHIPHGPB();
+          case 26: {
+            if (gameData_ == null) {
+              GameData = new global::March7thHoney.Proto.JBOBHIPHGPB();
             }
-            input.ReadMessage(IAOBHCOOMJP);
+            input.ReadMessage(GameData);
             break;
           }
           case 88: {
@@ -264,11 +263,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82: {
-            if (iAOBHCOOMJP_ == null) {
-              IAOBHCOOMJP = new global::March7thHoney.Proto.JBOBHIPHGPB();
+          case 26: {
+            if (gameData_ == null) {
+              GameData = new global::March7thHoney.Proto.JBOBHIPHGPB();
             }
-            input.ReadMessage(IAOBHCOOMJP);
+            input.ReadMessage(GameData);
             break;
           }
           case 88: {

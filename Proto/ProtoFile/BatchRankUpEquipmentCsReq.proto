@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FBNBEIKABGE.proto";
 
 message BatchRankUpEquipmentCsReq {
-    repeated FBNBEIKABGE switch_list = 13;
+    repeated FBNBEIKABGE switch_list = 3;
 }

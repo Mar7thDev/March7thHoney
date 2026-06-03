@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static JLJNNPIAKGHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFKTEpOTlBJQUtHSC5wcm90byI0CgtKTEpOTlBJQUtHSBIQCghzY29yZV9p",
-            "ZBgHIAEoDRITCgtMUEVISE1IUENNRxgLIAEoDUIWqgITTWFyY2g3dGhIb25l",
-            "eS5Qcm90b2IGcHJvdG8z"));
+            "ChFKTEpOTlBJQUtHSC5wcm90byIuCgtKTEpOTlBJQUtHSBIQCghzY29yZV9p",
+            "ZBgNIAEoDRINCgVyb3VuZBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JLJNNPIAKGH), global::March7thHoney.Proto.JLJNNPIAKGH.Parser, new[]{ "ScoreId", "LPEHHMHPCMG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JLJNNPIAKGH), global::March7thHoney.Proto.JLJNNPIAKGH.Parser, new[]{ "ScoreId", "Round" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JLJNNPIAKGH(JLJNNPIAKGH other) : this() {
       scoreId_ = other.scoreId_;
-      lPEHHMHPCMG_ = other.lPEHHMHPCMG_;
+      round_ = other.round_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "score_id" field.</summary>
-    public const int ScoreIdFieldNumber = 7;
+    public const int ScoreIdFieldNumber = 13;
     private uint scoreId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LPEHHMHPCMG" field.</summary>
-    public const int LPEHHMHPCMGFieldNumber = 11;
-    private uint lPEHHMHPCMG_;
+    /// <summary>Field number for the "round" field.</summary>
+    public const int RoundFieldNumber = 15;
+    private uint round_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LPEHHMHPCMG {
-      get { return lPEHHMHPCMG_; }
+    public uint Round {
+      get { return round_; }
       set {
-        lPEHHMHPCMG_ = value;
+        round_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (ScoreId != other.ScoreId) return false;
-      if (LPEHHMHPCMG != other.LPEHHMHPCMG) return false;
+      if (Round != other.Round) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
-      if (LPEHHMHPCMG != 0) hash ^= LPEHHMHPCMG.GetHashCode();
+      if (Round != 0) hash ^= Round.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ScoreId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(ScoreId);
       }
-      if (LPEHHMHPCMG != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(LPEHHMHPCMG);
+      if (Round != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Round);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ScoreId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(ScoreId);
       }
-      if (LPEHHMHPCMG != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(LPEHHMHPCMG);
+      if (Round != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Round);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
       if (ScoreId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
       }
-      if (LPEHHMHPCMG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LPEHHMHPCMG);
+      if (Round != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Round);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.ScoreId != 0) {
         ScoreId = other.ScoreId;
       }
-      if (other.LPEHHMHPCMG != 0) {
-        LPEHHMHPCMG = other.LPEHHMHPCMG;
+      if (other.Round != 0) {
+        Round = other.Round;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 104: {
             ScoreId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            LPEHHMHPCMG = input.ReadUInt32();
+          case 120: {
+            Round = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 104: {
             ScoreId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            LPEHHMHPCMG = input.ReadUInt32();
+          case 120: {
+            Round = input.ReadUInt32();
             break;
           }
         }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message ComposeItemScRsp {
-    ItemList return_item_list = 7;
-    uint32 retcode = 5;
-    uint32 count = 10;
-    uint32 compose_id = 15;
+    uint32 count = 1;
+    ItemList return_item_list = 3;
+    uint32 compose_id = 12;
+    uint32 retcode = 15;
 }

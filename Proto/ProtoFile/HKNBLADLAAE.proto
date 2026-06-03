@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HKNBLADLAAE {
-    uint32 MIPKOFFGPFA = 4;
-    uint32 HAFOKMHCGFM = 3;
-    uint32 event_id = 9;
+    uint32 MIPKOFFGPFA = 3;
+    uint32 event_id = 12;
+    uint32 HAFOKMHCGFM = 13;
 }

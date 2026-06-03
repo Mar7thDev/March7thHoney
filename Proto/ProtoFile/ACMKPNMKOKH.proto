@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FKBOOENADFM.proto";
 
 message ACMKPNMKOKH {
-    FKBOOENADFM BBEHHCHKMNL = 11;
-    uint32 queue_position = 9;
+    uint32 queue_position = 1;
+    FKBOOENADFM detail = 4;
 }

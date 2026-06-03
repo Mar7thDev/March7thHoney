@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static BAEFMEJJIBIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCQUVGTUVKSklCSS5wcm90bxoRR0JBRVBPTEZGTUcucHJvdG8iQwoLQkFF",
-            "Rk1FSkpJQkkSEwoLQ0VBTUxLQ01NR0QYDiABKA0SHwoJcG9zX2luZGV4GA8g",
-            "ASgOMgwuR0JBRVBPTEZGTUdCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
-            "b3RvMw=="));
+            "ChFCQUVGTUVKSklCSS5wcm90bxoRR0JBRVBPTEZGTUcucHJvdG8iPQoLQkFF",
+            "Rk1FSkpJQkkSEwoLQ0VBTUxLQ01NR0QYBiABKA0SGQoDcG9zGAsgASgOMgwu",
+            "R0JBRVBPTEZGTUdCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GBAEPOLFFMGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BAEFMEJJIBI), global::March7thHoney.Proto.BAEFMEJJIBI.Parser, new[]{ "CEAMLKCMMGD", "PosIndex" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BAEFMEJJIBI), global::March7thHoney.Proto.BAEFMEJJIBI.Parser, new[]{ "CEAMLKCMMGD", "Pos" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BAEFMEJJIBI(BAEFMEJJIBI other) : this() {
       cEAMLKCMMGD_ = other.cEAMLKCMMGD_;
-      posIndex_ = other.posIndex_;
+      pos_ = other.pos_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CEAMLKCMMGD" field.</summary>
-    public const int CEAMLKCMMGDFieldNumber = 14;
+    public const int CEAMLKCMMGDFieldNumber = 6;
     private uint cEAMLKCMMGD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "pos_index" field.</summary>
-    public const int PosIndexFieldNumber = 15;
-    private global::March7thHoney.Proto.GBAEPOLFFMG posIndex_ = global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj;
+    /// <summary>Field number for the "pos" field.</summary>
+    public const int PosFieldNumber = 11;
+    private global::March7thHoney.Proto.GBAEPOLFFMG pos_ = global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GBAEPOLFFMG PosIndex {
-      get { return posIndex_; }
+    public global::March7thHoney.Proto.GBAEPOLFFMG Pos {
+      get { return pos_; }
       set {
-        posIndex_ = value;
+        pos_ = value;
       }
     }
 
@@ -124,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (CEAMLKCMMGD != other.CEAMLKCMMGD) return false;
-      if (PosIndex != other.PosIndex) return false;
+      if (Pos != other.Pos) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (CEAMLKCMMGD != 0) hash ^= CEAMLKCMMGD.GetHashCode();
-      if (PosIndex != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) hash ^= PosIndex.GetHashCode();
+      if (Pos != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) hash ^= Pos.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CEAMLKCMMGD != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(48);
         output.WriteUInt32(CEAMLKCMMGD);
       }
-      if (PosIndex != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) {
-        output.WriteRawTag(120);
-        output.WriteEnum((int) PosIndex);
+      if (Pos != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) Pos);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CEAMLKCMMGD != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(48);
         output.WriteUInt32(CEAMLKCMMGD);
       }
-      if (PosIndex != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) {
-        output.WriteRawTag(120);
-        output.WriteEnum((int) PosIndex);
+      if (Pos != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) Pos);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -191,8 +190,8 @@ namespace March7thHoney.Proto {
       if (CEAMLKCMMGD != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CEAMLKCMMGD);
       }
-      if (PosIndex != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PosIndex);
+      if (Pos != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Pos);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -209,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.CEAMLKCMMGD != 0) {
         CEAMLKCMMGD = other.CEAMLKCMMGD;
       }
-      if (other.PosIndex != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) {
-        PosIndex = other.PosIndex;
+      if (other.Pos != global::March7thHoney.Proto.GBAEPOLFFMG.Nlcdgipgfdj) {
+        Pos = other.Pos;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 112: {
+          case 48: {
             CEAMLKCMMGD = input.ReadUInt32();
             break;
           }
-          case 120: {
-            PosIndex = (global::March7thHoney.Proto.GBAEPOLFFMG) input.ReadEnum();
+          case 88: {
+            Pos = (global::March7thHoney.Proto.GBAEPOLFFMG) input.ReadEnum();
             break;
           }
         }
@@ -258,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 112: {
+          case 48: {
             CEAMLKCMMGD = input.ReadUInt32();
             break;
           }
-          case 120: {
-            PosIndex = (global::March7thHoney.Proto.GBAEPOLFFMG) input.ReadEnum();
+          case 88: {
+            Pos = (global::March7thHoney.Proto.GBAEPOLFFMG) input.ReadEnum();
             break;
           }
         }

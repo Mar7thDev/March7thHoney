@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KPPJOPMMLOA.proto";
 
 message AECGFCJJLNI {
-    KPPJOPMMLOA JPPLNIDDLBH = 3;
-    bool ELOCBJMJHBH = 2;
     uint32 NAFOFIPMOGM = 1;
+    bool ELOCBJMJHBH = 2;
+    KPPJOPMMLOA JPPLNIDDLBH = 3;
 }

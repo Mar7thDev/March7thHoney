@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MarkItemScRsp {
-    uint32 retcode = 10;
-    bool ABDJKPCGDHO = 9;
-    uint32 item_id = 11;
+    uint32 retcode = 3;
+    uint32 item_id = 4;
+    bool ABDJKPCGDHO = 5;
 }

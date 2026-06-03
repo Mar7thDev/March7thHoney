@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGQURIRUlHSkVORi5wcm90byJ1CgtGQURIRUlHSkVORhIyCgtISk1BRURL",
-            "Q09ORRgCIAMoCzIdLkZBREhFSUdKRU5GLkhKTUFFREtDT05FRW50cnkaMgoQ",
+            "Q09ORRgBIAMoCzIdLkZBREhFSUdKRU5GLkhKTUFFREtDT05FRW50cnkaMgoQ",
             "SEpNQUVES0NPTkVFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKA06",
             "AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HJMAEDKCONE" field.</summary>
-    public const int HJMAEDKCONEFieldNumber = 2;
+    public const int HJMAEDKCONEFieldNumber = 1;
     private static readonly pbc::MapField<string, uint>.Codec _map_hJMAEDKCONE_codec
-        = new pbc::MapField<string, uint>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForUInt32(16, 0), 18);
+        = new pbc::MapField<string, uint>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForUInt32(16, 0), 10);
     private readonly pbc::MapField<string, uint> hJMAEDKCONE_ = new pbc::MapField<string, uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 10: {
             hJMAEDKCONE_.AddEntriesFrom(input, _map_hJMAEDKCONE_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 10: {
             hJMAEDKCONE_.AddEntriesFrom(ref input, _map_hJMAEDKCONE_codec);
             break;
           }

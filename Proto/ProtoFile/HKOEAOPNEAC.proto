@@ -6,11 +6,11 @@ import "BHPBJOMBCAD.proto";
 import "ItemCostData.proto";
 
 message HKOEAOPNEAC {
-    ItemCostData CANJGJIDKHK = 12;
-    repeated BHPBJOMBCAD AJKOKAJABFG = 2;
-    uint32 KMNDBEPFMGN = 10;
-    bool CEIIGJEOIAD = 7;
-    uint32 DGGCFDKJDPO = 9;
-    uint32 GPNJGMEPMMD = 1;
-    uint32 JAEDKHMMPIH = 14;
+    uint32 DGGCFDKJDPO = 2;
+    uint32 GPNJGMEPMMD = 3;
+    uint32 JAEDKHMMPIH = 10;
+    repeated BHPBJOMBCAD AJKOKAJABFG = 12;
+    ItemCostData CANJGJIDKHK = 13;
+    bool CEIIGJEOIAD = 14;
+    uint32 KMNDBEPFMGN = 15;
 }

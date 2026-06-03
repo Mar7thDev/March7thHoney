@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static GPGLNCGCLLGReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHUEdMTkNHQ0xMRy5wcm90byJcCgtHUEdMTkNHQ0xMRxITCgtPRkZCQU5H",
-            "T09LSRgCIAEoDRIVCg1kaXNwbGF5X3ZhbHVlGAQgASgFEg8KB2l0ZW1faWQY",
-            "ASABKA0SEAoIc2tpbGxfaWQYAyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
-            "dG9iBnByb3RvMw=="));
+            "ChFHUEdMTkNHQ0xMRy5wcm90byJUCgtHUEdMTkNHQ0xMRxIPCgdpdGVtX2lk",
+            "GAEgASgNEhMKC09GRkJBTkdPT0tJGAIgASgNEhAKCHNraWxsX2lkGAMgASgN",
+            "Eg0KBXBhcmFtGAQgASgFQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GPGLNCGCLLG), global::March7thHoney.Proto.GPGLNCGCLLG.Parser, new[]{ "OFFBANGOOKI", "DisplayValue", "ItemId", "SkillId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GPGLNCGCLLG), global::March7thHoney.Proto.GPGLNCGCLLG.Parser, new[]{ "ItemId", "OFFBANGOOKI", "SkillId", "Param" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GPGLNCGCLLG(GPGLNCGCLLG other) : this() {
-      oFFBANGOOKI_ = other.oFFBANGOOKI_;
-      displayValue_ = other.displayValue_;
       itemId_ = other.itemId_;
+      oFFBANGOOKI_ = other.oFFBANGOOKI_;
       skillId_ = other.skillId_;
+      param_ = other.param_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,30 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GPGLNCGCLLG Clone() {
       return new GPGLNCGCLLG(this);
-    }
-
-    /// <summary>Field number for the "OFFBANGOOKI" field.</summary>
-    public const int OFFBANGOOKIFieldNumber = 2;
-    private uint oFFBANGOOKI_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OFFBANGOOKI {
-      get { return oFFBANGOOKI_; }
-      set {
-        oFFBANGOOKI_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "display_value" field.</summary>
-    public const int DisplayValueFieldNumber = 4;
-    private int displayValue_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int DisplayValue {
-      get { return displayValue_; }
-      set {
-        displayValue_ = value;
-      }
     }
 
     /// <summary>Field number for the "item_id" field.</summary>
@@ -122,6 +98,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "OFFBANGOOKI" field.</summary>
+    public const int OFFBANGOOKIFieldNumber = 2;
+    private uint oFFBANGOOKI_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint OFFBANGOOKI {
+      get { return oFFBANGOOKI_; }
+      set {
+        oFFBANGOOKI_ = value;
+      }
+    }
+
     /// <summary>Field number for the "skill_id" field.</summary>
     public const int SkillIdFieldNumber = 3;
     private uint skillId_;
@@ -131,6 +119,18 @@ namespace March7thHoney.Proto {
       get { return skillId_; }
       set {
         skillId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "param" field.</summary>
+    public const int ParamFieldNumber = 4;
+    private int param_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Param {
+      get { return param_; }
+      set {
+        param_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (OFFBANGOOKI != other.OFFBANGOOKI) return false;
-      if (DisplayValue != other.DisplayValue) return false;
       if (ItemId != other.ItemId) return false;
+      if (OFFBANGOOKI != other.OFFBANGOOKI) return false;
       if (SkillId != other.SkillId) return false;
+      if (Param != other.Param) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (OFFBANGOOKI != 0) hash ^= OFFBANGOOKI.GetHashCode();
-      if (DisplayValue != 0) hash ^= DisplayValue.GetHashCode();
       if (ItemId != 0) hash ^= ItemId.GetHashCode();
+      if (OFFBANGOOKI != 0) hash ^= OFFBANGOOKI.GetHashCode();
       if (SkillId != 0) hash ^= SkillId.GetHashCode();
+      if (Param != 0) hash ^= Param.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -194,9 +194,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(SkillId);
       }
-      if (DisplayValue != 0) {
+      if (Param != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(DisplayValue);
+        output.WriteInt32(Param);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -220,9 +220,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(SkillId);
       }
-      if (DisplayValue != 0) {
+      if (Param != 0) {
         output.WriteRawTag(32);
-        output.WriteInt32(DisplayValue);
+        output.WriteInt32(Param);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (OFFBANGOOKI != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OFFBANGOOKI);
-      }
-      if (DisplayValue != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DisplayValue);
-      }
       if (ItemId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ItemId);
       }
+      if (OFFBANGOOKI != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OFFBANGOOKI);
+      }
       if (SkillId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
+      }
+      if (Param != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Param);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.OFFBANGOOKI != 0) {
-        OFFBANGOOKI = other.OFFBANGOOKI;
-      }
-      if (other.DisplayValue != 0) {
-        DisplayValue = other.DisplayValue;
-      }
       if (other.ItemId != 0) {
         ItemId = other.ItemId;
       }
+      if (other.OFFBANGOOKI != 0) {
+        OFFBANGOOKI = other.OFFBANGOOKI;
+      }
       if (other.SkillId != 0) {
         SkillId = other.SkillId;
+      }
+      if (other.Param != 0) {
+        Param = other.Param;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -302,7 +302,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            DisplayValue = input.ReadInt32();
+            Param = input.ReadInt32();
             break;
           }
         }
@@ -337,7 +337,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            DisplayValue = input.ReadInt32();
+            Param = input.ReadInt32();
             break;
           }
         }

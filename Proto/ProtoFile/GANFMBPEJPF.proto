@@ -8,8 +8,8 @@ import "JMJEIBGACMD.proto";
 import "NPAJHGDEIDJ.proto";
 
 message GANFMBPEJPF {
-    repeated DIKBPKAKENO JFHKJOGEOND = 2;
-    repeated NPAJHGDEIDJ DPIKOCFILGP = 6;
-    repeated DGKLPPLJBNB PAKECMNPEJJ = 8;
-    repeated JMJEIBGACMD CEPDOBEIEFG = 13;
+    repeated DIKBPKAKENO JFHKJOGEOND = 1;
+    repeated JMJEIBGACMD CEPDOBEIEFG = 6;
+    repeated DGKLPPLJBNB PAKECMNPEJJ = 9;
+    repeated NPAJHGDEIDJ DPIKOCFILGP = 15;
 }

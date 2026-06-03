@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CCPCAIGEBCB {
-    uint32 CCBIIDDBFGK = 15;
+    uint32 CCBIIDDBFGK = 12;
 }

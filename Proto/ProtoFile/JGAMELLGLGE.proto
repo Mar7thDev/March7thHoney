@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JOLAHHGIFHA.proto";
 
 message JGAMELLGLGE {
-    JOLAHHGIFHA NJDCPMENIFG = 9;
+    JOLAHHGIFHA NJDCPMENIFG = 7;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpHZXRTY2VuZU1hcEluZm9TY1JzcC5wcm90bxoSU2NlbmVNYXBJbmZvLnBy",
-            "b3RvIk4KFEdldFNjZW5lTWFwSW5mb1NjUnNwEiUKDnNjZW5lX21hcF9pbmZv",
-            "GA4gAygLMg0uU2NlbmVNYXBJbmZvEg8KB3JldGNvZGUYBiABKA1CFqoCE01h",
+            "b3RvIk4KFEdldFNjZW5lTWFwSW5mb1NjUnNwEg8KB3JldGNvZGUYASABKA0S",
+            "JQoOc2NlbmVfbWFwX2luZm8YDCADKAsyDS5TY2VuZU1hcEluZm9CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneMapInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSceneMapInfoScRsp), global::March7thHoney.Proto.GetSceneMapInfoScRsp.Parser, new[]{ "SceneMapInfo", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSceneMapInfoScRsp), global::March7thHoney.Proto.GetSceneMapInfoScRsp.Parser, new[]{ "Retcode", "SceneMapInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetSceneMapInfoScRsp(GetSceneMapInfoScRsp other) : this() {
-      sceneMapInfo_ = other.sceneMapInfo_.Clone();
       retcode_ = other.retcode_;
+      sceneMapInfo_ = other.sceneMapInfo_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,19 +84,8 @@ namespace March7thHoney.Proto {
       return new GetSceneMapInfoScRsp(this);
     }
 
-    /// <summary>Field number for the "scene_map_info" field.</summary>
-    public const int SceneMapInfoFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneMapInfo> _repeated_sceneMapInfo_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.SceneMapInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneMapInfo> sceneMapInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneMapInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.SceneMapInfo> SceneMapInfo {
-      get { return sceneMapInfo_; }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +94,17 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
+    }
+
+    /// <summary>Field number for the "scene_map_info" field.</summary>
+    public const int SceneMapInfoFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneMapInfo> _repeated_sceneMapInfo_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.SceneMapInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneMapInfo> sceneMapInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneMapInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.SceneMapInfo> SceneMapInfo {
+      get { return sceneMapInfo_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!sceneMapInfo_.Equals(other.sceneMapInfo_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!sceneMapInfo_.Equals(other.sceneMapInfo_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= sceneMapInfo_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= sceneMapInfo_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
       sceneMapInfo_.WriteTo(output, _repeated_sceneMapInfo_codec);
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
       sceneMapInfo_.WriteTo(ref output, _repeated_sceneMapInfo_codec);
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += sceneMapInfo_.CalculateSize(_repeated_sceneMapInfo_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += sceneMapInfo_.CalculateSize(_repeated_sceneMapInfo_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      sceneMapInfo_.Add(other.sceneMapInfo_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      sceneMapInfo_.Add(other.sceneMapInfo_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -220,11 +220,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 98: {
             sceneMapInfo_.AddEntriesFrom(input, _repeated_sceneMapInfo_codec);
             break;
           }
@@ -247,11 +247,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 98: {
             sceneMapInfo_.AddEntriesFrom(ref input, _repeated_sceneMapInfo_codec);
             break;
           }

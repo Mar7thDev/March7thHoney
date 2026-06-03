@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static NHKIADBINMLReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFOSEtJQURCSU5NTC5wcm90byIzCgtOSEtJQURCSU5NTBIPCgdyZXRjb2Rl",
-            "GA4gASgNEhMKC0FGRE5GQ0JDRkJGGAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
-            "LlByb3RvYgZwcm90bzM="));
+            "ChFOSEtJQURCSU5NTC5wcm90byItCgtOSEtJQURCSU5NTBINCgVyYXRpbxgE",
+            "IAEoDRIPCgdyZXRjb2RlGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NHKIADBINML), global::March7thHoney.Proto.NHKIADBINML.Parser, new[]{ "Retcode", "AFDNFCBCFBF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NHKIADBINML), global::March7thHoney.Proto.NHKIADBINML.Parser, new[]{ "Ratio", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NHKIADBINML(NHKIADBINML other) : this() {
+      ratio_ = other.ratio_;
       retcode_ = other.retcode_;
-      aFDNFCBCFBF_ = other.aFDNFCBCFBF_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,8 +83,20 @@ namespace March7thHoney.Proto {
       return new NHKIADBINML(this);
     }
 
+    /// <summary>Field number for the "ratio" field.</summary>
+    public const int RatioFieldNumber = 4;
+    private uint ratio_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Ratio {
+      get { return ratio_; }
+      set {
+        ratio_ = value;
+      }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -92,18 +104,6 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "AFDNFCBCFBF" field.</summary>
-    public const int AFDNFCBCFBFFieldNumber = 2;
-    private uint aFDNFCBCFBF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AFDNFCBCFBF {
-      get { return aFDNFCBCFBF_; }
-      set {
-        aFDNFCBCFBF_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Ratio != other.Ratio) return false;
       if (Retcode != other.Retcode) return false;
-      if (AFDNFCBCFBF != other.AFDNFCBCFBF) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Ratio != 0) hash ^= Ratio.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (AFDNFCBCFBF != 0) hash ^= AFDNFCBCFBF.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,12 +151,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AFDNFCBCFBF != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(AFDNFCBCFBF);
+      if (Ratio != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Ratio);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -169,12 +169,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AFDNFCBCFBF != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(AFDNFCBCFBF);
+      if (Ratio != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Ratio);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Ratio != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Ratio);
+      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (AFDNFCBCFBF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AFDNFCBCFBF);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Ratio != 0) {
+        Ratio = other.Ratio;
+      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      if (other.AFDNFCBCFBF != 0) {
-        AFDNFCBCFBF = other.AFDNFCBCFBF;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            AFDNFCBCFBF = input.ReadUInt32();
+          case 32: {
+            Ratio = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            AFDNFCBCFBF = input.ReadUInt32();
+          case 32: {
+            Ratio = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }

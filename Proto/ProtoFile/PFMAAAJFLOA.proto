@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NKGAIPKINJE.proto";
 
 message PFMAAAJFLOA {
-    uint32 LOGLBCPNAEL = 7;
-    uint32 LHHJFMMCBAF = 8;
+    uint32 LOGLBCPNAEL = 6;
+    uint32 LHHJFMMCBAF = 10;
     oneof HGEOKHHJAIE {
-        uint32 FJLCMPAPIGA = 11;
-        NKGAIPKINJE EBEMKMGCCGJ = 6;
+        uint32 FJLCMPAPIGA = 2;
+        NKGAIPKINJE EBEMKMGCCGJ = 1;
     }
 }

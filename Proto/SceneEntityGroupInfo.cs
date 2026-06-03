@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpTY2VuZUVudGl0eUdyb3VwSW5mby5wcm90bxoVU2NlbmVFbnRpdHlJbmZv",
             "LnByb3RvIs8BChRTY2VuZUVudGl0eUdyb3VwSW5mbxIlCgtlbnRpdHlfbGlz",
-            "dBgGIAMoCzIQLlNjZW5lRW50aXR5SW5mbxI7CgtCQU5CRUNEQ0RIRxgJIAMo",
-            "CzImLlNjZW5lRW50aXR5R3JvdXBJbmZvLkJBTkJFQ0RDREhHRW50cnkSEAoI",
-            "Z3JvdXBfaWQYDiABKA0SDQoFc3RhdGUYCiABKA0aMgoQQkFOQkVDRENESEdF",
+            "dBgCIAMoCzIQLlNjZW5lRW50aXR5SW5mbxIQCghncm91cF9pZBgJIAEoDRI7",
+            "CgtCQU5CRUNEQ0RIRxgMIAMoCzImLlNjZW5lRW50aXR5R3JvdXBJbmZvLkJB",
+            "TkJFQ0RDREhHRW50cnkSDQoFc3RhdGUYDSABKA0aMgoQQkFOQkVDRENESEdF",
             "bnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAU6AjgBQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneEntityInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityGroupInfo), global::March7thHoney.Proto.SceneEntityGroupInfo.Parser, new[]{ "EntityList", "BANBECDCDHG", "GroupId", "State" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityGroupInfo), global::March7thHoney.Proto.SceneEntityGroupInfo.Parser, new[]{ "EntityList", "GroupId", "BANBECDCDHG", "State" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -77,8 +77,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneEntityGroupInfo(SceneEntityGroupInfo other) : this() {
       entityList_ = other.entityList_.Clone();
-      bANBECDCDHG_ = other.bANBECDCDHG_.Clone();
       groupId_ = other.groupId_;
+      bANBECDCDHG_ = other.bANBECDCDHG_.Clone();
       state_ = other.state_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -90,9 +90,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "entity_list" field.</summary>
-    public const int EntityListFieldNumber = 6;
+    public const int EntityListFieldNumber = 2;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneEntityInfo> _repeated_entityList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.SceneEntityInfo.Parser);
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SceneEntityInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityInfo> entityList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneEntityInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -100,19 +100,8 @@ namespace March7thHoney.Proto {
       get { return entityList_; }
     }
 
-    /// <summary>Field number for the "BANBECDCDHG" field.</summary>
-    public const int BANBECDCDHGFieldNumber = 9;
-    private static readonly pbc::MapField<string, int>.Codec _map_bANBECDCDHG_codec
-        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 74);
-    private readonly pbc::MapField<string, int> bANBECDCDHG_ = new pbc::MapField<string, int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, int> BANBECDCDHG {
-      get { return bANBECDCDHG_; }
-    }
-
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 14;
+    public const int GroupIdFieldNumber = 9;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,8 +112,19 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "BANBECDCDHG" field.</summary>
+    public const int BANBECDCDHGFieldNumber = 12;
+    private static readonly pbc::MapField<string, int>.Codec _map_bANBECDCDHG_codec
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 98);
+    private readonly pbc::MapField<string, int> bANBECDCDHG_ = new pbc::MapField<string, int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, int> BANBECDCDHG {
+      get { return bANBECDCDHG_; }
+    }
+
     /// <summary>Field number for the "state" field.</summary>
-    public const int StateFieldNumber = 10;
+    public const int StateFieldNumber = 13;
     private uint state_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,8 +151,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!entityList_.Equals(other.entityList_)) return false;
-      if (!BANBECDCDHG.Equals(other.BANBECDCDHG)) return false;
       if (GroupId != other.GroupId) return false;
+      if (!BANBECDCDHG.Equals(other.BANBECDCDHG)) return false;
       if (State != other.State) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -162,8 +162,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= entityList_.GetHashCode();
-      hash ^= BANBECDCDHG.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
+      hash ^= BANBECDCDHG.GetHashCode();
       if (State != 0) hash ^= State.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -184,14 +184,14 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       entityList_.WriteTo(output, _repeated_entityList_codec);
+      if (GroupId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(GroupId);
+      }
       bANBECDCDHG_.WriteTo(output, _map_bANBECDCDHG_codec);
       if (State != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteUInt32(State);
-      }
-      if (GroupId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -204,14 +204,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       entityList_.WriteTo(ref output, _repeated_entityList_codec);
+      if (GroupId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(GroupId);
+      }
       bANBECDCDHG_.WriteTo(ref output, _map_bANBECDCDHG_codec);
       if (State != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(104);
         output.WriteUInt32(State);
-      }
-      if (GroupId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(GroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -224,10 +224,10 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += entityList_.CalculateSize(_repeated_entityList_codec);
-      size += bANBECDCDHG_.CalculateSize(_map_bANBECDCDHG_codec);
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
+      size += bANBECDCDHG_.CalculateSize(_map_bANBECDCDHG_codec);
       if (State != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(State);
       }
@@ -244,10 +244,10 @@ namespace March7thHoney.Proto {
         return;
       }
       entityList_.Add(other.entityList_);
-      bANBECDCDHG_.MergeFrom(other.bANBECDCDHG_);
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
       }
+      bANBECDCDHG_.MergeFrom(other.bANBECDCDHG_);
       if (other.State != 0) {
         State = other.State;
       }
@@ -270,20 +270,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 18: {
             entityList_.AddEntriesFrom(input, _repeated_entityList_codec);
             break;
           }
-          case 74: {
+          case 72: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 98: {
             bANBECDCDHG_.AddEntriesFrom(input, _map_bANBECDCDHG_codec);
             break;
           }
-          case 80: {
+          case 104: {
             State = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            GroupId = input.ReadUInt32();
             break;
           }
         }
@@ -305,20 +305,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 18: {
             entityList_.AddEntriesFrom(ref input, _repeated_entityList_codec);
             break;
           }
-          case 74: {
+          case 72: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 98: {
             bANBECDCDHG_.AddEntriesFrom(ref input, _map_bANBECDCDHG_codec);
             break;
           }
-          case 80: {
+          case 104: {
             State = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            GroupId = input.ReadUInt32();
             break;
           }
         }

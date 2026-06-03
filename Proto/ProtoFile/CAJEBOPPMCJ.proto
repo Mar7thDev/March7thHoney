@@ -6,10 +6,10 @@ import "RogueAreaStatus.proto";
 import "RogueStatus.proto";
 
 message CAJEBOPPMCJ {
-    bool ALAJJMKOMML = 3;
-    uint32 area_id = 13;
-    RogueStatus NHDLEFAAPOB = 4;
-    RogueAreaStatus KANBKLFCCMB = 1;
-    uint32 map_id = 7;
-    uint32 KNDHMNBIIDF = 8;
+    RogueStatus NHDLEFAAPOB = 1;
+    uint32 KNDHMNBIIDF = 3;
+    bool ALAJJMKOMML = 8;
+    uint32 area_id = 12;
+    uint32 map_id = 13;
+    RogueAreaStatus area_status = 14;
 }

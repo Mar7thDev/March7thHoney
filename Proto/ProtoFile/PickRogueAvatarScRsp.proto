@@ -2,10 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "KCHPLCFMGLF.proto";
-
 message PickRogueAvatarScRsp {
-    KCHPLCFMGLF EIOHFJMFOKF = 6;
-    repeated uint32 NOEPBNMJFGL = 4;
-    uint32 retcode = 8;
+    uint32 retcode = 10;
+    repeated uint32 NOEPBNMJFGL = 11;
 }

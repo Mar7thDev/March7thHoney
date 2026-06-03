@@ -5,8 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KCMFAIBMOHB.proto";
 
 message ENOBKLGCHOD {
-    repeated uint32 NOEPBNMJFGL = 14;
-    KCMFAIBMOHB MFEODNJNGDP = 11;
-    repeated uint32 GOFLIGGNHNE = 15;
-    repeated uint32 unfinished_story_line_id_list = 9;
+    repeated uint32 NOEPBNMJFGL = 5;
+    repeated uint32 unfinished_story_line_id_list = 8;
+    KCMFAIBMOHB MFEODNJNGDP = 9;
 }

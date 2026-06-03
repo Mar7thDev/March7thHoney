@@ -5,7 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GHBICGMEFPL.proto";
 
 message AetherDivideSpiritInfoScNotify {
-    GHBICGMEFPL IAGNGEGKDOL = 12;
-    repeated GHBICGMEFPL FGBAPJKDFOC = 9;
-    uint32 NCAOMBHCGNA = 14;
+    repeated GHBICGMEFPL FGBAPJKDFOC = 11;
 }

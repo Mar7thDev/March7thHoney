@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChallengeTierceStageRecord {
-    uint32 IBECKONIICF = 1;
-    uint32 INLLMKEDGLC = 5;
-    uint32 stage_index = 9;
-    uint32 score_id = 10;
+    uint32 stage_index = 1;
+    uint32 score_id = 6;
+    uint32 INLLMKEDGLC = 8;
+    uint32 IBECKONIICF = 11;
 }

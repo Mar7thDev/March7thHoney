@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message MonthCardRewardNotify {
-    ItemList reward = 5;
+    ItemList reward = 1;
 }

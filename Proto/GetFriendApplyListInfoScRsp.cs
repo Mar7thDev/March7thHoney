@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFHZXRGcmllbmRBcHBseUxpc3RJbmZvU2NSc3AucHJvdG8aFUZyaWVuZEFw",
             "cGx5SW5mby5wcm90byJ1ChtHZXRGcmllbmRBcHBseUxpc3RJbmZvU2NSc3AS",
-            "LAoScmVjZWl2ZV9hcHBseV9saXN0GAsgAygLMhAuRnJpZW5kQXBwbHlJbmZv",
-            "EhcKD3NlbmRfYXBwbHlfbGlzdBgBIAMoDRIPCgdyZXRjb2RlGAMgASgNQhaq",
+            "FwoPc2VuZF9hcHBseV9saXN0GAIgAygNEg8KB3JldGNvZGUYBiABKA0SLAoS",
+            "cmVjZWl2ZV9hcHBseV9saXN0GAkgAygLMhAuRnJpZW5kQXBwbHlJbmZvQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FriendApplyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendApplyListInfoScRsp), global::March7thHoney.Proto.GetFriendApplyListInfoScRsp.Parser, new[]{ "ReceiveApplyList", "SendApplyList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendApplyListInfoScRsp), global::March7thHoney.Proto.GetFriendApplyListInfoScRsp.Parser, new[]{ "SendApplyList", "Retcode", "ReceiveApplyList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetFriendApplyListInfoScRsp(GetFriendApplyListInfoScRsp other) : this() {
-      receiveApplyList_ = other.receiveApplyList_.Clone();
       sendApplyList_ = other.sendApplyList_.Clone();
       retcode_ = other.retcode_;
+      receiveApplyList_ = other.receiveApplyList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,21 +86,10 @@ namespace March7thHoney.Proto {
       return new GetFriendApplyListInfoScRsp(this);
     }
 
-    /// <summary>Field number for the "receive_apply_list" field.</summary>
-    public const int ReceiveApplyListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FriendApplyInfo> _repeated_receiveApplyList_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.FriendApplyInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FriendApplyInfo> receiveApplyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FriendApplyInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.FriendApplyInfo> ReceiveApplyList {
-      get { return receiveApplyList_; }
-    }
-
     /// <summary>Field number for the "send_apply_list" field.</summary>
-    public const int SendApplyListFieldNumber = 1;
+    public const int SendApplyListFieldNumber = 2;
     private static readonly pb::FieldCodec<uint> _repeated_sendApplyList_codec
-        = pb::FieldCodec.ForUInt32(10);
+        = pb::FieldCodec.ForUInt32(18);
     private readonly pbc::RepeatedField<uint> sendApplyList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 6;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +107,17 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
+    }
+
+    /// <summary>Field number for the "receive_apply_list" field.</summary>
+    public const int ReceiveApplyListFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FriendApplyInfo> _repeated_receiveApplyList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.FriendApplyInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FriendApplyInfo> receiveApplyList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FriendApplyInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.FriendApplyInfo> ReceiveApplyList {
+      get { return receiveApplyList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!receiveApplyList_.Equals(other.receiveApplyList_)) return false;
       if(!sendApplyList_.Equals(other.sendApplyList_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!receiveApplyList_.Equals(other.receiveApplyList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= receiveApplyList_.GetHashCode();
       hash ^= sendApplyList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= receiveApplyList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,7 +168,7 @@ namespace March7thHoney.Proto {
     #else
       sendApplyList_.WriteTo(output, _repeated_sendApplyList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
       receiveApplyList_.WriteTo(output, _repeated_receiveApplyList_codec);
@@ -184,7 +184,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       sendApplyList_.WriteTo(ref output, _repeated_sendApplyList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
       receiveApplyList_.WriteTo(ref output, _repeated_receiveApplyList_codec);
@@ -198,11 +198,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += receiveApplyList_.CalculateSize(_repeated_receiveApplyList_codec);
       size += sendApplyList_.CalculateSize(_repeated_sendApplyList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += receiveApplyList_.CalculateSize(_repeated_receiveApplyList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -215,11 +215,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      receiveApplyList_.Add(other.receiveApplyList_);
       sendApplyList_.Add(other.sendApplyList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      receiveApplyList_.Add(other.receiveApplyList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -239,16 +239,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10:
-          case 8: {
+          case 18:
+          case 16: {
             sendApplyList_.AddEntriesFrom(input, _repeated_sendApplyList_codec);
             break;
           }
-          case 24: {
+          case 48: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 90: {
+          case 74: {
             receiveApplyList_.AddEntriesFrom(input, _repeated_receiveApplyList_codec);
             break;
           }
@@ -271,16 +271,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10:
-          case 8: {
+          case 18:
+          case 16: {
             sendApplyList_.AddEntriesFrom(ref input, _repeated_sendApplyList_codec);
             break;
           }
-          case 24: {
+          case 48: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 90: {
+          case 74: {
             receiveApplyList_.AddEntriesFrom(ref input, _repeated_receiveApplyList_codec);
             break;
           }

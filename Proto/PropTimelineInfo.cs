@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChZQcm9wVGltZWxpbmVJbmZvLnByb3RvIkwKEFByb3BUaW1lbGluZUluZm8S",
             "GwoTdGltZWxpbmVfYnl0ZV92YWx1ZRgIIAEoDBIbChN0aW1lbGluZV9ib29s",
-            "X3ZhbHVlGAIgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "X3ZhbHVlGAwgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "timeline_bool_value" field.</summary>
-    public const int TimelineBoolValueFieldNumber = 2;
+    public const int TimelineBoolValueFieldNumber = 12;
     private bool timelineBoolValue_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (TimelineBoolValue != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(TimelineBoolValue);
-      }
       if (TimelineByteValue.Length != 0) {
         output.WriteRawTag(66);
         output.WriteBytes(TimelineByteValue);
+      }
+      if (TimelineBoolValue != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(TimelineBoolValue);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (TimelineBoolValue != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(TimelineBoolValue);
-      }
       if (TimelineByteValue.Length != 0) {
         output.WriteRawTag(66);
         output.WriteBytes(TimelineByteValue);
+      }
+      if (TimelineBoolValue != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(TimelineBoolValue);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            TimelineBoolValue = input.ReadBool();
-            break;
-          }
           case 66: {
             TimelineByteValue = input.ReadBytes();
+            break;
+          }
+          case 96: {
+            TimelineBoolValue = input.ReadBool();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            TimelineBoolValue = input.ReadBool();
-            break;
-          }
           case 66: {
             TimelineByteValue = input.ReadBytes();
+            break;
+          }
+          case 96: {
+            TimelineBoolValue = input.ReadBool();
             break;
           }
         }

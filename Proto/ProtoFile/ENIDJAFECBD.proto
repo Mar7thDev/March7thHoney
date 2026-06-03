@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ENIDJAFECBD {
-    uint32 BKFICFMMGIN = 3;
-    bool is_taken_reward = 2;
+    uint32 BKFICFMMGIN = 5;
+    bool is_taken_reward = 11;
 }

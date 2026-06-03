@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static GILBMELHGCBReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHSUxCTUVMSEdDQi5wcm90byI0CgtHSUxCTUVMSEdDQhITCgtKTU1CQUFM",
-            "SU9KTBgCIAMoDRIQCghzdGFnZV9pZBgBIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "ChFHSUxCTUVMSEdDQi5wcm90byI0CgtHSUxCTUVMSEdDQhIQCghzdGFnZV9p",
+            "ZBgOIAEoDRITCgtKTU1CQUFMSU9KTBgPIAMoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GILBMELHGCB), global::March7thHoney.Proto.GILBMELHGCB.Parser, new[]{ "JMMBAALIOJL", "StageId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GILBMELHGCB), global::March7thHoney.Proto.GILBMELHGCB.Parser, new[]{ "StageId", "JMMBAALIOJL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GILBMELHGCB(GILBMELHGCB other) : this() {
-      jMMBAALIOJL_ = other.jMMBAALIOJL_.Clone();
       stageId_ = other.stageId_;
+      jMMBAALIOJL_ = other.jMMBAALIOJL_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,19 +83,8 @@ namespace March7thHoney.Proto {
       return new GILBMELHGCB(this);
     }
 
-    /// <summary>Field number for the "JMMBAALIOJL" field.</summary>
-    public const int JMMBAALIOJLFieldNumber = 2;
-    private static readonly pb::FieldCodec<uint> _repeated_jMMBAALIOJL_codec
-        = pb::FieldCodec.ForUInt32(18);
-    private readonly pbc::RepeatedField<uint> jMMBAALIOJL_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> JMMBAALIOJL {
-      get { return jMMBAALIOJL_; }
-    }
-
     /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 1;
+    public const int StageIdFieldNumber = 14;
     private uint stageId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +93,17 @@ namespace March7thHoney.Proto {
       set {
         stageId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "JMMBAALIOJL" field.</summary>
+    public const int JMMBAALIOJLFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_jMMBAALIOJL_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> jMMBAALIOJL_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> JMMBAALIOJL {
+      get { return jMMBAALIOJL_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!jMMBAALIOJL_.Equals(other.jMMBAALIOJL_)) return false;
       if (StageId != other.StageId) return false;
+      if(!jMMBAALIOJL_.Equals(other.jMMBAALIOJL_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= jMMBAALIOJL_.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
+      hash ^= jMMBAALIOJL_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (StageId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(112);
         output.WriteUInt32(StageId);
       }
       jMMBAALIOJL_.WriteTo(output, _repeated_jMMBAALIOJL_codec);
@@ -166,7 +166,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (StageId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(112);
         output.WriteUInt32(StageId);
       }
       jMMBAALIOJL_.WriteTo(ref output, _repeated_jMMBAALIOJL_codec);
@@ -180,10 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += jMMBAALIOJL_.CalculateSize(_repeated_jMMBAALIOJL_codec);
       if (StageId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
       }
+      size += jMMBAALIOJL_.CalculateSize(_repeated_jMMBAALIOJL_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -196,10 +196,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      jMMBAALIOJL_.Add(other.jMMBAALIOJL_);
       if (other.StageId != 0) {
         StageId = other.StageId;
       }
+      jMMBAALIOJL_.Add(other.jMMBAALIOJL_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 112: {
             StageId = input.ReadUInt32();
             break;
           }
-          case 18:
-          case 16: {
+          case 122:
+          case 120: {
             jMMBAALIOJL_.AddEntriesFrom(input, _repeated_jMMBAALIOJL_codec);
             break;
           }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 112: {
             StageId = input.ReadUInt32();
             break;
           }
-          case 18:
-          case 16: {
+          case 122:
+          case 120: {
             jMMBAALIOJL_.AddEntriesFrom(ref input, _repeated_jMMBAALIOJL_codec);
             break;
           }

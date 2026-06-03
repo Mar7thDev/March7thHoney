@@ -26,11 +26,11 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChhDbWREYWlseUFjdGl2ZVR5cGUucHJvdG8qgwIKEkNtZERhaWx5QWN0aXZl",
             "VHlwZRIbChdISUFJQktERkFBTV9OTENER0lQR0ZEShAAEhwKF0hJQUlCS0RG",
-            "QUFNX0xPQ01BS09ESExIEPEZEhwKF0hJQUlCS0RGQUFNX05PSUFORkVFRUZJ",
-            "EK0aEhwKF0hJQUlCS0RGQUFNX0hMSU9ITk9BRkxBEIgaEhwKF0hJQUlCS0RG",
-            "QUFNX0NERUZESUJETklGELQaEhwKF0hJQUlCS0RGQUFNX0VCUEVITFBGUEFQ",
-            "EP8ZEhwKF0hJQUlCS0RGQUFNX0VHSk9OSEFPQUdBEPMZEhwKF0hJQUlCS0RG",
-            "QUFNX0xHTVBBRUVCTklCEOcZQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "QUFNX0hMSU9ITk9BRkxBELwaEhwKF0hJQUlCS0RGQUFNX0xPQ01BS09ESExI",
+            "ELUaEhwKF0hJQUlCS0RGQUFNX0xHTVBBRUVCTklCELIaEhwKF0hJQUlCS0RG",
+            "QUFNX0VCUEVITFBGUEFQEJ4aEhwKF0hJQUlCS0RGQUFNX05PSUFORkVFRUZJ",
+            "EP0ZEhwKF0hJQUlCS0RGQUFNX0VHSk9OSEFPQUdBELoaEhwKF0hJQUlCS0RG",
+            "QUFNX0NERUZESUJETklGEMEaQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -42,13 +42,13 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdDailyActiveType {
     [pbr::OriginalName("HIAIBKDFAAM_NLCDGIPGFDJ")] HiaibkdfaamNlcdgipgfdj = 0,
-    [pbr::OriginalName("HIAIBKDFAAM_LOCMAKODHLH")] HiaibkdfaamLocmakodhlh = 3313,
-    [pbr::OriginalName("HIAIBKDFAAM_NOIANFEEEFI")] HiaibkdfaamNoianfeeefi = 3373,
-    [pbr::OriginalName("HIAIBKDFAAM_HLIOHNOAFLA")] HiaibkdfaamHliohnoafla = 3336,
-    [pbr::OriginalName("HIAIBKDFAAM_CDEFDIBDNIF")] HiaibkdfaamCdefdibdnif = 3380,
-    [pbr::OriginalName("HIAIBKDFAAM_EBPEHLPFPAP")] HiaibkdfaamEbpehlpfpap = 3327,
-    [pbr::OriginalName("HIAIBKDFAAM_EGJONHAOAGA")] HiaibkdfaamEgjonhaoaga = 3315,
-    [pbr::OriginalName("HIAIBKDFAAM_LGMPAEEBNIB")] HiaibkdfaamLgmpaeebnib = 3303,
+    [pbr::OriginalName("HIAIBKDFAAM_HLIOHNOAFLA")] HiaibkdfaamHliohnoafla = 3388,
+    [pbr::OriginalName("HIAIBKDFAAM_LOCMAKODHLH")] HiaibkdfaamLocmakodhlh = 3381,
+    [pbr::OriginalName("HIAIBKDFAAM_LGMPAEEBNIB")] HiaibkdfaamLgmpaeebnib = 3378,
+    [pbr::OriginalName("HIAIBKDFAAM_EBPEHLPFPAP")] HiaibkdfaamEbpehlpfpap = 3358,
+    [pbr::OriginalName("HIAIBKDFAAM_NOIANFEEEFI")] HiaibkdfaamNoianfeeefi = 3325,
+    [pbr::OriginalName("HIAIBKDFAAM_EGJONHAOAGA")] HiaibkdfaamEgjonhaoaga = 3386,
+    [pbr::OriginalName("HIAIBKDFAAM_CDEFDIBDNIF")] HiaibkdfaamCdefdibdnif = 3393,
   }
 
   #endregion

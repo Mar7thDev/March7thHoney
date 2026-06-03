@@ -5,10 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HFEOGNAMHCG.proto";
 
 message SelectRogueCommonDialogueOptionScRsp {
-    HFEOGNAMHCG ONOLNGOHEMF = 10;
-    repeated uint32 CGINGCNCPCO = 15;
-    uint32 AIAFEKGBFIF = 12;
-    uint32 HAFOKMHCGFM = 6;
-    bool GNFFJMLOLOO = 3;
-    uint32 retcode = 5;
+    uint32 AIAFEKGBFIF = 5;
+    uint32 retcode = 10;
+    uint32 HAFOKMHCGFM = 12;
+    repeated uint32 CGINGCNCPCO = 14;
+    HFEOGNAMHCG ONOLNGOHEMF = 15;
 }

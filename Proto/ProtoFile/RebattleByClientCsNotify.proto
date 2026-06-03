@@ -6,6 +6,6 @@ import "BattleStatistics.proto";
 import "RebattleType.proto";
 
 message RebattleByClientCsNotify {
-    BattleStatistics stt = 15;
-    RebattleType NKDAAAGPCDB = 9;
+    BattleStatistics stt = 2;
+    RebattleType NKDAAAGPCDB = 10;
 }

@@ -6,6 +6,6 @@ import "DINGDGLKHIP.proto";
 import "ItemCostData.proto";
 
 message JEIKFFFGONB {
-    ItemCostData LNIEFKBMIPD = 14;
-    repeated DINGDGLKHIP BHBPKKKNABO = 9;
+    ItemCostData LNIEFKBMIPD = 13;
+    repeated DINGDGLKHIP BHBPKKKNABO = 15;
 }

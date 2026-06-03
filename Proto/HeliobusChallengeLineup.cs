@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1IZWxpb2J1c0NoYWxsZW5nZUxpbmV1cC5wcm90byJVChdIZWxpb2J1c0No",
-            "YWxsZW5nZUxpbmV1cBIWCg5hdmF0YXJfaWRfbGlzdBgOIAMoDRIQCghncm91",
-            "cF9pZBgHIAEoDRIQCghza2lsbF9pZBgPIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "YWxsZW5nZUxpbmV1cBIWCg5hdmF0YXJfaWRfbGlzdBgEIAMoDRIQCghncm91",
+            "cF9pZBgIIAEoDRIQCghza2lsbF9pZBgJIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id_list" field.</summary>
-    public const int AvatarIdListFieldNumber = 14;
+    public const int AvatarIdListFieldNumber = 4;
     private static readonly pb::FieldCodec<uint> _repeated_avatarIdList_codec
-        = pb::FieldCodec.ForUInt32(114);
+        = pb::FieldCodec.ForUInt32(34);
     private readonly pbc::RepeatedField<uint> avatarIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 7;
+    public const int GroupIdFieldNumber = 8;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "skill_id" field.</summary>
-    public const int SkillIdFieldNumber = 15;
+    public const int SkillIdFieldNumber = 9;
     private uint skillId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -166,13 +166,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      avatarIdList_.WriteTo(output, _repeated_avatarIdList_codec);
       if (GroupId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(GroupId);
       }
-      avatarIdList_.WriteTo(output, _repeated_avatarIdList_codec);
       if (SkillId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteUInt32(SkillId);
       }
       if (_unknownFields != null) {
@@ -185,13 +185,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      avatarIdList_.WriteTo(ref output, _repeated_avatarIdList_codec);
       if (GroupId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(GroupId);
       }
-      avatarIdList_.WriteTo(ref output, _repeated_avatarIdList_codec);
       if (SkillId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteUInt32(SkillId);
       }
       if (_unknownFields != null) {
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 114:
-          case 112: {
+          case 34:
+          case 32: {
             avatarIdList_.AddEntriesFrom(input, _repeated_avatarIdList_codec);
             break;
           }
-          case 120: {
+          case 64: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             SkillId = input.ReadUInt32();
             break;
           }
@@ -281,16 +281,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 114:
-          case 112: {
+          case 34:
+          case 32: {
             avatarIdList_.AddEntriesFrom(ref input, _repeated_avatarIdList_codec);
             break;
           }
-          case 120: {
+          case 64: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             SkillId = input.ReadUInt32();
             break;
           }

@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCQURPT05QQ0RMTy5wcm90byJCCgtCQURPT05QQ0RMTxITCgtBSkdPTEFL",
-            "TkdQQRgFIAEoCBIMCgR0aW1lGAIgASgNEhAKCGxldmVsX2lkGAMgASgNQhaq",
+            "TkdQQRgBIAEoCBIQCghsZXZlbF9pZBgIIAEoDRIMCgR0aW1lGAogASgNQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BADOONPCDLO), global::March7thHoney.Proto.BADOONPCDLO.Parser, new[]{ "AJGOLAKNGPA", "Time", "LevelId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BADOONPCDLO), global::March7thHoney.Proto.BADOONPCDLO.Parser, new[]{ "AJGOLAKNGPA", "LevelId", "Time" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BADOONPCDLO(BADOONPCDLO other) : this() {
       aJGOLAKNGPA_ = other.aJGOLAKNGPA_;
-      time_ = other.time_;
       levelId_ = other.levelId_;
+      time_ = other.time_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "AJGOLAKNGPA" field.</summary>
-    public const int AJGOLAKNGPAFieldNumber = 5;
+    public const int AJGOLAKNGPAFieldNumber = 1;
     private bool aJGOLAKNGPA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,20 +96,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "time" field.</summary>
-    public const int TimeFieldNumber = 2;
-    private uint time_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Time {
-      get { return time_; }
-      set {
-        time_ = value;
-      }
-    }
-
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 3;
+    public const int LevelIdFieldNumber = 8;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return levelId_; }
       set {
         levelId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "time" field.</summary>
+    public const int TimeFieldNumber = 10;
+    private uint time_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Time {
+      get { return time_; }
+      set {
+        time_ = value;
       }
     }
 
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (AJGOLAKNGPA != other.AJGOLAKNGPA) return false;
-      if (Time != other.Time) return false;
       if (LevelId != other.LevelId) return false;
+      if (Time != other.Time) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (AJGOLAKNGPA != false) hash ^= AJGOLAKNGPA.GetHashCode();
-      if (Time != 0) hash ^= Time.GetHashCode();
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
+      if (Time != 0) hash ^= Time.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Time != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Time);
+      if (AJGOLAKNGPA != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(AJGOLAKNGPA);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(64);
         output.WriteUInt32(LevelId);
       }
-      if (AJGOLAKNGPA != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(AJGOLAKNGPA);
+      if (Time != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Time);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Time != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Time);
+      if (AJGOLAKNGPA != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(AJGOLAKNGPA);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(64);
         output.WriteUInt32(LevelId);
       }
-      if (AJGOLAKNGPA != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(AJGOLAKNGPA);
+      if (Time != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Time);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -213,11 +213,11 @@ namespace March7thHoney.Proto {
       if (AJGOLAKNGPA != false) {
         size += 1 + 1;
       }
-      if (Time != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Time);
-      }
       if (LevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
+      }
+      if (Time != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Time);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
       if (other.AJGOLAKNGPA != false) {
         AJGOLAKNGPA = other.AJGOLAKNGPA;
       }
-      if (other.Time != 0) {
-        Time = other.Time;
-      }
       if (other.LevelId != 0) {
         LevelId = other.LevelId;
+      }
+      if (other.Time != 0) {
+        Time = other.Time;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Time = input.ReadUInt32();
+          case 8: {
+            AJGOLAKNGPA = input.ReadBool();
             break;
           }
-          case 24: {
+          case 64: {
             LevelId = input.ReadUInt32();
             break;
           }
-          case 40: {
-            AJGOLAKNGPA = input.ReadBool();
+          case 80: {
+            Time = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Time = input.ReadUInt32();
+          case 8: {
+            AJGOLAKNGPA = input.ReadBool();
             break;
           }
-          case 24: {
+          case 64: {
             LevelId = input.ReadUInt32();
             break;
           }
-          case 40: {
-            AJGOLAKNGPA = input.ReadBool();
+          case 80: {
+            Time = input.ReadUInt32();
             break;
           }
         }

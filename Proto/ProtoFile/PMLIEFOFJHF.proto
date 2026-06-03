@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KBONOPFLPDJ.proto";
 
 message PMLIEFOFJHF {
-    repeated KBONOPFLPDJ DBOADIFANMH = 14;
-    repeated uint32 ICCCHCCDKND = 3;
-    uint32 retcode = 15;
+    uint32 retcode = 7;
+    repeated KBONOPFLPDJ DBOADIFANMH = 8;
+    repeated uint32 ICCCHCCDKND = 14;
 }

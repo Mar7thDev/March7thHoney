@@ -6,7 +6,7 @@ import "AOAOBPGFHLA.proto";
 import "JAONELJJAFK.proto";
 
 message HJNPOBAMKKF {
-    repeated JAONELJJAFK CDMKBCHLPAB = 2;
     repeated AOAOBPGFHLA HGNKNFJPIKI = 1;
+    repeated JAONELJJAFK CDMKBCHLPAB = 2;
     uint32 MNCFOGJECMF = 3;
 }

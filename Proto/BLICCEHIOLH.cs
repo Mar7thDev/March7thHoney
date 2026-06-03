@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static BLICCEHIOLHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCTElDQ0VISU9MSC5wcm90byKXAQoLQkxJQ0NFSElPTEgSMgoLTEJFSUhB",
-            "T0tIQUQYCSADKAsyHS5CTElDQ0VISU9MSC5MQkVJSEFPS0hBREVudHJ5Eg8K",
-            "B21heF9udW0YASABKA0SDwoHY3VyX251bRgPIAEoDRoyChBMQkVJSEFPS0hB",
+            "ChFCTElDQ0VISU9MSC5wcm90byKXAQoLQkxJQ0NFSElPTEgSDwoHY3VyX251",
+            "bRgDIAEoDRIPCgdtYXhfbnVtGAQgASgNEjIKC0xCRUlIQU9LSEFEGAsgAygL",
+            "Mh0uQkxJQ0NFSElPTEguTEJFSUhBT0tIQURFbnRyeRoyChBMQkVJSEFPS0hB",
             "REVudHJ5EgsKA2tleRgBIAEoDRINCgV2YWx1ZRgCIAEoDToCOAFCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BLICCEHIOLH), global::March7thHoney.Proto.BLICCEHIOLH.Parser, new[]{ "LBEIHAOKHAD", "MaxNum", "CurNum" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BLICCEHIOLH), global::March7thHoney.Proto.BLICCEHIOLH.Parser, new[]{ "CurNum", "MaxNum", "LBEIHAOKHAD" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BLICCEHIOLH(BLICCEHIOLH other) : this() {
-      lBEIHAOKHAD_ = other.lBEIHAOKHAD_.Clone();
-      maxNum_ = other.maxNum_;
       curNum_ = other.curNum_;
+      maxNum_ = other.maxNum_;
+      lBEIHAOKHAD_ = other.lBEIHAOKHAD_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,19 +86,20 @@ namespace March7thHoney.Proto {
       return new BLICCEHIOLH(this);
     }
 
-    /// <summary>Field number for the "LBEIHAOKHAD" field.</summary>
-    public const int LBEIHAOKHADFieldNumber = 9;
-    private static readonly pbc::MapField<uint, uint>.Codec _map_lBEIHAOKHAD_codec
-        = new pbc::MapField<uint, uint>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForUInt32(16, 0), 74);
-    private readonly pbc::MapField<uint, uint> lBEIHAOKHAD_ = new pbc::MapField<uint, uint>();
+    /// <summary>Field number for the "cur_num" field.</summary>
+    public const int CurNumFieldNumber = 3;
+    private uint curNum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<uint, uint> LBEIHAOKHAD {
-      get { return lBEIHAOKHAD_; }
+    public uint CurNum {
+      get { return curNum_; }
+      set {
+        curNum_ = value;
+      }
     }
 
     /// <summary>Field number for the "max_num" field.</summary>
-    public const int MaxNumFieldNumber = 1;
+    public const int MaxNumFieldNumber = 4;
     private uint maxNum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,16 +110,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cur_num" field.</summary>
-    public const int CurNumFieldNumber = 15;
-    private uint curNum_;
+    /// <summary>Field number for the "LBEIHAOKHAD" field.</summary>
+    public const int LBEIHAOKHADFieldNumber = 11;
+    private static readonly pbc::MapField<uint, uint>.Codec _map_lBEIHAOKHAD_codec
+        = new pbc::MapField<uint, uint>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForUInt32(16, 0), 90);
+    private readonly pbc::MapField<uint, uint> lBEIHAOKHAD_ = new pbc::MapField<uint, uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurNum {
-      get { return curNum_; }
-      set {
-        curNum_ = value;
-      }
+    public pbc::MapField<uint, uint> LBEIHAOKHAD {
+      get { return lBEIHAOKHAD_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!LBEIHAOKHAD.Equals(other.LBEIHAOKHAD)) return false;
-      if (MaxNum != other.MaxNum) return false;
       if (CurNum != other.CurNum) return false;
+      if (MaxNum != other.MaxNum) return false;
+      if (!LBEIHAOKHAD.Equals(other.LBEIHAOKHAD)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= LBEIHAOKHAD.GetHashCode();
-      if (MaxNum != 0) hash ^= MaxNum.GetHashCode();
       if (CurNum != 0) hash ^= CurNum.GetHashCode();
+      if (MaxNum != 0) hash ^= MaxNum.GetHashCode();
+      hash ^= LBEIHAOKHAD.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,15 +167,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (CurNum != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(CurNum);
+      }
       if (MaxNum != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(32);
         output.WriteUInt32(MaxNum);
       }
       lBEIHAOKHAD_.WriteTo(output, _map_lBEIHAOKHAD_codec);
-      if (CurNum != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(CurNum);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -186,15 +186,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (CurNum != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(CurNum);
+      }
       if (MaxNum != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(32);
         output.WriteUInt32(MaxNum);
       }
       lBEIHAOKHAD_.WriteTo(ref output, _map_lBEIHAOKHAD_codec);
-      if (CurNum != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(CurNum);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -205,13 +205,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += lBEIHAOKHAD_.CalculateSize(_map_lBEIHAOKHAD_codec);
-      if (MaxNum != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxNum);
-      }
       if (CurNum != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurNum);
       }
+      if (MaxNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxNum);
+      }
+      size += lBEIHAOKHAD_.CalculateSize(_map_lBEIHAOKHAD_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -224,13 +224,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      lBEIHAOKHAD_.MergeFrom(other.lBEIHAOKHAD_);
-      if (other.MaxNum != 0) {
-        MaxNum = other.MaxNum;
-      }
       if (other.CurNum != 0) {
         CurNum = other.CurNum;
       }
+      if (other.MaxNum != 0) {
+        MaxNum = other.MaxNum;
+      }
+      lBEIHAOKHAD_.MergeFrom(other.lBEIHAOKHAD_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -250,16 +250,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 24: {
+            CurNum = input.ReadUInt32();
+            break;
+          }
+          case 32: {
             MaxNum = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 90: {
             lBEIHAOKHAD_.AddEntriesFrom(input, _map_lBEIHAOKHAD_codec);
-            break;
-          }
-          case 120: {
-            CurNum = input.ReadUInt32();
             break;
           }
         }
@@ -281,16 +281,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 24: {
+            CurNum = input.ReadUInt32();
+            break;
+          }
+          case 32: {
             MaxNum = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 90: {
             lBEIHAOKHAD_.AddEntriesFrom(ref input, _map_lBEIHAOKHAD_codec);
-            break;
-          }
-          case 120: {
-            CurNum = input.ReadUInt32();
             break;
           }
         }

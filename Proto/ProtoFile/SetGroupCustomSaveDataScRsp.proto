@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetGroupCustomSaveDataScRsp {
-    uint32 retcode = 12;
-    uint32 group_id = 8;
-    uint32 entry_id = 7;
+    uint32 group_id = 5;
+    uint32 retcode = 13;
+    uint32 entry_id = 15;
 }

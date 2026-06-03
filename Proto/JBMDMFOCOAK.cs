@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFKQk1ETUZPQ09BSy5wcm90bxoRQU9KRU9ERU5IUEwucHJvdG8iRQoLSkJN",
-            "RE1GT0NPQUsSIQoLTE1NTkRPRklNQk4YCiABKAsyDC5BT0pFT0RFTkhQTBIT",
-            "CgtQR0lFRUdDR0NESRgGIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "RE1GT0NPQUsSIQoLTE1NTkRPRklNQk4YBiABKAsyDC5BT0pFT0RFTkhQTBIT",
+            "CgtQR0lFRUdDR0NESRgIIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AOJEODENHPLReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LMMNDOFIMBN" field.</summary>
-    public const int LMMNDOFIMBNFieldNumber = 10;
+    public const int LMMNDOFIMBNFieldNumber = 6;
     private global::March7thHoney.Proto.AOJEODENHPL lMMNDOFIMBN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PGIEEGCGCDI" field.</summary>
-    public const int PGIEEGCGCDIFieldNumber = 6;
+    public const int PGIEEGCGCDIFieldNumber = 8;
     private uint pGIEEGCGCDI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PGIEEGCGCDI != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(PGIEEGCGCDI);
-      }
       if (lMMNDOFIMBN_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(50);
         output.WriteMessage(LMMNDOFIMBN);
+      }
+      if (PGIEEGCGCDI != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(PGIEEGCGCDI);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PGIEEGCGCDI != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(PGIEEGCGCDI);
-      }
       if (lMMNDOFIMBN_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(50);
         output.WriteMessage(LMMNDOFIMBN);
+      }
+      if (PGIEEGCGCDI != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(PGIEEGCGCDI);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            PGIEEGCGCDI = input.ReadUInt32();
-            break;
-          }
-          case 82: {
+          case 50: {
             if (lMMNDOFIMBN_ == null) {
               LMMNDOFIMBN = new global::March7thHoney.Proto.AOJEODENHPL();
             }
             input.ReadMessage(LMMNDOFIMBN);
+            break;
+          }
+          case 64: {
+            PGIEEGCGCDI = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            PGIEEGCGCDI = input.ReadUInt32();
-            break;
-          }
-          case 82: {
+          case 50: {
             if (lMMNDOFIMBN_ == null) {
               LMMNDOFIMBN = new global::March7thHoney.Proto.AOJEODENHPL();
             }
             input.ReadMessage(LMMNDOFIMBN);
+            break;
+          }
+          case 64: {
+            PGIEEGCGCDI = input.ReadUInt32();
             break;
           }
         }

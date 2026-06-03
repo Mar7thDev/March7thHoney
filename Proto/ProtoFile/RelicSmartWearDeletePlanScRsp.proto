@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RelicSmartWearDeletePlanScRsp {
-    uint32 unique_id = 5;
-    uint32 retcode = 8;
+    uint32 unique_id = 4;
+    uint32 retcode = 10;
 }

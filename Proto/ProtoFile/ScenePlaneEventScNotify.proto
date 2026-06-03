@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message ScenePlaneEventScNotify {
-    ItemList ECCIHPNDEHM = 13;
+    ItemList JENLPPHNECF = 3;
     ItemList DMNKFILNCGB = 4;
-    ItemList JENLPPHNECF = 9;
-    ItemList get_item_list = 11;
+    ItemList get_item_list = 5;
+    ItemList ECCIHPNDEHM = 10;
 }

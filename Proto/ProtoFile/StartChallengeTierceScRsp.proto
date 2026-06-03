@@ -6,7 +6,7 @@ import "ChallengeTierceChallengeInfo.proto";
 import "SceneInfo.proto";
 
 message StartChallengeTierceScRsp {
-    ChallengeTierceChallengeInfo challenge_tierce_info = 11;
-    SceneInfo scene = 5;
-    uint32 retcode = 13;
+    uint32 retcode = 4;
+    SceneInfo scene = 7;
+    ChallengeTierceChallengeInfo challenge_tierce_info = 12;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DressRelicParam {
-    uint32 relic_unique_id = 2;
-    uint32 relic_type = 1;
+    uint32 relic_unique_id = 1;
+    uint32 relic_type = 14;
 }

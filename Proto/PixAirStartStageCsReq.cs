@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtQaXhBaXJTdGFydFN0YWdlQ3NSZXEucHJvdG8iZQoVUGl4QWlyU3RhcnRT",
-            "dGFnZUNzUmVxEhAKCHBsYW5lX2lkGAogASgNEhMKC0VNTUdIRExJUE9IGA0g",
-            "ASgIEhAKCHN0YWdlX2lkGA8gASgNEhMKC0FMSk5JSE5MTk1BGAkgASgNQhaq",
+            "dGFnZUNzUmVxEhAKCHN0YWdlX2lkGAEgASgNEhMKC0VNTUdIRExJUE9IGAYg",
+            "ASgIEhMKC0FMSk5JSE5MTk1BGAcgASgNEhAKCHBsYW5lX2lkGAggASgNQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PixAirStartStageCsReq), global::March7thHoney.Proto.PixAirStartStageCsReq.Parser, new[]{ "PlaneId", "EMMGHDLIPOH", "StageId", "ALJNIHNLNMA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PixAirStartStageCsReq), global::March7thHoney.Proto.PixAirStartStageCsReq.Parser, new[]{ "StageId", "EMMGHDLIPOH", "ALJNIHNLNMA", "PlaneId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PixAirStartStageCsReq(PixAirStartStageCsReq other) : this() {
-      planeId_ = other.planeId_;
-      eMMGHDLIPOH_ = other.eMMGHDLIPOH_;
       stageId_ = other.stageId_;
+      eMMGHDLIPOH_ = other.eMMGHDLIPOH_;
       aLJNIHNLNMA_ = other.aLJNIHNLNMA_;
+      planeId_ = other.planeId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,32 +86,8 @@ namespace March7thHoney.Proto {
       return new PixAirStartStageCsReq(this);
     }
 
-    /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 10;
-    private uint planeId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlaneId {
-      get { return planeId_; }
-      set {
-        planeId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "EMMGHDLIPOH" field.</summary>
-    public const int EMMGHDLIPOHFieldNumber = 13;
-    private bool eMMGHDLIPOH_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool EMMGHDLIPOH {
-      get { return eMMGHDLIPOH_; }
-      set {
-        eMMGHDLIPOH_ = value;
-      }
-    }
-
     /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 15;
+    public const int StageIdFieldNumber = 1;
     private uint stageId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,8 +98,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "EMMGHDLIPOH" field.</summary>
+    public const int EMMGHDLIPOHFieldNumber = 6;
+    private bool eMMGHDLIPOH_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool EMMGHDLIPOH {
+      get { return eMMGHDLIPOH_; }
+      set {
+        eMMGHDLIPOH_ = value;
+      }
+    }
+
     /// <summary>Field number for the "ALJNIHNLNMA" field.</summary>
-    public const int ALJNIHNLNMAFieldNumber = 9;
+    public const int ALJNIHNLNMAFieldNumber = 7;
     private uint aLJNIHNLNMA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +119,18 @@ namespace March7thHoney.Proto {
       get { return aLJNIHNLNMA_; }
       set {
         aLJNIHNLNMA_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "plane_id" field.</summary>
+    public const int PlaneIdFieldNumber = 8;
+    private uint planeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PlaneId {
+      get { return planeId_; }
+      set {
+        planeId_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PlaneId != other.PlaneId) return false;
-      if (EMMGHDLIPOH != other.EMMGHDLIPOH) return false;
       if (StageId != other.StageId) return false;
+      if (EMMGHDLIPOH != other.EMMGHDLIPOH) return false;
       if (ALJNIHNLNMA != other.ALJNIHNLNMA) return false;
+      if (PlaneId != other.PlaneId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
-      if (EMMGHDLIPOH != false) hash ^= EMMGHDLIPOH.GetHashCode();
       if (StageId != 0) hash ^= StageId.GetHashCode();
+      if (EMMGHDLIPOH != false) hash ^= EMMGHDLIPOH.GetHashCode();
       if (ALJNIHNLNMA != 0) hash ^= ALJNIHNLNMA.GetHashCode();
+      if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (StageId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(StageId);
+      }
+      if (EMMGHDLIPOH != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(EMMGHDLIPOH);
+      }
       if (ALJNIHNLNMA != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(56);
         output.WriteUInt32(ALJNIHNLNMA);
       }
       if (PlaneId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(PlaneId);
-      }
-      if (EMMGHDLIPOH != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(EMMGHDLIPOH);
-      }
-      if (StageId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(StageId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (StageId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(StageId);
+      }
+      if (EMMGHDLIPOH != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(EMMGHDLIPOH);
+      }
       if (ALJNIHNLNMA != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(56);
         output.WriteUInt32(ALJNIHNLNMA);
       }
       if (PlaneId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(PlaneId);
-      }
-      if (EMMGHDLIPOH != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(EMMGHDLIPOH);
-      }
-      if (StageId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(StageId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PlaneId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
+      if (StageId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
       }
       if (EMMGHDLIPOH != false) {
         size += 1 + 1;
       }
-      if (StageId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
-      }
       if (ALJNIHNLNMA != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ALJNIHNLNMA);
+      }
+      if (PlaneId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PlaneId != 0) {
-        PlaneId = other.PlaneId;
+      if (other.StageId != 0) {
+        StageId = other.StageId;
       }
       if (other.EMMGHDLIPOH != false) {
         EMMGHDLIPOH = other.EMMGHDLIPOH;
       }
-      if (other.StageId != 0) {
-        StageId = other.StageId;
-      }
       if (other.ALJNIHNLNMA != 0) {
         ALJNIHNLNMA = other.ALJNIHNLNMA;
+      }
+      if (other.PlaneId != 0) {
+        PlaneId = other.PlaneId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            ALJNIHNLNMA = input.ReadUInt32();
+          case 8: {
+            StageId = input.ReadUInt32();
             break;
           }
-          case 80: {
-            PlaneId = input.ReadUInt32();
-            break;
-          }
-          case 104: {
+          case 48: {
             EMMGHDLIPOH = input.ReadBool();
             break;
           }
-          case 120: {
-            StageId = input.ReadUInt32();
+          case 56: {
+            ALJNIHNLNMA = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            PlaneId = input.ReadUInt32();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            ALJNIHNLNMA = input.ReadUInt32();
+          case 8: {
+            StageId = input.ReadUInt32();
             break;
           }
-          case 80: {
-            PlaneId = input.ReadUInt32();
-            break;
-          }
-          case 104: {
+          case 48: {
             EMMGHDLIPOH = input.ReadBool();
             break;
           }
-          case 120: {
-            StageId = input.ReadUInt32();
+          case 56: {
+            ALJNIHNLNMA = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            PlaneId = input.ReadUInt32();
             break;
           }
         }

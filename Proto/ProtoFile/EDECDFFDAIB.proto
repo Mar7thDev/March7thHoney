@@ -7,11 +7,11 @@ import "COMJKPOMILA.proto";
 import "DABKPEFPBOL.proto";
 
 message EDECDFFDAIB {
-    repeated COMJKPOMILA DKGGJGDAJDD = 15;
-    repeated uint32 FJKDOIDEBJC = 10;
-    bytes FJLPJJNIHLC = 7;
-    repeated AJJMGKHEBFH BPDMEELPDLF = 8;
-    repeated DABKPEFPBOL JHBLCEGCHBE = 4;
-    bytes IGHFGADJCMG = 1;
-    uint32 EIKOEBDEGGA = 12;
+    repeated uint32 FJKDOIDEBJC = 3;
+    uint32 EIKOEBDEGGA = 5;
+    repeated DABKPEFPBOL JHBLCEGCHBE = 6;
+    bytes FJLPJJNIHLC = 8;
+    repeated AJJMGKHEBFH BPDMEELPDLF = 9;
+    repeated COMJKPOMILA DKGGJGDAJDD = 12;
+    bytes IGHFGADJCMG = 14;
 }

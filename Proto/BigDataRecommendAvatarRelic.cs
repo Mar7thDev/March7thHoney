@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFCaWdEYXRhUmVjb21tZW5kQXZhdGFyUmVsaWMucHJvdG8aIUJpZ0RhdGFB",
             "dmF0YXJSZWxpY1JlY29tbWVuZC5wcm90byJfChtCaWdEYXRhUmVjb21tZW5k",
-            "QXZhdGFyUmVsaWMSQAoacmVjb21lbmRlZF9yZWxpY19pbmZvX2xpc3QYDSAD",
+            "QXZhdGFyUmVsaWMSQAoacmVjb21lbmRlZF9yZWxpY19pbmZvX2xpc3QYBSAD",
             "KAsyHC5CaWdEYXRhQXZhdGFyUmVsaWNSZWNvbW1lbmRCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "recomended_relic_info_list" field.</summary>
-    public const int RecomendedRelicInfoListFieldNumber = 13;
+    public const int RecomendedRelicInfoListFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.BigDataAvatarRelicRecommend> _repeated_recomendedRelicInfoList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.BigDataAvatarRelicRecommend.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.BigDataAvatarRelicRecommend.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.BigDataAvatarRelicRecommend> recomendedRelicInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BigDataAvatarRelicRecommend>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -192,7 +192,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 106: {
+          case 42: {
             recomendedRelicInfoList_.AddEntriesFrom(input, _repeated_recomendedRelicInfoList_codec);
             break;
           }
@@ -215,7 +215,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 106: {
+          case 42: {
             recomendedRelicInfoList_.AddEntriesFrom(ref input, _repeated_recomendedRelicInfoList_codec);
             break;
           }

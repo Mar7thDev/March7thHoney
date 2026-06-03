@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetAiPamChatHistoryCsReq {
-    uint32 target_side = 10;
+    uint32 target_side = 11;
 }

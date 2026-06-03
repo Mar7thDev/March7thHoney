@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVCYXR0bGVFcXVpcG1lbnQucHJvdG8iTQoPQmF0dGxlRXF1aXBtZW50EgoK",
-            "AmlkGAEgASgNEg0KBWxldmVsGAIgASgNEgwKBHJhbmsYBCABKA0SEQoJcHJv",
-            "bW90aW9uGAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "AmlkGAEgASgNEg0KBWxldmVsGAIgASgNEhEKCXByb21vdGlvbhgDIAEoDRIM",
+            "CgRyYW5rGAQgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleEquipment), global::March7thHoney.Proto.BattleEquipment.Parser, new[]{ "Id", "Level", "Rank", "Promotion" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleEquipment), global::March7thHoney.Proto.BattleEquipment.Parser, new[]{ "Id", "Level", "Promotion", "Rank" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     public BattleEquipment(BattleEquipment other) : this() {
       id_ = other.id_;
       level_ = other.level_;
-      rank_ = other.rank_;
       promotion_ = other.promotion_;
+      rank_ = other.rank_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -109,18 +109,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "rank" field.</summary>
-    public const int RankFieldNumber = 4;
-    private uint rank_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Rank {
-      get { return rank_; }
-      set {
-        rank_ = value;
-      }
-    }
-
     /// <summary>Field number for the "promotion" field.</summary>
     public const int PromotionFieldNumber = 3;
     private uint promotion_;
@@ -130,6 +118,18 @@ namespace March7thHoney.Proto {
       get { return promotion_; }
       set {
         promotion_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rank" field.</summary>
+    public const int RankFieldNumber = 4;
+    private uint rank_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Rank {
+      get { return rank_; }
+      set {
+        rank_ = value;
       }
     }
 
@@ -150,8 +150,8 @@ namespace March7thHoney.Proto {
       }
       if (Id != other.Id) return false;
       if (Level != other.Level) return false;
-      if (Rank != other.Rank) return false;
       if (Promotion != other.Promotion) return false;
+      if (Rank != other.Rank) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,8 +161,8 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
-      if (Rank != 0) hash ^= Rank.GetHashCode();
       if (Promotion != 0) hash ^= Promotion.GetHashCode();
+      if (Rank != 0) hash ^= Rank.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -239,11 +239,11 @@ namespace March7thHoney.Proto {
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
-      if (Rank != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
-      }
       if (Promotion != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Promotion);
+      }
+      if (Rank != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -263,11 +263,11 @@ namespace March7thHoney.Proto {
       if (other.Level != 0) {
         Level = other.Level;
       }
-      if (other.Rank != 0) {
-        Rank = other.Rank;
-      }
       if (other.Promotion != 0) {
         Promotion = other.Promotion;
+      }
+      if (other.Rank != 0) {
+        Rank = other.Rank;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

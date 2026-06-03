@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PlayerDetailInfo.proto";
 
 message GetPlayerDetailInfoScRsp {
-    PlayerDetailInfo detail_info = 3;
-    uint32 retcode = 2;
+    PlayerDetailInfo detail_info = 1;
+    uint32 retcode = 7;
 }

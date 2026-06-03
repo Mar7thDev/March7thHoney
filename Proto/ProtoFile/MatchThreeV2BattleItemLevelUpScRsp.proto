@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MatchThreeV2BattleItemLevelUpScRsp {
-    uint32 FMEHKPKHGJA = 3;
-    uint32 IGOOJKMPMDC = 15;
-    uint32 retcode = 1;
+    uint32 FMEHKPKHGJA = 5;
+    uint32 retcode = 8;
+    uint32 IGOOJKMPMDC = 10;
 }

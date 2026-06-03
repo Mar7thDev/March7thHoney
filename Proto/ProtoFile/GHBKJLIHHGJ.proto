@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GHBKJLIHHGJ {
-    uint32 retcode = 2;
-    uint32 NNDNCAEGDFI = 8;
+    uint32 NNDNCAEGDFI = 5;
+    uint32 retcode = 7;
 }

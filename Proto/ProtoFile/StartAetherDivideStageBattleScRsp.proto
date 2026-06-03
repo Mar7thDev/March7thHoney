@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AetherDivideBattleInfo.proto";
 
 message StartAetherDivideStageBattleScRsp {
-    AetherDivideBattleInfo battle_info = 8;
-    uint32 retcode = 6;
+    uint32 retcode = 4;
+    AetherDivideBattleInfo battle_info = 9;
 }

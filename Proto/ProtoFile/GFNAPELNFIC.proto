@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DKPHAFPGDLO.proto";
 
 message GFNAPELNFIC {
-    DKPHAFPGDLO JBNMAOFOFPE = 3;
     uint32 CLFBBAPEPML = 1;
-    bool AALCCPJCBME = 2;
+    bool is_locked = 2;
+    DKPHAFPGDLO JBNMAOFOFPE = 3;
 }

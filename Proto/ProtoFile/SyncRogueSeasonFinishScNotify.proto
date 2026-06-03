@@ -4,13 +4,11 @@ option csharp_namespace = "March7thHoney.Proto";
 
 import "GKHGFCBMLBL.proto";
 import "LineupInfo.proto";
-import "PHINPOJOJGD.proto";
 import "SceneInfo.proto";
 
 message SyncRogueSeasonFinishScNotify {
-    GKHGFCBMLBL NLEOMLNOKCC = 1;
-    SceneInfo scene = 12;
-    LineupInfo lineup = 7;
-    PHINPOJOJGD EGGJFCELHNK = 9;
     bool FALJMPELHIO = 2;
+    GKHGFCBMLBL NLEOMLNOKCC = 3;
+    LineupInfo lineup = 14;
+    SceneInfo scene = 15;
 }

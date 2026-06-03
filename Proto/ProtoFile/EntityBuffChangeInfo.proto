@@ -6,11 +6,11 @@ import "BuffInfo.proto";
 import "SceneEntityBuffChangeType.proto";
 
 message EntityBuffChangeInfo {
-    SceneEntityBuffChangeType reason = 3;
-    uint32 cast_entity_id = 10;
-    uint32 entity_id = 2;
+    SceneEntityBuffChangeType reason = 1;
+    uint32 cast_entity_id = 8;
+    uint32 entity_id = 12;
     oneof KKNBOACNCON {
-        BuffInfo buff_change_info = 4;
-        uint32 remove_buff_id = 7;
+        BuffInfo buff_change_info = 3;
+        uint32 remove_buff_id = 9;
     }
 }

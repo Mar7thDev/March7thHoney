@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static StartMatchScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVTdGFydE1hdGNoU2NSc3AucHJvdG8aFkxvYmJ5R2FtZUV4dEluZm8ucHJv",
-            "dG8iSgoPU3RhcnRNYXRjaFNjUnNwEiYKC0pJREtEUFBQRFBGGAQgASgLMhEu",
-            "TG9iYnlHYW1lRXh0SW5mbxIPCgdyZXRjb2RlGA8gASgNQhaqAhNNYXJjaDd0",
-            "aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChVTdGFydE1hdGNoU2NSc3AucHJvdG8iIgoPU3RhcnRNYXRjaFNjUnNwEg8K",
+            "B3JldGNvZGUYAiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.LobbyGameExtInfoReflection.Descriptor, },
+          new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartMatchScRsp), global::March7thHoney.Proto.StartMatchScRsp.Parser, new[]{ "JIDKDPPPDPF", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartMatchScRsp), global::March7thHoney.Proto.StartMatchScRsp.Parser, new[]{ "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +72,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartMatchScRsp(StartMatchScRsp other) : this() {
-      jIDKDPPPDPF_ = other.jIDKDPPPDPF_ != null ? other.jIDKDPPPDPF_.Clone() : null;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,20 +82,8 @@ namespace March7thHoney.Proto {
       return new StartMatchScRsp(this);
     }
 
-    /// <summary>Field number for the "JIDKDPPPDPF" field.</summary>
-    public const int JIDKDPPPDPFFieldNumber = 4;
-    private global::March7thHoney.Proto.LobbyGameExtInfo jIDKDPPPDPF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.LobbyGameExtInfo JIDKDPPPDPF {
-      get { return jIDKDPPPDPF_; }
-      set {
-        jIDKDPPPDPF_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
+    public const int RetcodeFieldNumber = 2;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +109,6 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(JIDKDPPPDPF, other.JIDKDPPPDPF)) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -132,7 +117,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (jIDKDPPPDPF_ != null) hash ^= JIDKDPPPDPF.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -152,12 +136,8 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (jIDKDPPPDPF_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(JIDKDPPPDPF);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -170,12 +150,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (jIDKDPPPDPF_ != null) {
-        output.WriteRawTag(34);
-        output.WriteMessage(JIDKDPPPDPF);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -188,9 +164,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (jIDKDPPPDPF_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(JIDKDPPPDPF);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
@@ -205,12 +178,6 @@ namespace March7thHoney.Proto {
     public void MergeFrom(StartMatchScRsp other) {
       if (other == null) {
         return;
-      }
-      if (other.jIDKDPPPDPF_ != null) {
-        if (jIDKDPPPDPF_ == null) {
-          JIDKDPPPDPF = new global::March7thHoney.Proto.LobbyGameExtInfo();
-        }
-        JIDKDPPPDPF.MergeFrom(other.JIDKDPPPDPF);
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
@@ -234,14 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
-            if (jIDKDPPPDPF_ == null) {
-              JIDKDPPPDPF = new global::March7thHoney.Proto.LobbyGameExtInfo();
-            }
-            input.ReadMessage(JIDKDPPPDPF);
-            break;
-          }
-          case 120: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -264,14 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
-            if (jIDKDPPPDPF_ == null) {
-              JIDKDPPPDPF = new global::March7thHoney.Proto.LobbyGameExtInfo();
-            }
-            input.ReadMessage(JIDKDPPPDPF);
-            break;
-          }
-          case 120: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }

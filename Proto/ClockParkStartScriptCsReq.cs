@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9DbG9ja1BhcmtTdGFydFNjcmlwdENzUmVxLnByb3RvIkMKGUNsb2NrUGFy",
-            "a1N0YXJ0U2NyaXB0Q3NSZXESEwoLQkRHTU5QSUpEREwYDyADKA0SEQoJc2Ny",
-            "aXB0X2lkGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "a1N0YXJ0U2NyaXB0Q3NSZXESEwoLQkRHTU5QSUpEREwYASADKA0SEQoJc2Ny",
+            "aXB0X2lkGAQgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BDGMNPIJDDL" field.</summary>
-    public const int BDGMNPIJDDLFieldNumber = 15;
+    public const int BDGMNPIJDDLFieldNumber = 1;
     private static readonly pb::FieldCodec<uint> _repeated_bDGMNPIJDDL_codec
-        = pb::FieldCodec.ForUInt32(122);
+        = pb::FieldCodec.ForUInt32(10);
     private readonly pbc::RepeatedField<uint> bDGMNPIJDDL_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "script_id" field.</summary>
-    public const int ScriptIdFieldNumber = 12;
+    public const int ScriptIdFieldNumber = 4;
     private uint scriptId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,11 +150,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      bDGMNPIJDDL_.WriteTo(output, _repeated_bDGMNPIJDDL_codec);
       if (ScriptId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteUInt32(ScriptId);
       }
-      bDGMNPIJDDL_.WriteTo(output, _repeated_bDGMNPIJDDL_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -165,11 +165,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      bDGMNPIJDDL_.WriteTo(ref output, _repeated_bDGMNPIJDDL_codec);
       if (ScriptId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteUInt32(ScriptId);
       }
-      bDGMNPIJDDL_.WriteTo(ref output, _repeated_bDGMNPIJDDL_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -219,13 +219,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
-            ScriptId = input.ReadUInt32();
+          case 10:
+          case 8: {
+            bDGMNPIJDDL_.AddEntriesFrom(input, _repeated_bDGMNPIJDDL_codec);
             break;
           }
-          case 122:
-          case 120: {
-            bDGMNPIJDDL_.AddEntriesFrom(input, _repeated_bDGMNPIJDDL_codec);
+          case 32: {
+            ScriptId = input.ReadUInt32();
             break;
           }
         }
@@ -247,13 +247,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
-            ScriptId = input.ReadUInt32();
+          case 10:
+          case 8: {
+            bDGMNPIJDDL_.AddEntriesFrom(ref input, _repeated_bDGMNPIJDDL_codec);
             break;
           }
-          case 122:
-          case 120: {
-            bDGMNPIJDDL_.AddEntriesFrom(ref input, _repeated_bDGMNPIJDDL_codec);
+          case 32: {
+            ScriptId = input.ReadUInt32();
             break;
           }
         }

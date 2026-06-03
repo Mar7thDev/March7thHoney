@@ -3,6 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishCurTurnScRsp {
-    uint32 retcode = 3;
-    uint32 CFLKHBLIDNC = 14;
+    uint32 retcode = 14;
 }

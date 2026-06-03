@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GAJDPEBBFMG.proto";
 
 message ChessRogueUpdateReviveInfoScNotify {
-    GAJDPEBBFMG MFEODNJNGDP = 5;
+    GAJDPEBBFMG MFEODNJNGDP = 1;
 }

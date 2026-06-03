@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static CmdTelevisionActivityTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch9DbWRUZWxldmlzaW9uQWN0aXZpdHlUeXBlLnByb3RvKuwBChlDbWRUZWxl",
+            "Ch9DbWRUZWxldmlzaW9uQWN0aXZpdHlUeXBlLnByb3RvKs4BChlDbWRUZWxl",
             "dmlzaW9uQWN0aXZpdHlUeXBlEhsKF0VEQUFPS0RBRUlGX05MQ0RHSVBHRkRK",
-            "EAASHAoXRURBQU9LREFFSUZfT0RIR0NNS0tLQ04QwzYSHAoXRURBQU9LREFF",
-            "SUZfS0VCQlBNQk5BT0wQsjYSHAoXRURBQU9LREFFSUZfRUxDQ09BSUtOSUcQ",
-            "wjYSHAoXRURBQU9LREFFSUZfTEZGRkRLSUhCUFAQwDYSHAoXRURBQU9LREFF",
-            "SUZfUFBCS0dQTUhBR0kQtjYSHAoXRURBQU9LREFFSUZfSEZGR09BTUpIRUQQ",
-            "xDZCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "EAASHAoXRURBQU9LREFFSUZfRUxDQ09BSUtOSUcQwjYSHAoXRURBQU9LREFF",
+            "SUZfSEZGR09BTUpIRUQQvDYSHAoXRURBQU9LREFFSUZfS0VCQlBNQk5BT0wQ",
+            "sjYSHAoXRURBQU9LREFFSUZfUFBCS0dQTUhBR0kQuDYSHAoXRURBQU9LREFF",
+            "SUZfT0RIR0NNS0tLQ04QwTZCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdTelevisionActivityType), }, null, null));
@@ -41,12 +41,11 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdTelevisionActivityType {
     [pbr::OriginalName("EDAAOKDAEIF_NLCDGIPGFDJ")] EdaaokdaeifNlcdgipgfdj = 0,
-    [pbr::OriginalName("EDAAOKDAEIF_ODHGCMKKKCN")] EdaaokdaeifOdhgcmkkkcn = 6979,
-    [pbr::OriginalName("EDAAOKDAEIF_KEBBPMBNAOL")] EdaaokdaeifKebbpmbnaol = 6962,
     [pbr::OriginalName("EDAAOKDAEIF_ELCCOAIKNIG")] EdaaokdaeifElccoaiknig = 6978,
-    [pbr::OriginalName("EDAAOKDAEIF_LFFFDKIHBPP")] EdaaokdaeifLfffdkihbpp = 6976,
-    [pbr::OriginalName("EDAAOKDAEIF_PPBKGPMHAGI")] EdaaokdaeifPpbkgpmhagi = 6966,
-    [pbr::OriginalName("EDAAOKDAEIF_HFFGOAMJHED")] EdaaokdaeifHffgoamjhed = 6980,
+    [pbr::OriginalName("EDAAOKDAEIF_HFFGOAMJHED")] EdaaokdaeifHffgoamjhed = 6972,
+    [pbr::OriginalName("EDAAOKDAEIF_KEBBPMBNAOL")] EdaaokdaeifKebbpmbnaol = 6962,
+    [pbr::OriginalName("EDAAOKDAEIF_PPBKGPMHAGI")] EdaaokdaeifPpbkgpmhagi = 6968,
+    [pbr::OriginalName("EDAAOKDAEIF_ODHGCMKKKCN")] EdaaokdaeifOdhgcmkkkcn = 6977,
   }
 
   #endregion

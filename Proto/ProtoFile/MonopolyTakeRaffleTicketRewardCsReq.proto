@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyTakeRaffleTicketRewardCsReq {
-    uint64 BBPGHFJOADI = 2;
-    uint32 GACKJLBPKGD = 4;
+    uint32 pool_id = 3;
+    uint64 BBPGHFJOADI = 9;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFERktNTkxJSk1GQi5wcm90bxoRREVDSEpBQ05MR1AucHJvdG8iWgoLREZL",
-            "TU5MSUpNRkISIQoLR0VKTk1OQkxGTEcYBCADKAsyDC5ERUNISkFDTkxHUBIT",
-            "CgtIRUxKTkhORENKUBgFIAEoCBITCgtQT0ZCQUhFRUNHQhgBIAEoDUIWqgIT",
+            "TU5MSUpNRkISIQoLR0VKTk1OQkxGTEcYByADKAsyDC5ERUNISkFDTkxHUBIT",
+            "CgtQT0ZCQUhFRUNHQhgIIAEoDRITCgtpc19zZWxlY3RlZBgKIAEoCEIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DECHJACNLGPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DFKMNLIJMFB), global::March7thHoney.Proto.DFKMNLIJMFB.Parser, new[]{ "GEJNMNBLFLG", "HELJNHNDCJP", "POFBAHEECGB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DFKMNLIJMFB), global::March7thHoney.Proto.DFKMNLIJMFB.Parser, new[]{ "GEJNMNBLFLG", "POFBAHEECGB", "IsSelected" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DFKMNLIJMFB(DFKMNLIJMFB other) : this() {
       gEJNMNBLFLG_ = other.gEJNMNBLFLG_.Clone();
-      hELJNHNDCJP_ = other.hELJNHNDCJP_;
       pOFBAHEECGB_ = other.pOFBAHEECGB_;
+      isSelected_ = other.isSelected_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GEJNMNBLFLG" field.</summary>
-    public const int GEJNMNBLFLGFieldNumber = 4;
+    public const int GEJNMNBLFLGFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.DECHJACNLGP> _repeated_gEJNMNBLFLG_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.DECHJACNLGP.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.DECHJACNLGP.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.DECHJACNLGP> gEJNMNBLFLG_ = new pbc::RepeatedField<global::March7thHoney.Proto.DECHJACNLGP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,20 +96,8 @@ namespace March7thHoney.Proto {
       get { return gEJNMNBLFLG_; }
     }
 
-    /// <summary>Field number for the "HELJNHNDCJP" field.</summary>
-    public const int HELJNHNDCJPFieldNumber = 5;
-    private bool hELJNHNDCJP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HELJNHNDCJP {
-      get { return hELJNHNDCJP_; }
-      set {
-        hELJNHNDCJP_ = value;
-      }
-    }
-
     /// <summary>Field number for the "POFBAHEECGB" field.</summary>
-    public const int POFBAHEECGBFieldNumber = 1;
+    public const int POFBAHEECGBFieldNumber = 8;
     private uint pOFBAHEECGB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return pOFBAHEECGB_; }
       set {
         pOFBAHEECGB_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_selected" field.</summary>
+    public const int IsSelectedFieldNumber = 10;
+    private bool isSelected_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsSelected {
+      get { return isSelected_; }
+      set {
+        isSelected_ = value;
       }
     }
 
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!gEJNMNBLFLG_.Equals(other.gEJNMNBLFLG_)) return false;
-      if (HELJNHNDCJP != other.HELJNHNDCJP) return false;
       if (POFBAHEECGB != other.POFBAHEECGB) return false;
+      if (IsSelected != other.IsSelected) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= gEJNMNBLFLG_.GetHashCode();
-      if (HELJNHNDCJP != false) hash ^= HELJNHNDCJP.GetHashCode();
       if (POFBAHEECGB != 0) hash ^= POFBAHEECGB.GetHashCode();
+      if (IsSelected != false) hash ^= IsSelected.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,14 +166,14 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      gEJNMNBLFLG_.WriteTo(output, _repeated_gEJNMNBLFLG_codec);
       if (POFBAHEECGB != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(64);
         output.WriteUInt32(POFBAHEECGB);
       }
-      gEJNMNBLFLG_.WriteTo(output, _repeated_gEJNMNBLFLG_codec);
-      if (HELJNHNDCJP != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(HELJNHNDCJP);
+      if (IsSelected != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(IsSelected);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -185,14 +185,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      gEJNMNBLFLG_.WriteTo(ref output, _repeated_gEJNMNBLFLG_codec);
       if (POFBAHEECGB != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(64);
         output.WriteUInt32(POFBAHEECGB);
       }
-      gEJNMNBLFLG_.WriteTo(ref output, _repeated_gEJNMNBLFLG_codec);
-      if (HELJNHNDCJP != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(HELJNHNDCJP);
+      if (IsSelected != false) {
+        output.WriteRawTag(80);
+        output.WriteBool(IsSelected);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += gEJNMNBLFLG_.CalculateSize(_repeated_gEJNMNBLFLG_codec);
-      if (HELJNHNDCJP != false) {
-        size += 1 + 1;
-      }
       if (POFBAHEECGB != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(POFBAHEECGB);
+      }
+      if (IsSelected != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -224,11 +224,11 @@ namespace March7thHoney.Proto {
         return;
       }
       gEJNMNBLFLG_.Add(other.gEJNMNBLFLG_);
-      if (other.HELJNHNDCJP != false) {
-        HELJNHNDCJP = other.HELJNHNDCJP;
-      }
       if (other.POFBAHEECGB != 0) {
         POFBAHEECGB = other.POFBAHEECGB;
+      }
+      if (other.IsSelected != false) {
+        IsSelected = other.IsSelected;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            POFBAHEECGB = input.ReadUInt32();
-            break;
-          }
-          case 34: {
+          case 58: {
             gEJNMNBLFLG_.AddEntriesFrom(input, _repeated_gEJNMNBLFLG_codec);
             break;
           }
-          case 40: {
-            HELJNHNDCJP = input.ReadBool();
+          case 64: {
+            POFBAHEECGB = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            IsSelected = input.ReadBool();
             break;
           }
         }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            POFBAHEECGB = input.ReadUInt32();
-            break;
-          }
-          case 34: {
+          case 58: {
             gEJNMNBLFLG_.AddEntriesFrom(ref input, _repeated_gEJNMNBLFLG_codec);
             break;
           }
-          case 40: {
-            HELJNHNDCJP = input.ReadBool();
+          case 64: {
+            POFBAHEECGB = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            IsSelected = input.ReadBool();
             break;
           }
         }

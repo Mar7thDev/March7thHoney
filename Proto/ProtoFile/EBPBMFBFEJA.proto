@@ -2,12 +2,12 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
+import "ChimeraDuelPlayerRankData.proto";
 import "LCEDDGELBMJ.proto";
-import "NEBJABOEDND.proto";
 
 message EBPBMFBFEJA {
-    NEBJABOEDND AAIMONALOPD = 7;
-    LCEDDGELBMJ CFDIKLBINHK = 10;
-    bool ENFKEAEGPBJ = 6;
-    uint32 FGLEKNDHMKN = 3;
+    bool ENFKEAEGPBJ = 1;
+    uint32 FGLEKNDHMKN = 5;
+    LCEDDGELBMJ CFDIKLBINHK = 7;
+    ChimeraDuelPlayerRankData AAIMONALOPD = 8;
 }

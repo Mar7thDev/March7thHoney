@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KJAMNOGFAMJ.proto";
 
 message IEJIOGIGFAI {
-    repeated KJAMNOGFAMJ CGAEPNOCDIG = 13;
-    uint32 LGIPILAKIKB = 12;
+    uint32 LGIPILAKIKB = 6;
+    repeated KJAMNOGFAMJ CGAEPNOCDIG = 15;
 }

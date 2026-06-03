@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JDAIOFEPGCC {
-    uint32 KDKPDJNMMCM = 4;
-    bool GDOBLPPEGKD = 15;
-    uint32 buff_id = 1;
-    uint32 cnt = 6;
+    bool GDOBLPPEGKD = 9;
+    uint32 KDKPDJNMMCM = 10;
+    uint32 cnt = 11;
+    uint32 buff_id = 14;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HLNFNACOFFF.proto";
 
 message OLBKADIKIGL {
-    HLNFNACOFFF CBFPJAJAKGI = 13;
+    HLNFNACOFFF CBFPJAJAKGI = 14;
 }

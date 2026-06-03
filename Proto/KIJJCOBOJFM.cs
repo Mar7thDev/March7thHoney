@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static KIJJCOBOJFMReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFLSUpKQ09CT0pGTS5wcm90byJMCgtLSUpKQ09CT0pGTRITCgtKSElITUVQ",
-            "R0RJSxgMIAEoCRITCgtNRk9GTk9QRUJFThgIIAEoDRITCgtQQUlQSk1LQ0NF",
-            "SBgHIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFLSUpKQ09CT0pGTS5wcm90byIoCgtLSUpKQ09CT0pGTRIZChF0ZXh0X2pv",
+            "aW5faXRlbV9pZBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KIJJCOBOJFM), global::March7thHoney.Proto.KIJJCOBOJFM.Parser, new[]{ "JHIHMEPGDIK", "MFOFNOPEBEN", "PAIPJMKCCEH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KIJJCOBOJFM), global::March7thHoney.Proto.KIJJCOBOJFM.Parser, new[]{ "TextJoinItemId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KIJJCOBOJFM(KIJJCOBOJFM other) : this() {
-      jHIHMEPGDIK_ = other.jHIHMEPGDIK_;
-      mFOFNOPEBEN_ = other.mFOFNOPEBEN_;
-      pAIPJMKCCEH_ = other.pAIPJMKCCEH_;
+      textJoinItemId_ = other.textJoinItemId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,39 +82,15 @@ namespace March7thHoney.Proto {
       return new KIJJCOBOJFM(this);
     }
 
-    /// <summary>Field number for the "JHIHMEPGDIK" field.</summary>
-    public const int JHIHMEPGDIKFieldNumber = 12;
-    private string jHIHMEPGDIK_ = "";
+    /// <summary>Field number for the "text_join_item_id" field.</summary>
+    public const int TextJoinItemIdFieldNumber = 15;
+    private uint textJoinItemId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string JHIHMEPGDIK {
-      get { return jHIHMEPGDIK_; }
+    public uint TextJoinItemId {
+      get { return textJoinItemId_; }
       set {
-        jHIHMEPGDIK_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "MFOFNOPEBEN" field.</summary>
-    public const int MFOFNOPEBENFieldNumber = 8;
-    private uint mFOFNOPEBEN_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MFOFNOPEBEN {
-      get { return mFOFNOPEBEN_; }
-      set {
-        mFOFNOPEBEN_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "PAIPJMKCCEH" field.</summary>
-    public const int PAIPJMKCCEHFieldNumber = 7;
-    private uint pAIPJMKCCEH_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PAIPJMKCCEH {
-      get { return pAIPJMKCCEH_; }
-      set {
-        pAIPJMKCCEH_ = value;
+        textJoinItemId_ = value;
       }
     }
 
@@ -135,9 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (JHIHMEPGDIK != other.JHIHMEPGDIK) return false;
-      if (MFOFNOPEBEN != other.MFOFNOPEBEN) return false;
-      if (PAIPJMKCCEH != other.PAIPJMKCCEH) return false;
+      if (TextJoinItemId != other.TextJoinItemId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (JHIHMEPGDIK.Length != 0) hash ^= JHIHMEPGDIK.GetHashCode();
-      if (MFOFNOPEBEN != 0) hash ^= MFOFNOPEBEN.GetHashCode();
-      if (PAIPJMKCCEH != 0) hash ^= PAIPJMKCCEH.GetHashCode();
+      if (TextJoinItemId != 0) hash ^= TextJoinItemId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +136,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PAIPJMKCCEH != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PAIPJMKCCEH);
-      }
-      if (MFOFNOPEBEN != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(MFOFNOPEBEN);
-      }
-      if (JHIHMEPGDIK.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(JHIHMEPGDIK);
+      if (TextJoinItemId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TextJoinItemId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +150,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PAIPJMKCCEH != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PAIPJMKCCEH);
-      }
-      if (MFOFNOPEBEN != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(MFOFNOPEBEN);
-      }
-      if (JHIHMEPGDIK.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(JHIHMEPGDIK);
+      if (TextJoinItemId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(TextJoinItemId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +164,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (JHIHMEPGDIK.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(JHIHMEPGDIK);
-      }
-      if (MFOFNOPEBEN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MFOFNOPEBEN);
-      }
-      if (PAIPJMKCCEH != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PAIPJMKCCEH);
+      if (TextJoinItemId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TextJoinItemId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +179,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.JHIHMEPGDIK.Length != 0) {
-        JHIHMEPGDIK = other.JHIHMEPGDIK;
-      }
-      if (other.MFOFNOPEBEN != 0) {
-        MFOFNOPEBEN = other.MFOFNOPEBEN;
-      }
-      if (other.PAIPJMKCCEH != 0) {
-        PAIPJMKCCEH = other.PAIPJMKCCEH;
+      if (other.TextJoinItemId != 0) {
+        TextJoinItemId = other.TextJoinItemId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +201,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            PAIPJMKCCEH = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            MFOFNOPEBEN = input.ReadUInt32();
-            break;
-          }
-          case 98: {
-            JHIHMEPGDIK = input.ReadString();
+          case 120: {
+            TextJoinItemId = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +224,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            PAIPJMKCCEH = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            MFOFNOPEBEN = input.ReadUInt32();
-            break;
-          }
-          case 98: {
-            JHIHMEPGDIK = input.ReadString();
+          case 120: {
+            TextJoinItemId = input.ReadUInt32();
             break;
           }
         }

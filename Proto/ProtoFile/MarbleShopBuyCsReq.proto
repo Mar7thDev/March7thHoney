@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MarbleShopBuyCsReq {
-    repeated uint32 EGCLLKDHIAE = 3;
+    repeated uint32 EGCLLKDHIAE = 5;
 }

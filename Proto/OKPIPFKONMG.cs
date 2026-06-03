@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPS1BJUEZLT05NRy5wcm90bxoRR0tGR0lNSUJCSEYucHJvdG8aF1JvZ3Vl",
-            "VGFsZW50U3RhdHVzLnByb3RvImkKC09LUElQRktPTk1HEiEKC0xESElKQUhO",
-            "RUdLGAwgAygLMgwuR0tGR0lNSUJCSEYSIgoGc3RhdHVzGA8gASgOMhIuUm9n",
-            "dWVUYWxlbnRTdGF0dXMSEwoLQ0tIQ0xLT0FMS0UYASABKA1CFqoCE01hcmNo",
+            "VGFsZW50U3RhdHVzLnByb3RvImkKC09LUElQRktPTk1HEhMKC0NLSENMS09B",
+            "TEtFGAIgASgNEiIKBnN0YXR1cxgIIAEoDjISLlJvZ3VlVGFsZW50U3RhdHVz",
+            "EiEKC0xESElKQUhORUdLGAogAygLMgwuR0tGR0lNSUJCSEZCFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GKFGIMIBBHFReflection.Descriptor, global::March7thHoney.Proto.RogueTalentStatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OKPIPFKONMG), global::March7thHoney.Proto.OKPIPFKONMG.Parser, new[]{ "LDHIJAHNEGK", "Status", "CKHCLKOALKE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OKPIPFKONMG), global::March7thHoney.Proto.OKPIPFKONMG.Parser, new[]{ "CKHCLKOALKE", "Status", "LDHIJAHNEGK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OKPIPFKONMG(OKPIPFKONMG other) : this() {
-      lDHIJAHNEGK_ = other.lDHIJAHNEGK_.Clone();
-      status_ = other.status_;
       cKHCLKOALKE_ = other.cKHCLKOALKE_;
+      status_ = other.status_;
+      lDHIJAHNEGK_ = other.lDHIJAHNEGK_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,19 +86,20 @@ namespace March7thHoney.Proto {
       return new OKPIPFKONMG(this);
     }
 
-    /// <summary>Field number for the "LDHIJAHNEGK" field.</summary>
-    public const int LDHIJAHNEGKFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GKFGIMIBBHF> _repeated_lDHIJAHNEGK_codec
-        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.GKFGIMIBBHF.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GKFGIMIBBHF> lDHIJAHNEGK_ = new pbc::RepeatedField<global::March7thHoney.Proto.GKFGIMIBBHF>();
+    /// <summary>Field number for the "CKHCLKOALKE" field.</summary>
+    public const int CKHCLKOALKEFieldNumber = 2;
+    private uint cKHCLKOALKE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GKFGIMIBBHF> LDHIJAHNEGK {
-      get { return lDHIJAHNEGK_; }
+    public uint CKHCLKOALKE {
+      get { return cKHCLKOALKE_; }
+      set {
+        cKHCLKOALKE_ = value;
+      }
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 15;
+    public const int StatusFieldNumber = 8;
     private global::March7thHoney.Proto.RogueTalentStatus status_ = global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,16 +110,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "CKHCLKOALKE" field.</summary>
-    public const int CKHCLKOALKEFieldNumber = 1;
-    private uint cKHCLKOALKE_;
+    /// <summary>Field number for the "LDHIJAHNEGK" field.</summary>
+    public const int LDHIJAHNEGKFieldNumber = 10;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GKFGIMIBBHF> _repeated_lDHIJAHNEGK_codec
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.GKFGIMIBBHF.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GKFGIMIBBHF> lDHIJAHNEGK_ = new pbc::RepeatedField<global::March7thHoney.Proto.GKFGIMIBBHF>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CKHCLKOALKE {
-      get { return cKHCLKOALKE_; }
-      set {
-        cKHCLKOALKE_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.GKFGIMIBBHF> LDHIJAHNEGK {
+      get { return lDHIJAHNEGK_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!lDHIJAHNEGK_.Equals(other.lDHIJAHNEGK_)) return false;
-      if (Status != other.Status) return false;
       if (CKHCLKOALKE != other.CKHCLKOALKE) return false;
+      if (Status != other.Status) return false;
+      if(!lDHIJAHNEGK_.Equals(other.lDHIJAHNEGK_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= lDHIJAHNEGK_.GetHashCode();
-      if (Status != global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel) hash ^= Status.GetHashCode();
       if (CKHCLKOALKE != 0) hash ^= CKHCLKOALKE.GetHashCode();
+      if (Status != global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel) hash ^= Status.GetHashCode();
+      hash ^= lDHIJAHNEGK_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,14 +168,14 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CKHCLKOALKE != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteUInt32(CKHCLKOALKE);
       }
-      lDHIJAHNEGK_.WriteTo(output, _repeated_lDHIJAHNEGK_codec);
       if (Status != global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(64);
         output.WriteEnum((int) Status);
       }
+      lDHIJAHNEGK_.WriteTo(output, _repeated_lDHIJAHNEGK_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -187,14 +187,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CKHCLKOALKE != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteUInt32(CKHCLKOALKE);
       }
-      lDHIJAHNEGK_.WriteTo(ref output, _repeated_lDHIJAHNEGK_codec);
       if (Status != global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(64);
         output.WriteEnum((int) Status);
       }
+      lDHIJAHNEGK_.WriteTo(ref output, _repeated_lDHIJAHNEGK_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -205,13 +205,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += lDHIJAHNEGK_.CalculateSize(_repeated_lDHIJAHNEGK_codec);
-      if (Status != global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
-      }
       if (CKHCLKOALKE != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CKHCLKOALKE);
       }
+      if (Status != global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
+      }
+      size += lDHIJAHNEGK_.CalculateSize(_repeated_lDHIJAHNEGK_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -224,13 +224,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      lDHIJAHNEGK_.Add(other.lDHIJAHNEGK_);
-      if (other.Status != global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel) {
-        Status = other.Status;
-      }
       if (other.CKHCLKOALKE != 0) {
         CKHCLKOALKE = other.CKHCLKOALKE;
       }
+      if (other.Status != global::March7thHoney.Proto.RogueTalentStatus.PonhnpllkabGajgbbfelel) {
+        Status = other.Status;
+      }
+      lDHIJAHNEGK_.Add(other.lDHIJAHNEGK_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -250,16 +250,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 16: {
             CKHCLKOALKE = input.ReadUInt32();
             break;
           }
-          case 98: {
-            lDHIJAHNEGK_.AddEntriesFrom(input, _repeated_lDHIJAHNEGK_codec);
+          case 64: {
+            Status = (global::March7thHoney.Proto.RogueTalentStatus) input.ReadEnum();
             break;
           }
-          case 120: {
-            Status = (global::March7thHoney.Proto.RogueTalentStatus) input.ReadEnum();
+          case 82: {
+            lDHIJAHNEGK_.AddEntriesFrom(input, _repeated_lDHIJAHNEGK_codec);
             break;
           }
         }
@@ -281,16 +281,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 16: {
             CKHCLKOALKE = input.ReadUInt32();
             break;
           }
-          case 98: {
-            lDHIJAHNEGK_.AddEntriesFrom(ref input, _repeated_lDHIJAHNEGK_codec);
+          case 64: {
+            Status = (global::March7thHoney.Proto.RogueTalentStatus) input.ReadEnum();
             break;
           }
-          case 120: {
-            Status = (global::March7thHoney.Proto.RogueTalentStatus) input.ReadEnum();
+          case 82: {
+            lDHIJAHNEGK_.AddEntriesFrom(ref input, _repeated_lDHIJAHNEGK_codec);
             break;
           }
         }

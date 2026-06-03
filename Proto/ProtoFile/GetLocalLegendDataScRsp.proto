@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JJEFLBCLBFN.proto";
 
 message GetLocalLegendDataScRsp {
-    repeated JJEFLBCLBFN level_data_list = 12;
-    uint32 retcode = 7;
+    uint32 retcode = 9;
+    repeated JJEFLBCLBFN level_data_list = 13;
 }

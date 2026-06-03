@@ -6,9 +6,9 @@ import "MOHNIMLCODA.proto";
 import "OEBBNFANHLK.proto";
 
 message NIFPICHIDLJ {
-    repeated OEBBNFANHLK switch_list = 5;
-    uint32 config_id = 2;
     MOHNIMLCODA type = 1;
-    uint32 level = 4;
+    uint32 config_id = 2;
     uint32 unique_id = 3;
+    uint32 level = 4;
+    repeated OEBBNFANHLK switch_list = 5;
 }

@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BPAGBAALHMP {
-    uint32 EGKNHHFDJHM = 11;
-    bool is_perfect = 5;
-    uint32 level = 3;
-    uint32 BLMAEGGMCHJ = 8;
+    uint32 BLMAEGGMCHJ = 3;
+    uint32 EGKNHHFDJHM = 10;
+    uint32 level = 11;
+    bool is_perfect = 14;
 }

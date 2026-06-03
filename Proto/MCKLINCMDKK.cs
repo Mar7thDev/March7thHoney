@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNQ0tMSU5DTURLSy5wcm90byI3CgtNQ0tMSU5DTURLSxITCgtMTkJLRkZJ",
-            "REVFShgMIAEoDBITCgtPTUZQSUNLUE9DUBgPIAEoDUIWqgITTWFyY2g3dGhI",
+            "REVFShgFIAEoDBITCgtPTUZQSUNLUE9DUBgHIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LNBKFFIDEEJ" field.</summary>
-    public const int LNBKFFIDEEJFieldNumber = 12;
+    public const int LNBKFFIDEEJFieldNumber = 5;
     private pb::ByteString lNBKFFIDEEJ_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OMFPICKPOCP" field.</summary>
-    public const int OMFPICKPOCPFieldNumber = 15;
+    public const int OMFPICKPOCPFieldNumber = 7;
     private uint oMFPICKPOCP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (LNBKFFIDEEJ.Length != 0) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(42);
         output.WriteBytes(LNBKFFIDEEJ);
       }
       if (OMFPICKPOCP != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteUInt32(OMFPICKPOCP);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (LNBKFFIDEEJ.Length != 0) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(42);
         output.WriteBytes(LNBKFFIDEEJ);
       }
       if (OMFPICKPOCP != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteUInt32(OMFPICKPOCP);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 98: {
+          case 42: {
             LNBKFFIDEEJ = input.ReadBytes();
             break;
           }
-          case 120: {
+          case 56: {
             OMFPICKPOCP = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 98: {
+          case 42: {
             LNBKFFIDEEJ = input.ReadBytes();
             break;
           }
-          case 120: {
+          case 56: {
             OMFPICKPOCP = input.ReadUInt32();
             break;
           }

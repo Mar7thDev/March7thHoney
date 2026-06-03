@@ -6,11 +6,11 @@ import "IMIHIMCHHIP.proto";
 import "JDAIOFEPGCC.proto";
 
 message JIMNPPNNHEL {
-    repeated IMIHIMCHHIP AALLBBCJGIA = 4;
-    repeated JDAIOFEPGCC OGDKJPDFFAI = 15;
-    bool PNMNPFGCFBJ = 1;
-    bool ONDCOEBNAPJ = 5;
-    uint32 item_value = 11;
-    uint32 KCBLNMMHOKG = 7;
-    uint32 MNCBFLEFJCK = 3;
+    uint32 KCBLNMMHOKG = 1;
+    bool ONDCOEBNAPJ = 3;
+    uint32 item_value = 6;
+    repeated IMIHIMCHHIP AALLBBCJGIA = 7;
+    repeated JDAIOFEPGCC OGDKJPDFFAI = 9;
+    uint32 MNCBFLEFJCK = 11;
+    bool PNMNPFGCFBJ = 15;
 }

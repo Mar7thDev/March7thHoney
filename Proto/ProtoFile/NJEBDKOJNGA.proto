@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FLDKOELBPGA.proto";
 
 message NJEBDKOJNGA {
-    repeated FLDKOELBPGA CNFFGBMPCHD = 2;
-    uint32 shop_id = 10;
+    repeated FLDKOELBPGA CNFFGBMPCHD = 10;
+    uint32 shop_id = 13;
 }

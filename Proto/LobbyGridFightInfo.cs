@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhMb2JieUdyaWRGaWdodEluZm8ucHJvdG8iXgoSTG9iYnlHcmlkRmlnaHRJ",
-            "bmZvEhMKC0xBSkpIQUFLR0FGGAEgAygNEhMKC0tFSkxIRFBCSVBPGAQgASgJ",
-            "EhAKCHNjb3JlX2lkGAMgASgNEgwKBGdvbGQYAiABKA1CFqoCE01hcmNoN3Ro",
+            "bmZvEhMKC0xBSkpIQUFLR0FGGAEgAygNEgwKBGdvbGQYAiABKA0SEAoIc2Nv",
+            "cmVfaWQYAyABKA0SEwoLS0VKTEhEUEJJUE8YBCABKAlCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LobbyGridFightInfo), global::March7thHoney.Proto.LobbyGridFightInfo.Parser, new[]{ "LAJJHAAKGAF", "KEJLHDPBIPO", "ScoreId", "Gold" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LobbyGridFightInfo), global::March7thHoney.Proto.LobbyGridFightInfo.Parser, new[]{ "LAJJHAAKGAF", "Gold", "ScoreId", "KEJLHDPBIPO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LobbyGridFightInfo(LobbyGridFightInfo other) : this() {
       lAJJHAAKGAF_ = other.lAJJHAAKGAF_.Clone();
-      kEJLHDPBIPO_ = other.kEJLHDPBIPO_;
-      scoreId_ = other.scoreId_;
       gold_ = other.gold_;
+      scoreId_ = other.scoreId_;
+      kEJLHDPBIPO_ = other.kEJLHDPBIPO_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -97,15 +97,15 @@ namespace March7thHoney.Proto {
       get { return lAJJHAAKGAF_; }
     }
 
-    /// <summary>Field number for the "KEJLHDPBIPO" field.</summary>
-    public const int KEJLHDPBIPOFieldNumber = 4;
-    private string kEJLHDPBIPO_ = "";
+    /// <summary>Field number for the "gold" field.</summary>
+    public const int GoldFieldNumber = 2;
+    private uint gold_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string KEJLHDPBIPO {
-      get { return kEJLHDPBIPO_; }
+    public uint Gold {
+      get { return gold_; }
       set {
-        kEJLHDPBIPO_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        gold_ = value;
       }
     }
 
@@ -121,15 +121,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "gold" field.</summary>
-    public const int GoldFieldNumber = 2;
-    private uint gold_;
+    /// <summary>Field number for the "KEJLHDPBIPO" field.</summary>
+    public const int KEJLHDPBIPOFieldNumber = 4;
+    private string kEJLHDPBIPO_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Gold {
-      get { return gold_; }
+    public string KEJLHDPBIPO {
+      get { return kEJLHDPBIPO_; }
       set {
-        gold_ = value;
+        kEJLHDPBIPO_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -149,9 +149,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!lAJJHAAKGAF_.Equals(other.lAJJHAAKGAF_)) return false;
-      if (KEJLHDPBIPO != other.KEJLHDPBIPO) return false;
-      if (ScoreId != other.ScoreId) return false;
       if (Gold != other.Gold) return false;
+      if (ScoreId != other.ScoreId) return false;
+      if (KEJLHDPBIPO != other.KEJLHDPBIPO) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,9 +160,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= lAJJHAAKGAF_.GetHashCode();
-      if (KEJLHDPBIPO.Length != 0) hash ^= KEJLHDPBIPO.GetHashCode();
-      if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
       if (Gold != 0) hash ^= Gold.GetHashCode();
+      if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
+      if (KEJLHDPBIPO.Length != 0) hash ^= KEJLHDPBIPO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -228,14 +228,14 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += lAJJHAAKGAF_.CalculateSize(_repeated_lAJJHAAKGAF_codec);
-      if (KEJLHDPBIPO.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(KEJLHDPBIPO);
+      if (Gold != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Gold);
       }
       if (ScoreId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
       }
-      if (Gold != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Gold);
+      if (KEJLHDPBIPO.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(KEJLHDPBIPO);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -250,14 +250,14 @@ namespace March7thHoney.Proto {
         return;
       }
       lAJJHAAKGAF_.Add(other.lAJJHAAKGAF_);
-      if (other.KEJLHDPBIPO.Length != 0) {
-        KEJLHDPBIPO = other.KEJLHDPBIPO;
+      if (other.Gold != 0) {
+        Gold = other.Gold;
       }
       if (other.ScoreId != 0) {
         ScoreId = other.ScoreId;
       }
-      if (other.Gold != 0) {
-        Gold = other.Gold;
+      if (other.KEJLHDPBIPO.Length != 0) {
+        KEJLHDPBIPO = other.KEJLHDPBIPO;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

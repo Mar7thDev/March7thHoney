@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 message KIAICMELIMM {
     map<uint32, uint32> AOKECJBFMCN = 1;
     uint32 CDBGPMABMGM = 2;
-    uint32 FPCOPPLFBOP = 4;
     uint32 FGOHMOMLEBG = 3;
+    uint32 enemy_hp_multiplier = 4;
 }

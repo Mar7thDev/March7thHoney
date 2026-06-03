@@ -6,11 +6,11 @@ import "GEFEDOAOKNO.proto";
 import "JHBOOCGAKCM.proto";
 
 message HipplenCycleResultScNotify {
+    repeated JHBOOCGAKCM IHLCDDOMPKD = 1;
+    uint32 JFLAEGMBMAK = 2;
+    uint32 BKFICFMMGIN = 6;
+    GEFEDOAOKNO GNBKDCHLDGL = 7;
     repeated JHBOOCGAKCM FJFJMOGILBM = 8;
-    GEFEDOAOKNO GNBKDCHLDGL = 1;
-    repeated uint32 grid_fight_trait_info = 2;
-    repeated uint32 FCOKODHGEKO = 4;
-    repeated JHBOOCGAKCM IHLCDDOMPKD = 14;
-    uint32 JFLAEGMBMAK = 5;
-    uint32 BKFICFMMGIN = 12;
+    repeated uint32 FCOKODHGEKO = 13;
+    repeated uint32 grid_fight_trait_info = 14;
 }

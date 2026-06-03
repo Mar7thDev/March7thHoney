@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJVc2VJdGVtQ3NSZXEucHJvdG8aEEF2YXRhclR5cGUucHJvdG8ipgEKDFVz",
-            "ZUl0ZW1Dc1JlcRITCgtER0VLRkNIRUFQTxgFIAEoCBITCgt1c2VfaXRlbV9p",
-            "ZBgGIAEoDRIWCg5iYXNlX2F2YXRhcl9pZBgIIAEoDRIgCgtLQU5QUENNQkpI",
-            "RxgHIAEoDjILLkF2YXRhclR5cGUSGgoSb3B0aW9uYWxfcmV3YXJkX2lkGAog",
-            "ASgNEhYKDnVzZV9pdGVtX2NvdW50GA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "ZUl0ZW1Dc1JlcRITCgt1c2VfaXRlbV9pZBgBIAEoDRIWCg51c2VfaXRlbV9j",
+            "b3VudBgCIAEoDRIgCgtLQU5QUENNQkpIRxgEIAEoDjILLkF2YXRhclR5cGUS",
+            "EwoLREdFS0ZDSEVBUE8YBSABKAgSGgoSb3B0aW9uYWxfcmV3YXJkX2lkGAkg",
+            "ASgNEhYKDmJhc2VfYXZhdGFyX2lkGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UseItemCsReq), global::March7thHoney.Proto.UseItemCsReq.Parser, new[]{ "DGEKFCHEAPO", "UseItemId", "BaseAvatarId", "KANPPCMBJHG", "OptionalRewardId", "UseItemCount" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UseItemCsReq), global::March7thHoney.Proto.UseItemCsReq.Parser, new[]{ "UseItemId", "UseItemCount", "KANPPCMBJHG", "DGEKFCHEAPO", "OptionalRewardId", "BaseAvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UseItemCsReq(UseItemCsReq other) : this() {
-      dGEKFCHEAPO_ = other.dGEKFCHEAPO_;
       useItemId_ = other.useItemId_;
-      baseAvatarId_ = other.baseAvatarId_;
-      kANPPCMBJHG_ = other.kANPPCMBJHG_;
-      optionalRewardId_ = other.optionalRewardId_;
       useItemCount_ = other.useItemCount_;
+      kANPPCMBJHG_ = other.kANPPCMBJHG_;
+      dGEKFCHEAPO_ = other.dGEKFCHEAPO_;
+      optionalRewardId_ = other.optionalRewardId_;
+      baseAvatarId_ = other.baseAvatarId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,6 +88,42 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UseItemCsReq Clone() {
       return new UseItemCsReq(this);
+    }
+
+    /// <summary>Field number for the "use_item_id" field.</summary>
+    public const int UseItemIdFieldNumber = 1;
+    private uint useItemId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint UseItemId {
+      get { return useItemId_; }
+      set {
+        useItemId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "use_item_count" field.</summary>
+    public const int UseItemCountFieldNumber = 2;
+    private uint useItemCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint UseItemCount {
+      get { return useItemCount_; }
+      set {
+        useItemCount_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "KANPPCMBJHG" field.</summary>
+    public const int KANPPCMBJHGFieldNumber = 4;
+    private global::March7thHoney.Proto.AvatarType kANPPCMBJHG_ = global::March7thHoney.Proto.AvatarType.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.AvatarType KANPPCMBJHG {
+      get { return kANPPCMBJHG_; }
+      set {
+        kANPPCMBJHG_ = value;
+      }
     }
 
     /// <summary>Field number for the "DGEKFCHEAPO" field.</summary>
@@ -102,44 +138,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "use_item_id" field.</summary>
-    public const int UseItemIdFieldNumber = 6;
-    private uint useItemId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint UseItemId {
-      get { return useItemId_; }
-      set {
-        useItemId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 8;
-    private uint baseAvatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BaseAvatarId {
-      get { return baseAvatarId_; }
-      set {
-        baseAvatarId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "KANPPCMBJHG" field.</summary>
-    public const int KANPPCMBJHGFieldNumber = 7;
-    private global::March7thHoney.Proto.AvatarType kANPPCMBJHG_ = global::March7thHoney.Proto.AvatarType.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.AvatarType KANPPCMBJHG {
-      get { return kANPPCMBJHG_; }
-      set {
-        kANPPCMBJHG_ = value;
-      }
-    }
-
     /// <summary>Field number for the "optional_reward_id" field.</summary>
-    public const int OptionalRewardIdFieldNumber = 10;
+    public const int OptionalRewardIdFieldNumber = 9;
     private uint optionalRewardId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,15 +150,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "use_item_count" field.</summary>
-    public const int UseItemCountFieldNumber = 15;
-    private uint useItemCount_;
+    /// <summary>Field number for the "base_avatar_id" field.</summary>
+    public const int BaseAvatarIdFieldNumber = 12;
+    private uint baseAvatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint UseItemCount {
-      get { return useItemCount_; }
+    public uint BaseAvatarId {
+      get { return baseAvatarId_; }
       set {
-        useItemCount_ = value;
+        baseAvatarId_ = value;
       }
     }
 
@@ -177,12 +177,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (DGEKFCHEAPO != other.DGEKFCHEAPO) return false;
       if (UseItemId != other.UseItemId) return false;
-      if (BaseAvatarId != other.BaseAvatarId) return false;
-      if (KANPPCMBJHG != other.KANPPCMBJHG) return false;
-      if (OptionalRewardId != other.OptionalRewardId) return false;
       if (UseItemCount != other.UseItemCount) return false;
+      if (KANPPCMBJHG != other.KANPPCMBJHG) return false;
+      if (DGEKFCHEAPO != other.DGEKFCHEAPO) return false;
+      if (OptionalRewardId != other.OptionalRewardId) return false;
+      if (BaseAvatarId != other.BaseAvatarId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -190,12 +190,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DGEKFCHEAPO != false) hash ^= DGEKFCHEAPO.GetHashCode();
       if (UseItemId != 0) hash ^= UseItemId.GetHashCode();
-      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
-      if (KANPPCMBJHG != global::March7thHoney.Proto.AvatarType.None) hash ^= KANPPCMBJHG.GetHashCode();
-      if (OptionalRewardId != 0) hash ^= OptionalRewardId.GetHashCode();
       if (UseItemCount != 0) hash ^= UseItemCount.GetHashCode();
+      if (KANPPCMBJHG != global::March7thHoney.Proto.AvatarType.None) hash ^= KANPPCMBJHG.GetHashCode();
+      if (DGEKFCHEAPO != false) hash ^= DGEKFCHEAPO.GetHashCode();
+      if (OptionalRewardId != 0) hash ^= OptionalRewardId.GetHashCode();
+      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -214,29 +214,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (UseItemId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(UseItemId);
+      }
+      if (UseItemCount != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(UseItemCount);
+      }
+      if (KANPPCMBJHG != global::March7thHoney.Proto.AvatarType.None) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) KANPPCMBJHG);
+      }
       if (DGEKFCHEAPO != false) {
         output.WriteRawTag(40);
         output.WriteBool(DGEKFCHEAPO);
       }
-      if (UseItemId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(UseItemId);
-      }
-      if (KANPPCMBJHG != global::March7thHoney.Proto.AvatarType.None) {
-        output.WriteRawTag(56);
-        output.WriteEnum((int) KANPPCMBJHG);
-      }
-      if (BaseAvatarId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(BaseAvatarId);
-      }
       if (OptionalRewardId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(72);
         output.WriteUInt32(OptionalRewardId);
       }
-      if (UseItemCount != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(UseItemCount);
+      if (BaseAvatarId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(BaseAvatarId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -248,29 +248,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (UseItemId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(UseItemId);
+      }
+      if (UseItemCount != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(UseItemCount);
+      }
+      if (KANPPCMBJHG != global::March7thHoney.Proto.AvatarType.None) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) KANPPCMBJHG);
+      }
       if (DGEKFCHEAPO != false) {
         output.WriteRawTag(40);
         output.WriteBool(DGEKFCHEAPO);
       }
-      if (UseItemId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(UseItemId);
-      }
-      if (KANPPCMBJHG != global::March7thHoney.Proto.AvatarType.None) {
-        output.WriteRawTag(56);
-        output.WriteEnum((int) KANPPCMBJHG);
-      }
-      if (BaseAvatarId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(BaseAvatarId);
-      }
       if (OptionalRewardId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(72);
         output.WriteUInt32(OptionalRewardId);
       }
-      if (UseItemCount != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(UseItemCount);
+      if (BaseAvatarId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(BaseAvatarId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -282,23 +282,23 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DGEKFCHEAPO != false) {
-        size += 1 + 1;
-      }
       if (UseItemId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UseItemId);
       }
-      if (BaseAvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
+      if (UseItemCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UseItemCount);
       }
       if (KANPPCMBJHG != global::March7thHoney.Proto.AvatarType.None) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) KANPPCMBJHG);
       }
+      if (DGEKFCHEAPO != false) {
+        size += 1 + 1;
+      }
       if (OptionalRewardId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OptionalRewardId);
       }
-      if (UseItemCount != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UseItemCount);
+      if (BaseAvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -312,23 +312,23 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.DGEKFCHEAPO != false) {
-        DGEKFCHEAPO = other.DGEKFCHEAPO;
-      }
       if (other.UseItemId != 0) {
         UseItemId = other.UseItemId;
       }
-      if (other.BaseAvatarId != 0) {
-        BaseAvatarId = other.BaseAvatarId;
+      if (other.UseItemCount != 0) {
+        UseItemCount = other.UseItemCount;
       }
       if (other.KANPPCMBJHG != global::March7thHoney.Proto.AvatarType.None) {
         KANPPCMBJHG = other.KANPPCMBJHG;
       }
+      if (other.DGEKFCHEAPO != false) {
+        DGEKFCHEAPO = other.DGEKFCHEAPO;
+      }
       if (other.OptionalRewardId != 0) {
         OptionalRewardId = other.OptionalRewardId;
       }
-      if (other.UseItemCount != 0) {
-        UseItemCount = other.UseItemCount;
+      if (other.BaseAvatarId != 0) {
+        BaseAvatarId = other.BaseAvatarId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -349,28 +349,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            UseItemId = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            UseItemCount = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            KANPPCMBJHG = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
+            break;
+          }
           case 40: {
             DGEKFCHEAPO = input.ReadBool();
             break;
           }
-          case 48: {
-            UseItemId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            KANPPCMBJHG = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
-            break;
-          }
-          case 64: {
-            BaseAvatarId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 72: {
             OptionalRewardId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            UseItemCount = input.ReadUInt32();
+          case 96: {
+            BaseAvatarId = input.ReadUInt32();
             break;
           }
         }
@@ -392,28 +392,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            UseItemId = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            UseItemCount = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            KANPPCMBJHG = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
+            break;
+          }
           case 40: {
             DGEKFCHEAPO = input.ReadBool();
             break;
           }
-          case 48: {
-            UseItemId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            KANPPCMBJHG = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
-            break;
-          }
-          case 64: {
-            BaseAvatarId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 72: {
             OptionalRewardId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            UseItemCount = input.ReadUInt32();
+          case 96: {
+            BaseAvatarId = input.ReadUInt32();
             break;
           }
         }

@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static PELDIEOMMDMReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFQRUxESUVPTU1ETS5wcm90byI4CgtQRUxESUVPTU1ETRIRCglzdG9wX2Rl",
-            "c2MYAiABKAkSFgoOYXZhdGFyX2lkX2xpc3QYASADKA1CFqoCE01hcmNoN3Ro",
+            "ChFQRUxESUVPTU1ETS5wcm90byI4CgtQRUxESUVPTU1ETRIWCg5hdmF0YXJf",
+            "aWRfbGlzdBgBIAMoDRIRCglzdG9wX2Rlc2MYAiABKAlCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PELDIEOMMDM), global::March7thHoney.Proto.PELDIEOMMDM.Parser, new[]{ "StopDesc", "AvatarIdList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PELDIEOMMDM), global::March7thHoney.Proto.PELDIEOMMDM.Parser, new[]{ "AvatarIdList", "StopDesc" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PELDIEOMMDM(PELDIEOMMDM other) : this() {
-      stopDesc_ = other.stopDesc_;
       avatarIdList_ = other.avatarIdList_.Clone();
+      stopDesc_ = other.stopDesc_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,6 +81,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PELDIEOMMDM Clone() {
       return new PELDIEOMMDM(this);
+    }
+
+    /// <summary>Field number for the "avatar_id_list" field.</summary>
+    public const int AvatarIdListFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_avatarIdList_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> avatarIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> AvatarIdList {
+      get { return avatarIdList_; }
     }
 
     /// <summary>Field number for the "stop_desc" field.</summary>
@@ -93,17 +104,6 @@ namespace March7thHoney.Proto {
       set {
         stopDesc_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
-    }
-
-    /// <summary>Field number for the "avatar_id_list" field.</summary>
-    public const int AvatarIdListFieldNumber = 1;
-    private static readonly pb::FieldCodec<uint> _repeated_avatarIdList_codec
-        = pb::FieldCodec.ForUInt32(10);
-    private readonly pbc::RepeatedField<uint> avatarIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> AvatarIdList {
-      get { return avatarIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (StopDesc != other.StopDesc) return false;
       if(!avatarIdList_.Equals(other.avatarIdList_)) return false;
+      if (StopDesc != other.StopDesc) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (StopDesc.Length != 0) hash ^= StopDesc.GetHashCode();
       hash ^= avatarIdList_.GetHashCode();
+      if (StopDesc.Length != 0) hash ^= StopDesc.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -180,10 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += avatarIdList_.CalculateSize(_repeated_avatarIdList_codec);
       if (StopDesc.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(StopDesc);
       }
-      size += avatarIdList_.CalculateSize(_repeated_avatarIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -196,10 +196,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      avatarIdList_.Add(other.avatarIdList_);
       if (other.StopDesc.Length != 0) {
         StopDesc = other.StopDesc;
       }
-      avatarIdList_.Add(other.avatarIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

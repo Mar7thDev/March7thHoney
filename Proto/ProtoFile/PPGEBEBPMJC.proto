@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PPGEBEBPMJC {
-    uint32 augment_id = 15;
-    bool AEKOKMPIFLN = 5;
-    bool NEKJGIDPCAI = 11;
-}

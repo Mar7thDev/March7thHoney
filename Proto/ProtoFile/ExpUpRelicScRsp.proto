@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PileItem.proto";
 
 message ExpUpRelicScRsp {
-    repeated PileItem return_item_list = 4;
-    uint32 retcode = 11;
+    uint32 retcode = 10;
+    repeated PileItem return_item_list = 13;
 }

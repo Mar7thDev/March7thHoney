@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OCBPJLLLJGO.proto";
 
 message ONMFMINNBEB {
-    OCBPJLLLJGO DDLADFJMEEC = 15;
+    OCBPJLLLJGO DDLADFJMEEC = 10;
 }

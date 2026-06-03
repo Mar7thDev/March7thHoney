@@ -6,7 +6,7 @@ import "EIDFCGLODFB.proto";
 import "ILMFJKCGBCK.proto";
 
 message MonopolyMoveScRsp {
-    ILMFJKCGBCK COOOMDKGODF = 15;
-    repeated EIDFCGLODFB AJGMLOIONPK = 8;
-    uint32 retcode = 6;
+    repeated EIDFCGLODFB AJGMLOIONPK = 3;
+    ILMFJKCGBCK COOOMDKGODF = 8;
+    uint32 retcode = 9;
 }

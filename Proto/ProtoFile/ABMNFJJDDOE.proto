@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BJNCNELEOMO.proto";
 
 message ABMNFJJDDOE {
-    repeated BJNCNELEOMO MPMNLICFHMC = 2;
     uint32 ILBJLIENCLB = 1;
+    repeated BJNCNELEOMO MPMNLICFHMC = 2;
 }

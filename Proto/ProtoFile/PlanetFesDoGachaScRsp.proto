@@ -7,11 +7,11 @@ import "NDPJHJOAOJE.proto";
 import "NGHCOJCMJOK.proto";
 
 message PlanetFesDoGachaScRsp {
-    repeated FMKMEFMOJGJ LGPDNIGJEKP = 7;
-    uint32 gacha_id = 11;
-    uint32 retcode = 14;
+    uint32 retcode = 1;
+    uint32 gacha_id = 3;
+    repeated FMKMEFMOJGJ LGPDNIGJEKP = 8;
     oneof BNJPPHJNKHF {
-        NGHCOJCMJOK EHLPJELJJOO = 6;
-        NDPJHJOAOJE FFBDKNIHNEL = 8;
+        NGHCOJCMJOK EHLPJELJJOO = 2;
+        NDPJHJOAOJE FFBDKNIHNEL = 7;
     }
 }

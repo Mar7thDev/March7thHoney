@@ -24,11 +24,11 @@ namespace March7thHoney.Proto {
     static FDJADOEAOLEReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFGREpBRE9FQU9MRS5wcm90byqBAQoLRkRKQURPRUFPTEUSGwoXRkRKQURP",
+            "ChFGREpBRE9FQU9MRS5wcm90byqeAQoLRkRKQURPRUFPTEUSGwoXRkRKQURP",
             "RUFPTEVfT0lEREZKRUZJUEYQABIbChdGREpBRE9FQU9MRV9BSEdFSUpGSUdL",
             "RRABEhsKF0ZESkFET0VBT0xFX1BLSFBKSUtKTURPEAISGwoXRkRKQURPRUFP",
-            "TEVfSEZHQk9PTEpETkEQA0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
-            "dG8z"));
+            "TEVfSEZHQk9PTEpETkEQAxIbChdGREpBRE9FQU9MRV9FTkRMSk9BS05QSRAE",
+            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.FDJADOEAOLE), }, null, null));
@@ -42,6 +42,7 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("FDJADOEAOLE_AHGEIJFIGKE")] Ahgeijfigke = 1,
     [pbr::OriginalName("FDJADOEAOLE_PKHPJIKJMDO")] Pkhpjikjmdo = 2,
     [pbr::OriginalName("FDJADOEAOLE_HFGBOOLJDNA")] Hfgbooljdna = 3,
+    [pbr::OriginalName("FDJADOEAOLE_ENDLJOAKNPI")] Endljoaknpi = 4,
   }
 
   #endregion

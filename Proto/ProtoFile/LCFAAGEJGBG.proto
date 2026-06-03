@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LCFAAGEJGBG {
-    uint32 retcode = 5;
+    uint32 retcode = 12;
 }

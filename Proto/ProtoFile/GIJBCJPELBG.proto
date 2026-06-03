@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DILHPBMCOFK.proto";
 
 message GIJBCJPELBG {
-    uint64 DHJANOFGDNP = 3;
-    DILHPBMCOFK IPDDIKPHGPE = 14;
-    int32 ODDLBGLACKO = 13;
+    int32 ODDLBGLACKO = 3;
+    DILHPBMCOFK IPDDIKPHGPE = 7;
+    uint64 DHJANOFGDNP = 11;
 }

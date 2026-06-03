@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FILMJJMEBJA.proto";
 
 message PJBODOPJFGA {
-    FILMJJMEBJA status = 14;
-    uint32 KPDLMKFLJAI = 3;
+    FILMJJMEBJA status = 2;
+    uint32 KPDLMKFLJAI = 7;
 }

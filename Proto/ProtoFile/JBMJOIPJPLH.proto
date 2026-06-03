@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FeverTimeBattleRank.proto";
 
 message JBMJOIPJPLH {
-    uint32 DJFGDMIDEHJ = 9;
-    uint32 OFBEDJIAEOA = 12;
-    FeverTimeBattleRank OINGNAJMFNL = 5;
+    uint32 DJFGDMIDEHJ = 4;
+    uint32 OFBEDJIAEOA = 8;
+    FeverTimeBattleRank OINGNAJMFNL = 9;
 }

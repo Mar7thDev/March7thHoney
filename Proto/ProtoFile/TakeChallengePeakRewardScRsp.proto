@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengePeakRewardGroup.proto";
 
 message TakeChallengePeakRewardScRsp {
-    repeated ChallengePeakRewardGroup peak_reward_group_list = 11;
-    uint32 retcode = 13;
-    uint32 peak_group_id = 10;
+    uint32 retcode = 4;
+    repeated ChallengePeakRewardGroup peak_reward_group_list = 8;
+    uint32 peak_group_id = 11;
 }

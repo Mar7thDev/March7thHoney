@@ -8,11 +8,11 @@ import "IJNFOHJGPBC.proto";
 import "RogueTournLevelStatus.proto";
 
 message ONPOFJPEBMJ {
-    repeated IJNFOHJGPBC NNFFPJOLDHK = 8;
-    uint32 BJHMFOAGMBF = 14;
-    FKNGOGLNKIG reason = 3;
-    bool KENPENNAGLG = 2;
-    bool EJDMOENBHDP = 13;
-    RogueTournLevelStatus status = 12;
-    CFOIFHEBCJC FIADMEPDAOG = 1;
+    RogueTournLevelStatus status = 6;
+    repeated IJNFOHJGPBC NNFFPJOLDHK = 7;
+    uint32 BJHMFOAGMBF = 10;
+    bool EJDMOENBHDP = 12;
+    bool KENPENNAGLG = 13;
+    FKNGOGLNKIG reason = 14;
+    CFOIFHEBCJC FIADMEPDAOG = 8;
 }

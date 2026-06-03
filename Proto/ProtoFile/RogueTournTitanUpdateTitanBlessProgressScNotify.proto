@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RogueTournTitanUpdateTitanBlessProgressScNotify {
-    uint32 PLJPIPDFAHA = 6;
+    uint32 PLJPIPDFAHA = 11;
 }

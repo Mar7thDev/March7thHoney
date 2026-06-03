@@ -2,18 +2,18 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "BBBIAPEHABA.proto";
 import "ChallengeBossStatistics.proto";
 import "ChallengeStatistics.proto";
 import "ChallengeStoryStatistics.proto";
+import "PlayerChallengeTierceRecord.proto";
 
 message GetChallengeGroupStatisticsScRsp {
-    BBBIAPEHABA MEGBIPBAFBP = 1446;
-    uint32 retcode = 8;
-    uint32 group_id = 11;
+    uint32 group_id = 9;
+    uint32 retcode = 15;
+    PlayerChallengeTierceRecord MEGBIPBAFBP = 713;
     oneof EDKOHAAMONH {
-        ChallengeStatistics challenge_default = 10;
-        ChallengeStoryStatistics challenge_story = 15;
-        ChallengeBossStatistics challenge_boss = 7;
+        ChallengeStatistics challenge_default = 2;
+        ChallengeStoryStatistics challenge_story = 8;
+        ChallengeBossStatistics challenge_boss = 11;
     }
 }

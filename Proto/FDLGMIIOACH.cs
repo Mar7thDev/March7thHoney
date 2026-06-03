@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGRExHTUlJT0FDSC5wcm90byJHCgtGRExHTUlJT0FDSBIVCgtOTkROQ0FF",
-            "R0RGSRgIIAEoDUgAEhIKCGV4dHJhX2lkGAQgASgNSABCDQoLTk5JSFBIUEVH",
+            "R0RGSRgOIAEoDUgAEhIKCGV4dHJhX2lkGAsgASgNSABCDQoLTk5JSFBIUEVH",
             "SUpCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -91,7 +91,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NNDNCAEGDFI" field.</summary>
-    public const int NNDNCAEGDFIFieldNumber = 8;
+    public const int NNDNCAEGDFIFieldNumber = 14;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint NNDNCAEGDFI {
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "extra_id" field.</summary>
-    public const int ExtraIdFieldNumber = 4;
+    public const int ExtraIdFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint ExtraId {
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "NNIHPHPEGIJ" oneof.</summary>
     public enum NNIHPHPEGIJOneofCase {
       None = 0,
-      NNDNCAEGDFI = 8,
-      ExtraId = 4,
+      NNDNCAEGDFI = 14,
+      ExtraId = 11,
     }
     private NNIHPHPEGIJOneofCase nNIHPHPEGIJCase_ = NNIHPHPEGIJOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -210,11 +210,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (HasExtraId) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(ExtraId);
       }
       if (HasNNDNCAEGDFI) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(112);
         output.WriteUInt32(NNDNCAEGDFI);
       }
       if (_unknownFields != null) {
@@ -228,11 +228,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (HasExtraId) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(ExtraId);
       }
       if (HasNNDNCAEGDFI) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(112);
         output.WriteUInt32(NNDNCAEGDFI);
       }
       if (_unknownFields != null) {
@@ -291,11 +291,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 88: {
             ExtraId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 112: {
             NNDNCAEGDFI = input.ReadUInt32();
             break;
           }
@@ -318,11 +318,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 88: {
             ExtraId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 112: {
             NNDNCAEGDFI = input.ReadUInt32();
             break;
           }

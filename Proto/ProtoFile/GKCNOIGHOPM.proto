@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GKCNOIGHOPM {
-    uint32 LHHJFMMCBAF = 6;
-    uint32 MBNBCPEAALJ = 2;
+    uint32 LHHJFMMCBAF = 3;
+    uint32 MBNBCPEAALJ = 6;
     uint32 CBNKDHIHECO = 13;
 }

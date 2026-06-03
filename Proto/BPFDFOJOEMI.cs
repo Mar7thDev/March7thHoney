@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static BPFDFOJOEMIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFCUEZERk9KT0VNSS5wcm90byI3CgtCUEZERk9KT0VNSRITCgtMQkRMQUFD",
-            "T0NDThgFIAEoDRITCgtNSU5DQ0lMSUpOThgOIAEoDUIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFCUEZERk9KT0VNSS5wcm90byIzCgtCUEZERk9KT0VNSRIPCgdwZXJjZW50",
+            "GAIgASgNEhMKC0xCRExBQUNPQ0NOGAYgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BPFDFOJOEMI), global::March7thHoney.Proto.BPFDFOJOEMI.Parser, new[]{ "LBDLAACOCCN", "MINCCILIJNN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BPFDFOJOEMI), global::March7thHoney.Proto.BPFDFOJOEMI.Parser, new[]{ "Percent", "LBDLAACOCCN" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BPFDFOJOEMI(BPFDFOJOEMI other) : this() {
+      percent_ = other.percent_;
       lBDLAACOCCN_ = other.lBDLAACOCCN_;
-      mINCCILIJNN_ = other.mINCCILIJNN_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,8 +83,20 @@ namespace March7thHoney.Proto {
       return new BPFDFOJOEMI(this);
     }
 
+    /// <summary>Field number for the "percent" field.</summary>
+    public const int PercentFieldNumber = 2;
+    private uint percent_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Percent {
+      get { return percent_; }
+      set {
+        percent_ = value;
+      }
+    }
+
     /// <summary>Field number for the "LBDLAACOCCN" field.</summary>
-    public const int LBDLAACOCCNFieldNumber = 5;
+    public const int LBDLAACOCCNFieldNumber = 6;
     private uint lBDLAACOCCN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -92,18 +104,6 @@ namespace March7thHoney.Proto {
       get { return lBDLAACOCCN_; }
       set {
         lBDLAACOCCN_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "MINCCILIJNN" field.</summary>
-    public const int MINCCILIJNNFieldNumber = 14;
-    private uint mINCCILIJNN_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MINCCILIJNN {
-      get { return mINCCILIJNN_; }
-      set {
-        mINCCILIJNN_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Percent != other.Percent) return false;
       if (LBDLAACOCCN != other.LBDLAACOCCN) return false;
-      if (MINCCILIJNN != other.MINCCILIJNN) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Percent != 0) hash ^= Percent.GetHashCode();
       if (LBDLAACOCCN != 0) hash ^= LBDLAACOCCN.GetHashCode();
-      if (MINCCILIJNN != 0) hash ^= MINCCILIJNN.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LBDLAACOCCN != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(LBDLAACOCCN);
+      if (Percent != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Percent);
       }
-      if (MINCCILIJNN != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(MINCCILIJNN);
+      if (LBDLAACOCCN != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(LBDLAACOCCN);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LBDLAACOCCN != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(LBDLAACOCCN);
+      if (Percent != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Percent);
       }
-      if (MINCCILIJNN != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(MINCCILIJNN);
+      if (LBDLAACOCCN != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(LBDLAACOCCN);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Percent != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Percent);
+      }
       if (LBDLAACOCCN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LBDLAACOCCN);
-      }
-      if (MINCCILIJNN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MINCCILIJNN);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Percent != 0) {
+        Percent = other.Percent;
+      }
       if (other.LBDLAACOCCN != 0) {
         LBDLAACOCCN = other.LBDLAACOCCN;
-      }
-      if (other.MINCCILIJNN != 0) {
-        MINCCILIJNN = other.MINCCILIJNN;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            LBDLAACOCCN = input.ReadUInt32();
+          case 16: {
+            Percent = input.ReadUInt32();
             break;
           }
-          case 112: {
-            MINCCILIJNN = input.ReadUInt32();
+          case 48: {
+            LBDLAACOCCN = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            LBDLAACOCCN = input.ReadUInt32();
+          case 16: {
+            Percent = input.ReadUInt32();
             break;
           }
-          case 112: {
-            MINCCILIJNN = input.ReadUInt32();
+          case 48: {
+            LBDLAACOCCN = input.ReadUInt32();
             break;
           }
         }

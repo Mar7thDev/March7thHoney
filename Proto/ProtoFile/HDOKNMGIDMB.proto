@@ -6,7 +6,7 @@ import "FeatureSwitchType.proto";
 import "HBJLNKAFNAD.proto";
 
 message HDOKNMGIDMB {
-    repeated HBJLNKAFNAD BGNKLMIMBPI = 2;
     FeatureSwitchType type = 1;
+    repeated HBJLNKAFNAD BGNKLMIMBPI = 2;
     bool KPCPABKPAKL = 3;
 }

@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdDbWRQYW1NaXNzaW9uVHlwZS5wcm90byqKAQoRQ21kUGFtTWlzc2lvblR5",
             "cGUSGwoXS01HTklHR0hNQk1fTkxDREdJUEdGREoQABIcChdLTUdOSUdHSE1C",
-            "TV9HT0ZNREVESEVOQRCjHxIcChdLTUdOSUdHSE1CTV9ITkhDT01ESkdKSRDp",
-            "HxIcChdLTUdOSUdHSE1CTV9NQ0tFTEZBTlBQSRDwH0IWqgITTWFyY2g3dGhI",
+            "TV9NQ0tFTEZBTlBQSRD9HxIcChdLTUdOSUdHSE1CTV9ITkhDT01ESkdKSRC5",
+            "HxIcChdLTUdOSUdHSE1CTV9HT0ZNREVESEVOQRDuH0IWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -39,9 +39,9 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPamMissionType {
     [pbr::OriginalName("KMGNIGGHMBM_NLCDGIPGFDJ")] KmgnigghmbmNlcdgipgfdj = 0,
-    [pbr::OriginalName("KMGNIGGHMBM_GOFMDEDHENA")] KmgnigghmbmGofmdedhena = 4003,
-    [pbr::OriginalName("KMGNIGGHMBM_HNHCOMDJGJI")] KmgnigghmbmHnhcomdjgji = 4073,
-    [pbr::OriginalName("KMGNIGGHMBM_MCKELFANPPI")] KmgnigghmbmMckelfanppi = 4080,
+    [pbr::OriginalName("KMGNIGGHMBM_MCKELFANPPI")] KmgnigghmbmMckelfanppi = 4093,
+    [pbr::OriginalName("KMGNIGGHMBM_HNHCOMDJGJI")] KmgnigghmbmHnhcomdjgji = 4025,
+    [pbr::OriginalName("KMGNIGGHMBM_GOFMDEDHENA")] KmgnigghmbmGofmdedhena = 4078,
   }
 
   #endregion

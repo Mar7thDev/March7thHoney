@@ -10,6 +10,6 @@ message IJHPILBBHDI {
             EGCFNCBLHJC_LJLKNDIACEO = 2;
         }
     }
-    uint32 index = 9;
-    IJHPILBBHDI.BBIBCFCKPJH.EGCFNCBLHJC status = 4;
+    IJHPILBBHDI.BBIBCFCKPJH.EGCFNCBLHJC status = 2;
+    uint32 index = 11;
 }

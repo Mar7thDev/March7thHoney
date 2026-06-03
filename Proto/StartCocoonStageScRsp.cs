@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtTdGFydENvY29vblN0YWdlU2NSc3AucHJvdG8aFVNjZW5lQmF0dGxlSW5m",
-            "by5wcm90byKfAQoVU3RhcnRDb2Nvb25TdGFnZVNjUnNwEiUKC2JhdHRsZV9p",
-            "bmZvGAcgASgLMhAuU2NlbmVCYXR0bGVJbmZvEgwKBHdhdmUYBCABKA0SDwoH",
-            "cmV0Y29kZRgJIAEoDRIWCg5wcm9wX2VudGl0eV9pZBgCIAEoDRIRCgljb2Nv",
-            "b25faWQYDyABKA0SFQoNY2hhbGxlbmdlX2NudBgBIAEoDUIWqgITTWFyY2g3",
+            "by5wcm90byKfAQoVU3RhcnRDb2Nvb25TdGFnZVNjUnNwEg8KB3JldGNvZGUY",
+            "AyABKA0SFgoOcHJvcF9lbnRpdHlfaWQYBCABKA0SEQoJY29jb29uX2lkGAUg",
+            "ASgNEgwKBHdhdmUYBiABKA0SJQoLYmF0dGxlX2luZm8YCSABKAsyEC5TY2Vu",
+            "ZUJhdHRsZUluZm8SFQoNY2hhbGxlbmdlX2NudBgKIAEoDUIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneBattleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartCocoonStageScRsp), global::March7thHoney.Proto.StartCocoonStageScRsp.Parser, new[]{ "BattleInfo", "Wave", "Retcode", "PropEntityId", "CocoonId", "ChallengeCnt" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartCocoonStageScRsp), global::March7thHoney.Proto.StartCocoonStageScRsp.Parser, new[]{ "Retcode", "PropEntityId", "CocoonId", "Wave", "BattleInfo", "ChallengeCnt" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartCocoonStageScRsp(StartCocoonStageScRsp other) : this() {
-      battleInfo_ = other.battleInfo_ != null ? other.battleInfo_.Clone() : null;
-      wave_ = other.wave_;
       retcode_ = other.retcode_;
       propEntityId_ = other.propEntityId_;
       cocoonId_ = other.cocoonId_;
+      wave_ = other.wave_;
+      battleInfo_ = other.battleInfo_ != null ? other.battleInfo_.Clone() : null;
       challengeCnt_ = other.challengeCnt_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -90,32 +90,8 @@ namespace March7thHoney.Proto {
       return new StartCocoonStageScRsp(this);
     }
 
-    /// <summary>Field number for the "battle_info" field.</summary>
-    public const int BattleInfoFieldNumber = 7;
-    private global::March7thHoney.Proto.SceneBattleInfo battleInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SceneBattleInfo BattleInfo {
-      get { return battleInfo_; }
-      set {
-        battleInfo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "wave" field.</summary>
-    public const int WaveFieldNumber = 4;
-    private uint wave_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Wave {
-      get { return wave_; }
-      set {
-        wave_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 3;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -127,7 +103,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "prop_entity_id" field.</summary>
-    public const int PropEntityIdFieldNumber = 2;
+    public const int PropEntityIdFieldNumber = 4;
     private uint propEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -139,7 +115,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cocoon_id" field.</summary>
-    public const int CocoonIdFieldNumber = 15;
+    public const int CocoonIdFieldNumber = 5;
     private uint cocoonId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,8 +126,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "wave" field.</summary>
+    public const int WaveFieldNumber = 6;
+    private uint wave_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Wave {
+      get { return wave_; }
+      set {
+        wave_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "battle_info" field.</summary>
+    public const int BattleInfoFieldNumber = 9;
+    private global::March7thHoney.Proto.SceneBattleInfo battleInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.SceneBattleInfo BattleInfo {
+      get { return battleInfo_; }
+      set {
+        battleInfo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "challenge_cnt" field.</summary>
-    public const int ChallengeCntFieldNumber = 1;
+    public const int ChallengeCntFieldNumber = 10;
     private uint challengeCnt_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -177,11 +177,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(BattleInfo, other.BattleInfo)) return false;
-      if (Wave != other.Wave) return false;
       if (Retcode != other.Retcode) return false;
       if (PropEntityId != other.PropEntityId) return false;
       if (CocoonId != other.CocoonId) return false;
+      if (Wave != other.Wave) return false;
+      if (!object.Equals(BattleInfo, other.BattleInfo)) return false;
       if (ChallengeCnt != other.ChallengeCnt) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -190,11 +190,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
-      if (Wave != 0) hash ^= Wave.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (PropEntityId != 0) hash ^= PropEntityId.GetHashCode();
       if (CocoonId != 0) hash ^= CocoonId.GetHashCode();
+      if (Wave != 0) hash ^= Wave.GetHashCode();
+      if (battleInfo_ != null) hash ^= BattleInfo.GetHashCode();
       if (ChallengeCnt != 0) hash ^= ChallengeCnt.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -214,29 +214,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ChallengeCnt != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(ChallengeCnt);
+      if (Retcode != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Retcode);
       }
       if (PropEntityId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteUInt32(PropEntityId);
       }
+      if (CocoonId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(CocoonId);
+      }
       if (Wave != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(48);
         output.WriteUInt32(Wave);
       }
       if (battleInfo_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(74);
         output.WriteMessage(BattleInfo);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Retcode);
-      }
-      if (CocoonId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(CocoonId);
+      if (ChallengeCnt != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(ChallengeCnt);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -248,29 +248,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ChallengeCnt != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(ChallengeCnt);
+      if (Retcode != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Retcode);
       }
       if (PropEntityId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteUInt32(PropEntityId);
       }
+      if (CocoonId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(CocoonId);
+      }
       if (Wave != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(48);
         output.WriteUInt32(Wave);
       }
       if (battleInfo_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(74);
         output.WriteMessage(BattleInfo);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(Retcode);
-      }
-      if (CocoonId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(CocoonId);
+      if (ChallengeCnt != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(ChallengeCnt);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -282,12 +282,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (battleInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BattleInfo);
-      }
-      if (Wave != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Wave);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
@@ -296,6 +290,12 @@ namespace March7thHoney.Proto {
       }
       if (CocoonId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CocoonId);
+      }
+      if (Wave != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Wave);
+      }
+      if (battleInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BattleInfo);
       }
       if (ChallengeCnt != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeCnt);
@@ -312,15 +312,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.battleInfo_ != null) {
-        if (battleInfo_ == null) {
-          BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
-        }
-        BattleInfo.MergeFrom(other.BattleInfo);
-      }
-      if (other.Wave != 0) {
-        Wave = other.Wave;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
@@ -329,6 +320,15 @@ namespace March7thHoney.Proto {
       }
       if (other.CocoonId != 0) {
         CocoonId = other.CocoonId;
+      }
+      if (other.Wave != 0) {
+        Wave = other.Wave;
+      }
+      if (other.battleInfo_ != null) {
+        if (battleInfo_ == null) {
+          BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
+        }
+        BattleInfo.MergeFrom(other.BattleInfo);
       }
       if (other.ChallengeCnt != 0) {
         ChallengeCnt = other.ChallengeCnt;
@@ -352,31 +352,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            ChallengeCnt = input.ReadUInt32();
-            break;
-          }
-          case 16: {
-            PropEntityId = input.ReadUInt32();
+          case 24: {
+            Retcode = input.ReadUInt32();
             break;
           }
           case 32: {
+            PropEntityId = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            CocoonId = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             Wave = input.ReadUInt32();
             break;
           }
-          case 58: {
+          case 74: {
             if (battleInfo_ == null) {
               BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            CocoonId = input.ReadUInt32();
+          case 80: {
+            ChallengeCnt = input.ReadUInt32();
             break;
           }
         }
@@ -398,31 +398,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            ChallengeCnt = input.ReadUInt32();
-            break;
-          }
-          case 16: {
-            PropEntityId = input.ReadUInt32();
+          case 24: {
+            Retcode = input.ReadUInt32();
             break;
           }
           case 32: {
+            PropEntityId = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            CocoonId = input.ReadUInt32();
+            break;
+          }
+          case 48: {
             Wave = input.ReadUInt32();
             break;
           }
-          case 58: {
+          case 74: {
             if (battleInfo_ == null) {
               BattleInfo = new global::March7thHoney.Proto.SceneBattleInfo();
             }
             input.ReadMessage(BattleInfo);
             break;
           }
-          case 72: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            CocoonId = input.ReadUInt32();
+          case 80: {
+            ChallengeCnt = input.ReadUInt32();
             break;
           }
         }

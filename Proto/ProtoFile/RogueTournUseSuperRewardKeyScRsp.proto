@@ -6,8 +6,8 @@ import "ItemList.proto";
 import "LMDPKOELKFL.proto";
 
 message RogueTournUseSuperRewardKeyScRsp {
-    LMDPKOELKFL ABEMLCJBIEF = 1;
-    ItemList drop_data = 13;
-    ItemList reward = 5;
-    uint32 retcode = 3;
+    uint32 retcode = 4;
+    ItemList reward = 6;
+    ItemList drop_data = 8;
+    LMDPKOELKFL ABEMLCJBIEF = 9;
 }

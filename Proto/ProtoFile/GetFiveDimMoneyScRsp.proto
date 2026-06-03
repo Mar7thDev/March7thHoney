@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetFiveDimMoneyScRsp {
-    uint32 retcode = 4;
-    uint32 GJHKPIGEIIO = 2;
-    uint32 JIDCDLCBKHG = 8;
+    uint32 JIDCDLCBKHG = 7;
+    uint32 retcode = 8;
+    uint32 GJHKPIGEIIO = 14;
 }

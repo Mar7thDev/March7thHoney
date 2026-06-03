@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHQk1QT0JKREFGRi5wcm90bxoRRElLQ0ZBSUNPSEIucHJvdG8aEUZPSkRL",
-            "TENIQ0tHLnByb3RvIk4KC0dCTVBPQkpEQUZGEiEKC0tIRUZBSENQSEJMGAUg",
-            "ASgLMgwuRk9KREtMQ0hDS0cSHAoGcmVhc29uGAEgASgOMgwuRElLQ0ZBSUNP",
+            "TENIQ0tHLnByb3RvIk4KC0dCTVBPQkpEQUZGEiEKC0tIRUZBSENQSEJMGAQg",
+            "ASgLMgwuRk9KREtMQ0hDS0cSHAoGcmVhc29uGA4gASgOMgwuRElLQ0ZBSUNP",
             "SEJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DIKCFAICOHBReflection.Descriptor, global::March7thHoney.Proto.FOJDKLCHCKGReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KHEFAHCPHBL" field.</summary>
-    public const int KHEFAHCPHBLFieldNumber = 5;
+    public const int KHEFAHCPHBLFieldNumber = 4;
     private global::March7thHoney.Proto.FOJDKLCHCKG kHEFAHCPHBL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 1;
+    public const int ReasonFieldNumber = 14;
     private global::March7thHoney.Proto.DIKCFAICOHB reason_ = global::March7thHoney.Proto.DIKCFAICOHB.Ejdlggagbea;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Reason != global::March7thHoney.Proto.DIKCFAICOHB.Ejdlggagbea) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Reason);
-      }
       if (kHEFAHCPHBL_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteMessage(KHEFAHCPHBL);
+      }
+      if (Reason != global::March7thHoney.Proto.DIKCFAICOHB.Ejdlggagbea) {
+        output.WriteRawTag(112);
+        output.WriteEnum((int) Reason);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Reason != global::March7thHoney.Proto.DIKCFAICOHB.Ejdlggagbea) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Reason);
-      }
       if (kHEFAHCPHBL_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteMessage(KHEFAHCPHBL);
+      }
+      if (Reason != global::March7thHoney.Proto.DIKCFAICOHB.Ejdlggagbea) {
+        output.WriteRawTag(112);
+        output.WriteEnum((int) Reason);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Reason = (global::March7thHoney.Proto.DIKCFAICOHB) input.ReadEnum();
-            break;
-          }
-          case 42: {
+          case 34: {
             if (kHEFAHCPHBL_ == null) {
               KHEFAHCPHBL = new global::March7thHoney.Proto.FOJDKLCHCKG();
             }
             input.ReadMessage(KHEFAHCPHBL);
+            break;
+          }
+          case 112: {
+            Reason = (global::March7thHoney.Proto.DIKCFAICOHB) input.ReadEnum();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            Reason = (global::March7thHoney.Proto.DIKCFAICOHB) input.ReadEnum();
-            break;
-          }
-          case 42: {
+          case 34: {
             if (kHEFAHCPHBL_ == null) {
               KHEFAHCPHBL = new global::March7thHoney.Proto.FOJDKLCHCKG();
             }
             input.ReadMessage(KHEFAHCPHBL);
+            break;
+          }
+          case 112: {
+            Reason = (global::March7thHoney.Proto.DIKCFAICOHB) input.ReadEnum();
             break;
           }
         }

@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KGKKFPGNELC {
-    map<uint32, uint32> BECKKLBMFHK = 6;
-}

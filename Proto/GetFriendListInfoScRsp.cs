@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChxHZXRGcmllbmRMaXN0SW5mb1NjUnNwLnByb3RvGhZGcmllbmRTaW1wbGVJ",
             "bmZvLnByb3RvGhZQbGF5ZXJTaW1wbGVJbmZvLnByb3RvIngKFkdldEZyaWVu",
-            "ZExpc3RJbmZvU2NSc3ASJQoKYmxhY2tfbGlzdBgDIAMoCzIRLlBsYXllclNp",
-            "bXBsZUluZm8SJgoLZnJpZW5kX2xpc3QYDiADKAsyES5GcmllbmRTaW1wbGVJ",
-            "bmZvEg8KB3JldGNvZGUYASABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "ZExpc3RJbmZvU2NSc3ASJQoKYmxhY2tfbGlzdBgCIAMoCzIRLlBsYXllclNp",
+            "bXBsZUluZm8SDwoHcmV0Y29kZRgLIAEoDRImCgtmcmllbmRfbGlzdBgPIAMo",
+            "CzIRLkZyaWVuZFNpbXBsZUluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FriendSimpleInfoReflection.Descriptor, global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendListInfoScRsp), global::March7thHoney.Proto.GetFriendListInfoScRsp.Parser, new[]{ "BlackList", "FriendList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFriendListInfoScRsp), global::March7thHoney.Proto.GetFriendListInfoScRsp.Parser, new[]{ "BlackList", "Retcode", "FriendList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,8 +76,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetFriendListInfoScRsp(GetFriendListInfoScRsp other) : this() {
       blackList_ = other.blackList_.Clone();
-      friendList_ = other.friendList_.Clone();
       retcode_ = other.retcode_;
+      friendList_ = other.friendList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,9 +88,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "black_list" field.</summary>
-    public const int BlackListFieldNumber = 3;
+    public const int BlackListFieldNumber = 2;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.PlayerSimpleInfo> _repeated_blackList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.PlayerSimpleInfo.Parser);
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.PlayerSimpleInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo> blackList_ = new pbc::RepeatedField<global::March7thHoney.Proto.PlayerSimpleInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,19 +98,8 @@ namespace March7thHoney.Proto {
       get { return blackList_; }
     }
 
-    /// <summary>Field number for the "friend_list" field.</summary>
-    public const int FriendListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FriendSimpleInfo> _repeated_friendList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.FriendSimpleInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FriendSimpleInfo> friendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FriendSimpleInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.FriendSimpleInfo> FriendList {
-      get { return friendList_; }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,6 +108,17 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
+    }
+
+    /// <summary>Field number for the "friend_list" field.</summary>
+    public const int FriendListFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FriendSimpleInfo> _repeated_friendList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.FriendSimpleInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FriendSimpleInfo> friendList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FriendSimpleInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.FriendSimpleInfo> FriendList {
+      get { return friendList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!blackList_.Equals(other.blackList_)) return false;
-      if(!friendList_.Equals(other.friendList_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!friendList_.Equals(other.friendList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= blackList_.GetHashCode();
-      hash ^= friendList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= friendList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      blackList_.WriteTo(output, _repeated_blackList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      blackList_.WriteTo(output, _repeated_blackList_codec);
       friendList_.WriteTo(output, _repeated_friendList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -183,11 +183,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      blackList_.WriteTo(ref output, _repeated_blackList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      blackList_.WriteTo(ref output, _repeated_blackList_codec);
       friendList_.WriteTo(ref output, _repeated_friendList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -200,10 +200,10 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += blackList_.CalculateSize(_repeated_blackList_codec);
-      size += friendList_.CalculateSize(_repeated_friendList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += friendList_.CalculateSize(_repeated_friendList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -217,10 +217,10 @@ namespace March7thHoney.Proto {
         return;
       }
       blackList_.Add(other.blackList_);
-      friendList_.Add(other.friendList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      friendList_.Add(other.friendList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -240,15 +240,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 26: {
+          case 18: {
             blackList_.AddEntriesFrom(input, _repeated_blackList_codec);
             break;
           }
-          case 114: {
+          case 88: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             friendList_.AddEntriesFrom(input, _repeated_friendList_codec);
             break;
           }
@@ -271,15 +271,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 26: {
+          case 18: {
             blackList_.AddEntriesFrom(ref input, _repeated_blackList_codec);
             break;
           }
-          case 114: {
+          case 88: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             friendList_.AddEntriesFrom(ref input, _repeated_friendList_codec);
             break;
           }

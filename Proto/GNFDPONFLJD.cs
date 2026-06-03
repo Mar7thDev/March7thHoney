@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHTkZEUE9ORkxKRC5wcm90bxoSSXRlbUNvc3REYXRhLnByb3RvIlkKC0dO",
-            "RkRQT05GTEpEEiAKCWNvc3RfZGF0YRgNIAEoCzINLkl0ZW1Db3N0RGF0YRIT",
-            "CgtMSUFHR0RESUxHTxgHIAEoBRITCgtKRklHTkJCTENJTRgPIAEoDUIWqgIT",
+            "RkRQT05GTEpEEiAKCWNvc3RfZGF0YRgEIAEoCzINLkl0ZW1Db3N0RGF0YRIT",
+            "CgtKRklHTkJCTENJTRgJIAEoDRITCgtMSUFHR0RESUxHTxgLIAEoBUIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GNFDPONFLJD), global::March7thHoney.Proto.GNFDPONFLJD.Parser, new[]{ "CostData", "LIAGGDDILGO", "JFIGNBBLCIM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GNFDPONFLJD), global::March7thHoney.Proto.GNFDPONFLJD.Parser, new[]{ "CostData", "JFIGNBBLCIM", "LIAGGDDILGO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GNFDPONFLJD(GNFDPONFLJD other) : this() {
       costData_ = other.costData_ != null ? other.costData_.Clone() : null;
-      lIAGGDDILGO_ = other.lIAGGDDILGO_;
       jFIGNBBLCIM_ = other.jFIGNBBLCIM_;
+      lIAGGDDILGO_ = other.lIAGGDDILGO_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cost_data" field.</summary>
-    public const int CostDataFieldNumber = 13;
+    public const int CostDataFieldNumber = 4;
     private global::March7thHoney.Proto.ItemCostData costData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,20 +97,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LIAGGDDILGO" field.</summary>
-    public const int LIAGGDDILGOFieldNumber = 7;
-    private int lIAGGDDILGO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int LIAGGDDILGO {
-      get { return lIAGGDDILGO_; }
-      set {
-        lIAGGDDILGO_ = value;
-      }
-    }
-
     /// <summary>Field number for the "JFIGNBBLCIM" field.</summary>
-    public const int JFIGNBBLCIMFieldNumber = 15;
+    public const int JFIGNBBLCIMFieldNumber = 9;
     private uint jFIGNBBLCIM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return jFIGNBBLCIM_; }
       set {
         jFIGNBBLCIM_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LIAGGDDILGO" field.</summary>
+    public const int LIAGGDDILGOFieldNumber = 11;
+    private int lIAGGDDILGO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int LIAGGDDILGO {
+      get { return lIAGGDDILGO_; }
+      set {
+        lIAGGDDILGO_ = value;
       }
     }
 
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(CostData, other.CostData)) return false;
-      if (LIAGGDDILGO != other.LIAGGDDILGO) return false;
       if (JFIGNBBLCIM != other.JFIGNBBLCIM) return false;
+      if (LIAGGDDILGO != other.LIAGGDDILGO) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (costData_ != null) hash ^= CostData.GetHashCode();
-      if (LIAGGDDILGO != 0) hash ^= LIAGGDDILGO.GetHashCode();
       if (JFIGNBBLCIM != 0) hash ^= JFIGNBBLCIM.GetHashCode();
+      if (LIAGGDDILGO != 0) hash ^= LIAGGDDILGO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LIAGGDDILGO != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(LIAGGDDILGO);
-      }
       if (costData_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(34);
         output.WriteMessage(CostData);
       }
       if (JFIGNBBLCIM != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteUInt32(JFIGNBBLCIM);
+      }
+      if (LIAGGDDILGO != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(LIAGGDDILGO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LIAGGDDILGO != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(LIAGGDDILGO);
-      }
       if (costData_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(34);
         output.WriteMessage(CostData);
       }
       if (JFIGNBBLCIM != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteUInt32(JFIGNBBLCIM);
+      }
+      if (LIAGGDDILGO != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(LIAGGDDILGO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -214,11 +214,11 @@ namespace March7thHoney.Proto {
       if (costData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CostData);
       }
-      if (LIAGGDDILGO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LIAGGDDILGO);
-      }
       if (JFIGNBBLCIM != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JFIGNBBLCIM);
+      }
+      if (LIAGGDDILGO != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(LIAGGDDILGO);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -238,11 +238,11 @@ namespace March7thHoney.Proto {
         }
         CostData.MergeFrom(other.CostData);
       }
-      if (other.LIAGGDDILGO != 0) {
-        LIAGGDDILGO = other.LIAGGDDILGO;
-      }
       if (other.JFIGNBBLCIM != 0) {
         JFIGNBBLCIM = other.JFIGNBBLCIM;
+      }
+      if (other.LIAGGDDILGO != 0) {
+        LIAGGDDILGO = other.LIAGGDDILGO;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -263,19 +263,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            LIAGGDDILGO = input.ReadInt32();
-            break;
-          }
-          case 106: {
+          case 34: {
             if (costData_ == null) {
               CostData = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(CostData);
             break;
           }
-          case 120: {
+          case 72: {
             JFIGNBBLCIM = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            LIAGGDDILGO = input.ReadInt32();
             break;
           }
         }
@@ -297,19 +297,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            LIAGGDDILGO = input.ReadInt32();
-            break;
-          }
-          case 106: {
+          case 34: {
             if (costData_ == null) {
               CostData = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(CostData);
             break;
           }
-          case 120: {
+          case 72: {
             JFIGNBBLCIM = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            LIAGGDDILGO = input.ReadInt32();
             break;
           }
         }

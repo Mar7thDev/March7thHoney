@@ -26,11 +26,11 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdDbWRFeHBlZGl0aW9uVHlwZS5wcm90byqCAgoRQ21kRXhwZWRpdGlvblR5",
             "cGUSGwoXT0tQQ09CQ01PRkZfTkxDREdJUEdGREoQABIcChdPS1BDT0JDTU9G",
-            "Rl9ERkpETkxORktMRxDNExIcChdPS1BDT0JDTU9GRl9DSEVQS0FERU5KTBDu",
-            "ExIcChdPS1BDT0JDTU9GRl9DQ01ORkdIRENETxDHExIcChdPS1BDT0JDTU9G",
-            "Rl9LRE5ITEtFT0hIQRDkExIcChdPS1BDT0JDTU9GRl9FQ0hGQUVERUZMRxDM",
-            "ExIcChdPS1BDT0JDTU9GRl9NS0JOUEZHR0FOQxDYExIcChdPS1BDT0JDTU9G",
-            "Rl9PTENIR0lOQUVJRxDqE0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "Rl9PTENIR0lOQUVJRxDSExIcChdPS1BDT0JDTU9GRl9LRE5ITEtFT0hIQRDN",
+            "ExIcChdPS1BDT0JDTU9GRl9NS0JOUEZHR0FOQxDnExIcChdPS1BDT0JDTU9G",
+            "Rl9ERkpETkxORktMRxDOExIcChdPS1BDT0JDTU9GRl9DSEVQS0FERU5KTBDb",
+            "ExIcChdPS1BDT0JDTU9GRl9FQ0hGQUVERUZMRxDKExIcChdPS1BDT0JDTU9G",
+            "Rl9DQ01ORkdIRENETxDGE0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -42,13 +42,13 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdExpeditionType {
     [pbr::OriginalName("OKPCOBCMOFF_NLCDGIPGFDJ")] OkpcobcmoffNlcdgipgfdj = 0,
-    [pbr::OriginalName("OKPCOBCMOFF_DFJDNLNFKLG")] OkpcobcmoffDfjdnlnfklg = 2509,
-    [pbr::OriginalName("OKPCOBCMOFF_CHEPKADENJL")] OkpcobcmoffChepkadenjl = 2542,
-    [pbr::OriginalName("OKPCOBCMOFF_CCMNFGHDCDO")] OkpcobcmoffCcmnfghdcdo = 2503,
-    [pbr::OriginalName("OKPCOBCMOFF_KDNHLKEOHHA")] OkpcobcmoffKdnhlkeohha = 2532,
-    [pbr::OriginalName("OKPCOBCMOFF_ECHFAEDEFLG")] OkpcobcmoffEchfaedeflg = 2508,
-    [pbr::OriginalName("OKPCOBCMOFF_MKBNPFGGANC")] OkpcobcmoffMkbnpfgganc = 2520,
-    [pbr::OriginalName("OKPCOBCMOFF_OLCHGINAEIG")] OkpcobcmoffOlchginaeig = 2538,
+    [pbr::OriginalName("OKPCOBCMOFF_OLCHGINAEIG")] OkpcobcmoffOlchginaeig = 2514,
+    [pbr::OriginalName("OKPCOBCMOFF_KDNHLKEOHHA")] OkpcobcmoffKdnhlkeohha = 2509,
+    [pbr::OriginalName("OKPCOBCMOFF_MKBNPFGGANC")] OkpcobcmoffMkbnpfgganc = 2535,
+    [pbr::OriginalName("OKPCOBCMOFF_DFJDNLNFKLG")] OkpcobcmoffDfjdnlnfklg = 2510,
+    [pbr::OriginalName("OKPCOBCMOFF_CHEPKADENJL")] OkpcobcmoffChepkadenjl = 2523,
+    [pbr::OriginalName("OKPCOBCMOFF_ECHFAEDEFLG")] OkpcobcmoffEchfaedeflg = 2506,
+    [pbr::OriginalName("OKPCOBCMOFF_CCMNFGHDCDO")] OkpcobcmoffCcmnfghdcdo = 2502,
   }
 
   #endregion

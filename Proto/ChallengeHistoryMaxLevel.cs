@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5DaGFsbGVuZ2VIaXN0b3J5TWF4TGV2ZWwucHJvdG8iWwoYQ2hhbGxlbmdl",
-            "SGlzdG9yeU1heExldmVsEg0KBWxldmVsGAcgASgNEhsKE3Jld2FyZF9kaXNw",
-            "bGF5X3R5cGUYDiABKA0SEwoLSE5IQ0ZKSk5KQ0UYCCABKAhCFqoCE01hcmNo",
+            "SGlzdG9yeU1heExldmVsEhMKC0hOSENGSkpOSkNFGAogASgIEhsKE3Jld2Fy",
+            "ZF9kaXNwbGF5X3R5cGUYCyABKA0SDQoFbGV2ZWwYDiABKA1CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeHistoryMaxLevel), global::March7thHoney.Proto.ChallengeHistoryMaxLevel.Parser, new[]{ "Level", "RewardDisplayType", "HNHCFJJNJCE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeHistoryMaxLevel), global::March7thHoney.Proto.ChallengeHistoryMaxLevel.Parser, new[]{ "HNHCFJJNJCE", "RewardDisplayType", "Level" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengeHistoryMaxLevel(ChallengeHistoryMaxLevel other) : this() {
-      level_ = other.level_;
-      rewardDisplayType_ = other.rewardDisplayType_;
       hNHCFJJNJCE_ = other.hNHCFJJNJCE_;
+      rewardDisplayType_ = other.rewardDisplayType_;
+      level_ = other.level_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,20 +85,20 @@ namespace March7thHoney.Proto {
       return new ChallengeHistoryMaxLevel(this);
     }
 
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 7;
-    private uint level_;
+    /// <summary>Field number for the "HNHCFJJNJCE" field.</summary>
+    public const int HNHCFJJNJCEFieldNumber = 10;
+    private bool hNHCFJJNJCE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Level {
-      get { return level_; }
+    public bool HNHCFJJNJCE {
+      get { return hNHCFJJNJCE_; }
       set {
-        level_ = value;
+        hNHCFJJNJCE_ = value;
       }
     }
 
     /// <summary>Field number for the "reward_display_type" field.</summary>
-    public const int RewardDisplayTypeFieldNumber = 14;
+    public const int RewardDisplayTypeFieldNumber = 11;
     private uint rewardDisplayType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,15 +109,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HNHCFJJNJCE" field.</summary>
-    public const int HNHCFJJNJCEFieldNumber = 8;
-    private bool hNHCFJJNJCE_;
+    /// <summary>Field number for the "level" field.</summary>
+    public const int LevelFieldNumber = 14;
+    private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HNHCFJJNJCE {
-      get { return hNHCFJJNJCE_; }
+    public uint Level {
+      get { return level_; }
       set {
-        hNHCFJJNJCE_ = value;
+        level_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Level != other.Level) return false;
-      if (RewardDisplayType != other.RewardDisplayType) return false;
       if (HNHCFJJNJCE != other.HNHCFJJNJCE) return false;
+      if (RewardDisplayType != other.RewardDisplayType) return false;
+      if (Level != other.Level) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Level != 0) hash ^= Level.GetHashCode();
-      if (RewardDisplayType != 0) hash ^= RewardDisplayType.GetHashCode();
       if (HNHCFJJNJCE != false) hash ^= HNHCFJJNJCE.GetHashCode();
+      if (RewardDisplayType != 0) hash ^= RewardDisplayType.GetHashCode();
+      if (Level != 0) hash ^= Level.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Level != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Level);
-      }
       if (HNHCFJJNJCE != false) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(80);
         output.WriteBool(HNHCFJJNJCE);
       }
       if (RewardDisplayType != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(88);
         output.WriteUInt32(RewardDisplayType);
+      }
+      if (Level != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Level != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Level);
-      }
       if (HNHCFJJNJCE != false) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(80);
         output.WriteBool(HNHCFJJNJCE);
       }
       if (RewardDisplayType != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(88);
         output.WriteUInt32(RewardDisplayType);
+      }
+      if (Level != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Level);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      if (HNHCFJJNJCE != false) {
+        size += 1 + 1;
       }
       if (RewardDisplayType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RewardDisplayType);
       }
-      if (HNHCFJJNJCE != false) {
-        size += 1 + 1;
+      if (Level != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Level != 0) {
-        Level = other.Level;
+      if (other.HNHCFJJNJCE != false) {
+        HNHCFJJNJCE = other.HNHCFJJNJCE;
       }
       if (other.RewardDisplayType != 0) {
         RewardDisplayType = other.RewardDisplayType;
       }
-      if (other.HNHCFJJNJCE != false) {
-        HNHCFJJNJCE = other.HNHCFJJNJCE;
+      if (other.Level != 0) {
+        Level = other.Level;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 64: {
+          case 80: {
             HNHCFJJNJCE = input.ReadBool();
             break;
           }
-          case 112: {
+          case 88: {
             RewardDisplayType = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            Level = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 64: {
+          case 80: {
             HNHCFJJNJCE = input.ReadBool();
             break;
           }
-          case 112: {
+          case 88: {
             RewardDisplayType = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            Level = input.ReadUInt32();
             break;
           }
         }

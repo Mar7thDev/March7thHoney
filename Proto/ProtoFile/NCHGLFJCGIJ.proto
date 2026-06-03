@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BMCNDLNONMO.proto";
 
 message NCHGLFJCGIJ {
-    repeated BMCNDLNONMO HDLGLFGKONC = 12;
+    repeated BMCNDLNONMO HDLGLFGKONC = 6;
 }

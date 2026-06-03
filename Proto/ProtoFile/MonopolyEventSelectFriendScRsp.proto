@@ -2,11 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "EIDFCGLODFB.proto";
-
 message MonopolyEventSelectFriendScRsp {
-    EIDFCGLODFB GOPFOJLIFKN = 8;
-    uint32 retcode = 5;
-    uint32 DDCLCNPONOH = 6;
-    uint32 NLGNNDIFGGF = 13;
+    uint32 NLGNNDIFGGF = 2;
+    uint32 add_coin = 5;
+    uint32 retcode = 8;
 }

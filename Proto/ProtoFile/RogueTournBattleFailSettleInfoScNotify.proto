@@ -6,6 +6,6 @@ import "FAICNBKIELL.proto";
 import "JGAMMPGMCNI.proto";
 
 message RogueTournBattleFailSettleInfoScNotify {
-    FAICNBKIELL BFLLJJBHLDF = 2;
-    JGAMMPGMCNI IDCMACCPCBH = 11;
+    JGAMMPGMCNI IDCMACCPCBH = 8;
+    FAICNBKIELL BFLLJJBHLDF = 13;
 }

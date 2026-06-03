@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CDABMABJFII.proto";
 
 message BBIPCFPDEJN {
-    CDABMABJFII reason = 11;
-    uint64 GLANPLEGMPG = 2;
+    CDABMABJFII reason = 2;
+    uint64 GLANPLEGMPG = 12;
 }

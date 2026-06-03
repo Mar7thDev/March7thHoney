@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AIBNHPAGDOL {
-    bool GKEPPNOLNHF = 11;
-    uint32 DPCJFFPOLFG = 14;
+    bool GKEPPNOLNHF = 4;
+    uint32 forbid_reason = 5;
 }

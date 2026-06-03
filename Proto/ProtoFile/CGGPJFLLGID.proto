@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CGGPJFLLGID {
-    uint32 JIGOOAEFDPP = 7;
-    uint32 level = 15;
+    uint32 JIGOOAEFDPP = 8;
+    uint32 level = 11;
 }

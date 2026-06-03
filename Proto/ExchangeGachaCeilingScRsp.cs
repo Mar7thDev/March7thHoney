@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch9FeGNoYW5nZUdhY2hhQ2VpbGluZ1NjUnNwLnByb3RvGhJHYWNoYUNlaWxp",
             "bmcucHJvdG8aDkl0ZW1MaXN0LnByb3RvIqABChlFeGNoYW5nZUdhY2hhQ2Vp",
-            "bGluZ1NjUnNwEiUKEnRyYW5zZmVyX2l0ZW1fbGlzdBgFIAEoCzIJLkl0ZW1M",
-            "aXN0EiQKDWdhY2hhX2NlaWxpbmcYBCABKAsyDS5HYWNoYUNlaWxpbmcSEgoK",
-            "Z2FjaGFfdHlwZRgHIAEoDRIRCglhdmF0YXJfaWQYCCABKA0SDwoHcmV0Y29k",
-            "ZRgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "bGluZ1NjUnNwEhIKCmdhY2hhX3R5cGUYASABKA0SJAoNZ2FjaGFfY2VpbGlu",
+            "ZxgDIAEoCzINLkdhY2hhQ2VpbGluZxIlChJ0cmFuc2Zlcl9pdGVtX2xpc3QY",
+            "BSABKAsyCS5JdGVtTGlzdBIRCglhdmF0YXJfaWQYBiABKA0SDwoHcmV0Y29k",
+            "ZRgJIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GachaCeilingReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExchangeGachaCeilingScRsp), global::March7thHoney.Proto.ExchangeGachaCeilingScRsp.Parser, new[]{ "TransferItemList", "GachaCeiling", "GachaType", "AvatarId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExchangeGachaCeilingScRsp), global::March7thHoney.Proto.ExchangeGachaCeilingScRsp.Parser, new[]{ "GachaType", "GachaCeiling", "TransferItemList", "AvatarId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ExchangeGachaCeilingScRsp(ExchangeGachaCeilingScRsp other) : this() {
-      transferItemList_ = other.transferItemList_ != null ? other.transferItemList_.Clone() : null;
-      gachaCeiling_ = other.gachaCeiling_ != null ? other.gachaCeiling_.Clone() : null;
       gachaType_ = other.gachaType_;
+      gachaCeiling_ = other.gachaCeiling_ != null ? other.gachaCeiling_.Clone() : null;
+      transferItemList_ = other.transferItemList_ != null ? other.transferItemList_.Clone() : null;
       avatarId_ = other.avatarId_;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -87,6 +87,30 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ExchangeGachaCeilingScRsp Clone() {
       return new ExchangeGachaCeilingScRsp(this);
+    }
+
+    /// <summary>Field number for the "gacha_type" field.</summary>
+    public const int GachaTypeFieldNumber = 1;
+    private uint gachaType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GachaType {
+      get { return gachaType_; }
+      set {
+        gachaType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "gacha_ceiling" field.</summary>
+    public const int GachaCeilingFieldNumber = 3;
+    private global::March7thHoney.Proto.GachaCeiling gachaCeiling_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.GachaCeiling GachaCeiling {
+      get { return gachaCeiling_; }
+      set {
+        gachaCeiling_ = value;
+      }
     }
 
     /// <summary>Field number for the "transfer_item_list" field.</summary>
@@ -101,32 +125,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "gacha_ceiling" field.</summary>
-    public const int GachaCeilingFieldNumber = 4;
-    private global::March7thHoney.Proto.GachaCeiling gachaCeiling_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GachaCeiling GachaCeiling {
-      get { return gachaCeiling_; }
-      set {
-        gachaCeiling_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "gacha_type" field.</summary>
-    public const int GachaTypeFieldNumber = 7;
-    private uint gachaType_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GachaType {
-      get { return gachaType_; }
-      set {
-        gachaType_ = value;
-      }
-    }
-
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 8;
+    public const int AvatarIdFieldNumber = 6;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -164,9 +164,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(TransferItemList, other.TransferItemList)) return false;
-      if (!object.Equals(GachaCeiling, other.GachaCeiling)) return false;
       if (GachaType != other.GachaType) return false;
+      if (!object.Equals(GachaCeiling, other.GachaCeiling)) return false;
+      if (!object.Equals(TransferItemList, other.TransferItemList)) return false;
       if (AvatarId != other.AvatarId) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -176,9 +176,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (transferItemList_ != null) hash ^= TransferItemList.GetHashCode();
-      if (gachaCeiling_ != null) hash ^= GachaCeiling.GetHashCode();
       if (GachaType != 0) hash ^= GachaType.GetHashCode();
+      if (gachaCeiling_ != null) hash ^= GachaCeiling.GetHashCode();
+      if (transferItemList_ != null) hash ^= TransferItemList.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
@@ -199,24 +199,24 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (GachaType != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(GachaType);
+      }
       if (gachaCeiling_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(GachaCeiling);
       }
       if (transferItemList_ != null) {
         output.WriteRawTag(42);
         output.WriteMessage(TransferItemList);
       }
-      if (GachaType != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(GachaType);
-      }
       if (AvatarId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(48);
         output.WriteUInt32(AvatarId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -229,24 +229,24 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (GachaType != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(GachaType);
+      }
       if (gachaCeiling_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(GachaCeiling);
       }
       if (transferItemList_ != null) {
         output.WriteRawTag(42);
         output.WriteMessage(TransferItemList);
       }
-      if (GachaType != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(GachaType);
-      }
       if (AvatarId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(48);
         output.WriteUInt32(AvatarId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -259,14 +259,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (transferItemList_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TransferItemList);
+      if (GachaType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GachaType);
       }
       if (gachaCeiling_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(GachaCeiling);
       }
-      if (GachaType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GachaType);
+      if (transferItemList_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TransferItemList);
       }
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
@@ -286,11 +286,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.transferItemList_ != null) {
-        if (transferItemList_ == null) {
-          TransferItemList = new global::March7thHoney.Proto.ItemList();
-        }
-        TransferItemList.MergeFrom(other.TransferItemList);
+      if (other.GachaType != 0) {
+        GachaType = other.GachaType;
       }
       if (other.gachaCeiling_ != null) {
         if (gachaCeiling_ == null) {
@@ -298,8 +295,11 @@ namespace March7thHoney.Proto {
         }
         GachaCeiling.MergeFrom(other.GachaCeiling);
       }
-      if (other.GachaType != 0) {
-        GachaType = other.GachaType;
+      if (other.transferItemList_ != null) {
+        if (transferItemList_ == null) {
+          TransferItemList = new global::March7thHoney.Proto.ItemList();
+        }
+        TransferItemList.MergeFrom(other.TransferItemList);
       }
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
@@ -326,7 +326,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 8: {
+            GachaType = input.ReadUInt32();
+            break;
+          }
+          case 26: {
             if (gachaCeiling_ == null) {
               GachaCeiling = new global::March7thHoney.Proto.GachaCeiling();
             }
@@ -340,15 +344,11 @@ namespace March7thHoney.Proto {
             input.ReadMessage(TransferItemList);
             break;
           }
-          case 56: {
-            GachaType = input.ReadUInt32();
-            break;
-          }
-          case 64: {
+          case 48: {
             AvatarId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -371,7 +371,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 8: {
+            GachaType = input.ReadUInt32();
+            break;
+          }
+          case 26: {
             if (gachaCeiling_ == null) {
               GachaCeiling = new global::March7thHoney.Proto.GachaCeiling();
             }
@@ -385,15 +389,11 @@ namespace March7thHoney.Proto {
             input.ReadMessage(TransferItemList);
             break;
           }
-          case 56: {
-            GachaType = input.ReadUInt32();
-            break;
-          }
-          case 64: {
+          case 48: {
             AvatarId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }

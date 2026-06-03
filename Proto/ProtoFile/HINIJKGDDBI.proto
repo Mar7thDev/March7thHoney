@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HINIJKGDDBI {
-    repeated uint32 grid_fight_trait_info = 5;
+    repeated uint32 grid_fight_trait_info = 4;
 }

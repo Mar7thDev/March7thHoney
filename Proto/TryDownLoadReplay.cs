@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static TryDownLoadReplayReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChdUcnlEb3duTG9hZFJlcGxheS5wcm90bxoQUmVwbGF5SW5mby5wcm90byJT",
-            "ChFUcnlEb3duTG9hZFJlcGxheRITCgtyZXBsYXlfbmFtZRgBIAEoCRIpChR0",
-            "cnlfZG93bl9sb2FkX3JlcGxheRgCIAEoCzILLlJlcGxheUluZm9CFqoCE01h",
-            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChdUcnlEb3duTG9hZFJlcGxheS5wcm90bxoQUmVwbGF5SW5mby5wcm90byJQ",
+            "ChFUcnlEb3duTG9hZFJlcGxheRIZChFiYXR0bGVfcmVwbGF5X2tleRgBIAEo",
+            "CRIgCgtyZXBsYXlfaW5mbxgCIAEoCzILLlJlcGxheUluZm9CFqoCE01hcmNo",
+            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ReplayInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TryDownLoadReplay), global::March7thHoney.Proto.TryDownLoadReplay.Parser, new[]{ "ReplayName", "TryDownLoadReplay_" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TryDownLoadReplay), global::March7thHoney.Proto.TryDownLoadReplay.Parser, new[]{ "BattleReplayKey", "ReplayInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TryDownLoadReplay(TryDownLoadReplay other) : this() {
-      replayName_ = other.replayName_;
-      tryDownLoadReplay_ = other.tryDownLoadReplay_ != null ? other.tryDownLoadReplay_.Clone() : null;
+      battleReplayKey_ = other.battleReplayKey_;
+      replayInfo_ = other.replayInfo_ != null ? other.replayInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,27 +84,27 @@ namespace March7thHoney.Proto {
       return new TryDownLoadReplay(this);
     }
 
-    /// <summary>Field number for the "replay_name" field.</summary>
-    public const int ReplayNameFieldNumber = 1;
-    private string replayName_ = "";
+    /// <summary>Field number for the "battle_replay_key" field.</summary>
+    public const int BattleReplayKeyFieldNumber = 1;
+    private string battleReplayKey_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string ReplayName {
-      get { return replayName_; }
+    public string BattleReplayKey {
+      get { return battleReplayKey_; }
       set {
-        replayName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        battleReplayKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "try_down_load_replay" field.</summary>
-    public const int TryDownLoadReplay_FieldNumber = 2;
-    private global::March7thHoney.Proto.ReplayInfo tryDownLoadReplay_;
+    /// <summary>Field number for the "replay_info" field.</summary>
+    public const int ReplayInfoFieldNumber = 2;
+    private global::March7thHoney.Proto.ReplayInfo replayInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ReplayInfo TryDownLoadReplay_ {
-      get { return tryDownLoadReplay_; }
+    public global::March7thHoney.Proto.ReplayInfo ReplayInfo {
+      get { return replayInfo_; }
       set {
-        tryDownLoadReplay_ = value;
+        replayInfo_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ReplayName != other.ReplayName) return false;
-      if (!object.Equals(TryDownLoadReplay_, other.TryDownLoadReplay_)) return false;
+      if (BattleReplayKey != other.BattleReplayKey) return false;
+      if (!object.Equals(ReplayInfo, other.ReplayInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ReplayName.Length != 0) hash ^= ReplayName.GetHashCode();
-      if (tryDownLoadReplay_ != null) hash ^= TryDownLoadReplay_.GetHashCode();
+      if (BattleReplayKey.Length != 0) hash ^= BattleReplayKey.GetHashCode();
+      if (replayInfo_ != null) hash ^= ReplayInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ReplayName.Length != 0) {
+      if (BattleReplayKey.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(ReplayName);
+        output.WriteString(BattleReplayKey);
       }
-      if (tryDownLoadReplay_ != null) {
+      if (replayInfo_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(TryDownLoadReplay_);
+        output.WriteMessage(ReplayInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ReplayName.Length != 0) {
+      if (BattleReplayKey.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(ReplayName);
+        output.WriteString(BattleReplayKey);
       }
-      if (tryDownLoadReplay_ != null) {
+      if (replayInfo_ != null) {
         output.WriteRawTag(18);
-        output.WriteMessage(TryDownLoadReplay_);
+        output.WriteMessage(ReplayInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ReplayName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ReplayName);
+      if (BattleReplayKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BattleReplayKey);
       }
-      if (tryDownLoadReplay_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TryDownLoadReplay_);
+      if (replayInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ReplayInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ReplayName.Length != 0) {
-        ReplayName = other.ReplayName;
+      if (other.BattleReplayKey.Length != 0) {
+        BattleReplayKey = other.BattleReplayKey;
       }
-      if (other.tryDownLoadReplay_ != null) {
-        if (tryDownLoadReplay_ == null) {
-          TryDownLoadReplay_ = new global::March7thHoney.Proto.ReplayInfo();
+      if (other.replayInfo_ != null) {
+        if (replayInfo_ == null) {
+          ReplayInfo = new global::March7thHoney.Proto.ReplayInfo();
         }
-        TryDownLoadReplay_.MergeFrom(other.TryDownLoadReplay_);
+        ReplayInfo.MergeFrom(other.ReplayInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -235,14 +235,14 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            ReplayName = input.ReadString();
+            BattleReplayKey = input.ReadString();
             break;
           }
           case 18: {
-            if (tryDownLoadReplay_ == null) {
-              TryDownLoadReplay_ = new global::March7thHoney.Proto.ReplayInfo();
+            if (replayInfo_ == null) {
+              ReplayInfo = new global::March7thHoney.Proto.ReplayInfo();
             }
-            input.ReadMessage(TryDownLoadReplay_);
+            input.ReadMessage(ReplayInfo);
             break;
           }
         }
@@ -265,14 +265,14 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            ReplayName = input.ReadString();
+            BattleReplayKey = input.ReadString();
             break;
           }
           case 18: {
-            if (tryDownLoadReplay_ == null) {
-              TryDownLoadReplay_ = new global::March7thHoney.Proto.ReplayInfo();
+            if (replayInfo_ == null) {
+              ReplayInfo = new global::March7thHoney.Proto.ReplayInfo();
             }
-            input.ReadMessage(TryDownLoadReplay_);
+            input.ReadMessage(ReplayInfo);
             break;
           }
         }

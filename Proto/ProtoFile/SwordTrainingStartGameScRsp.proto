@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EINKHFKDCCD.proto";
 
 message SwordTrainingStartGameScRsp {
-    EINKHFKDCCD AJGOEJHKOKE = 5;
-    uint32 retcode = 11;
+    EINKHFKDCCD AJGOEJHKOKE = 4;
+    uint32 retcode = 15;
 }

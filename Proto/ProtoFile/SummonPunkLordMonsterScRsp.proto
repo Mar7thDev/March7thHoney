@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JEIAEAEGEBJ.proto";
 
 message SummonPunkLordMonsterScRsp {
-    JEIAEAEGEBJ ONICJOAOEMA = 7;
-    uint32 retcode = 9;
+    JEIAEAEGEBJ ONICJOAOEMA = 1;
+    uint32 retcode = 6;
 }

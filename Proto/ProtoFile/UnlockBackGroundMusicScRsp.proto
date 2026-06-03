@@ -2,10 +2,10 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "MusicData.proto";
+import "LHHGCDLCJDA.proto";
 
 message UnlockBackGroundMusicScRsp {
-    repeated uint32 BPFGBEBPEDP = 14;
-    repeated MusicData IOKAJIBHLMP = 11;
-    uint32 retcode = 7;
+    repeated LHHGCDLCJDA IOKAJIBHLMP = 3;
+    repeated uint32 BPFGBEBPEDP = 6;
+    uint32 retcode = 12;
 }

@@ -10,7 +10,7 @@ public class HandlerTakeChallengePeakRewardCsReq : Handler
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
         var req = TakeChallengePeakRewardCsReq.Parser.ParseFrom(data);
-        var rewardIds = req.RewardId.Count > 0 ? req.RewardId : req.NormalRewardIdList;
+        var rewardIds = req.NormalRewardIdList;
         var rewardGroups = await connection.Player!.ChallengePeakManager!.TakeRewards((int)req.PeakGroupId, rewardIds);
         await connection.SendPacket(new PacketTakeChallengePeakRewardScRsp(req.PeakGroupId, rewardGroups));
     }

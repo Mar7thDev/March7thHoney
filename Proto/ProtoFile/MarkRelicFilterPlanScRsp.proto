@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MarkRelicFilterPlanScRsp {
+    uint32 retcode = 2;
+    bool BIJJOJNJHDO = 7;
+    bool NPPKABBJCMI = 10;
     repeated uint32 GGIGDJPFBBP = 11;
-    uint32 retcode = 6;
-    bool NPPKABBJCMI = 2;
-    bool BIJJOJNJHDO = 1;
 }

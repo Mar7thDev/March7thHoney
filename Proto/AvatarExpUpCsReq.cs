@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZBdmF0YXJFeHBVcENzUmVxLnByb3RvGhJJdGVtQ29zdERhdGEucHJvdG8i",
-            "TAoQQXZhdGFyRXhwVXBDc1JlcRIgCglpdGVtX2Nvc3QYDSABKAsyDS5JdGVt",
-            "Q29zdERhdGESFgoOYmFzZV9hdmF0YXJfaWQYByABKA1CFqoCE01hcmNoN3Ro",
+            "TAoQQXZhdGFyRXhwVXBDc1JlcRIgCglpdGVtX2Nvc3QYCCABKAsyDS5JdGVt",
+            "Q29zdERhdGESFgoOYmFzZV9hdmF0YXJfaWQYDSABKA1CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "item_cost" field.</summary>
-    public const int ItemCostFieldNumber = 13;
+    public const int ItemCostFieldNumber = 8;
     private global::March7thHoney.Proto.ItemCostData itemCost_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 7;
+    public const int BaseAvatarIdFieldNumber = 13;
     private uint baseAvatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (BaseAvatarId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(BaseAvatarId);
-      }
       if (itemCost_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(66);
         output.WriteMessage(ItemCost);
+      }
+      if (BaseAvatarId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(BaseAvatarId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (BaseAvatarId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(BaseAvatarId);
-      }
       if (itemCost_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(66);
         output.WriteMessage(ItemCost);
+      }
+      if (BaseAvatarId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(BaseAvatarId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            BaseAvatarId = input.ReadUInt32();
-            break;
-          }
-          case 106: {
+          case 66: {
             if (itemCost_ == null) {
               ItemCost = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ItemCost);
+            break;
+          }
+          case 104: {
+            BaseAvatarId = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            BaseAvatarId = input.ReadUInt32();
-            break;
-          }
-          case 106: {
+          case 66: {
             if (itemCost_ == null) {
               ItemCost = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ItemCost);
+            break;
+          }
+          case 104: {
+            BaseAvatarId = input.ReadUInt32();
             break;
           }
         }

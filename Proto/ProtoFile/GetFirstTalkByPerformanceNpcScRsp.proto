@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NpcMeetByPerformanceStatus.proto";
 
 message GetFirstTalkByPerformanceNpcScRsp {
-    repeated NpcMeetByPerformanceStatus npc_meet_status_list = 11;
-    uint32 retcode = 6;
+    repeated NpcMeetByPerformanceStatus npc_meet_status_list = 3;
+    uint32 retcode = 15;
 }

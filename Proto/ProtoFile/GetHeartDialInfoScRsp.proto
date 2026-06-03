@@ -8,9 +8,9 @@ import "HeartDialScriptInfo.proto";
 import "HeartDialUnlockStatus.proto";
 
 message GetHeartDialInfoScRsp {
-    repeated HeartDialScriptInfo script_info_list = 7;
-    repeated EAJEMNNNEBM EBLMNLBBFNL = 6;
-    repeated HeartDialDialogueInfo dialogue_info_list = 3;
-    HeartDialUnlockStatus unlock_status = 14;
-    uint32 retcode = 15;
+    repeated HeartDialScriptInfo script_info_list = 3;
+    repeated HeartDialDialogueInfo dialogue_info_list = 4;
+    HeartDialUnlockStatus unlock_status = 7;
+    uint32 retcode = 9;
+    repeated EAJEMNNNEBM EBLMNLBBFNL = 14;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengePeakGroup.proto";
 
 message ChallengePeakGroupDataUpdateScNotify {
-    ChallengePeakGroup challenge_peak_group = 8;
+    ChallengePeakGroup challenge_peak_group = 1;
 }

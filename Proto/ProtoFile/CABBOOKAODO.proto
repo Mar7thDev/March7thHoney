@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ONFLANPGHHL.proto";
 
 message CABBOOKAODO {
-    repeated uint32 relic_ids = 5;
-    ONFLANPGHHL AEONNKANGCE = 13;
-    uint32 avatar_id = 15;
+    ONFLANPGHHL AEONNKANGCE = 3;
+    repeated uint32 relic_ids = 10;
+    uint32 avatar_id = 13;
 }

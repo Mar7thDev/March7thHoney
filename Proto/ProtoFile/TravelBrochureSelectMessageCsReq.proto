@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TravelBrochureSelectMessageCsReq {
-    uint32 DCIJEFMACME = 15;
-    uint32 CFCICBNEOJB = 11;
+    uint32 DCIJEFMACME = 3;
+    uint32 CFCICBNEOJB = 6;
 }

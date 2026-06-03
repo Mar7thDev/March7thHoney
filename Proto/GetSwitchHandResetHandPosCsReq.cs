@@ -26,12 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiRHZXRTd2l0Y2hIYW5kUmVzZXRIYW5kUG9zQ3NSZXEucHJvdG8aEE1vdGlv",
             "bkluZm8ucHJvdG8iVQoeR2V0U3dpdGNoSGFuZFJlc2V0SGFuZFBvc0NzUmVx",
-            "EiAKC0lGUEZKSUlGQUxBGAkgASgLMgsuTW90aW9uSW5mbxIRCgljb25maWdf",
-            "aWQYASABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "EhEKCWNvbmZpZ19pZBgDIAEoDRIgCgtJRlBGSklJRkFMQRgGIAEoCzILLk1v",
+            "dGlvbkluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSwitchHandResetHandPosCsReq), global::March7thHoney.Proto.GetSwitchHandResetHandPosCsReq.Parser, new[]{ "IFPFJIIFALA", "ConfigId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetSwitchHandResetHandPosCsReq), global::March7thHoney.Proto.GetSwitchHandResetHandPosCsReq.Parser, new[]{ "ConfigId", "IFPFJIIFALA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetSwitchHandResetHandPosCsReq(GetSwitchHandResetHandPosCsReq other) : this() {
-      iFPFJIIFALA_ = other.iFPFJIIFALA_ != null ? other.iFPFJIIFALA_.Clone() : null;
       configId_ = other.configId_;
+      iFPFJIIFALA_ = other.iFPFJIIFALA_ != null ? other.iFPFJIIFALA_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new GetSwitchHandResetHandPosCsReq(this);
     }
 
-    /// <summary>Field number for the "IFPFJIIFALA" field.</summary>
-    public const int IFPFJIIFALAFieldNumber = 9;
-    private global::March7thHoney.Proto.MotionInfo iFPFJIIFALA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MotionInfo IFPFJIIFALA {
-      get { return iFPFJIIFALA_; }
-      set {
-        iFPFJIIFALA_ = value;
-      }
-    }
-
     /// <summary>Field number for the "config_id" field.</summary>
-    public const int ConfigIdFieldNumber = 1;
+    public const int ConfigIdFieldNumber = 3;
     private uint configId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return configId_; }
       set {
         configId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "IFPFJIIFALA" field.</summary>
+    public const int IFPFJIIFALAFieldNumber = 6;
+    private global::March7thHoney.Proto.MotionInfo iFPFJIIFALA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MotionInfo IFPFJIIFALA {
+      get { return iFPFJIIFALA_; }
+      set {
+        iFPFJIIFALA_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(IFPFJIIFALA, other.IFPFJIIFALA)) return false;
       if (ConfigId != other.ConfigId) return false;
+      if (!object.Equals(IFPFJIIFALA, other.IFPFJIIFALA)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (iFPFJIIFALA_ != null) hash ^= IFPFJIIFALA.GetHashCode();
       if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
+      if (iFPFJIIFALA_ != null) hash ^= IFPFJIIFALA.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ConfigId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(24);
         output.WriteUInt32(ConfigId);
       }
       if (iFPFJIIFALA_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(50);
         output.WriteMessage(IFPFJIIFALA);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ConfigId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(24);
         output.WriteUInt32(ConfigId);
       }
       if (iFPFJIIFALA_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(50);
         output.WriteMessage(IFPFJIIFALA);
       }
       if (_unknownFields != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (iFPFJIIFALA_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(IFPFJIIFALA);
-      }
       if (ConfigId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
+      }
+      if (iFPFJIIFALA_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(IFPFJIIFALA);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.ConfigId != 0) {
+        ConfigId = other.ConfigId;
+      }
       if (other.iFPFJIIFALA_ != null) {
         if (iFPFJIIFALA_ == null) {
           IFPFJIIFALA = new global::March7thHoney.Proto.MotionInfo();
         }
         IFPFJIIFALA.MergeFrom(other.IFPFJIIFALA);
-      }
-      if (other.ConfigId != 0) {
-        ConfigId = other.ConfigId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 24: {
             ConfigId = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 50: {
             if (iFPFJIIFALA_ == null) {
               IFPFJIIFALA = new global::March7thHoney.Proto.MotionInfo();
             }
@@ -264,11 +264,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 24: {
             ConfigId = input.ReadUInt32();
             break;
           }
-          case 74: {
+          case 50: {
             if (iFPFJIIFALA_ == null) {
               IFPFJIIFALA = new global::March7thHoney.Proto.MotionInfo();
             }

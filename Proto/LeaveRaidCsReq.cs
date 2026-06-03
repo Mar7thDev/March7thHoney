@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRMZWF2ZVJhaWRDc1JlcS5wcm90byIyCg5MZWF2ZVJhaWRDc1JlcRIPCgdp",
-            "c19zYXZlGAYgASgIEg8KB3JhaWRfaWQYAiABKA1CFqoCE01hcmNoN3RoSG9u",
+            "c19zYXZlGAQgASgIEg8KB3JhaWRfaWQYCSABKA1CFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_save" field.</summary>
-    public const int IsSaveFieldNumber = 6;
+    public const int IsSaveFieldNumber = 4;
     private bool isSave_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "raid_id" field.</summary>
-    public const int RaidIdFieldNumber = 2;
+    public const int RaidIdFieldNumber = 9;
     private uint raidId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RaidId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(RaidId);
-      }
       if (IsSave != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteBool(IsSave);
+      }
+      if (RaidId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(RaidId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RaidId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(RaidId);
-      }
       if (IsSave != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteBool(IsSave);
+      }
+      if (RaidId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(RaidId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            RaidId = input.ReadUInt32();
+          case 32: {
+            IsSave = input.ReadBool();
             break;
           }
-          case 48: {
-            IsSave = input.ReadBool();
+          case 72: {
+            RaidId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            RaidId = input.ReadUInt32();
+          case 32: {
+            IsSave = input.ReadBool();
             break;
           }
-          case 48: {
-            IsSave = input.ReadBool();
+          case 72: {
+            RaidId = input.ReadUInt32();
             break;
           }
         }

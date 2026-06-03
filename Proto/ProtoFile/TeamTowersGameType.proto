@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum TeamTowersGameType {
+    OCLACMHKMFO_NLCDGIPGFDJ = 0;
+    OCLACMHKMFO_AJNDODBCPDB = 1;
+    OCLACMHKMFO_GCNBGNABMKN = 2;
+    OCLACMHKMFO_HOIHEMDINEH = 3;
+    OCLACMHKMFO_CBFHENKAMKO = 4;
+}

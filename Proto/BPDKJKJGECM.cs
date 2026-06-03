@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCUERLSktKR0VDTS5wcm90bxoRTkVDTkFOTk5HQk4ucHJvdG8iMAoLQlBE",
-            "S0pLSkdFQ00SIQoLTkpGTkZOQktFTUsYDiABKAsyDC5ORUNOQU5OTkdCTkIW",
+            "S0pLSkdFQ00SIQoLTkpGTkZOQktFTUsYCiABKAsyDC5ORUNOQU5OTkdCTkIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.NECNANNNGBNReflection.Descriptor, },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NJFNFNBKEMK" field.</summary>
-    public const int NJFNFNBKEMKFieldNumber = 14;
+    public const int NJFNFNBKEMKFieldNumber = 10;
     private global::March7thHoney.Proto.NECNANNNGBN nJFNFNBKEMK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (nJFNFNBKEMK_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(82);
         output.WriteMessage(NJFNFNBKEMK);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (nJFNFNBKEMK_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(82);
         output.WriteMessage(NJFNFNBKEMK);
       }
       if (_unknownFields != null) {
@@ -204,7 +204,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 114: {
+          case 82: {
             if (nJFNFNBKEMK_ == null) {
               NJFNFNBKEMK = new global::March7thHoney.Proto.NECNANNNGBN();
             }
@@ -230,7 +230,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 114: {
+          case 82: {
             if (nJFNFNBKEMK_ == null) {
               NJFNFNBKEMK = new global::March7thHoney.Proto.NECNANNNGBN();
             }

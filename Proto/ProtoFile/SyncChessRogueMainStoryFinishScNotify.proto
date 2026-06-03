@@ -3,6 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SyncChessRogueMainStoryFinishScNotify {
-    uint32 KPDLMKFLJAI = 6;
-    uint32 BMGCCEONICH = 15;
+    uint32 KPDLMKFLJAI = 2;
 }

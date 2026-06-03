@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SwordTrainingDailyPhaseConfirmScRsp {
-    bool KPMJOKEFLJO = 3;
-    uint32 retcode = 8;
+    uint32 retcode = 10;
+    bool KPMJOKEFLJO = 13;
 }

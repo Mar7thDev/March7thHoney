@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CDCCPHILOCC.proto";
 
 message GetPunkLordBattleRecordCsReq {
-    CDCCPHILOCC KHOLBEGBFOM = 10;
+    CDCCPHILOCC KHOLBEGBFOM = 13;
 }

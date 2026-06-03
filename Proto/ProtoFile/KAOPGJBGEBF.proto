@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KAOPGJBGEBF {
-    int32 value = 4;
-    uint32 unique_id = 7;
-    uint32 DAMIHCPPJAB = 5;
+    uint32 unique_id = 6;
+    int32 value = 12;
+    uint32 DAMIHCPPJAB = 14;
 }

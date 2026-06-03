@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static HOALCJNIJJCReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFIT0FMQ0pOSUpKQy5wcm90byI2CgtIT0FMQ0pOSUpKQxIVCg1kaXNwbGF5",
-            "X3ZhbHVlGAggASgNEhAKCGV2ZW50X2lkGA8gASgNQhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "ChFIT0FMQ0pOSUpKQy5wcm90byIuCgtIT0FMQ0pOSUpKQxINCgVwYXJhbRgL",
+            "IAEoDRIQCghldmVudF9pZBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HOALCJNIJJC), global::March7thHoney.Proto.HOALCJNIJJC.Parser, new[]{ "DisplayValue", "EventId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HOALCJNIJJC), global::March7thHoney.Proto.HOALCJNIJJC.Parser, new[]{ "Param", "EventId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HOALCJNIJJC(HOALCJNIJJC other) : this() {
-      displayValue_ = other.displayValue_;
+      param_ = other.param_;
       eventId_ = other.eventId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,15 +83,15 @@ namespace March7thHoney.Proto {
       return new HOALCJNIJJC(this);
     }
 
-    /// <summary>Field number for the "display_value" field.</summary>
-    public const int DisplayValueFieldNumber = 8;
-    private uint displayValue_;
+    /// <summary>Field number for the "param" field.</summary>
+    public const int ParamFieldNumber = 11;
+    private uint param_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DisplayValue {
-      get { return displayValue_; }
+    public uint Param {
+      get { return param_; }
       set {
-        displayValue_ = value;
+        param_ = value;
       }
     }
 
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (DisplayValue != other.DisplayValue) return false;
+      if (Param != other.Param) return false;
       if (EventId != other.EventId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DisplayValue != 0) hash ^= DisplayValue.GetHashCode();
+      if (Param != 0) hash ^= Param.GetHashCode();
       if (EventId != 0) hash ^= EventId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DisplayValue != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(DisplayValue);
+      if (Param != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Param);
       }
       if (EventId != 0) {
         output.WriteRawTag(120);
@@ -169,9 +169,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DisplayValue != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(DisplayValue);
+      if (Param != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(Param);
       }
       if (EventId != 0) {
         output.WriteRawTag(120);
@@ -187,8 +187,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DisplayValue != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DisplayValue);
+      if (Param != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Param);
       }
       if (EventId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EventId);
@@ -205,8 +205,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.DisplayValue != 0) {
-        DisplayValue = other.DisplayValue;
+      if (other.Param != 0) {
+        Param = other.Param;
       }
       if (other.EventId != 0) {
         EventId = other.EventId;
@@ -230,8 +230,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            DisplayValue = input.ReadUInt32();
+          case 88: {
+            Param = input.ReadUInt32();
             break;
           }
           case 120: {
@@ -257,8 +257,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            DisplayValue = input.ReadUInt32();
+          case 88: {
+            Param = input.ReadUInt32();
             break;
           }
           case 120: {

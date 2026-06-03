@@ -3,6 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TrainPartyGamePlayStartCsReq {
-    repeated uint32 CFHOJCBDFPE = 8;
-    uint32 IDBDBICPBBG = 5;
+    uint32 IDBDBICPBBG = 10;
 }

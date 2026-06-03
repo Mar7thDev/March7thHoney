@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengeLineupList.proto";
 
 message EIKPHEMHIOH {
-    repeated ChallengeLineupList lineup_list = 8;
-    uint32 level = 3;
-    uint32 score_id = 14;
-    uint32 buff_two = 2;
-    uint32 buff_one = 13;
-    uint32 EEJCPNAEKLJ = 6;
+    uint32 EEJCPNAEKLJ = 5;
+    uint32 buff_one = 6;
+    repeated ChallengeLineupList lineup_list = 9;
+    uint32 score_id = 10;
+    uint32 level = 11;
+    uint32 buff_two = 15;
 }

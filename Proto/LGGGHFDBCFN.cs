@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static LGGGHFDBCFNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFMR0dHSEZEQkNGTi5wcm90byJdCgtMR0dHSEZEQkNGThITCgtGREdKTE1N",
-            "RUFPRhgEIAEoDRITCgtLQkRPQk9PRFBBSxgNIAEoDRIQCghwcm9ncmVzcxgG",
-            "IAEoDRISCgpoYXNfcGFzc2VkGAEgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "ChFMR0dHSEZEQkNGTi5wcm90byJdCgtMR0dHSEZEQkNGThITCgtLQkRPQk9P",
+            "RFBBSxgCIAEoDRIQCghwcm9ncmVzcxgGIAEoDRISCgpoYXNfcGFzc2VkGAkg",
+            "ASgIEhMKC0ZER0pMTU1FQU9GGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LGGGHFDBCFN), global::March7thHoney.Proto.LGGGHFDBCFN.Parser, new[]{ "FDGJLMMEAOF", "KBDOBOODPAK", "Progress", "HasPassed" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LGGGHFDBCFN), global::March7thHoney.Proto.LGGGHFDBCFN.Parser, new[]{ "KBDOBOODPAK", "Progress", "HasPassed", "FDGJLMMEAOF" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LGGGHFDBCFN(LGGGHFDBCFN other) : this() {
-      fDGJLMMEAOF_ = other.fDGJLMMEAOF_;
       kBDOBOODPAK_ = other.kBDOBOODPAK_;
       progress_ = other.progress_;
       hasPassed_ = other.hasPassed_;
+      fDGJLMMEAOF_ = other.fDGJLMMEAOF_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new LGGGHFDBCFN(this);
     }
 
-    /// <summary>Field number for the "FDGJLMMEAOF" field.</summary>
-    public const int FDGJLMMEAOFFieldNumber = 4;
-    private uint fDGJLMMEAOF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FDGJLMMEAOF {
-      get { return fDGJLMMEAOF_; }
-      set {
-        fDGJLMMEAOF_ = value;
-      }
-    }
-
     /// <summary>Field number for the "KBDOBOODPAK" field.</summary>
-    public const int KBDOBOODPAKFieldNumber = 13;
+    public const int KBDOBOODPAKFieldNumber = 2;
     private uint kBDOBOODPAK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +111,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "has_passed" field.</summary>
-    public const int HasPassedFieldNumber = 1;
+    public const int HasPassedFieldNumber = 9;
     private bool hasPassed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +119,18 @@ namespace March7thHoney.Proto {
       get { return hasPassed_; }
       set {
         hasPassed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FDGJLMMEAOF" field.</summary>
+    public const int FDGJLMMEAOFFieldNumber = 13;
+    private uint fDGJLMMEAOF_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FDGJLMMEAOF {
+      get { return fDGJLMMEAOF_; }
+      set {
+        fDGJLMMEAOF_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FDGJLMMEAOF != other.FDGJLMMEAOF) return false;
       if (KBDOBOODPAK != other.KBDOBOODPAK) return false;
       if (Progress != other.Progress) return false;
       if (HasPassed != other.HasPassed) return false;
+      if (FDGJLMMEAOF != other.FDGJLMMEAOF) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FDGJLMMEAOF != 0) hash ^= FDGJLMMEAOF.GetHashCode();
       if (KBDOBOODPAK != 0) hash ^= KBDOBOODPAK.GetHashCode();
       if (Progress != 0) hash ^= Progress.GetHashCode();
       if (HasPassed != false) hash ^= HasPassed.GetHashCode();
+      if (FDGJLMMEAOF != 0) hash ^= FDGJLMMEAOF.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasPassed != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(HasPassed);
-      }
-      if (FDGJLMMEAOF != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(FDGJLMMEAOF);
+      if (KBDOBOODPAK != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(KBDOBOODPAK);
       }
       if (Progress != 0) {
         output.WriteRawTag(48);
         output.WriteUInt32(Progress);
       }
-      if (KBDOBOODPAK != 0) {
+      if (HasPassed != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(HasPassed);
+      }
+      if (FDGJLMMEAOF != 0) {
         output.WriteRawTag(104);
-        output.WriteUInt32(KBDOBOODPAK);
+        output.WriteUInt32(FDGJLMMEAOF);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasPassed != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(HasPassed);
-      }
-      if (FDGJLMMEAOF != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(FDGJLMMEAOF);
+      if (KBDOBOODPAK != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(KBDOBOODPAK);
       }
       if (Progress != 0) {
         output.WriteRawTag(48);
         output.WriteUInt32(Progress);
       }
-      if (KBDOBOODPAK != 0) {
+      if (HasPassed != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(HasPassed);
+      }
+      if (FDGJLMMEAOF != 0) {
         output.WriteRawTag(104);
-        output.WriteUInt32(KBDOBOODPAK);
+        output.WriteUInt32(FDGJLMMEAOF);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,9 +234,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FDGJLMMEAOF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDGJLMMEAOF);
-      }
       if (KBDOBOODPAK != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KBDOBOODPAK);
       }
@@ -245,6 +242,9 @@ namespace March7thHoney.Proto {
       }
       if (HasPassed != false) {
         size += 1 + 1;
+      }
+      if (FDGJLMMEAOF != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDGJLMMEAOF);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,9 +258,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FDGJLMMEAOF != 0) {
-        FDGJLMMEAOF = other.FDGJLMMEAOF;
-      }
       if (other.KBDOBOODPAK != 0) {
         KBDOBOODPAK = other.KBDOBOODPAK;
       }
@@ -269,6 +266,9 @@ namespace March7thHoney.Proto {
       }
       if (other.HasPassed != false) {
         HasPassed = other.HasPassed;
+      }
+      if (other.FDGJLMMEAOF != 0) {
+        FDGJLMMEAOF = other.FDGJLMMEAOF;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            HasPassed = input.ReadBool();
-            break;
-          }
-          case 32: {
-            FDGJLMMEAOF = input.ReadUInt32();
+          case 16: {
+            KBDOBOODPAK = input.ReadUInt32();
             break;
           }
           case 48: {
             Progress = input.ReadUInt32();
             break;
           }
+          case 72: {
+            HasPassed = input.ReadBool();
+            break;
+          }
           case 104: {
-            KBDOBOODPAK = input.ReadUInt32();
+            FDGJLMMEAOF = input.ReadUInt32();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            HasPassed = input.ReadBool();
-            break;
-          }
-          case 32: {
-            FDGJLMMEAOF = input.ReadUInt32();
+          case 16: {
+            KBDOBOODPAK = input.ReadUInt32();
             break;
           }
           case 48: {
             Progress = input.ReadUInt32();
             break;
           }
+          case 72: {
+            HasPassed = input.ReadBool();
+            break;
+          }
           case 104: {
-            KBDOBOODPAK = input.ReadUInt32();
+            FDGJLMMEAOF = input.ReadUInt32();
             break;
           }
         }

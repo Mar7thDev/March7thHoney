@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChZGcmllbmRTaW1wbGVJbmZvLnByb3RvGhFQQUVGREVMRktKSy5wcm90bxoW",
             "UGxheWVyU2ltcGxlSW5mby5wcm90bxoSUGxheWluZ1N0YXRlLnByb3RvIsAB",
-            "ChBGcmllbmRTaW1wbGVJbmZvEhMKC3JlbWFya19uYW1lGAEgASgJEiEKC01C",
-            "T0lISkxJSkRHGAggASgLMgwuUEFFRkRFTEZLSksSJgoLcGxheWVyX2luZm8Y",
-            "AyABKAsyES5QbGF5ZXJTaW1wbGVJbmZvEhMKC2NyZWF0ZV90aW1lGAUgASgD",
-            "EiQKDXBsYXlpbmdfc3RhdGUYDSABKA4yDS5QbGF5aW5nU3RhdGUSEQoJaXNf",
-            "bWFya2VkGA4gASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChBGcmllbmRTaW1wbGVJbmZvEiQKDXBsYXlpbmdfc3RhdGUYASABKA4yDS5Q",
+            "bGF5aW5nU3RhdGUSEwoLcmVtYXJrX25hbWUYAiABKAkSEwoLY3JlYXRlX3Rp",
+            "bWUYAyABKAMSEQoJaXNfbWFya2VkGAkgASgIEiEKC01CT0lISkxJSkRHGAog",
+            "ASgLMgwuUEFFRkRFTEZLSksSJgoLcGxheWVyX2luZm8YDiABKAsyES5QbGF5",
+            "ZXJTaW1wbGVJbmZvQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PAEFDELFKJKReflection.Descriptor, global::March7thHoney.Proto.PlayerSimpleInfoReflection.Descriptor, global::March7thHoney.Proto.PlayingStateReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FriendSimpleInfo), global::March7thHoney.Proto.FriendSimpleInfo.Parser, new[]{ "RemarkName", "MBOIHJLIJDG", "PlayerInfo", "CreateTime", "PlayingState", "IsMarked" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FriendSimpleInfo), global::March7thHoney.Proto.FriendSimpleInfo.Parser, new[]{ "PlayingState", "RemarkName", "CreateTime", "IsMarked", "MBOIHJLIJDG", "PlayerInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,12 +76,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FriendSimpleInfo(FriendSimpleInfo other) : this() {
+      playingState_ = other.playingState_;
       remarkName_ = other.remarkName_;
+      createTime_ = other.createTime_;
+      isMarked_ = other.isMarked_;
       mBOIHJLIJDG_ = other.mBOIHJLIJDG_ != null ? other.mBOIHJLIJDG_.Clone() : null;
       playerInfo_ = other.playerInfo_ != null ? other.playerInfo_.Clone() : null;
-      createTime_ = other.createTime_;
-      playingState_ = other.playingState_;
-      isMarked_ = other.isMarked_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,8 +91,20 @@ namespace March7thHoney.Proto {
       return new FriendSimpleInfo(this);
     }
 
+    /// <summary>Field number for the "playing_state" field.</summary>
+    public const int PlayingStateFieldNumber = 1;
+    private global::March7thHoney.Proto.PlayingState playingState_ = global::March7thHoney.Proto.PlayingState.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PlayingState PlayingState {
+      get { return playingState_; }
+      set {
+        playingState_ = value;
+      }
+    }
+
     /// <summary>Field number for the "remark_name" field.</summary>
-    public const int RemarkNameFieldNumber = 1;
+    public const int RemarkNameFieldNumber = 2;
     private string remarkName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -103,8 +115,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "create_time" field.</summary>
+    public const int CreateTimeFieldNumber = 3;
+    private long createTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long CreateTime {
+      get { return createTime_; }
+      set {
+        createTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_marked" field.</summary>
+    public const int IsMarkedFieldNumber = 9;
+    private bool isMarked_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsMarked {
+      get { return isMarked_; }
+      set {
+        isMarked_ = value;
+      }
+    }
+
     /// <summary>Field number for the "MBOIHJLIJDG" field.</summary>
-    public const int MBOIHJLIJDGFieldNumber = 8;
+    public const int MBOIHJLIJDGFieldNumber = 10;
     private global::March7thHoney.Proto.PAEFDELFKJK mBOIHJLIJDG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -116,7 +152,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "player_info" field.</summary>
-    public const int PlayerInfoFieldNumber = 3;
+    public const int PlayerInfoFieldNumber = 14;
     private global::March7thHoney.Proto.PlayerSimpleInfo playerInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,42 +160,6 @@ namespace March7thHoney.Proto {
       get { return playerInfo_; }
       set {
         playerInfo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "create_time" field.</summary>
-    public const int CreateTimeFieldNumber = 5;
-    private long createTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long CreateTime {
-      get { return createTime_; }
-      set {
-        createTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "playing_state" field.</summary>
-    public const int PlayingStateFieldNumber = 13;
-    private global::March7thHoney.Proto.PlayingState playingState_ = global::March7thHoney.Proto.PlayingState.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlayingState PlayingState {
-      get { return playingState_; }
-      set {
-        playingState_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_marked" field.</summary>
-    public const int IsMarkedFieldNumber = 14;
-    private bool isMarked_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsMarked {
-      get { return isMarked_; }
-      set {
-        isMarked_ = value;
       }
     }
 
@@ -178,12 +178,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (PlayingState != other.PlayingState) return false;
       if (RemarkName != other.RemarkName) return false;
+      if (CreateTime != other.CreateTime) return false;
+      if (IsMarked != other.IsMarked) return false;
       if (!object.Equals(MBOIHJLIJDG, other.MBOIHJLIJDG)) return false;
       if (!object.Equals(PlayerInfo, other.PlayerInfo)) return false;
-      if (CreateTime != other.CreateTime) return false;
-      if (PlayingState != other.PlayingState) return false;
-      if (IsMarked != other.IsMarked) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -191,12 +191,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (PlayingState != global::March7thHoney.Proto.PlayingState.None) hash ^= PlayingState.GetHashCode();
       if (RemarkName.Length != 0) hash ^= RemarkName.GetHashCode();
+      if (CreateTime != 0L) hash ^= CreateTime.GetHashCode();
+      if (IsMarked != false) hash ^= IsMarked.GetHashCode();
       if (mBOIHJLIJDG_ != null) hash ^= MBOIHJLIJDG.GetHashCode();
       if (playerInfo_ != null) hash ^= PlayerInfo.GetHashCode();
-      if (CreateTime != 0L) hash ^= CreateTime.GetHashCode();
-      if (PlayingState != global::March7thHoney.Proto.PlayingState.None) hash ^= PlayingState.GetHashCode();
-      if (IsMarked != false) hash ^= IsMarked.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -215,29 +215,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RemarkName.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(RemarkName);
-      }
-      if (playerInfo_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(PlayerInfo);
-      }
-      if (CreateTime != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(CreateTime);
-      }
-      if (mBOIHJLIJDG_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(MBOIHJLIJDG);
-      }
       if (PlayingState != global::March7thHoney.Proto.PlayingState.None) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteEnum((int) PlayingState);
       }
+      if (RemarkName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(RemarkName);
+      }
+      if (CreateTime != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(CreateTime);
+      }
       if (IsMarked != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteBool(IsMarked);
+      }
+      if (mBOIHJLIJDG_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(MBOIHJLIJDG);
+      }
+      if (playerInfo_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(PlayerInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -249,29 +249,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RemarkName.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(RemarkName);
-      }
-      if (playerInfo_ != null) {
-        output.WriteRawTag(26);
-        output.WriteMessage(PlayerInfo);
-      }
-      if (CreateTime != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(CreateTime);
-      }
-      if (mBOIHJLIJDG_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(MBOIHJLIJDG);
-      }
       if (PlayingState != global::March7thHoney.Proto.PlayingState.None) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteEnum((int) PlayingState);
       }
+      if (RemarkName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(RemarkName);
+      }
+      if (CreateTime != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(CreateTime);
+      }
       if (IsMarked != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteBool(IsMarked);
+      }
+      if (mBOIHJLIJDG_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(MBOIHJLIJDG);
+      }
+      if (playerInfo_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(PlayerInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -283,23 +283,23 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (PlayingState != global::March7thHoney.Proto.PlayingState.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PlayingState);
+      }
       if (RemarkName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(RemarkName);
+      }
+      if (CreateTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(CreateTime);
+      }
+      if (IsMarked != false) {
+        size += 1 + 1;
       }
       if (mBOIHJLIJDG_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(MBOIHJLIJDG);
       }
       if (playerInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerInfo);
-      }
-      if (CreateTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(CreateTime);
-      }
-      if (PlayingState != global::March7thHoney.Proto.PlayingState.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PlayingState);
-      }
-      if (IsMarked != false) {
-        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -313,8 +313,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.PlayingState != global::March7thHoney.Proto.PlayingState.None) {
+        PlayingState = other.PlayingState;
+      }
       if (other.RemarkName.Length != 0) {
         RemarkName = other.RemarkName;
+      }
+      if (other.CreateTime != 0L) {
+        CreateTime = other.CreateTime;
+      }
+      if (other.IsMarked != false) {
+        IsMarked = other.IsMarked;
       }
       if (other.mBOIHJLIJDG_ != null) {
         if (mBOIHJLIJDG_ == null) {
@@ -327,15 +336,6 @@ namespace March7thHoney.Proto {
           PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
         }
         PlayerInfo.MergeFrom(other.PlayerInfo);
-      }
-      if (other.CreateTime != 0L) {
-        CreateTime = other.CreateTime;
-      }
-      if (other.PlayingState != global::March7thHoney.Proto.PlayingState.None) {
-        PlayingState = other.PlayingState;
-      }
-      if (other.IsMarked != false) {
-        IsMarked = other.IsMarked;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -356,34 +356,34 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            PlayingState = (global::March7thHoney.Proto.PlayingState) input.ReadEnum();
+            break;
+          }
+          case 18: {
             RemarkName = input.ReadString();
             break;
           }
-          case 26: {
-            if (playerInfo_ == null) {
-              PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
-            }
-            input.ReadMessage(PlayerInfo);
-            break;
-          }
-          case 40: {
+          case 24: {
             CreateTime = input.ReadInt64();
             break;
           }
-          case 66: {
+          case 72: {
+            IsMarked = input.ReadBool();
+            break;
+          }
+          case 82: {
             if (mBOIHJLIJDG_ == null) {
               MBOIHJLIJDG = new global::March7thHoney.Proto.PAEFDELFKJK();
             }
             input.ReadMessage(MBOIHJLIJDG);
             break;
           }
-          case 104: {
-            PlayingState = (global::March7thHoney.Proto.PlayingState) input.ReadEnum();
-            break;
-          }
-          case 112: {
-            IsMarked = input.ReadBool();
+          case 114: {
+            if (playerInfo_ == null) {
+              PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
+            }
+            input.ReadMessage(PlayerInfo);
             break;
           }
         }
@@ -405,34 +405,34 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 8: {
+            PlayingState = (global::March7thHoney.Proto.PlayingState) input.ReadEnum();
+            break;
+          }
+          case 18: {
             RemarkName = input.ReadString();
             break;
           }
-          case 26: {
-            if (playerInfo_ == null) {
-              PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
-            }
-            input.ReadMessage(PlayerInfo);
-            break;
-          }
-          case 40: {
+          case 24: {
             CreateTime = input.ReadInt64();
             break;
           }
-          case 66: {
+          case 72: {
+            IsMarked = input.ReadBool();
+            break;
+          }
+          case 82: {
             if (mBOIHJLIJDG_ == null) {
               MBOIHJLIJDG = new global::March7thHoney.Proto.PAEFDELFKJK();
             }
             input.ReadMessage(MBOIHJLIJDG);
             break;
           }
-          case 104: {
-            PlayingState = (global::March7thHoney.Proto.PlayingState) input.ReadEnum();
-            break;
-          }
-          case 112: {
-            IsMarked = input.ReadBool();
+          case 114: {
+            if (playerInfo_ == null) {
+              PlayerInfo = new global::March7thHoney.Proto.PlayerSimpleInfo();
+            }
+            input.ReadMessage(PlayerInfo);
             break;
           }
         }

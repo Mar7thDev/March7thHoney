@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AlleyPlacingShip.proto";
 
 message ActivityRaidPlacingGameCsReq {
-    AlleyPlacingShip GPOMFKNHCPB = 15;
+    AlleyPlacingShip GPOMFKNHCPB = 2;
     oneof EFJLHNMJEED {
-        uint32 GFHGCDEJFIE = 5;
-        uint32 CAAHDGFMNNO = 13;
+        uint32 GFHGCDEJFIE = 4;
+        uint32 CAAHDGFMNNO = 14;
     }
 }

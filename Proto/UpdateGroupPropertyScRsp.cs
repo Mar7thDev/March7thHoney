@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static UpdateGroupPropertyScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Ch5VcGRhdGVHcm91cFByb3BlcnR5U2NSc3AucHJvdG8ipAEKGFVwZGF0ZUdy",
-            "b3VwUHJvcGVydHlTY1JzcBITCgtITUVMRlBEUENGQxgEIAEoCRIPCgdyZXRj",
-            "b2RlGAIgASgNEhAKCGdyb3VwX2lkGAogASgNEhMKC0tIQkJOREJKQUZLGAcg",
-            "ASgFEhAKCGZsb29yX2lkGAkgASgNEhQKDGRpbWVuc2lvbl9pZBgDIAEoDRIT",
-            "CgtESFBESUxOTElQQxgLIAEoBUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "Ch5VcGRhdGVHcm91cFByb3BlcnR5U2NSc3AucHJvdG8iogEKGFVwZGF0ZUdy",
+            "b3VwUHJvcGVydHlTY1JzcBIRCgluZXdfdmFsdWUYASABKAUSFAoMZGltZW5z",
+            "aW9uX2lkGAQgASgNEhAKCGdyb3VwX2lkGAggASgNEhEKCW9sZF92YWx1ZRgJ",
+            "IAEoBRIVCg1wcm9wZXJ0eV9uYW1lGA0gASgJEhAKCGZsb29yX2lkGA4gASgN",
+            "Eg8KB3JldGNvZGUYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateGroupPropertyScRsp), global::March7thHoney.Proto.UpdateGroupPropertyScRsp.Parser, new[]{ "HMELFPDPCFC", "Retcode", "GroupId", "KHBBNDBJAFK", "FloorId", "DimensionId", "DHPDILNLIPC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateGroupPropertyScRsp), global::March7thHoney.Proto.UpdateGroupPropertyScRsp.Parser, new[]{ "NewValue", "DimensionId", "GroupId", "OldValue", "PropertyName", "FloorId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,13 +75,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateGroupPropertyScRsp(UpdateGroupPropertyScRsp other) : this() {
-      hMELFPDPCFC_ = other.hMELFPDPCFC_;
-      retcode_ = other.retcode_;
-      groupId_ = other.groupId_;
-      kHBBNDBJAFK_ = other.kHBBNDBJAFK_;
-      floorId_ = other.floorId_;
+      newValue_ = other.newValue_;
       dimensionId_ = other.dimensionId_;
-      dHPDILNLIPC_ = other.dHPDILNLIPC_;
+      groupId_ = other.groupId_;
+      oldValue_ = other.oldValue_;
+      propertyName_ = other.propertyName_;
+      floorId_ = other.floorId_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,68 +91,20 @@ namespace March7thHoney.Proto {
       return new UpdateGroupPropertyScRsp(this);
     }
 
-    /// <summary>Field number for the "HMELFPDPCFC" field.</summary>
-    public const int HMELFPDPCFCFieldNumber = 4;
-    private string hMELFPDPCFC_ = "";
+    /// <summary>Field number for the "new_value" field.</summary>
+    public const int NewValueFieldNumber = 1;
+    private int newValue_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string HMELFPDPCFC {
-      get { return hMELFPDPCFC_; }
+    public int NewValue {
+      get { return newValue_; }
       set {
-        hMELFPDPCFC_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 10;
-    private uint groupId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GroupId {
-      get { return groupId_; }
-      set {
-        groupId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "KHBBNDBJAFK" field.</summary>
-    public const int KHBBNDBJAFKFieldNumber = 7;
-    private int kHBBNDBJAFK_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int KHBBNDBJAFK {
-      get { return kHBBNDBJAFK_; }
-      set {
-        kHBBNDBJAFK_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "floor_id" field.</summary>
-    public const int FloorIdFieldNumber = 9;
-    private uint floorId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FloorId {
-      get { return floorId_; }
-      set {
-        floorId_ = value;
+        newValue_ = value;
       }
     }
 
     /// <summary>Field number for the "dimension_id" field.</summary>
-    public const int DimensionIdFieldNumber = 3;
+    public const int DimensionIdFieldNumber = 4;
     private uint dimensionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -163,15 +115,63 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DHPDILNLIPC" field.</summary>
-    public const int DHPDILNLIPCFieldNumber = 11;
-    private int dHPDILNLIPC_;
+    /// <summary>Field number for the "group_id" field.</summary>
+    public const int GroupIdFieldNumber = 8;
+    private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int DHPDILNLIPC {
-      get { return dHPDILNLIPC_; }
+    public uint GroupId {
+      get { return groupId_; }
       set {
-        dHPDILNLIPC_ = value;
+        groupId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "old_value" field.</summary>
+    public const int OldValueFieldNumber = 9;
+    private int oldValue_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int OldValue {
+      get { return oldValue_; }
+      set {
+        oldValue_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "property_name" field.</summary>
+    public const int PropertyNameFieldNumber = 13;
+    private string propertyName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PropertyName {
+      get { return propertyName_; }
+      set {
+        propertyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "floor_id" field.</summary>
+    public const int FloorIdFieldNumber = 14;
+    private uint floorId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FloorId {
+      get { return floorId_; }
+      set {
+        floorId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 15;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -190,13 +190,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HMELFPDPCFC != other.HMELFPDPCFC) return false;
-      if (Retcode != other.Retcode) return false;
-      if (GroupId != other.GroupId) return false;
-      if (KHBBNDBJAFK != other.KHBBNDBJAFK) return false;
-      if (FloorId != other.FloorId) return false;
+      if (NewValue != other.NewValue) return false;
       if (DimensionId != other.DimensionId) return false;
-      if (DHPDILNLIPC != other.DHPDILNLIPC) return false;
+      if (GroupId != other.GroupId) return false;
+      if (OldValue != other.OldValue) return false;
+      if (PropertyName != other.PropertyName) return false;
+      if (FloorId != other.FloorId) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -204,13 +204,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HMELFPDPCFC.Length != 0) hash ^= HMELFPDPCFC.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      if (KHBBNDBJAFK != 0) hash ^= KHBBNDBJAFK.GetHashCode();
-      if (FloorId != 0) hash ^= FloorId.GetHashCode();
+      if (NewValue != 0) hash ^= NewValue.GetHashCode();
       if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
-      if (DHPDILNLIPC != 0) hash ^= DHPDILNLIPC.GetHashCode();
+      if (GroupId != 0) hash ^= GroupId.GetHashCode();
+      if (OldValue != 0) hash ^= OldValue.GetHashCode();
+      if (PropertyName.Length != 0) hash ^= PropertyName.GetHashCode();
+      if (FloorId != 0) hash ^= FloorId.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -229,33 +229,33 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
+      if (NewValue != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(NewValue);
       }
       if (DimensionId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteUInt32(DimensionId);
       }
-      if (HMELFPDPCFC.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(HMELFPDPCFC);
-      }
-      if (KHBBNDBJAFK != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(KHBBNDBJAFK);
-      }
-      if (FloorId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(FloorId);
-      }
       if (GroupId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(GroupId);
       }
-      if (DHPDILNLIPC != 0) {
-        output.WriteRawTag(88);
-        output.WriteInt32(DHPDILNLIPC);
+      if (OldValue != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(OldValue);
+      }
+      if (PropertyName.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(PropertyName);
+      }
+      if (FloorId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(FloorId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -267,33 +267,33 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
+      if (NewValue != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(NewValue);
       }
       if (DimensionId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteUInt32(DimensionId);
       }
-      if (HMELFPDPCFC.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(HMELFPDPCFC);
-      }
-      if (KHBBNDBJAFK != 0) {
-        output.WriteRawTag(56);
-        output.WriteInt32(KHBBNDBJAFK);
-      }
-      if (FloorId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(FloorId);
-      }
       if (GroupId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(GroupId);
       }
-      if (DHPDILNLIPC != 0) {
-        output.WriteRawTag(88);
-        output.WriteInt32(DHPDILNLIPC);
+      if (OldValue != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(OldValue);
+      }
+      if (PropertyName.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(PropertyName);
+      }
+      if (FloorId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(FloorId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -305,26 +305,26 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HMELFPDPCFC.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HMELFPDPCFC);
-      }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (GroupId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
-      }
-      if (KHBBNDBJAFK != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(KHBBNDBJAFK);
-      }
-      if (FloorId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
+      if (NewValue != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NewValue);
       }
       if (DimensionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
       }
-      if (DHPDILNLIPC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DHPDILNLIPC);
+      if (GroupId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
+      }
+      if (OldValue != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(OldValue);
+      }
+      if (PropertyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PropertyName);
+      }
+      if (FloorId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -338,26 +338,26 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HMELFPDPCFC.Length != 0) {
-        HMELFPDPCFC = other.HMELFPDPCFC;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      if (other.GroupId != 0) {
-        GroupId = other.GroupId;
-      }
-      if (other.KHBBNDBJAFK != 0) {
-        KHBBNDBJAFK = other.KHBBNDBJAFK;
-      }
-      if (other.FloorId != 0) {
-        FloorId = other.FloorId;
+      if (other.NewValue != 0) {
+        NewValue = other.NewValue;
       }
       if (other.DimensionId != 0) {
         DimensionId = other.DimensionId;
       }
-      if (other.DHPDILNLIPC != 0) {
-        DHPDILNLIPC = other.DHPDILNLIPC;
+      if (other.GroupId != 0) {
+        GroupId = other.GroupId;
+      }
+      if (other.OldValue != 0) {
+        OldValue = other.OldValue;
+      }
+      if (other.PropertyName.Length != 0) {
+        PropertyName = other.PropertyName;
+      }
+      if (other.FloorId != 0) {
+        FloorId = other.FloorId;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -378,32 +378,32 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 8: {
+            NewValue = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 32: {
             DimensionId = input.ReadUInt32();
             break;
           }
-          case 34: {
-            HMELFPDPCFC = input.ReadString();
-            break;
-          }
-          case 56: {
-            KHBBNDBJAFK = input.ReadInt32();
-            break;
-          }
-          case 72: {
-            FloorId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 64: {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            DHPDILNLIPC = input.ReadInt32();
+          case 72: {
+            OldValue = input.ReadInt32();
+            break;
+          }
+          case 106: {
+            PropertyName = input.ReadString();
+            break;
+          }
+          case 112: {
+            FloorId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -425,32 +425,32 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 8: {
+            NewValue = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 32: {
             DimensionId = input.ReadUInt32();
             break;
           }
-          case 34: {
-            HMELFPDPCFC = input.ReadString();
-            break;
-          }
-          case 56: {
-            KHBBNDBJAFK = input.ReadInt32();
-            break;
-          }
-          case 72: {
-            FloorId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 64: {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 88: {
-            DHPDILNLIPC = input.ReadInt32();
+          case 72: {
+            OldValue = input.ReadInt32();
+            break;
+          }
+          case 106: {
+            PropertyName = input.ReadString();
+            break;
+          }
+          case 112: {
+            FloorId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OHBLOLLNHIC {
-    uint32 trait_id = 4;
-    uint32 role_id = 15;
-    bool ANDIPJEDGMG = 10;
+    uint32 trait_id = 3;
+    bool ANDIPJEDGMG = 11;
     uint32 HOHDOFKJJDJ = 12;
+    uint32 role_id = 15;
 }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message DrinkMakerChallengeScRsp {
-    ItemList reward = 9;
-    uint32 retcode = 4;
-    bool KGKEJAKKLDP = 1;
-    uint32 challenge_id = 11;
+    uint32 challenge_id = 9;
+    bool KGKEJAKKLDP = 11;
+    ItemList reward = 12;
+    uint32 retcode = 15;
 }

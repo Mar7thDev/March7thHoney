@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFHZXRFbGF0aW9uQWN0aXZpdHlEYXRhU2NSc3AucHJvdG8aHkVsYXRpb25B",
             "Y3Rpdml0eUxldmVsRGF0YS5wcm90byJiChtHZXRFbGF0aW9uQWN0aXZpdHlE",
-            "YXRhU2NSc3ASMgoPbGV2ZWxfZGF0YV9saXN0GA0gAygLMhkuRWxhdGlvbkFj",
-            "dGl2aXR5TGV2ZWxEYXRhEg8KB3JldGNvZGUYASABKA1CFqoCE01hcmNoN3Ro",
+            "YXRhU2NSc3ASDwoHcmV0Y29kZRgDIAEoDRIyCg9sZXZlbF9kYXRhX2xpc3QY",
+            "BiADKAsyGS5FbGF0aW9uQWN0aXZpdHlMZXZlbERhdGFCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ElationActivityLevelDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetElationActivityDataScRsp), global::March7thHoney.Proto.GetElationActivityDataScRsp.Parser, new[]{ "LevelDataList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetElationActivityDataScRsp), global::March7thHoney.Proto.GetElationActivityDataScRsp.Parser, new[]{ "Retcode", "LevelDataList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetElationActivityDataScRsp(GetElationActivityDataScRsp other) : this() {
-      levelDataList_ = other.levelDataList_.Clone();
       retcode_ = other.retcode_;
+      levelDataList_ = other.levelDataList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,19 +85,8 @@ namespace March7thHoney.Proto {
       return new GetElationActivityDataScRsp(this);
     }
 
-    /// <summary>Field number for the "level_data_list" field.</summary>
-    public const int LevelDataListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ElationActivityLevelData> _repeated_levelDataList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ElationActivityLevelData.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityLevelData> levelDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityLevelData>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityLevelData> LevelDataList {
-      get { return levelDataList_; }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
+    public const int RetcodeFieldNumber = 3;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,6 +95,17 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
+    }
+
+    /// <summary>Field number for the "level_data_list" field.</summary>
+    public const int LevelDataListFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ElationActivityLevelData> _repeated_levelDataList_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ElationActivityLevelData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityLevelData> levelDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityLevelData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ElationActivityLevelData> LevelDataList {
+      get { return levelDataList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!levelDataList_.Equals(other.levelDataList_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!levelDataList_.Equals(other.levelDataList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= levelDataList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= levelDataList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
       levelDataList_.WriteTo(output, _repeated_levelDataList_codec);
@@ -168,7 +168,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(24);
         output.WriteUInt32(Retcode);
       }
       levelDataList_.WriteTo(ref output, _repeated_levelDataList_codec);
@@ -182,10 +182,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += levelDataList_.CalculateSize(_repeated_levelDataList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += levelDataList_.CalculateSize(_repeated_levelDataList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -198,10 +198,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      levelDataList_.Add(other.levelDataList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      levelDataList_.Add(other.levelDataList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -221,11 +221,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 50: {
             levelDataList_.AddEntriesFrom(input, _repeated_levelDataList_codec);
             break;
           }
@@ -248,11 +248,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 24: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 50: {
             levelDataList_.AddEntriesFrom(ref input, _repeated_levelDataList_codec);
             break;
           }

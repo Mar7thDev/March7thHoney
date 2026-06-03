@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HPOFMGOOHAN {
-    uint32 CAMCBJPOMLC = 14;
+    uint32 CAMCBJPOMLC = 15;
 }

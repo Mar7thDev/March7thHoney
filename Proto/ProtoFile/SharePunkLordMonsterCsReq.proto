@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PunkLordShareType.proto";
 
 message SharePunkLordMonsterCsReq {
-    PunkLordShareType share_type = 13;
-    uint32 uid = 15;
-    uint32 monster_id = 1;
+    PunkLordShareType share_type = 1;
+    uint32 uid = 5;
+    uint32 monster_id = 9;
 }

@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtRdWVyeVByb2R1Y3RJbmZvU2NSc3AucHJvdG8aDVByb2R1Y3QucHJvdG8i",
-            "lAEKFVF1ZXJ5UHJvZHVjdEluZm9TY1JzcBIeCgxwcm9kdWN0X2xpc3QYAyAD",
-            "KAsyCC5Qcm9kdWN0EhMKC0JGRkhFS0NHTE1BGAYgASgNEhMKC0JFQkZORElH",
-            "S0ZLGAogASgNEg8KB3JldGNvZGUYDSABKA0SIAoYbW9udGhfY2FyZF9vdXRf",
-            "ZGF0ZV90aW1lGAkgASgEQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "lAEKFVF1ZXJ5UHJvZHVjdEluZm9TY1JzcBIeCgxwcm9kdWN0X2xpc3QYBCAD",
+            "KAsyCC5Qcm9kdWN0EhMKC0JGRkhFS0NHTE1BGAUgASgNEhMKC0JFQkZORElH",
+            "S0ZLGAYgASgNEiAKGG1vbnRoX2NhcmRfb3V0X2RhdGVfdGltZRgHIAEoBBIP",
+            "CgdyZXRjb2RlGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ProductReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.QueryProductInfoScRsp), global::March7thHoney.Proto.QueryProductInfoScRsp.Parser, new[]{ "ProductList", "BFFHEKCGLMA", "BEBFNDIGKFK", "Retcode", "MonthCardOutDateTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.QueryProductInfoScRsp), global::March7thHoney.Proto.QueryProductInfoScRsp.Parser, new[]{ "ProductList", "BFFHEKCGLMA", "BEBFNDIGKFK", "MonthCardOutDateTime", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,8 +78,8 @@ namespace March7thHoney.Proto {
       productList_ = other.productList_.Clone();
       bFFHEKCGLMA_ = other.bFFHEKCGLMA_;
       bEBFNDIGKFK_ = other.bEBFNDIGKFK_;
-      retcode_ = other.retcode_;
       monthCardOutDateTime_ = other.monthCardOutDateTime_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,9 +90,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "product_list" field.</summary>
-    public const int ProductListFieldNumber = 3;
+    public const int ProductListFieldNumber = 4;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.Product> _repeated_productList_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.Product.Parser);
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.Product.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.Product> productList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Product>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -101,7 +101,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BFFHEKCGLMA" field.</summary>
-    public const int BFFHEKCGLMAFieldNumber = 6;
+    public const int BFFHEKCGLMAFieldNumber = 5;
     private uint bFFHEKCGLMA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -113,7 +113,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BEBFNDIGKFK" field.</summary>
-    public const int BEBFNDIGKFKFieldNumber = 10;
+    public const int BEBFNDIGKFKFieldNumber = 6;
     private uint bEBFNDIGKFK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,20 +124,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "month_card_out_date_time" field.</summary>
-    public const int MonthCardOutDateTimeFieldNumber = 9;
+    public const int MonthCardOutDateTimeFieldNumber = 7;
     private ulong monthCardOutDateTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -145,6 +133,18 @@ namespace March7thHoney.Proto {
       get { return monthCardOutDateTime_; }
       set {
         monthCardOutDateTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 14;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -166,8 +166,8 @@ namespace March7thHoney.Proto {
       if(!productList_.Equals(other.productList_)) return false;
       if (BFFHEKCGLMA != other.BFFHEKCGLMA) return false;
       if (BEBFNDIGKFK != other.BEBFNDIGKFK) return false;
-      if (Retcode != other.Retcode) return false;
       if (MonthCardOutDateTime != other.MonthCardOutDateTime) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -178,8 +178,8 @@ namespace March7thHoney.Proto {
       hash ^= productList_.GetHashCode();
       if (BFFHEKCGLMA != 0) hash ^= BFFHEKCGLMA.GetHashCode();
       if (BEBFNDIGKFK != 0) hash ^= BEBFNDIGKFK.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (MonthCardOutDateTime != 0UL) hash ^= MonthCardOutDateTime.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -200,19 +200,19 @@ namespace March7thHoney.Proto {
     #else
       productList_.WriteTo(output, _repeated_productList_codec);
       if (BFFHEKCGLMA != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(40);
         output.WriteUInt32(BFFHEKCGLMA);
       }
-      if (MonthCardOutDateTime != 0UL) {
-        output.WriteRawTag(72);
-        output.WriteUInt64(MonthCardOutDateTime);
-      }
       if (BEBFNDIGKFK != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(BEBFNDIGKFK);
       }
+      if (MonthCardOutDateTime != 0UL) {
+        output.WriteRawTag(56);
+        output.WriteUInt64(MonthCardOutDateTime);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -227,19 +227,19 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       productList_.WriteTo(ref output, _repeated_productList_codec);
       if (BFFHEKCGLMA != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(40);
         output.WriteUInt32(BFFHEKCGLMA);
       }
-      if (MonthCardOutDateTime != 0UL) {
-        output.WriteRawTag(72);
-        output.WriteUInt64(MonthCardOutDateTime);
-      }
       if (BEBFNDIGKFK != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(BEBFNDIGKFK);
       }
+      if (MonthCardOutDateTime != 0UL) {
+        output.WriteRawTag(56);
+        output.WriteUInt64(MonthCardOutDateTime);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
       if (BEBFNDIGKFK != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BEBFNDIGKFK);
       }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       if (MonthCardOutDateTime != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MonthCardOutDateTime);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,11 +284,11 @@ namespace March7thHoney.Proto {
       if (other.BEBFNDIGKFK != 0) {
         BEBFNDIGKFK = other.BEBFNDIGKFK;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       if (other.MonthCardOutDateTime != 0UL) {
         MonthCardOutDateTime = other.MonthCardOutDateTime;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -309,23 +309,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 34: {
             productList_.AddEntriesFrom(input, _repeated_productList_codec);
             break;
           }
-          case 48: {
+          case 40: {
             BFFHEKCGLMA = input.ReadUInt32();
             break;
           }
-          case 72: {
-            MonthCardOutDateTime = input.ReadUInt64();
-            break;
-          }
-          case 80: {
+          case 48: {
             BEBFNDIGKFK = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 56: {
+            MonthCardOutDateTime = input.ReadUInt64();
+            break;
+          }
+          case 112: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -348,23 +348,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 34: {
             productList_.AddEntriesFrom(ref input, _repeated_productList_codec);
             break;
           }
-          case 48: {
+          case 40: {
             BFFHEKCGLMA = input.ReadUInt32();
             break;
           }
-          case 72: {
-            MonthCardOutDateTime = input.ReadUInt64();
-            break;
-          }
-          case 80: {
+          case 48: {
             BEBFNDIGKFK = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 56: {
+            MonthCardOutDateTime = input.ReadUInt64();
+            break;
+          }
+          case 112: {
             Retcode = input.ReadUInt32();
             break;
           }

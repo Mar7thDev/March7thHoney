@@ -24,13 +24,12 @@ namespace March7thHoney.Proto {
     static MusicRhythmDataCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpNdXNpY1JoeXRobURhdGFDc1JlcS5wcm90byIrChRNdXNpY1JoeXRobURh",
-            "dGFDc1JlcRITCgtwbGF5ZXJfZGF0YRgHIAEoDUIWqgITTWFyY2g3dGhIb25l",
-            "eS5Qcm90b2IGcHJvdG8z"));
+            "ChpNdXNpY1JoeXRobURhdGFDc1JlcS5wcm90byIWChRNdXNpY1JoeXRobURh",
+            "dGFDc1JlcUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmDataCsReq), global::March7thHoney.Proto.MusicRhythmDataCsReq.Parser, new[]{ "PlayerData" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmDataCsReq), global::March7thHoney.Proto.MusicRhythmDataCsReq.Parser, null, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +71,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmDataCsReq(MusicRhythmDataCsReq other) : this() {
-      playerData_ = other.playerData_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -80,18 +78,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmDataCsReq Clone() {
       return new MusicRhythmDataCsReq(this);
-    }
-
-    /// <summary>Field number for the "player_data" field.</summary>
-    public const int PlayerDataFieldNumber = 7;
-    private uint playerData_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlayerData {
-      get { return playerData_; }
-      set {
-        playerData_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -109,7 +95,6 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PlayerData != other.PlayerData) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +102,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PlayerData != 0) hash ^= PlayerData.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,10 +120,6 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PlayerData != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PlayerData);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -150,10 +130,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PlayerData != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PlayerData);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -164,9 +140,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PlayerData != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlayerData);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -178,9 +151,6 @@ namespace March7thHoney.Proto {
     public void MergeFrom(MusicRhythmDataCsReq other) {
       if (other == null) {
         return;
-      }
-      if (other.PlayerData != 0) {
-        PlayerData = other.PlayerData;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -201,10 +171,6 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            PlayerData = input.ReadUInt32();
-            break;
-          }
         }
       }
     #endif
@@ -224,10 +190,6 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            PlayerData = input.ReadUInt32();
-            break;
-          }
         }
       }
     }

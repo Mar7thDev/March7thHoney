@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChimeraDuelShopBuyItemCsReq {
-    uint32 AGBAIFPNKII = 4;
-    uint32 JHINLPCKMPK = 9;
+    uint32 AGBAIFPNKII = 11;
+    uint32 JHINLPCKMPK = 14;
 }

@@ -6,7 +6,7 @@ import "FMKMEFMOJGJ.proto";
 import "NCFKHDIKCNI.proto";
 
 message KNECKDAOKOA {
-    NCFKHDIKCNI item_value = 1;
-    NCFKHDIKCNI GJPLOMMEBGM = 6;
-    repeated FMKMEFMOJGJ item_list = 13;
+    NCFKHDIKCNI item_value = 3;
+    NCFKHDIKCNI GJPLOMMEBGM = 8;
+    repeated FMKMEFMOJGJ item_list = 15;
 }

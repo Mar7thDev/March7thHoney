@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static EJEFKJGAKOOReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFFSkVGS0pHQUtPTy5wcm90byJHCgtFSkVGS0pHQUtPTxITCgtNRU5GQkVE",
-            "Q0JIQhgIIAEoDRIQCgh0cmFpdF9pZBgGIAEoDRIRCgllZmZlY3RfaWQYByAB",
+            "ChFFSkVGS0pHQUtPTy5wcm90byJHCgtFSkVGS0pHQUtPTxIRCgllZmZlY3Rf",
+            "aWQYAiABKA0SEwoLTUVORkJFRENCSEIYCyABKA0SEAoIdHJhaXRfaWQYDCAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EJEFKJGAKOO), global::March7thHoney.Proto.EJEFKJGAKOO.Parser, new[]{ "MENFBEDCBHB", "TraitId", "EffectId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EJEFKJGAKOO), global::March7thHoney.Proto.EJEFKJGAKOO.Parser, new[]{ "EffectId", "MENFBEDCBHB", "TraitId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EJEFKJGAKOO(EJEFKJGAKOO other) : this() {
+      effectId_ = other.effectId_;
       mENFBEDCBHB_ = other.mENFBEDCBHB_;
       traitId_ = other.traitId_;
-      effectId_ = other.effectId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new EJEFKJGAKOO(this);
     }
 
+    /// <summary>Field number for the "effect_id" field.</summary>
+    public const int EffectIdFieldNumber = 2;
+    private uint effectId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EffectId {
+      get { return effectId_; }
+      set {
+        effectId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "MENFBEDCBHB" field.</summary>
-    public const int MENFBEDCBHBFieldNumber = 8;
+    public const int MENFBEDCBHBFieldNumber = 11;
     private uint mENFBEDCBHB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "trait_id" field.</summary>
-    public const int TraitIdFieldNumber = 6;
+    public const int TraitIdFieldNumber = 12;
     private uint traitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,18 +117,6 @@ namespace March7thHoney.Proto {
       get { return traitId_; }
       set {
         traitId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "effect_id" field.</summary>
-    public const int EffectIdFieldNumber = 7;
-    private uint effectId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EffectId {
-      get { return effectId_; }
-      set {
-        effectId_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (EffectId != other.EffectId) return false;
       if (MENFBEDCBHB != other.MENFBEDCBHB) return false;
       if (TraitId != other.TraitId) return false;
-      if (EffectId != other.EffectId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (EffectId != 0) hash ^= EffectId.GetHashCode();
       if (MENFBEDCBHB != 0) hash ^= MENFBEDCBHB.GetHashCode();
       if (TraitId != 0) hash ^= TraitId.GetHashCode();
-      if (EffectId != 0) hash ^= EffectId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (TraitId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(TraitId);
-      }
       if (EffectId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(16);
         output.WriteUInt32(EffectId);
       }
       if (MENFBEDCBHB != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(MENFBEDCBHB);
+      }
+      if (TraitId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(TraitId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (TraitId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(TraitId);
-      }
       if (EffectId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(16);
         output.WriteUInt32(EffectId);
       }
       if (MENFBEDCBHB != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(MENFBEDCBHB);
+      }
+      if (TraitId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(TraitId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (EffectId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EffectId);
+      }
       if (MENFBEDCBHB != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MENFBEDCBHB);
       }
       if (TraitId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TraitId);
-      }
-      if (EffectId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EffectId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.EffectId != 0) {
+        EffectId = other.EffectId;
+      }
       if (other.MENFBEDCBHB != 0) {
         MENFBEDCBHB = other.MENFBEDCBHB;
       }
       if (other.TraitId != 0) {
         TraitId = other.TraitId;
-      }
-      if (other.EffectId != 0) {
-        EffectId = other.EffectId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            TraitId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 16: {
             EffectId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 88: {
             MENFBEDCBHB = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            TraitId = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            TraitId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 16: {
             EffectId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 88: {
             MENFBEDCBHB = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            TraitId = input.ReadUInt32();
             break;
           }
         }

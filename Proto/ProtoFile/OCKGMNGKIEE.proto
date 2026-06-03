@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OCKGMNGKIEE {
-    uint32 AMMPOLONOBC = 8;
-    uint32 IGOOJKMPMDC = 4;
+    uint32 AMMPOLONOBC = 4;
+    uint32 IGOOJKMPMDC = 14;
 }

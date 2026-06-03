@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HDAHFLMBAAB.proto";
 
 message UpdateMovieRacingDataCsReq {
-    HDAHFLMBAAB LJEPIAIDJFC = 13;
+    HDAHFLMBAAB LJEPIAIDJFC = 1;
 }

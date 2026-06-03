@@ -26,11 +26,11 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdDbWRCYXR0bGVQYXNzVHlwZS5wcm90byqCAgoRQ21kQmF0dGxlUGFzc1R5",
             "cGUSGwoXSkhISUFQQ0tITlBfTkxDREdJUEdGREoQABIcChdKSEhJQVBDS0hO",
-            "UF9LRkhBTUtDQURHQxDHFxIcChdKSEhJQVBDS0hOUF9IRkZPSEdBS0ZHShDc",
-            "FxIcChdKSEhJQVBDS0hOUF9NSUhFTUNPTkZIUBDCFxIcChdKSEhJQVBDS0hO",
-            "UF9BR0xLREpCREpJRRDTFxIcChdKSEhJQVBDS0hOUF9LS01FSkpESUhKQRCB",
-            "GBIcChdKSEhJQVBDS0hOUF9JSFBMTE1ISE1BQhCJGBIcChdKSEhJQVBDS0hO",
-            "UF9BTE5MQ05BRktOSBDFF0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "UF9BTE5MQ05BRktOSBCJGBIcChdKSEhJQVBDS0hOUF9IRkZPSEdBS0ZHShCQ",
+            "GBIcChdKSEhJQVBDS0hOUF9NSUhFTUNPTkZIUBDSFxIcChdKSEhJQVBDS0hO",
+            "UF9JSFBMTE1ISE1BQhDnFxIcChdKSEhJQVBDS0hOUF9BR0xLREpCREpJRRDy",
+            "FxIcChdKSEhJQVBDS0hOUF9LS01FSkpESUhKQRDRFxIcChdKSEhJQVBDS0hO",
+            "UF9LRkhBTUtDQURHQxCOGEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
             "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -42,13 +42,13 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdBattlePassType {
     [pbr::OriginalName("JHHIAPCKHNP_NLCDGIPGFDJ")] JhhiapckhnpNlcdgipgfdj = 0,
-    [pbr::OriginalName("JHHIAPCKHNP_KFHAMKCADGC")] JhhiapckhnpKfhamkcadgc = 3015,
-    [pbr::OriginalName("JHHIAPCKHNP_HFFOHGAKFGJ")] JhhiapckhnpHffohgakfgj = 3036,
-    [pbr::OriginalName("JHHIAPCKHNP_MIHEMCONFHP")] JhhiapckhnpMihemconfhp = 3010,
-    [pbr::OriginalName("JHHIAPCKHNP_AGLKDJBDJIE")] JhhiapckhnpAglkdjbdjie = 3027,
-    [pbr::OriginalName("JHHIAPCKHNP_KKMEJJDIHJA")] JhhiapckhnpKkmejjdihja = 3073,
-    [pbr::OriginalName("JHHIAPCKHNP_IHPLLMHHMAB")] JhhiapckhnpIhpllmhhmab = 3081,
-    [pbr::OriginalName("JHHIAPCKHNP_ALNLCNAFKNH")] JhhiapckhnpAlnlcnafknh = 3013,
+    [pbr::OriginalName("JHHIAPCKHNP_ALNLCNAFKNH")] JhhiapckhnpAlnlcnafknh = 3081,
+    [pbr::OriginalName("JHHIAPCKHNP_HFFOHGAKFGJ")] JhhiapckhnpHffohgakfgj = 3088,
+    [pbr::OriginalName("JHHIAPCKHNP_MIHEMCONFHP")] JhhiapckhnpMihemconfhp = 3026,
+    [pbr::OriginalName("JHHIAPCKHNP_IHPLLMHHMAB")] JhhiapckhnpIhpllmhhmab = 3047,
+    [pbr::OriginalName("JHHIAPCKHNP_AGLKDJBDJIE")] JhhiapckhnpAglkdjbdjie = 3058,
+    [pbr::OriginalName("JHHIAPCKHNP_KKMEJJDIHJA")] JhhiapckhnpKkmejjdihja = 3025,
+    [pbr::OriginalName("JHHIAPCKHNP_KFHAMKCADGC")] JhhiapckhnpKfhamkcadgc = 3086,
   }
 
   #endregion

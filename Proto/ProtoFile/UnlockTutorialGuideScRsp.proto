@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "TutorialGuide.proto";
 
 message UnlockTutorialGuideScRsp {
-    TutorialGuide tutorial_guide = 14;
-    uint32 retcode = 3;
+    uint32 retcode = 11;
+    TutorialGuide tutorial_guide = 12;
 }

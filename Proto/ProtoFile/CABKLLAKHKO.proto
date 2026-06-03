@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AJCFOLGANFC.proto";
 
 message CABKLLAKHKO {
-    AJCFOLGANFC GMEPGCODKKE = 13;
+    AJCFOLGANFC GMEPGCODKKE = 7;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PGPHEKKPBLD.proto";
 
 message BACHHBGNENA {
-    PGPHEKKPBLD CFDIKLBINHK = 1;
-    uint32 DLFHABGGHFF = 11;
-    uint32 EDDBMFMEPJK = 5;
+    PGPHEKKPBLD CFDIKLBINHK = 4;
+    uint32 EDDBMFMEPJK = 9;
+    uint32 DLFHABGGHFF = 13;
 }

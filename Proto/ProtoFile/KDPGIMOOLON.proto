@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KDPGIMOOLON {
-    repeated uint32 PGMHMPEHPHP = 13;
-    repeated uint32 KNJMPBHKHCJ = 12;
-    repeated uint32 JKOOLMNHPHI = 1;
+    repeated uint32 KNJMPBHKHCJ = 2;
+    repeated uint32 PGMHMPEHPHP = 6;
+    repeated uint32 JKOOLMNHPHI = 7;
     bool BDEFAFFDBCC = 9;
     uint32 PEDFLGGDHDP = 14;
 }

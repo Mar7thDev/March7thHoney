@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HGNAHHFBMMN.proto";
 
 message PixAirReenterStageScRsp {
-    HGNAHHFBMMN MFGMNKMKOON = 15;
-    uint32 retcode = 5;
+    uint32 retcode = 6;
+    HGNAHHFBMMN stage_info = 14;
 }

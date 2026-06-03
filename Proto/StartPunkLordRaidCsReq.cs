@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxTdGFydFB1bmtMb3JkUmFpZENzUmVxLnByb3RvIk4KFlN0YXJ0UHVua0xv",
-            "cmRSYWlkQ3NSZXESEgoKbW9uc3Rlcl9pZBgHIAEoDRITCgtJRE1QTUVPQ0pJ",
-            "SxgPIAEoCBILCgN1aWQYAiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "cmRSYWlkQ3NSZXESCwoDdWlkGAEgASgNEhIKCm1vbnN0ZXJfaWQYBCABKA0S",
+            "EwoLSURNUE1FT0NKSUsYBSABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartPunkLordRaidCsReq), global::March7thHoney.Proto.StartPunkLordRaidCsReq.Parser, new[]{ "MonsterId", "IDMPMEOCJIK", "Uid" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartPunkLordRaidCsReq), global::March7thHoney.Proto.StartPunkLordRaidCsReq.Parser, new[]{ "Uid", "MonsterId", "IDMPMEOCJIK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartPunkLordRaidCsReq(StartPunkLordRaidCsReq other) : this() {
+      uid_ = other.uid_;
       monsterId_ = other.monsterId_;
       iDMPMEOCJIK_ = other.iDMPMEOCJIK_;
-      uid_ = other.uid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,20 @@ namespace March7thHoney.Proto {
       return new StartPunkLordRaidCsReq(this);
     }
 
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 1;
+    private uint uid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Uid {
+      get { return uid_; }
+      set {
+        uid_ = value;
+      }
+    }
+
     /// <summary>Field number for the "monster_id" field.</summary>
-    public const int MonsterIdFieldNumber = 7;
+    public const int MonsterIdFieldNumber = 4;
     private uint monsterId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IDMPMEOCJIK" field.</summary>
-    public const int IDMPMEOCJIKFieldNumber = 15;
+    public const int IDMPMEOCJIKFieldNumber = 5;
     private bool iDMPMEOCJIK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,18 +118,6 @@ namespace March7thHoney.Proto {
       get { return iDMPMEOCJIK_; }
       set {
         iDMPMEOCJIK_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 2;
-    private uint uid_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Uid {
-      get { return uid_; }
-      set {
-        uid_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Uid != other.Uid) return false;
       if (MonsterId != other.MonsterId) return false;
       if (IDMPMEOCJIK != other.IDMPMEOCJIK) return false;
-      if (Uid != other.Uid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (Uid != 0) hash ^= Uid.GetHashCode();
       if (MonsterId != 0) hash ^= MonsterId.GetHashCode();
       if (IDMPMEOCJIK != false) hash ^= IDMPMEOCJIK.GetHashCode();
-      if (Uid != 0) hash ^= Uid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,15 +168,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Uid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(Uid);
       }
       if (MonsterId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(MonsterId);
       }
       if (IDMPMEOCJIK != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(40);
         output.WriteBool(IDMPMEOCJIK);
       }
       if (_unknownFields != null) {
@@ -190,15 +190,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Uid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(Uid);
       }
       if (MonsterId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(32);
         output.WriteUInt32(MonsterId);
       }
       if (IDMPMEOCJIK != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(40);
         output.WriteBool(IDMPMEOCJIK);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
+      }
       if (MonsterId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MonsterId);
       }
       if (IDMPMEOCJIK != false) {
         size += 1 + 1;
-      }
-      if (Uid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Uid != 0) {
+        Uid = other.Uid;
+      }
       if (other.MonsterId != 0) {
         MonsterId = other.MonsterId;
       }
       if (other.IDMPMEOCJIK != false) {
         IDMPMEOCJIK = other.IDMPMEOCJIK;
-      }
-      if (other.Uid != 0) {
-        Uid = other.Uid;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 8: {
             Uid = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 32: {
             MonsterId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 40: {
             IDMPMEOCJIK = input.ReadBool();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 8: {
             Uid = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 32: {
             MonsterId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 40: {
             IDMPMEOCJIK = input.ReadBool();
             break;
           }

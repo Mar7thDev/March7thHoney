@@ -3,7 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PICDJHEPJLC {
-    map<uint32, uint32> PCDFIOCMJFE = 8;
-    uint32 ACAOLNODBLN = 13;
     uint32 LEGCBILEEHK = 3;
+    map<uint32, uint32> PCDFIOCMJFE = 13;
 }

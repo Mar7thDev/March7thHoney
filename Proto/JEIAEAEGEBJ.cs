@@ -27,8 +27,8 @@ namespace March7thHoney.Proto {
             "ChFKRUlBRUFFR0VCSi5wcm90bxoRR01ESElBTExJTEoucHJvdG8aHFB1bmtM",
             "b3JkQXR0YWNrZXJTdGF0dXMucHJvdG8aHlB1bmtMb3JkTW9uc3RlckJhc2lj",
             "SW5mby5wcm90byKiAQoLSkVJQUVBRUdFQkoSLQoKYmFzaWNfaW5mbxgBIAEo",
-            "CzIZLlB1bmtMb3JkTW9uc3RlckJhc2ljSW5mbxIhCgtGREpITUZBR0VPQRgO",
-            "IAEoCzIMLkdNREhJQUxMSUxKEhMKC0hESElGSk5KT0JLGAYgASgNEiwKC0hD",
+            "CzIZLlB1bmtMb3JkTW9uc3RlckJhc2ljSW5mbxIhCgtGREpITUZBR0VPQRgE",
+            "IAEoCzIMLkdNREhJQUxMSUxKEhMKC0hESElGSk5KT0JLGAsgASgNEiwKC0hD",
             "RUVOUEVORkdJGA0gASgOMhcuUHVua0xvcmRBdHRhY2tlclN0YXR1c0IWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -102,7 +102,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FDJHMFAGEOA" field.</summary>
-    public const int FDJHMFAGEOAFieldNumber = 14;
+    public const int FDJHMFAGEOAFieldNumber = 4;
     private global::March7thHoney.Proto.GMDHIALLILJ fDJHMFAGEOA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -114,7 +114,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HDHIFJNJOBK" field.</summary>
-    public const int HDHIFJNJOBKFieldNumber = 6;
+    public const int HDHIFJNJOBKFieldNumber = 11;
     private uint hDHIFJNJOBK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(10);
         output.WriteMessage(BasicInfo);
       }
+      if (fDJHMFAGEOA_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(FDJHMFAGEOA);
+      }
       if (HDHIFJNJOBK != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(88);
         output.WriteUInt32(HDHIFJNJOBK);
       }
       if (HCEENPENFGI != global::March7thHoney.Proto.PunkLordAttackerStatus.PfipeigdllkNlcdgipgfdj) {
         output.WriteRawTag(104);
         output.WriteEnum((int) HCEENPENFGI);
-      }
-      if (fDJHMFAGEOA_ != null) {
-        output.WriteRawTag(114);
-        output.WriteMessage(FDJHMFAGEOA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -215,17 +215,17 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(10);
         output.WriteMessage(BasicInfo);
       }
+      if (fDJHMFAGEOA_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(FDJHMFAGEOA);
+      }
       if (HDHIFJNJOBK != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(88);
         output.WriteUInt32(HDHIFJNJOBK);
       }
       if (HCEENPENFGI != global::March7thHoney.Proto.PunkLordAttackerStatus.PfipeigdllkNlcdgipgfdj) {
         output.WriteRawTag(104);
         output.WriteEnum((int) HCEENPENFGI);
-      }
-      if (fDJHMFAGEOA_ != null) {
-        output.WriteRawTag(114);
-        output.WriteMessage(FDJHMFAGEOA);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -305,19 +305,19 @@ namespace March7thHoney.Proto {
             input.ReadMessage(BasicInfo);
             break;
           }
-          case 48: {
+          case 34: {
+            if (fDJHMFAGEOA_ == null) {
+              FDJHMFAGEOA = new global::March7thHoney.Proto.GMDHIALLILJ();
+            }
+            input.ReadMessage(FDJHMFAGEOA);
+            break;
+          }
+          case 88: {
             HDHIFJNJOBK = input.ReadUInt32();
             break;
           }
           case 104: {
             HCEENPENFGI = (global::March7thHoney.Proto.PunkLordAttackerStatus) input.ReadEnum();
-            break;
-          }
-          case 114: {
-            if (fDJHMFAGEOA_ == null) {
-              FDJHMFAGEOA = new global::March7thHoney.Proto.GMDHIALLILJ();
-            }
-            input.ReadMessage(FDJHMFAGEOA);
             break;
           }
         }
@@ -346,19 +346,19 @@ namespace March7thHoney.Proto {
             input.ReadMessage(BasicInfo);
             break;
           }
-          case 48: {
+          case 34: {
+            if (fDJHMFAGEOA_ == null) {
+              FDJHMFAGEOA = new global::March7thHoney.Proto.GMDHIALLILJ();
+            }
+            input.ReadMessage(FDJHMFAGEOA);
+            break;
+          }
+          case 88: {
             HDHIFJNJOBK = input.ReadUInt32();
             break;
           }
           case 104: {
             HCEENPENFGI = (global::March7thHoney.Proto.PunkLordAttackerStatus) input.ReadEnum();
-            break;
-          }
-          case 114: {
-            if (fDJHMFAGEOA_ == null) {
-              FDJHMFAGEOA = new global::March7thHoney.Proto.GMDHIALLILJ();
-            }
-            input.ReadMessage(FDJHMFAGEOA);
             break;
           }
         }

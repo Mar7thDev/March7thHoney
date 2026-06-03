@@ -8,17 +8,17 @@ import "FEHHKDIIENA.proto";
 import "KPCNNOGGIDO.proto";
 
 message SyncMuseumInfoChangedScNotify {
-    CDNPKGOKEPK PKJCHLDHKBL = 6;
-    repeated FCCDKHNGIPH area_list = 15;
-    repeated uint32 BILNKFBKOBC = 3;
-    repeated uint32 ONJEOMGPGLJ = 10;
-    repeated FEHHKDIIENA DHIOHIOPCGP = 8;
-    KPCNNOGGIDO MCLLALGABAB = 9;
-    uint32 level = 12;
-    uint32 exp = 13;
-    uint32 KAADGPOLIEN = 14;
-    uint32 ONCBJHBKBLB = 7;
-    uint32 NEHFEBHDGIK = 2;
+    uint32 exp = 1;
+    uint32 cur_fund = 2;
+    KPCNNOGGIDO target = 3;
     uint32 EKGPINKBLED = 5;
-    uint32 cur_fund = 11;
+    uint32 level = 6;
+    uint32 KAADGPOLIEN = 7;
+    repeated uint32 ONJEOMGPGLJ = 8;
+    repeated FCCDKHNGIPH area_list = 9;
+    repeated uint32 BILNKFBKOBC = 10;
+    repeated FEHHKDIIENA DHIOHIOPCGP = 11;
+    CDNPKGOKEPK PKJCHLDHKBL = 12;
+    uint32 NEHFEBHDGIK = 13;
+    uint32 ONCBJHBKBLB = 14;
 }

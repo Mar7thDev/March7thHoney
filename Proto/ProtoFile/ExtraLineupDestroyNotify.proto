@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ExtraLineupType.proto";
 
 message ExtraLineupDestroyNotify {
-    ExtraLineupType extra_lineup_type = 7;
+    ExtraLineupType extra_lineup_type = 3;
 }

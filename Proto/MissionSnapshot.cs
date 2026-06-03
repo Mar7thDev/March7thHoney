@@ -26,17 +26,17 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChVNaXNzaW9uU25hcHNob3QucHJvdG8aHE1haW5NaXNzaW9uTWN2U25hcHNo",
             "b3QucHJvdG8aGU1haW5NaXNzaW9uU25hcHNob3QucHJvdG8ijwIKD01pc3Np",
-            "b25TbmFwc2hvdBIzChV0cmFja2luZ19tYWluX21pc3Npb24YAyABKAsyFC5N",
-            "YWluTWlzc2lvblNuYXBzaG90Eh4KFmN1cl9zb3VuZF9lZmZlY3Rfc3RhdGUY",
-            "BiABKAkSMAoPY2xpZW50X21jdl9saXN0GAIgAygLMhcuTWFpbk1pc3Npb25N",
-            "Y3ZTbmFwc2hvdBIfChdjdXJfYXVkaW9fZW1vdGlvbl9zdGF0ZRgFIAEoCRIw",
-            "Cg9zZXJ2ZXJfbWN2X2xpc3QYASADKAsyFy5NYWluTWlzc2lvbk1jdlNuYXBz",
-            "aG90EiIKGmhhc19taXNzaW9uX2F1ZGlvX3NuYXBzaG90GAQgASgIQhaqAhNN",
+            "b25TbmFwc2hvdBIwCg9zZXJ2ZXJfbWN2X2xpc3QYASADKAsyFy5NYWluTWlz",
+            "c2lvbk1jdlNuYXBzaG90EjAKD2NsaWVudF9tY3ZfbGlzdBgCIAMoCzIXLk1h",
+            "aW5NaXNzaW9uTWN2U25hcHNob3QSMwoVdHJhY2tpbmdfbWFpbl9taXNzaW9u",
+            "GAMgASgLMhQuTWFpbk1pc3Npb25TbmFwc2hvdBIiChpoYXNfbWlzc2lvbl9h",
+            "dWRpb19zbmFwc2hvdBgEIAEoCBIfChdjdXJfYXVkaW9fZW1vdGlvbl9zdGF0",
+            "ZRgFIAEoCRIeChZjdXJfc291bmRfZWZmZWN0X3N0YXRlGAYgASgJQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MainMissionMcvSnapshotReflection.Descriptor, global::March7thHoney.Proto.MainMissionSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MissionSnapshot), global::March7thHoney.Proto.MissionSnapshot.Parser, new[]{ "TrackingMainMission", "CurSoundEffectState", "ClientMcvList", "CurAudioEmotionState", "ServerMcvList", "HasMissionAudioSnapshot" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MissionSnapshot), global::March7thHoney.Proto.MissionSnapshot.Parser, new[]{ "ServerMcvList", "ClientMcvList", "TrackingMainMission", "HasMissionAudioSnapshot", "CurAudioEmotionState", "CurSoundEffectState" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,12 +78,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MissionSnapshot(MissionSnapshot other) : this() {
-      trackingMainMission_ = other.trackingMainMission_ != null ? other.trackingMainMission_.Clone() : null;
-      curSoundEffectState_ = other.curSoundEffectState_;
-      clientMcvList_ = other.clientMcvList_.Clone();
-      curAudioEmotionState_ = other.curAudioEmotionState_;
       serverMcvList_ = other.serverMcvList_.Clone();
+      clientMcvList_ = other.clientMcvList_.Clone();
+      trackingMainMission_ = other.trackingMainMission_ != null ? other.trackingMainMission_.Clone() : null;
       hasMissionAudioSnapshot_ = other.hasMissionAudioSnapshot_;
+      curAudioEmotionState_ = other.curAudioEmotionState_;
+      curSoundEffectState_ = other.curSoundEffectState_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,6 +91,28 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MissionSnapshot Clone() {
       return new MissionSnapshot(this);
+    }
+
+    /// <summary>Field number for the "server_mcv_list" field.</summary>
+    public const int ServerMcvListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionMcvSnapshot> _repeated_serverMcvList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MainMissionMcvSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> serverMcvList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> ServerMcvList {
+      get { return serverMcvList_; }
+    }
+
+    /// <summary>Field number for the "client_mcv_list" field.</summary>
+    public const int ClientMcvListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionMcvSnapshot> _repeated_clientMcvList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.MainMissionMcvSnapshot.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> clientMcvList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> ClientMcvList {
+      get { return clientMcvList_; }
     }
 
     /// <summary>Field number for the "tracking_main_mission" field.</summary>
@@ -105,27 +127,16 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cur_sound_effect_state" field.</summary>
-    public const int CurSoundEffectStateFieldNumber = 6;
-    private string curSoundEffectState_ = "";
+    /// <summary>Field number for the "has_mission_audio_snapshot" field.</summary>
+    public const int HasMissionAudioSnapshotFieldNumber = 4;
+    private bool hasMissionAudioSnapshot_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string CurSoundEffectState {
-      get { return curSoundEffectState_; }
+    public bool HasMissionAudioSnapshot {
+      get { return hasMissionAudioSnapshot_; }
       set {
-        curSoundEffectState_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        hasMissionAudioSnapshot_ = value;
       }
-    }
-
-    /// <summary>Field number for the "client_mcv_list" field.</summary>
-    public const int ClientMcvListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionMcvSnapshot> _repeated_clientMcvList_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.MainMissionMcvSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> clientMcvList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> ClientMcvList {
-      get { return clientMcvList_; }
     }
 
     /// <summary>Field number for the "cur_audio_emotion_state" field.</summary>
@@ -140,26 +151,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "server_mcv_list" field.</summary>
-    public const int ServerMcvListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionMcvSnapshot> _repeated_serverMcvList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MainMissionMcvSnapshot.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> serverMcvList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot>();
+    /// <summary>Field number for the "cur_sound_effect_state" field.</summary>
+    public const int CurSoundEffectStateFieldNumber = 6;
+    private string curSoundEffectState_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> ServerMcvList {
-      get { return serverMcvList_; }
-    }
-
-    /// <summary>Field number for the "has_mission_audio_snapshot" field.</summary>
-    public const int HasMissionAudioSnapshotFieldNumber = 4;
-    private bool hasMissionAudioSnapshot_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasMissionAudioSnapshot {
-      get { return hasMissionAudioSnapshot_; }
+    public string CurSoundEffectState {
+      get { return curSoundEffectState_; }
       set {
-        hasMissionAudioSnapshot_ = value;
+        curSoundEffectState_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -178,12 +178,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(TrackingMainMission, other.TrackingMainMission)) return false;
-      if (CurSoundEffectState != other.CurSoundEffectState) return false;
-      if(!clientMcvList_.Equals(other.clientMcvList_)) return false;
-      if (CurAudioEmotionState != other.CurAudioEmotionState) return false;
       if(!serverMcvList_.Equals(other.serverMcvList_)) return false;
+      if(!clientMcvList_.Equals(other.clientMcvList_)) return false;
+      if (!object.Equals(TrackingMainMission, other.TrackingMainMission)) return false;
       if (HasMissionAudioSnapshot != other.HasMissionAudioSnapshot) return false;
+      if (CurAudioEmotionState != other.CurAudioEmotionState) return false;
+      if (CurSoundEffectState != other.CurSoundEffectState) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -191,12 +191,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (trackingMainMission_ != null) hash ^= TrackingMainMission.GetHashCode();
-      if (CurSoundEffectState.Length != 0) hash ^= CurSoundEffectState.GetHashCode();
-      hash ^= clientMcvList_.GetHashCode();
-      if (CurAudioEmotionState.Length != 0) hash ^= CurAudioEmotionState.GetHashCode();
       hash ^= serverMcvList_.GetHashCode();
+      hash ^= clientMcvList_.GetHashCode();
+      if (trackingMainMission_ != null) hash ^= TrackingMainMission.GetHashCode();
       if (HasMissionAudioSnapshot != false) hash ^= HasMissionAudioSnapshot.GetHashCode();
+      if (CurAudioEmotionState.Length != 0) hash ^= CurAudioEmotionState.GetHashCode();
+      if (CurSoundEffectState.Length != 0) hash ^= CurSoundEffectState.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -271,19 +271,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += serverMcvList_.CalculateSize(_repeated_serverMcvList_codec);
+      size += clientMcvList_.CalculateSize(_repeated_clientMcvList_codec);
       if (trackingMainMission_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TrackingMainMission);
       }
-      if (CurSoundEffectState.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(CurSoundEffectState);
+      if (HasMissionAudioSnapshot != false) {
+        size += 1 + 1;
       }
-      size += clientMcvList_.CalculateSize(_repeated_clientMcvList_codec);
       if (CurAudioEmotionState.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(CurAudioEmotionState);
       }
-      size += serverMcvList_.CalculateSize(_repeated_serverMcvList_codec);
-      if (HasMissionAudioSnapshot != false) {
-        size += 1 + 1;
+      if (CurSoundEffectState.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CurSoundEffectState);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -297,22 +297,22 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      serverMcvList_.Add(other.serverMcvList_);
+      clientMcvList_.Add(other.clientMcvList_);
       if (other.trackingMainMission_ != null) {
         if (trackingMainMission_ == null) {
           TrackingMainMission = new global::March7thHoney.Proto.MainMissionSnapshot();
         }
         TrackingMainMission.MergeFrom(other.TrackingMainMission);
       }
-      if (other.CurSoundEffectState.Length != 0) {
-        CurSoundEffectState = other.CurSoundEffectState;
+      if (other.HasMissionAudioSnapshot != false) {
+        HasMissionAudioSnapshot = other.HasMissionAudioSnapshot;
       }
-      clientMcvList_.Add(other.clientMcvList_);
       if (other.CurAudioEmotionState.Length != 0) {
         CurAudioEmotionState = other.CurAudioEmotionState;
       }
-      serverMcvList_.Add(other.serverMcvList_);
-      if (other.HasMissionAudioSnapshot != false) {
-        HasMissionAudioSnapshot = other.HasMissionAudioSnapshot;
+      if (other.CurSoundEffectState.Length != 0) {
+        CurSoundEffectState = other.CurSoundEffectState;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

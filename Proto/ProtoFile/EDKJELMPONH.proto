@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message EDKJELMPONH {
     uint32 progress = 2;
-    uint32 HEFFPONLEGO = 9;
+    uint32 HEFFPONLEGO = 12;
 }

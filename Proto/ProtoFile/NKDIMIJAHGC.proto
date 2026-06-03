@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "IKCONCOKNAN.proto";
-
-message NKDIMIJAHGC {
-    IKCONCOKNAN JFLIODDKJGJ = 7;
-}

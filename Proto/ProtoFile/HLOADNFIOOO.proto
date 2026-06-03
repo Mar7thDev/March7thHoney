@@ -3,8 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HLOADNFIOOO {
-    repeated uint32 DCKIGAHCNMJ = 10;
-    uint32 level_id = 13;
-    bool FJAKCBPAFMD = 14;
-    bool FANPGKBLIOB = 6;
+    repeated uint32 DCKIGAHCNMJ = 2;
+    uint32 level_id = 6;
+    bool FANPGKBLIOB = 11;
 }

@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtGYXRlU2hvcFNlbGxCdWZmQ3NSZXEucHJvdG8iVgoVRmF0ZVNob3BTZWxs",
-            "QnVmZkNzUmVxEhMKC0pESUZIUEFGUElEGAcgASgNEhMKC1BDSk9CRE5MRUFJ",
-            "GAwgASgNEhMKC1BNQ1BJRUNHRUhIGAkgASgIQhaqAhNNYXJjaDd0aEhvbmV5",
+            "QnVmZkNzUmVxEhMKC0pESUZIUEFGUElEGAggASgNEhMKC1BDSk9CRE5MRUFJ",
+            "GAsgASgNEhMKC1BNQ1BJRUNHRUhIGA0gASgIQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "JDIFHPAFPID" field.</summary>
-    public const int JDIFHPAFPIDFieldNumber = 7;
+    public const int JDIFHPAFPIDFieldNumber = 8;
     private uint jDIFHPAFPID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PCJOBDNLEAI" field.</summary>
-    public const int PCJOBDNLEAIFieldNumber = 12;
+    public const int PCJOBDNLEAIFieldNumber = 11;
     private uint pCJOBDNLEAI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PMCPIECGEHH" field.</summary>
-    public const int PMCPIECGEHHFieldNumber = 9;
+    public const int PMCPIECGEHHFieldNumber = 13;
     private bool pMCPIECGEHH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -168,16 +168,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (JDIFHPAFPID != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(JDIFHPAFPID);
       }
-      if (PMCPIECGEHH != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(PMCPIECGEHH);
-      }
       if (PCJOBDNLEAI != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(PCJOBDNLEAI);
+      }
+      if (PMCPIECGEHH != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(PMCPIECGEHH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,16 +190,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (JDIFHPAFPID != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(JDIFHPAFPID);
       }
-      if (PMCPIECGEHH != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(PMCPIECGEHH);
-      }
       if (PCJOBDNLEAI != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteUInt32(PCJOBDNLEAI);
+      }
+      if (PMCPIECGEHH != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(PMCPIECGEHH);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 64: {
             JDIFHPAFPID = input.ReadUInt32();
             break;
           }
-          case 72: {
-            PMCPIECGEHH = input.ReadBool();
+          case 88: {
+            PCJOBDNLEAI = input.ReadUInt32();
             break;
           }
-          case 96: {
-            PCJOBDNLEAI = input.ReadUInt32();
+          case 104: {
+            PMCPIECGEHH = input.ReadBool();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 64: {
             JDIFHPAFPID = input.ReadUInt32();
             break;
           }
-          case 72: {
-            PMCPIECGEHH = input.ReadBool();
+          case 88: {
+            PCJOBDNLEAI = input.ReadUInt32();
             break;
           }
-          case 96: {
-            PCJOBDNLEAI = input.ReadUInt32();
+          case 104: {
+            PMCPIECGEHH = input.ReadBool();
             break;
           }
         }

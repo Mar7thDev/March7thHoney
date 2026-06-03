@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtNb25vcG9seVJvbGxEaWNlU2NSc3AucHJvdG8iPQoVTW9ub3BvbHlSb2xs",
-            "RGljZVNjUnNwEhMKC0tLRUlQT09BSU1CGAggASgNEg8KB3JldGNvZGUYBiAB",
+            "RGljZVNjUnNwEg8KB3JldGNvZGUYASABKA0SEwoLcm9sbF9yZXN1bHQYDCAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyRollDiceScRsp), global::March7thHoney.Proto.MonopolyRollDiceScRsp.Parser, new[]{ "KKEIPOOAIMB", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyRollDiceScRsp), global::March7thHoney.Proto.MonopolyRollDiceScRsp.Parser, new[]{ "Retcode", "RollResult" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MonopolyRollDiceScRsp(MonopolyRollDiceScRsp other) : this() {
-      kKEIPOOAIMB_ = other.kKEIPOOAIMB_;
       retcode_ = other.retcode_;
+      rollResult_ = other.rollResult_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new MonopolyRollDiceScRsp(this);
     }
 
-    /// <summary>Field number for the "KKEIPOOAIMB" field.</summary>
-    public const int KKEIPOOAIMBFieldNumber = 8;
-    private uint kKEIPOOAIMB_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint KKEIPOOAIMB {
-      get { return kKEIPOOAIMB_; }
-      set {
-        kKEIPOOAIMB_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "roll_result" field.</summary>
+    public const int RollResultFieldNumber = 12;
+    private uint rollResult_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RollResult {
+      get { return rollResult_; }
+      set {
+        rollResult_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (KKEIPOOAIMB != other.KKEIPOOAIMB) return false;
       if (Retcode != other.Retcode) return false;
+      if (RollResult != other.RollResult) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (KKEIPOOAIMB != 0) hash ^= KKEIPOOAIMB.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (RollResult != 0) hash ^= RollResult.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
-      if (KKEIPOOAIMB != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(KKEIPOOAIMB);
+      if (RollResult != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(RollResult);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
-      if (KKEIPOOAIMB != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(KKEIPOOAIMB);
+      if (RollResult != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(RollResult);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (KKEIPOOAIMB != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KKEIPOOAIMB);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (RollResult != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RollResult);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.KKEIPOOAIMB != 0) {
-        KKEIPOOAIMB = other.KKEIPOOAIMB;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.RollResult != 0) {
+        RollResult = other.RollResult;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
-            KKEIPOOAIMB = input.ReadUInt32();
+          case 96: {
+            RollResult = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
-            KKEIPOOAIMB = input.ReadUInt32();
+          case 96: {
+            RollResult = input.ReadUInt32();
             break;
           }
         }

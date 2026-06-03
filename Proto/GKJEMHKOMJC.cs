@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHS0pFTUhLT01KQy5wcm90bxoaRmF0ZU1hc3RlclN0YXR1c1R5cGUucHJv",
-            "dG8aEUpPR0NDSU5FSEZKLnByb3RvIpQBCgtHS0pFTUhLT01KQxIhCgtDRkZD",
-            "TkVER0NKShgFIAMoCzIMLkpPR0NDSU5FSEZKEgwKBHJhbmsYAiABKA0SDgoG",
-            "bWF4X2hwGAQgASgFEhEKCWF2YXRhcl9pZBgGIAEoDRIKCgJocBgLIAEoBRIl",
-            "CgZzdGF0dXMYByABKA4yFS5GYXRlTWFzdGVyU3RhdHVzVHlwZUIWqgITTWFy",
+            "dG8aEUpPR0NDSU5FSEZKLnByb3RvIpQBCgtHS0pFTUhLT01KQxIMCgRyYW5r",
+            "GAUgASgNEgoKAmhwGAcgASgFEiEKC0NGRkNORURHQ0pKGAggAygLMgwuSk9H",
+            "Q0NJTkVIRkoSJQoGc3RhdHVzGAkgASgOMhUuRmF0ZU1hc3RlclN0YXR1c1R5",
+            "cGUSEQoJYXZhdGFyX2lkGAsgASgNEg4KBm1heF9ocBgOIAEoBUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FateMasterStatusTypeReflection.Descriptor, global::March7thHoney.Proto.JOGCCINEHFJReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GKJEMHKOMJC), global::March7thHoney.Proto.GKJEMHKOMJC.Parser, new[]{ "CFFCNEDGCJJ", "Rank", "MaxHp", "AvatarId", "Hp", "Status" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GKJEMHKOMJC), global::March7thHoney.Proto.GKJEMHKOMJC.Parser, new[]{ "Rank", "Hp", "CFFCNEDGCJJ", "Status", "AvatarId", "MaxHp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GKJEMHKOMJC(GKJEMHKOMJC other) : this() {
-      cFFCNEDGCJJ_ = other.cFFCNEDGCJJ_.Clone();
       rank_ = other.rank_;
-      maxHp_ = other.maxHp_;
-      avatarId_ = other.avatarId_;
       hp_ = other.hp_;
+      cFFCNEDGCJJ_ = other.cFFCNEDGCJJ_.Clone();
       status_ = other.status_;
+      avatarId_ = other.avatarId_;
+      maxHp_ = other.maxHp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,19 +90,8 @@ namespace March7thHoney.Proto {
       return new GKJEMHKOMJC(this);
     }
 
-    /// <summary>Field number for the "CFFCNEDGCJJ" field.</summary>
-    public const int CFFCNEDGCJJFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JOGCCINEHFJ> _repeated_cFFCNEDGCJJ_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.JOGCCINEHFJ.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JOGCCINEHFJ> cFFCNEDGCJJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.JOGCCINEHFJ>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.JOGCCINEHFJ> CFFCNEDGCJJ {
-      get { return cFFCNEDGCJJ_; }
-    }
-
     /// <summary>Field number for the "rank" field.</summary>
-    public const int RankFieldNumber = 2;
+    public const int RankFieldNumber = 5;
     private uint rank_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -113,32 +102,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "max_hp" field.</summary>
-    public const int MaxHpFieldNumber = 4;
-    private int maxHp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int MaxHp {
-      get { return maxHp_; }
-      set {
-        maxHp_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 6;
-    private uint avatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarId {
-      get { return avatarId_; }
-      set {
-        avatarId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "hp" field.</summary>
-    public const int HpFieldNumber = 11;
+    public const int HpFieldNumber = 7;
     private int hp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,8 +114,19 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "CFFCNEDGCJJ" field.</summary>
+    public const int CFFCNEDGCJJFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.JOGCCINEHFJ> _repeated_cFFCNEDGCJJ_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.JOGCCINEHFJ.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.JOGCCINEHFJ> cFFCNEDGCJJ_ = new pbc::RepeatedField<global::March7thHoney.Proto.JOGCCINEHFJ>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.JOGCCINEHFJ> CFFCNEDGCJJ {
+      get { return cFFCNEDGCJJ_; }
+    }
+
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 7;
+    public const int StatusFieldNumber = 9;
     private global::March7thHoney.Proto.FateMasterStatusType status_ = global::March7thHoney.Proto.FateMasterStatusType.KnglnmkngjdNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -158,6 +134,30 @@ namespace March7thHoney.Proto {
       get { return status_; }
       set {
         status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_id" field.</summary>
+    public const int AvatarIdFieldNumber = 11;
+    private uint avatarId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvatarId {
+      get { return avatarId_; }
+      set {
+        avatarId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_hp" field.</summary>
+    public const int MaxHpFieldNumber = 14;
+    private int maxHp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int MaxHp {
+      get { return maxHp_; }
+      set {
+        maxHp_ = value;
       }
     }
 
@@ -176,12 +176,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!cFFCNEDGCJJ_.Equals(other.cFFCNEDGCJJ_)) return false;
       if (Rank != other.Rank) return false;
-      if (MaxHp != other.MaxHp) return false;
-      if (AvatarId != other.AvatarId) return false;
       if (Hp != other.Hp) return false;
+      if(!cFFCNEDGCJJ_.Equals(other.cFFCNEDGCJJ_)) return false;
       if (Status != other.Status) return false;
+      if (AvatarId != other.AvatarId) return false;
+      if (MaxHp != other.MaxHp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -189,12 +189,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= cFFCNEDGCJJ_.GetHashCode();
       if (Rank != 0) hash ^= Rank.GetHashCode();
-      if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
-      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (Hp != 0) hash ^= Hp.GetHashCode();
+      hash ^= cFFCNEDGCJJ_.GetHashCode();
       if (Status != global::March7thHoney.Proto.FateMasterStatusType.KnglnmkngjdNlcdgipgfdj) hash ^= Status.GetHashCode();
+      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (MaxHp != 0) hash ^= MaxHp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -214,25 +214,25 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Rank != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(40);
         output.WriteUInt32(Rank);
       }
-      if (MaxHp != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(MaxHp);
+      if (Hp != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Hp);
       }
       cFFCNEDGCJJ_.WriteTo(output, _repeated_cFFCNEDGCJJ_codec);
-      if (AvatarId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(AvatarId);
-      }
       if (Status != global::March7thHoney.Proto.FateMasterStatusType.KnglnmkngjdNlcdgipgfdj) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteEnum((int) Status);
       }
-      if (Hp != 0) {
+      if (AvatarId != 0) {
         output.WriteRawTag(88);
-        output.WriteInt32(Hp);
+        output.WriteUInt32(AvatarId);
+      }
+      if (MaxHp != 0) {
+        output.WriteRawTag(112);
+        output.WriteInt32(MaxHp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -245,25 +245,25 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Rank != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(40);
         output.WriteUInt32(Rank);
       }
-      if (MaxHp != 0) {
-        output.WriteRawTag(32);
-        output.WriteInt32(MaxHp);
+      if (Hp != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Hp);
       }
       cFFCNEDGCJJ_.WriteTo(ref output, _repeated_cFFCNEDGCJJ_codec);
-      if (AvatarId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(AvatarId);
-      }
       if (Status != global::March7thHoney.Proto.FateMasterStatusType.KnglnmkngjdNlcdgipgfdj) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteEnum((int) Status);
       }
-      if (Hp != 0) {
+      if (AvatarId != 0) {
         output.WriteRawTag(88);
-        output.WriteInt32(Hp);
+        output.WriteUInt32(AvatarId);
+      }
+      if (MaxHp != 0) {
+        output.WriteRawTag(112);
+        output.WriteInt32(MaxHp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -275,21 +275,21 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += cFFCNEDGCJJ_.CalculateSize(_repeated_cFFCNEDGCJJ_codec);
       if (Rank != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
-      }
-      if (MaxHp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHp);
-      }
-      if (AvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
       if (Hp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Hp);
       }
+      size += cFFCNEDGCJJ_.CalculateSize(_repeated_cFFCNEDGCJJ_codec);
       if (Status != global::March7thHoney.Proto.FateMasterStatusType.KnglnmkngjdNlcdgipgfdj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
+      }
+      if (AvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      }
+      if (MaxHp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxHp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -303,21 +303,21 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      cFFCNEDGCJJ_.Add(other.cFFCNEDGCJJ_);
       if (other.Rank != 0) {
         Rank = other.Rank;
-      }
-      if (other.MaxHp != 0) {
-        MaxHp = other.MaxHp;
-      }
-      if (other.AvatarId != 0) {
-        AvatarId = other.AvatarId;
       }
       if (other.Hp != 0) {
         Hp = other.Hp;
       }
+      cFFCNEDGCJJ_.Add(other.cFFCNEDGCJJ_);
       if (other.Status != global::March7thHoney.Proto.FateMasterStatusType.KnglnmkngjdNlcdgipgfdj) {
         Status = other.Status;
+      }
+      if (other.AvatarId != 0) {
+        AvatarId = other.AvatarId;
+      }
+      if (other.MaxHp != 0) {
+        MaxHp = other.MaxHp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -338,28 +338,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 40: {
             Rank = input.ReadUInt32();
             break;
           }
-          case 32: {
-            MaxHp = input.ReadInt32();
+          case 56: {
+            Hp = input.ReadInt32();
             break;
           }
-          case 42: {
+          case 66: {
             cFFCNEDGCJJ_.AddEntriesFrom(input, _repeated_cFFCNEDGCJJ_codec);
             break;
           }
-          case 48: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 72: {
             Status = (global::March7thHoney.Proto.FateMasterStatusType) input.ReadEnum();
             break;
           }
           case 88: {
-            Hp = input.ReadInt32();
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            MaxHp = input.ReadInt32();
             break;
           }
         }
@@ -381,28 +381,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 40: {
             Rank = input.ReadUInt32();
             break;
           }
-          case 32: {
-            MaxHp = input.ReadInt32();
+          case 56: {
+            Hp = input.ReadInt32();
             break;
           }
-          case 42: {
+          case 66: {
             cFFCNEDGCJJ_.AddEntriesFrom(ref input, _repeated_cFFCNEDGCJJ_codec);
             break;
           }
-          case 48: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 72: {
             Status = (global::March7thHoney.Proto.FateMasterStatusType) input.ReadEnum();
             break;
           }
           case 88: {
-            Hp = input.ReadInt32();
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            MaxHp = input.ReadInt32();
             break;
           }
         }

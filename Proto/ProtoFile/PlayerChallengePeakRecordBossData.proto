@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengeLineupList.proto";
 
 message PlayerChallengePeakRecordBossData {
-    ChallengeLineupList lineup = 13;
-    repeated uint32 MCJNLLBBDHN = 5;
-    bool HAMDKIHGKGO = 1;
-    bool CFLDOMPACKI = 2;
-    uint32 best_cycle_count = 3;
-    uint32 DJFGDMIDEHJ = 10;
-    uint32 peak_id = 7;
-    uint32 buff_id = 4;
+    uint32 DJFGDMIDEHJ = 2;
+    bool HAMDKIHGKGO = 5;
+    repeated uint32 MCJNLLBBDHN = 7;
+    uint32 peak_id = 9;
+    uint32 buff_id = 10;
+    uint32 best_cycle_count = 13;
+    bool CFLDOMPACKI = 14;
+    ChallengeLineupList lineup = 15;
 }

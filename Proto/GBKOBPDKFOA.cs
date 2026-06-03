@@ -26,9 +26,9 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChFHQktPQlBES0ZPQS5wcm90bxoRR0pKTk5CS0NKS0YucHJvdG8aEUhPS01O",
             "SU5KUEJQLnByb3RvGhFOSlBKS0pCTUtHQi5wcm90byKLAQoLR0JLT0JQREtG",
-            "T0ESIwoLRk5KQkZQQUxPQU8YDiABKAsyDC5HSkpOTkJLQ0pLRkgAEiMKC1BB",
-            "R1BOT0tMTk9NGAEgASgLMgwuTkpQSktKQk1LR0JIABIjCgtMQ01BRERJTUlP",
-            "ThgJIAEoCzIMLkhPS01OSU5KUEJQSABCDQoLRkpJQU5ITUFCQUJCFqoCE01h",
+            "T0ESIwoLRk5KQkZQQUxPQU8YAiABKAsyDC5HSkpOTkJLQ0pLRkgAEiMKC1BB",
+            "R1BOT0tMTk9NGAUgASgLMgwuTkpQSktKQk1LR0JIABIjCgtMQ01BRERJTUlP",
+            "ThgHIAEoCzIMLkhPS01OSU5KUEJQSABCDQoLRkpJQU5ITUFCQUJCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GJJNNBKCJKFReflection.Descriptor, global::March7thHoney.Proto.HOKMNINJPBPReflection.Descriptor, global::March7thHoney.Proto.NJPJKJBMKGBReflection.Descriptor, },
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FNJBFPALOAO" field.</summary>
-    public const int FNJBFPALOAOFieldNumber = 14;
+    public const int FNJBFPALOAOFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.GJJNNBKCJKF FNJBFPALOAO {
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PAGPNOKLNOM" field.</summary>
-    public const int PAGPNOKLNOMFieldNumber = 1;
+    public const int PAGPNOKLNOMFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.NJPJKJBMKGB PAGPNOKLNOM {
@@ -121,7 +121,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LCMADDIMION" field.</summary>
-    public const int LCMADDIMIONFieldNumber = 9;
+    public const int LCMADDIMIONFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.HOKMNINJPBP LCMADDIMION {
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "FJIANHMABAB" oneof.</summary>
     public enum FJIANHMABABOneofCase {
       None = 0,
-      FNJBFPALOAO = 14,
-      PAGPNOKLNOM = 1,
-      LCMADDIMION = 9,
+      FNJBFPALOAO = 2,
+      PAGPNOKLNOM = 5,
+      LCMADDIMION = 7,
     }
     private FJIANHMABABOneofCase fJIANHMABABCase_ = FJIANHMABABOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -202,17 +202,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (fJIANHMABABCase_ == FJIANHMABABOneofCase.FNJBFPALOAO) {
+        output.WriteRawTag(18);
+        output.WriteMessage(FNJBFPALOAO);
+      }
       if (fJIANHMABABCase_ == FJIANHMABABOneofCase.PAGPNOKLNOM) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(42);
         output.WriteMessage(PAGPNOKLNOM);
       }
       if (fJIANHMABABCase_ == FJIANHMABABOneofCase.LCMADDIMION) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(58);
         output.WriteMessage(LCMADDIMION);
-      }
-      if (fJIANHMABABCase_ == FJIANHMABABOneofCase.FNJBFPALOAO) {
-        output.WriteRawTag(114);
-        output.WriteMessage(FNJBFPALOAO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -224,17 +224,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (fJIANHMABABCase_ == FJIANHMABABOneofCase.FNJBFPALOAO) {
+        output.WriteRawTag(18);
+        output.WriteMessage(FNJBFPALOAO);
+      }
       if (fJIANHMABABCase_ == FJIANHMABABOneofCase.PAGPNOKLNOM) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(42);
         output.WriteMessage(PAGPNOKLNOM);
       }
       if (fJIANHMABABCase_ == FJIANHMABABOneofCase.LCMADDIMION) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(58);
         output.WriteMessage(LCMADDIMION);
-      }
-      if (fJIANHMABABCase_ == FJIANHMABABOneofCase.FNJBFPALOAO) {
-        output.WriteRawTag(114);
-        output.WriteMessage(FNJBFPALOAO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -307,7 +307,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 18: {
+            global::March7thHoney.Proto.GJJNNBKCJKF subBuilder = new global::March7thHoney.Proto.GJJNNBKCJKF();
+            if (fJIANHMABABCase_ == FJIANHMABABOneofCase.FNJBFPALOAO) {
+              subBuilder.MergeFrom(FNJBFPALOAO);
+            }
+            input.ReadMessage(subBuilder);
+            FNJBFPALOAO = subBuilder;
+            break;
+          }
+          case 42: {
             global::March7thHoney.Proto.NJPJKJBMKGB subBuilder = new global::March7thHoney.Proto.NJPJKJBMKGB();
             if (fJIANHMABABCase_ == FJIANHMABABOneofCase.PAGPNOKLNOM) {
               subBuilder.MergeFrom(PAGPNOKLNOM);
@@ -316,22 +325,13 @@ namespace March7thHoney.Proto {
             PAGPNOKLNOM = subBuilder;
             break;
           }
-          case 74: {
+          case 58: {
             global::March7thHoney.Proto.HOKMNINJPBP subBuilder = new global::March7thHoney.Proto.HOKMNINJPBP();
             if (fJIANHMABABCase_ == FJIANHMABABOneofCase.LCMADDIMION) {
               subBuilder.MergeFrom(LCMADDIMION);
             }
             input.ReadMessage(subBuilder);
             LCMADDIMION = subBuilder;
-            break;
-          }
-          case 114: {
-            global::March7thHoney.Proto.GJJNNBKCJKF subBuilder = new global::March7thHoney.Proto.GJJNNBKCJKF();
-            if (fJIANHMABABCase_ == FJIANHMABABOneofCase.FNJBFPALOAO) {
-              subBuilder.MergeFrom(FNJBFPALOAO);
-            }
-            input.ReadMessage(subBuilder);
-            FNJBFPALOAO = subBuilder;
             break;
           }
         }
@@ -353,7 +353,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 18: {
+            global::March7thHoney.Proto.GJJNNBKCJKF subBuilder = new global::March7thHoney.Proto.GJJNNBKCJKF();
+            if (fJIANHMABABCase_ == FJIANHMABABOneofCase.FNJBFPALOAO) {
+              subBuilder.MergeFrom(FNJBFPALOAO);
+            }
+            input.ReadMessage(subBuilder);
+            FNJBFPALOAO = subBuilder;
+            break;
+          }
+          case 42: {
             global::March7thHoney.Proto.NJPJKJBMKGB subBuilder = new global::March7thHoney.Proto.NJPJKJBMKGB();
             if (fJIANHMABABCase_ == FJIANHMABABOneofCase.PAGPNOKLNOM) {
               subBuilder.MergeFrom(PAGPNOKLNOM);
@@ -362,22 +371,13 @@ namespace March7thHoney.Proto {
             PAGPNOKLNOM = subBuilder;
             break;
           }
-          case 74: {
+          case 58: {
             global::March7thHoney.Proto.HOKMNINJPBP subBuilder = new global::March7thHoney.Proto.HOKMNINJPBP();
             if (fJIANHMABABCase_ == FJIANHMABABOneofCase.LCMADDIMION) {
               subBuilder.MergeFrom(LCMADDIMION);
             }
             input.ReadMessage(subBuilder);
             LCMADDIMION = subBuilder;
-            break;
-          }
-          case 114: {
-            global::March7thHoney.Proto.GJJNNBKCJKF subBuilder = new global::March7thHoney.Proto.GJJNNBKCJKF();
-            if (fJIANHMABABCase_ == FJIANHMABABOneofCase.FNJBFPALOAO) {
-              subBuilder.MergeFrom(FNJBFPALOAO);
-            }
-            input.ReadMessage(subBuilder);
-            FNJBFPALOAO = subBuilder;
             break;
           }
         }

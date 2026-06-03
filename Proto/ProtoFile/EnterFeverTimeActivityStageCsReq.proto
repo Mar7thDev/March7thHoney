@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KPNHGDGLICN.proto";
 
 message EnterFeverTimeActivityStageCsReq {
-    repeated KPNHGDGLICN avatar_list = 15;
-    uint32 CJHDABDKGHP = 11;
-    uint32 id = 6;
-    uint32 MFLAIMHFABP = 1;
+    repeated KPNHGDGLICN avatar_list = 2;
+    uint32 id = 5;
+    uint32 CJHDABDKGHP = 8;
+    uint32 MFLAIMHFABP = 11;
 }

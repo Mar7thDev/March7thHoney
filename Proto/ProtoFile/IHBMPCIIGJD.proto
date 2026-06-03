@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KMCCCOKIOFD.proto";
 
 message IHBMPCIIGJD {
-    repeated KMCCCOKIOFD buff_list = 1396;
-    uint32 GDNEHLEOMOM = 11;
-    uint32 OHCCEFIALGL = 5;
-    bool BBBINMPJCGI = 7;
-    bool MNAOCHOKFFJ = 10;
-    bool AALCCPJCBME = 1;
-    bool DBMFBJCHNKN = 2;
-    uint32 EILBAOLILAM = 15;
+    bool DBMFBJCHNKN = 1;
+    bool can_interact = 4;
+    uint32 GDNEHLEOMOM = 5;
+    uint32 OHCCEFIALGL = 6;
+    bool BBBINMPJCGI = 8;
+    uint32 EILBAOLILAM = 9;
+    bool is_locked = 12;
+    repeated KMCCCOKIOFD buff_list = 1568;
 }

@@ -7,12 +7,12 @@ import "KKIACMJGIKN.proto";
 import "NACEGIAMJMG.proto";
 
 message EndDrinkMakerSequenceScRsp {
-    ItemList reward = 3;
-    KKIACMJGIKN ENPEAKNPNML = 9;
-    repeated NACEGIAMJMG ADNJJHNMAAJ = 2;
-    uint32 level = 13;
-    uint32 exp = 14;
-    uint32 FHPKJONKHAC = 1;
-    uint32 retcode = 7;
-    uint32 BFHGACCOGJD = 11;
+    repeated NACEGIAMJMG ADNJJHNMAAJ = 7;
+    uint32 exp = 9;
+    uint32 BFHGACCOGJD = 10;
+    ItemList reward = 11;
+    uint32 FHPKJONKHAC = 12;
+    KKIACMJGIKN guest = 13;
+    uint32 level = 14;
+    uint32 retcode = 15;
 }

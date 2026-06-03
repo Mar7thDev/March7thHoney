@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message UnlockAvatarSkinScNotify {
-    uint32 skin_id = 4;
+    uint32 skin_id = 12;
 }

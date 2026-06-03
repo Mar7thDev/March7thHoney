@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FightFestUnlockSkillNotify {
-    uint32 AMAGKDCBFGL = 8;
+    uint32 AMAGKDCBFGL = 11;
 }

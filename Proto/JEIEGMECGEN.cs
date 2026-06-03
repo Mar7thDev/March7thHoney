@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFKRUlFR01FQ0dFTi5wcm90byJ1CgtKRUlFR01FQ0dFThIyCgtOQURHSERK",
-            "Q0hQSRgFIAMoCzIdLkpFSUVHTUVDR0VOLk5BREdIREpDSFBJRW50cnkaMgoQ",
+            "Q0hQSRgHIAMoCzIdLkpFSUVHTUVDR0VOLk5BREdIREpDSFBJRW50cnkaMgoQ",
             "TkFER0hESkNIUElFbnRyeRILCgNrZXkYASABKA0SDQoFdmFsdWUYAiABKA06",
             "AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NADGHDJCHPI" field.</summary>
-    public const int NADGHDJCHPIFieldNumber = 5;
+    public const int NADGHDJCHPIFieldNumber = 7;
     private static readonly pbc::MapField<uint, uint>.Codec _map_nADGHDJCHPI_codec
-        = new pbc::MapField<uint, uint>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForUInt32(16, 0), 42);
+        = new pbc::MapField<uint, uint>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForUInt32(16, 0), 58);
     private readonly pbc::MapField<uint, uint> nADGHDJCHPI_ = new pbc::MapField<uint, uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 58: {
             nADGHDJCHPI_.AddEntriesFrom(input, _map_nADGHDJCHPI_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 58: {
             nADGHDJCHPI_.AddEntriesFrom(ref input, _map_nADGHDJCHPI_codec);
             break;
           }

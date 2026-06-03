@@ -2,13 +2,13 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
 import "BCIMOPDDKHH.proto";
+import "KVP.proto";
 
 message StartDungeonScRsp {
-    repeated BCIMOPDDKHH KMMBNFIFALA = 10;
-    repeated APAMFCKFHLL ENCINPIHHDF = 14;
-    repeated APAMFCKFHLL COLOHMBFKIH = 13;
-    uint32 EICEKDBENKM = 11;
-    uint32 retcode = 12;
+    repeated BCIMOPDDKHH KMMBNFIFALA = 2;
+    uint32 EICEKDBENKM = 3;
+    uint32 retcode = 7;
+    repeated KVP COLOHMBFKIH = 8;
+    repeated KVP ENCINPIHHDF = 15;
 }

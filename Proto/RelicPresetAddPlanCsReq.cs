@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1SZWxpY1ByZXNldEFkZFBsYW5Dc1JlcS5wcm90bxoRRkRKS0xKR0RDSUQu",
             "cHJvdG8aH1JlbGljUHJlc2V0UGxhblNvdXJjZVR5cGUucHJvdG8ioQEKF1Jl",
-            "bGljUHJlc2V0QWRkUGxhbkNzUmVxEhEKCXJlbGljX2lkcxgJIAMoDRIMCgRu",
-            "YW1lGAIgASgJEi8KC05GTUtPRk5FS0xBGAEgASgOMhouUmVsaWNQcmVzZXRQ",
-            "bGFuU291cmNlVHlwZRIRCglhdmF0YXJfaWQYByABKA0SIQoLTExKSkNPT0tB",
-            "TkgYDSABKA4yDC5GREpLTEpHRENJREIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "bGljUHJlc2V0QWRkUGxhbkNzUmVxEhEKCWF2YXRhcl9pZBgEIAEoDRIMCgRu",
+            "YW1lGAUgASgJEi8KC3NvdXJjZV90eXBlGAggASgOMhouUmVsaWNQcmVzZXRQ",
+            "bGFuU291cmNlVHlwZRIRCglyZWxpY19pZHMYDSADKA0SIQoLTExKSkNPT0tB",
+            "TkgYDiABKA4yDC5GREpLTEpHRENJREIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FDJKLJGDCIDReflection.Descriptor, global::March7thHoney.Proto.RelicPresetPlanSourceTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicPresetAddPlanCsReq), global::March7thHoney.Proto.RelicPresetAddPlanCsReq.Parser, new[]{ "RelicIds", "Name", "NFMKOFNEKLA", "AvatarId", "LLJJCOOKANH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicPresetAddPlanCsReq), global::March7thHoney.Proto.RelicPresetAddPlanCsReq.Parser, new[]{ "AvatarId", "Name", "SourceType", "RelicIds", "LLJJCOOKANH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,10 +76,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RelicPresetAddPlanCsReq(RelicPresetAddPlanCsReq other) : this() {
-      relicIds_ = other.relicIds_.Clone();
-      name_ = other.name_;
-      nFMKOFNEKLA_ = other.nFMKOFNEKLA_;
       avatarId_ = other.avatarId_;
+      name_ = other.name_;
+      sourceType_ = other.sourceType_;
+      relicIds_ = other.relicIds_.Clone();
       lLJJCOOKANH_ = other.lLJJCOOKANH_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -90,43 +90,8 @@ namespace March7thHoney.Proto {
       return new RelicPresetAddPlanCsReq(this);
     }
 
-    /// <summary>Field number for the "relic_ids" field.</summary>
-    public const int RelicIdsFieldNumber = 9;
-    private static readonly pb::FieldCodec<uint> _repeated_relicIds_codec
-        = pb::FieldCodec.ForUInt32(74);
-    private readonly pbc::RepeatedField<uint> relicIds_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> RelicIds {
-      get { return relicIds_; }
-    }
-
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 2;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "NFMKOFNEKLA" field.</summary>
-    public const int NFMKOFNEKLAFieldNumber = 1;
-    private global::March7thHoney.Proto.RelicPresetPlanSourceType nFMKOFNEKLA_ = global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.RelicPresetPlanSourceType NFMKOFNEKLA {
-      get { return nFMKOFNEKLA_; }
-      set {
-        nFMKOFNEKLA_ = value;
-      }
-    }
-
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 7;
+    public const int AvatarIdFieldNumber = 4;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,8 +102,43 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 5;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "source_type" field.</summary>
+    public const int SourceTypeFieldNumber = 8;
+    private global::March7thHoney.Proto.RelicPresetPlanSourceType sourceType_ = global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.RelicPresetPlanSourceType SourceType {
+      get { return sourceType_; }
+      set {
+        sourceType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "relic_ids" field.</summary>
+    public const int RelicIdsFieldNumber = 13;
+    private static readonly pb::FieldCodec<uint> _repeated_relicIds_codec
+        = pb::FieldCodec.ForUInt32(106);
+    private readonly pbc::RepeatedField<uint> relicIds_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> RelicIds {
+      get { return relicIds_; }
+    }
+
     /// <summary>Field number for the "LLJJCOOKANH" field.</summary>
-    public const int LLJJCOOKANHFieldNumber = 13;
+    public const int LLJJCOOKANHFieldNumber = 14;
     private global::March7thHoney.Proto.FDJKLJGDCID lLJJCOOKANH_ = global::March7thHoney.Proto.FDJKLJGDCID.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -164,10 +164,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!relicIds_.Equals(other.relicIds_)) return false;
-      if (Name != other.Name) return false;
-      if (NFMKOFNEKLA != other.NFMKOFNEKLA) return false;
       if (AvatarId != other.AvatarId) return false;
+      if (Name != other.Name) return false;
+      if (SourceType != other.SourceType) return false;
+      if(!relicIds_.Equals(other.relicIds_)) return false;
       if (LLJJCOOKANH != other.LLJJCOOKANH) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -176,10 +176,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= relicIds_.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (NFMKOFNEKLA != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) hash ^= NFMKOFNEKLA.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (SourceType != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) hash ^= SourceType.GetHashCode();
+      hash ^= relicIds_.GetHashCode();
       if (LLJJCOOKANH != global::March7thHoney.Proto.FDJKLJGDCID.Nlcdgipgfdj) hash ^= LLJJCOOKANH.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -199,21 +199,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NFMKOFNEKLA != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) NFMKOFNEKLA);
+      if (AvatarId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(AvatarId);
       }
       if (Name.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(42);
         output.WriteString(Name);
       }
-      if (AvatarId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(AvatarId);
+      if (SourceType != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) SourceType);
       }
       relicIds_.WriteTo(output, _repeated_relicIds_codec);
       if (LLJJCOOKANH != global::March7thHoney.Proto.FDJKLJGDCID.Nlcdgipgfdj) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(112);
         output.WriteEnum((int) LLJJCOOKANH);
       }
       if (_unknownFields != null) {
@@ -226,21 +226,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NFMKOFNEKLA != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) NFMKOFNEKLA);
+      if (AvatarId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(AvatarId);
       }
       if (Name.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(42);
         output.WriteString(Name);
       }
-      if (AvatarId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(AvatarId);
+      if (SourceType != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) SourceType);
       }
       relicIds_.WriteTo(ref output, _repeated_relicIds_codec);
       if (LLJJCOOKANH != global::March7thHoney.Proto.FDJKLJGDCID.Nlcdgipgfdj) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(112);
         output.WriteEnum((int) LLJJCOOKANH);
       }
       if (_unknownFields != null) {
@@ -253,16 +253,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += relicIds_.CalculateSize(_repeated_relicIds_codec);
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      if (NFMKOFNEKLA != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) NFMKOFNEKLA);
-      }
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (SourceType != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) SourceType);
+      }
+      size += relicIds_.CalculateSize(_repeated_relicIds_codec);
       if (LLJJCOOKANH != global::March7thHoney.Proto.FDJKLJGDCID.Nlcdgipgfdj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LLJJCOOKANH);
       }
@@ -278,16 +278,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      relicIds_.Add(other.relicIds_);
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      if (other.NFMKOFNEKLA != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) {
-        NFMKOFNEKLA = other.NFMKOFNEKLA;
-      }
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
       }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.SourceType != global::March7thHoney.Proto.RelicPresetPlanSourceType.HnbgmoihoanNlcdgipgfdj) {
+        SourceType = other.SourceType;
+      }
+      relicIds_.Add(other.relicIds_);
       if (other.LLJJCOOKANH != global::March7thHoney.Proto.FDJKLJGDCID.Nlcdgipgfdj) {
         LLJJCOOKANH = other.LLJJCOOKANH;
       }
@@ -310,24 +310,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            NFMKOFNEKLA = (global::March7thHoney.Proto.RelicPresetPlanSourceType) input.ReadEnum();
-            break;
-          }
-          case 18: {
-            Name = input.ReadString();
-            break;
-          }
-          case 56: {
+          case 32: {
             AvatarId = input.ReadUInt32();
             break;
           }
-          case 74:
-          case 72: {
+          case 42: {
+            Name = input.ReadString();
+            break;
+          }
+          case 64: {
+            SourceType = (global::March7thHoney.Proto.RelicPresetPlanSourceType) input.ReadEnum();
+            break;
+          }
+          case 106:
+          case 104: {
             relicIds_.AddEntriesFrom(input, _repeated_relicIds_codec);
             break;
           }
-          case 104: {
+          case 112: {
             LLJJCOOKANH = (global::March7thHoney.Proto.FDJKLJGDCID) input.ReadEnum();
             break;
           }
@@ -350,24 +350,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            NFMKOFNEKLA = (global::March7thHoney.Proto.RelicPresetPlanSourceType) input.ReadEnum();
-            break;
-          }
-          case 18: {
-            Name = input.ReadString();
-            break;
-          }
-          case 56: {
+          case 32: {
             AvatarId = input.ReadUInt32();
             break;
           }
-          case 74:
-          case 72: {
+          case 42: {
+            Name = input.ReadString();
+            break;
+          }
+          case 64: {
+            SourceType = (global::March7thHoney.Proto.RelicPresetPlanSourceType) input.ReadEnum();
+            break;
+          }
+          case 106:
+          case 104: {
             relicIds_.AddEntriesFrom(ref input, _repeated_relicIds_codec);
             break;
           }
-          case 104: {
+          case 112: {
             LLJJCOOKANH = (global::March7thHoney.Proto.FDJKLJGDCID) input.ReadEnum();
             break;
           }

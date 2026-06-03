@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JFKAOMCJIKK.proto";
 
 message FateSyncPendingActionScNotify {
-    JFKAOMCJIKK FMIGOKIDKJL = 15;
+    JFKAOMCJIKK FMIGOKIDKJL = 6;
 }

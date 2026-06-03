@@ -7,9 +7,9 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message EnterRogueMapRoomScRsp {
-    FHEGNOPNICH JNKLNLKHGBB = 2;
+    FHEGNOPNICH JNKLNLKHGBB = 9;
     LineupInfo lineup = 10;
-    SceneInfo scene = 9;
-    uint32 retcode = 15;
-    uint32 ANHDBMOPGDC = 1;
+    uint32 retcode = 11;
+    SceneInfo scene = 12;
+    uint32 ANHDBMOPGDC = 15;
 }

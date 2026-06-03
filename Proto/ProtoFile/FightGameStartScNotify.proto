@@ -6,6 +6,6 @@ import "BFBHKJLJJBJ.proto";
 import "LMLNNHKJEIP.proto";
 
 message FightGameStartScNotify {
-    BFBHKJLJJBJ KAEDKFOMADJ = 12;
     repeated LMLNNHKJEIP DFLEOIGPLNM = 1;
+    BFBHKJLJJBJ KAEDKFOMADJ = 11;
 }

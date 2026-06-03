@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EnterEraFlipperDataScRsp {
-    uint32 retcode = 11;
-    uint32 LJHKNKFLGDE = 5;
+    uint32 region_id = 6;
+    uint32 retcode = 7;
 }

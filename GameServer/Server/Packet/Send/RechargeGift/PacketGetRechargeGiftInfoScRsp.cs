@@ -18,10 +18,10 @@ public class PacketGetRechargeGiftInfoScRsp : BasePacket
             {
                 new JBNGCJJDLHL
                 {
-                    IFEPJHGNCOI = 1777112805,
+                    StartTime = 1777112805,
                     EndTime = 1777976805,
                     GiftType = 16,
-                    CFNNMOCBBFM =
+                    StatusList =
                     {
                         new IJHPILBBHDI { Status = GiftRecordStatus.Acbhglibjbg },
                         new IJHPILBBHDI { Index = 2, Status = GiftRecordStatus.Acbhglibjbg },

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGRUROSUhDQUhHUC5wcm90byI3CgtGRUROSUhDQUhHUBITCgtGQ09LT0RI",
-            "R0VLTxgCIAMoDRITCgtHRU1IS0ZDRkNDQxgPIAMoDUIWqgITTWFyY2g3dGhI",
+            "R0VLTxgGIAMoDRITCgtHRU1IS0ZDRkNDQxgMIAMoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FCOKODHGEKO" field.</summary>
-    public const int FCOKODHGEKOFieldNumber = 2;
+    public const int FCOKODHGEKOFieldNumber = 6;
     private static readonly pb::FieldCodec<uint> _repeated_fCOKODHGEKO_codec
-        = pb::FieldCodec.ForUInt32(18);
+        = pb::FieldCodec.ForUInt32(50);
     private readonly pbc::RepeatedField<uint> fCOKODHGEKO_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,9 +95,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GEMHKFCFCCC" field.</summary>
-    public const int GEMHKFCFCCCFieldNumber = 15;
+    public const int GEMHKFCFCCCFieldNumber = 12;
     private static readonly pb::FieldCodec<uint> _repeated_gEMHKFCFCCC_codec
-        = pb::FieldCodec.ForUInt32(122);
+        = pb::FieldCodec.ForUInt32(98);
     private readonly pbc::RepeatedField<uint> gEMHKFCFCCC_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -208,13 +208,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18:
-          case 16: {
+          case 50:
+          case 48: {
             fCOKODHGEKO_.AddEntriesFrom(input, _repeated_fCOKODHGEKO_codec);
             break;
           }
-          case 122:
-          case 120: {
+          case 98:
+          case 96: {
             gEMHKFCFCCC_.AddEntriesFrom(input, _repeated_gEMHKFCFCCC_codec);
             break;
           }
@@ -237,13 +237,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18:
-          case 16: {
+          case 50:
+          case 48: {
             fCOKODHGEKO_.AddEntriesFrom(ref input, _repeated_fCOKODHGEKO_codec);
             break;
           }
-          case 122:
-          case 120: {
+          case 98:
+          case 96: {
             gEMHKFCFCCC_.AddEntriesFrom(ref input, _repeated_gEMHKFCFCCC_codec);
             break;
           }

@@ -39,12 +39,27 @@ internal class QueryGatewayHandler
 
         var accessVerificationMessage = GetAccessVerificationMessage(req);
         if (!string.IsNullOrWhiteSpace(accessVerificationMessage))
-            gateServer.Msg = accessVerificationMessage;
+            gateServer.LoginWhiteMsg = accessVerificationMessage;
 
-        gateServer.Unk1 = true;
-        gateServer.Unk2 = true;
-        gateServer.MdkResVersion = "0";
-        gateServer.IfixVersion = "0";
+        // 4.4: GateServer 旧的 Unk1/Unk2/MdkResVersion/IfixVersion 字段已移除；msg 改名为 LoginWhiteMsg。
+        // 4.4 客户端需要这些 bool 标志才能正常进门；唯独 UseTcp 必须保持关闭 (星铁私服走 KCP，UseTcp=true 才是 TCP)。
+        gateServer.EnableDesignDataBundleVersionUpdate = true;
+        gateServer.EnableVideoBundleVersionUpdate = true;
+        gateServer.WatermarkEnable = true;
+        gateServer.EnableUploadBattleLog = true;
+        gateServer.FtcSwitch = true;
+        gateServer.EnableSaveReplayFile = true;
+        gateServer.AndroidMiddlePackageEnable = true;
+        gateServer.CloseRedeemCode = true;
+        gateServer.IosExam = true;
+        gateServer.MtpSwitch = true;
+        gateServer.EventTrackingOpen = true;
+        gateServer.ForbidRecharge = true;
+        gateServer.NetworkDiagnostic = true;
+        gateServer.NNFLHCGDGJM = true;
+        gateServer.FMLPNNMJDIC = true;
+        // gateServer.UseTcp 保持默认 false = KCP
+
         if (ConfigManager.Config.GameServer.UsePacketEncryption)
             gateServer.ClientSecretKey = Convert.ToBase64String(Crypto.ClientSecretKey!.GetBytes());
 
@@ -76,7 +91,7 @@ internal class QueryGatewayHandler
         Data = Convert.ToBase64String(bytes);
 
         Debug(
-            $"query_gateway result: protoBytes={bytes.Length}, base64Length={Data.Length}, retcode={gateServer.Retcode}, msg_len={gateServer.Msg.Length}");
+            $"query_gateway result: protoBytes={bytes.Length}, base64Length={Data.Length}, retcode={gateServer.Retcode}, msg_len={gateServer.LoginWhiteMsg.Length}");
         Debug($"query_gateway gate: region={gateServer.RegionName} ip={gateServer.Ip} port={gateServer.Port} encryption={(gateServer.ClientSecretKey?.Length ?? 0) > 0}");
         Debug($"query_gateway hotfix: ab={gateServer.AssetBundleUrl} exRes={gateServer.ExResourceUrl} lua={gateServer.LuaUrl} ifix={gateServer.IfixUrl}");
     }

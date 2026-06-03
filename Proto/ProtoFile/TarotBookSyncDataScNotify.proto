@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OHCFIOOIKND.proto";
 
 message TarotBookSyncDataScNotify {
-    OHCFIOOIKND BBEMIGELGJC = 9;
-    map<uint32, uint32> IJOJMJOMELA = 7;
-    map<uint32, uint32> IMNNLHCAKML = 10;
-    uint32 LOCEBOCJGEC = 15;
-    uint32 HBLKMBHGLNO = 6;
-    uint32 energy_info = 14;
+    uint32 energy_info = 4;
+    OHCFIOOIKND BBEMIGELGJC = 5;
+    uint32 HBLKMBHGLNO = 8;
+    uint32 LOCEBOCJGEC = 9;
+    map<uint32, uint32> IMNNLHCAKML = 11;
+    map<uint32, uint32> IJOJMJOMELA = 13;
 }

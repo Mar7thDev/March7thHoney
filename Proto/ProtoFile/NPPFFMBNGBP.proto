@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NPPFFMBNGBP {
-    uint32 item_id = 10;
-    uint32 item_count = 12;
+    uint32 item_count = 9;
+    uint32 item_id = 15;
 }

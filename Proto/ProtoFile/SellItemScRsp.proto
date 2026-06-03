@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message SellItemScRsp {
-    ItemList return_item_list = 6;
-    uint32 retcode = 13;
+    ItemList return_item_list = 2;
+    uint32 retcode = 12;
 }

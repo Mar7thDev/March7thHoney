@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PAIJCBOKIFO.proto";
 
 message SyncRogueMapRoomScNotify {
+    uint32 map_id = 6;
     PAIJCBOKIFO HNEANMNJHDB = 11;
-    uint32 map_id = 7;
 }

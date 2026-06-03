@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KPPBBOJOMDB {
-    uint32 PHPNBFLILFL = 12;
-    uint32 OOMBNFMJLEO = 1;
-    uint32 OMHHOADFMLI = 9;
-    uint32 level = 4;
+    uint32 PHPNBFLILFL = 2;
+    uint32 category = 9;
+    uint32 OMHHOADFMLI = 11;
+    uint32 level = 14;
 }

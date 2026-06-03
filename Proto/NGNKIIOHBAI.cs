@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFOR05LSUlPSEJBSS5wcm90byJHCgtOR05LSUlPSEJBSRITCgtPTFBQTUVB",
-            "TUZGTxgDIAMoDRIRCgllZmZlY3RfaWQYASABKA0SEAoIdHJhaXRfaWQYByAB",
+            "TUZGTxgEIAMoDRIRCgllZmZlY3RfaWQYCCABKA0SEAoIdHJhaXRfaWQYDSAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OLPPMEAMFFO" field.</summary>
-    public const int OLPPMEAMFFOFieldNumber = 3;
+    public const int OLPPMEAMFFOFieldNumber = 4;
     private static readonly pb::FieldCodec<uint> _repeated_oLPPMEAMFFO_codec
-        = pb::FieldCodec.ForUInt32(26);
+        = pb::FieldCodec.ForUInt32(34);
     private readonly pbc::RepeatedField<uint> oLPPMEAMFFO_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "effect_id" field.</summary>
-    public const int EffectIdFieldNumber = 1;
+    public const int EffectIdFieldNumber = 8;
     private uint effectId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,7 +108,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "trait_id" field.</summary>
-    public const int TraitIdFieldNumber = 7;
+    public const int TraitIdFieldNumber = 13;
     private uint traitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -165,13 +165,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      oLPPMEAMFFO_.WriteTo(output, _repeated_oLPPMEAMFFO_codec);
       if (EffectId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(64);
         output.WriteUInt32(EffectId);
       }
-      oLPPMEAMFFO_.WriteTo(output, _repeated_oLPPMEAMFFO_codec);
       if (TraitId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(TraitId);
       }
       if (_unknownFields != null) {
@@ -184,13 +184,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      oLPPMEAMFFO_.WriteTo(ref output, _repeated_oLPPMEAMFFO_codec);
       if (EffectId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(64);
         output.WriteUInt32(EffectId);
       }
-      oLPPMEAMFFO_.WriteTo(ref output, _repeated_oLPPMEAMFFO_codec);
       if (TraitId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteUInt32(TraitId);
       }
       if (_unknownFields != null) {
@@ -248,16 +248,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            EffectId = input.ReadUInt32();
-            break;
-          }
-          case 26:
-          case 24: {
+          case 34:
+          case 32: {
             oLPPMEAMFFO_.AddEntriesFrom(input, _repeated_oLPPMEAMFFO_codec);
             break;
           }
-          case 56: {
+          case 64: {
+            EffectId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
             TraitId = input.ReadUInt32();
             break;
           }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            EffectId = input.ReadUInt32();
-            break;
-          }
-          case 26:
-          case 24: {
+          case 34:
+          case 32: {
             oLPPMEAMFFO_.AddEntriesFrom(ref input, _repeated_oLPPMEAMFFO_codec);
             break;
           }
-          case 56: {
+          case 64: {
+            EffectId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
             TraitId = input.ReadUInt32();
             break;
           }

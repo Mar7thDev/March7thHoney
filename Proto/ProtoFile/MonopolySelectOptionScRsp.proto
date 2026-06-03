@@ -6,9 +6,9 @@ import "DFKABDLJMJO.proto";
 import "HKNBLADLAAE.proto";
 
 message MonopolySelectOptionScRsp {
-    NEMIDPFEJFL MOMEIFPICLE = 6;
+    uint32 event_id = 5;
+    uint32 HAFOKMHCGFM = 6;
     repeated HKNBLADLAAE DMCKDIGKHLB = 8;
-    uint32 retcode = 9;
-    uint32 event_id = 1;
-    uint32 HAFOKMHCGFM = 3;
+    NEMIDPFEJFL MOMEIFPICLE = 13;
+    uint32 retcode = 15;
 }

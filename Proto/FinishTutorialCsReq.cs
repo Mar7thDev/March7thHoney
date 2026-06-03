@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChlGaW5pc2hUdXRvcmlhbENzUmVxLnByb3RvGhhUdXRvcmlhbEZpbmlzaFR5",
             "cGUucHJvdG8iVAoTRmluaXNoVHV0b3JpYWxDc1JlcRITCgt0dXRvcmlhbF9p",
-            "ZBgOIAEoDRIoCgtIRklCTEhBRk9OTRgJIAEoDjITLlR1dG9yaWFsRmluaXNo",
+            "ZBgKIAEoDRIoCgtIRklCTEhBRk9OTRgLIAEoDjITLlR1dG9yaWFsRmluaXNo",
             "VHlwZUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TutorialFinishTypeReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "tutorial_id" field.</summary>
-    public const int TutorialIdFieldNumber = 14;
+    public const int TutorialIdFieldNumber = 10;
     private uint tutorialId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HFIBLHAFONM" field.</summary>
-    public const int HFIBLHAFONMFieldNumber = 9;
+    public const int HFIBLHAFONMFieldNumber = 11;
     private global::March7thHoney.Proto.TutorialFinishType hFIBLHAFONM_ = global::March7thHoney.Proto.TutorialFinishType.CebjaaaipdaNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HFIBLHAFONM != global::March7thHoney.Proto.TutorialFinishType.CebjaaaipdaNlcdgipgfdj) {
-        output.WriteRawTag(72);
-        output.WriteEnum((int) HFIBLHAFONM);
-      }
       if (TutorialId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteUInt32(TutorialId);
+      }
+      if (HFIBLHAFONM != global::March7thHoney.Proto.TutorialFinishType.CebjaaaipdaNlcdgipgfdj) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) HFIBLHAFONM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HFIBLHAFONM != global::March7thHoney.Proto.TutorialFinishType.CebjaaaipdaNlcdgipgfdj) {
-        output.WriteRawTag(72);
-        output.WriteEnum((int) HFIBLHAFONM);
-      }
       if (TutorialId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(80);
         output.WriteUInt32(TutorialId);
+      }
+      if (HFIBLHAFONM != global::March7thHoney.Proto.TutorialFinishType.CebjaaaipdaNlcdgipgfdj) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) HFIBLHAFONM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            HFIBLHAFONM = (global::March7thHoney.Proto.TutorialFinishType) input.ReadEnum();
+          case 80: {
+            TutorialId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            TutorialId = input.ReadUInt32();
+          case 88: {
+            HFIBLHAFONM = (global::March7thHoney.Proto.TutorialFinishType) input.ReadEnum();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            HFIBLHAFONM = (global::March7thHoney.Proto.TutorialFinishType) input.ReadEnum();
+          case 80: {
+            TutorialId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            TutorialId = input.ReadUInt32();
+          case 88: {
+            HFIBLHAFONM = (global::March7thHoney.Proto.TutorialFinishType) input.ReadEnum();
             break;
           }
         }

@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RelicAffix.proto";
 
 message DisplayRelicInfo {
-    repeated RelicAffix sub_affix_list = 9;
-    uint32 exp = 12;
-    uint32 main_affix_id = 11;
-    uint32 tid = 6;
-    uint32 type = 5;
-    uint32 level = 14;
+    uint32 exp = 3;
+    repeated RelicAffix sub_affix_list = 4;
+    uint32 level = 8;
+    uint32 tid = 9;
+    uint32 main_affix_id = 13;
+    uint32 type = 14;
 }

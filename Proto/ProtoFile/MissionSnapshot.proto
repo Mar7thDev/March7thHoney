@@ -6,10 +6,10 @@ import "MainMissionMcvSnapshot.proto";
 import "MainMissionSnapshot.proto";
 
 message MissionSnapshot {
-    MainMissionSnapshot tracking_main_mission = 3;
-    string cur_sound_effect_state = 6;
-    repeated MainMissionMcvSnapshot client_mcv_list = 2;
-    string cur_audio_emotion_state = 5;
     repeated MainMissionMcvSnapshot server_mcv_list = 1;
+    repeated MainMissionMcvSnapshot client_mcv_list = 2;
+    MainMissionSnapshot tracking_main_mission = 3;
     bool has_mission_audio_snapshot = 4;
+    string cur_audio_emotion_state = 5;
+    string cur_sound_effect_state = 6;
 }

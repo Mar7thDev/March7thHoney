@@ -24,19 +24,16 @@ namespace March7thHoney.Proto {
     static CmdBattleTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNDbWRCYXR0bGVUeXBlLnByb3RvKucDCg1DbWRCYXR0bGVUeXBlEhsKF0VK",
-            "Q09JRENKREhNX05MQ0RHSVBHRkRKEAASGwoXRUpDT0lEQ0pESE1fTlBNSU5B",
-            "UElHTkoQfxIbChdFSkNPSURDSkRITV9LTkxCSEtOQ0RMRhBnEhwKF0VKQ09J",
-            "RENKREhNX09GSlBISE5LSk1HELUBEhwKF0VKQ09JRENKREhNX0FITEZLTkdP",
-            "TUdKEJoBEhwKF0VKQ09JRENKREhNX0tHRU1QQ0xCTlBIELQBEhwKF0VKQ09J",
-            "RENKREhNX0xLTUhPTElCT0VKELcBEhsKF0VKQ09JRENKREhNX0JFRU1QQkpK",
-            "REtCEG0SGwoXRUpDT0lEQ0pESE1fTE5FRVBKTkxEQUkQbhIcChdFSkNPSURD",
-            "SkRITV9DSkdJRFBQRENKQhCtARIbChdFSkNPSURDSkRITV9ISUdKQ01KRElF",
-            "TxBwEhwKF0VKQ09JRENKREhNX0ZNRkxCUE9LSkRCEIgBEhwKF0VKQ09JRENK",
-            "REhNX05BT01NSkNMTU9JELsBEhsKF0VKQ09JRENKREhNX0pGQk9NRk5PRE5M",
-            "EHMSGwoXRUpDT0lEQ0pESE1fRUxKQU1DSU9MQ00QcRIcChdFSkNPSURDSkRI",
-            "TV9JQkxKRUxOQUNPRhCBAUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
-            "dG8z"));
+            "ChNDbWRCYXR0bGVUeXBlLnByb3RvKvQCCg1DbWRCYXR0bGVUeXBlEhsKF0VK",
+            "Q09JRENKREhNX05MQ0RHSVBHRkRKEAASHAoXRUpDT0lEQ0pESE1fS0dFTVBD",
+            "TEJOUEgQwQESHAoXRUpDT0lEQ0pESE1fTEtNSE9MSUJPRUoQigESHAoXRUpD",
+            "T0lEQ0pESE1fQkVFTVBCSkpES0IQiwESGwoXRUpDT0lEQ0pESE1fTE5FRVBK",
+            "TkxEQUkQfhIbChdFSkNPSURDSkRITV9DSkdJRFBQRENKQhB9EhwKF0VKQ09J",
+            "RENKREhNX0pGQk9NRk5PRE5MELoBEhwKF0VKQ09JRENKREhNX0tOTEJIS05D",
+            "RExGELIBEhwKF0VKQ09JRENKREhNX0ZNRkxCUE9LSkRCELwBEhwKF0VKQ09J",
+            "RENKREhNX05QTUlOQVBJR05KEJ4BEhwKF0VKQ09JRENKREhNX0VMSkFNQ0lP",
+            "TENNELUBEhwKF0VKQ09JRENKREhNX09GSlBISE5LSk1HEJMBQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdBattleType), }, null, null));
@@ -47,21 +44,17 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdBattleType {
     [pbr::OriginalName("EJCOIDCJDHM_NLCDGIPGFDJ")] EjcoidcjdhmNlcdgipgfdj = 0,
-    [pbr::OriginalName("EJCOIDCJDHM_NPMINAPIGNJ")] EjcoidcjdhmNpminapignj = 127,
-    [pbr::OriginalName("EJCOIDCJDHM_KNLBHKNCDLF")] EjcoidcjdhmKnlbhkncdlf = 103,
-    [pbr::OriginalName("EJCOIDCJDHM_OFJPHHNKJMG")] EjcoidcjdhmOfjphhnkjmg = 181,
-    [pbr::OriginalName("EJCOIDCJDHM_AHLFKNGOMGJ")] EjcoidcjdhmAhlfkngomgj = 154,
-    [pbr::OriginalName("EJCOIDCJDHM_KGEMPCLBNPH")] EjcoidcjdhmKgempclbnph = 180,
-    [pbr::OriginalName("EJCOIDCJDHM_LKMHOLIBOEJ")] EjcoidcjdhmLkmholiboej = 183,
-    [pbr::OriginalName("EJCOIDCJDHM_BEEMPBJJDKB")] EjcoidcjdhmBeempbjjdkb = 109,
-    [pbr::OriginalName("EJCOIDCJDHM_LNEEPJNLDAI")] EjcoidcjdhmLneepjnldai = 110,
-    [pbr::OriginalName("EJCOIDCJDHM_CJGIDPPDCJB")] EjcoidcjdhmCjgidppdcjb = 173,
-    [pbr::OriginalName("EJCOIDCJDHM_HIGJCMJDIEO")] EjcoidcjdhmHigjcmjdieo = 112,
-    [pbr::OriginalName("EJCOIDCJDHM_FMFLBPOKJDB")] EjcoidcjdhmFmflbpokjdb = 136,
-    [pbr::OriginalName("EJCOIDCJDHM_NAOMMJCLMOI")] EjcoidcjdhmNaommjclmoi = 187,
-    [pbr::OriginalName("EJCOIDCJDHM_JFBOMFNODNL")] EjcoidcjdhmJfbomfnodnl = 115,
-    [pbr::OriginalName("EJCOIDCJDHM_ELJAMCIOLCM")] EjcoidcjdhmEljamciolcm = 113,
-    [pbr::OriginalName("EJCOIDCJDHM_IBLJELNACOF")] EjcoidcjdhmIbljelnacof = 129,
+    [pbr::OriginalName("EJCOIDCJDHM_KGEMPCLBNPH")] EjcoidcjdhmKgempclbnph = 193,
+    [pbr::OriginalName("EJCOIDCJDHM_LKMHOLIBOEJ")] EjcoidcjdhmLkmholiboej = 138,
+    [pbr::OriginalName("EJCOIDCJDHM_BEEMPBJJDKB")] EjcoidcjdhmBeempbjjdkb = 139,
+    [pbr::OriginalName("EJCOIDCJDHM_LNEEPJNLDAI")] EjcoidcjdhmLneepjnldai = 126,
+    [pbr::OriginalName("EJCOIDCJDHM_CJGIDPPDCJB")] EjcoidcjdhmCjgidppdcjb = 125,
+    [pbr::OriginalName("EJCOIDCJDHM_JFBOMFNODNL")] EjcoidcjdhmJfbomfnodnl = 186,
+    [pbr::OriginalName("EJCOIDCJDHM_KNLBHKNCDLF")] EjcoidcjdhmKnlbhkncdlf = 178,
+    [pbr::OriginalName("EJCOIDCJDHM_FMFLBPOKJDB")] EjcoidcjdhmFmflbpokjdb = 188,
+    [pbr::OriginalName("EJCOIDCJDHM_NPMINAPIGNJ")] EjcoidcjdhmNpminapignj = 158,
+    [pbr::OriginalName("EJCOIDCJDHM_ELJAMCIOLCM")] EjcoidcjdhmEljamciolcm = 181,
+    [pbr::OriginalName("EJCOIDCJDHM_OFJPHHNKJMG")] EjcoidcjdhmOfjphhnkjmg = 147,
   }
 
   #endregion

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KBONOPFLPDJ {
-    uint32 raid_id = 1;
-    uint32 max_score = 14;
+    uint32 max_score = 9;
+    uint32 raid_id = 13;
 }

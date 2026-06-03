@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static AKEKCKDIHLAReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBS0VLQ0tESUhMQS5wcm90byJMCgtBS0VLQ0tESUhMQRITCgtITUVMRlBE",
-            "UENGQxgPIAEoCRITCgtLSEJCTkRCSkFGSxgOIAEoBRITCgtESFBESUxOTElQ",
-            "QxgKIAEoBUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFBS0VLQ0tESUhMQS5wcm90byJKCgtBS0VLQ0tESUhMQRIRCgluZXdfdmFs",
+            "dWUYASABKAUSFQoNcHJvcGVydHlfbmFtZRgHIAEoCRIRCglvbGRfdmFsdWUY",
+            "CSABKAVCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AKEKCKDIHLA), global::March7thHoney.Proto.AKEKCKDIHLA.Parser, new[]{ "HMELFPDPCFC", "KHBBNDBJAFK", "DHPDILNLIPC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AKEKCKDIHLA), global::March7thHoney.Proto.AKEKCKDIHLA.Parser, new[]{ "NewValue", "PropertyName", "OldValue" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AKEKCKDIHLA(AKEKCKDIHLA other) : this() {
-      hMELFPDPCFC_ = other.hMELFPDPCFC_;
-      kHBBNDBJAFK_ = other.kHBBNDBJAFK_;
-      dHPDILNLIPC_ = other.dHPDILNLIPC_;
+      newValue_ = other.newValue_;
+      propertyName_ = other.propertyName_;
+      oldValue_ = other.oldValue_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,39 +84,39 @@ namespace March7thHoney.Proto {
       return new AKEKCKDIHLA(this);
     }
 
-    /// <summary>Field number for the "HMELFPDPCFC" field.</summary>
-    public const int HMELFPDPCFCFieldNumber = 15;
-    private string hMELFPDPCFC_ = "";
+    /// <summary>Field number for the "new_value" field.</summary>
+    public const int NewValueFieldNumber = 1;
+    private int newValue_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string HMELFPDPCFC {
-      get { return hMELFPDPCFC_; }
+    public int NewValue {
+      get { return newValue_; }
       set {
-        hMELFPDPCFC_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        newValue_ = value;
       }
     }
 
-    /// <summary>Field number for the "KHBBNDBJAFK" field.</summary>
-    public const int KHBBNDBJAFKFieldNumber = 14;
-    private int kHBBNDBJAFK_;
+    /// <summary>Field number for the "property_name" field.</summary>
+    public const int PropertyNameFieldNumber = 7;
+    private string propertyName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int KHBBNDBJAFK {
-      get { return kHBBNDBJAFK_; }
+    public string PropertyName {
+      get { return propertyName_; }
       set {
-        kHBBNDBJAFK_ = value;
+        propertyName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "DHPDILNLIPC" field.</summary>
-    public const int DHPDILNLIPCFieldNumber = 10;
-    private int dHPDILNLIPC_;
+    /// <summary>Field number for the "old_value" field.</summary>
+    public const int OldValueFieldNumber = 9;
+    private int oldValue_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int DHPDILNLIPC {
-      get { return dHPDILNLIPC_; }
+    public int OldValue {
+      get { return oldValue_; }
       set {
-        dHPDILNLIPC_ = value;
+        oldValue_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HMELFPDPCFC != other.HMELFPDPCFC) return false;
-      if (KHBBNDBJAFK != other.KHBBNDBJAFK) return false;
-      if (DHPDILNLIPC != other.DHPDILNLIPC) return false;
+      if (NewValue != other.NewValue) return false;
+      if (PropertyName != other.PropertyName) return false;
+      if (OldValue != other.OldValue) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HMELFPDPCFC.Length != 0) hash ^= HMELFPDPCFC.GetHashCode();
-      if (KHBBNDBJAFK != 0) hash ^= KHBBNDBJAFK.GetHashCode();
-      if (DHPDILNLIPC != 0) hash ^= DHPDILNLIPC.GetHashCode();
+      if (NewValue != 0) hash ^= NewValue.GetHashCode();
+      if (PropertyName.Length != 0) hash ^= PropertyName.GetHashCode();
+      if (OldValue != 0) hash ^= OldValue.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DHPDILNLIPC != 0) {
-        output.WriteRawTag(80);
-        output.WriteInt32(DHPDILNLIPC);
+      if (NewValue != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(NewValue);
       }
-      if (KHBBNDBJAFK != 0) {
-        output.WriteRawTag(112);
-        output.WriteInt32(KHBBNDBJAFK);
+      if (PropertyName.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(PropertyName);
       }
-      if (HMELFPDPCFC.Length != 0) {
-        output.WriteRawTag(122);
-        output.WriteString(HMELFPDPCFC);
+      if (OldValue != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(OldValue);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DHPDILNLIPC != 0) {
-        output.WriteRawTag(80);
-        output.WriteInt32(DHPDILNLIPC);
+      if (NewValue != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(NewValue);
       }
-      if (KHBBNDBJAFK != 0) {
-        output.WriteRawTag(112);
-        output.WriteInt32(KHBBNDBJAFK);
+      if (PropertyName.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(PropertyName);
       }
-      if (HMELFPDPCFC.Length != 0) {
-        output.WriteRawTag(122);
-        output.WriteString(HMELFPDPCFC);
+      if (OldValue != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(OldValue);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HMELFPDPCFC.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(HMELFPDPCFC);
+      if (NewValue != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(NewValue);
       }
-      if (KHBBNDBJAFK != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(KHBBNDBJAFK);
+      if (PropertyName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PropertyName);
       }
-      if (DHPDILNLIPC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DHPDILNLIPC);
+      if (OldValue != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(OldValue);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HMELFPDPCFC.Length != 0) {
-        HMELFPDPCFC = other.HMELFPDPCFC;
+      if (other.NewValue != 0) {
+        NewValue = other.NewValue;
       }
-      if (other.KHBBNDBJAFK != 0) {
-        KHBBNDBJAFK = other.KHBBNDBJAFK;
+      if (other.PropertyName.Length != 0) {
+        PropertyName = other.PropertyName;
       }
-      if (other.DHPDILNLIPC != 0) {
-        DHPDILNLIPC = other.DHPDILNLIPC;
+      if (other.OldValue != 0) {
+        OldValue = other.OldValue;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
-            DHPDILNLIPC = input.ReadInt32();
+          case 8: {
+            NewValue = input.ReadInt32();
             break;
           }
-          case 112: {
-            KHBBNDBJAFK = input.ReadInt32();
+          case 58: {
+            PropertyName = input.ReadString();
             break;
           }
-          case 122: {
-            HMELFPDPCFC = input.ReadString();
+          case 72: {
+            OldValue = input.ReadInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
-            DHPDILNLIPC = input.ReadInt32();
+          case 8: {
+            NewValue = input.ReadInt32();
             break;
           }
-          case 112: {
-            KHBBNDBJAFK = input.ReadInt32();
+          case 58: {
+            PropertyName = input.ReadString();
             break;
           }
-          case 122: {
-            HMELFPDPCFC = input.ReadString();
+          case 72: {
+            OldValue = input.ReadInt32();
             break;
           }
         }

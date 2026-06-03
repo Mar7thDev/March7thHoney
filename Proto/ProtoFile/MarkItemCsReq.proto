@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message MarkItemCsReq {
     bool ABDJKPCGDHO = 6;
-    uint32 item_id = 5;
+    uint32 item_id = 13;
 }

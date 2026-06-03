@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static JPGKBLDLADFReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFKUEdLQkxETEFERi5wcm90bxoRR0VQQUZCSkJHQkgucHJvdG8ibwoLSlBH",
-            "S0JMRExBREYSFQoLQU9LUENOSkpCQU8YBSABKA1IABIjCgtLQkJPQUpQTU5D",
-            "ThgCIAEoCzIMLkdFUEFGQkpCR0JISAASFQoLQ0VQRUhORU9JT0gYBiABKA1I",
-            "AEINCgtNTkxDSEVKS0RIT0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
-            "dG8z"));
+            "ChFKUEdLQkxETEFERi5wcm90bxoaR3JpZEZpZ2h0Q3VycmVudFRhc2sucHJv",
+            "dG8ieAoLSlBHS0JMRExBREYSFQoLQU9LUENOSkpCQU8YAiABKA1IABIsCgtL",
+            "QkJPQUpQTU5DThgDIAEoCzIVLkdyaWRGaWdodEN1cnJlbnRUYXNrSAASFQoL",
+            "Q0VQRUhORU9JT0gYBiABKA1IAEINCgtNTkxDSEVKS0RIT0IWqgITTWFyY2g3",
+            "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GEPAFBJBGBHReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.GridFightCurrentTaskReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JPGKBLDLADF), global::March7thHoney.Proto.JPGKBLDLADF.Parser, new[]{ "AOKPCNJJBAO", "KBBOAJPMNCN", "CEPEHNEOIOH" }, new[]{ "MNLCHEJKDHO" }, null, null, null)
           }));
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "AOKPCNJJBAO" field.</summary>
-    public const int AOKPCNJJBAOFieldNumber = 5;
+    public const int AOKPCNJJBAOFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint AOKPCNJJBAO {
@@ -122,11 +122,11 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KBBOAJPMNCN" field.</summary>
-    public const int KBBOAJPMNCNFieldNumber = 2;
+    public const int KBBOAJPMNCNFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GEPAFBJBGBH KBBOAJPMNCN {
-      get { return mNLCHEJKDHOCase_ == MNLCHEJKDHOOneofCase.KBBOAJPMNCN ? (global::March7thHoney.Proto.GEPAFBJBGBH) mNLCHEJKDHO_ : null; }
+    public global::March7thHoney.Proto.GridFightCurrentTask KBBOAJPMNCN {
+      get { return mNLCHEJKDHOCase_ == MNLCHEJKDHOOneofCase.KBBOAJPMNCN ? (global::March7thHoney.Proto.GridFightCurrentTask) mNLCHEJKDHO_ : null; }
       set {
         mNLCHEJKDHO_ = value;
         mNLCHEJKDHOCase_ = value == null ? MNLCHEJKDHOOneofCase.None : MNLCHEJKDHOOneofCase.KBBOAJPMNCN;
@@ -163,8 +163,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "MNLCHEJKDHO" oneof.</summary>
     public enum MNLCHEJKDHOOneofCase {
       None = 0,
-      AOKPCNJJBAO = 5,
-      KBBOAJPMNCN = 2,
+      AOKPCNJJBAO = 2,
+      KBBOAJPMNCN = 3,
       CEPEHNEOIOH = 6,
     }
     private MNLCHEJKDHOOneofCase mNLCHEJKDHOCase_ = MNLCHEJKDHOOneofCase.None;
@@ -229,13 +229,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (mNLCHEJKDHOCase_ == MNLCHEJKDHOOneofCase.KBBOAJPMNCN) {
-        output.WriteRawTag(18);
-        output.WriteMessage(KBBOAJPMNCN);
-      }
       if (HasAOKPCNJJBAO) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(AOKPCNJJBAO);
+      }
+      if (mNLCHEJKDHOCase_ == MNLCHEJKDHOOneofCase.KBBOAJPMNCN) {
+        output.WriteRawTag(26);
+        output.WriteMessage(KBBOAJPMNCN);
       }
       if (HasCEPEHNEOIOH) {
         output.WriteRawTag(48);
@@ -251,13 +251,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (mNLCHEJKDHOCase_ == MNLCHEJKDHOOneofCase.KBBOAJPMNCN) {
-        output.WriteRawTag(18);
-        output.WriteMessage(KBBOAJPMNCN);
-      }
       if (HasAOKPCNJJBAO) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(AOKPCNJJBAO);
+      }
+      if (mNLCHEJKDHOCase_ == MNLCHEJKDHOOneofCase.KBBOAJPMNCN) {
+        output.WriteRawTag(26);
+        output.WriteMessage(KBBOAJPMNCN);
       }
       if (HasCEPEHNEOIOH) {
         output.WriteRawTag(48);
@@ -300,7 +300,7 @@ namespace March7thHoney.Proto {
           break;
         case MNLCHEJKDHOOneofCase.KBBOAJPMNCN:
           if (KBBOAJPMNCN == null) {
-            KBBOAJPMNCN = new global::March7thHoney.Proto.GEPAFBJBGBH();
+            KBBOAJPMNCN = new global::March7thHoney.Proto.GridFightCurrentTask();
           }
           KBBOAJPMNCN.MergeFrom(other.KBBOAJPMNCN);
           break;
@@ -328,17 +328,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
-            global::March7thHoney.Proto.GEPAFBJBGBH subBuilder = new global::March7thHoney.Proto.GEPAFBJBGBH();
+          case 16: {
+            AOKPCNJJBAO = input.ReadUInt32();
+            break;
+          }
+          case 26: {
+            global::March7thHoney.Proto.GridFightCurrentTask subBuilder = new global::March7thHoney.Proto.GridFightCurrentTask();
             if (mNLCHEJKDHOCase_ == MNLCHEJKDHOOneofCase.KBBOAJPMNCN) {
               subBuilder.MergeFrom(KBBOAJPMNCN);
             }
             input.ReadMessage(subBuilder);
             KBBOAJPMNCN = subBuilder;
-            break;
-          }
-          case 40: {
-            AOKPCNJJBAO = input.ReadUInt32();
             break;
           }
           case 48: {
@@ -364,17 +364,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
-            global::March7thHoney.Proto.GEPAFBJBGBH subBuilder = new global::March7thHoney.Proto.GEPAFBJBGBH();
+          case 16: {
+            AOKPCNJJBAO = input.ReadUInt32();
+            break;
+          }
+          case 26: {
+            global::March7thHoney.Proto.GridFightCurrentTask subBuilder = new global::March7thHoney.Proto.GridFightCurrentTask();
             if (mNLCHEJKDHOCase_ == MNLCHEJKDHOOneofCase.KBBOAJPMNCN) {
               subBuilder.MergeFrom(KBBOAJPMNCN);
             }
             input.ReadMessage(subBuilder);
             KBBOAJPMNCN = subBuilder;
-            break;
-          }
-          case 40: {
-            AOKPCNJJBAO = input.ReadUInt32();
             break;
           }
           case 48: {

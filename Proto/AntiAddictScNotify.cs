@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhBbnRpQWRkaWN0U2NOb3RpZnkucHJvdG8iQgoSQW50aUFkZGljdFNjTm90",
-            "aWZ5Eg0KBWxldmVsGA4gASgJEgsKA21zZxgGIAEoCRIQCghtc2dfdHlwZRgF",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "aWZ5EhAKCG1zZ190eXBlGAggASgNEg0KBWxldmVsGAsgASgJEgsKA21zZxgM",
+            "IAEoCUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AntiAddictScNotify), global::March7thHoney.Proto.AntiAddictScNotify.Parser, new[]{ "Level", "Msg", "MsgType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AntiAddictScNotify), global::March7thHoney.Proto.AntiAddictScNotify.Parser, new[]{ "MsgType", "Level", "Msg" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AntiAddictScNotify(AntiAddictScNotify other) : this() {
+      msgType_ = other.msgType_;
       level_ = other.level_;
       msg_ = other.msg_;
-      msgType_ = other.msgType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new AntiAddictScNotify(this);
     }
 
+    /// <summary>Field number for the "msg_type" field.</summary>
+    public const int MsgTypeFieldNumber = 8;
+    private uint msgType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MsgType {
+      get { return msgType_; }
+      set {
+        msgType_ = value;
+      }
+    }
+
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 14;
+    public const int LevelFieldNumber = 11;
     private string level_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "msg" field.</summary>
-    public const int MsgFieldNumber = 6;
+    public const int MsgFieldNumber = 12;
     private string msg_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,18 +117,6 @@ namespace March7thHoney.Proto {
       get { return msg_; }
       set {
         msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "msg_type" field.</summary>
-    public const int MsgTypeFieldNumber = 5;
-    private uint msgType_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MsgType {
-      get { return msgType_; }
-      set {
-        msgType_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (MsgType != other.MsgType) return false;
       if (Level != other.Level) return false;
       if (Msg != other.Msg) return false;
-      if (MsgType != other.MsgType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (MsgType != 0) hash ^= MsgType.GetHashCode();
       if (Level.Length != 0) hash ^= Level.GetHashCode();
       if (Msg.Length != 0) hash ^= Msg.GetHashCode();
-      if (MsgType != 0) hash ^= MsgType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (MsgType != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteUInt32(MsgType);
       }
-      if (Msg.Length != 0) {
-        output.WriteRawTag(50);
-        output.WriteString(Msg);
-      }
       if (Level.Length != 0) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(90);
         output.WriteString(Level);
+      }
+      if (Msg.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Msg);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (MsgType != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteUInt32(MsgType);
       }
-      if (Msg.Length != 0) {
-        output.WriteRawTag(50);
-        output.WriteString(Msg);
-      }
       if (Level.Length != 0) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(90);
         output.WriteString(Level);
+      }
+      if (Msg.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Msg);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (MsgType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MsgType);
+      }
       if (Level.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Level);
       }
       if (Msg.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
-      }
-      if (MsgType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MsgType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.MsgType != 0) {
+        MsgType = other.MsgType;
+      }
       if (other.Level.Length != 0) {
         Level = other.Level;
       }
       if (other.Msg.Length != 0) {
         Msg = other.Msg;
-      }
-      if (other.MsgType != 0) {
-        MsgType = other.MsgType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 64: {
             MsgType = input.ReadUInt32();
             break;
           }
-          case 50: {
-            Msg = input.ReadString();
+          case 90: {
+            Level = input.ReadString();
             break;
           }
-          case 114: {
-            Level = input.ReadString();
+          case 98: {
+            Msg = input.ReadString();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 64: {
             MsgType = input.ReadUInt32();
             break;
           }
-          case 50: {
-            Msg = input.ReadString();
+          case 90: {
+            Level = input.ReadString();
             break;
           }
-          case 114: {
-            Level = input.ReadString();
+          case 98: {
+            Msg = input.ReadString();
             break;
           }
         }

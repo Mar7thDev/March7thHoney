@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MissionCustomValue.proto";
 
 message ONHKODAFEMH {
-    repeated MissionCustomValue custom_value_list = 7;
+    repeated MissionCustomValue custom_value_list = 8;
 }

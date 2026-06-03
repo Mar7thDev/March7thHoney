@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PDHFFPOJNJG.proto";
 
 message HNAOOMKGFCB {
-    uint32 LLMHAEAPGON = 3;
-    PDHFFPOJNJG NFMKOFNEKLA = 4;
-    uint32 BHCCDFFBAAM = 11;
+    PDHFFPOJNJG source_type = 1;
+    uint32 LLMHAEAPGON = 7;
+    uint32 BHCCDFFBAAM = 10;
 }

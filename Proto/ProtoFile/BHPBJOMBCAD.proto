@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NEJPAGJBMDA.proto";
 
 message BHPBJOMBCAD {
-    repeated NEJPAGJBMDA IJKIBLJEGGE = 8;
-    uint32 group_id = 12;
-    bool NOALGKCLDHF = 5;
+    repeated NEJPAGJBMDA IJKIBLJEGGE = 2;
+    uint32 group_id = 4;
+    bool NOALGKCLDHF = 13;
 }

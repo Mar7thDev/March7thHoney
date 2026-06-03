@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OOAJJMEGIFO.proto";
 
 message EnterSummonActivityStageCsReq {
-    OOAJJMEGIFO NLJCJIGLGHE = 2;
-    repeated OOAJJMEGIFO avatar_list = 7;
-    uint32 group_id = 3;
-    uint32 DBKHHCGGKNN = 9;
+    uint32 group_id = 7;
+    uint32 DBKHHCGGKNN = 8;
+    OOAJJMEGIFO NLJCJIGLGHE = 11;
+    repeated OOAJJMEGIFO avatar_list = 14;
 }

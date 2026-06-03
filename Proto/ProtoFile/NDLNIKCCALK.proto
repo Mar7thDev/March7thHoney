@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NDLNIKCCALK {
-    repeated uint32 OPLNKCOLCKJ = 4;
-    int64 end_time = 14;
-    uint32 EDHKHJAPMKA = 12;
-    bool BPFFFCMMMCH = 2;
-    int64 IFEPJHGNCOI = 11;
+    bool BPFFFCMMMCH = 1;
+    uint32 EDHKHJAPMKA = 5;
+    int64 end_time = 7;
+    repeated uint32 OPLNKCOLCKJ = 12;
+    int64 start_time = 14;
 }

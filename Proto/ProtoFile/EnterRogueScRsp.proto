@@ -8,9 +8,9 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message EnterRogueScRsp {
-    LineupInfo lineup = 9;
+    LineupInfo lineup = 2;
+    SceneInfo scene = 3;
     FHEGNOPNICH JNKLNLKHGBB = 7;
-    SceneInfo scene = 8;
-    AGEHGBKOBEF rogue_game_info = 5;
-    uint32 retcode = 13;
+    uint32 retcode = 8;
+    AGEHGBKOBEF rogue_game_info = 12;
 }

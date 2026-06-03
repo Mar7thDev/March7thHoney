@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdSb3RhdGVyRW5lcmd5SW5mby5wcm90byI1ChFSb3RhdGVyRW5lcmd5SW5m",
-            "bxIPCgdjdXJfbnVtGAIgASgNEg8KB21heF9udW0YBSABKA1CFqoCE01hcmNo",
+            "bxIPCgdtYXhfbnVtGAEgASgNEg8KB2N1cl9udW0YDSABKA1CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RotaterEnergyInfo), global::March7thHoney.Proto.RotaterEnergyInfo.Parser, new[]{ "CurNum", "MaxNum" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RotaterEnergyInfo), global::March7thHoney.Proto.RotaterEnergyInfo.Parser, new[]{ "MaxNum", "CurNum" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RotaterEnergyInfo(RotaterEnergyInfo other) : this() {
-      curNum_ = other.curNum_;
       maxNum_ = other.maxNum_;
+      curNum_ = other.curNum_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new RotaterEnergyInfo(this);
     }
 
-    /// <summary>Field number for the "cur_num" field.</summary>
-    public const int CurNumFieldNumber = 2;
-    private uint curNum_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurNum {
-      get { return curNum_; }
-      set {
-        curNum_ = value;
-      }
-    }
-
     /// <summary>Field number for the "max_num" field.</summary>
-    public const int MaxNumFieldNumber = 5;
+    public const int MaxNumFieldNumber = 1;
     private uint maxNum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return maxNum_; }
       set {
         maxNum_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cur_num" field.</summary>
+    public const int CurNumFieldNumber = 13;
+    private uint curNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurNum {
+      get { return curNum_; }
+      set {
+        curNum_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CurNum != other.CurNum) return false;
       if (MaxNum != other.MaxNum) return false;
+      if (CurNum != other.CurNum) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CurNum != 0) hash ^= CurNum.GetHashCode();
       if (MaxNum != 0) hash ^= MaxNum.GetHashCode();
+      if (CurNum != 0) hash ^= CurNum.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CurNum != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(CurNum);
-      }
       if (MaxNum != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteUInt32(MaxNum);
+      }
+      if (CurNum != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(CurNum);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CurNum != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(CurNum);
-      }
       if (MaxNum != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteUInt32(MaxNum);
+      }
+      if (CurNum != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(CurNum);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CurNum != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurNum);
-      }
       if (MaxNum != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxNum);
+      }
+      if (CurNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurNum);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CurNum != 0) {
-        CurNum = other.CurNum;
-      }
       if (other.MaxNum != 0) {
         MaxNum = other.MaxNum;
+      }
+      if (other.CurNum != 0) {
+        CurNum = other.CurNum;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            CurNum = input.ReadUInt32();
+          case 8: {
+            MaxNum = input.ReadUInt32();
             break;
           }
-          case 40: {
-            MaxNum = input.ReadUInt32();
+          case 104: {
+            CurNum = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            CurNum = input.ReadUInt32();
+          case 8: {
+            MaxNum = input.ReadUInt32();
             break;
           }
-          case 40: {
-            MaxNum = input.ReadUInt32();
+          case 104: {
+            CurNum = input.ReadUInt32();
             break;
           }
         }

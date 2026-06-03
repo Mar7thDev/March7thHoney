@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MatchThreeV2SetBirdPosCsReq {
-    uint32 HBONKLEOEEI = 13;
-    uint32 pos_index = 1;
+    uint32 HBONKLEOEEI = 5;
+    uint32 pos = 14;
 }

@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static CPHOIPHAPDJReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDUEhPSVBIQVBESi5wcm90byJXCgtDUEhPSVBIQVBEShIRCglhdmF0YXJf",
-            "aWQYAyABKA0SEwoLUExFRU1CTVBJQ0EYByABKA0SEQoJcm9sZV9zdGFyGAUg",
-            "ASgNEg0KBWxldmVsGAkgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "ChFDUEhPSVBIQVBESi5wcm90byJXCgtDUEhPSVBIQVBEShIRCglyb2xlX3N0",
+            "YXIYBiABKA0SEwoLUExFRU1CTVBJQ0EYCSABKA0SDQoFbGV2ZWwYDCABKA0S",
+            "EQoJYXZhdGFyX2lkGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CPHOIPHAPDJ), global::March7thHoney.Proto.CPHOIPHAPDJ.Parser, new[]{ "AvatarId", "PLEEMBMPICA", "RoleStar", "Level" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CPHOIPHAPDJ), global::March7thHoney.Proto.CPHOIPHAPDJ.Parser, new[]{ "RoleStar", "PLEEMBMPICA", "Level", "AvatarId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CPHOIPHAPDJ(CPHOIPHAPDJ other) : this() {
-      avatarId_ = other.avatarId_;
-      pLEEMBMPICA_ = other.pLEEMBMPICA_;
       roleStar_ = other.roleStar_;
+      pLEEMBMPICA_ = other.pLEEMBMPICA_;
       level_ = other.level_;
+      avatarId_ = other.avatarId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,32 +86,8 @@ namespace March7thHoney.Proto {
       return new CPHOIPHAPDJ(this);
     }
 
-    /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 3;
-    private uint avatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarId {
-      get { return avatarId_; }
-      set {
-        avatarId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "PLEEMBMPICA" field.</summary>
-    public const int PLEEMBMPICAFieldNumber = 7;
-    private uint pLEEMBMPICA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PLEEMBMPICA {
-      get { return pLEEMBMPICA_; }
-      set {
-        pLEEMBMPICA_ = value;
-      }
-    }
-
     /// <summary>Field number for the "role_star" field.</summary>
-    public const int RoleStarFieldNumber = 5;
+    public const int RoleStarFieldNumber = 6;
     private uint roleStar_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,8 +98,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "PLEEMBMPICA" field.</summary>
+    public const int PLEEMBMPICAFieldNumber = 9;
+    private uint pLEEMBMPICA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PLEEMBMPICA {
+      get { return pLEEMBMPICA_; }
+      set {
+        pLEEMBMPICA_ = value;
+      }
+    }
+
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 9;
+    public const int LevelFieldNumber = 12;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +119,18 @@ namespace March7thHoney.Proto {
       get { return level_; }
       set {
         level_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_id" field.</summary>
+    public const int AvatarIdFieldNumber = 13;
+    private uint avatarId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvatarId {
+      get { return avatarId_; }
+      set {
+        avatarId_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AvatarId != other.AvatarId) return false;
-      if (PLEEMBMPICA != other.PLEEMBMPICA) return false;
       if (RoleStar != other.RoleStar) return false;
+      if (PLEEMBMPICA != other.PLEEMBMPICA) return false;
       if (Level != other.Level) return false;
+      if (AvatarId != other.AvatarId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
-      if (PLEEMBMPICA != 0) hash ^= PLEEMBMPICA.GetHashCode();
       if (RoleStar != 0) hash ^= RoleStar.GetHashCode();
+      if (PLEEMBMPICA != 0) hash ^= PLEEMBMPICA.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
+      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (AvatarId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(AvatarId);
-      }
       if (RoleStar != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt32(RoleStar);
       }
       if (PLEEMBMPICA != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(PLEEMBMPICA);
       }
       if (Level != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(96);
         output.WriteUInt32(Level);
+      }
+      if (AvatarId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (AvatarId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(AvatarId);
-      }
       if (RoleStar != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt32(RoleStar);
       }
       if (PLEEMBMPICA != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(PLEEMBMPICA);
       }
       if (Level != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(96);
         output.WriteUInt32(Level);
+      }
+      if (AvatarId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      if (RoleStar != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleStar);
       }
       if (PLEEMBMPICA != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PLEEMBMPICA);
       }
-      if (RoleStar != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleStar);
-      }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      }
+      if (AvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.AvatarId != 0) {
-        AvatarId = other.AvatarId;
+      if (other.RoleStar != 0) {
+        RoleStar = other.RoleStar;
       }
       if (other.PLEEMBMPICA != 0) {
         PLEEMBMPICA = other.PLEEMBMPICA;
       }
-      if (other.RoleStar != 0) {
-        RoleStar = other.RoleStar;
-      }
       if (other.Level != 0) {
         Level = other.Level;
+      }
+      if (other.AvatarId != 0) {
+        AvatarId = other.AvatarId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 40: {
+          case 48: {
             RoleStar = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 72: {
             PLEEMBMPICA = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 96: {
             Level = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            AvatarId = input.ReadUInt32();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 40: {
+          case 48: {
             RoleStar = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 72: {
             PLEEMBMPICA = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 96: {
             Level = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            AvatarId = input.ReadUInt32();
             break;
           }
         }

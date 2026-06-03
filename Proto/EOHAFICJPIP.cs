@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static EOHAFICJPIPReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFFT0hBRklDSlBJUC5wcm90byJYCgtFT0hBRklDSlBJUBITCgtOTEdOTkRJ",
-            "RkdHRhgLIAEoDRIKCgJpZBgNIAEoDRITCgtERENMQ05QT05PSBgKIAEoDRIT",
-            "CgtDUE9DRUxPTE5ITBgEIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "ChFFT0hBRklDSlBJUC5wcm90byJVCgtFT0hBRklDSlBJUBIQCghhZGRfY29p",
+            "bhgGIAEoDRITCgtOTEdOTkRJRkdHRhgJIAEoDRITCgtDUE9DRUxPTE5ITBgO",
+            "IAEoDRIKCgJpZBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EOHAFICJPIP), global::March7thHoney.Proto.EOHAFICJPIP.Parser, new[]{ "NLGNNDIFGGF", "Id", "DDCLCNPONOH", "CPOCELOLNHL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EOHAFICJPIP), global::March7thHoney.Proto.EOHAFICJPIP.Parser, new[]{ "AddCoin", "NLGNNDIFGGF", "CPOCELOLNHL", "Id" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EOHAFICJPIP(EOHAFICJPIP other) : this() {
+      addCoin_ = other.addCoin_;
       nLGNNDIFGGF_ = other.nLGNNDIFGGF_;
-      id_ = other.id_;
-      dDCLCNPONOH_ = other.dDCLCNPONOH_;
       cPOCELOLNHL_ = other.cPOCELOLNHL_;
+      id_ = other.id_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,8 +86,20 @@ namespace March7thHoney.Proto {
       return new EOHAFICJPIP(this);
     }
 
+    /// <summary>Field number for the "add_coin" field.</summary>
+    public const int AddCoinFieldNumber = 6;
+    private uint addCoin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AddCoin {
+      get { return addCoin_; }
+      set {
+        addCoin_ = value;
+      }
+    }
+
     /// <summary>Field number for the "NLGNNDIFGGF" field.</summary>
-    public const int NLGNNDIFGGFFieldNumber = 11;
+    public const int NLGNNDIFGGFFieldNumber = 9;
     private uint nLGNNDIFGGF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,32 +110,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 13;
-    private uint id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DDCLCNPONOH" field.</summary>
-    public const int DDCLCNPONOHFieldNumber = 10;
-    private uint dDCLCNPONOH_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DDCLCNPONOH {
-      get { return dDCLCNPONOH_; }
-      set {
-        dDCLCNPONOH_ = value;
-      }
-    }
-
     /// <summary>Field number for the "CPOCELOLNHL" field.</summary>
-    public const int CPOCELOLNHLFieldNumber = 4;
+    public const int CPOCELOLNHLFieldNumber = 14;
     private uint cPOCELOLNHL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +119,18 @@ namespace March7thHoney.Proto {
       get { return cPOCELOLNHL_; }
       set {
         cPOCELOLNHL_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 15;
+    private uint id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Id {
+      get { return id_; }
+      set {
+        id_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (AddCoin != other.AddCoin) return false;
       if (NLGNNDIFGGF != other.NLGNNDIFGGF) return false;
-      if (Id != other.Id) return false;
-      if (DDCLCNPONOH != other.DDCLCNPONOH) return false;
       if (CPOCELOLNHL != other.CPOCELOLNHL) return false;
+      if (Id != other.Id) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (AddCoin != 0) hash ^= AddCoin.GetHashCode();
       if (NLGNNDIFGGF != 0) hash ^= NLGNNDIFGGF.GetHashCode();
-      if (Id != 0) hash ^= Id.GetHashCode();
-      if (DDCLCNPONOH != 0) hash ^= DDCLCNPONOH.GetHashCode();
       if (CPOCELOLNHL != 0) hash ^= CPOCELOLNHL.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,20 +182,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CPOCELOLNHL != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(CPOCELOLNHL);
-      }
-      if (DDCLCNPONOH != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(DDCLCNPONOH);
+      if (AddCoin != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AddCoin);
       }
       if (NLGNNDIFGGF != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(72);
         output.WriteUInt32(NLGNNDIFGGF);
       }
+      if (CPOCELOLNHL != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(CPOCELOLNHL);
+      }
       if (Id != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(120);
         output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
@@ -208,20 +208,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CPOCELOLNHL != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(CPOCELOLNHL);
-      }
-      if (DDCLCNPONOH != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(DDCLCNPONOH);
+      if (AddCoin != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(AddCoin);
       }
       if (NLGNNDIFGGF != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(72);
         output.WriteUInt32(NLGNNDIFGGF);
       }
+      if (CPOCELOLNHL != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(CPOCELOLNHL);
+      }
       if (Id != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(120);
         output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (AddCoin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AddCoin);
+      }
       if (NLGNNDIFGGF != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NLGNNDIFGGF);
       }
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
-      }
-      if (DDCLCNPONOH != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DDCLCNPONOH);
-      }
       if (CPOCELOLNHL != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CPOCELOLNHL);
+      }
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.AddCoin != 0) {
+        AddCoin = other.AddCoin;
+      }
       if (other.NLGNNDIFGGF != 0) {
         NLGNNDIFGGF = other.NLGNNDIFGGF;
       }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.DDCLCNPONOH != 0) {
-        DDCLCNPONOH = other.DDCLCNPONOH;
-      }
       if (other.CPOCELOLNHL != 0) {
         CPOCELOLNHL = other.CPOCELOLNHL;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,19 +289,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            CPOCELOLNHL = input.ReadUInt32();
+          case 48: {
+            AddCoin = input.ReadUInt32();
             break;
           }
-          case 80: {
-            DDCLCNPONOH = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 72: {
             NLGNNDIFGGF = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 112: {
+            CPOCELOLNHL = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             Id = input.ReadUInt32();
             break;
           }
@@ -324,19 +324,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            CPOCELOLNHL = input.ReadUInt32();
+          case 48: {
+            AddCoin = input.ReadUInt32();
             break;
           }
-          case 80: {
-            DDCLCNPONOH = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 72: {
             NLGNNDIFGGF = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 112: {
+            CPOCELOLNHL = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             Id = input.ReadUInt32();
             break;
           }

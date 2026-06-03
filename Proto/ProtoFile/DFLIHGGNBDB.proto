@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DFLIHGGNBDB {
-    uint32 JCJGJBLENCP = 10;
-    uint32 EDIGEANPBNL = 14;
+    uint32 EDIGEANPBNL = 4;
+    uint32 row = 15;
 }

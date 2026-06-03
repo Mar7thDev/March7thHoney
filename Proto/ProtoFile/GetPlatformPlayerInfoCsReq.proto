@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PlatformType.proto";
 
 message GetPlatformPlayerInfoCsReq {
-    repeated string EPIBJAMIJFI = 6;
-    PlatformType platform = 10;
+    repeated string EPIBJAMIJFI = 10;
+    PlatformType platform = 11;
 }

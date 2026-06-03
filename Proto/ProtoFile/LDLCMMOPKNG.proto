@@ -8,11 +8,11 @@ import "EDJKFOBBDJF.proto";
 import "EHPLFHLNMIF.proto";
 
 message LDLCMMOPKNG {
-    repeated BattleTarget battle_target_list = 12;
-    repeated uint32 DCKIGAHCNMJ = 6;
-    BattleGridFightSpecialBattleInfo battle_info = 11;
-    repeated EHPLFHLNMIF avatar_list = 4;
     EDJKFOBBDJF HFPEJIDDDJG = 2;
-    uint32 round_cnt = 3;
-    uint32 DJHHPKMHPBC = 7;
+    repeated EHPLFHLNMIF avatar_list = 3;
+    uint32 DJHHPKMHPBC = 5;
+    uint32 round_cnt = 6;
+    repeated BattleTarget battle_target_list = 8;
+    BattleGridFightSpecialBattleInfo battle_info = 11;
+    repeated uint32 DCKIGAHCNMJ = 15;
 }

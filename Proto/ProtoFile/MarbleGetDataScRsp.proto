@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MarbleGetDataScRsp {
-    repeated uint32 KJJCIMANKOA = 6;
-    repeated uint32 IKGIIIJLLBL = 1;
-    repeated uint32 LHDIMCDHCEO = 7;
-    int32 score_id = 2;
-    uint32 retcode = 15;
+    repeated uint32 IKGIIIJLLBL = 3;
+    int32 score_id = 8;
+    repeated uint32 LHDIMCDHCEO = 11;
+    uint32 retcode = 12;
+    repeated uint32 KJJCIMANKOA = 15;
 }

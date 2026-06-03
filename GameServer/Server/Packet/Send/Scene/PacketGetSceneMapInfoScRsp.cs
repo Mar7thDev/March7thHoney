@@ -151,7 +151,7 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
             if (player.SceneData!.FloorSavedData.TryGetValue((int)floorId, out var floorSavedData))
             {
                 foreach (var (key, value) in floorSavedData)
-                    mazeMap.FloorSavedData[key] = value;
+                    mazeMap.FloorSavedValueMap[key] = value;
             }
 
             if (!ConfigManager.Config.ServerOption.AutoLightSection)

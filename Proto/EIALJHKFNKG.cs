@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFSUFMSkhLRk5LRy5wcm90bxoRR0NGR0NIQU1OT0wucHJvdG8iKwoLRUlB",
-            "TEpIS0ZOS0cSHAoGbGluZXVwGAIgASgLMgwuR0NGR0NIQU1OT0xCFqoCE01h",
+            "TEpIS0ZOS0cSHAoGbGluZXVwGA8gASgLMgwuR0NGR0NIQU1OT0xCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GCFGCHAMNOLReflection.Descriptor, },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "lineup" field.</summary>
-    public const int LineupFieldNumber = 2;
+    public const int LineupFieldNumber = 15;
     private global::March7thHoney.Proto.GCFGCHAMNOL lineup_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (lineup_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(122);
         output.WriteMessage(Lineup);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (lineup_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(122);
         output.WriteMessage(Lineup);
       }
       if (_unknownFields != null) {
@@ -204,7 +204,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 122: {
             if (lineup_ == null) {
               Lineup = new global::March7thHoney.Proto.GCFGCHAMNOL();
             }
@@ -230,7 +230,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 122: {
             if (lineup_ == null) {
               Lineup = new global::March7thHoney.Proto.GCFGCHAMNOL();
             }

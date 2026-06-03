@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengeBossInfo.proto";
 
 message ChallengeStageInfo {
-    ChallengeBossInfo boss_info = 1;
+    ChallengeBossInfo boss_info = 6;
 }

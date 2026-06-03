@@ -6,7 +6,7 @@ import "FDGKFJFICDN.proto";
 import "HOMMPJIOPGI.proto";
 
 message IDJIAGLCAPE {
-    repeated FDGKFJFICDN OJBMGEJCILM = 3;
-    repeated HOMMPJIOPGI DCMAHKHAFEH = 2;
     uint32 IPCFGIEFBKH = 1;
+    repeated HOMMPJIOPGI DCMAHKHAFEH = 2;
+    repeated FDGKFJFICDN OJBMGEJCILM = 3;
 }

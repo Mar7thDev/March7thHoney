@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PlayerAssistInfo.proto";
 
 message CurAssistChangedNotify {
-    PlayerAssistInfo ODHMGPNECFO = 15;
+    PlayerAssistInfo ODHMGPNECFO = 4;
 }

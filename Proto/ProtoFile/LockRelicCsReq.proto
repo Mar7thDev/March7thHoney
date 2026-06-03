@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LockRelicCsReq {
-    repeated uint32 relic_ids = 6;
-    bool NPPKABBJCMI = 4;
-    bool is_locked = 9;
+    bool NPPKABBJCMI = 12;
+    bool is_locked = 13;
+    repeated uint32 relic_ids = 15;
 }

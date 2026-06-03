@@ -6,10 +6,10 @@ import "FMKMEFMOJGJ.proto";
 import "IEDPDDJAAIH.proto";
 
 message PlanetFesGetOfferedCardPieceScRsp {
+    int64 MAFLGLLOKBB = 4;
     repeated IEDPDDJAAIH CBPKFDJMGBH = 5;
-    repeated FMKMEFMOJGJ EOMINOCGLJF = 10;
-    uint64 CBMBOBNCKMO = 13;
-    int64 MAFLGLLOKBB = 2;
-    uint32 retcode = 9;
-    bool FOGGEJIIJCM = 7;
+    bool FOGGEJIIJCM = 6;
+    uint64 CBMBOBNCKMO = 11;
+    repeated FMKMEFMOJGJ EOMINOCGLJF = 14;
+    uint32 retcode = 15;
 }

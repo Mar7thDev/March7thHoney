@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhBY3RpdmVBY3Rpdml0eURhdGEucHJvdG8ijQEKEkFjdGl2ZUFjdGl2aXR5",
-            "RGF0YRIaChJ0YWtlbl9zdGFyX3Jld2FyZHMYCyADKA0SCgoCaWQYAiABKA0S",
-            "EwoLREJJRkVFRE1BT0YYByABKA0SEwoLRk9ETE5LUE5JT04YCiABKA0SEAoI",
-            "cGFuZWxfaWQYDiABKA0SEwoLQ0RNSUtJQ0FORVAYDyABKA1CFqoCE01hcmNo",
+            "RGF0YRIKCgJpZBgDIAEoDRITCgtGT0RMTktQTklPThgFIAEoDRITCgtEQklG",
+            "RUVETUFPRhgIIAEoDRIQCghwYW5lbF9pZBgJIAEoDRIaChJ0YWtlbl9zdGFy",
+            "X3Jld2FyZHMYDCADKA0SEwoLQ0RNSUtJQ0FORVAYDyABKA1CFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ActiveActivityData), global::March7thHoney.Proto.ActiveActivityData.Parser, new[]{ "TakenStarRewards", "Id", "DBIFEEDMAOF", "FODLNKPNION", "PanelId", "CDMIKICANEP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ActiveActivityData), global::March7thHoney.Proto.ActiveActivityData.Parser, new[]{ "Id", "FODLNKPNION", "DBIFEEDMAOF", "PanelId", "TakenStarRewards", "CDMIKICANEP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ActiveActivityData(ActiveActivityData other) : this() {
-      takenStarRewards_ = other.takenStarRewards_.Clone();
       id_ = other.id_;
-      dBIFEEDMAOF_ = other.dBIFEEDMAOF_;
       fODLNKPNION_ = other.fODLNKPNION_;
+      dBIFEEDMAOF_ = other.dBIFEEDMAOF_;
       panelId_ = other.panelId_;
+      takenStarRewards_ = other.takenStarRewards_.Clone();
       cDMIKICANEP_ = other.cDMIKICANEP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -89,19 +89,8 @@ namespace March7thHoney.Proto {
       return new ActiveActivityData(this);
     }
 
-    /// <summary>Field number for the "taken_star_rewards" field.</summary>
-    public const int TakenStarRewardsFieldNumber = 11;
-    private static readonly pb::FieldCodec<uint> _repeated_takenStarRewards_codec
-        = pb::FieldCodec.ForUInt32(90);
-    private readonly pbc::RepeatedField<uint> takenStarRewards_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> TakenStarRewards {
-      get { return takenStarRewards_; }
-    }
-
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 2;
+    public const int IdFieldNumber = 3;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,20 +101,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DBIFEEDMAOF" field.</summary>
-    public const int DBIFEEDMAOFFieldNumber = 7;
-    private uint dBIFEEDMAOF_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DBIFEEDMAOF {
-      get { return dBIFEEDMAOF_; }
-      set {
-        dBIFEEDMAOF_ = value;
-      }
-    }
-
     /// <summary>Field number for the "FODLNKPNION" field.</summary>
-    public const int FODLNKPNIONFieldNumber = 10;
+    public const int FODLNKPNIONFieldNumber = 5;
     private uint fODLNKPNION_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,8 +113,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "DBIFEEDMAOF" field.</summary>
+    public const int DBIFEEDMAOFFieldNumber = 8;
+    private uint dBIFEEDMAOF_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DBIFEEDMAOF {
+      get { return dBIFEEDMAOF_; }
+      set {
+        dBIFEEDMAOF_ = value;
+      }
+    }
+
     /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 14;
+    public const int PanelIdFieldNumber = 9;
     private uint panelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -146,6 +135,17 @@ namespace March7thHoney.Proto {
       set {
         panelId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "taken_star_rewards" field.</summary>
+    public const int TakenStarRewardsFieldNumber = 12;
+    private static readonly pb::FieldCodec<uint> _repeated_takenStarRewards_codec
+        = pb::FieldCodec.ForUInt32(98);
+    private readonly pbc::RepeatedField<uint> takenStarRewards_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> TakenStarRewards {
+      get { return takenStarRewards_; }
     }
 
     /// <summary>Field number for the "CDMIKICANEP" field.</summary>
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!takenStarRewards_.Equals(other.takenStarRewards_)) return false;
       if (Id != other.Id) return false;
-      if (DBIFEEDMAOF != other.DBIFEEDMAOF) return false;
       if (FODLNKPNION != other.FODLNKPNION) return false;
+      if (DBIFEEDMAOF != other.DBIFEEDMAOF) return false;
       if (PanelId != other.PanelId) return false;
+      if(!takenStarRewards_.Equals(other.takenStarRewards_)) return false;
       if (CDMIKICANEP != other.CDMIKICANEP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= takenStarRewards_.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (DBIFEEDMAOF != 0) hash ^= DBIFEEDMAOF.GetHashCode();
       if (FODLNKPNION != 0) hash ^= FODLNKPNION.GetHashCode();
+      if (DBIFEEDMAOF != 0) hash ^= DBIFEEDMAOF.GetHashCode();
       if (PanelId != 0) hash ^= PanelId.GetHashCode();
+      hash ^= takenStarRewards_.GetHashCode();
       if (CDMIKICANEP != 0) hash ^= CDMIKICANEP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -213,22 +213,22 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Id != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Id);
       }
-      if (DBIFEEDMAOF != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(DBIFEEDMAOF);
-      }
       if (FODLNKPNION != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(40);
         output.WriteUInt32(FODLNKPNION);
       }
-      takenStarRewards_.WriteTo(output, _repeated_takenStarRewards_codec);
+      if (DBIFEEDMAOF != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(DBIFEEDMAOF);
+      }
       if (PanelId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteUInt32(PanelId);
       }
+      takenStarRewards_.WriteTo(output, _repeated_takenStarRewards_codec);
       if (CDMIKICANEP != 0) {
         output.WriteRawTag(120);
         output.WriteUInt32(CDMIKICANEP);
@@ -244,22 +244,22 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Id);
       }
-      if (DBIFEEDMAOF != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(DBIFEEDMAOF);
-      }
       if (FODLNKPNION != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(40);
         output.WriteUInt32(FODLNKPNION);
       }
-      takenStarRewards_.WriteTo(ref output, _repeated_takenStarRewards_codec);
+      if (DBIFEEDMAOF != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(DBIFEEDMAOF);
+      }
       if (PanelId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(72);
         output.WriteUInt32(PanelId);
       }
+      takenStarRewards_.WriteTo(ref output, _repeated_takenStarRewards_codec);
       if (CDMIKICANEP != 0) {
         output.WriteRawTag(120);
         output.WriteUInt32(CDMIKICANEP);
@@ -274,19 +274,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += takenStarRewards_.CalculateSize(_repeated_takenStarRewards_codec);
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
-      }
-      if (DBIFEEDMAOF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DBIFEEDMAOF);
       }
       if (FODLNKPNION != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FODLNKPNION);
       }
+      if (DBIFEEDMAOF != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DBIFEEDMAOF);
+      }
       if (PanelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
       }
+      size += takenStarRewards_.CalculateSize(_repeated_takenStarRewards_codec);
       if (CDMIKICANEP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CDMIKICANEP);
       }
@@ -302,19 +302,19 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      takenStarRewards_.Add(other.takenStarRewards_);
       if (other.Id != 0) {
         Id = other.Id;
-      }
-      if (other.DBIFEEDMAOF != 0) {
-        DBIFEEDMAOF = other.DBIFEEDMAOF;
       }
       if (other.FODLNKPNION != 0) {
         FODLNKPNION = other.FODLNKPNION;
       }
+      if (other.DBIFEEDMAOF != 0) {
+        DBIFEEDMAOF = other.DBIFEEDMAOF;
+      }
       if (other.PanelId != 0) {
         PanelId = other.PanelId;
       }
+      takenStarRewards_.Add(other.takenStarRewards_);
       if (other.CDMIKICANEP != 0) {
         CDMIKICANEP = other.CDMIKICANEP;
       }
@@ -337,25 +337,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 24: {
             Id = input.ReadUInt32();
             break;
           }
-          case 56: {
-            DBIFEEDMAOF = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 40: {
             FODLNKPNION = input.ReadUInt32();
             break;
           }
-          case 90:
-          case 88: {
-            takenStarRewards_.AddEntriesFrom(input, _repeated_takenStarRewards_codec);
+          case 64: {
+            DBIFEEDMAOF = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 72: {
             PanelId = input.ReadUInt32();
+            break;
+          }
+          case 98:
+          case 96: {
+            takenStarRewards_.AddEntriesFrom(input, _repeated_takenStarRewards_codec);
             break;
           }
           case 120: {
@@ -381,25 +381,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 24: {
             Id = input.ReadUInt32();
             break;
           }
-          case 56: {
-            DBIFEEDMAOF = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 40: {
             FODLNKPNION = input.ReadUInt32();
             break;
           }
-          case 90:
-          case 88: {
-            takenStarRewards_.AddEntriesFrom(ref input, _repeated_takenStarRewards_codec);
+          case 64: {
+            DBIFEEDMAOF = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 72: {
             PanelId = input.ReadUInt32();
+            break;
+          }
+          case 98:
+          case 96: {
+            takenStarRewards_.AddEntriesFrom(ref input, _repeated_takenStarRewards_codec);
             break;
           }
           case 120: {

@@ -6,13 +6,13 @@ import "DLBGONGJBNC.proto";
 import "NHHJAONHDDG.proto";
 
 message JBILGCPCJOD {
+    uint32 OPHFDHGBLPJ = 1;
+    bool BKFONKNLCHP = 3;
+    NHHJAONHDDG state = 4;
     repeated DLBGONGJBNC item_list = 6;
-    bool BKFONKNLCHP = 13;
-    NHHJAONHDDG state = 8;
-    uint32 DHJANOFGDNP = 4;
-    uint32 rank = 11;
-    uint32 score_id = 5;
-    uint32 hp = 7;
-    uint32 IFOCJCOCDBH = 14;
-    uint32 OPHFDHGBLPJ = 15;
+    uint32 score_id = 8;
+    uint32 IFOCJCOCDBH = 9;
+    uint32 DHJANOFGDNP = 10;
+    uint32 rank = 14;
+    uint32 hp = 15;
 }

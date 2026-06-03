@@ -6,7 +6,7 @@ import "ItemList.proto";
 import "OIEAMBAGHBK.proto";
 
 message TakeBenefitActivityRewardScRsp {
-    ItemList JJOKIIKIHNL = 8;
-    repeated OIEAMBAGHBK switch_list = 15;
-    uint32 retcode = 12;
+    repeated OIEAMBAGHBK switch_list = 4;
+    ItemList JJOKIIKIHNL = 9;
+    uint32 retcode = 13;
 }

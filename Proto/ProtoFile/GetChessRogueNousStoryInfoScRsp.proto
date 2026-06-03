@@ -6,7 +6,7 @@ import "BKJCADFCHAB.proto";
 import "PJBODOPJFGA.proto";
 
 message GetChessRogueNousStoryInfoScRsp {
-    repeated PJBODOPJFGA FNKLMMACCMJ = 11;
-    repeated BKJCADFCHAB POABJDELNGH = 7;
-    uint32 retcode = 6;
+    uint32 retcode = 3;
+    repeated PJBODOPJFGA FNKLMMACCMJ = 5;
+    repeated BKJCADFCHAB POABJDELNGH = 11;
 }

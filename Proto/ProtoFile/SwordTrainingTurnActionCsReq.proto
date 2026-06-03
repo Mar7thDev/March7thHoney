@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SwordTrainingTurnActionCsReq {
-    repeated uint32 CCPADEMEHBA = 6;
-    repeated uint32 GJEPAKHPFCG = 8;
+    repeated uint32 GJEPAKHPFCG = 13;
+    repeated uint32 CCPADEMEHBA = 14;
 }

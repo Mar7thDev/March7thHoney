@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CityShopInfoScNotify {
-    uint32 level = 11;
-    uint32 shop_id = 6;
-    uint32 exp = 3;
-    uint64 taken_level_reward = 2;
+    uint32 level = 1;
+    uint32 shop_id = 2;
+    uint64 taken_level_reward = 4;
+    uint32 exp = 10;
 }

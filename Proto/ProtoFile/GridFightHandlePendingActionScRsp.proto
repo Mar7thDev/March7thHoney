@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GridFightHandlePendingActionScRsp {
-    uint32 retcode = 7;
-    uint32 queue_position = 15;
+    uint32 retcode = 12;
+    uint32 queue_position = 13;
 }

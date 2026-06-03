@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CixFbnRlclN0cm9uZ0NoYWxsZW5nZUFjdGl2aXR5U3RhZ2VDc1JlcS5wcm90",
             "bxobU3Ryb25nQ2hhbGxlbmdlQXZhdGFyLnByb3RvInoKJkVudGVyU3Ryb25n",
-            "Q2hhbGxlbmdlQWN0aXZpdHlTdGFnZUNzUmVxEhEKCWJ1ZmZfbGlzdBgMIAMo",
-            "DRIrCgthdmF0YXJfbGlzdBgOIAMoCzIWLlN0cm9uZ0NoYWxsZW5nZUF2YXRh",
-            "chIQCghzdGFnZV9pZBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "Q2hhbGxlbmdlQWN0aXZpdHlTdGFnZUNzUmVxEhAKCHN0YWdlX2lkGAMgASgN",
+            "EhEKCWJ1ZmZfbGlzdBgFIAMoDRIrCgthdmF0YXJfbGlzdBgNIAMoCzIWLlN0",
+            "cm9uZ0NoYWxsZW5nZUF2YXRhckIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
             "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.StrongChallengeAvatarReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterStrongChallengeActivityStageCsReq), global::March7thHoney.Proto.EnterStrongChallengeActivityStageCsReq.Parser, new[]{ "BuffList", "AvatarList", "StageId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EnterStrongChallengeActivityStageCsReq), global::March7thHoney.Proto.EnterStrongChallengeActivityStageCsReq.Parser, new[]{ "StageId", "BuffList", "AvatarList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EnterStrongChallengeActivityStageCsReq(EnterStrongChallengeActivityStageCsReq other) : this() {
+      stageId_ = other.stageId_;
       buffList_ = other.buffList_.Clone();
       avatarList_ = other.avatarList_.Clone();
-      stageId_ = other.stageId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,30 +87,8 @@ namespace March7thHoney.Proto {
       return new EnterStrongChallengeActivityStageCsReq(this);
     }
 
-    /// <summary>Field number for the "buff_list" field.</summary>
-    public const int BuffListFieldNumber = 12;
-    private static readonly pb::FieldCodec<uint> _repeated_buffList_codec
-        = pb::FieldCodec.ForUInt32(98);
-    private readonly pbc::RepeatedField<uint> buffList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> BuffList {
-      get { return buffList_; }
-    }
-
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.StrongChallengeAvatar> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.StrongChallengeAvatar.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.StrongChallengeAvatar> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.StrongChallengeAvatar>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.StrongChallengeAvatar> AvatarList {
-      get { return avatarList_; }
-    }
-
     /// <summary>Field number for the "stage_id" field.</summary>
-    public const int StageIdFieldNumber = 15;
+    public const int StageIdFieldNumber = 3;
     private uint stageId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,6 +97,28 @@ namespace March7thHoney.Proto {
       set {
         stageId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "buff_list" field.</summary>
+    public const int BuffListFieldNumber = 5;
+    private static readonly pb::FieldCodec<uint> _repeated_buffList_codec
+        = pb::FieldCodec.ForUInt32(42);
+    private readonly pbc::RepeatedField<uint> buffList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> BuffList {
+      get { return buffList_; }
+    }
+
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.StrongChallengeAvatar> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.StrongChallengeAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.StrongChallengeAvatar> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.StrongChallengeAvatar>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.StrongChallengeAvatar> AvatarList {
+      get { return avatarList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (StageId != other.StageId) return false;
       if(!buffList_.Equals(other.buffList_)) return false;
       if(!avatarList_.Equals(other.avatarList_)) return false;
-      if (StageId != other.StageId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (StageId != 0) hash ^= StageId.GetHashCode();
       hash ^= buffList_.GetHashCode();
       hash ^= avatarList_.GetHashCode();
-      if (StageId != 0) hash ^= StageId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,12 +167,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      buffList_.WriteTo(output, _repeated_buffList_codec);
-      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (StageId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(24);
         output.WriteUInt32(StageId);
       }
+      buffList_.WriteTo(output, _repeated_buffList_codec);
+      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -183,12 +183,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      buffList_.WriteTo(ref output, _repeated_buffList_codec);
-      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (StageId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(24);
         output.WriteUInt32(StageId);
       }
+      buffList_.WriteTo(ref output, _repeated_buffList_codec);
+      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -199,11 +199,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += buffList_.CalculateSize(_repeated_buffList_codec);
-      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
       if (StageId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageId);
       }
+      size += buffList_.CalculateSize(_repeated_buffList_codec);
+      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -216,11 +216,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      buffList_.Add(other.buffList_);
-      avatarList_.Add(other.avatarList_);
       if (other.StageId != 0) {
         StageId = other.StageId;
       }
+      buffList_.Add(other.buffList_);
+      avatarList_.Add(other.avatarList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -240,17 +240,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 98:
-          case 96: {
+          case 24: {
+            StageId = input.ReadUInt32();
+            break;
+          }
+          case 42:
+          case 40: {
             buffList_.AddEntriesFrom(input, _repeated_buffList_codec);
             break;
           }
-          case 114: {
+          case 106: {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
-            break;
-          }
-          case 120: {
-            StageId = input.ReadUInt32();
             break;
           }
         }
@@ -272,17 +272,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 98:
-          case 96: {
+          case 24: {
+            StageId = input.ReadUInt32();
+            break;
+          }
+          case 42:
+          case 40: {
             buffList_.AddEntriesFrom(ref input, _repeated_buffList_codec);
             break;
           }
-          case 114: {
+          case 106: {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
-            break;
-          }
-          case 120: {
-            StageId = input.ReadUInt32();
             break;
           }
         }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFERUZGRkxHSkFFTS5wcm90byIzCgtERUZGRkxHSkFFTRITCgtET09BQ0VI",
-            "T1BFRRgKIAEoDRIPCgdpc19tZWV0GA8gASgIQhaqAhNNYXJjaDd0aEhvbmV5",
+            "T1BFRRgGIAEoDRIPCgdpc19tZWV0GAcgASgIQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DOOACEHOPEE" field.</summary>
-    public const int DOOACEHOPEEFieldNumber = 10;
+    public const int DOOACEHOPEEFieldNumber = 6;
     private uint dOOACEHOPEE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_meet" field.</summary>
-    public const int IsMeetFieldNumber = 15;
+    public const int IsMeetFieldNumber = 7;
     private bool isMeet_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (DOOACEHOPEE != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(DOOACEHOPEE);
       }
       if (IsMeet != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteBool(IsMeet);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (DOOACEHOPEE != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteUInt32(DOOACEHOPEE);
       }
       if (IsMeet != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(56);
         output.WriteBool(IsMeet);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 48: {
             DOOACEHOPEE = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 56: {
             IsMeet = input.ReadBool();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 48: {
             DOOACEHOPEE = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 56: {
             IsMeet = input.ReadBool();
             break;
           }

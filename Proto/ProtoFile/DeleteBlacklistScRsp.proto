@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DeleteBlacklistScRsp {
-    uint32 uid = 3;
-    uint32 retcode = 6;
+    uint32 retcode = 1;
+    uint32 uid = 5;
 }

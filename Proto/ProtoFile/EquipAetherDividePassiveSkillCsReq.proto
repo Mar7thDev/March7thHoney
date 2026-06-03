@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EquipAetherDividePassiveSkillCsReq {
-    uint32 APGDJGPGGMO = 6;
-    uint32 slot = 13;
-    uint32 item_id = 15;
-}

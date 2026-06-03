@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static ClientDownloadDataReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbGllbnREb3dubG9hZERhdGEucHJvdG8iVgoSQ2xpZW50RG93bmxvYWRE",
-            "YXRhEgwKBGRhdGEYAyABKAwSDAoEdGltZRgCIAEoAxITCgtESkNOSENHRkhL",
-            "RhgEIAEoDRIPCgd2ZXJzaW9uGAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
-            "b3RvYgZwcm90bzM="));
+            "ChhDbGllbnREb3dubG9hZERhdGEucHJvdG8iVQoSQ2xpZW50RG93bmxvYWRE",
+            "YXRhEg8KB3ZlcnNpb24YASABKA0SDAoEdGltZRgCIAEoAxIMCgRkYXRhGAMg",
+            "ASgMEhIKCmNoYW5uZWxfaWQYBCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientDownloadData), global::March7thHoney.Proto.ClientDownloadData.Parser, new[]{ "Data", "Time", "DJCNHCGFHKF", "Version" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientDownloadData), global::March7thHoney.Proto.ClientDownloadData.Parser, new[]{ "Version", "Time", "Data", "ChannelId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientDownloadData(ClientDownloadData other) : this() {
-      data_ = other.data_;
-      time_ = other.time_;
-      dJCNHCGFHKF_ = other.dJCNHCGFHKF_;
       version_ = other.version_;
+      time_ = other.time_;
+      data_ = other.data_;
+      channelId_ = other.channelId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,15 +86,15 @@ namespace March7thHoney.Proto {
       return new ClientDownloadData(this);
     }
 
-    /// <summary>Field number for the "data" field.</summary>
-    public const int DataFieldNumber = 3;
-    private pb::ByteString data_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "version" field.</summary>
+    public const int VersionFieldNumber = 1;
+    private uint version_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pb::ByteString Data {
-      get { return data_; }
+    public uint Version {
+      get { return version_; }
       set {
-        data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        version_ = value;
       }
     }
 
@@ -110,27 +110,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "DJCNHCGFHKF" field.</summary>
-    public const int DJCNHCGFHKFFieldNumber = 4;
-    private uint dJCNHCGFHKF_;
+    /// <summary>Field number for the "data" field.</summary>
+    public const int DataFieldNumber = 3;
+    private pb::ByteString data_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DJCNHCGFHKF {
-      get { return dJCNHCGFHKF_; }
+    public pb::ByteString Data {
+      get { return data_; }
       set {
-        dJCNHCGFHKF_ = value;
+        data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
-    /// <summary>Field number for the "version" field.</summary>
-    public const int VersionFieldNumber = 1;
-    private uint version_;
+    /// <summary>Field number for the "channel_id" field.</summary>
+    public const int ChannelIdFieldNumber = 4;
+    private uint channelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Version {
-      get { return version_; }
+    public uint ChannelId {
+      get { return channelId_; }
       set {
-        version_ = value;
+        channelId_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Data != other.Data) return false;
-      if (Time != other.Time) return false;
-      if (DJCNHCGFHKF != other.DJCNHCGFHKF) return false;
       if (Version != other.Version) return false;
+      if (Time != other.Time) return false;
+      if (Data != other.Data) return false;
+      if (ChannelId != other.ChannelId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Data.Length != 0) hash ^= Data.GetHashCode();
-      if (Time != 0L) hash ^= Time.GetHashCode();
-      if (DJCNHCGFHKF != 0) hash ^= DJCNHCGFHKF.GetHashCode();
       if (Version != 0) hash ^= Version.GetHashCode();
+      if (Time != 0L) hash ^= Time.GetHashCode();
+      if (Data.Length != 0) hash ^= Data.GetHashCode();
+      if (ChannelId != 0) hash ^= ChannelId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -194,9 +194,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(26);
         output.WriteBytes(Data);
       }
-      if (DJCNHCGFHKF != 0) {
+      if (ChannelId != 0) {
         output.WriteRawTag(32);
-        output.WriteUInt32(DJCNHCGFHKF);
+        output.WriteUInt32(ChannelId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -220,9 +220,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(26);
         output.WriteBytes(Data);
       }
-      if (DJCNHCGFHKF != 0) {
+      if (ChannelId != 0) {
         output.WriteRawTag(32);
-        output.WriteUInt32(DJCNHCGFHKF);
+        output.WriteUInt32(ChannelId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Data.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
+      if (Version != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Version);
       }
       if (Time != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
       }
-      if (DJCNHCGFHKF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DJCNHCGFHKF);
+      if (Data.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Data);
       }
-      if (Version != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Version);
+      if (ChannelId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChannelId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Data.Length != 0) {
-        Data = other.Data;
+      if (other.Version != 0) {
+        Version = other.Version;
       }
       if (other.Time != 0L) {
         Time = other.Time;
       }
-      if (other.DJCNHCGFHKF != 0) {
-        DJCNHCGFHKF = other.DJCNHCGFHKF;
+      if (other.Data.Length != 0) {
+        Data = other.Data;
       }
-      if (other.Version != 0) {
-        Version = other.Version;
+      if (other.ChannelId != 0) {
+        ChannelId = other.ChannelId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -302,7 +302,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            DJCNHCGFHKF = input.ReadUInt32();
+            ChannelId = input.ReadUInt32();
             break;
           }
         }
@@ -337,7 +337,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            DJCNHCGFHKF = input.ReadUInt32();
+            ChannelId = input.ReadUInt32();
             break;
           }
         }

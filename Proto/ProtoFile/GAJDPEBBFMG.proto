@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message GAJDPEBBFMG {
-    ItemCostData LNIEFKBMIPD = 6;
+    ItemCostData LNIEFKBMIPD = 11;
 }

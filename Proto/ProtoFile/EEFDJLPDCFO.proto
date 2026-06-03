@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EEFDJLPDCFO {
-    uint32 EMLBKOKEAOH = 2;
-    uint32 PBEPLKMNAKF = 1;
-    uint32 DPJLMFBADMM = 5;
+    uint32 DPJLMFBADMM = 6;
+    uint32 EMLBKOKEAOH = 12;
+    uint32 PBEPLKMNAKF = 14;
 }

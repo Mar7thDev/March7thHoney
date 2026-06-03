@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFQTE9GS0pES0VQTi5wcm90bxoRSkhBQ0ZGSklQSEsucHJvdG8aEVBDT05C",
-            "T0dFREZELnByb3RvIlIKC1BMT0ZLSkRLRVBOEiAKCnF1ZXN0X2xpc3QYCCAD",
-            "KAsyDC5KSEFDRkZKSVBISxIhCgtERkJHQU9BSkxJQxgEIAEoCzIMLlBDT05C",
+            "T0dFREZELnByb3RvIlIKC1BMT0ZLSkRLRVBOEiAKCnF1ZXN0X2xpc3QYByAD",
+            "KAsyDC5KSEFDRkZKSVBISxIhCgtERkJHQU9BSkxJQxgIIAEoCzIMLlBDT05C",
             "T0dFREZEQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JHACFFJIPHKReflection.Descriptor, global::March7thHoney.Proto.PCONBOGEDFDReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "quest_list" field.</summary>
-    public const int QuestListFieldNumber = 8;
+    public const int QuestListFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.JHACFFJIPHK> _repeated_questList_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.JHACFFJIPHK.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.JHACFFJIPHK.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.JHACFFJIPHK> questList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JHACFFJIPHK>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DFBGAOAJLIC" field.</summary>
-    public const int DFBGAOAJLICFieldNumber = 4;
+    public const int DFBGAOAJLICFieldNumber = 8;
     private global::March7thHoney.Proto.PCONBOGEDFD dFBGAOAJLIC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      questList_.WriteTo(output, _repeated_questList_codec);
       if (dFBGAOAJLIC_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(DFBGAOAJLIC);
       }
-      questList_.WriteTo(output, _repeated_questList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      questList_.WriteTo(ref output, _repeated_questList_codec);
       if (dFBGAOAJLIC_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(DFBGAOAJLIC);
       }
-      questList_.WriteTo(ref output, _repeated_questList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -223,15 +223,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 58: {
+            questList_.AddEntriesFrom(input, _repeated_questList_codec);
+            break;
+          }
+          case 66: {
             if (dFBGAOAJLIC_ == null) {
               DFBGAOAJLIC = new global::March7thHoney.Proto.PCONBOGEDFD();
             }
             input.ReadMessage(DFBGAOAJLIC);
-            break;
-          }
-          case 66: {
-            questList_.AddEntriesFrom(input, _repeated_questList_codec);
             break;
           }
         }
@@ -253,15 +253,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 58: {
+            questList_.AddEntriesFrom(ref input, _repeated_questList_codec);
+            break;
+          }
+          case 66: {
             if (dFBGAOAJLIC_ == null) {
               DFBGAOAJLIC = new global::March7thHoney.Proto.PCONBOGEDFD();
             }
             input.ReadMessage(DFBGAOAJLIC);
-            break;
-          }
-          case 66: {
-            questList_.AddEntriesFrom(ref input, _repeated_questList_codec);
             break;
           }
         }

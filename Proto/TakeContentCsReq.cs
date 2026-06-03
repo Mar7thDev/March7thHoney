@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static TakeContentCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZUYWtlQ29udGVudENzUmVxLnByb3RvGhFMUFBLR0hKR09DQy5wcm90byJJ",
-            "ChBUYWtlQ29udGVudENzUmVxEiEKC01NTkpPRElKUE9FGAkgASgOMgwuTFBQ",
-            "S0dISkdPQ0MSEgoKY29udGVudF9pZBgGIAEoDUIWqgITTWFyY2g3dGhIb25l",
-            "eS5Qcm90b2IGcHJvdG8z"));
+            "ChZUYWtlQ29udGVudENzUmVxLnByb3RvGhFMUFBLR0hKR09DQy5wcm90byJK",
+            "ChBUYWtlQ29udGVudENzUmVxEiIKDGNvbnRlbnRfdHlwZRgGIAEoDjIMLkxQ",
+            "UEtHSEpHT0NDEhIKCmNvbnRlbnRfaWQYDiABKA1CFqoCE01hcmNoN3RoSG9u",
+            "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LPPKGHJGOCCReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeContentCsReq), global::March7thHoney.Proto.TakeContentCsReq.Parser, new[]{ "MMNJODIJPOE", "ContentId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeContentCsReq), global::March7thHoney.Proto.TakeContentCsReq.Parser, new[]{ "ContentType", "ContentId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeContentCsReq(TakeContentCsReq other) : this() {
-      mMNJODIJPOE_ = other.mMNJODIJPOE_;
+      contentType_ = other.contentType_;
       contentId_ = other.contentId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,20 +84,20 @@ namespace March7thHoney.Proto {
       return new TakeContentCsReq(this);
     }
 
-    /// <summary>Field number for the "MMNJODIJPOE" field.</summary>
-    public const int MMNJODIJPOEFieldNumber = 9;
-    private global::March7thHoney.Proto.LPPKGHJGOCC mMNJODIJPOE_ = global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj;
+    /// <summary>Field number for the "content_type" field.</summary>
+    public const int ContentTypeFieldNumber = 6;
+    private global::March7thHoney.Proto.LPPKGHJGOCC contentType_ = global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.LPPKGHJGOCC MMNJODIJPOE {
-      get { return mMNJODIJPOE_; }
+    public global::March7thHoney.Proto.LPPKGHJGOCC ContentType {
+      get { return contentType_; }
       set {
-        mMNJODIJPOE_ = value;
+        contentType_ = value;
       }
     }
 
     /// <summary>Field number for the "content_id" field.</summary>
-    public const int ContentIdFieldNumber = 6;
+    public const int ContentIdFieldNumber = 14;
     private uint contentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MMNJODIJPOE != other.MMNJODIJPOE) return false;
+      if (ContentType != other.ContentType) return false;
       if (ContentId != other.ContentId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MMNJODIJPOE != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) hash ^= MMNJODIJPOE.GetHashCode();
+      if (ContentType != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) hash ^= ContentType.GetHashCode();
       if (ContentId != 0) hash ^= ContentId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ContentId != 0) {
+      if (ContentType != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) {
         output.WriteRawTag(48);
-        output.WriteUInt32(ContentId);
+        output.WriteEnum((int) ContentType);
       }
-      if (MMNJODIJPOE != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) {
-        output.WriteRawTag(72);
-        output.WriteEnum((int) MMNJODIJPOE);
+      if (ContentId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(ContentId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ContentId != 0) {
+      if (ContentType != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) {
         output.WriteRawTag(48);
-        output.WriteUInt32(ContentId);
+        output.WriteEnum((int) ContentType);
       }
-      if (MMNJODIJPOE != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) {
-        output.WriteRawTag(72);
-        output.WriteEnum((int) MMNJODIJPOE);
+      if (ContentId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(ContentId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,8 +188,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MMNJODIJPOE != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MMNJODIJPOE);
+      if (ContentType != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ContentType);
       }
       if (ContentId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ContentId);
@@ -206,8 +206,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MMNJODIJPOE != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) {
-        MMNJODIJPOE = other.MMNJODIJPOE;
+      if (other.ContentType != global::March7thHoney.Proto.LPPKGHJGOCC.Nlcdgipgfdj) {
+        ContentType = other.ContentType;
       }
       if (other.ContentId != 0) {
         ContentId = other.ContentId;
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 48: {
-            ContentId = input.ReadUInt32();
+            ContentType = (global::March7thHoney.Proto.LPPKGHJGOCC) input.ReadEnum();
             break;
           }
-          case 72: {
-            MMNJODIJPOE = (global::March7thHoney.Proto.LPPKGHJGOCC) input.ReadEnum();
+          case 112: {
+            ContentId = input.ReadUInt32();
             break;
           }
         }
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 48: {
-            ContentId = input.ReadUInt32();
+            ContentType = (global::March7thHoney.Proto.LPPKGHJGOCC) input.ReadEnum();
             break;
           }
-          case 72: {
-            MMNJODIJPOE = (global::March7thHoney.Proto.LPPKGHJGOCC) input.ReadEnum();
+          case 112: {
+            ContentId = input.ReadUInt32();
             break;
           }
         }

@@ -6,6 +6,6 @@ import "NEJMJMJAMMA.proto";
 import "NIFPICHIDLJ.proto";
 
 message FMEKABDGCEC {
-    repeated NIFPICHIDLJ message_datas = 2;
     NEJMJMJAMMA GIOJALJAIIF = 1;
+    repeated NIFPICHIDLJ message_datas = 2;
 }

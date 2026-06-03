@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KJDLIPEIAAK {
-    uint32 OLELCDKLPDK = 9;
-    bool IFONLBKJGFE = 11;
+    uint32 OLELCDKLPDK = 3;
+    bool IFONLBKJGFE = 15;
 }

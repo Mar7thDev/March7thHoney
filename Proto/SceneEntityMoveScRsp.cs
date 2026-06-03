@@ -24,16 +24,14 @@ namespace March7thHoney.Proto {
     static SceneEntityMoveScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpTY2VuZUVudGl0eU1vdmVTY1JzcC5wcm90bxoYQ2xpZW50RG93bmxvYWRE",
-            "YXRhLnByb3RvGhJFbnRpdHlNb3Rpb24ucHJvdG8ifgoUU2NlbmVFbnRpdHlN",
-            "b3ZlU2NSc3ASKQoSZW50aXR5X21vdGlvbl9saXN0GAcgAygLMg0uRW50aXR5",
-            "TW90aW9uEioKDWRvd25sb2FkX2RhdGEYCSABKAsyEy5DbGllbnREb3dubG9h",
-            "ZERhdGESDwoHcmV0Y29kZRgGIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
-            "b2IGcHJvdG8z"));
+            "ChpTY2VuZUVudGl0eU1vdmVTY1JzcC5wcm90bxoSRW50aXR5TW90aW9uLnBy",
+            "b3RvIlIKFFNjZW5lRW50aXR5TW92ZVNjUnNwEg8KB3JldGNvZGUYBiABKA0S",
+            "KQoSZW50aXR5X21vdGlvbl9saXN0GAwgAygLMg0uRW50aXR5TW90aW9uQhaq",
+            "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ClientDownloadDataReflection.Descriptor, global::March7thHoney.Proto.EntityMotionReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.EntityMotionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityMoveScRsp), global::March7thHoney.Proto.SceneEntityMoveScRsp.Parser, new[]{ "EntityMotionList", "DownloadData", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneEntityMoveScRsp), global::March7thHoney.Proto.SceneEntityMoveScRsp.Parser, new[]{ "Retcode", "EntityMotionList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneEntityMoveScRsp(SceneEntityMoveScRsp other) : this() {
-      entityMotionList_ = other.entityMotionList_.Clone();
-      downloadData_ = other.downloadData_ != null ? other.downloadData_.Clone() : null;
       retcode_ = other.retcode_;
+      entityMotionList_ = other.entityMotionList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,29 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneEntityMoveScRsp Clone() {
       return new SceneEntityMoveScRsp(this);
-    }
-
-    /// <summary>Field number for the "entity_motion_list" field.</summary>
-    public const int EntityMotionListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EntityMotion> _repeated_entityMotionList_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.EntityMotion.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion> entityMotionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion> EntityMotionList {
-      get { return entityMotionList_; }
-    }
-
-    /// <summary>Field number for the "download_data" field.</summary>
-    public const int DownloadDataFieldNumber = 9;
-    private global::March7thHoney.Proto.ClientDownloadData downloadData_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ClientDownloadData DownloadData {
-      get { return downloadData_; }
-      set {
-        downloadData_ = value;
-      }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
@@ -120,6 +94,17 @@ namespace March7thHoney.Proto {
       set {
         retcode_ = value;
       }
+    }
+
+    /// <summary>Field number for the "entity_motion_list" field.</summary>
+    public const int EntityMotionListFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EntityMotion> _repeated_entityMotionList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.EntityMotion.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion> entityMotionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.EntityMotion> EntityMotionList {
+      get { return entityMotionList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -137,9 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!entityMotionList_.Equals(other.entityMotionList_)) return false;
-      if (!object.Equals(DownloadData, other.DownloadData)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!entityMotionList_.Equals(other.entityMotionList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= entityMotionList_.GetHashCode();
-      if (downloadData_ != null) hash ^= DownloadData.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= entityMotionList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -173,10 +156,6 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Retcode);
       }
       entityMotionList_.WriteTo(output, _repeated_entityMotionList_codec);
-      if (downloadData_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(DownloadData);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -192,10 +171,6 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Retcode);
       }
       entityMotionList_.WriteTo(ref output, _repeated_entityMotionList_codec);
-      if (downloadData_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(DownloadData);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -206,13 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += entityMotionList_.CalculateSize(_repeated_entityMotionList_codec);
-      if (downloadData_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(DownloadData);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += entityMotionList_.CalculateSize(_repeated_entityMotionList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -225,16 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      entityMotionList_.Add(other.entityMotionList_);
-      if (other.downloadData_ != null) {
-        if (downloadData_ == null) {
-          DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
-        }
-        DownloadData.MergeFrom(other.DownloadData);
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      entityMotionList_.Add(other.entityMotionList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -258,15 +224,8 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 58: {
+          case 98: {
             entityMotionList_.AddEntriesFrom(input, _repeated_entityMotionList_codec);
-            break;
-          }
-          case 74: {
-            if (downloadData_ == null) {
-              DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
-            }
-            input.ReadMessage(DownloadData);
             break;
           }
         }
@@ -292,15 +251,8 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 58: {
+          case 98: {
             entityMotionList_.AddEntriesFrom(ref input, _repeated_entityMotionList_codec);
-            break;
-          }
-          case 74: {
-            if (downloadData_ == null) {
-              DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
-            }
-            input.ReadMessage(DownloadData);
             break;
           }
         }

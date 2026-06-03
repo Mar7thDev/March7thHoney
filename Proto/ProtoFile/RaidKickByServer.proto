@@ -7,9 +7,9 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message RaidKickByServer {
-    LineupInfo lineup = 13;
-    SceneInfo scene = 3;
+    LineupInfo lineup = 3;
     uint32 world_level = 5;
-    uint32 raid_id = 10;
-    GMFMPPKAEHE reason = 12;
+    uint32 raid_id = 7;
+    GMFMPPKAEHE reason = 9;
+    SceneInfo scene = 15;
 }

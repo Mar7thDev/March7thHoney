@@ -3,8 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChenLingFesLevelStartScRsp {
-    string NLMEEEKBPKO = 12;
-    string FGGCAOAPGPA = 13;
-    uint32 retcode = 7;
-    uint32 level_id = 2;
+    uint32 FGKPIDLKALL = 2;
+    string NLMEEEKBPKO = 5;
+    string FGGCAOAPGPA = 9;
+    uint32 retcode = 12;
+    uint32 level_id = 13;
 }

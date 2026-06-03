@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message HCHDLMIOOIP {
+    uint32 stage_id = 1;
+    uint64 room_id = 2;
+    uint32 PJGILAADCPN = 3;
+    bool IDPIIMCMPDJ = 4;
+    uint32 result = 5;
+    uint32 max_wave = 6;
+    uint32 cost_time = 7;
+}

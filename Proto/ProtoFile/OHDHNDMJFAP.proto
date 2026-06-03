@@ -6,6 +6,6 @@ import "BattleAvatarServantInfo.proto";
 
 message OHDHNDMJFAP {
     repeated BattleAvatarServantInfo GFOAHHHNBJC = 1;
-    uint32 BOBELCJDDOA = 3;
     uint32 GNMMFALALLD = 2;
+    uint32 BOBELCJDDOA = 3;
 }

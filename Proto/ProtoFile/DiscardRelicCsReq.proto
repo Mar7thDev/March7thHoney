@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RelicDiscardType.proto";
 
 message DiscardRelicCsReq {
-    repeated uint32 relic_ids = 8;
-    uint64 KDGCPMGOPPJ = 14;
-    bool discarded = 4;
-    RelicDiscardType IFEEJKMACHF = 9;
+    repeated uint32 relic_ids = 1;
+    bool DKPCAIGPHNO = 6;
+    RelicDiscardType IFEEJKMACHF = 8;
+    uint64 KDGCPMGOPPJ = 13;
 }

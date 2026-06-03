@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "COIMBCBMNIE.proto";
 
 message ParkourGetRankingInfoScRsp {
-    repeated COIMBCBMNIE JNMFKJHCOEG = 10;
-    COIMBCBMNIE LGFNFABAAGA = 5;
-    uint32 retcode = 7;
+    COIMBCBMNIE LGFNFABAAGA = 1;
+    repeated COIMBCBMNIE JNMFKJHCOEG = 5;
+    uint32 retcode = 8;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MOOKMKEKMKC.proto";
 
 message ChessRogueNousDiceUpdateNotify {
-    MOOKMKEKMKC DDHKAGCLBLH = 12;
+    MOOKMKEKMKC DDHKAGCLBLH = 11;
 }

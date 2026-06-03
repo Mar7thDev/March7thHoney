@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static GoodsReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgtHb29kcy5wcm90byJjCgVHb29kcxIPCgdpdGVtX2lkGAEgASgNEhAKCGdv",
-            "b2RzX2lkGAMgASgNEhEKCWJ1eV90aW1lcxgMIAEoDRIQCghlbmRfdGltZRgH",
-            "IAEoAxISCgpiZWdpbl90aW1lGAogASgDQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "CgtHb29kcy5wcm90byJjCgVHb29kcxIQCghlbmRfdGltZRgBIAEoAxIQCghn",
+            "b29kc19pZBgGIAEoDRIRCglidXlfdGltZXMYByABKA0SDwoHaXRlbV9pZBgK",
+            "IAEoDRISCgpiZWdpbl90aW1lGA8gASgDQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Goods), global::March7thHoney.Proto.Goods.Parser, new[]{ "ItemId", "GoodsId", "BuyTimes", "EndTime", "BeginTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Goods), global::March7thHoney.Proto.Goods.Parser, new[]{ "EndTime", "GoodsId", "BuyTimes", "ItemId", "BeginTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Goods(Goods other) : this() {
-      itemId_ = other.itemId_;
+      endTime_ = other.endTime_;
       goodsId_ = other.goodsId_;
       buyTimes_ = other.buyTimes_;
-      endTime_ = other.endTime_;
+      itemId_ = other.itemId_;
       beginTime_ = other.beginTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -87,20 +87,20 @@ namespace March7thHoney.Proto {
       return new Goods(this);
     }
 
-    /// <summary>Field number for the "item_id" field.</summary>
-    public const int ItemIdFieldNumber = 1;
-    private uint itemId_;
+    /// <summary>Field number for the "end_time" field.</summary>
+    public const int EndTimeFieldNumber = 1;
+    private long endTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ItemId {
-      get { return itemId_; }
+    public long EndTime {
+      get { return endTime_; }
       set {
-        itemId_ = value;
+        endTime_ = value;
       }
     }
 
     /// <summary>Field number for the "goods_id" field.</summary>
-    public const int GoodsIdFieldNumber = 3;
+    public const int GoodsIdFieldNumber = 6;
     private uint goodsId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -112,7 +112,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "buy_times" field.</summary>
-    public const int BuyTimesFieldNumber = 12;
+    public const int BuyTimesFieldNumber = 7;
     private uint buyTimes_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,20 +123,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 7;
-    private long endTime_;
+    /// <summary>Field number for the "item_id" field.</summary>
+    public const int ItemIdFieldNumber = 10;
+    private uint itemId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long EndTime {
-      get { return endTime_; }
+    public uint ItemId {
+      get { return itemId_; }
       set {
-        endTime_ = value;
+        itemId_ = value;
       }
     }
 
     /// <summary>Field number for the "begin_time" field.</summary>
-    public const int BeginTimeFieldNumber = 10;
+    public const int BeginTimeFieldNumber = 15;
     private long beginTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -162,10 +162,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ItemId != other.ItemId) return false;
+      if (EndTime != other.EndTime) return false;
       if (GoodsId != other.GoodsId) return false;
       if (BuyTimes != other.BuyTimes) return false;
-      if (EndTime != other.EndTime) return false;
+      if (ItemId != other.ItemId) return false;
       if (BeginTime != other.BeginTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -174,10 +174,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ItemId != 0) hash ^= ItemId.GetHashCode();
+      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
       if (GoodsId != 0) hash ^= GoodsId.GetHashCode();
       if (BuyTimes != 0) hash ^= BuyTimes.GetHashCode();
-      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
+      if (ItemId != 0) hash ^= ItemId.GetHashCode();
       if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -197,25 +197,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ItemId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(ItemId);
-      }
-      if (GoodsId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(GoodsId);
-      }
       if (EndTime != 0L) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteInt64(EndTime);
       }
-      if (BeginTime != 0L) {
-        output.WriteRawTag(80);
-        output.WriteInt64(BeginTime);
+      if (GoodsId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(GoodsId);
       }
       if (BuyTimes != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(BuyTimes);
+      }
+      if (ItemId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(ItemId);
+      }
+      if (BeginTime != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(BeginTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -227,25 +227,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ItemId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(ItemId);
-      }
-      if (GoodsId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(GoodsId);
-      }
       if (EndTime != 0L) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(8);
         output.WriteInt64(EndTime);
       }
-      if (BeginTime != 0L) {
-        output.WriteRawTag(80);
-        output.WriteInt64(BeginTime);
+      if (GoodsId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(GoodsId);
       }
       if (BuyTimes != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(BuyTimes);
+      }
+      if (ItemId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(ItemId);
+      }
+      if (BeginTime != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(BeginTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -257,8 +257,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ItemId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ItemId);
+      if (EndTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
       }
       if (GoodsId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GoodsId);
@@ -266,8 +266,8 @@ namespace March7thHoney.Proto {
       if (BuyTimes != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuyTimes);
       }
-      if (EndTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
+      if (ItemId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ItemId);
       }
       if (BeginTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
@@ -284,8 +284,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ItemId != 0) {
-        ItemId = other.ItemId;
+      if (other.EndTime != 0L) {
+        EndTime = other.EndTime;
       }
       if (other.GoodsId != 0) {
         GoodsId = other.GoodsId;
@@ -293,8 +293,8 @@ namespace March7thHoney.Proto {
       if (other.BuyTimes != 0) {
         BuyTimes = other.BuyTimes;
       }
-      if (other.EndTime != 0L) {
-        EndTime = other.EndTime;
+      if (other.ItemId != 0) {
+        ItemId = other.ItemId;
       }
       if (other.BeginTime != 0L) {
         BeginTime = other.BeginTime;
@@ -319,23 +319,23 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            ItemId = input.ReadUInt32();
+            EndTime = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 48: {
             GoodsId = input.ReadUInt32();
             break;
           }
           case 56: {
-            EndTime = input.ReadInt64();
+            BuyTimes = input.ReadUInt32();
             break;
           }
           case 80: {
-            BeginTime = input.ReadInt64();
+            ItemId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            BuyTimes = input.ReadUInt32();
+          case 120: {
+            BeginTime = input.ReadInt64();
             break;
           }
         }
@@ -358,23 +358,23 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            ItemId = input.ReadUInt32();
+            EndTime = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 48: {
             GoodsId = input.ReadUInt32();
             break;
           }
           case 56: {
-            EndTime = input.ReadInt64();
+            BuyTimes = input.ReadUInt32();
             break;
           }
           case 80: {
-            BeginTime = input.ReadInt64();
+            ItemId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            BuyTimes = input.ReadUInt32();
+          case 120: {
+            BeginTime = input.ReadInt64();
             break;
           }
         }

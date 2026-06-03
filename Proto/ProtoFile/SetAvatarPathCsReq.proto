@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MultiPathAvatarType.proto";
 
 message SetAvatarPathCsReq {
-    MultiPathAvatarType avatar_id = 6;
+    MultiPathAvatarType avatar_id = 4;
 }

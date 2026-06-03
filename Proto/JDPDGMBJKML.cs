@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFKRFBER01CSktNTC5wcm90bxoRQVBGT0lBSUZIRU4ucHJvdG8aEU9JSkhB",
-            "SkFJRkZILnByb3RvItABCgtKRFBER01CSktNTBIhCgtBS0JNQU1ETU9GRBgI",
-            "IAEoCzIMLkFQRk9JQUlGSEVOEikKE2dyaWRfZ2FtZV9yb2xlX2xpc3QYByAD",
-            "KAsyDC5PSUpIQUpBSUZGSBISCgpzZWN0aW9uX2lkGAYgASgNEhMKC0RDQUhK",
-            "RUxOSk5QGAUgASgNEgsKA3VpZBgBIAEoDRITCgtFSE5KRElEQUJIRBgCIAEo",
-            "DRITCgtOSERCQklHUEFGTxgEIAEoDRITCgtBQUNHQkVCR0RQRRgDIAEoDUIW",
+            "SkFJRkZILnByb3RvItABCgtKRFBER01CSktNTBILCgN1aWQYASABKA0SEwoL",
+            "RUhOSkRJREFCSEQYAiABKA0SEwoLQUFDR0JFQkdEUEUYAyABKA0SEwoLTkhE",
+            "QkJJR1BBRk8YBCABKA0SEwoLRENBSEpFTE5KTlAYBSABKA0SEgoKc2VjdGlv",
+            "bl9pZBgGIAEoDRIpChNncmlkX2dhbWVfcm9sZV9saXN0GAcgAygLMgwuT0lK",
+            "SEFKQUlGRkgSIQoLQUtCTUFNRE1PRkQYCCABKAsyDC5BUEZPSUFJRkhFTkIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.APFOIAIFHENReflection.Descriptor, global::March7thHoney.Proto.OIJHAJAIFFHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JDPDGMBJKML), global::March7thHoney.Proto.JDPDGMBJKML.Parser, new[]{ "AKBMAMDMOFD", "GridGameRoleList", "SectionId", "DCAHJELNJNP", "Uid", "EHNJDIDABHD", "NHDBBIGPAFO", "AACGBEBGDPE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JDPDGMBJKML), global::March7thHoney.Proto.JDPDGMBJKML.Parser, new[]{ "Uid", "EHNJDIDABHD", "AACGBEBGDPE", "NHDBBIGPAFO", "DCAHJELNJNP", "SectionId", "GridGameRoleList", "AKBMAMDMOFD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,14 +76,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JDPDGMBJKML(JDPDGMBJKML other) : this() {
-      aKBMAMDMOFD_ = other.aKBMAMDMOFD_ != null ? other.aKBMAMDMOFD_.Clone() : null;
-      gridGameRoleList_ = other.gridGameRoleList_.Clone();
-      sectionId_ = other.sectionId_;
-      dCAHJELNJNP_ = other.dCAHJELNJNP_;
       uid_ = other.uid_;
       eHNJDIDABHD_ = other.eHNJDIDABHD_;
-      nHDBBIGPAFO_ = other.nHDBBIGPAFO_;
       aACGBEBGDPE_ = other.aACGBEBGDPE_;
+      nHDBBIGPAFO_ = other.nHDBBIGPAFO_;
+      dCAHJELNJNP_ = other.dCAHJELNJNP_;
+      sectionId_ = other.sectionId_;
+      gridGameRoleList_ = other.gridGameRoleList_.Clone();
+      aKBMAMDMOFD_ = other.aKBMAMDMOFD_ != null ? other.aKBMAMDMOFD_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,53 +91,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JDPDGMBJKML Clone() {
       return new JDPDGMBJKML(this);
-    }
-
-    /// <summary>Field number for the "AKBMAMDMOFD" field.</summary>
-    public const int AKBMAMDMOFDFieldNumber = 8;
-    private global::March7thHoney.Proto.APFOIAIFHEN aKBMAMDMOFD_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.APFOIAIFHEN AKBMAMDMOFD {
-      get { return aKBMAMDMOFD_; }
-      set {
-        aKBMAMDMOFD_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "grid_game_role_list" field.</summary>
-    public const int GridGameRoleListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OIJHAJAIFFH> _repeated_gridGameRoleList_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.OIJHAJAIFFH.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OIJHAJAIFFH> gridGameRoleList_ = new pbc::RepeatedField<global::March7thHoney.Proto.OIJHAJAIFFH>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.OIJHAJAIFFH> GridGameRoleList {
-      get { return gridGameRoleList_; }
-    }
-
-    /// <summary>Field number for the "section_id" field.</summary>
-    public const int SectionIdFieldNumber = 6;
-    private uint sectionId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SectionId {
-      get { return sectionId_; }
-      set {
-        sectionId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "DCAHJELNJNP" field.</summary>
-    public const int DCAHJELNJNPFieldNumber = 5;
-    private uint dCAHJELNJNP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DCAHJELNJNP {
-      get { return dCAHJELNJNP_; }
-      set {
-        dCAHJELNJNP_ = value;
-      }
     }
 
     /// <summary>Field number for the "uid" field.</summary>
@@ -164,6 +117,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "AACGBEBGDPE" field.</summary>
+    public const int AACGBEBGDPEFieldNumber = 3;
+    private uint aACGBEBGDPE_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AACGBEBGDPE {
+      get { return aACGBEBGDPE_; }
+      set {
+        aACGBEBGDPE_ = value;
+      }
+    }
+
     /// <summary>Field number for the "NHDBBIGPAFO" field.</summary>
     public const int NHDBBIGPAFOFieldNumber = 4;
     private uint nHDBBIGPAFO_;
@@ -176,15 +141,50 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "AACGBEBGDPE" field.</summary>
-    public const int AACGBEBGDPEFieldNumber = 3;
-    private uint aACGBEBGDPE_;
+    /// <summary>Field number for the "DCAHJELNJNP" field.</summary>
+    public const int DCAHJELNJNPFieldNumber = 5;
+    private uint dCAHJELNJNP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AACGBEBGDPE {
-      get { return aACGBEBGDPE_; }
+    public uint DCAHJELNJNP {
+      get { return dCAHJELNJNP_; }
       set {
-        aACGBEBGDPE_ = value;
+        dCAHJELNJNP_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "section_id" field.</summary>
+    public const int SectionIdFieldNumber = 6;
+    private uint sectionId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SectionId {
+      get { return sectionId_; }
+      set {
+        sectionId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "grid_game_role_list" field.</summary>
+    public const int GridGameRoleListFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OIJHAJAIFFH> _repeated_gridGameRoleList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.OIJHAJAIFFH.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OIJHAJAIFFH> gridGameRoleList_ = new pbc::RepeatedField<global::March7thHoney.Proto.OIJHAJAIFFH>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.OIJHAJAIFFH> GridGameRoleList {
+      get { return gridGameRoleList_; }
+    }
+
+    /// <summary>Field number for the "AKBMAMDMOFD" field.</summary>
+    public const int AKBMAMDMOFDFieldNumber = 8;
+    private global::March7thHoney.Proto.APFOIAIFHEN aKBMAMDMOFD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.APFOIAIFHEN AKBMAMDMOFD {
+      get { return aKBMAMDMOFD_; }
+      set {
+        aKBMAMDMOFD_ = value;
       }
     }
 
@@ -203,14 +203,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(AKBMAMDMOFD, other.AKBMAMDMOFD)) return false;
-      if(!gridGameRoleList_.Equals(other.gridGameRoleList_)) return false;
-      if (SectionId != other.SectionId) return false;
-      if (DCAHJELNJNP != other.DCAHJELNJNP) return false;
       if (Uid != other.Uid) return false;
       if (EHNJDIDABHD != other.EHNJDIDABHD) return false;
-      if (NHDBBIGPAFO != other.NHDBBIGPAFO) return false;
       if (AACGBEBGDPE != other.AACGBEBGDPE) return false;
+      if (NHDBBIGPAFO != other.NHDBBIGPAFO) return false;
+      if (DCAHJELNJNP != other.DCAHJELNJNP) return false;
+      if (SectionId != other.SectionId) return false;
+      if(!gridGameRoleList_.Equals(other.gridGameRoleList_)) return false;
+      if (!object.Equals(AKBMAMDMOFD, other.AKBMAMDMOFD)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -218,14 +218,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (aKBMAMDMOFD_ != null) hash ^= AKBMAMDMOFD.GetHashCode();
-      hash ^= gridGameRoleList_.GetHashCode();
-      if (SectionId != 0) hash ^= SectionId.GetHashCode();
-      if (DCAHJELNJNP != 0) hash ^= DCAHJELNJNP.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
       if (EHNJDIDABHD != 0) hash ^= EHNJDIDABHD.GetHashCode();
-      if (NHDBBIGPAFO != 0) hash ^= NHDBBIGPAFO.GetHashCode();
       if (AACGBEBGDPE != 0) hash ^= AACGBEBGDPE.GetHashCode();
+      if (NHDBBIGPAFO != 0) hash ^= NHDBBIGPAFO.GetHashCode();
+      if (DCAHJELNJNP != 0) hash ^= DCAHJELNJNP.GetHashCode();
+      if (SectionId != 0) hash ^= SectionId.GetHashCode();
+      hash ^= gridGameRoleList_.GetHashCode();
+      if (aKBMAMDMOFD_ != null) hash ^= AKBMAMDMOFD.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -322,27 +322,27 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (aKBMAMDMOFD_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AKBMAMDMOFD);
-      }
-      size += gridGameRoleList_.CalculateSize(_repeated_gridGameRoleList_codec);
-      if (SectionId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SectionId);
-      }
-      if (DCAHJELNJNP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DCAHJELNJNP);
-      }
       if (Uid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
       }
       if (EHNJDIDABHD != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EHNJDIDABHD);
       }
+      if (AACGBEBGDPE != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AACGBEBGDPE);
+      }
       if (NHDBBIGPAFO != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NHDBBIGPAFO);
       }
-      if (AACGBEBGDPE != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AACGBEBGDPE);
+      if (DCAHJELNJNP != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DCAHJELNJNP);
+      }
+      if (SectionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SectionId);
+      }
+      size += gridGameRoleList_.CalculateSize(_repeated_gridGameRoleList_codec);
+      if (aKBMAMDMOFD_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AKBMAMDMOFD);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -356,30 +356,30 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.aKBMAMDMOFD_ != null) {
-        if (aKBMAMDMOFD_ == null) {
-          AKBMAMDMOFD = new global::March7thHoney.Proto.APFOIAIFHEN();
-        }
-        AKBMAMDMOFD.MergeFrom(other.AKBMAMDMOFD);
-      }
-      gridGameRoleList_.Add(other.gridGameRoleList_);
-      if (other.SectionId != 0) {
-        SectionId = other.SectionId;
-      }
-      if (other.DCAHJELNJNP != 0) {
-        DCAHJELNJNP = other.DCAHJELNJNP;
-      }
       if (other.Uid != 0) {
         Uid = other.Uid;
       }
       if (other.EHNJDIDABHD != 0) {
         EHNJDIDABHD = other.EHNJDIDABHD;
       }
+      if (other.AACGBEBGDPE != 0) {
+        AACGBEBGDPE = other.AACGBEBGDPE;
+      }
       if (other.NHDBBIGPAFO != 0) {
         NHDBBIGPAFO = other.NHDBBIGPAFO;
       }
-      if (other.AACGBEBGDPE != 0) {
-        AACGBEBGDPE = other.AACGBEBGDPE;
+      if (other.DCAHJELNJNP != 0) {
+        DCAHJELNJNP = other.DCAHJELNJNP;
+      }
+      if (other.SectionId != 0) {
+        SectionId = other.SectionId;
+      }
+      gridGameRoleList_.Add(other.gridGameRoleList_);
+      if (other.aKBMAMDMOFD_ != null) {
+        if (aKBMAMDMOFD_ == null) {
+          AKBMAMDMOFD = new global::March7thHoney.Proto.APFOIAIFHEN();
+        }
+        AKBMAMDMOFD.MergeFrom(other.AKBMAMDMOFD);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

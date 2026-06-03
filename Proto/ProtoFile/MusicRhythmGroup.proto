@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MusicRhythmGroup {
-    repeated uint32 BBINFDHMGII = 1;
-    repeated uint32 EOHMNCBOALC = 9;
-    uint32 music_group_phase = 11;
-    uint32 music_group_id = 12;
+    repeated uint32 BBINFDHMGII = 2;
+    uint32 music_group_id = 3;
+    uint32 music_group_phase = 4;
+    repeated uint32 EOHMNCBOALC = 10;
 }

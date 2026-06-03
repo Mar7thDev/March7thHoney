@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static POFNNGOCEOKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFQT0ZOTkdPQ0VPSy5wcm90byJNCgtQT0ZOTkdPQ0VPSxITCgtLQU1PUEVF",
-            "Qk9IShgGIAEoAxITCgtFSUtMTUZQTUpKRBgFIAEoDRIUCgxkaWNlX3Nsb3Rf",
-            "aWQYByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFQT0ZOTkdPQ0VPSy5wcm90byJNCgtQT0ZOTkdPQ0VPSxITCgtFSUtMTUZQ",
+            "TUpKRBgCIAEoDRIUCgxkaWNlX3Nsb3RfaWQYAyABKA0SEwoLZXhwaXJlX3Rp",
+            "bWUYCiABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.POFNNGOCEOK), global::March7thHoney.Proto.POFNNGOCEOK.Parser, new[]{ "KAMOPEEBOHJ", "EIKLMFPMJJD", "DiceSlotId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.POFNNGOCEOK), global::March7thHoney.Proto.POFNNGOCEOK.Parser, new[]{ "EIKLMFPMJJD", "DiceSlotId", "ExpireTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public POFNNGOCEOK(POFNNGOCEOK other) : this() {
-      kAMOPEEBOHJ_ = other.kAMOPEEBOHJ_;
       eIKLMFPMJJD_ = other.eIKLMFPMJJD_;
       diceSlotId_ = other.diceSlotId_;
+      expireTime_ = other.expireTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new POFNNGOCEOK(this);
     }
 
-    /// <summary>Field number for the "KAMOPEEBOHJ" field.</summary>
-    public const int KAMOPEEBOHJFieldNumber = 6;
-    private long kAMOPEEBOHJ_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long KAMOPEEBOHJ {
-      get { return kAMOPEEBOHJ_; }
-      set {
-        kAMOPEEBOHJ_ = value;
-      }
-    }
-
     /// <summary>Field number for the "EIKLMFPMJJD" field.</summary>
-    public const int EIKLMFPMJJDFieldNumber = 5;
+    public const int EIKLMFPMJJDFieldNumber = 2;
     private uint eIKLMFPMJJD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "dice_slot_id" field.</summary>
-    public const int DiceSlotIdFieldNumber = 7;
+    public const int DiceSlotIdFieldNumber = 3;
     private uint diceSlotId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return diceSlotId_; }
       set {
         diceSlotId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "expire_time" field.</summary>
+    public const int ExpireTimeFieldNumber = 10;
+    private long expireTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ExpireTime {
+      get { return expireTime_; }
+      set {
+        expireTime_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (KAMOPEEBOHJ != other.KAMOPEEBOHJ) return false;
       if (EIKLMFPMJJD != other.EIKLMFPMJJD) return false;
       if (DiceSlotId != other.DiceSlotId) return false;
+      if (ExpireTime != other.ExpireTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (KAMOPEEBOHJ != 0L) hash ^= KAMOPEEBOHJ.GetHashCode();
       if (EIKLMFPMJJD != 0) hash ^= EIKLMFPMJJD.GetHashCode();
       if (DiceSlotId != 0) hash ^= DiceSlotId.GetHashCode();
+      if (ExpireTime != 0L) hash ^= ExpireTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (EIKLMFPMJJD != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(EIKLMFPMJJD);
       }
-      if (KAMOPEEBOHJ != 0L) {
-        output.WriteRawTag(48);
-        output.WriteInt64(KAMOPEEBOHJ);
-      }
       if (DiceSlotId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(DiceSlotId);
+      }
+      if (ExpireTime != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(ExpireTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (EIKLMFPMJJD != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(EIKLMFPMJJD);
       }
-      if (KAMOPEEBOHJ != 0L) {
-        output.WriteRawTag(48);
-        output.WriteInt64(KAMOPEEBOHJ);
-      }
       if (DiceSlotId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(DiceSlotId);
+      }
+      if (ExpireTime != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(ExpireTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (KAMOPEEBOHJ != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(KAMOPEEBOHJ);
-      }
       if (EIKLMFPMJJD != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EIKLMFPMJJD);
       }
       if (DiceSlotId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceSlotId);
+      }
+      if (ExpireTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ExpireTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.KAMOPEEBOHJ != 0L) {
-        KAMOPEEBOHJ = other.KAMOPEEBOHJ;
-      }
       if (other.EIKLMFPMJJD != 0) {
         EIKLMFPMJJD = other.EIKLMFPMJJD;
       }
       if (other.DiceSlotId != 0) {
         DiceSlotId = other.DiceSlotId;
+      }
+      if (other.ExpireTime != 0L) {
+        ExpireTime = other.ExpireTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 16: {
             EIKLMFPMJJD = input.ReadUInt32();
             break;
           }
-          case 48: {
-            KAMOPEEBOHJ = input.ReadInt64();
+          case 24: {
+            DiceSlotId = input.ReadUInt32();
             break;
           }
-          case 56: {
-            DiceSlotId = input.ReadUInt32();
+          case 80: {
+            ExpireTime = input.ReadInt64();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 16: {
             EIKLMFPMJJD = input.ReadUInt32();
             break;
           }
-          case 48: {
-            KAMOPEEBOHJ = input.ReadInt64();
+          case 24: {
+            DiceSlotId = input.ReadUInt32();
             break;
           }
-          case 56: {
-            DiceSlotId = input.ReadUInt32();
+          case 80: {
+            ExpireTime = input.ReadInt64();
             break;
           }
         }

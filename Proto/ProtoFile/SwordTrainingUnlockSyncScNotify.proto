@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FDANEJNFABF.proto";
 
 message SwordTrainingUnlockSyncScNotify {
-    repeated FDANEJNFABF KFOFAKDPGJC = 10;
-    repeated uint32 MNIIFCOOOML = 7;
+    repeated uint32 MNIIFCOOOML = 13;
+    repeated FDANEJNFABF KFOFAKDPGJC = 15;
 }

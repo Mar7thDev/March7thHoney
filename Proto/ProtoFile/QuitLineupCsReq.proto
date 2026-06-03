@@ -6,10 +6,9 @@ import "AvatarType.proto";
 import "ExtraLineupType.proto";
 
 message QuitLineupCsReq {
-    uint32 index = 12;
-    bool is_virtual = 2;
-    uint32 plane_id = 3;
     AvatarType avatar_type = 1;
-    uint32 base_avatar_id = 9;
-    ExtraLineupType extra_lineup_type = 15;
+    uint32 base_avatar_id = 6;
+    uint32 plane_id = 8;
+    uint32 index = 9;
+    ExtraLineupType extra_lineup_type = 14;
 }

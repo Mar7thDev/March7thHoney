@@ -6,6 +6,6 @@ import "BLJEJFMKEII.proto";
 import "IJLEFNJPFKP.proto";
 
 message BattleRogueMagicInfo {
-    BLJEJFMKEII detail_info = 2;
     IJLEFNJPFKP OOPCPMANCBO = 1;
+    BLJEJFMKEII detail_info = 2;
 }

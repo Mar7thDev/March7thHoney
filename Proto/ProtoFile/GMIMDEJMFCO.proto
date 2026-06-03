@@ -6,6 +6,6 @@ import "LGEFLGJIGIJ.proto";
 import "MGGBPKANFOA.proto";
 
 message GMIMDEJMFCO {
-    MGGBPKANFOA CCOIOAHMPDN = 1;
-    repeated LGEFLGJIGIJ GMALFEABLNG = 3;
+    MGGBPKANFOA global_blackboard = 7;
+    repeated LGEFLGJIGIJ GMALFEABLNG = 11;
 }

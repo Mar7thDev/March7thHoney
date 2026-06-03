@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LJEMPEHADKJ.proto";
 
 message IJJKHFPLLIF {
-    repeated LJEMPEHADKJ FLOKEJHHPPO = 3;
-    repeated LJEMPEHADKJ HGAIDOLJKDL = 2;
     uint32 avatar_id = 1;
+    repeated LJEMPEHADKJ HGAIDOLJKDL = 2;
+    repeated LJEMPEHADKJ FLOKEJHHPPO = 3;
 }

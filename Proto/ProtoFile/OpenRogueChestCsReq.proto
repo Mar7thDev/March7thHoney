@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OpenRogueChestCsReq {
-    uint32 interacted_prop_entity_id = 15;
-    bool FDEKKOKBDIC = 3;
+    bool FDEKKOKBDIC = 1;
+    uint32 interacted_prop_entity_id = 13;
 }

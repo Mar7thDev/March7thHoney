@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static ONGCOFFLIAEReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFPTkdDT0ZGTElBRS5wcm90bxoRT0dHRUxNTUZQS1AucHJvdG8ifwoLT05H",
-            "Q09GRkxJQUUSIQoLUFBDS0xCSEZDQ0EYCSADKAsyDC5PR0dFTE1NRlBLUBIT",
-            "CgtJR0VISEZJR0JBSRgLIAEoDRITCgtERENMQ05QT05PSBgKIAEoDRIOCgZp",
-            "c193aW4YByABKAgSEwoLR0RJTUtGTkVDT0sYAyABKA1CFqoCE01hcmNoN3Ro",
-            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFPTkdDT0ZGTElBRS5wcm90bxoRT0dHRUxNTUZQS1AucHJvdG8igQEKC09O",
+            "R0NPRkZMSUFFEhAKCGFkZF9jb2luGAMgASgNEhgKEHNvbGRpZXJfZGVhZF9j",
+            "bnQYCCABKA0SEwoLR0RJTUtGTkVDT0sYDCABKA0SDgoGaXNfd2luGA0gASgI",
+            "EiEKC1BQQ0tMQkhGQ0NBGA4gAygLMgwuT0dHRUxNTUZQS1BCFqoCE01hcmNo",
+            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.OGGELMMFPKPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ONGCOFFLIAE), global::March7thHoney.Proto.ONGCOFFLIAE.Parser, new[]{ "PPCKLBHFCCA", "IGEHHFIGBAI", "DDCLCNPONOH", "IsWin", "GDIMKFNECOK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ONGCOFFLIAE), global::March7thHoney.Proto.ONGCOFFLIAE.Parser, new[]{ "AddCoin", "SoldierDeadCnt", "GDIMKFNECOK", "IsWin", "PPCKLBHFCCA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ONGCOFFLIAE(ONGCOFFLIAE other) : this() {
-      pPCKLBHFCCA_ = other.pPCKLBHFCCA_.Clone();
-      iGEHHFIGBAI_ = other.iGEHHFIGBAI_;
-      dDCLCNPONOH_ = other.dDCLCNPONOH_;
-      isWin_ = other.isWin_;
+      addCoin_ = other.addCoin_;
+      soldierDeadCnt_ = other.soldierDeadCnt_;
       gDIMKFNECOK_ = other.gDIMKFNECOK_;
+      isWin_ = other.isWin_;
+      pPCKLBHFCCA_ = other.pPCKLBHFCCA_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,43 +88,44 @@ namespace March7thHoney.Proto {
       return new ONGCOFFLIAE(this);
     }
 
-    /// <summary>Field number for the "PPCKLBHFCCA" field.</summary>
-    public const int PPCKLBHFCCAFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OGGELMMFPKP> _repeated_pPCKLBHFCCA_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.OGGELMMFPKP.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OGGELMMFPKP> pPCKLBHFCCA_ = new pbc::RepeatedField<global::March7thHoney.Proto.OGGELMMFPKP>();
+    /// <summary>Field number for the "add_coin" field.</summary>
+    public const int AddCoinFieldNumber = 3;
+    private uint addCoin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.OGGELMMFPKP> PPCKLBHFCCA {
-      get { return pPCKLBHFCCA_; }
-    }
-
-    /// <summary>Field number for the "IGEHHFIGBAI" field.</summary>
-    public const int IGEHHFIGBAIFieldNumber = 11;
-    private uint iGEHHFIGBAI_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint IGEHHFIGBAI {
-      get { return iGEHHFIGBAI_; }
+    public uint AddCoin {
+      get { return addCoin_; }
       set {
-        iGEHHFIGBAI_ = value;
+        addCoin_ = value;
       }
     }
 
-    /// <summary>Field number for the "DDCLCNPONOH" field.</summary>
-    public const int DDCLCNPONOHFieldNumber = 10;
-    private uint dDCLCNPONOH_;
+    /// <summary>Field number for the "soldier_dead_cnt" field.</summary>
+    public const int SoldierDeadCntFieldNumber = 8;
+    private uint soldierDeadCnt_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DDCLCNPONOH {
-      get { return dDCLCNPONOH_; }
+    public uint SoldierDeadCnt {
+      get { return soldierDeadCnt_; }
       set {
-        dDCLCNPONOH_ = value;
+        soldierDeadCnt_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "GDIMKFNECOK" field.</summary>
+    public const int GDIMKFNECOKFieldNumber = 12;
+    private uint gDIMKFNECOK_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GDIMKFNECOK {
+      get { return gDIMKFNECOK_; }
+      set {
+        gDIMKFNECOK_ = value;
       }
     }
 
     /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 7;
+    public const int IsWinFieldNumber = 13;
     private bool isWin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,16 +136,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "GDIMKFNECOK" field.</summary>
-    public const int GDIMKFNECOKFieldNumber = 3;
-    private uint gDIMKFNECOK_;
+    /// <summary>Field number for the "PPCKLBHFCCA" field.</summary>
+    public const int PPCKLBHFCCAFieldNumber = 14;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.OGGELMMFPKP> _repeated_pPCKLBHFCCA_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.OGGELMMFPKP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.OGGELMMFPKP> pPCKLBHFCCA_ = new pbc::RepeatedField<global::March7thHoney.Proto.OGGELMMFPKP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GDIMKFNECOK {
-      get { return gDIMKFNECOK_; }
-      set {
-        gDIMKFNECOK_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.OGGELMMFPKP> PPCKLBHFCCA {
+      get { return pPCKLBHFCCA_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!pPCKLBHFCCA_.Equals(other.pPCKLBHFCCA_)) return false;
-      if (IGEHHFIGBAI != other.IGEHHFIGBAI) return false;
-      if (DDCLCNPONOH != other.DDCLCNPONOH) return false;
-      if (IsWin != other.IsWin) return false;
+      if (AddCoin != other.AddCoin) return false;
+      if (SoldierDeadCnt != other.SoldierDeadCnt) return false;
       if (GDIMKFNECOK != other.GDIMKFNECOK) return false;
+      if (IsWin != other.IsWin) return false;
+      if(!pPCKLBHFCCA_.Equals(other.pPCKLBHFCCA_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= pPCKLBHFCCA_.GetHashCode();
-      if (IGEHHFIGBAI != 0) hash ^= IGEHHFIGBAI.GetHashCode();
-      if (DDCLCNPONOH != 0) hash ^= DDCLCNPONOH.GetHashCode();
-      if (IsWin != false) hash ^= IsWin.GetHashCode();
+      if (AddCoin != 0) hash ^= AddCoin.GetHashCode();
+      if (SoldierDeadCnt != 0) hash ^= SoldierDeadCnt.GetHashCode();
       if (GDIMKFNECOK != 0) hash ^= GDIMKFNECOK.GetHashCode();
+      if (IsWin != false) hash ^= IsWin.GetHashCode();
+      hash ^= pPCKLBHFCCA_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,23 +197,23 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GDIMKFNECOK != 0) {
+      if (AddCoin != 0) {
         output.WriteRawTag(24);
+        output.WriteUInt32(AddCoin);
+      }
+      if (SoldierDeadCnt != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(SoldierDeadCnt);
+      }
+      if (GDIMKFNECOK != 0) {
+        output.WriteRawTag(96);
         output.WriteUInt32(GDIMKFNECOK);
       }
       if (IsWin != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteBool(IsWin);
       }
       pPCKLBHFCCA_.WriteTo(output, _repeated_pPCKLBHFCCA_codec);
-      if (DDCLCNPONOH != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(DDCLCNPONOH);
-      }
-      if (IGEHHFIGBAI != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(IGEHHFIGBAI);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -224,23 +224,23 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GDIMKFNECOK != 0) {
+      if (AddCoin != 0) {
         output.WriteRawTag(24);
+        output.WriteUInt32(AddCoin);
+      }
+      if (SoldierDeadCnt != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(SoldierDeadCnt);
+      }
+      if (GDIMKFNECOK != 0) {
+        output.WriteRawTag(96);
         output.WriteUInt32(GDIMKFNECOK);
       }
       if (IsWin != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(104);
         output.WriteBool(IsWin);
       }
       pPCKLBHFCCA_.WriteTo(ref output, _repeated_pPCKLBHFCCA_codec);
-      if (DDCLCNPONOH != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(DDCLCNPONOH);
-      }
-      if (IGEHHFIGBAI != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(IGEHHFIGBAI);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -251,19 +251,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += pPCKLBHFCCA_.CalculateSize(_repeated_pPCKLBHFCCA_codec);
-      if (IGEHHFIGBAI != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IGEHHFIGBAI);
+      if (AddCoin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AddCoin);
       }
-      if (DDCLCNPONOH != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DDCLCNPONOH);
-      }
-      if (IsWin != false) {
-        size += 1 + 1;
+      if (SoldierDeadCnt != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SoldierDeadCnt);
       }
       if (GDIMKFNECOK != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GDIMKFNECOK);
       }
+      if (IsWin != false) {
+        size += 1 + 1;
+      }
+      size += pPCKLBHFCCA_.CalculateSize(_repeated_pPCKLBHFCCA_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -276,19 +276,19 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      pPCKLBHFCCA_.Add(other.pPCKLBHFCCA_);
-      if (other.IGEHHFIGBAI != 0) {
-        IGEHHFIGBAI = other.IGEHHFIGBAI;
+      if (other.AddCoin != 0) {
+        AddCoin = other.AddCoin;
       }
-      if (other.DDCLCNPONOH != 0) {
-        DDCLCNPONOH = other.DDCLCNPONOH;
-      }
-      if (other.IsWin != false) {
-        IsWin = other.IsWin;
+      if (other.SoldierDeadCnt != 0) {
+        SoldierDeadCnt = other.SoldierDeadCnt;
       }
       if (other.GDIMKFNECOK != 0) {
         GDIMKFNECOK = other.GDIMKFNECOK;
       }
+      if (other.IsWin != false) {
+        IsWin = other.IsWin;
+      }
+      pPCKLBHFCCA_.Add(other.pPCKLBHFCCA_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -309,23 +309,23 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
+            AddCoin = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            SoldierDeadCnt = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             GDIMKFNECOK = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 104: {
             IsWin = input.ReadBool();
             break;
           }
-          case 74: {
+          case 114: {
             pPCKLBHFCCA_.AddEntriesFrom(input, _repeated_pPCKLBHFCCA_codec);
-            break;
-          }
-          case 80: {
-            DDCLCNPONOH = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            IGEHHFIGBAI = input.ReadUInt32();
             break;
           }
         }
@@ -348,23 +348,23 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
+            AddCoin = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            SoldierDeadCnt = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             GDIMKFNECOK = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 104: {
             IsWin = input.ReadBool();
             break;
           }
-          case 74: {
+          case 114: {
             pPCKLBHFCCA_.AddEntriesFrom(ref input, _repeated_pPCKLBHFCCA_codec);
-            break;
-          }
-          case 80: {
-            DDCLCNPONOH = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            IGEHHFIGBAI = input.ReadUInt32();
             break;
           }
         }

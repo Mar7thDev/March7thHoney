@@ -3,10 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message UpdateGroupPropertyCsReq {
-    string HMELFPDPCFC = 7;
-    int32 OLBEPIBLDBD = 4;
-    uint32 floor_id = 8;
-    uint32 dimension_id = 1;
-    uint32 group_id = 11;
-    uint64 interact_id = 9;
+    uint32 floor_id = 1;
+    string property_name = 2;
+    uint32 dimension_id = 3;
+    uint32 group_id = 10;
+    int32 OLBEPIBLDBD = 11;
+    uint64 interact_id = 13;
 }

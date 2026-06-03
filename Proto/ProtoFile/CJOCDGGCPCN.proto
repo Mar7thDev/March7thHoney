@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CJOCDGGCPCN {
-    int64 end_time = 8;
-    uint32 JNBIIJCAKKB = 1;
-    bool KBNNOPHGGIN = 12;
+    int64 end_time = 6;
+    bool KBNNOPHGGIN = 7;
+    uint32 JNBIIJCAKKB = 9;
     uint32 JDPFPDECPEH = 13;
 }

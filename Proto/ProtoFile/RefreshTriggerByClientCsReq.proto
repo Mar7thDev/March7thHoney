@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MotionInfo.proto";
 
 message RefreshTriggerByClientCsReq {
-    repeated uint32 trigger_target_id_list = 6;
-    string trigger_name = 11;
-    MotionInfo trigger_motion = 15;
-    uint64 interact_id = 1;
-    uint32 trigger_entity_id = 14;
+    string trigger_name = 2;
+    repeated uint32 trigger_target_id_list = 3;
+    uint32 trigger_entity_id = 4;
+    MotionInfo trigger_motion = 6;
+    uint64 interact_id = 15;
 }

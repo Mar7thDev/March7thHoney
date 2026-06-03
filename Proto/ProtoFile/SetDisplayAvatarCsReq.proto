@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DisplayAvatarData.proto";
 
 message SetDisplayAvatarCsReq {
-    repeated DisplayAvatarData display_avatar_list = 1;
+    repeated DisplayAvatarData display_avatar_list = 12;
 }

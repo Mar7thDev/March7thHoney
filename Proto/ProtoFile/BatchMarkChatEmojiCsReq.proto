@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BatchMarkChatEmojiCsReq {
-    repeated uint32 marked_emoji_id_list = 4;
+    repeated uint32 marked_emoji_id_list = 12;
 }

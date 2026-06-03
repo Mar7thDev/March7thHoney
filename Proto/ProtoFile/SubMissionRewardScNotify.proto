@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message SubMissionRewardScNotify {
-    ItemList reward = 10;
-    uint32 sub_mission_id = 8;
+    uint32 sub_mission_id = 7;
+    ItemList reward = 12;
 }

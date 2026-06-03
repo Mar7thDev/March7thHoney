@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HOIFDJPBGLB.proto";
 
 message FODHGNLPBKH {
-    HOIFDJPBGLB status = 2;
-    uint32 GHEHGIOAGDG = 12;
-    uint32 room_id = 14;
-    uint32 EEPIDJJJMAH = 15;
+    uint32 EEPIDJJJMAH = 1;
+    uint32 GHEHGIOAGDG = 7;
+    uint32 room_id = 11;
+    HOIFDJPBGLB status = 13;
 }

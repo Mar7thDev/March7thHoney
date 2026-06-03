@@ -6,8 +6,8 @@ import "GNMCIEPEBPK.proto";
 import "OJHHACMHFKA.proto";
 
 message PlanetFesBonusEventInteractScRsp {
-    GNMCIEPEBPK reward = 5;
+    uint32 retcode = 8;
+    uint32 event_type = 11;
     OJHHACMHFKA GLOAGDBEKDP = 13;
-    uint32 LAOACNPDOLD = 9;
-    uint32 retcode = 11;
+    GNMCIEPEBPK reward = 15;
 }

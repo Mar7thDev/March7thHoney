@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BBEPMABCBGF.proto";
 
 message GetMonopolyFriendRankingListScRsp {
-    BBEPMABCBGF PONAOKBNIAM = 3;
-    repeated BBEPMABCBGF BEDHEKAGAPE = 8;
-    uint32 retcode = 2;
+    uint32 retcode = 3;
+    repeated BBEPMABCBGF BEDHEKAGAPE = 6;
+    BBEPMABCBGF PONAOKBNIAM = 14;
 }

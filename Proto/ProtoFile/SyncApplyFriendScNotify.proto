@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FriendApplyInfo.proto";
 
 message SyncApplyFriendScNotify {
-    FriendApplyInfo friend_apply_info = 11;
+    FriendApplyInfo friend_apply_info = 3;
 }

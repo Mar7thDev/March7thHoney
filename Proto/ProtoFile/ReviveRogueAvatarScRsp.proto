@@ -5,7 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GAJDPEBBFMG.proto";
 
 message ReviveRogueAvatarScRsp {
-    repeated uint32 NOEPBNMJFGL = 14;
-    GAJDPEBBFMG MFEODNJNGDP = 13;
-    uint32 retcode = 11;
+    uint32 retcode = 2;
+    GAJDPEBBFMG MFEODNJNGDP = 15;
 }

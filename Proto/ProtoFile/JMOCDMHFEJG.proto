@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PIBFIDOEPAP.proto";
 
 message JMOCDMHFEJG {
-    PIBFIDOEPAP KGBHIKKLJMK = 15;
+    PIBFIDOEPAP KGBHIKKLJMK = 10;
 }

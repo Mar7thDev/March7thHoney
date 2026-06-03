@@ -24,8 +24,8 @@ namespace March7thHoney.Proto {
     static RelicListReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9SZWxpY0xpc3QucHJvdG8iKQoJUmVsaWNMaXN0Eg4KBnNldF9pZBgPIAEo",
-            "DRIMCgR0eXBlGAMgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "Cg9SZWxpY0xpc3QucHJvdG8iKQoJUmVsaWNMaXN0Eg4KBnNldF9pZBgBIAEo",
+            "DRIMCgR0eXBlGAIgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "set_id" field.</summary>
-    public const int SetIdFieldNumber = 15;
+    public const int SetIdFieldNumber = 1;
     private uint setId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 3;
+    public const int TypeFieldNumber = 2;
     private uint type_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Type != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Type);
-      }
       if (SetId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(8);
         output.WriteUInt32(SetId);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Type);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Type != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Type);
-      }
       if (SetId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(8);
         output.WriteUInt32(SetId);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Type);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            Type = input.ReadUInt32();
+          case 8: {
+            SetId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            SetId = input.ReadUInt32();
+          case 16: {
+            Type = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            Type = input.ReadUInt32();
+          case 8: {
+            SetId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            SetId = input.ReadUInt32();
+          case 16: {
+            Type = input.ReadUInt32();
             break;
           }
         }

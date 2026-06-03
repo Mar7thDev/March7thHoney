@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BLODLKIBCIE {
-    repeated BLODLKIBCIE LEGEGIHKLFK = 4;
-    uint32 ELAENNLBEDD = 6;
-    uint32 BOGIJENAEHJ = 13;
+    repeated BLODLKIBCIE LEGEGIHKLFK = 2;
+    uint32 BOGIJENAEHJ = 9;
+    uint32 ELAENNLBEDD = 11;
 }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DDNJKAMIHHI.proto";
 
 message OENDLKLJHPF {
-    DDNJKAMIHHI op_type = 15;
-    uint32 group_id = 12;
+    uint32 LKJHCMMPBDL = 1;
     uint32 IIIMCOINAOG = 4;
-    uint32 LKJHCMMPBDL = 2;
+    DDNJKAMIHHI op_type = 6;
+    uint32 group_id = 7;
 }

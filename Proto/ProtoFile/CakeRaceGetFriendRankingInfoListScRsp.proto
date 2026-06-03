@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JBHLNAHOJOH.proto";
 
 message CakeRaceGetFriendRankingInfoListScRsp {
-    repeated uint32 LPBBJFFNACA = 4;
-    repeated JBHLNAHOJOH MLPHLIHFGKG = 15;
-    uint32 retcode = 14;
+    repeated uint32 LPBBJFFNACA = 3;
+    repeated JBHLNAHOJOH MLPHLIHFGKG = 11;
+    uint32 retcode = 15;
 }

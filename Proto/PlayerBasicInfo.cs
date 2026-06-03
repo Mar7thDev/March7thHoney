@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVQbGF5ZXJCYXNpY0luZm8ucHJvdG8ikgEKD1BsYXllckJhc2ljSW5mbxIQ",
-            "CghuaWNrbmFtZRgBIAEoCRINCgVsZXZlbBgCIAEoDRINCgVoY29pbhgGIAEo",
-            "DRINCgVzY29pbhgHIAEoDRITCgt3b3JsZF9sZXZlbBgIIAEoDRINCgVtY29p",
-            "bhgFIAEoDRILCgNleHAYAyABKA0SDwoHc3RhbWluYRgEIAEoDUIWqgITTWFy",
+            "CghuaWNrbmFtZRgBIAEoCRINCgVsZXZlbBgCIAEoDRILCgNleHAYAyABKA0S",
+            "DwoHc3RhbWluYRgEIAEoDRINCgVtY29pbhgFIAEoDRINCgVoY29pbhgGIAEo",
+            "DRINCgVzY29pbhgHIAEoDRITCgt3b3JsZF9sZXZlbBgIIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerBasicInfo), global::March7thHoney.Proto.PlayerBasicInfo.Parser, new[]{ "Nickname", "Level", "Hcoin", "Scoin", "WorldLevel", "Mcoin", "Exp", "Stamina" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerBasicInfo), global::March7thHoney.Proto.PlayerBasicInfo.Parser, new[]{ "Nickname", "Level", "Exp", "Stamina", "Mcoin", "Hcoin", "Scoin", "WorldLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,12 +76,12 @@ namespace March7thHoney.Proto {
     public PlayerBasicInfo(PlayerBasicInfo other) : this() {
       nickname_ = other.nickname_;
       level_ = other.level_;
+      exp_ = other.exp_;
+      stamina_ = other.stamina_;
+      mcoin_ = other.mcoin_;
       hcoin_ = other.hcoin_;
       scoin_ = other.scoin_;
       worldLevel_ = other.worldLevel_;
-      mcoin_ = other.mcoin_;
-      exp_ = other.exp_;
-      stamina_ = other.stamina_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -112,6 +112,42 @@ namespace March7thHoney.Proto {
       get { return level_; }
       set {
         level_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "exp" field.</summary>
+    public const int ExpFieldNumber = 3;
+    private uint exp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Exp {
+      get { return exp_; }
+      set {
+        exp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stamina" field.</summary>
+    public const int StaminaFieldNumber = 4;
+    private uint stamina_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Stamina {
+      get { return stamina_; }
+      set {
+        stamina_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "mcoin" field.</summary>
+    public const int McoinFieldNumber = 5;
+    private uint mcoin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Mcoin {
+      get { return mcoin_; }
+      set {
+        mcoin_ = value;
       }
     }
 
@@ -151,42 +187,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "mcoin" field.</summary>
-    public const int McoinFieldNumber = 5;
-    private uint mcoin_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Mcoin {
-      get { return mcoin_; }
-      set {
-        mcoin_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 3;
-    private uint exp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Exp {
-      get { return exp_; }
-      set {
-        exp_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "stamina" field.</summary>
-    public const int StaminaFieldNumber = 4;
-    private uint stamina_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Stamina {
-      get { return stamina_; }
-      set {
-        stamina_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -204,12 +204,12 @@ namespace March7thHoney.Proto {
       }
       if (Nickname != other.Nickname) return false;
       if (Level != other.Level) return false;
+      if (Exp != other.Exp) return false;
+      if (Stamina != other.Stamina) return false;
+      if (Mcoin != other.Mcoin) return false;
       if (Hcoin != other.Hcoin) return false;
       if (Scoin != other.Scoin) return false;
       if (WorldLevel != other.WorldLevel) return false;
-      if (Mcoin != other.Mcoin) return false;
-      if (Exp != other.Exp) return false;
-      if (Stamina != other.Stamina) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (Nickname.Length != 0) hash ^= Nickname.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
+      if (Exp != 0) hash ^= Exp.GetHashCode();
+      if (Stamina != 0) hash ^= Stamina.GetHashCode();
+      if (Mcoin != 0) hash ^= Mcoin.GetHashCode();
       if (Hcoin != 0) hash ^= Hcoin.GetHashCode();
       if (Scoin != 0) hash ^= Scoin.GetHashCode();
       if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
-      if (Mcoin != 0) hash ^= Mcoin.GetHashCode();
-      if (Exp != 0) hash ^= Exp.GetHashCode();
-      if (Stamina != 0) hash ^= Stamina.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -333,6 +333,15 @@ namespace March7thHoney.Proto {
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
+      if (Exp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Exp);
+      }
+      if (Stamina != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Stamina);
+      }
+      if (Mcoin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Mcoin);
+      }
       if (Hcoin != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Hcoin);
       }
@@ -341,15 +350,6 @@ namespace March7thHoney.Proto {
       }
       if (WorldLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
-      }
-      if (Mcoin != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Mcoin);
-      }
-      if (Exp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Exp);
-      }
-      if (Stamina != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Stamina);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -369,6 +369,15 @@ namespace March7thHoney.Proto {
       if (other.Level != 0) {
         Level = other.Level;
       }
+      if (other.Exp != 0) {
+        Exp = other.Exp;
+      }
+      if (other.Stamina != 0) {
+        Stamina = other.Stamina;
+      }
+      if (other.Mcoin != 0) {
+        Mcoin = other.Mcoin;
+      }
       if (other.Hcoin != 0) {
         Hcoin = other.Hcoin;
       }
@@ -377,15 +386,6 @@ namespace March7thHoney.Proto {
       }
       if (other.WorldLevel != 0) {
         WorldLevel = other.WorldLevel;
-      }
-      if (other.Mcoin != 0) {
-        Mcoin = other.Mcoin;
-      }
-      if (other.Exp != 0) {
-        Exp = other.Exp;
-      }
-      if (other.Stamina != 0) {
-        Stamina = other.Stamina;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

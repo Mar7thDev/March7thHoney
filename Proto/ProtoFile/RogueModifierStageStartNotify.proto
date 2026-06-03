@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RogueModifierSourceType.proto";
 
 message RogueModifierStageStartNotify {
-    RogueModifierSourceType NFMKOFNEKLA = 11;
+    RogueModifierSourceType source_type = 13;
 }

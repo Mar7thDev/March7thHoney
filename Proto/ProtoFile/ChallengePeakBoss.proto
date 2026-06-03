@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengePeakBossClearance.proto";
 
 message ChallengePeakBoss {
-    repeated uint32 finished_target_list = 9;
+    repeated uint32 finished_target_list = 4;
+    uint32 BFBHCKEJDIG = 5;
     ChallengePeakBossClearance easy_mode = 8;
-    ChallengePeakBossClearance hard_mode = 14;
-    uint32 BFBHCKEJDIG = 11;
-    bool hard_mode_has_passed = 10;
+    ChallengePeakBossClearance hard_mode = 9;
+    bool hard_mode_has_passed = 14;
 }

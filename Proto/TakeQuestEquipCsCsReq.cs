@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtUYWtlUXVlc3RFcXVpcENzQ3NSZXEucHJvdG8iPgoVVGFrZVF1ZXN0RXF1",
-            "aXBDc0NzUmVxEhMKC0RLUENBSUdQSE5PGAQgASgIEhAKCHF1ZXN0X2lkGAYg",
+            "aXBDc0NzUmVxEhMKC0RLUENBSUdQSE5PGAQgASgIEhAKCHF1ZXN0X2lkGA8g",
             "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "quest_id" field.</summary>
-    public const int QuestIdFieldNumber = 6;
+    public const int QuestIdFieldNumber = 15;
     private uint questId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,7 +156,7 @@ namespace March7thHoney.Proto {
         output.WriteBool(DKPCAIGPHNO);
       }
       if (QuestId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(120);
         output.WriteUInt32(QuestId);
       }
       if (_unknownFields != null) {
@@ -174,7 +174,7 @@ namespace March7thHoney.Proto {
         output.WriteBool(DKPCAIGPHNO);
       }
       if (QuestId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(120);
         output.WriteUInt32(QuestId);
       }
       if (_unknownFields != null) {
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
             DKPCAIGPHNO = input.ReadBool();
             break;
           }
-          case 48: {
+          case 120: {
             QuestId = input.ReadUInt32();
             break;
           }
@@ -261,7 +261,7 @@ namespace March7thHoney.Proto {
             DKPCAIGPHNO = input.ReadBool();
             break;
           }
-          case 48: {
+          case 120: {
             QuestId = input.ReadUInt32();
             break;
           }

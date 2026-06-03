@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiNTY2VuZVJldml2ZUFmdGVyUmViYXR0bGVDc1JlcS5wcm90bxoSUmViYXR0",
             "bGVUeXBlLnByb3RvIkMKHVNjZW5lUmV2aXZlQWZ0ZXJSZWJhdHRsZUNzUmVx",
-            "EiIKC05LREFBQUdQQ0RCGAkgASgOMg0uUmViYXR0bGVUeXBlQhaqAhNNYXJj",
+            "EiIKC05LREFBQUdQQ0RCGAogASgOMg0uUmViYXR0bGVUeXBlQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RebattleTypeReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NKDAAAGPCDB" field.</summary>
-    public const int NKDAAAGPCDBFieldNumber = 9;
+    public const int NKDAAAGPCDBFieldNumber = 10;
     private global::March7thHoney.Proto.RebattleType nKDAAAGPCDB_ = global::March7thHoney.Proto.RebattleType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (NKDAAAGPCDB != global::March7thHoney.Proto.RebattleType.None) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteEnum((int) NKDAAAGPCDB);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (NKDAAAGPCDB != global::March7thHoney.Proto.RebattleType.None) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteEnum((int) NKDAAAGPCDB);
       }
       if (_unknownFields != null) {
@@ -202,7 +202,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
+          case 80: {
             NKDAAAGPCDB = (global::March7thHoney.Proto.RebattleType) input.ReadEnum();
             break;
           }
@@ -225,7 +225,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
+          case 80: {
             NKDAAAGPCDB = (global::March7thHoney.Proto.RebattleType) input.ReadEnum();
             break;
           }

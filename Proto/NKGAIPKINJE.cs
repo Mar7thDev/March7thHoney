@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFOS0dBSVBLSU5KRS5wcm90bxoRS0lBS0tORkxFUE4ucHJvdG8iPgoLTktH",
-            "QUlQS0lOSkUSIQoLT05ISExDS05ISEgYDiABKAsyDC5LSUFLS05GTEVQThIM",
-            "CgR0eXBlGAYgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "QUlQS0lOSkUSIQoLT05ISExDS05ISEgYAiABKAsyDC5LSUFLS05GTEVQThIM",
+            "CgR0eXBlGAQgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.KIAKKNFLEPNReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "ONHHLCKNHHH" field.</summary>
-    public const int ONHHLCKNHHHFieldNumber = 14;
+    public const int ONHHLCKNHHHFieldNumber = 2;
     private global::March7thHoney.Proto.KIAKKNFLEPN oNHHLCKNHHH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 6;
+    public const int TypeFieldNumber = 4;
     private uint type_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Type != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Type);
-      }
       if (oNHHLCKNHHH_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(18);
         output.WriteMessage(ONHHLCKNHHH);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Type);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Type != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Type);
-      }
       if (oNHHLCKNHHH_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(18);
         output.WriteMessage(ONHHLCKNHHH);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Type);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -233,15 +233,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            Type = input.ReadUInt32();
-            break;
-          }
-          case 114: {
+          case 18: {
             if (oNHHLCKNHHH_ == null) {
               ONHHLCKNHHH = new global::March7thHoney.Proto.KIAKKNFLEPN();
             }
             input.ReadMessage(ONHHLCKNHHH);
+            break;
+          }
+          case 32: {
+            Type = input.ReadUInt32();
             break;
           }
         }
@@ -263,15 +263,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            Type = input.ReadUInt32();
-            break;
-          }
-          case 114: {
+          case 18: {
             if (oNHHLCKNHHH_ == null) {
               ONHHLCKNHHH = new global::March7thHoney.Proto.KIAKKNFLEPN();
             }
             input.ReadMessage(ONHHLCKNHHH);
+            break;
+          }
+          case 32: {
+            Type = input.ReadUInt32();
             break;
           }
         }

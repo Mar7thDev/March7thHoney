@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFHZXRDaGFsbGVuZ2VUaWVyY2VEYXRhU2NSc3AucHJvdG8aGUNoYWxsZW5n",
             "ZVRpZXJjZURhdGEucHJvdG8iYQobR2V0Q2hhbGxlbmdlVGllcmNlRGF0YVNj",
-            "UnNwEjEKE2NoYWxsZW5nZV9pbmZvX2xpc3QYCyADKAsyFC5DaGFsbGVuZ2VU",
-            "aWVyY2VEYXRhEg8KB3JldGNvZGUYBCABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "UnNwEjEKE2NoYWxsZW5nZV9pbmZvX2xpc3QYCiADKAsyFC5DaGFsbGVuZ2VU",
+            "aWVyY2VEYXRhEg8KB3JldGNvZGUYDCABKA1CFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeTierceDataReflection.Descriptor, },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "challenge_info_list" field.</summary>
-    public const int ChallengeInfoListFieldNumber = 11;
+    public const int ChallengeInfoListFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeTierceData> _repeated_challengeInfoList_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.ChallengeTierceData.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.ChallengeTierceData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeTierceData> challengeInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeTierceData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 4;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      challengeInfoList_.WriteTo(output, _repeated_challengeInfoList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
-      challengeInfoList_.WriteTo(output, _repeated_challengeInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      challengeInfoList_.WriteTo(ref output, _repeated_challengeInfoList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
-      challengeInfoList_.WriteTo(ref output, _repeated_challengeInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -221,12 +221,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            Retcode = input.ReadUInt32();
+          case 82: {
+            challengeInfoList_.AddEntriesFrom(input, _repeated_challengeInfoList_codec);
             break;
           }
-          case 90: {
-            challengeInfoList_.AddEntriesFrom(input, _repeated_challengeInfoList_codec);
+          case 96: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            Retcode = input.ReadUInt32();
+          case 82: {
+            challengeInfoList_.AddEntriesFrom(ref input, _repeated_challengeInfoList_codec);
             break;
           }
-          case 90: {
-            challengeInfoList_.AddEntriesFrom(ref input, _repeated_challengeInfoList_codec);
+          case 96: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

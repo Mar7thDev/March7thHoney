@@ -8,10 +8,10 @@ import "SceneEntityRefreshInfo.proto";
 import "SceneGroupRefreshType.proto";
 
 message GroupRefreshInfo {
-    repeated SceneEntityRefreshInfo refresh_entity = 11;
-    SceneEntityGroupInfo unk1 = 6;
-    repeated AKEKCKDIHLA CDMKBCHLPAB = 12;
-    uint32 group_id = 15;
+    uint32 group_id = 8;
+    SceneGroupRefreshType refresh_type = 10;
+    SceneEntityGroupInfo group_info = 11;
+    repeated SceneEntityRefreshInfo refresh_entity = 12;
+    repeated AKEKCKDIHLA CDMKBCHLPAB = 13;
     uint32 state = 14;
-    SceneGroupRefreshType refresh_type = 4;
 }

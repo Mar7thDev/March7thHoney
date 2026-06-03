@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RelicPresetPlanSourceType.proto";
 
 message PFCKBFLDHNI {
-    repeated uint32 relic_ids = 7;
-    string name = 9;
-    uint32 unique_id = 5;
     uint32 avatar_id = 1;
-    RelicPresetPlanSourceType NFMKOFNEKLA = 11;
+    repeated uint32 relic_ids = 4;
+    string name = 6;
+    uint32 unique_id = 10;
+    RelicPresetPlanSourceType source_type = 13;
 }

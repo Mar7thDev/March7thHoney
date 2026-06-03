@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishFirstTalkNpcCsReq {
-    uint32 npc_id = 7;
+    uint32 npc_id = 5;
 }

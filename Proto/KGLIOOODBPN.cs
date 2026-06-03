@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static KGLIOOODBPNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFLR0xJT09PREJQTi5wcm90byJGCgtLR0xJT09PREJQThITCgtPRU9NSUxQ",
-            "QUZHSRgHIAMoDRINCgVsZXZlbBgOIAEoDRITCgtMTElDSU1CQ05QRhgEIAEo",
-            "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFLR0xJT09PREJQTi5wcm90byJLCgtLR0xJT09PREJQThINCgVsZXZlbBgC",
+            "IAEoDRIYChBjb21wb3NpdGlvbl90eXBlGAUgASgNEhMKC09FT01JTFBBRkdJ",
+            "GA0gAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KGLIOOODBPN), global::March7thHoney.Proto.KGLIOOODBPN.Parser, new[]{ "OEOMILPAFGI", "Level", "LLICIMBCNPF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KGLIOOODBPN), global::March7thHoney.Proto.KGLIOOODBPN.Parser, new[]{ "Level", "CompositionType", "OEOMILPAFGI" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KGLIOOODBPN(KGLIOOODBPN other) : this() {
-      oEOMILPAFGI_ = other.oEOMILPAFGI_.Clone();
       level_ = other.level_;
-      lLICIMBCNPF_ = other.lLICIMBCNPF_;
+      compositionType_ = other.compositionType_;
+      oEOMILPAFGI_ = other.oEOMILPAFGI_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,19 +84,8 @@ namespace March7thHoney.Proto {
       return new KGLIOOODBPN(this);
     }
 
-    /// <summary>Field number for the "OEOMILPAFGI" field.</summary>
-    public const int OEOMILPAFGIFieldNumber = 7;
-    private static readonly pb::FieldCodec<uint> _repeated_oEOMILPAFGI_codec
-        = pb::FieldCodec.ForUInt32(58);
-    private readonly pbc::RepeatedField<uint> oEOMILPAFGI_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OEOMILPAFGI {
-      get { return oEOMILPAFGI_; }
-    }
-
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 14;
+    public const int LevelFieldNumber = 2;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -107,16 +96,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LLICIMBCNPF" field.</summary>
-    public const int LLICIMBCNPFFieldNumber = 4;
-    private uint lLICIMBCNPF_;
+    /// <summary>Field number for the "composition_type" field.</summary>
+    public const int CompositionTypeFieldNumber = 5;
+    private uint compositionType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LLICIMBCNPF {
-      get { return lLICIMBCNPF_; }
+    public uint CompositionType {
+      get { return compositionType_; }
       set {
-        lLICIMBCNPF_ = value;
+        compositionType_ = value;
       }
+    }
+
+    /// <summary>Field number for the "OEOMILPAFGI" field.</summary>
+    public const int OEOMILPAFGIFieldNumber = 13;
+    private static readonly pb::FieldCodec<uint> _repeated_oEOMILPAFGI_codec
+        = pb::FieldCodec.ForUInt32(106);
+    private readonly pbc::RepeatedField<uint> oEOMILPAFGI_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OEOMILPAFGI {
+      get { return oEOMILPAFGI_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -134,9 +134,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!oEOMILPAFGI_.Equals(other.oEOMILPAFGI_)) return false;
       if (Level != other.Level) return false;
-      if (LLICIMBCNPF != other.LLICIMBCNPF) return false;
+      if (CompositionType != other.CompositionType) return false;
+      if(!oEOMILPAFGI_.Equals(other.oEOMILPAFGI_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -144,9 +144,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= oEOMILPAFGI_.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
-      if (LLICIMBCNPF != 0) hash ^= LLICIMBCNPF.GetHashCode();
+      if (CompositionType != 0) hash ^= CompositionType.GetHashCode();
+      hash ^= oEOMILPAFGI_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -165,15 +165,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LLICIMBCNPF != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(LLICIMBCNPF);
-      }
-      oEOMILPAFGI_.WriteTo(output, _repeated_oEOMILPAFGI_codec);
       if (Level != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(16);
         output.WriteUInt32(Level);
       }
+      if (CompositionType != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(CompositionType);
+      }
+      oEOMILPAFGI_.WriteTo(output, _repeated_oEOMILPAFGI_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -184,15 +184,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LLICIMBCNPF != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(LLICIMBCNPF);
-      }
-      oEOMILPAFGI_.WriteTo(ref output, _repeated_oEOMILPAFGI_codec);
       if (Level != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(16);
         output.WriteUInt32(Level);
       }
+      if (CompositionType != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(CompositionType);
+      }
+      oEOMILPAFGI_.WriteTo(ref output, _repeated_oEOMILPAFGI_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -203,13 +203,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += oEOMILPAFGI_.CalculateSize(_repeated_oEOMILPAFGI_codec);
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
-      if (LLICIMBCNPF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LLICIMBCNPF);
+      if (CompositionType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CompositionType);
       }
+      size += oEOMILPAFGI_.CalculateSize(_repeated_oEOMILPAFGI_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -222,13 +222,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      oEOMILPAFGI_.Add(other.oEOMILPAFGI_);
       if (other.Level != 0) {
         Level = other.Level;
       }
-      if (other.LLICIMBCNPF != 0) {
-        LLICIMBCNPF = other.LLICIMBCNPF;
+      if (other.CompositionType != 0) {
+        CompositionType = other.CompositionType;
       }
+      oEOMILPAFGI_.Add(other.oEOMILPAFGI_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -248,17 +248,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            LLICIMBCNPF = input.ReadUInt32();
-            break;
-          }
-          case 58:
-          case 56: {
-            oEOMILPAFGI_.AddEntriesFrom(input, _repeated_oEOMILPAFGI_codec);
-            break;
-          }
-          case 112: {
+          case 16: {
             Level = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            CompositionType = input.ReadUInt32();
+            break;
+          }
+          case 106:
+          case 104: {
+            oEOMILPAFGI_.AddEntriesFrom(input, _repeated_oEOMILPAFGI_codec);
             break;
           }
         }
@@ -280,17 +280,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            LLICIMBCNPF = input.ReadUInt32();
-            break;
-          }
-          case 58:
-          case 56: {
-            oEOMILPAFGI_.AddEntriesFrom(ref input, _repeated_oEOMILPAFGI_codec);
-            break;
-          }
-          case 112: {
+          case 16: {
             Level = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            CompositionType = input.ReadUInt32();
+            break;
+          }
+          case 106:
+          case 104: {
+            oEOMILPAFGI_.AddEntriesFrom(ref input, _repeated_oEOMILPAFGI_codec);
             break;
           }
         }

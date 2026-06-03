@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message PromoteEquipmentCsReq {
-    ItemCostData cost_data = 14;
-    uint32 equipment_unique_id = 5;
+    uint32 equipment_unique_id = 6;
+    ItemCostData cost_data = 8;
 }

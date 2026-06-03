@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PPONNIHFJAP.proto";
 
 message UseTreasureDungeonItemScRsp {
-    PPONNIHFJAP IMHNGDFGJJA = 5;
-    uint32 retcode = 12;
+    uint32 retcode = 1;
+    PPONNIHFJAP IMHNGDFGJJA = 7;
 }

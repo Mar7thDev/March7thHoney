@@ -27,20 +27,20 @@ namespace March7thHoney.Proto {
             "ChlTY2VuZUNhc3RTa2lsbENzUmVxLnByb3RvGh1Bc3Npc3RNb25zdGVyRW50",
             "aXR5SW5mby5wcm90bxoTRHluYW1pY1ZhbHVlcy5wcm90bxoQTW90aW9uSW5m",
             "by5wcm90bxoTU2tpbGxFeHRyYVRhZy5wcm90byKOAwoTU2NlbmVDYXN0U2tp",
-            "bGxDc1JlcRI8Chphc3Npc3RfbW9uc3Rlcl9lbnRpdHlfaW5mbxgKIAMoCzIY",
-            "LkFzc2lzdE1vbnN0ZXJFbnRpdHlJbmZvEiYKDmR5bmFtaWNfdmFsdWVzGA0g",
-            "AygLMg4uRHluYW1pY1ZhbHVlcxIoChBza2lsbF9leHRyYV90YWdzGAIgAygO",
-            "Mg4uU2tpbGxFeHRyYVRhZxIYChBtYXplX2FiaWxpdHlfc3RyGAcgASgJEiEK",
-            "GWhpdF90YXJnZXRfZW50aXR5X2lkX2xpc3QYCyADKA0SIgoNdGFyZ2V0X21v",
-            "dGlvbhgBIAEoCzILLk1vdGlvbkluZm8SJQodYXNzaXN0X21vbnN0ZXJfZW50",
-            "aXR5X2lkX2xpc3QYBiADKA0SEwoLS0NGQUJORlBPUE4YDCABKA0SHQoVYXR0",
-            "YWNrZWRfYnlfZW50aXR5X2lkGAMgASgNEhMKC3NraWxsX2luZGV4GAkgASgN",
-            "EhYKDmNhc3RfZW50aXR5X2lkGAggASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "bGxDc1JlcRIoChBza2lsbF9leHRyYV90YWdzGAEgAygOMg4uU2tpbGxFeHRy",
+            "YVRhZxIWCg5jYXN0X2VudGl0eV9pZBgDIAEoDRImCg5keW5hbWljX3ZhbHVl",
+            "cxgEIAMoCzIOLkR5bmFtaWNWYWx1ZXMSPAoaYXNzaXN0X21vbnN0ZXJfZW50",
+            "aXR5X2luZm8YBSADKAsyGC5Bc3Npc3RNb25zdGVyRW50aXR5SW5mbxIlCh1h",
+            "c3Npc3RfbW9uc3Rlcl9lbnRpdHlfaWRfbGlzdBgGIAMoDRITCgtLQ0ZBQk5G",
+            "UE9QThgHIAEoDRIdChVhdHRhY2tlZF9ieV9lbnRpdHlfaWQYCCABKA0SIgoN",
+            "dGFyZ2V0X21vdGlvbhgJIAEoCzILLk1vdGlvbkluZm8SGAoQbWF6ZV9hYmls",
+            "aXR5X3N0chgKIAEoCRITCgtza2lsbF9pbmRleBgNIAEoDRIhChloaXRfdGFy",
+            "Z2V0X2VudGl0eV9pZF9saXN0GA8gAygNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AssistMonsterEntityInfoReflection.Descriptor, global::March7thHoney.Proto.DynamicValuesReflection.Descriptor, global::March7thHoney.Proto.MotionInfoReflection.Descriptor, global::March7thHoney.Proto.SkillExtraTagReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneCastSkillCsReq), global::March7thHoney.Proto.SceneCastSkillCsReq.Parser, new[]{ "AssistMonsterEntityInfo", "DynamicValues", "SkillExtraTags", "MazeAbilityStr", "HitTargetEntityIdList", "TargetMotion", "AssistMonsterEntityIdList", "KCFABNFPOPN", "AttackedByEntityId", "SkillIndex", "CastEntityId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneCastSkillCsReq), global::March7thHoney.Proto.SceneCastSkillCsReq.Parser, new[]{ "SkillExtraTags", "CastEntityId", "DynamicValues", "AssistMonsterEntityInfo", "AssistMonsterEntityIdList", "KCFABNFPOPN", "AttackedByEntityId", "TargetMotion", "MazeAbilityStr", "SkillIndex", "HitTargetEntityIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -82,17 +82,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneCastSkillCsReq(SceneCastSkillCsReq other) : this() {
-      assistMonsterEntityInfo_ = other.assistMonsterEntityInfo_.Clone();
-      dynamicValues_ = other.dynamicValues_.Clone();
       skillExtraTags_ = other.skillExtraTags_.Clone();
-      mazeAbilityStr_ = other.mazeAbilityStr_;
-      hitTargetEntityIdList_ = other.hitTargetEntityIdList_.Clone();
-      targetMotion_ = other.targetMotion_ != null ? other.targetMotion_.Clone() : null;
+      castEntityId_ = other.castEntityId_;
+      dynamicValues_ = other.dynamicValues_.Clone();
+      assistMonsterEntityInfo_ = other.assistMonsterEntityInfo_.Clone();
       assistMonsterEntityIdList_ = other.assistMonsterEntityIdList_.Clone();
       kCFABNFPOPN_ = other.kCFABNFPOPN_;
       attackedByEntityId_ = other.attackedByEntityId_;
+      targetMotion_ = other.targetMotion_ != null ? other.targetMotion_.Clone() : null;
+      mazeAbilityStr_ = other.mazeAbilityStr_;
       skillIndex_ = other.skillIndex_;
-      castEntityId_ = other.castEntityId_;
+      hitTargetEntityIdList_ = other.hitTargetEntityIdList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -102,32 +102,10 @@ namespace March7thHoney.Proto {
       return new SceneCastSkillCsReq(this);
     }
 
-    /// <summary>Field number for the "assist_monster_entity_info" field.</summary>
-    public const int AssistMonsterEntityInfoFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AssistMonsterEntityInfo> _repeated_assistMonsterEntityInfo_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.AssistMonsterEntityInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo> assistMonsterEntityInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo> AssistMonsterEntityInfo {
-      get { return assistMonsterEntityInfo_; }
-    }
-
-    /// <summary>Field number for the "dynamic_values" field.</summary>
-    public const int DynamicValuesFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DynamicValues> _repeated_dynamicValues_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.DynamicValues.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues> dynamicValues_ = new pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues> DynamicValues {
-      get { return dynamicValues_; }
-    }
-
     /// <summary>Field number for the "skill_extra_tags" field.</summary>
-    public const int SkillExtraTagsFieldNumber = 2;
+    public const int SkillExtraTagsFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.SkillExtraTag> _repeated_skillExtraTags_codec
-        = pb::FieldCodec.ForEnum(18, x => (int) x, x => (global::March7thHoney.Proto.SkillExtraTag) x);
+        = pb::FieldCodec.ForEnum(10, x => (int) x, x => (global::March7thHoney.Proto.SkillExtraTag) x);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.SkillExtraTag> skillExtraTags_ = new pbc::RepeatedField<global::March7thHoney.Proto.SkillExtraTag>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,39 +113,38 @@ namespace March7thHoney.Proto {
       get { return skillExtraTags_; }
     }
 
-    /// <summary>Field number for the "maze_ability_str" field.</summary>
-    public const int MazeAbilityStrFieldNumber = 7;
-    private string mazeAbilityStr_ = "";
+    /// <summary>Field number for the "cast_entity_id" field.</summary>
+    public const int CastEntityIdFieldNumber = 3;
+    private uint castEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string MazeAbilityStr {
-      get { return mazeAbilityStr_; }
+    public uint CastEntityId {
+      get { return castEntityId_; }
       set {
-        mazeAbilityStr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        castEntityId_ = value;
       }
     }
 
-    /// <summary>Field number for the "hit_target_entity_id_list" field.</summary>
-    public const int HitTargetEntityIdListFieldNumber = 11;
-    private static readonly pb::FieldCodec<uint> _repeated_hitTargetEntityIdList_codec
-        = pb::FieldCodec.ForUInt32(90);
-    private readonly pbc::RepeatedField<uint> hitTargetEntityIdList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "dynamic_values" field.</summary>
+    public const int DynamicValuesFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.DynamicValues> _repeated_dynamicValues_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.DynamicValues.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues> dynamicValues_ = new pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> HitTargetEntityIdList {
-      get { return hitTargetEntityIdList_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.DynamicValues> DynamicValues {
+      get { return dynamicValues_; }
     }
 
-    /// <summary>Field number for the "target_motion" field.</summary>
-    public const int TargetMotionFieldNumber = 1;
-    private global::March7thHoney.Proto.MotionInfo targetMotion_;
+    /// <summary>Field number for the "assist_monster_entity_info" field.</summary>
+    public const int AssistMonsterEntityInfoFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AssistMonsterEntityInfo> _repeated_assistMonsterEntityInfo_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.AssistMonsterEntityInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo> assistMonsterEntityInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MotionInfo TargetMotion {
-      get { return targetMotion_; }
-      set {
-        targetMotion_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AssistMonsterEntityInfo> AssistMonsterEntityInfo {
+      get { return assistMonsterEntityInfo_; }
     }
 
     /// <summary>Field number for the "assist_monster_entity_id_list" field.</summary>
@@ -182,7 +159,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KCFABNFPOPN" field.</summary>
-    public const int KCFABNFPOPNFieldNumber = 12;
+    public const int KCFABNFPOPNFieldNumber = 7;
     private uint kCFABNFPOPN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -194,7 +171,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "attacked_by_entity_id" field.</summary>
-    public const int AttackedByEntityIdFieldNumber = 3;
+    public const int AttackedByEntityIdFieldNumber = 8;
     private uint attackedByEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -205,8 +182,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "target_motion" field.</summary>
+    public const int TargetMotionFieldNumber = 9;
+    private global::March7thHoney.Proto.MotionInfo targetMotion_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MotionInfo TargetMotion {
+      get { return targetMotion_; }
+      set {
+        targetMotion_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "maze_ability_str" field.</summary>
+    public const int MazeAbilityStrFieldNumber = 10;
+    private string mazeAbilityStr_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string MazeAbilityStr {
+      get { return mazeAbilityStr_; }
+      set {
+        mazeAbilityStr_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "skill_index" field.</summary>
-    public const int SkillIndexFieldNumber = 9;
+    public const int SkillIndexFieldNumber = 13;
     private uint skillIndex_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -217,16 +218,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cast_entity_id" field.</summary>
-    public const int CastEntityIdFieldNumber = 8;
-    private uint castEntityId_;
+    /// <summary>Field number for the "hit_target_entity_id_list" field.</summary>
+    public const int HitTargetEntityIdListFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_hitTargetEntityIdList_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> hitTargetEntityIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CastEntityId {
-      get { return castEntityId_; }
-      set {
-        castEntityId_ = value;
-      }
+    public pbc::RepeatedField<uint> HitTargetEntityIdList {
+      get { return hitTargetEntityIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -244,17 +244,17 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!assistMonsterEntityInfo_.Equals(other.assistMonsterEntityInfo_)) return false;
-      if(!dynamicValues_.Equals(other.dynamicValues_)) return false;
       if(!skillExtraTags_.Equals(other.skillExtraTags_)) return false;
-      if (MazeAbilityStr != other.MazeAbilityStr) return false;
-      if(!hitTargetEntityIdList_.Equals(other.hitTargetEntityIdList_)) return false;
-      if (!object.Equals(TargetMotion, other.TargetMotion)) return false;
+      if (CastEntityId != other.CastEntityId) return false;
+      if(!dynamicValues_.Equals(other.dynamicValues_)) return false;
+      if(!assistMonsterEntityInfo_.Equals(other.assistMonsterEntityInfo_)) return false;
       if(!assistMonsterEntityIdList_.Equals(other.assistMonsterEntityIdList_)) return false;
       if (KCFABNFPOPN != other.KCFABNFPOPN) return false;
       if (AttackedByEntityId != other.AttackedByEntityId) return false;
+      if (!object.Equals(TargetMotion, other.TargetMotion)) return false;
+      if (MazeAbilityStr != other.MazeAbilityStr) return false;
       if (SkillIndex != other.SkillIndex) return false;
-      if (CastEntityId != other.CastEntityId) return false;
+      if(!hitTargetEntityIdList_.Equals(other.hitTargetEntityIdList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -262,17 +262,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= assistMonsterEntityInfo_.GetHashCode();
-      hash ^= dynamicValues_.GetHashCode();
       hash ^= skillExtraTags_.GetHashCode();
-      if (MazeAbilityStr.Length != 0) hash ^= MazeAbilityStr.GetHashCode();
-      hash ^= hitTargetEntityIdList_.GetHashCode();
-      if (targetMotion_ != null) hash ^= TargetMotion.GetHashCode();
+      if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
+      hash ^= dynamicValues_.GetHashCode();
+      hash ^= assistMonsterEntityInfo_.GetHashCode();
       hash ^= assistMonsterEntityIdList_.GetHashCode();
       if (KCFABNFPOPN != 0) hash ^= KCFABNFPOPN.GetHashCode();
       if (AttackedByEntityId != 0) hash ^= AttackedByEntityId.GetHashCode();
+      if (targetMotion_ != null) hash ^= TargetMotion.GetHashCode();
+      if (MazeAbilityStr.Length != 0) hash ^= MazeAbilityStr.GetHashCode();
       if (SkillIndex != 0) hash ^= SkillIndex.GetHashCode();
-      if (CastEntityId != 0) hash ^= CastEntityId.GetHashCode();
+      hash ^= hitTargetEntityIdList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -291,35 +291,35 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (targetMotion_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(TargetMotion);
-      }
       skillExtraTags_.WriteTo(output, _repeated_skillExtraTags_codec);
-      if (AttackedByEntityId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(AttackedByEntityId);
-      }
-      assistMonsterEntityIdList_.WriteTo(output, _repeated_assistMonsterEntityIdList_codec);
-      if (MazeAbilityStr.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(MazeAbilityStr);
-      }
       if (CastEntityId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(24);
         output.WriteUInt32(CastEntityId);
       }
-      if (SkillIndex != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(SkillIndex);
-      }
+      dynamicValues_.WriteTo(output, _repeated_dynamicValues_codec);
       assistMonsterEntityInfo_.WriteTo(output, _repeated_assistMonsterEntityInfo_codec);
-      hitTargetEntityIdList_.WriteTo(output, _repeated_hitTargetEntityIdList_codec);
+      assistMonsterEntityIdList_.WriteTo(output, _repeated_assistMonsterEntityIdList_codec);
       if (KCFABNFPOPN != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(KCFABNFPOPN);
       }
-      dynamicValues_.WriteTo(output, _repeated_dynamicValues_codec);
+      if (AttackedByEntityId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(AttackedByEntityId);
+      }
+      if (targetMotion_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(TargetMotion);
+      }
+      if (MazeAbilityStr.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(MazeAbilityStr);
+      }
+      if (SkillIndex != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(SkillIndex);
+      }
+      hitTargetEntityIdList_.WriteTo(output, _repeated_hitTargetEntityIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -330,35 +330,35 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (targetMotion_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(TargetMotion);
-      }
       skillExtraTags_.WriteTo(ref output, _repeated_skillExtraTags_codec);
-      if (AttackedByEntityId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(AttackedByEntityId);
-      }
-      assistMonsterEntityIdList_.WriteTo(ref output, _repeated_assistMonsterEntityIdList_codec);
-      if (MazeAbilityStr.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(MazeAbilityStr);
-      }
       if (CastEntityId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(24);
         output.WriteUInt32(CastEntityId);
       }
-      if (SkillIndex != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(SkillIndex);
-      }
+      dynamicValues_.WriteTo(ref output, _repeated_dynamicValues_codec);
       assistMonsterEntityInfo_.WriteTo(ref output, _repeated_assistMonsterEntityInfo_codec);
-      hitTargetEntityIdList_.WriteTo(ref output, _repeated_hitTargetEntityIdList_codec);
+      assistMonsterEntityIdList_.WriteTo(ref output, _repeated_assistMonsterEntityIdList_codec);
       if (KCFABNFPOPN != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(KCFABNFPOPN);
       }
-      dynamicValues_.WriteTo(ref output, _repeated_dynamicValues_codec);
+      if (AttackedByEntityId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(AttackedByEntityId);
+      }
+      if (targetMotion_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(TargetMotion);
+      }
+      if (MazeAbilityStr.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(MazeAbilityStr);
+      }
+      if (SkillIndex != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(SkillIndex);
+      }
+      hitTargetEntityIdList_.WriteTo(ref output, _repeated_hitTargetEntityIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -369,16 +369,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += assistMonsterEntityInfo_.CalculateSize(_repeated_assistMonsterEntityInfo_codec);
-      size += dynamicValues_.CalculateSize(_repeated_dynamicValues_codec);
       size += skillExtraTags_.CalculateSize(_repeated_skillExtraTags_codec);
-      if (MazeAbilityStr.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MazeAbilityStr);
+      if (CastEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CastEntityId);
       }
-      size += hitTargetEntityIdList_.CalculateSize(_repeated_hitTargetEntityIdList_codec);
-      if (targetMotion_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TargetMotion);
-      }
+      size += dynamicValues_.CalculateSize(_repeated_dynamicValues_codec);
+      size += assistMonsterEntityInfo_.CalculateSize(_repeated_assistMonsterEntityInfo_codec);
       size += assistMonsterEntityIdList_.CalculateSize(_repeated_assistMonsterEntityIdList_codec);
       if (KCFABNFPOPN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KCFABNFPOPN);
@@ -386,12 +382,16 @@ namespace March7thHoney.Proto {
       if (AttackedByEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AttackedByEntityId);
       }
+      if (targetMotion_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TargetMotion);
+      }
+      if (MazeAbilityStr.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MazeAbilityStr);
+      }
       if (SkillIndex != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillIndex);
       }
-      if (CastEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CastEntityId);
-      }
+      size += hitTargetEntityIdList_.CalculateSize(_repeated_hitTargetEntityIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -404,19 +404,12 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      assistMonsterEntityInfo_.Add(other.assistMonsterEntityInfo_);
-      dynamicValues_.Add(other.dynamicValues_);
       skillExtraTags_.Add(other.skillExtraTags_);
-      if (other.MazeAbilityStr.Length != 0) {
-        MazeAbilityStr = other.MazeAbilityStr;
+      if (other.CastEntityId != 0) {
+        CastEntityId = other.CastEntityId;
       }
-      hitTargetEntityIdList_.Add(other.hitTargetEntityIdList_);
-      if (other.targetMotion_ != null) {
-        if (targetMotion_ == null) {
-          TargetMotion = new global::March7thHoney.Proto.MotionInfo();
-        }
-        TargetMotion.MergeFrom(other.TargetMotion);
-      }
+      dynamicValues_.Add(other.dynamicValues_);
+      assistMonsterEntityInfo_.Add(other.assistMonsterEntityInfo_);
       assistMonsterEntityIdList_.Add(other.assistMonsterEntityIdList_);
       if (other.KCFABNFPOPN != 0) {
         KCFABNFPOPN = other.KCFABNFPOPN;
@@ -424,12 +417,19 @@ namespace March7thHoney.Proto {
       if (other.AttackedByEntityId != 0) {
         AttackedByEntityId = other.AttackedByEntityId;
       }
+      if (other.targetMotion_ != null) {
+        if (targetMotion_ == null) {
+          TargetMotion = new global::March7thHoney.Proto.MotionInfo();
+        }
+        TargetMotion.MergeFrom(other.TargetMotion);
+      }
+      if (other.MazeAbilityStr.Length != 0) {
+        MazeAbilityStr = other.MazeAbilityStr;
+      }
       if (other.SkillIndex != 0) {
         SkillIndex = other.SkillIndex;
       }
-      if (other.CastEntityId != 0) {
-        CastEntityId = other.CastEntityId;
-      }
+      hitTargetEntityIdList_.Add(other.hitTargetEntityIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -449,20 +449,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (targetMotion_ == null) {
-              TargetMotion = new global::March7thHoney.Proto.MotionInfo();
-            }
-            input.ReadMessage(TargetMotion);
-            break;
-          }
-          case 18:
-          case 16: {
+          case 10:
+          case 8: {
             skillExtraTags_.AddEntriesFrom(input, _repeated_skillExtraTags_codec);
             break;
           }
           case 24: {
-            AttackedByEntityId = input.ReadUInt32();
+            CastEntityId = input.ReadUInt32();
+            break;
+          }
+          case 34: {
+            dynamicValues_.AddEntriesFrom(input, _repeated_dynamicValues_codec);
+            break;
+          }
+          case 42: {
+            assistMonsterEntityInfo_.AddEntriesFrom(input, _repeated_assistMonsterEntityInfo_codec);
             break;
           }
           case 50:
@@ -470,33 +471,32 @@ namespace March7thHoney.Proto {
             assistMonsterEntityIdList_.AddEntriesFrom(input, _repeated_assistMonsterEntityIdList_codec);
             break;
           }
-          case 58: {
-            MazeAbilityStr = input.ReadString();
-            break;
-          }
-          case 64: {
-            CastEntityId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            SkillIndex = input.ReadUInt32();
-            break;
-          }
-          case 82: {
-            assistMonsterEntityInfo_.AddEntriesFrom(input, _repeated_assistMonsterEntityInfo_codec);
-            break;
-          }
-          case 90:
-          case 88: {
-            hitTargetEntityIdList_.AddEntriesFrom(input, _repeated_hitTargetEntityIdList_codec);
-            break;
-          }
-          case 96: {
+          case 56: {
             KCFABNFPOPN = input.ReadUInt32();
             break;
           }
-          case 106: {
-            dynamicValues_.AddEntriesFrom(input, _repeated_dynamicValues_codec);
+          case 64: {
+            AttackedByEntityId = input.ReadUInt32();
+            break;
+          }
+          case 74: {
+            if (targetMotion_ == null) {
+              TargetMotion = new global::March7thHoney.Proto.MotionInfo();
+            }
+            input.ReadMessage(TargetMotion);
+            break;
+          }
+          case 82: {
+            MazeAbilityStr = input.ReadString();
+            break;
+          }
+          case 104: {
+            SkillIndex = input.ReadUInt32();
+            break;
+          }
+          case 122:
+          case 120: {
+            hitTargetEntityIdList_.AddEntriesFrom(input, _repeated_hitTargetEntityIdList_codec);
             break;
           }
         }
@@ -518,20 +518,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (targetMotion_ == null) {
-              TargetMotion = new global::March7thHoney.Proto.MotionInfo();
-            }
-            input.ReadMessage(TargetMotion);
-            break;
-          }
-          case 18:
-          case 16: {
+          case 10:
+          case 8: {
             skillExtraTags_.AddEntriesFrom(ref input, _repeated_skillExtraTags_codec);
             break;
           }
           case 24: {
-            AttackedByEntityId = input.ReadUInt32();
+            CastEntityId = input.ReadUInt32();
+            break;
+          }
+          case 34: {
+            dynamicValues_.AddEntriesFrom(ref input, _repeated_dynamicValues_codec);
+            break;
+          }
+          case 42: {
+            assistMonsterEntityInfo_.AddEntriesFrom(ref input, _repeated_assistMonsterEntityInfo_codec);
             break;
           }
           case 50:
@@ -539,33 +540,32 @@ namespace March7thHoney.Proto {
             assistMonsterEntityIdList_.AddEntriesFrom(ref input, _repeated_assistMonsterEntityIdList_codec);
             break;
           }
-          case 58: {
-            MazeAbilityStr = input.ReadString();
-            break;
-          }
-          case 64: {
-            CastEntityId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            SkillIndex = input.ReadUInt32();
-            break;
-          }
-          case 82: {
-            assistMonsterEntityInfo_.AddEntriesFrom(ref input, _repeated_assistMonsterEntityInfo_codec);
-            break;
-          }
-          case 90:
-          case 88: {
-            hitTargetEntityIdList_.AddEntriesFrom(ref input, _repeated_hitTargetEntityIdList_codec);
-            break;
-          }
-          case 96: {
+          case 56: {
             KCFABNFPOPN = input.ReadUInt32();
             break;
           }
-          case 106: {
-            dynamicValues_.AddEntriesFrom(ref input, _repeated_dynamicValues_codec);
+          case 64: {
+            AttackedByEntityId = input.ReadUInt32();
+            break;
+          }
+          case 74: {
+            if (targetMotion_ == null) {
+              TargetMotion = new global::March7thHoney.Proto.MotionInfo();
+            }
+            input.ReadMessage(TargetMotion);
+            break;
+          }
+          case 82: {
+            MazeAbilityStr = input.ReadString();
+            break;
+          }
+          case 104: {
+            SkillIndex = input.ReadUInt32();
+            break;
+          }
+          case 122:
+          case 120: {
+            hitTargetEntityIdList_.AddEntriesFrom(ref input, _repeated_hitTargetEntityIdList_codec);
             break;
           }
         }

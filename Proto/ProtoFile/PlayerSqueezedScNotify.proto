@@ -13,6 +13,6 @@ message PlayerSqueezedScNotify {
         KICK_ACE_ANTI_CHEATER = 4;
         KICK_BY_GM = 5;
     }
-    BlackInfo black_info = 7;
-    PlayerSqueezedScNotify.KickType kick_type = 15;
+    BlackInfo black_info = 8;
+    PlayerSqueezedScNotify.KickType kick_type = 9;
 }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BuyNpcStuffCsReq {
-    uint32 CEAMLKCMMGD = 9;
+    uint32 CEAMLKCMMGD = 7;
 }

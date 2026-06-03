@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RaidTargetInfo.proto";
 
 message RaidData {
-    repeated RaidTargetInfo raid_target_info = 3;
-    uint32 raid_id = 1;
-    uint32 world_level = 15;
+    uint32 world_level = 1;
+    repeated RaidTargetInfo raid_target_info = 6;
+    uint32 raid_id = 8;
 }

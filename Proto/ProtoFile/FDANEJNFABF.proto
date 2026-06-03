@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FDANEJNFABF {
-    uint32 progress = 10;
+    uint32 progress = 12;
     uint32 id = 15;
 }

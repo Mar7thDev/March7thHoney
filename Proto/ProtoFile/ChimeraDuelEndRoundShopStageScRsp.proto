@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LCEDDGELBMJ.proto";
 
 message ChimeraDuelEndRoundShopStageScRsp {
-    LCEDDGELBMJ CFDIKLBINHK = 11;
-    uint32 retcode = 15;
+    uint32 retcode = 3;
+    LCEDDGELBMJ CFDIKLBINHK = 4;
 }

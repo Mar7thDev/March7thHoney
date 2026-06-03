@@ -6,12 +6,12 @@ import "EINKHFKDCCD.proto";
 import "GIHLNOIACIH.proto";
 
 message GetSwordTrainingDataScRsp {
+    GIHLNOIACIH BBEKBJPHEJK = 1;
+    repeated uint32 CICCAIENFGA = 2;
+    EINKHFKDCCD AJGOEJHKOKE = 4;
+    uint32 PABJCCKBGEB = 7;
     repeated uint32 JBJNHJNMPAP = 8;
-    EINKHFKDCCD AJGOEJHKOKE = 12;
-    repeated uint32 CICCAIENFGA = 9;
-    GIHLNOIACIH BBEKBJPHEJK = 13;
     repeated uint32 IEPANMCFKJL = 10;
-    bool GPGIMFMGGKG = 7;
-    uint32 PABJCCKBGEB = 1;
-    uint32 retcode = 2;
+    uint32 retcode = 13;
+    bool GPGIMFMGGKG = 15;
 }

@@ -6,10 +6,10 @@ import "AvatarType.proto";
 import "SpBarInfo.proto";
 
 message LineupAvatar {
-    SpBarInfo sp_bar = 12;
-    AvatarType avatar_type = 4;
-    uint32 slot = 8;
-    uint32 hp = 13;
-    uint32 id = 2;
-    uint32 satiety = 9;
+    uint32 id = 3;
+    uint32 slot = 4;
+    uint32 satiety = 10;
+    AvatarType avatar_type = 13;
+    uint32 hp = 14;
+    SpBarInfo sp_bar = 15;
 }

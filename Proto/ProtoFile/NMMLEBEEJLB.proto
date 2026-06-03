@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NMMLEBEEJLB {
-    uint32 NNNJECNENGA = 13;
+    uint32 NNNJECNENGA = 10;
 }

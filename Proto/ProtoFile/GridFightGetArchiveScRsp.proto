@@ -2,11 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "FAIHLAKPABN.proto";
+import "GridFightArchiveData.proto";
 import "MLJIILDNDPL.proto";
 
 message GridFightGetArchiveScRsp {
-    repeated FAIHLAKPABN MCGGPONOCKC = 15;
-    uint32 retcode = 9;
-    MLJIILDNDPL type = 13;
+    MLJIILDNDPL type = 7;
+    repeated GridFightArchiveData MCGGPONOCKC = 10;
+    uint32 retcode = 11;
 }

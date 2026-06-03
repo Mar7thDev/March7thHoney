@@ -12,7 +12,7 @@ message CLLBJDEJFNF {
             DAHCIBCIIAD_HJOMKLAGMCM = 4;
         }
     }
-    uint32 id = 6;
-    uint32 type = 11;
+    uint32 id = 2;
+    uint32 type = 8;
     uint32 slot = 14;
 }

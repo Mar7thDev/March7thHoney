@@ -8,16 +8,16 @@ import "GHJBBHOOOBC.proto";
 import "LIJFHHMGBFE.proto";
 
 message MBDOBECHOJA {
-    repeated LIJFHHMGBFE NAJEIPKGACO = 2;
-    repeated LIJFHHMGBFE OCMEMBAKLMM = 11;
-    GFHCKBHCNDF DCCILJIBPNK = 3;
-    GHJBBHOOOBC CJJMDMOCPDJ = 1;
-    repeated uint32 KGHFCILHGJL = 6;
-    GHJBBHOOOBC OIBCHBJCHJE = 8;
-    uint32 FDKPCNBCGEG = 5;
-    bool EDLLEHPGFGD = 15;
-    uint32 FEJIKNIKONI = 7;
-    DNLHKFILMLB phase = 9;
-    float LMODIDJMJIH = 4;
-    uint32 LPEHHMHPCMG = 12;
+    uint32 round = 1;
+    GHJBBHOOOBC CJJMDMOCPDJ = 2;
+    float LMODIDJMJIH = 3;
+    bool round_first_team_a = 4;
+    uint32 win_score = 5;
+    uint32 FDKPCNBCGEG = 7;
+    GFHCKBHCNDF DCCILJIBPNK = 8;
+    repeated LIJFHHMGBFE OCMEMBAKLMM = 9;
+    GHJBBHOOOBC OIBCHBJCHJE = 12;
+    DNLHKFILMLB phase = 13;
+    repeated LIJFHHMGBFE NAJEIPKGACO = 14;
+    repeated uint32 KGHFCILHGJL = 15;
 }

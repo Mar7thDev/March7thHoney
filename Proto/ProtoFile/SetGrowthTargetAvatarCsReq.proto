@@ -6,8 +6,8 @@ import "CFMDKNCDDAL.proto";
 import "GrowthTargetState.proto";
 
 message SetGrowthTargetAvatarCsReq {
-    repeated CFMDKNCDDAL FLINDJJJFLB = 2;
-    uint32 avatar_id = 4;
-    uint32 FCACACLEJNM = 9;
-    GrowthTargetState source = 6;
+    uint32 FCACACLEJNM = 1;
+    GrowthTargetState source = 3;
+    uint32 avatar_id = 5;
+    repeated CFMDKNCDDAL FLINDJJJFLB = 7;
 }

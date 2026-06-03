@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RogueMagicUnitComposeCsReq {
-    repeated uint32 JDJFHIMPIPK = 3;
+    repeated uint32 JDJFHIMPIPK = 1;
 }

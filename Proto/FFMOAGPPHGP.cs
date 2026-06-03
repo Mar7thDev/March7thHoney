@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGRk1PQUdQUEhHUC5wcm90bxoPU3BCYXJJbmZvLnByb3RvInIKC0ZGTU9B",
-            "R1BQSEdQEhoKBnNwX2JhchgGIAEoCzIKLlNwQmFySW5mbxITCgthdmF0YXJf",
-            "dHlwZRgJIAEoDRIKCgJocBgEIAEoDRIRCglhdmF0YXJfaWQYAiABKA0SEwoL",
-            "S0hKS0RMTkFNSVAYBSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "R1BQSEdQEhEKCWF2YXRhcl9pZBgBIAEoDRITCgtLSEpLRExOQU1JUBgCIAEo",
+            "DRITCgthdmF0YXJfdHlwZRgFIAEoDRIaCgZzcF9iYXIYByABKAsyCi5TcEJh",
+            "ckluZm8SCgoCaHAYCiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SpBarInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FFMOAGPPHGP), global::March7thHoney.Proto.FFMOAGPPHGP.Parser, new[]{ "SpBar", "AvatarType", "Hp", "AvatarId", "KHJKDLNAMIP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FFMOAGPPHGP), global::March7thHoney.Proto.FFMOAGPPHGP.Parser, new[]{ "AvatarId", "KHJKDLNAMIP", "AvatarType", "SpBar", "Hp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FFMOAGPPHGP(FFMOAGPPHGP other) : this() {
-      spBar_ = other.spBar_ != null ? other.spBar_.Clone() : null;
-      avatarType_ = other.avatarType_;
-      hp_ = other.hp_;
       avatarId_ = other.avatarId_;
       kHJKDLNAMIP_ = other.kHJKDLNAMIP_;
+      avatarType_ = other.avatarType_;
+      spBar_ = other.spBar_ != null ? other.spBar_.Clone() : null;
+      hp_ = other.hp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,44 +88,8 @@ namespace March7thHoney.Proto {
       return new FFMOAGPPHGP(this);
     }
 
-    /// <summary>Field number for the "sp_bar" field.</summary>
-    public const int SpBarFieldNumber = 6;
-    private global::March7thHoney.Proto.SpBarInfo spBar_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SpBarInfo SpBar {
-      get { return spBar_; }
-      set {
-        spBar_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "avatar_type" field.</summary>
-    public const int AvatarTypeFieldNumber = 9;
-    private uint avatarType_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarType {
-      get { return avatarType_; }
-      set {
-        avatarType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "hp" field.</summary>
-    public const int HpFieldNumber = 4;
-    private uint hp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Hp {
-      get { return hp_; }
-      set {
-        hp_ = value;
-      }
-    }
-
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 2;
+    public const int AvatarIdFieldNumber = 1;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +101,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KHJKDLNAMIP" field.</summary>
-    public const int KHJKDLNAMIPFieldNumber = 5;
+    public const int KHJKDLNAMIPFieldNumber = 2;
     private uint kHJKDLNAMIP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -145,6 +109,42 @@ namespace March7thHoney.Proto {
       get { return kHJKDLNAMIP_; }
       set {
         kHJKDLNAMIP_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_type" field.</summary>
+    public const int AvatarTypeFieldNumber = 5;
+    private uint avatarType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvatarType {
+      get { return avatarType_; }
+      set {
+        avatarType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sp_bar" field.</summary>
+    public const int SpBarFieldNumber = 7;
+    private global::March7thHoney.Proto.SpBarInfo spBar_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.SpBarInfo SpBar {
+      get { return spBar_; }
+      set {
+        spBar_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "hp" field.</summary>
+    public const int HpFieldNumber = 10;
+    private uint hp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Hp {
+      get { return hp_; }
+      set {
+        hp_ = value;
       }
     }
 
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(SpBar, other.SpBar)) return false;
-      if (AvatarType != other.AvatarType) return false;
-      if (Hp != other.Hp) return false;
       if (AvatarId != other.AvatarId) return false;
       if (KHJKDLNAMIP != other.KHJKDLNAMIP) return false;
+      if (AvatarType != other.AvatarType) return false;
+      if (!object.Equals(SpBar, other.SpBar)) return false;
+      if (Hp != other.Hp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (spBar_ != null) hash ^= SpBar.GetHashCode();
-      if (AvatarType != 0) hash ^= AvatarType.GetHashCode();
-      if (Hp != 0) hash ^= Hp.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (KHJKDLNAMIP != 0) hash ^= KHJKDLNAMIP.GetHashCode();
+      if (AvatarType != 0) hash ^= AvatarType.GetHashCode();
+      if (spBar_ != null) hash ^= SpBar.GetHashCode();
+      if (Hp != 0) hash ^= Hp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -199,24 +199,24 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (AvatarId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(AvatarId);
       }
-      if (Hp != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(Hp);
-      }
       if (KHJKDLNAMIP != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(KHJKDLNAMIP);
       }
+      if (AvatarType != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(AvatarType);
+      }
       if (spBar_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(SpBar);
       }
-      if (AvatarType != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(AvatarType);
+      if (Hp != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Hp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -229,24 +229,24 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (AvatarId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(AvatarId);
       }
-      if (Hp != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(Hp);
-      }
       if (KHJKDLNAMIP != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(16);
         output.WriteUInt32(KHJKDLNAMIP);
       }
+      if (AvatarType != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(AvatarType);
+      }
       if (spBar_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(SpBar);
       }
-      if (AvatarType != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(AvatarType);
+      if (Hp != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(Hp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -258,20 +258,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (spBar_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SpBar);
-      }
-      if (AvatarType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarType);
-      }
-      if (Hp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Hp);
-      }
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
       if (KHJKDLNAMIP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KHJKDLNAMIP);
+      }
+      if (AvatarType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarType);
+      }
+      if (spBar_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SpBar);
+      }
+      if (Hp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Hp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -285,23 +285,23 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.AvatarId != 0) {
+        AvatarId = other.AvatarId;
+      }
+      if (other.KHJKDLNAMIP != 0) {
+        KHJKDLNAMIP = other.KHJKDLNAMIP;
+      }
+      if (other.AvatarType != 0) {
+        AvatarType = other.AvatarType;
+      }
       if (other.spBar_ != null) {
         if (spBar_ == null) {
           SpBar = new global::March7thHoney.Proto.SpBarInfo();
         }
         SpBar.MergeFrom(other.SpBar);
       }
-      if (other.AvatarType != 0) {
-        AvatarType = other.AvatarType;
-      }
       if (other.Hp != 0) {
         Hp = other.Hp;
-      }
-      if (other.AvatarId != 0) {
-        AvatarId = other.AvatarId;
-      }
-      if (other.KHJKDLNAMIP != 0) {
-        KHJKDLNAMIP = other.KHJKDLNAMIP;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -322,27 +322,27 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 8: {
             AvatarId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            Hp = input.ReadUInt32();
-            break;
-          }
-          case 40: {
+          case 16: {
             KHJKDLNAMIP = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 40: {
+            AvatarType = input.ReadUInt32();
+            break;
+          }
+          case 58: {
             if (spBar_ == null) {
               SpBar = new global::March7thHoney.Proto.SpBarInfo();
             }
             input.ReadMessage(SpBar);
             break;
           }
-          case 72: {
-            AvatarType = input.ReadUInt32();
+          case 80: {
+            Hp = input.ReadUInt32();
             break;
           }
         }
@@ -364,27 +364,27 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 8: {
             AvatarId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            Hp = input.ReadUInt32();
-            break;
-          }
-          case 40: {
+          case 16: {
             KHJKDLNAMIP = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 40: {
+            AvatarType = input.ReadUInt32();
+            break;
+          }
+          case 58: {
             if (spBar_ == null) {
               SpBar = new global::March7thHoney.Proto.SpBarInfo();
             }
             input.ReadMessage(SpBar);
             break;
           }
-          case 72: {
-            AvatarType = input.ReadUInt32();
+          case 80: {
+            Hp = input.ReadUInt32();
             break;
           }
         }

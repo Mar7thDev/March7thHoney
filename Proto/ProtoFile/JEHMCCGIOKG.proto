@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum JEHMCCGIOKG {
-    JEHMCCGIOKG_LNPNFLDKKCK = 0;
-    JEHMCCGIOKG_ELFIEMKALJO = 1;
-    JEHMCCGIOKG_KJMKFEICCDA = 2;
-}

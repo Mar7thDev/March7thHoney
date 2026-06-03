@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MessageGroupStatus.proto";
 
 message GroupStatus {
-    uint32 group_id = 1;
-    MessageGroupStatus group_status = 10;
-    int64 refresh_time = 3;
+    int64 refresh_time = 1;
+    uint32 group_id = 5;
+    MessageGroupStatus group_status = 15;
 }

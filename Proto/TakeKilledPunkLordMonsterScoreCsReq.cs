@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CilUYWtlS2lsbGVkUHVua0xvcmRNb25zdGVyU2NvcmVDc1JlcS5wcm90bxoR",
             "Q0RDQ1BISUxPQ0MucHJvdG8iXQojVGFrZUtpbGxlZFB1bmtMb3JkTW9uc3Rl",
-            "clNjb3JlQ3NSZXESIQoLS0hPTEJFR0JGT00YAiABKAsyDC5DRENDUEhJTE9D",
-            "QxITCgtMT01HTk1GQVBHRRgOIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "clNjb3JlQ3NSZXESIQoLS0hPTEJFR0JGT00YBSABKAsyDC5DRENDUEhJTE9D",
+            "QxITCgtMT01HTk1GQVBHRRgMIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CDCCPHILOCCReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KHOLBEGBFOM" field.</summary>
-    public const int KHOLBEGBFOMFieldNumber = 2;
+    public const int KHOLBEGBFOMFieldNumber = 5;
     private global::March7thHoney.Proto.CDCCPHILOCC kHOLBEGBFOM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LOMGNMFAPGE" field.</summary>
-    public const int LOMGNMFAPGEFieldNumber = 14;
+    public const int LOMGNMFAPGEFieldNumber = 12;
     private bool lOMGNMFAPGE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -154,11 +154,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (kHOLBEGBFOM_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(42);
         output.WriteMessage(KHOLBEGBFOM);
       }
       if (LOMGNMFAPGE != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteBool(LOMGNMFAPGE);
       }
       if (_unknownFields != null) {
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (kHOLBEGBFOM_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(42);
         output.WriteMessage(KHOLBEGBFOM);
       }
       if (LOMGNMFAPGE != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteBool(LOMGNMFAPGE);
       }
       if (_unknownFields != null) {
@@ -235,14 +235,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 42: {
             if (kHOLBEGBFOM_ == null) {
               KHOLBEGBFOM = new global::March7thHoney.Proto.CDCCPHILOCC();
             }
             input.ReadMessage(KHOLBEGBFOM);
             break;
           }
-          case 112: {
+          case 96: {
             LOMGNMFAPGE = input.ReadBool();
             break;
           }
@@ -265,14 +265,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 42: {
             if (kHOLBEGBFOM_ == null) {
               KHOLBEGBFOM = new global::March7thHoney.Proto.CDCCPHILOCC();
             }
             input.ReadMessage(KHOLBEGBFOM);
             break;
           }
-          case 112: {
+          case 96: {
             LOMGNMFAPGE = input.ReadBool();
             break;
           }

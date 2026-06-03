@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBQbGF5ZXJSZXR1cm5UYWtlUmVsaWNTY1JzcC5wcm90bxoOSXRlbUxpc3Qu",
             "cHJvdG8iXgoaUGxheWVyUmV0dXJuVGFrZVJlbGljU2NSc3ASHAoJaXRlbV9s",
-            "aXN0GAQgASgLMgkuSXRlbUxpc3QSDwoHcmV0Y29kZRgGIAEoDRIRCglhdmF0",
-            "YXJfaWQYDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "aXN0GAQgASgLMgkuSXRlbUxpc3QSDwoHcmV0Y29kZRgFIAEoDRIRCglhdmF0",
+            "YXJfaWQYByABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 5;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 12;
+    public const int AvatarIdFieldNumber = 7;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
         output.WriteMessage(ItemList);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
       if (AvatarId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
@@ -194,11 +194,11 @@ namespace March7thHoney.Proto {
         output.WriteMessage(ItemList);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
       }
       if (AvatarId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
@@ -270,11 +270,11 @@ namespace March7thHoney.Proto {
             input.ReadMessage(ItemList);
             break;
           }
-          case 48: {
+          case 40: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 56: {
             AvatarId = input.ReadUInt32();
             break;
           }
@@ -304,11 +304,11 @@ namespace March7thHoney.Proto {
             input.ReadMessage(ItemList);
             break;
           }
-          case 48: {
+          case 40: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 56: {
             AvatarId = input.ReadUInt32();
             break;
           }

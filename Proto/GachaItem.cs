@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg9HYWNoYUl0ZW0ucHJvdG8aCkl0ZW0ucHJvdG8aDkl0ZW1MaXN0LnByb3Rv",
-            "InwKCUdhY2hhSXRlbRIdCgp0b2tlbl9pdGVtGAcgASgLMgkuSXRlbUxpc3QS",
-            "JQoSdHJhbnNmZXJfaXRlbV9saXN0GAggASgLMgkuSXRlbUxpc3QSGQoKZ2Fj",
-            "aGFfaXRlbRgJIAEoCzIFLkl0ZW0SDgoGaXNfbmV3GAogASgIQhaqAhNNYXJj",
+            "InwKCUdhY2hhSXRlbRIlChJ0cmFuc2Zlcl9pdGVtX2xpc3QYASABKAsyCS5J",
+            "dGVtTGlzdBIdCgp0b2tlbl9pdGVtGAIgASgLMgkuSXRlbUxpc3QSGQoKZ2Fj",
+            "aGFfaXRlbRgDIAEoCzIFLkl0ZW0SDgoGaXNfbmV3GAYgASgIQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemReflection.Descriptor, global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GachaItem), global::March7thHoney.Proto.GachaItem.Parser, new[]{ "TokenItem", "TransferItemList", "GachaItem_", "IsNew" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GachaItem), global::March7thHoney.Proto.GachaItem.Parser, new[]{ "TransferItemList", "TokenItem", "GachaItem_", "IsNew" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GachaItem(GachaItem other) : this() {
-      tokenItem_ = other.tokenItem_ != null ? other.tokenItem_.Clone() : null;
       transferItemList_ = other.transferItemList_ != null ? other.transferItemList_.Clone() : null;
+      tokenItem_ = other.tokenItem_ != null ? other.tokenItem_.Clone() : null;
       gachaItem_ = other.gachaItem_ != null ? other.gachaItem_.Clone() : null;
       isNew_ = other.isNew_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -87,20 +87,8 @@ namespace March7thHoney.Proto {
       return new GachaItem(this);
     }
 
-    /// <summary>Field number for the "token_item" field.</summary>
-    public const int TokenItemFieldNumber = 7;
-    private global::March7thHoney.Proto.ItemList tokenItem_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ItemList TokenItem {
-      get { return tokenItem_; }
-      set {
-        tokenItem_ = value;
-      }
-    }
-
     /// <summary>Field number for the "transfer_item_list" field.</summary>
-    public const int TransferItemListFieldNumber = 8;
+    public const int TransferItemListFieldNumber = 1;
     private global::March7thHoney.Proto.ItemList transferItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,8 +99,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "token_item" field.</summary>
+    public const int TokenItemFieldNumber = 2;
+    private global::March7thHoney.Proto.ItemList tokenItem_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ItemList TokenItem {
+      get { return tokenItem_; }
+      set {
+        tokenItem_ = value;
+      }
+    }
+
     /// <summary>Field number for the "gacha_item" field.</summary>
-    public const int GachaItem_FieldNumber = 9;
+    public const int GachaItem_FieldNumber = 3;
     private global::March7thHoney.Proto.Item gachaItem_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_new" field.</summary>
-    public const int IsNewFieldNumber = 10;
+    public const int IsNewFieldNumber = 6;
     private bool isNew_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,8 +150,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(TokenItem, other.TokenItem)) return false;
       if (!object.Equals(TransferItemList, other.TransferItemList)) return false;
+      if (!object.Equals(TokenItem, other.TokenItem)) return false;
       if (!object.Equals(GachaItem_, other.GachaItem_)) return false;
       if (IsNew != other.IsNew) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -161,8 +161,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (tokenItem_ != null) hash ^= TokenItem.GetHashCode();
       if (transferItemList_ != null) hash ^= TransferItemList.GetHashCode();
+      if (tokenItem_ != null) hash ^= TokenItem.GetHashCode();
       if (gachaItem_ != null) hash ^= GachaItem_.GetHashCode();
       if (IsNew != false) hash ^= IsNew.GetHashCode();
       if (_unknownFields != null) {
@@ -183,20 +183,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (tokenItem_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(TokenItem);
-      }
       if (transferItemList_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(10);
         output.WriteMessage(TransferItemList);
       }
+      if (tokenItem_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(TokenItem);
+      }
       if (gachaItem_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(26);
         output.WriteMessage(GachaItem_);
       }
       if (IsNew != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteBool(IsNew);
       }
       if (_unknownFields != null) {
@@ -209,20 +209,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (tokenItem_ != null) {
-        output.WriteRawTag(58);
-        output.WriteMessage(TokenItem);
-      }
       if (transferItemList_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(10);
         output.WriteMessage(TransferItemList);
       }
+      if (tokenItem_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(TokenItem);
+      }
       if (gachaItem_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(26);
         output.WriteMessage(GachaItem_);
       }
       if (IsNew != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteBool(IsNew);
       }
       if (_unknownFields != null) {
@@ -235,11 +235,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (tokenItem_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TokenItem);
-      }
       if (transferItemList_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TransferItemList);
+      }
+      if (tokenItem_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TokenItem);
       }
       if (gachaItem_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(GachaItem_);
@@ -259,17 +259,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.tokenItem_ != null) {
-        if (tokenItem_ == null) {
-          TokenItem = new global::March7thHoney.Proto.ItemList();
-        }
-        TokenItem.MergeFrom(other.TokenItem);
-      }
       if (other.transferItemList_ != null) {
         if (transferItemList_ == null) {
           TransferItemList = new global::March7thHoney.Proto.ItemList();
         }
         TransferItemList.MergeFrom(other.TransferItemList);
+      }
+      if (other.tokenItem_ != null) {
+        if (tokenItem_ == null) {
+          TokenItem = new global::March7thHoney.Proto.ItemList();
+        }
+        TokenItem.MergeFrom(other.TokenItem);
       }
       if (other.gachaItem_ != null) {
         if (gachaItem_ == null) {
@@ -299,28 +299,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
-            if (tokenItem_ == null) {
-              TokenItem = new global::March7thHoney.Proto.ItemList();
-            }
-            input.ReadMessage(TokenItem);
-            break;
-          }
-          case 66: {
+          case 10: {
             if (transferItemList_ == null) {
               TransferItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(TransferItemList);
             break;
           }
-          case 74: {
+          case 18: {
+            if (tokenItem_ == null) {
+              TokenItem = new global::March7thHoney.Proto.ItemList();
+            }
+            input.ReadMessage(TokenItem);
+            break;
+          }
+          case 26: {
             if (gachaItem_ == null) {
               GachaItem_ = new global::March7thHoney.Proto.Item();
             }
             input.ReadMessage(GachaItem_);
             break;
           }
-          case 80: {
+          case 48: {
             IsNew = input.ReadBool();
             break;
           }
@@ -343,28 +343,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
-            if (tokenItem_ == null) {
-              TokenItem = new global::March7thHoney.Proto.ItemList();
-            }
-            input.ReadMessage(TokenItem);
-            break;
-          }
-          case 66: {
+          case 10: {
             if (transferItemList_ == null) {
               TransferItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(TransferItemList);
             break;
           }
-          case 74: {
+          case 18: {
+            if (tokenItem_ == null) {
+              TokenItem = new global::March7thHoney.Proto.ItemList();
+            }
+            input.ReadMessage(TokenItem);
+            break;
+          }
+          case 26: {
             if (gachaItem_ == null) {
               GachaItem_ = new global::March7thHoney.Proto.Item();
             }
             input.ReadMessage(GachaItem_);
             break;
           }
-          case 80: {
+          case 48: {
             IsNew = input.ReadBool();
             break;
           }

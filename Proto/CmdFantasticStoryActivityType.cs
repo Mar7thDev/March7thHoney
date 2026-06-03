@@ -26,11 +26,11 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiNDbWRGYW50YXN0aWNTdG9yeUFjdGl2aXR5VHlwZS5wcm90byrwAQodQ21k",
             "RmFudGFzdGljU3RvcnlBY3Rpdml0eVR5cGUSGwoXR0pBTE9NT0tGS0tfTkxD",
-            "REdJUEdGREoQABIcChdHSkFMT01PS0ZLS19CTEhCR1BGUEZHUBDtJhIcChdH",
-            "SkFMT01PS0ZLS19LTUlJREFPS0lBTBC/JhIcChdHSkFMT01PS0ZLS19QSUVJ",
-            "S0FCTEJHUBCxJhIcChdHSkFMT01PS0ZLS19JTEZBTEhER05HTBCnJhIcChdH",
-            "SkFMT01PS0ZLS19GQkpDUEdBSUtFQRDIJhIcChdHSkFMT01PS0ZLS19LRk5M",
-            "TkpNQklFTBD0JkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "REdJUEdGREoQABIcChdHSkFMT01PS0ZLS19JTEZBTEhER05HTBDyJhIcChdH",
+            "SkFMT01PS0ZLS19GQkpDUEdBSUtFQRD8JhIcChdHSkFMT01PS0ZLS19LRk5M",
+            "TkpNQklFTBCBJxIcChdHSkFMT01PS0ZLS19LTUlJREFPS0lBTBDeJhIcChdH",
+            "SkFMT01PS0ZLS19QSUVJS0FCTEJHUBD1JhIcChdHSkFMT01PS0ZLS19CTEhC",
+            "R1BGUEZHUBC9JkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFantasticStoryActivityType), }, null, null));
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdFantasticStoryActivityType {
     [pbr::OriginalName("GJALOMOKFKK_NLCDGIPGFDJ")] GjalomokfkkNlcdgipgfdj = 0,
-    [pbr::OriginalName("GJALOMOKFKK_BLHBGPFPFGP")] GjalomokfkkBlhbgpfpfgp = 4973,
-    [pbr::OriginalName("GJALOMOKFKK_KMIIDAOKIAL")] GjalomokfkkKmiidaokial = 4927,
-    [pbr::OriginalName("GJALOMOKFKK_PIEIKABLBGP")] GjalomokfkkPieikablbgp = 4913,
-    [pbr::OriginalName("GJALOMOKFKK_ILFALHDGNGL")] GjalomokfkkIlfalhdgngl = 4903,
-    [pbr::OriginalName("GJALOMOKFKK_FBJCPGAIKEA")] GjalomokfkkFbjcpgaikea = 4936,
-    [pbr::OriginalName("GJALOMOKFKK_KFNLNJMBIEL")] GjalomokfkkKfnlnjmbiel = 4980,
+    [pbr::OriginalName("GJALOMOKFKK_ILFALHDGNGL")] GjalomokfkkIlfalhdgngl = 4978,
+    [pbr::OriginalName("GJALOMOKFKK_FBJCPGAIKEA")] GjalomokfkkFbjcpgaikea = 4988,
+    [pbr::OriginalName("GJALOMOKFKK_KFNLNJMBIEL")] GjalomokfkkKfnlnjmbiel = 4993,
+    [pbr::OriginalName("GJALOMOKFKK_KMIIDAOKIAL")] GjalomokfkkKmiidaokial = 4958,
+    [pbr::OriginalName("GJALOMOKFKK_PIEIKABLBGP")] GjalomokfkkPieikablbgp = 4981,
+    [pbr::OriginalName("GJALOMOKFKK_BLHBGPFPFGP")] GjalomokfkkBlhbgpfpfgp = 4925,
   }
 
   #endregion

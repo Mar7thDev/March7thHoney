@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AKMCODLAEKI.proto";
 
 message GGCFMPIBGHA {
-    repeated AKMCODLAEKI GFKAFIFMHNF = 11;
+    repeated AKMCODLAEKI GFKAFIFMHNF = 2;
 }

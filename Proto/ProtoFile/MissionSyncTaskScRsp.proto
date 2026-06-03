@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MissionSyncTaskScRsp {
-    string key = 3;
-    uint32 retcode = 14;
+    string key = 6;
+    uint32 retcode = 9;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "SceneIdentifier.proto";
 
 message GetSceneMapInfoCsReq {
-    repeated SceneIdentifier scene_identifiers = 6;
+    repeated SceneIdentifier scene_identifiers = 12;
 }

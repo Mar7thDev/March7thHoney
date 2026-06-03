@@ -3,8 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetAssistScRsp {
-    uint32 retcode = 14;
-    uint32 avatar_id = 13;
-    uint32 FDKFIOLMPHA = 6;
-    uint32 uid = 8;
+    uint32 retcode = 9;
+    uint32 avatar_id = 11;
+    uint32 uid = 15;
 }
