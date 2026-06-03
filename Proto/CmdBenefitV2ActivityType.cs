@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5DbWRCZW5lZml0VjJBY3Rpdml0eVR5cGUucHJvdG8q6wEKGENtZEJlbmVm",
             "aXRWMkFjdGl2aXR5VHlwZRIbChdCTkRGSUpLTUJIRV9OTENER0lQR0ZEShAA",
-            "EhwKF0JOREZJSktNQkhFX05ER0lOSUdMSEZHEOVMEhwKF0JOREZJSktNQkhF",
-            "X05JSklHSEhHS0lPEOBMEhwKF0JOREZJSktNQkhFX01PSENKTklNSEpNEN5M",
-            "EhwKF0JOREZJSktNQkhFX0RJUENDR0hGSkFBEOZMEhwKF0JOREZJSktNQkhF",
-            "X0pHQUpKQk5DSUtLEN1MEhwKF0JOREZJSktNQkhFX0RHREZBS0ZIS0ZBEORM",
+            "EhwKF0JOREZJSktNQkhFX0RJUENDR0hGSkFBEOFMEhwKF0JOREZJSktNQkhF",
+            "X0pHQUpKQk5DSUtLEOJMEhwKF0JOREZJSktNQkhFX01PSENKTklNSEpNEN9M",
+            "EhwKF0JOREZJSktNQkhFX0RHREZBS0ZIS0ZBEN1MEhwKF0JOREZJSktNQkhF",
+            "X05JSklHSEhHS0lPEOBMEhwKF0JOREZJSktNQkhFX05ER0lOSUdMSEZHEOZM",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdBenefitV2ActivityType {
     [pbr::OriginalName("BNDFIJKMBHE_NLCDGIPGFDJ")] BndfijkmbheNlcdgipgfdj = 0,
-    [pbr::OriginalName("BNDFIJKMBHE_NDGINIGLHFG")] BndfijkmbheNdginiglhfg = 9829,
+    [pbr::OriginalName("BNDFIJKMBHE_DIPCCGHFJAA")] BndfijkmbheDipccghfjaa = 9825,
+    [pbr::OriginalName("BNDFIJKMBHE_JGAJJBNCIKK")] BndfijkmbheJgajjbncikk = 9826,
+    [pbr::OriginalName("BNDFIJKMBHE_MOHCJNIMHJM")] BndfijkmbheMohcjnimhjm = 9823,
+    [pbr::OriginalName("BNDFIJKMBHE_DGDFAKFHKFA")] BndfijkmbheDgdfakfhkfa = 9821,
     [pbr::OriginalName("BNDFIJKMBHE_NIJIGHHGKIO")] BndfijkmbheNijighhgkio = 9824,
-    [pbr::OriginalName("BNDFIJKMBHE_MOHCJNIMHJM")] BndfijkmbheMohcjnimhjm = 9822,
-    [pbr::OriginalName("BNDFIJKMBHE_DIPCCGHFJAA")] BndfijkmbheDipccghfjaa = 9830,
-    [pbr::OriginalName("BNDFIJKMBHE_JGAJJBNCIKK")] BndfijkmbheJgajjbncikk = 9821,
-    [pbr::OriginalName("BNDFIJKMBHE_DGDFAKFHKFA")] BndfijkmbheDgdfakfhkfa = 9828,
+    [pbr::OriginalName("BNDFIJKMBHE_NDGINIGLHFG")] BndfijkmbheNdginiglhfg = 9830,
   }
 
   #endregion

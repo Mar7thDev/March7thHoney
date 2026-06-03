@@ -3,5 +3,4 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyGetDailyInitItemCsReq {
-    bool OANJANOOCMI = 13;
 }

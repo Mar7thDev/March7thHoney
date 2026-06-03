@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiJNb25vcG9seUFjdGlvblJlc3VsdFNjTm90aWZ5LnByb3RvGhpNb25vcG9s",
             "eUFjdGlvblJlc3VsdC5wcm90byJKChxNb25vcG9seUFjdGlvblJlc3VsdFNj",
-            "Tm90aWZ5EioKC0JLR1BHSU5DSEpJGAUgAygLMhUuTW9ub3BvbHlBY3Rpb25S",
+            "Tm90aWZ5EioKC0JLR1BHSU5DSEpJGA8gAygLMhUuTW9ub3BvbHlBY3Rpb25S",
             "ZXN1bHRCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MonopolyActionResultReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BKGPGINCHJI" field.</summary>
-    public const int BKGPGINCHJIFieldNumber = 5;
+    public const int BKGPGINCHJIFieldNumber = 15;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MonopolyActionResult> _repeated_bKGPGINCHJI_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MonopolyActionResult.Parser);
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.MonopolyActionResult.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult> bKGPGINCHJI_ = new pbc::RepeatedField<global::March7thHoney.Proto.MonopolyActionResult>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 122: {
             bKGPGINCHJI_.AddEntriesFrom(input, _repeated_bKGPGINCHJI_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 122: {
             bKGPGINCHJI_.AddEntriesFrom(ref input, _repeated_bKGPGINCHJI_codec);
             break;
           }

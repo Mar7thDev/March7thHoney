@@ -6,8 +6,8 @@ import "DNLKMHLAPHC.proto";
 import "MMBBHFNJILI.proto";
 
 message PLBAMNCLBHB {
-    repeated DNLKMHLAPHC MALDOMHPILM = 8;
-    repeated MMBBHFNJILI HIILDALHIMD = 3;
     uint32 NBMNPGKEIIH = 2;
-    bool HIKMFMJCNKP = 10;
+    bool HIKMFMJCNKP = 3;
+    repeated MMBBHFNJILI HIILDALHIMD = 8;
+    repeated DNLKMHLAPHC MALDOMHPILM = 9;
 }

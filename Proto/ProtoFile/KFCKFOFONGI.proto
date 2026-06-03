@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KHEOAGDIHCC.proto";
 
 message KFCKFOFONGI {
-    repeated KHEOAGDIHCC MEDLNEJHOEF = 1;
-    uint32 KINCCGNDOJN = 2;
-    bool FACNFJFMPNK = 15;
-    bool DPLFIIPIACN = 5;
+    uint32 KINCCGNDOJN = 3;
+    bool FACNFJFMPNK = 5;
+    repeated KHEOAGDIHCC MEDLNEJHOEF = 12;
+    bool DPLFIIPIACN = 14;
 }

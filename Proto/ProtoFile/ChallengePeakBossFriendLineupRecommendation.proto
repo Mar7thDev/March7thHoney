@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ONKDAPOKGAC.proto";
 
 message ChallengePeakBossFriendLineupRecommendation {
-    repeated uint32 finished_target_list = 9;
-    repeated ONKDAPOKGAC avatar_list = 8;
-    uint32 buff_id = 10;
-    bool is_hard_mode = 1;
-    bool hard_mode_has_passed = 3;
+    uint32 buff_id = 3;
+    bool hard_mode_has_passed = 7;
+    repeated ONKDAPOKGAC avatar_list = 9;
+    bool is_hard_mode = 12;
+    repeated uint32 finished_target_list = 15;
 }

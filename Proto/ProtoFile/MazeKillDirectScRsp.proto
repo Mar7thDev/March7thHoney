@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MazeKillDirectScRsp {
-    repeated uint32 entity_list = 11;
-    uint32 retcode = 1;
+    repeated uint32 entity_list = 4;
+    uint32 retcode = 12;
 }

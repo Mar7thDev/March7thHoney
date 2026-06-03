@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtIZWFydERpYWxEaWFsb2d1ZUluZm8ucHJvdG8iQQoVSGVhcnREaWFsRGlh",
-            "bG9ndWVJbmZvEhMKC2RpYWxvZ3VlX2lkGAggASgNEhMKC0dEUEhPSU1PTkxO",
-            "GAEgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "bG9ndWVJbmZvEhMKC0dEUEhPSU1PTkxOGAwgASgIEhMKC2RpYWxvZ3VlX2lk",
+            "GA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeartDialDialogueInfo), global::March7thHoney.Proto.HeartDialDialogueInfo.Parser, new[]{ "DialogueId", "GDPHOIMONLN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeartDialDialogueInfo), global::March7thHoney.Proto.HeartDialDialogueInfo.Parser, new[]{ "GDPHOIMONLN", "DialogueId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HeartDialDialogueInfo(HeartDialDialogueInfo other) : this() {
-      dialogueId_ = other.dialogueId_;
       gDPHOIMONLN_ = other.gDPHOIMONLN_;
+      dialogueId_ = other.dialogueId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new HeartDialDialogueInfo(this);
     }
 
-    /// <summary>Field number for the "dialogue_id" field.</summary>
-    public const int DialogueIdFieldNumber = 8;
-    private uint dialogueId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DialogueId {
-      get { return dialogueId_; }
-      set {
-        dialogueId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "GDPHOIMONLN" field.</summary>
-    public const int GDPHOIMONLNFieldNumber = 1;
+    public const int GDPHOIMONLNFieldNumber = 12;
     private bool gDPHOIMONLN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return gDPHOIMONLN_; }
       set {
         gDPHOIMONLN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dialogue_id" field.</summary>
+    public const int DialogueIdFieldNumber = 14;
+    private uint dialogueId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DialogueId {
+      get { return dialogueId_; }
+      set {
+        dialogueId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (DialogueId != other.DialogueId) return false;
       if (GDPHOIMONLN != other.GDPHOIMONLN) return false;
+      if (DialogueId != other.DialogueId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DialogueId != 0) hash ^= DialogueId.GetHashCode();
       if (GDPHOIMONLN != false) hash ^= GDPHOIMONLN.GetHashCode();
+      if (DialogueId != 0) hash ^= DialogueId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GDPHOIMONLN != false) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(96);
         output.WriteBool(GDPHOIMONLN);
       }
       if (DialogueId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(112);
         output.WriteUInt32(DialogueId);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GDPHOIMONLN != false) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(96);
         output.WriteBool(GDPHOIMONLN);
       }
       if (DialogueId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(112);
         output.WriteUInt32(DialogueId);
       }
       if (_unknownFields != null) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DialogueId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DialogueId);
-      }
       if (GDPHOIMONLN != false) {
         size += 1 + 1;
+      }
+      if (DialogueId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DialogueId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.DialogueId != 0) {
-        DialogueId = other.DialogueId;
-      }
       if (other.GDPHOIMONLN != false) {
         GDPHOIMONLN = other.GDPHOIMONLN;
+      }
+      if (other.DialogueId != 0) {
+        DialogueId = other.DialogueId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 96: {
             GDPHOIMONLN = input.ReadBool();
             break;
           }
-          case 64: {
+          case 112: {
             DialogueId = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 96: {
             GDPHOIMONLN = input.ReadBool();
             break;
           }
-          case 64: {
+          case 112: {
             DialogueId = input.ReadUInt32();
             break;
           }

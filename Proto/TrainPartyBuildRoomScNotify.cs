@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFUcmFpblBhcnR5QnVpbGRSb29tU2NOb3RpZnkucHJvdG8aFFRyYWluUGFy",
             "dHlJbmZvLnByb3RvIkMKG1RyYWluUGFydHlCdWlsZFJvb21TY05vdGlmeRIk",
-            "CgtDUE1IS0VDUEJPShgBIAEoCzIPLlRyYWluUGFydHlJbmZvQhaqAhNNYXJj",
+            "CgtDUE1IS0VDUEJPShgJIAEoCzIPLlRyYWluUGFydHlJbmZvQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrainPartyInfoReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CPMHKECPBOJ" field.</summary>
-    public const int CPMHKECPBOJFieldNumber = 1;
+    public const int CPMHKECPBOJFieldNumber = 9;
     private global::March7thHoney.Proto.TrainPartyInfo cPMHKECPBOJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (cPMHKECPBOJ_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(74);
         output.WriteMessage(CPMHKECPBOJ);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (cPMHKECPBOJ_ != null) {
-        output.WriteRawTag(10);
+        output.WriteRawTag(74);
         output.WriteMessage(CPMHKECPBOJ);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 74: {
             if (cPMHKECPBOJ_ == null) {
               CPMHKECPBOJ = new global::March7thHoney.Proto.TrainPartyInfo();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 74: {
             if (cPMHKECPBOJ_ == null) {
               CPMHKECPBOJ = new global::March7thHoney.Proto.TrainPartyInfo();
             }

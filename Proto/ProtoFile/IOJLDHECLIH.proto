@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message IOJLDHECLIH {
-    uint32 diy_dynamic_id = 7;
-    int64 time = 5;
+    uint32 diy_dynamic_id = 3;
+    int64 time = 8;
 }

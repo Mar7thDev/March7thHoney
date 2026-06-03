@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhNYXJrQ2hhdEVtb2ppU2NSc3AucHJvdG8iTQoSTWFya0NoYXRFbW9qaVNj",
-            "UnNwEhAKCGV4dHJhX2lkGAIgASgNEhQKDGlzX3JlbW92ZV9pZBgEIAEoCBIP",
-            "CgdyZXRjb2RlGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "UnNwEhAKCGVtb2ppX2lkGAggASgNEhQKDGlzX3JlbW92ZV9pZBgLIAEoCBIP",
+            "CgdyZXRjb2RlGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MarkChatEmojiScRsp), global::March7thHoney.Proto.MarkChatEmojiScRsp.Parser, new[]{ "ExtraId", "IsRemoveId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MarkChatEmojiScRsp), global::March7thHoney.Proto.MarkChatEmojiScRsp.Parser, new[]{ "EmojiId", "IsRemoveId", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MarkChatEmojiScRsp(MarkChatEmojiScRsp other) : this() {
-      extraId_ = other.extraId_;
+      emojiId_ = other.emojiId_;
       isRemoveId_ = other.isRemoveId_;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -85,20 +85,20 @@ namespace March7thHoney.Proto {
       return new MarkChatEmojiScRsp(this);
     }
 
-    /// <summary>Field number for the "extra_id" field.</summary>
-    public const int ExtraIdFieldNumber = 2;
-    private uint extraId_;
+    /// <summary>Field number for the "emoji_id" field.</summary>
+    public const int EmojiIdFieldNumber = 8;
+    private uint emojiId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ExtraId {
-      get { return extraId_; }
+    public uint EmojiId {
+      get { return emojiId_; }
       set {
-        extraId_ = value;
+        emojiId_ = value;
       }
     }
 
     /// <summary>Field number for the "is_remove_id" field.</summary>
-    public const int IsRemoveIdFieldNumber = 4;
+    public const int IsRemoveIdFieldNumber = 11;
     private bool isRemoveId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ExtraId != other.ExtraId) return false;
+      if (EmojiId != other.EmojiId) return false;
       if (IsRemoveId != other.IsRemoveId) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -146,7 +146,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ExtraId != 0) hash ^= ExtraId.GetHashCode();
+      if (EmojiId != 0) hash ^= EmojiId.GetHashCode();
       if (IsRemoveId != false) hash ^= IsRemoveId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ExtraId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(ExtraId);
+      if (EmojiId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(EmojiId);
       }
       if (IsRemoveId != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteBool(IsRemoveId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ExtraId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(ExtraId);
+      if (EmojiId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(EmojiId);
       }
       if (IsRemoveId != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteBool(IsRemoveId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -211,8 +211,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ExtraId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ExtraId);
+      if (EmojiId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EmojiId);
       }
       if (IsRemoveId != false) {
         size += 1 + 1;
@@ -232,8 +232,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ExtraId != 0) {
-        ExtraId = other.ExtraId;
+      if (other.EmojiId != 0) {
+        EmojiId = other.EmojiId;
       }
       if (other.IsRemoveId != false) {
         IsRemoveId = other.IsRemoveId;
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            ExtraId = input.ReadUInt32();
+          case 64: {
+            EmojiId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 88: {
             IsRemoveId = input.ReadBool();
             break;
           }
-          case 104: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            ExtraId = input.ReadUInt32();
+          case 64: {
+            EmojiId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 88: {
             IsRemoveId = input.ReadBool();
             break;
           }
-          case 104: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }

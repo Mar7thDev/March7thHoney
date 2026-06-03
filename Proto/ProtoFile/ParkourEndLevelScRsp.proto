@@ -6,11 +6,11 @@ import "BADOONPCDLO.proto";
 import "OHFECKKADEK.proto";
 
 message ParkourEndLevelScRsp {
-    BADOONPCDLO ENKCCEACJKL = 14;
-    OHFECKKADEK end_reason = 15;
-    bool ADJLGNBJAOC = 12;
-    bool AJGOLAKNGPA = 7;
-    uint32 time = 6;
-    uint32 retcode = 9;
-    uint32 level_id = 13;
+    OHFECKKADEK end_reason = 1;
+    bool ADJLGNBJAOC = 2;
+    uint32 level_id = 4;
+    uint32 time = 5;
+    BADOONPCDLO ENKCCEACJKL = 6;
+    uint32 retcode = 8;
+    bool AJGOLAKNGPA = 10;
 }

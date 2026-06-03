@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFMRkxFTkJEUE5KTi5wcm90bxoRQ0pBRklKQUZJUE4ucHJvdG8iSwoLTEZM",
-            "RU5CRFBOSk4SJwoRa2lsbF9tb25zdGVyX2xpc3QYAiADKAsyDC5DSkFGSUpB",
-            "RklQThITCgtQQkZNTEdPQ09QRhgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "RU5CRFBOSk4SEwoLUEJGTUxHT0NPUEYYASABKA0SJwoRa2lsbF9tb25zdGVy",
+            "X2xpc3QYAiADKAsyDC5DSkFGSUpBRklQTkIWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CJAFIJAFIPNReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LFLENBDPNJN), global::March7thHoney.Proto.LFLENBDPNJN.Parser, new[]{ "KillMonsterList", "PBFMLGOCOPF" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LFLENBDPNJN), global::March7thHoney.Proto.LFLENBDPNJN.Parser, new[]{ "PBFMLGOCOPF", "KillMonsterList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LFLENBDPNJN(LFLENBDPNJN other) : this() {
-      killMonsterList_ = other.killMonsterList_.Clone();
       pBFMLGOCOPF_ = other.pBFMLGOCOPF_;
+      killMonsterList_ = other.killMonsterList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,17 +82,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LFLENBDPNJN Clone() {
       return new LFLENBDPNJN(this);
-    }
-
-    /// <summary>Field number for the "kill_monster_list" field.</summary>
-    public const int KillMonsterListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.CJAFIJAFIPN> _repeated_killMonsterList_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.CJAFIJAFIPN.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.CJAFIJAFIPN> killMonsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CJAFIJAFIPN>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.CJAFIJAFIPN> KillMonsterList {
-      get { return killMonsterList_; }
     }
 
     /// <summary>Field number for the "PBFMLGOCOPF" field.</summary>
@@ -105,6 +94,17 @@ namespace March7thHoney.Proto {
       set {
         pBFMLGOCOPF_ = value;
       }
+    }
+
+    /// <summary>Field number for the "kill_monster_list" field.</summary>
+    public const int KillMonsterListFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.CJAFIJAFIPN> _repeated_killMonsterList_codec
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.CJAFIJAFIPN.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.CJAFIJAFIPN> killMonsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CJAFIJAFIPN>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.CJAFIJAFIPN> KillMonsterList {
+      get { return killMonsterList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!killMonsterList_.Equals(other.killMonsterList_)) return false;
       if (PBFMLGOCOPF != other.PBFMLGOCOPF) return false;
+      if(!killMonsterList_.Equals(other.killMonsterList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= killMonsterList_.GetHashCode();
       if (PBFMLGOCOPF != 0) hash ^= PBFMLGOCOPF.GetHashCode();
+      hash ^= killMonsterList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += killMonsterList_.CalculateSize(_repeated_killMonsterList_codec);
       if (PBFMLGOCOPF != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PBFMLGOCOPF);
       }
+      size += killMonsterList_.CalculateSize(_repeated_killMonsterList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      killMonsterList_.Add(other.killMonsterList_);
       if (other.PBFMLGOCOPF != 0) {
         PBFMLGOCOPF = other.PBFMLGOCOPF;
       }
+      killMonsterList_.Add(other.killMonsterList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

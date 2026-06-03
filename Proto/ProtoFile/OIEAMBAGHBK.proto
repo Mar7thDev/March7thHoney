@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message OIEAMBAGHBK {
-    ItemList item_list = 1;
-    uint32 JALHKMEOOPN = 4;
-    bool OOFKOIMLCPA = 6;
+    bool OOFKOIMLCPA = 1;
+    uint32 JALHKMEOOPN = 5;
+    ItemList item_list = 10;
 }

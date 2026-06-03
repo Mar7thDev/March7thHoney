@@ -6,7 +6,7 @@ import "AABGIFAEEEK.proto";
 import "SpBarInfo.proto";
 
 message CDMPJODLBEE {
-    SpBarInfo sp_bar = 3;
     AABGIFAEEEK type = 1;
     uint32 id = 2;
+    SpBarInfo sp_bar = 3;
 }

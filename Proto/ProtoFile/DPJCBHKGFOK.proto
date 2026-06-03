@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Relic.proto";
 
 message DPJCBHKGFOK {
-    repeated Relic relics = 5;
+    repeated Relic relics = 7;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyMoveCsReq {
-    uint32 CPFGHPCBFOF = 3;
-    uint32 AHNGICEEADK = 7;
+    uint32 AHNGICEEADK = 6;
+    uint32 CPFGHPCBFOF = 8;
 }

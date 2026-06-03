@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HeliobusSnsPostCsReq {
-    uint32 DNNCAGJIOAP = 14;
-    uint32 MDAIPFLCNAJ = 4;
-    uint32 CBGODLHCLPK = 1;
+    uint32 MDAIPFLCNAJ = 5;
+    uint32 CBGODLHCLPK = 10;
+    uint32 DNNCAGJIOAP = 11;
 }

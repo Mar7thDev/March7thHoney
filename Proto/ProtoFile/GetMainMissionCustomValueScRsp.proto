@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MainMission.proto";
 
 message GetMainMissionCustomValueScRsp {
-    repeated MainMission main_mission_list = 7;
-    uint32 retcode = 5;
+    repeated MainMission main_mission_list = 1;
+    uint32 retcode = 2;
 }

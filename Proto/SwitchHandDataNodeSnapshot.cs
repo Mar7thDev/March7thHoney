@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBTd2l0Y2hIYW5kRGF0YU5vZGVTbmFwc2hvdC5wcm90bxoYTW90aW9uSW5m",
             "b1NuYXBzaG90LnByb3RvIpwBChpTd2l0Y2hIYW5kRGF0YU5vZGVTbmFwc2hv",
-            "dBISCgpoYW5kX3BhcmFtGAQgASgMEisKDmhhbmRfdHJhbnNmb3JtGAIgASgL",
-            "MhMuTW90aW9uSW5mb1NuYXBzaG90EhIKCmhhbmRfc3RhdGUYAyABKA0SEQoJ",
-            "Y29uZmlnX2lkGAEgASgNEhYKDmdldF9jb2luX2NvdW50GAUgASgNQhaqAhNN",
+            "dBIRCgljb25maWdfaWQYASABKA0SKwoOaGFuZF90cmFuc2Zvcm0YAiABKAsy",
+            "Ey5Nb3Rpb25JbmZvU25hcHNob3QSEgoKaGFuZF9zdGF0ZRgDIAEoDRISCgpo",
+            "YW5kX3BhcmFtGAQgASgMEhYKDmdldF9jb2luX2NvdW50GAUgASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SwitchHandDataNodeSnapshot), global::March7thHoney.Proto.SwitchHandDataNodeSnapshot.Parser, new[]{ "HandParam", "HandTransform", "HandState", "ConfigId", "GetCoinCount" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SwitchHandDataNodeSnapshot), global::March7thHoney.Proto.SwitchHandDataNodeSnapshot.Parser, new[]{ "ConfigId", "HandTransform", "HandState", "HandParam", "GetCoinCount" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,10 +75,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SwitchHandDataNodeSnapshot(SwitchHandDataNodeSnapshot other) : this() {
-      handParam_ = other.handParam_;
+      configId_ = other.configId_;
       handTransform_ = other.handTransform_ != null ? other.handTransform_.Clone() : null;
       handState_ = other.handState_;
-      configId_ = other.configId_;
+      handParam_ = other.handParam_;
       getCoinCount_ = other.getCoinCount_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -89,15 +89,15 @@ namespace March7thHoney.Proto {
       return new SwitchHandDataNodeSnapshot(this);
     }
 
-    /// <summary>Field number for the "hand_param" field.</summary>
-    public const int HandParamFieldNumber = 4;
-    private pb::ByteString handParam_ = pb::ByteString.Empty;
+    /// <summary>Field number for the "config_id" field.</summary>
+    public const int ConfigIdFieldNumber = 1;
+    private uint configId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pb::ByteString HandParam {
-      get { return handParam_; }
+    public uint ConfigId {
+      get { return configId_; }
       set {
-        handParam_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        configId_ = value;
       }
     }
 
@@ -125,15 +125,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "config_id" field.</summary>
-    public const int ConfigIdFieldNumber = 1;
-    private uint configId_;
+    /// <summary>Field number for the "hand_param" field.</summary>
+    public const int HandParamFieldNumber = 4;
+    private pb::ByteString handParam_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ConfigId {
-      get { return configId_; }
+    public pb::ByteString HandParam {
+      get { return handParam_; }
       set {
-        configId_ = value;
+        handParam_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -164,10 +164,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HandParam != other.HandParam) return false;
+      if (ConfigId != other.ConfigId) return false;
       if (!object.Equals(HandTransform, other.HandTransform)) return false;
       if (HandState != other.HandState) return false;
-      if (ConfigId != other.ConfigId) return false;
+      if (HandParam != other.HandParam) return false;
       if (GetCoinCount != other.GetCoinCount) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -176,10 +176,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HandParam.Length != 0) hash ^= HandParam.GetHashCode();
+      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
       if (handTransform_ != null) hash ^= HandTransform.GetHashCode();
       if (HandState != 0) hash ^= HandState.GetHashCode();
-      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
+      if (HandParam.Length != 0) hash ^= HandParam.GetHashCode();
       if (GetCoinCount != 0) hash ^= GetCoinCount.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -259,8 +259,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HandParam.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(HandParam);
+      if (ConfigId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
       }
       if (handTransform_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(HandTransform);
@@ -268,8 +268,8 @@ namespace March7thHoney.Proto {
       if (HandState != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HandState);
       }
-      if (ConfigId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
+      if (HandParam.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(HandParam);
       }
       if (GetCoinCount != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GetCoinCount);
@@ -286,8 +286,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HandParam.Length != 0) {
-        HandParam = other.HandParam;
+      if (other.ConfigId != 0) {
+        ConfigId = other.ConfigId;
       }
       if (other.handTransform_ != null) {
         if (handTransform_ == null) {
@@ -298,8 +298,8 @@ namespace March7thHoney.Proto {
       if (other.HandState != 0) {
         HandState = other.HandState;
       }
-      if (other.ConfigId != 0) {
-        ConfigId = other.ConfigId;
+      if (other.HandParam.Length != 0) {
+        HandParam = other.HandParam;
       }
       if (other.GetCoinCount != 0) {
         GetCoinCount = other.GetCoinCount;

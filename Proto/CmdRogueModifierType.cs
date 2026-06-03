@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpDbWRSb2d1ZU1vZGlmaWVyVHlwZS5wcm90byrnAQoUQ21kUm9ndWVNb2Rp",
             "ZmllclR5cGUSGwoXSktKR1BPT0xMS0ZfTkxDREdJUEdGREoQABIcChdKS0pH",
-            "UE9PTExLRl9FUFBNS0JEUERCTRDPKRIcChdKS0pHUE9PTExLRl9MSEdIRkxH",
-            "RUJCThDYKRIcChdKS0pHUE9PTExLRl9LS0VISUJQRElFRhC+KRIcChdKS0pH",
-            "UE9PTExLRl9HQUxKSUJJRU5JQhCEKhIcChdKS0pHUE9PTExLRl9FQ0JJSEtG",
-            "TkdHTRCLKhIcChdKS0pHUE9PTExLRl9QTEVMTU1KSk9MTRCFKkIWqgITTWFy",
+            "UE9PTExLRl9MSEdIRkxHRUJCThCMKhIcChdKS0pHUE9PTExLRl9FUFBNS0JE",
+            "UERCTRDuKRIcChdKS0pHUE9PTExLRl9FQ0JJSEtGTkdHTRDBKRIcChdKS0pH",
+            "UE9PTExLRl9HQUxKSUJJRU5JQhCRKhIcChdKS0pHUE9PTExLRl9LS0VISUJQ",
+            "RElFRhDOKRIcChdKS0pHUE9PTExLRl9QTEVMTU1KSk9MTRDjKUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdRogueModifierType {
     [pbr::OriginalName("JKJGPOOLLKF_NLCDGIPGFDJ")] JkjgpoollkfNlcdgipgfdj = 0,
-    [pbr::OriginalName("JKJGPOOLLKF_EPPMKBDPDBM")] JkjgpoollkfEppmkbdpdbm = 5327,
-    [pbr::OriginalName("JKJGPOOLLKF_LHGHFLGEBBN")] JkjgpoollkfLhghflgebbn = 5336,
-    [pbr::OriginalName("JKJGPOOLLKF_KKEHIBPDIEF")] JkjgpoollkfKkehibpdief = 5310,
-    [pbr::OriginalName("JKJGPOOLLKF_GALJIBIENIB")] JkjgpoollkfGaljibienib = 5380,
-    [pbr::OriginalName("JKJGPOOLLKF_ECBIHKFNGGM")] JkjgpoollkfEcbihkfnggm = 5387,
-    [pbr::OriginalName("JKJGPOOLLKF_PLELMMJJOLM")] JkjgpoollkfPlelmmjjolm = 5381,
+    [pbr::OriginalName("JKJGPOOLLKF_LHGHFLGEBBN")] JkjgpoollkfLhghflgebbn = 5388,
+    [pbr::OriginalName("JKJGPOOLLKF_EPPMKBDPDBM")] JkjgpoollkfEppmkbdpdbm = 5358,
+    [pbr::OriginalName("JKJGPOOLLKF_ECBIHKFNGGM")] JkjgpoollkfEcbihkfnggm = 5313,
+    [pbr::OriginalName("JKJGPOOLLKF_GALJIBIENIB")] JkjgpoollkfGaljibienib = 5393,
+    [pbr::OriginalName("JKJGPOOLLKF_KKEHIBPDIEF")] JkjgpoollkfKkehibpdief = 5326,
+    [pbr::OriginalName("JKJGPOOLLKF_PLELMMJJOLM")] JkjgpoollkfPlelmmjjolm = 5347,
   }
 
   #endregion

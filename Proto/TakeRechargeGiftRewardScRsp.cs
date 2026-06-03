@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFUYWtlUmVjaGFyZ2VHaWZ0UmV3YXJkU2NSc3AucHJvdG8aDkl0ZW1MaXN0",
             "LnByb3RvGhFKQk5HQ0pKRExITC5wcm90byJsChtUYWtlUmVjaGFyZ2VHaWZ0",
-            "UmV3YXJkU2NSc3ASGQoGcmV3YXJkGAcgASgLMgkuSXRlbUxpc3QSIQoLS0pC",
-            "RE5JSUJHTkUYDSABKAsyDC5KQk5HQ0pKRExITBIPCgdyZXRjb2RlGAogASgN",
+            "UmV3YXJkU2NSc3ASIQoLS0pCRE5JSUJHTkUYAiABKAsyDC5KQk5HQ0pKRExI",
+            "TBIZCgZyZXdhcmQYDCABKAsyCS5JdGVtTGlzdBIPCgdyZXRjb2RlGA8gASgN",
             "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.JBNGCJJDLHLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeRechargeGiftRewardScRsp), global::March7thHoney.Proto.TakeRechargeGiftRewardScRsp.Parser, new[]{ "Reward", "KJBDNIIBGNE", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeRechargeGiftRewardScRsp), global::March7thHoney.Proto.TakeRechargeGiftRewardScRsp.Parser, new[]{ "KJBDNIIBGNE", "Reward", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeRechargeGiftRewardScRsp(TakeRechargeGiftRewardScRsp other) : this() {
-      reward_ = other.reward_ != null ? other.reward_.Clone() : null;
       kJBDNIIBGNE_ = other.kJBDNIIBGNE_ != null ? other.kJBDNIIBGNE_.Clone() : null;
+      reward_ = other.reward_ != null ? other.reward_.Clone() : null;
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new TakeRechargeGiftRewardScRsp(this);
     }
 
-    /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 7;
-    private global::March7thHoney.Proto.ItemList reward_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ItemList Reward {
-      get { return reward_; }
-      set {
-        reward_ = value;
-      }
-    }
-
     /// <summary>Field number for the "KJBDNIIBGNE" field.</summary>
-    public const int KJBDNIIBGNEFieldNumber = 13;
+    public const int KJBDNIIBGNEFieldNumber = 2;
     private global::March7thHoney.Proto.JBNGCJJDLHL kJBDNIIBGNE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,8 +98,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "reward" field.</summary>
+    public const int RewardFieldNumber = 12;
+    private global::March7thHoney.Proto.ItemList reward_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ItemList Reward {
+      get { return reward_; }
+      set {
+        reward_ = value;
+      }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
+    public const int RetcodeFieldNumber = 15;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Reward, other.Reward)) return false;
       if (!object.Equals(KJBDNIIBGNE, other.KJBDNIIBGNE)) return false;
+      if (!object.Equals(Reward, other.Reward)) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (reward_ != null) hash ^= Reward.GetHashCode();
       if (kJBDNIIBGNE_ != null) hash ^= KJBDNIIBGNE.GetHashCode();
+      if (reward_ != null) hash ^= Reward.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -168,17 +168,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (kJBDNIIBGNE_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(KJBDNIIBGNE);
+      }
       if (reward_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(98);
         output.WriteMessage(Reward);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
-      }
-      if (kJBDNIIBGNE_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(KJBDNIIBGNE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -190,17 +190,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (kJBDNIIBGNE_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(KJBDNIIBGNE);
+      }
       if (reward_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(98);
         output.WriteMessage(Reward);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
-      }
-      if (kJBDNIIBGNE_ != null) {
-        output.WriteRawTag(106);
-        output.WriteMessage(KJBDNIIBGNE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -212,11 +212,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (reward_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
-      }
       if (kJBDNIIBGNE_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(KJBDNIIBGNE);
+      }
+      if (reward_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
@@ -233,17 +233,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.reward_ != null) {
-        if (reward_ == null) {
-          Reward = new global::March7thHoney.Proto.ItemList();
-        }
-        Reward.MergeFrom(other.Reward);
-      }
       if (other.kJBDNIIBGNE_ != null) {
         if (kJBDNIIBGNE_ == null) {
           KJBDNIIBGNE = new global::March7thHoney.Proto.JBNGCJJDLHL();
         }
         KJBDNIIBGNE.MergeFrom(other.KJBDNIIBGNE);
+      }
+      if (other.reward_ != null) {
+        if (reward_ == null) {
+          Reward = new global::March7thHoney.Proto.ItemList();
+        }
+        Reward.MergeFrom(other.Reward);
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
@@ -267,22 +267,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 18: {
+            if (kJBDNIIBGNE_ == null) {
+              KJBDNIIBGNE = new global::March7thHoney.Proto.JBNGCJJDLHL();
+            }
+            input.ReadMessage(KJBDNIIBGNE);
+            break;
+          }
+          case 98: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
-          case 80: {
+          case 120: {
             Retcode = input.ReadUInt32();
-            break;
-          }
-          case 106: {
-            if (kJBDNIIBGNE_ == null) {
-              KJBDNIIBGNE = new global::March7thHoney.Proto.JBNGCJJDLHL();
-            }
-            input.ReadMessage(KJBDNIIBGNE);
             break;
           }
         }
@@ -304,22 +304,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 18: {
+            if (kJBDNIIBGNE_ == null) {
+              KJBDNIIBGNE = new global::March7thHoney.Proto.JBNGCJJDLHL();
+            }
+            input.ReadMessage(KJBDNIIBGNE);
+            break;
+          }
+          case 98: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(Reward);
             break;
           }
-          case 80: {
+          case 120: {
             Retcode = input.ReadUInt32();
-            break;
-          }
-          case 106: {
-            if (kJBDNIIBGNE_ == null) {
-              KJBDNIIBGNE = new global::March7thHoney.Proto.JBNGCJJDLHL();
-            }
-            input.ReadMessage(KJBDNIIBGNE);
             break;
           }
         }

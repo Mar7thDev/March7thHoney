@@ -6,9 +6,9 @@ import "AFKJKLJJLKN.proto";
 import "GHAJMKCEEPJ.proto";
 
 message FateHandlePendingActionCsReq {
-    uint32 queue_position = 4;
+    uint32 queue_position = 8;
     oneof DMNECEKOLAJ {
-        AFKJKLJJLKN HNPBCGILAJP = 15;
-        GHAJMKCEEPJ NPBKAADBHHC = 11;
+        AFKJKLJJLKN HNPBCGILAJP = 3;
+        GHAJMKCEEPJ NPBKAADBHHC = 14;
     }
 }

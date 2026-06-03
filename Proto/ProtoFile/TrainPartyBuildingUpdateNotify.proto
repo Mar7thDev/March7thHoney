@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FFMMFBMOBEG.proto";
 
 message TrainPartyBuildingUpdateNotify {
-    repeated FFMMFBMOBEG OOABOBHEKEH = 10;
+    repeated FFMMFBMOBEG OOABOBHEKEH = 15;
 }

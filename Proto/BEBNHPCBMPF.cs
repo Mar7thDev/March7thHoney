@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCRUJOSFBDQk1QRi5wcm90bxoRSkJPQUFQSURPSUMucHJvdG8iQwoLQkVC",
-            "TkhQQ0JNUEYSIQoLTk9BSklHSExJSUMYBiABKAsyDC5KQk9BQVBJRE9JQxIR",
-            "CglhdmF0YXJfaWQYCCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "TkhQQ0JNUEYSIQoLTk9BSklHSExJSUMYAyABKAsyDC5KQk9BQVBJRE9JQxIR",
+            "CglhdmF0YXJfaWQYBCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JBOAAPIDOICReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NOAJIGHLIIC" field.</summary>
-    public const int NOAJIGHLIICFieldNumber = 6;
+    public const int NOAJIGHLIICFieldNumber = 3;
     private global::March7thHoney.Proto.JBOAAPIDOIC nOAJIGHLIIC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 8;
+    public const int AvatarIdFieldNumber = 4;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (nOAJIGHLIIC_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(26);
         output.WriteMessage(NOAJIGHLIIC);
       }
       if (AvatarId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (nOAJIGHLIIC_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(26);
         output.WriteMessage(NOAJIGHLIIC);
       }
       if (AvatarId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteUInt32(AvatarId);
       }
       if (_unknownFields != null) {
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 26: {
             if (nOAJIGHLIIC_ == null) {
               NOAJIGHLIIC = new global::March7thHoney.Proto.JBOAAPIDOIC();
             }
             input.ReadMessage(NOAJIGHLIIC);
             break;
           }
-          case 64: {
+          case 32: {
             AvatarId = input.ReadUInt32();
             break;
           }
@@ -264,14 +264,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 26: {
             if (nOAJIGHLIIC_ == null) {
               NOAJIGHLIIC = new global::March7thHoney.Proto.JBOAAPIDOIC();
             }
             input.ReadMessage(NOAJIGHLIIC);
             break;
           }
-          case 64: {
+          case 32: {
             AvatarId = input.ReadUInt32();
             break;
           }

@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message Goods {
-    uint32 item_id = 1;
-    uint32 goods_id = 3;
-    uint32 buy_times = 12;
-    int64 end_time = 7;
-    int64 begin_time = 10;
+    int64 end_time = 1;
+    uint32 goods_id = 6;
+    uint32 buy_times = 7;
+    uint32 item_id = 10;
+    int64 begin_time = 15;
 }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EquipRelic.proto";
 
 message ChallengePeakBuild {
-    repeated EquipRelic relic_list = 14;
-    uint32 MDOJNENGCFE = 8;
-    uint32 avatar_id = 6;
-    uint32 equipment_unique_id = 11;
+    repeated EquipRelic relic_list = 1;
+    uint32 equipment_unique_id = 3;
+    uint32 avatar_id = 7;
+    uint32 skin_id = 9;
 }

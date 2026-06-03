@@ -6,7 +6,7 @@ import "EJHDAJAGFIJ.proto";
 import "NOAKCDKAAFB.proto";
 
 message RogueMagicGetMiscRealTimeDataScRsp {
-    EJHDAJAGFIJ KDDGKLNGNEA = 1;
-    NOAKCDKAAFB BNLLEJPCIGD = 2;
-    uint32 retcode = 4;
+    uint32 retcode = 2;
+    EJHDAJAGFIJ KDDGKLNGNEA = 3;
+    NOAKCDKAAFB BNLLEJPCIGD = 8;
 }

@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlanetFesHandleCardPieceApplyCsReq {
-    repeated uint32 JAKKDGHLJPH = 9;
-    uint32 APIFFHBCDKK = 12;
-    uint32 BLGLDJHOMNO = 5;
-    bool IKOBGOCEHFG = 11;
+    uint32 BLGLDJHOMNO = 1;
+    repeated uint32 JAKKDGHLJPH = 2;
+    uint32 APIFFHBCDKK = 4;
+    bool IKOBGOCEHFG = 12;
 }

@@ -6,10 +6,10 @@ import "ICGOLPHCKIL.proto";
 import "LuckyKoiInfoList.proto";
 
 message OPGKKPEDKCL {
-    repeated LuckyKoiInfoList JEMFDEEFPFM = 4;
-    repeated ICGOLPHCKIL EGGJFCELHNK = 10;
-    uint64 end_time = 7;
-    uint64 EGGJMKCABEF = 1;
-    uint32 MACLJJCIDEJ = 15;
-    uint64 begin_time = 2;
+    uint32 MACLJJCIDEJ = 3;
+    uint64 EGGJMKCABEF = 6;
+    repeated ICGOLPHCKIL EGGJFCELHNK = 8;
+    repeated LuckyKoiInfoList JEMFDEEFPFM = 9;
+    uint64 end_time = 11;
+    uint64 begin_time = 13;
 }

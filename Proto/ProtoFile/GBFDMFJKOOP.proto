@@ -6,10 +6,10 @@ import "DLBGONGJBNC.proto";
 import "NHHJAONHDDG.proto";
 
 message GBFDMFJKOOP {
-    repeated DLBGONGJBNC item_list = 1;
-    uint32 hp = 7;
-    uint32 score_id = 9;
-    uint32 IFOCJCOCDBH = 3;
-    NHHJAONHDDG state = 2;
-    uint32 BPBMJBIDIIC = 11;
+    NHHJAONHDDG state = 3;
+    uint32 hp = 5;
+    uint32 IFOCJCOCDBH = 11;
+    uint32 score_id = 12;
+    uint32 BPBMJBIDIIC = 13;
+    repeated DLBGONGJBNC item_list = 15;
 }

@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFLREZQQU5JTEZPSC5wcm90bxoQTW90aW9uSW5mby5wcm90bxoMVmVjdG9y",
-            "LnByb3RvInIKC0tERlBBTklMRk9IEhwKC1BBT0VKS0FCRkVQGAggAygLMgcu",
-            "VmVjdG9yEhsKBm1vdGlvbhgMIAEoCzILLk1vdGlvbkluZm8SEwoLQ0hDT1BL",
-            "QUtCTk8YAiABKA0SEwoLS0VLRktLQU5BQ0sYCSABKAhCFqoCE01hcmNoN3Ro",
-            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "LnByb3RvInoKC0tERlBBTklMRk9IEhwKC1BBT0VKS0FCRkVQGAYgAygLMgcu",
+            "VmVjdG9yEhsKE2lzX2J1bGxldF9hY3RpdmF0ZWQYCSABKAgSGwoGbW90aW9u",
+            "GA0gASgLMgsuTW90aW9uSW5mbxITCgtDSENPUEtBS0JOTxgPIAEoDUIWqgIT",
+            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MotionInfoReflection.Descriptor, global::March7thHoney.Proto.VectorReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KDFPANILFOH), global::March7thHoney.Proto.KDFPANILFOH.Parser, new[]{ "PAOEJKABFEP", "Motion", "CHCOPKAKBNO", "KEKFKKANACK" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KDFPANILFOH), global::March7thHoney.Proto.KDFPANILFOH.Parser, new[]{ "PAOEJKABFEP", "IsBulletActivated", "Motion", "CHCOPKAKBNO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KDFPANILFOH(KDFPANILFOH other) : this() {
       pAOEJKABFEP_ = other.pAOEJKABFEP_.Clone();
+      isBulletActivated_ = other.isBulletActivated_;
       motion_ = other.motion_ != null ? other.motion_.Clone() : null;
       cHCOPKAKBNO_ = other.cHCOPKAKBNO_;
-      kEKFKKANACK_ = other.kEKFKKANACK_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,9 +88,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PAOEJKABFEP" field.</summary>
-    public const int PAOEJKABFEPFieldNumber = 8;
+    public const int PAOEJKABFEPFieldNumber = 6;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.Vector> _repeated_pAOEJKABFEP_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.Vector.Parser);
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.Vector.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.Vector> pAOEJKABFEP_ = new pbc::RepeatedField<global::March7thHoney.Proto.Vector>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,8 +98,20 @@ namespace March7thHoney.Proto {
       get { return pAOEJKABFEP_; }
     }
 
+    /// <summary>Field number for the "is_bullet_activated" field.</summary>
+    public const int IsBulletActivatedFieldNumber = 9;
+    private bool isBulletActivated_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsBulletActivated {
+      get { return isBulletActivated_; }
+      set {
+        isBulletActivated_ = value;
+      }
+    }
+
     /// <summary>Field number for the "motion" field.</summary>
-    public const int MotionFieldNumber = 12;
+    public const int MotionFieldNumber = 13;
     private global::March7thHoney.Proto.MotionInfo motion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,7 +123,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CHCOPKAKBNO" field.</summary>
-    public const int CHCOPKAKBNOFieldNumber = 2;
+    public const int CHCOPKAKBNOFieldNumber = 15;
     private uint cHCOPKAKBNO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,18 +131,6 @@ namespace March7thHoney.Proto {
       get { return cHCOPKAKBNO_; }
       set {
         cHCOPKAKBNO_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "KEKFKKANACK" field.</summary>
-    public const int KEKFKKANACKFieldNumber = 9;
-    private bool kEKFKKANACK_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool KEKFKKANACK {
-      get { return kEKFKKANACK_; }
-      set {
-        kEKFKKANACK_ = value;
       }
     }
 
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!pAOEJKABFEP_.Equals(other.pAOEJKABFEP_)) return false;
+      if (IsBulletActivated != other.IsBulletActivated) return false;
       if (!object.Equals(Motion, other.Motion)) return false;
       if (CHCOPKAKBNO != other.CHCOPKAKBNO) return false;
-      if (KEKFKKANACK != other.KEKFKKANACK) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,9 +161,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= pAOEJKABFEP_.GetHashCode();
+      if (IsBulletActivated != false) hash ^= IsBulletActivated.GetHashCode();
       if (motion_ != null) hash ^= Motion.GetHashCode();
       if (CHCOPKAKBNO != 0) hash ^= CHCOPKAKBNO.GetHashCode();
-      if (KEKFKKANACK != false) hash ^= KEKFKKANACK.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,18 +182,18 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CHCOPKAKBNO != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(CHCOPKAKBNO);
-      }
       pAOEJKABFEP_.WriteTo(output, _repeated_pAOEJKABFEP_codec);
-      if (KEKFKKANACK != false) {
+      if (IsBulletActivated != false) {
         output.WriteRawTag(72);
-        output.WriteBool(KEKFKKANACK);
+        output.WriteBool(IsBulletActivated);
       }
       if (motion_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(Motion);
+      }
+      if (CHCOPKAKBNO != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(CHCOPKAKBNO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -205,18 +205,18 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CHCOPKAKBNO != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(CHCOPKAKBNO);
-      }
       pAOEJKABFEP_.WriteTo(ref output, _repeated_pAOEJKABFEP_codec);
-      if (KEKFKKANACK != false) {
+      if (IsBulletActivated != false) {
         output.WriteRawTag(72);
-        output.WriteBool(KEKFKKANACK);
+        output.WriteBool(IsBulletActivated);
       }
       if (motion_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(106);
         output.WriteMessage(Motion);
+      }
+      if (CHCOPKAKBNO != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(CHCOPKAKBNO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -229,14 +229,14 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += pAOEJKABFEP_.CalculateSize(_repeated_pAOEJKABFEP_codec);
+      if (IsBulletActivated != false) {
+        size += 1 + 1;
+      }
       if (motion_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Motion);
       }
       if (CHCOPKAKBNO != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CHCOPKAKBNO);
-      }
-      if (KEKFKKANACK != false) {
-        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -251,6 +251,9 @@ namespace March7thHoney.Proto {
         return;
       }
       pAOEJKABFEP_.Add(other.pAOEJKABFEP_);
+      if (other.IsBulletActivated != false) {
+        IsBulletActivated = other.IsBulletActivated;
+      }
       if (other.motion_ != null) {
         if (motion_ == null) {
           Motion = new global::March7thHoney.Proto.MotionInfo();
@@ -259,9 +262,6 @@ namespace March7thHoney.Proto {
       }
       if (other.CHCOPKAKBNO != 0) {
         CHCOPKAKBNO = other.CHCOPKAKBNO;
-      }
-      if (other.KEKFKKANACK != false) {
-        KEKFKKANACK = other.KEKFKKANACK;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -282,23 +282,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            CHCOPKAKBNO = input.ReadUInt32();
-            break;
-          }
-          case 66: {
+          case 50: {
             pAOEJKABFEP_.AddEntriesFrom(input, _repeated_pAOEJKABFEP_codec);
             break;
           }
           case 72: {
-            KEKFKKANACK = input.ReadBool();
+            IsBulletActivated = input.ReadBool();
             break;
           }
-          case 98: {
+          case 106: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
+            break;
+          }
+          case 120: {
+            CHCOPKAKBNO = input.ReadUInt32();
             break;
           }
         }
@@ -320,23 +320,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            CHCOPKAKBNO = input.ReadUInt32();
-            break;
-          }
-          case 66: {
+          case 50: {
             pAOEJKABFEP_.AddEntriesFrom(ref input, _repeated_pAOEJKABFEP_codec);
             break;
           }
           case 72: {
-            KEKFKKANACK = input.ReadBool();
+            IsBulletActivated = input.ReadBool();
             break;
           }
-          case 98: {
+          case 106: {
             if (motion_ == null) {
               Motion = new global::March7thHoney.Proto.MotionInfo();
             }
             input.ReadMessage(Motion);
+            break;
+          }
+          case 120: {
+            CHCOPKAKBNO = input.ReadUInt32();
             break;
           }
         }

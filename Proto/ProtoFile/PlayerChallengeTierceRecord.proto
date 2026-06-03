@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AIIGHJEIGHE.proto";
+
+message PlayerChallengeTierceRecord {
+    bool EGLLMGLLHDL = 1;
+    uint32 record_id = 2;
+    repeated AIIGHJEIGHE GBMBAHHDONN = 3;
+    uint32 used_cycle_count = 4;
+    uint32 total_score = 5;
+    repeated uint32 finished_target_list = 6;
+}

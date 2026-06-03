@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DDHIEONLIIL.proto";
 
 message MonopolyGetRaffleTicketScRsp {
-    repeated DDHIEONLIIL HDLPEKIMAJB = 8;
-    uint32 retcode = 7;
-    uint32 GACKJLBPKGD = 13;
+    uint32 pool_id = 6;
+    uint32 retcode = 9;
+    repeated DDHIEONLIIL HDLPEKIMAJB = 12;
 }

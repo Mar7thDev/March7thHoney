@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AntiAddictScNotify {
-    string level = 14;
-    string msg = 6;
-    uint32 msg_type = 5;
+    uint32 msg_type = 8;
+    string level = 11;
+    string msg = 12;
 }

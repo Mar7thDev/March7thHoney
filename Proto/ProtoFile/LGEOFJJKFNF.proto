@@ -6,6 +6,6 @@ import "BHMEPBAGOFF.proto";
 import "CKGOFMFNIPP.proto";
 
 message LGEOFJJKFNF {
-    BHMEPBAGOFF data = 9;
-    CKGOFMFNIPP reason = 7;
+    CKGOFMFNIPP reason = 2;
+    BHMEPBAGOFF data = 13;
 }

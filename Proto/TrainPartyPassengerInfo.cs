@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1UcmFpblBhcnR5UGFzc2VuZ2VySW5mby5wcm90bxoZVHJhaW5QYXJ0eVBh",
-            "c3Nlbmdlci5wcm90byJhChdUcmFpblBhcnR5UGFzc2VuZ2VySW5mbxITCgtH",
-            "SFBGQU5HRU1BThgKIAMoDRIxChNwYXNzZW5nZXJfaW5mb19saXN0GAggAygL",
-            "MhQuVHJhaW5QYXJ0eVBhc3NlbmdlckIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "c3Nlbmdlci5wcm90byJhChdUcmFpblBhcnR5UGFzc2VuZ2VySW5mbxIxChNw",
+            "YXNzZW5nZXJfaW5mb19saXN0GAwgAygLMhQuVHJhaW5QYXJ0eVBhc3Nlbmdl",
+            "chITCgtHSFBGQU5HRU1BThgOIAMoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TrainPartyPassengerReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyPassengerInfo), global::March7thHoney.Proto.TrainPartyPassengerInfo.Parser, new[]{ "GHPFANGEMAN", "PassengerInfoList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyPassengerInfo), global::March7thHoney.Proto.TrainPartyPassengerInfo.Parser, new[]{ "PassengerInfoList", "GHPFANGEMAN" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TrainPartyPassengerInfo(TrainPartyPassengerInfo other) : this() {
-      gHPFANGEMAN_ = other.gHPFANGEMAN_.Clone();
       passengerInfoList_ = other.passengerInfoList_.Clone();
+      gHPFANGEMAN_ = other.gHPFANGEMAN_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,26 +85,26 @@ namespace March7thHoney.Proto {
       return new TrainPartyPassengerInfo(this);
     }
 
-    /// <summary>Field number for the "GHPFANGEMAN" field.</summary>
-    public const int GHPFANGEMANFieldNumber = 10;
-    private static readonly pb::FieldCodec<uint> _repeated_gHPFANGEMAN_codec
-        = pb::FieldCodec.ForUInt32(82);
-    private readonly pbc::RepeatedField<uint> gHPFANGEMAN_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> GHPFANGEMAN {
-      get { return gHPFANGEMAN_; }
-    }
-
     /// <summary>Field number for the "passenger_info_list" field.</summary>
-    public const int PassengerInfoListFieldNumber = 8;
+    public const int PassengerInfoListFieldNumber = 12;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.TrainPartyPassenger> _repeated_passengerInfoList_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.TrainPartyPassenger.Parser);
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.TrainPartyPassenger.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.TrainPartyPassenger> passengerInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.TrainPartyPassenger>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.TrainPartyPassenger> PassengerInfoList {
       get { return passengerInfoList_; }
+    }
+
+    /// <summary>Field number for the "GHPFANGEMAN" field.</summary>
+    public const int GHPFANGEMANFieldNumber = 14;
+    private static readonly pb::FieldCodec<uint> _repeated_gHPFANGEMAN_codec
+        = pb::FieldCodec.ForUInt32(114);
+    private readonly pbc::RepeatedField<uint> gHPFANGEMAN_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> GHPFANGEMAN {
+      get { return gHPFANGEMAN_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!gHPFANGEMAN_.Equals(other.gHPFANGEMAN_)) return false;
       if(!passengerInfoList_.Equals(other.passengerInfoList_)) return false;
+      if(!gHPFANGEMAN_.Equals(other.gHPFANGEMAN_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= gHPFANGEMAN_.GetHashCode();
       hash ^= passengerInfoList_.GetHashCode();
+      hash ^= gHPFANGEMAN_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -175,8 +175,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += gHPFANGEMAN_.CalculateSize(_repeated_gHPFANGEMAN_codec);
       size += passengerInfoList_.CalculateSize(_repeated_passengerInfoList_codec);
+      size += gHPFANGEMAN_.CalculateSize(_repeated_gHPFANGEMAN_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -189,8 +189,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      gHPFANGEMAN_.Add(other.gHPFANGEMAN_);
       passengerInfoList_.Add(other.passengerInfoList_);
+      gHPFANGEMAN_.Add(other.gHPFANGEMAN_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -210,12 +210,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 66: {
+          case 98: {
             passengerInfoList_.AddEntriesFrom(input, _repeated_passengerInfoList_codec);
             break;
           }
-          case 82:
-          case 80: {
+          case 114:
+          case 112: {
             gHPFANGEMAN_.AddEntriesFrom(input, _repeated_gHPFANGEMAN_codec);
             break;
           }
@@ -238,12 +238,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 66: {
+          case 98: {
             passengerInfoList_.AddEntriesFrom(ref input, _repeated_passengerInfoList_codec);
             break;
           }
-          case 82:
-          case 80: {
+          case 114:
+          case 112: {
             gHPFANGEMAN_.AddEntriesFrom(ref input, _repeated_gHPFANGEMAN_codec);
             break;
           }

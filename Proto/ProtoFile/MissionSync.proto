@@ -2,16 +2,14 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "ALBOJHJALOF.proto";
 import "MJBANFPPEFH.proto";
 import "Mission.proto";
 
 message MissionSync {
-    repeated uint32 LEBFLAKCJCM = 3;
-    repeated ALBOJHJALOF DDDIKOMKLBA = 5;
-    repeated MJBANFPPEFH NLPKLNDCMOC = 4;
-    repeated uint32 OBCBLABECEA = 6;
-    repeated uint32 finished_main_mission_id_list = 2;
-    repeated Mission mission_list = 13;
-    repeated uint32 DEPBONHELFD = 8;
+    repeated uint32 finished_main_mission_id_list = 1;
+    repeated Mission mission_list = 4;
+    repeated uint32 OBCBLABECEA = 7;
+    repeated uint32 LEBFLAKCJCM = 10;
+    repeated uint32 DEPBONHELFD = 11;
+    repeated MJBANFPPEFH NLPKLNDCMOC = 14;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FCOBIMJMLIF {
-    uint32 value = 6;
-    uint32 type = 11;
+    uint32 type = 2;
+    uint32 value = 15;
 }

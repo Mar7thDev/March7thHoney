@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiNSb2d1ZVdvcmtiZW5jaEhhbmRsZUZ1bmNDc1JlcS5wcm90bxoRTUlQR0RG",
             "RENLTEUucHJvdG8iawodUm9ndWVXb3JrYmVuY2hIYW5kbGVGdW5jQ3NSZXES",
-            "IQoLUEVMS1BQSExNSEUYAyABKAsyDC5NSVBHREZEQ0tMRRIPCgdmdW5jX2lk",
-            "GAogASgNEhYKDnByb3BfZW50aXR5X2lkGAwgASgNQhaqAhNNYXJjaDd0aEhv",
+            "IQoLUEVMS1BQSExNSEUYBCABKAsyDC5NSVBHREZEQ0tMRRIWCg5wcm9wX2Vu",
+            "dGl0eV9pZBgIIAEoDRIPCgdmdW5jX2lkGAkgASgNQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MIPGDFDCKLEReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueWorkbenchHandleFuncCsReq), global::March7thHoney.Proto.RogueWorkbenchHandleFuncCsReq.Parser, new[]{ "PELKPPHLMHE", "FuncId", "PropEntityId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueWorkbenchHandleFuncCsReq), global::March7thHoney.Proto.RogueWorkbenchHandleFuncCsReq.Parser, new[]{ "PELKPPHLMHE", "PropEntityId", "FuncId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RogueWorkbenchHandleFuncCsReq(RogueWorkbenchHandleFuncCsReq other) : this() {
       pELKPPHLMHE_ = other.pELKPPHLMHE_ != null ? other.pELKPPHLMHE_.Clone() : null;
-      funcId_ = other.funcId_;
       propEntityId_ = other.propEntityId_;
+      funcId_ = other.funcId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PELKPPHLMHE" field.</summary>
-    public const int PELKPPHLMHEFieldNumber = 3;
+    public const int PELKPPHLMHEFieldNumber = 4;
     private global::March7thHoney.Proto.MIPGDFDCKLE pELKPPHLMHE_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,20 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "func_id" field.</summary>
-    public const int FuncIdFieldNumber = 10;
-    private uint funcId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FuncId {
-      get { return funcId_; }
-      set {
-        funcId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "prop_entity_id" field.</summary>
-    public const int PropEntityIdFieldNumber = 12;
+    public const int PropEntityIdFieldNumber = 8;
     private uint propEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,6 +107,18 @@ namespace March7thHoney.Proto {
       get { return propEntityId_; }
       set {
         propEntityId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "func_id" field.</summary>
+    public const int FuncIdFieldNumber = 9;
+    private uint funcId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FuncId {
+      get { return funcId_; }
+      set {
+        funcId_ = value;
       }
     }
 
@@ -138,8 +138,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(PELKPPHLMHE, other.PELKPPHLMHE)) return false;
-      if (FuncId != other.FuncId) return false;
       if (PropEntityId != other.PropEntityId) return false;
+      if (FuncId != other.FuncId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,8 +148,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (pELKPPHLMHE_ != null) hash ^= PELKPPHLMHE.GetHashCode();
-      if (FuncId != 0) hash ^= FuncId.GetHashCode();
       if (PropEntityId != 0) hash ^= PropEntityId.GetHashCode();
+      if (FuncId != 0) hash ^= FuncId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,16 +169,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (pELKPPHLMHE_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(PELKPPHLMHE);
       }
-      if (FuncId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(FuncId);
-      }
       if (PropEntityId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt32(PropEntityId);
+      }
+      if (FuncId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(FuncId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -191,16 +191,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (pELKPPHLMHE_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteMessage(PELKPPHLMHE);
       }
-      if (FuncId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(FuncId);
-      }
       if (PropEntityId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt32(PropEntityId);
+      }
+      if (FuncId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(FuncId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -215,11 +215,11 @@ namespace March7thHoney.Proto {
       if (pELKPPHLMHE_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(PELKPPHLMHE);
       }
-      if (FuncId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FuncId);
-      }
       if (PropEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropEntityId);
+      }
+      if (FuncId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FuncId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -239,11 +239,11 @@ namespace March7thHoney.Proto {
         }
         PELKPPHLMHE.MergeFrom(other.PELKPPHLMHE);
       }
-      if (other.FuncId != 0) {
-        FuncId = other.FuncId;
-      }
       if (other.PropEntityId != 0) {
         PropEntityId = other.PropEntityId;
+      }
+      if (other.FuncId != 0) {
+        FuncId = other.FuncId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,19 +264,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 34: {
             if (pELKPPHLMHE_ == null) {
               PELKPPHLMHE = new global::March7thHoney.Proto.MIPGDFDCKLE();
             }
             input.ReadMessage(PELKPPHLMHE);
             break;
           }
-          case 80: {
-            FuncId = input.ReadUInt32();
+          case 64: {
+            PropEntityId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            PropEntityId = input.ReadUInt32();
+          case 72: {
+            FuncId = input.ReadUInt32();
             break;
           }
         }
@@ -298,19 +298,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 34: {
             if (pELKPPHLMHE_ == null) {
               PELKPPHLMHE = new global::March7thHoney.Proto.MIPGDFDCKLE();
             }
             input.ReadMessage(PELKPPHLMHE);
             break;
           }
-          case 80: {
-            FuncId = input.ReadUInt32();
+          case 64: {
+            PropEntityId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            PropEntityId = input.ReadUInt32();
+          case 72: {
+            FuncId = input.ReadUInt32();
             break;
           }
         }

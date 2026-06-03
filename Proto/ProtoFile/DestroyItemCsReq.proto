@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DestroyItemCsReq {
-    uint32 item_id = 11;
-    uint32 item_count = 8;
-    uint32 ADOIMNBAGKC = 1;
+    uint32 item_id = 1;
+    uint32 ADOIMNBAGKC = 2;
+    uint32 item_count = 15;
 }

@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChRSYWlkSW5mb05vdGlmeS5wcm90bxoOSXRlbUxpc3QucHJvdG8aEFJhaWRT",
             "dGF0dXMucHJvdG8aFFJhaWRUYXJnZXRJbmZvLnByb3RvIrYBCg5SYWlkSW5m",
-            "b05vdGlmeRIcCglpdGVtX2xpc3QYASABKAsyCS5JdGVtTGlzdBIpChByYWlk",
-            "X3RhcmdldF9pbmZvGAsgAygLMg8uUmFpZFRhcmdldEluZm8SGAoQcmFpZF9m",
-            "aW5pc2hfdGltZRgJIAEoBBITCgt3b3JsZF9sZXZlbBgCIAEoDRIPCgdyYWlk",
-            "X2lkGAUgASgNEhsKBnN0YXR1cxgMIAEoDjILLlJhaWRTdGF0dXNCFqoCE01h",
+            "b05vdGlmeRIYChByYWlkX2ZpbmlzaF90aW1lGAEgASgEEhMKC3dvcmxkX2xl",
+            "dmVsGAcgASgNEikKEHJhaWRfdGFyZ2V0X2luZm8YCCADKAsyDy5SYWlkVGFy",
+            "Z2V0SW5mbxIbCgZzdGF0dXMYCyABKA4yCy5SYWlkU3RhdHVzEg8KB3JhaWRf",
+            "aWQYDSABKA0SHAoJaXRlbV9saXN0GA8gASgLMgkuSXRlbUxpc3RCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.RaidStatusReflection.Descriptor, global::March7thHoney.Proto.RaidTargetInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RaidInfoNotify), global::March7thHoney.Proto.RaidInfoNotify.Parser, new[]{ "ItemList", "RaidTargetInfo", "RaidFinishTime", "WorldLevel", "RaidId", "Status" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RaidInfoNotify), global::March7thHoney.Proto.RaidInfoNotify.Parser, new[]{ "RaidFinishTime", "WorldLevel", "RaidTargetInfo", "Status", "RaidId", "ItemList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,12 +76,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RaidInfoNotify(RaidInfoNotify other) : this() {
-      itemList_ = other.itemList_ != null ? other.itemList_.Clone() : null;
-      raidTargetInfo_ = other.raidTargetInfo_.Clone();
       raidFinishTime_ = other.raidFinishTime_;
       worldLevel_ = other.worldLevel_;
-      raidId_ = other.raidId_;
+      raidTargetInfo_ = other.raidTargetInfo_.Clone();
       status_ = other.status_;
+      raidId_ = other.raidId_;
+      itemList_ = other.itemList_ != null ? other.itemList_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -91,31 +91,8 @@ namespace March7thHoney.Proto {
       return new RaidInfoNotify(this);
     }
 
-    /// <summary>Field number for the "item_list" field.</summary>
-    public const int ItemListFieldNumber = 1;
-    private global::March7thHoney.Proto.ItemList itemList_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ItemList ItemList {
-      get { return itemList_; }
-      set {
-        itemList_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "raid_target_info" field.</summary>
-    public const int RaidTargetInfoFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidTargetInfo> _repeated_raidTargetInfo_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.RaidTargetInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> raidTargetInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> RaidTargetInfo {
-      get { return raidTargetInfo_; }
-    }
-
     /// <summary>Field number for the "raid_finish_time" field.</summary>
-    public const int RaidFinishTimeFieldNumber = 9;
+    public const int RaidFinishTimeFieldNumber = 1;
     private ulong raidFinishTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -127,7 +104,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "world_level" field.</summary>
-    public const int WorldLevelFieldNumber = 2;
+    public const int WorldLevelFieldNumber = 7;
     private uint worldLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,8 +115,31 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "raid_target_info" field.</summary>
+    public const int RaidTargetInfoFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.RaidTargetInfo> _repeated_raidTargetInfo_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.RaidTargetInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> raidTargetInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.RaidTargetInfo> RaidTargetInfo {
+      get { return raidTargetInfo_; }
+    }
+
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 11;
+    private global::March7thHoney.Proto.RaidStatus status_ = global::March7thHoney.Proto.RaidStatus.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.RaidStatus Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
     /// <summary>Field number for the "raid_id" field.</summary>
-    public const int RaidIdFieldNumber = 5;
+    public const int RaidIdFieldNumber = 13;
     private uint raidId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,15 +150,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 12;
-    private global::March7thHoney.Proto.RaidStatus status_ = global::March7thHoney.Proto.RaidStatus.None;
+    /// <summary>Field number for the "item_list" field.</summary>
+    public const int ItemListFieldNumber = 15;
+    private global::March7thHoney.Proto.ItemList itemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.RaidStatus Status {
-      get { return status_; }
+    public global::March7thHoney.Proto.ItemList ItemList {
+      get { return itemList_; }
       set {
-        status_ = value;
+        itemList_ = value;
       }
     }
 
@@ -177,12 +177,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ItemList, other.ItemList)) return false;
-      if(!raidTargetInfo_.Equals(other.raidTargetInfo_)) return false;
       if (RaidFinishTime != other.RaidFinishTime) return false;
       if (WorldLevel != other.WorldLevel) return false;
-      if (RaidId != other.RaidId) return false;
+      if(!raidTargetInfo_.Equals(other.raidTargetInfo_)) return false;
       if (Status != other.Status) return false;
+      if (RaidId != other.RaidId) return false;
+      if (!object.Equals(ItemList, other.ItemList)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -190,12 +190,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (itemList_ != null) hash ^= ItemList.GetHashCode();
-      hash ^= raidTargetInfo_.GetHashCode();
       if (RaidFinishTime != 0UL) hash ^= RaidFinishTime.GetHashCode();
       if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
-      if (RaidId != 0) hash ^= RaidId.GetHashCode();
+      hash ^= raidTargetInfo_.GetHashCode();
       if (Status != global::March7thHoney.Proto.RaidStatus.None) hash ^= Status.GetHashCode();
+      if (RaidId != 0) hash ^= RaidId.GetHashCode();
+      if (itemList_ != null) hash ^= ItemList.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -214,26 +214,26 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (itemList_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(ItemList);
+      if (RaidFinishTime != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(RaidFinishTime);
       }
       if (WorldLevel != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(56);
         output.WriteUInt32(WorldLevel);
-      }
-      if (RaidId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(RaidId);
-      }
-      if (RaidFinishTime != 0UL) {
-        output.WriteRawTag(72);
-        output.WriteUInt64(RaidFinishTime);
       }
       raidTargetInfo_.WriteTo(output, _repeated_raidTargetInfo_codec);
       if (Status != global::March7thHoney.Proto.RaidStatus.None) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteEnum((int) Status);
+      }
+      if (RaidId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(RaidId);
+      }
+      if (itemList_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(ItemList);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -245,26 +245,26 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (itemList_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(ItemList);
+      if (RaidFinishTime != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(RaidFinishTime);
       }
       if (WorldLevel != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(56);
         output.WriteUInt32(WorldLevel);
-      }
-      if (RaidId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(RaidId);
-      }
-      if (RaidFinishTime != 0UL) {
-        output.WriteRawTag(72);
-        output.WriteUInt64(RaidFinishTime);
       }
       raidTargetInfo_.WriteTo(ref output, _repeated_raidTargetInfo_codec);
       if (Status != global::March7thHoney.Proto.RaidStatus.None) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(88);
         output.WriteEnum((int) Status);
+      }
+      if (RaidId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(RaidId);
+      }
+      if (itemList_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(ItemList);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -276,21 +276,21 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (itemList_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemList);
-      }
-      size += raidTargetInfo_.CalculateSize(_repeated_raidTargetInfo_codec);
       if (RaidFinishTime != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(RaidFinishTime);
       }
       if (WorldLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
       }
+      size += raidTargetInfo_.CalculateSize(_repeated_raidTargetInfo_codec);
+      if (Status != global::March7thHoney.Proto.RaidStatus.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
+      }
       if (RaidId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RaidId);
       }
-      if (Status != global::March7thHoney.Proto.RaidStatus.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
+      if (itemList_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemList);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -304,24 +304,24 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.itemList_ != null) {
-        if (itemList_ == null) {
-          ItemList = new global::March7thHoney.Proto.ItemList();
-        }
-        ItemList.MergeFrom(other.ItemList);
-      }
-      raidTargetInfo_.Add(other.raidTargetInfo_);
       if (other.RaidFinishTime != 0UL) {
         RaidFinishTime = other.RaidFinishTime;
       }
       if (other.WorldLevel != 0) {
         WorldLevel = other.WorldLevel;
       }
+      raidTargetInfo_.Add(other.raidTargetInfo_);
+      if (other.Status != global::March7thHoney.Proto.RaidStatus.None) {
+        Status = other.Status;
+      }
       if (other.RaidId != 0) {
         RaidId = other.RaidId;
       }
-      if (other.Status != global::March7thHoney.Proto.RaidStatus.None) {
-        Status = other.Status;
+      if (other.itemList_ != null) {
+        if (itemList_ == null) {
+          ItemList = new global::March7thHoney.Proto.ItemList();
+        }
+        ItemList.MergeFrom(other.ItemList);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -342,31 +342,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            RaidFinishTime = input.ReadUInt64();
+            break;
+          }
+          case 56: {
+            WorldLevel = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            raidTargetInfo_.AddEntriesFrom(input, _repeated_raidTargetInfo_codec);
+            break;
+          }
+          case 88: {
+            Status = (global::March7thHoney.Proto.RaidStatus) input.ReadEnum();
+            break;
+          }
+          case 104: {
+            RaidId = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             if (itemList_ == null) {
               ItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemList);
-            break;
-          }
-          case 16: {
-            WorldLevel = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            RaidId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            RaidFinishTime = input.ReadUInt64();
-            break;
-          }
-          case 90: {
-            raidTargetInfo_.AddEntriesFrom(input, _repeated_raidTargetInfo_codec);
-            break;
-          }
-          case 96: {
-            Status = (global::March7thHoney.Proto.RaidStatus) input.ReadEnum();
             break;
           }
         }
@@ -388,31 +388,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 8: {
+            RaidFinishTime = input.ReadUInt64();
+            break;
+          }
+          case 56: {
+            WorldLevel = input.ReadUInt32();
+            break;
+          }
+          case 66: {
+            raidTargetInfo_.AddEntriesFrom(ref input, _repeated_raidTargetInfo_codec);
+            break;
+          }
+          case 88: {
+            Status = (global::March7thHoney.Proto.RaidStatus) input.ReadEnum();
+            break;
+          }
+          case 104: {
+            RaidId = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             if (itemList_ == null) {
               ItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemList);
-            break;
-          }
-          case 16: {
-            WorldLevel = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            RaidId = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            RaidFinishTime = input.ReadUInt64();
-            break;
-          }
-          case 90: {
-            raidTargetInfo_.AddEntriesFrom(ref input, _repeated_raidTargetInfo_codec);
-            break;
-          }
-          case 96: {
-            Status = (global::March7thHoney.Proto.RaidStatus) input.ReadEnum();
             break;
           }
         }

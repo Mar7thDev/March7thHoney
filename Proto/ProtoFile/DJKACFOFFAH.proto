@@ -7,8 +7,8 @@ import "DKIGCLFPGFO.proto";
 import "ELBILFGFDHA.proto";
 
 message DJKACFOFFAH {
-    repeated BDGGEHGLFAC CIKDPHGPIGK = 8;
-    repeated DKIGCLFPGFO COBENBOBPKD = 14;
-    repeated ELBILFGFDHA EEOEFLKFNIM = 7;
-    uint32 OENPDHNALLA = 5;
+    repeated ELBILFGFDHA EEOEFLKFNIM = 1;
+    repeated DKIGCLFPGFO COBENBOBPKD = 7;
+    uint32 OENPDHNALLA = 10;
+    repeated BDGGEHGLFAC CIKDPHGPIGK = 15;
 }

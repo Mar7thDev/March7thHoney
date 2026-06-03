@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FDDNKPJEMJE {
-    bool GNACLLNFHFD = 11;
-    uint32 stage_id = 15;
+    uint32 stage_id = 1;
+    bool is_unlock = 6;
 }

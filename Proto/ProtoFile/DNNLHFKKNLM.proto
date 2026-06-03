@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RotaterData.proto";
 
 message DNNLHFKKNLM {
-    repeated RotaterData CEDGGDFMILP = 5;
+    repeated RotaterData CEDGGDFMILP = 4;
 }

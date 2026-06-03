@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CJOCDGGCPCN.proto";
 
 message RogueTournWeekChallengeUpdateScNotify {
-    CJOCDGGCPCN BFNHJIBDMOA = 10;
+    CJOCDGGCPCN BFNHJIBDMOA = 8;
 }

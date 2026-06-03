@@ -24,17 +24,17 @@ namespace March7thHoney.Proto {
     static OIJHAJAIFFHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFPSUpIQUpBSUZGSC5wcm90byL+AQoLT0lKSEFKQUlGRkgSVgofZ3JpZF9m",
-            "aWdodF92YWx1ZV9pbml0X2NvbXBvbmVudBgFIAMoCzItLk9JSkhBSkFJRkZI",
-            "LkdyaWRGaWdodFZhbHVlSW5pdENvbXBvbmVudEVudHJ5EhwKFGdyaWRfZmln",
-            "aHRfaXRlbV9saXN0GAQgAygNEg8KB3JvbGVfaWQYAiABKA0SEQoJcm9sZV9z",
-            "dGFyGAMgASgNEhEKCXBvc19pbmRleBgBIAEoDRpCCiBHcmlkRmlnaHRWYWx1",
-            "ZUluaXRDb21wb25lbnRFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiAB",
-            "KA06AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChFPSUpIQUpBSUZGSC5wcm90byL4AQoLT0lKSEFKQUlGRkgSCwoDcG9zGAEg",
+            "ASgNEg8KB3JvbGVfaWQYAiABKA0SEQoJcm9sZV9zdGFyGAMgASgNEhwKFGdy",
+            "aWRfZmlnaHRfaXRlbV9saXN0GAQgAygNElYKH2dyaWRfZmlnaHRfdmFsdWVf",
+            "aW5pdF9jb21wb25lbnQYBSADKAsyLS5PSUpIQUpBSUZGSC5HcmlkRmlnaHRW",
+            "YWx1ZUluaXRDb21wb25lbnRFbnRyeRpCCiBHcmlkRmlnaHRWYWx1ZUluaXRD",
+            "b21wb25lbnRFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKA06AjgB",
+            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OIJHAJAIFFH), global::March7thHoney.Proto.OIJHAJAIFFH.Parser, new[]{ "GridFightValueInitComponent", "GridFightItemList", "RoleId", "RoleStar", "PosIndex" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OIJHAJAIFFH), global::March7thHoney.Proto.OIJHAJAIFFH.Parser, new[]{ "Pos", "RoleId", "RoleStar", "GridFightItemList", "GridFightValueInitComponent" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -76,11 +76,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OIJHAJAIFFH(OIJHAJAIFFH other) : this() {
-      gridFightValueInitComponent_ = other.gridFightValueInitComponent_.Clone();
-      gridFightItemList_ = other.gridFightItemList_.Clone();
+      pos_ = other.pos_;
       roleId_ = other.roleId_;
       roleStar_ = other.roleStar_;
-      posIndex_ = other.posIndex_;
+      gridFightItemList_ = other.gridFightItemList_.Clone();
+      gridFightValueInitComponent_ = other.gridFightValueInitComponent_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -90,26 +90,16 @@ namespace March7thHoney.Proto {
       return new OIJHAJAIFFH(this);
     }
 
-    /// <summary>Field number for the "grid_fight_value_init_component" field.</summary>
-    public const int GridFightValueInitComponentFieldNumber = 5;
-    private static readonly pbc::MapField<string, uint>.Codec _map_gridFightValueInitComponent_codec
-        = new pbc::MapField<string, uint>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForUInt32(16, 0), 42);
-    private readonly pbc::MapField<string, uint> gridFightValueInitComponent_ = new pbc::MapField<string, uint>();
+    /// <summary>Field number for the "pos" field.</summary>
+    public const int PosFieldNumber = 1;
+    private uint pos_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, uint> GridFightValueInitComponent {
-      get { return gridFightValueInitComponent_; }
-    }
-
-    /// <summary>Field number for the "grid_fight_item_list" field.</summary>
-    public const int GridFightItemListFieldNumber = 4;
-    private static readonly pb::FieldCodec<uint> _repeated_gridFightItemList_codec
-        = pb::FieldCodec.ForUInt32(34);
-    private readonly pbc::RepeatedField<uint> gridFightItemList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> GridFightItemList {
-      get { return gridFightItemList_; }
+    public uint Pos {
+      get { return pos_; }
+      set {
+        pos_ = value;
+      }
     }
 
     /// <summary>Field number for the "role_id" field.</summary>
@@ -136,16 +126,26 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "pos_index" field.</summary>
-    public const int PosIndexFieldNumber = 1;
-    private uint posIndex_;
+    /// <summary>Field number for the "grid_fight_item_list" field.</summary>
+    public const int GridFightItemListFieldNumber = 4;
+    private static readonly pb::FieldCodec<uint> _repeated_gridFightItemList_codec
+        = pb::FieldCodec.ForUInt32(34);
+    private readonly pbc::RepeatedField<uint> gridFightItemList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PosIndex {
-      get { return posIndex_; }
-      set {
-        posIndex_ = value;
-      }
+    public pbc::RepeatedField<uint> GridFightItemList {
+      get { return gridFightItemList_; }
+    }
+
+    /// <summary>Field number for the "grid_fight_value_init_component" field.</summary>
+    public const int GridFightValueInitComponentFieldNumber = 5;
+    private static readonly pbc::MapField<string, uint>.Codec _map_gridFightValueInitComponent_codec
+        = new pbc::MapField<string, uint>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForUInt32(16, 0), 42);
+    private readonly pbc::MapField<string, uint> gridFightValueInitComponent_ = new pbc::MapField<string, uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, uint> GridFightValueInitComponent {
+      get { return gridFightValueInitComponent_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -163,11 +163,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!GridFightValueInitComponent.Equals(other.GridFightValueInitComponent)) return false;
-      if(!gridFightItemList_.Equals(other.gridFightItemList_)) return false;
+      if (Pos != other.Pos) return false;
       if (RoleId != other.RoleId) return false;
       if (RoleStar != other.RoleStar) return false;
-      if (PosIndex != other.PosIndex) return false;
+      if(!gridFightItemList_.Equals(other.gridFightItemList_)) return false;
+      if (!GridFightValueInitComponent.Equals(other.GridFightValueInitComponent)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= GridFightValueInitComponent.GetHashCode();
-      hash ^= gridFightItemList_.GetHashCode();
+      if (Pos != 0) hash ^= Pos.GetHashCode();
       if (RoleId != 0) hash ^= RoleId.GetHashCode();
       if (RoleStar != 0) hash ^= RoleStar.GetHashCode();
-      if (PosIndex != 0) hash ^= PosIndex.GetHashCode();
+      hash ^= gridFightItemList_.GetHashCode();
+      hash ^= GridFightValueInitComponent.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,9 +198,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PosIndex != 0) {
+      if (Pos != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(PosIndex);
+        output.WriteUInt32(Pos);
       }
       if (RoleId != 0) {
         output.WriteRawTag(16);
@@ -222,9 +222,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PosIndex != 0) {
+      if (Pos != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(PosIndex);
+        output.WriteUInt32(Pos);
       }
       if (RoleId != 0) {
         output.WriteRawTag(16);
@@ -246,17 +246,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += gridFightValueInitComponent_.CalculateSize(_map_gridFightValueInitComponent_codec);
-      size += gridFightItemList_.CalculateSize(_repeated_gridFightItemList_codec);
+      if (Pos != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Pos);
+      }
       if (RoleId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleId);
       }
       if (RoleStar != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleStar);
       }
-      if (PosIndex != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PosIndex);
-      }
+      size += gridFightItemList_.CalculateSize(_repeated_gridFightItemList_codec);
+      size += gridFightValueInitComponent_.CalculateSize(_map_gridFightValueInitComponent_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -269,17 +269,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      gridFightValueInitComponent_.MergeFrom(other.gridFightValueInitComponent_);
-      gridFightItemList_.Add(other.gridFightItemList_);
+      if (other.Pos != 0) {
+        Pos = other.Pos;
+      }
       if (other.RoleId != 0) {
         RoleId = other.RoleId;
       }
       if (other.RoleStar != 0) {
         RoleStar = other.RoleStar;
       }
-      if (other.PosIndex != 0) {
-        PosIndex = other.PosIndex;
-      }
+      gridFightItemList_.Add(other.gridFightItemList_);
+      gridFightValueInitComponent_.MergeFrom(other.gridFightValueInitComponent_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -300,7 +300,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            PosIndex = input.ReadUInt32();
+            Pos = input.ReadUInt32();
             break;
           }
           case 16: {
@@ -340,7 +340,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            PosIndex = input.ReadUInt32();
+            Pos = input.ReadUInt32();
             break;
           }
           case 16: {

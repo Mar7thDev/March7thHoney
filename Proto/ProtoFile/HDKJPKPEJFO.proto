@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HDKJPKPEJFO {
-    repeated uint32 GKCABEGBOCG = 13;
-    uint32 level_id = 12;
+    uint32 level_id = 4;
+    repeated uint32 GKCABEGBOCG = 5;
 }

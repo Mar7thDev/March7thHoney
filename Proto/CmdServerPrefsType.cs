@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChhDbWRTZXJ2ZXJQcmVmc1R5cGUucHJvdG8q5QEKEkNtZFNlcnZlclByZWZz",
             "VHlwZRIbChdFSEJNSUFJTUxETV9OTENER0lQR0ZEShAAEhwKF0VIQk1JQUlN",
-            "TERNX01HQU5JUEFHRU1GEPgvEhwKF0VIQk1JQUlNTERNX0ZITElHSU5CTU1E",
-            "EOEvEhwKF0VIQk1JQUlNTERNX0NGRURDSENLUERJEJ0wEhwKF0VIQk1JQUlN",
-            "TERNX0xKR1BJRExIRkNHEO8vEhwKF0VIQk1JQUlNTERNX0JJT0xMQ0lLRkZE",
-            "EKQwEhwKF0VIQk1JQUlNTERNX0JNS0VQRkFIRk9PENcvQhaqAhNNYXJjaDd0",
+            "TERNX0ZITElHSU5CTU1EEKUwEhwKF0VIQk1JQUlNTERNX0xKR1BJRExIRkNH",
+            "EI4wEhwKF0VIQk1JQUlNTERNX0NGRURDSENLUERJEO0vEhwKF0VIQk1JQUlN",
+            "TERNX0JJT0xMQ0lLRkZEELEwEhwKF0VIQk1JQUlNTERNX01HQU5JUEFHRU1G",
+            "EKwwEhwKF0VIQk1JQUlNTERNX0JNS0VQRkFIRk9PEKIwQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,12 +41,12 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdServerPrefsType {
     [pbr::OriginalName("EHBMIAIMLDM_NLCDGIPGFDJ")] EhbmiaimldmNlcdgipgfdj = 0,
-    [pbr::OriginalName("EHBMIAIMLDM_MGANIPAGEMF")] EhbmiaimldmMganipagemf = 6136,
-    [pbr::OriginalName("EHBMIAIMLDM_FHLIGINBMMD")] EhbmiaimldmFhliginbmmd = 6113,
-    [pbr::OriginalName("EHBMIAIMLDM_CFEDCHCKPDI")] EhbmiaimldmCfedchckpdi = 6173,
-    [pbr::OriginalName("EHBMIAIMLDM_LJGPIDLHFCG")] EhbmiaimldmLjgpidlhfcg = 6127,
-    [pbr::OriginalName("EHBMIAIMLDM_BIOLLCIKFFD")] EhbmiaimldmBiollcikffd = 6180,
-    [pbr::OriginalName("EHBMIAIMLDM_BMKEPFAHFOO")] EhbmiaimldmBmkepfahfoo = 6103,
+    [pbr::OriginalName("EHBMIAIMLDM_FHLIGINBMMD")] EhbmiaimldmFhliginbmmd = 6181,
+    [pbr::OriginalName("EHBMIAIMLDM_LJGPIDLHFCG")] EhbmiaimldmLjgpidlhfcg = 6158,
+    [pbr::OriginalName("EHBMIAIMLDM_CFEDCHCKPDI")] EhbmiaimldmCfedchckpdi = 6125,
+    [pbr::OriginalName("EHBMIAIMLDM_BIOLLCIKFFD")] EhbmiaimldmBiollcikffd = 6193,
+    [pbr::OriginalName("EHBMIAIMLDM_MGANIPAGEMF")] EhbmiaimldmMganipagemf = 6188,
+    [pbr::OriginalName("EHBMIAIMLDM_BMKEPFAHFOO")] EhbmiaimldmBmkepfahfoo = 6178,
   }
 
   #endregion

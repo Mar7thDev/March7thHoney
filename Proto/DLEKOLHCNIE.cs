@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static DLEKOLHCNIEReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFETEVLT0xIQ05JRS5wcm90byJ2CgtETEVLT0xIQ05JRRITCgtGSktISUZE",
-            "Sk1EQhgGIAEoCBITCgtMTUxOSE5NS09PQxgLIAEoCBIXCg9pc190YWtlbl9y",
-            "ZXdhcmQYDSABKAgSEwoLR05BQ0xMTkZIRkQYASABKAgSDwoHYXJlYV9pZBgO",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFETEVLT0xIQ05JRS5wcm90byJfCgtETEVLT0xIQ05JRRITCgtGSktISUZE",
+            "Sk1EQhgJIAEoCBIXCg9pc190YWtlbl9yZXdhcmQYCiABKAgSEQoJaXNfdW5s",
+            "b2NrGAsgASgIEg8KB2FyZWFfaWQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DLEKOLHCNIE), global::March7thHoney.Proto.DLEKOLHCNIE.Parser, new[]{ "FJKHIFDJMDB", "LMLNHNMKOOC", "IsTakenReward", "GNACLLNFHFD", "AreaId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DLEKOLHCNIE), global::March7thHoney.Proto.DLEKOLHCNIE.Parser, new[]{ "FJKHIFDJMDB", "IsTakenReward", "IsUnlock", "AreaId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DLEKOLHCNIE(DLEKOLHCNIE other) : this() {
       fJKHIFDJMDB_ = other.fJKHIFDJMDB_;
-      lMLNHNMKOOC_ = other.lMLNHNMKOOC_;
       isTakenReward_ = other.isTakenReward_;
-      gNACLLNFHFD_ = other.gNACLLNFHFD_;
+      isUnlock_ = other.isUnlock_;
       areaId_ = other.areaId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -88,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FJKHIFDJMDB" field.</summary>
-    public const int FJKHIFDJMDBFieldNumber = 6;
+    public const int FJKHIFDJMDBFieldNumber = 9;
     private bool fJKHIFDJMDB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,20 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LMLNHNMKOOC" field.</summary>
-    public const int LMLNHNMKOOCFieldNumber = 11;
-    private bool lMLNHNMKOOC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool LMLNHNMKOOC {
-      get { return lMLNHNMKOOC_; }
-      set {
-        lMLNHNMKOOC_ = value;
-      }
-    }
-
     /// <summary>Field number for the "is_taken_reward" field.</summary>
-    public const int IsTakenRewardFieldNumber = 13;
+    public const int IsTakenRewardFieldNumber = 10;
     private bool isTakenReward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,20 +110,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "GNACLLNFHFD" field.</summary>
-    public const int GNACLLNFHFDFieldNumber = 1;
-    private bool gNACLLNFHFD_;
+    /// <summary>Field number for the "is_unlock" field.</summary>
+    public const int IsUnlockFieldNumber = 11;
+    private bool isUnlock_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool GNACLLNFHFD {
-      get { return gNACLLNFHFD_; }
+    public bool IsUnlock {
+      get { return isUnlock_; }
       set {
-        gNACLLNFHFD_ = value;
+        isUnlock_ = value;
       }
     }
 
     /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 14;
+    public const int AreaIdFieldNumber = 15;
     private uint areaId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -163,9 +150,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (FJKHIFDJMDB != other.FJKHIFDJMDB) return false;
-      if (LMLNHNMKOOC != other.LMLNHNMKOOC) return false;
       if (IsTakenReward != other.IsTakenReward) return false;
-      if (GNACLLNFHFD != other.GNACLLNFHFD) return false;
+      if (IsUnlock != other.IsUnlock) return false;
       if (AreaId != other.AreaId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -175,9 +161,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (FJKHIFDJMDB != false) hash ^= FJKHIFDJMDB.GetHashCode();
-      if (LMLNHNMKOOC != false) hash ^= LMLNHNMKOOC.GetHashCode();
       if (IsTakenReward != false) hash ^= IsTakenReward.GetHashCode();
-      if (GNACLLNFHFD != false) hash ^= GNACLLNFHFD.GetHashCode();
+      if (IsUnlock != false) hash ^= IsUnlock.GetHashCode();
       if (AreaId != 0) hash ^= AreaId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -197,24 +182,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GNACLLNFHFD != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(GNACLLNFHFD);
-      }
       if (FJKHIFDJMDB != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(72);
         output.WriteBool(FJKHIFDJMDB);
       }
-      if (LMLNHNMKOOC != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(LMLNHNMKOOC);
-      }
       if (IsTakenReward != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(80);
         output.WriteBool(IsTakenReward);
       }
+      if (IsUnlock != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(IsUnlock);
+      }
       if (AreaId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
@@ -227,24 +208,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GNACLLNFHFD != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(GNACLLNFHFD);
-      }
       if (FJKHIFDJMDB != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(72);
         output.WriteBool(FJKHIFDJMDB);
       }
-      if (LMLNHNMKOOC != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(LMLNHNMKOOC);
-      }
       if (IsTakenReward != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(80);
         output.WriteBool(IsTakenReward);
       }
+      if (IsUnlock != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(IsUnlock);
+      }
       if (AreaId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
@@ -260,13 +237,10 @@ namespace March7thHoney.Proto {
       if (FJKHIFDJMDB != false) {
         size += 1 + 1;
       }
-      if (LMLNHNMKOOC != false) {
-        size += 1 + 1;
-      }
       if (IsTakenReward != false) {
         size += 1 + 1;
       }
-      if (GNACLLNFHFD != false) {
+      if (IsUnlock != false) {
         size += 1 + 1;
       }
       if (AreaId != 0) {
@@ -287,14 +261,11 @@ namespace March7thHoney.Proto {
       if (other.FJKHIFDJMDB != false) {
         FJKHIFDJMDB = other.FJKHIFDJMDB;
       }
-      if (other.LMLNHNMKOOC != false) {
-        LMLNHNMKOOC = other.LMLNHNMKOOC;
-      }
       if (other.IsTakenReward != false) {
         IsTakenReward = other.IsTakenReward;
       }
-      if (other.GNACLLNFHFD != false) {
-        GNACLLNFHFD = other.GNACLLNFHFD;
+      if (other.IsUnlock != false) {
+        IsUnlock = other.IsUnlock;
       }
       if (other.AreaId != 0) {
         AreaId = other.AreaId;
@@ -318,23 +289,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            GNACLLNFHFD = input.ReadBool();
-            break;
-          }
-          case 48: {
+          case 72: {
             FJKHIFDJMDB = input.ReadBool();
             break;
           }
-          case 88: {
-            LMLNHNMKOOC = input.ReadBool();
-            break;
-          }
-          case 104: {
+          case 80: {
             IsTakenReward = input.ReadBool();
             break;
           }
-          case 112: {
+          case 88: {
+            IsUnlock = input.ReadBool();
+            break;
+          }
+          case 120: {
             AreaId = input.ReadUInt32();
             break;
           }
@@ -357,23 +324,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            GNACLLNFHFD = input.ReadBool();
-            break;
-          }
-          case 48: {
+          case 72: {
             FJKHIFDJMDB = input.ReadBool();
             break;
           }
-          case 88: {
-            LMLNHNMKOOC = input.ReadBool();
-            break;
-          }
-          case 104: {
+          case 80: {
             IsTakenReward = input.ReadBool();
             break;
           }
-          case 112: {
+          case 88: {
+            IsUnlock = input.ReadBool();
+            break;
+          }
+          case 120: {
             AreaId = input.ReadUInt32();
             break;
           }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BigDataRecommendType.proto";
 
 message GetBigDataRecommendCsReq {
-    uint32 equip_avatar = 1;
-    BigDataRecommendType big_data_recommend_type = 3;
+    BigDataRecommendType big_data_recommend_type = 1;
+    uint32 equip_avatar = 2;
 }

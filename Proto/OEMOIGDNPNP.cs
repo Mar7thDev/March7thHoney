@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static OEMOIGDNPNPReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFPRU1PSUdETlBOUC5wcm90byJfCgtPRU1PSUdETlBOUBITCgtzd2l0Y2hf",
-            "bGlzdBgEIAMoARIPCgdjYXJkX2lkGAEgASgNEhMKC0JCTE1NTkxDTUdNGAMg",
-            "ASgIEhUKDWRpc3BsYXlfdmFsdWUYAiABKAFCFqoCE01hcmNoN3RoSG9uZXku",
-            "UHJvdG9iBnByb3RvMw=="));
+            "ChFPRU1PSUdETlBOUC5wcm90byJVCgtPRU1PSUdETlBOUBIPCgdjYXJkX2lk",
+            "GAEgASgNEg0KBXBhcmFtGAIgASgBEhEKCWlzX2VuYWJsZRgDIAEoCBITCgtz",
+            "d2l0Y2hfbGlzdBgEIAMoAUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OEMOIGDNPNP), global::March7thHoney.Proto.OEMOIGDNPNP.Parser, new[]{ "SwitchList", "CardId", "BBLMMNLCMGM", "DisplayValue" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OEMOIGDNPNP), global::March7thHoney.Proto.OEMOIGDNPNP.Parser, new[]{ "CardId", "Param", "IsEnable", "SwitchList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OEMOIGDNPNP(OEMOIGDNPNP other) : this() {
-      switchList_ = other.switchList_.Clone();
       cardId_ = other.cardId_;
-      bBLMMNLCMGM_ = other.bBLMMNLCMGM_;
-      displayValue_ = other.displayValue_;
+      param_ = other.param_;
+      isEnable_ = other.isEnable_;
+      switchList_ = other.switchList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,17 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OEMOIGDNPNP Clone() {
       return new OEMOIGDNPNP(this);
-    }
-
-    /// <summary>Field number for the "switch_list" field.</summary>
-    public const int SwitchListFieldNumber = 4;
-    private static readonly pb::FieldCodec<double> _repeated_switchList_codec
-        = pb::FieldCodec.ForDouble(34);
-    private readonly pbc::RepeatedField<double> switchList_ = new pbc::RepeatedField<double>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<double> SwitchList {
-      get { return switchList_; }
     }
 
     /// <summary>Field number for the "card_id" field.</summary>
@@ -109,28 +98,39 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "BBLMMNLCMGM" field.</summary>
-    public const int BBLMMNLCMGMFieldNumber = 3;
-    private bool bBLMMNLCMGM_;
+    /// <summary>Field number for the "param" field.</summary>
+    public const int ParamFieldNumber = 2;
+    private double param_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool BBLMMNLCMGM {
-      get { return bBLMMNLCMGM_; }
+    public double Param {
+      get { return param_; }
       set {
-        bBLMMNLCMGM_ = value;
+        param_ = value;
       }
     }
 
-    /// <summary>Field number for the "display_value" field.</summary>
-    public const int DisplayValueFieldNumber = 2;
-    private double displayValue_;
+    /// <summary>Field number for the "is_enable" field.</summary>
+    public const int IsEnableFieldNumber = 3;
+    private bool isEnable_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double DisplayValue {
-      get { return displayValue_; }
+    public bool IsEnable {
+      get { return isEnable_; }
       set {
-        displayValue_ = value;
+        isEnable_ = value;
       }
+    }
+
+    /// <summary>Field number for the "switch_list" field.</summary>
+    public const int SwitchListFieldNumber = 4;
+    private static readonly pb::FieldCodec<double> _repeated_switchList_codec
+        = pb::FieldCodec.ForDouble(34);
+    private readonly pbc::RepeatedField<double> switchList_ = new pbc::RepeatedField<double>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<double> SwitchList {
+      get { return switchList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -148,10 +148,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!switchList_.Equals(other.switchList_)) return false;
       if (CardId != other.CardId) return false;
-      if (BBLMMNLCMGM != other.BBLMMNLCMGM) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DisplayValue, other.DisplayValue)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Param, other.Param)) return false;
+      if (IsEnable != other.IsEnable) return false;
+      if(!switchList_.Equals(other.switchList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -159,10 +159,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= switchList_.GetHashCode();
       if (CardId != 0) hash ^= CardId.GetHashCode();
-      if (BBLMMNLCMGM != false) hash ^= BBLMMNLCMGM.GetHashCode();
-      if (DisplayValue != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DisplayValue);
+      if (Param != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Param);
+      if (IsEnable != false) hash ^= IsEnable.GetHashCode();
+      hash ^= switchList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -185,13 +185,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(CardId);
       }
-      if (DisplayValue != 0D) {
+      if (Param != 0D) {
         output.WriteRawTag(17);
-        output.WriteDouble(DisplayValue);
+        output.WriteDouble(Param);
       }
-      if (BBLMMNLCMGM != false) {
+      if (IsEnable != false) {
         output.WriteRawTag(24);
-        output.WriteBool(BBLMMNLCMGM);
+        output.WriteBool(IsEnable);
       }
       switchList_.WriteTo(output, _repeated_switchList_codec);
       if (_unknownFields != null) {
@@ -208,13 +208,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(CardId);
       }
-      if (DisplayValue != 0D) {
+      if (Param != 0D) {
         output.WriteRawTag(17);
-        output.WriteDouble(DisplayValue);
+        output.WriteDouble(Param);
       }
-      if (BBLMMNLCMGM != false) {
+      if (IsEnable != false) {
         output.WriteRawTag(24);
-        output.WriteBool(BBLMMNLCMGM);
+        output.WriteBool(IsEnable);
       }
       switchList_.WriteTo(ref output, _repeated_switchList_codec);
       if (_unknownFields != null) {
@@ -227,16 +227,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += switchList_.CalculateSize(_repeated_switchList_codec);
       if (CardId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CardId);
       }
-      if (BBLMMNLCMGM != false) {
-        size += 1 + 1;
-      }
-      if (DisplayValue != 0D) {
+      if (Param != 0D) {
         size += 1 + 8;
       }
+      if (IsEnable != false) {
+        size += 1 + 1;
+      }
+      size += switchList_.CalculateSize(_repeated_switchList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      switchList_.Add(other.switchList_);
       if (other.CardId != 0) {
         CardId = other.CardId;
       }
-      if (other.BBLMMNLCMGM != false) {
-        BBLMMNLCMGM = other.BBLMMNLCMGM;
+      if (other.Param != 0D) {
+        Param = other.Param;
       }
-      if (other.DisplayValue != 0D) {
-        DisplayValue = other.DisplayValue;
+      if (other.IsEnable != false) {
+        IsEnable = other.IsEnable;
       }
+      switchList_.Add(other.switchList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -283,11 +283,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 17: {
-            DisplayValue = input.ReadDouble();
+            Param = input.ReadDouble();
             break;
           }
           case 24: {
-            BBLMMNLCMGM = input.ReadBool();
+            IsEnable = input.ReadBool();
             break;
           }
           case 34:
@@ -319,11 +319,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 17: {
-            DisplayValue = input.ReadDouble();
+            Param = input.ReadDouble();
             break;
           }
           case 24: {
-            BBLMMNLCMGM = input.ReadBool();
+            IsEnable = input.ReadBool();
             break;
           }
           case 34:

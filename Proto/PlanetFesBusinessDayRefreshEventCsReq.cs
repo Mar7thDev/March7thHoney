@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CitQbGFuZXRGZXNCdXNpbmVzc0RheVJlZnJlc2hFdmVudENzUmVxLnByb3Rv",
             "ImYKJVBsYW5ldEZlc0J1c2luZXNzRGF5UmVmcmVzaEV2ZW50Q3NSZXESEwoL",
-            "TEZLREFOR05KSU0YCiABKA0SEwoLTEFPQUNOUERPTEQYCCABKA0SEwoLQ0VJ",
-            "T05IUERORFAYBSABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Q0VJT05IUERORFAYBSABKAgSEgoKZXZlbnRfdHlwZRgJIAEoDRIUCgxidXNp",
+            "bmVzc19kYXkYDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlanetFesBusinessDayRefreshEventCsReq), global::March7thHoney.Proto.PlanetFesBusinessDayRefreshEventCsReq.Parser, new[]{ "LFKDANGNJIM", "LAOACNPDOLD", "CEIONHPDNDP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlanetFesBusinessDayRefreshEventCsReq), global::March7thHoney.Proto.PlanetFesBusinessDayRefreshEventCsReq.Parser, new[]{ "CEIONHPDNDP", "EventType", "BusinessDay" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlanetFesBusinessDayRefreshEventCsReq(PlanetFesBusinessDayRefreshEventCsReq other) : this() {
-      lFKDANGNJIM_ = other.lFKDANGNJIM_;
-      lAOACNPDOLD_ = other.lAOACNPDOLD_;
       cEIONHPDNDP_ = other.cEIONHPDNDP_;
+      eventType_ = other.eventType_;
+      businessDay_ = other.businessDay_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,30 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlanetFesBusinessDayRefreshEventCsReq Clone() {
       return new PlanetFesBusinessDayRefreshEventCsReq(this);
-    }
-
-    /// <summary>Field number for the "LFKDANGNJIM" field.</summary>
-    public const int LFKDANGNJIMFieldNumber = 10;
-    private uint lFKDANGNJIM_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LFKDANGNJIM {
-      get { return lFKDANGNJIM_; }
-      set {
-        lFKDANGNJIM_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LAOACNPDOLD" field.</summary>
-    public const int LAOACNPDOLDFieldNumber = 8;
-    private uint lAOACNPDOLD_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LAOACNPDOLD {
-      get { return lAOACNPDOLD_; }
-      set {
-        lAOACNPDOLD_ = value;
-      }
     }
 
     /// <summary>Field number for the "CEIONHPDNDP" field.</summary>
@@ -119,6 +95,30 @@ namespace March7thHoney.Proto {
       get { return cEIONHPDNDP_; }
       set {
         cEIONHPDNDP_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "event_type" field.</summary>
+    public const int EventTypeFieldNumber = 9;
+    private uint eventType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EventType {
+      get { return eventType_; }
+      set {
+        eventType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "business_day" field.</summary>
+    public const int BusinessDayFieldNumber = 12;
+    private uint businessDay_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BusinessDay {
+      get { return businessDay_; }
+      set {
+        businessDay_ = value;
       }
     }
 
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (LFKDANGNJIM != other.LFKDANGNJIM) return false;
-      if (LAOACNPDOLD != other.LAOACNPDOLD) return false;
       if (CEIONHPDNDP != other.CEIONHPDNDP) return false;
+      if (EventType != other.EventType) return false;
+      if (BusinessDay != other.BusinessDay) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LFKDANGNJIM != 0) hash ^= LFKDANGNJIM.GetHashCode();
-      if (LAOACNPDOLD != 0) hash ^= LAOACNPDOLD.GetHashCode();
       if (CEIONHPDNDP != false) hash ^= CEIONHPDNDP.GetHashCode();
+      if (EventType != 0) hash ^= EventType.GetHashCode();
+      if (BusinessDay != 0) hash ^= BusinessDay.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -172,13 +172,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(40);
         output.WriteBool(CEIONHPDNDP);
       }
-      if (LAOACNPDOLD != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(LAOACNPDOLD);
+      if (EventType != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(EventType);
       }
-      if (LFKDANGNJIM != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(LFKDANGNJIM);
+      if (BusinessDay != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(BusinessDay);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -194,13 +194,13 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(40);
         output.WriteBool(CEIONHPDNDP);
       }
-      if (LAOACNPDOLD != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(LAOACNPDOLD);
+      if (EventType != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(EventType);
       }
-      if (LFKDANGNJIM != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(LFKDANGNJIM);
+      if (BusinessDay != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(BusinessDay);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -212,14 +212,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LFKDANGNJIM != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LFKDANGNJIM);
-      }
-      if (LAOACNPDOLD != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LAOACNPDOLD);
-      }
       if (CEIONHPDNDP != false) {
         size += 1 + 1;
+      }
+      if (EventType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EventType);
+      }
+      if (BusinessDay != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BusinessDay);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -233,14 +233,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.LFKDANGNJIM != 0) {
-        LFKDANGNJIM = other.LFKDANGNJIM;
-      }
-      if (other.LAOACNPDOLD != 0) {
-        LAOACNPDOLD = other.LAOACNPDOLD;
-      }
       if (other.CEIONHPDNDP != false) {
         CEIONHPDNDP = other.CEIONHPDNDP;
+      }
+      if (other.EventType != 0) {
+        EventType = other.EventType;
+      }
+      if (other.BusinessDay != 0) {
+        BusinessDay = other.BusinessDay;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -265,12 +265,12 @@ namespace March7thHoney.Proto {
             CEIONHPDNDP = input.ReadBool();
             break;
           }
-          case 64: {
-            LAOACNPDOLD = input.ReadUInt32();
+          case 72: {
+            EventType = input.ReadUInt32();
             break;
           }
-          case 80: {
-            LFKDANGNJIM = input.ReadUInt32();
+          case 96: {
+            BusinessDay = input.ReadUInt32();
             break;
           }
         }
@@ -296,12 +296,12 @@ namespace March7thHoney.Proto {
             CEIONHPDNDP = input.ReadBool();
             break;
           }
-          case 64: {
-            LAOACNPDOLD = input.ReadUInt32();
+          case 72: {
+            EventType = input.ReadUInt32();
             break;
           }
-          case 80: {
-            LFKDANGNJIM = input.ReadUInt32();
+          case 96: {
+            BusinessDay = input.ReadUInt32();
             break;
           }
         }

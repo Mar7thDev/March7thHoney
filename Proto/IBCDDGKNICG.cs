@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFJQkNEREdLTklDRy5wcm90bxoRR0xOSktHT0dLS0wucHJvdG8iRAoLSUJD",
-            "RERHS05JQ0cSIAoKYmxhY2tfbGlzdBgGIAEoCzIMLkdMTkpLR09HS0tMEhMK",
-            "C0NOTUFGTUVLQURKGAogASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "RERHS05JQ0cSIAoKYmxhY2tfbGlzdBgBIAEoCzIMLkdMTkpLR09HS0tMEhMK",
+            "C0NOTUFGTUVLQURKGAIgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GLNJKGOGKKLReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "black_list" field.</summary>
-    public const int BlackListFieldNumber = 6;
+    public const int BlackListFieldNumber = 1;
     private global::March7thHoney.Proto.GLNJKGOGKKL blackList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CNMAFMEKADJ" field.</summary>
-    public const int CNMAFMEKADJFieldNumber = 10;
+    public const int CNMAFMEKADJFieldNumber = 2;
     private bool cNMAFMEKADJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (blackList_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(10);
         output.WriteMessage(BlackList);
       }
       if (CNMAFMEKADJ != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteBool(CNMAFMEKADJ);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (blackList_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(10);
         output.WriteMessage(BlackList);
       }
       if (CNMAFMEKADJ != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteBool(CNMAFMEKADJ);
       }
       if (_unknownFields != null) {
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 10: {
             if (blackList_ == null) {
               BlackList = new global::March7thHoney.Proto.GLNJKGOGKKL();
             }
             input.ReadMessage(BlackList);
             break;
           }
-          case 80: {
+          case 16: {
             CNMAFMEKADJ = input.ReadBool();
             break;
           }
@@ -264,14 +264,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 10: {
             if (blackList_ == null) {
               BlackList = new global::March7thHoney.Proto.GLNJKGOGKKL();
             }
             input.ReadMessage(BlackList);
             break;
           }
-          case 80: {
+          case 16: {
             CNMAFMEKADJ = input.ReadBool();
             break;
           }

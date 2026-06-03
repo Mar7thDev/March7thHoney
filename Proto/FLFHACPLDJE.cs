@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGTEZIQUNQTERKRS5wcm90bxoRUEdFQ0dLRUtGTkMucHJvdG8iUQoLRkxG",
-            "SEFDUExESkUSIwoLQkRQSU1QSk9KQksYBCABKAsyDC5QR0VDR0tFS0ZOQ0gA",
-            "Eg4KBGdvbGQYByABKA1IAEINCgtPRkpCQ0VERkxLTEIWqgITTWFyY2g3dGhI",
+            "SEFDUExESkUSIwoLQkRQSU1QSk9KQksYASABKAsyDC5QR0VDR0tFS0ZOQ0gA",
+            "Eg4KBGdvbGQYCCABKA1IAEINCgtPRkpCQ0VERkxLTEIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PGECGKEKFNCReflection.Descriptor, },
@@ -92,7 +92,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BDPIMPJOJBK" field.</summary>
-    public const int BDPIMPJOJBKFieldNumber = 4;
+    public const int BDPIMPJOJBKFieldNumber = 1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.PGECGKEKFNC BDPIMPJOJBK {
@@ -104,7 +104,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "gold" field.</summary>
-    public const int GoldFieldNumber = 7;
+    public const int GoldFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Gold {
@@ -133,8 +133,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "OFJBCEDFLKL" oneof.</summary>
     public enum OFJBCEDFLKLOneofCase {
       None = 0,
-      BDPIMPJOJBK = 4,
-      Gold = 7,
+      BDPIMPJOJBK = 1,
+      Gold = 8,
     }
     private OFJBCEDFLKLOneofCase oFJBCEDFLKLCase_ = OFJBCEDFLKLOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -197,11 +197,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (oFJBCEDFLKLCase_ == OFJBCEDFLKLOneofCase.BDPIMPJOJBK) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(10);
         output.WriteMessage(BDPIMPJOJBK);
       }
       if (HasGold) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(Gold);
       }
       if (_unknownFields != null) {
@@ -215,11 +215,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (oFJBCEDFLKLCase_ == OFJBCEDFLKLOneofCase.BDPIMPJOJBK) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(10);
         output.WriteMessage(BDPIMPJOJBK);
       }
       if (HasGold) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteUInt32(Gold);
       }
       if (_unknownFields != null) {
@@ -281,7 +281,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 10: {
             global::March7thHoney.Proto.PGECGKEKFNC subBuilder = new global::March7thHoney.Proto.PGECGKEKFNC();
             if (oFJBCEDFLKLCase_ == OFJBCEDFLKLOneofCase.BDPIMPJOJBK) {
               subBuilder.MergeFrom(BDPIMPJOJBK);
@@ -290,7 +290,7 @@ namespace March7thHoney.Proto {
             BDPIMPJOJBK = subBuilder;
             break;
           }
-          case 56: {
+          case 64: {
             Gold = input.ReadUInt32();
             break;
           }
@@ -313,7 +313,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 10: {
             global::March7thHoney.Proto.PGECGKEKFNC subBuilder = new global::March7thHoney.Proto.PGECGKEKFNC();
             if (oFJBCEDFLKLCase_ == OFJBCEDFLKLOneofCase.BDPIMPJOJBK) {
               subBuilder.MergeFrom(BDPIMPJOJBK);
@@ -322,7 +322,7 @@ namespace March7thHoney.Proto {
             BDPIMPJOJBK = subBuilder;
             break;
           }
-          case 56: {
+          case 64: {
             Gold = input.ReadUInt32();
             break;
           }

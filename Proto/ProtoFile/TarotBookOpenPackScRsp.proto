@@ -3,10 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TarotBookOpenPackScRsp {
-    map<uint32, uint32> NLAANGNGAIA = 13;
-    map<uint32, uint32> KMNLFHLINFB = 3;
-    uint32 HBLKMBHGLNO = 10;
-    uint32 LOCEBOCJGEC = 12;
-    uint32 retcode = 2;
-    uint32 energy_info = 4;
+    uint32 energy_info = 2;
+    map<uint32, uint32> NLAANGNGAIA = 3;
+    uint32 HBLKMBHGLNO = 6;
+    uint32 retcode = 11;
+    map<uint32, uint32> KMNLFHLINFB = 12;
+    uint32 LOCEBOCJGEC = 15;
 }

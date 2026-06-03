@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetTrainWorldIdCsReq {
-    uint32 CFDCEEMIOCO = 8;
-    uint64 interact_id = 9;
+    uint32 CFDCEEMIOCO = 7;
+    uint64 interact_id = 15;
 }

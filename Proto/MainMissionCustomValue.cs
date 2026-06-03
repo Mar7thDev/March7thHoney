@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChxNYWluTWlzc2lvbkN1c3RvbVZhbHVlLnByb3RvGhFPTkhLT0RBRkVNSC5w",
             "cm90byJaChZNYWluTWlzc2lvbkN1c3RvbVZhbHVlEicKEWN1c3RvbV92YWx1",
-            "ZV9saXN0GAcgASgLMgwuT05IS09EQUZFTUgSFwoPbWFpbl9taXNzaW9uX2lk",
-            "GAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ZV9saXN0GAIgASgLMgwuT05IS09EQUZFTUgSFwoPbWFpbl9taXNzaW9uX2lk",
+            "GAQgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ONHKODAFEMHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "custom_value_list" field.</summary>
-    public const int CustomValueListFieldNumber = 7;
+    public const int CustomValueListFieldNumber = 2;
     private global::March7thHoney.Proto.ONHKODAFEMH customValueList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "main_mission_id" field.</summary>
-    public const int MainMissionIdFieldNumber = 1;
+    public const int MainMissionIdFieldNumber = 4;
     private uint mainMissionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MainMissionId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(MainMissionId);
-      }
       if (customValueList_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(18);
         output.WriteMessage(CustomValueList);
+      }
+      if (MainMissionId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(MainMissionId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MainMissionId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(MainMissionId);
-      }
       if (customValueList_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(18);
         output.WriteMessage(CustomValueList);
+      }
+      if (MainMissionId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(MainMissionId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            MainMissionId = input.ReadUInt32();
-            break;
-          }
-          case 58: {
+          case 18: {
             if (customValueList_ == null) {
               CustomValueList = new global::March7thHoney.Proto.ONHKODAFEMH();
             }
             input.ReadMessage(CustomValueList);
+            break;
+          }
+          case 32: {
+            MainMissionId = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            MainMissionId = input.ReadUInt32();
-            break;
-          }
-          case 58: {
+          case 18: {
             if (customValueList_ == null) {
               CustomValueList = new global::March7thHoney.Proto.ONHKODAFEMH();
             }
             input.ReadMessage(CustomValueList);
+            break;
+          }
+          case 32: {
+            MainMissionId = input.ReadUInt32();
             break;
           }
         }

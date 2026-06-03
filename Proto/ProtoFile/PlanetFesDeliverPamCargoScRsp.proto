@@ -6,8 +6,8 @@ import "GNMCIEPEBPK.proto";
 import "OJHHACMHFKA.proto";
 
 message PlanetFesDeliverPamCargoScRsp {
-    GNMCIEPEBPK FFMILOLELNJ = 5;
-    OJHHACMHFKA GLOAGDBEKDP = 12;
-    uint32 retcode = 3;
     uint32 avatar_id = 2;
+    uint32 retcode = 4;
+    GNMCIEPEBPK FFMILOLELNJ = 6;
+    OJHHACMHFKA GLOAGDBEKDP = 11;
 }

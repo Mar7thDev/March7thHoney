@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHRERMQk1DSElFRC5wcm90byI3CgtHRERMQk1DSElFRBITCgtNS09LTExL",
-            "QUxERRgDIAMoDRITCgtLRElEREhJRE5DRxgHIAEoDUIWqgITTWFyY2g3dGhI",
+            "QUxERRgJIAMoDRITCgtLRElEREhJRE5DRxgMIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MKOKLLKALDE" field.</summary>
-    public const int MKOKLLKALDEFieldNumber = 3;
+    public const int MKOKLLKALDEFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_mKOKLLKALDE_codec
-        = pb::FieldCodec.ForUInt32(26);
+        = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> mKOKLLKALDE_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KDIDDHIDNCG" field.</summary>
-    public const int KDIDDHIDNCGFieldNumber = 7;
+    public const int KDIDDHIDNCGFieldNumber = 12;
     private uint kDIDDHIDNCG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     #else
       mKOKLLKALDE_.WriteTo(output, _repeated_mKOKLLKALDE_codec);
       if (KDIDDHIDNCG != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(96);
         output.WriteUInt32(KDIDDHIDNCG);
       }
       if (_unknownFields != null) {
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       mKOKLLKALDE_.WriteTo(ref output, _repeated_mKOKLLKALDE_codec);
       if (KDIDDHIDNCG != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(96);
         output.WriteUInt32(KDIDDHIDNCG);
       }
       if (_unknownFields != null) {
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26:
-          case 24: {
+          case 74:
+          case 72: {
             mKOKLLKALDE_.AddEntriesFrom(input, _repeated_mKOKLLKALDE_codec);
             break;
           }
-          case 56: {
+          case 96: {
             KDIDDHIDNCG = input.ReadUInt32();
             break;
           }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26:
-          case 24: {
+          case 74:
+          case 72: {
             mKOKLLKALDE_.AddEntriesFrom(ref input, _repeated_mKOKLLKALDE_codec);
             break;
           }
-          case 56: {
+          case 96: {
             KDIDDHIDNCG = input.ReadUInt32();
             break;
           }

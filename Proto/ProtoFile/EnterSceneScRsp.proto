@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "SceneIdentifier.proto";
 
 message EnterSceneScRsp {
-    SceneIdentifier scene_identifier = 11;
-    uint32 retcode = 10;
-    bool is_over_map = 4;
-    bool is_close_map = 7;
+    bool is_over_map = 1;
+    bool is_close_map = 8;
+    SceneIdentifier scene_identifier = 9;
+    uint32 retcode = 13;
 }

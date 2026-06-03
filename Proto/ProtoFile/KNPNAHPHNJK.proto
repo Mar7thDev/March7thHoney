@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KNPNAHPHNJK {
-    uint32 IODBGABPNOP = 3;
-    uint32 item_id = 8;
+    uint32 IODBGABPNOP = 10;
+    uint32 item_id = 12;
 }

@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFIR05CUEFORUNBTC5wcm90bxoOQnVmZkluZm8ucHJvdG8iPgoLSEdOQlBB",
-            "TkVDQUwSHAoJYnVmZl9saXN0GAUgAygLMgkuQnVmZkluZm8SEQoJZW50aXR5",
-            "X2lkGAcgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "TkVDQUwSHAoJYnVmZl9saXN0GAQgAygLMgkuQnVmZkluZm8SEQoJZW50aXR5",
+            "X2lkGAUgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BuffInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "buff_list" field.</summary>
-    public const int BuffListFieldNumber = 5;
+    public const int BuffListFieldNumber = 4;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.BuffInfo> _repeated_buffList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.BuffInfo.Parser);
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.BuffInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.BuffInfo> buffList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BuffInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "entity_id" field.</summary>
-    public const int EntityIdFieldNumber = 7;
+    public const int EntityIdFieldNumber = 5;
     private uint entityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     #else
       buffList_.WriteTo(output, _repeated_buffList_codec);
       if (EntityId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteUInt32(EntityId);
       }
       if (_unknownFields != null) {
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       buffList_.WriteTo(ref output, _repeated_buffList_codec);
       if (EntityId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteUInt32(EntityId);
       }
       if (_unknownFields != null) {
@@ -219,11 +219,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 34: {
             buffList_.AddEntriesFrom(input, _repeated_buffList_codec);
             break;
           }
-          case 56: {
+          case 40: {
             EntityId = input.ReadUInt32();
             break;
           }
@@ -246,11 +246,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 34: {
             buffList_.AddEntriesFrom(ref input, _repeated_buffList_codec);
             break;
           }
-          case 56: {
+          case 40: {
             EntityId = input.ReadUInt32();
             break;
           }

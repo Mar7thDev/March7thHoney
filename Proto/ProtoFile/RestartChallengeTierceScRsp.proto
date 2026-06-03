@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "SceneInfo.proto";
 
 message RestartChallengeTierceScRsp {
-    SceneInfo scene = 8;
-    uint32 retcode = 5;
+    SceneInfo scene = 1;
+    uint32 retcode = 11;
 }

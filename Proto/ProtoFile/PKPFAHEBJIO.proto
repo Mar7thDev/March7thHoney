@@ -6,9 +6,9 @@ import "EBBJLHBAGCJ.proto";
 import "NIFPICHIDLJ.proto";
 
 message PKPFAHEBJIO {
-    repeated EBBJLHBAGCJ FPMBJMDNPBM = 3;
     repeated NIFPICHIDLJ message_datas = 1;
     map<uint32, uint32> FGGPANADLKM = 2;
-    uint32 difficulty_level = 5;
+    repeated EBBJLHBAGCJ FPMBJMDNPBM = 3;
     uint32 area_id = 4;
+    uint32 difficulty = 5;
 }

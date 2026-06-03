@@ -6,7 +6,7 @@ import "HJFCEEBAGMF.proto";
 import "ItemList.proto";
 
 message FateSettleScNotify {
-    HJFCEEBAGMF LNBBPPKLBFA = 6;
-    ItemList reward = 15;
+    HJFCEEBAGMF LNBBPPKLBFA = 1;
+    ItemList reward = 7;
     uint32 score_id = 12;
 }

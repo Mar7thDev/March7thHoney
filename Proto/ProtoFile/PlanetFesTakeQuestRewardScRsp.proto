@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IKMLLJNNKJB.proto";
 
 message PlanetFesTakeQuestRewardScRsp {
-    IKMLLJNNKJB JMBFMMPAAAO = 3;
-    uint32 retcode = 12;
-    uint32 quest_id = 8;
+    uint32 quest_id = 3;
+    IKMLLJNNKJB JMBFMMPAAAO = 7;
+    uint32 retcode = 9;
 }

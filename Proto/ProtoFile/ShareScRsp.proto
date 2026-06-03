@@ -6,7 +6,7 @@ import "BCBHFBPADEE.proto";
 import "ItemList.proto";
 
 message ShareScRsp {
-    BCBHFBPADEE NMOKJJMNICM = 13;
-    ItemList reward = 2;
-    uint32 retcode = 12;
+    uint32 retcode = 8;
+    ItemList reward = 13;
+    BCBHFBPADEE NMOKJJMNICM = 15;
 }

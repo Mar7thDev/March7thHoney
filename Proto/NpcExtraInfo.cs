@@ -26,9 +26,9 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChJOcGNFeHRyYUluZm8ucHJvdG8aEU1IR0FPTENET05LLnByb3RvGhZOcGNS",
             "b2d1ZUdhbWVJbmZvLnByb3RvGhFQQUdPSENKR09MQy5wcm90byKVAQoMTnBj",
-            "RXh0cmFJbmZvEiwKD3JvZ3VlX2dhbWVfaW5mbxgHIAEoCzIRLk5wY1JvZ3Vl",
-            "R2FtZUluZm9IABIjCgtNQkxGRklLR01PUBgOIAEoCzIMLlBBR09IQ0pHT0xD",
-            "SAASIwoLREtQRkhMQkZGSEkYBCABKAsyDC5NSEdBT0xDRE9OS0gAQg0KC0tL",
+            "RXh0cmFJbmZvEiwKD3JvZ3VlX2dhbWVfaW5mbxgPIAEoCzIRLk5wY1JvZ3Vl",
+            "R2FtZUluZm9IABIjCgtNQkxGRklLR01PUBgKIAEoCzIMLlBBR09IQ0pHT0xD",
+            "SAASIwoLREtQRkhMQkZGSEkYCCABKAsyDC5NSEdBT0xDRE9OS0gAQg0KC0tL",
             "TkJPQUNOQ09OQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MHGAOLCDONKReflection.Descriptor, global::March7thHoney.Proto.NpcRogueGameInfoReflection.Descriptor, global::March7thHoney.Proto.PAGOHCJGOLCReflection.Descriptor, },
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "rogue_game_info" field.</summary>
-    public const int RogueGameInfoFieldNumber = 7;
+    public const int RogueGameInfoFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.NpcRogueGameInfo RogueGameInfo {
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MBLFFIKGMOP" field.</summary>
-    public const int MBLFFIKGMOPFieldNumber = 14;
+    public const int MBLFFIKGMOPFieldNumber = 10;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.PAGOHCJGOLC MBLFFIKGMOP {
@@ -121,7 +121,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "DKPFHLBFFHI" field.</summary>
-    public const int DKPFHLBFFHIFieldNumber = 4;
+    public const int DKPFHLBFFHIFieldNumber = 8;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.MHGAOLCDONK DKPFHLBFFHI {
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
     public enum KKNBOACNCONOneofCase {
       None = 0,
-      RogueGameInfo = 7,
-      MBLFFIKGMOP = 14,
-      DKPFHLBFFHI = 4,
+      RogueGameInfo = 15,
+      MBLFFIKGMOP = 10,
+      DKPFHLBFFHI = 8,
     }
     private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -203,16 +203,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(DKPFHLBFFHI);
       }
-      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
-        output.WriteRawTag(58);
-        output.WriteMessage(RogueGameInfo);
-      }
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(82);
         output.WriteMessage(MBLFFIKGMOP);
+      }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
+        output.WriteRawTag(122);
+        output.WriteMessage(RogueGameInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -225,16 +225,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(66);
         output.WriteMessage(DKPFHLBFFHI);
       }
-      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
-        output.WriteRawTag(58);
-        output.WriteMessage(RogueGameInfo);
-      }
       if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(82);
         output.WriteMessage(MBLFFIKGMOP);
+      }
+      if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
+        output.WriteRawTag(122);
+        output.WriteMessage(RogueGameInfo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -307,7 +307,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 66: {
             global::March7thHoney.Proto.MHGAOLCDONK subBuilder = new global::March7thHoney.Proto.MHGAOLCDONK();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
               subBuilder.MergeFrom(DKPFHLBFFHI);
@@ -316,22 +316,22 @@ namespace March7thHoney.Proto {
             DKPFHLBFFHI = subBuilder;
             break;
           }
-          case 58: {
-            global::March7thHoney.Proto.NpcRogueGameInfo subBuilder = new global::March7thHoney.Proto.NpcRogueGameInfo();
-            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
-              subBuilder.MergeFrom(RogueGameInfo);
-            }
-            input.ReadMessage(subBuilder);
-            RogueGameInfo = subBuilder;
-            break;
-          }
-          case 114: {
+          case 82: {
             global::March7thHoney.Proto.PAGOHCJGOLC subBuilder = new global::March7thHoney.Proto.PAGOHCJGOLC();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
               subBuilder.MergeFrom(MBLFFIKGMOP);
             }
             input.ReadMessage(subBuilder);
             MBLFFIKGMOP = subBuilder;
+            break;
+          }
+          case 122: {
+            global::March7thHoney.Proto.NpcRogueGameInfo subBuilder = new global::March7thHoney.Proto.NpcRogueGameInfo();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
+              subBuilder.MergeFrom(RogueGameInfo);
+            }
+            input.ReadMessage(subBuilder);
+            RogueGameInfo = subBuilder;
             break;
           }
         }
@@ -353,7 +353,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 66: {
             global::March7thHoney.Proto.MHGAOLCDONK subBuilder = new global::March7thHoney.Proto.MHGAOLCDONK();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.DKPFHLBFFHI) {
               subBuilder.MergeFrom(DKPFHLBFFHI);
@@ -362,22 +362,22 @@ namespace March7thHoney.Proto {
             DKPFHLBFFHI = subBuilder;
             break;
           }
-          case 58: {
-            global::March7thHoney.Proto.NpcRogueGameInfo subBuilder = new global::March7thHoney.Proto.NpcRogueGameInfo();
-            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
-              subBuilder.MergeFrom(RogueGameInfo);
-            }
-            input.ReadMessage(subBuilder);
-            RogueGameInfo = subBuilder;
-            break;
-          }
-          case 114: {
+          case 82: {
             global::March7thHoney.Proto.PAGOHCJGOLC subBuilder = new global::March7thHoney.Proto.PAGOHCJGOLC();
             if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.MBLFFIKGMOP) {
               subBuilder.MergeFrom(MBLFFIKGMOP);
             }
             input.ReadMessage(subBuilder);
             MBLFFIKGMOP = subBuilder;
+            break;
+          }
+          case 122: {
+            global::March7thHoney.Proto.NpcRogueGameInfo subBuilder = new global::March7thHoney.Proto.NpcRogueGameInfo();
+            if (kKNBOACNCONCase_ == KKNBOACNCONOneofCase.RogueGameInfo) {
+              subBuilder.MergeFrom(RogueGameInfo);
+            }
+            input.ReadMessage(subBuilder);
+            RogueGameInfo = subBuilder;
             break;
           }
         }

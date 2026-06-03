@@ -6,10 +6,9 @@ import "FKNKNLGMACL.proto";
 import "MessageChatData.proto";
 
 message AiPamSendMsgCsReq {
-    MessageChatData message_datas = 15;
-    string NJFMDJDMDMA = 3;
-    FKNKNLGMACL BDPIMPJOJBK = 14;
-    bool GFIJJLNOOOM = 1;
-    bool CLDBFBNOLNP = 4;
-    bool LOODCBCFNMJ = 12;
+    MessageChatData content = 1;
+    bool GFIJJLNOOOM = 4;
+    bool CLDBFBNOLNP = 6;
+    FKNKNLGMACL role = 8;
+    bool LOODCBCFNMJ = 9;
 }

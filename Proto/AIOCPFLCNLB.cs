@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFBSU9DUEZMQ05MQi5wcm90bxoRSURCQ0RISU9LRUcucHJvdG8iaAoLQUlP",
-            "Q1BGTENOTEISIQoLRk9PTUlQSkpLT0cYAiADKAsyDC5JREJDREhJT0tFRxIQ",
-            "Cghwcm9ncmVzcxgHIAEoDRIPCgdhcmVhX2lkGAwgASgNEhMKC0dLRU5GQ0xM",
+            "Q1BGTENOTEISIQoLRk9PTUlQSkpLT0cYASADKAsyDC5JREJDREhJT0tFRxIQ",
+            "Cghwcm9ncmVzcxgCIAEoDRIPCgdhcmVhX2lkGAcgASgNEhMKC0dLRU5GQ0xM",
             "TEpDGAogASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.IDBCDHIOKEGReflection.Descriptor, },
@@ -87,9 +87,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FOOMIPJJKOG" field.</summary>
-    public const int FOOMIPJJKOGFieldNumber = 2;
+    public const int FOOMIPJJKOGFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.IDBCDHIOKEG> _repeated_fOOMIPJJKOG_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.IDBCDHIOKEG.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.IDBCDHIOKEG.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.IDBCDHIOKEG> fOOMIPJJKOG_ = new pbc::RepeatedField<global::March7thHoney.Proto.IDBCDHIOKEG>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "progress" field.</summary>
-    public const int ProgressFieldNumber = 7;
+    public const int ProgressFieldNumber = 2;
     private uint progress_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "area_id" field.</summary>
-    public const int AreaIdFieldNumber = 12;
+    public const int AreaIdFieldNumber = 7;
     private uint areaId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -183,16 +183,16 @@ namespace March7thHoney.Proto {
     #else
       fOOMIPJJKOG_.WriteTo(output, _repeated_fOOMIPJJKOG_codec);
       if (Progress != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(16);
         output.WriteUInt32(Progress);
+      }
+      if (AreaId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(AreaId);
       }
       if (GKENFCLLLJC != 0) {
         output.WriteRawTag(80);
         output.WriteUInt32(GKENFCLLLJC);
-      }
-      if (AreaId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -206,16 +206,16 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       fOOMIPJJKOG_.WriteTo(ref output, _repeated_fOOMIPJJKOG_codec);
       if (Progress != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(16);
         output.WriteUInt32(Progress);
+      }
+      if (AreaId != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(AreaId);
       }
       if (GKENFCLLLJC != 0) {
         output.WriteRawTag(80);
         output.WriteUInt32(GKENFCLLLJC);
-      }
-      if (AreaId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(AreaId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -278,20 +278,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 10: {
             fOOMIPJJKOG_.AddEntriesFrom(input, _repeated_fOOMIPJJKOG_codec);
             break;
           }
-          case 56: {
+          case 16: {
             Progress = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            AreaId = input.ReadUInt32();
             break;
           }
           case 80: {
             GKENFCLLLJC = input.ReadUInt32();
-            break;
-          }
-          case 96: {
-            AreaId = input.ReadUInt32();
             break;
           }
         }
@@ -313,20 +313,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 10: {
             fOOMIPJJKOG_.AddEntriesFrom(ref input, _repeated_fOOMIPJJKOG_codec);
             break;
           }
-          case 56: {
+          case 16: {
             Progress = input.ReadUInt32();
+            break;
+          }
+          case 56: {
+            AreaId = input.ReadUInt32();
             break;
           }
           case 80: {
             GKENFCLLLJC = input.ReadUInt32();
-            break;
-          }
-          case 96: {
-            AreaId = input.ReadUInt32();
             break;
           }
         }

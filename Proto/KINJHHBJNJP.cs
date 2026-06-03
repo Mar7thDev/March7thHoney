@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static KINJHHBJNJPReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFLSU5KSEhCSk5KUC5wcm90byJECgtLSU5KSEhCSk5KUBIQCgh0cmFpdF9p",
-            "ZBgEIAEoDRITCgtLT0pGSEZBS0tGTxgKIAEoDRIOCgZkYW1hZ2UYDCABKAFC",
-            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFLSU5KSEhCSk5KUC5wcm90byI+CgtLSU5KSEhCSk5KUBIQCgh0cmFpdF9p",
+            "ZBgHIAEoDRINCgVsYXllchgJIAEoDRIOCgZkYW1hZ2UYDSABKAFCFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KINJHHBJNJP), global::March7thHoney.Proto.KINJHHBJNJP.Parser, new[]{ "TraitId", "KOJFHFAKKFO", "Damage" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KINJHHBJNJP), global::March7thHoney.Proto.KINJHHBJNJP.Parser, new[]{ "TraitId", "Layer", "Damage" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KINJHHBJNJP(KINJHHBJNJP other) : this() {
       traitId_ = other.traitId_;
-      kOJFHFAKKFO_ = other.kOJFHFAKKFO_;
+      layer_ = other.layer_;
       damage_ = other.damage_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "trait_id" field.</summary>
-    public const int TraitIdFieldNumber = 4;
+    public const int TraitIdFieldNumber = 7;
     private uint traitId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,20 +96,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "KOJFHFAKKFO" field.</summary>
-    public const int KOJFHFAKKFOFieldNumber = 10;
-    private uint kOJFHFAKKFO_;
+    /// <summary>Field number for the "layer" field.</summary>
+    public const int LayerFieldNumber = 9;
+    private uint layer_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint KOJFHFAKKFO {
-      get { return kOJFHFAKKFO_; }
+    public uint Layer {
+      get { return layer_; }
       set {
-        kOJFHFAKKFO_ = value;
+        layer_ = value;
       }
     }
 
     /// <summary>Field number for the "damage" field.</summary>
-    public const int DamageFieldNumber = 12;
+    public const int DamageFieldNumber = 13;
     private double damage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,7 +136,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (TraitId != other.TraitId) return false;
-      if (KOJFHFAKKFO != other.KOJFHFAKKFO) return false;
+      if (Layer != other.Layer) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Damage, other.Damage)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,7 +146,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (TraitId != 0) hash ^= TraitId.GetHashCode();
-      if (KOJFHFAKKFO != 0) hash ^= KOJFHFAKKFO.GetHashCode();
+      if (Layer != 0) hash ^= Layer.GetHashCode();
       if (Damage != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Damage);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,15 +167,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (TraitId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(TraitId);
       }
-      if (KOJFHFAKKFO != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(KOJFHFAKKFO);
+      if (Layer != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Layer);
       }
       if (Damage != 0D) {
-        output.WriteRawTag(97);
+        output.WriteRawTag(105);
         output.WriteDouble(Damage);
       }
       if (_unknownFields != null) {
@@ -189,15 +189,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (TraitId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(TraitId);
       }
-      if (KOJFHFAKKFO != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(KOJFHFAKKFO);
+      if (Layer != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Layer);
       }
       if (Damage != 0D) {
-        output.WriteRawTag(97);
+        output.WriteRawTag(105);
         output.WriteDouble(Damage);
       }
       if (_unknownFields != null) {
@@ -213,8 +213,8 @@ namespace March7thHoney.Proto {
       if (TraitId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TraitId);
       }
-      if (KOJFHFAKKFO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KOJFHFAKKFO);
+      if (Layer != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Layer);
       }
       if (Damage != 0D) {
         size += 1 + 8;
@@ -234,8 +234,8 @@ namespace March7thHoney.Proto {
       if (other.TraitId != 0) {
         TraitId = other.TraitId;
       }
-      if (other.KOJFHFAKKFO != 0) {
-        KOJFHFAKKFO = other.KOJFHFAKKFO;
+      if (other.Layer != 0) {
+        Layer = other.Layer;
       }
       if (other.Damage != 0D) {
         Damage = other.Damage;
@@ -259,15 +259,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 56: {
             TraitId = input.ReadUInt32();
             break;
           }
-          case 80: {
-            KOJFHFAKKFO = input.ReadUInt32();
+          case 72: {
+            Layer = input.ReadUInt32();
             break;
           }
-          case 97: {
+          case 105: {
             Damage = input.ReadDouble();
             break;
           }
@@ -290,15 +290,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 56: {
             TraitId = input.ReadUInt32();
             break;
           }
-          case 80: {
-            KOJFHFAKKFO = input.ReadUInt32();
+          case 72: {
+            Layer = input.ReadUInt32();
             break;
           }
-          case 97: {
+          case 105: {
             Damage = input.ReadDouble();
             break;
           }

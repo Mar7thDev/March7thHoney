@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FEGKCMBHHJP {
-    uint32 FGFFLBHLKDF = 1;
-    uint32 level = 8;
+    uint32 level = 2;
+    uint32 FGFFLBHLKDF = 7;
 }

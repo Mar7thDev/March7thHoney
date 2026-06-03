@@ -6,6 +6,6 @@ import "ChatData.proto";
 import "MsgType.proto";
 
 message MessageChatData {
-    ChatData chat_data = 2;
     MsgType message_type = 1;
+    ChatData chat_data = 2;
 }

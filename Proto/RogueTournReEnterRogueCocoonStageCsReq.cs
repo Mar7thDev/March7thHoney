@@ -25,13 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CixSb2d1ZVRvdXJuUmVFbnRlclJvZ3VlQ29jb29uU3RhZ2VDc1JlcS5wcm90",
-            "byI9CiZSb2d1ZVRvdXJuUmVFbnRlclJvZ3VlQ29jb29uU3RhZ2VDc1JlcRIT",
-            "CgtGREVLS09LQkRJQxgDIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "byIoCiZSb2d1ZVRvdXJuUmVFbnRlclJvZ3VlQ29jb29uU3RhZ2VDc1JlcUIW",
+            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueTournReEnterRogueCocoonStageCsReq), global::March7thHoney.Proto.RogueTournReEnterRogueCocoonStageCsReq.Parser, new[]{ "FDEKKOKBDIC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RogueTournReEnterRogueCocoonStageCsReq), global::March7thHoney.Proto.RogueTournReEnterRogueCocoonStageCsReq.Parser, null, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +72,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RogueTournReEnterRogueCocoonStageCsReq(RogueTournReEnterRogueCocoonStageCsReq other) : this() {
-      fDEKKOKBDIC_ = other.fDEKKOKBDIC_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +79,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RogueTournReEnterRogueCocoonStageCsReq Clone() {
       return new RogueTournReEnterRogueCocoonStageCsReq(this);
-    }
-
-    /// <summary>Field number for the "FDEKKOKBDIC" field.</summary>
-    public const int FDEKKOKBDICFieldNumber = 3;
-    private bool fDEKKOKBDIC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool FDEKKOKBDIC {
-      get { return fDEKKOKBDIC_; }
-      set {
-        fDEKKOKBDIC_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -110,7 +96,6 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FDEKKOKBDIC != other.FDEKKOKBDIC) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -118,7 +103,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FDEKKOKBDIC != false) hash ^= FDEKKOKBDIC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -137,10 +121,6 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (FDEKKOKBDIC != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(FDEKKOKBDIC);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -151,10 +131,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (FDEKKOKBDIC != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(FDEKKOKBDIC);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -165,9 +141,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FDEKKOKBDIC != false) {
-        size += 1 + 1;
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -179,9 +152,6 @@ namespace March7thHoney.Proto {
     public void MergeFrom(RogueTournReEnterRogueCocoonStageCsReq other) {
       if (other == null) {
         return;
-      }
-      if (other.FDEKKOKBDIC != false) {
-        FDEKKOKBDIC = other.FDEKKOKBDIC;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -202,10 +172,6 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            FDEKKOKBDIC = input.ReadBool();
-            break;
-          }
         }
       }
     #endif
@@ -225,10 +191,6 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            FDEKKOKBDIC = input.ReadBool();
-            break;
-          }
         }
       }
     }

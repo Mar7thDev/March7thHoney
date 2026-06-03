@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "IBKDHOIDKJA.proto";
 
 message PlayerReturnInfoQueryScRsp {
-    IBKDHOIDKJA NAJPHJOFGBB = 12;
-    uint32 retcode = 8;
-    uint32 HDGPODMDLBL = 9;
+    IBKDHOIDKJA NAJPHJOFGBB = 2;
+    uint32 retcode = 5;
+    uint32 HDGPODMDLBL = 15;
 }

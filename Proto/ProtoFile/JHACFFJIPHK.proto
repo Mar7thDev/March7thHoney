@@ -6,12 +6,12 @@ import "NCFKHDIKCNI.proto";
 import "PlanetFesQuestState.proto";
 
 message JHACFFJIPHK {
-    uint32 DPCHGMMCKNN = 14;
-    uint32 quest_id = 6;
-    PlanetFesQuestState status = 3;
-    uint32 progress = 4;
+    PlanetFesQuestState status = 5;
+    uint32 progress = 7;
+    uint32 DPCHGMMCKNN = 10;
+    uint32 quest_id = 11;
     oneof JCPHPAHKPDD {
-        uint32 MCNLMNOKAFF = 10;
-        NCFKHDIKCNI KNOCPAJCPJC = 2;
+        uint32 MCNLMNOKAFF = 2;
+        NCFKHDIKCNI KNOCPAJCPJC = 15;
     }
 }

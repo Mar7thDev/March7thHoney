@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static CEDCMIMKJHKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDRURDTUlNS0pISy5wcm90byI1CgtDRURDTUlNS0pISxIRCglhdmF0YXJf",
-            "aWQYCCABKA0SEwoLRkVCS01PQ09KTEUYDCABKAhCFqoCE01hcmNoN3RoSG9u",
-            "ZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFDRURDTUlNS0pISy5wcm90byIxCgtDRURDTUlNS0pISxIRCglhdmF0YXJf",
+            "aWQYCyABKA0SDwoHaXNfb3BlbhgMIAEoCEIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CEDCMIMKJHK), global::March7thHoney.Proto.CEDCMIMKJHK.Parser, new[]{ "AvatarId", "FEBKMOCOJLE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CEDCMIMKJHK), global::March7thHoney.Proto.CEDCMIMKJHK.Parser, new[]{ "AvatarId", "IsOpen" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CEDCMIMKJHK(CEDCMIMKJHK other) : this() {
       avatarId_ = other.avatarId_;
-      fEBKMOCOJLE_ = other.fEBKMOCOJLE_;
+      isOpen_ = other.isOpen_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 8;
+    public const int AvatarIdFieldNumber = 11;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "FEBKMOCOJLE" field.</summary>
-    public const int FEBKMOCOJLEFieldNumber = 12;
-    private bool fEBKMOCOJLE_;
+    /// <summary>Field number for the "is_open" field.</summary>
+    public const int IsOpenFieldNumber = 12;
+    private bool isOpen_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool FEBKMOCOJLE {
-      get { return fEBKMOCOJLE_; }
+    public bool IsOpen {
+      get { return isOpen_; }
       set {
-        fEBKMOCOJLE_ = value;
+        isOpen_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (AvatarId != other.AvatarId) return false;
-      if (FEBKMOCOJLE != other.FEBKMOCOJLE) return false;
+      if (IsOpen != other.IsOpen) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
-      if (FEBKMOCOJLE != false) hash ^= FEBKMOCOJLE.GetHashCode();
+      if (IsOpen != false) hash ^= IsOpen.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (AvatarId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(AvatarId);
       }
-      if (FEBKMOCOJLE != false) {
+      if (IsOpen != false) {
         output.WriteRawTag(96);
-        output.WriteBool(FEBKMOCOJLE);
+        output.WriteBool(IsOpen);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (AvatarId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(AvatarId);
       }
-      if (FEBKMOCOJLE != false) {
+      if (IsOpen != false) {
         output.WriteRawTag(96);
-        output.WriteBool(FEBKMOCOJLE);
+        output.WriteBool(IsOpen);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
-      if (FEBKMOCOJLE != false) {
+      if (IsOpen != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
       }
-      if (other.FEBKMOCOJLE != false) {
-        FEBKMOCOJLE = other.FEBKMOCOJLE;
+      if (other.IsOpen != false) {
+        IsOpen = other.IsOpen;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
+          case 88: {
             AvatarId = input.ReadUInt32();
             break;
           }
           case 96: {
-            FEBKMOCOJLE = input.ReadBool();
+            IsOpen = input.ReadBool();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
+          case 88: {
             AvatarId = input.ReadUInt32();
             break;
           }
           case 96: {
-            FEBKMOCOJLE = input.ReadBool();
+            IsOpen = input.ReadBool();
             break;
           }
         }

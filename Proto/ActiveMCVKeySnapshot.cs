@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpBY3RpdmVNQ1ZLZXlTbmFwc2hvdC5wcm90byJAChRBY3RpdmVNQ1ZLZXlT",
-            "bmFwc2hvdBIPCgdtY3Zfa2V5GAIgASgJEhcKD21haW5fbWlzc2lvbl9pZBgB",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "bmFwc2hvdBIXCg9tYWluX21pc3Npb25faWQYASABKA0SDwoHbWN2X2tleRgC",
+            "IAEoCUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ActiveMCVKeySnapshot), global::March7thHoney.Proto.ActiveMCVKeySnapshot.Parser, new[]{ "McvKey", "MainMissionId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ActiveMCVKeySnapshot), global::March7thHoney.Proto.ActiveMCVKeySnapshot.Parser, new[]{ "MainMissionId", "McvKey" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ActiveMCVKeySnapshot(ActiveMCVKeySnapshot other) : this() {
-      mcvKey_ = other.mcvKey_;
       mainMissionId_ = other.mainMissionId_;
+      mcvKey_ = other.mcvKey_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,18 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ActiveMCVKeySnapshot Clone() {
       return new ActiveMCVKeySnapshot(this);
-    }
-
-    /// <summary>Field number for the "mcv_key" field.</summary>
-    public const int McvKeyFieldNumber = 2;
-    private string mcvKey_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string McvKey {
-      get { return mcvKey_; }
-      set {
-        mcvKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
     }
 
     /// <summary>Field number for the "main_mission_id" field.</summary>
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return mainMissionId_; }
       set {
         mainMissionId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "mcv_key" field.</summary>
+    public const int McvKeyFieldNumber = 2;
+    private string mcvKey_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string McvKey {
+      get { return mcvKey_; }
+      set {
+        mcvKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (McvKey != other.McvKey) return false;
       if (MainMissionId != other.MainMissionId) return false;
+      if (McvKey != other.McvKey) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (McvKey.Length != 0) hash ^= McvKey.GetHashCode();
       if (MainMissionId != 0) hash ^= MainMissionId.GetHashCode();
+      if (McvKey.Length != 0) hash ^= McvKey.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (McvKey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(McvKey);
-      }
       if (MainMissionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainMissionId);
+      }
+      if (McvKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(McvKey);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.McvKey.Length != 0) {
-        McvKey = other.McvKey;
-      }
       if (other.MainMissionId != 0) {
         MainMissionId = other.MainMissionId;
+      }
+      if (other.McvKey.Length != 0) {
+        McvKey = other.McvKey;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

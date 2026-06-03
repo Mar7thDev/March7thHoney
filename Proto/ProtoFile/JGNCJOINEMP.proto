@@ -6,9 +6,9 @@ import "BPDKJKJGECM.proto";
 import "LIKNJLCIAGI.proto";
 
 message JGNCJOINEMP {
-    LIKNJLCIAGI pos_index = 11;
-    BPDKJKJGECM GJBOKLDCKEG = 13;
-    uint32 CFKKNEHABHH = 4;
-    int32 unique_id = 9;
-    bool BHPCOAPAGMA = 2;
+    LIKNJLCIAGI pos = 2;
+    bool BHPCOAPAGMA = 5;
+    BPDKJKJGECM shape = 7;
+    uint32 show_type = 8;
+    int32 unique_id = 11;
 }

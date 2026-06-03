@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChBDbGllbnRNYWlsLnByb3RvGg5JdGVtTGlzdC5wcm90bxoOTWFpbFR5cGUu",
-            "cHJvdG8i4QEKCkNsaWVudE1haWwSDQoFdGl0bGUYCyABKAkSDgoGc2VuZGVy",
-            "GAogASgJEhEKCXBhcmFfbGlzdBgDIAMoCRIPCgdjb250ZW50GA8gASgJEh0K",
-            "CmF0dGFjaG1lbnQYCCABKAsyCS5JdGVtTGlzdBIMCgR0aW1lGAUgASgDEhwK",
-            "CW1haWxfdHlwZRgEIAEoDjIJLk1haWxUeXBlEgoKAmlkGA0gASgNEhMKC2V4",
-            "cGlyZV90aW1lGAYgASgDEhMKC3RlbXBsYXRlX2lkGAwgASgNEg8KB2lzX3Jl",
-            "YWQYAiABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "cHJvdG8i4QEKCkNsaWVudE1haWwSCgoCaWQYASABKA0SEwoLZXhwaXJlX3Rp",
+            "bWUYAiABKAMSDwoHaXNfcmVhZBgDIAEoCBIPCgdjb250ZW50GAQgASgJEg0K",
+            "BXRpdGxlGAUgASgJEhwKCW1haWxfdHlwZRgGIAEoDjIJLk1haWxUeXBlEh0K",
+            "CmF0dGFjaG1lbnQYCCABKAsyCS5JdGVtTGlzdBIMCgR0aW1lGAkgASgDEg4K",
+            "BnNlbmRlchgLIAEoCRITCgt0ZW1wbGF0ZV9pZBgMIAEoDRIRCglwYXJhX2xp",
+            "c3QYDyADKAlCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, global::March7thHoney.Proto.MailTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientMail), global::March7thHoney.Proto.ClientMail.Parser, new[]{ "Title", "Sender", "ParaList", "Content", "Attachment", "Time", "MailType", "Id", "ExpireTime", "TemplateId", "IsRead" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ClientMail), global::March7thHoney.Proto.ClientMail.Parser, new[]{ "Id", "ExpireTime", "IsRead", "Content", "Title", "MailType", "Attachment", "Time", "Sender", "TemplateId", "ParaList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,17 +76,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ClientMail(ClientMail other) : this() {
-      title_ = other.title_;
-      sender_ = other.sender_;
-      paraList_ = other.paraList_.Clone();
-      content_ = other.content_;
-      attachment_ = other.attachment_ != null ? other.attachment_.Clone() : null;
-      time_ = other.time_;
-      mailType_ = other.mailType_;
       id_ = other.id_;
       expireTime_ = other.expireTime_;
-      templateId_ = other.templateId_;
       isRead_ = other.isRead_;
+      content_ = other.content_;
+      title_ = other.title_;
+      mailType_ = other.mailType_;
+      attachment_ = other.attachment_ != null ? other.attachment_.Clone() : null;
+      time_ = other.time_;
+      sender_ = other.sender_;
+      templateId_ = other.templateId_;
+      paraList_ = other.paraList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -96,8 +96,56 @@ namespace March7thHoney.Proto {
       return new ClientMail(this);
     }
 
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private uint id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "expire_time" field.</summary>
+    public const int ExpireTimeFieldNumber = 2;
+    private long expireTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ExpireTime {
+      get { return expireTime_; }
+      set {
+        expireTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_read" field.</summary>
+    public const int IsReadFieldNumber = 3;
+    private bool isRead_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsRead {
+      get { return isRead_; }
+      set {
+        isRead_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "content" field.</summary>
+    public const int ContentFieldNumber = 4;
+    private string content_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Content {
+      get { return content_; }
+      set {
+        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "title" field.</summary>
-    public const int TitleFieldNumber = 11;
+    public const int TitleFieldNumber = 5;
     private string title_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,38 +156,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "sender" field.</summary>
-    public const int SenderFieldNumber = 10;
-    private string sender_ = "";
+    /// <summary>Field number for the "mail_type" field.</summary>
+    public const int MailTypeFieldNumber = 6;
+    private global::March7thHoney.Proto.MailType mailType_ = global::March7thHoney.Proto.MailType.Normal;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Sender {
-      get { return sender_; }
+    public global::March7thHoney.Proto.MailType MailType {
+      get { return mailType_; }
       set {
-        sender_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "para_list" field.</summary>
-    public const int ParaListFieldNumber = 3;
-    private static readonly pb::FieldCodec<string> _repeated_paraList_codec
-        = pb::FieldCodec.ForString(26);
-    private readonly pbc::RepeatedField<string> paraList_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> ParaList {
-      get { return paraList_; }
-    }
-
-    /// <summary>Field number for the "content" field.</summary>
-    public const int ContentFieldNumber = 15;
-    private string content_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Content {
-      get { return content_; }
-      set {
-        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        mailType_ = value;
       }
     }
 
@@ -156,7 +181,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "time" field.</summary>
-    public const int TimeFieldNumber = 5;
+    public const int TimeFieldNumber = 9;
     private long time_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,39 +192,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "mail_type" field.</summary>
-    public const int MailTypeFieldNumber = 4;
-    private global::March7thHoney.Proto.MailType mailType_ = global::March7thHoney.Proto.MailType.Normal;
+    /// <summary>Field number for the "sender" field.</summary>
+    public const int SenderFieldNumber = 11;
+    private string sender_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MailType MailType {
-      get { return mailType_; }
+    public string Sender {
+      get { return sender_; }
       set {
-        mailType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 13;
-    private uint id_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Id {
-      get { return id_; }
-      set {
-        id_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "expire_time" field.</summary>
-    public const int ExpireTimeFieldNumber = 6;
-    private long expireTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long ExpireTime {
-      get { return expireTime_; }
-      set {
-        expireTime_ = value;
+        sender_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -215,16 +216,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "is_read" field.</summary>
-    public const int IsReadFieldNumber = 2;
-    private bool isRead_;
+    /// <summary>Field number for the "para_list" field.</summary>
+    public const int ParaListFieldNumber = 15;
+    private static readonly pb::FieldCodec<string> _repeated_paraList_codec
+        = pb::FieldCodec.ForString(122);
+    private readonly pbc::RepeatedField<string> paraList_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsRead {
-      get { return isRead_; }
-      set {
-        isRead_ = value;
-      }
+    public pbc::RepeatedField<string> ParaList {
+      get { return paraList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -242,17 +242,17 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Title != other.Title) return false;
-      if (Sender != other.Sender) return false;
-      if(!paraList_.Equals(other.paraList_)) return false;
-      if (Content != other.Content) return false;
-      if (!object.Equals(Attachment, other.Attachment)) return false;
-      if (Time != other.Time) return false;
-      if (MailType != other.MailType) return false;
       if (Id != other.Id) return false;
       if (ExpireTime != other.ExpireTime) return false;
-      if (TemplateId != other.TemplateId) return false;
       if (IsRead != other.IsRead) return false;
+      if (Content != other.Content) return false;
+      if (Title != other.Title) return false;
+      if (MailType != other.MailType) return false;
+      if (!object.Equals(Attachment, other.Attachment)) return false;
+      if (Time != other.Time) return false;
+      if (Sender != other.Sender) return false;
+      if (TemplateId != other.TemplateId) return false;
+      if(!paraList_.Equals(other.paraList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -260,17 +260,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Title.Length != 0) hash ^= Title.GetHashCode();
-      if (Sender.Length != 0) hash ^= Sender.GetHashCode();
-      hash ^= paraList_.GetHashCode();
-      if (Content.Length != 0) hash ^= Content.GetHashCode();
-      if (attachment_ != null) hash ^= Attachment.GetHashCode();
-      if (Time != 0L) hash ^= Time.GetHashCode();
-      if (MailType != global::March7thHoney.Proto.MailType.Normal) hash ^= MailType.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (ExpireTime != 0L) hash ^= ExpireTime.GetHashCode();
-      if (TemplateId != 0) hash ^= TemplateId.GetHashCode();
       if (IsRead != false) hash ^= IsRead.GetHashCode();
+      if (Content.Length != 0) hash ^= Content.GetHashCode();
+      if (Title.Length != 0) hash ^= Title.GetHashCode();
+      if (MailType != global::March7thHoney.Proto.MailType.Normal) hash ^= MailType.GetHashCode();
+      if (attachment_ != null) hash ^= Attachment.GetHashCode();
+      if (Time != 0L) hash ^= Time.GetHashCode();
+      if (Sender.Length != 0) hash ^= Sender.GetHashCode();
+      if (TemplateId != 0) hash ^= TemplateId.GetHashCode();
+      hash ^= paraList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -289,47 +289,47 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsRead != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsRead);
-      }
-      paraList_.WriteTo(output, _repeated_paraList_codec);
-      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) MailType);
-      }
-      if (Time != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(Time);
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Id);
       }
       if (ExpireTime != 0L) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(16);
         output.WriteInt64(ExpireTime);
+      }
+      if (IsRead != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsRead);
+      }
+      if (Content.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Content);
+      }
+      if (Title.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Title);
+      }
+      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) MailType);
       }
       if (attachment_ != null) {
         output.WriteRawTag(66);
         output.WriteMessage(Attachment);
       }
-      if (Sender.Length != 0) {
-        output.WriteRawTag(82);
-        output.WriteString(Sender);
+      if (Time != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(Time);
       }
-      if (Title.Length != 0) {
+      if (Sender.Length != 0) {
         output.WriteRawTag(90);
-        output.WriteString(Title);
+        output.WriteString(Sender);
       }
       if (TemplateId != 0) {
         output.WriteRawTag(96);
         output.WriteUInt32(TemplateId);
       }
-      if (Id != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Id);
-      }
-      if (Content.Length != 0) {
-        output.WriteRawTag(122);
-        output.WriteString(Content);
-      }
+      paraList_.WriteTo(output, _repeated_paraList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -340,47 +340,47 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsRead != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsRead);
-      }
-      paraList_.WriteTo(ref output, _repeated_paraList_codec);
-      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) MailType);
-      }
-      if (Time != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(Time);
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Id);
       }
       if (ExpireTime != 0L) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(16);
         output.WriteInt64(ExpireTime);
+      }
+      if (IsRead != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsRead);
+      }
+      if (Content.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Content);
+      }
+      if (Title.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Title);
+      }
+      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
+        output.WriteRawTag(48);
+        output.WriteEnum((int) MailType);
       }
       if (attachment_ != null) {
         output.WriteRawTag(66);
         output.WriteMessage(Attachment);
       }
-      if (Sender.Length != 0) {
-        output.WriteRawTag(82);
-        output.WriteString(Sender);
+      if (Time != 0L) {
+        output.WriteRawTag(72);
+        output.WriteInt64(Time);
       }
-      if (Title.Length != 0) {
+      if (Sender.Length != 0) {
         output.WriteRawTag(90);
-        output.WriteString(Title);
+        output.WriteString(Sender);
       }
       if (TemplateId != 0) {
         output.WriteRawTag(96);
         output.WriteUInt32(TemplateId);
       }
-      if (Id != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Id);
-      }
-      if (Content.Length != 0) {
-        output.WriteRawTag(122);
-        output.WriteString(Content);
-      }
+      paraList_.WriteTo(ref output, _repeated_paraList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -391,15 +391,23 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
+      }
+      if (ExpireTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ExpireTime);
+      }
+      if (IsRead != false) {
+        size += 1 + 1;
+      }
+      if (Content.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Content);
+      }
       if (Title.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
       }
-      if (Sender.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Sender);
-      }
-      size += paraList_.CalculateSize(_repeated_paraList_codec);
-      if (Content.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Content);
+      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MailType);
       }
       if (attachment_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Attachment);
@@ -407,21 +415,13 @@ namespace March7thHoney.Proto {
       if (Time != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Time);
       }
-      if (MailType != global::March7thHoney.Proto.MailType.Normal) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MailType);
-      }
-      if (Id != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
-      }
-      if (ExpireTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ExpireTime);
+      if (Sender.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Sender);
       }
       if (TemplateId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TemplateId);
       }
-      if (IsRead != false) {
-        size += 1 + 1;
-      }
+      size += paraList_.CalculateSize(_repeated_paraList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -434,15 +434,23 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      if (other.ExpireTime != 0L) {
+        ExpireTime = other.ExpireTime;
+      }
+      if (other.IsRead != false) {
+        IsRead = other.IsRead;
+      }
+      if (other.Content.Length != 0) {
+        Content = other.Content;
+      }
       if (other.Title.Length != 0) {
         Title = other.Title;
       }
-      if (other.Sender.Length != 0) {
-        Sender = other.Sender;
-      }
-      paraList_.Add(other.paraList_);
-      if (other.Content.Length != 0) {
-        Content = other.Content;
+      if (other.MailType != global::March7thHoney.Proto.MailType.Normal) {
+        MailType = other.MailType;
       }
       if (other.attachment_ != null) {
         if (attachment_ == null) {
@@ -453,21 +461,13 @@ namespace March7thHoney.Proto {
       if (other.Time != 0L) {
         Time = other.Time;
       }
-      if (other.MailType != global::March7thHoney.Proto.MailType.Normal) {
-        MailType = other.MailType;
-      }
-      if (other.Id != 0) {
-        Id = other.Id;
-      }
-      if (other.ExpireTime != 0L) {
-        ExpireTime = other.ExpireTime;
+      if (other.Sender.Length != 0) {
+        Sender = other.Sender;
       }
       if (other.TemplateId != 0) {
         TemplateId = other.TemplateId;
       }
-      if (other.IsRead != false) {
-        IsRead = other.IsRead;
-      }
+      paraList_.Add(other.paraList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -487,24 +487,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            Id = input.ReadUInt32();
+            break;
+          }
           case 16: {
+            ExpireTime = input.ReadInt64();
+            break;
+          }
+          case 24: {
             IsRead = input.ReadBool();
             break;
           }
-          case 26: {
-            paraList_.AddEntriesFrom(input, _repeated_paraList_codec);
+          case 34: {
+            Content = input.ReadString();
             break;
           }
-          case 32: {
-            MailType = (global::March7thHoney.Proto.MailType) input.ReadEnum();
-            break;
-          }
-          case 40: {
-            Time = input.ReadInt64();
+          case 42: {
+            Title = input.ReadString();
             break;
           }
           case 48: {
-            ExpireTime = input.ReadInt64();
+            MailType = (global::March7thHoney.Proto.MailType) input.ReadEnum();
             break;
           }
           case 66: {
@@ -514,24 +518,20 @@ namespace March7thHoney.Proto {
             input.ReadMessage(Attachment);
             break;
           }
-          case 82: {
-            Sender = input.ReadString();
+          case 72: {
+            Time = input.ReadInt64();
             break;
           }
           case 90: {
-            Title = input.ReadString();
+            Sender = input.ReadString();
             break;
           }
           case 96: {
             TemplateId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            Id = input.ReadUInt32();
-            break;
-          }
           case 122: {
-            Content = input.ReadString();
+            paraList_.AddEntriesFrom(input, _repeated_paraList_codec);
             break;
           }
         }
@@ -553,24 +553,28 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 8: {
+            Id = input.ReadUInt32();
+            break;
+          }
           case 16: {
+            ExpireTime = input.ReadInt64();
+            break;
+          }
+          case 24: {
             IsRead = input.ReadBool();
             break;
           }
-          case 26: {
-            paraList_.AddEntriesFrom(ref input, _repeated_paraList_codec);
+          case 34: {
+            Content = input.ReadString();
             break;
           }
-          case 32: {
-            MailType = (global::March7thHoney.Proto.MailType) input.ReadEnum();
-            break;
-          }
-          case 40: {
-            Time = input.ReadInt64();
+          case 42: {
+            Title = input.ReadString();
             break;
           }
           case 48: {
-            ExpireTime = input.ReadInt64();
+            MailType = (global::March7thHoney.Proto.MailType) input.ReadEnum();
             break;
           }
           case 66: {
@@ -580,24 +584,20 @@ namespace March7thHoney.Proto {
             input.ReadMessage(Attachment);
             break;
           }
-          case 82: {
-            Sender = input.ReadString();
+          case 72: {
+            Time = input.ReadInt64();
             break;
           }
           case 90: {
-            Title = input.ReadString();
+            Sender = input.ReadString();
             break;
           }
           case 96: {
             TemplateId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            Id = input.ReadUInt32();
-            break;
-          }
           case 122: {
-            Content = input.ReadString();
+            paraList_.AddEntriesFrom(ref input, _repeated_paraList_codec);
             break;
           }
         }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFHZXRGaXZlRGltTWluaUdhbWVEYXRhQ3NSZXEucHJvdG8iMgobR2V0Rml2",
-            "ZURpbU1pbmlHYW1lRGF0YUNzUmVxEhMKC0VCQUZQT0xMSklBGAUgASgIQhaq",
+            "ZURpbU1pbmlHYW1lRGF0YUNzUmVxEhMKC0VCQUZQT0xMSklBGA0gASgIQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "EBAFPOLLJIA" field.</summary>
-    public const int EBAFPOLLJIAFieldNumber = 5;
+    public const int EBAFPOLLJIAFieldNumber = 13;
     private bool eBAFPOLLJIA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (EBAFPOLLJIA != false) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(104);
         output.WriteBool(EBAFPOLLJIA);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (EBAFPOLLJIA != false) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(104);
         output.WriteBool(EBAFPOLLJIA);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 104: {
             EBAFPOLLJIA = input.ReadBool();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 104: {
             EBAFPOLLJIA = input.ReadBool();
             break;
           }

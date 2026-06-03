@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PCONBOGEDFD {
-    uint32 EDBPMKPHLDK = 5;
     uint32 PKCIADAEICG = 3;
+    uint32 EDBPMKPHLDK = 15;
 }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NJHFBDDHCEN.proto";
 
 message BMOIPALHBJN {
-    repeated NJHFBDDHCEN OGDKJPDFFAI = 11;
-    uint32 shop_id = 7;
+    repeated NJHFBDDHCEN OGDKJPDFFAI = 4;
+    uint32 JOMDKGINNEK = 8;
+    uint32 shop_id = 11;
     uint32 AAIODNCLAIP = 12;
-    uint32 JOMDKGINNEK = 6;
 }

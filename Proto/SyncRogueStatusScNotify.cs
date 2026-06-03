@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1TeW5jUm9ndWVTdGF0dXNTY05vdGlmeS5wcm90bxoRUm9ndWVTdGF0dXMu",
             "cHJvdG8iTAoXU3luY1JvZ3VlU3RhdHVzU2NOb3RpZnkSEwoLQU9CQ0tBQkNI",
-            "R08YCyABKAgSHAoGc3RhdHVzGAcgASgOMgwuUm9ndWVTdGF0dXNCFqoCE01h",
+            "R08YByABKAgSHAoGc3RhdHVzGAsgASgOMgwuUm9ndWVTdGF0dXNCFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RogueStatusReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "AOBCKABCHGO" field.</summary>
-    public const int AOBCKABCHGOFieldNumber = 11;
+    public const int AOBCKABCHGOFieldNumber = 7;
     private bool aOBCKABCHGO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 7;
+    public const int StatusFieldNumber = 11;
     private global::March7thHoney.Proto.RogueStatus status_ = global::March7thHoney.Proto.RogueStatus.NogkojcafaeNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Status != global::March7thHoney.Proto.RogueStatus.NogkojcafaeNlcdgipgfdj) {
-        output.WriteRawTag(56);
-        output.WriteEnum((int) Status);
-      }
       if (AOBCKABCHGO != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(56);
         output.WriteBool(AOBCKABCHGO);
+      }
+      if (Status != global::March7thHoney.Proto.RogueStatus.NogkojcafaeNlcdgipgfdj) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Status != global::March7thHoney.Proto.RogueStatus.NogkojcafaeNlcdgipgfdj) {
-        output.WriteRawTag(56);
-        output.WriteEnum((int) Status);
-      }
       if (AOBCKABCHGO != false) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(56);
         output.WriteBool(AOBCKABCHGO);
+      }
+      if (Status != global::March7thHoney.Proto.RogueStatus.NogkojcafaeNlcdgipgfdj) {
+        output.WriteRawTag(88);
+        output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 56: {
-            Status = (global::March7thHoney.Proto.RogueStatus) input.ReadEnum();
+            AOBCKABCHGO = input.ReadBool();
             break;
           }
           case 88: {
-            AOBCKABCHGO = input.ReadBool();
+            Status = (global::March7thHoney.Proto.RogueStatus) input.ReadEnum();
             break;
           }
         }
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 56: {
-            Status = (global::March7thHoney.Proto.RogueStatus) input.ReadEnum();
+            AOBCKABCHGO = input.ReadBool();
             break;
           }
           case 88: {
-            AOBCKABCHGO = input.ReadBool();
+            Status = (global::March7thHoney.Proto.RogueStatus) input.ReadEnum();
             break;
           }
         }

@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ExpeditionInfo.proto";
 
 message GetExpeditionDataScRsp {
-    repeated uint32 CAALNNFJIAH = 7;
-    repeated ExpeditionInfo expedition_info = 4;
+    uint32 retcode = 1;
     int64 BJMGDBCHEAN = 9;
-    uint32 retcode = 8;
-    uint32 total_expedition_count = 12;
+    repeated ExpeditionInfo expedition_info = 11;
+    repeated uint32 CAALNNFJIAH = 14;
+    uint32 total_expedition_count = 15;
 }

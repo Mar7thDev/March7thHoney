@@ -6,6 +6,6 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message MANINNKMFHG {
-    SceneInfo scene = 1;
-    LineupInfo lineup = 10;
+    LineupInfo lineup = 2;
+    SceneInfo scene = 10;
 }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PIACCCGNOOF {
-    uint32 battle_event_id = 8;
+    uint32 battle_event_id = 1;
 }

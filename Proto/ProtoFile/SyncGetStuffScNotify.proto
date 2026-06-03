@@ -6,5 +6,5 @@ import "GetStuffType.proto";
 
 message SyncGetStuffScNotify {
     GetStuffType BAPBMHCHCIC = 3;
-    uint32 CEAMLKCMMGD = 9;
+    uint32 CEAMLKCMMGD = 4;
 }

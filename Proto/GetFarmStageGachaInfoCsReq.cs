@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiBHZXRGYXJtU3RhZ2VHYWNoYUluZm9Dc1JlcS5wcm90byI+ChpHZXRGYXJt",
             "U3RhZ2VHYWNoYUluZm9Dc1JlcRIgChhmYXJtX3N0YWdlX2dhY2hhX2lkX2xp",
-            "c3QYBSADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "c3QYCiADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "farm_stage_gacha_id_list" field.</summary>
-    public const int FarmStageGachaIdListFieldNumber = 5;
+    public const int FarmStageGachaIdListFieldNumber = 10;
     private static readonly pb::FieldCodec<uint> _repeated_farmStageGachaIdList_codec
-        = pb::FieldCodec.ForUInt32(42);
+        = pb::FieldCodec.ForUInt32(82);
     private readonly pbc::RepeatedField<uint> farmStageGachaIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42:
-          case 40: {
+          case 82:
+          case 80: {
             farmStageGachaIdList_.AddEntriesFrom(input, _repeated_farmStageGachaIdList_codec);
             break;
           }
@@ -214,8 +214,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42:
-          case 40: {
+          case 82:
+          case 80: {
             farmStageGachaIdList_.AddEntriesFrom(ref input, _repeated_farmStageGachaIdList_codec);
             break;
           }

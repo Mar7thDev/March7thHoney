@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ReplaceLineupScRsp {
-    uint32 OMDLCGEMBLA = 12;
-    uint32 retcode = 13;
+    uint32 OMDLCGEMBLA = 4;
+    uint32 retcode = 14;
 }

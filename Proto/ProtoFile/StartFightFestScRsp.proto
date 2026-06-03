@@ -6,9 +6,9 @@ import "FightFestType.proto";
 import "SceneBattleInfo.proto";
 
 message StartFightFestScRsp {
-    SceneBattleInfo battle_info = 3;
-    uint32 retcode = 8;
-    uint32 event_id = 4;
-    uint32 id = 13;
-    FightFestType type = 7;
+    uint32 id = 2;
+    FightFestType type = 4;
+    uint32 retcode = 7;
+    SceneBattleInfo battle_info = 9;
+    uint32 event_id = 15;
 }

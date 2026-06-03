@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static OFDMHDODALPReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFPRkRNSERPREFMUC5wcm90byIzCgtPRkRNSERPREFMUBITCgtMRlBBQkxF",
-            "SUtLRRgLIAEoDRIPCgdyZXRjb2RlGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "ChFPRkRNSERPREFMUC5wcm90byIzCgtPRkRNSERPREFMUBIPCgdyZXRjb2Rl",
+            "GAEgASgNEhMKC0xGUEFCTEVJS0tFGAQgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OFDMHDODALP), global::March7thHoney.Proto.OFDMHDODALP.Parser, new[]{ "LFPABLEIKKE", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OFDMHDODALP), global::March7thHoney.Proto.OFDMHDODALP.Parser, new[]{ "Retcode", "LFPABLEIKKE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OFDMHDODALP(OFDMHDODALP other) : this() {
-      lFPABLEIKKE_ = other.lFPABLEIKKE_;
       retcode_ = other.retcode_;
+      lFPABLEIKKE_ = other.lFPABLEIKKE_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new OFDMHDODALP(this);
     }
 
-    /// <summary>Field number for the "LFPABLEIKKE" field.</summary>
-    public const int LFPABLEIKKEFieldNumber = 11;
-    private uint lFPABLEIKKE_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LFPABLEIKKE {
-      get { return lFPABLEIKKE_; }
-      set {
-        lFPABLEIKKE_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "LFPABLEIKKE" field.</summary>
+    public const int LFPABLEIKKEFieldNumber = 4;
+    private uint lFPABLEIKKE_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LFPABLEIKKE {
+      get { return lFPABLEIKKE_; }
+      set {
+        lFPABLEIKKE_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (LFPABLEIKKE != other.LFPABLEIKKE) return false;
       if (Retcode != other.Retcode) return false;
+      if (LFPABLEIKKE != other.LFPABLEIKKE) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (LFPABLEIKKE != 0) hash ^= LFPABLEIKKE.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (LFPABLEIKKE != 0) hash ^= LFPABLEIKKE.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LFPABLEIKKE != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(LFPABLEIKKE);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
+      }
+      if (LFPABLEIKKE != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(LFPABLEIKKE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LFPABLEIKKE != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(LFPABLEIKKE);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
+      }
+      if (LFPABLEIKKE != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(LFPABLEIKKE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (LFPABLEIKKE != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LFPABLEIKKE);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (LFPABLEIKKE != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LFPABLEIKKE);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.LFPABLEIKKE != 0) {
-        LFPABLEIKKE = other.LFPABLEIKKE;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.LFPABLEIKKE != 0) {
+        LFPABLEIKKE = other.LFPABLEIKKE;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
-            LFPABLEIKKE = input.ReadUInt32();
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
-            Retcode = input.ReadUInt32();
+          case 32: {
+            LFPABLEIKKE = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
-            LFPABLEIKKE = input.ReadUInt32();
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
-            Retcode = input.ReadUInt32();
+          case 32: {
+            LFPABLEIKKE = input.ReadUInt32();
             break;
           }
         }

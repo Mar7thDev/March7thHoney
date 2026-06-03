@@ -6,9 +6,9 @@ import "IEALCLFLDMP.proto";
 import "KLNGFBHIADA.proto";
 
 message LBBNBAEKGCJ {
-    uint32 AFPHLNMGPHK = 162;
+    uint32 AFPHLNMGPHK = 686;
     oneof KKNBOACNCON {
-        IEALCLFLDMP NMIJKPKNPLE = 2;
-        KLNGFBHIADA FKPDOHGKJJK = 13;
+        IEALCLFLDMP NMIJKPKNPLE = 5;
+        KLNGFBHIADA FKPDOHGKJJK = 8;
     }
 }

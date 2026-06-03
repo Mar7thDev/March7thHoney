@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MCKLINCMDKK {
-    bytes LNBKFFIDEEJ = 12;
-    uint32 OMFPICKPOCP = 15;
+    bytes LNBKFFIDEEJ = 5;
+    uint32 OMFPICKPOCP = 7;
 }

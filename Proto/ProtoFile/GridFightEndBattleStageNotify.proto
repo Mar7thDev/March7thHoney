@@ -2,28 +2,28 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "BHBAILHMCOI.proto";
-import "GEDDNPGHNGP.proto";
 import "GEEMFDBDMDH.proto";
+import "GridFightDamageSttInfo.proto";
 import "GridFightDropInfo.proto";
+import "GridFightHpModifyInfo.proto";
 
 message GridFightEndBattleStageNotify {
-    repeated GEDDNPGHNGP HMKOKACNHJH = 1618;
-    BHBAILHMCOI NKBIDLBLONC = 4;
-    map<uint32, GridFightDropInfo> AFFFCONCDMG = 7;
-    GEEMFDBDMDH AEOCOGHMEBG = 1190;
-    uint32 JPKHBELGHCG = 14;
-    uint32 PAGPKOKMDBK = 545;
-    uint32 OGLOCDMNNIM = 9;
-    bool CBHJKFNCDAD = 6;
-    uint32 DMNILJEGICO = 15;
-    uint32 DCAHJELNJNP = 3;
-    uint32 LKCJAPIGEND = 210;
-    uint32 section_id = 11;
-    uint32 OAHFCPPIMLF = 661;
-    uint32 HFLPDCJDIAC = 13;
-    uint32 ODJEBDNBLLC = 1625;
-    uint32 OCCOHKIMGCN = 1746;
-    uint32 CLFNPMGHMFC = 1255;
-    uint32 EMOHLJHPOPC = 2;
+    uint32 DMNILJEGICO = 1;
+    GridFightDamageSttInfo NKBIDLBLONC = 2;
+    uint32 JPKHBELGHCG = 3;
+    uint32 DCAHJELNJNP = 5;
+    uint32 EMOHLJHPOPC = 6;
+    uint32 HFLPDCJDIAC = 7;
+    uint32 OGLOCDMNNIM = 8;
+    map<uint32, GridFightDropInfo> AFFFCONCDMG = 9;
+    bool CBHJKFNCDAD = 13;
+    uint32 section_id = 15;
+    uint32 CLFNPMGHMFC = 323;
+    uint32 OAHFCPPIMLF = 471;
+    uint32 ODJEBDNBLLC = 1105;
+    uint32 OCCOHKIMGCN = 1115;
+    GEEMFDBDMDH AEOCOGHMEBG = 1250;
+    repeated GridFightHpModifyInfo HMKOKACNHJH = 1429;
+    uint32 PAGPKOKMDBK = 1637;
+    uint32 LKCJAPIGEND = 1987;
 }

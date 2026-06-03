@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static KAAJEKKIDIEReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFLQUFKRUtLSURJRS5wcm90bxoRRU1IRU9KTkNHRkgucHJvdG8iMAoLS0FB",
-            "SkVLS0lESUUSIQoLR0dNUEVHTUVIUEQYBSABKAsyDC5FTUhFT0pOQ0dGSEIW",
-            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFLQUFKRUtLSURJRS5wcm90bxoRRU1IRU9KTkNHRkgucHJvdG8iKgoLS0FB",
+            "SkVLS0lESUUSGwoFZXF1aXAYDiABKAsyDC5FTUhFT0pOQ0dGSEIWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EMHEOJNCGFHReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KAAJEKKIDIE), global::March7thHoney.Proto.KAAJEKKIDIE.Parser, new[]{ "GGMPEGMEHPD" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KAAJEKKIDIE), global::March7thHoney.Proto.KAAJEKKIDIE.Parser, new[]{ "Equip" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +72,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KAAJEKKIDIE(KAAJEKKIDIE other) : this() {
-      gGMPEGMEHPD_ = other.gGMPEGMEHPD_ != null ? other.gGMPEGMEHPD_.Clone() : null;
+      equip_ = other.equip_ != null ? other.equip_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,15 +82,15 @@ namespace March7thHoney.Proto {
       return new KAAJEKKIDIE(this);
     }
 
-    /// <summary>Field number for the "GGMPEGMEHPD" field.</summary>
-    public const int GGMPEGMEHPDFieldNumber = 5;
-    private global::March7thHoney.Proto.EMHEOJNCGFH gGMPEGMEHPD_;
+    /// <summary>Field number for the "equip" field.</summary>
+    public const int EquipFieldNumber = 14;
+    private global::March7thHoney.Proto.EMHEOJNCGFH equip_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.EMHEOJNCGFH GGMPEGMEHPD {
-      get { return gGMPEGMEHPD_; }
+    public global::March7thHoney.Proto.EMHEOJNCGFH Equip {
+      get { return equip_; }
       set {
-        gGMPEGMEHPD_ = value;
+        equip_ = value;
       }
     }
 
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(GGMPEGMEHPD, other.GGMPEGMEHPD)) return false;
+      if (!object.Equals(Equip, other.Equip)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -117,7 +117,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (gGMPEGMEHPD_ != null) hash ^= GGMPEGMEHPD.GetHashCode();
+      if (equip_ != null) hash ^= Equip.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (gGMPEGMEHPD_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(GGMPEGMEHPD);
+      if (equip_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(Equip);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -150,9 +150,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (gGMPEGMEHPD_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(GGMPEGMEHPD);
+      if (equip_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(Equip);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -164,8 +164,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (gGMPEGMEHPD_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GGMPEGMEHPD);
+      if (equip_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Equip);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -179,11 +179,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.gGMPEGMEHPD_ != null) {
-        if (gGMPEGMEHPD_ == null) {
-          GGMPEGMEHPD = new global::March7thHoney.Proto.EMHEOJNCGFH();
+      if (other.equip_ != null) {
+        if (equip_ == null) {
+          Equip = new global::March7thHoney.Proto.EMHEOJNCGFH();
         }
-        GGMPEGMEHPD.MergeFrom(other.GGMPEGMEHPD);
+        Equip.MergeFrom(other.Equip);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -204,11 +204,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
-            if (gGMPEGMEHPD_ == null) {
-              GGMPEGMEHPD = new global::March7thHoney.Proto.EMHEOJNCGFH();
+          case 114: {
+            if (equip_ == null) {
+              Equip = new global::March7thHoney.Proto.EMHEOJNCGFH();
             }
-            input.ReadMessage(GGMPEGMEHPD);
+            input.ReadMessage(Equip);
             break;
           }
         }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
-            if (gGMPEGMEHPD_ == null) {
-              GGMPEGMEHPD = new global::March7thHoney.Proto.EMHEOJNCGFH();
+          case 114: {
+            if (equip_ == null) {
+              Equip = new global::March7thHoney.Proto.EMHEOJNCGFH();
             }
-            input.ReadMessage(GGMPEGMEHPD);
+            input.ReadMessage(Equip);
             break;
           }
         }

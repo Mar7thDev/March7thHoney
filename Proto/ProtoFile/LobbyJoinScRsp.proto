@@ -7,10 +7,10 @@ import "LMLNNHKJEIP.proto";
 import "PJMGBLIFDFP.proto";
 
 message LobbyJoinScRsp {
-    PJMGBLIFDFP EMIJCKENBKJ = 8;
-    repeated LMLNNHKJEIP DFLEOIGPLNM = 4;
-    uint32 HDJFGMGAOOF = 11;
-    FightGameMode GJNMHILINHC = 12;
-    uint64 room_id = 14;
-    uint32 retcode = 15;
+    PJMGBLIFDFP room_ext_info = 4;
+    uint32 HDJFGMGAOOF = 7;
+    FightGameMode GJNMHILINHC = 8;
+    uint32 retcode = 10;
+    uint64 room_id = 12;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 15;
 }

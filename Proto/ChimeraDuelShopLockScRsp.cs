@@ -25,9 +25,9 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5DaGltZXJhRHVlbFNob3BMb2NrU2NSc3AucHJvdG8iewoYQ2hpbWVyYUR1",
-            "ZWxTaG9wTG9ja1NjUnNwEhEKCWlzX2xvY2tlZBgCIAEoCBIPCgdyZXRjb2Rl",
-            "GAkgASgNEhUKC05ESkdLSk1QUEhKGAsgASgNSAASFQoLQUdCQUlGUE5LSUkY",
-            "BiABKA1IAEINCgtLS05CT0FDTkNPTkIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "ZWxTaG9wTG9ja1NjUnNwEhEKCWlzX2xvY2tlZBgBIAEoCBIPCgdyZXRjb2Rl",
+            "GAIgASgNEhUKC05ESkdLSk1QUEhKGAQgASgNSAASFQoLQUdCQUlGUE5LSUkY",
+            "AyABKA1IAEINCgtLS05CT0FDTkNPTkIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_locked" field.</summary>
-    public const int IsLockedFieldNumber = 2;
+    public const int IsLockedFieldNumber = 1;
     private bool isLocked_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -107,7 +107,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 2;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,7 +119,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NDJGKJMPPHJ" field.</summary>
-    public const int NDJGKJMPPHJFieldNumber = 11;
+    public const int NDJGKJMPPHJFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint NDJGKJMPPHJ {
@@ -145,7 +145,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "AGBAIFPNKII" field.</summary>
-    public const int AGBAIFPNKIIFieldNumber = 6;
+    public const int AGBAIFPNKIIFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint AGBAIFPNKII {
@@ -174,8 +174,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "KKNBOACNCON" oneof.</summary>
     public enum KKNBOACNCONOneofCase {
       None = 0,
-      NDJGKJMPPHJ = 11,
-      AGBAIFPNKII = 6,
+      NDJGKJMPPHJ = 4,
+      AGBAIFPNKII = 3,
     }
     private KKNBOACNCONOneofCase kKNBOACNCONCase_ = KKNBOACNCONOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -242,19 +242,19 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (IsLocked != false) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteBool(IsLocked);
       }
-      if (HasAGBAIFPNKII) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(AGBAIFPNKII);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
+      if (HasAGBAIFPNKII) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(AGBAIFPNKII);
+      }
       if (HasNDJGKJMPPHJ) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteUInt32(NDJGKJMPPHJ);
       }
       if (_unknownFields != null) {
@@ -268,19 +268,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (IsLocked != false) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteBool(IsLocked);
       }
-      if (HasAGBAIFPNKII) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(AGBAIFPNKII);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
+      if (HasAGBAIFPNKII) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(AGBAIFPNKII);
+      }
       if (HasNDJGKJMPPHJ) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteUInt32(NDJGKJMPPHJ);
       }
       if (_unknownFields != null) {
@@ -351,19 +351,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 8: {
             IsLocked = input.ReadBool();
             break;
           }
-          case 48: {
-            AGBAIFPNKII = input.ReadUInt32();
-            break;
-          }
-          case 72: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 24: {
+            AGBAIFPNKII = input.ReadUInt32();
+            break;
+          }
+          case 32: {
             NDJGKJMPPHJ = input.ReadUInt32();
             break;
           }
@@ -386,19 +386,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 8: {
             IsLocked = input.ReadBool();
             break;
           }
-          case 48: {
-            AGBAIFPNKII = input.ReadUInt32();
-            break;
-          }
-          case 72: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 24: {
+            AGBAIFPNKII = input.ReadUInt32();
+            break;
+          }
+          case 32: {
             NDJGKJMPPHJ = input.ReadUInt32();
             break;
           }

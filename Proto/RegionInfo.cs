@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChBSZWdpb25JbmZvLnByb3RvIo8BCgpSZWdpb25JbmZvEgwKBG5hbWUYASAB",
-            "KAkSFAoMZGlzcGxheV9uYW1lGAUgASgJEhAKCGVudl90eXBlGAQgASgJEhMK",
-            "C01EUEdNUEdCRE1IGAcgASgJEhQKDGRpc3BhdGNoX3VybBgDIAEoCRINCgV0",
-            "aXRsZRgCIAEoCRIRCglzdG9wX2Rlc2MYBiABKAlCFqoCE01hcmNoN3RoSG9u",
+            "KAkSDQoFdGl0bGUYAiABKAkSFAoMZGlzcGF0Y2hfdXJsGAMgASgJEhAKCGVu",
+            "dl90eXBlGAQgASgJEhQKDGRpc3BsYXlfbmFtZRgFIAEoCRIRCglzdG9wX2Rl",
+            "c2MYBiABKAkSEwoLTURQR01QR0JETUgYByABKAlCFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RegionInfo), global::March7thHoney.Proto.RegionInfo.Parser, new[]{ "Name", "DisplayName", "EnvType", "MDPGMPGBDMH", "DispatchUrl", "Title", "StopDesc" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RegionInfo), global::March7thHoney.Proto.RegionInfo.Parser, new[]{ "Name", "Title", "DispatchUrl", "EnvType", "DisplayName", "StopDesc", "MDPGMPGBDMH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,12 +75,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RegionInfo(RegionInfo other) : this() {
       name_ = other.name_;
-      displayName_ = other.displayName_;
-      envType_ = other.envType_;
-      mDPGMPGBDMH_ = other.mDPGMPGBDMH_;
-      dispatchUrl_ = other.dispatchUrl_;
       title_ = other.title_;
+      dispatchUrl_ = other.dispatchUrl_;
+      envType_ = other.envType_;
+      displayName_ = other.displayName_;
       stopDesc_ = other.stopDesc_;
+      mDPGMPGBDMH_ = other.mDPGMPGBDMH_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -102,39 +102,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "display_name" field.</summary>
-    public const int DisplayNameFieldNumber = 5;
-    private string displayName_ = "";
+    /// <summary>Field number for the "title" field.</summary>
+    public const int TitleFieldNumber = 2;
+    private string title_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string DisplayName {
-      get { return displayName_; }
+    public string Title {
+      get { return title_; }
       set {
-        displayName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "env_type" field.</summary>
-    public const int EnvTypeFieldNumber = 4;
-    private string envType_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string EnvType {
-      get { return envType_; }
-      set {
-        envType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "MDPGMPGBDMH" field.</summary>
-    public const int MDPGMPGBDMHFieldNumber = 7;
-    private string mDPGMPGBDMH_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string MDPGMPGBDMH {
-      get { return mDPGMPGBDMH_; }
-      set {
-        mDPGMPGBDMH_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -150,15 +126,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "title" field.</summary>
-    public const int TitleFieldNumber = 2;
-    private string title_ = "";
+    /// <summary>Field number for the "env_type" field.</summary>
+    public const int EnvTypeFieldNumber = 4;
+    private string envType_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Title {
-      get { return title_; }
+    public string EnvType {
+      get { return envType_; }
       set {
-        title_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        envType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "display_name" field.</summary>
+    public const int DisplayNameFieldNumber = 5;
+    private string displayName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string DisplayName {
+      get { return displayName_; }
+      set {
+        displayName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -171,6 +159,18 @@ namespace March7thHoney.Proto {
       get { return stopDesc_; }
       set {
         stopDesc_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MDPGMPGBDMH" field.</summary>
+    public const int MDPGMPGBDMHFieldNumber = 7;
+    private string mDPGMPGBDMH_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string MDPGMPGBDMH {
+      get { return mDPGMPGBDMH_; }
+      set {
+        mDPGMPGBDMH_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -190,12 +190,12 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Name != other.Name) return false;
-      if (DisplayName != other.DisplayName) return false;
-      if (EnvType != other.EnvType) return false;
-      if (MDPGMPGBDMH != other.MDPGMPGBDMH) return false;
-      if (DispatchUrl != other.DispatchUrl) return false;
       if (Title != other.Title) return false;
+      if (DispatchUrl != other.DispatchUrl) return false;
+      if (EnvType != other.EnvType) return false;
+      if (DisplayName != other.DisplayName) return false;
       if (StopDesc != other.StopDesc) return false;
+      if (MDPGMPGBDMH != other.MDPGMPGBDMH) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -204,12 +204,12 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (DisplayName.Length != 0) hash ^= DisplayName.GetHashCode();
-      if (EnvType.Length != 0) hash ^= EnvType.GetHashCode();
-      if (MDPGMPGBDMH.Length != 0) hash ^= MDPGMPGBDMH.GetHashCode();
-      if (DispatchUrl.Length != 0) hash ^= DispatchUrl.GetHashCode();
       if (Title.Length != 0) hash ^= Title.GetHashCode();
+      if (DispatchUrl.Length != 0) hash ^= DispatchUrl.GetHashCode();
+      if (EnvType.Length != 0) hash ^= EnvType.GetHashCode();
+      if (DisplayName.Length != 0) hash ^= DisplayName.GetHashCode();
       if (StopDesc.Length != 0) hash ^= StopDesc.GetHashCode();
+      if (MDPGMPGBDMH.Length != 0) hash ^= MDPGMPGBDMH.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -307,23 +307,23 @@ namespace March7thHoney.Proto {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (DisplayName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(DisplayName);
-      }
-      if (EnvType.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(EnvType);
-      }
-      if (MDPGMPGBDMH.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MDPGMPGBDMH);
+      if (Title.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
       }
       if (DispatchUrl.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(DispatchUrl);
       }
-      if (Title.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Title);
+      if (EnvType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(EnvType);
+      }
+      if (DisplayName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DisplayName);
       }
       if (StopDesc.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(StopDesc);
+      }
+      if (MDPGMPGBDMH.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MDPGMPGBDMH);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -340,23 +340,23 @@ namespace March7thHoney.Proto {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.DisplayName.Length != 0) {
-        DisplayName = other.DisplayName;
-      }
-      if (other.EnvType.Length != 0) {
-        EnvType = other.EnvType;
-      }
-      if (other.MDPGMPGBDMH.Length != 0) {
-        MDPGMPGBDMH = other.MDPGMPGBDMH;
+      if (other.Title.Length != 0) {
+        Title = other.Title;
       }
       if (other.DispatchUrl.Length != 0) {
         DispatchUrl = other.DispatchUrl;
       }
-      if (other.Title.Length != 0) {
-        Title = other.Title;
+      if (other.EnvType.Length != 0) {
+        EnvType = other.EnvType;
+      }
+      if (other.DisplayName.Length != 0) {
+        DisplayName = other.DisplayName;
       }
       if (other.StopDesc.Length != 0) {
         StopDesc = other.StopDesc;
+      }
+      if (other.MDPGMPGBDMH.Length != 0) {
+        MDPGMPGBDMH = other.MDPGMPGBDMH;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

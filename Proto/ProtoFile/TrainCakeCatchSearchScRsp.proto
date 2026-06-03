@@ -6,9 +6,9 @@ import "JOFHMCJPBCE.proto";
 import "PJFIMFJPMCN.proto";
 
 message TrainCakeCatchSearchScRsp {
-    JOFHMCJPBCE NIELDCLPOLA = 10;
-    repeated PJFIMFJPMCN CEMFBJPOLNP = 3;
-    repeated uint32 GINENNKGDMG = 4;
-    uint32 retcode = 7;
-    uint32 PCPDHEIEJFO = 1;
+    repeated uint32 GINENNKGDMG = 3;
+    uint32 PCPDHEIEJFO = 6;
+    JOFHMCJPBCE NIELDCLPOLA = 7;
+    uint32 retcode = 8;
+    repeated PJFIMFJPMCN CEMFBJPOLNP = 10;
 }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishChessRogueSubStoryScRsp {
-    uint32 HONCDMKPBEG = 9;
-    uint32 KPDLMKFLJAI = 2;
-    uint32 retcode = 10;
+    uint32 KPDLMKFLJAI = 10;
+    uint32 retcode = 11;
+    uint32 HONCDMKPBEG = 15;
 }

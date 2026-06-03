@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpTZXRDbGllbnRQYXVzZWRDc1JlcS5wcm90byImChRTZXRDbGllbnRQYXVz",
-            "ZWRDc1JlcRIOCgZwYXVzZWQYDCABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "ZWRDc1JlcRIOCgZwYXVzZWQYCSABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "paused" field.</summary>
-    public const int PausedFieldNumber = 12;
+    public const int PausedFieldNumber = 9;
     private bool paused_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Paused != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(72);
         output.WriteBool(Paused);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Paused != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(72);
         output.WriteBool(Paused);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
+          case 72: {
             Paused = input.ReadBool();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
+          case 72: {
             Paused = input.ReadBool();
             break;
           }

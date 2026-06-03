@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JPEGNCJDBOM.proto";
 
 message MonopolyQuizDurationChangeScNotify {
-    repeated JPEGNCJDBOM DGNGMJMPFGK = 4;
+    repeated JPEGNCJDBOM DGNGMJMPFGK = 1;
 }

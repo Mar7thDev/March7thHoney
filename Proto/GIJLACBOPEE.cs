@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static GIJLACBOPEEReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHSUpMQUNCT1BFRS5wcm90byJJCgtHSUpMQUNCT1BFRRIWCg5xdWV1ZV9w",
-            "b3NpdGlvbhgEIAEoDRITCgtISk1FSk5NQUlMSxgBIAEoDRINCgVsZXZlbBgM",
+            "ChFHSUpMQUNCT1BFRS5wcm90byJJCgtHSUpMQUNCT1BFRRITCgtISk1FSk5N",
+            "QUlMSxgFIAEoDRIWCg5xdWV1ZV9wb3NpdGlvbhgJIAEoDRINCgVsZXZlbBgM",
             "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GIJLACBOPEE), global::March7thHoney.Proto.GIJLACBOPEE.Parser, new[]{ "QueuePosition", "HJMEJNMAILK", "Level" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GIJLACBOPEE), global::March7thHoney.Proto.GIJLACBOPEE.Parser, new[]{ "HJMEJNMAILK", "QueuePosition", "Level" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GIJLACBOPEE(GIJLACBOPEE other) : this() {
-      queuePosition_ = other.queuePosition_;
       hJMEJNMAILK_ = other.hJMEJNMAILK_;
+      queuePosition_ = other.queuePosition_;
       level_ = other.level_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new GIJLACBOPEE(this);
     }
 
-    /// <summary>Field number for the "queue_position" field.</summary>
-    public const int QueuePositionFieldNumber = 4;
-    private uint queuePosition_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint QueuePosition {
-      get { return queuePosition_; }
-      set {
-        queuePosition_ = value;
-      }
-    }
-
     /// <summary>Field number for the "HJMEJNMAILK" field.</summary>
-    public const int HJMEJNMAILKFieldNumber = 1;
+    public const int HJMEJNMAILKFieldNumber = 5;
     private uint hJMEJNMAILK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return hJMEJNMAILK_; }
       set {
         hJMEJNMAILK_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "queue_position" field.</summary>
+    public const int QueuePositionFieldNumber = 9;
+    private uint queuePosition_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint QueuePosition {
+      get { return queuePosition_; }
+      set {
+        queuePosition_ = value;
       }
     }
 
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (QueuePosition != other.QueuePosition) return false;
       if (HJMEJNMAILK != other.HJMEJNMAILK) return false;
+      if (QueuePosition != other.QueuePosition) return false;
       if (Level != other.Level) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,8 +145,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (QueuePosition != 0) hash ^= QueuePosition.GetHashCode();
       if (HJMEJNMAILK != 0) hash ^= HJMEJNMAILK.GetHashCode();
+      if (QueuePosition != 0) hash ^= QueuePosition.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (HJMEJNMAILK != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteUInt32(HJMEJNMAILK);
       }
       if (QueuePosition != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(72);
         output.WriteUInt32(QueuePosition);
       }
       if (Level != 0) {
@@ -189,11 +189,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (HJMEJNMAILK != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteUInt32(HJMEJNMAILK);
       }
       if (QueuePosition != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(72);
         output.WriteUInt32(QueuePosition);
       }
       if (Level != 0) {
@@ -210,11 +210,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (QueuePosition != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(QueuePosition);
-      }
       if (HJMEJNMAILK != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HJMEJNMAILK);
+      }
+      if (QueuePosition != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(QueuePosition);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.QueuePosition != 0) {
-        QueuePosition = other.QueuePosition;
-      }
       if (other.HJMEJNMAILK != 0) {
         HJMEJNMAILK = other.HJMEJNMAILK;
+      }
+      if (other.QueuePosition != 0) {
+        QueuePosition = other.QueuePosition;
       }
       if (other.Level != 0) {
         Level = other.Level;
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 40: {
             HJMEJNMAILK = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 72: {
             QueuePosition = input.ReadUInt32();
             break;
           }
@@ -290,11 +290,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 40: {
             HJMEJNMAILK = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 72: {
             QueuePosition = input.ReadUInt32();
             break;
           }

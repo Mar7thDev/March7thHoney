@@ -7,7 +7,7 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message JGAMMPGMCNI {
-    SceneInfo scene = 10;
-    LineupInfo lineup = 9;
-    FHEGNOPNICH JNKLNLKHGBB = 5;
+    SceneInfo scene = 3;
+    LineupInfo lineup = 13;
+    FHEGNOPNICH JNKLNLKHGBB = 15;
 }

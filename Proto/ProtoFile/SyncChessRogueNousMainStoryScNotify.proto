@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PJBODOPJFGA.proto";
 
 message SyncChessRogueNousMainStoryScNotify {
-    repeated PJBODOPJFGA FNKLMMACCMJ = 8;
+    repeated PJBODOPJFGA FNKLMMACCMJ = 10;
 }

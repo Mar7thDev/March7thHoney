@@ -7,9 +7,9 @@ import "LAJGLHCCNED.proto";
 import "NPPEMMILLCO.proto";
 
 message EEHLDBOEFGB {
-    LAJGLHCCNED JDFPKAMFHAP = 11;
-    uint32 BCAKPNCHIIJ = 2;
-    int32 OJNGBIBGHBL = 5;
-    FightGameMode HKEACDBJCOD = 13;
-    NPPEMMILLCO reason = 7;
+    LAJGLHCCNED JDFPKAMFHAP = 4;
+    uint32 BCAKPNCHIIJ = 5;
+    int32 OJNGBIBGHBL = 7;
+    NPPEMMILLCO reason = 11;
+    FightGameMode game_mode = 12;
 }

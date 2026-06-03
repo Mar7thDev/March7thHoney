@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MDGIOENHBEJ.proto";
 
 message AiPamAskSettlementScNotify {
-    MDGIOENHBEJ EIADGIMDNMO = 15;
+    MDGIOENHBEJ EIADGIMDNMO = 2;
 }

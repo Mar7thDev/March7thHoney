@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CGMCMAKMJDK.proto";
 
 message IKCONCOKNAN {
-    repeated CGMCMAKMJDK CPPCIGMJALM = 8;
-    uint32 GHKDAJNDBBA = 1;
-    uint32 HBAMPJPOOLM = 11;
-    uint32 NKPKPNKBBAP = 9;
-    uint32 ABOHPPHHPEI = 7;
+    uint32 ABOHPPHHPEI = 3;
+    uint32 GHKDAJNDBBA = 4;
+    uint32 height = 5;
+    repeated CGMCMAKMJDK CPPCIGMJALM = 13;
+    uint32 width = 15;
 }

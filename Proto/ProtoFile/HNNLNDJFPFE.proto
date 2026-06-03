@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HNNLNDJFPFE {
-    double damage = 2;
-    uint32 role_id = 1;
-}

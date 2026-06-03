@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GridFightDropInfo.proto";
 
 message GDHFMHKFEAL {
-    GridFightDropInfo NMGIABHIJJB = 2;
     uint32 FKNNKCKLFMD = 6;
+    GridFightDropInfo NMGIABHIJJB = 11;
 }

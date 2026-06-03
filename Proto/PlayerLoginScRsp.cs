@@ -25,17 +25,17 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZQbGF5ZXJMb2dpblNjUnNwLnByb3RvGhVQbGF5ZXJCYXNpY0luZm8ucHJv",
-            "dG8i9wEKEFBsYXllckxvZ2luU2NSc3ASJAoKYmFzaWNfaW5mbxgBIAEoCzIQ",
-            "LlBsYXllckJhc2ljSW5mbxITCgtHSU9BUE9LSEFPRhgCIAEoCRITCgtES0VQ",
-            "S0hQT0xIQxgKIAEoCRIUCgxsb2dpbl9yYW5kb20YByABKAQSGwoTc2VydmVy",
-            "X3RpbWVzdGFtcF9tcxgEIAEoBBIPCgdyZXRjb2RlGA8gASgNEhQKDGN1cl90",
-            "aW1lem9uZRgIIAEoBRITCgtLQ0RBSE5OQ0tQUBgJIAEoCBITCgtLRE5QUE5I",
-            "TE5PQRgMIAEoCBIPCgdzdGFtaW5hGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "dG8i9wEKEFBsYXllckxvZ2luU2NSc3ASFAoMY3VyX3RpbWV6b25lGAEgASgF",
+            "EhMKC0RLRVBLSFBPTEhDGAMgASgJEhMKC0dJT0FQT0tIQU9GGAQgASgJEg8K",
+            "B3N0YW1pbmEYBSABKA0SGwoTc2VydmVyX3RpbWVzdGFtcF9tcxgGIAEoBBIk",
+            "CgpiYXNpY19pbmZvGAggASgLMhAuUGxheWVyQmFzaWNJbmZvEhQKDGxvZ2lu",
+            "X3JhbmRvbRgJIAEoBBIPCgdyZXRjb2RlGAsgASgNEhMKC0tETlBQTkhMTk9B",
+            "GA0gASgIEhMKC0tDREFITk5DS1BQGA4gASgIQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerBasicInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerLoginScRsp), global::March7thHoney.Proto.PlayerLoginScRsp.Parser, new[]{ "BasicInfo", "GIOAPOKHAOF", "DKEPKHPOLHC", "LoginRandom", "ServerTimestampMs", "Retcode", "CurTimezone", "KCDAHNNCKPP", "KDNPPNHLNOA", "Stamina" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerLoginScRsp), global::March7thHoney.Proto.PlayerLoginScRsp.Parser, new[]{ "CurTimezone", "DKEPKHPOLHC", "GIOAPOKHAOF", "Stamina", "ServerTimestampMs", "BasicInfo", "LoginRandom", "Retcode", "KDNPPNHLNOA", "KCDAHNNCKPP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,16 +77,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerLoginScRsp(PlayerLoginScRsp other) : this() {
-      basicInfo_ = other.basicInfo_ != null ? other.basicInfo_.Clone() : null;
-      gIOAPOKHAOF_ = other.gIOAPOKHAOF_;
-      dKEPKHPOLHC_ = other.dKEPKHPOLHC_;
-      loginRandom_ = other.loginRandom_;
-      serverTimestampMs_ = other.serverTimestampMs_;
-      retcode_ = other.retcode_;
       curTimezone_ = other.curTimezone_;
-      kCDAHNNCKPP_ = other.kCDAHNNCKPP_;
-      kDNPPNHLNOA_ = other.kDNPPNHLNOA_;
+      dKEPKHPOLHC_ = other.dKEPKHPOLHC_;
+      gIOAPOKHAOF_ = other.gIOAPOKHAOF_;
       stamina_ = other.stamina_;
+      serverTimestampMs_ = other.serverTimestampMs_;
+      basicInfo_ = other.basicInfo_ != null ? other.basicInfo_.Clone() : null;
+      loginRandom_ = other.loginRandom_;
+      retcode_ = other.retcode_;
+      kDNPPNHLNOA_ = other.kDNPPNHLNOA_;
+      kCDAHNNCKPP_ = other.kCDAHNNCKPP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -96,80 +96,8 @@ namespace March7thHoney.Proto {
       return new PlayerLoginScRsp(this);
     }
 
-    /// <summary>Field number for the "basic_info" field.</summary>
-    public const int BasicInfoFieldNumber = 1;
-    private global::March7thHoney.Proto.PlayerBasicInfo basicInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.PlayerBasicInfo BasicInfo {
-      get { return basicInfo_; }
-      set {
-        basicInfo_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "GIOAPOKHAOF" field.</summary>
-    public const int GIOAPOKHAOFFieldNumber = 2;
-    private string gIOAPOKHAOF_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string GIOAPOKHAOF {
-      get { return gIOAPOKHAOF_; }
-      set {
-        gIOAPOKHAOF_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "DKEPKHPOLHC" field.</summary>
-    public const int DKEPKHPOLHCFieldNumber = 10;
-    private string dKEPKHPOLHC_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string DKEPKHPOLHC {
-      get { return dKEPKHPOLHC_; }
-      set {
-        dKEPKHPOLHC_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "login_random" field.</summary>
-    public const int LoginRandomFieldNumber = 7;
-    private ulong loginRandom_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong LoginRandom {
-      get { return loginRandom_; }
-      set {
-        loginRandom_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "server_timestamp_ms" field.</summary>
-    public const int ServerTimestampMsFieldNumber = 4;
-    private ulong serverTimestampMs_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong ServerTimestampMs {
-      get { return serverTimestampMs_; }
-      set {
-        serverTimestampMs_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "cur_timezone" field.</summary>
-    public const int CurTimezoneFieldNumber = 8;
+    public const int CurTimezoneFieldNumber = 1;
     private int curTimezone_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -180,20 +108,92 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "KCDAHNNCKPP" field.</summary>
-    public const int KCDAHNNCKPPFieldNumber = 9;
-    private bool kCDAHNNCKPP_;
+    /// <summary>Field number for the "DKEPKHPOLHC" field.</summary>
+    public const int DKEPKHPOLHCFieldNumber = 3;
+    private string dKEPKHPOLHC_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool KCDAHNNCKPP {
-      get { return kCDAHNNCKPP_; }
+    public string DKEPKHPOLHC {
+      get { return dKEPKHPOLHC_; }
       set {
-        kCDAHNNCKPP_ = value;
+        dKEPKHPOLHC_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "GIOAPOKHAOF" field.</summary>
+    public const int GIOAPOKHAOFFieldNumber = 4;
+    private string gIOAPOKHAOF_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string GIOAPOKHAOF {
+      get { return gIOAPOKHAOF_; }
+      set {
+        gIOAPOKHAOF_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "stamina" field.</summary>
+    public const int StaminaFieldNumber = 5;
+    private uint stamina_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Stamina {
+      get { return stamina_; }
+      set {
+        stamina_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "server_timestamp_ms" field.</summary>
+    public const int ServerTimestampMsFieldNumber = 6;
+    private ulong serverTimestampMs_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong ServerTimestampMs {
+      get { return serverTimestampMs_; }
+      set {
+        serverTimestampMs_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "basic_info" field.</summary>
+    public const int BasicInfoFieldNumber = 8;
+    private global::March7thHoney.Proto.PlayerBasicInfo basicInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.PlayerBasicInfo BasicInfo {
+      get { return basicInfo_; }
+      set {
+        basicInfo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "login_random" field.</summary>
+    public const int LoginRandomFieldNumber = 9;
+    private ulong loginRandom_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong LoginRandom {
+      get { return loginRandom_; }
+      set {
+        loginRandom_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 11;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
     /// <summary>Field number for the "KDNPPNHLNOA" field.</summary>
-    public const int KDNPPNHLNOAFieldNumber = 12;
+    public const int KDNPPNHLNOAFieldNumber = 13;
     private bool kDNPPNHLNOA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -204,15 +204,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "stamina" field.</summary>
-    public const int StaminaFieldNumber = 13;
-    private uint stamina_;
+    /// <summary>Field number for the "KCDAHNNCKPP" field.</summary>
+    public const int KCDAHNNCKPPFieldNumber = 14;
+    private bool kCDAHNNCKPP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Stamina {
-      get { return stamina_; }
+    public bool KCDAHNNCKPP {
+      get { return kCDAHNNCKPP_; }
       set {
-        stamina_ = value;
+        kCDAHNNCKPP_ = value;
       }
     }
 
@@ -231,16 +231,16 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(BasicInfo, other.BasicInfo)) return false;
-      if (GIOAPOKHAOF != other.GIOAPOKHAOF) return false;
-      if (DKEPKHPOLHC != other.DKEPKHPOLHC) return false;
-      if (LoginRandom != other.LoginRandom) return false;
-      if (ServerTimestampMs != other.ServerTimestampMs) return false;
-      if (Retcode != other.Retcode) return false;
       if (CurTimezone != other.CurTimezone) return false;
-      if (KCDAHNNCKPP != other.KCDAHNNCKPP) return false;
-      if (KDNPPNHLNOA != other.KDNPPNHLNOA) return false;
+      if (DKEPKHPOLHC != other.DKEPKHPOLHC) return false;
+      if (GIOAPOKHAOF != other.GIOAPOKHAOF) return false;
       if (Stamina != other.Stamina) return false;
+      if (ServerTimestampMs != other.ServerTimestampMs) return false;
+      if (!object.Equals(BasicInfo, other.BasicInfo)) return false;
+      if (LoginRandom != other.LoginRandom) return false;
+      if (Retcode != other.Retcode) return false;
+      if (KDNPPNHLNOA != other.KDNPPNHLNOA) return false;
+      if (KCDAHNNCKPP != other.KCDAHNNCKPP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -248,16 +248,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (basicInfo_ != null) hash ^= BasicInfo.GetHashCode();
-      if (GIOAPOKHAOF.Length != 0) hash ^= GIOAPOKHAOF.GetHashCode();
-      if (DKEPKHPOLHC.Length != 0) hash ^= DKEPKHPOLHC.GetHashCode();
-      if (LoginRandom != 0UL) hash ^= LoginRandom.GetHashCode();
-      if (ServerTimestampMs != 0UL) hash ^= ServerTimestampMs.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (CurTimezone != 0) hash ^= CurTimezone.GetHashCode();
-      if (KCDAHNNCKPP != false) hash ^= KCDAHNNCKPP.GetHashCode();
-      if (KDNPPNHLNOA != false) hash ^= KDNPPNHLNOA.GetHashCode();
+      if (DKEPKHPOLHC.Length != 0) hash ^= DKEPKHPOLHC.GetHashCode();
+      if (GIOAPOKHAOF.Length != 0) hash ^= GIOAPOKHAOF.GetHashCode();
       if (Stamina != 0) hash ^= Stamina.GetHashCode();
+      if (ServerTimestampMs != 0UL) hash ^= ServerTimestampMs.GetHashCode();
+      if (basicInfo_ != null) hash ^= BasicInfo.GetHashCode();
+      if (LoginRandom != 0UL) hash ^= LoginRandom.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (KDNPPNHLNOA != false) hash ^= KDNPPNHLNOA.GetHashCode();
+      if (KCDAHNNCKPP != false) hash ^= KCDAHNNCKPP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -276,45 +276,45 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (basicInfo_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(BasicInfo);
-      }
-      if (GIOAPOKHAOF.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(GIOAPOKHAOF);
-      }
-      if (ServerTimestampMs != 0UL) {
-        output.WriteRawTag(32);
-        output.WriteUInt64(ServerTimestampMs);
-      }
-      if (LoginRandom != 0UL) {
-        output.WriteRawTag(56);
-        output.WriteUInt64(LoginRandom);
-      }
       if (CurTimezone != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(8);
         output.WriteInt32(CurTimezone);
       }
-      if (KCDAHNNCKPP != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(KCDAHNNCKPP);
-      }
       if (DKEPKHPOLHC.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(26);
         output.WriteString(DKEPKHPOLHC);
       }
-      if (KDNPPNHLNOA != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(KDNPPNHLNOA);
+      if (GIOAPOKHAOF.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(GIOAPOKHAOF);
       }
       if (Stamina != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(Stamina);
       }
+      if (ServerTimestampMs != 0UL) {
+        output.WriteRawTag(48);
+        output.WriteUInt64(ServerTimestampMs);
+      }
+      if (basicInfo_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(BasicInfo);
+      }
+      if (LoginRandom != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(LoginRandom);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
+      }
+      if (KDNPPNHLNOA != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(KDNPPNHLNOA);
+      }
+      if (KCDAHNNCKPP != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(KCDAHNNCKPP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -326,45 +326,45 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (basicInfo_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(BasicInfo);
-      }
-      if (GIOAPOKHAOF.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(GIOAPOKHAOF);
-      }
-      if (ServerTimestampMs != 0UL) {
-        output.WriteRawTag(32);
-        output.WriteUInt64(ServerTimestampMs);
-      }
-      if (LoginRandom != 0UL) {
-        output.WriteRawTag(56);
-        output.WriteUInt64(LoginRandom);
-      }
       if (CurTimezone != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(8);
         output.WriteInt32(CurTimezone);
       }
-      if (KCDAHNNCKPP != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(KCDAHNNCKPP);
-      }
       if (DKEPKHPOLHC.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(26);
         output.WriteString(DKEPKHPOLHC);
       }
-      if (KDNPPNHLNOA != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(KDNPPNHLNOA);
+      if (GIOAPOKHAOF.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(GIOAPOKHAOF);
       }
       if (Stamina != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(Stamina);
       }
+      if (ServerTimestampMs != 0UL) {
+        output.WriteRawTag(48);
+        output.WriteUInt64(ServerTimestampMs);
+      }
+      if (basicInfo_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(BasicInfo);
+      }
+      if (LoginRandom != 0UL) {
+        output.WriteRawTag(72);
+        output.WriteUInt64(LoginRandom);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
+      }
+      if (KDNPPNHLNOA != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(KDNPPNHLNOA);
+      }
+      if (KCDAHNNCKPP != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(KCDAHNNCKPP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -376,35 +376,35 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (basicInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BasicInfo);
-      }
-      if (GIOAPOKHAOF.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(GIOAPOKHAOF);
+      if (CurTimezone != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurTimezone);
       }
       if (DKEPKHPOLHC.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(DKEPKHPOLHC);
       }
-      if (LoginRandom != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(LoginRandom);
+      if (GIOAPOKHAOF.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(GIOAPOKHAOF);
+      }
+      if (Stamina != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Stamina);
       }
       if (ServerTimestampMs != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ServerTimestampMs);
       }
+      if (basicInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BasicInfo);
+      }
+      if (LoginRandom != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(LoginRandom);
+      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (CurTimezone != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurTimezone);
-      }
-      if (KCDAHNNCKPP != false) {
-        size += 1 + 1;
       }
       if (KDNPPNHLNOA != false) {
         size += 1 + 1;
       }
-      if (Stamina != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Stamina);
+      if (KCDAHNNCKPP != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -418,38 +418,38 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.CurTimezone != 0) {
+        CurTimezone = other.CurTimezone;
+      }
+      if (other.DKEPKHPOLHC.Length != 0) {
+        DKEPKHPOLHC = other.DKEPKHPOLHC;
+      }
+      if (other.GIOAPOKHAOF.Length != 0) {
+        GIOAPOKHAOF = other.GIOAPOKHAOF;
+      }
+      if (other.Stamina != 0) {
+        Stamina = other.Stamina;
+      }
+      if (other.ServerTimestampMs != 0UL) {
+        ServerTimestampMs = other.ServerTimestampMs;
+      }
       if (other.basicInfo_ != null) {
         if (basicInfo_ == null) {
           BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
         }
         BasicInfo.MergeFrom(other.BasicInfo);
       }
-      if (other.GIOAPOKHAOF.Length != 0) {
-        GIOAPOKHAOF = other.GIOAPOKHAOF;
-      }
-      if (other.DKEPKHPOLHC.Length != 0) {
-        DKEPKHPOLHC = other.DKEPKHPOLHC;
-      }
       if (other.LoginRandom != 0UL) {
         LoginRandom = other.LoginRandom;
-      }
-      if (other.ServerTimestampMs != 0UL) {
-        ServerTimestampMs = other.ServerTimestampMs;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.CurTimezone != 0) {
-        CurTimezone = other.CurTimezone;
-      }
-      if (other.KCDAHNNCKPP != false) {
-        KCDAHNNCKPP = other.KCDAHNNCKPP;
-      }
       if (other.KDNPPNHLNOA != false) {
         KDNPPNHLNOA = other.KDNPPNHLNOA;
       }
-      if (other.Stamina != 0) {
-        Stamina = other.Stamina;
+      if (other.KCDAHNNCKPP != false) {
+        KCDAHNNCKPP = other.KCDAHNNCKPP;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -470,47 +470,47 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 8: {
+            CurTimezone = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            DKEPKHPOLHC = input.ReadString();
+            break;
+          }
+          case 34: {
+            GIOAPOKHAOF = input.ReadString();
+            break;
+          }
+          case 40: {
+            Stamina = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            ServerTimestampMs = input.ReadUInt64();
+            break;
+          }
+          case 66: {
             if (basicInfo_ == null) {
               BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
             }
             input.ReadMessage(BasicInfo);
             break;
           }
-          case 18: {
-            GIOAPOKHAOF = input.ReadString();
-            break;
-          }
-          case 32: {
-            ServerTimestampMs = input.ReadUInt64();
-            break;
-          }
-          case 56: {
+          case 72: {
             LoginRandom = input.ReadUInt64();
             break;
           }
-          case 64: {
-            CurTimezone = input.ReadInt32();
-            break;
-          }
-          case 72: {
-            KCDAHNNCKPP = input.ReadBool();
-            break;
-          }
-          case 82: {
-            DKEPKHPOLHC = input.ReadString();
-            break;
-          }
-          case 96: {
-            KDNPPNHLNOA = input.ReadBool();
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
           case 104: {
-            Stamina = input.ReadUInt32();
+            KDNPPNHLNOA = input.ReadBool();
             break;
           }
-          case 120: {
-            Retcode = input.ReadUInt32();
+          case 112: {
+            KCDAHNNCKPP = input.ReadBool();
             break;
           }
         }
@@ -532,47 +532,47 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 8: {
+            CurTimezone = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            DKEPKHPOLHC = input.ReadString();
+            break;
+          }
+          case 34: {
+            GIOAPOKHAOF = input.ReadString();
+            break;
+          }
+          case 40: {
+            Stamina = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            ServerTimestampMs = input.ReadUInt64();
+            break;
+          }
+          case 66: {
             if (basicInfo_ == null) {
               BasicInfo = new global::March7thHoney.Proto.PlayerBasicInfo();
             }
             input.ReadMessage(BasicInfo);
             break;
           }
-          case 18: {
-            GIOAPOKHAOF = input.ReadString();
-            break;
-          }
-          case 32: {
-            ServerTimestampMs = input.ReadUInt64();
-            break;
-          }
-          case 56: {
+          case 72: {
             LoginRandom = input.ReadUInt64();
             break;
           }
-          case 64: {
-            CurTimezone = input.ReadInt32();
-            break;
-          }
-          case 72: {
-            KCDAHNNCKPP = input.ReadBool();
-            break;
-          }
-          case 82: {
-            DKEPKHPOLHC = input.ReadString();
-            break;
-          }
-          case 96: {
-            KDNPPNHLNOA = input.ReadBool();
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
           case 104: {
-            Stamina = input.ReadUInt32();
+            KDNPPNHLNOA = input.ReadBool();
             break;
           }
-          case 120: {
-            Retcode = input.ReadUInt32();
+          case 112: {
+            KCDAHNNCKPP = input.ReadBool();
             break;
           }
         }

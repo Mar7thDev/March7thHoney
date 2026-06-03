@@ -7,8 +7,8 @@ import "IODAFIBPAGM.proto";
 import "JEEHGNIBIFE.proto";
 
 message GDGEIAHNDAD {
-    repeated uint32 IFOKHMFNNNF = 15;
+    repeated uint32 IFOKHMFNNNF = 3;
     repeated JEEHGNIBIFE OELPOFLBMIE = 5;
-    repeated IODAFIBPAGM CFNKOBKJKNK = 13;
-    repeated BOLCGIOGIBP ALOOPKCJFEA = 1;
+    repeated BOLCGIOGIBP ALOOPKCJFEA = 8;
+    repeated IODAFIBPAGM CFNKOBKJKNK = 9;
 }

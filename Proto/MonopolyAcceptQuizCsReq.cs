@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1Nb25vcG9seUFjY2VwdFF1aXpDc1JlcS5wcm90bxoRTk5ES0xJQkFMTEMu",
             "cHJvdG8iPAoXTW9ub3BvbHlBY2NlcHRRdWl6Q3NSZXESIQoLT0xHSENITU1N",
-            "SUEYBCADKAsyDC5OTkRLTElCQUxMQ0IWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "SUEYBSADKAsyDC5OTkRLTElCQUxMQ0IWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.NNDKLIBALLCReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OLGHCHMMMIA" field.</summary>
-    public const int OLGHCHMMMIAFieldNumber = 4;
+    public const int OLGHCHMMMIAFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.NNDKLIBALLC> _repeated_oLGHCHMMMIA_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.NNDKLIBALLC.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.NNDKLIBALLC.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.NNDKLIBALLC> oLGHCHMMMIA_ = new pbc::RepeatedField<global::March7thHoney.Proto.NNDKLIBALLC>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 42: {
             oLGHCHMMMIA_.AddEntriesFrom(input, _repeated_oLGHCHMMMIA_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 42: {
             oLGHCHMMMIA_.AddEntriesFrom(ref input, _repeated_oLGHCHMMMIA_codec);
             break;
           }

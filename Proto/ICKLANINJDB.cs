@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static ICKLANINJDBReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFJQ0tMQU5JTkpEQi5wcm90byJICgtJQ0tMQU5JTkpEQhITCgtMTkJLRkZJ",
-            "REVFShgCIAEoDBIPCgdyZXRjb2RlGAsgASgNEhMKC09NRlBJQ0tQT0NQGA0g",
+            "ChFJQ0tMQU5JTkpEQi5wcm90byJICgtJQ0tMQU5JTkpEQhITCgtPTUZQSUNL",
+            "UE9DUBgDIAEoDRITCgtMTkJLRkZJREVFShgJIAEoDBIPCgdyZXRjb2RlGAsg",
             "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ICKLANINJDB), global::March7thHoney.Proto.ICKLANINJDB.Parser, new[]{ "LNBKFFIDEEJ", "Retcode", "OMFPICKPOCP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ICKLANINJDB), global::March7thHoney.Proto.ICKLANINJDB.Parser, new[]{ "OMFPICKPOCP", "LNBKFFIDEEJ", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ICKLANINJDB(ICKLANINJDB other) : this() {
+      oMFPICKPOCP_ = other.oMFPICKPOCP_;
       lNBKFFIDEEJ_ = other.lNBKFFIDEEJ_;
       retcode_ = other.retcode_;
-      oMFPICKPOCP_ = other.oMFPICKPOCP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new ICKLANINJDB(this);
     }
 
+    /// <summary>Field number for the "OMFPICKPOCP" field.</summary>
+    public const int OMFPICKPOCPFieldNumber = 3;
+    private uint oMFPICKPOCP_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint OMFPICKPOCP {
+      get { return oMFPICKPOCP_; }
+      set {
+        oMFPICKPOCP_ = value;
+      }
+    }
+
     /// <summary>Field number for the "LNBKFFIDEEJ" field.</summary>
-    public const int LNBKFFIDEEJFieldNumber = 2;
+    public const int LNBKFFIDEEJFieldNumber = 9;
     private pb::ByteString lNBKFFIDEEJ_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,18 +120,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "OMFPICKPOCP" field.</summary>
-    public const int OMFPICKPOCPFieldNumber = 13;
-    private uint oMFPICKPOCP_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OMFPICKPOCP {
-      get { return oMFPICKPOCP_; }
-      set {
-        oMFPICKPOCP_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (OMFPICKPOCP != other.OMFPICKPOCP) return false;
       if (LNBKFFIDEEJ != other.LNBKFFIDEEJ) return false;
       if (Retcode != other.Retcode) return false;
-      if (OMFPICKPOCP != other.OMFPICKPOCP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (OMFPICKPOCP != 0) hash ^= OMFPICKPOCP.GetHashCode();
       if (LNBKFFIDEEJ.Length != 0) hash ^= LNBKFFIDEEJ.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (OMFPICKPOCP != 0) hash ^= OMFPICKPOCP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (OMFPICKPOCP != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(OMFPICKPOCP);
+      }
       if (LNBKFFIDEEJ.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(74);
         output.WriteBytes(LNBKFFIDEEJ);
       }
       if (Retcode != 0) {
         output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
-      }
-      if (OMFPICKPOCP != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(OMFPICKPOCP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (OMFPICKPOCP != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(OMFPICKPOCP);
+      }
       if (LNBKFFIDEEJ.Length != 0) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(74);
         output.WriteBytes(LNBKFFIDEEJ);
       }
       if (Retcode != 0) {
         output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
-      }
-      if (OMFPICKPOCP != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(OMFPICKPOCP);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (OMFPICKPOCP != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OMFPICKPOCP);
+      }
       if (LNBKFFIDEEJ.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(LNBKFFIDEEJ);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (OMFPICKPOCP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OMFPICKPOCP);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.OMFPICKPOCP != 0) {
+        OMFPICKPOCP = other.OMFPICKPOCP;
+      }
       if (other.LNBKFFIDEEJ.Length != 0) {
         LNBKFFIDEEJ = other.LNBKFFIDEEJ;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      if (other.OMFPICKPOCP != 0) {
-        OMFPICKPOCP = other.OMFPICKPOCP;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 24: {
+            OMFPICKPOCP = input.ReadUInt32();
+            break;
+          }
+          case 74: {
             LNBKFFIDEEJ = input.ReadBytes();
             break;
           }
           case 88: {
             Retcode = input.ReadUInt32();
-            break;
-          }
-          case 104: {
-            OMFPICKPOCP = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 24: {
+            OMFPICKPOCP = input.ReadUInt32();
+            break;
+          }
+          case 74: {
             LNBKFFIDEEJ = input.ReadBytes();
             break;
           }
           case 88: {
             Retcode = input.ReadUInt32();
-            break;
-          }
-          case 104: {
-            OMFPICKPOCP = input.ReadUInt32();
             break;
           }
         }

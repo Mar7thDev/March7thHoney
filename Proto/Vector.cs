@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static VectorReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxWZWN0b3IucHJvdG8iKQoGVmVjdG9yEgkKAXkYAiABKBESCQoBehgDIAEo",
-            "ERIJCgF4GAEgASgRQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "CgxWZWN0b3IucHJvdG8iKQoGVmVjdG9yEgkKAXgYASABKBESCQoBeRgCIAEo",
+            "ERIJCgF6GAMgASgRQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Vector), global::March7thHoney.Proto.Vector.Parser, new[]{ "Y", "Z", "X" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Vector), global::March7thHoney.Proto.Vector.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null)
           }));
     }
     #endregion
@@ -71,9 +71,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Vector(Vector other) : this() {
+      x_ = other.x_;
       y_ = other.y_;
       z_ = other.z_;
-      x_ = other.x_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,6 +81,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Vector Clone() {
       return new Vector(this);
+    }
+
+    /// <summary>Field number for the "x" field.</summary>
+    public const int XFieldNumber = 1;
+    private int x_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int X {
+      get { return x_; }
+      set {
+        x_ = value;
+      }
     }
 
     /// <summary>Field number for the "y" field.</summary>
@@ -107,18 +119,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "x" field.</summary>
-    public const int XFieldNumber = 1;
-    private int x_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int X {
-      get { return x_; }
-      set {
-        x_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -134,9 +134,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (X != other.X) return false;
       if (Y != other.Y) return false;
       if (Z != other.Z) return false;
-      if (X != other.X) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -144,9 +144,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (X != 0) hash ^= X.GetHashCode();
       if (Y != 0) hash ^= Y.GetHashCode();
       if (Z != 0) hash ^= Z.GetHashCode();
-      if (X != 0) hash ^= X.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -209,14 +209,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (X != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(X);
+      }
       if (Y != 0) {
         size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Y);
       }
       if (Z != 0) {
         size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Z);
-      }
-      if (X != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(X);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -230,14 +230,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.X != 0) {
+        X = other.X;
+      }
       if (other.Y != 0) {
         Y = other.Y;
       }
       if (other.Z != 0) {
         Z = other.Z;
-      }
-      if (other.X != 0) {
-        X = other.X;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

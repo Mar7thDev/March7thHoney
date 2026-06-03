@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static GCLPBMPOHLIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFHQ0xQQk1QT0hMSS5wcm90byJeCgtHQ0xQQk1QT0hMSRIQCghwYW5lbF9p",
-            "ZBgEIAEoDRITCgtKTUdQRkVHTENHRxgIIAEoDRITCgtGQU9BR0tQUE5HThgK",
-            "IAEoDRITCgtMRk9IRUJDTk1EUBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "ChFHQ0xQQk1QT0hMSS5wcm90byJeCgtHQ0xQQk1QT0hMSRITCgtGQU9BR0tQ",
+            "UE5HThgCIAEoDRITCgtKTUdQRkVHTENHRxgFIAEoDRIQCghwYW5lbF9pZBgI",
+            "IAEoDRITCgtMRk9IRUJDTk1EUBgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
             "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GCLPBMPOHLI), global::March7thHoney.Proto.GCLPBMPOHLI.Parser, new[]{ "PanelId", "JMGPFEGLCGG", "FAOAGKPPNGN", "LFOHEBCNMDP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GCLPBMPOHLI), global::March7thHoney.Proto.GCLPBMPOHLI.Parser, new[]{ "FAOAGKPPNGN", "JMGPFEGLCGG", "PanelId", "LFOHEBCNMDP" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GCLPBMPOHLI(GCLPBMPOHLI other) : this() {
-      panelId_ = other.panelId_;
-      jMGPFEGLCGG_ = other.jMGPFEGLCGG_;
       fAOAGKPPNGN_ = other.fAOAGKPPNGN_;
+      jMGPFEGLCGG_ = other.jMGPFEGLCGG_;
+      panelId_ = other.panelId_;
       lFOHEBCNMDP_ = other.lFOHEBCNMDP_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -86,32 +86,8 @@ namespace March7thHoney.Proto {
       return new GCLPBMPOHLI(this);
     }
 
-    /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 4;
-    private uint panelId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PanelId {
-      get { return panelId_; }
-      set {
-        panelId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "JMGPFEGLCGG" field.</summary>
-    public const int JMGPFEGLCGGFieldNumber = 8;
-    private uint jMGPFEGLCGG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint JMGPFEGLCGG {
-      get { return jMGPFEGLCGG_; }
-      set {
-        jMGPFEGLCGG_ = value;
-      }
-    }
-
     /// <summary>Field number for the "FAOAGKPPNGN" field.</summary>
-    public const int FAOAGKPPNGNFieldNumber = 10;
+    public const int FAOAGKPPNGNFieldNumber = 2;
     private uint fAOAGKPPNGN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,8 +98,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "JMGPFEGLCGG" field.</summary>
+    public const int JMGPFEGLCGGFieldNumber = 5;
+    private uint jMGPFEGLCGG_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint JMGPFEGLCGG {
+      get { return jMGPFEGLCGG_; }
+      set {
+        jMGPFEGLCGG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "panel_id" field.</summary>
+    public const int PanelIdFieldNumber = 8;
+    private uint panelId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PanelId {
+      get { return panelId_; }
+      set {
+        panelId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "LFOHEBCNMDP" field.</summary>
-    public const int LFOHEBCNMDPFieldNumber = 15;
+    public const int LFOHEBCNMDPFieldNumber = 11;
     private uint lFOHEBCNMDP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,9 +149,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PanelId != other.PanelId) return false;
-      if (JMGPFEGLCGG != other.JMGPFEGLCGG) return false;
       if (FAOAGKPPNGN != other.FAOAGKPPNGN) return false;
+      if (JMGPFEGLCGG != other.JMGPFEGLCGG) return false;
+      if (PanelId != other.PanelId) return false;
       if (LFOHEBCNMDP != other.LFOHEBCNMDP) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -160,9 +160,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PanelId != 0) hash ^= PanelId.GetHashCode();
-      if (JMGPFEGLCGG != 0) hash ^= JMGPFEGLCGG.GetHashCode();
       if (FAOAGKPPNGN != 0) hash ^= FAOAGKPPNGN.GetHashCode();
+      if (JMGPFEGLCGG != 0) hash ^= JMGPFEGLCGG.GetHashCode();
+      if (PanelId != 0) hash ^= PanelId.GetHashCode();
       if (LFOHEBCNMDP != 0) hash ^= LFOHEBCNMDP.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -182,20 +182,20 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PanelId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(PanelId);
-      }
-      if (JMGPFEGLCGG != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(JMGPFEGLCGG);
-      }
       if (FAOAGKPPNGN != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteUInt32(FAOAGKPPNGN);
       }
+      if (JMGPFEGLCGG != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(JMGPFEGLCGG);
+      }
+      if (PanelId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(PanelId);
+      }
       if (LFOHEBCNMDP != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(LFOHEBCNMDP);
       }
       if (_unknownFields != null) {
@@ -208,20 +208,20 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PanelId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(PanelId);
-      }
-      if (JMGPFEGLCGG != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(JMGPFEGLCGG);
-      }
       if (FAOAGKPPNGN != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteUInt32(FAOAGKPPNGN);
       }
+      if (JMGPFEGLCGG != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(JMGPFEGLCGG);
+      }
+      if (PanelId != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(PanelId);
+      }
       if (LFOHEBCNMDP != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(LFOHEBCNMDP);
       }
       if (_unknownFields != null) {
@@ -234,14 +234,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PanelId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
+      if (FAOAGKPPNGN != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FAOAGKPPNGN);
       }
       if (JMGPFEGLCGG != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JMGPFEGLCGG);
       }
-      if (FAOAGKPPNGN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FAOAGKPPNGN);
+      if (PanelId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
       }
       if (LFOHEBCNMDP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LFOHEBCNMDP);
@@ -258,14 +258,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PanelId != 0) {
-        PanelId = other.PanelId;
+      if (other.FAOAGKPPNGN != 0) {
+        FAOAGKPPNGN = other.FAOAGKPPNGN;
       }
       if (other.JMGPFEGLCGG != 0) {
         JMGPFEGLCGG = other.JMGPFEGLCGG;
       }
-      if (other.FAOAGKPPNGN != 0) {
-        FAOAGKPPNGN = other.FAOAGKPPNGN;
+      if (other.PanelId != 0) {
+        PanelId = other.PanelId;
       }
       if (other.LFOHEBCNMDP != 0) {
         LFOHEBCNMDP = other.LFOHEBCNMDP;
@@ -289,19 +289,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            PanelId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            JMGPFEGLCGG = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 16: {
             FAOAGKPPNGN = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 40: {
+            JMGPFEGLCGG = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            PanelId = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             LFOHEBCNMDP = input.ReadUInt32();
             break;
           }
@@ -324,19 +324,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            PanelId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            JMGPFEGLCGG = input.ReadUInt32();
-            break;
-          }
-          case 80: {
+          case 16: {
             FAOAGKPPNGN = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 40: {
+            JMGPFEGLCGG = input.ReadUInt32();
+            break;
+          }
+          case 64: {
+            PanelId = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             LFOHEBCNMDP = input.ReadUInt32();
             break;
           }

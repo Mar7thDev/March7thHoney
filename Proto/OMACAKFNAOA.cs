@@ -24,11 +24,11 @@ namespace March7thHoney.Proto {
     static OMACAKFNAOAReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFPTUFDQUtGTkFPQS5wcm90bxoRQVBBTUZDS0ZITEwucHJvdG8iMAoLT01B",
-            "Q0FLRk5BT0ESIQoLSUhGRUJOQkhERk0YBiADKAsyDC5BUEFNRkNLRkhMTEIW",
-            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFPTUFDQUtGTkFPQS5wcm90bxoJS1ZQLnByb3RvIigKC09NQUNBS0ZOQU9B",
+            "EhkKC0lIRkVCTkJIREZNGAMgAygLMgQuS1ZQQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.APAMFCKFHLLReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.KVPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OMACAKFNAOA), global::March7thHoney.Proto.OMACAKFNAOA.Parser, new[]{ "IHFEBNBHDFM" }, null, null, null, null)
           }));
@@ -83,13 +83,13 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IHFEBNBHDFM" field.</summary>
-    public const int IHFEBNBHDFMFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.APAMFCKFHLL> _repeated_iHFEBNBHDFM_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.APAMFCKFHLL.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.APAMFCKFHLL> iHFEBNBHDFM_ = new pbc::RepeatedField<global::March7thHoney.Proto.APAMFCKFHLL>();
+    public const int IHFEBNBHDFMFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.KVP> _repeated_iHFEBNBHDFM_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.KVP.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.KVP> iHFEBNBHDFM_ = new pbc::RepeatedField<global::March7thHoney.Proto.KVP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.APAMFCKFHLL> IHFEBNBHDFM {
+    public pbc::RepeatedField<global::March7thHoney.Proto.KVP> IHFEBNBHDFM {
       get { return iHFEBNBHDFM_; }
     }
 
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 26: {
             iHFEBNBHDFM_.AddEntriesFrom(input, _repeated_iHFEBNBHDFM_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 26: {
             iHFEBNBHDFM_.AddEntriesFrom(ref input, _repeated_iHFEBNBHDFM_codec);
             break;
           }

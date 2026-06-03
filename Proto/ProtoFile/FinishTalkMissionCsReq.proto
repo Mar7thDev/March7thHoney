@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MissionCustomValue.proto";
 
 message FinishTalkMissionCsReq {
-    repeated MissionCustomValue custom_value_list = 5;
-    string talk_str = 15;
-    uint32 sub_mission_id = 9;
+    string talk_str = 5;
+    repeated MissionCustomValue custom_value_list = 9;
+    uint32 sub_mission_id = 14;
 }

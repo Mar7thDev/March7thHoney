@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EGELHCKMLNK {
-    uint32 FDEAKDCDGML = 13;
-    uint32 retcode = 11;
-    uint32 panel_id = 1;
-    uint32 group_id = 4;
+    uint32 retcode = 9;
+    uint32 FDEAKDCDGML = 10;
+    uint32 group_id = 12;
+    uint32 panel_id = 14;
 }

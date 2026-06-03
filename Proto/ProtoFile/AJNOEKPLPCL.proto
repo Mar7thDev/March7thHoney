@@ -3,12 +3,11 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AJNOEKPLPCL {
-    uint32 KHGGMKAFFLF = 13;
-    uint32 battle_id = 4;
-    uint32 ICKJKIENKFI = 14;
-    uint32 PKKDALHLCLA = 9;
-    uint32 FMCPHDJEIDC = 11;
+    uint32 DNAPFBANFHJ = 3;
+    uint32 ICKJKIENKFI = 4;
+    bool MJIPOJPBKNB = 6;
+    uint32 cur_layer = 7;
+    uint32 FMCPHDJEIDC = 8;
+    uint32 PKKDALHLCLA = 14;
     uint32 IEOGEFBLNEL = 15;
-    uint32 DNAPFBANFHJ = 1;
-    bool MJIPOJPBKNB = 2;
 }

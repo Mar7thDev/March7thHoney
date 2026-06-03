@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ActivityScheduleData.proto";
 
 message GetActivityScheduleConfigScRsp {
-    repeated ActivityScheduleData schedule_data = 1;
-    uint32 retcode = 15;
+    repeated ActivityScheduleData schedule_data = 7;
+    uint32 retcode = 8;
 }

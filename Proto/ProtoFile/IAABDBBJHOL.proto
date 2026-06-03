@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message IAABDBBJHOL {
+    bool is_overlock = 1;
     uint32 LJNGPCKPJLF = 7;
-    bool is_overlock = 2;
-    uint32 division_id = 10;
+    uint32 division_id = 14;
 }

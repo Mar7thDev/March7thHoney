@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFIREhMSE5FQUNIUC5wcm90bxoQQXZhdGFyVHlwZS5wcm90byJfCgtIREhM",
-            "SE5FQUNIUBITCgtFTkVJSEdEQVBEQRgOIAEoCBIgCgthdmF0YXJfdHlwZRgE",
-            "IAEoDjILLkF2YXRhclR5cGUSCgoCaWQYAiABKA0SDQoFbGV2ZWwYByABKA1C",
+            "SE5FQUNIUBIKCgJpZBgEIAEoDRINCgVsZXZlbBgGIAEoDRIgCgthdmF0YXJf",
+            "dHlwZRgKIAEoDjILLkF2YXRhclR5cGUSEwoLaXNfdXBncmFkZWQYDyABKAhC",
             "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HDHLHNEACHP), global::March7thHoney.Proto.HDHLHNEACHP.Parser, new[]{ "ENEIHGDAPDA", "AvatarType", "Id", "Level" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HDHLHNEACHP), global::March7thHoney.Proto.HDHLHNEACHP.Parser, new[]{ "Id", "Level", "AvatarType", "IsUpgraded" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HDHLHNEACHP(HDHLHNEACHP other) : this() {
-      eNEIHGDAPDA_ = other.eNEIHGDAPDA_;
-      avatarType_ = other.avatarType_;
       id_ = other.id_;
       level_ = other.level_;
+      avatarType_ = other.avatarType_;
+      isUpgraded_ = other.isUpgraded_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,32 +86,8 @@ namespace March7thHoney.Proto {
       return new HDHLHNEACHP(this);
     }
 
-    /// <summary>Field number for the "ENEIHGDAPDA" field.</summary>
-    public const int ENEIHGDAPDAFieldNumber = 14;
-    private bool eNEIHGDAPDA_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool ENEIHGDAPDA {
-      get { return eNEIHGDAPDA_; }
-      set {
-        eNEIHGDAPDA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "avatar_type" field.</summary>
-    public const int AvatarTypeFieldNumber = 4;
-    private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.AvatarType AvatarType {
-      get { return avatarType_; }
-      set {
-        avatarType_ = value;
-      }
-    }
-
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 2;
+    public const int IdFieldNumber = 4;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +99,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 7;
+    public const int LevelFieldNumber = 6;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +107,30 @@ namespace March7thHoney.Proto {
       get { return level_; }
       set {
         level_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_type" field.</summary>
+    public const int AvatarTypeFieldNumber = 10;
+    private global::March7thHoney.Proto.AvatarType avatarType_ = global::March7thHoney.Proto.AvatarType.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.AvatarType AvatarType {
+      get { return avatarType_; }
+      set {
+        avatarType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_upgraded" field.</summary>
+    public const int IsUpgradedFieldNumber = 15;
+    private bool isUpgraded_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsUpgraded {
+      get { return isUpgraded_; }
+      set {
+        isUpgraded_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ENEIHGDAPDA != other.ENEIHGDAPDA) return false;
-      if (AvatarType != other.AvatarType) return false;
       if (Id != other.Id) return false;
       if (Level != other.Level) return false;
+      if (AvatarType != other.AvatarType) return false;
+      if (IsUpgraded != other.IsUpgraded) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ENEIHGDAPDA != false) hash ^= ENEIHGDAPDA.GetHashCode();
-      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) hash ^= AvatarType.GetHashCode();
+      if (IsUpgraded != false) hash ^= IsUpgraded.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,20 +183,20 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Id != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteUInt32(Id);
       }
-      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) AvatarType);
-      }
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(Level);
       }
-      if (ENEIHGDAPDA != false) {
-        output.WriteRawTag(112);
-        output.WriteBool(ENEIHGDAPDA);
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) AvatarType);
+      }
+      if (IsUpgraded != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(IsUpgraded);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,20 +209,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(32);
         output.WriteUInt32(Id);
       }
-      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) AvatarType);
-      }
       if (Level != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(Level);
       }
-      if (ENEIHGDAPDA != false) {
-        output.WriteRawTag(112);
-        output.WriteBool(ENEIHGDAPDA);
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) AvatarType);
+      }
+      if (IsUpgraded != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(IsUpgraded);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ENEIHGDAPDA != false) {
-        size += 1 + 1;
-      }
-      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
-      }
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      }
+      if (AvatarType != global::March7thHoney.Proto.AvatarType.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AvatarType);
+      }
+      if (IsUpgraded != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ENEIHGDAPDA != false) {
-        ENEIHGDAPDA = other.ENEIHGDAPDA;
-      }
-      if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
-        AvatarType = other.AvatarType;
-      }
       if (other.Id != 0) {
         Id = other.Id;
       }
       if (other.Level != 0) {
         Level = other.Level;
+      }
+      if (other.AvatarType != global::March7thHoney.Proto.AvatarType.None) {
+        AvatarType = other.AvatarType;
+      }
+      if (other.IsUpgraded != false) {
+        IsUpgraded = other.IsUpgraded;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 32: {
             Id = input.ReadUInt32();
             break;
           }
-          case 32: {
-            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
-            break;
-          }
-          case 56: {
+          case 48: {
             Level = input.ReadUInt32();
             break;
           }
-          case 112: {
-            ENEIHGDAPDA = input.ReadBool();
+          case 80: {
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
+            break;
+          }
+          case 120: {
+            IsUpgraded = input.ReadBool();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 32: {
             Id = input.ReadUInt32();
             break;
           }
-          case 32: {
-            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
-            break;
-          }
-          case 56: {
+          case 48: {
             Level = input.ReadUInt32();
             break;
           }
-          case 112: {
-            ENEIHGDAPDA = input.ReadBool();
+          case 80: {
+            AvatarType = (global::March7thHoney.Proto.AvatarType) input.ReadEnum();
+            break;
+          }
+          case 120: {
+            IsUpgraded = input.ReadBool();
             break;
           }
         }

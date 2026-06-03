@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MIKGMGBHLEN.proto";
 
 message SocialPlayTalkScRsp {
-    MIKGMGBHLEN PHKCDLPHMPA = 10;
-    int64 end_time = 7;
-    uint32 retcode = 2;
+    int64 end_time = 11;
+    uint32 retcode = 13;
+    MIKGMGBHLEN PHKCDLPHMPA = 15;
 }

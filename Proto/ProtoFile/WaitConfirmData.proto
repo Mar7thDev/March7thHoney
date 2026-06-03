@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message WaitConfirmData {
-    repeated uint32 finished_target_list = 12;
-    bool is_wait_confirm = 11;
-    uint32 peak_id = 1;
-    uint32 cycles_used = 5;
+    bool is_wait_confirm = 3;
+    uint32 cycles_used = 7;
+    repeated uint32 finished_target_list = 9;
+    uint32 peak_id = 14;
 }

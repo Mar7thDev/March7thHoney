@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChRFbnRpdHlTbmFwc2hvdC5wcm90bxoRQUJQRUVBTEdLQU8ucHJvdG8aGE1v",
             "dGlvbkluZm9TbmFwc2hvdC5wcm90bxoWUHJvcEluZm9TbmFwc2hvdC5wcm90",
-            "byKqAQoORW50aXR5U25hcHNob3QSKAoLbW90aW9uX2luZm8YAyABKAsyEy5N",
-            "b3Rpb25JbmZvU25hcHNob3QSEwoLaW5zdGFuY2VfaWQYAiABKA0SJQoPbWFw",
-            "X29iamVjdF90eXBlGAQgASgOMgwuQUJQRUVBTEdLQU8SEQoJZW50aXR5X2lk",
-            "GAEgASgNEh8KBHByb3AYBSABKAsyES5Qcm9wSW5mb1NuYXBzaG90QhaqAhNN",
+            "byKqAQoORW50aXR5U25hcHNob3QSEQoJZW50aXR5X2lkGAEgASgNEhMKC2lu",
+            "c3RhbmNlX2lkGAIgASgNEigKC21vdGlvbl9pbmZvGAMgASgLMhMuTW90aW9u",
+            "SW5mb1NuYXBzaG90EiUKD21hcF9vYmplY3RfdHlwZRgEIAEoDjIMLkFCUEVF",
+            "QUxHS0FPEh8KBHByb3AYBSABKAsyES5Qcm9wSW5mb1NuYXBzaG90QhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ABPEEALGKAOReflection.Descriptor, global::March7thHoney.Proto.MotionInfoSnapshotReflection.Descriptor, global::March7thHoney.Proto.PropInfoSnapshotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EntitySnapshot), global::March7thHoney.Proto.EntitySnapshot.Parser, new[]{ "MotionInfo", "InstanceId", "MapObjectType", "EntityId", "Prop" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EntitySnapshot), global::March7thHoney.Proto.EntitySnapshot.Parser, new[]{ "EntityId", "InstanceId", "MotionInfo", "MapObjectType", "Prop" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,10 +76,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EntitySnapshot(EntitySnapshot other) : this() {
-      motionInfo_ = other.motionInfo_ != null ? other.motionInfo_.Clone() : null;
-      instanceId_ = other.instanceId_;
-      mapObjectType_ = other.mapObjectType_;
       entityId_ = other.entityId_;
+      instanceId_ = other.instanceId_;
+      motionInfo_ = other.motionInfo_ != null ? other.motionInfo_.Clone() : null;
+      mapObjectType_ = other.mapObjectType_;
       prop_ = other.prop_ != null ? other.prop_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -90,15 +90,15 @@ namespace March7thHoney.Proto {
       return new EntitySnapshot(this);
     }
 
-    /// <summary>Field number for the "motion_info" field.</summary>
-    public const int MotionInfoFieldNumber = 3;
-    private global::March7thHoney.Proto.MotionInfoSnapshot motionInfo_;
+    /// <summary>Field number for the "entity_id" field.</summary>
+    public const int EntityIdFieldNumber = 1;
+    private uint entityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MotionInfoSnapshot MotionInfo {
-      get { return motionInfo_; }
+    public uint EntityId {
+      get { return entityId_; }
       set {
-        motionInfo_ = value;
+        entityId_ = value;
       }
     }
 
@@ -114,6 +114,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "motion_info" field.</summary>
+    public const int MotionInfoFieldNumber = 3;
+    private global::March7thHoney.Proto.MotionInfoSnapshot motionInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MotionInfoSnapshot MotionInfo {
+      get { return motionInfo_; }
+      set {
+        motionInfo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "map_object_type" field.</summary>
     public const int MapObjectTypeFieldNumber = 4;
     private global::March7thHoney.Proto.ABPEEALGKAO mapObjectType_ = global::March7thHoney.Proto.ABPEEALGKAO.Fkmokgobehj;
@@ -123,18 +135,6 @@ namespace March7thHoney.Proto {
       get { return mapObjectType_; }
       set {
         mapObjectType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "entity_id" field.</summary>
-    public const int EntityIdFieldNumber = 1;
-    private uint entityId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EntityId {
-      get { return entityId_; }
-      set {
-        entityId_ = value;
       }
     }
 
@@ -165,10 +165,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(MotionInfo, other.MotionInfo)) return false;
-      if (InstanceId != other.InstanceId) return false;
-      if (MapObjectType != other.MapObjectType) return false;
       if (EntityId != other.EntityId) return false;
+      if (InstanceId != other.InstanceId) return false;
+      if (!object.Equals(MotionInfo, other.MotionInfo)) return false;
+      if (MapObjectType != other.MapObjectType) return false;
       if (!object.Equals(Prop, other.Prop)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -177,10 +177,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (motionInfo_ != null) hash ^= MotionInfo.GetHashCode();
-      if (InstanceId != 0) hash ^= InstanceId.GetHashCode();
-      if (MapObjectType != global::March7thHoney.Proto.ABPEEALGKAO.Fkmokgobehj) hash ^= MapObjectType.GetHashCode();
       if (EntityId != 0) hash ^= EntityId.GetHashCode();
+      if (InstanceId != 0) hash ^= InstanceId.GetHashCode();
+      if (motionInfo_ != null) hash ^= MotionInfo.GetHashCode();
+      if (MapObjectType != global::March7thHoney.Proto.ABPEEALGKAO.Fkmokgobehj) hash ^= MapObjectType.GetHashCode();
       if (prop_ != null) hash ^= Prop.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -260,17 +260,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (motionInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MotionInfo);
+      if (EntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntityId);
       }
       if (InstanceId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InstanceId);
       }
+      if (motionInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MotionInfo);
+      }
       if (MapObjectType != global::March7thHoney.Proto.ABPEEALGKAO.Fkmokgobehj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MapObjectType);
-      }
-      if (EntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntityId);
       }
       if (prop_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Prop);
@@ -287,20 +287,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.EntityId != 0) {
+        EntityId = other.EntityId;
+      }
+      if (other.InstanceId != 0) {
+        InstanceId = other.InstanceId;
+      }
       if (other.motionInfo_ != null) {
         if (motionInfo_ == null) {
           MotionInfo = new global::March7thHoney.Proto.MotionInfoSnapshot();
         }
         MotionInfo.MergeFrom(other.MotionInfo);
       }
-      if (other.InstanceId != 0) {
-        InstanceId = other.InstanceId;
-      }
       if (other.MapObjectType != global::March7thHoney.Proto.ABPEEALGKAO.Fkmokgobehj) {
         MapObjectType = other.MapObjectType;
-      }
-      if (other.EntityId != 0) {
-        EntityId = other.EntityId;
       }
       if (other.prop_ != null) {
         if (prop_ == null) {

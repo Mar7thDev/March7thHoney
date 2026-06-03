@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BEBNHPCBMPF.proto";
 
 message SetRelicBoxCustomCsReq {
-    BEBNHPCBMPF EBDIOJPDJIH = 10;
-    repeated BEBNHPCBMPF JKKFJHKHFPL = 15;
+    repeated BEBNHPCBMPF JKKFJHKHFPL = 7;
+    BEBNHPCBMPF EBDIOJPDJIH = 9;
 }

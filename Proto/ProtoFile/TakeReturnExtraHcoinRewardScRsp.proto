@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message TakeReturnExtraHcoinRewardScRsp {
-    ItemList reward = 6;
-    uint32 CFCNIPLEKON = 1;
-    uint32 retcode = 2;
+    uint32 retcode = 10;
+    ItemList reward = 13;
+    uint32 CFCNIPLEKON = 15;
 }

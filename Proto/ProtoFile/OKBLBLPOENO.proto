@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KOFMGCNIMIN.proto";
 
 message OKBLBLPOENO {
-    KOFMGCNIMIN ANBKDJKHCBI = 12;
+    KOFMGCNIMIN miracle = 7;
 }

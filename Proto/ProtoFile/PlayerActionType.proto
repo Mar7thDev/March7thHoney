@@ -255,7 +255,7 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionChallengeTierceRecommendLineup = 2281;
     PlayerActionType_PlayerActionChallengeTierceStart = 2282;
     PlayerActionType_PlayerActionChallengeTierceBattleEnd = 2283;
-    PlayerActionType_PlayerActionChallengeTierceStageSettle = 2284;
+    PlayerActionType_PlayerActionChallengeTierceSyncSingleStage = 2284;
     PlayerActionType_PlayerActionChallengeTierceGradeReset = 2285;
     PlayerActionType_PlayerActionTeamInfoChange = 2301;
     PlayerActionType_PlayerActionChangeCurrentAvatar = 2302;
@@ -835,6 +835,7 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionMatch3RoyaleRoundEnd = 6324;
     PlayerActionType_PlayerActionDiceCombatSettle = 6325;
     PlayerActionType_PlayerActionDiceCombatV2Settle = 6326;
+    PlayerActionType_PlayerActionTeamTowersSettle = 6327;
     PlayerActionType_PlayerActionSwordTrainingLearnSkill = 6351;
     PlayerActionType_PlayerActionSwordTrainingNormalAction = 6352;
     PlayerActionType_PlayerActionSwordTrainingStoryEffect = 6353;
@@ -1110,6 +1111,9 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionGridFightFormationEdit = 7291;
     PlayerActionType_PlayerActionGridFightModifierUpdate = 7292;
     PlayerActionType_PlayerActionGridFightFormationUgcUpdate = 7293;
+    PlayerActionType_PlayerActionGridFightPartnerRoleChoose = 7294;
+    PlayerActionType_PlayerActionGridFightPrayQuestSelect = 7295;
+    PlayerActionType_PlayerActionGridFightPrayQuestFinish = 7296;
     PlayerActionType_PlayerActionLocalLegendBattleBegin = 7361;
     PlayerActionType_PlayerActionLocalLegendBattleEnd = 7362;
     PlayerActionType_PlayerActionDiceCombatBuyShopGood = 7351;
@@ -1210,6 +1214,9 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionChenLingBattleCloneEntity = 7523;
     PlayerActionType_PlayerActionCycleScoreChange = 7541;
     PlayerActionType_PlayerActionCycleScoreTakeReward = 7542;
+    PlayerActionType_PlayerActionFateRinFightStart = 7546;
+    PlayerActionType_PlayerActionFateRinFightEnd = 7547;
+    PlayerActionType_PlayerActionFateRinDeckModify = 7548;
     PlayerActionType_PlayerActionRelicPresetPlanSave = 7581;
     PlayerActionType_PlayerActionRelicPresetPlanDelete = 7582;
     PlayerActionType_PlayerActionRelicPresetPlanModifyName = 7583;
@@ -1235,4 +1242,8 @@ enum PlayerActionType {
     PlayerActionType_PlayerActionChenLingFesBusinessDayEnd = 7642;
     PlayerActionType_PlayerActionChenLingFesPhaseSettle = 7643;
     PlayerActionType_PlayerActionChenLingFesLevelSettle = 7644;
+    PlayerActionType_PlayerActionChooseDeliveryChoose = 7661;
+    PlayerActionType_PlayerActionTeamTowersPveEnd = 7671;
+    PlayerActionType_PlayerActionTeamTowersPvpStart = 7672;
+    PlayerActionType_PlayerActionTeamTowersPvpEnd = 7673;
 }

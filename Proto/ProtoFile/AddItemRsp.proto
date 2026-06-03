@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message AddItemRsp {
-    ItemList reward = 11;
-    int64 unlock_timestamp = 6;
+    int64 unlock_time = 7;
+    ItemList reward = 8;
     oneof FJIANHMABAB {
-        uint32 avatar_id = 5;
-        uint32 CLEKAKLPNBP = 7;
+        uint32 avatar_id = 6;
+        uint32 CLEKAKLPNBP = 2;
     }
 }

@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static FGHIMGPGBNFReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFGR0hJTUdQR0JORi5wcm90byJMCgtGR0hJTUdQR0JORhITCgtPR09JTE1M",
-            "UERFTxgNIAMoDRITCgtGT0hJRklNSEVOThgGIAEoDRITCgtIRUxKTkhORENK",
-            "UBgCIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFGR0hJTUdQR0JORi5wcm90byJMCgtGR0hJTUdQR0JORhITCgtGT0hJRklN",
+            "SEVOThgEIAEoDRITCgtpc19zZWxlY3RlZBgHIAEoCBITCgtPR09JTE1MUERF",
+            "TxgLIAMoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FGHIMGPGBNF), global::March7thHoney.Proto.FGHIMGPGBNF.Parser, new[]{ "OGOILMLPDEO", "FOHIFIMHENN", "HELJNHNDCJP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FGHIMGPGBNF), global::March7thHoney.Proto.FGHIMGPGBNF.Parser, new[]{ "FOHIFIMHENN", "IsSelected", "OGOILMLPDEO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FGHIMGPGBNF(FGHIMGPGBNF other) : this() {
-      oGOILMLPDEO_ = other.oGOILMLPDEO_.Clone();
       fOHIFIMHENN_ = other.fOHIFIMHENN_;
-      hELJNHNDCJP_ = other.hELJNHNDCJP_;
+      isSelected_ = other.isSelected_;
+      oGOILMLPDEO_ = other.oGOILMLPDEO_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,19 +84,8 @@ namespace March7thHoney.Proto {
       return new FGHIMGPGBNF(this);
     }
 
-    /// <summary>Field number for the "OGOILMLPDEO" field.</summary>
-    public const int OGOILMLPDEOFieldNumber = 13;
-    private static readonly pb::FieldCodec<uint> _repeated_oGOILMLPDEO_codec
-        = pb::FieldCodec.ForUInt32(106);
-    private readonly pbc::RepeatedField<uint> oGOILMLPDEO_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OGOILMLPDEO {
-      get { return oGOILMLPDEO_; }
-    }
-
     /// <summary>Field number for the "FOHIFIMHENN" field.</summary>
-    public const int FOHIFIMHENNFieldNumber = 6;
+    public const int FOHIFIMHENNFieldNumber = 4;
     private uint fOHIFIMHENN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -107,16 +96,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HELJNHNDCJP" field.</summary>
-    public const int HELJNHNDCJPFieldNumber = 2;
-    private bool hELJNHNDCJP_;
+    /// <summary>Field number for the "is_selected" field.</summary>
+    public const int IsSelectedFieldNumber = 7;
+    private bool isSelected_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HELJNHNDCJP {
-      get { return hELJNHNDCJP_; }
+    public bool IsSelected {
+      get { return isSelected_; }
       set {
-        hELJNHNDCJP_ = value;
+        isSelected_ = value;
       }
+    }
+
+    /// <summary>Field number for the "OGOILMLPDEO" field.</summary>
+    public const int OGOILMLPDEOFieldNumber = 11;
+    private static readonly pb::FieldCodec<uint> _repeated_oGOILMLPDEO_codec
+        = pb::FieldCodec.ForUInt32(90);
+    private readonly pbc::RepeatedField<uint> oGOILMLPDEO_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OGOILMLPDEO {
+      get { return oGOILMLPDEO_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -134,9 +134,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!oGOILMLPDEO_.Equals(other.oGOILMLPDEO_)) return false;
       if (FOHIFIMHENN != other.FOHIFIMHENN) return false;
-      if (HELJNHNDCJP != other.HELJNHNDCJP) return false;
+      if (IsSelected != other.IsSelected) return false;
+      if(!oGOILMLPDEO_.Equals(other.oGOILMLPDEO_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -144,9 +144,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= oGOILMLPDEO_.GetHashCode();
       if (FOHIFIMHENN != 0) hash ^= FOHIFIMHENN.GetHashCode();
-      if (HELJNHNDCJP != false) hash ^= HELJNHNDCJP.GetHashCode();
+      if (IsSelected != false) hash ^= IsSelected.GetHashCode();
+      hash ^= oGOILMLPDEO_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -165,13 +165,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HELJNHNDCJP != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(HELJNHNDCJP);
-      }
       if (FOHIFIMHENN != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteUInt32(FOHIFIMHENN);
+      }
+      if (IsSelected != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsSelected);
       }
       oGOILMLPDEO_.WriteTo(output, _repeated_oGOILMLPDEO_codec);
       if (_unknownFields != null) {
@@ -184,13 +184,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HELJNHNDCJP != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(HELJNHNDCJP);
-      }
       if (FOHIFIMHENN != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteUInt32(FOHIFIMHENN);
+      }
+      if (IsSelected != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(IsSelected);
       }
       oGOILMLPDEO_.WriteTo(ref output, _repeated_oGOILMLPDEO_codec);
       if (_unknownFields != null) {
@@ -203,13 +203,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += oGOILMLPDEO_.CalculateSize(_repeated_oGOILMLPDEO_codec);
       if (FOHIFIMHENN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FOHIFIMHENN);
       }
-      if (HELJNHNDCJP != false) {
+      if (IsSelected != false) {
         size += 1 + 1;
       }
+      size += oGOILMLPDEO_.CalculateSize(_repeated_oGOILMLPDEO_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -222,13 +222,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      oGOILMLPDEO_.Add(other.oGOILMLPDEO_);
       if (other.FOHIFIMHENN != 0) {
         FOHIFIMHENN = other.FOHIFIMHENN;
       }
-      if (other.HELJNHNDCJP != false) {
-        HELJNHNDCJP = other.HELJNHNDCJP;
+      if (other.IsSelected != false) {
+        IsSelected = other.IsSelected;
       }
+      oGOILMLPDEO_.Add(other.oGOILMLPDEO_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -248,16 +248,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            HELJNHNDCJP = input.ReadBool();
-            break;
-          }
-          case 48: {
+          case 32: {
             FOHIFIMHENN = input.ReadUInt32();
             break;
           }
-          case 106:
-          case 104: {
+          case 56: {
+            IsSelected = input.ReadBool();
+            break;
+          }
+          case 90:
+          case 88: {
             oGOILMLPDEO_.AddEntriesFrom(input, _repeated_oGOILMLPDEO_codec);
             break;
           }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            HELJNHNDCJP = input.ReadBool();
-            break;
-          }
-          case 48: {
+          case 32: {
             FOHIFIMHENN = input.ReadUInt32();
             break;
           }
-          case 106:
-          case 104: {
+          case 56: {
+            IsSelected = input.ReadBool();
+            break;
+          }
+          case 90:
+          case 88: {
             oGOILMLPDEO_.AddEntriesFrom(ref input, _repeated_oGOILMLPDEO_codec);
             break;
           }

@@ -3,15 +3,15 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BNAILMNNGIF {
-    repeated uint32 MPBDKLFAPCH = 11;
-    repeated uint32 PLJEJGCEKGL = 5;
-    repeated uint32 DCFGIEJAILL = 2;
-    repeated uint32 BOPGCJOMKGE = 9;
-    repeated uint32 KLKADPNPNHI = 3;
-    repeated uint32 CLNIFBCKJPE = 10;
-    repeated uint32 NBINKKOFKED = 4;
-    repeated uint32 HBLKPAJPPEC = 6;
-    uint32 MNNLNOJNPBP = 8;
     uint32 AGPFHDNOBEN = 1;
+    repeated uint32 DCFGIEJAILL = 2;
+    repeated uint32 KLKADPNPNHI = 3;
+    repeated uint32 NBINKKOFKED = 4;
+    repeated uint32 PLJEJGCEKGL = 5;
+    repeated uint32 HBLKPAJPPEC = 6;
     bool IHABNJLBNBL = 7;
+    uint32 MNNLNOJNPBP = 8;
+    repeated uint32 BOPGCJOMKGE = 9;
+    repeated uint32 CLNIFBCKJPE = 10;
+    repeated uint32 MPBDKLFAPCH = 11;
 }

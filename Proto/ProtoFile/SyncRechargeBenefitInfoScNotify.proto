@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BCAJNMLLIED.proto";
 
 message SyncRechargeBenefitInfoScNotify {
-    BCAJNMLLIED KLCGBJIEMPO = 3;
+    BCAJNMLLIED KLCGBJIEMPO = 7;
 }

@@ -9,21 +9,23 @@ import "BattleMonsterWave.proto";
 import "BattleRogueMagicInfo.proto";
 import "BattleTargetList.proto";
 import "EDCFKACPFNB.proto";
+import "GLIBGKGGEJL.proto";
+import "GridFightInfo.proto";
 import "KIAICMELIMM.proto";
-import "OJCBOMCCPDB.proto";
 import "PKPFAHEBJIO.proto";
 
 message DBCBMJKOBPJ {
-    OJCBOMCCPDB EIGMKOJOEEI = 16;
-    map<uint32, BattleTargetList> battle_target_info = 9;
-    repeated BattleAvatar EEIPNLJNJAL = 11;
-    repeated BattleBuff buff_list = 3;
-    BattleRogueMagicInfo battle_rogue_magic_info = 14;
     repeated BattleAvatar avatar_list = 1;
-    BattleGridFightSpecialBattleInfo PMCEKILFBIO = 12;
-    PKPFAHEBJIO LDPLAOHNLAP = 15;
-    KIAICMELIMM DFABBGKGDEI = 13;
     repeated BattleMonsterWave monster_wave_list = 2;
-    EDCFKACPFNB FGOAKDCBIOE = 10;
+    repeated BattleBuff buff_list = 3;
     uint32 world_level = 7;
+    map<uint32, BattleTargetList> battle_target_info = 9;
+    EDCFKACPFNB battle_action_event_id = 10;
+    repeated BattleAvatar EEIPNLJNJAL = 11;
+    BattleGridFightSpecialBattleInfo battle_evolve_build_data = 12;
+    KIAICMELIMM battle_sword_training_data = 13;
+    BattleRogueMagicInfo battle_rogue_magic_info = 14;
+    PKPFAHEBJIO battle_fate_data = 15;
+    GridFightInfo battle_grid_fight_data = 16;
+    GLIBGKGGEJL battle_fate_rin_data = 17;
 }

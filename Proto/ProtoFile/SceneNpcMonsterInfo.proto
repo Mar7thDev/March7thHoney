@@ -6,11 +6,11 @@ import "GILBMELHGCB.proto";
 import "NpcMonsterExtraInfo.proto";
 
 message SceneNpcMonsterInfo {
-    NpcMonsterExtraInfo extra_info = 1;
-    GILBMELHGCB BMIJGBFJMCF = 9;
-    bool NMPEOMMHMPP = 10;
+    NpcMonsterExtraInfo extra_info = 2;
+    uint32 monster_id = 4;
     bool NHKJKNJAGMF = 6;
-    uint32 monster_id = 14;
-    uint32 event_id = 5;
-    uint32 world_level = 2;
+    uint32 world_level = 7;
+    GILBMELHGCB BMIJGBFJMCF = 11;
+    bool NMPEOMMHMPP = 12;
+    uint32 event_id = 15;
 }

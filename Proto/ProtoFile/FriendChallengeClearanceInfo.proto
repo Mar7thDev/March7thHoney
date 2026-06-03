@@ -2,18 +2,18 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "BBBIAPEHABA.proto";
 import "ChallengeBossStatistics.proto";
 import "ChallengeStatistics.proto";
 import "ChallengeStoryStatistics.proto";
+import "PlayerChallengeTierceRecord.proto";
 
 message FriendChallengeClearanceInfo {
-    BBBIAPEHABA MEGBIPBAFBP = 4;
-    uint32 LMPPDGOFOMF = 15;
-    uint32 group_id = 6;
+    uint32 LMPPDGOFOMF = 4;
+    PlayerChallengeTierceRecord MEGBIPBAFBP = 11;
+    uint32 group_id = 14;
     oneof EDKOHAAMONH {
-        ChallengeStatistics challenge_default = 94;
-        ChallengeStoryStatistics challenge_story = 77;
-        ChallengeBossStatistics challenge_boss = 25;
+        ChallengeStatistics challenge_default = 1338;
+        ChallengeStoryStatistics challenge_story = 651;
+        ChallengeBossStatistics challenge_boss = 1920;
     }
 }

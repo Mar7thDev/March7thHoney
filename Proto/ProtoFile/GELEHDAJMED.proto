@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GELEHDAJMED {
-    uint32 dialogue_id = 7;
+    uint32 dialogue_id = 12;
 }

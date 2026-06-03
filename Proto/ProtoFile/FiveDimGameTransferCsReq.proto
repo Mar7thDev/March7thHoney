@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "AHCLMAGAHPN.proto";
+import "BLPHONLBNBO.proto";
+import "KFDEPBCLENF.proto";
+
+message FiveDimGameTransferCsReq {
+    KFDEPBCLENF KEHGFMAMEPD = 1;
+    AHCLMAGAHPN PPJFMBIGIGB = 2;
+    BLPHONLBNBO OEIBHLMDJKA = 3;
+    uint32 COGDLBMPPNM = 14;
+}

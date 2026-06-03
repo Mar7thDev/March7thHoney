@@ -3,8 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FBBOKKLGKGL {
-    uint32 DIFIEHPCDGO = 11;
-    bool DOFNEAPHMKH = 13;
-    uint32 JOFCOODPIDL = 15;
-    uint32 LFCDPDDGFCB = 6;
+    uint32 LFCDPDDGFCB = 1;
+    bool DOFNEAPHMKH = 2;
+    uint32 DIFIEHPCDGO = 9;
 }

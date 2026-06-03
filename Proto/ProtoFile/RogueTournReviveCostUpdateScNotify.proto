@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message RogueTournReviveCostUpdateScNotify {
-    ItemCostData LNIEFKBMIPD = 11;
+    ItemCostData LNIEFKBMIPD = 9;
 }

@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFOTkNFRkZGR05FTi5wcm90bxoRS0ZNSE1KTFBIT0cucHJvdG8ifgoLTk5D",
-            "RUZGRkdORU4SEwoLc3dpdGNoX2xpc3QYDyADKA0SEAoIZ3JvdXBfaWQYDiAB",
-            "KA0SEwoLRkRFQUtEQ0RHTUwYBCABKA0SEAoIcGFuZWxfaWQYByABKA0SIQoL",
-            "QklDTEtBUE1GR1AYAyABKA4yDC5LRk1ITUpMUEhPR0IWqgITTWFyY2g3dGhI",
+            "RUZGRkdORU4SIQoLQklDTEtBUE1GR1AYBiABKA4yDC5LRk1ITUpMUEhPRxIQ",
+            "Cghncm91cF9pZBgHIAEoDRIQCghwYW5lbF9pZBgJIAEoDRITCgtzd2l0Y2hf",
+            "bGlzdBgKIAMoDRITCgtGREVBS0RDREdNTBgNIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.KFMHMJLPHOGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NNCEFFFGNEN), global::March7thHoney.Proto.NNCEFFFGNEN.Parser, new[]{ "SwitchList", "GroupId", "FDEAKDCDGML", "PanelId", "BICLKAPMFGP" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NNCEFFFGNEN), global::March7thHoney.Proto.NNCEFFFGNEN.Parser, new[]{ "BICLKAPMFGP", "GroupId", "PanelId", "SwitchList", "FDEAKDCDGML" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NNCEFFFGNEN(NNCEFFFGNEN other) : this() {
-      switchList_ = other.switchList_.Clone();
-      groupId_ = other.groupId_;
-      fDEAKDCDGML_ = other.fDEAKDCDGML_;
-      panelId_ = other.panelId_;
       bICLKAPMFGP_ = other.bICLKAPMFGP_;
+      groupId_ = other.groupId_;
+      panelId_ = other.panelId_;
+      switchList_ = other.switchList_.Clone();
+      fDEAKDCDGML_ = other.fDEAKDCDGML_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,19 +88,20 @@ namespace March7thHoney.Proto {
       return new NNCEFFFGNEN(this);
     }
 
-    /// <summary>Field number for the "switch_list" field.</summary>
-    public const int SwitchListFieldNumber = 15;
-    private static readonly pb::FieldCodec<uint> _repeated_switchList_codec
-        = pb::FieldCodec.ForUInt32(122);
-    private readonly pbc::RepeatedField<uint> switchList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "BICLKAPMFGP" field.</summary>
+    public const int BICLKAPMFGPFieldNumber = 6;
+    private global::March7thHoney.Proto.KFMHMJLPHOG bICLKAPMFGP_ = global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> SwitchList {
-      get { return switchList_; }
+    public global::March7thHoney.Proto.KFMHMJLPHOG BICLKAPMFGP {
+      get { return bICLKAPMFGP_; }
+      set {
+        bICLKAPMFGP_ = value;
+      }
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 14;
+    public const int GroupIdFieldNumber = 7;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,20 +112,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "FDEAKDCDGML" field.</summary>
-    public const int FDEAKDCDGMLFieldNumber = 4;
-    private uint fDEAKDCDGML_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FDEAKDCDGML {
-      get { return fDEAKDCDGML_; }
-      set {
-        fDEAKDCDGML_ = value;
-      }
-    }
-
     /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 7;
+    public const int PanelIdFieldNumber = 9;
     private uint panelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,15 +124,26 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "BICLKAPMFGP" field.</summary>
-    public const int BICLKAPMFGPFieldNumber = 3;
-    private global::March7thHoney.Proto.KFMHMJLPHOG bICLKAPMFGP_ = global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog;
+    /// <summary>Field number for the "switch_list" field.</summary>
+    public const int SwitchListFieldNumber = 10;
+    private static readonly pb::FieldCodec<uint> _repeated_switchList_codec
+        = pb::FieldCodec.ForUInt32(82);
+    private readonly pbc::RepeatedField<uint> switchList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.KFMHMJLPHOG BICLKAPMFGP {
-      get { return bICLKAPMFGP_; }
+    public pbc::RepeatedField<uint> SwitchList {
+      get { return switchList_; }
+    }
+
+    /// <summary>Field number for the "FDEAKDCDGML" field.</summary>
+    public const int FDEAKDCDGMLFieldNumber = 13;
+    private uint fDEAKDCDGML_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FDEAKDCDGML {
+      get { return fDEAKDCDGML_; }
       set {
-        bICLKAPMFGP_ = value;
+        fDEAKDCDGML_ = value;
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!switchList_.Equals(other.switchList_)) return false;
-      if (GroupId != other.GroupId) return false;
-      if (FDEAKDCDGML != other.FDEAKDCDGML) return false;
-      if (PanelId != other.PanelId) return false;
       if (BICLKAPMFGP != other.BICLKAPMFGP) return false;
+      if (GroupId != other.GroupId) return false;
+      if (PanelId != other.PanelId) return false;
+      if(!switchList_.Equals(other.switchList_)) return false;
+      if (FDEAKDCDGML != other.FDEAKDCDGML) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= switchList_.GetHashCode();
-      if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      if (FDEAKDCDGML != 0) hash ^= FDEAKDCDGML.GetHashCode();
-      if (PanelId != 0) hash ^= PanelId.GetHashCode();
       if (BICLKAPMFGP != global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog) hash ^= BICLKAPMFGP.GetHashCode();
+      if (GroupId != 0) hash ^= GroupId.GetHashCode();
+      if (PanelId != 0) hash ^= PanelId.GetHashCode();
+      hash ^= switchList_.GetHashCode();
+      if (FDEAKDCDGML != 0) hash ^= FDEAKDCDGML.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,22 +198,22 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BICLKAPMFGP != global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(48);
         output.WriteEnum((int) BICLKAPMFGP);
       }
-      if (FDEAKDCDGML != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(FDEAKDCDGML);
-      }
-      if (PanelId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PanelId);
-      }
       if (GroupId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(56);
         output.WriteUInt32(GroupId);
       }
+      if (PanelId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(PanelId);
+      }
       switchList_.WriteTo(output, _repeated_switchList_codec);
+      if (FDEAKDCDGML != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(FDEAKDCDGML);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -225,22 +225,22 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BICLKAPMFGP != global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(48);
         output.WriteEnum((int) BICLKAPMFGP);
       }
-      if (FDEAKDCDGML != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(FDEAKDCDGML);
-      }
-      if (PanelId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PanelId);
-      }
       if (GroupId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(56);
         output.WriteUInt32(GroupId);
       }
+      if (PanelId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(PanelId);
+      }
       switchList_.WriteTo(ref output, _repeated_switchList_codec);
+      if (FDEAKDCDGML != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(FDEAKDCDGML);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -251,18 +251,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += switchList_.CalculateSize(_repeated_switchList_codec);
+      if (BICLKAPMFGP != global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BICLKAPMFGP);
+      }
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
-      }
-      if (FDEAKDCDGML != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDEAKDCDGML);
       }
       if (PanelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
       }
-      if (BICLKAPMFGP != global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BICLKAPMFGP);
+      size += switchList_.CalculateSize(_repeated_switchList_codec);
+      if (FDEAKDCDGML != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDEAKDCDGML);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -276,18 +276,18 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      switchList_.Add(other.switchList_);
+      if (other.BICLKAPMFGP != global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog) {
+        BICLKAPMFGP = other.BICLKAPMFGP;
+      }
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
-      }
-      if (other.FDEAKDCDGML != 0) {
-        FDEAKDCDGML = other.FDEAKDCDGML;
       }
       if (other.PanelId != 0) {
         PanelId = other.PanelId;
       }
-      if (other.BICLKAPMFGP != global::March7thHoney.Proto.KFMHMJLPHOG.Lfgokfcpbog) {
-        BICLKAPMFGP = other.BICLKAPMFGP;
+      switchList_.Add(other.switchList_);
+      if (other.FDEAKDCDGML != 0) {
+        FDEAKDCDGML = other.FDEAKDCDGML;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -308,25 +308,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 48: {
             BICLKAPMFGP = (global::March7thHoney.Proto.KFMHMJLPHOG) input.ReadEnum();
             break;
           }
-          case 32: {
-            FDEAKDCDGML = input.ReadUInt32();
-            break;
-          }
           case 56: {
-            PanelId = input.ReadUInt32();
-            break;
-          }
-          case 112: {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 122:
-          case 120: {
+          case 72: {
+            PanelId = input.ReadUInt32();
+            break;
+          }
+          case 82:
+          case 80: {
             switchList_.AddEntriesFrom(input, _repeated_switchList_codec);
+            break;
+          }
+          case 104: {
+            FDEAKDCDGML = input.ReadUInt32();
             break;
           }
         }
@@ -348,25 +348,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 48: {
             BICLKAPMFGP = (global::March7thHoney.Proto.KFMHMJLPHOG) input.ReadEnum();
             break;
           }
-          case 32: {
-            FDEAKDCDGML = input.ReadUInt32();
-            break;
-          }
           case 56: {
-            PanelId = input.ReadUInt32();
-            break;
-          }
-          case 112: {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 122:
-          case 120: {
+          case 72: {
+            PanelId = input.ReadUInt32();
+            break;
+          }
+          case 82:
+          case 80: {
             switchList_.AddEntriesFrom(ref input, _repeated_switchList_codec);
+            break;
+          }
+          case 104: {
+            FDEAKDCDGML = input.ReadUInt32();
             break;
           }
         }

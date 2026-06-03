@@ -6,7 +6,7 @@ import "MissionCustomValue.proto";
 import "MissionStatus.proto";
 
 message MainMission {
-    repeated MissionCustomValue custom_value_list = 2;
-    MissionStatus status = 14;
-    uint32 id = 1;
+    repeated MissionCustomValue custom_value_list = 4;
+    MissionStatus status = 13;
+    uint32 id = 15;
 }

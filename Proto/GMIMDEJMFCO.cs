@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHTUlNREVKTUZDTy5wcm90bxoRTEdFRkxHSklHSUoucHJvdG8aEU1HR0JQ",
-            "S0FORk9BLnByb3RvIlMKC0dNSU1ERUpNRkNPEiEKC0NDT0lPQUhNUEROGAEg",
-            "ASgLMgwuTUdHQlBLQU5GT0ESIQoLR01BTEZFQUJMTkcYAyADKAsyDC5MR0VG",
-            "TEdKSUdJSkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "S0FORk9BLnByb3RvIlkKC0dNSU1ERUpNRkNPEicKEWdsb2JhbF9ibGFja2Jv",
+            "YXJkGAcgASgLMgwuTUdHQlBLQU5GT0ESIQoLR01BTEZFQUJMTkcYCyADKAsy",
+            "DC5MR0VGTEdKSUdJSkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LGEFLGJIGIJReflection.Descriptor, global::March7thHoney.Proto.MGGBPKANFOAReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GMIMDEJMFCO), global::March7thHoney.Proto.GMIMDEJMFCO.Parser, new[]{ "CCOIOAHMPDN", "GMALFEABLNG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GMIMDEJMFCO), global::March7thHoney.Proto.GMIMDEJMFCO.Parser, new[]{ "GlobalBlackboard", "GMALFEABLNG" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GMIMDEJMFCO(GMIMDEJMFCO other) : this() {
-      cCOIOAHMPDN_ = other.cCOIOAHMPDN_ != null ? other.cCOIOAHMPDN_.Clone() : null;
+      globalBlackboard_ = other.globalBlackboard_ != null ? other.globalBlackboard_.Clone() : null;
       gMALFEABLNG_ = other.gMALFEABLNG_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,22 +84,22 @@ namespace March7thHoney.Proto {
       return new GMIMDEJMFCO(this);
     }
 
-    /// <summary>Field number for the "CCOIOAHMPDN" field.</summary>
-    public const int CCOIOAHMPDNFieldNumber = 1;
-    private global::March7thHoney.Proto.MGGBPKANFOA cCOIOAHMPDN_;
+    /// <summary>Field number for the "global_blackboard" field.</summary>
+    public const int GlobalBlackboardFieldNumber = 7;
+    private global::March7thHoney.Proto.MGGBPKANFOA globalBlackboard_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MGGBPKANFOA CCOIOAHMPDN {
-      get { return cCOIOAHMPDN_; }
+    public global::March7thHoney.Proto.MGGBPKANFOA GlobalBlackboard {
+      get { return globalBlackboard_; }
       set {
-        cCOIOAHMPDN_ = value;
+        globalBlackboard_ = value;
       }
     }
 
     /// <summary>Field number for the "GMALFEABLNG" field.</summary>
-    public const int GMALFEABLNGFieldNumber = 3;
+    public const int GMALFEABLNGFieldNumber = 11;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.LGEFLGJIGIJ> _repeated_gMALFEABLNG_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.LGEFLGJIGIJ.Parser);
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.LGEFLGJIGIJ.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.LGEFLGJIGIJ> gMALFEABLNG_ = new pbc::RepeatedField<global::March7thHoney.Proto.LGEFLGJIGIJ>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(CCOIOAHMPDN, other.CCOIOAHMPDN)) return false;
+      if (!object.Equals(GlobalBlackboard, other.GlobalBlackboard)) return false;
       if(!gMALFEABLNG_.Equals(other.gMALFEABLNG_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -131,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (cCOIOAHMPDN_ != null) hash ^= CCOIOAHMPDN.GetHashCode();
+      if (globalBlackboard_ != null) hash ^= GlobalBlackboard.GetHashCode();
       hash ^= gMALFEABLNG_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (cCOIOAHMPDN_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(CCOIOAHMPDN);
+      if (globalBlackboard_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(GlobalBlackboard);
       }
       gMALFEABLNG_.WriteTo(output, _repeated_gMALFEABLNG_codec);
       if (_unknownFields != null) {
@@ -166,9 +166,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (cCOIOAHMPDN_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(CCOIOAHMPDN);
+      if (globalBlackboard_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(GlobalBlackboard);
       }
       gMALFEABLNG_.WriteTo(ref output, _repeated_gMALFEABLNG_codec);
       if (_unknownFields != null) {
@@ -181,8 +181,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (cCOIOAHMPDN_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CCOIOAHMPDN);
+      if (globalBlackboard_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(GlobalBlackboard);
       }
       size += gMALFEABLNG_.CalculateSize(_repeated_gMALFEABLNG_codec);
       if (_unknownFields != null) {
@@ -197,11 +197,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.cCOIOAHMPDN_ != null) {
-        if (cCOIOAHMPDN_ == null) {
-          CCOIOAHMPDN = new global::March7thHoney.Proto.MGGBPKANFOA();
+      if (other.globalBlackboard_ != null) {
+        if (globalBlackboard_ == null) {
+          GlobalBlackboard = new global::March7thHoney.Proto.MGGBPKANFOA();
         }
-        CCOIOAHMPDN.MergeFrom(other.CCOIOAHMPDN);
+        GlobalBlackboard.MergeFrom(other.GlobalBlackboard);
       }
       gMALFEABLNG_.Add(other.gMALFEABLNG_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -223,14 +223,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (cCOIOAHMPDN_ == null) {
-              CCOIOAHMPDN = new global::March7thHoney.Proto.MGGBPKANFOA();
+          case 58: {
+            if (globalBlackboard_ == null) {
+              GlobalBlackboard = new global::March7thHoney.Proto.MGGBPKANFOA();
             }
-            input.ReadMessage(CCOIOAHMPDN);
+            input.ReadMessage(GlobalBlackboard);
             break;
           }
-          case 26: {
+          case 90: {
             gMALFEABLNG_.AddEntriesFrom(input, _repeated_gMALFEABLNG_codec);
             break;
           }
@@ -253,14 +253,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (cCOIOAHMPDN_ == null) {
-              CCOIOAHMPDN = new global::March7thHoney.Proto.MGGBPKANFOA();
+          case 58: {
+            if (globalBlackboard_ == null) {
+              GlobalBlackboard = new global::March7thHoney.Proto.MGGBPKANFOA();
             }
-            input.ReadMessage(CCOIOAHMPDN);
+            input.ReadMessage(GlobalBlackboard);
             break;
           }
-          case 26: {
+          case 90: {
             gMALFEABLNG_.AddEntriesFrom(ref input, _repeated_gMALFEABLNG_codec);
             break;
           }

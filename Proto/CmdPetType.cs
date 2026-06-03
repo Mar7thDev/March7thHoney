@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChBDbWRQZXRUeXBlLnByb3RvKvsBCgpDbWRQZXRUeXBlEhsKF01BTU1EQURO",
-            "R0xQX05MQ0RHSVBHRkRKEAASHAoXTUFNTURBRE5HTFBfQkNLSUJGSE1HT0YQ",
-            "szsSHAoXTUFNTURBRE5HTFBfTkRCRERCSUNIUFAQuDsSHAoXTUFNTURBRE5H",
-            "TFBfSE9GRkRLQkVOS0UQuzsSHAoXTUFNTURBRE5HTFBfQkNKRUNHTEJGTUQQ",
-            "vjsSHAoXTUFNTURBRE5HTFBfS0xOUENOSEdCT0wQwTsSHAoXTUFNTURBRE5H",
-            "TFBfS0hITUVGQ0RNSUYQsjsSHAoXTUFNTURBRE5HTFBfTEtJS0lPRUZKRUMQ",
-            "xztCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "R0xQX05MQ0RHSVBHRkRKEAASHAoXTUFNTURBRE5HTFBfQkNKRUNHTEJGTUQQ",
+            "vDsSHAoXTUFNTURBRE5HTFBfSE9GRkRLQkVOS0UQtzsSHAoXTUFNTURBRE5H",
+            "TFBfS0xOUENOSEdCT0wQxTsSHAoXTUFNTURBRE5HTFBfTkRCRERCSUNIUFAQ",
+            "uDsSHAoXTUFNTURBRE5HTFBfQkNLSUJGSE1HT0YQwzsSHAoXTUFNTURBRE5H",
+            "TFBfTEtJS0lPRUZKRUMQuTsSHAoXTUFNTURBRE5HTFBfS0hITUVGQ0RNSUYQ",
+            "tTtCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPetType), }, null, null));
@@ -41,13 +41,13 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPetType {
     [pbr::OriginalName("MAMMDADNGLP_NLCDGIPGFDJ")] MammdadnglpNlcdgipgfdj = 0,
-    [pbr::OriginalName("MAMMDADNGLP_BCKIBFHMGOF")] MammdadnglpBckibfhmgof = 7603,
+    [pbr::OriginalName("MAMMDADNGLP_BCJECGLBFMD")] MammdadnglpBcjecglbfmd = 7612,
+    [pbr::OriginalName("MAMMDADNGLP_HOFFDKBENKE")] MammdadnglpHoffdkbenke = 7607,
+    [pbr::OriginalName("MAMMDADNGLP_KLNPCNHGBOL")] MammdadnglpKlnpcnhgbol = 7621,
     [pbr::OriginalName("MAMMDADNGLP_NDBDDBICHPP")] MammdadnglpNdbddbichpp = 7608,
-    [pbr::OriginalName("MAMMDADNGLP_HOFFDKBENKE")] MammdadnglpHoffdkbenke = 7611,
-    [pbr::OriginalName("MAMMDADNGLP_BCJECGLBFMD")] MammdadnglpBcjecglbfmd = 7614,
-    [pbr::OriginalName("MAMMDADNGLP_KLNPCNHGBOL")] MammdadnglpKlnpcnhgbol = 7617,
-    [pbr::OriginalName("MAMMDADNGLP_KHHMEFCDMIF")] MammdadnglpKhhmefcdmif = 7602,
-    [pbr::OriginalName("MAMMDADNGLP_LKIKIOEFJEC")] MammdadnglpLkikioefjec = 7623,
+    [pbr::OriginalName("MAMMDADNGLP_BCKIBFHMGOF")] MammdadnglpBckibfhmgof = 7619,
+    [pbr::OriginalName("MAMMDADNGLP_LKIKIOEFJEC")] MammdadnglpLkikioefjec = 7609,
+    [pbr::OriginalName("MAMMDADNGLP_KHHMEFCDMIF")] MammdadnglpKhhmefcdmif = 7605,
   }
 
   #endregion

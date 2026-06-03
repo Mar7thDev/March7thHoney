@@ -6,7 +6,7 @@ import "BHMEPBAGOFF.proto";
 import "LMLNNHKJEIP.proto";
 
 message LLFIKHHPJEB {
-    BHMEPBAGOFF data = 14;
-    repeated LMLNNHKJEIP DFLEOIGPLNM = 15;
-    uint32 retcode = 2;
+    repeated LMLNNHKJEIP DFLEOIGPLNM = 4;
+    BHMEPBAGOFF data = 7;
+    uint32 retcode = 13;
 }

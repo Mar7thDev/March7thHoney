@@ -24,7 +24,7 @@ namespace March7thHoney.Proto {
     static GridFightUpdateSrcTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChxHcmlkRmlnaHRVcGRhdGVTcmNUeXBlLnByb3RvKvIHChZHcmlkRmlnaHRV",
+            "ChxHcmlkRmlnaHRVcGRhdGVTcmNUeXBlLnByb3RvKskIChZHcmlkRmlnaHRV",
             "cGRhdGVTcmNUeXBlEhsKF0pKREZHTU1NQ01JX0NNT0FMTUdMS0lFEAASGwoX",
             "SkpERkdNTU1DTUlfREJJRUtPTUtCSU4QARIbChdKSkRGR01NTUNNSV9ORkVH",
             "SENJQU5KTxACEhsKF0pKREZHTU1NQ01JX09JRUVKS01KTURMEAMSGwoXSkpE",
@@ -47,7 +47,9 @@ namespace March7thHoney.Proto {
             "ChdKSkRGR01NTUNNSV9FQ0pQRk9ITkVERRAdEhsKF0pKREZHTU1NQ01JX0lN",
             "RE9QQUJBR0dBEB4SGwoXSkpERkdNTU1DTUlfRUJNRUlGR0JKSU0QHxIbChdK",
             "SkRGR01NTUNNSV9GRktQRkdGSkNFTBAgEhsKF0pKREZHTU1NQ01JX05PS0RL",
-            "UEdOUEtLECFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "UEdOUEtLECESGwoXSkpERkdNTU1DTUlfSk5HS09ISlBJSEsQIhIbChdKSkRG",
+            "R01NTUNNSV9ETUpOT0VJR0RQQRAjEhsKF0pKREZHTU1NQ01JX0lPQ0ZDTE1O",
+            "R0RBECRCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.GridFightUpdateSrcType), }, null, null));
@@ -91,6 +93,9 @@ namespace March7thHoney.Proto {
     [pbr::OriginalName("JJDFGMMMCMI_EBMEIFGBJIM")] JjdfgmmmcmiEbmeifgbjim = 31,
     [pbr::OriginalName("JJDFGMMMCMI_FFKPFGFJCEL")] JjdfgmmmcmiFfkpfgfjcel = 32,
     [pbr::OriginalName("JJDFGMMMCMI_NOKDKPGNPKK")] JjdfgmmmcmiNokdkpgnpkk = 33,
+    [pbr::OriginalName("JJDFGMMMCMI_JNGKOHJPIHK")] JjdfgmmmcmiJngkohjpihk = 34,
+    [pbr::OriginalName("JJDFGMMMCMI_DMJNOEIGDPA")] JjdfgmmmcmiDmjnoeigdpa = 35,
+    [pbr::OriginalName("JJDFGMMMCMI_IOCFCLMNGDA")] JjdfgmmmcmiIocfclmngda = 36,
   }
 
   #endregion

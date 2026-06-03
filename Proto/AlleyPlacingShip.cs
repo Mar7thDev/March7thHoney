@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZBbGxleVBsYWNpbmdTaGlwLnByb3RvGhFDQkJQRExQQUlQTC5wcm90byJF",
-            "ChBBbGxleVBsYWNpbmdTaGlwEiAKCmdvb2RzX2xpc3QYDCADKAsyDC5DQkJQ",
-            "RExQQUlQTBIPCgdzaGlwX2lkGA0gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "ChBBbGxleVBsYWNpbmdTaGlwEg8KB3NoaXBfaWQYBCABKA0SIAoKZ29vZHNf",
+            "bGlzdBgHIAMoCzIMLkNCQlBETFBBSVBMQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CBBPDLPAIPLReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AlleyPlacingShip), global::March7thHoney.Proto.AlleyPlacingShip.Parser, new[]{ "GoodsList", "ShipId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AlleyPlacingShip), global::March7thHoney.Proto.AlleyPlacingShip.Parser, new[]{ "ShipId", "GoodsList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AlleyPlacingShip(AlleyPlacingShip other) : this() {
-      goodsList_ = other.goodsList_.Clone();
       shipId_ = other.shipId_;
+      goodsList_ = other.goodsList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,19 +84,8 @@ namespace March7thHoney.Proto {
       return new AlleyPlacingShip(this);
     }
 
-    /// <summary>Field number for the "goods_list" field.</summary>
-    public const int GoodsListFieldNumber = 12;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.CBBPDLPAIPL> _repeated_goodsList_codec
-        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.CBBPDLPAIPL.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.CBBPDLPAIPL> goodsList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CBBPDLPAIPL>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.CBBPDLPAIPL> GoodsList {
-      get { return goodsList_; }
-    }
-
     /// <summary>Field number for the "ship_id" field.</summary>
-    public const int ShipIdFieldNumber = 13;
+    public const int ShipIdFieldNumber = 4;
     private uint shipId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +94,17 @@ namespace March7thHoney.Proto {
       set {
         shipId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "goods_list" field.</summary>
+    public const int GoodsListFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.CBBPDLPAIPL> _repeated_goodsList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.CBBPDLPAIPL.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.CBBPDLPAIPL> goodsList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CBBPDLPAIPL>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.CBBPDLPAIPL> GoodsList {
+      get { return goodsList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!goodsList_.Equals(other.goodsList_)) return false;
       if (ShipId != other.ShipId) return false;
+      if(!goodsList_.Equals(other.goodsList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= goodsList_.GetHashCode();
       if (ShipId != 0) hash ^= ShipId.GetHashCode();
+      hash ^= goodsList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      goodsList_.WriteTo(output, _repeated_goodsList_codec);
       if (ShipId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(32);
         output.WriteUInt32(ShipId);
       }
+      goodsList_.WriteTo(output, _repeated_goodsList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      goodsList_.WriteTo(ref output, _repeated_goodsList_codec);
       if (ShipId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(32);
         output.WriteUInt32(ShipId);
       }
+      goodsList_.WriteTo(ref output, _repeated_goodsList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += goodsList_.CalculateSize(_repeated_goodsList_codec);
       if (ShipId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShipId);
       }
+      size += goodsList_.CalculateSize(_repeated_goodsList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      goodsList_.Add(other.goodsList_);
       if (other.ShipId != 0) {
         ShipId = other.ShipId;
       }
+      goodsList_.Add(other.goodsList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 98: {
-            goodsList_.AddEntriesFrom(input, _repeated_goodsList_codec);
+          case 32: {
+            ShipId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            ShipId = input.ReadUInt32();
+          case 58: {
+            goodsList_.AddEntriesFrom(input, _repeated_goodsList_codec);
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 98: {
-            goodsList_.AddEntriesFrom(ref input, _repeated_goodsList_codec);
+          case 32: {
+            ShipId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            ShipId = input.ReadUInt32();
+          case 58: {
+            goodsList_.AddEntriesFrom(ref input, _repeated_goodsList_codec);
             break;
           }
         }

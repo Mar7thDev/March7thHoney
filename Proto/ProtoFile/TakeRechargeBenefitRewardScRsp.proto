@@ -6,7 +6,7 @@ import "BCAJNMLLIED.proto";
 import "ItemList.proto";
 
 message TakeRechargeBenefitRewardScRsp {
-    BCAJNMLLIED KLCGBJIEMPO = 1;
-    ItemList reward = 7;
+    BCAJNMLLIED KLCGBJIEMPO = 10;
     uint32 retcode = 11;
+    ItemList reward = 12;
 }

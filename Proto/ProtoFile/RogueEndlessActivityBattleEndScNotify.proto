@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AJNOEKPLPCL.proto";
 
 message RogueEndlessActivityBattleEndScNotify {
-    AJNOEKPLPCL PMKGMLELPPI = 15;
+    AJNOEKPLPCL PMKGMLELPPI = 12;
 }

@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChtCYXR0bGVFdmVudEJhdHRsZUluZm8ucHJvdG8aEUFPRk1ETExESUhHLnBy",
             "b3RvGhlCYXR0bGVFdmVudFByb3BlcnR5LnByb3RvIngKFUJhdHRsZUV2ZW50",
-            "QmF0dGxlSW5mbxIkCgZzdGF0dXMYAiABKAsyFC5CYXR0bGVFdmVudFByb3Bl",
-            "cnR5EiAKCnNraWxsX2luZm8YAyADKAsyDC5BT0ZNRExMRElIRxIXCg9iYXR0",
-            "bGVfZXZlbnRfaWQYASABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "QmF0dGxlSW5mbxIXCg9iYXR0bGVfZXZlbnRfaWQYASABKA0SJAoGc3RhdHVz",
+            "GAIgASgLMhQuQmF0dGxlRXZlbnRQcm9wZXJ0eRIgCgpza2lsbF9pbmZvGAMg",
+            "AygLMgwuQU9GTURMTERJSEdCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AOFMDLLDIHGReflection.Descriptor, global::March7thHoney.Proto.BattleEventPropertyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleEventBattleInfo), global::March7thHoney.Proto.BattleEventBattleInfo.Parser, new[]{ "Status", "SkillInfo", "BattleEventId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BattleEventBattleInfo), global::March7thHoney.Proto.BattleEventBattleInfo.Parser, new[]{ "BattleEventId", "Status", "SkillInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleEventBattleInfo(BattleEventBattleInfo other) : this() {
+      battleEventId_ = other.battleEventId_;
       status_ = other.status_ != null ? other.status_.Clone() : null;
       skillInfo_ = other.skillInfo_.Clone();
-      battleEventId_ = other.battleEventId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,6 +85,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BattleEventBattleInfo Clone() {
       return new BattleEventBattleInfo(this);
+    }
+
+    /// <summary>Field number for the "battle_event_id" field.</summary>
+    public const int BattleEventIdFieldNumber = 1;
+    private uint battleEventId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BattleEventId {
+      get { return battleEventId_; }
+      set {
+        battleEventId_ = value;
+      }
     }
 
     /// <summary>Field number for the "status" field.</summary>
@@ -110,18 +122,6 @@ namespace March7thHoney.Proto {
       get { return skillInfo_; }
     }
 
-    /// <summary>Field number for the "battle_event_id" field.</summary>
-    public const int BattleEventIdFieldNumber = 1;
-    private uint battleEventId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BattleEventId {
-      get { return battleEventId_; }
-      set {
-        battleEventId_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -137,9 +137,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (BattleEventId != other.BattleEventId) return false;
       if (!object.Equals(Status, other.Status)) return false;
       if(!skillInfo_.Equals(other.skillInfo_)) return false;
-      if (BattleEventId != other.BattleEventId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,9 +147,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (BattleEventId != 0) hash ^= BattleEventId.GetHashCode();
       if (status_ != null) hash ^= Status.GetHashCode();
       hash ^= skillInfo_.GetHashCode();
-      if (BattleEventId != 0) hash ^= BattleEventId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -206,13 +206,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (BattleEventId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BattleEventId);
+      }
       if (status_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Status);
       }
       size += skillInfo_.CalculateSize(_repeated_skillInfo_codec);
-      if (BattleEventId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BattleEventId);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -225,6 +225,9 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.BattleEventId != 0) {
+        BattleEventId = other.BattleEventId;
+      }
       if (other.status_ != null) {
         if (status_ == null) {
           Status = new global::March7thHoney.Proto.BattleEventProperty();
@@ -232,9 +235,6 @@ namespace March7thHoney.Proto {
         Status.MergeFrom(other.Status);
       }
       skillInfo_.Add(other.skillInfo_);
-      if (other.BattleEventId != 0) {
-        BattleEventId = other.BattleEventId;
-      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

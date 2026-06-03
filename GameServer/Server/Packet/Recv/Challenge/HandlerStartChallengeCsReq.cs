@@ -21,14 +21,14 @@ public class HandlerStartChallengeCsReq : Handler
         // 语义对调（4.2 时 field 13 = 上半，4.3 抓包确认 field 1 ABNDFKFIKCI = 上半，
         // field 13 BKNKLEOCJNO = 下半）。旧版本 client 用 first_lineup / second_lineup
         // packed uint32 作 fallback。
-        var firstLineup = req.ABNDFKFIKCI.Count > 0
-            ? req.ABNDFKFIKCI.Select(x => (int)x.Id).Where(x => x > 0).ToList()
+        var firstLineup = req.AvatarLineupFirst.Count > 0
+            ? req.AvatarLineupFirst.Select(x => (int)x.Id).Where(x => x > 0).ToList()
             : req.FirstLineup.Select(x => (int)x).Where(x => x > 0).ToList();
         if (firstLineup.Count > 0)
             await connection.Player!.LineupManager!.ReplaceLineup(0, firstLineup, ExtraLineupType.LineupChallenge);
 
-        var secondLineup = req.BKNKLEOCJNO.Count > 0
-            ? req.BKNKLEOCJNO.Select(x => (int)x.Id).Where(x => x > 0).ToList()
+        var secondLineup = req.AvatarLineupSecond.Count > 0
+            ? req.AvatarLineupSecond.Select(x => (int)x.Id).Where(x => x > 0).ToList()
             : req.SecondLineup.Select(x => (int)x).Where(x => x > 0).ToList();
         if (secondLineup.Count > 0)
             await connection.Player!.LineupManager!.ReplaceLineup(0, secondLineup, ExtraLineupType.LineupChallenge2);

@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static QuitLineupScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVRdWl0TGluZXVwU2NSc3AucHJvdG8idQoPUXVpdExpbmV1cFNjUnNwEhIK",
-            "CmlzX3ZpcnR1YWwYBiABKAgSEwoLTUZCSVBNQUNGQ0UYDiABKAgSFgoOYmFz",
-            "ZV9hdmF0YXJfaWQYDyABKA0SEAoIcGxhbmVfaWQYCyABKA0SDwoHcmV0Y29k",
-            "ZRgFIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChVRdWl0TGluZXVwU2NSc3AucHJvdG8iNwoPUXVpdExpbmV1cFNjUnNwEg8K",
+            "B3JldGNvZGUYASABKA0SEwoLTUZCSVBNQUNGQ0UYDyABKAhCFqoCE01hcmNo",
+            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.QuitLineupScRsp), global::March7thHoney.Proto.QuitLineupScRsp.Parser, new[]{ "IsVirtual", "MFBIPMACFCE", "BaseAvatarId", "PlaneId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.QuitLineupScRsp), global::March7thHoney.Proto.QuitLineupScRsp.Parser, new[]{ "Retcode", "MFBIPMACFCE" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public QuitLineupScRsp(QuitLineupScRsp other) : this() {
-      isVirtual_ = other.isVirtual_;
-      mFBIPMACFCE_ = other.mFBIPMACFCE_;
-      baseAvatarId_ = other.baseAvatarId_;
-      planeId_ = other.planeId_;
       retcode_ = other.retcode_;
+      mFBIPMACFCE_ = other.mFBIPMACFCE_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,56 +83,8 @@ namespace March7thHoney.Proto {
       return new QuitLineupScRsp(this);
     }
 
-    /// <summary>Field number for the "is_virtual" field.</summary>
-    public const int IsVirtualFieldNumber = 6;
-    private bool isVirtual_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsVirtual {
-      get { return isVirtual_; }
-      set {
-        isVirtual_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "MFBIPMACFCE" field.</summary>
-    public const int MFBIPMACFCEFieldNumber = 14;
-    private bool mFBIPMACFCE_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool MFBIPMACFCE {
-      get { return mFBIPMACFCE_; }
-      set {
-        mFBIPMACFCE_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "base_avatar_id" field.</summary>
-    public const int BaseAvatarIdFieldNumber = 15;
-    private uint baseAvatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BaseAvatarId {
-      get { return baseAvatarId_; }
-      set {
-        baseAvatarId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 11;
-    private uint planeId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlaneId {
-      get { return planeId_; }
-      set {
-        planeId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -144,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "MFBIPMACFCE" field.</summary>
+    public const int MFBIPMACFCEFieldNumber = 15;
+    private bool mFBIPMACFCE_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool MFBIPMACFCE {
+      get { return mFBIPMACFCE_; }
+      set {
+        mFBIPMACFCE_ = value;
       }
     }
 
@@ -162,11 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IsVirtual != other.IsVirtual) return false;
-      if (MFBIPMACFCE != other.MFBIPMACFCE) return false;
-      if (BaseAvatarId != other.BaseAvatarId) return false;
-      if (PlaneId != other.PlaneId) return false;
       if (Retcode != other.Retcode) return false;
+      if (MFBIPMACFCE != other.MFBIPMACFCE) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IsVirtual != false) hash ^= IsVirtual.GetHashCode();
-      if (MFBIPMACFCE != false) hash ^= MFBIPMACFCE.GetHashCode();
-      if (BaseAvatarId != 0) hash ^= BaseAvatarId.GetHashCode();
-      if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (MFBIPMACFCE != false) hash ^= MFBIPMACFCE.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,24 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
-      if (IsVirtual != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(IsVirtual);
-      }
-      if (PlaneId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(PlaneId);
-      }
       if (MFBIPMACFCE != false) {
-        output.WriteRawTag(112);
-        output.WriteBool(MFBIPMACFCE);
-      }
-      if (BaseAvatarId != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(BaseAvatarId);
+        output.WriteBool(MFBIPMACFCE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -228,24 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
-      if (IsVirtual != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(IsVirtual);
-      }
-      if (PlaneId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(PlaneId);
-      }
       if (MFBIPMACFCE != false) {
-        output.WriteRawTag(112);
-        output.WriteBool(MFBIPMACFCE);
-      }
-      if (BaseAvatarId != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(BaseAvatarId);
+        output.WriteBool(MFBIPMACFCE);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -257,20 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IsVirtual != false) {
-        size += 1 + 1;
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (MFBIPMACFCE != false) {
         size += 1 + 1;
-      }
-      if (BaseAvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BaseAvatarId);
-      }
-      if (PlaneId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
-      }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,20 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsVirtual != false) {
-        IsVirtual = other.IsVirtual;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       if (other.MFBIPMACFCE != false) {
         MFBIPMACFCE = other.MFBIPMACFCE;
-      }
-      if (other.BaseAvatarId != 0) {
-        BaseAvatarId = other.BaseAvatarId;
-      }
-      if (other.PlaneId != 0) {
-        PlaneId = other.PlaneId;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -318,24 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 48: {
-            IsVirtual = input.ReadBool();
-            break;
-          }
-          case 88: {
-            PlaneId = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            MFBIPMACFCE = input.ReadBool();
-            break;
-          }
           case 120: {
-            BaseAvatarId = input.ReadUInt32();
+            MFBIPMACFCE = input.ReadBool();
             break;
           }
         }
@@ -357,24 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 48: {
-            IsVirtual = input.ReadBool();
-            break;
-          }
-          case 88: {
-            PlaneId = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            MFBIPMACFCE = input.ReadBool();
-            break;
-          }
           case 120: {
-            BaseAvatarId = input.ReadUInt32();
+            MFBIPMACFCE = input.ReadBool();
             break;
           }
         }

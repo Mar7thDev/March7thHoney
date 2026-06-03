@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PCBNCBNOAAE.proto";
 
 message LDNBPINBPKB {
-    PCBNCBNOAAE KNBGBCEBLDF = 4;
-    uint32 OCPMGBPNMED = 8;
+    uint32 OCPMGBPNMED = 4;
+    PCBNCBNOAAE KNBGBCEBLDF = 5;
 }

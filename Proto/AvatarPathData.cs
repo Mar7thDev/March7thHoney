@@ -25,17 +25,17 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRBdmF0YXJQYXRoRGF0YS5wcm90bxoZQXZhdGFyUGF0aFNraWxsVHJlZS5w",
-            "cm90bxoQRXF1aXBSZWxpYy5wcm90byL1AQoOQXZhdGFyUGF0aERhdGESNAoW",
-            "YXZhdGFyX3BhdGhfc2tpbGxfdHJlZRgJIAMoCzIULkF2YXRhclBhdGhTa2ls",
-            "bFRyZWUSJQoQZXF1aXBfcmVsaWNfbGlzdBgLIAMoCzILLkVxdWlwUmVsaWMS",
-            "FwoPdW5rX2VuaGFuY2VkX2lkGAMgASgNEhkKEXBhdGhfZXF1aXBtZW50X2lk",
-            "GA4gASgNEhgKEHVubG9ja190aW1lc3RhbXAYBiABKAQSDAoEcmFuaxgCIAEo",
-            "DRIRCglhdmF0YXJfaWQYBSABKA0SFwoPZHJlc3NlZF9za2luX2lkGAggASgN",
-            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "cm90bxoQRXF1aXBSZWxpYy5wcm90byLwAQoOQXZhdGFyUGF0aERhdGESGQoR",
+            "cGF0aF9lcXVpcG1lbnRfaWQYASABKA0SJQoQZXF1aXBfcmVsaWNfbGlzdBgE",
+            "IAMoCzILLkVxdWlwUmVsaWMSNAoWYXZhdGFyX3BhdGhfc2tpbGxfdHJlZRgG",
+            "IAMoCzIULkF2YXRhclBhdGhTa2lsbFRyZWUSEQoJYXZhdGFyX2lkGAggASgN",
+            "EgwKBHJhbmsYCSABKA0SFwoPZHJlc3NlZF9za2luX2lkGAwgASgNEhMKC3Vu",
+            "bG9ja190aW1lGA0gASgEEhcKD3Vua19lbmhhbmNlZF9pZBgPIAEoDUIWqgIT",
+            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AvatarPathSkillTreeReflection.Descriptor, global::March7thHoney.Proto.EquipRelicReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarPathData), global::March7thHoney.Proto.AvatarPathData.Parser, new[]{ "AvatarPathSkillTree", "EquipRelicList", "UnkEnhancedId", "PathEquipmentId", "UnlockTimestamp", "Rank", "AvatarId", "DressedSkinId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AvatarPathData), global::March7thHoney.Proto.AvatarPathData.Parser, new[]{ "PathEquipmentId", "EquipRelicList", "AvatarPathSkillTree", "AvatarId", "Rank", "DressedSkinId", "UnlockTime", "UnkEnhancedId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,14 +77,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AvatarPathData(AvatarPathData other) : this() {
-      avatarPathSkillTree_ = other.avatarPathSkillTree_.Clone();
-      equipRelicList_ = other.equipRelicList_.Clone();
-      unkEnhancedId_ = other.unkEnhancedId_;
       pathEquipmentId_ = other.pathEquipmentId_;
-      unlockTimestamp_ = other.unlockTimestamp_;
-      rank_ = other.rank_;
+      equipRelicList_ = other.equipRelicList_.Clone();
+      avatarPathSkillTree_ = other.avatarPathSkillTree_.Clone();
       avatarId_ = other.avatarId_;
+      rank_ = other.rank_;
       dressedSkinId_ = other.dressedSkinId_;
+      unlockTime_ = other.unlockTime_;
+      unkEnhancedId_ = other.unkEnhancedId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -94,42 +94,8 @@ namespace March7thHoney.Proto {
       return new AvatarPathData(this);
     }
 
-    /// <summary>Field number for the "avatar_path_skill_tree" field.</summary>
-    public const int AvatarPathSkillTreeFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarPathSkillTree> _repeated_avatarPathSkillTree_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.AvatarPathSkillTree.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree> avatarPathSkillTree_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree> AvatarPathSkillTree {
-      get { return avatarPathSkillTree_; }
-    }
-
-    /// <summary>Field number for the "equip_relic_list" field.</summary>
-    public const int EquipRelicListFieldNumber = 11;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipRelic> _repeated_equipRelicList_codec
-        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.EquipRelic.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> equipRelicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> EquipRelicList {
-      get { return equipRelicList_; }
-    }
-
-    /// <summary>Field number for the "unk_enhanced_id" field.</summary>
-    public const int UnkEnhancedIdFieldNumber = 3;
-    private uint unkEnhancedId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint UnkEnhancedId {
-      get { return unkEnhancedId_; }
-      set {
-        unkEnhancedId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "path_equipment_id" field.</summary>
-    public const int PathEquipmentIdFieldNumber = 14;
+    public const int PathEquipmentIdFieldNumber = 1;
     private uint pathEquipmentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -140,32 +106,30 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "unlock_timestamp" field.</summary>
-    public const int UnlockTimestampFieldNumber = 6;
-    private ulong unlockTimestamp_;
+    /// <summary>Field number for the "equip_relic_list" field.</summary>
+    public const int EquipRelicListFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipRelic> _repeated_equipRelicList_codec
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.EquipRelic.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> equipRelicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong UnlockTimestamp {
-      get { return unlockTimestamp_; }
-      set {
-        unlockTimestamp_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> EquipRelicList {
+      get { return equipRelicList_; }
     }
 
-    /// <summary>Field number for the "rank" field.</summary>
-    public const int RankFieldNumber = 2;
-    private uint rank_;
+    /// <summary>Field number for the "avatar_path_skill_tree" field.</summary>
+    public const int AvatarPathSkillTreeFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarPathSkillTree> _repeated_avatarPathSkillTree_codec
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.AvatarPathSkillTree.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree> avatarPathSkillTree_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Rank {
-      get { return rank_; }
-      set {
-        rank_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarPathSkillTree> AvatarPathSkillTree {
+      get { return avatarPathSkillTree_; }
     }
 
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 5;
+    public const int AvatarIdFieldNumber = 8;
     private uint avatarId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -176,8 +140,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "rank" field.</summary>
+    public const int RankFieldNumber = 9;
+    private uint rank_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Rank {
+      get { return rank_; }
+      set {
+        rank_ = value;
+      }
+    }
+
     /// <summary>Field number for the "dressed_skin_id" field.</summary>
-    public const int DressedSkinIdFieldNumber = 8;
+    public const int DressedSkinIdFieldNumber = 12;
     private uint dressedSkinId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -185,6 +161,30 @@ namespace March7thHoney.Proto {
       get { return dressedSkinId_; }
       set {
         dressedSkinId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unlock_time" field.</summary>
+    public const int UnlockTimeFieldNumber = 13;
+    private ulong unlockTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong UnlockTime {
+      get { return unlockTime_; }
+      set {
+        unlockTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unk_enhanced_id" field.</summary>
+    public const int UnkEnhancedIdFieldNumber = 15;
+    private uint unkEnhancedId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint UnkEnhancedId {
+      get { return unkEnhancedId_; }
+      set {
+        unkEnhancedId_ = value;
       }
     }
 
@@ -203,14 +203,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!avatarPathSkillTree_.Equals(other.avatarPathSkillTree_)) return false;
-      if(!equipRelicList_.Equals(other.equipRelicList_)) return false;
-      if (UnkEnhancedId != other.UnkEnhancedId) return false;
       if (PathEquipmentId != other.PathEquipmentId) return false;
-      if (UnlockTimestamp != other.UnlockTimestamp) return false;
-      if (Rank != other.Rank) return false;
+      if(!equipRelicList_.Equals(other.equipRelicList_)) return false;
+      if(!avatarPathSkillTree_.Equals(other.avatarPathSkillTree_)) return false;
       if (AvatarId != other.AvatarId) return false;
+      if (Rank != other.Rank) return false;
       if (DressedSkinId != other.DressedSkinId) return false;
+      if (UnlockTime != other.UnlockTime) return false;
+      if (UnkEnhancedId != other.UnkEnhancedId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -218,14 +218,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= avatarPathSkillTree_.GetHashCode();
-      hash ^= equipRelicList_.GetHashCode();
-      if (UnkEnhancedId != 0) hash ^= UnkEnhancedId.GetHashCode();
       if (PathEquipmentId != 0) hash ^= PathEquipmentId.GetHashCode();
-      if (UnlockTimestamp != 0UL) hash ^= UnlockTimestamp.GetHashCode();
-      if (Rank != 0) hash ^= Rank.GetHashCode();
+      hash ^= equipRelicList_.GetHashCode();
+      hash ^= avatarPathSkillTree_.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (Rank != 0) hash ^= Rank.GetHashCode();
       if (DressedSkinId != 0) hash ^= DressedSkinId.GetHashCode();
+      if (UnlockTime != 0UL) hash ^= UnlockTime.GetHashCode();
+      if (UnkEnhancedId != 0) hash ^= UnkEnhancedId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -244,31 +244,31 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Rank != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Rank);
+      if (PathEquipmentId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(PathEquipmentId);
       }
-      if (UnkEnhancedId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(UnkEnhancedId);
-      }
+      equipRelicList_.WriteTo(output, _repeated_equipRelicList_codec);
+      avatarPathSkillTree_.WriteTo(output, _repeated_avatarPathSkillTree_codec);
       if (AvatarId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteUInt32(AvatarId);
       }
-      if (UnlockTimestamp != 0UL) {
-        output.WriteRawTag(48);
-        output.WriteUInt64(UnlockTimestamp);
+      if (Rank != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Rank);
       }
       if (DressedSkinId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(96);
         output.WriteUInt32(DressedSkinId);
       }
-      avatarPathSkillTree_.WriteTo(output, _repeated_avatarPathSkillTree_codec);
-      equipRelicList_.WriteTo(output, _repeated_equipRelicList_codec);
-      if (PathEquipmentId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(PathEquipmentId);
+      if (UnlockTime != 0UL) {
+        output.WriteRawTag(104);
+        output.WriteUInt64(UnlockTime);
+      }
+      if (UnkEnhancedId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(UnkEnhancedId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -280,31 +280,31 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Rank != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Rank);
+      if (PathEquipmentId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(PathEquipmentId);
       }
-      if (UnkEnhancedId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(UnkEnhancedId);
-      }
+      equipRelicList_.WriteTo(ref output, _repeated_equipRelicList_codec);
+      avatarPathSkillTree_.WriteTo(ref output, _repeated_avatarPathSkillTree_codec);
       if (AvatarId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteUInt32(AvatarId);
       }
-      if (UnlockTimestamp != 0UL) {
-        output.WriteRawTag(48);
-        output.WriteUInt64(UnlockTimestamp);
+      if (Rank != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Rank);
       }
       if (DressedSkinId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(96);
         output.WriteUInt32(DressedSkinId);
       }
-      avatarPathSkillTree_.WriteTo(ref output, _repeated_avatarPathSkillTree_codec);
-      equipRelicList_.WriteTo(ref output, _repeated_equipRelicList_codec);
-      if (PathEquipmentId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(PathEquipmentId);
+      if (UnlockTime != 0UL) {
+        output.WriteRawTag(104);
+        output.WriteUInt64(UnlockTime);
+      }
+      if (UnkEnhancedId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(UnkEnhancedId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -316,25 +316,25 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += avatarPathSkillTree_.CalculateSize(_repeated_avatarPathSkillTree_codec);
-      size += equipRelicList_.CalculateSize(_repeated_equipRelicList_codec);
-      if (UnkEnhancedId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UnkEnhancedId);
-      }
       if (PathEquipmentId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PathEquipmentId);
       }
-      if (UnlockTimestamp != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(UnlockTimestamp);
+      size += equipRelicList_.CalculateSize(_repeated_equipRelicList_codec);
+      size += avatarPathSkillTree_.CalculateSize(_repeated_avatarPathSkillTree_codec);
+      if (AvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
       }
       if (Rank != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Rank);
       }
-      if (AvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
-      }
       if (DressedSkinId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DressedSkinId);
+      }
+      if (UnlockTime != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(UnlockTime);
+      }
+      if (UnkEnhancedId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UnkEnhancedId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -348,25 +348,25 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      avatarPathSkillTree_.Add(other.avatarPathSkillTree_);
-      equipRelicList_.Add(other.equipRelicList_);
-      if (other.UnkEnhancedId != 0) {
-        UnkEnhancedId = other.UnkEnhancedId;
-      }
       if (other.PathEquipmentId != 0) {
         PathEquipmentId = other.PathEquipmentId;
       }
-      if (other.UnlockTimestamp != 0UL) {
-        UnlockTimestamp = other.UnlockTimestamp;
+      equipRelicList_.Add(other.equipRelicList_);
+      avatarPathSkillTree_.Add(other.avatarPathSkillTree_);
+      if (other.AvatarId != 0) {
+        AvatarId = other.AvatarId;
       }
       if (other.Rank != 0) {
         Rank = other.Rank;
       }
-      if (other.AvatarId != 0) {
-        AvatarId = other.AvatarId;
-      }
       if (other.DressedSkinId != 0) {
         DressedSkinId = other.DressedSkinId;
+      }
+      if (other.UnlockTime != 0UL) {
+        UnlockTime = other.UnlockTime;
+      }
+      if (other.UnkEnhancedId != 0) {
+        UnkEnhancedId = other.UnkEnhancedId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -387,36 +387,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Rank = input.ReadUInt32();
+          case 8: {
+            PathEquipmentId = input.ReadUInt32();
             break;
           }
-          case 24: {
-            UnkEnhancedId = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            UnlockTimestamp = input.ReadUInt64();
-            break;
-          }
-          case 64: {
-            DressedSkinId = input.ReadUInt32();
-            break;
-          }
-          case 74: {
-            avatarPathSkillTree_.AddEntriesFrom(input, _repeated_avatarPathSkillTree_codec);
-            break;
-          }
-          case 90: {
+          case 34: {
             equipRelicList_.AddEntriesFrom(input, _repeated_equipRelicList_codec);
             break;
           }
-          case 112: {
-            PathEquipmentId = input.ReadUInt32();
+          case 50: {
+            avatarPathSkillTree_.AddEntriesFrom(input, _repeated_avatarPathSkillTree_codec);
+            break;
+          }
+          case 64: {
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Rank = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            DressedSkinId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            UnlockTime = input.ReadUInt64();
+            break;
+          }
+          case 120: {
+            UnkEnhancedId = input.ReadUInt32();
             break;
           }
         }
@@ -438,36 +438,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Rank = input.ReadUInt32();
+          case 8: {
+            PathEquipmentId = input.ReadUInt32();
             break;
           }
-          case 24: {
-            UnkEnhancedId = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            UnlockTimestamp = input.ReadUInt64();
-            break;
-          }
-          case 64: {
-            DressedSkinId = input.ReadUInt32();
-            break;
-          }
-          case 74: {
-            avatarPathSkillTree_.AddEntriesFrom(ref input, _repeated_avatarPathSkillTree_codec);
-            break;
-          }
-          case 90: {
+          case 34: {
             equipRelicList_.AddEntriesFrom(ref input, _repeated_equipRelicList_codec);
             break;
           }
-          case 112: {
-            PathEquipmentId = input.ReadUInt32();
+          case 50: {
+            avatarPathSkillTree_.AddEntriesFrom(ref input, _repeated_avatarPathSkillTree_codec);
+            break;
+          }
+          case 64: {
+            AvatarId = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Rank = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            DressedSkinId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            UnlockTime = input.ReadUInt64();
+            break;
+          }
+          case 120: {
+            UnkEnhancedId = input.ReadUInt32();
             break;
           }
         }

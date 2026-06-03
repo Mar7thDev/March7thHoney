@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DDLHODCINBI.proto";
 
 message FateSyncActionResultScNotify {
-    repeated DDLHODCINBI CLGGKLNPLCK = 10;
+    repeated DDLHODCINBI CLGGKLNPLCK = 14;
 }

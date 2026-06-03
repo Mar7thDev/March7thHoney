@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static FDGKFJFICDNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFGREdLRkpGSUNETi5wcm90byI3CgtGREdLRkpGSUNEThITCgtPQ1BFUEVN",
-            "Tk5FSxgBIAEoDRITCgtQTkpFR1BBRk5DSRgCIAEoAUIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFGREdLRkpGSUNETi5wcm90byIxCgtGREdLRkpGSUNEThITCgtPQ1BFUEVN",
+            "Tk5FSxgBIAEoDRINCgVkZWxheRgCIAEoAUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FDGKFJFICDN), global::March7thHoney.Proto.FDGKFJFICDN.Parser, new[]{ "OCPEPEMNNEK", "PNJEGPAFNCI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FDGKFJFICDN), global::March7thHoney.Proto.FDGKFJFICDN.Parser, new[]{ "OCPEPEMNNEK", "Delay" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FDGKFJFICDN(FDGKFJFICDN other) : this() {
       oCPEPEMNNEK_ = other.oCPEPEMNNEK_;
-      pNJEGPAFNCI_ = other.pNJEGPAFNCI_;
+      delay_ = other.delay_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "PNJEGPAFNCI" field.</summary>
-    public const int PNJEGPAFNCIFieldNumber = 2;
-    private double pNJEGPAFNCI_;
+    /// <summary>Field number for the "delay" field.</summary>
+    public const int DelayFieldNumber = 2;
+    private double delay_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double PNJEGPAFNCI {
-      get { return pNJEGPAFNCI_; }
+    public double Delay {
+      get { return delay_; }
       set {
-        pNJEGPAFNCI_ = value;
+        delay_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (OCPEPEMNNEK != other.OCPEPEMNNEK) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(PNJEGPAFNCI, other.PNJEGPAFNCI)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Delay, other.Delay)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (OCPEPEMNNEK != 0) hash ^= OCPEPEMNNEK.GetHashCode();
-      if (PNJEGPAFNCI != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(PNJEGPAFNCI);
+      if (Delay != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Delay);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -155,9 +155,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(OCPEPEMNNEK);
       }
-      if (PNJEGPAFNCI != 0D) {
+      if (Delay != 0D) {
         output.WriteRawTag(17);
-        output.WriteDouble(PNJEGPAFNCI);
+        output.WriteDouble(Delay);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -173,9 +173,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(OCPEPEMNNEK);
       }
-      if (PNJEGPAFNCI != 0D) {
+      if (Delay != 0D) {
         output.WriteRawTag(17);
-        output.WriteDouble(PNJEGPAFNCI);
+        output.WriteDouble(Delay);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
       if (OCPEPEMNNEK != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OCPEPEMNNEK);
       }
-      if (PNJEGPAFNCI != 0D) {
+      if (Delay != 0D) {
         size += 1 + 8;
       }
       if (_unknownFields != null) {
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.OCPEPEMNNEK != 0) {
         OCPEPEMNNEK = other.OCPEPEMNNEK;
       }
-      if (other.PNJEGPAFNCI != 0D) {
-        PNJEGPAFNCI = other.PNJEGPAFNCI;
+      if (other.Delay != 0D) {
+        Delay = other.Delay;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -235,7 +235,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 17: {
-            PNJEGPAFNCI = input.ReadDouble();
+            Delay = input.ReadDouble();
             break;
           }
         }
@@ -262,7 +262,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 17: {
-            PNJEGPAFNCI = input.ReadDouble();
+            Delay = input.ReadDouble();
             break;
           }
         }

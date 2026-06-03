@@ -24,16 +24,16 @@ namespace March7thHoney.Proto {
     static MazeGroupReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9NYXplR3JvdXAucHJvdG8i2gEKCU1hemVHcm91cBIxCgxwcm9wZXJ0eV9t",
-            "YXAYCyADKAsyGy5NYXplR3JvdXAuUHJvcGVydHlNYXBFbnRyeRImCh5kZXN0",
-            "b3J5X21vbnN0ZXJfY29uZmlnX2lkX2xpc3QYBSADKA0SEwoLbW9kaWZ5X3Rp",
-            "bWUYDSABKAMSEAoIZ3JvdXBfaWQYCSABKA0SFwoPaXNfbmVlZF9yZWZyZXNo",
-            "GAIgASgIGjIKEFByb3BlcnR5TWFwRW50cnkSCwoDa2V5GAEgASgJEg0KBXZh",
+            "Cg9NYXplR3JvdXAucHJvdG8i2gEKCU1hemVHcm91cBITCgttb2RpZnlfdGlt",
+            "ZRgHIAEoAxIXCg9pc19uZWVkX3JlZnJlc2gYCCABKAgSMQoMcHJvcGVydHlf",
+            "bWFwGAsgAygLMhsuTWF6ZUdyb3VwLlByb3BlcnR5TWFwRW50cnkSJgoeZGVz",
+            "dG9yeV9tb25zdGVyX2NvbmZpZ19pZF9saXN0GA0gAygNEhAKCGdyb3VwX2lk",
+            "GA8gASgNGjIKEFByb3BlcnR5TWFwRW50cnkSCwoDa2V5GAEgASgJEg0KBXZh",
             "bHVlGAIgASgFOgI4AUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MazeGroup), global::March7thHoney.Proto.MazeGroup.Parser, new[]{ "PropertyMap", "DestoryMonsterConfigIdList", "ModifyTime", "GroupId", "IsNeedRefresh" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MazeGroup), global::March7thHoney.Proto.MazeGroup.Parser, new[]{ "ModifyTime", "IsNeedRefresh", "PropertyMap", "DestoryMonsterConfigIdList", "GroupId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MazeGroup(MazeGroup other) : this() {
+      modifyTime_ = other.modifyTime_;
+      isNeedRefresh_ = other.isNeedRefresh_;
       propertyMap_ = other.propertyMap_.Clone();
       destoryMonsterConfigIdList_ = other.destoryMonsterConfigIdList_.Clone();
-      modifyTime_ = other.modifyTime_;
       groupId_ = other.groupId_;
-      isNeedRefresh_ = other.isNeedRefresh_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,6 +87,30 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MazeGroup Clone() {
       return new MazeGroup(this);
+    }
+
+    /// <summary>Field number for the "modify_time" field.</summary>
+    public const int ModifyTimeFieldNumber = 7;
+    private long modifyTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long ModifyTime {
+      get { return modifyTime_; }
+      set {
+        modifyTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_need_refresh" field.</summary>
+    public const int IsNeedRefreshFieldNumber = 8;
+    private bool isNeedRefresh_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsNeedRefresh {
+      get { return isNeedRefresh_; }
+      set {
+        isNeedRefresh_ = value;
+      }
     }
 
     /// <summary>Field number for the "property_map" field.</summary>
@@ -101,9 +125,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "destory_monster_config_id_list" field.</summary>
-    public const int DestoryMonsterConfigIdListFieldNumber = 5;
+    public const int DestoryMonsterConfigIdListFieldNumber = 13;
     private static readonly pb::FieldCodec<uint> _repeated_destoryMonsterConfigIdList_codec
-        = pb::FieldCodec.ForUInt32(42);
+        = pb::FieldCodec.ForUInt32(106);
     private readonly pbc::RepeatedField<uint> destoryMonsterConfigIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,20 +135,8 @@ namespace March7thHoney.Proto {
       get { return destoryMonsterConfigIdList_; }
     }
 
-    /// <summary>Field number for the "modify_time" field.</summary>
-    public const int ModifyTimeFieldNumber = 13;
-    private long modifyTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long ModifyTime {
-      get { return modifyTime_; }
-      set {
-        modifyTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 9;
+    public const int GroupIdFieldNumber = 15;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -132,18 +144,6 @@ namespace March7thHoney.Proto {
       get { return groupId_; }
       set {
         groupId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_need_refresh" field.</summary>
-    public const int IsNeedRefreshFieldNumber = 2;
-    private bool isNeedRefresh_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsNeedRefresh {
-      get { return isNeedRefresh_; }
-      set {
-        isNeedRefresh_ = value;
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ModifyTime != other.ModifyTime) return false;
+      if (IsNeedRefresh != other.IsNeedRefresh) return false;
       if (!PropertyMap.Equals(other.PropertyMap)) return false;
       if(!destoryMonsterConfigIdList_.Equals(other.destoryMonsterConfigIdList_)) return false;
-      if (ModifyTime != other.ModifyTime) return false;
       if (GroupId != other.GroupId) return false;
-      if (IsNeedRefresh != other.IsNeedRefresh) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (ModifyTime != 0L) hash ^= ModifyTime.GetHashCode();
+      if (IsNeedRefresh != false) hash ^= IsNeedRefresh.GetHashCode();
       hash ^= PropertyMap.GetHashCode();
       hash ^= destoryMonsterConfigIdList_.GetHashCode();
-      if (ModifyTime != 0L) hash ^= ModifyTime.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
-      if (IsNeedRefresh != false) hash ^= IsNeedRefresh.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -197,19 +197,19 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (ModifyTime != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(ModifyTime);
+      }
       if (IsNeedRefresh != false) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(64);
         output.WriteBool(IsNeedRefresh);
       }
+      propertyMap_.WriteTo(output, _map_propertyMap_codec);
       destoryMonsterConfigIdList_.WriteTo(output, _repeated_destoryMonsterConfigIdList_codec);
       if (GroupId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteUInt32(GroupId);
-      }
-      propertyMap_.WriteTo(output, _map_propertyMap_codec);
-      if (ModifyTime != 0L) {
-        output.WriteRawTag(104);
-        output.WriteInt64(ModifyTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -221,19 +221,19 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ModifyTime != 0L) {
+        output.WriteRawTag(56);
+        output.WriteInt64(ModifyTime);
+      }
       if (IsNeedRefresh != false) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(64);
         output.WriteBool(IsNeedRefresh);
       }
+      propertyMap_.WriteTo(ref output, _map_propertyMap_codec);
       destoryMonsterConfigIdList_.WriteTo(ref output, _repeated_destoryMonsterConfigIdList_codec);
       if (GroupId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteUInt32(GroupId);
-      }
-      propertyMap_.WriteTo(ref output, _map_propertyMap_codec);
-      if (ModifyTime != 0L) {
-        output.WriteRawTag(104);
-        output.WriteInt64(ModifyTime);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -245,16 +245,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += propertyMap_.CalculateSize(_map_propertyMap_codec);
-      size += destoryMonsterConfigIdList_.CalculateSize(_repeated_destoryMonsterConfigIdList_codec);
       if (ModifyTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(ModifyTime);
       }
-      if (GroupId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
-      }
       if (IsNeedRefresh != false) {
         size += 1 + 1;
+      }
+      size += propertyMap_.CalculateSize(_map_propertyMap_codec);
+      size += destoryMonsterConfigIdList_.CalculateSize(_repeated_destoryMonsterConfigIdList_codec);
+      if (GroupId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -268,16 +268,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      propertyMap_.MergeFrom(other.propertyMap_);
-      destoryMonsterConfigIdList_.Add(other.destoryMonsterConfigIdList_);
       if (other.ModifyTime != 0L) {
         ModifyTime = other.ModifyTime;
       }
-      if (other.GroupId != 0) {
-        GroupId = other.GroupId;
-      }
       if (other.IsNeedRefresh != false) {
         IsNeedRefresh = other.IsNeedRefresh;
+      }
+      propertyMap_.MergeFrom(other.propertyMap_);
+      destoryMonsterConfigIdList_.Add(other.destoryMonsterConfigIdList_);
+      if (other.GroupId != 0) {
+        GroupId = other.GroupId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -298,25 +298,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 56: {
+            ModifyTime = input.ReadInt64();
+            break;
+          }
+          case 64: {
             IsNeedRefresh = input.ReadBool();
-            break;
-          }
-          case 42:
-          case 40: {
-            destoryMonsterConfigIdList_.AddEntriesFrom(input, _repeated_destoryMonsterConfigIdList_codec);
-            break;
-          }
-          case 72: {
-            GroupId = input.ReadUInt32();
             break;
           }
           case 90: {
             propertyMap_.AddEntriesFrom(input, _map_propertyMap_codec);
             break;
           }
+          case 106:
           case 104: {
-            ModifyTime = input.ReadInt64();
+            destoryMonsterConfigIdList_.AddEntriesFrom(input, _repeated_destoryMonsterConfigIdList_codec);
+            break;
+          }
+          case 120: {
+            GroupId = input.ReadUInt32();
             break;
           }
         }
@@ -338,25 +338,25 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 56: {
+            ModifyTime = input.ReadInt64();
+            break;
+          }
+          case 64: {
             IsNeedRefresh = input.ReadBool();
-            break;
-          }
-          case 42:
-          case 40: {
-            destoryMonsterConfigIdList_.AddEntriesFrom(ref input, _repeated_destoryMonsterConfigIdList_codec);
-            break;
-          }
-          case 72: {
-            GroupId = input.ReadUInt32();
             break;
           }
           case 90: {
             propertyMap_.AddEntriesFrom(ref input, _map_propertyMap_codec);
             break;
           }
+          case 106:
           case 104: {
-            ModifyTime = input.ReadInt64();
+            destoryMonsterConfigIdList_.AddEntriesFrom(ref input, _repeated_destoryMonsterConfigIdList_codec);
+            break;
+          }
+          case 120: {
+            GroupId = input.ReadUInt32();
             break;
           }
         }

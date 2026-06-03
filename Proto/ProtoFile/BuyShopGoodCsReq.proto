@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message BuyShopGoodCsReq {
-    uint32 shop_id = 15;
-    uint32 KDMNGCLJDOM = 2;
+    uint32 KDMNGCLJDOM = 5;
+    uint32 shop_id = 8;
 }

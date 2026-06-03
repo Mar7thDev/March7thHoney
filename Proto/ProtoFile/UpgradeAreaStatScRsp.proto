@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "StatType.proto";
 
 message UpgradeAreaStatScRsp {
-    uint32 level = 4;
-    uint32 retcode = 2;
-    uint32 area_id = 9;
-    StatType GNBKDCHLDGL = 6;
+    StatType GNBKDCHLDGL = 1;
+    uint32 retcode = 4;
+    uint32 area_id = 10;
+    uint32 level = 13;
 }

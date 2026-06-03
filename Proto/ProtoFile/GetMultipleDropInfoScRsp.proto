@@ -6,7 +6,7 @@ import "BMJHAHOLEGH.proto";
 import "NGLOBFBCGBB.proto";
 
 message GetMultipleDropInfoScRsp {
-    repeated BMJHAHOLEGH FAFFFJGJHHC = 15;
-    repeated NGLOBFBCGBB MOPAGKNEMOD = 4;
-    uint32 retcode = 13;
+    repeated BMJHAHOLEGH FAFFFJGJHHC = 3;
+    uint32 retcode = 10;
+    repeated NGLOBFBCGBB MOPAGKNEMOD = 13;
 }

@@ -6,8 +6,8 @@ import "ItemList.proto";
 import "LMDPKOELKFL.proto";
 
 message OpenRogueChestScRsp {
-    ItemList drop_data = 12;
-    ItemList reward = 6;
-    LMDPKOELKFL ABEMLCJBIEF = 9;
-    uint32 retcode = 8;
+    ItemList drop_data = 2;
+    uint32 retcode = 5;
+    LMDPKOELKFL ABEMLCJBIEF = 11;
+    ItemList reward = 13;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BIKNPJPLDAO.proto";
 
 message EndDungeonCsReq {
-    repeated uint32 FEODDIKPAOA = 11;
-    BIKNPJPLDAO HNMLBLGGOLB = 13;
-    bool DHLLPOBKLIO = 10;
+    repeated uint32 FEODDIKPAOA = 4;
+    bool DHLLPOBKLIO = 11;
+    BIKNPJPLDAO HNMLBLGGOLB = 15;
 }

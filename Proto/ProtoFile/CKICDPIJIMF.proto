@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CKICDPIJIMF {
-    uint32 battle_id = 13;
+    uint32 battle_id = 2;
 }

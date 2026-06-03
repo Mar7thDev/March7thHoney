@@ -12,6 +12,6 @@ public class HandlerGetMailCsReq : Handler
         var req = GetMailCsReq.Parser.ParseFrom(data);
 
         // 4.3: GetMailCsReq 分页字段混淆名变更 (start/requestedCount)
-        await connection.SendPacket(new PacketGetMailScRsp(connection.Player!, req.NPAFMEBNFOB, req.HFKFNFKIEON));
+        await connection.SendPacket(new PacketGetMailScRsp(connection.Player!, req.Start, req.HFKFNFKIEON));
     }
 }

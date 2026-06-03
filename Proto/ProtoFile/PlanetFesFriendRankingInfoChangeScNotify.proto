@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MAOINJAJOEC.proto";
 
 message PlanetFesFriendRankingInfoChangeScNotify {
-    repeated MAOINJAJOEC MLPHLIHFGKG = 11;
+    repeated MAOINJAJOEC MLPHLIHFGKG = 5;
 }

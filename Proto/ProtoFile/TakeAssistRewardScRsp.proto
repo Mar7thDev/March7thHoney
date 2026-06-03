@@ -6,7 +6,7 @@ import "ItemList.proto";
 import "KAODLPJMEFE.proto";
 
 message TakeAssistRewardScRsp {
-    ItemList reward = 2;
-    repeated KAODLPJMEFE OILHLECGBCH = 13;
-    uint32 retcode = 9;
+    repeated KAODLPJMEFE OILHLECGBCH = 2;
+    uint32 retcode = 4;
+    ItemList reward = 13;
 }

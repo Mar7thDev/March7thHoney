@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ALGMICKCABI.proto";
 
 message ClientObjUploadCsReq {
-    bytes sc_data = 9;
-    uint32 EOHFCODKKMD = 1;
-    ALGMICKCABI MMNJODIJPOE = 4;
+    ALGMICKCABI content_type = 1;
+    uint32 EOHFCODKKMD = 4;
+    bytes sc_data = 14;
 }

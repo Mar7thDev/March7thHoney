@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Vector.proto";
 
 message TakeTalkRewardCsReq {
-    Vector JAKEBEGAJNA = 15;
-    uint32 MJALBOEAKME = 4;
+    Vector JAKEBEGAJNA = 1;
+    uint32 MJALBOEAKME = 7;
 }

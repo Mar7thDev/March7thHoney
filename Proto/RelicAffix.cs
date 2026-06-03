@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChBSZWxpY0FmZml4LnByb3RvIjkKClJlbGljQWZmaXgSEAoIYWZmaXhfaWQY",
-            "ASABKA0SDAoEc3RlcBgDIAEoDRILCgNjbnQYAiABKA1CFqoCE01hcmNoN3Ro",
+            "ASABKA0SCwoDY250GAIgASgNEgwKBHN0ZXAYAyABKA1CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicAffix), global::March7thHoney.Proto.RelicAffix.Parser, new[]{ "AffixId", "Step", "Cnt" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RelicAffix), global::March7thHoney.Proto.RelicAffix.Parser, new[]{ "AffixId", "Cnt", "Step" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RelicAffix(RelicAffix other) : this() {
       affixId_ = other.affixId_;
-      step_ = other.step_;
       cnt_ = other.cnt_;
+      step_ = other.step_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -96,18 +96,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "step" field.</summary>
-    public const int StepFieldNumber = 3;
-    private uint step_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Step {
-      get { return step_; }
-      set {
-        step_ = value;
-      }
-    }
-
     /// <summary>Field number for the "cnt" field.</summary>
     public const int CntFieldNumber = 2;
     private uint cnt_;
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return cnt_; }
       set {
         cnt_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "step" field.</summary>
+    public const int StepFieldNumber = 3;
+    private uint step_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Step {
+      get { return step_; }
+      set {
+        step_ = value;
       }
     }
 
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (AffixId != other.AffixId) return false;
-      if (Step != other.Step) return false;
       if (Cnt != other.Cnt) return false;
+      if (Step != other.Step) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (AffixId != 0) hash ^= AffixId.GetHashCode();
-      if (Step != 0) hash ^= Step.GetHashCode();
       if (Cnt != 0) hash ^= Cnt.GetHashCode();
+      if (Step != 0) hash ^= Step.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -213,11 +213,11 @@ namespace March7thHoney.Proto {
       if (AffixId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AffixId);
       }
-      if (Step != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Step);
-      }
       if (Cnt != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Cnt);
+      }
+      if (Step != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Step);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
       if (other.AffixId != 0) {
         AffixId = other.AffixId;
       }
-      if (other.Step != 0) {
-        Step = other.Step;
-      }
       if (other.Cnt != 0) {
         Cnt = other.Cnt;
+      }
+      if (other.Step != 0) {
+        Step = other.Step;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

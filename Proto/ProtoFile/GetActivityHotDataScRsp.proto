@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EFGIHHJGCFA.proto";
 
 message GetActivityHotDataScRsp {
-    repeated EFGIHHJGCFA content_package_list = 10;
+    repeated EFGIHHJGCFA content_package_list = 2;
     uint32 retcode = 11;
 }

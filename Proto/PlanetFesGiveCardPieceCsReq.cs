@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFQbGFuZXRGZXNHaXZlQ2FyZFBpZWNlQ3NSZXEucHJvdG8iRwobUGxhbmV0",
-            "RmVzR2l2ZUNhcmRQaWVjZUNzUmVxEhMKC0pBS0tER0hMSlBIGA4gAygNEhMK",
-            "C3RlbGVwb3J0X2lkGAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "RmVzR2l2ZUNhcmRQaWVjZUNzUmVxEhMKC3RlbGVwb3J0X2lkGAggASgNEhMK",
+            "C0pBS0tER0hMSlBIGA4gAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlanetFesGiveCardPieceCsReq), global::March7thHoney.Proto.PlanetFesGiveCardPieceCsReq.Parser, new[]{ "JAKKDGHLJPH", "TeleportId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlanetFesGiveCardPieceCsReq), global::March7thHoney.Proto.PlanetFesGiveCardPieceCsReq.Parser, new[]{ "TeleportId", "JAKKDGHLJPH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlanetFesGiveCardPieceCsReq(PlanetFesGiveCardPieceCsReq other) : this() {
-      jAKKDGHLJPH_ = other.jAKKDGHLJPH_.Clone();
       teleportId_ = other.teleportId_;
+      jAKKDGHLJPH_ = other.jAKKDGHLJPH_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,6 +82,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlanetFesGiveCardPieceCsReq Clone() {
       return new PlanetFesGiveCardPieceCsReq(this);
+    }
+
+    /// <summary>Field number for the "teleport_id" field.</summary>
+    public const int TeleportIdFieldNumber = 8;
+    private uint teleportId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TeleportId {
+      get { return teleportId_; }
+      set {
+        teleportId_ = value;
+      }
     }
 
     /// <summary>Field number for the "JAKKDGHLJPH" field.</summary>
@@ -93,18 +105,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> JAKKDGHLJPH {
       get { return jAKKDGHLJPH_; }
-    }
-
-    /// <summary>Field number for the "teleport_id" field.</summary>
-    public const int TeleportIdFieldNumber = 1;
-    private uint teleportId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TeleportId {
-      get { return teleportId_; }
-      set {
-        teleportId_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!jAKKDGHLJPH_.Equals(other.jAKKDGHLJPH_)) return false;
       if (TeleportId != other.TeleportId) return false;
+      if(!jAKKDGHLJPH_.Equals(other.jAKKDGHLJPH_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= jAKKDGHLJPH_.GetHashCode();
       if (TeleportId != 0) hash ^= TeleportId.GetHashCode();
+      hash ^= jAKKDGHLJPH_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (TeleportId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(64);
         output.WriteUInt32(TeleportId);
       }
       jAKKDGHLJPH_.WriteTo(output, _repeated_jAKKDGHLJPH_codec);
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (TeleportId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(64);
         output.WriteUInt32(TeleportId);
       }
       jAKKDGHLJPH_.WriteTo(ref output, _repeated_jAKKDGHLJPH_codec);
@@ -181,10 +181,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += jAKKDGHLJPH_.CalculateSize(_repeated_jAKKDGHLJPH_codec);
       if (TeleportId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TeleportId);
       }
+      size += jAKKDGHLJPH_.CalculateSize(_repeated_jAKKDGHLJPH_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -197,10 +197,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      jAKKDGHLJPH_.Add(other.jAKKDGHLJPH_);
       if (other.TeleportId != 0) {
         TeleportId = other.TeleportId;
       }
+      jAKKDGHLJPH_.Add(other.jAKKDGHLJPH_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -220,7 +220,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 64: {
             TeleportId = input.ReadUInt32();
             break;
           }
@@ -248,7 +248,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 64: {
             TeleportId = input.ReadUInt32();
             break;
           }

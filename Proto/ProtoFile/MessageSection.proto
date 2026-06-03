@@ -6,9 +6,9 @@ import "MessageItem.proto";
 import "MessageSectionStatus.proto";
 
 message MessageSection {
-    repeated uint32 message_item_list = 7;
+    repeated uint32 message_item_list = 1;
+    uint32 frozen_item_id = 2;
     repeated MessageItem item_list = 3;
-    uint32 frozen_item_id = 11;
-    uint32 id = 12;
-    MessageSectionStatus status = 1;
+    uint32 id = 10;
+    MessageSectionStatus status = 13;
 }

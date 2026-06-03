@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFBSUlHSEpFSUdIRS5wcm90bxoZQ2hhbGxlbmdlTGluZXVwTGlzdC5wcm90",
-            "byJZCgtBSUlHSEpFSUdIRRIkCgZsaW5ldXAYAiABKAsyFC5DaGFsbGVuZ2VM",
-            "aW5ldXBMaXN0EhMKC3N0YWdlX2luZGV4GAEgASgNEg8KB2J1ZmZfaWQYAyAB",
+            "byJZCgtBSUlHSEpFSUdIRRITCgtzdGFnZV9pbmRleBgBIAEoDRIkCgZsaW5l",
+            "dXAYAiABKAsyFC5DaGFsbGVuZ2VMaW5ldXBMaXN0Eg8KB2J1ZmZfaWQYAyAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeLineupListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AIIGHJEIGHE), global::March7thHoney.Proto.AIIGHJEIGHE.Parser, new[]{ "Lineup", "StageIndex", "BuffId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AIIGHJEIGHE), global::March7thHoney.Proto.AIIGHJEIGHE.Parser, new[]{ "StageIndex", "Lineup", "BuffId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AIIGHJEIGHE(AIIGHJEIGHE other) : this() {
-      lineup_ = other.lineup_ != null ? other.lineup_.Clone() : null;
       stageIndex_ = other.stageIndex_;
+      lineup_ = other.lineup_ != null ? other.lineup_.Clone() : null;
       buffId_ = other.buffId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,18 +83,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AIIGHJEIGHE Clone() {
       return new AIIGHJEIGHE(this);
-    }
-
-    /// <summary>Field number for the "lineup" field.</summary>
-    public const int LineupFieldNumber = 2;
-    private global::March7thHoney.Proto.ChallengeLineupList lineup_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengeLineupList Lineup {
-      get { return lineup_; }
-      set {
-        lineup_ = value;
-      }
     }
 
     /// <summary>Field number for the "stage_index" field.</summary>
@@ -106,6 +94,18 @@ namespace March7thHoney.Proto {
       get { return stageIndex_; }
       set {
         stageIndex_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lineup" field.</summary>
+    public const int LineupFieldNumber = 2;
+    private global::March7thHoney.Proto.ChallengeLineupList lineup_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChallengeLineupList Lineup {
+      get { return lineup_; }
+      set {
+        lineup_ = value;
       }
     }
 
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Lineup, other.Lineup)) return false;
       if (StageIndex != other.StageIndex) return false;
+      if (!object.Equals(Lineup, other.Lineup)) return false;
       if (BuffId != other.BuffId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (lineup_ != null) hash ^= Lineup.GetHashCode();
       if (StageIndex != 0) hash ^= StageIndex.GetHashCode();
+      if (lineup_ != null) hash ^= Lineup.GetHashCode();
       if (BuffId != 0) hash ^= BuffId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -211,11 +211,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (lineup_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lineup);
-      }
       if (StageIndex != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StageIndex);
+      }
+      if (lineup_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Lineup);
       }
       if (BuffId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
@@ -232,14 +232,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.StageIndex != 0) {
+        StageIndex = other.StageIndex;
+      }
       if (other.lineup_ != null) {
         if (lineup_ == null) {
           Lineup = new global::March7thHoney.Proto.ChallengeLineupList();
         }
         Lineup.MergeFrom(other.Lineup);
-      }
-      if (other.StageIndex != 0) {
-        StageIndex = other.StageIndex;
       }
       if (other.BuffId != 0) {
         BuffId = other.BuffId;

@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NAFMBLMMAAG.proto";
 
 message MKGHJJCPBLP {
-    NAFMBLMMAAG LMDGHCEHJCG = 10;
-    uint32 CNBCDMMBCKI = 1;
-    uint32 stage_id = 15;
-    uint32 panel_id = 8;
-    uint32 max_score = 9;
+    uint32 panel_id = 2;
+    uint32 CNBCDMMBCKI = 4;
+    uint32 max_score = 5;
+    uint32 stage_id = 6;
+    NAFMBLMMAAG LMDGHCEHJCG = 13;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ExpeditionInfo.proto";
 
 message AcceptMultipleExpeditionCsReq {
-    repeated ExpeditionInfo expedition = 9;
+    repeated ExpeditionInfo expedition = 8;
 }

@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message VirtualLineupTrialAvatarChangeScNotify {
-    repeated uint32 ILIDIIGALKD = 2;
-    repeated uint32 EDBMIFNEHHH = 8;
-    uint32 plane_id = 14;
-    bool OLPNMKAPDLP = 10;
+    bool OLPNMKAPDLP = 1;
+    uint32 plane_id = 5;
+    repeated uint32 EDBMIFNEHHH = 7;
+    repeated uint32 ILIDIIGALKD = 12;
 }

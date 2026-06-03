@@ -6,7 +6,7 @@ import "LJGKDEKCHPJ.proto";
 
 message IGGFCPNDMPN {
     oneof BNJPPHJNKHF {
-        LJGKDEKCHPJ AONEJBHFKMO = 1;
-        uint32 BKJFBHANFLC = 8;
+        LJGKDEKCHPJ AONEJBHFKMO = 10;
+        uint32 BKJFBHANFLC = 2;
     }
 }

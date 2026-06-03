@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static HOLHBEOHEJDReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFIT0xIQkVPSEVKRC5wcm90byI3CgtIT0xIQkVPSEVKRBITCgtGQkVCTkxP",
-            "UElCTBgCIAMoBBITCgtpbnRlcmFjdF9pZBgBIAEoDUIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFIT0xIQkVPSEVKRC5wcm90byI2CgtIT0xIQkVPSEVKRBITCgtpbnRlcmFj",
+            "dF9pZBgBIAEoDRISCgpwcm9wZXJ0aWVzGAIgAygEQhaqAhNNYXJjaDd0aEhv",
+            "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HOLHBEOHEJD), global::March7thHoney.Proto.HOLHBEOHEJD.Parser, new[]{ "FBEBNLOPIBL", "InteractId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HOLHBEOHEJD), global::March7thHoney.Proto.HOLHBEOHEJD.Parser, new[]{ "InteractId", "Properties" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HOLHBEOHEJD(HOLHBEOHEJD other) : this() {
-      fBEBNLOPIBL_ = other.fBEBNLOPIBL_.Clone();
       interactId_ = other.interactId_;
+      properties_ = other.properties_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,17 +81,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HOLHBEOHEJD Clone() {
       return new HOLHBEOHEJD(this);
-    }
-
-    /// <summary>Field number for the "FBEBNLOPIBL" field.</summary>
-    public const int FBEBNLOPIBLFieldNumber = 2;
-    private static readonly pb::FieldCodec<ulong> _repeated_fBEBNLOPIBL_codec
-        = pb::FieldCodec.ForUInt64(18);
-    private readonly pbc::RepeatedField<ulong> fBEBNLOPIBL_ = new pbc::RepeatedField<ulong>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<ulong> FBEBNLOPIBL {
-      get { return fBEBNLOPIBL_; }
     }
 
     /// <summary>Field number for the "interact_id" field.</summary>
@@ -104,6 +93,17 @@ namespace March7thHoney.Proto {
       set {
         interactId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "properties" field.</summary>
+    public const int PropertiesFieldNumber = 2;
+    private static readonly pb::FieldCodec<ulong> _repeated_properties_codec
+        = pb::FieldCodec.ForUInt64(18);
+    private readonly pbc::RepeatedField<ulong> properties_ = new pbc::RepeatedField<ulong>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<ulong> Properties {
+      get { return properties_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!fBEBNLOPIBL_.Equals(other.fBEBNLOPIBL_)) return false;
       if (InteractId != other.InteractId) return false;
+      if(!properties_.Equals(other.properties_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= fBEBNLOPIBL_.GetHashCode();
       if (InteractId != 0) hash ^= InteractId.GetHashCode();
+      hash ^= properties_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -154,7 +154,7 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(InteractId);
       }
-      fBEBNLOPIBL_.WriteTo(output, _repeated_fBEBNLOPIBL_codec);
+      properties_.WriteTo(output, _repeated_properties_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -169,7 +169,7 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(InteractId);
       }
-      fBEBNLOPIBL_.WriteTo(ref output, _repeated_fBEBNLOPIBL_codec);
+      properties_.WriteTo(ref output, _repeated_properties_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -180,10 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += fBEBNLOPIBL_.CalculateSize(_repeated_fBEBNLOPIBL_codec);
       if (InteractId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(InteractId);
       }
+      size += properties_.CalculateSize(_repeated_properties_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -196,10 +196,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      fBEBNLOPIBL_.Add(other.fBEBNLOPIBL_);
       if (other.InteractId != 0) {
         InteractId = other.InteractId;
       }
+      properties_.Add(other.properties_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -225,7 +225,7 @@ namespace March7thHoney.Proto {
           }
           case 18:
           case 16: {
-            fBEBNLOPIBL_.AddEntriesFrom(input, _repeated_fBEBNLOPIBL_codec);
+            properties_.AddEntriesFrom(input, _repeated_properties_codec);
             break;
           }
         }
@@ -253,7 +253,7 @@ namespace March7thHoney.Proto {
           }
           case 18:
           case 16: {
-            fBEBNLOPIBL_.AddEntriesFrom(ref input, _repeated_fBEBNLOPIBL_codec);
+            properties_.AddEntriesFrom(ref input, _repeated_properties_codec);
             break;
           }
         }

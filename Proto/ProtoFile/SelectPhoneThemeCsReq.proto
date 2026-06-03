@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SelectPhoneThemeCsReq {
-    uint32 theme_id = 14;
+    uint32 theme_id = 10;
 }

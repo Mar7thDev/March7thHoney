@@ -8,13 +8,13 @@ import "GNBBDMBNNDJ.proto";
 import "RelicRecommend.proto";
 
 message GetBigDataRecommendScRsp {
-    uint32 retcode = 10;
-    BigDataRecommendType big_data_recommend_type = 9;
-    bool has_recommand = 1;
-    uint32 equip_avatar = 4;
+    uint32 equip_avatar = 2;
+    bool has_recommand = 6;
+    BigDataRecommendType big_data_recommend_type = 12;
+    uint32 retcode = 14;
     oneof OODKOEILJCD {
         EquipmentRecommend equipment_recommend = 13;
-        RelicRecommend relic_recommend = 5;
-        GNBBDMBNNDJ KHCMLINMGEN = 3;
+        RelicRecommend relic_recommend = 11;
+        GNBBDMBNNDJ KHCMLINMGEN = 4;
     }
 }

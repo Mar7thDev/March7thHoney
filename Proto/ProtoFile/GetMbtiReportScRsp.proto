@@ -6,12 +6,12 @@ import "EDGEHPFOKBH.proto";
 import "HKNBLADLAAE.proto";
 
 message GetMbtiReportScRsp {
-    repeated EDGEHPFOKBH BLINEMKKEOG = 8;
-    repeated HKNBLADLAAE DMCKDIGKHLB = 1;
-    int32 KHMNANHKINB = 2;
-    bool is_taken_reward = 11;
-    bool JMFNGFKBIFL = 4;
-    uint32 progress = 14;
-    uint32 retcode = 3;
-    int32 CJBLDKJDLOJ = 15;
+    bool is_taken_reward = 1;
+    repeated HKNBLADLAAE DMCKDIGKHLB = 3;
+    bool JMFNGFKBIFL = 5;
+    uint32 retcode = 6;
+    int32 KHMNANHKINB = 7;
+    int32 CJBLDKJDLOJ = 9;
+    uint32 progress = 10;
+    repeated EDGEHPFOKBH BLINEMKKEOG = 14;
 }

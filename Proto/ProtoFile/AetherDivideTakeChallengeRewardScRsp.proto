@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message AetherDivideTakeChallengeRewardScRsp {
-    ItemList reward = 6;
-    uint32 challenge_id = 1;
-    uint32 retcode = 7;
+    uint32 group_id = 5;
+    ItemList reward = 8;
+    uint32 retcode = 15;
 }

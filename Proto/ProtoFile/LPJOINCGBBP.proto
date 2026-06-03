@@ -5,8 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BGLIMCBGLAJ.proto";
 
 message LPJOINCGBBP {
-    BGLIMCBGLAJ OINGNAJMFNL = 9;
+    uint32 DJFGDMIDEHJ = 1;
+    BGLIMCBGLAJ OINGNAJMFNL = 4;
     uint32 challenge_id = 5;
-    uint32 DNAPFBANFHJ = 4;
-    uint32 DJFGDMIDEHJ = 11;
 }

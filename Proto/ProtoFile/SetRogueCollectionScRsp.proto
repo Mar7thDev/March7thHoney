@@ -6,7 +6,7 @@ import "JMJEIBGACMD.proto";
 import "NPAJHGDEIDJ.proto";
 
 message SetRogueCollectionScRsp {
-    repeated NPAJHGDEIDJ DPIKOCFILGP = 9;
-    repeated JMJEIBGACMD CEPDOBEIEFG = 14;
-    uint32 retcode = 11;
+    uint32 retcode = 2;
+    repeated JMJEIBGACMD CEPDOBEIEFG = 6;
+    repeated NPAJHGDEIDJ DPIKOCFILGP = 7;
 }

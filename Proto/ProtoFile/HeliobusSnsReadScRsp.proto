@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HeliobusSnsReadScRsp {
-    uint32 retcode = 5;
-    uint32 CBGODLHCLPK = 4;
+    uint32 retcode = 3;
+    uint32 CBGODLHCLPK = 11;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RogueMagicEnterRoomCsReq {
-    uint32 KHBLMAOPLLN = 11;
-    uint32 JOJCPKNIJOH = 9;
+    uint32 JOJCPKNIJOH = 6;
+    uint32 KHBLMAOPLLN = 9;
 }

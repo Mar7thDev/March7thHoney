@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HDAHFLMBAAB.proto";
 
 message UpdateMovieRacingDataScRsp {
-    HDAHFLMBAAB LJEPIAIDJFC = 3;
-    uint32 retcode = 7;
+    uint32 retcode = 8;
+    HDAHFLMBAAB LJEPIAIDJFC = 13;
 }

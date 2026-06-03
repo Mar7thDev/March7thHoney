@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KKFMGCNDHGH.proto";
 
 message ResetEraFlipperDataScRsp {
-    KKFMGCNDHGH data = 14;
-    bool CJEILDIOIOE = 6;
     uint32 retcode = 3;
+    KKFMGCNDHGH data = 7;
+    bool CJEILDIOIOE = 15;
 }

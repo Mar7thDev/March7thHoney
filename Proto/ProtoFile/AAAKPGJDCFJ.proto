@@ -6,10 +6,10 @@ import "KICEGHDKACP.proto";
 import "LMKECAPDMAC.proto";
 
 message AAAKPGJDCFJ {
-    repeated KICEGHDKACP CFHOJCBDFPE = 2;
-    repeated uint32 HFJBMJHAHPE = 10;
-    repeated LMKECAPDMAC APHGAEAPLJF = 4;
+    repeated KICEGHDKACP CFHOJCBDFPE = 6;
+    uint32 OOCOFCBJOJD = 7;
     uint32 DMAAMCIPPAM = 8;
-    uint32 OOCOFCBJOJD = 14;
-    uint32 EAFFACCBAAA = 3;
+    uint32 EAFFACCBAAA = 10;
+    repeated uint32 HFJBMJHAHPE = 12;
+    repeated LMKECAPDMAC skill_list = 15;
 }

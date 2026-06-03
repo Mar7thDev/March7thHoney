@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdTZWFyY2hQbGF5ZXJDc1JlcS5wcm90byI6ChFTZWFyY2hQbGF5ZXJDc1Jl",
-            "cRIQCgh1aWRfbGlzdBgPIAMoDRITCgtERE5LSERJS0FFTBgMIAEoCEIWqgIT",
+            "cRITCgtERE5LSERJS0FFTBgDIAEoCBIQCgh1aWRfbGlzdBgIIAMoDUIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SearchPlayerCsReq), global::March7thHoney.Proto.SearchPlayerCsReq.Parser, new[]{ "UidList", "DDNKHDIKAEL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SearchPlayerCsReq), global::March7thHoney.Proto.SearchPlayerCsReq.Parser, new[]{ "DDNKHDIKAEL", "UidList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SearchPlayerCsReq(SearchPlayerCsReq other) : this() {
-      uidList_ = other.uidList_.Clone();
       dDNKHDIKAEL_ = other.dDNKHDIKAEL_;
+      uidList_ = other.uidList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,19 +83,8 @@ namespace March7thHoney.Proto {
       return new SearchPlayerCsReq(this);
     }
 
-    /// <summary>Field number for the "uid_list" field.</summary>
-    public const int UidListFieldNumber = 15;
-    private static readonly pb::FieldCodec<uint> _repeated_uidList_codec
-        = pb::FieldCodec.ForUInt32(122);
-    private readonly pbc::RepeatedField<uint> uidList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UidList {
-      get { return uidList_; }
-    }
-
     /// <summary>Field number for the "DDNKHDIKAEL" field.</summary>
-    public const int DDNKHDIKAELFieldNumber = 12;
+    public const int DDNKHDIKAELFieldNumber = 3;
     private bool dDNKHDIKAEL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +93,17 @@ namespace March7thHoney.Proto {
       set {
         dDNKHDIKAEL_ = value;
       }
+    }
+
+    /// <summary>Field number for the "uid_list" field.</summary>
+    public const int UidListFieldNumber = 8;
+    private static readonly pb::FieldCodec<uint> _repeated_uidList_codec
+        = pb::FieldCodec.ForUInt32(66);
+    private readonly pbc::RepeatedField<uint> uidList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UidList {
+      get { return uidList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!uidList_.Equals(other.uidList_)) return false;
       if (DDNKHDIKAEL != other.DDNKHDIKAEL) return false;
+      if(!uidList_.Equals(other.uidList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= uidList_.GetHashCode();
       if (DDNKHDIKAEL != false) hash ^= DDNKHDIKAEL.GetHashCode();
+      hash ^= uidList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (DDNKHDIKAEL != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteBool(DDNKHDIKAEL);
       }
       uidList_.WriteTo(output, _repeated_uidList_codec);
@@ -166,7 +166,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (DDNKHDIKAEL != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteBool(DDNKHDIKAEL);
       }
       uidList_.WriteTo(ref output, _repeated_uidList_codec);
@@ -180,10 +180,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += uidList_.CalculateSize(_repeated_uidList_codec);
       if (DDNKHDIKAEL != false) {
         size += 1 + 1;
       }
+      size += uidList_.CalculateSize(_repeated_uidList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -196,10 +196,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      uidList_.Add(other.uidList_);
       if (other.DDNKHDIKAEL != false) {
         DDNKHDIKAEL = other.DDNKHDIKAEL;
       }
+      uidList_.Add(other.uidList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
+          case 24: {
             DDNKHDIKAEL = input.ReadBool();
             break;
           }
-          case 122:
-          case 120: {
+          case 66:
+          case 64: {
             uidList_.AddEntriesFrom(input, _repeated_uidList_codec);
             break;
           }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
+          case 24: {
             DDNKHDIKAEL = input.ReadBool();
             break;
           }
-          case 122:
-          case 120: {
+          case 66:
+          case 64: {
             uidList_.AddEntriesFrom(ref input, _repeated_uidList_codec);
             break;
           }

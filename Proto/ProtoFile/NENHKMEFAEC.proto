@@ -2,12 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "LAJGLHCCNED.proto";
 import "NPPEMMILLCO.proto";
 
 message NENHKMEFAEC {
-    LAJGLHCCNED JDFPKAMFHAP = 4;
-    uint32 OJNGBIBGHBL = 9;
-    uint32 BCAKPNCHIIJ = 6;
-    NPPEMMILLCO reason = 15;
+    uint32 BCAKPNCHIIJ = 4;
+    NPPEMMILLCO reason = 9;
 }

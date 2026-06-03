@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChxTY2VuZUVudGl0eVJlZnJlc2hJbmZvLnByb3RvGhVTY2VuZUVudGl0eUlu",
             "Zm8ucHJvdG8igAEKFlNjZW5lRW50aXR5UmVmcmVzaEluZm8SJgoKYWRkX2Vu",
-            "dGl0eRgNIAEoCzIQLlNjZW5lRW50aXR5SW5mb0gAEhcKDWRlbGV0ZV9lbnRp",
-            "dHkYCyABKA1IABIVCgtCRUVBTkFEQUhQTBgOIAEoDUgAQg4KDHJlZnJlc2hf",
+            "dGl0eRgGIAEoCzIQLlNjZW5lRW50aXR5SW5mb0gAEhcKDWRlbGV0ZV9lbnRp",
+            "dHkYBSABKA1IABIVCgtCRUVBTkFEQUhQTBgOIAEoDUgAQg4KDHJlZnJlc2hf",
             "dHlwZUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneEntityInfoReflection.Descriptor, },
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "add_entity" field.</summary>
-    public const int AddEntityFieldNumber = 13;
+    public const int AddEntityFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.SceneEntityInfo AddEntity {
@@ -108,7 +108,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "delete_entity" field.</summary>
-    public const int DeleteEntityFieldNumber = 11;
+    public const int DeleteEntityFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint DeleteEntity {
@@ -163,8 +163,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "refresh_type" oneof.</summary>
     public enum RefreshTypeOneofCase {
       None = 0,
-      AddEntity = 13,
-      DeleteEntity = 11,
+      AddEntity = 6,
+      DeleteEntity = 5,
       BEEANADAHPL = 14,
     }
     private RefreshTypeOneofCase refreshTypeCase_ = RefreshTypeOneofCase.None;
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (HasDeleteEntity) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(40);
         output.WriteUInt32(DeleteEntity);
       }
       if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(50);
         output.WriteMessage(AddEntity);
       }
       if (HasBEEANADAHPL) {
@@ -252,11 +252,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (HasDeleteEntity) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(40);
         output.WriteUInt32(DeleteEntity);
       }
       if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(50);
         output.WriteMessage(AddEntity);
       }
       if (HasBEEANADAHPL) {
@@ -328,11 +328,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
+          case 40: {
             DeleteEntity = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 50: {
             global::March7thHoney.Proto.SceneEntityInfo subBuilder = new global::March7thHoney.Proto.SceneEntityInfo();
             if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
               subBuilder.MergeFrom(AddEntity);
@@ -364,11 +364,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
+          case 40: {
             DeleteEntity = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 50: {
             global::March7thHoney.Proto.SceneEntityInfo subBuilder = new global::March7thHoney.Proto.SceneEntityInfo();
             if (refreshTypeCase_ == RefreshTypeOneofCase.AddEntity) {
               subBuilder.MergeFrom(AddEntity);

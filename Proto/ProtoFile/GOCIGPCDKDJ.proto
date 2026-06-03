@@ -3,12 +3,12 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GOCIGPCDKDJ {
-    repeated uint32 FMEOHKHGMJM = 1;
-    uint32 LKCJAPIGEND = 9;
-    uint32 EMOHLJHPOPC = 13;
-    uint32 AACGBEBGDPE = 6;
-    uint32 FDGKBOIEHBD = 7;
-    uint32 section_id = 2;
-    uint32 DCAHJELNJNP = 3;
-    uint32 PAGPKOKMDBK = 14;
+    uint32 PAGPKOKMDBK = 2;
+    uint32 EMOHLJHPOPC = 5;
+    uint32 section_id = 6;
+    uint32 LKCJAPIGEND = 8;
+    uint32 FDGKBOIEHBD = 10;
+    repeated uint32 FMEOHKHGMJM = 12;
+    uint32 AACGBEBGDPE = 13;
+    uint32 DCAHJELNJNP = 15;
 }

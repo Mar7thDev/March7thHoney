@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ClientDownloadData {
-    bytes data = 3;
-    int64 time = 2;
-    uint32 DJCNHCGFHKF = 4;
     uint32 version = 1;
+    int64 time = 2;
+    bytes data = 3;
+    uint32 channel_id = 4;
 }

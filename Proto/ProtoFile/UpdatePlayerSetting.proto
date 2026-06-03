@@ -2,28 +2,28 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
 import "JPGACKPLGCD.proto";
+import "KVP.proto";
 import "PNOLLIAKGDB.proto";
 
 message UpdatePlayerSetting {
     oneof BKAGLMFNKKA {
-        bool AACOEHCFNDB = 1;
-        bool DGCNHMIHFJB = 14;
-        bool FDHEPCKLCAM = 9;
-        bool DCJECFMMIBC = 2;
-        bool IOJEAOCOBBF = 15;
-        bool PFBHGAHAFMD = 3;
-        bool GNFDDPEMMFN = 5;
+        bool AACOEHCFNDB = 9;
+        bool DGCNHMIHFJB = 5;
+        bool FDHEPCKLCAM = 7;
+        bool DCJECFMMIBC = 12;
+        bool IOJEAOCOBBF = 1;
+        bool PFBHGAHAFMD = 4;
+        bool GNFDDPEMMFN = 8;
         bool MAKOLELFLFH = 6;
-        bool NJAKOMDMFJD = 4;
-        PNOLLIAKGDB OJPAODIHAJE = 8;
-        bool BOMGNMDOGLM = 368;
-        bool BBEEBBIDJHE = 593;
-        bool HGPFFGKNPFB = 528;
-        bool LNGHIJGFDKP = 1849;
-        bool GOKFNGFFMOB = 815;
-        JPGACKPLGCD CMFCOOEEECB = 619;
-        APAMFCKFHLL EGLOIFDIDPK = 182;
+        bool NJAKOMDMFJD = 2;
+        PNOLLIAKGDB OJPAODIHAJE = 14;
+        bool BOMGNMDOGLM = 56;
+        bool BBEEBBIDJHE = 1951;
+        bool HGPFFGKNPFB = 1477;
+        bool LNGHIJGFDKP = 541;
+        bool GOKFNGFFMOB = 1238;
+        JPGACKPLGCD CMFCOOEEECB = 1738;
+        KVP EGLOIFDIDPK = 1456;
     }
 }

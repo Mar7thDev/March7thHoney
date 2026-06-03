@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ExchangeHcoinCsReq {
-    uint32 num = 6;
+    uint32 num = 14;
 }

@@ -6,8 +6,8 @@ import "ItemList.proto";
 import "KNPNAHPHNJK.proto";
 
 message TakeMailAttachmentScRsp {
-    repeated KNPNAHPHNJK fail_mail_list = 9;
-    repeated uint32 succ_mail_id_list = 1;
-    ItemList attachment = 6;
-    uint32 retcode = 10;
+    repeated KNPNAHPHNJK fail_mail_list = 3;
+    repeated uint32 succ_mail_id_list = 10;
+    uint32 retcode = 11;
+    ItemList attachment = 15;
 }

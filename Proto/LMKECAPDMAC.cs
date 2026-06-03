@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static LMKECAPDMACReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFMTUtFQ0FQRE1BQy5wcm90byJJCgtMTUtFQ0FQRE1BQxIQCghza2lsbF9p",
-            "ZBgJIAEoDRITCgtza2lsbF9sZXZlbBgNIAEoDRITCgtIQ0JBRERITklERxgB",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFMTUtFQ0FQRE1BQy5wcm90byJHCgtMTUtFQ0FQRE1BQxIRCgltYXhfbGV2",
+            "ZWwYBiABKA0SEAoIc2tpbGxfaWQYCSABKA0SEwoLc2tpbGxfbGV2ZWwYDSAB",
+            "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LMKECAPDMAC), global::March7thHoney.Proto.LMKECAPDMAC.Parser, new[]{ "SkillId", "SkillLevel", "HCBADDHNIDG" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LMKECAPDMAC), global::March7thHoney.Proto.LMKECAPDMAC.Parser, new[]{ "MaxLevel", "SkillId", "SkillLevel" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LMKECAPDMAC(LMKECAPDMAC other) : this() {
+      maxLevel_ = other.maxLevel_;
       skillId_ = other.skillId_;
       skillLevel_ = other.skillLevel_;
-      hCBADDHNIDG_ = other.hCBADDHNIDG_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,6 +82,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LMKECAPDMAC Clone() {
       return new LMKECAPDMAC(this);
+    }
+
+    /// <summary>Field number for the "max_level" field.</summary>
+    public const int MaxLevelFieldNumber = 6;
+    private uint maxLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxLevel {
+      get { return maxLevel_; }
+      set {
+        maxLevel_ = value;
+      }
     }
 
     /// <summary>Field number for the "skill_id" field.</summary>
@@ -108,18 +120,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HCBADDHNIDG" field.</summary>
-    public const int HCBADDHNIDGFieldNumber = 1;
-    private uint hCBADDHNIDG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint HCBADDHNIDG {
-      get { return hCBADDHNIDG_; }
-      set {
-        hCBADDHNIDG_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (MaxLevel != other.MaxLevel) return false;
       if (SkillId != other.SkillId) return false;
       if (SkillLevel != other.SkillLevel) return false;
-      if (HCBADDHNIDG != other.HCBADDHNIDG) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (MaxLevel != 0) hash ^= MaxLevel.GetHashCode();
       if (SkillId != 0) hash ^= SkillId.GetHashCode();
       if (SkillLevel != 0) hash ^= SkillLevel.GetHashCode();
-      if (HCBADDHNIDG != 0) hash ^= HCBADDHNIDG.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,9 +166,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HCBADDHNIDG != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(HCBADDHNIDG);
+      if (MaxLevel != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(MaxLevel);
       }
       if (SkillId != 0) {
         output.WriteRawTag(72);
@@ -188,9 +188,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HCBADDHNIDG != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(HCBADDHNIDG);
+      if (MaxLevel != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(MaxLevel);
       }
       if (SkillId != 0) {
         output.WriteRawTag(72);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (MaxLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxLevel);
+      }
       if (SkillId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillId);
       }
       if (SkillLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkillLevel);
-      }
-      if (HCBADDHNIDG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HCBADDHNIDG);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.MaxLevel != 0) {
+        MaxLevel = other.MaxLevel;
+      }
       if (other.SkillId != 0) {
         SkillId = other.SkillId;
       }
       if (other.SkillLevel != 0) {
         SkillLevel = other.SkillLevel;
-      }
-      if (other.HCBADDHNIDG != 0) {
-        HCBADDHNIDG = other.HCBADDHNIDG;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,8 +259,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            HCBADDHNIDG = input.ReadUInt32();
+          case 48: {
+            MaxLevel = input.ReadUInt32();
             break;
           }
           case 72: {
@@ -290,8 +290,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            HCBADDHNIDG = input.ReadUInt32();
+          case 48: {
+            MaxLevel = input.ReadUInt32();
             break;
           }
           case 72: {

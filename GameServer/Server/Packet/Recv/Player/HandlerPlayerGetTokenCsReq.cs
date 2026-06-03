@@ -19,11 +19,11 @@ public class HandlerPlayerGetTokenCsReq : Handler
     {
         var req = PlayerGetTokenCsReq.Parser.ParseFrom(data);
         _logger.Info(
-            $"PlayerGetToken requested. remote={connection.RemoteEndPoint} account_uid={req.AccountUid} token_len={req.DNADIICFMEE?.Length ?? 0}");
-        if (!int.TryParse(req.AccountUid, out var requestedUid) || string.IsNullOrWhiteSpace(req.DNADIICFMEE))
+            $"PlayerGetToken requested. remote={connection.RemoteEndPoint} account_uid={req.AccountUid} token_len={req.Token?.Length ?? 0}");
+        if (!int.TryParse(req.AccountUid, out var requestedUid) || string.IsNullOrWhiteSpace(req.Token))
         {
             _logger.Warn(
-                $"PlayerGetToken rejected invalid request. remote={connection.RemoteEndPoint} account_uid={req.AccountUid} token_len={req.DNADIICFMEE?.Length ?? 0}");
+                $"PlayerGetToken rejected invalid request. remote={connection.RemoteEndPoint} account_uid={req.AccountUid} token_len={req.Token?.Length ?? 0}");
             await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
             return;
         }
@@ -42,12 +42,12 @@ public class HandlerPlayerGetTokenCsReq : Handler
                 return;
             }
 
-            var isDispatchToken = account.ValidateDispatchToken(req.DNADIICFMEE);
-            var isComboToken = account.ValidateComboToken(req.DNADIICFMEE);
+            var isDispatchToken = account.ValidateDispatchToken(req.Token);
+            var isComboToken = account.ValidateComboToken(req.Token);
             if (!isDispatchToken && !isComboToken)
             {
                 _logger.Warn(
-                    $"PlayerGetToken rejected invalid token. remote={connection.RemoteEndPoint} uid={requestedUid} token_len={req.DNADIICFMEE?.Length ?? 0}");
+                    $"PlayerGetToken rejected invalid token. remote={connection.RemoteEndPoint} uid={requestedUid} token_len={req.Token?.Length ?? 0}");
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList));
                 return;
             }
@@ -96,7 +96,7 @@ public class HandlerPlayerGetTokenCsReq : Handler
             var form = new Dictionary<string, string>
             {
                 ["accountUid"] = req.AccountUid,
-                ["token"] = req.DNADIICFMEE
+                ["token"] = req.Token
             };
 
             var res = await HttpNetwork.SendPostFormRequest(targetUrl, form, headers);

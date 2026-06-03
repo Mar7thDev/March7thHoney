@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CJLCPMDGIBO.proto";
 
 message SetPlayerOutfitCsReq {
-    CJLCPMDGIBO DHKFCDAGHDM = 5;
+    CJLCPMDGIBO DHKFCDAGHDM = 13;
 }

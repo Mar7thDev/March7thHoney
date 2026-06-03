@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TakeMailAttachmentCsReq {
-    repeated uint32 mail_id_list = 8;
-    uint32 optional_reward_id = 5;
+    uint32 optional_reward_id = 7;
+    repeated uint32 mail_id_list = 10;
 }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiFTeW5jUm9ndWVFeHBsb3JlV2luU2NOb3RpZnkucHJvdG8iMgobU3luY1Jv",
-            "Z3VlRXhwbG9yZVdpblNjTm90aWZ5EhMKC0lMT0ZHQ0FGSEFIGAUgASgIQhaq",
+            "Z3VlRXhwbG9yZVdpblNjTm90aWZ5EhMKC0lMT0ZHQ0FGSEFIGAggASgIQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "ILOFGCAFHAH" field.</summary>
-    public const int ILOFGCAFHAHFieldNumber = 5;
+    public const int ILOFGCAFHAHFieldNumber = 8;
     private bool iLOFGCAFHAH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ILOFGCAFHAH != false) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteBool(ILOFGCAFHAH);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ILOFGCAFHAH != false) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteBool(ILOFGCAFHAH);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 64: {
             ILOFGCAFHAH = input.ReadBool();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 64: {
             ILOFGCAFHAH = input.ReadBool();
             break;
           }

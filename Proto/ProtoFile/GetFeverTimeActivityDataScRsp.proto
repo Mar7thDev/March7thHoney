@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JBMJOIPJPLH.proto";
 
 message GetFeverTimeActivityDataScRsp {
-    repeated JBMJOIPJPLH GNDEFEAEDNJ = 7;
-    uint32 retcode = 6;
+    uint32 retcode = 9;
+    repeated JBMJOIPJPLH GNDEFEAEDNJ = 15;
 }

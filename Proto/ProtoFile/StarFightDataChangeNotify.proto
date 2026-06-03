@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JFGCABMMKAB.proto";
 
 message StarFightDataChangeNotify {
-    JFGCABMMKAB KDKKNFGPNAB = 10;
-    uint32 group_id = 2;
+    uint32 group_id = 11;
+    JFGCABMMKAB KDKKNFGPNAB = 15;
 }

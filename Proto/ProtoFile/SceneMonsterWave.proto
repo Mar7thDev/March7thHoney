@@ -7,9 +7,9 @@ import "SceneMonster.proto";
 import "SceneMonsterWaveParam.proto";
 
 message SceneMonsterWave {
-    repeated ItemList NMGIABHIJJB = 4;
-    repeated SceneMonster monster_list = 7;
-    SceneMonsterWaveParam monster_param = 11;
-    uint32 battle_wave_id = 14;
-    uint32 battle_stage_id = 2;
+    repeated ItemList NMGIABHIJJB = 3;
+    uint32 battle_wave_id = 8;
+    uint32 battle_stage_id = 12;
+    repeated SceneMonster monster_list = 13;
+    SceneMonsterWaveParam monster_param = 15;
 }

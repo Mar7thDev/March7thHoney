@@ -6,8 +6,8 @@ import "ItemList.proto";
 
 message TakeLoginActivityRewardScRsp {
     ItemList reward = 1;
-    uint32 panel_id = 7;
-    uint32 retcode = 5;
-    uint32 take_days = 11;
+    uint32 panel_id = 6;
+    uint32 retcode = 9;
+    uint32 take_days = 12;
     uint32 id = 14;
 }

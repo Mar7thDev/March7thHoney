@@ -8,15 +8,15 @@ import "MotionInfo.proto";
 import "SkillExtraTag.proto";
 
 message SceneCastSkillCsReq {
-    repeated AssistMonsterEntityInfo assist_monster_entity_info = 10;
-    repeated DynamicValues dynamic_values = 13;
-    repeated SkillExtraTag skill_extra_tags = 2;
-    string maze_ability_str = 7;
-    repeated uint32 hit_target_entity_id_list = 11;
-    MotionInfo target_motion = 1;
+    repeated SkillExtraTag skill_extra_tags = 1;
+    uint32 cast_entity_id = 3;
+    repeated DynamicValues dynamic_values = 4;
+    repeated AssistMonsterEntityInfo assist_monster_entity_info = 5;
     repeated uint32 assist_monster_entity_id_list = 6;
-    uint32 KCFABNFPOPN = 12;
-    uint32 attacked_by_entity_id = 3;
-    uint32 skill_index = 9;
-    uint32 cast_entity_id = 8;
+    uint32 KCFABNFPOPN = 7;
+    uint32 attacked_by_entity_id = 8;
+    MotionInfo target_motion = 9;
+    string maze_ability_str = 10;
+    uint32 skill_index = 13;
+    repeated uint32 hit_target_entity_id_list = 15;
 }

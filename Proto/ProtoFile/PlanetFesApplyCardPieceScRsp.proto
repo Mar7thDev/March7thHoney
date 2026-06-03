@@ -3,10 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlanetFesApplyCardPieceScRsp {
-    repeated uint32 OEEGPNOCFLP = 9;
-    bool GOPCDFEIOEA = 11;
-    uint32 retcode = 14;
-    int64 GLDGCHLDMJE = 4;
-    uint32 BLGLDJHOMNO = 3;
-    uint32 teleport_id = 6;
+    uint32 BLGLDJHOMNO = 4;
+    int64 GLDGCHLDMJE = 6;
+    uint32 retcode = 7;
+    bool GOPCDFEIOEA = 10;
+    repeated uint32 OEEGPNOCFLP = 14;
+    uint32 teleport_id = 15;
 }

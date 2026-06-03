@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpHZXRTY2VuZU1hcEluZm9Dc1JlcS5wcm90bxoVU2NlbmVJZGVudGlmaWVy",
             "LnByb3RvIkMKFEdldFNjZW5lTWFwSW5mb0NzUmVxEisKEXNjZW5lX2lkZW50",
-            "aWZpZXJzGAYgAygLMhAuU2NlbmVJZGVudGlmaWVyQhaqAhNNYXJjaDd0aEhv",
+            "aWZpZXJzGAwgAygLMhAuU2NlbmVJZGVudGlmaWVyQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "scene_identifiers" field.</summary>
-    public const int SceneIdentifiersFieldNumber = 6;
+    public const int SceneIdentifiersFieldNumber = 12;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.SceneIdentifier> _repeated_sceneIdentifiers_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.SceneIdentifier.Parser);
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.SceneIdentifier.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.SceneIdentifier> sceneIdentifiers_ = new pbc::RepeatedField<global::March7thHoney.Proto.SceneIdentifier>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 98: {
             sceneIdentifiers_.AddEntriesFrom(input, _repeated_sceneIdentifiers_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 98: {
             sceneIdentifiers_.AddEntriesFrom(ref input, _repeated_sceneIdentifiers_codec);
             break;
           }

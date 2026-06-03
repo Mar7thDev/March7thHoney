@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ModifyAvatarDiceCsReq {
-    uint32 avatar_id = 9;
-    uint32 LLPCNBJIMCN = 8;
+    uint32 LLPCNBJIMCN = 1;
+    uint32 avatar_id = 3;
 }

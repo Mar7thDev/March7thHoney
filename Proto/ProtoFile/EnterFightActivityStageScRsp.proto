@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "SceneBattleInfo.proto";
 
 message EnterFightActivityStageScRsp {
-    SceneBattleInfo battle_info = 5;
-    uint32 group_id = 7;
-    uint32 DBKHHCGGKNN = 2;
-    uint32 retcode = 15;
+    uint32 retcode = 2;
+    uint32 group_id = 6;
+    uint32 DBKHHCGGKNN = 7;
+    SceneBattleInfo battle_info = 14;
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KFACLOGFNJF.proto";
 
 message ChessRogueConfirmRollScRsp {
-    KFACLOGFNJF POHEPEEFBOA = 11;
-    uint32 retcode = 8;
+    uint32 retcode = 1;
+    KFACLOGFNJF POHEPEEFBOA = 13;
 }

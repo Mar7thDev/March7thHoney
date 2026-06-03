@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFTkdIQUNBREJLSS5wcm90bxofVHJlYXN1cmVEdW5nZW9uUmVjb3JkVHlw",
-            "ZS5wcm90byKLAQoLRU5HSEFDQURCS0kSEwoLRk1JRlBGQUhGQkwYCSABKA0S",
-            "KAoEdHlwZRgOIAEoDjIaLlRyZWFzdXJlRHVuZ2VvblJlY29yZFR5cGUSEwoL",
-            "RUdLTEZNQ0hMQ08YBCABKA0SEwoLTERNSExLR0lMT0QYDSABKA0SEwoLRkZL",
-            "REZPRERCRE4YBiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "ZS5wcm90byKLAQoLRU5HSEFDQURCS0kSEwoLTERNSExLR0lMT0QYASABKA0S",
+            "EwoLRkZLREZPRERCRE4YByABKA0SEwoLRUdLTEZNQ0hMQ08YCiABKA0SEwoL",
+            "Rk1JRlBGQUhGQkwYCyABKA0SKAoEdHlwZRgNIAEoDjIaLlRyZWFzdXJlRHVu",
+            "Z2VvblJlY29yZFR5cGVCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TreasureDungeonRecordTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ENGHACADBKI), global::March7thHoney.Proto.ENGHACADBKI.Parser, new[]{ "FMIFPFAHFBL", "Type", "EGKLFMCHLCO", "LDMHLKGILOD", "FFKDFODDBDN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ENGHACADBKI), global::March7thHoney.Proto.ENGHACADBKI.Parser, new[]{ "LDMHLKGILOD", "FFKDFODDBDN", "EGKLFMCHLCO", "FMIFPFAHFBL", "Type" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,11 +75,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ENGHACADBKI(ENGHACADBKI other) : this() {
-      fMIFPFAHFBL_ = other.fMIFPFAHFBL_;
-      type_ = other.type_;
-      eGKLFMCHLCO_ = other.eGKLFMCHLCO_;
       lDMHLKGILOD_ = other.lDMHLKGILOD_;
       fFKDFODDBDN_ = other.fFKDFODDBDN_;
+      eGKLFMCHLCO_ = other.eGKLFMCHLCO_;
+      fMIFPFAHFBL_ = other.fMIFPFAHFBL_;
+      type_ = other.type_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -89,44 +89,8 @@ namespace March7thHoney.Proto {
       return new ENGHACADBKI(this);
     }
 
-    /// <summary>Field number for the "FMIFPFAHFBL" field.</summary>
-    public const int FMIFPFAHFBLFieldNumber = 9;
-    private uint fMIFPFAHFBL_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FMIFPFAHFBL {
-      get { return fMIFPFAHFBL_; }
-      set {
-        fMIFPFAHFBL_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 14;
-    private global::March7thHoney.Proto.TreasureDungeonRecordType type_ = global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.TreasureDungeonRecordType Type {
-      get { return type_; }
-      set {
-        type_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "EGKLFMCHLCO" field.</summary>
-    public const int EGKLFMCHLCOFieldNumber = 4;
-    private uint eGKLFMCHLCO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EGKLFMCHLCO {
-      get { return eGKLFMCHLCO_; }
-      set {
-        eGKLFMCHLCO_ = value;
-      }
-    }
-
     /// <summary>Field number for the "LDMHLKGILOD" field.</summary>
-    public const int LDMHLKGILODFieldNumber = 13;
+    public const int LDMHLKGILODFieldNumber = 1;
     private uint lDMHLKGILOD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +102,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FFKDFODDBDN" field.</summary>
-    public const int FFKDFODDBDNFieldNumber = 6;
+    public const int FFKDFODDBDNFieldNumber = 7;
     private uint fFKDFODDBDN_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -146,6 +110,42 @@ namespace March7thHoney.Proto {
       get { return fFKDFODDBDN_; }
       set {
         fFKDFODDBDN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EGKLFMCHLCO" field.</summary>
+    public const int EGKLFMCHLCOFieldNumber = 10;
+    private uint eGKLFMCHLCO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EGKLFMCHLCO {
+      get { return eGKLFMCHLCO_; }
+      set {
+        eGKLFMCHLCO_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FMIFPFAHFBL" field.</summary>
+    public const int FMIFPFAHFBLFieldNumber = 11;
+    private uint fMIFPFAHFBL_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FMIFPFAHFBL {
+      get { return fMIFPFAHFBL_; }
+      set {
+        fMIFPFAHFBL_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 13;
+    private global::March7thHoney.Proto.TreasureDungeonRecordType type_ = global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.TreasureDungeonRecordType Type {
+      get { return type_; }
+      set {
+        type_ = value;
       }
     }
 
@@ -164,11 +164,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FMIFPFAHFBL != other.FMIFPFAHFBL) return false;
-      if (Type != other.Type) return false;
-      if (EGKLFMCHLCO != other.EGKLFMCHLCO) return false;
       if (LDMHLKGILOD != other.LDMHLKGILOD) return false;
       if (FFKDFODDBDN != other.FFKDFODDBDN) return false;
+      if (EGKLFMCHLCO != other.EGKLFMCHLCO) return false;
+      if (FMIFPFAHFBL != other.FMIFPFAHFBL) return false;
+      if (Type != other.Type) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -176,11 +176,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FMIFPFAHFBL != 0) hash ^= FMIFPFAHFBL.GetHashCode();
-      if (Type != global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd) hash ^= Type.GetHashCode();
-      if (EGKLFMCHLCO != 0) hash ^= EGKLFMCHLCO.GetHashCode();
       if (LDMHLKGILOD != 0) hash ^= LDMHLKGILOD.GetHashCode();
       if (FFKDFODDBDN != 0) hash ^= FFKDFODDBDN.GetHashCode();
+      if (EGKLFMCHLCO != 0) hash ^= EGKLFMCHLCO.GetHashCode();
+      if (FMIFPFAHFBL != 0) hash ^= FMIFPFAHFBL.GetHashCode();
+      if (Type != global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd) hash ^= Type.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -199,24 +199,24 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EGKLFMCHLCO != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(EGKLFMCHLCO);
-      }
-      if (FFKDFODDBDN != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(FFKDFODDBDN);
-      }
-      if (FMIFPFAHFBL != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(FMIFPFAHFBL);
-      }
       if (LDMHLKGILOD != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteUInt32(LDMHLKGILOD);
       }
+      if (FFKDFODDBDN != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(FFKDFODDBDN);
+      }
+      if (EGKLFMCHLCO != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(EGKLFMCHLCO);
+      }
+      if (FMIFPFAHFBL != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(FMIFPFAHFBL);
+      }
       if (Type != global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(104);
         output.WriteEnum((int) Type);
       }
       if (_unknownFields != null) {
@@ -229,24 +229,24 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EGKLFMCHLCO != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(EGKLFMCHLCO);
-      }
-      if (FFKDFODDBDN != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(FFKDFODDBDN);
-      }
-      if (FMIFPFAHFBL != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(FMIFPFAHFBL);
-      }
       if (LDMHLKGILOD != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteUInt32(LDMHLKGILOD);
       }
+      if (FFKDFODDBDN != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(FFKDFODDBDN);
+      }
+      if (EGKLFMCHLCO != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(EGKLFMCHLCO);
+      }
+      if (FMIFPFAHFBL != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(FMIFPFAHFBL);
+      }
       if (Type != global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(104);
         output.WriteEnum((int) Type);
       }
       if (_unknownFields != null) {
@@ -259,20 +259,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FMIFPFAHFBL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FMIFPFAHFBL);
-      }
-      if (Type != global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
-      }
-      if (EGKLFMCHLCO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EGKLFMCHLCO);
-      }
       if (LDMHLKGILOD != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LDMHLKGILOD);
       }
       if (FFKDFODDBDN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FFKDFODDBDN);
+      }
+      if (EGKLFMCHLCO != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EGKLFMCHLCO);
+      }
+      if (FMIFPFAHFBL != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FMIFPFAHFBL);
+      }
+      if (Type != global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -286,20 +286,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FMIFPFAHFBL != 0) {
-        FMIFPFAHFBL = other.FMIFPFAHFBL;
-      }
-      if (other.Type != global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd) {
-        Type = other.Type;
-      }
-      if (other.EGKLFMCHLCO != 0) {
-        EGKLFMCHLCO = other.EGKLFMCHLCO;
-      }
       if (other.LDMHLKGILOD != 0) {
         LDMHLKGILOD = other.LDMHLKGILOD;
       }
       if (other.FFKDFODDBDN != 0) {
         FFKDFODDBDN = other.FFKDFODDBDN;
+      }
+      if (other.EGKLFMCHLCO != 0) {
+        EGKLFMCHLCO = other.EGKLFMCHLCO;
+      }
+      if (other.FMIFPFAHFBL != 0) {
+        FMIFPFAHFBL = other.FMIFPFAHFBL;
+      }
+      if (other.Type != global::March7thHoney.Proto.TreasureDungeonRecordType.EfphnjobnoeOmckglpafkd) {
+        Type = other.Type;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -320,23 +320,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            EGKLFMCHLCO = input.ReadUInt32();
+          case 8: {
+            LDMHLKGILOD = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 56: {
             FFKDFODDBDN = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 80: {
+            EGKLFMCHLCO = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             FMIFPFAHFBL = input.ReadUInt32();
             break;
           }
           case 104: {
-            LDMHLKGILOD = input.ReadUInt32();
-            break;
-          }
-          case 112: {
             Type = (global::March7thHoney.Proto.TreasureDungeonRecordType) input.ReadEnum();
             break;
           }
@@ -359,23 +359,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            EGKLFMCHLCO = input.ReadUInt32();
+          case 8: {
+            LDMHLKGILOD = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 56: {
             FFKDFODDBDN = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 80: {
+            EGKLFMCHLCO = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             FMIFPFAHFBL = input.ReadUInt32();
             break;
           }
           case 104: {
-            LDMHLKGILOD = input.ReadUInt32();
-            break;
-          }
-          case 112: {
             Type = (global::March7thHoney.Proto.TreasureDungeonRecordType) input.ReadEnum();
             break;
           }

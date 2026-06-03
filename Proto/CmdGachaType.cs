@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJDbWRHYWNoYVR5cGUucHJvdG8q9QIKDENtZEdhY2hhVHlwZRIbChdMREFE",
-            "RkpFT0ZHTF9OTENER0lQR0ZEShAAEhwKF0xEQURGSkVPRkdMX1BMTURBRE5N",
-            "QUVGEMMPEhwKF0xEQURGSkVPRkdMX0VHSkRORUtKQ0JGEIcPEhwKF0xEQURG",
-            "SkVPRkdMX0ZNSkJJQkxHTVBFEPsOEhwKF0xEQURGSkVPRkdMX0pQQ0ZGTk5P",
-            "SU5PEL0PEhwKF0xEQURGSkVPRkdMX0xORVBLQUlPQUtCEPYOEhwKF0xEQURG",
-            "SkVPRkdMX0xNSExNSEhBRERFEO8OEhwKF0xEQURGSkVPRkdMX05JR0pNQ0tE",
-            "QkpMEPkOEhwKF0xEQURGSkVPRkdMX0FQUEhJQUFPR0pKEJAPEhwKF0xEQURG",
-            "SkVPRkdMX1BQUElKQ01FQUtIELUPEhwKF0xEQURGSkVPRkdMX0lGQUFNQUVL",
-            "SE1BELwPEhwKF0xEQURGSkVPRkdMX1BEQ0lJRkNDQkVIEIkPQhaqAhNNYXJj",
+            "RkpFT0ZHTF9OTENER0lQR0ZEShAAEhwKF0xEQURGSkVPRkdMX0VHSkRORUtK",
+            "Q0JGEKYPEhwKF0xEQURGSkVPRkdMX0FQUEhJQUFPR0pKEMQPEhwKF0xEQURG",
+            "SkVPRkdMX0pQQ0ZGTk5PSU5PEJsPEhwKF0xEQURGSkVPRkdMX1BMTURBRE5N",
+            "QUVGEPkOEhwKF0xEQURGSkVPRkdMX05JR0pNQ0tEQkpMEL0PEhwKF0xEQURG",
+            "SkVPRkdMX1BQUElKQ01FQUtIEIUPEhwKF0xEQURGSkVPRkdMX0xNSExNSEhB",
+            "RERFELoPEhwKF0xEQURGSkVPRkdMX0xORVBLQUlPQUtCEIYPEhwKF0xEQURG",
+            "SkVPRkdMX0ZNSkJJQkxHTVBFEMIPEhwKF0xEQURGSkVPRkdMX0lGQUFNQUVL",
+            "SE1BEMkPEhwKF0xEQURGSkVPRkdMX1BEQ0lJRkNDQkVIELMPQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -44,17 +44,17 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdGachaType {
     [pbr::OriginalName("LDADFJEOFGL_NLCDGIPGFDJ")] LdadfjeofglNlcdgipgfdj = 0,
-    [pbr::OriginalName("LDADFJEOFGL_PLMDADNMAEF")] LdadfjeofglPlmdadnmaef = 1987,
-    [pbr::OriginalName("LDADFJEOFGL_EGJDNEKJCBF")] LdadfjeofglEgjdnekjcbf = 1927,
-    [pbr::OriginalName("LDADFJEOFGL_FMJBIBLGMPE")] LdadfjeofglFmjbiblgmpe = 1915,
-    [pbr::OriginalName("LDADFJEOFGL_JPCFFNNOINO")] LdadfjeofglJpcffnnoino = 1981,
-    [pbr::OriginalName("LDADFJEOFGL_LNEPKAIOAKB")] LdadfjeofglLnepkaioakb = 1910,
-    [pbr::OriginalName("LDADFJEOFGL_LMHLMHHADDE")] LdadfjeofglLmhlmhhadde = 1903,
-    [pbr::OriginalName("LDADFJEOFGL_NIGJMCKDBJL")] LdadfjeofglNigjmckdbjl = 1913,
-    [pbr::OriginalName("LDADFJEOFGL_APPHIAAOGJJ")] LdadfjeofglApphiaaogjj = 1936,
-    [pbr::OriginalName("LDADFJEOFGL_PPPIJCMEAKH")] LdadfjeofglPppijcmeakh = 1973,
-    [pbr::OriginalName("LDADFJEOFGL_IFAAMAEKHMA")] LdadfjeofglIfaamaekhma = 1980,
-    [pbr::OriginalName("LDADFJEOFGL_PDCIIFCCBEH")] LdadfjeofglPdciifccbeh = 1929,
+    [pbr::OriginalName("LDADFJEOFGL_EGJDNEKJCBF")] LdadfjeofglEgjdnekjcbf = 1958,
+    [pbr::OriginalName("LDADFJEOFGL_APPHIAAOGJJ")] LdadfjeofglApphiaaogjj = 1988,
+    [pbr::OriginalName("LDADFJEOFGL_JPCFFNNOINO")] LdadfjeofglJpcffnnoino = 1947,
+    [pbr::OriginalName("LDADFJEOFGL_PLMDADNMAEF")] LdadfjeofglPlmdadnmaef = 1913,
+    [pbr::OriginalName("LDADFJEOFGL_NIGJMCKDBJL")] LdadfjeofglNigjmckdbjl = 1981,
+    [pbr::OriginalName("LDADFJEOFGL_PPPIJCMEAKH")] LdadfjeofglPppijcmeakh = 1925,
+    [pbr::OriginalName("LDADFJEOFGL_LMHLMHHADDE")] LdadfjeofglLmhlmhhadde = 1978,
+    [pbr::OriginalName("LDADFJEOFGL_LNEPKAIOAKB")] LdadfjeofglLnepkaioakb = 1926,
+    [pbr::OriginalName("LDADFJEOFGL_FMJBIBLGMPE")] LdadfjeofglFmjbiblgmpe = 1986,
+    [pbr::OriginalName("LDADFJEOFGL_IFAAMAEKHMA")] LdadfjeofglIfaamaekhma = 1993,
+    [pbr::OriginalName("LDADFJEOFGL_PDCIIFCCBEH")] LdadfjeofglPdciifccbeh = 1971,
   }
 
   #endregion

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFNQk1BR0lMS0ZHUC5wcm90bxoRSENHRExJQU1ETEEucHJvdG8iMAoLTUJN",
-            "QUdJTEtGR1ASIQoLTEVCTk9HQU1DTkUYDSADKAsyDC5IQ0dETElBTURMQUIW",
+            "QUdJTEtGR1ASIQoLTEVCTk9HQU1DTkUYAiADKAsyDC5IQ0dETElBTURMQUIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.HCGDLIAMDLAReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LEBNOGAMCNE" field.</summary>
-    public const int LEBNOGAMCNEFieldNumber = 13;
+    public const int LEBNOGAMCNEFieldNumber = 2;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.HCGDLIAMDLA> _repeated_lEBNOGAMCNE_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.HCGDLIAMDLA.Parser);
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.HCGDLIAMDLA.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.HCGDLIAMDLA> lEBNOGAMCNE_ = new pbc::RepeatedField<global::March7thHoney.Proto.HCGDLIAMDLA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 106: {
+          case 18: {
             lEBNOGAMCNE_.AddEntriesFrom(input, _repeated_lEBNOGAMCNE_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 106: {
+          case 18: {
             lEBNOGAMCNE_.AddEntriesFrom(ref input, _repeated_lEBNOGAMCNE_codec);
             break;
           }

@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChxDbWRFbGF0aW9uQWN0aXZpdHlUeXBlLnByb3RvKssBChZDbWRFbGF0aW9u",
             "QWN0aXZpdHlUeXBlEhsKF0dGT0NESEZNQkJDX05MQ0RHSVBHRkRKEAASHAoX",
-            "R0ZPQ0RIRk1CQkNfRkFHQ0RKTEhBQUUQlUcSHAoXR0ZPQ0RIRk1CQkNfQUVD",
-            "S0pGRkVMQkoQlkcSHAoXR0ZPQ0RIRk1CQkNfRUxOR0RNS0JISUUQkEcSHAoX",
-            "R0ZPQ0RIRk1CQkNfR01DSU1JTUpOS0MQjkcSHAoXR0ZPQ0RIRk1CQkNfTkxO",
-            "R0dBQkJFRUsQlEdCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "R0ZPQ0RIRk1CQkNfRUxOR0RNS0JISUUQkEcSHAoXR0ZPQ0RIRk1CQkNfR01D",
+            "SU1JTUpOS0MQj0cSHAoXR0ZPQ0RIRk1CQkNfQUVDS0pGRkVMQkoQkUcSHAoX",
+            "R0ZPQ0RIRk1CQkNfRkFHQ0RKTEhBQUUQlkcSHAoXR0ZPQ0RIRk1CQkNfTkxO",
+            "R0dBQkJFRUsQjUdCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdElationActivityType), }, null, null));
@@ -40,11 +40,11 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdElationActivityType {
     [pbr::OriginalName("GFOCDHFMBBC_NLCDGIPGFDJ")] GfocdhfmbbcNlcdgipgfdj = 0,
-    [pbr::OriginalName("GFOCDHFMBBC_FAGCDJLHAAE")] GfocdhfmbbcFagcdjlhaae = 9109,
-    [pbr::OriginalName("GFOCDHFMBBC_AECKJFFELBJ")] GfocdhfmbbcAeckjffelbj = 9110,
     [pbr::OriginalName("GFOCDHFMBBC_ELNGDMKBHIE")] GfocdhfmbbcElngdmkbhie = 9104,
-    [pbr::OriginalName("GFOCDHFMBBC_GMCIMIMJNKC")] GfocdhfmbbcGmcimimjnkc = 9102,
-    [pbr::OriginalName("GFOCDHFMBBC_NLNGGABBEEK")] GfocdhfmbbcNlnggabbeek = 9108,
+    [pbr::OriginalName("GFOCDHFMBBC_GMCIMIMJNKC")] GfocdhfmbbcGmcimimjnkc = 9103,
+    [pbr::OriginalName("GFOCDHFMBBC_AECKJFFELBJ")] GfocdhfmbbcAeckjffelbj = 9105,
+    [pbr::OriginalName("GFOCDHFMBBC_FAGCDJLHAAE")] GfocdhfmbbcFagcdjlhaae = 9110,
+    [pbr::OriginalName("GFOCDHFMBBC_NLNGGABBEEK")] GfocdhfmbbcNlnggabbeek = 9101,
   }
 
   #endregion

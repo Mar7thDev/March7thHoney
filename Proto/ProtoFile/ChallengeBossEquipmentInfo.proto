@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChallengeBossEquipmentInfo {
-    uint32 rank = 5;
+    uint32 unique_id = 1;
     uint32 tid = 2;
     uint32 level = 3;
-    uint32 unique_id = 1;
     uint32 promotion = 4;
+    uint32 rank = 5;
 }

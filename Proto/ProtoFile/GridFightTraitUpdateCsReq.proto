@@ -4,12 +4,14 @@ option csharp_namespace = "March7thHoney.Proto";
 
 import "AFPJPEABFKH.proto";
 import "GPCFHMLMDHC.proto";
+import "MHKNPBJDFIC.proto";
 
 message GridFightTraitUpdateCsReq {
-    uint32 trait_id = 14;
-    uint32 effect_id = 12;
+    uint32 effect_id = 8;
+    uint32 trait_id = 12;
     oneof NEBNJDMFELO {
-        GPCFHMLMDHC FFBEPFLBHPL = 40;
-        AFPJPEABFKH JLCLHAKNMLL = 1902;
+        GPCFHMLMDHC FFBEPFLBHPL = 897;
+        AFPJPEABFKH JLCLHAKNMLL = 1879;
+        MHKNPBJDFIC LFIDNOAECMN = 1854;
     }
 }

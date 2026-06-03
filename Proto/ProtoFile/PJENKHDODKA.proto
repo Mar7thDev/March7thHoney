@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MNIAIAGFEBP.proto";
 
 message PJENKHDODKA {
-    MNIAIAGFEBP player_info = 4;
     string room_id = 1;
     uint32 LOPNADHJKBF = 2;
     uint32 section_id = 3;
+    MNIAIAGFEBP player_info = 4;
 }

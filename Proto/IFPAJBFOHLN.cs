@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static IFPAJBFOHLNReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFJRlBBSkJGT0hMTi5wcm90byJHCgtJRlBBSkJGT0hMThITCgtEQ0FISkVM",
-            "TkpOUBgEIAEoDRIPCgdyb2xlX2lkGAwgASgNEhIKCnNlY3Rpb25faWQYCiAB",
+            "ChFJRlBBSkJGT0hMTi5wcm90byJHCgtJRlBBSkJGT0hMThISCgpzZWN0aW9u",
+            "X2lkGAQgASgNEhMKC0RDQUhKRUxOSk5QGAsgASgNEg8KB3JvbGVfaWQYDyAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IFPAJBFOHLN), global::March7thHoney.Proto.IFPAJBFOHLN.Parser, new[]{ "DCAHJELNJNP", "RoleId", "SectionId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IFPAJBFOHLN), global::March7thHoney.Proto.IFPAJBFOHLN.Parser, new[]{ "SectionId", "DCAHJELNJNP", "RoleId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IFPAJBFOHLN(IFPAJBFOHLN other) : this() {
+      sectionId_ = other.sectionId_;
       dCAHJELNJNP_ = other.dCAHJELNJNP_;
       roleId_ = other.roleId_;
-      sectionId_ = other.sectionId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new IFPAJBFOHLN(this);
     }
 
+    /// <summary>Field number for the "section_id" field.</summary>
+    public const int SectionIdFieldNumber = 4;
+    private uint sectionId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SectionId {
+      get { return sectionId_; }
+      set {
+        sectionId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "DCAHJELNJNP" field.</summary>
-    public const int DCAHJELNJNPFieldNumber = 4;
+    public const int DCAHJELNJNPFieldNumber = 11;
     private uint dCAHJELNJNP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "role_id" field.</summary>
-    public const int RoleIdFieldNumber = 12;
+    public const int RoleIdFieldNumber = 15;
     private uint roleId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,18 +117,6 @@ namespace March7thHoney.Proto {
       get { return roleId_; }
       set {
         roleId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "section_id" field.</summary>
-    public const int SectionIdFieldNumber = 10;
-    private uint sectionId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SectionId {
-      get { return sectionId_; }
-      set {
-        sectionId_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (SectionId != other.SectionId) return false;
       if (DCAHJELNJNP != other.DCAHJELNJNP) return false;
       if (RoleId != other.RoleId) return false;
-      if (SectionId != other.SectionId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (SectionId != 0) hash ^= SectionId.GetHashCode();
       if (DCAHJELNJNP != 0) hash ^= DCAHJELNJNP.GetHashCode();
       if (RoleId != 0) hash ^= RoleId.GetHashCode();
-      if (SectionId != 0) hash ^= SectionId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,16 +166,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DCAHJELNJNP != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(DCAHJELNJNP);
-      }
       if (SectionId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(32);
         output.WriteUInt32(SectionId);
       }
+      if (DCAHJELNJNP != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(DCAHJELNJNP);
+      }
       if (RoleId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(120);
         output.WriteUInt32(RoleId);
       }
       if (_unknownFields != null) {
@@ -188,16 +188,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DCAHJELNJNP != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(DCAHJELNJNP);
-      }
       if (SectionId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(32);
         output.WriteUInt32(SectionId);
       }
+      if (DCAHJELNJNP != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(DCAHJELNJNP);
+      }
       if (RoleId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(120);
         output.WriteUInt32(RoleId);
       }
       if (_unknownFields != null) {
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (SectionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SectionId);
+      }
       if (DCAHJELNJNP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DCAHJELNJNP);
       }
       if (RoleId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleId);
-      }
-      if (SectionId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SectionId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.SectionId != 0) {
+        SectionId = other.SectionId;
+      }
       if (other.DCAHJELNJNP != 0) {
         DCAHJELNJNP = other.DCAHJELNJNP;
       }
       if (other.RoleId != 0) {
         RoleId = other.RoleId;
-      }
-      if (other.SectionId != 0) {
-        SectionId = other.SectionId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,14 +260,14 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            DCAHJELNJNP = input.ReadUInt32();
-            break;
-          }
-          case 80: {
             SectionId = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 88: {
+            DCAHJELNJNP = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             RoleId = input.ReadUInt32();
             break;
           }
@@ -291,14 +291,14 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            DCAHJELNJNP = input.ReadUInt32();
-            break;
-          }
-          case 80: {
             SectionId = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 88: {
+            DCAHJELNJNP = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             RoleId = input.ReadUInt32();
             break;
           }

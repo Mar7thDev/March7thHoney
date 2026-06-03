@@ -6,7 +6,7 @@ import "ItemList.proto";
 import "KEHOGIENDKC.proto";
 
 message PlayerReturnSignScRsp {
-    repeated KEHOGIENDKC AALGEFBLHEA = 11;
-    repeated ItemList GPFMEDKPEAJ = 8;
-    uint32 retcode = 1;
+    repeated KEHOGIENDKC AALGEFBLHEA = 1;
+    uint32 retcode = 6;
+    repeated ItemList GPFMEDKPEAJ = 13;
 }

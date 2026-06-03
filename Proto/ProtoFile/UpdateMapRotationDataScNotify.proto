@@ -8,11 +8,11 @@ import "RotaterData.proto";
 import "RotaterEnergyInfo.proto";
 
 message UpdateMapRotationDataScNotify {
+    uint32 JPPMEKJGJFD = 1;
+    bool BHABAIFPOOA = 3;
+    repeated ChargerInfo EGAGKNADAHJ = 6;
+    RotaterEnergyInfo energy_info = 8;
+    RotateMapInfo COOOMDKGODF = 11;
     repeated RotaterData CEDGGDFMILP = 12;
-    RotateMapInfo COOOMDKGODF = 9;
-    RotaterEnergyInfo energy_info = 11;
-    repeated ChargerInfo EGAGKNADAHJ = 14;
-    int32 LJHKNKFLGDE = 13;
-    uint32 JPPMEKJGJFD = 4;
-    bool BHABAIFPOOA = 1;
+    int32 region_id = 14;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FriendApplyInfo.proto";
 
 message GetFriendApplyListInfoScRsp {
-    repeated FriendApplyInfo receive_apply_list = 11;
-    repeated uint32 send_apply_list = 1;
-    uint32 retcode = 3;
+    repeated uint32 send_apply_list = 2;
+    uint32 retcode = 6;
+    repeated FriendApplyInfo receive_apply_list = 9;
 }

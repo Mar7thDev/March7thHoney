@@ -26,12 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidVcGRhdGVNYWluTWlzc2lvbkN1c3RvbVZhbHVlQ3NSZXEucHJvdG8iYAoh",
             "VXBkYXRlTWFpbk1pc3Npb25DdXN0b21WYWx1ZUNzUmVxEhMKC0JHREZIQkFB",
-            "TkxCGAsgASgJEhcKD21haW5fbWlzc2lvbl9pZBgHIAEoDRINCgV2YWx1ZRgE",
+            "TkxCGAEgASgJEg0KBXZhbHVlGAMgASgNEhcKD21haW5fbWlzc2lvbl9pZBgG",
             "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateMainMissionCustomValueCsReq), global::March7thHoney.Proto.UpdateMainMissionCustomValueCsReq.Parser, new[]{ "BGDFHBAANLB", "MainMissionId", "Value" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UpdateMainMissionCustomValueCsReq), global::March7thHoney.Proto.UpdateMainMissionCustomValueCsReq.Parser, new[]{ "BGDFHBAANLB", "Value", "MainMissionId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateMainMissionCustomValueCsReq(UpdateMainMissionCustomValueCsReq other) : this() {
       bGDFHBAANLB_ = other.bGDFHBAANLB_;
-      mainMissionId_ = other.mainMissionId_;
       value_ = other.value_;
+      mainMissionId_ = other.mainMissionId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BGDFHBAANLB" field.</summary>
-    public const int BGDFHBAANLBFieldNumber = 11;
+    public const int BGDFHBAANLBFieldNumber = 1;
     private string bGDFHBAANLB_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,20 +97,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "main_mission_id" field.</summary>
-    public const int MainMissionIdFieldNumber = 7;
-    private uint mainMissionId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MainMissionId {
-      get { return mainMissionId_; }
-      set {
-        mainMissionId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "value" field.</summary>
-    public const int ValueFieldNumber = 4;
+    public const int ValueFieldNumber = 3;
     private uint value_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return value_; }
       set {
         value_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "main_mission_id" field.</summary>
+    public const int MainMissionIdFieldNumber = 6;
+    private uint mainMissionId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MainMissionId {
+      get { return mainMissionId_; }
+      set {
+        mainMissionId_ = value;
       }
     }
 
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (BGDFHBAANLB != other.BGDFHBAANLB) return false;
-      if (MainMissionId != other.MainMissionId) return false;
       if (Value != other.Value) return false;
+      if (MainMissionId != other.MainMissionId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (BGDFHBAANLB.Length != 0) hash ^= BGDFHBAANLB.GetHashCode();
-      if (MainMissionId != 0) hash ^= MainMissionId.GetHashCode();
       if (Value != 0) hash ^= Value.GetHashCode();
+      if (MainMissionId != 0) hash ^= MainMissionId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (BGDFHBAANLB.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(BGDFHBAANLB);
+      }
       if (Value != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(Value);
       }
       if (MainMissionId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(MainMissionId);
-      }
-      if (BGDFHBAANLB.Length != 0) {
-        output.WriteRawTag(90);
-        output.WriteString(BGDFHBAANLB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (BGDFHBAANLB.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(BGDFHBAANLB);
+      }
       if (Value != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteUInt32(Value);
       }
       if (MainMissionId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(MainMissionId);
-      }
-      if (BGDFHBAANLB.Length != 0) {
-        output.WriteRawTag(90);
-        output.WriteString(BGDFHBAANLB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -214,11 +214,11 @@ namespace March7thHoney.Proto {
       if (BGDFHBAANLB.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(BGDFHBAANLB);
       }
-      if (MainMissionId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainMissionId);
-      }
       if (Value != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Value);
+      }
+      if (MainMissionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MainMissionId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -235,11 +235,11 @@ namespace March7thHoney.Proto {
       if (other.BGDFHBAANLB.Length != 0) {
         BGDFHBAANLB = other.BGDFHBAANLB;
       }
-      if (other.MainMissionId != 0) {
-        MainMissionId = other.MainMissionId;
-      }
       if (other.Value != 0) {
         Value = other.Value;
+      }
+      if (other.MainMissionId != 0) {
+        MainMissionId = other.MainMissionId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 10: {
+            BGDFHBAANLB = input.ReadString();
+            break;
+          }
+          case 24: {
             Value = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 48: {
             MainMissionId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            BGDFHBAANLB = input.ReadString();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 10: {
+            BGDFHBAANLB = input.ReadString();
+            break;
+          }
+          case 24: {
             Value = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 48: {
             MainMissionId = input.ReadUInt32();
-            break;
-          }
-          case 90: {
-            BGDFHBAANLB = input.ReadString();
             break;
           }
         }

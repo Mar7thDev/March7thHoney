@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhTZWxlY3RQYW1Ta2luU2NSc3AucHJvdG8iSQoSU2VsZWN0UGFtU2tpblNj",
-            "UnNwEhAKCHNldF9za2luGAwgASgNEg8KB3JldGNvZGUYAyABKA0SEAoIY3Vy",
-            "X3NraW4YBiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "UnNwEg8KB3JldGNvZGUYAiABKA0SEAoIc2V0X3NraW4YAyABKA0SEAoIY3Vy",
+            "X3NraW4YBSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPamSkinScRsp), global::March7thHoney.Proto.SelectPamSkinScRsp.Parser, new[]{ "SetSkin", "Retcode", "CurSkin" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPamSkinScRsp), global::March7thHoney.Proto.SelectPamSkinScRsp.Parser, new[]{ "Retcode", "SetSkin", "CurSkin" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectPamSkinScRsp(SelectPamSkinScRsp other) : this() {
-      setSkin_ = other.setSkin_;
       retcode_ = other.retcode_;
+      setSkin_ = other.setSkin_;
       curSkin_ = other.curSkin_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new SelectPamSkinScRsp(this);
     }
 
-    /// <summary>Field number for the "set_skin" field.</summary>
-    public const int SetSkinFieldNumber = 12;
-    private uint setSkin_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SetSkin {
-      get { return setSkin_; }
-      set {
-        setSkin_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 2;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,8 +96,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "set_skin" field.</summary>
+    public const int SetSkinFieldNumber = 3;
+    private uint setSkin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SetSkin {
+      get { return setSkin_; }
+      set {
+        setSkin_ = value;
+      }
+    }
+
     /// <summary>Field number for the "cur_skin" field.</summary>
-    public const int CurSkinFieldNumber = 6;
+    public const int CurSkinFieldNumber = 5;
     private uint curSkin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (SetSkin != other.SetSkin) return false;
       if (Retcode != other.Retcode) return false;
+      if (SetSkin != other.SetSkin) return false;
       if (CurSkin != other.CurSkin) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,8 +145,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SetSkin != 0) hash ^= SetSkin.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (SetSkin != 0) hash ^= SetSkin.GetHashCode();
       if (CurSkin != 0) hash ^= CurSkin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
-      if (CurSkin != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(CurSkin);
-      }
       if (SetSkin != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteUInt32(SetSkin);
+      }
+      if (CurSkin != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(CurSkin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
-      if (CurSkin != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(CurSkin);
-      }
       if (SetSkin != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteUInt32(SetSkin);
+      }
+      if (CurSkin != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(CurSkin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,11 +210,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SetSkin != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SetSkin);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (SetSkin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SetSkin);
       }
       if (CurSkin != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSkin);
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.SetSkin != 0) {
-        SetSkin = other.SetSkin;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.SetSkin != 0) {
+        SetSkin = other.SetSkin;
       }
       if (other.CurSkin != 0) {
         CurSkin = other.CurSkin;
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 48: {
-            CurSkin = input.ReadUInt32();
+          case 24: {
+            SetSkin = input.ReadUInt32();
             break;
           }
-          case 96: {
-            SetSkin = input.ReadUInt32();
+          case 40: {
+            CurSkin = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 48: {
-            CurSkin = input.ReadUInt32();
+          case 24: {
+            SetSkin = input.ReadUInt32();
             break;
           }
-          case 96: {
-            SetSkin = input.ReadUInt32();
+          case 40: {
+            CurSkin = input.ReadUInt32();
             break;
           }
         }

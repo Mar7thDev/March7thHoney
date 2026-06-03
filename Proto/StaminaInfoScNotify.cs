@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlTdGFtaW5hSW5mb1NjTm90aWZ5LnByb3RvIm8KE1N0YW1pbmFJbmZvU2NO",
-            "b3RpZnkSFwoPcmVzZXJ2ZV9zdGFtaW5hGAsgASgNEg8KB3N0YW1pbmEYBSAB",
-            "KA0SGQoRbmV4dF9yZWNvdmVyX3RpbWUYASABKAMSEwoLRUhKQ1BCSk5FT08Y",
-            "AyABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "b3RpZnkSDwoHc3RhbWluYRgEIAEoDRIXCg9yZXNlcnZlX3N0YW1pbmEYByAB",
+            "KA0SGQoRbmV4dF9yZWNvdmVyX3RpbWUYCiABKAMSEwoLRUhKQ1BCSk5FT08Y",
+            "DyABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StaminaInfoScNotify), global::March7thHoney.Proto.StaminaInfoScNotify.Parser, new[]{ "ReserveStamina", "Stamina", "NextRecoverTime", "EHJCPBJNEOO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StaminaInfoScNotify), global::March7thHoney.Proto.StaminaInfoScNotify.Parser, new[]{ "Stamina", "ReserveStamina", "NextRecoverTime", "EHJCPBJNEOO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StaminaInfoScNotify(StaminaInfoScNotify other) : this() {
-      reserveStamina_ = other.reserveStamina_;
       stamina_ = other.stamina_;
+      reserveStamina_ = other.reserveStamina_;
       nextRecoverTime_ = other.nextRecoverTime_;
       eHJCPBJNEOO_ = other.eHJCPBJNEOO_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new StaminaInfoScNotify(this);
     }
 
-    /// <summary>Field number for the "reserve_stamina" field.</summary>
-    public const int ReserveStaminaFieldNumber = 11;
-    private uint reserveStamina_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ReserveStamina {
-      get { return reserveStamina_; }
-      set {
-        reserveStamina_ = value;
-      }
-    }
-
     /// <summary>Field number for the "stamina" field.</summary>
-    public const int StaminaFieldNumber = 5;
+    public const int StaminaFieldNumber = 4;
     private uint stamina_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,8 +98,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "reserve_stamina" field.</summary>
+    public const int ReserveStaminaFieldNumber = 7;
+    private uint reserveStamina_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ReserveStamina {
+      get { return reserveStamina_; }
+      set {
+        reserveStamina_ = value;
+      }
+    }
+
     /// <summary>Field number for the "next_recover_time" field.</summary>
-    public const int NextRecoverTimeFieldNumber = 1;
+    public const int NextRecoverTimeFieldNumber = 10;
     private long nextRecoverTime_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "EHJCPBJNEOO" field.</summary>
-    public const int EHJCPBJNEOOFieldNumber = 3;
+    public const int EHJCPBJNEOOFieldNumber = 15;
     private long eHJCPBJNEOO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,8 +149,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ReserveStamina != other.ReserveStamina) return false;
       if (Stamina != other.Stamina) return false;
+      if (ReserveStamina != other.ReserveStamina) return false;
       if (NextRecoverTime != other.NextRecoverTime) return false;
       if (EHJCPBJNEOO != other.EHJCPBJNEOO) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -160,8 +160,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ReserveStamina != 0) hash ^= ReserveStamina.GetHashCode();
       if (Stamina != 0) hash ^= Stamina.GetHashCode();
+      if (ReserveStamina != 0) hash ^= ReserveStamina.GetHashCode();
       if (NextRecoverTime != 0L) hash ^= NextRecoverTime.GetHashCode();
       if (EHJCPBJNEOO != 0L) hash ^= EHJCPBJNEOO.GetHashCode();
       if (_unknownFields != null) {
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NextRecoverTime != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(NextRecoverTime);
-      }
-      if (EHJCPBJNEOO != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(EHJCPBJNEOO);
-      }
       if (Stamina != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteUInt32(Stamina);
       }
       if (ReserveStamina != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(56);
         output.WriteUInt32(ReserveStamina);
+      }
+      if (NextRecoverTime != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(NextRecoverTime);
+      }
+      if (EHJCPBJNEOO != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(EHJCPBJNEOO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NextRecoverTime != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(NextRecoverTime);
-      }
-      if (EHJCPBJNEOO != 0L) {
-        output.WriteRawTag(24);
-        output.WriteInt64(EHJCPBJNEOO);
-      }
       if (Stamina != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteUInt32(Stamina);
       }
       if (ReserveStamina != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(56);
         output.WriteUInt32(ReserveStamina);
+      }
+      if (NextRecoverTime != 0L) {
+        output.WriteRawTag(80);
+        output.WriteInt64(NextRecoverTime);
+      }
+      if (EHJCPBJNEOO != 0L) {
+        output.WriteRawTag(120);
+        output.WriteInt64(EHJCPBJNEOO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ReserveStamina != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ReserveStamina);
-      }
       if (Stamina != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Stamina);
+      }
+      if (ReserveStamina != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ReserveStamina);
       }
       if (NextRecoverTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(NextRecoverTime);
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ReserveStamina != 0) {
-        ReserveStamina = other.ReserveStamina;
-      }
       if (other.Stamina != 0) {
         Stamina = other.Stamina;
+      }
+      if (other.ReserveStamina != 0) {
+        ReserveStamina = other.ReserveStamina;
       }
       if (other.NextRecoverTime != 0L) {
         NextRecoverTime = other.NextRecoverTime;
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            NextRecoverTime = input.ReadInt64();
-            break;
-          }
-          case 24: {
-            EHJCPBJNEOO = input.ReadInt64();
-            break;
-          }
-          case 40: {
+          case 32: {
             Stamina = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 56: {
             ReserveStamina = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            NextRecoverTime = input.ReadInt64();
+            break;
+          }
+          case 120: {
+            EHJCPBJNEOO = input.ReadInt64();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            NextRecoverTime = input.ReadInt64();
-            break;
-          }
-          case 24: {
-            EHJCPBJNEOO = input.ReadInt64();
-            break;
-          }
-          case 40: {
+          case 32: {
             Stamina = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 56: {
             ReserveStamina = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            NextRecoverTime = input.ReadInt64();
+            break;
+          }
+          case 120: {
+            EHJCPBJNEOO = input.ReadInt64();
             break;
           }
         }

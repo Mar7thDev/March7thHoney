@@ -6,6 +6,6 @@ import "DLCJPINDIAC.proto";
 import "FightGameMode.proto";
 
 message SelfRankChangeNtf {
-    repeated DLCJPINDIAC MLPHLIHFGKG = 9;
     FightGameMode GJNMHILINHC = 11;
+    repeated DLCJPINDIAC MLPHLIHFGKG = 14;
 }

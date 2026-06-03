@@ -3,13 +3,13 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlayerGetTokenCsReq {
-    string account_uid = 12;
-    string token = 4;
-    string DNADIICFMEE = 8;
-    uint32 platform = 13;
-    uint32 account_ip = 1;
-    uint32 sign_type = 7;
-    uint32 DJCNHCGFHKF = 2;
-    uint32 uid = 3;
-    uint32 account_ip_port = 10;
+    string account_uid = 2;
+    uint32 channel_id = 3;
+    uint32 platform = 4;
+    uint32 account_ip_port = 5;
+    uint32 uid = 9;
+    string EKLOGGLELCG = 10;
+    uint32 account_ip = 11;
+    uint32 sign_type = 12;
+    string token = 14;
 }

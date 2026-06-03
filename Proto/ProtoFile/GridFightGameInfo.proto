@@ -2,26 +2,28 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "BEEFLEJAOCN.proto";
-import "CONONEALNOF.proto";
-import "DBONCGFHHDN.proto";
-import "FFOGFOBHDEK.proto";
 import "FIIJNPBFJBG.proto";
-import "HKFECLCHBFJ.proto";
-import "KGFNICBCMOA.proto";
-import "NIHNGPKHEPC.proto";
-import "POCJDMMANBM.proto";
+import "GridFightGameAugmentSync.proto";
+import "GridFightGameBasicInfo.proto";
+import "GridFightGameItemsInfo.proto";
+import "GridFightGameOrbInfo.proto";
+import "GridFightGameShopInfo.proto";
+import "GridFightGameTeamInfo.proto";
+import "GridFightGameTraitInfo.proto";
+import "GridFightLevelInfo.proto";
+import "MCNFDKKKABH.proto";
 
 message GridFightGameInfo {
     oneof LEOIAOFBBFA {
-        NIHNGPKHEPC FAOCFBOFCJP = 1;
-        CONONEALNOF GCKLIONKMJC = 11;
-        POCJDMMANBM EBHDIOGALIE = 7;
-        BEEFLEJAOCN KLCPAAHDPJF = 6;
-        DBONCGFHHDN DBAGKJNPDOL = 3;
-        KGFNICBCMOA LLDBOIANGDN = 12;
-        FFOGFOBHDEK OAHOAPCIDMK = 14;
-        HKFECLCHBFJ EJIPINIKNCK = 2;
-        FIIJNPBFJBG KFBIEANENKJ = 5;
+        GridFightGameBasicInfo FAOCFBOFCJP = 15;
+        GridFightGameItemsInfo GCKLIONKMJC = 11;
+        GridFightGameShopInfo EBHDIOGALIE = 13;
+        GridFightLevelInfo KLCPAAHDPJF = 14;
+        GridFightGameOrbInfo DBAGKJNPDOL = 7;
+        GridFightGameAugmentSync LLDBOIANGDN = 4;
+        GridFightGameTraitInfo OAHOAPCIDMK = 10;
+        GridFightGameTeamInfo EJIPINIKNCK = 5;
+        FIIJNPBFJBG KFBIEANENKJ = 1;
+        MCNFDKKKABH CKLNMDAMJCB = 8;
     }
 }

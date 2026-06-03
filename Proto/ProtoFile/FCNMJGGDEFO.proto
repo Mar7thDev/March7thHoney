@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PFPPACPMFDJ.proto";
 
 message FCNMJGGDEFO {
-    PFPPACPMFDJ GAJFFBBMMEN = 14;
-    uint32 FGIHKKKOGJD = 9;
+    PFPPACPMFDJ GAJFFBBMMEN = 2;
+    uint32 FGIHKKKOGJD = 6;
 }

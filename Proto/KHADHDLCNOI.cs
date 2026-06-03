@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static KHADHDLCNOIReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFLSEFESERMQ05PSS5wcm90byIuCgtLSEFESERMQ05PSRIKCgJpZBgBIAEo",
-            "DRITCgtLREhDSUNGTkFPQxgCIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90",
-            "b2IGcHJvdG8z"));
+            "ChFLSEFESERMQ05PSS5wcm90byIrCgtLSEFESERMQ05PSRIKCgJpZBgBIAEo",
+            "DRIQCghpc19wYXVzZRgCIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KHADHDLCNOI), global::March7thHoney.Proto.KHADHDLCNOI.Parser, new[]{ "Id", "KDHCICFNAOC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.KHADHDLCNOI), global::March7thHoney.Proto.KHADHDLCNOI.Parser, new[]{ "Id", "IsPause" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public KHADHDLCNOI(KHADHDLCNOI other) : this() {
       id_ = other.id_;
-      kDHCICFNAOC_ = other.kDHCICFNAOC_;
+      isPause_ = other.isPause_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "KDHCICFNAOC" field.</summary>
-    public const int KDHCICFNAOCFieldNumber = 2;
-    private bool kDHCICFNAOC_;
+    /// <summary>Field number for the "is_pause" field.</summary>
+    public const int IsPauseFieldNumber = 2;
+    private bool isPause_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool KDHCICFNAOC {
-      get { return kDHCICFNAOC_; }
+    public bool IsPause {
+      get { return isPause_; }
       set {
-        kDHCICFNAOC_ = value;
+        isPause_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Id != other.Id) return false;
-      if (KDHCICFNAOC != other.KDHCICFNAOC) return false;
+      if (IsPause != other.IsPause) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
-      if (KDHCICFNAOC != false) hash ^= KDHCICFNAOC.GetHashCode();
+      if (IsPause != false) hash ^= IsPause.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -155,9 +155,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(Id);
       }
-      if (KDHCICFNAOC != false) {
+      if (IsPause != false) {
         output.WriteRawTag(16);
-        output.WriteBool(KDHCICFNAOC);
+        output.WriteBool(IsPause);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -173,9 +173,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(Id);
       }
-      if (KDHCICFNAOC != false) {
+      if (IsPause != false) {
         output.WriteRawTag(16);
-        output.WriteBool(KDHCICFNAOC);
+        output.WriteBool(IsPause);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Id);
       }
-      if (KDHCICFNAOC != false) {
+      if (IsPause != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      if (other.KDHCICFNAOC != false) {
-        KDHCICFNAOC = other.KDHCICFNAOC;
+      if (other.IsPause != false) {
+        IsPause = other.IsPause;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -235,7 +235,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            KDHCICFNAOC = input.ReadBool();
+            IsPause = input.ReadBool();
             break;
           }
         }
@@ -262,7 +262,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 16: {
-            KDHCICFNAOC = input.ReadBool();
+            IsPause = input.ReadBool();
             break;
           }
         }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OfferingInfo.proto";
 
 message OfferingInfoScNotify {
-    OfferingInfo offering_info = 6;
+    OfferingInfo offering_info = 9;
 }

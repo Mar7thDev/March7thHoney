@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CPHOIPHAPDJ.proto";
 
 message PHCPOIHAPGP {
-    repeated CPHOIPHAPDJ avatar_list = 10;
+    repeated CPHOIPHAPDJ avatar_list = 7;
 }

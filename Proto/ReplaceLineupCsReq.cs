@@ -25,17 +25,17 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhSZXBsYWNlTGluZXVwQ3NSZXEucHJvdG8aFUV4dHJhTGluZXVwVHlwZS5w",
-            "cm90bxoUTGluZXVwU2xvdERhdGEucHJvdG8i/AEKElJlcGxhY2VMaW5ldXBD",
-            "c1JlcRIpChBsaW5ldXBfc2xvdF9saXN0GAogAygLMg8uTGluZXVwU2xvdERh",
-            "dGESGgoSZ2FtZV9zdG9yeV9saW5lX2lkGAwgASgNEhAKCHBsYW5lX2lkGAUg",
-            "ASgNEhMKC0hJQU1BSktESU9PGA8gASgIEhMKC1BMSUVPRERFRUhHGA4gASgI",
-            "EhIKCmlzX3ZpcnR1YWwYASABKAgSEwoLbGVhZGVyX3Nsb3QYCCABKA0SKwoR",
-            "ZXh0cmFfbGluZXVwX3R5cGUYDSABKA4yEC5FeHRyYUxpbmV1cFR5cGUSDQoF",
-            "aW5kZXgYBiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "cm90bxoUTGluZXVwU2xvdERhdGEucHJvdG8i6AEKElJlcGxhY2VMaW5ldXBD",
+            "c1JlcRITCgtQTElFT0RERUVIRxgBIAEoCBITCgtsZWFkZXJfc2xvdBgCIAEo",
+            "DRITCgtISUFNQUpLRElPTxgJIAEoCBIaChJnYW1lX3N0b3J5X2xpbmVfaWQY",
+            "CiABKA0SEAoIcGxhbmVfaWQYCyABKA0SKQoQbGluZXVwX3Nsb3RfbGlzdBgN",
+            "IAMoCzIPLkxpbmV1cFNsb3REYXRhEg0KBWluZGV4GA4gASgNEisKEWV4dHJh",
+            "X2xpbmV1cF90eXBlGA8gASgOMhAuRXh0cmFMaW5ldXBUeXBlQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ExtraLineupTypeReflection.Descriptor, global::March7thHoney.Proto.LineupSlotDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ReplaceLineupCsReq), global::March7thHoney.Proto.ReplaceLineupCsReq.Parser, new[]{ "LineupSlotList", "GameStoryLineId", "PlaneId", "HIAMAJKDIOO", "PLIEODDEEHG", "IsVirtual", "LeaderSlot", "ExtraLineupType", "Index" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ReplaceLineupCsReq), global::March7thHoney.Proto.ReplaceLineupCsReq.Parser, new[]{ "PLIEODDEEHG", "LeaderSlot", "HIAMAJKDIOO", "GameStoryLineId", "PlaneId", "LineupSlotList", "Index", "ExtraLineupType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,15 +77,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ReplaceLineupCsReq(ReplaceLineupCsReq other) : this() {
-      lineupSlotList_ = other.lineupSlotList_.Clone();
+      pLIEODDEEHG_ = other.pLIEODDEEHG_;
+      leaderSlot_ = other.leaderSlot_;
+      hIAMAJKDIOO_ = other.hIAMAJKDIOO_;
       gameStoryLineId_ = other.gameStoryLineId_;
       planeId_ = other.planeId_;
-      hIAMAJKDIOO_ = other.hIAMAJKDIOO_;
-      pLIEODDEEHG_ = other.pLIEODDEEHG_;
-      isVirtual_ = other.isVirtual_;
-      leaderSlot_ = other.leaderSlot_;
-      extraLineupType_ = other.extraLineupType_;
+      lineupSlotList_ = other.lineupSlotList_.Clone();
       index_ = other.index_;
+      extraLineupType_ = other.extraLineupType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -95,19 +94,44 @@ namespace March7thHoney.Proto {
       return new ReplaceLineupCsReq(this);
     }
 
-    /// <summary>Field number for the "lineup_slot_list" field.</summary>
-    public const int LineupSlotListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LineupSlotData> _repeated_lineupSlotList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.LineupSlotData.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData> lineupSlotList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData>();
+    /// <summary>Field number for the "PLIEODDEEHG" field.</summary>
+    public const int PLIEODDEEHGFieldNumber = 1;
+    private bool pLIEODDEEHG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData> LineupSlotList {
-      get { return lineupSlotList_; }
+    public bool PLIEODDEEHG {
+      get { return pLIEODDEEHG_; }
+      set {
+        pLIEODDEEHG_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leader_slot" field.</summary>
+    public const int LeaderSlotFieldNumber = 2;
+    private uint leaderSlot_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LeaderSlot {
+      get { return leaderSlot_; }
+      set {
+        leaderSlot_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "HIAMAJKDIOO" field.</summary>
+    public const int HIAMAJKDIOOFieldNumber = 9;
+    private bool hIAMAJKDIOO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HIAMAJKDIOO {
+      get { return hIAMAJKDIOO_; }
+      set {
+        hIAMAJKDIOO_ = value;
+      }
     }
 
     /// <summary>Field number for the "game_story_line_id" field.</summary>
-    public const int GameStoryLineIdFieldNumber = 12;
+    public const int GameStoryLineIdFieldNumber = 10;
     private uint gameStoryLineId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,7 +143,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 5;
+    public const int PlaneIdFieldNumber = 11;
     private uint planeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -130,68 +154,19 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HIAMAJKDIOO" field.</summary>
-    public const int HIAMAJKDIOOFieldNumber = 15;
-    private bool hIAMAJKDIOO_;
+    /// <summary>Field number for the "lineup_slot_list" field.</summary>
+    public const int LineupSlotListFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LineupSlotData> _repeated_lineupSlotList_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.LineupSlotData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData> lineupSlotList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HIAMAJKDIOO {
-      get { return hIAMAJKDIOO_; }
-      set {
-        hIAMAJKDIOO_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "PLIEODDEEHG" field.</summary>
-    public const int PLIEODDEEHGFieldNumber = 14;
-    private bool pLIEODDEEHG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool PLIEODDEEHG {
-      get { return pLIEODDEEHG_; }
-      set {
-        pLIEODDEEHG_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_virtual" field.</summary>
-    public const int IsVirtualFieldNumber = 1;
-    private bool isVirtual_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsVirtual {
-      get { return isVirtual_; }
-      set {
-        isVirtual_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "leader_slot" field.</summary>
-    public const int LeaderSlotFieldNumber = 8;
-    private uint leaderSlot_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LeaderSlot {
-      get { return leaderSlot_; }
-      set {
-        leaderSlot_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "extra_lineup_type" field.</summary>
-    public const int ExtraLineupTypeFieldNumber = 13;
-    private global::March7thHoney.Proto.ExtraLineupType extraLineupType_ = global::March7thHoney.Proto.ExtraLineupType.LineupNone;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ExtraLineupType ExtraLineupType {
-      get { return extraLineupType_; }
-      set {
-        extraLineupType_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.LineupSlotData> LineupSlotList {
+      get { return lineupSlotList_; }
     }
 
     /// <summary>Field number for the "index" field.</summary>
-    public const int IndexFieldNumber = 6;
+    public const int IndexFieldNumber = 14;
     private uint index_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -199,6 +174,18 @@ namespace March7thHoney.Proto {
       get { return index_; }
       set {
         index_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extra_lineup_type" field.</summary>
+    public const int ExtraLineupTypeFieldNumber = 15;
+    private global::March7thHoney.Proto.ExtraLineupType extraLineupType_ = global::March7thHoney.Proto.ExtraLineupType.LineupNone;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ExtraLineupType ExtraLineupType {
+      get { return extraLineupType_; }
+      set {
+        extraLineupType_ = value;
       }
     }
 
@@ -217,15 +204,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!lineupSlotList_.Equals(other.lineupSlotList_)) return false;
+      if (PLIEODDEEHG != other.PLIEODDEEHG) return false;
+      if (LeaderSlot != other.LeaderSlot) return false;
+      if (HIAMAJKDIOO != other.HIAMAJKDIOO) return false;
       if (GameStoryLineId != other.GameStoryLineId) return false;
       if (PlaneId != other.PlaneId) return false;
-      if (HIAMAJKDIOO != other.HIAMAJKDIOO) return false;
-      if (PLIEODDEEHG != other.PLIEODDEEHG) return false;
-      if (IsVirtual != other.IsVirtual) return false;
-      if (LeaderSlot != other.LeaderSlot) return false;
-      if (ExtraLineupType != other.ExtraLineupType) return false;
+      if(!lineupSlotList_.Equals(other.lineupSlotList_)) return false;
       if (Index != other.Index) return false;
+      if (ExtraLineupType != other.ExtraLineupType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -233,15 +219,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= lineupSlotList_.GetHashCode();
+      if (PLIEODDEEHG != false) hash ^= PLIEODDEEHG.GetHashCode();
+      if (LeaderSlot != 0) hash ^= LeaderSlot.GetHashCode();
+      if (HIAMAJKDIOO != false) hash ^= HIAMAJKDIOO.GetHashCode();
       if (GameStoryLineId != 0) hash ^= GameStoryLineId.GetHashCode();
       if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
-      if (HIAMAJKDIOO != false) hash ^= HIAMAJKDIOO.GetHashCode();
-      if (PLIEODDEEHG != false) hash ^= PLIEODDEEHG.GetHashCode();
-      if (IsVirtual != false) hash ^= IsVirtual.GetHashCode();
-      if (LeaderSlot != 0) hash ^= LeaderSlot.GetHashCode();
-      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
+      hash ^= lineupSlotList_.GetHashCode();
       if (Index != 0) hash ^= Index.GetHashCode();
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -260,38 +245,34 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsVirtual != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(IsVirtual);
-      }
-      if (PlaneId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(PlaneId);
-      }
-      if (Index != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Index);
-      }
-      if (LeaderSlot != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(LeaderSlot);
-      }
-      lineupSlotList_.WriteTo(output, _repeated_lineupSlotList_codec);
-      if (GameStoryLineId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(GameStoryLineId);
-      }
-      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
-        output.WriteRawTag(104);
-        output.WriteEnum((int) ExtraLineupType);
-      }
       if (PLIEODDEEHG != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteBool(PLIEODDEEHG);
       }
+      if (LeaderSlot != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(LeaderSlot);
+      }
       if (HIAMAJKDIOO != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteBool(HIAMAJKDIOO);
+      }
+      if (GameStoryLineId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(GameStoryLineId);
+      }
+      if (PlaneId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(PlaneId);
+      }
+      lineupSlotList_.WriteTo(output, _repeated_lineupSlotList_codec);
+      if (Index != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Index);
+      }
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
+        output.WriteRawTag(120);
+        output.WriteEnum((int) ExtraLineupType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -303,38 +284,34 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsVirtual != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(IsVirtual);
-      }
-      if (PlaneId != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(PlaneId);
-      }
-      if (Index != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(Index);
-      }
-      if (LeaderSlot != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(LeaderSlot);
-      }
-      lineupSlotList_.WriteTo(ref output, _repeated_lineupSlotList_codec);
-      if (GameStoryLineId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(GameStoryLineId);
-      }
-      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
-        output.WriteRawTag(104);
-        output.WriteEnum((int) ExtraLineupType);
-      }
       if (PLIEODDEEHG != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(8);
         output.WriteBool(PLIEODDEEHG);
       }
+      if (LeaderSlot != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(LeaderSlot);
+      }
       if (HIAMAJKDIOO != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteBool(HIAMAJKDIOO);
+      }
+      if (GameStoryLineId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(GameStoryLineId);
+      }
+      if (PlaneId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(PlaneId);
+      }
+      lineupSlotList_.WriteTo(ref output, _repeated_lineupSlotList_codec);
+      if (Index != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Index);
+      }
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
+        output.WriteRawTag(120);
+        output.WriteEnum((int) ExtraLineupType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -346,30 +323,27 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += lineupSlotList_.CalculateSize(_repeated_lineupSlotList_codec);
+      if (PLIEODDEEHG != false) {
+        size += 1 + 1;
+      }
+      if (LeaderSlot != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LeaderSlot);
+      }
+      if (HIAMAJKDIOO != false) {
+        size += 1 + 1;
+      }
       if (GameStoryLineId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GameStoryLineId);
       }
       if (PlaneId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
       }
-      if (HIAMAJKDIOO != false) {
-        size += 1 + 1;
-      }
-      if (PLIEODDEEHG != false) {
-        size += 1 + 1;
-      }
-      if (IsVirtual != false) {
-        size += 1 + 1;
-      }
-      if (LeaderSlot != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LeaderSlot);
+      size += lineupSlotList_.CalculateSize(_repeated_lineupSlotList_codec);
+      if (Index != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Index);
       }
       if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ExtraLineupType);
-      }
-      if (Index != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Index);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -383,30 +357,27 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      lineupSlotList_.Add(other.lineupSlotList_);
+      if (other.PLIEODDEEHG != false) {
+        PLIEODDEEHG = other.PLIEODDEEHG;
+      }
+      if (other.LeaderSlot != 0) {
+        LeaderSlot = other.LeaderSlot;
+      }
+      if (other.HIAMAJKDIOO != false) {
+        HIAMAJKDIOO = other.HIAMAJKDIOO;
+      }
       if (other.GameStoryLineId != 0) {
         GameStoryLineId = other.GameStoryLineId;
       }
       if (other.PlaneId != 0) {
         PlaneId = other.PlaneId;
       }
-      if (other.HIAMAJKDIOO != false) {
-        HIAMAJKDIOO = other.HIAMAJKDIOO;
-      }
-      if (other.PLIEODDEEHG != false) {
-        PLIEODDEEHG = other.PLIEODDEEHG;
-      }
-      if (other.IsVirtual != false) {
-        IsVirtual = other.IsVirtual;
-      }
-      if (other.LeaderSlot != 0) {
-        LeaderSlot = other.LeaderSlot;
+      lineupSlotList_.Add(other.lineupSlotList_);
+      if (other.Index != 0) {
+        Index = other.Index;
       }
       if (other.ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         ExtraLineupType = other.ExtraLineupType;
-      }
-      if (other.Index != 0) {
-        Index = other.Index;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -428,39 +399,35 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            IsVirtual = input.ReadBool();
-            break;
-          }
-          case 40: {
-            PlaneId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Index = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            LeaderSlot = input.ReadUInt32();
-            break;
-          }
-          case 82: {
-            lineupSlotList_.AddEntriesFrom(input, _repeated_lineupSlotList_codec);
-            break;
-          }
-          case 96: {
-            GameStoryLineId = input.ReadUInt32();
-            break;
-          }
-          case 104: {
-            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
-            break;
-          }
-          case 112: {
             PLIEODDEEHG = input.ReadBool();
             break;
           }
-          case 120: {
+          case 16: {
+            LeaderSlot = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             HIAMAJKDIOO = input.ReadBool();
+            break;
+          }
+          case 80: {
+            GameStoryLineId = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            PlaneId = input.ReadUInt32();
+            break;
+          }
+          case 106: {
+            lineupSlotList_.AddEntriesFrom(input, _repeated_lineupSlotList_codec);
+            break;
+          }
+          case 112: {
+            Index = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
             break;
           }
         }
@@ -483,39 +450,35 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            IsVirtual = input.ReadBool();
-            break;
-          }
-          case 40: {
-            PlaneId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            Index = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            LeaderSlot = input.ReadUInt32();
-            break;
-          }
-          case 82: {
-            lineupSlotList_.AddEntriesFrom(ref input, _repeated_lineupSlotList_codec);
-            break;
-          }
-          case 96: {
-            GameStoryLineId = input.ReadUInt32();
-            break;
-          }
-          case 104: {
-            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
-            break;
-          }
-          case 112: {
             PLIEODDEEHG = input.ReadBool();
             break;
           }
-          case 120: {
+          case 16: {
+            LeaderSlot = input.ReadUInt32();
+            break;
+          }
+          case 72: {
             HIAMAJKDIOO = input.ReadBool();
+            break;
+          }
+          case 80: {
+            GameStoryLineId = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            PlaneId = input.ReadUInt32();
+            break;
+          }
+          case 106: {
+            lineupSlotList_.AddEntriesFrom(ref input, _repeated_lineupSlotList_codec);
+            break;
+          }
+          case 112: {
+            Index = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            ExtraLineupType = (global::March7thHoney.Proto.ExtraLineupType) input.ReadEnum();
             break;
           }
         }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message MonopolyLikeScRsp {
-    ItemList reward_list = 3;
-    uint32 teleport_id = 1;
-    uint32 retcode = 4;
+    uint32 teleport_id = 7;
+    ItemList reward_list = 11;
+    uint32 retcode = 15;
 }

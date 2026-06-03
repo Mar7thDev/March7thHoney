@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FarmElementSweepCsReq {
-    uint32 world_level = 14;
-    uint32 PAOFHFLFFHD = 13;
+    uint32 PAOFHFLFFHD = 9;
+    uint32 world_level = 11;
 }

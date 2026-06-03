@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChimeraDuelFinishMasterChallengeCsReq {
-    uint32 IPINHNFCIOE = 15;
+    uint32 IPINHNFCIOE = 11;
 }

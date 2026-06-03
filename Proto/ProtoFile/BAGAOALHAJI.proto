@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EKEOBMOKEFD.proto";
 
 message BAGAOALHAJI {
-    repeated EKEOBMOKEFD APHGAEAPLJF = 7;
+    repeated EKEOBMOKEFD skill_list = 3;
 }

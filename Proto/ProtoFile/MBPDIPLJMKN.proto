@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ELGLKEAPLGM.proto";
 
 message MBPDIPLJMKN {
-    ELGLKEAPLGM GGMPEGMEHPD = 14;
+    ELGLKEAPLGM GGMPEGMEHPD = 8;
 }

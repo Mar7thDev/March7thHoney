@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "TrainPartyPassenger.proto";
 
 message MGOLOIGOAMB {
-    TrainPartyPassenger IALIECEAFJB = 3;
+    TrainPartyPassenger IALIECEAFJB = 5;
 }

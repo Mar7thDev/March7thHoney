@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Vector.proto";
 
 message MotionInfo {
-    Vector rot = 6;
-    Vector pos = 10;
+    Vector pos = 5;
+    Vector rot = 12;
 }

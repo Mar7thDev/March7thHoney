@@ -4,14 +4,16 @@ option csharp_namespace = "March7thHoney.Proto";
 
 import "BCKBEMGGGIF.proto";
 import "DGLBOFKGGLL.proto";
+import "GKJHNGLHOBA.proto";
 import "PLICOOFLBIB.proto";
 
 message DLCJPINDIAC {
-    uint32 PPOAGPGEAFH = 9;
-    uint32 uid = 8;
+    uint32 PPOAGPGEAFH = 7;
+    uint32 uid = 10;
     oneof KKNBOACNCON {
-        DGLBOFKGGLL BJKBADEMEOE = 10;
-        PLICOOFLBIB KCICNNFJEAC = 5;
-        BCKBEMGGGIF LENBIENEFIB = 7;
+        DGLBOFKGGLL BJKBADEMEOE = 15;
+        PLICOOFLBIB KCICNNFJEAC = 1;
+        BCKBEMGGGIF LENBIENEFIB = 11;
+        GKJHNGLHOBA ONNAKPKDLHO = 3;
     }
 }

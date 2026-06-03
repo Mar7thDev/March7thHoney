@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NFIDNDFHJGN {
-    double damage = 13;
-    double KINKMHEAANP = 12;
-    uint32 augment_id = 11;
+    double damage = 1;
+    double KINKMHEAANP = 11;
+    uint32 augment_id = 14;
 }

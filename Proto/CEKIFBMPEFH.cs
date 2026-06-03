@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFDRUtJRkJNUEVGSC5wcm90bxoVQWxsZXlFdmVudFN0YXRlLnByb3RvIlUK",
-            "C0NFS0lGQk1QRUZIEh8KBXN0YXRlGAggASgOMhAuQWxsZXlFdmVudFN0YXRl",
-            "EhAKCGV2ZW50X2lkGAcgASgNEhMKC0ZITUJLQVBQQUdPGAkgASgNQhaqAhNN",
+            "C0NFS0lGQk1QRUZIEhAKCGV2ZW50X2lkGAcgASgNEh8KBXN0YXRlGAkgASgO",
+            "MhAuQWxsZXlFdmVudFN0YXRlEhMKC0ZITUJLQVBQQUdPGA4gASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AlleyEventStateReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CEKIFBMPEFH), global::March7thHoney.Proto.CEKIFBMPEFH.Parser, new[]{ "State", "EventId", "FHMBKAPPAGO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.CEKIFBMPEFH), global::March7thHoney.Proto.CEKIFBMPEFH.Parser, new[]{ "EventId", "State", "FHMBKAPPAGO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CEKIFBMPEFH(CEKIFBMPEFH other) : this() {
-      state_ = other.state_;
       eventId_ = other.eventId_;
+      state_ = other.state_;
       fHMBKAPPAGO_ = other.fHMBKAPPAGO_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,18 +83,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public CEKIFBMPEFH Clone() {
       return new CEKIFBMPEFH(this);
-    }
-
-    /// <summary>Field number for the "state" field.</summary>
-    public const int StateFieldNumber = 8;
-    private global::March7thHoney.Proto.AlleyEventState state_ = global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.AlleyEventState State {
-      get { return state_; }
-      set {
-        state_ = value;
-      }
     }
 
     /// <summary>Field number for the "event_id" field.</summary>
@@ -109,8 +97,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "state" field.</summary>
+    public const int StateFieldNumber = 9;
+    private global::March7thHoney.Proto.AlleyEventState state_ = global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.AlleyEventState State {
+      get { return state_; }
+      set {
+        state_ = value;
+      }
+    }
+
     /// <summary>Field number for the "FHMBKAPPAGO" field.</summary>
-    public const int FHMBKAPPAGOFieldNumber = 9;
+    public const int FHMBKAPPAGOFieldNumber = 14;
     private uint fHMBKAPPAGO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (State != other.State) return false;
       if (EventId != other.EventId) return false;
+      if (State != other.State) return false;
       if (FHMBKAPPAGO != other.FHMBKAPPAGO) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (State != global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek) hash ^= State.GetHashCode();
       if (EventId != 0) hash ^= EventId.GetHashCode();
+      if (State != global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek) hash ^= State.GetHashCode();
       if (FHMBKAPPAGO != 0) hash ^= FHMBKAPPAGO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(EventId);
       }
       if (State != global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteEnum((int) State);
       }
       if (FHMBKAPPAGO != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(FHMBKAPPAGO);
       }
       if (_unknownFields != null) {
@@ -194,11 +194,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(EventId);
       }
       if (State != global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(72);
         output.WriteEnum((int) State);
       }
       if (FHMBKAPPAGO != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(FHMBKAPPAGO);
       }
       if (_unknownFields != null) {
@@ -211,11 +211,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (State != global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
-      }
       if (EventId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EventId);
+      }
+      if (State != global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (FHMBKAPPAGO != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FHMBKAPPAGO);
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.State != global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek) {
-        State = other.State;
-      }
       if (other.EventId != 0) {
         EventId = other.EventId;
+      }
+      if (other.State != global::March7thHoney.Proto.AlleyEventState.AjoccoaififNapmffdmlek) {
+        State = other.State;
       }
       if (other.FHMBKAPPAGO != 0) {
         FHMBKAPPAGO = other.FHMBKAPPAGO;
@@ -264,11 +264,11 @@ namespace March7thHoney.Proto {
             EventId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 72: {
             State = (global::March7thHoney.Proto.AlleyEventState) input.ReadEnum();
             break;
           }
-          case 72: {
+          case 112: {
             FHMBKAPPAGO = input.ReadUInt32();
             break;
           }
@@ -295,11 +295,11 @@ namespace March7thHoney.Proto {
             EventId = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 72: {
             State = (global::March7thHoney.Proto.AlleyEventState) input.ReadEnum();
             break;
           }
-          case 72: {
+          case 112: {
             FHMBKAPPAGO = input.ReadUInt32();
             break;
           }

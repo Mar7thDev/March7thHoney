@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHQ0ZHQ0hBTU5PTC5wcm90byI3CgtHQ0ZHQ0hBTU5PTBITCgtQR0ZGR0tE",
-            "T1BHTRgEIAMoDRITCgtDTUVLTkFKT05QSBgJIAEoDUIWqgITTWFyY2g3dGhI",
+            "T1BHTRgJIAMoDRITCgtDTUVLTkFKT05QSBgKIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PGFFGKDOPGM" field.</summary>
-    public const int PGFFGKDOPGMFieldNumber = 4;
+    public const int PGFFGKDOPGMFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_pGFFGKDOPGM_codec
-        = pb::FieldCodec.ForUInt32(34);
+        = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> pGFFGKDOPGM_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,7 +95,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CMEKNAJONPH" field.</summary>
-    public const int CMEKNAJONPHFieldNumber = 9;
+    public const int CMEKNAJONPHFieldNumber = 10;
     private uint cMEKNAJONPH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     #else
       pGFFGKDOPGM_.WriteTo(output, _repeated_pGFFGKDOPGM_codec);
       if (CMEKNAJONPH != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(CMEKNAJONPH);
       }
       if (_unknownFields != null) {
@@ -167,7 +167,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       pGFFGKDOPGM_.WriteTo(ref output, _repeated_pGFFGKDOPGM_codec);
       if (CMEKNAJONPH != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(CMEKNAJONPH);
       }
       if (_unknownFields != null) {
@@ -219,12 +219,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34:
-          case 32: {
+          case 74:
+          case 72: {
             pGFFGKDOPGM_.AddEntriesFrom(input, _repeated_pGFFGKDOPGM_codec);
             break;
           }
-          case 72: {
+          case 80: {
             CMEKNAJONPH = input.ReadUInt32();
             break;
           }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34:
-          case 32: {
+          case 74:
+          case 72: {
             pGFFGKDOPGM_.AddEntriesFrom(ref input, _repeated_pGFFGKDOPGM_codec);
             break;
           }
-          case 72: {
+          case 80: {
             CMEKNAJONPH = input.ReadUInt32();
             break;
           }

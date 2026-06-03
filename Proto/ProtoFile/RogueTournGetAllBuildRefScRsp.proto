@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DIFGGDIHDEG.proto";
 
 message RogueTournGetAllBuildRefScRsp {
-    repeated DIFGGDIHDEG GIOEPGJGMPD = 1;
-    uint32 retcode = 14;
+    repeated DIFGGDIHDEG GIOEPGJGMPD = 2;
+    uint32 retcode = 15;
 }

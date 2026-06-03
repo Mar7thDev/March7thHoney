@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChxQbGF5ZXJTcXVlZXplZFNjTm90aWZ5LnByb3RvGg9CbGFja0luZm8ucHJv",
-            "dG8i+wEKFlBsYXllclNxdWVlemVkU2NOb3RpZnkSHgoKYmxhY2tfaW5mbxgH",
-            "IAEoCzIKLkJsYWNrSW5mbxIzCglraWNrX3R5cGUYDyABKA4yIC5QbGF5ZXJT",
+            "dG8i+wEKFlBsYXllclNxdWVlemVkU2NOb3RpZnkSHgoKYmxhY2tfaW5mbxgI",
+            "IAEoCzIKLkJsYWNrSW5mbxIzCglraWNrX3R5cGUYCSABKA4yIC5QbGF5ZXJT",
             "cXVlZXplZFNjTm90aWZ5LktpY2tUeXBlIosBCghLaWNrVHlwZRIRCg1LSUNL",
             "X1NRVUVFWkVEEAASDgoKS0lDS19CTEFDSxABEhMKD0tJQ0tfQ0hBTkdFX1BX",
             "RBACEhwKGEtJQ0tfTE9HSU5fV0hJVEVfVElNRU9VVBADEhkKFUtJQ0tfQUNF",
@@ -89,7 +89,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "black_info" field.</summary>
-    public const int BlackInfoFieldNumber = 7;
+    public const int BlackInfoFieldNumber = 8;
     private global::March7thHoney.Proto.BlackInfo blackInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -101,7 +101,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "kick_type" field.</summary>
-    public const int KickTypeFieldNumber = 15;
+    public const int KickTypeFieldNumber = 9;
     private global::March7thHoney.Proto.PlayerSqueezedScNotify.Types.KickType kickType_ = global::March7thHoney.Proto.PlayerSqueezedScNotify.Types.KickType.KickSqueezed;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -157,11 +157,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (blackInfo_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteMessage(BlackInfo);
       }
       if (KickType != global::March7thHoney.Proto.PlayerSqueezedScNotify.Types.KickType.KickSqueezed) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteEnum((int) KickType);
       }
       if (_unknownFields != null) {
@@ -175,11 +175,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (blackInfo_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteMessage(BlackInfo);
       }
       if (KickType != global::March7thHoney.Proto.PlayerSqueezedScNotify.Types.KickType.KickSqueezed) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(72);
         output.WriteEnum((int) KickType);
       }
       if (_unknownFields != null) {
@@ -238,14 +238,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 66: {
             if (blackInfo_ == null) {
               BlackInfo = new global::March7thHoney.Proto.BlackInfo();
             }
             input.ReadMessage(BlackInfo);
             break;
           }
-          case 120: {
+          case 72: {
             KickType = (global::March7thHoney.Proto.PlayerSqueezedScNotify.Types.KickType) input.ReadEnum();
             break;
           }
@@ -268,14 +268,14 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 66: {
             if (blackInfo_ == null) {
               BlackInfo = new global::March7thHoney.Proto.BlackInfo();
             }
             input.ReadMessage(BlackInfo);
             break;
           }
-          case 120: {
+          case 72: {
             KickType = (global::March7thHoney.Proto.PlayerSqueezedScNotify.Types.KickType) input.ReadEnum();
             break;
           }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DFJPGILAAON.proto";
 
 message LEFIDLICEMH {
-    repeated uint32 LNCKEHDMHLD = 5;
-    DFJPGILAAON AGCBLNPHFCI = 10;
-    bool MHNDLPIDJIE = 13;
+    DFJPGILAAON AGCBLNPHFCI = 1;
     uint32 MJJMPMCCNJH = 2;
+    repeated uint32 LNCKEHDMHLD = 9;
+    bool MHNDLPIDJIE = 13;
 }

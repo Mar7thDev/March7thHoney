@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EIDFCGLODFB.proto";
 
 message ILMFJKCGBCK {
-    EIDFCGLODFB GOPFOJLIFKN = 5;
-    repeated EIDFCGLODFB DGBEOGGJLOO = 12;
-    repeated EIDFCGLODFB EGDNFKHLKKE = 4;
-    uint32 COKKNEKDJAJ = 7;
-    uint32 LJCCANLCGHI = 6;
+    repeated EIDFCGLODFB DGBEOGGJLOO = 2;
+    repeated EIDFCGLODFB EGDNFKHLKKE = 6;
+    uint32 COKKNEKDJAJ = 8;
+    EIDFCGLODFB GOPFOJLIFKN = 9;
+    uint32 LJCCANLCGHI = 11;
 }

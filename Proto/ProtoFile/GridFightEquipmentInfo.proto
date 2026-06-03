@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message GridFightEquipmentInfo {
+    uint32 grid_fight_equipment_id = 5;
+    uint32 source = 8;
+    uint32 unique_id = 11;
+    map<uint32, uint32> convert_property_to_fixpoint = 14;
+    bool IODIJBEHEGF = 15;
+}

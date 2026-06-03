@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static AMPMJPCFLNDReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBTVBNSlBDRkxORC5wcm90bxoUVHVybkZvb2RTd2l0Y2gucHJvdG8iSAoL",
-            "QU1QTUpQQ0ZMTkQSJAoLS0xBSkdBS0FGQ1AYAiABKA4yDy5UdXJuRm9vZFN3",
-            "aXRjaBITCgtGRUJLTU9DT0pMRRgNIAEoCEIWqgITTWFyY2g3dGhIb25leS5Q",
-            "cm90b2IGcHJvdG8z"));
+            "ChFBTVBNSlBDRkxORC5wcm90bxoUVHVybkZvb2RTd2l0Y2gucHJvdG8iRAoL",
+            "QU1QTUpQQ0ZMTkQSJAoLS0xBSkdBS0FGQ1AYAyABKA4yDy5UdXJuRm9vZFN3",
+            "aXRjaBIPCgdpc19vcGVuGAwgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.TurnFoodSwitchReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AMPMJPCFLND), global::March7thHoney.Proto.AMPMJPCFLND.Parser, new[]{ "KLAJGAKAFCP", "FEBKMOCOJLE" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AMPMJPCFLND), global::March7thHoney.Proto.AMPMJPCFLND.Parser, new[]{ "KLAJGAKAFCP", "IsOpen" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,7 +74,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AMPMJPCFLND(AMPMJPCFLND other) : this() {
       kLAJGAKAFCP_ = other.kLAJGAKAFCP_;
-      fEBKMOCOJLE_ = other.fEBKMOCOJLE_;
+      isOpen_ = other.isOpen_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KLAJGAKAFCP" field.</summary>
-    public const int KLAJGAKAFCPFieldNumber = 2;
+    public const int KLAJGAKAFCPFieldNumber = 3;
     private global::March7thHoney.Proto.TurnFoodSwitch kLAJGAKAFCP_ = global::March7thHoney.Proto.TurnFoodSwitch.FhlekkndbbeNlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,15 +96,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "FEBKMOCOJLE" field.</summary>
-    public const int FEBKMOCOJLEFieldNumber = 13;
-    private bool fEBKMOCOJLE_;
+    /// <summary>Field number for the "is_open" field.</summary>
+    public const int IsOpenFieldNumber = 12;
+    private bool isOpen_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool FEBKMOCOJLE {
-      get { return fEBKMOCOJLE_; }
+    public bool IsOpen {
+      get { return isOpen_; }
       set {
-        fEBKMOCOJLE_ = value;
+        isOpen_ = value;
       }
     }
 
@@ -124,7 +124,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (KLAJGAKAFCP != other.KLAJGAKAFCP) return false;
-      if (FEBKMOCOJLE != other.FEBKMOCOJLE) return false;
+      if (IsOpen != other.IsOpen) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,7 +133,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (KLAJGAKAFCP != global::March7thHoney.Proto.TurnFoodSwitch.FhlekkndbbeNlcdgipgfdj) hash ^= KLAJGAKAFCP.GetHashCode();
-      if (FEBKMOCOJLE != false) hash ^= FEBKMOCOJLE.GetHashCode();
+      if (IsOpen != false) hash ^= IsOpen.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,12 +153,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (KLAJGAKAFCP != global::March7thHoney.Proto.TurnFoodSwitch.FhlekkndbbeNlcdgipgfdj) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteEnum((int) KLAJGAKAFCP);
       }
-      if (FEBKMOCOJLE != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(FEBKMOCOJLE);
+      if (IsOpen != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsOpen);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,12 +171,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (KLAJGAKAFCP != global::March7thHoney.Proto.TurnFoodSwitch.FhlekkndbbeNlcdgipgfdj) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteEnum((int) KLAJGAKAFCP);
       }
-      if (FEBKMOCOJLE != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(FEBKMOCOJLE);
+      if (IsOpen != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsOpen);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
       if (KLAJGAKAFCP != global::March7thHoney.Proto.TurnFoodSwitch.FhlekkndbbeNlcdgipgfdj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) KLAJGAKAFCP);
       }
-      if (FEBKMOCOJLE != false) {
+      if (IsOpen != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -209,8 +209,8 @@ namespace March7thHoney.Proto {
       if (other.KLAJGAKAFCP != global::March7thHoney.Proto.TurnFoodSwitch.FhlekkndbbeNlcdgipgfdj) {
         KLAJGAKAFCP = other.KLAJGAKAFCP;
       }
-      if (other.FEBKMOCOJLE != false) {
-        FEBKMOCOJLE = other.FEBKMOCOJLE;
+      if (other.IsOpen != false) {
+        IsOpen = other.IsOpen;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 24: {
             KLAJGAKAFCP = (global::March7thHoney.Proto.TurnFoodSwitch) input.ReadEnum();
             break;
           }
-          case 104: {
-            FEBKMOCOJLE = input.ReadBool();
+          case 96: {
+            IsOpen = input.ReadBool();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 24: {
             KLAJGAKAFCP = (global::March7thHoney.Proto.TurnFoodSwitch) input.ReadEnum();
             break;
           }
-          case 104: {
-            FEBKMOCOJLE = input.ReadBool();
+          case 96: {
+            IsOpen = input.ReadBool();
             break;
           }
         }

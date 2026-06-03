@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LNPGBGDPIIK.proto";
 
 message FBOFEOCHDMN {
-    repeated LNPGBGDPIIK GJGFCCKEMFD = 11;
+    repeated LNPGBGDPIIK GJGFCCKEMFD = 8;
 }

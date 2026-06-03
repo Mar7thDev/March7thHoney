@@ -3,6 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DMAMEFJBCLE {
-    uint32 FODJGGIGBGJ = 8;
-    uint32 retcode = 15;
+    uint32 retcode = 9;
 }

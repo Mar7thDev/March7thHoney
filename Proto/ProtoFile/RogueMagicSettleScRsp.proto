@@ -8,9 +8,9 @@ import "GPHMAJPGGEK.proto";
 import "ItemList.proto";
 
 message RogueMagicSettleScRsp {
-    EEILAINOLPO IDCMACCPCBH = 7;
+    FKFOIDMNDFG BFLLJJBHLDF = 2;
+    uint32 retcode = 7;
+    ItemList IIOMCJPCFML = 10;
     GPHMAJPGGEK IEHPMHOFBNJ = 11;
-    FKFOIDMNDFG BFLLJJBHLDF = 14;
-    ItemList IIOMCJPCFML = 9;
-    uint32 retcode = 4;
+    EEILAINOLPO IDCMACCPCBH = 12;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ECLGDFGGOFH.proto";
 
 message QuestRecordScNotify {
-    ECLGDFGGOFH HLMPJLDBPJP = 11;
+    ECLGDFGGOFH HLMPJLDBPJP = 3;
 }

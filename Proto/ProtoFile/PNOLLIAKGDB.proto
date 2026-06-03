@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PNOLLIAKGDB {
-    uint32 JHJKCJKDHIB = 6;
-    bool BELKCBAGMFC = 8;
-    bool MLPGDPGIFCJ = 10;
+    bool BELKCBAGMFC = 2;
+    uint32 JHJKCJKDHIB = 4;
+    bool MLPGDPGIFCJ = 5;
 }

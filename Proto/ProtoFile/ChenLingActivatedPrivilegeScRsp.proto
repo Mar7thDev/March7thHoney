@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChenLingActivatedPrivilegeScRsp {
-    uint32 retcode = 7;
-    uint32 ADBGHKBGGJM = 9;
+    uint32 ADBGHKBGGJM = 2;
+    uint32 retcode = 5;
 }

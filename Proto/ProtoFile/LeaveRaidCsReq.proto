@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LeaveRaidCsReq {
-    bool is_save = 6;
-    uint32 raid_id = 2;
+    bool is_save = 4;
+    uint32 raid_id = 9;
 }

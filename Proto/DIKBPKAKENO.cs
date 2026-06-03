@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFESUtCUEtBS0VOTy5wcm90bxoRTktMQUVISlBJTU4ucHJvdG8iQAoLRElL",
-            "QlBLQUtFTk8SEwoLRUZDQUpFTk1MS0EYAyABKA0SHAoGc3RhdHVzGAwgASgO",
+            "QlBLQUtFTk8SEwoLRUZDQUpFTk1MS0EYASABKA0SHAoGc3RhdHVzGAMgASgO",
             "MgwuTktMQUVISlBJTU5CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "EFCAJENMLKA" field.</summary>
-    public const int EFCAJENMLKAFieldNumber = 3;
+    public const int EFCAJENMLKAFieldNumber = 1;
     private uint eFCAJENMLKA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 12;
+    public const int StatusFieldNumber = 3;
     private global::March7thHoney.Proto.NKLAEHJPIMN status_ = global::March7thHoney.Proto.NKLAEHJPIMN.Fgofdmdbmal;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (EFCAJENMLKA != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(EFCAJENMLKA);
       }
       if (Status != global::March7thHoney.Proto.NKLAEHJPIMN.Fgofdmdbmal) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (EFCAJENMLKA != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(EFCAJENMLKA);
       }
       if (Status != global::March7thHoney.Proto.NKLAEHJPIMN.Fgofdmdbmal) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(24);
         output.WriteEnum((int) Status);
       }
       if (_unknownFields != null) {
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 8: {
             EFCAJENMLKA = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 24: {
             Status = (global::March7thHoney.Proto.NKLAEHJPIMN) input.ReadEnum();
             break;
           }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 8: {
             EFCAJENMLKA = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 24: {
             Status = (global::March7thHoney.Proto.NKLAEHJPIMN) input.ReadEnum();
             break;
           }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message IJLEFNJPFKP {
-    uint32 OAPEDNOPOLN = 1;
+    uint32 rogue_mode = 1;
 }

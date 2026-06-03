@@ -6,6 +6,6 @@ import "ItemList.proto";
 
 message PlayerReturnTakeRelicScRsp {
     ItemList item_list = 4;
-    uint32 retcode = 6;
-    uint32 avatar_id = 12;
+    uint32 retcode = 5;
+    uint32 avatar_id = 7;
 }

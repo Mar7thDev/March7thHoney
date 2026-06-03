@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFQT0JMR0tJR0lORS5wcm90bxoRSkJKTkpQQU9DREEucHJvdG8aEVBCTURF",
-            "QkNHTk1ELnByb3RvImkKC1BPQkxHS0lHSU5FEiEKC3BsYXllcl9pbmZvGAIg",
-            "AygLMgwuSkJKTkpQQU9DREESEwoLUExJRE5CTUNJSkgYDyABKA0SIgoLTE5N",
-            "R09GQ09NRUQYgQkgASgLMgwuUEJNREVCQ0dOTURCFqoCE01hcmNoN3RoSG9u",
-            "ZXkuUHJvdG9iBnByb3RvMw=="));
+            "QkNHTk1ELnByb3RvImsKC1BPQkxHS0lHSU5FEhYKDnJvb21fb3duZXJfdWlk",
+            "GAQgASgNEiEKC3BsYXllcl9pbmZvGAkgAygLMgwuSkJKTkpQQU9DREESIQoL",
+            "TE5NR09GQ09NRUQYJyABKAsyDC5QQk1ERUJDR05NREIWqgITTWFyY2g3dGhI",
+            "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JBJNJPAOCDAReflection.Descriptor, global::March7thHoney.Proto.PBMDEBCGNMDReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.POBLGKIGINE), global::March7thHoney.Proto.POBLGKIGINE.Parser, new[]{ "PlayerInfo", "PLIDNBMCIJH", "LNMGOFCOMED" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.POBLGKIGINE), global::March7thHoney.Proto.POBLGKIGINE.Parser, new[]{ "RoomOwnerUid", "PlayerInfo", "LNMGOFCOMED" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public POBLGKIGINE(POBLGKIGINE other) : this() {
+      roomOwnerUid_ = other.roomOwnerUid_;
       playerInfo_ = other.playerInfo_.Clone();
-      pLIDNBMCIJH_ = other.pLIDNBMCIJH_;
       lNMGOFCOMED_ = other.lNMGOFCOMED_ != null ? other.lNMGOFCOMED_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -86,10 +86,22 @@ namespace March7thHoney.Proto {
       return new POBLGKIGINE(this);
     }
 
+    /// <summary>Field number for the "room_owner_uid" field.</summary>
+    public const int RoomOwnerUidFieldNumber = 4;
+    private uint roomOwnerUid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RoomOwnerUid {
+      get { return roomOwnerUid_; }
+      set {
+        roomOwnerUid_ = value;
+      }
+    }
+
     /// <summary>Field number for the "player_info" field.</summary>
-    public const int PlayerInfoFieldNumber = 2;
+    public const int PlayerInfoFieldNumber = 9;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.JBJNJPAOCDA> _repeated_playerInfo_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.JBJNJPAOCDA.Parser);
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.JBJNJPAOCDA.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.JBJNJPAOCDA> playerInfo_ = new pbc::RepeatedField<global::March7thHoney.Proto.JBJNJPAOCDA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,20 +109,8 @@ namespace March7thHoney.Proto {
       get { return playerInfo_; }
     }
 
-    /// <summary>Field number for the "PLIDNBMCIJH" field.</summary>
-    public const int PLIDNBMCIJHFieldNumber = 15;
-    private uint pLIDNBMCIJH_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PLIDNBMCIJH {
-      get { return pLIDNBMCIJH_; }
-      set {
-        pLIDNBMCIJH_ = value;
-      }
-    }
-
     /// <summary>Field number for the "LNMGOFCOMED" field.</summary>
-    public const int LNMGOFCOMEDFieldNumber = 1153;
+    public const int LNMGOFCOMEDFieldNumber = 39;
     private global::March7thHoney.Proto.PBMDEBCGNMD lNMGOFCOMED_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (RoomOwnerUid != other.RoomOwnerUid) return false;
       if(!playerInfo_.Equals(other.playerInfo_)) return false;
-      if (PLIDNBMCIJH != other.PLIDNBMCIJH) return false;
       if (!object.Equals(LNMGOFCOMED, other.LNMGOFCOMED)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (RoomOwnerUid != 0) hash ^= RoomOwnerUid.GetHashCode();
       hash ^= playerInfo_.GetHashCode();
-      if (PLIDNBMCIJH != 0) hash ^= PLIDNBMCIJH.GetHashCode();
       if (lNMGOFCOMED_ != null) hash ^= LNMGOFCOMED.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -167,13 +167,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      playerInfo_.WriteTo(output, _repeated_playerInfo_codec);
-      if (PLIDNBMCIJH != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(PLIDNBMCIJH);
+      if (RoomOwnerUid != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(RoomOwnerUid);
       }
+      playerInfo_.WriteTo(output, _repeated_playerInfo_codec);
       if (lNMGOFCOMED_ != null) {
-        output.WriteRawTag(138, 72);
+        output.WriteRawTag(186, 2);
         output.WriteMessage(LNMGOFCOMED);
       }
       if (_unknownFields != null) {
@@ -186,13 +186,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      playerInfo_.WriteTo(ref output, _repeated_playerInfo_codec);
-      if (PLIDNBMCIJH != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(PLIDNBMCIJH);
+      if (RoomOwnerUid != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(RoomOwnerUid);
       }
+      playerInfo_.WriteTo(ref output, _repeated_playerInfo_codec);
       if (lNMGOFCOMED_ != null) {
-        output.WriteRawTag(138, 72);
+        output.WriteRawTag(186, 2);
         output.WriteMessage(LNMGOFCOMED);
       }
       if (_unknownFields != null) {
@@ -205,10 +205,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += playerInfo_.CalculateSize(_repeated_playerInfo_codec);
-      if (PLIDNBMCIJH != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PLIDNBMCIJH);
+      if (RoomOwnerUid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoomOwnerUid);
       }
+      size += playerInfo_.CalculateSize(_repeated_playerInfo_codec);
       if (lNMGOFCOMED_ != null) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(LNMGOFCOMED);
       }
@@ -224,10 +224,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      playerInfo_.Add(other.playerInfo_);
-      if (other.PLIDNBMCIJH != 0) {
-        PLIDNBMCIJH = other.PLIDNBMCIJH;
+      if (other.RoomOwnerUid != 0) {
+        RoomOwnerUid = other.RoomOwnerUid;
       }
+      playerInfo_.Add(other.playerInfo_);
       if (other.lNMGOFCOMED_ != null) {
         if (lNMGOFCOMED_ == null) {
           LNMGOFCOMED = new global::March7thHoney.Proto.PBMDEBCGNMD();
@@ -253,15 +253,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 32: {
+            RoomOwnerUid = input.ReadUInt32();
+            break;
+          }
+          case 74: {
             playerInfo_.AddEntriesFrom(input, _repeated_playerInfo_codec);
             break;
           }
-          case 120: {
-            PLIDNBMCIJH = input.ReadUInt32();
-            break;
-          }
-          case 9226: {
+          case 314: {
             if (lNMGOFCOMED_ == null) {
               LNMGOFCOMED = new global::March7thHoney.Proto.PBMDEBCGNMD();
             }
@@ -287,15 +287,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 32: {
+            RoomOwnerUid = input.ReadUInt32();
+            break;
+          }
+          case 74: {
             playerInfo_.AddEntriesFrom(ref input, _repeated_playerInfo_codec);
             break;
           }
-          case 120: {
-            PLIDNBMCIJH = input.ReadUInt32();
-            break;
-          }
-          case 9226: {
+          case 314: {
             if (lNMGOFCOMED_ == null) {
               LNMGOFCOMED = new global::March7thHoney.Proto.PBMDEBCGNMD();
             }

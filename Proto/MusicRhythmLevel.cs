@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZNdXNpY1JoeXRobUxldmVsLnByb3RvIk4KEE11c2ljUmh5dGhtTGV2ZWwS",
-            "FAoMdW5sb2NrX2xldmVsGA4gASgNEhIKCmZ1bGxfY29tYm8YAiABKAgSEAoI",
-            "bGV2ZWxfaWQYCyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "FAoMdW5sb2NrX2xldmVsGAIgASgNEhAKCGxldmVsX2lkGAkgASgNEhIKCmZ1",
+            "bGxfY29tYm8YDCABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmLevel), global::March7thHoney.Proto.MusicRhythmLevel.Parser, new[]{ "UnlockLevel", "FullCombo", "LevelId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmLevel), global::March7thHoney.Proto.MusicRhythmLevel.Parser, new[]{ "UnlockLevel", "LevelId", "FullCombo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmLevel(MusicRhythmLevel other) : this() {
       unlockLevel_ = other.unlockLevel_;
-      fullCombo_ = other.fullCombo_;
       levelId_ = other.levelId_;
+      fullCombo_ = other.fullCombo_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "unlock_level" field.</summary>
-    public const int UnlockLevelFieldNumber = 14;
+    public const int UnlockLevelFieldNumber = 2;
     private uint unlockLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,20 +97,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "full_combo" field.</summary>
-    public const int FullComboFieldNumber = 2;
-    private bool fullCombo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool FullCombo {
-      get { return fullCombo_; }
-      set {
-        fullCombo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 11;
+    public const int LevelIdFieldNumber = 9;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return levelId_; }
       set {
         levelId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "full_combo" field.</summary>
+    public const int FullComboFieldNumber = 12;
+    private bool fullCombo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool FullCombo {
+      get { return fullCombo_; }
+      set {
+        fullCombo_ = value;
       }
     }
 
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (UnlockLevel != other.UnlockLevel) return false;
-      if (FullCombo != other.FullCombo) return false;
       if (LevelId != other.LevelId) return false;
+      if (FullCombo != other.FullCombo) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (UnlockLevel != 0) hash ^= UnlockLevel.GetHashCode();
-      if (FullCombo != false) hash ^= FullCombo.GetHashCode();
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
+      if (FullCombo != false) hash ^= FullCombo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (FullCombo != false) {
+      if (UnlockLevel != 0) {
         output.WriteRawTag(16);
-        output.WriteBool(FullCombo);
+        output.WriteUInt32(UnlockLevel);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(72);
         output.WriteUInt32(LevelId);
       }
-      if (UnlockLevel != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(UnlockLevel);
+      if (FullCombo != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(FullCombo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (FullCombo != false) {
+      if (UnlockLevel != 0) {
         output.WriteRawTag(16);
-        output.WriteBool(FullCombo);
+        output.WriteUInt32(UnlockLevel);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(72);
         output.WriteUInt32(LevelId);
       }
-      if (UnlockLevel != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(UnlockLevel);
+      if (FullCombo != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(FullCombo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -214,11 +214,11 @@ namespace March7thHoney.Proto {
       if (UnlockLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UnlockLevel);
       }
-      if (FullCombo != false) {
-        size += 1 + 1;
-      }
       if (LevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
+      }
+      if (FullCombo != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -235,11 +235,11 @@ namespace March7thHoney.Proto {
       if (other.UnlockLevel != 0) {
         UnlockLevel = other.UnlockLevel;
       }
-      if (other.FullCombo != false) {
-        FullCombo = other.FullCombo;
-      }
       if (other.LevelId != 0) {
         LevelId = other.LevelId;
+      }
+      if (other.FullCombo != false) {
+        FullCombo = other.FullCombo;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -261,15 +261,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            FullCombo = input.ReadBool();
+            UnlockLevel = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 72: {
             LevelId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            UnlockLevel = input.ReadUInt32();
+          case 96: {
+            FullCombo = input.ReadBool();
             break;
           }
         }
@@ -292,15 +292,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            FullCombo = input.ReadBool();
+            UnlockLevel = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 72: {
             LevelId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            UnlockLevel = input.ReadUInt32();
+          case 96: {
+            FullCombo = input.ReadBool();
             break;
           }
         }

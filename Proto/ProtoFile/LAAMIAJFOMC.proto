@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LAAMIAJFOMC {
-    uint32 affix_id = 7;
-    bool PNJCLPNFIGA = 14;
+    bool PNJCLPNFIGA = 5;
+    uint32 affix_id = 11;
 }

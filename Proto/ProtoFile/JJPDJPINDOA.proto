@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JJPDJPINDOA {
-    repeated uint32 ANINMMMGLLL = 12;
-    uint32 LGIPILAKIKB = 4;
+    uint32 LGIPILAKIKB = 7;
+    repeated uint32 ANINMMMGLLL = 13;
 }

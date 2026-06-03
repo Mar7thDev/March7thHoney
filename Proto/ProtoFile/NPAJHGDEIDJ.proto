@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LPCEBDCJBOI.proto";
 
 message NPAJHGDEIDJ {
-    LPCEBDCJBOI status = 5;
-    uint32 ECPDJMMOGCI = 4;
+    uint32 ECPDJMMOGCI = 12;
+    LPCEBDCJBOI status = 13;
 }

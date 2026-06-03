@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DeleteFriendScRsp {
-    uint32 retcode = 5;
-    uint32 uid = 7;
+    uint32 uid = 2;
+    uint32 retcode = 14;
 }

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FBAMAFLOBGA {
-    repeated uint32 LICPEKHDJGK = 14;
-    uint32 challenge_id = 3;
-}

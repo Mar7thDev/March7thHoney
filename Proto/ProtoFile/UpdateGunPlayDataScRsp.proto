@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BPAGBAALHMP.proto";
 
 message UpdateGunPlayDataScRsp {
-    BPAGBAALHMP AOPPLPDBEHK = 11;
-    uint32 retcode = 2;
+    uint32 retcode = 11;
+    BPAGBAALHMP AOPPLPDBEHK = 15;
 }

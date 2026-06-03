@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFJR0pMTEhNSktQQy5wcm90byI4CgtJR0pMTEhNSktQQxIUCgxnYWNoYV9y",
-            "YW5kb20YCCABKA0SEwoLSU1LR09LR0tEUEgYCiABKAhCFqoCE01hcmNoN3Ro",
+            "YW5kb20YBSABKA0SEwoLSU1LR09LR0tEUEgYBiABKAhCFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "gacha_random" field.</summary>
-    public const int GachaRandomFieldNumber = 8;
+    public const int GachaRandomFieldNumber = 5;
     private uint gachaRandom_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IMKGOKGKDPH" field.</summary>
-    public const int IMKGOKGKDPHFieldNumber = 10;
+    public const int IMKGOKGKDPHFieldNumber = 6;
     private bool iMKGOKGKDPH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GachaRandom != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(GachaRandom);
       }
       if (IMKGOKGKDPH != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteBool(IMKGOKGKDPH);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GachaRandom != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(GachaRandom);
       }
       if (IMKGOKGKDPH != false) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(48);
         output.WriteBool(IMKGOKGKDPH);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
+          case 40: {
             GachaRandom = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 48: {
             IMKGOKGKDPH = input.ReadBool();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
+          case 40: {
             GachaRandom = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 48: {
             IMKGOKGKDPH = input.ReadBool();
             break;
           }

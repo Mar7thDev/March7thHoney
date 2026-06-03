@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PELDIEOMMDM {
-    string stop_desc = 2;
     repeated uint32 avatar_id_list = 1;
+    string stop_desc = 2;
 }

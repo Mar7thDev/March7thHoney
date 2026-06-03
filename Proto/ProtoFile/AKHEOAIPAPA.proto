@@ -6,9 +6,9 @@ import "GLBAOKOHKCF.proto";
 import "JLPEICPFLMC.proto";
 
 message AKHEOAIPAPA {
-    JLPEICPFLMC source = 13;
-    double CPLFBOBLFMC = 4;
-    uint32 unique_id = 1;
-    GLBAOKOHKCF GOKKLNBMLCA = 5;
-    double OJMOBAEEMAP = 8;
+    uint32 unique_id = 2;
+    double OJMOBAEEMAP = 3;
+    double CPLFBOBLFMC = 5;
+    JLPEICPFLMC source = 8;
+    GLBAOKOHKCF GOKKLNBMLCA = 10;
 }

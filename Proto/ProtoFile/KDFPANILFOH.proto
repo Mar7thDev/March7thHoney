@@ -6,8 +6,8 @@ import "MotionInfo.proto";
 import "Vector.proto";
 
 message KDFPANILFOH {
-    repeated Vector PAOEJKABFEP = 8;
-    MotionInfo motion = 12;
-    uint32 CHCOPKAKBNO = 2;
-    bool KEKFKKANACK = 9;
+    repeated Vector PAOEJKABFEP = 6;
+    bool is_bullet_activated = 9;
+    MotionInfo motion = 13;
+    uint32 CHCOPKAKBNO = 15;
 }

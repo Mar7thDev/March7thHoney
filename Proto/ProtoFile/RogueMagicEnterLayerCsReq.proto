@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RogueMagicEnterLayerCsReq {
-    uint32 BJHMFOAGMBF = 5;
-    uint32 KHBLMAOPLLN = 13;
+    uint32 BJHMFOAGMBF = 10;
+    uint32 KHBLMAOPLLN = 12;
 }

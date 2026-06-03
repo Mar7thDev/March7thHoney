@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "SceneBattleInfo.proto";
 
 message RogueShopBeginBattleScRsp {
-    SceneBattleInfo AEPNEDJPAGK = 4;
+    SceneBattleInfo AEPNEDJPAGK = 2;
     uint32 retcode = 13;
 }

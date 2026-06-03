@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TakeFightActivityRewardCsReq {
-    uint32 DBKHHCGGKNN = 15;
-    uint32 group_id = 7;
+    uint32 DBKHHCGGKNN = 5;
+    uint32 group_id = 12;
 }

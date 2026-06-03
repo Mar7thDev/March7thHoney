@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message FarmElementSweepScRsp {
-    ItemList multiple_drop_data = 11;
-    uint32 retcode = 8;
-    uint32 PAOFHFLFFHD = 1;
+    uint32 retcode = 2;
+    ItemList multiple_drop_data = 3;
+    uint32 PAOFHFLFFHD = 14;
 }

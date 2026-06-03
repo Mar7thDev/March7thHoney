@@ -24,8 +24,8 @@ namespace March7thHoney.Proto {
     static CLLBJDEJFNFReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFDTExCSkRFSkZORi5wcm90byLmAQoLQ0xMQkpERUpGTkYSCgoCaWQYBiAB",
-            "KA0SDAoEdHlwZRgLIAEoDRIMCgRzbG90GA4gASgNGq4BCgtPT0lETkRDUEVB",
+            "ChFDTExCSkRFSkZORi5wcm90byLmAQoLQ0xMQkpERUpGTkYSCgoCaWQYAiAB",
+            "KA0SDAoEdHlwZRgIIAEoDRIMCgRzbG90GA4gASgNGq4BCgtPT0lETkRDUEVB",
             "RiKeAQoLREFIQ0lCQ0lJQUQSGwoXREFIQ0lCQ0lJQURfTU5FSUhFSUdMUE8Q",
             "ABIbChdEQUhDSUJDSUlBRF9CUElMTFBKR0dHQhABEhsKF0RBSENJQkNJSUFE",
             "X0FOSEZPUFBFRkFMEAISGwoXREFIQ0lCQ0lJQURfTEVFT09NTEtBTk0QAxIb",
@@ -89,7 +89,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 6;
+    public const int IdFieldNumber = 2;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -101,7 +101,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "type" field.</summary>
-    public const int TypeFieldNumber = 11;
+    public const int TypeFieldNumber = 8;
     private uint type_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Id != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(16);
         output.WriteUInt32(Id);
       }
       if (Type != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt32(Type);
       }
       if (Slot != 0) {
@@ -193,11 +193,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(16);
         output.WriteUInt32(Id);
       }
       if (Type != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(64);
         output.WriteUInt32(Type);
       }
       if (Slot != 0) {
@@ -263,11 +263,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 16: {
             Id = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 64: {
             Type = input.ReadUInt32();
             break;
           }
@@ -294,11 +294,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 16: {
             Id = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 64: {
             Type = input.ReadUInt32();
             break;
           }

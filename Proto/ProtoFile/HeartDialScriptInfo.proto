@@ -6,9 +6,9 @@ import "HeartDialEmotionType.proto";
 import "HeartDialStepType.proto";
 
 message HeartDialScriptInfo {
-    HeartDialEmotionType cur_emotion_type = 8;
-    uint32 script_id = 14;
-    HeartDialStepType step = 6;
-    bool EEKCKFGHGEH = 12;
-    bool LHCOJIEBFFM = 1;
+    uint32 script_id = 5;
+    bool EEKCKFGHGEH = 11;
+    HeartDialStepType step = 12;
+    HeartDialEmotionType cur_emotion_type = 14;
+    bool LHCOJIEBFFM = 15;
 }

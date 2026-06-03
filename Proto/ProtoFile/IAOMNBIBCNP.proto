@@ -9,16 +9,16 @@ import "KFCKFOFONGI.proto";
 import "LNCAAKDIMBL.proto";
 
 message IAOMNBIBCNP {
-    repeated CDCMOFFKCPI PIGMDKOGADE = 11;
-    repeated FJEBMHIBJPL MFIIBGCFABF = 6;
-    repeated LNCAAKDIMBL CMODBLCAEJF = 14;
-    repeated JPLJJHFFODO MGFHEBIDAOL = 7;
-    repeated KFCKFOFONGI PNBHFPMPGHN = 1;
-    uint32 OFMDJAMJNGN = 10;
-    uint32 PLOEMBOCIGE = 8;
-    uint32 GKOONGBHOMM = 5;
-    uint32 IFDKCGENNCP = 3;
-    uint32 HFIBLHAFONM = 4;
-    uint32 FEKHNEKHAAK = 12;
     uint32 cost_time = 2;
+    uint32 OFMDJAMJNGN = 4;
+    uint32 GKOONGBHOMM = 5;
+    repeated CDCMOFFKCPI PIGMDKOGADE = 6;
+    uint32 IFDKCGENNCP = 7;
+    uint32 PLOEMBOCIGE = 8;
+    uint32 HFIBLHAFONM = 9;
+    repeated FJEBMHIBJPL MFIIBGCFABF = 10;
+    uint32 FEKHNEKHAAK = 11;
+    repeated KFCKFOFONGI PNBHFPMPGHN = 12;
+    repeated LNCAAKDIMBL CMODBLCAEJF = 13;
+    repeated JPLJJHFFODO MGFHEBIDAOL = 14;
 }

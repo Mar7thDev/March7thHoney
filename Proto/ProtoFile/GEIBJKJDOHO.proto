@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GEIBJKJDOHO {
-    repeated uint32 FJBFGEIGMHF = 6;
-    uint32 trait_id = 3;
-    uint32 effect_id = 14;
+    repeated uint32 FJBFGEIGMHF = 1;
+    uint32 effect_id = 3;
+    uint32 trait_id = 15;
 }

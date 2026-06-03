@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "LineupInfo.proto";
+
+message SyncAllPresetLineupNotify {
+    repeated LineupInfo lineup_list = 10;
+    uint32 cur_index = 13;
+}

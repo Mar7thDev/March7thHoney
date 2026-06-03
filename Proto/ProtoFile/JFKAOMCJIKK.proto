@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KFAIFLHPEIE.proto";
 
 message JFKAOMCJIKK {
-    KFAIFLHPEIE GJDKHBPHNCG = 14;
-    uint32 queue_position = 1;
+    uint32 queue_position = 8;
+    KFAIFLHPEIE GJDKHBPHNCG = 13;
 }

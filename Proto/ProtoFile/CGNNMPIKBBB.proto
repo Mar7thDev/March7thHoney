@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CGNNMPIKBBB {
-    uint32 LJNGPCKPJLF = 7;
-    int64 begin_time = 10;
-    int64 end_time = 6;
+    uint32 LJNGPCKPJLF = 6;
+    int64 begin_time = 8;
+    int64 end_time = 11;
 }

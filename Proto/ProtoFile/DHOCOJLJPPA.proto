@@ -2,9 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "MPIMAEMCEFH.proto";
+import "GridFightCurrentInfo.proto";
 
 message DHOCOJLJPPA {
-    MPIMAEMCEFH DHFOFLFCLAH = 3;
-    uint32 retcode = 9;
+    GridFightCurrentInfo DHFOFLFCLAH = 6;
+    uint32 retcode = 13;
 }

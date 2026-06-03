@@ -454,7 +454,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
             Record = new ChallengeTierceRecord
             {
                 UsedCycleCount = h.UsedCycleCount,
-                RecordScore = h.RecordScore
+                TotalScore = h.RecordScore
             }
         };
         data.FinishedTargetList.AddRange(h.FinishedTargetList);

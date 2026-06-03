@@ -6,7 +6,7 @@ import "JBJNJPAOCDA.proto";
 import "PBMDEBCGNMD.proto";
 
 message POBLGKIGINE {
-    repeated JBJNJPAOCDA player_info = 2;
-    uint32 PLIDNBMCIJH = 15;
-    PBMDEBCGNMD LNMGOFCOMED = 1153;
+    uint32 room_owner_uid = 4;
+    repeated JBJNJPAOCDA player_info = 9;
+    PBMDEBCGNMD LNMGOFCOMED = 39;
 }

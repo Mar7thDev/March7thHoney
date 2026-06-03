@@ -6,7 +6,7 @@ import "PGECGKEKFNC.proto";
 
 message FLFHACPLDJE {
     oneof OFJBCEDFLKL {
-        PGECGKEKFNC BDPIMPJOJBK = 4;
-        uint32 gold = 7;
+        PGECGKEKFNC BDPIMPJOJBK = 1;
+        uint32 gold = 8;
     }
 }

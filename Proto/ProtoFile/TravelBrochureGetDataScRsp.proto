@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KJMKOJEHMII.proto";
 
 message TravelBrochureGetDataScRsp {
-    map<uint32, KJMKOJEHMII> HJNJNFIBMEL = 8;
-    map<uint32, uint32> NNIDCBOKHFK = 6;
-    uint32 retcode = 10;
-    uint32 custom_value = 12;
+    uint32 custom_value = 4;
+    map<uint32, uint32> NNIDCBOKHFK = 7;
+    map<uint32, KJMKOJEHMII> HJNJNFIBMEL = 10;
+    uint32 retcode = 12;
 }

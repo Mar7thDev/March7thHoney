@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message MMEDLCAENAL {
-    uint32 unique_id = 11;
-    uint32 LDBNOMPCOKK = 7;
-}

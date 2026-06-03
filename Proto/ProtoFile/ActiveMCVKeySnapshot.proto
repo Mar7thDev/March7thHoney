@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ActiveMCVKeySnapshot {
-    string mcv_key = 2;
     uint32 main_mission_id = 1;
+    string mcv_key = 2;
 }

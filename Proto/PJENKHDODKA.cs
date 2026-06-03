@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFQSkVOS0hET0RLQS5wcm90bxoRTU5JQUlBR0ZFQlAucHJvdG8iagoLUEpF",
-            "TktIRE9ES0ESIQoLcGxheWVyX2luZm8YBCABKAsyDC5NTklBSUFHRkVCUBIP",
-            "Cgdyb29tX2lkGAEgASgJEhMKC0xPUE5BREhKS0JGGAIgASgNEhIKCnNlY3Rp",
-            "b25faWQYAyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "TktIRE9ES0ESDwoHcm9vbV9pZBgBIAEoCRITCgtMT1BOQURISktCRhgCIAEo",
+            "DRISCgpzZWN0aW9uX2lkGAMgASgNEiEKC3BsYXllcl9pbmZvGAQgASgLMgwu",
+            "TU5JQUlBR0ZFQlBCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MNIAIAGFEBPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PJENKHDODKA), global::March7thHoney.Proto.PJENKHDODKA.Parser, new[]{ "PlayerInfo", "RoomId", "LOPNADHJKBF", "SectionId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PJENKHDODKA), global::March7thHoney.Proto.PJENKHDODKA.Parser, new[]{ "RoomId", "LOPNADHJKBF", "SectionId", "PlayerInfo" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PJENKHDODKA(PJENKHDODKA other) : this() {
-      playerInfo_ = other.playerInfo_ != null ? other.playerInfo_.Clone() : null;
       roomId_ = other.roomId_;
       lOPNADHJKBF_ = other.lOPNADHJKBF_;
       sectionId_ = other.sectionId_;
+      playerInfo_ = other.playerInfo_ != null ? other.playerInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,18 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PJENKHDODKA Clone() {
       return new PJENKHDODKA(this);
-    }
-
-    /// <summary>Field number for the "player_info" field.</summary>
-    public const int PlayerInfoFieldNumber = 4;
-    private global::March7thHoney.Proto.MNIAIAGFEBP playerInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MNIAIAGFEBP PlayerInfo {
-      get { return playerInfo_; }
-      set {
-        playerInfo_ = value;
-      }
     }
 
     /// <summary>Field number for the "room_id" field.</summary>
@@ -134,6 +122,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "player_info" field.</summary>
+    public const int PlayerInfoFieldNumber = 4;
+    private global::March7thHoney.Proto.MNIAIAGFEBP playerInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MNIAIAGFEBP PlayerInfo {
+      get { return playerInfo_; }
+      set {
+        playerInfo_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(PlayerInfo, other.PlayerInfo)) return false;
       if (RoomId != other.RoomId) return false;
       if (LOPNADHJKBF != other.LOPNADHJKBF) return false;
       if (SectionId != other.SectionId) return false;
+      if (!object.Equals(PlayerInfo, other.PlayerInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (playerInfo_ != null) hash ^= PlayerInfo.GetHashCode();
       if (RoomId.Length != 0) hash ^= RoomId.GetHashCode();
       if (LOPNADHJKBF != 0) hash ^= LOPNADHJKBF.GetHashCode();
       if (SectionId != 0) hash ^= SectionId.GetHashCode();
+      if (playerInfo_ != null) hash ^= PlayerInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -234,9 +234,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (playerInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerInfo);
-      }
       if (RoomId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(RoomId);
       }
@@ -245,6 +242,9 @@ namespace March7thHoney.Proto {
       }
       if (SectionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SectionId);
+      }
+      if (playerInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerInfo);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,12 +258,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.playerInfo_ != null) {
-        if (playerInfo_ == null) {
-          PlayerInfo = new global::March7thHoney.Proto.MNIAIAGFEBP();
-        }
-        PlayerInfo.MergeFrom(other.PlayerInfo);
-      }
       if (other.RoomId.Length != 0) {
         RoomId = other.RoomId;
       }
@@ -272,6 +266,12 @@ namespace March7thHoney.Proto {
       }
       if (other.SectionId != 0) {
         SectionId = other.SectionId;
+      }
+      if (other.playerInfo_ != null) {
+        if (playerInfo_ == null) {
+          PlayerInfo = new global::March7thHoney.Proto.MNIAIAGFEBP();
+        }
+        PlayerInfo.MergeFrom(other.PlayerInfo);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

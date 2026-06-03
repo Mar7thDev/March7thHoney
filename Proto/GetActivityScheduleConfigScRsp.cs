@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiRHZXRBY3Rpdml0eVNjaGVkdWxlQ29uZmlnU2NSc3AucHJvdG8aGkFjdGl2",
             "aXR5U2NoZWR1bGVEYXRhLnByb3RvIl8KHkdldEFjdGl2aXR5U2NoZWR1bGVD",
-            "b25maWdTY1JzcBIsCg1zY2hlZHVsZV9kYXRhGAEgAygLMhUuQWN0aXZpdHlT",
-            "Y2hlZHVsZURhdGESDwoHcmV0Y29kZRgPIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "b25maWdTY1JzcBIsCg1zY2hlZHVsZV9kYXRhGAcgAygLMhUuQWN0aXZpdHlT",
+            "Y2hlZHVsZURhdGESDwoHcmV0Y29kZRgIIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ActivityScheduleDataReflection.Descriptor, },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "schedule_data" field.</summary>
-    public const int ScheduleDataFieldNumber = 1;
+    public const int ScheduleDataFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ActivityScheduleData> _repeated_scheduleData_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ActivityScheduleData.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.ActivityScheduleData.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ActivityScheduleData> scheduleData_ = new pbc::RepeatedField<global::March7thHoney.Proto.ActivityScheduleData>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
+    public const int RetcodeFieldNumber = 8;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -154,7 +154,7 @@ namespace March7thHoney.Proto {
     #else
       scheduleData_.WriteTo(output, _repeated_scheduleData_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -169,7 +169,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       scheduleData_.WriteTo(ref output, _repeated_scheduleData_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(64);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -221,11 +221,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
+          case 58: {
             scheduleData_.AddEntriesFrom(input, _repeated_scheduleData_codec);
             break;
           }
-          case 120: {
+          case 64: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -248,11 +248,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
+          case 58: {
             scheduleData_.AddEntriesFrom(ref input, _repeated_scheduleData_codec);
             break;
           }
-          case 120: {
+          case 64: {
             Retcode = input.ReadUInt32();
             break;
           }

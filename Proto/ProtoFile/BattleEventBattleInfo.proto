@@ -6,7 +6,7 @@ import "AOFMDLLDIHG.proto";
 import "BattleEventProperty.proto";
 
 message BattleEventBattleInfo {
+    uint32 battle_event_id = 1;
     BattleEventProperty status = 2;
     repeated AOFMDLLDIHG skill_info = 3;
-    uint32 battle_event_id = 1;
 }

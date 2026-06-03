@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GBAEPOLFFMG.proto";
 
 message SetStuffToAreaCsReq {
-    GBAEPOLFFMG pos_index = 4;
-    uint32 CEAMLKCMMGD = 7;
-    uint32 PIKEPJNDJPE = 9;
+    GBAEPOLFFMG pos = 6;
+    uint32 PIKEPJNDJPE = 11;
+    uint32 CEAMLKCMMGD = 15;
 }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RelicFilterPlanClearNameScNotify {
-    uint32 NPHAJEKCBKF = 12;
+    uint32 NPHAJEKCBKF = 14;
 }

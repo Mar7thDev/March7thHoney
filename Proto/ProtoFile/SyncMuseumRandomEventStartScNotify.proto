@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FFEEHEBBLCI.proto";
 
 message SyncMuseumRandomEventStartScNotify {
-    FFEEHEBBLCI CIKPBGDIABO = 11;
+    FFEEHEBBLCI info = 7;
 }

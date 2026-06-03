@@ -6,14 +6,14 @@ import "DFJPGILAAON.proto";
 import "KKIACMJGIKN.proto";
 
 message GetDrinkMakerDataScRsp {
-    repeated uint32 CJKAGEDKAFL = 4;
-    repeated KKIACMJGIKN ONFNEDNFOLL = 15;
-    DFJPGILAAON LMOGDPMLKFH = 9;
-    uint32 FGBELHJAKCC = 12;
-    uint32 FHPKJONKHAC = 8;
-    uint32 EMIAIOMOLPO = 5;
-    uint32 retcode = 6;
-    uint32 exp = 3;
-    uint32 GNIFLCBGAAA = 1;
-    uint32 level = 11;
+    uint32 retcode = 1;
+    uint32 EMIAIOMOLPO = 2;
+    repeated uint32 CJKAGEDKAFL = 3;
+    uint32 level = 4;
+    uint32 FGBELHJAKCC = 6;
+    repeated KKIACMJGIKN ONFNEDNFOLL = 7;
+    DFJPGILAAON LMOGDPMLKFH = 8;
+    uint32 FHPKJONKHAC = 11;
+    uint32 day = 12;
+    uint32 exp = 13;
 }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SelectPamSkinCsReq {
-    uint32 pam_skin = 5;
+    uint32 pam_skin = 3;
 }

@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFLSU5GSU5HTUlDSy5wcm90byI3CgtLSU5GSU5HTUlDSxITCgtQSUZOSUpI",
-            "UExKQxgBIAEoDRITCgtPQkpDSkdQSUhBRBgMIAEoDUIWqgITTWFyY2g3dGhI",
+            "UExKQxgEIAEoDRITCgtPQkpDSkdQSUhBRBgIIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PIFNIJHPLJC" field.</summary>
-    public const int PIFNIJHPLJCFieldNumber = 1;
+    public const int PIFNIJHPLJCFieldNumber = 4;
     private uint pIFNIJHPLJC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OBJCJGPIHAD" field.</summary>
-    public const int OBJCJGPIHADFieldNumber = 12;
+    public const int OBJCJGPIHADFieldNumber = 8;
     private uint oBJCJGPIHAD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (PIFNIJHPLJC != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(32);
         output.WriteUInt32(PIFNIJHPLJC);
       }
       if (OBJCJGPIHAD != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt32(OBJCJGPIHAD);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PIFNIJHPLJC != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(32);
         output.WriteUInt32(PIFNIJHPLJC);
       }
       if (OBJCJGPIHAD != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(64);
         output.WriteUInt32(OBJCJGPIHAD);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 32: {
             PIFNIJHPLJC = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 64: {
             OBJCJGPIHAD = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 32: {
             PIFNIJHPLJC = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 64: {
             OBJCJGPIHAD = input.ReadUInt32();
             break;
           }

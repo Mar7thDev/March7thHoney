@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtQbGFuZXRGZXNEb0dhY2hhQ3NSZXEucHJvdG8iVgoVUGxhbmV0RmVzRG9H",
-            "YWNoYUNzUmVxEhMKC2dhY2hhX2NvdW50GAYgASgNEhAKCGdhY2hhX2lkGAIg",
+            "YWNoYUNzUmVxEhAKCGdhY2hhX2lkGAEgASgNEhMKC2dhY2hhX2NvdW50GAMg",
             "ASgNEhYKDnNpbXVsYXRlX21hZ2ljGAwgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlanetFesDoGachaCsReq), global::March7thHoney.Proto.PlanetFesDoGachaCsReq.Parser, new[]{ "GachaCount", "GachaId", "SimulateMagic" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlanetFesDoGachaCsReq), global::March7thHoney.Proto.PlanetFesDoGachaCsReq.Parser, new[]{ "GachaId", "GachaCount", "SimulateMagic" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlanetFesDoGachaCsReq(PlanetFesDoGachaCsReq other) : this() {
-      gachaCount_ = other.gachaCount_;
       gachaId_ = other.gachaId_;
+      gachaCount_ = other.gachaCount_;
       simulateMagic_ = other.simulateMagic_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -85,20 +85,8 @@ namespace March7thHoney.Proto {
       return new PlanetFesDoGachaCsReq(this);
     }
 
-    /// <summary>Field number for the "gacha_count" field.</summary>
-    public const int GachaCountFieldNumber = 6;
-    private uint gachaCount_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GachaCount {
-      get { return gachaCount_; }
-      set {
-        gachaCount_ = value;
-      }
-    }
-
     /// <summary>Field number for the "gacha_id" field.</summary>
-    public const int GachaIdFieldNumber = 2;
+    public const int GachaIdFieldNumber = 1;
     private uint gachaId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,6 +94,18 @@ namespace March7thHoney.Proto {
       get { return gachaId_; }
       set {
         gachaId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "gacha_count" field.</summary>
+    public const int GachaCountFieldNumber = 3;
+    private uint gachaCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint GachaCount {
+      get { return gachaCount_; }
+      set {
+        gachaCount_ = value;
       }
     }
 
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (GachaCount != other.GachaCount) return false;
       if (GachaId != other.GachaId) return false;
+      if (GachaCount != other.GachaCount) return false;
       if (SimulateMagic != other.SimulateMagic) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (GachaCount != 0) hash ^= GachaCount.GetHashCode();
       if (GachaId != 0) hash ^= GachaId.GetHashCode();
+      if (GachaCount != 0) hash ^= GachaCount.GetHashCode();
       if (SimulateMagic != 0) hash ^= SimulateMagic.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -168,11 +168,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GachaId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(GachaId);
       }
       if (GachaCount != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(GachaCount);
       }
       if (SimulateMagic != 0) {
@@ -190,11 +190,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GachaId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteUInt32(GachaId);
       }
       if (GachaCount != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(GachaCount);
       }
       if (SimulateMagic != 0) {
@@ -211,11 +211,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (GachaCount != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GachaCount);
-      }
       if (GachaId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GachaId);
+      }
+      if (GachaCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GachaCount);
       }
       if (SimulateMagic != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SimulateMagic);
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.GachaCount != 0) {
-        GachaCount = other.GachaCount;
-      }
       if (other.GachaId != 0) {
         GachaId = other.GachaId;
+      }
+      if (other.GachaCount != 0) {
+        GachaCount = other.GachaCount;
       }
       if (other.SimulateMagic != 0) {
         SimulateMagic = other.SimulateMagic;
@@ -260,11 +260,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 8: {
             GachaId = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 24: {
             GachaCount = input.ReadUInt32();
             break;
           }
@@ -291,11 +291,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 8: {
             GachaId = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 24: {
             GachaCount = input.ReadUInt32();
             break;
           }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlayerReturnExtraHcoinProgressScNotify {
-    uint32 HBPKGODMJNK = 6;
+    uint32 HBPKGODMJNK = 10;
 }

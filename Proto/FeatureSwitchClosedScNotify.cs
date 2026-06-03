@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFGZWF0dXJlU3dpdGNoQ2xvc2VkU2NOb3RpZnkucHJvdG8aF0ZlYXR1cmVT",
             "d2l0Y2hUeXBlLnByb3RvIkYKG0ZlYXR1cmVTd2l0Y2hDbG9zZWRTY05vdGlm",
-            "eRInCgtGTUdMRUJDSUJIRxgEIAEoDjISLkZlYXR1cmVTd2l0Y2hUeXBlQhaq",
+            "eRInCgtGTUdMRUJDSUJIRxgGIAEoDjISLkZlYXR1cmVTd2l0Y2hUeXBlQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FeatureSwitchTypeReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FMGLEBCIBHG" field.</summary>
-    public const int FMGLEBCIBHGFieldNumber = 4;
+    public const int FMGLEBCIBHGFieldNumber = 6;
     private global::March7thHoney.Proto.FeatureSwitchType fMGLEBCIBHG_ = global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (FMGLEBCIBHG != global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(48);
         output.WriteEnum((int) FMGLEBCIBHG);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (FMGLEBCIBHG != global::March7thHoney.Proto.FeatureSwitchType.BlohgfcfeelOllfdoonpph) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(48);
         output.WriteEnum((int) FMGLEBCIBHG);
       }
       if (_unknownFields != null) {
@@ -202,7 +202,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 48: {
             FMGLEBCIBHG = (global::March7thHoney.Proto.FeatureSwitchType) input.ReadEnum();
             break;
           }
@@ -225,7 +225,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 48: {
             FMGLEBCIBHG = (global::March7thHoney.Proto.FeatureSwitchType) input.ReadEnum();
             break;
           }

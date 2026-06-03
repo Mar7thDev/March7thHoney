@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ONFLANPGHHL.proto";
 
 message RelicSmartWearDeletePinRelicCsReq {
-    repeated ONFLANPGHHL AIFAMIFGMCH = 4;
-    bool BEAJGCMPOED = 13;
-    uint32 avatar_id = 12;
+    bool BEAJGCMPOED = 7;
+    repeated ONFLANPGHHL AIFAMIFGMCH = 8;
+    uint32 avatar_id = 15;
 }

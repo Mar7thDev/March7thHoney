@@ -5,10 +5,10 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BDJLHJDPEEK.proto";
 
 message LPADDGPLIKK {
-    repeated uint32 NMMCOBBKKHA = 4;
-    repeated uint32 BIMFEAHDMIK = 15;
-    repeated BDJLHJDPEEK LONFKFCFDND = 12;
-    uint32 PJOAKLHHCNI = 3;
-    uint32 AMOABLICEDP = 11;
-    uint32 MKJDMNAEAED = 9;
+    repeated uint32 NMMCOBBKKHA = 1;
+    uint32 AMOABLICEDP = 4;
+    uint32 MKJDMNAEAED = 5;
+    uint32 PJOAKLHHCNI = 8;
+    repeated uint32 BIMFEAHDMIK = 9;
+    repeated BDJLHJDPEEK LONFKFCFDND = 14;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FriendSimpleInfo.proto";
 
 message SyncHandleFriendScNotify {
-    FriendSimpleInfo friend_info = 9;
-    uint32 uid = 6;
-    bool is_accept = 14;
+    bool is_accept = 2;
+    FriendSimpleInfo friend_info = 6;
+    uint32 uid = 13;
 }

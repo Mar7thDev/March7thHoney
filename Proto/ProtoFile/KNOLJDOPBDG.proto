@@ -6,7 +6,7 @@ import "AKMCODLAEKI.proto";
 import "MMFOGJPOHGJ.proto";
 
 message KNOLJDOPBDG {
-    repeated AKMCODLAEKI GFKAFIFMHNF = 6;
-    MMFOGJPOHGJ GHNJCLNKGHH = 10;
-    uint64 GAHFPGCPAJA = 1;
+    uint64 GAHFPGCPAJA = 2;
+    repeated AKMCODLAEKI GFKAFIFMHNF = 9;
+    MMFOGJPOHGJ owner_type = 15;
 }

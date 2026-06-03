@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static NPCIGEBNOFGReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFOUENJR0VCTk9GRy5wcm90byIvCgtOUENJR0VCTk9GRxILCgNudW0YCSAB",
-            "KA0SEwoLQkVCRUVNS09CTk4YDiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
-            "dG9iBnByb3RvMw=="));
+            "ChFOUENJR0VCTk9GRy5wcm90byIwCgtOUENJR0VCTk9GRxILCgNudW0YCCAB",
+            "KA0SFAoMZGlzcGxheV90eXBlGAogASgNQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NPCIGEBNOFG), global::March7thHoney.Proto.NPCIGEBNOFG.Parser, new[]{ "Num", "BEBEEMKOBNN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NPCIGEBNOFG), global::March7thHoney.Proto.NPCIGEBNOFG.Parser, new[]{ "Num", "DisplayType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public NPCIGEBNOFG(NPCIGEBNOFG other) : this() {
       num_ = other.num_;
-      bEBEEMKOBNN_ = other.bEBEEMKOBNN_;
+      displayType_ = other.displayType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "num" field.</summary>
-    public const int NumFieldNumber = 9;
+    public const int NumFieldNumber = 8;
     private uint num_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -95,15 +95,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "BEBEEMKOBNN" field.</summary>
-    public const int BEBEEMKOBNNFieldNumber = 14;
-    private uint bEBEEMKOBNN_;
+    /// <summary>Field number for the "display_type" field.</summary>
+    public const int DisplayTypeFieldNumber = 10;
+    private uint displayType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BEBEEMKOBNN {
-      get { return bEBEEMKOBNN_; }
+    public uint DisplayType {
+      get { return displayType_; }
       set {
-        bEBEEMKOBNN_ = value;
+        displayType_ = value;
       }
     }
 
@@ -123,7 +123,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Num != other.Num) return false;
-      if (BEBEEMKOBNN != other.BEBEEMKOBNN) return false;
+      if (DisplayType != other.DisplayType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Num != 0) hash ^= Num.GetHashCode();
-      if (BEBEEMKOBNN != 0) hash ^= BEBEEMKOBNN.GetHashCode();
+      if (DisplayType != 0) hash ^= DisplayType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Num != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(64);
         output.WriteUInt32(Num);
       }
-      if (BEBEEMKOBNN != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(BEBEEMKOBNN);
+      if (DisplayType != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(DisplayType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Num != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(64);
         output.WriteUInt32(Num);
       }
-      if (BEBEEMKOBNN != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(BEBEEMKOBNN);
+      if (DisplayType != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(DisplayType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -190,8 +190,8 @@ namespace March7thHoney.Proto {
       if (Num != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Num);
       }
-      if (BEBEEMKOBNN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BEBEEMKOBNN);
+      if (DisplayType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DisplayType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -208,8 +208,8 @@ namespace March7thHoney.Proto {
       if (other.Num != 0) {
         Num = other.Num;
       }
-      if (other.BEBEEMKOBNN != 0) {
-        BEBEEMKOBNN = other.BEBEEMKOBNN;
+      if (other.DisplayType != 0) {
+        DisplayType = other.DisplayType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
+          case 64: {
             Num = input.ReadUInt32();
             break;
           }
-          case 112: {
-            BEBEEMKOBNN = input.ReadUInt32();
+          case 80: {
+            DisplayType = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
+          case 64: {
             Num = input.ReadUInt32();
             break;
           }
-          case 112: {
-            BEBEEMKOBNN = input.ReadUInt32();
+          case 80: {
+            DisplayType = input.ReadUInt32();
             break;
           }
         }

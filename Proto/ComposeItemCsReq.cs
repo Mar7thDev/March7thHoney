@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZDb21wb3NlSXRlbUNzUmVxLnByb3RvGhJJdGVtQ29zdERhdGEucHJvdG8i",
-            "iQEKEENvbXBvc2VJdGVtQ3NSZXESKAoRY29udmVydF9pdGVtX2xpc3QYCCAB",
-            "KAsyDS5JdGVtQ29zdERhdGESKAoRY29tcG9zZV9pdGVtX2xpc3QYCyABKAsy",
-            "DS5JdGVtQ29zdERhdGESEgoKY29tcG9zZV9pZBgHIAEoDRINCgVjb3VudBgC",
+            "iQEKEENvbXBvc2VJdGVtQ3NSZXESKAoRY29tcG9zZV9pdGVtX2xpc3QYAyAB",
+            "KAsyDS5JdGVtQ29zdERhdGESKAoRY29udmVydF9pdGVtX2xpc3QYDSABKAsy",
+            "DS5JdGVtQ29zdERhdGESDQoFY291bnQYDiABKA0SEgoKY29tcG9zZV9pZBgP",
             "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ComposeItemCsReq), global::March7thHoney.Proto.ComposeItemCsReq.Parser, new[]{ "ConvertItemList", "ComposeItemList", "ComposeId", "Count" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ComposeItemCsReq), global::March7thHoney.Proto.ComposeItemCsReq.Parser, new[]{ "ComposeItemList", "ConvertItemList", "Count", "ComposeId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,10 +74,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ComposeItemCsReq(ComposeItemCsReq other) : this() {
-      convertItemList_ = other.convertItemList_ != null ? other.convertItemList_.Clone() : null;
       composeItemList_ = other.composeItemList_ != null ? other.composeItemList_.Clone() : null;
-      composeId_ = other.composeId_;
+      convertItemList_ = other.convertItemList_ != null ? other.convertItemList_.Clone() : null;
       count_ = other.count_;
+      composeId_ = other.composeId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,20 +87,8 @@ namespace March7thHoney.Proto {
       return new ComposeItemCsReq(this);
     }
 
-    /// <summary>Field number for the "convert_item_list" field.</summary>
-    public const int ConvertItemListFieldNumber = 8;
-    private global::March7thHoney.Proto.ItemCostData convertItemList_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ItemCostData ConvertItemList {
-      get { return convertItemList_; }
-      set {
-        convertItemList_ = value;
-      }
-    }
-
     /// <summary>Field number for the "compose_item_list" field.</summary>
-    public const int ComposeItemListFieldNumber = 11;
+    public const int ComposeItemListFieldNumber = 3;
     private global::March7thHoney.Proto.ItemCostData composeItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -111,20 +99,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "compose_id" field.</summary>
-    public const int ComposeIdFieldNumber = 7;
-    private uint composeId_;
+    /// <summary>Field number for the "convert_item_list" field.</summary>
+    public const int ConvertItemListFieldNumber = 13;
+    private global::March7thHoney.Proto.ItemCostData convertItemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ComposeId {
-      get { return composeId_; }
+    public global::March7thHoney.Proto.ItemCostData ConvertItemList {
+      get { return convertItemList_; }
       set {
-        composeId_ = value;
+        convertItemList_ = value;
       }
     }
 
     /// <summary>Field number for the "count" field.</summary>
-    public const int CountFieldNumber = 2;
+    public const int CountFieldNumber = 14;
     private uint count_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -132,6 +120,18 @@ namespace March7thHoney.Proto {
       get { return count_; }
       set {
         count_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "compose_id" field.</summary>
+    public const int ComposeIdFieldNumber = 15;
+    private uint composeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ComposeId {
+      get { return composeId_; }
+      set {
+        composeId_ = value;
       }
     }
 
@@ -150,10 +150,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ConvertItemList, other.ConvertItemList)) return false;
       if (!object.Equals(ComposeItemList, other.ComposeItemList)) return false;
-      if (ComposeId != other.ComposeId) return false;
+      if (!object.Equals(ConvertItemList, other.ConvertItemList)) return false;
       if (Count != other.Count) return false;
+      if (ComposeId != other.ComposeId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,10 +161,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (convertItemList_ != null) hash ^= ConvertItemList.GetHashCode();
       if (composeItemList_ != null) hash ^= ComposeItemList.GetHashCode();
-      if (ComposeId != 0) hash ^= ComposeId.GetHashCode();
+      if (convertItemList_ != null) hash ^= ConvertItemList.GetHashCode();
       if (Count != 0) hash ^= Count.GetHashCode();
+      if (ComposeId != 0) hash ^= ComposeId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,21 +183,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (composeItemList_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ComposeItemList);
+      }
+      if (convertItemList_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(ConvertItemList);
+      }
       if (Count != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(112);
         output.WriteUInt32(Count);
       }
       if (ComposeId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(120);
         output.WriteUInt32(ComposeId);
-      }
-      if (convertItemList_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(ConvertItemList);
-      }
-      if (composeItemList_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(ComposeItemList);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,21 +209,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (composeItemList_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(ComposeItemList);
+      }
+      if (convertItemList_ != null) {
+        output.WriteRawTag(106);
+        output.WriteMessage(ConvertItemList);
+      }
       if (Count != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(112);
         output.WriteUInt32(Count);
       }
       if (ComposeId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(120);
         output.WriteUInt32(ComposeId);
-      }
-      if (convertItemList_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(ConvertItemList);
-      }
-      if (composeItemList_ != null) {
-        output.WriteRawTag(90);
-        output.WriteMessage(ComposeItemList);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,17 +235,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (convertItemList_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ConvertItemList);
-      }
       if (composeItemList_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ComposeItemList);
       }
-      if (ComposeId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ComposeId);
+      if (convertItemList_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ConvertItemList);
       }
       if (Count != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Count);
+      }
+      if (ComposeId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ComposeId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -259,23 +259,23 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.convertItemList_ != null) {
-        if (convertItemList_ == null) {
-          ConvertItemList = new global::March7thHoney.Proto.ItemCostData();
-        }
-        ConvertItemList.MergeFrom(other.ConvertItemList);
-      }
       if (other.composeItemList_ != null) {
         if (composeItemList_ == null) {
           ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
         }
         ComposeItemList.MergeFrom(other.ComposeItemList);
       }
-      if (other.ComposeId != 0) {
-        ComposeId = other.ComposeId;
+      if (other.convertItemList_ != null) {
+        if (convertItemList_ == null) {
+          ConvertItemList = new global::March7thHoney.Proto.ItemCostData();
+        }
+        ConvertItemList.MergeFrom(other.ConvertItemList);
       }
       if (other.Count != 0) {
         Count = other.Count;
+      }
+      if (other.ComposeId != 0) {
+        ComposeId = other.ComposeId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -296,26 +296,26 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Count = input.ReadUInt32();
+          case 26: {
+            if (composeItemList_ == null) {
+              ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
+            }
+            input.ReadMessage(ComposeItemList);
             break;
           }
-          case 56: {
-            ComposeId = input.ReadUInt32();
-            break;
-          }
-          case 66: {
+          case 106: {
             if (convertItemList_ == null) {
               ConvertItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ConvertItemList);
             break;
           }
-          case 90: {
-            if (composeItemList_ == null) {
-              ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
-            }
-            input.ReadMessage(ComposeItemList);
+          case 112: {
+            Count = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            ComposeId = input.ReadUInt32();
             break;
           }
         }
@@ -337,26 +337,26 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Count = input.ReadUInt32();
+          case 26: {
+            if (composeItemList_ == null) {
+              ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
+            }
+            input.ReadMessage(ComposeItemList);
             break;
           }
-          case 56: {
-            ComposeId = input.ReadUInt32();
-            break;
-          }
-          case 66: {
+          case 106: {
             if (convertItemList_ == null) {
               ConvertItemList = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(ConvertItemList);
             break;
           }
-          case 90: {
-            if (composeItemList_ == null) {
-              ComposeItemList = new global::March7thHoney.Proto.ItemCostData();
-            }
-            input.ReadMessage(ComposeItemList);
+          case 112: {
+            Count = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            ComposeId = input.ReadUInt32();
             break;
           }
         }

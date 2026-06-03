@@ -6,6 +6,6 @@ import "GDHLDNFLOOF.proto";
 import "IOJJCDAPLAJ.proto";
 
 message ChessRogueUpdateLevelBaseInfoScNotify {
-    IOJJCDAPLAJ reason = 5;
-    GDHLDNFLOOF GKDCPNLOLNF = 15;
+    IOJJCDAPLAJ reason = 8;
+    GDHLDNFLOOF GKDCPNLOLNF = 10;
 }

@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCQklQQ0ZQREVKTi5wcm90bxoRQ0RBQk1BQkpGSUkucHJvdG8iQAoLQkJJ",
-            "UENGUERFSk4SHAoGcmVhc29uGAsgASgOMgwuQ0RBQk1BQkpGSUkSEwoLR0xB",
-            "TlBMRUdNUEcYAiABKARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "UENGUERFSk4SHAoGcmVhc29uGAIgASgOMgwuQ0RBQk1BQkpGSUkSEwoLR0xB",
+            "TlBMRUdNUEcYDCABKARCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
             "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CDABMABJFIIReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 11;
+    public const int ReasonFieldNumber = 2;
     private global::March7thHoney.Proto.CDABMABJFII reason_ = global::March7thHoney.Proto.CDABMABJFII.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GLANPLEGMPG" field.</summary>
-    public const int GLANPLEGMPGFieldNumber = 2;
+    public const int GLANPLEGMPGFieldNumber = 12;
     private ulong gLANPLEGMPG_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GLANPLEGMPG != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(GLANPLEGMPG);
-      }
       if (Reason != global::March7thHoney.Proto.CDABMABJFII.Nlcdgipgfdj) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(16);
         output.WriteEnum((int) Reason);
+      }
+      if (GLANPLEGMPG != 0UL) {
+        output.WriteRawTag(96);
+        output.WriteUInt64(GLANPLEGMPG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GLANPLEGMPG != 0UL) {
-        output.WriteRawTag(16);
-        output.WriteUInt64(GLANPLEGMPG);
-      }
       if (Reason != global::March7thHoney.Proto.CDABMABJFII.Nlcdgipgfdj) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(16);
         output.WriteEnum((int) Reason);
+      }
+      if (GLANPLEGMPG != 0UL) {
+        output.WriteRawTag(96);
+        output.WriteUInt64(GLANPLEGMPG);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            GLANPLEGMPG = input.ReadUInt64();
+            Reason = (global::March7thHoney.Proto.CDABMABJFII) input.ReadEnum();
             break;
           }
-          case 88: {
-            Reason = (global::March7thHoney.Proto.CDABMABJFII) input.ReadEnum();
+          case 96: {
+            GLANPLEGMPG = input.ReadUInt64();
             break;
           }
         }
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            GLANPLEGMPG = input.ReadUInt64();
+            Reason = (global::March7thHoney.Proto.CDABMABJFII) input.ReadEnum();
             break;
           }
-          case 88: {
-            Reason = (global::March7thHoney.Proto.CDABMABJFII) input.ReadEnum();
+          case 96: {
+            GLANPLEGMPG = input.ReadUInt64();
             break;
           }
         }

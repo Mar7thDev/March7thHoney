@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static EGELHCKMLNKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFFR0VMSENLTUxOSy5wcm90byJXCgtFR0VMSENLTUxOSxITCgtGREVBS0RD",
-            "REdNTBgNIAEoDRIPCgdyZXRjb2RlGAsgASgNEhAKCHBhbmVsX2lkGAEgASgN",
-            "EhAKCGdyb3VwX2lkGAQgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "ChFFR0VMSENLTUxOSy5wcm90byJXCgtFR0VMSENLTUxOSxIPCgdyZXRjb2Rl",
+            "GAkgASgNEhMKC0ZERUFLRENER01MGAogASgNEhAKCGdyb3VwX2lkGAwgASgN",
+            "EhAKCHBhbmVsX2lkGA4gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EGELHCKMLNK), global::March7thHoney.Proto.EGELHCKMLNK.Parser, new[]{ "FDEAKDCDGML", "Retcode", "PanelId", "GroupId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.EGELHCKMLNK), global::March7thHoney.Proto.EGELHCKMLNK.Parser, new[]{ "Retcode", "FDEAKDCDGML", "GroupId", "PanelId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EGELHCKMLNK(EGELHCKMLNK other) : this() {
-      fDEAKDCDGML_ = other.fDEAKDCDGML_;
       retcode_ = other.retcode_;
-      panelId_ = other.panelId_;
+      fDEAKDCDGML_ = other.fDEAKDCDGML_;
       groupId_ = other.groupId_;
+      panelId_ = other.panelId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,20 +86,8 @@ namespace March7thHoney.Proto {
       return new EGELHCKMLNK(this);
     }
 
-    /// <summary>Field number for the "FDEAKDCDGML" field.</summary>
-    public const int FDEAKDCDGMLFieldNumber = 13;
-    private uint fDEAKDCDGML_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FDEAKDCDGML {
-      get { return fDEAKDCDGML_; }
-      set {
-        fDEAKDCDGML_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,20 +98,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 1;
-    private uint panelId_;
+    /// <summary>Field number for the "FDEAKDCDGML" field.</summary>
+    public const int FDEAKDCDGMLFieldNumber = 10;
+    private uint fDEAKDCDGML_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PanelId {
-      get { return panelId_; }
+    public uint FDEAKDCDGML {
+      get { return fDEAKDCDGML_; }
       set {
-        panelId_ = value;
+        fDEAKDCDGML_ = value;
       }
     }
 
     /// <summary>Field number for the "group_id" field.</summary>
-    public const int GroupIdFieldNumber = 4;
+    public const int GroupIdFieldNumber = 12;
     private uint groupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,6 +119,18 @@ namespace March7thHoney.Proto {
       get { return groupId_; }
       set {
         groupId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "panel_id" field.</summary>
+    public const int PanelIdFieldNumber = 14;
+    private uint panelId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PanelId {
+      get { return panelId_; }
+      set {
+        panelId_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FDEAKDCDGML != other.FDEAKDCDGML) return false;
       if (Retcode != other.Retcode) return false;
-      if (PanelId != other.PanelId) return false;
+      if (FDEAKDCDGML != other.FDEAKDCDGML) return false;
       if (GroupId != other.GroupId) return false;
+      if (PanelId != other.PanelId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FDEAKDCDGML != 0) hash ^= FDEAKDCDGML.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (PanelId != 0) hash ^= PanelId.GetHashCode();
+      if (FDEAKDCDGML != 0) hash ^= FDEAKDCDGML.GetHashCode();
       if (GroupId != 0) hash ^= GroupId.GetHashCode();
+      if (PanelId != 0) hash ^= PanelId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -182,21 +182,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PanelId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(PanelId);
-      }
-      if (GroupId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(GroupId);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (FDEAKDCDGML != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(80);
         output.WriteUInt32(FDEAKDCDGML);
+      }
+      if (GroupId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(GroupId);
+      }
+      if (PanelId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(PanelId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +208,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PanelId != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(PanelId);
-      }
-      if (GroupId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(GroupId);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
       if (FDEAKDCDGML != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(80);
         output.WriteUInt32(FDEAKDCDGML);
+      }
+      if (GroupId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(GroupId);
+      }
+      if (PanelId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(PanelId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FDEAKDCDGML != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDEAKDCDGML);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (PanelId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
+      if (FDEAKDCDGML != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FDEAKDCDGML);
       }
       if (GroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GroupId);
+      }
+      if (PanelId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PanelId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FDEAKDCDGML != 0) {
-        FDEAKDCDGML = other.FDEAKDCDGML;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.PanelId != 0) {
-        PanelId = other.PanelId;
+      if (other.FDEAKDCDGML != 0) {
+        FDEAKDCDGML = other.FDEAKDCDGML;
       }
       if (other.GroupId != 0) {
         GroupId = other.GroupId;
+      }
+      if (other.PanelId != 0) {
+        PanelId = other.PanelId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            PanelId = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 80: {
             FDEAKDCDGML = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            PanelId = input.ReadUInt32();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            PanelId = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            GroupId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 80: {
             FDEAKDCDGML = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            GroupId = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            PanelId = input.ReadUInt32();
             break;
           }
         }

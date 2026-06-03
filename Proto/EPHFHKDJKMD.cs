@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFFUEhGSEtESktNRC5wcm90byI3CgtFUEhGSEtESktNRBITCgtBUEhJT0VB",
-            "TE9HSRgBIAEoDRITCgtKR0NDSU1NRURJShgJIAEoDUIWqgITTWFyY2g3dGhI",
+            "TE9HSRgHIAEoDRITCgtKR0NDSU1NRURJShgPIAEoDUIWqgITTWFyY2g3dGhI",
             "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "APHIOEALOGI" field.</summary>
-    public const int APHIOEALOGIFieldNumber = 1;
+    public const int APHIOEALOGIFieldNumber = 7;
     private uint aPHIOEALOGI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "JGCCIMMEDIJ" field.</summary>
-    public const int JGCCIMMEDIJFieldNumber = 9;
+    public const int JGCCIMMEDIJFieldNumber = 15;
     private uint jGCCIMMEDIJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (APHIOEALOGI != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(56);
         output.WriteUInt32(APHIOEALOGI);
       }
       if (JGCCIMMEDIJ != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteUInt32(JGCCIMMEDIJ);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (APHIOEALOGI != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(56);
         output.WriteUInt32(APHIOEALOGI);
       }
       if (JGCCIMMEDIJ != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteUInt32(JGCCIMMEDIJ);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 56: {
             APHIOEALOGI = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 120: {
             JGCCIMMEDIJ = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 56: {
             APHIOEALOGI = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 120: {
             JGCCIMMEDIJ = input.ReadUInt32();
             break;
           }

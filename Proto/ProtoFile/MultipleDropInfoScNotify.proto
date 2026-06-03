@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NGLOBFBCGBB.proto";
 
 message MultipleDropInfoScNotify {
-    repeated NGLOBFBCGBB MOPAGKNEMOD = 5;
+    repeated NGLOBFBCGBB MOPAGKNEMOD = 4;
 }

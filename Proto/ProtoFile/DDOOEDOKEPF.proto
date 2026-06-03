@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GAAMBBFPCHB.proto";
 
 message DDOOEDOKEPF {
-    GAAMBBFPCHB NFEDANFBIBE = 15;
-    uint32 retcode = 14;
+    GAAMBBFPCHB NFEDANFBIBE = 9;
+    uint32 retcode = 11;
 }

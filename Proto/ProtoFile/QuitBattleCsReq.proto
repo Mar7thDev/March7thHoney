@@ -6,6 +6,6 @@ import "BattleStatistics.proto";
 import "RebattleType.proto";
 
 message QuitBattleCsReq {
-    BattleStatistics stt = 10;
+    BattleStatistics stt = 11;
     RebattleType NKDAAAGPCDB = 13;
 }

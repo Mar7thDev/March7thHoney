@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlGaW5pc2hQdmVTdGFnZUNzUmVxLnByb3RvIl8KE0ZpbmlzaFB2ZVN0YWdl",
-            "Q3NSZXESEwoLQUlOS0ZFSU5OQUsYBiABKAgSDgoGaXNfd2luGA4gASgIEg4K",
-            "BmRhbWFnZRgEIAEoDRITCgtNUERITkZOQ0lFQRgBIAEoDUIWqgITTWFyY2g3",
+            "Q3NSZXESEwoLTVBESE5GTkNJRUEYCSABKA0SDgoGZGFtYWdlGAogASgNEg4K",
+            "BmlzX3dpbhgNIAEoCBITCgtBSU5LRkVJTk5BSxgOIAEoCEIWqgITTWFyY2g3",
             "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishPveStageCsReq), global::March7thHoney.Proto.FinishPveStageCsReq.Parser, new[]{ "AINKFEINNAK", "IsWin", "Damage", "MPDHNFNCIEA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishPveStageCsReq), global::March7thHoney.Proto.FinishPveStageCsReq.Parser, new[]{ "MPDHNFNCIEA", "Damage", "IsWin", "AINKFEINNAK" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,10 +73,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FinishPveStageCsReq(FinishPveStageCsReq other) : this() {
-      aINKFEINNAK_ = other.aINKFEINNAK_;
-      isWin_ = other.isWin_;
-      damage_ = other.damage_;
       mPDHNFNCIEA_ = other.mPDHNFNCIEA_;
+      damage_ = other.damage_;
+      isWin_ = other.isWin_;
+      aINKFEINNAK_ = other.aINKFEINNAK_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,32 +86,20 @@ namespace March7thHoney.Proto {
       return new FinishPveStageCsReq(this);
     }
 
-    /// <summary>Field number for the "AINKFEINNAK" field.</summary>
-    public const int AINKFEINNAKFieldNumber = 6;
-    private bool aINKFEINNAK_;
+    /// <summary>Field number for the "MPDHNFNCIEA" field.</summary>
+    public const int MPDHNFNCIEAFieldNumber = 9;
+    private uint mPDHNFNCIEA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool AINKFEINNAK {
-      get { return aINKFEINNAK_; }
+    public uint MPDHNFNCIEA {
+      get { return mPDHNFNCIEA_; }
       set {
-        aINKFEINNAK_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 14;
-    private bool isWin_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsWin {
-      get { return isWin_; }
-      set {
-        isWin_ = value;
+        mPDHNFNCIEA_ = value;
       }
     }
 
     /// <summary>Field number for the "damage" field.</summary>
-    public const int DamageFieldNumber = 4;
+    public const int DamageFieldNumber = 10;
     private uint damage_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -122,15 +110,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "MPDHNFNCIEA" field.</summary>
-    public const int MPDHNFNCIEAFieldNumber = 1;
-    private uint mPDHNFNCIEA_;
+    /// <summary>Field number for the "is_win" field.</summary>
+    public const int IsWinFieldNumber = 13;
+    private bool isWin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MPDHNFNCIEA {
-      get { return mPDHNFNCIEA_; }
+    public bool IsWin {
+      get { return isWin_; }
       set {
-        mPDHNFNCIEA_ = value;
+        isWin_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "AINKFEINNAK" field.</summary>
+    public const int AINKFEINNAKFieldNumber = 14;
+    private bool aINKFEINNAK_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool AINKFEINNAK {
+      get { return aINKFEINNAK_; }
+      set {
+        aINKFEINNAK_ = value;
       }
     }
 
@@ -149,10 +149,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (AINKFEINNAK != other.AINKFEINNAK) return false;
-      if (IsWin != other.IsWin) return false;
-      if (Damage != other.Damage) return false;
       if (MPDHNFNCIEA != other.MPDHNFNCIEA) return false;
+      if (Damage != other.Damage) return false;
+      if (IsWin != other.IsWin) return false;
+      if (AINKFEINNAK != other.AINKFEINNAK) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -160,10 +160,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (AINKFEINNAK != false) hash ^= AINKFEINNAK.GetHashCode();
-      if (IsWin != false) hash ^= IsWin.GetHashCode();
-      if (Damage != 0) hash ^= Damage.GetHashCode();
       if (MPDHNFNCIEA != 0) hash ^= MPDHNFNCIEA.GetHashCode();
+      if (Damage != 0) hash ^= Damage.GetHashCode();
+      if (IsWin != false) hash ^= IsWin.GetHashCode();
+      if (AINKFEINNAK != false) hash ^= AINKFEINNAK.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -183,20 +183,20 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (MPDHNFNCIEA != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(72);
         output.WriteUInt32(MPDHNFNCIEA);
       }
       if (Damage != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(80);
         output.WriteUInt32(Damage);
       }
-      if (AINKFEINNAK != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(AINKFEINNAK);
-      }
       if (IsWin != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(104);
         output.WriteBool(IsWin);
+      }
+      if (AINKFEINNAK != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(AINKFEINNAK);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -209,20 +209,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (MPDHNFNCIEA != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(72);
         output.WriteUInt32(MPDHNFNCIEA);
       }
       if (Damage != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(80);
         output.WriteUInt32(Damage);
       }
-      if (AINKFEINNAK != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(AINKFEINNAK);
-      }
       if (IsWin != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(104);
         output.WriteBool(IsWin);
+      }
+      if (AINKFEINNAK != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(AINKFEINNAK);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,17 +234,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (AINKFEINNAK != false) {
-        size += 1 + 1;
-      }
-      if (IsWin != false) {
-        size += 1 + 1;
+      if (MPDHNFNCIEA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MPDHNFNCIEA);
       }
       if (Damage != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Damage);
       }
-      if (MPDHNFNCIEA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MPDHNFNCIEA);
+      if (IsWin != false) {
+        size += 1 + 1;
+      }
+      if (AINKFEINNAK != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -258,17 +258,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.AINKFEINNAK != false) {
-        AINKFEINNAK = other.AINKFEINNAK;
-      }
-      if (other.IsWin != false) {
-        IsWin = other.IsWin;
+      if (other.MPDHNFNCIEA != 0) {
+        MPDHNFNCIEA = other.MPDHNFNCIEA;
       }
       if (other.Damage != 0) {
         Damage = other.Damage;
       }
-      if (other.MPDHNFNCIEA != 0) {
-        MPDHNFNCIEA = other.MPDHNFNCIEA;
+      if (other.IsWin != false) {
+        IsWin = other.IsWin;
+      }
+      if (other.AINKFEINNAK != false) {
+        AINKFEINNAK = other.AINKFEINNAK;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -289,20 +289,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 72: {
             MPDHNFNCIEA = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 80: {
             Damage = input.ReadUInt32();
             break;
           }
-          case 48: {
-            AINKFEINNAK = input.ReadBool();
+          case 104: {
+            IsWin = input.ReadBool();
             break;
           }
           case 112: {
-            IsWin = input.ReadBool();
+            AINKFEINNAK = input.ReadBool();
             break;
           }
         }
@@ -324,20 +324,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 72: {
             MPDHNFNCIEA = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 80: {
             Damage = input.ReadUInt32();
             break;
           }
-          case 48: {
-            AINKFEINNAK = input.ReadBool();
+          case 104: {
+            IsWin = input.ReadBool();
             break;
           }
           case 112: {
-            IsWin = input.ReadBool();
+            AINKFEINNAK = input.ReadBool();
             break;
           }
         }

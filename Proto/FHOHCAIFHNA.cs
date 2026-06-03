@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static FHOHCAIFHNAReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFGSE9IQ0FJRkhOQS5wcm90byJ2CgtGSE9IQ0FJRkhOQRITCgtIQ0FOTUlK",
-            "QUZMRxgCIAEoARITCgtJS0pMTEZMQ0hORhgNIAEoDRITCgtQR0dERUhLS0lO",
-            "UBgLIAEoDRITCgtLTVBDTkRKSEhBTxgMIAEoDRITCgtISUxJTk9KUExHQRgB",
-            "IAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFGSE9IQ0FJRkhOQS5wcm90byJ5CgtGSE9IQ0FJRkhOQRITCgtISUxJTk9K",
+            "UExHQRgBIAEoDRIYChBkaWZmaWN1bHR5X3JhdGlvGAIgASgBEhMKC1BHR0RF",
+            "SEtLSU5QGAsgASgNEhMKC3N0eWxlX2xldmVsGAwgASgNEhEKCXN0eWxlX2V4",
+            "cBgNIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FHOHCAIFHNA), global::March7thHoney.Proto.FHOHCAIFHNA.Parser, new[]{ "HCANMIJAFLG", "IKJLLFLCHNF", "PGGDEHKKINP", "KMPCNDJHHAO", "HILINOJPLGA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FHOHCAIFHNA), global::March7thHoney.Proto.FHOHCAIFHNA.Parser, new[]{ "HILINOJPLGA", "DifficultyRatio", "PGGDEHKKINP", "StyleLevel", "StyleExp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +73,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FHOHCAIFHNA(FHOHCAIFHNA other) : this() {
-      hCANMIJAFLG_ = other.hCANMIJAFLG_;
-      iKJLLFLCHNF_ = other.iKJLLFLCHNF_;
-      pGGDEHKKINP_ = other.pGGDEHKKINP_;
-      kMPCNDJHHAO_ = other.kMPCNDJHHAO_;
       hILINOJPLGA_ = other.hILINOJPLGA_;
+      difficultyRatio_ = other.difficultyRatio_;
+      pGGDEHKKINP_ = other.pGGDEHKKINP_;
+      styleLevel_ = other.styleLevel_;
+      styleExp_ = other.styleExp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,27 +87,27 @@ namespace March7thHoney.Proto {
       return new FHOHCAIFHNA(this);
     }
 
-    /// <summary>Field number for the "HCANMIJAFLG" field.</summary>
-    public const int HCANMIJAFLGFieldNumber = 2;
-    private double hCANMIJAFLG_;
+    /// <summary>Field number for the "HILINOJPLGA" field.</summary>
+    public const int HILINOJPLGAFieldNumber = 1;
+    private uint hILINOJPLGA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double HCANMIJAFLG {
-      get { return hCANMIJAFLG_; }
+    public uint HILINOJPLGA {
+      get { return hILINOJPLGA_; }
       set {
-        hCANMIJAFLG_ = value;
+        hILINOJPLGA_ = value;
       }
     }
 
-    /// <summary>Field number for the "IKJLLFLCHNF" field.</summary>
-    public const int IKJLLFLCHNFFieldNumber = 13;
-    private uint iKJLLFLCHNF_;
+    /// <summary>Field number for the "difficulty_ratio" field.</summary>
+    public const int DifficultyRatioFieldNumber = 2;
+    private double difficultyRatio_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint IKJLLFLCHNF {
-      get { return iKJLLFLCHNF_; }
+    public double DifficultyRatio {
+      get { return difficultyRatio_; }
       set {
-        iKJLLFLCHNF_ = value;
+        difficultyRatio_ = value;
       }
     }
 
@@ -123,27 +123,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "KMPCNDJHHAO" field.</summary>
-    public const int KMPCNDJHHAOFieldNumber = 12;
-    private uint kMPCNDJHHAO_;
+    /// <summary>Field number for the "style_level" field.</summary>
+    public const int StyleLevelFieldNumber = 12;
+    private uint styleLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint KMPCNDJHHAO {
-      get { return kMPCNDJHHAO_; }
+    public uint StyleLevel {
+      get { return styleLevel_; }
       set {
-        kMPCNDJHHAO_ = value;
+        styleLevel_ = value;
       }
     }
 
-    /// <summary>Field number for the "HILINOJPLGA" field.</summary>
-    public const int HILINOJPLGAFieldNumber = 1;
-    private uint hILINOJPLGA_;
+    /// <summary>Field number for the "style_exp" field.</summary>
+    public const int StyleExpFieldNumber = 13;
+    private uint styleExp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint HILINOJPLGA {
-      get { return hILINOJPLGA_; }
+    public uint StyleExp {
+      get { return styleExp_; }
       set {
-        hILINOJPLGA_ = value;
+        styleExp_ = value;
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(HCANMIJAFLG, other.HCANMIJAFLG)) return false;
-      if (IKJLLFLCHNF != other.IKJLLFLCHNF) return false;
-      if (PGGDEHKKINP != other.PGGDEHKKINP) return false;
-      if (KMPCNDJHHAO != other.KMPCNDJHHAO) return false;
       if (HILINOJPLGA != other.HILINOJPLGA) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DifficultyRatio, other.DifficultyRatio)) return false;
+      if (PGGDEHKKINP != other.PGGDEHKKINP) return false;
+      if (StyleLevel != other.StyleLevel) return false;
+      if (StyleExp != other.StyleExp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HCANMIJAFLG != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(HCANMIJAFLG);
-      if (IKJLLFLCHNF != 0) hash ^= IKJLLFLCHNF.GetHashCode();
-      if (PGGDEHKKINP != 0) hash ^= PGGDEHKKINP.GetHashCode();
-      if (KMPCNDJHHAO != 0) hash ^= KMPCNDJHHAO.GetHashCode();
       if (HILINOJPLGA != 0) hash ^= HILINOJPLGA.GetHashCode();
+      if (DifficultyRatio != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DifficultyRatio);
+      if (PGGDEHKKINP != 0) hash ^= PGGDEHKKINP.GetHashCode();
+      if (StyleLevel != 0) hash ^= StyleLevel.GetHashCode();
+      if (StyleExp != 0) hash ^= StyleExp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -201,21 +201,21 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(HILINOJPLGA);
       }
-      if (HCANMIJAFLG != 0D) {
+      if (DifficultyRatio != 0D) {
         output.WriteRawTag(17);
-        output.WriteDouble(HCANMIJAFLG);
+        output.WriteDouble(DifficultyRatio);
       }
       if (PGGDEHKKINP != 0) {
         output.WriteRawTag(88);
         output.WriteUInt32(PGGDEHKKINP);
       }
-      if (KMPCNDJHHAO != 0) {
+      if (StyleLevel != 0) {
         output.WriteRawTag(96);
-        output.WriteUInt32(KMPCNDJHHAO);
+        output.WriteUInt32(StyleLevel);
       }
-      if (IKJLLFLCHNF != 0) {
+      if (StyleExp != 0) {
         output.WriteRawTag(104);
-        output.WriteUInt32(IKJLLFLCHNF);
+        output.WriteUInt32(StyleExp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -231,21 +231,21 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(8);
         output.WriteUInt32(HILINOJPLGA);
       }
-      if (HCANMIJAFLG != 0D) {
+      if (DifficultyRatio != 0D) {
         output.WriteRawTag(17);
-        output.WriteDouble(HCANMIJAFLG);
+        output.WriteDouble(DifficultyRatio);
       }
       if (PGGDEHKKINP != 0) {
         output.WriteRawTag(88);
         output.WriteUInt32(PGGDEHKKINP);
       }
-      if (KMPCNDJHHAO != 0) {
+      if (StyleLevel != 0) {
         output.WriteRawTag(96);
-        output.WriteUInt32(KMPCNDJHHAO);
+        output.WriteUInt32(StyleLevel);
       }
-      if (IKJLLFLCHNF != 0) {
+      if (StyleExp != 0) {
         output.WriteRawTag(104);
-        output.WriteUInt32(IKJLLFLCHNF);
+        output.WriteUInt32(StyleExp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -257,20 +257,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HCANMIJAFLG != 0D) {
-        size += 1 + 8;
+      if (HILINOJPLGA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HILINOJPLGA);
       }
-      if (IKJLLFLCHNF != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IKJLLFLCHNF);
+      if (DifficultyRatio != 0D) {
+        size += 1 + 8;
       }
       if (PGGDEHKKINP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PGGDEHKKINP);
       }
-      if (KMPCNDJHHAO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KMPCNDJHHAO);
+      if (StyleLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StyleLevel);
       }
-      if (HILINOJPLGA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HILINOJPLGA);
+      if (StyleExp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(StyleExp);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,20 +284,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HCANMIJAFLG != 0D) {
-        HCANMIJAFLG = other.HCANMIJAFLG;
+      if (other.HILINOJPLGA != 0) {
+        HILINOJPLGA = other.HILINOJPLGA;
       }
-      if (other.IKJLLFLCHNF != 0) {
-        IKJLLFLCHNF = other.IKJLLFLCHNF;
+      if (other.DifficultyRatio != 0D) {
+        DifficultyRatio = other.DifficultyRatio;
       }
       if (other.PGGDEHKKINP != 0) {
         PGGDEHKKINP = other.PGGDEHKKINP;
       }
-      if (other.KMPCNDJHHAO != 0) {
-        KMPCNDJHHAO = other.KMPCNDJHHAO;
+      if (other.StyleLevel != 0) {
+        StyleLevel = other.StyleLevel;
       }
-      if (other.HILINOJPLGA != 0) {
-        HILINOJPLGA = other.HILINOJPLGA;
+      if (other.StyleExp != 0) {
+        StyleExp = other.StyleExp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -323,7 +323,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 17: {
-            HCANMIJAFLG = input.ReadDouble();
+            DifficultyRatio = input.ReadDouble();
             break;
           }
           case 88: {
@@ -331,11 +331,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 96: {
-            KMPCNDJHHAO = input.ReadUInt32();
+            StyleLevel = input.ReadUInt32();
             break;
           }
           case 104: {
-            IKJLLFLCHNF = input.ReadUInt32();
+            StyleExp = input.ReadUInt32();
             break;
           }
         }
@@ -362,7 +362,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 17: {
-            HCANMIJAFLG = input.ReadDouble();
+            DifficultyRatio = input.ReadDouble();
             break;
           }
           case 88: {
@@ -370,11 +370,11 @@ namespace March7thHoney.Proto {
             break;
           }
           case 96: {
-            KMPCNDJHHAO = input.ReadUInt32();
+            StyleLevel = input.ReadUInt32();
             break;
           }
           case 104: {
-            IKJLLFLCHNF = input.ReadUInt32();
+            StyleExp = input.ReadUInt32();
             break;
           }
         }

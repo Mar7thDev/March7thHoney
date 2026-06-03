@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AMKBFMCOIHK.proto";
 
 message DifficultyAdjustmentUpdateDataScRsp {
-    AMKBFMCOIHK data = 1;
-    repeated AMKBFMCOIHK content_package_list = 15;
-    uint32 retcode = 10;
+    uint32 retcode = 2;
+    repeated AMKBFMCOIHK content_package_list = 7;
+    AMKBFMCOIHK data = 10;
 }

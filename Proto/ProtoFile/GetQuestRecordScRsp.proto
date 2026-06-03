@@ -6,5 +6,5 @@ import "ECLGDFGGOFH.proto";
 
 message GetQuestRecordScRsp {
     repeated ECLGDFGGOFH AOOFGCNFBPL = 6;
-    uint32 retcode = 4;
+    uint32 retcode = 10;
 }

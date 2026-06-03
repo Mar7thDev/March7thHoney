@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChooseBoxingClubStageOptionalBuffCsReq {
-    uint32 challenge_id = 4;
-    uint32 MFKAOHKPIPE = 14;
+    uint32 challenge_id = 5;
+    uint32 MFKAOHKPIPE = 11;
 }

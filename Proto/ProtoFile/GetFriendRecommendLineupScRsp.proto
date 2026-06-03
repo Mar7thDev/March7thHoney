@@ -6,9 +6,9 @@ import "FPDCINMDJCE.proto";
 import "JFNJKAPPNOF.proto";
 
 message GetFriendRecommendLineupScRsp {
-    repeated FPDCINMDJCE MGKCKHIIICL = 4;
     uint32 key = 1;
-    bool ALDBIIIGLOM = 6;
-    uint32 retcode = 14;
-    JFNJKAPPNOF type = 2;
+    uint32 retcode = 6;
+    repeated FPDCINMDJCE MGKCKHIIICL = 11;
+    bool ALDBIIIGLOM = 14;
+    JFNJKAPPNOF type = 15;
 }

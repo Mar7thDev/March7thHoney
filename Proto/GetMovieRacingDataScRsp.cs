@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1HZXRNb3ZpZVJhY2luZ0RhdGFTY1JzcC5wcm90bxoRSERBSEZMTUJBQUIu",
             "cHJvdG8iTQoXR2V0TW92aWVSYWNpbmdEYXRhU2NSc3ASIQoLSE5JQUVHTU1Q",
-            "S0QYAyADKAsyDC5IREFIRkxNQkFBQhIPCgdyZXRjb2RlGAIgASgNQhaqAhNN",
+            "S0QYBSADKAsyDC5IREFIRkxNQkFBQhIPCgdyZXRjb2RlGAcgASgNQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.HDAHFLMBAABReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HNIAEGMMPKD" field.</summary>
-    public const int HNIAEGMMPKDFieldNumber = 3;
+    public const int HNIAEGMMPKDFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.HDAHFLMBAAB> _repeated_hNIAEGMMPKD_codec
-        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.HDAHFLMBAAB.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.HDAHFLMBAAB.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.HDAHFLMBAAB> hNIAEGMMPKD_ = new pbc::RepeatedField<global::March7thHoney.Proto.HDAHFLMBAAB>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 7;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      hNIAEGMMPKD_.WriteTo(output, _repeated_hNIAEGMMPKD_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
       }
-      hNIAEGMMPKD_.WriteTo(output, _repeated_hNIAEGMMPKD_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      hNIAEGMMPKD_.WriteTo(ref output, _repeated_hNIAEGMMPKD_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(56);
         output.WriteUInt32(Retcode);
       }
-      hNIAEGMMPKD_.WriteTo(ref output, _repeated_hNIAEGMMPKD_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 42: {
+            hNIAEGMMPKD_.AddEntriesFrom(input, _repeated_hNIAEGMMPKD_codec);
             break;
           }
-          case 26: {
-            hNIAEGMMPKD_.AddEntriesFrom(input, _repeated_hNIAEGMMPKD_codec);
+          case 56: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 42: {
+            hNIAEGMMPKD_.AddEntriesFrom(ref input, _repeated_hNIAEGMMPKD_codec);
             break;
           }
-          case 26: {
-            hNIAEGMMPKD_.AddEntriesFrom(ref input, _repeated_hNIAEGMMPKD_codec);
+          case 56: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

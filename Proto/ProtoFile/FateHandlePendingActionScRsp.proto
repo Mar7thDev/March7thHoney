@@ -3,6 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FateHandlePendingActionScRsp {
-    uint32 queue_position = 9;
-    uint32 retcode = 10;
+    uint32 retcode = 5;
 }

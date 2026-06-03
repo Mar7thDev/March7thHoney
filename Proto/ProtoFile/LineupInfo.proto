@@ -6,18 +6,17 @@ import "ExtraLineupType.proto";
 import "LineupAvatar.proto";
 
 message LineupInfo {
-    repeated uint32 GOFLIGGNHNE = 8;
-    string name = 12;
-    repeated LineupAvatar avatar_list = 1;
-    repeated uint32 NCLJLLNGDCI = 3;
-    repeated uint32 story_line_avatar_id_list = 7;
-    bool is_virtual = 9;
-    bool ABHONGJHICF = 4;
+    repeated uint32 locked_avatar_i_ds = 1;
+    repeated uint32 available_trial_avatar_i_ds = 2;
+    uint32 mp = 3;
+    uint32 game_story_line_id = 4;
+    uint32 leader_slot = 5;
+    bool ABHONGJHICF = 6;
+    repeated LineupAvatar avatar_list = 7;
+    uint32 plane_id = 8;
+    repeated uint32 story_line_avatar_id_list = 9;
+    uint32 index = 12;
+    uint32 max_mp = 13;
+    string name = 14;
     ExtraLineupType extra_lineup_type = 15;
-    uint32 game_story_line_id = 6;
-    uint32 mp = 11;
-    uint32 index = 14;
-    uint32 leader_slot = 2;
-    uint32 plane_id = 13;
-    uint32 max_mp = 10;
 }

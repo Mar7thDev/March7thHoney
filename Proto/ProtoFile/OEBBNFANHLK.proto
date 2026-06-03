@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OEBBNFANHLK {
-    double AALPICLABCO = 2;
     uint32 JBPNBECLGKN = 1;
+    double AALPICLABCO = 2;
 }

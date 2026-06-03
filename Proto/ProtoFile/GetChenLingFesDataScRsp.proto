@@ -6,8 +6,7 @@ import "BGAIEEIKOKK.proto";
 import "OFGLEOIIJBD.proto";
 
 message GetChenLingFesDataScRsp {
-    repeated BGAIEEIKOKK PNDPCELOGHG = 3;
-    OFGLEOIIJBD LAEDNIBCNKF = 10;
-    uint32 DEKCALEHILC = 13;
-    uint32 retcode = 7;
+    uint32 retcode = 8;
+    repeated BGAIEEIKOKK PNDPCELOGHG = 13;
+    OFGLEOIIJBD LAEDNIBCNKF = 15;
 }

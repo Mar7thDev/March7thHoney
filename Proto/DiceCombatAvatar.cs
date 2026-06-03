@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZEaWNlQ29tYmF0QXZhdGFyLnByb3RvImQKEERpY2VDb21iYXRBdmF0YXIS",
-            "FAoMZGljZV9pZF9saXN0GAMgAygNEhYKDmRpY2VfYXZhdGFyX2lkGAEgASgN",
-            "Eg0KBWxldmVsGAIgASgNEhMKC3VubG9ja190aW1lGAQgASgDQhaqAhNNYXJj",
+            "FgoOZGljZV9hdmF0YXJfaWQYASABKA0SDQoFbGV2ZWwYAiABKA0SFAoMZGlj",
+            "ZV9pZF9saXN0GAMgAygNEhMKC3VubG9ja190aW1lGAQgASgDQhaqAhNNYXJj",
             "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DiceCombatAvatar), global::March7thHoney.Proto.DiceCombatAvatar.Parser, new[]{ "DiceIdList", "DiceAvatarId", "Level", "UnlockTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DiceCombatAvatar), global::March7thHoney.Proto.DiceCombatAvatar.Parser, new[]{ "DiceAvatarId", "Level", "DiceIdList", "UnlockTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DiceCombatAvatar(DiceCombatAvatar other) : this() {
-      diceIdList_ = other.diceIdList_.Clone();
       diceAvatarId_ = other.diceAvatarId_;
       level_ = other.level_;
+      diceIdList_ = other.diceIdList_.Clone();
       unlockTime_ = other.unlockTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -84,17 +84,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DiceCombatAvatar Clone() {
       return new DiceCombatAvatar(this);
-    }
-
-    /// <summary>Field number for the "dice_id_list" field.</summary>
-    public const int DiceIdListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_diceIdList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> diceIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> DiceIdList {
-      get { return diceIdList_; }
     }
 
     /// <summary>Field number for the "dice_avatar_id" field.</summary>
@@ -119,6 +108,17 @@ namespace March7thHoney.Proto {
       set {
         level_ = value;
       }
+    }
+
+    /// <summary>Field number for the "dice_id_list" field.</summary>
+    public const int DiceIdListFieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_diceIdList_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> diceIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> DiceIdList {
+      get { return diceIdList_; }
     }
 
     /// <summary>Field number for the "unlock_time" field.</summary>
@@ -148,9 +148,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!diceIdList_.Equals(other.diceIdList_)) return false;
       if (DiceAvatarId != other.DiceAvatarId) return false;
       if (Level != other.Level) return false;
+      if(!diceIdList_.Equals(other.diceIdList_)) return false;
       if (UnlockTime != other.UnlockTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -159,9 +159,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= diceIdList_.GetHashCode();
       if (DiceAvatarId != 0) hash ^= DiceAvatarId.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
+      hash ^= diceIdList_.GetHashCode();
       if (UnlockTime != 0L) hash ^= UnlockTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -227,13 +227,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += diceIdList_.CalculateSize(_repeated_diceIdList_codec);
       if (DiceAvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DiceAvatarId);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
       }
+      size += diceIdList_.CalculateSize(_repeated_diceIdList_codec);
       if (UnlockTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(UnlockTime);
       }
@@ -249,13 +249,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      diceIdList_.Add(other.diceIdList_);
       if (other.DiceAvatarId != 0) {
         DiceAvatarId = other.DiceAvatarId;
       }
       if (other.Level != 0) {
         Level = other.Level;
       }
+      diceIdList_.Add(other.diceIdList_);
       if (other.UnlockTime != 0L) {
         UnlockTime = other.UnlockTime;
       }

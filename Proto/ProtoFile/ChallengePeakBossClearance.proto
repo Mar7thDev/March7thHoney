@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ABCHBKBKCDF.proto";
 
 message ChallengePeakBossClearance {
-    repeated ABCHBKBKCDF EBNNJAEPBGD = 13;
-    repeated uint32 peak_avatar_id_list = 3;
-    repeated uint32 LAMPCACOCHP = 10;
-    uint32 NHOJDHPGBBO = 4;
-    uint32 best_cycle_count = 9;
-    uint32 buff_id = 5;
-    bool has_passed = 6;
-    uint32 DJFGDMIDEHJ = 11;
+    uint32 best_cycle_count = 3;
+    uint32 DJFGDMIDEHJ = 4;
+    repeated ABCHBKBKCDF EBNNJAEPBGD = 6;
+    repeated uint32 LAMPCACOCHP = 7;
+    uint32 buff_id = 8;
+    repeated uint32 peak_avatar_id_list = 9;
+    bool has_passed = 11;
+    uint32 NHOJDHPGBBO = 12;
 }

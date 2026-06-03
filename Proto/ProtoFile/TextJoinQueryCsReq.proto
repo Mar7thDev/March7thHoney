@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TextJoinQueryCsReq {
-    repeated uint32 OBAOJAOAPBC = 9;
+    repeated uint32 OBAOJAOAPBC = 12;
 }

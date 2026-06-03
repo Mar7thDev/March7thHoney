@@ -6,7 +6,7 @@ import "ItemList.proto";
 import "JBNGCJJDLHL.proto";
 
 message TakeRechargeGiftRewardScRsp {
-    ItemList reward = 7;
-    JBNGCJJDLHL KJBDNIIBGNE = 13;
-    uint32 retcode = 10;
+    JBNGCJJDLHL KJBDNIIBGNE = 2;
+    ItemList reward = 12;
+    uint32 retcode = 15;
 }

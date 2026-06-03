@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RelicReforgeCsReq {
-    uint32 reforge_block_sub_affix_id = 3;
-    uint32 relic_unique_id = 1;
+    uint32 reforge_block_sub_affix_id = 5;
+    uint32 relic_unique_id = 6;
 }

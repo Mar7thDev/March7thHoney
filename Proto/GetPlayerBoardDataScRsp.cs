@@ -26,19 +26,19 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1HZXRQbGF5ZXJCb2FyZERhdGFTY1JzcC5wcm90bxoWRGlzcGxheUF2YXRh",
             "clZlYy5wcm90bxoTSGVhZEZyYW1lSW5mby5wcm90bxoSSGVhZEljb25EYXRh",
-            "LnByb3RvIskCChdHZXRQbGF5ZXJCb2FyZERhdGFTY1JzcBIjCht1bmxvY2tl",
-            "ZF9wZXJzb25hbF9jYXJkX2xpc3QYCiADKA0SEQoJc2lnbmF0dXJlGAwgASgJ",
-            "Eh0KFWFzc2lzdF9hdmF0YXJfaWRfbGlzdBgIIAMoDRIuChd1bmxvY2tlZF9o",
-            "ZWFkX2ljb25fbGlzdBgEIAMoCzINLkhlYWRJY29uRGF0YRInCg9oZWFkX2Zy",
-            "YW1lX2luZm8YBSABKAsyDi5IZWFkRnJhbWVJbmZvEi0KEmRpc3BsYXlfYXZh",
-            "dGFyX3ZlYxgCIAEoCzIRLkRpc3BsYXlBdmF0YXJWZWMSHAoUY3VycmVudF9o",
-            "ZWFkX2ljb25faWQYDSABKA0SIAoYY3VycmVudF9wZXJzb25hbF9jYXJkX2lk",
-            "GAcgASgNEg8KB3JldGNvZGUYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "LnByb3RvIskCChdHZXRQbGF5ZXJCb2FyZERhdGFTY1JzcBIPCgdyZXRjb2Rl",
+            "GAIgASgNEh0KFWFzc2lzdF9hdmF0YXJfaWRfbGlzdBgDIAMoDRIRCglzaWdu",
+            "YXR1cmUYBSABKAkSIwobdW5sb2NrZWRfcGVyc29uYWxfY2FyZF9saXN0GAYg",
+            "AygNEi0KEmRpc3BsYXlfYXZhdGFyX3ZlYxgIIAEoCzIRLkRpc3BsYXlBdmF0",
+            "YXJWZWMSLgoXdW5sb2NrZWRfaGVhZF9pY29uX2xpc3QYCSADKAsyDS5IZWFk",
+            "SWNvbkRhdGESHAoUY3VycmVudF9oZWFkX2ljb25faWQYCiABKA0SJwoPaGVh",
+            "ZF9mcmFtZV9pbmZvGA0gASgLMg4uSGVhZEZyYW1lSW5mbxIgChhjdXJyZW50",
+            "X3BlcnNvbmFsX2NhcmRfaWQYDyABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DisplayAvatarVecReflection.Descriptor, global::March7thHoney.Proto.HeadFrameInfoReflection.Descriptor, global::March7thHoney.Proto.HeadIconDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPlayerBoardDataScRsp), global::March7thHoney.Proto.GetPlayerBoardDataScRsp.Parser, new[]{ "UnlockedPersonalCardList", "Signature", "AssistAvatarIdList", "UnlockedHeadIconList", "HeadFrameInfo", "DisplayAvatarVec", "CurrentHeadIconId", "CurrentPersonalCardId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPlayerBoardDataScRsp), global::March7thHoney.Proto.GetPlayerBoardDataScRsp.Parser, new[]{ "Retcode", "AssistAvatarIdList", "Signature", "UnlockedPersonalCardList", "DisplayAvatarVec", "UnlockedHeadIconList", "CurrentHeadIconId", "HeadFrameInfo", "CurrentPersonalCardId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -80,15 +80,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetPlayerBoardDataScRsp(GetPlayerBoardDataScRsp other) : this() {
-      unlockedPersonalCardList_ = other.unlockedPersonalCardList_.Clone();
-      signature_ = other.signature_;
-      assistAvatarIdList_ = other.assistAvatarIdList_.Clone();
-      unlockedHeadIconList_ = other.unlockedHeadIconList_.Clone();
-      headFrameInfo_ = other.headFrameInfo_ != null ? other.headFrameInfo_.Clone() : null;
-      displayAvatarVec_ = other.displayAvatarVec_ != null ? other.displayAvatarVec_.Clone() : null;
-      currentHeadIconId_ = other.currentHeadIconId_;
-      currentPersonalCardId_ = other.currentPersonalCardId_;
       retcode_ = other.retcode_;
+      assistAvatarIdList_ = other.assistAvatarIdList_.Clone();
+      signature_ = other.signature_;
+      unlockedPersonalCardList_ = other.unlockedPersonalCardList_.Clone();
+      displayAvatarVec_ = other.displayAvatarVec_ != null ? other.displayAvatarVec_.Clone() : null;
+      unlockedHeadIconList_ = other.unlockedHeadIconList_.Clone();
+      currentHeadIconId_ = other.currentHeadIconId_;
+      headFrameInfo_ = other.headFrameInfo_ != null ? other.headFrameInfo_.Clone() : null;
+      currentPersonalCardId_ = other.currentPersonalCardId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -98,19 +98,31 @@ namespace March7thHoney.Proto {
       return new GetPlayerBoardDataScRsp(this);
     }
 
-    /// <summary>Field number for the "unlocked_personal_card_list" field.</summary>
-    public const int UnlockedPersonalCardListFieldNumber = 10;
-    private static readonly pb::FieldCodec<uint> _repeated_unlockedPersonalCardList_codec
-        = pb::FieldCodec.ForUInt32(82);
-    private readonly pbc::RepeatedField<uint> unlockedPersonalCardList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 2;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnlockedPersonalCardList {
-      get { return unlockedPersonalCardList_; }
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "assist_avatar_id_list" field.</summary>
+    public const int AssistAvatarIdListFieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_assistAvatarIdList_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> assistAvatarIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> AssistAvatarIdList {
+      get { return assistAvatarIdList_; }
     }
 
     /// <summary>Field number for the "signature" field.</summary>
-    public const int SignatureFieldNumber = 12;
+    public const int SignatureFieldNumber = 5;
     private string signature_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -121,42 +133,19 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "assist_avatar_id_list" field.</summary>
-    public const int AssistAvatarIdListFieldNumber = 8;
-    private static readonly pb::FieldCodec<uint> _repeated_assistAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(66);
-    private readonly pbc::RepeatedField<uint> assistAvatarIdList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "unlocked_personal_card_list" field.</summary>
+    public const int UnlockedPersonalCardListFieldNumber = 6;
+    private static readonly pb::FieldCodec<uint> _repeated_unlockedPersonalCardList_codec
+        = pb::FieldCodec.ForUInt32(50);
+    private readonly pbc::RepeatedField<uint> unlockedPersonalCardList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> AssistAvatarIdList {
-      get { return assistAvatarIdList_; }
-    }
-
-    /// <summary>Field number for the "unlocked_head_icon_list" field.</summary>
-    public const int UnlockedHeadIconListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeadIconData> _repeated_unlockedHeadIconList_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.HeadIconData.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData> unlockedHeadIconList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData> UnlockedHeadIconList {
-      get { return unlockedHeadIconList_; }
-    }
-
-    /// <summary>Field number for the "head_frame_info" field.</summary>
-    public const int HeadFrameInfoFieldNumber = 5;
-    private global::March7thHoney.Proto.HeadFrameInfo headFrameInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.HeadFrameInfo HeadFrameInfo {
-      get { return headFrameInfo_; }
-      set {
-        headFrameInfo_ = value;
-      }
+    public pbc::RepeatedField<uint> UnlockedPersonalCardList {
+      get { return unlockedPersonalCardList_; }
     }
 
     /// <summary>Field number for the "display_avatar_vec" field.</summary>
-    public const int DisplayAvatarVecFieldNumber = 2;
+    public const int DisplayAvatarVecFieldNumber = 8;
     private global::March7thHoney.Proto.DisplayAvatarVec displayAvatarVec_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,8 +156,19 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "unlocked_head_icon_list" field.</summary>
+    public const int UnlockedHeadIconListFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.HeadIconData> _repeated_unlockedHeadIconList_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.HeadIconData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData> unlockedHeadIconList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.HeadIconData> UnlockedHeadIconList {
+      get { return unlockedHeadIconList_; }
+    }
+
     /// <summary>Field number for the "current_head_icon_id" field.</summary>
-    public const int CurrentHeadIconIdFieldNumber = 13;
+    public const int CurrentHeadIconIdFieldNumber = 10;
     private uint currentHeadIconId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -179,8 +179,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "head_frame_info" field.</summary>
+    public const int HeadFrameInfoFieldNumber = 13;
+    private global::March7thHoney.Proto.HeadFrameInfo headFrameInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.HeadFrameInfo HeadFrameInfo {
+      get { return headFrameInfo_; }
+      set {
+        headFrameInfo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "current_personal_card_id" field.</summary>
-    public const int CurrentPersonalCardIdFieldNumber = 7;
+    public const int CurrentPersonalCardIdFieldNumber = 15;
     private uint currentPersonalCardId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -188,18 +200,6 @@ namespace March7thHoney.Proto {
       get { return currentPersonalCardId_; }
       set {
         currentPersonalCardId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
       }
     }
 
@@ -218,15 +218,15 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!unlockedPersonalCardList_.Equals(other.unlockedPersonalCardList_)) return false;
-      if (Signature != other.Signature) return false;
-      if(!assistAvatarIdList_.Equals(other.assistAvatarIdList_)) return false;
-      if(!unlockedHeadIconList_.Equals(other.unlockedHeadIconList_)) return false;
-      if (!object.Equals(HeadFrameInfo, other.HeadFrameInfo)) return false;
-      if (!object.Equals(DisplayAvatarVec, other.DisplayAvatarVec)) return false;
-      if (CurrentHeadIconId != other.CurrentHeadIconId) return false;
-      if (CurrentPersonalCardId != other.CurrentPersonalCardId) return false;
       if (Retcode != other.Retcode) return false;
+      if(!assistAvatarIdList_.Equals(other.assistAvatarIdList_)) return false;
+      if (Signature != other.Signature) return false;
+      if(!unlockedPersonalCardList_.Equals(other.unlockedPersonalCardList_)) return false;
+      if (!object.Equals(DisplayAvatarVec, other.DisplayAvatarVec)) return false;
+      if(!unlockedHeadIconList_.Equals(other.unlockedHeadIconList_)) return false;
+      if (CurrentHeadIconId != other.CurrentHeadIconId) return false;
+      if (!object.Equals(HeadFrameInfo, other.HeadFrameInfo)) return false;
+      if (CurrentPersonalCardId != other.CurrentPersonalCardId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= unlockedPersonalCardList_.GetHashCode();
-      if (Signature.Length != 0) hash ^= Signature.GetHashCode();
-      hash ^= assistAvatarIdList_.GetHashCode();
-      hash ^= unlockedHeadIconList_.GetHashCode();
-      if (headFrameInfo_ != null) hash ^= HeadFrameInfo.GetHashCode();
-      if (displayAvatarVec_ != null) hash ^= DisplayAvatarVec.GetHashCode();
-      if (CurrentHeadIconId != 0) hash ^= CurrentHeadIconId.GetHashCode();
-      if (CurrentPersonalCardId != 0) hash ^= CurrentPersonalCardId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= assistAvatarIdList_.GetHashCode();
+      if (Signature.Length != 0) hash ^= Signature.GetHashCode();
+      hash ^= unlockedPersonalCardList_.GetHashCode();
+      if (displayAvatarVec_ != null) hash ^= DisplayAvatarVec.GetHashCode();
+      hash ^= unlockedHeadIconList_.GetHashCode();
+      if (CurrentHeadIconId != 0) hash ^= CurrentHeadIconId.GetHashCode();
+      if (headFrameInfo_ != null) hash ^= HeadFrameInfo.GetHashCode();
+      if (CurrentPersonalCardId != 0) hash ^= CurrentPersonalCardId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -261,32 +261,32 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Retcode != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Retcode);
+      }
+      assistAvatarIdList_.WriteTo(output, _repeated_assistAvatarIdList_codec);
+      if (Signature.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Signature);
+      }
+      unlockedPersonalCardList_.WriteTo(output, _repeated_unlockedPersonalCardList_codec);
       if (displayAvatarVec_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(66);
         output.WriteMessage(DisplayAvatarVec);
       }
       unlockedHeadIconList_.WriteTo(output, _repeated_unlockedHeadIconList_codec);
+      if (CurrentHeadIconId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(CurrentHeadIconId);
+      }
       if (headFrameInfo_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(106);
         output.WriteMessage(HeadFrameInfo);
       }
       if (CurrentPersonalCardId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CurrentPersonalCardId);
-      }
-      assistAvatarIdList_.WriteTo(output, _repeated_assistAvatarIdList_codec);
-      unlockedPersonalCardList_.WriteTo(output, _repeated_unlockedPersonalCardList_codec);
-      if (Signature.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(Signature);
-      }
-      if (CurrentHeadIconId != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(CurrentHeadIconId);
-      }
-      if (Retcode != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
+        output.WriteUInt32(CurrentPersonalCardId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -298,32 +298,32 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Retcode != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Retcode);
+      }
+      assistAvatarIdList_.WriteTo(ref output, _repeated_assistAvatarIdList_codec);
+      if (Signature.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Signature);
+      }
+      unlockedPersonalCardList_.WriteTo(ref output, _repeated_unlockedPersonalCardList_codec);
       if (displayAvatarVec_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(66);
         output.WriteMessage(DisplayAvatarVec);
       }
       unlockedHeadIconList_.WriteTo(ref output, _repeated_unlockedHeadIconList_codec);
+      if (CurrentHeadIconId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(CurrentHeadIconId);
+      }
       if (headFrameInfo_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(106);
         output.WriteMessage(HeadFrameInfo);
       }
       if (CurrentPersonalCardId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CurrentPersonalCardId);
-      }
-      assistAvatarIdList_.WriteTo(ref output, _repeated_assistAvatarIdList_codec);
-      unlockedPersonalCardList_.WriteTo(ref output, _repeated_unlockedPersonalCardList_codec);
-      if (Signature.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(Signature);
-      }
-      if (CurrentHeadIconId != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(CurrentHeadIconId);
-      }
-      if (Retcode != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
+        output.WriteUInt32(CurrentPersonalCardId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -335,26 +335,26 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += unlockedPersonalCardList_.CalculateSize(_repeated_unlockedPersonalCardList_codec);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      size += assistAvatarIdList_.CalculateSize(_repeated_assistAvatarIdList_codec);
       if (Signature.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Signature);
       }
-      size += assistAvatarIdList_.CalculateSize(_repeated_assistAvatarIdList_codec);
-      size += unlockedHeadIconList_.CalculateSize(_repeated_unlockedHeadIconList_codec);
-      if (headFrameInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HeadFrameInfo);
-      }
+      size += unlockedPersonalCardList_.CalculateSize(_repeated_unlockedPersonalCardList_codec);
       if (displayAvatarVec_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(DisplayAvatarVec);
       }
+      size += unlockedHeadIconList_.CalculateSize(_repeated_unlockedHeadIconList_codec);
       if (CurrentHeadIconId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentHeadIconId);
       }
+      if (headFrameInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HeadFrameInfo);
+      }
       if (CurrentPersonalCardId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentPersonalCardId);
-      }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -368,32 +368,32 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      unlockedPersonalCardList_.Add(other.unlockedPersonalCardList_);
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      assistAvatarIdList_.Add(other.assistAvatarIdList_);
       if (other.Signature.Length != 0) {
         Signature = other.Signature;
       }
-      assistAvatarIdList_.Add(other.assistAvatarIdList_);
-      unlockedHeadIconList_.Add(other.unlockedHeadIconList_);
-      if (other.headFrameInfo_ != null) {
-        if (headFrameInfo_ == null) {
-          HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
-        }
-        HeadFrameInfo.MergeFrom(other.HeadFrameInfo);
-      }
+      unlockedPersonalCardList_.Add(other.unlockedPersonalCardList_);
       if (other.displayAvatarVec_ != null) {
         if (displayAvatarVec_ == null) {
           DisplayAvatarVec = new global::March7thHoney.Proto.DisplayAvatarVec();
         }
         DisplayAvatarVec.MergeFrom(other.DisplayAvatarVec);
       }
+      unlockedHeadIconList_.Add(other.unlockedHeadIconList_);
       if (other.CurrentHeadIconId != 0) {
         CurrentHeadIconId = other.CurrentHeadIconId;
       }
+      if (other.headFrameInfo_ != null) {
+        if (headFrameInfo_ == null) {
+          HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
+        }
+        HeadFrameInfo.MergeFrom(other.HeadFrameInfo);
+      }
       if (other.CurrentPersonalCardId != 0) {
         CurrentPersonalCardId = other.CurrentPersonalCardId;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -414,48 +414,48 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 16: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 26:
+          case 24: {
+            assistAvatarIdList_.AddEntriesFrom(input, _repeated_assistAvatarIdList_codec);
+            break;
+          }
+          case 42: {
+            Signature = input.ReadString();
+            break;
+          }
+          case 50:
+          case 48: {
+            unlockedPersonalCardList_.AddEntriesFrom(input, _repeated_unlockedPersonalCardList_codec);
+            break;
+          }
+          case 66: {
             if (displayAvatarVec_ == null) {
               DisplayAvatarVec = new global::March7thHoney.Proto.DisplayAvatarVec();
             }
             input.ReadMessage(DisplayAvatarVec);
             break;
           }
-          case 34: {
+          case 74: {
             unlockedHeadIconList_.AddEntriesFrom(input, _repeated_unlockedHeadIconList_codec);
             break;
           }
-          case 42: {
+          case 80: {
+            CurrentHeadIconId = input.ReadUInt32();
+            break;
+          }
+          case 106: {
             if (headFrameInfo_ == null) {
               HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
             break;
           }
-          case 56: {
-            CurrentPersonalCardId = input.ReadUInt32();
-            break;
-          }
-          case 66:
-          case 64: {
-            assistAvatarIdList_.AddEntriesFrom(input, _repeated_assistAvatarIdList_codec);
-            break;
-          }
-          case 82:
-          case 80: {
-            unlockedPersonalCardList_.AddEntriesFrom(input, _repeated_unlockedPersonalCardList_codec);
-            break;
-          }
-          case 98: {
-            Signature = input.ReadString();
-            break;
-          }
-          case 104: {
-            CurrentHeadIconId = input.ReadUInt32();
-            break;
-          }
           case 120: {
-            Retcode = input.ReadUInt32();
+            CurrentPersonalCardId = input.ReadUInt32();
             break;
           }
         }
@@ -477,48 +477,48 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 16: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 26:
+          case 24: {
+            assistAvatarIdList_.AddEntriesFrom(ref input, _repeated_assistAvatarIdList_codec);
+            break;
+          }
+          case 42: {
+            Signature = input.ReadString();
+            break;
+          }
+          case 50:
+          case 48: {
+            unlockedPersonalCardList_.AddEntriesFrom(ref input, _repeated_unlockedPersonalCardList_codec);
+            break;
+          }
+          case 66: {
             if (displayAvatarVec_ == null) {
               DisplayAvatarVec = new global::March7thHoney.Proto.DisplayAvatarVec();
             }
             input.ReadMessage(DisplayAvatarVec);
             break;
           }
-          case 34: {
+          case 74: {
             unlockedHeadIconList_.AddEntriesFrom(ref input, _repeated_unlockedHeadIconList_codec);
             break;
           }
-          case 42: {
+          case 80: {
+            CurrentHeadIconId = input.ReadUInt32();
+            break;
+          }
+          case 106: {
             if (headFrameInfo_ == null) {
               HeadFrameInfo = new global::March7thHoney.Proto.HeadFrameInfo();
             }
             input.ReadMessage(HeadFrameInfo);
             break;
           }
-          case 56: {
-            CurrentPersonalCardId = input.ReadUInt32();
-            break;
-          }
-          case 66:
-          case 64: {
-            assistAvatarIdList_.AddEntriesFrom(ref input, _repeated_assistAvatarIdList_codec);
-            break;
-          }
-          case 82:
-          case 80: {
-            unlockedPersonalCardList_.AddEntriesFrom(ref input, _repeated_unlockedPersonalCardList_codec);
-            break;
-          }
-          case 98: {
-            Signature = input.ReadString();
-            break;
-          }
-          case 104: {
-            CurrentHeadIconId = input.ReadUInt32();
-            break;
-          }
           case 120: {
-            Retcode = input.ReadUInt32();
+            CurrentPersonalCardId = input.ReadUInt32();
             break;
           }
         }

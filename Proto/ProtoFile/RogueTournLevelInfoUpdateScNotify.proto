@@ -7,8 +7,8 @@ import "IJNFOHJGPBC.proto";
 import "RogueTournLevelStatus.proto";
 
 message RogueTournLevelInfoUpdateScNotify {
-    repeated IJNFOHJGPBC NNFFPJOLDHK = 13;
-    uint32 BJHMFOAGMBF = 4;
-    FKNGOGLNKIG reason = 3;
-    RogueTournLevelStatus status = 9;
+    FKNGOGLNKIG reason = 2;
+    repeated IJNFOHJGPBC NNFFPJOLDHK = 4;
+    RogueTournLevelStatus status = 5;
+    uint32 BJHMFOAGMBF = 10;
 }

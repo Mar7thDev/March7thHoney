@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GDGEIAHNDAD.proto";
 
 message LogisticsInfoScNotify {
-    GDGEIAHNDAD NFJKAILEFAD = 14;
+    GDGEIAHNDAD NFJKAILEFAD = 3;
 }

@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpSZWNvbWVuZGVkQXZhdGFySW5mby5wcm90byJhChRSZWNvbWVuZGVkQXZh",
-            "dGFySW5mbxIWCg5hdmF0YXJfaWRfbGlzdBgIIAMoDRIUCgxyZWxpY19zZXRf",
-            "aWQYAyABKA0SGwoTcmVjb21tZW5kX2F2YXRhcl9pZBgKIAEoDUIWqgITTWFy",
+            "dGFySW5mbxIbChNyZWNvbW1lbmRfYXZhdGFyX2lkGAkgASgNEhYKDmF2YXRh",
+            "cl9pZF9saXN0GAsgAygNEhQKDHJlbGljX3NldF9pZBgMIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RecomendedAvatarInfo), global::March7thHoney.Proto.RecomendedAvatarInfo.Parser, new[]{ "AvatarIdList", "RelicSetId", "RecommendAvatarId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RecomendedAvatarInfo), global::March7thHoney.Proto.RecomendedAvatarInfo.Parser, new[]{ "RecommendAvatarId", "AvatarIdList", "RelicSetId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RecomendedAvatarInfo(RecomendedAvatarInfo other) : this() {
+      recommendAvatarId_ = other.recommendAvatarId_;
       avatarIdList_ = other.avatarIdList_.Clone();
       relicSetId_ = other.relicSetId_;
-      recommendAvatarId_ = other.recommendAvatarId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,10 +85,22 @@ namespace March7thHoney.Proto {
       return new RecomendedAvatarInfo(this);
     }
 
+    /// <summary>Field number for the "recommend_avatar_id" field.</summary>
+    public const int RecommendAvatarIdFieldNumber = 9;
+    private uint recommendAvatarId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint RecommendAvatarId {
+      get { return recommendAvatarId_; }
+      set {
+        recommendAvatarId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "avatar_id_list" field.</summary>
-    public const int AvatarIdListFieldNumber = 8;
+    public const int AvatarIdListFieldNumber = 11;
     private static readonly pb::FieldCodec<uint> _repeated_avatarIdList_codec
-        = pb::FieldCodec.ForUInt32(66);
+        = pb::FieldCodec.ForUInt32(90);
     private readonly pbc::RepeatedField<uint> avatarIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_set_id" field.</summary>
-    public const int RelicSetIdFieldNumber = 3;
+    public const int RelicSetIdFieldNumber = 12;
     private uint relicSetId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,18 +117,6 @@ namespace March7thHoney.Proto {
       get { return relicSetId_; }
       set {
         relicSetId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "recommend_avatar_id" field.</summary>
-    public const int RecommendAvatarIdFieldNumber = 10;
-    private uint recommendAvatarId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RecommendAvatarId {
-      get { return recommendAvatarId_; }
-      set {
-        recommendAvatarId_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (RecommendAvatarId != other.RecommendAvatarId) return false;
       if(!avatarIdList_.Equals(other.avatarIdList_)) return false;
       if (RelicSetId != other.RelicSetId) return false;
-      if (RecommendAvatarId != other.RecommendAvatarId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (RecommendAvatarId != 0) hash ^= RecommendAvatarId.GetHashCode();
       hash ^= avatarIdList_.GetHashCode();
       if (RelicSetId != 0) hash ^= RelicSetId.GetHashCode();
-      if (RecommendAvatarId != 0) hash ^= RecommendAvatarId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,14 +166,14 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (RelicSetId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(RelicSetId);
+      if (RecommendAvatarId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(RecommendAvatarId);
       }
       avatarIdList_.WriteTo(output, _repeated_avatarIdList_codec);
-      if (RecommendAvatarId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(RecommendAvatarId);
+      if (RelicSetId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(RelicSetId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -185,14 +185,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (RelicSetId != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(RelicSetId);
+      if (RecommendAvatarId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(RecommendAvatarId);
       }
       avatarIdList_.WriteTo(ref output, _repeated_avatarIdList_codec);
-      if (RecommendAvatarId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(RecommendAvatarId);
+      if (RelicSetId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(RelicSetId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -204,12 +204,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (RecommendAvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RecommendAvatarId);
+      }
       size += avatarIdList_.CalculateSize(_repeated_avatarIdList_codec);
       if (RelicSetId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RelicSetId);
-      }
-      if (RecommendAvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RecommendAvatarId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -223,12 +223,12 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.RecommendAvatarId != 0) {
+        RecommendAvatarId = other.RecommendAvatarId;
+      }
       avatarIdList_.Add(other.avatarIdList_);
       if (other.RelicSetId != 0) {
         RelicSetId = other.RelicSetId;
-      }
-      if (other.RecommendAvatarId != 0) {
-        RecommendAvatarId = other.RecommendAvatarId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -249,17 +249,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            RelicSetId = input.ReadUInt32();
+          case 72: {
+            RecommendAvatarId = input.ReadUInt32();
             break;
           }
-          case 66:
-          case 64: {
+          case 90:
+          case 88: {
             avatarIdList_.AddEntriesFrom(input, _repeated_avatarIdList_codec);
             break;
           }
-          case 80: {
-            RecommendAvatarId = input.ReadUInt32();
+          case 96: {
+            RelicSetId = input.ReadUInt32();
             break;
           }
         }
@@ -281,17 +281,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            RelicSetId = input.ReadUInt32();
+          case 72: {
+            RecommendAvatarId = input.ReadUInt32();
             break;
           }
-          case 66:
-          case 64: {
+          case 90:
+          case 88: {
             avatarIdList_.AddEntriesFrom(ref input, _repeated_avatarIdList_codec);
             break;
           }
-          case 80: {
-            RecommendAvatarId = input.ReadUInt32();
+          case 96: {
+            RelicSetId = input.ReadUInt32();
             break;
           }
         }

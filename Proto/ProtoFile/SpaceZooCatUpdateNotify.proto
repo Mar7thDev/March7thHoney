@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DBLILHCLPPL.proto";
 
 message SpaceZooCatUpdateNotify {
-    repeated DBLILHCLPPL HMAIHHCBFKP = 12;
-    bool FHHCNGAGFCJ = 7;
-    bool HCGHLFAKIKI = 14;
+    bool HCGHLFAKIKI = 9;
+    repeated DBLILHCLPPL HMAIHHCBFKP = 10;
+    bool FHHCNGAGFCJ = 11;
 }

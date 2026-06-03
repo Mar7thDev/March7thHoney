@@ -6,10 +6,10 @@ import "ClockParkPlayStatus.proto";
 import "SceneBattleInfo.proto";
 
 message ClockParkHandleWaitOperationScRsp {
-    SceneBattleInfo battle_info = 6;
-    uint32 DMNECEKOLAJ = 3;
-    uint32 retcode = 8;
-    ClockParkPlayStatus LNPGHCLDOKG = 15;
-    uint32 JGPHDBDHKKO = 7;
+    uint32 DMNECEKOLAJ = 2;
     uint32 IGBHCBNKEBO = 4;
+    uint32 retcode = 6;
+    uint32 JGPHDBDHKKO = 7;
+    ClockParkPlayStatus LNPGHCLDOKG = 13;
+    SceneBattleInfo battle_info = 14;
 }

@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChxDdXJBc3Npc3RDaGFuZ2VkTm90aWZ5LnByb3RvGhZQbGF5ZXJBc3Npc3RJ",
             "bmZvLnByb3RvIkAKFkN1ckFzc2lzdENoYW5nZWROb3RpZnkSJgoLT0RITUdQ",
-            "TkVDRk8YDyABKAsyES5QbGF5ZXJBc3Npc3RJbmZvQhaqAhNNYXJjaDd0aEhv",
+            "TkVDRk8YBCABKAsyES5QbGF5ZXJBc3Npc3RJbmZvQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PlayerAssistInfoReflection.Descriptor, },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "ODHMGPNECFO" field.</summary>
-    public const int ODHMGPNECFOFieldNumber = 15;
+    public const int ODHMGPNECFOFieldNumber = 4;
     private global::March7thHoney.Proto.PlayerAssistInfo oDHMGPNECFO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (oDHMGPNECFO_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(34);
         output.WriteMessage(ODHMGPNECFO);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (oDHMGPNECFO_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(34);
         output.WriteMessage(ODHMGPNECFO);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 122: {
+          case 34: {
             if (oDHMGPNECFO_ == null) {
               ODHMGPNECFO = new global::March7thHoney.Proto.PlayerAssistInfo();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 122: {
+          case 34: {
             if (oDHMGPNECFO_ == null) {
               ODHMGPNECFO = new global::March7thHoney.Proto.PlayerAssistInfo();
             }

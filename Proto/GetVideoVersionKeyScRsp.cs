@@ -26,9 +26,9 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch1HZXRWaWRlb1ZlcnNpb25LZXlTY1JzcC5wcm90bxoSVmlkZW9LZXlJbmZv",
             "LnByb3RvIosBChdHZXRWaWRlb1ZlcnNpb25LZXlTY1JzcBIzChxhY3Rpdml0",
-            "eV92aWRlb19rZXlfaW5mb19saXN0GAYgAygLMg0uVmlkZW9LZXlJbmZvEioK",
-            "E3ZpZGVvX2tleV9pbmZvX2xpc3QYCCADKAsyDS5WaWRlb0tleUluZm8SDwoH",
-            "cmV0Y29kZRgLIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "eV92aWRlb19rZXlfaW5mb19saXN0GAMgAygLMg0uVmlkZW9LZXlJbmZvEioK",
+            "E3ZpZGVvX2tleV9pbmZvX2xpc3QYCiADKAsyDS5WaWRlb0tleUluZm8SDwoH",
+            "cmV0Y29kZRgOIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.VideoKeyInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -87,9 +87,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "activity_video_key_info_list" field.</summary>
-    public const int ActivityVideoKeyInfoListFieldNumber = 6;
+    public const int ActivityVideoKeyInfoListFieldNumber = 3;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.VideoKeyInfo> _repeated_activityVideoKeyInfoList_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.VideoKeyInfo.Parser);
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.VideoKeyInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.VideoKeyInfo> activityVideoKeyInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.VideoKeyInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,9 +98,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "video_key_info_list" field.</summary>
-    public const int VideoKeyInfoListFieldNumber = 8;
+    public const int VideoKeyInfoListFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.VideoKeyInfo> _repeated_videoKeyInfoList_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.VideoKeyInfo.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.VideoKeyInfo.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.VideoKeyInfo> videoKeyInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.VideoKeyInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
+    public const int RetcodeFieldNumber = 14;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -169,7 +169,7 @@ namespace March7thHoney.Proto {
       activityVideoKeyInfoList_.WriteTo(output, _repeated_activityVideoKeyInfoList_codec);
       videoKeyInfoList_.WriteTo(output, _repeated_videoKeyInfoList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -185,7 +185,7 @@ namespace March7thHoney.Proto {
       activityVideoKeyInfoList_.WriteTo(ref output, _repeated_activityVideoKeyInfoList_codec);
       videoKeyInfoList_.WriteTo(ref output, _repeated_videoKeyInfoList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -239,15 +239,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 26: {
             activityVideoKeyInfoList_.AddEntriesFrom(input, _repeated_activityVideoKeyInfoList_codec);
             break;
           }
-          case 66: {
+          case 82: {
             videoKeyInfoList_.AddEntriesFrom(input, _repeated_videoKeyInfoList_codec);
             break;
           }
-          case 88: {
+          case 112: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -270,15 +270,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 26: {
             activityVideoKeyInfoList_.AddEntriesFrom(ref input, _repeated_activityVideoKeyInfoList_codec);
             break;
           }
-          case 66: {
+          case 82: {
             videoKeyInfoList_.AddEntriesFrom(ref input, _repeated_videoKeyInfoList_codec);
             break;
           }
-          case 88: {
+          case 112: {
             Retcode = input.ReadUInt32();
             break;
           }

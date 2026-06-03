@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DMGODFDFPEI {
-    uint32 MNMJCNOLIII = 9;
-    uint32 AFEMBLFCCCH = 12;
+    uint32 AFEMBLFCCCH = 5;
+    uint32 MNMJCNOLIII = 14;
 }

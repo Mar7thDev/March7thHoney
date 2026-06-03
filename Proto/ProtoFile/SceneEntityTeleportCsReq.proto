@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EntityMotion.proto";
 
 message SceneEntityTeleportCsReq {
-    EntityMotion entity_motion = 10;
-    uint64 interact_id = 11;
-    uint32 entry_id = 1;
+    uint32 entry_id = 3;
+    uint64 interact_id = 4;
+    EntityMotion entity_motion = 12;
 }

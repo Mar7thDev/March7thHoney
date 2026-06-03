@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BOLCGIOGIBP.proto";
 
 message LogisticsGameScRsp {
-    repeated BOLCGIOGIBP ALOOPKCJFEA = 9;
-    uint32 retcode = 14;
-    uint32 event_id = 2;
-    bool CNCJKGEDEII = 4;
+    uint32 retcode = 5;
+    bool CNCJKGEDEII = 6;
+    repeated BOLCGIOGIBP ALOOPKCJFEA = 7;
+    uint32 event_id = 11;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TakeQuestOptionalRewardCsReq {
-    uint32 optional_reward_id = 13;
-    uint32 quest_id = 12;
+    uint32 optional_reward_id = 4;
+    uint32 quest_id = 8;
 }

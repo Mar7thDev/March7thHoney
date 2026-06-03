@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFKSEFDRkZKSVBISy5wcm90bxoRTkNGS0hESUtDTkkucHJvdG8aGVBsYW5l",
-            "dEZlc1F1ZXN0U3RhdGUucHJvdG8itwEKC0pIQUNGRkpJUEhLEhMKC0RQQ0hH",
-            "TU1DS05OGA4gASgNEhAKCHF1ZXN0X2lkGAYgASgNEiQKBnN0YXR1cxgDIAEo",
-            "DjIULlBsYW5ldEZlc1F1ZXN0U3RhdGUSEAoIcHJvZ3Jlc3MYBCABKA0SFQoL",
-            "TUNOTE1OT0tBRkYYCiABKA1IABIjCgtLTk9DUEFKQ1BKQxgCIAEoCzIMLk5D",
+            "dEZlc1F1ZXN0U3RhdGUucHJvdG8itwEKC0pIQUNGRkpJUEhLEiQKBnN0YXR1",
+            "cxgFIAEoDjIULlBsYW5ldEZlc1F1ZXN0U3RhdGUSEAoIcHJvZ3Jlc3MYByAB",
+            "KA0SEwoLRFBDSEdNTUNLTk4YCiABKA0SEAoIcXVlc3RfaWQYCyABKA0SFQoL",
+            "TUNOTE1OT0tBRkYYAiABKA1IABIjCgtLTk9DUEFKQ1BKQxgPIAEoCzIMLk5D",
             "RktIRElLQ05JSABCDQoLSkNQSFBBSEtQRERCFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.NCFKHDIKCNIReflection.Descriptor, global::March7thHoney.Proto.PlanetFesQuestStateReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JHACFFJIPHK), global::March7thHoney.Proto.JHACFFJIPHK.Parser, new[]{ "DPCHGMMCKNN", "QuestId", "Status", "Progress", "MCNLMNOKAFF", "KNOCPAJCPJC" }, new[]{ "JCPHPAHKPDD" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JHACFFJIPHK), global::March7thHoney.Proto.JHACFFJIPHK.Parser, new[]{ "Status", "Progress", "DPCHGMMCKNN", "QuestId", "MCNLMNOKAFF", "KNOCPAJCPJC" }, new[]{ "JCPHPAHKPDD" }, null, null, null)
           }));
     }
     #endregion
@@ -76,10 +76,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JHACFFJIPHK(JHACFFJIPHK other) : this() {
-      dPCHGMMCKNN_ = other.dPCHGMMCKNN_;
-      questId_ = other.questId_;
       status_ = other.status_;
       progress_ = other.progress_;
+      dPCHGMMCKNN_ = other.dPCHGMMCKNN_;
+      questId_ = other.questId_;
       switch (other.JCPHPAHKPDDCase) {
         case JCPHPAHKPDDOneofCase.MCNLMNOKAFF:
           MCNLMNOKAFF = other.MCNLMNOKAFF;
@@ -98,32 +98,8 @@ namespace March7thHoney.Proto {
       return new JHACFFJIPHK(this);
     }
 
-    /// <summary>Field number for the "DPCHGMMCKNN" field.</summary>
-    public const int DPCHGMMCKNNFieldNumber = 14;
-    private uint dPCHGMMCKNN_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DPCHGMMCKNN {
-      get { return dPCHGMMCKNN_; }
-      set {
-        dPCHGMMCKNN_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "quest_id" field.</summary>
-    public const int QuestIdFieldNumber = 6;
-    private uint questId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint QuestId {
-      get { return questId_; }
-      set {
-        questId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 3;
+    public const int StatusFieldNumber = 5;
     private global::March7thHoney.Proto.PlanetFesQuestState status_ = global::March7thHoney.Proto.PlanetFesQuestState.CnlaedclicpMdpjcgemolg;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,7 +111,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "progress" field.</summary>
-    public const int ProgressFieldNumber = 4;
+    public const int ProgressFieldNumber = 7;
     private uint progress_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -146,8 +122,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "DPCHGMMCKNN" field.</summary>
+    public const int DPCHGMMCKNNFieldNumber = 10;
+    private uint dPCHGMMCKNN_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint DPCHGMMCKNN {
+      get { return dPCHGMMCKNN_; }
+      set {
+        dPCHGMMCKNN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "quest_id" field.</summary>
+    public const int QuestIdFieldNumber = 11;
+    private uint questId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint QuestId {
+      get { return questId_; }
+      set {
+        questId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "MCNLMNOKAFF" field.</summary>
-    public const int MCNLMNOKAFFFieldNumber = 10;
+    public const int MCNLMNOKAFFFieldNumber = 2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint MCNLMNOKAFF {
@@ -173,7 +173,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KNOCPAJCPJC" field.</summary>
-    public const int KNOCPAJCPJCFieldNumber = 2;
+    public const int KNOCPAJCPJCFieldNumber = 15;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.NCFKHDIKCNI KNOCPAJCPJC {
@@ -188,8 +188,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "JCPHPAHKPDD" oneof.</summary>
     public enum JCPHPAHKPDDOneofCase {
       None = 0,
-      MCNLMNOKAFF = 10,
-      KNOCPAJCPJC = 2,
+      MCNLMNOKAFF = 2,
+      KNOCPAJCPJC = 15,
     }
     private JCPHPAHKPDDOneofCase jCPHPAHKPDDCase_ = JCPHPAHKPDDOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -220,10 +220,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (DPCHGMMCKNN != other.DPCHGMMCKNN) return false;
-      if (QuestId != other.QuestId) return false;
       if (Status != other.Status) return false;
       if (Progress != other.Progress) return false;
+      if (DPCHGMMCKNN != other.DPCHGMMCKNN) return false;
+      if (QuestId != other.QuestId) return false;
       if (MCNLMNOKAFF != other.MCNLMNOKAFF) return false;
       if (!object.Equals(KNOCPAJCPJC, other.KNOCPAJCPJC)) return false;
       if (JCPHPAHKPDDCase != other.JCPHPAHKPDDCase) return false;
@@ -234,10 +234,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (DPCHGMMCKNN != 0) hash ^= DPCHGMMCKNN.GetHashCode();
-      if (QuestId != 0) hash ^= QuestId.GetHashCode();
       if (Status != global::March7thHoney.Proto.PlanetFesQuestState.CnlaedclicpMdpjcgemolg) hash ^= Status.GetHashCode();
       if (Progress != 0) hash ^= Progress.GetHashCode();
+      if (DPCHGMMCKNN != 0) hash ^= DPCHGMMCKNN.GetHashCode();
+      if (QuestId != 0) hash ^= QuestId.GetHashCode();
       if (HasMCNLMNOKAFF) hash ^= MCNLMNOKAFF.GetHashCode();
       if (jCPHPAHKPDDCase_ == JCPHPAHKPDDOneofCase.KNOCPAJCPJC) hash ^= KNOCPAJCPJC.GetHashCode();
       hash ^= (int) jCPHPAHKPDDCase_;
@@ -259,29 +259,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (jCPHPAHKPDDCase_ == JCPHPAHKPDDOneofCase.KNOCPAJCPJC) {
-        output.WriteRawTag(18);
-        output.WriteMessage(KNOCPAJCPJC);
+      if (HasMCNLMNOKAFF) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(MCNLMNOKAFF);
       }
       if (Status != global::March7thHoney.Proto.PlanetFesQuestState.CnlaedclicpMdpjcgemolg) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
       if (Progress != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(Progress);
       }
+      if (DPCHGMMCKNN != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(DPCHGMMCKNN);
+      }
       if (QuestId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(88);
         output.WriteUInt32(QuestId);
       }
-      if (HasMCNLMNOKAFF) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(MCNLMNOKAFF);
-      }
-      if (DPCHGMMCKNN != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(DPCHGMMCKNN);
+      if (jCPHPAHKPDDCase_ == JCPHPAHKPDDOneofCase.KNOCPAJCPJC) {
+        output.WriteRawTag(122);
+        output.WriteMessage(KNOCPAJCPJC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -293,29 +293,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (jCPHPAHKPDDCase_ == JCPHPAHKPDDOneofCase.KNOCPAJCPJC) {
-        output.WriteRawTag(18);
-        output.WriteMessage(KNOCPAJCPJC);
+      if (HasMCNLMNOKAFF) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(MCNLMNOKAFF);
       }
       if (Status != global::March7thHoney.Proto.PlanetFesQuestState.CnlaedclicpMdpjcgemolg) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteEnum((int) Status);
       }
       if (Progress != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(Progress);
       }
+      if (DPCHGMMCKNN != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(DPCHGMMCKNN);
+      }
       if (QuestId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(88);
         output.WriteUInt32(QuestId);
       }
-      if (HasMCNLMNOKAFF) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(MCNLMNOKAFF);
-      }
-      if (DPCHGMMCKNN != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(DPCHGMMCKNN);
+      if (jCPHPAHKPDDCase_ == JCPHPAHKPDDOneofCase.KNOCPAJCPJC) {
+        output.WriteRawTag(122);
+        output.WriteMessage(KNOCPAJCPJC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -327,17 +327,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (DPCHGMMCKNN != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DPCHGMMCKNN);
-      }
-      if (QuestId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(QuestId);
-      }
       if (Status != global::March7thHoney.Proto.PlanetFesQuestState.CnlaedclicpMdpjcgemolg) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
       }
       if (Progress != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Progress);
+      }
+      if (DPCHGMMCKNN != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DPCHGMMCKNN);
+      }
+      if (QuestId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(QuestId);
       }
       if (HasMCNLMNOKAFF) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MCNLMNOKAFF);
@@ -357,17 +357,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.DPCHGMMCKNN != 0) {
-        DPCHGMMCKNN = other.DPCHGMMCKNN;
-      }
-      if (other.QuestId != 0) {
-        QuestId = other.QuestId;
-      }
       if (other.Status != global::March7thHoney.Proto.PlanetFesQuestState.CnlaedclicpMdpjcgemolg) {
         Status = other.Status;
       }
       if (other.Progress != 0) {
         Progress = other.Progress;
+      }
+      if (other.DPCHGMMCKNN != 0) {
+        DPCHGMMCKNN = other.DPCHGMMCKNN;
+      }
+      if (other.QuestId != 0) {
+        QuestId = other.QuestId;
       }
       switch (other.JCPHPAHKPDDCase) {
         case JCPHPAHKPDDOneofCase.MCNLMNOKAFF:
@@ -400,33 +400,33 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
+          case 16: {
+            MCNLMNOKAFF = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            Status = (global::March7thHoney.Proto.PlanetFesQuestState) input.ReadEnum();
+            break;
+          }
+          case 56: {
+            Progress = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            DPCHGMMCKNN = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            QuestId = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             global::March7thHoney.Proto.NCFKHDIKCNI subBuilder = new global::March7thHoney.Proto.NCFKHDIKCNI();
             if (jCPHPAHKPDDCase_ == JCPHPAHKPDDOneofCase.KNOCPAJCPJC) {
               subBuilder.MergeFrom(KNOCPAJCPJC);
             }
             input.ReadMessage(subBuilder);
             KNOCPAJCPJC = subBuilder;
-            break;
-          }
-          case 24: {
-            Status = (global::March7thHoney.Proto.PlanetFesQuestState) input.ReadEnum();
-            break;
-          }
-          case 32: {
-            Progress = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            QuestId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            MCNLMNOKAFF = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            DPCHGMMCKNN = input.ReadUInt32();
             break;
           }
         }
@@ -448,33 +448,33 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
+          case 16: {
+            MCNLMNOKAFF = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            Status = (global::March7thHoney.Proto.PlanetFesQuestState) input.ReadEnum();
+            break;
+          }
+          case 56: {
+            Progress = input.ReadUInt32();
+            break;
+          }
+          case 80: {
+            DPCHGMMCKNN = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            QuestId = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             global::March7thHoney.Proto.NCFKHDIKCNI subBuilder = new global::March7thHoney.Proto.NCFKHDIKCNI();
             if (jCPHPAHKPDDCase_ == JCPHPAHKPDDOneofCase.KNOCPAJCPJC) {
               subBuilder.MergeFrom(KNOCPAJCPJC);
             }
             input.ReadMessage(subBuilder);
             KNOCPAJCPJC = subBuilder;
-            break;
-          }
-          case 24: {
-            Status = (global::March7thHoney.Proto.PlanetFesQuestState) input.ReadEnum();
-            break;
-          }
-          case 32: {
-            Progress = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            QuestId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            MCNLMNOKAFF = input.ReadUInt32();
-            break;
-          }
-          case 112: {
-            DPCHGMMCKNN = input.ReadUInt32();
             break;
           }
         }

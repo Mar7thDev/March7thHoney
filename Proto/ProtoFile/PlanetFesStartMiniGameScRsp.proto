@@ -7,8 +7,8 @@ import "PBAPKAGHGFB.proto";
 import "PGPHEKKPBLD.proto";
 
 message PlanetFesStartMiniGameScRsp {
-    PGPHEKKPBLD CFDIKLBINHK = 6;
-    GNMCIEPEBPK reward = 12;
-    uint32 retcode = 14;
-    PBAPKAGHGFB HMMBBENHIFE = 9;
+    uint32 retcode = 3;
+    GNMCIEPEBPK reward = 9;
+    PGPHEKKPBLD CFDIKLBINHK = 10;
+    PBAPKAGHGFB HMMBBENHIFE = 11;
 }

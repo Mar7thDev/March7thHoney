@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HOALCJNIJJC {
-    uint32 display_value = 8;
+    uint32 param = 11;
     uint32 event_id = 15;
 }

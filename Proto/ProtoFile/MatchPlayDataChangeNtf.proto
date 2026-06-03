@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PNEGDOHOLDN.proto";
 
 message MatchPlayDataChangeNtf {
-    PNEGDOHOLDN KMCDHFGJFNJ = 13;
+    PNEGDOHOLDN KMCDHFGJFNJ = 5;
 }

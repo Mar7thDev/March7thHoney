@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GridFightEquipDressSource.proto";
 
 message KOIAMDKEFKH {
-    uint32 MDNAGANGNKK = 12;
-    uint32 PEBCBLBLMPH = 8;
-    GridFightEquipDressSource CPFCNOAJCGK = 10;
+    GridFightEquipDressSource CPFCNOAJCGK = 2;
+    uint32 MDNAGANGNKK = 4;
+    uint32 PEBCBLBLMPH = 14;
 }

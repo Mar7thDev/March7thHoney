@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "OEDHMAHDECC.proto";
+
+message GridFightArchiveData {
+    uint32 GEGMHOMNBDG = 7;
+    int64 OBNEAIPKGKL = 9;
+    bool IECKKCHJMLP = 10;
+    OEDHMAHDECC BFLLJJBHLDF = 11;
+    uint32 PMBNKEFCICH = 12;
+    uint32 LJNGPCKPJLF = 14;
+    uint32 BAAGDILLLME = 15;
+}

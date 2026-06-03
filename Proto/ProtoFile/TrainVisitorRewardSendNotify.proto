@@ -6,7 +6,7 @@ import "CFCPOEDPPKB.proto";
 import "ItemList.proto";
 
 message TrainVisitorRewardSendNotify {
-    ItemList reward = 11;
-    uint32 DOOACEHOPEE = 10;
-    CFCPOEDPPKB type = 1;
+    CFCPOEDPPKB type = 7;
+    uint32 DOOACEHOPEE = 8;
+    ItemList reward = 10;
 }

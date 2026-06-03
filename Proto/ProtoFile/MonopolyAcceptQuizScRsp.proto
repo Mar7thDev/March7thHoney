@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "JGKNADEDNHB.proto";
 
 message MonopolyAcceptQuizScRsp {
+    uint32 retcode = 11;
     JGKNADEDNHB LOCHFJEECKL = 14;
-    uint32 retcode = 6;
 }

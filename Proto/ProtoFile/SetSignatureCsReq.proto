@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetSignatureCsReq {
-    string signature = 15;
+    string signature = 13;
 }

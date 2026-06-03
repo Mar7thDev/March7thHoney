@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OEDABANAJEK.proto";
 
 message TechTreeChangeNodeStateCsRsp {
-    uint32 retcode = 1;
-    OEDABANAJEK op_type = 10;
-    uint32 CDMFHNGEFCN = 3;
+    uint32 retcode = 2;
+    uint32 CDMFHNGEFCN = 5;
+    OEDABANAJEK op_type = 14;
 }

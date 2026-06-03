@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetMarkItemListScRsp {
-    repeated uint32 PEPKCBILIFO = 10;
-    uint32 retcode = 4;
+    repeated uint32 PEPKCBILIFO = 2;
+    uint32 retcode = 13;
 }

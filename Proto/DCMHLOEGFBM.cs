@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFEQ01ITE9FR0ZCTS5wcm90bxoOSXRlbUxpc3QucHJvdG8iVQoLRENNSExP",
-            "RUdGQk0SHAoJaXRlbV9saXN0GAggASgLMgkuSXRlbUxpc3QSEwoLSEFCSE9B",
-            "TUNHTEgYDSABKA0SEwoLTENGRE9QSU5FQk8YAyABKA1CFqoCE01hcmNoN3Ro",
+            "RUdGQk0SEwoLTENGRE9QSU5FQk8YAiABKA0SHAoJaXRlbV9saXN0GAcgASgL",
+            "MgkuSXRlbUxpc3QSEwoLSEFCSE9BTUNHTEgYDyABKA1CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DCMHLOEGFBM), global::March7thHoney.Proto.DCMHLOEGFBM.Parser, new[]{ "ItemList", "HABHOAMCGLH", "LCFDOPINEBO" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DCMHLOEGFBM), global::March7thHoney.Proto.DCMHLOEGFBM.Parser, new[]{ "LCFDOPINEBO", "ItemList", "HABHOAMCGLH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,9 +73,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DCMHLOEGFBM(DCMHLOEGFBM other) : this() {
+      lCFDOPINEBO_ = other.lCFDOPINEBO_;
       itemList_ = other.itemList_ != null ? other.itemList_.Clone() : null;
       hABHOAMCGLH_ = other.hABHOAMCGLH_;
-      lCFDOPINEBO_ = other.lCFDOPINEBO_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,8 +85,20 @@ namespace March7thHoney.Proto {
       return new DCMHLOEGFBM(this);
     }
 
+    /// <summary>Field number for the "LCFDOPINEBO" field.</summary>
+    public const int LCFDOPINEBOFieldNumber = 2;
+    private uint lCFDOPINEBO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LCFDOPINEBO {
+      get { return lCFDOPINEBO_; }
+      set {
+        lCFDOPINEBO_ = value;
+      }
+    }
+
     /// <summary>Field number for the "item_list" field.</summary>
-    public const int ItemListFieldNumber = 8;
+    public const int ItemListFieldNumber = 7;
     private global::March7thHoney.Proto.ItemList itemList_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HABHOAMCGLH" field.</summary>
-    public const int HABHOAMCGLHFieldNumber = 13;
+    public const int HABHOAMCGLHFieldNumber = 15;
     private uint hABHOAMCGLH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,18 +118,6 @@ namespace March7thHoney.Proto {
       get { return hABHOAMCGLH_; }
       set {
         hABHOAMCGLH_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "LCFDOPINEBO" field.</summary>
-    public const int LCFDOPINEBOFieldNumber = 3;
-    private uint lCFDOPINEBO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LCFDOPINEBO {
-      get { return lCFDOPINEBO_; }
-      set {
-        lCFDOPINEBO_ = value;
       }
     }
 
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (LCFDOPINEBO != other.LCFDOPINEBO) return false;
       if (!object.Equals(ItemList, other.ItemList)) return false;
       if (HABHOAMCGLH != other.HABHOAMCGLH) return false;
-      if (LCFDOPINEBO != other.LCFDOPINEBO) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (LCFDOPINEBO != 0) hash ^= LCFDOPINEBO.GetHashCode();
       if (itemList_ != null) hash ^= ItemList.GetHashCode();
       if (HABHOAMCGLH != 0) hash ^= HABHOAMCGLH.GetHashCode();
-      if (LCFDOPINEBO != 0) hash ^= LCFDOPINEBO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -168,15 +168,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (LCFDOPINEBO != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(LCFDOPINEBO);
       }
       if (itemList_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteMessage(ItemList);
       }
       if (HABHOAMCGLH != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(120);
         output.WriteUInt32(HABHOAMCGLH);
       }
       if (_unknownFields != null) {
@@ -190,15 +190,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (LCFDOPINEBO != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(LCFDOPINEBO);
       }
       if (itemList_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteMessage(ItemList);
       }
       if (HABHOAMCGLH != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(120);
         output.WriteUInt32(HABHOAMCGLH);
       }
       if (_unknownFields != null) {
@@ -211,14 +211,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (LCFDOPINEBO != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LCFDOPINEBO);
+      }
       if (itemList_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ItemList);
       }
       if (HABHOAMCGLH != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HABHOAMCGLH);
-      }
-      if (LCFDOPINEBO != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LCFDOPINEBO);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -232,6 +232,9 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.LCFDOPINEBO != 0) {
+        LCFDOPINEBO = other.LCFDOPINEBO;
+      }
       if (other.itemList_ != null) {
         if (itemList_ == null) {
           ItemList = new global::March7thHoney.Proto.ItemList();
@@ -240,9 +243,6 @@ namespace March7thHoney.Proto {
       }
       if (other.HABHOAMCGLH != 0) {
         HABHOAMCGLH = other.HABHOAMCGLH;
-      }
-      if (other.LCFDOPINEBO != 0) {
-        LCFDOPINEBO = other.LCFDOPINEBO;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -263,18 +263,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 16: {
             LCFDOPINEBO = input.ReadUInt32();
             break;
           }
-          case 66: {
+          case 58: {
             if (itemList_ == null) {
               ItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemList);
             break;
           }
-          case 104: {
+          case 120: {
             HABHOAMCGLH = input.ReadUInt32();
             break;
           }
@@ -297,18 +297,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 16: {
             LCFDOPINEBO = input.ReadUInt32();
             break;
           }
-          case 66: {
+          case 58: {
             if (itemList_ == null) {
               ItemList = new global::March7thHoney.Proto.ItemList();
             }
             input.ReadMessage(ItemList);
             break;
           }
-          case 104: {
+          case 120: {
             HABHOAMCGLH = input.ReadUInt32();
             break;
           }

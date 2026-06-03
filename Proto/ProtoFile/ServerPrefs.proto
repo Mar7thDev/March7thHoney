@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ServerPrefs {
-    bytes data = 10;
-    uint32 server_prefs_id = 5;
+    uint32 server_prefs_id = 10;
+    bytes data = 14;
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FGGJCLDLMMI.proto";
 
 message AMOHFCEEBNK {
-    FGGJCLDLMMI FCMGNLIODGI = 10;
+    FGGJCLDLMMI FCMGNLIODGI = 12;
 }

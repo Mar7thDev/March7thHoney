@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFVcGRhdGVGZWF0dXJlU3dpdGNoU2NOb3RpZnkucHJvdG8aEUhET0tOTUdJ",
             "RE1CLnByb3RvIkUKG1VwZGF0ZUZlYXR1cmVTd2l0Y2hTY05vdGlmeRImChBz",
-            "d2l0Y2hfaW5mb19saXN0GAkgAygLMgwuSERPS05NR0lETUJCFqoCE01hcmNo",
+            "d2l0Y2hfaW5mb19saXN0GA0gAygLMgwuSERPS05NR0lETUJCFqoCE01hcmNo",
             "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.HDOKNMGIDMBReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "switch_info_list" field.</summary>
-    public const int SwitchInfoListFieldNumber = 9;
+    public const int SwitchInfoListFieldNumber = 13;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.HDOKNMGIDMB> _repeated_switchInfoList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.HDOKNMGIDMB.Parser);
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.HDOKNMGIDMB.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.HDOKNMGIDMB> switchInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.HDOKNMGIDMB>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,7 +191,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74: {
+          case 106: {
             switchInfoList_.AddEntriesFrom(input, _repeated_switchInfoList_codec);
             break;
           }
@@ -214,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74: {
+          case 106: {
             switchInfoList_.AddEntriesFrom(ref input, _repeated_switchInfoList_codec);
             break;
           }

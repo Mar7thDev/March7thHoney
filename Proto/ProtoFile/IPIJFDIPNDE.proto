@@ -7,11 +7,11 @@ import "CMNLOKDOFEF.proto";
 import "DiceCombatAvatar.proto";
 
 message IPIJFDIPNDE {
-    CMNLOKDOFEF AEPFOJHNNFH = 3;
-    BOFHHEBDEOD BAEGDJILMBL = 2;
     repeated DiceCombatAvatar avatar_list = 1;
+    BOFHHEBDEOD BAEGDJILMBL = 2;
+    CMNLOKDOFEF AEPFOJHNNFH = 3;
+    uint32 EECIJBLGLNG = 4;
     uint32 EMHHCEMGBEM = 5;
     uint32 GMCAHOPDHLI = 6;
     bool KDFJPPOLFEB = 7;
-    uint32 EECIJBLGLNG = 4;
 }

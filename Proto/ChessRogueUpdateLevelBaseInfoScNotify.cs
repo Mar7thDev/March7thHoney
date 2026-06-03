@@ -27,7 +27,7 @@ namespace March7thHoney.Proto {
             "CitDaGVzc1JvZ3VlVXBkYXRlTGV2ZWxCYXNlSW5mb1NjTm90aWZ5LnByb3Rv",
             "GhFHREhMRE5GTE9PRi5wcm90bxoRSU9KSkNEQVBMQUoucHJvdG8iaAolQ2hl",
             "c3NSb2d1ZVVwZGF0ZUxldmVsQmFzZUluZm9TY05vdGlmeRIcCgZyZWFzb24Y",
-            "BSABKA4yDC5JT0pKQ0RBUExBShIhCgtHS0RDUE5MT0xORhgPIAEoDjIMLkdE",
+            "CCABKA4yDC5JT0pKQ0RBUExBShIhCgtHS0RDUE5MT0xORhgKIAEoDjIMLkdE",
             "SExETkZMT09GQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GDHLDNFLOOFReflection.Descriptor, global::March7thHoney.Proto.IOJJCDAPLAJReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reason" field.</summary>
-    public const int ReasonFieldNumber = 5;
+    public const int ReasonFieldNumber = 8;
     private global::March7thHoney.Proto.IOJJCDAPLAJ reason_ = global::March7thHoney.Proto.IOJJCDAPLAJ.Olbijijconk;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GKDCPNLOLNF" field.</summary>
-    public const int GKDCPNLOLNFFieldNumber = 15;
+    public const int GKDCPNLOLNFFieldNumber = 10;
     private global::March7thHoney.Proto.GDHLDNFLOOF gKDCPNLOLNF_ = global::March7thHoney.Proto.GDHLDNFLOOF.Adhghgefmlg;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -154,11 +154,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Reason != global::March7thHoney.Proto.IOJJCDAPLAJ.Olbijijconk) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteEnum((int) Reason);
       }
       if (GKDCPNLOLNF != global::March7thHoney.Proto.GDHLDNFLOOF.Adhghgefmlg) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(80);
         output.WriteEnum((int) GKDCPNLOLNF);
       }
       if (_unknownFields != null) {
@@ -172,11 +172,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Reason != global::March7thHoney.Proto.IOJJCDAPLAJ.Olbijijconk) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(64);
         output.WriteEnum((int) Reason);
       }
       if (GKDCPNLOLNF != global::March7thHoney.Proto.GDHLDNFLOOF.Adhghgefmlg) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(80);
         output.WriteEnum((int) GKDCPNLOLNF);
       }
       if (_unknownFields != null) {
@@ -232,11 +232,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 64: {
             Reason = (global::March7thHoney.Proto.IOJJCDAPLAJ) input.ReadEnum();
             break;
           }
-          case 120: {
+          case 80: {
             GKDCPNLOLNF = (global::March7thHoney.Proto.GDHLDNFLOOF) input.ReadEnum();
             break;
           }
@@ -259,11 +259,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 64: {
             Reason = (global::March7thHoney.Proto.IOJJCDAPLAJ) input.ReadEnum();
             break;
           }
-          case 120: {
+          case 80: {
             GKDCPNLOLNF = (global::March7thHoney.Proto.GDHLDNFLOOF) input.ReadEnum();
             break;
           }

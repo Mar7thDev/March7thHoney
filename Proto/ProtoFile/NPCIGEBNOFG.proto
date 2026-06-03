@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NPCIGEBNOFG {
-    uint32 num = 9;
-    uint32 BEBEEMKOBNN = 14;
+    uint32 num = 8;
+    uint32 display_type = 10;
 }

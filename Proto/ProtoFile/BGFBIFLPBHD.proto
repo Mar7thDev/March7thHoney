@@ -4,5 +4,4 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message BGFBIFLPBHD {
     uint32 MHJBJKJPOJE = 2;
-    uint32 effect_id = 1;
 }

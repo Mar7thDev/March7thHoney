@@ -7,7 +7,7 @@ import "LPPKGHJGOCC.proto";
 
 message TakeContentScRsp {
     ItemList reward = 4;
-    uint32 content_id = 3;
-    uint32 retcode = 8;
-    LPPKGHJGOCC MMNJODIJPOE = 1;
+    uint32 retcode = 9;
+    uint32 content_id = 12;
+    LPPKGHJGOCC content_type = 14;
 }

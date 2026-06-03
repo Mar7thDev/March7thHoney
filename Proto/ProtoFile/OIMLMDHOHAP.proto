@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message OIMLMDHOHAP {
-    uint32 KPHJDOPBMEN = 8;
-    uint32 area_id = 7;
-    uint32 APANPLBMONN = 2;
-    uint32 IELFOBFPDPA = 3;
+    uint32 IELFOBFPDPA = 2;
+    uint32 APANPLBMONN = 5;
+    uint32 area_id = 9;
+    uint32 KPHJDOPBMEN = 10;
 }

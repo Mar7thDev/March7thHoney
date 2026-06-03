@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MOHMAHDOBDO.proto";
 
 message IBHHJPCIOIC {
+    bool ECLAGOJMMBO = 1;
     map<string, MOHMAHDOBDO> JKMHAJHIKIK = 2;
     bytes AFMFNCGCNHI = 3;
-    bool ECLAGOJMMBO = 1;
 }

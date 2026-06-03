@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static AOPODAHBPFHReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBT1BPREFIQlBGSC5wcm90byI2CgtBT1BPREFIQlBGSBITCgtNTU5KT0RJ",
-            "SlBPRRgIIAEoDRISCgpjb250ZW50X2lkGAIgASgNQhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "ChFBT1BPREFIQlBGSC5wcm90byI3CgtBT1BPREFIQlBGSBISCgpjb250ZW50",
+            "X2lkGAMgASgNEhQKDGNvbnRlbnRfdHlwZRgOIAEoDUIWqgITTWFyY2g3dGhI",
+            "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOPODAHBPFH), global::March7thHoney.Proto.AOPODAHBPFH.Parser, new[]{ "MMNJODIJPOE", "ContentId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AOPODAHBPFH), global::March7thHoney.Proto.AOPODAHBPFH.Parser, new[]{ "ContentId", "ContentType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AOPODAHBPFH(AOPODAHBPFH other) : this() {
-      mMNJODIJPOE_ = other.mMNJODIJPOE_;
       contentId_ = other.contentId_;
+      contentType_ = other.contentType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new AOPODAHBPFH(this);
     }
 
-    /// <summary>Field number for the "MMNJODIJPOE" field.</summary>
-    public const int MMNJODIJPOEFieldNumber = 8;
-    private uint mMNJODIJPOE_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MMNJODIJPOE {
-      get { return mMNJODIJPOE_; }
-      set {
-        mMNJODIJPOE_ = value;
-      }
-    }
-
     /// <summary>Field number for the "content_id" field.</summary>
-    public const int ContentIdFieldNumber = 2;
+    public const int ContentIdFieldNumber = 3;
     private uint contentId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return contentId_; }
       set {
         contentId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "content_type" field.</summary>
+    public const int ContentTypeFieldNumber = 14;
+    private uint contentType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint ContentType {
+      get { return contentType_; }
+      set {
+        contentType_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MMNJODIJPOE != other.MMNJODIJPOE) return false;
       if (ContentId != other.ContentId) return false;
+      if (ContentType != other.ContentType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MMNJODIJPOE != 0) hash ^= MMNJODIJPOE.GetHashCode();
       if (ContentId != 0) hash ^= ContentId.GetHashCode();
+      if (ContentType != 0) hash ^= ContentType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +152,12 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ContentId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(ContentId);
       }
-      if (MMNJODIJPOE != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(MMNJODIJPOE);
+      if (ContentType != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(ContentType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +170,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ContentId != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(ContentId);
       }
-      if (MMNJODIJPOE != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(MMNJODIJPOE);
+      if (ContentType != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(ContentType);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MMNJODIJPOE != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MMNJODIJPOE);
-      }
       if (ContentId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ContentId);
+      }
+      if (ContentType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ContentType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MMNJODIJPOE != 0) {
-        MMNJODIJPOE = other.MMNJODIJPOE;
-      }
       if (other.ContentId != 0) {
         ContentId = other.ContentId;
+      }
+      if (other.ContentType != 0) {
+        ContentType = other.ContentType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 24: {
             ContentId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            MMNJODIJPOE = input.ReadUInt32();
+          case 112: {
+            ContentType = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 24: {
             ContentId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            MMNJODIJPOE = input.ReadUInt32();
+          case 112: {
+            ContentType = input.ReadUInt32();
             break;
           }
         }

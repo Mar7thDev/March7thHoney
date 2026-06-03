@@ -24,14 +24,13 @@ namespace March7thHoney.Proto {
     static FLCPJJMHAGOReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFGTENQSkpNSEFHTy5wcm90byJTCgtGTENQSkpNSEFHTxITCgtBRkVNQkxG",
-            "Q0NDSBgIIAEoDRITCgtIQ0JBRERITklERxgPIAEoDRINCgVsZXZlbBgFIAEo",
-            "DRILCgNleHAYAiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
-            "Mw=="));
+            "ChFGTENQSkpNSEFHTy5wcm90byJRCgtGTENQSkpNSEFHTxIRCgltYXhfbGV2",
+            "ZWwYAiABKA0SEwoLQUZFTUJMRkNDQ0gYBCABKA0SDQoFbGV2ZWwYCCABKA0S",
+            "CwoDZXhwGAkgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FLCPJJMHAGO), global::March7thHoney.Proto.FLCPJJMHAGO.Parser, new[]{ "AFEMBLFCCCH", "HCBADDHNIDG", "Level", "Exp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FLCPJJMHAGO), global::March7thHoney.Proto.FLCPJJMHAGO.Parser, new[]{ "MaxLevel", "AFEMBLFCCCH", "Level", "Exp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FLCPJJMHAGO(FLCPJJMHAGO other) : this() {
+      maxLevel_ = other.maxLevel_;
       aFEMBLFCCCH_ = other.aFEMBLFCCCH_;
-      hCBADDHNIDG_ = other.hCBADDHNIDG_;
       level_ = other.level_;
       exp_ = other.exp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -86,8 +85,20 @@ namespace March7thHoney.Proto {
       return new FLCPJJMHAGO(this);
     }
 
+    /// <summary>Field number for the "max_level" field.</summary>
+    public const int MaxLevelFieldNumber = 2;
+    private uint maxLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxLevel {
+      get { return maxLevel_; }
+      set {
+        maxLevel_ = value;
+      }
+    }
+
     /// <summary>Field number for the "AFEMBLFCCCH" field.</summary>
-    public const int AFEMBLFCCCHFieldNumber = 8;
+    public const int AFEMBLFCCCHFieldNumber = 4;
     private uint aFEMBLFCCCH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,20 +109,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HCBADDHNIDG" field.</summary>
-    public const int HCBADDHNIDGFieldNumber = 15;
-    private uint hCBADDHNIDG_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint HCBADDHNIDG {
-      get { return hCBADDHNIDG_; }
-      set {
-        hCBADDHNIDG_ = value;
-      }
-    }
-
     /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 5;
+    public const int LevelFieldNumber = 8;
     private uint level_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -123,7 +122,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 2;
+    public const int ExpFieldNumber = 9;
     private uint exp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -149,8 +148,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (MaxLevel != other.MaxLevel) return false;
       if (AFEMBLFCCCH != other.AFEMBLFCCCH) return false;
-      if (HCBADDHNIDG != other.HCBADDHNIDG) return false;
       if (Level != other.Level) return false;
       if (Exp != other.Exp) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -160,8 +159,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (MaxLevel != 0) hash ^= MaxLevel.GetHashCode();
       if (AFEMBLFCCCH != 0) hash ^= AFEMBLFCCCH.GetHashCode();
-      if (HCBADDHNIDG != 0) hash ^= HCBADDHNIDG.GetHashCode();
       if (Level != 0) hash ^= Level.GetHashCode();
       if (Exp != 0) hash ^= Exp.GetHashCode();
       if (_unknownFields != null) {
@@ -182,21 +181,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Exp != 0) {
+      if (MaxLevel != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(Exp);
-      }
-      if (Level != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Level);
+        output.WriteUInt32(MaxLevel);
       }
       if (AFEMBLFCCCH != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteUInt32(AFEMBLFCCCH);
       }
-      if (HCBADDHNIDG != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(HCBADDHNIDG);
+      if (Level != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Level);
+      }
+      if (Exp != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Exp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -208,21 +207,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Exp != 0) {
+      if (MaxLevel != 0) {
         output.WriteRawTag(16);
-        output.WriteUInt32(Exp);
-      }
-      if (Level != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Level);
+        output.WriteUInt32(MaxLevel);
       }
       if (AFEMBLFCCCH != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(32);
         output.WriteUInt32(AFEMBLFCCCH);
       }
-      if (HCBADDHNIDG != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(HCBADDHNIDG);
+      if (Level != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(Level);
+      }
+      if (Exp != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Exp);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,11 +233,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (MaxLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxLevel);
+      }
       if (AFEMBLFCCCH != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AFEMBLFCCCH);
-      }
-      if (HCBADDHNIDG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HCBADDHNIDG);
       }
       if (Level != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
@@ -258,11 +257,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.MaxLevel != 0) {
+        MaxLevel = other.MaxLevel;
+      }
       if (other.AFEMBLFCCCH != 0) {
         AFEMBLFCCCH = other.AFEMBLFCCCH;
-      }
-      if (other.HCBADDHNIDG != 0) {
-        HCBADDHNIDG = other.HCBADDHNIDG;
       }
       if (other.Level != 0) {
         Level = other.Level;
@@ -290,19 +289,19 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 16: {
-            Exp = input.ReadUInt32();
+            MaxLevel = input.ReadUInt32();
             break;
           }
-          case 40: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 64: {
+          case 32: {
             AFEMBLFCCCH = input.ReadUInt32();
             break;
           }
-          case 120: {
-            HCBADDHNIDG = input.ReadUInt32();
+          case 64: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Exp = input.ReadUInt32();
             break;
           }
         }
@@ -325,19 +324,19 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 16: {
-            Exp = input.ReadUInt32();
+            MaxLevel = input.ReadUInt32();
             break;
           }
-          case 40: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 64: {
+          case 32: {
             AFEMBLFCCCH = input.ReadUInt32();
             break;
           }
-          case 120: {
-            HCBADDHNIDG = input.ReadUInt32();
+          case 64: {
+            Level = input.ReadUInt32();
+            break;
+          }
+          case 72: {
+            Exp = input.ReadUInt32();
             break;
           }
         }

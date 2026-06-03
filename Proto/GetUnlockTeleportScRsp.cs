@@ -24,13 +24,14 @@ namespace March7thHoney.Proto {
     static GetUnlockTeleportScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChxHZXRVbmxvY2tUZWxlcG9ydFNjUnNwLnByb3RvIkcKFkdldFVubG9ja1Rl",
-            "bGVwb3J0U2NSc3ASHAoUdW5sb2NrX3RlbGVwb3J0X2xpc3QYByADKA0SDwoH",
-            "cmV0Y29kZRgJIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChxHZXRVbmxvY2tUZWxlcG9ydFNjUnNwLnByb3RvIkkKFkdldFVubG9ja1Rl",
+            "bGVwb3J0U2NSc3ASHgoWdW5sb2NrZWRfdGVsZXBvcnRfbGlzdBgBIAMoDRIP",
+            "CgdyZXRjb2RlGAsgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetUnlockTeleportScRsp), global::March7thHoney.Proto.GetUnlockTeleportScRsp.Parser, new[]{ "UnlockTeleportList", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetUnlockTeleportScRsp), global::March7thHoney.Proto.GetUnlockTeleportScRsp.Parser, new[]{ "UnlockedTeleportList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,7 +73,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetUnlockTeleportScRsp(GetUnlockTeleportScRsp other) : this() {
-      unlockTeleportList_ = other.unlockTeleportList_.Clone();
+      unlockedTeleportList_ = other.unlockedTeleportList_.Clone();
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -83,19 +84,19 @@ namespace March7thHoney.Proto {
       return new GetUnlockTeleportScRsp(this);
     }
 
-    /// <summary>Field number for the "unlock_teleport_list" field.</summary>
-    public const int UnlockTeleportListFieldNumber = 7;
-    private static readonly pb::FieldCodec<uint> _repeated_unlockTeleportList_codec
-        = pb::FieldCodec.ForUInt32(58);
-    private readonly pbc::RepeatedField<uint> unlockTeleportList_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "unlocked_teleport_list" field.</summary>
+    public const int UnlockedTeleportListFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_unlockedTeleportList_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> unlockedTeleportList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnlockTeleportList {
-      get { return unlockTeleportList_; }
+    public pbc::RepeatedField<uint> UnlockedTeleportList {
+      get { return unlockedTeleportList_; }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 9;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -121,7 +122,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!unlockTeleportList_.Equals(other.unlockTeleportList_)) return false;
+      if(!unlockedTeleportList_.Equals(other.unlockedTeleportList_)) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -130,7 +131,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= unlockTeleportList_.GetHashCode();
+      hash ^= unlockedTeleportList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -150,9 +151,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      unlockTeleportList_.WriteTo(output, _repeated_unlockTeleportList_codec);
+      unlockedTeleportList_.WriteTo(output, _repeated_unlockedTeleportList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -165,9 +166,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      unlockTeleportList_.WriteTo(ref output, _repeated_unlockTeleportList_codec);
+      unlockedTeleportList_.WriteTo(ref output, _repeated_unlockedTeleportList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -180,7 +181,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += unlockTeleportList_.CalculateSize(_repeated_unlockTeleportList_codec);
+      size += unlockedTeleportList_.CalculateSize(_repeated_unlockedTeleportList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
@@ -196,7 +197,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      unlockTeleportList_.Add(other.unlockTeleportList_);
+      unlockedTeleportList_.Add(other.unlockedTeleportList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
@@ -219,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58:
-          case 56: {
-            unlockTeleportList_.AddEntriesFrom(input, _repeated_unlockTeleportList_codec);
+          case 10:
+          case 8: {
+            unlockedTeleportList_.AddEntriesFrom(input, _repeated_unlockedTeleportList_codec);
             break;
           }
-          case 72: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -247,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58:
-          case 56: {
-            unlockTeleportList_.AddEntriesFrom(ref input, _repeated_unlockTeleportList_codec);
+          case 10:
+          case 8: {
+            unlockedTeleportList_.AddEntriesFrom(ref input, _repeated_unlockedTeleportList_codec);
             break;
           }
-          case 72: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }

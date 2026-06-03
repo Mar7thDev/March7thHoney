@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static JEEHGNIBIFEReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFKRUVIR05JQklGRS5wcm90byIyCgtKRUVIR05JQklGRRIOCgZtYXBfaWQY",
-            "BiABKA0SEwoLQVBOQUZMQkdFTkEYDCABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "ChFKRUVIR05JQklGRS5wcm90byIyCgtKRUVIR05JQklGRRITCgtBUE5BRkxC",
+            "R0VOQRgFIAEoDRIOCgZtYXBfaWQYCiABKA1CFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JEEHGNIBIFE), global::March7thHoney.Proto.JEEHGNIBIFE.Parser, new[]{ "MapId", "APNAFLBGENA" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JEEHGNIBIFE), global::March7thHoney.Proto.JEEHGNIBIFE.Parser, new[]{ "APNAFLBGENA", "MapId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JEEHGNIBIFE(JEEHGNIBIFE other) : this() {
-      mapId_ = other.mapId_;
       aPNAFLBGENA_ = other.aPNAFLBGENA_;
+      mapId_ = other.mapId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new JEEHGNIBIFE(this);
     }
 
-    /// <summary>Field number for the "map_id" field.</summary>
-    public const int MapIdFieldNumber = 6;
-    private uint mapId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MapId {
-      get { return mapId_; }
-      set {
-        mapId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "APNAFLBGENA" field.</summary>
-    public const int APNAFLBGENAFieldNumber = 12;
+    public const int APNAFLBGENAFieldNumber = 5;
     private uint aPNAFLBGENA_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return aPNAFLBGENA_; }
       set {
         aPNAFLBGENA_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "map_id" field.</summary>
+    public const int MapIdFieldNumber = 10;
+    private uint mapId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MapId {
+      get { return mapId_; }
+      set {
+        mapId_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MapId != other.MapId) return false;
       if (APNAFLBGENA != other.APNAFLBGENA) return false;
+      if (MapId != other.MapId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MapId != 0) hash ^= MapId.GetHashCode();
       if (APNAFLBGENA != 0) hash ^= APNAFLBGENA.GetHashCode();
+      if (MapId != 0) hash ^= MapId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MapId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(MapId);
-      }
       if (APNAFLBGENA != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(APNAFLBGENA);
+      }
+      if (MapId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(MapId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MapId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(MapId);
-      }
       if (APNAFLBGENA != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(40);
         output.WriteUInt32(APNAFLBGENA);
+      }
+      if (MapId != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(MapId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MapId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapId);
-      }
       if (APNAFLBGENA != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(APNAFLBGENA);
+      }
+      if (MapId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MapId != 0) {
-        MapId = other.MapId;
-      }
       if (other.APNAFLBGENA != 0) {
         APNAFLBGENA = other.APNAFLBGENA;
+      }
+      if (other.MapId != 0) {
+        MapId = other.MapId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            MapId = input.ReadUInt32();
+          case 40: {
+            APNAFLBGENA = input.ReadUInt32();
             break;
           }
-          case 96: {
-            APNAFLBGENA = input.ReadUInt32();
+          case 80: {
+            MapId = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            MapId = input.ReadUInt32();
+          case 40: {
+            APNAFLBGENA = input.ReadUInt32();
             break;
           }
-          case 96: {
-            APNAFLBGENA = input.ReadUInt32();
+          case 80: {
+            MapId = input.ReadUInt32();
             break;
           }
         }

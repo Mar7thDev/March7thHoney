@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RotaterEnergyInfo.proto";
 
 message UpdateEnergyScNotify {
-    RotaterEnergyInfo energy_info = 11;
+    RotaterEnergyInfo energy_info = 7;
 }

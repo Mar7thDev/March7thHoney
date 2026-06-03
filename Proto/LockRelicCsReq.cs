@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static LockRelicCsReqReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRMb2NrUmVsaWNDc1JlcS5wcm90byJLCg5Mb2NrUmVsaWNDc1JlcRIRCgly",
-            "ZWxpY19pZHMYBiADKA0SEwoLTlBQS0FCQkpDTUkYBCABKAgSEQoJaXNfbG9j",
-            "a2VkGAkgASgIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChRMb2NrUmVsaWNDc1JlcS5wcm90byJLCg5Mb2NrUmVsaWNDc1JlcRITCgtO",
+            "UFBLQUJCSkNNSRgMIAEoCBIRCglpc19sb2NrZWQYDSABKAgSEQoJcmVsaWNf",
+            "aWRzGA8gAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LockRelicCsReq), global::March7thHoney.Proto.LockRelicCsReq.Parser, new[]{ "RelicIds", "NPPKABBJCMI", "IsLocked" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LockRelicCsReq), global::March7thHoney.Proto.LockRelicCsReq.Parser, new[]{ "NPPKABBJCMI", "IsLocked", "RelicIds" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LockRelicCsReq(LockRelicCsReq other) : this() {
-      relicIds_ = other.relicIds_.Clone();
       nPPKABBJCMI_ = other.nPPKABBJCMI_;
       isLocked_ = other.isLocked_;
+      relicIds_ = other.relicIds_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,19 +84,8 @@ namespace March7thHoney.Proto {
       return new LockRelicCsReq(this);
     }
 
-    /// <summary>Field number for the "relic_ids" field.</summary>
-    public const int RelicIdsFieldNumber = 6;
-    private static readonly pb::FieldCodec<uint> _repeated_relicIds_codec
-        = pb::FieldCodec.ForUInt32(50);
-    private readonly pbc::RepeatedField<uint> relicIds_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> RelicIds {
-      get { return relicIds_; }
-    }
-
     /// <summary>Field number for the "NPPKABBJCMI" field.</summary>
-    public const int NPPKABBJCMIFieldNumber = 4;
+    public const int NPPKABBJCMIFieldNumber = 12;
     private bool nPPKABBJCMI_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_locked" field.</summary>
-    public const int IsLockedFieldNumber = 9;
+    public const int IsLockedFieldNumber = 13;
     private bool isLocked_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -117,6 +106,17 @@ namespace March7thHoney.Proto {
       set {
         isLocked_ = value;
       }
+    }
+
+    /// <summary>Field number for the "relic_ids" field.</summary>
+    public const int RelicIdsFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_relicIds_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> relicIds_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> RelicIds {
+      get { return relicIds_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -134,9 +134,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!relicIds_.Equals(other.relicIds_)) return false;
       if (NPPKABBJCMI != other.NPPKABBJCMI) return false;
       if (IsLocked != other.IsLocked) return false;
+      if(!relicIds_.Equals(other.relicIds_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -144,9 +144,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= relicIds_.GetHashCode();
       if (NPPKABBJCMI != false) hash ^= NPPKABBJCMI.GetHashCode();
       if (IsLocked != false) hash ^= IsLocked.GetHashCode();
+      hash ^= relicIds_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,14 +166,14 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (NPPKABBJCMI != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(96);
         output.WriteBool(NPPKABBJCMI);
       }
-      relicIds_.WriteTo(output, _repeated_relicIds_codec);
       if (IsLocked != false) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteBool(IsLocked);
       }
+      relicIds_.WriteTo(output, _repeated_relicIds_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -185,14 +185,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (NPPKABBJCMI != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(96);
         output.WriteBool(NPPKABBJCMI);
       }
-      relicIds_.WriteTo(ref output, _repeated_relicIds_codec);
       if (IsLocked != false) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(104);
         output.WriteBool(IsLocked);
       }
+      relicIds_.WriteTo(ref output, _repeated_relicIds_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -203,13 +203,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += relicIds_.CalculateSize(_repeated_relicIds_codec);
       if (NPPKABBJCMI != false) {
         size += 1 + 1;
       }
       if (IsLocked != false) {
         size += 1 + 1;
       }
+      size += relicIds_.CalculateSize(_repeated_relicIds_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -222,13 +222,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      relicIds_.Add(other.relicIds_);
       if (other.NPPKABBJCMI != false) {
         NPPKABBJCMI = other.NPPKABBJCMI;
       }
       if (other.IsLocked != false) {
         IsLocked = other.IsLocked;
       }
+      relicIds_.Add(other.relicIds_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -248,17 +248,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 96: {
             NPPKABBJCMI = input.ReadBool();
             break;
           }
-          case 50:
-          case 48: {
-            relicIds_.AddEntriesFrom(input, _repeated_relicIds_codec);
+          case 104: {
+            IsLocked = input.ReadBool();
             break;
           }
-          case 72: {
-            IsLocked = input.ReadBool();
+          case 122:
+          case 120: {
+            relicIds_.AddEntriesFrom(input, _repeated_relicIds_codec);
             break;
           }
         }
@@ -280,17 +280,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 96: {
             NPPKABBJCMI = input.ReadBool();
             break;
           }
-          case 50:
-          case 48: {
-            relicIds_.AddEntriesFrom(ref input, _repeated_relicIds_codec);
+          case 104: {
+            IsLocked = input.ReadBool();
             break;
           }
-          case 72: {
-            IsLocked = input.ReadBool();
+          case 122:
+          case 120: {
+            relicIds_.AddEntriesFrom(ref input, _repeated_relicIds_codec);
             break;
           }
         }

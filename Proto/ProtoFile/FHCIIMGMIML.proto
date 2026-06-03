@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FHCIIMGMIML {
-    uint32 level = 7;
-    uint32 AOOLKNMJLNI = 5;
+    uint32 AOOLKNMJLNI = 9;
+    uint32 level = 15;
 }

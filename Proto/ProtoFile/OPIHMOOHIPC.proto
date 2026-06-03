@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DILHPBMCOFK.proto";
 
 message OPIHMOOHIPC {
-    uint64 DHJANOFGDNP = 7;
-    uint32 damage = 2;
-    bool AINKFEINNAK = 5;
-    bool OLNMGFFJMOJ = 9;
-    DILHPBMCOFK IPDDIKPHGPE = 4;
+    uint64 DHJANOFGDNP = 1;
+    bool AINKFEINNAK = 2;
+    DILHPBMCOFK IPDDIKPHGPE = 3;
+    uint32 damage = 7;
+    bool OLNMGFFJMOJ = 10;
 }

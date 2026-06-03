@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RegionInfo.proto";
 
 message Dispatch {
-    string FMPGOLIBHBD = 5;
+    uint32 retcode = 1;
+    string msg = 2;
     string top_sever_region_name = 3;
     repeated RegionInfo region_list = 4;
-    string msg = 2;
-    uint32 retcode = 1;
+    string FMPGOLIBHBD = 5;
 }

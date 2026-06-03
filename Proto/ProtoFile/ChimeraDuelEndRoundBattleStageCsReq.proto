@@ -6,7 +6,7 @@ import "DIIKFKNEHHG.proto";
 import "IDGMALDABBE.proto";
 
 message ChimeraDuelEndRoundBattleStageCsReq {
-    IDGMALDABBE stt = 12;
-    uint32 MILMHPODLBB = 14;
-    DIIKFKNEHHG NONPIMDDJNN = 5;
+    DIIKFKNEHHG NONPIMDDJNN = 4;
+    IDGMALDABBE stt = 11;
+    uint32 MILMHPODLBB = 12;
 }

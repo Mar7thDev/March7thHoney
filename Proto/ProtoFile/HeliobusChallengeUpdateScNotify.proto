@@ -2,8 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "FPIBAIPJCMD.proto";
+import "HeliobusChallengeData.proto";
 
 message HeliobusChallengeUpdateScNotify {
-    FPIBAIPJCMD OCDLPDDMCLP = 3;
+    HeliobusChallengeData OCDLPDDMCLP = 10;
 }

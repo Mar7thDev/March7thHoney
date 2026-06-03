@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetFiveDimMiniGameDataCsReq {
-    bool EBAFPOLLJIA = 5;
+    bool EBAFPOLLJIA = 13;
 }

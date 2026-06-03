@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AreaDynamicInfo.proto";
 
 message BHOPIKPAMPJ {
-    AreaDynamicInfo OOFPPPCEIDP = 12;
-    uint32 area_id = 8;
+    uint32 area_id = 7;
+    AreaDynamicInfo OOFPPPCEIDP = 10;
 }

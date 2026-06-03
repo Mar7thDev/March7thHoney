@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HKOEAOPNEAC.proto";
 
 message NBDKNCJGOMN {
-    HKOEAOPNEAC KOBBMDFPNKA = 14;
-    uint32 FOKPPMBIDID = 13;
+    HKOEAOPNEAC KOBBMDFPNKA = 4;
+    uint32 FOKPPMBIDID = 14;
 }

@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiJUYWtlTG9naW5BY3Rpdml0eVJld2FyZFNjUnNwLnByb3RvGg5JdGVtTGlz",
             "dC5wcm90byJ7ChxUYWtlTG9naW5BY3Rpdml0eVJld2FyZFNjUnNwEhkKBnJl",
-            "d2FyZBgBIAEoCzIJLkl0ZW1MaXN0EhAKCHBhbmVsX2lkGAcgASgNEg8KB3Jl",
-            "dGNvZGUYBSABKA0SEQoJdGFrZV9kYXlzGAsgASgNEgoKAmlkGA4gASgNQhaq",
+            "d2FyZBgBIAEoCzIJLkl0ZW1MaXN0EhAKCHBhbmVsX2lkGAYgASgNEg8KB3Jl",
+            "dGNvZGUYCSABKA0SEQoJdGFrZV9kYXlzGAwgASgNEgoKAmlkGA4gASgNQhaq",
             "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ItemListReflection.Descriptor, },
@@ -101,7 +101,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 7;
+    public const int PanelIdFieldNumber = 6;
     private uint panelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -113,7 +113,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -125,7 +125,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "take_days" field.</summary>
-    public const int TakeDaysFieldNumber = 11;
+    public const int TakeDaysFieldNumber = 12;
     private uint takeDays_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -202,16 +202,16 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(10);
         output.WriteMessage(Reward);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Retcode);
-      }
       if (PanelId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(PanelId);
       }
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
+      }
       if (TakeDays != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(TakeDays);
       }
       if (Id != 0) {
@@ -232,16 +232,16 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(10);
         output.WriteMessage(Reward);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Retcode);
-      }
       if (PanelId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(PanelId);
       }
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
+      }
       if (TakeDays != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(TakeDays);
       }
       if (Id != 0) {
@@ -329,15 +329,15 @@ namespace March7thHoney.Proto {
             input.ReadMessage(Reward);
             break;
           }
-          case 40: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 48: {
             PanelId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 72: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             TakeDays = input.ReadUInt32();
             break;
           }
@@ -371,15 +371,15 @@ namespace March7thHoney.Proto {
             input.ReadMessage(Reward);
             break;
           }
-          case 40: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 48: {
             PanelId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 72: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 96: {
             TakeDays = input.ReadUInt32();
             break;
           }

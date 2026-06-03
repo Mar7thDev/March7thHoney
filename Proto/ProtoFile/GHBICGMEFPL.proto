@@ -6,10 +6,10 @@ import "POPJNEHGMIH.proto";
 import "SpBarInfo.proto";
 
 message GHBICGMEFPL {
-    SpBarInfo sp_bar = 6;
-    repeated POPJNEHGMIH LICLEEICAOE = 5;
-    uint32 APGDJGPGGMO = 3;
-    uint32 exp = 7;
-    uint32 EKKHLMEKJMK = 12;
-    uint32 promotion = 1;
+    uint32 exp = 2;
+    uint32 promotion = 3;
+    uint32 APGDJGPGGMO = 4;
+    uint32 EKKHLMEKJMK = 6;
+    SpBarInfo sp_bar = 14;
+    repeated POPJNEHGMIH LICLEEICAOE = 15;
 }

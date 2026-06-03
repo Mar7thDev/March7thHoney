@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGTUpERElIQkVMQy5wcm90byJACgtGTUpERElIQkVMQxIcChRncmlkX2Zp",
-            "Z2h0X2xpbmV1cF9ocBgBIAEoDRITCgtQUEtLSEhORU9IQhgNIAEoDUIWqgIT",
+            "Z2h0X2xpbmV1cF9ocBgFIAEoDRITCgtQUEtLSEhORU9IQhgHIAEoDUIWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "grid_fight_lineup_hp" field.</summary>
-    public const int GridFightLineupHpFieldNumber = 1;
+    public const int GridFightLineupHpFieldNumber = 5;
     private uint gridFightLineupHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PPKKHHNEOHB" field.</summary>
-    public const int PPKKHHNEOHBFieldNumber = 13;
+    public const int PPKKHHNEOHBFieldNumber = 7;
     private uint pPKKHHNEOHB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (GridFightLineupHp != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteUInt32(GridFightLineupHp);
       }
       if (PPKKHHNEOHB != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(PPKKHHNEOHB);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (GridFightLineupHp != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(40);
         output.WriteUInt32(GridFightLineupHp);
       }
       if (PPKKHHNEOHB != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(56);
         output.WriteUInt32(PPKKHHNEOHB);
       }
       if (_unknownFields != null) {
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 40: {
             GridFightLineupHp = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 56: {
             PPKKHHNEOHB = input.ReadUInt32();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 40: {
             GridFightLineupHp = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 56: {
             PPKKHHNEOHB = input.ReadUInt32();
             break;
           }

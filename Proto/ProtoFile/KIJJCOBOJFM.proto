@@ -3,7 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KIJJCOBOJFM {
-    string JHIHMEPGDIK = 12;
-    uint32 MFOFNOPEBEN = 8;
-    uint32 PAIPJMKCCEH = 7;
+    uint32 text_join_item_id = 15;
 }

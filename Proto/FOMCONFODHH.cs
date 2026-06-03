@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFGT01DT05GT0RISC5wcm90bxoRQklLTlBKUExEQU8ucHJvdG8aEUpER05N",
-            "SURNQUNMLnByb3RvIlMKC0ZPTUNPTkZPREhIEiEKC0hOTUxCTEdHT0xCGAgg",
-            "ASgLMgwuQklLTlBKUExEQU8SIQoLR0JKRUFMTkNNSkMYBCABKA4yDC5KREdO",
+            "SURNQUNMLnByb3RvIlMKC0ZPTUNPTkZPREhIEiEKC0hOTUxCTEdHT0xCGAMg",
+            "ASgLMgwuQklLTlBKUExEQU8SIQoLR0JKRUFMTkNNSkMYCiABKA4yDC5KREdO",
             "TUlETUFDTEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BIKNPJPLDAOReflection.Descriptor, global::March7thHoney.Proto.JDGNMIDMACLReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HNMLBLGGOLB" field.</summary>
-    public const int HNMLBLGGOLBFieldNumber = 8;
+    public const int HNMLBLGGOLBFieldNumber = 3;
     private global::March7thHoney.Proto.BIKNPJPLDAO hNMLBLGGOLB_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GBJEALNCMJC" field.</summary>
-    public const int GBJEALNCMJCFieldNumber = 4;
+    public const int GBJEALNCMJCFieldNumber = 10;
     private global::March7thHoney.Proto.JDGNMIDMACL gBJEALNCMJC_ = global::March7thHoney.Proto.JDGNMIDMACL.Gaifbjckgpa;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (GBJEALNCMJC != global::March7thHoney.Proto.JDGNMIDMACL.Gaifbjckgpa) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) GBJEALNCMJC);
-      }
       if (hNMLBLGGOLB_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(26);
         output.WriteMessage(HNMLBLGGOLB);
+      }
+      if (GBJEALNCMJC != global::March7thHoney.Proto.JDGNMIDMACL.Gaifbjckgpa) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) GBJEALNCMJC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (GBJEALNCMJC != global::March7thHoney.Proto.JDGNMIDMACL.Gaifbjckgpa) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) GBJEALNCMJC);
-      }
       if (hNMLBLGGOLB_ != null) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(26);
         output.WriteMessage(HNMLBLGGOLB);
+      }
+      if (GBJEALNCMJC != global::March7thHoney.Proto.JDGNMIDMACL.Gaifbjckgpa) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) GBJEALNCMJC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            GBJEALNCMJC = (global::March7thHoney.Proto.JDGNMIDMACL) input.ReadEnum();
-            break;
-          }
-          case 66: {
+          case 26: {
             if (hNMLBLGGOLB_ == null) {
               HNMLBLGGOLB = new global::March7thHoney.Proto.BIKNPJPLDAO();
             }
             input.ReadMessage(HNMLBLGGOLB);
+            break;
+          }
+          case 80: {
+            GBJEALNCMJC = (global::March7thHoney.Proto.JDGNMIDMACL) input.ReadEnum();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            GBJEALNCMJC = (global::March7thHoney.Proto.JDGNMIDMACL) input.ReadEnum();
-            break;
-          }
-          case 66: {
+          case 26: {
             if (hNMLBLGGOLB_ == null) {
               HNMLBLGGOLB = new global::March7thHoney.Proto.BIKNPJPLDAO();
             }
             input.ReadMessage(HNMLBLGGOLB);
+            break;
+          }
+          case 80: {
+            GBJEALNCMJC = (global::March7thHoney.Proto.JDGNMIDMACL) input.ReadEnum();
             break;
           }
         }

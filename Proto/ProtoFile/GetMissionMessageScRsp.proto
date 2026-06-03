@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetMissionMessageScRsp {
-    map<uint32, uint32> PFMHKKKAGCD = 7;
     uint32 retcode = 2;
+    map<uint32, uint32> PFMHKKKAGCD = 12;
 }

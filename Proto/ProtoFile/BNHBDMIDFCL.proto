@@ -6,5 +6,5 @@ import "JAAJAPNFMGO.proto";
 
 message BNHBDMIDFCL {
     uint32 unique_id = 13;
-    JAAJAPNFMGO DOKPHNPNCPN = 834;
+    JAAJAPNFMGO DOKPHNPNCPN = 1053;
 }

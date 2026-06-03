@@ -4,6 +4,7 @@ option csharp_namespace = "March7thHoney.Proto";
 
 import "APCDHOBPBHA.proto";
 import "CEOJGIDJLOA.proto";
+import "EDLENJAPMBJ.proto";
 import "NFDHOCKEPGD.proto";
 
 message OFFMCODMKDL {
@@ -11,5 +12,6 @@ message OFFMCODMKDL {
         NFDHOCKEPGD lobby_grid_fight_info = 1001;
         CEOJGIDJLOA GOKJCFBPHCJ = 1002;
         APCDHOBPBHA FNNOPJBPLPF = 1003;
+        EDLENJAPMBJ MPNPIIHHFPN = 1004;
     }
 }

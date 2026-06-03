@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message TakeHipplenEndingRewardScRsp {
-    ItemList reward_list = 7;
-    uint32 retcode = 3;
-    uint32 BKFICFMMGIN = 15;
+    uint32 BKFICFMMGIN = 1;
+    uint32 retcode = 6;
+    ItemList reward_list = 14;
 }

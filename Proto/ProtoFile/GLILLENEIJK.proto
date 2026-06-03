@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GLILLENEIJK {
-    uint32 FFFNGBKHOEA = 10;
-    uint32 GNIFODGCPAA = 6;
+    uint32 GNIFODGCPAA = 8;
+    uint32 FFFNGBKHOEA = 14;
 }

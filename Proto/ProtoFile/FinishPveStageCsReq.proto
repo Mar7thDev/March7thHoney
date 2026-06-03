@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishPveStageCsReq {
-    bool AINKFEINNAK = 6;
-    bool is_win = 14;
-    uint32 damage = 4;
-    uint32 MPDHNFNCIEA = 1;
+    uint32 MPDHNFNCIEA = 9;
+    uint32 damage = 10;
+    bool is_win = 13;
+    bool AINKFEINNAK = 14;
 }

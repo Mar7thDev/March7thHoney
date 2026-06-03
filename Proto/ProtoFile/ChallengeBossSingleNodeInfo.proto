@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChallengeBossSingleNodeInfo {
-    uint32 max_score = 11;
-    uint32 buff_id = 4;
-    bool is_win = 5;
-    bool MBHCJPONJOM = 15;
+    uint32 max_score = 2;
+    bool MBHCJPONJOM = 3;
+    uint32 buff_id = 5;
+    bool is_win = 6;
 }

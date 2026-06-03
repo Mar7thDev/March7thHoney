@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5DbWRGZXZlclRpbWVBY3Rpdml0eVR5cGUucHJvdG8qzQEKGENtZEZldmVy",
             "VGltZUFjdGl2aXR5VHlwZRIbChdCSkpCSUpNTkRDQV9OTENER0lQR0ZEShAA",
-            "EhwKF0JKSkJJSk1ORENBX0pIT0xJQ0dGTk9CEPg3EhwKF0JKSkJJSk1ORENB",
-            "X05GREFJTEFFR0FBEPA3EhwKF0JKSkJJSk1ORENBX0tHRUpNRkJFSkdCEPc3",
-            "EhwKF0JKSkJJSk1ORENBX0ZORE9JT01DREJFEPI3EhwKF0JKSkJJSk1ORENB",
-            "X09BTUhGSE5CTkdLEPY3QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "EhwKF0JKSkJJSk1ORENBX09BTUhGSE5CTkdLEO83EhwKF0JKSkJJSk1ORENB",
+            "X0pIT0xJQ0dGTk9CEPM3EhwKF0JKSkJJSk1ORENBX0tHRUpNRkJFSkdCEPg3",
+            "EhwKF0JKSkJJSk1ORENBX05GREFJTEFFR0FBEPE3EhwKF0JKSkJJSk1ORENB",
+            "X0ZORE9JT01DREJFEPI3QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,11 +41,11 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdFeverTimeActivityType {
     [pbr::OriginalName("BJJBIJMNDCA_NLCDGIPGFDJ")] BjjbijmndcaNlcdgipgfdj = 0,
-    [pbr::OriginalName("BJJBIJMNDCA_JHOLICGFNOB")] BjjbijmndcaJholicgfnob = 7160,
-    [pbr::OriginalName("BJJBIJMNDCA_NFDAILAEGAA")] BjjbijmndcaNfdailaegaa = 7152,
-    [pbr::OriginalName("BJJBIJMNDCA_KGEJMFBEJGB")] BjjbijmndcaKgejmfbejgb = 7159,
+    [pbr::OriginalName("BJJBIJMNDCA_OAMHFHNBNGK")] BjjbijmndcaOamhfhnbngk = 7151,
+    [pbr::OriginalName("BJJBIJMNDCA_JHOLICGFNOB")] BjjbijmndcaJholicgfnob = 7155,
+    [pbr::OriginalName("BJJBIJMNDCA_KGEJMFBEJGB")] BjjbijmndcaKgejmfbejgb = 7160,
+    [pbr::OriginalName("BJJBIJMNDCA_NFDAILAEGAA")] BjjbijmndcaNfdailaegaa = 7153,
     [pbr::OriginalName("BJJBIJMNDCA_FNDOIOMCDBE")] BjjbijmndcaFndoiomcdbe = 7154,
-    [pbr::OriginalName("BJJBIJMNDCA_OAMHFHNBNGK")] BjjbijmndcaOamhfhnbngk = 7158,
   }
 
   #endregion

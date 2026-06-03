@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message TarotBookFinishInteractionCsReq {
-    uint32 INJAGFDOFEJ = 4;
+    uint32 INJAGFDOFEJ = 8;
 }

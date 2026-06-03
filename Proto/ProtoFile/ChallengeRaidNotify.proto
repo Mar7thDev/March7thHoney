@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KBONOPFLPDJ.proto";
 
 message ChallengeRaidNotify {
-    KBONOPFLPDJ GCBDMEPBNHN = 2;
+    KBONOPFLPDJ GCBDMEPBNHN = 12;
 }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FKNKNLGMACL.proto";
 
 message AiPamResponseFeedbackCsReq {
-    FKNKNLGMACL BDPIMPJOJBK = 13;
-    bool IAJAOMAKAHA = 14;
-    bool NMMJBGFDNAI = 8;
+    bool NMMJBGFDNAI = 4;
+    bool IAJAOMAKAHA = 6;
+    FKNKNLGMACL role = 13;
 }

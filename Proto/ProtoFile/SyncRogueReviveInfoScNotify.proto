@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KCMFAIBMOHB.proto";
 
 message SyncRogueReviveInfoScNotify {
-    KCMFAIBMOHB MFEODNJNGDP = 4;
+    KCMFAIBMOHB MFEODNJNGDP = 11;
 }

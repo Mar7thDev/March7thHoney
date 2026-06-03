@@ -7,10 +7,10 @@ import "ELOFLNEAHPD.proto";
 import "FEDNIHCAHGP.proto";
 
 message GetHipplenDataScRsp {
-    FEDNIHCAHGP KJDEEJNBLHK = 8;
-    ELOFLNEAHPD ACOLLHOFKGL = 14;
-    BNJAIHINJIK HIGHKDBJNIM = 2;
-    uint32 retcode = 3;
-    bool HPKECDINMCE = 5;
-    uint32 JFLAEGMBMAK = 7;
+    FEDNIHCAHGP KJDEEJNBLHK = 1;
+    uint32 JFLAEGMBMAK = 6;
+    uint32 retcode = 8;
+    BNJAIHINJIK HIGHKDBJNIM = 11;
+    ELOFLNEAHPD ACOLLHOFKGL = 13;
+    bool HPKECDINMCE = 15;
 }

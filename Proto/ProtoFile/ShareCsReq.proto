@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ShareCsReq {
-    uint32 MGGNKENIPFC = 13;
+    uint32 MGGNKENIPFC = 6;
 }

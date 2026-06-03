@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GachaCeilingAvatar.proto";
 
 message GachaCeiling {
-    repeated GachaCeilingAvatar avatar_list = 5;
-    uint32 ceiling_num = 8;
-    bool is_claimed = 3;
+    repeated GachaCeilingAvatar avatar_list = 3;
+    uint32 ceiling_num = 7;
+    bool is_claimed = 11;
 }

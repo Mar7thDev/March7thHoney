@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FDECDCEDPNM {
-    repeated uint32 ICCCHCCDKND = 13;
-    uint32 id = 4;
-    uint32 BGMFEHBEABC = 14;
-    bool is_new = 7;
+    uint32 BGMFEHBEABC = 3;
+    repeated uint32 ICCCHCCDKND = 4;
+    uint32 id = 9;
+    bool is_new = 13;
 }

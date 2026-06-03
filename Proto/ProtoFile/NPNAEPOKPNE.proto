@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OPOCANGAEHJ.proto";
 
 message NPNAEPOKPNE {
-    repeated float LIAMHNFAPNL = 4;
-    OPOCANGAEHJ FOCNBOANONM = 3;
+    OPOCANGAEHJ coord = 8;
+    repeated float LIAMHNFAPNL = 10;
 }

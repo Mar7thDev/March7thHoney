@@ -7,8 +7,8 @@ import "CJDIAHDLCNJ.proto";
 import "TryDownLoadReplay.proto";
 
 message GetPunkLordBattleRecordScRsp {
-    CDCCPHILOCC KHOLBEGBFOM = 5;
-    repeated CJDIAHDLCNJ GAIKBNPIFLM = 10;
-    repeated TryDownLoadReplay HLCIMLHMEKI = 13;
-    uint32 retcode = 15;
+    repeated TryDownLoadReplay HLCIMLHMEKI = 1;
+    CDCCPHILOCC KHOLBEGBFOM = 7;
+    uint32 retcode = 13;
+    repeated CJDIAHDLCNJ GAIKBNPIFLM = 15;
 }

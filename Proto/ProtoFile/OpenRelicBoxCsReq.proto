@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HGABLJFOKDG.proto";
 
 message OpenRelicBoxCsReq {
-    HGABLJFOKDG MCLLALGABAB = 10;
+    HGABLJFOKDG target = 7;
 }

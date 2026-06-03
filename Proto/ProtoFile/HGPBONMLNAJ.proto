@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DBKAAJAEGNM.proto";
 
 message HGPBONMLNAJ {
-    uint32 progress = 14;
-    uint32 IBEFDOMBEHM = 3;
-    DBKAAJAEGNM status = 10;
+    uint32 progress = 1;
+    uint32 IBEFDOMBEHM = 7;
+    DBKAAJAEGNM status = 11;
 }

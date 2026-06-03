@@ -6,9 +6,9 @@ import "GBHAHDBDOIE.proto";
 import "ItemCostData.proto";
 
 message GetRogueShopFormulaInfoScRsp {
-    ItemCostData JOMDKGINNEK = 5;
-    GBHAHDBDOIE EAPCJKNGGCA = 15;
-    int32 KCBOHFNFJEA = 2;
-    int32 APMGPHFHENP = 13;
-    uint32 retcode = 7;
+    int32 APMGPHFHENP = 4;
+    int32 KCBOHFNFJEA = 9;
+    ItemCostData JOMDKGINNEK = 11;
+    GBHAHDBDOIE EAPCJKNGGCA = 12;
+    uint32 retcode = 14;
 }

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AFEDHCKDDFA.proto";
 
 message SetHipplenAgendaScRsp {
-    repeated AFEDHCKDDFA NEMFNENACNB = 14;
-    uint32 retcode = 13;
+    repeated AFEDHCKDDFA NEMFNENACNB = 10;
+    uint32 retcode = 11;
 }

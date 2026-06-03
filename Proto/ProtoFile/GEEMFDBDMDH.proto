@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NFPLDMFCLHA.proto";
 
 message GEEMFDBDMDH {
-    NFPLDMFCLHA LHIAODNJIIC = 13;
+    NFPLDMFCLHA LHIAODNJIIC = 5;
+    uint32 PBMAHOJBAGG = 10;
     NFPLDMFCLHA EDCLIPCEHAO = 11;
-    uint32 PBMAHOJBAGG = 3;
 }

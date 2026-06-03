@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GNNGLBEGIKB.proto";
 
 message INGKNDHECNF {
-    repeated GNNGLBEGIKB buff_list = 1;
+    repeated GNNGLBEGIKB buff_list = 8;
 }

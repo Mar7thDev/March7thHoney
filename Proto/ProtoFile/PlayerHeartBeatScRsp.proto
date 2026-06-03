@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ClientDownloadData.proto";
 
 message PlayerHeartBeatScRsp {
+    uint64 client_time_ms = 5;
     ClientDownloadData download_data = 6;
-    uint64 server_time_ms = 7;
-    uint32 retcode = 2;
-    uint64 client_time_ms = 13;
+    uint32 retcode = 9;
+    uint64 server_time_ms = 13;
 }

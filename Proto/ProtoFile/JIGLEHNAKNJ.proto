@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JIGLEHNAKNJ {
-    repeated uint32 KLLIJGIHFAP = 7;
-    uint32 LGIPILAKIKB = 1;
+    uint32 LGIPILAKIKB = 2;
+    repeated uint32 KLLIJGIHFAP = 8;
 }

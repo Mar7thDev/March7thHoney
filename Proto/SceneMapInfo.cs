@@ -24,28 +24,29 @@ namespace March7thHoney.Proto {
     static SceneMapInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChJTY2VuZU1hcEluZm8ucHJvdG8aD0NoZXN0SW5mby5wcm90bxoRRkFIRkJF",
-            "SkNLTEYucHJvdG8aD01hemVHcm91cC5wcm90bxoTTWF6ZVByb3BTdGF0ZS5w",
-            "cm90bxoeTWlzc2lvblN0YXR1c0J5U2NlbmVJbmZvLnByb3RvGhVTY2VuZUlk",
-            "ZW50aWZpZXIucHJvdG8i7gQKDFNjZW5lTWFwSW5mbxI7ChBmbG9vcl9zYXZl",
-            "ZF9kYXRhGAYgAygLMiEuU2NlbmVNYXBJbmZvLkZsb29yU2F2ZWREYXRhRW50",
-            "cnkSKAoSY2hlc3RfbW9uc3Rlcl9saXN0GAEgAygLMgwuRkFIRkJFSkNLTEYS",
-            "HQoUb3BlbmVkX2NoZXN0X2lkX2xpc3QY7wYgAygNEiMKD21hemVfZ3JvdXBf",
-            "bGlzdBgFIAMoCzIKLk1hemVHcm91cBIeCgpjaGVzdF9saXN0GA0gAygLMgou",
-            "Q2hlc3RJbmZvEisKEHNjZW5lX2lkZW50aWZpZXIYkwcgASgLMhAuU2NlbmVJ",
-            "ZGVudGlmaWVyEj0KGWNsaWVudF9ncm91cF9taXNzaW9uX2luZm8YsAwgASgL",
-            "MhkuTWlzc2lvblN0YXR1c0J5U2NlbmVJbmZvEiYKDm1hemVfcHJvcF9saXN0",
-            "GAQgAygLMg4uTWF6ZVByb3BTdGF0ZRInCh5maW5pc2hlZF9jaGVzdF9tb25z",
-            "dGVyX2lkX2xpc3QYtwMgAygNEhwKFHVubG9ja190ZWxlcG9ydF9saXN0GA4g",
-            "AygNEhwKFGxpZ2h0ZW5fc2VjdGlvbl9saXN0GAMgAygNEg8KB3JldGNvZGUY",
-            "CiABKA0SFAoMZGltZW5zaW9uX2lkGAsgASgNEhAKCGZsb29yX2lkGAwgASgN",
-            "EhAKCGVudHJ5X2lkGAggASgNEhgKEGN1cl9tYXBfZW50cnlfaWQYByABKA0a",
-            "NQoTRmxvb3JTYXZlZERhdGFFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUY",
-            "AiABKAU6AjgBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChJTY2VuZU1hcEluZm8ucHJvdG8aD0NoZXN0SW5mby5wcm90bxoWQ2hlc3RN",
+            "b25zdGVyU3RhdC5wcm90bxoPTWF6ZUdyb3VwLnByb3RvGhNNYXplUHJvcFN0",
+            "YXRlLnByb3RvGh5NaXNzaW9uU3RhdHVzQnlTY2VuZUluZm8ucHJvdG8aFVNj",
+            "ZW5lSWRlbnRpZmllci5wcm90byL/BAoMU2NlbmVNYXBJbmZvEiMKD21hemVf",
+            "Z3JvdXBfbGlzdBgBIAMoCzIKLk1hemVHcm91cBIUCgxkaW1lbnNpb25faWQY",
+            "AyABKA0SJgoObWF6ZV9wcm9wX2xpc3QYBCADKAsyDi5NYXplUHJvcFN0YXRl",
+            "EhAKCGZsb29yX2lkGAUgASgNEhwKFHVubG9ja190ZWxlcG9ydF9saXN0GAYg",
+            "AygNEhwKFGxpZ2h0ZW5fc2VjdGlvbl9saXN0GAcgAygNEi0KEmNoZXN0X21v",
+            "bnN0ZXJfbGlzdBgIIAMoCzIRLkNoZXN0TW9uc3RlclN0YXQSDwoHcmV0Y29k",
+            "ZRgJIAEoDRIYChBjdXJfbWFwX2VudHJ5X2lkGAwgASgNEhAKCGVudHJ5X2lk",
+            "GA0gASgNEh4KCmNoZXN0X2xpc3QYDiADKAsyCi5DaGVzdEluZm8SRAoVZmxv",
+            "b3Jfc2F2ZWRfdmFsdWVfbWFwGA8gAygLMiUuU2NlbmVNYXBJbmZvLkZsb29y",
+            "U2F2ZWRWYWx1ZU1hcEVudHJ5EjwKGWNsaWVudF9ncm91cF9taXNzaW9uX2lu",
+            "Zm8YeyABKAsyGS5NaXNzaW9uU3RhdHVzQnlTY2VuZUluZm8SHQoUb3BlbmVk",
+            "X2NoZXN0X2lkX2xpc3QYsQQgAygNEisKEHNjZW5lX2lkZW50aWZpZXIYugcg",
+            "ASgLMhAuU2NlbmVJZGVudGlmaWVyEicKHmZpbmlzaGVkX2NoZXN0X21vbnN0",
+            "ZXJfaWRfbGlzdBikDSADKA0aOQoXRmxvb3JTYXZlZFZhbHVlTWFwRW50cnkS",
+            "CwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4AUIWqgITTWFyY2g3dGhI",
+            "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChestInfoReflection.Descriptor, global::March7thHoney.Proto.FAHFBEJCKLFReflection.Descriptor, global::March7thHoney.Proto.MazeGroupReflection.Descriptor, global::March7thHoney.Proto.MazePropStateReflection.Descriptor, global::March7thHoney.Proto.MissionStatusBySceneInfoReflection.Descriptor, global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChestInfoReflection.Descriptor, global::March7thHoney.Proto.ChestMonsterStatReflection.Descriptor, global::March7thHoney.Proto.MazeGroupReflection.Descriptor, global::March7thHoney.Proto.MazePropStateReflection.Descriptor, global::March7thHoney.Proto.MissionStatusBySceneInfoReflection.Descriptor, global::March7thHoney.Proto.SceneIdentifierReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneMapInfo), global::March7thHoney.Proto.SceneMapInfo.Parser, new[]{ "FloorSavedData", "ChestMonsterList", "OpenedChestIdList", "MazeGroupList", "ChestList", "SceneIdentifier", "ClientGroupMissionInfo", "MazePropList", "FinishedChestMonsterIdList", "UnlockTeleportList", "LightenSectionList", "Retcode", "DimensionId", "FloorId", "EntryId", "CurMapEntryId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneMapInfo), global::March7thHoney.Proto.SceneMapInfo.Parser, new[]{ "MazeGroupList", "DimensionId", "MazePropList", "FloorId", "UnlockTeleportList", "LightenSectionList", "ChestMonsterList", "Retcode", "CurMapEntryId", "EntryId", "ChestList", "FloorSavedValueMap", "ClientGroupMissionInfo", "OpenedChestIdList", "SceneIdentifier", "FinishedChestMonsterIdList" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -87,22 +88,22 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneMapInfo(SceneMapInfo other) : this() {
-      floorSavedData_ = other.floorSavedData_.Clone();
-      chestMonsterList_ = other.chestMonsterList_.Clone();
-      openedChestIdList_ = other.openedChestIdList_.Clone();
       mazeGroupList_ = other.mazeGroupList_.Clone();
-      chestList_ = other.chestList_.Clone();
-      sceneIdentifier_ = other.sceneIdentifier_ != null ? other.sceneIdentifier_.Clone() : null;
-      clientGroupMissionInfo_ = other.clientGroupMissionInfo_ != null ? other.clientGroupMissionInfo_.Clone() : null;
+      dimensionId_ = other.dimensionId_;
       mazePropList_ = other.mazePropList_.Clone();
-      finishedChestMonsterIdList_ = other.finishedChestMonsterIdList_.Clone();
+      floorId_ = other.floorId_;
       unlockTeleportList_ = other.unlockTeleportList_.Clone();
       lightenSectionList_ = other.lightenSectionList_.Clone();
+      chestMonsterList_ = other.chestMonsterList_.Clone();
       retcode_ = other.retcode_;
-      dimensionId_ = other.dimensionId_;
-      floorId_ = other.floorId_;
-      entryId_ = other.entryId_;
       curMapEntryId_ = other.curMapEntryId_;
+      entryId_ = other.entryId_;
+      chestList_ = other.chestList_.Clone();
+      floorSavedValueMap_ = other.floorSavedValueMap_.Clone();
+      clientGroupMissionInfo_ = other.clientGroupMissionInfo_ != null ? other.clientGroupMissionInfo_.Clone() : null;
+      openedChestIdList_ = other.openedChestIdList_.Clone();
+      sceneIdentifier_ = other.sceneIdentifier_ != null ? other.sceneIdentifier_.Clone() : null;
+      finishedChestMonsterIdList_ = other.finishedChestMonsterIdList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -112,43 +113,10 @@ namespace March7thHoney.Proto {
       return new SceneMapInfo(this);
     }
 
-    /// <summary>Field number for the "floor_saved_data" field.</summary>
-    public const int FloorSavedDataFieldNumber = 6;
-    private static readonly pbc::MapField<string, int>.Codec _map_floorSavedData_codec
-        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 50);
-    private readonly pbc::MapField<string, int> floorSavedData_ = new pbc::MapField<string, int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, int> FloorSavedData {
-      get { return floorSavedData_; }
-    }
-
-    /// <summary>Field number for the "chest_monster_list" field.</summary>
-    public const int ChestMonsterListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.FAHFBEJCKLF> _repeated_chestMonsterList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.FAHFBEJCKLF.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.FAHFBEJCKLF> chestMonsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.FAHFBEJCKLF>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.FAHFBEJCKLF> ChestMonsterList {
-      get { return chestMonsterList_; }
-    }
-
-    /// <summary>Field number for the "opened_chest_id_list" field.</summary>
-    public const int OpenedChestIdListFieldNumber = 879;
-    private static readonly pb::FieldCodec<uint> _repeated_openedChestIdList_codec
-        = pb::FieldCodec.ForUInt32(7034);
-    private readonly pbc::RepeatedField<uint> openedChestIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OpenedChestIdList {
-      get { return openedChestIdList_; }
-    }
-
     /// <summary>Field number for the "maze_group_list" field.</summary>
-    public const int MazeGroupListFieldNumber = 5;
+    public const int MazeGroupListFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MazeGroup> _repeated_mazeGroupList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MazeGroup.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MazeGroup.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MazeGroup> mazeGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MazeGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -156,38 +124,15 @@ namespace March7thHoney.Proto {
       get { return mazeGroupList_; }
     }
 
-    /// <summary>Field number for the "chest_list" field.</summary>
-    public const int ChestListFieldNumber = 13;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChestInfo> _repeated_chestList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ChestInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo> chestList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo>();
+    /// <summary>Field number for the "dimension_id" field.</summary>
+    public const int DimensionIdFieldNumber = 3;
+    private uint dimensionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo> ChestList {
-      get { return chestList_; }
-    }
-
-    /// <summary>Field number for the "scene_identifier" field.</summary>
-    public const int SceneIdentifierFieldNumber = 915;
-    private global::March7thHoney.Proto.SceneIdentifier sceneIdentifier_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.SceneIdentifier SceneIdentifier {
-      get { return sceneIdentifier_; }
+    public uint DimensionId {
+      get { return dimensionId_; }
       set {
-        sceneIdentifier_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "client_group_mission_info" field.</summary>
-    public const int ClientGroupMissionInfoFieldNumber = 1584;
-    private global::March7thHoney.Proto.MissionStatusBySceneInfo clientGroupMissionInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.MissionStatusBySceneInfo ClientGroupMissionInfo {
-      get { return clientGroupMissionInfo_; }
-      set {
-        clientGroupMissionInfo_ = value;
+        dimensionId_ = value;
       }
     }
 
@@ -202,65 +147,8 @@ namespace March7thHoney.Proto {
       get { return mazePropList_; }
     }
 
-    /// <summary>Field number for the "finished_chest_monster_id_list" field.</summary>
-    public const int FinishedChestMonsterIdListFieldNumber = 439;
-    private static readonly pb::FieldCodec<uint> _repeated_finishedChestMonsterIdList_codec
-        = pb::FieldCodec.ForUInt32(3514);
-    private readonly pbc::RepeatedField<uint> finishedChestMonsterIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FinishedChestMonsterIdList {
-      get { return finishedChestMonsterIdList_; }
-    }
-
-    /// <summary>Field number for the "unlock_teleport_list" field.</summary>
-    public const int UnlockTeleportListFieldNumber = 14;
-    private static readonly pb::FieldCodec<uint> _repeated_unlockTeleportList_codec
-        = pb::FieldCodec.ForUInt32(114);
-    private readonly pbc::RepeatedField<uint> unlockTeleportList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnlockTeleportList {
-      get { return unlockTeleportList_; }
-    }
-
-    /// <summary>Field number for the "lighten_section_list" field.</summary>
-    public const int LightenSectionListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_lightenSectionList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> lightenSectionList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> LightenSectionList {
-      get { return lightenSectionList_; }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "dimension_id" field.</summary>
-    public const int DimensionIdFieldNumber = 11;
-    private uint dimensionId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint DimensionId {
-      get { return dimensionId_; }
-      set {
-        dimensionId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "floor_id" field.</summary>
-    public const int FloorIdFieldNumber = 12;
+    public const int FloorIdFieldNumber = 5;
     private uint floorId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -271,8 +159,65 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "unlock_teleport_list" field.</summary>
+    public const int UnlockTeleportListFieldNumber = 6;
+    private static readonly pb::FieldCodec<uint> _repeated_unlockTeleportList_codec
+        = pb::FieldCodec.ForUInt32(50);
+    private readonly pbc::RepeatedField<uint> unlockTeleportList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UnlockTeleportList {
+      get { return unlockTeleportList_; }
+    }
+
+    /// <summary>Field number for the "lighten_section_list" field.</summary>
+    public const int LightenSectionListFieldNumber = 7;
+    private static readonly pb::FieldCodec<uint> _repeated_lightenSectionList_codec
+        = pb::FieldCodec.ForUInt32(58);
+    private readonly pbc::RepeatedField<uint> lightenSectionList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> LightenSectionList {
+      get { return lightenSectionList_; }
+    }
+
+    /// <summary>Field number for the "chest_monster_list" field.</summary>
+    public const int ChestMonsterListFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChestMonsterStat> _repeated_chestMonsterList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.ChestMonsterStat.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChestMonsterStat> chestMonsterList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChestMonsterStat>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChestMonsterStat> ChestMonsterList {
+      get { return chestMonsterList_; }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 9;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cur_map_entry_id" field.</summary>
+    public const int CurMapEntryIdFieldNumber = 12;
+    private uint curMapEntryId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurMapEntryId {
+      get { return curMapEntryId_; }
+      set {
+        curMapEntryId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "entry_id" field.</summary>
-    public const int EntryIdFieldNumber = 8;
+    public const int EntryIdFieldNumber = 13;
     private uint entryId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -283,16 +228,72 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cur_map_entry_id" field.</summary>
-    public const int CurMapEntryIdFieldNumber = 7;
-    private uint curMapEntryId_;
+    /// <summary>Field number for the "chest_list" field.</summary>
+    public const int ChestListFieldNumber = 14;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChestInfo> _repeated_chestList_codec
+        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.ChestInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo> chestList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurMapEntryId {
-      get { return curMapEntryId_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChestInfo> ChestList {
+      get { return chestList_; }
+    }
+
+    /// <summary>Field number for the "floor_saved_value_map" field.</summary>
+    public const int FloorSavedValueMapFieldNumber = 15;
+    private static readonly pbc::MapField<string, int>.Codec _map_floorSavedValueMap_codec
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 122);
+    private readonly pbc::MapField<string, int> floorSavedValueMap_ = new pbc::MapField<string, int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, int> FloorSavedValueMap {
+      get { return floorSavedValueMap_; }
+    }
+
+    /// <summary>Field number for the "client_group_mission_info" field.</summary>
+    public const int ClientGroupMissionInfoFieldNumber = 123;
+    private global::March7thHoney.Proto.MissionStatusBySceneInfo clientGroupMissionInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.MissionStatusBySceneInfo ClientGroupMissionInfo {
+      get { return clientGroupMissionInfo_; }
       set {
-        curMapEntryId_ = value;
+        clientGroupMissionInfo_ = value;
       }
+    }
+
+    /// <summary>Field number for the "opened_chest_id_list" field.</summary>
+    public const int OpenedChestIdListFieldNumber = 561;
+    private static readonly pb::FieldCodec<uint> _repeated_openedChestIdList_codec
+        = pb::FieldCodec.ForUInt32(4490);
+    private readonly pbc::RepeatedField<uint> openedChestIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OpenedChestIdList {
+      get { return openedChestIdList_; }
+    }
+
+    /// <summary>Field number for the "scene_identifier" field.</summary>
+    public const int SceneIdentifierFieldNumber = 954;
+    private global::March7thHoney.Proto.SceneIdentifier sceneIdentifier_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.SceneIdentifier SceneIdentifier {
+      get { return sceneIdentifier_; }
+      set {
+        sceneIdentifier_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "finished_chest_monster_id_list" field.</summary>
+    public const int FinishedChestMonsterIdListFieldNumber = 1700;
+    private static readonly pb::FieldCodec<uint> _repeated_finishedChestMonsterIdList_codec
+        = pb::FieldCodec.ForUInt32(13602);
+    private readonly pbc::RepeatedField<uint> finishedChestMonsterIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> FinishedChestMonsterIdList {
+      get { return finishedChestMonsterIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -310,22 +311,22 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!FloorSavedData.Equals(other.FloorSavedData)) return false;
-      if(!chestMonsterList_.Equals(other.chestMonsterList_)) return false;
-      if(!openedChestIdList_.Equals(other.openedChestIdList_)) return false;
       if(!mazeGroupList_.Equals(other.mazeGroupList_)) return false;
-      if(!chestList_.Equals(other.chestList_)) return false;
-      if (!object.Equals(SceneIdentifier, other.SceneIdentifier)) return false;
-      if (!object.Equals(ClientGroupMissionInfo, other.ClientGroupMissionInfo)) return false;
+      if (DimensionId != other.DimensionId) return false;
       if(!mazePropList_.Equals(other.mazePropList_)) return false;
-      if(!finishedChestMonsterIdList_.Equals(other.finishedChestMonsterIdList_)) return false;
+      if (FloorId != other.FloorId) return false;
       if(!unlockTeleportList_.Equals(other.unlockTeleportList_)) return false;
       if(!lightenSectionList_.Equals(other.lightenSectionList_)) return false;
+      if(!chestMonsterList_.Equals(other.chestMonsterList_)) return false;
       if (Retcode != other.Retcode) return false;
-      if (DimensionId != other.DimensionId) return false;
-      if (FloorId != other.FloorId) return false;
-      if (EntryId != other.EntryId) return false;
       if (CurMapEntryId != other.CurMapEntryId) return false;
+      if (EntryId != other.EntryId) return false;
+      if(!chestList_.Equals(other.chestList_)) return false;
+      if (!FloorSavedValueMap.Equals(other.FloorSavedValueMap)) return false;
+      if (!object.Equals(ClientGroupMissionInfo, other.ClientGroupMissionInfo)) return false;
+      if(!openedChestIdList_.Equals(other.openedChestIdList_)) return false;
+      if (!object.Equals(SceneIdentifier, other.SceneIdentifier)) return false;
+      if(!finishedChestMonsterIdList_.Equals(other.finishedChestMonsterIdList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -333,22 +334,22 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= FloorSavedData.GetHashCode();
-      hash ^= chestMonsterList_.GetHashCode();
-      hash ^= openedChestIdList_.GetHashCode();
       hash ^= mazeGroupList_.GetHashCode();
-      hash ^= chestList_.GetHashCode();
-      if (sceneIdentifier_ != null) hash ^= SceneIdentifier.GetHashCode();
-      if (clientGroupMissionInfo_ != null) hash ^= ClientGroupMissionInfo.GetHashCode();
+      if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
       hash ^= mazePropList_.GetHashCode();
-      hash ^= finishedChestMonsterIdList_.GetHashCode();
+      if (FloorId != 0) hash ^= FloorId.GetHashCode();
       hash ^= unlockTeleportList_.GetHashCode();
       hash ^= lightenSectionList_.GetHashCode();
+      hash ^= chestMonsterList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
-      if (FloorId != 0) hash ^= FloorId.GetHashCode();
-      if (EntryId != 0) hash ^= EntryId.GetHashCode();
       if (CurMapEntryId != 0) hash ^= CurMapEntryId.GetHashCode();
+      if (EntryId != 0) hash ^= EntryId.GetHashCode();
+      hash ^= chestList_.GetHashCode();
+      hash ^= FloorSavedValueMap.GetHashCode();
+      if (clientGroupMissionInfo_ != null) hash ^= ClientGroupMissionInfo.GetHashCode();
+      hash ^= openedChestIdList_.GetHashCode();
+      if (sceneIdentifier_ != null) hash ^= SceneIdentifier.GetHashCode();
+      hash ^= finishedChestMonsterIdList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -367,43 +368,43 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      chestMonsterList_.WriteTo(output, _repeated_chestMonsterList_codec);
-      lightenSectionList_.WriteTo(output, _repeated_lightenSectionList_codec);
-      mazePropList_.WriteTo(output, _repeated_mazePropList_codec);
       mazeGroupList_.WriteTo(output, _repeated_mazeGroupList_codec);
-      floorSavedData_.WriteTo(output, _map_floorSavedData_codec);
+      if (DimensionId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(DimensionId);
+      }
+      mazePropList_.WriteTo(output, _repeated_mazePropList_codec);
+      if (FloorId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(FloorId);
+      }
+      unlockTeleportList_.WriteTo(output, _repeated_unlockTeleportList_codec);
+      lightenSectionList_.WriteTo(output, _repeated_lightenSectionList_codec);
+      chestMonsterList_.WriteTo(output, _repeated_chestMonsterList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
+      }
       if (CurMapEntryId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(96);
         output.WriteUInt32(CurMapEntryId);
       }
       if (EntryId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(104);
         output.WriteUInt32(EntryId);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Retcode);
-      }
-      if (DimensionId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(DimensionId);
-      }
-      if (FloorId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(FloorId);
-      }
       chestList_.WriteTo(output, _repeated_chestList_codec);
-      unlockTeleportList_.WriteTo(output, _repeated_unlockTeleportList_codec);
-      finishedChestMonsterIdList_.WriteTo(output, _repeated_finishedChestMonsterIdList_codec);
-      openedChestIdList_.WriteTo(output, _repeated_openedChestIdList_codec);
-      if (sceneIdentifier_ != null) {
-        output.WriteRawTag(154, 57);
-        output.WriteMessage(SceneIdentifier);
-      }
+      floorSavedValueMap_.WriteTo(output, _map_floorSavedValueMap_codec);
       if (clientGroupMissionInfo_ != null) {
-        output.WriteRawTag(130, 99);
+        output.WriteRawTag(218, 7);
         output.WriteMessage(ClientGroupMissionInfo);
       }
+      openedChestIdList_.WriteTo(output, _repeated_openedChestIdList_codec);
+      if (sceneIdentifier_ != null) {
+        output.WriteRawTag(210, 59);
+        output.WriteMessage(SceneIdentifier);
+      }
+      finishedChestMonsterIdList_.WriteTo(output, _repeated_finishedChestMonsterIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -414,43 +415,43 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      chestMonsterList_.WriteTo(ref output, _repeated_chestMonsterList_codec);
-      lightenSectionList_.WriteTo(ref output, _repeated_lightenSectionList_codec);
-      mazePropList_.WriteTo(ref output, _repeated_mazePropList_codec);
       mazeGroupList_.WriteTo(ref output, _repeated_mazeGroupList_codec);
-      floorSavedData_.WriteTo(ref output, _map_floorSavedData_codec);
+      if (DimensionId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(DimensionId);
+      }
+      mazePropList_.WriteTo(ref output, _repeated_mazePropList_codec);
+      if (FloorId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(FloorId);
+      }
+      unlockTeleportList_.WriteTo(ref output, _repeated_unlockTeleportList_codec);
+      lightenSectionList_.WriteTo(ref output, _repeated_lightenSectionList_codec);
+      chestMonsterList_.WriteTo(ref output, _repeated_chestMonsterList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
+      }
       if (CurMapEntryId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(96);
         output.WriteUInt32(CurMapEntryId);
       }
       if (EntryId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(104);
         output.WriteUInt32(EntryId);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Retcode);
-      }
-      if (DimensionId != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(DimensionId);
-      }
-      if (FloorId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(FloorId);
-      }
       chestList_.WriteTo(ref output, _repeated_chestList_codec);
-      unlockTeleportList_.WriteTo(ref output, _repeated_unlockTeleportList_codec);
-      finishedChestMonsterIdList_.WriteTo(ref output, _repeated_finishedChestMonsterIdList_codec);
-      openedChestIdList_.WriteTo(ref output, _repeated_openedChestIdList_codec);
-      if (sceneIdentifier_ != null) {
-        output.WriteRawTag(154, 57);
-        output.WriteMessage(SceneIdentifier);
-      }
+      floorSavedValueMap_.WriteTo(ref output, _map_floorSavedValueMap_codec);
       if (clientGroupMissionInfo_ != null) {
-        output.WriteRawTag(130, 99);
+        output.WriteRawTag(218, 7);
         output.WriteMessage(ClientGroupMissionInfo);
       }
+      openedChestIdList_.WriteTo(ref output, _repeated_openedChestIdList_codec);
+      if (sceneIdentifier_ != null) {
+        output.WriteRawTag(210, 59);
+        output.WriteMessage(SceneIdentifier);
+      }
+      finishedChestMonsterIdList_.WriteTo(ref output, _repeated_finishedChestMonsterIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -461,36 +462,36 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += floorSavedData_.CalculateSize(_map_floorSavedData_codec);
-      size += chestMonsterList_.CalculateSize(_repeated_chestMonsterList_codec);
-      size += openedChestIdList_.CalculateSize(_repeated_openedChestIdList_codec);
       size += mazeGroupList_.CalculateSize(_repeated_mazeGroupList_codec);
-      size += chestList_.CalculateSize(_repeated_chestList_codec);
-      if (sceneIdentifier_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SceneIdentifier);
-      }
-      if (clientGroupMissionInfo_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ClientGroupMissionInfo);
-      }
-      size += mazePropList_.CalculateSize(_repeated_mazePropList_codec);
-      size += finishedChestMonsterIdList_.CalculateSize(_repeated_finishedChestMonsterIdList_codec);
-      size += unlockTeleportList_.CalculateSize(_repeated_unlockTeleportList_codec);
-      size += lightenSectionList_.CalculateSize(_repeated_lightenSectionList_codec);
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       if (DimensionId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
       }
+      size += mazePropList_.CalculateSize(_repeated_mazePropList_codec);
       if (FloorId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
       }
-      if (EntryId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
+      size += unlockTeleportList_.CalculateSize(_repeated_unlockTeleportList_codec);
+      size += lightenSectionList_.CalculateSize(_repeated_lightenSectionList_codec);
+      size += chestMonsterList_.CalculateSize(_repeated_chestMonsterList_codec);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (CurMapEntryId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurMapEntryId);
       }
+      if (EntryId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
+      }
+      size += chestList_.CalculateSize(_repeated_chestList_codec);
+      size += floorSavedValueMap_.CalculateSize(_map_floorSavedValueMap_codec);
+      if (clientGroupMissionInfo_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ClientGroupMissionInfo);
+      }
+      size += openedChestIdList_.CalculateSize(_repeated_openedChestIdList_codec);
+      if (sceneIdentifier_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SceneIdentifier);
+      }
+      size += finishedChestMonsterIdList_.CalculateSize(_repeated_finishedChestMonsterIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -503,42 +504,42 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      floorSavedData_.MergeFrom(other.floorSavedData_);
-      chestMonsterList_.Add(other.chestMonsterList_);
-      openedChestIdList_.Add(other.openedChestIdList_);
       mazeGroupList_.Add(other.mazeGroupList_);
-      chestList_.Add(other.chestList_);
-      if (other.sceneIdentifier_ != null) {
-        if (sceneIdentifier_ == null) {
-          SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
-        }
-        SceneIdentifier.MergeFrom(other.SceneIdentifier);
+      if (other.DimensionId != 0) {
+        DimensionId = other.DimensionId;
       }
+      mazePropList_.Add(other.mazePropList_);
+      if (other.FloorId != 0) {
+        FloorId = other.FloorId;
+      }
+      unlockTeleportList_.Add(other.unlockTeleportList_);
+      lightenSectionList_.Add(other.lightenSectionList_);
+      chestMonsterList_.Add(other.chestMonsterList_);
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      if (other.CurMapEntryId != 0) {
+        CurMapEntryId = other.CurMapEntryId;
+      }
+      if (other.EntryId != 0) {
+        EntryId = other.EntryId;
+      }
+      chestList_.Add(other.chestList_);
+      floorSavedValueMap_.MergeFrom(other.floorSavedValueMap_);
       if (other.clientGroupMissionInfo_ != null) {
         if (clientGroupMissionInfo_ == null) {
           ClientGroupMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
         }
         ClientGroupMissionInfo.MergeFrom(other.ClientGroupMissionInfo);
       }
-      mazePropList_.Add(other.mazePropList_);
+      openedChestIdList_.Add(other.openedChestIdList_);
+      if (other.sceneIdentifier_ != null) {
+        if (sceneIdentifier_ == null) {
+          SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
+        }
+        SceneIdentifier.MergeFrom(other.SceneIdentifier);
+      }
       finishedChestMonsterIdList_.Add(other.finishedChestMonsterIdList_);
-      unlockTeleportList_.Add(other.unlockTeleportList_);
-      lightenSectionList_.Add(other.lightenSectionList_);
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      if (other.DimensionId != 0) {
-        DimensionId = other.DimensionId;
-      }
-      if (other.FloorId != 0) {
-        FloorId = other.FloorId;
-      }
-      if (other.EntryId != 0) {
-        EntryId = other.EntryId;
-      }
-      if (other.CurMapEntryId != 0) {
-        CurMapEntryId = other.CurMapEntryId;
-      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -559,77 +560,77 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            chestMonsterList_.AddEntriesFrom(input, _repeated_chestMonsterList_codec);
+            mazeGroupList_.AddEntriesFrom(input, _repeated_mazeGroupList_codec);
             break;
           }
-          case 26:
           case 24: {
-            lightenSectionList_.AddEntriesFrom(input, _repeated_lightenSectionList_codec);
+            DimensionId = input.ReadUInt32();
             break;
           }
           case 34: {
             mazePropList_.AddEntriesFrom(input, _repeated_mazePropList_codec);
             break;
           }
-          case 42: {
-            mazeGroupList_.AddEntriesFrom(input, _repeated_mazeGroupList_codec);
-            break;
-          }
-          case 50: {
-            floorSavedData_.AddEntriesFrom(input, _map_floorSavedData_codec);
-            break;
-          }
-          case 56: {
-            CurMapEntryId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            EntryId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            DimensionId = input.ReadUInt32();
-            break;
-          }
-          case 96: {
+          case 40: {
             FloorId = input.ReadUInt32();
             break;
           }
-          case 106: {
-            chestList_.AddEntriesFrom(input, _repeated_chestList_codec);
-            break;
-          }
-          case 114:
-          case 112: {
+          case 50:
+          case 48: {
             unlockTeleportList_.AddEntriesFrom(input, _repeated_unlockTeleportList_codec);
             break;
           }
-          case 3514:
-          case 3512: {
-            finishedChestMonsterIdList_.AddEntriesFrom(input, _repeated_finishedChestMonsterIdList_codec);
+          case 58:
+          case 56: {
+            lightenSectionList_.AddEntriesFrom(input, _repeated_lightenSectionList_codec);
             break;
           }
-          case 7034:
-          case 7032: {
+          case 66: {
+            chestMonsterList_.AddEntriesFrom(input, _repeated_chestMonsterList_codec);
+            break;
+          }
+          case 72: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            CurMapEntryId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            EntryId = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            chestList_.AddEntriesFrom(input, _repeated_chestList_codec);
+            break;
+          }
+          case 122: {
+            floorSavedValueMap_.AddEntriesFrom(input, _map_floorSavedValueMap_codec);
+            break;
+          }
+          case 986: {
+            if (clientGroupMissionInfo_ == null) {
+              ClientGroupMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
+            }
+            input.ReadMessage(ClientGroupMissionInfo);
+            break;
+          }
+          case 4490:
+          case 4488: {
             openedChestIdList_.AddEntriesFrom(input, _repeated_openedChestIdList_codec);
             break;
           }
-          case 7322: {
+          case 7634: {
             if (sceneIdentifier_ == null) {
               SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
             input.ReadMessage(SceneIdentifier);
             break;
           }
-          case 12674: {
-            if (clientGroupMissionInfo_ == null) {
-              ClientGroupMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
-            }
-            input.ReadMessage(ClientGroupMissionInfo);
+          case 13602:
+          case 13600: {
+            finishedChestMonsterIdList_.AddEntriesFrom(input, _repeated_finishedChestMonsterIdList_codec);
             break;
           }
         }
@@ -652,77 +653,77 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            chestMonsterList_.AddEntriesFrom(ref input, _repeated_chestMonsterList_codec);
+            mazeGroupList_.AddEntriesFrom(ref input, _repeated_mazeGroupList_codec);
             break;
           }
-          case 26:
           case 24: {
-            lightenSectionList_.AddEntriesFrom(ref input, _repeated_lightenSectionList_codec);
+            DimensionId = input.ReadUInt32();
             break;
           }
           case 34: {
             mazePropList_.AddEntriesFrom(ref input, _repeated_mazePropList_codec);
             break;
           }
-          case 42: {
-            mazeGroupList_.AddEntriesFrom(ref input, _repeated_mazeGroupList_codec);
-            break;
-          }
-          case 50: {
-            floorSavedData_.AddEntriesFrom(ref input, _map_floorSavedData_codec);
-            break;
-          }
-          case 56: {
-            CurMapEntryId = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            EntryId = input.ReadUInt32();
-            break;
-          }
-          case 80: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            DimensionId = input.ReadUInt32();
-            break;
-          }
-          case 96: {
+          case 40: {
             FloorId = input.ReadUInt32();
             break;
           }
-          case 106: {
-            chestList_.AddEntriesFrom(ref input, _repeated_chestList_codec);
-            break;
-          }
-          case 114:
-          case 112: {
+          case 50:
+          case 48: {
             unlockTeleportList_.AddEntriesFrom(ref input, _repeated_unlockTeleportList_codec);
             break;
           }
-          case 3514:
-          case 3512: {
-            finishedChestMonsterIdList_.AddEntriesFrom(ref input, _repeated_finishedChestMonsterIdList_codec);
+          case 58:
+          case 56: {
+            lightenSectionList_.AddEntriesFrom(ref input, _repeated_lightenSectionList_codec);
             break;
           }
-          case 7034:
-          case 7032: {
+          case 66: {
+            chestMonsterList_.AddEntriesFrom(ref input, _repeated_chestMonsterList_codec);
+            break;
+          }
+          case 72: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            CurMapEntryId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            EntryId = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            chestList_.AddEntriesFrom(ref input, _repeated_chestList_codec);
+            break;
+          }
+          case 122: {
+            floorSavedValueMap_.AddEntriesFrom(ref input, _map_floorSavedValueMap_codec);
+            break;
+          }
+          case 986: {
+            if (clientGroupMissionInfo_ == null) {
+              ClientGroupMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
+            }
+            input.ReadMessage(ClientGroupMissionInfo);
+            break;
+          }
+          case 4490:
+          case 4488: {
             openedChestIdList_.AddEntriesFrom(ref input, _repeated_openedChestIdList_codec);
             break;
           }
-          case 7322: {
+          case 7634: {
             if (sceneIdentifier_ == null) {
               SceneIdentifier = new global::March7thHoney.Proto.SceneIdentifier();
             }
             input.ReadMessage(SceneIdentifier);
             break;
           }
-          case 12674: {
-            if (clientGroupMissionInfo_ == null) {
-              ClientGroupMissionInfo = new global::March7thHoney.Proto.MissionStatusBySceneInfo();
-            }
-            input.ReadMessage(ClientGroupMissionInfo);
+          case 13602:
+          case 13600: {
+            finishedChestMonsterIdList_.AddEntriesFrom(ref input, _repeated_finishedChestMonsterIdList_codec);
             break;
           }
         }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Gender.proto";
 
 message SetGenderCsReq {
-    Gender gender = 1;
+    Gender gender = 5;
 }

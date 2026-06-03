@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message RechargeSuccNotify {
-    ItemList item_list = 9;
-    string price_tier = 10;
-    string product_id = 12;
-    uint64 month_card_out_date_time = 7;
+    ItemList item_list = 1;
+    string product_id = 3;
+    uint64 month_card_out_date_time = 6;
+    string price_tier = 11;
 }

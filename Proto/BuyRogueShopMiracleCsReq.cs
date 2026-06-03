@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5CdXlSb2d1ZVNob3BNaXJhY2xlQ3NSZXEucHJvdG8iUgoYQnV5Um9ndWVT",
-            "aG9wTWlyYWNsZUNzUmVxEhMKC0tPRk5PSkNNRUZBGAwgAygNEiEKGWludGVy",
-            "YWN0ZWRfcHJvcF9lbnRpdHlfaWQYCSABKA1CFqoCE01hcmNoN3RoSG9uZXku",
+            "aG9wTWlyYWNsZUNzUmVxEhMKC0tPRk5PSkNNRUZBGAcgAygNEiEKGWludGVy",
+            "YWN0ZWRfcHJvcF9lbnRpdHlfaWQYDiABKA1CFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KOFNOJCMEFA" field.</summary>
-    public const int KOFNOJCMEFAFieldNumber = 12;
+    public const int KOFNOJCMEFAFieldNumber = 7;
     private static readonly pb::FieldCodec<uint> _repeated_kOFNOJCMEFA_codec
-        = pb::FieldCodec.ForUInt32(98);
+        = pb::FieldCodec.ForUInt32(58);
     private readonly pbc::RepeatedField<uint> kOFNOJCMEFA_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "interacted_prop_entity_id" field.</summary>
-    public const int InteractedPropEntityIdFieldNumber = 9;
+    public const int InteractedPropEntityIdFieldNumber = 14;
     private uint interactedPropEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      kOFNOJCMEFA_.WriteTo(output, _repeated_kOFNOJCMEFA_codec);
       if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(InteractedPropEntityId);
       }
-      kOFNOJCMEFA_.WriteTo(output, _repeated_kOFNOJCMEFA_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      kOFNOJCMEFA_.WriteTo(ref output, _repeated_kOFNOJCMEFA_codec);
       if (InteractedPropEntityId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(112);
         output.WriteUInt32(InteractedPropEntityId);
       }
-      kOFNOJCMEFA_.WriteTo(ref output, _repeated_kOFNOJCMEFA_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,13 +220,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            InteractedPropEntityId = input.ReadUInt32();
+          case 58:
+          case 56: {
+            kOFNOJCMEFA_.AddEntriesFrom(input, _repeated_kOFNOJCMEFA_codec);
             break;
           }
-          case 98:
-          case 96: {
-            kOFNOJCMEFA_.AddEntriesFrom(input, _repeated_kOFNOJCMEFA_codec);
+          case 112: {
+            InteractedPropEntityId = input.ReadUInt32();
             break;
           }
         }
@@ -248,13 +248,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            InteractedPropEntityId = input.ReadUInt32();
+          case 58:
+          case 56: {
+            kOFNOJCMEFA_.AddEntriesFrom(ref input, _repeated_kOFNOJCMEFA_codec);
             break;
           }
-          case 98:
-          case 96: {
-            kOFNOJCMEFA_.AddEntriesFrom(ref input, _repeated_kOFNOJCMEFA_codec);
+          case 112: {
+            InteractedPropEntityId = input.ReadUInt32();
             break;
           }
         }

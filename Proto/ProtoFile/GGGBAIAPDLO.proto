@@ -7,17 +7,15 @@ import "KJAMNOGFAMJ.proto";
 import "RogueCommonBuffSelectSourceType.proto";
 
 message GGGBAIAPDLO {
-    repeated KJAMNOGFAMJ LEOFNINDJDB = 14;
-    ItemCostData DEHJDNIEKHB = 12;
-    repeated uint32 IODMPHLIPDP = 6;
-    repeated uint32 EBMEEKJGPPM = 9;
-    uint32 FIMMFJCKCNK = 5;
-    uint32 EGFOLKEPNCI = 11;
-    uint32 EIALMEADLGF = 8;
-    uint32 NOAMCDNNHMD = 2;
-    uint32 PCGFIOKLIBE = 13;
-    uint32 PNJLAAOCFMC = 10;
-    bool OELJGANLKLJ = 1;
-    RogueCommonBuffSelectSourceType NFMKOFNEKLA = 15;
-    uint32 NKGGAOJLCMD = 7;
+    repeated uint32 EBMEEKJGPPM = 2;
+    uint32 NOAMCDNNHMD = 3;
+    bool can_roll = 4;
+    repeated KJAMNOGFAMJ LEOFNINDJDB = 6;
+    RogueCommonBuffSelectSourceType source_type = 7;
+    uint32 FIMMFJCKCNK = 8;
+    uint32 NKGGAOJLCMD = 9;
+    uint32 EGFOLKEPNCI = 10;
+    uint32 EIALMEADLGF = 11;
+    uint32 PCGFIOKLIBE = 14;
+    ItemCostData DEHJDNIEKHB = 15;
 }

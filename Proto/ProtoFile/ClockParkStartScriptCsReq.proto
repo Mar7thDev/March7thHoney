@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ClockParkStartScriptCsReq {
-    repeated uint32 BDGMNPIJDDL = 15;
-    uint32 script_id = 12;
+    repeated uint32 BDGMNPIJDDL = 1;
+    uint32 script_id = 4;
 }

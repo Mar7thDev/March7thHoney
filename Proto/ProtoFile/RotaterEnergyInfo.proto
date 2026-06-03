@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RotaterEnergyInfo {
-    uint32 cur_num = 2;
-    uint32 max_num = 5;
+    uint32 max_num = 1;
+    uint32 cur_num = 13;
 }

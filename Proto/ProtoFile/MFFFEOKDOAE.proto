@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GCFGCHAMNOL.proto";
 
 message MFFFEOKDOAE {
-    GCFGCHAMNOL lineup = 14;
-    uint32 retcode = 6;
+    GCFGCHAMNOL lineup = 6;
+    uint32 retcode = 15;
 }

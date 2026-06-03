@@ -6,8 +6,8 @@ import "LineupInfo.proto";
 import "SceneInfo.proto";
 
 message GEGLJDELBHA {
-    SceneInfo MOPHKIGKDIK = 6;
-    LineupInfo lineup = 2;
-    uint32 raid_id = 1;
-    uint32 world_level = 4;
+    uint32 world_level = 6;
+    uint32 raid_id = 8;
+    SceneInfo MOPHKIGKDIK = 12;
+    LineupInfo lineup = 13;
 }

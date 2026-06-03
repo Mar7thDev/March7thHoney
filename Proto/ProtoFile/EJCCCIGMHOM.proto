@@ -6,8 +6,8 @@ import "GCECAGOELDP.proto";
 import "HIJCLODMBPO.proto";
 
 message EJCCCIGMHOM {
+    repeated uint32 NKHIIMHCLCD = 3;
     HIJCLODMBPO GJFKKFFJDAH = 4;
-    repeated uint32 NKHIIMHCLCD = 14;
-    GCECAGOELDP BDIBPIMAPOC = 13;
-    repeated uint32 GMGOHBLFMAN = 2;
+    repeated uint32 GMGOHBLFMAN = 5;
+    GCECAGOELDP BDIBPIMAPOC = 12;
 }

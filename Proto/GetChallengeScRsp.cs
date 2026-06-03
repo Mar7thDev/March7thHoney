@@ -26,17 +26,16 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdHZXRDaGFsbGVuZ2VTY1JzcC5wcm90bxoPQ2hhbGxlbmdlLnByb3RvGhRD",
             "aGFsbGVuZ2VHcm91cC5wcm90bxoeQ2hhbGxlbmdlSGlzdG9yeU1heExldmVs",
-            "LnByb3RvGhFGTURBQUlLTEFKQS5wcm90byLiAQoRR2V0Q2hhbGxlbmdlU2NS",
-            "c3ASMQoObWF4X2xldmVsX2xpc3QYByADKAsyGS5DaGFsbGVuZ2VIaXN0b3J5",
-            "TWF4TGV2ZWwSLQoUY2hhbGxlbmdlX2dyb3VwX2xpc3QYCiADKAsyDy5DaGFs",
-            "bGVuZ2VHcm91cBIhCgtLS0lBRlBGS0xHRRgJIAMoCzIMLkZNREFBSUtMQUpB",
-            "EiIKDmNoYWxsZW5nZV9saXN0GAggAygLMgouQ2hhbGxlbmdlEhMKC0pJSkJO",
-            "TkFOQUdQGAIgASgNEg8KB3JldGNvZGUYBCABKA1CFqoCE01hcmNoN3RoSG9u",
-            "ZXkuUHJvdG9iBnByb3RvMw=="));
+            "LnByb3RvGhFGTURBQUlLTEFKQS5wcm90byLNAQoRR2V0Q2hhbGxlbmdlU2NS",
+            "c3ASLQoUY2hhbGxlbmdlX2dyb3VwX2xpc3QYASADKAsyDy5DaGFsbGVuZ2VH",
+            "cm91cBIhCgtLS0lBRlBGS0xHRRgGIAMoCzIMLkZNREFBSUtMQUpBEiIKDmNo",
+            "YWxsZW5nZV9saXN0GAogAygLMgouQ2hhbGxlbmdlEjEKDm1heF9sZXZlbF9s",
+            "aXN0GAsgAygLMhkuQ2hhbGxlbmdlSGlzdG9yeU1heExldmVsEg8KB3JldGNv",
+            "ZGUYDCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeReflection.Descriptor, global::March7thHoney.Proto.ChallengeGroupReflection.Descriptor, global::March7thHoney.Proto.ChallengeHistoryMaxLevelReflection.Descriptor, global::March7thHoney.Proto.FMDAAIKLAJAReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetChallengeScRsp), global::March7thHoney.Proto.GetChallengeScRsp.Parser, new[]{ "MaxLevelList", "ChallengeGroupList", "KKIAFPFKLGE", "ChallengeList", "JIJBNNANAGP", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetChallengeScRsp), global::March7thHoney.Proto.GetChallengeScRsp.Parser, new[]{ "ChallengeGroupList", "KKIAFPFKLGE", "ChallengeList", "MaxLevelList", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -78,11 +77,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetChallengeScRsp(GetChallengeScRsp other) : this() {
-      maxLevelList_ = other.maxLevelList_.Clone();
       challengeGroupList_ = other.challengeGroupList_.Clone();
       kKIAFPFKLGE_ = other.kKIAFPFKLGE_.Clone();
       challengeList_ = other.challengeList_.Clone();
-      jIJBNNANAGP_ = other.jIJBNNANAGP_;
+      maxLevelList_ = other.maxLevelList_.Clone();
       retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -93,21 +91,10 @@ namespace March7thHoney.Proto {
       return new GetChallengeScRsp(this);
     }
 
-    /// <summary>Field number for the "max_level_list" field.</summary>
-    public const int MaxLevelListFieldNumber = 7;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> _repeated_maxLevelList_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.ChallengeHistoryMaxLevel.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> maxLevelList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> MaxLevelList {
-      get { return maxLevelList_; }
-    }
-
     /// <summary>Field number for the "challenge_group_list" field.</summary>
-    public const int ChallengeGroupListFieldNumber = 10;
+    public const int ChallengeGroupListFieldNumber = 1;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeGroup> _repeated_challengeGroupList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.ChallengeGroup.Parser);
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.ChallengeGroup.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeGroup> challengeGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -116,9 +103,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KKIAFPFKLGE" field.</summary>
-    public const int KKIAFPFKLGEFieldNumber = 9;
+    public const int KKIAFPFKLGEFieldNumber = 6;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.FMDAAIKLAJA> _repeated_kKIAFPFKLGE_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.FMDAAIKLAJA.Parser);
+        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.FMDAAIKLAJA.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.FMDAAIKLAJA> kKIAFPFKLGE_ = new pbc::RepeatedField<global::March7thHoney.Proto.FMDAAIKLAJA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -127,9 +114,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "challenge_list" field.</summary>
-    public const int ChallengeListFieldNumber = 8;
+    public const int ChallengeListFieldNumber = 10;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.Challenge> _repeated_challengeList_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.Challenge.Parser);
+        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.Challenge.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.Challenge> challengeList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Challenge>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,20 +124,19 @@ namespace March7thHoney.Proto {
       get { return challengeList_; }
     }
 
-    /// <summary>Field number for the "JIJBNNANAGP" field.</summary>
-    public const int JIJBNNANAGPFieldNumber = 2;
-    private uint jIJBNNANAGP_;
+    /// <summary>Field number for the "max_level_list" field.</summary>
+    public const int MaxLevelListFieldNumber = 11;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> _repeated_maxLevelList_codec
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.ChallengeHistoryMaxLevel.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> maxLevelList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint JIJBNNANAGP {
-      get { return jIJBNNANAGP_; }
-      set {
-        jIJBNNANAGP_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeHistoryMaxLevel> MaxLevelList {
+      get { return maxLevelList_; }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 4;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -176,11 +162,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!maxLevelList_.Equals(other.maxLevelList_)) return false;
       if(!challengeGroupList_.Equals(other.challengeGroupList_)) return false;
       if(!kKIAFPFKLGE_.Equals(other.kKIAFPFKLGE_)) return false;
       if(!challengeList_.Equals(other.challengeList_)) return false;
-      if (JIJBNNANAGP != other.JIJBNNANAGP) return false;
+      if(!maxLevelList_.Equals(other.maxLevelList_)) return false;
       if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -189,11 +174,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= maxLevelList_.GetHashCode();
       hash ^= challengeGroupList_.GetHashCode();
       hash ^= kKIAFPFKLGE_.GetHashCode();
       hash ^= challengeList_.GetHashCode();
-      if (JIJBNNANAGP != 0) hash ^= JIJBNNANAGP.GetHashCode();
+      hash ^= maxLevelList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -213,18 +197,14 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (JIJBNNANAGP != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(JIJBNNANAGP);
-      }
+      challengeGroupList_.WriteTo(output, _repeated_challengeGroupList_codec);
+      kKIAFPFKLGE_.WriteTo(output, _repeated_kKIAFPFKLGE_codec);
+      challengeList_.WriteTo(output, _repeated_challengeList_codec);
+      maxLevelList_.WriteTo(output, _repeated_maxLevelList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
-      maxLevelList_.WriteTo(output, _repeated_maxLevelList_codec);
-      challengeList_.WriteTo(output, _repeated_challengeList_codec);
-      kKIAFPFKLGE_.WriteTo(output, _repeated_kKIAFPFKLGE_codec);
-      challengeGroupList_.WriteTo(output, _repeated_challengeGroupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -235,18 +215,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (JIJBNNANAGP != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(JIJBNNANAGP);
-      }
+      challengeGroupList_.WriteTo(ref output, _repeated_challengeGroupList_codec);
+      kKIAFPFKLGE_.WriteTo(ref output, _repeated_kKIAFPFKLGE_codec);
+      challengeList_.WriteTo(ref output, _repeated_challengeList_codec);
+      maxLevelList_.WriteTo(ref output, _repeated_maxLevelList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
-      maxLevelList_.WriteTo(ref output, _repeated_maxLevelList_codec);
-      challengeList_.WriteTo(ref output, _repeated_challengeList_codec);
-      kKIAFPFKLGE_.WriteTo(ref output, _repeated_kKIAFPFKLGE_codec);
-      challengeGroupList_.WriteTo(ref output, _repeated_challengeGroupList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -257,13 +233,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += maxLevelList_.CalculateSize(_repeated_maxLevelList_codec);
       size += challengeGroupList_.CalculateSize(_repeated_challengeGroupList_codec);
       size += kKIAFPFKLGE_.CalculateSize(_repeated_kKIAFPFKLGE_codec);
       size += challengeList_.CalculateSize(_repeated_challengeList_codec);
-      if (JIJBNNANAGP != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(JIJBNNANAGP);
-      }
+      size += maxLevelList_.CalculateSize(_repeated_maxLevelList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
@@ -279,13 +252,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      maxLevelList_.Add(other.maxLevelList_);
       challengeGroupList_.Add(other.challengeGroupList_);
       kKIAFPFKLGE_.Add(other.kKIAFPFKLGE_);
       challengeList_.Add(other.challengeList_);
-      if (other.JIJBNNANAGP != 0) {
-        JIJBNNANAGP = other.JIJBNNANAGP;
-      }
+      maxLevelList_.Add(other.maxLevelList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
@@ -308,28 +278,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            JIJBNNANAGP = input.ReadUInt32();
+          case 10: {
+            challengeGroupList_.AddEntriesFrom(input, _repeated_challengeGroupList_codec);
             break;
           }
-          case 32: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 58: {
-            maxLevelList_.AddEntriesFrom(input, _repeated_maxLevelList_codec);
-            break;
-          }
-          case 66: {
-            challengeList_.AddEntriesFrom(input, _repeated_challengeList_codec);
-            break;
-          }
-          case 74: {
+          case 50: {
             kKIAFPFKLGE_.AddEntriesFrom(input, _repeated_kKIAFPFKLGE_codec);
             break;
           }
           case 82: {
-            challengeGroupList_.AddEntriesFrom(input, _repeated_challengeGroupList_codec);
+            challengeList_.AddEntriesFrom(input, _repeated_challengeList_codec);
+            break;
+          }
+          case 90: {
+            maxLevelList_.AddEntriesFrom(input, _repeated_maxLevelList_codec);
+            break;
+          }
+          case 96: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -351,28 +317,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            JIJBNNANAGP = input.ReadUInt32();
+          case 10: {
+            challengeGroupList_.AddEntriesFrom(ref input, _repeated_challengeGroupList_codec);
             break;
           }
-          case 32: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 58: {
-            maxLevelList_.AddEntriesFrom(ref input, _repeated_maxLevelList_codec);
-            break;
-          }
-          case 66: {
-            challengeList_.AddEntriesFrom(ref input, _repeated_challengeList_codec);
-            break;
-          }
-          case 74: {
+          case 50: {
             kKIAFPFKLGE_.AddEntriesFrom(ref input, _repeated_kKIAFPFKLGE_codec);
             break;
           }
           case 82: {
-            challengeGroupList_.AddEntriesFrom(ref input, _repeated_challengeGroupList_codec);
+            challengeList_.AddEntriesFrom(ref input, _repeated_challengeList_codec);
+            break;
+          }
+          case 90: {
+            maxLevelList_.AddEntriesFrom(ref input, _repeated_maxLevelList_codec);
+            break;
+          }
+          case 96: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

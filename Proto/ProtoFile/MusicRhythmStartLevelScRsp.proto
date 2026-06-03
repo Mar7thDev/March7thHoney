@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MusicRhythmStartLevelScRsp {
-    string FPPECOIAHEP = 15;
-    uint32 retcode = 8;
-    uint32 level_id = 7;
+    string trans_no = 6;
+    uint32 retcode = 10;
+    uint32 level_id = 15;
 }

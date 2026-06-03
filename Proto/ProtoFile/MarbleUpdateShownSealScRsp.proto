@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MarbleUpdateShownSealScRsp {
-    repeated uint32 GFADCIHMDNN = 8;
-    uint32 retcode = 13;
+    repeated uint32 GFADCIHMDNN = 3;
+    uint32 retcode = 10;
 }

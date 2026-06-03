@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChFPSkhISFBMQklFSi5wcm90bxoWQWV0aGVyQXZhdGFySW5mby5wcm90bxoQ",
             "QmF0dGxlQnVmZi5wcm90bxoXQmF0dGxlTW9uc3RlcldhdmUucHJvdG8ihAEK",
-            "C09KSEhIUExCSUVKEi0KEW1vbnN0ZXJfd2F2ZV9saXN0GAIgAygLMhIuQmF0",
-            "dGxlTW9uc3RlcldhdmUSHgoJYnVmZl9saXN0GAMgAygLMgsuQmF0dGxlQnVm",
-            "ZhImCgthdmF0YXJfbGlzdBgBIAMoCzIRLkFldGhlckF2YXRhckluZm9CFqoC",
+            "C09KSEhIUExCSUVKEiYKC2F2YXRhcl9saXN0GAEgAygLMhEuQWV0aGVyQXZh",
+            "dGFySW5mbxItChFtb25zdGVyX3dhdmVfbGlzdBgCIAMoCzISLkJhdHRsZU1v",
+            "bnN0ZXJXYXZlEh4KCWJ1ZmZfbGlzdBgDIAMoCzILLkJhdHRsZUJ1ZmZCFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AetherAvatarInfoReflection.Descriptor, global::March7thHoney.Proto.BattleBuffReflection.Descriptor, global::March7thHoney.Proto.BattleMonsterWaveReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OJHHHPLBIEJ), global::March7thHoney.Proto.OJHHHPLBIEJ.Parser, new[]{ "MonsterWaveList", "BuffList", "AvatarList" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OJHHHPLBIEJ), global::March7thHoney.Proto.OJHHHPLBIEJ.Parser, new[]{ "AvatarList", "MonsterWaveList", "BuffList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,9 +75,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OJHHHPLBIEJ(OJHHHPLBIEJ other) : this() {
+      avatarList_ = other.avatarList_.Clone();
       monsterWaveList_ = other.monsterWaveList_.Clone();
       buffList_ = other.buffList_.Clone();
-      avatarList_ = other.avatarList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,6 +85,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public OJHHHPLBIEJ Clone() {
       return new OJHHHPLBIEJ(this);
+    }
+
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AetherAvatarInfo> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AetherAvatarInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo> AvatarList {
+      get { return avatarList_; }
     }
 
     /// <summary>Field number for the "monster_wave_list" field.</summary>
@@ -109,17 +120,6 @@ namespace March7thHoney.Proto {
       get { return buffList_; }
     }
 
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AetherAvatarInfo> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.AetherAvatarInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AetherAvatarInfo> AvatarList {
-      get { return avatarList_; }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if(!avatarList_.Equals(other.avatarList_)) return false;
       if(!monsterWaveList_.Equals(other.monsterWaveList_)) return false;
       if(!buffList_.Equals(other.buffList_)) return false;
-      if(!avatarList_.Equals(other.avatarList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      hash ^= avatarList_.GetHashCode();
       hash ^= monsterWaveList_.GetHashCode();
       hash ^= buffList_.GetHashCode();
-      hash ^= avatarList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -192,9 +192,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
       size += monsterWaveList_.CalculateSize(_repeated_monsterWaveList_codec);
       size += buffList_.CalculateSize(_repeated_buffList_codec);
-      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -207,9 +207,9 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      avatarList_.Add(other.avatarList_);
       monsterWaveList_.Add(other.monsterWaveList_);
       buffList_.Add(other.buffList_);
-      avatarList_.Add(other.avatarList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 

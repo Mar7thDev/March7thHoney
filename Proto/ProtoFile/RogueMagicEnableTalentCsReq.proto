@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RogueMagicEnableTalentCsReq {
-    uint32 CKHCLKOALKE = 4;
+    uint32 CKHCLKOALKE = 10;
 }

@@ -6,8 +6,8 @@ import "DBLILHCLPPL.proto";
 import "GFFFJCEHBEB.proto";
 
 message SpaceZooMutateScRsp {
-    DBLILHCLPPL KIIPGCDJPBO = 15;
-    repeated GFFFJCEHBEB JKMIFNJEBJO = 3;
-    bool HCGHLFAKIKI = 10;
-    uint32 retcode = 2;
+    DBLILHCLPPL KIIPGCDJPBO = 9;
+    repeated GFFFJCEHBEB JKMIFNJEBJO = 10;
+    bool HCGHLFAKIKI = 13;
+    uint32 retcode = 15;
 }

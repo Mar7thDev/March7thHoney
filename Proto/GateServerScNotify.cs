@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhHYXRlU2VydmVyU2NOb3RpZnkucHJvdG8iKQoSR2F0ZVNlcnZlclNjTm90",
-            "aWZ5EhMKC09LTE5QTEVES0RFGAsgASgJQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "aWZ5EhMKC09LTE5QTEVES0RFGAUgASgJQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -83,7 +83,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OKLNPLEDKDE" field.</summary>
-    public const int OKLNPLEDKDEFieldNumber = 11;
+    public const int OKLNPLEDKDEFieldNumber = 5;
     private string oKLNPLEDKDE_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (OKLNPLEDKDE.Length != 0) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(42);
         output.WriteString(OKLNPLEDKDE);
       }
       if (_unknownFields != null) {
@@ -151,7 +151,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (OKLNPLEDKDE.Length != 0) {
-        output.WriteRawTag(90);
+        output.WriteRawTag(42);
         output.WriteString(OKLNPLEDKDE);
       }
       if (_unknownFields != null) {
@@ -201,7 +201,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 90: {
+          case 42: {
             OKLNPLEDKDE = input.ReadString();
             break;
           }
@@ -224,7 +224,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 90: {
+          case 42: {
             OKLNPLEDKDE = input.ReadString();
             break;
           }

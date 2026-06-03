@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyBuyGoodsScRsp {
-    uint32 goods_id = 9;
-    uint32 retcode = 2;
+    uint32 retcode = 5;
+    uint32 goods_id = 13;
     uint32 shop_id = 15;
 }

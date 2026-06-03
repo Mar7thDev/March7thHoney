@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiRSZWZyZXNoVHJpZ2dlckJ5Q2xpZW50U2NOb3RpZnkucHJvdG8icQoeUmVm",
-            "cmVzaFRyaWdnZXJCeUNsaWVudFNjTm90aWZ5EhQKDHRyaWdnZXJfbmFtZRgH",
-            "IAEoCRIeChZ0cmlnZ2VyX3RhcmdldF9pZF9saXN0GAYgAygNEhkKEXRyaWdn",
-            "ZXJfZW50aXR5X2lkGAUgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
+            "cmVzaFRyaWdnZXJCeUNsaWVudFNjTm90aWZ5EhQKDHRyaWdnZXJfbmFtZRgC",
+            "IAEoCRIZChF0cmlnZ2VyX2VudGl0eV9pZBgJIAEoDRIeChZ0cmlnZ2VyX3Rh",
+            "cmdldF9pZF9saXN0GA8gAygNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RefreshTriggerByClientScNotify), global::March7thHoney.Proto.RefreshTriggerByClientScNotify.Parser, new[]{ "TriggerName", "TriggerTargetIdList", "TriggerEntityId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RefreshTriggerByClientScNotify), global::March7thHoney.Proto.RefreshTriggerByClientScNotify.Parser, new[]{ "TriggerName", "TriggerEntityId", "TriggerTargetIdList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RefreshTriggerByClientScNotify(RefreshTriggerByClientScNotify other) : this() {
       triggerName_ = other.triggerName_;
-      triggerTargetIdList_ = other.triggerTargetIdList_.Clone();
       triggerEntityId_ = other.triggerEntityId_;
+      triggerTargetIdList_ = other.triggerTargetIdList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -87,7 +87,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "trigger_name" field.</summary>
-    public const int TriggerNameFieldNumber = 7;
+    public const int TriggerNameFieldNumber = 2;
     private string triggerName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,19 +98,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "trigger_target_id_list" field.</summary>
-    public const int TriggerTargetIdListFieldNumber = 6;
-    private static readonly pb::FieldCodec<uint> _repeated_triggerTargetIdList_codec
-        = pb::FieldCodec.ForUInt32(50);
-    private readonly pbc::RepeatedField<uint> triggerTargetIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> TriggerTargetIdList {
-      get { return triggerTargetIdList_; }
-    }
-
     /// <summary>Field number for the "trigger_entity_id" field.</summary>
-    public const int TriggerEntityIdFieldNumber = 5;
+    public const int TriggerEntityIdFieldNumber = 9;
     private uint triggerEntityId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,6 +108,17 @@ namespace March7thHoney.Proto {
       set {
         triggerEntityId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "trigger_target_id_list" field.</summary>
+    public const int TriggerTargetIdListFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_triggerTargetIdList_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> triggerTargetIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> TriggerTargetIdList {
+      get { return triggerTargetIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (TriggerName != other.TriggerName) return false;
-      if(!triggerTargetIdList_.Equals(other.triggerTargetIdList_)) return false;
       if (TriggerEntityId != other.TriggerEntityId) return false;
+      if(!triggerTargetIdList_.Equals(other.triggerTargetIdList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (TriggerName.Length != 0) hash ^= TriggerName.GetHashCode();
-      hash ^= triggerTargetIdList_.GetHashCode();
       if (TriggerEntityId != 0) hash ^= TriggerEntityId.GetHashCode();
+      hash ^= triggerTargetIdList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,15 +167,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (TriggerName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TriggerName);
+      }
       if (TriggerEntityId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(72);
         output.WriteUInt32(TriggerEntityId);
       }
       triggerTargetIdList_.WriteTo(output, _repeated_triggerTargetIdList_codec);
-      if (TriggerName.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(TriggerName);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -186,15 +186,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (TriggerName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TriggerName);
+      }
       if (TriggerEntityId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(72);
         output.WriteUInt32(TriggerEntityId);
       }
       triggerTargetIdList_.WriteTo(ref output, _repeated_triggerTargetIdList_codec);
-      if (TriggerName.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(TriggerName);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -208,10 +208,10 @@ namespace March7thHoney.Proto {
       if (TriggerName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TriggerName);
       }
-      size += triggerTargetIdList_.CalculateSize(_repeated_triggerTargetIdList_codec);
       if (TriggerEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TriggerEntityId);
       }
+      size += triggerTargetIdList_.CalculateSize(_repeated_triggerTargetIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -227,10 +227,10 @@ namespace March7thHoney.Proto {
       if (other.TriggerName.Length != 0) {
         TriggerName = other.TriggerName;
       }
-      triggerTargetIdList_.Add(other.triggerTargetIdList_);
       if (other.TriggerEntityId != 0) {
         TriggerEntityId = other.TriggerEntityId;
       }
+      triggerTargetIdList_.Add(other.triggerTargetIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -250,17 +250,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 18: {
+            TriggerName = input.ReadString();
+            break;
+          }
+          case 72: {
             TriggerEntityId = input.ReadUInt32();
             break;
           }
-          case 50:
-          case 48: {
+          case 122:
+          case 120: {
             triggerTargetIdList_.AddEntriesFrom(input, _repeated_triggerTargetIdList_codec);
-            break;
-          }
-          case 58: {
-            TriggerName = input.ReadString();
             break;
           }
         }
@@ -282,17 +282,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 18: {
+            TriggerName = input.ReadString();
+            break;
+          }
+          case 72: {
             TriggerEntityId = input.ReadUInt32();
             break;
           }
-          case 50:
-          case 48: {
+          case 122:
+          case 120: {
             triggerTargetIdList_.AddEntriesFrom(ref input, _repeated_triggerTargetIdList_codec);
-            break;
-          }
-          case 58: {
-            TriggerName = input.ReadString();
             break;
           }
         }

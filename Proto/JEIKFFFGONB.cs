@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFKRUlLRkZGR09OQi5wcm90bxoRRElOR0RHTEtISVAucHJvdG8aEkl0ZW1D",
-            "b3N0RGF0YS5wcm90byJUCgtKRUlLRkZGR09OQhIiCgtMTklFRktCTUlQRBgO",
-            "IAEoCzINLkl0ZW1Db3N0RGF0YRIhCgtCSEJQS0tLTkFCTxgJIAMoCzIMLkRJ",
+            "b3N0RGF0YS5wcm90byJUCgtKRUlLRkZGR09OQhIiCgtMTklFRktCTUlQRBgN",
+            "IAEoCzINLkl0ZW1Db3N0RGF0YRIhCgtCSEJQS0tLTkFCTxgPIAMoCzIMLkRJ",
             "TkdER0xLSElQQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DINGDGLKHIPReflection.Descriptor, global::March7thHoney.Proto.ItemCostDataReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LNIEFKBMIPD" field.</summary>
-    public const int LNIEFKBMIPDFieldNumber = 14;
+    public const int LNIEFKBMIPDFieldNumber = 13;
     private global::March7thHoney.Proto.ItemCostData lNIEFKBMIPD_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,9 +97,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BHBPKKKNABO" field.</summary>
-    public const int BHBPKKKNABOFieldNumber = 9;
+    public const int BHBPKKKNABOFieldNumber = 15;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.DINGDGLKHIP> _repeated_bHBPKKKNABO_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.DINGDGLKHIP.Parser);
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.DINGDGLKHIP.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.DINGDGLKHIP> bHBPKKKNABO_ = new pbc::RepeatedField<global::March7thHoney.Proto.DINGDGLKHIP>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      bHBPKKKNABO_.WriteTo(output, _repeated_bHBPKKKNABO_codec);
       if (lNIEFKBMIPD_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(106);
         output.WriteMessage(LNIEFKBMIPD);
       }
+      bHBPKKKNABO_.WriteTo(output, _repeated_bHBPKKKNABO_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      bHBPKKKNABO_.WriteTo(ref output, _repeated_bHBPKKKNABO_codec);
       if (lNIEFKBMIPD_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(106);
         output.WriteMessage(LNIEFKBMIPD);
       }
+      bHBPKKKNABO_.WriteTo(ref output, _repeated_bHBPKKKNABO_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -223,15 +223,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74: {
-            bHBPKKKNABO_.AddEntriesFrom(input, _repeated_bHBPKKKNABO_codec);
-            break;
-          }
-          case 114: {
+          case 106: {
             if (lNIEFKBMIPD_ == null) {
               LNIEFKBMIPD = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(LNIEFKBMIPD);
+            break;
+          }
+          case 122: {
+            bHBPKKKNABO_.AddEntriesFrom(input, _repeated_bHBPKKKNABO_codec);
             break;
           }
         }
@@ -253,15 +253,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74: {
-            bHBPKKKNABO_.AddEntriesFrom(ref input, _repeated_bHBPKKKNABO_codec);
-            break;
-          }
-          case 114: {
+          case 106: {
             if (lNIEFKBMIPD_ == null) {
               LNIEFKBMIPD = new global::March7thHoney.Proto.ItemCostData();
             }
             input.ReadMessage(LNIEFKBMIPD);
+            break;
+          }
+          case 122: {
+            bHBPKKKNABO_.AddEntriesFrom(ref input, _repeated_bHBPKKKNABO_codec);
             break;
           }
         }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NBHDCJHGKCN.proto";
 
 message ChenLingGameBoyGetFriendRankingInfoScRsp {
-    repeated NBHDCJHGKCN BEDHEKAGAPE = 4;
-    uint32 IJCJBDDGGJF = 2;
-    bool EBAFPOLLJIA = 11;
-    uint32 retcode = 9;
+    bool EBAFPOLLJIA = 7;
+    uint32 IJCJBDDGGJF = 10;
+    repeated NBHDCJHGKCN BEDHEKAGAPE = 12;
+    uint32 retcode = 13;
 }

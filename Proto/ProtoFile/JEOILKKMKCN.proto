@@ -3,9 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JEOILKKMKCN {
-    uint64 server_timestamp_ms = 8;
-    bool KDNPPNHLNOA = 4;
-    uint32 MLKLBJJHGIO = 9;
-    uint32 retcode = 6;
-    uint64 secret_key_seed = 11;
+    uint32 retcode = 8;
+    uint64 secret_key_seed = 9;
+    uint32 MLKLBJJHGIO = 11;
+    uint64 server_timestamp_ms = 14;
 }

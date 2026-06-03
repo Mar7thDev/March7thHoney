@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FateShopSellBuffScRsp {
-    uint32 PCJOBDNLEAI = 12;
-    uint32 JDIFHPAFPID = 14;
-    bool PMCPIECGEHH = 11;
-    uint32 retcode = 2;
+    bool PMCPIECGEHH = 8;
+    uint32 retcode = 9;
+    uint32 JDIFHPAFPID = 11;
+    uint32 PCJOBDNLEAI = 13;
 }

@@ -6,6 +6,6 @@ import "EPKGFJDJMHM.proto";
 import "OBEBKODGODB.proto";
 
 message LEJNBBLNNDM {
-    OBEBKODGODB source = 4;
-    EPKGFJDJMHM BBEHHCHKMNL = 12;
+    OBEBKODGODB source = 6;
+    EPKGFJDJMHM detail = 7;
 }

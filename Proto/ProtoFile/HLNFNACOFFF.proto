@@ -6,7 +6,7 @@ import "CEFEIJFPCKE.proto";
 import "KICEGHDKACP.proto";
 
 message HLNFNACOFFF {
-    repeated CEFEIJFPCKE DICAIJCHICB = 8;
-    repeated KICEGHDKACP CFHOJCBDFPE = 2;
-    uint32 KHFHCLBHAPD = 11;
+    repeated CEFEIJFPCKE DICAIJCHICB = 2;
+    uint32 KHFHCLBHAPD = 5;
+    repeated KICEGHDKACP CFHOJCBDFPE = 6;
 }

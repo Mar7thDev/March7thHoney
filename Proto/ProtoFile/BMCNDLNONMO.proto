@@ -9,12 +9,12 @@ import "KIJEFIIBBGG.proto";
 import "RogueModifierSourceType.proto";
 
 message BMCNDLNONMO {
-    KIJEFIIBBGG OOPCPMANCBO = 3;
-    RogueModifierSourceType NFMKOFNEKLA = 1;
-    uint64 FCHLCANJIGL = 4;
+    uint64 FCHLCANJIGL = 8;
+    KIJEFIIBBGG OOPCPMANCBO = 12;
+    RogueModifierSourceType source_type = 14;
     oneof KKNBOACNCON {
-        FGHIMGPGBNF NLGJFIGPENF = 9;
-        AIBNHPAGDOL LEJPOHHGBMB = 8;
-        HFJKOCDOAEH GGJOKFEOEBK = 2;
+        FGHIMGPGBNF NLGJFIGPENF = 11;
+        AIBNHPAGDOL LEJPOHHGBMB = 15;
+        HFJKOCDOAEH GGJOKFEOEBK = 1;
     }
 }

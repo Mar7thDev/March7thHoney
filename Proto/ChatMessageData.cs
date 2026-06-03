@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVDaGF0TWVzc2FnZURhdGEucHJvdG8aEUVLTkFCS0xQRUVMLnByb3RvGhVN",
-            "ZXNzYWdlQ2hhdERhdGEucHJvdG8ilQEKD0NoYXRNZXNzYWdlRGF0YRIhCgtD",
-            "S0hQRkZFTk9CRRgKIAEoCzIMLkVLTkFCS0xQRUVMEiEKC0JLT0FMS0hETE9C",
-            "GAsgASgLMgwuRUtOQUJLTFBFRUwSJwoNbWVzc2FnZV9kYXRhcxgJIAMoCzIQ",
-            "Lk1lc3NhZ2VDaGF0RGF0YRITCgtjcmVhdGVfdGltZRgEIAEoBEIWqgITTWFy",
+            "ZXNzYWdlQ2hhdERhdGEucHJvdG8ilQEKD0NoYXRNZXNzYWdlRGF0YRITCgtj",
+            "cmVhdGVfdGltZRgEIAEoBBInCg1tZXNzYWdlX2RhdGFzGAkgAygLMhAuTWVz",
+            "c2FnZUNoYXREYXRhEiEKC0NLSFBGRkVOT0JFGAogASgLMgwuRUtOQUJLTFBF",
+            "RUwSIQoLQktPQUxLSERMT0IYCyABKAsyDC5FS05BQktMUEVFTEIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EKNABKLPEELReflection.Descriptor, global::March7thHoney.Proto.MessageChatDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChatMessageData), global::March7thHoney.Proto.ChatMessageData.Parser, new[]{ "CKHPFFENOBE", "BKOALKHDLOB", "MessageDatas", "CreateTime" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChatMessageData), global::March7thHoney.Proto.ChatMessageData.Parser, new[]{ "CreateTime", "MessageDatas", "CKHPFFENOBE", "BKOALKHDLOB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,10 +75,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChatMessageData(ChatMessageData other) : this() {
+      createTime_ = other.createTime_;
+      messageDatas_ = other.messageDatas_.Clone();
       cKHPFFENOBE_ = other.cKHPFFENOBE_ != null ? other.cKHPFFENOBE_.Clone() : null;
       bKOALKHDLOB_ = other.bKOALKHDLOB_ != null ? other.bKOALKHDLOB_.Clone() : null;
-      messageDatas_ = other.messageDatas_.Clone();
-      createTime_ = other.createTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,6 +86,29 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChatMessageData Clone() {
       return new ChatMessageData(this);
+    }
+
+    /// <summary>Field number for the "create_time" field.</summary>
+    public const int CreateTimeFieldNumber = 4;
+    private ulong createTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong CreateTime {
+      get { return createTime_; }
+      set {
+        createTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "message_datas" field.</summary>
+    public const int MessageDatasFieldNumber = 9;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MessageChatData> _repeated_messageDatas_codec
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.MessageChatData.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MessageChatData> messageDatas_ = new pbc::RepeatedField<global::March7thHoney.Proto.MessageChatData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.MessageChatData> MessageDatas {
+      get { return messageDatas_; }
     }
 
     /// <summary>Field number for the "CKHPFFENOBE" field.</summary>
@@ -112,29 +135,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "message_datas" field.</summary>
-    public const int MessageDatasFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MessageChatData> _repeated_messageDatas_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.MessageChatData.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MessageChatData> messageDatas_ = new pbc::RepeatedField<global::March7thHoney.Proto.MessageChatData>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MessageChatData> MessageDatas {
-      get { return messageDatas_; }
-    }
-
-    /// <summary>Field number for the "create_time" field.</summary>
-    public const int CreateTimeFieldNumber = 4;
-    private ulong createTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong CreateTime {
-      get { return createTime_; }
-      set {
-        createTime_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -150,10 +150,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (CreateTime != other.CreateTime) return false;
+      if(!messageDatas_.Equals(other.messageDatas_)) return false;
       if (!object.Equals(CKHPFFENOBE, other.CKHPFFENOBE)) return false;
       if (!object.Equals(BKOALKHDLOB, other.BKOALKHDLOB)) return false;
-      if(!messageDatas_.Equals(other.messageDatas_)) return false;
-      if (CreateTime != other.CreateTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -161,10 +161,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (CreateTime != 0UL) hash ^= CreateTime.GetHashCode();
+      hash ^= messageDatas_.GetHashCode();
       if (cKHPFFENOBE_ != null) hash ^= CKHPFFENOBE.GetHashCode();
       if (bKOALKHDLOB_ != null) hash ^= BKOALKHDLOB.GetHashCode();
-      hash ^= messageDatas_.GetHashCode();
-      if (CreateTime != 0UL) hash ^= CreateTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -229,15 +229,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (CreateTime != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreateTime);
+      }
+      size += messageDatas_.CalculateSize(_repeated_messageDatas_codec);
       if (cKHPFFENOBE_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CKHPFFENOBE);
       }
       if (bKOALKHDLOB_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BKOALKHDLOB);
-      }
-      size += messageDatas_.CalculateSize(_repeated_messageDatas_codec);
-      if (CreateTime != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(CreateTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -251,6 +251,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.CreateTime != 0UL) {
+        CreateTime = other.CreateTime;
+      }
+      messageDatas_.Add(other.messageDatas_);
       if (other.cKHPFFENOBE_ != null) {
         if (cKHPFFENOBE_ == null) {
           CKHPFFENOBE = new global::March7thHoney.Proto.EKNABKLPEEL();
@@ -262,10 +266,6 @@ namespace March7thHoney.Proto {
           BKOALKHDLOB = new global::March7thHoney.Proto.EKNABKLPEEL();
         }
         BKOALKHDLOB.MergeFrom(other.BKOALKHDLOB);
-      }
-      messageDatas_.Add(other.messageDatas_);
-      if (other.CreateTime != 0UL) {
-        CreateTime = other.CreateTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChimeraDuelShopBuyChimeraCsReq {
-    repeated uint32 FMMICIHEOCM = 2;
-    uint32 KODOOHHPIKN = 13;
-    uint32 GCKFOOIEHHA = 14;
+    repeated uint32 FMMICIHEOCM = 6;
+    uint32 KODOOHHPIKN = 8;
+    uint32 GCKFOOIEHHA = 15;
 }

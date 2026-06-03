@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChdDbWRQbGF5ZXJTeW5jVHlwZS5wcm90bypOChFDbWRQbGF5ZXJTeW5jVHlw",
             "ZRIbChdPRkhEREpNTE9HR19MSURHT0tJRlBPShAAEhwKF09GSERESk1MT0dH",
-            "X0xNRFBNRUNGT0dNEKEFQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
+            "X0xNRFBNRUNGT0dNEPEEQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90",
             "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -38,7 +38,7 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPlayerSyncType {
     [pbr::OriginalName("OFHDDJMLOGG_LIDGOKIFPOJ")] OfhddjmloggLidgokifpoj = 0,
-    [pbr::OriginalName("OFHDDJMLOGG_LMDPMECFOGM")] OfhddjmloggLmdpmecfogm = 673,
+    [pbr::OriginalName("OFHDDJMLOGG_LMDPMECFOGM")] OfhddjmloggLmdpmecfogm = 625,
   }
 
   #endregion

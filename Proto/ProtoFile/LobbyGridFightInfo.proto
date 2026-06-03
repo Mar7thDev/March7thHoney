@@ -4,7 +4,7 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message LobbyGridFightInfo {
     repeated uint32 LAJJHAAKGAF = 1;
-    string KEJLHDPBIPO = 4;
-    uint32 score_id = 3;
     uint32 gold = 2;
+    uint32 score_id = 3;
+    string KEJLHDPBIPO = 4;
 }

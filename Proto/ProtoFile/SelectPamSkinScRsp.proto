@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SelectPamSkinScRsp {
-    uint32 set_skin = 12;
-    uint32 retcode = 3;
-    uint32 cur_skin = 6;
+    uint32 retcode = 2;
+    uint32 set_skin = 3;
+    uint32 cur_skin = 5;
 }

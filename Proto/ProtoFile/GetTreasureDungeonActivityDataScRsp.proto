@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DCMCLHJINBD.proto";
 
 message GetTreasureDungeonActivityDataScRsp {
-    repeated DCMCLHJINBD NFEJLHOCFMC = 1;
-    uint32 retcode = 15;
+    repeated DCMCLHJINBD NFEJLHOCFMC = 10;
+    uint32 retcode = 12;
 }

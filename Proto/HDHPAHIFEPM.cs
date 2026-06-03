@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static HDHPAHIFEPMReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFIREhQQUhJRkVQTS5wcm90byIjCgtIREhQQUhJRkVQTRIJCgF5GAkgASgC",
-            "EgkKAXgYDyABKAJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChFIREhQQUhJRkVQTS5wcm90byIjCgtIREhQQUhJRkVQTRIJCgF4GAogASgC",
+            "EgkKAXkYCyABKAJCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HDHPAHIFEPM), global::March7thHoney.Proto.HDHPAHIFEPM.Parser, new[]{ "Y", "X" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HDHPAHIFEPM), global::March7thHoney.Proto.HDHPAHIFEPM.Parser, new[]{ "X", "Y" }, null, null, null, null)
           }));
     }
     #endregion
@@ -71,8 +71,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HDHPAHIFEPM(HDHPAHIFEPM other) : this() {
-      y_ = other.y_;
       x_ = other.x_;
+      y_ = other.y_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,20 +82,8 @@ namespace March7thHoney.Proto {
       return new HDHPAHIFEPM(this);
     }
 
-    /// <summary>Field number for the "y" field.</summary>
-    public const int YFieldNumber = 9;
-    private float y_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float Y {
-      get { return y_; }
-      set {
-        y_ = value;
-      }
-    }
-
     /// <summary>Field number for the "x" field.</summary>
-    public const int XFieldNumber = 15;
+    public const int XFieldNumber = 10;
     private float x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -103,6 +91,18 @@ namespace March7thHoney.Proto {
       get { return x_; }
       set {
         x_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "y" field.</summary>
+    public const int YFieldNumber = 11;
+    private float y_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Y {
+      get { return y_; }
+      set {
+        y_ = value;
       }
     }
 
@@ -121,8 +121,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
       if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
+      if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -150,13 +150,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Y != 0F) {
-        output.WriteRawTag(77);
-        output.WriteFloat(Y);
-      }
       if (X != 0F) {
-        output.WriteRawTag(125);
+        output.WriteRawTag(85);
         output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(Y);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -168,13 +168,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Y != 0F) {
-        output.WriteRawTag(77);
-        output.WriteFloat(Y);
-      }
       if (X != 0F) {
-        output.WriteRawTag(125);
+        output.WriteRawTag(85);
         output.WriteFloat(X);
+      }
+      if (Y != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(Y);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -186,10 +186,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Y != 0F) {
+      if (X != 0F) {
         size += 1 + 4;
       }
-      if (X != 0F) {
+      if (Y != 0F) {
         size += 1 + 4;
       }
       if (_unknownFields != null) {
@@ -204,11 +204,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Y != 0F) {
-        Y = other.Y;
-      }
       if (other.X != 0F) {
         X = other.X;
+      }
+      if (other.Y != 0F) {
+        Y = other.Y;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -229,12 +229,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 77: {
-            Y = input.ReadFloat();
+          case 85: {
+            X = input.ReadFloat();
             break;
           }
-          case 125: {
-            X = input.ReadFloat();
+          case 93: {
+            Y = input.ReadFloat();
             break;
           }
         }
@@ -256,12 +256,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 77: {
-            Y = input.ReadFloat();
+          case 85: {
+            X = input.ReadFloat();
             break;
           }
-          case 125: {
-            X = input.ReadFloat();
+          case 93: {
+            Y = input.ReadFloat();
             break;
           }
         }

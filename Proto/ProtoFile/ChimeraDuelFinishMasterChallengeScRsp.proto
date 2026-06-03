@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message ChimeraDuelFinishMasterChallengeScRsp {
     uint32 IPINHNFCIOE = 3;
-    uint32 retcode = 13;
+    uint32 retcode = 7;
 }

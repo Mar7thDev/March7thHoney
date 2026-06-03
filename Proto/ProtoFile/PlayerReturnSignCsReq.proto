@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KEHOGIENDKC.proto";
 
 message PlayerReturnSignCsReq {
-    repeated KEHOGIENDKC AALGEFBLHEA = 4;
+    repeated KEHOGIENDKC AALGEFBLHEA = 7;
 }

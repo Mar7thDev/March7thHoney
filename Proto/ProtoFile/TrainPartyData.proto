@@ -7,11 +7,10 @@ import "TrainPartyInfo.proto";
 import "TrainPartyPassengerInfo.proto";
 
 message TrainPartyData {
-    EPHKIEHONGB HCJJPLKELGC = 9;
-    TrainPartyPassengerInfo passenger_info = 6;
-    TrainPartyInfo train_party_info = 4;
-    bool LNMFDPFOKFF = 14;
-    uint32 record_id = 10;
-    uint32 unlock_area_num = 8;
-    uint32 CLMBLFECLOI = 1;
+    TrainPartyInfo train_party_info = 6;
+    EPHKIEHONGB HCJJPLKELGC = 7;
+    uint32 record_id = 8;
+    TrainPartyPassengerInfo passenger_info = 9;
+    uint32 unlock_area_num = 11;
+    bool LNMFDPFOKFF = 15;
 }

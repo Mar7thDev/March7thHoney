@@ -6,7 +6,7 @@ import "CDCCPHILOCC.proto";
 import "FGFGINEFBBK.proto";
 
 message GetKilledPunkLordMonsterDataScRsp {
-    repeated FGFGINEFBBK CPPDAIMLDGB = 4;
     repeated CDCCPHILOCC BLLLCPONFBE = 10;
-    uint32 retcode = 6;
+    repeated FGFGINEFBBK CPPDAIMLDGB = 11;
+    uint32 retcode = 15;
 }

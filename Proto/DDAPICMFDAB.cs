@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFEREFQSUNNRkRBQi5wcm90byJICgtEREFQSUNNRkRBQhITCgtLQkxCRkdB",
-            "Tk1QShgMIAEoCBIPCgdyZXRjb2RlGAMgASgNEhMKC0NCR09ETEhDTFBLGAkg",
+            "Tk1QShgDIAEoCBIPCgdyZXRjb2RlGAYgASgNEhMKC0NCR09ETEhDTFBLGAsg",
             "ASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KBLBFGANMPJ" field.</summary>
-    public const int KBLBFGANMPJFieldNumber = 12;
+    public const int KBLBFGANMPJFieldNumber = 3;
     private bool kBLBFGANMPJ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 6;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CBGODLHCLPK" field.</summary>
-    public const int CBGODLHCLPKFieldNumber = 9;
+    public const int CBGODLHCLPKFieldNumber = 11;
     private uint cBGODLHCLPK_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
+      if (KBLBFGANMPJ != false) {
         output.WriteRawTag(24);
+        output.WriteBool(KBLBFGANMPJ);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
       if (CBGODLHCLPK != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(CBGODLHCLPK);
-      }
-      if (KBLBFGANMPJ != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(KBLBFGANMPJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
+      if (KBLBFGANMPJ != false) {
         output.WriteRawTag(24);
+        output.WriteBool(KBLBFGANMPJ);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
       if (CBGODLHCLPK != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(88);
         output.WriteUInt32(CBGODLHCLPK);
-      }
-      if (KBLBFGANMPJ != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(KBLBFGANMPJ);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -260,15 +260,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
+            KBLBFGANMPJ = input.ReadBool();
+            break;
+          }
+          case 48: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 88: {
             CBGODLHCLPK = input.ReadUInt32();
-            break;
-          }
-          case 96: {
-            KBLBFGANMPJ = input.ReadBool();
             break;
           }
         }
@@ -291,15 +291,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
+            KBLBFGANMPJ = input.ReadBool();
+            break;
+          }
+          case 48: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 72: {
+          case 88: {
             CBGODLHCLPK = input.ReadUInt32();
-            break;
-          }
-          case 96: {
-            KBLBFGANMPJ = input.ReadBool();
             break;
           }
         }

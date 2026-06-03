@@ -26,15 +26,15 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChlIZWFydERpYWxTY3JpcHRJbmZvLnByb3RvGhpIZWFydERpYWxFbW90aW9u",
             "VHlwZS5wcm90bxoXSGVhcnREaWFsU3RlcFR5cGUucHJvdG8ipQEKE0hlYXJ0",
-            "RGlhbFNjcmlwdEluZm8SLwoQY3VyX2Vtb3Rpb25fdHlwZRgIIAEoDjIVLkhl",
-            "YXJ0RGlhbEVtb3Rpb25UeXBlEhEKCXNjcmlwdF9pZBgOIAEoDRIgCgRzdGVw",
-            "GAYgASgOMhIuSGVhcnREaWFsU3RlcFR5cGUSEwoLRUVLQ0tGR0hHRUgYDCAB",
-            "KAgSEwoLTEhDT0pJRUJGRk0YASABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "RGlhbFNjcmlwdEluZm8SEQoJc2NyaXB0X2lkGAUgASgNEhMKC0VFS0NLRkdI",
+            "R0VIGAsgASgIEiAKBHN0ZXAYDCABKA4yEi5IZWFydERpYWxTdGVwVHlwZRIv",
+            "ChBjdXJfZW1vdGlvbl90eXBlGA4gASgOMhUuSGVhcnREaWFsRW1vdGlvblR5",
+            "cGUSEwoLTEhDT0pJRUJGRk0YDyABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeartDialEmotionTypeReflection.Descriptor, global::March7thHoney.Proto.HeartDialStepTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeartDialScriptInfo), global::March7thHoney.Proto.HeartDialScriptInfo.Parser, new[]{ "CurEmotionType", "ScriptId", "Step", "EEKCKFGHGEH", "LHCOJIEBFFM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeartDialScriptInfo), global::March7thHoney.Proto.HeartDialScriptInfo.Parser, new[]{ "ScriptId", "EEKCKFGHGEH", "Step", "CurEmotionType", "LHCOJIEBFFM" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,10 +76,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HeartDialScriptInfo(HeartDialScriptInfo other) : this() {
-      curEmotionType_ = other.curEmotionType_;
       scriptId_ = other.scriptId_;
-      step_ = other.step_;
       eEKCKFGHGEH_ = other.eEKCKFGHGEH_;
+      step_ = other.step_;
+      curEmotionType_ = other.curEmotionType_;
       lHCOJIEBFFM_ = other.lHCOJIEBFFM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -90,20 +90,8 @@ namespace March7thHoney.Proto {
       return new HeartDialScriptInfo(this);
     }
 
-    /// <summary>Field number for the "cur_emotion_type" field.</summary>
-    public const int CurEmotionTypeFieldNumber = 8;
-    private global::March7thHoney.Proto.HeartDialEmotionType curEmotionType_ = global::March7thHoney.Proto.HeartDialEmotionType.Peace;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.HeartDialEmotionType CurEmotionType {
-      get { return curEmotionType_; }
-      set {
-        curEmotionType_ = value;
-      }
-    }
-
     /// <summary>Field number for the "script_id" field.</summary>
-    public const int ScriptIdFieldNumber = 14;
+    public const int ScriptIdFieldNumber = 5;
     private uint scriptId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -114,20 +102,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "step" field.</summary>
-    public const int StepFieldNumber = 6;
-    private global::March7thHoney.Proto.HeartDialStepType step_ = global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.HeartDialStepType Step {
-      get { return step_; }
-      set {
-        step_ = value;
-      }
-    }
-
     /// <summary>Field number for the "EEKCKFGHGEH" field.</summary>
-    public const int EEKCKFGHGEHFieldNumber = 12;
+    public const int EEKCKFGHGEHFieldNumber = 11;
     private bool eEKCKFGHGEH_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,8 +114,32 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "step" field.</summary>
+    public const int StepFieldNumber = 12;
+    private global::March7thHoney.Proto.HeartDialStepType step_ = global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.HeartDialStepType Step {
+      get { return step_; }
+      set {
+        step_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cur_emotion_type" field.</summary>
+    public const int CurEmotionTypeFieldNumber = 14;
+    private global::March7thHoney.Proto.HeartDialEmotionType curEmotionType_ = global::March7thHoney.Proto.HeartDialEmotionType.Peace;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.HeartDialEmotionType CurEmotionType {
+      get { return curEmotionType_; }
+      set {
+        curEmotionType_ = value;
+      }
+    }
+
     /// <summary>Field number for the "LHCOJIEBFFM" field.</summary>
-    public const int LHCOJIEBFFMFieldNumber = 1;
+    public const int LHCOJIEBFFMFieldNumber = 15;
     private bool lHCOJIEBFFM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -165,10 +165,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CurEmotionType != other.CurEmotionType) return false;
       if (ScriptId != other.ScriptId) return false;
-      if (Step != other.Step) return false;
       if (EEKCKFGHGEH != other.EEKCKFGHGEH) return false;
+      if (Step != other.Step) return false;
+      if (CurEmotionType != other.CurEmotionType) return false;
       if (LHCOJIEBFFM != other.LHCOJIEBFFM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -177,10 +177,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) hash ^= CurEmotionType.GetHashCode();
       if (ScriptId != 0) hash ^= ScriptId.GetHashCode();
-      if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) hash ^= Step.GetHashCode();
       if (EEKCKFGHGEH != false) hash ^= EEKCKFGHGEH.GetHashCode();
+      if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) hash ^= Step.GetHashCode();
+      if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) hash ^= CurEmotionType.GetHashCode();
       if (LHCOJIEBFFM != false) hash ^= LHCOJIEBFFM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -200,25 +200,25 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LHCOJIEBFFM != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(LHCOJIEBFFM);
+      if (ScriptId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(ScriptId);
+      }
+      if (EEKCKFGHGEH != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(EEKCKFGHGEH);
       }
       if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(96);
         output.WriteEnum((int) Step);
       }
       if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(112);
         output.WriteEnum((int) CurEmotionType);
       }
-      if (EEKCKFGHGEH != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(EEKCKFGHGEH);
-      }
-      if (ScriptId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(ScriptId);
+      if (LHCOJIEBFFM != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(LHCOJIEBFFM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -230,25 +230,25 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LHCOJIEBFFM != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(LHCOJIEBFFM);
+      if (ScriptId != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(ScriptId);
+      }
+      if (EEKCKFGHGEH != false) {
+        output.WriteRawTag(88);
+        output.WriteBool(EEKCKFGHGEH);
       }
       if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(96);
         output.WriteEnum((int) Step);
       }
       if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(112);
         output.WriteEnum((int) CurEmotionType);
       }
-      if (EEKCKFGHGEH != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(EEKCKFGHGEH);
-      }
-      if (ScriptId != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(ScriptId);
+      if (LHCOJIEBFFM != false) {
+        output.WriteRawTag(120);
+        output.WriteBool(LHCOJIEBFFM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -260,17 +260,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CurEmotionType);
-      }
       if (ScriptId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScriptId);
+      }
+      if (EEKCKFGHGEH != false) {
+        size += 1 + 1;
       }
       if (Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Step);
       }
-      if (EEKCKFGHGEH != false) {
-        size += 1 + 1;
+      if (CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) CurEmotionType);
       }
       if (LHCOJIEBFFM != false) {
         size += 1 + 1;
@@ -287,17 +287,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
-        CurEmotionType = other.CurEmotionType;
-      }
       if (other.ScriptId != 0) {
         ScriptId = other.ScriptId;
+      }
+      if (other.EEKCKFGHGEH != false) {
+        EEKCKFGHGEH = other.EEKCKFGHGEH;
       }
       if (other.Step != global::March7thHoney.Proto.HeartDialStepType.Coeejalelpf) {
         Step = other.Step;
       }
-      if (other.EEKCKFGHGEH != false) {
-        EEKCKFGHGEH = other.EEKCKFGHGEH;
+      if (other.CurEmotionType != global::March7thHoney.Proto.HeartDialEmotionType.Peace) {
+        CurEmotionType = other.CurEmotionType;
       }
       if (other.LHCOJIEBFFM != false) {
         LHCOJIEBFFM = other.LHCOJIEBFFM;
@@ -321,24 +321,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            LHCOJIEBFFM = input.ReadBool();
+          case 40: {
+            ScriptId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            Step = (global::March7thHoney.Proto.HeartDialStepType) input.ReadEnum();
-            break;
-          }
-          case 64: {
-            CurEmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
-            break;
-          }
-          case 96: {
+          case 88: {
             EEKCKFGHGEH = input.ReadBool();
             break;
           }
+          case 96: {
+            Step = (global::March7thHoney.Proto.HeartDialStepType) input.ReadEnum();
+            break;
+          }
           case 112: {
-            ScriptId = input.ReadUInt32();
+            CurEmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
+            break;
+          }
+          case 120: {
+            LHCOJIEBFFM = input.ReadBool();
             break;
           }
         }
@@ -360,24 +360,24 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            LHCOJIEBFFM = input.ReadBool();
+          case 40: {
+            ScriptId = input.ReadUInt32();
             break;
           }
-          case 48: {
-            Step = (global::March7thHoney.Proto.HeartDialStepType) input.ReadEnum();
-            break;
-          }
-          case 64: {
-            CurEmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
-            break;
-          }
-          case 96: {
+          case 88: {
             EEKCKFGHGEH = input.ReadBool();
             break;
           }
+          case 96: {
+            Step = (global::March7thHoney.Proto.HeartDialStepType) input.ReadEnum();
+            break;
+          }
           case 112: {
-            ScriptId = input.ReadUInt32();
+            CurEmotionType = (global::March7thHoney.Proto.HeartDialEmotionType) input.ReadEnum();
+            break;
+          }
+          case 120: {
+            LHCOJIEBFFM = input.ReadBool();
             break;
           }
         }

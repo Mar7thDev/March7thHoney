@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiFTZXRNdWx0aXBsZUF2YXRhclBhdGhzQ3NSZXEucHJvdG8aGU11bHRpUGF0",
             "aEF2YXRhclR5cGUucHJvdG8iSwobU2V0TXVsdGlwbGVBdmF0YXJQYXRoc0Nz",
-            "UmVxEiwKDmF2YXRhcl9pZF9saXN0GAYgAygOMhQuTXVsdGlQYXRoQXZhdGFy",
+            "UmVxEiwKDmF2YXRhcl9pZF9saXN0GAggAygOMhQuTXVsdGlQYXRoQXZhdGFy",
             "VHlwZUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.MultiPathAvatarTypeReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_id_list" field.</summary>
-    public const int AvatarIdListFieldNumber = 6;
+    public const int AvatarIdListFieldNumber = 8;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MultiPathAvatarType> _repeated_avatarIdList_codec
-        = pb::FieldCodec.ForEnum(50, x => (int) x, x => (global::March7thHoney.Proto.MultiPathAvatarType) x);
+        = pb::FieldCodec.ForEnum(66, x => (int) x, x => (global::March7thHoney.Proto.MultiPathAvatarType) x);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MultiPathAvatarType> avatarIdList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MultiPathAvatarType>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50:
-          case 48: {
+          case 66:
+          case 64: {
             avatarIdList_.AddEntriesFrom(input, _repeated_avatarIdList_codec);
             break;
           }
@@ -215,8 +215,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50:
-          case 48: {
+          case 66:
+          case 64: {
             avatarIdList_.AddEntriesFrom(ref input, _repeated_avatarIdList_codec);
             break;
           }

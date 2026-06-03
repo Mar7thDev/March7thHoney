@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message TakeQuestEquipCsCsReq {
     bool DKPCAIGPHNO = 4;
-    uint32 quest_id = 6;
+    uint32 quest_id = 15;
 }

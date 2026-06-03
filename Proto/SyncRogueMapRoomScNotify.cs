@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5TeW5jUm9ndWVNYXBSb29tU2NOb3RpZnkucHJvdG8aEVBBSUpDQk9LSUZP",
-            "LnByb3RvIk0KGFN5bmNSb2d1ZU1hcFJvb21TY05vdGlmeRIhCgtITkVBTk1O",
-            "SkhEQhgLIAEoCzIMLlBBSUpDQk9LSUZPEg4KBm1hcF9pZBgHIAEoDUIWqgIT",
+            "LnByb3RvIk0KGFN5bmNSb2d1ZU1hcFJvb21TY05vdGlmeRIOCgZtYXBfaWQY",
+            "BiABKA0SIQoLSE5FQU5NTkpIREIYCyABKAsyDC5QQUlKQ0JPS0lGT0IWqgIT",
             "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PAIJCBOKIFOReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SyncRogueMapRoomScNotify), global::March7thHoney.Proto.SyncRogueMapRoomScNotify.Parser, new[]{ "HNEANMNJHDB", "MapId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SyncRogueMapRoomScNotify), global::March7thHoney.Proto.SyncRogueMapRoomScNotify.Parser, new[]{ "MapId", "HNEANMNJHDB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SyncRogueMapRoomScNotify(SyncRogueMapRoomScNotify other) : this() {
-      hNEANMNJHDB_ = other.hNEANMNJHDB_ != null ? other.hNEANMNJHDB_.Clone() : null;
       mapId_ = other.mapId_;
+      hNEANMNJHDB_ = other.hNEANMNJHDB_ != null ? other.hNEANMNJHDB_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,6 +82,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SyncRogueMapRoomScNotify Clone() {
       return new SyncRogueMapRoomScNotify(this);
+    }
+
+    /// <summary>Field number for the "map_id" field.</summary>
+    public const int MapIdFieldNumber = 6;
+    private uint mapId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MapId {
+      get { return mapId_; }
+      set {
+        mapId_ = value;
+      }
     }
 
     /// <summary>Field number for the "HNEANMNJHDB" field.</summary>
@@ -93,18 +105,6 @@ namespace March7thHoney.Proto {
       get { return hNEANMNJHDB_; }
       set {
         hNEANMNJHDB_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "map_id" field.</summary>
-    public const int MapIdFieldNumber = 7;
-    private uint mapId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MapId {
-      get { return mapId_; }
-      set {
-        mapId_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(HNEANMNJHDB, other.HNEANMNJHDB)) return false;
       if (MapId != other.MapId) return false;
+      if (!object.Equals(HNEANMNJHDB, other.HNEANMNJHDB)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (hNEANMNJHDB_ != null) hash ^= HNEANMNJHDB.GetHashCode();
       if (MapId != 0) hash ^= MapId.GetHashCode();
+      if (hNEANMNJHDB_ != null) hash ^= HNEANMNJHDB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (MapId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(MapId);
       }
       if (hNEANMNJHDB_ != null) {
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (MapId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(MapId);
       }
       if (hNEANMNJHDB_ != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (hNEANMNJHDB_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HNEANMNJHDB);
-      }
       if (MapId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapId);
+      }
+      if (hNEANMNJHDB_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HNEANMNJHDB);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.MapId != 0) {
+        MapId = other.MapId;
+      }
       if (other.hNEANMNJHDB_ != null) {
         if (hNEANMNJHDB_ == null) {
           HNEANMNJHDB = new global::March7thHoney.Proto.PAIJCBOKIFO();
         }
         HNEANMNJHDB.MergeFrom(other.HNEANMNJHDB);
-      }
-      if (other.MapId != 0) {
-        MapId = other.MapId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 48: {
             MapId = input.ReadUInt32();
             break;
           }
@@ -264,7 +264,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 48: {
             MapId = input.ReadUInt32();
             break;
           }

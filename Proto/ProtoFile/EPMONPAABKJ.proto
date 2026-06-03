@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EPMONPAABKJ {
-    uint32 BOGIJENAEHJ = 11;
-    uint32 retcode = 2;
-    uint32 CBGODLHCLPK = 6;
+    uint32 BOGIJENAEHJ = 4;
+    uint32 retcode = 6;
+    uint32 CBGODLHCLPK = 8;
 }

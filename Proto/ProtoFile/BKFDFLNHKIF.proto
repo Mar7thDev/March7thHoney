@@ -4,6 +4,7 @@ option csharp_namespace = "March7thHoney.Proto";
 
 import "CJOCEJLPADK.proto";
 import "FLOICBDOCNJ.proto";
+import "HCHDLMIOOIP.proto";
 import "HPOLJGDGOEI.proto";
 import "IEMBKIAENOA.proto";
 import "IIPAHEHJJJL.proto";
@@ -15,6 +16,7 @@ import "KMGDCCNNGEE.proto";
 import "KNMGHLJKBDA.proto";
 import "LLJJGILGNEO.proto";
 import "LOKPJGLJIIH.proto";
+import "LPEHILMMINA.proto";
 import "NINLEFEPGCC.proto";
 import "PIMNGBAMMAM.proto";
 import "PJENKHDODKA.proto";
@@ -41,5 +43,7 @@ message BKFDFLNHKIF {
         KNMGHLJKBDA dice_combat_v_2_tactics_card_change = 265;
         INHMDFDBGCL dice_combat_v_2_dice_change_request = 266;
         JEHPGCEIHDF dice_combat_v_2_dice_change = 267;
+        LPEHILMMINA team_towers_pvp_start = 268;
+        HCHDLMIOOIP team_towers_pvp_end = 269;
     }
 }

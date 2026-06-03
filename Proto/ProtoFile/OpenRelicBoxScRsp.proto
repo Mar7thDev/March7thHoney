@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PNGBDDIBCDD.proto";
 
 message OpenRelicBoxScRsp {
-    PNGBDDIBCDD LCMADDIMION = 8;
-    uint32 GNLAAIDFOJF = 2;
-    uint32 retcode = 12;
+    PNGBDDIBCDD LCMADDIMION = 4;
+    uint32 retcode = 5;
+    uint32 GNLAAIDFOJF = 12;
 }

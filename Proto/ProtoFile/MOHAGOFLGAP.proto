@@ -5,14 +5,14 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PlatformType.proto";
 
 message MOHAGOFLGAP {
-    string IJKOMIKFKEK = 6;
+    uint32 uid = 1;
+    uint32 level = 2;
     string nickname = 3;
+    uint32 icon = 4;
+    PlatformType platform = 5;
+    string IJKOMIKFKEK = 6;
     string EBMNJMIKNPP = 7;
     uint64 version = 8;
-    uint32 MJPKBIGCFOM = 4;
-    uint32 uid = 1;
     bool OCLBMMNNMFC = 9;
-    uint32 level = 2;
-    PlatformType platform = 5;
     uint32 MIDBIPHKLJO = 10;
 }

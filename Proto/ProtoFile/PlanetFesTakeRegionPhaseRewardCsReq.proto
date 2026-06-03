@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PlanetFesTakeRegionPhaseRewardCsReq {
-    uint32 BKPDKFLDLDD = 12;
+    uint32 BKPDKFLDLDD = 1;
 }

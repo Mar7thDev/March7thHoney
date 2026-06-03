@@ -6,11 +6,11 @@ import "BAKAELIMIJI.proto";
 import "GPPKIMDCPBM.proto";
 
 message MonopolyActionResult {
-    GPPKIMDCPBM detail = 15;
-    BAKAELIMIJI source_type = 13;
-    uint32 trigger_cell_id = 6;
-    uint32 click_cell_id = 3;
+    uint32 trigger_cell_id = 4;
+    GPPKIMDCPBM detail = 6;
+    uint32 click_map_id = 7;
+    uint32 click_cell_id = 8;
     uint32 effect_type = 11;
-    uint32 click_map_id = 4;
-    uint32 trigger_map_id = 12;
+    uint32 trigger_map_id = 13;
+    BAKAELIMIJI source_type = 15;
 }

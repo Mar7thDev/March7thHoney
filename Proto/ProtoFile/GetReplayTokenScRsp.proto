@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PBIEFHKNAFA.proto";
 
 message GetReplayTokenScRsp {
-    string GIMGDNJPPDJ = 12;
-    string DNADIICFMEE = 3;
-    uint32 stage_id = 8;
-    uint32 retcode = 7;
-    PBIEFHKNAFA replay_type = 2;
+    uint32 retcode = 5;
+    PBIEFHKNAFA replay_type = 6;
+    string token = 9;
+    string GIMGDNJPPDJ = 10;
+    uint32 stage_id = 14;
 }

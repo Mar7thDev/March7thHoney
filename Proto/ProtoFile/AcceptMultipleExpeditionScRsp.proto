@@ -6,8 +6,8 @@ import "ExpeditionInfo.proto";
 import "ItemList.proto";
 
 message AcceptMultipleExpeditionScRsp {
-    repeated ExpeditionInfo accept_multi_expedition = 1;
-    repeated ItemList DJOBNPIAEJP = 13;
-    uint32 retcode = 8;
-    int64 BJMGDBCHEAN = 4;
+    repeated ItemList DJOBNPIAEJP = 4;
+    uint32 retcode = 10;
+    repeated ExpeditionInfo accept_multi_expedition = 12;
+    int64 BJMGDBCHEAN = 15;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message MonopolyGameGachaScRsp {
-    repeated uint32 CLGGKLNPLCK = 14;
-    uint32 retcode = 5;
+    uint32 retcode = 2;
+    repeated uint32 CLGGKLNPLCK = 15;
 }

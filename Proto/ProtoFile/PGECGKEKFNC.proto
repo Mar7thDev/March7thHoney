@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PGECGKEKFNC {
-    uint32 role_id = 7;
-    uint32 LPFGIGJDLFM = 10;
+    uint32 LPFGIGJDLFM = 1;
+    uint32 role_id = 2;
 }

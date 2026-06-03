@@ -24,13 +24,14 @@ namespace March7thHoney.Proto {
     static ChenLingFesLevelResumeScRspReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiFDaGVuTGluZ0Zlc0xldmVsUmVzdW1lU2NSc3AucHJvdG8iQAobQ2hlbkxp",
-            "bmdGZXNMZXZlbFJlc3VtZVNjUnNwEhAKCGxldmVsX2lkGAsgASgNEg8KB3Jl",
-            "dGNvZGUYDiABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "CiFDaGVuTGluZ0Zlc0xldmVsUmVzdW1lU2NSc3AucHJvdG8iVQobQ2hlbkxp",
+            "bmdGZXNMZXZlbFJlc3VtZVNjUnNwEhAKCGxldmVsX2lkGAQgASgNEg8KB3Jl",
+            "dGNvZGUYBSABKA0SEwoLRkdLUElETEtBTEwYDiABKA1CFqoCE01hcmNoN3Ro",
+            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChenLingFesLevelResumeScRsp), global::March7thHoney.Proto.ChenLingFesLevelResumeScRsp.Parser, new[]{ "LevelId", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChenLingFesLevelResumeScRsp), global::March7thHoney.Proto.ChenLingFesLevelResumeScRsp.Parser, new[]{ "LevelId", "Retcode", "FGKPIDLKALL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,6 +75,7 @@ namespace March7thHoney.Proto {
     public ChenLingFesLevelResumeScRsp(ChenLingFesLevelResumeScRsp other) : this() {
       levelId_ = other.levelId_;
       retcode_ = other.retcode_;
+      fGKPIDLKALL_ = other.fGKPIDLKALL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 11;
+    public const int LevelIdFieldNumber = 4;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 14;
+    public const int RetcodeFieldNumber = 5;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "FGKPIDLKALL" field.</summary>
+    public const int FGKPIDLKALLFieldNumber = 14;
+    private uint fGKPIDLKALL_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint FGKPIDLKALL {
+      get { return fGKPIDLKALL_; }
+      set {
+        fGKPIDLKALL_ = value;
       }
     }
 
@@ -124,6 +138,7 @@ namespace March7thHoney.Proto {
       }
       if (LevelId != other.LevelId) return false;
       if (Retcode != other.Retcode) return false;
+      if (FGKPIDLKALL != other.FGKPIDLKALL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -133,6 +148,7 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (FGKPIDLKALL != 0) hash ^= FGKPIDLKALL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,12 +168,16 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (LevelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteUInt32(LevelId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
+      }
+      if (FGKPIDLKALL != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(FGKPIDLKALL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,12 +190,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (LevelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(32);
         output.WriteUInt32(LevelId);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
+      }
+      if (FGKPIDLKALL != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(FGKPIDLKALL);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -192,6 +216,9 @@ namespace March7thHoney.Proto {
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (FGKPIDLKALL != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FGKPIDLKALL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -210,6 +237,9 @@ namespace March7thHoney.Proto {
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.FGKPIDLKALL != 0) {
+        FGKPIDLKALL = other.FGKPIDLKALL;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,12 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
+          case 32: {
             LevelId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 40: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            FGKPIDLKALL = input.ReadUInt32();
             break;
           }
         }
@@ -257,12 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
+          case 32: {
             LevelId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 40: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 112: {
+            FGKPIDLKALL = input.ReadUInt32();
             break;
           }
         }

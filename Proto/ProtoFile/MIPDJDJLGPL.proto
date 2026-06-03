@@ -4,7 +4,7 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message MIPDJDJLGPL {
     uint32 EMOHLJHPOPC = 1;
-    uint32 section_id = 3;
-    uint32 CJCCMAACJDB = 4;
     uint32 DCAHJELNJNP = 2;
+    uint32 section_id = 3;
+    uint32 node_type = 4;
 }

@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message Vector4 {
-    float z = 5;
-    float w = 15;
-    float x = 1;
-    float y = 13;
+    float z = 6;
+    float w = 8;
+    float x = 9;
+    float y = 10;
 }

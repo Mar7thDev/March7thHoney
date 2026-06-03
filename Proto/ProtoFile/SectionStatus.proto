@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MessageSectionStatus.proto";
 
 message SectionStatus {
-    MessageSectionStatus section_status = 7;
-    uint32 section_id = 2;
+    uint32 section_id = 14;
+    MessageSectionStatus section_status = 15;
 }

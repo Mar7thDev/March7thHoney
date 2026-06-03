@@ -27,18 +27,18 @@ namespace March7thHoney.Proto {
             "Ch5HZXRCaWdEYXRhUmVjb21tZW5kU2NSc3AucHJvdG8aGkJpZ0RhdGFSZWNv",
             "bW1lbmRUeXBlLnByb3RvGhhFcXVpcG1lbnRSZWNvbW1lbmQucHJvdG8aEUdO",
             "QkJETUJOTkRKLnByb3RvGhRSZWxpY1JlY29tbWVuZC5wcm90byKkAgoYR2V0",
-            "QmlnRGF0YVJlY29tbWVuZFNjUnNwEg8KB3JldGNvZGUYCiABKA0SNgoXYmln",
-            "X2RhdGFfcmVjb21tZW5kX3R5cGUYCSABKA4yFS5CaWdEYXRhUmVjb21tZW5k",
-            "VHlwZRIVCg1oYXNfcmVjb21tYW5kGAEgASgIEhQKDGVxdWlwX2F2YXRhchgE",
+            "QmlnRGF0YVJlY29tbWVuZFNjUnNwEhQKDGVxdWlwX2F2YXRhchgCIAEoDRIV",
+            "Cg1oYXNfcmVjb21tYW5kGAYgASgIEjYKF2JpZ19kYXRhX3JlY29tbWVuZF90",
+            "eXBlGAwgASgOMhUuQmlnRGF0YVJlY29tbWVuZFR5cGUSDwoHcmV0Y29kZRgO",
             "IAEoDRIyChNlcXVpcG1lbnRfcmVjb21tZW5kGA0gASgLMhMuRXF1aXBtZW50",
-            "UmVjb21tZW5kSAASKgoPcmVsaWNfcmVjb21tZW5kGAUgASgLMg8uUmVsaWNS",
-            "ZWNvbW1lbmRIABIjCgtLSENNTElOTUdFThgDIAEoCzIMLkdOQkJETUJOTkRK",
+            "UmVjb21tZW5kSAASKgoPcmVsaWNfcmVjb21tZW5kGAsgASgLMg8uUmVsaWNS",
+            "ZWNvbW1lbmRIABIjCgtLSENNTElOTUdFThgEIAEoCzIMLkdOQkJETUJOTkRK",
             "SABCDQoLT09ES09FSUxKQ0RCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BigDataRecommendTypeReflection.Descriptor, global::March7thHoney.Proto.EquipmentRecommendReflection.Descriptor, global::March7thHoney.Proto.GNBBDMBNNDJReflection.Descriptor, global::March7thHoney.Proto.RelicRecommendReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetBigDataRecommendScRsp), global::March7thHoney.Proto.GetBigDataRecommendScRsp.Parser, new[]{ "Retcode", "BigDataRecommendType", "HasRecommand", "EquipAvatar", "EquipmentRecommend", "RelicRecommend", "KHCMLINMGEN" }, new[]{ "OODKOEILJCD" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetBigDataRecommendScRsp), global::March7thHoney.Proto.GetBigDataRecommendScRsp.Parser, new[]{ "EquipAvatar", "HasRecommand", "BigDataRecommendType", "Retcode", "EquipmentRecommend", "RelicRecommend", "KHCMLINMGEN" }, new[]{ "OODKOEILJCD" }, null, null, null)
           }));
     }
     #endregion
@@ -80,10 +80,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetBigDataRecommendScRsp(GetBigDataRecommendScRsp other) : this() {
-      retcode_ = other.retcode_;
-      bigDataRecommendType_ = other.bigDataRecommendType_;
-      hasRecommand_ = other.hasRecommand_;
       equipAvatar_ = other.equipAvatar_;
+      hasRecommand_ = other.hasRecommand_;
+      bigDataRecommendType_ = other.bigDataRecommendType_;
+      retcode_ = other.retcode_;
       switch (other.OODKOEILJCDCase) {
         case OODKOEILJCDOneofCase.EquipmentRecommend:
           EquipmentRecommend = other.EquipmentRecommend.Clone();
@@ -105,32 +105,20 @@ namespace March7thHoney.Proto {
       return new GetBigDataRecommendScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
-    private uint retcode_;
+    /// <summary>Field number for the "equip_avatar" field.</summary>
+    public const int EquipAvatarFieldNumber = 2;
+    private uint equipAvatar_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
+    public uint EquipAvatar {
+      get { return equipAvatar_; }
       set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "big_data_recommend_type" field.</summary>
-    public const int BigDataRecommendTypeFieldNumber = 9;
-    private global::March7thHoney.Proto.BigDataRecommendType bigDataRecommendType_ = global::March7thHoney.Proto.BigDataRecommendType.None;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.BigDataRecommendType BigDataRecommendType {
-      get { return bigDataRecommendType_; }
-      set {
-        bigDataRecommendType_ = value;
+        equipAvatar_ = value;
       }
     }
 
     /// <summary>Field number for the "has_recommand" field.</summary>
-    public const int HasRecommandFieldNumber = 1;
+    public const int HasRecommandFieldNumber = 6;
     private bool hasRecommand_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -141,15 +129,27 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "equip_avatar" field.</summary>
-    public const int EquipAvatarFieldNumber = 4;
-    private uint equipAvatar_;
+    /// <summary>Field number for the "big_data_recommend_type" field.</summary>
+    public const int BigDataRecommendTypeFieldNumber = 12;
+    private global::March7thHoney.Proto.BigDataRecommendType bigDataRecommendType_ = global::March7thHoney.Proto.BigDataRecommendType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EquipAvatar {
-      get { return equipAvatar_; }
+    public global::March7thHoney.Proto.BigDataRecommendType BigDataRecommendType {
+      get { return bigDataRecommendType_; }
       set {
-        equipAvatar_ = value;
+        bigDataRecommendType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 14;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -166,7 +166,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relic_recommend" field.</summary>
-    public const int RelicRecommendFieldNumber = 5;
+    public const int RelicRecommendFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.RelicRecommend RelicRecommend {
@@ -178,7 +178,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KHCMLINMGEN" field.</summary>
-    public const int KHCMLINMGENFieldNumber = 3;
+    public const int KHCMLINMGENFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.GNBBDMBNNDJ KHCMLINMGEN {
@@ -194,8 +194,8 @@ namespace March7thHoney.Proto {
     public enum OODKOEILJCDOneofCase {
       None = 0,
       EquipmentRecommend = 13,
-      RelicRecommend = 5,
-      KHCMLINMGEN = 3,
+      RelicRecommend = 11,
+      KHCMLINMGEN = 4,
     }
     private OODKOEILJCDOneofCase oODKOEILJCDCase_ = OODKOEILJCDOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -226,10 +226,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
-      if (BigDataRecommendType != other.BigDataRecommendType) return false;
-      if (HasRecommand != other.HasRecommand) return false;
       if (EquipAvatar != other.EquipAvatar) return false;
+      if (HasRecommand != other.HasRecommand) return false;
+      if (BigDataRecommendType != other.BigDataRecommendType) return false;
+      if (Retcode != other.Retcode) return false;
       if (!object.Equals(EquipmentRecommend, other.EquipmentRecommend)) return false;
       if (!object.Equals(RelicRecommend, other.RelicRecommend)) return false;
       if (!object.Equals(KHCMLINMGEN, other.KHCMLINMGEN)) return false;
@@ -241,10 +241,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) hash ^= BigDataRecommendType.GetHashCode();
-      if (HasRecommand != false) hash ^= HasRecommand.GetHashCode();
       if (EquipAvatar != 0) hash ^= EquipAvatar.GetHashCode();
+      if (HasRecommand != false) hash ^= HasRecommand.GetHashCode();
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) hash ^= BigDataRecommendType.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.EquipmentRecommend) hash ^= EquipmentRecommend.GetHashCode();
       if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.RelicRecommend) hash ^= RelicRecommend.GetHashCode();
       if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.KHCMLINMGEN) hash ^= KHCMLINMGEN.GetHashCode();
@@ -267,33 +267,33 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasRecommand != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(HasRecommand);
-      }
-      if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.KHCMLINMGEN) {
-        output.WriteRawTag(26);
-        output.WriteMessage(KHCMLINMGEN);
-      }
       if (EquipAvatar != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(16);
         output.WriteUInt32(EquipAvatar);
       }
+      if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.KHCMLINMGEN) {
+        output.WriteRawTag(34);
+        output.WriteMessage(KHCMLINMGEN);
+      }
+      if (HasRecommand != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(HasRecommand);
+      }
       if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.RelicRecommend) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(90);
         output.WriteMessage(RelicRecommend);
       }
       if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(96);
         output.WriteEnum((int) BigDataRecommendType);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Retcode);
       }
       if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.EquipmentRecommend) {
         output.WriteRawTag(106);
         output.WriteMessage(EquipmentRecommend);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -305,33 +305,33 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasRecommand != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(HasRecommand);
-      }
-      if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.KHCMLINMGEN) {
-        output.WriteRawTag(26);
-        output.WriteMessage(KHCMLINMGEN);
-      }
       if (EquipAvatar != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(16);
         output.WriteUInt32(EquipAvatar);
       }
+      if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.KHCMLINMGEN) {
+        output.WriteRawTag(34);
+        output.WriteMessage(KHCMLINMGEN);
+      }
+      if (HasRecommand != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(HasRecommand);
+      }
       if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.RelicRecommend) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(90);
         output.WriteMessage(RelicRecommend);
       }
       if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(96);
         output.WriteEnum((int) BigDataRecommendType);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Retcode);
       }
       if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.EquipmentRecommend) {
         output.WriteRawTag(106);
         output.WriteMessage(EquipmentRecommend);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -343,17 +343,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BigDataRecommendType);
+      if (EquipAvatar != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipAvatar);
       }
       if (HasRecommand != false) {
         size += 1 + 1;
       }
-      if (EquipAvatar != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipAvatar);
+      if (BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) BigDataRecommendType);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.EquipmentRecommend) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(EquipmentRecommend);
@@ -376,17 +376,17 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      if (other.BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
-        BigDataRecommendType = other.BigDataRecommendType;
+      if (other.EquipAvatar != 0) {
+        EquipAvatar = other.EquipAvatar;
       }
       if (other.HasRecommand != false) {
         HasRecommand = other.HasRecommand;
       }
-      if (other.EquipAvatar != 0) {
-        EquipAvatar = other.EquipAvatar;
+      if (other.BigDataRecommendType != global::March7thHoney.Proto.BigDataRecommendType.None) {
+        BigDataRecommendType = other.BigDataRecommendType;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       switch (other.OODKOEILJCDCase) {
         case OODKOEILJCDOneofCase.EquipmentRecommend:
@@ -428,11 +428,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            HasRecommand = input.ReadBool();
+          case 16: {
+            EquipAvatar = input.ReadUInt32();
             break;
           }
-          case 26: {
+          case 34: {
             global::March7thHoney.Proto.GNBBDMBNNDJ subBuilder = new global::March7thHoney.Proto.GNBBDMBNNDJ();
             if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.KHCMLINMGEN) {
               subBuilder.MergeFrom(KHCMLINMGEN);
@@ -441,11 +441,11 @@ namespace March7thHoney.Proto {
             KHCMLINMGEN = subBuilder;
             break;
           }
-          case 32: {
-            EquipAvatar = input.ReadUInt32();
+          case 48: {
+            HasRecommand = input.ReadBool();
             break;
           }
-          case 42: {
+          case 90: {
             global::March7thHoney.Proto.RelicRecommend subBuilder = new global::March7thHoney.Proto.RelicRecommend();
             if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.RelicRecommend) {
               subBuilder.MergeFrom(RelicRecommend);
@@ -454,12 +454,8 @@ namespace March7thHoney.Proto {
             RelicRecommend = subBuilder;
             break;
           }
-          case 72: {
+          case 96: {
             BigDataRecommendType = (global::March7thHoney.Proto.BigDataRecommendType) input.ReadEnum();
-            break;
-          }
-          case 80: {
-            Retcode = input.ReadUInt32();
             break;
           }
           case 106: {
@@ -469,6 +465,10 @@ namespace March7thHoney.Proto {
             }
             input.ReadMessage(subBuilder);
             EquipmentRecommend = subBuilder;
+            break;
+          }
+          case 112: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -490,11 +490,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            HasRecommand = input.ReadBool();
+          case 16: {
+            EquipAvatar = input.ReadUInt32();
             break;
           }
-          case 26: {
+          case 34: {
             global::March7thHoney.Proto.GNBBDMBNNDJ subBuilder = new global::March7thHoney.Proto.GNBBDMBNNDJ();
             if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.KHCMLINMGEN) {
               subBuilder.MergeFrom(KHCMLINMGEN);
@@ -503,11 +503,11 @@ namespace March7thHoney.Proto {
             KHCMLINMGEN = subBuilder;
             break;
           }
-          case 32: {
-            EquipAvatar = input.ReadUInt32();
+          case 48: {
+            HasRecommand = input.ReadBool();
             break;
           }
-          case 42: {
+          case 90: {
             global::March7thHoney.Proto.RelicRecommend subBuilder = new global::March7thHoney.Proto.RelicRecommend();
             if (oODKOEILJCDCase_ == OODKOEILJCDOneofCase.RelicRecommend) {
               subBuilder.MergeFrom(RelicRecommend);
@@ -516,12 +516,8 @@ namespace March7thHoney.Proto {
             RelicRecommend = subBuilder;
             break;
           }
-          case 72: {
+          case 96: {
             BigDataRecommendType = (global::March7thHoney.Proto.BigDataRecommendType) input.ReadEnum();
-            break;
-          }
-          case 80: {
-            Retcode = input.ReadUInt32();
             break;
           }
           case 106: {
@@ -531,6 +527,10 @@ namespace March7thHoney.Proto {
             }
             input.ReadMessage(subBuilder);
             EquipmentRecommend = subBuilder;
+            break;
+          }
+          case 112: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

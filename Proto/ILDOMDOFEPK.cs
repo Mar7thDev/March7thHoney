@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFJTERPTURPRkVQSy5wcm90byJGCgtJTERPTURPRkVQSxIQCghncm91cF9p",
-            "ZBgBIAEoDRITCgtGREVBS0RDREdNTBgEIAEoDRIQCghwYW5lbF9pZBgLIAEo",
+            "ZBgBIAEoDRITCgtGREVBS0RDREdNTBgHIAEoDRIQCghwYW5lbF9pZBgMIAEo",
             "DUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "FDEAKDCDGML" field.</summary>
-    public const int FDEAKDCDGMLFieldNumber = 4;
+    public const int FDEAKDCDGMLFieldNumber = 7;
     private uint fDEAKDCDGML_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "panel_id" field.</summary>
-    public const int PanelIdFieldNumber = 11;
+    public const int PanelIdFieldNumber = 12;
     private uint panelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(GroupId);
       }
       if (FDEAKDCDGML != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(FDEAKDCDGML);
       }
       if (PanelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(PanelId);
       }
       if (_unknownFields != null) {
@@ -193,11 +193,11 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(GroupId);
       }
       if (FDEAKDCDGML != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(FDEAKDCDGML);
       }
       if (PanelId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(PanelId);
       }
       if (_unknownFields != null) {
@@ -263,11 +263,11 @@ namespace March7thHoney.Proto {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 56: {
             FDEAKDCDGML = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 96: {
             PanelId = input.ReadUInt32();
             break;
           }
@@ -294,11 +294,11 @@ namespace March7thHoney.Proto {
             GroupId = input.ReadUInt32();
             break;
           }
-          case 32: {
+          case 56: {
             FDEAKDCDGML = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 96: {
             PanelId = input.ReadUInt32();
             break;
           }

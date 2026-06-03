@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "GCPGBPNGOFF.proto";
 
 message RogueArcadeStartScRsp {
-    GCPGBPNGOFF IDCMACCPCBH = 1;
-    uint32 room_id = 7;
-    uint32 retcode = 5;
+    GCPGBPNGOFF IDCMACCPCBH = 4;
+    uint32 room_id = 5;
+    uint32 retcode = 7;
 }

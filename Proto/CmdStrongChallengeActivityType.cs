@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiRDbWRTdHJvbmdDaGFsbGVuZ2VBY3Rpdml0eVR5cGUucHJvdG8q0wEKHkNt",
             "ZFN0cm9uZ0NoYWxsZW5nZUFjdGl2aXR5VHlwZRIbChdHREJITE1GTEpNSF9O",
-            "TENER0lQR0ZEShAAEhwKF0dEQkhMTUZMSk1IX0tQRUpFS0RNUEROEOwzEhwK",
-            "F0dEQkhMTUZMSk1IX0tHQ0lJQlBFS09MEJE0EhwKF0dEQkhMTUZMSk1IX09H",
-            "SkRKTEZQQUpGEOMzEhwKF0dEQkhMTUZMSk1IX0VJT09EUEtFRUxJEJg0EhwK",
-            "F0dEQkhMTUZMSk1IX01OTk9MS01CTUNJEMszQhaqAhNNYXJjaDd0aEhvbmV5",
+            "TENER0lQR0ZEShAAEhwKF0dEQkhMTUZMSk1IX0tQRUpFS0RNUEROEKA0EhwK",
+            "F0dEQkhMTUZMSk1IX09HSkRKTEZQQUpGEII0EhwKF0dEQkhMTUZMSk1IX01O",
+            "Tk9MS01CTUNJEJY0EhwKF0dEQkhMTUZMSk1IX0VJT09EUEtFRUxJEKU0EhwK",
+            "F0dEQkhMTUZMSk1IX0tHQ0lJQlBFS09MEOEzQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -41,11 +41,11 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdStrongChallengeActivityType {
     [pbr::OriginalName("GDBHLMFLJMH_NLCDGIPGFDJ")] GdbhlmfljmhNlcdgipgfdj = 0,
-    [pbr::OriginalName("GDBHLMFLJMH_KPEJEKDMPDN")] GdbhlmfljmhKpejekdmpdn = 6636,
-    [pbr::OriginalName("GDBHLMFLJMH_KGCIIBPEKOL")] GdbhlmfljmhKgciibpekol = 6673,
-    [pbr::OriginalName("GDBHLMFLJMH_OGJDJLFPAJF")] GdbhlmfljmhOgjdjlfpajf = 6627,
-    [pbr::OriginalName("GDBHLMFLJMH_EIOODPKEELI")] GdbhlmfljmhEioodpkeeli = 6680,
-    [pbr::OriginalName("GDBHLMFLJMH_MNNOLKMBMCI")] GdbhlmfljmhMnnolkmbmci = 6603,
+    [pbr::OriginalName("GDBHLMFLJMH_KPEJEKDMPDN")] GdbhlmfljmhKpejekdmpdn = 6688,
+    [pbr::OriginalName("GDBHLMFLJMH_OGJDJLFPAJF")] GdbhlmfljmhOgjdjlfpajf = 6658,
+    [pbr::OriginalName("GDBHLMFLJMH_MNNOLKMBMCI")] GdbhlmfljmhMnnolkmbmci = 6678,
+    [pbr::OriginalName("GDBHLMFLJMH_EIOODPKEELI")] GdbhlmfljmhEioodpkeeli = 6693,
+    [pbr::OriginalName("GDBHLMFLJMH_KGCIIBPEKOL")] GdbhlmfljmhKgciibpekol = 6625,
   }
 
   #endregion

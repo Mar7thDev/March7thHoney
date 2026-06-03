@@ -6,10 +6,10 @@ import "GEGLJDELBHA.proto";
 import "JEIAEAEGEBJ.proto";
 
 message StartPunkLordRaidScRsp {
-    GEGLJDELBHA scene = 5;
-    repeated uint32 FNMGMNABAJG = 2;
-    JEIAEAEGEBJ ONICJOAOEMA = 15;
-    uint32 retcode = 6;
-    bool IDMPMEOCJIK = 4;
-    int64 PEAMKPJKIEL = 14;
+    int64 PEAMKPJKIEL = 1;
+    uint32 retcode = 5;
+    JEIAEAEGEBJ ONICJOAOEMA = 6;
+    bool IDMPMEOCJIK = 7;
+    repeated uint32 FNMGMNABAJG = 11;
+    GEGLJDELBHA scene = 13;
 }

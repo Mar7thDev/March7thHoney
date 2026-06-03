@@ -6,7 +6,7 @@ import "KDODFHMDAJI.proto";
 import "LEHBIBDGEHG.proto";
 
 message HFEOGNAMHCG {
-    LEHBIBDGEHG EOBLJJBOBIN = 15;
-    repeated KDODFHMDAJI KFNMIEMBJGD = 3;
-    uint32 AIAFEKGBFIF = 6;
+    uint32 AIAFEKGBFIF = 4;
+    LEHBIBDGEHG owner = 10;
+    repeated KDODFHMDAJI KFNMIEMBJGD = 12;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AJNKADCOKOL {
-    bool is_win = 3;
-    uint32 IMGLLIBJAPC = 12;
+    uint32 IMGLLIBJAPC = 6;
+    bool is_win = 12;
 }

@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SetChallengePeakBossHardModeScRsp {
-    uint32 peak_group_id = 7;
-    uint32 retcode = 10;
     bool is_hard_mode = 2;
+    uint32 retcode = 6;
+    uint32 peak_group_id = 11;
 }

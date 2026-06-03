@@ -6,7 +6,7 @@ import "EEILAINOLPO.proto";
 import "GCBCKOKEAJH.proto";
 
 message RogueMagicEnterScRsp {
-    EEILAINOLPO IDCMACCPCBH = 10;
-    GCBCKOKEAJH PHGJIJELKDB = 9;
-    uint32 retcode = 13;
+    EEILAINOLPO IDCMACCPCBH = 3;
+    GCBCKOKEAJH PHGJIJELKDB = 6;
+    uint32 retcode = 11;
 }

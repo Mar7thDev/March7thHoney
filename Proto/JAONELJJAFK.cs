@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static JAONELJJAFKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFKQU9ORUxKSkFGSy5wcm90byIxCgtKQU9ORUxKSkFGSxINCgV2YWx1ZRgC",
-            "IAEoAhITCgtBQ0hJTEdJUEdLTBgBIAEoDUIWqgITTWFyY2g3dGhIb25leS5Q",
-            "cm90b2IGcHJvdG8z"));
+            "ChFKQU9ORUxKSkFGSy5wcm90byIzCgtKQU9ORUxKSkFGSxIVCg1wcm9wZXJ0",
+            "eV90eXBlGAEgASgNEg0KBXZhbHVlGAIgASgCQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JAONELJJAFK), global::March7thHoney.Proto.JAONELJJAFK.Parser, new[]{ "Value", "ACHILGIPGKL" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JAONELJJAFK), global::March7thHoney.Proto.JAONELJJAFK.Parser, new[]{ "PropertyType", "Value" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JAONELJJAFK(JAONELJJAFK other) : this() {
+      propertyType_ = other.propertyType_;
       value_ = other.value_;
-      aCHILGIPGKL_ = other.aCHILGIPGKL_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -81,6 +81,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JAONELJJAFK Clone() {
       return new JAONELJJAFK(this);
+    }
+
+    /// <summary>Field number for the "property_type" field.</summary>
+    public const int PropertyTypeFieldNumber = 1;
+    private uint propertyType_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PropertyType {
+      get { return propertyType_; }
+      set {
+        propertyType_ = value;
+      }
     }
 
     /// <summary>Field number for the "value" field.</summary>
@@ -92,18 +104,6 @@ namespace March7thHoney.Proto {
       get { return value_; }
       set {
         value_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "ACHILGIPGKL" field.</summary>
-    public const int ACHILGIPGKLFieldNumber = 1;
-    private uint aCHILGIPGKL_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ACHILGIPGKL {
-      get { return aCHILGIPGKL_; }
-      set {
-        aCHILGIPGKL_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (PropertyType != other.PropertyType) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Value, other.Value)) return false;
-      if (ACHILGIPGKL != other.ACHILGIPGKL) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (PropertyType != 0) hash ^= PropertyType.GetHashCode();
       if (Value != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Value);
-      if (ACHILGIPGKL != 0) hash ^= ACHILGIPGKL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -151,9 +151,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ACHILGIPGKL != 0) {
+      if (PropertyType != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(ACHILGIPGKL);
+        output.WriteUInt32(PropertyType);
       }
       if (Value != 0F) {
         output.WriteRawTag(21);
@@ -169,9 +169,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ACHILGIPGKL != 0) {
+      if (PropertyType != 0) {
         output.WriteRawTag(8);
-        output.WriteUInt32(ACHILGIPGKL);
+        output.WriteUInt32(PropertyType);
       }
       if (Value != 0F) {
         output.WriteRawTag(21);
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (PropertyType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropertyType);
+      }
       if (Value != 0F) {
         size += 1 + 4;
-      }
-      if (ACHILGIPGKL != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ACHILGIPGKL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.PropertyType != 0) {
+        PropertyType = other.PropertyType;
+      }
       if (other.Value != 0F) {
         Value = other.Value;
-      }
-      if (other.ACHILGIPGKL != 0) {
-        ACHILGIPGKL = other.ACHILGIPGKL;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            ACHILGIPGKL = input.ReadUInt32();
+            PropertyType = input.ReadUInt32();
             break;
           }
           case 21: {
@@ -258,7 +258,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            ACHILGIPGKL = input.ReadUInt32();
+            PropertyType = input.ReadUInt32();
             break;
           }
           case 21: {

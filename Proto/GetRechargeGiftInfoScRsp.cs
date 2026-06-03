@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5HZXRSZWNoYXJnZUdpZnRJbmZvU2NSc3AucHJvdG8aEUpCTkdDSkpETEhM",
             "LnByb3RvIk4KGEdldFJlY2hhcmdlR2lmdEluZm9TY1JzcBIhCgtPRklIT0ND",
-            "SE5DThgIIAMoCzIMLkpCTkdDSkpETEhMEg8KB3JldGNvZGUYAyABKA1CFqoC",
+            "SE5DThgCIAMoCzIMLkpCTkdDSkpETEhMEg8KB3JldGNvZGUYCyABKA1CFqoC",
             "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JBNGCJJDLHLReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OFIHOCCHNCN" field.</summary>
-    public const int OFIHOCCHNCNFieldNumber = 8;
+    public const int OFIHOCCHNCNFieldNumber = 2;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.JBNGCJJDLHL> _repeated_oFIHOCCHNCN_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.JBNGCJJDLHL.Parser);
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.JBNGCJJDLHL.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.JBNGCJJDLHL> oFIHOCCHNCN_ = new pbc::RepeatedField<global::March7thHoney.Proto.JBNGCJJDLHL>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      oFIHOCCHNCN_.WriteTo(output, _repeated_oFIHOCCHNCN_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      oFIHOCCHNCN_.WriteTo(output, _repeated_oFIHOCCHNCN_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      oFIHOCCHNCN_.WriteTo(ref output, _repeated_oFIHOCCHNCN_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      oFIHOCCHNCN_.WriteTo(ref output, _repeated_oFIHOCCHNCN_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            Retcode = input.ReadUInt32();
+          case 18: {
+            oFIHOCCHNCN_.AddEntriesFrom(input, _repeated_oFIHOCCHNCN_codec);
             break;
           }
-          case 66: {
-            oFIHOCCHNCN_.AddEntriesFrom(input, _repeated_oFIHOCCHNCN_codec);
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            Retcode = input.ReadUInt32();
+          case 18: {
+            oFIHOCCHNCN_.AddEntriesFrom(ref input, _repeated_oFIHOCCHNCN_codec);
             break;
           }
-          case 66: {
-            oFIHOCCHNCN_.AddEntriesFrom(ref input, _repeated_oFIHOCCHNCN_codec);
+          case 88: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

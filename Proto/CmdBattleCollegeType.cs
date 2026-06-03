@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChpDbWRCYXR0bGVDb2xsZWdlVHlwZS5wcm90byrJAQoUQ21kQmF0dGxlQ29s",
             "bGVnZVR5cGUSGwoXR0pQUEROR0dLQ0NfTkxDREdJUEdGREoQABIcChdHSlBQ",
-            "RE5HR0tDQ19MR0NDSUxPSE9OShDHLBIcChdHSlBQRE5HR0tDQ19HR01PQ01C",
-            "R0ZBShCNLRIcChdHSlBQRE5HR0tDQ19ETkFQQUVKUElMRBDoLBIcChdHSlBQ",
-            "RE5HR0tDQ19ETEFFS0pLRlBKTxDfLBIcChdHSlBQRE5HR0tDQ19ITUhMTktJ",
-            "S0tIRxCULUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "RE5HR0tDQ19HR01PQ01CR0ZBShDdLBIcChdHSlBQRE5HR0tDQ19ETkFQQUVK",
+            "UElMRBCcLRIcChdHSlBQRE5HR0tDQ19ETEFFS0pLRlBKTxD+LBIcChdHSlBQ",
+            "RE5HR0tDQ19ITUhMTktJS0tIRxChLRIcChdHSlBQRE5HR0tDQ19MR0NDSUxP",
+            "SE9OShCSLUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdBattleCollegeType), }, null, null));
@@ -40,11 +40,11 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdBattleCollegeType {
     [pbr::OriginalName("GJPPDNGGKCC_NLCDGIPGFDJ")] GjppdnggkccNlcdgipgfdj = 0,
-    [pbr::OriginalName("GJPPDNGGKCC_LGCCILOHONJ")] GjppdnggkccLgccilohonj = 5703,
-    [pbr::OriginalName("GJPPDNGGKCC_GGMOCMBGFAJ")] GjppdnggkccGgmocmbgfaj = 5773,
-    [pbr::OriginalName("GJPPDNGGKCC_DNAPAEJPILD")] GjppdnggkccDnapaejpild = 5736,
-    [pbr::OriginalName("GJPPDNGGKCC_DLAEKJKFPJO")] GjppdnggkccDlaekjkfpjo = 5727,
-    [pbr::OriginalName("GJPPDNGGKCC_HMHLNKIKKHG")] GjppdnggkccHmhlnkikkhg = 5780,
+    [pbr::OriginalName("GJPPDNGGKCC_GGMOCMBGFAJ")] GjppdnggkccGgmocmbgfaj = 5725,
+    [pbr::OriginalName("GJPPDNGGKCC_DNAPAEJPILD")] GjppdnggkccDnapaejpild = 5788,
+    [pbr::OriginalName("GJPPDNGGKCC_DLAEKJKFPJO")] GjppdnggkccDlaekjkfpjo = 5758,
+    [pbr::OriginalName("GJPPDNGGKCC_HMHLNKIKKHG")] GjppdnggkccHmhlnkikkhg = 5793,
+    [pbr::OriginalName("GJPPDNGGKCC_LGCCILOHONJ")] GjppdnggkccLgccilohonj = 5778,
   }
 
   #endregion

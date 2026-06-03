@@ -6,8 +6,8 @@ import "GroupStatus.proto";
 import "SectionStatus.proto";
 
 message SyncStatus {
-    repeated uint32 BGPACBIJDCH = 7;
-    repeated GroupStatus message_group_status = 14;
-    repeated SectionStatus section_status = 2;
-    repeated uint32 MDANGIEIMIF = 15;
+    repeated SectionStatus section_status = 5;
+    repeated GroupStatus message_group_status = 10;
+    repeated uint32 MDANGIEIMIF = 13;
+    repeated uint32 BGPACBIJDCH = 14;
 }

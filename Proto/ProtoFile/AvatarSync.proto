@@ -6,6 +6,6 @@ import "Avatar.proto";
 import "AvatarPathData.proto";
 
 message AvatarSync {
-    repeated Avatar avatar_list = 12;
-    repeated AvatarPathData avatar_path_data_info_list = 6;
+    repeated Avatar avatar_list = 6;
+    repeated AvatarPathData avatar_path_data_info_list = 14;
 }

@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CABCPFKAOPP.proto";
 
 message GEEPIPMBGJD {
-    CABCPFKAOPP JOOEEKMDAEO = 13;
-    repeated uint32 NFPADEPIKML = 6;
-    repeated uint32 GCDGGBLOJIC = 9;
-    uint32 OEKIFIKBMFI = 7;
-    uint32 KDIDDHIDNCG = 1;
+    repeated uint32 GCDGGBLOJIC = 3;
+    CABCPFKAOPP JOOEEKMDAEO = 5;
+    repeated uint32 NFPADEPIKML = 7;
+    uint32 KDIDDHIDNCG = 8;
+    uint32 OEKIFIKBMFI = 12;
 }

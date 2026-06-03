@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LNDNIBFBGAC {
-    int32 PDEMOPHANLA = 13;
-    int32 KDMPKIPAIDJ = 8;
-    uint32 MDKFLGDEJCN = 11;
-    uint32 item_id = 3;
-    int32 total_damage = 12;
+    uint32 MDKFLGDEJCN = 2;
+    int32 KDMPKIPAIDJ = 3;
+    uint32 item_id = 4;
+    int32 PDEMOPHANLA = 10;
+    int32 total_damage = 14;
 }

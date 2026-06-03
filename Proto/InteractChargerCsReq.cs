@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpJbnRlcmFjdENoYXJnZXJDc1JlcS5wcm90bxoRQ2hhcmdlckluZm8ucHJv",
-            "dG8iOgoUSW50ZXJhY3RDaGFyZ2VyQ3NSZXESIgoMY2hhcmdlcl9pbmZvGAog",
+            "dG8iOgoUSW50ZXJhY3RDaGFyZ2VyQ3NSZXESIgoMY2hhcmdlcl9pbmZvGAUg",
             "ASgLMgwuQ2hhcmdlckluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "charger_info" field.</summary>
-    public const int ChargerInfoFieldNumber = 10;
+    public const int ChargerInfoFieldNumber = 5;
     private global::March7thHoney.Proto.ChargerInfo chargerInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (chargerInfo_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(42);
         output.WriteMessage(ChargerInfo);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (chargerInfo_ != null) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(42);
         output.WriteMessage(ChargerInfo);
       }
       if (_unknownFields != null) {
@@ -205,7 +205,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82: {
+          case 42: {
             if (chargerInfo_ == null) {
               ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
             }
@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82: {
+          case 42: {
             if (chargerInfo_ == null) {
               ChargerInfo = new global::March7thHoney.Proto.ChargerInfo();
             }

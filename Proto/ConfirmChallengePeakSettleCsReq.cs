@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiVDb25maXJtQ2hhbGxlbmdlUGVha1NldHRsZUNzUmVxLnByb3RvIkcKH0Nv",
-            "bmZpcm1DaGFsbGVuZ2VQZWFrU2V0dGxlQ3NSZXESDwoHcGVha19pZBgIIAEo",
-            "DRITCgtJT0JDSU1JUEVPTRgMIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "bmZpcm1DaGFsbGVuZ2VQZWFrU2V0dGxlQ3NSZXESEwoLSU9CQ0lNSVBFT00Y",
+            "ASABKAgSDwoHcGVha19pZBgNIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleCsReq), global::March7thHoney.Proto.ConfirmChallengePeakSettleCsReq.Parser, new[]{ "PeakId", "IOBCIMIPEOM" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleCsReq), global::March7thHoney.Proto.ConfirmChallengePeakSettleCsReq.Parser, new[]{ "IOBCIMIPEOM", "PeakId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ConfirmChallengePeakSettleCsReq(ConfirmChallengePeakSettleCsReq other) : this() {
-      peakId_ = other.peakId_;
       iOBCIMIPEOM_ = other.iOBCIMIPEOM_;
+      peakId_ = other.peakId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,20 +84,8 @@ namespace March7thHoney.Proto {
       return new ConfirmChallengePeakSettleCsReq(this);
     }
 
-    /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 8;
-    private uint peakId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakId {
-      get { return peakId_; }
-      set {
-        peakId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "IOBCIMIPEOM" field.</summary>
-    public const int IOBCIMIPEOMFieldNumber = 12;
+    public const int IOBCIMIPEOMFieldNumber = 1;
     private bool iOBCIMIPEOM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,6 +93,18 @@ namespace March7thHoney.Proto {
       get { return iOBCIMIPEOM_; }
       set {
         iOBCIMIPEOM_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "peak_id" field.</summary>
+    public const int PeakIdFieldNumber = 13;
+    private uint peakId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PeakId {
+      get { return peakId_; }
+      set {
+        peakId_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PeakId != other.PeakId) return false;
       if (IOBCIMIPEOM != other.IOBCIMIPEOM) return false;
+      if (PeakId != other.PeakId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (IOBCIMIPEOM != false) hash ^= IOBCIMIPEOM.GetHashCode();
+      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PeakId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PeakId);
-      }
       if (IOBCIMIPEOM != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(8);
         output.WriteBool(IOBCIMIPEOM);
+      }
+      if (PeakId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(PeakId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PeakId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PeakId);
-      }
       if (IOBCIMIPEOM != false) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(8);
         output.WriteBool(IOBCIMIPEOM);
+      }
+      if (PeakId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(PeakId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PeakId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
-      }
       if (IOBCIMIPEOM != false) {
         size += 1 + 1;
+      }
+      if (PeakId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,11 +206,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PeakId != 0) {
-        PeakId = other.PeakId;
-      }
       if (other.IOBCIMIPEOM != false) {
         IOBCIMIPEOM = other.IOBCIMIPEOM;
+      }
+      if (other.PeakId != 0) {
+        PeakId = other.PeakId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -231,12 +231,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 64: {
-            PeakId = input.ReadUInt32();
+          case 8: {
+            IOBCIMIPEOM = input.ReadBool();
             break;
           }
-          case 96: {
-            IOBCIMIPEOM = input.ReadBool();
+          case 104: {
+            PeakId = input.ReadUInt32();
             break;
           }
         }
@@ -258,12 +258,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 64: {
-            PeakId = input.ReadUInt32();
+          case 8: {
+            IOBCIMIPEOM = input.ReadBool();
             break;
           }
-          case 96: {
-            IOBCIMIPEOM = input.ReadBool();
+          case 104: {
+            PeakId = input.ReadUInt32();
             break;
           }
         }

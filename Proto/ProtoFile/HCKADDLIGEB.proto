@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message HCKADDLIGEB {
     string stop_desc = 1;
-    uint32 unk1 = 2;
+    uint32 HAAFJLKHCKF = 2;
 }

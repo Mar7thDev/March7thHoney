@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message EMHEOJNCGFH {
-    uint32 level = 7;
-    uint32 grid_fight_equipment_id = 12;
+    uint32 level = 4;
+    uint32 grid_fight_equipment_id = 14;
 }

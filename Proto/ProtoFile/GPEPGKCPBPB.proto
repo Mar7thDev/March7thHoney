@@ -6,9 +6,9 @@ import "FODHGNLPBKH.proto";
 import "JGNAEPIJDNC.proto";
 
 message GPEPGKCPBPB {
-    repeated FODHGNLPBKH JEHEILKKDEF = 13;
+    repeated FODHGNLPBKH JEHEILKKDEF = 1;
+    uint32 JOJCPKNIJOH = 5;
     uint32 MDAIAMFJNHM = 9;
-    JGNAEPIJDNC status = 11;
-    uint32 JOJCPKNIJOH = 12;
-    uint32 BIKLAFLEIOC = 1;
+    uint32 layer_index = 14;
+    JGNAEPIJDNC status = 15;
 }

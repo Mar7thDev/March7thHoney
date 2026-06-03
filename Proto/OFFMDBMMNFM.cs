@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFPRkZNREJNTU5GTS5wcm90bxoRQk1LTkFOR1BER0gucHJvdG8iMAoLT0ZG",
-            "TURCTU1ORk0SIQoLbGluZXVwX2xpc3QYDyADKAsyDC5CTUtOQU5HUERHSEIW",
+            "TURCTU1ORk0SIQoLbGluZXVwX2xpc3QYCSADKAsyDC5CTUtOQU5HUERHSEIW",
             "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BMKNANGPDGHReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "lineup_list" field.</summary>
-    public const int LineupListFieldNumber = 15;
+    public const int LineupListFieldNumber = 9;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.BMKNANGPDGH> _repeated_lineupList_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.BMKNANGPDGH.Parser);
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.BMKNANGPDGH.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.BMKNANGPDGH> lineupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.BMKNANGPDGH>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 122: {
+          case 74: {
             lineupList_.AddEntriesFrom(input, _repeated_lineupList_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 122: {
+          case 74: {
             lineupList_.AddEntriesFrom(ref input, _repeated_lineupList_codec);
             break;
           }

@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5EaXNwYXRjaC5wcm90bxoQUmVnaW9uSW5mby5wcm90byJ+CghEaXNwYXRj",
-            "aBITCgtGTVBHT0xJQkhCRBgFIAEoCRIdChV0b3Bfc2V2ZXJfcmVnaW9uX25h",
-            "bWUYAyABKAkSIAoLcmVnaW9uX2xpc3QYBCADKAsyCy5SZWdpb25JbmZvEgsK",
-            "A21zZxgCIAEoCRIPCgdyZXRjb2RlGAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5",
+            "aBIPCgdyZXRjb2RlGAEgASgNEgsKA21zZxgCIAEoCRIdChV0b3Bfc2V2ZXJf",
+            "cmVnaW9uX25hbWUYAyABKAkSIAoLcmVnaW9uX2xpc3QYBCADKAsyCy5SZWdp",
+            "b25JbmZvEhMKC0ZNUEdPTElCSEJEGAUgASgJQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RegionInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Dispatch), global::March7thHoney.Proto.Dispatch.Parser, new[]{ "FMPGOLIBHBD", "TopSeverRegionName", "RegionList", "Msg", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.Dispatch), global::March7thHoney.Proto.Dispatch.Parser, new[]{ "Retcode", "Msg", "TopSeverRegionName", "RegionList", "FMPGOLIBHBD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,11 +74,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Dispatch(Dispatch other) : this() {
-      fMPGOLIBHBD_ = other.fMPGOLIBHBD_;
+      retcode_ = other.retcode_;
+      msg_ = other.msg_;
       topSeverRegionName_ = other.topSeverRegionName_;
       regionList_ = other.regionList_.Clone();
-      msg_ = other.msg_;
-      retcode_ = other.retcode_;
+      fMPGOLIBHBD_ = other.fMPGOLIBHBD_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,15 +88,27 @@ namespace March7thHoney.Proto {
       return new Dispatch(this);
     }
 
-    /// <summary>Field number for the "FMPGOLIBHBD" field.</summary>
-    public const int FMPGOLIBHBDFieldNumber = 5;
-    private string fMPGOLIBHBD_ = "";
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 1;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string FMPGOLIBHBD {
-      get { return fMPGOLIBHBD_; }
+    public uint Retcode {
+      get { return retcode_; }
       set {
-        fMPGOLIBHBD_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "msg" field.</summary>
+    public const int MsgFieldNumber = 2;
+    private string msg_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Msg {
+      get { return msg_; }
+      set {
+        msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -123,27 +135,15 @@ namespace March7thHoney.Proto {
       get { return regionList_; }
     }
 
-    /// <summary>Field number for the "msg" field.</summary>
-    public const int MsgFieldNumber = 2;
-    private string msg_ = "";
+    /// <summary>Field number for the "FMPGOLIBHBD" field.</summary>
+    public const int FMPGOLIBHBDFieldNumber = 5;
+    private string fMPGOLIBHBD_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Msg {
-      get { return msg_; }
+    public string FMPGOLIBHBD {
+      get { return fMPGOLIBHBD_; }
       set {
-        msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 1;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
+        fMPGOLIBHBD_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FMPGOLIBHBD != other.FMPGOLIBHBD) return false;
+      if (Retcode != other.Retcode) return false;
+      if (Msg != other.Msg) return false;
       if (TopSeverRegionName != other.TopSeverRegionName) return false;
       if(!regionList_.Equals(other.regionList_)) return false;
-      if (Msg != other.Msg) return false;
-      if (Retcode != other.Retcode) return false;
+      if (FMPGOLIBHBD != other.FMPGOLIBHBD) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FMPGOLIBHBD.Length != 0) hash ^= FMPGOLIBHBD.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (Msg.Length != 0) hash ^= Msg.GetHashCode();
       if (TopSeverRegionName.Length != 0) hash ^= TopSeverRegionName.GetHashCode();
       hash ^= regionList_.GetHashCode();
-      if (Msg.Length != 0) hash ^= Msg.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (FMPGOLIBHBD.Length != 0) hash ^= FMPGOLIBHBD.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -251,18 +251,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FMPGOLIBHBD.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(FMPGOLIBHBD);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (Msg.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
       }
       if (TopSeverRegionName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TopSeverRegionName);
       }
       size += regionList_.CalculateSize(_repeated_regionList_codec);
-      if (Msg.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
-      }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      if (FMPGOLIBHBD.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FMPGOLIBHBD);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -276,18 +276,18 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FMPGOLIBHBD.Length != 0) {
-        FMPGOLIBHBD = other.FMPGOLIBHBD;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      if (other.Msg.Length != 0) {
+        Msg = other.Msg;
       }
       if (other.TopSeverRegionName.Length != 0) {
         TopSeverRegionName = other.TopSeverRegionName;
       }
       regionList_.Add(other.regionList_);
-      if (other.Msg.Length != 0) {
-        Msg = other.Msg;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
+      if (other.FMPGOLIBHBD.Length != 0) {
+        FMPGOLIBHBD = other.FMPGOLIBHBD;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

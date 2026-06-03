@@ -25,19 +25,19 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChBMaW5ldXBJbmZvLnByb3RvGhVFeHRyYUxpbmV1cFR5cGUucHJvdG8aEkxp",
-            "bmV1cEF2YXRhci5wcm90byLPAgoKTGluZXVwSW5mbxITCgtHT0ZMSUdHTkhO",
-            "RRgIIAMoDRIMCgRuYW1lGAwgASgJEiIKC2F2YXRhcl9saXN0GAEgAygLMg0u",
-            "TGluZXVwQXZhdGFyEhMKC05DTEpMTE5HRENJGAMgAygNEiEKGXN0b3J5X2xp",
-            "bmVfYXZhdGFyX2lkX2xpc3QYByADKA0SEgoKaXNfdmlydHVhbBgJIAEoCBIT",
-            "CgtBQkhPTkdKSElDRhgEIAEoCBIrChFleHRyYV9saW5ldXBfdHlwZRgPIAEo",
-            "DjIQLkV4dHJhTGluZXVwVHlwZRIaChJnYW1lX3N0b3J5X2xpbmVfaWQYBiAB",
-            "KA0SCgoCbXAYCyABKA0SDQoFaW5kZXgYDiABKA0SEwoLbGVhZGVyX3Nsb3QY",
-            "AiABKA0SEAoIcGxhbmVfaWQYDSABKA0SDgoGbWF4X21wGAogASgNQhaqAhNN",
-            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "bmV1cEF2YXRhci5wcm90byLSAgoKTGluZXVwSW5mbxIaChJsb2NrZWRfYXZh",
+            "dGFyX2lfZHMYASADKA0SIwobYXZhaWxhYmxlX3RyaWFsX2F2YXRhcl9pX2Rz",
+            "GAIgAygNEgoKAm1wGAMgASgNEhoKEmdhbWVfc3RvcnlfbGluZV9pZBgEIAEo",
+            "DRITCgtsZWFkZXJfc2xvdBgFIAEoDRITCgtBQkhPTkdKSElDRhgGIAEoCBIi",
+            "CgthdmF0YXJfbGlzdBgHIAMoCzINLkxpbmV1cEF2YXRhchIQCghwbGFuZV9p",
+            "ZBgIIAEoDRIhChlzdG9yeV9saW5lX2F2YXRhcl9pZF9saXN0GAkgAygNEg0K",
+            "BWluZGV4GAwgASgNEg4KBm1heF9tcBgNIAEoDRIMCgRuYW1lGA4gASgJEisK",
+            "EWV4dHJhX2xpbmV1cF90eXBlGA8gASgOMhAuRXh0cmFMaW5ldXBUeXBlQhaq",
+            "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ExtraLineupTypeReflection.Descriptor, global::March7thHoney.Proto.LineupAvatarReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LineupInfo), global::March7thHoney.Proto.LineupInfo.Parser, new[]{ "GOFLIGGNHNE", "Name", "AvatarList", "NCLJLLNGDCI", "StoryLineAvatarIdList", "IsVirtual", "ABHONGJHICF", "ExtraLineupType", "GameStoryLineId", "Mp", "Index", "LeaderSlot", "PlaneId", "MaxMp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LineupInfo), global::March7thHoney.Proto.LineupInfo.Parser, new[]{ "LockedAvatarIDs", "AvailableTrialAvatarIDs", "Mp", "GameStoryLineId", "LeaderSlot", "ABHONGJHICF", "AvatarList", "PlaneId", "StoryLineAvatarIdList", "Index", "MaxMp", "Name", "ExtraLineupType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -79,20 +79,19 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LineupInfo(LineupInfo other) : this() {
-      gOFLIGGNHNE_ = other.gOFLIGGNHNE_.Clone();
-      name_ = other.name_;
-      avatarList_ = other.avatarList_.Clone();
-      nCLJLLNGDCI_ = other.nCLJLLNGDCI_.Clone();
-      storyLineAvatarIdList_ = other.storyLineAvatarIdList_.Clone();
-      isVirtual_ = other.isVirtual_;
-      aBHONGJHICF_ = other.aBHONGJHICF_;
-      extraLineupType_ = other.extraLineupType_;
-      gameStoryLineId_ = other.gameStoryLineId_;
+      lockedAvatarIDs_ = other.lockedAvatarIDs_.Clone();
+      availableTrialAvatarIDs_ = other.availableTrialAvatarIDs_.Clone();
       mp_ = other.mp_;
-      index_ = other.index_;
+      gameStoryLineId_ = other.gameStoryLineId_;
       leaderSlot_ = other.leaderSlot_;
+      aBHONGJHICF_ = other.aBHONGJHICF_;
+      avatarList_ = other.avatarList_.Clone();
       planeId_ = other.planeId_;
+      storyLineAvatarIdList_ = other.storyLineAvatarIdList_.Clone();
+      index_ = other.index_;
       maxMp_ = other.maxMp_;
+      name_ = other.name_;
+      extraLineupType_ = other.extraLineupType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -102,76 +101,66 @@ namespace March7thHoney.Proto {
       return new LineupInfo(this);
     }
 
-    /// <summary>Field number for the "GOFLIGGNHNE" field.</summary>
-    public const int GOFLIGGNHNEFieldNumber = 8;
-    private static readonly pb::FieldCodec<uint> _repeated_gOFLIGGNHNE_codec
-        = pb::FieldCodec.ForUInt32(66);
-    private readonly pbc::RepeatedField<uint> gOFLIGGNHNE_ = new pbc::RepeatedField<uint>();
+    /// <summary>Field number for the "locked_avatar_i_ds" field.</summary>
+    public const int LockedAvatarIDsFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_lockedAvatarIDs_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> lockedAvatarIDs_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> GOFLIGGNHNE {
-      get { return gOFLIGGNHNE_; }
+    public pbc::RepeatedField<uint> LockedAvatarIDs {
+      get { return lockedAvatarIDs_; }
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 12;
-    private string name_ = "";
+    /// <summary>Field number for the "available_trial_avatar_i_ds" field.</summary>
+    public const int AvailableTrialAvatarIDsFieldNumber = 2;
+    private static readonly pb::FieldCodec<uint> _repeated_availableTrialAvatarIDs_codec
+        = pb::FieldCodec.ForUInt32(18);
+    private readonly pbc::RepeatedField<uint> availableTrialAvatarIDs_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
+    public pbc::RepeatedField<uint> AvailableTrialAvatarIDs {
+      get { return availableTrialAvatarIDs_; }
+    }
+
+    /// <summary>Field number for the "mp" field.</summary>
+    public const int MpFieldNumber = 3;
+    private uint mp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Mp {
+      get { return mp_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        mp_ = value;
       }
     }
 
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LineupAvatar> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.LineupAvatar.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LineupAvatar> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LineupAvatar>();
+    /// <summary>Field number for the "game_story_line_id" field.</summary>
+    public const int GameStoryLineIdFieldNumber = 4;
+    private uint gameStoryLineId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.LineupAvatar> AvatarList {
-      get { return avatarList_; }
-    }
-
-    /// <summary>Field number for the "NCLJLLNGDCI" field.</summary>
-    public const int NCLJLLNGDCIFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_nCLJLLNGDCI_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> nCLJLLNGDCI_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> NCLJLLNGDCI {
-      get { return nCLJLLNGDCI_; }
-    }
-
-    /// <summary>Field number for the "story_line_avatar_id_list" field.</summary>
-    public const int StoryLineAvatarIdListFieldNumber = 7;
-    private static readonly pb::FieldCodec<uint> _repeated_storyLineAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(58);
-    private readonly pbc::RepeatedField<uint> storyLineAvatarIdList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> StoryLineAvatarIdList {
-      get { return storyLineAvatarIdList_; }
-    }
-
-    /// <summary>Field number for the "is_virtual" field.</summary>
-    public const int IsVirtualFieldNumber = 9;
-    private bool isVirtual_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsVirtual {
-      get { return isVirtual_; }
+    public uint GameStoryLineId {
+      get { return gameStoryLineId_; }
       set {
-        isVirtual_ = value;
+        gameStoryLineId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "leader_slot" field.</summary>
+    public const int LeaderSlotFieldNumber = 5;
+    private uint leaderSlot_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LeaderSlot {
+      get { return leaderSlot_; }
+      set {
+        leaderSlot_ = value;
       }
     }
 
     /// <summary>Field number for the "ABHONGJHICF" field.</summary>
-    public const int ABHONGJHICFFieldNumber = 4;
+    public const int ABHONGJHICFFieldNumber = 6;
     private bool aBHONGJHICF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -179,6 +168,76 @@ namespace March7thHoney.Proto {
       get { return aBHONGJHICF_; }
       set {
         aBHONGJHICF_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.LineupAvatar> _repeated_avatarList_codec
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.LineupAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.LineupAvatar> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.LineupAvatar>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.LineupAvatar> AvatarList {
+      get { return avatarList_; }
+    }
+
+    /// <summary>Field number for the "plane_id" field.</summary>
+    public const int PlaneIdFieldNumber = 8;
+    private uint planeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PlaneId {
+      get { return planeId_; }
+      set {
+        planeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "story_line_avatar_id_list" field.</summary>
+    public const int StoryLineAvatarIdListFieldNumber = 9;
+    private static readonly pb::FieldCodec<uint> _repeated_storyLineAvatarIdList_codec
+        = pb::FieldCodec.ForUInt32(74);
+    private readonly pbc::RepeatedField<uint> storyLineAvatarIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> StoryLineAvatarIdList {
+      get { return storyLineAvatarIdList_; }
+    }
+
+    /// <summary>Field number for the "index" field.</summary>
+    public const int IndexFieldNumber = 12;
+    private uint index_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_mp" field.</summary>
+    public const int MaxMpFieldNumber = 13;
+    private uint maxMp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxMp {
+      get { return maxMp_; }
+      set {
+        maxMp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 14;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -191,78 +250,6 @@ namespace March7thHoney.Proto {
       get { return extraLineupType_; }
       set {
         extraLineupType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "game_story_line_id" field.</summary>
-    public const int GameStoryLineIdFieldNumber = 6;
-    private uint gameStoryLineId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint GameStoryLineId {
-      get { return gameStoryLineId_; }
-      set {
-        gameStoryLineId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "mp" field.</summary>
-    public const int MpFieldNumber = 11;
-    private uint mp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Mp {
-      get { return mp_; }
-      set {
-        mp_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "index" field.</summary>
-    public const int IndexFieldNumber = 14;
-    private uint index_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Index {
-      get { return index_; }
-      set {
-        index_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "leader_slot" field.</summary>
-    public const int LeaderSlotFieldNumber = 2;
-    private uint leaderSlot_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LeaderSlot {
-      get { return leaderSlot_; }
-      set {
-        leaderSlot_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "plane_id" field.</summary>
-    public const int PlaneIdFieldNumber = 13;
-    private uint planeId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PlaneId {
-      get { return planeId_; }
-      set {
-        planeId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "max_mp" field.</summary>
-    public const int MaxMpFieldNumber = 10;
-    private uint maxMp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MaxMp {
-      get { return maxMp_; }
-      set {
-        maxMp_ = value;
       }
     }
 
@@ -281,20 +268,19 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!gOFLIGGNHNE_.Equals(other.gOFLIGGNHNE_)) return false;
-      if (Name != other.Name) return false;
-      if(!avatarList_.Equals(other.avatarList_)) return false;
-      if(!nCLJLLNGDCI_.Equals(other.nCLJLLNGDCI_)) return false;
-      if(!storyLineAvatarIdList_.Equals(other.storyLineAvatarIdList_)) return false;
-      if (IsVirtual != other.IsVirtual) return false;
-      if (ABHONGJHICF != other.ABHONGJHICF) return false;
-      if (ExtraLineupType != other.ExtraLineupType) return false;
-      if (GameStoryLineId != other.GameStoryLineId) return false;
+      if(!lockedAvatarIDs_.Equals(other.lockedAvatarIDs_)) return false;
+      if(!availableTrialAvatarIDs_.Equals(other.availableTrialAvatarIDs_)) return false;
       if (Mp != other.Mp) return false;
-      if (Index != other.Index) return false;
+      if (GameStoryLineId != other.GameStoryLineId) return false;
       if (LeaderSlot != other.LeaderSlot) return false;
+      if (ABHONGJHICF != other.ABHONGJHICF) return false;
+      if(!avatarList_.Equals(other.avatarList_)) return false;
       if (PlaneId != other.PlaneId) return false;
+      if(!storyLineAvatarIdList_.Equals(other.storyLineAvatarIdList_)) return false;
+      if (Index != other.Index) return false;
       if (MaxMp != other.MaxMp) return false;
+      if (Name != other.Name) return false;
+      if (ExtraLineupType != other.ExtraLineupType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -302,20 +288,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= gOFLIGGNHNE_.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      hash ^= avatarList_.GetHashCode();
-      hash ^= nCLJLLNGDCI_.GetHashCode();
-      hash ^= storyLineAvatarIdList_.GetHashCode();
-      if (IsVirtual != false) hash ^= IsVirtual.GetHashCode();
-      if (ABHONGJHICF != false) hash ^= ABHONGJHICF.GetHashCode();
-      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
-      if (GameStoryLineId != 0) hash ^= GameStoryLineId.GetHashCode();
+      hash ^= lockedAvatarIDs_.GetHashCode();
+      hash ^= availableTrialAvatarIDs_.GetHashCode();
       if (Mp != 0) hash ^= Mp.GetHashCode();
-      if (Index != 0) hash ^= Index.GetHashCode();
+      if (GameStoryLineId != 0) hash ^= GameStoryLineId.GetHashCode();
       if (LeaderSlot != 0) hash ^= LeaderSlot.GetHashCode();
+      if (ABHONGJHICF != false) hash ^= ABHONGJHICF.GetHashCode();
+      hash ^= avatarList_.GetHashCode();
       if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
+      hash ^= storyLineAvatarIdList_.GetHashCode();
+      if (Index != 0) hash ^= Index.GetHashCode();
       if (MaxMp != 0) hash ^= MaxMp.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) hash ^= ExtraLineupType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -334,45 +319,41 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      avatarList_.WriteTo(output, _repeated_avatarList_codec);
-      if (LeaderSlot != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(LeaderSlot);
-      }
-      nCLJLLNGDCI_.WriteTo(output, _repeated_nCLJLLNGDCI_codec);
-      if (ABHONGJHICF != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(ABHONGJHICF);
-      }
-      if (GameStoryLineId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(GameStoryLineId);
-      }
-      storyLineAvatarIdList_.WriteTo(output, _repeated_storyLineAvatarIdList_codec);
-      gOFLIGGNHNE_.WriteTo(output, _repeated_gOFLIGGNHNE_codec);
-      if (IsVirtual != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(IsVirtual);
-      }
-      if (MaxMp != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(MaxMp);
-      }
+      lockedAvatarIDs_.WriteTo(output, _repeated_lockedAvatarIDs_codec);
+      availableTrialAvatarIDs_.WriteTo(output, _repeated_availableTrialAvatarIDs_codec);
       if (Mp != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteUInt32(Mp);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(Name);
+      if (GameStoryLineId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(GameStoryLineId);
       }
+      if (LeaderSlot != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(LeaderSlot);
+      }
+      if (ABHONGJHICF != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(ABHONGJHICF);
+      }
+      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (PlaneId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(64);
         output.WriteUInt32(PlaneId);
       }
+      storyLineAvatarIdList_.WriteTo(output, _repeated_storyLineAvatarIdList_codec);
       if (Index != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(Index);
+      }
+      if (MaxMp != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(MaxMp);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(Name);
       }
       if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         output.WriteRawTag(120);
@@ -388,45 +369,41 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
-      if (LeaderSlot != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(LeaderSlot);
-      }
-      nCLJLLNGDCI_.WriteTo(ref output, _repeated_nCLJLLNGDCI_codec);
-      if (ABHONGJHICF != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(ABHONGJHICF);
-      }
-      if (GameStoryLineId != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(GameStoryLineId);
-      }
-      storyLineAvatarIdList_.WriteTo(ref output, _repeated_storyLineAvatarIdList_codec);
-      gOFLIGGNHNE_.WriteTo(ref output, _repeated_gOFLIGGNHNE_codec);
-      if (IsVirtual != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(IsVirtual);
-      }
-      if (MaxMp != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(MaxMp);
-      }
+      lockedAvatarIDs_.WriteTo(ref output, _repeated_lockedAvatarIDs_codec);
+      availableTrialAvatarIDs_.WriteTo(ref output, _repeated_availableTrialAvatarIDs_codec);
       if (Mp != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(24);
         output.WriteUInt32(Mp);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(98);
-        output.WriteString(Name);
+      if (GameStoryLineId != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(GameStoryLineId);
       }
+      if (LeaderSlot != 0) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(LeaderSlot);
+      }
+      if (ABHONGJHICF != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(ABHONGJHICF);
+      }
+      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (PlaneId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(64);
         output.WriteUInt32(PlaneId);
       }
+      storyLineAvatarIdList_.WriteTo(ref output, _repeated_storyLineAvatarIdList_codec);
       if (Index != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt32(Index);
+      }
+      if (MaxMp != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(MaxMp);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(Name);
       }
       if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
         output.WriteRawTag(120);
@@ -442,39 +419,36 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += gOFLIGGNHNE_.CalculateSize(_repeated_gOFLIGGNHNE_codec);
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
-      }
-      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
-      size += nCLJLLNGDCI_.CalculateSize(_repeated_nCLJLLNGDCI_codec);
-      size += storyLineAvatarIdList_.CalculateSize(_repeated_storyLineAvatarIdList_codec);
-      if (IsVirtual != false) {
-        size += 1 + 1;
-      }
-      if (ABHONGJHICF != false) {
-        size += 1 + 1;
-      }
-      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ExtraLineupType);
+      size += lockedAvatarIDs_.CalculateSize(_repeated_lockedAvatarIDs_codec);
+      size += availableTrialAvatarIDs_.CalculateSize(_repeated_availableTrialAvatarIDs_codec);
+      if (Mp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Mp);
       }
       if (GameStoryLineId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(GameStoryLineId);
       }
-      if (Mp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Mp);
-      }
-      if (Index != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Index);
-      }
       if (LeaderSlot != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LeaderSlot);
       }
+      if (ABHONGJHICF != false) {
+        size += 1 + 1;
+      }
+      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
       if (PlaneId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
       }
+      size += storyLineAvatarIdList_.CalculateSize(_repeated_storyLineAvatarIdList_codec);
+      if (Index != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Index);
+      }
       if (MaxMp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxMp);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ExtraLineupType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -488,39 +462,36 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      gOFLIGGNHNE_.Add(other.gOFLIGGNHNE_);
-      if (other.Name.Length != 0) {
-        Name = other.Name;
-      }
-      avatarList_.Add(other.avatarList_);
-      nCLJLLNGDCI_.Add(other.nCLJLLNGDCI_);
-      storyLineAvatarIdList_.Add(other.storyLineAvatarIdList_);
-      if (other.IsVirtual != false) {
-        IsVirtual = other.IsVirtual;
-      }
-      if (other.ABHONGJHICF != false) {
-        ABHONGJHICF = other.ABHONGJHICF;
-      }
-      if (other.ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
-        ExtraLineupType = other.ExtraLineupType;
+      lockedAvatarIDs_.Add(other.lockedAvatarIDs_);
+      availableTrialAvatarIDs_.Add(other.availableTrialAvatarIDs_);
+      if (other.Mp != 0) {
+        Mp = other.Mp;
       }
       if (other.GameStoryLineId != 0) {
         GameStoryLineId = other.GameStoryLineId;
       }
-      if (other.Mp != 0) {
-        Mp = other.Mp;
-      }
-      if (other.Index != 0) {
-        Index = other.Index;
-      }
       if (other.LeaderSlot != 0) {
         LeaderSlot = other.LeaderSlot;
       }
+      if (other.ABHONGJHICF != false) {
+        ABHONGJHICF = other.ABHONGJHICF;
+      }
+      avatarList_.Add(other.avatarList_);
       if (other.PlaneId != 0) {
         PlaneId = other.PlaneId;
       }
+      storyLineAvatarIdList_.Add(other.storyLineAvatarIdList_);
+      if (other.Index != 0) {
+        Index = other.Index;
+      }
       if (other.MaxMp != 0) {
         MaxMp = other.MaxMp;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.ExtraLineupType != global::March7thHoney.Proto.ExtraLineupType.LineupNone) {
+        ExtraLineupType = other.ExtraLineupType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -541,59 +512,55 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
+          case 10:
+          case 8: {
+            lockedAvatarIDs_.AddEntriesFrom(input, _repeated_lockedAvatarIDs_codec);
             break;
           }
+          case 18:
           case 16: {
-            LeaderSlot = input.ReadUInt32();
+            availableTrialAvatarIDs_.AddEntriesFrom(input, _repeated_availableTrialAvatarIDs_codec);
             break;
           }
-          case 26:
           case 24: {
-            nCLJLLNGDCI_.AddEntriesFrom(input, _repeated_nCLJLLNGDCI_codec);
-            break;
-          }
-          case 32: {
-            ABHONGJHICF = input.ReadBool();
-            break;
-          }
-          case 48: {
-            GameStoryLineId = input.ReadUInt32();
-            break;
-          }
-          case 58:
-          case 56: {
-            storyLineAvatarIdList_.AddEntriesFrom(input, _repeated_storyLineAvatarIdList_codec);
-            break;
-          }
-          case 66:
-          case 64: {
-            gOFLIGGNHNE_.AddEntriesFrom(input, _repeated_gOFLIGGNHNE_codec);
-            break;
-          }
-          case 72: {
-            IsVirtual = input.ReadBool();
-            break;
-          }
-          case 80: {
-            MaxMp = input.ReadUInt32();
-            break;
-          }
-          case 88: {
             Mp = input.ReadUInt32();
             break;
           }
-          case 98: {
-            Name = input.ReadString();
+          case 32: {
+            GameStoryLineId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 40: {
+            LeaderSlot = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            ABHONGJHICF = input.ReadBool();
+            break;
+          }
+          case 58: {
+            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
+            break;
+          }
+          case 64: {
             PlaneId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 74:
+          case 72: {
+            storyLineAvatarIdList_.AddEntriesFrom(input, _repeated_storyLineAvatarIdList_codec);
+            break;
+          }
+          case 96: {
             Index = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            MaxMp = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            Name = input.ReadString();
             break;
           }
           case 120: {
@@ -619,59 +586,55 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
+          case 10:
+          case 8: {
+            lockedAvatarIDs_.AddEntriesFrom(ref input, _repeated_lockedAvatarIDs_codec);
             break;
           }
+          case 18:
           case 16: {
-            LeaderSlot = input.ReadUInt32();
+            availableTrialAvatarIDs_.AddEntriesFrom(ref input, _repeated_availableTrialAvatarIDs_codec);
             break;
           }
-          case 26:
           case 24: {
-            nCLJLLNGDCI_.AddEntriesFrom(ref input, _repeated_nCLJLLNGDCI_codec);
-            break;
-          }
-          case 32: {
-            ABHONGJHICF = input.ReadBool();
-            break;
-          }
-          case 48: {
-            GameStoryLineId = input.ReadUInt32();
-            break;
-          }
-          case 58:
-          case 56: {
-            storyLineAvatarIdList_.AddEntriesFrom(ref input, _repeated_storyLineAvatarIdList_codec);
-            break;
-          }
-          case 66:
-          case 64: {
-            gOFLIGGNHNE_.AddEntriesFrom(ref input, _repeated_gOFLIGGNHNE_codec);
-            break;
-          }
-          case 72: {
-            IsVirtual = input.ReadBool();
-            break;
-          }
-          case 80: {
-            MaxMp = input.ReadUInt32();
-            break;
-          }
-          case 88: {
             Mp = input.ReadUInt32();
             break;
           }
-          case 98: {
-            Name = input.ReadString();
+          case 32: {
+            GameStoryLineId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 40: {
+            LeaderSlot = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            ABHONGJHICF = input.ReadBool();
+            break;
+          }
+          case 58: {
+            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
+            break;
+          }
+          case 64: {
             PlaneId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 74:
+          case 72: {
+            storyLineAvatarIdList_.AddEntriesFrom(ref input, _repeated_storyLineAvatarIdList_codec);
+            break;
+          }
+          case 96: {
             Index = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            MaxMp = input.ReadUInt32();
+            break;
+          }
+          case 114: {
+            Name = input.ReadString();
             break;
           }
           case 120: {

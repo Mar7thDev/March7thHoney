@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GLPCEKMKLGG {
-    repeated uint32 grid_fight_avatar_list = 3;
+    repeated uint32 grid_fight_avatar_list = 13;
 }

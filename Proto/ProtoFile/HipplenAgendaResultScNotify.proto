@@ -8,11 +8,11 @@ import "GEFEDOAOKNO.proto";
 import "LKFFMLJMGOB.proto";
 
 message HipplenAgendaResultScNotify {
-    LKFFMLJMGOB FEJPEALIKHE = 8;
-    GEFEDOAOKNO JMKHOIMEFFM = 15;
-    repeated uint32 grid_fight_trait_info = 1;
-    repeated uint32 GPDEDJIHMGB = 7;
-    BNJAIHINJIK HIGHKDBJNIM = 2;
-    repeated AFEDHCKDDFA NEMFNENACNB = 13;
-    bool CPFFAGAHJMH = 14;
+    repeated uint32 grid_fight_trait_info = 2;
+    BNJAIHINJIK HIGHKDBJNIM = 3;
+    bool CPFFAGAHJMH = 5;
+    GEFEDOAOKNO JMKHOIMEFFM = 6;
+    repeated uint32 GPDEDJIHMGB = 10;
+    repeated AFEDHCKDDFA NEMFNENACNB = 11;
+    LKFFMLJMGOB FEJPEALIKHE = 15;
 }

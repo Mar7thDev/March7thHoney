@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "GridFightDropInfo.proto";
+
+message BPENENIMEFE {
+    GridFightDropInfo GHBBCIIPHKJ = 8;
+    uint32 quest_id = 10;
+    bool IJJDEHIPOEL = 11;
+}

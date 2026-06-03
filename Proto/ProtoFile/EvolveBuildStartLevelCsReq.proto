@@ -6,7 +6,7 @@ import "DKPHAFPGDLO.proto";
 import "EHPLFHLNMIF.proto";
 
 message EvolveBuildStartLevelCsReq {
-    repeated EHPLFHLNMIF avatar_list = 10;
-    DKPHAFPGDLO NENJBDBJNFI = 11;
+    DKPHAFPGDLO NENJBDBJNFI = 2;
     uint32 level_id = 5;
+    repeated EHPLFHLNMIF avatar_list = 7;
 }

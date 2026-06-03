@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LEJNBBLNNDM.proto";
 
 message PlanetFesSyncChangeScNotify {
-    repeated LEJNBBLNNDM DGNGMJMPFGK = 2;
+    repeated LEJNBBLNNDM DGNGMJMPFGK = 10;
 }

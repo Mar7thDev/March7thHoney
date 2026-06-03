@@ -24,12 +24,12 @@ namespace March7thHoney.Proto {
     static HeliobusChallengeUpdateScNotifyReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiVIZWxpb2J1c0NoYWxsZW5nZVVwZGF0ZVNjTm90aWZ5LnByb3RvGhFGUElC",
-            "QUlQSkNNRC5wcm90byJECh9IZWxpb2J1c0NoYWxsZW5nZVVwZGF0ZVNjTm90",
-            "aWZ5EiEKC09DRExQRERNQ0xQGAMgASgLMgwuRlBJQkFJUEpDTURCFqoCE01h",
-            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "CiVIZWxpb2J1c0NoYWxsZW5nZVVwZGF0ZVNjTm90aWZ5LnByb3RvGhtIZWxp",
+            "b2J1c0NoYWxsZW5nZURhdGEucHJvdG8iTgofSGVsaW9idXNDaGFsbGVuZ2VV",
+            "cGRhdGVTY05vdGlmeRIrCgtPQ0RMUERETUNMUBgKIAEoCzIWLkhlbGlvYnVz",
+            "Q2hhbGxlbmdlRGF0YUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.FPIBAIPJCMDReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.HeliobusChallengeDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeliobusChallengeUpdateScNotify), global::March7thHoney.Proto.HeliobusChallengeUpdateScNotify.Parser, new[]{ "OCDLPDDMCLP" }, null, null, null, null)
           }));
@@ -84,11 +84,11 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "OCDLPDDMCLP" field.</summary>
-    public const int OCDLPDDMCLPFieldNumber = 3;
-    private global::March7thHoney.Proto.FPIBAIPJCMD oCDLPDDMCLP_;
+    public const int OCDLPDDMCLPFieldNumber = 10;
+    private global::March7thHoney.Proto.HeliobusChallengeData oCDLPDDMCLP_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.FPIBAIPJCMD OCDLPDDMCLP {
+    public global::March7thHoney.Proto.HeliobusChallengeData OCDLPDDMCLP {
       get { return oCDLPDDMCLP_; }
       set {
         oCDLPDDMCLP_ = value;
@@ -138,7 +138,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (oCDLPDDMCLP_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(82);
         output.WriteMessage(OCDLPDDMCLP);
       }
       if (_unknownFields != null) {
@@ -152,7 +152,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (oCDLPDDMCLP_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(82);
         output.WriteMessage(OCDLPDDMCLP);
       }
       if (_unknownFields != null) {
@@ -182,7 +182,7 @@ namespace March7thHoney.Proto {
       }
       if (other.oCDLPDDMCLP_ != null) {
         if (oCDLPDDMCLP_ == null) {
-          OCDLPDDMCLP = new global::March7thHoney.Proto.FPIBAIPJCMD();
+          OCDLPDDMCLP = new global::March7thHoney.Proto.HeliobusChallengeData();
         }
         OCDLPDDMCLP.MergeFrom(other.OCDLPDDMCLP);
       }
@@ -205,9 +205,9 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26: {
+          case 82: {
             if (oCDLPDDMCLP_ == null) {
-              OCDLPDDMCLP = new global::March7thHoney.Proto.FPIBAIPJCMD();
+              OCDLPDDMCLP = new global::March7thHoney.Proto.HeliobusChallengeData();
             }
             input.ReadMessage(OCDLPDDMCLP);
             break;
@@ -231,9 +231,9 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26: {
+          case 82: {
             if (oCDLPDDMCLP_ == null) {
-              OCDLPDDMCLP = new global::March7thHoney.Proto.FPIBAIPJCMD();
+              OCDLPDDMCLP = new global::March7thHoney.Proto.HeliobusChallengeData();
             }
             input.ReadMessage(OCDLPDDMCLP);
             break;

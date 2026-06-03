@@ -8,6 +8,6 @@ import "MOHAGOFLGAP.proto";
 
 message LMLNNHKJEIP {
     MOHAGOFLGAP basic_info = 1;
-    LobbyGameExtInfo stage_info = 3;
     CIGLIFFIIDC GBBCBJCACIN = 2;
+    LobbyGameExtInfo stage_info = 3;
 }

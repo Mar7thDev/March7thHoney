@@ -8,13 +8,13 @@ import "JFBFFIAOPCC.proto";
 import "WaitConfirmData.proto";
 
 message ChallengePeakGroup {
-    ChallengePeakBoss peak_boss = 2;
-    JFBFFIAOPCC PAPDCCKPEPK = 3;
-    WaitConfirmData wait_confirm_data = 14;
-    repeated uint32 taken_star_rewards = 7;
-    repeated ChallengePeak peaks = 5;
-    uint32 peak_group_id = 12;
-    uint32 count_of_peaks = 9;
-    bool disable_hard_mode = 13;
-    uint32 obtained_stars = 4;
+    ChallengePeakBoss peak_boss = 1;
+    uint32 peak_group_id = 2;
+    uint32 obtained_stars = 3;
+    bool disable_hard_mode = 5;
+    JFBFFIAOPCC PAPDCCKPEPK = 8;
+    WaitConfirmData wait_confirm_data = 9;
+    repeated uint32 taken_star_rewards = 13;
+    uint32 count_of_peaks = 14;
+    repeated ChallengePeak peaks = 15;
 }

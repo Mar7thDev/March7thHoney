@@ -6,8 +6,8 @@ import "DFLIHGGNBDB.proto";
 import "JFJDMGOMJOF.proto";
 
 message PKBDAKMLDMC {
-    repeated JFJDMGOMJOF DGKLOCJHKNH = 11;
-    repeated DFLIHGGNBDB GNABNEDKPHH = 9;
-    uint32 MMLNAMPFAKA = 12;
-    uint32 use_item_id = 14;
+    repeated DFLIHGGNBDB GNABNEDKPHH = 2;
+    uint32 MMLNAMPFAKA = 5;
+    uint32 use_item_id = 11;
+    repeated JFJDMGOMJOF DGKLOCJHKNH = 13;
 }

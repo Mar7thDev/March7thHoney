@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFIR1BCT05NTE5BSi5wcm90bxoRREJLQUFKQUVHTk0ucHJvdG8iUgoLSEdQ",
-            "Qk9OTUxOQUoSEAoIcHJvZ3Jlc3MYDiABKA0SEwoLSUJFRkRPTUJFSE0YAyAB",
-            "KA0SHAoGc3RhdHVzGAogASgOMgwuREJLQUFKQUVHTk1CFqoCE01hcmNoN3Ro",
+            "Qk9OTUxOQUoSEAoIcHJvZ3Jlc3MYASABKA0SEwoLSUJFRkRPTUJFSE0YByAB",
+            "KA0SHAoGc3RhdHVzGAsgASgOMgwuREJLQUFKQUVHTk1CFqoCE01hcmNoN3Ro",
             "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.DBKAAJAEGNMReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "progress" field.</summary>
-    public const int ProgressFieldNumber = 14;
+    public const int ProgressFieldNumber = 1;
     private uint progress_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IBEFDOMBEHM" field.</summary>
-    public const int IBEFDOMBEHMFieldNumber = 3;
+    public const int IBEFDOMBEHMFieldNumber = 7;
     private uint iBEFDOMBEHM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -110,7 +110,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 10;
+    public const int StatusFieldNumber = 11;
     private global::March7thHoney.Proto.DBKAAJAEGNM status_ = global::March7thHoney.Proto.DBKAAJAEGNM.Nlcdgipgfdj;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,17 +167,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Progress != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Progress);
+      }
       if (IBEFDOMBEHM != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteUInt32(IBEFDOMBEHM);
       }
       if (Status != global::March7thHoney.Proto.DBKAAJAEGNM.Nlcdgipgfdj) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(88);
         output.WriteEnum((int) Status);
-      }
-      if (Progress != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(Progress);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -189,17 +189,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Progress != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Progress);
+      }
       if (IBEFDOMBEHM != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(56);
         output.WriteUInt32(IBEFDOMBEHM);
       }
       if (Status != global::March7thHoney.Proto.DBKAAJAEGNM.Nlcdgipgfdj) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(88);
         output.WriteEnum((int) Status);
-      }
-      if (Progress != 0) {
-        output.WriteRawTag(112);
-        output.WriteUInt32(Progress);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -260,16 +260,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 8: {
+            Progress = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             IBEFDOMBEHM = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 88: {
             Status = (global::March7thHoney.Proto.DBKAAJAEGNM) input.ReadEnum();
-            break;
-          }
-          case 112: {
-            Progress = input.ReadUInt32();
             break;
           }
         }
@@ -291,16 +291,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 8: {
+            Progress = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             IBEFDOMBEHM = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 88: {
             Status = (global::March7thHoney.Proto.DBKAAJAEGNM) input.ReadEnum();
-            break;
-          }
-          case 112: {
-            Progress = input.ReadUInt32();
             break;
           }
         }

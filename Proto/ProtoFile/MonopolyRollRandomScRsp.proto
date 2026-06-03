@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DFKABDLJMJO.proto";
 
 message MonopolyRollRandomScRsp {
-    NEMIDPFEJFL MOMEIFPICLE = 12;
-    uint32 event_id = 8;
-    uint32 retcode = 5;
+    NEMIDPFEJFL MOMEIFPICLE = 1;
+    uint32 event_id = 11;
+    uint32 retcode = 14;
 }

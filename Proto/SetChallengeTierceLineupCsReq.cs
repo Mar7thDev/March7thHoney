@@ -26,13 +26,13 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiNTZXRDaGFsbGVuZ2VUaWVyY2VMaW5ldXBDc1JlcS5wcm90bxokQ2hhbGxl",
             "bmdlVGllcmNlU3RhZ2VMaW5ldXBJbmZvLnByb3RvIm8KHVNldENoYWxsZW5n",
-            "ZVRpZXJjZUxpbmV1cENzUmVxEjgKD3N0YWdlX2luZm9fbGlzdBgCIAMoCzIf",
-            "LkNoYWxsZW5nZVRpZXJjZVN0YWdlTGluZXVwSW5mbxIUCgxjaGFsbGVuZ2Vf",
-            "aWQYCCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ZVRpZXJjZUxpbmV1cENzUmVxEhQKDGNoYWxsZW5nZV9pZBgHIAEoDRI4Cg9z",
+            "dGFnZV9pbmZvX2xpc3QYDCADKAsyHy5DaGFsbGVuZ2VUaWVyY2VTdGFnZUxp",
+            "bmV1cEluZm9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeTierceStageLineupInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengeTierceLineupCsReq), global::March7thHoney.Proto.SetChallengeTierceLineupCsReq.Parser, new[]{ "StageInfoList", "ChallengeId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengeTierceLineupCsReq), global::March7thHoney.Proto.SetChallengeTierceLineupCsReq.Parser, new[]{ "ChallengeId", "StageInfoList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetChallengeTierceLineupCsReq(SetChallengeTierceLineupCsReq other) : this() {
-      stageInfoList_ = other.stageInfoList_.Clone();
       challengeId_ = other.challengeId_;
+      stageInfoList_ = other.stageInfoList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,19 +85,8 @@ namespace March7thHoney.Proto {
       return new SetChallengeTierceLineupCsReq(this);
     }
 
-    /// <summary>Field number for the "stage_info_list" field.</summary>
-    public const int StageInfoListFieldNumber = 2;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeTierceStageLineupInfo> _repeated_stageInfoList_codec
-        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.ChallengeTierceStageLineupInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeTierceStageLineupInfo> stageInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeTierceStageLineupInfo>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeTierceStageLineupInfo> StageInfoList {
-      get { return stageInfoList_; }
-    }
-
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 8;
+    public const int ChallengeIdFieldNumber = 7;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -106,6 +95,17 @@ namespace March7thHoney.Proto {
       set {
         challengeId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "stage_info_list" field.</summary>
+    public const int StageInfoListFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengeTierceStageLineupInfo> _repeated_stageInfoList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.ChallengeTierceStageLineupInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengeTierceStageLineupInfo> stageInfoList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengeTierceStageLineupInfo>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengeTierceStageLineupInfo> StageInfoList {
+      get { return stageInfoList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!stageInfoList_.Equals(other.stageInfoList_)) return false;
       if (ChallengeId != other.ChallengeId) return false;
+      if(!stageInfoList_.Equals(other.stageInfoList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= stageInfoList_.GetHashCode();
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
+      hash ^= stageInfoList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      stageInfoList_.WriteTo(output, _repeated_stageInfoList_codec);
       if (ChallengeId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(56);
         output.WriteUInt32(ChallengeId);
       }
+      stageInfoList_.WriteTo(output, _repeated_stageInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      stageInfoList_.WriteTo(ref output, _repeated_stageInfoList_codec);
       if (ChallengeId != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(56);
         output.WriteUInt32(ChallengeId);
       }
+      stageInfoList_.WriteTo(ref output, _repeated_stageInfoList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -182,10 +182,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += stageInfoList_.CalculateSize(_repeated_stageInfoList_codec);
       if (ChallengeId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
       }
+      size += stageInfoList_.CalculateSize(_repeated_stageInfoList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -198,10 +198,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      stageInfoList_.Add(other.stageInfoList_);
       if (other.ChallengeId != 0) {
         ChallengeId = other.ChallengeId;
       }
+      stageInfoList_.Add(other.stageInfoList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -221,12 +221,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18: {
-            stageInfoList_.AddEntriesFrom(input, _repeated_stageInfoList_codec);
+          case 56: {
+            ChallengeId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            ChallengeId = input.ReadUInt32();
+          case 98: {
+            stageInfoList_.AddEntriesFrom(input, _repeated_stageInfoList_codec);
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18: {
-            stageInfoList_.AddEntriesFrom(ref input, _repeated_stageInfoList_codec);
+          case 56: {
+            ChallengeId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            ChallengeId = input.ReadUInt32();
+          case 98: {
+            stageInfoList_.AddEntriesFrom(ref input, _repeated_stageInfoList_codec);
             break;
           }
         }

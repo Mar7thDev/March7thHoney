@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SearchPlayerCsReq {
-    repeated uint32 uid_list = 15;
-    bool DDNKHDIKAEL = 12;
+    bool DDNKHDIKAEL = 3;
+    repeated uint32 uid_list = 8;
 }

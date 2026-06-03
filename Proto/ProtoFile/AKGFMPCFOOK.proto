@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KJMKOJEHMII.proto";
 
 message AKGFMPCFOOK {
-    KJMKOJEHMII EDLLNJIEFBO = 6;
-    uint32 retcode = 15;
+    KJMKOJEHMII EDLLNJIEFBO = 9;
+    uint32 retcode = 14;
 }

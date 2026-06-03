@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message DailyRefreshNotify {
-    uint32 MDIIJKBHBBI = 1;
+    uint32 MDIIJKBHBBI = 10;
 }

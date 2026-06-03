@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFEUEpDQkhLR0ZPSy5wcm90bxoLUmVsaWMucHJvdG8iJQoLRFBKQ0JIS0dG",
-            "T0sSFgoGcmVsaWNzGAUgAygLMgYuUmVsaWNCFqoCE01hcmNoN3RoSG9uZXku",
+            "T0sSFgoGcmVsaWNzGAcgAygLMgYuUmVsaWNCFqoCE01hcmNoN3RoSG9uZXku",
             "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RelicReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "relics" field.</summary>
-    public const int RelicsFieldNumber = 5;
+    public const int RelicsFieldNumber = 7;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.Relic> _repeated_relics_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.Relic.Parser);
+        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.Relic.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.Relic> relics_ = new pbc::RepeatedField<global::March7thHoney.Proto.Relic>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
+          case 58: {
             relics_.AddEntriesFrom(input, _repeated_relics_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
+          case 58: {
             relics_.AddEntriesFrom(ref input, _repeated_relics_codec);
             break;
           }

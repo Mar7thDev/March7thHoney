@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "BattleGridFightTraitEffectInfo.proto";
+import "MHFNFINKJKP.proto";
+
+message GridFightTraitInfo {
+    uint32 trait_id = 1;
+    uint32 layer = 2;
+    repeated BattleGridFightTraitEffectInfo trait_effect_list = 3;
+    repeated MHFNFINKJKP KOJMGCBLKKA = 5;
+    uint32 BPJKHDNBPOE = 6;
+    uint32 AFKKLDMAEDJ = 7;
+}

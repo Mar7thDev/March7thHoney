@@ -26,16 +26,16 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChRUcmFpblBhcnR5RGF0YS5wcm90bxoRRVBIS0lFSE9OR0IucHJvdG8aFFRy",
             "YWluUGFydHlJbmZvLnByb3RvGh1UcmFpblBhcnR5UGFzc2VuZ2VySW5mby5w",
-            "cm90byLmAQoOVHJhaW5QYXJ0eURhdGESIQoLSENKSlBMS0VMR0MYCSABKAsy",
-            "DC5FUEhLSUVIT05HQhIwCg5wYXNzZW5nZXJfaW5mbxgGIAEoCzIYLlRyYWlu",
-            "UGFydHlQYXNzZW5nZXJJbmZvEikKEHRyYWluX3BhcnR5X2luZm8YBCABKAsy",
-            "Dy5UcmFpblBhcnR5SW5mbxITCgtMTk1GRFBGT0tGRhgOIAEoCBIRCglyZWNv",
-            "cmRfaWQYCiABKA0SFwoPdW5sb2NrX2FyZWFfbnVtGAggASgNEhMKC0NMTUJM",
-            "RkVDTE9JGAEgASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "cm90byLRAQoOVHJhaW5QYXJ0eURhdGESKQoQdHJhaW5fcGFydHlfaW5mbxgG",
+            "IAEoCzIPLlRyYWluUGFydHlJbmZvEiEKC0hDSkpQTEtFTEdDGAcgASgLMgwu",
+            "RVBIS0lFSE9OR0ISEQoJcmVjb3JkX2lkGAggASgNEjAKDnBhc3Nlbmdlcl9p",
+            "bmZvGAkgASgLMhguVHJhaW5QYXJ0eVBhc3NlbmdlckluZm8SFwoPdW5sb2Nr",
+            "X2FyZWFfbnVtGAsgASgNEhMKC0xOTUZEUEZPS0ZGGA8gASgIQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.EPHKIEHONGBReflection.Descriptor, global::March7thHoney.Proto.TrainPartyInfoReflection.Descriptor, global::March7thHoney.Proto.TrainPartyPassengerInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyData), global::March7thHoney.Proto.TrainPartyData.Parser, new[]{ "HCJJPLKELGC", "PassengerInfo", "TrainPartyInfo", "LNMFDPFOKFF", "RecordId", "UnlockAreaNum", "CLMBLFECLOI" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TrainPartyData), global::March7thHoney.Proto.TrainPartyData.Parser, new[]{ "TrainPartyInfo", "HCJJPLKELGC", "RecordId", "PassengerInfo", "UnlockAreaNum", "LNMFDPFOKFF" }, null, null, null, null)
           }));
     }
     #endregion
@@ -77,13 +77,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TrainPartyData(TrainPartyData other) : this() {
-      hCJJPLKELGC_ = other.hCJJPLKELGC_ != null ? other.hCJJPLKELGC_.Clone() : null;
-      passengerInfo_ = other.passengerInfo_ != null ? other.passengerInfo_.Clone() : null;
       trainPartyInfo_ = other.trainPartyInfo_ != null ? other.trainPartyInfo_.Clone() : null;
-      lNMFDPFOKFF_ = other.lNMFDPFOKFF_;
+      hCJJPLKELGC_ = other.hCJJPLKELGC_ != null ? other.hCJJPLKELGC_.Clone() : null;
       recordId_ = other.recordId_;
+      passengerInfo_ = other.passengerInfo_ != null ? other.passengerInfo_.Clone() : null;
       unlockAreaNum_ = other.unlockAreaNum_;
-      cLMBLFECLOI_ = other.cLMBLFECLOI_;
+      lNMFDPFOKFF_ = other.lNMFDPFOKFF_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -93,32 +92,8 @@ namespace March7thHoney.Proto {
       return new TrainPartyData(this);
     }
 
-    /// <summary>Field number for the "HCJJPLKELGC" field.</summary>
-    public const int HCJJPLKELGCFieldNumber = 9;
-    private global::March7thHoney.Proto.EPHKIEHONGB hCJJPLKELGC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.EPHKIEHONGB HCJJPLKELGC {
-      get { return hCJJPLKELGC_; }
-      set {
-        hCJJPLKELGC_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "passenger_info" field.</summary>
-    public const int PassengerInfoFieldNumber = 6;
-    private global::March7thHoney.Proto.TrainPartyPassengerInfo passengerInfo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.TrainPartyPassengerInfo PassengerInfo {
-      get { return passengerInfo_; }
-      set {
-        passengerInfo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "train_party_info" field.</summary>
-    public const int TrainPartyInfoFieldNumber = 4;
+    public const int TrainPartyInfoFieldNumber = 6;
     private global::March7thHoney.Proto.TrainPartyInfo trainPartyInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -129,20 +104,20 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LNMFDPFOKFF" field.</summary>
-    public const int LNMFDPFOKFFFieldNumber = 14;
-    private bool lNMFDPFOKFF_;
+    /// <summary>Field number for the "HCJJPLKELGC" field.</summary>
+    public const int HCJJPLKELGCFieldNumber = 7;
+    private global::March7thHoney.Proto.EPHKIEHONGB hCJJPLKELGC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool LNMFDPFOKFF {
-      get { return lNMFDPFOKFF_; }
+    public global::March7thHoney.Proto.EPHKIEHONGB HCJJPLKELGC {
+      get { return hCJJPLKELGC_; }
       set {
-        lNMFDPFOKFF_ = value;
+        hCJJPLKELGC_ = value;
       }
     }
 
     /// <summary>Field number for the "record_id" field.</summary>
-    public const int RecordIdFieldNumber = 10;
+    public const int RecordIdFieldNumber = 8;
     private uint recordId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,8 +128,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "passenger_info" field.</summary>
+    public const int PassengerInfoFieldNumber = 9;
+    private global::March7thHoney.Proto.TrainPartyPassengerInfo passengerInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.TrainPartyPassengerInfo PassengerInfo {
+      get { return passengerInfo_; }
+      set {
+        passengerInfo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "unlock_area_num" field.</summary>
-    public const int UnlockAreaNumFieldNumber = 8;
+    public const int UnlockAreaNumFieldNumber = 11;
     private uint unlockAreaNum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -165,15 +152,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "CLMBLFECLOI" field.</summary>
-    public const int CLMBLFECLOIFieldNumber = 1;
-    private uint cLMBLFECLOI_;
+    /// <summary>Field number for the "LNMFDPFOKFF" field.</summary>
+    public const int LNMFDPFOKFFFieldNumber = 15;
+    private bool lNMFDPFOKFF_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CLMBLFECLOI {
-      get { return cLMBLFECLOI_; }
+    public bool LNMFDPFOKFF {
+      get { return lNMFDPFOKFF_; }
       set {
-        cLMBLFECLOI_ = value;
+        lNMFDPFOKFF_ = value;
       }
     }
 
@@ -192,13 +179,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(HCJJPLKELGC, other.HCJJPLKELGC)) return false;
-      if (!object.Equals(PassengerInfo, other.PassengerInfo)) return false;
       if (!object.Equals(TrainPartyInfo, other.TrainPartyInfo)) return false;
-      if (LNMFDPFOKFF != other.LNMFDPFOKFF) return false;
+      if (!object.Equals(HCJJPLKELGC, other.HCJJPLKELGC)) return false;
       if (RecordId != other.RecordId) return false;
+      if (!object.Equals(PassengerInfo, other.PassengerInfo)) return false;
       if (UnlockAreaNum != other.UnlockAreaNum) return false;
-      if (CLMBLFECLOI != other.CLMBLFECLOI) return false;
+      if (LNMFDPFOKFF != other.LNMFDPFOKFF) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -206,13 +192,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (hCJJPLKELGC_ != null) hash ^= HCJJPLKELGC.GetHashCode();
-      if (passengerInfo_ != null) hash ^= PassengerInfo.GetHashCode();
       if (trainPartyInfo_ != null) hash ^= TrainPartyInfo.GetHashCode();
-      if (LNMFDPFOKFF != false) hash ^= LNMFDPFOKFF.GetHashCode();
+      if (hCJJPLKELGC_ != null) hash ^= HCJJPLKELGC.GetHashCode();
       if (RecordId != 0) hash ^= RecordId.GetHashCode();
+      if (passengerInfo_ != null) hash ^= PassengerInfo.GetHashCode();
       if (UnlockAreaNum != 0) hash ^= UnlockAreaNum.GetHashCode();
-      if (CLMBLFECLOI != 0) hash ^= CLMBLFECLOI.GetHashCode();
+      if (LNMFDPFOKFF != false) hash ^= LNMFDPFOKFF.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -231,32 +216,28 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CLMBLFECLOI != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(CLMBLFECLOI);
-      }
       if (trainPartyInfo_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteMessage(TrainPartyInfo);
       }
-      if (passengerInfo_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(PassengerInfo);
-      }
-      if (UnlockAreaNum != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(UnlockAreaNum);
-      }
       if (hCJJPLKELGC_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(58);
         output.WriteMessage(HCJJPLKELGC);
       }
       if (RecordId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(RecordId);
       }
+      if (passengerInfo_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(PassengerInfo);
+      }
+      if (UnlockAreaNum != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(UnlockAreaNum);
+      }
       if (LNMFDPFOKFF != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteBool(LNMFDPFOKFF);
       }
       if (_unknownFields != null) {
@@ -269,32 +250,28 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CLMBLFECLOI != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(CLMBLFECLOI);
-      }
       if (trainPartyInfo_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(50);
         output.WriteMessage(TrainPartyInfo);
       }
-      if (passengerInfo_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(PassengerInfo);
-      }
-      if (UnlockAreaNum != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(UnlockAreaNum);
-      }
       if (hCJJPLKELGC_ != null) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(58);
         output.WriteMessage(HCJJPLKELGC);
       }
       if (RecordId != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(64);
         output.WriteUInt32(RecordId);
       }
+      if (passengerInfo_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(PassengerInfo);
+      }
+      if (UnlockAreaNum != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(UnlockAreaNum);
+      }
       if (LNMFDPFOKFF != false) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteBool(LNMFDPFOKFF);
       }
       if (_unknownFields != null) {
@@ -307,26 +284,23 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (hCJJPLKELGC_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HCJJPLKELGC);
-      }
-      if (passengerInfo_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PassengerInfo);
-      }
       if (trainPartyInfo_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TrainPartyInfo);
       }
-      if (LNMFDPFOKFF != false) {
-        size += 1 + 1;
+      if (hCJJPLKELGC_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HCJJPLKELGC);
       }
       if (RecordId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RecordId);
       }
+      if (passengerInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PassengerInfo);
+      }
       if (UnlockAreaNum != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UnlockAreaNum);
       }
-      if (CLMBLFECLOI != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CLMBLFECLOI);
+      if (LNMFDPFOKFF != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -340,11 +314,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.trainPartyInfo_ != null) {
+        if (trainPartyInfo_ == null) {
+          TrainPartyInfo = new global::March7thHoney.Proto.TrainPartyInfo();
+        }
+        TrainPartyInfo.MergeFrom(other.TrainPartyInfo);
+      }
       if (other.hCJJPLKELGC_ != null) {
         if (hCJJPLKELGC_ == null) {
           HCJJPLKELGC = new global::March7thHoney.Proto.EPHKIEHONGB();
         }
         HCJJPLKELGC.MergeFrom(other.HCJJPLKELGC);
+      }
+      if (other.RecordId != 0) {
+        RecordId = other.RecordId;
       }
       if (other.passengerInfo_ != null) {
         if (passengerInfo_ == null) {
@@ -352,23 +335,11 @@ namespace March7thHoney.Proto {
         }
         PassengerInfo.MergeFrom(other.PassengerInfo);
       }
-      if (other.trainPartyInfo_ != null) {
-        if (trainPartyInfo_ == null) {
-          TrainPartyInfo = new global::March7thHoney.Proto.TrainPartyInfo();
-        }
-        TrainPartyInfo.MergeFrom(other.TrainPartyInfo);
-      }
-      if (other.LNMFDPFOKFF != false) {
-        LNMFDPFOKFF = other.LNMFDPFOKFF;
-      }
-      if (other.RecordId != 0) {
-        RecordId = other.RecordId;
-      }
       if (other.UnlockAreaNum != 0) {
         UnlockAreaNum = other.UnlockAreaNum;
       }
-      if (other.CLMBLFECLOI != 0) {
-        CLMBLFECLOI = other.CLMBLFECLOI;
+      if (other.LNMFDPFOKFF != false) {
+        LNMFDPFOKFF = other.LNMFDPFOKFF;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -389,40 +360,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            CLMBLFECLOI = input.ReadUInt32();
-            break;
-          }
-          case 34: {
+          case 50: {
             if (trainPartyInfo_ == null) {
               TrainPartyInfo = new global::March7thHoney.Proto.TrainPartyInfo();
             }
             input.ReadMessage(TrainPartyInfo);
             break;
           }
-          case 50: {
-            if (passengerInfo_ == null) {
-              PassengerInfo = new global::March7thHoney.Proto.TrainPartyPassengerInfo();
-            }
-            input.ReadMessage(PassengerInfo);
-            break;
-          }
-          case 64: {
-            UnlockAreaNum = input.ReadUInt32();
-            break;
-          }
-          case 74: {
+          case 58: {
             if (hCJJPLKELGC_ == null) {
               HCJJPLKELGC = new global::March7thHoney.Proto.EPHKIEHONGB();
             }
             input.ReadMessage(HCJJPLKELGC);
             break;
           }
-          case 80: {
+          case 64: {
             RecordId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 74: {
+            if (passengerInfo_ == null) {
+              PassengerInfo = new global::March7thHoney.Proto.TrainPartyPassengerInfo();
+            }
+            input.ReadMessage(PassengerInfo);
+            break;
+          }
+          case 88: {
+            UnlockAreaNum = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             LNMFDPFOKFF = input.ReadBool();
             break;
           }
@@ -445,40 +412,36 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            CLMBLFECLOI = input.ReadUInt32();
-            break;
-          }
-          case 34: {
+          case 50: {
             if (trainPartyInfo_ == null) {
               TrainPartyInfo = new global::March7thHoney.Proto.TrainPartyInfo();
             }
             input.ReadMessage(TrainPartyInfo);
             break;
           }
-          case 50: {
-            if (passengerInfo_ == null) {
-              PassengerInfo = new global::March7thHoney.Proto.TrainPartyPassengerInfo();
-            }
-            input.ReadMessage(PassengerInfo);
-            break;
-          }
-          case 64: {
-            UnlockAreaNum = input.ReadUInt32();
-            break;
-          }
-          case 74: {
+          case 58: {
             if (hCJJPLKELGC_ == null) {
               HCJJPLKELGC = new global::March7thHoney.Proto.EPHKIEHONGB();
             }
             input.ReadMessage(HCJJPLKELGC);
             break;
           }
-          case 80: {
+          case 64: {
             RecordId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 74: {
+            if (passengerInfo_ == null) {
+              PassengerInfo = new global::March7thHoney.Proto.TrainPartyPassengerInfo();
+            }
+            input.ReadMessage(PassengerInfo);
+            break;
+          }
+          case 88: {
+            UnlockAreaNum = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             LNMFDPFOKFF = input.ReadBool();
             break;
           }

@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DMHADFNOIGP.proto";
 
 message ChenLingFesLevelEndScRsp {
-    DMHADFNOIGP EHIHHFMGNHH = 15;
-    uint32 level_id = 6;
+    uint32 level_id = 2;
+    DMHADFNOIGP level_data = 6;
     uint32 retcode = 8;
 }

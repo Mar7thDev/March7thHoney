@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static HeadFrameInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChNIZWFkRnJhbWVJbmZvLnByb3RvIksKDUhlYWRGcmFtZUluZm8SHgoWaGVh",
-            "ZF9mcmFtZV9leHBpcmVfdGltZRgLIAEoAxIaChJoZWFkX2ZyYW1lX2l0ZW1f",
-            "aWQYCSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChNIZWFkRnJhbWVJbmZvLnByb3RvIksKDUhlYWRGcmFtZUluZm8SGgoSaGVh",
+            "ZF9mcmFtZV9pdGVtX2lkGAogASgNEh4KFmhlYWRfZnJhbWVfZXhwaXJlX3Rp",
+            "bWUYDyABKANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeadFrameInfo), global::March7thHoney.Proto.HeadFrameInfo.Parser, new[]{ "HeadFrameExpireTime", "HeadFrameItemId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HeadFrameInfo), global::March7thHoney.Proto.HeadFrameInfo.Parser, new[]{ "HeadFrameItemId", "HeadFrameExpireTime" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,8 +72,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public HeadFrameInfo(HeadFrameInfo other) : this() {
-      headFrameExpireTime_ = other.headFrameExpireTime_;
       headFrameItemId_ = other.headFrameItemId_;
+      headFrameExpireTime_ = other.headFrameExpireTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -83,20 +83,8 @@ namespace March7thHoney.Proto {
       return new HeadFrameInfo(this);
     }
 
-    /// <summary>Field number for the "head_frame_expire_time" field.</summary>
-    public const int HeadFrameExpireTimeFieldNumber = 11;
-    private long headFrameExpireTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long HeadFrameExpireTime {
-      get { return headFrameExpireTime_; }
-      set {
-        headFrameExpireTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "head_frame_item_id" field.</summary>
-    public const int HeadFrameItemIdFieldNumber = 9;
+    public const int HeadFrameItemIdFieldNumber = 10;
     private uint headFrameItemId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -104,6 +92,18 @@ namespace March7thHoney.Proto {
       get { return headFrameItemId_; }
       set {
         headFrameItemId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "head_frame_expire_time" field.</summary>
+    public const int HeadFrameExpireTimeFieldNumber = 15;
+    private long headFrameExpireTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long HeadFrameExpireTime {
+      get { return headFrameExpireTime_; }
+      set {
+        headFrameExpireTime_ = value;
       }
     }
 
@@ -122,8 +122,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (HeadFrameExpireTime != other.HeadFrameExpireTime) return false;
       if (HeadFrameItemId != other.HeadFrameItemId) return false;
+      if (HeadFrameExpireTime != other.HeadFrameExpireTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -131,8 +131,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HeadFrameExpireTime != 0L) hash ^= HeadFrameExpireTime.GetHashCode();
       if (HeadFrameItemId != 0) hash ^= HeadFrameItemId.GetHashCode();
+      if (HeadFrameExpireTime != 0L) hash ^= HeadFrameExpireTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (HeadFrameItemId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(HeadFrameItemId);
       }
       if (HeadFrameExpireTime != 0L) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteInt64(HeadFrameExpireTime);
       }
       if (_unknownFields != null) {
@@ -170,11 +170,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (HeadFrameItemId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(HeadFrameItemId);
       }
       if (HeadFrameExpireTime != 0L) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteInt64(HeadFrameExpireTime);
       }
       if (_unknownFields != null) {
@@ -187,11 +187,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HeadFrameExpireTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(HeadFrameExpireTime);
-      }
       if (HeadFrameItemId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HeadFrameItemId);
+      }
+      if (HeadFrameExpireTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(HeadFrameExpireTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -205,11 +205,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.HeadFrameExpireTime != 0L) {
-        HeadFrameExpireTime = other.HeadFrameExpireTime;
-      }
       if (other.HeadFrameItemId != 0) {
         HeadFrameItemId = other.HeadFrameItemId;
+      }
+      if (other.HeadFrameExpireTime != 0L) {
+        HeadFrameExpireTime = other.HeadFrameExpireTime;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -230,11 +230,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
+          case 80: {
             HeadFrameItemId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             HeadFrameExpireTime = input.ReadInt64();
             break;
           }
@@ -257,11 +257,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
+          case 80: {
             HeadFrameItemId = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             HeadFrameExpireTime = input.ReadInt64();
             break;
           }

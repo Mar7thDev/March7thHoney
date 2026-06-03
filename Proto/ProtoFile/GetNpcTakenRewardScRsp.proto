@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetNpcTakenRewardScRsp {
-    repeated uint32 talk_event_list = 3;
-    uint32 retcode = 10;
+    uint32 retcode = 6;
+    repeated uint32 talk_event_list = 13;
     uint32 npc_id = 14;
 }

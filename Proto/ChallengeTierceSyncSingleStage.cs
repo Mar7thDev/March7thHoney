@@ -26,14 +26,14 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CiRDaGFsbGVuZ2VUaWVyY2VTeW5jU2luZ2xlU3RhZ2UucHJvdG8aHkNoYWxs",
             "ZW5nZVRpZXJjZVN0YWdlRGF0YS5wcm90byKCAQoeQ2hhbGxlbmdlVGllcmNl",
-            "U3luY1NpbmdsZVN0YWdlEi0KCnN0YWdlX2RhdGEYBCABKAsyGS5DaGFsbGVu",
-            "Z2VUaWVyY2VTdGFnZURhdGESHQoUZmluaXNoZWRfdGFyZ2V0X2xpc3QY4QYg",
-            "AygNEhIKCWlzX3Bhc3NlZBjLAiABKAhCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "U3luY1NpbmdsZVN0YWdlEi0KCnN0YWdlX2RhdGEYCyABKAsyGS5DaGFsbGVu",
+            "Z2VUaWVyY2VTdGFnZURhdGESEgoJaXNfcGFzc2VkGM4BIAEoCBIdChRmaW5p",
+            "c2hlZF90YXJnZXRfbGlzdBi3DCADKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ChallengeTierceStageDataReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeTierceSyncSingleStage), global::March7thHoney.Proto.ChallengeTierceSyncSingleStage.Parser, new[]{ "StageData", "FinishedTargetList", "IsPassed" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengeTierceSyncSingleStage), global::March7thHoney.Proto.ChallengeTierceSyncSingleStage.Parser, new[]{ "StageData", "IsPassed", "FinishedTargetList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,8 +76,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengeTierceSyncSingleStage(ChallengeTierceSyncSingleStage other) : this() {
       stageData_ = other.stageData_ != null ? other.stageData_.Clone() : null;
-      finishedTargetList_ = other.finishedTargetList_.Clone();
       isPassed_ = other.isPassed_;
+      finishedTargetList_ = other.finishedTargetList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,7 +88,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "stage_data" field.</summary>
-    public const int StageDataFieldNumber = 4;
+    public const int StageDataFieldNumber = 11;
     private global::March7thHoney.Proto.ChallengeTierceStageData stageData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -99,19 +99,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 865;
-    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(6922);
-    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FinishedTargetList {
-      get { return finishedTargetList_; }
-    }
-
     /// <summary>Field number for the "is_passed" field.</summary>
-    public const int IsPassedFieldNumber = 331;
+    public const int IsPassedFieldNumber = 206;
     private bool isPassed_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -120,6 +109,17 @@ namespace March7thHoney.Proto {
       set {
         isPassed_ = value;
       }
+    }
+
+    /// <summary>Field number for the "finished_target_list" field.</summary>
+    public const int FinishedTargetListFieldNumber = 1591;
+    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
+        = pb::FieldCodec.ForUInt32(12730);
+    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> FinishedTargetList {
+      get { return finishedTargetList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -138,8 +138,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(StageData, other.StageData)) return false;
-      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
       if (IsPassed != other.IsPassed) return false;
+      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,8 +148,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (stageData_ != null) hash ^= StageData.GetHashCode();
-      hash ^= finishedTargetList_.GetHashCode();
       if (IsPassed != false) hash ^= IsPassed.GetHashCode();
+      hash ^= finishedTargetList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -169,11 +169,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (stageData_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(90);
         output.WriteMessage(StageData);
       }
       if (IsPassed != false) {
-        output.WriteRawTag(216, 20);
+        output.WriteRawTag(240, 12);
         output.WriteBool(IsPassed);
       }
       finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (stageData_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(90);
         output.WriteMessage(StageData);
       }
       if (IsPassed != false) {
-        output.WriteRawTag(216, 20);
+        output.WriteRawTag(240, 12);
         output.WriteBool(IsPassed);
       }
       finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
@@ -209,10 +209,10 @@ namespace March7thHoney.Proto {
       if (stageData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(StageData);
       }
-      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
       if (IsPassed != false) {
         size += 2 + 1;
       }
+      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -231,10 +231,10 @@ namespace March7thHoney.Proto {
         }
         StageData.MergeFrom(other.StageData);
       }
-      finishedTargetList_.Add(other.finishedTargetList_);
       if (other.IsPassed != false) {
         IsPassed = other.IsPassed;
       }
+      finishedTargetList_.Add(other.finishedTargetList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -254,19 +254,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 90: {
             if (stageData_ == null) {
               StageData = new global::March7thHoney.Proto.ChallengeTierceStageData();
             }
             input.ReadMessage(StageData);
             break;
           }
-          case 2648: {
+          case 1648: {
             IsPassed = input.ReadBool();
             break;
           }
-          case 6922:
-          case 6920: {
+          case 12730:
+          case 12728: {
             finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
             break;
           }
@@ -289,19 +289,19 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 90: {
             if (stageData_ == null) {
               StageData = new global::March7thHoney.Proto.ChallengeTierceStageData();
             }
             input.ReadMessage(StageData);
             break;
           }
-          case 2648: {
+          case 1648: {
             IsPassed = input.ReadBool();
             break;
           }
-          case 6922:
-          case 6920: {
+          case 12730:
+          case 12728: {
             finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
             break;
           }

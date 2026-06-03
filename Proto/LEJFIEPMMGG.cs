@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static LEJFIEPMMGGReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFMRUpGSUVQTU1HRy5wcm90bxoRQ0JETUdFR0VMRk0ucHJvdG8iWgoLTEVK",
-            "RklFUE1NR0cSIQoLSUZKSUhOQkROR04YDyADKAsyDC5DQkRNR0VHRUxGTRIT",
-            "CgtLQUhNR1BHUE9JSRgIIAEoDRITCgtITkxKSVBBT0VHQhgGIAEoCEIWqgIT",
-            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChFMRUpGSUVQTU1HRy5wcm90bxoRQ0JETUdFR0VMRk0ucHJvdG8iWwoLTEVK",
+            "RklFUE1NR0cSIQoLSUZKSUhOQkROR04YBCADKAsyDC5DQkRNR0VHRUxGTRIT",
+            "CgtLQUhNR1BHUE9JSRgLIAEoDRIUCgxpc19hY3RpdmF0ZWQYDCABKAhCFqoC",
+            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CBDMGEGELFMReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LEJFIEPMMGG), global::March7thHoney.Proto.LEJFIEPMMGG.Parser, new[]{ "IFJIHNBDNGN", "KAHMGPGPOII", "HNLJIPAOEGB" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LEJFIEPMMGG), global::March7thHoney.Proto.LEJFIEPMMGG.Parser, new[]{ "IFJIHNBDNGN", "KAHMGPGPOII", "IsActivated" }, null, null, null, null)
           }));
     }
     #endregion
@@ -75,7 +75,7 @@ namespace March7thHoney.Proto {
     public LEJFIEPMMGG(LEJFIEPMMGG other) : this() {
       iFJIHNBDNGN_ = other.iFJIHNBDNGN_.Clone();
       kAHMGPGPOII_ = other.kAHMGPGPOII_;
-      hNLJIPAOEGB_ = other.hNLJIPAOEGB_;
+      isActivated_ = other.isActivated_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IFJIHNBDNGN" field.</summary>
-    public const int IFJIHNBDNGNFieldNumber = 15;
+    public const int IFJIHNBDNGNFieldNumber = 4;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.CBDMGEGELFM> _repeated_iFJIHNBDNGN_codec
-        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.CBDMGEGELFM.Parser);
+        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.CBDMGEGELFM.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.CBDMGEGELFM> iFJIHNBDNGN_ = new pbc::RepeatedField<global::March7thHoney.Proto.CBDMGEGELFM>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "KAHMGPGPOII" field.</summary>
-    public const int KAHMGPGPOIIFieldNumber = 8;
+    public const int KAHMGPGPOIIFieldNumber = 11;
     private uint kAHMGPGPOII_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,15 +108,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HNLJIPAOEGB" field.</summary>
-    public const int HNLJIPAOEGBFieldNumber = 6;
-    private bool hNLJIPAOEGB_;
+    /// <summary>Field number for the "is_activated" field.</summary>
+    public const int IsActivatedFieldNumber = 12;
+    private bool isActivated_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HNLJIPAOEGB {
-      get { return hNLJIPAOEGB_; }
+    public bool IsActivated {
+      get { return isActivated_; }
       set {
-        hNLJIPAOEGB_ = value;
+        isActivated_ = value;
       }
     }
 
@@ -137,7 +137,7 @@ namespace March7thHoney.Proto {
       }
       if(!iFJIHNBDNGN_.Equals(other.iFJIHNBDNGN_)) return false;
       if (KAHMGPGPOII != other.KAHMGPGPOII) return false;
-      if (HNLJIPAOEGB != other.HNLJIPAOEGB) return false;
+      if (IsActivated != other.IsActivated) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,7 +147,7 @@ namespace March7thHoney.Proto {
       int hash = 1;
       hash ^= iFJIHNBDNGN_.GetHashCode();
       if (KAHMGPGPOII != 0) hash ^= KAHMGPGPOII.GetHashCode();
-      if (HNLJIPAOEGB != false) hash ^= HNLJIPAOEGB.GetHashCode();
+      if (IsActivated != false) hash ^= IsActivated.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,15 +166,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HNLJIPAOEGB != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(HNLJIPAOEGB);
-      }
+      iFJIHNBDNGN_.WriteTo(output, _repeated_iFJIHNBDNGN_codec);
       if (KAHMGPGPOII != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(KAHMGPGPOII);
       }
-      iFJIHNBDNGN_.WriteTo(output, _repeated_iFJIHNBDNGN_codec);
+      if (IsActivated != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsActivated);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -185,15 +185,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HNLJIPAOEGB != false) {
-        output.WriteRawTag(48);
-        output.WriteBool(HNLJIPAOEGB);
-      }
+      iFJIHNBDNGN_.WriteTo(ref output, _repeated_iFJIHNBDNGN_codec);
       if (KAHMGPGPOII != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(88);
         output.WriteUInt32(KAHMGPGPOII);
       }
-      iFJIHNBDNGN_.WriteTo(ref output, _repeated_iFJIHNBDNGN_codec);
+      if (IsActivated != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IsActivated);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -208,7 +208,7 @@ namespace March7thHoney.Proto {
       if (KAHMGPGPOII != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KAHMGPGPOII);
       }
-      if (HNLJIPAOEGB != false) {
+      if (IsActivated != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -227,8 +227,8 @@ namespace March7thHoney.Proto {
       if (other.KAHMGPGPOII != 0) {
         KAHMGPGPOII = other.KAHMGPGPOII;
       }
-      if (other.HNLJIPAOEGB != false) {
-        HNLJIPAOEGB = other.HNLJIPAOEGB;
+      if (other.IsActivated != false) {
+        IsActivated = other.IsActivated;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
-            HNLJIPAOEGB = input.ReadBool();
+          case 34: {
+            iFJIHNBDNGN_.AddEntriesFrom(input, _repeated_iFJIHNBDNGN_codec);
             break;
           }
-          case 64: {
+          case 88: {
             KAHMGPGPOII = input.ReadUInt32();
             break;
           }
-          case 122: {
-            iFJIHNBDNGN_.AddEntriesFrom(input, _repeated_iFJIHNBDNGN_codec);
+          case 96: {
+            IsActivated = input.ReadBool();
             break;
           }
         }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
-            HNLJIPAOEGB = input.ReadBool();
+          case 34: {
+            iFJIHNBDNGN_.AddEntriesFrom(ref input, _repeated_iFJIHNBDNGN_codec);
             break;
           }
-          case 64: {
+          case 88: {
             KAHMGPGPOII = input.ReadUInt32();
             break;
           }
-          case 122: {
-            iFJIHNBDNGN_.AddEntriesFrom(ref input, _repeated_iFJIHNBDNGN_codec);
+          case 96: {
+            IsActivated = input.ReadBool();
             break;
           }
         }

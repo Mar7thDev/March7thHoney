@@ -2,11 +2,9 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "ClientDownloadData.proto";
 import "EntityMotion.proto";
 
 message SceneEntityMoveScRsp {
-    repeated EntityMotion entity_motion_list = 7;
-    ClientDownloadData download_data = 9;
     uint32 retcode = 6;
+    repeated EntityMotion entity_motion_list = 12;
 }

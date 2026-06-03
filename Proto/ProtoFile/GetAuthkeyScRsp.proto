@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetAuthkeyScRsp {
-    string auth_appid = 1;
-    string authkey = 12;
-    uint32 authkey_ver = 8;
     uint32 retcode = 5;
-    uint32 sign_type = 9;
+    uint32 authkey_ver = 6;
+    uint32 sign_type = 8;
+    string auth_appid = 9;
+    string authkey = 15;
 }

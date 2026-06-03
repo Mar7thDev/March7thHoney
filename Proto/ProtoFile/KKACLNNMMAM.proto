@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message KKACLNNMMAM {
-    repeated uint32 BPAOGJPLENJ = 4;
-    bool JMAODNEONPF = 12;
+    bool JMAODNEONPF = 3;
+    repeated uint32 BPAOGJPLENJ = 14;
 }

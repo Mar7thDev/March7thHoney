@@ -24,15 +24,15 @@ namespace March7thHoney.Proto {
     static IGMOKOENLDKReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFJR01PS09FTkxESy5wcm90byKIAQoLSUdNT0tPRU5MREsSDgoGYXR0YWNr",
-            "GAIgASgBEg8KB2xlZnRfaHAYBiABKAESEwoLT0ZNTExETEFPQ0MYBCABKAES",
-            "DQoFc3BlZWQYBSABKAESDwoHZGVmZW5jZRgDIAEoARITCgtHRU5DT0JERktM",
-            "QRgHIAEoARIOCgZtYXhfaHAYASABKAFCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "ChFJR01PS09FTkxESy5wcm90byKIAQoLSUdNT0tPRU5MREsSDgoGbWF4X2hw",
+            "GAEgASgBEg4KBmF0dGFjaxgCIAEoARIPCgdkZWZlbmNlGAMgASgBEhMKC09G",
+            "TUxMRExBT0NDGAQgASgBEg0KBXNwZWVkGAUgASgBEg8KB2xlZnRfaHAYBiAB",
+            "KAESEwoLR0VOQ09CREZLTEEYByABKAFCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
             "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IGMOKOENLDK), global::March7thHoney.Proto.IGMOKOENLDK.Parser, new[]{ "Attack", "LeftHp", "OFMLLDLAOCC", "Speed", "Defence", "GENCOBDFKLA", "MaxHp" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.IGMOKOENLDK), global::March7thHoney.Proto.IGMOKOENLDK.Parser, new[]{ "MaxHp", "Attack", "Defence", "OFMLLDLAOCC", "Speed", "LeftHp", "GENCOBDFKLA" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,13 +74,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IGMOKOENLDK(IGMOKOENLDK other) : this() {
+      maxHp_ = other.maxHp_;
       attack_ = other.attack_;
-      leftHp_ = other.leftHp_;
+      defence_ = other.defence_;
       oFMLLDLAOCC_ = other.oFMLLDLAOCC_;
       speed_ = other.speed_;
-      defence_ = other.defence_;
+      leftHp_ = other.leftHp_;
       gENCOBDFKLA_ = other.gENCOBDFKLA_;
-      maxHp_ = other.maxHp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -88,6 +88,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public IGMOKOENLDK Clone() {
       return new IGMOKOENLDK(this);
+    }
+
+    /// <summary>Field number for the "max_hp" field.</summary>
+    public const int MaxHpFieldNumber = 1;
+    private double maxHp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MaxHp {
+      get { return maxHp_; }
+      set {
+        maxHp_ = value;
+      }
     }
 
     /// <summary>Field number for the "attack" field.</summary>
@@ -102,15 +114,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "left_hp" field.</summary>
-    public const int LeftHpFieldNumber = 6;
-    private double leftHp_;
+    /// <summary>Field number for the "defence" field.</summary>
+    public const int DefenceFieldNumber = 3;
+    private double defence_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double LeftHp {
-      get { return leftHp_; }
+    public double Defence {
+      get { return defence_; }
       set {
-        leftHp_ = value;
+        defence_ = value;
       }
     }
 
@@ -138,15 +150,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "defence" field.</summary>
-    public const int DefenceFieldNumber = 3;
-    private double defence_;
+    /// <summary>Field number for the "left_hp" field.</summary>
+    public const int LeftHpFieldNumber = 6;
+    private double leftHp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double Defence {
-      get { return defence_; }
+    public double LeftHp {
+      get { return leftHp_; }
       set {
-        defence_ = value;
+        leftHp_ = value;
       }
     }
 
@@ -159,18 +171,6 @@ namespace March7thHoney.Proto {
       get { return gENCOBDFKLA_; }
       set {
         gENCOBDFKLA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "max_hp" field.</summary>
-    public const int MaxHpFieldNumber = 1;
-    private double maxHp_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double MaxHp {
-      get { return maxHp_; }
-      set {
-        maxHp_ = value;
       }
     }
 
@@ -189,13 +189,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxHp, other.MaxHp)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Attack, other.Attack)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LeftHp, other.LeftHp)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Defence, other.Defence)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(OFMLLDLAOCC, other.OFMLLDLAOCC)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Speed, other.Speed)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Defence, other.Defence)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(LeftHp, other.LeftHp)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(GENCOBDFKLA, other.GENCOBDFKLA)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxHp, other.MaxHp)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -203,13 +203,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (MaxHp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxHp);
       if (Attack != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Attack);
-      if (LeftHp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LeftHp);
+      if (Defence != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Defence);
       if (OFMLLDLAOCC != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(OFMLLDLAOCC);
       if (Speed != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Speed);
-      if (Defence != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Defence);
+      if (LeftHp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(LeftHp);
       if (GENCOBDFKLA != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(GENCOBDFKLA);
-      if (MaxHp != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxHp);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -304,10 +304,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (MaxHp != 0D) {
+        size += 1 + 8;
+      }
       if (Attack != 0D) {
         size += 1 + 8;
       }
-      if (LeftHp != 0D) {
+      if (Defence != 0D) {
         size += 1 + 8;
       }
       if (OFMLLDLAOCC != 0D) {
@@ -316,13 +319,10 @@ namespace March7thHoney.Proto {
       if (Speed != 0D) {
         size += 1 + 8;
       }
-      if (Defence != 0D) {
+      if (LeftHp != 0D) {
         size += 1 + 8;
       }
       if (GENCOBDFKLA != 0D) {
-        size += 1 + 8;
-      }
-      if (MaxHp != 0D) {
         size += 1 + 8;
       }
       if (_unknownFields != null) {
@@ -337,11 +337,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.MaxHp != 0D) {
+        MaxHp = other.MaxHp;
+      }
       if (other.Attack != 0D) {
         Attack = other.Attack;
       }
-      if (other.LeftHp != 0D) {
-        LeftHp = other.LeftHp;
+      if (other.Defence != 0D) {
+        Defence = other.Defence;
       }
       if (other.OFMLLDLAOCC != 0D) {
         OFMLLDLAOCC = other.OFMLLDLAOCC;
@@ -349,14 +352,11 @@ namespace March7thHoney.Proto {
       if (other.Speed != 0D) {
         Speed = other.Speed;
       }
-      if (other.Defence != 0D) {
-        Defence = other.Defence;
+      if (other.LeftHp != 0D) {
+        LeftHp = other.LeftHp;
       }
       if (other.GENCOBDFKLA != 0D) {
         GENCOBDFKLA = other.GENCOBDFKLA;
-      }
-      if (other.MaxHp != 0D) {
-        MaxHp = other.MaxHp;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

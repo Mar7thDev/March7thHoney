@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message RotaterData {
-    uint32 group_id = 3;
-    uint32 PCCCKLNCLHB = 15;
-    float BBFOLEOPPPL = 9;
+    float position = 9;
+    uint32 instance_id = 11;
+    uint32 group_id = 15;
 }

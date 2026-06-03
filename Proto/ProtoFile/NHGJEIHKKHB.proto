@@ -8,8 +8,8 @@ import "NMDKHGGGMBC.proto";
 import "NMHMGHEHHCM.proto";
 
 message NHGJEIHKKHB {
-    repeated BPHIKPCNBHM buff_list = 1;
-    repeated NMHMGHEHHCM PMIFFBHOOOO = 13;
-    repeated CIGDBCKOFBN MAJGMMCOCIG = 3;
+    repeated BPHIKPCNBHM buff_list = 9;
     repeated NMDKHGGGMBC JHEHAIBMNNF = 10;
+    repeated CIGDBCKOFBN MAJGMMCOCIG = 14;
+    repeated NMHMGHEHHCM PMIFFBHOOOO = 15;
 }

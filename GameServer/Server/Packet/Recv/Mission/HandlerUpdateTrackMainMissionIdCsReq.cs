@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mission;
 
-[Opcode(CmdIds.UpdateTrackMainMissionCsReq)]
+[Opcode(CmdIds.UpdateTrackMainMissionIdCsReq)]
 public class HandlerUpdateTrackMainMissionIdCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)

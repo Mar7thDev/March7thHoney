@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFKUEdBQ0tQTEdDRC5wcm90byJMCgtKUEdBQ0tQTEdDRBITCgtLQUxBQ0pC",
-            "QVBPQRgBIAEoCBITCgtJQkxHT0NGQk9DTxgDIAEoCBITCgtGT0tKSVBHTUtB",
-            "ThgCIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "QVBPQRgBIAEoCBITCgtGT0tKSVBHTUtBThgCIAEoCBITCgtJQkxHT0NGQk9D",
+            "TxgDIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JPGACKPLGCD), global::March7thHoney.Proto.JPGACKPLGCD.Parser, new[]{ "KALACJBAPOA", "IBLGOCFBOCO", "FOKJIPGMKAN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.JPGACKPLGCD), global::March7thHoney.Proto.JPGACKPLGCD.Parser, new[]{ "KALACJBAPOA", "FOKJIPGMKAN", "IBLGOCFBOCO" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public JPGACKPLGCD(JPGACKPLGCD other) : this() {
       kALACJBAPOA_ = other.kALACJBAPOA_;
-      iBLGOCFBOCO_ = other.iBLGOCFBOCO_;
       fOKJIPGMKAN_ = other.fOKJIPGMKAN_;
+      iBLGOCFBOCO_ = other.iBLGOCFBOCO_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -96,18 +96,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "IBLGOCFBOCO" field.</summary>
-    public const int IBLGOCFBOCOFieldNumber = 3;
-    private bool iBLGOCFBOCO_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IBLGOCFBOCO {
-      get { return iBLGOCFBOCO_; }
-      set {
-        iBLGOCFBOCO_ = value;
-      }
-    }
-
     /// <summary>Field number for the "FOKJIPGMKAN" field.</summary>
     public const int FOKJIPGMKANFieldNumber = 2;
     private bool fOKJIPGMKAN_;
@@ -117,6 +105,18 @@ namespace March7thHoney.Proto {
       get { return fOKJIPGMKAN_; }
       set {
         fOKJIPGMKAN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "IBLGOCFBOCO" field.</summary>
+    public const int IBLGOCFBOCOFieldNumber = 3;
+    private bool iBLGOCFBOCO_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IBLGOCFBOCO {
+      get { return iBLGOCFBOCO_; }
+      set {
+        iBLGOCFBOCO_ = value;
       }
     }
 
@@ -136,8 +136,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (KALACJBAPOA != other.KALACJBAPOA) return false;
-      if (IBLGOCFBOCO != other.IBLGOCFBOCO) return false;
       if (FOKJIPGMKAN != other.FOKJIPGMKAN) return false;
+      if (IBLGOCFBOCO != other.IBLGOCFBOCO) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,8 +146,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (KALACJBAPOA != false) hash ^= KALACJBAPOA.GetHashCode();
-      if (IBLGOCFBOCO != false) hash ^= IBLGOCFBOCO.GetHashCode();
       if (FOKJIPGMKAN != false) hash ^= FOKJIPGMKAN.GetHashCode();
+      if (IBLGOCFBOCO != false) hash ^= IBLGOCFBOCO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -213,10 +213,10 @@ namespace March7thHoney.Proto {
       if (KALACJBAPOA != false) {
         size += 1 + 1;
       }
-      if (IBLGOCFBOCO != false) {
+      if (FOKJIPGMKAN != false) {
         size += 1 + 1;
       }
-      if (FOKJIPGMKAN != false) {
+      if (IBLGOCFBOCO != false) {
         size += 1 + 1;
       }
       if (_unknownFields != null) {
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
       if (other.KALACJBAPOA != false) {
         KALACJBAPOA = other.KALACJBAPOA;
       }
-      if (other.IBLGOCFBOCO != false) {
-        IBLGOCFBOCO = other.IBLGOCFBOCO;
-      }
       if (other.FOKJIPGMKAN != false) {
         FOKJIPGMKAN = other.FOKJIPGMKAN;
+      }
+      if (other.IBLGOCFBOCO != false) {
+        IBLGOCFBOCO = other.IBLGOCFBOCO;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }

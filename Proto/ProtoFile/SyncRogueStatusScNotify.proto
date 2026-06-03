@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "RogueStatus.proto";
 
 message SyncRogueStatusScNotify {
-    bool AOBCKABCHGO = 11;
-    RogueStatus status = 7;
+    bool AOBCKABCHGO = 7;
+    RogueStatus status = 11;
 }

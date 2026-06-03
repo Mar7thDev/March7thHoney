@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "CCKJAEDDDCL.proto";
 
 message CommonRogueQueryScRsp {
-    repeated CCKJAEDDDCL LFLCDNGALME = 4;
-    uint32 retcode = 15;
-    uint32 GLGHEOPPCMH = 6;
+    uint32 GLGHEOPPCMH = 2;
+    uint32 retcode = 10;
+    repeated CCKJAEDDDCL LFLCDNGALME = 15;
 }

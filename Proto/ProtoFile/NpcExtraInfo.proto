@@ -8,8 +8,8 @@ import "PAGOHCJGOLC.proto";
 
 message NpcExtraInfo {
     oneof KKNBOACNCON {
-        NpcRogueGameInfo rogue_game_info = 7;
-        PAGOHCJGOLC MBLFFIKGMOP = 14;
-        MHGAOLCDONK DKPFHLBFFHI = 4;
+        NpcRogueGameInfo rogue_game_info = 15;
+        PAGOHCJGOLC MBLFFIKGMOP = 10;
+        MHGAOLCDONK DKPFHLBFFHI = 8;
     }
 }

@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DNLKMHLAPHC.proto";
 
 message AOFKCKOIFCM {
-    DNLKMHLAPHC LANFFLCLGAH = 14;
+    DNLKMHLAPHC LANFFLCLGAH = 11;
 }

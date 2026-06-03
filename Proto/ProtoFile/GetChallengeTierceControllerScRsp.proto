@@ -6,7 +6,7 @@ import "ChallengeTierceChallengeInfo.proto";
 import "ChallengeTierceRecordInfo.proto";
 
 message GetChallengeTierceControllerScRsp {
-    ChallengeTierceChallengeInfo challenge_tierce_info = 3;
-    ChallengeTierceRecordInfo record_info = 4;
-    uint32 retcode = 15;
+    uint32 retcode = 7;
+    ChallengeTierceChallengeInfo challenge_tierce_info = 12;
+    ChallengeTierceRecordInfo OHPGEHKFABM = 15;
 }

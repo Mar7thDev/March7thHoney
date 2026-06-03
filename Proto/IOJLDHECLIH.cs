@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFJT0pMREhFQ0xJSC5wcm90byIzCgtJT0pMREhFQ0xJSBIWCg5kaXlfZHlu",
-            "YW1pY19pZBgHIAEoDRIMCgR0aW1lGAUgASgDQhaqAhNNYXJjaDd0aEhvbmV5",
+            "YW1pY19pZBgDIAEoDRIMCgR0aW1lGAggASgDQhaqAhNNYXJjaDd0aEhvbmV5",
             "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -84,7 +84,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "diy_dynamic_id" field.</summary>
-    public const int DiyDynamicIdFieldNumber = 7;
+    public const int DiyDynamicIdFieldNumber = 3;
     private uint diyDynamicId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "time" field.</summary>
-    public const int TimeFieldNumber = 5;
+    public const int TimeFieldNumber = 8;
     private long time_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,13 +151,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Time != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(Time);
-      }
       if (DiyDynamicId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(DiyDynamicId);
+      }
+      if (Time != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(Time);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -169,13 +169,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Time != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(Time);
-      }
       if (DiyDynamicId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(DiyDynamicId);
+      }
+      if (Time != 0L) {
+        output.WriteRawTag(64);
+        output.WriteInt64(Time);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -230,12 +230,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            Time = input.ReadInt64();
+          case 24: {
+            DiyDynamicId = input.ReadUInt32();
             break;
           }
-          case 56: {
-            DiyDynamicId = input.ReadUInt32();
+          case 64: {
+            Time = input.ReadInt64();
             break;
           }
         }
@@ -257,12 +257,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            Time = input.ReadInt64();
+          case 24: {
+            DiyDynamicId = input.ReadUInt32();
             break;
           }
-          case 56: {
-            DiyDynamicId = input.ReadUInt32();
+          case 64: {
+            Time = input.ReadInt64();
             break;
           }
         }

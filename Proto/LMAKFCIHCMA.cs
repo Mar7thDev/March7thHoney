@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFMTUFLRkNJSENNQS5wcm90bxoRSkNQTUtIQ1BDUE4ucHJvdG8iRgoLTE1B",
-            "S0ZDSUhDTUESIQoLR05CS0RDSExER0wYDSABKAsyDC5KQ1BNS0hDUENQThIU",
-            "CgxwYXNzZW5nZXJfaWQYCSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "S0ZDSUhDTUESIQoLR05CS0RDSExER0wYByABKAsyDC5KQ1BNS0hDUENQThIU",
+            "CgxwYXNzZW5nZXJfaWQYDSABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JCPMKHCPCPNReflection.Descriptor, },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "GNBKDCHLDGL" field.</summary>
-    public const int GNBKDCHLDGLFieldNumber = 13;
+    public const int GNBKDCHLDGLFieldNumber = 7;
     private global::March7thHoney.Proto.JCPMKHCPCPN gNBKDCHLDGL_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "passenger_id" field.</summary>
-    public const int PassengerIdFieldNumber = 9;
+    public const int PassengerIdFieldNumber = 13;
     private uint passengerId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,13 +152,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PassengerId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(PassengerId);
-      }
       if (gNBKDCHLDGL_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(58);
         output.WriteMessage(GNBKDCHLDGL);
+      }
+      if (PassengerId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(PassengerId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -170,13 +170,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PassengerId != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(PassengerId);
-      }
       if (gNBKDCHLDGL_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(58);
         output.WriteMessage(GNBKDCHLDGL);
+      }
+      if (PassengerId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(PassengerId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -234,15 +234,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            PassengerId = input.ReadUInt32();
-            break;
-          }
-          case 106: {
+          case 58: {
             if (gNBKDCHLDGL_ == null) {
               GNBKDCHLDGL = new global::March7thHoney.Proto.JCPMKHCPCPN();
             }
             input.ReadMessage(GNBKDCHLDGL);
+            break;
+          }
+          case 104: {
+            PassengerId = input.ReadUInt32();
             break;
           }
         }
@@ -264,15 +264,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            PassengerId = input.ReadUInt32();
-            break;
-          }
-          case 106: {
+          case 58: {
             if (gNBKDCHLDGL_ == null) {
               GNBKDCHLDGL = new global::March7thHoney.Proto.JCPMKHCPCPN();
             }
             input.ReadMessage(GNBKDCHLDGL);
+            break;
+          }
+          case 104: {
+            PassengerId = input.ReadUInt32();
             break;
           }
         }

@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DFJPGILAAON.proto";
 
 message MakeMissionDrinkScRsp {
-    DFJPGILAAON LMOGDPMLKFH = 8;
-    bool is_save = 14;
-    bool KGKEJAKKLDP = 6;
-    uint32 retcode = 2;
+    uint32 retcode = 1;
+    bool KGKEJAKKLDP = 7;
+    DFJPGILAAON LMOGDPMLKFH = 11;
+    bool is_save = 12;
 }

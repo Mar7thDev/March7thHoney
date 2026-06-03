@@ -7,7 +7,7 @@ import "ECDINHEHKOJ.proto";
 
 message HOKCDEEABII {
     ECDINHEHKOJ KNMADMBFEDB = 1;
-    repeated CNLAOMCKFKD IEDKELDFHLP = 3;
-    uint32 FJPEIFMFPAN = 5;
-    uint32 IDCJPIJHNCL = 15;
+    uint32 FJPEIFMFPAN = 4;
+    uint32 IDCJPIJHNCL = 11;
+    repeated CNLAOMCKFKD IEDKELDFHLP = 13;
 }

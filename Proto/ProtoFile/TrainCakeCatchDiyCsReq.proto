@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BFAKMCIJFCB.proto";
 
 message TrainCakeCatchDiyCsReq {
-    BFAKMCIJFCB NLJBJMDPBGN = 10;
+    BFAKMCIJFCB NLJBJMDPBGN = 7;
 }

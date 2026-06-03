@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChargerInfo.proto";
 
 message InteractChargerCsReq {
-    ChargerInfo charger_info = 10;
+    ChargerInfo charger_info = 5;
 }

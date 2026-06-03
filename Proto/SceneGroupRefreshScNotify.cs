@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9TY2VuZUdyb3VwUmVmcmVzaFNjTm90aWZ5LnByb3RvGhZHcm91cFJlZnJl",
-            "c2hJbmZvLnByb3RvInIKGVNjZW5lR3JvdXBSZWZyZXNoU2NOb3RpZnkSLQoS",
-            "Z3JvdXBfcmVmcmVzaF9saXN0GA4gAygLMhEuR3JvdXBSZWZyZXNoSW5mbxIU",
-            "CgxkaW1lbnNpb25faWQYAiABKA0SEAoIZmxvb3JfaWQYByABKA1CFqoCE01h",
+            "c2hJbmZvLnByb3RvInIKGVNjZW5lR3JvdXBSZWZyZXNoU2NOb3RpZnkSEAoI",
+            "Zmxvb3JfaWQYCyABKA0SFAoMZGltZW5zaW9uX2lkGAwgASgNEi0KEmdyb3Vw",
+            "X3JlZnJlc2hfbGlzdBgPIAMoCzIRLkdyb3VwUmVmcmVzaEluZm9CFqoCE01h",
             "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GroupRefreshInfoReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneGroupRefreshScNotify), global::March7thHoney.Proto.SceneGroupRefreshScNotify.Parser, new[]{ "GroupRefreshList", "DimensionId", "FloorId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneGroupRefreshScNotify), global::March7thHoney.Proto.SceneGroupRefreshScNotify.Parser, new[]{ "FloorId", "DimensionId", "GroupRefreshList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SceneGroupRefreshScNotify(SceneGroupRefreshScNotify other) : this() {
-      groupRefreshList_ = other.groupRefreshList_.Clone();
-      dimensionId_ = other.dimensionId_;
       floorId_ = other.floorId_;
+      dimensionId_ = other.dimensionId_;
+      groupRefreshList_ = other.groupRefreshList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,19 +86,20 @@ namespace March7thHoney.Proto {
       return new SceneGroupRefreshScNotify(this);
     }
 
-    /// <summary>Field number for the "group_refresh_list" field.</summary>
-    public const int GroupRefreshListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupRefreshInfo> _repeated_groupRefreshList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.GroupRefreshInfo.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupRefreshInfo> groupRefreshList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupRefreshInfo>();
+    /// <summary>Field number for the "floor_id" field.</summary>
+    public const int FloorIdFieldNumber = 11;
+    private uint floorId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.GroupRefreshInfo> GroupRefreshList {
-      get { return groupRefreshList_; }
+    public uint FloorId {
+      get { return floorId_; }
+      set {
+        floorId_ = value;
+      }
     }
 
     /// <summary>Field number for the "dimension_id" field.</summary>
-    public const int DimensionIdFieldNumber = 2;
+    public const int DimensionIdFieldNumber = 12;
     private uint dimensionId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -109,16 +110,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "floor_id" field.</summary>
-    public const int FloorIdFieldNumber = 7;
-    private uint floorId_;
+    /// <summary>Field number for the "group_refresh_list" field.</summary>
+    public const int GroupRefreshListFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.GroupRefreshInfo> _repeated_groupRefreshList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.GroupRefreshInfo.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.GroupRefreshInfo> groupRefreshList_ = new pbc::RepeatedField<global::March7thHoney.Proto.GroupRefreshInfo>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint FloorId {
-      get { return floorId_; }
-      set {
-        floorId_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.GroupRefreshInfo> GroupRefreshList {
+      get { return groupRefreshList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -136,9 +136,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!groupRefreshList_.Equals(other.groupRefreshList_)) return false;
-      if (DimensionId != other.DimensionId) return false;
       if (FloorId != other.FloorId) return false;
+      if (DimensionId != other.DimensionId) return false;
+      if(!groupRefreshList_.Equals(other.groupRefreshList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -146,9 +146,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= groupRefreshList_.GetHashCode();
-      if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
       if (FloorId != 0) hash ^= FloorId.GetHashCode();
+      if (DimensionId != 0) hash ^= DimensionId.GetHashCode();
+      hash ^= groupRefreshList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,13 +167,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (DimensionId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(DimensionId);
-      }
       if (FloorId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(FloorId);
+      }
+      if (DimensionId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(DimensionId);
       }
       groupRefreshList_.WriteTo(output, _repeated_groupRefreshList_codec);
       if (_unknownFields != null) {
@@ -186,13 +186,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (DimensionId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(DimensionId);
-      }
       if (FloorId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(FloorId);
+      }
+      if (DimensionId != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(DimensionId);
       }
       groupRefreshList_.WriteTo(ref output, _repeated_groupRefreshList_codec);
       if (_unknownFields != null) {
@@ -205,13 +205,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += groupRefreshList_.CalculateSize(_repeated_groupRefreshList_codec);
-      if (DimensionId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
-      }
       if (FloorId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
       }
+      if (DimensionId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DimensionId);
+      }
+      size += groupRefreshList_.CalculateSize(_repeated_groupRefreshList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -224,13 +224,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      groupRefreshList_.Add(other.groupRefreshList_);
-      if (other.DimensionId != 0) {
-        DimensionId = other.DimensionId;
-      }
       if (other.FloorId != 0) {
         FloorId = other.FloorId;
       }
+      if (other.DimensionId != 0) {
+        DimensionId = other.DimensionId;
+      }
+      groupRefreshList_.Add(other.groupRefreshList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -250,15 +250,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            DimensionId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 88: {
             FloorId = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 96: {
+            DimensionId = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             groupRefreshList_.AddEntriesFrom(input, _repeated_groupRefreshList_codec);
             break;
           }
@@ -281,15 +281,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            DimensionId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
+          case 88: {
             FloorId = input.ReadUInt32();
             break;
           }
-          case 114: {
+          case 96: {
+            DimensionId = input.ReadUInt32();
+            break;
+          }
+          case 122: {
             groupRefreshList_.AddEntriesFrom(ref input, _repeated_groupRefreshList_codec);
             break;
           }

@@ -7,5 +7,5 @@ import "LobbyGameExtInfo.proto";
 message LobbyJoinCsReq {
     LobbyGameExtInfo JIDKDPPPDPF = 5;
     string JKJCIPFMOHG = 10;
-    uint64 room_id = 1;
+    uint64 room_id = 15;
 }

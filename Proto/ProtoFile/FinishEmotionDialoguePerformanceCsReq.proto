@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message FinishEmotionDialoguePerformanceCsReq {
-    uint32 BLKFCFGMMBD = 4;
-    uint32 dialogue_id = 6;
-    uint32 script_id = 7;
+    uint32 script_id = 2;
+    uint32 BLKFCFGMMBD = 3;
+    uint32 dialogue_id = 11;
 }

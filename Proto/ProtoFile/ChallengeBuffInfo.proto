@@ -7,7 +7,7 @@ import "ChallengeStoryBuffInfo.proto";
 
 message ChallengeBuffInfo {
     oneof KKNBOACNCON {
-        ChallengeStoryBuffInfo story_info = 10;
-        ChallengeBossBuffInfo boss_info = 14;
+        ChallengeStoryBuffInfo story_info = 11;
+        ChallengeBossBuffInfo boss_info = 13;
     }
 }

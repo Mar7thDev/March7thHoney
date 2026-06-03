@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ChallengePeakGroup.proto";
 
 message GetChallengePeakDataScRsp {
-    repeated ChallengePeakGroup challenge_peak_groups = 1;
-    uint32 retcode = 14;
-    uint32 current_peak_group_id = 2;
+    repeated ChallengePeakGroup challenge_peak_groups = 6;
+    uint32 current_peak_group_id = 8;
+    uint32 retcode = 12;
 }

@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message SyncDeleteFriendScNotify {
-    uint32 uid = 11;
+    uint32 uid = 15;
 }

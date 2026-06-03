@@ -6,7 +6,7 @@ import "JBOAAPIDOIC.proto";
 import "JFIIIHFBLPA.proto";
 
 message HGABLJFOKDG {
-    JBOAAPIDOIC NOAJIGHLIIC = 1;
-    JFIIIHFBLPA HDHKAHJBFKD = 11;
-    uint32 avatar_id = 5;
+    uint32 avatar_id = 6;
+    JFIIIHFBLPA HDHKAHJBFKD = 12;
+    JBOAAPIDOIC NOAJIGHLIIC = 14;
 }

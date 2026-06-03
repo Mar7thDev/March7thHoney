@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GetChatEmojiListScRsp {
-    repeated uint32 chat_emoji_list = 3;
-    uint32 retcode = 13;
+    repeated uint32 chat_emoji_list = 2;
+    uint32 retcode = 5;
 }

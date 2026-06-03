@@ -6,6 +6,6 @@ import "EHKDAJFLIEI.proto";
 import "IOHKFHBGICD.proto";
 
 message NAPFNBJDIOO {
-    EHKDAJFLIEI MCGGEAAHBPD = 5;
-    IOHKFHBGICD OEEDEIKJJJN = 2;
+    EHKDAJFLIEI MCGGEAAHBPD = 9;
+    IOHKFHBGICD reward_item = 12;
 }

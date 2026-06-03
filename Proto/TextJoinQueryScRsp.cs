@@ -25,8 +25,8 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhUZXh0Sm9pblF1ZXJ5U2NSc3AucHJvdG8aEUpDRE5BR01ERUxGLnByb3Rv",
-            "IkgKElRleHRKb2luUXVlcnlTY1JzcBIhCgtIUEVET0ZGSktLUBgIIAMoCzIM",
-            "LkpDRE5BR01ERUxGEg8KB3JldGNvZGUYAiABKA1CFqoCE01hcmNoN3RoSG9u",
+            "IkgKElRleHRKb2luUXVlcnlTY1JzcBIhCgtIUEVET0ZGSktLUBgCIAMoCzIM",
+            "LkpDRE5BR01ERUxGEg8KB3JldGNvZGUYDSABKA1CFqoCE01hcmNoN3RoSG9u",
             "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JCDNAGMDELFReflection.Descriptor, },
@@ -85,9 +85,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "HPEDOFFJKKP" field.</summary>
-    public const int HPEDOFFJKKPFieldNumber = 8;
+    public const int HPEDOFFJKKPFieldNumber = 2;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.JCDNAGMDELF> _repeated_hPEDOFFJKKP_codec
-        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.JCDNAGMDELF.Parser);
+        = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.JCDNAGMDELF.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.JCDNAGMDELF> hPEDOFFJKKP_ = new pbc::RepeatedField<global::March7thHoney.Proto.JCDNAGMDELF>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -96,7 +96,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 13;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -151,11 +151,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      hPEDOFFJKKP_.WriteTo(output, _repeated_hPEDOFFJKKP_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
       }
-      hPEDOFFJKKP_.WriteTo(output, _repeated_hPEDOFFJKKP_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -166,11 +166,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      hPEDOFFJKKP_.WriteTo(ref output, _repeated_hPEDOFFJKKP_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
       }
-      hPEDOFFJKKP_.WriteTo(ref output, _repeated_hPEDOFFJKKP_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -220,12 +220,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 18: {
+            hPEDOFFJKKP_.AddEntriesFrom(input, _repeated_hPEDOFFJKKP_codec);
             break;
           }
-          case 66: {
-            hPEDOFFJKKP_.AddEntriesFrom(input, _repeated_hPEDOFFJKKP_codec);
+          case 104: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -247,12 +247,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 18: {
+            hPEDOFFJKKP_.AddEntriesFrom(ref input, _repeated_hPEDOFFJKKP_codec);
             break;
           }
-          case 66: {
-            hPEDOFFJKKP_.AddEntriesFrom(ref input, _repeated_hPEDOFFJKKP_codec);
+          case 104: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }

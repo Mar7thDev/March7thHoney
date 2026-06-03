@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ChessRogueUpdateActionPointScNotify {
-    int32 EABEFBDOJEO = 15;
+    int32 EABEFBDOJEO = 5;
 }

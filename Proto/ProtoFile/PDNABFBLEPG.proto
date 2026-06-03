@@ -3,10 +3,10 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message PDNABFBLEPG {
-    uint32 MGJFFPIAOMI = 11;
-    uint32 ALMKIPNHAFM = 14;
-    uint32 item_value = 10;
     bool GNIHCOPOLJB = 1;
-    bool BLBFMKKBELI = 12;
-    uint32 KEEOBECJNIP = 13;
+    uint32 MGJFFPIAOMI = 2;
+    uint32 KEEOBECJNIP = 3;
+    uint32 item_value = 5;
+    uint32 ALMKIPNHAFM = 6;
+    bool BLBFMKKBELI = 7;
 }

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum GJCOFAFLAEI {
+    GJCOFAFLAEI_NLCDGIPGFDJ = 0;
+    GJCOFAFLAEI_NCMIMMDPHFM = 1;
+    GJCOFAFLAEI_role_star = 2;
+    GJCOFAFLAEI_MCMDKGEANNA = 3;
+    GJCOFAFLAEI_LBGJHODBAEA = 4;
+}

@@ -7,8 +7,8 @@ import "CGMCMAKMJDK.proto";
 import "RogueModifierSourceType.proto";
 
 message ChessRogueCellUpdateNotify {
-    repeated CGMCMAKMJDK CPPCIGMJALM = 11;
+    uint32 AIHCKNAMPBP = 4;
     RogueModifierSourceType CFAOFCGJBMA = 7;
-    uint32 AIHCKNAMPBP = 12;
-    AIMCAMJABNA reason = 4;
+    AIMCAMJABNA reason = 10;
+    repeated CGMCMAKMJDK CPPCIGMJALM = 15;
 }

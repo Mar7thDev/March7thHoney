@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message ONAADAJBLEB {
-    uint32 ONOHPMDGNNH = 7;
-    int64 DBIKJPDBMOE = 12;
+    int64 DBIKJPDBMOE = 7;
+    uint32 ONOHPMDGNNH = 10;
 }

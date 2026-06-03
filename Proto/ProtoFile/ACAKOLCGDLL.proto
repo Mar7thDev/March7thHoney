@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "NOHPJFOGFLM.proto";
 
 message ACAKOLCGDLL {
-    repeated NOHPJFOGFLM NMJIOGGNLEO = 15;
+    uint32 MDIIJKBHBBI = 1;
     bool GPPHKPEHKIM = 8;
-    uint32 NPGFNBPFMKI = 9;
-    uint32 KKCKMCDGCGK = 10;
-    uint32 MDIIJKBHBBI = 11;
+    uint32 NPGFNBPFMKI = 11;
+    uint32 KKCKMCDGCGK = 12;
+    repeated NOHPJFOGFLM NMJIOGGNLEO = 13;
 }

@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "OOLJJHMLHBH.proto";
 
 message DIFGGDIHDEG {
-    OOLJJHMLHBH MPOEFPFPEND = 13;
-    string name = 1;
-    int64 time = 9;
-    uint32 NPHAJEKCBKF = 11;
-    int64 BHNFGJOLLLB = 15;
+    OOLJJHMLHBH MPOEFPFPEND = 6;
+    int64 BHNFGJOLLLB = 7;
+    int64 time = 11;
+    string name = 13;
+    uint32 NPHAJEKCBKF = 15;
 }

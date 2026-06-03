@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message JJLPGBIAADJ {
-    uint32 AAIDCOJPLCI = 14;
+    uint32 AAIDCOJPLCI = 11;
 }

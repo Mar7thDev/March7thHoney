@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "TurnFoodSwitch.proto";
 
 message AMPMJPCFLND {
-    TurnFoodSwitch KLAJGAKAFCP = 2;
-    bool FEBKMOCOJLE = 13;
+    TurnFoodSwitch KLAJGAKAFCP = 3;
+    bool is_open = 12;
 }

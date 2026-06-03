@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "AvatarType.proto";
 
 message ACIHMMBKMIM {
-    AvatarType avatar_type = 3;
-    uint32 avatar_id = 5;
+    uint32 avatar_id = 3;
+    AvatarType avatar_type = 12;
 }

@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
-[Opcode(CmdIds.ActiveFarmElementCsReq)]
+[Opcode(CmdIds.ActivateFarmElementCsReq)]
 public class HandlerActivateFarmElementCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)

@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message TakeAllRewardScRsp {
-    ItemList reward = 8;
-    uint32 retcode = 14;
+    uint32 retcode = 3;
+    ItemList reward = 12;
 }

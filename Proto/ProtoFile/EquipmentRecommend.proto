@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "BMMHJIFCGNO.proto";
 
 message EquipmentRecommend {
-    repeated BMMHJIFCGNO equipment_list = 3;
+    repeated BMMHJIFCGNO equipment_list = 2;
 }

@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message DEGFFGKMFJJ {
     repeated uint32 CFJOGMJIHOE = 9;
-    uint32 script_id = 3;
+    uint32 script_id = 12;
 }

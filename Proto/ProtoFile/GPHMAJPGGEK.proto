@@ -6,8 +6,6 @@ import "OCBPJLLLJGO.proto";
 import "OKCCLEEPELM.proto";
 
 message GPHMAJPGGEK {
-    repeated OCBPJLLLJGO EBFHIDKDJOB = 2;
-    repeated OKCCLEEPELM IHKCHDJEJGJ = 1;
-    repeated uint32 PHONBEKJBHG = 5;
-    repeated uint32 CJDPJPCJOFG = 6;
+    repeated OKCCLEEPELM IHKCHDJEJGJ = 2;
+    repeated OCBPJLLLJGO EBFHIDKDJOB = 14;
 }

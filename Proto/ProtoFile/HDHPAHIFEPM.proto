@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HDHPAHIFEPM {
-    float y = 9;
-    float x = 15;
+    float x = 10;
+    float y = 11;
 }

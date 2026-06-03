@@ -3,9 +3,9 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LEGPFIAPLOO {
-    repeated uint32 LAJLGHPLAAA = 8;
-    repeated uint32 EGJDILDEAKP = 3;
-    bool NKDEGMKKHPB = 2;
-    uint32 trait_id = 9;
-    uint32 effect_id = 11;
+    bool NKDEGMKKHPB = 4;
+    uint32 effect_id = 5;
+    uint32 trait_id = 6;
+    repeated uint32 LAJLGHPLAAA = 10;
+    repeated uint32 EGJDILDEAKP = 15;
 }

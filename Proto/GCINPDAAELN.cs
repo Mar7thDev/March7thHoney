@@ -25,7 +25,7 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFHQ0lOUERBQUVMTi5wcm90bxoRSlBFQkVESE1OTEEucHJvdG8iPgoLR0NJ",
-            "TlBEQUFFTE4SLwoZZ3JpZF9maWdodF9lcXVpcG1lbnRfbGlzdBgMIAMoCzIM",
+            "TlBEQUFFTE4SLwoZZ3JpZF9maWdodF9lcXVpcG1lbnRfbGlzdBgJIAMoCzIM",
             "LkpQRUJFREhNTkxBQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JPEBEDHMNLAReflection.Descriptor, },
@@ -83,9 +83,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "grid_fight_equipment_list" field.</summary>
-    public const int GridFightEquipmentListFieldNumber = 12;
+    public const int GridFightEquipmentListFieldNumber = 9;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.JPEBEDHMNLA> _repeated_gridFightEquipmentList_codec
-        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.JPEBEDHMNLA.Parser);
+        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.JPEBEDHMNLA.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.JPEBEDHMNLA> gridFightEquipmentList_ = new pbc::RepeatedField<global::March7thHoney.Proto.JPEBEDHMNLA>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -190,7 +190,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 98: {
+          case 74: {
             gridFightEquipmentList_.AddEntriesFrom(input, _repeated_gridFightEquipmentList_codec);
             break;
           }
@@ -213,7 +213,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 98: {
+          case 74: {
             gridFightEquipmentList_.AddEntriesFrom(ref input, _repeated_gridFightEquipmentList_codec);
             break;
           }

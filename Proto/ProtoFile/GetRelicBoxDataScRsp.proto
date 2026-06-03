@@ -9,12 +9,12 @@ import "HGABLJFOKDG.proto";
 import "PNGBDDIBCDD.proto";
 
 message GetRelicBoxDataScRsp {
-    PNGBDDIBCDD NJFEFOFPKPF = 14;
-    HGABLJFOKDG MCLLALGABAB = 12;
-    repeated uint32 OAJFAFIDKPI = 7;
-    DPJCBHKGFOK AHNPPGMFOKN = 1;
-    repeated BEBNHPCBMPF EBDIOJPDJIH = 2;
+    uint32 retcode = 1;
+    DPJCBHKGFOK AHNPPGMFOKN = 2;
     BDFGBPHEPDI state = 3;
-    uint32 MFLMHFLMCPO = 11;
-    uint32 retcode = 10;
+    PNGBDDIBCDD NJFEFOFPKPF = 7;
+    HGABLJFOKDG target = 10;
+    repeated uint32 OAJFAFIDKPI = 13;
+    repeated BEBNHPCBMPF EBDIOJPDJIH = 14;
+    uint32 MFLMHFLMCPO = 15;
 }

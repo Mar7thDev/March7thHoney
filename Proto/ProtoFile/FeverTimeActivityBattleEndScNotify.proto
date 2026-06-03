@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "FeverTimeBattleRank.proto";
 
 message FeverTimeActivityBattleEndScNotify {
-    uint32 FAJDFFHODIP = 4;
-    FeverTimeBattleRank LDDHCPLNKKA = 8;
-    uint32 turn_left = 1;
-    uint32 id = 10;
+    uint32 id = 3;
+    uint32 turn_left = 9;
+    FeverTimeBattleRank LDDHCPLNKKA = 12;
+    uint32 FAJDFFHODIP = 13;
 }

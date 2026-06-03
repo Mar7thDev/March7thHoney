@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemCostData.proto";
 
 message GNFDPONFLJD {
-    ItemCostData cost_data = 13;
-    int32 LIAGGDDILGO = 7;
-    uint32 JFIGNBBLCIM = 15;
+    ItemCostData cost_data = 4;
+    uint32 JFIGNBBLCIM = 9;
+    int32 LIAGGDDILGO = 11;
 }

@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChFCRFBISkFFQktBRC5wcm90bxotUm9ndWVBZHZlbnR1cmVSb29tR2FtZXBs",
             "YXlXb2xmR3VuVGFyZ2V0LnByb3RvImgKC0JEUEhKQUVCS0FEEkQKEmJhdHRs",
-            "ZV90YXJnZXRfbGlzdBgHIAMoCzIoLlJvZ3VlQWR2ZW50dXJlUm9vbUdhbWVw",
-            "bGF5V29sZkd1blRhcmdldBITCgtORkdOT0NCQ0tJRBgJIAEoDUIWqgITTWFy",
+            "ZV90YXJnZXRfbGlzdBgFIAMoCzIoLlJvZ3VlQWR2ZW50dXJlUm9vbUdhbWVw",
+            "bGF5V29sZkd1blRhcmdldBITCgtORkdOT0NCQ0tJRBgPIAEoDUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTargetReflection.Descriptor, },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "battle_target_list" field.</summary>
-    public const int BattleTargetListFieldNumber = 7;
+    public const int BattleTargetListFieldNumber = 5;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget> _repeated_battleTargetList_codec
-        = pb::FieldCodec.ForMessage(58, global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget.Parser);
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget> battleTargetList_ = new pbc::RepeatedField<global::March7thHoney.Proto.RogueAdventureRoomGameplayWolfGunTarget>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NFGNOCBCKID" field.</summary>
-    public const int NFGNOCBCKIDFieldNumber = 9;
+    public const int NFGNOCBCKIDFieldNumber = 15;
     private uint nFGNOCBCKID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -154,7 +154,7 @@ namespace March7thHoney.Proto {
     #else
       battleTargetList_.WriteTo(output, _repeated_battleTargetList_codec);
       if (NFGNOCBCKID != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteUInt32(NFGNOCBCKID);
       }
       if (_unknownFields != null) {
@@ -169,7 +169,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       battleTargetList_.WriteTo(ref output, _repeated_battleTargetList_codec);
       if (NFGNOCBCKID != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(120);
         output.WriteUInt32(NFGNOCBCKID);
       }
       if (_unknownFields != null) {
@@ -221,11 +221,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 42: {
             battleTargetList_.AddEntriesFrom(input, _repeated_battleTargetList_codec);
             break;
           }
-          case 72: {
+          case 120: {
             NFGNOCBCKID = input.ReadUInt32();
             break;
           }
@@ -248,11 +248,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 42: {
             battleTargetList_.AddEntriesFrom(ref input, _repeated_battleTargetList_codec);
             break;
           }
-          case 72: {
+          case 120: {
             NFGNOCBCKID = input.ReadUInt32();
             break;
           }

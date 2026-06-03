@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message LuckyKoiInfoList {
-    string ELBEDNGJKDD = 4;
-    string LHAPDMPPOMP = 3;
-    uint32 head_icon = 6;
+    string LHAPDMPPOMP = 6;
+    uint32 head_icon = 14;
+    string ELBEDNGJKDD = 15;
 }

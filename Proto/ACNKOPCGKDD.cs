@@ -24,13 +24,13 @@ namespace March7thHoney.Proto {
     static ACNKOPCGKDDReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFBQ05LT1BDR0tERC5wcm90byJHCgtBQ05LT1BDR0tERBITCgtGQUdMTk1E",
-            "Rk9NRRgEIAEoDRIQCghsZXZlbF9pZBgGIAEoDRIRCgltYXhfc2NvcmUYCyAB",
+            "ChFBQ05LT1BDR0tERC5wcm90byJHCgtBQ05LT1BDR0tERBIRCgltYXhfc2Nv",
+            "cmUYByABKA0SEwoLRkFHTE5NREZPTUUYCCABKA0SEAoIbGV2ZWxfaWQYDiAB",
             "KA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ACNKOPCGKDD), global::March7thHoney.Proto.ACNKOPCGKDD.Parser, new[]{ "FAGLNMDFOME", "LevelId", "MaxScore" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ACNKOPCGKDD), global::March7thHoney.Proto.ACNKOPCGKDD.Parser, new[]{ "MaxScore", "FAGLNMDFOME", "LevelId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -72,9 +72,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ACNKOPCGKDD(ACNKOPCGKDD other) : this() {
+      maxScore_ = other.maxScore_;
       fAGLNMDFOME_ = other.fAGLNMDFOME_;
       levelId_ = other.levelId_;
-      maxScore_ = other.maxScore_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -84,8 +84,20 @@ namespace March7thHoney.Proto {
       return new ACNKOPCGKDD(this);
     }
 
+    /// <summary>Field number for the "max_score" field.</summary>
+    public const int MaxScoreFieldNumber = 7;
+    private uint maxScore_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxScore {
+      get { return maxScore_; }
+      set {
+        maxScore_ = value;
+      }
+    }
+
     /// <summary>Field number for the "FAGLNMDFOME" field.</summary>
-    public const int FAGLNMDFOMEFieldNumber = 4;
+    public const int FAGLNMDFOMEFieldNumber = 8;
     private uint fAGLNMDFOME_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +109,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 6;
+    public const int LevelIdFieldNumber = 14;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -105,18 +117,6 @@ namespace March7thHoney.Proto {
       get { return levelId_; }
       set {
         levelId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "max_score" field.</summary>
-    public const int MaxScoreFieldNumber = 11;
-    private uint maxScore_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MaxScore {
-      get { return maxScore_; }
-      set {
-        maxScore_ = value;
       }
     }
 
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (MaxScore != other.MaxScore) return false;
       if (FAGLNMDFOME != other.FAGLNMDFOME) return false;
       if (LevelId != other.LevelId) return false;
-      if (MaxScore != other.MaxScore) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (MaxScore != 0) hash ^= MaxScore.GetHashCode();
       if (FAGLNMDFOME != 0) hash ^= FAGLNMDFOME.GetHashCode();
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
-      if (MaxScore != 0) hash ^= MaxScore.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,17 +166,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (MaxScore != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(MaxScore);
+      }
       if (FAGLNMDFOME != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteUInt32(FAGLNMDFOME);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(112);
         output.WriteUInt32(LevelId);
-      }
-      if (MaxScore != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(MaxScore);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -188,17 +188,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (MaxScore != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(MaxScore);
+      }
       if (FAGLNMDFOME != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteUInt32(FAGLNMDFOME);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(112);
         output.WriteUInt32(LevelId);
-      }
-      if (MaxScore != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(MaxScore);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -210,14 +210,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (MaxScore != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxScore);
+      }
       if (FAGLNMDFOME != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FAGLNMDFOME);
       }
       if (LevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
-      }
-      if (MaxScore != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxScore);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -231,14 +231,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.MaxScore != 0) {
+        MaxScore = other.MaxScore;
+      }
       if (other.FAGLNMDFOME != 0) {
         FAGLNMDFOME = other.FAGLNMDFOME;
       }
       if (other.LevelId != 0) {
         LevelId = other.LevelId;
-      }
-      if (other.MaxScore != 0) {
-        MaxScore = other.MaxScore;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -259,16 +259,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 56: {
+            MaxScore = input.ReadUInt32();
+            break;
+          }
+          case 64: {
             FAGLNMDFOME = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 112: {
             LevelId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            MaxScore = input.ReadUInt32();
             break;
           }
         }
@@ -290,16 +290,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 56: {
+            MaxScore = input.ReadUInt32();
+            break;
+          }
+          case 64: {
             FAGLNMDFOME = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 112: {
             LevelId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            MaxScore = input.ReadUInt32();
             break;
           }
         }

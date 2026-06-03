@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidTZXRDaGFsbGVuZ2VQZWFrQm9zc0hhcmRNb2RlQ3NSZXEucHJvdG8iUAoh",
             "U2V0Q2hhbGxlbmdlUGVha0Jvc3NIYXJkTW9kZUNzUmVxEhUKDXBlYWtfZ3Jv",
-            "dXBfaWQYASABKA0SFAoMaXNfaGFyZF9tb2RlGAcgASgIQhaqAhNNYXJjaDd0",
+            "dXBfaWQYByABKA0SFAoMaXNfaGFyZF9tb2RlGAsgASgIQhaqAhNNYXJjaDd0",
             "aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -85,7 +85,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 1;
+    public const int PeakGroupIdFieldNumber = 7;
     private uint peakGroupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_hard_mode" field.</summary>
-    public const int IsHardModeFieldNumber = 7;
+    public const int IsHardModeFieldNumber = 11;
     private bool isHardMode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,11 +153,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (PeakGroupId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(56);
         output.WriteUInt32(PeakGroupId);
       }
       if (IsHardMode != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteBool(IsHardMode);
       }
       if (_unknownFields != null) {
@@ -171,11 +171,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PeakGroupId != 0) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(56);
         output.WriteUInt32(PeakGroupId);
       }
       if (IsHardMode != false) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteBool(IsHardMode);
       }
       if (_unknownFields != null) {
@@ -231,11 +231,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 56: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 88: {
             IsHardMode = input.ReadBool();
             break;
           }
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 56: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 88: {
             IsHardMode = input.ReadBool();
             break;
           }

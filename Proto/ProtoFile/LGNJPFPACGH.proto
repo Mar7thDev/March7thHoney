@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "KLNNIAHJBCO.proto";
 
 message LGNJPFPACGH {
-    KLNNIAHJBCO LJMLJKPLKBN = 10;
-    uint32 retcode = 5;
+    KLNNIAHJBCO LJMLJKPLKBN = 3;
+    uint32 retcode = 8;
 }

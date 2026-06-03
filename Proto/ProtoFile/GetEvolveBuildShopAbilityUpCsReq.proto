@@ -4,5 +4,5 @@ option csharp_namespace = "March7thHoney.Proto";
 
 message GetEvolveBuildShopAbilityUpCsReq {
     uint32 JEKLOEPPJBK = 2;
-    uint32 level = 3;
+    uint32 level = 5;
 }

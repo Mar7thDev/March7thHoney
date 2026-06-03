@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PlayerAssistInfo.proto";
 
 message GetAssistListScRsp {
-    repeated PlayerAssistInfo assist_list = 6;
-    uint32 retcode = 5;
+    uint32 retcode = 3;
+    repeated PlayerAssistInfo assist_list = 12;
 }

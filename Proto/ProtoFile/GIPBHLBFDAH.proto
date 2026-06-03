@@ -5,11 +5,11 @@ option csharp_namespace = "March7thHoney.Proto";
 import "ItemList.proto";
 
 message GIPBHLBFDAH {
-    ItemList reward = 11;
-    uint32 NGBJMEHDKHN = 8;
-    uint32 DCAHJELNJNP = 1;
-    uint32 script_id = 4;
-    bool HGPKMHFPMBJ = 3;
-    bool DMNEACGEHEC = 2;
-    uint32 progress = 6;
+    uint32 progress = 1;
+    uint32 DCAHJELNJNP = 2;
+    uint32 script_id = 3;
+    uint32 NGBJMEHDKHN = 6;
+    bool DMNEACGEHEC = 7;
+    bool HGPKMHFPMBJ = 11;
+    ItemList reward = 13;
 }

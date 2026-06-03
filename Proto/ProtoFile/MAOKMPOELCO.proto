@@ -6,7 +6,7 @@ import "NHHMEPILLHL.proto";
 import "PKHKEEKIODC.proto";
 
 message MAOKMPOELCO {
-    PKHKEEKIODC BBEHHCHKMNL = 13;
-    uint32 queue_position = 15;
-    NHHMEPILLHL source = 12;
+    NHHMEPILLHL source = 9;
+    uint32 queue_position = 10;
+    PKHKEEKIODC detail = 11;
 }

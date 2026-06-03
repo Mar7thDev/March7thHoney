@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "Ch5SZWJhdHRsZUJ5Q2xpZW50Q3NOb3RpZnkucHJvdG8aFkJhdHRsZVN0YXRp",
             "c3RpY3MucHJvdG8aElJlYmF0dGxlVHlwZS5wcm90byJeChhSZWJhdHRsZUJ5",
-            "Q2xpZW50Q3NOb3RpZnkSHgoDc3R0GA8gASgLMhEuQmF0dGxlU3RhdGlzdGlj",
-            "cxIiCgtOS0RBQUFHUENEQhgJIAEoDjINLlJlYmF0dGxlVHlwZUIWqgITTWFy",
+            "Q2xpZW50Q3NOb3RpZnkSHgoDc3R0GAIgASgLMhEuQmF0dGxlU3RhdGlzdGlj",
+            "cxIiCgtOS0RBQUFHUENEQhgKIAEoDjINLlJlYmF0dGxlVHlwZUIWqgITTWFy",
             "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.BattleStatisticsReflection.Descriptor, global::March7thHoney.Proto.RebattleTypeReflection.Descriptor, },
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "stt" field.</summary>
-    public const int SttFieldNumber = 15;
+    public const int SttFieldNumber = 2;
     private global::March7thHoney.Proto.BattleStatistics stt_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NKDAAAGPCDB" field.</summary>
-    public const int NKDAAAGPCDBFieldNumber = 9;
+    public const int NKDAAAGPCDBFieldNumber = 10;
     private global::March7thHoney.Proto.RebattleType nKDAAAGPCDB_ = global::March7thHoney.Proto.RebattleType.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -153,13 +153,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NKDAAAGPCDB != global::March7thHoney.Proto.RebattleType.None) {
-        output.WriteRawTag(72);
-        output.WriteEnum((int) NKDAAAGPCDB);
-      }
       if (stt_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(18);
         output.WriteMessage(Stt);
+      }
+      if (NKDAAAGPCDB != global::March7thHoney.Proto.RebattleType.None) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) NKDAAAGPCDB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -171,13 +171,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NKDAAAGPCDB != global::March7thHoney.Proto.RebattleType.None) {
-        output.WriteRawTag(72);
-        output.WriteEnum((int) NKDAAAGPCDB);
-      }
       if (stt_ != null) {
-        output.WriteRawTag(122);
+        output.WriteRawTag(18);
         output.WriteMessage(Stt);
+      }
+      if (NKDAAAGPCDB != global::March7thHoney.Proto.RebattleType.None) {
+        output.WriteRawTag(80);
+        output.WriteEnum((int) NKDAAAGPCDB);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -235,15 +235,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            NKDAAAGPCDB = (global::March7thHoney.Proto.RebattleType) input.ReadEnum();
-            break;
-          }
-          case 122: {
+          case 18: {
             if (stt_ == null) {
               Stt = new global::March7thHoney.Proto.BattleStatistics();
             }
             input.ReadMessage(Stt);
+            break;
+          }
+          case 80: {
+            NKDAAAGPCDB = (global::March7thHoney.Proto.RebattleType) input.ReadEnum();
             break;
           }
         }
@@ -265,15 +265,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            NKDAAAGPCDB = (global::March7thHoney.Proto.RebattleType) input.ReadEnum();
-            break;
-          }
-          case 122: {
+          case 18: {
             if (stt_ == null) {
               Stt = new global::March7thHoney.Proto.BattleStatistics();
             }
             input.ReadMessage(Stt);
+            break;
+          }
+          case 80: {
+            NKDAAAGPCDB = (global::March7thHoney.Proto.RebattleType) input.ReadEnum();
             break;
           }
         }

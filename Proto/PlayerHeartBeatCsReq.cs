@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpQbGF5ZXJIZWFydEJlYXRDc1JlcS5wcm90bxoRTEZLS09NQktKSVAucHJv",
-            "dG8iYgoUUGxheWVySGVhcnRCZWF0Q3NSZXESHQoHc2NfZGF0YRgHIAEoCzIM",
-            "LkxGS0tPTUJLSklQEhMKC0VPSEZDT0RLS01EGAwgASgNEhYKDmNsaWVudF90",
-            "aW1lX21zGAEgASgEQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "dG8iYgoUUGxheWVySGVhcnRCZWF0Q3NSZXESHQoHc2NfZGF0YRgBIAEoCzIM",
+            "LkxGS0tPTUJLSklQEhYKDmNsaWVudF90aW1lX21zGAggASgEEhMKC0VPSEZD",
+            "T0RLS01EGA8gASgNQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.LFKKOMBKJIPReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerHeartBeatCsReq), global::March7thHoney.Proto.PlayerHeartBeatCsReq.Parser, new[]{ "ScData", "EOHFCODKKMD", "ClientTimeMs" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PlayerHeartBeatCsReq), global::March7thHoney.Proto.PlayerHeartBeatCsReq.Parser, new[]{ "ScData", "ClientTimeMs", "EOHFCODKKMD" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,8 +74,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PlayerHeartBeatCsReq(PlayerHeartBeatCsReq other) : this() {
       scData_ = other.scData_ != null ? other.scData_.Clone() : null;
-      eOHFCODKKMD_ = other.eOHFCODKKMD_;
       clientTimeMs_ = other.clientTimeMs_;
+      eOHFCODKKMD_ = other.eOHFCODKKMD_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,7 +86,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "sc_data" field.</summary>
-    public const int ScDataFieldNumber = 7;
+    public const int ScDataFieldNumber = 1;
     private global::March7thHoney.Proto.LFKKOMBKJIP scData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,20 +97,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "EOHFCODKKMD" field.</summary>
-    public const int EOHFCODKKMDFieldNumber = 12;
-    private uint eOHFCODKKMD_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EOHFCODKKMD {
-      get { return eOHFCODKKMD_; }
-      set {
-        eOHFCODKKMD_ = value;
-      }
-    }
-
     /// <summary>Field number for the "client_time_ms" field.</summary>
-    public const int ClientTimeMsFieldNumber = 1;
+    public const int ClientTimeMsFieldNumber = 8;
     private ulong clientTimeMs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +106,18 @@ namespace March7thHoney.Proto {
       get { return clientTimeMs_; }
       set {
         clientTimeMs_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "EOHFCODKKMD" field.</summary>
+    public const int EOHFCODKKMDFieldNumber = 15;
+    private uint eOHFCODKKMD_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EOHFCODKKMD {
+      get { return eOHFCODKKMD_; }
+      set {
+        eOHFCODKKMD_ = value;
       }
     }
 
@@ -137,8 +137,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (!object.Equals(ScData, other.ScData)) return false;
-      if (EOHFCODKKMD != other.EOHFCODKKMD) return false;
       if (ClientTimeMs != other.ClientTimeMs) return false;
+      if (EOHFCODKKMD != other.EOHFCODKKMD) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (scData_ != null) hash ^= ScData.GetHashCode();
-      if (EOHFCODKKMD != 0) hash ^= EOHFCODKKMD.GetHashCode();
       if (ClientTimeMs != 0UL) hash ^= ClientTimeMs.GetHashCode();
+      if (EOHFCODKKMD != 0) hash ^= EOHFCODKKMD.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,16 +167,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ClientTimeMs != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(ClientTimeMs);
-      }
       if (scData_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(10);
         output.WriteMessage(ScData);
       }
+      if (ClientTimeMs != 0UL) {
+        output.WriteRawTag(64);
+        output.WriteUInt64(ClientTimeMs);
+      }
       if (EOHFCODKKMD != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(120);
         output.WriteUInt32(EOHFCODKKMD);
       }
       if (_unknownFields != null) {
@@ -189,16 +189,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ClientTimeMs != 0UL) {
-        output.WriteRawTag(8);
-        output.WriteUInt64(ClientTimeMs);
-      }
       if (scData_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(10);
         output.WriteMessage(ScData);
       }
+      if (ClientTimeMs != 0UL) {
+        output.WriteRawTag(64);
+        output.WriteUInt64(ClientTimeMs);
+      }
       if (EOHFCODKKMD != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(120);
         output.WriteUInt32(EOHFCODKKMD);
       }
       if (_unknownFields != null) {
@@ -214,11 +214,11 @@ namespace March7thHoney.Proto {
       if (scData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ScData);
       }
-      if (EOHFCODKKMD != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EOHFCODKKMD);
-      }
       if (ClientTimeMs != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(ClientTimeMs);
+      }
+      if (EOHFCODKKMD != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EOHFCODKKMD);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -238,11 +238,11 @@ namespace March7thHoney.Proto {
         }
         ScData.MergeFrom(other.ScData);
       }
-      if (other.EOHFCODKKMD != 0) {
-        EOHFCODKKMD = other.EOHFCODKKMD;
-      }
       if (other.ClientTimeMs != 0UL) {
         ClientTimeMs = other.ClientTimeMs;
+      }
+      if (other.EOHFCODKKMD != 0) {
+        EOHFCODKKMD = other.EOHFCODKKMD;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -263,18 +263,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            ClientTimeMs = input.ReadUInt64();
-            break;
-          }
-          case 58: {
+          case 10: {
             if (scData_ == null) {
               ScData = new global::March7thHoney.Proto.LFKKOMBKJIP();
             }
             input.ReadMessage(ScData);
             break;
           }
-          case 96: {
+          case 64: {
+            ClientTimeMs = input.ReadUInt64();
+            break;
+          }
+          case 120: {
             EOHFCODKKMD = input.ReadUInt32();
             break;
           }
@@ -297,18 +297,18 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            ClientTimeMs = input.ReadUInt64();
-            break;
-          }
-          case 58: {
+          case 10: {
             if (scData_ == null) {
               ScData = new global::March7thHoney.Proto.LFKKOMBKJIP();
             }
             input.ReadMessage(ScData);
             break;
           }
-          case 96: {
+          case 64: {
+            ClientTimeMs = input.ReadUInt64();
+            break;
+          }
+          case 120: {
             EOHFCODKKMD = input.ReadUInt32();
             break;
           }

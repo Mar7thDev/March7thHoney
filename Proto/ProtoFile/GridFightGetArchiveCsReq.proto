@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "MLJIILDNDPL.proto";
 
 message GridFightGetArchiveCsReq {
-    MLJIILDNDPL type = 2;
+    MLJIILDNDPL type = 14;
 }

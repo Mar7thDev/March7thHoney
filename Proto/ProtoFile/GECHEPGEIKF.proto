@@ -7,11 +7,11 @@ import "LHEBFHDKAIO.proto";
 import "PJPAOLMBKEC.proto";
 
 message GECHEPGEIKF {
-    repeated PJPAOLMBKEC DGBCNEDPGLB = 14;
-    repeated uint32 FJKDOIDEBJC = 5;
-    repeated LHEBFHDKAIO NOGHNCPGGMI = 9;
-    repeated ENFDMFGIJDC CNHJPNENDJJ = 11;
-    uint32 NLICFEFAPLE = 1;
-    bool FDBNNLFJGPD = 3;
-    uint32 HEGPIGMBCLO = 15;
+    uint32 NLICFEFAPLE = 3;
+    repeated LHEBFHDKAIO NOGHNCPGGMI = 5;
+    repeated ENFDMFGIJDC CNHJPNENDJJ = 6;
+    uint32 HEGPIGMBCLO = 7;
+    repeated uint32 FJKDOIDEBJC = 9;
+    bool FDBNNLFJGPD = 11;
+    repeated PJPAOLMBKEC DGBCNEDPGLB = 15;
 }

@@ -6,8 +6,8 @@ import "ItemList.proto";
 import "NDLNIKCCALK.proto";
 
 message GAEKHIDCFHF {
-    repeated uint32 NGKOFMBBGNL = 8;
-    NDLNIKCCALK MGBNEAHCDMA = 7;
-    ItemList reward = 6;
-    uint32 retcode = 10;
+    ItemList reward = 1;
+    repeated uint32 NGKOFMBBGNL = 3;
+    NDLNIKCCALK MGBNEAHCDMA = 4;
+    uint32 retcode = 8;
 }

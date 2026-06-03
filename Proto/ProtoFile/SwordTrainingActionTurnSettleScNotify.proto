@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "LBBGLAHFJKN.proto";
 
 message SwordTrainingActionTurnSettleScNotify {
-    repeated LBBGLAHFJKN BINKDPMJLFG = 12;
-    uint32 GEAJILJKBIK = 9;
+    repeated LBBGLAHFJKN BINKDPMJLFG = 2;
+    uint32 GEAJILJKBIK = 12;
 }

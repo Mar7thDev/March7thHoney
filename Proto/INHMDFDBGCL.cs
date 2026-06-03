@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static INHMDFDBGCLReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFJTkhNREZEQkdDTC5wcm90byJyCgtJTkhNREZEQkdDTBITCgtDTE5HRkRQ",
-            "SU5EQhgFIAEoCRIPCgdyb29tX2lkGAEgASgEEhMKC01QREhORk5DSUVBGAIg",
-            "ASgNEhMKC0hKUEJBSkVQQUdFGAQgASgNEhMKC1BKR0lMQUFEQ1BOGAMgASgN",
-            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChFJTkhNREZEQkdDTC5wcm90byJrCgtJTkhNREZEQkdDTBIPCgdyb29tX2lk",
+            "GAEgASgEEhMKC01QREhORk5DSUVBGAIgASgNEhMKC1BKR0lMQUFEQ1BOGAMg",
+            "ASgNEgwKBHR1cm4YBCABKA0SEwoLQ0xOR0ZEUElOREIYBSABKAlCFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.INHMDFDBGCL), global::March7thHoney.Proto.INHMDFDBGCL.Parser, new[]{ "CLNGFDPINDB", "RoomId", "MPDHNFNCIEA", "HJPBAJEPAGE", "PJGILAADCPN" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.INHMDFDBGCL), global::March7thHoney.Proto.INHMDFDBGCL.Parser, new[]{ "RoomId", "MPDHNFNCIEA", "PJGILAADCPN", "Turn", "CLNGFDPINDB" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,11 +73,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public INHMDFDBGCL(INHMDFDBGCL other) : this() {
-      cLNGFDPINDB_ = other.cLNGFDPINDB_;
       roomId_ = other.roomId_;
       mPDHNFNCIEA_ = other.mPDHNFNCIEA_;
-      hJPBAJEPAGE_ = other.hJPBAJEPAGE_;
       pJGILAADCPN_ = other.pJGILAADCPN_;
+      turn_ = other.turn_;
+      cLNGFDPINDB_ = other.cLNGFDPINDB_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -85,18 +85,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public INHMDFDBGCL Clone() {
       return new INHMDFDBGCL(this);
-    }
-
-    /// <summary>Field number for the "CLNGFDPINDB" field.</summary>
-    public const int CLNGFDPINDBFieldNumber = 5;
-    private string cLNGFDPINDB_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string CLNGFDPINDB {
-      get { return cLNGFDPINDB_; }
-      set {
-        cLNGFDPINDB_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
     }
 
     /// <summary>Field number for the "room_id" field.</summary>
@@ -123,18 +111,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "HJPBAJEPAGE" field.</summary>
-    public const int HJPBAJEPAGEFieldNumber = 4;
-    private uint hJPBAJEPAGE_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint HJPBAJEPAGE {
-      get { return hJPBAJEPAGE_; }
-      set {
-        hJPBAJEPAGE_ = value;
-      }
-    }
-
     /// <summary>Field number for the "PJGILAADCPN" field.</summary>
     public const int PJGILAADCPNFieldNumber = 3;
     private uint pJGILAADCPN_;
@@ -144,6 +120,30 @@ namespace March7thHoney.Proto {
       get { return pJGILAADCPN_; }
       set {
         pJGILAADCPN_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "turn" field.</summary>
+    public const int TurnFieldNumber = 4;
+    private uint turn_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Turn {
+      get { return turn_; }
+      set {
+        turn_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CLNGFDPINDB" field.</summary>
+    public const int CLNGFDPINDBFieldNumber = 5;
+    private string cLNGFDPINDB_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string CLNGFDPINDB {
+      get { return cLNGFDPINDB_; }
+      set {
+        cLNGFDPINDB_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -162,11 +162,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CLNGFDPINDB != other.CLNGFDPINDB) return false;
       if (RoomId != other.RoomId) return false;
       if (MPDHNFNCIEA != other.MPDHNFNCIEA) return false;
-      if (HJPBAJEPAGE != other.HJPBAJEPAGE) return false;
       if (PJGILAADCPN != other.PJGILAADCPN) return false;
+      if (Turn != other.Turn) return false;
+      if (CLNGFDPINDB != other.CLNGFDPINDB) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -174,11 +174,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CLNGFDPINDB.Length != 0) hash ^= CLNGFDPINDB.GetHashCode();
       if (RoomId != 0UL) hash ^= RoomId.GetHashCode();
       if (MPDHNFNCIEA != 0) hash ^= MPDHNFNCIEA.GetHashCode();
-      if (HJPBAJEPAGE != 0) hash ^= HJPBAJEPAGE.GetHashCode();
       if (PJGILAADCPN != 0) hash ^= PJGILAADCPN.GetHashCode();
+      if (Turn != 0) hash ^= Turn.GetHashCode();
+      if (CLNGFDPINDB.Length != 0) hash ^= CLNGFDPINDB.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -209,9 +209,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(PJGILAADCPN);
       }
-      if (HJPBAJEPAGE != 0) {
+      if (Turn != 0) {
         output.WriteRawTag(32);
-        output.WriteUInt32(HJPBAJEPAGE);
+        output.WriteUInt32(Turn);
       }
       if (CLNGFDPINDB.Length != 0) {
         output.WriteRawTag(42);
@@ -239,9 +239,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(PJGILAADCPN);
       }
-      if (HJPBAJEPAGE != 0) {
+      if (Turn != 0) {
         output.WriteRawTag(32);
-        output.WriteUInt32(HJPBAJEPAGE);
+        output.WriteUInt32(Turn);
       }
       if (CLNGFDPINDB.Length != 0) {
         output.WriteRawTag(42);
@@ -257,20 +257,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CLNGFDPINDB.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(CLNGFDPINDB);
-      }
       if (RoomId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(RoomId);
       }
       if (MPDHNFNCIEA != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MPDHNFNCIEA);
       }
-      if (HJPBAJEPAGE != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(HJPBAJEPAGE);
-      }
       if (PJGILAADCPN != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PJGILAADCPN);
+      }
+      if (Turn != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Turn);
+      }
+      if (CLNGFDPINDB.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CLNGFDPINDB);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -284,20 +284,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CLNGFDPINDB.Length != 0) {
-        CLNGFDPINDB = other.CLNGFDPINDB;
-      }
       if (other.RoomId != 0UL) {
         RoomId = other.RoomId;
       }
       if (other.MPDHNFNCIEA != 0) {
         MPDHNFNCIEA = other.MPDHNFNCIEA;
       }
-      if (other.HJPBAJEPAGE != 0) {
-        HJPBAJEPAGE = other.HJPBAJEPAGE;
-      }
       if (other.PJGILAADCPN != 0) {
         PJGILAADCPN = other.PJGILAADCPN;
+      }
+      if (other.Turn != 0) {
+        Turn = other.Turn;
+      }
+      if (other.CLNGFDPINDB.Length != 0) {
+        CLNGFDPINDB = other.CLNGFDPINDB;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -331,7 +331,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            HJPBAJEPAGE = input.ReadUInt32();
+            Turn = input.ReadUInt32();
             break;
           }
           case 42: {
@@ -370,7 +370,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            HJPBAJEPAGE = input.ReadUInt32();
+            Turn = input.ReadUInt32();
             break;
           }
           case 42: {

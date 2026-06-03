@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZHZXRTaG9wTGlzdFNjUnNwLnByb3RvGgpTaG9wLnByb3RvIlAKEEdldFNo",
-            "b3BMaXN0U2NSc3ASGAoJc2hvcF9saXN0GAogAygLMgUuU2hvcBIPCgdyZXRj",
-            "b2RlGA8gASgNEhEKCXNob3BfdHlwZRgOIAEoDUIWqgITTWFyY2g3dGhIb25l",
+            "b3BMaXN0U2NSc3ASDwoHcmV0Y29kZRgEIAEoDRIYCglzaG9wX2xpc3QYBSAD",
+            "KAsyBS5TaG9wEhEKCXNob3BfdHlwZRgGIAEoDUIWqgITTWFyY2g3dGhIb25l",
             "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.ShopReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetShopListScRsp), global::March7thHoney.Proto.GetShopListScRsp.Parser, new[]{ "ShopList", "Retcode", "ShopType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetShopListScRsp), global::March7thHoney.Proto.GetShopListScRsp.Parser, new[]{ "Retcode", "ShopList", "ShopType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetShopListScRsp(GetShopListScRsp other) : this() {
-      shopList_ = other.shopList_.Clone();
       retcode_ = other.retcode_;
+      shopList_ = other.shopList_.Clone();
       shopType_ = other.shopType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -85,19 +85,8 @@ namespace March7thHoney.Proto {
       return new GetShopListScRsp(this);
     }
 
-    /// <summary>Field number for the "shop_list" field.</summary>
-    public const int ShopListFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Shop> _repeated_shopList_codec
-        = pb::FieldCodec.ForMessage(82, global::March7thHoney.Proto.Shop.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Shop> shopList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Shop>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.Shop> ShopList {
-      get { return shopList_; }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
+    public const int RetcodeFieldNumber = 4;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -108,8 +97,19 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "shop_list" field.</summary>
+    public const int ShopListFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.Shop> _repeated_shopList_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.Shop.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.Shop> shopList_ = new pbc::RepeatedField<global::March7thHoney.Proto.Shop>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.Shop> ShopList {
+      get { return shopList_; }
+    }
+
     /// <summary>Field number for the "shop_type" field.</summary>
-    public const int ShopTypeFieldNumber = 14;
+    public const int ShopTypeFieldNumber = 6;
     private uint shopType_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -135,8 +135,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!shopList_.Equals(other.shopList_)) return false;
       if (Retcode != other.Retcode) return false;
+      if(!shopList_.Equals(other.shopList_)) return false;
       if (ShopType != other.ShopType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -145,8 +145,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= shopList_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      hash ^= shopList_.GetHashCode();
       if (ShopType != 0) hash ^= ShopType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -166,14 +166,14 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (Retcode != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Retcode);
+      }
       shopList_.WriteTo(output, _repeated_shopList_codec);
       if (ShopType != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(48);
         output.WriteUInt32(ShopType);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -185,14 +185,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Retcode != 0) {
+        output.WriteRawTag(32);
+        output.WriteUInt32(Retcode);
+      }
       shopList_.WriteTo(ref output, _repeated_shopList_codec);
       if (ShopType != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(48);
         output.WriteUInt32(ShopType);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -204,10 +204,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += shopList_.CalculateSize(_repeated_shopList_codec);
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
+      size += shopList_.CalculateSize(_repeated_shopList_codec);
       if (ShopType != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ShopType);
       }
@@ -223,10 +223,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      shopList_.Add(other.shopList_);
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
+      shopList_.Add(other.shopList_);
       if (other.ShopType != 0) {
         ShopType = other.ShopType;
       }
@@ -249,16 +249,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82: {
+          case 32: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 42: {
             shopList_.AddEntriesFrom(input, _repeated_shopList_codec);
             break;
           }
-          case 112: {
+          case 48: {
             ShopType = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -280,16 +280,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82: {
+          case 32: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 42: {
             shopList_.AddEntriesFrom(ref input, _repeated_shopList_codec);
             break;
           }
-          case 112: {
+          case 48: {
             ShopType = input.ReadUInt32();
-            break;
-          }
-          case 120: {
-            Retcode = input.ReadUInt32();
             break;
           }
         }

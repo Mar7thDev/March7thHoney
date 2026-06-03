@@ -25,38 +25,41 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFCS0ZERkxOSEtJRi5wcm90bxoRQ0pPQ0VKTFBBREsucHJvdG8aEUZMT0lD",
-            "QkRPQ05KLnByb3RvGhFIUE9MSkdER09FSS5wcm90bxoRSUVNQktJQUVOT0Eu",
-            "cHJvdG8aEUlJUEFIRUhKSkpMLnByb3RvGhFJTkhNREZEQkdDTC5wcm90bxoR",
-            "SkVIUEdDRUlIREYucHJvdG8aEUpQQUhGRkZDSUlLLnByb3RvGhFLS09LT0FK",
-            "QkhGTi5wcm90bxoRS01HRENDTk5HRUUucHJvdG8aEUtOTUdITEpLQkRBLnBy",
-            "b3RvGhFMTEpKR0lMR05FTy5wcm90bxoRTE9LUEpHTEpJSUgucHJvdG8aEU5J",
-            "TkxFRkVQR0NDLnByb3RvGhFQSU1OR0JBTU1BTS5wcm90bxoRUEpFTktIRE9E",
-            "S0EucHJvdG8aEVBOR0dLRkZKSUxHLnByb3RvIpMHCgtCS0ZERkxOSEtJRhIW",
-            "Cg5xdWV1ZV9wb3NpdGlvbhgBIAEoDRITCgtJQ0JGRE1OTkVOSRgCIAEoDRIp",
-            "ChFtYXJibGVfZ2FtZV9iZWdpbhhlIAEoCzIMLkNKT0NFSkxQQURLSAASJwoP",
-            "bWFyYmxlX2dhbWVfZW5kGGYgASgLMgwuS01HRENDTk5HRUVIABIpChFtYXJi",
-            "bGVfZ2FtZV9yb3VuZBhnIAEoCzIMLkxPS1BKR0xKSUlISAASKAoQbWFyYmxl",
-            "X2dhbWVfdHVybhhoIAEoCzIMLlBJTU5HQkFNTUFNSAASMAoXY2FrZV9yYWNl",
-            "X3NlY3Rpb25fYmVnaW4YyQEgASgLMgwuUEpFTktIRE9ES0FIABIuChVjYWtl",
-            "X3JhY2Vfc2VjdGlvbl9lbmQYygEgASgLMgwuRkxPSUNCRE9DTkpIABI2Ch1j",
-            "YWtlX3JhY2Vfcm9vbV9zZWN0aW9uX3NldHRsZRjLASABKAsyDC5JSVBBSEVI",
-            "SkpKTEgAEioKEWRpY2VfY29tYmF0X2JlZ2luGPsBIAEoCzIMLkpQQUhGRkZD",
-            "SUlLSAASLQoUZGljZV9jb21iYXRfdHVybl9lbmQY/AEgASgLMgwuTklOTEVG",
-            "RVBHQ0NIABIoCg9kaWNlX2NvbWJhdF9lbmQY/QEgASgLMgwuS0tPS09BSkJI",
-            "Rk5IABIuChVkaWNlX2NvbWJhdF92XzJfYmVnaW4YhQIgASgLMgwuTExKSkdJ",
-            "TEdORU9IABIsChNkaWNlX2NvbWJhdF92XzJfZW5kGIYCIAEoCzIMLkhQT0xK",
-            "R0RHT0VJSAASMQoYZGljZV9jb21iYXRfdl8yX3R1cm5fZW5kGIcCIAEoCzIM",
-            "LklFTUJLSUFFTk9BSAASPQokZGljZV9jb21iYXRfdl8yX3RhY3RpY3NfcG9p",
-            "bnRfY2hhbmdlGIgCIAEoCzIMLlBOR0dLRkZKSUxHSAASPAojZGljZV9jb21i",
-            "YXRfdl8yX3RhY3RpY3NfY2FyZF9jaGFuZ2UYiQIgASgLMgwuS05NR0hMSktC",
-            "REFIABI8CiNkaWNlX2NvbWJhdF92XzJfZGljZV9jaGFuZ2VfcmVxdWVzdBiK",
-            "AiABKAsyDC5JTkhNREZEQkdDTEgAEjQKG2RpY2VfY29tYmF0X3ZfMl9kaWNl",
-            "X2NoYW5nZRiLAiABKAsyDC5KRUhQR0NFSUhERkgAQg0KC1BBRkxLSkFDRURE",
-            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "QkRPQ05KLnByb3RvGhFIQ0hETE1JT09JUC5wcm90bxoRSFBPTEpHREdPRUku",
+            "cHJvdG8aEUlFTUJLSUFFTk9BLnByb3RvGhFJSVBBSEVISkpKTC5wcm90bxoR",
+            "SU5ITURGREJHQ0wucHJvdG8aEUpFSFBHQ0VJSERGLnByb3RvGhFKUEFIRkZG",
+            "Q0lJSy5wcm90bxoRS0tPS09BSkJIRk4ucHJvdG8aEUtNR0RDQ05OR0VFLnBy",
+            "b3RvGhFLTk1HSExKS0JEQS5wcm90bxoRTExKSkdJTEdORU8ucHJvdG8aEUxP",
+            "S1BKR0xKSUlILnByb3RvGhFMUEVISUxNTUlOQS5wcm90bxoRTklOTEVGRVBH",
+            "Q0MucHJvdG8aEVBJTU5HQkFNTUFNLnByb3RvGhFQSkVOS0hET0RLQS5wcm90",
+            "bxoRUE5HR0tGRkpJTEcucHJvdG8i8QcKC0JLRkRGTE5IS0lGEhYKDnF1ZXVl",
+            "X3Bvc2l0aW9uGAEgASgNEhMKC0lDQkZETU5ORU5JGAIgASgNEikKEW1hcmJs",
+            "ZV9nYW1lX2JlZ2luGGUgASgLMgwuQ0pPQ0VKTFBBREtIABInCg9tYXJibGVf",
+            "Z2FtZV9lbmQYZiABKAsyDC5LTUdEQ0NOTkdFRUgAEikKEW1hcmJsZV9nYW1l",
+            "X3JvdW5kGGcgASgLMgwuTE9LUEpHTEpJSUhIABIoChBtYXJibGVfZ2FtZV90",
+            "dXJuGGggASgLMgwuUElNTkdCQU1NQU1IABIwChdjYWtlX3JhY2Vfc2VjdGlv",
+            "bl9iZWdpbhjJASABKAsyDC5QSkVOS0hET0RLQUgAEi4KFWNha2VfcmFjZV9z",
+            "ZWN0aW9uX2VuZBjKASABKAsyDC5GTE9JQ0JET0NOSkgAEjYKHWNha2VfcmFj",
+            "ZV9yb29tX3NlY3Rpb25fc2V0dGxlGMsBIAEoCzIMLklJUEFIRUhKSkpMSAAS",
+            "KgoRZGljZV9jb21iYXRfYmVnaW4Y+wEgASgLMgwuSlBBSEZGRkNJSUtIABIt",
+            "ChRkaWNlX2NvbWJhdF90dXJuX2VuZBj8ASABKAsyDC5OSU5MRUZFUEdDQ0gA",
+            "EigKD2RpY2VfY29tYmF0X2VuZBj9ASABKAsyDC5LS09LT0FKQkhGTkgAEi4K",
+            "FWRpY2VfY29tYmF0X3ZfMl9iZWdpbhiFAiABKAsyDC5MTEpKR0lMR05FT0gA",
+            "EiwKE2RpY2VfY29tYmF0X3ZfMl9lbmQYhgIgASgLMgwuSFBPTEpHREdPRUlI",
+            "ABIxChhkaWNlX2NvbWJhdF92XzJfdHVybl9lbmQYhwIgASgLMgwuSUVNQktJ",
+            "QUVOT0FIABI9CiRkaWNlX2NvbWJhdF92XzJfdGFjdGljc19wb2ludF9jaGFu",
+            "Z2UYiAIgASgLMgwuUE5HR0tGRkpJTEdIABI8CiNkaWNlX2NvbWJhdF92XzJf",
+            "dGFjdGljc19jYXJkX2NoYW5nZRiJAiABKAsyDC5LTk1HSExKS0JEQUgAEjwK",
+            "I2RpY2VfY29tYmF0X3ZfMl9kaWNlX2NoYW5nZV9yZXF1ZXN0GIoCIAEoCzIM",
+            "LklOSE1ERkRCR0NMSAASNAobZGljZV9jb21iYXRfdl8yX2RpY2VfY2hhbmdl",
+            "GIsCIAEoCzIMLkpFSFBHQ0VJSERGSAASLgoVdGVhbV90b3dlcnNfcHZwX3N0",
+            "YXJ0GIwCIAEoCzIMLkxQRUhJTE1NSU5BSAASLAoTdGVhbV90b3dlcnNfcHZw",
+            "X2VuZBiNAiABKAsyDC5IQ0hETE1JT09JUEgAQg0KC1BBRkxLSkFDRUREQhaq",
+            "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CJOCEJLPADKReflection.Descriptor, global::March7thHoney.Proto.FLOICBDOCNJReflection.Descriptor, global::March7thHoney.Proto.HPOLJGDGOEIReflection.Descriptor, global::March7thHoney.Proto.IEMBKIAENOAReflection.Descriptor, global::March7thHoney.Proto.IIPAHEHJJJLReflection.Descriptor, global::March7thHoney.Proto.INHMDFDBGCLReflection.Descriptor, global::March7thHoney.Proto.JEHPGCEIHDFReflection.Descriptor, global::March7thHoney.Proto.JPAHFFFCIIKReflection.Descriptor, global::March7thHoney.Proto.KKOKOAJBHFNReflection.Descriptor, global::March7thHoney.Proto.KMGDCCNNGEEReflection.Descriptor, global::March7thHoney.Proto.KNMGHLJKBDAReflection.Descriptor, global::March7thHoney.Proto.LLJJGILGNEOReflection.Descriptor, global::March7thHoney.Proto.LOKPJGLJIIHReflection.Descriptor, global::March7thHoney.Proto.NINLEFEPGCCReflection.Descriptor, global::March7thHoney.Proto.PIMNGBAMMAMReflection.Descriptor, global::March7thHoney.Proto.PJENKHDODKAReflection.Descriptor, global::March7thHoney.Proto.PNGGKFFJILGReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::March7thHoney.Proto.CJOCEJLPADKReflection.Descriptor, global::March7thHoney.Proto.FLOICBDOCNJReflection.Descriptor, global::March7thHoney.Proto.HCHDLMIOOIPReflection.Descriptor, global::March7thHoney.Proto.HPOLJGDGOEIReflection.Descriptor, global::March7thHoney.Proto.IEMBKIAENOAReflection.Descriptor, global::March7thHoney.Proto.IIPAHEHJJJLReflection.Descriptor, global::March7thHoney.Proto.INHMDFDBGCLReflection.Descriptor, global::March7thHoney.Proto.JEHPGCEIHDFReflection.Descriptor, global::March7thHoney.Proto.JPAHFFFCIIKReflection.Descriptor, global::March7thHoney.Proto.KKOKOAJBHFNReflection.Descriptor, global::March7thHoney.Proto.KMGDCCNNGEEReflection.Descriptor, global::March7thHoney.Proto.KNMGHLJKBDAReflection.Descriptor, global::March7thHoney.Proto.LLJJGILGNEOReflection.Descriptor, global::March7thHoney.Proto.LOKPJGLJIIHReflection.Descriptor, global::March7thHoney.Proto.LPEHILMMINAReflection.Descriptor, global::March7thHoney.Proto.NINLEFEPGCCReflection.Descriptor, global::March7thHoney.Proto.PIMNGBAMMAMReflection.Descriptor, global::March7thHoney.Proto.PJENKHDODKAReflection.Descriptor, global::March7thHoney.Proto.PNGGKFFJILGReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BKFDFLNHKIF), global::March7thHoney.Proto.BKFDFLNHKIF.Parser, new[]{ "QueuePosition", "ICBFDMNNENI", "MarbleGameBegin", "MarbleGameEnd", "MarbleGameRound", "MarbleGameTurn", "CakeRaceSectionBegin", "CakeRaceSectionEnd", "CakeRaceRoomSectionSettle", "DiceCombatBegin", "DiceCombatTurnEnd", "DiceCombatEnd", "DiceCombatV2Begin", "DiceCombatV2End", "DiceCombatV2TurnEnd", "DiceCombatV2TacticsPointChange", "DiceCombatV2TacticsCardChange", "DiceCombatV2DiceChangeRequest", "DiceCombatV2DiceChange" }, new[]{ "PAFLKJACEDD" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BKFDFLNHKIF), global::March7thHoney.Proto.BKFDFLNHKIF.Parser, new[]{ "QueuePosition", "ICBFDMNNENI", "MarbleGameBegin", "MarbleGameEnd", "MarbleGameRound", "MarbleGameTurn", "CakeRaceSectionBegin", "CakeRaceSectionEnd", "CakeRaceRoomSectionSettle", "DiceCombatBegin", "DiceCombatTurnEnd", "DiceCombatEnd", "DiceCombatV2Begin", "DiceCombatV2End", "DiceCombatV2TurnEnd", "DiceCombatV2TacticsPointChange", "DiceCombatV2TacticsCardChange", "DiceCombatV2DiceChangeRequest", "DiceCombatV2DiceChange", "TeamTowersPvpStart", "TeamTowersPvpEnd" }, new[]{ "PAFLKJACEDD" }, null, null, null)
           }));
     }
     #endregion
@@ -151,6 +154,12 @@ namespace March7thHoney.Proto {
           break;
         case PAFLKJACEDDOneofCase.DiceCombatV2DiceChange:
           DiceCombatV2DiceChange = other.DiceCombatV2DiceChange.Clone();
+          break;
+        case PAFLKJACEDDOneofCase.TeamTowersPvpStart:
+          TeamTowersPvpStart = other.TeamTowersPvpStart.Clone();
+          break;
+        case PAFLKJACEDDOneofCase.TeamTowersPvpEnd:
+          TeamTowersPvpEnd = other.TeamTowersPvpEnd.Clone();
           break;
       }
 
@@ -391,6 +400,30 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "team_towers_pvp_start" field.</summary>
+    public const int TeamTowersPvpStartFieldNumber = 268;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.LPEHILMMINA TeamTowersPvpStart {
+      get { return pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpStart ? (global::March7thHoney.Proto.LPEHILMMINA) pAFLKJACEDD_ : null; }
+      set {
+        pAFLKJACEDD_ = value;
+        pAFLKJACEDDCase_ = value == null ? PAFLKJACEDDOneofCase.None : PAFLKJACEDDOneofCase.TeamTowersPvpStart;
+      }
+    }
+
+    /// <summary>Field number for the "team_towers_pvp_end" field.</summary>
+    public const int TeamTowersPvpEndFieldNumber = 269;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.HCHDLMIOOIP TeamTowersPvpEnd {
+      get { return pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpEnd ? (global::March7thHoney.Proto.HCHDLMIOOIP) pAFLKJACEDD_ : null; }
+      set {
+        pAFLKJACEDD_ = value;
+        pAFLKJACEDDCase_ = value == null ? PAFLKJACEDDOneofCase.None : PAFLKJACEDDOneofCase.TeamTowersPvpEnd;
+      }
+    }
+
     private object pAFLKJACEDD_;
     /// <summary>Enum of possible cases for the "PAFLKJACEDD" oneof.</summary>
     public enum PAFLKJACEDDOneofCase {
@@ -412,6 +445,8 @@ namespace March7thHoney.Proto {
       DiceCombatV2TacticsCardChange = 265,
       DiceCombatV2DiceChangeRequest = 266,
       DiceCombatV2DiceChange = 267,
+      TeamTowersPvpStart = 268,
+      TeamTowersPvpEnd = 269,
     }
     private PAFLKJACEDDOneofCase pAFLKJACEDDCase_ = PAFLKJACEDDOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -461,6 +496,8 @@ namespace March7thHoney.Proto {
       if (!object.Equals(DiceCombatV2TacticsCardChange, other.DiceCombatV2TacticsCardChange)) return false;
       if (!object.Equals(DiceCombatV2DiceChangeRequest, other.DiceCombatV2DiceChangeRequest)) return false;
       if (!object.Equals(DiceCombatV2DiceChange, other.DiceCombatV2DiceChange)) return false;
+      if (!object.Equals(TeamTowersPvpStart, other.TeamTowersPvpStart)) return false;
+      if (!object.Equals(TeamTowersPvpEnd, other.TeamTowersPvpEnd)) return false;
       if (PAFLKJACEDDCase != other.PAFLKJACEDDCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -488,6 +525,8 @@ namespace March7thHoney.Proto {
       if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.DiceCombatV2TacticsCardChange) hash ^= DiceCombatV2TacticsCardChange.GetHashCode();
       if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.DiceCombatV2DiceChangeRequest) hash ^= DiceCombatV2DiceChangeRequest.GetHashCode();
       if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.DiceCombatV2DiceChange) hash ^= DiceCombatV2DiceChange.GetHashCode();
+      if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpStart) hash ^= TeamTowersPvpStart.GetHashCode();
+      if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpEnd) hash ^= TeamTowersPvpEnd.GetHashCode();
       hash ^= (int) pAFLKJACEDDCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -583,6 +622,14 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(218, 16);
         output.WriteMessage(DiceCombatV2DiceChange);
       }
+      if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpStart) {
+        output.WriteRawTag(226, 16);
+        output.WriteMessage(TeamTowersPvpStart);
+      }
+      if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpEnd) {
+        output.WriteRawTag(234, 16);
+        output.WriteMessage(TeamTowersPvpEnd);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -669,6 +716,14 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(218, 16);
         output.WriteMessage(DiceCombatV2DiceChange);
       }
+      if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpStart) {
+        output.WriteRawTag(226, 16);
+        output.WriteMessage(TeamTowersPvpStart);
+      }
+      if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpEnd) {
+        output.WriteRawTag(234, 16);
+        output.WriteMessage(TeamTowersPvpEnd);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -735,6 +790,12 @@ namespace March7thHoney.Proto {
       }
       if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.DiceCombatV2DiceChange) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(DiceCombatV2DiceChange);
+      }
+      if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpStart) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(TeamTowersPvpStart);
+      }
+      if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpEnd) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(TeamTowersPvpEnd);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -856,6 +917,18 @@ namespace March7thHoney.Proto {
             DiceCombatV2DiceChange = new global::March7thHoney.Proto.JEHPGCEIHDF();
           }
           DiceCombatV2DiceChange.MergeFrom(other.DiceCombatV2DiceChange);
+          break;
+        case PAFLKJACEDDOneofCase.TeamTowersPvpStart:
+          if (TeamTowersPvpStart == null) {
+            TeamTowersPvpStart = new global::March7thHoney.Proto.LPEHILMMINA();
+          }
+          TeamTowersPvpStart.MergeFrom(other.TeamTowersPvpStart);
+          break;
+        case PAFLKJACEDDOneofCase.TeamTowersPvpEnd:
+          if (TeamTowersPvpEnd == null) {
+            TeamTowersPvpEnd = new global::March7thHoney.Proto.HCHDLMIOOIP();
+          }
+          TeamTowersPvpEnd.MergeFrom(other.TeamTowersPvpEnd);
           break;
       }
 
@@ -1039,6 +1112,24 @@ namespace March7thHoney.Proto {
             DiceCombatV2DiceChange = subBuilder;
             break;
           }
+          case 2146: {
+            global::March7thHoney.Proto.LPEHILMMINA subBuilder = new global::March7thHoney.Proto.LPEHILMMINA();
+            if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpStart) {
+              subBuilder.MergeFrom(TeamTowersPvpStart);
+            }
+            input.ReadMessage(subBuilder);
+            TeamTowersPvpStart = subBuilder;
+            break;
+          }
+          case 2154: {
+            global::March7thHoney.Proto.HCHDLMIOOIP subBuilder = new global::March7thHoney.Proto.HCHDLMIOOIP();
+            if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpEnd) {
+              subBuilder.MergeFrom(TeamTowersPvpEnd);
+            }
+            input.ReadMessage(subBuilder);
+            TeamTowersPvpEnd = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -1217,6 +1308,24 @@ namespace March7thHoney.Proto {
             }
             input.ReadMessage(subBuilder);
             DiceCombatV2DiceChange = subBuilder;
+            break;
+          }
+          case 2146: {
+            global::March7thHoney.Proto.LPEHILMMINA subBuilder = new global::March7thHoney.Proto.LPEHILMMINA();
+            if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpStart) {
+              subBuilder.MergeFrom(TeamTowersPvpStart);
+            }
+            input.ReadMessage(subBuilder);
+            TeamTowersPvpStart = subBuilder;
+            break;
+          }
+          case 2154: {
+            global::March7thHoney.Proto.HCHDLMIOOIP subBuilder = new global::March7thHoney.Proto.HCHDLMIOOIP();
+            if (pAFLKJACEDDCase_ == PAFLKJACEDDOneofCase.TeamTowersPvpEnd) {
+              subBuilder.MergeFrom(TeamTowersPvpEnd);
+            }
+            input.ReadMessage(subBuilder);
+            TeamTowersPvpEnd = subBuilder;
             break;
           }
         }

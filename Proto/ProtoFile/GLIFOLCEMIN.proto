@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GLIFOLCEMIN {
-    uint32 KEJGCDOGEDD = 12;
-    uint32 PIFOEGCGKLC = 3;
+    uint32 PIFOEGCGKLC = 11;
+    uint32 KEJGCDOGEDD = 15;
 }

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message EquipSkillCoreCsReq {
+    uint32 item_id = 8;
+    uint32 APGDJGPGGMO = 14;
+    uint32 slot = 15;
+}

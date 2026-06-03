@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message POFNNGOCEOK {
-    int64 KAMOPEEBOHJ = 6;
-    uint32 EIKLMFPMJJD = 5;
-    uint32 dice_slot_id = 7;
+    uint32 EIKLMFPMJJD = 2;
+    uint32 dice_slot_id = 3;
+    int64 expire_time = 10;
 }

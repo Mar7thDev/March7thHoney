@@ -6,6 +6,6 @@ import "ItemList.proto";
 
 message TakeRogueMiracleHandbookRewardScRsp {
     repeated uint32 CNDLCGEFLCJ = 7;
-    ItemList reward = 15;
-    uint32 retcode = 2;
+    ItemList reward = 9;
+    uint32 retcode = 12;
 }

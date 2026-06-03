@@ -2,15 +2,15 @@ syntax = "proto3";
 
 option csharp_namespace = "March7thHoney.Proto";
 
-import "APAMFCKFHLL.proto";
+import "KVP.proto";
 
 message MatchThreeV2LevelEndCsReq {
-    string uuid = 11;
+    string uuid = 1;
+    repeated KVP MONKDLNMMBK = 2;
     repeated uint32 EEDLBJGGLKD = 3;
-    repeated APAMFCKFHLL MONKDLNMMBK = 7;
-    uint32 EOHGLCJAMKN = 4;
-    uint32 JGIFDFLDBPB = 14;
-    uint32 level_id = 9;
-    uint32 GFBAHEODFNA = 15;
-    uint32 HBONKLEOEEI = 2;
+    uint32 EOHGLCJAMKN = 8;
+    uint32 HBONKLEOEEI = 10;
+    uint32 JGIFDFLDBPB = 12;
+    uint32 GFBAHEODFNA = 13;
+    uint32 level_id = 15;
 }

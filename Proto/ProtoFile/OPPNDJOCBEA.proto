@@ -6,12 +6,12 @@ import "GKJEMHKOMJC.proto";
 import "LEGBKMIIJOA.proto";
 
 message OPPNDJOCBEA {
-    repeated uint32 EAOCKLDEOGH = 9;
-    repeated LEGBKMIIJOA MIKKAEJNLAL = 4;
-    repeated GKJEMHKOMJC OCAMBKNKKGO = 13;
-    uint32 JJDEEHAMHGF = 1;
-    uint32 NCDBCLLAHPP = 10;
-    bool NEEDLFJJFPL = 3;
-    uint32 LKPNNOGPJOI = 5;
-    uint32 GCNMKIHOFGG = 15;
+    uint32 GCNMKIHOFGG = 1;
+    repeated LEGBKMIIJOA MIKKAEJNLAL = 2;
+    uint32 NCDBCLLAHPP = 3;
+    uint32 LKPNNOGPJOI = 4;
+    repeated uint32 EAOCKLDEOGH = 6;
+    repeated GKJEMHKOMJC OCAMBKNKKGO = 8;
+    bool NEEDLFJJFPL = 9;
+    uint32 JJDEEHAMHGF = 14;
 }

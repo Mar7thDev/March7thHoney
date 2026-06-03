@@ -3,5 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message AOHKKFHDALO {
-    uint32 role_star = 101;
+    oneof NEBNJDMFELO {
+        uint32 role_star = 101;
+        uint32 PIHGNNMBCEJ = 102;
+    }
 }

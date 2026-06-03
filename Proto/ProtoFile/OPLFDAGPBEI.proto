@@ -5,8 +5,8 @@ option csharp_namespace = "March7thHoney.Proto";
 import "HJNPOBAMKKF.proto";
 
 message OPLFDAGPBEI {
-    HJNPOBAMKKF FLFNBPLNNBL = 2;
-    string stop_desc = 4;
-    HJNPOBAMKKF LLMDKAHFIIJ = 3;
     uint32 avatar_id = 1;
+    HJNPOBAMKKF FLFNBPLNNBL = 2;
+    HJNPOBAMKKF LLMDKAHFIIJ = 3;
+    string stop_desc = 4;
 }

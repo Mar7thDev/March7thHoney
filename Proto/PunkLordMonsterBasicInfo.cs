@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5QdW5rTG9yZE1vbnN0ZXJCYXNpY0luZm8ucHJvdG8aF1B1bmtMb3JkU2hh",
-            "cmVUeXBlLnByb3RvItwBChhQdW5rTG9yZE1vbnN0ZXJCYXNpY0luZm8SEQoJ",
-            "Y29uZmlnX2lkGAMgASgNEhQKDGF0dGFja2VyX251bRgHIAEoDRISCgptb25z",
-            "dGVyX2lkGAIgASgNEgsKA3VpZBgBIAEoDRITCgtjcmVhdGVfdGltZRgFIAEo",
-            "AxITCgt3b3JsZF9sZXZlbBgEIAEoDRIPCgdsZWZ0X2hwGAYgASgNEiYKCnNo",
+            "cmVUeXBlLnByb3RvItwBChhQdW5rTG9yZE1vbnN0ZXJCYXNpY0luZm8SCwoD",
+            "dWlkGAEgASgNEhIKCm1vbnN0ZXJfaWQYAiABKA0SEQoJY29uZmlnX2lkGAMg",
+            "ASgNEhMKC3dvcmxkX2xldmVsGAQgASgNEhMKC2NyZWF0ZV90aW1lGAUgASgD",
+            "Eg8KB2xlZnRfaHAYBiABKA0SFAoMYXR0YWNrZXJfbnVtGAcgASgNEiYKCnNo",
             "YXJlX3R5cGUYCCABKA4yEi5QdW5rTG9yZFNoYXJlVHlwZRITCgtBUENNQUlK",
             "UFBFSBgJIAEoCEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.PunkLordShareTypeReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PunkLordMonsterBasicInfo), global::March7thHoney.Proto.PunkLordMonsterBasicInfo.Parser, new[]{ "ConfigId", "AttackerNum", "MonsterId", "Uid", "CreateTime", "WorldLevel", "LeftHp", "ShareType", "APCMAIJPPEH" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PunkLordMonsterBasicInfo), global::March7thHoney.Proto.PunkLordMonsterBasicInfo.Parser, new[]{ "Uid", "MonsterId", "ConfigId", "WorldLevel", "CreateTime", "LeftHp", "AttackerNum", "ShareType", "APCMAIJPPEH" }, null, null, null, null)
           }));
     }
     #endregion
@@ -76,13 +76,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public PunkLordMonsterBasicInfo(PunkLordMonsterBasicInfo other) : this() {
-      configId_ = other.configId_;
-      attackerNum_ = other.attackerNum_;
-      monsterId_ = other.monsterId_;
       uid_ = other.uid_;
-      createTime_ = other.createTime_;
+      monsterId_ = other.monsterId_;
+      configId_ = other.configId_;
       worldLevel_ = other.worldLevel_;
+      createTime_ = other.createTime_;
       leftHp_ = other.leftHp_;
+      attackerNum_ = other.attackerNum_;
       shareType_ = other.shareType_;
       aPCMAIJPPEH_ = other.aPCMAIJPPEH_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -94,27 +94,15 @@ namespace March7thHoney.Proto {
       return new PunkLordMonsterBasicInfo(this);
     }
 
-    /// <summary>Field number for the "config_id" field.</summary>
-    public const int ConfigIdFieldNumber = 3;
-    private uint configId_;
+    /// <summary>Field number for the "uid" field.</summary>
+    public const int UidFieldNumber = 1;
+    private uint uid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ConfigId {
-      get { return configId_; }
+    public uint Uid {
+      get { return uid_; }
       set {
-        configId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "attacker_num" field.</summary>
-    public const int AttackerNumFieldNumber = 7;
-    private uint attackerNum_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AttackerNum {
-      get { return attackerNum_; }
-      set {
-        attackerNum_ = value;
+        uid_ = value;
       }
     }
 
@@ -130,27 +118,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "uid" field.</summary>
-    public const int UidFieldNumber = 1;
-    private uint uid_;
+    /// <summary>Field number for the "config_id" field.</summary>
+    public const int ConfigIdFieldNumber = 3;
+    private uint configId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Uid {
-      get { return uid_; }
+    public uint ConfigId {
+      get { return configId_; }
       set {
-        uid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "create_time" field.</summary>
-    public const int CreateTimeFieldNumber = 5;
-    private long createTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long CreateTime {
-      get { return createTime_; }
-      set {
-        createTime_ = value;
+        configId_ = value;
       }
     }
 
@@ -166,6 +142,18 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "create_time" field.</summary>
+    public const int CreateTimeFieldNumber = 5;
+    private long createTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long CreateTime {
+      get { return createTime_; }
+      set {
+        createTime_ = value;
+      }
+    }
+
     /// <summary>Field number for the "left_hp" field.</summary>
     public const int LeftHpFieldNumber = 6;
     private uint leftHp_;
@@ -175,6 +163,18 @@ namespace March7thHoney.Proto {
       get { return leftHp_; }
       set {
         leftHp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "attacker_num" field.</summary>
+    public const int AttackerNumFieldNumber = 7;
+    private uint attackerNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AttackerNum {
+      get { return attackerNum_; }
+      set {
+        attackerNum_ = value;
       }
     }
 
@@ -217,13 +217,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ConfigId != other.ConfigId) return false;
-      if (AttackerNum != other.AttackerNum) return false;
-      if (MonsterId != other.MonsterId) return false;
       if (Uid != other.Uid) return false;
-      if (CreateTime != other.CreateTime) return false;
+      if (MonsterId != other.MonsterId) return false;
+      if (ConfigId != other.ConfigId) return false;
       if (WorldLevel != other.WorldLevel) return false;
+      if (CreateTime != other.CreateTime) return false;
       if (LeftHp != other.LeftHp) return false;
+      if (AttackerNum != other.AttackerNum) return false;
       if (ShareType != other.ShareType) return false;
       if (APCMAIJPPEH != other.APCMAIJPPEH) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -233,13 +233,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
-      if (AttackerNum != 0) hash ^= AttackerNum.GetHashCode();
-      if (MonsterId != 0) hash ^= MonsterId.GetHashCode();
       if (Uid != 0) hash ^= Uid.GetHashCode();
-      if (CreateTime != 0L) hash ^= CreateTime.GetHashCode();
+      if (MonsterId != 0) hash ^= MonsterId.GetHashCode();
+      if (ConfigId != 0) hash ^= ConfigId.GetHashCode();
       if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
+      if (CreateTime != 0L) hash ^= CreateTime.GetHashCode();
       if (LeftHp != 0) hash ^= LeftHp.GetHashCode();
+      if (AttackerNum != 0) hash ^= AttackerNum.GetHashCode();
       if (ShareType != global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj) hash ^= ShareType.GetHashCode();
       if (APCMAIJPPEH != false) hash ^= APCMAIJPPEH.GetHashCode();
       if (_unknownFields != null) {
@@ -352,26 +352,26 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ConfigId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
-      }
-      if (AttackerNum != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AttackerNum);
+      if (Uid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
       }
       if (MonsterId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MonsterId);
       }
-      if (Uid != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uid);
-      }
-      if (CreateTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(CreateTime);
+      if (ConfigId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ConfigId);
       }
       if (WorldLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldLevel);
       }
+      if (CreateTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(CreateTime);
+      }
       if (LeftHp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LeftHp);
+      }
+      if (AttackerNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AttackerNum);
       }
       if (ShareType != global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ShareType);
@@ -391,26 +391,26 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ConfigId != 0) {
-        ConfigId = other.ConfigId;
-      }
-      if (other.AttackerNum != 0) {
-        AttackerNum = other.AttackerNum;
+      if (other.Uid != 0) {
+        Uid = other.Uid;
       }
       if (other.MonsterId != 0) {
         MonsterId = other.MonsterId;
       }
-      if (other.Uid != 0) {
-        Uid = other.Uid;
-      }
-      if (other.CreateTime != 0L) {
-        CreateTime = other.CreateTime;
+      if (other.ConfigId != 0) {
+        ConfigId = other.ConfigId;
       }
       if (other.WorldLevel != 0) {
         WorldLevel = other.WorldLevel;
       }
+      if (other.CreateTime != 0L) {
+        CreateTime = other.CreateTime;
+      }
       if (other.LeftHp != 0) {
         LeftHp = other.LeftHp;
+      }
+      if (other.AttackerNum != 0) {
+        AttackerNum = other.AttackerNum;
       }
       if (other.ShareType != global::March7thHoney.Proto.PunkLordShareType.EopodgpdkmoNlcdgipgfdj) {
         ShareType = other.ShareType;

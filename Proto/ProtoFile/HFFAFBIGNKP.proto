@@ -3,8 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message HFFAFBIGNKP {
-    uint32 INOIOGNMBMM = 4;
     uint32 monster_id = 1;
-    uint32 HEKPNDDKKMM = 3;
     uint32 IBNLKOLLPJH = 2;
+    uint32 HEKPNDDKKMM = 3;
+    uint32 INOIOGNMBMM = 4;
 }

@@ -26,7 +26,7 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChtHZXRNYXRjaFBsYXlEYXRhQ3NSZXEucHJvdG8aE0ZpZ2h0R2FtZU1vZGUu",
             "cHJvdG8iPAoVR2V0TWF0Y2hQbGF5RGF0YUNzUmVxEiMKC0xDQ0hBS0JLQUhM",
-            "GAUgAygOMg4uRmlnaHRHYW1lTW9kZUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "GA8gAygOMg4uRmlnaHRHYW1lTW9kZUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.FightGameModeReflection.Descriptor, },
@@ -84,9 +84,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "LCCHAKBKAHL" field.</summary>
-    public const int LCCHAKBKAHLFieldNumber = 5;
+    public const int LCCHAKBKAHLFieldNumber = 15;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.FightGameMode> _repeated_lCCHAKBKAHL_codec
-        = pb::FieldCodec.ForEnum(42, x => (int) x, x => (global::March7thHoney.Proto.FightGameMode) x);
+        = pb::FieldCodec.ForEnum(122, x => (int) x, x => (global::March7thHoney.Proto.FightGameMode) x);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode> lCCHAKBKAHL_ = new pbc::RepeatedField<global::March7thHoney.Proto.FightGameMode>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42:
-          case 40: {
+          case 122:
+          case 120: {
             lCCHAKBKAHL_.AddEntriesFrom(input, _repeated_lCCHAKBKAHL_codec);
             break;
           }
@@ -215,8 +215,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42:
-          case 40: {
+          case 122:
+          case 120: {
             lCCHAKBKAHL_.AddEntriesFrom(ref input, _repeated_lCCHAKBKAHL_codec);
             break;
           }

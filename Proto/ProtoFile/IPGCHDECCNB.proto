@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message IPGCHDECCNB {
-    uint32 CLBEEGLKMIM = 3;
-    uint32 CJCCMAACJDB = 12;
-    uint32 PIJBIFAIFOA = 2;
+    uint32 node_type = 1;
+    uint32 PIJBIFAIFOA = 11;
+    uint32 CLBEEGLKMIM = 14;
 }

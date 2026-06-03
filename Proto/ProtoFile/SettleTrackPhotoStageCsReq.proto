@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PNICDFFMDDB.proto";
 
 message SettleTrackPhotoStageCsReq {
-    repeated PNICDFFMDDB PIGLHELGMIJ = 14;
-    uint32 cost_time = 7;
-    uint32 stage_id = 15;
+    uint32 stage_id = 10;
+    repeated PNICDFFMDDB PIGLHELGMIJ = 12;
+    uint32 cost_time = 13;
 }

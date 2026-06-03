@@ -5,5 +5,5 @@ option csharp_namespace = "March7thHoney.Proto";
 import "DFKABDLJMJO.proto";
 
 message FIOENGOHOOJ {
-    NEMIDPFEJFL MEGBFFOAFGL = 9;
+    NEMIDPFEJFL MEGBFFOAFGL = 6;
 }

@@ -3,6 +3,6 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message NIALCDGNNLC {
-    uint32 KPKEBLOEFCP = 15;
-    uint32 retcode = 1;
+    uint32 retcode = 9;
+    uint32 KPKEBLOEFCP = 10;
 }

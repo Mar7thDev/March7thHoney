@@ -8,11 +8,11 @@ import "BigDataRecommendType.proto";
 import "GNBBDMBNNDJ.proto";
 
 message GetBigDataAllRecommendScRsp {
-    BigDataRecommendType big_data_recommend_type = 13;
-    uint32 retcode = 3;
+    BigDataRecommendType big_data_recommend_type = 5;
+    uint32 retcode = 9;
     oneof OODKOEILJCD {
-        BigDataRecommendRelicAvatar relic_avatar = 8;
-        BigDataRecommendAvatarRelic avatar_relic = 1;
-        GNBBDMBNNDJ KHCMLINMGEN = 4;
+        BigDataRecommendRelicAvatar relic_avatar = 1;
+        BigDataRecommendAvatarRelic avatar_relic = 8;
+        GNBBDMBNNDJ KHCMLINMGEN = 7;
     }
 }

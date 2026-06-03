@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "PlayerSimpleInfo.proto";
 
 message FriendApplyInfo {
-    PlayerSimpleInfo player_info = 2;
-    int64 apply_time = 15;
+    int64 apply_time = 5;
+    PlayerSimpleInfo player_info = 10;
 }

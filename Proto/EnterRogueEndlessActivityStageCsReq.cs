@@ -26,8 +26,8 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CilFbnRlclJvZ3VlRW5kbGVzc0FjdGl2aXR5U3RhZ2VDc1JlcS5wcm90bxoR",
             "Q0FFRkJHQUZLSEQucHJvdG8iXQojRW50ZXJSb2d1ZUVuZGxlc3NBY3Rpdml0",
-            "eVN0YWdlQ3NSZXESIQoLYXZhdGFyX2xpc3QYDSADKAsyDC5DQUVGQkdBRktI",
-            "RBITCgtNUE1NQ1BNTkxJRBgHIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "eVN0YWdlQ3NSZXESIQoLYXZhdGFyX2xpc3QYCyADKAsyDC5DQUVGQkdBRktI",
+            "RBITCgtNUE1NQ1BNTkxJRBgPIAEoDUIWqgITTWFyY2g3dGhIb25leS5Qcm90",
             "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CAEFBGAFKHDReflection.Descriptor, },
@@ -86,9 +86,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 13;
+    public const int AvatarListFieldNumber = 11;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.CAEFBGAFKHD> _repeated_avatarList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.CAEFBGAFKHD.Parser);
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.CAEFBGAFKHD.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.CAEFBGAFKHD> avatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.CAEFBGAFKHD>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -97,7 +97,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "MPMMCPMNLID" field.</summary>
-    public const int MPMMCPMNLIDFieldNumber = 7;
+    public const int MPMMCPMNLIDFieldNumber = 15;
     private uint mPMMCPMNLID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -152,11 +152,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (MPMMCPMNLID != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(120);
         output.WriteUInt32(MPMMCPMNLID);
       }
-      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -167,11 +167,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (MPMMCPMNLID != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(120);
         output.WriteUInt32(MPMMCPMNLID);
       }
-      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -221,12 +221,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            MPMMCPMNLID = input.ReadUInt32();
+          case 90: {
+            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
             break;
           }
-          case 106: {
-            avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
+          case 120: {
+            MPMMCPMNLID = input.ReadUInt32();
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            MPMMCPMNLID = input.ReadUInt32();
+          case 90: {
+            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
             break;
           }
-          case 106: {
-            avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
+          case 120: {
+            MPMMCPMNLID = input.ReadUInt32();
             break;
           }
         }

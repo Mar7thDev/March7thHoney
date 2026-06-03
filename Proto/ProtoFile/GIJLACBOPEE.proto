@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message GIJLACBOPEE {
-    uint32 queue_position = 4;
-    uint32 HJMEJNMAILK = 1;
+    uint32 HJMEJNMAILK = 5;
+    uint32 queue_position = 9;
     uint32 level = 12;
 }

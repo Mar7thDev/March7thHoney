@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFMRUdOTE1FTk1KSy5wcm90bxoRR0tOT0NORFBBSkEucHJvdG8aEUxETkZJ",
-            "SUNNQ0hBLnByb3RvIooBCgtMRUdOTE1FTk1KSxIPCgdjYXJkX2lkGAIgASgN",
-            "EhEKCXVuaXF1ZV9pZBgPIAEoDRIjCgtNTElHQUZBQkpEUBgGIAEoCzIMLkxE",
-            "TkZJSUNNQ0hBSAASIwoLQkxMQ01MQkRMUEMYCCABKAsyDC5HS05PQ05EUEFK",
+            "SUNNQ0hBLnByb3RvIooBCgtMRUdOTE1FTk1KSxIRCgl1bmlxdWVfaWQYBiAB",
+            "KA0SDwoHY2FyZF9pZBgPIAEoDRIjCgtNTElHQUZBQkpEUBgHIAEoCzIMLkxE",
+            "TkZJSUNNQ0hBSAASIwoLQkxMQ01MQkRMUEMYCyABKAsyDC5HS05PQ05EUEFK",
             "QUgAQg0KC05QRkVHR01OQk9DQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.GKNOCNDPAJAReflection.Descriptor, global::March7thHoney.Proto.LDNFIICMCHAReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LEGNLMENMJK), global::March7thHoney.Proto.LEGNLMENMJK.Parser, new[]{ "CardId", "UniqueId", "MLIGAFABJDP", "BLLCMLBDLPC" }, new[]{ "NPFEGGMNBOC" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LEGNLMENMJK), global::March7thHoney.Proto.LEGNLMENMJK.Parser, new[]{ "UniqueId", "CardId", "MLIGAFABJDP", "BLLCMLBDLPC" }, new[]{ "NPFEGGMNBOC" }, null, null, null)
           }));
     }
     #endregion
@@ -75,8 +75,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public LEGNLMENMJK(LEGNLMENMJK other) : this() {
-      cardId_ = other.cardId_;
       uniqueId_ = other.uniqueId_;
+      cardId_ = other.cardId_;
       switch (other.NPFEGGMNBOCCase) {
         case NPFEGGMNBOCOneofCase.MLIGAFABJDP:
           MLIGAFABJDP = other.MLIGAFABJDP.Clone();
@@ -95,20 +95,8 @@ namespace March7thHoney.Proto {
       return new LEGNLMENMJK(this);
     }
 
-    /// <summary>Field number for the "card_id" field.</summary>
-    public const int CardIdFieldNumber = 2;
-    private uint cardId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CardId {
-      get { return cardId_; }
-      set {
-        cardId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "unique_id" field.</summary>
-    public const int UniqueIdFieldNumber = 15;
+    public const int UniqueIdFieldNumber = 6;
     private uint uniqueId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -119,8 +107,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "card_id" field.</summary>
+    public const int CardIdFieldNumber = 15;
+    private uint cardId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CardId {
+      get { return cardId_; }
+      set {
+        cardId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "MLIGAFABJDP" field.</summary>
-    public const int MLIGAFABJDPFieldNumber = 6;
+    public const int MLIGAFABJDPFieldNumber = 7;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.LDNFIICMCHA MLIGAFABJDP {
@@ -132,7 +132,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "BLLCMLBDLPC" field.</summary>
-    public const int BLLCMLBDLPCFieldNumber = 8;
+    public const int BLLCMLBDLPCFieldNumber = 11;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.GKNOCNDPAJA BLLCMLBDLPC {
@@ -147,8 +147,8 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "NPFEGGMNBOC" oneof.</summary>
     public enum NPFEGGMNBOCOneofCase {
       None = 0,
-      MLIGAFABJDP = 6,
-      BLLCMLBDLPC = 8,
+      MLIGAFABJDP = 7,
+      BLLCMLBDLPC = 11,
     }
     private NPFEGGMNBOCOneofCase nPFEGGMNBOCCase_ = NPFEGGMNBOCOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -179,8 +179,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CardId != other.CardId) return false;
       if (UniqueId != other.UniqueId) return false;
+      if (CardId != other.CardId) return false;
       if (!object.Equals(MLIGAFABJDP, other.MLIGAFABJDP)) return false;
       if (!object.Equals(BLLCMLBDLPC, other.BLLCMLBDLPC)) return false;
       if (NPFEGGMNBOCCase != other.NPFEGGMNBOCCase) return false;
@@ -191,8 +191,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CardId != 0) hash ^= CardId.GetHashCode();
       if (UniqueId != 0) hash ^= UniqueId.GetHashCode();
+      if (CardId != 0) hash ^= CardId.GetHashCode();
       if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.MLIGAFABJDP) hash ^= MLIGAFABJDP.GetHashCode();
       if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.BLLCMLBDLPC) hash ^= BLLCMLBDLPC.GetHashCode();
       hash ^= (int) nPFEGGMNBOCCase_;
@@ -214,21 +214,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CardId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(CardId);
+      if (UniqueId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(UniqueId);
       }
       if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.MLIGAFABJDP) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(MLIGAFABJDP);
       }
       if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.BLLCMLBDLPC) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(90);
         output.WriteMessage(BLLCMLBDLPC);
       }
-      if (UniqueId != 0) {
+      if (CardId != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(UniqueId);
+        output.WriteUInt32(CardId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -240,21 +240,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CardId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(CardId);
+      if (UniqueId != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(UniqueId);
       }
       if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.MLIGAFABJDP) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(MLIGAFABJDP);
       }
       if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.BLLCMLBDLPC) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(90);
         output.WriteMessage(BLLCMLBDLPC);
       }
-      if (UniqueId != 0) {
+      if (CardId != 0) {
         output.WriteRawTag(120);
-        output.WriteUInt32(UniqueId);
+        output.WriteUInt32(CardId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -266,11 +266,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CardId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CardId);
-      }
       if (UniqueId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(UniqueId);
+      }
+      if (CardId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CardId);
       }
       if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.MLIGAFABJDP) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(MLIGAFABJDP);
@@ -290,11 +290,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CardId != 0) {
-        CardId = other.CardId;
-      }
       if (other.UniqueId != 0) {
         UniqueId = other.UniqueId;
+      }
+      if (other.CardId != 0) {
+        CardId = other.CardId;
       }
       switch (other.NPFEGGMNBOCCase) {
         case NPFEGGMNBOCOneofCase.MLIGAFABJDP:
@@ -330,11 +330,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            CardId = input.ReadUInt32();
+          case 48: {
+            UniqueId = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 58: {
             global::March7thHoney.Proto.LDNFIICMCHA subBuilder = new global::March7thHoney.Proto.LDNFIICMCHA();
             if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.MLIGAFABJDP) {
               subBuilder.MergeFrom(MLIGAFABJDP);
@@ -343,7 +343,7 @@ namespace March7thHoney.Proto {
             MLIGAFABJDP = subBuilder;
             break;
           }
-          case 66: {
+          case 90: {
             global::March7thHoney.Proto.GKNOCNDPAJA subBuilder = new global::March7thHoney.Proto.GKNOCNDPAJA();
             if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.BLLCMLBDLPC) {
               subBuilder.MergeFrom(BLLCMLBDLPC);
@@ -353,7 +353,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 120: {
-            UniqueId = input.ReadUInt32();
+            CardId = input.ReadUInt32();
             break;
           }
         }
@@ -375,11 +375,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            CardId = input.ReadUInt32();
+          case 48: {
+            UniqueId = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 58: {
             global::March7thHoney.Proto.LDNFIICMCHA subBuilder = new global::March7thHoney.Proto.LDNFIICMCHA();
             if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.MLIGAFABJDP) {
               subBuilder.MergeFrom(MLIGAFABJDP);
@@ -388,7 +388,7 @@ namespace March7thHoney.Proto {
             MLIGAFABJDP = subBuilder;
             break;
           }
-          case 66: {
+          case 90: {
             global::March7thHoney.Proto.GKNOCNDPAJA subBuilder = new global::March7thHoney.Proto.GKNOCNDPAJA();
             if (nPFEGGMNBOCCase_ == NPFEGGMNBOCOneofCase.BLLCMLBDLPC) {
               subBuilder.MergeFrom(BLLCMLBDLPC);
@@ -398,7 +398,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 120: {
-            UniqueId = input.ReadUInt32();
+            CardId = input.ReadUInt32();
             break;
           }
         }

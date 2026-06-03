@@ -25,14 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiJNYXRjaEJveGluZ0NsdWJPcHBvbmVudENzUmVxLnByb3RvGhFBS0xESUNF",
-            "RkNJTC5wcm90byJsChxNYXRjaEJveGluZ0NsdWJPcHBvbmVudENzUmVxEhMK",
-            "C2F2YXRhcl9saXN0GAggAygNEiEKC09PSk9NS0RNQkJNGAQgAygLMgwuQUtM",
-            "RElDRUZDSUwSFAoMY2hhbGxlbmdlX2lkGA8gASgNQhaqAhNNYXJjaDd0aEhv",
+            "RkNJTC5wcm90byJsChxNYXRjaEJveGluZ0NsdWJPcHBvbmVudENzUmVxEhQK",
+            "DGNoYWxsZW5nZV9pZBgEIAEoDRIhCgtPT0pPTUtETUJCTRgFIAMoCzIMLkFL",
+            "TERJQ0VGQ0lMEhMKC2F2YXRhcl9saXN0GAsgAygNQhaqAhNNYXJjaDd0aEhv",
             "bmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.AKLDICEFCILReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MatchBoxingClubOpponentCsReq), global::March7thHoney.Proto.MatchBoxingClubOpponentCsReq.Parser, new[]{ "AvatarList", "OOJOMKDMBBM", "ChallengeId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MatchBoxingClubOpponentCsReq), global::March7thHoney.Proto.MatchBoxingClubOpponentCsReq.Parser, new[]{ "ChallengeId", "OOJOMKDMBBM", "AvatarList" }, null, null, null, null)
           }));
     }
     #endregion
@@ -74,9 +74,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MatchBoxingClubOpponentCsReq(MatchBoxingClubOpponentCsReq other) : this() {
-      avatarList_ = other.avatarList_.Clone();
-      oOJOMKDMBBM_ = other.oOJOMKDMBBM_.Clone();
       challengeId_ = other.challengeId_;
+      oOJOMKDMBBM_ = other.oOJOMKDMBBM_.Clone();
+      avatarList_ = other.avatarList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -86,30 +86,8 @@ namespace March7thHoney.Proto {
       return new MatchBoxingClubOpponentCsReq(this);
     }
 
-    /// <summary>Field number for the "avatar_list" field.</summary>
-    public const int AvatarListFieldNumber = 8;
-    private static readonly pb::FieldCodec<uint> _repeated_avatarList_codec
-        = pb::FieldCodec.ForUInt32(66);
-    private readonly pbc::RepeatedField<uint> avatarList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> AvatarList {
-      get { return avatarList_; }
-    }
-
-    /// <summary>Field number for the "OOJOMKDMBBM" field.</summary>
-    public const int OOJOMKDMBBMFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AKLDICEFCIL> _repeated_oOJOMKDMBBM_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.AKLDICEFCIL.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AKLDICEFCIL> oOJOMKDMBBM_ = new pbc::RepeatedField<global::March7thHoney.Proto.AKLDICEFCIL>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AKLDICEFCIL> OOJOMKDMBBM {
-      get { return oOJOMKDMBBM_; }
-    }
-
     /// <summary>Field number for the "challenge_id" field.</summary>
-    public const int ChallengeIdFieldNumber = 15;
+    public const int ChallengeIdFieldNumber = 4;
     private uint challengeId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -118,6 +96,28 @@ namespace March7thHoney.Proto {
       set {
         challengeId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "OOJOMKDMBBM" field.</summary>
+    public const int OOJOMKDMBBMFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AKLDICEFCIL> _repeated_oOJOMKDMBBM_codec
+        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.AKLDICEFCIL.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AKLDICEFCIL> oOJOMKDMBBM_ = new pbc::RepeatedField<global::March7thHoney.Proto.AKLDICEFCIL>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.AKLDICEFCIL> OOJOMKDMBBM {
+      get { return oOJOMKDMBBM_; }
+    }
+
+    /// <summary>Field number for the "avatar_list" field.</summary>
+    public const int AvatarListFieldNumber = 11;
+    private static readonly pb::FieldCodec<uint> _repeated_avatarList_codec
+        = pb::FieldCodec.ForUInt32(90);
+    private readonly pbc::RepeatedField<uint> avatarList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> AvatarList {
+      get { return avatarList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -135,9 +135,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!avatarList_.Equals(other.avatarList_)) return false;
-      if(!oOJOMKDMBBM_.Equals(other.oOJOMKDMBBM_)) return false;
       if (ChallengeId != other.ChallengeId) return false;
+      if(!oOJOMKDMBBM_.Equals(other.oOJOMKDMBBM_)) return false;
+      if(!avatarList_.Equals(other.avatarList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -145,9 +145,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= avatarList_.GetHashCode();
-      hash ^= oOJOMKDMBBM_.GetHashCode();
       if (ChallengeId != 0) hash ^= ChallengeId.GetHashCode();
+      hash ^= oOJOMKDMBBM_.GetHashCode();
+      hash ^= avatarList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -166,12 +166,12 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      oOJOMKDMBBM_.WriteTo(output, _repeated_oOJOMKDMBBM_codec);
-      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (ChallengeId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(32);
         output.WriteUInt32(ChallengeId);
       }
+      oOJOMKDMBBM_.WriteTo(output, _repeated_oOJOMKDMBBM_codec);
+      avatarList_.WriteTo(output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -182,12 +182,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      oOJOMKDMBBM_.WriteTo(ref output, _repeated_oOJOMKDMBBM_codec);
-      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (ChallengeId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(32);
         output.WriteUInt32(ChallengeId);
       }
+      oOJOMKDMBBM_.WriteTo(ref output, _repeated_oOJOMKDMBBM_codec);
+      avatarList_.WriteTo(ref output, _repeated_avatarList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -198,11 +198,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
-      size += oOJOMKDMBBM_.CalculateSize(_repeated_oOJOMKDMBBM_codec);
       if (ChallengeId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ChallengeId);
       }
+      size += oOJOMKDMBBM_.CalculateSize(_repeated_oOJOMKDMBBM_codec);
+      size += avatarList_.CalculateSize(_repeated_avatarList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -215,11 +215,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      avatarList_.Add(other.avatarList_);
-      oOJOMKDMBBM_.Add(other.oOJOMKDMBBM_);
       if (other.ChallengeId != 0) {
         ChallengeId = other.ChallengeId;
       }
+      oOJOMKDMBBM_.Add(other.oOJOMKDMBBM_);
+      avatarList_.Add(other.avatarList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -239,17 +239,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 34: {
+          case 32: {
+            ChallengeId = input.ReadUInt32();
+            break;
+          }
+          case 42: {
             oOJOMKDMBBM_.AddEntriesFrom(input, _repeated_oOJOMKDMBBM_codec);
             break;
           }
-          case 66:
-          case 64: {
+          case 90:
+          case 88: {
             avatarList_.AddEntriesFrom(input, _repeated_avatarList_codec);
-            break;
-          }
-          case 120: {
-            ChallengeId = input.ReadUInt32();
             break;
           }
         }
@@ -271,17 +271,17 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 34: {
+          case 32: {
+            ChallengeId = input.ReadUInt32();
+            break;
+          }
+          case 42: {
             oOJOMKDMBBM_.AddEntriesFrom(ref input, _repeated_oOJOMKDMBBM_codec);
             break;
           }
-          case 66:
-          case 64: {
+          case 90:
+          case 88: {
             avatarList_.AddEntriesFrom(ref input, _repeated_avatarList_codec);
-            break;
-          }
-          case 120: {
-            ChallengeId = input.ReadUInt32();
             break;
           }
         }

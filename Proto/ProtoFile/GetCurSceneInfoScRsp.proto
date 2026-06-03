@@ -5,6 +5,6 @@ option csharp_namespace = "March7thHoney.Proto";
 import "SceneInfo.proto";
 
 message GetCurSceneInfoScRsp {
-    SceneInfo scene = 6;
-    uint32 retcode = 11;
+    SceneInfo scene = 2;
+    uint32 retcode = 12;
 }

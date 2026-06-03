@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1Nb25vcG9seUFjY2VwdFF1aXpTY1JzcC5wcm90bxoRSkdLTkFERUROSEIu",
-            "cHJvdG8iTQoXTW9ub3BvbHlBY2NlcHRRdWl6U2NSc3ASIQoLTE9DSEZKRUVD",
-            "S0wYDiABKAsyDC5KR0tOQURFRE5IQhIPCgdyZXRjb2RlGAYgASgNQhaqAhNN",
+            "cHJvdG8iTQoXTW9ub3BvbHlBY2NlcHRRdWl6U2NSc3ASDwoHcmV0Y29kZRgL",
+            "IAEoDRIhCgtMT0NIRkpFRUNLTBgOIAEoCzIMLkpHS05BREVETkhCQhaqAhNN",
             "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.JGKNADEDNHBReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyAcceptQuizScRsp), global::March7thHoney.Proto.MonopolyAcceptQuizScRsp.Parser, new[]{ "LOCHFJEECKL", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MonopolyAcceptQuizScRsp), global::March7thHoney.Proto.MonopolyAcceptQuizScRsp.Parser, new[]{ "Retcode", "LOCHFJEECKL" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MonopolyAcceptQuizScRsp(MonopolyAcceptQuizScRsp other) : this() {
-      lOCHFJEECKL_ = other.lOCHFJEECKL_ != null ? other.lOCHFJEECKL_.Clone() : null;
       retcode_ = other.retcode_;
+      lOCHFJEECKL_ = other.lOCHFJEECKL_ != null ? other.lOCHFJEECKL_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -82,6 +82,18 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MonopolyAcceptQuizScRsp Clone() {
       return new MonopolyAcceptQuizScRsp(this);
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 11;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
     }
 
     /// <summary>Field number for the "LOCHFJEECKL" field.</summary>
@@ -93,18 +105,6 @@ namespace March7thHoney.Proto {
       get { return lOCHFJEECKL_; }
       set {
         lOCHFJEECKL_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
       }
     }
 
@@ -123,8 +123,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(LOCHFJEECKL, other.LOCHFJEECKL)) return false;
       if (Retcode != other.Retcode) return false;
+      if (!object.Equals(LOCHFJEECKL, other.LOCHFJEECKL)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -132,8 +132,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (lOCHFJEECKL_ != null) hash ^= LOCHFJEECKL.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (lOCHFJEECKL_ != null) hash ^= LOCHFJEECKL.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -153,7 +153,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (lOCHFJEECKL_ != null) {
@@ -171,7 +171,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
       if (lOCHFJEECKL_ != null) {
@@ -188,11 +188,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (lOCHFJEECKL_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LOCHFJEECKL);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (lOCHFJEECKL_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(LOCHFJEECKL);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -206,14 +206,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
       if (other.lOCHFJEECKL_ != null) {
         if (lOCHFJEECKL_ == null) {
           LOCHFJEECKL = new global::March7thHoney.Proto.JGKNADEDNHB();
         }
         LOCHFJEECKL.MergeFrom(other.LOCHFJEECKL);
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -264,7 +264,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 88: {
             Retcode = input.ReadUInt32();
             break;
           }

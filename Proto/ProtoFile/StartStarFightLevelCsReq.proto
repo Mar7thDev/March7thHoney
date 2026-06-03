@@ -5,7 +5,7 @@ option csharp_namespace = "March7thHoney.Proto";
 import "EBGJAKBKPAN.proto";
 
 message StartStarFightLevelCsReq {
-    repeated EBGJAKBKPAN avatar_list = 14;
-    uint32 DBKHHCGGKNN = 5;
-    uint32 group_id = 1;
+    uint32 DBKHHCGGKNN = 2;
+    uint32 group_id = 9;
+    repeated EBGJAKBKPAN avatar_list = 10;
 }

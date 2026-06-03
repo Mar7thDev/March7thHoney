@@ -6,8 +6,8 @@ import "BJMPHAAOEFL.proto";
 import "KIAKKNFLEPN.proto";
 
 message AMDJAFAHKEL {
-    KIAKKNFLEPN GOOAMHHLHPJ = 8;
-    repeated BJMPHAAOEFL CDMKBCHLPAB = 1;
-    uint32 GAHFPGCPAJA = 12;
-    int32 unique_id = 2;
+    KIAKKNFLEPN GOOAMHHLHPJ = 2;
+    uint32 GAHFPGCPAJA = 5;
+    int32 unique_id = 12;
+    repeated BJMPHAAOEFL CDMKBCHLPAB = 15;
 }

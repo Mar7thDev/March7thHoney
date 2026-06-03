@@ -3,7 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 message CDCMOFFKCPI {
-    uint32 event_id = 13;
-    uint32 BIOFDPICHLC = 2;
-    uint32 GLABGHEAGMI = 15;
+    uint32 GLABGHEAGMI = 7;
+    uint32 BIOFDPICHLC = 8;
+    uint32 event_id = 11;
 }

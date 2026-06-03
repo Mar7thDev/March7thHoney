@@ -24,14 +24,14 @@ namespace March7thHoney.Proto {
     static BlackInfoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9CbGFja0luZm8ucHJvdG8iWAoJQmxhY2tJbmZvEhAKCGVuZF90aW1lGAIg",
-            "ASgDEhIKCmJlZ2luX3RpbWUYASABKAMSEwoLbGltaXRfbGV2ZWwYAyABKA0S",
+            "Cg9CbGFja0luZm8ucHJvdG8iWAoJQmxhY2tJbmZvEhIKCmJlZ2luX3RpbWUY",
+            "ASABKAMSEAoIZW5kX3RpbWUYAiABKAMSEwoLbGltaXRfbGV2ZWwYAyABKA0S",
             "EAoIYmFuX3R5cGUYBCABKA1CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
             "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BlackInfo), global::March7thHoney.Proto.BlackInfo.Parser, new[]{ "EndTime", "BeginTime", "LimitLevel", "BanType" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BlackInfo), global::March7thHoney.Proto.BlackInfo.Parser, new[]{ "BeginTime", "EndTime", "LimitLevel", "BanType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -73,8 +73,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BlackInfo(BlackInfo other) : this() {
-      endTime_ = other.endTime_;
       beginTime_ = other.beginTime_;
+      endTime_ = other.endTime_;
       limitLevel_ = other.limitLevel_;
       banType_ = other.banType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -86,18 +86,6 @@ namespace March7thHoney.Proto {
       return new BlackInfo(this);
     }
 
-    /// <summary>Field number for the "end_time" field.</summary>
-    public const int EndTimeFieldNumber = 2;
-    private long endTime_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long EndTime {
-      get { return endTime_; }
-      set {
-        endTime_ = value;
-      }
-    }
-
     /// <summary>Field number for the "begin_time" field.</summary>
     public const int BeginTimeFieldNumber = 1;
     private long beginTime_;
@@ -107,6 +95,18 @@ namespace March7thHoney.Proto {
       get { return beginTime_; }
       set {
         beginTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "end_time" field.</summary>
+    public const int EndTimeFieldNumber = 2;
+    private long endTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long EndTime {
+      get { return endTime_; }
+      set {
+        endTime_ = value;
       }
     }
 
@@ -149,8 +149,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EndTime != other.EndTime) return false;
       if (BeginTime != other.BeginTime) return false;
+      if (EndTime != other.EndTime) return false;
       if (LimitLevel != other.LimitLevel) return false;
       if (BanType != other.BanType) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -160,8 +160,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
       if (BeginTime != 0L) hash ^= BeginTime.GetHashCode();
+      if (EndTime != 0L) hash ^= EndTime.GetHashCode();
       if (LimitLevel != 0) hash ^= LimitLevel.GetHashCode();
       if (BanType != 0) hash ^= BanType.GetHashCode();
       if (_unknownFields != null) {
@@ -234,11 +234,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EndTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
-      }
       if (BeginTime != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(BeginTime);
+      }
+      if (EndTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(EndTime);
       }
       if (LimitLevel != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LimitLevel);
@@ -258,11 +258,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.EndTime != 0L) {
-        EndTime = other.EndTime;
-      }
       if (other.BeginTime != 0L) {
         BeginTime = other.BeginTime;
+      }
+      if (other.EndTime != 0L) {
+        EndTime = other.EndTime;
       }
       if (other.LimitLevel != 0) {
         LimitLevel = other.LimitLevel;

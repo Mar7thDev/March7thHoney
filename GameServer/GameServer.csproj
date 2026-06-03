@@ -32,6 +32,12 @@
     <Compile Remove="Server\Packet\Recv\TrainParty\**\*.cs" />
     <Compile Remove="Server\Packet\Send\TrainParty\**\*.cs" />
     <Compile Remove="Game\TrainParty\**\*.cs" />
+    <!-- 4.4: 选择角色奖励 (AvatarReward) 活动在 4.4 已移除 (cmdid + proto 均删除)，暂排除编译；后续如恢复需重新映射。 -->
+    <Compile Remove="Server\Packet\Recv\Activity\HandlerGetAvatarRewardDataCsReq.cs" />
+    <Compile Remove="Server\Packet\Recv\Activity\HandlerTakeRewardCsReq.cs" />
+    <Compile Remove="Server\Packet\Send\Activity\PacketTakeRewardScRsp.cs" />
+    <!-- 4.4: GroupStateChange 由 ScNotify 改为 Req/Rsp，原 ScNotify 的 cmdid 与 proto 类型均移除，且无调用方，暂排除编译。 -->
+    <Compile Remove="Server\Packet\Send\Scene\PacketGroupStateChangeScNotify.cs" />
   </ItemGroup>
 
   <ItemGroup>
