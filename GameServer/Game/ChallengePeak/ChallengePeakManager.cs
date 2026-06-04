@@ -26,9 +26,11 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var proto = new ChallengePeakGroup
         {
             PeakGroupId = (uint)groupId,
-            // Captured cleared accounts always carry this flag; the client uses it to free the
-            // boss difficulty toggle (普通 / 绝境) from the "clear all 3 knights first" gate.
-            // Private-server convenience: keep both difficulties selectable regardless of progress.
+            // Captured working accounts that show the 普通/绝境 toggle pair DisableHardMode=true with
+            // both boss difficulties marked cleared (EasyMode/HardMode HasPassed below). Setting this
+            // alone (without the HasPassed flags) instead locked the boss to 普通-only — the toggle
+            // needs both. Private-server convenience: both difficulties selectable from the start,
+            // no "clear all 3 knights first" gate.
             DisableHardMode = true
         };
 
@@ -59,7 +61,10 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             proto.Peaks.Add(levelProto);
         }
 
-        proto.ObtainedStars = (uint)starNum;
+        // The client gates the boss 普通/绝境 toggle behind "3 knights cleared" (judged by star
+        // count, not the per-peak HasPassed flag). Report full stars so both difficulties are
+        // selectable from the start — captured toggle-enabled accounts carry obtainedStars == peaks*3.
+        proto.ObtainedStars = (uint)Math.Max(starNum, proto.Peaks.Count * 3);
         proto.CountOfPeaks = (uint)proto.Peaks.Count;
         if (Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenRewards))
             proto.TakenStarRewards.AddRange(takenRewards.Select(x => (uint)x));
@@ -75,8 +80,10 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         {
             BFBHCKEJDIG = (uint)bossLevelId,
             HardModeHasPassed = true,
-            EasyMode = new ChallengePeakBossClearance(),
-            HardMode = new ChallengePeakBossClearance()
+            // Mark both difficulties unlocked even with no clearance record, so the client always
+            // offers the 普通/绝境 switch from the start (real records below override with avatars/cycles).
+            EasyMode = new ChallengePeakBossClearance { HasPassed = true },
+            HardMode = new ChallengePeakBossClearance { HasPassed = true }
         };
 
         HashSet<uint> targetIds = [];
@@ -101,6 +108,16 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             bossProto.HardMode.BuffId = bossHardPbData.BuffId;
 
             foreach (var targetId in bossHardPbData.FinishedTargetList) targetIds.Add(targetId);
+        }
+
+        // No real clearance record yet: seed the full target set (normal + hard) so the boss reads as
+        // cleared on both difficulties — matches captured accounts that expose the 普通/绝境 toggle.
+        if (targetIds.Count == 0)
+        {
+            if (GameData.ChallengePeakConfigData.TryGetValue(bossLevelId, out var bossPeakCfg))
+                foreach (var t in bossPeakCfg.NormalTargetList)
+                    targetIds.Add((uint)t);
+            if (bossLevelData.HardTarget > 0) targetIds.Add((uint)bossLevelData.HardTarget);
         }
 
         bossProto.FinishedTargetList.AddRange(targetIds);
