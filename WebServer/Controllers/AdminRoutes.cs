@@ -113,7 +113,8 @@ public class AdminRoutes : ControllerBase
                     (long)(DateTime.Now - process.StartTime).TotalSeconds),
                 process_memory_mb = Math.Round(process.WorkingSet64 / 1024d / 1024d, 1),
                 server_time = Extensions.GetUnixSec(),
-                registration_enabled = ConfigManager.Config.ServerOption.Auth.EnableRegistration
+                registration_enabled = ConfigManager.Config.ServerOption.Auth.EnableRegistration,
+                limit_registration_per_identity = ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity
             },
             online_players = onlinePlayers,
             role_breakdown = accounts
@@ -153,6 +154,22 @@ public class AdminRoutes : ControllerBase
         return Success(new
         {
             registration_enabled = ConfigManager.Config.ServerOption.Auth.EnableRegistration
+        });
+    }
+
+    [HttpPost("/admin/api/registration-identity-limit")]
+    public JsonResult SetRegistrationIdentityLimit([FromBody] AdminRegistrationRequest? request)
+    {
+        if (!IsAuthorized(out var unauthorized))
+            return unauthorized;
+
+        request ??= new AdminRegistrationRequest();
+        ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity = request.enabled;
+        ConfigManager.SaveConfig();
+
+        return Success(new
+        {
+            limit_registration_per_identity = ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity
         });
     }
 
@@ -474,25 +491,12 @@ public class AdminRoutes : ControllerBase
         if (DatabaseHelper.Instance == null)
             return Error("Database is not initialized");
 
-        var activeConnection = Listener.GetActiveConnection(uid);
-        if (activeConnection != null)
-            await ConnectionDisconnectHelper.KickByGmAsync(activeConnection);
-
-        DatabaseHelper.Instance.DeleteUidGameplayData(uid);
-
-        var freshPlayer = new PlayerInstance(uid);
-        freshPlayer.Data.Level = ConfigManager.Config.ServerOption.StartTrailblazerLevel;
-        freshPlayer.Data.Exp = 0;
-        freshPlayer.OnLevelChange();
-
-        MailHelper.SendWelcomeMail(uid, account.Username ?? uid.ToString());
-        DatabaseHelper.ToSaveUidList.SafeAdd(uid);
-        DatabaseHelper.Instance.SaveUidData(uid);
+        var wasOnline = await PlayerResetHelper.ResetGameplayAsync(uid);
 
         return Success(new
         {
             account = ToAccountSummary(account),
-            was_online = activeConnection != null
+            was_online = wasOnline
         });
     }
 

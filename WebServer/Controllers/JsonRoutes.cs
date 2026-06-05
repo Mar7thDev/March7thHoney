@@ -1,5 +1,6 @@
 using March7thHoney.Database.Account;
 using March7thHoney.GameServer.Game.Calyx;
+using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
@@ -198,6 +199,46 @@ namespace March7thHoney.WebServer.Controllers
             catch (Exception ex)
             {
                 logger.Error("Console command execution failed", ex);
+                return ConsoleJson(1, "Internal server error.", null, 500);
+            }
+        }
+
+        // Launcher self-reset: authenticate with UID + password and reset ONLY that
+        // player's own gameplay data (self-only by construction). Works offline, so a
+        // crash-locked account can be reset before logging back in.
+        [HttpPost("/console/self-reset")]
+        public async ValueTask<ContentResult> ConsoleSelfReset()
+        {
+            try
+            {
+                using var reader = new StreamReader(Request.Body, Encoding.UTF8);
+                string body = await reader.ReadToEndAsync();
+
+                var obj = Newtonsoft.Json.Linq.JToken.Parse(body);
+                string username = obj["username"]?.ToString() ?? "";
+                string password = obj["password"]?.ToString() ?? "";
+                var confirmed = string.Equals(obj["confirm"]?.ToString(), "true", StringComparison.OrdinalIgnoreCase);
+
+                if (!int.TryParse(username, out var uid))
+                    return ConsoleJson(1, "Username field must be the player's UID (integer).", null, 400);
+
+                var acc = AccountData.GetAccountByUid(uid);
+                if (acc == null)
+                    return ConsoleJson(1, "uid not found on server", null, 400);
+
+                if (acc.HasPassword() && (string.IsNullOrEmpty(password) || !acc.VerifyPassword(password)))
+                    return ConsoleJson(1, "Invalid password for this uid.", null, 401);
+
+                if (!confirmed)
+                    return ConsoleJson(1, "Reset requires confirmation.", null, 400);
+
+                await PlayerResetHelper.ResetGameplayAsync(acc.Uid);
+
+                return ConsoleJson(0, "OK", $"Your save data has been reset (UID {acc.Uid}). Please log in again.");
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Console self-reset failed", ex);
                 return ConsoleJson(1, "Internal server error.", null, 500);
             }
         }
