@@ -70,6 +70,16 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeDataPb data) 
     {
         base.OnBattleStart(battle);
 
+        // 敌人特性：固定 Tag 词条，客户端不回传，需从配置注入战斗。绝境难度走 HardTagList
+        var tagList = Data.Peak.IsHard && Config.BossExcel != null
+            ? Config.BossExcel.HardTagList
+            : Config.TagList;
+        foreach (var tagBuff in tagList)
+            battle.Buffs.Add(new MazeBuff(tagBuff, 1, -1)
+            {
+                WaveFlag = -1
+            });
+
         foreach (var peakBuff in Data.Peak.Buffs)
             battle.Buffs.Add(new MazeBuff((int)peakBuff, 1, -1)
             {
