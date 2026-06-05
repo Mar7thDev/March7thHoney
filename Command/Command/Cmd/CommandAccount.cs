@@ -300,21 +300,7 @@ public class CommandAccount : ICommand
         var isSelfReset = account.Uid == arg.Sender.GetSender();
         if (isSelfReset) await arg.SendMsg(I18NManager.Translate("Game.Command.Account.ResetStarted", displayName));
 
-        var activeConnection = Listener.GetActiveConnection(account.Uid);
-        if (activeConnection != null)
-            await ConnectionDisconnectHelper.KickByGmAsync(activeConnection);
-
-        DatabaseHelper.Instance.DeleteUidGameplayData(account.Uid);
-
-        var freshPlayer = new PlayerInstance(account.Uid);
-        freshPlayer.Data.Level = ConfigManager.Config.ServerOption.StartTrailblazerLevel;
-        freshPlayer.Data.Exp = 0;
-        freshPlayer.OnLevelChange();
-
-        MailHelper.SendWelcomeMail(account.Uid, displayName);
-
-        DatabaseHelper.ToSaveUidList.SafeAdd(account.Uid);
-        DatabaseHelper.Instance.SaveUidData(account.Uid);
+        await PlayerResetHelper.ResetGameplayAsync(account.Uid);
 
         if (!isSelfReset)
             await arg.SendMsg(I18NManager.Translate("Game.Command.Account.ResetSuccess", displayName));
