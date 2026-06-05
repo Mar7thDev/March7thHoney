@@ -216,6 +216,20 @@ public static class AdminPageScripts
         }
       }
 
+      async function handleToggleIdentityLimit() {
+        const current = Boolean((state.overview?.server || {}).limit_registration_per_identity);
+        const next = !current;
+        try {
+          setMessage(els.statusMessage, "Updating device limit...", "");
+          await api("/admin/api/registration-identity-limit", { method: "POST", body: JSON.stringify({ enabled: next }) });
+          await loadOverview({ force: true });
+          renderOverview();
+          setMessage(els.statusMessage, next ? "Device registration limit enabled." : "Device registration limit disabled.", "good");
+        } catch (error) {
+          setMessage(els.statusMessage, getErrorMessage(error), "bad");
+        }
+      }
+
       async function loadAccounts(options = {}) {
         if (!state.accountsLoaded || options.force) {
           const data = await api("/admin/api/accounts");
@@ -244,6 +258,7 @@ public static class AdminPageScripts
         const stats = data.stats || {};
         const server = data.server || {};
         const registrationEnabled = Boolean(server.registration_enabled);
+        const identityLimitEnabled = Boolean(server.limit_registration_per_identity);
         const onlinePlayers = data.online_players || [];
         const attention = data.attention || [];
         const roleBreakdown = data.role_breakdown || [];
@@ -305,6 +320,11 @@ public static class AdminPageScripts
                   <span class="chip ${registrationEnabled ? "good" : "bad"}">${registrationEnabled ? "Enabled" : "Disabled"}</span>
                   <button id="toggle-registration-button" class="button ${registrationEnabled ? "danger" : "success"}" type="button">${registrationEnabled ? "Disable" : "Enable"}</button>
                 </div>
+                <div class="inline-actions">
+                  <span class="muted" style="min-width: 135px;">Device limit</span>
+                  <span class="chip ${identityLimitEnabled ? "good" : "bad"}">${identityLimitEnabled ? "On" : "Off"}</span>
+                  <button id="toggle-identity-limit-button" class="button ${identityLimitEnabled ? "danger" : "success"}" type="button">${identityLimitEnabled ? "Disable" : "Enable"}</button>
+                </div>
               </div>
             </section>
           </div>
@@ -355,6 +375,11 @@ public static class AdminPageScripts
         const toggleRegistrationButton = document.getElementById("toggle-registration-button");
         if (toggleRegistrationButton) {
           toggleRegistrationButton.addEventListener("click", handleToggleRegistration);
+        }
+
+        const toggleIdentityLimitButton = document.getElementById("toggle-identity-limit-button");
+        if (toggleIdentityLimitButton) {
+          toggleIdentityLimitButton.addEventListener("click", handleToggleIdentityLimit);
         }
       }
 
