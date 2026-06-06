@@ -1,5 +1,3 @@
-using System.Reflection;
-
 namespace March7thHoney.GameServer.Server.Packet;
 
 public static class HandlerManager
@@ -8,24 +6,12 @@ public static class HandlerManager
 
     public static void Init()
     {
-        var classes = Assembly.GetExecutingAssembly().GetTypes(); // Get all classes in the assembly
-        foreach (var cls in classes)
-        {
-            var attribute = (Opcode?)Attribute.GetCustomAttribute(cls, typeof(Opcode));
-
-            if (attribute != null) handlers.Add(attribute.CmdId, (Handler)Activator.CreateInstance(cls)!);
-        }
+        // Populated by the source generator (GeneratedHandlerRegistry) from every [Opcode] class — no reflection.
+        handlers = GeneratedHandlerRegistry.Build();
     }
 
     public static Handler? GetHandler(int cmdId)
     {
-        try
-        {
-            return handlers[cmdId];
-        }
-        catch
-        {
-            return null;
-        }
+        return handlers.GetValueOrDefault(cmdId);
     }
 }

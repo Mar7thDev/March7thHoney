@@ -17,11 +17,7 @@
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\GameServer\GameServer.csproj" />
     <ProjectReference Include="..\Proto\Proto.csproj" />
-  </ItemGroup>
-
-  <!-- TODO 4.3: CommandGrid 依赖已暂停的 GridFight 模块 -->
-  <ItemGroup>
-    <Compile Remove="Command\Cmd\CommandGrid.cs" />
+    <ProjectReference Include="..\SourceGen\SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>
