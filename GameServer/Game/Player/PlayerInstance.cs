@@ -36,7 +36,6 @@ using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 using OfferingManager = March7thHoney.GameServer.Game.Inventory.OfferingManager;
 
 namespace March7thHoney.GameServer.Game.Player;
@@ -343,7 +342,6 @@ public partial class PlayerInstance(PlayerData data)
             await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos!, Data.Rot!, false);
         if (SceneInstance == null) await EnterScene(2000101, 0, false);
 
-        InvokeOnPlayerLogin(this);
     }
 
     public async ValueTask TrySendWelcomeAnnounce()
@@ -366,7 +364,6 @@ public partial class PlayerInstance(PlayerData data)
 
     public void OnLogoutAsync()
     {
-        InvokeOnPlayerLogout(this);
     }
 
     public async ValueTask SendPacket(BasePacket packet)
@@ -519,7 +516,6 @@ public partial class PlayerInstance(PlayerData data)
     {
         await OnStaminaRecover();
 
-        InvokeOnPlayerHeartBeat(this);
         if (MissionManager != null)
             await MissionManager.HandleAllFinishType();
 

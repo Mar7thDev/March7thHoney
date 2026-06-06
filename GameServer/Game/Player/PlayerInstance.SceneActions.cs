@@ -11,7 +11,6 @@ using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
 namespace March7thHoney.GameServer.Game.Player;
 
@@ -179,7 +178,6 @@ public partial class PlayerInstance
         InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);
 
         // handle plugin event
-        InvokeOnPlayerInteract(this, prop);
 
         var floorSavedKey = prop.PropInfo.Name.Replace("Controller_", "");
         var key = $"FSV_ML{floorSavedKey}{(config.TargetState == PropStateEnum.Open ? "Started" : "Complete")}";
@@ -378,7 +376,6 @@ public partial class PlayerInstance
             if (SceneInstance != null)
                 await SceneInstance.OnDestroy();
             SceneInstance instance = new(this, plane, floorId, entryId);
-            InvokeOnPlayerLoadScene(this, instance);
             SceneInstance = instance;
 
             await instance.SyncLineup(true);
