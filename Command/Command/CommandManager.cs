@@ -1,4 +1,3 @@
-using System.Reflection;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
@@ -12,6 +11,7 @@ public class CommandManager
     private const int MaxCommandHistory = 100;
 
     private readonly List<string> _commandHistory = [];
+    private readonly Dictionary<string, GeneratedCommand> _generated = new(StringComparer.OrdinalIgnoreCase);
     private int _historyIndex = -1;
     public static CommandManager? Instance { get; private set; }
     public Dictionary<string, ICommand> Commands { get; } = new(StringComparer.OrdinalIgnoreCase);
@@ -23,26 +23,18 @@ public class CommandManager
     public void RegisterCommands()
     {
         Instance = this;
-        foreach (var type in Assembly.GetExecutingAssembly().GetTypes())
-            if (typeof(ICommand).IsAssignableFrom(type) && !type.IsAbstract)
-                RegisterCommand(type);
+        // Populated by the source generator (GeneratedCommandRegistry) from every [CommandInfo] class — no reflection.
+        foreach (var gen in GeneratedCommandRegistry.Build())
+        {
+            Commands[gen.Info.Name] = gen.Instance;
+            CommandInfo[gen.Info.Name] = gen.Info;
+            _generated[gen.Info.Name] = gen;
+            foreach (var alias in gen.Info.Alias)
+                CommandAlias[alias] = gen.Info.Name;
+        }
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.RegisterItem", Commands.Count.ToString(),
             I18NManager.Translate("Word.Command")));
-    }
-
-    public void RegisterCommand(Type type)
-    {
-        var attr = type.GetCustomAttribute<CommandInfoAttribute>();
-        if (attr == null) return;
-        var instance = Activator.CreateInstance(type);
-        if (instance is not ICommand command) return;
-        Commands.Add(attr.Name, command);
-        CommandInfo.Add(attr.Name, attr);
-
-        // register alias
-        foreach (var alias in attr.Alias) // add alias
-            CommandAlias.Add(alias, attr.Name);
     }
 
     public void Start()
@@ -234,9 +226,9 @@ public class CommandManager
                     return;
                 }
 
-                // find the proper method with attribute CommandMethodAttribute
-                var isFound = false;
+                // dispatch via the generated method table — no reflection
                 var info = CommandInfo[cmd];
+                var gen = _generated[cmd];
 
                 if (!sender.HasPermission(info.Permission))
                 {
@@ -244,12 +236,10 @@ public class CommandManager
                     return;
                 }
 
-                foreach (var method in command.GetType().GetMethods())
+                foreach (var method in gen.Methods)
                 {
-                    var attr = method.GetCustomAttribute<CommandMethodAttribute>();
-                    if (attr == null) continue;
                     var canRun = true;
-                    foreach (var condition in attr.Conditions)
+                    foreach (var condition in method.Conditions)
                     {
                         if (split.Count <= condition.Index)
                         {
@@ -264,23 +254,16 @@ public class CommandManager
                     }
 
                     if (!canRun) continue;
-                    isFound = true;
                     InvokeCommandMethod(method, command, arg, sender, cmd);
-                    break;
+                    return;
                 }
 
-                if (isFound) return;
-                // find the default method with attribute CommandDefaultAttribute
-                foreach (var method in command.GetType().GetMethods())
+                if (gen.Default != null)
                 {
-                    var attr = method.GetCustomAttribute<CommandDefaultAttribute>();
-                    if (attr == null) continue;
-                    isFound = true;
-                    InvokeCommandMethod(method, command, arg, sender, cmd);
-                    break;
+                    InvokeCommandMethod(gen.Default, command, arg, sender, cmd);
+                    return;
                 }
 
-                if (isFound) return;
                 sender.SendMsg(I18NManager.Translate(info.Usage));
             }
             else
@@ -300,10 +283,10 @@ public class CommandManager
         return token.Length > 1 && token[0] == '@' && int.TryParse(token[1..], out _);
     }
 
-    private void InvokeCommandMethod(MethodInfo method, ICommand command, CommandArg arg, ICommandSender sender,
-        string commandName)
+    private void InvokeCommandMethod(GeneratedCommandMethod method, ICommand command, CommandArg arg,
+        ICommandSender sender, string commandName)
     {
-        var result = method.Invoke(command, [arg]);
+        var result = method.Invoke(command, arg);
         ObserveCommandResult(result, sender, commandName, method.Name);
     }
 
