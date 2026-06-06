@@ -6,8 +6,6 @@ using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Enums;
 using March7thHoney.GameServer.Command;
-// TODO 4.3: Challenge.Definitions 暂停
-using March7thHoney.GameServer.Plugin;
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.Internationalization;
@@ -278,20 +276,6 @@ public class EntryPoint
             return;
         }
 
-        // Load the plugins
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Plugin")));
-        try
-        {
-            PluginManager.LoadPlugins();
-        }
-        catch (Exception e)
-        {
-            Logger.Error(
-                I18NManager.Translate("Server.ServerInfo.FailedToLoadItem", I18NManager.Translate("Word.Plugin")), e);
-            Console.ReadLine();
-            return;
-        }
-
         CommandExecutor.OnRunCommand += (sender, e) => { CommandManager.HandleCommand(e, sender); };
 
         MuipManager.OnExecuteCommand += CommandManager.HandleCommand;
@@ -448,7 +432,6 @@ public class EntryPoint
 
     private static void PerformCleanup()
     {
-        PluginManager.UnloadPlugins();
         March7thHoneyListener.Connections.Values.ToList().ForEach(x => x.Stop());
 
         DatabaseHelper.SaveThread?.Interrupt();

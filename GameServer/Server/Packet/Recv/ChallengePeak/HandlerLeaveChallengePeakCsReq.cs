@@ -1,7 +1,6 @@
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.ChallengePeak;
 
@@ -17,7 +16,6 @@ public class HandlerLeaveChallengePeakCsReq : Handler
         {
             player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupChallenge, []);
 
-            InvokeOnPlayerQuitChallenge(player, player.ChallengeManager!.ChallengeInstance);
 
             player.ChallengeManager!.ChallengeInstance = null;
             player.ChallengeManager!.ClearInstance();

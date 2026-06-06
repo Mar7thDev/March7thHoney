@@ -8,7 +8,6 @@ using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Mission.FinishAction;
 using March7thHoney.GameServer.Game.Mission.FinishType;
 using March7thHoney.GameServer.Game.Player;
-using March7thHoney.GameServer.Plugin.Event;
 using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
 using March7thHoney.GameServer.Server.Packet.Send.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -231,7 +230,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
 
         await Player.RaidManager!.CheckIfLeaveRaid();
 
-        PluginEvent.InvokeOnPlayerFinishMainMission(Player, missionId);
     }
 
     public async ValueTask FinishSubMission(int missionId)
@@ -330,7 +328,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
         //Player.StoryLineManager!.CheckIfEnterStoryLine();
         //Player.StoryLineManager!.CheckIfFinishStoryLine();
 
-        PluginEvent.InvokeOnPlayerFinishSubMission(Player, missionId);
     }
 
     public async ValueTask HandleFinishAction(MissionInfo info, int subMissionId)

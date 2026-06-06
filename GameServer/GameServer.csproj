@@ -16,30 +16,6 @@
 	  <Content Include="March7thHoney.ico" />
   </ItemGroup>
 
-  <!-- TODO 4.3: 仅小游戏模块 (货币战争/骰子战斗/火车蛋糕/火车派对) 仍因 proto 大量变更暂时排除编译。
-       其余模块 (Mail/JukeBox/Pet/Phone/PlayerBoard/Gacha/Expedition/Item/Friend/RechargeGift/Player 等)
-       已在 4.3 适配混淆名变更后恢复编译。 -->
-  <ItemGroup>
-    <Compile Remove="Game\GridFight\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\GridFight\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\GridFight\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\DiceCombat\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\DiceCombat\**\*.cs" />
-    <Compile Remove="Game\Activity\Activities\DiceCombat\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\TrainCakeCatch\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\TrainCakeCatch\**\*.cs" />
-    <Compile Remove="Game\TrainCakeCatch\**\*.cs" />
-    <Compile Remove="Server\Packet\Recv\TrainParty\**\*.cs" />
-    <Compile Remove="Server\Packet\Send\TrainParty\**\*.cs" />
-    <Compile Remove="Game\TrainParty\**\*.cs" />
-    <!-- 4.4: 选择角色奖励 (AvatarReward) 活动在 4.4 已移除 (cmdid + proto 均删除)，暂排除编译；后续如恢复需重新映射。 -->
-    <Compile Remove="Server\Packet\Recv\Activity\HandlerGetAvatarRewardDataCsReq.cs" />
-    <Compile Remove="Server\Packet\Recv\Activity\HandlerTakeRewardCsReq.cs" />
-    <Compile Remove="Server\Packet\Send\Activity\PacketTakeRewardScRsp.cs" />
-    <!-- 4.4: GroupStateChange 由 ScNotify 改为 Req/Rsp，原 ScNotify 的 cmdid 与 proto 类型均移除，且无调用方，暂排除编译。 -->
-    <Compile Remove="Server\Packet\Send\Scene\PacketGroupStateChangeScNotify.cs" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\KcpSharp\KcpSharp.csproj" />
@@ -47,8 +23,6 @@
     <ProjectReference Include="..\ServerSideProto\ServerSideProto.csproj" />
     <PackageReference Include="Google.Protobuf" Version="3.33.1" />
     <PackageReference Include="Google.Protobuf.Tools" Version="3.33.1" />
-    <PackageReference Include="McMaster.NETCore.Plugins" Version="2.0.0" />
-    <PackageReference Include="McMaster.NETCore.Plugins.Mvc" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
