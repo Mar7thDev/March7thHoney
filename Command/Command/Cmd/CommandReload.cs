@@ -1,6 +1,5 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Custom;
-using March7thHoney.GameServer.Plugin;
 using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
@@ -36,15 +35,5 @@ public class CommandReload : ICommand
                                    new VideoKeysConfig();
         await arg.SendMsg(I18NManager.Translate("Game.Command.Reload.ConfigReloaded",
             I18NManager.Translate("Word.VideoKeys")));
-    }
-
-    [CommandMethod("0 plugin")]
-    public async ValueTask ReloadPlugin(CommandArg arg)
-    {
-        // Reload the plugin
-        PluginManager.UnloadPlugins();
-        PluginManager.LoadPlugins();
-        await arg.SendMsg(I18NManager.Translate("Game.Command.Reload.ConfigReloaded",
-            I18NManager.Translate("Word.Plugin")));
     }
 }

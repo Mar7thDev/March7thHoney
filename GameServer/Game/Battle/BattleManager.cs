@@ -11,7 +11,6 @@ using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
 namespace March7thHoney.GameServer.Game.Battle;
 
@@ -139,7 +138,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
             Player.BattleInstance = battleInstance;
 
-            InvokeOnPlayerEnterBattle(Player, battleInstance);
 
             return battleInstance;
         }
@@ -190,7 +188,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         Player.BattleInstance = battleInstance;
 
-        InvokeOnPlayerEnterBattle(Player, battleInstance);
 
         await Player.SendPacket(new PacketSceneEnterStageScRsp(battleInstance));
         Player.SceneInstance?.OnEnterStage();
@@ -249,7 +246,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         Player.BattleInstance = battleInstance;
         Player.QuestManager!.OnBattleStart(battleInstance);
 
-        InvokeOnPlayerEnterBattle(Player, battleInstance);
         await ValueTask.CompletedTask;
         return battleInstance;
     }
@@ -279,7 +275,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         Player.BattleInstance = battleInstance;
         Player.QuestManager!.OnBattleStart(battleInstance);
 
-        InvokeOnPlayerEnterBattle(Player, battleInstance);
         await ValueTask.CompletedTask;
         return battleInstance;
     }
@@ -316,7 +311,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
     public async ValueTask EndBattle(PVEBattleResultCsReq req)
     {
-        InvokeOnPlayerQuitBattle(Player, req);
 
         if (Player.BattleInstance == null)
         {

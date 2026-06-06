@@ -8,7 +8,6 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
 namespace March7thHoney.GameServer.Game.Calyx;
 
@@ -77,7 +76,6 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
 
         Player.BattleInstance = battle;
         Player.QuestManager!.OnBattleStart(battle);
-        InvokeOnPlayerEnterBattle(Player, battle);
 
         await ValueTask.CompletedTask;
         return battle;

@@ -11,7 +11,6 @@ using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 using March7thHoney.Proto.ServerSide;
 using Google.Protobuf;
-using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
 namespace March7thHoney.GameServer.Game.Challenge;
 
@@ -128,7 +127,6 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
             instance.Data.Boss.Buffs.Add(bossBuffs.BuffTwo);
         }
 
-        InvokeOnPlayerEnterChallenge(Player, instance);
 
         await Player.SendPacket(new PacketStartChallengeScRsp(Player, sendScene: false));
         await Player.SendPacket(new PacketEnterSceneByServerScNotify(Player.SceneInstance!));

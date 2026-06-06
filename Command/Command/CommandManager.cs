@@ -4,7 +4,6 @@ using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
 using March7thHoney.Util;
 using Spectre.Console;
-using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
 namespace March7thHoney.Command.Command;
 
@@ -186,7 +185,6 @@ public class CommandManager
             }
             else
             {
-                InvokeOnPlayerUseCommand(sender, input);
                 // player 
                 tempTarget = Listener.GetActiveConnection(sender.GetSender());
                 if (tempTarget == null)

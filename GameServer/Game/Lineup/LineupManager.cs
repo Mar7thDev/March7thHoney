@@ -9,7 +9,6 @@ using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
-using static March7thHoney.GameServer.Plugin.Event.PluginEvent;
 
 namespace March7thHoney.GameServer.Game.Lineup;
 
@@ -275,7 +274,6 @@ public class LineupManager : BasePlayerManager
         if (sendPacket)
         {
             if (lineupIndex == LineupData.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
-            InvokeOnPlayerSyncLineup(Player, lineup);
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
@@ -318,7 +316,6 @@ public class LineupManager : BasePlayerManager
         if (sendPacket)
         {
             Player.SceneInstance?.SyncLineup();
-            InvokeOnPlayerSyncLineup(Player, lineup);
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
@@ -338,7 +335,6 @@ public class LineupManager : BasePlayerManager
         if (sendPacket)
         {
             if (lineupIndex == LineupData.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
-            InvokeOnPlayerSyncLineup(Player, lineup);
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
@@ -369,7 +365,6 @@ public class LineupManager : BasePlayerManager
         foreach (var avatar in lineupSlotList) await AddAvatar(index, avatar, false);
 
         if (index == LineupData.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
-        InvokeOnPlayerSyncLineup(Player, lineup);
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 
@@ -393,7 +388,6 @@ public class LineupManager : BasePlayerManager
         foreach (var avatar in req.LineupSlotList) await AddAvatar(index, (int)avatar.Id, false);
 
         if (index == LineupData.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
-        InvokeOnPlayerSyncLineup(Player, lineup);
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 
