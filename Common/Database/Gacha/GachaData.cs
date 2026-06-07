@@ -1,12 +1,12 @@
+using MemoryPack;
 using March7thHoney.Enums;
-using SqlSugar;
 
 namespace March7thHoney.Database.Gacha;
 
-[SugarTable("Gacha")]
+[DbTable("Gacha")]
 public class GachaData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public List<GachaInfo> GachaHistory { get; set; } = [];
+    public List<GachaInfo> GachaHistory { get; set; } = [];
 
     // Deprecated legacy fields. Keep them around so older databases can migrate
     // their best-effort pity state into PityStates.
@@ -15,10 +15,10 @@ public class GachaData : BaseDatabaseDataHelper
     public int LastGachaFailedCount { get; set; } = 0;
     public int LastGachaPurpleFailedCount { get; set; } = 0;
 
-    [SugarColumn(IsJson = true)] public List<int> GachaDecideOrder { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<int> CharacterEventNonFeaturedPool { get; set; } = [];
+    public List<int> GachaDecideOrder { get; set; } = [];
+    public List<int> CharacterEventNonFeaturedPool { get; set; } = [];
     public int CharacterEventDecideItemType { get; set; } = 1;
-    [SugarColumn(IsJson = true)] public Dictionary<string, GachaPityState> PityStates { get; set; } = [];
+    public Dictionary<string, GachaPityState> PityStates { get; set; } = [];
 
     public GachaPityState GetPityState(GachaPityFamilyEnum family)
     {
@@ -57,14 +57,16 @@ public class GachaData : BaseDatabaseDataHelper
     }
 }
 
-public class GachaInfo
+[MemoryPackable]
+public partial class GachaInfo
 {
     public int GachaId { get; set; }
     public long Time { get; set; }
     public int ItemId { get; set; }
 }
 
-public class GachaPityState
+[MemoryPackable]
+public partial class GachaPityState
 {
     public int PullsSinceFiveStar { get; set; }
     public int PullsSinceFourStarOrHigher { get; set; }

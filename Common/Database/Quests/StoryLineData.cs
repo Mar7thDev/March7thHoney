@@ -1,10 +1,10 @@
+using MemoryPack;
 using March7thHoney.Database.Lineup;
 using March7thHoney.Util;
-using SqlSugar;
 
 namespace March7thHoney.Database.Quests;
 
-[SugarTable("StoryLineData")]
+[DbTable("StoryLineData")]
 public class StoryLineData : BaseDatabaseDataHelper
 {
     public int CurStoryLineId { get; set; }
@@ -13,15 +13,15 @@ public class StoryLineData : BaseDatabaseDataHelper
     public int OldFloorId { get; set; }
     public int OldEntryId { get; set; }
 
-    [SugarColumn(IsJson = true)] public Position OldPos { get; set; } = new();
+    public Position OldPos { get; set; } = new();
 
-    [SugarColumn(IsJson = true)] public Position OldRot { get; set; } = new();
+    public Position OldRot { get; set; } = new();
 
-    [SugarColumn(IsJson = true)]
     public Dictionary<int, StoryLineInfo> RunningStoryLines { get; set; } = []; // finished one will be deleted
 }
 
-public class StoryLineInfo
+[MemoryPackable]
+public partial class StoryLineInfo
 {
     public int StoryLineId { get; set; }
 

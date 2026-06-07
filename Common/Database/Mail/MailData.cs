@@ -1,21 +1,22 @@
+using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Proto;
-using SqlSugar;
 
 namespace March7thHoney.Database.Mail;
 
-[SugarTable("Mail")]
+[DbTable("Mail")]
 public class MailData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public List<MailInfo> MailList { get; set; } = [];
+    public List<MailInfo> MailList { get; set; } = [];
 
-    [SugarColumn(IsJson = true)] public List<MailInfo> NoticeMailList { get; set; } = [];
+    public List<MailInfo> NoticeMailList { get; set; } = [];
 
     public int NextMailId { get; set; } = 1;
 }
 
-public class MailInfo
+[MemoryPackable]
+public partial class MailInfo
 {
     public int MailID { get; set; }
     public string SenderName { get; set; } = "";
@@ -46,7 +47,8 @@ public class MailInfo
     }
 }
 
-public class MailAttachmentInfo
+[MemoryPackable]
+public partial class MailAttachmentInfo
 {
     public List<ItemData> Items { get; set; } = [];
 

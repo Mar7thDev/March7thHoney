@@ -1,13 +1,13 @@
+using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Enums.Mission;
-using SqlSugar;
 
 namespace March7thHoney.Database.Scene;
 
-[SugarTable("HeartDial")]
+[DbTable("HeartDial")]
 public class HeartDialData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public Dictionary<int, HeartDialInfo> DialList { get; set; } = [];
+    public Dictionary<int, HeartDialInfo> DialList { get; set; } = [];
 
     public HeartDialInfo ChangeScriptEmotion(int scriptId, HeartDialEmoTypeEnum emoType, HeartDialStepTypeEnum stepType)
     {
@@ -54,7 +54,8 @@ public class HeartDialData : BaseDatabaseDataHelper
     }
 }
 
-public class HeartDialInfo
+[MemoryPackable]
+public partial class HeartDialInfo
 {
     public int ScriptId { get; set; }
     public HeartDialEmoTypeEnum EmoType { get; set; } = HeartDialEmoTypeEnum.Peace;

@@ -1,52 +1,41 @@
+using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 using Google.Protobuf;
-using SqlSugar;
 
 namespace March7thHoney.Database.Scene;
 
-[SugarTable("Scene")]
+[DbTable("Scene")]
 public class SceneData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, Dictionary<int, List<ScenePropData>>> ScenePropData { get; set; } =
         []; // Dictionary<FloorId, Dictionary<GroupId, ScenePropData>>
 
-    [SugarColumn(IsJson = true)]
     public Dictionary<int, List<int>> UnlockSectionIdList { get; set; } = []; // Dictionary<FloorId, List<SectionId>>
 
-    [SugarColumn(IsJson = true)]
     public Dictionary<int, Dictionary<int, string>> CustomSaveData { get; set; } =
         []; // Dictionary<EntryId, Dictionary<GroupId, SaveData>>
 
-    [SugarColumn(IsJson = true)]
     public Dictionary<int, Dictionary<string, int>> FloorSavedData { get; set; } =
         []; // Dictionary<FloorId, Dictionary<SaveDataKey, SaveDataValue>>
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, Dictionary<int, Dictionary<int, ScenePropTimelineData>>> PropTimelineData { get; set; } =
         []; // Dictionary<FloorId, Dictionary<GroupId, Dictionary<PropId, ScenePropTimelineData>>>
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, List<SceneMarkedChestData>> MarkedChestData { get; set; } =
         []; // Dictionary<FuncId, List<ScenePropTimelineData>>
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, Dictionary<int, Dictionary<string, int>>> GroupPropertyData { get; set; } =
         []; // Dictionary<FloorId, Dictionary<GroupId, Dictionary<Key, Value>>>
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public SceneEraFlipperData EraFlipperData { get; set; } = new();
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public SceneRotatableRegionData RotatableRegionData { get; set; } = new();
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, int> FloorTargetPuzzleGroupData { get; set; } = new();
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, SwitchHandInfo> SwitchHandData { get; set; } = new();
 
     public int GetFloorSavedValue(int floorId, string key)
@@ -73,7 +62,8 @@ public class SceneData : BaseDatabaseDataHelper
     }
 }
 
-public class SwitchHandInfo
+[MemoryPackable]
+public partial class SwitchHandInfo
 {
     public int ConfigId { get; set; }
     public int CoinNum { get; set; }
@@ -85,19 +75,22 @@ public class SwitchHandInfo
     // TODO 4.3: GODHDEIPDJL 在 4.3 中已消失或更名，SwitchHand 暂时移除
 }
 
-public class ScenePropData
+[MemoryPackable]
+public partial class ScenePropData
 {
     public int PropId { get; set; }
     public PropStateEnum State { get; set; }
 }
 
-public class SceneEraFlipperData
+[MemoryPackable]
+public partial class SceneEraFlipperData
 {
     public int CurRegionId { get; set; }
     public Dictionary<int, int> RegionState { get; set; } = []; // Dictionary<RegionId, State>
 }
 
-public class SceneRotatableRegionData
+[MemoryPackable]
+public partial class SceneRotatableRegionData
 {
     public int CurRegionId { get; set; }
     public int Energy { get; set; }
@@ -105,7 +98,8 @@ public class SceneRotatableRegionData
     public int RotateValue { get; set; }
 }
 
-public class ScenePropTimelineData
+[MemoryPackable]
+public partial class ScenePropTimelineData
 {
     public bool BoolValue { get; set; }
     public string ByteValue { get; set; } = ""; // Base64
@@ -120,7 +114,8 @@ public class ScenePropTimelineData
     }
 }
 
-public class SceneMarkedChestData
+[MemoryPackable]
+public partial class SceneMarkedChestData
 {
     public int ConfigId { get; set; }
     public int GroupId { get; set; }

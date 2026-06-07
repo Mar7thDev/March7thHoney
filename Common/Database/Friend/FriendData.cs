@@ -1,38 +1,38 @@
-using SqlSugar;
+using MemoryPack;
 
 namespace March7thHoney.Database.Friend;
 
-[SugarTable("Friend")]
+[DbTable("Friend")]
 public class FriendData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, FriendDetailData> FriendDetailList { get; set; } = [];
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public List<int> FriendList { get; set; } = []; // leave for compatibility
 
-    [SugarColumn(IsJson = true)] public List<int> BlackList { get; set; } = [];
+    public List<int> BlackList { get; set; } = [];
 
-    [SugarColumn(IsJson = true)] public List<int> SendApplyList { get; set; } = [];
+    public List<int> SendApplyList { get; set; } = [];
 
-    [SugarColumn(IsJson = true)] public List<int> ReceiveApplyList { get; set; } = [];
+    public List<int> ReceiveApplyList { get; set; } = [];
 
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, FriendChatHistory> ChatHistory { get; set; } = []; // key: friend uid
 }
 
-public class FriendDetailData
+[MemoryPackable]
+public partial class FriendDetailData
 {
     public bool IsMark { get; set; }
     public string RemarkName { get; set; } = "";
 }
 
-public class FriendChatHistory
+[MemoryPackable]
+public partial class FriendChatHistory
 {
     public List<FriendChatData> MessageList { get; set; } = [];
 }
 
-public class FriendChatData
+[MemoryPackable]
+public partial class FriendChatData
 {
     public long SendTime { get; set; }
     public string Message { get; set; } = "";

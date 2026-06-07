@@ -1,8 +1,10 @@
+using MemoryPack;
 using March7thHoney.Proto;
 
 namespace March7thHoney.Util;
 
-public class Position
+[MemoryPackable]
+public partial class Position
 {
     public Position(int x, int y, int z)
     {
@@ -18,6 +20,7 @@ public class Position
         Z = vector.Z;
     }
 
+    [MemoryPackConstructor]
     public Position()
     {
         X = 0;
