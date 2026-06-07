@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class RefreshMazeBuffTime : TaskConfigInfo
+[MemoryPackable]
+public partial class RefreshMazeBuffTime : TaskConfigInfo
 {
     public TargetEvaluator TargetType { get; set; } = new();
     public int ID { get; set; }

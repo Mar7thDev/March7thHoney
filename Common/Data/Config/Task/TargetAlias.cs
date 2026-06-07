@@ -1,6 +1,8 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Task;
 
-public class TargetAlias : TargetEvaluator
+[MemoryPackable]
+public partial class TargetAlias : TargetEvaluator
 {
     public string Alias { get; set; } = "";
 }

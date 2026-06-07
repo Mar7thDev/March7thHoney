@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Util;
@@ -8,7 +9,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MappingInfo.json")]
-public class MappingInfoExcel : ExcelResource
+[MemoryPackable]
+public partial class MappingInfoExcel : ExcelResource
 {
     public int ID { get; set; }
     public int WorldLevel { get; set; }
@@ -307,8 +309,10 @@ public class MappingInfoExcel : ExcelResource
     }
 }
 
-public class MappingInfoItem
+[MemoryPackable]
+public partial class MappingInfoItem
 {
+    [MemoryPackConstructor]
     public MappingInfoItem()
     {
     }

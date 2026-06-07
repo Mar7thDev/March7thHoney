@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("BattleTargetConfig.json")]
-public class BattleTargetConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class BattleTargetConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public int TargetParam { get; set; }

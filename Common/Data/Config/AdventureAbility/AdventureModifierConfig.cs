@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Data.Config.Task;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.AdventureAbility;
 
-public class AdventureModifierConfig
+[MemoryPackable]
+public partial class AdventureModifierConfig
 {
     public float LifeTime { get; set; }
     public int Level { get; set; }

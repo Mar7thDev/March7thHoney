@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("BackGroundMusic.json")]
-public class BackGroundMusicExcel : ExcelResource
+[MemoryPackable]
+public partial class BackGroundMusicExcel : ExcelResource
 {
     public int ID { get; set; }
     public int GroupID { get; set; }

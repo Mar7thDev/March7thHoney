@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Config;
 
-public class DialogueInfo
+[MemoryPackable]
+public partial class DialogueInfo
 {
     public List<DialogueTaskInfo> OnInitSequece { get; set; } = [];
     public List<DialogueTaskInfo> OnStartSequece { get; set; } = [];
@@ -23,7 +25,8 @@ public class DialogueInfo
     }
 }
 
-public class DialogueTaskInfo
+[MemoryPackable]
+public partial class DialogueTaskInfo
 {
     public List<DialogueTaskInfo> TaskList { get; set; } = [];
     public List<DialogueTaskInfo> OptionList { get; set; } = [];

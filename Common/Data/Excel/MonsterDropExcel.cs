@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Util;
 using Newtonsoft.Json;
@@ -5,7 +6,8 @@ using Newtonsoft.Json;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MonsterDrop.json")]
-public class MonsterDropExcel : ExcelResource
+[MemoryPackable]
+public partial class MonsterDropExcel : ExcelResource
 {
     public int MonsterTemplateID { get; set; }
     public int WorldLevel { get; set; }
@@ -63,7 +65,8 @@ public class MonsterDropExcel : ExcelResource
     }
 }
 
-public class MonsterDropItem
+[MemoryPackable]
+public partial class MonsterDropItem
 {
     public int ItemID { get; set; }
 

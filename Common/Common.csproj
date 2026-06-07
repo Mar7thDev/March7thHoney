@@ -12,6 +12,7 @@
     <PackageReference Include="EastAsianWidth" Version="1.2.0" />
     <PackageReference Include="Google.Protobuf" Version="3.33.1" />
     <PackageReference Include="Google.Protobuf.Tools" Version="3.33.1" />
+    <PackageReference Include="MemoryPack" Version="1.21.4" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />

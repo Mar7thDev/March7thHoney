@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueDLCBossBp.json")]
-public class RogueDLCBossBpExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueDLCBossBpExcel : ExcelResource
 {
     public int BossBpID { get; set; }
     public List<BossAndFloorInfo> MonsterAndFloorList { get; set; } = [];
@@ -20,7 +22,8 @@ public class RogueDLCBossBpExcel : ExcelResource
     }
 }
 
-public class BossAndFloorInfo
+[MemoryPackable]
+public partial class BossAndFloorInfo
 {
     [JsonProperty("LKPOGAKCEMO")] public int MonsterId { get; set; }
 }

@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class ByAnd : PredicateConfigInfo
+[MemoryPackable]
+public partial class ByAnd : PredicateConfigInfo
 {
     public List<PredicateConfigInfo> PredicateList { get; set; } = [];
 

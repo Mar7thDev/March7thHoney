@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Data.Config.Task;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config;
 
-public class LevelStartSequeceConfigInfo
+[MemoryPackable]
+public partial class LevelStartSequeceConfigInfo
 {
     public List<TaskConfigInfo> TaskList { get; set; } = [];
     public bool IsLoop { get; set; }

@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("TutorialData.json")]
-public class TutorialDataExcel : ExcelResource
+[MemoryPackable]
+public partial class TutorialDataExcel : ExcelResource
 {
     public int TutorialID { get; set; }
     public int Priority { get; set; }

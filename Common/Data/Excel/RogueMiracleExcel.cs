@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueMiracle.json")]
-public class RogueMiracleExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueMiracleExcel : ExcelResource
 {
     public int MiracleID { get; set; }
     public int MiracleDisplayID { get; set; }

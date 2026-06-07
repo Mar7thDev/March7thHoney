@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("PamSkinConfig.json")]
-public class PamSkinConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class PamSkinConfigExcel : ExcelResource
 {
     public int SkinID { get; set; }
 

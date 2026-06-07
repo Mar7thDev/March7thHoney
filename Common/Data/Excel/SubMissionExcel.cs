@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Data.Config;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("SubMission.json")]
-public class SubMissionExcel : ExcelResource
+[MemoryPackable]
+public partial class SubMissionExcel : ExcelResource
 {
     public int SubMissionID { get; set; }
 
@@ -29,7 +31,8 @@ public class SubMissionExcel : ExcelResource
     }
 }
 
-public class SubMissionData(int missionId)
+[MemoryPackable]
+public partial class SubMissionData(int missionId)
 {
     public int MissionId { get; set; } = missionId;
     public int MainMissionId { get; set; }

@@ -1,6 +1,8 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Task;
 
-public class CreateSummonUnit : TaskConfigInfo
+[MemoryPackable]
+public partial class CreateSummonUnit : TaskConfigInfo
 {
     public int SummonUnitID { get; set; }
     public DynamicFloat Duration { get; set; } = new();

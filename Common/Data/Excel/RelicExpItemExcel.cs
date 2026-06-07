@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RelicExpItem.json")]
-public class RelicExpItemExcel : ExcelResource
+[MemoryPackable]
+public partial class RelicExpItemExcel : ExcelResource
 {
     public int ItemID { get; set; }
     public int ExpProvide { get; set; }

@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ChatBubbleConfig.json")]
-public class ChatBubbleConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class ChatBubbleConfigExcel : ExcelResource
 {
     public int ID { get; set; }
 

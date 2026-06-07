@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Proto;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MazeBuff.json,AvatarMazeBuff.json,AvatarMazeBuffLD.json", true)]
-public class MazeBuffExcel : ExcelResource
+[MemoryPackable]
+public partial class MazeBuffExcel : ExcelResource
 {
     public int ID { get; set; }
     public int Lv { get; set; }

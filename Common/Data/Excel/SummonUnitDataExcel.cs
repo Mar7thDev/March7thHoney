@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Data.Config.SummonUnit;
 using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
@@ -6,7 +7,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("SummonUnitData.json")]
-public class SummonUnitDataExcel : ExcelResource
+[MemoryPackable]
+public partial class SummonUnitDataExcel : ExcelResource
 {
     public int ID { get; set; }
     public string JsonPath { get; set; } = "";

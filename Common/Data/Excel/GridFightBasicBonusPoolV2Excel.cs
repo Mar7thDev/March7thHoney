@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.GridFight;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightBasicBonusPoolV2.json")]
-public class GridFightBasicBonusPoolV2Excel : ExcelResource
+[MemoryPackable]
+public partial class GridFightBasicBonusPoolV2Excel : ExcelResource
 {
     public uint BonusID { get; set; }
     public uint Value { get; set; }

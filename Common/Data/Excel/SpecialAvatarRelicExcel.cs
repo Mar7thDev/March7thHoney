@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("SpecialAvatarRelic.json")]
-public class SpecialAvatarRelicExcel : ExcelResource
+[MemoryPackable]
+public partial class SpecialAvatarRelicExcel : ExcelResource
 {
     public int RelicPropertyType { get; set; }
     public List<SpecialAvatarRelicInfo> RelicIDList { get; set; } = [];
@@ -19,7 +21,8 @@ public class SpecialAvatarRelicExcel : ExcelResource
     }
 }
 
-public class SpecialAvatarRelicInfo
+[MemoryPackable]
+public partial class SpecialAvatarRelicInfo
 {
     [JsonProperty("BDHIKPAMCJF")] public int RelicID { get; set; }
 

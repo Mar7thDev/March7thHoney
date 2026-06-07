@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightNodeTemplate.json")]
-public class GridFightNodeTemplateExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightNodeTemplateExcel : ExcelResource
 {
     public uint NodeTemplateID { get; set; }
     public uint PenaltyBonusRuleID { get; set; }

@@ -1,6 +1,8 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Task;
 
-public class EnterMap : TaskConfigInfo
+[MemoryPackable]
+public partial class EnterMap : TaskConfigInfo
 {
     public int EntranceID { get; set; }
     public int GroupID { get; set; }

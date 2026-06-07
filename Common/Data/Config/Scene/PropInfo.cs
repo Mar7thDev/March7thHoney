@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Scene;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Scene;
 
-public class PropInfo : PositionInfo
+[MemoryPackable]
+public partial class PropInfo : PositionInfo
 {
     [JsonIgnore] public bool CommonConsole = false;
     public int MappingInfoID { get; set; }
@@ -19,7 +21,9 @@ public class PropInfo : PositionInfo
     public bool IsClientOnly { get; set; }
     public bool LoadOnInitial { get; set; } = true;
 
-    public ValueSourceInfo? ValueSource { get; set; }
+    // Raw JSON consumed at load time by Load() to populate UnlockDoorID/UnlockControllerID/etc.;
+    // not needed in the binary cache (and JObject isn't MemoryPack-serializable).
+    [MemoryPackIgnore] public ValueSourceInfo? ValueSource { get; set; }
     public string? InitLevelGraph { get; set; }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -87,7 +91,8 @@ public class PropInfo : PositionInfo
     }
 }
 
-public class ValueSourceInfo
+[MemoryPackable]
+public partial class ValueSourceInfo
 {
     public List<JObject> Values { get; set; } = [];
 }

@@ -1,6 +1,8 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Scene;
 
-public class MonsterInfo : PositionInfo
+[MemoryPackable]
+public partial class MonsterInfo : PositionInfo
 {
     public int NPCMonsterID { get; set; }
     public int EventID { get; set; }

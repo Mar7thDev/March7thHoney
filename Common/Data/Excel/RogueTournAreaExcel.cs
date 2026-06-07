@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.TournRogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournArea.json")]
-public class RogueTournAreaExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTournAreaExcel : ExcelResource
 {
     public List<int> MonsterDisplayItemList { get; set; } = [];
     public List<int> LayerIDList { get; set; } = [];

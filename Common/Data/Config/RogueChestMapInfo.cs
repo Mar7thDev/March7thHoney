@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -7,7 +8,8 @@ namespace March7thHoney.Data.Config;
 /// <summary>
 ///     Orginal Name: RogueChestMapConfig
 /// </summary>
-public class RogueChestMapInfo
+[MemoryPackable]
+public partial class RogueChestMapInfo
 {
     public List<int> PreStartRoomIDList { get; set; } = [];
     public int Width { get; set; }
@@ -19,7 +21,8 @@ public class RogueChestMapInfo
     public List<RogueBlockCreateGroup> RogueBlockCreateGroupList { get; set; } = [];
 }
 
-public class RogueChestGridItem
+[MemoryPackable]
+public partial class RogueChestGridItem
 {
     public int PosX { get; set; }
     public int PosY { get; set; }
@@ -30,7 +33,8 @@ public class RogueChestGridItem
     public bool ExportToJson { get; set; }
 }
 
-public class RogueChestModifierEvent
+[MemoryPackable]
+public partial class RogueChestModifierEvent
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public ModifierTriggerTypeEnum TriggerType { get; set; }
@@ -45,7 +49,8 @@ public class RogueChestModifierEvent
     public float Weight { get; set; }
 }
 
-public class RogueBlockCreateGroup
+[MemoryPackable]
+public partial class RogueBlockCreateGroup
 {
     public int BlockCreateID { get; set; }
     public int GroupID { get; set; }
@@ -58,13 +63,15 @@ public class RogueBlockCreateGroup
     public List<RogueDLCMarkType> MarkCreateRandomList { get; set; } = [];
 }
 
-public class RogueDLCBlockWeight
+[MemoryPackable]
+public partial class RogueDLCBlockWeight
 {
     public int CreateNum { get; set; }
     public int Weight { get; set; }
 }
 
-public class RogueDLCMarkType
+[MemoryPackable]
+public partial class RogueDLCMarkType
 {
     public int TypeID { get; set; }
     public int Weight { get; set; }

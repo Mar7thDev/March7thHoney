@@ -1,16 +1,19 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Custom;
 
-public class ChessRogueDiceSurfaceEffectConfig
+[MemoryPackable]
+public partial class ChessRogueDiceSurfaceEffectConfig
 {
     public int SurfaceId { get; set; }
     public List<ChessRogueDiceSurfaceContentEffect> ContentEffects { get; set; } = [];
 }
 
-public class ChessRogueDiceSurfaceContentEffect
+[MemoryPackable]
+public partial class ChessRogueDiceSurfaceContentEffect
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public ModifierEffectTypeEnum EffectType { get; set; }

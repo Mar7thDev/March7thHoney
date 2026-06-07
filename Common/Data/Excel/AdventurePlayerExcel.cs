@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("AdventurePlayer.json,ActivityAdventurePlayer.json,AdventurePlayerLD.json", true)]
-public class AdventurePlayerExcel : ExcelResource
+[MemoryPackable]
+public partial class AdventurePlayerExcel : ExcelResource
 {
     public int ID { get; set; }
     public int AvatarID { get; set; }

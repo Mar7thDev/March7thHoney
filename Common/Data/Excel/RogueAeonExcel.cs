@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueAeon.json")]
-public class RogueAeonExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueAeonExcel : ExcelResource
 {
     public int AeonID { get; set; }
     public int RogueVersion { get; set; }

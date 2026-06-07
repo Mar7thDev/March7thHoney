@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GroupSystemUnlockData.json")]
-public class GroupSystemUnlockDataExcel : ExcelResource
+[MemoryPackable]
+public partial class GroupSystemUnlockDataExcel : ExcelResource
 {
     public int GroupSystemUnlockID { get; set; }
     public int UnlockID { get; set; }

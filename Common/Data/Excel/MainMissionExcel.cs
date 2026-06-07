@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
@@ -9,7 +10,8 @@ using MissionInfo = March7thHoney.Data.Config.MissionInfo;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MainMission.json")]
-public class MainMissionExcel : ExcelResource
+[MemoryPackable]
+public partial class MainMissionExcel : ExcelResource
 {
     public int MainMissionID { get; set; }
     public HashName Name { get; set; } = new();
@@ -71,7 +73,8 @@ public class MainMissionExcel : ExcelResource
     }
 }
 
-public class MissionParam
+[MemoryPackable]
+public partial class MissionParam
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public MissionTakeTypeEnum Type { get; set; }

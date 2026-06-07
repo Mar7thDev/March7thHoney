@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
 using Newtonsoft.Json;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Rogue;
 
-public class RogueDialogueBaseConfigInfo
+[MemoryPackable]
+public partial class RogueDialogueBaseConfigInfo
 {
     public string OptionPath { get; set; } = string.Empty;
     public string DialoguePath { get; set; } = string.Empty;

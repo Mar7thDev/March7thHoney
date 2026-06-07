@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RollShopConfig.json")]
-public class RollShopConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class RollShopConfigExcel : ExcelResource
 {
     public int RollShopID { get; set; }
     public List<SpecialGroup> SpecialGroupList { get; set; } = [];
@@ -27,7 +29,8 @@ public class RollShopConfigExcel : ExcelResource
     }
 }
 
-public class SpecialGroup
+[MemoryPackable]
+public partial class SpecialGroup
 {
     public string GroupID { get; set; } = "";
     public int GroupValue { get; set; }

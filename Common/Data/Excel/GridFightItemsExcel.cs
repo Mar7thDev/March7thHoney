@@ -1,9 +1,11 @@
+using MemoryPack;
 using System.Collections.Generic;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightItems.json")]
-public class GridFightItemsExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightItemsExcel : ExcelResource
 {
     public uint ID { get; set; }
     public HashName ItemName { get; set; } = new();

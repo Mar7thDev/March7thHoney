@@ -1,12 +1,14 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class AddMazeBuff : TaskConfigInfo
+[MemoryPackable]
+public partial class AddMazeBuff : TaskConfigInfo
 {
     public TargetEvaluator TargetType { get; set; } = new();
     public int ID { get; set; }
-    public PredicateConfigInfo Condition { get; set; } = new();
+    public PredicateConfigInfo Condition { get; set; } = new UnknownPredicateConfigInfo();
     public TargetEvaluator BindingAffectedTarget { get; set; } = new();
     public DynamicFloat LifeTime { get; set; } = new();
     public DynamicFloat Count { get; set; } = new();

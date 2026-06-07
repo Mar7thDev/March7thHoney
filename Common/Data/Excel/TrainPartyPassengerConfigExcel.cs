@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("TrainPartyPassengerConfig.json")]
-public class TrainPartyPassengerConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class TrainPartyPassengerConfigExcel : ExcelResource
 {
     public int PassengerID { get; set; }
 

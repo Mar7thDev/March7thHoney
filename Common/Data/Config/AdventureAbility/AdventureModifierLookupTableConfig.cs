@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.AdventureAbility;
 
-public class AdventureModifierLookupTableConfig
+[MemoryPackable]
+public partial class AdventureModifierLookupTableConfig
 {
     public Dictionary<string, AdventureModifierConfig> ModifierMap { get; set; } = [];
 

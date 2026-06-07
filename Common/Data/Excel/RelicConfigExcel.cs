@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Item;
 using Newtonsoft.Json;
@@ -6,7 +7,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RelicConfig.json")]
-public class RelicConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class RelicConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public int SetID { get; set; }

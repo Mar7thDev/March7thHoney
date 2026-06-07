@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.GridFight;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightOrb.json")]
-public class GridFightOrbExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightOrbExcel : ExcelResource
 {
     public uint BonusID { get; set; }
     public uint OrbID { get; set; }

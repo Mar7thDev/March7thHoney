@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Custom;
 
-public class BaseRogueBuffGroupExcel : ExcelResource
+[MemoryPackable]
+public partial class BaseRogueBuffGroupExcel : ExcelResource
 {
     public int GroupId { get; set; }
     [JsonIgnore] public List<BaseRogueBuffExcel> BuffList { get; set; } = [];

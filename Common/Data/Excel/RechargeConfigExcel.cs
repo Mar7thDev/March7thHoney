@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RechargeConfig.json")]
-public class RechargeConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class RechargeConfigExcel : ExcelResource
 {
     public string TierID { get; set; } = "";
     public string ProductID { get; set; } = "";

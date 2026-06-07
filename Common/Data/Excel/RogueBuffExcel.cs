@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Data.Custom;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
@@ -6,7 +7,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueBuff.json")]
-public class RogueBuffExcel : BaseRogueBuffExcel
+[MemoryPackable]
+public partial class RogueBuffExcel : BaseRogueBuffExcel
 {
     public int AeonID { get; set; }
 

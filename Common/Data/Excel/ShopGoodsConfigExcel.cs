@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Proto;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ShopGoodsConfig.json")]
-public class ShopGoodsConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class ShopGoodsConfigExcel : ExcelResource
 {
     public int GoodsID { get; set; }
     public int ShopID { get; set; }

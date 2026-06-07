@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("PlayerLevelConfig.json")]
-public class PlayerLevelConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class PlayerLevelConfigExcel : ExcelResource
 {
     public int Level { get; set; }
     public int PlayerExp { get; set; }

@@ -15,7 +15,7 @@ using March7thHoney.Enums.Item;
 
 namespace March7thHoney.Data;
 
-public static class GameData
+public static partial class GameData
 {
     #region Banners
 

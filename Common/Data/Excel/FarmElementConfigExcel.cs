@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("FarmElementConfig.json")]
-public class FarmElementConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class FarmElementConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public int WorldLevel { get; set; }

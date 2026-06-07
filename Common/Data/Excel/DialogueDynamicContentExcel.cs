@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("DialogueDynamicContent.json")]
-public class DialogueDynamicContentExcel : ExcelResource
+[MemoryPackable]
+public partial class DialogueDynamicContentExcel : ExcelResource
 {
     public int DynamicContentID { get; set; }
     public int ArgID { get; set; }

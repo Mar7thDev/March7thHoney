@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightDivisionInfo.json")]
-public class GridFightDivisionInfoExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightDivisionInfoExcel : ExcelResource
 {
     public uint ID { get; set; }
     public uint SeasonID { get; set; }

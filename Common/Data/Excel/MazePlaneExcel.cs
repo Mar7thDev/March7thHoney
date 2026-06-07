@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Scene;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MazePlane.json", true)]
-public class MazePlaneExcel : ExcelResource
+[MemoryPackable]
+public partial class MazePlaneExcel : ExcelResource
 {
     public int PlaneID { get; set; }
     public int WorldID { get; set; }

@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueManager.json")]
-public class RogueManagerExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueManagerExcel : ExcelResource
 {
     public int RogueSeason { get; set; }
     public string BeginTime { get; set; } = "";

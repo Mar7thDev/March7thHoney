@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Quest;
 using March7thHoney.Util;
@@ -6,7 +7,8 @@ using Newtonsoft.Json;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("FinishWay.json,FinishWayRogue.json,RogueDLCFinishWay.json", true)]
-public class FinishWayExcel : ExcelResource
+[MemoryPackable]
+public partial class FinishWayExcel : ExcelResource
 {
     public List<int> ParamIntList { get; set; } = [];
     public string ParamStr1 { get; set; } = "";

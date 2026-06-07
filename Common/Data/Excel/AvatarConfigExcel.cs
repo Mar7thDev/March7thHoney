@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Item;
 using Newtonsoft.Json;
@@ -6,7 +7,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("AvatarConfig.json,AvatarConfigTrial.json,AvatarConfigLD.json", true)]
-public class AvatarConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class AvatarConfigExcel : ExcelResource
 {
     [JsonIgnore] public Dictionary<int, List<AvatarSkillTreeConfigExcel>> DefaultSkillTree { get; set; } = [];
     [JsonIgnore] public string? Name { get; set; }

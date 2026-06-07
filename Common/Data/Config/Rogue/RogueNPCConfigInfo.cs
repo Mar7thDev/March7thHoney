@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Config.Rogue;
 
-public class RogueNPCConfigInfo
+[MemoryPackable]
+public partial class RogueNPCConfigInfo
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public RogueDialogueTypeEnum DialogueType { get; set; }

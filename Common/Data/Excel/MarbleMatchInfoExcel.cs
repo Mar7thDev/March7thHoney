@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MarbleMatchInfo.json")]
-public class MarbleMatchInfoExcel : ExcelResource
+[MemoryPackable]
+public partial class MarbleMatchInfoExcel : ExcelResource
 {
     public int ID { get; set; }
 

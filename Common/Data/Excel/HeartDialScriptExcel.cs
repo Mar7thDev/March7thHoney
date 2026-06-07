@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Mission;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("HeartDialScript.json")]
-public class HeartDialScriptExcel : ExcelResource
+[MemoryPackable]
+public partial class HeartDialScriptExcel : ExcelResource
 {
     public int ScriptID { get; set; }
 

@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ChallengePeakConfig.json")]
-public class ChallengePeakConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class ChallengePeakConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public List<int> TagList { get; set; } = [];

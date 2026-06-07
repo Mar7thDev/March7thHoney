@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("UpgradeAvatarEquipment.json")]
-public class UpgradeAvatarEquipmentExcel : ExcelResource
+[MemoryPackable]
+public partial class UpgradeAvatarEquipmentExcel : ExcelResource
 {
     [JsonProperty("ELADHEIOONA")] public uint EquipmentId { get; set; }
 

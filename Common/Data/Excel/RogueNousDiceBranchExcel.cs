@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueNousDiceBranch.json")]
-public class RogueNousDiceBranchExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueNousDiceBranchExcel : ExcelResource
 {
     public int BranchID { get; set; }
     public int DefaultUltraSurface { get; set; }

@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.RogueMagic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueMagicUnit.json")]
-public class RogueMagicUnitExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueMagicUnitExcel : ExcelResource
 {
     public int MagicUnitID { get; set; }
     public int MagicUnitLevel { get; set; }

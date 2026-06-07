@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Config;
 
-public class TaskInfo
+[MemoryPackable]
+public partial class TaskInfo
 {
     public string Type { get; set; } = "";
 
@@ -66,12 +68,14 @@ public class TaskInfo
     }
 }
 
-public class SummonUnitInfo
+[MemoryPackable]
+public partial class SummonUnitInfo
 {
     public int SummonUnitID { get; set; }
 }
 
-public class LifeTimeInfo
+[MemoryPackable]
+public partial class LifeTimeInfo
 {
     public bool IsDynamic { get; set; } = false;
     public FixedValueInfo<double> FixedValue { get; set; } = new();
@@ -85,7 +89,8 @@ public class LifeTimeInfo
     }
 }
 
-public class FixedValueInfo<T>
+[MemoryPackable]
+public partial class FixedValueInfo<T>
 {
     public T Value { get; set; } = default!;
 }

@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class ByIsContainAdventureModifier : PredicateConfigInfo
+[MemoryPackable]
+public partial class ByIsContainAdventureModifier : PredicateConfigInfo
 {
     public TargetEvaluator TargetType { get; set; } = new();
     public string ModifierName { get; set; } = "";

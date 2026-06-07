@@ -1,12 +1,15 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Scene;
 
-public class MapInfo
+[MemoryPackable]
+public partial class MapInfo
 {
     public List<AreaInfo> AreaList { get; set; } = [];
     public List<int> MapLayerList { get; set; } = [];
 }
 
-public class AreaInfo
+[MemoryPackable]
+public partial class AreaInfo
 {
     public int ID { get; set; }
     public MinimapVolumeInfo MinimapVolume { get; set; } = new();
@@ -14,12 +17,14 @@ public class AreaInfo
     public List<int> MapLayerList { get; set; } = [];
 }
 
-public class MinimapVolumeInfo
+[MemoryPackable]
+public partial class MinimapVolumeInfo
 {
     public List<SectionsInfo> Sections { get; set; } = new();
 }
 
-public class SectionsInfo
+[MemoryPackable]
+public partial class SectionsInfo
 {
     public int ID { get; set; }
     public int MapLayerID { get; set; }

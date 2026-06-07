@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Data.Config.Rogue;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueNPC.json,RogueTournNPC.json", true)]
-public class RogueNPCExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueNPCExcel : ExcelResource
 {
     public int RogueNPCID { get; set; }
     public string NPCJsonPath { get; set; } = string.Empty;

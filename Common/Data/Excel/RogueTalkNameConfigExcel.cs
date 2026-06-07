@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTalkNameConfig.json")]
-public class RogueTalkNameConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTalkNameConfigExcel : ExcelResource
 {
     public int TalkNameID { get; set; }
     public HashName Name { get; set; } = new();
