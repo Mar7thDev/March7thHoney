@@ -405,8 +405,6 @@ public class EntryPoint
 
         if (args.Contains("--upgrade-database")) DatabaseHelper.UpgradeDatabase();
 
-        if (args.Contains("--move")) DatabaseHelper.MoveFromSqlite();
-
         var elapsed = DateTime.Now - time;
         Logger.Info(I18NManager.Translate("Server.ServerInfo.ServerStarted",
             Math.Round(elapsed.TotalSeconds, 2).ToString(CultureInfo.InvariantCulture)));

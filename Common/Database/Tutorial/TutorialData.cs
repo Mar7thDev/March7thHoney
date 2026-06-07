@@ -1,10 +1,10 @@
+using MemoryPack;
 using March7thHoney.Proto;
-using SqlSugar;
 
 namespace March7thHoney.Database.Tutorial;
 
-[SugarTable("Tutorial")]
+[DbTable("Tutorial")]
 public class TutorialData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public Dictionary<int, TutorialStatus> Tutorials { get; set; } = [];
+    public Dictionary<int, TutorialStatus> Tutorials { get; set; } = [];
 }

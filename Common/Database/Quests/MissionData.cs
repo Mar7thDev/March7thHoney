@@ -1,31 +1,27 @@
+using MemoryPack;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Util;
-using SqlSugar;
 
 namespace March7thHoney.Database.Quests;
 
-[SugarTable("Mission")]
+[DbTable("Mission")]
 public class MissionData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true, ColumnDataType = "TEXT")]
     public Dictionary<int, Dictionary<int, MissionInfo>> MissionInfo { get; set; } =
         []; // Dictionary<MissionId, Dictionary<SubMissionId, MissionInfo>> // seems like main missionId is not used
 
-    [SugarColumn(IsJson = true)]
     public Dictionary<int, MissionPhaseEnum> MainMissionInfo { get; set; } =
         []; // Dictionary<MissionId, MissionPhaseEnum>
 
-    [SugarColumn(IsJson = true, ColumnDataType = "text")]
     public List<int> FinishedSubMissionIds { get; set; } = [];
 
-    [SugarColumn(IsJson = true, ColumnDataType = "text")]
     public List<int> RunningSubMissionIds { get; set; } = [];
 
-    [SugarColumn(IsJson = true)] public List<int> FinishedMainMissionIds { get; set; } = [];
+    public List<int> FinishedMainMissionIds { get; set; } = [];
 
-    [SugarColumn(IsJson = true)] public List<int> RunningMainMissionIds { get; set; } = [];
+    public List<int> RunningMainMissionIds { get; set; } = [];
 
-    [SugarColumn(IsJson = true)] public Dictionary<int, int> SubMissionProgressDict { get; set; } = [];
+    public Dictionary<int, int> SubMissionProgressDict { get; set; } = [];
 
     public int TrackingMainMissionId { get; set; }
 
@@ -100,7 +96,8 @@ public class MissionData : BaseDatabaseDataHelper
     }
 }
 
-public class MissionInfo
+[MemoryPackable]
+public partial class MissionInfo
 {
     public int MissionId { get; set; }
     public MissionPhaseEnum Status { get; set; }

@@ -1,14 +1,12 @@
-using SqlSugar;
+using MemoryPack;
 
 namespace March7thHoney.Database.Account;
 
-[SugarTable("AuthAttempt")]
+[DbTable("AuthAttempt")]
 public class AuthAttemptData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsNullable = false, Length = 128)]
     public string AttemptKey { get; set; } = string.Empty;
 
-    [SugarColumn(IsNullable = false, Length = 32)]
     public string Action { get; set; } = string.Empty;
 
     public long WindowStart { get; set; }

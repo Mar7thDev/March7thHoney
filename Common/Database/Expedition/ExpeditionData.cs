@@ -1,11 +1,10 @@
-using SqlSugar;
+using MemoryPack;
 
 namespace March7thHoney.Database.Expedition;
 
-[SugarTable("Expedition")]
+[DbTable("Expedition")]
 public class ExpeditionData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)]
     public List<uint> ActiveExpeditionIds { get; set; } = [];
 
     public long RefreshTime { get; set; } = 0;

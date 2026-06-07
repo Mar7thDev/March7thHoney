@@ -1,16 +1,15 @@
+using MemoryPack;
 using March7thHoney.Database.Lineup;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using SqlSugar;
 
 namespace March7thHoney.Database.Scene;
 
-[SugarTable("RaidData")]
+[DbTable("RaidData")]
 public class RaidData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public Dictionary<int, Dictionary<int, RaidRecord>> RaidRecordDatas { get; set; } = [];
+    public Dictionary<int, Dictionary<int, RaidRecord>> RaidRecordDatas { get; set; } = [];
 
-    [SugarColumn(IsJson = true)]
     [Obsolete("Using RaidRecordDatas")]
     public Dictionary<int, RaidRecord> RaidRecordData { get; set; } = [];
 
@@ -25,7 +24,8 @@ public class RaidData : BaseDatabaseDataHelper
     public int CurRaidWorldLevel { get; set; }
 }
 
-public class RaidRecord
+[MemoryPackable]
+public partial class RaidRecord
 {
     // Basic Info
     public int RaidId { get; set; }
