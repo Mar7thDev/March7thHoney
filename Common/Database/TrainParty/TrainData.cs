@@ -1,10 +1,10 @@
+using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Proto;
-using SqlSugar;
 
 namespace March7thHoney.Database.TrainParty;
 
-[SugarTable("TrainParty")]
+[DbTable("TrainParty")]
 public class TrainData : BaseDatabaseDataHelper
 {
     public int Fund { get; set; }
@@ -12,23 +12,24 @@ public class TrainData : BaseDatabaseDataHelper
     public uint WorldId { get; set; }
     public long RefreshTime { get; set; }
     public bool BadgeAutoFill { get; set; }
-    [SugarColumn(IsJson = true)] public List<uint> UnlockedPassengerIds { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<uint> PassengerRecordMarks { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<TrainCardInfo> Cards { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<TrainPendingPassengerInfo> GameplayPassengers { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<TrainSkillInfo> GameplaySkills { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<TrainMoveInfo> MoveHistory { get; set; } = [];
+    public List<uint> UnlockedPassengerIds { get; set; } = [];
+    public List<uint> PassengerRecordMarks { get; set; } = [];
+    public List<TrainCardInfo> Cards { get; set; } = [];
+    public List<TrainPendingPassengerInfo> GameplayPassengers { get; set; } = [];
+    public List<TrainSkillInfo> GameplaySkills { get; set; } = [];
+    public List<TrainMoveInfo> MoveHistory { get; set; } = [];
     public int GameplayRound { get; set; }
     public int GameplayType { get; set; }
     public int GameplayQueuePosition { get; set; }
     public int LastUsedCardId { get; set; }
-    [SugarColumn(IsJson = true)] public Dictionary<int, TrainAreaInfo> Areas { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<TrainSelfDisplayEntry> SelfDisplay { get; set; } = [];
-    [SugarColumn(IsJson = true)] public Dictionary<int, long> PropTimes { get; set; } = [];
-    [SugarColumn(IsJson = true)] public Dictionary<int, long> TimedDynamicPropTimes { get; set; } = [];
+    public Dictionary<int, TrainAreaInfo> Areas { get; set; } = [];
+    public List<TrainSelfDisplayEntry> SelfDisplay { get; set; } = [];
+    public Dictionary<int, long> PropTimes { get; set; } = [];
+    public Dictionary<int, long> TimedDynamicPropTimes { get; set; } = [];
 }
 
-public class TrainAreaInfo
+[MemoryPackable]
+public partial class TrainAreaInfo
 {
     public int AreaId { get; set; }
     public List<int> StepList { get; set; } = [];
@@ -65,35 +66,40 @@ public class TrainAreaInfo
     }
 }
 
-public class TrainSelfDisplayEntry
+[MemoryPackable]
+public partial class TrainSelfDisplayEntry
 {
     public uint Slot { get; set; }
     public uint Id { get; set; }
     public uint Type { get; set; }
 }
 
-public class TrainCardInfo
+[MemoryPackable]
+public partial class TrainCardInfo
 {
     public uint CardId { get; set; }
     public uint UniqueId { get; set; }
     public uint CurIndex { get; set; }
 }
 
-public class TrainPendingPassengerInfo
+[MemoryPackable]
+public partial class TrainPendingPassengerInfo
 {
     public uint PassengerId { get; set; }
     public uint Hp { get; set; }
     public uint Atk { get; set; }
 }
 
-public class TrainSkillInfo
+[MemoryPackable]
+public partial class TrainSkillInfo
 {
     public uint SkillId { get; set; }
     public uint SkillLevel { get; set; }
     public uint Count { get; set; }
 }
 
-public class TrainMoveInfo
+[MemoryPackable]
+public partial class TrainMoveInfo
 {
     public uint CardId { get; set; }
     public uint UniqueId { get; set; }

@@ -1,19 +1,19 @@
+using MemoryPack;
 using System.ComponentModel;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Quests;
 using March7thHoney.Proto;
 using Newtonsoft.Json;
-using SqlSugar;
 
 namespace March7thHoney.Database.Lineup;
 
-[SugarTable("Lineup")]
+[DbTable("Lineup")]
 public class LineupData : BaseDatabaseDataHelper
 {
     public int CurLineup { get; set; } // index of current lineup
     public int CurExtraLineup { get; set; } = -1; // index of current extra lineup
-    [SugarColumn(IsIgnore = true)] public int ExtraMpCount { get; set; }
-    [SugarColumn(IsJson = true)] public Dictionary<int, LineupInfo> Lineups { get; set; } = []; // 9 * 4
+    [DbIgnore] public int ExtraMpCount { get; set; }
+    public Dictionary<int, LineupInfo> Lineups { get; set; } = []; // 9 * 4
 
     public int GetCurLineupIndex()
     {
@@ -21,7 +21,8 @@ public class LineupData : BaseDatabaseDataHelper
     }
 }
 
-public class LineupInfo
+[MemoryPackable]
+public partial class LineupInfo
 {
     public string? Name { get; set; }
     public int LineupType { get; set; }
@@ -29,9 +30,9 @@ public class LineupInfo
     public List<LineupAvatarInfo>? BaseAvatars { get; set; }
     [DefaultValue(5)] public int Mp { get; set; } = 5;
 
-    [JsonIgnore] public LineupData? LineupData { get; set; }
+    [JsonIgnore] [MemoryPackIgnore] public LineupData? LineupData { get; set; }
 
-    [JsonIgnore] public AvatarData? AvatarData { get; set; }
+    [JsonIgnore] [MemoryPackIgnore] public AvatarData? AvatarData { get; set; }
 
     public int GetSlot(int avatarId)
     {
@@ -183,7 +184,8 @@ public class LineupInfo
     }
 }
 
-public class LineupAvatarInfo
+[MemoryPackable]
+public partial class LineupAvatarInfo
 {
     public int BaseAvatarId { get; set; }
     public int AssistUid { get; set; }

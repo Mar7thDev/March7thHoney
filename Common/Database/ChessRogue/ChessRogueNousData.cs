@@ -1,15 +1,16 @@
+using MemoryPack;
 using March7thHoney.Proto;
-using SqlSugar;
 
 namespace March7thHoney.Database.ChessRogue;
 
-[SugarTable("ChessRogueNous")]
+[DbTable("ChessRogueNous")]
 public class ChessRogueNousData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public Dictionary<int, ChessRogueNousDiceData> RogueDiceData { get; set; } = [];
+    public Dictionary<int, ChessRogueNousDiceData> RogueDiceData { get; set; } = [];
 }
 
-public class ChessRogueNousDiceData
+[MemoryPackable]
+public partial class ChessRogueNousDiceData
 {
     public int BranchId { get; set; }
     public Dictionary<int, int> Surfaces { get; set; } = [];

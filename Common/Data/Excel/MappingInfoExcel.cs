@@ -2,7 +2,6 @@ using MemoryPack;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Util;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -223,7 +222,7 @@ public partial class MappingInfoExcel : ExcelResource
                         ConfigManager.Config.ServerOption.ValidFarmingDropRate();
             if (count <= 0) continue;
             if (!relicsMap.TryGetValue(rarity, out var value)) continue;
-            if (value.IsNullOrEmpty()) continue;
+            if (value is null || value.Count == 0) continue;
             while (count > 0)
             {
                 var relic = value.RandomElement();

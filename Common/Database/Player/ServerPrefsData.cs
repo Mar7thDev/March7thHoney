@@ -1,13 +1,13 @@
+using MemoryPack;
 using March7thHoney.Proto;
 using Google.Protobuf;
-using SqlSugar;
 
 namespace March7thHoney.Database.Player;
 
-[SugarTable("server_prefs_data")]
+[DbTable("server_prefs_data")]
 public class ServerPrefsData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public Dictionary<int, ServerPrefsInfo> ServerPrefsDict { get; set; } = [];
+    public Dictionary<int, ServerPrefsInfo> ServerPrefsDict { get; set; } = [];
 
     public double Version { get; set; } = 3.2;
 
@@ -21,7 +21,8 @@ public class ServerPrefsData : BaseDatabaseDataHelper
     }
 }
 
-public class ServerPrefsInfo
+[MemoryPackable]
+public partial class ServerPrefsInfo
 {
     public int ServerPrefsId { get; set; }
     public string Data { get; set; } = "";

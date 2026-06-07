@@ -35,10 +35,6 @@ public static class AuthRateLimiter
         if (attemptKeys.Count == 0)
             return false;
 
-        var scope = DatabaseHelper.sqlSugarScope;
-        if (scope == null)
-            return false;
-
         var now = Extensions.GetUnixSec();
         var blockedFor = 0L;
         lock (SyncRoot)
@@ -165,8 +161,8 @@ public static class AuthRateLimiter
 
     private static AuthAttemptData LoadOrCreateAttempt(AuthRateLimitAction action, string attemptKey, out bool isNew)
     {
-        var scope = DatabaseHelper.sqlSugarScope!;
-        var attempt = scope.Queryable<AuthAttemptData>().First(x => x.AttemptKey == attemptKey);
+        var all = DatabaseHelper.GetAllInstanceFromMap<AuthAttemptData>() ?? [];
+        var attempt = all.FirstOrDefault(x => x.AttemptKey == attemptKey);
         if (attempt != null)
         {
             isNew = false;
@@ -175,7 +171,7 @@ public static class AuthRateLimiter
 
         isNew = true;
         var uid = BuildStableUid(attemptKey);
-        while (scope.Queryable<AuthAttemptData>().Any(x => x.Uid == uid && x.AttemptKey != attemptKey))
+        while (all.Any(x => x.Uid == uid && x.AttemptKey != attemptKey))
             uid = uid == int.MaxValue ? 1 : uid + 1;
 
         return new AuthAttemptData
@@ -188,14 +184,10 @@ public static class AuthRateLimiter
 
     private static void SaveAttempt(AuthAttemptData attempt, bool isNew)
     {
-        var scope = DatabaseHelper.sqlSugarScope;
-        if (scope == null)
-            return;
-
         if (isNew)
-            scope.Insertable(attempt).ExecuteCommand();
+            DatabaseHelper.SaveInstance(attempt);
         else
-            scope.Updateable(attempt).ExecuteCommand();
+            DatabaseHelper.SaveDatabaseType(attempt);
     }
 
     private static int BuildStableUid(string attemptKey)
@@ -213,9 +205,9 @@ public static class AuthRateLimiter
         _lastSweep = now;
         var maxWindowSeconds = MaxConfiguredWindowSeconds();
         var staleBefore = now - Math.Max(maxWindowSeconds, 1) * 2L;
-        DatabaseHelper.sqlSugarScope?.Deleteable<AuthAttemptData>()
-            .Where(x => x.BlockedUntil <= now && x.WindowStart <= staleBefore)
-            .ExecuteCommand();
+        var stale = (DatabaseHelper.GetAllInstanceFromMap<AuthAttemptData>() ?? [])
+            .Where(x => x.BlockedUntil <= now && x.WindowStart <= staleBefore).ToList();
+        foreach (var attempt in stale) DatabaseHelper.Instance?.DeleteInstance(attempt);
     }
 
     private static int MaxConfiguredWindowSeconds()

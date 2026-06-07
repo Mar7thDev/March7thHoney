@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Inventory;
@@ -6,21 +7,20 @@ using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Item;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using SqlSugar;
 using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
 namespace March7thHoney.Database.Avatar;
 
-[SugarTable("Avatar")]
+[DbTable("Avatar")]
 public class AvatarData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public List<OldAvatarInfo> Avatars { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<FormalAvatarInfo> FormalAvatars { get; set; } = [];
-    [SugarColumn(IsJson = true)] public List<SpecialAvatarInfo> TrialAvatars { get; set; } = [];
+    public List<OldAvatarInfo> Avatars { get; set; } = [];
+    public List<FormalAvatarInfo> FormalAvatars { get; set; } = [];
+    public List<SpecialAvatarInfo> TrialAvatars { get; set; } = [];
 
-    [SugarColumn(IsJson = true)] public List<int> AssistAvatars { get; set; } = [];
+    public List<int> AssistAvatars { get; set; } = [];
 
-    [SugarColumn(IsJson = true)] public List<int> DisplayAvatars { get; set; } = [];
+    public List<int> DisplayAvatars { get; set; } = [];
 
     public string DatabaseVersion { get; set; } = "0";
 }
@@ -86,8 +86,10 @@ public abstract class BaseAvatarInfo
     public abstract Proto.Avatar ToProto();
 }
 
-public class FormalAvatarInfo : BaseAvatarInfo
+[MemoryPackable]
+public partial class FormalAvatarInfo : BaseAvatarInfo
 {
+    [MemoryPackConstructor]
     public FormalAvatarInfo()
     {
         // only for db
@@ -549,7 +551,8 @@ public class FormalAvatarInfo : BaseAvatarInfo
     }
 }
 
-public class SpecialAvatarInfo : BaseAvatarInfo
+[MemoryPackable]
+public partial class SpecialAvatarInfo : BaseAvatarInfo
 {
     public int SpecialAvatarId { get; set; }
 
@@ -679,7 +682,8 @@ public class SpecialAvatarInfo : BaseAvatarInfo
     }
 }
 
-public class OldAvatarInfo
+[MemoryPackable]
+public partial class OldAvatarInfo
 {
     public int AvatarId { get; set; }
 
@@ -702,7 +706,8 @@ public class OldAvatarInfo
     public Dictionary<int, PathInfo> PathInfoes { get; set; } = [];
 }
 
-public class PathInfo(int pathId)
+[MemoryPackable]
+public partial class PathInfo(int pathId)
 {
     public int PathId { get; set; } = pathId;
     public int Skin { get; set; }
@@ -764,7 +769,8 @@ public class PathInfo(int pathId)
     }
 }
 
-public class EnhanceInfo(int enhanceId)
+[MemoryPackable]
+public partial class EnhanceInfo(int enhanceId)
 {
     public int EnhanceId { get; set; } = enhanceId;
     public Dictionary<int, int> SkillTree { get; set; } = [];

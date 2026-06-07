@@ -1,15 +1,16 @@
+using MemoryPack;
 using March7thHoney.Proto;
-using SqlSugar;
 
 namespace March7thHoney.Database.Message;
 
-[SugarTable("Message")]
+[DbTable("Message")]
 public class MessageData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public Dictionary<int, MessageGroupData> Groups { get; set; } = [];
+    public Dictionary<int, MessageGroupData> Groups { get; set; } = [];
 }
 
-public class MessageGroupData
+[MemoryPackable]
+public partial class MessageGroupData
 {
     public int GroupId { get; set; }
     public List<MessageSectionData> Sections { get; set; } = [];
@@ -18,7 +19,8 @@ public class MessageGroupData
     public int CurrentSectionId { get; set; }
 }
 
-public class MessageSectionData
+[MemoryPackable]
+public partial class MessageSectionData
 {
     public int SectionId { get; set; }
     public MessageSectionStatus Status { get; set; } = MessageSectionStatus.MessageSectionNone;
@@ -26,7 +28,8 @@ public class MessageSectionData
     public List<int> ToChooseItemId { get; set; } = [];
 }
 
-public class MessageItemData
+[MemoryPackable]
+public partial class MessageItemData
 {
     public int ItemId { get; set; }
 }

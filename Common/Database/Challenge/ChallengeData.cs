@@ -1,27 +1,25 @@
+using MemoryPack;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using SqlSugar;
 
 namespace March7thHoney.Database.Challenge;
 
-[SugarTable("Challenge")]
+[DbTable("Challenge")]
 public class ChallengeData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public Dictionary<int, ChallengeHistoryData> History { get; set; } = new();
+    public Dictionary<int, ChallengeHistoryData> History { get; set; } = new();
 
-    [SugarColumn(IsNullable = true)] public string? ChallengeInstance { get; set; }
-    [SugarColumn] public string Instance { get; set; } = ""; // placeholder
+    public string? ChallengeInstance { get; set; }
+    public string Instance { get; set; } = ""; // placeholder
 
-    [SugarColumn(IsJson = true)] public Dictionary<int, ChallengeGroupReward> TakenRewards { get; set; } = new();
-    [SugarColumn(IsJson = true)] public Dictionary<int, List<int>> PeakTakenRewardIds { get; set; } = new();
-    [SugarColumn(IsJson = true)] public Dictionary<int, ChallengePeakLevelData> PeakLevelDatas { get; set; } = new();
+    public Dictionary<int, ChallengeGroupReward> TakenRewards { get; set; } = new();
+    public Dictionary<int, List<int>> PeakTakenRewardIds { get; set; } = new();
+    public Dictionary<int, ChallengePeakLevelData> PeakLevelDatas { get; set; } = new();
 
-    [SugarColumn(IsJson = true)]
     public Dictionary<int, ChallengePeakBossLevelData> PeakBossLevelDatas { get; set; } = new();
 
-    [SugarColumn(IsNullable = true)] public string? TierceInstance { get; set; }
+    public string? TierceInstance { get; set; }
 
-    [SugarColumn(IsJson = true)]
     public Dictionary<int, ChallengeTierceHistoryData> TierceHistory { get; set; } = new();
 
     public void Delete(int challengeId)
@@ -30,7 +28,8 @@ public class ChallengeData : BaseDatabaseDataHelper
     }
 }
 
-public class ChallengeTierceHistoryData
+[MemoryPackable]
+public partial class ChallengeTierceHistoryData
 {
     public int ChallengeId { get; set; }
     public bool IsPassed { get; set; }
@@ -46,7 +45,8 @@ public class ChallengeTierceHistoryData
     public uint RecordScore { get; set; }
 }
 
-public class ChallengePeakLevelData
+[MemoryPackable]
+public partial class ChallengePeakLevelData
 {
     public int LevelId { get; set; }
     public uint RoundCnt { get; set; }
@@ -55,7 +55,8 @@ public class ChallengePeakLevelData
     public List<uint> FinishedTargetList { get; set; } = [];
 }
 
-public class ChallengePeakBossLevelData
+[MemoryPackable]
+public partial class ChallengePeakBossLevelData
 {
     public int LevelId { get; set; }
     public uint BuffId { get; set; }
@@ -66,8 +67,14 @@ public class ChallengePeakBossLevelData
     public List<uint> FinishedTargetList { get; set; } = [];
 }
 
-public class ChallengeHistoryData(int uid, int challengeId)
+[MemoryPackable]
+public partial class ChallengeHistoryData(int uid, int challengeId)
 {
+    [MemoryPackConstructor]
+    public ChallengeHistoryData() : this(0, 0)
+    {
+    }
+
     public int OwnerId { get; set; } = uid;
 
     public int ChallengeId { get; set; } = challengeId;
@@ -102,7 +109,8 @@ public class ChallengeHistoryData(int uid, int challengeId)
     }
 }
 
-public class ChallengeInstanceData
+[MemoryPackable]
+public partial class ChallengeInstanceData
 {
     public Position StartPos { get; set; } = new();
     public Position StartRot { get; set; } = new();
@@ -121,8 +129,14 @@ public class ChallengeInstanceData
     public List<int> BossBuffs { get; set; } = [];
 }
 
-public class ChallengeGroupReward(int uid, int groupId)
+[MemoryPackable]
+public partial class ChallengeGroupReward(int uid, int groupId)
 {
+    [MemoryPackConstructor]
+    public ChallengeGroupReward() : this(0, 0)
+    {
+    }
+
     public int OwnerUid = uid;
     public int GroupId { get; set; } = groupId;
     public long TakenStars { get; set; }

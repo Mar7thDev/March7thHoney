@@ -1,15 +1,15 @@
+using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Quests;
 using March7thHoney.Proto;
 using March7thHoney.Util;
-using SqlSugar;
 using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
 namespace March7thHoney.Database.Player;
 
-[SugarTable("Player")]
+[DbTable("Player")]
 public class PlayerData : BaseDatabaseDataHelper
 {
     public string? Name { get; set; } = "";
@@ -37,31 +37,29 @@ public class PlayerData : BaseDatabaseDataHelper
     public bool WelcomeAnnouncePending { get; set; } = false;
 
     public int Pet { get; set; } = 0;
-    [SugarColumn(IsNullable = true)] public int CurMusicLevel { get; set; }
+    public int CurMusicLevel { get; set; }
 
     public int Stamina { get; set; } = 300;
     public double StaminaReserve { get; set; } = 0;
     public long NextStaminaRecover { get; set; } = 0;
 
-    [SugarColumn(IsNullable = true, IsJson = true)]
     public Position? Pos { get; set; }
 
-    [SugarColumn(IsNullable = true, IsJson = true)]
     public Position? Rot { get; set; }
 
-    [SugarColumn(IsJson = true)] public PlayerHeadFrameInfo HeadFrame { get; set; } = new();
-    [SugarColumn(IsJson = true)] public List<int> PlayerOutfitList { get; set; } = [];
+    public PlayerHeadFrameInfo HeadFrame { get; set; } = new();
+    public List<int> PlayerOutfitList { get; set; } = [];
 
-    [SugarColumn(IsNullable = true)] public int PlaneId { get; set; }
+    public int PlaneId { get; set; }
 
-    [SugarColumn(IsNullable = true)] public int FloorId { get; set; }
+    public int FloorId { get; set; }
 
-    [SugarColumn(IsNullable = true)] public int EntryId { get; set; }
+    public int EntryId { get; set; }
 
-    [SugarColumn(IsNullable = true)] public long LastActiveTime { get; set; }
+    public long LastActiveTime { get; set; }
 
-    [SugarColumn(IsJson = true)] public List<int> TakenLevelReward { get; set; } = [];
-    [SugarColumn(IsJson = true)] public PrivacySettingsPb PrivacySettings { get; set; } = new();
+    public List<int> TakenLevelReward { get; set; } = [];
+    public PrivacySettingsPb PrivacySettings { get; set; } = new();
 
     public static PlayerData? GetPlayerByUid(long uid)
     {
@@ -210,7 +208,8 @@ public class PlayerData : BaseDatabaseDataHelper
     // TODO 4.3: PlayerOutfitInfo 在 4.3 中被砍掉，所有调用点暂时移除
 }
 
-public class PlayerHeadFrameInfo
+[MemoryPackable]
+public partial class PlayerHeadFrameInfo
 {
     public long HeadFrameExpireTime { get; set; }
     public uint HeadFrameId { get; set; }
@@ -225,7 +224,8 @@ public class PlayerHeadFrameInfo
     }
 }
 
-public class PrivacySettingsPb
+[MemoryPackable]
+public partial class PrivacySettingsPb
 {
     public bool DisplayChallengeLineup { get; set; } = true;
     public bool DisplayActiveState { get; set; } = true;

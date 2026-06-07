@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Database.Mail;
 using March7thHoney.Command;
 using March7thHoney.Util;

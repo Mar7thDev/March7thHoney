@@ -1,16 +1,16 @@
+using MemoryPack;
 using March7thHoney.Proto;
-using SqlSugar;
 
 namespace March7thHoney.Database.Quests;
 
-[SugarTable("quest_data")]
+[DbTable("quest_data")]
 public class QuestData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true, ColumnDataType = "MEDIUMTEXT")]
     public Dictionary<int, QuestInfo> Quests { get; set; } = [];
 }
 
-public class QuestInfo
+[MemoryPackable]
+public partial class QuestInfo
 {
     public int QuestId { get; set; }
     public QuestStatus QuestStatus { get; set; }

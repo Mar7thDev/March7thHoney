@@ -1,15 +1,16 @@
+using MemoryPack;
 using March7thHoney.Proto;
-using SqlSugar;
 
 namespace March7thHoney.Database.Activity;
 
-[SugarTable("Activity")]
+[DbTable("Activity")]
 public class ActivityData : BaseDatabaseDataHelper
 {
-    [SugarColumn(IsJson = true)] public TrialActivityData TrialActivityData { get; set; } = new();
+    public TrialActivityData TrialActivityData { get; set; } = new();
 }
 
-public class TrialActivityData
+[MemoryPackable]
+public partial class TrialActivityData
 {
     public List<TrialActivityResultData> Activities { get; set; } = new();
     public int CurTrialStageId { get; set; } = 0;
@@ -29,7 +30,8 @@ public class TrialActivityData
     }
 }
 
-public class TrialActivityResultData
+[MemoryPackable]
+public partial class TrialActivityResultData
 {
     public int StageId { get; set; } = 0;
     public bool TakenReward { get; set; } = false;

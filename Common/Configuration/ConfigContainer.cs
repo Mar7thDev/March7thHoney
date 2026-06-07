@@ -49,7 +49,7 @@ public class GameServerConfig
     public string GameServerId { get; set; } = "March7th_Honey";
     public string GameServerName { get; set; } = "March7thHoney";
     public string GameServerDescription { get; set; } = "A re-implementation of StarRail server";
-    public int EnvType { get; set; } = 9;
+    public int EnvType { get; set; } = 2;
     public bool UsePacketEncryption { get; set; } = true;
 
     public string GetDisplayAddress()
