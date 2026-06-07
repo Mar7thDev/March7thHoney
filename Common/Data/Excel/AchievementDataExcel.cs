@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("AchievementData.json")]
-public class AchievementDataExcel : ExcelResource
+[MemoryPackable]
+public partial class AchievementDataExcel : ExcelResource
 {
     public int QuestID { get; set; }
     public int AchievementID { get; set; }

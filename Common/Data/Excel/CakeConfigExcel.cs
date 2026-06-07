@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("CakeConfig.json")]
-public class CakeConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class CakeConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public int NPCID { get; set; }

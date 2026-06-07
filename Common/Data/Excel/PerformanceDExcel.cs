@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Data.Config;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("PerformanceD.json")]
-public class PerformanceDExcel : ExcelResource
+[MemoryPackable]
+public partial class PerformanceDExcel : ExcelResource
 {
     public int PerformanceID { get; set; }
     public string PerformancePath { get; set; } = "";

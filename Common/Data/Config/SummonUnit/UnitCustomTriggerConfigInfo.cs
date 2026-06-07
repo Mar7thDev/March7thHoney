@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Data.Config.Task;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.SummonUnit;
 
-public class UnitCustomTriggerConfigInfo
+[MemoryPackable]
+public partial class UnitCustomTriggerConfigInfo
 {
     public string TriggerName { get; set; } = "";
     public bool DefaultEnable { get; set; }

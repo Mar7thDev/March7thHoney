@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class AdventureFireProjectile : TaskConfigInfo
+[MemoryPackable]
+public partial class AdventureFireProjectile : TaskConfigInfo
 {
     public TargetEvaluator TargetType { get; set; } = new();
 

@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.TournRogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournTitanTalent.json")]
-public class RogueTournTitanTalentExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTournTitanTalentExcel : ExcelResource
 {
     public int ID { get; set; }
     public int PreID { get; set; }

@@ -1,8 +1,10 @@
+using MemoryPack;
 using System.Text.RegularExpressions;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("BattleEventData.json")]
+[MemoryPackable]
 public partial class BattleEventDataExcel : ExcelResource
 {
     public int BattleEventID { get; set; }

@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Scene;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MazeProp.json")]
-public class MazePropExcel : ExcelResource
+[MemoryPackable]
+public partial class MazePropExcel : ExcelResource
 {
     public bool IsDoor;
 

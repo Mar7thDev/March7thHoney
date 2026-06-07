@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightRoleRecommendEquip.json")]
-public class GridFightRoleRecommendEquipExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightRoleRecommendEquipExcel : ExcelResource
 {
     public uint RoleID { get; set; }
     public List<uint> FirstRecommendEquipList { get; set; } = [];

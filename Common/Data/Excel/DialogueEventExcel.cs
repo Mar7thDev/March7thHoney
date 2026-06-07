@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("DialogueEvent.json")]
-public class DialogueEventExcel : ExcelResource
+[MemoryPackable]
+public partial class DialogueEventExcel : ExcelResource
 {
     public int EventID { get; set; }
 

@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("StoryLineFloorData.json")]
-public class StoryLineFloorDataExcel : ExcelResource
+[MemoryPackable]
+public partial class StoryLineFloorDataExcel : ExcelResource
 {
     public int FloorID { get; set; }
     public int StoryLineID { get; set; }

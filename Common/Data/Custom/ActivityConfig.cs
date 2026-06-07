@@ -1,11 +1,14 @@
+using MemoryPack;
 namespace March7thHoney.Data.Custom;
 
-public class ActivityConfig
+[MemoryPackable]
+public partial class ActivityConfig
 {
     public List<ActivityScheduleData> ScheduleData { get; set; } = [];
 }
 
-public class ActivityScheduleData
+[MemoryPackable]
+public partial class ActivityScheduleData
 {
     public int ActivityId { get; set; }
     public long BeginTime { get; set; }

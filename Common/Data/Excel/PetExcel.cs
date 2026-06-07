@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("PetConfig.json")]
-public class PetExcel : ExcelResource
+[MemoryPackable]
+public partial class PetExcel : ExcelResource
 {
     public int PetID { get; set; }
     public int PetItemID { get; set; }

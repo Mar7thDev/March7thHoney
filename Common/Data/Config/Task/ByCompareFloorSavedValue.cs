@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Enums.Task;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class ByCompareFloorSavedValue : PredicateConfigInfo
+[MemoryPackable]
+public partial class ByCompareFloorSavedValue : PredicateConfigInfo
 {
     public string Name { get; set; } = "";
 

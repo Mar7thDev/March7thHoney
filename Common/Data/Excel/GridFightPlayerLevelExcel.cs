@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightPlayerLevel.json")]
-public class GridFightPlayerLevelExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightPlayerLevelExcel : ExcelResource
 {
     public uint PlayerLevel { get; set; }
     public uint LevelUpExp { get; set; }

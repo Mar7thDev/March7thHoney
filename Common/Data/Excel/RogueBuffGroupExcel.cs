@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Data.Custom;
 using March7thHoney.Util;
 using Newtonsoft.Json;
@@ -5,7 +6,8 @@ using Newtonsoft.Json;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueBuffGroup.json")]
-public class RogueBuffGroupExcel : BaseRogueBuffGroupExcel
+[MemoryPackable]
+public partial class RogueBuffGroupExcel : BaseRogueBuffGroupExcel
 {
     [JsonProperty("IDLBMIHBAPB")] public int GroupID { get; set; }
     [JsonProperty("GNGDPDOMDFH")] public List<int> BuffTagList { get; set; } = [];

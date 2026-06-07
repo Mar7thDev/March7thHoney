@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Custom;
 
-public class ChessRogueRoomConfig
+[MemoryPackable]
+public partial class ChessRogueRoomConfig
 {
     public int EntranceId { get; set; }
     public int RoomPrefix { get; set; }

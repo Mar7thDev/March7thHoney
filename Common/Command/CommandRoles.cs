@@ -18,7 +18,17 @@ public static class CommandRoles
                 CommandPermissions.Hero,
                 CommandPermissions.Calyx,
                 CommandPermissions.Scene,
-                CommandPermissions.Mission
+                CommandPermissions.Mission,
+                CommandPermissions.Avatar,
+                CommandPermissions.Give,
+                CommandPermissions.GiveAll,
+                CommandPermissions.Grid,
+                CommandPermissions.Json,
+                CommandPermissions.Lineup,
+                CommandPermissions.Relic,
+                CommandPermissions.SetLevel,
+                CommandPermissions.UnlockAll,
+                CommandPermissions.Unstuck
             ],
             [Moderator] =
             [
@@ -30,21 +40,13 @@ public static class CommandRoles
             [
                 RoleReferencePrefix + Moderator,
                 CommandPermissions.Account,
-                CommandPermissions.Avatar,
-                CommandPermissions.Give,
-                CommandPermissions.GiveAll,
-                CommandPermissions.Grid,
-                CommandPermissions.Json,
-                CommandPermissions.Lineup,
+
                 CommandPermissions.Mail,
                 CommandPermissions.Raid,
-                CommandPermissions.Relic,
                 CommandPermissions.Reload,
                 CommandPermissions.Remove,
-                CommandPermissions.Anno,
-                CommandPermissions.SetLevel,
-                CommandPermissions.UnlockAll,
-                CommandPermissions.Unstuck
+                CommandPermissions.Anno
+
             ],
             [Developer] =
             [

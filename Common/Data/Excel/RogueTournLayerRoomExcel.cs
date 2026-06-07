@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournLayerRoom.json")]
-public class RogueTournLayerRoomExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTournLayerRoomExcel : ExcelResource
 {
     public int LayerID { get; set; }
     public int RoomIndex { get; set; }

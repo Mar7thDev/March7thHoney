@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("AvatarGlobalBuffConfig.json")]
-public class AvatarGlobalBuffConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class AvatarGlobalBuffConfigExcel : ExcelResource
 {
     public int AvatarID { get; set; }
     public int MazeBuffID { get; set; }

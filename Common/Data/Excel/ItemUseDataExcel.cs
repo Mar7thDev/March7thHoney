@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ItemUseData.json")]
-public class ItemUseDataExcel : ExcelResource
+[MemoryPackable]
+public partial class ItemUseDataExcel : ExcelResource
 {
     public int UseDataID { get; set; }
     public int UseMultipleMax { get; set; }

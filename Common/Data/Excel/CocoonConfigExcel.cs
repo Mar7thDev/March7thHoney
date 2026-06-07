@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("CocoonConfig.json")]
-public class CocoonConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class CocoonConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public int MappingInfoID { get; set; }

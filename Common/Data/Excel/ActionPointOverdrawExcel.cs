@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ActionPointOverdraw.json")]
-public class ActionPointOverdrawExcel : ExcelResource
+[MemoryPackable]
+public partial class ActionPointOverdrawExcel : ExcelResource
 {
     public int ActionPoint { get; set; }
     public int MazeBuff { get; set; }

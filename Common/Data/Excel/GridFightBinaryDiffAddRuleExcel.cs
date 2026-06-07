@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightBinaryDiffAddRule.json")]
-public class GridFightBinaryDiffAddRuleExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightBinaryDiffAddRuleExcel : ExcelResource
 {
     public uint ID { get; set; }
     public uint Quality { get; set; }

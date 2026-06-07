@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MusicRhythmSoundEffect.json")]
-public class MusicRhythmSoundEffectExcel : ExcelResource
+[MemoryPackable]
+public partial class MusicRhythmSoundEffectExcel : ExcelResource
 {
     public int ID { get; set; }
 

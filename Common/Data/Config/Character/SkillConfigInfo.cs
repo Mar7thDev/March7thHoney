@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Config.Character;
 
-public class SkillConfigInfo
+[MemoryPackable]
+public partial class SkillConfigInfo
 {
     public string EntryAbility { get; set; } = "";
 

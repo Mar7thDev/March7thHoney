@@ -1,9 +1,11 @@
+using MemoryPack;
 using System.Text.Json.Serialization;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("AvatarDemoConfig.json")]
-public class AvatarDemoConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class AvatarDemoConfigExcel : ExcelResource
 {
     public int StageID { get; set; }
     public int AvatarID { get; set; }
@@ -43,7 +45,8 @@ public class AvatarDemoConfigExcel : ExcelResource
     }
 
 
-    public class StageMonsterInfo(int ConfigId, int NpcMonsterId, int EventId)
+    [MemoryPackable]
+    public partial class StageMonsterInfo(int ConfigId, int NpcMonsterId, int EventId)
     {
         public int ConfigId = ConfigId;
         public int EventId = EventId;

@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Util;
 using Newtonsoft.Json;
@@ -5,7 +6,8 @@ using Newtonsoft.Json;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MazeChest.json")]
-public class MazeChestExcel : ExcelResource
+[MemoryPackable]
+public partial class MazeChestExcel : ExcelResource
 {
     public int WorldID { get; set; }
     public int ID { get; set; }

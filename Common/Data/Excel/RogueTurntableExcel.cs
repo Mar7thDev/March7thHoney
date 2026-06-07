@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTurntable.json")]
-public class RogueTurntableExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTurntableExcel : ExcelResource
 {
     public int ParamGroupID { get; set; }
 

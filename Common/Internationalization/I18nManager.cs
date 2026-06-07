@@ -17,7 +17,10 @@ public static class I18NManager
 
     public static void LoadLanguage()
     {
-        _current = LoadOrGet(ConfigManager.Config.ServerOption.Language);
+        var lang = ConfigManager.Config.ServerOption.Language;
+        _current = LoadOrGet(lang);
+        if (_current.Count == 0)
+            Logger.Warn($"Configured language '{lang}' could not be loaded (and EN fallback is missing).");
         Logger.Info(Translate("Server.ServerInfo.LoadedItem", Translate("Word.Language")));
     }
 
@@ -40,11 +43,9 @@ public static class I18NManager
     private static Dictionary<string, string>? Load(string lang)
     {
         var path = Path.Combine(ConfigManager.Config.Path.LanguagePath, lang + ".json");
-        if (!File.Exists(path))
-        {
-            Logger.Warn($"Language file not found: {path}, falling back to EN.");
-            return null;
-        }
+        // Missing file is expected for client-only languages (e.g. handbook generation across locales);
+        // callers silently fall back to EN. Only surfaced if the configured server language is missing.
+        if (!File.Exists(path)) return null;
 
         try
         {

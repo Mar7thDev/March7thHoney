@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Data.Excel;
 using March7thHoney.Enums.Mission;
 using Newtonsoft.Json;
@@ -5,7 +6,8 @@ using March7thHoney.Util;
 
 namespace March7thHoney.Data.Config;
 
-public class MissionInfo
+[MemoryPackable]
+public partial class MissionInfo
 {
     public int MainMissionID { get; set; }
     public List<int> StartSubMissionList { get; set; } = [];
@@ -14,7 +16,8 @@ public class MissionInfo
     public List<CustomValueInfo> MissionCustomValueList { get; set; } = [];
 }
 
-public class SubMissionInfo
+[MemoryPackable]
+public partial class SubMissionInfo
 {
     public int ID { get; set; }
     public int LevelPlaneID { get; set; }
@@ -42,13 +45,15 @@ public class SubMissionInfo
     public int SubRewardID { get; set; }
 }
 
-public class CustomValueInfo
+[MemoryPackable]
+public partial class CustomValueInfo
 {
     public int Index { get; set; }
     public List<int> ValidValueParamList { get; set; } = [];
 }
 
-public class FinishActionInfo
+[MemoryPackable]
+public partial class FinishActionInfo
 {
     [JsonConverter(typeof(SafeStringEnumConverter<FinishActionTypeEnum>))]
     public FinishActionTypeEnum FinishActionType { get; set; }

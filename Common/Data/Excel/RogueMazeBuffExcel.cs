@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueMazeBuff.json")]
-public class RogueMazeBuffExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueMazeBuffExcel : ExcelResource
 {
     [JsonIgnore] public string? Name;
 

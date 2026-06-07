@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RelicSubAffixConfig.json")]
-public class RelicSubAffixConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class RelicSubAffixConfigExcel : ExcelResource
 {
     public int GroupID { get; set; }
     public int AffixID { get; set; }

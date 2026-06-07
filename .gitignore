@@ -410,3 +410,7 @@ Lua/
 ## Development
 dev/
 
+## Generated resource cache (regenerated from Resources/ on first run)
+Config/Resource.bin
+Config/Resource.cache
+

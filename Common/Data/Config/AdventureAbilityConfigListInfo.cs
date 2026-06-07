@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Data.Config.AdventureAbility;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config;
 
-public class AdventureAbilityConfigListInfo
+[MemoryPackable]
+public partial class AdventureAbilityConfigListInfo
 {
     public List<AdventureAbilityConfigInfo> AbilityList { get; set; } = [];
     public Dictionary<string, AdventureModifierConfig>? GlobalModifiers { get; set; } = [];

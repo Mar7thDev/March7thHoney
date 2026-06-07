@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MapEntrance.json", true)]
-public class MapEntranceExcel : ExcelResource
+[MemoryPackable]
+public partial class MapEntranceExcel : ExcelResource
 {
     public int ID { get; set; }
     public int PlaneID { get; set; }

@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Item;
 using Newtonsoft.Json;
@@ -6,7 +7,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("UpgradeAvatarSubRelic.json")]
-public class UpgradeAvatarSubRelicExcel : ExcelResource
+[MemoryPackable]
+public partial class UpgradeAvatarSubRelicExcel : ExcelResource
 {
     [JsonProperty("GOBEGPKDLLF")]
     public uint RelicLevel { get; set; }
@@ -41,7 +43,8 @@ public class UpgradeAvatarSubRelicExcel : ExcelResource
     }
 }
 
-public class UpgradeAvatarSubAffixInfo
+[MemoryPackable]
+public partial class UpgradeAvatarSubAffixInfo
 {
     [JsonProperty("KHADHNNCFLH")]
     public uint AffixCount { get; set; }

@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Enums.Scene;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Custom;
 
-public class SceneRainbowGroupPropertyConfig
+[MemoryPackable]
+public partial class SceneRainbowGroupPropertyConfig
 {
     public Dictionary<int, Dictionary<int, Dictionary<string, Dictionary<int, RainbowGroupPropertyInfo>>>> FloorProperty
     {
@@ -13,13 +15,15 @@ public class SceneRainbowGroupPropertyConfig
     } = [];
 }
 
-public class RainbowGroupPropertyInfo
+[MemoryPackable]
+public partial class RainbowGroupPropertyInfo
 {
     public List<RainbowActionInfo> PrivateActions { get; set; } = [];
     public List<RainbowActionInfo> Actions { get; set; } = [];
 }
 
-public class RainbowActionInfo
+[MemoryPackable]
+public partial class RainbowActionInfo
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public SceneActionTypeEnum ActionType { get; set; } = SceneActionTypeEnum.Unknown;

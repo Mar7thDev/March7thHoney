@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ChallengeStoryMazeExtra.json")]
-public class ChallengeStoryExtraExcel : ExcelResource
+[MemoryPackable]
+public partial class ChallengeStoryExtraExcel : ExcelResource
 {
     public int ID { get; set; }
     public uint TurnLimit { get; set; }

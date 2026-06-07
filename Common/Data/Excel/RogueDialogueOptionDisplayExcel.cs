@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueDialogueOptionDisplay.json")]
-public class RogueDialogueOptionDisplayExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueDialogueOptionDisplayExcel : ExcelResource
 {
     public int OptionDisplayID { get; set; }
     public HashName OptionTitle { get; set; } = new();

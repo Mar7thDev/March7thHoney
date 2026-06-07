@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ItemComposeConfig.json")]
-public class ItemComposeConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class ItemComposeConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public int ItemID { get; set; }
@@ -19,7 +21,8 @@ public class ItemComposeConfigExcel : ExcelResource
     }
 }
 
-public class MaterialItem
+[MemoryPackable]
+public partial class MaterialItem
 {
     public int ItemID { get; set; }
     public int ItemNum { get; set; }

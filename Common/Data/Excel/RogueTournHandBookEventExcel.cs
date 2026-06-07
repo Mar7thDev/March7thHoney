@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournHandBookEvent.json")]
-public class RogueTournHandBookEventExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTournHandBookEventExcel : ExcelResource
 {
     public int EventHandbookID { get; set; }
 

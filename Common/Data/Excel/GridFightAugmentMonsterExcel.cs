@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.GridFight;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightAugmentMonster.json")]
-public class GridFightAugmentMonsterExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightAugmentMonsterExcel : ExcelResource
 {
     public uint DivisionLevel { get; set; }
     public uint EnemyDiffLvAdd { get; set; }

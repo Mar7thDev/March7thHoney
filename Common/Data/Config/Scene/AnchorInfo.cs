@@ -1,5 +1,7 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Scene;
 
-public class AnchorInfo : PositionInfo
+[MemoryPackable]
+public partial class AnchorInfo : PositionInfo
 {
 }

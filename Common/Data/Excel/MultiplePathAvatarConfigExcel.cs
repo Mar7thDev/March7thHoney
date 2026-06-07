@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Quest;
 using Newtonsoft.Json;
@@ -6,7 +7,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MultiplePathAvatarConfig.json")]
-public class MultiplePathAvatarConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class MultiplePathAvatarConfigExcel : ExcelResource
 {
     public List<Condition> UnlockConditions { get; set; } = [];
     public string ChangeConfigPath { get; set; } = "";
@@ -28,7 +30,8 @@ public class MultiplePathAvatarConfigExcel : ExcelResource
     }
 }
 
-public class Condition
+[MemoryPackable]
+public partial class Condition
 {
     public string Param { get; set; } = "";
     public ConditionTypeEnum Type { get; set; }

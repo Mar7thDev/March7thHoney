@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MessageItemConfig.json")]
-public class MessageItemConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class MessageItemConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public List<int> NextItemIDList { get; set; } = [];

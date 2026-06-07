@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightCamp.json")]
-public class GridFightCampExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightCampExcel : ExcelResource
 {
     public uint ID { get; set; }
     public uint SeasonID { get; set; }

@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Custom;
 
-public class ChallengePeakOverrideConfig
+[MemoryPackable]
+public partial class ChallengePeakOverrideConfig
 {
     [JsonProperty("ChallengePeak")]
     public List<ChallengePeakGroupOverride> ChallengePeak { get; set; } = [];
@@ -14,7 +16,8 @@ public class ChallengePeakOverrideConfig
     }
 }
 
-public class ChallengePeakGroupOverride
+[MemoryPackable]
+public partial class ChallengePeakGroupOverride
 {
     [JsonProperty("group_id")] public int GroupId { get; set; }
     [JsonProperty("npc_monster_id_default")] public int NpcMonsterIdDefault { get; set; }
@@ -23,7 +26,8 @@ public class ChallengePeakGroupOverride
     public Dictionary<string, ChallengePeakStageOverride> Stages { get; set; } = [];
 }
 
-public class ChallengePeakStageOverride
+[MemoryPackable]
+public partial class ChallengePeakStageOverride
 {
     [JsonProperty("npc_monster_id")] public int NpcMonsterId { get; set; }
     [JsonProperty("map_entrance_id")] public int MapEntranceId { get; set; }
