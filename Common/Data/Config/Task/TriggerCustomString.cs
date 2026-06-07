@@ -1,11 +1,14 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Task;
 
-public class TriggerCustomString : TaskConfigInfo
+[MemoryPackable]
+public partial class TriggerCustomString : TaskConfigInfo
 {
     public DynamicString CustomString { get; set; } = new();
 }
 
-public class DynamicString
+[MemoryPackable]
+public partial class DynamicString
 {
     public string Value { get; set; } = string.Empty;
 }

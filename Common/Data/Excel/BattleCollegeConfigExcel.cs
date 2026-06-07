@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("BattleCollegeConfig.json")]
-public class BattleCollegeConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class BattleCollegeConfigExcel : ExcelResource
 {
     public List<int> TrialAvatarList { get; set; } = [];
     public string VideoCoverPath { get; set; } = string.Empty;

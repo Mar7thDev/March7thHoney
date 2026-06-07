@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("SpecialAvatar.json")]
-public class SpecialAvatarExcel : ExcelResource
+[MemoryPackable]
+public partial class SpecialAvatarExcel : ExcelResource
 {
     public int SpecialAvatarID { get; set; }
     public int WorldLevel { get; set; }

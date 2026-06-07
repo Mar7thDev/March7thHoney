@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MusicRhythmPhase.json")]
-public class MusicRhythmPhaseExcel : ExcelResource
+[MemoryPackable]
+public partial class MusicRhythmPhaseExcel : ExcelResource
 {
     public int Phase { get; set; }
     public int SongID { get; set; }

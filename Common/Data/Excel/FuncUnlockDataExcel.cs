@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Quest;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("FuncUnlockData.json")]
-public class FuncUnlockDataExcel : ExcelResource
+[MemoryPackable]
+public partial class FuncUnlockDataExcel : ExcelResource
 {
     public int UnlockID { get; set; }
     public List<FuncUnlockCondition> Conditions { get; set; } = [];
@@ -21,7 +23,8 @@ public class FuncUnlockDataExcel : ExcelResource
     }
 }
 
-public class FuncUnlockCondition
+[MemoryPackable]
+public partial class FuncUnlockCondition
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public ConditionTypeEnum Type { get; set; }

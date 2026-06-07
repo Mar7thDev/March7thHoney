@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Database.Gacha;
 using March7thHoney.Enums;
 using March7thHoney.Proto;
@@ -6,12 +7,14 @@ using GachaInfo = March7thHoney.Proto.GachaInfo;
 
 namespace March7thHoney.Data.Custom;
 
-public class BannersConfig
+[MemoryPackable]
+public partial class BannersConfig
 {
     public List<BannerConfig> Banners { get; set; } = [];
 }
 
-public class BannerConfig
+[MemoryPackable]
+public partial class BannerConfig
 {
     [JsonProperty("id")] public int GachaId { get; set; }
     public long BeginTime { get; set; }

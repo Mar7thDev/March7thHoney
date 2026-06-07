@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Scene;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RaidConfig.json")]
-public class RaidConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class RaidConfigExcel : ExcelResource
 {
     public int RaidID { get; set; }
     public int HardLevel { get; set; }

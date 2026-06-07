@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.RogueMagic;
 using Newtonsoft.Json;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Custom;
 
-public class RogueMagicRoomConfig
+[MemoryPackable]
+public partial class RogueMagicRoomConfig
 {
     public int EntranceId { get; set; }
 

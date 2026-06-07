@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueAreaConfig.json")]
-public class RogueAreaConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueAreaConfigExcel : ExcelResource
 {
     public int RogueAreaID { get; set; }
     public int AreaProgress { get; set; }

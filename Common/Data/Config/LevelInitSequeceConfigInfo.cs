@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Data.Config.Task;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config;
 
-public class LevelInitSequeceConfigInfo
+[MemoryPackable]
+public partial class LevelInitSequeceConfigInfo
 {
     public List<TaskConfigInfo> TaskList { get; set; } = [];
 

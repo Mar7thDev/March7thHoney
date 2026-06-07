@@ -1,8 +1,13 @@
+using MemoryPack;
 namespace March7thHoney.Data;
 
-public abstract class ExcelResource
+[MemoryPackable]
+public partial class ExcelResource
 {
-    public abstract int GetId();
+    public virtual int GetId()
+    {
+        return 0;
+    }
 
     public virtual void Loaded()
     {

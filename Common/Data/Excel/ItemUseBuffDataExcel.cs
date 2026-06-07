@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ItemUseBuffData.json")]
-public class ItemUseBuffDataExcel : ExcelResource
+[MemoryPackable]
+public partial class ItemUseBuffDataExcel : ExcelResource
 {
     public int UseDataID { get; set; }
     public float PreviewSkillPoint { get; set; }

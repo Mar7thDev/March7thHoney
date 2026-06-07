@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.GridFight;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightTraitEffect.json")]
-public class GridFightTraitEffectExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightTraitEffectExcel : ExcelResource
 {
     public uint ID { get; set; }
     [JsonConverter(typeof(StringEnumConverter))]

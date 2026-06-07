@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Data.Config;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightPortalBuff.json")]
-public class GridFightPortalBuffExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightPortalBuffExcel : ExcelResource
 {
     public uint ID { get; set; }
     public bool IfInBook { get; set; }

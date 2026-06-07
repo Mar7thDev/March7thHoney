@@ -1,10 +1,12 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class PredicateTaskList : TaskConfigInfo
+[MemoryPackable]
+public partial class PredicateTaskList : TaskConfigInfo
 {
-    public PredicateConfigInfo Predicate { get; set; } = new();
+    public PredicateConfigInfo Predicate { get; set; } = new UnknownPredicateConfigInfo();
     public List<TaskConfigInfo> SuccessTaskList { get; set; } = [];
     public List<TaskConfigInfo> FailedTaskList { get; set; } = [];
 

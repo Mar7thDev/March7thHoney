@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MazeSkill.json,MazeSkillLD.json", true)]
-public class MazeSkillExcel : ExcelResource
+[MemoryPackable]
+public partial class MazeSkillExcel : ExcelResource
 {
     public int MazeSkillId { get; set; }
     public int MPCost { get; set; }

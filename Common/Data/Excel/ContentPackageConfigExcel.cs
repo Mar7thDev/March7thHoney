@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ContentPackageConfig.json")]
-public class ContentPackageConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class ContentPackageConfigExcel : ExcelResource
 {
     public int ContentID { get; set; }
     public List<int> MainMissionIDList { get; set; } = [];

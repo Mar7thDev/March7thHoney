@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournDivision.json")]
-public class RogueTournDivisionExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTournDivisionExcel : ExcelResource
 {
     public int DivisionLevel { get; set; }
     public int DivisionProgress { get; set; }

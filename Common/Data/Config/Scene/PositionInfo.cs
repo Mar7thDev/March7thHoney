@@ -1,8 +1,10 @@
+using MemoryPack;
 using March7thHoney.Util;
 
 namespace March7thHoney.Data.Config.Scene;
 
-public class PositionInfo
+[MemoryPackable]
+public partial class PositionInfo
 {
     public int ID { get; set; }
     public float PosX { get; set; }

@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config;
 
-public class LevelGraphConfigInfo
+[MemoryPackable]
+public partial class LevelGraphConfigInfo
 {
     public List<LevelInitSequeceConfigInfo> OnInitSequece { get; set; } = [];
     public List<LevelStartSequeceConfigInfo> OnStartSequece { get; set; } = [];

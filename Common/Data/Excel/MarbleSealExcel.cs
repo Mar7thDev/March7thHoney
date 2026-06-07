@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MarbleSeal.json")]
-public class MarbleSealExcel : ExcelResource
+[MemoryPackable]
+public partial class MarbleSealExcel : ExcelResource
 {
     public int ID { get; set; }
     public int Attack { get; set; }

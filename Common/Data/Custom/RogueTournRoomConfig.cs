@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Enums.TournRogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Custom;
 
-public class RogueTournRoomConfig
+[MemoryPackable]
+public partial class RogueTournRoomConfig
 {
     public int EntranceId { get; set; }
 

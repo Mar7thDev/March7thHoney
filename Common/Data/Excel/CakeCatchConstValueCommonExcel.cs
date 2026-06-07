@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("CakeCatchConstValueCommon.json")]
-public class CakeCatchConstValueCommonExcel : ExcelResource
+[MemoryPackable]
+public partial class CakeCatchConstValueCommonExcel : ExcelResource
 {
     public string ConstValueName { get; set; } = "";
     public CakeCatchConstValue Value { get; set; } = new();
@@ -18,7 +20,8 @@ public class CakeCatchConstValueCommonExcel : ExcelResource
     }
 }
 
-public class CakeCatchConstValue
+[MemoryPackable]
+public partial class CakeCatchConstValue
 {
     public int? IntValue { get; set; }
     public double? DoubleValue { get; set; }

@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Data.Custom;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournBuff.json")]
-public class RogueTournBuffExcel : BaseRogueBuffExcel
+[MemoryPackable]
+public partial class RogueTournBuffExcel : BaseRogueBuffExcel
 {
     public bool IsInHandbook { get; set; }
 

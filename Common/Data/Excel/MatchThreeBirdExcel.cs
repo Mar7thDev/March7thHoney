@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MatchThreeBird.json")]
-public class MatchThreeBirdExcel : ExcelResource
+[MemoryPackable]
+public partial class MatchThreeBirdExcel : ExcelResource
 {
     public int UnlockLevel { get; set; }
     public int BirdID { get; set; }

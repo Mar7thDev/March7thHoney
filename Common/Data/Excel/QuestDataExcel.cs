@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Quest;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("QuestData.json")]
-public class QuestDataExcel : ExcelResource
+[MemoryPackable]
+public partial class QuestDataExcel : ExcelResource
 {
     public int QuestID { get; set; }
     public int QuestType { get; set; }

@@ -236,12 +236,13 @@ public class EntryPoint
                         I18NManager.Translate("Word.GameData")));
                     ResourceManager.LoadGameData();
 
-                    // Async process cache saving
+                    // Generate the binary cache synchronously so it is guaranteed to be written before
+                    // startup completes (otherwise a fire-and-forget save can be lost on early exit).
                     if (ConfigManager.Config.ServerOption.UseCache && ResourceCache.IsComplete)
                     {
                         Logger.Warn(I18NManager.Translate("Server.ServerInfo.WaitingItem",
                             I18NManager.Translate("Word.Cache")));
-                        _ = ResourceCache.SaveCache();
+                        await ResourceCache.SaveCache();
                     }
                 }
             }

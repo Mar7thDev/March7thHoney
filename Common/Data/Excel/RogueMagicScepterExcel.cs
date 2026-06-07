@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.RogueMagic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueMagicScepter.json")]
-public class RogueMagicScepterExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueMagicScepterExcel : ExcelResource
 {
     public int ScepterID { get; set; }
     public int ScepterLevel { get; set; }
@@ -39,7 +41,8 @@ public class RogueMagicScepterExcel : ExcelResource
     }
 }
 
-public class LockMagicUnitInfo
+[MemoryPackable]
+public partial class LockMagicUnitInfo
 {
     [JsonProperty("GHFHMJLCIEC")] public int MagicUnitId { get; set; }
 

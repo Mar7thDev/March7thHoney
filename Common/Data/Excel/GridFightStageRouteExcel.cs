@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.GridFight;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightStageRoute.json")]
-public class GridFightStageRouteExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightStageRouteExcel : ExcelResource
 {
     public uint SectionID { get; set; }
     public uint ChapterID { get; set; }

@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Data.Config.Task;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
@@ -10,7 +11,8 @@ using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Config.Scene;
 
-public class GroupInfo
+[MemoryPackable]
+public partial class GroupInfo
 {
     public int Id;
 
@@ -39,7 +41,9 @@ public class GroupInfo
     public List<PropInfo> PropList { get; set; } = [];
     public List<NpcInfo> NPCList { get; set; } = [];
     public Dictionary<int, GroupPropertyConfigInfo> GroupPropertyMap { get; set; } = [];
-    public ValueSourceInfo? ValueSource { get; set; }
+
+    // Raw JSON consumed at load time by Load(); not cached (JObject isn't MemoryPack-serializable).
+    [MemoryPackIgnore] public ValueSourceInfo? ValueSource { get; set; }
 
     [JsonIgnore] public LevelGraphConfigInfo? LevelGraphConfig { get; set; }
 
@@ -83,7 +87,8 @@ public class GroupInfo
     }
 }
 
-public class AtmosphereCondition
+[MemoryPackable]
+public partial class AtmosphereCondition
 {
     public List<Dictionary<string, object>> Conditions { get; set; } = [];
 
@@ -91,7 +96,8 @@ public class AtmosphereCondition
     public OperationEnum Operation { get; set; } = OperationEnum.And;
 }
 
-public class LoadCondition
+[MemoryPackable]
+public partial class LoadCondition
 {
     public List<Condition> Conditions { get; set; } = [];
 
@@ -151,7 +157,8 @@ public class LoadCondition
     }
 }
 
-public class SavedValueLoadCondition
+[MemoryPackable]
+public partial class SavedValueLoadCondition
 {
     public List<SavedValueCondition> Conditions { get; set; } = [];
 
@@ -192,7 +199,8 @@ public class SavedValueLoadCondition
     }
 }
 
-public class Condition
+[MemoryPackable]
+public partial class Condition
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public LevelGroupMissionTypeEnum Type { get; set; } = LevelGroupMissionTypeEnum.MainMission;
@@ -203,7 +211,8 @@ public class Condition
     public MissionPhaseEnum Phase { get; set; } = MissionPhaseEnum.Accept;
 }
 
-public class SavedValueCondition
+[MemoryPackable]
+public partial class SavedValueCondition
 {
     public string SavedValueName { get; set; } = "";
 
@@ -213,7 +222,8 @@ public class SavedValueCondition
     public CompareTypeEnum Operation { get; set; } = CompareTypeEnum.Unknow;
 }
 
-public class LevelGroupSystemUnlockCondition
+[MemoryPackable]
+public partial class LevelGroupSystemUnlockCondition
 {
     public List<int> Conditions { get; set; } = [];
 
@@ -221,7 +231,8 @@ public class LevelGroupSystemUnlockCondition
     public OperationEnum Operation { get; set; }
 }
 
-public class GroupPropertyConfigInfo
+[MemoryPackable]
+public partial class GroupPropertyConfigInfo
 {
     public int ID { get; set; }
     public string Name { get; set; } = "";

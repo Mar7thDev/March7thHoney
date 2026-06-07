@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.TournRogue;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournWorkbenchFunc.json")]
-public class RogueTournWorkbenchFuncExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTournWorkbenchFuncExcel : ExcelResource
 {
     public int FuncID { get; set; }
 

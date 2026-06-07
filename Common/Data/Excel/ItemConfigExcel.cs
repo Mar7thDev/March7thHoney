@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Item;
 using March7thHoney.Util;
 using Newtonsoft.Json;
@@ -10,7 +11,8 @@ namespace March7thHoney.Data.Excel;
                 "ItemConfigBook.json,ItemConfigDisk.json," +
                 "ItemConfigEquipment.json,ItemConfigRelic.json,ItemPlayerCard.json," +
                 "ItemConfigTrainDynamic.json,ItemConfigAvatarSkin.json", true)]
-public class ItemConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class ItemConfigExcel : ExcelResource
 {
     // General item data
     public int ID { get; set; }

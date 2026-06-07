@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("ChallengeMazeRewardLine.json,ChallengeStoryRewardLine.json,ChallengeBossRewardLine.json", true)]
-public class ChallengeRewardExcel : ExcelResource
+[MemoryPackable]
+public partial class ChallengeRewardExcel : ExcelResource
 {
     public int GroupID { get; set; }
     public int StarCount { get; set; }

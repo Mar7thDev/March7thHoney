@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("DecideAvatarOrder.json")]
-public class DecideAvatarOrderExcel : ExcelResource
+[MemoryPackable]
+public partial class DecideAvatarOrderExcel : ExcelResource
 {
     public int ItemID { get; set; } = 0;
     public int Order { get; set; } = 0;

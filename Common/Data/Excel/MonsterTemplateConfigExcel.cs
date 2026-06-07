@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MonsterTemplateConfig.json")]
-public class MonsterTemplateConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class MonsterTemplateConfigExcel : ExcelResource
 {
     public int MonsterTemplateID { get; set; }
     public List<int> NPCMonsterList { get; set; } = [];

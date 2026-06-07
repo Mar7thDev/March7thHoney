@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class AdventureTriggerAttack : TaskConfigInfo
+[MemoryPackable]
+public partial class AdventureTriggerAttack : TaskConfigInfo
 {
     public TargetEvaluator AttackTargetType { get; set; } = new();
     public TargetEvaluator AttackRootTargetType { get; set; } = new();

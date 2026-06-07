@@ -1,3 +1,4 @@
+using MemoryPack;
 using System.Numerics;
 using March7thHoney.Proto;
 using Newtonsoft.Json;
@@ -5,7 +6,8 @@ using Newtonsoft.Json;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("StageConfig.json,StageTestConfig.json", true)]
-public class StageConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class StageConfigExcel : ExcelResource
 {
     public int StageID { get; set; } = 0;
     public HashName StageName { get; set; } = new();
@@ -75,13 +77,15 @@ public class StageConfigExcel : ExcelResource
     }
 }
 
-public class StageConfigInfo
+[MemoryPackable]
+public partial class StageConfigInfo
 {
     [JsonProperty("HEIKKHLKMOA")] public string Key { get; set; } = "";
     [JsonProperty("MBMDOCJIMEJ")] public string Value { get; set; } = "";
 }
 
-public class StageMonsterList
+[MemoryPackable]
+public partial class StageMonsterList
 {
     public int Monster0 { get; set; } = 0;
     public int Monster1 { get; set; } = 0;
@@ -90,7 +94,8 @@ public class StageMonsterList
     public int Monster4 { get; set; } = 0;
 }
 
-public class HashName
+[MemoryPackable]
+public partial class HashName
 {
     public BigInteger Hash { get; set; } = 0;
 }

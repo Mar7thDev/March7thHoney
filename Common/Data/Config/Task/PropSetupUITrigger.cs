@@ -1,8 +1,10 @@
+using MemoryPack;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class PropSetupUITrigger : TaskConfigInfo
+[MemoryPackable]
+public partial class PropSetupUITrigger : TaskConfigInfo
 {
     public string ColliderRelativePath { get; set; } = string.Empty;
     public bool DestroyAfterTriggered { get; set; }
@@ -23,7 +25,7 @@ public class PropSetupUITrigger : TaskConfigInfo
     //EntityType[] OverrideTargetTypes;
     public bool TriggerByFakeAvatar { get; set; }
     public bool SkipFakeAvatar { get; set; }
-    public PredicateConfigInfo OnEnterFilter { get; set; } = new();
+    public PredicateConfigInfo OnEnterFilter { get; set; } = new UnknownPredicateConfigInfo();
     public TargetEvaluator TargetType { get; set; } = new();
 
     public new static TaskConfigInfo LoadFromJsonObject(JObject obj)

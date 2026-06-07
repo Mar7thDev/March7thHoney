@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Scene;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Task;
 
-public class PropStateExecute : TaskConfigInfo
+[MemoryPackable]
+public partial class PropStateExecute : TaskConfigInfo
 {
     public TargetEvaluator TargetType { get; set; } = new();
 

@@ -37,6 +37,10 @@ public class ResourceManager
 
     public static void LoadGameData()
     {
+        // Route Newtonsoft polymorphic Task/Predicate deserialization through the manual LoadFromJsonObject
+        // dispatch (the bases are abstract for MemoryPack). Only needed for offline cache generation.
+        Config.Task.PolymorphicJson.EnsureRegistered();
+
         LoadExcel();
 
         var t1 = Task.Run(LoadFloorInfo);

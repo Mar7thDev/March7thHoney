@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Data.Config;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueDLCChessBoard.json")]
-public class RogueDLCChessBoardExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueDLCChessBoardExcel : ExcelResource
 {
     public int ChessBoardID { get; set; }
     public string ChessBoardConfiguration { get; set; } = string.Empty;

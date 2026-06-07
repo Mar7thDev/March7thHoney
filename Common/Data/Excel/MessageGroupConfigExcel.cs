@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("MessageGroupConfig.json")]
-public class MessageGroupConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class MessageGroupConfigExcel : ExcelResource
 {
     public int ID { get; set; }
     public int MessageContactsID { get; set; }

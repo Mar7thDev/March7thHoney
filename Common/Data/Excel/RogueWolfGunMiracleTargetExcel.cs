@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Scene;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueWolfGunMiracleTarget.json")]
-public class RogueWolfGunMiracleTargetExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueWolfGunMiracleTargetExcel : ExcelResource
 {
     public int MiracleID { get; set; }
     public int Basement { get; set; }

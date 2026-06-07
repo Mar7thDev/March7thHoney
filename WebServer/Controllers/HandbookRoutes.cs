@@ -34,7 +34,7 @@ namespace March7thHoney.WebServer.Controllers
         }
 
         [HttpGet("/handbook/content")]
-        public IActionResult Content([FromQuery] string? lang)
+        public IActionResult GetContent([FromQuery] string? lang)
         {
             lang = (lang ?? "").Trim();
             if (!GetLanguages().Contains(lang, StringComparer.OrdinalIgnoreCase))

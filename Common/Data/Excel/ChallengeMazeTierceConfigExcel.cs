@@ -1,3 +1,4 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
@@ -6,7 +7,8 @@ namespace March7thHoney.Data.Excel;
 // it has no plain ChallengeMazeTierceConfig.json. Keys below are remapped to dim's
 // obfuscated names, value-aligned against the prior rr-sourced plain file.
 [ResourceEntity("ChallengeMazeTierce.json,ChallengeStoryMazeTierce.json,ChallengeBossMazeTierce.json", true)]
-public class ChallengeMazeTierceConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class ChallengeMazeTierceConfigExcel : ExcelResource
 {
     [JsonProperty("PHFMCACHFIJ")] public int ID { get; set; }
     [JsonProperty("DLCKKJFMJOB")] public int PreChallengeMazeID { get; set; }

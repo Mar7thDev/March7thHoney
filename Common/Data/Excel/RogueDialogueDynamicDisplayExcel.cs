@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueDialogueDynamicDisplay.json")]
-public class RogueDialogueDynamicDisplayExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueDialogueDynamicDisplayExcel : ExcelResource
 {
     public int DisplayID { get; set; }
     public HashName ContentText { get; set; } = new();

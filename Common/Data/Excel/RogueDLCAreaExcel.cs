@@ -1,10 +1,12 @@
+using MemoryPack;
 using March7thHoney.Enums.Rogue;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueDLCArea.json")]
-public class RogueDLCAreaExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueDLCAreaExcel : ExcelResource
 {
     public int AreaID { get; set; }
     public string SubType { get; set; } = "";
@@ -29,7 +31,8 @@ public class RogueDLCAreaExcel : ExcelResource
     }
 }
 
-public class RogueDLCAreaScoreMap
+[MemoryPackable]
+public partial class RogueDLCAreaScoreMap
 {
     [JsonProperty("NALLPFKBHIO")] public int Layer { get; set; }
 

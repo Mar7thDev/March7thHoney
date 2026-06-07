@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueTournWorkbench.json")]
-public class RogueTournWorkbenchExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueTournWorkbenchExcel : ExcelResource
 {
     public int WorkbenchID { get; set; }
     public List<int> FuncList { get; set; } = [];

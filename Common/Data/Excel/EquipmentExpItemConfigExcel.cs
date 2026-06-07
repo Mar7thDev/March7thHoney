@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("EquipmentExpItemConfig.json")]
-public class EquipmentExpItemConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class EquipmentExpItemConfigExcel : ExcelResource
 {
     public int ItemID { get; set; }
     public int ExpProvide { get; set; }

@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RechargeGiftConfig.json")]
-public class RechargeGiftConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class RechargeGiftConfigExcel : ExcelResource
 {
     public int GiftType { get; set; }
     public List<int> GiftIDList { get; set; } = [];

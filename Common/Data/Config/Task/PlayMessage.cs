@@ -1,6 +1,8 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Task;
 
-public class PlayMessage : TaskConfigInfo
+[MemoryPackable]
+public partial class PlayMessage : TaskConfigInfo
 {
     public int MessageSectionID { get; set; }
 }

@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueDLCDifficulty.json")]
-public class RogueDLCDifficultyExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueDLCDifficultyExcel : ExcelResource
 {
     public int DifficultyID { get; set; }
     public List<int> DifficultyCutList { get; set; } = [];

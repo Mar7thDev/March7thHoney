@@ -1,6 +1,8 @@
+using MemoryPack;
 namespace March7thHoney.Data.Config.Rogue;
 
-public class RogueDialogueEventOptionConfigInfo
+[MemoryPackable]
+public partial class RogueDialogueEventOptionConfigInfo
 {
     public int OptionID { get; set; }
     public int DisplayID { get; set; }

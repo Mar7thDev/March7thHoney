@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("OfferingTypeConfig.json")]
-public class OfferingTypeConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class OfferingTypeConfigExcel : ExcelResource
 {
     public int MaxLevel { get; set; }
     public int ItemID { get; set; }

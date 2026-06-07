@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("PlaneEvent.json")]
-public class PlaneEventExcel : ExcelResource
+[MemoryPackable]
+public partial class PlaneEventExcel : ExcelResource
 {
     public int EventID { get; set; }
     public int WorldLevel { get; set; }

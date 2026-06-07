@@ -1,9 +1,11 @@
+using MemoryPack;
 using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightShopPrice.json")]
-public class GridFightShopPriceExcel : ExcelResource
+[MemoryPackable]
+public partial class GridFightShopPriceExcel : ExcelResource
 {
     public uint Rarity { get; set; }
     public uint BuyGoldStar1 { get; set; }

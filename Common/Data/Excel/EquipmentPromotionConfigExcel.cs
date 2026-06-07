@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("EquipmentPromotionConfig.json")]
-public class EquipmentPromotionConfigExcel : ExcelResource
+[MemoryPackable]
+public partial class EquipmentPromotionConfigExcel : ExcelResource
 {
     public int EquipmentID { get; set; }
     public int Promotion { get; set; }
@@ -19,7 +21,8 @@ public class EquipmentPromotionConfigExcel : ExcelResource
         GameData.EquipmentPromotionConfigData.Add(GetId(), this);
     }
 
-    public class ItemParam
+    [MemoryPackable]
+    public partial class ItemParam
     {
         public int ItemID;
         public int ItemNum;

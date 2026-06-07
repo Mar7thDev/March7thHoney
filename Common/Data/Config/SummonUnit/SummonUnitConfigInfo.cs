@@ -1,9 +1,11 @@
+using MemoryPack;
 using March7thHoney.Data.Config.Task;
 using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.SummonUnit;
 
-public class SummonUnitConfigInfo
+[MemoryPackable]
+public partial class SummonUnitConfigInfo
 {
     public string GroupConfigName { get; set; } = "";
     public string ConfigEntityPath { get; set; } = "";

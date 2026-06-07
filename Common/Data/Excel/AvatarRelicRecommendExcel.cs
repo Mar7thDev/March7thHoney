@@ -1,3 +1,4 @@
+using MemoryPack;
 using March7thHoney.Enums.Avatar;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -5,7 +6,8 @@ using Newtonsoft.Json.Converters;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("AvatarRelicRecommend.json")]
-public class AvatarRelicRecommendExcel : ExcelResource
+[MemoryPackable]
+public partial class AvatarRelicRecommendExcel : ExcelResource
 {
     public uint AvatarID { get; set; }
     public List<uint> Set4IDList { get; set; } = [];
@@ -24,7 +26,8 @@ public class AvatarRelicRecommendExcel : ExcelResource
     }
 }
 
-public class AvatarRelicRecommendMainAffix
+[MemoryPackable]
+public partial class AvatarRelicRecommendMainAffix
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public RelicTypeEnum RelicType { get; set; }

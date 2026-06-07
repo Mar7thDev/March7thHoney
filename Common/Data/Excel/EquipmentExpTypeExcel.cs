@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("EquipmentExpType.json")]
-public class EquipmentExpTypeExcel : ExcelResource
+[MemoryPackable]
+public partial class EquipmentExpTypeExcel : ExcelResource
 {
     public int ExpType { get; set; }
     public int Level { get; set; }

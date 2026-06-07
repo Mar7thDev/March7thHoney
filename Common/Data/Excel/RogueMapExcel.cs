@@ -1,7 +1,9 @@
+using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("RogueMap.json")]
-public class RogueMapExcel : ExcelResource
+[MemoryPackable]
+public partial class RogueMapExcel : ExcelResource
 {
     public int RogueMapID { get; set; }
     public int SiteID { get; set; }
