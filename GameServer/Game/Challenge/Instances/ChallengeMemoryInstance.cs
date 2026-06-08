@@ -19,8 +19,10 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
 {
     #region Properties
 
+    private MemoryChallengeState Memory => Data.Memory!;
+
     public override ChallengeConfigExcel Config { get; } =
-        GameData.ChallengeConfigData[(int)data.Memory.ChallengeMazeId];
+        GameData.ChallengeConfigData[(int)data.Memory!.ChallengeMazeId];
 
     #endregion
 
@@ -30,12 +32,12 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
     {
         return new CurChallenge
         {
-            ChallengeId = Data.Memory.ChallengeMazeId,
-            DeadAvatarNum = Data.Memory.DeadAvatarNum,
-            ExtraLineupType = (ExtraLineupType)Data.Memory.CurrentExtraLineup,
-            Status = (ChallengeStatus)Data.Memory.CurStatus,
+            ChallengeId = Memory.ChallengeMazeId,
+            DeadAvatarNum = Memory.DeadAvatarNum,
+            ExtraLineupType = (ExtraLineupType)Memory.CurrentExtraLineup,
+            Status = (ChallengeStatus)Memory.CurStatus,
             StageInfo = new ChallengeCurBuffInfo(),
-            RoundCount = (uint)(Config.ChallengeCountDown - Data.Memory.RoundsLeft)
+            RoundCount = (uint)(Config.ChallengeCountDown - Memory.RoundsLeft)
         };
     }
 
@@ -45,37 +47,37 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
 
     public void SetCurrentExtraLineup(ExtraLineupType type)
     {
-        Data.Memory.CurrentExtraLineup = (ChallengeLineupType)type;
+        Memory.CurrentExtraLineup = (ChallengeLineupType)type;
     }
 
     public override Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> GetStageMonsters()
     {
-        return Data.Memory.CurrentStage == 1 ? Config.ChallengeMonsters1 : Config.ChallengeMonsters2;
+        return Memory.CurrentStage == 1 ? Config.ChallengeMonsters1 : Config.ChallengeMonsters2;
     }
 
     public override uint GetStars()
     {
-        return Data.Memory.Stars;
+        return Memory.Stars;
     }
 
     public override int GetCurrentExtraLineupType()
     {
-        return (int)Data.Memory.CurrentExtraLineup;
+        return (int)Memory.CurrentExtraLineup;
     }
 
     public override void SetStartPos(Position pos)
     {
-        Data.Memory.StartPos = pos;
+        Memory.StartPos = pos;
     }
 
     public override void SetStartRot(Position rot)
     {
-        Data.Memory.StartRot = rot;
+        Memory.StartRot = rot;
     }
 
     public override void SetSavedMp(int mp)
     {
-        Data.Memory.SavedMp = (uint)mp;
+        Memory.SavedMp = (uint)mp;
     }
 
     #endregion
@@ -86,7 +88,7 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
     {
         base.OnBattleStart(battle);
 
-        battle.RoundLimit = (int)Data.Memory.RoundsLeft;
+        battle.RoundLimit = (int)Memory.RoundsLeft;
 
         battle.Buffs.Add(new MazeBuff(Config.MazeBuffID, 1, -1)
         {
@@ -102,7 +104,7 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
                 // Check if any avatar in the lineup has died
                 foreach (var avatar in battle.Lineup.AvatarData!.FormalAvatars)
                     if (avatar.CurrentHp <= 0)
-                        Data.Memory.DeadAvatarNum++;
+                        Memory.DeadAvatarNum++;
 
                 // Get monster count in stage
                 long monsters = Player.SceneInstance!.Entities.Values.OfType<EntityMonster>().Count();
@@ -110,23 +112,23 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
                 if (monsters == 0) await AdvanceStage();
 
                 // Calculate rounds left
-                Data.Memory.RoundsLeft = Math.Min(Math.Max(Data.Memory.RoundsLeft - req.Stt.RoundCnt, 1),
-                    Data.Memory.RoundsLeft);
+                Memory.RoundsLeft = Math.Min(Math.Max(Memory.RoundsLeft - req.Stt.RoundCnt, 1),
+                    Memory.RoundsLeft);
 
                 // Set saved technique points (This will be restored if the player resets the challenge)
-                Data.Memory.SavedMp = (uint)Player.LineupManager!.GetCurLineup()!.Mp;
+                Memory.SavedMp = (uint)Player.LineupManager!.GetCurLineup()!.Mp;
                 break;
             case BattleEndStatus.BattleEndQuit:
                 // Reset technique points and move back to start position
                 var lineup = Player.LineupManager!.GetCurLineup()!;
-                lineup.Mp = (int)Data.Memory.SavedMp;
-                await Player.MoveTo(Data.Memory.StartPos, Data.Memory.StartRot);
+                lineup.Mp = (int)Memory.SavedMp;
+                await Player.MoveTo(Memory.StartPos, Memory.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             default:
                 // Determine challenge result
                 // Fail challenge
-                Data.Memory.CurStatus = (int)ChallengeStatus.ChallengeFailed;
+                Memory.CurStatus = (int)ChallengeStatus.ChallengeFailed;
 
                 // Send challenge result data
                 await Player.SendPacket(new PacketChallengeSettleNotify(this));
@@ -149,10 +151,10 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
             switch (target.ChallengeTargetType)
             {
                 case ChallengeTargetExcel.ChallengeType.ROUNDS_LEFT:
-                    if (Data.Memory.RoundsLeft >= target.ChallengeTargetParam1) stars += 1u << i;
+                    if (Memory.RoundsLeft >= target.ChallengeTargetParam1) stars += 1u << i;
                     break;
                 case ChallengeTargetExcel.ChallengeType.DEAD_AVATAR:
-                    if (Data.Memory.DeadAvatarNum == 0) stars += 1u << i;
+                    if (Memory.DeadAvatarNum == 0) stars += 1u << i;
                     break;
             }
         }
@@ -162,14 +164,14 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
 
     private async ValueTask AdvanceStage()
     {
-        if (Data.Memory.CurrentStage >= Config.StageNum)
+        if (Memory.CurrentStage >= Config.StageNum)
         {
             // Last stage
-            Data.Memory.CurStatus = (int)ChallengeStatus.ChallengeFinish;
-            Data.Memory.Stars = CalculateStars();
+            Memory.CurStatus = (int)ChallengeStatus.ChallengeFinish;
+            Memory.Stars = CalculateStars();
 
             // Save history
-            Player.ChallengeManager!.AddHistory((int)Data.Memory.ChallengeMazeId, (int)Data.Memory.Stars, 0);
+            Player.ChallengeManager!.AddHistory((int)Memory.ChallengeMazeId, (int)Memory.Stars, 0);
 
             // Send challenge result data
             await Player.SendPacket(new PacketChallengeSettleNotify(this));
@@ -189,7 +191,7 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
         }
         else
         {
-            Data.Memory.CurrentStage++;
+            Memory.CurrentStage++;
 
             SetCurrentExtraLineup(ExtraLineupType.LineupChallenge2);
             await Player.LineupManager!.SetExtraLineup((ExtraLineupType)GetCurrentExtraLineupType());
@@ -197,11 +199,11 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
             var entranceId = Config.MapEntranceID2 != 0 ? Config.MapEntranceID2 : Config.MapEntranceID;
             await Player.EnterScene(entranceId, 0, true);
 
-            await Player.SendPacket(new PacketChallengeLineupNotify((ExtraLineupType)Data.Memory.CurrentExtraLineup));
+            await Player.SendPacket(new PacketChallengeLineupNotify((ExtraLineupType)Memory.CurrentExtraLineup));
 
-            Data.Memory.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
-            Data.Memory.StartPos = Player.Data.Pos!;
-            Data.Memory.StartRot = Player.Data.Rot!;
+            Memory.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
+            Memory.StartPos = Player.Data.Pos!;
+            Memory.StartRot = Player.Data.Rot!;
 
             Player.ChallengeManager!.SaveInstance(this);
         }

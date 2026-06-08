@@ -14,10 +14,10 @@ public class PacketChallengeBossPhaseSettleNotify : BasePacket
         {
             ChallengeId = (uint)challenge.Config.ID,
             IsWin = challenge.IsWin,
-            ChallengeScore = (uint)challenge.Data.Boss.ScoreStage1,
-            ScoreTwo = (uint)challenge.Data.Boss.ScoreStage2,
-            Star = (uint)challenge.Data.Boss.Stars,
-            Phase = (uint)challenge.Data.Boss.CurrentStage,
+            ChallengeScore = (uint)challenge.Data.Boss!.ScoreStage1,
+            ScoreTwo = (uint)challenge.Data.Boss!.ScoreStage2,
+            Star = (uint)challenge.Data.Boss!.Stars,
+            Phase = (uint)challenge.Data.Boss!.CurrentStage,
             IsReward = true,
             
             PageType = 1
