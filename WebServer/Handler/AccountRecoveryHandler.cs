@@ -3,7 +3,6 @@ using March7thHoney.Database.Account;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -14,7 +13,7 @@ public class AccountRecoveryHandler
     private const string PasswordResetRequiresVerifiedEmailMessage =
         "Please verify your email before requesting a password reset.";
 
-    public async Task<JsonResult> SendVerificationEmail(SendVerificationEmailReqJson req, HttpRequest request)
+    public async Task<IResult> SendVerificationEmail(SendVerificationEmailReqJson req, HttpRequest request)
     {
         var account = ResolveAccount(req.account, req.username, req.email);
         if (account is { IsEmailVerified: false })
@@ -41,7 +40,7 @@ public class AccountRecoveryHandler
         return await AccountEmailSender.SendVerificationEmailAsync(account, token, request);
     }
 
-    public ContentResult VerifyEmail(string? uid, string? token)
+    public IResult VerifyEmail(string? uid, string? token)
     {
         if (!int.TryParse(uid, out var parsedUid) || string.IsNullOrWhiteSpace(token))
             return VerificationPage("Email verification failed", "The verification link is invalid or expired.", 400);
@@ -54,7 +53,7 @@ public class AccountRecoveryHandler
         return VerificationPage("Email verified", "You can return to the game login screen.");
     }
 
-    public async Task<JsonResult> ForgotPassword(ForgotPasswordReqJson req, HttpRequest request)
+    public async Task<IResult> ForgotPassword(ForgotPasswordReqJson req, HttpRequest request)
     {
         var username = (req.username ?? req.account ?? string.Empty).Trim();
         var email = (req.email ?? string.Empty).Trim();
@@ -83,7 +82,7 @@ public class AccountRecoveryHandler
         return Ok(ResetSentMessage);
     }
 
-    public JsonResult ResetPassword(ResetPasswordReqJson req)
+    public IResult ResetPassword(ResetPasswordReqJson req)
     {
         if (!int.TryParse(req.uid, out var uid) || string.IsNullOrWhiteSpace(req.token))
             return Error("Invalid or expired reset token");
@@ -128,28 +127,22 @@ public class AccountRecoveryHandler
         return null;
     }
 
-    private static JsonResult Ok(string message)
+    private static IResult Ok(string message)
     {
-        return new JsonResult(new { retcode = 0, message, data = (object?)null });
+        return Results.Json(new { retcode = 0, message, data = (object?)null });
     }
 
-    private static JsonResult Error(string message, int retcode = -201)
+    private static IResult Error(string message, int retcode = -201)
     {
-        return new JsonResult(new { retcode, message, data = (object?)null })
-        {
-            StatusCode = StatusCodes.Status400BadRequest
-        };
+        return Results.Json(new { retcode, message, data = (object?)null },
+            statusCode: StatusCodes.Status400BadRequest);
     }
 
-    private static ContentResult VerificationPage(string title, string message, int statusCode = 200)
+    private static IResult VerificationPage(string title, string message, int statusCode = 200)
     {
         var encodedTitle = WebUtility.HtmlEncode(title);
         var encodedMessage = WebUtility.HtmlEncode(message);
-        return new ContentResult
-        {
-            StatusCode = statusCode,
-            ContentType = "text/html; charset=utf-8",
-            Content = $$"""
+        return Results.Text($$"""
 <!doctype html>
 <html lang="en">
 <head>
@@ -172,7 +165,6 @@ public class AccountRecoveryHandler
   </main>
 </body>
 </html>
-"""
-        };
+""", "text/html; charset=utf-8", null, statusCode);
     }
 }
