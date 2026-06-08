@@ -1,80 +1,45 @@
 using March7thHoney.WebServer.Request;
 using March7thHoney.WebServer.Server;
-using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
 namespace March7thHoney.WebServer.Controllers;
 
-[ApiController]
-[EnableCors("AllowAll")]
-[Route("/")]
-public class MuipServerRoutes
+public static class MuipServerRoutes
 {
-    [HttpPost("/muip/create_session")]
-    public IActionResult CreateSession([FromBody] CreateSessionRequestBody req)
+    public static void MapMuipServerRoutes(this IEndpointRouteBuilder app)
     {
-        var resp = MuipManager.CreateSession(req.key_type);
-        return new JsonResult(resp);
-    }
+        app.MapPost("/muip/create_session",
+            ([FromBody] CreateSessionRequestBody req) => Results.Json(MuipManager.CreateSession(req.key_type)));
 
-    [HttpPost("/muip/auth_admin")]
-    public IActionResult AuthAdminKey([FromBody] AuthAdminKeyRequestBody req)
-    {
-        var resp = MuipManager.AuthAdmin(req.session_id, req.admin_key);
-        return new JsonResult(resp);
-    }
+        app.MapPost("/muip/auth_admin",
+            ([FromBody] AuthAdminKeyRequestBody req) => Results.Json(MuipManager.AuthAdmin(req.session_id, req.admin_key)));
 
-    [HttpGet("/muip/exec_cmd")]
-    public IActionResult ExecuteCommandGet([FromQuery] AdminExecRequest req)
-    {
-        var resp = MuipManager.ExecuteCommand(req.SessionId, req.Command, req.TargetUid);
-        return new JsonResult(resp);
-    }
+        app.MapGet("/muip/exec_cmd",
+            ([AsParameters] AdminExecRequest req) =>
+                Results.Json(MuipManager.ExecuteCommand(req.SessionId, req.Command, req.TargetUid)));
 
-    [HttpPost("/muip/exec_cmd")]
-    public IActionResult ExecuteCommandPost([FromBody] AdminExecRequest req)
-    {
-        var resp = MuipManager.ExecuteCommand(req.SessionId, req.Command, req.TargetUid);
-        return new JsonResult(resp);
-    }
+        app.MapPost("/muip/exec_cmd",
+            ([FromBody] AdminExecRequest req) =>
+                Results.Json(MuipManager.ExecuteCommand(req.SessionId, req.Command, req.TargetUid)));
 
-    [HttpGet("/muip/server_information")]
-    public IActionResult GetServerInformationGet([FromQuery] ServerInformationRequest req)
-    {
-        var resp = MuipManager.GetInformation(req.SessionId);
-        return new JsonResult(resp);
-    }
+        app.MapGet("/muip/server_information",
+            ([AsParameters] ServerInformationRequest req) => Results.Json(MuipManager.GetInformation(req.SessionId)));
 
+        app.MapPost("/muip/server_information",
+            ([FromBody] ServerInformationRequest req) => Results.Json(MuipManager.GetInformation(req.SessionId)));
 
-    [HttpGet("/server/type")]
-    public IActionResult March7thHoneyVerify()
-    {
-        return new ContentResult
-        {
-            Content =
-                "{\"serverType\": \"March7thHoneyServer\"}",
-            ContentType = "application/json"
-        };
-    }
+        app.MapGet("/muip/player_information",
+            ([AsParameters] PlayerInformationRequest req) =>
+                Results.Json(MuipManager.GetPlayerInformation(req.SessionId, req.Uid)));
 
-    [HttpPost("/muip/server_information")]
-    public IActionResult GetServerInformationPost([FromBody] ServerInformationRequest req)
-    {
-        var resp = MuipManager.GetInformation(req.SessionId);
-        return new JsonResult(resp);
-    }
+        app.MapPost("/muip/player_information",
+            ([FromBody] PlayerInformationRequest req) =>
+                Results.Json(MuipManager.GetPlayerInformation(req.SessionId, req.Uid)));
 
-    [HttpGet("/muip/player_information")]
-    public IActionResult GetPlayerInformationGet([FromQuery] PlayerInformationRequest req)
-    {
-        var resp = MuipManager.GetPlayerInformation(req.SessionId, req.Uid);
-        return new JsonResult(resp);
-    }
-
-    [HttpPost("/muip/player_information")]
-    public IActionResult GetPlayerInformationPost([FromBody] PlayerInformationRequest req)
-    {
-        var resp = MuipManager.GetPlayerInformation(req.SessionId, req.Uid);
-        return new JsonResult(resp);
+        app.MapGet("/server/type",
+            () => Results.Text("{\"serverType\": \"March7thHoneyServer\"}", "application/json"));
     }
 }

@@ -1,29 +1,23 @@
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
-using Microsoft.AspNetCore.Mvc;
 using March7thHoney.WebServer.Request;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+
 namespace March7thHoney.WebServer.Controllers;
 
-[ApiController]
-[Route("/")]
-public class GateServerRoutes
+public static class GateServerRoutes
 {
-    [HttpGet("/query_gateway")]
-    public async ValueTask<ContentResult> QueryGateway([FromQuery] GateWayRequest req)
+    public static void MapGateServerRoutes(this IEndpointRouteBuilder app)
     {
-        if (!ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
-            return new ContentResult
-            {
-                StatusCode = 404
-            };
-
-        await ValueTask.CompletedTask;
-        var handler = new QueryGatewayHandler(req);
-        return new ContentResult
+        app.MapGet("/query_gateway", ([AsParameters] GateWayRequest req) =>
         {
-            Content = handler.Data,
-            StatusCode = 200,
-            ContentType = "text/plain"
-        };
+            if (!ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
+                return Results.StatusCode(404);
+
+            var handler = new QueryGatewayHandler(req);
+            return Results.Text(handler.Data, "text/plain");
+        });
     }
 }

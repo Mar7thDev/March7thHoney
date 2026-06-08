@@ -1,23 +1,19 @@
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 
 namespace March7thHoney.WebServer.Controllers;
 
-[ApiController]
-[Route("/")]
-public class LogServerRoutes
+public static class LogServerRoutes
 {
-    [HttpPost("/sdk/dataUpload")]
-    [HttpPost("/crashdump/dataUpload")]
-    [HttpPost("/apm/dataUpload")]
-    public ContentResult LogUpload()
+    public static void MapLogServerRoutes(this IEndpointRouteBuilder app)
     {
-        return new ContentResult { Content = "{\"code\":0}", ContentType = "application/json" };
-    }
+        Func<IResult> upload = () => Results.Text("{\"code\":0}", "application/json");
+        app.MapPost("/sdk/dataUpload", upload);
+        app.MapPost("/crashdump/dataUpload", upload);
+        app.MapPost("/apm/dataUpload", upload);
 
-    [HttpPost("/common/h5log/log/batch")]
-    public ContentResult BatchUpload()
-    {
-        return new ContentResult
-            { Content = "{\"retcode\":0,\"message\":\"success\",\"data\":null}", ContentType = "application/json" };
+        app.MapPost("/common/h5log/log/batch",
+            () => Results.Text("{\"retcode\":0,\"message\":\"success\",\"data\":null}", "application/json"));
     }
 }
