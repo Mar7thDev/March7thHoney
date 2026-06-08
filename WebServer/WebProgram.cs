@@ -1,5 +1,6 @@
 using System.Net;
 using March7thHoney.Util;
+using March7thHoney.WebServer.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -89,6 +90,13 @@ public class WebProgram
 
         app.UseCors("AllowAll");
 
+        // Minimal API endpoints (converted from MVC controllers).
+        app.MapLogServerRoutes();
+        app.MapGateServerRoutes();
+        app.MapServerExchangeRoutes();
+        app.MapMuipServerRoutes();
+
+        // Remaining MVC controllers (still being migrated).
         app.MapControllers();
 
         return app;
