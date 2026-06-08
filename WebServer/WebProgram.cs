@@ -51,6 +51,11 @@ public class WebProgram
                 policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         });
 
+        // Use source-generated JSON metadata (AOT/trim safe) for all endpoint
+        // serialization and body binding, ahead of the reflection-based resolver.
+        builder.Services.ConfigureHttpJsonOptions(options =>
+            options.SerializerOptions.TypeInfoResolverChain.Insert(0, WebJsonContext.Default));
+
         var app = builder.Build();
 
         app.UseForwardedHeaders();
