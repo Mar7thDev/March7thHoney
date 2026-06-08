@@ -1,6 +1,7 @@
 using System.Net;
 using System.Text.Json;
 using March7thHoney.Command;
+using March7thHoney.WebServer;
 
 namespace March7thHoney.WebServer.Pages;
 
@@ -11,8 +12,9 @@ public static class AdminPageRenderer
         var displayName = string.IsNullOrWhiteSpace(serverName) ? "March7thHoney" : serverName.Trim();
         var encodedDisplayName = WebUtility.HtmlEncode(displayName);
         var encodedTitle = WebUtility.HtmlEncode($"Admin console - {displayName}");
-        var serverNameJson = JsonSerializer.Serialize(displayName);
-        var knownPermissionsJson = JsonSerializer.Serialize(CommandPermissions.KnownPermissions().ToArray());
+        var serverNameJson = JsonSerializer.Serialize(displayName, WebJsonContext.Default.String);
+        var knownPermissionsJson =
+            JsonSerializer.Serialize(CommandPermissions.KnownPermissions().ToArray(), WebJsonContext.Default.StringArray);
 
         return $$"""
 <!doctype html>
