@@ -64,3 +64,55 @@ public sealed record RegVerifyData(
 public sealed record RegResult(int retcode, string message, RegData data);
 
 public sealed record RegVerifyResult(int retcode, string message, RegVerifyData data);
+
+// === admin panel ===
+public sealed record AdminResult<T>(int retcode, string message, T data);
+
+public sealed record EmptyData;
+
+public sealed record AdminLoginData(string token, long expires_at);
+
+public readonly record struct AccountSummary(
+    int uid, string username, string email, bool email_verified, long email_verified_at, string nickname,
+    int? level, bool has_password, string role, string permissions, string base_permissions,
+    string effective_permissions, long dispatch_token_expires_at, long combo_token_expires_at, bool online,
+    bool banned, string ban_reason, long ban_expires_at, long ban_created_at, bool ban_permanent,
+    long ban_remaining_seconds);
+
+public sealed record AccountsData(List<AccountSummary> accounts, int count, List<string> roles, string default_role);
+
+public sealed record OverviewStats(
+    int total_accounts, int online_players, int banned_accounts, int unverified_email, int roles);
+
+public sealed record OverviewServer(
+    string name, string game_address, string database, long uptime_seconds, double process_memory_mb,
+    long server_time, bool registration_enabled, bool limit_registration_per_identity);
+
+public sealed record OnlinePlayer(int uid, string nickname, int level, string endpoint, string state);
+
+public sealed record RoleCount(string role, int count);
+
+public sealed record AttentionItem(int uid, string username, string email, string role, string reason);
+
+public sealed record OverviewData(
+    OverviewStats stats, OverviewServer server, List<OnlinePlayer> online_players,
+    List<RoleCount> role_breakdown, List<AttentionItem> attention);
+
+public sealed record RegistrationData(bool registration_enabled);
+
+public sealed record IdentityLimitData(bool limit_registration_per_identity);
+
+public sealed record AccessRole(string name, List<string> configured_permissions, List<string> effective_permissions);
+
+public sealed record AccessData(
+    List<AccessRole> roles, string default_role, List<string> default_permissions, List<string> known_permissions);
+
+public sealed record ExecCommandData(string output, int target_uid);
+
+public sealed record AccountWrap(AccountSummary account);
+
+public sealed record AccountEmailWrap(AccountSummary account, bool email_sent);
+
+public sealed record AccountOnlineWrap(AccountSummary account, bool was_online);
+
+public sealed record DeletedUid(int uid);
