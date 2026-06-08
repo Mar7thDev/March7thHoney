@@ -9,11 +9,11 @@ using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Proto;
 using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
-using Newtonsoft.Json;
+using MemoryPack;
 
 namespace March7thHoney.GameServer.Game.Challenge;
 
-public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(player)
+public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(player)
 {
     public ChallengeTierceInstance? CurrentInstance { get; private set; }
 
@@ -282,7 +282,7 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
             StageBuffIds = CurrentInstance.StageBuffIds.ToList(),
             StageScores = CurrentInstance.StageScores.ToList()
         };
-        ChallengeData.TierceInstance = JsonConvert.SerializeObject(snap);
+        ChallengeData.TierceInstance = Convert.ToBase64String(MemoryPackSerializer.Serialize(snap));
     }
 
     public void ClearInstance()
@@ -313,7 +313,8 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         ChallengeTierceRuntimeSnapshot? snap;
         try
         {
-            snap = JsonConvert.DeserializeObject<ChallengeTierceRuntimeSnapshot>(ChallengeData.TierceInstance);
+            snap = MemoryPackSerializer.Deserialize<ChallengeTierceRuntimeSnapshot>(
+                Convert.FromBase64String(ChallengeData.TierceInstance));
         }
         catch
         {
@@ -534,7 +535,8 @@ public class ChallengeTierceManager(PlayerInstance player) : BasePlayerManager(p
         return true;
     }
 
-    private class ChallengeTierceRuntimeSnapshot
+    [MemoryPackable]
+    private partial class ChallengeTierceRuntimeSnapshot
     {
         public uint ChallengeId { get; set; }
         public uint CurStageIndex { get; set; }

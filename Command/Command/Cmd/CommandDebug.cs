@@ -96,7 +96,8 @@ public class CommandDebug : ICommand
         }
 
         var fileContent = await File.ReadAllTextAsync(packetFilePath);
-        var customPacketQueue = Newtonsoft.Json.JsonConvert.DeserializeObject<CustomPacketQueueConfig>(fileContent);
+        var customPacketQueue =
+            System.Text.Json.JsonSerializer.Deserialize(fileContent, CustomPacketJsonContext.Default.CustomPacketQueueConfig);
 
         if (customPacketQueue == null || customPacketQueue.Queue.Count == 0)
         {
