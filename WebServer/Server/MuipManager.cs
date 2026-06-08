@@ -384,14 +384,20 @@ public static class MuipManager
     public static float GetTotalMemoryWindows()
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_ComputerSystem");
-            foreach (var obj in searcher.Get())
+            try
             {
-                var memory = Convert.ToUInt64(obj["TotalPhysicalMemory"]);
-                return memory / 1024 / 1024;
+                // WMI (System.Management) is COM-based and throws under NativeAOT — degrade gracefully.
+                var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_ComputerSystem");
+                foreach (var obj in searcher.Get())
+                {
+                    var memory = Convert.ToUInt64(obj["TotalPhysicalMemory"]);
+                    return memory / 1024 / 1024;
+                }
             }
-        }
+            catch
+            {
+                // WMI unavailable (e.g. NativeAOT) — report 0.
+            }
 
         return 0;
     }
@@ -399,10 +405,15 @@ public static class MuipManager
     public static float GetAvailableMemoryWindows()
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            var pc = new PerformanceCounter("Memory", "Available MBytes");
-            return pc.NextValue();
-        }
+            try
+            {
+                var pc = new PerformanceCounter("Memory", "Available MBytes");
+                return pc.NextValue();
+            }
+            catch
+            {
+                // Performance counters unavailable — report 0.
+            }
 
         return 0;
     }
@@ -451,10 +462,17 @@ public static class MuipManager
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             throw new PlatformNotSupportedException("PerformanceCounter is only supported on Windows");
 
-        var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-        cpuCounter.NextValue();
-        Thread.Sleep(1000);
-        return cpuCounter.NextValue();
+        try
+        {
+            var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            cpuCounter.NextValue();
+            Thread.Sleep(1000);
+            return cpuCounter.NextValue();
+        }
+        catch
+        {
+            return 0;
+        }
     }
 
     public static (string ModelName, int Cores, float Frequency) GetCpuDetails()
@@ -488,16 +506,24 @@ public static class MuipManager
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             throw new PlatformNotSupportedException("ManagementObjectSearcher is only supported on Windows");
 
-        var modelName = "";
-        var cores = 0;
+        var modelName = "Unknown";
+        var cores = Environment.ProcessorCount;
         float frequency = 0;
 
-        var searcher = new ManagementObjectSearcher("select * from Win32_Processor");
-        foreach (var item in searcher.Get())
+        try
         {
-            modelName = item["Name"]?.ToString() ?? "Unknown";
-            cores = int.Parse(item["NumberOfCores"]?.ToString() ?? "0");
-            frequency = float.Parse(item["MaxClockSpeed"]?.ToString() ?? "0") / 1000; // MHz to GHz
+            // WMI (System.Management) is COM-based and throws under NativeAOT — fall back to process info.
+            var searcher = new ManagementObjectSearcher("select * from Win32_Processor");
+            foreach (var item in searcher.Get())
+            {
+                modelName = item["Name"]?.ToString() ?? "Unknown";
+                cores = int.Parse(item["NumberOfCores"]?.ToString() ?? "0");
+                frequency = float.Parse(item["MaxClockSpeed"]?.ToString() ?? "0") / 1000; // MHz to GHz
+            }
+        }
+        catch
+        {
+            // WMI unavailable (e.g. NativeAOT) — keep the process-derived fallback above.
         }
 
         return (modelName, cores, frequency);
