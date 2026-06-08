@@ -1,7 +1,12 @@
 using System.Net;
 using March7thHoney.Util;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace March7thHoney.WebServer;
 
@@ -9,40 +14,29 @@ public class WebProgram
 {
     public static void Main(string[] args, int port, string address)
     {
-        BuildWebHost(args, port, address).Start();
+        BuildWebApp(args, port, address).Start();
     }
 
-    public static IHost BuildWebHost(string[] args, int port, string address)
+    public static WebApplication BuildWebApp(string[] args, int port, string address)
     {
-        return Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
+        var builder = WebApplication.CreateBuilder(args);
+
+        builder.Logging.ClearProviders();
+        builder.WebHost.UseUrls(address);
+
+        if (ConfigManager.Config.HttpServer.UseSSL)
+            builder.WebHost.ConfigureKestrel(options =>
             {
-                webBuilder
-                    .UseStartup<Startup>()
-                    .ConfigureLogging((hostingContext, logging) => { logging.ClearProviders(); })
-                    .UseUrls(address);
+                options.Listen(IPAddress.Any, port, listenOptions =>
+                {
+                    listenOptions.UseHttps(
+                        ConfigManager.Config.KeyStore.KeyStorePath,
+                        ConfigManager.Config.KeyStore.KeyStorePassword
+                    );
+                });
+            });
 
-                if (ConfigManager.Config.HttpServer.UseSSL)
-                    webBuilder.UseKestrel(options =>
-                    {
-                        options.Listen(IPAddress.Any, port, listenOptions =>
-                        {
-                            listenOptions.UseHttps(
-                                ConfigManager.Config.KeyStore.KeyStorePath,
-                                ConfigManager.Config.KeyStore.KeyStorePassword
-                            );
-                        });
-                    });
-            })
-            .Build();
-    }
-}
-
-public class Startup
-{
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.Configure<ForwardedHeadersOptions>(options =>
+        builder.Services.Configure<ForwardedHeadersOptions>(options =>
         {
             options.ForwardedHeaders =
                 ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedHost | ForwardedHeaders.XForwardedProto;
@@ -50,30 +44,23 @@ public class Startup
             options.KnownProxies.Clear();
         });
 
-        services.AddCors(options =>
+        builder.Services.AddCors(options =>
         {
             options.AddPolicy("AllowAll",
-                builder =>
-                {
-                    builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
-                });
+                policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         });
 
-        services.AddControllers();
-    }
+        builder.Services.AddControllers();
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+        var app = builder.Build();
 
         app.UseForwardedHeaders();
 
+        // Buffer the response so we can emit an explicit Content-Length and strip
+        // Transfer-Encoding: chunked — some game clients are strict about this.
         app.Use(async (context, next) =>
         {
             using var buffer = new MemoryStream();
-            var request = context.Request;
             var response = context.Response;
 
             var bodyStream = response.Body;
@@ -100,12 +87,10 @@ public class Startup
 
         app.UseHttpsRedirection();
 
-        app.UseRouting();
-
         app.UseCors("AllowAll");
 
-        app.UseAuthorization();
+        app.MapControllers();
 
-        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        return app;
     }
 }
