@@ -50,4 +50,17 @@ namespace March7thHoney.WebServer;
 [JsonSerializable(typeof(PassportLoginBody))]
 [JsonSerializable(typeof(RegResult))]
 [JsonSerializable(typeof(RegVerifyResult))]
+// Admin panel envelopes
+[JsonSerializable(typeof(AdminResult<EmptyData>))]
+[JsonSerializable(typeof(AdminResult<AdminLoginData>))]
+[JsonSerializable(typeof(AdminResult<AccountsData>))]
+[JsonSerializable(typeof(AdminResult<OverviewData>))]
+[JsonSerializable(typeof(AdminResult<RegistrationData>))]
+[JsonSerializable(typeof(AdminResult<IdentityLimitData>))]
+[JsonSerializable(typeof(AdminResult<AccessData>))]
+[JsonSerializable(typeof(AdminResult<ExecCommandData>))]
+[JsonSerializable(typeof(AdminResult<AccountWrap>))]
+[JsonSerializable(typeof(AdminResult<AccountEmailWrap>))]
+[JsonSerializable(typeof(AdminResult<AccountOnlineWrap>))]
+[JsonSerializable(typeof(AdminResult<DeletedUid>))]
 public partial class WebJsonContext : JsonSerializerContext;
