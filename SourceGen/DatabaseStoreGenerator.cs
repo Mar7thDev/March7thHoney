@@ -7,10 +7,11 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace March7thHoney.SourceGen;
 
 /// <summary>
-///     Emits, for every entity (subclass of BaseDatabaseDataHelper), a Dapper.AOT-backed store: a row record
-///     (scalar columns + byte[] BLOBs for complex columns), CRUD + DDL, and conversions that MemoryPack-serialize
-///     complex POCO columns / proto-serialize IMessage columns. Also emits a Type->store registry so DatabaseHelper
-///     dispatches with zero reflection. Replaces SqlSugar.
+///     Emits, for every entity (subclass of BaseDatabaseDataHelper), an ADO.NET-backed store: a row record
+///     (scalar columns + byte[] BLOBs for complex columns), CRUD + DDL implemented with explicit
+///     DbCommand/DbParameter/DbDataReader (no Dapper, no reflection, no Reflection.Emit — NativeAOT safe), and
+///     conversions that MemoryPack-serialize complex POCO columns / proto-serialize IMessage columns. Also emits a
+///     Type->store registry so DatabaseHelper dispatches with zero reflection. Replaces SqlSugar/Dapper.
 /// </summary>
 [Generator]
 public sealed class DatabaseStoreGenerator : IIncrementalGenerator
@@ -84,52 +85,48 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
 
         var kind = ColumnKind.Complex;
         var sql = "BLOB";
+        var prim = Prim.Other;
         if (underlying is IArrayTypeSymbol { ElementType.SpecialType: SpecialType.System_Byte })
         {
             kind = ColumnKind.Scalar;
             sql = "BLOB";
+            prim = Prim.Blob;
         }
         else if (underlying.TypeKind == TypeKind.Enum)
         {
             kind = ColumnKind.Scalar;
             sql = "INTEGER";
+            prim = Prim.Enum;
         }
         else
         {
+            kind = ColumnKind.Scalar;
             switch (underlying.SpecialType)
             {
-                case SpecialType.System_String:
-                    kind = ColumnKind.Scalar;
-                    sql = "TEXT";
-                    break;
-                case SpecialType.System_Boolean:
-                case SpecialType.System_Int16:
-                case SpecialType.System_UInt16:
-                case SpecialType.System_Int32:
-                case SpecialType.System_UInt32:
-                case SpecialType.System_Int64:
-                case SpecialType.System_UInt64:
-                case SpecialType.System_Byte:
-                case SpecialType.System_SByte:
-                    kind = ColumnKind.Scalar;
-                    sql = "INTEGER";
-                    break;
-                case SpecialType.System_Single:
-                case SpecialType.System_Double:
-                case SpecialType.System_Decimal:
-                    kind = ColumnKind.Scalar;
-                    sql = "REAL";
-                    break;
+                case SpecialType.System_String: sql = "TEXT"; prim = Prim.Str; break;
+                case SpecialType.System_Boolean: sql = "INTEGER"; prim = Prim.Bool; break;
+                case SpecialType.System_SByte: sql = "INTEGER"; prim = Prim.SByte; break;
+                case SpecialType.System_Byte: sql = "INTEGER"; prim = Prim.Byte; break;
+                case SpecialType.System_Int16: sql = "INTEGER"; prim = Prim.I16; break;
+                case SpecialType.System_UInt16: sql = "INTEGER"; prim = Prim.U16; break;
+                case SpecialType.System_Int32: sql = "INTEGER"; prim = Prim.I32; break;
+                case SpecialType.System_UInt32: sql = "INTEGER"; prim = Prim.U32; break;
+                case SpecialType.System_Int64: sql = "INTEGER"; prim = Prim.I64; break;
+                case SpecialType.System_UInt64: sql = "INTEGER"; prim = Prim.U64; break;
+                case SpecialType.System_Single: sql = "REAL"; prim = Prim.F32; break;
+                case SpecialType.System_Double: sql = "REAL"; prim = Prim.F64; break;
+                case SpecialType.System_Decimal: sql = "REAL"; prim = Prim.Dec; break;
                 default:
                     kind = underlying.AllInterfaces.Any(i => i.ToDisplayString() == "Google.Protobuf.IMessage")
                         ? ColumnKind.Proto
                         : ColumnKind.Complex;
                     sql = "BLOB";
+                    prim = Prim.Other;
                     break;
             }
         }
 
-        return new Column(p.Name, fqType, underlyingFq, kind, sql, nullable);
+        return new Column(p.Name, fqType, underlyingFq, kind, sql, nullable, prim);
     }
 
     private static string Emit(IEnumerable<Entity> entities)
@@ -141,9 +138,10 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         // CS0618: generated mapping intentionally reads/writes every persisted column,
         // including ones the entity marks [Obsolete] for source callers.
         sb.AppendLine("#pragma warning disable CS8618, CS8601, CS8603, CS8604, CS0618");
+        sb.AppendLine("using System;");
         sb.AppendLine("using System.Collections.Generic;");
         sb.AppendLine("using System.Data.Common;");
-        sb.AppendLine("using Dapper;");
+        sb.AppendLine("using System.Globalization;");
         sb.AppendLine("using MemoryPack;");
         sb.AppendLine();
         sb.AppendLine("namespace March7thHoney.Database.Generated;");
@@ -196,37 +194,97 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         sb.AppendLine();
 
         // Store
-        sb.AppendLine("[global::Dapper.DapperAot]");
         sb.AppendLine($"internal static class {e.ClassName}Store");
         sb.AppendLine("{");
         sb.AppendLine($"    public const string Table = \"{e.Table}\";");
+        sb.AppendLine();
 
+        // DDL
         var ddlCols = string.Join(", ",
             cols.Select(c => $"\\\"{c.Name}\\\" {c.SqlType}{(c.Name == "Uid" ? " PRIMARY KEY" : "")}"));
-        sb.AppendLine(
-            $"    public static void EnsureTable(DbConnection c) => c.Execute(\"create table if not exists \\\"{e.Table}\\\" ({ddlCols})\");");
+        sb.AppendLine("    public static void EnsureTable(DbConnection c)");
+        sb.AppendLine("    {");
+        sb.AppendLine("        using var cmd = c.CreateCommand();");
+        sb.AppendLine($"        cmd.CommandText = \"create table if not exists \\\"{e.Table}\\\" ({ddlCols})\";");
+        sb.AppendLine("        cmd.ExecuteNonQuery();");
+        sb.AppendLine("    }");
+        sb.AppendLine();
 
+        // LoadAll — read by ordinal into the row, then convert.
         var selectCols = string.Join(", ", colNames);
-        sb.AppendLine(
-            $"    public static List<{e.Fqn}> LoadAll(DbConnection c)");
+        sb.AppendLine($"    public static List<{e.Fqn}> LoadAll(DbConnection c)");
         sb.AppendLine("    {");
         sb.AppendLine($"        var list = new List<{e.Fqn}>();");
-        sb.AppendLine(
-            $"        foreach (var r in c.Query<{e.ClassName}Row>(\"select {selectCols} from \\\"{e.Table}\\\"\")) list.Add(ToEntity(r));");
+        sb.AppendLine("        using var cmd = c.CreateCommand();");
+        sb.AppendLine($"        cmd.CommandText = \"select {selectCols} from \\\"{e.Table}\\\"\";");
+        sb.AppendLine("        using var rd = cmd.ExecuteReader();");
+        sb.AppendLine("        while (rd.Read())");
+        sb.AppendLine("        {");
+        sb.AppendLine($"            var r = new {e.ClassName}Row");
+        sb.AppendLine("            {");
+        for (var i = 0; i < cols.Count; i++)
+            sb.AppendLine($"                {cols[i].Name} = {ReaderToRowExpr(cols[i], i)},");
+        sb.AppendLine("            };");
+        sb.AppendLine("            list.Add(ToEntity(r));");
+        sb.AppendLine("        }");
         sb.AppendLine("        return list;");
         sb.AppendLine("    }");
+        sb.AppendLine();
 
+        // Parameter binding shared by Insert/Update.
+        sb.AppendLine($"    private static void Bind(DbCommand cmd, {e.ClassName}Row row)");
+        sb.AppendLine("    {");
+        sb.AppendLine("        DbParameter p;");
+        foreach (var c in cols)
+        {
+            sb.AppendLine("        p = cmd.CreateParameter();");
+            sb.AppendLine($"        p.ParameterName = \"@{c.Name}\";");
+            sb.AppendLine($"        p.Value = {RowToParamValue(c)};");
+            sb.AppendLine("        cmd.Parameters.Add(p);");
+        }
+
+        sb.AppendLine("    }");
+        sb.AppendLine();
+
+        // Insert
         var insertCols = string.Join(", ", colNames);
         var insertVals = string.Join(", ", cols.Select(c => "@" + c.Name));
+        sb.AppendLine($"    public static void Insert(DbConnection c, {e.Fqn} e)");
+        sb.AppendLine("    {");
+        sb.AppendLine("        var row = ToRow(e);");
+        sb.AppendLine("        using var cmd = c.CreateCommand();");
         sb.AppendLine(
-            $"    public static void Insert(DbConnection c, {e.Fqn} e) => c.Execute(\"insert into \\\"{e.Table}\\\" ({insertCols}) values ({insertVals})\", ToRow(e));");
+            $"        cmd.CommandText = \"insert into \\\"{e.Table}\\\" ({insertCols}) values ({insertVals})\";");
+        sb.AppendLine("        Bind(cmd, row);");
+        sb.AppendLine("        cmd.ExecuteNonQuery();");
+        sb.AppendLine("    }");
+        sb.AppendLine();
 
+        // Update
         var setClause = string.Join(", ", cols.Where(c => c.Name != "Uid").Select(c => $"\\\"{c.Name}\\\"=@{c.Name}"));
+        sb.AppendLine($"    public static void Update(DbConnection c, {e.Fqn} e)");
+        sb.AppendLine("    {");
+        sb.AppendLine("        var row = ToRow(e);");
+        sb.AppendLine("        using var cmd = c.CreateCommand();");
         sb.AppendLine(
-            $"    public static void Update(DbConnection c, {e.Fqn} e) => c.Execute(\"update \\\"{e.Table}\\\" set {setClause} where \\\"Uid\\\"=@Uid\", ToRow(e));");
+            $"        cmd.CommandText = \"update \\\"{e.Table}\\\" set {setClause} where \\\"Uid\\\"=@Uid\";");
+        sb.AppendLine("        Bind(cmd, row);");
+        sb.AppendLine("        cmd.ExecuteNonQuery();");
+        sb.AppendLine("    }");
+        sb.AppendLine();
 
-        sb.AppendLine(
-            $"    public static void Delete(DbConnection c, int uid) => c.Execute(\"delete from \\\"{e.Table}\\\" where \\\"Uid\\\"=@Uid\", new {{ Uid = uid }});");
+        // Delete
+        sb.AppendLine("    public static void Delete(DbConnection c, int uid)");
+        sb.AppendLine("    {");
+        sb.AppendLine("        using var cmd = c.CreateCommand();");
+        sb.AppendLine($"        cmd.CommandText = \"delete from \\\"{e.Table}\\\" where \\\"Uid\\\"=@Uid\";");
+        sb.AppendLine("        var p = cmd.CreateParameter();");
+        sb.AppendLine("        p.ParameterName = \"@Uid\";");
+        sb.AppendLine("        p.Value = uid;");
+        sb.AppendLine("        cmd.Parameters.Add(p);");
+        sb.AppendLine("        cmd.ExecuteNonQuery();");
+        sb.AppendLine("    }");
+        sb.AppendLine();
 
         // ToEntity
         sb.AppendLine($"    private static {e.Fqn} ToEntity({e.ClassName}Row r) => new {e.Fqn}");
@@ -234,6 +292,7 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         foreach (var c in cols)
             sb.AppendLine($"        {c.Name} = {ReadExpr(c)},");
         sb.AppendLine("    };");
+        sb.AppendLine();
 
         // ToRow
         sb.AppendLine($"    private static {e.ClassName}Row ToRow({e.Fqn} e) => new {e.ClassName}Row");
@@ -244,6 +303,54 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
 
         sb.AppendLine("}");
         sb.AppendLine();
+    }
+
+    // DbDataReader (ordinal o) -> row property of type RowType(c). BLOB-backed columns (scalar byte[], MemoryPack
+    // complex, proto) read straight to byte[]; scalars go through Convert so either provider's boxed CLR type lands
+    // in the right shape (SQLite hands back long/double/string; MySQL hands back the declared type).
+    private static string ReaderToRowExpr(Column c, int o)
+    {
+        if (c.Kind != ColumnKind.Scalar || c.Prim == Prim.Blob)
+            return $"rd.IsDBNull({o}) ? null : (byte[])rd.GetValue({o})";
+
+        var v = $"rd.GetValue({o})";
+        const string inv = "CultureInfo.InvariantCulture";
+        var baseExpr = c.Prim switch
+        {
+            Prim.Str => $"Convert.ToString({v}, {inv})",
+            Prim.Bool => $"Convert.ToBoolean({v}, {inv})",
+            Prim.SByte => $"Convert.ToSByte({v}, {inv})",
+            Prim.Byte => $"Convert.ToByte({v}, {inv})",
+            Prim.I16 => $"Convert.ToInt16({v}, {inv})",
+            Prim.U16 => $"Convert.ToUInt16({v}, {inv})",
+            Prim.I32 => $"Convert.ToInt32({v}, {inv})",
+            Prim.U32 => $"Convert.ToUInt32({v}, {inv})",
+            Prim.I64 => $"Convert.ToInt64({v}, {inv})",
+            Prim.U64 => $"Convert.ToUInt64({v}, {inv})",
+            Prim.F32 => $"Convert.ToSingle({v}, {inv})",
+            Prim.F64 => $"Convert.ToDouble({v}, {inv})",
+            Prim.Dec => $"Convert.ToDecimal({v}, {inv})",
+            Prim.Enum => $"({c.UnderlyingFq})Convert.ToInt64({v}, {inv})",
+            _ => $"(byte[])rd.GetValue({o})"
+        };
+
+        // string is a reference type; null reads back as null. Value types pick the matching null literal.
+        if (c.Prim == Prim.Str)
+            return $"rd.IsDBNull({o}) ? null : {baseExpr}";
+
+        var nullBranch = c.Nullable ? $"({c.FqType})null" : $"default({c.FqType})";
+        return $"rd.IsDBNull({o}) ? {nullBranch} : {baseExpr}";
+    }
+
+    // Row property -> DbParameter.Value. Enums persist as their integer value (INTEGER column); everything else binds
+    // its CLR value directly, with null mapped to DBNull.
+    private static string RowToParamValue(Column c)
+    {
+        if (c.Kind == ColumnKind.Scalar && c.Prim == Prim.Enum)
+            return c.Nullable
+                ? $"row.{c.Name}.HasValue ? (object)Convert.ToInt64(row.{c.Name}.Value) : (object)DBNull.Value"
+                : $"(object)Convert.ToInt64(row.{c.Name})";
+        return $"((object?)row.{c.Name}) ?? DBNull.Value";
     }
 
     private static string RowType(Column c)
@@ -290,8 +397,29 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         Proto
     }
 
+    // How a scalar column is read/converted. Other = BLOB-backed complex/proto (handled via Kind, not Prim).
+    private enum Prim
+    {
+        Str,
+        Bool,
+        SByte,
+        Byte,
+        I16,
+        U16,
+        I32,
+        U32,
+        I64,
+        U64,
+        F32,
+        F64,
+        Dec,
+        Enum,
+        Blob,
+        Other
+    }
+
     private sealed class Column(string name, string fqType, string underlyingFq, ColumnKind kind, string sqlType,
-        bool nullable)
+        bool nullable, Prim prim)
     {
         public string Name { get; } = name;
         public string FqType { get; } = fqType;
@@ -299,6 +427,7 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         public ColumnKind Kind { get; } = kind;
         public string SqlType { get; } = sqlType;
         public bool Nullable { get; } = nullable;
+        public Prim Prim { get; } = prim;
     }
 
     private sealed class Entity(string fqn, string className, string table, List<Column> columns)
