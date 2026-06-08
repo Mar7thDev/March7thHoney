@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
 using March7thHoney.Enums;
 using March7thHoney.WebServer.Server;
-using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.WebServer.Response;
 
@@ -51,12 +50,10 @@ public class PlayerInformationData
     public int CurFloorId { get; set; }
 
     // Player info
-    [Newtonsoft.Json.JsonConverter(typeof(StringEnumConverter))]
-    [System.Text.Json.Serialization.JsonConverter(typeof(JsonStringEnumConverter))]
+    [JsonConverter(typeof(JsonStringEnumConverter<PlayerStatusEnum>))]
     public PlayerStatusEnum PlayerStatus { get; set; } = PlayerStatusEnum.Explore;
 
-    [Newtonsoft.Json.JsonConverter(typeof(StringEnumConverter))]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
+    [JsonConverter(typeof(JsonStringEnumConverter<PlayerSubStatusEnum>))]
     public PlayerSubStatusEnum PlayerSubStatus { get; set; } = PlayerSubStatusEnum.None;
 
     public int Stamina { get; set; } = 0;

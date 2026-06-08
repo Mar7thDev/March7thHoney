@@ -20,7 +20,7 @@ public class ComboTokenGranterHandler
         }
         catch (JsonException)
         {
-            // Malformed client payload — treated as missing below (Newtonsoft returned null here).
+            // Malformed client payload — treated as missing (handled as null below).
         }
         var res = new ComboTokenResJson();
         if (tokenData == null)
