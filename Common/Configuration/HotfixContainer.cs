@@ -1,12 +1,11 @@
+using System.Text.Json.Serialization;
 using March7thHoney.Enums;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Configuration;
 
 public class HotfixContainer
 {
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(JsonStringEnumConverter<BaseRegionEnum>))]
     public BaseRegionEnum Region { get; set; } = BaseRegionEnum.None;
 
     public Dictionary<string, DownloadUrlConfig> HotfixData { get; set; } = [];
