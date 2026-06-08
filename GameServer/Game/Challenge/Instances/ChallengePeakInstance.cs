@@ -20,7 +20,7 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
 
     public override Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> GetStageMonsters()
     {
-        if (!Data.Peak.IsHard || Config.BossExcel == null) return Config.ChallengeMonsters;
+        if (!Peak.IsHard || Config.BossExcel == null) return Config.ChallengeMonsters;
 
         Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> monsters = [];
 
@@ -52,8 +52,10 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
 
     #region Properties
 
+    private PeakChallengeState Peak => Data.Peak!;
+
     public ChallengePeakConfigExcel Config { get; } =
-        GameData.ChallengePeakConfigData[(int)data.Peak.CurrentPeakLevelId];
+        GameData.ChallengePeakConfigData[(int)data.Peak!.CurrentPeakLevelId];
 
     public List<int> AllBattleTargets { get; } = [];
     public bool IsWin { get; private set; }
@@ -71,7 +73,7 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
         base.OnBattleStart(battle);
 
         // 敌人特性：固定 Tag 词条，客户端不回传，需从配置注入战斗。绝境难度走 HardTagList
-        var tagList = Data.Peak.IsHard && Config.BossExcel != null
+        var tagList = Peak.IsHard && Config.BossExcel != null
             ? Config.BossExcel.HardTagList
             : Config.TagList;
         foreach (var tagBuff in tagList)
@@ -80,13 +82,13 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
                 WaveFlag = -1
             });
 
-        foreach (var peakBuff in Data.Peak.Buffs)
+        foreach (var peakBuff in Peak.Buffs)
             battle.Buffs.Add(new MazeBuff((int)peakBuff, 1, -1)
             {
                 WaveFlag = -1
             });
 
-        if (Data.Peak.IsHard && Config.BossExcel != null)
+        if (Peak.IsHard && Config.BossExcel != null)
         {
             var excel = GameData.BattleTargetConfigData.GetValueOrDefault(Config.BossExcel.HardTarget);
             if (excel != null)
@@ -119,10 +121,10 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
 
                 if (monsters == 0)
                 {
-                    Data.Peak.CurStatus = (int)ChallengeStatus.ChallengeFinish;
+                    Peak.CurStatus = (int)ChallengeStatus.ChallengeFinish;
                     var res = CalculateStars(req);
-                    Data.Peak.Stars = res.Item1;
-                    Data.Peak.RoundCnt = req.Stt.RoundCnt;
+                    Peak.Stars = res.Item1;
+                    Peak.RoundCnt = req.Stt.RoundCnt;
                     IsWin = true;
 
                     await Player.SendPacket(new PacketChallengePeakSettleScNotify(this, res.Item2));
@@ -142,20 +144,20 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
                 }
 
                 // Set saved technique points (This will be restored if the player resets the challenge)
-                Data.Peak.SavedMp = (uint)Player.LineupManager!.GetCurLineup()!.Mp;
+                Peak.SavedMp = (uint)Player.LineupManager!.GetCurLineup()!.Mp;
                 break;
             case BattleEndStatus.BattleEndQuit:
                 // Reset technique points and move back to start position
                 var lineup = Player.LineupManager!.GetCurLineup()!;
-                lineup.Mp = (int)Data.Peak.SavedMp;
-                if (Data.Peak.StartPos != null && Data.Peak.StartRot != null)
-                    await Player.MoveTo(Data.Peak.StartPos, Data.Peak.StartRot);
+                lineup.Mp = (int)Peak.SavedMp;
+                if (Peak.StartPos != null && Peak.StartRot != null)
+                    await Player.MoveTo(Peak.StartPos, Peak.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             default:
                 // Determine challenge result
                 // Fail challenge
-                Data.Peak.CurStatus = (int)ChallengeStatus.ChallengeFailed;
+                Peak.CurStatus = (int)ChallengeStatus.ChallengeFailed;
 
                 // Send challenge result data
                 await Player.SendPacket(new PacketChallengePeakSettleScNotify(this, []));
@@ -184,7 +186,7 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
             }
         }
 
-        if (Data.Peak.IsHard && Config.BossExcel != null) stars = 3;
+        if (Peak.IsHard && Config.BossExcel != null) stars = 3;
 
         return (Math.Min(stars, 3), finishedIds);
     }

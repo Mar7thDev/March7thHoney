@@ -11,11 +11,11 @@ public class PacketChallengePeakSettleScNotify : BasePacket
     {
         var proto = new ChallengePeakSettleScNotify
         {
-            CyclesUsed = inst.Data.Peak.RoundCnt,
+            CyclesUsed = inst.Data.Peak!.RoundCnt,
             IsWin = inst.IsWin,
-            PeakId = inst.Data.Peak.CurrentPeakLevelId,
+            PeakId = inst.Data.Peak!.CurrentPeakLevelId,
             FinishedTargetList = { targetIdList },
-            HardModeHasPassed = inst is { IsWin: true, Config.BossExcel: not null } && inst.Data.Peak.IsHard
+            HardModeHasPassed = inst is { IsWin: true, Config.BossExcel: not null } && inst.Data.Peak!.IsHard
         };
 
         SetData(proto);
