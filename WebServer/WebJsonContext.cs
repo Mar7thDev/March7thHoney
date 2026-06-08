@@ -21,6 +21,9 @@ namespace March7thHoney.WebServer;
 [JsonSerializable(typeof(PlayerInformationResponse))]
 [JsonSerializable(typeof(LoginResJson))]
 [JsonSerializable(typeof(PassportLoginResJson))]
+// Two distinct nested VerifyData types — give each a unique metadata property name.
+[JsonSerializable(typeof(LoginResJson.VerifyData), TypeInfoPropertyName = "LoginVerifyData")]
+[JsonSerializable(typeof(PassportLoginResJson.VerifyData), TypeInfoPropertyName = "PassportVerifyData")]
 [JsonSerializable(typeof(ComboTokenResJson))]
 [JsonSerializable(typeof(FingerprintResJson))]
 // Request bodies (binding) + deserialized payloads
