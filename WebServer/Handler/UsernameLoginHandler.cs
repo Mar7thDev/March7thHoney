@@ -1,18 +1,18 @@
 using March7thHoney.WebServer.Objects;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace March7thHoney.WebServer.Handler;
 
 public class UsernameLoginHandler
 {
-    public JsonResult HandleShieldLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
+    public IResult HandleShieldLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
     {
         LoginSessionFactory.LoginFailure failure;
         if (!LoginSessionFactory.TryCreateSession(account, password, identityKeys, out var session, out failure))
-            return new JsonResult(LoginResJson.Error(failure.Retcode, failure.Message));
+            return Results.Json(LoginResJson.Error(failure.Retcode, failure.Message));
 
-        return new JsonResult(LoginResJson.Success(
+        return Results.Json(LoginResJson.Success(
             session.Uid,
             session.Username,
             session.Email,
@@ -20,32 +20,24 @@ public class UsernameLoginHandler
             session.DispatchToken));
     }
 
-    public JsonResult HandlePassportLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
+    public IResult HandlePassportLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
     {
         LoginSessionFactory.LoginFailure failure;
         if (!LoginSessionFactory.TryCreateSession(account, password, identityKeys, out var session, out failure))
-            return new JsonResult(new { retcode = failure.Retcode, message = failure.Message, data = (object?)null });
+            return Results.Json(new { retcode = failure.Retcode, message = failure.Message, data = (object?)null });
 
-        return new JsonResult(BuildPassportLoginBody(session));
+        return Results.Json(BuildPassportLoginBody(session));
     }
 
-    public ContentResult HandleLegacyPassportLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
+    public IResult HandleLegacyPassportLogin(string account, string password, IReadOnlyCollection<string> identityKeys)
     {
         LoginSessionFactory.LoginFailure failure;
         if (!LoginSessionFactory.TryCreateSession(account, password, identityKeys, out var session, out failure))
-        {
-            return new ContentResult
-            {
-                ContentType = "application/json",
-                Content = JsonConvert.SerializeObject(PassportLoginResJson.Error(failure.Retcode, failure.Message))
-            };
-        }
+            return Results.Text(
+                JsonConvert.SerializeObject(PassportLoginResJson.Error(failure.Retcode, failure.Message)),
+                "application/json");
 
-        return new ContentResult
-        {
-            ContentType = "application/json",
-            Content = JsonConvert.SerializeObject(BuildPassportLoginBody(session))
-        };
+        return Results.Text(JsonConvert.SerializeObject(BuildPassportLoginBody(session)), "application/json");
     }
 
     private static object BuildPassportLoginBody(LoginSessionFactory.LoginSession session)

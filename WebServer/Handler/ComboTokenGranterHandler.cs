@@ -1,7 +1,7 @@
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Objects;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
 namespace March7thHoney.WebServer.Handler;
@@ -10,7 +10,7 @@ public class ComboTokenGranterHandler
 {
     private static readonly Logger Logger = new("ComboLoginV2");
 
-    public JsonResult Handle(int app_id, int channel_id, string data, string device, string sign,
+    public IResult Handle(int app_id, int channel_id, string data, string device, string sign,
         IReadOnlyCollection<string> identityKeys)
     {
         var tokenData = JsonConvert.DeserializeObject<LoginTokenData>(data);
@@ -20,7 +20,7 @@ public class ComboTokenGranterHandler
             Logger.Warn($"Failed to deserialize combo login payload. raw_len={data?.Length ?? 0}");
             res.retcode = -202;
             res.message = "Invalid login data";
-            return new JsonResult(res);
+            return Results.Json(res);
         }
 
         if (!int.TryParse(tokenData.uid, out var uid))
@@ -28,7 +28,7 @@ public class ComboTokenGranterHandler
             Logger.Warn($"Invalid combo login uid. uid={tokenData.uid ?? "<null>"} token_len={tokenData.token?.Length ?? 0}");
             res.retcode = -202;
             res.message = "Invalid login data";
-            return new JsonResult(res);
+            return Results.Json(res);
         }
 
         var autoCreateUser = ConfigManager.Config.ServerOption.AutoCreateUser;
@@ -69,7 +69,7 @@ public class ComboTokenGranterHandler
                 $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=False");
             res.retcode = -201;
             res.message = "Game account cache information error";
-            return new JsonResult(res);
+            return Results.Json(res);
         }
 
         var isDispatchToken = account.ValidateDispatchToken(tokenData.token);
@@ -80,7 +80,7 @@ public class ComboTokenGranterHandler
                 $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=True");
             res.retcode = -201;
             res.message = "Game account cache information error";
-            return new JsonResult(res);
+            return Results.Json(res);
         }
 
         if (account.GetBanStatus().IsActive)
@@ -91,7 +91,7 @@ public class ComboTokenGranterHandler
             Logger.Warn($"Combo login blocked. uid={uid} retcode={failure.Retcode}");
             res.retcode = failure.Retcode;
             res.message = failure.Message;
-            return new JsonResult(res);
+            return Results.Json(res);
         }
 
         account.AddKnownIdentityKeys(identityKeys);
@@ -99,7 +99,7 @@ public class ComboTokenGranterHandler
             $"Combo login validated. uid={uid} token_type={(isDispatchToken ? "dispatch" : isComboToken ? "combo" : "trusted")} token_len={tokenData.token?.Length ?? 0}");
         res.message = "OK";
         res.data = new ComboTokenResJson.LoginData(account.Uid.ToString(), account.GenerateComboToken());
-        return new JsonResult(res);
+        return Results.Json(res);
     }
 }
 

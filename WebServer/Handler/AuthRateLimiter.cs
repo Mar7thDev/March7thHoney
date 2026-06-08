@@ -4,8 +4,6 @@ using March7thHoney.Database.Account;
 using March7thHoney.Util;
 using March7thHoney.Util.Security;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -24,7 +22,7 @@ public static class AuthRateLimiter
     private static long _lastSweep;
 
     public static bool TryReject(HttpContext context, AuthRateLimitAction action,
-        IEnumerable<string>? identityKeys, string? accountIdentifier, out JsonResult result)
+        IEnumerable<string>? identityKeys, string? accountIdentifier, out IResult result)
     {
         result = default!;
         var rule = GetRule(action);
@@ -90,20 +88,10 @@ public static class AuthRateLimiter
         return true;
     }
 
-    public static ContentResult ToContentResult(JsonResult result)
-    {
-        return new ContentResult
-        {
-            StatusCode = result.StatusCode,
-            ContentType = "application/json",
-            Content = JsonConvert.SerializeObject(result.Value)
-        };
-    }
-
-    private static JsonResult BlockedResult(long remainingSeconds)
+    private static IResult BlockedResult(long remainingSeconds)
     {
         var message = $"Too many requests. Try again in {AccountBanHelper.FormatDuration(remainingSeconds)}.";
-        return new JsonResult(new { retcode = -203, message, data = (object?)null });
+        return Results.Json(new { retcode = -203, message, data = (object?)null });
     }
 
     private static RateLimitRule GetRule(AuthRateLimitAction action)

@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using static March7thHoney.WebServer.Handler.FingerprintResJson;
 
 namespace March7thHoney.WebServer.Handler;
 
 public class FingerprintHandler
 {
-    public JsonResult GetFp(string device_fp)
+    public IResult GetFp(string device_fp)
     {
         FingerprintResJson res = new();
         if (device_fp == null)
@@ -19,7 +19,7 @@ public class FingerprintHandler
             res.data = new FingerprintDataJson(device_fp);
         }
 
-        return new JsonResult(res);
+        return Results.Json(res);
     }
 }
 
