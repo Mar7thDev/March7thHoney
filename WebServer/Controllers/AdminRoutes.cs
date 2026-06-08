@@ -21,8 +21,9 @@ public static class AdminRoutes
 {
     public static void MapAdminRoutes(this IEndpointRouteBuilder app)
     {
+        // One route: the matcher treats "/admin" and "/admin/" as equivalent, so registering both
+        // is an ambiguous match (500). This single template serves both.
         app.MapGet("/admin", () => Results.Redirect("/admin/index.html"));
-        app.MapGet("/admin/", () => Results.Redirect("/admin/index.html"));
         app.MapGet("/admin/index.html",
             () => Results.Text(AdminPageRenderer.Render(ConfigManager.Config.GameServer.GameServerName),
                 "text/html; charset=utf-8"));
