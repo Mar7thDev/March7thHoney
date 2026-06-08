@@ -1,7 +1,6 @@
+using System.Text.Json.Serialization;
 using MemoryPack;
 using March7thHoney.Enums.Server;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Custom;
 
@@ -14,10 +13,13 @@ public partial class CustomPacketQueueConfig
 [MemoryPackable]
 public partial class PacketActionData
 {
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(JsonStringEnumConverter<PacketActionTypeEnum>))]
     public PacketActionTypeEnum Action { get; set; }
     public PacketActionParamData Param { get; set; } = new();
 }
+
+[JsonSerializable(typeof(CustomPacketQueueConfig))]
+public partial class CustomPacketJsonContext : JsonSerializerContext;
 
 [MemoryPackable]
 public partial class PacketActionParamData
