@@ -51,8 +51,6 @@ public class WebProgram
                 policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         });
 
-        builder.Services.AddControllers();
-
         var app = builder.Build();
 
         app.UseForwardedHeaders();
@@ -98,9 +96,7 @@ public class WebProgram
         app.MapHandbookRoutes();
         app.MapJsonRoutes();
         app.MapDispatchRoutes();
-
-        // Remaining MVC controllers (still being migrated).
-        app.MapControllers();
+        app.MapAdminRoutes();
 
         return app;
     }
