@@ -53,17 +53,13 @@ public static class AdminRoutes
         if (!AdminSessionManager.TryCreateSession(request.admin_key ?? string.Empty, out var session, out var message))
             return Error(message, statusCode: StatusCodes.Status401Unauthorized);
 
-        return Success(new
-        {
-            token = session.Token,
-            expires_at = session.ExpiresAt.ToUnixTimeSeconds()
-        });
+        return Success(new AdminLoginData(session.Token, session.ExpiresAt.ToUnixTimeSeconds()));
     }
 
     private static IResult Logout(HttpContext ctx)
     {
         AdminSessionManager.Revoke(GetAdminToken(ctx));
-        return Success(new { });
+        return Success(new EmptyData());
     }
 
     private static IResult GetAccounts(HttpContext ctx)
@@ -76,14 +72,12 @@ public static class AdminRoutes
             .OrderBy(account => account.uid)
             .ToList();
 
-        return Success(new
-        {
+        return Success(new AccountsData(
             accounts,
-            count = accounts.Count,
-            roles = GetRoleNames(),
-            default_role = CommandRoles.NormalizeRole(null, ConfigManager.Config.ServerOption.DefaultPermissionRole,
-                GetConfiguredRoles())
-        });
+            accounts.Count,
+            GetRoleNames(),
+            CommandRoles.NormalizeRole(null, ConfigManager.Config.ServerOption.DefaultPermissionRole,
+                GetConfiguredRoles())));
     }
 
     private static IResult GetOverview(HttpContext ctx)
@@ -98,51 +92,45 @@ public static class AdminRoutes
         var onlinePlayers = GetOnlinePlayers();
         var process = Process.GetCurrentProcess();
 
-        return Success(new
-        {
-            stats = new
-            {
-                total_accounts = accounts.Count,
-                online_players = onlinePlayers.Count,
-                banned_accounts = accounts.Count(account => account.banned),
-                unverified_email = accounts.Count(account => !account.email_verified),
-                roles = GetConfiguredRoles().Count
-            },
-            server = new
-            {
-                name = ConfigManager.Config.GameServer.GameServerName,
-                game_address = ConfigManager.Config.GameServer.GetDisplayAddress(),
-                database = ConfigManager.Config.Database.DatabaseType,
-                uptime_seconds = Math.Max(0,
-                    (long)(DateTime.Now - process.StartTime).TotalSeconds),
-                process_memory_mb = Math.Round(process.WorkingSet64 / 1024d / 1024d, 1),
-                server_time = Extensions.GetUnixSec(),
-                registration_enabled = ConfigManager.Config.ServerOption.Auth.EnableRegistration,
-                limit_registration_per_identity = ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity
-            },
-            online_players = onlinePlayers,
-            role_breakdown = accounts
-                .GroupBy(account => account.role)
-                .Select(group => new { role = group.Key, count = group.Count() })
-                .OrderBy(item => item.role)
-                .ToList(),
-            attention = accounts
-                .Where(account => account.banned || !account.email_verified || !account.has_password)
-                .Select(account => new
-                {
-                    account.uid,
-                    account.username,
-                    account.email,
-                    account.role,
-                    reason = account.banned
-                        ? "Banned"
-                        : !account.email_verified
-                            ? "Email unverified"
-                            : "Password missing"
-                })
-                .Take(8)
-                .ToList()
-        });
+        var stats = new OverviewStats(
+            accounts.Count,
+            onlinePlayers.Count,
+            accounts.Count(account => account.banned),
+            accounts.Count(account => !account.email_verified),
+            GetConfiguredRoles().Count);
+
+        var server = new OverviewServer(
+            ConfigManager.Config.GameServer.GameServerName,
+            ConfigManager.Config.GameServer.GetDisplayAddress(),
+            ConfigManager.Config.Database.DatabaseType,
+            Math.Max(0, (long)(DateTime.Now - process.StartTime).TotalSeconds),
+            Math.Round(process.WorkingSet64 / 1024d / 1024d, 1),
+            Extensions.GetUnixSec(),
+            ConfigManager.Config.ServerOption.Auth.EnableRegistration,
+            ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity);
+
+        var roleBreakdown = accounts
+            .GroupBy(account => account.role)
+            .Select(group => new RoleCount(group.Key, group.Count()))
+            .OrderBy(item => item.role)
+            .ToList();
+
+        var attention = accounts
+            .Where(account => account.banned || !account.email_verified || !account.has_password)
+            .Select(account => new AttentionItem(
+                account.uid,
+                account.username,
+                account.email,
+                account.role,
+                account.banned
+                    ? "Banned"
+                    : !account.email_verified
+                        ? "Email unverified"
+                        : "Password missing"))
+            .Take(8)
+            .ToList();
+
+        return Success(new OverviewData(stats, server, onlinePlayers, roleBreakdown, attention));
     }
 
     private static IResult SetRegistration(HttpContext ctx, AdminRegistrationRequest? request)
@@ -154,10 +142,7 @@ public static class AdminRoutes
         ConfigManager.Config.ServerOption.Auth.EnableRegistration = request.enabled;
         ConfigManager.SaveConfig();
 
-        return Success(new
-        {
-            registration_enabled = ConfigManager.Config.ServerOption.Auth.EnableRegistration
-        });
+        return Success(new RegistrationData(ConfigManager.Config.ServerOption.Auth.EnableRegistration));
     }
 
     private static IResult SetRegistrationIdentityLimit(HttpContext ctx, AdminRegistrationRequest? request)
@@ -169,10 +154,8 @@ public static class AdminRoutes
         ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity = request.enabled;
         ConfigManager.SaveConfig();
 
-        return Success(new
-        {
-            limit_registration_per_identity = ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity
-        });
+        return Success(new IdentityLimitData(
+            ConfigManager.Config.ServerOption.Auth.AntiAbuse.LimitRegistrationPerIdentity));
     }
 
     private static IResult GetAccess(HttpContext ctx)
@@ -182,29 +165,21 @@ public static class AdminRoutes
 
         var serverOption = ConfigManager.Config.ServerOption;
         var roles = GetConfiguredRoles()
-            .Select(role => new
-            {
-                name = role.Key,
-                configured_permissions = role.Value.OrderBy(permission => permission).ToList(),
-                effective_permissions = CommandRoles
+            .Select(role => new AccessRole(
+                role.Key,
+                role.Value.OrderBy(permission => permission).ToList(),
+                CommandRoles
                     .GetPermissions(role.Key, serverOption.DefaultPermissionRole, GetConfiguredRoles())
                     .OrderBy(permission => permission)
-                    .ToList()
-            })
+                    .ToList()))
             .OrderBy(role => role.name)
             .ToList();
 
-        return Success(new
-        {
+        return Success(new AccessData(
             roles,
-            default_role = NormalizeRole(null),
-            default_permissions = serverOption.DefaultPermissions
-                .OrderBy(permission => permission)
-                .ToList(),
-            known_permissions = CommandPermissions.KnownPermissions()
-                .OrderBy(permission => permission)
-                .ToList()
-        });
+            NormalizeRole(null),
+            serverOption.DefaultPermissions.OrderBy(permission => permission).ToList(),
+            CommandPermissions.KnownPermissions().OrderBy(permission => permission).ToList()));
     }
 
     private static IResult ExecuteCommand(HttpContext ctx, AdminExecuteCommandRequest? request)
@@ -236,11 +211,7 @@ public static class AdminRoutes
             if (!string.IsNullOrWhiteSpace(response.Data?.Message))
                 output = Encoding.UTF8.GetString(Convert.FromBase64String(response.Data.Message));
 
-            return Success(new
-            {
-                output = output.TrimEnd(),
-                target_uid = request.target_uid.GetValueOrDefault()
-            });
+            return Success(new ExecCommandData(output.TrimEnd(), request.target_uid.GetValueOrDefault()));
         }
         catch (Exception ex)
         {
@@ -282,10 +253,7 @@ public static class AdminRoutes
             account.SyncPermissionsWithRole();
             account.SetPermissionOverrides(request.permissions);
 
-            return Success(new
-            {
-                account = ToAccountSummary(account)
-            });
+            return Success(new AccountWrap(ToAccountSummary(account)));
         }
         catch (Exception ex)
         {
@@ -343,11 +311,7 @@ public static class AdminRoutes
         if (!account.IsEmailVerified && (emailChanged || changedFromVerifiedToUnverified))
             emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, ctx.Request);
 
-        return Success(new
-        {
-            account = ToAccountSummary(account),
-            email_sent = emailSent
-        });
+        return Success(new AccountEmailWrap(ToAccountSummary(account), emailSent));
     }
 
     private static IResult SetPassword(HttpContext ctx, int uid, AdminSetPasswordRequest? request)
@@ -363,10 +327,7 @@ public static class AdminRoutes
         try
         {
             AccountHelper.SetPassword(account, request.password ?? string.Empty);
-            return Success(new
-            {
-                account = ToAccountSummary(account)
-            });
+            return Success(new AccountWrap(ToAccountSummary(account)));
         }
         catch (Exception ex)
         {
@@ -388,11 +349,7 @@ public static class AdminRoutes
 
         var emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, ctx.Request,
             markUnverified: true);
-        return Success(new
-        {
-            account = ToAccountSummary(account),
-            email_sent = emailSent
-        });
+        return Success(new AccountEmailWrap(ToAccountSummary(account), emailSent));
     }
 
     private static IResult BanAccount(HttpContext ctx, int uid, AdminBanAccountRequest? request)
@@ -412,10 +369,7 @@ public static class AdminRoutes
         account.Ban(request.reason, expireAt);
         KickBannedConnection(account.Uid, account.GetBanStatus());
 
-        return Success(new
-        {
-            account = ToAccountSummary(account)
-        });
+        return Success(new AccountWrap(ToAccountSummary(account)));
     }
 
     private static IResult UnbanAccount(HttpContext ctx, int uid)
@@ -428,10 +382,7 @@ public static class AdminRoutes
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
 
         account.ClearBan();
-        return Success(new
-        {
-            account = ToAccountSummary(account)
-        });
+        return Success(new AccountWrap(ToAccountSummary(account)));
     }
 
     private static IResult RevokeAccountTokens(HttpContext ctx, int uid)
@@ -445,10 +396,7 @@ public static class AdminRoutes
 
         account.ClearLoginTokens();
 
-        return Success(new
-        {
-            account = ToAccountSummary(account)
-        });
+        return Success(new AccountWrap(ToAccountSummary(account)));
     }
 
     private static IResult KickAccountSession(HttpContext ctx, int uid)
@@ -463,11 +411,7 @@ public static class AdminRoutes
         var activeConnection = Listener.GetActiveConnection(uid);
         ConnectionDisconnectHelper.KickByGm(activeConnection);
 
-        return Success(new
-        {
-            account = ToAccountSummary(account),
-            was_online = activeConnection != null
-        });
+        return Success(new AccountOnlineWrap(ToAccountSummary(account), activeConnection != null));
     }
 
     private static async Task<IResult> ResetAccountGameplay(HttpContext ctx, int uid)
@@ -484,11 +428,7 @@ public static class AdminRoutes
 
         var wasOnline = await PlayerResetHelper.ResetGameplayAsync(uid);
 
-        return Success(new
-        {
-            account = ToAccountSummary(account),
-            was_online = wasOnline
-        });
+        return Success(new AccountOnlineWrap(ToAccountSummary(account), wasOnline));
     }
 
     private static IResult DeleteAccount(HttpContext ctx, int uid)
@@ -501,14 +441,14 @@ public static class AdminRoutes
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
 
         DatabaseHelper.Instance?.DeleteUidData(uid);
-        return Success(new { uid });
+        return Success(new DeletedUid(uid));
     }
 
     private static bool IsAuthorized(HttpContext ctx, out IResult error)
     {
         if (AdminSessionManager.IsAuthorized(GetAdminToken(ctx)))
         {
-            error = Success(new { });
+            error = Success(new EmptyData());
             return true;
         }
 
@@ -565,20 +505,17 @@ public static class AdminRoutes
             banStatus.RemainingSeconds);
     }
 
-    private static List<object> GetOnlinePlayers()
+    private static List<OnlinePlayer> GetOnlinePlayers()
     {
         return March7thHoneyListener.Connections.Values
             .OfType<Connection>()
             .Where(connection => connection.Player != null && connection.State == SessionStateEnum.ACTIVE)
-            .Select(connection => new
-            {
-                uid = connection.Player!.Uid,
-                nickname = connection.Player.Data.Name ?? "",
-                level = connection.Player.Data.Level,
-                endpoint = connection.RemoteEndPoint.ToString(),
-                state = connection.State.ToString()
-            })
-            .Cast<object>()
+            .Select(connection => new OnlinePlayer(
+                connection.Player!.Uid,
+                connection.Player.Data.Name ?? "",
+                connection.Player.Data.Level,
+                connection.RemoteEndPoint.ToString(),
+                connection.State.ToString()))
             .ToList();
     }
 
@@ -609,14 +546,14 @@ public static class AdminRoutes
         return ConfigManager.Config.ServerOption.PermissionRoles ?? CommandRoles.DefaultRoles();
     }
 
-    private static IResult Success(object data)
+    private static IResult Success<T>(T data)
     {
-        return Results.Json(new { retcode = 0, message = "OK", data });
+        return Results.Json(new AdminResult<T>(0, "OK", data));
     }
 
     private static IResult Error(string message, int retcode = -201, int statusCode = StatusCodes.Status400BadRequest)
     {
-        return Results.Json(new { retcode, message, data = (object?)null }, statusCode: statusCode);
+        return Results.Json(new StatusResult(retcode, message), statusCode: statusCode);
     }
 
     private static bool TryResolveBanExpireAt(AdminBanAccountRequest request, out long expireAt, out string error)
@@ -717,27 +654,4 @@ public static class AdminRoutes
     {
         public bool enabled { get; set; }
     }
-
-    private readonly record struct AccountSummary(
-        int uid,
-        string username,
-        string email,
-        bool email_verified,
-        long email_verified_at,
-        string nickname,
-        int? level,
-        bool has_password,
-        string role,
-        string permissions,
-        string base_permissions,
-        string effective_permissions,
-        long dispatch_token_expires_at,
-        long combo_token_expires_at,
-        bool online,
-        bool banned,
-        string ban_reason,
-        long ban_expires_at,
-        long ban_created_at,
-        bool ban_permanent,
-        long ban_remaining_seconds);
 }
