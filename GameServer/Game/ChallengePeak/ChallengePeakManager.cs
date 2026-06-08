@@ -248,24 +248,24 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         if (inst.Config.BossExcel != null)
         {
             // is hard
-            var isHard = inst.Data.Peak.IsHard;
-            var levelId = ((int)inst.Data.Peak.CurrentPeakLevelId << 2) | (isHard ? 1 : 0);
+            var isHard = inst.Data.Peak!.IsHard;
+            var levelId = ((int)inst.Data.Peak!.CurrentPeakLevelId << 2) | (isHard ? 1 : 0);
 
             // get old data
             if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(levelId, out var oldData) &&
-                oldData.FinishedTargetList.Count > targetIds.Count && oldData.RoundCnt < inst.Data.Peak.RoundCnt)
+                oldData.FinishedTargetList.Count > targetIds.Count && oldData.RoundCnt < inst.Data.Peak!.RoundCnt)
                 // better data already exists, do not overwrite
                 return;
 
             // Save boss data
             var data = new ChallengePeakBossLevelData
             {
-                LevelId = (int)inst.Data.Peak.CurrentPeakLevelId,
+                LevelId = (int)inst.Data.Peak!.CurrentPeakLevelId,
                 IsHard = isHard,
                 BaseAvatarList = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.Select(x => (uint)x.BaseAvatarId)
                     .ToList() ?? [],
-                RoundCnt = inst.Data.Peak.RoundCnt,
-                BuffId = inst.Data.Peak.Buffs.FirstOrDefault(),
+                RoundCnt = inst.Data.Peak!.RoundCnt,
+                BuffId = inst.Data.Peak!.Buffs.FirstOrDefault(),
                 FinishedTargetList = targetIds,
                 PeakStar = (uint)targetIds.Count
             };
@@ -287,11 +287,11 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         else
         {
             // Save level data
-            var levelId = (int)inst.Data.Peak.CurrentPeakLevelId;
+            var levelId = (int)inst.Data.Peak!.CurrentPeakLevelId;
 
             // get old data
             if (Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var oldData) &&
-                oldData.FinishedTargetList.Count > targetIds.Count && oldData.RoundCnt < inst.Data.Peak.RoundCnt)
+                oldData.FinishedTargetList.Count > targetIds.Count && oldData.RoundCnt < inst.Data.Peak!.RoundCnt)
                 // better data already exists, do not overwrite
                 return;
 
@@ -300,7 +300,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
                 LevelId = levelId,
                 BaseAvatarList = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.Select(x => (uint)x.BaseAvatarId)
                     .ToList() ?? [],
-                RoundCnt = inst.Data.Peak.RoundCnt,
+                RoundCnt = inst.Data.Peak!.RoundCnt,
                 FinishedTargetList = targetIds,
                 PeakStar = (uint)targetIds.Count
             };
@@ -310,7 +310,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
         await Player.SendPacket(
             new PacketChallengePeakGroupDataUpdateScNotify(
-                GetChallengePeakInfo((int)inst.Data.Peak.CurrentPeakGroupId)));
+                GetChallengePeakInfo((int)inst.Data.Peak!.CurrentPeakGroupId)));
     }
 
     public async ValueTask StartChallenge(int levelId, uint buffId, List<int> avatarIdList)
@@ -390,16 +390,16 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         };
 
         if (excel.BossExcel != null)
-            data.Peak.IsHard = BossIsHard;
+            data.Peak!.IsHard = BossIsHard;
 
-        if (buffId > 0) data.Peak.Buffs.Add(buffId);
+        if (buffId > 0) data.Peak!.Buffs.Add(buffId);
 
         var instance = new ChallengePeakInstance(Player, data);
 
         Player.ChallengeManager!.ChallengeInstance = instance;
 
         // Set first lineup before we enter scenes
-        await Player.LineupManager!.SetExtraLineup((ExtraLineupType)instance.Data.Peak.CurrentExtraLineup);
+        await Player.LineupManager!.SetExtraLineup((ExtraLineupType)instance.Data.Peak!.CurrentExtraLineup);
 
         // Enter scene
         try
@@ -431,9 +431,9 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         }
 
         // Save start positions
-        data.Peak.StartPos = Player.Data.Pos!;
-        data.Peak.StartRot = Player.Data.Rot!;
-        data.Peak.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
+        data.Peak!.StartPos = Player.Data.Pos!;
+        data.Peak!.StartRot = Player.Data.Rot!;
+        data.Peak!.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
 
         // Send packet
         await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetSucc));

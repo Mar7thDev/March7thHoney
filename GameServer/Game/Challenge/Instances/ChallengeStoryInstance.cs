@@ -19,8 +19,10 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
 {
     #region Properties
 
+    private StoryChallengeState Story => Data.Story!;
+
     public override ChallengeConfigExcel Config { get; } =
-        GameData.ChallengeConfigData[(int)data.Story.ChallengeMazeId];
+        GameData.ChallengeConfigData[(int)data.Story!.ChallengeMazeId];
 
     #endregion
 
@@ -30,19 +32,19 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
     {
         return new CurChallenge
         {
-            ChallengeId = Data.Story.ChallengeMazeId,
-            ExtraLineupType = (ExtraLineupType)Data.Story.CurrentExtraLineup,
-            Status = (ChallengeStatus)Data.Story.CurStatus,
+            ChallengeId = Story.ChallengeMazeId,
+            ExtraLineupType = (ExtraLineupType)Story.CurrentExtraLineup,
+            Status = (ChallengeStatus)Story.CurStatus,
             StageInfo = new ChallengeCurBuffInfo
             {
                 CurStoryBuffs = new ChallengeStoryBuffList
                 {
-                    BuffList = { Data.Story.Buffs }
+                    BuffList = { Story.Buffs }
                 }
             },
             RoundCount = (uint)Config.ChallengeCountDown,
-            ScoreId = Data.Story.ScoreStage1,
-            ScoreTwo = Data.Story.ScoreStage2
+            ScoreId = Story.ScoreStage1,
+            ScoreTwo = Story.ScoreStage2
         };
     }
 
@@ -52,52 +54,52 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
 
     public override uint GetStars()
     {
-        return Data.Story.Stars;
+        return Story.Stars;
     }
 
     public override uint GetScore1()
     {
-        return Data.Story.ScoreStage1;
+        return Story.ScoreStage1;
     }
 
     public override uint GetScore2()
     {
-        return Data.Story.ScoreStage2;
+        return Story.ScoreStage2;
     }
 
     public void SetCurrentExtraLineup(ExtraLineupType type)
     {
-        Data.Story.CurrentExtraLineup = (ChallengeLineupType)type;
+        Story.CurrentExtraLineup = (ChallengeLineupType)type;
     }
 
     public int GetTotalScore()
     {
-        return (int)(Data.Story.ScoreStage1 + Data.Story.ScoreStage2);
+        return (int)(Story.ScoreStage1 + Story.ScoreStage2);
     }
 
     public override int GetCurrentExtraLineupType()
     {
-        return (int)Data.Story.CurrentExtraLineup;
+        return (int)Story.CurrentExtraLineup;
     }
 
     public override void SetStartPos(Position pos)
     {
-        Data.Story.StartPos = pos;
+        Story.StartPos = pos;
     }
 
     public override void SetStartRot(Position rot)
     {
-        Data.Story.StartRot = rot;
+        Story.StartRot = rot;
     }
 
     public override void SetSavedMp(int mp)
     {
-        Data.Story.SavedMp = (uint)mp;
+        Story.SavedMp = (uint)mp;
     }
 
     public override Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> GetStageMonsters()
     {
-        return Data.Story.CurrentStage == 1
+        return Story.CurrentStage == 1
             ? Config.ChallengeMonsters1
             : Config.ChallengeMonsters2;
     }
@@ -125,8 +127,8 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
 
         foreach (var id in Config.StoryExcel.BattleTargetID!) battle.AddBattleTarget(5, id, GetTotalScore());
 
-        if (Data.Story.Buffs.Count < Data.Story.CurrentStage) return;
-        var buffId = Data.Story.Buffs[(int)(Data.Story.CurrentStage - 1)];
+        if (Story.Buffs.Count < Story.CurrentStage) return;
+        var buffId = Story.Buffs[(int)(Story.CurrentStage - 1)];
         battle.Buffs.Add(new MazeBuff((int)buffId, 1, -1)
         {
             WaveFlag = -1
@@ -139,10 +141,10 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
         var stageScore = (int)req.Stt.ChallengeScore - GetTotalScore();
 
         // Set score
-        if (Data.Story.CurrentStage == 1)
-            Data.Story.ScoreStage1 = (uint)stageScore;
+        if (Story.CurrentStage == 1)
+            Story.ScoreStage1 = (uint)stageScore;
         else
-            Data.Story.ScoreStage2 = (uint)stageScore;
+            Story.ScoreStage2 = (uint)stageScore;
 
         switch (req.EndStatus)
         {
@@ -153,13 +155,13 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
                 if (monsters == 0) await AdvanceStage();
 
                 // Set saved technique points (This will be restored if the player resets the challenge)
-                Data.Story.SavedMp = (uint)Player.LineupManager!.GetCurLineup()!.Mp;
+                Story.SavedMp = (uint)Player.LineupManager!.GetCurLineup()!.Mp;
                 break;
             case BattleEndStatus.BattleEndQuit:
                 // Reset technique points and move back to start position
                 var lineup = Player.LineupManager!.GetCurLineup()!;
-                lineup.Mp = (int)Data.Story.SavedMp;
-                await Player.MoveTo(Data.Story.StartPos, Data.Story.StartRot);
+                lineup.Mp = (int)Story.SavedMp;
+                await Player.MoveTo(Story.StartPos, Story.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             default:
@@ -171,7 +173,7 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
                 else
                 {
                     // Fail challenge
-                    Data.Story.CurStatus = (int)ChallengeStatus.ChallengeFailed;
+                    Story.CurStatus = (int)ChallengeStatus.ChallengeFailed;
 
                     // Send challenge result data
                     await Player.SendPacket(new PacketChallengeSettleNotify(this));
@@ -205,14 +207,14 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
 
     private async ValueTask AdvanceStage()
     {
-        if (Data.Story.CurrentStage >= Config.StageNum)
+        if (Story.CurrentStage >= Config.StageNum)
         {
             // Last stage
-            Data.Story.CurStatus = (int)ChallengeStatus.ChallengeFinish;
-            Data.Story.Stars = CalculateStars();
+            Story.CurStatus = (int)ChallengeStatus.ChallengeFinish;
+            Story.Stars = CalculateStars();
 
             // Save history
-            Player.ChallengeManager!.AddHistory((int)Data.Story.ChallengeMazeId, (int)GetStars(), GetTotalScore());
+            Player.ChallengeManager!.AddHistory((int)Story.ChallengeMazeId, (int)GetStars(), GetTotalScore());
 
             // Send challenge result data
             await Player.SendPacket(new PacketChallengeSettleNotify(this));
@@ -232,7 +234,7 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
         }
         else
         {
-            Data.Story.CurrentStage++;
+            Story.CurrentStage++;
 
             // 先切到下半 lineup，这样 EnterScene 新建场景时 LoadEntity 会用 LineupChallenge2 加载角色实体。
             SetCurrentExtraLineup(ExtraLineupType.LineupChallenge2);
@@ -243,11 +245,11 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
             var entranceId = Config.MapEntranceID2 != 0 ? Config.MapEntranceID2 : Config.MapEntranceID;
             await Player.EnterScene(entranceId, 0, true);
 
-            await Player.SendPacket(new PacketChallengeLineupNotify((ExtraLineupType)Data.Story.CurrentExtraLineup));
+            await Player.SendPacket(new PacketChallengeLineupNotify((ExtraLineupType)Story.CurrentExtraLineup));
 
-            Data.Story.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
-            Data.Story.StartPos = Player.Data.Pos!;
-            Data.Story.StartRot = Player.Data.Rot!;
+            Story.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
+            Story.StartPos = Player.Data.Pos!;
+            Story.StartRot = Player.Data.Rot!;
 
             Player.ChallengeManager!.SaveInstance(this);
         }
