@@ -4,7 +4,7 @@ using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Challenge;
@@ -35,13 +35,13 @@ public class ChallengeEntityLoader(SceneInstance scene, PlayerInstance player) :
             if (groupData != null) await LoadGroup(groupData);
         }
 
-        Scene.LeaveEntryId = instance.Data.ChallengeTypeCase switch
+        Scene.LeaveEntryId = instance.Data.Case switch
         {
             // Set leave entry
-            ChallengeDataPb.ChallengeTypeOneofCase.Boss => GameConstants.CHALLENGE_BOSS_ENTRANCE,
-            ChallengeDataPb.ChallengeTypeOneofCase.Memory => GameConstants.CHALLENGE_ENTRANCE,
-            ChallengeDataPb.ChallengeTypeOneofCase.Peak => GameConstants.CHALLENGE_PEAK_ENTRANCE,
-            ChallengeDataPb.ChallengeTypeOneofCase.Story => GameConstants.CHALLENGE_STORY_ENTRANCE,
+            ChallengeStateCase.Boss => GameConstants.CHALLENGE_BOSS_ENTRANCE,
+            ChallengeStateCase.Memory => GameConstants.CHALLENGE_ENTRANCE,
+            ChallengeStateCase.Peak => GameConstants.CHALLENGE_PEAK_ENTRANCE,
+            ChallengeStateCase.Story => GameConstants.CHALLENGE_STORY_ENTRANCE,
             _ => Scene.LeaveEntryId
         };
 

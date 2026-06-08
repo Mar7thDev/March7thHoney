@@ -9,12 +9,12 @@ using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Challenge.Instances;
 
-public class ChallengePeakInstance(PlayerInstance player, ChallengeDataPb data) : BaseChallengeInstance(player, data)
+public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData data) : BaseChallengeInstance(player, data)
 {
     #region Setter & Getter
 
@@ -149,7 +149,7 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeDataPb data) 
                 var lineup = Player.LineupManager!.GetCurLineup()!;
                 lineup.Mp = (int)Data.Peak.SavedMp;
                 if (Data.Peak.StartPos != null && Data.Peak.StartRot != null)
-                    await Player.MoveTo(Data.Peak.StartPos.ToPosition(), Data.Peak.StartRot.ToPosition());
+                    await Player.MoveTo(Data.Peak.StartPos, Data.Peak.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             default:

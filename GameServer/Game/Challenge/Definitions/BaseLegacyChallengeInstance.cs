@@ -1,12 +1,12 @@
 using March7thHoney.Data.Excel;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Challenge.Definitions;
 
-public abstract class BaseLegacyChallengeInstance(PlayerInstance player, ChallengeDataPb data)
+public abstract class BaseLegacyChallengeInstance(PlayerInstance player, ChallengeStateData data)
     : BaseChallengeInstance(player, data)
 {
     public bool IsWin { get; set; }

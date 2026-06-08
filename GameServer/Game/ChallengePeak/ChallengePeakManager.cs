@@ -7,7 +7,7 @@ using March7thHoney.GameServer.Game.Challenge.Instances;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.ChallengePeak;
@@ -376,15 +376,15 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         }
 
         // Set challenge data for player
-        var data = new ChallengeDataPb
+        var data = new ChallengeStateData
         {
-            Peak = new ChallengePeakDataPb
+            Peak = new PeakChallengeState
             {
                 CurrentPeakGroupId = (uint)(GameData.ChallengePeakGroupConfigData.Values
                     .FirstOrDefault(x => x.BossLevelID == levelId || x.PreLevelIDList.Contains(levelId))?.ID ??
                     GameData.GetCurrentChallengePeakGroupId()),
                 CurrentPeakLevelId = (uint)levelId,
-                CurrentExtraLineup = ChallengeLineupTypePb.Challenge1,
+                CurrentExtraLineup = ChallengeLineupType.Challenge1,
                 CurStatus = 1
             }
         };
@@ -431,8 +431,8 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         }
 
         // Save start positions
-        data.Peak.StartPos = Player.Data.Pos!.ToVector3Pb();
-        data.Peak.StartPos = Player.Data.Rot!.ToVector3Pb();
+        data.Peak.StartPos = Player.Data.Pos!;
+        data.Peak.StartRot = Player.Data.Rot!;
         data.Peak.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
 
         // Send packet
