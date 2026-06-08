@@ -170,11 +170,11 @@ public class DatabaseHelper
 
     public void SaveDatabase()
     {
+        using var conn = Open();
         try
         {
             var prev = DateTime.Now;
             var uids = ToSaveUidList.ToList();
-            using var conn = Open();
             Exec(conn, "BEGIN");
 
             foreach (var uid in uids)
@@ -194,6 +194,9 @@ public class DatabaseHelper
         catch (Exception e)
         {
             logger.Error("An error occurred while saving the database", e);
+            // Roll back so the pooled connection isn't returned mid-transaction.
+            try { Exec(conn, "ROLLBACK"); }
+            catch { /* no active transaction */ }
         }
 
         LastSaveTick = DateTime.UtcNow.Ticks;
