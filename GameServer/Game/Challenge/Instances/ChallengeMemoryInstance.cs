@@ -9,12 +9,12 @@ using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Challenge;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Challenge.Instances;
 
-public class ChallengeMemoryInstance(PlayerInstance player, ChallengeDataPb data)
+public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData data)
     : BaseLegacyChallengeInstance(player, data)
 {
     #region Properties
@@ -45,7 +45,7 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeDataPb data
 
     public void SetCurrentExtraLineup(ExtraLineupType type)
     {
-        Data.Memory.CurrentExtraLineup = (ChallengeLineupTypePb)type;
+        Data.Memory.CurrentExtraLineup = (ChallengeLineupType)type;
     }
 
     public override Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> GetStageMonsters()
@@ -65,12 +65,12 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeDataPb data
 
     public override void SetStartPos(Position pos)
     {
-        Data.Memory.StartPos = pos.ToVector3Pb();
+        Data.Memory.StartPos = pos;
     }
 
     public override void SetStartRot(Position rot)
     {
-        Data.Memory.StartRot = rot.ToVector3Pb();
+        Data.Memory.StartRot = rot;
     }
 
     public override void SetSavedMp(int mp)
@@ -120,7 +120,7 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeDataPb data
                 // Reset technique points and move back to start position
                 var lineup = Player.LineupManager!.GetCurLineup()!;
                 lineup.Mp = (int)Data.Memory.SavedMp;
-                await Player.MoveTo(Data.Memory.StartPos.ToPosition(), Data.Memory.StartRot.ToPosition());
+                await Player.MoveTo(Data.Memory.StartPos, Data.Memory.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             default:
@@ -200,8 +200,8 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeDataPb data
             await Player.SendPacket(new PacketChallengeLineupNotify((ExtraLineupType)Data.Memory.CurrentExtraLineup));
 
             Data.Memory.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
-            Data.Memory.StartPos = Player.Data.Pos!.ToVector3Pb();
-            Data.Memory.StartRot = Player.Data.Rot!.ToVector3Pb();
+            Data.Memory.StartPos = Player.Data.Pos!;
+            Data.Memory.StartRot = Player.Data.Rot!;
 
             Player.ChallengeManager!.SaveInstance(this);
         }

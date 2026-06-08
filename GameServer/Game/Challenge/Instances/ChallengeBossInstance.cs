@@ -10,12 +10,12 @@ using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Challenge;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Challenge.Instances;
 
-public class ChallengeBossInstance(PlayerInstance player, ChallengeDataPb data)
+public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData data)
     : BaseLegacyChallengeInstance(player, data)
 {
     #region Properties
@@ -43,7 +43,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeDataPb data)
 
     public void SetCurrentExtraLineup(ExtraLineupType type)
     {
-        Data.Boss.CurrentExtraLineup = (ChallengeLineupTypePb)type;
+        Data.Boss.CurrentExtraLineup = (ChallengeLineupType)type;
     }
 
     public int GetTotalScore()
@@ -58,12 +58,12 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeDataPb data)
 
     public override void SetStartPos(Position pos)
     {
-        Data.Boss.StartPos = pos.ToVector3Pb();
+        Data.Boss.StartPos = pos;
     }
 
     public override void SetStartRot(Position rot)
     {
-        Data.Boss.StartRot = rot.ToVector3Pb();
+        Data.Boss.StartRot = rot;
     }
 
     public override void SetSavedMp(int mp)
@@ -226,7 +226,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeDataPb data)
                 // Reset technique points and move back to start position
                 var lineup = Player.LineupManager!.GetCurLineup()!;
                 lineup.Mp = (int)Data.Boss.SavedMp;
-                await Player.MoveTo(Data.Boss.StartPos.ToPosition(), Data.Boss.StartRot.ToPosition());
+                await Player.MoveTo(Data.Boss.StartPos, Data.Boss.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             default:
@@ -326,13 +326,13 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeDataPb data)
         if (Config.MapEntranceID2 != 0)
         {
             await Player.EnterScene(Config.MapEntranceID2, 0, false);
-            Data.Boss.StartPos = Player.Data.Pos!.ToVector3Pb();
-            Data.Boss.StartRot = Player.Data.Rot!.ToVector3Pb();
+            Data.Boss.StartPos = Player.Data.Pos!;
+            Data.Boss.StartRot = Player.Data.Rot!;
             await Player.SceneInstance!.EntityLoader!.LoadGroup(Config.MazeGroupID2);
         }
         else
         {
-            await Player.MoveTo(Data.Boss.StartPos.ToPosition(), Data.Boss.StartRot.ToPosition());
+            await Player.MoveTo(Data.Boss.StartPos, Data.Boss.StartRot);
         }
 
         Player.ChallengeManager!.SaveInstance(this);

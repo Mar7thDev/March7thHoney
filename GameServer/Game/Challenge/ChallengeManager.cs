@@ -9,8 +9,8 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Challenge;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
 using Google.Protobuf;
+using MemoryPack;
 
 namespace March7thHoney.GameServer.Game.Challenge;
 
@@ -48,40 +48,40 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
             return;
         }
 
-        var data = new ChallengeDataPb();
+        var data = new ChallengeStateData();
         BaseLegacyChallengeInstance instance;
         if (excel.IsBoss())
         {
-            data.Boss = new ChallengeBossDataPb
+            data.Boss = new BossChallengeState
             {
                 ChallengeMazeId = (uint)excel.ID,
                 CurStatus = 1,
                 CurrentStage = 1,
-                CurrentExtraLineup = ChallengeLineupTypePb.Challenge1
+                CurrentExtraLineup = ChallengeLineupType.Challenge1
             };
 
             instance = new ChallengeBossInstance(Player, data);
         }
         else if (excel.IsStory())
         {
-            data.Story = new ChallengeStoryDataPb
+            data.Story = new StoryChallengeState
             {
                 ChallengeMazeId = (uint)excel.ID,
                 CurStatus = 1,
                 CurrentStage = 1,
-                CurrentExtraLineup = ChallengeLineupTypePb.Challenge1
+                CurrentExtraLineup = ChallengeLineupType.Challenge1
             };
 
             instance = new ChallengeStoryInstance(Player, data);
         }
         else
         {
-            data.Memory = new ChallengeMemoryDataPb
+            data.Memory = new MemoryChallengeState
             {
                 ChallengeMazeId = (uint)excel.ID,
                 CurStatus = 1,
                 CurrentStage = 1,
-                CurrentExtraLineup = ChallengeLineupTypePb.Challenge1,
+                CurrentExtraLineup = ChallengeLineupType.Challenge1,
                 RoundsLeft = (uint)excel.ChallengeCountDown
             };
 
@@ -228,7 +228,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
 
     public void SaveInstance(BaseChallengeInstance instance)
     {
-        ChallengeData.ChallengeInstance = Convert.ToBase64String(instance.Data.ToByteArray());
+        ChallengeData.ChallengeInstance = Convert.ToBase64String(MemoryPackSerializer.Serialize(instance.Data));
     }
 
     public void ClearInstance()
@@ -240,16 +240,26 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
     public void ResurrectInstance()
     {
         if (ChallengeData.ChallengeInstance == null) return;
-        var protoByte = Convert.FromBase64String(ChallengeData.ChallengeInstance);
-        var proto = ChallengeDataPb.Parser.ParseFrom(protoByte);
+
+        ChallengeStateData? proto = null;
+        try
+        {
+            var bytes = Convert.FromBase64String(ChallengeData.ChallengeInstance);
+            proto = MemoryPackSerializer.Deserialize<ChallengeStateData>(bytes);
+        }
+        catch
+        {
+            // Incompatible/legacy blob — drop it rather than crash the player's challenge manager.
+            proto = null;
+        }
 
         if (proto != null)
-            ChallengeInstance = proto.ChallengeTypeCase switch
+            ChallengeInstance = proto.Case switch
             {
-                ChallengeDataPb.ChallengeTypeOneofCase.Memory => new ChallengeMemoryInstance(Player, proto),
-                ChallengeDataPb.ChallengeTypeOneofCase.Peak => new ChallengePeakInstance(Player, proto),
-                ChallengeDataPb.ChallengeTypeOneofCase.Story => new ChallengeStoryInstance(Player, proto),
-                ChallengeDataPb.ChallengeTypeOneofCase.Boss => new ChallengeBossInstance(Player, proto),
+                ChallengeStateCase.Memory => new ChallengeMemoryInstance(Player, proto),
+                ChallengeStateCase.Peak => new ChallengePeakInstance(Player, proto),
+                ChallengeStateCase.Story => new ChallengeStoryInstance(Player, proto),
+                ChallengeStateCase.Boss => new ChallengeBossInstance(Player, proto),
                 _ => null
             };
         else
