@@ -6,13 +6,10 @@
     <Nullable>enable</Nullable>
     <RootNamespace>March7thHoney</RootNamespace>
     <AssemblyName>March7thHoney.Common</AssemblyName>
-    <InterceptorsNamespaces>$(InterceptorsNamespaces);Dapper.AOT</InterceptorsNamespaces>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EastAsianWidth" Version="1.2.0" />
-    <PackageReference Include="Dapper" Version="2.1.66" />
-    <PackageReference Include="Dapper.AOT" Version="1.0.52" />
     <PackageReference Include="Google.Protobuf" Version="3.33.1" />
     <PackageReference Include="Google.Protobuf.Tools" Version="3.33.1" />
     <PackageReference Include="MemoryPack" Version="1.21.4" />
