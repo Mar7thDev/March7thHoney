@@ -1,13 +1,13 @@
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Objects;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace March7thHoney.WebServer.Handler;
 
 public class RegistrationHandler
 {
-    public async Task<JsonResult> Handle(RegisterReqJson req, HttpRequest request)
+    public async Task<IResult> Handle(RegisterReqJson req, HttpRequest request)
     {
         if (!ConfigManager.Config.ServerOption.Auth.EnableRegistration)
             return Error("Registration is disabled");
@@ -80,7 +80,7 @@ public class RegistrationHandler
         if (!LoginSessionFactory.TryCreateSession(username, password, identityKeys, out var session, out failure))
             return Error(failure.Message, failure.Retcode);
 
-        return new JsonResult(new
+        return Results.Json(new
         {
             retcode = 0,
             message = "OK",
@@ -108,12 +108,12 @@ public class RegistrationHandler
         });
     }
 
-    private static JsonResult RegistrationSuccess(AccountData account, bool emailSent, bool requiresEmailVerification)
+    private static IResult RegistrationSuccess(AccountData account, bool emailSent, bool requiresEmailVerification)
     {
         var uid = account.Uid.ToString();
         var username = account.Username ?? uid;
         var email = account.Email ?? string.Empty;
-        return new JsonResult(new
+        return Results.Json(new
         {
             retcode = 0,
             message = requiresEmailVerification ? LoginSessionFactory.EmailVerificationRequiredMessage : "OK",
@@ -142,9 +142,9 @@ public class RegistrationHandler
         });
     }
 
-    private static JsonResult Error(string message, int retcode = -201)
+    private static IResult Error(string message, int retcode = -201)
     {
-        return new JsonResult(new { retcode, message, data = (object?)null });
+        return Results.Json(new { retcode, message, data = (object?)null });
     }
 
     private static string ResolveUsername(RegisterReqJson req)
