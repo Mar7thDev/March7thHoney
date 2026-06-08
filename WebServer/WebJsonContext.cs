@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using March7thHoney.WebServer.Controllers;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Objects;
 using March7thHoney.WebServer.Request;
@@ -66,4 +67,16 @@ namespace March7thHoney.WebServer;
 [JsonSerializable(typeof(AdminResult<AccountEmailWrap>))]
 [JsonSerializable(typeof(AdminResult<AccountOnlineWrap>))]
 [JsonSerializable(typeof(AdminResult<DeletedUid>))]
+// Admin request bodies (RDG resolves these at endpoint-build time, so they must be source-gen'd
+// under AOT or the whole endpoint graph fails to materialize -> 500 on every route).
+[JsonSerializable(typeof(AdminRoutes.AdminLoginRequest))]
+[JsonSerializable(typeof(AdminRoutes.AdminCreateAccountRequest))]
+[JsonSerializable(typeof(AdminRoutes.AdminUpdateAccountRequest))]
+[JsonSerializable(typeof(AdminRoutes.AdminSetPasswordRequest))]
+[JsonSerializable(typeof(AdminRoutes.AdminBanAccountRequest))]
+[JsonSerializable(typeof(AdminRoutes.AdminExecuteCommandRequest))]
+[JsonSerializable(typeof(AdminRoutes.AdminRegistrationRequest))]
+// Bare scalars embedded into the admin HTML page (AdminPageRenderer).
+[JsonSerializable(typeof(string))]
+[JsonSerializable(typeof(string[]))]
 public partial class WebJsonContext : JsonSerializerContext;
