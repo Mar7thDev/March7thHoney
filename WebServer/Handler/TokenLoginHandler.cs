@@ -1,7 +1,7 @@
 using March7thHoney.Database.Account;
+using System.Text.Json;
 using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -71,6 +71,7 @@ public class TokenLoginHandler
 
     private static IResult BuildJson(PassportLoginResJson payload)
     {
-        return Results.Text(JsonConvert.SerializeObject(payload), "application/json");
+        return Results.Text(JsonSerializer.Serialize(payload, WebJsonContext.Default.PassportLoginResJson),
+            "application/json");
     }
 }

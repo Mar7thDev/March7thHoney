@@ -1,8 +1,8 @@
+using System.Text.Json;
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Objects;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -13,7 +13,15 @@ public class ComboTokenGranterHandler
     public IResult Handle(int app_id, int channel_id, string data, string device, string sign,
         IReadOnlyCollection<string> identityKeys)
     {
-        var tokenData = JsonConvert.DeserializeObject<LoginTokenData>(data);
+        LoginTokenData? tokenData = null;
+        try
+        {
+            tokenData = JsonSerializer.Deserialize(data ?? "", WebJsonContext.Default.LoginTokenData);
+        }
+        catch (JsonException)
+        {
+            // Malformed client payload — treated as missing below (Newtonsoft returned null here).
+        }
         var res = new ComboTokenResJson();
         if (tokenData == null)
         {

@@ -1,6 +1,7 @@
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using March7thHoney.Database.Account;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -65,8 +66,9 @@ internal static class LoginIdentityContextFactory
 
         try
         {
-            var token = JToken.Parse(rawValue);
-            ExtractDeviceValues(token, deviceValues);
+            var token = JsonNode.Parse(rawValue);
+            if (token != null)
+                ExtractDeviceValues(token, deviceValues);
         }
         catch
         {
@@ -82,27 +84,31 @@ internal static class LoginIdentityContextFactory
                 rawValue.StartsWith("[", StringComparison.Ordinal));
     }
 
-    private static void ExtractDeviceValues(JToken token, List<string?> deviceValues)
+    private static void ExtractDeviceValues(JsonNode token, List<string?> deviceValues)
     {
-        if (token is JObject obj)
+        if (token is JsonObject obj)
         {
-            foreach (var property in obj.Properties())
+            foreach (var (name, value) in obj)
             {
-                if (DevicePropertyNames.Contains(property.Name))
-                    deviceValues.Add(property.Value.Type == JTokenType.String
-                        ? property.Value.Value<string>()
-                        : property.Value.ToString(Newtonsoft.Json.Formatting.None));
+                if (value == null)
+                    continue;
 
-                ExtractDeviceValues(property.Value, deviceValues);
+                if (DevicePropertyNames.Contains(name))
+                    deviceValues.Add(value.GetValueKind() == JsonValueKind.String
+                        ? value.GetValue<string>()
+                        : value.ToJsonString());
+
+                ExtractDeviceValues(value, deviceValues);
             }
 
             return;
         }
 
-        if (token is JArray array)
+        if (token is JsonArray array)
         {
             foreach (var item in array)
-                ExtractDeviceValues(item, deviceValues);
+                if (item != null)
+                    ExtractDeviceValues(item, deviceValues);
         }
     }
 }

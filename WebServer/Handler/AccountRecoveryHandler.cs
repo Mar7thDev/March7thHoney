@@ -129,13 +129,12 @@ public class AccountRecoveryHandler
 
     private static IResult Ok(string message)
     {
-        return Results.Json(new { retcode = 0, message, data = (object?)null });
+        return Results.Json(new StatusResult(0, message));
     }
 
     private static IResult Error(string message, int retcode = -201)
     {
-        return Results.Json(new { retcode, message, data = (object?)null },
-            statusCode: StatusCodes.Status400BadRequest);
+        return Results.Json(new StatusResult(retcode, message), statusCode: StatusCodes.Status400BadRequest);
     }
 
     private static IResult VerificationPage(string title, string message, int statusCode = 200)
