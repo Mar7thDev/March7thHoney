@@ -29,7 +29,9 @@ public static class HandbookRoutes
     public static void MapHandbookRoutes(this IEndpointRouteBuilder app)
     {
         app.MapGet("/handbook/languages",
-            () => Results.Text(JsonSerializer.Serialize(new { languages = GetLanguages() }), "application/json"));
+            () => Results.Text(
+                JsonSerializer.Serialize(new HandbookLanguages(GetLanguages()), WebJsonContext.Default.HandbookLanguages),
+                "application/json"));
 
         app.MapGet("/handbook/content", (HttpContext ctx, string? lang) =>
         {

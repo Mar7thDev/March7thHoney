@@ -80,32 +80,12 @@ public class RegistrationHandler
         if (!LoginSessionFactory.TryCreateSession(username, password, identityKeys, out var session, out failure))
             return Error(failure.Message, failure.Retcode);
 
-        return Results.Json(new
-        {
-            retcode = 0,
-            message = "OK",
-            data = new
-            {
-                account = new
-                {
-                    uid = session.Uid,
-                    name = session.Username,
-                    email = session.Email,
-                    token = session.DispatchToken,
-                    is_email_verify = session.IsEmailVerified ? "1" : "0"
-                },
-                user_info = new
-                {
-                    aid = session.Uid,
-                    mid = session.Uid,
-                    account_name = session.Username,
-                    email = session.Email,
-                    is_email_verify = session.IsEmailVerified ? "1" : "0"
-                },
-                token = new { token_type = 1, token = session.DispatchToken },
-                email_sent = emailSent
-            }
-        });
+        var verify = session.IsEmailVerified ? "1" : "0";
+        return Results.Json(new RegResult(0, "OK", new RegData(
+            new RegAccount(session.Uid, session.Username, session.Email, session.DispatchToken, verify),
+            new RegUserInfo(session.Uid, session.Uid, session.Username, session.Email, verify),
+            new RegToken(1, session.DispatchToken),
+            emailSent)));
     }
 
     private static IResult RegistrationSuccess(AccountData account, bool emailSent, bool requiresEmailVerification)
@@ -113,38 +93,19 @@ public class RegistrationHandler
         var uid = account.Uid.ToString();
         var username = account.Username ?? uid;
         var email = account.Email ?? string.Empty;
-        return Results.Json(new
-        {
-            retcode = 0,
-            message = requiresEmailVerification ? LoginSessionFactory.EmailVerificationRequiredMessage : "OK",
-            data = new
-            {
-                account = new
-                {
-                    uid,
-                    name = username,
-                    email,
-                    token = "",
-                    is_email_verify = account.IsEmailVerified ? "1" : "0"
-                },
-                user_info = new
-                {
-                    aid = uid,
-                    mid = uid,
-                    account_name = username,
-                    email,
-                    is_email_verify = account.IsEmailVerified ? "1" : "0"
-                },
-                token = new { token_type = 1, token = "" },
-                email_sent = emailSent,
-                email_verification_required = requiresEmailVerification
-            }
-        });
+        var verify = account.IsEmailVerified ? "1" : "0";
+        var message = requiresEmailVerification ? LoginSessionFactory.EmailVerificationRequiredMessage : "OK";
+        return Results.Json(new RegVerifyResult(0, message, new RegVerifyData(
+            new RegAccount(uid, username, email, "", verify),
+            new RegUserInfo(uid, uid, username, email, verify),
+            new RegToken(1, ""),
+            emailSent,
+            requiresEmailVerification)));
     }
 
     private static IResult Error(string message, int retcode = -201)
     {
-        return Results.Json(new { retcode, message, data = (object?)null });
+        return Results.Json(new StatusResult(retcode, message));
     }
 
     private static string ResolveUsername(RegisterReqJson req)

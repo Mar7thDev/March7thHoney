@@ -91,7 +91,7 @@ public static class AuthRateLimiter
     private static IResult BlockedResult(long remainingSeconds)
     {
         var message = $"Too many requests. Try again in {AccountBanHelper.FormatDuration(remainingSeconds)}.";
-        return Results.Json(new { retcode = -203, message, data = (object?)null });
+        return Results.Json(new StatusResult(-203, message));
     }
 
     private static RateLimitRule GetRule(AuthRateLimitAction action)

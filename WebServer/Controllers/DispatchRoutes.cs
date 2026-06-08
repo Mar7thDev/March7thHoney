@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Google.Protobuf;
 using March7thHoney.Configuration;
 using March7thHoney.Proto;
@@ -8,7 +9,6 @@ using March7thHoney.WebServer.Pages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Newtonsoft.Json;
 
 namespace March7thHoney.WebServer.Controllers;
 
@@ -437,17 +437,9 @@ public static class DispatchRoutes
 
     private static IResult PassportGetConfig()
     {
-        return Json(JsonConvert.SerializeObject(new
-        {
-            retcode = 0,
-            message = "OK",
-            data = new
-            {
-                enable_email_captcha = false,
-                disable_mmt = false,
-                enable_ps_bind_account = false
-            }
-        }));
+        return Json(JsonSerializer.Serialize(
+            new PassportConfigResult(0, "OK", new PassportConfigData(false, false, false)),
+            WebJsonContext.Default.PassportConfigResult));
     }
 
     private static IResult GetConfig()
@@ -476,41 +468,16 @@ public static class DispatchRoutes
     {
         var gameTokenExpiresIn = Math.Max(Config.ServerOption.Auth.ComboTokenExpireMinutes, 1) * 60;
 
-        return Json(JsonConvert.SerializeObject(new
-        {
-            retcode = 0,
-            message = "OK",
-            data = new
-            {
-                id = 24,
-                game_key = "hkrpg_global",
-                client = "PC",
-                identity = "I_IDENTITY",
-                guest = false,
-                ignore_versions = "",
-                scene = "S_NORMAL",
-                name = "崩�??RPG",
-                disable_regist = !Config.ServerOption.Auth.EnableRegistration,
-                enable_email_captcha = false,
-                thirdparty = new[] { "fb", "tw", "gl", "ap" },
-                disable_mmt = false,
-                server_guest = false,
-                thirdparty_ignore = new Dictionary<string, object>(),
-                enable_ps_bind_account = false,
-                thirdparty_login_configs = new
-                {
-                    tw = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = gameTokenExpiresIn },
-                    ap = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = gameTokenExpiresIn },
-                    fb = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = gameTokenExpiresIn },
-                    gl = new { token_type = "TK_GAME_TOKEN", game_token_expires_in = gameTokenExpiresIn }
-                },
-                initialize_firebase = false,
-                bbs_auth_login = false,
-                bbs_auth_login_ignore = Array.Empty<object>(),
-                fetch_instance_id = false,
-                enable_flash_login = false
-            }
-        }));
+        var tp = new ThirdpartyLoginConfig("TK_GAME_TOKEN", gameTokenExpiresIn);
+        var data = new LoadConfigData(
+            24, "hkrpg_global", "PC", "I_IDENTITY", false, "",
+            "S_NORMAL", "崩�??RPG", !Config.ServerOption.Auth.EnableRegistration, false,
+            ["fb", "tw", "gl", "ap"], false, false, [], false,
+            new ThirdpartyLoginConfigs(tp, tp, tp, tp), false, false,
+            [], false, false);
+
+        return Json(JsonSerializer.Serialize(new LoadConfigResult(0, "OK", data),
+            WebJsonContext.Default.LoadConfigResult));
     }
 
     private static IResult CompareProtocolVer()

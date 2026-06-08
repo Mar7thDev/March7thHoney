@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using March7thHoney.Database.Account;
 using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.Player;
@@ -33,10 +34,10 @@ public static class JsonRoutes
             using var reader = new StreamReader(ctx.Request.Body, Encoding.UTF8);
             string body = await reader.ReadToEndAsync();
 
-            var obj = Newtonsoft.Json.Linq.JToken.Parse(body);
-            string username = obj["username"]?.ToString() ?? "";
-            string password = obj["password"]?.ToString() ?? "";
-            string dataJson = obj["data"]?.ToString(Newtonsoft.Json.Formatting.None) ?? "";
+            var obj = JsonNode.Parse(body);
+            string username = obj?["username"]?.ToString() ?? "";
+            string password = obj?["password"]?.ToString() ?? "";
+            string dataJson = obj?["data"]?.ToJsonString() ?? "";
 
             if (!int.TryParse(username, out var uid))
                 return Results.Text("Username field must be the player's UID (integer).", "text/plain", null, 400);
@@ -92,10 +93,10 @@ public static class JsonRoutes
             using var reader = new StreamReader(ctx.Request.Body, Encoding.UTF8);
             string body = await reader.ReadToEndAsync();
 
-            var obj = Newtonsoft.Json.Linq.JToken.Parse(body);
-            string username = obj["username"]?.ToString() ?? "";
-            string password = obj["password"]?.ToString() ?? "";
-            string command = obj["command"]?.ToString() ?? "";
+            var obj = JsonNode.Parse(body);
+            string username = obj?["username"]?.ToString() ?? "";
+            string password = obj?["password"]?.ToString() ?? "";
+            string command = obj?["command"]?.ToString() ?? "";
 
             if (!int.TryParse(username, out var uid))
                 return ConsoleJson(1, "Username field must be the player's UID (integer).", null, 400);
@@ -170,10 +171,10 @@ public static class JsonRoutes
             using var reader = new StreamReader(ctx.Request.Body, Encoding.UTF8);
             string body = await reader.ReadToEndAsync();
 
-            var obj = Newtonsoft.Json.Linq.JToken.Parse(body);
-            string username = obj["username"]?.ToString() ?? "";
-            string password = obj["password"]?.ToString() ?? "";
-            var confirmed = string.Equals(obj["confirm"]?.ToString(), "true", StringComparison.OrdinalIgnoreCase);
+            var obj = JsonNode.Parse(body);
+            string username = obj?["username"]?.ToString() ?? "";
+            string password = obj?["password"]?.ToString() ?? "";
+            var confirmed = string.Equals(obj?["confirm"]?.ToString(), "true", StringComparison.OrdinalIgnoreCase);
 
             if (!int.TryParse(username, out var uid))
                 return ConsoleJson(1, "Username field must be the player's UID (integer).", null, 400);
@@ -201,12 +202,8 @@ public static class JsonRoutes
 
     private static IResult ConsoleJson(int retcode, string message, string? output, int statusCode = 200)
     {
-        var json = JsonSerializer.Serialize(new
-        {
-            retcode,
-            message,
-            output = output ?? string.Empty
-        });
+        var json = JsonSerializer.Serialize(new ConsoleResult(retcode, message, output ?? string.Empty),
+            WebJsonContext.Default.ConsoleResult);
         return Results.Text(json, "application/json", null, statusCode);
     }
 
