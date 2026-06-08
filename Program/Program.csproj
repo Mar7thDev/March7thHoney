@@ -32,6 +32,11 @@
     <TrimmerRootAssembly Include="Spectre.Console" />
   </ItemGroup>
 
+  <!-- The in-process IIS shim is dead weight for a self-hosted Kestrel server; drop it from publish. -->
+  <Target Name="RemoveUnusedInProcessShim" AfterTargets="Publish">
+    <Delete Files="$(PublishDir)aspnetcorev2_inprocess.dll" />
+  </Target>
+
   <ItemGroup>
 	  <Content Include="March7thHoney.ico" />
   </ItemGroup>
