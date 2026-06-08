@@ -9,12 +9,12 @@ using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Challenge;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Challenge.Instances;
 
-public class ChallengeStoryInstance(PlayerInstance player, ChallengeDataPb data)
+public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData data)
     : BaseLegacyChallengeInstance(player, data)
 {
     #region Properties
@@ -67,7 +67,7 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeDataPb data)
 
     public void SetCurrentExtraLineup(ExtraLineupType type)
     {
-        Data.Story.CurrentExtraLineup = (ChallengeLineupTypePb)type;
+        Data.Story.CurrentExtraLineup = (ChallengeLineupType)type;
     }
 
     public int GetTotalScore()
@@ -82,12 +82,12 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeDataPb data)
 
     public override void SetStartPos(Position pos)
     {
-        Data.Story.StartPos = pos.ToVector3Pb();
+        Data.Story.StartPos = pos;
     }
 
     public override void SetStartRot(Position rot)
     {
-        Data.Story.StartRot = rot.ToVector3Pb();
+        Data.Story.StartRot = rot;
     }
 
     public override void SetSavedMp(int mp)
@@ -159,7 +159,7 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeDataPb data)
                 // Reset technique points and move back to start position
                 var lineup = Player.LineupManager!.GetCurLineup()!;
                 lineup.Mp = (int)Data.Story.SavedMp;
-                await Player.MoveTo(Data.Story.StartPos.ToPosition(), Data.Story.StartRot.ToPosition());
+                await Player.MoveTo(Data.Story.StartPos, Data.Story.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             default:
@@ -246,8 +246,8 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeDataPb data)
             await Player.SendPacket(new PacketChallengeLineupNotify((ExtraLineupType)Data.Story.CurrentExtraLineup));
 
             Data.Story.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
-            Data.Story.StartPos = Player.Data.Pos!.ToVector3Pb();
-            Data.Story.StartRot = Player.Data.Rot!.ToVector3Pb();
+            Data.Story.StartPos = Player.Data.Pos!;
+            Data.Story.StartRot = Player.Data.Rot!;
 
             Player.ChallengeManager!.SaveInstance(this);
         }

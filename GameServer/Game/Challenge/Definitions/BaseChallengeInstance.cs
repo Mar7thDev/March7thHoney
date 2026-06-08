@@ -2,14 +2,14 @@ using March7thHoney.Data.Excel;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 
 namespace March7thHoney.GameServer.Game.Challenge.Definitions;
 
-public abstract class BaseChallengeInstance(PlayerInstance player, ChallengeDataPb data)
+public abstract class BaseChallengeInstance(PlayerInstance player, ChallengeStateData data)
 {
     public PlayerInstance Player { get; } = player;
-    public ChallengeDataPb Data { get; } = data;
+    public ChallengeStateData Data { get; } = data;
 
     public virtual void OnBattleStart(BattleInstance battle)
     {

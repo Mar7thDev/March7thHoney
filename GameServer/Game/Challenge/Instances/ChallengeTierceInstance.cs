@@ -7,7 +7,7 @@ using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Challenge;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.Proto;
-using March7thHoney.Proto.ServerSide;
+using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Challenge.Instances;
@@ -52,7 +52,7 @@ public class ChallengeTierceInstance : BaseChallengeInstance
 
     public ChallengeTierceInstance(PlayerInstance player, ChallengeMazeTierceConfigExcel config,
         ChallengeConfigExcel preConfig)
-        : base(player, new ChallengeDataPb())
+        : base(player, new ChallengeStateData())
     {
         Config = config;
         PreConfig = preConfig;
