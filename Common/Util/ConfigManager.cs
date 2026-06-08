@@ -1,7 +1,7 @@
+using System.Text.Json;
 using March7thHoney.Configuration;
 using March7thHoney.Internationalization;
 using March7thHoney.Util.License;
-using Newtonsoft.Json;
 
 namespace March7thHoney.Util;
 
@@ -56,10 +56,7 @@ public static class ConfigManager
         using (var reader = new StreamReader(stream))
         {
             var json = reader.ReadToEnd();
-            Config = JsonConvert.DeserializeObject<ConfigContainer>(json, new JsonSerializerSettings
-            {
-                ObjectCreationHandling = ObjectCreationHandling.Replace
-            })!;
+            Config = JsonSerializer.Deserialize(json, ConfigJsonContext.Default.ConfigContainer)!;
         }
 
         SaveData(Config, ConfigFilePath);
@@ -95,7 +92,7 @@ public static class ConfigManager
         using (var reader = new StreamReader(stream))
         {
             var json = reader.ReadToEnd();
-            Hotfix = JsonConvert.DeserializeObject<HotfixContainer>(json)!;
+            Hotfix = JsonSerializer.Deserialize(json, ConfigJsonContext.Default.HotfixContainer)!;
         }
 
         foreach (var version in verList)
@@ -107,7 +104,12 @@ public static class ConfigManager
 
     private static void SaveData(object data, string path)
     {
-        var json = JsonConvert.SerializeObject(data, Formatting.Indented);
+        var json = data switch
+        {
+            ConfigContainer c => JsonSerializer.Serialize(c, ConfigJsonContext.Default.ConfigContainer),
+            HotfixContainer h => JsonSerializer.Serialize(h, ConfigJsonContext.Default.HotfixContainer),
+            _ => throw new ArgumentException($"No source-gen JSON metadata for {data.GetType()}", nameof(data))
+        };
         using var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
         using var writer = new StreamWriter(stream);
         writer.Write(json);
