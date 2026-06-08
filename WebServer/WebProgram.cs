@@ -95,6 +95,8 @@ public class WebProgram
         app.MapGateServerRoutes();
         app.MapServerExchangeRoutes();
         app.MapMuipServerRoutes();
+        app.MapHandbookRoutes();
+        app.MapJsonRoutes();
 
         // Remaining MVC controllers (still being migrated).
         app.MapControllers();
