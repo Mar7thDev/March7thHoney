@@ -2,7 +2,6 @@ using System.Diagnostics;
 using System.Text;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
-using March7thHoney.Database.Mail;
 using March7thHoney.Database.Player;
 using March7thHoney.Command;
 using March7thHoney.GameServer.Game.Player;
@@ -12,35 +11,43 @@ using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Pages;
 using March7thHoney.WebServer.Server;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 
 namespace March7thHoney.WebServer.Controllers;
 
-[ApiController]
-[EnableCors("AllowAll")]
-[Route("/")]
-public class AdminRoutes : ControllerBase
+public static class AdminRoutes
 {
-    [HttpGet("/admin")]
-    [HttpGet("/admin/")]
-    public IActionResult AdminPageRoot()
+    public static void MapAdminRoutes(this IEndpointRouteBuilder app)
     {
-        return Redirect("/admin/index.html");
+        app.MapGet("/admin", () => Results.Redirect("/admin/index.html"));
+        app.MapGet("/admin/", () => Results.Redirect("/admin/index.html"));
+        app.MapGet("/admin/index.html",
+            () => Results.Text(AdminPageRenderer.Render(ConfigManager.Config.GameServer.GameServerName),
+                "text/html; charset=utf-8"));
+
+        app.MapPost("/admin/api/login", Login);
+        app.MapPost("/admin/api/logout", Logout);
+        app.MapGet("/admin/api/accounts", GetAccounts);
+        app.MapGet("/admin/api/overview", GetOverview);
+        app.MapPost("/admin/api/registration", SetRegistration);
+        app.MapPost("/admin/api/registration-identity-limit", SetRegistrationIdentityLimit);
+        app.MapGet("/admin/api/access", GetAccess);
+        app.MapPost("/admin/api/commands", ExecuteCommand);
+        app.MapPost("/admin/api/accounts", CreateAccount);
+        app.MapPut("/admin/api/accounts/{uid:int}", UpdateAccount);
+        app.MapPut("/admin/api/accounts/{uid:int}/password", SetPassword);
+        app.MapPost("/admin/api/accounts/{uid:int}/email/verification", SendAccountVerificationEmail);
+        app.MapPost("/admin/api/accounts/{uid:int}/ban", BanAccount);
+        app.MapDelete("/admin/api/accounts/{uid:int}/ban", UnbanAccount);
+        app.MapPost("/admin/api/accounts/{uid:int}/tokens/revoke", RevokeAccountTokens);
+        app.MapPost("/admin/api/accounts/{uid:int}/session/kick", KickAccountSession);
+        app.MapPost("/admin/api/accounts/{uid:int}/gameplay/reset", ResetAccountGameplay);
+        app.MapDelete("/admin/api/accounts/{uid:int}", DeleteAccount);
     }
 
-    [HttpGet("/admin/index.html")]
-    public ContentResult AdminPage()
-    {
-        return new ContentResult
-        {
-            Content = AdminPageRenderer.Render(ConfigManager.Config.GameServer.GameServerName),
-            ContentType = "text/html; charset=utf-8"
-        };
-    }
-
-    [HttpPost("/admin/api/login")]
-    public JsonResult Login([FromBody] AdminLoginRequest? request)
+    private static IResult Login(HttpContext ctx, AdminLoginRequest? request)
     {
         request ??= new AdminLoginRequest();
         if (!AdminSessionManager.TryCreateSession(request.admin_key ?? string.Empty, out var session, out var message))
@@ -53,17 +60,15 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPost("/admin/api/logout")]
-    public JsonResult Logout()
+    private static IResult Logout(HttpContext ctx)
     {
-        AdminSessionManager.Revoke(GetAdminToken());
+        AdminSessionManager.Revoke(GetAdminToken(ctx));
         return Success(new { });
     }
 
-    [HttpGet("/admin/api/accounts")]
-    public JsonResult GetAccounts()
+    private static IResult GetAccounts(HttpContext ctx)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var accounts = GetAllAccounts()
@@ -81,10 +86,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpGet("/admin/api/overview")]
-    public JsonResult GetOverview()
+    private static IResult GetOverview(HttpContext ctx)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var accounts = GetAllAccounts()
@@ -141,10 +145,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPost("/admin/api/registration")]
-    public JsonResult SetRegistration([FromBody] AdminRegistrationRequest? request)
+    private static IResult SetRegistration(HttpContext ctx, AdminRegistrationRequest? request)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         request ??= new AdminRegistrationRequest();
@@ -157,10 +160,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPost("/admin/api/registration-identity-limit")]
-    public JsonResult SetRegistrationIdentityLimit([FromBody] AdminRegistrationRequest? request)
+    private static IResult SetRegistrationIdentityLimit(HttpContext ctx, AdminRegistrationRequest? request)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         request ??= new AdminRegistrationRequest();
@@ -173,10 +175,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpGet("/admin/api/access")]
-    public JsonResult GetAccess()
+    private static IResult GetAccess(HttpContext ctx)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var serverOption = ConfigManager.Config.ServerOption;
@@ -206,10 +207,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPost("/admin/api/commands")]
-    public JsonResult ExecuteCommand([FromBody] AdminExecuteCommandRequest? request)
+    private static IResult ExecuteCommand(HttpContext ctx, AdminExecuteCommandRequest? request)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         request ??= new AdminExecuteCommandRequest();
@@ -252,10 +252,9 @@ public class AdminRoutes : ControllerBase
         }
     }
 
-    [HttpPost("/admin/api/accounts")]
-    public JsonResult CreateAccount([FromBody] AdminCreateAccountRequest? request)
+    private static IResult CreateAccount(HttpContext ctx, AdminCreateAccountRequest? request)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         request ??= new AdminCreateAccountRequest();
@@ -294,10 +293,9 @@ public class AdminRoutes : ControllerBase
         }
     }
 
-    [HttpPut("/admin/api/accounts/{uid:int}")]
-    public async Task<JsonResult> UpdateAccount([FromRoute] int uid, [FromBody] AdminUpdateAccountRequest? request)
+    private static async Task<IResult> UpdateAccount(HttpContext ctx, int uid, AdminUpdateAccountRequest? request)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         request ??= new AdminUpdateAccountRequest();
@@ -343,7 +341,7 @@ public class AdminRoutes : ControllerBase
         var emailChanged = !string.Equals(previousNormalizedEmail, account.NormalizedEmail, StringComparison.OrdinalIgnoreCase);
         var changedFromVerifiedToUnverified = previousEmailVerified && !account.IsEmailVerified;
         if (!account.IsEmailVerified && (emailChanged || changedFromVerifiedToUnverified))
-            emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, Request);
+            emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, ctx.Request);
 
         return Success(new
         {
@@ -352,10 +350,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPut("/admin/api/accounts/{uid:int}/password")]
-    public JsonResult SetPassword([FromRoute] int uid, [FromBody] AdminSetPasswordRequest? request)
+    private static IResult SetPassword(HttpContext ctx, int uid, AdminSetPasswordRequest? request)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         request ??= new AdminSetPasswordRequest();
@@ -377,10 +374,9 @@ public class AdminRoutes : ControllerBase
         }
     }
 
-    [HttpPost("/admin/api/accounts/{uid:int}/email/verification")]
-    public async Task<JsonResult> SendAccountVerificationEmail([FromRoute] int uid)
+    private static async Task<IResult> SendAccountVerificationEmail(HttpContext ctx, int uid)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var account = AccountData.GetAccountByUid(uid);
@@ -390,7 +386,7 @@ public class AdminRoutes : ControllerBase
         if (string.IsNullOrWhiteSpace(account.Email))
             return Error("Account does not have an email address");
 
-        var emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, Request,
+        var emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, ctx.Request,
             markUnverified: true);
         return Success(new
         {
@@ -399,10 +395,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPost("/admin/api/accounts/{uid:int}/ban")]
-    public JsonResult BanAccount([FromRoute] int uid, [FromBody] AdminBanAccountRequest? request)
+    private static IResult BanAccount(HttpContext ctx, int uid, AdminBanAccountRequest? request)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         request ??= new AdminBanAccountRequest();
@@ -423,10 +418,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpDelete("/admin/api/accounts/{uid:int}/ban")]
-    public JsonResult UnbanAccount([FromRoute] int uid)
+    private static IResult UnbanAccount(HttpContext ctx, int uid)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var account = AccountData.GetAccountByUid(uid);
@@ -440,10 +434,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPost("/admin/api/accounts/{uid:int}/tokens/revoke")]
-    public JsonResult RevokeAccountTokens([FromRoute] int uid)
+    private static IResult RevokeAccountTokens(HttpContext ctx, int uid)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var account = AccountData.GetAccountByUid(uid);
@@ -458,10 +451,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPost("/admin/api/accounts/{uid:int}/session/kick")]
-    public JsonResult KickAccountSession([FromRoute] int uid)
+    private static IResult KickAccountSession(HttpContext ctx, int uid)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var account = AccountData.GetAccountByUid(uid);
@@ -478,10 +470,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpPost("/admin/api/accounts/{uid:int}/gameplay/reset")]
-    public async Task<JsonResult> ResetAccountGameplay([FromRoute] int uid)
+    private static async Task<IResult> ResetAccountGameplay(HttpContext ctx, int uid)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var account = AccountData.GetAccountByUid(uid);
@@ -500,10 +491,9 @@ public class AdminRoutes : ControllerBase
         });
     }
 
-    [HttpDelete("/admin/api/accounts/{uid:int}")]
-    public JsonResult DeleteAccount([FromRoute] int uid)
+    private static IResult DeleteAccount(HttpContext ctx, int uid)
     {
-        if (!IsAuthorized(out var unauthorized))
+        if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
         var account = AccountData.GetAccountByUid(uid);
@@ -514,9 +504,9 @@ public class AdminRoutes : ControllerBase
         return Success(new { uid });
     }
 
-    private bool IsAuthorized(out JsonResult error)
+    private static bool IsAuthorized(HttpContext ctx, out IResult error)
     {
-        if (AdminSessionManager.IsAuthorized(GetAdminToken()))
+        if (AdminSessionManager.IsAuthorized(GetAdminToken(ctx)))
         {
             error = Success(new { });
             return true;
@@ -526,13 +516,13 @@ public class AdminRoutes : ControllerBase
         return false;
     }
 
-    private string? GetAdminToken()
+    private static string? GetAdminToken(HttpContext ctx)
     {
-        var authorization = Request.Headers.Authorization.ToString();
+        var authorization = ctx.Request.Headers.Authorization.ToString();
         if (authorization.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
             return authorization["Bearer ".Length..].Trim();
 
-        return Request.Headers["X-Admin-Session"].FirstOrDefault();
+        return ctx.Request.Headers["X-Admin-Session"].FirstOrDefault();
     }
 
     private static List<AccountData> GetAllAccounts()
@@ -619,17 +609,14 @@ public class AdminRoutes : ControllerBase
         return ConfigManager.Config.ServerOption.PermissionRoles ?? CommandRoles.DefaultRoles();
     }
 
-    private static JsonResult Success(object data)
+    private static IResult Success(object data)
     {
-        return new JsonResult(new { retcode = 0, message = "OK", data });
+        return Results.Json(new { retcode = 0, message = "OK", data });
     }
 
-    private static JsonResult Error(string message, int retcode = -201, int statusCode = StatusCodes.Status400BadRequest)
+    private static IResult Error(string message, int retcode = -201, int statusCode = StatusCodes.Status400BadRequest)
     {
-        return new JsonResult(new { retcode, message, data = (object?)null })
-        {
-            StatusCode = statusCode
-        };
+        return Results.Json(new { retcode, message, data = (object?)null }, statusCode: statusCode);
     }
 
     private static bool TryResolveBanExpireAt(AdminBanAccountRequest request, out long expireAt, out string error)
