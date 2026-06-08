@@ -6,6 +6,7 @@
     <RootNamespace>March7thHoney.WebServer</RootNamespace>
     <OutputType>Library</OutputType>
     <AssemblyName>WebServer</AssemblyName>
+    <EnableRequestDelegateGenerator>true</EnableRequestDelegateGenerator>
   </PropertyGroup>
 
   <ItemGroup>
