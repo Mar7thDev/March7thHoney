@@ -1,8 +1,10 @@
 using System.Text.Json.Serialization;
+using MemoryPack;
 
 namespace March7thHoney.Data.Freesr;
 
-public sealed class FreesrCalyxData
+[MemoryPackable]
+public sealed partial class FreesrCalyxData
 {
     [JsonPropertyName("relics")] public List<FreesrCalyxRelic>? Relics { get; set; }
     [JsonPropertyName("lightcones")] public List<FreesrCalyxLightcone>? Lightcones { get; set; }
@@ -10,7 +12,8 @@ public sealed class FreesrCalyxData
     [JsonPropertyName("battle_config")] public FreesrBattleConfig? BattleConfig { get; set; }
 }
 
-public sealed class FreesrCalyxRelic
+[MemoryPackable]
+public sealed partial class FreesrCalyxRelic
 {
     [JsonPropertyName("level")] public int Level { get; set; }
     [JsonPropertyName("relic_id")] public int RelicId { get; set; }
@@ -19,14 +22,16 @@ public sealed class FreesrCalyxRelic
     [JsonPropertyName("sub_affixes")] public List<FreesrCalyxRelicSubAffix>? SubAffixes { get; set; }
 }
 
-public sealed class FreesrCalyxRelicSubAffix
+[MemoryPackable]
+public sealed partial class FreesrCalyxRelicSubAffix
 {
     [JsonPropertyName("sub_affix_id")] public int SubAffixId { get; set; }
     [JsonPropertyName("count")] public int Count { get; set; }
     [JsonPropertyName("step")] public int Step { get; set; }
 }
 
-public sealed class FreesrCalyxLightcone
+[MemoryPackable]
+public sealed partial class FreesrCalyxLightcone
 {
     [JsonPropertyName("level")] public int Level { get; set; }
     [JsonPropertyName("equip_avatar")] public int EquipAvatar { get; set; }
@@ -35,7 +40,8 @@ public sealed class FreesrCalyxLightcone
     [JsonPropertyName("promotion")] public int Promotion { get; set; }
 }
 
-public sealed class FreesrCalyxAvatar
+[MemoryPackable]
+public sealed partial class FreesrCalyxAvatar
 {
     [JsonPropertyName("avatar_id")] public int AvatarId { get; set; }
     [JsonPropertyName("level")] public int Level { get; set; }
@@ -48,13 +54,15 @@ public sealed class FreesrCalyxAvatar
     [JsonPropertyName("enhanced_id")] public int? EnhancedId { get; set; }
 }
 
-public sealed class FreesrCalyxAvatarExtra
+[MemoryPackable]
+public sealed partial class FreesrCalyxAvatarExtra
 {
     [JsonPropertyName("rank")] public int Rank { get; set; }
     [JsonPropertyName("skills")] public Dictionary<int, int>? Skills { get; set; }
 }
 
-public sealed class FreesrBattleConfig
+[MemoryPackable]
+public sealed partial class FreesrBattleConfig
 {
     [JsonPropertyName("battle_type")] public string? BattleType { get; set; }
     [JsonPropertyName("cycle_count")] public int CycleCount { get; set; }
@@ -64,14 +72,16 @@ public sealed class FreesrBattleConfig
     [JsonPropertyName("blessings")] public List<FreesrBlessing>? Blessings { get; set; }
 }
 
-public sealed class FreesrMonsterEntry
+[MemoryPackable]
+public sealed partial class FreesrMonsterEntry
 {
     [JsonPropertyName("monster_id")] public int MonsterId { get; set; }
     [JsonPropertyName("amount")] public int Amount { get; set; }
     [JsonPropertyName("level")] public int Level { get; set; }
 }
 
-public sealed class FreesrBlessing
+[MemoryPackable]
+public sealed partial class FreesrBlessing
 {
     [JsonPropertyName("id")] public int Id { get; set; }
     [JsonPropertyName("level")] public int Level { get; set; }
