@@ -27,11 +27,11 @@ public static class JsonRoutes
         app.MapGet("/sr-tools-export", DownloadFreedata);
     }
 
-    private static async Task<IResult> SrTools(HttpContext ctx)
+    private static async Task<IResult> SrTools(HttpRequest request)
     {
         try
         {
-            using var reader = new StreamReader(ctx.Request.Body, Encoding.UTF8);
+            using var reader = new StreamReader(request.Body, Encoding.UTF8);
             string body = await reader.ReadToEndAsync();
 
             var obj = JsonNode.Parse(body);
@@ -86,11 +86,11 @@ public static class JsonRoutes
     // Launcher console entry: authenticate with UID + password (same as
     // sr-tools) and run a command with the EXACT permissions of in-game chat.
     // An empty command performs a credential check only (used by "Connect").
-    private static async Task<IResult> ConsoleExec(HttpContext ctx)
+    private static async Task<IResult> ConsoleExec(HttpRequest request)
     {
         try
         {
-            using var reader = new StreamReader(ctx.Request.Body, Encoding.UTF8);
+            using var reader = new StreamReader(request.Body, Encoding.UTF8);
             string body = await reader.ReadToEndAsync();
 
             var obj = JsonNode.Parse(body);
@@ -164,11 +164,11 @@ public static class JsonRoutes
     // Launcher self-reset: authenticate with UID + password and reset ONLY that
     // player's own gameplay data (self-only by construction). Works offline, so a
     // crash-locked account can be reset before logging back in.
-    private static async Task<IResult> ConsoleSelfReset(HttpContext ctx)
+    private static async Task<IResult> ConsoleSelfReset(HttpRequest request)
     {
         try
         {
-            using var reader = new StreamReader(ctx.Request.Body, Encoding.UTF8);
+            using var reader = new StreamReader(request.Body, Encoding.UTF8);
             string body = await reader.ReadToEndAsync();
 
             var obj = JsonNode.Parse(body);
@@ -207,18 +207,18 @@ public static class JsonRoutes
         return Results.Text(json, "application/json", null, statusCode);
     }
 
-    private static async Task<IResult> DownloadFreedata(HttpContext ctx)
+    private static async Task<IResult> DownloadFreedata(HttpRequest request, HttpResponse response)
     {
         int uid = 0;
-        if (ctx.Request.Query.ContainsKey("uid"))
-            int.TryParse(ctx.Request.Query["uid"], out uid);
+        if (request.Query.ContainsKey("uid"))
+            int.TryParse(request.Query["uid"], out uid);
 
         if (uid == 0)
             return Results.Text("Error: Missing valid uid parameter", "text/plain", null, 400);
 
         var json = await FreesrShared.ExportPlayerDataAsync(uid, true);
 
-        ctx.Response.Headers["Content-Disposition"] =
+        response.Headers["Content-Disposition"] =
             "attachment; filename=freesr-data.json; filename*=UTF-8''freesr-data.json";
         return Results.Text(json, "application/octet-stream");
     }
