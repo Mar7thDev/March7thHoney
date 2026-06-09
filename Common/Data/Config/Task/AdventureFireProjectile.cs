@@ -6,7 +6,7 @@ namespace March7thHoney.Data.Config.Task;
 [MemoryPackable]
 public partial class AdventureFireProjectile : TaskConfigInfo
 {
-    public TargetEvaluator TargetType { get; set; } = new();
+    public TargetEvaluator TargetType { get; set; } = new UnknownTargetEvaluator();
 
     //public ProjectileData Projectile { get; set; }
     public List<TaskConfigInfo> OnProjectileHit { get; set; } = [];
@@ -27,7 +27,7 @@ public partial class AdventureFireProjectile : TaskConfigInfo
             var classType =
                 System.Type.GetType(
                     $"March7thHoney.Data.Config.Task.{targetType?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.TargetEvaluator");
+            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.UnknownTargetEvaluator");
             info.TargetType = (targetType!.ToObject(classType!) as TargetEvaluator)!;
         }
 
