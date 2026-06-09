@@ -19,7 +19,7 @@ namespace March7thHoney.GameServer.Game.ChallengePeak;
 /// <see cref="March7thHoney.GameServer.Game.Challenge.ChallengeManager" />
 public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(player)
 {
-    public bool BossIsHard { get; set; } = true;
+    public bool BossIsHard { get; set; } = false;
 
     public ChallengePeakGroup GetChallengePeakInfo(int groupId)
     {
