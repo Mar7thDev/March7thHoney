@@ -6,8 +6,8 @@ namespace March7thHoney.Data.Config.Task;
 [MemoryPackable]
 public partial class AdventureTriggerAttack : TaskConfigInfo
 {
-    public TargetEvaluator AttackTargetType { get; set; } = new();
-    public TargetEvaluator AttackRootTargetType { get; set; } = new();
+    public TargetEvaluator AttackTargetType { get; set; } = new UnknownTargetEvaluator();
+    public TargetEvaluator AttackRootTargetType { get; set; } = new UnknownTargetEvaluator();
     public bool TriggerBattle { get; set; } = true;
 
     public float TriggerBattleDelay { get; set; }
@@ -38,7 +38,7 @@ public partial class AdventureTriggerAttack : TaskConfigInfo
             var classType =
                 System.Type.GetType(
                     $"March7thHoney.Data.Config.Task.{targetType?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.TargetEvaluator");
+            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.UnknownTargetEvaluator");
             info.AttackTargetType = (targetType!.ToObject(classType!) as TargetEvaluator)!;
         }
 
@@ -48,7 +48,7 @@ public partial class AdventureTriggerAttack : TaskConfigInfo
             var classType =
                 System.Type.GetType(
                     $"March7thHoney.Data.Config.Task.{targetType?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.TargetEvaluator");
+            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.UnknownTargetEvaluator");
             info.AttackRootTargetType = (targetType!.ToObject(classType!) as TargetEvaluator)!;
         }
 
