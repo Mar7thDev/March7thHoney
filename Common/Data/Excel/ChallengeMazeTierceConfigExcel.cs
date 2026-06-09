@@ -34,6 +34,16 @@ public partial class ChallengeMazeTierceConfigExcel : ExcelResource
 
     public override void Loaded()
     {
+        RebuildChallengeMonsters();
+        GameData.ChallengeMazeTierceConfigData.TryAdd(ID, this);
+    }
+
+    // ChallengeMonsters is get-only so MemoryPack can't round-trip it; the cache path re-runs this
+    // (see ResourceCache.LoadCache) to repopulate it from the serialized list fields — without it the
+    // 3rd/tierce node (MOC / Pure Fiction / Apocalyptic Shadow) spawns no boss.
+    public void RebuildChallengeMonsters()
+    {
+        ChallengeMonsters.Clear();
         for (var i = 0; i < ConfigList.Count; i++)
         {
             if (ConfigList[i] == 0) break;
@@ -43,7 +53,5 @@ public partial class ChallengeMazeTierceConfigExcel : ExcelResource
             ChallengeMonsters.TryAdd(MazeGroupID, []);
             ChallengeMonsters[MazeGroupID].Add(monster);
         }
-
-        GameData.ChallengeMazeTierceConfigData.TryAdd(ID, this);
     }
 }

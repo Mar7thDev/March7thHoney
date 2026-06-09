@@ -26,7 +26,7 @@ public partial class PropSetupUITrigger : TaskConfigInfo
     public bool TriggerByFakeAvatar { get; set; }
     public bool SkipFakeAvatar { get; set; }
     public PredicateConfigInfo OnEnterFilter { get; set; } = new UnknownPredicateConfigInfo();
-    public TargetEvaluator TargetType { get; set; } = new();
+    public TargetEvaluator TargetType { get; set; } = new UnknownTargetEvaluator();
 
     public new static TaskConfigInfo LoadFromJsonObject(JObject obj)
     {
@@ -46,7 +46,7 @@ public partial class PropSetupUITrigger : TaskConfigInfo
             var classType =
                 System.Type.GetType(
                     $"March7thHoney.Data.Config.Task.{targetType?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.TargetEvaluator");
+            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.UnknownTargetEvaluator");
             info.TargetType = (targetType!.ToObject(classType!) as TargetEvaluator)!;
         }
 

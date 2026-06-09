@@ -38,6 +38,15 @@ public static class ResourceCache
         if (snapshot == null) return false;
 
         GameData.ApplySnapshot(snapshot);
+
+        // Loaded()/AfterAllDone() post-load hooks are skipped on the cache path, and the get-only
+        // `ChallengeMonsters` dictionaries they populate can't round-trip through MemoryPack — re-derive
+        // them here, otherwise endgame bosses fail to spawn: ChallengePeak normal mode, and the 3rd/tierce
+        // node of MOC / Pure Fiction / Apocalyptic Shadow.
+        ResourceManager.ApplyChallengePeakOverrides();
+        foreach (var tierce in GameData.ChallengeMazeTierceConfigData.Values)
+            tierce.RebuildChallengeMonsters();
+
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem", I18NManager.Translate("Word.Cache")));
 
         return ValidateLoadedCache();
