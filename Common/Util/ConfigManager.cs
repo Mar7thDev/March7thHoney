@@ -71,15 +71,30 @@ public static class ConfigManager
     {
         var file = new FileInfo(HotfixFilePath);
 
-        // Generate all necessary versions
+        // 生成客户端真实格式的版本 key：{CN|OS}{BETA|PROD}{Win|Android|iOS}{版本号}
+        // BETA 用 GAME_VERSION（末位 5 时展开 4.3.51~4.3.55），PROD 用正式服号（4.3.5 -> 4.3.0）
         var verList = new List<string>();
-        var prefix = new List<string> { "CN", "OS" };
-        foreach (var pre in prefix)
-            if (GameConstants.GAME_VERSION[^1] == '5')
-                for (var i = 1; i < 6; i++)
-                    verList.Add(pre + GameConstants.GAME_VERSION + i);
-            else
-                verList.Add(pre + GameConstants.GAME_VERSION);
+        string[] regions = ["CN", "OS"];
+        string[] platforms = ["Win", "Android", "iOS"];
+
+        var betaVersions = new List<string>();
+        if (GameConstants.GAME_VERSION[^1] == '5')
+            for (var i = 1; i < 6; i++)
+                betaVersions.Add(GameConstants.GAME_VERSION + i);
+        else
+            betaVersions.Add(GameConstants.GAME_VERSION);
+
+        var verParts = GameConstants.GAME_VERSION.Split('.');
+        var prodVersion = $"{verParts[0]}.{verParts[1]}.0";
+
+        foreach (var region in regions)
+        {
+            foreach (var platform in platforms)
+                foreach (var v in betaVersions)
+                    verList.Add($"{region}BETA{platform}{v}");
+            foreach (var platform in platforms)
+                verList.Add($"{region}PROD{platform}{prodVersion}");
+        }
 
         if (!file.Exists)
         {
