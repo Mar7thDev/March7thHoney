@@ -61,6 +61,7 @@ public class GameServerConfig
 public class PathConfig
 {
     public string ResourcePath { get; set; } = "Resources";
+    public List<string> ExcelOutputDirs { get; set; } = ["ExcelOutput", "ExcelOutputGameCore"];
     public string ConfigPath { get; set; } = "Config";
     public string DatabasePath { get; set; } = "Config/Database";
     public string LogPath { get; set; } = "Config/Logs";
