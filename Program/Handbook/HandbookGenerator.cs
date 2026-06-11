@@ -69,9 +69,9 @@ public static class HandbookGenerator
 
         if (!File.Exists(fallbackTextMapPath))
         {
-            Logger.GetByClassName().Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", textMapPath,
-                I18NManager.Translate("Word.NotFound")));
-            return;
+            Logger.GetByClassName().Warn(I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
+                fallbackTextMapPath, I18NManager.Translate("Word.NotFound")));
+            fallbackTextMapPath = textMapPath;
         }
 
         var textMap = JsonConvert.DeserializeObject<Dictionary<BigInteger, string>>(File.ReadAllText(textMapPath));

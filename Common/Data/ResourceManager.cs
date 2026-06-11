@@ -78,10 +78,16 @@ public class ResourceManager
             GameData.AdventureModifierData.Add(adventureModifierConfig.Key, adventureModifierConfig.Value);
     }
 
+    private static readonly List<string> MissingExcelFiles = [];
+
     public static void LoadExcel()
     {
         var classes = Assembly.GetExecutingAssembly().GetTypes(); // Get all classes in the assembly
         List<ExcelResource> resList = [];
+        lock (MissingExcelFiles)
+        {
+            MissingExcelFiles.Clear();
+        }
 
         foreach (var cls in classes.Where(x => x.IsSubclassOf(typeof(ExcelResource))))
         {
@@ -90,6 +96,11 @@ public class ResourceManager
         }
 
         foreach (var cls in resList) cls.AfterAllDone();
+
+        lock (MissingExcelFiles)
+        {
+            LogPartialMissingSummary("Excel", MissingExcelFiles.Count, MissingExcelFiles);
+        }
     }
 
     public static List<T>? LoadSingleExcel<T>(Type cls) where T : ExcelResource, new()
@@ -108,16 +119,25 @@ public class ResourceManager
         foreach (var fileName in attribute.FileName)
             try
             {
-                var path = ConfigManager.Config.Path.ResourcePath + "/ExcelOutput/" + fileName;
-                var file = new FileInfo(path);
-                if (!file.Exists)
+                var file = ConfigManager.Config.Path.ExcelOutputDirs
+                    .Select(dir => new FileInfo(
+                        Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, fileName)))
+                    .FirstOrDefault(f => f.Exists);
+                if (file == null)
                 {
                     // ResourceCache.IsComplete = false;
                     Logger.Warn(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", fileName,
                         I18NManager.Translate("Word.NotFound")));
+                    lock (MissingExcelFiles)
+                    {
+                        MissingExcelFiles.Add(fileName);
+                    }
+
                     continue;
                 }
 
+                var badRecords = 0;
+                Exception? firstError = null;
                 var json = file.OpenText().ReadToEnd();
                 using (var reader = new JsonTextReader(new StringReader(json)))
                 {
@@ -129,12 +149,18 @@ public class ResourceManager
                             // array
                             var jArray = JArray.Parse(json);
                             foreach (var item in jArray)
-                            {
-                                var res = JsonConvert.DeserializeObject(item.ToString(), cls);
-                                resList.Add((ExcelResource)res!);
-                                ((ExcelResource?)res)?.Loaded();
-                                count++;
-                            }
+                                try
+                                {
+                                    var res = JsonConvert.DeserializeObject(item.ToString(), cls);
+                                    resList.Add((ExcelResource)res!);
+                                    ((ExcelResource?)res)?.Loaded();
+                                    count++;
+                                }
+                                catch (Exception ex)
+                                {
+                                    badRecords++;
+                                    firstError ??= ex;
+                                }
 
                             break;
                         }
@@ -143,35 +169,54 @@ public class ResourceManager
                             // dictionary
                             var jObject = JObject.Parse(json);
                             foreach (var (_, obj) in jObject)
-                            {
-                                var instance = JsonConvert.DeserializeObject(obj!.ToString(), cls);
-
-                                if (((ExcelResource?)instance)?.GetId() == 0 || (ExcelResource?)instance == null)
+                                try
                                 {
-                                    // Deserialize as JObject to handle nested dictionaries
-                                    var nestedObject = JsonConvert.DeserializeObject<JObject>(obj.ToString());
+                                    var instance = JsonConvert.DeserializeObject(obj!.ToString(), cls);
 
-                                    foreach (var nestedItem in nestedObject ?? [])
+                                    if (((ExcelResource?)instance)?.GetId() == 0 || (ExcelResource?)instance == null)
                                     {
-                                        var nestedInstance =
-                                            JsonConvert.DeserializeObject(nestedItem.Value!.ToString(), cls);
-                                        resList.Add((ExcelResource)nestedInstance!);
-                                        ((ExcelResource?)nestedInstance)?.Loaded();
-                                        count++;
-                                    }
-                                }
-                                else
-                                {
-                                    resList.Add((ExcelResource)instance);
-                                    ((ExcelResource)instance).Loaded();
-                                }
+                                        // Deserialize as JObject to handle nested dictionaries
+                                        var nestedObject = JsonConvert.DeserializeObject<JObject>(obj.ToString());
 
-                                count++;
-                            }
+                                        foreach (var nestedItem in nestedObject ?? [])
+                                            try
+                                            {
+                                                var nestedInstance =
+                                                    JsonConvert.DeserializeObject(nestedItem.Value!.ToString(), cls);
+                                                resList.Add((ExcelResource)nestedInstance!);
+                                                ((ExcelResource?)nestedInstance)?.Loaded();
+                                                count++;
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                badRecords++;
+                                                firstError ??= ex;
+                                            }
+                                    }
+                                    else
+                                    {
+                                        resList.Add((ExcelResource)instance);
+                                        ((ExcelResource)instance).Loaded();
+                                    }
+
+                                    count++;
+                                }
+                                catch (Exception ex)
+                                {
+                                    badRecords++;
+                                    firstError ??= ex;
+                                }
 
                             break;
                         }
                     }
+                }
+
+                if (badRecords > 0)
+                {
+                    ResourceCache.IsComplete = false;
+                    Logger.Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
+                        $"{fileName} ({badRecords} records)", I18NManager.Translate("Word.Error")), firstError!);
                 }
 
                 resource.Finalized();
