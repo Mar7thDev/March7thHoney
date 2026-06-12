@@ -143,7 +143,7 @@ public class EntryPoint
         if (publicMode)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.PublicModeEnabled"));
-            if (!LicenseManager.ValidateInPublicMode())
+            if (!await OnlineActivationManager.ValidateAsync(GameConstants.GAME_VERSION))
             {
                 Logger.Warn(I18NManager.Translate("Server.ServerInfo.PublicModeValidationFailed"));
                 if (!Console.IsInputRedirected)
