@@ -411,7 +411,6 @@ Lua/
 ## Development
 dev/
 
-## Generated resource cache (regenerated from Resources/ on first run)
-Config/Resource.bin
+## Generated resource cache (Resource.bin is tracked; Resource.cache regenerated on first run)
 Config/Resource.cache
 
