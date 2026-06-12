@@ -56,6 +56,7 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
                 table = attr.ConstructorArguments[0].Value as string ?? table;
 
         var cols = new List<Column>();
+        var regs = new SortedSet<string>(System.StringComparer.Ordinal);
         // Collect properties from the type and its bases (to include Uid), declaration order, base-first.
         var chain = new List<INamedTypeSymbol>();
         for (var t = sym; t != null && t.ToDisplayString() != "object"; t = t.BaseType) chain.Insert(0, t);
@@ -66,9 +67,10 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
             if (member.GetAttributes().Any(a => a.AttributeClass?.Name == "DbIgnoreAttribute")) continue;
             if (cols.Any(c => c.Name == member.Name)) continue;
             cols.Add(Classify(member));
+            CollectCollectionFormatters(member.Type, regs);
         }
 
-        return new Entity(fqn, sym.Name, table, cols);
+        return new Entity(fqn, sym.Name, table, cols, regs.ToList());
     }
 
     private static Column Classify(IPropertySymbol p)
@@ -129,6 +131,54 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         return new Column(p.Name, fqType, underlyingFq, kind, sql, nullable, prim);
     }
 
+    // Complex (MemoryPack) columns are serialized at top level, so List<>/Dictionary<> wrappers at every nesting
+    // level need their formatter registered up front — nothing else registers them (entities aren't
+    // [MemoryPackable]), and under NativeAOT the provider's reflection fallback throws ("failed in provider at
+    // creating formatter"). Walks the column type and records a Register(...) expression per collection level.
+    private static void CollectCollectionFormatters(ITypeSymbol type, ISet<string> regs)
+    {
+        switch (type)
+        {
+            case INamedTypeSymbol named:
+                if (named.OriginalDefinition.SpecialType == SpecialType.System_Nullable_T)
+                {
+                    CollectCollectionFormatters(named.TypeArguments[0], regs);
+                    return;
+                }
+
+                if (named.IsGenericType && named.ContainingNamespace?.ToDisplayString() == "System.Collections.Generic")
+                {
+                    var fmt = SymbolDisplayFormat.FullyQualifiedFormat;
+                    if (named.Name == "List" && named.TypeArguments.Length == 1)
+                    {
+                        var a = named.TypeArguments[0];
+                        regs.Add($"new global::MemoryPack.Formatters.ListFormatter<{a.ToDisplayString(fmt)}>()");
+                        CollectCollectionFormatters(a, regs);
+                        return;
+                    }
+
+                    if (named.Name == "Dictionary" && named.TypeArguments.Length == 2)
+                    {
+                        var k = named.TypeArguments[0];
+                        var v = named.TypeArguments[1];
+                        regs.Add(
+                            $"new global::MemoryPack.Formatters.DictionaryFormatter<{k.ToDisplayString(fmt)}, {v.ToDisplayString(fmt)}>()");
+                        CollectCollectionFormatters(k, regs);
+                        CollectCollectionFormatters(v, regs);
+                        return;
+                    }
+                }
+
+                if (named.IsGenericType)
+                    foreach (var a in named.TypeArguments)
+                        CollectCollectionFormatters(a, regs);
+                return;
+            case IArrayTypeSymbol arr:
+                CollectCollectionFormatters(arr.ElementType, regs);
+                return;
+        }
+    }
+
     private static string Emit(IEnumerable<Entity> entities)
     {
         var list = entities.OrderBy(e => e.ClassName).ToList();
@@ -175,6 +225,25 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         }
 
         sb.AppendLine("    };");
+        sb.AppendLine("}");
+
+        // Eagerly register every collection wrapper formatter used by a Complex column (NativeAOT: no reflection
+        // fallback). Idempotent + guarded; runs at module load before any (de)serialize.
+        var allRegs = list.SelectMany(e => e.Registrations).Distinct()
+            .OrderBy(x => x, System.StringComparer.Ordinal).ToList();
+        sb.AppendLine();
+        sb.AppendLine("internal static class DbCollectionFormatterRegistrar");
+        sb.AppendLine("{");
+        sb.AppendLine("    private static bool _done;");
+        sb.AppendLine();
+        sb.AppendLine("    [global::System.Runtime.CompilerServices.ModuleInitializer]");
+        sb.AppendLine("    internal static void Register()");
+        sb.AppendLine("    {");
+        sb.AppendLine("        if (_done) return;");
+        sb.AppendLine("        _done = true;");
+        foreach (var r in allRegs)
+            sb.AppendLine($"        global::MemoryPack.MemoryPackFormatterProvider.Register({r});");
+        sb.AppendLine("    }");
         sb.AppendLine("}");
 
         return sb.ToString();
@@ -430,11 +499,13 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         public Prim Prim { get; } = prim;
     }
 
-    private sealed class Entity(string fqn, string className, string table, List<Column> columns)
+    private sealed class Entity(string fqn, string className, string table, List<Column> columns,
+        List<string> registrations)
     {
         public string Fqn { get; } = fqn;
         public string ClassName { get; } = className;
         public string Table { get; } = table;
         public List<Column> Columns { get; } = columns;
+        public List<string> Registrations { get; } = registrations;
     }
 }
