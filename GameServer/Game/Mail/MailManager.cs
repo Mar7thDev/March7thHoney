@@ -56,7 +56,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         MailData.MailList.Add(mail);
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkDirty(Player.Uid);
 
         // TODO 4.3: PacketNewMailScNotify (Mail 模块) 暂停
     }
@@ -80,7 +80,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         MailData.MailList.Add(mail);
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkDirty(Player.Uid);
 
         // TODO 4.3: PacketNewMailScNotify (Mail 模块) 暂停
     }
@@ -151,7 +151,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
 
         if (result.SuccessMailIds.Count > 0)
         {
-            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+            DatabaseHelper.MarkDirty(Player.Uid);
 
             if (result.SyncItems.Count > 0)
                 await Player.SendPacket(new PacketPlayerSyncScNotify(result.SyncItems));

@@ -82,14 +82,14 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         if (!Player.PlayerUnlockData!.HeadIcons.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.HeadIcons.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+                            DatabaseHelper.MarkDirty(Player.Uid);
                         }
                         break;
                     case ItemSubTypeEnum.ChatBubble:
                         if (!Player.PlayerUnlockData!.ChatBubbles.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+                            DatabaseHelper.MarkDirty(Player.Uid);
                             // TODO 4.3: PacketUnlockChatBubbleScNotify (Phone 模块) 暂停
                         }
                         break;
@@ -97,7 +97,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         if (!Player.PlayerUnlockData!.PhoneThemes.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+                            DatabaseHelper.MarkDirty(Player.Uid);
                             // TODO 4.3: PacketUnlockPhoneThemeScNotify (Phone 模块) 暂停
                         }
                         break;
@@ -105,14 +105,14 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         if (!Player.PlayerUnlockData!.PersonalCards.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.PersonalCards.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+                            DatabaseHelper.MarkDirty(Player.Uid);
                         }
                         break;
                     case ItemSubTypeEnum.PhoneCase:
                         if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.PhoneCases.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+                            DatabaseHelper.MarkDirty(Player.Uid);
                             // TODO 4.3: PacketUnlockPhoneCaseScNotify (Phone 模块) 暂停
                         }
                         break;
@@ -131,7 +131,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                         if (!value.Contains(itemId))
                         {
                             value.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+                            DatabaseHelper.MarkDirty(Player.Uid);
                             await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
                         }
                         break;
@@ -298,7 +298,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                 break;
         }
 
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkDirty(Player.Uid);
         return item;
     }
 
@@ -388,7 +388,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
             Count = count
         });
 
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkDirty(Player.Uid);
         return itemData;
     }
 
@@ -1148,7 +1148,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
 
         itemData.Level = curLevel;
         itemData.Exp = curExp;
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkDirty(Player.Uid);
         // leftover
         Dictionary<int, ItemData> list = [];
         var leftover = exp;
@@ -1425,7 +1425,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
 
         await RemoveItems(costItems, false);
         itemData.Rank = Math.Min(itemData.Rank + rank, maxRank);
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkDirty(Player.Uid);
         await Player.SendPacket(new PacketPlayerSyncScNotify(itemData, costItems.Select(item => (uint)item.uniqueId)));
         return Retcode.RetSucc;
     }
