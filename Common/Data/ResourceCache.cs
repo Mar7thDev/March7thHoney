@@ -1,3 +1,4 @@
+using System.IO.Compression;
 using MemoryPack;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
@@ -19,14 +20,23 @@ public static class ResourceCache
     {
         // Enable serializing the untyped `object` JSON values used by some resource models.
         MemoryPackFormatterProvider.Register(new JsonObjectMemoryPackFormatter());
+        // BigInteger has no built-in MemoryPack formatter; without this every cached name hash (HashName.Hash)
+        // round-trips to 0. Registered here so it is in place before the first cache Save/Load.
+        MemoryPackFormatterProvider.Register(new BigIntegerMemoryPackFormatter());
     }
 
     public static Task SaveCache()
     {
         return Task.Run(() =>
         {
-            var bytes = MemoryPackSerializer.Serialize(GameData.CreateSnapshot());
-            File.WriteAllBytes(CachePath, bytes);
+            // The snapshot is dominated by highly repetitive level-graph / mission trees, so the raw
+            // MemoryPack blob (~120 MB) shrinks several-fold under Deflate. GZip(Optimal) keeps both
+            // generation (cache-miss only) and per-boot decompression fast without an extra dependency.
+            var raw = MemoryPackSerializer.Serialize(GameData.CreateSnapshot());
+            using var output = new MemoryStream();
+            using (var gzip = new GZipStream(output, CompressionLevel.Optimal, leaveOpen: true))
+                gzip.Write(raw, 0, raw.Length);
+            File.WriteAllBytes(CachePath, output.ToArray());
             Logger.Info(I18NManager.Translate("Server.ServerInfo.GeneratedItem",
                 I18NManager.Translate("Word.Cache")));
         });
@@ -34,7 +44,29 @@ public static class ResourceCache
 
     public static bool LoadCache()
     {
-        var snapshot = MemoryPackSerializer.Deserialize<GameDataSnapshot>(File.ReadAllBytes(CachePath));
+        GameDataSnapshot? snapshot;
+        try
+        {
+            var bytes = File.ReadAllBytes(CachePath);
+
+            // Legacy uncompressed caches (raw MemoryPack) lack the gzip magic (0x1F 0x8B). Reject them so
+            // the caller rebuilds in the current compressed format instead of feeding a non-gzip blob to
+            // the decoder. A corrupt/truncated cache likewise falls through to a clean rebuild below.
+            if (bytes.Length < 2 || bytes[0] != 0x1F || bytes[1] != 0x8B) return false;
+
+            using var input = new MemoryStream(bytes);
+            using var gzip = new GZipStream(input, CompressionMode.Decompress);
+            using var output = new MemoryStream();
+            gzip.CopyTo(output);
+            snapshot = MemoryPackSerializer.Deserialize<GameDataSnapshot>(output.ToArray());
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(I18NManager.Translate("Server.ServerInfo.FailedToLoadItem",
+                I18NManager.Translate("Word.Cache")), ex);
+            return false;
+        }
+
         if (snapshot == null) return false;
 
         GameData.ApplySnapshot(snapshot);

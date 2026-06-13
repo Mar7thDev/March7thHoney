@@ -252,11 +252,17 @@ public static class HandbookGenerator
     {
         foreach (var avatar in GameData.AvatarConfigData.Values)
         {
-            var name = map.TryGetValue(avatar.AvatarName.Hash, out var value) ? value :
-                fallback.TryGetValue(avatar.AvatarName.Hash, out value) ? value : $"[{avatar.AvatarName.Hash}]";
+            var resolved = TryGetNameFromTextMap(avatar.AvatarName.Hash, map, fallback, out var name);
+
+            // Legacy AvatarConfig dumps carry old 32-bit name hashes that no longer resolve against the
+            // current 64-bit TextMap (e.g. 1001 March 7th -> [-531793651]). The character's inventory item
+            // shares the avatar id and keeps a valid name hash, so fall back to it.
+            if (!resolved && GameData.ItemConfigData.TryGetValue(avatar.AvatarID, out var item))
+                resolved = TryGetNameFromTextMap(item.ItemName.Hash, map, fallback, out name);
+
             builder.AppendLine(avatar.AvatarID + ": " + name);
 
-            if (setName && name != $"[{avatar.AvatarName.Hash}]") avatar.Name = name;
+            if (setName && resolved) avatar.Name = name;
         }
     }
 
@@ -381,6 +387,21 @@ public static class HandbookGenerator
         if (map.TryGetValue(key, out var value)) return value;
         if (fallback.TryGetValue(key, out value)) return value;
         return $"[{key}]";
+    }
+
+    // As GetNameFromTextMap, but reports whether the hash actually resolved (vs. an unresolved "[hash]"
+    // placeholder) so callers can apply a fallback source instead of persisting a placeholder as a name.
+    public static bool TryGetNameFromTextMap(BigInteger key, Dictionary<BigInteger, string> map,
+        Dictionary<BigInteger, string> fallback, out string name)
+    {
+        if (map.TryGetValue(key, out var value) || fallback.TryGetValue(key, out value))
+        {
+            name = value;
+            return true;
+        }
+
+        name = $"[{key}]";
+        return false;
     }
 
     public static void WriteToFile(string lang, string content)
