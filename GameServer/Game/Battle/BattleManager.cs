@@ -147,7 +147,10 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 foreach (var sceneAvatar in avatarList)
                 {
                     var avatarId = sceneAvatar.AvatarInfo.BaseAvatarId;
-                    if (!castTechniqueIds.Contains(avatarId)) continue;
+                    // Inject only live (Cast) flags. A "_Out" transform-exit set State=Abandoned, which is
+                    // skipped here exactly as the old HashSet.Remove dropped the membership.
+                    if (!castTechniqueIds.TryGetValue(avatarId, out var techniqueInfo) ||
+                        techniqueInfo.State != TechniqueCastState.Cast) continue;
 
                     // The battle was entered via THIS avatar's own skillIndex-1 technique-attack?
                     var committed = isSkill && avatarId == attackerAvatarId;
