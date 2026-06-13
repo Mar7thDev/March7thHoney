@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Offering;
 
 [Opcode(CmdIds.SubmitOfferingItemCsReq)]
-public class HandlerSubmitOfferingItemCsReq : Handler
+public class HandlerSubmitOfferingItemCsReq : Handler<SubmitOfferingItemCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SubmitOfferingItemCsReq req)
     {
-        var req = SubmitOfferingItemCsReq.Parser.ParseFrom(data);
-
-        var res = await connection.Player!.OfferingManager!.SubmitOfferingItem((int)req.OfferingId);
+        var res = await player.OfferingManager!.SubmitOfferingItem((int)req.OfferingId);
 
         await connection.SendPacket(new PacketSubmitOfferingItemScRsp(res.Item1, res.data));
     }
