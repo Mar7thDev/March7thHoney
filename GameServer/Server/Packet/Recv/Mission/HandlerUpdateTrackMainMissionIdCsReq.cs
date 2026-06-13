@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mission;
 
 [Opcode(CmdIds.UpdateTrackMainMissionIdCsReq)]
-public class HandlerUpdateTrackMainMissionIdCsReq : Handler
+public class HandlerUpdateTrackMainMissionIdCsReq : Handler<UpdateTrackMainMissionCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, UpdateTrackMainMissionCsReq req)
     {
-        var req = UpdateTrackMainMissionCsReq.Parser.ParseFrom(data);
-
-        var missionData = connection.Player!.MissionManager!.Data;
+        var missionData = player.MissionManager!.Data;
         var prev = missionData.TrackingMainMissionId;
         var target = ResolveTrackMissionId(req, missionData, prev);
         missionData.TrackingMainMissionId = target;

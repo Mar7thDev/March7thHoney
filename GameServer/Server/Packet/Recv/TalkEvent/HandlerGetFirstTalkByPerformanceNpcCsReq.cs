@@ -5,11 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.TalkEvent;
 
 [Opcode(CmdIds.GetFirstTalkByPerformanceNpcCsReq)]
-public class HandlerGetFirstTalkByPerformanceNpcCsReq : Handler
+public class HandlerGetFirstTalkByPerformanceNpcCsReq : Handler<GetFirstTalkByPerformanceNpcCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetFirstTalkByPerformanceNpcCsReq req)
     {
-        var req = GetFirstTalkByPerformanceNpcCsReq.Parser.ParseFrom(data);
         await connection.SendPacket(new PacketGetFirstTalkByPerformanceNpcScRsp(req));
     }
 }
