@@ -50,15 +50,22 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 ? new SkillResultData(Retcode.RetSucc)
                 : new SkillResultData(Retcode.RetSceneEntityNotExist);
 
-        // Mark the caster as having released a technique (秘技) this scene. A technique is cast either
-        // via SceneCastSkillCostMp (barrier/summon: Dahlia, Cyrene, Silver Wolf...) OR as a skillIndex-1
-        // maze-skill SceneCastSkill (transform/mech techniques like Himeko Nova send NO CostMp). Flagging
-        // on skillIndex 1 here, together with the CostMp handler, makes the scene->battle technique relay
-        // general across every cast style — gated on a real in-scene cast, never on freesr. This only
-        // records intent (HashSet add); the buffs are injected as battle data at StartBattle, so no scene
-        // modifier runs and no avatar id is hard-coded.
-        if (req.SkillIndex == 1 && attackEntity is AvatarSceneInfo techniqueCaster)
-            Player.SceneInstance!.CastTechniqueAvatarIds.Add(techniqueCaster.AvatarInfo.BaseAvatarId);
+        // Track which avatars released (and kept) a technique (秘技) this scene. A technique is cast via
+        // SceneCastSkillCostMp (barrier/summon/buff: Dahlia, Cyrene, TohsakaRin, Gilgamesh, FuXuan...) OR
+        // as a skillIndex-1 maze-skill SceneCastSkill (transform techniques like Himeko Nova send NO
+        // CostMp). Flagging here + in the CostMp handler makes the scene->battle relay general across
+        // every cast style — gated on a real in-scene cast, never on freesr. An explicit exit/cancel of a
+        // transform state (mazeAbilityStr "...MazeSkill_Out", e.g. Himeko Nova leaving mech) UN-flags the
+        // caster so an abandoned technique does not carry into the next battle. Records intent only
+        // (HashSet); buffs are injected as battle data at StartBattle. No avatar id is hard-coded.
+        if (attackEntity is AvatarSceneInfo techniqueCaster)
+        {
+            var casterAvatarId = techniqueCaster.AvatarInfo.BaseAvatarId;
+            if (req.MazeAbilityStr.Contains("_Out"))
+                Player.SceneInstance!.CastTechniqueAvatarIds.Remove(casterAvatarId);
+            else if (req.SkillIndex == 1)
+                Player.SceneInstance!.CastTechniqueAvatarIds.Add(casterAvatarId);
+        }
 
         // get ability file
         var abilities = GetAbilityConfig(attackEntity);
