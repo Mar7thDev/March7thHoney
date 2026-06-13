@@ -10,7 +10,7 @@ public class MissionHandlerEnterRaidScene : MissionFinishTypeHandler
 {
     public override async ValueTask HandleMissionFinishType(PlayerInstance player, SubMissionInfo info, object? arg)
     {
-        if (player.RaidManager!.RaidData.CurRaidId != info.ParamInt1)
+        if (player.RaidManager!.Data.CurRaidId != info.ParamInt1)
             // change raid
             await player.RaidManager!.EnterRaid(info.ParamInt1, 0);
         await player.EnterScene(info.ParamInt2, 0, true);

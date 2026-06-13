@@ -13,23 +13,21 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Mail;
 
-public class MailManager(PlayerInstance player) : BasePlayerManager(player)
+public class MailManager(PlayerInstance player) : BasePlayerManager<MailData>(player)
 {
-    public MailData MailData { get; } = DatabaseHelper.Instance!.GetInstanceOrCreateNew<MailData>(player.Uid);
-
     public List<MailInfo> GetMailList()
     {
-        return MailData.MailList;
+        return Data.MailList;
     }
 
     public MailInfo? GetMail(int mailId)
     {
-        return MailData.MailList.Find(x => x.MailID == mailId);
+        return Data.MailList.Find(x => x.MailID == mailId);
     }
 
     public List<uint> GetMailIdsWithAttachments()
     {
-        return MailData.MailList
+        return Data.MailList
             .Where(mail => mail.Attachment.HasValidItems())
             .Select(mail => (uint)mail.MailID)
             .ToList();
@@ -37,16 +35,16 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
 
     public void DeleteMail(int mailId)
     {
-        var index = MailData.MailList.FindIndex(x => x.MailID == mailId);
+        var index = Data.MailList.FindIndex(x => x.MailID == mailId);
         if (index < 0) return;
-        MailData.MailList.RemoveAt(index);
+        Data.MailList.RemoveAt(index);
     }
 
     public async ValueTask SendMail(string sender, string title, string content, int templateId, int expiredDay = 30)
     {
         var mail = new MailInfo
         {
-            MailID = MailData.NextMailId++,
+            MailID = Data.NextMailId++,
             SenderName = sender,
             Content = content,
             Title = title,
@@ -55,7 +53,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
             ExpireTime = DateTime.Now.AddDays(expiredDay).ToUnixSec()
         };
 
-        MailData.MailList.Add(mail);
+        Data.MailList.Add(mail);
         DatabaseHelper.MarkDirty(Player.Uid);
 
         // TODO 4.3: PacketNewMailScNotify (Mail 模块) 暂停
@@ -66,7 +64,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
     {
         var mail = new MailInfo
         {
-            MailID = MailData.NextMailId++,
+            MailID = Data.NextMailId++,
             SenderName = sender,
             Content = content,
             Title = title,
@@ -79,7 +77,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
             }
         };
 
-        MailData.MailList.Add(mail);
+        Data.MailList.Add(mail);
         DatabaseHelper.MarkDirty(Player.Uid);
 
         // TODO 4.3: PacketNewMailScNotify (Mail 模块) 暂停
@@ -89,7 +87,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
     {
         var list = new List<ClientMail>();
 
-        foreach (var mail in MailData.MailList) list.Add(mail.ToProto());
+        foreach (var mail in Data.MailList) list.Add(mail.ToProto());
 
         return list;
     }
@@ -98,7 +96,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager(player)
     {
         var list = new List<ClientMail>();
 
-        foreach (var mail in MailData.NoticeMailList) list.Add(mail.ToProto());
+        foreach (var mail in Data.NoticeMailList) list.Add(mail.ToProto());
 
         return list;
     }

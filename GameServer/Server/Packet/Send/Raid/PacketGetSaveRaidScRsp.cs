@@ -10,7 +10,7 @@ public class PacketGetSaveRaidScRsp : BasePacket
     {
         var proto = new GetSaveRaidScRsp();
 
-        if (player.RaidManager!.RaidData.RaidRecordDatas.TryGetValue(raidId, out var dict))
+        if (player.RaidManager!.Data.RaidRecordDatas.TryGetValue(raidId, out var dict))
         {
             if (dict.TryGetValue(worldLevel, out var record))
             {

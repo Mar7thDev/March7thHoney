@@ -20,7 +20,7 @@ public class PacketGetAvatarDataScRsp : BasePacket
 
         var basicTypeIds = new HashSet<uint>();
 
-        foreach (var avatar in player.AvatarManager?.AvatarData?.FormalAvatars ?? Enumerable.Empty<March7thHoney.Database.Avatar.FormalAvatarInfo>())
+        foreach (var avatar in player.AvatarManager?.Data?.FormalAvatars ?? Enumerable.Empty<March7thHoney.Database.Avatar.FormalAvatarInfo>())
         {
             proto.AvatarList.Add(avatar.ToProto());
             var pathProtos = avatar.ToAvatarPathDataProto();

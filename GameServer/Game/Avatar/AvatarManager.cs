@@ -13,10 +13,8 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Avatar;
 
-public class AvatarManager(PlayerInstance player) : BasePlayerManager(player)
+public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData>(player)
 {
-    public AvatarData AvatarData { get; } = DatabaseHelper.Instance!.GetInstanceOrCreateNew<AvatarData>(player.Uid);
-
     public async ValueTask<AvatarConfigExcel?> AddAvatar(int avatarId, bool sync = true, bool notify = true,
         bool isGacha = false)
     {
@@ -28,7 +26,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager(player)
         if (multiPathAvatar != null && multiPathAvatar.BaseAvatarID != avatarId)
         {
             // Is path
-            foreach (var avatarData in AvatarData.FormalAvatars)
+            foreach (var avatarData in Data.FormalAvatars)
                 if (avatarData.AvatarId == multiPathAvatar.BaseAvatarID)
                 {
                     // Add path for the character
@@ -47,7 +45,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager(player)
             CurrentSp = 0
         };
 
-        AvatarData.FormalAvatars.Add(avatar);
+        Data.FormalAvatars.Add(avatar);
 
         if (avatarExcel.Rarity == RarityEnum.CombatPowerAvatarRarityType5 && avatarExcel.AvatarID <= 3000)
             // add development
@@ -68,17 +66,17 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager(player)
     public FormalAvatarInfo? GetFormalAvatar(int avatarId)
     {
         GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPathAvatar);
-        return AvatarData.FormalAvatars.Find(avatar => avatar.BaseAvatarId ==
+        return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId ==
                                                        (multiPathAvatar?.BaseAvatarID ?? avatarId));
     }
 
     public SpecialAvatarInfo? GetTrialAvatar(int avatarId, bool refresh = false)
     {
-        var avatar = AvatarData.TrialAvatars.Find(avatar => avatar.SpecialAvatarId == avatarId);
+        var avatar = Data.TrialAvatars.Find(avatar => avatar.SpecialAvatarId == avatarId);
         if (avatar != null)
         {
             if (refresh)
-                AvatarData.TrialAvatars.Remove(avatar);
+                Data.TrialAvatars.Remove(avatar);
             else
                 return avatar;
         }
@@ -111,13 +109,13 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager(player)
 
         if (!GameData.AvatarConfigData.TryGetValue(avatar.BaseAvatarId, out _)) return avatar;
         avatar.GetCurPathInfo().GetSkillTree();
-        AvatarData.TrialAvatars.Add(avatar);
+        Data.TrialAvatars.Add(avatar);
         return avatar;
     }
 
     public SpecialAvatarInfo? GetTrialAvatarByWorldLevel(int specialAvatarId, int worldLevel)
     {
-        var avatar = AvatarData.TrialAvatars.Find(a => a.SpecialAvatarId == specialAvatarId);
+        var avatar = Data.TrialAvatars.Find(a => a.SpecialAvatarId == specialAvatarId);
         if (avatar != null) return avatar;
 
         SpecialAvatarExcel? excel = null;
@@ -150,13 +148,13 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager(player)
 
         if (!GameData.AvatarConfigData.TryGetValue(avatar.BaseAvatarId, out _)) return avatar;
         avatar.GetCurPathInfo().GetSkillTree();
-        AvatarData.TrialAvatars.Add(avatar);
+        Data.TrialAvatars.Add(avatar);
         return avatar;
     }
 
     public FormalAvatarInfo? GetHero()
     {
-        return AvatarData.FormalAvatars.Find(avatar => avatar.BaseAvatarId == 8001);
+        return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId == 8001);
     }
 
     public async ValueTask ReforgeRelic(int uniqueId)
