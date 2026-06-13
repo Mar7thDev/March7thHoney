@@ -49,6 +49,17 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             return handledDestruct
                 ? new SkillResultData(Retcode.RetSucc)
                 : new SkillResultData(Retcode.RetSceneEntityNotExist);
+
+        // Mark the caster as having released a technique (秘技) this scene. A technique is cast either
+        // via SceneCastSkillCostMp (barrier/summon: Dahlia, Cyrene, Silver Wolf...) OR as a skillIndex-1
+        // maze-skill SceneCastSkill (transform/mech techniques like Himeko Nova send NO CostMp). Flagging
+        // on skillIndex 1 here, together with the CostMp handler, makes the scene->battle technique relay
+        // general across every cast style — gated on a real in-scene cast, never on freesr. This only
+        // records intent (HashSet add); the buffs are injected as battle data at StartBattle, so no scene
+        // modifier runs and no avatar id is hard-coded.
+        if (req.SkillIndex == 1 && attackEntity is AvatarSceneInfo techniqueCaster)
+            Player.SceneInstance!.CastTechniqueAvatarIds.Add(techniqueCaster.AvatarInfo.BaseAvatarId);
+
         // get ability file
         var abilities = GetAbilityConfig(attackEntity);
 
