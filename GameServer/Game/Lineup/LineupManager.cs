@@ -12,44 +12,41 @@ using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
 namespace March7thHoney.GameServer.Game.Lineup;
 
-public class LineupManager : BasePlayerManager
+public class LineupManager : BasePlayerManager<LineupData>
 {
     public LineupManager(PlayerInstance player) : base(player)
     {
-        LineupData = DatabaseHelper.Instance!.GetInstanceOrCreateNew<LineupData>(player.Uid);
-        foreach (var lineupInfo in LineupData.Lineups.Values)
+        foreach (var lineupInfo in Data.Lineups.Values)
         {
-            lineupInfo.LineupData = LineupData;
-            lineupInfo.AvatarData = player.AvatarManager!.AvatarData;
+            lineupInfo.LineupData = Data;
+            lineupInfo.AvatarData = player.AvatarManager!.Data;
         }
     }
-
-    public LineupData LineupData { get; }
 
     #region Detail
 
     public LineupInfo? GetLineup(int lineupIndex)
     {
-        LineupData.Lineups.TryGetValue(lineupIndex, out var lineup);
+        Data.Lineups.TryGetValue(lineupIndex, out var lineup);
         return lineup;
     }
 
     public LineupInfo? GetExtraLineup(ExtraLineupType type)
     {
         var index = (int)type + 10;
-        LineupData.Lineups.TryGetValue(index, out var lineup);
+        Data.Lineups.TryGetValue(index, out var lineup);
         return lineup;
     }
 
     public LineupInfo? GetCurLineup()
     {
-        var lineup = GetLineup(LineupData.GetCurLineupIndex());
+        var lineup = GetLineup(Data.GetCurLineupIndex());
         return lineup;
     }
 
     public int GetMaxMp()
     {
-        return 5 + LineupData.ExtraMpCount;
+        return 5 + Data.ExtraMpCount;
     }
 
     public List<AvatarLineupData> GetAvatarsFromTeam(int index)
@@ -93,13 +90,13 @@ public class LineupManager : BasePlayerManager
 
     public List<AvatarLineupData> GetAvatarsFromCurTeam()
     {
-        return GetAvatarsFromTeam(LineupData.GetCurLineupIndex());
+        return GetAvatarsFromTeam(Data.GetCurLineupIndex());
     }
 
     public List<LineupInfo> GetAllLineup()
     {
         var lineupList = new List<LineupInfo>();
-        foreach (var lineupInfo in LineupData.Lineups.Values) lineupList.Add(lineupInfo);
+        foreach (var lineupInfo in Data.Lineups.Values) lineupList.Add(lineupInfo);
         if (lineupList.Count < GameConstants.MAX_LINEUP_COUNT)
             for (var i = lineupList.Count; i < GameConstants.MAX_LINEUP_COUNT; i++)
             {
@@ -108,11 +105,11 @@ public class LineupManager : BasePlayerManager
                     Name = "",
                     LineupType = 0,
                     BaseAvatars = [],
-                    LineupData = LineupData,
-                    AvatarData = Player.AvatarManager!.AvatarData
+                    LineupData = Data,
+                    AvatarData = Player.AvatarManager!.Data
                 };
                 lineupList.Add(lineup);
-                LineupData.Lineups.Add(i, lineup);
+                Data.Lineups.Add(i, lineup);
             }
 
         return lineupList;
@@ -124,10 +121,10 @@ public class LineupManager : BasePlayerManager
 
     public async ValueTask<bool> SetCurLineup(int lineupIndex)
     {
-        if (lineupIndex < 0 || !LineupData.Lineups.ContainsKey(lineupIndex)) return false;
+        if (lineupIndex < 0 || !Data.Lineups.ContainsKey(lineupIndex)) return false;
         if (GetLineup(lineupIndex)!.BaseAvatars!.Count == 0) return false;
-        LineupData.CurLineup = lineupIndex;
-        LineupData.CurExtraLineup = -1;
+        Data.CurLineup = lineupIndex;
+        Data.CurExtraLineup = -1;
 
         Player.SceneInstance?.SyncLineup();
         await Player.SendPacket(new PacketSyncLineupNotify(GetCurLineup()!));
@@ -140,14 +137,14 @@ public class LineupManager : BasePlayerManager
         if (type == ExtraLineupType.LineupNone)
         {
             // reset lineup
-            LineupData.CurExtraLineup = -1;
+            Data.CurExtraLineup = -1;
             return;
         }
 
         var index = (int)type + 10;
 
         // destroy old lineup
-        LineupData.Lineups.Remove(index);
+        Data.Lineups.Remove(index);
 
         // create new lineup
         var lineup = new LineupInfo
@@ -155,8 +152,8 @@ public class LineupManager : BasePlayerManager
             Name = "",
             LineupType = (int)type,
             BaseAvatars = [],
-            LineupData = LineupData,
-            AvatarData = Player.AvatarManager!.AvatarData
+            LineupData = Data,
+            AvatarData = Player.AvatarManager!.Data
         };
 
         var worldLevel = type == ExtraLineupType.LineupStageTrial ? 0 : Player.Data.WorldLevel;
@@ -181,8 +178,8 @@ public class LineupManager : BasePlayerManager
             }
         }
 
-        LineupData.Lineups.Add(index, lineup);
-        LineupData.CurExtraLineup = index;
+        Data.Lineups.Add(index, lineup);
+        Data.CurExtraLineup = index;
     }
 
     public async ValueTask SetExtraLineup(ExtraLineupType type, bool notify = true)
@@ -190,7 +187,7 @@ public class LineupManager : BasePlayerManager
         if (type == ExtraLineupType.LineupNone)
         {
             // reset lineup
-            LineupData.CurExtraLineup = -1;
+            Data.CurExtraLineup = -1;
             if (notify) await Player.SendPacket(new PacketSyncLineupNotify(GetCurLineup()!));
             return;
         }
@@ -201,7 +198,7 @@ public class LineupManager : BasePlayerManager
         var lineup = GetExtraLineup(type);
         if (lineup == null || lineup.BaseAvatars?.Count == 0) return;
 
-        LineupData.CurExtraLineup = index;
+        Data.CurExtraLineup = index;
 
         // sync
         if (notify) await Player.SendPacket(new PacketSyncLineupNotify(GetCurLineup()!));
@@ -210,7 +207,7 @@ public class LineupManager : BasePlayerManager
     public async ValueTask AddAvatar(int lineupIndex, int avatarId, bool sendPacket = true)
     {
         if (lineupIndex < 0) return;
-        LineupData.Lineups.TryGetValue(lineupIndex, out var lineup);
+        Data.Lineups.TryGetValue(lineupIndex, out var lineup);
 
         if (lineup == null)
         {
@@ -240,10 +237,10 @@ public class LineupManager : BasePlayerManager
                     new LineupAvatarInfo
                         { BaseAvatarId = baseAvatarId, SpecialAvatarId = specialAvatar?.SpecialAvatarID ?? 0 }
                 ],
-                LineupData = LineupData,
-                AvatarData = Player.AvatarManager!.AvatarData
+                LineupData = Data,
+                AvatarData = Player.AvatarManager!.Data
             };
-            LineupData.Lineups.Add(lineupIndex, lineup);
+            Data.Lineups.Add(lineupIndex, lineup);
         }
         else
         {
@@ -268,24 +265,24 @@ public class LineupManager : BasePlayerManager
 
             lineup.BaseAvatars?.Add(new LineupAvatarInfo
                 { BaseAvatarId = baseAvatarId, SpecialAvatarId = specialAvatar?.SpecialAvatarID ?? 0 });
-            LineupData.Lineups[lineupIndex] = lineup;
+            Data.Lineups[lineupIndex] = lineup;
         }
 
         if (sendPacket)
         {
-            if (lineupIndex == LineupData.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+            if (lineupIndex == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
 
     public async ValueTask AddAvatarToCurTeam(int avatarId, bool sendPacket = true)
     {
-        await AddAvatar(LineupData.GetCurLineupIndex(), avatarId, sendPacket);
+        await AddAvatar(Data.GetCurLineupIndex(), avatarId, sendPacket);
     }
 
     public async ValueTask AddSpecialAvatarToCurTeam(int specialAvatarId, bool sendPacket = true)
     {
-        LineupData.Lineups.TryGetValue(LineupData.GetCurLineupIndex(), out var lineup);
+        Data.Lineups.TryGetValue(Data.GetCurLineupIndex(), out var lineup);
         GameData.SpecialAvatarData.TryGetValue(specialAvatarId, out var specialAvatar);
         if (specialAvatar == null) return;
         Player.AvatarManager!.GetTrialAvatar(specialAvatar.SpecialAvatarID)?.CheckLevel(Player.Data.WorldLevel);
@@ -300,17 +297,17 @@ public class LineupManager : BasePlayerManager
                     new LineupAvatarInfo
                         { BaseAvatarId = specialAvatar.AvatarID, SpecialAvatarId = specialAvatar.SpecialAvatarID }
                 ],
-                LineupData = LineupData,
-                AvatarData = Player.AvatarManager!.AvatarData
+                LineupData = Data,
+                AvatarData = Player.AvatarManager!.Data
             };
-            LineupData.Lineups.Add(LineupData.GetCurLineupIndex(), lineup);
+            Data.Lineups.Add(Data.GetCurLineupIndex(), lineup);
         }
         else
         {
             if (lineup.BaseAvatars!.Count >= 4) lineup.BaseAvatars!.RemoveAt(3); // remove last avatar
             lineup.BaseAvatars?.Add(new LineupAvatarInfo
                 { BaseAvatarId = specialAvatar.AvatarID, SpecialAvatarId = specialAvatar.SpecialAvatarID });
-            LineupData.Lineups[LineupData.GetCurLineupIndex()] = lineup;
+            Data.Lineups[Data.GetCurLineupIndex()] = lineup;
         }
 
         if (sendPacket)
@@ -323,25 +320,25 @@ public class LineupManager : BasePlayerManager
     public async ValueTask RemoveAvatar(int lineupIndex, int avatarId, bool sendPacket = true)
     {
         if (lineupIndex < 0) return;
-        LineupData.Lineups.TryGetValue(lineupIndex, out var lineup);
+        Data.Lineups.TryGetValue(lineupIndex, out var lineup);
         if (lineup == null) return;
         GameData.SpecialAvatarData.TryGetValue(avatarId * 10 + Player.Data.WorldLevel, out var specialAvatar);
         if (specialAvatar != null)
             lineup.BaseAvatars?.RemoveAll(avatar => avatar.BaseAvatarId == specialAvatar.AvatarID);
         else
             lineup.BaseAvatars?.RemoveAll(avatar => avatar.BaseAvatarId == avatarId);
-        LineupData.Lineups[lineupIndex] = lineup;
+        Data.Lineups[lineupIndex] = lineup;
 
         if (sendPacket)
         {
-            if (lineupIndex == LineupData.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+            if (lineupIndex == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
 
     public async ValueTask RemoveAvatarFromCurTeam(int avatarId, bool sendPacket = true)
     {
-        await RemoveAvatar(LineupData.GetCurLineupIndex(), avatarId, sendPacket);
+        await RemoveAvatar(Data.GetCurLineupIndex(), avatarId, sendPacket);
     }
 
     public async ValueTask ReplaceLineup(int lineupIndex, List<int> lineupSlotList,
@@ -349,22 +346,22 @@ public class LineupManager : BasePlayerManager
     {
         if (extraLineupType != ExtraLineupType.LineupNone)
         {
-            LineupData.CurExtraLineup = (int)extraLineupType + 10;
-            if (!LineupData.Lineups.ContainsKey(LineupData.CurExtraLineup)) SetExtraLineup(extraLineupType, []);
+            Data.CurExtraLineup = (int)extraLineupType + 10;
+            if (!Data.Lineups.ContainsKey(Data.CurExtraLineup)) SetExtraLineup(extraLineupType, []);
         }
 
         LineupInfo lineup;
-        if (LineupData.CurExtraLineup != -1)
-            lineup = LineupData.Lineups[LineupData.CurExtraLineup]; // Extra lineup
-        else if (lineupIndex < 0 || !LineupData.Lineups.TryGetValue(lineupIndex, out var dataLineup))
+        if (Data.CurExtraLineup != -1)
+            lineup = Data.Lineups[Data.CurExtraLineup]; // Extra lineup
+        else if (lineupIndex < 0 || !Data.Lineups.TryGetValue(lineupIndex, out var dataLineup))
             return;
         else
             lineup = dataLineup;
         lineup.BaseAvatars = [];
-        var index = lineup.LineupType == 0 ? lineupIndex : LineupData.GetCurLineupIndex();
+        var index = lineup.LineupType == 0 ? lineupIndex : Data.GetCurLineupIndex();
         foreach (var avatar in lineupSlotList) await AddAvatar(index, avatar, false);
 
-        if (index == LineupData.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+        if (index == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 
@@ -372,29 +369,29 @@ public class LineupManager : BasePlayerManager
     {
         if (req.ExtraLineupType != ExtraLineupType.LineupNone)
         {
-            LineupData.CurExtraLineup = (int)req.ExtraLineupType + 10;
-            if (!LineupData.Lineups.ContainsKey(LineupData.CurExtraLineup)) SetExtraLineup(req.ExtraLineupType, []);
+            Data.CurExtraLineup = (int)req.ExtraLineupType + 10;
+            if (!Data.Lineups.ContainsKey(Data.CurExtraLineup)) SetExtraLineup(req.ExtraLineupType, []);
         }
 
         LineupInfo lineup;
-        if (LineupData.CurExtraLineup != -1)
-            lineup = LineupData.Lineups[LineupData.CurExtraLineup]; // Extra lineup
-        else if (!LineupData.Lineups.ContainsKey((int)req.Index))
+        if (Data.CurExtraLineup != -1)
+            lineup = Data.Lineups[Data.CurExtraLineup]; // Extra lineup
+        else if (!Data.Lineups.ContainsKey((int)req.Index))
             return;
         else
-            lineup = LineupData.Lineups[(int)req.Index];
+            lineup = Data.Lineups[(int)req.Index];
         lineup.BaseAvatars = [];
-        var index = lineup.LineupType == 0 ? (int)req.Index : LineupData.GetCurLineupIndex();
+        var index = lineup.LineupType == 0 ? (int)req.Index : Data.GetCurLineupIndex();
         foreach (var avatar in req.LineupSlotList) await AddAvatar(index, (int)avatar.Id, false);
 
-        if (index == LineupData.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+        if (index == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 
     public async ValueTask DestroyExtraLineup(ExtraLineupType type)
     {
         var index = (int)type + 10;
-        LineupData.Lineups.Remove(index);
+        Data.Lineups.Remove(index);
         await Player.SendPacket(new PacketExtraLineupDestroyNotify(type));
     }
 
