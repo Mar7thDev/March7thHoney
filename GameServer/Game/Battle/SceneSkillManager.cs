@@ -269,10 +269,10 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
     // returning every matching buff (Firefly -> 131001 + 131002). Empty when the avatar has no
     // SkillMaze technique buff (e.g. Gilgamesh's chain field is not a SkillMaze maze buff): we never
     // inject a guessed id — that matches the reference server, which injects nothing for such avatars.
-    public static List<(int BuffId, int Level)> GetTechniqueMazeBuffs(int avatarId) =>
+    public static List<(int BuffId, int Level, string UseType)> GetTechniqueMazeBuffs(int avatarId) =>
         GameData.MazeBuffData
             .Where(kvp => kvp.Key / 10 / 100 == avatarId && kvp.Value.InBattleBindingKey == "SkillMaze")
-            .Select(kvp => (BuffId: kvp.Key / 10, Level: kvp.Value.Lv))
+            .Select(kvp => (BuffId: kvp.Key / 10, Level: kvp.Value.Lv, kvp.Value.UseType))
             .Distinct()
             .ToList();
 
