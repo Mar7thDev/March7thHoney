@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Friend;
 using March7thHoney.Database.Inventory;
@@ -58,164 +59,19 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
         switch (itemConfig.ItemMainType)
         {
             case ItemMainTypeEnum.Equipment:
-                if (Data.EquipmentItems.Count + 1 > GameConstants.INVENTORY_MAX_EQUIPMENT) // get the max equipment
-                {
-                    await Player.SendPacket(new PacketRetcodeNotify(Retcode.RetEquipmentExceedLimit));
-                    break;
-                }
-
-                itemData = await PutItem(itemId, 1, rank, promotion, level, uniqueId: ++Data.NextUniqueId);
-
-                if (itemConfig.Rarity == ItemRarityEnum.SuperRare)
-                    // add development
-                    Player.FriendRecordData!.AddAndRemoveOld(new FriendDevelopmentInfoPb
-                    {
-                        DevelopmentType = (DevelopmentType)11,
-                        Params = { { "EquipmentTid", (uint)itemConfig.ID } }
-                    });
+                itemData = await AddEquipmentItem(itemId, rank, level, promotion, itemConfig);
                 break;
             case ItemMainTypeEnum.Usable:
-                switch (itemConfig.ItemSubType)
-                {
-                    case ItemSubTypeEnum.HeadIcon:
-                        if (!Player.PlayerUnlockData!.HeadIcons.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.HeadIcons.Add(itemId);
-                            MarkDirty();
-                        }
-                        break;
-                    case ItemSubTypeEnum.ChatBubble:
-                        if (!Player.PlayerUnlockData!.ChatBubbles.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
-                            MarkDirty();
-                            // TODO 4.3: PacketUnlockChatBubbleScNotify (Phone 模块) 暂停
-                        }
-                        break;
-                    case ItemSubTypeEnum.PhoneTheme:
-                        if (!Player.PlayerUnlockData!.PhoneThemes.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
-                            MarkDirty();
-                            // TODO 4.3: PacketUnlockPhoneThemeScNotify (Phone 模块) 暂停
-                        }
-                        break;
-                    case ItemSubTypeEnum.PersonalCard:
-                        if (!Player.PlayerUnlockData!.PersonalCards.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.PersonalCards.Add(itemId);
-                            MarkDirty();
-                        }
-                        break;
-                    case ItemSubTypeEnum.PhoneCase:
-                        if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.PhoneCases.Add(itemId);
-                            MarkDirty();
-                            // TODO 4.3: PacketUnlockPhoneCaseScNotify (Phone 模块) 暂停
-                        }
-                        break;
-                    case ItemSubTypeEnum.PlayerOutfit:
-                        itemData = await PutItem(itemId, count);
-                        break;
-                    case ItemSubTypeEnum.AvatarSkin:
-                        if (!GameData.AvatarSkinData.TryGetValue(itemId, out var skinExcel)) break;
-                        var avatarId = skinExcel.AvatarID;
-                        if (!Player.PlayerUnlockData!.Skins.TryGetValue(avatarId, out var value))
-                        {
-                            value = [];
-                            Player.PlayerUnlockData.Skins[avatarId] = value;
-                        }
-
-                        if (!value.Contains(itemId))
-                        {
-                            value.Add(itemId);
-                            MarkDirty();
-                            await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
-                        }
-                        break;
-                    case ItemSubTypeEnum.Food:
-                    case ItemSubTypeEnum.Book:
-                    case ItemSubTypeEnum.FindChest:
-                    case ItemSubTypeEnum.Gift:
-                    case ItemSubTypeEnum.ForceOpitonalGift:
-                        itemData = await PutItem(itemId, count);
-                        break;
-                }
-
-                itemData ??= new ItemData
-                {
-                    ItemId = itemId,
-                    Count = count
-                };
+                itemData = await AddUsableItem(itemId, count, itemConfig);
                 break;
             case ItemMainTypeEnum.Relic:
-                //I dont think one player can have more than max count of relic until i see a player get 50000 relic and the client crashed :(
-                if (Data.RelicItems.Count + 1 > GameConstants.INVENTORY_MAX_RELIC) // get the max relic
-                {
-                    await Player.SendPacket(new PacketRetcodeNotify(Retcode.RetRelicExceedLimit));
-                    break;
-                }
-
-                (_, itemData) = await HandleRelic(itemId, ++Data.NextUniqueId, level, sync: sync);
+                itemData = await AddRelicItem(itemId, level, sync);
                 break;
             case ItemMainTypeEnum.Virtual:
-                var actualCount = 0;
-                switch (itemConfig.ID)
-                {
-                    case 1:
-                        Player.Data.Hcoin += count;
-                        actualCount = Player.Data.Hcoin;
-                        break;
-                    case 2:
-                        Player.Data.Scoin += count;
-                        actualCount = Player.Data.Scoin;
-                        break;
-                    case 3:
-                        Player.Data.Mcoin += count;
-                        actualCount = Player.Data.Mcoin;
-                        break;
-                    case 11:
-                        Player.Data.Stamina += count;
-                        actualCount = Player.Data.Stamina;
-                        break;
-                    case 22:
-                        Player.Data.Exp += count;
-                        Player.OnAddExp();
-                        actualCount = Player.Data.Exp;
-                        break;
-                    case 32:
-                        Player.Data.TalentPoints += count;
-                        actualCount = Player.Data.TalentPoints;
-                        break;
-                }
-
-                if (count != 0)
-                {
-                    await Player.SendPacket(new PacketPlayerSyncScNotify(Player.ToProto()));
-                    itemData = new ItemData
-                    {
-                        ItemId = itemId,
-                        Count = actualCount
-                    };
-                }
-
+                itemData = await AddVirtualItem(itemId, count, itemConfig);
                 break;
             case ItemMainTypeEnum.AvatarCard:
-                // add avatar
-                var avatar = Player.AvatarManager?.GetFormalAvatar(itemId);
-                if (avatar != null)
-                {
-                    var rankUpItem = Player.InventoryManager!.GetItem(itemId + 10000);
-                    if ((avatar.PathInfos[itemId].Rank + rankUpItem?.Count ?? 0) <= 5)
-                        itemData = await PutItem(itemId + 10000, 1);
-                }
-                else
-                {
-                    await Player.AddAvatar(itemId, sync, notify);
-                    await AddItem(itemId + 200000, 1, false);
-                }
-
+                itemData = await AddAvatarCardItem(itemId, sync, notify);
                 break;
             case ItemMainTypeEnum.Mission:
                 itemData = await PutItem(itemId, count);
@@ -237,6 +93,181 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
         Player.MissionManager?.HandleFinishType(MissionFinishTypeEnum.GetItem, itemData.ToProto());
 
         return returnRaw ? itemData : clone;
+    }
+
+    private async ValueTask<ItemData?> AddEquipmentItem(int itemId, int rank, int level, int promotion,
+        ItemConfigExcel itemConfig)
+    {
+        if (Data.EquipmentItems.Count + 1 > GameConstants.INVENTORY_MAX_EQUIPMENT) // get the max equipment
+        {
+            await Player.SendPacket(new PacketRetcodeNotify(Retcode.RetEquipmentExceedLimit));
+            return null;
+        }
+
+        var itemData = await PutItem(itemId, 1, rank, promotion, level, uniqueId: ++Data.NextUniqueId);
+
+        if (itemConfig.Rarity == ItemRarityEnum.SuperRare)
+            // add development
+            Player.FriendRecordData!.AddAndRemoveOld(new FriendDevelopmentInfoPb
+            {
+                DevelopmentType = (DevelopmentType)11,
+                Params = { { "EquipmentTid", (uint)itemConfig.ID } }
+            });
+        return itemData;
+    }
+
+    private async ValueTask<ItemData?> AddUsableItem(int itemId, int count, ItemConfigExcel itemConfig)
+    {
+        ItemData? itemData = null;
+        switch (itemConfig.ItemSubType)
+        {
+            case ItemSubTypeEnum.HeadIcon:
+                if (!Player.PlayerUnlockData!.HeadIcons.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.HeadIcons.Add(itemId);
+                    MarkDirty();
+                }
+                break;
+            case ItemSubTypeEnum.ChatBubble:
+                if (!Player.PlayerUnlockData!.ChatBubbles.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
+                    MarkDirty();
+                    // TODO 4.3: PacketUnlockChatBubbleScNotify (Phone 模块) 暂停
+                }
+                break;
+            case ItemSubTypeEnum.PhoneTheme:
+                if (!Player.PlayerUnlockData!.PhoneThemes.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
+                    MarkDirty();
+                    // TODO 4.3: PacketUnlockPhoneThemeScNotify (Phone 模块) 暂停
+                }
+                break;
+            case ItemSubTypeEnum.PersonalCard:
+                if (!Player.PlayerUnlockData!.PersonalCards.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.PersonalCards.Add(itemId);
+                    MarkDirty();
+                }
+                break;
+            case ItemSubTypeEnum.PhoneCase:
+                if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.PhoneCases.Add(itemId);
+                    MarkDirty();
+                    // TODO 4.3: PacketUnlockPhoneCaseScNotify (Phone 模块) 暂停
+                }
+                break;
+            case ItemSubTypeEnum.PlayerOutfit:
+                itemData = await PutItem(itemId, count);
+                break;
+            case ItemSubTypeEnum.AvatarSkin:
+                if (!GameData.AvatarSkinData.TryGetValue(itemId, out var skinExcel)) break;
+                var avatarId = skinExcel.AvatarID;
+                if (!Player.PlayerUnlockData!.Skins.TryGetValue(avatarId, out var value))
+                {
+                    value = [];
+                    Player.PlayerUnlockData.Skins[avatarId] = value;
+                }
+
+                if (!value.Contains(itemId))
+                {
+                    value.Add(itemId);
+                    MarkDirty();
+                    await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
+                }
+                break;
+            case ItemSubTypeEnum.Food:
+            case ItemSubTypeEnum.Book:
+            case ItemSubTypeEnum.FindChest:
+            case ItemSubTypeEnum.Gift:
+            case ItemSubTypeEnum.ForceOpitonalGift:
+                itemData = await PutItem(itemId, count);
+                break;
+        }
+
+        itemData ??= new ItemData
+        {
+            ItemId = itemId,
+            Count = count
+        };
+        return itemData;
+    }
+
+    private async ValueTask<ItemData?> AddRelicItem(int itemId, int level, bool sync)
+    {
+        //I dont think one player can have more than max count of relic until i see a player get 50000 relic and the client crashed :(
+        if (Data.RelicItems.Count + 1 > GameConstants.INVENTORY_MAX_RELIC) // get the max relic
+        {
+            await Player.SendPacket(new PacketRetcodeNotify(Retcode.RetRelicExceedLimit));
+            return null;
+        }
+
+        var (_, itemData) = await HandleRelic(itemId, ++Data.NextUniqueId, level, sync: sync);
+        return itemData;
+    }
+
+    private async ValueTask<ItemData?> AddVirtualItem(int itemId, int count, ItemConfigExcel itemConfig)
+    {
+        var actualCount = 0;
+        switch (itemConfig.ID)
+        {
+            case 1:
+                Player.Data.Hcoin += count;
+                actualCount = Player.Data.Hcoin;
+                break;
+            case 2:
+                Player.Data.Scoin += count;
+                actualCount = Player.Data.Scoin;
+                break;
+            case 3:
+                Player.Data.Mcoin += count;
+                actualCount = Player.Data.Mcoin;
+                break;
+            case 11:
+                Player.Data.Stamina += count;
+                actualCount = Player.Data.Stamina;
+                break;
+            case 22:
+                Player.Data.Exp += count;
+                Player.OnAddExp();
+                actualCount = Player.Data.Exp;
+                break;
+            case 32:
+                Player.Data.TalentPoints += count;
+                actualCount = Player.Data.TalentPoints;
+                break;
+        }
+
+        if (count != 0)
+        {
+            await Player.SendPacket(new PacketPlayerSyncScNotify(Player.ToProto()));
+            return new ItemData
+            {
+                ItemId = itemId,
+                Count = actualCount
+            };
+        }
+
+        return null;
+    }
+
+    private async ValueTask<ItemData?> AddAvatarCardItem(int itemId, bool sync, bool notify)
+    {
+        // add avatar
+        var avatar = Player.AvatarManager?.GetFormalAvatar(itemId);
+        if (avatar != null)
+        {
+            var rankUpItem = Player.InventoryManager!.GetItem(itemId + 10000);
+            if ((avatar.PathInfos[itemId].Rank + rankUpItem?.Count ?? 0) <= 5)
+                return await PutItem(itemId + 10000, 1);
+            return null;
+        }
+
+        await Player.AddAvatar(itemId, sync, notify);
+        await AddItem(itemId + 200000, 1, false);
+        return null;
     }
 
     public async ValueTask<ItemData> PutItem(int itemId, int count, int rank = 0, int promotion = 0, int level = 0,
