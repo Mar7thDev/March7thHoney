@@ -64,7 +64,7 @@ public class CommandGiveall : ICommand
             }
         }
 
-        await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager!.AvatarData.FormalAvatars));
+        await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager!.Data.FormalAvatars));
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.GiveAll.GiveAllItems",
             I18NManager.Translate("Word.Avatar"), "1"));
@@ -293,7 +293,7 @@ public class CommandGiveall : ICommand
                 (MultiPathAvatarTypeEnum)multiPathAvatar.AvatarID);
         }
 
-        await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager!.AvatarData.FormalAvatars));
+        await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager!.Data.FormalAvatars));
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.GiveAll.GiveAllItems",
             I18NManager.Translate("Word.Avatar"),

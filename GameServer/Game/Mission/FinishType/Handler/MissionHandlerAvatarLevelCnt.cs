@@ -18,7 +18,7 @@ public class MissionHandlerAvatarLevelCnt : MissionFinishTypeHandler
         FinishWayExcel excel, object? arg)
     {
         var avatarCount = 0;
-        foreach (var avatar in player.AvatarManager?.AvatarData.FormalAvatars ?? [])
+        foreach (var avatar in player.AvatarManager?.Data.FormalAvatars ?? [])
             if (avatar.Level >= excel.ParamInt1)
                 avatarCount++;
 

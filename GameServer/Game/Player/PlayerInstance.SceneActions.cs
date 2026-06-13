@@ -351,7 +351,7 @@ public partial class PlayerInstance
         GameData.MazePlaneData.TryGetValue(planeId, out var plane);
         if (plane == null) return;
 
-        if (plane.PlaneType == PlaneTypeEnum.Raid && RaidManager!.RaidData.CurRaidId == 0)
+        if (plane.PlaneType == PlaneTypeEnum.Raid && RaidManager!.Data.CurRaidId == 0)
         {
             await EnterScene(2000101, 0, sendPacket);
             return;

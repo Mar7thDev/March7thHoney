@@ -11,7 +11,7 @@ using GachaInfo = March7thHoney.Database.Gacha.GachaInfo;
 
 namespace March7thHoney.GameServer.Game.Gacha;
 
-public class GachaManager : BasePlayerManager
+public class GachaManager : BasePlayerManager<GachaData>
 {
     private const int NewbieGachaLimit = 50;
     private const int NewbieTenPullCost = 8;
@@ -25,22 +25,20 @@ public class GachaManager : BasePlayerManager
 
     public GachaManager(PlayerInstance player) : base(player)
     {
-        GachaData = DatabaseHelper.Instance!.GetInstanceOrCreateNew<GachaData>(player.Uid);
-        GachaData.EnsurePityStateMigrated();
+        Data.EnsurePityStateMigrated();
 
-        if (GachaData.GachaHistory.Count >= 50)
-            GachaData.GachaHistory.RemoveRange(0, GachaData.GachaHistory.Count - 50);
+        if (Data.GachaHistory.Count >= 50)
+            Data.GachaHistory.RemoveRange(0, Data.GachaHistory.Count - 50);
 
         foreach (var order in GameData.DecideAvatarOrderData.Values.ToList().OrderBy(x => -x.Order))
         {
-            if (GachaData.GachaDecideOrder.Contains(order.ItemID)) continue;
-            GachaData.GachaDecideOrder.Add(order.ItemID);
+            if (Data.GachaDecideOrder.Contains(order.ItemID)) continue;
+            Data.GachaDecideOrder.Add(order.ItemID);
         }
 
         EnsureCharacterEventNonFeaturedPool();
     }
 
-    public GachaData GachaData { get; }
 
     public List<int> GetPurpleAvatars()
     {
@@ -130,7 +128,7 @@ public class GachaManager : BasePlayerManager
         if (times is not (1 or 10))
             return BuildGachaError(bannerId, Retcode.RetGachaNumInvalid);
 
-        var pityState = GachaData.GetPityState(GetPityFamily(banner.GachaType));
+        var pityState = Data.GetPityState(GetPityFamily(banner.GachaType));
         if (banner.GachaType == GachaTypeEnum.Newbie && pityState.TotalPulls + times > NewbieGachaLimit)
             return BuildGachaError(bannerId, Retcode.RetGachaNewbieClose);
 
@@ -148,7 +146,7 @@ public class GachaManager : BasePlayerManager
         for (var i = 0; i < times; i++)
         {
             var item = banner.DoGacha(decideItem, GetGoldAvatars(), GetPurpleAvatars(), GetPurpleWeapons(),
-                GetGoldWeapons(), GetBlueWeapons(), GachaData);
+                GetGoldWeapons(), GetBlueWeapons(), Data);
             items.Add(item);
         }
         MarkGachaDataDirty();
@@ -163,7 +161,7 @@ public class GachaManager : BasePlayerManager
             var star = 0;
             var rarity = GetRarity(item);
 
-            GachaData.GachaHistory.Add(new GachaInfo
+            Data.GachaHistory.Add(new GachaInfo
             {
                 GachaId = bannerId,
                 ItemId = item,
@@ -333,11 +331,11 @@ public class GachaManager : BasePlayerManager
         foreach (var banner in GameData.BannersConfig.Banners)
         {
             if (banner.GachaType == GachaTypeEnum.Newbie &&
-                GachaData.GetPityState(GachaPityFamilyEnum.Newbie).TotalPulls >= NewbieGachaLimit)
+                Data.GetPityState(GachaPityFamilyEnum.Newbie).TotalPulls >= NewbieGachaLimit)
                 continue;
 
             var newbiePulls = banner.GachaType == GachaTypeEnum.Newbie
-                ? GachaData.GetPityState(GachaPityFamilyEnum.Newbie).TotalPulls
+                ? Data.GetPityState(GachaPityFamilyEnum.Newbie).TotalPulls
                 : 0;
             var newbieLimit = banner.GachaType == GachaTypeEnum.Newbie ? NewbieGachaLimit : 0;
             proto.GachaInfoList.Add(banner.ToInfo(GetCharacterEventNonFeaturedPool(), GetGoldAvatars(), newbiePulls,
@@ -367,9 +365,9 @@ public class GachaManager : BasePlayerManager
         if (selected.Any(id => !allowed.Contains(id)))
             return Retcode.RetGachaDecideItemIdInvalid;
 
-        GachaData.CharacterEventNonFeaturedPool = selected;
-        GachaData.GachaDecideOrder = selected;
-        GachaData.CharacterEventDecideItemType = decideItemType;
+        Data.CharacterEventNonFeaturedPool = selected;
+        Data.GachaDecideOrder = selected;
+        Data.CharacterEventDecideItemType = decideItemType;
         DatabaseHelper.MarkDirty(Player.Uid);
         return Retcode.RetSucc;
     }
@@ -377,20 +375,20 @@ public class GachaManager : BasePlayerManager
     public List<int> GetCharacterEventNonFeaturedPool()
     {
         EnsureCharacterEventNonFeaturedPool();
-        return GachaData.CharacterEventNonFeaturedPool.Take(CelestialInvitationPoolSize).ToList();
+        return Data.CharacterEventNonFeaturedPool.Take(CelestialInvitationPoolSize).ToList();
     }
 
     private void EnsureCharacterEventNonFeaturedPool()
     {
-        GachaData.CharacterEventNonFeaturedPool ??= [];
+        Data.CharacterEventNonFeaturedPool ??= [];
         var allowed = GetAllGoldAvatars().ToHashSet();
-        var selected = GachaData.CharacterEventNonFeaturedPool
+        var selected = Data.CharacterEventNonFeaturedPool
             .Where(allowed.Contains)
             .Distinct()
             .Take(CelestialInvitationPoolSize)
             .ToList();
 
-        foreach (var id in GachaData.GachaDecideOrder.Where(allowed.Contains))
+        foreach (var id in Data.GachaDecideOrder.Where(allowed.Contains))
         {
             if (selected.Count >= CelestialInvitationPoolSize) break;
             if (!selected.Contains(id)) selected.Add(id);
@@ -402,8 +400,8 @@ public class GachaManager : BasePlayerManager
             if (!selected.Contains(id)) selected.Add(id);
         }
 
-        GachaData.CharacterEventNonFeaturedPool = selected;
-        GachaData.GachaDecideOrder = selected;
+        Data.CharacterEventNonFeaturedPool = selected;
+        Data.GachaDecideOrder = selected;
     }
 
     private static GachaPityFamilyEnum GetPityFamily(GachaTypeEnum gachaType)

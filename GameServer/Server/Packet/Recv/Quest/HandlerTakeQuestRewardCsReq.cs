@@ -23,7 +23,7 @@ public class HandlerTakeQuestRewardCsReq : Handler<TakeQuestRewardCsReq>
             if (retCode != Retcode.RetSucc)
             {
                 ret = retCode;
-                if (player.QuestManager.QuestData.Quests.TryGetValue((int)quest, out var questInfo))
+                if (player.QuestManager.Data.Quests.TryGetValue((int)quest, out var questInfo))
                     refreshQuestList.Add(questInfo);
             }
             else

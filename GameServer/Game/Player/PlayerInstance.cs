@@ -176,7 +176,7 @@ public partial class PlayerInstance(PlayerData data)
         ActivityManager = new ActivityManager(this);
         AvatarManager = new AvatarManager(this)
         {
-            AvatarData =
+            Data =
             {
                 DatabaseVersion = GameConstants.AvatarDbVersion
             }
@@ -225,7 +225,7 @@ public partial class PlayerInstance(PlayerData data)
 
         Data.LastActiveTime = Extensions.GetUnixSec();
 
-        foreach (var avatar in AvatarManager?.AvatarData.FormalAvatars ?? [])
+        foreach (var avatar in AvatarManager?.Data.FormalAvatars ?? [])
         foreach (var path in avatar.PathInfos.Values)
         foreach (var skill in path.GetSkillTree())
         {
@@ -293,14 +293,14 @@ public partial class PlayerInstance(PlayerData data)
         if (LineupManager!.GetCurLineup() != null) // null -> ignore(new player)
         {
             if (LineupManager!.GetCurLineup()!.IsExtraLineup() &&
-                RaidManager!.RaidData.CurRaidId == 0 && StoryLineManager!.StoryLineData.CurStoryLineId == 0 &&
+                RaidManager!.Data.CurRaidId == 0 && StoryLineManager!.StoryLineData.CurStoryLineId == 0 &&
                 ChallengeManager!.ChallengeInstance == null) // do not use extra lineup when login
             {
                 LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
                 if (LineupManager!.GetCurLineup()!.IsExtraLineup()) await LineupManager!.SetCurLineup(0);
             }
 
-            foreach (var lineup in LineupManager.LineupData.Lineups)
+            foreach (var lineup in LineupManager.Data.Lineups)
             {
                 if (lineup.Value.BaseAvatars!.Count >= 5)
                     lineup.Value.BaseAvatars = lineup.Value.BaseAvatars.GetRange(0, 4);
