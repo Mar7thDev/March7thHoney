@@ -368,7 +368,7 @@ public class GachaManager : BasePlayerManager<GachaData>
         Data.CharacterEventNonFeaturedPool = selected;
         Data.GachaDecideOrder = selected;
         Data.CharacterEventDecideItemType = decideItemType;
-        DatabaseHelper.MarkDirty(Player.Uid);
+        MarkDirty();
         return Retcode.RetSucc;
     }
 
@@ -464,6 +464,6 @@ public class GachaManager : BasePlayerManager<GachaData>
 
     private void MarkGachaDataDirty()
     {
-        DatabaseHelper.MarkDirty(Player.Uid);
+        MarkDirty();
     }
 }
