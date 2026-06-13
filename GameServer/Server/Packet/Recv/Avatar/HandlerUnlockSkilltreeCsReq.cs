@@ -8,12 +8,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.UnlockSkilltreeCsReq)]
-public class HandlerUnlockSkilltreeCsReq : Handler
+public class HandlerUnlockSkilltreeCsReq : Handler<UnlockSkillTreeCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, UnlockSkillTreeCsReq req)
     {
-        var req = UnlockSkillTreeCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         GameData.AvatarSkillTreeConfigData.TryGetValue((int)(req.PointId * 100 + req.Level), out var config);
         if (config == null)
         {
@@ -29,7 +27,7 @@ public class HandlerUnlockSkilltreeCsReq : Handler
         }
 
         foreach (var cost in req.ItemList)
-            await connection.Player!.InventoryManager!.RemoveItem((int)cost.PileItem.ItemId,
+            await player.InventoryManager!.RemoveItem((int)cost.PileItem.ItemId,
                 (int)cost.PileItem.ItemNum);
 
         avatar.GetCurPathInfo().GetSkillTree()[(int)req.PointId] = (int)req.Level;
