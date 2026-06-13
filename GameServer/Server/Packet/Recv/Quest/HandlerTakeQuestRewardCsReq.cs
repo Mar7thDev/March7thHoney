@@ -14,7 +14,7 @@ public class HandlerTakeQuestRewardCsReq : Handler
     {
         var req = TakeQuestRewardCsReq.Parser.ParseFrom(data);
         List<ItemData> rewardItems = [];
-        var ret = Retcode.RetSucc;
+        var firstError = Retcode.RetSucc;
         List<int> succQuestIds = [];
         List<QuestInfo> refreshQuestList = [];
 
@@ -23,7 +23,7 @@ public class HandlerTakeQuestRewardCsReq : Handler
             var (retCode, items) = await connection.Player!.QuestManager!.TakeQuestReward((int)quest);
             if (retCode != Retcode.RetSucc)
             {
-                ret = retCode;
+                if (firstError == Retcode.RetSucc) firstError = retCode;
                 if (connection.Player.QuestManager.QuestData.Quests.TryGetValue((int)quest, out var questInfo))
                     refreshQuestList.Add(questInfo);
             }
@@ -36,6 +36,7 @@ public class HandlerTakeQuestRewardCsReq : Handler
         if (refreshQuestList.Count > 0)
             await connection.SendPacket(new PacketPlayerSyncScNotify(refreshQuestList));
 
+        var ret = succQuestIds.Count > 0 ? Retcode.RetSucc : firstError;
         await connection.SendPacket(new PacketTakeQuestRewardScRsp(ret, rewardItems, succQuestIds));
     }
 }

@@ -21,6 +21,7 @@ The project is actively developed, with regular feature updates and fixes.
 - [Repository Layout](#repository-layout)
 - [Requirements](#requirements)
 - [Quick Start](#quick-start)
+- [Native Linux Server](#native-linux-server)
 - [Build](#build)
 - [CI Artifacts](#ci-artifacts)
 - [Notes](#notes)
@@ -82,13 +83,51 @@ Detailed implementation progress: [Gameplay Implementation Tree](docs/GameplayIm
 git clone --recurse-submodules https://github.com/Mar7thLover/March7thHoney.git
 cd March7thHoney
 dotnet restore
-dotnet run --project program
+dotnet run --project Program/Program.csproj
 ```
+
+## Native Linux Server
+
+On Linux you can run from source the same way as Windows. The project path is
+case-sensitive on Linux, so use `Program`, not `program`:
+
+```bash
+dotnet run --project Program/Program.csproj
+```
+
+Or use the root launcher:
+
+```bash
+bash Start.sh
+```
+
+On a fresh Debian server, install prerequisites once:
+
+```bash
+bash scripts/setup-debian.sh
+```
+
+To update later:
+
+```bash
+git pull --ff-only
+git submodule update --init --recursive
+dotnet run --project Program/Program.csproj
+```
+
+Optional systemd service setup:
+
+```bash
+sudo bash scripts/install-systemd-service.sh
+sudo systemctl start march7thhoney
+```
+
+More details: [Native Linux Setup](docs/native-linux.md).
 
 ## Build
 
 ```bash
-dotnet build program/program.csproj -c Release
+dotnet build Program/Program.csproj -c Release
 ```
 
 ## CI Artifacts
