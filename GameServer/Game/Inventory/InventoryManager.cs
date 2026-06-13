@@ -11,7 +11,7 @@ using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Sync;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
-// TODO 4.3: Phone 模块暂停
+using March7thHoney.GameServer.Server.Packet.Send.Phone;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -133,7 +133,7 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
                 {
                     Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
                     MarkDirty();
-                    // TODO 4.3: PacketUnlockChatBubbleScNotify (Phone 模块) 暂停
+                    await Player.SendPacket(new PacketUnlockChatBubbleScNotify(itemId));
                 }
                 break;
             case ItemSubTypeEnum.PhoneTheme:
@@ -141,7 +141,7 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
                 {
                     Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
                     MarkDirty();
-                    // TODO 4.3: PacketUnlockPhoneThemeScNotify (Phone 模块) 暂停
+                    await Player.SendPacket(new PacketUnlockPhoneThemeScNotify(itemId));
                 }
                 break;
             case ItemSubTypeEnum.PersonalCard:
@@ -156,7 +156,7 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
                 {
                     Player.PlayerUnlockData!.PhoneCases.Add(itemId);
                     MarkDirty();
-                    // TODO 4.3: PacketUnlockPhoneCaseScNotify (Phone 模块) 暂停
+                    await Player.SendPacket(new PacketUnlockPhoneCaseScNotify(itemId));
                 }
                 break;
             case ItemSubTypeEnum.PlayerOutfit:
