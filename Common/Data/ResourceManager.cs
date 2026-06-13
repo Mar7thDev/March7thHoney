@@ -66,7 +66,7 @@ public class ResourceManager
             LoadCustomFile<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property",
                 "SceneRainbowGroupProperty") ?? new SceneRainbowGroupPropertyConfig();
         GameData.ChallengePeakOverrideConfig =
-            LoadDataFile<ChallengePeakOverrideConfig>("ChallengePeak Override", "ChallengePeak") ??
+            LoadCustomFile<ChallengePeakOverrideConfig>("ChallengePeak Override", "ChallengePeak") ??
             new ChallengePeakOverrideConfig();
         ApplyChallengePeakOverrides();
 
@@ -125,7 +125,6 @@ public class ResourceManager
                     .FirstOrDefault(f => f.Exists);
                 if (file == null)
                 {
-                    // ResourceCache.IsComplete = false;
                     Logger.Warn(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", fileName,
                         I18NManager.Translate("Word.NotFound")));
                     lock (MissingExcelFiles)
@@ -524,34 +523,6 @@ public class ResourceManager
         return customFile;
     }
 
-    public static T? LoadDataFile<T>(string filetype, string filename)
-    {
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", filetype));
-        var dataPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Data", $"{filename}.json");
-        FileInfo file = new(dataPath);
-        if (!file.Exists)
-        {
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing", filetype, dataPath, filetype));
-            return default;
-        }
-
-        try
-        {
-            using var reader = file.OpenRead();
-            using StreamReader reader2 = new(reader);
-            var text = reader2.ReadToEnd();
-            return JsonConvert.DeserializeObject<T>(text);
-        }
-        catch (Exception ex)
-        {
-            ResourceCache.IsComplete = false;
-            Logger.Error(
-                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                    I18NManager.Translate("Word.Error")), ex);
-            return default;
-        }
-    }
-
     public static void ApplyChallengePeakOverrides()
     {
         foreach (var group in GameData.ChallengePeakOverrideConfig.ChallengePeak)
@@ -854,12 +825,6 @@ public class ResourceManager
         // wait it done
         while (!(res.IsCompleted && res2.IsCompleted)) Thread.Sleep(10);
 
-        if (count < GameData.PerformanceEData.Count + GameData.PerformanceDData.Count)
-        {
-            // looks like many dont exist
-            //Logger.Warn("Performance infos are missing, please check your resources folder: " + ConfigManager.Config.Path.ResourcePath + "/Config/Level/Mission/*/Act. Performances may not work!");
-        }
-
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.PerformanceInfo")));
     }
@@ -897,11 +862,6 @@ public class ResourceManager
 
         // wait it done
         while (!res.IsCompleted) Thread.Sleep(10);
-
-        if (count < GameData.SubMissionInfoData.Count)
-        {
-            //Logger.Warn("Performance infos are missing, please check your resources folder: " + ConfigManager.Config.Path.ResourcePath + "/Config/Level/Mission/*/Act. Performances may not work!");
-        }
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.SubMissionInfo")));
@@ -1002,12 +962,6 @@ public class ResourceManager
                     I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
                         I18NManager.Translate("Word.Error")), ex);
             }
-
-        //if (count < boardList.Count)
-        //    Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
-        //        I18NManager.Translate("Word.AdventureModifierInfo"),
-        //        $"{ConfigManager.Config.Path.ResourcePath}/Config/ConfigAdventureModifier",
-        //        I18NManager.Translate("Word.Buff")));
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.AdventureModifierInfo")));

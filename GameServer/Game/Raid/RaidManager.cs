@@ -11,20 +11,13 @@ using RaidData = March7thHoney.Database.Scene.RaidData;
 
 namespace March7thHoney.GameServer.Game.Raid;
 
-public class RaidManager : BasePlayerManager
+public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(player)
 {
-    public RaidManager(PlayerInstance player) : base(player)
-    {
-        RaidData = DatabaseHelper.Instance!.GetInstanceOrCreateNew<RaidData>(player.Uid);
-    }
-
-    public RaidData RaidData { get; }
-
     #region Information
 
     public RaidStatus GetRaidStatus(int raidId, int worldLevel = 0)
     {
-        if (!RaidData.RaidRecordDatas.TryGetValue(raidId, out var dict)) return RaidStatus.None;
+        if (!Data.RaidRecordDatas.TryGetValue(raidId, out var dict)) return RaidStatus.None;
         if (!dict.TryGetValue(worldLevel, out var record)) return RaidStatus.None;
         return record.Status;
     }
@@ -36,23 +29,23 @@ public class RaidManager : BasePlayerManager
     public async ValueTask OnLogin()
     {
         // try resume
-        if (RaidData.CurRaidId > 0 && RaidData.RaidRecordDatas.TryGetValue(RaidData.CurRaidId, out var value))
+        if (Data.CurRaidId > 0 && Data.RaidRecordDatas.TryGetValue(Data.CurRaidId, out var value))
         {
-            if (value.TryGetValue(RaidData.CurRaidWorldLevel, out var record))
+            if (value.TryGetValue(Data.CurRaidWorldLevel, out var record))
             {
                 await Player.SendPacket(new PacketRaidInfoNotify(record));
             }
             else
             {
-                RaidData.CurRaidId = 0;
-                RaidData.CurRaidWorldLevel = 0;
+                Data.CurRaidId = 0;
+                Data.CurRaidWorldLevel = 0;
                 await Player.SendPacket(new PacketRaidInfoNotify());
             }
         }
         else
         {
-            RaidData.CurRaidId = 0;
-            RaidData.CurRaidWorldLevel = 0;
+            Data.CurRaidId = 0;
+            Data.CurRaidWorldLevel = 0;
             await Player.SendPacket(new PacketRaidInfoNotify());
         }
     }
@@ -64,20 +57,20 @@ public class RaidManager : BasePlayerManager
     public async ValueTask<RaidRecord?> EnterRaid(int raidId, int worldLevel, List<int>? avatarList = null,
         bool enterSaved = false)
     {
-        if (RaidData.CurRaidId != 0) return null;
+        if (Data.CurRaidId != 0) return null;
 
         GameData.RaidConfigData.TryGetValue(raidId * 100 + worldLevel, out var excel);
         if (excel == null) return null; // not exist
 
-        RaidData.RaidRecordDatas.TryGetValue(raidId, out var dict);
+        Data.RaidRecordDatas.TryGetValue(raidId, out var dict);
         dict ??= [];
         if (dict.ContainsKey(worldLevel) && !enterSaved)
             // clear old record
             await ClearRaid(raidId, worldLevel);
         dict.TryGetValue(worldLevel, out var record);
 
-        RaidData.CurRaidId = excel.RaidID;
-        RaidData.CurRaidWorldLevel = worldLevel;
+        Data.CurRaidId = excel.RaidID;
+        Data.CurRaidWorldLevel = worldLevel;
 
         if (record == null)
         {
@@ -163,10 +156,10 @@ public class RaidManager : BasePlayerManager
                 OldRot = oldRot!
             };
 
-            if (RaidData.RaidRecordDatas.TryGetValue(raidId, out var value))
+            if (Data.RaidRecordDatas.TryGetValue(raidId, out var value))
                 value[worldLevel] = record;
             else
-                RaidData.RaidRecordDatas[raidId] = new Dictionary<int, RaidRecord> { { worldLevel, record } };
+                Data.RaidRecordDatas[raidId] = new Dictionary<int, RaidRecord> { { worldLevel, record } };
         }
         else
         {
@@ -183,11 +176,11 @@ public class RaidManager : BasePlayerManager
 
     public async ValueTask CheckIfLeaveRaid()
     {
-        if (RaidData.CurRaidId == 0) return;
+        if (Data.CurRaidId == 0) return;
 
-        var record = RaidData.RaidRecordDatas[RaidData.CurRaidId][RaidData.CurRaidWorldLevel];
+        var record = Data.RaidRecordDatas[Data.CurRaidId][Data.CurRaidWorldLevel];
 
-        GameData.RaidConfigData.TryGetValue(RaidData.CurRaidId * 100 + record.WorldLevel, out var excel);
+        GameData.RaidConfigData.TryGetValue(Data.CurRaidId * 100 + record.WorldLevel, out var excel);
         if (excel == null) return;
         var leave = true;
         foreach (var id in excel.MainMissionIDList)
@@ -204,10 +197,10 @@ public class RaidManager : BasePlayerManager
 
     public async ValueTask FinishRaid()
     {
-        if (RaidData.CurRaidId == 0) return;
+        if (Data.CurRaidId == 0) return;
 
-        var record = RaidData.RaidRecordDatas[RaidData.CurRaidId][RaidData.CurRaidWorldLevel];
-        GameData.RaidConfigData.TryGetValue(RaidData.CurRaidId * 100 + record.WorldLevel, out var config);
+        var record = Data.RaidRecordDatas[Data.CurRaidId][Data.CurRaidWorldLevel];
+        GameData.RaidConfigData.TryGetValue(Data.CurRaidId * 100 + record.WorldLevel, out var config);
         if (config == null) return;
 
         record.Status = RaidStatus.Finish;
@@ -217,10 +210,10 @@ public class RaidManager : BasePlayerManager
 
     public async ValueTask LeaveRaid(bool save)
     {
-        if (RaidData.CurRaidId == 0) return;
+        if (Data.CurRaidId == 0) return;
 
-        var record = RaidData.RaidRecordDatas[RaidData.CurRaidId][RaidData.CurRaidWorldLevel];
-        GameData.RaidConfigData.TryGetValue(RaidData.CurRaidId * 100 + record.WorldLevel, out var config);
+        var record = Data.RaidRecordDatas[Data.CurRaidId][Data.CurRaidWorldLevel];
+        GameData.RaidConfigData.TryGetValue(Data.CurRaidId * 100 + record.WorldLevel, out var config);
         if (config == null) return;
 
         record.PlaneId = Player.Data.PlaneId;
@@ -260,13 +253,13 @@ public class RaidManager : BasePlayerManager
             if (!save) await ClearRaid(record.RaidId, record.WorldLevel);
         }
 
-        RaidData.CurRaidId = 0;
-        RaidData.CurRaidWorldLevel = 0;
+        Data.CurRaidId = 0;
+        Data.CurRaidWorldLevel = 0;
     }
 
     public async ValueTask ClearRaid(int raidId, int worldLevel)
     {
-        if (!RaidData.RaidRecordDatas.TryGetValue(raidId, out var dict)) return;
+        if (!Data.RaidRecordDatas.TryGetValue(raidId, out var dict)) return;
         if (!dict.TryGetValue(worldLevel, out var record)) return;
 
         GameData.RaidConfigData.TryGetValue(raidId * 100 + worldLevel, out var config);
@@ -285,7 +278,7 @@ public class RaidManager : BasePlayerManager
 
         dict.Remove(worldLevel);
 
-        if (dict.Count == 0) RaidData.RaidRecordDatas.Remove(raidId);
+        if (dict.Count == 0) Data.RaidRecordDatas.Remove(raidId);
 
         // reset scene data
         foreach (var floorId in floorIds)

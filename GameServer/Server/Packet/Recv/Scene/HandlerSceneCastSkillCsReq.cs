@@ -5,13 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.SceneCastSkillCsReq)]
-public class HandlerSceneCastSkillCsReq : Handler
+public class HandlerSceneCastSkillCsReq : Handler<SceneCastSkillCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SceneCastSkillCsReq req)
     {
-        var req = SceneCastSkillCsReq.Parser.ParseFrom(data);
-
-        var player = connection.Player!;
         var res = await player.SceneSkillManager!.OnCast(req);
 
         await connection.SendPacket(new PacketSceneCastSkillScRsp(res.RetCode, req.CastEntityId, res.Instance,

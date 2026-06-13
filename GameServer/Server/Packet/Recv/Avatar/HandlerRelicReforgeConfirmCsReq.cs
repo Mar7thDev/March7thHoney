@@ -4,12 +4,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.RelicReforgeConfirmCsReq)]
-public class HandlerRelicReforgeConfirmCsReq : Handler
+public class HandlerRelicReforgeConfirmCsReq : Handler<RelicReforgeConfirmCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, RelicReforgeConfirmCsReq req)
     {
-        var req = RelicReforgeConfirmCsReq.Parser.ParseFrom(data);
-        await connection.Player!.AvatarManager!.ConfirmReforgeRelic((int)req.RelicUniqueId, req.IsCancel);
+        await player.AvatarManager!.ConfirmReforgeRelic((int)req.RelicUniqueId, req.IsCancel);
         await connection.SendPacket(CmdIds.RelicReforgeConfirmScRsp);
     }
 }

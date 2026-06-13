@@ -97,7 +97,6 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
 
     public FormalAvatarInfo(int baseAvatarId, int avatarId, bool addSkills)
     {
-        // TODO add skills
         BaseAvatarId = baseAvatarId;
         AvatarId = avatarId;
         if (addSkills) CheckPathSkillTree();

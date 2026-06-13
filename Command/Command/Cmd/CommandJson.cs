@@ -54,7 +54,7 @@ public class CommandJson : ICommand
             if (removedItems.Count > 0)
                 await player.SendPacket(new PacketPlayerSyncScNotify(removedItems));
 
-            DatabaseHelper.ToSaveUidList.Add(player.Uid);
+            DatabaseHelper.MarkDirty(player.Uid);
             await arg.SendMsg(I18NManager.Translate("Game.Command.Json.ClearInventory"));
             return;
         }

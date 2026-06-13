@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Scene;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -5,14 +6,13 @@ using March7thHoney.Util;
 namespace March7thHoney.GameServer.Server.Packet.Recv.ChallengePeak;
 
 [Opcode(CmdIds.LeaveChallengePeakCsReq)]
-public class HandlerLeaveChallengePeakCsReq : Handler
+public class HandlerLeaveChallengePeakCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var player = connection.Player!;
-
-        // TODO: check for plane type
-        if (player.SceneInstance != null)
+        // Only run the leave cleanup (heal team, teleport) when actually inside a challenge-type
+        // scene — otherwise a client could spam this for a free full heal + teleport.
+        if (player.SceneInstance is not null && player.SceneInstance.Excel.PlaneType == PlaneTypeEnum.Challenge)
         {
             player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupChallenge, []);
 

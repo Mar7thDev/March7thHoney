@@ -5,13 +5,12 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.ChallengePeak;
 
 [Opcode(CmdIds.TakeChallengePeakRewardCsReq)]
-public class HandlerTakeChallengePeakRewardCsReq : Handler
+public class HandlerTakeChallengePeakRewardCsReq : Handler<TakeChallengePeakRewardCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeChallengePeakRewardCsReq req)
     {
-        var req = TakeChallengePeakRewardCsReq.Parser.ParseFrom(data);
         var rewardIds = req.NormalRewardIdList;
-        var rewardGroups = await connection.Player!.ChallengePeakManager!.TakeRewards((int)req.PeakGroupId, rewardIds);
+        var rewardGroups = await player.ChallengePeakManager!.TakeRewards((int)req.PeakGroupId, rewardIds);
         await connection.SendPacket(new PacketTakeChallengePeakRewardScRsp(req.PeakGroupId, rewardGroups));
     }
 }

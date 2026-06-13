@@ -4,13 +4,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.ChallengePeak;
 
 [Opcode(CmdIds.SetChallengePeakMobLineupAvatarCsReq)]
-public class HandlerSetChallengePeakMobLineupAvatarCsReq : Handler
+public class HandlerSetChallengePeakMobLineupAvatarCsReq : Handler<SetChallengePeakMobLineupAvatarCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetChallengePeakMobLineupAvatarCsReq req)
     {
-        var req = SetChallengePeakMobLineupAvatarCsReq.Parser.ParseFrom(data);
-
-        await connection.Player!.ChallengePeakManager!.SetLineupAvatars((int)req.PeakGroupId, req.LineupList.ToList());
+        await player.ChallengePeakManager!.SetLineupAvatars((int)req.PeakGroupId, req.LineupList.ToList());
 
         await connection.SendPacket(CmdIds.SetChallengePeakMobLineupAvatarScRsp);
     }

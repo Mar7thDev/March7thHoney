@@ -4,12 +4,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mission;
 
 [Opcode(CmdIds.StarPerformanceRelayCsReq)]
-public class HandlerStarPerformanceRelayCsReq : Handler
+public class HandlerStarPerformanceRelayCsReq : Handler<StarPerformanceRelayCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, StarPerformanceRelayCsReq req)
     {
-        var req = StarPerformanceRelayCsReq.Parser.ParseFrom(data);
-        var player = connection.Player;
         if (player == null) return;
 
         // Story/performance relay packets are emitted when scripted sequences end or hand control

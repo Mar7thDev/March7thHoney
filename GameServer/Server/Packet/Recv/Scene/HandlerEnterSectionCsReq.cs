@@ -4,12 +4,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.EnterSectionCsReq)]
-public class HandlerEnterSectionCsReq : Handler
+public class HandlerEnterSectionCsReq : Handler<EnterSectionCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, EnterSectionCsReq req)
     {
-        var req = EnterSectionCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         player.EnterSection((int)req.SectionId);
         await connection.SendPacket(CmdIds.EnterSectionScRsp);
     }

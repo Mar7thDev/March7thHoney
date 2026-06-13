@@ -5,13 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.RefreshTriggerByClientCsReq)]
-public class HandlerRefreshTriggerByClientCsReq : Handler
+public class HandlerRefreshTriggerByClientCsReq : Handler<RefreshTriggerByClientCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, RefreshTriggerByClientCsReq req)
     {
-        var req = RefreshTriggerByClientCsReq.Parser.ParseFrom(data);
-
-        var player = connection.Player!;
         var ret = await player.SceneInstance!.TriggerSummonUnit((int)req.TriggerEntityId, req.TriggerName,
             req.TriggerTargetIdList.ToList());
 

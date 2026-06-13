@@ -7,14 +7,12 @@ using March7thHoney.Util;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.SetClientPausedCsReq)]
-public class HandlerSetClientPausedCsReq : Handler
+public class HandlerSetClientPausedCsReq : Handler<SetClientPausedCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetClientPausedCsReq req)
     {
-        var req = SetClientPausedCsReq.Parser.ParseFrom(data);
         var paused = req.Paused;
         await connection.SendPacket(new PacketSetClientPausedScRsp(paused));
-        var player = connection.Player;
         if (player != null) await player.TrySendWelcomeAnnounce();
     }
 }

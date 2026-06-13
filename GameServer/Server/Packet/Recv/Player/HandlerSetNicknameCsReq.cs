@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.SetNicknameCsReq)]
-public class HandlerSetNicknameCsReq : Handler
+public class HandlerSetNicknameCsReq : Handler<SetNicknameCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetNicknameCsReq req)
     {
-        var player = connection.Player!;
-        var req = SetNicknameCsReq.Parser.ParseFrom(data);
         if (req == null) return;
         player.Data.Name = req.Nickname;
 

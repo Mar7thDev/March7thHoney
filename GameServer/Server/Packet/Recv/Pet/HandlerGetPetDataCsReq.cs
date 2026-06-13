@@ -4,12 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Pet;
 
 [Opcode(CmdIds.GetPetDataCsReq)]
-public class HandlerGetPetDataCsReq : Handler
+public class HandlerGetPetDataCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var player = connection.Player!;
-
         await connection.SendPacket(new PacketGetPetDataScRsp(player));
     }
 }

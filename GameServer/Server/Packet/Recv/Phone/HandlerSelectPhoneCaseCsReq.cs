@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Phone;
 
 [Opcode(CmdIds.SelectPhoneCaseCsReq)]
-public class HandlerSelectPhoneCaseCsReq : Handler
+public class HandlerSelectPhoneCaseCsReq : Handler<SelectPhoneCaseCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SelectPhoneCaseCsReq req)
     {
-        var req = SelectPhoneCaseCsReq.Parser.ParseFrom(data);
-
-        connection.Player!.Data.PhoneCase = (int)req.PhoneCaseId;
+        player.Data.PhoneCase = (int)req.PhoneCaseId;
 
         await connection.SendPacket(new PacketSelectPhoneCaseScRsp(req.PhoneCaseId));
     }

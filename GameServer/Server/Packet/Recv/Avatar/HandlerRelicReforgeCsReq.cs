@@ -4,12 +4,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.RelicReforgeCsReq)]
-public class HandlerRelicReforgeCsReq : Handler
+public class HandlerRelicReforgeCsReq : Handler<RelicReforgeCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, RelicReforgeCsReq req)
     {
-        var req = RelicReforgeCsReq.Parser.ParseFrom(data);
-        await connection.Player!.AvatarManager!.ReforgeRelic((int)req.RelicUniqueId);
+        await player.AvatarManager!.ReforgeRelic((int)req.RelicUniqueId);
         await connection.SendPacket(CmdIds.RelicReforgeScRsp);
     }
 }

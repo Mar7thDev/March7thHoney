@@ -5,13 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.DeactivateFarmElementCsReq)]
-public class HandlerDeactivateFarmElementCsReq : Handler
+public class HandlerDeactivateFarmElementCsReq : Handler<DeactivateFarmElementCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, DeactivateFarmElementCsReq req)
     {
-        var req = DeactivateFarmElementCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
-
         if (player.ActiveFarmElementEntityId == req.EntityId)
         {
             player.ActiveFarmElementEntityId = 0;

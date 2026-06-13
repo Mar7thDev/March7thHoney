@@ -8,11 +8,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Quest;
 
 [Opcode(CmdIds.TakeQuestRewardCsReq)]
-public class HandlerTakeQuestRewardCsReq : Handler
+public class HandlerTakeQuestRewardCsReq : Handler<TakeQuestRewardCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeQuestRewardCsReq req)
     {
-        var req = TakeQuestRewardCsReq.Parser.ParseFrom(data);
         List<ItemData> rewardItems = [];
         var firstError = Retcode.RetSucc;
         List<int> succQuestIds = [];
@@ -20,11 +19,11 @@ public class HandlerTakeQuestRewardCsReq : Handler
 
         foreach (var quest in req.SuccQuestIdList)
         {
-            var (retCode, items) = await connection.Player!.QuestManager!.TakeQuestReward((int)quest);
+            var (retCode, items) = await player.QuestManager!.TakeQuestReward((int)quest);
             if (retCode != Retcode.RetSucc)
             {
                 if (firstError == Retcode.RetSucc) firstError = retCode;
-                if (connection.Player.QuestManager.QuestData.Quests.TryGetValue((int)quest, out var questInfo))
+                if (player.QuestManager!.Data.Quests.TryGetValue((int)quest, out var questInfo))
                     refreshQuestList.Add(questInfo);
             }
             else

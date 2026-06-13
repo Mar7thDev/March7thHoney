@@ -5,11 +5,11 @@ using March7thHoney.Util;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Tutorial;
 
 [Opcode(CmdIds.GetTutorialGuideCsReq)]
-public class HandlerGetTutorialGuideCsReq : Handler
+public class HandlerGetTutorialGuideCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         if (ConfigManager.Config.ServerOption.EnableMission) // If missions are enabled
-            await connection.SendPacket(new PacketGetTutorialGuideScRsp(connection.Player!)); // some bug
+            await connection.SendPacket(new PacketGetTutorialGuideScRsp(player)); // some bug
     }
 }

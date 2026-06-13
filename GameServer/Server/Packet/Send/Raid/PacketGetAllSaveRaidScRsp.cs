@@ -10,7 +10,7 @@ public class PacketGetAllSaveRaidScRsp : BasePacket
     {
         var proto = new GetAllSaveRaidScRsp();
 
-        foreach (var dict in player.RaidManager!.RaidData.RaidRecordDatas.Values)
+        foreach (var dict in player.RaidManager!.Data.RaidRecordDatas.Values)
         foreach (var record in dict.Values)
             proto.RaidDataList.Add(new RaidData
             {

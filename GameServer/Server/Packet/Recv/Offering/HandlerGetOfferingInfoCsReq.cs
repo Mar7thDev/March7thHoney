@@ -6,14 +6,12 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Offering;
 
 [Opcode(CmdIds.GetOfferingInfoCsReq)]
-public class HandlerGetOfferingInfoCsReq : Handler
+public class HandlerGetOfferingInfoCsReq : Handler<GetOfferingInfoCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetOfferingInfoCsReq req)
     {
-        var req = GetOfferingInfoCsReq.Parser.ParseFrom(data);
-
         List<OfferingTypeData> dataList = [];
-        dataList.AddRange(req.OfferingIdList.Select(id => connection.Player!.OfferingManager!.GetOfferingData((int)id))
+        dataList.AddRange(req.OfferingIdList.Select(id => player.OfferingManager!.GetOfferingData((int)id))
             .OfType<OfferingTypeData>());
 
         await connection.SendPacket(new PacketGetOfferingInfoScRsp(dataList));

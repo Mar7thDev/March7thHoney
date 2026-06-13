@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.RollShop;
 
 [Opcode(CmdIds.GetRollShopInfoCsReq)]
-public class HandlerGetRollShopInfoCsReq : Handler
+public class HandlerGetRollShopInfoCsReq : Handler<GetRollShopInfoCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetRollShopInfoCsReq req)
     {
-        var req = GetRollShopInfoCsReq.Parser.ParseFrom(data);
-
         await connection.SendPacket(new PacketGetRollShopInfoScRsp(req.RollShopId));
     }
 }

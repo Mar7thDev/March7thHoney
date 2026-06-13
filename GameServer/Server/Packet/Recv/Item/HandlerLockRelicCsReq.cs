@@ -6,13 +6,12 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.LockRelicCsReq)]
-public class HandlerLockRelicCsReq : Handler
+public class HandlerLockRelicCsReq : Handler<LockRelicCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, LockRelicCsReq req)
     {
-        var req = LockRelicCsReq.Parser.ParseFrom(data);
         var result =
-            await connection.Player!.InventoryManager!.LockItems(req.RelicIds, req.IsLocked,
+            await player.InventoryManager!.LockItems(req.RelicIds, req.IsLocked,
                 ItemMainTypeEnum.Relic);
         await connection.SendPacket(new PacketLockRelicScRsp(result));
     }

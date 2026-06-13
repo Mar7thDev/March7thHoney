@@ -4,10 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.StoryLine;
 
 [Opcode(CmdIds.GetStoryLineInfoCsReq)]
-public class HandlerGetStoryLineInfoCsReq : Handler
+public class HandlerGetStoryLineInfoCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketGetStoryLineInfoScRsp(connection.Player!));
+        await connection.SendPacket(new PacketGetStoryLineInfoScRsp(player));
     }
 }

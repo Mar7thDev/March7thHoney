@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.ReserveStaminaExchangeCsReq)]
-public class HandlerReserveStaminaExchangeCsReq : Handler
+public class HandlerReserveStaminaExchangeCsReq : Handler<ReserveStaminaExchangeCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, ReserveStaminaExchangeCsReq req)
     {
-        var req = ReserveStaminaExchangeCsReq.Parser.ParseFrom(data);
-        var player = connection.Player;
         if (player == null) return;
         var amount = req.Num;
         if (amount <= 0 || player.Data.StaminaReserve < amount)

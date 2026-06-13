@@ -37,7 +37,7 @@ public class TrialActivityInstance : BaseActivityInstance
 
         // Remove trial lineup
         await player.LineupManager!.DestroyExtraLineup(ExtraLineupType.LineupStageTrial);
-        player.LineupManager!.LineupData.CurExtraLineup = -1;
+        player.LineupManager!.Data.CurExtraLineup = -1;
 
         // Go back to default scene
         await player.EnterScene(2000101, 0, true);

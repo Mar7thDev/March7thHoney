@@ -36,7 +36,7 @@ public class CommandRemove : ICommand
         var baseAvatarId = GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPathAvatar)
             ? multiPathAvatar.BaseAvatarID
             : avatarId;
-        var avatar = player.AvatarManager!.AvatarData.FormalAvatars
+        var avatar = player.AvatarManager!.Data.FormalAvatars
             .FirstOrDefault(x => x.BaseAvatarId == baseAvatarId);
         if (avatar == null)
         {
@@ -59,18 +59,18 @@ public class CommandRemove : ICommand
         }
 
         UnequipAvatarItems(player.InventoryManager!.Data.EquipmentItems, player.InventoryManager.Data.RelicItems, avatar);
-        player.AvatarManager.AvatarData.FormalAvatars.Remove(avatar);
-        player.AvatarManager.AvatarData.AssistAvatars.RemoveAll(x => x == avatar.BaseAvatarId || x == avatar.AvatarId);
-        player.AvatarManager.AvatarData.DisplayAvatars.RemoveAll(x => x == avatar.BaseAvatarId || x == avatar.AvatarId);
+        player.AvatarManager.Data.FormalAvatars.Remove(avatar);
+        player.AvatarManager.Data.AssistAvatars.RemoveAll(x => x == avatar.BaseAvatarId || x == avatar.AvatarId);
+        player.AvatarManager.Data.DisplayAvatars.RemoveAll(x => x == avatar.BaseAvatarId || x == avatar.AvatarId);
 
-        foreach (var lineup in player.LineupManager!.LineupData.Lineups.Values)
+        foreach (var lineup in player.LineupManager!.Data.Lineups.Values)
             lineup.BaseAvatars?.RemoveAll(x => x.BaseAvatarId == avatar.BaseAvatarId);
 
-        await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager.AvatarData.FormalAvatars));
+        await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager.Data.FormalAvatars));
         if (player.LineupManager.GetCurLineup() != null)
             await player.SendPacket(new PacketSyncLineupNotify(player.LineupManager.GetCurLineup()!));
 
-        DatabaseHelper.ToSaveUidList.Add(player.Uid);
+        DatabaseHelper.MarkDirty(player.Uid);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Remove.Success",
             "1", I18NManager.Translate("Word.Avatar")));
     }
@@ -124,7 +124,7 @@ public class CommandRemove : ICommand
         var changedAvatars = new List<BaseAvatarInfo>();
         foreach (var item in equipment)
         {
-            foreach (var avatar in player.AvatarManager!.AvatarData.FormalAvatars)
+            foreach (var avatar in player.AvatarManager!.Data.FormalAvatars)
             foreach (var path in avatar.PathInfos.Values)
             {
                 if (path.EquipId != item.UniqueId) continue;
@@ -139,7 +139,7 @@ public class CommandRemove : ICommand
         if (changedAvatars.Count > 0)
             await player.SendPacket(new PacketPlayerSyncScNotify(changedAvatars));
 
-        DatabaseHelper.ToSaveUidList.Add(player.Uid);
+        DatabaseHelper.MarkDirty(player.Uid);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Remove.Success",
             equipment.Count.ToString(), I18NManager.Translate("Word.Equipment")));
     }
