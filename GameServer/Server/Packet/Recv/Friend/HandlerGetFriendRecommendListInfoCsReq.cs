@@ -4,11 +4,11 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.GetFriendRecommendListInfoCsReq)]
-public class HandlerGetFriendRecommendListInfoCsReq : Handler
+public class HandlerGetFriendRecommendListInfoCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var friends = connection.Player!.FriendManager!.GetRandomFriend();
+        var friends = player.FriendManager!.GetRandomFriend();
 
         await connection.SendPacket(new PacketGetFriendRecommendListInfoScRsp(friends));
     }

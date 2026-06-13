@@ -6,18 +6,17 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.SearchPlayerCsReq)]
-public class HandlerSearchPlayerCsReq : Handler
+public class HandlerSearchPlayerCsReq : Handler<SearchPlayerCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SearchPlayerCsReq req)
     {
-        var req = SearchPlayerCsReq.Parser.ParseFrom(data);
         var playerList = new List<PlayerData>();
 
         foreach (var uid in req.UidList)
         {
-            var player = connection.Player!.FriendManager!.GetFriendPlayerData([(int)uid])
+            var match = player.FriendManager!.GetFriendPlayerData([(int)uid])
                 .FirstOrDefault(x => x.Uid == (int)uid);
-            if (player != null) playerList.Add(player);
+            if (match != null) playerList.Add(match);
         }
 
         if (playerList.Count == 0)

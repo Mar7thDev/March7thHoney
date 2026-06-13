@@ -5,15 +5,14 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.StartCocoonStageCsReq)]
-public class HandlerStartCocoonStageCsReq : Handler
+public class HandlerStartCocoonStageCsReq : Handler<StartCocoonStageCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, StartCocoonStageCsReq req)
     {
-        var req = StartCocoonStageCsReq.Parser.ParseFrom(data);
         var battle =
-            await connection.Player!.BattleManager!.StartCocoonStage((int)req.CocoonId, (int)req.Wave,
+            await player.BattleManager!.StartCocoonStage((int)req.CocoonId, (int)req.Wave,
                 (int)req.WorldLevel);
-        connection.Player.SceneInstance?.OnEnterStage();
+        player.SceneInstance?.OnEnterStage();
 
         if (battle != null)
             await connection.SendPacket(new PacketStartCocoonStageScRsp(battle, (int)req.CocoonId, (int)req.Wave));

@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Tutorial;
 
 [Opcode(CmdIds.UnlockTutorialGuideCsReq)]
-public class HandlerUnlockTutorialGuideCsReq : Handler
+public class HandlerUnlockTutorialGuideCsReq : Handler<UnlockTutorialGuideCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, UnlockTutorialGuideCsReq req)
     {
-        var req = UnlockTutorialGuideCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         if (!player.TutorialGuideData!.Tutorials.TryGetValue((int)req.GroupId, out _))
             player.TutorialGuideData!.Tutorials.Add((int)req.GroupId, TutorialStatus.TutorialUnlock);
 

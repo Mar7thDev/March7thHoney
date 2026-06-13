@@ -6,13 +6,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.GetLevelRewardCsReq)]
-public class HandlerGetLevelRewardCsReq : Handler
+public class HandlerGetLevelRewardCsReq : Handler<GetLevelRewardCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetLevelRewardCsReq req)
     {
-        var req = GetLevelRewardCsReq.Parser.ParseFrom(data);
-
-        var player = connection.Player!;
         if (player.Data.TakenLevelReward.Contains((int)req.Level))
         {
             await connection.SendPacket(new PacketGetLevelRewardScRsp(Retcode.RetLevelRewardHasTaken));

@@ -5,12 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mail;
 
 [Opcode(CmdIds.TakeMailAttachmentCsReq)]
-public class HandlerTakeMailAttachmentCsReq : Handler
+public class HandlerTakeMailAttachmentCsReq : Handler<TakeMailAttachmentCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeMailAttachmentCsReq req)
     {
-        var req = TakeMailAttachmentCsReq.Parser.ParseFrom(data);
-        var mailManager = connection.Player!.MailManager!;
+        var mailManager = player.MailManager!;
         IEnumerable<uint> mailIds = req.MailIdList.Count > 0 ? req.MailIdList : mailManager.GetMailIdsWithAttachments();
         var result = await mailManager.TakeAttachments(mailIds);
 

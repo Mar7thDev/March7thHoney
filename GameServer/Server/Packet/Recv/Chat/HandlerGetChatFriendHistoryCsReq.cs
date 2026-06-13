@@ -4,11 +4,11 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Chat;
 
 [Opcode(CmdIds.GetChatFriendHistoryCsReq)]
-public class HandlerGetChatFriendHistoryCsReq : Handler
+public class HandlerGetChatFriendHistoryCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var history = connection.Player!.FriendManager!.FriendData.ChatHistory;
+        var history = player.FriendManager!.FriendData.ChatHistory;
 
         await connection.SendPacket(new PacketGetChatFriendHistoryScRsp(history));
     }

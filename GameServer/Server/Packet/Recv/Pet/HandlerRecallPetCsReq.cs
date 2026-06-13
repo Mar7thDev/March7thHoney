@@ -5,15 +5,13 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Pet;
 
 [Opcode(CmdIds.RecallPetCsReq)]
-public class HandlerRecallPetCsReq : Handler
+public class HandlerRecallPetCsReq : Handler<RecallPetCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, RecallPetCsReq req)
     {
-        var req = RecallPetCsReq.Parser.ParseFrom(data);
-
-        connection.Player!.Data.Pet = 0;
+        player.Data.Pet = 0;
 
         await connection.SendPacket(new PacketRecallPetScRsp(req.SummonedPetId));
-        // TODO 4.3: TrainCakeCatch 小游戏暂停编译，不再向其大厅广播玩家状态变更
+        // TODO 4.3: TrainCakeCatch 灏忔父鎴忔殏鍋滅紪璇戯紝涓嶅啀鍚戝叾澶у巺骞挎挱鐜╁鐘舵€佸彉鏇?
     }
 }

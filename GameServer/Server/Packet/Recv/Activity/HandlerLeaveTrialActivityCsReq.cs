@@ -4,19 +4,17 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Activity;
 
 [Opcode(CmdIds.LeaveTrialActivityCsReq)]
-public class HandlerLeaveTrialActivityCsReq : Handler
+public class HandlerLeaveTrialActivityCsReq : Handler<LeaveTrialActivityCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, LeaveTrialActivityCsReq req)
     {
-        var req = LeaveTrialActivityCsReq.Parser.ParseFrom(data);
-
-        if (connection.Player!.ActivityManager!.TrialActivityInstance != null)
+        if (player.ActivityManager!.TrialActivityInstance != null)
         {
-            var manager = connection.Player!.ActivityManager;
+            var manager = player.ActivityManager;
             await manager.TrialActivityInstance.EndActivity();
         }
 
-        connection.Player!.ActivityManager!.TrialActivityInstance = null;
+        player.ActivityManager!.TrialActivityInstance = null;
 
         await connection.SendPacket(CmdIds.LeaveTrialActivityScRsp);
     }

@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.TakeChallengeRewardCsReq)]
-public class HandlerTakeChallengeRewardCsReq : Handler
+public class HandlerTakeChallengeRewardCsReq : Handler<TakeChallengeRewardCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeChallengeRewardCsReq req)
     {
-        var req = TakeChallengeRewardCsReq.Parser.ParseFrom(data);
-
-        var rewardInfos = await connection.Player!.ChallengeManager!.TakeRewards((int)req.GroupId)!;
+        var rewardInfos = await player.ChallengeManager!.TakeRewards((int)req.GroupId)!;
         await connection.SendPacket(new PacketTakeChallengeRewardScRsp((int)req.GroupId, rewardInfos));
     }
 }

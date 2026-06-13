@@ -5,13 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Raid;
 
 [Opcode(CmdIds.StartRaidCsReq)]
-public class HandlerStartRaidCsReq : Handler
+public class HandlerStartRaidCsReq : Handler<StartRaidCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, StartRaidCsReq req)
     {
-        var req = StartRaidCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
-
         var record = await player.RaidManager!.EnterRaid((int)req.RaidId, (int)req.WorldLevel,
             req.AvatarList.Select(x => (int)x).ToList(),
             req.IsSave == 1);

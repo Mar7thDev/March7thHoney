@@ -5,13 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mail;
 
 [Opcode(CmdIds.MarkReadMailCsReq)]
-public class HandlerMarkReadMailCsReq : Handler
+public class HandlerMarkReadMailCsReq : Handler<MarkReadMailCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, MarkReadMailCsReq req)
     {
-        var req = MarkReadMailCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
-
         var mail = player.MailManager!.GetMail((int)req.Id);
 
         if (mail != null)

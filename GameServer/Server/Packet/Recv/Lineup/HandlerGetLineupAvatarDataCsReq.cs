@@ -4,10 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Lineup;
 
 [Opcode(CmdIds.GetLineupAvatarDataCsReq)]
-public class HandlerGetLineupAvatarDataCsReq : Handler
+public class HandlerGetLineupAvatarDataCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketGetLineupAvatarDataScRsp(connection.Player!));
+        await connection.SendPacket(new PacketGetLineupAvatarDataScRsp(player));
     }
 }

@@ -5,12 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Lineup;
 
 [Opcode(CmdIds.SwitchLineupIndexCsReq)]
-public class HandlerSwitchLineupIndexCsReq : Handler
+public class HandlerSwitchLineupIndexCsReq : Handler<SwitchLineupIndexCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SwitchLineupIndexCsReq req)
     {
-        var req = SwitchLineupIndexCsReq.Parser.ParseFrom(data);
-        if (await connection.Player!.LineupManager!
+        if (await player.LineupManager!
                 .SetCurLineup((int)req.Index)) // SetCurLineup returns true if the index is valid
             await connection.SendPacket(new PacketSwitchLineupIndexScRsp(req.Index));
     }

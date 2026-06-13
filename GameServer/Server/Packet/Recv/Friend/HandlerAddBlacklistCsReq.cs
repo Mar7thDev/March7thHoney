@@ -5,16 +5,14 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.AddBlacklistCsReq)]
-public class HandlerAddBlacklistCsReq : Handler
+public class HandlerAddBlacklistCsReq : Handler<AddBlacklistCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, AddBlacklistCsReq req)
     {
-        var req = AddBlacklistCsReq.Parser.ParseFrom(data);
+        var blocked = await player.FriendManager!.AddBlackList((int)req.Uid);
 
-        var player = await connection.Player!.FriendManager!.AddBlackList((int)req.Uid);
-
-        if (player != null)
-            await connection.SendPacket(new PacketAddBlacklistScRsp(player));
+        if (blocked != null)
+            await connection.SendPacket(new PacketAddBlacklistScRsp(blocked));
         else
             await connection.SendPacket(new PacketAddBlacklistScRsp());
     }

@@ -4,10 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.PamSkin;
 
 [Opcode(CmdIds.GetPamSkinDataCsReq)]
-public class HandlerGetPamSkinDataCsReq : Handler
+public class HandlerGetPamSkinDataCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketGetPamSkinDataScRsp(connection.Player!));
+        await connection.SendPacket(new PacketGetPamSkinDataScRsp(player));
     }
 }
