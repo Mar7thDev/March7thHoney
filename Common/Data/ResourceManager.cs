@@ -80,6 +80,16 @@ public class ResourceManager
 
     private static readonly List<string> MissingExcelFiles = [];
 
+    // Excel tables belonging to paused / uncompiled gameplay modules. Verified to have no live reader
+    // (only their own self-populating Loaded() hooks touch them), so they are skipped unless
+    // ServerOption.LoadPausedModuleData is enabled — see that flag for the rationale.
+    private static readonly string[] PausedModuleResourcePrefixes = ["GridFight", "MatchThree", "Marble", "Cake"];
+
+    private static bool IsPausedModuleResource(Type cls)
+    {
+        return PausedModuleResourcePrefixes.Any(prefix => cls.Name.StartsWith(prefix, StringComparison.Ordinal));
+    }
+
     public static void LoadExcel()
     {
         var classes = Assembly.GetExecutingAssembly().GetTypes(); // Get all classes in the assembly
@@ -89,8 +99,10 @@ public class ResourceManager
             MissingExcelFiles.Clear();
         }
 
+        var loadPaused = ConfigManager.Config.ServerOption.LoadPausedModuleData;
         foreach (var cls in classes.Where(x => x.IsSubclassOf(typeof(ExcelResource))))
         {
+            if (!loadPaused && IsPausedModuleResource(cls)) continue;
             var res = LoadSingleExcelResource(cls);
             if (res != null) resList.AddRange(res);
         }
