@@ -13,7 +13,7 @@ public class HandlerTakeQuestRewardCsReq : Handler<TakeQuestRewardCsReq>
     protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeQuestRewardCsReq req)
     {
         List<ItemData> rewardItems = [];
-        var ret = Retcode.RetSucc;
+        var firstError = Retcode.RetSucc;
         List<int> succQuestIds = [];
         List<QuestInfo> refreshQuestList = [];
 
@@ -22,8 +22,8 @@ public class HandlerTakeQuestRewardCsReq : Handler<TakeQuestRewardCsReq>
             var (retCode, items) = await player.QuestManager!.TakeQuestReward((int)quest);
             if (retCode != Retcode.RetSucc)
             {
-                ret = retCode;
-                if (player.QuestManager.Data.Quests.TryGetValue((int)quest, out var questInfo))
+                if (firstError == Retcode.RetSucc) firstError = retCode;
+                if (player.QuestManager!.Data.Quests.TryGetValue((int)quest, out var questInfo))
                     refreshQuestList.Add(questInfo);
             }
             else
@@ -35,6 +35,7 @@ public class HandlerTakeQuestRewardCsReq : Handler<TakeQuestRewardCsReq>
         if (refreshQuestList.Count > 0)
             await connection.SendPacket(new PacketPlayerSyncScNotify(refreshQuestList));
 
+        var ret = succQuestIds.Count > 0 ? Retcode.RetSucc : firstError;
         await connection.SendPacket(new PacketTakeQuestRewardScRsp(ret, rewardItems, succQuestIds));
     }
 }
