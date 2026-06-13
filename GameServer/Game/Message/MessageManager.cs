@@ -9,9 +9,8 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Message;
 
-public class MessageManager(PlayerInstance player) : BasePlayerManager(player)
+public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageData>(player)
 {
-    public MessageData Data { get; } = DatabaseHelper.Instance!.GetInstanceOrCreateNew<MessageData>(player.Uid);
     public List<MessageSectionData> PendingMessagePerformSectionList { get; private set; } = [];
 
     #region Get

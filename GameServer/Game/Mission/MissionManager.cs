@@ -17,11 +17,10 @@ using MissionData = March7thHoney.Database.Quests.MissionData;
 
 namespace March7thHoney.GameServer.Game.Mission;
 
-public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
+public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionData>(player)
 {
     #region Initializer & Properties
 
-    public MissionData Data { get; set; } = DatabaseHelper.Instance!.GetInstanceOrCreateNew<MissionData>(player.Uid);
     public static readonly Dictionary<FinishActionTypeEnum, MissionFinishActionHandler> ActionHandlers = [];
     public static readonly Dictionary<MissionFinishTypeEnum, MissionFinishTypeHandler> FinishTypeHandlers = [];
 
