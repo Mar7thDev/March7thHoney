@@ -1,9 +1,7 @@
-using March7thHoney.Data;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Message;
 using March7thHoney.Database.Quests;
-using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Game.Sync;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -12,201 +10,66 @@ namespace March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 
 public class PacketPlayerSyncScNotify : BasePacket
 {
-    public PacketPlayerSyncScNotify(List<BaseSyncData> datas) : base(CmdIds.PlayerSyncScNotify)
+    // Single entry point: every payload is a BaseSyncData that writes itself into the notify.
+    // Combinations are expressed by passing several sync-data, not by adding constructor overloads.
+    public PacketPlayerSyncScNotify(params BaseSyncData[] datas) : this((IEnumerable<BaseSyncData>)datas)
+    {
+    }
+
+    public PacketPlayerSyncScNotify(IEnumerable<BaseSyncData> datas) : base(CmdIds.PlayerSyncScNotify)
     {
         var proto = new PlayerSyncScNotify();
-
         foreach (var data in datas) data.SyncData(proto);
-
         SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(ItemData item) : base(CmdIds.PlayerSyncScNotify)
+    // Convenience overloads for the common single-payload sends — each delegates to one sync-data,
+    // so the per-payload proto-building lives in exactly one place.
+    public PacketPlayerSyncScNotify(ItemData item) : this(new ItemSyncData(item))
     {
-        var proto = new PlayerSyncScNotify();
-        AddItemToProto(item, proto);
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(List<ItemData> item) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(List<ItemData> items) : this(items.Select(i => (BaseSyncData)new ItemSyncData(i)))
     {
-        var proto = new PlayerSyncScNotify();
-        foreach (var i in item) AddItemToProto(i, proto);
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(IEnumerable<uint> delEquipmentIds) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(IEnumerable<uint> delEquipmentIds) : this(new DelEquipmentSyncData(delEquipmentIds))
     {
-        var proto = new PlayerSyncScNotify();
-        proto.DelEquipmentList.Add(delEquipmentIds);
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(ItemData item, IEnumerable<uint> delEquipmentIds) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(BaseAvatarInfo avatar) : this(new AvatarSyncData(avatar))
     {
-        var proto = new PlayerSyncScNotify();
-        AddItemToProto(item, proto);
-        proto.DelEquipmentList.Add(delEquipmentIds);
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(BaseAvatarInfo avatar) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(List<BaseAvatarInfo> avatars) : this(
+        avatars.Select(a => (BaseSyncData)new AvatarSyncData(a)))
     {
-        var proto = new PlayerSyncScNotify
-        {
-            AvatarSync = new AvatarSync()
-        };
-        AddAvatarToProto(avatar, proto.AvatarSync);
-
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(List<BaseAvatarInfo> avatars) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(List<FormalAvatarInfo> avatars) : this(
+        avatars.Select(a => (BaseSyncData)new AvatarSyncData(a)))
     {
-        var proto = new PlayerSyncScNotify
-        {
-            AvatarSync = new AvatarSync()
-        };
-
-        foreach (var avatar in avatars)
-        {
-            AddAvatarToProto(avatar, proto.AvatarSync);
-        }
-
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(List<FormalAvatarInfo> avatars) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(MissionSync mission) : this(new MissionSyncData(mission))
     {
-        var proto = new PlayerSyncScNotify
-        {
-            AvatarSync = new AvatarSync()
-        };
-
-        foreach (var avatar in avatars)
-            AddAvatarToProto(avatar, proto.AvatarSync);
-
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(BaseAvatarInfo avatar, ItemData item) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(PlayerBasicInfo info) : this(new BasicInfoSyncData(info))
     {
-        var proto = new PlayerSyncScNotify();
-        AddItemToProto(item, proto);
-        proto.AvatarSync = new AvatarSync();
-        AddAvatarToProto(avatar, proto.AvatarSync);
-
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(MissionSync mission) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(MessageGroupData? groupData, MessageSectionData? sectionData) : this(
+        new MessageStatusSyncData(groupData, sectionData))
     {
-        var proto = new PlayerSyncScNotify
-        {
-            MissionSync = mission
-        };
-
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(PlayerBasicInfo info) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(QuestInfo quest) : this(new QuestSyncData(quest))
     {
-        var proto = new PlayerSyncScNotify
-        {
-            BasicInfo = info
-        };
-
-        SetData(proto);
     }
 
-    public PacketPlayerSyncScNotify(PlayerBasicInfo info, List<ItemData> item) : base(CmdIds.PlayerSyncScNotify)
+    public PacketPlayerSyncScNotify(List<QuestInfo> quests) : this(
+        quests.Select(q => (BaseSyncData)new QuestSyncData(q)))
     {
-        var proto = new PlayerSyncScNotify
-        {
-            BasicInfo = info
-        };
-
-        foreach (var i in item) AddItemToProto(i, proto);
-
-        SetData(proto);
-    }
-
-    // TODO 4.3: PlayerOutfitInfo / PlayerOutfitData 在 4.3 中已被砍掉，构造函数暂停
-
-    public PacketPlayerSyncScNotify(MessageGroupData? groupData, MessageSectionData? sectionData) : base(
-        CmdIds.PlayerSyncScNotify)
-    {
-        var proto = new PlayerSyncScNotify
-        {
-            SyncStatus = new SyncStatus()
-        };
-
-        if (groupData != null)
-            proto.SyncStatus.MessageGroupStatus.Add(new GroupStatus
-            {
-                GroupId = (uint)groupData.GroupId,
-                GroupStatus_ = groupData.Status,
-                RefreshTime = groupData.RefreshTime
-            });
-
-        if (sectionData != null)
-            proto.SyncStatus.SectionStatus.Add(new SectionStatus
-            {
-                SectionId = (uint)sectionData.SectionId,
-                SectionStatus_ = sectionData.Status
-            });
-
-        SetData(proto);
-    }
-
-    public PacketPlayerSyncScNotify(QuestInfo quest) : base(CmdIds.PlayerSyncScNotify)
-    {
-        var proto = new PlayerSyncScNotify();
-        proto.QuestList.Add(quest.ToProto());
-
-        SetData(proto);
-    }
-
-    public PacketPlayerSyncScNotify(List<QuestInfo> quest) : base(CmdIds.PlayerSyncScNotify)
-    {
-        var proto = new PlayerSyncScNotify();
-        proto.QuestList.Add(quest.Select(x => x.ToProto()));
-
-        SetData(proto);
-    }
-
-    private void AddItemToProto(ItemData item, PlayerSyncScNotify notify)
-    {
-        GameData.ItemConfigData.TryGetValue(item.ItemId, out var itemConfig);
-        if (itemConfig == null) return;
-        switch (itemConfig.ItemMainType)
-        {
-            case ItemMainTypeEnum.Equipment:
-                if (item.Count > 0)
-                    notify.EquipmentList.Add(item.ToEquipmentProto());
-                else
-                    notify.DelEquipmentList.Add((uint)item.UniqueId);
-                break;
-            case ItemMainTypeEnum.Relic:
-                if (item.Count > 0)
-                    notify.RelicList.Add(item.ToRelicProto());
-                else
-                    notify.DelRelicList.Add((uint)item.UniqueId);
-                break;
-            case ItemMainTypeEnum.Mission:
-            case ItemMainTypeEnum.Material:
-            case ItemMainTypeEnum.Pet:
-            case ItemMainTypeEnum.Usable:
-                notify.MaterialList.Add(item.ToMaterialProto());
-                break;
-        }
-    }
-
-    private static void AddAvatarToProto(BaseAvatarInfo avatar, AvatarSync sync)
-    {
-        sync.AvatarList.Add(avatar.ToProto());
-        if (avatar is FormalAvatarInfo formalAvatar)
-            sync.AvatarPathDataInfoList.Add(formalAvatar.ToAvatarPathDataProto());
     }
 }
-

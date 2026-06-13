@@ -7,6 +7,7 @@ using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Sync;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 // TODO 4.3: Phone 模块暂停
@@ -869,7 +870,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
                 // switch
                 equipAvatar.PathInfos[equipAvatarId].EquipId = oldItem.UniqueId;
                 oldItem.EquipAvatar = equipAvatar.AvatarId;
-                await Player.SendPacket(new PacketPlayerSyncScNotify(equipAvatar, oldItem));
+                await Player.SendPacket(new PacketPlayerSyncScNotify(new AvatarSyncData(equipAvatar), new ItemSyncData(oldItem)));
             }
             else if (equipAvatar != null && oldItem == null)
             {
@@ -888,7 +889,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
 
         itemData.EquipAvatar = avatarData.AvatarId;
         avatarData.PathInfos[avatarId].EquipId = itemData.UniqueId;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData, itemData));
+        await Player.SendPacket(new PacketPlayerSyncScNotify(new AvatarSyncData(avatarData), new ItemSyncData(itemData)));
     }
 
     public async ValueTask EquipRelic(int avatarId, int relicUniqueId, int slot)
@@ -908,7 +909,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
                 // switch
                 equipAvatar.PathInfos[equipAvatarId].Relic[slot] = oldItem.UniqueId;
                 oldItem.EquipAvatar = equipAvatar.AvatarId;
-                await Player.SendPacket(new PacketPlayerSyncScNotify(equipAvatar, oldItem));
+                await Player.SendPacket(new PacketPlayerSyncScNotify(new AvatarSyncData(equipAvatar), new ItemSyncData(oldItem)));
             }
             else if (equipAvatar != null && oldItem == null)
             {
@@ -928,7 +929,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
         itemData.EquipAvatar = avatarData.AvatarId;
         avatarData.PathInfos[avatarId].Relic[slot] = itemData.UniqueId;
         // save
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData, itemData));
+        await Player.SendPacket(new PacketPlayerSyncScNotify(new AvatarSyncData(avatarData), new ItemSyncData(itemData)));
     }
 
     public async ValueTask UnequipRelic(int avatarId, int slot)
@@ -941,7 +942,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
         if (itemData == null) return;
         pathInfo.Relic.Remove(slot);
         itemData.EquipAvatar = 0;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData, itemData));
+        await Player.SendPacket(new PacketPlayerSyncScNotify(new AvatarSyncData(avatarData), new ItemSyncData(itemData)));
     }
 
     public async ValueTask UnequipEquipment(int avatarId)
@@ -953,7 +954,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
         if (itemData == null) return;
         itemData.EquipAvatar = 0;
         pathInfo.EquipId = 0;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData, itemData));
+        await Player.SendPacket(new PacketPlayerSyncScNotify(new AvatarSyncData(avatarData), new ItemSyncData(itemData)));
     }
 
     public async ValueTask<List<ItemData>> LevelUpAvatar(int baseAvatarId, ItemCostData item)
@@ -1424,7 +1425,8 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
         await RemoveItems(costItems, false);
         itemData.Rank = Math.Min(itemData.Rank + rank, maxRank);
         DatabaseHelper.MarkDirty(Player.Uid);
-        await Player.SendPacket(new PacketPlayerSyncScNotify(itemData, costItems.Select(item => (uint)item.uniqueId)));
+        await Player.SendPacket(new PacketPlayerSyncScNotify(new ItemSyncData(itemData),
+            new DelEquipmentSyncData(costItems.Select(item => (uint)item.uniqueId))));
         return Retcode.RetSucc;
     }
 
