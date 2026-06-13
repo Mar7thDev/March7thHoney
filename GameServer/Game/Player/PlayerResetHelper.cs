@@ -25,6 +25,9 @@ public static class PlayerResetHelper
         DatabaseHelper.Instance.DeleteUidGameplayData(uid);
 
         var fresh = new PlayerInstance(uid);
+        // Construction no longer self-initialises (the old ctor did init+seed via Task.Wait);
+        // drive the awaited bootstrap explicitly so the reset trailblazer gets its starting roster.
+        await fresh.InitializeAsync();
         fresh.Data.Level = ConfigManager.Config.ServerOption.StartTrailblazerLevel;
         fresh.Data.Exp = 0;
         fresh.OnLevelChange();
