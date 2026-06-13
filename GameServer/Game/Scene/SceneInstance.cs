@@ -241,6 +241,13 @@ public class SceneInstance
     public bool IsLoaded { get; set; } = false;
 
     public Dictionary<int, AvatarSceneInfo> AvatarInfo { get; set; } = [];
+
+    // Base avatar ids that actually released a technique (秘技) in this scene, recorded at
+    // SceneCastSkillCostMp. Consumed (and cleared) when the next battle is created so the technique
+    // effect relays into battle for exactly those casters — gated on a real scene cast, never freesr.
+    // Scene-scoped: a fresh SceneInstance starts empty, so techniques never carry across scenes.
+    public HashSet<int> CastTechniqueAvatarIds { get; } = [];
+
     public int LeaderEntityId { get; set; }
     public Dictionary<int, BaseGameEntity> Entities { get; set; } = [];
     public List<int> Groups { get; set; } = [];
