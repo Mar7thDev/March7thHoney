@@ -19,10 +19,8 @@ using Google.Protobuf.Collections;
 
 namespace March7thHoney.GameServer.Game.Inventory;
 
-public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
+public class InventoryManager(PlayerInstance player) : BasePlayerManager<InventoryData>(player)
 {
-    public InventoryData Data = DatabaseHelper.Instance!.GetInstanceOrCreateNew<InventoryData>(player.Uid);
-
     public async ValueTask AddItem(ItemData itemData, bool notify = true)
     {
         await PutItem(itemData.ItemId, itemData.Count,
