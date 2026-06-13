@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.ServerPrefs;
 
 [Opcode(CmdIds.UpdateServerPrefsDataCsReq)]
-public class HandlerUpdateServerPrefsDataCsReq : Handler
+public class HandlerUpdateServerPrefsDataCsReq : Handler<UpdateServerPrefsCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, UpdateServerPrefsCsReq req)
     {
-        var req = UpdateServerPrefsCsReq.Parser.ParseFrom(data);
-
-        connection.Player?.ServerPrefsData?.SetData((int)req.ServerPrefs.ServerPrefsId,
+        player?.ServerPrefsData?.SetData((int)req.ServerPrefs.ServerPrefsId,
             req.ServerPrefs.Data.ToBase64());
         await connection.SendPacket(new PacketUpdateServerPrefsDataScRsp(req.ServerPrefs.ServerPrefsId));
     }

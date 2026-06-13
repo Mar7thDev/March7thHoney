@@ -5,11 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Expedition;
 
 [Opcode(CmdIds.TakeMultipleExpeditionRewardCsReq)]
-public class HandlerTakeMultipleExpeditionRewardCsReq : Handler
+public class HandlerTakeMultipleExpeditionRewardCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var player = connection.Player!;
         var manager = player.ExpeditionManager!;
 
         if (!manager.CanTakeRewardNow())

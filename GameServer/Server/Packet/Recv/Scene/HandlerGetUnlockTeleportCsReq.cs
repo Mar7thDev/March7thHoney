@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.GetUnlockTeleportCsReq)]
-public class HandlerGetUnlockTeleportCsReq : Handler
+public class HandlerGetUnlockTeleportCsReq : Handler<GetUnlockTeleportCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetUnlockTeleportCsReq req)
     {
-        var req = GetUnlockTeleportCsReq.Parser.ParseFrom(data);
-
         await connection.SendPacket(new PacketGetUnlockTeleportScRsp(req));
     }
 }

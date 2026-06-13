@@ -5,11 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.SetGameplayBirthdayCsReq)]
-public class HandlerSetGameplayBirthdayCsReq : Handler
+public class HandlerSetGameplayBirthdayCsReq : Handler<SetGameplayBirthdayCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetGameplayBirthdayCsReq req)
     {
-        var req = SetGameplayBirthdayCsReq.Parser.ParseFrom(data);
         var month = req.Birthday / 100;
         var day = req.Birthday % 100;
         if (month < 1 || month > 12 || day < 1 || day > 31)
@@ -18,7 +17,7 @@ public class HandlerSetGameplayBirthdayCsReq : Handler
             return;
         }
 
-        var playerData = connection.Player!.Data;
+        var playerData = player.Data;
         if (playerData.Birthday != 0)
         {
             await connection.SendPacket(new PacketSetGameplayBirthdayScRsp());

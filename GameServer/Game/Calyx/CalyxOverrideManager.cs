@@ -23,14 +23,14 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
     public void Disable()
     {
         Data.IsActive = false;
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     public void Enable()
     {
         Data.IsActive = true;
         Data.LoadedAtUnix = Extensions.GetUnixSec();
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     public async ValueTask<BattleInstance?> BuildOverrideBattle(int cocoonId, int wave, int worldLevel)

@@ -10,7 +10,7 @@ public class PacketGetRaidInfoScRsp : BasePacket
     {
         var proto = new GetRaidInfoScRsp();
 
-        foreach (var recordDict in player.RaidManager!.RaidData.RaidRecordDatas)
+        foreach (var recordDict in player.RaidManager!.Data.RaidRecordDatas)
         foreach (var record in recordDict.Value)
             if (record.Value.Status == RaidStatus.Finish)
                 proto.FinishedRaidInfoList.Add(new FinishedRaidInfo

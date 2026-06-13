@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Friend;
 using March7thHoney.Database.Inventory;
@@ -7,6 +8,7 @@ using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Sync;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 // TODO 4.3: Phone 模块暂停
@@ -19,10 +21,8 @@ using Google.Protobuf.Collections;
 
 namespace March7thHoney.GameServer.Game.Inventory;
 
-public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
+public partial class InventoryManager(PlayerInstance player) : BasePlayerManager<InventoryData>(player)
 {
-    public InventoryData Data = DatabaseHelper.Instance!.GetInstanceOrCreateNew<InventoryData>(player.Uid);
-
     public async ValueTask AddItem(ItemData itemData, bool notify = true)
     {
         await PutItem(itemData.ItemId, itemData.Count,
@@ -59,164 +59,19 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         switch (itemConfig.ItemMainType)
         {
             case ItemMainTypeEnum.Equipment:
-                if (Data.EquipmentItems.Count + 1 > GameConstants.INVENTORY_MAX_EQUIPMENT) // get the max equipment
-                {
-                    await Player.SendPacket(new PacketRetcodeNotify(Retcode.RetEquipmentExceedLimit));
-                    break;
-                }
-
-                itemData = await PutItem(itemId, 1, rank, promotion, level, uniqueId: ++Data.NextUniqueId);
-
-                if (itemConfig.Rarity == ItemRarityEnum.SuperRare)
-                    // add development
-                    Player.FriendRecordData!.AddAndRemoveOld(new FriendDevelopmentInfoPb
-                    {
-                        DevelopmentType = (DevelopmentType)11,
-                        Params = { { "EquipmentTid", (uint)itemConfig.ID } }
-                    });
+                itemData = await AddEquipmentItem(itemId, rank, level, promotion, itemConfig);
                 break;
             case ItemMainTypeEnum.Usable:
-                switch (itemConfig.ItemSubType)
-                {
-                    case ItemSubTypeEnum.HeadIcon:
-                        if (!Player.PlayerUnlockData!.HeadIcons.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.HeadIcons.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                        }
-                        break;
-                    case ItemSubTypeEnum.ChatBubble:
-                        if (!Player.PlayerUnlockData!.ChatBubbles.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                            // TODO 4.3: PacketUnlockChatBubbleScNotify (Phone 模块) 暂停
-                        }
-                        break;
-                    case ItemSubTypeEnum.PhoneTheme:
-                        if (!Player.PlayerUnlockData!.PhoneThemes.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                            // TODO 4.3: PacketUnlockPhoneThemeScNotify (Phone 模块) 暂停
-                        }
-                        break;
-                    case ItemSubTypeEnum.PersonalCard:
-                        if (!Player.PlayerUnlockData!.PersonalCards.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.PersonalCards.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                        }
-                        break;
-                    case ItemSubTypeEnum.PhoneCase:
-                        if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
-                        {
-                            Player.PlayerUnlockData!.PhoneCases.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                            // TODO 4.3: PacketUnlockPhoneCaseScNotify (Phone 模块) 暂停
-                        }
-                        break;
-                    case ItemSubTypeEnum.PlayerOutfit:
-                        itemData = await PutItem(itemId, count);
-                        break;
-                    case ItemSubTypeEnum.AvatarSkin:
-                        if (!GameData.AvatarSkinData.TryGetValue(itemId, out var skinExcel)) break;
-                        var avatarId = skinExcel.AvatarID;
-                        if (!Player.PlayerUnlockData!.Skins.TryGetValue(avatarId, out var value))
-                        {
-                            value = [];
-                            Player.PlayerUnlockData.Skins[avatarId] = value;
-                        }
-
-                        if (!value.Contains(itemId))
-                        {
-                            value.Add(itemId);
-                            DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-                            await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
-                        }
-                        break;
-                    case ItemSubTypeEnum.Food:
-                    case ItemSubTypeEnum.Book:
-                    case ItemSubTypeEnum.FindChest:
-                    case ItemSubTypeEnum.Gift:
-                    case ItemSubTypeEnum.ForceOpitonalGift:
-                        itemData = await PutItem(itemId, count);
-                        break;
-                }
-
-                itemData ??= new ItemData
-                {
-                    ItemId = itemId,
-                    Count = count
-                };
+                itemData = await AddUsableItem(itemId, count, itemConfig);
                 break;
             case ItemMainTypeEnum.Relic:
-                //I dont think one player can have more than max count of relic until i see a player get 50000 relic and the client crashed :(
-                if (Data.RelicItems.Count + 1 > GameConstants.INVENTORY_MAX_RELIC) // get the max relic
-                {
-                    await Player.SendPacket(new PacketRetcodeNotify(Retcode.RetRelicExceedLimit));
-                    break;
-                }
-
-                (_, itemData) = await HandleRelic(itemId, ++Data.NextUniqueId, level, sync: sync);
+                itemData = await AddRelicItem(itemId, level, sync);
                 break;
             case ItemMainTypeEnum.Virtual:
-                var actualCount = 0;
-                switch (itemConfig.ID)
-                {
-                    case 1:
-                        Player.Data.Hcoin += count;
-                        actualCount = Player.Data.Hcoin;
-                        break;
-                    case 2:
-                        Player.Data.Scoin += count;
-                        actualCount = Player.Data.Scoin;
-                        break;
-                    case 3:
-                        Player.Data.Mcoin += count;
-                        actualCount = Player.Data.Mcoin;
-                        break;
-                    case 11:
-                        Player.Data.Stamina += count;
-                        actualCount = Player.Data.Stamina;
-                        break;
-                    case 22:
-                        Player.Data.Exp += count;
-                        Player.OnAddExp();
-                        actualCount = Player.Data.Exp;
-                        break;
-                    case 32:
-                        Player.Data.TalentPoints += count;
-                        // TODO : send VirtualItemPacket instead of PlayerSyncPacket
-                        break;
-                }
-
-                if (count != 0)
-                {
-                    await Player.SendPacket(new PacketPlayerSyncScNotify(Player.ToProto()));
-                    itemData = new ItemData
-                    {
-                        ItemId = itemId,
-                        Count = actualCount
-                    };
-                }
-
+                itemData = await AddVirtualItem(itemId, count, itemConfig);
                 break;
             case ItemMainTypeEnum.AvatarCard:
-                // add avatar
-                var avatar = Player.AvatarManager?.GetFormalAvatar(itemId);
-                if (avatar != null)
-                {
-                    var rankUpItem = Player.InventoryManager!.GetItem(itemId + 10000);
-                    if ((avatar.PathInfos[itemId].Rank + rankUpItem?.Count ?? 0) <= 5)
-                        itemData = await PutItem(itemId + 10000, 1);
-                }
-                else
-                {
-                    await Player.AddAvatar(itemId, sync, notify);
-                    await AddItem(itemId + 200000, 1, false);
-                }
-
+                itemData = await AddAvatarCardItem(itemId, sync, notify);
                 break;
             case ItemMainTypeEnum.Mission:
                 itemData = await PutItem(itemId, count);
@@ -238,6 +93,181 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         Player.MissionManager?.HandleFinishType(MissionFinishTypeEnum.GetItem, itemData.ToProto());
 
         return returnRaw ? itemData : clone;
+    }
+
+    private async ValueTask<ItemData?> AddEquipmentItem(int itemId, int rank, int level, int promotion,
+        ItemConfigExcel itemConfig)
+    {
+        if (Data.EquipmentItems.Count + 1 > GameConstants.INVENTORY_MAX_EQUIPMENT) // get the max equipment
+        {
+            await Player.SendPacket(new PacketRetcodeNotify(Retcode.RetEquipmentExceedLimit));
+            return null;
+        }
+
+        var itemData = await PutItem(itemId, 1, rank, promotion, level, uniqueId: ++Data.NextUniqueId);
+
+        if (itemConfig.Rarity == ItemRarityEnum.SuperRare)
+            // add development
+            Player.FriendRecordData!.AddAndRemoveOld(new FriendDevelopmentInfoPb
+            {
+                DevelopmentType = (DevelopmentType)11,
+                Params = { { "EquipmentTid", (uint)itemConfig.ID } }
+            });
+        return itemData;
+    }
+
+    private async ValueTask<ItemData?> AddUsableItem(int itemId, int count, ItemConfigExcel itemConfig)
+    {
+        ItemData? itemData = null;
+        switch (itemConfig.ItemSubType)
+        {
+            case ItemSubTypeEnum.HeadIcon:
+                if (!Player.PlayerUnlockData!.HeadIcons.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.HeadIcons.Add(itemId);
+                    MarkDirty();
+                }
+                break;
+            case ItemSubTypeEnum.ChatBubble:
+                if (!Player.PlayerUnlockData!.ChatBubbles.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
+                    MarkDirty();
+                    // TODO 4.3: PacketUnlockChatBubbleScNotify (Phone 模块) 暂停
+                }
+                break;
+            case ItemSubTypeEnum.PhoneTheme:
+                if (!Player.PlayerUnlockData!.PhoneThemes.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
+                    MarkDirty();
+                    // TODO 4.3: PacketUnlockPhoneThemeScNotify (Phone 模块) 暂停
+                }
+                break;
+            case ItemSubTypeEnum.PersonalCard:
+                if (!Player.PlayerUnlockData!.PersonalCards.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.PersonalCards.Add(itemId);
+                    MarkDirty();
+                }
+                break;
+            case ItemSubTypeEnum.PhoneCase:
+                if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
+                {
+                    Player.PlayerUnlockData!.PhoneCases.Add(itemId);
+                    MarkDirty();
+                    // TODO 4.3: PacketUnlockPhoneCaseScNotify (Phone 模块) 暂停
+                }
+                break;
+            case ItemSubTypeEnum.PlayerOutfit:
+                itemData = await PutItem(itemId, count);
+                break;
+            case ItemSubTypeEnum.AvatarSkin:
+                if (!GameData.AvatarSkinData.TryGetValue(itemId, out var skinExcel)) break;
+                var avatarId = skinExcel.AvatarID;
+                if (!Player.PlayerUnlockData!.Skins.TryGetValue(avatarId, out var value))
+                {
+                    value = [];
+                    Player.PlayerUnlockData.Skins[avatarId] = value;
+                }
+
+                if (!value.Contains(itemId))
+                {
+                    value.Add(itemId);
+                    MarkDirty();
+                    await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
+                }
+                break;
+            case ItemSubTypeEnum.Food:
+            case ItemSubTypeEnum.Book:
+            case ItemSubTypeEnum.FindChest:
+            case ItemSubTypeEnum.Gift:
+            case ItemSubTypeEnum.ForceOpitonalGift:
+                itemData = await PutItem(itemId, count);
+                break;
+        }
+
+        itemData ??= new ItemData
+        {
+            ItemId = itemId,
+            Count = count
+        };
+        return itemData;
+    }
+
+    private async ValueTask<ItemData?> AddRelicItem(int itemId, int level, bool sync)
+    {
+        //I dont think one player can have more than max count of relic until i see a player get 50000 relic and the client crashed :(
+        if (Data.RelicItems.Count + 1 > GameConstants.INVENTORY_MAX_RELIC) // get the max relic
+        {
+            await Player.SendPacket(new PacketRetcodeNotify(Retcode.RetRelicExceedLimit));
+            return null;
+        }
+
+        var (_, itemData) = await HandleRelic(itemId, ++Data.NextUniqueId, level, sync: sync);
+        return itemData;
+    }
+
+    private async ValueTask<ItemData?> AddVirtualItem(int itemId, int count, ItemConfigExcel itemConfig)
+    {
+        var actualCount = 0;
+        switch (itemConfig.ID)
+        {
+            case 1:
+                Player.Data.Hcoin += count;
+                actualCount = Player.Data.Hcoin;
+                break;
+            case 2:
+                Player.Data.Scoin += count;
+                actualCount = Player.Data.Scoin;
+                break;
+            case 3:
+                Player.Data.Mcoin += count;
+                actualCount = Player.Data.Mcoin;
+                break;
+            case 11:
+                Player.Data.Stamina += count;
+                actualCount = Player.Data.Stamina;
+                break;
+            case 22:
+                Player.Data.Exp += count;
+                Player.OnAddExp();
+                actualCount = Player.Data.Exp;
+                break;
+            case 32:
+                Player.Data.TalentPoints += count;
+                actualCount = Player.Data.TalentPoints;
+                break;
+        }
+
+        if (count != 0)
+        {
+            await Player.SendPacket(new PacketPlayerSyncScNotify(Player.ToProto()));
+            return new ItemData
+            {
+                ItemId = itemId,
+                Count = actualCount
+            };
+        }
+
+        return null;
+    }
+
+    private async ValueTask<ItemData?> AddAvatarCardItem(int itemId, bool sync, bool notify)
+    {
+        // add avatar
+        var avatar = Player.AvatarManager?.GetFormalAvatar(itemId);
+        if (avatar != null)
+        {
+            var rankUpItem = Player.InventoryManager!.GetItem(itemId + 10000);
+            if ((avatar.PathInfos[itemId].Rank + rankUpItem?.Count ?? 0) <= 5)
+                return await PutItem(itemId + 10000, 1);
+            return null;
+        }
+
+        await Player.AddAvatar(itemId, sync, notify);
+        await AddItem(itemId + 200000, 1, false);
+        return null;
     }
 
     public async ValueTask<ItemData> PutItem(int itemId, int count, int rank = 0, int promotion = 0, int level = 0,
@@ -298,7 +328,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
                 break;
         }
 
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        MarkDirty();
         return item;
     }
 
@@ -388,7 +418,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
             Count = count
         });
 
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        MarkDirty();
         return itemData;
     }
 
@@ -854,583 +884,6 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager(player)
         return (Retcode.RetSucc, resItemDatas);
     }
 
-    #region Equip
-
-    public async ValueTask EquipAvatar(int avatarId, int equipmentUniqueId)
-    {
-        var itemData = Data.EquipmentItems.Find(x => x.UniqueId == equipmentUniqueId);
-        var avatarData = Player.AvatarManager!.GetFormalAvatar(avatarId);
-        if (itemData == null || avatarData == null) return;
-        var oldItem = Data.EquipmentItems.Find(x => x.UniqueId == avatarData.PathInfos[avatarId].EquipId);
-        if (itemData.EquipAvatar > 0) // already be dressed
-        {
-            var equipAvatarId = itemData.EquipAvatar;
-            var equipAvatar = Player.AvatarManager.GetFormalAvatar(equipAvatarId);
-            if (equipAvatar != null && oldItem != null)
-            {
-                // switch
-                equipAvatar.PathInfos[equipAvatarId].EquipId = oldItem.UniqueId;
-                oldItem.EquipAvatar = equipAvatar.AvatarId;
-                await Player.SendPacket(new PacketPlayerSyncScNotify(equipAvatar, oldItem));
-            }
-            else if (equipAvatar != null && oldItem == null)
-            {
-                equipAvatar.PathInfos[equipAvatarId].EquipId = 0;
-                await Player.SendPacket(new PacketPlayerSyncScNotify(equipAvatar));
-            }
-        }
-        else
-        {
-            if (oldItem != null)
-            {
-                oldItem.EquipAvatar = 0;
-                await Player.SendPacket(new PacketPlayerSyncScNotify(oldItem));
-            }
-        }
-
-        itemData.EquipAvatar = avatarData.AvatarId;
-        avatarData.PathInfos[avatarId].EquipId = itemData.UniqueId;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData, itemData));
-    }
-
-    public async ValueTask EquipRelic(int avatarId, int relicUniqueId, int slot)
-    {
-        var itemData = Data.RelicItems.Find(x => x.UniqueId == relicUniqueId);
-        var avatarData = Player.AvatarManager!.GetFormalAvatar(avatarId);
-        if (itemData == null || avatarData == null) return;
-        avatarData.PathInfos[avatarId].Relic.TryGetValue(slot, out var id);
-        var oldItem = Data.RelicItems.Find(x => x.UniqueId == id);
-
-        if (itemData.EquipAvatar > 0) // already be dressed
-        {
-            var equipAvatarId = itemData.EquipAvatar;
-            var equipAvatar = Player.AvatarManager!.GetFormalAvatar(equipAvatarId);
-            if (equipAvatar != null && oldItem != null)
-            {
-                // switch
-                equipAvatar.PathInfos[equipAvatarId].Relic[slot] = oldItem.UniqueId;
-                oldItem.EquipAvatar = equipAvatar.AvatarId;
-                await Player.SendPacket(new PacketPlayerSyncScNotify(equipAvatar, oldItem));
-            }
-            else if (equipAvatar != null && oldItem == null)
-            {
-                equipAvatar.PathInfos[equipAvatarId].Relic[slot] = 0;
-                await Player.SendPacket(new PacketPlayerSyncScNotify(equipAvatar));
-            }
-        }
-        else
-        {
-            if (oldItem != null)
-            {
-                oldItem.EquipAvatar = 0;
-                await Player.SendPacket(new PacketPlayerSyncScNotify(oldItem));
-            }
-        }
-
-        itemData.EquipAvatar = avatarData.AvatarId;
-        avatarData.PathInfos[avatarId].Relic[slot] = itemData.UniqueId;
-        // save
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData, itemData));
-    }
-
-    public async ValueTask UnequipRelic(int avatarId, int slot)
-    {
-        var avatarData = Player.AvatarManager!.GetFormalAvatar(avatarId);
-        if (avatarData == null) return;
-        var pathInfo = avatarData.PathInfos[avatarId];
-        pathInfo.Relic.TryGetValue(slot, out var uniqueId);
-        var itemData = Data.RelicItems.Find(x => x.UniqueId == uniqueId);
-        if (itemData == null) return;
-        pathInfo.Relic.Remove(slot);
-        itemData.EquipAvatar = 0;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData, itemData));
-    }
-
-    public async ValueTask UnequipEquipment(int avatarId)
-    {
-        var avatarData = Player.AvatarManager!.GetFormalAvatar(avatarId);
-        if (avatarData == null) return;
-        var pathInfo = avatarData.PathInfos[avatarId];
-        var itemData = Data.EquipmentItems.Find(x => x.UniqueId == pathInfo.EquipId);
-        if (itemData == null) return;
-        itemData.EquipAvatar = 0;
-        pathInfo.EquipId = 0;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData, itemData));
-    }
-
-    public async ValueTask<List<ItemData>> LevelUpAvatar(int baseAvatarId, ItemCostData item)
-    {
-        var avatarData = Player.AvatarManager!.GetFormalAvatar(baseAvatarId);
-        if (avatarData == null) return [];
-        GameData.AvatarConfigData.TryGetValue(avatarData.AvatarId, out var avatarConfig);
-        if (avatarConfig == null) return [];
-
-        GameData.AvatarPromotionConfigData.TryGetValue(avatarData.AvatarId * 10 + avatarData.Promotion,
-            out var promotionConfig);
-        if (promotionConfig == null) return [];
-        var exp = 0;
-
-        foreach (var cost in item.ItemList)
-        {
-            GameData.ItemConfigData.TryGetValue((int)cost.PileItem.ItemId, out var itemConfig);
-            if (itemConfig == null) continue;
-            exp += itemConfig.Exp * (int)cost.PileItem.ItemNum;
-        }
-
-        // payment
-        var costScoin = exp / 10;
-        if (Player.Data.Scoin < costScoin) return [];
-        foreach (var cost in item.ItemList) await RemoveItem((int)cost.PileItem.ItemId, (int)cost.PileItem.ItemNum);
-        await RemoveItem(2, costScoin);
-
-        var maxLevel = promotionConfig.MaxLevel;
-        var curExp = avatarData.Exp;
-        var curLevel = avatarData.Level;
-        var nextLevelExp = GameData.GetAvatarExpRequired(avatarConfig.ExpGroup, avatarData.Level);
-        do
-        {
-            int toGain;
-            if (curExp + exp >= nextLevelExp)
-                toGain = nextLevelExp - curExp;
-            else
-                toGain = exp;
-            curExp += toGain;
-            exp -= toGain;
-            // level up
-            if (curExp >= nextLevelExp)
-            {
-                curExp = 0;
-                curLevel++;
-                nextLevelExp = GameData.GetAvatarExpRequired(avatarConfig.ExpGroup, curLevel);
-            }
-        } while (exp > 0 && nextLevelExp > 0 && curLevel < maxLevel);
-
-        avatarData.Level = curLevel;
-        avatarData.Exp = curExp;
-        // leftover
-        Dictionary<int, ItemData> list = [];
-        var leftover = exp;
-        while (leftover > 0)
-        {
-            var gain = false;
-            foreach (var expItem in GameData.EquipmentExpItemConfigData.Values.Reverse())
-                if (leftover >= expItem.ExpProvide)
-                {
-                    // add
-                    await PutItem(expItem.ItemID, 1);
-                    if (list.TryGetValue(expItem.ItemID, out var i))
-                    {
-                        i.Count++;
-                    }
-                    else
-                    {
-                        i = new ItemData
-                        {
-                            ItemId = expItem.ItemID,
-                            Count = 1
-                        };
-                        list[expItem.ItemID] = i;
-                    }
-
-                    leftover -= expItem.ExpProvide;
-                    gain = true;
-                    break;
-                }
-
-            if (!gain) break; // no more item
-        }
-
-        if (list.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(list.Values.ToList()));
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData));
-        return [.. list.Values];
-    }
-
-    #endregion
-
-    #region Levelup
-
-    private async ValueTask SyncStaleEquipmentIds(IEnumerable<int> equipmentIds)
-    {
-        var ids = equipmentIds.Where(id => id > 0).Select(id => (uint)id).Distinct().ToList();
-        if (ids.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(ids));
-    }
-
-    private async ValueTask SyncStaleEquipmentIds(IEnumerable<uint> equipmentIds)
-    {
-        var ids = equipmentIds.Where(id => id > 0).Distinct().ToList();
-        if (ids.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(ids));
-    }
-
-    public async ValueTask<(Retcode retcode, List<ItemData> returnItems)> LevelUpEquipment(int equipmentUniqueId,
-        ItemCostData item)
-    {
-        var itemData = Data.EquipmentItems.Find(x => x.UniqueId == equipmentUniqueId);
-        if (itemData == null)
-        {
-            await SyncStaleEquipmentIds([equipmentUniqueId]);
-            return (Retcode.RetEquipmentNotExist, []);
-        }
-
-        GameData.EquipmentPromotionConfigData.TryGetValue(itemData.ItemId * 10 + itemData.Promotion,
-            out var equipmentPromotionConfig);
-        GameData.EquipmentConfigData.TryGetValue(itemData.ItemId, out var equipmentConfig);
-        if (equipmentConfig == null || equipmentPromotionConfig == null) return (Retcode.RetItemConfigNotExist, []);
-        if (itemData.Level >= equipmentPromotionConfig.MaxLevel) return (Retcode.RetEquipmentLevelReachMax, []);
-
-        var exp = 0;
-        List<(int itemId, int count, int uniqueId)> costItems = [];
-        HashSet<uint> costEquipmentIds = [];
-        List<uint> staleEquipmentIds = [];
-
-        foreach (var cost in item.ItemList)
-            if (cost.HasEquipmentUniqueId)
-            {
-                if (cost.EquipmentUniqueId == equipmentUniqueId)
-                    return (Retcode.RetEquipmentConsumeSelf, []);
-                if (!costEquipmentIds.Add(cost.EquipmentUniqueId)) continue;
-
-                var costItem = Data.EquipmentItems.Find(x => x.UniqueId == cost.EquipmentUniqueId);
-                if (costItem == null)
-                {
-                    staleEquipmentIds.Add(cost.EquipmentUniqueId);
-                    continue;
-                }
-
-                if (costItem.Locked) return (Retcode.RetEquipmentLocked, []);
-
-                exp += costItem.CalcTotalEquipmentExpGained();
-                costItems.Add((costItem.ItemId, 1, (int)cost.EquipmentUniqueId));
-            }
-            else if (cost.PileItem != null)
-            {
-                GameData.EquipmentExpItemConfigData.TryGetValue((int)cost.PileItem.ItemId, out var itemConfig);
-                if (itemConfig == null) continue;
-                exp += itemConfig.ExpProvide * (int)cost.PileItem.ItemNum;
-                costItems.Add(((int)cost.PileItem.ItemId, (int)cost.PileItem.ItemNum, 0));
-            }
-
-        // payment
-        if (staleEquipmentIds.Count > 0)
-        {
-            await SyncStaleEquipmentIds(staleEquipmentIds);
-            return (Retcode.RetEquipmentNotExist, []);
-        }
-
-        if (exp <= 0 || costItems.Count == 0) return (Retcode.RetItemNoCost, []);
-
-        var costScoin = exp / 2;
-        if (Player.Data.Scoin < costScoin) return (Retcode.RetScoinNotEnough, []);
-        await RemoveItems(costItems);
-
-        await RemoveItem(2, costScoin);
-
-        var maxLevel = equipmentPromotionConfig.MaxLevel;
-        var curExp = itemData.Exp;
-        var curLevel = itemData.Level;
-        var nextLevelExp = GameData.GetEquipmentExpRequired(equipmentConfig.ExpType, itemData.Level);
-        do
-        {
-            int toGain;
-            if (curExp + exp >= nextLevelExp)
-                toGain = nextLevelExp - curExp;
-            else
-                toGain = exp;
-            curExp += toGain;
-            exp -= toGain;
-            // level up
-            if (curExp >= nextLevelExp)
-            {
-                curExp = 0;
-                curLevel++;
-                nextLevelExp = GameData.GetEquipmentExpRequired(equipmentConfig.ExpType, curLevel);
-            }
-        } while (exp > 0 && nextLevelExp > 0 && curLevel < maxLevel);
-
-        itemData.Level = curLevel;
-        itemData.Exp = curExp;
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-        // leftover
-        Dictionary<int, ItemData> list = [];
-        var leftover = exp;
-        while (leftover > 0)
-        {
-            var gain = false;
-            foreach (var expItem in GameData.EquipmentExpItemConfigData.Values.Reverse())
-                if (leftover >= expItem.ExpProvide)
-                {
-                    // add
-                    await PutItem(expItem.ItemID, 1);
-                    if (list.TryGetValue(expItem.ItemID, out var i))
-                    {
-                        i.Count++;
-                    }
-                    else
-                    {
-                        i = new ItemData
-                        {
-                            ItemId = expItem.ItemID,
-                            Count = 1
-                        };
-                        list[expItem.ItemID] = i;
-                    }
-
-                    leftover -= expItem.ExpProvide;
-                    gain = true;
-                    break;
-                }
-
-            if (!gain) break; // no more item
-        }
-
-        if (list.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(list.Values.ToList()));
-        await Player.SendPacket(new PacketPlayerSyncScNotify(itemData));
-        return (Retcode.RetSucc, [.. list.Values]);
-    }
-
-    public async ValueTask<bool> PromoteAvatar(int avatarId)
-    {
-        // Get avatar
-        var avatarData = Player.AvatarManager!.GetFormalAvatar(avatarId);
-        if (avatarData == null) return false;
-
-        GameData.AvatarConfigData.TryGetValue(avatarId, out var avatarConfig);
-        if (avatarConfig == null ||
-            avatarData.Promotion >= avatarConfig.MaxPromotion) return false;
-
-        // Get promotion data
-        var promotion =
-            GameData.AvatarPromotionConfigData.Values.FirstOrDefault(x =>
-                x.AvatarID == avatarId && x.Promotion == avatarData.Promotion)!;
-
-        // Sanity check
-        if (avatarData.Level < promotion.MaxLevel ||
-            Player.Data.Level < promotion.PlayerLevelRequire ||
-            Player.Data.WorldLevel < promotion.WorldLevelRequire) return false;
-
-        // Pay items
-        foreach (var cost in promotion.PromotionCostList)
-            await Player.InventoryManager!.RemoveItem(cost.ItemID, cost.ItemNum);
-
-        // Promote
-        avatarData.Promotion += 1;
-
-        // Send packets
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData));
-        return true;
-    }
-
-    public async ValueTask<bool> PromoteEquipment(int equipmentUniqueId)
-    {
-        var equipmentData =
-            Player.InventoryManager!.Data.EquipmentItems.FirstOrDefault(x => x.UniqueId == equipmentUniqueId);
-        if (equipmentData == null ||
-            equipmentData.Promotion >= GameData.EquipmentConfigData[equipmentData.ItemId].MaxPromotion) return false;
-
-        var promotionConfig = GameData.EquipmentPromotionConfigData.Values
-            .FirstOrDefault(x => x.EquipmentID == equipmentData.ItemId && x.Promotion == equipmentData.Promotion);
-
-        if (promotionConfig == null || equipmentData.Level < promotionConfig.MaxLevel ||
-            Player.Data.WorldLevel < promotionConfig.WorldLevelRequire) return false;
-
-        foreach (var cost in promotionConfig.PromotionCostList)
-            await Player.InventoryManager!.RemoveItem(cost.ItemID, cost.ItemNum);
-
-        equipmentData.Promotion++;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(equipmentData));
-
-        return true;
-    }
-
-    public async ValueTask<List<ItemData>> LevelUpRelic(int uniqueId, ItemCostData costData)
-    {
-        var relicItem = Data.RelicItems.Find(x => x.UniqueId == uniqueId);
-        if (relicItem == null) return [];
-
-        var exp = 0;
-        var money = 0;
-        foreach (var cost in costData.ItemList)
-            if (cost.PileItem != null)
-            {
-                GameData.RelicExpItemData.TryGetValue((int)cost.PileItem.ItemId, out var excel);
-                if (excel != null)
-                {
-                    exp += excel.ExpProvide * (int)cost.PileItem.ItemNum;
-                    money += excel.CoinCost * (int)cost.PileItem.ItemNum;
-                }
-
-                await RemoveItem((int)cost.PileItem.ItemId, (int)cost.PileItem.ItemNum);
-            }
-            else if (cost.RelicUniqueId != 0)
-            {
-                var costItem = Data.RelicItems.Find(x => x.UniqueId == cost.RelicUniqueId);
-                if (costItem != null)
-                {
-                    GameData.RelicConfigData.TryGetValue(costItem.ItemId, out var costExcel);
-                    if (costExcel == null) continue;
-
-                    if (costItem.Level > 0)
-                        foreach (var level in Enumerable.Range(0, costItem.Level))
-                        {
-                            GameData.RelicExpTypeData.TryGetValue(costExcel.ExpType * 100 + level, out var typeExcel);
-                            if (typeExcel != null)
-                                exp += typeExcel.Exp;
-                        }
-                    else
-                        exp += costExcel.ExpProvide;
-
-                    exp += costItem.Exp;
-                    money += costExcel.CoinCost;
-
-                    await RemoveItem(costItem.ItemId, 1, (int)cost.RelicUniqueId);
-                }
-            }
-
-        // credit
-        await RemoveItem(2, money);
-
-        // level up
-        GameData.RelicConfigData.TryGetValue(relicItem.ItemId, out var relicExcel);
-        if (relicExcel == null) return [];
-
-        GameData.RelicExpTypeData.TryGetValue(relicExcel.ExpType * 100 + relicItem.Level, out var relicType);
-        do
-        {
-            if (relicType == null) break;
-            int toGain;
-            if (relicItem.Exp + exp >= relicType.Exp)
-                toGain = relicType.Exp - relicItem.Exp;
-            else
-                toGain = exp;
-            relicItem.Exp += toGain;
-            exp -= toGain;
-
-            // level up
-            if (relicItem.Exp >= relicType.Exp)
-            {
-                relicItem.Exp = 0;
-                relicItem.Level++;
-                GameData.RelicExpTypeData.TryGetValue(relicExcel.ExpType * 100 + relicItem.Level, out relicType);
-                // relic attribute
-                if (relicItem.Level % 3 == 0)
-                {
-                    if (relicItem.SubAffixes.Count >= 4)
-                        relicItem.IncreaseRandomRelicSubAffix();
-                    else
-                        relicItem.AddRandomRelicSubAffix();
-                }
-            }
-        } while (exp > 0 && relicType?.Exp > 0 && relicItem.Level < relicExcel.MaxLevel);
-
-        // leftover
-        Dictionary<int, ItemData> list = [];
-        var leftover = exp;
-        while (leftover > 0)
-        {
-            var gain = false;
-            foreach (var expItem in GameData.RelicExpItemData.Values.Reverse())
-                if (leftover >= expItem.ExpProvide)
-                {
-                    // add
-                    await PutItem(expItem.ItemID, 1);
-                    if (list.TryGetValue(expItem.ItemID, out var i))
-                    {
-                        i.Count++;
-                    }
-                    else
-                    {
-                        i = new ItemData
-                        {
-                            ItemId = expItem.ItemID,
-                            Count = 1
-                        };
-                        list[expItem.ItemID] = i;
-                    }
-
-                    leftover -= expItem.ExpProvide;
-                    gain = true;
-                    break;
-                }
-
-            if (!gain) break; // no more item
-        }
-
-        if (list.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(list.Values.ToList()));
-
-        // sync
-        await Player.SendPacket(new PacketPlayerSyncScNotify(relicItem));
-
-        return [.. list.Values];
-    }
-
-    public async ValueTask RankUpAvatar(int avatarId, ItemCostData costData)
-    {
-        foreach (var cost in costData.ItemList) await RemoveItem((int)cost.PileItem.ItemId, (int)cost.PileItem.ItemNum);
-        var baseAvatarId = avatarId;
-        GameData.MultiplePathAvatarConfigData.TryGetValue(baseAvatarId, out var avatar);
-        if (avatar != null) baseAvatarId = avatar.BaseAvatarID;
-        var avatarData = Player.AvatarManager!.GetFormalAvatar(baseAvatarId);
-        if (avatarData == null) return;
-        avatarData.GetCurPathInfo().Rank++;
-        await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData));
-    }
-
-    public async ValueTask<Retcode> RankUpEquipment(int equipmentUniqueId, ItemCostData costData)
-    {
-        var itemData = Data.EquipmentItems.Find(x => x.UniqueId == equipmentUniqueId);
-        if (itemData == null)
-        {
-            await SyncStaleEquipmentIds([equipmentUniqueId]);
-            return Retcode.RetEquipmentNotExist;
-        }
-
-        GameData.EquipmentConfigData.TryGetValue(itemData.ItemId, out var equipmentConfig);
-        if (equipmentConfig == null) return Retcode.RetItemConfigNotExist;
-
-        var maxRank = Math.Max(1, equipmentConfig.MaxRank);
-        if (itemData.Rank >= maxRank) return Retcode.RetEquipmentRankUpReachMax;
-
-        var rank = 0;
-        List<(int itemId, int count, int uniqueId)> costItems = [];
-        HashSet<uint> costEquipmentIds = [];
-        List<uint> staleEquipmentIds = [];
-        foreach (var cost in costData.ItemList)
-        {
-            if (!cost.HasEquipmentUniqueId) continue;
-            if (cost.EquipmentUniqueId == equipmentUniqueId) return Retcode.RetEquipmentConsumeSelf;
-            if (!costEquipmentIds.Add(cost.EquipmentUniqueId)) continue;
-
-            var costItem = Data.EquipmentItems.Find(x => x.UniqueId == cost.EquipmentUniqueId);
-            if (costItem == null)
-            {
-                staleEquipmentIds.Add(cost.EquipmentUniqueId);
-                continue;
-            }
-
-            if (costItem.Locked) return Retcode.RetEquipmentLocked;
-            if (costItem.ItemId != itemData.ItemId) return Retcode.RetEquipmentRankUpMustConsumeSameTid;
-
-            costItems.Add((costItem.ItemId, 1, (int)cost.EquipmentUniqueId));
-            rank += Math.Max(1, costItem.Rank);
-
-            if (itemData.Rank + rank >= maxRank) break;
-        }
-
-        if (staleEquipmentIds.Count > 0)
-        {
-            await SyncStaleEquipmentIds(staleEquipmentIds);
-            return Retcode.RetEquipmentNotExist;
-        }
-
-        if (rank == 0 || costItems.Count == 0) return Retcode.RetItemNoCost;
-
-        await RemoveItems(costItems, false);
-        itemData.Rank = Math.Min(itemData.Rank + rank, maxRank);
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
-        await Player.SendPacket(new PacketPlayerSyncScNotify(itemData, costItems.Select(item => (uint)item.uniqueId)));
-        return Retcode.RetSucc;
-    }
-
-    #endregion
 
     #region Mark
 

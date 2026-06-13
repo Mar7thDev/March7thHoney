@@ -22,7 +22,8 @@ public class DatabaseHelper
     public static Logger logger = new("Database");
     public static DatabaseHelper? Instance;
     public static readonly ConcurrentDictionary<int, List<BaseDatabaseDataHelper>> UidInstanceMap = [];
-    public static readonly List<int> ToSaveUidList = [];
+    private static readonly HashSet<int> DirtyUids = [];
+    private static readonly object DirtyLock = new();
     public static long LastSaveTick = DateTime.UtcNow.Ticks;
     public static Thread? SaveThread;
     public static bool LoadAccount;
@@ -162,6 +163,38 @@ public class DatabaseHelper
         }
     }
 
+    /// <summary>
+    ///     Flag a uid's in-memory data as needing a flush. Thread-safe — game threads call this concurrently with the
+    ///     save thread's drain. Replaces the old unsynchronized <c>ToSaveUidList.Add</c>; the backing set dedups, so the
+    ///     prior <c>SafeAdd</c> / <c>Contains</c> guards are no longer needed.
+    /// </summary>
+    public static void MarkDirty(int uid)
+    {
+        lock (DirtyLock) DirtyUids.Add(uid);
+    }
+
+    /// <summary>Drop a uid's dirty flag after it has been flushed or its data deleted.</summary>
+    public static void ClearDirty(int uid)
+    {
+        lock (DirtyLock) DirtyUids.Remove(uid);
+    }
+
+    /// <summary>
+    ///     Atomically take and clear the current dirty set. MarkDirty calls that race a flush land in the freshly
+    ///     emptied set and survive to the next cycle, instead of being lost by a blanket Clear().
+    /// </summary>
+    private static int[] DrainDirty()
+    {
+        lock (DirtyLock)
+        {
+            if (DirtyUids.Count == 0) return [];
+            var snapshot = new int[DirtyUids.Count];
+            DirtyUids.CopyTo(snapshot);
+            DirtyUids.Clear();
+            return snapshot;
+        }
+    }
+
     public void CalcSaveDatabase()
     {
         if (LastSaveTick + TimeSpan.TicksPerMinute * 5 > DateTime.UtcNow.Ticks) return;
@@ -171,10 +204,11 @@ public class DatabaseHelper
     public void SaveDatabase()
     {
         using var conn = Open();
+        // Drained up front so concurrent MarkDirty calls during the flush are kept for the next cycle.
+        var uids = DrainDirty();
         try
         {
             var prev = DateTime.Now;
-            var uids = ToSaveUidList.ToList();
             Exec(conn, "BEGIN");
 
             foreach (var uid in uids)
@@ -188,8 +222,6 @@ public class DatabaseHelper
             var t = (DateTime.Now - prev).TotalSeconds;
             logger.Info(I18NManager.Translate("Server.ServerInfo.SaveDatabase",
                 Math.Round(t, 2).ToString(CultureInfo.InvariantCulture)));
-
-            ToSaveUidList.Clear();
         }
         catch (Exception e)
         {
@@ -197,6 +229,8 @@ public class DatabaseHelper
             // Roll back so the pooled connection isn't returned mid-transaction.
             try { Exec(conn, "ROLLBACK"); }
             catch { /* no active transaction */ }
+            // Re-flag the failed batch so it retries next cycle (matches the old "only clear on success" behaviour).
+            foreach (var uid in uids) MarkDirty(uid);
         }
 
         LastSaveTick = DateTime.UtcNow.Ticks;
@@ -219,7 +253,7 @@ public class DatabaseHelper
                 if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
                     store.Update(conn, inst);
 
-            ToSaveUidList.RemoveAll(savedUid => savedUid == uid);
+            ClearDirty(uid);
         }
         catch (Exception e)
         {
@@ -236,7 +270,7 @@ public class DatabaseHelper
                 store.Delete(conn, uid);
 
         value.RemoveAll(instance => instance is not AccountData);
-        ToSaveUidList.RemoveAll(savedUid => savedUid == uid);
+        ClearDirty(uid);
     }
 
     public void DeleteInstance<T>(T instance) where T : BaseDatabaseDataHelper
@@ -248,7 +282,7 @@ public class DatabaseHelper
         }
 
         if (UidInstanceMap.TryGetValue(instance.Uid, out var value)) value.Remove(instance);
-        ToSaveUidList.Remove(instance.Uid);
+        ClearDirty(instance.Uid);
     }
 
     public void DeleteUidData(int uid)
@@ -263,7 +297,7 @@ public class DatabaseHelper
         }
 
         UidInstanceMap.TryRemove(uid, out _);
-        ToSaveUidList.Remove(uid);
+        ClearDirty(uid);
     }
 
     public void UpgradeDatabase()

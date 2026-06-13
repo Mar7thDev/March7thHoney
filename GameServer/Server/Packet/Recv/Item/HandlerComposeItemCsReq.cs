@@ -5,17 +5,15 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.ComposeItemCsReq)]
-public class HandlerComposeItemCsReq : Handler
+public class HandlerComposeItemCsReq : Handler<ComposeItemCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, ComposeItemCsReq req)
     {
-        var req = ComposeItemCsReq.Parser.ParseFrom(data);
-
         var costData = new List<ItemCost>();
         if (req.ComposeItemList != null)
             costData = [.. req.ComposeItemList.ItemList];
 
-        var item = await connection.Player!.InventoryManager!.ComposeItem(
+        var item = await player.InventoryManager!.ComposeItem(
             (int)req.ComposeId, (int)req.Count, costData);
         if (item == null)
         {

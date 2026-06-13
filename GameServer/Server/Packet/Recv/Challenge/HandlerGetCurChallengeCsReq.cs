@@ -4,15 +4,15 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.GetCurChallengeCsReq)]
-public class HandlerGetCurChallengeCsReq : Handler
+public class HandlerGetCurChallengeCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         // Send packet first
-        await connection.SendPacket(new PacketGetCurChallengeScRsp(connection.Player!));
+        await connection.SendPacket(new PacketGetCurChallengeScRsp(player));
 
         // Update data
-        if (connection.Player!.ChallengeManager!.ChallengeInstance != null)
-            connection.Player.ChallengeManager.ChallengeInstance.OnUpdate();
+        if (player.ChallengeManager!.ChallengeInstance != null)
+            player.ChallengeManager.ChallengeInstance.OnUpdate();
     }
 }

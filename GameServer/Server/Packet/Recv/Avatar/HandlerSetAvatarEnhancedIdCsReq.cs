@@ -7,15 +7,14 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.SetAvatarEnhancedIdCsReq)]
-public class HandlerSetAvatarEnhancedIdCsReq : Handler
+public class HandlerSetAvatarEnhancedIdCsReq : Handler<SetAvatarEnhancedIdCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetAvatarEnhancedIdCsReq req)
     {
-        var req = SetAvatarEnhancedIdCsReq.Parser.ParseFrom(data);
         var targetAvatarId = (int)req.AvatarId;
         var targetEnhancedId = (int)req.EnhancedId;
 
-        var avatar = connection.Player!.AvatarManager!.GetFormalAvatar(targetAvatarId);
+        var avatar = player.AvatarManager!.GetFormalAvatar(targetAvatarId);
         if (avatar == null)
         {
             await connection.SendPacket(new PacketSetAvatarEnhancedIdScRsp(Retcode.RetAvatarNotExist));
@@ -44,8 +43,8 @@ public class HandlerSetAvatarEnhancedIdCsReq : Handler
 
         _ = path.GetSkillTree();
 
-        await connection.Player.SendPacket(new PacketSetAvatarEnhancedIdScRsp((uint)path.PathId, path.EnhanceId));
-        await connection.Player.SendPacket(new PacketPlayerSyncScNotify(avatar));
+        await player.SendPacket(new PacketSetAvatarEnhancedIdScRsp((uint)path.PathId, path.EnhanceId));
+        await player.SendPacket(new PacketPlayerSyncScNotify(avatar));
     }
 }
 

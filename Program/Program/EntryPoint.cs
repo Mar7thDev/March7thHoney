@@ -293,7 +293,7 @@ public class EntryPoint
                 if ((con as Connection)!.Player != null && (con as Connection)!.Player!.Uid == uid)
                 {
                     // TODO 4.3: ChallengeManager 暂停
-                    if ((con as Connection)!.Player!.RaidManager?.RaidData.CurRaidId != 0)
+                    if ((con as Connection)!.Player!.RaidManager?.Data.CurRaidId != 0)
                     {
                         status = PlayerStatusEnum.Raid;
                     }
@@ -393,7 +393,7 @@ public class EntryPoint
 
             avatarData.DatabaseVersion = "20250430";
             updated = true;
-            DatabaseHelper.ToSaveUidList.Add(avatarData.Uid);
+            DatabaseHelper.MarkDirty(avatarData.Uid);
         }
 
         if (updated)

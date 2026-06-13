@@ -444,10 +444,10 @@ public class AbilityLevelTask(PlayerInstance player)
             switch (advModifyMaxMazeMp.ModifyFunction)
             {
                 case PropertyModifyFunctionEnum.Add:
-                    Player.LineupManager!.LineupData.ExtraMpCount += advModifyMaxMazeMp.ModifyValue.GetValue();
+                    Player.LineupManager!.Data.ExtraMpCount += advModifyMaxMazeMp.ModifyValue.GetValue();
                     break;
                 case PropertyModifyFunctionEnum.Set:
-                    Player.LineupManager!.LineupData.ExtraMpCount = advModifyMaxMazeMp.ModifyValue.GetValue() - 5;
+                    Player.LineupManager!.Data.ExtraMpCount = advModifyMaxMazeMp.ModifyValue.GetValue() - 5;
                     break;
             }
 

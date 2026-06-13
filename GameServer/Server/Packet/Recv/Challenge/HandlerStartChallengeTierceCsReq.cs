@@ -5,13 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.StartChallengeTierceCsReq)]
-public class HandlerStartChallengeTierceCsReq : Handler
+public class HandlerStartChallengeTierceCsReq : Handler<StartChallengeTierceCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, StartChallengeTierceCsReq req)
     {
-        var req = StartChallengeTierceCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
-
         bool ok;
         if (req.IsSingleStage)
             ok = await player.ChallengeTierceManager!.StartSingleStage(req.ChallengeId, req.StageIndex);

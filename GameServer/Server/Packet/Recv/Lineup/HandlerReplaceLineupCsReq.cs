@@ -4,12 +4,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Lineup;
 
 [Opcode(CmdIds.ReplaceLineupCsReq)]
-public class HandlerReplaceLineupCsReq : Handler
+public class HandlerReplaceLineupCsReq : Handler<ReplaceLineupCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, ReplaceLineupCsReq req)
     {
-        var req = ReplaceLineupCsReq.Parser.ParseFrom(data);
-        await connection.Player!.LineupManager!.ReplaceLineup(req);
+        await player.LineupManager!.ReplaceLineup(req);
         await connection.SendPacket(CmdIds.ReplaceLineupScRsp);
     }
 }

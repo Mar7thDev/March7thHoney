@@ -48,7 +48,7 @@ public class UnlockHandler(PlayerInstance player)
                     }
                     else
                     {
-                        hasPath = Player.AvatarManager?.AvatarData.FormalAvatars.Any(x =>
+                        hasPath = Player.AvatarManager?.Data.FormalAvatars.Any(x =>
                             x.AvatarId == pathAvatarId || x.PathInfos.ContainsKey(pathAvatarId)) == true;
                     }
 
