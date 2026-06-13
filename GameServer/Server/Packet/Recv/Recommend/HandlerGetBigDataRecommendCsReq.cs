@@ -5,11 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Recommend;
 
 [Opcode(CmdIds.GetBigDataRecommendCsReq)]
-public class HandlerGetBigDataRecommendCsReq : Handler
+public class HandlerGetBigDataRecommendCsReq : Handler<GetBigDataRecommendCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetBigDataRecommendCsReq req)
     {
-        var req = GetBigDataRecommendCsReq.Parser.ParseFrom(data);
         await connection.SendPacket(new PacketGetBigDataRecommendScRsp(req.EquipAvatar, req.BigDataRecommendType));
     }
 }

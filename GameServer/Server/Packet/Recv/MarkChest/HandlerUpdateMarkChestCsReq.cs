@@ -6,13 +6,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.MarkChest;
 
 [Opcode(CmdIds.UpdateMarkChestCsReq)]
-public class HandlerUpdateMarkChestCsReq : Handler
+public class HandlerUpdateMarkChestCsReq : Handler<UpdateMarkChestCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, UpdateMarkChestCsReq req)
     {
-        var req = UpdateMarkChestCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
-
         List<SceneMarkedChestData> markedChestData = [];
 
         foreach (var markChestInfo in req.MarkChestInfoList)

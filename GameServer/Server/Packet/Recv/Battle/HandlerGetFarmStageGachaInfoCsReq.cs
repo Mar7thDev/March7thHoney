@@ -5,11 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Battle;
 
 [Opcode(CmdIds.GetFarmStageGachaInfoCsReq)]
-public class HandlerGetFarmStageGachaInfoCsReq : Handler
+public class HandlerGetFarmStageGachaInfoCsReq : Handler<GetFarmStageGachaInfoCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetFarmStageGachaInfoCsReq req)
     {
-        var req = GetFarmStageGachaInfoCsReq.Parser.ParseFrom(data);
         await connection.SendPacket(new PacketGetFarmStageGachaInfoScRsp(req));
     }
 }

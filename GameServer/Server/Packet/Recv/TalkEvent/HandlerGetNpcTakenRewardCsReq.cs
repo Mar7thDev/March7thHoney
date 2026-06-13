@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.TalkEvent;
 
 [Opcode(CmdIds.GetNpcTakenRewardCsReq)]
-public class HandlerGetNpcTakenRewardCsReq : Handler
+public class HandlerGetNpcTakenRewardCsReq : Handler<GetNpcTakenRewardCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetNpcTakenRewardCsReq req)
     {
-        var req = GetNpcTakenRewardCsReq.Parser.ParseFrom(data);
-
         await connection.SendPacket(new PacketGetNpcTakenRewardScRsp(req.NpcId));
     }
 }

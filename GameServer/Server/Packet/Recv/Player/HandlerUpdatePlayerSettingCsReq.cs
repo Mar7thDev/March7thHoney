@@ -5,11 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.UpdatePlayerSettingCsReq)]
-public class HandlerUpdatePlayerSettingCsReq : Handler
+public class HandlerUpdatePlayerSettingCsReq : Handler<UpdatePlayerSettingCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, UpdatePlayerSettingCsReq req)
     {
-        var req = UpdatePlayerSettingCsReq.Parser.ParseFrom(data);
         await connection.SendPacket(new PacketUpdatePlayerSettingScRsp(req.PlayerSetting));
     }
 }
