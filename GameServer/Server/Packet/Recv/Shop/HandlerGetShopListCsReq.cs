@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Shop;
 
 [Opcode(CmdIds.GetShopListCsReq)]
-public class HandlerGetShopListCsReq : Handler
+public class HandlerGetShopListCsReq : Handler<GetShopListCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetShopListCsReq req)
     {
-        var req = GetShopListCsReq.Parser.ParseFrom(data);
-
         await connection.SendPacket(new PacketGetShopListScRsp(req.ShopType));
     }
 }

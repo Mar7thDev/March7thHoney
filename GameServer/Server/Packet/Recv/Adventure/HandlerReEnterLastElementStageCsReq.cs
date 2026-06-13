@@ -6,12 +6,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Adventure;
 
 [Opcode(CmdIds.ReEnterLastElementStageCsReq)]
-public class HandlerReEnterLastElementStageCsReq : Handler
+public class HandlerReEnterLastElementStageCsReq : Handler<ReEnterLastElementStageCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, ReEnterLastElementStageCsReq req)
     {
-        var req = ReEnterLastElementStageCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         var stageId = (int)req.StageId;
 
         GameData.FarmElementConfigData.TryGetValue(stageId, out var config);

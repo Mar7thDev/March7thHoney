@@ -10,7 +10,7 @@ public class PacketGetAllLineupDataScRsp : BasePacket
     {
         var proto = new GetAllLineupDataScRsp
         {
-            CurIndex = (uint)player.LineupManager!.LineupData.CurLineup
+            CurIndex = (uint)player.LineupManager!.Data.CurLineup
         };
         foreach (var lineup in player.LineupManager.GetAllLineup()) proto.LineupList.Add(lineup.ToProto());
 

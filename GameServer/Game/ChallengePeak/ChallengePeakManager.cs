@@ -362,14 +362,14 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         lineup.Mp = 8; // Max Mp
 
         // Make sure this lineup has avatars set
-        if (Player.AvatarManager!.AvatarData.FormalAvatars.Count == 0)
+        if (Player.AvatarManager!.Data.FormalAvatars.Count == 0)
         {
             await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetChallengeLineupEmpty));
             return;
         }
 
         // Reset hp/sp
-        foreach (var avatar in Player.AvatarManager!.AvatarData.FormalAvatars)
+        foreach (var avatar in Player.AvatarManager!.Data.FormalAvatars)
         {
             avatar.SetCurHp(10000, true);
             avatar.SetCurSp(5000, true);

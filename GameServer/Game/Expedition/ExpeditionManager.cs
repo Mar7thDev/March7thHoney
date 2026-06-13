@@ -8,16 +8,14 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Expedition;
 
-public class ExpeditionManager : BasePlayerManager
+public class ExpeditionManager : BasePlayerManager<ExpeditionData>
 {
     private const int ExpeditionRefreshDelaySec = 300;
     private const int MaxExpeditionTeamCount = 4;
     private readonly List<uint> _activeExpeditionIds = [];
-    public ExpeditionData Data { get; }
 
     public ExpeditionManager(PlayerInstance player) : base(player)
     {
-        Data = DatabaseHelper.Instance!.GetInstanceOrCreateNew<ExpeditionData>(player.Uid);
         if (Data.ActiveExpeditionIds.Count > 0) _activeExpeditionIds.AddRange(Data.ActiveExpeditionIds);
     }
 
@@ -63,7 +61,7 @@ public class ExpeditionManager : BasePlayerManager
         _activeExpeditionIds.AddRange(next);
         Data.ActiveExpeditionIds = _activeExpeditionIds.ToList();
         Data.RefreshTime = Extensions.GetUnixSec() + ExpeditionRefreshDelaySec;
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        MarkDirty();
 
         return _activeExpeditionIds.Select(id => new ExpeditionInfo { Id = id }).ToList();
     }
@@ -105,6 +103,6 @@ public class ExpeditionManager : BasePlayerManager
     public void MarkRewardTaken()
     {
         Data.RefreshTime = Extensions.GetUnixSec() + ExpeditionRefreshDelaySec;
-        DatabaseHelper.ToSaveUidList.Add(Player.Uid);
+        MarkDirty();
     }
 }

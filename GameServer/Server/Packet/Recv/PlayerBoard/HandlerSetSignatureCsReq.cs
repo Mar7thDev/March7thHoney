@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.PlayerBoard;
 
 [Opcode(CmdIds.SetSignatureCsReq)]
-public class HandlerSetSignatureCsReq : Handler
+public class HandlerSetSignatureCsReq : Handler<SetSignatureCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetSignatureCsReq req)
     {
-        var req = SetSignatureCsReq.Parser.ParseFrom(data);
-
-        connection.Player!.Data.Signature = req.Signature;
+        player.Data.Signature = req.Signature;
 
         await connection.SendPacket(new PacketSetSignatureScRsp(req.Signature));
     }

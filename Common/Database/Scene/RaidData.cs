@@ -13,13 +13,6 @@ public class RaidData : BaseDatabaseDataHelper
     [Obsolete("Using RaidRecordDatas")]
     public Dictionary<int, RaidRecord> RaidRecordData { get; set; } = [];
 
-    //[SugarColumn(IsJson = true, IsNullable = true)]
-    //public Position? OldPos { get; set; }
-
-    //[SugarColumn(IsJson = true, IsNullable = true)]
-    //public Position? OldRot { get; set; }
-
-    //public int OldEntryId { get; set; }
     public int CurRaidId { get; set; }
     public int CurRaidWorldLevel { get; set; }
 }

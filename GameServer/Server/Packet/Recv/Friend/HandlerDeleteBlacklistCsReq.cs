@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.DeleteBlacklistCsReq)]
-public class HandlerDeleteBlacklistCsReq : Handler
+public class HandlerDeleteBlacklistCsReq : Handler<DeleteBlacklistCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, DeleteBlacklistCsReq req)
     {
-        var req = DeleteBlacklistCsReq.Parser.ParseFrom(data);
-
-        connection.Player!.FriendManager!.RemoveBlackList((int)req.Uid);
+        player.FriendManager!.RemoveBlackList((int)req.Uid);
 
         await connection.SendPacket(new PacketDeleteBlacklistScRsp(req.Uid));
     }

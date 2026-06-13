@@ -5,12 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Recommend;
 
 [Opcode(CmdIds.RelicSmartWearAddPlanCsReq)]
-public class HandlerRelicSmartWearAddPlanCsReq : Handler
+public class HandlerRelicSmartWearAddPlanCsReq : Handler<RelicSmartWearAddPlanCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, RelicSmartWearAddPlanCsReq req)
     {
-        var req = RelicSmartWearAddPlanCsReq.Parser.ParseFrom(data);
-        var plan = connection.Player!.AvatarManager!.AddRelicPlan(req.RelicPlan);
+        var plan = player.AvatarManager!.AddRelicPlan(req.RelicPlan);
         await connection.SendPacket(new PacketRelicSmartWearAddPlanScRsp(plan));
     }
 }

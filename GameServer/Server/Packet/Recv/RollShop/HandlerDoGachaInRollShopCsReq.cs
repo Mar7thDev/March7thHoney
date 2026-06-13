@@ -8,11 +8,10 @@ using March7thHoney.Util;
 namespace March7thHoney.GameServer.Server.Packet.Recv.RollShop;
 
 [Opcode(CmdIds.DoGachaInRollShopCsReq)]
-public class HandlerDoGachaInRollShopCsReq : Handler
+public class HandlerDoGachaInRollShopCsReq : Handler<DoGachaInRollShopCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, DoGachaInRollShopCsReq req)
     {
-        var req = DoGachaInRollShopCsReq.Parser.ParseFrom(data);
         ItemList itemList = new();
         var count = req.GachaCount;
         uint maxtype = 3;
@@ -48,9 +47,9 @@ public class HandlerDoGachaInRollShopCsReq : Handler
                 ItemId = rewardItems[0].Item1,
                 Count = rewardItems[0].Item2
             };
-            var rsp = await connection.Player!.InventoryManager!.AddItem(itemData.ItemId, itemData.Count);
+            var rsp = await player.InventoryManager!.AddItem(itemData.ItemId, itemData.Count);
             if (rsp != null) itemList.ItemList_.Add(rsp.ToProto());
-            await connection.Player!.InventoryManager!.RemoveItem(122000, 1);
+            await player.InventoryManager!.RemoveItem(122000, 1);
         }
 
         await connection.SendPacket(new PacketDoGachaInRollShopScRsp(req.RollShopId, itemList, maxtype));

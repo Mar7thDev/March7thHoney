@@ -4,12 +4,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.DressAvatarSkinCsReq)]
-public class HandlerDressAvatarSkinCsReq : Handler
+public class HandlerDressAvatarSkinCsReq : Handler<DressAvatarSkinCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, DressAvatarSkinCsReq req)
     {
-        var req = DressAvatarSkinCsReq.Parser.ParseFrom(data);
-        await connection.Player!.ChangeAvatarSkin((int)req.AvatarId, (int)req.SkinId);
+        await player.ChangeAvatarSkin((int)req.AvatarId, (int)req.SkinId);
         await connection.SendPacket(CmdIds.DressAvatarSkinScRsp);
     }
 }

@@ -429,7 +429,7 @@ public class AccountData : BaseDatabaseDataHelper
 
     private void PersistAuthState()
     {
-        DatabaseHelper.ToSaveUidList.SafeAdd(Uid);
+        DatabaseHelper.MarkDirty(Uid);
         DatabaseHelper.SaveDatabaseType(this);
     }
 }

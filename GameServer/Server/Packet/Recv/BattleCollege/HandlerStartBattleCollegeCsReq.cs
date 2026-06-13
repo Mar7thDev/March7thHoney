@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.BattleCollege;
 
 [Opcode(CmdIds.StartBattleCollegeCsReq)]
-public class HandlerStartBattleCollegeCsReq : Handler
+public class HandlerStartBattleCollegeCsReq : Handler<StartBattleCollegeCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, StartBattleCollegeCsReq req)
     {
-        var req = StartBattleCollegeCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         var resp = player.BattleManager?.StartBattleCollege((int)req.Id);
         if (resp != null)
             await connection.SendPacket(new PacketStartBattleCollegeScRsp(req.Id, resp.Value.Item1, resp.Value.Item2));

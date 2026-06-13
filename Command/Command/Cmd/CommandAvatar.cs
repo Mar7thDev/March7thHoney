@@ -38,7 +38,7 @@ public class CommandAvatar : ICommand
         var player = arg.Target.Player!;
         if (avatarId == -1)
         {
-            foreach (var path in player.AvatarManager!.AvatarData.FormalAvatars.SelectMany(avatarInfo =>
+            foreach (var path in player.AvatarManager!.Data.FormalAvatars.SelectMany(avatarInfo =>
                          avatarInfo.PathInfos))
             {
                 if (!GameData.AvatarConfigData.TryGetValue(path.Key, out var pathExcel)) continue;
@@ -50,7 +50,7 @@ public class CommandAvatar : ICommand
                 I18NManager.Translate("Word.Talent"), level.ToString()));
 
             // sync
-            await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager.AvatarData.FormalAvatars));
+            await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager.Data.FormalAvatars));
 
             return;
         }
@@ -143,7 +143,7 @@ public class CommandAvatar : ICommand
 
         if (id == -1)
         {
-            arg.Target.Player!.AvatarManager!.AvatarData.FormalAvatars.ForEach(avatar =>
+            arg.Target.Player!.AvatarManager!.Data.FormalAvatars.ForEach(avatar =>
             {
                 foreach (var path in avatar.PathInfos.Values) path.Rank = Math.Min(rank, 6);
             });
@@ -152,7 +152,7 @@ public class CommandAvatar : ICommand
 
             // sync
             await arg.Target.SendPacket(
-                new PacketPlayerSyncScNotify(arg.Target.Player!.AvatarManager.AvatarData.FormalAvatars));
+                new PacketPlayerSyncScNotify(arg.Target.Player!.AvatarManager.Data.FormalAvatars));
         }
         else
         {
@@ -211,7 +211,7 @@ public class CommandAvatar : ICommand
 
         if (id == -1)
         {
-            arg.Target.Player!.AvatarManager!.AvatarData.FormalAvatars.ForEach(avatar =>
+            arg.Target.Player!.AvatarManager!.Data.FormalAvatars.ForEach(avatar =>
             {
                 avatar.Level = Math.Min(level, 80);
                 avatar.Promotion = GameData.GetMinPromotionForLevel(avatar.Level);
@@ -221,7 +221,7 @@ public class CommandAvatar : ICommand
 
             // sync
             await arg.Target.SendPacket(
-                new PacketPlayerSyncScNotify(arg.Target.Player!.AvatarManager.AvatarData.FormalAvatars));
+                new PacketPlayerSyncScNotify(arg.Target.Player!.AvatarManager.Data.FormalAvatars));
         }
         else
         {
@@ -279,7 +279,5 @@ public class CommandAvatar : ICommand
         await arg.Target.Player.ChangeAvatarPathType(avatarId, (MultiPathAvatarTypeEnum)pathId);
         await arg.Target.SendPacket(new PacketAvatarPathChangedNotify((uint)avatarId, (MultiPathAvatarType)pathId));
         await arg.Target.SendPacket(new PacketPlayerSyncScNotify(avatar));
-
-        // arg.SendMsg(I18nManager.Translate("Game.Command.Avatar.AvatarLevelSet", avatar.Excel?.Name?.Replace("{NICKNAME}", arg.Target.Player!.Data.Name) ?? id.ToString(), I18nManager.Translate("Word.Avatar"), level.ToString()));
     }
 }

@@ -4,13 +4,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.PromoteAvatarCsReq)]
-public class HandlerPromoteAvatarCsReq : Handler
+public class HandlerPromoteAvatarCsReq : Handler<PromoteAvatarCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, PromoteAvatarCsReq req)
     {
-        var req = PromoteAvatarCsReq.Parser.ParseFrom(data);
-
-        await connection.Player!.InventoryManager!.PromoteAvatar((int)req.BaseAvatarId);
+        await player.InventoryManager!.PromoteAvatar((int)req.BaseAvatarId);
 
         await connection.SendPacket(CmdIds.PromoteAvatarScRsp);
     }

@@ -5,14 +5,12 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.GetChallengeGroupStatisticsCsReq)]
-public class HandlerGetChallengeGroupStatisticsCsReq : Handler
+public class HandlerGetChallengeGroupStatisticsCsReq : Handler<GetChallengeGroupStatisticsCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetChallengeGroupStatisticsCsReq req)
     {
-        var req = GetChallengeGroupStatisticsCsReq.Parser.ParseFrom(data);
-
         await connection.SendPacket(new PacketGetChallengeGroupStatisticsScRsp(req.GroupId,
-            connection.Player!.FriendRecordData!.ChallengeGroupStatistics.Values.FirstOrDefault(x =>
+            player.FriendRecordData!.ChallengeGroupStatistics.Values.FirstOrDefault(x =>
                 x.GroupId == req.GroupId)));
     }
 }

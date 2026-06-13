@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Config;
+using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
@@ -17,11 +18,10 @@ using MissionData = March7thHoney.Database.Quests.MissionData;
 
 namespace March7thHoney.GameServer.Game.Mission;
 
-public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
+public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionData>(player)
 {
     #region Initializer & Properties
 
-    public MissionData Data { get; set; } = DatabaseHelper.Instance!.GetInstanceOrCreateNew<MissionData>(player.Uid);
     public static readonly Dictionary<FinishActionTypeEnum, MissionFinishActionHandler> ActionHandlers = [];
     public static readonly Dictionary<MissionFinishTypeEnum, MissionFinishTypeHandler> FinishTypeHandlers = [];
 
@@ -253,7 +253,43 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
             Progress = (uint)(subMission.SubMissionInfo?.Progress ?? 1)
         });
 
-        // get next sub mission
+        await TriggerNextSubMissions(mainMission, sync);
+
+        await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+        await Player.SendPacket(new PacketStartFinishSubMissionScNotify(missionId));
+        await Player.SendPacket(new PacketFinishedMissionScNotify(missionId));
+
+        if (mainMission.MissionInfo != null)
+            await HandleFinishAction(mainMission.MissionInfo, missionId);
+
+        // Get if it should finish main mission
+        // get current main mission
+        var shouldFinish = true;
+        mainMission.MissionInfo?.FinishSubMissionList.ForEach(id =>
+        {
+            if (GetSubMissionStatus(id) != MissionPhaseEnum.Finish) shouldFinish = false;
+        });
+
+        foreach (var nextMission in GetRunningSubMissionList())
+        {
+            FinishTypeHandlers.TryGetValue(nextMission.FinishType, out var handler);
+            if (handler != null) await handler.HandleMissionFinishType(Player, nextMission, null);
+        }
+
+        if (shouldFinish) await FinishMainMission(mainMissionId);
+
+        await HandleSubMissionNarrativeHooks(missionId);
+
+        // handle reward
+        await HandleSubMissionReward(missionId);
+        //Player.StoryLineManager!.CheckIfEnterStoryLine();
+        //Player.StoryLineManager!.CheckIfFinishStoryLine();
+
+    }
+
+    // Accept the sub-missions unlocked by finishing one, honoring AnySequence (OR) / MultiSequence (AND) gates.
+    private async ValueTask TriggerNextSubMissions(MainMissionExcel mainMission, MissionSync sync)
+    {
         foreach (var nextMission in mainMission.MissionInfo?.SubMissionList ?? [])
         {
             if (nextMission.TakeType != SubMissionTakeTypeEnum.AnySequence &&
@@ -284,30 +320,11 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
                     });
             }
         }
+    }
 
-        await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
-        await Player.SendPacket(new PacketStartFinishSubMissionScNotify(missionId));
-        await Player.SendPacket(new PacketFinishedMissionScNotify(missionId));
-
-        if (mainMission.MissionInfo != null)
-            await HandleFinishAction(mainMission.MissionInfo, missionId);
-
-        // Get if it should finish main mission
-        // get current main mission
-        var shouldFinish = true;
-        mainMission.MissionInfo?.FinishSubMissionList.ForEach(id =>
-        {
-            if (GetSubMissionStatus(id) != MissionPhaseEnum.Finish) shouldFinish = false;
-        });
-
-        foreach (var nextMission in GetRunningSubMissionList())
-        {
-            FinishTypeHandlers.TryGetValue(nextMission.FinishType, out var handler);
-            if (handler != null) await handler.HandleMissionFinishType(Player, nextMission, null);
-        }
-
-        if (shouldFinish) await FinishMainMission(mainMissionId);
-
+    // Hardcoded story-mission side effects (Heliobus lineup swap / HeartDial script unlocks).
+    private async ValueTask HandleSubMissionNarrativeHooks(int missionId)
+    {
         if (missionId == 101140201)
         {
             // Player.ChangeAvatarPathType(8001, Enums.Avatar.MultiPathAvatarTypeEnum.Knight);
@@ -322,12 +339,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager(player)
 
         if (missionId == 103040104)
             await Player.SendPacket(new PacketHeartDialScriptChangeScNotify(HeartDialUnlockStatus.UnlockAll));
-
-        // handle reward
-        await HandleSubMissionReward(missionId);
-        //Player.StoryLineManager!.CheckIfEnterStoryLine();
-        //Player.StoryLineManager!.CheckIfFinishStoryLine();
-
     }
 
     public async ValueTask HandleFinishAction(MissionInfo info, int subMissionId)

@@ -8,12 +8,11 @@ using March7thHoney.Util;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.PlayerLoginFinishCsReq)]
-public class HandlerPlayerLoginFinishCsReq : Handler
+public class HandlerPlayerLoginFinishCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         await connection.SendPacket(CmdIds.PlayerLoginFinishScRsp);
-        var player = connection.Player;
         if (player?.InventoryManager != null &&
             MonthCardService.TryClaimDailyReward(player.Data, out var monthCardReward))
         {
@@ -29,14 +28,13 @@ public class HandlerPlayerLoginFinishCsReq : Handler
 
     private static async Task SendHoyoToonLuaAutoRun(Connection connection)
     {
-        var player = connection.Player;
-        if (player == null) return;
+        if (connection.Player == null) return;
 
         var luaRoot = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "Lua"));
         var candidates = new[]
         {
             "Auto/default.lua",
-            $"Auto/{player.Uid}.lua"
+            $"Auto/{connection.Player.Uid}.lua"
         };
 
         foreach (var relativePath in candidates)

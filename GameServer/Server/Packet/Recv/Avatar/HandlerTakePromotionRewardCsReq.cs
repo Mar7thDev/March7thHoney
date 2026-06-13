@@ -6,13 +6,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.TakePromotionRewardCsReq)]
-public class HandlerTakePromotionRewardCsReq : Handler
+public class HandlerTakePromotionRewardCsReq : Handler<TakePromotionRewardCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakePromotionRewardCsReq req)
     {
-        var req = TakePromotionRewardCsReq.Parser.ParseFrom(data);
-
-        var avatar = connection.Player!.AvatarManager!.GetFormalAvatar((int)req.BaseAvatarId);
+        var avatar = player.AvatarManager!.GetFormalAvatar((int)req.BaseAvatarId);
         if (avatar == null)
         {
             await connection.SendPacket(new PacketTakePromotionRewardScRsp(Retcode.RetAvatarNotExist));
@@ -33,7 +31,7 @@ public class HandlerTakePromotionRewardCsReq : Handler
         }
 
         avatar.TakeReward((int)req.Promotion);
-        await connection.Player!.InventoryManager!.AddItem(101, 1, false);
+        await player.InventoryManager!.AddItem(101, 1, false);
         await connection.SendPacket(new PacketPlayerSyncScNotify(avatar));
 
         await connection.SendPacket(new PacketTakePromotionRewardScRsp(Retcode.RetSucc,

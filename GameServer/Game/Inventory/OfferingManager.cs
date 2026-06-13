@@ -8,10 +8,8 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.Inventory;
 
-public class OfferingManager(PlayerInstance player) : BasePlayerManager(player)
+public class OfferingManager(PlayerInstance player) : BasePlayerManager<OfferingData>(player)
 {
-    public OfferingData Data = DatabaseHelper.Instance!.GetInstanceOrCreateNew<OfferingData>(player.Uid);
-
     public OfferingTypeData? GetOfferingData(int offeringId)
     {
         if (Data.Offerings.TryGetValue(offeringId, out var offeringData)) return offeringData;

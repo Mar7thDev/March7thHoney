@@ -6,16 +6,14 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.ExchangeHcoinCsReq)]
-public class HandlerExchangeHcoinCsReq : Handler
+public class HandlerExchangeHcoinCsReq : Handler<ExchangeHcoinCsReq>
 {
     private const int SourceItemId = 3; // Mcoin
     private const int TargetItemId = 1; // Hcoin
     private const int ExchangeRate = 1; // 1:1
 
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, ExchangeHcoinCsReq req)
     {
-        var req = ExchangeHcoinCsReq.Parser.ParseFrom(data);
-        var player = connection.Player;
         if (player?.InventoryManager == null) return;
 
         if (req.Num == 0)

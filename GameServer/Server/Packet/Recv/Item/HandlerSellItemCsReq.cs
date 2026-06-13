@@ -5,12 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.SellItemCsReq)]
-public class HandlerSellItemCsReq : Handler
+public class HandlerSellItemCsReq : Handler<SellItemCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SellItemCsReq req)
     {
-        var req = SellItemCsReq.Parser.ParseFrom(data);
-        var items = await connection.Player!.InventoryManager!.SellItem(req.CostData, req.HNLKAEBKKBL);
+        var items = await player.InventoryManager!.SellItem(req.CostData, req.HNLKAEBKKBL);
         await connection.SendPacket(new PacketSellItemScRsp(items));
     }
 }

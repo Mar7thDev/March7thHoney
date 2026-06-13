@@ -4,13 +4,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.PromoteEquipmentCsReq)]
-public class HandlerPromoteEquipmentCsReq : Handler
+public class HandlerPromoteEquipmentCsReq : Handler<PromoteEquipmentCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, PromoteEquipmentCsReq req)
     {
-        var req = PromoteEquipmentCsReq.Parser.ParseFrom(data);
-
-        await connection.Player!.InventoryManager!.PromoteEquipment((int)req.EquipmentUniqueId);
+        await player.InventoryManager!.PromoteEquipment((int)req.EquipmentUniqueId);
 
         await connection.SendPacket(CmdIds.PromoteEquipmentScRsp);
     }

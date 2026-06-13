@@ -10,7 +10,7 @@ public class PacketGetLineupAvatarDataScRsp : BasePacket
     {
         var rsp = new GetLineupAvatarDataScRsp();
 
-        player.AvatarManager?.AvatarData?.FormalAvatars?.ForEach(avatar =>
+        player.AvatarManager?.Data?.FormalAvatars?.ForEach(avatar =>
         {
             var data = new LineupAvatarData
             {

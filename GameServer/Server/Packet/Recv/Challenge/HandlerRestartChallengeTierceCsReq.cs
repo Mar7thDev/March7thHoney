@@ -6,11 +6,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.RestartChallengeTierceCsReq)]
-public class HandlerRestartChallengeTierceCsReq : Handler
+public class HandlerRestartChallengeTierceCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var player = connection.Player!;
         var ok = await player.ChallengeTierceManager!.Restart();
         await connection.SendPacket(new PacketRestartChallengeTierceScRsp(
             ok ? 0u : (uint)Retcode.RetChallengeNotExist));

@@ -16,13 +16,13 @@ public class PacketGetPlayerBoardDataScRsp : BasePacket
             UnlockedPersonalCardList = { player.PlayerUnlockData!.PersonalCards.Select(x => (uint)x) },
             UnlockedHeadIconList =
                 { player.PlayerUnlockData!.HeadIcons.Select(x => new HeadIconData { Id = (uint)x }) },
-            AssistAvatarIdList = { player.AvatarManager!.AvatarData.AssistAvatars.Select(x => (uint)x) },
+            AssistAvatarIdList = { player.AvatarManager!.Data.AssistAvatars.Select(x => (uint)x) },
             DisplayAvatarVec = new DisplayAvatarVec(),
             HeadFrameInfo = player.Data.HeadFrame.ToProto()
         };
 
         var pos = 0;
-        player.AvatarManager?.AvatarData!.DisplayAvatars.ForEach(avatar =>
+        player.AvatarManager?.Data!.DisplayAvatars.ForEach(avatar =>
         {
             proto.DisplayAvatarVec.DisplayAvatarList.Add(new DisplayAvatarData
             {
