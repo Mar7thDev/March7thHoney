@@ -83,17 +83,6 @@ BASH_BIN="$(command -v bash)"
 UNIT_PATH="/etc/systemd/system/${SERVICE_NAME}.service"
 RUN_SCRIPT="${ROOT_DIR}/scripts/run-server.sh"
 
-systemd_quote() {
-  local value="$1"
-  value="${value//\\/\\\\}"
-  value="${value//\"/\\\"}"
-  printf '"%s"' "$value"
-}
-
-ROOT_DIR_UNIT="$(systemd_quote "$ROOT_DIR")"
-BASH_BIN_UNIT="$(systemd_quote "$BASH_BIN")"
-RUN_SCRIPT_UNIT="$(systemd_quote "$RUN_SCRIPT")"
-
 cat > "$UNIT_PATH" <<EOF
 [Unit]
 Description=March7thHoney server
@@ -103,10 +92,10 @@ After=network-online.target
 [Service]
 Type=simple
 User=${SERVICE_USER}
-WorkingDirectory=${ROOT_DIR_UNIT}
+WorkingDirectory=${ROOT_DIR}
 Environment=DOTNET_ENVIRONMENT=Production
 Environment=M7H_CONFIGURATION=${CONFIGURATION}
-ExecStart=${BASH_BIN_UNIT} ${RUN_SCRIPT_UNIT}
+ExecStart=${BASH_BIN} ${RUN_SCRIPT}
 Restart=on-failure
 RestartSec=5
 KillSignal=SIGINT
