@@ -116,7 +116,9 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 if (avatarExcel != null)
                 {
                     mazeBuff = new MazeBuff((int)avatarExcel.DamageType, 1, index);
-                    mazeBuff.DynamicValues.Add("SkillIndex", isSkill ? 2 : 1);
+                    // Entering via the avatar's own technique-attack (e.g. Firefly's mech) marks the
+                    // initiator buff with SkillIndex 0 ("技能先制"); a plain basic attack stays 1.
+                    mazeBuff.DynamicValues.Add("SkillIndex", isSkill ? 0 : 1);
                 }
             }
             else
@@ -131,6 +133,35 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 battleInstance.Buffs.Add(mazeBuff);
 
             battleInstance.AvatarInfo = avatarList;
+
+            // Inject technique (秘技) maze buffs for every lineup avatar that actually released a
+            // technique in the scene (flagged at SceneCastSkillCostMp). Applied directly as battle
+            // data — never as a scene buff/modifier — so a caster-targeted enemy modifier (e.g.
+            // Cyrene 1415's 141502 "_Enemy") cannot freeze the caster while still in the scene.
+            // OwnerAvatarId lets ToProto resolve ownerIndex/targetIndex; selection is CyreneRes-
+            // tolerant and not hard-coded per avatar (see SceneSkillManager.GetTechniqueMazeBuffs).
+            var castTechniqueIds = Player.SceneInstance!.CastTechniqueAvatarIds;
+            if (castTechniqueIds.Count > 0)
+            {
+                foreach (var sceneAvatar in avatarList)
+                {
+                    var avatarId = sceneAvatar.AvatarInfo.BaseAvatarId;
+                    if (!castTechniqueIds.Contains(avatarId)) continue;
+                    foreach (var (buffId, level) in SceneSkillManager.GetTechniqueMazeBuffs(avatarId))
+                    {
+                        // Skip buffs the ability chain already recorded on the avatar (those relay via
+                        // AvatarSceneInfo.ApplyBuff) so we never double-add the same maze buff.
+                        if (sceneAvatar.BuffList.Any(b => b.BuffId == buffId)) continue;
+                        battleInstance.Buffs.Add(new MazeBuff(buffId, level, -1)
+                        {
+                            OwnerAvatarId = avatarId,
+                            WaveFlag = -1
+                        });
+                    }
+                }
+
+                castTechniqueIds.Clear();
+            }
 
             // call battle start
             Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
