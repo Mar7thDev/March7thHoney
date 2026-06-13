@@ -149,24 +149,21 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                     var avatarId = sceneAvatar.AvatarInfo.BaseAvatarId;
                     if (!castTechniqueIds.Contains(avatarId)) continue;
 
-                    var techniqueBuffs = SceneSkillManager.GetTechniqueMazeBuffs(avatarId);
-
-                    // A technique's effect only carries into battle when it was actually committed,
-                    // not merely cast then abandoned. Two commit paths:
-                    //  - persistent field/summon technique (any SummonUnit SkillMaze buff — UseType
-                    //    "SummonUnit"/"3"; e.g. Dahlia/Cyrene barriers): survives in the scene, so it
-                    //    applies however the battle is later entered;
-                    //  - the battle is entered via THIS avatar's own technique-attack (skillIndex 1).
-                    // Entering via a plain normal attack (skillIndex 0) after casting then abandoning a
-                    // transform/attack technique (Himeko Nova exit, Castorice empty cast) must NOT carry
-                    // the effect — that wrongly triggers it, or for attack-type buffs wedges the client
-                    // on the battle-entry screen. No avatar id hard-coded.
-                    var persistent = techniqueBuffs.Any(b => b.UseType is "SummonUnit" or "3");
+                    // The battle was entered via THIS avatar's own skillIndex-1 technique-attack?
                     var committed = isSkill && avatarId == attackerAvatarId;
-                    if (!persistent && !committed) continue;
 
-                    foreach (var (buffId, level, _) in techniqueBuffs)
+                    foreach (var (buffId, level, useType) in SceneSkillManager.GetTechniqueMazeBuffs(avatarId))
                     {
+                        // Attack-type techniques (UseType TriggerBattle*) only "land" when the battle is
+                        // entered via that avatar's own technique-attack (committed) — an empty cast that
+                        // never connects (e.g. Castorice 空放) must NOT carry. Buff/field/summon techniques
+                        // (AddBattleBuff / SummonUnit — TohsakaRin, Gilgamesh, FuXuan, Luocha, Dahlia,
+                        // Cyrene...) apply the moment they are cast, so they carry into battle for every
+                        // lineup avatar that cast and kept them, regardless of who triggered the battle
+                        // (abandoned/exited casts are un-flagged at cast time). This is why a 4-char team
+                        // that pre-cast all techniques gets all of them, not just the entering attacker's.
+                        var isAttackType = useType.StartsWith("TriggerBattle", System.StringComparison.Ordinal);
+                        if (isAttackType && !committed) continue;
                         // Skip buffs the ability chain already recorded (those relay via ApplyBuff).
                         if (sceneAvatar.BuffList.Any(b => b.BuffId == buffId)) continue;
                         battleInstance.Buffs.Add(new MazeBuff(buffId, level, -1)
