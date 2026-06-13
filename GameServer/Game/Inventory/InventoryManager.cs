@@ -81,14 +81,14 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
                         if (!Player.PlayerUnlockData!.HeadIcons.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.HeadIcons.Add(itemId);
-                            DatabaseHelper.MarkDirty(Player.Uid);
+                            MarkDirty();
                         }
                         break;
                     case ItemSubTypeEnum.ChatBubble:
                         if (!Player.PlayerUnlockData!.ChatBubbles.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.ChatBubbles.Add(itemId);
-                            DatabaseHelper.MarkDirty(Player.Uid);
+                            MarkDirty();
                             // TODO 4.3: PacketUnlockChatBubbleScNotify (Phone 模块) 暂停
                         }
                         break;
@@ -96,7 +96,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
                         if (!Player.PlayerUnlockData!.PhoneThemes.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.PhoneThemes.Add(itemId);
-                            DatabaseHelper.MarkDirty(Player.Uid);
+                            MarkDirty();
                             // TODO 4.3: PacketUnlockPhoneThemeScNotify (Phone 模块) 暂停
                         }
                         break;
@@ -104,14 +104,14 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
                         if (!Player.PlayerUnlockData!.PersonalCards.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.PersonalCards.Add(itemId);
-                            DatabaseHelper.MarkDirty(Player.Uid);
+                            MarkDirty();
                         }
                         break;
                     case ItemSubTypeEnum.PhoneCase:
                         if (!Player.PlayerUnlockData!.PhoneCases.Contains(itemId))
                         {
                             Player.PlayerUnlockData!.PhoneCases.Add(itemId);
-                            DatabaseHelper.MarkDirty(Player.Uid);
+                            MarkDirty();
                             // TODO 4.3: PacketUnlockPhoneCaseScNotify (Phone 模块) 暂停
                         }
                         break;
@@ -130,7 +130,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
                         if (!value.Contains(itemId))
                         {
                             value.Add(itemId);
-                            DatabaseHelper.MarkDirty(Player.Uid);
+                            MarkDirty();
                             await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
                         }
                         break;
@@ -297,7 +297,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
                 break;
         }
 
-        DatabaseHelper.MarkDirty(Player.Uid);
+        MarkDirty();
         return item;
     }
 
@@ -387,7 +387,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
             Count = count
         });
 
-        DatabaseHelper.MarkDirty(Player.Uid);
+        MarkDirty();
         return itemData;
     }
 
@@ -1147,7 +1147,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
 
         itemData.Level = curLevel;
         itemData.Exp = curExp;
-        DatabaseHelper.MarkDirty(Player.Uid);
+        MarkDirty();
         // leftover
         Dictionary<int, ItemData> list = [];
         var leftover = exp;
@@ -1424,7 +1424,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
 
         await RemoveItems(costItems, false);
         itemData.Rank = Math.Min(itemData.Rank + rank, maxRank);
-        DatabaseHelper.MarkDirty(Player.Uid);
+        MarkDirty();
         await Player.SendPacket(new PacketPlayerSyncScNotify(new ItemSyncData(itemData),
             new DelEquipmentSyncData(costItems.Select(item => (uint)item.uniqueId))));
         return Retcode.RetSucc;
