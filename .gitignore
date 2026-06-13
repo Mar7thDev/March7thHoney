@@ -369,7 +369,6 @@ FodyWeavers.xsd
 /GameServer/OriginalProto
 Resources/
 CyreneRes/
-Config/Handbook
 Config/Logs
 Config/Plugins
 Config.json
