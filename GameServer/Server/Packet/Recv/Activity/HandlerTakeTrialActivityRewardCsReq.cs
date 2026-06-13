@@ -1,6 +1,7 @@
 using March7thHoney.Data;
 using March7thHoney.Database.Activity;
 using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Game.Sync;
 using March7thHoney.GameServer.Server.Packet.Send.Activity;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -34,7 +35,9 @@ public class HandlerTakeTrialActivityRewardCsReq : Handler<TakeTrialActivityRewa
                 };
             player.Data.Hcoin += reward!.Hcoin;
 
-            await player.SendPacket(new PacketPlayerSyncScNotify(player.ToProto(), itemList));
+            var syncData = new List<BaseSyncData> { new BasicInfoSyncData(player.ToProto()) };
+            syncData.AddRange(itemList.Select(i => new ItemSyncData(i)));
+            await player.SendPacket(new PacketPlayerSyncScNotify(syncData));
             await player.SendPacket(new PacketScenePlaneEventScNotify(itemList));
             await connection.SendPacket(new PacketTakeTrialActivityRewardScRsp(req.StageId, itemList));
         }
