@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Scene;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -9,8 +10,9 @@ public class HandlerLeaveChallengeCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        // TODO: check for plane type
-        if (player.SceneInstance != null)
+        // Only run the leave cleanup (force-quit battle, heal team, teleport) when actually inside a
+        // challenge-type scene — otherwise a client could spam this for a free full heal + teleport.
+        if (player.SceneInstance is not null && player.SceneInstance.Excel.PlaneType == PlaneTypeEnum.Challenge)
         {
             // As of 1.5.0, the server now has to handle the player leaving battle too
             await player.ForceQuitBattle();

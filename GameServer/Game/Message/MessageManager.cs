@@ -148,7 +148,8 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
                     ToChooseItemId = itemConfig.NextItemIDList
                 });
 
-                if (itemConfig.NextItemIDList.Count == 1) await FinishMessageItem(itemConfig.NextItemIDList[0], false);
+                if (itemConfig.NextItemIDList.Count == 1)
+                    await FinishMessageItem(itemConfig.NextItemIDList[0], false, true);
             }
             else // old
             {
@@ -188,7 +189,7 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
         await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.MessageSectionFinish);
     }
 
-    public async ValueTask FinishMessageItem(int itemId, bool sendPacket = true)
+    public async ValueTask FinishMessageItem(int itemId, bool sendPacket = true, bool trusted = false)
     {
         GameData.MessageItemConfigData.TryGetValue(itemId, out var itemConfig);
         if (itemConfig == null) return;
@@ -197,7 +198,9 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
         if (!Data.Groups.TryGetValue(groupId, out var group)) return;
         var section = group.Sections.First(m => m.SectionId == sectionId);
         if (section.Status != MessageSectionStatus.MessageSectionDoing) return;
-        //if (!section.ToChooseItemId.Contains(itemId)) return;
+        // Reject client ids that aren't currently offered — stops arbitrary message-flow advancement.
+        // Internal auto-advance passes trusted:true (it may legitimately chain across sections).
+        if (!trusted && !section.ToChooseItemId.Contains(itemId)) return;
         section.ToChooseItemId.Clear();
         section.Items.Add(new MessageItemData
         {
@@ -208,7 +211,7 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
         group.RefreshTime = Extensions.GetUnixSec();
 
         if (section.ToChooseItemId.Count == 1) // if only one item, auto finish
-            await FinishMessageItem(section.ToChooseItemId[0], false);
+            await FinishMessageItem(section.ToChooseItemId[0], false, true);
 
         if (sendPacket)
         {
