@@ -6,17 +6,17 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.EnterChallengeNextPhaseCsReq)]
-public class HandlerEnterChallengeNextPhaseCsReq : Handler
+public class HandlerEnterChallengeNextPhaseCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        if (connection.Player!.ChallengeManager?.ChallengeInstance is not ChallengeBossInstance boss)
+        if (player.ChallengeManager?.ChallengeInstance is not ChallengeBossInstance boss)
         {
             await connection.SendPacket(new PacketEnterChallengeNextPhaseScRsp(Retcode.RetChallengeNotDoing));
             return;
         }
 
         await boss.NextPhase();
-        await connection.SendPacket(new PacketEnterChallengeNextPhaseScRsp(connection.Player));
+        await connection.SendPacket(new PacketEnterChallengeNextPhaseScRsp(player));
     }
 }

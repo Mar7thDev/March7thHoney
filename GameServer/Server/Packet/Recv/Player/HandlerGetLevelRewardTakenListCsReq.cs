@@ -4,10 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.GetLevelRewardTakenListCsReq)]
-public class HandlerGetLevelRewardTakenListCsReq : Handler
+public class HandlerGetLevelRewardTakenListCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketGetLevelRewardTakenListScRsp(connection.Player!));
+        await connection.SendPacket(new PacketGetLevelRewardTakenListScRsp(player));
     }
 }

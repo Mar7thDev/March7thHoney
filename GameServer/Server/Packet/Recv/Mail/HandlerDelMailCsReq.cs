@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mail;
 
 [Opcode(CmdIds.DelMailCsReq)]
-public class HandlerDelMailCsReq : Handler
+public class HandlerDelMailCsReq : Handler<DelMailCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, DelMailCsReq req)
     {
-        var req = DelMailCsReq.Parser.ParseFrom(data);
-
-        foreach (var id in req.IdList) connection.Player!.MailManager?.DeleteMail((int)id);
+        foreach (var id in req.IdList) player.MailManager?.DeleteMail((int)id);
 
         await connection.SendPacket(new PacketDelMailScRsp([..req.IdList]));
     }

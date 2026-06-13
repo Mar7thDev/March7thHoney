@@ -5,13 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mission;
 
 [Opcode(CmdIds.FinishTalkMissionCsReq)]
-public class HandlerFinishTalkMissionCsReq : Handler
+public class HandlerFinishTalkMissionCsReq : Handler<FinishTalkMissionCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, FinishTalkMissionCsReq req)
     {
-        var req = FinishTalkMissionCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
-
         await player.MissionManager!.HandleTalkStr(req.TalkStr);
 
         if (req.CustomValueList != null && req.CustomValueList.Count > 0)

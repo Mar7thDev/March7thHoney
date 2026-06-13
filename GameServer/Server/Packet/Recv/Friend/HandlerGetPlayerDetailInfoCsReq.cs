@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.GetPlayerDetailInfoCsReq)]
-public class HandlerGetPlayerDetailInfoCsReq : Handler
+public class HandlerGetPlayerDetailInfoCsReq : Handler<GetPlayerDetailInfoCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetPlayerDetailInfoCsReq req)
     {
-        var req = GetPlayerDetailInfoCsReq.Parser.ParseFrom(data);
-
-        var playerData = connection.Player!.FriendManager!.GetFriendPlayerData([(int)req.Uid]).FirstOrDefault();
+        var playerData = player.FriendManager!.GetFriendPlayerData([(int)req.Uid]).FirstOrDefault();
         if (playerData == null)
         {
             await connection.SendPacket(new PacketGetPlayerDetailInfoScRsp());

@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Message;
 
 [Opcode(CmdIds.FinishSectionIdCsReq)]
-public class HandlerFinishSectionIdCsReq : Handler
+public class HandlerFinishSectionIdCsReq : Handler<FinishSectionIdCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, FinishSectionIdCsReq req)
     {
-        var req = FinishSectionIdCsReq.Parser.ParseFrom(data);
-
-        await connection.Player!.MessageManager!.FinishSection((int)req.SectionId);
+        await player.MessageManager!.FinishSection((int)req.SectionId);
 
         await connection.SendPacket(new PacketFinishSectionIdScRsp(req.SectionId));
     }

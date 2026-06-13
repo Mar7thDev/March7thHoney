@@ -4,10 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Gacha;
 
 [Opcode(CmdIds.GetGachaInfoCsReq)]
-public class HandlerGetGachaInfoCsReq : Handler
+public class HandlerGetGachaInfoCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketGetGachaInfoScRsp(connection.Player!));
+        await connection.SendPacket(new PacketGetGachaInfoScRsp(player));
     }
 }

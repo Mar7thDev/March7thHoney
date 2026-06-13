@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Chat;
 
 [Opcode(CmdIds.GetPrivateChatHistoryCsReq)]
-public class HandlerGetPrivateChatHistoryCsReq : Handler
+public class HandlerGetPrivateChatHistoryCsReq : Handler<GetPrivateChatHistoryCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetPrivateChatHistoryCsReq req)
     {
-        var req = GetPrivateChatHistoryCsReq.Parser.ParseFrom(data);
-
         await connection.SendPacket(
-            new PacketGetPrivateChatHistoryScRsp(req.ContactSide, req.TargetSide, connection.Player!));
+            new PacketGetPrivateChatHistoryScRsp(req.ContactSide, req.TargetSide, player));
     }
 }

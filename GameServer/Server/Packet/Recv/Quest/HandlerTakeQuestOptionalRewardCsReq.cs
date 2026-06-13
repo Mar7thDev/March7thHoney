@@ -5,13 +5,12 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Quest;
 
 [Opcode(CmdIds.TakeQuestOptionalRewardCsReq)]
-public class HandlerTakeQuestOptionalRewardCsReq : Handler
+public class HandlerTakeQuestOptionalRewardCsReq : Handler<TakeQuestOptionalRewardCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeQuestOptionalRewardCsReq req)
     {
-        var req = TakeQuestOptionalRewardCsReq.Parser.ParseFrom(data);
         var (retcode, rewards) =
-            await connection.Player!.QuestManager!.TakeQuestOptionalReward((int)req.QuestId, (int)req.OptionalRewardId);
+            await player.QuestManager!.TakeQuestOptionalReward((int)req.QuestId, (int)req.OptionalRewardId);
 
         await connection.SendPacket(new PacketTakeQuestOptionalRewardScRsp(req.QuestId, retcode, rewards));
     }

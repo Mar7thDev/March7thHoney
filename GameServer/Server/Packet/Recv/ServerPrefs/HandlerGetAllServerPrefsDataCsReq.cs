@@ -4,11 +4,11 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.ServerPrefs;
 
 [Opcode(CmdIds.GetAllServerPrefsDataCsReq)]
-public class HandlerGetAllServerPrefsDataCsReq : Handler
+public class HandlerGetAllServerPrefsDataCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var infos = connection.Player?.ServerPrefsData?.ServerPrefsDict.Values.ToList() ?? [];
+        var infos = player?.ServerPrefsData?.ServerPrefsDict.Values.ToList() ?? [];
         await connection.SendPacket(new PacketGetAllServerPrefsDataScRsp(infos));
     }
 }

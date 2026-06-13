@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.DeleteFriendCsReq)]
-public class HandlerDeleteFriendCsReq : Handler
+public class HandlerDeleteFriendCsReq : Handler<DeleteFriendCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, DeleteFriendCsReq req)
     {
-        var req = DeleteFriendCsReq.Parser.ParseFrom(data);
-
-        var uid = await connection.Player!.FriendManager!.RemoveFriend((int)req.Uid);
+        var uid = await player.FriendManager!.RemoveFriend((int)req.Uid);
         if (uid == null)
             await connection.SendPacket(new PacketDeleteFriendScRsp());
         else

@@ -4,11 +4,11 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Music;
 
 [Opcode(CmdIds.MusicRhythmFinishLevelCsReq)]
-public class HandlerMusicRhythmFinishLevelCsReq : Handler
+public class HandlerMusicRhythmFinishLevelCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var curLevel = connection.Player!.Data.CurMusicLevel;
+        var curLevel = player.Data.CurMusicLevel;
         await connection.SendPacket(new PacketMusicRhythmFinishLevelScRsp((uint)curLevel));
     }
 }

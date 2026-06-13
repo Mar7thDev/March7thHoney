@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.SceneEntityTeleportCsReq)]
-public class HandlerSceneEntityTeleportCsReq : Handler
+public class HandlerSceneEntityTeleportCsReq : Handler<SceneEntityTeleportCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SceneEntityTeleportCsReq req)
     {
-        var req = SceneEntityTeleportCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         if (req.EntryId != player.Data.EntryId) await player.EnterScene((int)req.EntryId, 0, false);
         player.MoveTo(req.EntityMotion);
 

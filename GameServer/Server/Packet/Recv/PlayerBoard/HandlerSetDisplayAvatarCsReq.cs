@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.PlayerBoard;
 
 [Opcode(CmdIds.SetDisplayAvatarCsReq)]
-public class HandlerSetDisplayAvatarCsReq : Handler
+public class HandlerSetDisplayAvatarCsReq : Handler<SetDisplayAvatarCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetDisplayAvatarCsReq req)
     {
-        var req = SetDisplayAvatarCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         var avatars = player.AvatarManager!.AvatarData!.DisplayAvatars;
         avatars.Clear();
         foreach (var avatar in req.DisplayAvatarList)

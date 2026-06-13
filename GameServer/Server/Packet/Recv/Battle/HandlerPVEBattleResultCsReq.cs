@@ -4,12 +4,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Battle;
 
 [Opcode(CmdIds.PVEBattleResultCsReq)]
-public class HandlerPVEBattleResultCsReq : Handler
+public class HandlerPVEBattleResultCsReq : Handler<PVEBattleResultCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, PVEBattleResultCsReq req)
     {
-        var req = PVEBattleResultCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         await player.BattleManager!.EndBattle(req);
     }
 }

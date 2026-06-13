@@ -6,13 +6,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.HeartDial;
 
 [Opcode(CmdIds.FinishEmotionDialoguePerformanceCsReq)]
-public class HandlerFinishEmotionDialoguePerformanceCsReq : Handler
+public class HandlerFinishEmotionDialoguePerformanceCsReq : Handler<FinishEmotionDialoguePerformanceCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, FinishEmotionDialoguePerformanceCsReq req)
     {
-        var req = FinishEmotionDialoguePerformanceCsReq.Parser.ParseFrom(data);
-
-        var player = connection.Player!;
         await player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.HeartDialDialoguePerformanceFinish,
             $"HeartDial_{req.DialogueId}");
 

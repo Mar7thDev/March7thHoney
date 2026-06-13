@@ -10,12 +10,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Activity;
 
 [Opcode(CmdIds.TakeTrialActivityRewardCsReq)]
-public class HandlerTakeTrialActivityRewardCsReq : Handler
+public class HandlerTakeTrialActivityRewardCsReq : Handler<TakeTrialActivityRewardCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeTrialActivityRewardCsReq req)
     {
-        var req = TakeTrialActivityRewardCsReq.Parser.ParseFrom(data);
-
         GameData.AvatarDemoConfigData.TryGetValue((int)req.StageId, out var stage);
         if (stage != null)
         {
@@ -23,10 +21,10 @@ public class HandlerTakeTrialActivityRewardCsReq : Handler
             var itemList = new List<ItemData>();
             reward?.GetItems().ForEach(i =>
             {
-                var res = connection.Player!.InventoryManager!.AddItem(i.Item1, i.Item2, false).Result;
+                var res = player.InventoryManager!.AddItem(i.Item1, i.Item2, false).Result;
                 if (res != null) itemList.Add(res);
             });
-            var activities = connection.Player!.ActivityManager!.Data.TrialActivityData.Activities;
+            var activities = player.ActivityManager!.Data.TrialActivityData.Activities;
             var activity = activities.Find(x => x.StageId == req.StageId);
             if (activity != null)
                 activities[activities.FindIndex(x => x.StageId == req.StageId)] = new TrialActivityResultData
@@ -34,10 +32,10 @@ public class HandlerTakeTrialActivityRewardCsReq : Handler
                     StageId = (int)req.StageId,
                     TakenReward = true
                 };
-            connection.Player!.Data.Hcoin += reward!.Hcoin;
+            player.Data.Hcoin += reward!.Hcoin;
 
-            await connection.Player!.SendPacket(new PacketPlayerSyncScNotify(connection.Player!.ToProto(), itemList));
-            await connection.Player!.SendPacket(new PacketScenePlaneEventScNotify(itemList));
+            await player.SendPacket(new PacketPlayerSyncScNotify(player.ToProto(), itemList));
+            await player.SendPacket(new PacketScenePlaneEventScNotify(itemList));
             await connection.SendPacket(new PacketTakeTrialActivityRewardScRsp(req.StageId, itemList));
         }
     }

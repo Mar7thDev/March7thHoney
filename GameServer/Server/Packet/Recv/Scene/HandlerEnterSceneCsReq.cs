@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.EnterSceneCsReq)]
-public class HandlerEnterSceneCsReq : Handler
+public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
 {
-    // TODO 4.3: social play / TrainCakeCatch 分支暂停，只保留默认场景进入路径
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    // TODO 4.3: social play / TrainCakeCatch 鍒嗘敮鏆傚仠锛屽彧淇濈暀榛樿鍦烘櫙杩涘叆璺緞
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, EnterSceneCsReq req)
     {
-        var req = EnterSceneCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         var storyLineId = (int)(req.SceneIdentifier?.GameStoryLineId ?? 0);
 
         var teleportId = req.TeleportId != 0 ? (int)req.TeleportId : 0;

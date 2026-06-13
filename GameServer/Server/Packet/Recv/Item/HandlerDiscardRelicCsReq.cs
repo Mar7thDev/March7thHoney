@@ -6,13 +6,12 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.DiscardRelicCsReq)]
-public class HandlerDiscardRelicCsReq : Handler
+public class HandlerDiscardRelicCsReq : Handler<DiscardRelicCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, DiscardRelicCsReq req)
     {
-        var req = DiscardRelicCsReq.Parser.ParseFrom(data);
         var result =
-            await connection.Player!.InventoryManager!.DiscardItems(req.RelicIds, req.DKPCAIGPHNO,
+            await player.InventoryManager!.DiscardItems(req.RelicIds, req.DKPCAIGPHNO,
                 ItemMainTypeEnum.Relic);
         await connection.SendPacket(new PacketDiscardRelicScRsp(result, req.DKPCAIGPHNO));
     }

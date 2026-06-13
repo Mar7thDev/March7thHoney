@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Message;
 
 [Opcode(CmdIds.GetNpcMessageGroupCsReq)]
-public class HandlerGetNpcMessageGroupCsReq : Handler
+public class HandlerGetNpcMessageGroupCsReq : Handler<GetNpcMessageGroupCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetNpcMessageGroupCsReq req)
     {
-        var req = GetNpcMessageGroupCsReq.Parser.ParseFrom(data);
-
-        await connection.SendPacket(new PacketGetNpcMessageGroupScRsp(req.ContactIdList, connection.Player!));
+        await connection.SendPacket(new PacketGetNpcMessageGroupScRsp(req.ContactIdList, player));
     }
 }

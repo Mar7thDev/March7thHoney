@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mail;
 
 [Opcode(CmdIds.GetMailCsReq)]
-public class HandlerGetMailCsReq : Handler
+public class HandlerGetMailCsReq : Handler<GetMailCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetMailCsReq req)
     {
-        var req = GetMailCsReq.Parser.ParseFrom(data);
-
-        // 4.3: GetMailCsReq 分页字段混淆名变更 (start/requestedCount)
-        await connection.SendPacket(new PacketGetMailScRsp(connection.Player!, req.Start, req.HFKFNFKIEON));
+        // 4.3: GetMailCsReq 鍒嗛〉瀛楁娣锋穯鍚嶅彉鏇?(start/requestedCount)
+        await connection.SendPacket(new PacketGetMailScRsp(player, req.Start, req.HFKFNFKIEON));
     }
 }

@@ -4,10 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.HeartDial;
 
 [Opcode(CmdIds.GetHeartDialInfoCsReq)]
-public class HandlerGetHeartDialInfoCsReq : Handler
+public class HandlerGetHeartDialInfoCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketGetHeartDialInfoScRsp(connection.Player!));
+        await connection.SendPacket(new PacketGetHeartDialInfoScRsp(player));
     }
 }

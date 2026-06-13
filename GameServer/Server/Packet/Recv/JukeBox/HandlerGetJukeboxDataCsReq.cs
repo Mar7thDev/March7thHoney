@@ -4,10 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.JukeBox;
 
 [Opcode(CmdIds.GetJukeboxDataCsReq)]
-public class HandlerGetJukeboxDataCsReq : Handler
+public class HandlerGetJukeboxDataCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketGetJukeboxDataScRsp(connection.Player!));
+        await connection.SendPacket(new PacketGetJukeboxDataScRsp(player));
     }
 }

@@ -5,12 +5,10 @@ using March7thHoney.Util;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.LeaveChallengeCsReq)]
-public class HandlerLeaveChallengeCsReq : Handler
+public class HandlerLeaveChallengeCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var player = connection.Player!;
-
         // TODO: check for plane type
         if (player.SceneInstance != null)
         {
