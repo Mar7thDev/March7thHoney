@@ -453,6 +453,19 @@ public partial class PlayerInstance
         }
     }
 
+    public void SetGroupCustomSaveData(int entryId, int groupId, string saveData)
+    {
+        if (SceneData == null) return;
+
+        if (!SceneData.CustomSaveData.TryGetValue(entryId, out var groupData))
+        {
+            groupData = [];
+            SceneData.CustomSaveData.Add(entryId, groupData);
+        }
+
+        groupData[groupId] = saveData;
+    }
+
     public void EnterSection(int sectionId)
     {
         if (SceneInstance != null)
