@@ -102,8 +102,13 @@ public class PacketSceneGroupRefreshScNotify : BasePacket
                 RefreshType = SceneGroupRefreshType.Loaded
             };
 
-            // TODO 4.3: GroupRefreshInfo 字段重命名 (DCLAKCFJCPJ/NNHGOBLNCIE)，登录路径不依赖，暂停下发
-            _ = dataList;
+            foreach (var data in dataList)
+                group.CDMKBCHLPAB.Add(new AKEKCKDIHLA
+                {
+                    NewValue = data.NewValue,
+                    OldValue = data.OldValue,
+                    PropertyName = data.PropertyName
+                });
 
             proto.GroupRefreshList.Add(group);
         }
