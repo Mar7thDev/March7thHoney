@@ -389,12 +389,7 @@ CLAUDE.md
 # Local SQLite databases
 Config/Database/
 
-# Local Docker deployment
-Dockerfile
-.dockerignore
-docker-compose*.yml
-docker-*.sh
-deploy/
+# Local environment files
 .env
 .env.*
 
@@ -418,3 +413,5 @@ dev/
 ## Generated resource cache 
 Config/Resource.cache
 
+Config/Json/Meli.json
+Config Live.json
