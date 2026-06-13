@@ -17,6 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- PlayerInstance is referenced pervasively (handlers, managers, packets); import it globally to cut per-file using churn. -->
+    <Using Include="March7thHoney.GameServer.Game.Player" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\KcpSharp\KcpSharp.csproj" />
     <ProjectReference Include="..\Proto\Proto.csproj" />
