@@ -80,41 +80,23 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 attackEntity, targetEntities, req);
         }
 
+        // Deterministic, res-independent engagement for NORMAL attacks: a basic attack (skillIndex 0)
+        // that connected with a live monster always starts a battle, even when the avatar's
+        // AdventureAbility JSON is missing or its task chain never calls TriggerBattle — the robust
+        // fix for avatars that otherwise stall on the battle-entry screen (e.g. Firefly). Scoped to
+        // skillIndex 0: a skill cast (skillIndex 1) can be a field/summon technique (e.g. Dahlia's
+        // barrier projectile) that must not force combat, so those keep relying on the ability chain
+        // / abilityless guard. No avatar id is hard-coded.
+        if (res.Instance == null && req.SkillIndex == 0 &&
+            targetEntities.OfType<EntityMonster>().Any(m => m.IsAlive))
+        {
+            var instance = await Player.BattleManager!.StartBattle(attackEntity, targetEntities, false);
+            if (instance != null)
+                res = new AbilityLevelResult(instance, BuildHitMonsterInfos(targetEntities));
+        }
+
         // check if avatar execute
         if (attackEntity is AvatarSceneInfo) await Player.SceneInstance!.OnUseSkill(req);
-
-        // backfill character maze buffs for techniques whose ability JSON spawns
-        // a summon unit instead of calling AddMazeBuff (e.g. Dahlia 1321 -> 132101,
-        // Silver Wolf lv.999 1506 -> 150601 which uses CharacterSkillAdv binding).
-        // candidates = AvatarMazeBuff entries bound to the SkillMaze slot via either
-        // CharacterSkill or CharacterSkillAdv. If the ability JSON already added one
-        // of them, skip entirely; otherwise apply the canonical primary entry
-        // (UseType SummonUnit/AddBattleBuff/TriggerBattle) so battleInfo.buffList
-        // picks it up. This keeps multi-entry avatars (Cyrene, Cerydra, Robin...)
-        // from receiving stray summon/listener buffs.
-        if (req.SkillIndex == 1 && attackEntity is AvatarSceneInfo casterAvatar)
-        {
-            var avatarId = casterAvatar.AvatarInfo.BaseAvatarId;
-            var candidates = GameData.MazeBuffData
-                .Where(kvp => kvp.Key / 10 / 100 == avatarId
-                              && kvp.Value.MazeBuffType == "Character"
-                              && (kvp.Value.InBattleBindingType == "CharacterSkill"
-                                  || kvp.Value.InBattleBindingType == "CharacterSkillAdv")
-                              && kvp.Value.InBattleBindingKey == "SkillMaze")
-                .Select(kvp => (BuffId: kvp.Key / 10, Excel: kvp.Value))
-                .ToList();
-
-            var alreadyApplied = candidates.Any(c =>
-                casterAvatar.BuffList.Any(b => b.BuffId == c.BuffId));
-
-            if (!alreadyApplied)
-            {
-                var primary = candidates.FirstOrDefault(c =>
-                    c.Excel.UseType is "SummonUnit" or "AddBattleBuff" or "TriggerBattle");
-                if (primary.BuffId != 0)
-                    await casterAvatar.AddBuff(new SceneBuff(primary.BuffId, primary.Excel.Lv, avatarId));
-            }
-        }
 
         return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
     }
@@ -238,24 +220,21 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         if (targetEntities.Count == 0)
             return new AbilityLevelResult();
 
-        // A projectile/field technique that runs out its lifetime (chains / persistent
-        // field, e.g. Gilgamesh) reports SCENE_CAST_SKILL_PROJECTILE_LIFETIME_FINISH and must
-        // NOT start an open-world battle: the client predicts a summon, not combat, and
-        // rejects an unexpected battle with "技能使用失败". An attack that actually connected
-        // (normal atk, or an attack technique like Himeko) reports only ..._HIT and still
-        // engages. Splitting on this client tag keeps attack vs summon techniques correct
-        // without an ability JSON and without hard-coding any avatar id.
-        if (req.SkillExtraTags.Contains(SkillExtraTag.SceneCastSkillProjectileLifetimeFinish))
+        // A normal attack (skillIndex 0) always engages on a live hit. A skill cast (skillIndex 1)
+        // only engages when the caster's technique is a battle-triggering ATTACK — i.e. the avatar
+        // has a real SkillMaze maze buff (e.g. Firefly's mech, which reports HIT + LIFETIME_FINISH and
+        // must engage). A pure field/summon technique (Gilgamesh's chains) has no SkillMaze maze buff
+        // and merely places a projectile that reports a lifetime-finish; starting a battle there makes
+        // the client reject it with "技能使用失败". Its real engagement is a separate skillIndex-0
+        // attack. The two casts are identical on the wire (same skillIndex + tags + monster hit), so
+        // we lean on the maze-buff data the official client encodes in its ability config. No avatar
+        // id is hard-coded.
+        if (req.SkillIndex == 1
+            && req.SkillExtraTags.Contains(SkillExtraTag.SceneCastSkillProjectileLifetimeFinish)
+            && !HasBattleTriggerTechnique((attackEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0))
             return new AbilityLevelResult();
 
-        var battleInfos = new List<HitMonsterInstance>();
-        foreach (var entity in targetEntities)
-        {
-            var type = entity is EntityMonster { IsAlive: false }
-                ? MonsterBattleType.DirectDieSkipBattle
-                : MonsterBattleType.TriggerBattle;
-            battleInfos.Add(new HitMonsterInstance(entity.EntityId, type));
-        }
+        var battleInfos = BuildHitMonsterInfos(targetEntities);
 
         var hasLiveMonster = targetEntities.OfType<EntityMonster>().Any(x => x.IsAlive);
         BattleInstance? instance = null;
@@ -264,6 +243,40 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
 
         return new AbilityLevelResult(instance, battleInfos);
     }
+
+    private static List<HitMonsterInstance> BuildHitMonsterInfos(List<BaseGameEntity> targetEntities) =>
+        targetEntities.Select(entity => new HitMonsterInstance(
+            entity.EntityId,
+            entity is EntityMonster { IsAlive: false }
+                ? MonsterBattleType.DirectDieSkipBattle
+                : MonsterBattleType.TriggerBattle)).ToList();
+
+    // Resolve an avatar's technique (SkillMaze) maze buffs without depending on enum fields that
+    // CyreneRes sometimes emits as raw integers (UseType/MazeBuffType/InBattleBindingType — e.g.
+    // Constance 132101 has UseType=3, SilverWolf999 150601 has InBattleBindingType=6). Match purely
+    // on the numeric avatar id (key/10/100) and the reliably-string InBattleBindingKey == "SkillMaze",
+    // returning every matching buff (Firefly -> 131001 + 131002). Empty when the avatar has no
+    // SkillMaze technique buff (e.g. Gilgamesh's chain field is not a SkillMaze maze buff): we never
+    // inject a guessed id — that matches the reference server, which injects nothing for such avatars.
+    public static List<(int BuffId, int Level)> GetTechniqueMazeBuffs(int avatarId) =>
+        GameData.MazeBuffData
+            .Where(kvp => kvp.Key / 10 / 100 == avatarId && kvp.Value.InBattleBindingKey == "SkillMaze")
+            .Select(kvp => (BuffId: kvp.Key / 10, Level: kvp.Value.Lv))
+            .Distinct()
+            .ToList();
+
+    // True when the avatar's technique is a battle-triggering ATTACK — its SkillMaze maze buff
+    // carries UseType "TriggerBattle"(/IgnoreWeakness), e.g. Firefly's mech or Silver Wolf. Field /
+    // summon techniques use UseType "SummonUnit" (Dahlia/Cyrene barriers) or "AddBattleBuff"
+    // (Gilgamesh/TohsakaRin chains); their skillIndex-1 placement must NOT start a battle (engaging
+    // shows "技能使用失败"), they engage via a separate skillIndex-0 normal attack. CyreneRes emits
+    // some UseType as raw enum ints, but TriggerBattle reliably arrives as the string; non-trigger
+    // ints/strings simply fail the prefix test. Data-driven, no avatar id hard-coded.
+    public static bool HasBattleTriggerTechnique(int avatarId) =>
+        GameData.MazeBuffData.Any(kvp =>
+            kvp.Key / 10 / 100 == avatarId
+            && kvp.Value.InBattleBindingKey == "SkillMaze"
+            && kvp.Value.UseType.StartsWith("TriggerBattle", System.StringComparison.Ordinal));
 
     private AdventureAbilityConfigListInfo? GetAbilityConfig(BaseGameEntity entity)
     {
