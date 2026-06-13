@@ -359,7 +359,7 @@ public partial class PlayerInstance(PlayerData data)
         }
 
         Data.WelcomeAnnouncePending = false;
-        DatabaseHelper.ToSaveUidList.SafeAdd(Uid);
+        DatabaseHelper.MarkDirty(Uid);
     }
 
     public void OnLogoutAsync()
@@ -525,7 +525,7 @@ public partial class PlayerInstance(PlayerData data)
         if (OfferingManager != null)
             await OfferingManager.UpdateOfferingData();
 
-        DatabaseHelper.ToSaveUidList.Add(Uid);
+        DatabaseHelper.MarkDirty(Uid);
     }
 
     public T GetComponent<T>() where T : BasePlayerComponent

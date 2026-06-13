@@ -32,7 +32,7 @@ public static class PlayerResetHelper
         var account = AccountData.GetAccountByUid(uid);
         MailHelper.SendWelcomeMail(uid, account?.Username ?? uid.ToString());
 
-        DatabaseHelper.ToSaveUidList.SafeAdd(uid);
+        DatabaseHelper.MarkDirty(uid);
         DatabaseHelper.Instance.SaveUidData(uid);
 
         return wasOnline;
