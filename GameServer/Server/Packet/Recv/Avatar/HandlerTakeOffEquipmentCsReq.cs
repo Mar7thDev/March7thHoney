@@ -4,12 +4,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.TakeOffEquipmentCsReq)]
-public class HandlerTakeOffEquipmentCsReq : Handler
+public class HandlerTakeOffEquipmentCsReq : Handler<TakeOffEquipmentCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeOffEquipmentCsReq req)
     {
-        var req = TakeOffEquipmentCsReq.Parser.ParseFrom(data);
-        await connection.Player!.InventoryManager!.UnequipEquipment((int)req.AvatarId);
+        await player.InventoryManager!.UnequipEquipment((int)req.AvatarId);
 
         await connection.SendPacket(CmdIds.TakeOffEquipmentScRsp);
     }

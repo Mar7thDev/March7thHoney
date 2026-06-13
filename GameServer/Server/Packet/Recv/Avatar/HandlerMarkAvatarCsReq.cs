@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Avatar;
 
 [Opcode(CmdIds.MarkAvatarCsReq)]
-public class HandlerMarkAvatarCsReq : Handler
+public class HandlerMarkAvatarCsReq : Handler<MarkAvatarCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, MarkAvatarCsReq req)
     {
-        var req = MarkAvatarCsReq.Parser.ParseFrom(data);
-
-        var avatar = await connection.Player!.MarkAvatar((int)req.AvatarId, req.IsMarked);
+        var avatar = await player.MarkAvatar((int)req.AvatarId, req.IsMarked);
         await connection.SendPacket(new PacketMarkAvatarScRsp(avatar));
     }
 }
