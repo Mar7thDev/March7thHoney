@@ -66,7 +66,7 @@ public class ResourceManager
             LoadCustomFile<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property",
                 "SceneRainbowGroupProperty") ?? new SceneRainbowGroupPropertyConfig();
         GameData.ChallengePeakOverrideConfig =
-            LoadDataFile<ChallengePeakOverrideConfig>("ChallengePeak Override", "ChallengePeak") ??
+            LoadCustomFile<ChallengePeakOverrideConfig>("ChallengePeak Override", "ChallengePeak") ??
             new ChallengePeakOverrideConfig();
         ApplyChallengePeakOverrides();
 
@@ -522,34 +522,6 @@ public class ResourceManager
         }
 
         return customFile;
-    }
-
-    public static T? LoadDataFile<T>(string filetype, string filename)
-    {
-        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", filetype));
-        var dataPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Data", $"{filename}.json");
-        FileInfo file = new(dataPath);
-        if (!file.Exists)
-        {
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing", filetype, dataPath, filetype));
-            return default;
-        }
-
-        try
-        {
-            using var reader = file.OpenRead();
-            using StreamReader reader2 = new(reader);
-            var text = reader2.ReadToEnd();
-            return JsonConvert.DeserializeObject<T>(text);
-        }
-        catch (Exception ex)
-        {
-            ResourceCache.IsComplete = false;
-            Logger.Error(
-                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
-                    I18NManager.Translate("Word.Error")), ex);
-            return default;
-        }
     }
 
     public static void ApplyChallengePeakOverrides()
