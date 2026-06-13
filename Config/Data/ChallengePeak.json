@@ -188,23 +188,23 @@
       "stages": {
         "801": {
           "npc_monster_id": 3024010,
-          "map_entrance_id": 3000204,
-          "maze_group_id": 4
+          "map_entrance_id": 3014401,
+          "maze_group_id": 5
         },
         "802": {
           "npc_monster_id": 1014010,
-          "map_entrance_id": 3000204,
-          "maze_group_id": 4
+          "map_entrance_id": 3014401,
+          "maze_group_id": 5
         },
         "803": {
           "npc_monster_id": 5024010,
-          "map_entrance_id": 3000204,
-          "maze_group_id": 4
+          "map_entrance_id": 3014401,
+          "maze_group_id": 5
         },
         "804": {
           "npc_monster_id": 5014030,
-          "map_entrance_id": 3000204,
-          "maze_group_id": 4
+          "map_entrance_id": 3014401,
+          "maze_group_id": 5
         }
       }
     }
