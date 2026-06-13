@@ -143,6 +143,13 @@ public partial class PlayerInstance(PlayerData data)
 
     private async ValueTask InitialPlayerManager()
     {
+        WireManagers();
+        await NormalizePostLoad();
+    }
+
+    // Construct the managers and resolve the per-table DB data. Pure synchronous wiring.
+    private void WireManagers()
+    {
         Uid = Data.Uid;
         ActivityManager = new ActivityManager(this);
         AvatarManager = new AvatarManager(this)
@@ -185,10 +192,14 @@ public partial class PlayerInstance(PlayerData data)
         CalyxOverrideData = InitializeDatabase<CalyxOverrideData>();
         CalyxOverrideManager!.AttachData(CalyxOverrideData);
         FriendRecordData = InitializeDatabase<FriendRecordData>();
+    }
 
+    // Deterministic post-load fixups + condition-gated mission/quest acceptance. Runs after WireManagers.
+    private async ValueTask NormalizePostLoad()
+    {
         Components.Add(new SwitchHandComponent(this));
 
-        if ((int)(ServerPrefsData.Version * 1000) != GameConstants.GameVersionInt)
+        if ((int)(ServerPrefsData!.Version * 1000) != GameConstants.GameVersionInt)
         {
             ServerPrefsData.ServerPrefsDict.Clear();
             ServerPrefsData.Version = GameConstants.GameVersionInt / 1000d;
@@ -221,7 +232,7 @@ public partial class PlayerInstance(PlayerData data)
 
         if (ConfigManager.Config.ServerOption.EnableMission) await MissionManager!.AcceptMainMissionByCondition();
 
-        foreach (var friendDevelopmentInfoPb in FriendRecordData.DevelopmentInfos.ToArray())
+        foreach (var friendDevelopmentInfoPb in FriendRecordData!.DevelopmentInfos.ToArray())
             if (Extensions.GetUnixSec() - friendDevelopmentInfoPb.Time >=
                 TimeSpan.TicksPerDay * 7 / TimeSpan.TicksPerSecond)
                 FriendRecordData.DevelopmentInfos.Remove(friendDevelopmentInfoPb);
