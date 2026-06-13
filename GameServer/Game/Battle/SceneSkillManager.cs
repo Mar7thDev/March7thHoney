@@ -61,10 +61,25 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         if (attackEntity is AvatarSceneInfo techniqueCaster)
         {
             var casterAvatarId = techniqueCaster.AvatarInfo.BaseAvatarId;
+            var techniques = Player.SceneInstance!.CastTechniqueAvatarIds;
             if (req.MazeAbilityStr.Contains("_Out"))
-                Player.SceneInstance!.CastTechniqueAvatarIds.Remove(casterAvatarId);
+            {
+                // Transform-exit un-flags the caster via an explicit state transition (was a HashSet
+                // Remove). The reader skips any entry whose State != Cast, reproducing the old Remove.
+                if (techniques.TryGetValue(casterAvatarId, out var abandoned))
+                    abandoned.State = TechniqueCastState.Abandoned;
+            }
             else if (req.SkillIndex == 1)
-                Player.SceneInstance!.CastTechniqueAvatarIds.Add(casterAvatarId);
+            {
+                techniques[casterAvatarId] = new TechniqueCastInfo
+                {
+                    BaseAvatarId = casterAvatarId,
+                    SkillIndex = 1,
+                    MazeAbilityStr = req.MazeAbilityStr,
+                    State = TechniqueCastState.Cast,
+                    Kind = ClassifyKind(casterAvatarId)
+                };
+            }
         }
 
         // get ability file
@@ -295,6 +310,25 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             kvp.Key / 10 / 100 == avatarId
             && kvp.Value.InBattleBindingKey == "SkillMaze"
             && kvp.Value.UseType.StartsWith("TriggerBattle", System.StringComparison.Ordinal));
+
+    // Classify an avatar's technique archetype once at cast. Attack is the only load-bearing distinction
+    // (it is commit-gated at battle entry); Field/Summon/Buff are advisory diagnostics. Reuses the same
+    // CyreneRes-tolerant selectors as the reader, so it introduces no new data assumptions and cannot
+    // disagree with the reader's per-buff UseType check for the Attack case.
+    public static TechniqueKind ClassifyKind(int avatarId)
+    {
+        if (HasBattleTriggerTechnique(avatarId)) return TechniqueKind.Attack;
+
+        var buffs = GetTechniqueMazeBuffs(avatarId);
+        if (buffs.Count == 0) return TechniqueKind.Field;
+
+        return buffs[0].UseType switch
+        {
+            "SummonUnit" => TechniqueKind.Summon,
+            "AddBattleBuff" => TechniqueKind.Buff,
+            _ => TechniqueKind.Field
+        };
+    }
 
     private AdventureAbilityConfigListInfo? GetAbilityConfig(BaseGameEntity entity)
     {
