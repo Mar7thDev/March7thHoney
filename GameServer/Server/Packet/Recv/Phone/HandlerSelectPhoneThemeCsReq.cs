@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Phone;
 
 [Opcode(CmdIds.SelectPhoneThemeCsReq)]
-public class HandlerSelectPhoneThemeCsReq : Handler
+public class HandlerSelectPhoneThemeCsReq : Handler<SelectPhoneThemeCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SelectPhoneThemeCsReq req)
     {
-        var req = SelectPhoneThemeCsReq.Parser.ParseFrom(data);
-
-        connection.Player!.Data.PhoneTheme = (int)req.ThemeId;
+        player.Data.PhoneTheme = (int)req.ThemeId;
 
         await connection.SendPacket(new PacketSelectPhoneThemeScRsp(req.ThemeId));
     }

@@ -5,12 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Gacha;
 
 [Opcode(CmdIds.DoGachaCsReq)]
-public class HandlerDoGachaCsReq : Handler
+public class HandlerDoGachaCsReq : Handler<DoGachaCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, DoGachaCsReq req)
     {
-        var req = DoGachaCsReq.Parser.ParseFrom(data);
-        var gain = await connection.Player!.GachaManager!.DoGacha((int)req.GachaId, (int)req.GachaNum);
+        var gain = await player.GachaManager!.DoGacha((int)req.GachaId, (int)req.GachaNum);
 
         if (gain != null)
             await connection.SendPacket(new PacketDoGachaScRsp(gain));

@@ -6,13 +6,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.PamSkin;
 
 [Opcode(CmdIds.SelectPamSkinCsReq)]
-public class HandlerSelectPamSkinCsReq : Handler
+public class HandlerSelectPamSkinCsReq : Handler<SelectPamSkinCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SelectPamSkinCsReq req)
     {
-        var req = SelectPamSkinCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
-
         // Check if the skin is valid
         if (GameData.PamSkinConfigData.ContainsKey((int)req.PamSkin)) player.Data.CurrentPamSkin = (int)req.PamSkin;
         var prevSkinId = player.Data.CurrentPamSkin;

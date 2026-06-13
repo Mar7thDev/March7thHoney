@@ -6,12 +6,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Lineup;
 
 [Opcode(CmdIds.ChangeLineupLeaderCsReq)]
-public class HandlerChangeLineupLeaderCsReq : Handler
+public class HandlerChangeLineupLeaderCsReq : Handler<ChangeLineupLeaderCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, ChangeLineupLeaderCsReq req)
     {
-        var req = ChangeLineupLeaderCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         if (player.LineupManager!.GetCurLineup() == null)
         {
             await connection.SendPacket(new PacketChangeLineupLeaderScRsp());

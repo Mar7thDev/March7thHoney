@@ -6,12 +6,10 @@ using March7thHoney.Util;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Item;
 
 [Opcode(CmdIds.ComposeSelectedRelicCsReq)]
-public class HandlerComposeSelectedRelicCsReq : Handler
+public class HandlerComposeSelectedRelicCsReq : Handler<ComposeSelectedRelicCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, ComposeSelectedRelicCsReq req)
     {
-        var req = ComposeSelectedRelicCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         var count = Math.Max(1, (int)req.Count);
         if (player.InventoryManager!.Data.RelicItems.Count + count > GameConstants.INVENTORY_MAX_RELIC)
         {

@@ -7,21 +7,19 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.SetAvatarPathCsReq)]
-public class HandlerSetAvatarPathCsReq : Handler
+public class HandlerSetAvatarPathCsReq : Handler<SetAvatarPathCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetAvatarPathCsReq req)
     {
-        var req = SetAvatarPathCsReq.Parser.ParseFrom(data);
-
         GameData.MultiplePathAvatarConfigData.TryGetValue((int)req.AvatarId, out var avatar);
 
         if (avatar != null)
         {
             if (avatar.BaseAvatarID == 8001)
-                await connection.Player!.ChangeAvatarPathType(avatar.BaseAvatarID,
-                    (MultiPathAvatarTypeEnum)(avatar.AvatarID - (connection.Player.Data.CurrentGender - 1)));
+                await player.ChangeAvatarPathType(avatar.BaseAvatarID,
+                    (MultiPathAvatarTypeEnum)(avatar.AvatarID - (player.Data.CurrentGender - 1)));
             else
-                await connection.Player!.ChangeAvatarPathType(avatar.BaseAvatarID,
+                await player.ChangeAvatarPathType(avatar.BaseAvatarID,
                     (MultiPathAvatarTypeEnum)avatar.AvatarID);
             await connection.SendPacket(new PacketSetAvatarPathScRsp(avatar.AvatarID));
         }

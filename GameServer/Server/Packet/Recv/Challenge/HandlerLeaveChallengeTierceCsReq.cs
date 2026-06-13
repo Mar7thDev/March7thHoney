@@ -5,11 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
 [Opcode(CmdIds.LeaveChallengeTierceCsReq)]
-public class HandlerLeaveChallengeTierceCsReq : Handler
+public class HandlerLeaveChallengeTierceCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.Player!.ChallengeTierceManager!.Leave();
+        await player.ChallengeTierceManager!.Leave();
         await connection.SendPacket(new PacketLeaveChallengeTierceScRsp());
     }
 }

@@ -5,12 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Quest;
 
 [Opcode(CmdIds.FinishQuestCsReq)]
-public class HandlerFinishQuestCsReq : Handler
+public class HandlerFinishQuestCsReq : Handler<FinishQuestCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, FinishQuestCsReq req)
     {
-        var req = FinishQuestCsReq.Parser.ParseFrom(data);
-        var retCode = await connection.Player!.QuestManager!.FinishQuestByClient((int)req.QuestId);
+        var retCode = await player.QuestManager!.FinishQuestByClient((int)req.QuestId);
         await connection.SendPacket(new PacketFinishQuestScRsp(retCode));
     }
 }

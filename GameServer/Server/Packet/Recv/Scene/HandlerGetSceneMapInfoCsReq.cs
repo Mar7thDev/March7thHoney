@@ -5,11 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.GetSceneMapInfoCsReq)]
-public class HandlerGetSceneMapInfoCsReq : Handler
+public class HandlerGetSceneMapInfoCsReq : Handler<GetSceneMapInfoCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetSceneMapInfoCsReq req)
     {
-        var req = GetSceneMapInfoCsReq.Parser.ParseFrom(data);
-        await connection.SendPacket(new PacketGetSceneMapInfoScRsp(req, connection.Player!));
+        await connection.SendPacket(new PacketGetSceneMapInfoScRsp(req, player));
     }
 }

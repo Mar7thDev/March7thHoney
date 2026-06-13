@@ -5,18 +5,17 @@ using March7thHoney.Util;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
 [Opcode(CmdIds.SceneEntityMoveCsReq)]
-public class HandlerSceneEntityMoveCsReq : Handler
+public class HandlerSceneEntityMoveCsReq : Handler<SceneEntityMoveCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SceneEntityMoveCsReq req)
     {
-        var req = SceneEntityMoveCsReq.Parser.ParseFrom(data);
         if (req != null)
             foreach (var motion in req.EntityMotionList)
-                if (connection.Player!.SceneInstance!.AvatarInfo.ContainsKey((int)motion.EntityId))
+                if (player.SceneInstance!.AvatarInfo.ContainsKey((int)motion.EntityId))
                 {
-                    connection.Player!.Data.Pos = motion.Motion.Pos.ToPosition();
-                    connection.Player.Data.Rot = motion.Motion.Rot.ToPosition();
-                    await connection.Player.OnMove();
+                    player.Data.Pos = motion.Motion.Pos.ToPosition();
+                    player.Data.Rot = motion.Motion.Rot.ToPosition();
+                    await player.OnMove();
                 }
 
         await connection.SendPacket(CmdIds.SceneEntityMoveScRsp);

@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Mission;
 
 [Opcode(CmdIds.GetMainMissionCustomValueCsReq)]
-public class HandlerGetMainMissionCustomValueCsReq : Handler
+public class HandlerGetMainMissionCustomValueCsReq : Handler<GetMainMissionCustomValueCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetMainMissionCustomValueCsReq req)
     {
-        var req = GetMainMissionCustomValueCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         await connection.SendPacket(new PacketGetMainMissionCustomValueScRsp(req, player));
     }
 }

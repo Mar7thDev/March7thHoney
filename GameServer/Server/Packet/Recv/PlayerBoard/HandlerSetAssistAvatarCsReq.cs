@@ -5,12 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.PlayerBoard;
 
 [Opcode(CmdIds.SetAssistAvatarCsReq)]
-public class HandlerSetAssistAvatarCsReq : Handler
+public class HandlerSetAssistAvatarCsReq : Handler<SetAssistAvatarCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetAssistAvatarCsReq req)
     {
-        var req = SetAssistAvatarCsReq.Parser.ParseFrom(data);
-        var player = connection.Player!;
         var avatars = player.AvatarManager!.AvatarData!.AssistAvatars;
         avatars.Clear();
         foreach (var id in req.AvatarIdList)

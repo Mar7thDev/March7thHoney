@@ -7,12 +7,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.SetGenderCsReq)]
-public class HandlerSetGenderCsReq : Handler
+public class HandlerSetGenderCsReq : Handler<SetGenderCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, SetGenderCsReq req)
     {
-        var player = connection.Player!;
-        var req = SetGenderCsReq.Parser.ParseFrom(data);
         if (req == null) return;
 
         if (req.Gender == Gender.None)

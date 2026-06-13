@@ -6,13 +6,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.HeartDial;
 
 [Opcode(CmdIds.ChangeScriptEmotionCsReq)]
-public class HandlerChangeScriptEmotionCsReq : Handler
+public class HandlerChangeScriptEmotionCsReq : Handler<ChangeScriptEmotionCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, ChangeScriptEmotionCsReq req)
     {
-        var req = ChangeScriptEmotionCsReq.Parser.ParseFrom(data);
-
-        connection.Player!.HeartDialData!.ChangeScriptEmotion((int)req.ScriptId,
+        player.HeartDialData!.ChangeScriptEmotion((int)req.ScriptId,
             (HeartDialEmoTypeEnum)req.TargetEmotionType);
 
         await connection.SendPacket(new PacketChangeScriptEmotionScRsp(req.ScriptId, req.TargetEmotionType));

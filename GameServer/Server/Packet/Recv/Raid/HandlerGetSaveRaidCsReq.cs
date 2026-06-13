@@ -5,13 +5,11 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Raid;
 
 [Opcode(CmdIds.GetSaveRaidCsReq)]
-public class HandlerGetSaveRaidCsReq : Handler
+public class HandlerGetSaveRaidCsReq : Handler<GetSaveRaidCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetSaveRaidCsReq req)
     {
-        var req = GetSaveRaidCsReq.Parser.ParseFrom(data);
-
         await connection.SendPacket(
-            new PacketGetSaveRaidScRsp(connection.Player!, (int)req.RaidId, (int)req.WorldLevel));
+            new PacketGetSaveRaidScRsp(player, (int)req.RaidId, (int)req.WorldLevel));
     }
 }

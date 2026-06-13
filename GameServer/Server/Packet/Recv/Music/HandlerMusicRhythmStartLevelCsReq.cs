@@ -5,14 +5,13 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Music;
 
 [Opcode(CmdIds.MusicRhythmStartLevelCsReq)]
-public class HandlerMusicRhythmStartLevelCsReq : Handler
+public class HandlerMusicRhythmStartLevelCsReq : Handler<MusicRhythmStartLevelCsReq>
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, MusicRhythmStartLevelCsReq req)
     {
-        var req = MusicRhythmStartLevelCsReq.Parser.ParseFrom(data);
         var curLevel = req.LevelId;
 
-        connection.Player!.Data.CurMusicLevel = (int)curLevel;
+        player.Data.CurMusicLevel = (int)curLevel;
 
         await connection.SendPacket(new PacketMusicRhythmStartLevelScRsp(curLevel));
     }
