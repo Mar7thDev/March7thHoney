@@ -186,7 +186,7 @@ public class InventoryManager(PlayerInstance player) : BasePlayerManager<Invento
                         break;
                     case 32:
                         Player.Data.TalentPoints += count;
-                        // TODO : send VirtualItemPacket instead of PlayerSyncPacket
+                        actualCount = Player.Data.TalentPoints;
                         break;
                 }
 
