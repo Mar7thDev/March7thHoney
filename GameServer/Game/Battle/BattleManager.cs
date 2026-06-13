@@ -143,14 +143,31 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             var castTechniqueIds = Player.SceneInstance!.CastTechniqueAvatarIds;
             if (castTechniqueIds.Count > 0)
             {
+                var attackerAvatarId = castAvatar?.AvatarInfo.BaseAvatarId ?? 0;
                 foreach (var sceneAvatar in avatarList)
                 {
                     var avatarId = sceneAvatar.AvatarInfo.BaseAvatarId;
                     if (!castTechniqueIds.Contains(avatarId)) continue;
-                    foreach (var (buffId, level) in SceneSkillManager.GetTechniqueMazeBuffs(avatarId))
+
+                    var techniqueBuffs = SceneSkillManager.GetTechniqueMazeBuffs(avatarId);
+
+                    // A technique's effect only carries into battle when it was actually committed,
+                    // not merely cast then abandoned. Two commit paths:
+                    //  - persistent field/summon technique (any SummonUnit SkillMaze buff — UseType
+                    //    "SummonUnit"/"3"; e.g. Dahlia/Cyrene barriers): survives in the scene, so it
+                    //    applies however the battle is later entered;
+                    //  - the battle is entered via THIS avatar's own technique-attack (skillIndex 1).
+                    // Entering via a plain normal attack (skillIndex 0) after casting then abandoning a
+                    // transform/attack technique (Himeko Nova exit, Castorice empty cast) must NOT carry
+                    // the effect — that wrongly triggers it, or for attack-type buffs wedges the client
+                    // on the battle-entry screen. No avatar id hard-coded.
+                    var persistent = techniqueBuffs.Any(b => b.UseType is "SummonUnit" or "3");
+                    var committed = isSkill && avatarId == attackerAvatarId;
+                    if (!persistent && !committed) continue;
+
+                    foreach (var (buffId, level, _) in techniqueBuffs)
                     {
-                        // Skip buffs the ability chain already recorded on the avatar (those relay via
-                        // AvatarSceneInfo.ApplyBuff) so we never double-add the same maze buff.
+                        // Skip buffs the ability chain already recorded (those relay via ApplyBuff).
                         if (sceneAvatar.BuffList.Any(b => b.BuffId == buffId)) continue;
                         battleInstance.Buffs.Add(new MazeBuff(buffId, level, -1)
                         {
