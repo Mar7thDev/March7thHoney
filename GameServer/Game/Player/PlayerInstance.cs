@@ -128,7 +128,9 @@ public partial class PlayerInstance(PlayerData data)
 
     public PlayerInstance(int uid) : this(new PlayerData { Uid = uid })
     {
-        // new player
+        // New player: only the cheap synchronous stat setup runs here. Manager wiring, DB
+        // resolution and avatar/lineup seeding are deferred to the awaited InitializeAsync
+        // (driven by OnGetToken) so construction never blocks on async work — no Task.Wait.
         IsNewPlayer = true;
         Data.WelcomeAnnouncePending = true;
         Data.NextStaminaRecover = Extensions.GetUnixSec() + GameConstants.STAMINA_RESERVE_RECOVERY_TIME;
@@ -137,37 +139,6 @@ public partial class PlayerInstance(PlayerData data)
         OnLevelChange();
 
         DatabaseHelper.SaveInstance(Data);
-
-
-        var t = System.Threading.Tasks.Task.Run(async () =>
-        {
-            await InitialPlayerManager();
-
-            // 8002/8004/... 是 8001 的命途变体（同一基础角色不同 path），AvatarManager.AddAvatar
-            // 走 path 分支时会先在 FormalAvatars 里找 BaseAvatarID(=8001) 再挂 PathInfo，
-            // 因此必须先添加基础 8001 再添加 8002 path，否则 FormalAvatars 里没有任何主角，
-            // lineup 引用 8001/8002 都会 Find 不到导致 ToProto 抛 null
-            await AddAvatar(8001);
-            await AddAvatar(8002);
-            await AddAvatar(1001);
-            if (ConfigManager.Config.ServerOption.EnableMission)
-            {
-                await LineupManager!.AddSpecialAvatarToCurTeam(10010050);
-            }
-            else
-            {
-                await LineupManager!.AddAvatarToCurTeam(8001);
-                Data.CurrentGender = Gender.Woman;
-                Data.CurBasicType = 8002;
-                // FormalAvatar.AvatarId 决定客户端显示的命途/性别（CurMultiPathAvatarType），
-                // AddAvatar 创建时 AvatarId=8001（男），需要切到 8002 才会显示女主
-                var hero = AvatarManager!.GetHero();
-                if (hero != null) hero.AvatarId = 8002;
-            }
-        });
-        t.Wait();
-
-        Initialized = true;
     }
 
     private async ValueTask InitialPlayerManager()
@@ -264,13 +235,51 @@ public partial class PlayerInstance(PlayerData data)
         return instance!;
     }
 
+    /// <summary>
+    ///     Idempotent player bootstrap: wires managers + resolves DB data, then (for a brand-new
+    ///     account) seeds the starting avatars/lineup. Awaited on the GetToken path and by the
+    ///     reset helper — replaces the constructor's Task.Run(...).Wait() sync-over-async.
+    /// </summary>
+    public async ValueTask InitializeAsync()
+    {
+        if (Initialized) return;
+        await InitialPlayerManager();
+        if (IsNewPlayer) await SeedNewPlayerAsync();
+        Initialized = true;
+    }
+
+    private async ValueTask SeedNewPlayerAsync()
+    {
+        // 8002/8004/... 是 8001 的命途变体（同一基础角色不同 path），AvatarManager.AddAvatar
+        // 走 path 分支时会先在 FormalAvatars 里找 BaseAvatarID(=8001) 再挂 PathInfo，
+        // 因此必须先添加基础 8001 再添加 8002 path，否则 FormalAvatars 里没有任何主角，
+        // lineup 引用 8001/8002 都会 Find 不到导致 ToProto 抛 null
+        await AddAvatar(8001);
+        await AddAvatar(8002);
+        await AddAvatar(1001);
+        if (ConfigManager.Config.ServerOption.EnableMission)
+        {
+            await LineupManager!.AddSpecialAvatarToCurTeam(10010050);
+        }
+        else
+        {
+            await LineupManager!.AddAvatarToCurTeam(8001);
+            Data.CurrentGender = Gender.Woman;
+            Data.CurBasicType = 8002;
+            // FormalAvatar.AvatarId 决定客户端显示的命途/性别（CurMultiPathAvatarType），
+            // AddAvatar 创建时 AvatarId=8001（男），需要切到 8002 才会显示女主
+            var hero = AvatarManager!.GetHero();
+            if (hero != null) hero.AvatarId = 8002;
+        }
+    }
+
     #endregion
 
     #region Network
 
     public async ValueTask OnGetToken()
     {
-        if (!Initialized) await InitialPlayerManager();
+        await InitializeAsync();
     }
 
     public async ValueTask OnLogin()
