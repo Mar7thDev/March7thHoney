@@ -137,6 +137,9 @@ public class CommandManager
 
     public void HandleCommand(string input, ICommandSender sender)
     {
+        // Localize every reply (notices + command output) to the sender's language for this command only.
+        // Set on the synchronous entry so it flows into the command's async continuations via AsyncLocal.
+        I18NManager.LanguageOverride = sender.Language;
         try
         {
             var split = CommandArg.Tokenize(input);
@@ -275,6 +278,12 @@ public class CommandManager
         {
             Logger.Error(I18NManager.Translate("Game.Command.Notice.InternalError"), e);
             sender.SendMsg(I18NManager.Translate("Game.Command.Notice.InternalError"));
+        }
+        finally
+        {
+            // Clear our own flow's override. In-flight async command tasks already captured it, so they
+            // keep localizing; this only stops the value leaking onto unrelated Translate calls.
+            I18NManager.LanguageOverride = null;
         }
     }
 

@@ -31,4 +31,6 @@ public class PlayerCommandSender(PlayerInstance player) : ICommandSender
     {
         return Player.Uid;
     }
+
+    public string? Language => Player.Language;
 }
