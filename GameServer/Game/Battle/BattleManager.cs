@@ -116,9 +116,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 if (avatarExcel != null)
                 {
                     mazeBuff = new MazeBuff((int)avatarExcel.DamageType, 1, index);
-                    // Entering via the avatar's own technique-attack (e.g. Firefly's mech) marks the
-                    // initiator buff with SkillIndex 0 ("技能先制"); a plain basic attack stays 1.
-                    mazeBuff.DynamicValues.Add("SkillIndex", isSkill ? 0 : 1);
+                    mazeBuff.DynamicValues.Add("SkillIndex", isSkill ? 2 : 1);
                 }
             }
             else
@@ -133,52 +131,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 battleInstance.Buffs.Add(mazeBuff);
 
             battleInstance.AvatarInfo = avatarList;
-
-            // Inject technique (秘技) maze buffs for every lineup avatar that actually released a
-            // technique in the scene (flagged at SceneCastSkillCostMp). Applied directly as battle
-            // data — never as a scene buff/modifier — so a caster-targeted enemy modifier (e.g.
-            // Cyrene 1415's 141502 "_Enemy") cannot freeze the caster while still in the scene.
-            // OwnerAvatarId lets ToProto resolve ownerIndex/targetIndex; selection is CyreneRes-
-            // tolerant and not hard-coded per avatar (see SceneSkillManager.GetTechniqueMazeBuffs).
-            var castTechniqueIds = Player.SceneInstance!.CastTechniqueAvatarIds;
-            if (castTechniqueIds.Count > 0)
-            {
-                var attackerAvatarId = castAvatar?.AvatarInfo.BaseAvatarId ?? 0;
-                foreach (var sceneAvatar in avatarList)
-                {
-                    var avatarId = sceneAvatar.AvatarInfo.BaseAvatarId;
-                    // Inject only live (Cast) flags. A "_Out" transform-exit set State=Abandoned, which is
-                    // skipped here exactly as the old HashSet.Remove dropped the membership.
-                    if (!castTechniqueIds.TryGetValue(avatarId, out var techniqueInfo) ||
-                        techniqueInfo.State != TechniqueCastState.Cast) continue;
-
-                    // The battle was entered via THIS avatar's own skillIndex-1 technique-attack?
-                    var committed = isSkill && avatarId == attackerAvatarId;
-
-                    foreach (var (buffId, level, useType) in SceneSkillManager.GetTechniqueMazeBuffs(avatarId))
-                    {
-                        // Attack-type techniques (UseType TriggerBattle*) only "land" when the battle is
-                        // entered via that avatar's own technique-attack (committed) — an empty cast that
-                        // never connects (e.g. Castorice 空放) must NOT carry. Buff/field/summon techniques
-                        // (AddBattleBuff / SummonUnit — TohsakaRin, Gilgamesh, FuXuan, Luocha, Dahlia,
-                        // Cyrene...) apply the moment they are cast, so they carry into battle for every
-                        // lineup avatar that cast and kept them, regardless of who triggered the battle
-                        // (abandoned/exited casts are un-flagged at cast time). This is why a 4-char team
-                        // that pre-cast all techniques gets all of them, not just the entering attacker's.
-                        var isAttackType = useType.StartsWith("TriggerBattle", System.StringComparison.Ordinal);
-                        if (isAttackType && !committed) continue;
-                        // Skip buffs the ability chain already recorded (those relay via ApplyBuff).
-                        if (sceneAvatar.BuffList.Any(b => b.BuffId == buffId)) continue;
-                        battleInstance.Buffs.Add(new MazeBuff(buffId, level, -1)
-                        {
-                            OwnerAvatarId = avatarId,
-                            WaveFlag = -1
-                        });
-                    }
-                }
-
-                castTechniqueIds.Clear();
-            }
 
             // call battle start
             Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
