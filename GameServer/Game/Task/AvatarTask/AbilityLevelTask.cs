@@ -10,6 +10,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Component;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -219,6 +220,49 @@ public class AbilityLevelTask(PlayerInstance player)
         }
 
         return new AbilityLevelResult(instance, battleInfos);
+    }
+
+    // 停云秘技（技能 120207）：立即为施法者恢复 50 点能量。唯一使用 AdventureModifyTeamPlayerSP 的角色。
+    // 引擎 SP 为「能量 ×100」，满能量归一化为 10000，故 50 点 = 5000。
+    private const int TechniqueSpRecoverFallback = 5000;
+
+    public async ValueTask<object> AdventureModifyTeamPlayerSP(AbilityLevelParam param)
+    {
+        if (param.Act is not Data.Config.Task.AdventureModifyTeamPlayerSP modifySp)
+            return new AbilityLevelResult();
+
+        // 解析作用目标（停云秘技为 Caster 自身）；缺失求值器时回落到施法者
+        List<BaseGameEntity> targets;
+        var methodName = modifySp.SpecifyTargetType.Type.Replace("RPG.GameCore.", "");
+        var method = GetOrCreateExecuteTask(methodName);
+        if (method != null &&
+            await method(param with { TargetEvaluator = modifySp.SpecifyTargetType }) is List<BaseGameEntity> resolved &&
+            resolved.Count > 0)
+            targets = resolved;
+        else
+            targets = [param.CasterEntity];
+
+        // 客户端下发的是动态表达式（PostfixExpr），本服务端无表达式求值；非动态时直接使用，
+        // 否则回落到停云秘技固定恢复值。
+        var recover = modifySp.ModifyValue.GetValue() * 100;
+        if (recover <= 0) recover = TechniqueSpRecoverFallback;
+
+        var lineup = Player.LineupManager!.GetCurLineup();
+        var isExtra = lineup?.IsExtraLineup() ?? false;
+
+        var changed = false;
+        foreach (var avatar in targets.OfType<AvatarSceneInfo>())
+        {
+            var info = avatar.AvatarInfo;
+            info.SetCurSp(Math.Min(info.GetCurSp(isExtra) + recover, 10000), isExtra);
+            changed = true;
+        }
+
+        // 同步队伍能量，使覆盖世界 UI 立即生效；下一次进战由 ToBattleProto 读取已更新的 SP 带入战斗
+        if (changed && lineup != null)
+            await Player.SendPacket(new PacketSyncLineupNotify(lineup));
+
+        return new AbilityLevelResult();
     }
 
     public async ValueTask<object> AddMazeBuff(AbilityLevelParam param)
