@@ -36,6 +36,7 @@ namespace March7thHoney.Data.Config.Task;
 [MemoryPackUnion(28, typeof(ByCompareSubMissionState))]
 [MemoryPackUnion(29, typeof(ByIsContainAdventureModifier))]
 [MemoryPackUnion(30, typeof(UnknownPredicateConfigInfo))]
+[MemoryPackUnion(31, typeof(AdventureModifyTeamPlayerSP))]
 public abstract partial class TaskConfigInfo
 {
     public string Type { get; set; } = "";
@@ -115,6 +116,13 @@ public abstract partial class TaskConfigInfo
         if (typeStr == "AddAdventureModifier")
         {
             var res = AddAdventureModifier.LoadFromJsonObject(json);
+            res.Type = type;
+            return res;
+        }
+
+        if (typeStr == "AdventureModifyTeamPlayerSP")
+        {
+            var res = AdventureModifyTeamPlayerSP.LoadFromJsonObject(json);
             res.Type = type;
             return res;
         }
