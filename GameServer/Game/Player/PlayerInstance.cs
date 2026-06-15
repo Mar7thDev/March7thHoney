@@ -116,6 +116,14 @@ public partial class PlayerInstance(PlayerData data)
     public Connection? Connection { get; set; }
     public bool Initialized { get; set; }
     public bool IsNewPlayer { get; set; }
+
+    /// <summary>
+    ///     Language-file code (CHS/CHT/EN/…) the client reported in PlayerLoginCsReq, used to localize friend-list
+    ///     bot/command replies for this player. Session-only — re-read on every login — and defaults to the server
+    ///     language until login sets it.
+    /// </summary>
+    public string Language { get; set; } = ConfigManager.Config.ServerOption.Language;
+
     public int NextBattleId { get; set; } = 0;
     public int ChargerNum { get; set; } = 0;
     public bool LoginAnnounceSent { get; set; }
