@@ -12,7 +12,7 @@ public partial class AdventureTriggerAttack : TaskConfigInfo
 
     public float TriggerBattleDelay { get; set; }
 
-    // public AdventureAttackDetectSummonUnitTriggerConfig SummonUnitTriggerAttackDetectConfig { get; set; }
+    public AdventureAttackDetectSummonUnitTriggerConfig? SummonUnitTriggerAttackDetectConfig { get; set; }
     // public AdventureAttackDetectShapeConfig AttackDetectConfig { get; set; }
     // public AdventureHitConfig HitConfig { get; set; }
     public List<TaskConfigInfo> OnAttack { get; set; } = [];
@@ -76,6 +76,9 @@ public partial class AdventureTriggerAttack : TaskConfigInfo
             info.AttackDetectCollision = value.ToObject<bool>();
         if (obj.TryGetValue(nameof(EnterBattleSelectTargetType), out value))
             info.EnterBattleSelectTargetType = value.ToObject<string>() ?? "";
+        if (obj.TryGetValue(nameof(SummonUnitTriggerAttackDetectConfig), out value))
+            info.SummonUnitTriggerAttackDetectConfig =
+                (value as JObject)?.ToObject<AdventureAttackDetectSummonUnitTriggerConfig>();
         return info;
     }
 }
