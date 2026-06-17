@@ -21,6 +21,9 @@ public class AbilityLevelTask(PlayerInstance player)
 {
     public PlayerInstance Player { get; set; } = player;
 
+    // buff ids this cast's ability delivers to enemies via attack-detect (SummonUnitTriggerAttackDetectConfig); the maze-buff backfill skips these so they aren't also applied to the caster
+    public HashSet<int> SummonAttackDetectBuffs { get; } = [];
+
     #region Selector
 
     public async ValueTask<object> TargetAlias(AbilityLevelParam param)
@@ -185,6 +188,29 @@ public class AbilityLevelTask(PlayerInstance player)
             {
                 var result = await TriggerTask(param with { Act = task, TargetEntities = target });
                 if (result.BattleInfos != null) battleInfos.AddRange(result.BattleInfos);
+            }
+
+            // attack-detect 场域：把召唤物对应 trigger 的 maze buff 下发给被攻击的敌人（如吉尔伽美什 150901，随敌人带进战斗）
+            var detect = adventureTriggerAttack.SummonUnitTriggerAttackDetectConfig;
+            if (detect != null && Player.SceneInstance != null)
+            {
+                var summon = Player.SceneInstance.SummonUnit.Values
+                    .FirstOrDefault(x => x.SummonUnitId == (int)detect.SummonUnitID);
+                if (summon != null)
+                {
+                    // 记下经 attack-detect 投放的 buff，供 backfill 排除（避免同一 buff 又被加到施法者，如 150901 致冻）
+                    var trig = summon.TriggerList.FirstOrDefault(t => t.TriggerName == detect.DetectSummonUnitTriggerName);
+                    if (trig != null)
+                        foreach (var t in trig.OnTriggerEnter)
+                            if (t is AddMazeBuff amb)
+                                SummonAttackDetectBuffs.Add(amb.ID);
+
+                    var detectIds = target.OfType<EntityMonster>().Where(x => x.IsAlive)
+                        .Select(x => (uint)x.EntityId).ToList();
+                    if (detectIds.Count > 0)
+                        await Player.SceneInstance.TriggerSummonUnit(summon.EntityId,
+                            detect.DetectSummonUnitTriggerName, detectIds);
+                }
             }
 
             // 开战判定：
