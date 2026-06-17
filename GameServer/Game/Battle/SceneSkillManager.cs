@@ -20,6 +20,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
 
     public async ValueTask<SkillResultData> OnCast(SceneCastSkillCsReq req)
     {
+        Player.TaskManager!.AbilityLevelTask.SummonAttackDetectBuffs.Clear();
         var handledDestruct = await HandleDestructPropDrops(req);
 
         // get entities
@@ -103,6 +104,10 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                               && kvp.Value.InBattleBindingKey == "SkillMaze")
                 .Select(kvp => (BuffId: kvp.Key / 10, Excel: kvp.Value))
                 .ToList();
+
+            // drop buffs this avatar's ability already delivers to enemies via attack-detect; they must not also be applied to the caster (e.g. Gilgamesh 150901 would freeze the caster)
+            var detectBuffs = Player.TaskManager!.AbilityLevelTask.SummonAttackDetectBuffs;
+            candidates = candidates.Where(c => !detectBuffs.Contains(c.BuffId)).ToList();
 
             var alreadyApplied = candidates.Any(c =>
                 casterAvatar.BuffList.Any(b => b.BuffId == c.BuffId));
