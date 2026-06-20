@@ -62,7 +62,7 @@
   "Game.Command.Give.Usage": "Usage: /give <ItemID> [x<count=1>] [l<level=1, 1-80>] [r<rank=1, 1-5>]",
   "Game.Command.GiveAll.Desc": "Give the player all items of the specified type.\navatar means characters, equipment means Light Cones, material means stackable materials, relic means relics, unlock means chat bubbles, phone wallpapers, avatars, train means Trailblazer's room contents, pet means pets, path means Paths for multi-Path characters.",
   "Game.Command.GiveAll.GiveAllItems": "Gave all {0}, {1} each",
-  "Game.Command.GiveAll.Usage": "Usage: /giveall avatar r<Eidolon> l<Level>\n\nUsage: /giveall equipment|lightcone r<Superimposition> l<Level> x<Count>\n\nUsage: /giveall material [x<count=1>]\n\nUsage: /giveall relic l<Level> x<Count>\n\nUsage: /giveall unlock\n\nUsage: /giveall train\n\nUsage: /giveall pet [x<count=1>]\n\nUsage: /giveall path",
+  "Game.Command.GiveAll.Usage": "Usage: /giveall avatar r<Eidolon> l<Level>\n\nUsage: /giveall equipment|lightcone r<Superimposition> l<Level> x<Count>\n\nUsage: /giveall material [x<count=1>]\n\nUsage: /giveall relic l<Level> x<Count>\n\nUsage: /giveall unlock\n\nUsage: /giveall skin\n\nUsage: /giveall materials [x<count=1>]\n\nUsage: /giveall train\n\nUsage: /giveall pet [x<count=1>]\n\nUsage: /giveall path",
   "Game.Command.Grid.AddConsumable": "Added {0} consumable.",
   "Game.Command.Grid.AddEquipment": "Added {0} equipment.",
   "Game.Command.Grid.AddOrb": "Added {0} orb.",
@@ -330,6 +330,7 @@
   "Word.TrainParty": "Train Party Item",
   "Word.Tutorial": "Tutorial",
   "Word.TypesOfRogue": "Types of Simulated Universe",
+  "Word.Skin": "Skin",
   "Word.Unlock": "Luxury Item",
   "Word.VideoKeys": "Video Keys",
   "Word.WebServer": "Web Server"

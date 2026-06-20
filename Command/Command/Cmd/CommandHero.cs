@@ -28,10 +28,8 @@ public class CommandHero : ICommand
             return;
         }
 
-        var gender = (Gender)genderId;
         var player = arg.Target!.Player!;
-        player.Data.CurrentGender = gender;
-        await player.ChangeAvatarPathType(8001, MultiPathAvatarTypeEnum.Warrior);
+        await player.SetHeroGender((Gender)genderId);
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.Hero.GenderChanged"));
     }

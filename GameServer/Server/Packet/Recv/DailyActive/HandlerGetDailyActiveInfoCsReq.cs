@@ -4,10 +4,10 @@ using March7thHoney.Kcp;
 namespace March7thHoney.GameServer.Server.Packet.Recv.DailyActive;
 
 [Opcode(CmdIds.GetDailyActiveInfoCsReq)]
-public class HandlerGetDailyActiveInfoCsReq : Handler
+public class HandlerGetDailyActiveInfoCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketGetDailyActiveInfoScRsp());
+        await connection.SendPacket(new PacketGetDailyActiveInfoScRsp(player));
     }
 }

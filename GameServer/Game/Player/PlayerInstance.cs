@@ -457,6 +457,40 @@ public partial class PlayerInstance(PlayerData data)
         }
     }
 
+    public async ValueTask SetHeroGender(Gender gender)
+    {
+        if (gender is not (Gender.Man or Gender.Woman)) return;
+
+        // Keep the current Path; hero ids pair as male(odd)/female(even) per Path.
+        var pathBase = Data.CurBasicType;
+        if (pathBase is < 8001 or > 8010) pathBase = 8001;
+        if (pathBase % 2 == 0) pathBase -= 1;
+        var newId = pathBase + (gender == Gender.Woman ? 1 : 0);
+        if (!GameData.MultiplePathAvatarConfigData.ContainsKey(newId)) newId = gender == Gender.Woman ? 8002 : 8001;
+
+        Data.CurrentGender = gender;
+        Data.IsGenderSet = true;
+        Data.CurBasicType = newId;
+
+        var hero = AvatarManager!.GetHero();
+        if (hero != null)
+        {
+            hero.AvatarId = newId;
+            hero.ValidateHero(gender);
+            hero.CheckPathSkillTree();
+            hero.SetCurSp(0, LineupManager!.GetCurLineup()?.IsExtraLineup() ?? false);
+
+            await SendPacket(new PacketAvatarPathChangedNotify(8001, (MultiPathAvatarType)newId));
+            await SendPacket(new PacketPlayerSyncScNotify(hero));
+        }
+
+        DatabaseHelper.MarkDirty(Uid);
+
+        // Reload in place so the client rebuilds the Trailblazer with the new model.
+        if (SceneInstance != null && Data.Pos != null && Data.Rot != null)
+            await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos, Data.Rot, true);
+    }
+
     public async ValueTask ChangeAvatarSkin(int avatarId, int skinId)
     {
         PlayerUnlockData!.Skins.TryGetValue(avatarId, out var skins);
