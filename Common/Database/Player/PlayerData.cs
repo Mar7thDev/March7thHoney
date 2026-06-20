@@ -103,6 +103,9 @@ public class PlayerData : BaseDatabaseDataHelper
             Gender = (uint)CurrentGender
         };
 
+        if (PlayerOutfitList.Count > 0)
+            info.PlayerOutfitData = new CJLCPMDGIBO { EAKOLIJOEPA = { PlayerOutfitList.Select(x => (uint)x) } };
+
         var pos = 0;
         var instance = DatabaseHelper.Instance!.GetInstance<AvatarData>(Uid);
         if (instance == null)
