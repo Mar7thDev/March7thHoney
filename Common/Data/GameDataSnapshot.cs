@@ -259,6 +259,10 @@ public partial class GameDataSnapshot
     public Dictionary<int, MatchThreeBirdExcel> MatchThreeBirdData { get; set; } = [];
     public Dictionary<int, TutorialDataExcel> TutorialDataData { get; set; } = [];
     public Dictionary<int, TutorialGuideDataExcel> TutorialGuideDataData { get; set; } = [];
+
+    // Append-only: MemoryPack serializes in declaration order; never insert mid-class.
+    public Dictionary<int, List<DailyActiveConfigExcel>> DailyActiveConfigData { get; set; } = [];
+    public Dictionary<int, DailyActiveQuestPoolExcel> DailyActiveQuestPoolData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -506,6 +510,8 @@ public static partial class GameData
             MatchThreeBirdData = GameData.MatchThreeBirdData,
             TutorialDataData = GameData.TutorialDataData,
             TutorialGuideDataData = GameData.TutorialGuideDataData,
+            DailyActiveConfigData = GameData.DailyActiveConfigData,
+            DailyActiveQuestPoolData = GameData.DailyActiveQuestPoolData,
         };
     }
 
@@ -750,5 +756,7 @@ public static partial class GameData
         GameData.MatchThreeBirdData = snapshot.MatchThreeBirdData;
         GameData.TutorialDataData = snapshot.TutorialDataData;
         GameData.TutorialGuideDataData = snapshot.TutorialGuideDataData;
+        GameData.DailyActiveConfigData = snapshot.DailyActiveConfigData;
+        GameData.DailyActiveQuestPoolData = snapshot.DailyActiveQuestPoolData;
     }
 }
