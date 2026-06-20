@@ -5,6 +5,7 @@ using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Scene;
 
@@ -307,6 +308,10 @@ public class SceneEntityLoader(SceneInstance scene)
                 // elevator
                 prop.State = prop.Excel.PropType == PropTypeEnum.PROP_ELEVATOR ? PropStateEnum.Elevator1 : info.State;
         }
+
+        // Missions off: open doors so they don't block the way.
+        if (!ConfigManager.Config.ServerOption.EnableMission && !hasSavedState && prop.Excel.IsDoor)
+            prop.State = PropStateEnum.Open;
 
         var timelineData = Scene.Player.GetScenePropTimelineData(Scene.FloorId, group.Id, info.ID);
         prop.PropTimelineData = timelineData;

@@ -1,31 +1,44 @@
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.DailyActive;
 
 public static class DailyActiveDefaults
 {
-    public const uint FixedPoint = 500;
+    // Fallback cap when the config table is empty.
+    public const uint FallbackMaxPoint = 500;
 
-    public static readonly uint[] QuestIds =
-    [
-        2100132,
-        2100133,
-        2100139,
-        2100152,
-        2100153,
-        2100155,
-        2100156
-    ];
-
-    public static List<DailyActivityInfo> CreateLevels(bool isHasTaken)
+    public static List<DailyActivityInfo> CreateLevels(int worldLevel, bool isHasTaken)
     {
-        return
-        [
-            new DailyActivityInfo { Level = 1, WorldLevel = 6, DailyActivePoint = 100, IsHasTaken = isHasTaken },
-            new DailyActivityInfo { Level = 2, WorldLevel = 6, DailyActivePoint = 200, IsHasTaken = isHasTaken },
-            new DailyActivityInfo { Level = 3, WorldLevel = 6, DailyActivePoint = 300, IsHasTaken = isHasTaken },
-            new DailyActivityInfo { Level = 4, WorldLevel = 6, DailyActivePoint = 400, IsHasTaken = isHasTaken },
-            new DailyActivityInfo { Level = 5, WorldLevel = 6, DailyActivePoint = 500, IsHasTaken = isHasTaken }
-        ];
+        return GetRows(worldLevel)
+            .OrderBy(row => row.Level)
+            .Select(row => new DailyActivityInfo
+            {
+                Level = (uint)row.Level,
+                WorldLevel = (uint)row.WorldLevel,
+                DailyActivePoint = (uint)row.DailyActivePoint,
+                IsHasTaken = isHasTaken
+            })
+            .ToList();
+    }
+
+    public static uint GetMaxPoint(int worldLevel)
+    {
+        var rows = GetRows(worldLevel);
+        return rows.Count > 0 ? (uint)rows.Max(row => row.DailyActivePoint) : FallbackMaxPoint;
+    }
+
+    public static IEnumerable<uint> GetQuestIds()
+    {
+        return GameData.DailyActiveQuestPoolData.Keys.Select(id => (uint)id);
+    }
+
+    private static List<DailyActiveConfigExcel> GetRows(int worldLevel)
+    {
+        var clamped = Math.Clamp(worldLevel, 0, 6);
+        if (GameData.DailyActiveConfigData.TryGetValue(clamped, out var rows) && rows.Count > 0) return rows;
+        if (GameData.DailyActiveConfigData.TryGetValue(0, out var fallback)) return fallback;
+        return [];
     }
 }

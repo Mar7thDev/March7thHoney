@@ -22,7 +22,7 @@ public class HandlerPlayerLoginFinishCsReq : PlayerHandler
 
         await connection.SendPacket(new PacketFinishedMissionScNotify(
             player?.MissionManager?.GetAllFinishedMissionIds() ?? []));
-        await connection.SendPacket(new PacketDailyActiveInfoNotify());
+        await connection.SendPacket(new PacketDailyActiveInfoNotify(player));
         await SendHoyoToonLuaAutoRun(connection);
     }
 
