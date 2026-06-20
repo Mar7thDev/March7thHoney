@@ -40,6 +40,9 @@ public static partial class GameData
 
     public static ActivityConfig ActivityConfig { get; set; } = new();
 
+    public static Dictionary<int, List<DailyActiveConfigExcel>> DailyActiveConfigData { get; private set; } = [];
+    public static Dictionary<int, DailyActiveQuestPoolExcel> DailyActiveQuestPoolData { get; private set; } = [];
+
     #region Marble
 
     public static Dictionary<int, MarbleMatchInfoExcel> MarbleMatchInfoData { get; private set; } = [];
