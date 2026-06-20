@@ -247,13 +247,38 @@ public class CommandGiveall : ICommand
                     material.ItemSubType == ItemSubTypeEnum.PhoneTheme ||
                     material.ItemSubType == ItemSubTypeEnum.ChatBubble ||
                     material.ItemSubType == ItemSubTypeEnum.PersonalCard ||
-                    material.ItemSubType == ItemSubTypeEnum.PhoneCase ||
-                    material.ItemSubType == ItemSubTypeEnum.AvatarSkin ||
-                    material.ItemSubType == ItemSubTypeEnum.PlayerOutfit)
+                    material.ItemSubType == ItemSubTypeEnum.PhoneCase)
                     await player.InventoryManager!.AddItem(material.ID, 1, false);
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.GiveAll.GiveAllItems",
             I18NManager.Translate("Word.Unlock"), "1"));
+    }
+
+    [CommandMethod("0 skin")]
+    public async ValueTask GiveAllSkin(CommandArg arg)
+    {
+        var player = arg.Target?.Player;
+        if (player == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        var materialList = GameData.ItemConfigData.Values;
+        foreach (var material in materialList)
+            if (material.ItemMainType == ItemMainTypeEnum.Usable)
+                if (material.ItemSubType == ItemSubTypeEnum.AvatarSkin ||
+                    material.ItemSubType == ItemSubTypeEnum.PlayerOutfit)
+                    await player.InventoryManager!.AddItem(material.ID, 1, false);
+
+        await arg.SendMsg(I18NManager.Translate("Game.Command.GiveAll.GiveAllItems",
+            I18NManager.Translate("Word.Skin"), "1"));
+    }
+
+    [CommandMethod("0 materials")]
+    public async ValueTask GiveAllMaterials(CommandArg arg)
+    {
+        await GiveAllMaterial(arg);
     }
 
     [CommandMethod("0 train")]
