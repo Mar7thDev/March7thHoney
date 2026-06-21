@@ -30,13 +30,14 @@ public class PacketChallengePeakSettleScNotify : BasePacket
             proto.FinishedTargetList.AddRange(targetIdList);
             if (inst.IsWin && isBoss)
             {
-                // 普通王棋：0轮通关达成颜色目标→钻石；turnLeft = 最大轮次 − 已用轮次
+                // 普通王棋：仅0轮通关达成颜色目标→钻石；其余按完成目标数显示铜/银/金, turnLeft=最大轮次−已用
                 var maxParam = inst.Config.NormalTargetList
                     .Select(t => GameData.BattleTargetConfigData.GetValueOrDefault(t)?.TargetParam ?? 0)
                     .DefaultIfEmpty(0).Max();
+                var isDiamond = peak.RoundCnt == 0;
                 proto.TurnLeft = (uint)Math.Max(0, maxParam - (int)peak.RoundCnt);
-                proto.IsBossTargetBetter = peak.RoundCnt == 0;
-                proto.HardModeHasPassed = true;
+                proto.IsBossTargetBetter = isDiamond;
+                proto.HardModeHasPassed = isDiamond;
             }
         }
 
