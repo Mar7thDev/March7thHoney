@@ -104,7 +104,7 @@ public class PlayerData : BaseDatabaseDataHelper
         };
 
         if (PlayerOutfitList.Count > 0)
-            info.PlayerOutfitData = new CJLCPMDGIBO { EAKOLIJOEPA = { PlayerOutfitList.Select(x => (uint)x) } };
+            info.PlayerOutfitData = ToPlayerOutfitProto();
 
         var pos = 0;
         var instance = DatabaseHelper.Instance!.GetInstance<AvatarData>(Uid);
@@ -208,7 +208,8 @@ public class PlayerData : BaseDatabaseDataHelper
         return info;
     }
 
-    // TODO 4.3: PlayerOutfitInfo 在 4.3 中被砍掉，所有调用点暂时移除
+    public CJLCPMDGIBO ToPlayerOutfitProto() =>
+        new() { EAKOLIJOEPA = { PlayerOutfitList.Select(x => (uint)x) } };
 }
 
 [MemoryPackable]
