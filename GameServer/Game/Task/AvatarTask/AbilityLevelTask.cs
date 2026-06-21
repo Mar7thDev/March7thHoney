@@ -161,6 +161,32 @@ public class AbilityLevelTask(PlayerInstance player)
         return new AbilityLevelResult(instance, battleInfos);
     }
 
+    // 官服秘技随机奖励(如欢愉「燃起来了!」): 客户端在 cast 请求里回传 roll 结果 _result, 服务端据此选择加哪支 maze buff
+    public ValueTask<object> AdvByCompareDynamicValue(AbilityLevelParam param)
+    {
+        if (param.Act is not Data.Config.Task.AdvByCompareDynamicValue cmp)
+            return ValueTask.FromResult<object>(true);
+
+        var dv = param.Request?.DynamicValues.FirstOrDefault(x => x.Key == cmp.DynamicKey);
+        // 请求未带该键或对比值是动态表达式(本服务端不求值)时, 保持原默认放行行为
+        if (dv == null || cmp.CompareValue.IsDynamic)
+            return ValueTask.FromResult<object>(!cmp.Inverse);
+
+        var left = dv.Value;
+        var right = cmp.CompareValue.GetValue();
+        var res = cmp.CompareType switch
+        {
+            "Equal" => Math.Abs(left - right) < 0.0001f,
+            "NotEqual" => Math.Abs(left - right) >= 0.0001f,
+            "Greater" => left > right,
+            "GreaterEqual" => left >= right,
+            "Less" => left < right,
+            "LessEqual" => left <= right,
+            _ => true
+        };
+        return ValueTask.FromResult<object>(res);
+    }
+
     public async ValueTask<object> AdventureTriggerAttack(AbilityLevelParam param)
     {
         BattleInstance? instance = null;
@@ -431,11 +457,16 @@ public class AbilityLevelTask(PlayerInstance player)
 
             const int summonLifeTimeMs = 45 * 1000;
 
+            // 领域型召唤绑施法者(客户端才做领域检测上报 RefreshTrigger); 排除攻击侦测型(走服务端攻击侦测, 绑了会被客户端 OnTriggerExit 误删 buff, 如吉尔 150901)
+            var attachPoint = excel.ConfigInfo?.AttachPoint;
+            var attachToCaster = attachPoint == "Origin"
+                                 || (string.IsNullOrEmpty(attachPoint) && !IsAttackDetectSummon(param.AdventureAbility, excel.ID));
+
             var unit = new EntitySummonUnit
             {
                 EntityId = 0,
                 CreateAvatarEntityId = param.CasterEntity.EntityId,
-                AttachEntityId = excel.ConfigInfo?.AttachPoint == "Origin" ? param.CasterEntity.EntityId : 0,
+                AttachEntityId = attachToCaster ? param.CasterEntity.EntityId : 0,
                 SummonUnitId = excel.ID,
                 CreateAvatarId = (param.CasterEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0,
                 LifeTimeMs = summonLifeTimeMs,
@@ -447,6 +478,28 @@ public class AbilityLevelTask(PlayerInstance player)
         }
 
         return new AbilityLevelResult();
+    }
+
+    // 召唤体是否被某角色技能用作攻击侦测(SummonUnitTriggerAttackDetectConfig); 此类走服务端攻击侦测, 不绑施法者以免客户端领域触发的 OnTriggerExit 误删其 buff
+    private static bool IsAttackDetectSummon(AdventureAbilityConfigListInfo abilities, int summonUnitId)
+    {
+        return abilities.AbilityList.Any(a =>
+            ContainsAttackDetect(a.OnStart, summonUnitId) || ContainsAttackDetect(a.OnAdd, summonUnitId)
+            || ContainsAttackDetect(a.OnRemove, summonUnitId) || ContainsAttackDetect(a.OnAbort, summonUnitId));
+    }
+
+    private static bool ContainsAttackDetect(List<TaskConfigInfo> tasks, int summonUnitId)
+    {
+        foreach (var t in tasks)
+        {
+            if (t is AdventureTriggerAttack { SummonUnitTriggerAttackDetectConfig: { } d } && d.SummonUnitID == (uint)summonUnitId)
+                return true;
+            if (t is PredicateTaskList p
+                && (ContainsAttackDetect(p.SuccessTaskList, summonUnitId) || ContainsAttackDetect(p.FailedTaskList, summonUnitId)))
+                return true;
+        }
+
+        return false;
     }
 
     public async ValueTask<object> DestroySummonUnit(AbilityLevelParam param)
