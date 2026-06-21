@@ -68,7 +68,7 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
         };
 
         var avatarList = lineup.BaseAvatars!.Select(item =>
-                Player.SceneInstance!.AvatarInfo.Values.FirstOrDefault(x => x.AvatarInfo.AvatarId == item.BaseAvatarId))
+                Player.SceneInstance!.AvatarInfo.Values.FirstOrDefault(x => x.AvatarInfo.BaseAvatarId == item.BaseAvatarId))
             .OfType<AvatarSceneInfo>().ToList();
         battle.AvatarInfo = avatarList;
 
