@@ -161,6 +161,32 @@ public class AbilityLevelTask(PlayerInstance player)
         return new AbilityLevelResult(instance, battleInfos);
     }
 
+    // 官服秘技随机奖励(如欢愉「燃起来了!」): 客户端在 cast 请求里回传 roll 结果 _result, 服务端据此选择加哪支 maze buff
+    public ValueTask<object> AdvByCompareDynamicValue(AbilityLevelParam param)
+    {
+        if (param.Act is not Data.Config.Task.AdvByCompareDynamicValue cmp)
+            return ValueTask.FromResult<object>(true);
+
+        var dv = param.Request?.DynamicValues.FirstOrDefault(x => x.Key == cmp.DynamicKey);
+        // 请求未带该键或对比值是动态表达式(本服务端不求值)时, 保持原默认放行行为
+        if (dv == null || cmp.CompareValue.IsDynamic)
+            return ValueTask.FromResult<object>(!cmp.Inverse);
+
+        var left = dv.Value;
+        var right = cmp.CompareValue.GetValue();
+        var res = cmp.CompareType switch
+        {
+            "Equal" => Math.Abs(left - right) < 0.0001f,
+            "NotEqual" => Math.Abs(left - right) >= 0.0001f,
+            "Greater" => left > right,
+            "GreaterEqual" => left >= right,
+            "Less" => left < right,
+            "LessEqual" => left <= right,
+            _ => true
+        };
+        return ValueTask.FromResult<object>(res);
+    }
+
     public async ValueTask<object> AdventureTriggerAttack(AbilityLevelParam param)
     {
         BattleInstance? instance = null;
