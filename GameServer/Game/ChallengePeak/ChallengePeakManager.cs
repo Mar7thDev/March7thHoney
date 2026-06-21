@@ -21,17 +21,13 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 {
     public bool BossIsHard { get; set; } = false;
 
-    public ChallengePeakGroup GetChallengePeakInfo(int groupId)
+    public ChallengePeakGroup GetChallengePeakInfo(int groupId, bool disableHardMode = true)
     {
         var proto = new ChallengePeakGroup
         {
             PeakGroupId = (uint)groupId,
-            // Captured working accounts that show the 普通/绝境 toggle pair DisableHardMode=true with
-            // both boss difficulties marked cleared (EasyMode/HardMode HasPassed below). Setting this
-            // alone (without the HasPassed flags) instead locked the boss to 普通-only — the toggle
-            // needs both. Private-server convenience: both difficulties selectable from the start,
-            // no "clear all 3 knights first" gate.
-            DisableHardMode = true
+            // 总览/普通局=true(普通绝境开关均可选); 绝境局进行中=false, 否则客户端结算按普通蓝色模板渲染
+            DisableHardMode = disableHardMode
         };
 
         var data = GameData.ChallengePeakGroupConfigData.GetValueOrDefault(groupId);
@@ -310,7 +306,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
         await Player.SendPacket(
             new PacketChallengePeakGroupDataUpdateScNotify(
-                GetChallengePeakInfo((int)inst.Data.Peak!.CurrentPeakGroupId)));
+                GetChallengePeakInfo((int)inst.Data.Peak!.CurrentPeakGroupId, !inst.Data.Peak!.IsHard)));
     }
 
     public async ValueTask StartChallenge(int levelId, uint buffId, List<int> avatarIdList)
@@ -434,6 +430,10 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         data.Peak!.StartPos = Player.Data.Pos!;
         data.Peak!.StartRot = Player.Data.Rot!;
         data.Peak!.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
+
+        // 进入即下发难度状态: 绝境局 disableHardMode=false, 客户端据此对本局结算渲染红色绝境界面
+        await Player.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(
+            GetChallengePeakInfo((int)data.Peak!.CurrentPeakGroupId, !data.Peak!.IsHard)));
 
         // Send packet
         await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetSucc));
