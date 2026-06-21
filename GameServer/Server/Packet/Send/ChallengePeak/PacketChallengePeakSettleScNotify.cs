@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.GameServer.Game.Challenge.Instances;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -9,14 +10,35 @@ public class PacketChallengePeakSettleScNotify : BasePacket
     public PacketChallengePeakSettleScNotify(ChallengePeakInstance inst, List<uint> targetIdList) : base(
         CmdIds.ChallengePeakSettleScNotify)
     {
+        var peak = inst.Data.Peak!;
+        var isBoss = inst.Config.BossExcel != null;
+
         var proto = new ChallengePeakSettleScNotify
         {
-            CyclesUsed = inst.Data.Peak!.RoundCnt,
             IsWin = inst.IsWin,
-            PeakId = inst.Data.Peak!.CurrentPeakLevelId,
-            FinishedTargetList = { targetIdList },
-            HardModeHasPassed = inst is { IsWin: true, Config.BossExcel: not null } && inst.Data.Peak!.IsHard
+            PeakId = peak.CurrentPeakLevelId,
+            CyclesUsed = peak.RoundCnt
         };
+
+        if (inst.IsWin && isBoss && peak.IsHard)
+        {
+            // 绝境王棋通关：客户端按红色绝境模板渲染钻石+三星，不下发普通目标列表
+            proto.HardModeHasPassed = true;
+        }
+        else
+        {
+            proto.FinishedTargetList.AddRange(targetIdList);
+            if (inst.IsWin && isBoss)
+            {
+                // 普通王棋：0轮通关达成颜色目标→钻石；turnLeft = 最大轮次 − 已用轮次
+                var maxParam = inst.Config.NormalTargetList
+                    .Select(t => GameData.BattleTargetConfigData.GetValueOrDefault(t)?.TargetParam ?? 0)
+                    .DefaultIfEmpty(0).Max();
+                proto.TurnLeft = (uint)Math.Max(0, maxParam - (int)peak.RoundCnt);
+                proto.IsBossTargetBetter = peak.RoundCnt == 0;
+                proto.HardModeHasPassed = true;
+            }
+        }
 
         SetData(proto);
     }
