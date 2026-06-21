@@ -11,7 +11,7 @@ public class PacketGetAvatarDataScRsp : BasePacket
     {
         var proto = new GetAvatarDataScRsp
         {
-            // TODO 4.3: PlayerOutfitData 在 4.3 中被砍
+            DHKFCDAGHDM = player.Data.ToPlayerOutfitProto(),
             IsGetAll = true
         };
 

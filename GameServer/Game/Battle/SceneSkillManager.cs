@@ -95,9 +95,10 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         // from receiving stray summon/listener buffs.
         if (req.SkillIndex == 1 && attackEntity is AvatarSceneInfo casterAvatar)
         {
-            var avatarId = casterAvatar.AvatarInfo.BaseAvatarId;
+            // 多命途角色按当前命途 id 查秘技 buff (8005/1224), owner 仍用基础 id 解析槽位
+            var pathAvatarId = casterAvatar.AvatarInfo.AvatarId;
             var candidates = GameData.MazeBuffData
-                .Where(kvp => kvp.Key / 10 / 100 == avatarId
+                .Where(kvp => kvp.Key / 10 / 100 == pathAvatarId
                               && kvp.Value.MazeBuffType == "Character"
                               && (kvp.Value.InBattleBindingType == "CharacterSkill"
                                   || kvp.Value.InBattleBindingType == "CharacterSkillAdv")
@@ -117,7 +118,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 var primary = candidates.FirstOrDefault(c =>
                     c.Excel.UseType is "SummonUnit" or "AddBattleBuff" or "TriggerBattle");
                 if (primary.BuffId != 0)
-                    await casterAvatar.AddBuff(new SceneBuff(primary.BuffId, primary.Excel.Lv, avatarId));
+                    await casterAvatar.AddBuff(new SceneBuff(primary.BuffId, primary.Excel.Lv, casterAvatar.AvatarInfo.BaseAvatarId));
             }
         }
 

@@ -13,6 +13,7 @@ namespace March7thHoney.Data.Config.Task;
 [MemoryPackUnion(5, typeof(ByCompareFloorSavedValue))]
 [MemoryPackUnion(6, typeof(ByCompareSubMissionState))]
 [MemoryPackUnion(7, typeof(ByIsContainAdventureModifier))]
+[MemoryPackUnion(8, typeof(AdvByCompareDynamicValue))]
 public abstract partial class PredicateConfigInfo : TaskConfigInfo
 {
     public bool Inverse { get; set; } = false;

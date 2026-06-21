@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.Proto;
 
@@ -40,7 +41,11 @@ public class MazeBuff(int buffID, int buffLevel, int owner)
 
         if (OwnerAvatarId != -1)
         {
-            buffInfo.OwnerIndex = (uint)instance.Lineup.BaseAvatars!.FindIndex(x => x.BaseAvatarId == OwnerAvatarId);
+            // 多命途角色 owner 传的是命途 id, 映射回基础 id 才能在 lineup 中匹配槽位
+            var ownerBaseId = GameData.MultiplePathAvatarConfigData.TryGetValue(OwnerAvatarId, out var mp)
+                ? mp.BaseAvatarID
+                : OwnerAvatarId;
+            buffInfo.OwnerIndex = (uint)instance.Lineup.BaseAvatars!.FindIndex(x => x.BaseAvatarId == ownerBaseId);
             OwnerIndex = (int)buffInfo.OwnerIndex;
         }
 
