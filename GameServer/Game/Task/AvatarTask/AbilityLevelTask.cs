@@ -457,11 +457,16 @@ public class AbilityLevelTask(PlayerInstance player)
 
             const int summonLifeTimeMs = 45 * 1000;
 
+            // 领域型召唤绑施法者(客户端才做领域检测上报 RefreshTrigger); 排除攻击侦测型(走服务端攻击侦测, 绑了会被客户端 OnTriggerExit 误删 buff, 如吉尔 150901)
+            var attachPoint = excel.ConfigInfo?.AttachPoint;
+            var attachToCaster = attachPoint == "Origin"
+                                 || (string.IsNullOrEmpty(attachPoint) && !IsAttackDetectSummon(param.AdventureAbility, excel.ID));
+
             var unit = new EntitySummonUnit
             {
                 EntityId = 0,
                 CreateAvatarEntityId = param.CasterEntity.EntityId,
-                AttachEntityId = excel.ConfigInfo?.AttachPoint == "Origin" ? param.CasterEntity.EntityId : 0,
+                AttachEntityId = attachToCaster ? param.CasterEntity.EntityId : 0,
                 SummonUnitId = excel.ID,
                 CreateAvatarId = (param.CasterEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0,
                 LifeTimeMs = summonLifeTimeMs,
@@ -473,6 +478,28 @@ public class AbilityLevelTask(PlayerInstance player)
         }
 
         return new AbilityLevelResult();
+    }
+
+    // 召唤体是否被某角色技能用作攻击侦测(SummonUnitTriggerAttackDetectConfig); 此类走服务端攻击侦测, 不绑施法者以免客户端领域触发的 OnTriggerExit 误删其 buff
+    private static bool IsAttackDetectSummon(AdventureAbilityConfigListInfo abilities, int summonUnitId)
+    {
+        return abilities.AbilityList.Any(a =>
+            ContainsAttackDetect(a.OnStart, summonUnitId) || ContainsAttackDetect(a.OnAdd, summonUnitId)
+            || ContainsAttackDetect(a.OnRemove, summonUnitId) || ContainsAttackDetect(a.OnAbort, summonUnitId));
+    }
+
+    private static bool ContainsAttackDetect(List<TaskConfigInfo> tasks, int summonUnitId)
+    {
+        foreach (var t in tasks)
+        {
+            if (t is AdventureTriggerAttack { SummonUnitTriggerAttackDetectConfig: { } d } && d.SummonUnitID == (uint)summonUnitId)
+                return true;
+            if (t is PredicateTaskList p
+                && (ContainsAttackDetect(p.SuccessTaskList, summonUnitId) || ContainsAttackDetect(p.FailedTaskList, summonUnitId)))
+                return true;
+        }
+
+        return false;
     }
 
     public async ValueTask<object> DestroySummonUnit(AbilityLevelParam param)
