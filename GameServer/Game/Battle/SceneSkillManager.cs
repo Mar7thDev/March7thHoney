@@ -1,5 +1,7 @@
+using System.Collections.Concurrent;
 using March7thHoney.Data;
 using March7thHoney.Data.Config;
+using March7thHoney.Data.Config.Task;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Drop;
@@ -120,6 +122,9 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 if (primary.BuffId != 0)
                     await casterAvatar.AddBuff(new SceneBuff(primary.BuffId, primary.Excel.Lv, casterAvatar.AvatarInfo.BaseAvatarId));
             }
+
+            // 队友秘技充能类监听 buff(如三月七·巡猎 122401): 数据驱动识别, 队友每开一次秘技给携带者叠 1 层封顶
+            await StackTeammateTechniqueBuffs(casterAvatar);
         }
 
         return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
@@ -281,6 +286,66 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 return GameData.AdventureAbilityConfigListData.GetValueOrDefault(excel.AdventurePlayerID);
 
         return null;
+    }
+
+    // 某角色"队友秘技自叠充能"buff 的缓存: avatarId -> [(buffId, 最大层级)], 数据驱动, 仅命中带监听器的角色(当前唯三月七 122401)
+    private static readonly ConcurrentDictionary<int, List<(int BuffId, int MaxLv)>> TechniqueListenerCache = new();
+
+    // 队友(非施法者本人)开秘技后, 给场上携带"队友秘技自叠"监听 buff 的角色叠层(封顶), 复用 SceneBuff->ApplyBuff->战斗 通路
+    private async ValueTask StackTeammateTechniqueBuffs(AvatarSceneInfo caster)
+    {
+        foreach (var owner in Player.SceneInstance!.AvatarInfo.Values)
+        {
+            if (owner.AvatarInfo.BaseAvatarId == caster.AvatarInfo.BaseAvatarId) continue;
+            foreach (var (buffId, maxLv) in GetTeammateTechniqueListenerBuffs(owner.AvatarInfo.AvatarId))
+            {
+                var prev = owner.BuffList.Find(x => x.BuffId == buffId)?.BuffLevel ?? 0;
+                var lv = Math.Min(prev + 1, maxLv);
+                if (lv <= prev) continue;
+                owner.BuffList.RemoveAll(x => x.BuffId == buffId);
+                var buff = new SceneBuff(buffId, lv, owner.AvatarInfo.BaseAvatarId);
+                buff.DynamicValues["#ADF_1"] = lv;
+                buff.DynamicValues["#ADF_2"] = maxLv;
+                owner.BuffList.Add(buff);
+                await Player.SendPacket(new PacketSyncEntityBuffChangeListScNotify(owner, buff));
+            }
+        }
+    }
+
+    // 数据驱动: 角色的 CharacterAbility maze buff, 其 modifier 的 OnAfterLocalPlayerUseSkill 会自加同一 buff = "队友秘技自叠充能"
+    private static List<(int BuffId, int MaxLv)> GetTeammateTechniqueListenerBuffs(int avatarId)
+    {
+        return TechniqueListenerCache.GetOrAdd(avatarId, id =>
+        {
+            var result = new List<(int, int)>();
+            var seen = new HashSet<int>();
+            foreach (var (key, excel) in GameData.MazeBuffData)
+            {
+                if (key / 10 / 100 != id) continue;
+                if (excel.MazeBuffType != "Character" || excel.InBattleBindingType != "CharacterAbility") continue;
+                var buffId = key / 10;
+                if (!seen.Add(buffId) || string.IsNullOrEmpty(excel.ModifierName)) continue;
+                if (!GameData.AdventureModifierData.TryGetValue(excel.ModifierName, out var modifier)) continue;
+                if (!TaskListAddsMazeBuff(modifier.OnAfterLocalPlayerUseSkill, buffId)) continue;
+                result.Add((buffId, GameData.MazeBuffData.Values.Where(x => x.ID == buffId).Max(x => x.Lv)));
+            }
+
+            return result;
+        });
+    }
+
+    // 递归判断任务列表(含 PredicateTaskList 成功/失败分支)里是否有对该 buffId 的 AddMazeBuff
+    private static bool TaskListAddsMazeBuff(List<TaskConfigInfo> tasks, int buffId)
+    {
+        foreach (var task in tasks)
+        {
+            if (task is AddMazeBuff add && add.ID == buffId) return true;
+            if (task is PredicateTaskList pred &&
+                (TaskListAddsMazeBuff(pred.SuccessTaskList, buffId) || TaskListAddsMazeBuff(pred.FailedTaskList, buffId)))
+                return true;
+        }
+
+        return false;
     }
 }
 
