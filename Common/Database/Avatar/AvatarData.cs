@@ -766,6 +766,35 @@ public partial class PathInfo(int pathId)
             enhance.SkillTree[correct.PointID] = Math.Min(level, correct.MaxLevel);
         }
     }
+
+    // freesr carries one skill set; mirror imported levels onto every other enhance state by AnchorType slot.
+    public void MirrorSkillTreeToAllEnhanceStates(int sourceEnhanceId)
+    {
+        if (!GameData.AvatarConfigData.TryGetValue(PathId, out var pathExcel)) return;
+        if (!EnhanceInfos.TryGetValue(sourceEnhanceId, out var source)) return;
+
+        var levelBySlot = new Dictionary<int, int>();
+        foreach (var (pointId, level) in source.SkillTree)
+        {
+            if (!GameData.AvatarSkillTreeConfigData.TryGetValue(pointId * 100 + 1, out var ex)) continue;
+            var slot = ex.GetMultiPointId();
+            if (slot > 0) levelBySlot[slot] = level;
+        }
+
+        foreach (var (enhanceId, points) in pathExcel.SkillTree)
+        {
+            if (enhanceId == sourceEnhanceId) continue;
+            if (!EnhanceInfos.TryGetValue(enhanceId, out var target))
+                EnhanceInfos[enhanceId] = target = new EnhanceInfo(enhanceId);
+            target.SkillTree.Clear();
+            foreach (var point in points)
+            {
+                var slot = point.GetMultiPointId();
+                if (slot > 0 && levelBySlot.TryGetValue(slot, out var level))
+                    target.SkillTree[point.PointID] = Math.Min(level, point.MaxLevel);
+            }
+        }
+    }
 }
 
 [MemoryPackable]
