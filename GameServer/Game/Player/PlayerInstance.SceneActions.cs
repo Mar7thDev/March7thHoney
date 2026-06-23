@@ -204,7 +204,7 @@ public partial class PlayerInstance
             value[key] = 1; // ParamString[2] is the key
             await SendPacket(new PacketUpdateFloorSavedValueNotify(key, 1, this));
 
-            TaskManager?.SceneTaskTrigger.TriggerFloor(plane, floor);
+            TaskManager?.SceneTaskTrigger.TriggerFloor(plane, floor, SceneInstance);
             MissionManager?.HandleFinishType(MissionFinishTypeEnum.FloorSavedValue);
         }
 

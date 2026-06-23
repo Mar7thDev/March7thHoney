@@ -116,7 +116,7 @@ public partial class SceneInstance
 
         System.Threading.Tasks.Task.Run(async () => { await EntityLoader.LoadEntity(); }).Wait();
 
-        Player.TaskManager?.SceneTaskTrigger.TriggerFloor(PlaneId, FloorId);
+        Player.TaskManager?.SceneTaskTrigger.TriggerFloor(PlaneId, FloorId, this);
 
         _ = InitializeComponents();
     }
