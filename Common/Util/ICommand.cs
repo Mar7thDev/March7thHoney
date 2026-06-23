@@ -68,38 +68,129 @@ namespace March7thHoney.Util
         public static int GetWidth(string str)
             => str.Length;
 
+        private static int PrefixWidth => GetWidth(PrefixContent);
+
+        private static int ClampCursorIndex(int inputLength)
+        {
+            CursorIndex = Math.Clamp(CursorIndex, 0, inputLength);
+            return CursorIndex;
+        }
+
+        private static bool TryGetBufferWidth(out int width)
+        {
+            try
+            {
+                width = Console.BufferWidth;
+                return width > 0;
+            }
+            catch (Exception ex) when (ex is System.IO.IOException or ArgumentOutOfRangeException or InvalidOperationException)
+            {
+                width = 0;
+                return false;
+            }
+        }
+
+        private static bool TryGetCursorPosition(out int left, out int top)
+        {
+            try
+            {
+                (left, top) = Console.GetCursorPosition();
+                return true;
+            }
+            catch (Exception ex) when (ex is System.IO.IOException or ArgumentOutOfRangeException or InvalidOperationException)
+            {
+                left = 0;
+                top = 0;
+                return false;
+            }
+        }
+
+        private static bool CanDrawInputLine()
+        {
+            if (Console.IsInputRedirected || Console.IsOutputRedirected) return false;
+            if (!TryGetBufferWidth(out _)) return false;
+
+            // Windows services and some hosted consoles can have standard handles
+            // without a real cursor. Probe once before using cursor APIs.
+            if (OperatingSystem.IsWindows())
+                return TryGetCursorPosition(out _, out _);
+
+            var term = Environment.GetEnvironmentVariable("TERM");
+            return !string.IsNullOrWhiteSpace(term) && !string.Equals(term, "dumb", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool TrySetCursorColumn(int column)
+        {
+            try
+            {
+                if (!TryGetBufferWidth(out var bufferWidth)) return false;
+                if (!TryGetCursorPosition(out _, out var top)) return false;
+
+                var maxColumn = Math.Max(0, bufferWidth - 1);
+                Console.SetCursorPosition(Math.Clamp(column, 0, maxColumn), top);
+                return true;
+            }
+            catch (Exception ex) when (ex is System.IO.IOException or ArgumentOutOfRangeException or InvalidOperationException)
+            {
+                return false;
+            }
+        }
+
+        private static void ClearCurrentLine()
+        {
+            if (!CanDrawInputLine()) return;
+
+            if (!OperatingSystem.IsWindows())
+            {
+                // Unix: clear the line with ANSI (stdout only) instead of querying the
+                // cursor via stdin, which deadlocks against the console input reader.
+                Console.Write("\r\u001b[2K");
+                return;
+            }
+
+            if (!TrySetCursorColumn(0)) return;
+
+            // Writing the full buffer width can wrap at the right edge and move the
+            // cursor away from the input row, especially while logs are interleaved.
+            if (!TryGetBufferWidth(out var bufferWidth)) return;
+            var clearWidth = Math.Max(0, bufferWidth - 1);
+            if (clearWidth > 0)
+                Console.Write(new string(' ', clearWidth));
+            TrySetCursorColumn(0);
+        }
+
         public static void RedrawInput(List<char> input, bool hasPrefix = true)
             => RedrawInput(new string([.. input]), hasPrefix);
 
         public static void RedrawInput(string input, bool hasPrefix = true)
         {
-            if (Console.IsInputRedirected || Console.IsOutputRedirected) return;
             UpdateCommandValidity(input);
+            if (!CanDrawInputLine()) return;
 
-            var length = GetWidth(input);
+            var inputLength = GetWidth(input);
+            var cursorColumn = ClampCursorIndex(input.Length);
             if (hasPrefix)
             {
                 input = Prefix + input;
-                length += GetWidth(PrefixContent);
+                inputLength += PrefixWidth;
+                cursorColumn += PrefixWidth;
             }
 
             if (OperatingSystem.IsWindows())
             {
-                if (Console.GetCursorPosition().Left > 0)
-                    Console.SetCursorPosition(0, Console.CursorTop);
+                if (!TrySetCursorColumn(0)) return;
 
-                Console.Write(input + new string(' ', Math.Max(0, Console.BufferWidth - length)));
-                Console.SetCursorPosition(length, Console.CursorTop);
+                if (!TryGetBufferWidth(out var bufferWidth)) return;
+                Console.Write(input + new string(' ', Math.Max(0, bufferWidth - inputLength - 1)));
+                TrySetCursorColumn(cursorColumn);
             }
             else
             {
                 // On Unix, Console.GetCursorPosition()/CursorTop query the terminal by reading
                 // stdin, which deadlocks against the console input reader when other threads log.
-                // Redraw with ANSI escapes (stdout only): go to column 0, write, erase to EOL.
-                Console.Write("\r" + input + "\u001b[K");
+                // Redraw with ANSI escapes (stdout only), then restore the logical cursor.
+                Console.Write($"\r{input}\u001b[K\u001b[{cursorColumn + 1}G");
             }
-
-            CursorIndex = length - GetWidth(PrefixContent);
         }
 
         public static void WriteExternalLine(Action colorWriter, string plainLine)
@@ -113,22 +204,11 @@ namespace March7thHoney.Util
                 }
 
                 var snapshot = new string([.. Input]);
-                var shouldRestorePrompt = !Console.IsInputRedirected;
+                var shouldRestorePrompt = CanDrawInputLine();
 
                 if (shouldRestorePrompt)
                 {
-                    if (OperatingSystem.IsWindows())
-                    {
-                        Console.SetCursorPosition(0, Console.CursorTop);
-                        Console.Write(new string(' ', Console.BufferWidth));
-                        Console.SetCursorPosition(0, Console.CursorTop);
-                    }
-                    else
-                    {
-                        // Unix: clear the line with ANSI (stdout only) instead of querying the
-                        // cursor via stdin, which deadlocks against the console input reader.
-                        Console.Write("\r\u001b[2K");
-                    }
+                    ClearCurrentLine();
                 }
 
                 colorWriter();
@@ -171,11 +251,16 @@ namespace March7thHoney.Util
             var targetWidth = GetWidth(Input[CursorIndex].ToString());
             Input.RemoveAt(CursorIndex);
 
-            var (left, _) = Console.GetCursorPosition();
-            Console.SetCursorPosition(left - targetWidth, Console.CursorTop);
+            if (!TryGetCursorPosition(out var left, out _))
+            {
+                RedrawInput(Input);
+                return;
+            }
+
+            TrySetCursorColumn(left - targetWidth);
             var remain = new string([.. Input.Skip(CursorIndex)]);
             Console.Write(remain + new string(' ', targetWidth));
-            Console.SetCursorPosition(left - targetWidth, Console.CursorTop);
+            TrySetCursorColumn(left - targetWidth);
 
             var prev = IsCommandValid;
             UpdateCommandValidity(new string([.. Input]));
@@ -218,17 +303,17 @@ namespace March7thHoney.Util
         public static void HandleLeftArrow()
         {
             if (CursorIndex <= 0) return;
-            var (left, _) = Console.GetCursorPosition();
+            if (!TryGetCursorPosition(out var left, out _)) return;
             CursorIndex--;
-            Console.SetCursorPosition(left - GetWidth(Input[CursorIndex].ToString()), Console.CursorTop);
+            TrySetCursorColumn(left - GetWidth(Input[CursorIndex].ToString()));
         }
 
         public static void HandleRightArrow()
         {
             if (CursorIndex >= Input.Count) return;
-            var (left, _) = Console.GetCursorPosition();
+            if (!TryGetCursorPosition(out var left, out _)) return;
             CursorIndex++;
-            Console.SetCursorPosition(left + GetWidth(Input[CursorIndex - 1].ToString()), Console.CursorTop);
+            TrySetCursorColumn(left + GetWidth(Input[CursorIndex - 1].ToString()));
         }
 
         public static void HandleInput(ConsoleKeyInfo keyInfo)
@@ -236,21 +321,27 @@ namespace March7thHoney.Util
             if (char.IsControl(keyInfo.KeyChar)) return;
             if (char.IsSurrogate(keyInfo.KeyChar)) return;
             var newWidth = GetWidth(new string([.. Input])) + GetWidth(keyInfo.KeyChar.ToString());
-            if (newWidth >= (Console.BufferWidth - GetWidth(PrefixContent))) return;
+            if (!TryGetBufferWidth(out var bufferWidth) || newWidth >= bufferWidth - PrefixWidth) return;
             HandleInput(keyInfo.KeyChar);
         }
 
         public static void HandleInput(char keyChar)
         {
+            ClampCursorIndex(Input.Count);
             Input.Insert(CursorIndex, keyChar);
             CursorIndex++;
 
-            var (left, _) = Console.GetCursorPosition();
+            if (!TryGetCursorPosition(out var left, out _))
+            {
+                RedrawInput(Input);
+                return;
+            }
+
             var newCursor = left + GetWidth(keyChar.ToString());
-            if (newCursor > Console.BufferWidth - 1) newCursor = Console.BufferWidth - 1;
+            if (TryGetBufferWidth(out var bufferWidth) && newCursor > bufferWidth - 1) newCursor = bufferWidth - 1;
 
             Console.Write(new string([.. Input.Skip(CursorIndex - 1)]));
-            Console.SetCursorPosition(newCursor, Console.CursorTop);
+            TrySetCursorColumn(newCursor);
 
             var prev = IsCommandValid;
             UpdateCommandValidity(new string([.. Input]));
@@ -263,7 +354,11 @@ namespace March7thHoney.Util
             {
                 ConsoleKeyInfo keyInfo;
                 try { keyInfo = Console.ReadKey(true); }
-                catch (InvalidOperationException) { continue; }
+                catch (Exception ex) when (ex is System.IO.IOException or InvalidOperationException)
+                {
+                    Thread.Sleep(1000);
+                    continue;
+                }
 
                 lock (ConsoleSync)
                 {
