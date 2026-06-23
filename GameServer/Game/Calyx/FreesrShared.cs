@@ -184,6 +184,7 @@ public static class FreesrShared
                     skillTree.Clear();
                     foreach (var (pointId, level) in avatarJson.Data.Skills)
                         skillTree[pointId] = Math.Max(1, level);
+                    pathInfo.MirrorSkillTreeToAllEnhanceStates(freesrEnhanceId);
                 }
                 finally
                 {
