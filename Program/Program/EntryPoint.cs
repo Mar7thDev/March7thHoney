@@ -432,8 +432,6 @@ public class EntryPoint
     private static void PerformCleanup()
     {
         March7thHoneyListener.Connections.Values.ToList().ForEach(x => x.Stop());
-
-        DatabaseHelper.SaveThread?.Interrupt();
         DatabaseHelper.SaveDatabase();
     }
 
