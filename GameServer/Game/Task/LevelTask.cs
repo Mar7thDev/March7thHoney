@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using March7thHoney.Data.Config;
 using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Config.Task;
@@ -12,6 +13,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.Task;
 
+[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)]
 public class LevelTask(PlayerInstance player)
 {
     public PlayerInstance Player { get; } = player;
