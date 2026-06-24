@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using March7thHoney.Data;
 using March7thHoney.Data.Config;
 using March7thHoney.Data.Config.Task;
@@ -17,6 +18,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Task.AvatarTask;
 
+[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)]
 public class AbilityLevelTask(PlayerInstance player)
 {
     public PlayerInstance Player { get; set; } = player;
