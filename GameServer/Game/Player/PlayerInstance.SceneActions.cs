@@ -388,6 +388,7 @@ public partial class PlayerInstance
                 Data.PlaneId = planeId;
                 Data.FloorId = floorId;
                 Data.EntryId = entryId;
+                March7thHoney.Database.DatabaseHelper.MarkDirty(Uid);
             }
             else if (StoryLineManager?.StoryLineData.CurStoryLineId == 0 &&
                      mapTp) // only send move packet when not in story line and mapTp
