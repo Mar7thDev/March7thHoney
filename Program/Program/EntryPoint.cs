@@ -423,7 +423,6 @@ public class EntryPoint
         IConsole.ListenConsole();
     }
 
-
     public static ConfigContainer GetConfig()
     {
         return ConfigManager.Config;
@@ -431,7 +430,9 @@ public class EntryPoint
 
     private static void PerformCleanup()
     {
-        March7thHoneyListener.Connections.Values.ToList().ForEach(x => x.Stop());
+        // Stopping a live connection on shutdown can throw (disposed CancellationTokenSource race); never let it skip the save.
+        try { March7thHoneyListener.Connections.Values.ToList().ForEach(x => x.Stop()); }
+        catch (Exception e) { Logger.Error("Cleanup: failed to stop connections", e); }
         DatabaseHelper.SaveDatabase();
     }
 

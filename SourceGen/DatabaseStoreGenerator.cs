@@ -137,6 +137,14 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
     // creating formatter"). Walks the column type and records a Register(...) expression per collection level.
     private static void CollectCollectionFormatters(ITypeSymbol type, ISet<string> regs)
     {
+        // Enum leaf of a Complex column needs its MemoryPack unmanaged formatter rooted (no AOT template otherwise).
+        if (type.TypeKind == TypeKind.Enum)
+        {
+            regs.Add(
+                $"new global::MemoryPack.Formatters.DangerousUnmanagedFormatter<{type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)}>()");
+            return;
+        }
+
         switch (type)
         {
             case INamedTypeSymbol named:

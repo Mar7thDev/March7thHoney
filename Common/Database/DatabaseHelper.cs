@@ -83,14 +83,59 @@ public class DatabaseHelper
             LoadType(conn, type);
         }
 
+        WarmupFormatters();
+
         LastSaveTick = DateTime.UtcNow.Ticks;
         SaveThread = new Thread(() =>
         {
-            while (true) CalcSaveDatabase();
+            // Sleep yields a GC safepoint; a tight loop here spins safepoint-free under NativeAOT and deadlocks GC.
+            while (true)
+            {
+                CalcSaveDatabase();
+                Thread.Sleep(1000);
+            }
         });
         SaveThread.Start();
 
         LoadAllData = true;
+    }
+
+    // Pre-resolve MemoryPack formatters bottom-up at startup; the first populated serialization otherwise does deep re-entrant resolution that crashes under NativeAOT.
+    private static void WarmupFormatters()
+    {
+        try
+        {
+            var enh = new Avatar.EnhanceInfo(0);
+            enh.SkillTree[1] = 1;
+            MemoryPack.MemoryPackSerializer.Serialize(enh);
+            var item = new Inventory.ItemData();
+            item.SubAffixes.Add(new Inventory.ItemSubAffix { Id = 1, Count = 1, Step = 1 });
+            MemoryPack.MemoryPackSerializer.Serialize(item);
+            MemoryPack.MemoryPackSerializer.Serialize(new List<Inventory.ItemData> { item });
+            var path = new Avatar.PathInfo(1) { EquipData = item };
+            path.EnhanceInfos[0] = enh;
+            path.Relic[1] = 1;
+            MemoryPack.MemoryPackSerializer.Serialize(path);
+            var fa = new Avatar.FormalAvatarInfo { BaseAvatarId = 1, AvatarId = 1 };
+            fa.PathInfos[1] = path;
+            MemoryPack.MemoryPackSerializer.Serialize(fa);
+            MemoryPack.MemoryPackSerializer.Serialize(new List<Avatar.FormalAvatarInfo> { fa });
+            var sp = new Avatar.SpecialAvatarInfo { BaseAvatarId = 1, AvatarId = 1, SpecialAvatarId = 1 };
+            sp.PathInfos[1] = path;
+            MemoryPack.MemoryPackSerializer.Serialize(new List<Avatar.SpecialAvatarInfo> { sp });
+            var old = new Avatar.OldAvatarInfo { AvatarId = 1 };
+            old.PathInfoes[1] = path;
+            old.SkillTree[1] = 1;
+            old.SkillTreeExtra[1] = new Dictionary<int, int> { { 1, 1 } };
+            MemoryPack.MemoryPackSerializer.Serialize(new List<Avatar.OldAvatarInfo> { old });
+            var li = new Lineup.LineupInfo { BaseAvatars = [new Lineup.LineupAvatarInfo { BaseAvatarId = 1 }] };
+            MemoryPack.MemoryPackSerializer.Serialize(li);
+            MemoryPack.MemoryPackSerializer.Serialize(new Dictionary<int, Lineup.LineupInfo> { { 0, li } });
+        }
+        catch (Exception e)
+        {
+            logger.Error("WarmupFormatters failed", e);
+        }
     }
 
     private static void EnsureMySqlDatabase(DatabaseConfig db)
@@ -203,11 +248,13 @@ public class DatabaseHelper
 
     public void SaveDatabase()
     {
-        using var conn = Open();
         // Drained up front so concurrent MarkDirty calls during the flush are kept for the next cycle.
         var uids = DrainDirty();
+
+        DbConnection? conn = null;
         try
         {
+            conn = Open();
             var prev = DateTime.Now;
             Exec(conn, "BEGIN");
 
@@ -227,10 +274,15 @@ public class DatabaseHelper
         {
             logger.Error("An error occurred while saving the database", e);
             // Roll back so the pooled connection isn't returned mid-transaction.
-            try { Exec(conn, "ROLLBACK"); }
-            catch { /* no active transaction */ }
+            if (conn != null)
+                try { Exec(conn, "ROLLBACK"); }
+                catch { /* no active transaction */ }
             // Re-flag the failed batch so it retries next cycle (matches the old "only clear on success" behaviour).
             foreach (var uid in uids) MarkDirty(uid);
+        }
+        finally
+        {
+            conn?.Dispose();
         }
 
         LastSaveTick = DateTime.UtcNow.Ticks;
