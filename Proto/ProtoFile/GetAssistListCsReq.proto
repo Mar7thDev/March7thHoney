@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GetAssistListCsReq {
-    bool LKBAENBKJCE = 2;
-    bool DDNKHDIKAEL = 12;
-}

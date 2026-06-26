@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message AKHEHAMBLEB {
-    int64 start_time = 11;
-    int64 KAHFEFACFIE = 12;
-}

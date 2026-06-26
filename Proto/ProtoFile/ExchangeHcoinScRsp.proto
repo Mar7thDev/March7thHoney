@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ExchangeHcoinScRsp {
-    uint32 retcode = 3;
-    uint32 num = 6;
-}

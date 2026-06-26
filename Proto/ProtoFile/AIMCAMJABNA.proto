@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum AIMCAMJABNA {
-    AIMCAMJABNA_NLCDGIPGFDJ = 0;
-    AIMCAMJABNA_ILIIOLJMKME = 1;
-}

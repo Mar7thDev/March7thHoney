@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum AJCBEOILGLF {
-    AJCBEOILGLF_NMNCOCCJEGM = 0;
-    AJCBEOILGLF_DLEDGLGPBCI = 1;
-    AJCBEOILGLF_OGJDIADDAAA = 2;
-}

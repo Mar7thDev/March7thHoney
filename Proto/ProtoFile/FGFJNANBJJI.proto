@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FGFJNANBJJI {
-    uint32 CLLLEMMKDMB = 5;
-    bool is_finish = 10;
-}

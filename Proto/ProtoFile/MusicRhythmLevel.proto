@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message MusicRhythmLevel {
-    uint32 unlock_level = 2;
-    uint32 level_id = 9;
-    bool full_combo = 12;
-}

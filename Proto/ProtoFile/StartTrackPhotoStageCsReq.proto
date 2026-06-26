@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message StartTrackPhotoStageCsReq {
-    bool LCPPNDPKHPH = 10;
-    uint32 stage_id = 15;
-}

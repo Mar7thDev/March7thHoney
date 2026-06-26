@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum ALGMICKCABI {
-    ALGMICKCABI_FLANKPMJBMH = 0;
-    ALGMICKCABI_LMHJFBBDLNH = 1;
-}

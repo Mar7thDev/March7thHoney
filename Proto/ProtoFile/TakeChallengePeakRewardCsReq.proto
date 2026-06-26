@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message TakeChallengePeakRewardCsReq {
-    repeated uint32 normal_reward_id_list = 11;
-    uint32 peak_group_id = 15;
-}

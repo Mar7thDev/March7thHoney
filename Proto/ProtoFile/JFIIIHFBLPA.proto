@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum JFIIIHFBLPA {
-    JFIIIHFBLPA_NEODNIFGDJC = 0;
-    JFIIIHFBLPA_BPKKHFFJGGI = 1;
-}

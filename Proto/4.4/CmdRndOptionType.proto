@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdRndOptionType {
+    LHHIKPLMLGH_NLCDGIPGFDJ = 0;
+    LHHIKPLMLGH_FHMBJGCBBPF = 3425;
+    LHHIKPLMLGH_BKAOLMEOLFJ = 3493;
+    LHHIKPLMLGH_AKEKFNOPPLF = 3478;
+    LHHIKPLMLGH_IFMEJPJJELN = 3458;
+}
+
+message DailyFirstMeetPamCsReq {
+}
+
+message GetRndOptionCsReq {
+    uint32 id = 6;
+}

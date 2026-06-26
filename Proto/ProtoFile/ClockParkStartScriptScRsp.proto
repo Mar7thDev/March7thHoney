@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ClockParkStartScriptScRsp {
-    uint32 retcode = 7;
-    uint32 script_id = 15;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EPELDFBCCEK {
-    uint32 BGFFICLCKHE = 5;
-    uint32 priority = 15;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum PlanetFesCardPieceApplyPermissionType {
-    BOKMDMEDAHN_OAPAHOMMCGO = 0;
-    BOKMDMEDAHN_GOJLDPCAMHM = 1;
-    BOKMDMEDAHN_MKAAHIPOJBJ = 2;
-}

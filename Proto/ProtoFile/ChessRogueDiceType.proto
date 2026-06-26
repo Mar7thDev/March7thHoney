@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum ChessRogueDiceType {
-    HJCOLMNPKBK_IHHJBGPPACD = 0;
-    HJCOLMNPKBK_BKCCOGNPPGH = 1;
-}

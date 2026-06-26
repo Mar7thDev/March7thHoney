@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "GHAJJBBEHBE.proto";
-
-message RelicRecommend {
-    repeated GHAJJBBEHBE GMCNPKAJMHC = 9;
-}

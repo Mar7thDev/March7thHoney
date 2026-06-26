@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KKNGAGGAJKC {
-    string EDMBJCBKBIM = 1;
-    string OIBPLFNJOEM = 2;
-    string DMHFFKNLILH = 3;
-}

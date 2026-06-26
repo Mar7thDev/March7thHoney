@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EDBOGEKADGP {
-    uint32 KGEBFIOJFLC = 2;
-    repeated uint32 EEDPLDBFMMM = 11;
-}

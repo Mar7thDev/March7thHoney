@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PlanetFesGetOfferedCardPieceCsReq {
-    bool FOGGEJIIJCM = 4;
-    uint64 CBMBOBNCKMO = 9;
-}

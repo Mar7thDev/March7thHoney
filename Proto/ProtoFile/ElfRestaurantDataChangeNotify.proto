@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "HGMJFBCFJFN.proto";
-
-message ElfRestaurantDataChangeNotify {
-    repeated HGMJFBCFJFN DGNGMJMPFGK = 13;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FinishedRaidInfo {
-    repeated uint32 NGKBFPFOOPK = 6;
-    uint32 world_level = 13;
-    uint32 raid_id = 15;
-}

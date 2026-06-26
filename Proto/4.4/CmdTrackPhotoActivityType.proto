@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdTrackPhotoActivityType {
+    FNMAMNLNKKJ_NLCDGIPGFDJ = 0;
+    FNMAMNLNKKJ_BJEBNCHPLJF = 7556;
+    FNMAMNLNKKJ_JJGIAHBHDIP = 7560;
+    FNMAMNLNKKJ_EIJFJJKKELI = 7555;
+    FNMAMNLNKKJ_MPKMCEPGOGC = 7551;
+    FNMAMNLNKKJ_NOHJMHABGPF = 7559;
+    FNMAMNLNKKJ_KOHIOJDEEPP = 7554;
+    FNMAMNLNKKJ_LPMCPJPLCGP = 7553;
+    FNMAMNLNKKJ_OKGOCHLFHAK = 7552;
+}
+
+message EGIJMPCIJOG {
+    uint32 stage_id = 9;
+}
+
+message GetTrackPhotoActivityDataCsReq {
+}
+
+message GetTrackPhotoActivityDataScRsp {
+    repeated IFBJJJOBGHB PEDCKGNNPAJ = 6;
+    uint32 retcode = 12;
+}
+
+message IFBJJJOBGHB {
+    uint32 stage_id = 3;
+    uint32 max_score = 14;
+}
+
+message IGKBMLELJDH {
+    uint32 retcode = 5;
+}
+
+message PNICDFFMDDB {
+    bool ADGCOJLMGAH = 8;
+    uint32 entity_id = 12;
+}
+
+message SettleTrackPhotoStageScRsp {
+    uint32 stage_id = 1;
+    uint32 retcode = 6;
+    uint32 score_id = 9;
+    repeated PNICDFFMDDB PIGLHELGMIJ = 15;
+}
+
+message StartTrackPhotoStageScRsp {
+    uint32 trans_no = 3;
+    uint32 retcode = 10;
+}

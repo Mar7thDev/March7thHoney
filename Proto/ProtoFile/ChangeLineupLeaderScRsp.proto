@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ChangeLineupLeaderScRsp {
-    uint32 slot = 6;
-    uint32 retcode = 11;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum HCMEILLLKBD {
-    HCMEILLLKBD_NLCDGIPGFDJ = 0;
-    HCMEILLLKBD_JDOAIPKBIPE = 1;
-    HCMEILLLKBD_GGBMAANJNJC = 2;
-}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdJukeboxType {
+    ONBKHMHLADC_NLCDGIPGFDJ = 0;
+    ONBKHMHLADC_JDOHJBCOMKN = 3186;
+    ONBKHMHLADC_AEOGKBPOCEF = 3193;
+    ONBKHMHLADC_CKILMDLNFAP = 3147;
+    ONBKHMHLADC_OJDLNPGPCJN = 3188;
+    ONBKHMHLADC_DGDJPGMNDCD = 3181;
+    ONBKHMHLADC_JHFCHFCMBPE = 3125;
+    ONBKHMHLADC_PFFBINHIPPN = 3178;
+    ONBKHMHLADC_CAJLLEGDCJM = 3158;
+}
+
+message EGDFPDHNOKO {
+    uint32 JKFCKJNHLHI = 11;
+    uint32 retcode = 13;
+}
+
+message FKLMGEFILDI {
+    uint32 JKFCKJNHLHI = 15;
+}
+
+message GetJukeboxDataScRsp {
+    MNCBEDBDDHL GFFOBALDBPM = 1;
+    repeated LHHGCDLCJDA IOKAJIBHLMP = 4;
+    uint32 retcode = 5;
+}
+
+message LHHGCDLCJDA {
+    uint32 id = 4;
+    uint32 group_id = 8;
+    bool BIMDKNLMICG = 11;
+}
+
+message UnlockBackGroundMusicScRsp {
+    repeated LHHGCDLCJDA IOKAJIBHLMP = 3;
+    repeated uint32 BPFGBEBPEDP = 6;
+    uint32 retcode = 12;
+}

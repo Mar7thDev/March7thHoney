@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ODHJEDHKHOD {
-    repeated uint32 NMMCOBBKKHA = 3;
-    repeated uint32 BIMFEAHDMIK = 14;
-}

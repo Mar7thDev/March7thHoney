@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum BOMHOLBACKF {
-    BOMHOLBACKF_HGLIFJGHADE = 0;
-    BOMHOLBACKF_PDJAJHELPKL = 1;
-}

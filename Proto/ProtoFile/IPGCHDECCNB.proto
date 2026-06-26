@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message IPGCHDECCNB {
-    uint32 node_type = 1;
-    uint32 PIJBIFAIFOA = 11;
-    uint32 CLBEEGLKMIM = 14;
-}

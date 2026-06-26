@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum EJLGEOKIJKH {
-    EJLGEOKIJKH_FOFDFIOGIDL = 0;
-    EJLGEOKIJKH_NNDOKEBIMLB = 1;
-    EJLGEOKIJKH_HEGGGOBCLFC = 2;
-}

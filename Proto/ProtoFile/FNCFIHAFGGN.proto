@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum FNCFIHAFGGN {
-    FNCFIHAFGGN_NLCDGIPGFDJ = 0;
-    FNCFIHAFGGN_HBHCKEGINEN = 1;
-    FNCFIHAFGGN_DDJCFCLNCIM = 2;
-}

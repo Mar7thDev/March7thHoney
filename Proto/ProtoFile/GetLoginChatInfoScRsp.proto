@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GetLoginChatInfoScRsp {
-    uint32 retcode = 2;
-    repeated uint32 contact_id_list = 4;
-}

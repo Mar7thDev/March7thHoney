@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message BOPOBHGDIKN {
+    uint32 OBLCIENDLED = 8;
+}
+
+enum CmdRaidCollectionType {
+    ONNDCODLMGD_NLCDGIPGFDJ = 0;
+    ONNDCODLMGD_HIKIBFCIKBA = 6952;
+    ONNDCODLMGD_LNFHMGKBNEO = 6958;
+    ONNDCODLMGD_BIHBGPPKCNL = 6948;
+    ONNDCODLMGD_BNAFMMKMELE = 6942;
+}
+
+message RaidCollectionDataScRsp {
+    repeated BOPOBHGDIKN challenge_list = 2;
+    uint32 retcode = 13;
+}
+
+message RaidCollectionEnterNextRaidScRsp {
+    uint32 retcode = 8;
+    GEGLJDELBHA scene = 12;
+}

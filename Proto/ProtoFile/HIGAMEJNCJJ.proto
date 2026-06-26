@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HIGAMEJNCJJ {
-    uint32 AFEMBLFCCCH = 6;
-    uint32 level = 12;
-}

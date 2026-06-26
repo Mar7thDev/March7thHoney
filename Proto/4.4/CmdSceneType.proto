@@ -1,0 +1,460 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AKEKCKDIHLA {
+    int32 new_value = 1;
+    string property_name = 7;
+    int32 old_value = 9;
+}
+
+message ActiveFarmElementCsReq {
+    uint32 world_level = 1;
+    uint32 entity_id = 2;
+    uint32 HECCOBFBJFI = 6;
+}
+
+message ActiveFarmElementScRsp {
+    uint32 entity_id = 1;
+    uint32 world_level = 2;
+    uint32 retcode = 5;
+}
+
+message ChestInfo {
+    ChestType chest_type = 9;
+    uint32 opened_num = 10;
+    uint32 exist_num = 13;
+}
+
+message ChestMonsterStat {
+    uint32 type = 1;
+    uint32 PIJBPDPEODG = 10;
+    uint32 JBGIFBGMLMF = 12;
+}
+
+enum ChestType {
+    MAP_INFO_CHEST_TYPE_NONE = 0;
+    MAP_INFO_CHEST_TYPE_NORMAL = 101;
+    MAP_INFO_CHEST_TYPE_CHALLENGE = 102;
+    MAP_INFO_CHEST_TYPE_PUZZLE = 104;
+}
+
+enum CmdSceneType {
+    JHDCKJGDKBE_NLCDGIPGFDJ = 0;
+    JHDCKJGDKBE_IAMNIJOGMGI = 1447;
+    JHDCKJGDKBE_HGBJCPDDILE = 1481;
+    JHDCKJGDKBE_FCCELHODNJJ = 1460;
+    JHDCKJGDKBE_JKEOBFIMPOG = 1444;
+    JHDCKJGDKBE_FILKNGPLIHH = 1445;
+    JHDCKJGDKBE_DLDOLADCMOM = 1427;
+    JHDCKJGDKBE_DPDMEMOEDNI = 1458;
+    JHDCKJGDKBE_DPIOELODIBF = 1424;
+    JHDCKJGDKBE_AEMFLMKKCHM = 1463;
+    JHDCKJGDKBE_AOCCFOOBNFL = 1468;
+    JHDCKJGDKBE_NOGMFNHLBEO = 1474;
+    JHDCKJGDKBE_JPCEKLHLGEJ = 1470;
+    JHDCKJGDKBE_ECJPIFOIJEA = 1423;
+    JHDCKJGDKBE_OGFHILHFDDF = 1465;
+    JHDCKJGDKBE_DAOJKJOPIBG = 1408;
+    JHDCKJGDKBE_JFEHKBLKEEF = 1432;
+    JHDCKJGDKBE_HOANLDEAKGM = 1477;
+    JHDCKJGDKBE_CEHOPIIGLEG = 1442;
+    JHDCKJGDKBE_EGHDEMKNDHB = 1439;
+    JHDCKJGDKBE_MMKOHEAIDII = 1491;
+    JHDCKJGDKBE_LLAMDIIPKOL = 1454;
+    JHDCKJGDKBE_NIBLJJFDDHK = 1479;
+    JHDCKJGDKBE_JLHJENJMNNE = 1497;
+    JHDCKJGDKBE_NAGLKBBGPNP = 1500;
+    JHDCKJGDKBE_JCCIOABOKDJ = 1462;
+    JHDCKJGDKBE_EPDGPIEDFFF = 1456;
+    JHDCKJGDKBE_DNLOPMPCJPI = 1448;
+    JHDCKJGDKBE_BJEOKMEGJDD = 1409;
+    JHDCKJGDKBE_DINHGFMGDGP = 1431;
+    JHDCKJGDKBE_NKONHNEADDP = 1407;
+    JHDCKJGDKBE_BDHNAFBAHLM = 1472;
+    JHDCKJGDKBE_EFMGKNCDPME = 1496;
+    JHDCKJGDKBE_ICIJKHOCDHA = 1484;
+    JHDCKJGDKBE_OPHOLBDOAHK = 1471;
+    JHDCKJGDKBE_HLJBKBMFNAA = 1401;
+    JHDCKJGDKBE_NPBFHJHPLEL = 1498;
+    JHDCKJGDKBE_BIELKBIFBNP = 1417;
+    JHDCKJGDKBE_JIAEHCICDLJ = 1469;
+    JHDCKJGDKBE_KNOPMBDFGEN = 1450;
+    JHDCKJGDKBE_AFNPMKCNMMJ = 1418;
+    JHDCKJGDKBE_HJBIHOADNGG = 1415;
+    JHDCKJGDKBE_FHFBANPOFPP = 1459;
+    JHDCKJGDKBE_CHKENGBFHML = 1473;
+    JHDCKJGDKBE_GBKHPDLKJFF = 1480;
+    JHDCKJGDKBE_BJHGGELHMHJ = 1464;
+    JHDCKJGDKBE_DJCAMALOJAK = 1490;
+    JHDCKJGDKBE_NGPKANKILHC = 1475;
+    JHDCKJGDKBE_PPCCOBMCPCP = 1425;
+    JHDCKJGDKBE_PHLNPAJMPCN = 1434;
+    JHDCKJGDKBE_MGEPAPPJLLJ = 1461;
+    JHDCKJGDKBE_EKHDGCAKMCK = 1438;
+    JHDCKJGDKBE_GHGAIPIPJBE = 1413;
+    JHDCKJGDKBE_FNOJDGAFLMA = 1478;
+    JHDCKJGDKBE_PEJHGODBHKP = 1416;
+    JHDCKJGDKBE_KMHPIJLLLOH = 1426;
+    JHDCKJGDKBE_CCGMMIDKLDB = 1430;
+    JHDCKJGDKBE_JNJIGOOJHNM = 1467;
+    JHDCKJGDKBE_PDKBDCAOKGG = 1403;
+    JHDCKJGDKBE_ABMMBPKLFMC = 1453;
+    JHDCKJGDKBE_CPCONKMIOPA = 1483;
+    JHDCKJGDKBE_DCBHPPJCEJA = 1433;
+    JHDCKJGDKBE_FOADFHNFNCA = 1429;
+    JHDCKJGDKBE_IFKKOABAGCD = 1402;
+    JHDCKJGDKBE_LBHAOMOKKLA = 1405;
+    JHDCKJGDKBE_PHGMMCCOFCM = 1421;
+    JHDCKJGDKBE_EMHKHDBKPOI = 1436;
+    JHDCKJGDKBE_JNENFBNOCCD = 1406;
+    JHDCKJGDKBE_AKDHLNBKBLG = 1404;
+    JHDCKJGDKBE_LAIPEFIIEPC = 1486;
+    JHDCKJGDKBE_GCKJDNHBJJP = 1495;
+    JHDCKJGDKBE_COIEAMJOCFF = 1493;
+    JHDCKJGDKBE_GCLFALNBAMH = 1457;
+    JHDCKJGDKBE_FBONLGBFFKK = 1485;
+    JHDCKJGDKBE_PBHLDKNKIBM = 1452;
+    JHDCKJGDKBE_KAJMLFFMFMI = 1488;
+    JHDCKJGDKBE_ONNJOPGHBBC = 1422;
+    JHDCKJGDKBE_KNDDOLEHBKE = 1440;
+    JHDCKJGDKBE_LBFEFJIFDAI = 1492;
+}
+
+message CounterDownCsReq {
+    uint32 DGGCFDKJDPO = 12;
+    uint32 BIKALOGMMDA = 14;
+}
+
+message DeactivateFarmElementCsReq {
+    uint32 entity_id = 11;
+}
+
+message DeleteSummonUnitCsReq {
+    repeated uint32 entity_id_list = 2;
+    uint64 interact_id = 13;
+}
+
+message EBADAHNBIIH {
+    uint32 GPJBPKILOBM = 6;
+    uint32 BIKALOGMMDA = 11;
+}
+
+message EnterSceneByServerScNotify {
+    EnterSceneReason reason = 2;
+    LineupInfo lineup = 10;
+    SceneInfo scene = 11;
+}
+
+enum EnterSceneReason {
+    ENTER_SCENE_REASON_NONE = 0;
+    ENTER_SCENE_REASON_CHALLENGE_TIMEOUT = 1;
+    ENTER_SCENE_REASON_ROGUE_TIMEOUT = 2;
+    ENTER_SCENE_REASON_CHANGE_STORYLINE = 3;
+    ENTER_SCENE_REASON_DIMENSION_MERGE = 4;
+}
+
+message EnterSceneScRsp {
+    bool is_over_map = 1;
+    bool is_close_map = 8;
+    SceneIdentifier scene_identifier = 9;
+    uint32 retcode = 13;
+}
+
+message EnterSectionCsReq {
+    uint32 section_id = 4;
+    uint64 interact_id = 10;
+}
+
+message EnteredSceneChangeScNotify {
+    repeated EnteredSceneInfo entered_scene_info_list = 10;
+}
+
+message EnteredSceneInfo {
+    uint32 floor_id = 1;
+    uint32 plane_id = 7;
+}
+
+message EntityMotion {
+    bool FJOEOEDLNED = 4;
+    MotionInfo motion = 7;
+    uint32 map_layer = 8;
+    uint32 entity_id = 9;
+}
+
+message FDGOBNJPKJG {
+    uint32 PLNEOOCPFNI = 13;
+}
+
+message GMABBKEMPNP {
+    uint32 retcode = 9;
+}
+
+enum GameplayCounterUpdateReason {
+    GAMEPLAY_COUNTER_UPDATE_REASON_NONE = 0;
+    GAMEPLAY_COUNTER_UPDATE_REASON_ACTIVATE = 1;
+    GAMEPLAY_COUNTER_UPDATE_REASON_DEACTIVATE = 2;
+    GAMEPLAY_COUNTER_UPDATE_REASON_CHANGE = 3;
+}
+
+message GetCurSceneInfoCsReq {
+}
+
+message GetCurSceneInfoScRsp {
+    SceneInfo scene = 2;
+    uint32 retcode = 12;
+}
+
+message GetEnteredSceneCsReq {
+}
+
+message GetEnteredSceneScRsp {
+    repeated EnteredSceneInfo entered_scene_info_list = 4;
+    uint32 retcode = 5;
+}
+
+message GetSceneMapInfoScRsp {
+    uint32 retcode = 1;
+    repeated SceneMapInfo scene_map_info = 12;
+}
+
+message GetUnlockTeleportScRsp {
+    repeated uint32 unlocked_teleport_list = 1;
+    uint32 retcode = 11;
+}
+
+message GroupRefreshInfo {
+    uint32 group_id = 8;
+    SceneGroupRefreshType refresh_type = 10;
+    SceneEntityGroupInfo group_info = 11;
+    repeated SceneEntityRefreshInfo refresh_entity = 12;
+    repeated AKEKCKDIHLA CDMKBCHLPAB = 13;
+    uint32 state = 14;
+}
+
+message GroupStateChangeCsReq {
+    uint64 interact_id = 11;
+    GroupStateInfo group_state_info = 13;
+}
+
+message HNGLCIGBNGB {
+    int64 HHLNOEILPOJ = 14;
+}
+
+message HitMonsterBattleInfo {
+    uint32 target_monster_entity_id = 1;
+    MonsterBattleType monster_battle_type = 14;
+}
+
+message ILCCPICILFF {
+    uint32 OFBPKCNCGFG = 1;
+    GameplayCounterUpdateReason reason = 7;
+    uint32 BIKALOGMMDA = 10;
+}
+
+message InteractPropCsReq {
+    uint32 prop_entity_id = 2;
+    uint32 interact_id2 = 8;
+    uint64 interact_id = 12;
+}
+
+message InteractPropScRsp {
+    uint32 retcode = 3;
+    uint32 prop_entity_id = 5;
+    uint32 prop_state = 10;
+}
+
+message KCFMJCBJGMN {
+    uint32 retcode = 10;
+}
+
+message MNEPAIGBPGM {
+    SceneInfo scene = 11;
+    uint32 retcode = 12;
+}
+
+message MazeGroup {
+    int64 modify_time = 7;
+    bool is_need_refresh = 8;
+    map<string, int32> property_map = 11;
+    repeated uint32 destory_monster_config_id_list = 13;
+    uint32 group_id = 15;
+}
+
+message MazePropState {
+    PropExtraInfo extra_info = 1;
+    uint32 config_id = 5;
+    uint32 state = 7;
+    uint32 group_id = 13;
+}
+
+enum MonsterBattleType {
+    MONSTER_BATTLE_TYPE_NONE = 0;
+    MONSTER_BATTLE_TYPE_TRIGGER_BATTLE = 1;
+    MONSTER_BATTLE_TYPE_DIRECT_DIE_SIMULATE_BATTLE = 2;
+    MONSTER_BATTLE_TYPE_DIRECT_DIE_SKIP_BATTLE = 3;
+    MONSTER_BATTLE_TYPE_NO_BATTLE = 4;
+}
+
+message OCHPFJEKNGM {
+    uint32 chest_id = 2;
+    ItemList reward = 6;
+}
+
+message OpenChestScNotify {
+    uint32 chest_id = 2;
+}
+
+message PDHBDPNPMPI {
+}
+
+message ReEnterLastElementStageScRsp {
+    SceneBattleInfo battle_info = 2;
+    uint32 retcode = 3;
+    uint32 stage_id = 5;
+}
+
+message RefreshTriggerByClientScNotify {
+    string trigger_name = 2;
+    uint32 trigger_entity_id = 9;
+    repeated uint32 trigger_target_id_list = 15;
+}
+
+message RefreshTriggerByClientScRsp {
+    string trigger_name = 1;
+    uint32 trigger_entity_id = 10;
+    uint32 retcode = 14;
+    bool refresh_trigger = 15;
+}
+
+message SavePointsInfoNotify {
+    uint32 valid_times = 10;
+    int64 refresh_time = 13;
+}
+
+message SceneCastSkillCostMpScRsp {
+    uint32 retcode = 5;
+    uint32 cast_entity_id = 15;
+}
+
+message SceneCastSkillMpUpdateScNotify {
+    uint32 cast_entity_id = 10;
+    uint32 mp = 11;
+}
+
+message SceneCastSkillScRsp {
+    uint32 retcode = 1;
+    repeated HitMonsterBattleInfo monster_battle_info = 6;
+    SceneBattleInfo battle_info = 11;
+    uint32 cast_entity_id = 14;
+}
+
+message SceneCheckpoingRefreshScRsp {
+    uint32 retcode = 11;
+}
+
+message SceneEnterStageScRsp {
+    uint32 retcode = 7;
+    SceneBattleInfo battle_info = 14;
+}
+
+message SceneEntityMoveScNotify {
+    uint32 entity_id = 4;
+    MotionInfo motion = 8;
+    uint32 entry_id = 11;
+    uint32 client_pos_version = 14;
+}
+
+message SceneEntityRefreshInfo {
+    oneof refresh_type {
+        SceneEntityInfo add_entity = 6;
+        uint32 delete_entity = 5;
+        uint32 BEEANADAHPL = 14;
+    }
+}
+
+message SceneEntityTeleportScRsp {
+    EntityMotion entity_motion = 6;
+    uint32 client_pos_version = 7;
+    uint32 retcode = 15;
+}
+
+message SceneGroupRefreshScNotify {
+    uint32 floor_id = 11;
+    uint32 dimension_id = 12;
+    repeated GroupRefreshInfo group_refresh_list = 15;
+}
+
+enum SceneGroupRefreshType {
+    SCENE_GROUP_REFRESH_TYPE_NONE = 0;
+    SCENE_GROUP_REFRESH_TYPE_LOADED = 1;
+    SCENE_GROUP_REFRESH_TYPE_UNLOAD = 2;
+    SCENE_GROUP_REFRESH_TYPE_AFIBFMAFNCC = 3;
+}
+
+message SceneMapInfo {
+    repeated MazeGroup maze_group_list = 1;
+    uint32 dimension_id = 3;
+    repeated MazePropState maze_prop_list = 4;
+    uint32 floor_id = 5;
+    repeated uint32 unlock_teleport_list = 6;
+    repeated uint32 lighten_section_list = 7;
+    repeated ChestMonsterStat chest_monster_list = 8;
+    uint32 retcode = 9;
+    uint32 cur_map_entry_id = 12;
+    uint32 entry_id = 13;
+    repeated ChestInfo chest_list = 14;
+    map<string, int32> floor_saved_value_map = 15;
+    MissionStatusBySceneInfo client_group_mission_info = 123;
+    repeated uint32 opened_chest_id_list = 561;
+    SceneIdentifier scene_identifier = 954;
+    repeated uint32 finished_chest_monster_id_list = 1700;
+}
+
+message ScenePlaneEventScNotify {
+    ItemList JENLPPHNECF = 3;
+    ItemList DMNKFILNCGB = 4;
+    ItemList get_item_list = 5;
+    ItemList ECCIHPNDEHM = 10;
+}
+
+message SetGroupCustomSaveDataScRsp {
+    uint32 group_id = 5;
+    uint32 retcode = 13;
+    uint32 entry_id = 15;
+}
+
+message SetTrainWorldIdScRsp {
+    uint32 CFDCEEMIOCO = 5;
+    uint32 retcode = 10;
+}
+
+message StartCocoonStageScRsp {
+    uint32 retcode = 3;
+    uint32 prop_entity_id = 4;
+    uint32 cocoon_id = 5;
+    uint32 wave = 6;
+    SceneBattleInfo battle_info = 9;
+    uint32 challenge_cnt = 10;
+}
+
+message SyncServerSceneChangeNotify {
+}
+
+message TrainWorldIdChangeScNotify {
+    uint32 CFDCEEMIOCO = 14;
+}
+
+message UnlockTeleportNotify {
+    uint32 teleport_id = 1;
+    uint32 entry_id = 13;
+}
+
+message UpdateFloorSavedValueNotify {
+    map<string, int32> saved_value = 3;
+    uint32 dimension_id = 5;
+    uint32 floor_id = 10;
+    uint32 plane_id = 14;
+}

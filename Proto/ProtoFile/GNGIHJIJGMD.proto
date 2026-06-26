@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "DNLKMHLAPHC.proto";
-
-message GNGIHJIJGMD {
-    DNLKMHLAPHC LANFFLCLGAH = 12;
-}

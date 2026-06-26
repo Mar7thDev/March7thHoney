@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum BGMLEJCOFPK {
-    BGMLEJCOFPK_NLCDGIPGFDJ = 0;
-    BGMLEJCOFPK_ENPLACDLJGA = 1;
-    BGMLEJCOFPK_DACEMIDFHOG = 2;
-}

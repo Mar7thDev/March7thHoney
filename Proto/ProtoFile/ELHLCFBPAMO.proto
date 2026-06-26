@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ELHLCFBPAMO {
-    repeated uint32 attribute_list = 2;
-    uint32 composition_type = 9;
-    uint32 level = 14;
-}

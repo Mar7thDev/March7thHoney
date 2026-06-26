@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message AetherDivideSpiritExpUpCsReq {
-    uint32 NCAOMBHCGNA = 1;
-    uint32 APGDJGPGGMO = 2;
-    uint32 FHAEENDPAAG = 15;
-}

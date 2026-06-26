@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ONAEGKCMPNN {
-    uint32 retcode = 8;
-    bool EBAFPOLLJIA = 11;
-}

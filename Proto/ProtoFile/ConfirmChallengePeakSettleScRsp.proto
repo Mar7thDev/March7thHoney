@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ConfirmChallengePeakSettleScRsp {
-    bool IOBCIMIPEOM = 5;
-    uint32 peak_id = 8;
-    uint32 retcode = 12;
-}

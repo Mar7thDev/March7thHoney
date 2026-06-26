@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GetEvolveBuildShopAbilityDownCsReq {
-    uint32 level = 1;
-    uint32 JEKLOEPPJBK = 7;
-}

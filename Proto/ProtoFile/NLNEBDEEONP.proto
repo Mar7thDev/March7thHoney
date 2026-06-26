@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum NLNEBDEEONP {
-    NLNEBDEEONP_HHDDIFHGNHD = 0;
-    NLNEBDEEONP_LDANCJMPNMB = 1;
-}

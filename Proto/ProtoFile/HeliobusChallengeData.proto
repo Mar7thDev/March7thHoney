@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HeliobusChallengeData {
-    uint32 challenge_id = 5;
-    bool DBPNANBMGFE = 10;
-    uint32 star = 12;
-}
