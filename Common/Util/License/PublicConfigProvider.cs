@@ -15,6 +15,9 @@ public static class PublicConfigProvider
         config.ServerOption.AutoCreateUser = true;
         config.ServerOption.Auth.MinimumPasswordLength = 1;
 
+        // New players start at Trailblazer level 70.
+        config.ServerOption.StartTrailblazerLevel = 70;
+
         config.ServerOption.Language = UtilTools.GetCurrentLanguage();
         config.ServerOption.FallbackLanguage = config.ServerOption.Language;
 
