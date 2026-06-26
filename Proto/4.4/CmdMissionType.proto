@@ -14,36 +14,36 @@ message AcceptMainMissionScRsp {
 }
 
 enum CmdMissionType {
-    LCPPDELLPFC_NLCDGIPGFDJ = 0;
-    LCPPDELLPFC_JLDAAJCCALH = 1288;
-    LCPPDELLPFC_ELFBPOKAKIF = 1293;
-    LCPPDELLPFC_LHGHGPPLMHP = 1281;
-    LCPPDELLPFC_HOPFKPAAOLF = 1233;
-    LCPPDELLPFC_BKMFAJCFOJH = 1249;
-    LCPPDELLPFC_CCMKCBBKEMI = 1244;
-    LCPPDELLPFC_IOMJKMCAIFN = 1215;
-    LCPPDELLPFC_KAIGPFCIIMI = 1278;
-    LCPPDELLPFC_BKCLALEKNFL = 1225;
-    LCPPDELLPFC_NPACCLDDFNN = 1240;
-    LCPPDELLPFC_LINJAMBKGBI = 1234;
-    LCPPDELLPFC_CPLPLIPGNMC = 1243;
-    LCPPDELLPFC_EJELMOICPKP = 1241;
-    LCPPDELLPFC_AHOPGIFHMNP = 1205;
-    LCPPDELLPFC_JAOAIEHCNJK = 1229;
-    LCPPDELLPFC_EHIPHLFDPAL = 1258;
-    LCPPDELLPFC_NOALKEOFMJD = 1284;
-    LCPPDELLPFC_IELGHNCAHPP = 1275;
-    LCPPDELLPFC_CCBEELOLNCG = 1221;
-    LCPPDELLPFC_BGJPJMLOCAA = 1245;
-    LCPPDELLPFC_DLPNDOBOOID = 1280;
-    LCPPDELLPFC_ENDBCNNJJHL = 1269;
-    LCPPDELLPFC_KNGEOOAHOHO = 1263;
-    LCPPDELLPFC_GGALJELEFJE = 1238;
-    LCPPDELLPFC_GIFCDHOJNMI = 1210;
-    LCPPDELLPFC_LMCGPIJBEGP = 1273;
-    LCPPDELLPFC_AKPMOPEFADP = 1235;
-    LCPPDELLPFC_HGCCJBHCDOE = 1212;
-    LCPPDELLPFC_GCNEMMGKPID = 1286;
+    CmdMissionType_NLCDGIPGFDJ = 0;
+    CmdMissionType_MissionRewardScNotify = 1288;
+    CmdMissionType_FinishStoryMissionCsReq = 1293;
+    CmdMissionType_LHGHGPPLMHP = 1281;
+    CmdMissionType_FinishCosumeItemMissionCsReq = 1233;
+    CmdMissionType_BKMFAJCFOJH = 1249;
+    CmdMissionType_CCMKCBBKEMI = 1244;
+    CmdMissionType_IOMJKMCAIFN = 1215;
+    CmdMissionType_GetMissionDataScRsp = 1278;
+    CmdMissionType_GetMissionDataCsReq = 1225;
+    CmdMissionType_MissionGroupWarnScNotify = 1240;
+    CmdMissionType_MainMissionAcceptNotify = 1234;
+    CmdMissionType_AcceptMainMissionScRsp = 1243;
+    CmdMissionType_StartFinishMainMissionScNotify = 1241;
+    CmdMissionType_StartFinishSubMissionScNotify = 1205;
+    CmdMissionType_JAOAIEHCNJK = 1229;
+    CmdMissionType_FinishTalkMissionScRsp = 1258;
+    CmdMissionType_NOALKEOFMJD = 1284;
+    CmdMissionType_IELGHNCAHPP = 1275;
+    CmdMissionType_TeleportToMissionResetPointScRsp = 1221;
+    CmdMissionType_BGJPJMLOCAA = 1245;
+    CmdMissionType_SubMissionRewardScNotify = 1280;
+    CmdMissionType_GetMissionStatusScRsp = 1269;
+    CmdMissionType_GetMainMissionCustomValueScRsp = 1263;
+    CmdMissionType_GGALJELEFJE = 1238;
+    CmdMissionType_AcceptMainMissionCsReq = 1210;
+    CmdMissionType_LMCGPIJBEGP = 1273;
+    CmdMissionType_FinishedMissionScNotify = 1235;
+    CmdMissionType_HGCCJBHCDOE = 1212;
+    CmdMissionType_GCNEMMGKPID = 1286;
 }
 
 message FinishCosumeItemMissionCsReq {

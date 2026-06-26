@@ -32,16 +32,18 @@ namespace March7thHoney.Proto {
             "ZUluZm8SJQoGc3RhdHVzGAcgASgOMhUuQ29udGVudFBhY2thZ2VTdGF0dXMS",
             "EgoKY29udGVudF9pZBgPIAEoDSJDCh5Db250ZW50UGFja2FnZVN5bmNEYXRh",
             "U2NOb3RpZnkSIQoEZGF0YRgCIAEoCzITLkNvbnRlbnRQYWNrYWdlRGF0YSIg",
-            "Ch5Db250ZW50UGFja2FnZVRyYW5zZmVyU2NOb3RpZnkqrAEKFUNtZENvbnRl",
-            "bnRQYWNrYWdlVHlwZRIbChdQS0tDTENORlBMRV9OTENER0lQR0ZEShAAEhwK",
-            "F1BLS0NMQ05GUExFX0xJR0dBSEVKQkNNEPw6EhwKF1BLS0NMQ05GUExFX0RB",
-            "S0FOUEpNTEVBEPE6EhwKF1BLS0NMQ05GUExFX0RPREFKSU5IRUdBENU6EhwK",
-            "F1BLS0NMQ05GUExFX09DRkVJQ05PQlBDEOM6KrkBChRDb250ZW50UGFja2Fn",
-            "ZVN0YXR1cxIdChlDb250ZW50UGFja2FnZVN0YXR1c19Ob25lEAASHQoZQ29u",
-            "dGVudFBhY2thZ2VTdGF0dXNfSW5pdBABEh4KGkNvbnRlbnRQYWNrYWdlU3Rh",
-            "dHVzX0RvaW5nEAISIQodQ29udGVudFBhY2thZ2VTdGF0dXNfRmluaXNoZWQQ",
-            "AxIgChxDb250ZW50UGFja2FnZVN0YXR1c19SZWxlYXNlEARCFqoCE01hcmNo",
-            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "Ch5Db250ZW50UGFja2FnZVRyYW5zZmVyU2NOb3RpZnkqkwIKFUNtZENvbnRl",
+            "bnRQYWNrYWdlVHlwZRIlCiFDbWRDb250ZW50UGFja2FnZVR5cGVfTkxDREdJ",
+            "UEdGREoQABI5CjRDbWRDb250ZW50UGFja2FnZVR5cGVfQ29udGVudFBhY2th",
+            "Z2VUcmFuc2ZlclNjTm90aWZ5EPw6EjkKNENtZENvbnRlbnRQYWNrYWdlVHlw",
+            "ZV9Db250ZW50UGFja2FnZVN5bmNEYXRhU2NOb3RpZnkQ8ToSJgohQ21kQ29u",
+            "dGVudFBhY2thZ2VUeXBlX0RPREFKSU5IRUdBENU6EjUKMENtZENvbnRlbnRQ",
+            "YWNrYWdlVHlwZV9Db250ZW50UGFja2FnZUdldERhdGFTY1JzcBDjOiq5AQoU",
+            "Q29udGVudFBhY2thZ2VTdGF0dXMSHQoZQ29udGVudFBhY2thZ2VTdGF0dXNf",
+            "Tm9uZRAAEh0KGUNvbnRlbnRQYWNrYWdlU3RhdHVzX0luaXQQARIeChpDb250",
+            "ZW50UGFja2FnZVN0YXR1c19Eb2luZxACEiEKHUNvbnRlbnRQYWNrYWdlU3Rh",
+            "dHVzX0ZpbmlzaGVkEAMSIAocQ29udGVudFBhY2thZ2VTdGF0dXNfUmVsZWFz",
+            "ZRAEQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdContentPackageType), typeof(global::March7thHoney.Proto.ContentPackageStatus), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -57,11 +59,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdContentPackageType {
-    [pbr::OriginalName("PKKCLCNFPLE_NLCDGIPGFDJ")] PkkclcnfpleNlcdgipgfdj = 0,
-    [pbr::OriginalName("PKKCLCNFPLE_LIGGAHEJBCM")] PkkclcnfpleLiggahejbcm = 7548,
-    [pbr::OriginalName("PKKCLCNFPLE_DAKANPJMLEA")] PkkclcnfpleDakanpjmlea = 7537,
-    [pbr::OriginalName("PKKCLCNFPLE_DODAJINHEGA")] PkkclcnfpleDodajinhega = 7509,
-    [pbr::OriginalName("PKKCLCNFPLE_OCFEICNOBPC")] PkkclcnfpleOcfeicnobpc = 7523,
+    [pbr::OriginalName("CmdContentPackageType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdContentPackageType_ContentPackageTransferScNotify")] ContentPackageTransferScNotify = 7548,
+    [pbr::OriginalName("CmdContentPackageType_ContentPackageSyncDataScNotify")] ContentPackageSyncDataScNotify = 7537,
+    [pbr::OriginalName("CmdContentPackageType_DODAJINHEGA")] Dodajinhega = 7509,
+    [pbr::OriginalName("CmdContentPackageType_ContentPackageGetDataScRsp")] ContentPackageGetDataScRsp = 7523,
   }
 
   public enum ContentPackageStatus {

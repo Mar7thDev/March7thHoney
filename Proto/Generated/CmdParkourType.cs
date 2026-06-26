@@ -49,18 +49,20 @@ namespace March7thHoney.Proto {
             "Q09JTUJDQk1OSUUSIQoLSk5NRktKSENPRUcYBSADKAsyDC5DT0lNQkNCTU5J",
             "RRIPCgdyZXRjb2RlGAggASgNIlAKFlBhcmtvdXJTdGFydExldmVsU2NSc3AS",
             "EAoIbGV2ZWxfaWQYAiABKA0SEwoLQ0VLS0pIQk5FT0QYBCABKA0SDwoHcmV0",
-            "Y29kZRgKIAEoDSqdAgoOQ21kUGFya291clR5cGUSGwoXS0NMREZNTkVDSkJf",
-            "TkxDREdJUEdGREoQABIcChdLQ0xERk1ORUNKQl9BR09LS0JBS0VCQRDAQRIc",
-            "ChdLQ0xERk1ORUNKQl9FSU5GUEJIQUpGShDNQRIcChdLQ0xERk1ORUNKQl9B",
-            "REhFTktMSEJLRRDEQRIcChdLQ0xERk1ORUNKQl9HTUJLR0ZPSU9QSRDOQRIc",
-            "ChdLQ0xERk1ORUNKQl9JQ0pDT0JEUE5HTxDIQRIcChdLQ0xERk1ORUNKQl9H",
-            "QUpPSkhDTk5NTxC+QRIcChdLQ0xERk1ORUNKQl9HTU9ETE9LQUhMQRC/QRIc",
-            "ChdLQ0xERk1ORUNKQl9QR0lCSEtDQUVBSxDBQSpkCgtFSkVHSEpQQU1QSRIb",
-            "ChdFSkVHSEpQQU1QSV9CQUNLSE9MTEhEQxAAEhsKF0VKRUdISlBBTVBJX0hB",
-            "QUZJSlBFSk9PEAESGwoXRUpFR0hKUEFNUElfRlBQREhETEdBQ00QAipkCgtP",
-            "SEZFQ0tLQURFSxIbChdPSEZFQ0tLQURFS19OTENER0lQR0ZEShAAEhsKF09I",
-            "RkVDS0tBREVLX0NJSEZHSkRDSElBEAESGwoXT0hGRUNLS0FERUtfSU5DTEhI",
-            "REZDRUwQAkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "Y29kZRgKIAEoDSrwAgoOQ21kUGFya291clR5cGUSHgoaQ21kUGFya291clR5",
+            "cGVfTkxDREdJUEdGREoQABIoCiNDbWRQYXJrb3VyVHlwZV9QYXJrb3VyRW5k",
+            "TGV2ZWxTY1JzcBDAQRIqCiVDbWRQYXJrb3VyVHlwZV9QYXJrb3VyU3RhcnRM",
+            "ZXZlbFNjUnNwEM1BEicKIkNtZFBhcmtvdXJUeXBlX1BhcmtvdXJHZXREYXRh",
+            "U2NSc3AQxEESLAonQ21kUGFya291clR5cGVfQWN0aXZpdHlQYXJrb3VySW5p",
+            "dENzUmVxEM5BEi4KKUNtZFBhcmtvdXJUeXBlX1BhcmtvdXJHZXRSYW5raW5n",
+            "SW5mb1NjUnNwEMhBEh8KGkNtZFBhcmtvdXJUeXBlX0dBSk9KSENOTk1PEL5B",
+            "Eh8KGkNtZFBhcmtvdXJUeXBlX0dNT0RMT0tBSExBEL9BEh8KGkNtZFBhcmtv",
+            "dXJUeXBlX1BHSUJIS0NBRUFLEMFBKmQKC0VKRUdISlBBTVBJEhsKF0VKRUdI",
+            "SlBBTVBJX0JBQ0tIT0xMSERDEAASGwoXRUpFR0hKUEFNUElfSEFBRklKUEVK",
+            "T08QARIbChdFSkVHSEpQQU1QSV9GUFBESERMR0FDTRACKmQKC09IRkVDS0tB",
+            "REVLEhsKF09IRkVDS0tBREVLX05MQ0RHSVBHRkRKEAASGwoXT0hGRUNLS0FE",
+            "RUtfQ0lIRkdKRENISUEQARIbChdPSEZFQ0tLQURFS19JTkNMSEhERkNFTBAC",
+            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdParkourType), typeof(global::March7thHoney.Proto.EJEGHJPAMPI), typeof(global::March7thHoney.Proto.OHFECKKADEK), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -82,15 +84,15 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdParkourType {
-    [pbr::OriginalName("KCLDFMNECJB_NLCDGIPGFDJ")] KcldfmnecjbNlcdgipgfdj = 0,
-    [pbr::OriginalName("KCLDFMNECJB_AGOKKBAKEBA")] KcldfmnecjbAgokkbakeba = 8384,
-    [pbr::OriginalName("KCLDFMNECJB_EINFPBHAJFJ")] KcldfmnecjbEinfpbhajfj = 8397,
-    [pbr::OriginalName("KCLDFMNECJB_ADHENKLHBKE")] KcldfmnecjbAdhenklhbke = 8388,
-    [pbr::OriginalName("KCLDFMNECJB_GMBKGFOIOPI")] KcldfmnecjbGmbkgfoiopi = 8398,
-    [pbr::OriginalName("KCLDFMNECJB_ICJCOBDPNGO")] KcldfmnecjbIcjcobdpngo = 8392,
-    [pbr::OriginalName("KCLDFMNECJB_GAJOJHCNNMO")] KcldfmnecjbGajojhcnnmo = 8382,
-    [pbr::OriginalName("KCLDFMNECJB_GMODLOKAHLA")] KcldfmnecjbGmodlokahla = 8383,
-    [pbr::OriginalName("KCLDFMNECJB_PGIBHKCAEAK")] KcldfmnecjbPgibhkcaeak = 8385,
+    [pbr::OriginalName("CmdParkourType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdParkourType_ParkourEndLevelScRsp")] ParkourEndLevelScRsp = 8384,
+    [pbr::OriginalName("CmdParkourType_ParkourStartLevelScRsp")] ParkourStartLevelScRsp = 8397,
+    [pbr::OriginalName("CmdParkourType_ParkourGetDataScRsp")] ParkourGetDataScRsp = 8388,
+    [pbr::OriginalName("CmdParkourType_ActivityParkourInitCsReq")] ActivityParkourInitCsReq = 8398,
+    [pbr::OriginalName("CmdParkourType_ParkourGetRankingInfoScRsp")] ParkourGetRankingInfoScRsp = 8392,
+    [pbr::OriginalName("CmdParkourType_GAJOJHCNNMO")] Gajojhcnnmo = 8382,
+    [pbr::OriginalName("CmdParkourType_GMODLOKAHLA")] Gmodlokahla = 8383,
+    [pbr::OriginalName("CmdParkourType_PGIBHKCAEAK")] Pgibhkcaeak = 8385,
   }
 
   public enum EJEGHJPAMPI {

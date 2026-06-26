@@ -17,18 +17,18 @@ message ChangeScriptEmotionScRsp {
 }
 
 enum CmdHeartdialType {
-    FPGIGBAMDDP_NLCDGIPGFDJ = 0;
-    FPGIGBAMDDP_KBBEFEENEMM = 6388;
-    FPGIGBAMDDP_GHFHOGCJHKE = 6358;
-    FPGIGBAMDDP_FJPGGNACGAI = 6326;
-    FPGIGBAMDDP_FDMDPOBOMAN = 6381;
-    FPGIGBAMDDP_FLGCJAPBMPP = 6325;
-    FPGIGBAMDDP_KILEADLCHKK = 6313;
-    FPGIGBAMDDP_EFKGFHOBKGL = 6347;
-    FPGIGBAMDDP_OILDFGBHMOB = 6371;
-    FPGIGBAMDDP_LPHCKIBDOGM = 6393;
-    FPGIGBAMDDP_BHEFHAPIJAP = 6386;
-    FPGIGBAMDDP_BMGPFMEDDIE = 6378;
+    CmdHeartdialType_NLCDGIPGFDJ = 0;
+    CmdHeartdialType_KBBEFEENEMM = 6388;
+    CmdHeartdialType_ChangeScriptEmotionScRsp = 6358;
+    CmdHeartdialType_HeartDialScriptChangeScNotify = 6326;
+    CmdHeartdialType_SubmitEmotionItemScRsp = 6381;
+    CmdHeartdialType_GetHeartDialInfoCsReq = 6325;
+    CmdHeartdialType_HeartDialTraceScriptCsReq = 6313;
+    CmdHeartdialType_FinishEmotionDialoguePerformanceScRsp = 6347;
+    CmdHeartdialType_HeartDialTraceScriptScRsp = 6371;
+    CmdHeartdialType_ChangeScriptEmotionCsReq = 6393;
+    CmdHeartdialType_FinishEmotionDialoguePerformanceCsReq = 6386;
+    CmdHeartdialType_GetHeartDialInfoScRsp = 6378;
 }
 
 message EAJEMNNNEBM {

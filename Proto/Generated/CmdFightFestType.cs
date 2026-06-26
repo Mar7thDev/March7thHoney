@@ -45,18 +45,21 @@ namespace March7thHoney.Proto {
             "CgtCR0xJTUNCR0xBShIbChdCR0xJTUNCR0xBSl9QSUNMSUdFQUpGThAAEhsK",
             "F0JHTElNQ0JHTEFKX09HUE5PREhFTktOEAESGwoXQkdMSU1DQkdMQUpfSlBE",
             "QkRMRUVIR0sQAhIbChdCR0xJTUNCR0xBSl9CTUhNTUlNT0FJShADEhsKF0JH",
-            "TElNQ0JHTEFKX0RDR0FQTkdDQ0VIEAQqnwIKEENtZEZpZ2h0RmVzdFR5cGUS",
-            "GwoXRkxMS0hETUhHRUpfTkxDREdJUEdGREoQABIcChdGTExLSERNSEdFSl9N",
-            "TkZESEdJRFBGSxDpOBIcChdGTExLSERNSEdFSl9BQURPT0VFSUhJSRDZOBIc",
-            "ChdGTExLSERNSEdFSl9BQUpIQUhHTkRPRhDVOBIcChdGTExLSERNSEdFSl9O",
-            "SkhQSk9GTUlQSRD+OBIcChdGTExLSERNSEdFSl9CTUVQSE1ORU9ERxDlOBIc",
-            "ChdGTExLSERNSEdFSl9KTklCSEdPSkpNRBD3OBIcChdGTExLSERNSEdFSl9O",
-            "S0RDTUVKTUlLTxCCORIcChdGTExLSERNSEdFSl9BT0ZPTUpOTUlJTRDbOCqd",
-            "AQoNRmlnaHRGZXN0VHlwZRIbChdPR09KTEJOSktDTl9OTENER0lQR0ZEShAA",
-            "EhsKF09HT0pMQk5KS0NOX0lCQUFETklORkNHEAESGAoUT0dPSkxCTkpLQ05f",
-            "c2NvcmVfaWQQAhIbChdPR09KTEJOSktDTl9PQ0RMUERETUNMUBADEhsKF09H",
-            "T0pMQk5KS0NOX0hOR0JGR0FMTEJJEARCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
-            "dG9iBnByb3RvMw=="));
+            "TElNQ0JHTEFKX0RDR0FQTkdDQ0VIEAQqqgMKEENtZEZpZ2h0RmVzdFR5cGUS",
+            "IAocQ21kRmlnaHRGZXN0VHlwZV9OTENER0lQR0ZEShAAEisKJkNtZEZpZ2h0",
+            "RmVzdFR5cGVfR2V0RmlnaHRGZXN0RGF0YVNjUnNwEOk4Ei8KKkNtZEZpZ2h0",
+            "RmVzdFR5cGVfRmlnaHRGZXN0VXBkYXRlQ29pbk5vdGlmeRDZOBI6CjVDbWRG",
+            "aWdodEZlc3RUeXBlX0ZpZ2h0RmVzdFVwZGF0ZUNoYWxsZW5nZVJlY29yZE5v",
+            "dGlmeRDVOBIpCiRDbWRGaWdodEZlc3RUeXBlX1N0YXJ0RmlnaHRGZXN0U2NS",
+            "c3AQ/jgSMAorQ21kRmlnaHRGZXN0VHlwZV9GaWdodEZlc3RTY29yZVVwZGF0",
+            "ZU5vdGlmeRDlOBIhChxDbWRGaWdodEZlc3RUeXBlX0pOSUJIR09KSk1EEPc4",
+            "EjAKK0NtZEZpZ2h0RmVzdFR5cGVfRmlnaHRGZXN0VW5sb2NrU2tpbGxOb3Rp",
+            "ZnkQgjkSKAojQ21kRmlnaHRGZXN0VHlwZV9GaWdodEZlc3RJbml0Q3NSZXEQ",
+            "2zgqnQEKDUZpZ2h0RmVzdFR5cGUSGwoXT0dPSkxCTkpLQ05fTkxDREdJUEdG",
+            "REoQABIbChdPR09KTEJOSktDTl9JQkFBRE5JTkZDRxABEhgKFE9HT0pMQk5K",
+            "S0NOX3Njb3JlX2lkEAISGwoXT0dPSkxCTkpLQ05fT0NETFBERE1DTFAQAxIb",
+            "ChdPR09KTEJOSktDTl9ITkdCRkdBTExCSRAEQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.BGLIMCBGLAJ), typeof(global::March7thHoney.Proto.CmdFightFestType), typeof(global::March7thHoney.Proto.FightFestType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -83,15 +86,15 @@ namespace March7thHoney.Proto {
   }
 
   public enum CmdFightFestType {
-    [pbr::OriginalName("FLLKHDMHGEJ_NLCDGIPGFDJ")] FllkhdmhgejNlcdgipgfdj = 0,
-    [pbr::OriginalName("FLLKHDMHGEJ_MNFDHGIDPFK")] FllkhdmhgejMnfdhgidpfk = 7273,
-    [pbr::OriginalName("FLLKHDMHGEJ_AADOOEEIHII")] FllkhdmhgejAadooeeihii = 7257,
-    [pbr::OriginalName("FLLKHDMHGEJ_AAJHAHGNDOF")] FllkhdmhgejAajhahgndof = 7253,
-    [pbr::OriginalName("FLLKHDMHGEJ_NJHPJOFMIPI")] FllkhdmhgejNjhpjofmipi = 7294,
-    [pbr::OriginalName("FLLKHDMHGEJ_BMEPHMNEODG")] FllkhdmhgejBmephmneodg = 7269,
-    [pbr::OriginalName("FLLKHDMHGEJ_JNIBHGOJJMD")] FllkhdmhgejJnibhgojjmd = 7287,
-    [pbr::OriginalName("FLLKHDMHGEJ_NKDCMEJMIKO")] FllkhdmhgejNkdcmejmiko = 7298,
-    [pbr::OriginalName("FLLKHDMHGEJ_AOFOMJNMIIM")] FllkhdmhgejAofomjnmiim = 7259,
+    [pbr::OriginalName("CmdFightFestType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdFightFestType_GetFightFestDataScRsp")] GetFightFestDataScRsp = 7273,
+    [pbr::OriginalName("CmdFightFestType_FightFestUpdateCoinNotify")] FightFestUpdateCoinNotify = 7257,
+    [pbr::OriginalName("CmdFightFestType_FightFestUpdateChallengeRecordNotify")] FightFestUpdateChallengeRecordNotify = 7253,
+    [pbr::OriginalName("CmdFightFestType_StartFightFestScRsp")] StartFightFestScRsp = 7294,
+    [pbr::OriginalName("CmdFightFestType_FightFestScoreUpdateNotify")] FightFestScoreUpdateNotify = 7269,
+    [pbr::OriginalName("CmdFightFestType_JNIBHGOJJMD")] Jnibhgojjmd = 7287,
+    [pbr::OriginalName("CmdFightFestType_FightFestUnlockSkillNotify")] FightFestUnlockSkillNotify = 7298,
+    [pbr::OriginalName("CmdFightFestType_FightFestInitCsReq")] FightFestInitCsReq = 7259,
   }
 
   public enum FightFestType {

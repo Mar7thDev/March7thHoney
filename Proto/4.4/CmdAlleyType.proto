@@ -93,40 +93,40 @@ message CKJACADHCCC {
 }
 
 enum CmdAlleyType {
-    ENHFBPKPFDI_NLCDGIPGFDJ = 0;
-    ENHFBPKPFDI_GALIHKOCKCG = 4772;
-    ENHFBPKPFDI_PMAGDAOAAGL = 4748;
-    ENHFBPKPFDI_LIIJOEBAKKD = 4705;
-    ENHFBPKPFDI_MFPGIFEJJFB = 4784;
-    ENHFBPKPFDI_EDAFKMANPKB = 4741;
-    ENHFBPKPFDI_MKEPFJEJLMP = 4773;
-    ENHFBPKPFDI_HKIDPKBBOLM = 4786;
-    ENHFBPKPFDI_DLIPLGDIAEJ = 4765;
-    ENHFBPKPFDI_NKPAMGPIJGI = 4771;
-    ENHFBPKPFDI_ONFGKCPEBII = 4747;
-    ENHFBPKPFDI_AIJGLKLPJEC = 4758;
-    ENHFBPKPFDI_FABMCLAHAKE = 4769;
-    ENHFBPKPFDI_FPMAOIJBGFK = 4710;
-    ENHFBPKPFDI_MLKIKMBONLC = 4742;
-    ENHFBPKPFDI_AEHPCEPEDBF = 4712;
-    ENHFBPKPFDI_GCHGEKDJMJM = 4780;
-    ENHFBPKPFDI_GHICLFBGFDL = 4711;
-    ENHFBPKPFDI_MOIBCDFHFOI = 4775;
-    ENHFBPKPFDI_LDLFEKKAFLH = 4744;
-    ENHFBPKPFDI_IAFGJFLOBKJ = 4738;
-    ENHFBPKPFDI_KOMDLNFMHDL = 4725;
-    ENHFBPKPFDI_ECBOPKCDPBI = 4735;
-    ENHFBPKPFDI_EKFCIELICLK = 4721;
-    ENHFBPKPFDI_DIMKKLNHPJA = 4713;
-    ENHFBPKPFDI_IMNILJGFFHE = 4778;
-    ENHFBPKPFDI_MCKCKFGIFNC = 4733;
-    ENHFBPKPFDI_DAILBHFCCKF = 4726;
-    ENHFBPKPFDI_NJLCOIMMFCL = 4796;
-    ENHFBPKPFDI_DFHGDOOHCHN = 4730;
-    ENHFBPKPFDI_MECKKCAPHFP = 4740;
-    ENHFBPKPFDI_MONJHMOILDM = 4736;
-    ENHFBPKPFDI_ENAKMNLCNGN = 4734;
-    ENHFBPKPFDI_OOLAGMBOCDN = 4793;
+    CmdAlleyType_NLCDGIPGFDJ = 0;
+    CmdAlleyType_GALIHKOCKCG = 4772;
+    CmdAlleyType_AlleyOrderChangedScNotify = 4748;
+    CmdAlleyType_AlleyShipmentEventEffectsScNotify = 4705;
+    CmdAlleyType_MFPGIFEJJFB = 4784;
+    CmdAlleyType_GetSaveLogisticsMapCsReq = 4741;
+    CmdAlleyType_LogisticsDetonateStarSkiffCsReq = 4773;
+    CmdAlleyType_HKIDPKBBOLM = 4786;
+    CmdAlleyType_PrestigeLevelUpScRsp = 4765;
+    CmdAlleyType_NKPAMGPIJGI = 4771;
+    CmdAlleyType_ONFGKCPEBII = 4747;
+    CmdAlleyType_LogisticsGameScRsp = 4758;
+    CmdAlleyType_FABMCLAHAKE = 4769;
+    CmdAlleyType_GetSaveLogisticsMapScRsp = 4710;
+    CmdAlleyType_MLKIKMBONLC = 4742;
+    CmdAlleyType_AEHPCEPEDBF = 4712;
+    CmdAlleyType_GCHGEKDJMJM = 4780;
+    CmdAlleyType_GHICLFBGFDL = 4711;
+    CmdAlleyType_ActivityRaidPlacingResultCsReq = 4775;
+    CmdAlleyType_ActivityRaidPlacingGameScRsp = 4744;
+    CmdAlleyType_AlleyPlacingGameScRsp = 4738;
+    CmdAlleyType_AlleyInitCsReq = 4725;
+    CmdAlleyType_LogisticsScoreRewardSyncInfoScNotify = 4735;
+    CmdAlleyType_LogisticsInfoScNotify = 4721;
+    CmdAlleyType_DIMKKLNHPJA = 4713;
+    CmdAlleyType_GetAlleyInfoScRsp = 4778;
+    CmdAlleyType_AlleyPlacingGameCsReq = 4733;
+    CmdAlleyType_AlleyEventChangeNotify = 4726;
+    CmdAlleyType_AlleyTakeEventRewardScRsp = 4796;
+    CmdAlleyType_AlleyFundsScNotify = 4730;
+    CmdAlleyType_TakePrestigeRewardScRsp = 4740;
+    CmdAlleyType_MONJHMOILDM = 4736;
+    CmdAlleyType_ENAKMNLCNGN = 4734;
+    CmdAlleyType_OOLAGMBOCDN = 4793;
 }
 
 message DPFGBJFOFCE {

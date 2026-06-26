@@ -47,11 +47,11 @@ enum BigDataRecommendType {
 }
 
 enum CmdRecommendType {
-    APDINKHBHGC_NLCDGIPGFDJ = 0;
-    APDINKHBHGC_DFIEHBOAJDG = 2403;
-    APDINKHBHGC_CECCNMFJEPB = 2407;
-    APDINKHBHGC_CMNBINBILDO = 2410;
-    APDINKHBHGC_DDHLPICBNLN = 2421;
+    CmdRecommendType_NLCDGIPGFDJ = 0;
+    CmdRecommendType_GetBigDataRecommendCsReq = 2403;
+    CmdRecommendType_GetBigDataRecommendScRsp = 2407;
+    CmdRecommendType_BigDataAllRecommendCSReq = 2410;
+    CmdRecommendType_GetBigDataAllRecommendScRsp = 2421;
 }
 
 message EquipmentRecommend {

@@ -12,25 +12,25 @@ message ALNGMGOJDOA {
 }
 
 enum CmdMatchThreeModuleType {
-    PLHKNANMNAO_NLCDGIPGFDJ = 0;
-    PLHKNANMNAO_PBCJMGFDJHF = 7429;
-    PLHKNANMNAO_LKHPOJKAGPC = 7420;
-    PLHKNANMNAO_HNCILMAPBIG = 7448;
-    PLHKNANMNAO_FJDEJHJABEH = 7410;
-    PLHKNANMNAO_OBNKGECIBOP = 7409;
-    PLHKNANMNAO_ALHJPJFKJHN = 7406;
-    PLHKNANMNAO_LIIDFPAJNMP = 7414;
-    PLHKNANMNAO_CMDLIDMKFBA = 7424;
-    PLHKNANMNAO_MJIGCOMCDAP = 7433;
-    PLHKNANMNAO_IDOCIKIILOL = 7407;
-    PLHKNANMNAO_HKFGEMAJOIO = 7421;
-    PLHKNANMNAO_AFFBEPCCEAL = 7403;
-    PLHKNANMNAO_NFLKLMFACBH = 7437;
-    PLHKNANMNAO_FEDBNCIOJDJ = 7423;
-    PLHKNANMNAO_MGLIOEFBILD = 7417;
-    PLHKNANMNAO_EMCHCAEILJE = 7419;
-    PLHKNANMNAO_MGGCECIODMN = 7402;
-    PLHKNANMNAO_LCDBCAONANG = 7444;
+    CmdMatchThreeModuleType_NLCDGIPGFDJ = 0;
+    CmdMatchThreeModuleType_PBCJMGFDJHF = 7429;
+    CmdMatchThreeModuleType_LKHPOJKAGPC = 7420;
+    CmdMatchThreeModuleType_MatchThreeSetBirdPosCsReq = 7448;
+    CmdMatchThreeModuleType_MatchThreeV2GetDataScRsp = 7410;
+    CmdMatchThreeModuleType_MatchThreeGetDataCsReq = 7409;
+    CmdMatchThreeModuleType_MatchThreeV2ScNotify = 7406;
+    CmdMatchThreeModuleType_LIIDFPAJNMP = 7414;
+    CmdMatchThreeModuleType_MatchThreeV2BattleItemLevelUpScRsp = 7424;
+    CmdMatchThreeModuleType_MatchThreeV2SetBirdPosScRsp = 7433;
+    CmdMatchThreeModuleType_IDOCIKIILOL = 7407;
+    CmdMatchThreeModuleType_MatchThreeV2BattleItemLevelUpCsReq = 7421;
+    CmdMatchThreeModuleType_AFFBEPCCEAL = 7403;
+    CmdMatchThreeModuleType_MatchThreeLevelEndCsReq = 7437;
+    CmdMatchThreeModuleType_MatchThreeGetDataDataScRsp = 7423;
+    CmdMatchThreeModuleType_MatchThreeV2LevelEndScRsp = 7417;
+    CmdMatchThreeModuleType_MatchThreeSyncDataScNotify = 7419;
+    CmdMatchThreeModuleType_MatchThreeV2PvpFinishScNotify = 7402;
+    CmdMatchThreeModuleType_MatchThreeLevelEndScRsp = 7444;
 }
 
 message DHFGMHFEHEB {

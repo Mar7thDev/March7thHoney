@@ -11,18 +11,18 @@ message BattleReplayScNotify {
 }
 
 enum CmdBattleType {
-    EJCOIDCJDHM_NLCDGIPGFDJ = 0;
-    EJCOIDCJDHM_KGEMPCLBNPH = 193;
-    EJCOIDCJDHM_LKMHOLIBOEJ = 138;
-    EJCOIDCJDHM_BEEMPBJJDKB = 139;
-    EJCOIDCJDHM_LNEEPJNLDAI = 126;
-    EJCOIDCJDHM_CJGIDPPDCJB = 125;
-    EJCOIDCJDHM_JFBOMFNODNL = 186;
-    EJCOIDCJDHM_KNLBHKNCDLF = 178;
-    EJCOIDCJDHM_FMFLBPOKJDB = 188;
-    EJCOIDCJDHM_NPMINAPIGNJ = 158;
-    EJCOIDCJDHM_ELJAMCIOLCM = 181;
-    EJCOIDCJDHM_OFJPHHNKJMG = 147;
+    CmdBattleType_NLCDGIPGFDJ = 0;
+    CmdBattleType_KGEMPCLBNPH = 193;
+    CmdBattleType_LKMHOLIBOEJ = 138;
+    CmdBattleType_BattleReplayScNotify = 139;
+    CmdBattleType_QuitBattleScNotify = 126;
+    CmdBattleType_CJGIDPPDCJB = 125;
+    CmdBattleType_JFBOMFNODNL = 186;
+    CmdBattleType_PVEBattleResultScRsp = 178;
+    CmdBattleType_GetCurBattleInfoCsReq = 188;
+    CmdBattleType_NPMINAPIGNJ = 158;
+    CmdBattleType_GetCurBattleInfoScRsp = 181;
+    CmdBattleType_OFJPHHNKJMG = 147;
 }
 
 message GetCurBattleInfoCsReq {

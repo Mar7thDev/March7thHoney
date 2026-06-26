@@ -10,12 +10,12 @@ message CBIKIIMGKHH {
 }
 
 enum CmdTelevisionActivityType {
-    EDAAOKDAEIF_NLCDGIPGFDJ = 0;
-    EDAAOKDAEIF_ELCCOAIKNIG = 6978;
-    EDAAOKDAEIF_HFFGOAMJHED = 6972;
-    EDAAOKDAEIF_KEBBPMBNAOL = 6962;
-    EDAAOKDAEIF_PPBKGPMHAGI = 6968;
-    EDAAOKDAEIF_ODHGCMKKKCN = 6977;
+    CmdTelevisionActivityType_NLCDGIPGFDJ = 0;
+    CmdTelevisionActivityType_ActivityTelevisionModuleInitCsReq = 6978;
+    CmdTelevisionActivityType_EnterTelevisionActivityStageCsReq = 6972;
+    CmdTelevisionActivityType_EnterTelevisionActivityStageScRsp = 6962;
+    CmdTelevisionActivityType_GetTelevisionActivityDataScRsp = 6968;
+    CmdTelevisionActivityType_TelevisionActivityBattleEndScNotify = 6977;
 }
 
 message EnterTelevisionActivityStageCsReq {

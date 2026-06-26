@@ -28,10 +28,10 @@ namespace March7thHoney.Proto {
             "cGxheVRva2VuQ3NSZXESEAoIc3RhZ2VfaWQYASABKA0SEwoLS0xJRkdKT0lM",
             "RUUYAyABKA0SIQoLcmVwbGF5X3R5cGUYByABKA4yDC5QQklFRkhLTkFGQRIT",
             "CgtQQk5JRU5OQ05PUBgJIAEoDRITCgtMTUZGTk5JR01NTxgKIAEoCRITCgtH",
-            "SU1HRE5KUFBEShgMIAEoCSpoCg1DbWRSZXBsYXlUeXBlEhsKF0dMSERLT0hI",
-            "RERLX05MQ0RHSVBHRkRKEAASHAoXR0xIREtPSEhEREtfQ01HSk9MT0xJTksQ",
-            "+hsSHAoXR0xIREtPSEhEREtfSURBQk1HSERISkgQxRtCFqoCE01hcmNoN3Ro",
-            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "SU1HRE5KUFBEShgMIAEoCSp2Cg1DbWRSZXBsYXlUeXBlEh0KGUNtZFJlcGxh",
+            "eVR5cGVfTkxDREdJUEdGREoQABIeChlDbWRSZXBsYXlUeXBlX0NNR0pPTE9M",
+            "SU5LEPobEiYKIUNtZFJlcGxheVR5cGVfR2V0UmVwbGF5VG9rZW5Dc1JlcRDF",
+            "G0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdReplayType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -43,9 +43,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdReplayType {
-    [pbr::OriginalName("GLHDKOHHDDK_NLCDGIPGFDJ")] GlhdkohhddkNlcdgipgfdj = 0,
-    [pbr::OriginalName("GLHDKOHHDDK_CMGJOLOLINK")] GlhdkohhddkCmgjololink = 3578,
-    [pbr::OriginalName("GLHDKOHHDDK_IDABMGHDHJH")] GlhdkohhddkIdabmghdhjh = 3525,
+    [pbr::OriginalName("CmdReplayType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdReplayType_CMGJOLOLINK")] Cmgjololink = 3578,
+    [pbr::OriginalName("CmdReplayType_GetReplayTokenCsReq")] GetReplayTokenCsReq = 3525,
   }
 
   #endregion

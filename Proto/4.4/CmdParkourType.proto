@@ -24,15 +24,15 @@ message COIMBCBMNIE {
 }
 
 enum CmdParkourType {
-    KCLDFMNECJB_NLCDGIPGFDJ = 0;
-    KCLDFMNECJB_AGOKKBAKEBA = 8384;
-    KCLDFMNECJB_EINFPBHAJFJ = 8397;
-    KCLDFMNECJB_ADHENKLHBKE = 8388;
-    KCLDFMNECJB_GMBKGFOIOPI = 8398;
-    KCLDFMNECJB_ICJCOBDPNGO = 8392;
-    KCLDFMNECJB_GAJOJHCNNMO = 8382;
-    KCLDFMNECJB_GMODLOKAHLA = 8383;
-    KCLDFMNECJB_PGIBHKCAEAK = 8385;
+    CmdParkourType_NLCDGIPGFDJ = 0;
+    CmdParkourType_ParkourEndLevelScRsp = 8384;
+    CmdParkourType_ParkourStartLevelScRsp = 8397;
+    CmdParkourType_ParkourGetDataScRsp = 8388;
+    CmdParkourType_ActivityParkourInitCsReq = 8398;
+    CmdParkourType_ParkourGetRankingInfoScRsp = 8392;
+    CmdParkourType_GAJOJHCNNMO = 8382;
+    CmdParkourType_GMODLOKAHLA = 8383;
+    CmdParkourType_PGIBHKCAEAK = 8385;
 }
 
 enum EJEGHJPAMPI {

@@ -34,12 +34,14 @@ namespace March7thHoney.Proto {
             "KA0SFAoMcm9sbF9zaG9wX2lkGAogASgNIm8KF1Rha2VSb2xsU2hvcFJld2Fy",
             "ZFNjUnNwEhkKBnJld2FyZBgBIAEoCzIJLkl0ZW1MaXN0EhIKCmdyb3VwX3R5",
             "cGUYAyABKA0SFAoMcm9sbF9zaG9wX2lkGAUgASgNEg8KB3JldGNvZGUYCSAB",
-            "KA0q4gEKD0NtZFJvbGxTaG9wVHlwZRIbChdPSENNTEJQT05PQl9OTENER0lQ",
-            "R0ZEShAAEhwKF09IQ01MQlBPTk9CX01HS1BCSkRGRUZIEIA2EhwKF09IQ01M",
-            "QlBPTk9CX09BT0xLQU1FRUpBEPc1EhwKF09IQ01MQlBPTk9CX0ZOSEdJSUVE",
-            "TU9MEPY1EhwKF09IQ01MQlBPTk9CX0pMTUFBUElMUEZNEPw1EhwKF09IQ01M",
-            "QlBPTk9CX0VPS0FJS0FKSE9QEIU2EhwKF09IQ01MQlBPTk9CX0lITU1FTktK",
-            "SkdDEIY2QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "KA0qrgIKD0NtZFJvbGxTaG9wVHlwZRIfChtDbWRSb2xsU2hvcFR5cGVfTkxD",
+            "REdJUEdGREoQABIrCiZDbWRSb2xsU2hvcFR5cGVfRG9HYWNoYUluUm9sbFNo",
+            "b3BTY1JzcBCANhInCiJDbWRSb2xsU2hvcFR5cGVfUm9sbFNob3BHYWNoYUNz",
+            "UmVxEPc1EiAKG0NtZFJvbGxTaG9wVHlwZV9GTkhHSUlFRE1PTBD2NRIpCiRD",
+            "bWRSb2xsU2hvcFR5cGVfR2V0Um9sbFNob3BJbmZvU2NSc3AQ/DUSLAonQ21k",
+            "Um9sbFNob3BUeXBlX1Rha2VSb2xsU2hvcFJld2FyZFNjUnNwEIU2EikKJENt",
+            "ZFJvbGxTaG9wVHlwZV9HZXRSb2xsU2hvcEluZm9Dc1JlcRCGNkIWqgITTWFy",
+            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRollShopType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -54,13 +56,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRollShopType {
-    [pbr::OriginalName("OHCMLBPONOB_NLCDGIPGFDJ")] OhcmlbponobNlcdgipgfdj = 0,
-    [pbr::OriginalName("OHCMLBPONOB_MGKPBJDFEFH")] OhcmlbponobMgkpbjdfefh = 6912,
-    [pbr::OriginalName("OHCMLBPONOB_OAOLKAMEEJA")] OhcmlbponobOaolkameeja = 6903,
-    [pbr::OriginalName("OHCMLBPONOB_FNHGIIEDMOL")] OhcmlbponobFnhgiiedmol = 6902,
-    [pbr::OriginalName("OHCMLBPONOB_JLMAAPILPFM")] OhcmlbponobJlmaapilpfm = 6908,
-    [pbr::OriginalName("OHCMLBPONOB_EOKAIKAJHOP")] OhcmlbponobEokaikajhop = 6917,
-    [pbr::OriginalName("OHCMLBPONOB_IHMMENKJJGC")] OhcmlbponobIhmmenkjjgc = 6918,
+    [pbr::OriginalName("CmdRollShopType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdRollShopType_DoGachaInRollShopScRsp")] DoGachaInRollShopScRsp = 6912,
+    [pbr::OriginalName("CmdRollShopType_RollShopGachaCsReq")] RollShopGachaCsReq = 6903,
+    [pbr::OriginalName("CmdRollShopType_FNHGIIEDMOL")] Fnhgiiedmol = 6902,
+    [pbr::OriginalName("CmdRollShopType_GetRollShopInfoScRsp")] GetRollShopInfoScRsp = 6908,
+    [pbr::OriginalName("CmdRollShopType_TakeRollShopRewardScRsp")] TakeRollShopRewardScRsp = 6917,
+    [pbr::OriginalName("CmdRollShopType_GetRollShopInfoCsReq")] GetRollShopInfoCsReq = 6918,
   }
 
   #endregion

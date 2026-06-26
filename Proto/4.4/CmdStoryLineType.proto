@@ -19,12 +19,12 @@ message ChangeStoryLineFinishScNotify {
 }
 
 enum CmdStoryLineType {
-    ALMBGGJDJBJ_NLCDGIPGFDJ = 0;
-    ALMBGGJDJBJ_CLJOALCHHGE = 6281;
-    ALMBGGJDJBJ_DFIHCMLNFNH = 6293;
-    ALMBGGJDJBJ_ENFDDEPECJC = 6225;
-    ALMBGGJDJBJ_KOPAFCJLIKC = 6286;
-    ALMBGGJDJBJ_GGCEHNECGME = 6278;
+    CmdStoryLineType_NLCDGIPGFDJ = 0;
+    CmdStoryLineType_ChangeStoryLineFinishScNotify = 6281;
+    CmdStoryLineType_StoryLineInfoScNotify = 6293;
+    CmdStoryLineType_GetStoryLineInfoCsReq = 6225;
+    CmdStoryLineType_StoryLineTrialAvatarChangeScNotify = 6286;
+    CmdStoryLineType_GGCEHNECGME = 6278;
 }
 
 message GetStoryLineInfoCsReq {

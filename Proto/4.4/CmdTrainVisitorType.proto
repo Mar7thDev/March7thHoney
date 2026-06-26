@@ -17,19 +17,19 @@ enum CFCPOEDPPKB {
 }
 
 enum CmdTrainVisitorType {
-    PBNHNKPGIPL_NLCDGIPGFDJ = 0;
-    PBNHNKPGIPL_GGFOFBFAEIN = 3793;
-    PBNHNKPGIPL_MAKJBADEJCO = 3788;
-    PBNHNKPGIPL_PJIHOAHLMND = 3778;
-    PBNHNKPGIPL_GJBHPGPAGKJ = 3740;
-    PBNHNKPGIPL_AMDHGJKALDO = 3758;
-    PBNHNKPGIPL_HOLBGJCNMJP = 3786;
-    PBNHNKPGIPL_AOCEPAIFAHA = 3781;
-    PBNHNKPGIPL_PJMKLBEMCBG = 3771;
-    PBNHNKPGIPL_CCDCHACIAOE = 3725;
-    PBNHNKPGIPL_HNMLJJGBIKK = 3747;
-    PBNHNKPGIPL_NPDGBECOIIE = 3726;
-    PBNHNKPGIPL_EMEHHFLFMKG = 3713;
+    CmdTrainVisitorType_NLCDGIPGFDJ = 0;
+    CmdTrainVisitorType_GGFOFBFAEIN = 3793;
+    CmdTrainVisitorType_TrainRefreshTimeNotify = 3788;
+    CmdTrainVisitorType_TrainVisitorBehaviorFinishScRsp = 3778;
+    CmdTrainVisitorType_GJBHPGPAGKJ = 3740;
+    CmdTrainVisitorType_AMDHGJKALDO = 3758;
+    CmdTrainVisitorType_GetTrainVisitorRegisterCsReq = 3786;
+    CmdTrainVisitorType_TrainVisitorRewardSendNotify = 3781;
+    CmdTrainVisitorType_PJMKLBEMCBG = 3771;
+    CmdTrainVisitorType_CCDCHACIAOE = 3725;
+    CmdTrainVisitorType_GetTrainVisitorRegisterScRsp = 3747;
+    CmdTrainVisitorType_NPDGBECOIIE = 3726;
+    CmdTrainVisitorType_TakeTrainVisitorBehaviorRewardScRsp = 3713;
 }
 
 message DEFFFLGJAEM {

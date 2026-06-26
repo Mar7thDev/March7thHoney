@@ -24,9 +24,9 @@ namespace March7thHoney.Proto {
     static CmdFightDiceCombatTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChxDbWRGaWdodERpY2VDb21iYXRUeXBlLnByb3RvKjUKFkNtZEZpZ2h0RGlj",
-            "ZUNvbWJhdFR5cGUSGwoXRktGSU5IUE9NTUFfTkxDREdJUEdGREoQAEIWqgIT",
-            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChxDbWRGaWdodERpY2VDb21iYXRUeXBlLnByb3RvKkAKFkNtZEZpZ2h0RGlj",
+            "ZUNvbWJhdFR5cGUSJgoiQ21kRmlnaHREaWNlQ29tYmF0VHlwZV9OTENER0lQ",
+            "R0ZEShAAQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFightDiceCombatType), }, null, null));
@@ -36,7 +36,7 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightDiceCombatType {
-    [pbr::OriginalName("FKFINHPOMMA_NLCDGIPGFDJ")] FkfinhpommaNlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdFightDiceCombatType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
   }
 
   #endregion

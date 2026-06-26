@@ -20,25 +20,25 @@ message BAHMABONKBP {
 }
 
 enum CmdTravelBrochureType {
-    CJBNLBINFJJ_NFDNDMDGICK = 0;
-    CJBNLBINFJJ_JDEIAPOAHNN = 6493;
-    CJBNLBINFJJ_FJDONLFJLLG = 6445;
-    CJBNLBINFJJ_OIIPPCADMJL = 6436;
-    CJBNLBINFJJ_ICGJCPFKPIM = 6413;
-    CJBNLBINFJJ_MJCHINMBDJC = 6481;
-    CJBNLBINFJJ_EPAJNBOJIDC = 6426;
-    CJBNLBINFJJ_EEMPLJMDILN = 6465;
-    CJBNLBINFJJ_MKAGOFKLIDL = 6488;
-    CJBNLBINFJJ_KMPFMCDOIFC = 6433;
-    CJBNLBINFJJ_GFIPKGHIEFA = 6448;
-    CJBNLBINFJJ_DBKBAPOPEPM = 6478;
-    CJBNLBINFJJ_FDJFMFOABGH = 6471;
-    CJBNLBINFJJ_EJAPHKDGPPF = 6469;
-    CJBNLBINFJJ_KIAFALEPDON = 6425;
-    CJBNLBINFJJ_BMCNHNBAMEG = 6404;
-    CJBNLBINFJJ_MMKKFKILNHC = 6411;
-    CJBNLBINFJJ_OHBJDDEGHFN = 6440;
-    CJBNLBINFJJ_NIBHBJGPMKG = 6439;
+    CmdTravelBrochureType_NFDNDMDGICK = 0;
+    CmdTravelBrochureType_TravelBrochurePageUnlockScNotify = 6493;
+    CmdTravelBrochureType_TravelBrochurePageResetScRsp = 6445;
+    CmdTravelBrochureType_OIIPPCADMJL = 6436;
+    CmdTravelBrochureType_TravelBrochureRemovePasterScRsp = 6413;
+    CmdTravelBrochureType_TravelBrochureSelectMessageScRsp = 6481;
+    CmdTravelBrochureType_EPAJNBOJIDC = 6426;
+    CmdTravelBrochureType_TravelBrochureApplyPasterListScRsp = 6465;
+    CmdTravelBrochureType_MKAGOFKLIDL = 6488;
+    CmdTravelBrochureType_TravelBrochureGetPasterScNotify = 6433;
+    CmdTravelBrochureType_GFIPKGHIEFA = 6448;
+    CmdTravelBrochureType_TravelBrochureGetDataScRsp = 6478;
+    CmdTravelBrochureType_FDJFMFOABGH = 6471;
+    CmdTravelBrochureType_EJAPHKDGPPF = 6469;
+    CmdTravelBrochureType_KIAFALEPDON = 6425;
+    CmdTravelBrochureType_BMCNHNBAMEG = 6404;
+    CmdTravelBrochureType_MMKKFKILNHC = 6411;
+    CmdTravelBrochureType_TravelBrochureUpdatePasterPosScRsp = 6440;
+    CmdTravelBrochureType_NIBHBJGPMKG = 6439;
 }
 
 message DDHIIJAJIOO {

@@ -120,40 +120,40 @@ message CPKCMMPFCGE {
 }
 
 enum CmdTrainPartyType {
-    NHGAOAKEMDK_NLCDGIPGFDJ = 0;
-    NHGAOAKEMDK_MLCMENCKJDF = 8026;
-    NHGAOAKEMDK_NEHFOBDKJFB = 8071;
-    NHGAOAKEMDK_IKPJPMNCGKK = 8011;
-    NHGAOAKEMDK_GFKCHNBEIIK = 8045;
-    NHGAOAKEMDK_LLDOODNHAPO = 8052;
-    NHGAOAKEMDK_LOOFEOBBGEH = 8069;
-    NHGAOAKEMDK_PNBFFGCLEAC = 8020;
-    NHGAOAKEMDK_FCJFKKBJBCF = 8021;
-    NHGAOAKEMDK_GEIFHOAPCIM = 8034;
-    NHGAOAKEMDK_OPDELNFFHPN = 8025;
-    NHGAOAKEMDK_MFEKCAKCOBI = 8086;
-    NHGAOAKEMDK_AGHNFFMFIOE = 8096;
-    NHGAOAKEMDK_FCAOAKODHHK = 8040;
-    NHGAOAKEMDK_MAOMNEIHOLP = 8063;
-    NHGAOAKEMDK_KGDONBJEODA = 8005;
-    NHGAOAKEMDK_IHNEEIPCGCJ = 8048;
-    NHGAOAKEMDK_NPPMJELJPLP = 8015;
-    NHGAOAKEMDK_LJGOKPDBPMH = 8029;
-    NHGAOAKEMDK_EDBPKKFHMOH = 8093;
-    NHGAOAKEMDK_OGNEJPLMPBM = 8004;
-    NHGAOAKEMDK_LGJINEDPKAE = 8018;
-    NHGAOAKEMDK_OBHINPCABDB = 8043;
-    NHGAOAKEMDK_JOIOOOFNBIC = 8084;
-    NHGAOAKEMDK_CDDGCNFBFMI = 8010;
-    NHGAOAKEMDK_GPBMCKIMCJK = 8053;
-    NHGAOAKEMDK_PHEIEAIEFPF = 8078;
-    NHGAOAKEMDK_FCFBLMMLBGL = 8038;
-    NHGAOAKEMDK_IJPNOIALBCJ = 8058;
-    NHGAOAKEMDK_IEGOOFAOIDK = 8065;
-    NHGAOAKEMDK_BNDGMFNEFFL = 8073;
-    NHGAOAKEMDK_EOIGPFGGIOF = 8039;
-    NHGAOAKEMDK_LINHHGAMHDN = 8088;
-    NHGAOAKEMDK_EONAFDCGLLF = 8033;
+    CmdTrainPartyType_NLCDGIPGFDJ = 0;
+    CmdTrainPartyType_TrainPartySyncUpdateScNotify = 8026;
+    CmdTrainPartyType_NEHFOBDKJFB = 8071;
+    CmdTrainPartyType_BuildingUpdateNotify = 8011;
+    CmdTrainPartyType_TrainPartyEnterScRsp = 8045;
+    CmdTrainPartyType_LLDOODNHAPO = 8052;
+    CmdTrainPartyType_LOOFEOBBGEH = 8069;
+    CmdTrainPartyType_TrainPartySetBadgeAutoFillScRsp = 8020;
+    CmdTrainPartyType_TrainPartyGamePlayStartScRsp = 8021;
+    CmdTrainPartyType_GEIFHOAPCIM = 8034;
+    CmdTrainPartyType_GetTrainPartyDataCsReq = 8025;
+    CmdTrainPartyType_TrainPartySettleNotify = 8086;
+    CmdTrainPartyType_AGHNFFMFIOE = 8096;
+    CmdTrainPartyType_TrainPartyHandlePendingActionScRsp = 8040;
+    CmdTrainPartyType_TrainPartyTakeBuildLevelAwardScRsp = 8063;
+    CmdTrainPartyType_TrainPartyGamePlaySettleNotify = 8005;
+    CmdTrainPartyType_IHNEEIPCGCJ = 8048;
+    CmdTrainPartyType_NPPMJELJPLP = 8015;
+    CmdTrainPartyType_LJGOKPDBPMH = 8029;
+    CmdTrainPartyType_EDBPKKFHMOH = 8093;
+    CmdTrainPartyType_TrainPartyBuildDiyScRsp = 8004;
+    CmdTrainPartyType_TrainPartyBuildSelfDisplayAreaDiyScRsp = 8018;
+    CmdTrainPartyType_OBHINPCABDB = 8043;
+    CmdTrainPartyType_JOIOOOFNBIC = 8084;
+    CmdTrainPartyType_CDDGCNFBFMI = 8010;
+    CmdTrainPartyType_TrainPartyBuildSelfDisplayAreaDiyScNotify = 8053;
+    CmdTrainPartyType_TrainPartyGetDataScRsp = 8078;
+    CmdTrainPartyType_TrainPartyBuildStartStepScRsp = 8038;
+    CmdTrainPartyType_TrainPartyUseCardScRsp = 8058;
+    CmdTrainPartyType_TrainPartyLeaveScRsp = 8065;
+    CmdTrainPartyType_TrainPartyBuildRoomScNotify = 8073;
+    CmdTrainPartyType_EOIGPFGGIOF = 8039;
+    CmdTrainPartyType_MoveNotify = 8088;
+    CmdTrainPartyType_EONAFDCGLLF = 8033;
 }
 
 message DBGHCHPONOH {

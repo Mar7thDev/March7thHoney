@@ -3,15 +3,15 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 enum CmdTrackPhotoActivityType {
-    FNMAMNLNKKJ_NLCDGIPGFDJ = 0;
-    FNMAMNLNKKJ_BJEBNCHPLJF = 7556;
-    FNMAMNLNKKJ_JJGIAHBHDIP = 7560;
-    FNMAMNLNKKJ_EIJFJJKKELI = 7555;
-    FNMAMNLNKKJ_MPKMCEPGOGC = 7551;
-    FNMAMNLNKKJ_NOHJMHABGPF = 7559;
-    FNMAMNLNKKJ_KOHIOJDEEPP = 7554;
-    FNMAMNLNKKJ_LPMCPJPLCGP = 7553;
-    FNMAMNLNKKJ_OKGOCHLFHAK = 7552;
+    CmdTrackPhotoActivityType_NLCDGIPGFDJ = 0;
+    CmdTrackPhotoActivityType_StartTrackPhotoStageScRsp = 7556;
+    CmdTrackPhotoActivityType_GetTrackPhotoActivityDataCsReq = 7560;
+    CmdTrackPhotoActivityType_SettleTrackPhotoStageScRsp = 7555;
+    CmdTrackPhotoActivityType_GetTrackPhotoActivityDataScRsp = 7551;
+    CmdTrackPhotoActivityType_NOHJMHABGPF = 7559;
+    CmdTrackPhotoActivityType_KOHIOJDEEPP = 7554;
+    CmdTrackPhotoActivityType_LPMCPJPLCGP = 7553;
+    CmdTrackPhotoActivityType_OKGOCHLFHAK = 7552;
 }
 
 message EGIJMPCIJOG {

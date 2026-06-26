@@ -26,11 +26,12 @@ namespace March7thHoney.Proto {
           string.Concat(
             "CidDbWRJbnRlcmFjdGl2ZVRyaWdnZXJNYXplQnVmZlR5cGUucHJvdG8iIgoL",
             "RENBQk9BTEZKQVASEwoLT0hNQkVQSEVCREoYDSABKA0iMwoLTk1FS0pBQklH",
-            "R0gSDwoHcmV0Y29kZRgFIAEoDRITCgtPSE1CRVBIRUJEShgLIAEoDSp8CiFD",
-            "bWRJbnRlcmFjdGl2ZVRyaWdnZXJNYXplQnVmZlR5cGUSGwoXRUZESEZPRU1L",
-            "SEhfTkxDREdJUEdGREoQABIcChdFRkRIRk9FTUtISF9ETERBSUNBRk1QUBD/",
-            "SRIcChdFRkRIRk9FTUtISF9HRElORk1GRE9QRBCISkIWqgITTWFyY2g3dGhI",
-            "b25leS5Qcm90b2IGcHJvdG8z"));
+            "R0gSDwoHcmV0Y29kZRgFIAEoDRITCgtPSE1CRVBIRUJEShgLIAEoDSq+AQoh",
+            "Q21kSW50ZXJhY3RpdmVUcmlnZ2VyTWF6ZUJ1ZmZUeXBlEjEKLUNtZEludGVy",
+            "YWN0aXZlVHJpZ2dlck1hemVCdWZmVHlwZV9OTENER0lQR0ZEShAAEjIKLUNt",
+            "ZEludGVyYWN0aXZlVHJpZ2dlck1hemVCdWZmVHlwZV9ETERBSUNBRk1QUBD/",
+            "SRIyCi1DbWRJbnRlcmFjdGl2ZVRyaWdnZXJNYXplQnVmZlR5cGVfR0RJTkZN",
+            "RkRPUEQQiEpCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdInteractiveTriggerMazeBuffType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -43,9 +44,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdInteractiveTriggerMazeBuffType {
-    [pbr::OriginalName("EFDHFOEMKHH_NLCDGIPGFDJ")] EfdhfoemkhhNlcdgipgfdj = 0,
-    [pbr::OriginalName("EFDHFOEMKHH_DLDAICAFMPP")] EfdhfoemkhhDldaicafmpp = 9471,
-    [pbr::OriginalName("EFDHFOEMKHH_GDINFMFDOPD")] EfdhfoemkhhGdinfmfdopd = 9480,
+    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_DLDAICAFMPP")] Dldaicafmpp = 9471,
+    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_GDINFMFDOPD")] Gdinfmfdopd = 9480,
   }
 
   #endregion

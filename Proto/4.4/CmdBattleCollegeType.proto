@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdBattleCollegeType {
-    GJPPDNGGKCC_NLCDGIPGFDJ = 0;
-    GJPPDNGGKCC_GGMOCMBGFAJ = 5725;
-    GJPPDNGGKCC_DNAPAEJPILD = 5788;
-    GJPPDNGGKCC_DLAEKJKFPJO = 5758;
-    GJPPDNGGKCC_HMHLNKIKKHG = 5793;
-    GJPPDNGGKCC_LGCCILOHONJ = 5778;
+    CmdBattleCollegeType_NLCDGIPGFDJ = 0;
+    CmdBattleCollegeType_BattleCollegeModuleInitCsReq = 5725;
+    CmdBattleCollegeType_StartBattleCollegeScRsp = 5788;
+    CmdBattleCollegeType_DLAEKJKFPJO = 5758;
+    CmdBattleCollegeType_SyncBattleCollegeDataChangeScNotify = 5793;
+    CmdBattleCollegeType_GetBattleCollegeDataScRsp = 5778;
 }
 
 message GetBattleCollegeDataScRsp {

@@ -22,6 +22,10 @@ if (dupCount > 0) Console.WriteLine($"[organizer] dropped {dupCount} duplicate-n
 
 var packetIds = PacketIds.Load(opts.PacketIdsPath);
 
+// Translate Cmd*Type enum entries (cmdid -> message name) for readability.
+var translated = EnumTranslator.TranslateAll(defs, packetIds);
+Console.WriteLine($"[organizer] translated {translated} Cmd*Type enum entries");
+
 var rawDir = Path.GetDirectoryName(opts.PacketIdsPath) ?? opts.RawDir;
 var translations = Translations.Load(Path.Combine(rawDir, "translations.txt"));
 var masterPath = Path.Combine(rawDir, "StarRail.proto");
@@ -49,9 +53,9 @@ Console.WriteLine($"[organizer] emitting -> {opts.OutDir} (active={opts.Active})
 Emitter.Emit(gr, opts.OutDir, opts.Active);
 
 // Copy the Raw dump alongside (skip the giant dump.cs by default).
-if (Directory.Exists(opts.RawDir))
+var destRaw = Path.Combine(opts.OutDir, "Raw");
+if (Directory.Exists(opts.RawDir) && Path.GetFullPath(opts.RawDir) != Path.GetFullPath(destRaw))
 {
-    var destRaw = Path.Combine(opts.OutDir, "Raw");
     Directory.CreateDirectory(destRaw);
     foreach (var f in Directory.EnumerateFiles(opts.RawDir))
     {

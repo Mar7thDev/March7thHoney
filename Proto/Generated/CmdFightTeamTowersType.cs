@@ -24,9 +24,9 @@ namespace March7thHoney.Proto {
     static CmdFightTeamTowersTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChxDbWRGaWdodFRlYW1Ub3dlcnNUeXBlLnByb3RvKjUKFkNtZEZpZ2h0VGVh",
-            "bVRvd2Vyc1R5cGUSGwoXQk9KUE1BQ09NSEdfTkxDREdJUEdGREoQAEIWqgIT",
-            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ChxDbWRGaWdodFRlYW1Ub3dlcnNUeXBlLnByb3RvKkAKFkNtZEZpZ2h0VGVh",
+            "bVRvd2Vyc1R5cGUSJgoiQ21kRmlnaHRUZWFtVG93ZXJzVHlwZV9OTENER0lQ",
+            "R0ZEShAAQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFightTeamTowersType), }, null, null));
@@ -36,7 +36,7 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightTeamTowersType {
-    [pbr::OriginalName("BOJPMACOMHG_NLCDGIPGFDJ")] BojpmacomhgNlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdFightTeamTowersType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
   }
 
   #endregion

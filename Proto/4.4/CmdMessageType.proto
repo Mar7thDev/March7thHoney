@@ -5,19 +5,19 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdMessageType {
-    BDIMOGEJAFG_NLCDGIPGFDJ = 0;
-    BDIMOGEJAFG_IFDAEEMGEKB = 2758;
-    BDIMOGEJAFG_IJDKJJBJEMN = 2778;
-    BDIMOGEJAFG_IDLOFNPDAMF = 2747;
-    BDIMOGEJAFG_FPIEPJMKGGB = 2726;
-    BDIMOGEJAFG_CHHHBIHDNNK = 2781;
-    BDIMOGEJAFG_KDAGJGBHJFC = 2740;
-    BDIMOGEJAFG_OBKNDEAOLPF = 2788;
-    BDIMOGEJAFG_BBGNFMGJBIC = 2713;
-    BDIMOGEJAFG_PJBBDHBNFOC = 2725;
-    BDIMOGEJAFG_BOMFNPGCIEG = 2793;
-    BDIMOGEJAFG_LDNLCNFIPCJ = 2771;
-    BDIMOGEJAFG_DKKMLOIPOIH = 2786;
+    CmdMessageType_NLCDGIPGFDJ = 0;
+    CmdMessageType_GetNpcStatusScRsp = 2758;
+    CmdMessageType_GetNpcMessageGroupScRsp = 2778;
+    CmdMessageType_FinishSectionIdScRsp = 2747;
+    CmdMessageType_FPIEPJMKGGB = 2726;
+    CmdMessageType_FinishItemIdScRsp = 2781;
+    CmdMessageType_GetMissionMessageScRsp = 2740;
+    CmdMessageType_OBKNDEAOLPF = 2788;
+    CmdMessageType_FinishPerformSectionIdScRsp = 2713;
+    CmdMessageType_PJBBDHBNFOC = 2725;
+    CmdMessageType_BOMFNPGCIEG = 2793;
+    CmdMessageType_LDNLCNFIPCJ = 2771;
+    CmdMessageType_DKKMLOIPOIH = 2786;
 }
 
 message FinishItemIdScRsp {

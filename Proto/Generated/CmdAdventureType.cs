@@ -38,16 +38,19 @@ namespace March7thHoney.Proto {
             "GkdldEZhcm1TdGFnZUdhY2hhSW5mb0NzUmVxEiAKGGZhcm1fc3RhZ2VfZ2Fj",
             "aGFfaWRfbGlzdBgKIAMoDSJmChpHZXRGYXJtU3RhZ2VHYWNoYUluZm9TY1Jz",
             "cBIPCgdyZXRjb2RlGAUgASgNEjcKGmZhcm1fc3RhZ2VfZ2FjaGFfaW5mb19s",
-            "aXN0GA8gAygLMhMuRmFybVN0YWdlR2FjaGFJbmZvKtsCChBDbWRBZHZlbnR1",
-            "cmVUeXBlEhsKF1BDSEdFQk1LQkREX05MQ0RHSVBHRkRKEAASHAoXUENIR0VC",
-            "TUtCRERfQ0VOSEZPSUVES0sQ7AoSHAoXUENIR0VCTUtCRERfTkhNRkxPQklI",
-            "SksQ8QoSHAoXUENIR0VCTUtCRERfREZFS0dIRkxKSEoQzgoSHAoXUENIR0VC",
-            "TUtCRERfSktJSEZPR0VJQ0kQ2woSHAoXUENIR0VCTUtCRERfUE5HREpMRURD",
-            "S0YQ5QoSHAoXUENIR0VCTUtCRERfSENJRUVFUEpBSkUQoQoSHAoXUENIR0VC",
-            "TUtCRERfR0hOTk9HUE1FTkQQwwoSHAoXUENIR0VCTUtCRERfRU9DQk9OTEhB",
-            "T0oQvAoSHAoXUENIR0VCTUtCRERfTE5DREVBRkFBRkwQrgoSHAoXUENIR0VC",
-            "TUtCRERfQktGT0tKSEVIT00Q6gpCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
-            "BnByb3RvMw=="));
+            "aXN0GA8gAygLMhMuRmFybVN0YWdlR2FjaGFJbmZvKugDChBDbWRBZHZlbnR1",
+            "cmVUeXBlEiAKHENtZEFkdmVudHVyZVR5cGVfTkxDREdJUEdGREoQABIhChxD",
+            "bWRBZHZlbnR1cmVUeXBlX0NFTkhGT0lFREtLEOwKEjAKK0NtZEFkdmVudHVy",
+            "ZVR5cGVfR2V0RmFybVN0YWdlR2FjaGFJbmZvQ3NSZXEQ8QoSMAorQ21kQWR2",
+            "ZW50dXJlVHlwZV9HZXRGYXJtU3RhZ2VHYWNoYUluZm9TY1JzcBDOChIrCiZD",
+            "bWRBZHZlbnR1cmVUeXBlX0Zhcm1FbGVtZW50U3dlZXBDc1JlcRDbChIuCilD",
+            "bWRBZHZlbnR1cmVUeXBlX1N0YXJ0UXVpY2tDb2Nvb25TdGFnZVJzcBDlChIm",
+            "CiFDbWRBZHZlbnR1cmVUeXBlX0NvY29vblN3ZWVwU2NSc3AQoQoSLgopQ21k",
+            "QWR2ZW50dXJlVHlwZV9TdGFydFF1aWNrRmFybUVsZW1lbnRSc3AQwwoSKwom",
+            "Q21kQWR2ZW50dXJlVHlwZV9GYXJtRWxlbWVudFN3ZWVwU2NSc3AQvAoSJgoh",
+            "Q21kQWR2ZW50dXJlVHlwZV9Db2Nvb25Td2VlcENzUmVxEK4KEiEKHENtZEFk",
+            "dmVudHVyZVR5cGVfQktGT0tKSEVIT00Q6gpCFqoCE01hcmNoN3RoSG9uZXku",
+            "UHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdAdventureType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -65,17 +68,17 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdAdventureType {
-    [pbr::OriginalName("PCHGEBMKBDD_NLCDGIPGFDJ")] PchgebmkbddNlcdgipgfdj = 0,
-    [pbr::OriginalName("PCHGEBMKBDD_CENHFOIEDKK")] PchgebmkbddCenhfoiedkk = 1388,
-    [pbr::OriginalName("PCHGEBMKBDD_NHMFLOBIHJK")] PchgebmkbddNhmflobihjk = 1393,
-    [pbr::OriginalName("PCHGEBMKBDD_DFEKGHFLJHJ")] PchgebmkbddDfekghfljhj = 1358,
-    [pbr::OriginalName("PCHGEBMKBDD_JKIHFOGEICI")] PchgebmkbddJkihfogeici = 1371,
-    [pbr::OriginalName("PCHGEBMKBDD_PNGDJLEDCKF")] PchgebmkbddPngdjledckf = 1381,
-    [pbr::OriginalName("PCHGEBMKBDD_HCIEEEPJAJE")] PchgebmkbddHcieeepjaje = 1313,
-    [pbr::OriginalName("PCHGEBMKBDD_GHNNOGPMEND")] PchgebmkbddGhnnogpmend = 1347,
-    [pbr::OriginalName("PCHGEBMKBDD_EOCBONLHAOJ")] PchgebmkbddEocbonlhaoj = 1340,
-    [pbr::OriginalName("PCHGEBMKBDD_LNCDEAFAAFL")] PchgebmkbddLncdeafaafl = 1326,
-    [pbr::OriginalName("PCHGEBMKBDD_BKFOKJHEHOM")] PchgebmkbddBkfokjhehom = 1386,
+    [pbr::OriginalName("CmdAdventureType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdAdventureType_CENHFOIEDKK")] Cenhfoiedkk = 1388,
+    [pbr::OriginalName("CmdAdventureType_GetFarmStageGachaInfoCsReq")] GetFarmStageGachaInfoCsReq = 1393,
+    [pbr::OriginalName("CmdAdventureType_GetFarmStageGachaInfoScRsp")] GetFarmStageGachaInfoScRsp = 1358,
+    [pbr::OriginalName("CmdAdventureType_FarmElementSweepCsReq")] FarmElementSweepCsReq = 1371,
+    [pbr::OriginalName("CmdAdventureType_StartQuickCocoonStageRsp")] StartQuickCocoonStageRsp = 1381,
+    [pbr::OriginalName("CmdAdventureType_CocoonSweepScRsp")] CocoonSweepScRsp = 1313,
+    [pbr::OriginalName("CmdAdventureType_StartQuickFarmElementRsp")] StartQuickFarmElementRsp = 1347,
+    [pbr::OriginalName("CmdAdventureType_FarmElementSweepScRsp")] FarmElementSweepScRsp = 1340,
+    [pbr::OriginalName("CmdAdventureType_CocoonSweepCsReq")] CocoonSweepCsReq = 1326,
+    [pbr::OriginalName("CmdAdventureType_BKFOKJHEHOM")] Bkfokjhehom = 1386,
   }
 
   #endregion

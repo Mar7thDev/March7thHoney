@@ -48,8 +48,8 @@ message CCHMHOONEGG {
 }
 
 enum CmdPlayerSyncType {
-    OFHDDJMLOGG_LIDGOKIFPOJ = 0;
-    OFHDDJMLOGG_LMDPMECFOGM = 625;
+    CmdPlayerSyncType_LIDGOKIFPOJ = 0;
+    CmdPlayerSyncType_PlayerSyncScNotify = 625;
 }
 
 message GroupStatus {

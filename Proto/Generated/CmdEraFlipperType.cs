@@ -31,15 +31,17 @@ namespace March7thHoney.Proto {
             "GAUgASgNEhEKCXJlZ2lvbl9pZBgPIAEoDSIYChZHZXRFcmFGbGlwcGVyRGF0",
             "YUNzUmVxIi8KC0hLTEREQUFFQ0xOEg0KBXN0YXRlGAggASgNEhEKCXJlZ2lv",
             "bl9pZBgPIAEoDSIwCgtLS0ZNR0NOREhHSBIhCgtETURLQU9PTEFCRhgOIAMo",
-            "CzIMLkhLTEREQUFFQ0xOKr4CChFDbWRFcmFGbGlwcGVyVHlwZRIbChdMREVC",
-            "Rk9NUE9HTl9OTENER0lQR0ZEShAAEhwKF0xERUJGT01QT0dOX0tITUdITU1D",
-            "SkVNEKIzEhwKF0xERUJGT01QT0dOX0dLT0tISU9CSkRNEJ8zEhwKF0xERUJG",
-            "T01QT0dOX0RERkNFSE1MSUFMEKszEhwKF0xERUJGT01QT0dOX0hCSUpMTkdN",
-            "QklCEJ0zEhwKF0xERUJGT01QT0dOX0RBTkNJTU9KSUpNEJszEhwKF0xERUJG",
-            "T01QT0dOX0RESEZKRkFLUENCEKUzEhwKF0xERUJGT01QT0dOX09QQUlGSlBH",
-            "SktBEKgzEhwKF0xERUJGT01QT0dOX0hHQUNIRUFNR1BJEKkzEhwKF0xERUJG",
-            "T01QT0dOX0xCSUdBR09FSU5LEJ4zQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
-            "YgZwcm90bzM="));
+            "CzIMLkhLTEREQUFFQ0xOKqADChFDbWRFcmFGbGlwcGVyVHlwZRIhCh1DbWRF",
+            "cmFGbGlwcGVyVHlwZV9OTENER0lQR0ZEShAAEjAKK0NtZEVyYUZsaXBwZXJU",
+            "eXBlX0NoYW5nZUVyYUZsaXBwZXJEYXRhQ3NSZXEQojMSIgodQ21kRXJhRmxp",
+            "cHBlclR5cGVfR0tPS0hJT0JKRE0QnzMSIgodQ21kRXJhRmxpcHBlclR5cGVf",
+            "RERGQ0VITUxJQUwQqzMSIgodQ21kRXJhRmxpcHBlclR5cGVfSEJJSkxOR01C",
+            "SUIQnTMSIgodQ21kRXJhRmxpcHBlclR5cGVfREFOQ0lNT0pJSk0QmzMSIgod",
+            "Q21kRXJhRmxpcHBlclR5cGVfRERIRkpGQUtQQ0IQpTMSIgodQ21kRXJhRmxp",
+            "cHBlclR5cGVfT1BBSUZKUEdKS0EQqDMSLwoqQ21kRXJhRmxpcHBlclR5cGVf",
+            "RW50ZXJFcmFGbGlwcGVyRGF0YUNzUmVxEKkzEi0KKENtZEVyYUZsaXBwZXJU",
+            "eXBlX0dldEVyYUZsaXBwZXJEYXRhQ3NSZXEQnjNCFqoCE01hcmNoN3RoSG9u",
+            "ZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdEraFlipperType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -56,16 +58,16 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdEraFlipperType {
-    [pbr::OriginalName("LDEBFOMPOGN_NLCDGIPGFDJ")] LdebfompognNlcdgipgfdj = 0,
-    [pbr::OriginalName("LDEBFOMPOGN_KHMGHMMCJEM")] LdebfompognKhmghmmcjem = 6562,
-    [pbr::OriginalName("LDEBFOMPOGN_GKOKHIOBJDM")] LdebfompognGkokhiobjdm = 6559,
-    [pbr::OriginalName("LDEBFOMPOGN_DDFCEHMLIAL")] LdebfompognDdfcehmlial = 6571,
-    [pbr::OriginalName("LDEBFOMPOGN_HBIJLNGMBIB")] LdebfompognHbijlngmbib = 6557,
-    [pbr::OriginalName("LDEBFOMPOGN_DANCIMOJIJM")] LdebfompognDancimojijm = 6555,
-    [pbr::OriginalName("LDEBFOMPOGN_DDHFJFAKPCB")] LdebfompognDdhfjfakpcb = 6565,
-    [pbr::OriginalName("LDEBFOMPOGN_OPAIFJPGJKA")] LdebfompognOpaifjpgjka = 6568,
-    [pbr::OriginalName("LDEBFOMPOGN_HGACHEAMGPI")] LdebfompognHgacheamgpi = 6569,
-    [pbr::OriginalName("LDEBFOMPOGN_LBIGAGOEINK")] LdebfompognLbigagoeink = 6558,
+    [pbr::OriginalName("CmdEraFlipperType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdEraFlipperType_ChangeEraFlipperDataCsReq")] ChangeEraFlipperDataCsReq = 6562,
+    [pbr::OriginalName("CmdEraFlipperType_GKOKHIOBJDM")] Gkokhiobjdm = 6559,
+    [pbr::OriginalName("CmdEraFlipperType_DDFCEHMLIAL")] Ddfcehmlial = 6571,
+    [pbr::OriginalName("CmdEraFlipperType_HBIJLNGMBIB")] Hbijlngmbib = 6557,
+    [pbr::OriginalName("CmdEraFlipperType_DANCIMOJIJM")] Dancimojijm = 6555,
+    [pbr::OriginalName("CmdEraFlipperType_DDHFJFAKPCB")] Ddhfjfakpcb = 6565,
+    [pbr::OriginalName("CmdEraFlipperType_OPAIFJPGJKA")] Opaifjpgjka = 6568,
+    [pbr::OriginalName("CmdEraFlipperType_EnterEraFlipperDataCsReq")] EnterEraFlipperDataCsReq = 6569,
+    [pbr::OriginalName("CmdEraFlipperType_GetEraFlipperDataCsReq")] GetEraFlipperDataCsReq = 6558,
   }
 
   #endregion

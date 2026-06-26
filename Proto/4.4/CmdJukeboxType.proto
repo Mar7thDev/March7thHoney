@@ -5,15 +5,15 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdJukeboxType {
-    ONBKHMHLADC_NLCDGIPGFDJ = 0;
-    ONBKHMHLADC_JDOHJBCOMKN = 3186;
-    ONBKHMHLADC_AEOGKBPOCEF = 3193;
-    ONBKHMHLADC_CKILMDLNFAP = 3147;
-    ONBKHMHLADC_OJDLNPGPCJN = 3188;
-    ONBKHMHLADC_DGDJPGMNDCD = 3181;
-    ONBKHMHLADC_JHFCHFCMBPE = 3125;
-    ONBKHMHLADC_PFFBINHIPPN = 3178;
-    ONBKHMHLADC_CAJLLEGDCJM = 3158;
+    CmdJukeboxType_NLCDGIPGFDJ = 0;
+    CmdJukeboxType_JDOHJBCOMKN = 3186;
+    CmdJukeboxType_AEOGKBPOCEF = 3193;
+    CmdJukeboxType_CKILMDLNFAP = 3147;
+    CmdJukeboxType_OJDLNPGPCJN = 3188;
+    CmdJukeboxType_UnlockBackGroundMusicScRsp = 3181;
+    CmdJukeboxType_JHFCHFCMBPE = 3125;
+    CmdJukeboxType_GetJukeboxDataScRsp = 3178;
+    CmdJukeboxType_TrialBackGroundMusicScRsp = 3158;
 }
 
 message EGDFPDHNOKO {

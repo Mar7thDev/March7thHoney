@@ -39,12 +39,14 @@ namespace March7thHoney.Proto {
             "YW5nZVN0b3J5TGluZUFjdGlvbl9DbGllbnQQAhIiCh5DaGFuZ2VTdG9yeUxp",
             "bmVBY3Rpb25fQ3VzdG9tT1AQAxIeChpDaGFuZ2VTdG9yeUxpbmVBY3Rpb25f",
             "UmFpZBAEEiUKIUNoYW5nZVN0b3J5TGluZUFjdGlvbl9IS0ZLQUZQQUpDTxAF",
-            "KsUBChBDbWRTdG9yeUxpbmVUeXBlEhsKF0FMTUJHR0pESkJKX05MQ0RHSVBH",
-            "RkRKEAASHAoXQUxNQkdHSkRKQkpfQ0xKT0FMQ0hIR0UQiTESHAoXQUxNQkdH",
-            "SkRKQkpfREZJSENNTE5GTkgQlTESHAoXQUxNQkdHSkRKQkpfRU5GRERFUEVD",
-            "SkMQ0TASHAoXQUxNQkdHSkRKQkpfS09QQUZDSkxJS0MQjjESHAoXQUxNQkdH",
-            "SkRKQkpfR0dDRUhORUNHTUUQhjFCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
-            "BnByb3RvMw=="));
+            "KqACChBDbWRTdG9yeUxpbmVUeXBlEiAKHENtZFN0b3J5TGluZVR5cGVfTkxD",
+            "REdJUEdGREoQABIzCi5DbWRTdG9yeUxpbmVUeXBlX0NoYW5nZVN0b3J5TGlu",
+            "ZUZpbmlzaFNjTm90aWZ5EIkxEisKJkNtZFN0b3J5TGluZVR5cGVfU3RvcnlM",
+            "aW5lSW5mb1NjTm90aWZ5EJUxEisKJkNtZFN0b3J5TGluZVR5cGVfR2V0U3Rv",
+            "cnlMaW5lSW5mb0NzUmVxENEwEjgKM0NtZFN0b3J5TGluZVR5cGVfU3RvcnlM",
+            "aW5lVHJpYWxBdmF0YXJDaGFuZ2VTY05vdGlmeRCOMRIhChxDbWRTdG9yeUxp",
+            "bmVUeXBlX0dHQ0VITkVDR01FEIYxQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.ChangeStoryLineAction), typeof(global::March7thHoney.Proto.CmdStoryLineType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -68,12 +70,12 @@ namespace March7thHoney.Proto {
   }
 
   public enum CmdStoryLineType {
-    [pbr::OriginalName("ALMBGGJDJBJ_NLCDGIPGFDJ")] AlmbggjdjbjNlcdgipgfdj = 0,
-    [pbr::OriginalName("ALMBGGJDJBJ_CLJOALCHHGE")] AlmbggjdjbjCljoalchhge = 6281,
-    [pbr::OriginalName("ALMBGGJDJBJ_DFIHCMLNFNH")] AlmbggjdjbjDfihcmlnfnh = 6293,
-    [pbr::OriginalName("ALMBGGJDJBJ_ENFDDEPECJC")] AlmbggjdjbjEnfddepecjc = 6225,
-    [pbr::OriginalName("ALMBGGJDJBJ_KOPAFCJLIKC")] AlmbggjdjbjKopafcjlikc = 6286,
-    [pbr::OriginalName("ALMBGGJDJBJ_GGCEHNECGME")] AlmbggjdjbjGgcehnecgme = 6278,
+    [pbr::OriginalName("CmdStoryLineType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdStoryLineType_ChangeStoryLineFinishScNotify")] ChangeStoryLineFinishScNotify = 6281,
+    [pbr::OriginalName("CmdStoryLineType_StoryLineInfoScNotify")] StoryLineInfoScNotify = 6293,
+    [pbr::OriginalName("CmdStoryLineType_GetStoryLineInfoCsReq")] GetStoryLineInfoCsReq = 6225,
+    [pbr::OriginalName("CmdStoryLineType_StoryLineTrialAvatarChangeScNotify")] StoryLineTrialAvatarChangeScNotify = 6286,
+    [pbr::OriginalName("CmdStoryLineType_GGCEHNECGME")] Ggcehnecgme = 6278,
   }
 
   #endregion

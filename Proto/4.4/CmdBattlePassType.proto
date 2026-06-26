@@ -44,14 +44,14 @@ message BuyBpLevelScRsp {
 }
 
 enum CmdBattlePassType {
-    JHHIAPCKHNP_NLCDGIPGFDJ = 0;
-    JHHIAPCKHNP_ALNLCNAFKNH = 3081;
-    JHHIAPCKHNP_HFFOHGAKFGJ = 3088;
-    JHHIAPCKHNP_MIHEMCONFHP = 3026;
-    JHHIAPCKHNP_IHPLLMHHMAB = 3047;
-    JHHIAPCKHNP_AGLKDJBDJIE = 3058;
-    JHHIAPCKHNP_KKMEJJDIHJA = 3025;
-    JHHIAPCKHNP_KFHAMKCADGC = 3086;
+    CmdBattlePassType_NLCDGIPGFDJ = 0;
+    CmdBattlePassType_BuyBpLevelCsReq = 3081;
+    CmdBattlePassType_TakeBpRewardScRsp = 3088;
+    CmdBattlePassType_BattlePassTakeAllRewardScRsp = 3026;
+    CmdBattlePassType_IHPLLMHHMAB = 3047;
+    CmdBattlePassType_AGLKDJBDJIE = 3058;
+    CmdBattlePassType_BattlePassInfoNotify = 3025;
+    CmdBattlePassType_BuyBpLevelScRsp = 3086;
 }
 
 message TakeBpRewardScRsp {

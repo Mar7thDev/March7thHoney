@@ -5,13 +5,13 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdFantasticStoryActivityType {
-    GJALOMOKFKK_NLCDGIPGFDJ = 0;
-    GJALOMOKFKK_ILFALHDGNGL = 4978;
-    GJALOMOKFKK_FBJCPGAIKEA = 4988;
-    GJALOMOKFKK_KFNLNJMBIEL = 4993;
-    GJALOMOKFKK_KMIIDAOKIAL = 4958;
-    GJALOMOKFKK_PIEIKABLBGP = 4981;
-    GJALOMOKFKK_BLHBGPFPFGP = 4925;
+    CmdFantasticStoryActivityType_NLCDGIPGFDJ = 0;
+    CmdFantasticStoryActivityType_GetFantasticStoryActivityDataScRsp = 4978;
+    CmdFantasticStoryActivityType_EnterFantasticStoryActivityStageScRsp = 4988;
+    CmdFantasticStoryActivityType_KFNLNJMBIEL = 4993;
+    CmdFantasticStoryActivityType_EnterActivityFantasticStoryCsReq = 4958;
+    CmdFantasticStoryActivityType_FantasticStoryActivityBattleEndScNotify = 4981;
+    CmdFantasticStoryActivityType_GetFantasticStoryActivityDataCsReq = 4925;
 }
 
 message EPMJEKOHNME {

@@ -12,13 +12,13 @@ message BenefitData {
 }
 
 enum CmdBenefitActivityType {
-    CCOCNFLIOGK_NLCDGIPGFDJ = 0;
-    CCOCNFLIOGK_IPAGACDDOFA = 4859;
-    CCOCNFLIOGK_CFBPOIPOLAL = 4894;
-    CCOCNFLIOGK_MKDHLCBNNGO = 4898;
-    CCOCNFLIOGK_PNDFJJKAFCI = 4887;
-    CCOCNFLIOGK_ECFPFPKMFFN = 4873;
-    CCOCNFLIOGK_GEBPBMHOAKE = 4869;
+    CmdBenefitActivityType_NLCDGIPGFDJ = 0;
+    CmdBenefitActivityType_GetBenefitActivityInfoCsReq = 4859;
+    CmdBenefitActivityType_TakeBenefitActivityRewardScRsp = 4894;
+    CmdBenefitActivityType_MKDHLCBNNGO = 4898;
+    CmdBenefitActivityType_PNDFJJKAFCI = 4887;
+    CmdBenefitActivityType_GetBenefitActivityInfoScRsp = 4873;
+    CmdBenefitActivityType_JoinBenefitActivityCsReq = 4869;
 }
 
 message GetBenefitActivityInfoCsReq {

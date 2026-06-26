@@ -29,12 +29,14 @@ namespace March7thHoney.Proto {
             "eUdldERhdGFTY1JzcBITCgtQQ09KTE1LUEFFTBgFIAMoDRIPCgdyZXRjb2Rl",
             "GAogASgNIm0KE0Nob29zZURlbGl2ZXJ5U2NSc3ASEwoLSUhGTkZES0xGSUMY",
             "BCABKA0SHgoLREpPQk5QSUFFSlAYBiADKAsyCS5JdGVtTGlzdBIQCghncm91",
-            "cF9pZBgKIAEoDRIPCgdyZXRjb2RlGA0gASgNKqwBChVDbWRDaG9vc2VEZWxp",
-            "dmVyeVR5cGUSGwoXRkNNSkpJQ0RCQkZfTkxDREdJUEdGREoQABIcChdGQ01K",
-            "SklDREJCRl9ESEVHSEhFS0tJQRCQShIcChdGQ01KSklDREJCRl9GT0JKQVBH",
-            "SUJCQRCUShIcChdGQ01KSklDREJCRl9GRkxCQkZORk5OSBCLShIcChdGQ01K",
-            "SklDREJCRl9BTEtCSUdMRUpORRCaSkIWqgITTWFyY2g3dGhIb25leS5Qcm90",
-            "b2IGcHJvdG8z"));
+            "cF9pZBgKIAEoDRIPCgdyZXRjb2RlGA0gASgNKoQCChVDbWRDaG9vc2VEZWxp",
+            "dmVyeVR5cGUSJQohQ21kQ2hvb3NlRGVsaXZlcnlUeXBlX05MQ0RHSVBHRkRK",
+            "EAASNQowQ21kQ2hvb3NlRGVsaXZlcnlUeXBlX0Nob29zZURlbGl2ZXJ5R2V0",
+            "RGF0YVNjUnNwEJBKEi4KKUNtZENob29zZURlbGl2ZXJ5VHlwZV9DaG9vc2VE",
+            "ZWxpdmVyeVNjUnNwEJRKEiYKIUNtZENob29zZURlbGl2ZXJ5VHlwZV9GRkxC",
+            "QkZORk5OSBCLShI1CjBDbWRDaG9vc2VEZWxpdmVyeVR5cGVfQ2hvb3NlRGVs",
+            "aXZlcnlHZXREYXRhQ3NSZXEQmkpCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdChooseDeliveryType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -48,11 +50,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdChooseDeliveryType {
-    [pbr::OriginalName("FCMJJICDBBF_NLCDGIPGFDJ")] FcmjjicdbbfNlcdgipgfdj = 0,
-    [pbr::OriginalName("FCMJJICDBBF_DHEGHHEKKIA")] FcmjjicdbbfDheghhekkia = 9488,
-    [pbr::OriginalName("FCMJJICDBBF_FOBJAPGIBBA")] FcmjjicdbbfFobjapgibba = 9492,
-    [pbr::OriginalName("FCMJJICDBBF_FFLBBFNFNNH")] FcmjjicdbbfFflbbfnfnnh = 9483,
-    [pbr::OriginalName("FCMJJICDBBF_ALKBIGLEJNE")] FcmjjicdbbfAlkbiglejne = 9498,
+    [pbr::OriginalName("CmdChooseDeliveryType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdChooseDeliveryType_ChooseDeliveryGetDataScRsp")] ChooseDeliveryGetDataScRsp = 9488,
+    [pbr::OriginalName("CmdChooseDeliveryType_ChooseDeliveryScRsp")] ChooseDeliveryScRsp = 9492,
+    [pbr::OriginalName("CmdChooseDeliveryType_FFLBBFNFNNH")] Fflbbfnfnnh = 9483,
+    [pbr::OriginalName("CmdChooseDeliveryType_ChooseDeliveryGetDataCsReq")] ChooseDeliveryGetDataCsReq = 9498,
   }
 
   #endregion

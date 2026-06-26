@@ -11,10 +11,10 @@ message AcceptedPamMissionExpireScRsp {
 }
 
 enum CmdPamMissionType {
-    KMGNIGGHMBM_NLCDGIPGFDJ = 0;
-    KMGNIGGHMBM_MCKELFANPPI = 4093;
-    KMGNIGGHMBM_HNHCOMDJGJI = 4025;
-    KMGNIGGHMBM_GOFMDEDHENA = 4078;
+    CmdPamMissionType_NLCDGIPGFDJ = 0;
+    CmdPamMissionType_SyncAcceptedPamMissionNotify = 4093;
+    CmdPamMissionType_AcceptedPamMissionExpireCsReq = 4025;
+    CmdPamMissionType_AcceptedPamMissionExpireScRsp = 4078;
 }
 
 message SyncAcceptedPamMissionNotify {

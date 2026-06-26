@@ -35,14 +35,18 @@ namespace March7thHoney.Proto {
             "dGFnZV9pZBgBIAEoDRIPCgdyZXRjb2RlGAYgASgNEhAKCHNjb3JlX2lkGAkg",
             "ASgNEiEKC1BJR0xIRUxHTUlKGA8gAygLMgwuUE5JQ0RGRk1EREIiPgoZU3Rh",
             "cnRUcmFja1Bob3RvU3RhZ2VTY1JzcBIQCgh0cmFuc19ubxgDIAEoDRIPCgdy",
-            "ZXRjb2RlGAogASgNKqgCChlDbWRUcmFja1Bob3RvQWN0aXZpdHlUeXBlEhsK",
-            "F0ZOTUFNTkxOS0tKX05MQ0RHSVBHRkRKEAASHAoXRk5NQU1OTE5LS0pfQkpF",
-            "Qk5DSFBMSkYQhDsSHAoXRk5NQU1OTE5LS0pfSkpHSUFIQkhESVAQiDsSHAoX",
-            "Rk5NQU1OTE5LS0pfRUlKRkpKS0tFTEkQgzsSHAoXRk5NQU1OTE5LS0pfTVBL",
-            "TUNFUEdPR0MQ/zoSHAoXRk5NQU1OTE5LS0pfTk9ISk1IQUJHUEYQhzsSHAoX",
-            "Rk5NQU1OTE5LS0pfS09ISU9KREVFUFAQgjsSHAoXRk5NQU1OTE5LS0pfTFBN",
-            "Q1BKUExDR1AQgTsSHAoXRk5NQU1OTE5LS0pfT0tHT0NITEZIQUsQgDtCFqoC",
-            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ZXRjb2RlGAogASgNKukDChlDbWRUcmFja1Bob3RvQWN0aXZpdHlUeXBlEikK",
+            "JUNtZFRyYWNrUGhvdG9BY3Rpdml0eVR5cGVfTkxDREdJUEdGREoQABI4CjND",
+            "bWRUcmFja1Bob3RvQWN0aXZpdHlUeXBlX1N0YXJ0VHJhY2tQaG90b1N0YWdl",
+            "U2NSc3AQhDsSPQo4Q21kVHJhY2tQaG90b0FjdGl2aXR5VHlwZV9HZXRUcmFj",
+            "a1Bob3RvQWN0aXZpdHlEYXRhQ3NSZXEQiDsSOQo0Q21kVHJhY2tQaG90b0Fj",
+            "dGl2aXR5VHlwZV9TZXR0bGVUcmFja1Bob3RvU3RhZ2VTY1JzcBCDOxI9CjhD",
+            "bWRUcmFja1Bob3RvQWN0aXZpdHlUeXBlX0dldFRyYWNrUGhvdG9BY3Rpdml0",
+            "eURhdGFTY1JzcBD/OhIqCiVDbWRUcmFja1Bob3RvQWN0aXZpdHlUeXBlX05P",
+            "SEpNSEFCR1BGEIc7EioKJUNtZFRyYWNrUGhvdG9BY3Rpdml0eVR5cGVfS09I",
+            "SU9KREVFUFAQgjsSKgolQ21kVHJhY2tQaG90b0FjdGl2aXR5VHlwZV9MUE1D",
+            "UEpQTENHUBCBOxIqCiVDbWRUcmFja1Bob3RvQWN0aXZpdHlUeXBlX09LR09D",
+            "SExGSEFLEIA7QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdTrackPhotoActivityType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -61,15 +65,15 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdTrackPhotoActivityType {
-    [pbr::OriginalName("FNMAMNLNKKJ_NLCDGIPGFDJ")] FnmamnlnkkjNlcdgipgfdj = 0,
-    [pbr::OriginalName("FNMAMNLNKKJ_BJEBNCHPLJF")] FnmamnlnkkjBjebnchpljf = 7556,
-    [pbr::OriginalName("FNMAMNLNKKJ_JJGIAHBHDIP")] FnmamnlnkkjJjgiahbhdip = 7560,
-    [pbr::OriginalName("FNMAMNLNKKJ_EIJFJJKKELI")] FnmamnlnkkjEijfjjkkeli = 7555,
-    [pbr::OriginalName("FNMAMNLNKKJ_MPKMCEPGOGC")] FnmamnlnkkjMpkmcepgogc = 7551,
-    [pbr::OriginalName("FNMAMNLNKKJ_NOHJMHABGPF")] FnmamnlnkkjNohjmhabgpf = 7559,
-    [pbr::OriginalName("FNMAMNLNKKJ_KOHIOJDEEPP")] FnmamnlnkkjKohiojdeepp = 7554,
-    [pbr::OriginalName("FNMAMNLNKKJ_LPMCPJPLCGP")] FnmamnlnkkjLpmcpjplcgp = 7553,
-    [pbr::OriginalName("FNMAMNLNKKJ_OKGOCHLFHAK")] FnmamnlnkkjOkgochlfhak = 7552,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_StartTrackPhotoStageScRsp")] StartTrackPhotoStageScRsp = 7556,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_GetTrackPhotoActivityDataCsReq")] GetTrackPhotoActivityDataCsReq = 7560,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_SettleTrackPhotoStageScRsp")] SettleTrackPhotoStageScRsp = 7555,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_GetTrackPhotoActivityDataScRsp")] GetTrackPhotoActivityDataScRsp = 7551,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_NOHJMHABGPF")] Nohjmhabgpf = 7559,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_KOHIOJDEEPP")] Kohiojdeepp = 7554,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_LPMCPJPLCGP")] Lpmcpjplcgp = 7553,
+    [pbr::OriginalName("CmdTrackPhotoActivityType_OKGOCHLFHAK")] Okgochlfhak = 7552,
   }
 
   #endregion

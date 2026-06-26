@@ -43,12 +43,16 @@ namespace March7thHoney.Proto {
             "EisKC2F2YXRhcl9saXN0GAMgAygLMhYuU3Ryb25nQ2hhbGxlbmdlQXZhdGFy",
             "EhEKCWJ1ZmZfbGlzdBgJIAMoDSJMChVTdHJvbmdDaGFsbGVuZ2VBdmF0YXIS",
             "EQoJYXZhdGFyX2lkGAMgASgNEiAKC2F2YXRhcl90eXBlGAcgASgOMgsuQXZh",
-            "dGFyVHlwZSrTAQoeQ21kU3Ryb25nQ2hhbGxlbmdlQWN0aXZpdHlUeXBlEhsK",
-            "F0dEQkhMTUZMSk1IX05MQ0RHSVBHRkRKEAASHAoXR0RCSExNRkxKTUhfS1BF",
-            "SkVLRE1QRE4QoDQSHAoXR0RCSExNRkxKTUhfT0dKREpMRlBBSkYQgjQSHAoX",
-            "R0RCSExNRkxKTUhfTU5OT0xLTUJNQ0kQljQSHAoXR0RCSExNRkxKTUhfRUlP",
-            "T0RQS0VFTEkQpTQSHAoXR0RCSExNRkxKTUhfS0dDSUlCUEVLT0wQ4TNCFqoC",
-            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "dGFyVHlwZSqOAwoeQ21kU3Ryb25nQ2hhbGxlbmdlQWN0aXZpdHlUeXBlEi4K",
+            "KkNtZFN0cm9uZ0NoYWxsZW5nZUFjdGl2aXR5VHlwZV9OTENER0lQR0ZEShAA",
+            "Ei8KKkNtZFN0cm9uZ0NoYWxsZW5nZUFjdGl2aXR5VHlwZV9LUEVKRUtETVBE",
+            "ThCgNBJKCkVDbWRTdHJvbmdDaGFsbGVuZ2VBY3Rpdml0eVR5cGVfRW50ZXJT",
+            "dHJvbmdDaGFsbGVuZ2VBY3Rpdml0eVN0YWdlU2NSc3AQgjQSLwoqQ21kU3Ry",
+            "b25nQ2hhbGxlbmdlQWN0aXZpdHlUeXBlX01OTk9MS01CTUNJEJY0EkUKQENt",
+            "ZFN0cm9uZ0NoYWxsZW5nZUFjdGl2aXR5VHlwZV9FbnRlckFjdGl2aXR5U3Ry",
+            "b25nQ2hhbGxlbmdlQ3NSZXEQpTQSRwpCQ21kU3Ryb25nQ2hhbGxlbmdlQWN0",
+            "aXZpdHlUeXBlX0dldFN0cm9uZ0NoYWxsZW5nZUFjdGl2aXR5RGF0YUNzUmVx",
+            "EOEzQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdStrongChallengeActivityType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -67,12 +71,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdStrongChallengeActivityType {
-    [pbr::OriginalName("GDBHLMFLJMH_NLCDGIPGFDJ")] GdbhlmfljmhNlcdgipgfdj = 0,
-    [pbr::OriginalName("GDBHLMFLJMH_KPEJEKDMPDN")] GdbhlmfljmhKpejekdmpdn = 6688,
-    [pbr::OriginalName("GDBHLMFLJMH_OGJDJLFPAJF")] GdbhlmfljmhOgjdjlfpajf = 6658,
-    [pbr::OriginalName("GDBHLMFLJMH_MNNOLKMBMCI")] GdbhlmfljmhMnnolkmbmci = 6678,
-    [pbr::OriginalName("GDBHLMFLJMH_EIOODPKEELI")] GdbhlmfljmhEioodpkeeli = 6693,
-    [pbr::OriginalName("GDBHLMFLJMH_KGCIIBPEKOL")] GdbhlmfljmhKgciibpekol = 6625,
+    [pbr::OriginalName("CmdStrongChallengeActivityType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdStrongChallengeActivityType_KPEJEKDMPDN")] Kpejekdmpdn = 6688,
+    [pbr::OriginalName("CmdStrongChallengeActivityType_EnterStrongChallengeActivityStageScRsp")] EnterStrongChallengeActivityStageScRsp = 6658,
+    [pbr::OriginalName("CmdStrongChallengeActivityType_MNNOLKMBMCI")] Mnnolkmbmci = 6678,
+    [pbr::OriginalName("CmdStrongChallengeActivityType_EnterActivityStrongChallengeCsReq")] EnterActivityStrongChallengeCsReq = 6693,
+    [pbr::OriginalName("CmdStrongChallengeActivityType_GetStrongChallengeActivityDataCsReq")] GetStrongChallengeActivityDataCsReq = 6625,
   }
 
   #endregion

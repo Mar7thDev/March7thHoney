@@ -5,21 +5,21 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdTalkEventType {
-    LAGOBKECEDB_MNPGFLPBDLK = 0;
-    LAGOBKECEDB_IPAFFKCGCIP = 2186;
-    LAGOBKECEDB_CGEKPNBMDKN = 2125;
-    LAGOBKECEDB_IJHKJBJLJCH = 2138;
-    LAGOBKECEDB_EPECNFIOLOP = 2140;
-    LAGOBKECEDB_CPNNEDNLMCG = 2178;
-    LAGOBKECEDB_CGDCKICAEIL = 2193;
-    LAGOBKECEDB_NPCAKFDNJED = 2188;
-    LAGOBKECEDB_HNCHEKHCDLH = 2133;
-    LAGOBKECEDB_ANIFMPJBLKE = 2171;
-    LAGOBKECEDB_PBEPLMGLHHJ = 2158;
-    LAGOBKECEDB_MJOOLIOLKBI = 2181;
-    LAGOBKECEDB_AGBBELHLOMN = 2147;
-    LAGOBKECEDB_BECJLBLPNHG = 2113;
-    LAGOBKECEDB_PEBGMODAAJE = 2126;
+    CmdTalkEventType_MNPGFLPBDLK = 0;
+    CmdTalkEventType_FinishFirstTalkNpcCsReq = 2186;
+    CmdTalkEventType_GetReceivedTalkEventsCsReq = 2125;
+    CmdTalkEventType_FinishFirstTalkByPerformanceNpcScRsp = 2138;
+    CmdTalkEventType_GetFirstTalkByPerformanceNpcScRsp = 2140;
+    CmdTalkEventType_GetNpcTakenRewardScRsp = 2178;
+    CmdTalkEventType_GetTalkEventRewardCsReq = 2193;
+    CmdTalkEventType_GetFirstTalkNpcCsReq = 2188;
+    CmdTalkEventType_FinishFirstTalkByPerformanceNpcCsReq = 2133;
+    CmdTalkEventType_ANIFMPJBLKE = 2171;
+    CmdTalkEventType_TakeTalkRewardScRsp = 2158;
+    CmdTalkEventType_GetFirstTalkNpcScRsp = 2181;
+    CmdTalkEventType_FinishFirstTalkNpcScRsp = 2147;
+    CmdTalkEventType_SelectInclinationTextScRsp = 2113;
+    CmdTalkEventType_PEBGMODAAJE = 2126;
 }
 
 message FinishFirstTalkByPerformanceNpcCsReq {

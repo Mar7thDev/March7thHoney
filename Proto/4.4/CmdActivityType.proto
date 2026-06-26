@@ -12,37 +12,37 @@ message ActivityScheduleData {
 }
 
 enum CmdActivityType {
-    AEOMPALBAAH_NLCDGIPGFDJ = 0;
-    AEOMPALBAAH_PLIDCPGKMNA = 2698;
-    AEOMPALBAAH_DLDJODNGPPN = 2683;
-    AEOMPALBAAH_CDELCNPAHDK = 2619;
-    AEOMPALBAAH_HJBGFKEKEOO = 2655;
-    AEOMPALBAAH_EDCJEFHGELP = 2645;
-    AEOMPALBAAH_DJEMPPHBABJ = 2623;
-    AEOMPALBAAH_GBLOMNNJPCA = 2658;
-    AEOMPALBAAH_DGAOJPAEKFO = 2666;
-    AEOMPALBAAH_KPPJNJHMIKG = 2678;
-    AEOMPALBAAH_DFILCMEDDCN = 2693;
-    AEOMPALBAAH_FGHJOMBPEKM = 2651;
-    AEOMPALBAAH_BNACOBLIFKM = 2627;
-    AEOMPALBAAH_BGHEPACGNDM = 2611;
-    AEOMPALBAAH_OOIJABCIDNG = 2648;
-    AEOMPALBAAH_FDGHBAFIBAP = 2636;
-    AEOMPALBAAH_ABNJPJDJAKL = 2606;
-    AEOMPALBAAH_MFKMHFAAEOP = 2616;
-    AEOMPALBAAH_PMLMCNKKENC = 2657;
-    AEOMPALBAAH_HHFPGBFJBKE = 2625;
-    AEOMPALBAAH_EMLMKNGEAPG = 2665;
-    AEOMPALBAAH_KNHKONMNGOG = 2662;
-    AEOMPALBAAH_NBNHEIGAILN = 2688;
-    AEOMPALBAAH_OILANCNNIKB = 2646;
-    AEOMPALBAAH_FCEPCIBHFAM = 2637;
-    AEOMPALBAAH_CLNDPDEGKOH = 2628;
-    AEOMPALBAAH_LBIHPGKHFFB = 2694;
-    AEOMPALBAAH_LEAEIODECFC = 2669;
-    AEOMPALBAAH_FDMMGJPNIHJ = 2682;
-    AEOMPALBAAH_ABFLHPOGADD = 2674;
-    AEOMPALBAAH_JEPIDOCCCOJ = 2681;
+    CmdActivityType_NLCDGIPGFDJ = 0;
+    CmdActivityType_PLIDCPGKMNA = 2698;
+    CmdActivityType_AnniversaryAvatarDeliverTakeRewardScRsp = 2683;
+    CmdActivityType_CDELCNPAHDK = 2619;
+    CmdActivityType_LeaveTrialActivityScRsp = 2655;
+    CmdActivityType_SubmitMaterialSubmitActivityMaterialScRsp = 2645;
+    CmdActivityType_AnniversaryAvatarDeliverTakeRewardCsReq = 2623;
+    CmdActivityType_TakeLoginActivityRewardScRsp = 2658;
+    CmdActivityType_LeaveTrialActivityCsReq = 2666;
+    CmdActivityType_GetLoginActivityScRsp = 2678;
+    CmdActivityType_DFILCMEDDCN = 2693;
+    CmdActivityType_FGHJOMBPEKM = 2651;
+    CmdActivityType_AnniversaryAvatarDeliverChooseAvatarScRsp = 2627;
+    CmdActivityType_MaterialSubmissionModuleInitCsReq = 2611;
+    CmdActivityType_OOIJABCIDNG = 2648;
+    CmdActivityType_GetMaterialSubmitActivityDataScRsp = 2636;
+    CmdActivityType_AnniversaryAvatarDeliverGetDataCsReq = 2606;
+    CmdActivityType_TrialActivityNotify = 2616;
+    CmdActivityType_AnniversaryAvatarDeliverChooseAvatarCsReq = 2657;
+    CmdActivityType_GetLoginActivityCsReq = 2625;
+    CmdActivityType_TakeMaterialSubmitActivityRewardScRsp = 2665;
+    CmdActivityType_StartTrialActivityScRsp = 2662;
+    CmdActivityType_GetActivityScheduleConfigCsReq = 2688;
+    CmdActivityType_EnterTrialActivityStageScRsp = 2646;
+    CmdActivityType_TrialActivityDataChangeScNotify = 2637;
+    CmdActivityType_TakeTrialActivityRewardScRsp = 2628;
+    CmdActivityType_GetTrialActivityDataScRsp = 2694;
+    CmdActivityType_LEAEIODECFC = 2669;
+    CmdActivityType_GetTrialActivityDataCsReq = 2682;
+    CmdActivityType_AnniversaryAvatarDeliverGetDataScRsp = 2674;
+    CmdActivityType_GetActivityScheduleConfigScRsp = 2681;
 }
 
 message EnterTrialActivityStageScRsp {

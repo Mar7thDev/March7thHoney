@@ -36,12 +36,14 @@ namespace March7thHoney.Proto {
             "KA0SEAoIZmxvb3JfaWQYDSABKA0ihAEKFFVwZGF0ZU1hcmtDaGVzdFNjUnNw",
             "Eg8KB3JldGNvZGUYAyABKA0SDwoHZnVuY19pZBgFIAEoDRIwChRtYXJrX2No",
             "ZXN0X2Z1bmNfaW5mbxgIIAMoCzISLk1hcmtDaGVzdEZ1bmNJbmZvEhgKEHRy",
-            "aWdnZXJfcGFyYW1faWQYCiABKA0qxQEKEENtZE1hcmtDaGVzdFR5cGUSGwoX",
-            "TENOS0hEQU9NS01fTkxDREdJUEdGREoQABIcChdMQ05LSERBT01LTV9MS0NO",
-            "SklMSU1GSxD3PxIcChdMQ05LSERBT01LTV9NQ05GT0NLSVBKRRCGQBIcChdM",
-            "Q05LSERBT01LTV9CT0tIRklJRk5PSxD2PxIcChdMQ05LSERBT01LTV9HQktG",
-            "RVBQTURKRxD8PxIcChdMQ05LSERBT01LTV9BTE5QT0NGRU5OSRCAQEIWqgIT",
-            "TWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "aWdnZXJfcGFyYW1faWQYCiABKA0qhQIKEENtZE1hcmtDaGVzdFR5cGUSIAoc",
+            "Q21kTWFya0NoZXN0VHlwZV9OTENER0lQR0ZEShAAEiEKHENtZE1hcmtDaGVz",
+            "dFR5cGVfTEtDTkpJTElNRksQ9z8SJwoiQ21kTWFya0NoZXN0VHlwZV9HZXRN",
+            "YXJrQ2hlc3RDc1JlcRCGQBIuCilDbWRNYXJrQ2hlc3RUeXBlX01hcmtDaGVz",
+            "dENoYW5nZWRTY05vdGlmeRD2PxInCiJDbWRNYXJrQ2hlc3RUeXBlX0dldE1h",
+            "cmtDaGVzdFNjUnNwEPw/EioKJUNtZE1hcmtDaGVzdFR5cGVfVXBkYXRlTWFy",
+            "a0NoZXN0U2NSc3AQgEBCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMarkChestType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -58,12 +60,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMarkChestType {
-    [pbr::OriginalName("LCNKHDAOMKM_NLCDGIPGFDJ")] LcnkhdaomkmNlcdgipgfdj = 0,
-    [pbr::OriginalName("LCNKHDAOMKM_LKCNJILIMFK")] LcnkhdaomkmLkcnjilimfk = 8183,
-    [pbr::OriginalName("LCNKHDAOMKM_MCNFOCKIPJE")] LcnkhdaomkmMcnfockipje = 8198,
-    [pbr::OriginalName("LCNKHDAOMKM_BOKHFIIFNOK")] LcnkhdaomkmBokhfiifnok = 8182,
-    [pbr::OriginalName("LCNKHDAOMKM_GBKFEPPMDJG")] LcnkhdaomkmGbkfeppmdjg = 8188,
-    [pbr::OriginalName("LCNKHDAOMKM_ALNPOCFENNI")] LcnkhdaomkmAlnpocfenni = 8192,
+    [pbr::OriginalName("CmdMarkChestType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdMarkChestType_LKCNJILIMFK")] Lkcnjilimfk = 8183,
+    [pbr::OriginalName("CmdMarkChestType_GetMarkChestCsReq")] GetMarkChestCsReq = 8198,
+    [pbr::OriginalName("CmdMarkChestType_MarkChestChangedScNotify")] MarkChestChangedScNotify = 8182,
+    [pbr::OriginalName("CmdMarkChestType_GetMarkChestScRsp")] GetMarkChestScRsp = 8188,
+    [pbr::OriginalName("CmdMarkChestType_UpdateMarkChestScRsp")] UpdateMarkChestScRsp = 8192,
   }
 
   #endregion

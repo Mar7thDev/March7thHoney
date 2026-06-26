@@ -18,33 +18,33 @@ message ChangeLineupLeaderScRsp {
 }
 
 enum CmdLineupType {
-    MLPGOBNCBOF_NLCDGIPGFDJ = 0;
-    MLPGOBNCBOF_IOGEJCKEJNA = 788;
-    MLPGOBNCBOF_FANJALKAECH = 704;
-    MLPGOBNCBOF_EIJDLMFMFGO = 736;
-    MLPGOBNCBOF_BPDMAOANCKF = 726;
-    MLPGOBNCBOF_IIEDDHGHELF = 739;
-    MLPGOBNCBOF_AENJJKEDIMO = 772;
-    MLPGOBNCBOF_PIPPAFPPOHP = 745;
-    MLPGOBNCBOF_OAKBPNPAMPC = 713;
-    MLPGOBNCBOF_JKPNOKOEDBH = 793;
-    MLPGOBNCBOF_JHBHFAODNFG = 786;
-    MLPGOBNCBOF_MMPOIAMJMPH = 721;
-    MLPGOBNCBOF_NLANMPBIJFL = 733;
-    MLPGOBNCBOF_CJFAGCEPOBK = 771;
-    MLPGOBNCBOF_LFOBDPHHBAI = 781;
-    MLPGOBNCBOF_FKNLHEEOHGC = 711;
-    MLPGOBNCBOF_AODLKPDHHPI = 758;
-    MLPGOBNCBOF_KEHBLKLNKAP = 730;
-    MLPGOBNCBOF_PEHANDOLJKL = 780;
-    MLPGOBNCBOF_OAHDNBNPMLG = 765;
-    MLPGOBNCBOF_NIPEBOCBIOA = 769;
-    MLPGOBNCBOF_MGPDKLGIJEA = 740;
-    MLPGOBNCBOF_DBIKDBFBFMN = 747;
-    MLPGOBNCBOF_ENDLHCIMJFO = 738;
-    MLPGOBNCBOF_CEGAJPBOEBO = 748;
-    MLPGOBNCBOF_HDNPMAKCOMN = 784;
-    MLPGOBNCBOF_EIDDCEADMMC = 742;
+    CmdLineupType_NLCDGIPGFDJ = 0;
+    CmdLineupType_JoinLineupCsReq = 788;
+    CmdLineupType_FANJALKAECH = 704;
+    CmdLineupType_EIJDLMFMFGO = 736;
+    CmdLineupType_BPDMAOANCKF = 726;
+    CmdLineupType_ChangeLineupLeaderScRsp = 739;
+    CmdLineupType_ExtraLineupDestroyNotify = 772;
+    CmdLineupType_GetAllLineupDataCsReq = 745;
+    CmdLineupType_SwapLineupScRsp = 713;
+    CmdLineupType_GetCurLineupDataCsReq = 793;
+    CmdLineupType_JHBHFAODNFG = 786;
+    CmdLineupType_MMPOIAMJMPH = 721;
+    CmdLineupType_GetLineupAvatarDataScRsp = 733;
+    CmdLineupType_SyncLineupNotify = 771;
+    CmdLineupType_LFOBDPHHBAI = 781;
+    CmdLineupType_SwitchLineupIndexScRsp = 711;
+    CmdLineupType_GetCurLineupDataScRsp = 758;
+    CmdLineupType_KEHBLKLNKAP = 730;
+    CmdLineupType_VirtualLineupTrialAvatarChangeScNotify = 780;
+    CmdLineupType_VirtualLineupDestroyNotify = 765;
+    CmdLineupType_GetAllLineupDataScRsp = 769;
+    CmdLineupType_GetLineupAvatarDataCsReq = 740;
+    CmdLineupType_QuitLineupScRsp = 747;
+    CmdLineupType_ChangeLineupLeaderCsReq = 738;
+    CmdLineupType_SetLineupNameScRsp = 748;
+    CmdLineupType_SyncAllPresetLineupNotify = 784;
+    CmdLineupType_JoinLineupScRsp = 742;
 }
 
 message ExtraLineupDestroyNotify {
