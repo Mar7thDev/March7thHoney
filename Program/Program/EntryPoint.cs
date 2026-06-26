@@ -54,8 +54,9 @@ public class EntryPoint
             eventArgs.Cancel = true;
             Environment.Exit(0);
         };
-        // .NET 10 no longer raises ProcessExit on window-close/logoff/shutdown; hook the Win32 console control events ourselves so the DB save runs.
-        SetConsoleCtrlHandler(ConsoleCtrlHandlerKeepAlive, true);
+        // .NET 10 dropped ProcessExit on window-close/logoff/shutdown; hook the Win32 console control events so the DB save runs (Windows-only kernel32 P/Invoke).
+        if (OperatingSystem.IsWindows())
+            SetConsoleCtrlHandler(ConsoleCtrlHandlerKeepAlive, true);
         var time = DateTime.Now;
 
         // pack the old log
