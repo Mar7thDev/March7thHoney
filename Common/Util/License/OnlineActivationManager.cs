@@ -40,10 +40,24 @@ public static class OnlineActivationManager
     {
         try
         {
-            var hwid = HardwareIdManager.GetHwid().ToLowerInvariant();
+            // Launcher-managed: CyreneLauncher injects its login token (and device id) via env; use them directly, never the browser flow.
+            var launcherMode = !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("M7H_LAUNCHER_MODE"));
+            var deviceIdOverride = Environment.GetEnvironmentVariable("M7H_DEVICE_ID");
+
+            var hwid = (launcherMode && !string.IsNullOrWhiteSpace(deviceIdOverride)
+                ? deviceIdOverride.Trim()
+                : HardwareIdManager.GetHwid()).ToLowerInvariant();
             Logger.Info(I18NManager.Translate("Server.ServerInfo.LicenseCurrentHwid", hwid));
 
             var token = ReadToken();
+
+            if (launcherMode)
+            {
+                var ok = !string.IsNullOrWhiteSpace(token) && await ActivateAsync(token, hwid, version) == ActivateResult.Ok;
+                if (!ok) Logger.Error(I18NManager.Translate("Server.ServerInfo.ActivationLauncherRelogin"));
+                return ok;
+            }
+
             if (string.IsNullOrWhiteSpace(token))
             {
                 token = await AuthorizeDeviceAsync(hwid, version);
