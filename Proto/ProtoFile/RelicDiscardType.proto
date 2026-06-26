@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum RelicDiscardType {
-    PJHKIIDEOOG_ICFONCMFNLG = 0;
-    PJHKIIDEOOG_AOBKJJHAHCN = 1;
-    PJHKIIDEOOG_OHNJLMFECEN = 2;
-}

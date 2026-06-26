@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JPLJJHFFODO {
-    uint32 event_type = 2;
-    uint32 num = 4;
-}

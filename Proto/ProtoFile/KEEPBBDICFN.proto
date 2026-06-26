@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KEEPBBDICFN {
-    uint32 PDIAOLDMBLL = 9;
-    uint32 LOGHLGKIFEN = 11;
-}

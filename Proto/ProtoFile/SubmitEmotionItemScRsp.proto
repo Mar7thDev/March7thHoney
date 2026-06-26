@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SubmitEmotionItemScRsp {
-    uint32 retcode = 4;
-    uint32 script_id = 5;
-}

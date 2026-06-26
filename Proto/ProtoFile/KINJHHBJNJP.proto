@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KINJHHBJNJP {
-    uint32 trait_id = 7;
-    uint32 layer = 9;
-    double damage = 13;
-}

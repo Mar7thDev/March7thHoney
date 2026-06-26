@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message NGNKIIOHBAI {
-    repeated uint32 OLPPMEAMFFO = 4;
-    uint32 effect_id = 8;
-    uint32 trait_id = 13;
-}

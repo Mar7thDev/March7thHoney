@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SelectRogueCommonDialogueOptionCsReq {
-    uint32 AIAFEKGBFIF = 8;
-    uint32 HAFOKMHCGFM = 13;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message CustomSaveData {
-    uint32 group_id = 2;
-    string save_data = 5;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum MMLAPDEBFJM {
-    MMLAPDEBFJM_NLCDGIPGFDJ = 0;
-    MMLAPDEBFJM_reward = 1;
-    MMLAPDEBFJM_IEIKAPNDPCI = 2;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message MusicRhythmSaveSongConfigDataScRsp {
-    uint32 EFEGLAOAJDA = 4;
-    uint32 cur_song_id = 12;
-    uint32 retcode = 13;
-}

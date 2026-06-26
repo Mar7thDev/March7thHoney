@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ANAJELDHDBH {
-    uint32 key = 2;
-    double damage = 14;
-}

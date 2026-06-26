@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AIKICHNEPKE {
+    uint32 level = 4;
+}
+
+enum CmdFateRinType {
+    NAEGJBPBAGK_NLCDGIPGFDJ = 0;
+    NAEGJBPBAGK_JMEFFEOAOCO = 9865;
+    NAEGJBPBAGK_EHGLHMCKHCD = 9874;
+    NAEGJBPBAGK_OLIBPDHOKKI = 9881;
+    NAEGJBPBAGK_CDEDKNDLCLF = 9895;
+    NAEGJBPBAGK_AIJJAFEJOLM = 9867;
+    NAEGJBPBAGK_IJOIOHLGJAF = 9897;
+    NAEGJBPBAGK_OCELCPOJKKC = 9898;
+    NAEGJBPBAGK_HDDKKEHFOPD = 9873;
+    NAEGJBPBAGK_DOMANJCDGDA = 9870;
+    NAEGJBPBAGK_DEMPDDGLJFF = 9872;
+    NAEGJBPBAGK_PFKFKEPDIIH = 9893;
+    NAEGJBPBAGK_IAJLPFICPMO = 9878;
+    NAEGJBPBAGK_GJFCCDNCACD = 9883;
+    NAEGJBPBAGK_IMPOAADNAPH = 9890;
+    NAEGJBPBAGK_PDHEEJCFPMN = 9896;
+    NAEGJBPBAGK_OMGBGPNJBBO = 9884;
+    NAEGJBPBAGK_BCCBFBOENAP = 9876;
+    NAEGJBPBAGK_KILPONLFLHM = 9879;
+    NAEGJBPBAGK_OHFKBKOJHFP = 9869;
+}
+
+message DIEODGPPEDC {
+}
+
+message DNNNCIPMPKH {
+    repeated uint32 EDCIGEJLFFH = 5;
+    uint32 NFAOAGIFKEG = 7;
+    ItemList reward = 14;
+}
+
+message EILMEGELLLJ {
+    repeated uint32 PDABDEJBPEL = 1;
+}
+
+message FNHBHPDJACF {
+    uint32 retcode = 5;
+    uint32 NFAOAGIFKEG = 10;
+}
+
+message FateRinStartChallengeFightScRsp {
+    SceneBattleInfo battle_info = 2;
+    uint32 retcode = 6;
+}
+
+message FateRinStartHouguMapFightScRsp {
+    uint32 retcode = 1;
+    SceneBattleInfo battle_info = 4;
+}
+
+message FateRinStartStoryFightScRsp {
+    uint32 retcode = 1;
+    SceneBattleInfo battle_info = 8;
+}
+
+message GCJCLFOLBPP {
+    repeated uint32 CKGPHNNDACN = 3;
+    repeated uint32 HPOOCCHJNEN = 6;
+    repeated uint32 OPBNNKHNAEL = 7;
+    uint32 NKDDBPGDAEE = 11;
+}
+
+message KDANACKPJIP {
+    uint32 CCOOCEEAKFI = 1;
+    uint32 JBGENFIKGGF = 4;
+    uint32 JHMNIGAGOCK = 11;
+}
+
+message KDMOONKPLPI {
+    uint32 ILLHHMHBJCG = 8;
+    uint32 retcode = 12;
+}
+
+message KNLJDBNOPKD {
+    GCJCLFOLBPP PNJMDOFOEEE = 3;
+}
+
+message NCBOENDMDIC {
+    repeated GCJCLFOLBPP LDEJLFKJBCL = 2;
+    uint32 retcode = 3;
+    uint32 level = 6;
+    repeated uint32 HINFJMIMBIN = 8;
+    uint32 ILLHHMHBJCG = 9;
+    uint32 NFAOAGIFKEG = 12;
+    repeated uint32 PDABDEJBPEL = 13;
+    repeated KDANACKPJIP HBDMBLAPEMH = 14;
+}
+
+message PMEHLELAFJI {
+    uint32 retcode = 2;
+    repeated GCJCLFOLBPP LDEJLFKJBCL = 7;
+}
+
+message PPGFKFIAAHL {
+    KDANACKPJIP NMFGECJBPLJ = 11;
+    BattleEndStatus end_status = 12;
+}

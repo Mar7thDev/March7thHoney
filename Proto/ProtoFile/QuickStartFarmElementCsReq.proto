@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message QuickStartFarmElementCsReq {
-    uint32 HECCOBFBJFI = 1;
-    uint32 PAOFHFLFFHD = 6;
-    uint32 world_level = 12;
-}

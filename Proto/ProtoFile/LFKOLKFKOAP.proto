@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message LFKOLKFKOAP {
-    repeated uint32 CLEJHGMAFOD = 2;
-    uint32 LGIPILAKIKB = 6;
-}

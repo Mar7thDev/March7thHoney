@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "ItemList.proto";
-
-message IOHKFHBGICD {
-    ItemList item_list = 6;
-}

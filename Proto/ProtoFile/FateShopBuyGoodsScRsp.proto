@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FateShopBuyGoodsScRsp {
-    uint32 retcode = 13;
-    uint32 COCLMANMAAI = 14;
-}

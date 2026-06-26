@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SelectChatBubbleScRsp {
-    uint32 retcode = 3;
-    uint32 NGJMMMBJFHD = 4;
-    uint32 cur_chat_bubble = 6;
-}

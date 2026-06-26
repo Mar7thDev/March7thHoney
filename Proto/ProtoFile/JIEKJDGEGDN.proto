@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JIEKJDGEGDN {
-    bool is_active = 3;
-    uint32 PDICFEGEPNM = 4;
-    uint32 CJAINJMLDFC = 11;
-}

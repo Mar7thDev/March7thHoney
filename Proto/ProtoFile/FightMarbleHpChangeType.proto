@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum FightMarbleHpChangeType {
-    LMGECGDAPEN_NLPOGHCIEGN = 0;
-    LMGECGDAPEN_BNOHJNMEOBI = 1;
-    LMGECGDAPEN_ALGLGIGKDOO = 2;
-}

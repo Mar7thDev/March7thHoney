@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AJNOEKPLPCL {
+    uint32 DNAPFBANFHJ = 3;
+    uint32 ICKJKIENKFI = 4;
+    bool MJIPOJPBKNB = 6;
+    uint32 cur_layer = 7;
+    uint32 FMCPHDJEIDC = 8;
+    uint32 PKKDALHLCLA = 14;
+    uint32 IEOGEFBLNEL = 15;
+}
+
+message BBCOLCHCEFP {
+    GMIJHCONFIH HAJJBOFCFOO = 2;
+    repeated uint32 unfinished_story_line_id_list = 3;
+    uint32 map_id = 6;
+    RogueStatus status = 8;
+    APNCCNFJBKO JPKACKNNHCA = 9;
+    uint32 KNDHMNBIIDF = 11;
+    uint32 PJKMDLCCHHD = 12;
+    repeated uint32 NOEPBNMJFGL = 14;
+}
+
+message CAEFBGAFKHD {
+    uint32 avatar_id = 3;
+    AvatarType avatar_type = 15;
+}
+
+enum CmdRogueEndlessType {
+    LBADGLCGAOG_MOLJCEFGPLL = 0;
+    LBADGLCGAOG_EPNDKNDBPAE = 6002;
+    LBADGLCGAOG_HLKMGBJHBFN = 6006;
+    LBADGLCGAOG_HDENEHNNIFK = 6005;
+    LBADGLCGAOG_HMCCOEAGDHH = 6003;
+    LBADGLCGAOG_AFJHANHHHGK = 6004;
+    LBADGLCGAOG_AHHDIBJJOBH = 6010;
+    LBADGLCGAOG_KGOKBDFJCFO = 6009;
+    LBADGLCGAOG_KOMHEMEDOLP = 6001;
+    LBADGLCGAOG_PEFHADFKMAJ = 6008;
+}
+
+message EnterRogueEndlessActivityStageCsReq {
+    repeated CAEFBGAFKHD avatar_list = 11;
+    uint32 MPMMCPMNLID = 15;
+}
+
+message EnterRogueEndlessActivityStageScRsp {
+    SceneBattleInfo battle_info = 1;
+    uint32 retcode = 2;
+}
+
+message GetRogueEndlessActivityDataScRsp {
+    repeated uint32 IEPPNGMCKJH = 1;
+    repeated HGFJAHILCAA data = 3;
+    uint32 IAHEDAAPNEO = 5;
+    uint32 CHIAFOOAIBK = 7;
+    uint32 retcode = 14;
+}
+
+message HGFJAHILCAA {
+    BBCOLCHCEFP BHHHNHMMDMH = 8;
+    uint32 area_id = 9;
+    AJNOEKPLPCL PMKGMLELPPI = 13;
+}
+
+message RogueEndlessActivityBattleEndScNotify {
+    AJNOEKPLPCL PMKGMLELPPI = 12;
+}
+
+message TakeRogueEndlessActivityAllBonusRewardScRsp {
+    uint32 CHIAFOOAIBK = 7;
+    uint32 retcode = 8;
+    ItemList reward = 10;
+    repeated uint32 IEPPNGMCKJH = 12;
+}
+
+message TakeRogueEndlessActivityPointRewardScRsp {
+    repeated uint32 IEPPNGMCKJH = 2;
+    uint32 level = 6;
+    uint32 CHIAFOOAIBK = 7;
+    ItemList reward = 8;
+    uint32 retcode = 11;
+}

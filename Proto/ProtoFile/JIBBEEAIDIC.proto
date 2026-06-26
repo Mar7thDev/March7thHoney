@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JIBBEEAIDIC {
-    repeated uint32 OPAEGCBNACJ = 1;
-    uint32 JPPAGGPJOMO = 5;
-    uint32 unlock_aeon_enhance_num = 9;
-}

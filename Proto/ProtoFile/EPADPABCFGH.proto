@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EPADPABCFGH {
-    uint32 pos = 3;
-    uint32 IAAHNOFKNGN = 4;
-    uint32 unique_id = 5;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BJMPHAAOEFL {
-    uint32 key = 9;
-    sint32 value = 14;
-}

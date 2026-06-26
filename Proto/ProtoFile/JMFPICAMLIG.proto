@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "KBCHOKFHHIH.proto";
-
-message JMFPICAMLIG {
-    KBCHOKFHHIH AIKDCBMCLBI = 1;
-}

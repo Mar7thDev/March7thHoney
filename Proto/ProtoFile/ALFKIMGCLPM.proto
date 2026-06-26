@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum ALFKIMGCLPM {
-    ALFKIMGCLPM_NLCDGIPGFDJ = 0;
-    ALFKIMGCLPM_EGFCFCBHJJP = 1;
-    ALFKIMGCLPM_AALCFBOGFKP = 2;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum CBPDACMBHGL {
-    CBPDACMBHGL_MMCGPCNJGCC = 0;
-    CBPDACMBHGL_CLKMDIEEDKJ = 1;
-}

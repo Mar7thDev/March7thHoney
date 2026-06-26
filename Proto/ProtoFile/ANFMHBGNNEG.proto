@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "PJMGBLIFDFP.proto";
-
-message ANFMHBGNNEG {
-    PJMGBLIFDFP room_ext_info = 15;
-}

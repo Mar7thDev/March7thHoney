@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum ACKPCFFEMHB {
-    ACKPCFFEMHB_NLCDGIPGFDJ = 0;
-    ACKPCFFEMHB_GGEOGCBGEIH = 1;
-    ACKPCFFEMHB_CNPNACJBHJG = 2;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message DNIAFCGKEOP {
-    uint32 retcode = 8;
-    uint32 buff_id = 10;
-}

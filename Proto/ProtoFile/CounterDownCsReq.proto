@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message CounterDownCsReq {
-    uint32 DGGCFDKJDPO = 12;
-    uint32 BIKALOGMMDA = 14;
-}
