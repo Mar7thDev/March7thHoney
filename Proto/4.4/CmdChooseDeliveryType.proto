@@ -20,9 +20,9 @@ message ChooseDeliveryScRsp {
 }
 
 enum CmdChooseDeliveryType {
-    FCMJJICDBBF_NLCDGIPGFDJ = 0;
-    FCMJJICDBBF_DHEGHHEKKIA = 9488;
-    FCMJJICDBBF_FOBJAPGIBBA = 9492;
-    FCMJJICDBBF_FFLBBFNFNNH = 9483;
-    FCMJJICDBBF_ALKBIGLEJNE = 9498;
+    CmdChooseDeliveryType_NLCDGIPGFDJ = 0;
+    CmdChooseDeliveryType_ChooseDeliveryGetDataScRsp = 9488;
+    CmdChooseDeliveryType_ChooseDeliveryScRsp = 9492;
+    CmdChooseDeliveryType_FFLBBFNFNNH = 9483;
+    CmdChooseDeliveryType_ChooseDeliveryGetDataCsReq = 9498;
 }

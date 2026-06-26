@@ -21,12 +21,12 @@ message CEJMCEEBCOG {
 }
 
 enum CmdStrongChallengeActivityType {
-    GDBHLMFLJMH_NLCDGIPGFDJ = 0;
-    GDBHLMFLJMH_KPEJEKDMPDN = 6688;
-    GDBHLMFLJMH_OGJDJLFPAJF = 6658;
-    GDBHLMFLJMH_MNNOLKMBMCI = 6678;
-    GDBHLMFLJMH_EIOODPKEELI = 6693;
-    GDBHLMFLJMH_KGCIIBPEKOL = 6625;
+    CmdStrongChallengeActivityType_NLCDGIPGFDJ = 0;
+    CmdStrongChallengeActivityType_KPEJEKDMPDN = 6688;
+    CmdStrongChallengeActivityType_EnterStrongChallengeActivityStageScRsp = 6658;
+    CmdStrongChallengeActivityType_MNNOLKMBMCI = 6678;
+    CmdStrongChallengeActivityType_EnterActivityStrongChallengeCsReq = 6693;
+    CmdStrongChallengeActivityType_GetStrongChallengeActivityDataCsReq = 6625;
 }
 
 message DKOPOIIBDGJ {

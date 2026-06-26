@@ -34,13 +34,13 @@ namespace March7thHoney.Proto {
             "OgI4ASIXChVHZXRBbGxSZWREb3REYXRhQ3NSZXEiegoLTExDT0hMTkJOR00S",
             "EAoIcGFuZWxfaWQYASABKA0SIQoLQktOS0ZOSElQQUsYAiABKAsyDC5GSE5B",
             "RUpCS0lOSBIQCghncm91cF9pZBgEIAEoDRIPCgdyZXRjb2RlGAggASgNEhMK",
-            "C0ZERUFLRENER01MGA4gASgNKuABCg1DbWRSZWREb3RUeXBlEhsKF0FBR0RM",
-            "R0lISE9FX05MQ0RHSVBHRkRKEAASHAoXQUFHRExHSUhIT0VfS0FCTkVMQkJO",
-            "S0gQsS4SHAoXQUFHRExHSUhIT0VfRUpEQUhDSUJHT0YQny4SHAoXQUFHRExH",
-            "SUhIT0VfUEhFR05OREhBTE8QlS4SHAoXQUFHRExHSUhIT0VfTkZNR0FORU1Q",
-            "TkUQuC4SHAoXQUFHRExHSUhIT0VfRktCQUZDT0VIR0cQvC4SHAoXQUFHRExH",
-            "SUhIT0VfREZGQkhBR1BCSkUQoy5CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
-            "BnByb3RvMw=="));
+            "C0ZERUFLRENER01MGA4gASgNKvgBCg1DbWRSZWREb3RUeXBlEh0KGUNtZFJl",
+            "ZERvdFR5cGVfTkxDREdJUEdGREoQABIeChlDbWRSZWREb3RUeXBlX0tBQk5F",
+            "TEJCTktIELEuEh4KGUNtZFJlZERvdFR5cGVfRUpEQUhDSUJHT0YQny4SKAoj",
+            "Q21kUmVkRG90VHlwZV9HZXRBbGxSZWREb3REYXRhQ3NSZXEQlS4SHgoZQ21k",
+            "UmVkRG90VHlwZV9ORk1HQU5FTVBORRC4LhIeChlDbWRSZWREb3RUeXBlX0ZL",
+            "QkFGQ09FSEdHELwuEh4KGUNtZFJlZERvdFR5cGVfREZGQkhBR1BCSkUQoy5C",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRedDotType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -56,13 +56,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRedDotType {
-    [pbr::OriginalName("AAGDLGIHHOE_NLCDGIPGFDJ")] AagdlgihhoeNlcdgipgfdj = 0,
-    [pbr::OriginalName("AAGDLGIHHOE_KABNELBBNKH")] AagdlgihhoeKabnelbbnkh = 5937,
-    [pbr::OriginalName("AAGDLGIHHOE_EJDAHCIBGOF")] AagdlgihhoeEjdahcibgof = 5919,
-    [pbr::OriginalName("AAGDLGIHHOE_PHEGNNDHALO")] AagdlgihhoePhegnndhalo = 5909,
-    [pbr::OriginalName("AAGDLGIHHOE_NFMGANEMPNE")] AagdlgihhoeNfmganempne = 5944,
-    [pbr::OriginalName("AAGDLGIHHOE_FKBAFCOEHGG")] AagdlgihhoeFkbafcoehgg = 5948,
-    [pbr::OriginalName("AAGDLGIHHOE_DFFBHAGPBJE")] AagdlgihhoeDffbhagpbje = 5923,
+    [pbr::OriginalName("CmdRedDotType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdRedDotType_KABNELBBNKH")] Kabnelbbnkh = 5937,
+    [pbr::OriginalName("CmdRedDotType_EJDAHCIBGOF")] Ejdahcibgof = 5919,
+    [pbr::OriginalName("CmdRedDotType_GetAllRedDotDataCsReq")] GetAllRedDotDataCsReq = 5909,
+    [pbr::OriginalName("CmdRedDotType_NFMGANEMPNE")] Nfmganempne = 5944,
+    [pbr::OriginalName("CmdRedDotType_FKBAFCOEHGG")] Fkbafcoehgg = 5948,
+    [pbr::OriginalName("CmdRedDotType_DFFBHAGPBJE")] Dffbhagpbje = 5923,
   }
 
   #endregion

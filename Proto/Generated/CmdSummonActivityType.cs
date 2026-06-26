@@ -38,12 +38,15 @@ namespace March7thHoney.Proto {
             "ASgNEiAKC2F2YXRhcl90eXBlGAkgASgOMgsuQXZhdGFyVHlwZSJlCh9TdW1t",
             "b25BY3Rpdml0eUJhdHRsZUVuZFNjTm90aWZ5EhAKCGdyb3VwX2lkGAEgASgN",
             "Eg0KBXJvdW5kGAIgASgNEgwKBHN0YXIYBSABKA0SEwoLREJLSEhDR0dLTk4Y",
-            "DCABKA0qygEKFUNtZFN1bW1vbkFjdGl2aXR5VHlwZRIbChdGRUdNTUxFQktN",
-            "QV9OTENER0lQR0ZEShAAEhwKF0ZFR01NTEVCS01BX0lNRUdFRUJPR09DEJI7",
-            "EhwKF0ZFR01NTEVCS01BX0NQT05CRkpHRVBNEIk7EhwKF0ZFR01NTEVCS01B",
-            "X0ZISkRKREJBQ0tMEIs7EhwKF0ZFR01NTEVCS01BX0NLQ0pPSEhMTERJEI07",
-            "EhwKF0ZFR01NTEVCS01BX0JLSE9LSE5BSU1HEIw7QhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "DCABKA0q3wIKFUNtZFN1bW1vbkFjdGl2aXR5VHlwZRIlCiFDbWRTdW1tb25B",
+            "Y3Rpdml0eVR5cGVfTkxDREdJUEdGREoQABI4CjNDbWRTdW1tb25BY3Rpdml0",
+            "eVR5cGVfQWN0aXZpdHlTdW1tb25Nb2R1bGVJbml0Q3NSZXEQkjsSNQowQ21k",
+            "U3VtbW9uQWN0aXZpdHlUeXBlX0dldFN1bW1vbkFjdGl2aXR5RGF0YVNjUnNw",
+            "EIk7EjgKM0NtZFN1bW1vbkFjdGl2aXR5VHlwZV9FbnRlclN1bW1vbkFjdGl2",
+            "aXR5U3RhZ2VDc1JlcRCLOxI4CjNDbWRTdW1tb25BY3Rpdml0eVR5cGVfRW50",
+            "ZXJTdW1tb25BY3Rpdml0eVN0YWdlU2NSc3AQjTsSOgo1Q21kU3VtbW9uQWN0",
+            "aXZpdHlUeXBlX1N1bW1vbkFjdGl2aXR5QmF0dGxlRW5kU2NOb3RpZnkQjDtC",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdSummonActivityType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -60,12 +63,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdSummonActivityType {
-    [pbr::OriginalName("FEGMMLEBKMA_NLCDGIPGFDJ")] FegmmlebkmaNlcdgipgfdj = 0,
-    [pbr::OriginalName("FEGMMLEBKMA_IMEGEEBOGOC")] FegmmlebkmaImegeebogoc = 7570,
-    [pbr::OriginalName("FEGMMLEBKMA_CPONBFJGEPM")] FegmmlebkmaCponbfjgepm = 7561,
-    [pbr::OriginalName("FEGMMLEBKMA_FHJDJDBACKL")] FegmmlebkmaFhjdjdbackl = 7563,
-    [pbr::OriginalName("FEGMMLEBKMA_CKCJOHHLLDI")] FegmmlebkmaCkcjohhlldi = 7565,
-    [pbr::OriginalName("FEGMMLEBKMA_BKHOKHNAIMG")] FegmmlebkmaBkhokhnaimg = 7564,
+    [pbr::OriginalName("CmdSummonActivityType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdSummonActivityType_ActivitySummonModuleInitCsReq")] ActivitySummonModuleInitCsReq = 7570,
+    [pbr::OriginalName("CmdSummonActivityType_GetSummonActivityDataScRsp")] GetSummonActivityDataScRsp = 7561,
+    [pbr::OriginalName("CmdSummonActivityType_EnterSummonActivityStageCsReq")] EnterSummonActivityStageCsReq = 7563,
+    [pbr::OriginalName("CmdSummonActivityType_EnterSummonActivityStageScRsp")] EnterSummonActivityStageScRsp = 7565,
+    [pbr::OriginalName("CmdSummonActivityType_SummonActivityBattleEndScNotify")] SummonActivityBattleEndScNotify = 7564,
   }
 
   #endregion

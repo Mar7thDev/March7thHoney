@@ -44,15 +44,19 @@ namespace March7thHoney.Proto {
             "DwoHcmV0Y29kZRgLIAEoDRIZCgZyZXdhcmQYDCABKAsyCS5JdGVtTGlzdCJs",
             "ChtUYWtlUmVjaGFyZ2VHaWZ0UmV3YXJkU2NSc3ASIQoLS0pCRE5JSUJHTkUY",
             "AiABKAsyDC5KQk5HQ0pKRExITBIZCgZyZXdhcmQYDCABKAsyCS5JdGVtTGlz",
-            "dBIPCgdyZXRjb2RlGA8gASgNKsACChNDbWRSZWNoYXJnZUdpZnRUeXBlEhsK",
-            "F09PQ0lNSkVEQ0hLX05MQ0RHSVBHRkRKEAASHAoXT09DSU1KRURDSEtfRk5D",
-            "TEFQRktMQ0kQuUESHAoXT09DSU1KRURDSEtfRE9JTU9NTURFR0oQrEESHAoX",
-            "T09DSU1KRURDSEtfTUZOQUhITU1HTksQq0ESHAoXT09DSU1KRURDSEtfR0xB",
-            "TUlIREhIQ0MQqkESHAoXT09DSU1KRURDSEtfSURQQkNIQ0hJRk4QtEESHAoX",
-            "T09DSU1KRURDSEtfRElBRUhOTk1BT00QsEESHAoXT09DSU1KRURDSEtfS0ZL",
-            "Q0xISk5OSFAQukESHAoXT09DSU1KRURDSEtfTEJET09MRE5MSUUQs0ESHAoX",
-            "T09DSU1KRURDSEtfTkhEQ0RCREdHRkoQrUFCFqoCE01hcmNoN3RoSG9uZXku",
-            "UHJvdG9iBnByb3RvMw=="));
+            "dBIPCgdyZXRjb2RlGA8gASgNKvEDChNDbWRSZWNoYXJnZUdpZnRUeXBlEiMK",
+            "H0NtZFJlY2hhcmdlR2lmdFR5cGVfTkxDREdJUEdGREoQABI0Ci9DbWRSZWNo",
+            "YXJnZUdpZnRUeXBlX0dldFJlY2hhcmdlQmVuZWZpdEluZm9TY1JzcBC5QRIk",
+            "Ch9DbWRSZWNoYXJnZUdpZnRUeXBlX0RPSU1PTU1ERUdKEKxBEiQKH0NtZFJl",
+            "Y2hhcmdlR2lmdFR5cGVfTUZOQUhITU1HTksQq0ESJAofQ21kUmVjaGFyZ2VH",
+            "aWZ0VHlwZV9HTEFNSUhESEhDQxCqQRI0Ci9DbWRSZWNoYXJnZUdpZnRUeXBl",
+            "X1Rha2VSZWNoYXJnZUdpZnRSZXdhcmRTY1JzcBC0QRIxCixDbWRSZWNoYXJn",
+            "ZUdpZnRUeXBlX0dldFJlY2hhcmdlR2lmdEluZm9TY1JzcBCwQRIxCixDbWRS",
+            "ZWNoYXJnZUdpZnRUeXBlX0dldFJlY2hhcmdlR2lmdEluZm9Dc1JlcRC6QRI3",
+            "CjJDbWRSZWNoYXJnZUdpZnRUeXBlX1Rha2VSZWNoYXJnZUJlbmVmaXRSZXdh",
+            "cmRTY1JzcBCzQRI4CjNDbWRSZWNoYXJnZUdpZnRUeXBlX1N5bmNSZWNoYXJn",
+            "ZUJlbmVmaXRJbmZvU2NOb3RpZnkQrUFCFqoCE01hcmNoN3RoSG9uZXkuUHJv",
+            "dG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRechargeGiftType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -72,16 +76,16 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRechargeGiftType {
-    [pbr::OriginalName("OOCIMJEDCHK_NLCDGIPGFDJ")] OocimjedchkNlcdgipgfdj = 0,
-    [pbr::OriginalName("OOCIMJEDCHK_FNCLAPFKLCI")] OocimjedchkFnclapfklci = 8377,
-    [pbr::OriginalName("OOCIMJEDCHK_DOIMOMMDEGJ")] OocimjedchkDoimommdegj = 8364,
-    [pbr::OriginalName("OOCIMJEDCHK_MFNAHHMMGNK")] OocimjedchkMfnahhmmgnk = 8363,
-    [pbr::OriginalName("OOCIMJEDCHK_GLAMIHDHHCC")] OocimjedchkGlamihdhhcc = 8362,
-    [pbr::OriginalName("OOCIMJEDCHK_IDPBCHCHIFN")] OocimjedchkIdpbchchifn = 8372,
-    [pbr::OriginalName("OOCIMJEDCHK_DIAEHNNMAOM")] OocimjedchkDiaehnnmaom = 8368,
-    [pbr::OriginalName("OOCIMJEDCHK_KFKCLHJNNHP")] OocimjedchkKfkclhjnnhp = 8378,
-    [pbr::OriginalName("OOCIMJEDCHK_LBDOOLDNLIE")] OocimjedchkLbdooldnlie = 8371,
-    [pbr::OriginalName("OOCIMJEDCHK_NHDCDBDGGFJ")] OocimjedchkNhdcdbdggfj = 8365,
+    [pbr::OriginalName("CmdRechargeGiftType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdRechargeGiftType_GetRechargeBenefitInfoScRsp")] GetRechargeBenefitInfoScRsp = 8377,
+    [pbr::OriginalName("CmdRechargeGiftType_DOIMOMMDEGJ")] Doimommdegj = 8364,
+    [pbr::OriginalName("CmdRechargeGiftType_MFNAHHMMGNK")] Mfnahhmmgnk = 8363,
+    [pbr::OriginalName("CmdRechargeGiftType_GLAMIHDHHCC")] Glamihdhhcc = 8362,
+    [pbr::OriginalName("CmdRechargeGiftType_TakeRechargeGiftRewardScRsp")] TakeRechargeGiftRewardScRsp = 8372,
+    [pbr::OriginalName("CmdRechargeGiftType_GetRechargeGiftInfoScRsp")] GetRechargeGiftInfoScRsp = 8368,
+    [pbr::OriginalName("CmdRechargeGiftType_GetRechargeGiftInfoCsReq")] GetRechargeGiftInfoCsReq = 8378,
+    [pbr::OriginalName("CmdRechargeGiftType_TakeRechargeBenefitRewardScRsp")] TakeRechargeBenefitRewardScRsp = 8371,
+    [pbr::OriginalName("CmdRechargeGiftType_SyncRechargeBenefitInfoScNotify")] SyncRechargeBenefitInfoScNotify = 8365,
   }
 
   #endregion

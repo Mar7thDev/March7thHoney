@@ -5,19 +5,19 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdTutorialType {
-    KAAMCALPIPD_NLCDGIPGFDJ = 0;
-    KAAMCALPIPD_BLPBNGIFIGN = 1686;
-    KAAMCALPIPD_BJKKIDCBHIO = 1681;
-    KAAMCALPIPD_CKFLHOIIAGP = 1626;
-    KAAMCALPIPD_GEDDGDNFMLC = 1688;
-    KAAMCALPIPD_GMDOCADKOEP = 1613;
-    KAAMCALPIPD_FNCJDAELOIH = 1693;
-    KAAMCALPIPD_NGFHAOOAAGC = 1647;
-    KAAMCALPIPD_NIAJIEEJFPK = 1658;
-    KAAMCALPIPD_CEOEBCPLMFJ = 1671;
-    KAAMCALPIPD_COOPIEFCJOC = 1640;
-    KAAMCALPIPD_NFNLOFDMPIP = 1625;
-    KAAMCALPIPD_NKBOHHPKDME = 1678;
+    CmdTutorialType_NLCDGIPGFDJ = 0;
+    CmdTutorialType_BLPBNGIFIGN = 1686;
+    CmdTutorialType_UnlockTutorialScRsp = 1681;
+    CmdTutorialType_FinishTutorialCsReq = 1626;
+    CmdTutorialType_GEDDGDNFMLC = 1688;
+    CmdTutorialType_FinishTutorialScRsp = 1613;
+    CmdTutorialType_GetTutorialGuideCsReq = 1693;
+    CmdTutorialType_UnlockTutorialGuideScRsp = 1647;
+    CmdTutorialType_GetTutorialGuideScRsp = 1658;
+    CmdTutorialType_FinishTutorialGuideCsReq = 1671;
+    CmdTutorialType_FinishTutorialGuideScRsp = 1640;
+    CmdTutorialType_GetTutorialCsReq = 1625;
+    CmdTutorialType_GetTutorialScRsp = 1678;
 }
 
 message FinishTutorialCsReq {

@@ -25,35 +25,35 @@ message CDNPKGOKEPK {
 }
 
 enum CmdMuseumType {
-    CIILMLFIACA_NLCDGIPGFDJ = 0;
-    CIILMLFIACA_PGDBMGAFCCN = 4321;
-    CIILMLFIACA_ABPEALPNEOK = 4330;
-    CIILMLFIACA_JJNIFCCLJKB = 4325;
-    CIILMLFIACA_HFIAHCAPDLE = 4381;
-    CIILMLFIACA_LLFPNMDNMKM = 4313;
-    CIILMLFIACA_NKEHOBMLIID = 4339;
-    CIILMLFIACA_ELACELNLHCM = 4348;
-    CIILMLFIACA_JLDLICPMOCO = 4304;
-    CIILMLFIACA_HAACGKDBCOH = 4388;
-    CIILMLFIACA_GECAMJJBEFJ = 4340;
-    CIILMLFIACA_EBOFHIBPECF = 4372;
-    CIILMLFIACA_FJFECCHBGEK = 4326;
-    CIILMLFIACA_IJLDNHCKAJA = 4305;
-    CIILMLFIACA_NBAPAJAOCJM = 4378;
-    CIILMLFIACA_HAHOKHBFAOG = 4371;
-    CIILMLFIACA_KADNHHELJPB = 4338;
-    CIILMLFIACA_IPEGGPHNONJ = 4336;
-    CIILMLFIACA_LHJKMOPGDGF = 4347;
-    CIILMLFIACA_BAFKPGEJINI = 4358;
-    CIILMLFIACA_CEPFGCAKGKM = 4333;
-    CIILMLFIACA_BJIEGJBKNGG = 4393;
-    CIILMLFIACA_JAHIGLFGFNM = 4386;
-    CIILMLFIACA_PIPNOPLDAKA = 4311;
-    CIILMLFIACA_CDHKEBKODNE = 4380;
-    CIILMLFIACA_ABJMPLEDOBE = 4365;
-    CIILMLFIACA_OAKDDHGBLDI = 4384;
-    CIILMLFIACA_DEOKEGAAJMH = 4345;
-    CIILMLFIACA_EMKFLADECGM = 4369;
+    CmdMuseumType_NLCDGIPGFDJ = 0;
+    CmdMuseumType_PGDBMGAFCCN = 4321;
+    CmdMuseumType_MuseumRandomEventSelectScRsp = 4330;
+    CmdMuseumType_GetMuseumInfoCsReq = 4325;
+    CmdMuseumType_SetStuffToAreaScRsp = 4381;
+    CmdMuseumType_SyncGetExhibitScNotify = 4313;
+    CmdMuseumType_NKEHOBMLIID = 4339;
+    CmdMuseumType_SyncMuseumRandomEventStartScNotify = 4348;
+    CmdMuseumType_UpgradeAreaStatScRsp = 4304;
+    CmdMuseumType_HAACGKDBCOH = 4388;
+    CmdMuseumType_FinishCurTurnScRsp = 4340;
+    CmdMuseumType_SyncMuseumTargetStartNotify = 4372;
+    CmdMuseumType_SyncGetStuffScNotify = 4326;
+    CmdMuseumType_TakeCollectRewardRsp = 4305;
+    CmdMuseumType_GetMuseumInfoScRsp = 4378;
+    CmdMuseumType_FinishCurTurnCsReq = 4371;
+    CmdMuseumType_UpgradeAreaScRsp = 4338;
+    CmdMuseumType_SyncMuseumFundsChangedScNotify = 4336;
+    CmdMuseumType_RemoveStuffFromAreaScRsp = 4347;
+    CmdMuseumType_BuyNpcStuffScRsp = 4358;
+    CmdMuseumType_CEPFGCAKGKM = 4333;
+    CmdMuseumType_BuyNpcStuffCsReq = 4393;
+    CmdMuseumType_JAHIGLFGFNM = 4386;
+    CmdMuseumType_SyncMuseumInfoChangedScNotify = 4311;
+    CmdMuseumType_SyncMuseumTargetMissionFinishNotify = 4380;
+    CmdMuseumType_MuseumRandomEventSelectCsReq = 4365;
+    CmdMuseumType_SyncMuseumTargetRewardNotify = 4384;
+    CmdMuseumType_MuseumRandomEventQueryCsReq = 4345;
+    CmdMuseumType_MuseumRandomEventQueryScRsp = 4369;
 }
 
 message FCCDKHNGIPH {

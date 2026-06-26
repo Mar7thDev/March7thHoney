@@ -34,14 +34,17 @@ namespace March7thHoney.Proto {
             "cmV0Y29kZRgIIAEoDRIhCgtJRENNQUNDUENCSBgNIAEoCzIMLkdDUEdCUE5H",
             "T0ZGIlwKFVJvZ3VlQXJjYWRlU3RhcnRTY1JzcBIhCgtJRENNQUNDUENCSBgE",
             "IAEoCzIMLkdDUEdCUE5HT0ZGEg8KB3Jvb21faWQYBSABKA0SDwoHcmV0Y29k",
-            "ZRgHIAEoDSqhAgoSQ21kUm9ndWVBcmNhZGVUeXBlEhsKF05OSEJBT0tFQkpJ",
-            "X05MQ0RHSVBHRkRKEAASHAoXTk5IQkFPS0VCSklfT0NLQU5QQUpJTUoQ6zsS",
-            "HAoXTk5IQkFPS0VCSklfT0NFTUJCQk5BR0oQ8DsSHAoXTk5IQkFPS0VCSklf",
-            "RENIQlBPQkZKSksQ9TsSHAoXTk5IQkFPS0VCSklfRk5BTUxMRU1BT0sQijwS",
-            "HAoXTk5IQkFPS0VCSklfUEpERkxFQ0RPQUEQ/zsSHAoXTk5IQkFPS0VCSklf",
-            "RU5ERkNKREpIRUoQ6DsSHAoXTk5IQkFPS0VCSklfR0ZFQ01DQkNNRE0QgzwS",
-            "HAoXTk5IQkFPS0VCSklfSUZQQ0RCTUVJQUsQhTxCFqoCE01hcmNoN3RoSG9u",
-            "ZXkuUHJvdG9iBnByb3RvMw=="));
+            "ZRgHIAEoDSqbAwoSQ21kUm9ndWVBcmNhZGVUeXBlEiIKHkNtZFJvZ3VlQXJj",
+            "YWRlVHlwZV9OTENER0lQR0ZEShAAEi0KKENtZFJvZ3VlQXJjYWRlVHlwZV9S",
+            "b2d1ZUFyY2FkZUxlYXZlU2NSc3AQ6zsSLwoqQ21kUm9ndWVBcmNhZGVUeXBl",
+            "X1JvZ3VlQXJjYWRlUmVzdGFydFNjUnNwEPA7EjIKLUNtZFJvZ3VlQXJjYWRl",
+            "VHlwZV9Sb2d1ZUFyY2FkZU1vZHVsZUluaXRDc1JlcRD1OxIvCipDbWRSb2d1",
+            "ZUFyY2FkZVR5cGVfUm9ndWVBcmNhZGVHZXRJbmZvU2NSc3AQijwSIwoeQ21k",
+            "Um9ndWVBcmNhZGVUeXBlX1BKREZMRUNET0FBEP87EiMKHkNtZFJvZ3VlQXJj",
+            "YWRlVHlwZV9FTkRGQ0pESkhFShDoOxIjCh5DbWRSb2d1ZUFyY2FkZVR5cGVf",
+            "R0ZFQ01DQkNNRE0QgzwSLQooQ21kUm9ndWVBcmNhZGVUeXBlX1JvZ3VlQXJj",
+            "YWRlU3RhcnRTY1JzcBCFPEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRogueArcadeType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -57,15 +60,15 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRogueArcadeType {
-    [pbr::OriginalName("NNHBAOKEBJI_NLCDGIPGFDJ")] NnhbaokebjiNlcdgipgfdj = 0,
-    [pbr::OriginalName("NNHBAOKEBJI_OCKANPAJIMJ")] NnhbaokebjiOckanpajimj = 7659,
-    [pbr::OriginalName("NNHBAOKEBJI_OCEMBBBNAGJ")] NnhbaokebjiOcembbbnagj = 7664,
-    [pbr::OriginalName("NNHBAOKEBJI_DCHBPOBFJJK")] NnhbaokebjiDchbpobfjjk = 7669,
-    [pbr::OriginalName("NNHBAOKEBJI_FNAMLLEMAOK")] NnhbaokebjiFnamllemaok = 7690,
-    [pbr::OriginalName("NNHBAOKEBJI_PJDFLECDOAA")] NnhbaokebjiPjdflecdoaa = 7679,
-    [pbr::OriginalName("NNHBAOKEBJI_ENDFCJDJHEJ")] NnhbaokebjiEndfcjdjhej = 7656,
-    [pbr::OriginalName("NNHBAOKEBJI_GFECMCBCMDM")] NnhbaokebjiGfecmcbcmdm = 7683,
-    [pbr::OriginalName("NNHBAOKEBJI_IFPCDBMEIAK")] NnhbaokebjiIfpcdbmeiak = 7685,
+    [pbr::OriginalName("CmdRogueArcadeType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdRogueArcadeType_RogueArcadeLeaveScRsp")] RogueArcadeLeaveScRsp = 7659,
+    [pbr::OriginalName("CmdRogueArcadeType_RogueArcadeRestartScRsp")] RogueArcadeRestartScRsp = 7664,
+    [pbr::OriginalName("CmdRogueArcadeType_RogueArcadeModuleInitCsReq")] RogueArcadeModuleInitCsReq = 7669,
+    [pbr::OriginalName("CmdRogueArcadeType_RogueArcadeGetInfoScRsp")] RogueArcadeGetInfoScRsp = 7690,
+    [pbr::OriginalName("CmdRogueArcadeType_PJDFLECDOAA")] Pjdflecdoaa = 7679,
+    [pbr::OriginalName("CmdRogueArcadeType_ENDFCJDJHEJ")] Endfcjdjhej = 7656,
+    [pbr::OriginalName("CmdRogueArcadeType_GFECMCBCMDM")] Gfecmcbcmdm = 7683,
+    [pbr::OriginalName("CmdRogueArcadeType_RogueArcadeStartScRsp")] RogueArcadeStartScRsp = 7685,
   }
 
   #endregion

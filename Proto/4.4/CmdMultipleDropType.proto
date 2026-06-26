@@ -10,13 +10,13 @@ message BMJHAHOLEGH {
 }
 
 enum CmdMultipleDropType {
-    ACIMFGFNPDF_NLCDGIPGFDJ = 0;
-    ACIMFGFNPDF_NPKMBAOAPLD = 4625;
-    ACIMFGFNPDF_FEKBMNHPIHH = 4688;
-    ACIMFGFNPDF_DOICNEIODDH = 4678;
-    ACIMFGFNPDF_KBJBDAOPHGG = 4681;
-    ACIMFGFNPDF_EKEMGKOPHFP = 4658;
-    ACIMFGFNPDF_IEKEHEGBEKF = 4693;
+    CmdMultipleDropType_NLCDGIPGFDJ = 0;
+    CmdMultipleDropType_GetMultipleDropInfoCsReq = 4625;
+    CmdMultipleDropType_GetPlayerReturnMultiDropInfoScRsp = 4688;
+    CmdMultipleDropType_GetMultipleDropInfoScRsp = 4678;
+    CmdMultipleDropType_MultipleDropInfoNotify = 4681;
+    CmdMultipleDropType_GetPlayerReturnMultiDropInfoCsReq = 4658;
+    CmdMultipleDropType_MultipleDropInfoScNotify = 4693;
 }
 
 message GCLPBMPOHLI {

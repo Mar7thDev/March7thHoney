@@ -3,13 +3,13 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 enum CmdRedDotType {
-    AAGDLGIHHOE_NLCDGIPGFDJ = 0;
-    AAGDLGIHHOE_KABNELBBNKH = 5937;
-    AAGDLGIHHOE_EJDAHCIBGOF = 5919;
-    AAGDLGIHHOE_PHEGNNDHALO = 5909;
-    AAGDLGIHHOE_NFMGANEMPNE = 5944;
-    AAGDLGIHHOE_FKBAFCOEHGG = 5948;
-    AAGDLGIHHOE_DFFBHAGPBJE = 5923;
+    CmdRedDotType_NLCDGIPGFDJ = 0;
+    CmdRedDotType_KABNELBBNKH = 5937;
+    CmdRedDotType_EJDAHCIBGOF = 5919;
+    CmdRedDotType_GetAllRedDotDataCsReq = 5909;
+    CmdRedDotType_NFMGANEMPNE = 5944;
+    CmdRedDotType_FKBAFCOEHGG = 5948;
+    CmdRedDotType_DFFBHAGPBJE = 5923;
 }
 
 message EGELHCKMLNK {

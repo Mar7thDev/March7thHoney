@@ -22,30 +22,30 @@ message CJDIAHDLCNJ {
 }
 
 enum CmdPunkLordType {
-    JICHKOBOBNA_NLCDGIPGFDJ = 0;
-    JICHKOBOBNA_IBBPICELEEH = 3221;
-    JICHKOBOBNA_IOIEBAMNAFJ = 3230;
-    JICHKOBOBNA_NFCLFNPJDBL = 3205;
-    JICHKOBOBNA_EEIHHOKKMDJ = 3210;
-    JICHKOBOBNA_CLHLADHGPFI = 3258;
-    JICHKOBOBNA_DIPHNKCNHEK = 3247;
-    JICHKOBOBNA_AJEBKAIKEIP = 3278;
-    JICHKOBOBNA_KAHMNCNPJOI = 3238;
-    JICHKOBOBNA_GAOLDEMFGMG = 3242;
-    JICHKOBOBNA_LDLNMHHFEKE = 3288;
-    JICHKOBOBNA_JECAMAAGBDG = 3229;
-    JICHKOBOBNA_OJEJIKEJELH = 3225;
-    JICHKOBOBNA_IMLGKBNHJPF = 3272;
-    JICHKOBOBNA_PNNPAHFNBAE = 3281;
-    JICHKOBOBNA_CLDHCODCLJD = 3211;
-    JICHKOBOBNA_CPNDHDMFPAO = 3243;
-    JICHKOBOBNA_GGKCEICNKGC = 3239;
-    JICHKOBOBNA_OHOCIGMPANB = 3286;
-    JICHKOBOBNA_BBPJCEBHDHM = 3293;
-    JICHKOBOBNA_DEJPMJKNGMN = 3241;
-    JICHKOBOBNA_JOOJJAKOAKP = 3233;
-    JICHKOBOBNA_MBIMLNNKFNL = 3204;
-    JICHKOBOBNA_HFMCDJIAAAD = 3248;
+    CmdPunkLordType_NLCDGIPGFDJ = 0;
+    CmdPunkLordType_PunkLordMonsterKilledNotify = 3221;
+    CmdPunkLordType_PunkLordBattleResultScNotify = 3230;
+    CmdPunkLordType_NFCLFNPJDBL = 3205;
+    CmdPunkLordType_PunkLordDataChangeNotify = 3210;
+    CmdPunkLordType_StartPunkLordRaidScRsp = 3258;
+    CmdPunkLordType_SummonPunkLordMonsterScRsp = 3247;
+    CmdPunkLordType_GetPunkLordMonsterDataScRsp = 3278;
+    CmdPunkLordType_TakePunkLordPointRewardScRsp = 3238;
+    CmdPunkLordType_GetKilledPunkLordMonsterDataCsReq = 3242;
+    CmdPunkLordType_LDLNMHHFEKE = 3288;
+    CmdPunkLordType_GetPunkLordBattleRecordScRsp = 3229;
+    CmdPunkLordType_GetPunkLordMonsterDataCsReq = 3225;
+    CmdPunkLordType_GetKilledPunkLordMonsterDataScRsp = 3272;
+    CmdPunkLordType_SharePunkLordMonsterScRsp = 3281;
+    CmdPunkLordType_GetPunkLordDataScRsp = 3211;
+    CmdPunkLordType_GetPunkLordBattleRecordCsReq = 3243;
+    CmdPunkLordType_PunkLordMonsterInfoScNotify = 3239;
+    CmdPunkLordType_OHOCIGMPANB = 3286;
+    CmdPunkLordType_BBPJCEBHDHM = 3293;
+    CmdPunkLordType_TakeKilledPunkLordMonsterScoreScRsp = 3241;
+    CmdPunkLordType_JOOJJAKOAKP = 3233;
+    CmdPunkLordType_GetPunkLordDataCsReq = 3204;
+    CmdPunkLordType_PunkLordRaidTimeOutScNotify = 3248;
 }
 
 message FGFGINEFBBK {

@@ -5,20 +5,20 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdQuestType {
-    HNJJNHPFBGO_NLCDGIPGFDJ = 0;
-    HNJJNHPFBGO_JIJBFNKJHIJ = 933;
-    HNJJNHPFBGO_MNGGMLBGPOO = 958;
-    HNJJNHPFBGO_IKABMLMGLHN = 940;
-    HNJJNHPFBGO_POAMGCLPCAF = 947;
-    HNJJNHPFBGO_BMAEEOHLFLO = 913;
-    HNJJNHPFBGO_OJKCEKKDLEL = 939;
-    HNJJNHPFBGO_PJEHEOLCFCF = 904;
-    HNJJNHPFBGO_OKMJKNLLHKP = 986;
-    HNJJNHPFBGO_OIHECCNGJKO = 993;
-    HNJJNHPFBGO_HMHBBKILIFK = 925;
-    HNJJNHPFBGO_CCMMJODPCJB = 978;
-    HNJJNHPFBGO_CFHHFHMGAGL = 971;
-    HNJJNHPFBGO_EEHHGFOMFAD = 926;
+    CmdQuestType_NLCDGIPGFDJ = 0;
+    CmdQuestType_TakeQuestOptionalRewardScRsp = 933;
+    CmdQuestType_TakeQuestRewardScRsp = 958;
+    CmdQuestType_IKABMLMGLHN = 940;
+    CmdQuestType_GetQuestRecordScRsp = 947;
+    CmdQuestType_FinishClientAchievementCsReq = 913;
+    CmdQuestType_OJKCEKKDLEL = 939;
+    CmdQuestType_PJEHEOLCFCF = 904;
+    CmdQuestType_GetQuestRecordCsReq = 986;
+    CmdQuestType_OIHECCNGJKO = 993;
+    CmdQuestType_GetQuestDataCsReq = 925;
+    CmdQuestType_GetQuestDataScRsp = 978;
+    CmdQuestType_CFHHFHMGAGL = 971;
+    CmdQuestType_QuestRecordScNotify = 926;
 }
 
 message ECLGDFGGOFH {

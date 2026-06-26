@@ -5,26 +5,26 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdMapRotationType {
-    LLGNEHDEAFB_NLCDGIPGFDJ = 0;
-    LLGNEHDEAFB_BGKIMCFIDJP = 6838;
-    LLGNEHDEAFB_IIDKFIGMHHE = 6886;
-    LLGNEHDEAFB_OKNOECBLJHG = 6845;
-    LLGNEHDEAFB_DONNNJLGABE = 6833;
-    LLGNEHDEAFB_EGJJGMJHLHC = 6836;
-    LLGNEHDEAFB_NHPFKHBLBDD = 6888;
-    LLGNEHDEAFB_NNFHIIFJILF = 6893;
-    LLGNEHDEAFB_GMPGIIIILIH = 6878;
-    LLGNEHDEAFB_JBFMGCIDLKE = 6840;
-    LLGNEHDEAFB_BLAKAIFHDMA = 6858;
-    LLGNEHDEAFB_HIOAFNDKBKO = 6826;
-    LLGNEHDEAFB_CEOGMABPNGP = 6813;
-    LLGNEHDEAFB_GEEJLMENDGC = 6847;
-    LLGNEHDEAFB_GOELJOLEGHB = 6825;
-    LLGNEHDEAFB_HDJLHHPODKL = 6871;
-    LLGNEHDEAFB_FOKPNCMNKDJ = 6848;
-    LLGNEHDEAFB_PMJCDLIOAON = 6881;
-    LLGNEHDEAFB_EJELBNKLFDJ = 6804;
-    LLGNEHDEAFB_OMBDFNNCLHC = 6811;
+    CmdMapRotationType_NLCDGIPGFDJ = 0;
+    CmdMapRotationType_BGKIMCFIDJP = 6838;
+    CmdMapRotationType_IIDKFIGMHHE = 6886;
+    CmdMapRotationType_OKNOECBLJHG = 6845;
+    CmdMapRotationType_DONNNJLGABE = 6833;
+    CmdMapRotationType_EGJJGMJHLHC = 6836;
+    CmdMapRotationType_DeployRotatorCsReq = 6888;
+    CmdMapRotationType_InteractChargerCsReq = 6893;
+    CmdMapRotationType_GMPGIIIILIH = 6878;
+    CmdMapRotationType_JBFMGCIDLKE = 6840;
+    CmdMapRotationType_BLAKAIFHDMA = 6858;
+    CmdMapRotationType_LeaveMapRotationRegionCsReq = 6826;
+    CmdMapRotationType_CEOGMABPNGP = 6813;
+    CmdMapRotationType_GEEJLMENDGC = 6847;
+    CmdMapRotationType_EnterMapRotationRegionCsReq = 6825;
+    CmdMapRotationType_GetMapRotationDataCsReq = 6871;
+    CmdMapRotationType_FOKPNCMNKDJ = 6848;
+    CmdMapRotationType_PMJCDLIOAON = 6881;
+    CmdMapRotationType_EJELBNKLFDJ = 6804;
+    CmdMapRotationType_OMBDFNNCLHC = 6811;
 }
 
 message DNNLHFKKNLM {

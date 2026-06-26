@@ -5,13 +5,13 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdBenefitV2ActivityType {
-    BNDFIJKMBHE_NLCDGIPGFDJ = 0;
-    BNDFIJKMBHE_DIPCCGHFJAA = 9825;
-    BNDFIJKMBHE_JGAJJBNCIKK = 9826;
-    BNDFIJKMBHE_MOHCJNIMHJM = 9823;
-    BNDFIJKMBHE_DGDFAKFHKFA = 9821;
-    BNDFIJKMBHE_NIJIGHHGKIO = 9824;
-    BNDFIJKMBHE_NDGINIGLHFG = 9830;
+    CmdBenefitV2ActivityType_NLCDGIPGFDJ = 0;
+    CmdBenefitV2ActivityType_DIPCCGHFJAA = 9825;
+    CmdBenefitV2ActivityType_JGAJJBNCIKK = 9826;
+    CmdBenefitV2ActivityType_MOHCJNIMHJM = 9823;
+    CmdBenefitV2ActivityType_DGDFAKFHKFA = 9821;
+    CmdBenefitV2ActivityType_NIJIGHHGKIO = 9824;
+    CmdBenefitV2ActivityType_NDGINIGLHFG = 9830;
 }
 
 message EOAJKNKDAOD {

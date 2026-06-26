@@ -5,23 +5,23 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdTreasureDungeonType {
-    POKAGMCAJAI_NLCDGIPGFDJ = 0;
-    POKAGMCAJAI_PDJKFPGAMEG = 4442;
-    POKAGMCAJAI_DCPDKIHCPKO = 4411;
-    POKAGMCAJAI_NGGIMBOLLBB = 4448;
-    POKAGMCAJAI_NAPLHFMAEKJ = 4438;
-    POKAGMCAJAI_OFPJKEOMKKE = 4433;
-    POKAGMCAJAI_CKEAHDMDJLO = 4471;
-    POKAGMCAJAI_BGACJNHKKCF = 4430;
-    POKAGMCAJAI_KNDCICFEIPB = 4425;
-    POKAGMCAJAI_OAGNOMLAAEF = 4465;
-    POKAGMCAJAI_DEMKADMCFIN = 4445;
-    POKAGMCAJAI_EILMJJJMPBC = 4439;
-    POKAGMCAJAI_KMIDJBAGJJE = 4440;
-    POKAGMCAJAI_DAIBCGNMGHH = 4469;
-    POKAGMCAJAI_GGOCBAJEOND = 4478;
-    POKAGMCAJAI_LOHOAAHAIPJ = 4436;
-    POKAGMCAJAI_FBFOMNAHIDP = 4404;
+    CmdTreasureDungeonType_NLCDGIPGFDJ = 0;
+    CmdTreasureDungeonType_QuitTreasureDungeonScRsp = 4442;
+    CmdTreasureDungeonType_DCPDKIHCPKO = 4411;
+    CmdTreasureDungeonType_InteractTreasureDungeonGridCsReq = 4448;
+    CmdTreasureDungeonType_EnterTreasureDungeonScRsp = 4438;
+    CmdTreasureDungeonType_EnterTreasureDungeonCsReq = 4433;
+    CmdTreasureDungeonType_GetTreasureDungeonActivityDataCsReq = 4471;
+    CmdTreasureDungeonType_BGACJNHKKCF = 4430;
+    CmdTreasureDungeonType_TreasureDungeonDataScNotify = 4425;
+    CmdTreasureDungeonType_UseTreasureDungeonItemScRsp = 4465;
+    CmdTreasureDungeonType_InteractTreasureDungeonGridScRsp = 4445;
+    CmdTreasureDungeonType_OpenTreasureDungeonGridCsReq = 4439;
+    CmdTreasureDungeonType_GetTreasureDungeonActivityDataScRsp = 4440;
+    CmdTreasureDungeonType_DAIBCGNMGHH = 4469;
+    CmdTreasureDungeonType_TreasureDungeonFinishScNotify = 4478;
+    CmdTreasureDungeonType_FightTreasureDungeonMonsterScRsp = 4436;
+    CmdTreasureDungeonType_OpenTreasureDungeonGridScRsp = 4404;
 }
 
 message DCMCLHJINBD {

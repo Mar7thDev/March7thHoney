@@ -25,12 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZDbWRSbmRPcHRpb25UeXBlLnByb3RvIhgKFkRhaWx5Rmlyc3RNZWV0UGFt",
-            "Q3NSZXEiHwoRR2V0Um5kT3B0aW9uQ3NSZXESCgoCaWQYBiABKA0qpwEKEENt",
-            "ZFJuZE9wdGlvblR5cGUSGwoXTEhISUtQTE1MR0hfTkxDREdJUEdGREoQABIc",
-            "ChdMSEhJS1BMTUxHSF9GSE1CSkdDQkJQRhDhGhIcChdMSEhJS1BMTUxHSF9C",
-            "S0FPTE1FT0xGShClGxIcChdMSEhJS1BMTUxHSF9BS0VLRk5PUFBMRhCWGxIc",
-            "ChdMSEhJS1BMTUxHSF9JRk1FSlBKSkVMThCCG0IWqgITTWFyY2g3dGhIb25l",
-            "eS5Qcm90b2IGcHJvdG8z"));
+            "Q3NSZXEiHwoRR2V0Um5kT3B0aW9uQ3NSZXESCgoCaWQYBiABKA0q0QEKEENt",
+            "ZFJuZE9wdGlvblR5cGUSIAocQ21kUm5kT3B0aW9uVHlwZV9OTENER0lQR0ZE",
+            "ShAAEicKIkNtZFJuZE9wdGlvblR5cGVfR2V0Um5kT3B0aW9uQ3NSZXEQ4RoS",
+            "LAonQ21kUm5kT3B0aW9uVHlwZV9EYWlseUZpcnN0TWVldFBhbUNzUmVxEKUb",
+            "EiEKHENtZFJuZE9wdGlvblR5cGVfQUtFS0ZOT1BQTEYQlhsSIQocQ21kUm5k",
+            "T3B0aW9uVHlwZV9JRk1FSlBKSkVMThCCG0IWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRndOptionType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -43,11 +44,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRndOptionType {
-    [pbr::OriginalName("LHHIKPLMLGH_NLCDGIPGFDJ")] LhhikplmlghNlcdgipgfdj = 0,
-    [pbr::OriginalName("LHHIKPLMLGH_FHMBJGCBBPF")] LhhikplmlghFhmbjgcbbpf = 3425,
-    [pbr::OriginalName("LHHIKPLMLGH_BKAOLMEOLFJ")] LhhikplmlghBkaolmeolfj = 3493,
-    [pbr::OriginalName("LHHIKPLMLGH_AKEKFNOPPLF")] LhhikplmlghAkekfnopplf = 3478,
-    [pbr::OriginalName("LHHIKPLMLGH_IFMEJPJJELN")] LhhikplmlghIfmejpjjeln = 3458,
+    [pbr::OriginalName("CmdRndOptionType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdRndOptionType_GetRndOptionCsReq")] GetRndOptionCsReq = 3425,
+    [pbr::OriginalName("CmdRndOptionType_DailyFirstMeetPamCsReq")] DailyFirstMeetPamCsReq = 3493,
+    [pbr::OriginalName("CmdRndOptionType_AKEKFNOPPLF")] Akekfnopplf = 3478,
+    [pbr::OriginalName("CmdRndOptionType_IFMEJPJJELN")] Ifmejpjjeln = 3458,
   }
 
   #endregion

@@ -24,9 +24,9 @@ namespace March7thHoney.Proto {
     static CmdFightMarbleTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbWRGaWdodE1hcmJsZVR5cGUucHJvdG8qMQoSQ21kRmlnaHRNYXJibGVU",
-            "eXBlEhsKF0NNQ0xNQklPRE5HX05MQ0RHSVBHRkRKEABCFqoCE01hcmNoN3Ro",
-            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ChhDbWRGaWdodE1hcmJsZVR5cGUucHJvdG8qOAoSQ21kRmlnaHRNYXJibGVU",
+            "eXBlEiIKHkNtZEZpZ2h0TWFyYmxlVHlwZV9OTENER0lQR0ZEShAAQhaqAhNN",
+            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFightMarbleType), }, null, null));
@@ -36,7 +36,7 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightMarbleType {
-    [pbr::OriginalName("CMCLMBIODNG_NLCDGIPGFDJ")] CmclmbiodngNlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdFightMarbleType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
   }
 
   #endregion

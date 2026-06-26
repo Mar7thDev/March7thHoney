@@ -8,23 +8,23 @@ message AOMMAFEOBOA {
 }
 
 enum CmdTarotBookType {
-    ACPLKAJAAIL_NLCDGIPGFDJ = 0;
-    ACPLKAJAAIL_EMGMNOCIEND = 8160;
-    ACPLKAJAAIL_EKGBJAFENNC = 8154;
-    ACPLKAJAAIL_MFHFFDFPBGA = 8145;
-    ACPLKAJAAIL_AOHLDLGHCBL = 8158;
-    ACPLKAJAAIL_EIDOKKFKCJE = 8149;
-    ACPLKAJAAIL_JPMKFNJCFDA = 8143;
-    ACPLKAJAAIL_CHAGAGBGIHN = 8157;
-    ACPLKAJAAIL_JECNAANEHBM = 8152;
-    ACPLKAJAAIL_OAIEAOHBPPL = 8147;
-    ACPLKAJAAIL_CMECHEPAGCK = 8155;
-    ACPLKAJAAIL_PJMKHDEENAD = 8150;
-    ACPLKAJAAIL_NCMCOOPOHCI = 8151;
-    ACPLKAJAAIL_PCOCGBEPEJK = 8148;
-    ACPLKAJAAIL_IDKNBAJLBAP = 8142;
-    ACPLKAJAAIL_HNKFDHJBBEG = 8144;
-    ACPLKAJAAIL_FJECGADDJCJ = 8141;
+    CmdTarotBookType_NLCDGIPGFDJ = 0;
+    CmdTarotBookType_TarotBookUnlockInteractionScRsp = 8160;
+    CmdTarotBookType_TarotBookMultiOpenPackAndUnlockStoryScRsp = 8154;
+    CmdTarotBookType_MFHFFDFPBGA = 8145;
+    CmdTarotBookType_TarotBookModuleInitCsReq = 8158;
+    CmdTarotBookType_EIDOKKFKCJE = 8149;
+    CmdTarotBookType_JPMKFNJCFDA = 8143;
+    CmdTarotBookType_TarotBookUnlockStoryScRsp = 8157;
+    CmdTarotBookType_TarotBookOpenPackScRsp = 8152;
+    CmdTarotBookType_OAIEAOHBPPL = 8147;
+    CmdTarotBookType_CMECHEPAGCK = 8155;
+    CmdTarotBookType_TarotBookSyncDataScNotify = 8150;
+    CmdTarotBookType_TarotBookModifyEnergyScNotify = 8151;
+    CmdTarotBookType_TarotBookGetDataScRsp = 8148;
+    CmdTarotBookType_IDKNBAJLBAP = 8142;
+    CmdTarotBookType_TarotBookFinishStoryScRsp = 8144;
+    CmdTarotBookType_TarotBookFinishInteractionScRsp = 8141;
 }
 
 message GMBGLBHEFDI {

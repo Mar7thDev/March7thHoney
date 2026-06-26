@@ -33,12 +33,13 @@ namespace March7thHoney.Proto {
             "B3JldGNvZGUYCiABKA0SIgoMYXJjaGl2ZV9kYXRhGA4gASgLMgwuQXJjaGl2",
             "ZURhdGEiHAoaR2V0VXBkYXRlZEFyY2hpdmVEYXRhQ3NSZXEiLgoLTW9uc3Rl",
             "ckxpc3QSEgoKbW9uc3Rlcl9pZBgDIAEoDRILCgNudW0YBiABKA0iKQoJUmVs",
-            "aWNMaXN0Eg4KBnNldF9pZBgBIAEoDRIMCgR0eXBlGAIgASgNKqUBCg5DbWRB",
-            "cmNoaXZlVHlwZRIbChdNRkpER01HS01ESl9OTENER0lQR0ZEShAAEhwKF01G",
-            "SkRHTUdLTURKX1BFUElDQVBDREtGELYSEhwKF01GSkRHTUdLTURKX0JNRUJJ",
-            "QUpGQURCENkSEhwKF01GSkRHTUdLTURKX0hOSktHSUJGTUlQEMoSEhwKF01G",
-            "SkRHTUdLTURKX0lIS0lPT01ETU5EEJUSQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
-            "b3RvYgZwcm90bzM="));
+            "aWNMaXN0Eg4KBnNldF9pZBgBIAEoDRIMCgR0eXBlGAIgASgNKtMBCg5DbWRB",
+            "cmNoaXZlVHlwZRIeChpDbWRBcmNoaXZlVHlwZV9OTENER0lQR0ZEShAAEh8K",
+            "GkNtZEFyY2hpdmVUeXBlX1BFUElDQVBDREtGELYSEi4KKUNtZEFyY2hpdmVU",
+            "eXBlX0dldFVwZGF0ZWRBcmNoaXZlRGF0YUNzUmVxENkSEicKIkNtZEFyY2hp",
+            "dmVUeXBlX0dldEFyY2hpdmVEYXRhU2NSc3AQyhISJwoiQ21kQXJjaGl2ZVR5",
+            "cGVfR2V0QXJjaGl2ZURhdGFDc1JlcRCVEkIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdArchiveType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -55,11 +56,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdArchiveType {
-    [pbr::OriginalName("MFJDGMGKMDJ_NLCDGIPGFDJ")] MfjdgmgkmdjNlcdgipgfdj = 0,
-    [pbr::OriginalName("MFJDGMGKMDJ_PEPICAPCDKF")] MfjdgmgkmdjPepicapcdkf = 2358,
-    [pbr::OriginalName("MFJDGMGKMDJ_BMEBIAJFADB")] MfjdgmgkmdjBmebiajfadb = 2393,
-    [pbr::OriginalName("MFJDGMGKMDJ_HNJKGIBFMIP")] MfjdgmgkmdjHnjkgibfmip = 2378,
-    [pbr::OriginalName("MFJDGMGKMDJ_IHKIOOMDMND")] MfjdgmgkmdjIhkioomdmnd = 2325,
+    [pbr::OriginalName("CmdArchiveType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdArchiveType_PEPICAPCDKF")] Pepicapcdkf = 2358,
+    [pbr::OriginalName("CmdArchiveType_GetUpdatedArchiveDataCsReq")] GetUpdatedArchiveDataCsReq = 2393,
+    [pbr::OriginalName("CmdArchiveType_GetArchiveDataScRsp")] GetArchiveDataScRsp = 2378,
+    [pbr::OriginalName("CmdArchiveType_GetArchiveDataCsReq")] GetArchiveDataCsReq = 2325,
   }
 
   #endregion

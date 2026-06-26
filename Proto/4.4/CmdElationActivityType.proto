@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdElationActivityType {
-    GFOCDHFMBBC_NLCDGIPGFDJ = 0;
-    GFOCDHFMBBC_ELNGDMKBHIE = 9104;
-    GFOCDHFMBBC_GMCIMIMJNKC = 9103;
-    GFOCDHFMBBC_AECKJFFELBJ = 9105;
-    GFOCDHFMBBC_FAGCDJLHAAE = 9110;
-    GFOCDHFMBBC_NLNGGABBEEK = 9101;
+    CmdElationActivityType_NLCDGIPGFDJ = 0;
+    CmdElationActivityType_ElationActivityBattleEndScNotify = 9104;
+    CmdElationActivityType_EnterElationActivityStageCsReq = 9103;
+    CmdElationActivityType_EnterElationActivityStageScRsp = 9105;
+    CmdElationActivityType_GetActivityElationDataCsReq = 9110;
+    CmdElationActivityType_GetElationActivityDataScRsp = 9101;
 }
 
 message ElationActivityAvatar {

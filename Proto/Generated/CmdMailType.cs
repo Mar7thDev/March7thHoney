@@ -42,16 +42,16 @@ namespace March7thHoney.Proto {
             "AygNIooBChdUYWtlTWFpbEF0dGFjaG1lbnRTY1JzcBIkCg5mYWlsX21haWxf",
             "bGlzdBgDIAMoCzIMLktOUE5BSFBITkpLEhkKEXN1Y2NfbWFpbF9pZF9saXN0",
             "GAogAygNEg8KB3JldGNvZGUYCyABKA0SHQoKYXR0YWNobWVudBgPIAEoCzIJ",
-            "Lkl0ZW1MaXN0KrgCCgtDbWRNYWlsVHlwZRIbChdDRkdFQkhLQUVIQl9OTENE",
-            "R0lQR0ZEShAAEhwKF0NGR0VCSEtBRUhCX1BHQUZCRlBPSkdGEO4GEhwKF0NG",
-            "R0VCSEtBRUhCX0VQTktHSUJNQk9NEPgGEhwKF0NGR0VCSEtBRUhCX0ZDTE9M",
-            "SU5QTE5JEPEGEhwKF0NGR0VCSEtBRUhCX05LTEVHSUdCT0ZFEM8GEhwKF0NG",
-            "R0VCSEtBRUhCX1BDQ0JMRFBLTktIENoGEhwKF0NGR0VCSEtBRUhCX0JLUEJM",
-            "S0VHT0VMELkGEhwKF0NGR0VCSEtBRUhCX0tQTUtJQUxJQ05DEP0GEhwKF0NG",
-            "R0VCSEtBRUhCX0dMTUFMTkxOUFBJELoGEhwKF0NGR0VCSEtBRUhCX1BFTE1J",
-            "SERDRklMEPYGKjQKCE1haWxUeXBlEhQKEE1BSUxfVFlQRV9OT1JNQUwQABIS",
-            "Cg5NQUlMX1RZUEVfU1RBUhABQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
-            "cm90bzM="));
+            "Lkl0ZW1MaXN0KtICCgtDbWRNYWlsVHlwZRIbChdDbWRNYWlsVHlwZV9OTENE",
+            "R0lQR0ZEShAAEh0KGENtZE1haWxUeXBlX0dldE1haWxTY1JzcBDuBhIdChhD",
+            "bWRNYWlsVHlwZV9EZWxNYWlsQ3NSZXEQ+AYSHQoYQ21kTWFpbFR5cGVfRGVs",
+            "TWFpbFNjUnNwEPEGEigKI0NtZE1haWxUeXBlX1Rha2VNYWlsQXR0YWNobWVu",
+            "dFNjUnNwEM8GEhwKF0NtZE1haWxUeXBlX1BDQ0JMRFBLTktIENoGEh0KGENt",
+            "ZE1haWxUeXBlX0dldE1haWxDc1JlcRC5BhIiCh1DbWRNYWlsVHlwZV9NYXJr",
+            "UmVhZE1haWxDc1JlcRD9BhIgChtDbWRNYWlsVHlwZV9OZXdNYWlsU2NOb3Rp",
+            "ZnkQugYSHAoXQ21kTWFpbFR5cGVfUEVMTUlIRENGSUwQ9gYqNAoITWFpbFR5",
+            "cGUSFAoQTUFJTF9UWVBFX05PUk1BTBAAEhIKDk1BSUxfVFlQRV9TVEFSEAFC",
+            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMailType), typeof(global::March7thHoney.Proto.MailType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -71,16 +71,16 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMailType {
-    [pbr::OriginalName("CFGEBHKAEHB_NLCDGIPGFDJ")] CfgebhkaehbNlcdgipgfdj = 0,
-    [pbr::OriginalName("CFGEBHKAEHB_PGAFBFPOJGF")] CfgebhkaehbPgafbfpojgf = 878,
-    [pbr::OriginalName("CFGEBHKAEHB_EPNKGIBMBOM")] CfgebhkaehbEpnkgibmbom = 888,
-    [pbr::OriginalName("CFGEBHKAEHB_FCLOLINPLNI")] CfgebhkaehbFclolinplni = 881,
-    [pbr::OriginalName("CFGEBHKAEHB_NKLEGIGBOFE")] CfgebhkaehbNklegigbofe = 847,
-    [pbr::OriginalName("CFGEBHKAEHB_PCCBLDPKNKH")] CfgebhkaehbPccbldpknkh = 858,
-    [pbr::OriginalName("CFGEBHKAEHB_BKPBLKEGOEL")] CfgebhkaehbBkpblkegoel = 825,
-    [pbr::OriginalName("CFGEBHKAEHB_KPMKIALICNC")] CfgebhkaehbKpmkialicnc = 893,
-    [pbr::OriginalName("CFGEBHKAEHB_GLMALNLNPPI")] CfgebhkaehbGlmalnlnppi = 826,
-    [pbr::OriginalName("CFGEBHKAEHB_PELMIHDCFIL")] CfgebhkaehbPelmihdcfil = 886,
+    [pbr::OriginalName("CmdMailType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdMailType_GetMailScRsp")] GetMailScRsp = 878,
+    [pbr::OriginalName("CmdMailType_DelMailCsReq")] DelMailCsReq = 888,
+    [pbr::OriginalName("CmdMailType_DelMailScRsp")] DelMailScRsp = 881,
+    [pbr::OriginalName("CmdMailType_TakeMailAttachmentScRsp")] TakeMailAttachmentScRsp = 847,
+    [pbr::OriginalName("CmdMailType_PCCBLDPKNKH")] Pccbldpknkh = 858,
+    [pbr::OriginalName("CmdMailType_GetMailCsReq")] GetMailCsReq = 825,
+    [pbr::OriginalName("CmdMailType_MarkReadMailCsReq")] MarkReadMailCsReq = 893,
+    [pbr::OriginalName("CmdMailType_NewMailScNotify")] NewMailScNotify = 826,
+    [pbr::OriginalName("CmdMailType_PELMIHDCFIL")] Pelmihdcfil = 886,
   }
 
   public enum MailType {

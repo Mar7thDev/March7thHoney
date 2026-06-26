@@ -9,22 +9,22 @@ message CABBOOKAODO {
 }
 
 enum CmdRelicSmartWearType {
-    HLACKPFNIBD_NLCDGIPGFDJ = 0;
-    HLACKPFNIBD_LIBFBFHOONI = 8254;
-    HLACKPFNIBD_EHDHHNNJBML = 8256;
-    HLACKPFNIBD_MPHCKAJIMDK = 8258;
-    HLACKPFNIBD_FOAGMJKPMPG = 8268;
-    HLACKPFNIBD_CPKIJENBJIC = 8269;
-    HLACKPFNIBD_GLNCPBGNDIG = 8251;
-    HLACKPFNIBD_BPJHENLKJPL = 8262;
-    HLACKPFNIBD_JKGDFMABJAJ = 8259;
-    HLACKPFNIBD_KAJELKNPMLF = 8255;
-    HLACKPFNIBD_MMBGLIDPBIB = 8252;
-    HLACKPFNIBD_FCMMDJEHHFP = 8266;
-    HLACKPFNIBD_EOKEKMFPINF = 8270;
-    HLACKPFNIBD_PGDKLOECDJF = 8264;
-    HLACKPFNIBD_CPJHDNNAIDP = 8267;
-    HLACKPFNIBD_GDCIJLJGNEB = 8253;
+    CmdRelicSmartWearType_NLCDGIPGFDJ = 0;
+    CmdRelicSmartWearType_RelicSmartWearDeletePlanScRsp = 8254;
+    CmdRelicSmartWearType_RelicSmartWearUpdatePinRelicScRsp = 8256;
+    CmdRelicSmartWearType_RelicSmartWearGetPlanScRsp = 8258;
+    CmdRelicSmartWearType_FOAGMJKPMPG = 8268;
+    CmdRelicSmartWearType_CPKIJENBJIC = 8269;
+    CmdRelicSmartWearType_GLNCPBGNDIG = 8251;
+    CmdRelicSmartWearType_RelicSmartWearAddPlanScRsp = 8262;
+    CmdRelicSmartWearType_RelicSmartWearGetPinRelicScRsp = 8259;
+    CmdRelicSmartWearType_KAJELKNPMLF = 8255;
+    CmdRelicSmartWearType_MMBGLIDPBIB = 8252;
+    CmdRelicSmartWearType_RelicSmartWearDeletePinRelicScRsp = 8266;
+    CmdRelicSmartWearType_RelicSmartWearUpdatePinRelicScNotify = 8270;
+    CmdRelicSmartWearType_PGDKLOECDJF = 8264;
+    CmdRelicSmartWearType_RelicSmartWearUpdatePlanScRsp = 8267;
+    CmdRelicSmartWearType_GDCIJLJGNEB = 8253;
 }
 
 enum KCKJILIMNFF {

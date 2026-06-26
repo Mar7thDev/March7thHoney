@@ -29,14 +29,14 @@ message CityShopInfoScNotify {
 }
 
 enum CmdShopType {
-    LHKCEAHDMDF_NLCDGIPGFDJ = 0;
-    LHKCEAHDMDF_HJEDLPLFIKL = 1578;
-    LHKCEAHDMDF_LHDGOGDBNFH = 1586;
-    LHKCEAHDMDF_LOFDPKHCHEA = 1593;
-    LHKCEAHDMDF_OGOGLCKKCEK = 1581;
-    LHKCEAHDMDF_CHIGHHKJHHH = 1525;
-    LHKCEAHDMDF_BEBCIIPDOEK = 1558;
-    LHKCEAHDMDF_ADLEAFAAFKB = 1588;
+    CmdShopType_NLCDGIPGFDJ = 0;
+    CmdShopType_GetShopListScRsp = 1578;
+    CmdShopType_CityShopInfoScNotify = 1586;
+    CmdShopType_BuyGoodsCsReq = 1593;
+    CmdShopType_OGOGLCKKCEK = 1581;
+    CmdShopType_GetShopListCsReq = 1525;
+    CmdShopType_BuyGoodsScRsp = 1558;
+    CmdShopType_ADLEAFAAFKB = 1588;
 }
 
 message GetShopListCsReq {

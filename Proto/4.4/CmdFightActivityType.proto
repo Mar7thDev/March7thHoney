@@ -12,14 +12,14 @@ message CDABDPPPHBN {
 }
 
 enum CmdFightActivityType {
-    EJNCEADPKFE_NLCDGIPGFDJ = 0;
-    EJNCEADPKFE_HFBELGKADLF = 3688;
-    EJNCEADPKFE_IJBOBOFLEAE = 3658;
-    EJNCEADPKFE_NEBCECBJEGP = 3625;
-    EJNCEADPKFE_CFFKPLMCNJI = 3681;
-    EJNCEADPKFE_KOPFLKEHKEF = 3693;
-    EJNCEADPKFE_FCLKICJNKBC = 3686;
-    EJNCEADPKFE_IDPBIJOAHAC = 3678;
+    CmdFightActivityType_NLCDGIPGFDJ = 0;
+    CmdFightActivityType_EnterFightActivityStageScRsp = 3688;
+    CmdFightActivityType_EnterFightActivityStageCsReq = 3658;
+    CmdFightActivityType_FightActivityInitCsReq = 3625;
+    CmdFightActivityType_FightActivityTakeRewardCsReq = 3681;
+    CmdFightActivityType_FightActivityDataChangeScNotify = 3693;
+    CmdFightActivityType_TakeFightActivityRewardScRsp = 3686;
+    CmdFightActivityType_GetFightActivityDataScRsp = 3678;
 }
 
 message DOIBLFFDHDG {

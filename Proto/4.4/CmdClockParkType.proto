@@ -92,23 +92,23 @@ message ClockParkUnlockTalentScRsp {
 }
 
 enum CmdClockParkType {
-    GFGOAJBEDFI_NLCDGIPGFDJ = 0;
-    GFGOAJBEDFI_OCPBPLEDJHC = 7220;
-    GFGOAJBEDFI_IHJAOBAACLB = 7203;
-    GFGOAJBEDFI_AIJFMFPCEBC = 7224;
-    GFGOAJBEDFI_JBMFMMDAGFC = 7221;
-    GFGOAJBEDFI_PEKHIMIDGHC = 7209;
-    GFGOAJBEDFI_ELJOBIFOHLL = 7223;
-    GFGOAJBEDFI_AEHGAMKDECH = 7207;
-    GFGOAJBEDFI_AACKJFICGPM = 7229;
-    GFGOAJBEDFI_KBGOAJMIPEM = 7202;
-    GFGOAJBEDFI_OLEAKJNJDDC = 7210;
-    GFGOAJBEDFI_ANPBFBHIOHP = 7215;
-    GFGOAJBEDFI_KMFFIKDAFPB = 7219;
-    GFGOAJBEDFI_JHAGPKMNFDM = 7213;
-    GFGOAJBEDFI_PKEJFOABIAJ = 7217;
-    GFGOAJBEDFI_HKDKPALAJJA = 7235;
-    GFGOAJBEDFI_LHKAECJBBOA = 7248;
+    CmdClockParkType_NLCDGIPGFDJ = 0;
+    CmdClockParkType_ClockParkHandleWaitOperationScRsp = 7220;
+    CmdClockParkType_ClockParkStartScriptCsReq = 7203;
+    CmdClockParkType_ClockParkWaitSelectStartChapterIDCsReq = 7224;
+    CmdClockParkType_ClockParkGetOngoingScriptInfoScRsp = 7221;
+    CmdClockParkType_PEKHIMIDGHC = 7209;
+    CmdClockParkType_ClockParkGetInfoScRsp = 7223;
+    CmdClockParkType_ClockParkStartScriptScRsp = 7207;
+    CmdClockParkType_ClockParkQuitScriptScRsp = 7229;
+    CmdClockParkType_KBGOAJMIPEM = 7202;
+    CmdClockParkType_ClockParkGetOngoingScriptInfoCsReq = 7210;
+    CmdClockParkType_ANPBFBHIOHP = 7215;
+    CmdClockParkType_ClockParkUnlockTalentCsReq = 7219;
+    CmdClockParkType_ClockParkFinishScriptScNotify = 7213;
+    CmdClockParkType_ClockParkQuitScriptCsReq = 7217;
+    CmdClockParkType_ClockParkUseBuffCsReq = 7235;
+    CmdClockParkType_ClockParkUnlockTalentScRsp = 7248;
 }
 
 message DEGFFGKMFJJ {

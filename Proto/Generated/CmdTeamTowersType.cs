@@ -39,16 +39,17 @@ namespace March7thHoney.Proto {
             "IAEoDRIQCghza2lsbF9pZBgIIAEoDSI3CgtLTUFPQkZJSU1LRhITCgtQSUNM",
             "SExDQklNUBgEIAMoDRITCgtHRVBIS0NQTEFKRhgLIAEoDSJSCgtNQkxBSURG",
             "RU5PRRITCgtOQ0hCTEpISk5JRBgHIAEoDRIhCgtzb3VyY2VfdHlwZRgKIAEo",
-            "DjIMLkdKQ09GQUZMQUVJEgsKA2V4cBgPIAEoDSrGAQoRQ21kVGVhbVRvd2Vy",
-            "c1R5cGUSGwoXQkpDSUNLSUhQUEtfTkxDREdJUEdGREoQABIcChdCSkNJQ0tJ",
-            "SFBQS19DTE5QQ0JLS0lIRhD3TRIcChdCSkNJQ0tJSFBQS19QSElJREtHQkZM",
-            "TxDlTRIcChdCSkNJQ0tJSFBQS19HSE5KTktMTEFBQRDiTRIcChdCSkNJQ0tJ",
-            "SFBQS19NQU5LT0JBREdJRhDnTRIcChdCSkNJQ0tJSFBQS19BSEJBR09MSE9L",
-            "RBDwTSqcAQoLR0pDT0ZBRkxBRUkSGwoXR0pDT0ZBRkxBRUlfTkxDREdJUEdG",
-            "REoQABIbChdHSkNPRkFGTEFFSV9OQ01JTU1EUEhGTRABEhkKFUdKQ09GQUZM",
-            "QUVJX3JvbGVfc3RhchACEhsKF0dKQ09GQUZMQUVJX01DTURLR0VBTk5BEAMS",
-            "GwoXR0pDT0ZBRkxBRUlfTEJHSkhPREJBRUEQBEIWqgITTWFyY2g3dGhIb25l",
-            "eS5Qcm90b2IGcHJvdG8z"));
+            "DjIMLkdKQ09GQUZMQUVJEgsKA2V4cBgPIAEoDSrqAQoRQ21kVGVhbVRvd2Vy",
+            "c1R5cGUSIQodQ21kVGVhbVRvd2Vyc1R5cGVfTkxDREdJUEdGREoQABIiCh1D",
+            "bWRUZWFtVG93ZXJzVHlwZV9DTE5QQ0JLS0lIRhD3TRIiCh1DbWRUZWFtVG93",
+            "ZXJzVHlwZV9QSElJREtHQkZMTxDlTRIiCh1DbWRUZWFtVG93ZXJzVHlwZV9H",
+            "SE5KTktMTEFBQRDiTRIiCh1DbWRUZWFtVG93ZXJzVHlwZV9NQU5LT0JBREdJ",
+            "RhDnTRIiCh1DbWRUZWFtVG93ZXJzVHlwZV9BSEJBR09MSE9LRBDwTSqcAQoL",
+            "R0pDT0ZBRkxBRUkSGwoXR0pDT0ZBRkxBRUlfTkxDREdJUEdGREoQABIbChdH",
+            "SkNPRkFGTEFFSV9OQ01JTU1EUEhGTRABEhkKFUdKQ09GQUZMQUVJX3JvbGVf",
+            "c3RhchACEhsKF0dKQ09GQUZMQUVJX01DTURLR0VBTk5BEAMSGwoXR0pDT0ZB",
+            "RkxBRUlfTEJHSkhPREJBRUEQBEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdTeamTowersType), typeof(global::March7thHoney.Proto.GJCOFAFLAEI), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -66,12 +67,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdTeamTowersType {
-    [pbr::OriginalName("BJCICKIHPPK_NLCDGIPGFDJ")] BjcickihppkNlcdgipgfdj = 0,
-    [pbr::OriginalName("BJCICKIHPPK_CLNPCBKKIHF")] BjcickihppkClnpcbkkihf = 9975,
-    [pbr::OriginalName("BJCICKIHPPK_PHIIDKGBFLO")] BjcickihppkPhiidkgbflo = 9957,
-    [pbr::OriginalName("BJCICKIHPPK_GHNJNKLLAAA")] BjcickihppkGhnjnkllaaa = 9954,
-    [pbr::OriginalName("BJCICKIHPPK_MANKOBADGIF")] BjcickihppkMankobadgif = 9959,
-    [pbr::OriginalName("BJCICKIHPPK_AHBAGOLHOKD")] BjcickihppkAhbagolhokd = 9968,
+    [pbr::OriginalName("CmdTeamTowersType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdTeamTowersType_CLNPCBKKIHF")] Clnpcbkkihf = 9975,
+    [pbr::OriginalName("CmdTeamTowersType_PHIIDKGBFLO")] Phiidkgbflo = 9957,
+    [pbr::OriginalName("CmdTeamTowersType_GHNJNKLLAAA")] Ghnjnkllaaa = 9954,
+    [pbr::OriginalName("CmdTeamTowersType_MANKOBADGIF")] Mankobadgif = 9959,
+    [pbr::OriginalName("CmdTeamTowersType_AHBAGOLHOKD")] Ahbagolhokd = 9968,
   }
 
   public enum GJCOFAFLAEI {

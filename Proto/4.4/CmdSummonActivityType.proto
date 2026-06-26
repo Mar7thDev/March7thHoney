@@ -5,12 +5,12 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdSummonActivityType {
-    FEGMMLEBKMA_NLCDGIPGFDJ = 0;
-    FEGMMLEBKMA_IMEGEEBOGOC = 7570;
-    FEGMMLEBKMA_CPONBFJGEPM = 7561;
-    FEGMMLEBKMA_FHJDJDBACKL = 7563;
-    FEGMMLEBKMA_CKCJOHHLLDI = 7565;
-    FEGMMLEBKMA_BKHOKHNAIMG = 7564;
+    CmdSummonActivityType_NLCDGIPGFDJ = 0;
+    CmdSummonActivityType_ActivitySummonModuleInitCsReq = 7570;
+    CmdSummonActivityType_GetSummonActivityDataScRsp = 7561;
+    CmdSummonActivityType_EnterSummonActivityStageCsReq = 7563;
+    CmdSummonActivityType_EnterSummonActivityStageScRsp = 7565;
+    CmdSummonActivityType_SummonActivityBattleEndScNotify = 7564;
 }
 
 message EnterSummonActivityStageCsReq {

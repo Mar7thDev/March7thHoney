@@ -24,9 +24,9 @@ namespace March7thHoney.Proto {
     static CmdFightCakeRaceTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChpDbWRGaWdodENha2VSYWNlVHlwZS5wcm90byozChRDbWRGaWdodENha2VS",
-            "YWNlVHlwZRIbChdBSENNRFBMTUlEQV9OTENER0lQR0ZEShAAQhaqAhNNYXJj",
-            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "ChpDbWRGaWdodENha2VSYWNlVHlwZS5wcm90byo8ChRDbWRGaWdodENha2VS",
+            "YWNlVHlwZRIkCiBDbWRGaWdodENha2VSYWNlVHlwZV9OTENER0lQR0ZEShAA",
+            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFightCakeRaceType), }, null, null));
@@ -36,7 +36,7 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightCakeRaceType {
-    [pbr::OriginalName("AHCMDPLMIDA_NLCDGIPGFDJ")] AhcmdplmidaNlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdFightCakeRaceType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
   }
 
   #endregion

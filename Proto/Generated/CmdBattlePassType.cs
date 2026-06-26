@@ -41,13 +41,15 @@ namespace March7thHoney.Proto {
             "SkJBS0dITBAEKoABCgpCcFRpZXJUeXBlEhsKF0ZNR0ZLSUtCSEtOX05MQ0RH",
             "SVBHRkRKEAASGwoXRk1HRktJS0JIS05fTERDR05HRFBHQU0QARIbChdGTUdG",
             "S0lLQkhLTl9GRU5NR0xNUE1GRhACEhsKF0ZNR0ZLSUtCSEtOX0FKREVPUEVK",
-            "R0VDEAMqggIKEUNtZEJhdHRsZVBhc3NUeXBlEhsKF0pISElBUENLSE5QX05M",
-            "Q0RHSVBHRkRKEAASHAoXSkhISUFQQ0tITlBfQUxOTENOQUZLTkgQiRgSHAoX",
-            "SkhISUFQQ0tITlBfSEZGT0hHQUtGR0oQkBgSHAoXSkhISUFQQ0tITlBfTUlI",
-            "RU1DT05GSFAQ0hcSHAoXSkhISUFQQ0tITlBfSUhQTExNSEhNQUIQ5xcSHAoX",
-            "SkhISUFQQ0tITlBfQUdMS0RKQkRKSUUQ8hcSHAoXSkhISUFQQ0tITlBfS0tN",
-            "RUpKRElISkEQ0RcSHAoXSkhISUFQQ0tITlBfS0ZIQU1LQ0FER0MQjhhCFqoC",
-            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "R0VDEAMq2gIKEUNtZEJhdHRsZVBhc3NUeXBlEiEKHUNtZEJhdHRsZVBhc3NU",
+            "eXBlX05MQ0RHSVBHRkRKEAASJgohQ21kQmF0dGxlUGFzc1R5cGVfQnV5QnBM",
+            "ZXZlbENzUmVxEIkYEigKI0NtZEJhdHRsZVBhc3NUeXBlX1Rha2VCcFJld2Fy",
+            "ZFNjUnNwEJAYEjMKLkNtZEJhdHRsZVBhc3NUeXBlX0JhdHRsZVBhc3NUYWtl",
+            "QWxsUmV3YXJkU2NSc3AQ0hcSIgodQ21kQmF0dGxlUGFzc1R5cGVfSUhQTExN",
+            "SEhNQUIQ5xcSIgodQ21kQmF0dGxlUGFzc1R5cGVfQUdMS0RKQkRKSUUQ8hcS",
+            "KwomQ21kQmF0dGxlUGFzc1R5cGVfQmF0dGxlUGFzc0luZm9Ob3RpZnkQ0RcS",
+            "JgohQ21kQmF0dGxlUGFzc1R5cGVfQnV5QnBMZXZlbFNjUnNwEI4YQhaqAhNN",
+            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.BpRewardType), typeof(global::March7thHoney.Proto.BpTierType), typeof(global::March7thHoney.Proto.CmdBattlePassType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -77,14 +79,14 @@ namespace March7thHoney.Proto {
   }
 
   public enum CmdBattlePassType {
-    [pbr::OriginalName("JHHIAPCKHNP_NLCDGIPGFDJ")] JhhiapckhnpNlcdgipgfdj = 0,
-    [pbr::OriginalName("JHHIAPCKHNP_ALNLCNAFKNH")] JhhiapckhnpAlnlcnafknh = 3081,
-    [pbr::OriginalName("JHHIAPCKHNP_HFFOHGAKFGJ")] JhhiapckhnpHffohgakfgj = 3088,
-    [pbr::OriginalName("JHHIAPCKHNP_MIHEMCONFHP")] JhhiapckhnpMihemconfhp = 3026,
-    [pbr::OriginalName("JHHIAPCKHNP_IHPLLMHHMAB")] JhhiapckhnpIhpllmhhmab = 3047,
-    [pbr::OriginalName("JHHIAPCKHNP_AGLKDJBDJIE")] JhhiapckhnpAglkdjbdjie = 3058,
-    [pbr::OriginalName("JHHIAPCKHNP_KKMEJJDIHJA")] JhhiapckhnpKkmejjdihja = 3025,
-    [pbr::OriginalName("JHHIAPCKHNP_KFHAMKCADGC")] JhhiapckhnpKfhamkcadgc = 3086,
+    [pbr::OriginalName("CmdBattlePassType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdBattlePassType_BuyBpLevelCsReq")] BuyBpLevelCsReq = 3081,
+    [pbr::OriginalName("CmdBattlePassType_TakeBpRewardScRsp")] TakeBpRewardScRsp = 3088,
+    [pbr::OriginalName("CmdBattlePassType_BattlePassTakeAllRewardScRsp")] BattlePassTakeAllRewardScRsp = 3026,
+    [pbr::OriginalName("CmdBattlePassType_IHPLLMHHMAB")] Ihpllmhhmab = 3047,
+    [pbr::OriginalName("CmdBattlePassType_AGLKDJBDJIE")] Aglkdjbdjie = 3058,
+    [pbr::OriginalName("CmdBattlePassType_BattlePassInfoNotify")] BattlePassInfoNotify = 3025,
+    [pbr::OriginalName("CmdBattlePassType_BuyBpLevelScRsp")] BuyBpLevelScRsp = 3086,
   }
 
   #endregion

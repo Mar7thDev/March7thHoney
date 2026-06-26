@@ -5,24 +5,24 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdFiveDimType {
-    EIBEMMGHLPK_NLCDGIPGFDJ = 0;
-    EIBEMMGHLPK_EFFCLNDEDLA = 2269;
-    EIBEMMGHLPK_OPKCFEHKHCL = 2257;
-    EIBEMMGHLPK_APBHFHJOHIE = 2271;
-    EIBEMMGHLPK_KGNCJLKKDMA = 2254;
-    EIBEMMGHLPK_AFLACEIIELE = 2253;
-    EIBEMMGHLPK_BFMKOFDEBOI = 2272;
-    EIBEMMGHLPK_BEPOEEABNFB = 2258;
-    EIBEMMGHLPK_LLPPMHPDNPO = 2252;
-    EIBEMMGHLPK_NCNJCDICNND = 2255;
-    EIBEMMGHLPK_OFNLNMDEPBL = 2251;
-    EIBEMMGHLPK_PEAKGCOFFEK = 2261;
-    EIBEMMGHLPK_AHPMEDBLABF = 2260;
-    EIBEMMGHLPK_FJPHANBHBGG = 2268;
-    EIBEMMGHLPK_NDLIALBOAOK = 2265;
-    EIBEMMGHLPK_NCPKMFDCPBJ = 2259;
-    EIBEMMGHLPK_FMFOAIONMCD = 2262;
-    EIBEMMGHLPK_GKNCIGPOBGA = 2275;
+    CmdFiveDimType_NLCDGIPGFDJ = 0;
+    CmdFiveDimType_EFFCLNDEDLA = 2269;
+    CmdFiveDimType_EnterFiveDimGameScRsp = 2257;
+    CmdFiveDimType_GetFiveDimGameDataScRsp = 2271;
+    CmdFiveDimType_GetFiveDimMoneyScRsp = 2254;
+    CmdFiveDimType_FiveDimGameDataUpdateScNotify = 2253;
+    CmdFiveDimType_FiveDimGameTransferScRsp = 2272;
+    CmdFiveDimType_BEPOEEABNFB = 2258;
+    CmdFiveDimType_GetFiveDimMoneyDataScRsp = 2252;
+    CmdFiveDimType_NCNJCDICNND = 2255;
+    CmdFiveDimType_FiveDimMoneyChangeScNotify = 2251;
+    CmdFiveDimType_FiveDimJumpEnergyChangeScNotify = 2261;
+    CmdFiveDimType_AHPMEDBLABF = 2260;
+    CmdFiveDimType_UpdateFiveDimGameDataScRsp = 2268;
+    CmdFiveDimType_NDLIALBOAOK = 2265;
+    CmdFiveDimType_LeaveFiveDimGameScRsp = 2259;
+    CmdFiveDimType_FMFOAIONMCD = 2262;
+    CmdFiveDimType_GKNCIGPOBGA = 2275;
 }
 
 message EnterFiveDimGameScRsp {

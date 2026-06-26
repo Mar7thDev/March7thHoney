@@ -10,28 +10,28 @@ message CEDCMIMKJHK {
 }
 
 enum CmdPlayerReturnType {
-    JGDHIFOCFMM_NLCDGIPGFDJ = 0;
-    JGDHIFOCFMM_LECOJPDHEKB = 4569;
-    JGDHIFOCFMM_HIJOOLDBOGH = 4565;
-    JGDHIFOCFMM_KLPKEBJGGNC = 4525;
-    JGDHIFOCFMM_EHNPLBICNBA = 4526;
-    JGDHIFOCFMM_FGJLKGIIICJ = 4539;
-    JGDHIFOCFMM_GBENGJCCJNP = 4571;
-    JGDHIFOCFMM_JHDFPKLCIHE = 4538;
-    JGDHIFOCFMM_HDGHBEEGHMJ = 4513;
-    JGDHIFOCFMM_MDLIJMICHNA = 4545;
-    JGDHIFOCFMM_KLMJNOGPEFP = 4548;
-    JGDHIFOCFMM_KDMHHNKIKNL = 4578;
-    JGDHIFOCFMM_PIFENBGEGLG = 4530;
-    JGDHIFOCFMM_HOILKNMOKKP = 4581;
-    JGDHIFOCFMM_PEJFEOEJOOJ = 4558;
-    JGDHIFOCFMM_APNCCHHIHEJ = 4533;
-    JGDHIFOCFMM_BBAEJNAICME = 4593;
-    JGDHIFOCFMM_FIOHCFAGLOK = 4540;
-    JGDHIFOCFMM_CKAPGBNFJED = 4504;
-    JGDHIFOCFMM_OGPKAHADKOE = 4588;
-    JGDHIFOCFMM_OMNHOAIHGGG = 4547;
-    JGDHIFOCFMM_NAEOOKHCMFP = 4586;
+    CmdPlayerReturnType_NLCDGIPGFDJ = 0;
+    CmdPlayerReturnType_PlayerReturnExtraHcoinProgressScNotify = 4569;
+    CmdPlayerReturnType_HIJOOLDBOGH = 4565;
+    CmdPlayerReturnType_KLPKEBJGGNC = 4525;
+    CmdPlayerReturnType_EHNPLBICNBA = 4526;
+    CmdPlayerReturnType_PlayerReturnTakeCustomRelicCsReq = 4539;
+    CmdPlayerReturnType_PlayerReturnForceFinishScNotify = 4571;
+    CmdPlayerReturnType_PlayerReturnTakeExtraHcoinScNotify = 4538;
+    CmdPlayerReturnType_PlayerReturnInfoQueryScRsp = 4513;
+    CmdPlayerReturnType_TakeReturnExtraHcoinRewardScRsp = 4545;
+    CmdPlayerReturnType_KLMJNOGPEFP = 4548;
+    CmdPlayerReturnType_KDMHHNKIKNL = 4578;
+    CmdPlayerReturnType_PIFENBGEGLG = 4530;
+    CmdPlayerReturnType_PlayerReturnTakePointRewardScRsp = 4581;
+    CmdPlayerReturnType_PlayerReturnPointChangeScNotify = 4558;
+    CmdPlayerReturnType_PlayerReturnTakeRelicScRsp = 4533;
+    CmdPlayerReturnType_PlayerReturnSignScRsp = 4593;
+    CmdPlayerReturnType_FIOHCFAGLOK = 4540;
+    CmdPlayerReturnType_PlayerReturnTakeCustomRelicScRsp = 4504;
+    CmdPlayerReturnType_OGPKAHADKOE = 4588;
+    CmdPlayerReturnType_PlayerReturnTakeRewardScRsp = 4547;
+    CmdPlayerReturnType_NAEOOKHCMFP = 4586;
 }
 
 message FEIHGOEPANI {

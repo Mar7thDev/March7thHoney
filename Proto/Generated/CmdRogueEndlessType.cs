@@ -52,15 +52,21 @@ namespace March7thHoney.Proto {
             "bUxpc3QSEwoLSUVQUE5HTUNLSkgYDCADKA0ijwEKKFRha2VSb2d1ZUVuZGxl",
             "c3NBY3Rpdml0eVBvaW50UmV3YXJkU2NSc3ASEwoLSUVQUE5HTUNLSkgYAiAD",
             "KA0SDQoFbGV2ZWwYBiABKA0SEwoLQ0hJQUZPT0FJQksYByABKA0SGQoGcmV3",
-            "YXJkGAggASgLMgkuSXRlbUxpc3QSDwoHcmV0Y29kZRgLIAEoDSrAAgoTQ21k",
-            "Um9ndWVFbmRsZXNzVHlwZRIbChdMQkFER0xDR0FPR19NT0xKQ0VGR1BMTBAA",
-            "EhwKF0xCQURHTENHQU9HX0VQTkRLTkRCUEFFEPIuEhwKF0xCQURHTENHQU9H",
-            "X0hMS01HQkpIQkZOEPYuEhwKF0xCQURHTENHQU9HX0hERU5FSE5OSUZLEPUu",
-            "EhwKF0xCQURHTENHQU9HX0hNQ0NPRUFHREhIEPMuEhwKF0xCQURHTENHQU9H",
-            "X0FGSkhBTkhISEdLEPQuEhwKF0xCQURHTENHQU9HX0FISERJQkpKT0JIEPou",
-            "EhwKF0xCQURHTENHQU9HX0tHT0tCREZKQ0ZPEPkuEhwKF0xCQURHTENHQU9H",
-            "X0tPTUhFTUVET0xQEPEuEhwKF0xCQURHTENHQU9HX1BFRkhBREZLTUFKEPgu",
-            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "YXJkGAggASgLMgkuSXRlbUxpc3QSDwoHcmV0Y29kZRgLIAEoDSq8BAoTQ21k",
+            "Um9ndWVFbmRsZXNzVHlwZRIjCh9DbWRSb2d1ZUVuZGxlc3NUeXBlX01PTEpD",
+            "RUZHUExMEAASQQo8Q21kUm9ndWVFbmRsZXNzVHlwZV9UYWtlUm9ndWVFbmRs",
+            "ZXNzQWN0aXZpdHlQb2ludFJld2FyZFNjUnNwEPIuEiQKH0NtZFJvZ3VlRW5k",
+            "bGVzc1R5cGVfSExLTUdCSkhCRk4Q9i4SPAo3Q21kUm9ndWVFbmRsZXNzVHlw",
+            "ZV9FbnRlclJvZ3VlRW5kbGVzc0FjdGl2aXR5U3RhZ2VTY1JzcBD1LhI8CjdD",
+            "bWRSb2d1ZUVuZGxlc3NUeXBlX0VudGVyUm9ndWVFbmRsZXNzQWN0aXZpdHlT",
+            "dGFnZUNzUmVxEPMuEj4KOUNtZFJvZ3VlRW5kbGVzc1R5cGVfUm9ndWVFbmRs",
+            "ZXNzQWN0aXZpdHlCYXR0bGVFbmRTY05vdGlmeRD0LhI0Ci9DbWRSb2d1ZUVu",
+            "ZGxlc3NUeXBlX1JvZ3VlRW5kbGVzc01vZHVsZUluaXRDc1JlcRD6LhIkCh9D",
+            "bWRSb2d1ZUVuZGxlc3NUeXBlX0tHT0tCREZKQ0ZPEPkuEjkKNENtZFJvZ3Vl",
+            "RW5kbGVzc1R5cGVfR2V0Um9ndWVFbmRsZXNzQWN0aXZpdHlEYXRhU2NSc3AQ",
+            "8S4SRAo/Q21kUm9ndWVFbmRsZXNzVHlwZV9UYWtlUm9ndWVFbmRsZXNzQWN0",
+            "aXZpdHlBbGxCb251c1Jld2FyZFNjUnNwEPguQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRogueEndlessType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -81,16 +87,16 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRogueEndlessType {
-    [pbr::OriginalName("LBADGLCGAOG_MOLJCEFGPLL")] LbadglcgaogMoljcefgpll = 0,
-    [pbr::OriginalName("LBADGLCGAOG_EPNDKNDBPAE")] LbadglcgaogEpndkndbpae = 6002,
-    [pbr::OriginalName("LBADGLCGAOG_HLKMGBJHBFN")] LbadglcgaogHlkmgbjhbfn = 6006,
-    [pbr::OriginalName("LBADGLCGAOG_HDENEHNNIFK")] LbadglcgaogHdenehnnifk = 6005,
-    [pbr::OriginalName("LBADGLCGAOG_HMCCOEAGDHH")] LbadglcgaogHmccoeagdhh = 6003,
-    [pbr::OriginalName("LBADGLCGAOG_AFJHANHHHGK")] LbadglcgaogAfjhanhhhgk = 6004,
-    [pbr::OriginalName("LBADGLCGAOG_AHHDIBJJOBH")] LbadglcgaogAhhdibjjobh = 6010,
-    [pbr::OriginalName("LBADGLCGAOG_KGOKBDFJCFO")] LbadglcgaogKgokbdfjcfo = 6009,
-    [pbr::OriginalName("LBADGLCGAOG_KOMHEMEDOLP")] LbadglcgaogKomhemedolp = 6001,
-    [pbr::OriginalName("LBADGLCGAOG_PEFHADFKMAJ")] LbadglcgaogPefhadfkmaj = 6008,
+    [pbr::OriginalName("CmdRogueEndlessType_MOLJCEFGPLL")] Moljcefgpll = 0,
+    [pbr::OriginalName("CmdRogueEndlessType_TakeRogueEndlessActivityPointRewardScRsp")] TakeRogueEndlessActivityPointRewardScRsp = 6002,
+    [pbr::OriginalName("CmdRogueEndlessType_HLKMGBJHBFN")] Hlkmgbjhbfn = 6006,
+    [pbr::OriginalName("CmdRogueEndlessType_EnterRogueEndlessActivityStageScRsp")] EnterRogueEndlessActivityStageScRsp = 6005,
+    [pbr::OriginalName("CmdRogueEndlessType_EnterRogueEndlessActivityStageCsReq")] EnterRogueEndlessActivityStageCsReq = 6003,
+    [pbr::OriginalName("CmdRogueEndlessType_RogueEndlessActivityBattleEndScNotify")] RogueEndlessActivityBattleEndScNotify = 6004,
+    [pbr::OriginalName("CmdRogueEndlessType_RogueEndlessModuleInitCsReq")] RogueEndlessModuleInitCsReq = 6010,
+    [pbr::OriginalName("CmdRogueEndlessType_KGOKBDFJCFO")] Kgokbdfjcfo = 6009,
+    [pbr::OriginalName("CmdRogueEndlessType_GetRogueEndlessActivityDataScRsp")] GetRogueEndlessActivityDataScRsp = 6001,
+    [pbr::OriginalName("CmdRogueEndlessType_TakeRogueEndlessActivityAllBonusRewardScRsp")] TakeRogueEndlessActivityAllBonusRewardScRsp = 6008,
   }
 
   #endregion

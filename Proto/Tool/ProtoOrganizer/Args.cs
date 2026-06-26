@@ -7,7 +7,7 @@ public sealed class Args
     public string PacketIdsPath = "Proto/4.4/Raw/packetIds.txt";
     public string RawDir = "Proto/4.4/Raw";
     public string OutDir = "Proto/4.4";
-    public string CsOutDir = "Proto";
+    public string CsOutDir = "Proto/Generated";
     public string Protoc = "protoc";
     public string Version = "4.4";
     public bool Active;

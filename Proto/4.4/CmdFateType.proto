@@ -68,34 +68,34 @@ message CLNABFMHFFH {
 }
 
 enum CmdFateType {
-    DFNJFJBGLLP_NLCDGIPGFDJ = 0;
-    DFNJFJBGLLP_FJHIIPNCPIF = 5965;
-    DFNJFJBGLLP_FKFCAKBEJFD = 5993;
-    DFNJFJBGLLP_NDJIBELNJBD = 5998;
-    DFNJFJBGLLP_CBBDCEMACJM = 5952;
-    DFNJFJBGLLP_GENBOAENHOJ = 5958;
-    DFNJFJBGLLP_DCFHEOKKIAP = 5987;
-    DFNJFJBGLLP_HPAHOBDOPNF = 5976;
-    DFNJFJBGLLP_MJEDNEIFKDF = 5969;
-    DFNJFJBGLLP_PKENEFGHEAH = 5971;
-    DFNJFJBGLLP_KPJCBCAKJDJ = 5956;
-    DFNJFJBGLLP_KIFCMDBPMMC = 5964;
-    DFNJFJBGLLP_DGENLMAKJNJ = 5957;
-    DFNJFJBGLLP_JMCOPJFOHMP = 5963;
-    DFNJFJBGLLP_FFHODBHJOOG = 5967;
-    DFNJFJBGLLP_NBGDNAIKIML = 5960;
-    DFNJFJBGLLP_NBNMIKIPJFO = 5953;
-    DFNJFJBGLLP_MPIGNDBLJFI = 5995;
-    DFNJFJBGLLP_INOIKBOMPAE = 5974;
-    DFNJFJBGLLP_IFJOOAFEEBM = 5994;
-    DFNJFJBGLLP_LBFKENLIPEE = 5990;
-    DFNJFJBGLLP_IIMFKFNANNC = 5968;
-    DFNJFJBGLLP_IFNCEEAMCFH = 5979;
-    DFNJFJBGLLP_MMDMGJJMIPI = 5973;
-    DFNJFJBGLLP_OOKDKODAGNI = 5970;
-    DFNJFJBGLLP_AKBFJMFLJNI = 5983;
-    DFNJFJBGLLP_EPNMIDLFDMC = 5959;
-    DFNJFJBGLLP_IIAMLFCAJIG = 5985;
+    CmdFateType_NLCDGIPGFDJ = 0;
+    CmdFateType_FateHandlePendingActionScRsp = 5965;
+    CmdFateType_FKFCAKBEJFD = 5993;
+    CmdFateType_FateBattleStartScRsp = 5998;
+    CmdFateType_FateShopLeaveCsReq = 5952;
+    CmdFateType_FateSyncPendingActionScNotify = 5958;
+    CmdFateType_FateStartCsReq = 5987;
+    CmdFateType_FateTakeExpRewardCsReq = 5976;
+    CmdFateType_MJEDNEIFKDF = 5969;
+    CmdFateType_FateShopBuyGoodsScRsp = 5971;
+    CmdFateType_FateShopLockGoodsScRsp = 5956;
+    CmdFateType_FateShopLeaveScRsp = 5964;
+    CmdFateType_FateChangeLineupScRsp = 5957;
+    CmdFateType_FateSyncActionResultScNotify = 5963;
+    CmdFateType_FateShopRefreshGoodsCsReq = 5967;
+    CmdFateType_FateShopBuyGoodsCsReq = 5960;
+    CmdFateType_FateChangeLineupCsReq = 5953;
+    CmdFateType_FateTakeExpRewardScRsp = 5995;
+    CmdFateType_FateShopSellBuffCsReq = 5974;
+    CmdFateType_FateStartScRsp = 5994;
+    CmdFateType_FateSettleScNotify = 5990;
+    CmdFateType_IIMFKFNANNC = 5968;
+    CmdFateType_FateShopRefreshGoodsScRsp = 5979;
+    CmdFateType_FateQueryScRsp = 5973;
+    CmdFateType_FateShopSellBuffScRsp = 5970;
+    CmdFateType_FateShopLockGoodsCsReq = 5983;
+    CmdFateType_FateQueryCsReq = 5959;
+    CmdFateType_FateReijuSelectRerollCsReq = 5985;
 }
 
 message DACCNAFGHFJ {

@@ -27,33 +27,33 @@ message BPJMEGHIEIN {
 }
 
 enum CmdTrainCakeCatchType {
-    NMGINGMHJDA_NLCDGIPGFDJ = 0;
-    NMGINGMHJDA_OAFHNCOANPE = 9715;
-    NMGINGMHJDA_EHGILHHDKHF = 9740;
-    NMGINGMHJDA_BOIAJPMHPML = 9668;
-    NMGINGMHJDA_GCNJHGHPHDG = 9683;
-    NMGINGMHJDA_PNLGFFDJKHL = 9718;
-    NMGINGMHJDA_AFAKIKMICOF = 9767;
-    NMGINGMHJDA_APDHJHHIMOF = 9642;
-    NMGINGMHJDA_OGOCLNPJPHO = 9658;
-    NMGINGMHJDA_PBPPLEDIMGH = 9753;
-    NMGINGMHJDA_AEFOHGJHOMB = 9713;
-    NMGINGMHJDA_BMCMIGILNBE = 9628;
-    NMGINGMHJDA_NMEHFLHCOJI = 9747;
-    NMGINGMHJDA_PJPMBFIMNJB = 9653;
-    NMGINGMHJDA_OBOPFNGMBAO = 9725;
-    NMGINGMHJDA_JHKBKHGFEFP = 9686;
-    NMGINGMHJDA_JNCFJJIGEFG = 9659;
-    NMGINGMHJDA_BPOBPOPNPNL = 9666;
-    NMGINGMHJDA_CFAOJOLPOPG = 9661;
-    NMGINGMHJDA_ELPACLCOJOM = 9639;
-    NMGINGMHJDA_NJNHJOFFHHC = 9662;
-    NMGINGMHJDA_NOBEEMKGGHK = 9695;
-    NMGINGMHJDA_JLBBKGOMCDE = 9671;
-    NMGINGMHJDA_LLKDECHFKDJ = 9644;
-    NMGINGMHJDA_BPOKMJCLOPB = 9699;
-    NMGINGMHJDA_HJAGKHEJOFM = 9672;
-    NMGINGMHJDA_JEOIKEHOPLD = 9765;
+    CmdTrainCakeCatchType_NLCDGIPGFDJ = 0;
+    CmdTrainCakeCatchType_OAFHNCOANPE = 9715;
+    CmdTrainCakeCatchType_EHGILHHDKHF = 9740;
+    CmdTrainCakeCatchType_BOIAJPMHPML = 9668;
+    CmdTrainCakeCatchType_GCNJHGHPHDG = 9683;
+    CmdTrainCakeCatchType_TrainCakeCatchOpenBoxScRsp = 9718;
+    CmdTrainCakeCatchType_AFAKIKMICOF = 9767;
+    CmdTrainCakeCatchType_APDHJHHIMOF = 9642;
+    CmdTrainCakeCatchType_TrainCakeCatchDiyScRsp = 9658;
+    CmdTrainCakeCatchType_PBPPLEDIMGH = 9753;
+    CmdTrainCakeCatchType_AEFOHGJHOMB = 9713;
+    CmdTrainCakeCatchType_SocialPlayTalkScRsp = 9628;
+    CmdTrainCakeCatchType_NMEHFLHCOJI = 9747;
+    CmdTrainCakeCatchType_PJPMBFIMNJB = 9653;
+    CmdTrainCakeCatchType_SocialPlayQueryRecentVisitorsScRsp = 9725;
+    CmdTrainCakeCatchType_TrainCakeCatchGetDataScRsp = 9686;
+    CmdTrainCakeCatchType_TrainCakeCatchDiyLikeScRsp = 9659;
+    CmdTrainCakeCatchType_BPOBPOPNPNL = 9666;
+    CmdTrainCakeCatchType_CFAOJOLPOPG = 9661;
+    CmdTrainCakeCatchType_SocialPlaySettingInfoScNotify = 9639;
+    CmdTrainCakeCatchType_NJNHJOFFHHC = 9662;
+    CmdTrainCakeCatchType_TrainCakeCatchDataScNotify = 9695;
+    CmdTrainCakeCatchType_JLBBKGOMCDE = 9671;
+    CmdTrainCakeCatchType_SocialPlayRoomPlayerMoveScNotify = 9644;
+    CmdTrainCakeCatchType_SocialPlayPreCheckEnterRoomScRsp = 9699;
+    CmdTrainCakeCatchType_TrainCakeCatchSearchScRsp = 9672;
+    CmdTrainCakeCatchType_SocialPlayGameplayOperationScNotify = 9765;
 }
 
 message DJIHNCHDFED {

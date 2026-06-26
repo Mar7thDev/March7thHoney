@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtDbWRDbGllbnRDdXN0b21PcFR5cGUucHJvdG8iIgoLSE1NSERFS0FIRUES",
-            "EwoLSUhQSkREQ0lJREIYCiABKAgqUgoVQ21kQ2xpZW50Q3VzdG9tT3BUeXBl",
-            "EhsKF0JIS0dBS0RPQUxQX0dHS01GQUZPSU5QEAASHAoXQkhLR0FLRE9BTFBf",
-            "SFBMUE1ERUpPSksQ8ExCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
-            "Mw=="));
+            "EwoLSUhQSkREQ0lJREIYCiABKAgqZgoVQ21kQ2xpZW50Q3VzdG9tT3BUeXBl",
+            "EiUKIUNtZENsaWVudEN1c3RvbU9wVHlwZV9HR0tNRkFGT0lOUBAAEiYKIUNt",
+            "ZENsaWVudEN1c3RvbU9wVHlwZV9IUExQTURFSk9KSxDwTEIWqgITTWFyY2g3",
+            "dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdClientCustomOpType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -40,8 +40,8 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdClientCustomOpType {
-    [pbr::OriginalName("BHKGAKDOALP_GGKMFAFOINP")] BhkgakdoalpGgkmfafoinp = 0,
-    [pbr::OriginalName("BHKGAKDOALP_HPLPMDEJOJK")] BhkgakdoalpHplpmdejojk = 9840,
+    [pbr::OriginalName("CmdClientCustomOpType_GGKMFAFOINP")] Ggkmfafoinp = 0,
+    [pbr::OriginalName("CmdClientCustomOpType_HPLPMDEJOJK")] Hplpmdejojk = 9840,
   }
 
   #endregion

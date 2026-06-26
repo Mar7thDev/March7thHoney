@@ -46,14 +46,18 @@ namespace March7thHoney.Proto {
             "SkVFTk5FbnRyeRoyChBFREdQQU9KRUVOTkVudHJ5EgsKA2tleRgBIAEoDRIN",
             "CgV2YWx1ZRgCIAEoDToCOAEicQocVGFrZUZpZ2h0QWN0aXZpdHlSZXdhcmRT",
             "Y1JzcBIQCghncm91cF9pZBgEIAEoDRIPCgdyZXRjb2RlGAUgASgNEhkKBnJl",
-            "d2FyZBgHIAEoCzIJLkl0ZW1MaXN0EhMKC0RCS0hIQ0dHS05OGA4gASgNKoUC",
-            "ChRDbWRGaWdodEFjdGl2aXR5VHlwZRIbChdFSk5DRUFEUEtGRV9OTENER0lQ",
-            "R0ZEShAAEhwKF0VKTkNFQURQS0ZFX0hGQkVMR0tBRExGEOgcEhwKF0VKTkNF",
-            "QURQS0ZFX0lKQk9CT0ZMRUFFEMocEhwKF0VKTkNFQURQS0ZFX05FQkNFQ0JK",
-            "RUdQEKkcEhwKF0VKTkNFQURQS0ZFX0NGRktQTE1DTkpJEOEcEhwKF0VKTkNF",
-            "QURQS0ZFX0tPUEZMS0VIS0VGEO0cEhwKF0VKTkNFQURQS0ZFX0ZDTEtJQ0pO",
-            "S0JDEOYcEhwKF0VKTkNFQURQS0ZFX0lEUEJJSk9BSEFDEN4cQhaqAhNNYXJj",
-            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "d2FyZBgHIAEoCzIJLkl0ZW1MaXN0EhMKC0RCS0hIQ0dHS05OGA4gASgNKr4D",
+            "ChRDbWRGaWdodEFjdGl2aXR5VHlwZRIkCiBDbWRGaWdodEFjdGl2aXR5VHlw",
+            "ZV9OTENER0lQR0ZEShAAEjYKMUNtZEZpZ2h0QWN0aXZpdHlUeXBlX0VudGVy",
+            "RmlnaHRBY3Rpdml0eVN0YWdlU2NSc3AQ6BwSNgoxQ21kRmlnaHRBY3Rpdml0",
+            "eVR5cGVfRW50ZXJGaWdodEFjdGl2aXR5U3RhZ2VDc1JlcRDKHBIwCitDbWRG",
+            "aWdodEFjdGl2aXR5VHlwZV9GaWdodEFjdGl2aXR5SW5pdENzUmVxEKkcEjYK",
+            "MUNtZEZpZ2h0QWN0aXZpdHlUeXBlX0ZpZ2h0QWN0aXZpdHlUYWtlUmV3YXJk",
+            "Q3NSZXEQ4RwSOQo0Q21kRmlnaHRBY3Rpdml0eVR5cGVfRmlnaHRBY3Rpdml0",
+            "eURhdGFDaGFuZ2VTY05vdGlmeRDtHBI2CjFDbWRGaWdodEFjdGl2aXR5VHlw",
+            "ZV9UYWtlRmlnaHRBY3Rpdml0eVJld2FyZFNjUnNwEOYcEjMKLkNtZEZpZ2h0",
+            "QWN0aXZpdHlUeXBlX0dldEZpZ2h0QWN0aXZpdHlEYXRhU2NSc3AQ3hxCFqoC",
+            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFightActivityType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -71,14 +75,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFightActivityType {
-    [pbr::OriginalName("EJNCEADPKFE_NLCDGIPGFDJ")] EjnceadpkfeNlcdgipgfdj = 0,
-    [pbr::OriginalName("EJNCEADPKFE_HFBELGKADLF")] EjnceadpkfeHfbelgkadlf = 3688,
-    [pbr::OriginalName("EJNCEADPKFE_IJBOBOFLEAE")] EjnceadpkfeIjbobofleae = 3658,
-    [pbr::OriginalName("EJNCEADPKFE_NEBCECBJEGP")] EjnceadpkfeNebcecbjegp = 3625,
-    [pbr::OriginalName("EJNCEADPKFE_CFFKPLMCNJI")] EjnceadpkfeCffkplmcnji = 3681,
-    [pbr::OriginalName("EJNCEADPKFE_KOPFLKEHKEF")] EjnceadpkfeKopflkehkef = 3693,
-    [pbr::OriginalName("EJNCEADPKFE_FCLKICJNKBC")] EjnceadpkfeFclkicjnkbc = 3686,
-    [pbr::OriginalName("EJNCEADPKFE_IDPBIJOAHAC")] EjnceadpkfeIdpbijoahac = 3678,
+    [pbr::OriginalName("CmdFightActivityType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdFightActivityType_EnterFightActivityStageScRsp")] EnterFightActivityStageScRsp = 3688,
+    [pbr::OriginalName("CmdFightActivityType_EnterFightActivityStageCsReq")] EnterFightActivityStageCsReq = 3658,
+    [pbr::OriginalName("CmdFightActivityType_FightActivityInitCsReq")] FightActivityInitCsReq = 3625,
+    [pbr::OriginalName("CmdFightActivityType_FightActivityTakeRewardCsReq")] FightActivityTakeRewardCsReq = 3681,
+    [pbr::OriginalName("CmdFightActivityType_FightActivityDataChangeScNotify")] FightActivityDataChangeScNotify = 3693,
+    [pbr::OriginalName("CmdFightActivityType_TakeFightActivityRewardScRsp")] TakeFightActivityRewardScRsp = 3686,
+    [pbr::OriginalName("CmdFightActivityType_GetFightActivityDataScRsp")] GetFightActivityDataScRsp = 3678,
   }
 
   #endregion

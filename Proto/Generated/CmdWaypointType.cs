@@ -31,12 +31,12 @@ namespace March7thHoney.Proto {
             "Y29kZRgDIAEoDRIhCgtLRUROR0hJRU9CQhgLIAEoCzIMLkdBS0pNSExFSk1E",
             "Ij4KC0hFR0dQSUVHQklOEg4KBmlzX25ldxgCIAEoCBITCgtGSE5OR05CREdI",
             "TxgJIAEoDRIKCgJpZBgMIAEoDSJBCgtNS0VQS0tBSk9ORRIhCgtMUEJMRUlD",
-            "UEZQRBgBIAMoCzIMLkZERUNEQ0VEUE5NEg8KB3JldGNvZGUYDiABKA0qpgEK",
-            "D0NtZFdheXBvaW50VHlwZRIbChdDSExFSUJDRkRCT19OTENER0lQR0ZEShAA",
-            "EhwKF0NITEVJQkNGREJPX0hDTkhFREZOTEpDEN4DEhwKF0NITEVJQkNGREJP",
-            "X0hCQVBCUEJLSkxMEOEDEhwKF0NITEVJQkNGREJPX0tORk1KS09HRUdGEKkD",
-            "EhwKF0NITEVJQkNGREJPX0RES0NOQkNPRUxNEOgDQhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "UEZQRBgBIAMoCzIMLkZERUNEQ0VEUE5NEg8KB3JldGNvZGUYDiABKA0qugEK",
+            "D0NtZFdheXBvaW50VHlwZRIfChtDbWRXYXlwb2ludFR5cGVfTkxDREdJUEdG",
+            "REoQABIgChtDbWRXYXlwb2ludFR5cGVfSENOSEVERk5MSkMQ3gMSIAobQ21k",
+            "V2F5cG9pbnRUeXBlX0hCQVBCUEJLSkxMEOEDEiAKG0NtZFdheXBvaW50VHlw",
+            "ZV9LTkZNSktPR0VHRhCpAxIgChtDbWRXYXlwb2ludFR5cGVfRERLQ05CQ09F",
+            "TE0Q6ANCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdWaypointType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -52,11 +52,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdWaypointType {
-    [pbr::OriginalName("CHLEIBCFDBO_NLCDGIPGFDJ")] ChleibcfdboNlcdgipgfdj = 0,
-    [pbr::OriginalName("CHLEIBCFDBO_HCNHEDFNLJC")] ChleibcfdboHcnhedfnljc = 478,
-    [pbr::OriginalName("CHLEIBCFDBO_HBAPBPBKJLL")] ChleibcfdboHbapbpbkjll = 481,
-    [pbr::OriginalName("CHLEIBCFDBO_KNFMJKOGEGF")] ChleibcfdboKnfmjkogegf = 425,
-    [pbr::OriginalName("CHLEIBCFDBO_DDKCNBCOELM")] ChleibcfdboDdkcnbcoelm = 488,
+    [pbr::OriginalName("CmdWaypointType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdWaypointType_HCNHEDFNLJC")] Hcnhedfnljc = 478,
+    [pbr::OriginalName("CmdWaypointType_HBAPBPBKJLL")] Hbapbpbkjll = 481,
+    [pbr::OriginalName("CmdWaypointType_KNFMJKOGEGF")] Knfmjkogegf = 425,
+    [pbr::OriginalName("CmdWaypointType_DDKCNBCOELM")] Ddkcnbcoelm = 488,
   }
 
   #endregion

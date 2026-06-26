@@ -66,20 +66,20 @@ message ChenLingFesRaidKickedNotify {
 }
 
 enum CmdChenLingFesType {
-    LCOIIEGJAOK_NLCDGIPGFDJ = 0;
-    LCOIIEGJAOK_PFMMOPDHJOJ = 9937;
-    LCOIIEGJAOK_FGEKDBIEDEJ = 9948;
-    LCOIIEGJAOK_IFLMBGGEJNF = 9917;
-    LCOIIEGJAOK_DGOFALCINAO = 9909;
-    LCOIIEGJAOK_JPMACCMOJPJ = 9944;
-    LCOIIEGJAOK_AGGHGALCLOC = 9924;
-    LCOIIEGJAOK_LKNMPMOPGAK = 9903;
-    LCOIIEGJAOK_NEMAHJMIBNA = 9923;
-    LCOIIEGJAOK_AIHPKAEDHGF = 9919;
-    LCOIIEGJAOK_IODLKJNPGLC = 9921;
-    LCOIIEGJAOK_EAEOGKPEAEG = 9907;
-    LCOIIEGJAOK_BJCOFJPKOLI = 9910;
-    LCOIIEGJAOK_BHBABNHKMIG = 9920;
+    CmdChenLingFesType_NLCDGIPGFDJ = 0;
+    CmdChenLingFesType_ChenLingFesLevelStartCsReq = 9937;
+    CmdChenLingFesType_ChenLingFesLevelLeaveScRsp = 9948;
+    CmdChenLingFesType_ChenLingFesRaidKickedNotify = 9917;
+    CmdChenLingFesType_DGOFALCINAO = 9909;
+    CmdChenLingFesType_ChenLingFesLevelStartScRsp = 9944;
+    CmdChenLingFesType_AGGHGALCLOC = 9924;
+    CmdChenLingFesType_ChenLingFesLevelResumeCsReq = 9903;
+    CmdChenLingFesType_GetChenLingFesDataScRsp = 9923;
+    CmdChenLingFesType_ChenLingFesLevelLeaveCsReq = 9919;
+    CmdChenLingFesType_ChenLingFesLevelEndScRsp = 9921;
+    CmdChenLingFesType_ChenLingFesLevelResumeScRsp = 9907;
+    CmdChenLingFesType_ChenLingFesLevelEndCsReq = 9910;
+    CmdChenLingFesType_ChenLingFesBusinessDayEndScRsp = 9920;
 }
 
 message DMHADFNOIGP {
