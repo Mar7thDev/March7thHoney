@@ -35,11 +35,26 @@ public static class Emitter
                 sb.Append("import \"").Append(f).Append("\";\n");
             if (importFiles.Count > 0) sb.Append('\n');
 
+            // Order members by major category (then name) and, when a file spans several categories,
+            // emit "// ===== Category =====" section headers so large catch-all files stay navigable.
+            string Cat(TypeDef d) => gr.Category.GetValueOrDefault(d.Name, "");
+            var ordered = bucket.Members
+                .OrderBy(Cat, StringComparer.Ordinal).ThenBy(m => m.Name, StringComparer.Ordinal)
+                .ToList();
+            bool section = ordered.Select(Cat).Where(c => c.Length > 0).Distinct().Count() > 1;
+
             bool first = true;
-            foreach (var d in bucket.Members.OrderBy(m => m.Name, StringComparer.Ordinal))
+            string? curCat = null;
+            foreach (var d in ordered)
             {
                 if (!first) sb.Append('\n');
                 first = false;
+                var c = Cat(d);
+                if (section && c.Length > 0 && c != curCat)
+                {
+                    curCat = c;
+                    sb.Append("// ========================= ").Append(c).Append(" =========================\n\n");
+                }
                 sb.Append(d.Body).Append('\n');
             }
 

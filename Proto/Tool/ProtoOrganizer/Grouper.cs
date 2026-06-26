@@ -5,6 +5,9 @@ public sealed class GroupResult
     public required Dictionary<string, Bucket> Buckets { get; init; }   // fileName -> bucket
     public required Dictionary<string, string> Assignment { get; init; } // typeName -> fileName
     public required List<string> Report { get; init; }
+
+    /// <summary>typeName -> major category, for intra-file sectioning of large catch-all files.</summary>
+    public Dictionary<string, string> Category { get; } = new(StringComparer.Ordinal);
 }
 
 /// <summary>
