@@ -241,6 +241,7 @@
   "Server.ServerInfo.ActivationDeviceAuthTimeout": "Authorization timed out. Please restart and try again.",
   "Server.ServerInfo.ActivationDeviceAuthWaiting": "Waiting for authorization in the browser...",
   "Server.ServerInfo.ActivationFailed": "Activation failed: {0}",
+  "Server.ServerInfo.ActivationLauncherRelogin": "Activation failed. Please sign in again in CyreneLauncher before starting the local server.",
   "Server.ServerInfo.ActivationSuccess": "Activation verified. Valid until {0}.",
   "Server.ServerInfo.ActivationTokenMissing": "Activation token not found. Set the M7H_ACTIVATION_TOKEN environment variable or create Config/activation.token.",
   "Server.ServerInfo.LicenseCurrentHwid": "Current machine HWID: {0}",

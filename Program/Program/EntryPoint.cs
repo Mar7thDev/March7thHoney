@@ -18,6 +18,7 @@ using March7thHoney.WebServer;
 using March7thHoney.WebServer.Server;
 using System.Globalization;
 using System.IO.Compression;
+using System.Runtime.InteropServices;
 
 namespace March7thHoney.Program.Program;
 
@@ -53,6 +54,9 @@ public class EntryPoint
             eventArgs.Cancel = true;
             Environment.Exit(0);
         };
+        // Window close / logoff / shutdown don't reliably raise ProcessExit on Windows; route them through the same save-then-exit path as Ctrl+C.
+        foreach (var sig in new[] { PosixSignal.SIGHUP, PosixSignal.SIGTERM })
+            PosixSignalRegistration.Create(sig, ctx => { ctx.Cancel = true; Environment.Exit(0); });
         var time = DateTime.Now;
 
         // pack the old log
