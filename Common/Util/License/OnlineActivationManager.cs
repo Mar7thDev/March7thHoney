@@ -305,22 +305,37 @@ public static class OnlineActivationManager
         }
     }
 
+    // Retry transient failures (network errors / 5xx) with backoff; a definitive HTTP response (2xx/4xx) returns immediately.
     private static async Task<(int, string?)> PostJsonAsync(string url, string json, string? bearer)
     {
-        try
+        const int maxAttempts = 4;
+        var lastErr = "network error";
+        for (var attempt = 1; attempt <= maxAttempts; attempt++)
         {
-            using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
-            if (!string.IsNullOrEmpty(bearer))
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer);
-            using var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(url, content);
-            var text = await response.Content.ReadAsStringAsync();
-            return ((int)response.StatusCode, text);
+            try
+            {
+                using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
+                if (!string.IsNullOrEmpty(bearer))
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer);
+                using var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(url, content);
+                var text = await response.Content.ReadAsStringAsync();
+                var status = (int)response.StatusCode;
+                if (status >= 500 && attempt < maxAttempts)
+                {
+                    lastErr = $"HTTP {status}";
+                    await Task.Delay(TimeSpan.FromSeconds(attempt));
+                    continue;
+                }
+                return (status, text);
+            }
+            catch (Exception ex)
+            {
+                lastErr = ex.Message;
+                if (attempt < maxAttempts) await Task.Delay(TimeSpan.FromSeconds(attempt));
+            }
         }
-        catch (Exception ex)
-        {
-            return (0, ex.Message);
-        }
+        return (0, lastErr);
     }
 
     private static bool VerifySignature(string hwid, byte[] nonce, long exp, string sigB64)
