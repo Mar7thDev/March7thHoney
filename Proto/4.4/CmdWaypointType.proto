@@ -3,11 +3,11 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 enum CmdWaypointType {
-    CHLEIBCFDBO_NLCDGIPGFDJ = 0;
-    CHLEIBCFDBO_HCNHEDFNLJC = 478;
-    CHLEIBCFDBO_HBAPBPBKJLL = 481;
-    CHLEIBCFDBO_KNFMJKOGEGF = 425;
-    CHLEIBCFDBO_DDKCNBCOELM = 488;
+    CmdWaypointType_NLCDGIPGFDJ = 0;
+    CmdWaypointType_HCNHEDFNLJC = 478;
+    CmdWaypointType_HBAPBPBKJLL = 481;
+    CmdWaypointType_KNFMJKOGEGF = 425;
+    CmdWaypointType_DDKCNBCOELM = 488;
 }
 
 message FDECDCEDPNM {

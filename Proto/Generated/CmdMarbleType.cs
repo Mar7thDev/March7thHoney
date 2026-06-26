@@ -34,16 +34,17 @@ namespace March7thHoney.Proto {
             "dXlTY1JzcBITCgtFR0NMTEtESElBRRgIIAMoDRIPCgdyZXRjb2RlGA0gASgN",
             "Ii8KGE1hcmJsZVVubG9ja1NlYWxTY05vdGlmeRITCgtFR0NMTEtESElBRRgK",
             "IAMoDSJCChpNYXJibGVVcGRhdGVTaG93blNlYWxTY1JzcBITCgtHRkFEQ0lI",
-            "TUROThgDIAMoDRIPCgdyZXRjb2RlGAogASgNKtgCCg1DbWRNYXJibGVUeXBl",
-            "EhsKF05JRUJQUEFQSk9GX05MQ0RHSVBHRkRKEAASHAoXTklFQlBQQVBKT0Zf",
-            "RExKTkpGT01BRUcQ4EASHAoXTklFQlBQQVBKT0ZfQUdES0lDQkNJQ0QQ0UAS",
-            "HAoXTklFQlBQQVBKT0ZfQ0NKTUlGTEpGS0MQ2UASHAoXTklFQlBQQVBKT0Zf",
-            "S0hOUEdFUExDTEQQ0EASHAoXTklFQlBQQVBKT0ZfRExCRUdNR0lFUEUQ30AS",
-            "HAoXTklFQlBQQVBKT0ZfRE5QTENPTkdLTkQQ3UASHAoXTklFQlBQQVBKT0Zf",
-            "RERJT0JLQUFEQUwQ00ASHAoXTklFQlBQQVBKT0ZfRE1FQ0JKTkxJSkoQ0kAS",
-            "HAoXTklFQlBQQVBKT0ZfSkdOUE9DQUZLT04Q1kASHAoXTklFQlBQQVBKT0Zf",
-            "SkhDRENJS05FRU0Q2kBCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3Rv",
-            "Mw=="));
+            "TUROThgDIAMoDRIPCgdyZXRjb2RlGAogASgNKqgDCg1DbWRNYXJibGVUeXBl",
+            "Eh0KGUNtZE1hcmJsZVR5cGVfTkxDREdJUEdGREoQABIeChlDbWRNYXJibGVU",
+            "eXBlX0RMSk5KRk9NQUVHEOBAEh4KGUNtZE1hcmJsZVR5cGVfQUdES0lDQkNJ",
+            "Q0QQ0UASHgoZQ21kTWFyYmxlVHlwZV9DQ0pNSUZMSkZLQxDZQBIeChlDbWRN",
+            "YXJibGVUeXBlX0tITlBHRVBMQ0xEENBAEiUKIENtZE1hcmJsZVR5cGVfTWFy",
+            "YmxlU2hvcEJ1eVNjUnNwEN9AEi0KKENtZE1hcmJsZVR5cGVfTWFyYmxlVXBk",
+            "YXRlU2hvd25TZWFsU2NSc3AQ3UASKwomQ21kTWFyYmxlVHlwZV9NYXJibGVV",
+            "bmxvY2tTZWFsU2NOb3RpZnkQ00ASLgopQ21kTWFyYmxlVHlwZV9NYXJibGVQ",
+            "dnBEYXRhVXBkYXRlU2NOb3RpZnkQ0kASJQogQ21kTWFyYmxlVHlwZV9NYXJi",
+            "bGVHZXREYXRhU2NSc3AQ1kASHgoZQ21kTWFyYmxlVHlwZV9KSENEQ0lLTkVF",
+            "TRDaQEIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMarbleType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -61,17 +62,17 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMarbleType {
-    [pbr::OriginalName("NIEBPPAPJOF_NLCDGIPGFDJ")] NiebppapjofNlcdgipgfdj = 0,
-    [pbr::OriginalName("NIEBPPAPJOF_DLJNJFOMAEG")] NiebppapjofDljnjfomaeg = 8288,
-    [pbr::OriginalName("NIEBPPAPJOF_AGDKICBCICD")] NiebppapjofAgdkicbcicd = 8273,
-    [pbr::OriginalName("NIEBPPAPJOF_CCJMIFLJFKC")] NiebppapjofCcjmifljfkc = 8281,
-    [pbr::OriginalName("NIEBPPAPJOF_KHNPGEPLCLD")] NiebppapjofKhnpgeplcld = 8272,
-    [pbr::OriginalName("NIEBPPAPJOF_DLBEGMGIEPE")] NiebppapjofDlbegmgiepe = 8287,
-    [pbr::OriginalName("NIEBPPAPJOF_DNPLCONGKND")] NiebppapjofDnplcongknd = 8285,
-    [pbr::OriginalName("NIEBPPAPJOF_DDIOBKAADAL")] NiebppapjofDdiobkaadal = 8275,
-    [pbr::OriginalName("NIEBPPAPJOF_DMECBJNLIJJ")] NiebppapjofDmecbjnlijj = 8274,
-    [pbr::OriginalName("NIEBPPAPJOF_JGNPOCAFKON")] NiebppapjofJgnpocafkon = 8278,
-    [pbr::OriginalName("NIEBPPAPJOF_JHCDCIKNEEM")] NiebppapjofJhcdcikneem = 8282,
+    [pbr::OriginalName("CmdMarbleType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdMarbleType_DLJNJFOMAEG")] Dljnjfomaeg = 8288,
+    [pbr::OriginalName("CmdMarbleType_AGDKICBCICD")] Agdkicbcicd = 8273,
+    [pbr::OriginalName("CmdMarbleType_CCJMIFLJFKC")] Ccjmifljfkc = 8281,
+    [pbr::OriginalName("CmdMarbleType_KHNPGEPLCLD")] Khnpgeplcld = 8272,
+    [pbr::OriginalName("CmdMarbleType_MarbleShopBuyScRsp")] MarbleShopBuyScRsp = 8287,
+    [pbr::OriginalName("CmdMarbleType_MarbleUpdateShownSealScRsp")] MarbleUpdateShownSealScRsp = 8285,
+    [pbr::OriginalName("CmdMarbleType_MarbleUnlockSealScNotify")] MarbleUnlockSealScNotify = 8275,
+    [pbr::OriginalName("CmdMarbleType_MarblePvpDataUpdateScNotify")] MarblePvpDataUpdateScNotify = 8274,
+    [pbr::OriginalName("CmdMarbleType_MarbleGetDataScRsp")] MarbleGetDataScRsp = 8278,
+    [pbr::OriginalName("CmdMarbleType_JHCDCIKNEEM")] Jhcdcikneem = 8282,
   }
 
   #endregion

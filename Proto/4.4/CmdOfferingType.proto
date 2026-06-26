@@ -5,14 +5,14 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdOfferingType {
-    LIPONPBGOPN_NLCDGIPGFDJ = 0;
-    LIPONPBGOPN_FLPIHJLMCDM = 6932;
-    LIPONPBGOPN_HGKELIFKFDP = 6928;
-    LIPONPBGOPN_FKLKKDCLGEN = 6925;
-    LIPONPBGOPN_ANEEKCGOAMC = 6923;
-    LIPONPBGOPN_ABEHDHJCDIL = 6937;
-    LIPONPBGOPN_HMNDKFKCGNL = 6938;
-    LIPONPBGOPN_FEFDACJCFIL = 6922;
+    CmdOfferingType_NLCDGIPGFDJ = 0;
+    CmdOfferingType_SubmitOfferingItemScRsp = 6932;
+    CmdOfferingType_GetOfferingInfoScRsp = 6928;
+    CmdOfferingType_OfferingInfoScNotify = 6925;
+    CmdOfferingType_ANEEKCGOAMC = 6923;
+    CmdOfferingType_TakeOfferingRewardScRsp = 6937;
+    CmdOfferingType_GetOfferingInfoCsReq = 6938;
+    CmdOfferingType_FEFDACJCFIL = 6922;
 }
 
 message GetOfferingInfoCsReq {

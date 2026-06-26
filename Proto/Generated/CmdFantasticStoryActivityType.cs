@@ -45,13 +45,19 @@ namespace March7thHoney.Proto {
             "IAEoDSJYCiJHZXRGYW50YXN0aWNTdG9yeUFjdGl2aXR5RGF0YVNjUnNwEg8K",
             "B3JldGNvZGUYAiABKA0SIQoLT05JRU1MSUNPTkIYBCABKAsyDC5HQ0ZESkNQ",
             "Rk9HRyJCCgtQS0NJUEpCS0FGTxIgCgthdmF0YXJfdHlwZRgIIAEoDjILLkF2",
-            "YXRhclR5cGUSEQoJYXZhdGFyX2lkGAsgASgNKvABCh1DbWRGYW50YXN0aWNT",
-            "dG9yeUFjdGl2aXR5VHlwZRIbChdHSkFMT01PS0ZLS19OTENER0lQR0ZEShAA",
-            "EhwKF0dKQUxPTU9LRktLX0lMRkFMSERHTkdMEPImEhwKF0dKQUxPTU9LRktL",
-            "X0ZCSkNQR0FJS0VBEPwmEhwKF0dKQUxPTU9LRktLX0tGTkxOSk1CSUVMEIEn",
-            "EhwKF0dKQUxPTU9LRktLX0tNSUlEQU9LSUFMEN4mEhwKF0dKQUxPTU9LRktL",
-            "X1BJRUlLQUJMQkdQEPUmEhwKF0dKQUxPTU9LRktLX0JMSEJHUEZQRkdQEL0m",
-            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "YXRhclR5cGUSEQoJYXZhdGFyX2lkGAsgASgNKucDCh1DbWRGYW50YXN0aWNT",
+            "dG9yeUFjdGl2aXR5VHlwZRItCilDbWRGYW50YXN0aWNTdG9yeUFjdGl2aXR5",
+            "VHlwZV9OTENER0lQR0ZEShAAEkUKQENtZEZhbnRhc3RpY1N0b3J5QWN0aXZp",
+            "dHlUeXBlX0dldEZhbnRhc3RpY1N0b3J5QWN0aXZpdHlEYXRhU2NSc3AQ8iYS",
+            "SApDQ21kRmFudGFzdGljU3RvcnlBY3Rpdml0eVR5cGVfRW50ZXJGYW50YXN0",
+            "aWNTdG9yeUFjdGl2aXR5U3RhZ2VTY1JzcBD8JhIuCilDbWRGYW50YXN0aWNT",
+            "dG9yeUFjdGl2aXR5VHlwZV9LRk5MTkpNQklFTBCBJxJDCj5DbWRGYW50YXN0",
+            "aWNTdG9yeUFjdGl2aXR5VHlwZV9FbnRlckFjdGl2aXR5RmFudGFzdGljU3Rv",
+            "cnlDc1JlcRDeJhJKCkVDbWRGYW50YXN0aWNTdG9yeUFjdGl2aXR5VHlwZV9G",
+            "YW50YXN0aWNTdG9yeUFjdGl2aXR5QmF0dGxlRW5kU2NOb3RpZnkQ9SYSRQpA",
+            "Q21kRmFudGFzdGljU3RvcnlBY3Rpdml0eVR5cGVfR2V0RmFudGFzdGljU3Rv",
+            "cnlBY3Rpdml0eURhdGFDc1JlcRC9JkIWqgITTWFyY2g3dGhIb25leS5Qcm90",
+            "b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFantasticStoryActivityType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -70,13 +76,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFantasticStoryActivityType {
-    [pbr::OriginalName("GJALOMOKFKK_NLCDGIPGFDJ")] GjalomokfkkNlcdgipgfdj = 0,
-    [pbr::OriginalName("GJALOMOKFKK_ILFALHDGNGL")] GjalomokfkkIlfalhdgngl = 4978,
-    [pbr::OriginalName("GJALOMOKFKK_FBJCPGAIKEA")] GjalomokfkkFbjcpgaikea = 4988,
-    [pbr::OriginalName("GJALOMOKFKK_KFNLNJMBIEL")] GjalomokfkkKfnlnjmbiel = 4993,
-    [pbr::OriginalName("GJALOMOKFKK_KMIIDAOKIAL")] GjalomokfkkKmiidaokial = 4958,
-    [pbr::OriginalName("GJALOMOKFKK_PIEIKABLBGP")] GjalomokfkkPieikablbgp = 4981,
-    [pbr::OriginalName("GJALOMOKFKK_BLHBGPFPFGP")] GjalomokfkkBlhbgpfpfgp = 4925,
+    [pbr::OriginalName("CmdFantasticStoryActivityType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdFantasticStoryActivityType_GetFantasticStoryActivityDataScRsp")] GetFantasticStoryActivityDataScRsp = 4978,
+    [pbr::OriginalName("CmdFantasticStoryActivityType_EnterFantasticStoryActivityStageScRsp")] EnterFantasticStoryActivityStageScRsp = 4988,
+    [pbr::OriginalName("CmdFantasticStoryActivityType_KFNLNJMBIEL")] Kfnlnjmbiel = 4993,
+    [pbr::OriginalName("CmdFantasticStoryActivityType_EnterActivityFantasticStoryCsReq")] EnterActivityFantasticStoryCsReq = 4958,
+    [pbr::OriginalName("CmdFantasticStoryActivityType_FantasticStoryActivityBattleEndScNotify")] FantasticStoryActivityBattleEndScNotify = 4981,
+    [pbr::OriginalName("CmdFantasticStoryActivityType_GetFantasticStoryActivityDataCsReq")] GetFantasticStoryActivityDataCsReq = 4925,
   }
 
   #endregion

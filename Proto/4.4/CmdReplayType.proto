@@ -5,9 +5,9 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdReplayType {
-    GLHDKOHHDDK_NLCDGIPGFDJ = 0;
-    GLHDKOHHDDK_CMGJOLOLINK = 3578;
-    GLHDKOHHDDK_IDABMGHDHJH = 3525;
+    CmdReplayType_NLCDGIPGFDJ = 0;
+    CmdReplayType_CMGJOLOLINK = 3578;
+    CmdReplayType_GetReplayTokenCsReq = 3525;
 }
 
 message GetReplayTokenCsReq {

@@ -9,11 +9,11 @@ message BOPOBHGDIKN {
 }
 
 enum CmdRaidCollectionType {
-    ONNDCODLMGD_NLCDGIPGFDJ = 0;
-    ONNDCODLMGD_HIKIBFCIKBA = 6952;
-    ONNDCODLMGD_LNFHMGKBNEO = 6958;
-    ONNDCODLMGD_BIHBGPPKCNL = 6948;
-    ONNDCODLMGD_BNAFMMKMELE = 6942;
+    CmdRaidCollectionType_NLCDGIPGFDJ = 0;
+    CmdRaidCollectionType_HIKIBFCIKBA = 6952;
+    CmdRaidCollectionType_LNFHMGKBNEO = 6958;
+    CmdRaidCollectionType_RaidCollectionDataScRsp = 6948;
+    CmdRaidCollectionType_RaidCollectionEnterNextRaidScRsp = 6942;
 }
 
 message RaidCollectionDataScRsp {

@@ -17,31 +17,31 @@ message ChenLingGameBoyGetFriendRankingInfoScRsp {
 }
 
 enum CmdMazePuzzleType {
-    GPNGEMMFFAK_NLCDGIPGFDJ = 0;
-    GPNGEMMFFAK_EIFJIFCFLBJ = 9071;
-    GPNGEMMFFAK_LCKLCFFIFCC = 9065;
-    GPNGEMMFFAK_NBOOGOBHMOE = 9085;
-    GPNGEMMFFAK_KGELLCCEJAK = 9073;
-    GPNGEMMFFAK_AJFNKOGOODM = 9068;
-    GPNGEMMFFAK_KNLOKAAIGOB = 9083;
-    GPNGEMMFFAK_KGJKELDNDDD = 9094;
-    GPNGEMMFFAK_JCPGIMAGBHN = 9069;
-    GPNGEMMFFAK_PMBMKFMNPHM = 9093;
-    GPNGEMMFFAK_IKIEALJFGLL = 9053;
-    GPNGEMMFFAK_IPNFOOJJGMC = 9063;
-    GPNGEMMFFAK_LDPOIFPCEHB = 9052;
-    GPNGEMMFFAK_FCHACNCAFDN = 9098;
-    GPNGEMMFFAK_BDKPNHPGCOI = 9057;
-    GPNGEMMFFAK_CCOKCJODLJI = 9058;
-    GPNGEMMFFAK_BDFOHFOJBKK = 9074;
-    GPNGEMMFFAK_LMGELDDBLDH = 9070;
-    GPNGEMMFFAK_OFNGGJKPMIJ = 9056;
-    GPNGEMMFFAK_MDJODBLCMNM = 9079;
-    GPNGEMMFFAK_KGMEEFCMPCK = 9067;
-    GPNGEMMFFAK_PCANBGGALEK = 9064;
-    GPNGEMMFFAK_JKEBLDNOJGO = 9087;
-    GPNGEMMFFAK_DIELFHOLCGG = 9059;
-    GPNGEMMFFAK_EEICODKONDH = 9060;
+    CmdMazePuzzleType_NLCDGIPGFDJ = 0;
+    CmdMazePuzzleType_EIFJIFCFLBJ = 9071;
+    CmdMazePuzzleType_LCKLCFFIFCC = 9065;
+    CmdMazePuzzleType_NBOOGOBHMOE = 9085;
+    CmdMazePuzzleType_GetChenLingGameBoyDataScRsp = 9073;
+    CmdMazePuzzleType_FiveDimFluteDataChangeNotify = 9068;
+    CmdMazePuzzleType_KNLOKAAIGOB = 9083;
+    CmdMazePuzzleType_FinishChenLingGameBoyScRsp = 9094;
+    CmdMazePuzzleType_JCPGIMAGBHN = 9069;
+    CmdMazePuzzleType_MazeCrossFloorConditionChangeScNotify = 9093;
+    CmdMazePuzzleType_ChenLingGameBoyChangeSettingsCsReq = 9053;
+    CmdMazePuzzleType_IPNFOOJJGMC = 9063;
+    CmdMazePuzzleType_LDPOIFPCEHB = 9052;
+    CmdMazePuzzleType_ChenLingGameBoyGetFriendRankingInfoScRsp = 9098;
+    CmdMazePuzzleType_BDKPNHPGCOI = 9057;
+    CmdMazePuzzleType_CCOKCJODLJI = 9058;
+    CmdMazePuzzleType_BDFOHFOJBKK = 9074;
+    CmdMazePuzzleType_LMGELDDBLDH = 9070;
+    CmdMazePuzzleType_FinishFiveDimMiniGameScRsp = 9056;
+    CmdMazePuzzleType_GetFiveDimMiniGameDataScRsp = 9079;
+    CmdMazePuzzleType_KGMEEFCMPCK = 9067;
+    CmdMazePuzzleType_GetFiveDimFluteDataScRsp = 9064;
+    CmdMazePuzzleType_JKEBLDNOJGO = 9087;
+    CmdMazePuzzleType_DIELFHOLCGG = 9059;
+    CmdMazePuzzleType_EEICODKONDH = 9060;
 }
 
 message EGJJHFIPCNB {

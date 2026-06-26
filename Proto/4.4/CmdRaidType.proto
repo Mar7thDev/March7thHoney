@@ -9,27 +9,27 @@ message ChallengeRaidNotify {
 }
 
 enum CmdRaidType {
-    ENMOIIMEDKD_NLCDGIPGFDJ = 0;
-    ENMOIIMEDKD_KIAAALLPPCM = 2229;
-    ENMOIIMEDKD_PMIJIJGANAN = 2224;
-    ENMOIIMEDKD_GLHPDJAKOGI = 2215;
-    ENMOIIMEDKD_NEDJJGKDDNP = 2221;
-    ENMOIIMEDKD_DPIANCJPNBI = 2214;
-    ENMOIIMEDKD_DBEOJEGFCIO = 2219;
-    ENMOIIMEDKD_GDJCOFKGJCG = 2248;
-    ENMOIIMEDKD_FGBBOOCHPOO = 2220;
-    ENMOIIMEDKD_HEHJAHHAKDI = 2244;
-    ENMOIIMEDKD_EJHGOOPPKCO = 2223;
-    ENMOIIMEDKD_OPNFILPAAGH = 2202;
-    ENMOIIMEDKD_NKCJGPBMLBM = 2209;
-    ENMOIIMEDKD_OHCJFFHMILD = 2217;
-    ENMOIIMEDKD_JIPMAKDBIAJ = 2210;
-    ENMOIIMEDKD_EELECOGCJKP = 2235;
-    ENMOIIMEDKD_PMPIJBHGOKC = 2206;
-    ENMOIIMEDKD_EHIFBAALDMH = 2237;
-    ENMOIIMEDKD_MDMMEFIPJKD = 2207;
-    ENMOIIMEDKD_LAKLHDPLLAP = 2233;
-    ENMOIIMEDKD_GMBHKFNHOJI = 2203;
+    CmdRaidType_NLCDGIPGFDJ = 0;
+    CmdRaidType_SetClientRaidTargetCountScRsp = 2229;
+    CmdRaidType_GetRaidInfoCsReq = 2224;
+    CmdRaidType_GLHPDJAKOGI = 2215;
+    CmdRaidType_ChallengeRaidNotify = 2221;
+    CmdRaidType_GetAllSaveRaidScRsp = 2214;
+    CmdRaidType_RaidInfoNotify = 2219;
+    CmdRaidType_GDJCOFKGJCG = 2248;
+    CmdRaidType_GetRaidInfoScRsp = 2220;
+    CmdRaidType_LeaveRaidScRsp = 2244;
+    CmdRaidType_StartRaidScRsp = 2223;
+    CmdRaidType_GetAllSaveRaidCsReq = 2202;
+    CmdRaidType_StartRaidCsReq = 2209;
+    CmdRaidType_OHCJFFHMILD = 2217;
+    CmdRaidType_TakeChallengeRaidRewardScRsp = 2210;
+    CmdRaidType_DelSaveRaidScNotify = 2235;
+    CmdRaidType_GetSaveRaidScRsp = 2206;
+    CmdRaidType_LeaveRaidCsReq = 2237;
+    CmdRaidType_MDMMEFIPJKD = 2207;
+    CmdRaidType_GetSaveRaidCsReq = 2233;
+    CmdRaidType_GMBHKFNHOJI = 2203;
 }
 
 message DelSaveRaidScNotify {

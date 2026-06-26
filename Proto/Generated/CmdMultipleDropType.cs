@@ -41,12 +41,16 @@ namespace March7thHoney.Proto {
             "R0pISEMYDSADKAsyDC5CTUpIQUhPTEVHSCI9ChhNdWx0aXBsZURyb3BJbmZv",
             "U2NOb3RpZnkSIQoLTU9QQUdLTkVNT0QYBCADKAsyDC5OR0xPQkZCQ0dCQiIu",
             "CgtOR0xPQkZCQ0dCQhIKCgJpZBgEIAEoDRITCgtDTExGQUNLRk5CTxgLIAEo",
-            "DSrmAQoTQ21kTXVsdGlwbGVEcm9wVHlwZRIbChdBQ0lNRkdGTlBERl9OTENE",
-            "R0lQR0ZEShAAEhwKF0FDSU1GR0ZOUERGX05QS01CQU9BUExEEJEkEhwKF0FD",
-            "SU1GR0ZOUERGX0ZFS0JNTkhQSUhIENAkEhwKF0FDSU1GR0ZOUERGX0RPSUNO",
-            "RUlPRERIEMYkEhwKF0FDSU1GR0ZOUERGX0tCSkJEQU9QSEdHEMkkEhwKF0FD",
-            "SU1GR0ZOUERGX0VLRU1HS09QSEZQELIkEhwKF0FDSU1GR0ZOUERGX0lFS0VI",
-            "RUdCRUtGENUkQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "DSr8AgoTQ21kTXVsdGlwbGVEcm9wVHlwZRIjCh9DbWRNdWx0aXBsZURyb3BU",
+            "eXBlX05MQ0RHSVBHRkRKEAASMQosQ21kTXVsdGlwbGVEcm9wVHlwZV9HZXRN",
+            "dWx0aXBsZURyb3BJbmZvQ3NSZXEQkSQSOgo1Q21kTXVsdGlwbGVEcm9wVHlw",
+            "ZV9HZXRQbGF5ZXJSZXR1cm5NdWx0aURyb3BJbmZvU2NSc3AQ0CQSMQosQ21k",
+            "TXVsdGlwbGVEcm9wVHlwZV9HZXRNdWx0aXBsZURyb3BJbmZvU2NSc3AQxiQS",
+            "LwoqQ21kTXVsdGlwbGVEcm9wVHlwZV9NdWx0aXBsZURyb3BJbmZvTm90aWZ5",
+            "EMkkEjoKNUNtZE11bHRpcGxlRHJvcFR5cGVfR2V0UGxheWVyUmV0dXJuTXVs",
+            "dGlEcm9wSW5mb0NzUmVxELIkEjEKLENtZE11bHRpcGxlRHJvcFR5cGVfTXVs",
+            "dGlwbGVEcm9wSW5mb1NjTm90aWZ5ENUkQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMultipleDropType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -66,13 +70,13 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMultipleDropType {
-    [pbr::OriginalName("ACIMFGFNPDF_NLCDGIPGFDJ")] AcimfgfnpdfNlcdgipgfdj = 0,
-    [pbr::OriginalName("ACIMFGFNPDF_NPKMBAOAPLD")] AcimfgfnpdfNpkmbaoapld = 4625,
-    [pbr::OriginalName("ACIMFGFNPDF_FEKBMNHPIHH")] AcimfgfnpdfFekbmnhpihh = 4688,
-    [pbr::OriginalName("ACIMFGFNPDF_DOICNEIODDH")] AcimfgfnpdfDoicneioddh = 4678,
-    [pbr::OriginalName("ACIMFGFNPDF_KBJBDAOPHGG")] AcimfgfnpdfKbjbdaophgg = 4681,
-    [pbr::OriginalName("ACIMFGFNPDF_EKEMGKOPHFP")] AcimfgfnpdfEkemgkophfp = 4658,
-    [pbr::OriginalName("ACIMFGFNPDF_IEKEHEGBEKF")] AcimfgfnpdfIekehegbekf = 4693,
+    [pbr::OriginalName("CmdMultipleDropType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdMultipleDropType_GetMultipleDropInfoCsReq")] GetMultipleDropInfoCsReq = 4625,
+    [pbr::OriginalName("CmdMultipleDropType_GetPlayerReturnMultiDropInfoScRsp")] GetPlayerReturnMultiDropInfoScRsp = 4688,
+    [pbr::OriginalName("CmdMultipleDropType_GetMultipleDropInfoScRsp")] GetMultipleDropInfoScRsp = 4678,
+    [pbr::OriginalName("CmdMultipleDropType_MultipleDropInfoNotify")] MultipleDropInfoNotify = 4681,
+    [pbr::OriginalName("CmdMultipleDropType_GetPlayerReturnMultiDropInfoCsReq")] GetPlayerReturnMultiDropInfoCsReq = 4658,
+    [pbr::OriginalName("CmdMultipleDropType_MultipleDropInfoScNotify")] MultipleDropInfoScNotify = 4693,
   }
 
   #endregion

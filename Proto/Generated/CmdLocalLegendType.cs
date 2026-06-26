@@ -34,12 +34,15 @@ namespace March7thHoney.Proto {
             "YXRhX2xpc3QYDSADKAsyDC5KSkVGTEJDTEJGTiJJCgtKSkVGTEJDTEJGThIQ",
             "Cghncm91cF9pZBgBIAEoDRITCgtEQktISENHR0tOThgJIAEoDRITCgtGRkdG",
             "SU5ETE1DRhgLIAEoDSI/ChtMb2NhbExlZ2VuZERhdGFDaGFuZ2VOb3RpZnkS",
-            "IAoKbGV2ZWxfZGF0YRgCIAEoCzIMLkpKRUZMQkNMQkZOKscBChJDbWRMb2Nh",
-            "bExlZ2VuZFR5cGUSGwoXRUdISEJLQkxETU1fTkxDREdJUEdGREoQABIcChdF",
-            "R0hIQktCTERNTV9MUE1BTU5QSlBDRRC7MxIcChdFR0hIQktCTERNTV9CQUJQ",
-            "R0FITkdJQxC0MxIcChdFR0hIQktCTERNTV9NRkdLQklBS1BPQRC2MxIcChdF",
-            "R0hIQktCTERNTV9PR0VESkpOSEJJUBDEMxIcChdFR0hIQktCTERNTV9QQk9Q",
-            "Sk9BTk5GSBC3M0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "IAoKbGV2ZWxfZGF0YRgCIAEoCzIMLkpKRUZMQkNMQkZOKqgCChJDbWRMb2Nh",
+            "bExlZ2VuZFR5cGUSIgoeQ21kTG9jYWxMZWdlbmRUeXBlX05MQ0RHSVBHRkRK",
+            "EAASIwoeQ21kTG9jYWxMZWdlbmRUeXBlX0xQTUFNTlBKUENFELszEjMKLkNt",
+            "ZExvY2FsTGVnZW5kVHlwZV9Mb2NhbExlZ2VuZERhdGFDaGFuZ2VOb3RpZnkQ",
+            "tDMSMgotQ21kTG9jYWxMZWdlbmRUeXBlX0VudGVyTG9jYWxMZWdlbmRMZXZl",
+            "bFNjUnNwELYzEi8KKkNtZExvY2FsTGVnZW5kVHlwZV9HZXRMb2NhbExlZ2Vu",
+            "ZERhdGFTY1JzcBDEMxIvCipDbWRMb2NhbExlZ2VuZFR5cGVfR2V0TG9jYWxM",
+            "ZWdlbmREYXRhQ3NSZXEQtzNCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdLocalLegendType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -56,12 +59,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdLocalLegendType {
-    [pbr::OriginalName("EGHHBKBLDMM_NLCDGIPGFDJ")] EghhbkbldmmNlcdgipgfdj = 0,
-    [pbr::OriginalName("EGHHBKBLDMM_LPMAMNPJPCE")] EghhbkbldmmLpmamnpjpce = 6587,
-    [pbr::OriginalName("EGHHBKBLDMM_BABPGAHNGIC")] EghhbkbldmmBabpgahngic = 6580,
-    [pbr::OriginalName("EGHHBKBLDMM_MFGKBIAKPOA")] EghhbkbldmmMfgkbiakpoa = 6582,
-    [pbr::OriginalName("EGHHBKBLDMM_OGEDJJNHBIP")] EghhbkbldmmOgedjjnhbip = 6596,
-    [pbr::OriginalName("EGHHBKBLDMM_PBOPJOANNFH")] EghhbkbldmmPbopjoannfh = 6583,
+    [pbr::OriginalName("CmdLocalLegendType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdLocalLegendType_LPMAMNPJPCE")] Lpmamnpjpce = 6587,
+    [pbr::OriginalName("CmdLocalLegendType_LocalLegendDataChangeNotify")] LocalLegendDataChangeNotify = 6580,
+    [pbr::OriginalName("CmdLocalLegendType_EnterLocalLegendLevelScRsp")] EnterLocalLegendLevelScRsp = 6582,
+    [pbr::OriginalName("CmdLocalLegendType_GetLocalLegendDataScRsp")] GetLocalLegendDataScRsp = 6596,
+    [pbr::OriginalName("CmdLocalLegendType_GetLocalLegendDataCsReq")] GetLocalLegendDataCsReq = 6583,
   }
 
   #endregion

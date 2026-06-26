@@ -17,22 +17,22 @@ message CEOJGIDJLOA {
 }
 
 enum CmdMultiplayerType {
-    EDCDMKFIOPH_NLCDGIPGFDJ = 0;
-    EDCDMKFIOPH_BNAPHIHJLBL = 1026;
-    EDCDMKFIOPH_DLCLAPFNCJG = 1040;
-    EDCDMKFIOPH_KPJFFMGAIBC = 1081;
-    EDCDMKFIOPH_MGJGKJAODIO = 1058;
-    EDCDMKFIOPH_OMIAAIJAFKJ = 1038;
-    EDCDMKFIOPH_EBEILHDCJLP = 1025;
-    EDCDMKFIOPH_DJGHCGCPHCD = 1088;
-    EDCDMKFIOPH_IABBOIKMDLB = 1047;
-    EDCDMKFIOPH_EOMMLHEPHAP = 1078;
-    EDCDMKFIOPH_IPNNIOLHMGC = 1086;
-    EDCDMKFIOPH_OAAFNIKLKJO = 1013;
-    EDCDMKFIOPH_JFACCEAOBDM = 1093;
-    EDCDMKFIOPH_DOAJCCEGGMO = 1039;
-    EDCDMKFIOPH_CHFKDJGAIEL = 1071;
-    EDCDMKFIOPH_MMJDGCIPGKF = 1033;
+    CmdMultiplayerType_NLCDGIPGFDJ = 0;
+    CmdMultiplayerType_BNAPHIHJLBL = 1026;
+    CmdMultiplayerType_MultiplayerMatchPlayDataChangeScNotify = 1040;
+    CmdMultiplayerType_FightGiveUpScRsp = 1081;
+    CmdMultiplayerType_MGJGKJAODIO = 1058;
+    CmdMultiplayerType_GetFriendRankingInfoRsp = 1038;
+    CmdMultiplayerType_FightGameStateCsReq = 1025;
+    CmdMultiplayerType_FightGiveUpCsReq = 1088;
+    CmdMultiplayerType_IABBOIKMDLB = 1047;
+    CmdMultiplayerType_FightGameStateScRsp = 1078;
+    CmdMultiplayerType_FightGameStartScNotify = 1086;
+    CmdMultiplayerType_GetMatchPlayDataCsReq = 1013;
+    CmdMultiplayerType_JFACCEAOBDM = 1093;
+    CmdMultiplayerType_SelfRankChangeNtf = 1039;
+    CmdMultiplayerType_MultiplayerGetMatchPlayDataScRsp = 1071;
+    CmdMultiplayerType_GetFriendRankingInfoCsReq = 1033;
 }
 
 message DGLBOFKGGLL {

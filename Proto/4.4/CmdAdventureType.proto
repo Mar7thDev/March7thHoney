@@ -5,17 +5,17 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdAdventureType {
-    PCHGEBMKBDD_NLCDGIPGFDJ = 0;
-    PCHGEBMKBDD_CENHFOIEDKK = 1388;
-    PCHGEBMKBDD_NHMFLOBIHJK = 1393;
-    PCHGEBMKBDD_DFEKGHFLJHJ = 1358;
-    PCHGEBMKBDD_JKIHFOGEICI = 1371;
-    PCHGEBMKBDD_PNGDJLEDCKF = 1381;
-    PCHGEBMKBDD_HCIEEEPJAJE = 1313;
-    PCHGEBMKBDD_GHNNOGPMEND = 1347;
-    PCHGEBMKBDD_EOCBONLHAOJ = 1340;
-    PCHGEBMKBDD_LNCDEAFAAFL = 1326;
-    PCHGEBMKBDD_BKFOKJHEHOM = 1386;
+    CmdAdventureType_NLCDGIPGFDJ = 0;
+    CmdAdventureType_CENHFOIEDKK = 1388;
+    CmdAdventureType_GetFarmStageGachaInfoCsReq = 1393;
+    CmdAdventureType_GetFarmStageGachaInfoScRsp = 1358;
+    CmdAdventureType_FarmElementSweepCsReq = 1371;
+    CmdAdventureType_StartQuickCocoonStageRsp = 1381;
+    CmdAdventureType_CocoonSweepScRsp = 1313;
+    CmdAdventureType_StartQuickFarmElementRsp = 1347;
+    CmdAdventureType_FarmElementSweepScRsp = 1340;
+    CmdAdventureType_CocoonSweepCsReq = 1326;
+    CmdAdventureType_BKFOKJHEHOM = 1386;
 }
 
 message CocoonSweepCsReq {

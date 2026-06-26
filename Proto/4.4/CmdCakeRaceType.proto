@@ -90,27 +90,27 @@ message CakeRaceUpdatePveScRsp {
 }
 
 enum CmdCakeRaceType {
-    MJKJNEGGKGC_NLCDGIPGFDJ = 0;
-    MJKJNEGGKGC_BCKHLNIECEB = 9124;
-    MJKJNEGGKGC_PPMHGJKEEDC = 9131;
-    MJKJNEGGKGC_MJHNLEAMLEC = 9132;
-    MJKJNEGGKGC_DOHJPNNPGKH = 9129;
-    MJKJNEGGKGC_FJKGMJMEHCK = 9130;
-    MJKJNEGGKGC_NFMMALEBINN = 9122;
-    MJKJNEGGKGC_FKOADDJCMEN = 9142;
-    MJKJNEGGKGC_NGNBLGHDHGO = 9145;
-    MJKJNEGGKGC_ANIFFDABIFE = 9121;
-    MJKJNEGGKGC_NMJIDHAKDFK = 9135;
-    MJKJNEGGKGC_PMPJIJEGEFL = 9150;
-    MJKJNEGGKGC_GLHFJMBBJJG = 9141;
-    MJKJNEGGKGC_CEENKOPFDFL = 9138;
-    MJKJNEGGKGC_CLBJHLLGKMI = 9123;
-    MJKJNEGGKGC_MIFCKHMCCBD = 9147;
-    MJKJNEGGKGC_FANMLCJOKBE = 9125;
-    MJKJNEGGKGC_MEPLCILNFAH = 9128;
-    MJKJNEGGKGC_CLMHDKNCPEM = 9139;
-    MJKJNEGGKGC_PCGCFJGNMIC = 9137;
-    MJKJNEGGKGC_APNFIGKFFAE = 9140;
+    CmdCakeRaceType_NLCDGIPGFDJ = 0;
+    CmdCakeRaceType_CakeRaceLoanScRsp = 9124;
+    CmdCakeRaceType_CakeRaceGetHandbookCsReq = 9131;
+    CmdCakeRaceType_CakeRaceUpdatePveScRsp = 9132;
+    CmdCakeRaceType_CakeRaceGetDataCsReq = 9129;
+    CmdCakeRaceType_CakeRaceGetHandbookScRsp = 9130;
+    CmdCakeRaceType_CakeRaceLikeFriendRankingInfoScRsp = 9122;
+    CmdCakeRaceType_CakeRaceStartPveScRsp = 9142;
+    CmdCakeRaceType_CakeRaceGetDataScRsp = 9145;
+    CmdCakeRaceType_CakeRaceGetFriendRankingInfoListScRsp = 9121;
+    CmdCakeRaceType_NMJIDHAKDFK = 9135;
+    CmdCakeRaceType_CakeRaceLikeFriendRankingInfoCsReq = 9150;
+    CmdCakeRaceType_CakeRaceUseBattleItemPveCsReq = 9141;
+    CmdCakeRaceType_CakeRaceLoanCsReq = 9138;
+    CmdCakeRaceType_CakeRaceCoinScoreChangeScNotify = 9123;
+    CmdCakeRaceType_CakeRaceFinishFieldRewardScNotify = 9147;
+    CmdCakeRaceType_CakeRaceStartPveCsReq = 9125;
+    CmdCakeRaceType_CakeRaceGetFriendRankingInfoListCsReq = 9128;
+    CmdCakeRaceType_CakeRaceGetDailyLikeScRsp = 9139;
+    CmdCakeRaceType_CakeRaceGetDailyLikeCsReq = 9137;
+    CmdCakeRaceType_CakeRaceFinishPveCsReq = 9140;
 }
 
 message EMJCPFCMOMK {

@@ -18,12 +18,12 @@ message ActiveActivityDataChangeScNotify {
 }
 
 enum CmdActiveType {
-    JGJCDABBNIJ_NLCDGIPGFDJ = 0;
-    JGJCDABBNIJ_ADHCFEAOLBE = 9558;
-    JGJCDABBNIJ_AOIDPACHIMG = 9568;
-    JGJCDABBNIJ_IHNCNPFIIBD = 9562;
-    JGJCDABBNIJ_DPNIGHKMDGA = 9553;
-    JGJCDABBNIJ_HHHDNIMNPKN = 9552;
+    CmdActiveType_NLCDGIPGFDJ = 0;
+    CmdActiveType_GetActiveActivityDataScRsp = 9558;
+    CmdActiveType_ActivityActiveActivityDataCsReq = 9568;
+    CmdActiveType_TakeActiveActivityRewardScRsp = 9562;
+    CmdActiveType_ActivityActiveTakeRewardCsReq = 9553;
+    CmdActiveType_ActiveActivityDataChangeScNotify = 9552;
 }
 
 message GetActiveActivityDataScRsp {

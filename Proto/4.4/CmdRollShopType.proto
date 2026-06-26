@@ -5,13 +5,13 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdRollShopType {
-    OHCMLBPONOB_NLCDGIPGFDJ = 0;
-    OHCMLBPONOB_MGKPBJDFEFH = 6912;
-    OHCMLBPONOB_OAOLKAMEEJA = 6903;
-    OHCMLBPONOB_FNHGIIEDMOL = 6902;
-    OHCMLBPONOB_JLMAAPILPFM = 6908;
-    OHCMLBPONOB_EOKAIKAJHOP = 6917;
-    OHCMLBPONOB_IHMMENKJJGC = 6918;
+    CmdRollShopType_NLCDGIPGFDJ = 0;
+    CmdRollShopType_DoGachaInRollShopScRsp = 6912;
+    CmdRollShopType_RollShopGachaCsReq = 6903;
+    CmdRollShopType_FNHGIIEDMOL = 6902;
+    CmdRollShopType_GetRollShopInfoScRsp = 6908;
+    CmdRollShopType_TakeRollShopRewardScRsp = 6917;
+    CmdRollShopType_GetRollShopInfoCsReq = 6918;
 }
 
 message DoGachaInRollShopScRsp {

@@ -37,16 +37,20 @@ namespace March7thHoney.Proto {
             "b2RlGAkgASgNEiEKC0dOREVGRUFFRE5KGA8gAygLMgwuSkJNSk9JUEpQTEgi",
             "YgoLSkJNSk9JUEpQTEgSEwoLREpGR0RNSURFSEoYBCABKA0SEwoLT0ZCRURK",
             "SUFFT0EYCCABKA0SKQoLT0lOR05BSk1GTkwYCSABKA4yFC5GZXZlclRpbWVC",
-            "YXR0bGVSYW5rKs0BChhDbWRGZXZlclRpbWVBY3Rpdml0eVR5cGUSGwoXQkpK",
-            "QklKTU5EQ0FfTkxDREdJUEdGREoQABIcChdCSkpCSUpNTkRDQV9PQU1IRkhO",
-            "Qk5HSxDvNxIcChdCSkpCSUpNTkRDQV9KSE9MSUNHRk5PQhDzNxIcChdCSkpC",
-            "SUpNTkRDQV9LR0VKTUZCRUpHQhD4NxIcChdCSkpCSUpNTkRDQV9ORkRBSUxB",
-            "RUdBQRDxNxIcChdCSkpCSUpNTkRDQV9GTkRPSU9NQ0RCRRDyNyqmAQoTRmV2",
-            "ZXJUaW1lQmF0dGxlUmFuaxIbChdOTk5QT0lKRU5KQ19QSUNMSUdFQUpGThAA",
-            "EhsKF05OTlBPSUpFTkpDX09HUE5PREhFTktOEAESGwoXTk5OUE9JSkVOSkNf",
-            "SlBEQkRMRUVIR0sQAhIbChdOTk5QT0lKRU5KQ19CTUhNTUlNT0FJShADEhsK",
-            "F05OTlBPSUpFTkpDX0RDR0FQTkdDQ0VIEARCFqoCE01hcmNoN3RoSG9uZXku",
-            "UHJvdG9iBnByb3RvMw=="));
+            "YXR0bGVSYW5rKoMDChhDbWRGZXZlclRpbWVBY3Rpdml0eVR5cGUSKAokQ21k",
+            "RmV2ZXJUaW1lQWN0aXZpdHlUeXBlX05MQ0RHSVBHRkRKEAASPgo5Q21kRmV2",
+            "ZXJUaW1lQWN0aXZpdHlUeXBlX0VudGVyRmV2ZXJUaW1lQWN0aXZpdHlTdGFn",
+            "ZVNjUnNwEO83Ej4KOUNtZEZldmVyVGltZUFjdGl2aXR5VHlwZV9BY3Rpdml0",
+            "eUZldmVyVGltZU1vZHVsZUluaXRDc1JlcRDzNxI+CjlDbWRGZXZlclRpbWVB",
+            "Y3Rpdml0eVR5cGVfRW50ZXJGZXZlclRpbWVBY3Rpdml0eVN0YWdlQ3NSZXEQ",
+            "+DcSQAo7Q21kRmV2ZXJUaW1lQWN0aXZpdHlUeXBlX0ZldmVyVGltZUFjdGl2",
+            "aXR5QmF0dGxlRW5kU2NOb3RpZnkQ8TcSOwo2Q21kRmV2ZXJUaW1lQWN0aXZp",
+            "dHlUeXBlX0dldEZldmVyVGltZUFjdGl2aXR5RGF0YVNjUnNwEPI3KqYBChNG",
+            "ZXZlclRpbWVCYXR0bGVSYW5rEhsKF05OTlBPSUpFTkpDX1BJQ0xJR0VBSkZO",
+            "EAASGwoXTk5OUE9JSkVOSkNfT0dQTk9ESEVOS04QARIbChdOTk5QT0lKRU5K",
+            "Q19KUERCRExFRUhHSxACEhsKF05OTlBPSUpFTkpDX0JNSE1NSU1PQUlKEAMS",
+            "GwoXTk5OUE9JSkVOSkNfRENHQVBOR0NDRUgQBEIWqgITTWFyY2g3dGhIb25l",
+            "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFeverTimeActivityType), typeof(global::March7thHoney.Proto.FeverTimeBattleRank), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -62,12 +66,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdFeverTimeActivityType {
-    [pbr::OriginalName("BJJBIJMNDCA_NLCDGIPGFDJ")] BjjbijmndcaNlcdgipgfdj = 0,
-    [pbr::OriginalName("BJJBIJMNDCA_OAMHFHNBNGK")] BjjbijmndcaOamhfhnbngk = 7151,
-    [pbr::OriginalName("BJJBIJMNDCA_JHOLICGFNOB")] BjjbijmndcaJholicgfnob = 7155,
-    [pbr::OriginalName("BJJBIJMNDCA_KGEJMFBEJGB")] BjjbijmndcaKgejmfbejgb = 7160,
-    [pbr::OriginalName("BJJBIJMNDCA_NFDAILAEGAA")] BjjbijmndcaNfdailaegaa = 7153,
-    [pbr::OriginalName("BJJBIJMNDCA_FNDOIOMCDBE")] BjjbijmndcaFndoiomcdbe = 7154,
+    [pbr::OriginalName("CmdFeverTimeActivityType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdFeverTimeActivityType_EnterFeverTimeActivityStageScRsp")] EnterFeverTimeActivityStageScRsp = 7151,
+    [pbr::OriginalName("CmdFeverTimeActivityType_ActivityFeverTimeModuleInitCsReq")] ActivityFeverTimeModuleInitCsReq = 7155,
+    [pbr::OriginalName("CmdFeverTimeActivityType_EnterFeverTimeActivityStageCsReq")] EnterFeverTimeActivityStageCsReq = 7160,
+    [pbr::OriginalName("CmdFeverTimeActivityType_FeverTimeActivityBattleEndScNotify")] FeverTimeActivityBattleEndScNotify = 7153,
+    [pbr::OriginalName("CmdFeverTimeActivityType_GetFeverTimeActivityDataScRsp")] GetFeverTimeActivityDataScRsp = 7154,
   }
 
   public enum FeverTimeBattleRank {

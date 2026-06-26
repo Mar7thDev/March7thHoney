@@ -73,11 +73,13 @@ namespace March7thHoney.Proto {
             "WVBFX0NIQUxMRU5HRV9QRUFLX0JPU1MQBxIlCiFCSUdfREFUQV9SRUNPTU1F",
             "TkRfVFlQRV9DSEFMTEVOR0UQCBInCiNCSUdfREFUQV9SRUNPTU1FTkRfVFlQ",
             "RV9ITUZGQklBTktCRhAJEicKI0JJR19EQVRBX1JFQ09NTUVORF9UWVBFX0lH",
-            "RE5FT0VMRktDEAoqpwEKEENtZFJlY29tbWVuZFR5cGUSGwoXQVBESU5LSEJI",
-            "R0NfTkxDREdJUEdGREoQABIcChdBUERJTktIQkhHQ19ERklFSEJPQUpERxDj",
-            "EhIcChdBUERJTktIQkhHQ19DRUNDTk1GSkVQQhDnEhIcChdBUERJTktIQkhH",
-            "Q19DTU5CSU5CSUxETxDqEhIcChdBUERJTktIQkhHQ19EREhMUElDQk5MThD1",
-            "EkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "RE5FT0VMRktDEAoq9wEKEENtZFJlY29tbWVuZFR5cGUSIAocQ21kUmVjb21t",
+            "ZW5kVHlwZV9OTENER0lQR0ZEShAAEi4KKUNtZFJlY29tbWVuZFR5cGVfR2V0",
+            "QmlnRGF0YVJlY29tbWVuZENzUmVxEOMSEi4KKUNtZFJlY29tbWVuZFR5cGVf",
+            "R2V0QmlnRGF0YVJlY29tbWVuZFNjUnNwEOcSEi4KKUNtZFJlY29tbWVuZFR5",
+            "cGVfQmlnRGF0YUFsbFJlY29tbWVuZENTUmVxEOoSEjEKLENtZFJlY29tbWVu",
+            "ZFR5cGVfR2V0QmlnRGF0YUFsbFJlY29tbWVuZFNjUnNwEPUSQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.BigDataRecommendType), typeof(global::March7thHoney.Proto.CmdRecommendType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -116,11 +118,11 @@ namespace March7thHoney.Proto {
   }
 
   public enum CmdRecommendType {
-    [pbr::OriginalName("APDINKHBHGC_NLCDGIPGFDJ")] ApdinkhbhgcNlcdgipgfdj = 0,
-    [pbr::OriginalName("APDINKHBHGC_DFIEHBOAJDG")] ApdinkhbhgcDfiehboajdg = 2403,
-    [pbr::OriginalName("APDINKHBHGC_CECCNMFJEPB")] ApdinkhbhgcCeccnmfjepb = 2407,
-    [pbr::OriginalName("APDINKHBHGC_CMNBINBILDO")] ApdinkhbhgcCmnbinbildo = 2410,
-    [pbr::OriginalName("APDINKHBHGC_DDHLPICBNLN")] ApdinkhbhgcDdhlpicbnln = 2421,
+    [pbr::OriginalName("CmdRecommendType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdRecommendType_GetBigDataRecommendCsReq")] GetBigDataRecommendCsReq = 2403,
+    [pbr::OriginalName("CmdRecommendType_GetBigDataRecommendScRsp")] GetBigDataRecommendScRsp = 2407,
+    [pbr::OriginalName("CmdRecommendType_BigDataAllRecommendCSReq")] BigDataAllRecommendCsreq = 2410,
+    [pbr::OriginalName("CmdRecommendType_GetBigDataAllRecommendScRsp")] GetBigDataAllRecommendScRsp = 2421,
   }
 
   #endregion

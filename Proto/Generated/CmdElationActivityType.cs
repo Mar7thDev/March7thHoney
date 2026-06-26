@@ -41,12 +41,16 @@ namespace March7thHoney.Proto {
             "bxgBIAEoCzIQLlNjZW5lQmF0dGxlSW5mbxIPCgdyZXRjb2RlGAYgASgNEhAK",
             "CGxldmVsX2lkGAcgASgNImIKG0dldEVsYXRpb25BY3Rpdml0eURhdGFTY1Jz",
             "cBIPCgdyZXRjb2RlGAMgASgNEjIKD2xldmVsX2RhdGFfbGlzdBgGIAMoCzIZ",
-            "LkVsYXRpb25BY3Rpdml0eUxldmVsRGF0YSrLAQoWQ21kRWxhdGlvbkFjdGl2",
-            "aXR5VHlwZRIbChdHRk9DREhGTUJCQ19OTENER0lQR0ZEShAAEhwKF0dGT0NE",
-            "SEZNQkJDX0VMTkdETUtCSElFEJBHEhwKF0dGT0NESEZNQkJDX0dNQ0lNSU1K",
-            "TktDEI9HEhwKF0dGT0NESEZNQkJDX0FFQ0tKRkZFTEJKEJFHEhwKF0dGT0NE",
-            "SEZNQkJDX0ZBR0NESkxIQUFFEJZHEhwKF0dGT0NESEZNQkJDX05MTkdHQUJC",
-            "RUVLEI1HQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "LkVsYXRpb25BY3Rpdml0eUxldmVsRGF0YSroAgoWQ21kRWxhdGlvbkFjdGl2",
+            "aXR5VHlwZRImCiJDbWRFbGF0aW9uQWN0aXZpdHlUeXBlX05MQ0RHSVBHRkRK",
+            "EAASPAo3Q21kRWxhdGlvbkFjdGl2aXR5VHlwZV9FbGF0aW9uQWN0aXZpdHlC",
+            "YXR0bGVFbmRTY05vdGlmeRCQRxI6CjVDbWRFbGF0aW9uQWN0aXZpdHlUeXBl",
+            "X0VudGVyRWxhdGlvbkFjdGl2aXR5U3RhZ2VDc1JlcRCPRxI6CjVDbWRFbGF0",
+            "aW9uQWN0aXZpdHlUeXBlX0VudGVyRWxhdGlvbkFjdGl2aXR5U3RhZ2VTY1Jz",
+            "cBCRRxI3CjJDbWRFbGF0aW9uQWN0aXZpdHlUeXBlX0dldEFjdGl2aXR5RWxh",
+            "dGlvbkRhdGFDc1JlcRCWRxI3CjJDbWRFbGF0aW9uQWN0aXZpdHlUeXBlX0dl",
+            "dEVsYXRpb25BY3Rpdml0eURhdGFTY1JzcBCNR0IWqgITTWFyY2g3dGhIb25l",
+            "eS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdElationActivityType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -63,12 +67,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdElationActivityType {
-    [pbr::OriginalName("GFOCDHFMBBC_NLCDGIPGFDJ")] GfocdhfmbbcNlcdgipgfdj = 0,
-    [pbr::OriginalName("GFOCDHFMBBC_ELNGDMKBHIE")] GfocdhfmbbcElngdmkbhie = 9104,
-    [pbr::OriginalName("GFOCDHFMBBC_GMCIMIMJNKC")] GfocdhfmbbcGmcimimjnkc = 9103,
-    [pbr::OriginalName("GFOCDHFMBBC_AECKJFFELBJ")] GfocdhfmbbcAeckjffelbj = 9105,
-    [pbr::OriginalName("GFOCDHFMBBC_FAGCDJLHAAE")] GfocdhfmbbcFagcdjlhaae = 9110,
-    [pbr::OriginalName("GFOCDHFMBBC_NLNGGABBEEK")] GfocdhfmbbcNlnggabbeek = 9101,
+    [pbr::OriginalName("CmdElationActivityType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdElationActivityType_ElationActivityBattleEndScNotify")] ElationActivityBattleEndScNotify = 9104,
+    [pbr::OriginalName("CmdElationActivityType_EnterElationActivityStageCsReq")] EnterElationActivityStageCsReq = 9103,
+    [pbr::OriginalName("CmdElationActivityType_EnterElationActivityStageScRsp")] EnterElationActivityStageScRsp = 9105,
+    [pbr::OriginalName("CmdElationActivityType_GetActivityElationDataCsReq")] GetActivityElationDataCsReq = 9110,
+    [pbr::OriginalName("CmdElationActivityType_GetElationActivityDataScRsp")] GetElationActivityDataScRsp = 9101,
   }
 
   #endregion

@@ -34,12 +34,14 @@ namespace March7thHoney.Proto {
             "dmVBY3Rpdml0eURhdGESDwoHcmV0Y29kZRgOIAEoDSJ1Ch1UYWtlQWN0aXZl",
             "QWN0aXZpdHlSZXdhcmRTY1JzcBIPCgdyZXRjb2RlGAIgASgNEigKC0FORkZM",
             "TkRDR0xHGAkgASgLMhMuQWN0aXZlQWN0aXZpdHlEYXRhEhkKBnJld2FyZBgO",
-            "IAEoCzIJLkl0ZW1MaXN0KsIBCg1DbWRBY3RpdmVUeXBlEhsKF0pHSkNEQUJC",
-            "TklKX05MQ0RHSVBHRkRKEAASHAoXSkdKQ0RBQkJOSUpfQURIQ0ZFQU9MQkUQ",
-            "1koSHAoXSkdKQ0RBQkJOSUpfQU9JRFBBQ0hJTUcQ4EoSHAoXSkdKQ0RBQkJO",
-            "SUpfSUhOQ05QRklJQkQQ2koSHAoXSkdKQ0RBQkJOSUpfRFBOSUdIS01ER0EQ",
-            "0UoSHAoXSkdKQ0RBQkJOSUpfSEhIRE5JTU5QS04Q0EpCFqoCE01hcmNoN3Ro",
-            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "IAEoCzIJLkl0ZW1MaXN0KqoCCg1DbWRBY3RpdmVUeXBlEh0KGUNtZEFjdGl2",
+            "ZVR5cGVfTkxDREdJUEdGREoQABItCihDbWRBY3RpdmVUeXBlX0dldEFjdGl2",
+            "ZUFjdGl2aXR5RGF0YVNjUnNwENZKEjIKLUNtZEFjdGl2ZVR5cGVfQWN0aXZp",
+            "dHlBY3RpdmVBY3Rpdml0eURhdGFDc1JlcRDgShIwCitDbWRBY3RpdmVUeXBl",
+            "X1Rha2VBY3RpdmVBY3Rpdml0eVJld2FyZFNjUnNwENpKEjAKK0NtZEFjdGl2",
+            "ZVR5cGVfQWN0aXZpdHlBY3RpdmVUYWtlUmV3YXJkQ3NSZXEQ0UoSMwouQ21k",
+            "QWN0aXZlVHlwZV9BY3RpdmVBY3Rpdml0eURhdGFDaGFuZ2VTY05vdGlmeRDQ",
+            "SkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdActiveType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -54,12 +56,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdActiveType {
-    [pbr::OriginalName("JGJCDABBNIJ_NLCDGIPGFDJ")] JgjcdabbnijNlcdgipgfdj = 0,
-    [pbr::OriginalName("JGJCDABBNIJ_ADHCFEAOLBE")] JgjcdabbnijAdhcfeaolbe = 9558,
-    [pbr::OriginalName("JGJCDABBNIJ_AOIDPACHIMG")] JgjcdabbnijAoidpachimg = 9568,
-    [pbr::OriginalName("JGJCDABBNIJ_IHNCNPFIIBD")] JgjcdabbnijIhncnpfiibd = 9562,
-    [pbr::OriginalName("JGJCDABBNIJ_DPNIGHKMDGA")] JgjcdabbnijDpnighkmdga = 9553,
-    [pbr::OriginalName("JGJCDABBNIJ_HHHDNIMNPKN")] JgjcdabbnijHhhdnimnpkn = 9552,
+    [pbr::OriginalName("CmdActiveType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdActiveType_GetActiveActivityDataScRsp")] GetActiveActivityDataScRsp = 9558,
+    [pbr::OriginalName("CmdActiveType_ActivityActiveActivityDataCsReq")] ActivityActiveActivityDataCsReq = 9568,
+    [pbr::OriginalName("CmdActiveType_TakeActiveActivityRewardScRsp")] TakeActiveActivityRewardScRsp = 9562,
+    [pbr::OriginalName("CmdActiveType_ActivityActiveTakeRewardCsReq")] ActivityActiveTakeRewardCsReq = 9553,
+    [pbr::OriginalName("CmdActiveType_ActiveActivityDataChangeScNotify")] ActiveActivityDataChangeScNotify = 9552,
   }
 
   #endregion

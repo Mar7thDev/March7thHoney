@@ -33,14 +33,15 @@ namespace March7thHoney.Proto {
             "cF9pZBgIIAEoDRITCgtCSU1ES05MTUlDRxgLIAEoCCJlChpVbmxvY2tCYWNr",
             "R3JvdW5kTXVzaWNTY1JzcBIhCgtJT0tBSklCSExNUBgDIAMoCzIMLkxISEdD",
             "RExDSkRBEhMKC0JQRkdCRUJQRURQGAYgAygNEg8KB3JldGNvZGUYDCABKA0q",
-            "nQIKDkNtZEp1a2Vib3hUeXBlEhsKF09OQktITUhMQURDX05MQ0RHSVBHRkRK",
-            "EAASHAoXT05CS0hNSExBRENfSkRPSEpCQ09NS04Q8hgSHAoXT05CS0hNSExB",
-            "RENfQUVPR0tCUE9DRUYQ+RgSHAoXT05CS0hNSExBRENfQ0tJTE1ETE5GQVAQ",
-            "yxgSHAoXT05CS0hNSExBRENfT0pETE5QR1BDSk4Q9BgSHAoXT05CS0hNSExB",
-            "RENfREdESlBHTU5EQ0QQ7RgSHAoXT05CS0hNSExBRENfSkhGQ0hGQ01CUEUQ",
-            "tRgSHAoXT05CS0hNSExBRENfUEZGQklOSElQUE4Q6hgSHAoXT05CS0hNSExB",
-            "RENfQ0FKTExFR0RDSk0Q1hhCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnBy",
-            "b3RvMw=="));
+            "3QIKDkNtZEp1a2Vib3hUeXBlEh4KGkNtZEp1a2Vib3hUeXBlX05MQ0RHSVBH",
+            "RkRKEAASHwoaQ21kSnVrZWJveFR5cGVfSkRPSEpCQ09NS04Q8hgSHwoaQ21k",
+            "SnVrZWJveFR5cGVfQUVPR0tCUE9DRUYQ+RgSHwoaQ21kSnVrZWJveFR5cGVf",
+            "Q0tJTE1ETE5GQVAQyxgSHwoaQ21kSnVrZWJveFR5cGVfT0pETE5QR1BDSk4Q",
+            "9BgSLgopQ21kSnVrZWJveFR5cGVfVW5sb2NrQmFja0dyb3VuZE11c2ljU2NS",
+            "c3AQ7RgSHwoaQ21kSnVrZWJveFR5cGVfSkhGQ0hGQ01CUEUQtRgSJwoiQ21k",
+            "SnVrZWJveFR5cGVfR2V0SnVrZWJveERhdGFTY1JzcBDqGBItCihDbWRKdWtl",
+            "Ym94VHlwZV9UcmlhbEJhY2tHcm91bmRNdXNpY1NjUnNwENYYQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdJukeboxType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -56,15 +57,15 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdJukeboxType {
-    [pbr::OriginalName("ONBKHMHLADC_NLCDGIPGFDJ")] OnbkhmhladcNlcdgipgfdj = 0,
-    [pbr::OriginalName("ONBKHMHLADC_JDOHJBCOMKN")] OnbkhmhladcJdohjbcomkn = 3186,
-    [pbr::OriginalName("ONBKHMHLADC_AEOGKBPOCEF")] OnbkhmhladcAeogkbpocef = 3193,
-    [pbr::OriginalName("ONBKHMHLADC_CKILMDLNFAP")] OnbkhmhladcCkilmdlnfap = 3147,
-    [pbr::OriginalName("ONBKHMHLADC_OJDLNPGPCJN")] OnbkhmhladcOjdlnpgpcjn = 3188,
-    [pbr::OriginalName("ONBKHMHLADC_DGDJPGMNDCD")] OnbkhmhladcDgdjpgmndcd = 3181,
-    [pbr::OriginalName("ONBKHMHLADC_JHFCHFCMBPE")] OnbkhmhladcJhfchfcmbpe = 3125,
-    [pbr::OriginalName("ONBKHMHLADC_PFFBINHIPPN")] OnbkhmhladcPffbinhippn = 3178,
-    [pbr::OriginalName("ONBKHMHLADC_CAJLLEGDCJM")] OnbkhmhladcCajllegdcjm = 3158,
+    [pbr::OriginalName("CmdJukeboxType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdJukeboxType_JDOHJBCOMKN")] Jdohjbcomkn = 3186,
+    [pbr::OriginalName("CmdJukeboxType_AEOGKBPOCEF")] Aeogkbpocef = 3193,
+    [pbr::OriginalName("CmdJukeboxType_CKILMDLNFAP")] Ckilmdlnfap = 3147,
+    [pbr::OriginalName("CmdJukeboxType_OJDLNPGPCJN")] Ojdlnpgpcjn = 3188,
+    [pbr::OriginalName("CmdJukeboxType_UnlockBackGroundMusicScRsp")] UnlockBackGroundMusicScRsp = 3181,
+    [pbr::OriginalName("CmdJukeboxType_JHFCHFCMBPE")] Jhfchfcmbpe = 3125,
+    [pbr::OriginalName("CmdJukeboxType_GetJukeboxDataScRsp")] GetJukeboxDataScRsp = 3178,
+    [pbr::OriginalName("CmdJukeboxType_TrialBackGroundMusicScRsp")] TrialBackGroundMusicScRsp = 3158,
   }
 
   #endregion

@@ -25,25 +25,25 @@ message BNJAIHINJIK {
 }
 
 enum CmdHipplenType {
-    MKFFJFHICCC_NLCDGIPGFDJ = 0;
-    MKFFJFHICCC_ELFNDPILMAA = 9024;
-    MKFFJFHICCC_MFMBMPIHJMA = 9007;
-    MKFFJFHICCC_GOLFFCAEBAA = 9048;
-    MKFFJFHICCC_NMKDPKKOIND = 9017;
-    MKFFJFHICCC_NJOOMIGMMPH = 9019;
-    MKFFJFHICCC_PKNBJGOAMAL = 9035;
-    MKFFJFHICCC_MOOAPCIMGKL = 9044;
-    MKFFJFHICCC_JAFFDCKGMAA = 9037;
-    MKFFJFHICCC_EJMPJIMMGFM = 9029;
-    MKFFJFHICCC_IFKDHMBBDEE = 9002;
-    MKFFJFHICCC_GMGCKLMOMLC = 9021;
-    MKFFJFHICCC_NLEEGCLPGKJ = 9023;
-    MKFFJFHICCC_CCEHNGLMKDO = 9015;
-    MKFFJFHICCC_KPABCGKCOCI = 9003;
-    MKFFJFHICCC_LGKONGHLLMO = 9020;
-    MKFFJFHICCC_ABCCLHIPMGG = 9014;
-    MKFFJFHICCC_CIKABIHPHBB = 9010;
-    MKFFJFHICCC_GAJEAKPBNFF = 9009;
+    CmdHipplenType_NLCDGIPGFDJ = 0;
+    CmdHipplenType_ELFNDPILMAA = 9024;
+    CmdHipplenType_SettleHipplenWorkScRsp = 9007;
+    CmdHipplenType_SetHipplenAgendaScRsp = 9048;
+    CmdHipplenType_NMKDPKKOIND = 9017;
+    CmdHipplenType_NJOOMIGMMPH = 9019;
+    CmdHipplenType_TakeHipplenEndingRewardScRsp = 9035;
+    CmdHipplenType_GetHipplenInheritScRsp = 9044;
+    CmdHipplenType_JAFFDCKGMAA = 9037;
+    CmdHipplenType_SetHipplenOutfitScRsp = 9029;
+    CmdHipplenType_HipplenTraitUnlockScNotify = 9002;
+    CmdHipplenType_HipplenCycleResultScNotify = 9021;
+    CmdHipplenType_GetHipplenDataScRsp = 9023;
+    CmdHipplenType_HipplenChangeScNotify = 9015;
+    CmdHipplenType_KPABCGKCOCI = 9003;
+    CmdHipplenType_OpenHipplenCycleScRsp = 9020;
+    CmdHipplenType_ABCCLHIPMGG = 9014;
+    CmdHipplenType_HipplenAgendaResultScNotify = 9010;
+    CmdHipplenType_GAJEAKPBNFF = 9009;
 }
 
 message DMLACLLDCCE {

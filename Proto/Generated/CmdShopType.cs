@@ -41,13 +41,14 @@ namespace March7thHoney.Proto {
             "oAEKBFNob3ASEgoKY2l0eV9sZXZlbBgBIAEoDRIPCgdzaG9wX2lkGAUgASgN",
             "EhAKCGVuZF90aW1lGAcgASgDEhoKCmdvb2RzX2xpc3QYCiADKAsyBi5Hb29k",
             "cxISCgpiZWdpbl90aW1lGA0gASgDEhAKCGNpdHlfZXhwGA4gASgNEh8KF2Np",
-            "dHlfdGFrZW5fbGV2ZWxfcmV3YXJkGA8gASgEKvwBCgtDbWRTaG9wVHlwZRIb",
-            "ChdMSEtDRUFIRE1ERl9OTENER0lQR0ZEShAAEhwKF0xIS0NFQUhETURGX0hK",
-            "RURMUExGSUtMEKoMEhwKF0xIS0NFQUhETURGX0xIREdPR0RCTkZIELIMEhwK",
-            "F0xIS0NFQUhETURGX0xPRkRQS0hDSEVBELkMEhwKF0xIS0NFQUhETURGX09H",
-            "T0dMQ0tLQ0VLEK0MEhwKF0xIS0NFQUhETURGX0NISUdISEtKSEhIEPULEhwK",
-            "F0xIS0NFQUhETURGX0JFQkNJSVBET0VLEJYMEhwKF0xIS0NFQUhETURGX0FE",
-            "TEVBRkFBRktCELQMQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "dHlfdGFrZW5fbGV2ZWxfcmV3YXJkGA8gASgEKpMCCgtDbWRTaG9wVHlwZRIb",
+            "ChdDbWRTaG9wVHlwZV9OTENER0lQR0ZEShAAEiEKHENtZFNob3BUeXBlX0dl",
+            "dFNob3BMaXN0U2NSc3AQqgwSJQogQ21kU2hvcFR5cGVfQ2l0eVNob3BJbmZv",
+            "U2NOb3RpZnkQsgwSHgoZQ21kU2hvcFR5cGVfQnV5R29vZHNDc1JlcRC5DBIc",
+            "ChdDbWRTaG9wVHlwZV9PR09HTENLS0NFSxCtDBIhChxDbWRTaG9wVHlwZV9H",
+            "ZXRTaG9wTGlzdENzUmVxEPULEh4KGUNtZFNob3BUeXBlX0J1eUdvb2RzU2NS",
+            "c3AQlgwSHAoXQ21kU2hvcFR5cGVfQURMRUFGQUFGS0IQtAxCFqoCE01hcmNo",
+            "N3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdShopType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -65,14 +66,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdShopType {
-    [pbr::OriginalName("LHKCEAHDMDF_NLCDGIPGFDJ")] LhkceahdmdfNlcdgipgfdj = 0,
-    [pbr::OriginalName("LHKCEAHDMDF_HJEDLPLFIKL")] LhkceahdmdfHjedlplfikl = 1578,
-    [pbr::OriginalName("LHKCEAHDMDF_LHDGOGDBNFH")] LhkceahdmdfLhdgogdbnfh = 1586,
-    [pbr::OriginalName("LHKCEAHDMDF_LOFDPKHCHEA")] LhkceahdmdfLofdpkhchea = 1593,
-    [pbr::OriginalName("LHKCEAHDMDF_OGOGLCKKCEK")] LhkceahdmdfOgoglckkcek = 1581,
-    [pbr::OriginalName("LHKCEAHDMDF_CHIGHHKJHHH")] LhkceahdmdfChighhkjhhh = 1525,
-    [pbr::OriginalName("LHKCEAHDMDF_BEBCIIPDOEK")] LhkceahdmdfBebciipdoek = 1558,
-    [pbr::OriginalName("LHKCEAHDMDF_ADLEAFAAFKB")] LhkceahdmdfAdleafaafkb = 1588,
+    [pbr::OriginalName("CmdShopType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdShopType_GetShopListScRsp")] GetShopListScRsp = 1578,
+    [pbr::OriginalName("CmdShopType_CityShopInfoScNotify")] CityShopInfoScNotify = 1586,
+    [pbr::OriginalName("CmdShopType_BuyGoodsCsReq")] BuyGoodsCsReq = 1593,
+    [pbr::OriginalName("CmdShopType_OGOGLCKKCEK")] Ogoglckkcek = 1581,
+    [pbr::OriginalName("CmdShopType_GetShopListCsReq")] GetShopListCsReq = 1525,
+    [pbr::OriginalName("CmdShopType_BuyGoodsScRsp")] BuyGoodsScRsp = 1558,
+    [pbr::OriginalName("CmdShopType_ADLEAFAAFKB")] Adleafaafkb = 1588,
   }
 
   #endregion

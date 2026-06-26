@@ -56,41 +56,41 @@ message AetherDivideTakeChallengeRewardScRsp {
 }
 
 enum CmdAetherDivideType {
-    BAIILOJDAIB_NLCDGIPGFDJ = 0;
-    BAIILOJDAIB_LCCIGKJFHFN = 4832;
-    BAIILOJDAIB_JJDPNEEGOJO = 4840;
-    BAIILOJDAIB_GECIIFHMGKN = 4833;
-    BAIILOJDAIB_DCNLKBHBNIC = 4842;
-    BAIILOJDAIB_LIBPIIJKLMJ = 4818;
-    BAIILOJDAIB_MMNFBPMNNAG = 4802;
-    BAIILOJDAIB_KGBHMOJJJPB = 4805;
-    BAIILOJDAIB_JFMANFDPDFJ = 4817;
-    BAIILOJDAIB_CMJLJHKIFIP = 4815;
-    BAIILOJDAIB_BDHPGLPOGAB = 4812;
-    BAIILOJDAIB_JGOKJENMBDJ = 4826;
-    BAIILOJDAIB_DDLDIFLGGKH = 4809;
-    BAIILOJDAIB_PFMOIFPMGJK = 4837;
-    BAIILOJDAIB_OKBDLNIPEBC = 4807;
-    BAIILOJDAIB_NBBDFLADBAO = 4823;
-    BAIILOJDAIB_FLAHCPOAOEJ = 4843;
-    BAIILOJDAIB_CEHAIOPKNML = 4835;
-    BAIILOJDAIB_KENDEEBODAL = 4845;
-    BAIILOJDAIB_AGDGEIPEBEF = 4814;
-    BAIILOJDAIB_IPLGGMIFNJM = 4841;
-    BAIILOJDAIB_KOLICNCCKDA = 4829;
-    BAIILOJDAIB_LGOMJKBPCLA = 4819;
-    BAIILOJDAIB_DHBOKHLMNBP = 4830;
-    BAIILOJDAIB_MEKDBOPLNEC = 4824;
-    BAIILOJDAIB_DJLFIDCDOHO = 4847;
-    BAIILOJDAIB_KDCGEKLDODK = 4820;
-    BAIILOJDAIB_PJEKOMJIGCJ = 4806;
-    BAIILOJDAIB_LPJAFNDNLPL = 4808;
-    BAIILOJDAIB_NPOBJLPBHKL = 4839;
-    BAIILOJDAIB_PDFPGMPOPEG = 4803;
-    BAIILOJDAIB_IJIOECOCLFL = 4848;
-    BAIILOJDAIB_POFOMHCLMOD = 4836;
-    BAIILOJDAIB_LLPCKJEODII = 4844;
-    BAIILOJDAIB_OKIEHAAGMGD = 4813;
+    CmdAetherDivideType_NLCDGIPGFDJ = 0;
+    CmdAetherDivideType_AetherDivideLineupScNotify = 4832;
+    CmdAetherDivideType_AetherDivideSpiritInfoScNotify = 4840;
+    CmdAetherDivideType_EquipAetherDividePassiveSkillCsReq = 4833;
+    CmdAetherDivideType_AetherDivideSkillItemScNotify = 4842;
+    CmdAetherDivideType_AetherDivideSpiritExpUpCsReq = 4818;
+    CmdAetherDivideType_ClearAetherDividePassiveSkillCsReq = 4802;
+    CmdAetherDivideType_AetherDivideRefreshEndlessScNotify = 4805;
+    CmdAetherDivideType_JFMANFDPDFJ = 4817;
+    CmdAetherDivideType_SwitchAetherDivideLineUpSlotScRsp = 4815;
+    CmdAetherDivideType_AetherDivideTakeChallengeRewardScRsp = 4812;
+    CmdAetherDivideType_GetAetherDivideChallengeInfoCsReq = 4826;
+    CmdAetherDivideType_DDLDIFLGGKH = 4809;
+    CmdAetherDivideType_LeaveAetherDivideSceneCsReq = 4837;
+    CmdAetherDivideType_StartAetherDivideChallengeBattleScRsp = 4807;
+    CmdAetherDivideType_NBBDFLADBAO = 4823;
+    CmdAetherDivideType_AetherDivideSpiritExpUpScRsp = 4843;
+    CmdAetherDivideType_CEHAIOPKNML = 4835;
+    CmdAetherDivideType_GetAetherDivideChallengeInfoScRsp = 4845;
+    CmdAetherDivideType_TakeOffSkillCoreScRsp = 4814;
+    CmdAetherDivideType_AetherDivideTakeChallengeRewardCsReq = 4841;
+    CmdAetherDivideType_SetAetherDivideLineUpScRsp = 4829;
+    CmdAetherDivideType_LGOMJKBPCLA = 4819;
+    CmdAetherDivideType_AetherDivideRefreshEndlessScRsp = 4830;
+    CmdAetherDivideType_GetAetherDivideInfoCsReq = 4824;
+    CmdAetherDivideType_AetherDivideTainerInfoScNotify = 4847;
+    CmdAetherDivideType_GetAetherDivideInfoScRsp = 4820;
+    CmdAetherDivideType_AetherDivideEquipSkillCoreScRsp = 4806;
+    CmdAetherDivideType_StartAetherDivideStageBattleScRsp = 4808;
+    CmdAetherDivideType_AetherDivideFinishChallengeScNotify = 4839;
+    CmdAetherDivideType_PDFPGMPOPEG = 4803;
+    CmdAetherDivideType_StartAetherDivideSceneBattleScRsp = 4848;
+    CmdAetherDivideType_POFOMHCLMOD = 4836;
+    CmdAetherDivideType_LeaveAetherDivideSceneScRsp = 4844;
+    CmdAetherDivideType_OKIEHAAGMGD = 4813;
 }
 
 message DMAMEFJBCLE {

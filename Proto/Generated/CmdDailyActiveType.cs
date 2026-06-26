@@ -38,14 +38,16 @@ namespace March7thHoney.Proto {
             "YXJkU2NSc3ASDwoHcmV0Y29kZRgCIAEoDRIZCgZyZXdhcmQYCiABKAsyCS5J",
             "dGVtTGlzdBIeChZ0YWtlX3Jld2FyZF9sZXZlbF9saXN0GAwgAygNIk4KEVRh",
             "a2VBcFJld2FyZFNjUnNwEg0KBWxldmVsGAEgASgNEg8KB3JldGNvZGUYBiAB",
-            "KA0SGQoGcmV3YXJkGA0gASgLMgkuSXRlbUxpc3QqgwIKEkNtZERhaWx5QWN0",
-            "aXZlVHlwZRIbChdISUFJQktERkFBTV9OTENER0lQR0ZEShAAEhwKF0hJQUlC",
-            "S0RGQUFNX0hMSU9ITk9BRkxBELwaEhwKF0hJQUlCS0RGQUFNX0xPQ01BS09E",
-            "SExIELUaEhwKF0hJQUlCS0RGQUFNX0xHTVBBRUVCTklCELIaEhwKF0hJQUlC",
-            "S0RGQUFNX0VCUEVITFBGUEFQEJ4aEhwKF0hJQUlCS0RGQUFNX05PSUFORkVF",
-            "RUZJEP0ZEhwKF0hJQUlCS0RGQUFNX0VHSk9OSEFPQUdBELoaEhwKF0hJQUlC",
-            "S0RGQUFNX0NERUZESUJETklGEMEaQhaqAhNNYXJjaDd0aEhvbmV5LlByb3Rv",
-            "YgZwcm90bzM="));
+            "KA0SGQoGcmV3YXJkGA0gASgLMgkuSXRlbUxpc3Qq7AIKEkNtZERhaWx5QWN0",
+            "aXZlVHlwZRIiCh5DbWREYWlseUFjdGl2ZVR5cGVfTkxDREdJUEdGREoQABIt",
+            "CihDbWREYWlseUFjdGl2ZVR5cGVfRGFpbHlBY3RpdmVJbmZvTm90aWZ5ELwa",
+            "EiMKHkNtZERhaWx5QWN0aXZlVHlwZV9MT0NNQUtPREhMSBC1GhIpCiRDbWRE",
+            "YWlseUFjdGl2ZVR5cGVfVGFrZUFwUmV3YXJkU2NSc3AQshoSLwoqQ21kRGFp",
+            "bHlBY3RpdmVUeXBlX0dldERhaWx5QWN0aXZlSW5mb1NjUnNwEJ4aEiMKHkNt",
+            "ZERhaWx5QWN0aXZlVHlwZV9OT0lBTkZFRUVGSRD9GRIsCidDbWREYWlseUFj",
+            "dGl2ZVR5cGVfVGFrZUFsbEFwUmV3YXJkU2NSc3AQuhoSLwoqQ21kRGFpbHlB",
+            "Y3RpdmVUeXBlX0dldERhaWx5QWN0aXZlSW5mb0NzUmVxEMEaQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdDailyActiveType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -62,14 +64,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdDailyActiveType {
-    [pbr::OriginalName("HIAIBKDFAAM_NLCDGIPGFDJ")] HiaibkdfaamNlcdgipgfdj = 0,
-    [pbr::OriginalName("HIAIBKDFAAM_HLIOHNOAFLA")] HiaibkdfaamHliohnoafla = 3388,
-    [pbr::OriginalName("HIAIBKDFAAM_LOCMAKODHLH")] HiaibkdfaamLocmakodhlh = 3381,
-    [pbr::OriginalName("HIAIBKDFAAM_LGMPAEEBNIB")] HiaibkdfaamLgmpaeebnib = 3378,
-    [pbr::OriginalName("HIAIBKDFAAM_EBPEHLPFPAP")] HiaibkdfaamEbpehlpfpap = 3358,
-    [pbr::OriginalName("HIAIBKDFAAM_NOIANFEEEFI")] HiaibkdfaamNoianfeeefi = 3325,
-    [pbr::OriginalName("HIAIBKDFAAM_EGJONHAOAGA")] HiaibkdfaamEgjonhaoaga = 3386,
-    [pbr::OriginalName("HIAIBKDFAAM_CDEFDIBDNIF")] HiaibkdfaamCdefdibdnif = 3393,
+    [pbr::OriginalName("CmdDailyActiveType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdDailyActiveType_DailyActiveInfoNotify")] DailyActiveInfoNotify = 3388,
+    [pbr::OriginalName("CmdDailyActiveType_LOCMAKODHLH")] Locmakodhlh = 3381,
+    [pbr::OriginalName("CmdDailyActiveType_TakeApRewardScRsp")] TakeApRewardScRsp = 3378,
+    [pbr::OriginalName("CmdDailyActiveType_GetDailyActiveInfoScRsp")] GetDailyActiveInfoScRsp = 3358,
+    [pbr::OriginalName("CmdDailyActiveType_NOIANFEEEFI")] Noianfeeefi = 3325,
+    [pbr::OriginalName("CmdDailyActiveType_TakeAllApRewardScRsp")] TakeAllApRewardScRsp = 3386,
+    [pbr::OriginalName("CmdDailyActiveType_GetDailyActiveInfoCsReq")] GetDailyActiveInfoCsReq = 3393,
   }
 
   #endregion

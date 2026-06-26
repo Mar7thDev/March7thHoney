@@ -28,11 +28,13 @@ namespace March7thHoney.Proto {
             "b25FeHBpcmVDc1JlcRIXCg9tYWluX21pc3Npb25faWQYDyABKA0iMAodQWNj",
             "ZXB0ZWRQYW1NaXNzaW9uRXhwaXJlU2NSc3ASDwoHcmV0Y29kZRgEIAEoDSJM",
             "ChxTeW5jQWNjZXB0ZWRQYW1NaXNzaW9uTm90aWZ5EhcKD21haW5fbWlzc2lv",
-            "bl9pZBgBIAEoDRITCgtleHBpcmVfdGltZRgNIAEoBCqKAQoRQ21kUGFtTWlz",
-            "c2lvblR5cGUSGwoXS01HTklHR0hNQk1fTkxDREdJUEdGREoQABIcChdLTUdO",
-            "SUdHSE1CTV9NQ0tFTEZBTlBQSRD9HxIcChdLTUdOSUdHSE1CTV9ITkhDT01E",
-            "SkdKSRC5HxIcChdLTUdOSUdHSE1CTV9HT0ZNREVESEVOQRDuH0IWqgITTWFy",
-            "Y2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "bl9pZBgBIAEoDRITCgtleHBpcmVfdGltZRgNIAEoBCrXAQoRQ21kUGFtTWlz",
+            "c2lvblR5cGUSIQodQ21kUGFtTWlzc2lvblR5cGVfTkxDREdJUEdGREoQABIz",
+            "Ci5DbWRQYW1NaXNzaW9uVHlwZV9TeW5jQWNjZXB0ZWRQYW1NaXNzaW9uTm90",
+            "aWZ5EP0fEjQKL0NtZFBhbU1pc3Npb25UeXBlX0FjY2VwdGVkUGFtTWlzc2lv",
+            "bkV4cGlyZUNzUmVxELkfEjQKL0NtZFBhbU1pc3Npb25UeXBlX0FjY2VwdGVk",
+            "UGFtTWlzc2lvbkV4cGlyZVNjUnNwEO4fQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPamMissionType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -46,10 +48,10 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPamMissionType {
-    [pbr::OriginalName("KMGNIGGHMBM_NLCDGIPGFDJ")] KmgnigghmbmNlcdgipgfdj = 0,
-    [pbr::OriginalName("KMGNIGGHMBM_MCKELFANPPI")] KmgnigghmbmMckelfanppi = 4093,
-    [pbr::OriginalName("KMGNIGGHMBM_HNHCOMDJGJI")] KmgnigghmbmHnhcomdjgji = 4025,
-    [pbr::OriginalName("KMGNIGGHMBM_GOFMDEDHENA")] KmgnigghmbmGofmdedhena = 4078,
+    [pbr::OriginalName("CmdPamMissionType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdPamMissionType_SyncAcceptedPamMissionNotify")] SyncAcceptedPamMissionNotify = 4093,
+    [pbr::OriginalName("CmdPamMissionType_AcceptedPamMissionExpireCsReq")] AcceptedPamMissionExpireCsReq = 4025,
+    [pbr::OriginalName("CmdPamMissionType_AcceptedPamMissionExpireScRsp")] AcceptedPamMissionExpireScRsp = 4078,
   }
 
   #endregion

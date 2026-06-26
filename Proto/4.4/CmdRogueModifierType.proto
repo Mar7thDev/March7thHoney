@@ -5,13 +5,13 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdRogueModifierType {
-    JKJGPOOLLKF_NLCDGIPGFDJ = 0;
-    JKJGPOOLLKF_LHGHFLGEBBN = 5388;
-    JKJGPOOLLKF_EPPMKBDPDBM = 5358;
-    JKJGPOOLLKF_ECBIHKFNGGM = 5313;
-    JKJGPOOLLKF_GALJIBIENIB = 5393;
-    JKJGPOOLLKF_KKEHIBPDIEF = 5326;
-    JKJGPOOLLKF_PLELMMJJOLM = 5347;
+    CmdRogueModifierType_NLCDGIPGFDJ = 0;
+    CmdRogueModifierType_RogueModifierSelectCellScRsp = 5388;
+    CmdRogueModifierType_EPPMKBDPDBM = 5358;
+    CmdRogueModifierType_RogueModifierStageStartNotify = 5313;
+    CmdRogueModifierType_RogueModifierAddNotify = 5393;
+    CmdRogueModifierType_RogueModifierDelNotify = 5326;
+    CmdRogueModifierType_RogueModifierUpdateNotify = 5347;
 }
 
 message RogueModifierAddNotify {

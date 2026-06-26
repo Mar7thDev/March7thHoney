@@ -16,20 +16,20 @@ message BEBNHPCBMPF {
 }
 
 enum CmdRelicBoxType {
-    MHMAOPPIBCL_NLCDGIPGFDJ = 0;
-    MHMAOPPIBCL_ANLKBPKEAGG = 8952;
-    MHMAOPPIBCL_BKIOFNFLBLF = 8951;
-    MHMAOPPIBCL_ALMNLDLOJEK = 8968;
-    MHMAOPPIBCL_JCCLMLILHFH = 8964;
-    MHMAOPPIBCL_ALBNDJCFHCJ = 8958;
-    MHMAOPPIBCL_OJCIKJJMKPE = 8965;
-    MHMAOPPIBCL_DLMGEEGPAKK = 8967;
-    MHMAOPPIBCL_NJDBMIBJMFC = 8962;
-    MHMAOPPIBCL_IDDGLECPMDA = 8957;
-    MHMAOPPIBCL_NINAJABOKCG = 8953;
-    MHMAOPPIBCL_BDLILDCEOPJ = 8959;
-    MHMAOPPIBCL_MPHMEBAEJOP = 8961;
-    MHMAOPPIBCL_FGCLOPHMIAF = 8960;
+    CmdRelicBoxType_NLCDGIPGFDJ = 0;
+    CmdRelicBoxType_ANLKBPKEAGG = 8952;
+    CmdRelicBoxType_ConfirmRelicBoxCsReq = 8951;
+    CmdRelicBoxType_GetRelicBoxDataCsReq = 8968;
+    CmdRelicBoxType_RelicBoxRegularScNotify = 8964;
+    CmdRelicBoxType_GetRelicBoxDataScRsp = 8958;
+    CmdRelicBoxType_OpenRelicBoxScRsp = 8965;
+    CmdRelicBoxType_SetRelicBoxTargetScRsp = 8967;
+    CmdRelicBoxType_SetRelicBoxCustomScRsp = 8962;
+    CmdRelicBoxType_ReportRelicBoxActionScRsp = 8957;
+    CmdRelicBoxType_NINAJABOKCG = 8953;
+    CmdRelicBoxType_ConfirmRelicBoxScRsp = 8959;
+    CmdRelicBoxType_OpenRelicBoxCsReq = 8961;
+    CmdRelicBoxType_FGCLOPHMIAF = 8960;
 }
 
 message ConfirmRelicBoxCsReq {

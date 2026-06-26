@@ -26,10 +26,10 @@ namespace March7thHoney.Proto {
           string.Concat(
             "ChFDbWRQbG90VHlwZS5wcm90byIiCgtIUE9GTUdPT0hBThITCgtDQU1DQkpQ",
             "T01MQxgPIAEoDSIzCgtPTk5JRFBLTU9QQhIPCgdyZXRjb2RlGAMgASgNEhMK",
-            "C0NBTUNCSlBPTUxDGAwgASgNKmYKC0NtZFBsb3RUeXBlEhsKF01FTk1LSk9J",
-            "SkJFX05MQ0RHSVBHRkRKEAASHAoXTUVOTUtKT0lKQkVfT0NFSUdFTkJISEcQ",
-            "mgkSHAoXTUVOTUtKT0lKQkVfSExCREpDQ0JOSlAQ5QhCFqoCE01hcmNoN3Ro",
-            "SG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "C0NBTUNCSlBPTUxDGAwgASgNKmoKC0NtZFBsb3RUeXBlEhsKF0NtZFBsb3RU",
+            "eXBlX05MQ0RHSVBHRkRKEAASHAoXQ21kUGxvdFR5cGVfT0NFSUdFTkJISEcQ",
+            "mgkSIAobQ21kUGxvdFR5cGVfRmluaXNoUGxvdENzUmVxEOUIQhaqAhNNYXJj",
+            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPlotType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -42,9 +42,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPlotType {
-    [pbr::OriginalName("MENMKJOIJBE_NLCDGIPGFDJ")] MenmkjoijbeNlcdgipgfdj = 0,
-    [pbr::OriginalName("MENMKJOIJBE_OCEIGENBHHG")] MenmkjoijbeOceigenbhhg = 1178,
-    [pbr::OriginalName("MENMKJOIJBE_HLBDJCCBNJP")] MenmkjoijbeHlbdjccbnjp = 1125,
+    [pbr::OriginalName("CmdPlotType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdPlotType_OCEIGENBHHG")] Oceigenbhhg = 1178,
+    [pbr::OriginalName("CmdPlotType_FinishPlotCsReq")] FinishPlotCsReq = 1125,
   }
 
   #endregion

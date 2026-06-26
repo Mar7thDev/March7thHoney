@@ -5,22 +5,22 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdPlayerBoardType {
-    BBNLGADEMFF_NLCDGIPGFDJ = 0;
-    BBNLGADEMFF_IBHDNDNHKNA = 2813;
-    BBNLGADEMFF_GCDFLAPFNIH = 2886;
-    BBNLGADEMFF_FKEMPFFFGJN = 2893;
-    BBNLGADEMFF_OJKCPGJLCDI = 2826;
-    BBNLGADEMFF_DBMDNBBECIK = 2838;
-    BBNLGADEMFF_KDHFKPICLGC = 2839;
-    BBNLGADEMFF_PLBEIOFLLOG = 2888;
-    BBNLGADEMFF_BOEAOJFIPOO = 2833;
-    BBNLGADEMFF_LIGDBJLBELO = 2858;
-    BBNLGADEMFF_KNMANNGOJMB = 2871;
-    BBNLGADEMFF_KGEBCMGBFHA = 2881;
-    BBNLGADEMFF_PEAMMOOHPCH = 2825;
-    BBNLGADEMFF_EHBCEBFNELG = 2840;
-    BBNLGADEMFF_MEHNAENLPAJ = 2878;
-    BBNLGADEMFF_EIJOEKHOHIL = 2847;
+    CmdPlayerBoardType_NLCDGIPGFDJ = 0;
+    CmdPlayerBoardType_IBHDNDNHKNA = 2813;
+    CmdPlayerBoardType_GCDFLAPFNIH = 2886;
+    CmdPlayerBoardType_FKEMPFFFGJN = 2893;
+    CmdPlayerBoardType_OJKCPGJLCDI = 2826;
+    CmdPlayerBoardType_DBMDNBBECIK = 2838;
+    CmdPlayerBoardType_SetPersonalCardScRsp = 2839;
+    CmdPlayerBoardType_PLBEIOFLLOG = 2888;
+    CmdPlayerBoardType_SetAssistAvatarScRsp = 2833;
+    CmdPlayerBoardType_SetHeadIconScRsp = 2858;
+    CmdPlayerBoardType_SetSignatureScRsp = 2871;
+    CmdPlayerBoardType_SetDisplayAvatarScRsp = 2881;
+    CmdPlayerBoardType_GetPlayerBoardDataCsReq = 2825;
+    CmdPlayerBoardType_EHBCEBFNELG = 2840;
+    CmdPlayerBoardType_GetPlayerBoardDataScRsp = 2878;
+    CmdPlayerBoardType_SetIsDisplayAvatarInfoScRsp = 2847;
 }
 
 message DisplayAvatarData {

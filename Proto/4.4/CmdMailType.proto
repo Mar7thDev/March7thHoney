@@ -19,16 +19,16 @@ message ClientMail {
 }
 
 enum CmdMailType {
-    CFGEBHKAEHB_NLCDGIPGFDJ = 0;
-    CFGEBHKAEHB_PGAFBFPOJGF = 878;
-    CFGEBHKAEHB_EPNKGIBMBOM = 888;
-    CFGEBHKAEHB_FCLOLINPLNI = 881;
-    CFGEBHKAEHB_NKLEGIGBOFE = 847;
-    CFGEBHKAEHB_PCCBLDPKNKH = 858;
-    CFGEBHKAEHB_BKPBLKEGOEL = 825;
-    CFGEBHKAEHB_KPMKIALICNC = 893;
-    CFGEBHKAEHB_GLMALNLNPPI = 826;
-    CFGEBHKAEHB_PELMIHDCFIL = 886;
+    CmdMailType_NLCDGIPGFDJ = 0;
+    CmdMailType_GetMailScRsp = 878;
+    CmdMailType_DelMailCsReq = 888;
+    CmdMailType_DelMailScRsp = 881;
+    CmdMailType_TakeMailAttachmentScRsp = 847;
+    CmdMailType_PCCBLDPKNKH = 858;
+    CmdMailType_GetMailCsReq = 825;
+    CmdMailType_MarkReadMailCsReq = 893;
+    CmdMailType_NewMailScNotify = 826;
+    CmdMailType_PELMIHDCFIL = 886;
 }
 
 message DelMailCsReq {

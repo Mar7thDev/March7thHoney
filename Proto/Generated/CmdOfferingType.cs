@@ -37,15 +37,17 @@ namespace March7thHoney.Proto {
             "DRIkCg1vZmZlcmluZ19pbmZvGA0gASgLMg0uT2ZmZXJpbmdJbmZvImsKF1Rh",
             "a2VPZmZlcmluZ1Jld2FyZFNjUnNwEhkKBnJld2FyZBgEIAEoCzIJLkl0ZW1M",
             "aXN0Eg8KB3JldGNvZGUYDCABKA0SJAoNb2ZmZXJpbmdfaW5mbxgNIAEoCzIN",
-            "Lk9mZmVyaW5nSW5mbyqAAgoPQ21kT2ZmZXJpbmdUeXBlEhsKF0xJUE9OUEJH",
-            "T1BOX05MQ0RHSVBHRkRKEAASHAoXTElQT05QQkdPUE5fRkxQSUhKTE1DRE0Q",
-            "lDYSHAoXTElQT05QQkdPUE5fSEdLRUxJRktGRFAQkDYSHAoXTElQT05QQkdP",
-            "UE5fRktMS0tEQ0xHRU4QjTYSHAoXTElQT05QQkdPUE5fQU5FRUtDR09BTUMQ",
-            "izYSHAoXTElQT05QQkdPUE5fQUJFSERISkNESUwQmTYSHAoXTElQT05QQkdP",
-            "UE5fSE1OREtGS0NHTkwQmjYSHAoXTElQT05QQkdPUE5fRkVGREFDSkNGSUwQ",
-            "ijYqWgoNT2ZmZXJpbmdTdGF0ZRIXChNPRkZFUklOR19TVEFURV9OT05FEAAS",
-            "FwoTT0ZGRVJJTkdfU1RBVEVfTE9DSxABEhcKE09GRkVSSU5HX1NUQVRFX09Q",
-            "RU4QAkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "Lk9mZmVyaW5nSW5mbyrTAgoPQ21kT2ZmZXJpbmdUeXBlEh8KG0NtZE9mZmVy",
+            "aW5nVHlwZV9OTENER0lQR0ZEShAAEiwKJ0NtZE9mZmVyaW5nVHlwZV9TdWJt",
+            "aXRPZmZlcmluZ0l0ZW1TY1JzcBCUNhIpCiRDbWRPZmZlcmluZ1R5cGVfR2V0",
+            "T2ZmZXJpbmdJbmZvU2NSc3AQkDYSKQokQ21kT2ZmZXJpbmdUeXBlX09mZmVy",
+            "aW5nSW5mb1NjTm90aWZ5EI02EiAKG0NtZE9mZmVyaW5nVHlwZV9BTkVFS0NH",
+            "T0FNQxCLNhIsCidDbWRPZmZlcmluZ1R5cGVfVGFrZU9mZmVyaW5nUmV3YXJk",
+            "U2NSc3AQmTYSKQokQ21kT2ZmZXJpbmdUeXBlX0dldE9mZmVyaW5nSW5mb0Nz",
+            "UmVxEJo2EiAKG0NtZE9mZmVyaW5nVHlwZV9GRUZEQUNKQ0ZJTBCKNipaCg1P",
+            "ZmZlcmluZ1N0YXRlEhcKE09GRkVSSU5HX1NUQVRFX05PTkUQABIXChNPRkZF",
+            "UklOR19TVEFURV9MT0NLEAESFwoTT0ZGRVJJTkdfU1RBVEVfT1BFThACQhaq",
+            "AhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdOfferingType), typeof(global::March7thHoney.Proto.OfferingState), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -62,14 +64,14 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdOfferingType {
-    [pbr::OriginalName("LIPONPBGOPN_NLCDGIPGFDJ")] LiponpbgopnNlcdgipgfdj = 0,
-    [pbr::OriginalName("LIPONPBGOPN_FLPIHJLMCDM")] LiponpbgopnFlpihjlmcdm = 6932,
-    [pbr::OriginalName("LIPONPBGOPN_HGKELIFKFDP")] LiponpbgopnHgkelifkfdp = 6928,
-    [pbr::OriginalName("LIPONPBGOPN_FKLKKDCLGEN")] LiponpbgopnFklkkdclgen = 6925,
-    [pbr::OriginalName("LIPONPBGOPN_ANEEKCGOAMC")] LiponpbgopnAneekcgoamc = 6923,
-    [pbr::OriginalName("LIPONPBGOPN_ABEHDHJCDIL")] LiponpbgopnAbehdhjcdil = 6937,
-    [pbr::OriginalName("LIPONPBGOPN_HMNDKFKCGNL")] LiponpbgopnHmndkfkcgnl = 6938,
-    [pbr::OriginalName("LIPONPBGOPN_FEFDACJCFIL")] LiponpbgopnFefdacjcfil = 6922,
+    [pbr::OriginalName("CmdOfferingType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdOfferingType_SubmitOfferingItemScRsp")] SubmitOfferingItemScRsp = 6932,
+    [pbr::OriginalName("CmdOfferingType_GetOfferingInfoScRsp")] GetOfferingInfoScRsp = 6928,
+    [pbr::OriginalName("CmdOfferingType_OfferingInfoScNotify")] OfferingInfoScNotify = 6925,
+    [pbr::OriginalName("CmdOfferingType_ANEEKCGOAMC")] Aneekcgoamc = 6923,
+    [pbr::OriginalName("CmdOfferingType_TakeOfferingRewardScRsp")] TakeOfferingRewardScRsp = 6937,
+    [pbr::OriginalName("CmdOfferingType_GetOfferingInfoCsReq")] GetOfferingInfoCsReq = 6938,
+    [pbr::OriginalName("CmdOfferingType_FEFDACJCFIL")] Fefdacjcfil = 6922,
   }
 
   public enum OfferingState {

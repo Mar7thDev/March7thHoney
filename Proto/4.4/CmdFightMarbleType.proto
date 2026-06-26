@@ -3,5 +3,5 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 enum CmdFightMarbleType {
-    CMCLMBIODNG_NLCDGIPGFDJ = 0;
+    CmdFightMarbleType_NLCDGIPGFDJ = 0;
 }

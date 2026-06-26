@@ -12,13 +12,13 @@ message CancelMatchScRsp {
 }
 
 enum CmdMatchType {
-    OJCIGGAFGPN_NLCDGIPGFDJ = 0;
-    OJCIGGAFGPN_OBHHEJONGKJ = 7323;
-    OJCIGGAFGPN_PFNIJFANCIE = 7303;
-    OJCIGGAFGPN_KMDMCLGPIBC = 7337;
-    OJCIGGAFGPN_AMBKBNMKIGP = 7348;
-    OJCIGGAFGPN_JFMFEFGAIBK = 7309;
-    OJCIGGAFGPN_HNAJMPLBNLF = 7344;
+    CmdMatchType_NLCDGIPGFDJ = 0;
+    CmdMatchType_StartMatchScRsp = 7323;
+    CmdMatchType_GetCrossInfoScRsp = 7303;
+    CmdMatchType_CancelMatchCsReq = 7337;
+    CmdMatchType_GetCrossInfoCsReq = 7348;
+    CmdMatchType_JFMFEFGAIBK = 7309;
+    CmdMatchType_CancelMatchScRsp = 7344;
 }
 
 message GetCrossInfoCsReq {

@@ -5,21 +5,21 @@ option csharp_namespace = "March7thHoney.Proto";
 import "Common.proto";
 
 enum CmdSwitchHandType {
-    BKCCNEKJADF_NLCDGIPGFDJ = 0;
-    BKCCNEKJADF_KPCOBCBAGGF = 8110;
-    BKCCNEKJADF_FNIOEFBGMEO = 8120;
-    BKCCNEKJADF_GMNINGGAIKG = 8108;
-    BKCCNEKJADF_KNPANHIGPBL = 8117;
-    BKCCNEKJADF_GFIKCCKEHJF = 8103;
-    BKCCNEKJADF_KAMHALFJDFH = 8118;
-    BKCCNEKJADF_EOAFOIBICOH = 8104;
-    BKCCNEKJADF_ILOADBMOGJL = 8109;
-    BKCCNEKJADF_EINMDLDJKNP = 8115;
-    BKCCNEKJADF_EJDADPCKAGG = 8112;
-    BKCCNEKJADF_NMFDIDGOONF = 8105;
-    BKCCNEKJADF_IENPIABKCNF = 8102;
-    BKCCNEKJADF_AIPGFFAAMGK = 8101;
-    BKCCNEKJADF_BNGFJCFOFBH = 8111;
+    CmdSwitchHandType_NLCDGIPGFDJ = 0;
+    CmdSwitchHandType_GetSwitchHandResetGameScRsp = 8110;
+    CmdSwitchHandType_SwitchHandResetGameCsReq = 8120;
+    CmdSwitchHandType_GetSwitchHandDataScRsp = 8108;
+    CmdSwitchHandType_SwitchHandFinishScRsp = 8117;
+    CmdSwitchHandType_GFIKCCKEHJF = 8103;
+    CmdSwitchHandType_SwitchHandDataCsReq = 8118;
+    CmdSwitchHandType_GetSwitchHandUpdateScRsp = 8104;
+    CmdSwitchHandType_GetSwitchHandResetHandPosScRsp = 8109;
+    CmdSwitchHandType_EINMDLDJKNP = 8115;
+    CmdSwitchHandType_SwitchHandStartScRsp = 8112;
+    CmdSwitchHandType_NMFDIDGOONF = 8105;
+    CmdSwitchHandType_SwitchHandFinishCsReq = 8102;
+    CmdSwitchHandType_SwitchHandResetTransformCsReq = 8101;
+    CmdSwitchHandType_BNGFJCFOFBH = 8111;
 }
 
 enum DDNJKAMIHHI {

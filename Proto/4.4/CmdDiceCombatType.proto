@@ -32,26 +32,26 @@ message CMKMOIGANHN {
 }
 
 enum CmdDiceCombatType {
-    PMDFMAIHPGL_NLCDGIPGFDJ = 0;
-    PMDFMAIHPGL_MGAJDOGBDJI = 9293;
-    PMDFMAIHPGL_IBMBBIKGBMA = 9284;
-    PMDFMAIHPGL_FKPMIOIMJIN = 9281;
-    PMDFMAIHPGL_AGEOJALCOOC = 9279;
-    PMDFMAIHPGL_FNPAAMBPLKH = 9265;
-    PMDFMAIHPGL_ODEGHHDHEOJ = 9270;
-    PMDFMAIHPGL_JBBGAEIBIML = 9274;
-    PMDFMAIHPGL_HCJAMGHDCEE = 9296;
-    PMDFMAIHPGL_BDLAEOIMDMF = 9267;
-    PMDFMAIHPGL_CKHPINAGMPA = 9297;
-    PMDFMAIHPGL_OBHIIPGCBOC = 9273;
-    PMDFMAIHPGL_NPANIDLBFNM = 9295;
-    PMDFMAIHPGL_LEEAGKMABHA = 9272;
-    PMDFMAIHPGL_DACGJALMPOI = 9269;
-    PMDFMAIHPGL_LDDOHEMDKDH = 9298;
-    PMDFMAIHPGL_JNPCPMEDCML = 9276;
-    PMDFMAIHPGL_FFGHFAIAKJC = 9278;
-    PMDFMAIHPGL_PDHNBGCCHGE = 9290;
-    PMDFMAIHPGL_MOFOKOBAPGO = 9283;
+    CmdDiceCombatType_NLCDGIPGFDJ = 0;
+    CmdDiceCombatType_UpgradeAvatarRsp = 9293;
+    CmdDiceCombatType_DiceCombatBuyShopGoodCsReq = 9284;
+    CmdDiceCombatType_GetDiceCombatShopDataCsReq = 9281;
+    CmdDiceCombatType_AGEOJALCOOC = 9279;
+    CmdDiceCombatType_GetShopDataScRsp = 9265;
+    CmdDiceCombatType_GetSystemDataRsp = 9270;
+    CmdDiceCombatType_DiceCombatMainPageRollDiceCsReq = 9274;
+    CmdDiceCombatType_GetDiceCombatSystemDataCsReq = 9296;
+    CmdDiceCombatType_DiceCombatUpgradeAvatarCsReq = 9267;
+    CmdDiceCombatType_AddItemRsp = 9297;
+    CmdDiceCombatType_DiceCombatFinishPveStageCsReq = 9273;
+    CmdDiceCombatType_NPANIDLBFNM = 9295;
+    CmdDiceCombatType_BuyShopGoodScRsp = 9272;
+    CmdDiceCombatType_FinishPveStageScRsp = 9269;
+    CmdDiceCombatType_V2FinishPveStageScRsp = 9298;
+    CmdDiceCombatType_JNPCPMEDCML = 9276;
+    CmdDiceCombatType_V2FinishPveStageCsReq = 9278;
+    CmdDiceCombatType_ModifyAvatarDiceRsp = 9290;
+    CmdDiceCombatType_DiceCombatModifyAvatarDiceCsReq = 9283;
 }
 
 message DDKNIMHHNPA {

@@ -32,12 +32,14 @@ namespace March7thHoney.Proto {
             "DRIKCgJpZBgLIAEoDSJ3CiNTeW5jQmF0dGxlQ29sbGVnZURhdGFDaGFuZ2VT",
             "Y05vdGlmeRIgChhmaW5pc2hlZF9jb2xsZWdlX2lkX2xpc3QYAiADKA0SEwoL",
             "TU5NSkNOT0xJSUkYAyABKA0SGQoGcmV3YXJkGAwgASgLMgkuSXRlbUxpc3Qq",
-            "yQEKFENtZEJhdHRsZUNvbGxlZ2VUeXBlEhsKF0dKUFBETkdHS0NDX05MQ0RH",
-            "SVBHRkRKEAASHAoXR0pQUEROR0dLQ0NfR0dNT0NNQkdGQUoQ3SwSHAoXR0pQ",
-            "UEROR0dLQ0NfRE5BUEFFSlBJTEQQnC0SHAoXR0pQUEROR0dLQ0NfRExBRUtK",
-            "S0ZQSk8Q/iwSHAoXR0pQUEROR0dLQ0NfSE1ITE5LSUtLSEcQoS0SHAoXR0pQ",
-            "UEROR0dLQ0NfTEdDQ0lMT0hPTkoQki1CFqoCE01hcmNoN3RoSG9uZXkuUHJv",
-            "dG9iBnByb3RvMw=="));
+            "wgIKFENtZEJhdHRsZUNvbGxlZ2VUeXBlEiQKIENtZEJhdHRsZUNvbGxlZ2VU",
+            "eXBlX05MQ0RHSVBHRkRKEAASNgoxQ21kQmF0dGxlQ29sbGVnZVR5cGVfQmF0",
+            "dGxlQ29sbGVnZU1vZHVsZUluaXRDc1JlcRDdLBIxCixDbWRCYXR0bGVDb2xs",
+            "ZWdlVHlwZV9TdGFydEJhdHRsZUNvbGxlZ2VTY1JzcBCcLRIlCiBDbWRCYXR0",
+            "bGVDb2xsZWdlVHlwZV9ETEFFS0pLRlBKTxD+LBI9CjhDbWRCYXR0bGVDb2xs",
+            "ZWdlVHlwZV9TeW5jQmF0dGxlQ29sbGVnZURhdGFDaGFuZ2VTY05vdGlmeRCh",
+            "LRIzCi5DbWRCYXR0bGVDb2xsZWdlVHlwZV9HZXRCYXR0bGVDb2xsZWdlRGF0",
+            "YVNjUnNwEJItQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdBattleCollegeType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -51,12 +53,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdBattleCollegeType {
-    [pbr::OriginalName("GJPPDNGGKCC_NLCDGIPGFDJ")] GjppdnggkccNlcdgipgfdj = 0,
-    [pbr::OriginalName("GJPPDNGGKCC_GGMOCMBGFAJ")] GjppdnggkccGgmocmbgfaj = 5725,
-    [pbr::OriginalName("GJPPDNGGKCC_DNAPAEJPILD")] GjppdnggkccDnapaejpild = 5788,
-    [pbr::OriginalName("GJPPDNGGKCC_DLAEKJKFPJO")] GjppdnggkccDlaekjkfpjo = 5758,
-    [pbr::OriginalName("GJPPDNGGKCC_HMHLNKIKKHG")] GjppdnggkccHmhlnkikkhg = 5793,
-    [pbr::OriginalName("GJPPDNGGKCC_LGCCILOHONJ")] GjppdnggkccLgccilohonj = 5778,
+    [pbr::OriginalName("CmdBattleCollegeType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdBattleCollegeType_BattleCollegeModuleInitCsReq")] BattleCollegeModuleInitCsReq = 5725,
+    [pbr::OriginalName("CmdBattleCollegeType_StartBattleCollegeScRsp")] StartBattleCollegeScRsp = 5788,
+    [pbr::OriginalName("CmdBattleCollegeType_DLAEKJKFPJO")] Dlaekjkfpjo = 5758,
+    [pbr::OriginalName("CmdBattleCollegeType_SyncBattleCollegeDataChangeScNotify")] SyncBattleCollegeDataChangeScNotify = 5793,
+    [pbr::OriginalName("CmdBattleCollegeType_GetBattleCollegeDataScRsp")] GetBattleCollegeDataScRsp = 5778,
   }
 
   #endregion

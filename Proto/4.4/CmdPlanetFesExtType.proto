@@ -9,25 +9,25 @@ message AAHPJECONDN {
 }
 
 enum CmdPlanetFesExtType {
-    FINKPKBICHJ_NLCDGIPGFDJ = 0;
-    FINKPKBICHJ_NENAKHJIKFP = 8310;
-    FINKPKBICHJ_EJMGBFBCBGB = 8300;
-    FINKPKBICHJ_MDEAKEPLECG = 8319;
-    FINKPKBICHJ_HEIDCFGIGFA = 8304;
-    FINKPKBICHJ_CEMGNGMKDNK = 8313;
-    FINKPKBICHJ_GEGKJDDPFAM = 8327;
-    FINKPKBICHJ_OBCFGEAIGAN = 8292;
-    FINKPKBICHJ_OJOPKFIPKOA = 8296;
-    FINKPKBICHJ_MNDHGELMIFN = 8307;
-    FINKPKBICHJ_GIDHIGAJBKH = 8297;
-    FINKPKBICHJ_OPNFLKEKCPJ = 8293;
-    FINKPKBICHJ_KDLCECCBFMO = 8314;
-    FINKPKBICHJ_KPFDKHBIHMI = 8309;
-    FINKPKBICHJ_KJCFACGAADE = 8311;
-    FINKPKBICHJ_EIEEIHMKDHF = 8338;
-    FINKPKBICHJ_IIDKHMCKJOE = 8334;
-    FINKPKBICHJ_IBEEAPKNNOO = 8323;
-    FINKPKBICHJ_GEJPJANNNMB = 8299;
+    CmdPlanetFesExtType_NLCDGIPGFDJ = 0;
+    CmdPlanetFesExtType_PlanetFesGetOfferedCardPieceScRsp = 8310;
+    CmdPlanetFesExtType_PlanetFesHandleCardPieceApplyCsReq = 8300;
+    CmdPlanetFesExtType_PlanetFesGiveCardPieceScRsp = 8319;
+    CmdPlanetFesExtType_HEIDCFGIGFA = 8304;
+    CmdPlanetFesExtType_PlanetFesGetExtraCardPieceInfoScRsp = 8313;
+    CmdPlanetFesExtType_PlanetFesGetFriendCardPieceCsReq = 8327;
+    CmdPlanetFesExtType_PlanetFesEnterNextBusinessDayCsReq = 8292;
+    CmdPlanetFesExtType_PlanetFesLargeBonusInteractScRsp = 8296;
+    CmdPlanetFesExtType_PlanetFesPresentCsReq = 8307;
+    CmdPlanetFesExtType_PlanetFesApplyCardPieceScRsp = 8297;
+    CmdPlanetFesExtType_PlanetFesDemandCsReq = 8293;
+    CmdPlanetFesExtType_PlanetFesGetOfferedCardPieceCsReq = 8314;
+    CmdPlanetFesExtType_PlanetFesChangeCardPieceApplyPermissionCsReq = 8309;
+    CmdPlanetFesExtType_PlanetFesHandleCardPieceApplyScRsp = 8311;
+    CmdPlanetFesExtType_PlanetFesChangeCardPieceApplyPermissionScRsp = 8338;
+    CmdPlanetFesExtType_PlanetFesGetFriendCardPieceScRsp = 8334;
+    CmdPlanetFesExtType_PlanetFesLargeBonusInteractCsReq = 8323;
+    CmdPlanetFesExtType_PlanetFesGetExtraCardPieceInfoCsReq = 8299;
 }
 
 message EPPIBFOLFKN {

@@ -22,30 +22,30 @@ message BLODLKIBCIE {
 }
 
 enum CmdHeliobusType {
-    AMJEMJIDNKF_NLCDGIPGFDJ = 0;
-    AMJEMJIDNKF_LIDFAKGOHFJ = 5826;
-    AMJEMJIDNKF_PBEMCKMOCEN = 5838;
-    AMJEMJIDNKF_CPBMPMOKJGK = 5872;
-    AMJEMJIDNKF_EKHMFOAADMO = 5811;
-    AMJEMJIDNKF_PJJLOOJGMDD = 5871;
-    AMJEMJIDNKF_FLCMOEEGCLG = 5833;
-    AMJEMJIDNKF_CMEANLKBHBG = 5888;
-    AMJEMJIDNKF_LLFHNEFLLHO = 5878;
-    AMJEMJIDNKF_CGCJIHGPFOH = 5865;
-    AMJEMJIDNKF_HJMBAOPCCLA = 5840;
-    AMJEMJIDNKF_NBNKGLMCONC = 5813;
-    AMJEMJIDNKF_POHINPCHOPI = 5886;
-    AMJEMJIDNKF_FPFHEFOLKBL = 5845;
-    AMJEMJIDNKF_NOJNFBNFIMM = 5858;
-    AMJEMJIDNKF_OIJEDHGNDHJ = 5842;
-    AMJEMJIDNKF_JIPEDONJHEI = 5830;
-    AMJEMJIDNKF_CMMLPAHGAOB = 5825;
-    AMJEMJIDNKF_PFDBDOAJFKB = 5893;
-    AMJEMJIDNKF_CIDJCDGPHEM = 5847;
-    AMJEMJIDNKF_FLPCDJFJHHM = 5804;
-    AMJEMJIDNKF_JPCJEAEMOHB = 5869;
-    AMJEMJIDNKF_HEEIIIMDELI = 5839;
-    AMJEMJIDNKF_MALFAEGNBJA = 5881;
+    CmdHeliobusType_NLCDGIPGFDJ = 0;
+    CmdHeliobusType_HeliobusSnsCommentCsReq = 5826;
+    CmdHeliobusType_HeliobusUpgradeLevelScRsp = 5838;
+    CmdHeliobusType_HeliobusLineupUpdateScNotify = 5872;
+    CmdHeliobusType_HeliobusSelectSkillScRsp = 5811;
+    CmdHeliobusType_HeliobusSnsUpdateScNotify = 5871;
+    CmdHeliobusType_HeliobusUpgradeLevelCsReq = 5833;
+    CmdHeliobusType_HeliobusSnsPostCsReq = 5888;
+    CmdHeliobusType_HeliobusActivityDataScRsp = 5878;
+    CmdHeliobusType_HeliobusStartRaidCsReq = 5865;
+    CmdHeliobusType_HeliobusInfoChangedScNotify = 5840;
+    CmdHeliobusType_HeliobusSnsCommentScRsp = 5813;
+    CmdHeliobusType_HeliobusSnsLikeCsReq = 5886;
+    CmdHeliobusType_FPFHEFOLKBL = 5845;
+    CmdHeliobusType_HeliobusSnsReadScRsp = 5858;
+    CmdHeliobusType_HeliobusChallengeUpdateScNotify = 5842;
+    CmdHeliobusType_HeliobusStartRaidScRsp = 5830;
+    CmdHeliobusType_HeliobusActivityDataCsReq = 5825;
+    CmdHeliobusType_HeliobusSnsReadCsReq = 5893;
+    CmdHeliobusType_HeliobusSnsLikeScRsp = 5847;
+    CmdHeliobusType_FLPCDJFJHHM = 5804;
+    CmdHeliobusType_HeliobusEnterBattleScRsp = 5869;
+    CmdHeliobusType_HeliobusUnlockSkillScNotify = 5839;
+    CmdHeliobusType_HeliobusSnsPostScRsp = 5881;
 }
 
 message HeliobusActivityDataCsReq {
