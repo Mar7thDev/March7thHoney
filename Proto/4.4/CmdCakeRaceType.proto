@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message BCOHNDPHBGK {
+    uint32 retcode = 3;
+}
+
+message CakeRaceCoinScoreChangeScNotify {
+    uint32 score_id = 1;
+    uint32 item_value = 9;
+    uint32 JNBEGEOPGFJ = 14;
+}
+
+message CakeRaceFinishFieldRewardScNotify {
+    ItemList reward = 2;
+    uint32 LOPNADHJKBF = 8;
+}
+
+message CakeRaceGetDailyLikeCsReq {
+}
+
+message CakeRaceGetDailyLikeScRsp {
+    repeated uint32 LPBBJFFNACA = 6;
+    uint32 retcode = 7;
+}
+
+message CakeRaceGetDataCsReq {
+}
+
+message CakeRaceGetDataScRsp {
+    repeated uint32 EAHKHGPPLEA = 2;
+    uint32 score_id = 4;
+    repeated uint32 LAJJHAAKGAF = 7;
+    uint32 item_value = 11;
+    uint32 JNBEGEOPGFJ = 13;
+    uint32 retcode = 15;
+}
+
+message CakeRaceGetFriendRankingInfoListCsReq {
+}
+
+message CakeRaceGetFriendRankingInfoListScRsp {
+    repeated uint32 LPBBJFFNACA = 3;
+    repeated JBHLNAHOJOH MLPHLIHFGKG = 11;
+    uint32 retcode = 15;
+}
+
+message CakeRaceGetHandbookCsReq {
+}
+
+message CakeRaceGetHandbookScRsp {
+    uint32 retcode = 4;
+    repeated GKCNOIGHOPM AOBBDDKFBMD = 15;
+}
+
+message CakeRaceLikeFriendRankingInfoCsReq {
+    uint32 teleport_id = 5;
+}
+
+message CakeRaceLikeFriendRankingInfoScRsp {
+    uint32 retcode = 2;
+    ItemList reward_list = 9;
+    uint32 teleport_id = 12;
+    repeated uint32 LPBBJFFNACA = 13;
+}
+
+message CakeRaceLoanCsReq {
+}
+
+message CakeRaceLoanScRsp {
+    uint32 retcode = 5;
+    uint32 AKEABJGIKLI = 8;
+    ItemList item_list = 11;
+}
+
+message CakeRaceStartPveCsReq {
+    uint32 LOPNADHJKBF = 1;
+}
+
+message CakeRaceStartPveScRsp {
+    uint32 retcode = 2;
+    uint32 LOPNADHJKBF = 11;
+}
+
+message CakeRaceUpdatePveScRsp {
+    uint32 retcode = 10;
+}
+
+enum CmdCakeRaceType {
+    MJKJNEGGKGC_NLCDGIPGFDJ = 0;
+    MJKJNEGGKGC_BCKHLNIECEB = 9124;
+    MJKJNEGGKGC_PPMHGJKEEDC = 9131;
+    MJKJNEGGKGC_MJHNLEAMLEC = 9132;
+    MJKJNEGGKGC_DOHJPNNPGKH = 9129;
+    MJKJNEGGKGC_FJKGMJMEHCK = 9130;
+    MJKJNEGGKGC_NFMMALEBINN = 9122;
+    MJKJNEGGKGC_FKOADDJCMEN = 9142;
+    MJKJNEGGKGC_NGNBLGHDHGO = 9145;
+    MJKJNEGGKGC_ANIFFDABIFE = 9121;
+    MJKJNEGGKGC_NMJIDHAKDFK = 9135;
+    MJKJNEGGKGC_PMPJIJEGEFL = 9150;
+    MJKJNEGGKGC_GLHFJMBBJJG = 9141;
+    MJKJNEGGKGC_CEENKOPFDFL = 9138;
+    MJKJNEGGKGC_CLBJHLLGKMI = 9123;
+    MJKJNEGGKGC_MIFCKHMCCBD = 9147;
+    MJKJNEGGKGC_FANMLCJOKBE = 9125;
+    MJKJNEGGKGC_MEPLCILNFAH = 9128;
+    MJKJNEGGKGC_CLMHDKNCPEM = 9139;
+    MJKJNEGGKGC_PCGCFJGNMIC = 9137;
+    MJKJNEGGKGC_APNFIGKFFAE = 9140;
+}
+
+message EMJCPFCMOMK {
+    repeated uint32 CPIKEIGHMGB = 2;
+}
+
+message GKCNOIGHOPM {
+    uint32 LHHJFMMCBAF = 3;
+    uint32 MBNBCPEAALJ = 6;
+    uint32 CBNKDHIHECO = 13;
+}
+
+message ICDBHMEPNDB {
+    uint32 JLAHNBIMKPD = 3;
+    uint32 LHHJFMMCBAF = 11;
+}
+
+message JBHLNAHOJOH {
+    uint32 FOGJIBONACG = 7;
+    uint32 uid = 10;
+    uint32 JNBEGEOPGFJ = 14;
+}
+
+message PIBEHFDDAAJ {
+    bool DHLLPOBKLIO = 10;
+    uint32 score_id = 13;
+}

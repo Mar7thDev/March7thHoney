@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdReplayType {
+    GLHDKOHHDDK_NLCDGIPGFDJ = 0;
+    GLHDKOHHDDK_CMGJOLOLINK = 3578;
+    GLHDKOHHDDK_IDABMGHDHJH = 3525;
+}
+
+message GetReplayTokenCsReq {
+    uint32 stage_id = 1;
+    uint32 KLIFGJOILEE = 3;
+    PBIEFHKNAFA replay_type = 7;
+    uint32 PBNIENNCNOP = 9;
+    string LMFFNNIGMMO = 10;
+    string GIMGDNJPPDJ = 12;
+}

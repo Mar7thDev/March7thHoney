@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BKGPJOBNMKJ {
-    uint32 num = 5;
-    uint32 tid = 8;
-    uint64 expire_time = 14;
-}

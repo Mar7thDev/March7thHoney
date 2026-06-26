@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message OpenTreasureDungeonGridCsReq {
-    uint32 GDNEHLEOMOM = 3;
-    uint32 EICEKDBENKM = 10;
-}

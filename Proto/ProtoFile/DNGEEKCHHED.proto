@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message DNGEEKCHHED {
-    repeated uint32 BGAFHIOEHFH = 7;
-    uint32 LGIPILAKIKB = 15;
-}

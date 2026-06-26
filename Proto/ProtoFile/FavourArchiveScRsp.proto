@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FavourArchiveScRsp {
-    uint32 BAAGDILLLME = 2;
-    uint32 retcode = 3;
-    bool IECKKCHJMLP = 7;
-}

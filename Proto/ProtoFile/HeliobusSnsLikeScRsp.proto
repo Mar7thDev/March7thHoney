@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HeliobusSnsLikeScRsp {
-    uint32 retcode = 6;
-    uint32 CBGODLHCLPK = 11;
-    bool KGEJAOIMOBK = 13;
-}

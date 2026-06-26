@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FateShopSellBuffCsReq {
-    uint32 JDIFHPAFPID = 8;
-    uint32 PCJOBDNLEAI = 11;
-    bool PMCPIECGEHH = 13;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum EJEGHJPAMPI {
-    EJEGHJPAMPI_BACKHOLLHDC = 0;
-    EJEGHJPAMPI_HAAFIJPEJOO = 1;
-    EJEGHJPAMPI_FPPDHDLGACM = 2;
-}

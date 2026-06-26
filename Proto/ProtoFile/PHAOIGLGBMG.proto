@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum PHAOIGLGBMG {
-    PHAOIGLGBMG_OLJCMIBGNGL = 0;
-    PHAOIGLGBMG_DLPKBBHKFBL = 1;
-}

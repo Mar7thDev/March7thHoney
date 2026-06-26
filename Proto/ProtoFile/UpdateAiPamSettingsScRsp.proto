@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message UpdateAiPamSettingsScRsp {
-    uint32 retcode = 12;
-    bool LOCNGFLCENG = 13;
-}

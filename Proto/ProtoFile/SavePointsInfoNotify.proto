@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SavePointsInfoNotify {
-    uint32 valid_times = 10;
-    int64 refresh_time = 13;
-}

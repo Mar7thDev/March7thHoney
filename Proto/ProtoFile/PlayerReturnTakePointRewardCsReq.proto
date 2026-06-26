@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PlayerReturnTakePointRewardCsReq {
-    uint32 DACCGMCONBP = 6;
-    uint32 GMKKBFHOMCM = 10;
-}

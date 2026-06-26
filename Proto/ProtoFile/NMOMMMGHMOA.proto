@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message NMOMMMGHMOA {
-    bool is_unlock = 4;
-    uint32 DFBDPEHAAMG = 6;
-}

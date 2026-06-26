@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SpaceZooBornCsReq {
-    repeated uint32 MOAOBPPHLDC = 1;
-    uint32 OPMPEGKMBPC = 6;
-}

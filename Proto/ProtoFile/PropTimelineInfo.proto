@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PropTimelineInfo {
-    bytes timeline_byte_value = 8;
-    bool timeline_bool_value = 12;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BABFMGPNOIG {
-    uint32 chapter_index = 3;
-    uint32 KJJJPMAPFOH = 13;
-}

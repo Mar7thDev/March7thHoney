@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SearchPlayerCsReq {
-    bool DDNKHDIKAEL = 3;
-    repeated uint32 uid_list = 8;
-}

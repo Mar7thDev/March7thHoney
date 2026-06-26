@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdQuestType {
+    HNJJNHPFBGO_NLCDGIPGFDJ = 0;
+    HNJJNHPFBGO_JIJBFNKJHIJ = 933;
+    HNJJNHPFBGO_MNGGMLBGPOO = 958;
+    HNJJNHPFBGO_IKABMLMGLHN = 940;
+    HNJJNHPFBGO_POAMGCLPCAF = 947;
+    HNJJNHPFBGO_BMAEEOHLFLO = 913;
+    HNJJNHPFBGO_OJKCEKKDLEL = 939;
+    HNJJNHPFBGO_PJEHEOLCFCF = 904;
+    HNJJNHPFBGO_OKMJKNLLHKP = 986;
+    HNJJNHPFBGO_OIHECCNGJKO = 993;
+    HNJJNHPFBGO_HMHBBKILIFK = 925;
+    HNJJNHPFBGO_CCMMJODPCJB = 978;
+    HNJJNHPFBGO_CFHHFHMGAGL = 971;
+    HNJJNHPFBGO_EEHHGFOMFAD = 926;
+}
+
+message ECLGDFGGOFH {
+    uint32 MNLAMKJIAOC = 2;
+    uint32 progress = 15;
+}
+
+message GetQuestDataCsReq {
+}
+
+message GetQuestDataScRsp {
+    uint32 retcode = 3;
+    repeated Quest quest_list = 13;
+}
+
+message GetQuestRecordCsReq {
+}
+
+message GetQuestRecordScRsp {
+    repeated ECLGDFGGOFH AOOFGCNFBPL = 6;
+    uint32 retcode = 10;
+}
+
+message QuestRecordScNotify {
+    ECLGDFGGOFH HLMPJLDBPJP = 3;
+}
+
+message TakeQuestOptionalRewardScRsp {
+    ItemList reward = 2;
+    uint32 quest_id = 6;
+    uint32 retcode = 13;
+}
+
+message TakeQuestRewardScRsp {
+    repeated uint32 succ_quest_id_list = 5;
+    ItemList reward = 9;
+    uint32 retcode = 10;
+    repeated uint32 quest_id_list = 13;
+}

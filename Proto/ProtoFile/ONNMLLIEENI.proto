@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ONNMLLIEENI {
-    uint32 finish_work_cnt = 3;
-    uint32 IDBDBICPBBG = 4;
-}

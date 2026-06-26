@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message IAKFBFJCHFB {
-    uint32 EAFFACCBAAA = 8;
-    uint32 unique_id = 11;
-    uint32 card_id = 12;
-}

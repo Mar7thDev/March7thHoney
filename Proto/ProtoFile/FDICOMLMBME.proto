@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FDICOMLMBME {
-    uint32 AIAFEKGBFIF = 11;
-}

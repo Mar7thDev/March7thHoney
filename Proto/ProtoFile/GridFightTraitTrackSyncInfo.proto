@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GridFightTraitTrackSyncInfo {
-    repeated uint32 ONHDKLIMLNM = 2;
-    bool GHJLDDEDJLI = 12;
-}

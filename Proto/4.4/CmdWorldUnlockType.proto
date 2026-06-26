@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdWorldUnlockType {
+    LLHKMPCLGON_NLCDGIPGFDJ = 0;
+    LLHKMPCLGON_GCPCAGGGNOH = 7626;
+    LLHKMPCLGON_KJLNDFCMEOH = 7627;
+}
+
+message WorldUnlockScRsp {
+    uint32 CFDCEEMIOCO = 7;
+    uint32 retcode = 9;
+}

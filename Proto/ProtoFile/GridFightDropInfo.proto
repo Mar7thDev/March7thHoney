@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "BCCONKJHDJL.proto";
-
-message GridFightDropInfo {
-    repeated BCCONKJHDJL NMGIABHIJJB = 1;
-}

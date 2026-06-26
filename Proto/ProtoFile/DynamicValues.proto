@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message DynamicValues {
-    string key = 2;
-    float value = 9;
-}

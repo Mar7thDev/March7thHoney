@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FEDNIHCAHGP {
-    repeated uint32 FCOKODHGEKO = 6;
-    repeated uint32 GEMHKFCFCCC = 12;
-}

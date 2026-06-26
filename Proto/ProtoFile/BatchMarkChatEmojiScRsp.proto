@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BatchMarkChatEmojiScRsp {
-    uint32 retcode = 7;
-    repeated uint32 marked_emoji_id_list = 14;
-}

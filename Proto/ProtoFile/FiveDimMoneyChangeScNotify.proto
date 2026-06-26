@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FiveDimMoneyChangeScNotify {
-    uint32 OEPCCMAPFFH = 9;
-    uint32 KFBJGFJHGEK = 15;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HANMCLKOCBO {
-    uint32 time = 2;
-    uint32 id = 7;
-    uint32 LJJGFIPLDLI = 14;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message CIFCAIEDOLK {
-    uint32 unlock_aeon_enhance_num = 2;
-    uint32 JPPAGGPJOMO = 6;
-}

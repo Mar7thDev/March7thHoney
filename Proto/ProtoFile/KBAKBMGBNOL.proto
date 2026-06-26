@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KBAKBMGBNOL {
-    uint32 BEOHGAADKPH = 2;
-    uint32 retcode = 10;
-    bool KBLBFGANMPJ = 13;
-}

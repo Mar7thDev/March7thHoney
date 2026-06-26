@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ILDOMDOFEPK {
-    uint32 group_id = 1;
-    uint32 FDEAKDCDGML = 7;
-    uint32 panel_id = 12;
-}

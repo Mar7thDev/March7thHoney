@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message MonopolyLikeScNotify {
-    uint32 DOHOMJBJLLG = 2;
-    repeated uint32 LPBBJFFNACA = 3;
-}

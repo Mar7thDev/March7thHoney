@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "OEDNNHAOHAB.proto";
-
-message HIKOBOMBMPB {
-    OEDNNHAOHAB DNPCCFFFBHN = 12;
-}

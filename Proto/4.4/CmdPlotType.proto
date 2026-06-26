@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdPlotType {
+    MENMKJOIJBE_NLCDGIPGFDJ = 0;
+    MENMKJOIJBE_OCEIGENBHHG = 1178;
+    MENMKJOIJBE_HLBDJCCBNJP = 1125;
+}
+
+message HPOFMGOOHAN {
+    uint32 CAMCBJPOMLC = 15;
+}
+
+message ONNIDPKMOPB {
+    uint32 retcode = 3;
+    uint32 CAMCBJPOMLC = 12;
+}

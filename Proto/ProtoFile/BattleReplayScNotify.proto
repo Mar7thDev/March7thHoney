@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BattleReplayScNotify {
-    bytes NOJCNDGGLBC = 1;
-    uint32 stage_id = 3;
-    uint32 battle_id = 9;
-}

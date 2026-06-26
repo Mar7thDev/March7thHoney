@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message CDABDPPPHBN {
+    uint32 group_id = 2;
+    repeated uint32 LINOMGEDMHC = 7;
+    uint32 CJPDGBPLFIG = 9;
+    uint32 ALALEBDJGHA = 11;
+}
+
+enum CmdFightActivityType {
+    EJNCEADPKFE_NLCDGIPGFDJ = 0;
+    EJNCEADPKFE_HFBELGKADLF = 3688;
+    EJNCEADPKFE_IJBOBOFLEAE = 3658;
+    EJNCEADPKFE_NEBCECBJEGP = 3625;
+    EJNCEADPKFE_CFFKPLMCNJI = 3681;
+    EJNCEADPKFE_KOPFLKEHKEF = 3693;
+    EJNCEADPKFE_FCLKICJNKBC = 3686;
+    EJNCEADPKFE_IDPBIJOAHAC = 3678;
+}
+
+message DOIBLFFDHDG {
+    uint32 avatar_id = 3;
+    AvatarType avatar_type = 15;
+}
+
+message EnterFightActivityStageCsReq {
+    uint32 DBKHHCGGKNN = 3;
+    repeated DOIBLFFDHDG MACCJKCGGII = 4;
+    repeated uint32 avatar_list = 8;
+    repeated uint32 item_list = 9;
+    uint32 group_id = 12;
+}
+
+message EnterFightActivityStageScRsp {
+    uint32 retcode = 2;
+    uint32 group_id = 6;
+    uint32 DBKHHCGGKNN = 7;
+    SceneBattleInfo battle_info = 14;
+}
+
+message FightActivityDataChangeScNotify {
+    repeated CDABDPPPHBN FALBALFNOFF = 5;
+    map<uint32, uint32> EDGPAOJEENN = 11;
+}
+
+message GetFightActivityDataScRsp {
+    uint32 world_level = 2;
+    uint32 retcode = 7;
+    repeated CDABDPPPHBN FALBALFNOFF = 9;
+    bool CFDBDGEFJJN = 10;
+    map<uint32, uint32> EDGPAOJEENN = 15;
+}
+
+message TakeFightActivityRewardScRsp {
+    uint32 group_id = 4;
+    uint32 retcode = 5;
+    ItemList reward = 7;
+    uint32 DBKHHCGGKNN = 14;
+}

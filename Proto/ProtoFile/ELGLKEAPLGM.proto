@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ELGLKEAPLGM {
-    uint32 grid_fight_equipment_id = 11;
-}

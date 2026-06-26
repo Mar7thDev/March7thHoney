@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HHJANNIGCKM {
-    bool EGLLMGLLHDL = 5;
-    repeated uint32 finished_target_list = 12;
-}

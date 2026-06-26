@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "HDAHFLMBAAB.proto";
-
-message UpdateMovieRacingDataCsReq {
-    HDAHFLMBAAB LJEPIAIDJFC = 1;
-}

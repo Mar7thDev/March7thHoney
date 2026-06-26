@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdPlayerBoardType {
+    BBNLGADEMFF_NLCDGIPGFDJ = 0;
+    BBNLGADEMFF_IBHDNDNHKNA = 2813;
+    BBNLGADEMFF_GCDFLAPFNIH = 2886;
+    BBNLGADEMFF_FKEMPFFFGJN = 2893;
+    BBNLGADEMFF_OJKCPGJLCDI = 2826;
+    BBNLGADEMFF_DBMDNBBECIK = 2838;
+    BBNLGADEMFF_KDHFKPICLGC = 2839;
+    BBNLGADEMFF_PLBEIOFLLOG = 2888;
+    BBNLGADEMFF_BOEAOJFIPOO = 2833;
+    BBNLGADEMFF_LIGDBJLBELO = 2858;
+    BBNLGADEMFF_KNMANNGOJMB = 2871;
+    BBNLGADEMFF_KGEBCMGBFHA = 2881;
+    BBNLGADEMFF_PEAMMOOHPCH = 2825;
+    BBNLGADEMFF_EHBCEBFNELG = 2840;
+    BBNLGADEMFF_MEHNAENLPAJ = 2878;
+    BBNLGADEMFF_EIJOEKHOHIL = 2847;
+}
+
+message DisplayAvatarData {
+    uint32 avatar_id = 1;
+    uint32 pos = 9;
+}
+
+message DisplayAvatarVec {
+    bool is_display = 8;
+    repeated DisplayAvatarData display_avatar_list = 12;
+}
+
+message GetPlayerBoardDataCsReq {
+}
+
+message GetPlayerBoardDataScRsp {
+    uint32 retcode = 2;
+    repeated uint32 assist_avatar_id_list = 3;
+    string signature = 5;
+    repeated uint32 unlocked_personal_card_list = 6;
+    DisplayAvatarVec display_avatar_vec = 8;
+    repeated HeadIconData unlocked_head_icon_list = 9;
+    uint32 current_head_icon_id = 10;
+    HeadFrameInfo head_frame_info = 13;
+    uint32 current_personal_card_id = 15;
+}
+
+message SetAssistAvatarScRsp {
+    uint32 avatar_id = 9;
+    uint32 retcode = 10;
+    repeated uint32 avatar_id_list = 15;
+}
+
+message SetDisplayAvatarScRsp {
+    repeated DisplayAvatarData display_avatar_list = 7;
+    uint32 retcode = 13;
+}
+
+message SetHeadIconScRsp {
+    uint32 retcode = 1;
+    uint32 current_head_icon_id = 13;
+}
+
+message SetIsDisplayAvatarInfoScRsp {
+    bool is_display = 7;
+    uint32 retcode = 8;
+}
+
+message SetPersonalCardScRsp {
+    uint32 retcode = 9;
+    uint32 current_personal_card_id = 13;
+}
+
+message SetSignatureScRsp {
+    string signature = 7;
+    uint32 retcode = 10;
+}
