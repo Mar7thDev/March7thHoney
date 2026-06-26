@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FriendHistoryInfo {
-    int64 last_send_time = 10;
-    uint32 contact_side = 12;
-}

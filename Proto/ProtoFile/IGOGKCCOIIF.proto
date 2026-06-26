@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message IGOGKCCOIIF {
-    uint32 AJIMPLLIFIE = 2;
-    uint32 FKIIFFFJKJH = 9;
-    string title = 15;
-}

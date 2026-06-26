@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message AKMCODLAEKI {
-    double value = 2;
-    string key = 3;
-}

@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message TravelBrochurePageResetCsReq {
-    uint32 DCIJEFMACME = 3;
-}

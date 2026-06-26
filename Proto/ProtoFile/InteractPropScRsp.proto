@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message InteractPropScRsp {
-    uint32 retcode = 3;
-    uint32 prop_entity_id = 5;
-    uint32 prop_state = 10;
-}

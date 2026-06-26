@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message CancelMatchCsReq {
+}
+
+message CancelMatchScRsp {
+    uint32 retcode = 1;
+}
+
+enum CmdMatchType {
+    OJCIGGAFGPN_NLCDGIPGFDJ = 0;
+    OJCIGGAFGPN_OBHHEJONGKJ = 7323;
+    OJCIGGAFGPN_PFNIJFANCIE = 7303;
+    OJCIGGAFGPN_KMDMCLGPIBC = 7337;
+    OJCIGGAFGPN_AMBKBNMKIGP = 7348;
+    OJCIGGAFGPN_JFMFEFGAIBK = 7309;
+    OJCIGGAFGPN_HNAJMPLBNLF = 7344;
+}
+
+message GetCrossInfoCsReq {
+}
+
+message GetCrossInfoScRsp {
+    uint64 FGNFDGAKKAP = 7;
+    uint64 room_id = 9;
+    uint32 retcode = 10;
+    FightGameMode GJNMHILINHC = 15;
+}
+
+message StartMatchScRsp {
+    uint32 retcode = 2;
+}

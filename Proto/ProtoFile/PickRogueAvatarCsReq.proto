@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PickRogueAvatarCsReq {
-    repeated uint32 NOEPBNMJFGL = 9;
-    uint32 prop_entity_id = 12;
-}

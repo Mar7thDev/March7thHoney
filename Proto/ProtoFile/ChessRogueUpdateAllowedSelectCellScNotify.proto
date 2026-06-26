@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ChessRogueUpdateAllowedSelectCellScNotify {
-    repeated uint32 AADAFLKEJGD = 13;
-    uint32 AIHCKNAMPBP = 14;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EnterEraFlipperDataCsReq {
-    uint32 state = 5;
-    uint32 region_id = 15;
-}

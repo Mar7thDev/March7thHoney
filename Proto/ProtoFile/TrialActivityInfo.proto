@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message TrialActivityInfo {
-    bool taken_reward = 1;
-    uint32 stage_id = 12;
-}

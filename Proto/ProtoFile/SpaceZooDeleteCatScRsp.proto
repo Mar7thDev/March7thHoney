@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SpaceZooDeleteCatScRsp {
-    uint32 retcode = 9;
-    repeated uint32 ANHNMANNAEP = 11;
-}

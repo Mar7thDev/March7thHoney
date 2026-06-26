@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GDDLBMCHIED {
-    repeated uint32 MKOKLLKALDE = 9;
-    uint32 KDIDDHIDNCG = 12;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KOFMGCNIMIN {
-    uint32 DGGCFDKJDPO = 4;
-    uint32 total_count = 10;
-    uint32 LJCEOGPOGBE = 12;
-}

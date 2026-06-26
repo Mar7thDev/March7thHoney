@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum RogueTalentStatus {
-    PONHNPLLKAB_GAJGBBFELEL = 0;
-    PONHNPLLKAB_BFADFAELKLJ = 1;
-    PONHNPLLKAB_has_recommand = 2;
-}

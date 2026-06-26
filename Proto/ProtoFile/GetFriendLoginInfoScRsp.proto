@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GetFriendLoginInfoScRsp {
-    bool show_red_dot_flag = 6;
-    bool is_allow_other_apply = 8;
-    uint32 retcode = 13;
-}

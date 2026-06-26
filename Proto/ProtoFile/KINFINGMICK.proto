@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KINFINGMICK {
-    uint32 PIFNIJHPLJC = 4;
-    uint32 OBJCJGPIHAD = 8;
-}

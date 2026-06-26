@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PKENAGKIECB {
-    uint32 CLEKAKLPNBP = 10;
-    int64 unlock_time = 15;
-}

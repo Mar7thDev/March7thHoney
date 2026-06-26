@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message NDDOMFBJMKE {
-    uint32 panel_id = 1;
-    uint32 content_type = 2;
-    uint64 HJFDAJAMFAC = 3;
-}

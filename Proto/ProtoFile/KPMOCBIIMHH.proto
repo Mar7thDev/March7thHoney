@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KPMOCBIIMHH {
-    uint32 role_id = 4;
-    uint32 IEOGEFBLNEL = 9;
-    uint32 MDNAGANGNKK = 14;
-}

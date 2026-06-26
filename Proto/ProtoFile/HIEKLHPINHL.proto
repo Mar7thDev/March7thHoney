@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HIEKLHPINHL {
-    uint32 max_count = 13;
-    uint32 OFBPKCNCGFG = 15;
-}

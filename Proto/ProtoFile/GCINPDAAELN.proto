@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "JPEBEDHMNLA.proto";
-
-message GCINPDAAELN {
-    repeated JPEBEDHMNLA grid_fight_equipment_list = 9;
-}

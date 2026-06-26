@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message DeleteSummonUnitScRsp {
-    uint32 retcode = 1;
-    repeated uint32 entity_id_list = 9;
-}

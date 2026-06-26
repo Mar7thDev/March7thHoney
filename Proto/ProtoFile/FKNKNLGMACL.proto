@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum FKNKNLGMACL {
-    FKNKNLGMACL_NLCDGIPGFDJ = 0;
-    FKNKNLGMACL_LMBIMAOBGPO = 1;
-    FKNKNLGMACL_NPDOGNAPCEE = 2;
-}

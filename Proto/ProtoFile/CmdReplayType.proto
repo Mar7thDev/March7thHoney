@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum CmdReplayType {
-    GLHDKOHHDDK_NLCDGIPGFDJ = 0;
-    GLHDKOHHDDK_CMGJOLOLINK = 3578;
-    GLHDKOHHDDK_IDABMGHDHJH = 3525;
-}

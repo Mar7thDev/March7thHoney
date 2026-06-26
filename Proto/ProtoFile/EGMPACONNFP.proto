@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EGMPACONNFP {
-    uint32 NPBLEKPLPFA = 10;
-    uint32 GNCFHIKODKE = 12;
-    uint32 unique_id = 13;
-}

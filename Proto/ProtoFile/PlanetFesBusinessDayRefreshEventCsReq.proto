@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PlanetFesBusinessDayRefreshEventCsReq {
-    bool CEIONHPDNDP = 5;
-    uint32 event_type = 9;
-    uint32 business_day = 12;
-}

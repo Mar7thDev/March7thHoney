@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message MJEIKNGOCJO {
-    uint32 state = 5;
-    uint32 group_id = 6;
-    uint32 config_id = 15;
-}

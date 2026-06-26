@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PixAirUnlockPlaneScRsp {
-    uint32 plane_id = 6;
-    uint32 retcode = 8;
-}

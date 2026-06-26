@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum BDFGBPHEPDI {
-    BDFGBPHEPDI_PDKLDMNAJBO = 0;
-    BDFGBPHEPDI_KCCEHPABIKB = 1;
-    BDFGBPHEPDI_IEGNMOODDAK = 2;
-}

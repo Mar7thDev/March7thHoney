@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message CJAFIJAFIPN {
-    uint32 EOKOPAFFMII = 1;
-    uint32 monster_id = 2;
-}

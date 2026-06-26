@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message DECHJACNLGP {
-    uint32 monster_id = 1;
-    uint32 BJBALPKFELE = 15;
-}

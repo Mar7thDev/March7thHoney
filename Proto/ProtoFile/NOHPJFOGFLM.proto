@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message NOHPJFOGFLM {
-    uint32 JJIJBJDKNAE = 5;
-    uint32 progress = 7;
-}

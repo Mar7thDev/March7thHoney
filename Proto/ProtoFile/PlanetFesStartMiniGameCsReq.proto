@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PlanetFesStartMiniGameCsReq {
-    uint32 DLFHABGGHFF = 6;
-    uint32 ratio = 11;
-}

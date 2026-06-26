@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdRogueModifierType {
+    JKJGPOOLLKF_NLCDGIPGFDJ = 0;
+    JKJGPOOLLKF_LHGHFLGEBBN = 5388;
+    JKJGPOOLLKF_EPPMKBDPDBM = 5358;
+    JKJGPOOLLKF_ECBIHKFNGGM = 5313;
+    JKJGPOOLLKF_GALJIBIENIB = 5393;
+    JKJGPOOLLKF_KKEHIBPDIEF = 5326;
+    JKJGPOOLLKF_PLELMMJJOLM = 5347;
+}
+
+message RogueModifierAddNotify {
+    BMCNDLNONMO modifier = 14;
+}
+
+message RogueModifierDelNotify {
+    uint64 FCHLCANJIGL = 10;
+}
+
+message RogueModifierSelectCellScRsp {
+    ItemList NMJGHEACCMC = 2;
+    uint32 retcode = 10;
+}
+
+message RogueModifierStageStartNotify {
+    RogueModifierSourceType source_type = 13;
+}
+
+message RogueModifierUpdateNotify {
+    BMCNDLNONMO modifier = 6;
+}

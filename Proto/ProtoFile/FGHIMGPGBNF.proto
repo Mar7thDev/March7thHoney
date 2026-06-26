@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FGHIMGPGBNF {
-    uint32 FOHIFIMHENN = 4;
-    bool is_selected = 7;
-    repeated uint32 OGOILMLPDEO = 11;
-}

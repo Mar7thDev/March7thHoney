@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PNHBCBIDFBE {
-    uint32 DPHAJPEADAF = 2;
-    repeated uint32 NIKICHNOGJD = 3;
-    uint32 MDKFLGDEJCN = 11;
-}

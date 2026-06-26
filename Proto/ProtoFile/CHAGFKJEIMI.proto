@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message CHAGFKJEIMI {
-    uint32 offset = 13;
-    uint32 LBDLAACOCCN = 14;
-}

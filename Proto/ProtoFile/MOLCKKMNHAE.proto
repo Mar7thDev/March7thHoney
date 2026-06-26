@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message MOLCKKMNHAE {
-    uint32 game_mode_type = 1;
-}

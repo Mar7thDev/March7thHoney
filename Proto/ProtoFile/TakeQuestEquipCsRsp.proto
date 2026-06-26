@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message TakeQuestEquipCsRsp {
-    uint32 retcode = 1;
-    bool DKPCAIGPHNO = 10;
-    uint32 quest_id = 14;
-}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FMJDDIHBELC {
-    uint32 grid_fight_lineup_hp = 5;
-    uint32 PPKKHHNEOHB = 7;
-}

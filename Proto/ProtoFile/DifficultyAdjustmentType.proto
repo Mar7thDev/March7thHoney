@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum DifficultyAdjustmentType {
-    JNECPMMFEKP_AANHCEGHCFA = 0;
-    JNECPMMFEKP_AEDDONPLOFJ = 1;
-}

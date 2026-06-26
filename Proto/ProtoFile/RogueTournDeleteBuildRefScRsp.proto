@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message RogueTournDeleteBuildRefScRsp {
-    repeated uint32 GGIGDJPFBBP = 3;
-    uint32 retcode = 7;
-}

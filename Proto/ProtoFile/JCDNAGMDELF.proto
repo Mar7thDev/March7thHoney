@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JCDNAGMDELF {
-    uint32 PAIPJMKCCEH = 1;
-    uint32 HPCIKHIBFHD = 7;
-    string ANEGIMPIEHL = 9;
-}

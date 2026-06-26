@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdAdventureType {
+    PCHGEBMKBDD_NLCDGIPGFDJ = 0;
+    PCHGEBMKBDD_CENHFOIEDKK = 1388;
+    PCHGEBMKBDD_NHMFLOBIHJK = 1393;
+    PCHGEBMKBDD_DFEKGHFLJHJ = 1358;
+    PCHGEBMKBDD_JKIHFOGEICI = 1371;
+    PCHGEBMKBDD_PNGDJLEDCKF = 1381;
+    PCHGEBMKBDD_HCIEEEPJAJE = 1313;
+    PCHGEBMKBDD_GHNNOGPMEND = 1347;
+    PCHGEBMKBDD_EOCBONLHAOJ = 1340;
+    PCHGEBMKBDD_LNCDEAFAAFL = 1326;
+    PCHGEBMKBDD_BKFOKJHEHOM = 1386;
+}
+
+message CocoonSweepCsReq {
+    uint32 world_level = 4;
+    uint32 cocoon_id = 9;
+}
+
+message CocoonSweepScRsp {
+    ItemList multiple_drop_data = 2;
+    ItemList drop_data = 10;
+    uint32 cocoon_id = 13;
+    uint32 retcode = 14;
+    uint32 NCEFJFOHGBI = 15;
+}
+
+message FarmElementSweepCsReq {
+    uint32 PAOFHFLFFHD = 9;
+    uint32 world_level = 11;
+}
+
+message FarmElementSweepScRsp {
+    uint32 retcode = 2;
+    ItemList multiple_drop_data = 3;
+    uint32 PAOFHFLFFHD = 14;
+}
+
+message FarmStageGachaInfo {
+    int64 end_time = 8;
+    uint32 gacha_id = 13;
+    int64 begin_time = 15;
+}
+
+message GetFarmStageGachaInfoCsReq {
+    repeated uint32 farm_stage_gacha_id_list = 10;
+}
+
+message GetFarmStageGachaInfoScRsp {
+    uint32 retcode = 5;
+    repeated FarmStageGachaInfo farm_stage_gacha_info_list = 15;
+}

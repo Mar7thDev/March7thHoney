@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FPHPFJLAJDK {
-    uint32 unique_id = 1;
-    uint32 LKMEMKLGIIK = 9;
-    uint32 pos = 11;
-}
