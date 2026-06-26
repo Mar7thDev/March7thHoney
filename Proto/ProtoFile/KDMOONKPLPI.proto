@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KDMOONKPLPI {
-    uint32 ILLHHMHBJCG = 8;
-    uint32 retcode = 12;
-}

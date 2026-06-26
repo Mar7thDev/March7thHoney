@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message RecomendedAvatarInfo {
-    uint32 recommend_avatar_id = 9;
-    repeated uint32 avatar_id_list = 11;
-    uint32 relic_set_id = 12;
-}

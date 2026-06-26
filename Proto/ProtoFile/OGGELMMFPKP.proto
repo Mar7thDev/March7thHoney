@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message OGGELMMFPKP {
-    double damage = 5;
-    uint32 config_id = 6;
-}

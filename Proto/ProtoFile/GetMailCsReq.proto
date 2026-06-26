@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GetMailCsReq {
-    uint32 start = 1;
-    uint32 HFKFNFKIEON = 15;
-}

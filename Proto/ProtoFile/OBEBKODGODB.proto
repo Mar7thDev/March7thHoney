@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message OBEBKODGODB {
-    uint32 EMPDMDNDLHE = 1;
-    uint32 EPFHBGNGBBK = 3;
-    uint32 BNEFLBPCPOI = 12;
-}

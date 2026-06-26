@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BOMPFHOMMBH {
+    uint32 target = 2;
+    uint32 num = 7;
+    uint32 item_id = 15;
+}
+
+enum CmdActivityRewardStatType {
+    KFCMCPILLKE_HBPEDDCOJDB = 0;
+    KFCMCPILLKE_PFKNIHCCOCP = 9113;
+    KFCMCPILLKE_MLGNILOBKGJ = 9116;
+    KFCMCPILLKE_IPJFJIHGNEO = 9114;
+    KFCMCPILLKE_HMHALMFKEIP = 9120;
+    KFCMCPILLKE_NBNOMBOHFOJ = 9115;
+    KFCMCPILLKE_KLHLLOCNPBB = 9111;
+}
+
+message EFGIHHJGCFA {
+    uint32 panel_id = 2;
+    repeated BOMPFHOMMBH PGMDGPEKDGB = 9;
+}
+
+message GetActivityHotDataCsReq {
+}
+
+message GetActivityHotDataScRsp {
+    repeated EFGIHHJGCFA content_package_list = 2;
+    uint32 retcode = 11;
+}
+
+message GetActivityRewardCountDataCsReq {
+    repeated uint32 DDMEHPDHPLM = 1;
+}
+
+message GetActivityRewardCountDataScRsp {
+    repeated EFGIHHJGCFA content_package_list = 3;
+    uint32 retcode = 9;
+}
+
+message GetAllActivityRewardCountDataCsReq {
+}
+
+message GetAllActivityRewardCountDataScRsp {
+    repeated EFGIHHJGCFA content_package_list = 9;
+    uint32 retcode = 10;
+}

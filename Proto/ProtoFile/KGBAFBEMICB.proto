@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KGBAFBEMICB {
-    uint32 AACGBEBGDPE = 3;
-    bool MNDCIBFEJOP = 5;
-}

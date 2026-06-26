@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum EFFGCOJFEEL {
-    EFFGCOJFEEL_JCHBPHOIACG = 0;
-    EFFGCOJFEEL_FHJJHMIFEJG = 1;
-    EFFGCOJFEEL_DJFEMKHJBNO = 2;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ChimeraDuelChangeLineupCsReq {
-    uint32 ALJOJIDAAPC = 2;
-    repeated uint32 AJFJLCKPNAM = 3;
-    uint32 GIECFFNDLEB = 15;
-}

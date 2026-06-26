@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum KPEPGHLKNFG {
-    KPEPGHLKNFG_LCNJHOKLMPN = 0;
-    KPEPGHLKNFG_JJBEPKLOLCP = 1;
-    KPEPGHLKNFG_DOGMHOAOJFD = 2;
-}

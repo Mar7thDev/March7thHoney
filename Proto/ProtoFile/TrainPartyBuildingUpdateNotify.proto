@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "FFMMFBMOBEG.proto";
-
-message TrainPartyBuildingUpdateNotify {
-    repeated FFMMFBMOBEG OOABOBHEKEH = 15;
-}

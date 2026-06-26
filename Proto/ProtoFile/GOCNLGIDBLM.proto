@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GOCNLGIDBLM {
-    uint32 AMNDNDNPLCA = 5;
-    uint32 JALHKMEOOPN = 8;
-}

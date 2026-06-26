@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JBOOPAPNFDC {
-    bool CIBONIOHELB = 5;
-    repeated uint32 CGAFCMIAKLI = 12;
-}

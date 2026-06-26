@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdMapRotationType {
+    LLGNEHDEAFB_NLCDGIPGFDJ = 0;
+    LLGNEHDEAFB_BGKIMCFIDJP = 6838;
+    LLGNEHDEAFB_IIDKFIGMHHE = 6886;
+    LLGNEHDEAFB_OKNOECBLJHG = 6845;
+    LLGNEHDEAFB_DONNNJLGABE = 6833;
+    LLGNEHDEAFB_EGJJGMJHLHC = 6836;
+    LLGNEHDEAFB_NHPFKHBLBDD = 6888;
+    LLGNEHDEAFB_NNFHIIFJILF = 6893;
+    LLGNEHDEAFB_GMPGIIIILIH = 6878;
+    LLGNEHDEAFB_JBFMGCIDLKE = 6840;
+    LLGNEHDEAFB_BLAKAIFHDMA = 6858;
+    LLGNEHDEAFB_HIOAFNDKBKO = 6826;
+    LLGNEHDEAFB_CEOGMABPNGP = 6813;
+    LLGNEHDEAFB_GEEJLMENDGC = 6847;
+    LLGNEHDEAFB_GOELJOLEGHB = 6825;
+    LLGNEHDEAFB_HDJLHHPODKL = 6871;
+    LLGNEHDEAFB_FOKPNCMNKDJ = 6848;
+    LLGNEHDEAFB_PMJCDLIOAON = 6881;
+    LLGNEHDEAFB_EJELBNKLFDJ = 6804;
+    LLGNEHDEAFB_OMBDFNNCLHC = 6811;
+}
+
+message DNNLHFKKNLM {
+    repeated RotaterData CEDGGDFMILP = 4;
+}
+
+message DeployRotatorCsReq {
+    RotaterData rotater_data = 4;
+}
+
+message EnterMapRotationRegionCsReq {
+    MotionInfo motion = 3;
+    uint32 region_id = 7;
+    uint32 JPPMEKJGJFD = 11;
+}
+
+message GetMapRotationDataCsReq {
+}
+
+message InteractChargerCsReq {
+    ChargerInfo charger_info = 5;
+}
+
+message LeaveMapRotationRegionCsReq {
+    MotionInfo motion = 3;
+}

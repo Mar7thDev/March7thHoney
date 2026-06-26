@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BJALEHOMFKH {
-    repeated uint32 OLPPMEAMFFO = 2;
-    uint32 effect_id = 3;
-    uint32 trait_id = 12;
-}

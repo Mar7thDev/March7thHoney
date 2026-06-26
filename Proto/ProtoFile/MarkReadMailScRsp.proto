@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message MarkReadMailScRsp {
-    uint32 id = 9;
-    uint32 retcode = 10;
-}

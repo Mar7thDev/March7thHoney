@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "GFFDDJHNJPN.proto";
-
-message HFMLKIIOGBP {
-    repeated GFFDDJHNJPN BELEDENKGGI = 9;
-}

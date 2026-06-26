@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message NCGFPOKHMBL {
-    uint32 BAKMHAPCNCJ = 1;
-    uint32 retcode = 12;
-}

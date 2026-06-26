@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message RefreshTriggerByClientScNotify {
-    string trigger_name = 2;
-    uint32 trigger_entity_id = 9;
-    repeated uint32 trigger_target_id_list = 15;
-}

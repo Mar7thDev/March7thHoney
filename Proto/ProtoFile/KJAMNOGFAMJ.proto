@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KJAMNOGFAMJ {
-    uint32 buff_id = 4;
-    uint32 HAGDKKBAAKK = 12;
-}

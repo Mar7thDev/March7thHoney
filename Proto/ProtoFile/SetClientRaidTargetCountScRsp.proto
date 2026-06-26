@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SetClientRaidTargetCountScRsp {
-    uint32 KJKGHIEKNID = 2;
-    uint32 retcode = 3;
-    uint32 progress = 4;
-}

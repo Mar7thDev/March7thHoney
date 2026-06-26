@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum NDGKMJPFFLI {
-    NDGKMJPFFLI_NLCDGIPGFDJ = 0;
-    NDGKMJPFFLI_LDPNBEGMBJL = 1;
-    NDGKMJPFFLI_ANAJMPDKCOD = 2;
-}

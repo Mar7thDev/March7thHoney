@@ -1,0 +1,150 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ActivityScheduleData {
+    int64 begin_time = 3;
+    uint32 panel_id = 8;
+    int64 end_time = 12;
+    uint32 activity_id = 13;
+}
+
+enum CmdActivityType {
+    AEOMPALBAAH_NLCDGIPGFDJ = 0;
+    AEOMPALBAAH_PLIDCPGKMNA = 2698;
+    AEOMPALBAAH_DLDJODNGPPN = 2683;
+    AEOMPALBAAH_CDELCNPAHDK = 2619;
+    AEOMPALBAAH_HJBGFKEKEOO = 2655;
+    AEOMPALBAAH_EDCJEFHGELP = 2645;
+    AEOMPALBAAH_DJEMPPHBABJ = 2623;
+    AEOMPALBAAH_GBLOMNNJPCA = 2658;
+    AEOMPALBAAH_DGAOJPAEKFO = 2666;
+    AEOMPALBAAH_KPPJNJHMIKG = 2678;
+    AEOMPALBAAH_DFILCMEDDCN = 2693;
+    AEOMPALBAAH_FGHJOMBPEKM = 2651;
+    AEOMPALBAAH_BNACOBLIFKM = 2627;
+    AEOMPALBAAH_BGHEPACGNDM = 2611;
+    AEOMPALBAAH_OOIJABCIDNG = 2648;
+    AEOMPALBAAH_FDGHBAFIBAP = 2636;
+    AEOMPALBAAH_ABNJPJDJAKL = 2606;
+    AEOMPALBAAH_MFKMHFAAEOP = 2616;
+    AEOMPALBAAH_PMLMCNKKENC = 2657;
+    AEOMPALBAAH_HHFPGBFJBKE = 2625;
+    AEOMPALBAAH_EMLMKNGEAPG = 2665;
+    AEOMPALBAAH_KNHKONMNGOG = 2662;
+    AEOMPALBAAH_NBNHEIGAILN = 2688;
+    AEOMPALBAAH_OILANCNNIKB = 2646;
+    AEOMPALBAAH_FCEPCIBHFAM = 2637;
+    AEOMPALBAAH_CLNDPDEGKOH = 2628;
+    AEOMPALBAAH_LBIHPGKHFFB = 2694;
+    AEOMPALBAAH_LEAEIODECFC = 2669;
+    AEOMPALBAAH_FDMMGJPNIHJ = 2682;
+    AEOMPALBAAH_ABFLHPOGADD = 2674;
+    AEOMPALBAAH_JEPIDOCCCOJ = 2681;
+}
+
+message EnterTrialActivityStageScRsp {
+    SceneBattleInfo battle_info = 2;
+    uint32 retcode = 6;
+}
+
+message GetActivityScheduleConfigCsReq {
+}
+
+message GetActivityScheduleConfigScRsp {
+    repeated ActivityScheduleData schedule_data = 7;
+    uint32 retcode = 8;
+}
+
+message GetLoginActivityCsReq {
+}
+
+message GetLoginActivityScRsp {
+    repeated LoginActivityData login_activity_list = 11;
+    uint32 retcode = 15;
+}
+
+message GetMaterialSubmitActivityDataScRsp {
+    uint32 retcode = 1;
+    repeated KPMAKCHCDMH JJNFLKKAOFI = 9;
+}
+
+message GetTrialActivityDataCsReq {
+}
+
+message GetTrialActivityDataScRsp {
+    uint32 activity_stage_id = 1;
+    repeated TrialActivityInfo trial_activity_info_list = 7;
+    repeated PAALDKHKOLE OBOPMFBGBAE = 10;
+    uint32 retcode = 15;
+}
+
+message KPMAKCHCDMH {
+    bool BAONIPOKCPL = 5;
+    uint32 panel_id = 6;
+    uint32 LNOCOOCMNCI = 7;
+    bool is_taken_reward = 10;
+}
+
+message LeaveTrialActivityCsReq {
+    uint32 stage_id = 7;
+}
+
+message LeaveTrialActivityScRsp {
+    uint32 stage_id = 7;
+    uint32 retcode = 10;
+}
+
+message LoginActivityData {
+    uint32 login_days = 3;
+    uint32 panel_id = 7;
+    repeated uint32 MOIAHCMHNEO = 13;
+    uint32 id = 15;
+}
+
+message PAALDKHKOLE {
+    uint32 enhanced_id = 4;
+    uint32 avatar_id = 14;
+}
+
+message StartTrialActivityScRsp {
+    uint32 stage_id = 9;
+    uint32 retcode = 11;
+}
+
+message SubmitMaterialSubmitActivityMaterialScRsp {
+    uint32 retcode = 2;
+    KPMAKCHCDMH MEAEIKFLBPJ = 14;
+}
+
+message TakeLoginActivityRewardScRsp {
+    ItemList reward = 1;
+    uint32 panel_id = 6;
+    uint32 retcode = 9;
+    uint32 take_days = 12;
+    uint32 id = 14;
+}
+
+message TakeMaterialSubmitActivityRewardScRsp {
+    uint32 LNOCOOCMNCI = 1;
+    ItemList reward = 7;
+    uint32 retcode = 8;
+}
+
+message TakeTrialActivityRewardScRsp {
+    uint32 retcode = 4;
+    uint32 stage_id = 12;
+    ItemList reward = 13;
+}
+
+message TrialActivityDataChangeScNotify {
+    TrialActivityInfo trial_activity_info = 1;
+    repeated PAALDKHKOLE OBOPMFBGBAE = 9;
+}
+
+message TrialActivityInfo {
+    bool taken_reward = 1;
+    uint32 stage_id = 12;
+}

@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum BOHNFJPIDAD {
-    BOHNFJPIDAD_NLCDGIPGFDJ = 0;
-    BOHNFJPIDAD_MLDHBKBFNEP = 1;
-}

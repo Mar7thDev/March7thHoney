@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum MIGPNAOGHEP {
-    MIGPNAOGHEP_DOOODKBGFCO = 0;
-    MIGPNAOGHEP_COJLMFJMDKD = 1;
-    MIGPNAOGHEP_AOKLIPHLBNN = 2;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SpaceZooOpCatteryCsReq {
-    uint32 FEPDLPHPHGI = 11;
-    uint32 op_type = 12;
-    uint32 OCKGDJCGKLH = 15;
-}

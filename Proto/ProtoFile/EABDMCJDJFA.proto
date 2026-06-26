@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EABDMCJDJFA {
-    uint32 level = 9;
-    uint32 skill_id = 15;
-}

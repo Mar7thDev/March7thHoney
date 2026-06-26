@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JBGPLPCCDBJ {
-    uint32 NMFGIBMHNKI = 1;
-    uint32 GBJPBAHGBPO = 4;
-    uint32 percent = 8;
-}

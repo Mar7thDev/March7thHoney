@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message AvatarPathSkillTree {
-    uint32 level = 1;
-    uint32 point_id = 13;
-}

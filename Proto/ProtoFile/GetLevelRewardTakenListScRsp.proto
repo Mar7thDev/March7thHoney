@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GetLevelRewardTakenListScRsp {
-    uint32 retcode = 13;
-    repeated uint32 level_reward_taken_list = 14;
-}

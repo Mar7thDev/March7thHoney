@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message RogueTournSaveBuildRefScRsp {
-    uint32 retcode = 2;
-    uint32 NPHAJEKCBKF = 12;
-    string name = 13;
-}

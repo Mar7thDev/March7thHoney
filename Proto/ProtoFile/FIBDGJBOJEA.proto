@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum FIBDGJBOJEA {
-    FIBDGJBOJEA_NLCDGIPGFDJ = 0;
-    FIBDGJBOJEA_DAJHCEKHNBH = 1;
-    FIBDGJBOJEA_FEGIODIKLKB = 2;
-}

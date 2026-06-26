@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FateRinStartChallengeFightCsReq {
-    repeated uint32 KLFBKKMEGFF = 1;
-    uint32 CCOOCEEAKFI = 6;
-}

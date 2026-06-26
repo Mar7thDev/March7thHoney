@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SceneCastSkillCostMpCsReq {
-    uint32 skill_index = 3;
-    uint32 cast_entity_id = 9;
-    uint32 attacked_by_entity_id = 15;
-}

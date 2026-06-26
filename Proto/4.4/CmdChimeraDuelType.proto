@@ -1,0 +1,364 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BBDLCOJKGMI {
+    GLLDHGHJLOA PHLAMKCLLKP = 15;
+}
+
+enum BDEJGKKACMA {
+    BDEJGKKACMA_NLCDGIPGFDJ = 0;
+    BDEJGKKACMA_hp = 1;
+    BDEJGKKACMA_COJOIFPPCIJ = 2;
+}
+
+message CJHOCMLPMJD {
+    repeated uint32 AJFJLCKPNAM = 8;
+}
+
+message ChimeraDuelChangeLineupScRsp {
+    uint32 retcode = 2;
+    repeated uint32 AJFJLCKPNAM = 5;
+}
+
+message ChimeraDuelEndGameScRsp {
+    uint32 retcode = 7;
+    EBPBMFBFEJA CECFDNCDBEI = 14;
+}
+
+message ChimeraDuelEndRoundBattleStageScRsp {
+    uint32 retcode = 7;
+    DIIKFKNEHHG NONPIMDDJNN = 12;
+    oneof KKNBOACNCON {
+        LCEDDGELBMJ CFDIKLBINHK = 1274;
+        EBPBMFBFEJA CECFDNCDBEI = 1115;
+    }
+}
+
+message ChimeraDuelEndRoundShopStageCsReq {
+}
+
+message ChimeraDuelEndRoundShopStageScRsp {
+    uint32 retcode = 3;
+    LCEDDGELBMJ CFDIKLBINHK = 4;
+}
+
+message ChimeraDuelFinishMasterChallengeCsReq {
+    uint32 IPINHNFCIOE = 11;
+}
+
+message ChimeraDuelFinishMasterChallengeScRsp {
+    uint32 IPINHNFCIOE = 3;
+    uint32 retcode = 7;
+}
+
+message ChimeraDuelGetDataScRsp {
+    uint32 retcode = 6;
+    LCEDDGELBMJ CFDIKLBINHK = 11;
+    PCBOLEAFMDN COFPFIDNONN = 15;
+}
+
+message ChimeraDuelGetFriendListCsReq {
+}
+
+message ChimeraDuelGetFriendListScRsp {
+    repeated MPPHIOJNKGB friend_list = 5;
+    uint32 retcode = 7;
+}
+
+message ChimeraDuelPlayerRankData {
+    uint32 rank = 5;
+    uint32 score_id = 12;
+}
+
+message ChimeraDuelSaveFriendPvpLineupCsReq {
+    uint32 slot = 6;
+}
+
+message ChimeraDuelSaveFriendPvpLineupScRsp {
+    uint32 retcode = 2;
+    uint32 slot = 6;
+    PNCNGIAMLCA lineup = 14;
+}
+
+message ChimeraDuelSelectGameCsReq {
+    uint32 FGLEKNDHMKN = 1;
+}
+
+message ChimeraDuelSelectGameScRsp {
+    uint32 FGLEKNDHMKN = 5;
+    uint32 retcode = 7;
+}
+
+message ChimeraDuelSellChimeraScRsp {
+    repeated uint32 AJFJLCKPNAM = 3;
+    uint32 retcode = 5;
+    uint32 NDJGKJMPPHJ = 13;
+}
+
+message ChimeraDuelSetFriendDefendLineupCsReq {
+    uint32 slot = 6;
+}
+
+message ChimeraDuelSetFriendDefendLineupScRsp {
+    uint32 slot = 3;
+    uint32 retcode = 9;
+}
+
+message ChimeraDuelShopBuyChimeraCsReq {
+    repeated uint32 FMMICIHEOCM = 6;
+    uint32 KODOOHHPIKN = 8;
+    uint32 GCKFOOIEHHA = 15;
+}
+
+message ChimeraDuelShopBuyChimeraScRsp {
+    uint32 retcode = 5;
+}
+
+message ChimeraDuelShopBuyItemCsReq {
+    uint32 AGBAIFPNKII = 11;
+    uint32 JHINLPCKMPK = 14;
+}
+
+message ChimeraDuelShopBuyItemScRsp {
+    uint32 retcode = 10;
+}
+
+message ChimeraDuelShopLockScRsp {
+    bool is_locked = 1;
+    uint32 retcode = 2;
+    oneof KKNBOACNCON {
+        uint32 NDJGKJMPPHJ = 4;
+        uint32 AGBAIFPNKII = 3;
+    }
+}
+
+message ChimeraDuelShopRefreshCsReq {
+}
+
+message ChimeraDuelShopRefreshScRsp {
+    uint32 retcode = 11;
+}
+
+message ChimeraDuelStartGameCsReq {
+    uint32 IPINHNFCIOE = 12;
+}
+
+message ChimeraDuelStartGameScRsp {
+    uint32 retcode = 5;
+    LCEDDGELBMJ CFDIKLBINHK = 8;
+}
+
+message ChimeraDuelSyncChangeScNotify {
+    repeated LGEDKNLBCAN DGNGMJMPFGK = 15;
+}
+
+message ChimeraDuelUnlockMasterCsReq {
+    uint32 IPINHNFCIOE = 1;
+}
+
+message ChimeraDuelUnlockMasterScRsp {
+    uint32 retcode = 1;
+    uint32 IPINHNFCIOE = 11;
+}
+
+enum CmdChimeraDuelType {
+    BJCCFBOGEOE_NLCDGIPGFDJ = 0;
+    BJCCFBOGEOE_NFGJMMHJHFK = 9212;
+    BJCCFBOGEOE_KGGPPANCMKC = 9217;
+    BJCCFBOGEOE_OPNGKOBFDDA = 9222;
+    BJCCFBOGEOE_EPDMNPDIMHC = 9245;
+    BJCCFBOGEOE_MDGPOJPGMEO = 9215;
+    BJCCFBOGEOE_EIFLELDEOME = 9246;
+    BJCCFBOGEOE_NDMGPBGDOOF = 9232;
+    BJCCFBOGEOE_GLMHKMAMMGG = 9255;
+    BJCCFBOGEOE_DNJJPKFNOHJ = 9220;
+    BJCCFBOGEOE_COJGFNPLABL = 9239;
+    BJCCFBOGEOE_GLEFBDECGKA = 9242;
+    BJCCFBOGEOE_CPECDGMGPGI = 9228;
+    BJCCFBOGEOE_CDPCPLPMAIE = 9218;
+    BJCCFBOGEOE_DDGBMMCABMG = 9243;
+    BJCCFBOGEOE_EKBHDFNBDEH = 9234;
+    BJCCFBOGEOE_LADCFLBMDFH = 9231;
+    BJCCFBOGEOE_AEHEPACIJEL = 9258;
+    BJCCFBOGEOE_MAGIHJKEPIG = 9229;
+    BJCCFBOGEOE_HJKJEHFLFLO = 9233;
+    BJCCFBOGEOE_BGGINGOKPDN = 9227;
+    BJCCFBOGEOE_IDBNCPIDILA = 9225;
+    BJCCFBOGEOE_DJAFICFHNFJ = 9240;
+    BJCCFBOGEOE_HFOLCDOLMON = 9224;
+    BJCCFBOGEOE_AAKPEPCLGDD = 9252;
+    BJCCFBOGEOE_LMDFPJCADOG = 9249;
+    BJCCFBOGEOE_EJCBPDGLEDC = 9236;
+    BJCCFBOGEOE_MMJPHPMANMH = 9230;
+    BJCCFBOGEOE_LNNLCHOEOAJ = 9257;
+    BJCCFBOGEOE_GLIFDGOBEEC = 9223;
+    BJCCFBOGEOE_FFPJHPIAADH = 9216;
+    BJCCFBOGEOE_FGJHLOALHJJ = 9253;
+    BJCCFBOGEOE_JDLGJIEOIDA = 9213;
+    BJCCFBOGEOE_KBPJHMODAFK = 9219;
+    BJCCFBOGEOE_FJHAPKOCODL = 9251;
+    BJCCFBOGEOE_MFBPPHMAGHA = 9250;
+}
+
+enum DIIKFKNEHHG {
+    DIIKFKNEHHG_NLCDGIPGFDJ = 0;
+    DIIKFKNEHHG_EHNIPLNEEDI = 1;
+    DIIKFKNEHHG_FAODKNDLNPF = 2;
+    DIIKFKNEHHG_EEOOMIBEMNH = 3;
+}
+
+message DMOJMNKOILL {
+    bool is_locked = 6;
+    uint32 item_id = 7;
+    uint32 AGBAIFPNKII = 10;
+    bool IFIGFODOPBB = 12;
+}
+
+message EBPBMFBFEJA {
+    bool ENFKEAEGPBJ = 1;
+    uint32 FGLEKNDHMKN = 5;
+    LCEDDGELBMJ CFDIKLBINHK = 7;
+    ChimeraDuelPlayerRankData AAIMONALOPD = 8;
+}
+
+message FJJHCDGNDPD {
+    repeated uint32 JJOJFFAOEDI = 4;
+    repeated uint32 ACCKECIHCGJ = 8;
+}
+
+message FLOPNJFNAOG {
+    POACIACEJJN JOOEEKMDAEO = 6;
+    bool NBHLDBBBPPA = 13;
+}
+
+message GIEPFAIPADI {
+    repeated uint32 FMMICIHEOCM = 8;
+}
+
+message GLLDHGHJLOA {
+    string nickname = 2;
+    uint32 uid = 5;
+    uint32 IPINHNFCIOE = 6;
+    repeated NHDGNBKBNDB BCGOAIPKGIK = 7;
+    repeated uint32 AJFJLCKPNAM = 8;
+    uint32 hp = 10;
+    uint32 KIMKENNLHEH = 11;
+    uint32 head_icon = 12;
+    uint32 rank = 13;
+}
+
+message HNAOOMKGFCB {
+    PDHFFPOJNJG source_type = 1;
+    uint32 LLMHAEAPGON = 7;
+    uint32 BHCCDFFBAAM = 10;
+}
+
+message JJKOHCPBGAL {
+    HNAOOMKGFCB source = 9;
+    uint32 FLIEDGKFNOL = 11;
+    GIEPFAIPADI LHEOBNDKGHD = 15;
+    oneof BHNPKLCNDNG {
+        BDEJGKKACMA LLCOEPJFGPE = 661;
+        uint32 BNCCMEGJONF = 491;
+        FJJHCDGNDPD IAECKEDODEF = 1931;
+    }
+}
+
+message JJNHIKIGKJC {
+    uint32 unique_id = 3;
+    uint32 item_id = 6;
+}
+
+message KGHDDIBDABP {
+    bool is_locked = 5;
+    uint32 grid_fight_equipment_id = 9;
+    uint32 IPAOBKONIFL = 13;
+    uint32 NDJGKJMPPHJ = 14;
+    uint32 FGECDDFBFOJ = 15;
+}
+
+message LCEDDGELBMJ {
+    uint32 IPINHNFCIOE = 2;
+    uint32 KIMKENNLHEH = 3;
+    uint32 IDNHBBMLNJK = 6;
+    uint32 NMPABPJHGPE = 7;
+    uint32 JGPHDBDHKKO = 9;
+    uint32 BAJHKGJPFED = 11;
+    repeated NHDGNBKBNDB BCGOAIPKGIK = 13;
+    uint32 hp = 14;
+    repeated uint32 HGKDHJHKFBP = 15;
+    oneof PAPIIIMEKDD {
+        POACIACEJJN HKFFIGBBFAE = 982;
+        BBDLCOJKGMI PJCKOBNPFCB = 1596;
+    }
+}
+
+message LGEDKNLBCAN {
+    oneof MMCGBGDJIPN {
+        JJKOHCPBGAL ALPKKNKAFBG = 14;
+        uint32 PBCGHKNGBFC = 13;
+        NHDGNBKBNDB PFOBPLCGGGI = 12;
+        uint32 KBPJKIEBBON = 10;
+        FLOPNJFNAOG KJHMPBOIGGE = 7;
+        CJHOCMLPMJD FICFIOENBEN = 11;
+        uint32 GCKFOOIEHHA = 9;
+        uint32 HFOKEKMCOBP = 2;
+        uint32 CIFFLEBCFGK = 5;
+        MAFDLBFIJMB BHPPAPONGOE = 8;
+        uint32 NGBAKCIGBMN = 6;
+    }
+}
+
+message MAFDLBFIJMB {
+    PNCNGIAMLCA lineup = 4;
+    uint32 slot = 10;
+}
+
+message MPPHIOJNKGB {
+    PNCNGIAMLCA lineup = 5;
+    uint32 uid = 6;
+    uint32 score_id = 14;
+}
+
+message NHDGNBKBNDB {
+    JJNHIKIGKJC equip = 1;
+    int32 GIFJODBPLPJ = 4;
+    uint32 unique_id = 5;
+    uint32 FGECDDFBFOJ = 6;
+    uint32 exp = 7;
+    uint32 LLEOGLLHCLK = 10;
+    int32 OEEIPJDNMOK = 12;
+}
+
+message PCBOLEAFMDN {
+    repeated MAFDLBFIJMB GNJGPFDKLBH = 1;
+    ChimeraDuelPlayerRankData AAIMONALOPD = 2;
+    uint32 NGBAKCIGBMN = 3;
+    repeated uint32 PGGOOINMOLF = 7;
+    uint32 CIFFLEBCFGK = 8;
+    repeated uint32 FOLMLBOLGEM = 9;
+    repeated uint32 HAKLMIAENCF = 11;
+    uint32 FGLEKNDHMKN = 12;
+    uint32 DEFHFAGLMLC = 15;
+}
+
+enum PDHFFPOJNJG {
+    PDHFFPOJNJG_NLCDGIPGFDJ = 0;
+    PDHFFPOJNJG_GIKNCJMJLFE = 1;
+    PDHFFPOJNJG_PAGPNOKLNOM = 2;
+    PDHFFPOJNJG_LPIINKCPJPO = 3;
+    PDHFFPOJNJG_DIMIFCJPHME = 4;
+    PDHFFPOJNJG_AJGOEJHKOKE = 5;
+}
+
+message PNCNGIAMLCA {
+    uint32 IPINHNFCIOE = 3;
+    repeated uint32 AJFJLCKPNAM = 12;
+    repeated NHDGNBKBNDB BCGOAIPKGIK = 15;
+}
+
+message POACIACEJJN {
+    repeated KGHDDIBDABP DKCMMMPNEME = 1;
+    repeated DMOJMNKOILL LCJFDCHINHL = 3;
+}

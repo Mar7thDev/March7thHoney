@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message IMKKKJFHEIO {
-    uint64 server_time_ms = 1;
-    uint64 client_time_ms = 9;
-    uint32 retcode = 13;
-}

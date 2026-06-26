@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FateShopLockGoodsScRsp {
-    uint32 retcode = 12;
-    bool is_locked = 13;
-}

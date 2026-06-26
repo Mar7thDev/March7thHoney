@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message SetNicknameCsReq {
-    bool is_modify = 1;
-    string nickname = 5;
-}

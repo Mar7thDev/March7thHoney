@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ActiveActivityData {
+    uint32 id = 3;
+    uint32 FODLNKPNION = 5;
+    uint32 DBIFEEDMAOF = 8;
+    uint32 panel_id = 9;
+    repeated uint32 taken_star_rewards = 12;
+    uint32 CDMIKICANEP = 15;
+}
+
+message ActiveActivityDataChangeScNotify {
+    ActiveActivityData ANFFLNDCGLG = 14;
+}
+
+enum CmdActiveType {
+    JGJCDABBNIJ_NLCDGIPGFDJ = 0;
+    JGJCDABBNIJ_ADHCFEAOLBE = 9558;
+    JGJCDABBNIJ_AOIDPACHIMG = 9568;
+    JGJCDABBNIJ_IHNCNPFIIBD = 9562;
+    JGJCDABBNIJ_DPNIGHKMDGA = 9553;
+    JGJCDABBNIJ_HHHDNIMNPKN = 9552;
+}
+
+message GetActiveActivityDataScRsp {
+    repeated ActiveActivityData HCLGPDFBDNP = 6;
+    uint32 retcode = 14;
+}
+
+message TakeActiveActivityRewardScRsp {
+    uint32 retcode = 2;
+    ActiveActivityData ANFFLNDCGLG = 9;
+    ItemList reward = 14;
+}

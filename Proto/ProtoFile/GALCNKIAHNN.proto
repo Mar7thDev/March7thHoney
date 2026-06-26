@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GALCNKIAHNN {
-    uint32 NLGNNDIFGGF = 1;
-    uint32 add_coin = 3;
-}

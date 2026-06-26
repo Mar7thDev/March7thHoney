@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum TutorialGuideType {
-    AOCCEBGNPJA_GINFCGDDDOM = 0;
-    AOCCEBGNPJA_JLOAFBAGFHG = 1;
-}

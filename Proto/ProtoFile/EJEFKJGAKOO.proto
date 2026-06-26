@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EJEFKJGAKOO {
-    uint32 effect_id = 2;
-    uint32 MENFBEDCBHB = 11;
-    uint32 trait_id = 12;
-}

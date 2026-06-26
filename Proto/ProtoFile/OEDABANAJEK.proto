@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum OEDABANAJEK {
-    OEDABANAJEK_NLCDGIPGFDJ = 0;
-    OEDABANAJEK_BPNMABIFCAC = 1;
-    OEDABANAJEK_OHLJJBCALBF = 2;
-}

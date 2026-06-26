@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GetDataScRsp {
-    uint32 retcode = 7;
-    bool is_taken_reward = 10;
-    uint32 avatar_id = 13;
-}

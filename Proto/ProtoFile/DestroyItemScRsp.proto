@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message DestroyItemScRsp {
-    uint32 retcode = 2;
-    uint32 ADOIMNBAGKC = 6;
-}

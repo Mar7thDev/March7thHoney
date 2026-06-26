@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message TakeOfferingRewardCsReq {
-    uint32 offering_id = 1;
-    repeated uint32 take_reward_level_list = 8;
-    uint32 interacted_prop_entity_id = 14;
-}

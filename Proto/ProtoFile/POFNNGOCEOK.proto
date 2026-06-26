@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message POFNNGOCEOK {
-    uint32 EIKLMFPMJJD = 2;
-    uint32 dice_slot_id = 3;
-    int64 expire_time = 10;
-}

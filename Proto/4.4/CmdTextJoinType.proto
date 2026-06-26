@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdTextJoinType {
+    MLHMKFMJKHD_NLCDGIPGFDJ = 0;
+    MLHMKFMJKHD_HEENPFACDCA = 3888;
+    MLHMKFMJKHD_JLAEJCGNFBK = 3893;
+    MLHMKFMJKHD_CCMGEHOGJIM = 3878;
+    MLHMKFMJKHD_IPONEPLMCBI = 3825;
+    MLHMKFMJKHD_HJGOLKMNBHL = 3858;
+    MLHMKFMJKHD_IFIMNKDJOID = 3881;
+}
+
+message JCDNAGMDELF {
+    uint32 PAIPJMKCCEH = 1;
+    uint32 HPCIKHIBFHD = 7;
+    string ANEGIMPIEHL = 9;
+}
+
+message OGFBEAPMGJM {
+    uint32 retcode = 3;
+}
+
+message TextJoinBatchSaveScRsp {
+    repeated JCDNAGMDELF HPEDOFFJKKP = 2;
+    uint32 retcode = 15;
+}
+
+message TextJoinQueryScRsp {
+    repeated JCDNAGMDELF HPEDOFFJKKP = 2;
+    uint32 retcode = 13;
+}

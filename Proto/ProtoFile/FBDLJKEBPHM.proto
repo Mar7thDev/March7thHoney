@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FBDLJKEBPHM {
-    uint32 role_id = 2;
-    uint32 MDNAGANGNKK = 4;
-    map<uint32, uint32> JPIHLKGCBPC = 10;
-}

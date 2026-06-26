@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EBIDBCOBLNM {
-    uint32 BNLNGGCHFNF = 2;
-    uint32 IHDPGGCJIAK = 6;
-    uint32 FOPMPMPNCOA = 15;
-}
