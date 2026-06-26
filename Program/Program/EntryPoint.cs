@@ -18,6 +18,7 @@ using March7thHoney.WebServer;
 using March7thHoney.WebServer.Server;
 using System.Globalization;
 using System.IO.Compression;
+using System.Runtime.InteropServices;
 
 namespace March7thHoney.Program.Program;
 
@@ -53,6 +54,9 @@ public class EntryPoint
             eventArgs.Cancel = true;
             Environment.Exit(0);
         };
+        // .NET 10 dropped ProcessExit on window-close/logoff/shutdown; hook the Win32 console control events so the DB save runs (Windows-only kernel32 P/Invoke).
+        if (OperatingSystem.IsWindows())
+            SetConsoleCtrlHandler(ConsoleCtrlHandlerKeepAlive, true);
         var time = DateTime.Now;
 
         // pack the old log
@@ -423,17 +427,30 @@ public class EntryPoint
         IConsole.ListenConsole();
     }
 
-
     public static ConfigContainer GetConfig()
     {
         return ConfigManager.Config;
     }
 
+    private delegate bool ConsoleCtrlHandlerRoutine(uint ctrlType);
+
+    private static readonly ConsoleCtrlHandlerRoutine ConsoleCtrlHandlerKeepAlive = OnConsoleCtrl;
+
+    [DllImport("kernel32.dll")]
+    private static extern bool SetConsoleCtrlHandler(ConsoleCtrlHandlerRoutine handler, bool add);
+
+    // CTRL_CLOSE(2)/LOGOFF(5)/SHUTDOWN(6): exit cleanly so PerformCleanup saves; Ctrl+C/Break stay with CancelKeyPress.
+    private static bool OnConsoleCtrl(uint ctrlType)
+    {
+        if (ctrlType is 2 or 5 or 6) Environment.Exit(0);
+        return false;
+    }
+
     private static void PerformCleanup()
     {
-        March7thHoneyListener.Connections.Values.ToList().ForEach(x => x.Stop());
-
-        DatabaseHelper.SaveThread?.Interrupt();
+        // Stopping a live connection on shutdown can throw (disposed CancellationTokenSource race); never let it skip the save.
+        try { March7thHoneyListener.Connections.Values.ToList().ForEach(x => x.Stop()); }
+        catch (Exception e) { Logger.Error("Cleanup: failed to stop connections", e); }
         DatabaseHelper.SaveDatabase();
     }
 

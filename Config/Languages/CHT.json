@@ -241,6 +241,7 @@
   "Server.ServerInfo.ActivationDeviceAuthTimeout": "授權逾時，請重新啟動後再試。",
   "Server.ServerInfo.ActivationDeviceAuthWaiting": "正在等待瀏覽器中的授權確認……",
   "Server.ServerInfo.ActivationFailed": "啟動驗證失敗：{0}",
+  "Server.ServerInfo.ActivationLauncherRelogin": "授權失敗，請在 CyreneLauncher 中重新登入後再啟動本機伺服器。",
   "Server.ServerInfo.ActivationSuccess": "啟動驗證已通過，有效期至 {0}。",
   "Server.ServerInfo.ActivationTokenMissing": "找不到啟動驗證權杖。請設定環境變數 M7H_ACTIVATION_TOKEN 或建立 Config/activation.token 檔案。",
   "Server.ServerInfo.LicenseCurrentHwid": "當前機器 HWID：{0}",

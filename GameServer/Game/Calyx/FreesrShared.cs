@@ -24,7 +24,8 @@ public static class FreesrShared
     {
         PropertyNameCaseInsensitive = true,
         ReadCommentHandling = JsonCommentHandling.Skip,
-        AllowTrailingCommas = true
+        AllowTrailingCommas = true,
+        TypeInfoResolver = FreesrJsonContext.Default
     };
 
     public static List<DirectoryInfo> GetJsonDirectories(bool createIfMissing = false)
