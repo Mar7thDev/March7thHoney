@@ -27,7 +27,7 @@ public static class OnlineActivationManager
     private const string ActivateEndpoint = BaseUrl + "/api/server/activate";
     private const string DeviceCodeEndpoint = BaseUrl + "/api/launcher/device/code";
     private const string DeviceTokenEndpoint = BaseUrl + "/api/launcher/device/token";
-    private const string HelpUrl = "discord.gg/castoriceps";
+    private const string HelpUrl = "discord.gg/CyreneEchoes";
 
     // ECDSA P-256 public key (SubjectPublicKeyInfo DER, base64). DEMO KEY — rotate
     // via cyrene-web/scripts/gen-activation-keys.mjs and replace before real use.
