@@ -54,9 +54,8 @@ public class EntryPoint
             eventArgs.Cancel = true;
             Environment.Exit(0);
         };
-        // Window close / logoff / shutdown don't reliably raise ProcessExit on Windows; route them through the same save-then-exit path as Ctrl+C.
-        foreach (var sig in new[] { PosixSignal.SIGHUP, PosixSignal.SIGTERM })
-            PosixSignalRegistration.Create(sig, ctx => { ctx.Cancel = true; Environment.Exit(0); });
+        // .NET 10 no longer raises ProcessExit on window-close/logoff/shutdown; hook the Win32 console control events ourselves so the DB save runs.
+        SetConsoleCtrlHandler(ConsoleCtrlHandlerKeepAlive, true);
         var time = DateTime.Now;
 
         // pack the old log
@@ -430,6 +429,20 @@ public class EntryPoint
     public static ConfigContainer GetConfig()
     {
         return ConfigManager.Config;
+    }
+
+    private delegate bool ConsoleCtrlHandlerRoutine(uint ctrlType);
+
+    private static readonly ConsoleCtrlHandlerRoutine ConsoleCtrlHandlerKeepAlive = OnConsoleCtrl;
+
+    [DllImport("kernel32.dll")]
+    private static extern bool SetConsoleCtrlHandler(ConsoleCtrlHandlerRoutine handler, bool add);
+
+    // CTRL_CLOSE(2)/LOGOFF(5)/SHUTDOWN(6): exit cleanly so PerformCleanup saves; Ctrl+C/Break stay with CancelKeyPress.
+    private static bool OnConsoleCtrl(uint ctrlType)
+    {
+        if (ctrlType is 2 or 5 or 6) Environment.Exit(0);
+        return false;
     }
 
     private static void PerformCleanup()
