@@ -27,7 +27,7 @@ public static class OnlineActivationManager
     private const string ActivateEndpoint = BaseUrl + "/api/server/activate";
     private const string DeviceCodeEndpoint = BaseUrl + "/api/launcher/device/code";
     private const string DeviceTokenEndpoint = BaseUrl + "/api/launcher/device/token";
-    private const string HelpUrl = "discord.gg/castoriceps";
+    private const string HelpUrl = "discord.gg/CyreneEchoes";
 
     // ECDSA P-256 public key (SubjectPublicKeyInfo DER, base64). DEMO KEY — rotate
     // via cyrene-web/scripts/gen-activation-keys.mjs and replace before real use.
@@ -40,10 +40,24 @@ public static class OnlineActivationManager
     {
         try
         {
-            var hwid = HardwareIdManager.GetHwid().ToLowerInvariant();
+            // Launcher-managed: CyreneLauncher injects its login token (and device id) via env; use them directly, never the browser flow.
+            var launcherMode = !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("M7H_LAUNCHER_MODE"));
+            var deviceIdOverride = Environment.GetEnvironmentVariable("M7H_DEVICE_ID");
+
+            var hwid = (launcherMode && !string.IsNullOrWhiteSpace(deviceIdOverride)
+                ? deviceIdOverride.Trim()
+                : HardwareIdManager.GetHwid()).ToLowerInvariant();
             Logger.Info(I18NManager.Translate("Server.ServerInfo.LicenseCurrentHwid", hwid));
 
             var token = ReadToken();
+
+            if (launcherMode)
+            {
+                var ok = !string.IsNullOrWhiteSpace(token) && await ActivateAsync(token, hwid, version) == ActivateResult.Ok;
+                if (!ok) Logger.Error(I18NManager.Translate("Server.ServerInfo.ActivationLauncherRelogin"));
+                return ok;
+            }
+
             if (string.IsNullOrWhiteSpace(token))
             {
                 token = await AuthorizeDeviceAsync(hwid, version);
@@ -291,22 +305,37 @@ public static class OnlineActivationManager
         }
     }
 
+    // Retry transient failures (network errors / 5xx) with backoff; a definitive HTTP response (2xx/4xx) returns immediately.
     private static async Task<(int, string?)> PostJsonAsync(string url, string json, string? bearer)
     {
-        try
+        const int maxAttempts = 4;
+        var lastErr = "network error";
+        for (var attempt = 1; attempt <= maxAttempts; attempt++)
         {
-            using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
-            if (!string.IsNullOrEmpty(bearer))
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer);
-            using var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(url, content);
-            var text = await response.Content.ReadAsStringAsync();
-            return ((int)response.StatusCode, text);
+            try
+            {
+                using var client = new HttpClient { Timeout = TimeSpan.FromSeconds(15) };
+                if (!string.IsNullOrEmpty(bearer))
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearer);
+                using var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(url, content);
+                var text = await response.Content.ReadAsStringAsync();
+                var status = (int)response.StatusCode;
+                if (status >= 500 && attempt < maxAttempts)
+                {
+                    lastErr = $"HTTP {status}";
+                    await Task.Delay(TimeSpan.FromSeconds(attempt));
+                    continue;
+                }
+                return (status, text);
+            }
+            catch (Exception ex)
+            {
+                lastErr = ex.Message;
+                if (attempt < maxAttempts) await Task.Delay(TimeSpan.FromSeconds(attempt));
+            }
         }
-        catch (Exception ex)
-        {
-            return (0, ex.Message);
-        }
+        return (0, lastErr);
     }
 
     private static bool VerifySignature(string hwid, byte[] nonce, long exp, string sigB64)

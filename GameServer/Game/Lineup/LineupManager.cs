@@ -268,6 +268,7 @@ public class LineupManager : BasePlayerManager<LineupData>
             Data.Lineups[lineupIndex] = lineup;
         }
 
+        MarkDirty();
         if (sendPacket)
         {
             if (lineupIndex == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();

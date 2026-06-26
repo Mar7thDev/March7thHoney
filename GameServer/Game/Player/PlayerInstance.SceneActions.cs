@@ -345,65 +345,77 @@ public partial class PlayerInstance
         await SendPacket(new PacketSceneEntityMoveScNotify(this));
     }
 
+    private readonly HashSet<long> _loadingFloors = [];
+
     public async ValueTask LoadScene(int planeId, int floorId, int entryId, Position pos, Position rot, bool sendPacket,
         bool mapTp = false)
     {
         GameData.MazePlaneData.TryGetValue(planeId, out var plane);
         if (plane == null) return;
 
-        if (plane.PlaneType == PlaneTypeEnum.Raid && RaidManager!.Data.CurRaidId == 0)
+        var floorKey = ((long)planeId << 32) | (uint)floorId;
+        if (!_loadingFloors.Add(floorKey)) return; // cycle guard: floor already loading (orphan level-graph EnterMap) -> stack overflow
+        try
         {
-            await EnterScene(2000101, 0, sendPacket);
-            return;
+            if (plane.PlaneType == PlaneTypeEnum.Raid && RaidManager!.Data.CurRaidId == 0)
+            {
+                await EnterScene(2000101, 0, sendPacket);
+                return;
+            }
+
+            if (plane.PlaneType == PlaneTypeEnum.Challenge && ChallengeManager!.ChallengeInstance == null &&
+                entryId is not GameConstants.CHALLENGE_ENTRANCE and
+                    not GameConstants.CHALLENGE_BOSS_ENTRANCE and
+                    not GameConstants.CHALLENGE_PEAK_ENTRANCE and
+                    not GameConstants.CHALLENGE_STORY_ENTRANCE)
+            {
+                await EnterScene(GameConstants.CHALLENGE_ENTRANCE, 0, sendPacket);
+                return;
+            }
+
+            Data.Pos = pos;
+            Data.Rot = rot;
+            var notSendMove = true;
+            if (planeId != Data.PlaneId || floorId != Data.FloorId || entryId != Data.EntryId || SceneInstance == null ||
+                !mapTp)
+            {
+                if (SceneInstance != null)
+                    await SceneInstance.OnDestroy();
+                SceneInstance instance = new(this, plane, floorId, entryId);
+                SceneInstance = instance;
+
+                await instance.SyncLineup(true);
+                Data.PlaneId = planeId;
+                Data.FloorId = floorId;
+                Data.EntryId = entryId;
+                March7thHoney.Database.DatabaseHelper.MarkDirty(Uid);
+            }
+            else if (StoryLineManager?.StoryLineData.CurStoryLineId == 0 &&
+                     mapTp) // only send move packet when not in story line and mapTp
+            {
+                notSendMove = false;
+            }
+
+            if (MissionManager != null)
+                await MissionManager.OnPlayerChangeScene();
+
+            Connection?.SendPacket(CmdIds.SyncServerSceneChangeNotify);
+            if (sendPacket && notSendMove)
+                await SendPacket(new PacketEnterSceneByServerScNotify(SceneInstance!));
+            else if (sendPacket && !notSendMove) // send move packet
+                await SendPacket(new PacketSceneEntityMoveScNotify(this));
+
+            if (MissionManager != null)
+            {
+                await MissionManager.HandleFinishType(MissionFinishTypeEnum.EnterFloor);
+                await MissionManager.HandleFinishType(MissionFinishTypeEnum.EnterPlane);
+                await MissionManager.HandleFinishType(MissionFinishTypeEnum.NotInFloor);
+                await MissionManager.HandleFinishType(MissionFinishTypeEnum.NotInPlane);
+            }
         }
-
-        if (plane.PlaneType == PlaneTypeEnum.Challenge && ChallengeManager!.ChallengeInstance == null &&
-            entryId is not GameConstants.CHALLENGE_ENTRANCE and
-                not GameConstants.CHALLENGE_BOSS_ENTRANCE and
-                not GameConstants.CHALLENGE_PEAK_ENTRANCE and
-                not GameConstants.CHALLENGE_STORY_ENTRANCE)
+        finally
         {
-            await EnterScene(GameConstants.CHALLENGE_ENTRANCE, 0, sendPacket);
-            return;
-        }
-
-        Data.Pos = pos;
-        Data.Rot = rot;
-        var notSendMove = true;
-        if (planeId != Data.PlaneId || floorId != Data.FloorId || entryId != Data.EntryId || SceneInstance == null ||
-            !mapTp)
-        {
-            if (SceneInstance != null)
-                await SceneInstance.OnDestroy();
-            SceneInstance instance = new(this, plane, floorId, entryId);
-            SceneInstance = instance;
-
-            await instance.SyncLineup(true);
-            Data.PlaneId = planeId;
-            Data.FloorId = floorId;
-            Data.EntryId = entryId;
-        }
-        else if (StoryLineManager?.StoryLineData.CurStoryLineId == 0 &&
-                 mapTp) // only send move packet when not in story line and mapTp
-        {
-            notSendMove = false;
-        }
-
-        if (MissionManager != null)
-            await MissionManager.OnPlayerChangeScene();
-
-        Connection?.SendPacket(CmdIds.SyncServerSceneChangeNotify);
-        if (sendPacket && notSendMove)
-            await SendPacket(new PacketEnterSceneByServerScNotify(SceneInstance!));
-        else if (sendPacket && !notSendMove) // send move packet
-            await SendPacket(new PacketSceneEntityMoveScNotify(this));
-
-        if (MissionManager != null)
-        {
-            await MissionManager.HandleFinishType(MissionFinishTypeEnum.EnterFloor);
-            await MissionManager.HandleFinishType(MissionFinishTypeEnum.EnterPlane);
-            await MissionManager.HandleFinishType(MissionFinishTypeEnum.NotInFloor);
-            await MissionManager.HandleFinishType(MissionFinishTypeEnum.NotInPlane);
+            _loadingFloors.Remove(floorKey);
         }
     }
 
