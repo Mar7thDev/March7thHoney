@@ -37,6 +37,11 @@ Console.WriteLine($"[organizer] translations = {translations.ObfToReal.Count}, m
 var graph = GraphContext.Build(defs, translations, masterEdges);
 var gr = Grouper.Build(defs, packetIds, graph);
 
+// Split the large Common/Orphans catch-alls into per-major-category files.
+var recatReport = Recategorizer.Run(gr, defs, packetIds);
+gr.Report.Add("");
+gr.Report.AddRange(recatReport);
+
 Console.WriteLine();
 Console.WriteLine("=== Grouping report ===");
 foreach (var line in gr.Report) Console.WriteLine(line);

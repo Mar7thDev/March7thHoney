@@ -14,15 +14,23 @@ Proto/
       translations.txt       obf -> real name
       Gateserver.proto, Mar7thDumper.log
       dump.cs                119MB il2cpp dump (git-ignored)
-    Common.proto             types referenced by >=2 CmdType groups
+    Common.proto             core types referenced by >=2 CmdType groups (internally sectioned by category)
+    Common<Module>.proto     separable shared modules split out of Common
     Cmd<Xxx>Type.proto       one file per command category: the enum + its closure
-    Orphans.proto            curated types not reachable from any packet (compiled catch-all)
+    Orphans.proto            core unreferenced types (internally sectioned by category)
+    Orphans<Module>.proto    separable peripheral modules split out of Orphans
   Generated/                 generated C# for the ACTIVE version (the only thing Proto.csproj compiles)
   Tool/ProtoOrganizer/       the reorganizer (see below)
 ```
 
 The grouped `Proto/<version>/*.proto` tree is the source of truth — edit definitions there. (The old
 flat `ProtoFile/` library has been retired; `Proto/4.4/` is a complete, verified-equivalent replacement.)
+
+**On Common/Orphans subdivision:** the organizer splits these catch-alls into per-major-category files
+(Avatar, Lineup, Battle, …) wherever a module is *separable*. Core gameplay types are densely
+mutually-recursive, and protobuf forbids circular imports between files, so a strongly-connected set
+must stay in one file — those remain in `Common.proto` / `Orphans.proto`, sectioned internally by
+category. A file-level SCC pass guarantees the split never produces an import cycle.
 
 Only **one** version is active and compiles into the `March7thHoney.Proto` assembly via
 `Proto/Generated/`. Other versions are kept as data/translation reference. C# references proto types by
