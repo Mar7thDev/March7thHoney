@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum JGNAEPIJDNC {
-    JGNAEPIJDNC_NLCDGIPGFDJ = 0;
-    JGNAEPIJDNC_LOOAKNHDBLL = 1;
-    JGNAEPIJDNC_CIHFGJDCHIA = 2;
-}

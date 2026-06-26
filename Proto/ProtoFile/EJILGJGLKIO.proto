@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "PFCKBFLDHNI.proto";
-
-message EJILGJGLKIO {
-    PFCKBFLDHNI relic_plan = 6;
-}

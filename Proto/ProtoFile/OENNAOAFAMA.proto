@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message OENNAOAFAMA {
-    uint32 retcode = 5;
-    uint32 JBDFEHDFKNO = 9;
-    uint32 DACKJGDGMLN = 10;
-}

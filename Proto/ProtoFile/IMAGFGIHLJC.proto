@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message IMAGFGIHLJC {
-    uint32 CDMFHNGEFCN = 4;
-    uint32 AJHDCEGIGMC = 7;
-    uint32 area_id = 8;
-}

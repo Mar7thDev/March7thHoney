@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "RogueModifierSourceType.proto";
-
-message RogueModifierStageStartNotify {
-    RogueModifierSourceType source_type = 13;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message TakeTrainVisitorBehaviorRewardScRsp {
-    uint32 DOOACEHOPEE = 8;
-    uint32 retcode = 12;
-    repeated uint32 HBGLEOAJJGE = 14;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message LOHLENBEIEB {
-    int32 MNLINFEODPJ = 1;
-    float ratio = 7;
-    bool is_valid = 14;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message NJHFBDDHCEN {
-    bool LHGIFDNPIDE = 4;
-    uint32 grid_fight_equipment_id = 5;
-    uint32 level = 11;
-}

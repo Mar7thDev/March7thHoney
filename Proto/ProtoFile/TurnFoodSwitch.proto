@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum TurnFoodSwitch {
-    FHLEKKNDBBE_NLCDGIPGFDJ = 0;
-    FHLEKKNDBBE_attack = 1;
-    FHLEKKNDBBE_FJLOGNFECHI = 2;
-}

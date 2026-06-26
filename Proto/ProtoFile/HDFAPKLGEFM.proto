@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum HDFAPKLGEFM {
-    HDFAPKLGEFM_LCOKOJCGKHP = 0;
-    HDFAPKLGEFM_NMDOPKBENEA = 1;
-}

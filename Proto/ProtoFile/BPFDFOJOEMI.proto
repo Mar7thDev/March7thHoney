@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BPFDFOJOEMI {
-    uint32 percent = 2;
-    uint32 LBDLAACOCCN = 6;
-}

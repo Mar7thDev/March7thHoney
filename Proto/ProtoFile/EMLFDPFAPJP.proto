@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EMLFDPFAPJP {
-    uint32 NAEAGNLBKAM = 1;
-    uint32 MHPPIKLBNMD = 2;
-}

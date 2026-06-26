@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GKMOAKPLBHO {
-    uint32 LPOLPDBELON = 3;
-    uint32 GCAHKLNGFCK = 5;
-    uint32 dice_slot_id = 10;
-}

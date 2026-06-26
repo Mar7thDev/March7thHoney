@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum PBIEFHKNAFA {
-    PBIEFHKNAFA_NLCDGIPGFDJ = 0;
-    PBIEFHKNAFA_KBBDECFFFAL = 1;
-}

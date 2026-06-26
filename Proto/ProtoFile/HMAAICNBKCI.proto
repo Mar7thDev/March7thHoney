@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HMAAICNBKCI {
-    map<uint32, int32> DCLBHOHPGMB = 12;
-}

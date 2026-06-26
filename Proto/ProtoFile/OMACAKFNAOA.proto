@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "KVP.proto";
-
-message OMACAKFNAOA {
-    repeated KVP IHFEBNBHDFM = 3;
-}

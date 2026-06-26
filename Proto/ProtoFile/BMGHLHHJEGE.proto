@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message BMGHLHHJEGE {
-    uint32 event_type = 7;
-    bool is_disappeared_once = 12;
-}

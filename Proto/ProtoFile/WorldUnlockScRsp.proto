@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message WorldUnlockScRsp {
-    uint32 CFDCEEMIOCO = 7;
-    uint32 retcode = 9;
-}

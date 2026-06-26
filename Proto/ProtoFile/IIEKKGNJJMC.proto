@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message IIEKKGNJJMC {
-    uint64 KNDHHAJMBGB = 3;
-    uint32 BFCNALJDHMP = 8;
-    bool DBODGPBOIHC = 13;
-}

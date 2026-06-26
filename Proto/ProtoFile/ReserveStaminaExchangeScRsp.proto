@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ReserveStaminaExchangeScRsp {
-    uint32 retcode = 12;
-    uint32 num = 14;
-}

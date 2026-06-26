@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message GMBGLBHEFDI {
-    repeated uint32 HKFDNIFACFH = 1;
-    repeated uint32 FPPJGGJCJIH = 8;
-}

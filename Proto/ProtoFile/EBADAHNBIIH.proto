@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EBADAHNBIIH {
-    uint32 GPJBPKILOBM = 6;
-    uint32 BIKALOGMMDA = 11;
-}

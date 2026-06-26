@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum TutorialFinishType {
-    CEBJAAAIPDA_NLCDGIPGFDJ = 0;
-    CEBJAAAIPDA_CNPNACJBHJG = 1;
-    CEBJAAAIPDA_NNAIDJINDHO = 2;
-}

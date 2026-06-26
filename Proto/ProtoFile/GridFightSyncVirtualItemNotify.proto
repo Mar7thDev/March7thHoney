@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "CENBJOMMJGD.proto";
-
-message GridFightSyncVirtualItemNotify {
-    repeated CENBJOMMJGD item_list = 15;
-}

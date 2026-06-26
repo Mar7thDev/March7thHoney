@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum OLBNNJKCMAI {
-    OLBNNJKCMAI_NJBGKCIGOJE = 0;
-    OLBNNJKCMAI_GPNIFHBEHNB = 1;
-    OLBNNJKCMAI_KCEHIDFLKLM = 2;
-}

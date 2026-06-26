@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message NIJHCCNMEGA {
-    uint32 NPCBECNBIJK = 5;
-    repeated uint32 KCNEKEGGAGG = 6;
-    uint32 card_id = 8;
-}

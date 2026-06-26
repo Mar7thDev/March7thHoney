@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message DDHIEONLIIL {
-    bool is_taken_reward = 3;
-    bool DDKGKOFAGMH = 8;
-    uint64 HEMOHFJJMJG = 15;
-}

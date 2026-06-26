@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message JEEHGNIBIFE {
-    uint32 APNAFLBGENA = 5;
-    uint32 map_id = 10;
-}

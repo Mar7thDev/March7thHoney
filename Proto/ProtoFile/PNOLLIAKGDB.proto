@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PNOLLIAKGDB {
-    bool BELKCBAGMFC = 2;
-    uint32 JHJKCJKDHIB = 4;
-    bool MLPGDPGIFCJ = 5;
-}

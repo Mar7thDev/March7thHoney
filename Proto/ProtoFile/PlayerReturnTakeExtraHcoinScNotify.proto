@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PlayerReturnTakeExtraHcoinScNotify {
-    uint32 ONAEMDLNJDA = 3;
-    uint32 LHGKNPENJDO = 5;
-    bool EAJKAIKEHOL = 8;
-}

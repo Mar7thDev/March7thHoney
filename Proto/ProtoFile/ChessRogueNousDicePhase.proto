@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum ChessRogueNousDicePhase {
-    PKCGJHNMLPK_NLCDGIPGFDJ = 0;
-    PKCGJHNMLPK_HJBHKCJEEEE = 1;
-    PKCGJHNMLPK_GAIALIOPEPC = 2;
-}

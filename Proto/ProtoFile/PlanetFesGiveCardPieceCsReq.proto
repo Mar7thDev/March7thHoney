@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message PlanetFesGiveCardPieceCsReq {
-    uint32 teleport_id = 8;
-    repeated uint32 JAKKDGHLJPH = 14;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "CELLCCKJIGL.proto";
-
-message EACCOJLOPJL {
-    repeated CELLCCKJIGL CDAMKBGLNKO = 15;
-}

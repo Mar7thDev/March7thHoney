@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum IDCBNMFDICO {
-    IDCBNMFDICO_NLCDGIPGFDJ = 0;
-    IDCBNMFDICO_LOOAKNHDBLL = 1;
-    IDCBNMFDICO_CIHFGJDCHIA = 2;
-}

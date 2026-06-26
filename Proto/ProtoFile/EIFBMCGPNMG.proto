@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message EIFBMCGPNMG {
-    map<uint32, uint32> EOPNCAMILJF = 7;
-}

@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum KFMHMJLPHOG {
-    KFMHMJLPHOG_LFGOKFCPBOG = 0;
-    KFMHMJLPHOG_PFNPBLMEOJB = 1;
-    KFMHMJLPHOG_CBHMACJNEJG = 2;
-}

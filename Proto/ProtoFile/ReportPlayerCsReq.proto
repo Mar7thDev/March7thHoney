@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message ReportPlayerCsReq {
-    uint32 uid = 4;
-    uint32 OLLBLNAGMPC = 9;
-    string IMNOJNCGGNI = 10;
-}

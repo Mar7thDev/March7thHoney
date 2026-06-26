@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KIJJCOBOJFM {
-    uint32 text_join_item_id = 15;
-}

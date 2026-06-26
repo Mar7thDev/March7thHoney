@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum OMCNFMGPDAP {
-    OMCNFMGPDAP_IAIMDIAFCNL = 0;
-    OMCNFMGPDAP_AGBGJCINDCP = 1;
-    OMCNFMGPDAP_MDPIBJPHMGJ = 2;
-}

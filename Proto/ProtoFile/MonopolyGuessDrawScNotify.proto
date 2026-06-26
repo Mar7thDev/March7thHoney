@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-import "DCMHLOEGFBM.proto";
-
-message MonopolyGuessDrawScNotify {
-    repeated DCMHLOEGFBM KHLFDHANJCO = 11;
-}

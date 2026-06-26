@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum CFCPOEDPPKB {
-    CFCPOEDPPKB_ABECLEIGDEF = 0;
-    CFCPOEDPPKB_CINLJPPIINL = 1;
-    CFCPOEDPPKB_CHBNBPFIJPG = 2;
-}

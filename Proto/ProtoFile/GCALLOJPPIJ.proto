@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum GCALLOJPPIJ {
-    GCALLOJPPIJ_NLCDGIPGFDJ = 0;
-    GCALLOJPPIJ_BDEFGIPPKNM = 1;
-    GCALLOJPPIJ_BPBFOIJKCJA = 2;
-}

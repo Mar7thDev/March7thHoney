@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message HEGGPIEGBIN {
-    bool is_new = 2;
-    uint32 FHNNGNBDGHO = 9;
-    uint32 id = 12;
-}

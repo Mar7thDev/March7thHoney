@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message KDANACKPJIP {
-    uint32 CCOOCEEAKFI = 1;
-    uint32 JBGENFIKGGF = 4;
-    uint32 JHMNIGAGOCK = 11;
-}

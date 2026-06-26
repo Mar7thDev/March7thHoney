@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-enum ABPEEALGKAO {
-    ABPEEALGKAO_FKMOKGOBEHJ = 0;
-    ABPEEALGKAO_MFAEGBJBJBE = 1;
-    ABPEEALGKAO_KEEABEOLAOF = 2;
-}

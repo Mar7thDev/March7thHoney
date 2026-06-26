@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ChangeEraFlipperDataCsReq {
+    KKFMGCNDHGH data = 1;
+}
+
+enum CmdEraFlipperType {
+    LDEBFOMPOGN_NLCDGIPGFDJ = 0;
+    LDEBFOMPOGN_KHMGHMMCJEM = 6562;
+    LDEBFOMPOGN_GKOKHIOBJDM = 6559;
+    LDEBFOMPOGN_DDFCEHMLIAL = 6571;
+    LDEBFOMPOGN_HBIJLNGMBIB = 6557;
+    LDEBFOMPOGN_DANCIMOJIJM = 6555;
+    LDEBFOMPOGN_DDHFJFAKPCB = 6565;
+    LDEBFOMPOGN_OPAIFJPGJKA = 6568;
+    LDEBFOMPOGN_HGACHEAMGPI = 6569;
+    LDEBFOMPOGN_LBIGAGOEINK = 6558;
+}
+
+message DMICEOCOGAD {
+    KKFMGCNDHGH data = 1;
+    uint32 floor_id = 2;
+}
+
+message EnterEraFlipperDataCsReq {
+    uint32 state = 5;
+    uint32 region_id = 15;
+}
+
+message GetEraFlipperDataCsReq {
+}
+
+message HKLDDAAECLN {
+    uint32 state = 8;
+    uint32 region_id = 15;
+}
+
+message KKFMGCNDHGH {
+    repeated HKLDDAAECLN DMDKAOOLABF = 14;
+}

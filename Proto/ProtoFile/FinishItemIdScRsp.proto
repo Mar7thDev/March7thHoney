@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option csharp_namespace = "March7thHoney.Proto";
-
-message FinishItemIdScRsp {
-    uint32 item_id = 6;
-    uint32 retcode = 9;
-    uint32 text_id = 11;
-}
