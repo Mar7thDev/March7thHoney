@@ -19,7 +19,10 @@ namespace March7thHoney.GameServer.Game.ChallengePeak;
 /// <see cref="March7thHoney.GameServer.Game.Challenge.ChallengeManager" />
 public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(player)
 {
-    public bool BossIsHard { get; set; } = false;
+    // 王棋难度按 group 记忆(随 SetChallengePeakBossHardMode 改变, 离开不重置), 对齐官服按 peakGroupId 跟踪
+    private readonly Dictionary<int, bool> _bossHardByGroup = [];
+    public void SetBossHard(int groupId, bool hard) => _bossHardByGroup[groupId] = hard;
+    public bool IsBossHard(int groupId) => _bossHardByGroup.GetValueOrDefault(groupId, false);
 
     public ChallengePeakGroup GetChallengePeakInfo(int groupId, bool disableHardMode = true)
     {
@@ -74,7 +77,6 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
         var bossProto = new Proto.ChallengePeakBoss
         {
-            BFBHCKEJDIG = (uint)bossLevelId,
             HardModeHasPassed = true,
             // Mark both difficulties unlocked even with no clearance record, so the client always
             // offers the 普通/绝境 switch from the start (real records below override with avatars/cycles).
@@ -82,28 +84,28 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             HardMode = new ChallengePeakBossClearance { HasPassed = true }
         };
 
-        HashSet<uint> targetIds = [];
-            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue((bossLevelId << 2) | 0,
-                out var bossPbData)) // easy (is hard = 0)
-        {
-            bossProto.EasyMode.PeakAvatarIdList.AddRange(bossPbData.BaseAvatarList);
-            bossProto.EasyMode.BestCycleCount = bossPbData.RoundCnt;
-            bossProto.EasyMode.HasPassed = true;
-            bossProto.EasyMode.BuffId = bossPbData.BuffId;
+        var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+        bossDatas.TryGetValue((bossLevelId << 2) | 0, out var easyRec);
+        bossDatas.TryGetValue((bossLevelId << 2) | 1, out var hardRec);
+        // 普通/绝境槽位都回填保存的队伍(自身记录优先,无则回退另一难度), 同一支队伍同时显示在两个难度
+        var easySrc = easyRec ?? hardRec;
+        var hardSrc = hardRec ?? easyRec;
 
-            foreach (var targetId in bossPbData.FinishedTargetList) targetIds.Add(targetId);
+        HashSet<uint> targetIds = [];
+        if (easySrc != null)
+        {
+            bossProto.EasyMode.PeakAvatarIdList.AddRange(easySrc.BaseAvatarList);
+            bossProto.EasyMode.BestCycleCount = easySrc.RoundCnt;
+            bossProto.EasyMode.BuffId = easySrc.BuffId;
+            foreach (var t in easySrc.FinishedTargetList) targetIds.Add(t);
         }
 
-            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue((bossLevelId << 2) | 1,
-                out var bossHardPbData)) // easy (is hard = 1)
+        if (hardSrc != null)
         {
-            bossProto.HardModeHasPassed = true;
-            bossProto.HardMode.PeakAvatarIdList.AddRange(bossHardPbData.BaseAvatarList);
-            bossProto.HardMode.BestCycleCount = bossHardPbData.RoundCnt;
-            bossProto.HardMode.HasPassed = true;
-            bossProto.HardMode.BuffId = bossHardPbData.BuffId;
-
-            foreach (var targetId in bossHardPbData.FinishedTargetList) targetIds.Add(targetId);
+            bossProto.HardMode.PeakAvatarIdList.AddRange(hardSrc.BaseAvatarList);
+            bossProto.HardMode.BestCycleCount = hardSrc.RoundCnt;
+            bossProto.HardMode.BuffId = hardSrc.BuffId;
+            foreach (var t in hardSrc.FinishedTargetList) targetIds.Add(t);
         }
 
         // No real clearance record yet: seed the full target set (normal + hard) so the boss reads as
@@ -268,6 +270,13 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
             Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas[levelId] = data;
 
+            // 最新队伍+buff 镜像到另一难度记录, 让普通/绝境槽位都显示上一次挑战的队伍(客户端槽位只读 easyMode)
+            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(levelId ^ 1, out var mirror))
+            {
+                mirror.BaseAvatarList = data.BaseAvatarList;
+                mirror.BuffId = data.BuffId;
+            }
+
             // set head frame
             if (isHard)
             {
@@ -386,7 +395,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         };
 
         if (excel.BossExcel != null)
-            data.Peak!.IsHard = BossIsHard;
+            data.Peak!.IsHard = IsBossHard((int)data.Peak!.CurrentPeakGroupId);
 
         if (buffId > 0) data.Peak!.Buffs.Add(buffId);
 
