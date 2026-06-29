@@ -20,8 +20,6 @@ public class HandlerLeaveChallengePeakCsReq : PlayerHandler
             player.ChallengeManager!.ChallengeInstance = null;
             player.ChallengeManager!.ClearInstance();
 
-            player.ChallengePeakManager!.BossIsHard = false;
-
             // Leave scene
             player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
             // Heal avatars (temproary solution)
