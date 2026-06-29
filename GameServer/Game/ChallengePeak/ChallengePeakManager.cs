@@ -19,7 +19,10 @@ namespace March7thHoney.GameServer.Game.ChallengePeak;
 /// <see cref="March7thHoney.GameServer.Game.Challenge.ChallengeManager" />
 public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(player)
 {
-    public bool BossIsHard { get; set; } = false;
+    // 王棋难度按 group 记忆(随 SetChallengePeakBossHardMode 改变, 离开不重置), 对齐官服按 peakGroupId 跟踪
+    private readonly Dictionary<int, bool> _bossHardByGroup = [];
+    public void SetBossHard(int groupId, bool hard) => _bossHardByGroup[groupId] = hard;
+    public bool IsBossHard(int groupId) => _bossHardByGroup.GetValueOrDefault(groupId, false);
 
     public ChallengePeakGroup GetChallengePeakInfo(int groupId, bool disableHardMode = true)
     {
@@ -386,7 +389,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         };
 
         if (excel.BossExcel != null)
-            data.Peak!.IsHard = BossIsHard;
+            data.Peak!.IsHard = IsBossHard((int)data.Peak!.CurrentPeakGroupId);
 
         if (buffId > 0) data.Peak!.Buffs.Add(buffId);
 

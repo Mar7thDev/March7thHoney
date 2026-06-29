@@ -9,7 +9,7 @@ public class HandlerSetChallengePeakBossHardModeCsReq : Handler<SetChallengePeak
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, SetChallengePeakBossHardModeCsReq req)
     {
-        player.ChallengePeakManager!.BossIsHard = req.IsHardMode;
+        player.ChallengePeakManager!.SetBossHard((int)req.PeakGroupId, req.IsHardMode);
 
         await connection.SendPacket(new PacketSetChallengePeakBossHardModeScRsp(req.PeakGroupId, req.IsHardMode));
     }
