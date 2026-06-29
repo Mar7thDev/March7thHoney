@@ -23,16 +23,15 @@ public static class OnlineActivationManager
 {
     private static readonly Logger Logger = new("Activation");
 
-    private const string BaseUrl = "https://cyrene-web-one.vercel.app";
+    private const string BaseUrl = "https://cyrene.hoyotoon.com";
     private const string ActivateEndpoint = BaseUrl + "/api/server/activate";
     private const string DeviceCodeEndpoint = BaseUrl + "/api/launcher/device/code";
     private const string DeviceTokenEndpoint = BaseUrl + "/api/launcher/device/token";
     private const string HelpUrl = "discord.gg/CyreneEchoes";
 
-    // ECDSA P-256 public key (SubjectPublicKeyInfo DER, base64). DEMO KEY — rotate
-    // via cyrene-web/scripts/gen-activation-keys.mjs and replace before real use.
+    // ECDSA P-256 public key (SubjectPublicKeyInfo DER, base64); pairs with cyrene.hoyotoon.com ACTIVATION_SIGN_SK.
     private const string SignPublicKeyB64 =
-        "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE71CRY/VhUhUskSM0TziuQi3r8vbU5uJ9w6MYSJ1MG24f0U1rbhLm9DE69rZZdRGZgp5exfwbAbVtlzzaOq16Eg==";
+        "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE0B8BahOmnSrpcrz64ReTq75XAiTrrs+PrHBtQp7ImtYnnj/Pvkly2EEbeqTLml9eq238gUwUOcfuIOHw78wujg==";
 
     private static readonly byte[] Magic = "M7HACT01"u8.ToArray();
 
