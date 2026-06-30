@@ -261,11 +261,11 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         }
         else
         {
-            // Final node cleared — settle the whole challenge.
+            // 末关通关: 保活实例(对齐单关重打)供「重新挑战」用, 清理交给 Leave()/重开内部
             IsPassed = true;
             Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
-            Player.ChallengeTierceManager.ClearInstance();
+            Player.ChallengeTierceManager.SaveInstance();
         }
     }
 }
