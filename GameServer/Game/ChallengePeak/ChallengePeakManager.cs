@@ -399,6 +399,23 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
         if (buffId > 0) data.Peak!.Buffs.Add(buffId);
 
+        // 进场景即持久化王棋队伍+特性(不必通关), 镜像到另一难度键(客户端槽位只读 easyMode)
+        if (excel.BossExcel != null)
+        {
+            var team = lineup.BaseAvatars.Select(x => (uint)x.BaseAvatarId).ToList();
+            if (team.Count > 0)
+            {
+                var bossKey = (levelId << 2) | (data.Peak!.IsHard ? 1 : 0);
+                var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+                if (!bossDatas.TryGetValue(bossKey, out var rec))
+                    rec = new ChallengePeakBossLevelData { LevelId = levelId, IsHard = data.Peak!.IsHard };
+                rec.BaseAvatarList = team;
+                rec.BuffId = buffId;
+                bossDatas[bossKey] = rec;
+                if (bossDatas.TryGetValue(bossKey ^ 1, out var mirror)) { mirror.BaseAvatarList = team; mirror.BuffId = buffId; }
+            }
+        }
+
         var instance = new ChallengePeakInstance(Player, data);
 
         Player.ChallengeManager!.ChallengeInstance = instance;
