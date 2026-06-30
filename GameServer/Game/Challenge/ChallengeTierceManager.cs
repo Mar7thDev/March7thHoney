@@ -241,23 +241,12 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         if (CurrentInstance == null) return false;
 
         var challengeId = CurrentInstance.ChallengeId;
-        var isSingleStage = CurrentInstance.IsSingleStage;
         var stageIndex = CurrentInstance.CurStageIndex;
-        var lineupSnapshot = CurrentInstance.StageLineupSnapshot
-            .Select(list => new ChallengeTierceStageLineupInfo
-            {
-                Lineup = { list.Select(id => new AvatarIdentifier { Id = id, AvatarType = AvatarType.AvatarFormalType }) }
-            })
-            .ToList();
-        var buffSnapshot = CurrentInstance.StageBuffIds.ToList();
-        for (var i = 0; i < lineupSnapshot.Count && i < buffSnapshot.Count; i++)
-            lineupSnapshot[i].BuffId = buffSnapshot[i];
 
         ClearInstance();
 
-        if (isSingleStage)
-            return await StartSingleStage(challengeId, stageIndex);
-        return await StartChallenge(challengeId, lineupSnapshot);
+        // 「重新挑战」只在末关结算出现, 统一重进当前(末)关而非重打整轮; 队伍由 StartSingleStage 从历史/现存编队还原
+        return await StartSingleStage(challengeId, stageIndex);
     }
 
     public void SaveInstance()
