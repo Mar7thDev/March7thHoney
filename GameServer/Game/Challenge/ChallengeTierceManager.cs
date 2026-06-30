@@ -114,9 +114,9 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
 
         await Player.LineupManager.SetExtraLineup(lineupType, false);
 
-        // Enter the next node's entrance — AS jumps to a new floor here; MOC/PF stay on the same floor.
+        // 切关场景走 NextStageScRsp.Scene 下发(同首关/单关), sendPacket=false 避免重复整场景重进致卡顿
         var entranceId = GetEntranceForStage(CurrentInstance, CurrentInstance.CurStageIndex);
-        await Player.EnterScene(entranceId, 0, true);
+        await Player.EnterScene(entranceId, 0, false);
 
         if (Player.SceneInstance != null)
             Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(CurrentInstance.PreConfig);
