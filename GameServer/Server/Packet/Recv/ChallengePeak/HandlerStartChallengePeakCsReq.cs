@@ -1,3 +1,4 @@
+using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -8,7 +9,8 @@ public class HandlerStartChallengePeakCsReq : Handler<StartChallengePeakCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, StartChallengePeakCsReq req)
     {
-        await player.ChallengePeakManager!.StartChallenge((int)req.PeakId, req.BossBuffId,
+        var rc = await player.ChallengePeakManager!.StartChallenge((int)req.PeakId, req.BossBuffId,
             req.PeakAvatarIdList.Select(x => (int)x).ToList());
+        await connection.SendPacket(new PacketStartChallengePeakScRsp(rc));
     }
 }
