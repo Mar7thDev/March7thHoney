@@ -318,14 +318,11 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
                 GetChallengePeakInfo((int)inst.Data.Peak!.CurrentPeakGroupId, !inst.Data.Peak!.IsHard)));
     }
 
-    public async ValueTask StartChallenge(int levelId, uint buffId, List<int> avatarIdList)
+    public async ValueTask<Retcode> StartChallenge(int levelId, uint buffId, List<int> avatarIdList)
     {
         // Get challenge excel
         if (!GameData.ChallengePeakConfigData.TryGetValue(levelId, out var excel))
-        {
-            await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetChallengeNotExist));
-            return;
-        }
+            return Retcode.RetChallengeNotExist;
 
         // Format to base avatar id
         List<int> avatarIds = [];
@@ -346,10 +343,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         }
 
         if (lineup == null)
-        {
-            await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetChallengeLineupEmpty));
-            return;
-        }
+            return Retcode.RetChallengeLineupEmpty;
         if (avatarIds.Count > 0)
             lineup.BaseAvatars = avatarIds.Select(x => new LineupAvatarInfo
             {
@@ -368,10 +362,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
         // Make sure this lineup has avatars set
         if (Player.AvatarManager!.Data.FormalAvatars.Count == 0)
-        {
-            await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetChallengeLineupEmpty));
-            return;
-        }
+            return Retcode.RetChallengeLineupEmpty;
 
         // Reset hp/sp
         foreach (var avatar in Player.AvatarManager!.Data.FormalAvatars)
@@ -399,6 +390,23 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
         if (buffId > 0) data.Peak!.Buffs.Add(buffId);
 
+        // 进场景即持久化王棋队伍+特性(不必通关), 镜像到另一难度键(客户端槽位只读 easyMode)
+        if (excel.BossExcel != null)
+        {
+            var team = lineup.BaseAvatars.Select(x => (uint)x.BaseAvatarId).ToList();
+            if (team.Count > 0)
+            {
+                var bossKey = (levelId << 2) | (data.Peak!.IsHard ? 1 : 0);
+                var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+                if (!bossDatas.TryGetValue(bossKey, out var rec))
+                    rec = new ChallengePeakBossLevelData { LevelId = levelId, IsHard = data.Peak!.IsHard };
+                rec.BaseAvatarList = team;
+                rec.BuffId = buffId;
+                bossDatas[bossKey] = rec;
+                if (bossDatas.TryGetValue(bossKey ^ 1, out var mirror)) { mirror.BaseAvatarList = team; mirror.BuffId = buffId; }
+            }
+        }
+
         var instance = new ChallengePeakInstance(Player, data);
 
         Player.ChallengeManager!.ChallengeInstance = instance;
@@ -418,10 +426,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             }
 
             if (mapEntranceId <= 0)
-            {
-                await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetChallengeNotExist));
-                return;
-            }
+                return Retcode.RetChallengeNotExist;
 
             await Player.EnterScene(mapEntranceId, 0, true);
         }
@@ -429,10 +434,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         {
             // Reset lineup/instance if entering scene failed
             Player.ChallengeManager!.ChallengeInstance = null;
-
-            // Send error packet
-            await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetChallengeNotExist));
-            return;
+            return Retcode.RetChallengeNotExist;
         }
 
         // Save start positions
@@ -444,10 +446,23 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         await Player.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(
             GetChallengePeakInfo((int)data.Peak!.CurrentPeakGroupId, !data.Peak!.IsHard)));
 
-        // Send packet
-        await Player.SendPacket(new PacketStartChallengePeakScRsp(Retcode.RetSucc));
-
         // Save instance
         Player.ChallengeManager!.SaveInstance(instance);
+        return Retcode.RetSucc;
+    }
+
+    // 结算界面「重新挑战」: 用当前王棋实例的关卡+buff+队伍重建本局, 难度由 IsBossHard 按 group 自动沿用
+    public async ValueTask<Retcode> Restart()
+    {
+        if (Player.ChallengeManager!.ChallengeInstance is not ChallengePeakInstance inst)
+            return Retcode.RetChallengeNotExist;
+
+        var levelId = inst.Config.ID;
+        var buffId = inst.Data.Peak!.Buffs.FirstOrDefault();
+        var avatarIds = (Player.LineupManager!.GetExtraLineup(ExtraLineupType.LineupChallenge)?.BaseAvatars ?? [])
+            .Select(x => x.BaseAvatarId).ToList();
+
+        Player.ChallengeManager!.ClearInstance();
+        return await StartChallenge(levelId, buffId, avatarIds);
     }
 }

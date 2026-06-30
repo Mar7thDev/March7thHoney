@@ -114,9 +114,9 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
 
         await Player.LineupManager.SetExtraLineup(lineupType, false);
 
-        // Enter the next node's entrance — AS jumps to a new floor here; MOC/PF stay on the same floor.
+        // 切关场景走 NextStageScRsp.Scene 下发(同首关/单关), sendPacket=false 避免重复整场景重进致卡顿
         var entranceId = GetEntranceForStage(CurrentInstance, CurrentInstance.CurStageIndex);
-        await Player.EnterScene(entranceId, 0, true);
+        await Player.EnterScene(entranceId, 0, false);
 
         if (Player.SceneInstance != null)
             Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(CurrentInstance.PreConfig);
@@ -241,23 +241,12 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         if (CurrentInstance == null) return false;
 
         var challengeId = CurrentInstance.ChallengeId;
-        var isSingleStage = CurrentInstance.IsSingleStage;
         var stageIndex = CurrentInstance.CurStageIndex;
-        var lineupSnapshot = CurrentInstance.StageLineupSnapshot
-            .Select(list => new ChallengeTierceStageLineupInfo
-            {
-                Lineup = { list.Select(id => new AvatarIdentifier { Id = id, AvatarType = AvatarType.AvatarFormalType }) }
-            })
-            .ToList();
-        var buffSnapshot = CurrentInstance.StageBuffIds.ToList();
-        for (var i = 0; i < lineupSnapshot.Count && i < buffSnapshot.Count; i++)
-            lineupSnapshot[i].BuffId = buffSnapshot[i];
 
         ClearInstance();
 
-        if (isSingleStage)
-            return await StartSingleStage(challengeId, stageIndex);
-        return await StartChallenge(challengeId, lineupSnapshot);
+        // 「重新挑战」只在末关结算出现, 统一重进当前(末)关而非重打整轮; 队伍由 StartSingleStage 从历史/现存编队还原
+        return await StartSingleStage(challengeId, stageIndex);
     }
 
     public void SaveInstance()
