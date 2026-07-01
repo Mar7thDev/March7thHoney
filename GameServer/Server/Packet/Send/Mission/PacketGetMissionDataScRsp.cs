@@ -19,6 +19,10 @@ public class PacketGetMissionDataScRsp : BasePacket
         {
             TrackMissionId = (uint)trackMissionId
         };
+        proto.FinishedMainMissionIdList.AddRange(player.MissionManager.Data.FinishedMainMissionIds
+            .Where(x => x > 0)
+            .Select(x => (uint)x)
+            .Distinct());
 
         foreach (var mission in GameData.MainMissionData.Keys)
             if (player.MissionManager!.GetMainMissionStatus(mission) == MissionPhaseEnum.Accept)

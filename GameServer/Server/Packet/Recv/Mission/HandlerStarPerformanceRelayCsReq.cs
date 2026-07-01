@@ -1,3 +1,4 @@
+using March7thHoney.GameServer.Server.Packet.Send.Mission;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -28,5 +29,7 @@ public class HandlerStarPerformanceRelayCsReq : Handler<StarPerformanceRelayCsRe
         player.SceneInstance?.SyncGroupInfo();
         if (player.QuestManager != null)
             await player.QuestManager.SyncQuest();
+
+        await connection.SendPacket(new PacketStarPerformanceRelayScRsp());
     }
 }

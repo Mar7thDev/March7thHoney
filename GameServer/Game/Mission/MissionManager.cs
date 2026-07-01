@@ -205,7 +205,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         if (!GameData.MainMissionData.TryGetValue(missionId, out var mainMission)) return;
         if (Data.GetMainMissionStatus(missionId) != MissionPhaseEnum.Accept) return;
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Finish);
-        var finishedMissionIds = new List<int> { missionId };
         var sync = new MissionSync();
         sync.FinishedMainMissionIdList.Add((uint)missionId);
         // get next main mission
@@ -214,7 +213,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
                 if (Data.GetSubMissionStatus(mission) != MissionPhaseEnum.Finish)
                 {
                     Data.SetSubMissionStatus(mission, MissionPhaseEnum.Finish);
-                    finishedMissionIds.Add(mission);
                     sync.MissionList.Add(new Proto.Mission
                     {
                         Id = (uint)mission,
@@ -227,7 +225,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
         await Player.SendPacket(new PacketStartFinishMainMissionScNotify(missionId));
-        await Player.SendPacket(new PacketFinishedMissionScNotify(finishedMissionIds));
+        await Player.SendPacket(new PacketFinishedMissionScNotify(missionId));
         await HandleMissionReward(missionId);
         await HandleFinishType(MissionFinishTypeEnum.FinishMission);
 
@@ -260,7 +258,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
         await Player.SendPacket(new PacketStartFinishSubMissionScNotify(missionId));
-        await Player.SendPacket(new PacketFinishedMissionScNotify(missionId));
 
         if (mainMission.MissionInfo != null)
             await HandleFinishAction(mainMission.MissionInfo, missionId);
