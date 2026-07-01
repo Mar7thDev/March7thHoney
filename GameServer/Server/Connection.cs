@@ -245,6 +245,18 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
                 var opcode = br.ReadUInt16BE();
                 var headerLength = br.ReadUInt16BE();
                 var payloadLength = br.ReadUInt32BE();
+
+                // Reject claimed lengths that exceed what's actually left in the buffer before
+                // calling ReadBytes — BinaryReader.ReadBytes allocates the full requested array
+                // up front, so an unchecked huge payloadLength is a remote memory-exhaustion vector.
+                var remaining = br.BaseStream.Length - br.BaseStream.Position;
+                if (headerLength + (long)payloadLength > remaining)
+                {
+                    Logger.Error(
+                        $"Bad Data Package Received: header/payload length ({headerLength}+{payloadLength}) exceeds remaining buffer ({remaining})");
+                    return;
+                }
+
                 var header = br.ReadBytes(headerLength);
                 var payload = br.ReadBytes((int)payloadLength);
                 LogPacket("Recv", opcode, payload);
