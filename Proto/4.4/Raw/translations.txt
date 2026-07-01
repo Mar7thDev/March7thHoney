@@ -698,7 +698,7 @@ KIDELOJLPFB = FinishQuestionRsp
 BIHACLHMAKO = FinishRogueCommonDialogueCsReq
 LPDPAJGFBMM = FinishRogueCommonDialogueScRsp
 LCJMFNOJBAC = FinishSectionIdScRsp
-MMJJKEOONKE = FinishStoryMissionCsReq
+MMJJKEOONKE = FinishTalkMissionCsReq
 OKPLFBLIDFF = FinishTalkMissionScRsp
 ILGJBBFKLDP = FinishTutorialCsReq
 AMHGACEKFBF = FinishTutorialGuideCsReq
@@ -1918,3 +1918,13 @@ HPHANFONFPF = VirtualLineupDestroyNotify
 GNIOONGIJLP = VirtualLineupTrialAvatarChangeScNotify
 BMGMHALNJAD = WaitConfirmData
 ALJGINBMLKB = WorldUnlockScRsp
+
+// CmdMissionType resolutions (manual, field-structure + cmdid-ordering matched; low-confidence
+// pairing noted in Proto/4.4/CmdMissionType.proto)
+BKJJKCOBDOE = UpdateTrackMainMissionScRsp
+MPFBABKLLJK = FinishCosumeItemMissionScRsp
+EOEBBIDAKJD = UpdateMainMissionCustomValueCsReq
+LGKGKENHNCL = UpdateTrackMainMissionCsReq
+DDDPMJDEMHE = UpdateMainMissionCustomValueScRsp
+LIFMGAFOBPC = SyncTaskCsReq
+KJOEGEBHKHM = SyncTaskScRsp
