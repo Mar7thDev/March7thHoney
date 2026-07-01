@@ -154,7 +154,7 @@ public class CommandManager
                 if (IsTargetToken(cmd))
                 {
                     var target = cmd[1..];
-                    if (March7thHoneyListener.Connections.Values.ToList()
+                    if (March7thHoneyListener.GetSnapshot()
                             .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection con)
                     {
                         if (split.Count == 1)
@@ -207,7 +207,7 @@ public class CommandManager
                 {
                     if (!IsTargetToken(split[i])) continue;
                     var target = split[i][1..];
-                    if (March7thHoneyListener.Connections.Values.ToList()
+                    if (March7thHoneyListener.GetSnapshot()
                             .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection con)
                     {
                         tempTarget = con;

@@ -324,7 +324,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
     {
         var list = new List<PlayerData>();
 
-        foreach (var kcp in March7thHoneyListener.Connections.Values)
+        foreach (var kcp in March7thHoneyListener.GetSnapshot())
         {
             if (kcp.State != SessionStateEnum.ACTIVE) continue;
             if (kcp is not Connection connection) continue;

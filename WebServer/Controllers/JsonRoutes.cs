@@ -51,7 +51,7 @@ public static class JsonRoutes
                 return Results.Text("Invalid password for this uid.", "text/plain", null, 401);
 
             Connection? con = null;
-            foreach (var item in March7thHoneyListener.Connections.Values)
+            foreach (var item in March7thHoneyListener.GetSnapshot())
             {
                 if (item is not Connection c) continue;
                 if (c.Player?.Uid == acc.Uid)

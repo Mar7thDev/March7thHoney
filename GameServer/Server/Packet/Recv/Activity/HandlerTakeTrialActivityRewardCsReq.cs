@@ -20,11 +20,11 @@ public class HandlerTakeTrialActivityRewardCsReq : Handler<TakeTrialActivityRewa
         {
             GameData.RewardDataData.TryGetValue(stage.RewardID, out var reward);
             var itemList = new List<ItemData>();
-            reward?.GetItems().ForEach(i =>
+            foreach (var i in reward?.GetItems() ?? [])
             {
-                var res = player.InventoryManager!.AddItem(i.Item1, i.Item2, false).Result;
+                var res = await player.InventoryManager!.AddItem(i.Item1, i.Item2, false);
                 if (res != null) itemList.Add(res);
-            });
+            }
             var activities = player.ActivityManager!.Data.TrialActivityData.Activities;
             var activity = activities.Find(x => x.StageId == req.StageId);
             if (activity != null)

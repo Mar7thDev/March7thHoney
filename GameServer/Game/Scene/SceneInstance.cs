@@ -113,8 +113,13 @@ public partial class SceneInstance
 
         if (GameData.SceneRainbowGroupPropertyData.FloorProperty.ContainsKey(FloorId))
             Components.Add(new RainbowSceneComponent(this));
+    }
 
-        System.Threading.Tasks.Task.Run(async () => { await EntityLoader.LoadEntity(); }).Wait();
+    public async ValueTask LoadEntitiesAsync()
+    {
+        if (FloorInfo == null || EntityLoader == null) return;
+
+        await EntityLoader.LoadEntity();
 
         Player.TaskManager?.SceneTaskTrigger.TriggerFloor(PlaneId, FloorId, this);
 
