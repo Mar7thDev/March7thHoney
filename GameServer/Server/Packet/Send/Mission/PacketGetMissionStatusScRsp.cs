@@ -16,9 +16,14 @@ public class PacketGetMissionStatusScRsp : BasePacket
         {
             var status = player.MissionManager!.GetMainMissionStatus((int)item);
             if (status == MissionPhaseEnum.Finish)
+            {
                 proto.FinishedMainMissionIdList.Add(item);
+                proto.CurversionFinishedMainMissionIdList.Add(item);
+            }
             else
+            {
                 proto.UnfinishedMainMissionIdList.Add(item);
+            }
         }
 
         foreach (var item in req.SubMissionIdList)
