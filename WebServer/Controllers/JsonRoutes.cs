@@ -216,6 +216,17 @@ public static class JsonRoutes
         if (uid == 0)
             return Results.Text("Error: Missing valid uid parameter", "text/plain", null, 400);
 
+        var acc = AccountData.GetAccountByUid(uid);
+        if (acc == null)
+            return Results.Text("uid not found on server", "text/plain", null, 400);
+
+        // Always verify the password when the account has one set, regardless of the RSA-login
+        // flag (same rule as ConsoleExec) — this endpoint exports a player's full save data and
+        // must not be reachable by uid alone.
+        var password = request.Query.TryGetValue("password", out var pw) ? pw.ToString() : "";
+        if (acc.HasPassword() && (string.IsNullOrEmpty(password) || !acc.VerifyPassword(password)))
+            return Results.Text("Invalid password for this uid.", "text/plain", null, 401);
+
         var json = await FreesrShared.ExportPlayerDataAsync(uid, true);
 
         response.Headers["Content-Disposition"] =
