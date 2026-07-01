@@ -52,12 +52,15 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Accept);
 
         var list = new List<MissionSync?>();
-        mission.MissionInfo?.StartSubMissionList.ForEach(async i => list.Add(await AcceptSubMission(i, sendPacket)));
+        foreach (var i in mission.MissionInfo?.StartSubMissionList ?? [])
+            list.Add(await AcceptSubMission(i, sendPacket));
         if (missionId == 4030001 || missionId == 4030002)
         {
             // skip  not implemented
-            mission.MissionInfo?.SubMissionList.ForEach(async x => await AcceptSubMission(x.ID));
-            mission.MissionInfo?.SubMissionList.ForEach(async x => await FinishSubMission(x.ID));
+            foreach (var x in mission.MissionInfo?.SubMissionList ?? [])
+                await AcceptSubMission(x.ID);
+            foreach (var x in mission.MissionInfo?.SubMissionList ?? [])
+                await FinishSubMission(x.ID);
         }
 
         if (missionId == 1000400)

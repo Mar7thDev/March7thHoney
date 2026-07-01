@@ -16,10 +16,8 @@ public class HandlerFinishCosumeItemMissionCsReq : Handler<FinishCosumeItemMissi
             return;
         }
 
-        mission.ParamItemList?.ForEach(async param =>
-        {
+        foreach (var param in mission.ParamItemList ?? [])
             await player.InventoryManager!.RemoveItem(param.ItemID, param.ItemNum);
-        });
 
         await player.MissionManager!.FinishSubMission((int)req.SubMissionId);
 

@@ -152,15 +152,16 @@ public class DatabaseHelper
     {
         if (!EntityStores.Map.TryGetValue(type, out var store)) return;
         foreach (var inst in store.LoadAll(conn))
-            UidInstanceMap.GetOrAdd(inst.Uid, static _ => []).Add(inst);
+        {
+            var list = UidInstanceMap.GetOrAdd(inst.Uid, static _ => []);
+            lock (list) list.Add(inst);
+        }
     }
 
     public T? GetInstance<T>(int uid) where T : class
     {
-        if (UidInstanceMap.TryGetValue(uid, out var value))
-            return value.OfType<T>().FirstOrDefault();
-        UidInstanceMap[uid] = [];
-        return null;
+        var list = UidInstanceMap.GetOrAdd(uid, static _ => []);
+        lock (list) return list.OfType<T>().FirstOrDefault();
     }
 
     public T GetInstanceOrCreateNew<T>(int uid) where T : BaseDatabaseDataHelper, new()
@@ -180,7 +181,11 @@ public class DatabaseHelper
 
     public static List<T>? GetAllInstanceFromMap<T>() where T : class
     {
-        return UidInstanceMap.Values.SelectMany(x => x).OfType<T>().ToList();
+        var result = new List<T>();
+        foreach (var list in UidInstanceMap.Values)
+            lock (list)
+                result.AddRange(list.OfType<T>());
+        return result;
     }
 
     public static void SaveInstance<T>(T instance) where T : BaseDatabaseDataHelper
@@ -191,7 +196,8 @@ public class DatabaseHelper
             store.Insert(conn, instance);
         }
 
-        UidInstanceMap.GetOrAdd(instance.Uid, static _ => []).Add(instance);
+        var list = UidInstanceMap.GetOrAdd(instance.Uid, static _ => []);
+        lock (list) list.Add(instance);
     }
 
     public static void SaveDatabaseType<T>(T instance) where T : BaseDatabaseDataHelper
@@ -260,9 +266,10 @@ public class DatabaseHelper
 
             foreach (var uid in uids)
                 if (UidInstanceMap.TryGetValue(uid, out var value))
-                    foreach (var inst in value)
-                        if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
-                            store.Update(conn, inst);
+                    lock (value)
+                        foreach (var inst in value)
+                            if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
+                                store.Update(conn, inst);
 
             Exec(conn, "COMMIT");
 
@@ -301,9 +308,10 @@ public class DatabaseHelper
         {
             if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
             using var conn = Open();
-            foreach (var inst in value)
-                if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
-                    store.Update(conn, inst);
+            lock (value)
+                foreach (var inst in value)
+                    if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
+                        store.Update(conn, inst);
 
             ClearDirty(uid);
         }
@@ -317,11 +325,15 @@ public class DatabaseHelper
     {
         if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
         using var conn = Open();
-        foreach (var inst in value.Where(i => i is not AccountData).ToList())
-            if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
-                store.Delete(conn, uid);
+        lock (value)
+        {
+            foreach (var inst in value.Where(i => i is not AccountData).ToList())
+                if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
+                    store.Delete(conn, uid);
 
-        value.RemoveAll(instance => instance is not AccountData);
+            value.RemoveAll(instance => instance is not AccountData);
+        }
+
         ClearDirty(uid);
     }
 
@@ -333,7 +345,8 @@ public class DatabaseHelper
             store.Delete(conn, instance.Uid);
         }
 
-        if (UidInstanceMap.TryGetValue(instance.Uid, out var value)) value.Remove(instance);
+        if (UidInstanceMap.TryGetValue(instance.Uid, out var value))
+            lock (value) value.Remove(instance);
         ClearDirty(instance.Uid);
     }
 
@@ -343,9 +356,10 @@ public class DatabaseHelper
 
         using (var conn = Open())
         {
-            foreach (var inst in value.ToList())
-                if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
-                    store.Delete(conn, uid);
+            lock (value)
+                foreach (var inst in value.ToList())
+                    if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
+                        store.Delete(conn, uid);
         }
 
         UidInstanceMap.TryRemove(uid, out _);

@@ -14,7 +14,15 @@ public class March7thHoneyListener
     private static IPEndPoint? ListenAddress;
     private static IKcpTransport<IKcpMultiplexConnection>? KCPTransport;
     private static readonly Logger Logger = new("GameServer");
-    public static readonly SortedList<long, March7thHoneyConnection> Connections = [];
+    private static readonly object ConnectionsLock = new();
+    private static readonly SortedList<long, March7thHoneyConnection> Connections = [];
+
+    /// <summary>Thread-safe snapshot of currently registered connections, for external read-only enumeration.</summary>
+    public static List<March7thHoneyConnection> GetSnapshot()
+    {
+        lock (ConnectionsLock)
+            return [.. Connections.Values];
+    }
 
     private static readonly KcpConversationOptions ConvOpt = new()
     {
@@ -35,7 +43,8 @@ public class March7thHoneyListener
 
     public static March7thHoneyConnection? GetConnectionByEndPoint(IPEndPoint ep)
     {
-        return Connections.Values.FirstOrDefault(c => c.RemoteEndPoint.Equals(ep));
+        lock (ConnectionsLock)
+            return Connections.Values.FirstOrDefault(c => c.RemoteEndPoint.Equals(ep));
     }
 
     public static void StartListener()
@@ -49,17 +58,14 @@ public class March7thHoneyListener
             ConfigManager.Config.GameServer.GetDisplayAddress()));
     }
 
-    private static void RegisterConnection(March7thHoneyConnection con)
-    {
-        if (!con.ConversationId.HasValue) return;
-        Connections[con.ConversationId.Value] = con;
-    }
-
     public static void UnregisterConnection(March7thHoneyConnection con)
     {
         if (!con.ConversationId.HasValue) return;
         var convId = con.ConversationId.Value;
-        if (Connections.Remove(convId))
+        bool removed;
+        lock (ConnectionsLock)
+            removed = Connections.Remove(convId);
+        if (removed)
         {
             Multiplex?.UnregisterConversation(convId);
             Logger.Info($"Connection with {con.RemoteEndPoint} has been closed");
@@ -120,12 +126,20 @@ public class March7thHoneyListener
 
     private static async Task AcceptConnection(UdpReceiveResult rcv, int enet)
     {
-        var convId = Connections.GetNextAvailableIndex();
-        var convo = Multiplex?.CreateConversation(convId, rcv.RemoteEndPoint, ConvOpt);
-        if (convo == null || CreateConnection == null) return;
+        March7thHoneyConnection? con;
+        long convId;
+        lock (ConnectionsLock)
+        {
+            // Held across take-number + register so two concurrent handshakes can't compute the same "next available" id.
+            convId = Connections.GetNextAvailableIndex();
+            var convo = Multiplex?.CreateConversation(convId, rcv.RemoteEndPoint, ConvOpt);
+            if (convo == null || CreateConnection == null) return;
+            con = CreateConnection(convo, rcv.RemoteEndPoint);
+            if (con.ConversationId.HasValue)
+                Connections[con.ConversationId.Value] = con;
+        }
+
         Logger.Info($"Accepting game handshake from {rcv.RemoteEndPoint}. conv_id={convId} enet={enet}");
-        var con = CreateConnection(convo, rcv.RemoteEndPoint);
-        RegisterConnection(con);
         await SendHandshakeResponse(con, enet);
     }
 
