@@ -99,35 +99,25 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
             await OnBattleEnd(this, BattleResult!);
     }
 
-    public ItemList GetDropItemList()
+    public async Task<ItemList> GetDropItemListAsync()
     {
         if (BattleEndStatus != BattleEndStatus.BattleEndWin) return new ItemList();
         var list = new ItemList();
 
         foreach (var item in MonsterDropItems) list.ItemList_.Add(item.ToProto());
 
-        var t = System.Threading.Tasks.Task.Run(async () =>
-        {
-            foreach (var item in await Player.InventoryManager!.HandleMappingInfo(MappingInfoId, WorldLevel))
-                list.ItemList_.Add(item.ToProto());
-        });
-
-        t.Wait();
+        foreach (var item in await Player.InventoryManager!.HandleMappingInfo(MappingInfoId, WorldLevel))
+            list.ItemList_.Add(item.ToProto());
 
         if (CollegeConfigExcel == null ||
             Player.BattleCollegeData?.FinishedCollegeIdList.Contains(CollegeConfigExcel.ID) != false)
             return list; // if college excel is not null and college is not finished
 
-        // finish it 
+        // finish it
         Player.BattleCollegeData.FinishedCollegeIdList.Add(CollegeConfigExcel.ID);
-        var t2 = System.Threading.Tasks.Task.Run(async () =>
-        {
-            await Player.SendPacket(new PacketBattleCollegeDataChangeScNotify(Player));
-            foreach (var item in await Player.InventoryManager!.HandleReward(CollegeConfigExcel.RewardID))
-                list.ItemList_.Add(item.ToProto());
-        });
-
-        t2.Wait();
+        await Player.SendPacket(new PacketBattleCollegeDataChangeScNotify(Player));
+        foreach (var item in await Player.InventoryManager!.HandleReward(CollegeConfigExcel.RewardID))
+            list.ItemList_.Add(item.ToProto());
 
         return list;
     }

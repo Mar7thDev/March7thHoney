@@ -74,7 +74,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             }
             else
             {
-                Player.InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);
+                await Player.InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);
             }
 
         }
@@ -409,7 +409,8 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         if (Player.ActivityManager!.TrialActivityInstance != null && req.EndStatus == BattleEndStatus.BattleEndWin)
             await Player.ActivityManager.TrialActivityInstance.EndActivity(TrialActivityStatus.Finish);
 
-        await Player.SendPacket(new PacketPVEBattleResultScRsp(req, Player, battle));
+        var dropItemList = await battle.GetDropItemListAsync();
+        await Player.SendPacket(new PacketPVEBattleResultScRsp(req, Player, battle, dropItemList));
     }
 
     private List<EntityMonster> ResolveSceneMonstersByStageId(int stageId)

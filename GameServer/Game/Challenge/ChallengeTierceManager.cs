@@ -75,19 +75,14 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         CurrentInstance = instance;
         Player.ChallengeManager!.ChallengeInstance = instance;
 
-        // Switch to the first lineup before entering scene so EntityLoader sees the right roster.
-        await Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupChallenge, false);
-
-        // Enter the pre-battle scene for node 1 — AS has a different floor per node, MOC/PF share one.
-        await Player.EnterScene(GetEntranceForStage(instance, 0), 0, false);
-
-        // After scene is built we can set leave entry so client's "退出挑战" works.
-        if (Player.SceneInstance != null)
-            Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(preConf);
-
-        instance.SavedMp = Player.LineupManager.GetCurLineup()?.Mp ?? 0;
-        instance.StartPos = Player.Data.Pos!;
-        instance.StartRot = Player.Data.Rot!;
+        // Switch to the first lineup and enter the pre-battle scene for node 1 — AS has a
+        // different floor per node, MOC/PF share one. sendPacket:false avoids a duplicate
+        // scene-send (see df56c464).
+        var entry = await ChallengeStageNavigator.EnterStage(Player, ExtraLineupType.LineupChallenge,
+            GetEntranceForStage(instance, 0), GetLobbyEntryId(preConf), sendPacket: false);
+        instance.StartPos = entry.StartPos;
+        instance.StartRot = entry.StartRot;
+        instance.SavedMp = entry.SavedMp;
 
         SaveInstance();
         return true;
@@ -112,18 +107,13 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         var teamLineup = Player.LineupManager.GetExtraLineup(lineupType);
         if (teamLineup != null) teamLineup.Mp = Player.LineupManager.GetMaxMp();
 
-        await Player.LineupManager.SetExtraLineup(lineupType, false);
-
         // 切关场景走 NextStageScRsp.Scene 下发(同首关/单关), sendPacket=false 避免重复整场景重进致卡顿
         var entranceId = GetEntranceForStage(CurrentInstance, CurrentInstance.CurStageIndex);
-        await Player.EnterScene(entranceId, 0, false);
-
-        if (Player.SceneInstance != null)
-            Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(CurrentInstance.PreConfig);
-
-        CurrentInstance.StartPos = Player.Data.Pos!;
-        CurrentInstance.StartRot = Player.Data.Rot!;
-        CurrentInstance.SavedMp = Player.LineupManager.GetCurLineup()?.Mp ?? 0;
+        var entry = await ChallengeStageNavigator.EnterStage(Player, lineupType, entranceId,
+            GetLobbyEntryId(CurrentInstance.PreConfig), sendPacket: false);
+        CurrentInstance.StartPos = entry.StartPos;
+        CurrentInstance.StartRot = entry.StartRot;
+        CurrentInstance.SavedMp = entry.SavedMp;
 
         SaveInstance();
         return true;
@@ -207,15 +197,11 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         CurrentInstance = instance;
         Player.ChallengeManager!.ChallengeInstance = instance;
 
-        await Player.LineupManager!.SetExtraLineup(instance.GetCurrentExtraLineupType(), false);
-        await Player.EnterScene(GetEntranceForStage(instance, stageIndex), 0, false);
-
-        if (Player.SceneInstance != null)
-            Player.SceneInstance.LeaveEntryId = GetLobbyEntryId(preConf);
-
-        instance.SavedMp = Player.LineupManager.GetCurLineup()?.Mp ?? 0;
-        instance.StartPos = Player.Data.Pos!;
-        instance.StartRot = Player.Data.Rot!;
+        var entry = await ChallengeStageNavigator.EnterStage(Player, instance.GetCurrentExtraLineupType(),
+            GetEntranceForStage(instance, stageIndex), GetLobbyEntryId(preConf), sendPacket: false);
+        instance.StartPos = entry.StartPos;
+        instance.StartRot = entry.StartRot;
+        instance.SavedMp = entry.SavedMp;
 
         SaveInstance();
         return true;

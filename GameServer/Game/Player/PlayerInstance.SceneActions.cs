@@ -175,7 +175,7 @@ public partial class PlayerInstance
         await MissionManager!.OnPlayerInteractWithProp();
 
         // plane event
-        InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);
+        await InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);
 
         // handle plugin event
 
@@ -383,6 +383,7 @@ public partial class PlayerInstance
                     await SceneInstance.OnDestroy();
                 SceneInstance instance = new(this, plane, floorId, entryId);
                 SceneInstance = instance;
+                await instance.LoadEntitiesAsync();
 
                 await instance.SyncLineup(true);
                 Data.PlaneId = planeId;
