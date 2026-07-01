@@ -1336,7 +1336,7 @@ public class CmdIds
     public const int MissionSyncTaskCsReq = 1281;
     public const int FinishCosumeItemMissionCsReq = 1233;
     public const int StarPerformanceRelayCsReq = 1249;
-    public const int UpdateMainMissionCustomValueScRsp = 1244;
+    public const int UpdateMainMissionCustomValueCsReq = 1244;
     public const int StarPerformanceRelayScRsp = 1215;
     public const int GetMissionDataScRsp = 1278;
     public const int GetMissionDataCsReq = 1225;
@@ -1348,7 +1348,7 @@ public class CmdIds
     public const int GetMainMissionCustomValueCsReq = 1229;
     public const int FinishTalkMissionScRsp = 1258;
     public const int TeleportToMissionResetPointCsReq = 1284;
-    public const int UpdateMainMissionCustomValueCsReq = 1275;
+    public const int UpdateMainMissionCustomValueScRsp = 1275;
     public const int TeleportToMissionResetPointScRsp = 1221;
     public const int GetMissionStatusCsReq = 1245;
     public const int SubMissionRewardScNotify = 1280;
