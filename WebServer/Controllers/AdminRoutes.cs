@@ -508,7 +508,7 @@ public static class AdminRoutes
 
     private static List<OnlinePlayer> GetOnlinePlayers()
     {
-        return March7thHoneyListener.Connections.Values
+        return March7thHoneyListener.GetSnapshot()
             .OfType<Connection>()
             .Where(connection => connection.Player != null && connection.State == SessionStateEnum.ACTIVE)
             .Select(connection => new OnlinePlayer(

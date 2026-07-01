@@ -14,10 +14,6 @@ public class PacketGetCurChallengeScRsp : BasePacket
         if (player.ChallengeManager!.ChallengeInstance is BaseLegacyChallengeInstance inst)
         {
             proto.CurChallenge = inst.ToProto();
-            Task.Run(async () =>
-            {
-                await player.LineupManager!.SetExtraLineup((ExtraLineupType)inst.GetCurrentExtraLineupType());
-            }).Wait();
             var proto1 = player.LineupManager?.GetExtraLineup(ExtraLineupType.LineupChallenge)?.ToProto();
             if (proto1 != null)
                 proto.LineupList.Add(proto1);
@@ -32,5 +28,13 @@ public class PacketGetCurChallengeScRsp : BasePacket
         }
 
         SetData(proto);
+    }
+
+    public static async Task<PacketGetCurChallengeScRsp> CreateAsync(PlayerInstance player)
+    {
+        if (player.ChallengeManager!.ChallengeInstance is BaseLegacyChallengeInstance inst)
+            await player.LineupManager!.SetExtraLineup((ExtraLineupType)inst.GetCurrentExtraLineupType());
+
+        return new PacketGetCurChallengeScRsp(player);
     }
 }

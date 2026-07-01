@@ -15,6 +15,7 @@ using March7thHoney.Program.Handbook;
 using March7thHoney.Util;
 using March7thHoney.Util.License;
 using March7thHoney.WebServer;
+using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Server;
 using System.Globalization;
 using System.IO.Compression;
@@ -286,14 +287,14 @@ public class EntryPoint
         MuipManager.OnExecuteCommand += CommandManager.HandleCommand;
         MuipManager.OnGetServerInformation += x =>
         {
-            foreach (var con in March7thHoneyListener.Connections.Values)
+            foreach (var con in March7thHoneyListener.GetSnapshot())
                 if ((con as Connection)?.Player != null)
                     x.Add((con as Connection)!.Player!.Uid, (con as Connection)!.Player!.Data);
         };
         MuipManager.OnGetPlayerStatus += (int uid, out PlayerStatusEnum status, out PlayerSubStatusEnum subStatus) =>
         {
             subStatus = PlayerSubStatusEnum.None;
-            foreach (var con in March7thHoneyListener.Connections.Values)
+            foreach (var con in March7thHoneyListener.GetSnapshot())
                 if ((con as Connection)!.Player != null && (con as Connection)!.Player!.Uid == uid)
                 {
                     // TODO 4.3: ChallengeManager 暂停
@@ -343,6 +344,8 @@ public class EntryPoint
 
             Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem", I18NManager.Translate("Word.Database")));
         }
+
+        AuthRateLimiter.Initialize();
 
         ServerUtils.InitializeHandlers();
 
@@ -449,7 +452,7 @@ public class EntryPoint
     private static void PerformCleanup()
     {
         // Stopping a live connection on shutdown can throw (disposed CancellationTokenSource race); never let it skip the save.
-        try { March7thHoneyListener.Connections.Values.ToList().ForEach(x => x.Stop()); }
+        try { March7thHoneyListener.GetSnapshot().ForEach(x => x.Stop()); }
         catch (Exception e) { Logger.Error("Cleanup: failed to stop connections", e); }
         DatabaseHelper.SaveDatabase();
     }
