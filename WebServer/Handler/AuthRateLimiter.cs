@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using March7thHoney.Configuration;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
@@ -20,6 +21,16 @@ public static class AuthRateLimiter
 
     private static readonly object SyncRoot = new();
     private static long _lastSweep;
+
+    /// <summary>Fast in-memory index by AttemptKey, layered on top of the Uid-keyed DatabaseHelper persistence path.</summary>
+    private static readonly ConcurrentDictionary<string, AuthAttemptData> AttemptIndex = new();
+
+    /// <summary>Warm up the index from persisted rows so a restart doesn't silently un-block active limits.</summary>
+    public static void Initialize()
+    {
+        foreach (var attempt in DatabaseHelper.GetAllInstanceFromMap<AuthAttemptData>() ?? [])
+            AttemptIndex[attempt.AttemptKey] = attempt;
+    }
 
     public static bool TryReject(HttpContext context, AuthRateLimitAction action,
         IEnumerable<string>? identityKeys, string? accountIdentifier, out IResult result)
@@ -149,9 +160,7 @@ public static class AuthRateLimiter
 
     private static AuthAttemptData LoadOrCreateAttempt(AuthRateLimitAction action, string attemptKey, out bool isNew)
     {
-        var all = DatabaseHelper.GetAllInstanceFromMap<AuthAttemptData>() ?? [];
-        var attempt = all.FirstOrDefault(x => x.AttemptKey == attemptKey);
-        if (attempt != null)
+        if (AttemptIndex.TryGetValue(attemptKey, out var attempt))
         {
             isNew = false;
             return attempt;
@@ -159,7 +168,7 @@ public static class AuthRateLimiter
 
         isNew = true;
         var uid = BuildStableUid(attemptKey);
-        while (all.Any(x => x.Uid == uid && x.AttemptKey != attemptKey))
+        while (AttemptIndex.Values.Any(x => x.Uid == uid && x.AttemptKey != attemptKey))
             uid = uid == int.MaxValue ? 1 : uid + 1;
 
         return new AuthAttemptData
@@ -173,9 +182,14 @@ public static class AuthRateLimiter
     private static void SaveAttempt(AuthAttemptData attempt, bool isNew)
     {
         if (isNew)
+        {
             DatabaseHelper.SaveInstance(attempt);
+            AttemptIndex[attempt.AttemptKey] = attempt;
+        }
         else
+        {
             DatabaseHelper.SaveDatabaseType(attempt);
+        }
     }
 
     private static int BuildStableUid(string attemptKey)
@@ -193,9 +207,13 @@ public static class AuthRateLimiter
         _lastSweep = now;
         var maxWindowSeconds = MaxConfiguredWindowSeconds();
         var staleBefore = now - Math.Max(maxWindowSeconds, 1) * 2L;
-        var stale = (DatabaseHelper.GetAllInstanceFromMap<AuthAttemptData>() ?? [])
+        var stale = AttemptIndex.Values
             .Where(x => x.BlockedUntil <= now && x.WindowStart <= staleBefore).ToList();
-        foreach (var attempt in stale) DatabaseHelper.Instance?.DeleteInstance(attempt);
+        foreach (var attempt in stale)
+        {
+            DatabaseHelper.Instance?.DeleteInstance(attempt);
+            AttemptIndex.TryRemove(attempt.AttemptKey, out _);
+        }
     }
 
     private static int MaxConfiguredWindowSeconds()

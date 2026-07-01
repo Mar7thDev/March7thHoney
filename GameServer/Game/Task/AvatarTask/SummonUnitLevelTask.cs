@@ -179,7 +179,7 @@ public class SummonUnitLevelTask
             }
             else
             {
-                prop.Scene.Player.InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);
+                await prop.Scene.Player.InventoryManager!.HandlePlaneEvent(prop.PropInfo.EventID);
             }
 
             // Rogue module removed in current baseline.

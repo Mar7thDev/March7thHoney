@@ -60,7 +60,7 @@ public class CommandArg
 
         CharacterArgs.TryGetValue("@", out var target);
         if (target == null || !int.TryParse(target, out _)) return;
-        if (March7thHoneyListener.Connections.Values.ToList()
+        if (March7thHoneyListener.GetSnapshot()
                 .Find(item => (item as Connection)?.Player?.Uid.ToString() == target) is Connection connection)
         {
             Target = connection;

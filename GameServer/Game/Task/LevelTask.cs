@@ -224,8 +224,8 @@ public class LevelTask(PlayerInstance player)
             await Player.LineupManager!.AddAvatarToCurTeam(subMission.SubMissionInfo.ParamInt1);
 
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatarList)
-            subMission.SubMissionInfo.ParamIntList?.ForEach(
-                async x => await Player.LineupManager!.AddAvatarToCurTeam(x));
+            foreach (var x in subMission.SubMissionInfo.ParamIntList ?? [])
+                await Player.LineupManager!.AddAvatarToCurTeam(x);
 
         return null;
     }
@@ -236,16 +236,18 @@ public class LevelTask(PlayerInstance player)
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatar)
         {
             var ids = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.ToList() ?? [];
-            ids.ForEach(async x => await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false));
+            foreach (var x in ids)
+                await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false);
             await Player.LineupManager!.AddAvatarToCurTeam(subMission.SubMissionInfo.ParamInt1);
         }
 
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatarList)
         {
             var ids = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.ToList() ?? [];
-            ids.ForEach(async x => await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false));
-            subMission.SubMissionInfo.ParamIntList?.ForEach(
-                async x => await Player.LineupManager!.AddAvatarToCurTeam(x));
+            foreach (var x in ids)
+                await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false);
+            foreach (var x in subMission.SubMissionInfo.ParamIntList ?? [])
+                await Player.LineupManager!.AddAvatarToCurTeam(x);
         }
 
         return null;
@@ -257,7 +259,8 @@ public class LevelTask(PlayerInstance player)
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.StoryLineAddTrialAvatar)
         {
             var ids = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.ToList() ?? [];
-            ids.ForEach(async void (x) => await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false));
+            foreach (var x in ids)
+                await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false);
             await Player.LineupManager!.AddAvatarToCurTeam(subMission.SubMissionInfo.ParamInt1);
         }
 
@@ -272,17 +275,18 @@ public class LevelTask(PlayerInstance player)
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatar)
         {
             var ids = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.ToList() ?? [];
-            ids.ForEach(async x => await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false));
-            ;
+            foreach (var x in ids)
+                await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false);
             await Player.LineupManager!.AddAvatarToCurTeam(subMission.SubMissionInfo.ParamInt1);
         }
 
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatarList)
         {
             var ids = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.ToList() ?? [];
-            ids.ForEach(async x => await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false));
-            subMission.SubMissionInfo.ParamIntList?.ForEach(
-                async x => await Player.LineupManager!.AddAvatarToCurTeam(x));
+            foreach (var x in ids)
+                await Player.LineupManager!.RemoveAvatarFromCurTeam(x.BaseAvatarId, false);
+            foreach (var x in subMission.SubMissionInfo.ParamIntList ?? [])
+                await Player.LineupManager!.AddAvatarToCurTeam(x);
         }
 
         return null;
@@ -320,7 +324,8 @@ public class LevelTask(PlayerInstance player)
                 }
             }
 
-            list.ForEach(async x => await Player.LineupManager!.AddAvatarToCurTeam(x));
+            foreach (var x in list)
+                await Player.LineupManager!.AddAvatarToCurTeam(x);
         }
 
         return null;
