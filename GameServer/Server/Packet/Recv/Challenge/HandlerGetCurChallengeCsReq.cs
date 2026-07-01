@@ -9,7 +9,7 @@ public class HandlerGetCurChallengeCsReq : PlayerHandler
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         // Send packet first
-        await connection.SendPacket(new PacketGetCurChallengeScRsp(player));
+        await connection.SendPacket(await PacketGetCurChallengeScRsp.CreateAsync(player));
 
         // Update data
         if (player.ChallengeManager!.ChallengeInstance != null)

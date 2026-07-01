@@ -17,12 +17,13 @@ public class PacketPVEBattleResultScRsp : BasePacket
         SetData(proto);
     }
 
-    public PacketPVEBattleResultScRsp(PVEBattleResultCsReq req, PlayerInstance player, BattleInstance battle) : base(
+    public PacketPVEBattleResultScRsp(PVEBattleResultCsReq req, PlayerInstance player, BattleInstance battle,
+        ItemList dropItemList) : base(
         CmdIds.PVEBattleResultScRsp)
     {
         var proto = new PVEBattleResultScRsp
         {
-            DropData = battle.GetDropItemList(),
+            DropData = dropItemList,
             StageId = req.StageId,
             BattleId = req.BattleId,
             EndStatus = req.EndStatus,
