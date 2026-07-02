@@ -14,6 +14,6 @@ public class HandlerFinishTalkMissionCsReq : Handler<FinishTalkMissionCsReq>
         if (req.CustomValueList != null && req.CustomValueList.Count > 0)
             await player.MissionManager!.HandleCustomValue([.. req.CustomValueList], (int)req.SubMissionId);
 
-        await connection.SendPacket(new PacketFinishTalkMissionScRsp(req));
+        await connection.SendPacket(new PacketFinishTalkMissionScRsp(req.TalkStr));
     }
 }
