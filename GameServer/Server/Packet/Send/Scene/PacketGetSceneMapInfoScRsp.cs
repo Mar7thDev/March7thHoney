@@ -31,12 +31,12 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                     FloorId = floorId
                 }
             };
-            // TODO 4.3: TrainCakeCatchManager 暂停
-            if (sceneIdentifier.TeleportInfo != null)
+            var roomOwnerUid = player.TrainCakeCatchManager?.GetSceneTeleportRoomOwnerUid();
+            if (sceneIdentifier.TeleportInfo != null || roomOwnerUid != null)
             {
                 mazeMap.SceneIdentifier.TeleportInfo = new TeleportInfo
                 {
-                    TeleportId = sceneIdentifier.TeleportInfo.TeleportId
+                    TeleportId = roomOwnerUid ?? sceneIdentifier.TeleportInfo?.TeleportId ?? 0
                 };
             }
             var mapDatas = GameData.MapEntranceData.Values.Where(x => x.FloorID == floorId).ToList();

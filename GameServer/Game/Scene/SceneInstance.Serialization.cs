@@ -80,7 +80,11 @@ public partial class SceneInstance
             }
         };
 
-        // TODO 4.3: TrainCakeCatchManager 暂停，社交传送暂不下发
+        if (Player.TrainCakeCatchManager?.GetSceneTeleportRoomOwnerUid() is { } roomOwnerUid)
+            sceneInfo.SceneIdentifier.TeleportInfo = new TeleportInfo
+            {
+                TeleportId = roomOwnerUid
+            };
 
         var playerGroupInfo = new SceneEntityGroupInfo(); // avatar group
         foreach (var avatar in AvatarInfo)
