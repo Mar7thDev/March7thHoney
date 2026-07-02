@@ -5,14 +5,12 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Mission;
 
 public class PacketFinishTalkMissionScRsp : BasePacket
 {
-    public PacketFinishTalkMissionScRsp(FinishTalkMissionCsReq req) : base(CmdIds.FinishTalkMissionScRsp)
+    public PacketFinishTalkMissionScRsp(string talkStr) : base(CmdIds.FinishTalkMissionScRsp)
     {
         var proto = new FinishTalkMissionScRsp
         {
-            TalkStr = req.TalkStr,
-            SubMissionId = req.SubMissionId
+            TalkStr = talkStr
         };
-        proto.CustomValueList.AddRange(req.CustomValueList);
 
         SetData(proto);
     }
