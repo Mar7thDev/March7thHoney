@@ -14,13 +14,14 @@ message AcceptMainMissionScRsp {
 }
 
 enum CmdMissionType {
-    CmdMissionType_None = 0;
+    CmdMissionType_NLCDGIPGFDJ = 0;
     CmdMissionType_MissionRewardScNotify = 1288;
-    CmdMissionType_FinishTalkMissionCsReq = 1293;
-    CmdMissionType_SyncTaskCsReq = 1281;
+    CmdMissionType_FinishStoryMissionCsReq = 1293;
+    CmdMissionType_LHGHGPPLMHP = 1281;
     CmdMissionType_FinishCosumeItemMissionCsReq = 1233;
-    CmdMissionType_FinishCosumeItemMissionScRsp = 1238;
-    CmdMissionType_UpdateMainMissionCustomValueCsReq = 1244;
+    CmdMissionType_BKMFAJCFOJH = 1249;
+    CmdMissionType_CCMKCBBKEMI = 1244;
+    CmdMissionType_IOMJKMCAIFN = 1215;
     CmdMissionType_GetMissionDataScRsp = 1278;
     CmdMissionType_GetMissionDataCsReq = 1225;
     CmdMissionType_MissionGroupWarnScNotify = 1240;
@@ -28,38 +29,26 @@ enum CmdMissionType {
     CmdMissionType_AcceptMainMissionScRsp = 1243;
     CmdMissionType_StartFinishMainMissionScNotify = 1241;
     CmdMissionType_StartFinishSubMissionScNotify = 1205;
-    CmdMissionType_GetMainMissionCustomValueCsReq = 1229; // no proto class in dump; fields inferred from consumer code
+    CmdMissionType_JAOAIEHCNJK = 1229;
     CmdMissionType_FinishTalkMissionScRsp = 1258;
-    CmdMissionType_UpdateTrackMainMissionScRsp = 1212;
+    CmdMissionType_NOALKEOFMJD = 1284;
+    CmdMissionType_IELGHNCAHPP = 1275;
     CmdMissionType_TeleportToMissionResetPointScRsp = 1221;
-    CmdMissionType_UpdateMainMissionCustomValueScRsp = 1275; // no proto class in dump; no consumer code yet
+    CmdMissionType_BGJPJMLOCAA = 1245;
     CmdMissionType_SubMissionRewardScNotify = 1280;
     CmdMissionType_GetMissionStatusScRsp = 1269;
     CmdMissionType_GetMainMissionCustomValueScRsp = 1263;
+    CmdMissionType_GGALJELEFJE = 1238;
     CmdMissionType_AcceptMainMissionCsReq = 1210;
-    CmdMissionType_UpdateTrackMainMissionCsReq = 1273;
+    CmdMissionType_LMCGPIJBEGP = 1273;
     CmdMissionType_FinishedMissionScNotify = 1235;
-    CmdMissionType_SyncTaskScRsp = 1286;
-    CmdMissionType_GetMissionStatusCsReq = 1245; // no proto class in dump; fields inferred from consumer code
-    CmdMissionType_PDKHNCEKOIP = 1215; // unresolved: no candidate name/field data matched
-    CmdMissionType_JFDDOPKGIKG = 1249; // unresolved: no candidate name/field data matched
-    CmdMissionType_HNPPCJMODAB = 1284; // unresolved: empty body, no candidate name matched
+    CmdMissionType_HGCCJBHCDOE = 1212;
+    CmdMissionType_GCNEMMGKPID = 1286;
 }
 
 message FinishCosumeItemMissionCsReq {
     uint32 sub_mission_id = 3;
     ItemList item_list = 11;
-}
-
-message FinishCosumeItemMissionScRsp {
-    uint32 retcode = 2;
-    uint32 sub_mission_id = 11;
-}
-
-message FinishTalkMissionCsReq {
-    string talk_str = 5;
-    repeated MissionCustomValue custom_value_list = 9;
-    uint32 sub_mission_id = 14;
 }
 
 message FinishTalkMissionScRsp {
@@ -71,10 +60,6 @@ message FinishTalkMissionScRsp {
 
 message FinishedMissionScNotify {
     repeated uint32 finished_main_mission_id_list = 14;
-}
-
-message GetMainMissionCustomValueCsReq {
-    repeated uint32 main_mission_id_list = 1;
 }
 
 message GetMainMissionCustomValueScRsp {
@@ -94,11 +79,6 @@ message GetMissionDataScRsp {
     repeated uint32 finished_main_mission_id_list = 11;
     uint32 track_mission_id = 12;
     repeated Mission mission_list = 13;
-}
-
-message GetMissionStatusCsReq {
-    repeated uint32 main_mission_id_list = 1;
-    repeated uint32 sub_mission_id_list = 2;
 }
 
 message GetMissionStatusScRsp {
@@ -144,15 +124,6 @@ message SubMissionRewardScNotify {
     ItemList reward = 12;
 }
 
-message SyncTaskCsReq {
-    string AFBDHEMJEPP = 6;
-}
-
-message SyncTaskScRsp {
-    string AFBDHEMJEPP = 6;
-    uint32 PLDKENJLKME = 9;
-}
-
 message TeleportToMissionResetPointScRsp {
     uint32 client_pos_version = 4;
     MotionInfo motion = 6;
@@ -160,28 +131,8 @@ message TeleportToMissionResetPointScRsp {
 }
 
 enum TrackMainMissionUpdateReasonId {
-    TRACK_MAIN_MISSION_UPDATE_NONE = 0;
-    TRACK_MAIN_MISSION_UPDATE_AUTO = 1;
-    TRACK_MAIN_MISSION_UPDATE_MANUAL = 2;
-    TRACK_MAIN_MISSION_UPDATE_LOGIN_REPORT = 3;
-}
-
-message UpdateMainMissionCustomValueCsReq {
-    uint32 PLDKENJLKME = 9;
-    MainMission main_mission = 4;
-}
-
-message UpdateMainMissionCustomValueScRsp {
-}
-
-message UpdateTrackMainMissionCsReq {
-    uint32 track_mission_id = 8;
-    uint32 JFONDEBDIOO = 10;
-    TrackMainMissionUpdateReasonId POPNCNIBNMJ = 15;
-}
-
-message UpdateTrackMainMissionScRsp {
-    uint32 prev_track_mission_id = 4;
-    uint32 track_mission_id = 7;
-    uint32 retcode = 14;
+    APHBPMBMLOM_DJAOKMDALMI = 0;
+    APHBPMBMLOM_FEFMPGIAGBP = 1;
+    APHBPMBMLOM_OGIADPFFHEF = 2;
+    APHBPMBMLOM_OJBIMIOEABG = 3;
 }
