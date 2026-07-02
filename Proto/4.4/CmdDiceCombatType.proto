@@ -21,6 +21,10 @@ message BLBHACNKKFC {
     bool is_friend = 12;
 }
 
+message BPNGPLHJHBE {
+    uint32 retcode = 3;
+}
+
 message BuyShopGoodScRsp {
     uint32 retcode = 4;
     repeated NJEBDKOJNGA OPNFOBJOPCB = 11;
@@ -62,7 +66,28 @@ message DDKNIMHHNPA {
     uint32 total_score = 15;
 }
 
+message DiceCombatBuyShopGoodCsReq {
+    uint32 GCPGNLPODDK = 5;
+    uint32 PMFNLNMINAP = 8;
+}
+
+message DiceCombatFinishPveStageCsReq {
+    uint32 ODKEBLADOMK = 9;
+    uint32 IBJNBJNDPIK = 10;
+    bool EKJIPCEFPOG = 13;
+    bool GDNKJDNMILL = 14;
+}
+
 message DiceCombatMainPageRollDiceCsReq {
+}
+
+message DiceCombatModifyAvatarDiceCsReq {
+    uint32 KHIPHMCDNOM = 1;
+    uint32 KOEOEHIMOEI = 3;
+}
+
+message DiceCombatUpgradeAvatarCsReq {
+    uint32 KOEOEHIMOEI = 12;
 }
 
 message EHMEPOMCGNG {
@@ -82,6 +107,12 @@ message FinishPveStageScRsp {
     bool is_win = 5;
     uint32 retcode = 6;
     ItemList reward = 11;
+}
+
+message GetDiceCombatShopDataCsReq {
+}
+
+message GetDiceCombatSystemDataCsReq {
 }
 
 message GetShopDataScRsp {

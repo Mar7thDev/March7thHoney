@@ -18,15 +18,23 @@ public class TrialActivityInstance : BaseActivityInstance
     {
         var player = ActivityManager.Player;
 
+        GameData.AvatarDemoConfigData.TryGetValue(stageId, out var excel);
+        if (excel == null)
+        {
+            await player.SendPacket(new PacketStartTrialActivityScRsp((uint)stageId, Retcode.RetReqParaInvalid));
+            return;
+        }
+
         await player.LineupManager!.DestroyExtraLineup(ExtraLineupType.LineupStageTrial);
 
-        GameData.AvatarDemoConfigData.TryGetValue(stageId, out var excel);
-        if (excel != null)
-        {
-            Data.CurTrialStageId = stageId;
-            player.LineupManager.SetExtraLineup(ExtraLineupType.LineupStageTrial, excel.TrialAvatarList.ToList(), true);
-            await player.EnterScene(excel.MapEntranceID, 0, true);
-        }
+        // Capture the current scene so EndActivity can return the player to it
+        Data.ReturnEntryId = player.Data.EntryId;
+        Data.ReturnPos = player.Data.Pos!;
+        Data.ReturnRot = player.Data.Rot!;
+
+        Data.CurTrialStageId = stageId;
+        player.LineupManager.SetExtraLineup(ExtraLineupType.LineupStageTrial, excel.TrialAvatarList.ToList(), true);
+        await player.EnterScene(excel.MapEntranceID, 0, true);
 
         await player.SendPacket(new PacketStartTrialActivityScRsp((uint)stageId));
     }
@@ -37,10 +45,20 @@ public class TrialActivityInstance : BaseActivityInstance
 
         // Remove trial lineup
         await player.LineupManager!.DestroyExtraLineup(ExtraLineupType.LineupStageTrial);
-        player.LineupManager!.Data.CurExtraLineup = -1;
+        player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
 
-        // Go back to default scene
-        await player.EnterScene(2000101, 0, true);
+        // Return to the scene the trial was started from
+        if (Data.ReturnEntryId != 0)
+        {
+            await player.EnterScene(Data.ReturnEntryId, 0, true);
+            await player.MoveTo(Data.ReturnPos, Data.ReturnRot);
+        }
+        else
+        {
+            await player.EnterScene(2000101, 0, true);
+        }
+
+        Data.ReturnEntryId = 0;
         if (status == TrialActivityStatus.Finish)
         {
             Data.Activities.Add(new TrialActivityResultData

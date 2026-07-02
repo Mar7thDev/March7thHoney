@@ -1,5 +1,6 @@
 using MemoryPack;
 using March7thHoney.Proto;
+using March7thHoney.Util;
 
 namespace March7thHoney.Database.Activity;
 
@@ -14,6 +15,11 @@ public partial class TrialActivityData
 {
     public List<TrialActivityResultData> Activities { get; set; } = new();
     public int CurTrialStageId { get; set; } = 0;
+
+    // Scene to return to when the trial ends (captured on trial start)
+    public int ReturnEntryId { get; set; } = 0;
+    public Position ReturnPos { get; set; } = new();
+    public Position ReturnRot { get; set; } = new();
 
     public List<TrialActivityInfo> ToProto()
     {
