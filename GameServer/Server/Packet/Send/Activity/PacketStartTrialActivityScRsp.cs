@@ -14,4 +14,15 @@ public class PacketStartTrialActivityScRsp : BasePacket
 
         SetData(proto);
     }
+
+    public PacketStartTrialActivityScRsp(uint stageId, Retcode retcode) : base(CmdIds.StartTrialActivityScRsp)
+    {
+        var proto = new StartTrialActivityScRsp
+        {
+            StageId = stageId,
+            Retcode = (uint)retcode
+        };
+
+        SetData(proto);
+    }
 }

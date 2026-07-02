@@ -2,7 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.Activity;
 using March7thHoney.GameServer.Game.Activity.Activities;
-// TODO 4.3: DiceCombat 模块暂停编译
+using March7thHoney.GameServer.Game.MultiPlayer.DiceCombat;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Proto;
 
@@ -16,7 +16,7 @@ public class ActivityManager : BasePlayerManager
 
         if (Data.TrialActivityData.CurTrialStageId != 0) TrialActivityInstance = new TrialActivityInstance(this);
 
-        // TODO 4.3: DiceCombat 初始化暂停
+        DiceCombat = new DiceCombatActivityInstance(this);
     }
 
     #region Data
@@ -28,7 +28,7 @@ public class ActivityManager : BasePlayerManager
     #region Instance
 
     public TrialActivityInstance? TrialActivityInstance { get; set; }
-    // TODO 4.3: DiceCombat 暂停
+    public DiceCombatActivityInstance DiceCombat { get; set; }
 
     #endregion
 

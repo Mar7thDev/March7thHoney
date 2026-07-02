@@ -12,6 +12,6 @@ public class HandlerSetPersonalCardCsReq : Handler<SetPersonalCardCsReq>
         player.Data.PersonalCard = (int)req.Id;
 
         await connection.SendPacket(new PacketSetPersonalCardScRsp(req.Id));
-        // TODO 4.3: TrainCakeCatch 灏忔父鎴忔殏鍋滅紪璇戯紝涓嶅啀鍚戝叾澶у巺骞挎挱鐜╁鐘舵€佸彉鏇?
+        await player.TrainCakeCatchManager!.BroadcastPlayerStateAsync();
     }
 }

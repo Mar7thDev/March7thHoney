@@ -28,9 +28,9 @@ using March7thHoney.GameServer.Game.Raid;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Shop;
 using March7thHoney.GameServer.Game.Sync.Player;
+using March7thHoney.GameServer.Game.TrainCakeCatch;
 using March7thHoney.GameServer.Game.TrainParty;
 using March7thHoney.GameServer.Game.Task;
-// TODO 4.3: TrainCakeCatch / TrainParty 暂停编译
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -79,7 +79,7 @@ public partial class PlayerInstance(PlayerData data)
     #region Activity Managers
 
     public ActivityManager? ActivityManager { get; private set; }
-    // TODO 4.3: TrainPartyManager / TrainCakeCatchManager 暂停编译
+    public TrainCakeCatchManager? TrainCakeCatchManager { get; private set; }
 
     #endregion
 
@@ -184,9 +184,10 @@ public partial class PlayerInstance(PlayerData data)
         ChallengeManager = new ChallengeManager(this);
         ChallengePeakManager = new ChallengePeakManager(this);
         ChallengeTierceManager = new ChallengeTierceManager(this);
-        // TODO 4.3: GridFightManager / TrainCakeCatchManager 暂停初始化
+        // TODO 4.3: GridFightManager 暂停初始化
         ExpeditionManager = new ExpeditionManager(this);
         TrainPartyManager = new TrainPartyManager(this);
+        TrainCakeCatchManager = new TrainCakeCatchManager(this);
         TaskManager = new TaskManager(this);
         RaidManager = new RaidManager(this);
         StoryLineManager = new StoryLineManager(this);

@@ -42,7 +42,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
     {
         if (!IsOnline) return;
 
-        // TODO 4.3: TrainCakeCatchManager 暂停
+        Player?.TrainCakeCatchManager?.LeaveSocialPlayRoom();
         Player?.OnLogoutAsync();
         March7thHoneyListener.UnregisterConnection(this);
         base.Stop();

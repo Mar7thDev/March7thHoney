@@ -23,6 +23,8 @@ public class MissionData : BaseDatabaseDataHelper
 
     public Dictionary<int, int> SubMissionProgressDict { get; set; } = [];
 
+    public Dictionary<int, List<MissionCustomValueRecord>> MainMissionCustomValues { get; set; } = [];
+
     public int TrackingMainMissionId { get; set; }
 
     public MissionPhaseEnum GetMainMissionStatus(int missionId)
@@ -101,4 +103,12 @@ public partial class MissionInfo
 {
     public int MissionId { get; set; }
     public MissionPhaseEnum Status { get; set; }
+}
+
+[MemoryPackable]
+public partial class MissionCustomValueRecord
+{
+    public uint Index { get; set; }
+    public uint CustomValue { get; set; }
+    public string Key { get; set; } = "";
 }

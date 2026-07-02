@@ -284,8 +284,51 @@ public class CommandGiveall : ICommand
     [CommandMethod("0 train")]
     public async ValueTask GiveAllTrainItem(CommandArg arg)
     {
-        // TODO 4.3: TrainPartyManager 暂停编译，giveall train 指令暂停
-        await arg.SendMsg("TrainParty currently disabled in 4.3 port");
+        var player = arg.Target?.Player;
+        if (player == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        // Reset
+        player.TrainPartyManager!.Data.Fund = 1000000;
+        player.TrainPartyManager!.Data.Areas.Clear();
+
+        foreach (var excel in GameData.TrainPartyAreaConfigData.Where(excel =>
+                     !player.TrainPartyManager!.Data.Areas.ContainsKey(excel.Key)))
+            player.TrainPartyManager!.Data.Areas[excel.Key] = new TrainAreaInfo
+            {
+                AreaId = excel.Key,
+                StepList = []
+            };
+
+        foreach (var area in player.TrainPartyManager!.Data.Areas)
+        foreach (var step in GameData.TrainPartyStepConfigData.Values.Where(stepExcel =>
+                     GameData.TrainPartyAreaGoalConfigData.FirstOrDefault(x =>
+                         x.Value.AreaID == area.Value.AreaId).Value.StepGroupList.Contains(stepExcel.GroupID)))
+            area.Value.StepList.Add(step.ID);
+
+        foreach (var floorInfo in GameData.FloorInfoData.Values)
+        {
+            var savedData = new Dictionary<string, int>();
+
+            foreach (var floorSavedValue in floorInfo.FloorSavedValue)
+                if (floorSavedValue.Name.StartsWith("Build_") || floorSavedValue.Name == "Onboarded")
+                    savedData[floorSavedValue.Name] = 1;
+                else if (floorSavedValue.Name.StartsWith("Progress_"))
+                    savedData[floorSavedValue.Name] = 100;
+                else if (floorSavedValue.Name.StartsWith("Connection_") || floorSavedValue.Name.StartsWith("Utility_"))
+                    savedData[floorSavedValue.Name] = 0;
+
+            if (savedData.Count > 0)
+                player.SceneData!.FloorSavedData[floorInfo.FloorID] = savedData;
+        }
+
+        player.TrainPartyManager!.MarkDataDirty();
+
+        await arg.SendMsg(I18NManager.Translate("Game.Command.GiveAll.GiveAllItems",
+            I18NManager.Translate("Word.TrainParty"), "1"));
     }
 
     [CommandMethod("0 path")]

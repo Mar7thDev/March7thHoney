@@ -1,4 +1,5 @@
 using March7thHoney.GameServer.Server.Packet.Send.Mission;
+using March7thHoney.Database;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -13,6 +14,7 @@ public class HandlerUpdateTrackMainMissionIdCsReq : Handler<UpdateTrackMainMissi
         var prev = missionData.TrackingMainMissionId;
         var target = ResolveTrackMissionId(req, missionData, prev);
         missionData.TrackingMainMissionId = target;
+        DatabaseHelper.MarkDirty(player.Uid);
 
         await connection.SendPacket(new PacketUpdateTrackMainMissionIdScRsp(prev,
             missionData.TrackingMainMissionId));

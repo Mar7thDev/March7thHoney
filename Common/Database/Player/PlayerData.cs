@@ -82,6 +82,19 @@ public class PlayerData : BaseDatabaseDataHelper
         };
     }
 
+    // 4.4 lobby member basic info (MOHAGOFLGAP = pre-4.2 LobbyPlayerBasicInfo)
+    public MOHAGOFLGAP ToLobbyProto()
+    {
+        return new MOHAGOFLGAP
+        {
+            Nickname = Name,
+            Level = (uint)Level,
+            Icon = (uint)HeadIcon,
+            Platform = PlatformType.Pc,
+            Uid = (uint)Uid
+        };
+    }
+
     public PlayerSimpleInfo ToSimpleProto(FriendOnlineStatus status)
     {
         if (!GameData.ChatBubbleConfigData.ContainsKey(ChatBubble)) // to avoid npe

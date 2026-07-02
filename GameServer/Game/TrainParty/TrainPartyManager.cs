@@ -5,14 +5,21 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.TrainParty;
 
-// 4.4 port note (display layer only): the TrainParty proto surface was fully re-obfuscated between
-// 4.2 and 4.4 (field numbers reshuffled, names rotated). The static/decoration half (self-display,
-// areas, prop timers, passengers, basic info) is mapped 1:1 against the 4.4 protos by structure.
-// The gameplay board minigame proto (EPHKIEHONGB and its sub-tree) was *re-architected* in 4.4 into
-// a turn-based "next_pending_action" protocol that does not structurally map from the 4.2 layout, so
-// those methods return minimal valid objects rather than guessing a wrong field mapping.
+// 4.4 port note: the TrainParty proto surface was fully re-obfuscated between 4.2 and 4.4 (field
+// numbers reshuffled, names rotated). The static/decoration half (self-display, areas, prop timers,
+// passengers, basic info) is mapped 1:1 against the 4.4 protos by structure. The gameplay board
+// minigame was re-architected in 4.4 into a turn-based "next_pending_action" protocol; it is
+// simulated server-side by TrainPartyGameplayRun with semantics inferred from field shapes — see the
+// note on that class before changing the flow.
 public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainData>(player)
 {
+    public TrainPartyGameplayRun? GameplayRun { get; private set; }
+
+    public void MarkDataDirty()
+    {
+        MarkDirty();
+    }
+
     public void EnsureDefaults()
     {
         var changed = false;
@@ -258,33 +265,60 @@ public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainD
         return 0;
     }
 
-    // Gameplay (board minigame) — 4.4 re-architected proto. Display-layer stub: record intent, return
-    // a minimal valid gameplay-data object. The board itself is not simulated server-side.
+    // Gameplay (board minigame) — simulated by TrainPartyGameplayRun (best-effort 4.4 protocol).
     public uint StartGameplay(uint gameplayType, out EPHKIEHONGB gameplayData)
     {
         EnsureDefaults();
 
         Data.GameplayType = (int)gameplayType;
-        Data.GameplayRound = Math.Max(Data.GameplayRound, 1);
-
+        Data.GameplayRound = 1;
+        Data.GameplayQueuePosition = 0;
         MarkDirty();
-        gameplayData = BuildGamePlayData();
+
+        GameplayRun = TrainPartyGameplayRun.Create(Data, gameplayType);
+        gameplayData = GameplayRun.BuildGameplayData();
         return 0;
     }
 
-    public uint HandlePendingAction(uint queuePosition, out TrainPartyHandlePendingActionScRsp rsp)
+    public uint HandlePendingAction(TrainPartyHandlePendingActionCsReq req, out TrainPartyHandlePendingActionScRsp rsp)
     {
         EnsureDefaults();
-        Data.GameplayQueuePosition = (int)queuePosition;
+
+        rsp = new TrainPartyHandlePendingActionScRsp();
+
+        // Client may resume a board without an explicit start (e.g. after relog).
+        GameplayRun ??= TrainPartyGameplayRun.Create(Data, (uint)Data.GameplayType);
+
+        var ret = GameplayRun.HandleAnswer(req, rsp);
+
+        Data.GameplayRound = (int)GameplayRun.Round;
+        Data.GameplayQueuePosition = (int)GameplayRun.QueuePosition;
         MarkDirty();
 
-        rsp = new TrainPartyHandlePendingActionScRsp
-        {
-            QueuePosition = queuePosition,
-            HMNAOPOKLGE = true
-        };
+        return ret;
+    }
 
-        return 0;
+    // Drains the deltas produced by the last answered pending action; null when there is nothing to push.
+    public TrainPartySyncUpdateScNotify? BuildGameplaySyncNotify()
+    {
+        if (GameplayRun == null || GameplayRun.PendingDeltas.Count == 0) return null;
+
+        var notify = new TrainPartySyncUpdateScNotify();
+        notify.JKPJFKCBIEM.AddRange(GameplayRun.PendingDeltas);
+        GameplayRun.PendingDeltas.Clear();
+        return notify;
+    }
+
+    // Ends the current board run (leave or settle). Returns true when a run was actually active.
+    public bool ResetGameplay()
+    {
+        if (GameplayRun == null) return false;
+
+        GameplayRun = null;
+        Data.GameplayRound = 1;
+        Data.GameplayQueuePosition = 0;
+        MarkDirty();
+        return true;
     }
 
     public uint TakeBuildLevelAward(out ItemList itemList)
@@ -307,14 +341,16 @@ public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainD
 
     public TrainPartyMoveScNotify BuildMoveNotify()
     {
-        // Gameplay move board re-architected in 4.4; emit a minimal notify (round only).
-        return new TrainPartyMoveScNotify { DNGKGLFMGGE = (uint)Data.GameplayRound };
+        var notify = new TrainPartyMoveScNotify { DNGKGLFMGGE = (uint)Data.GameplayRound };
+        if (GameplayRun != null) notify.JABPLBJAKKM.AddRange(GameplayRun.Moves);
+        return notify;
     }
 
     public TrainPartySettleNotify BuildSettleNotify()
     {
-        // Gameplay settle re-architected in 4.4; emit a minimal notify (last card only).
-        return new TrainPartySettleNotify { FGIHKKKOGJD = (uint)Data.LastUsedCardId };
+        var notify = new TrainPartySettleNotify { FGIHKKKOGJD = (uint)Data.LastUsedCardId };
+        if (GameplayRun != null) notify.CBFPJAJAKGI = GameplayRun.BuildStatus();
+        return notify;
     }
 
     public TrainPartyGamePlaySettleNotify BuildGamePlaySettleNotify()
@@ -332,9 +368,10 @@ public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainD
 
     private EPHKIEHONGB BuildGamePlayData()
     {
-        // 4.4 gameplay-data is a turn-based pending-action protocol with no structural mapping from the
-        // 4.2 board/cards/passenger layout. Return only the safely-known scalar (gameplay type) so
-        // GetData succeeds; the minigame is not driven server-side under the display-layer port.
+        // With an active run, expose its full state; otherwise return only the safely-known scalar
+        // (gameplay type) so GetData always succeeds.
+        if (GameplayRun != null) return GameplayRun.BuildGameplayData();
+
         return new EPHKIEHONGB
         {
             IDBDBICPBBG = (uint)Data.GameplayType
