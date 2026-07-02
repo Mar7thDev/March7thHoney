@@ -3,6 +3,28 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 import "CmdDrinkMakerType.proto";
+import "CmdMissionType.proto";
+import "Common.proto";
+
+message FinishCosumeItemMissionScRsp {
+    uint32 retcode = 2;
+    uint32 sub_mission_id = 11;
+}
+
+message FinishTalkMissionCsReq {
+    string talk_str = 5;
+    repeated MissionCustomValue custom_value_list = 9;
+    uint32 sub_mission_id = 14;
+}
+
+message GetMainMissionCustomValueCsReq {
+    repeated uint32 main_mission_id_list = 13;
+}
+
+message GetMissionStatusCsReq {
+    repeated uint32 main_mission_id_list = 4;
+    repeated uint32 sub_mission_id_list = 13;
+}
 
 message MainMissionMcvSnapshot {
     uint32 main_mission_id = 1;
@@ -18,10 +40,6 @@ message MakeMissionDrinkCsReq {
     DFJPGILAAON AGCBLNPHFCI = 2;
     bool is_save = 5;
     uint32 CJGGHHCILMD = 15;
-}
-
-message MissionAcceptScNotify {
-    repeated uint32 main_mission_id_list = 6;
 }
 
 message MissionCustomValueSnapshot {
@@ -66,4 +84,30 @@ message MissionSyncTaskScRsp {
 
 message SubMissionSnapshot {
     uint32 sub_mission_id = 1;
+}
+
+message TeleportToMissionResetPointCsReq {
+}
+
+message UpdateMainMissionCustomValueCsReq {
+    string BGDFHBAANLB = 1;
+    uint32 value = 3;
+    uint32 main_mission_id = 6;
+}
+
+message UpdateMainMissionCustomValueScRsp {
+    MainMission HKDDMGGDCIP = 4;
+    uint32 retcode = 9;
+}
+
+message UpdateTrackMainMissionCsReq {
+    uint32 track_mission_id = 8;
+    uint32 JFONDEBDIOO = 10;
+    TrackMainMissionUpdateReasonId POPNCNIBNMJ = 15;
+}
+
+message UpdateTrackMainMissionScRsp {
+    uint32 prev_track_mission_id = 4;
+    uint32 track_mission_id = 7;
+    uint32 retcode = 14;
 }
