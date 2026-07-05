@@ -318,6 +318,28 @@ public class LineupManager : BasePlayerManager<LineupData>
         }
     }
 
+    public async ValueTask AddTrialAvatarToCurTeam(int specialAvatarId, bool sendPacket = true)
+    {
+        var lineup = GetCurLineup();
+        if (lineup == null) return;
+        var trial = Player.AvatarManager!.GetTrialAvatar(specialAvatarId);
+        if (trial == null) return;
+        if (lineup.BaseAvatars!.Any(a => a.SpecialAvatarId == trial.SpecialAvatarId)) return; // already joined
+        trial.CheckLevel(Player.Data.WorldLevel);
+        if (lineup.BaseAvatars!.Count >= 4) lineup.BaseAvatars.RemoveAt(lineup.BaseAvatars.Count - 1);
+        lineup.BaseAvatars.Add(new LineupAvatarInfo
+            { BaseAvatarId = trial.BaseAvatarId, SpecialAvatarId = trial.SpecialAvatarId });
+        MarkDirty();
+
+        if (sendPacket)
+        {
+            Player.SceneInstance?.SyncLineup();
+            await Player.SendPacket(
+                new PacketVirtualLineupTrialAvatarChangeScNotify(Player.Data.PlaneId, [specialAvatarId]));
+            await Player.SendPacket(new PacketSyncLineupNotify(lineup));
+        }
+    }
+
     public async ValueTask RemoveAvatar(int lineupIndex, int avatarId, bool sendPacket = true)
     {
         if (lineupIndex < 0) return;
