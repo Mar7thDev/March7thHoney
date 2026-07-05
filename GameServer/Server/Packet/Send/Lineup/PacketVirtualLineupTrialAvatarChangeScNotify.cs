@@ -5,18 +5,16 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Lineup;
 
 public class PacketVirtualLineupTrialAvatarChangeScNotify : BasePacket
 {
-    public PacketVirtualLineupTrialAvatarChangeScNotify(int planeId, List<int> addSpecialAvatarIds,
-        List<int>? removeSpecialAvatarIds = null) : base(CmdIds.VirtualLineupTrialAvatarChangeScNotify)
+    public PacketVirtualLineupTrialAvatarChangeScNotify(int planeId, bool isAdd, List<int> specialAvatarIds) : base(
+        CmdIds.VirtualLineupTrialAvatarChangeScNotify)
     {
         var proto = new VirtualLineupTrialAvatarChangeScNotify
         {
-            OLPNMKAPDLP = true,
+            OLPNMKAPDLP = isAdd,
             PlaneId = (uint)planeId
         };
-        foreach (var id in addSpecialAvatarIds) proto.EDBMIFNEHHH.Add((uint)id);
-        if (removeSpecialAvatarIds != null)
-            foreach (var id in removeSpecialAvatarIds)
-                proto.ILIDIIGALKD.Add((uint)id);
+        var list = isAdd ? proto.EDBMIFNEHHH : proto.ILIDIIGALKD;
+        foreach (var id in specialAvatarIds) list.Add((uint)id);
 
         SetData(proto);
     }

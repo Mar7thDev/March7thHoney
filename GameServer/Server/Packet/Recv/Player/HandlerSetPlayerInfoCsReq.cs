@@ -29,8 +29,8 @@ public class HandlerSetPlayerInfoCsReq : Handler<SetPlayerInfoCsReq>
         await player.ChangeAvatarPathType(8001, MultiPathAvatarTypeEnum.Warrior);
 
         var heroAvatarId = player.Data.CurrentGender == Gender.Woman ? 8002 : 8001;
-        await player.LineupManager!.AddAvatarToCurTeam(heroAvatarId);
-        await player.LineupManager!.AddAvatarToCurTeam(1001);
+        await player.LineupManager!.AddAvatarToRealTeam(heroAvatarId);
+        await player.LineupManager!.AddAvatarToRealTeam(1001);
         await player.MissionManager!.FinishSubMission(100010134);
 
         await connection.SendPacket(new PacketSetPlayerInfoScRsp(player, req.IsModify));
