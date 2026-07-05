@@ -205,6 +205,31 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         sb.AppendLine("namespace March7thHoney.Database.Generated;");
         sb.AppendLine();
 
+        // Shared migration helper: adds columns declared on the entity but missing from an existing table.
+        sb.AppendLine("internal static class DbSchema");
+        sb.AppendLine("{");
+        sb.AppendLine("    public static void EnsureColumns(DbConnection c, string table, (string Name, string Sql)[] cols)");
+        sb.AppendLine("    {");
+        sb.AppendLine("        var existing = new HashSet<string>(StringComparer.OrdinalIgnoreCase);");
+        sb.AppendLine("        using (var cmd = c.CreateCommand())");
+        sb.AppendLine("        {");
+        sb.AppendLine("            cmd.CommandText = \"select * from \\\"\" + table + \"\\\" limit 0\";");
+        sb.AppendLine("            using var rd = cmd.ExecuteReader();");
+        sb.AppendLine("            for (var i = 0; i < rd.FieldCount; i++) existing.Add(rd.GetName(i));");
+        sb.AppendLine("        }");
+        sb.AppendLine();
+        sb.AppendLine("        foreach (var (name, sql) in cols)");
+        sb.AppendLine("        {");
+        sb.AppendLine("            if (existing.Contains(name)) continue;");
+        sb.AppendLine("            using var alter = c.CreateCommand();");
+        sb.AppendLine("            alter.CommandText = \"alter table \\\"\" + table + \"\\\" add column \\\"\" + name + \"\\\" \" + sql;");
+        sb.AppendLine("            alter.ExecuteNonQuery();");
+        sb.AppendLine("            global::March7thHoney.Database.DatabaseHelper.logger.Info($\"Table {table}: added missing column {name}\");");
+        sb.AppendLine("        }");
+        sb.AppendLine("    }");
+        sb.AppendLine("}");
+        sb.AppendLine();
+
         foreach (var e in list) EmitStore(sb, e);
 
         // Registry
@@ -281,9 +306,17 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
             cols.Select(c => $"\\\"{c.Name}\\\" {c.SqlType}{(c.Name == "Uid" ? " PRIMARY KEY" : "")}"));
         sb.AppendLine("    public static void EnsureTable(DbConnection c)");
         sb.AppendLine("    {");
-        sb.AppendLine("        using var cmd = c.CreateCommand();");
-        sb.AppendLine($"        cmd.CommandText = \"create table if not exists \\\"{e.Table}\\\" ({ddlCols})\";");
-        sb.AppendLine("        cmd.ExecuteNonQuery();");
+        sb.AppendLine("        using (var cmd = c.CreateCommand())");
+        sb.AppendLine("        {");
+        sb.AppendLine($"            cmd.CommandText = \"create table if not exists \\\"{e.Table}\\\" ({ddlCols})\";");
+        sb.AppendLine("            cmd.ExecuteNonQuery();");
+        sb.AppendLine("        }");
+        sb.AppendLine();
+        sb.AppendLine("        DbSchema.EnsureColumns(c, Table, new[]");
+        sb.AppendLine("        {");
+        foreach (var c in cols)
+            sb.AppendLine($"            (\"{c.Name}\", \"{c.SqlType}\"),");
+        sb.AppendLine("        });");
         sb.AppendLine("    }");
         sb.AppendLine();
 
