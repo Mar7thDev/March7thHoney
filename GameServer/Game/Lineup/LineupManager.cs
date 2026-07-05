@@ -281,6 +281,12 @@ public class LineupManager : BasePlayerManager<LineupData>
         await AddAvatar(Data.GetCurLineupIndex(), avatarId, sendPacket);
     }
 
+    // targets the real (non-virtual) lineup even while a story virtual lineup is still active
+    public async ValueTask AddAvatarToRealTeam(int avatarId, bool sendPacket = true)
+    {
+        await AddAvatar(Data.CurLineup, avatarId, sendPacket);
+    }
+
     public async ValueTask AddSpecialAvatarToCurTeam(int specialAvatarId, bool sendPacket = true)
     {
         Data.Lineups.TryGetValue(Data.GetCurLineupIndex(), out var lineup);
@@ -335,7 +341,32 @@ public class LineupManager : BasePlayerManager<LineupData>
         {
             Player.SceneInstance?.SyncLineup();
             await Player.SendPacket(
-                new PacketVirtualLineupTrialAvatarChangeScNotify(Player.Data.PlaneId, [specialAvatarId]));
+                new PacketVirtualLineupTrialAvatarChangeScNotify(Player.Data.PlaneId, true, [specialAvatarId]));
+            await Player.SendPacket(new PacketSyncLineupNotify(lineup));
+        }
+    }
+
+    public async ValueTask RemoveTrialAvatarFromCurTeam(int specialAvatarId, bool sendPacket = true)
+    {
+        var lineup = GetCurLineup();
+        if (lineup == null) return;
+        if (lineup.BaseAvatars!.RemoveAll(a => a.SpecialAvatarId == specialAvatarId) == 0) return;
+        MarkDirty();
+
+        if (!sendPacket) return;
+        Player.SceneInstance?.SyncLineup();
+        await Player.SendPacket(
+            new PacketVirtualLineupTrialAvatarChangeScNotify(Player.Data.PlaneId, false, [specialAvatarId]));
+
+        // a virtual lineup only exists to host trial avatars; tear it down once the last one leaves
+        if (lineup.IsExtraLineup() && lineup.BaseAvatars!.Count == 0)
+        {
+            Data.Lineups.Remove(Data.GetCurLineupIndex());
+            Data.CurExtraLineup = -1;
+            await Player.SendPacket(new PacketVirtualLineupDestroyNotify(Player.Data.PlaneId));
+        }
+        else
+        {
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
