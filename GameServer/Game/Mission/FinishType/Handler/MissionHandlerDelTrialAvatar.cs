@@ -10,6 +10,7 @@ public class MissionHandlerDelTrialAvatar : MissionFinishTypeHandler
 {
     public override async ValueTask HandleMissionFinishType(PlayerInstance player, SubMissionInfo info, object? arg)
     {
+        if (info.ParamInt1 > 0) await player.LineupManager!.RemoveTrialAvatarFromCurTeam(info.ParamInt1);
         await player.MissionManager!.FinishSubMission(info.ID);
     }
 
