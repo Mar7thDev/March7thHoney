@@ -163,9 +163,10 @@ public class EntryPoint
         }
 
         // Initialize the database
+        Task databaseInitTask;
         try
         {
-            var databaseInitTask = Task.Run(DatabaseHelper.Initialize);
+            databaseInitTask = Task.Run(DatabaseHelper.Initialize);
 
             while (!DatabaseHelper.LoadAccount)
             {
@@ -334,13 +335,24 @@ public class EntryPoint
         if (!DatabaseHelper.LoadAllData)
         {
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.WaitForAllDone"));
-            var t = Task.Run(() =>
+            try
             {
                 while (!DatabaseHelper.LoadAllData) // wait for all data to be loaded
-                    Thread.Sleep(100);
-            });
+                {
+                    if (databaseInitTask.IsFaulted)
+                        databaseInitTask.GetAwaiter().GetResult();
 
-            await t.WaitAsync(new CancellationToken());
+                    Thread.Sleep(100);
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Error(
+                    I18NManager.Translate("Server.ServerInfo.FailedToLoadItem",
+                        I18NManager.Translate("Word.Database")), e);
+                Console.ReadLine();
+                return;
+            }
 
             Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem", I18NManager.Translate("Word.Database")));
         }
