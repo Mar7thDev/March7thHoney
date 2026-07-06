@@ -418,3 +418,4 @@ Config Live.json
 
 ## Proto: huge regenerable il2cpp dump (≈119MB) — keep out of git, available locally per version
 Proto/**/dump.cs
+AGENTS.md
