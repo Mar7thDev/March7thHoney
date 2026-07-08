@@ -686,6 +686,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             if (missionSync.Status != MissionStatus.MissionDoing) continue;
             if (!GameData.SubMissionInfoData.TryGetValue((int)missionSync.Id, out var subMission)) continue;
             if (subMission.SubMissionInfo is not { } mission) continue;
+            if (scene.HasClientSceneSnapshotGroup(mission.ParamInt1)) continue;
 
             shouldSyncScene = await EnsureKillMonsterTargetVisible(mission, false) || shouldSyncScene;
         }

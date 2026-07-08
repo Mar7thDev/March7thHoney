@@ -9,6 +9,7 @@ public class PacketEnterSceneByServerScNotify : BasePacket
     public PacketEnterSceneByServerScNotify(SceneInstance scene) : base(CmdIds.EnterSceneByServerScNotify)
     {
         var sceneInfo = scene.ToProto();
+        scene.MarkClientSceneSnapshotSynced();
         var notify = new EnterSceneByServerScNotify
         {
             Scene = sceneInfo,
