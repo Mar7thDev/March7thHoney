@@ -47,7 +47,20 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             }
         }
 
-        attackEntity = Player.SceneInstance!.Entities.GetValueOrDefault((int)req.AttackedByEntityId);
+        var attackedEntity = Player.SceneInstance!.Entities.GetValueOrDefault((int)req.AttackedByEntityId);
+        if (targetEntities.Count == 0 && attackedEntity is EntityMonster directTarget)
+        {
+            targetEntities.Add(directTarget);
+            addEntityIds.Add(directTarget.EntityId);
+            attackEntity = Player.SceneInstance.AvatarInfo.GetValueOrDefault((int)req.CastEntityId)
+                           ?? Player.SceneInstance.AvatarInfo.GetValueOrDefault(Player.SceneInstance.LeaderEntityId)
+                           ?? Player.SceneInstance.AvatarInfo.Values.FirstOrDefault();
+        }
+        else
+        {
+            attackEntity = attackedEntity;
+        }
+
         if (attackEntity == null)
             return handledDestruct
                 ? new SkillResultData(Retcode.RetSucc)

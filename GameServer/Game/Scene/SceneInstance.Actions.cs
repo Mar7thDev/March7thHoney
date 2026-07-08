@@ -164,9 +164,9 @@ public partial class SceneInstance
             await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, addAvatar, removeAvatar));
     }
 
-    public void SyncGroupInfo()
+    public async ValueTask SyncGroupInfo()
     {
-        EntityLoader?.SyncEntity();
+        if (EntityLoader != null) await EntityLoader.SyncEntity();
     }
 
     public async ValueTask OnUseSkill(SceneCastSkillCsReq req)

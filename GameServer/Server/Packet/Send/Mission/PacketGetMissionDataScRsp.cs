@@ -20,6 +20,14 @@ public class PacketGetMissionDataScRsp : BasePacket
             TrackMissionId = (uint)trackMissionId
         };
 
+        var anchorSubMissionId = player.MissionManager.GetTrackMissionAnchorSubMissionId(trackMissionId);
+        if (anchorSubMissionId > 0) proto.GKFPKBGJBGN = (uint)anchorSubMissionId;
+
+        proto.FinishedMainMissionIdList.AddRange(player.MissionManager.Data.FinishedMainMissionIds
+            .Where(x => x > 0)
+            .Select(x => (uint)x)
+            .Distinct());
+
         foreach (var mission in GameData.MainMissionData.Keys)
             if (player.MissionManager!.GetMainMissionStatus(mission) == MissionPhaseEnum.Accept)
                 proto.MainMissionList.Add(new MainMission
@@ -28,7 +36,7 @@ public class PacketGetMissionDataScRsp : BasePacket
                     Status = MissionStatus.MissionDoing
                 });
 
-        foreach (var mission in GameData.SubMissionInfoData.Keys.Concat(GameData.SubMissionData.Keys))
+        foreach (var mission in GameData.SubMissionInfoData.Keys.Concat(GameData.SubMissionData.Keys).Distinct())
             if (player.MissionManager!.GetSubMissionStatus(mission) == MissionPhaseEnum.Accept)
                 proto.MissionList.Add(new Proto.Mission
                 {
