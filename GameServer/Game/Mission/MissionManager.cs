@@ -9,9 +9,11 @@ using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Mission.FinishAction;
 using March7thHoney.GameServer.Game.Mission.FinishType;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
 using March7thHoney.GameServer.Server.Packet.Send.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 using MissionData = March7thHoney.Database.Quests.MissionData;
@@ -172,8 +174,16 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             Status = MissionStatus.MissionDoing
         });
 
-        if (sendPacket) await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
-        Player.SceneInstance?.SyncGroupInfo();
+        if (sendPacket)
+        {
+            await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+            if (Player.SceneInstance != null)
+            {
+                await Player.SceneInstance.SyncGroupInfo();
+                await EnsureRunningKillMonsterTargetsVisible();
+            }
+        }
+
         if (mission.SubMissionInfo != null)
             try
             {
@@ -188,7 +198,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         if (SkipSubMissionList.Contains(missionId)) await FinishSubMission(missionId);
 
-        if (mission.SubMissionInfo?.LevelFloorID == Player.SceneInstance?.FloorId)
+        if (sendPacket && mission.SubMissionInfo?.LevelFloorID == Player.SceneInstance?.FloorId)
             if (mission.SubMissionInfo?.GroupIDList != null)
                 foreach (var group in mission.SubMissionInfo.GroupIDList)
                     await Player.SceneInstance!.EntityLoader!.LoadGroup(group);
@@ -205,7 +215,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         if (!GameData.MainMissionData.TryGetValue(missionId, out var mainMission)) return;
         if (Data.GetMainMissionStatus(missionId) != MissionPhaseEnum.Accept) return;
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Finish);
-        var finishedMissionIds = new List<int> { missionId };
         var sync = new MissionSync();
         sync.FinishedMainMissionIdList.Add((uint)missionId);
         // get next main mission
@@ -214,7 +223,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
                 if (Data.GetSubMissionStatus(mission) != MissionPhaseEnum.Finish)
                 {
                     Data.SetSubMissionStatus(mission, MissionPhaseEnum.Finish);
-                    finishedMissionIds.Add(mission);
                     sync.MissionList.Add(new Proto.Mission
                     {
                         Id = (uint)mission,
@@ -226,8 +234,15 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         sync.MissionList.AddRange(mainSync.MissionList);
 
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+        if (Player.SceneInstance != null)
+        {
+            await Player.SceneInstance.SyncGroupInfo();
+            await LoadRunningMissionGroupsForCurrentFloor();
+            await EnsureRunningKillMonsterTargetsVisible();
+        }
+
         await Player.SendPacket(new PacketStartFinishMainMissionScNotify(missionId));
-        await Player.SendPacket(new PacketFinishedMissionScNotify(finishedMissionIds));
+        await Player.SendPacket(new PacketFinishedMissionScNotify(missionId));
         await HandleMissionReward(missionId);
         await HandleFinishType(MissionFinishTypeEnum.FinishMission);
 
@@ -259,8 +274,14 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         await TriggerNextSubMissions(mainMission, sync);
 
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+        if (Player.SceneInstance != null)
+        {
+            await Player.SceneInstance.SyncGroupInfo();
+            await LoadRunningMissionGroupsForCurrentFloor();
+            await EnsureRunningKillMonsterTargetsVisible();
+        }
+
         await Player.SendPacket(new PacketStartFinishSubMissionScNotify(missionId));
-        await Player.SendPacket(new PacketFinishedMissionScNotify(missionId));
 
         if (mainMission.MissionInfo != null)
             await HandleFinishAction(mainMission.MissionInfo, missionId);
@@ -617,6 +638,74 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         return progress;
     }
 
+    public int GetTrackMissionAnchorSubMissionId(int mainMissionId)
+    {
+        if (!GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission)) return 0;
+
+        var runningSubMissions = GetRunningSubMissionIdList().ToHashSet();
+        foreach (var subMission in mainMission.MissionInfo.SubMissionList)
+        {
+            if (!runningSubMissions.Contains(subMission.ID)) continue;
+            for (var i = (subMission.TakeParamIntList?.Count ?? 0) - 1; i >= 0; i--)
+            {
+                var prerequisite = subMission.TakeParamIntList![i];
+                if (GetSubMissionStatus(prerequisite) == MissionPhaseEnum.Finish)
+                    return prerequisite;
+            }
+        }
+
+        return mainMission.MissionInfo.SubMissionList
+            .Where(x => GetSubMissionStatus(x.ID) == MissionPhaseEnum.Finish)
+            .Select(x => x.ID)
+            .LastOrDefault();
+    }
+
+    public async ValueTask EnsureRunningKillMonsterTargetsVisible()
+    {
+        var scene = Player.SceneInstance;
+        if (scene?.EntityLoader == null) return;
+
+        foreach (var mission in GetRunningSubMissionList())
+        {
+            if (mission.FinishType != MissionFinishTypeEnum.KillMonster) continue;
+            if (mission.LevelFloorID != scene.FloorId) continue;
+
+            var targetGroupId = mission.ParamInt1;
+            var targetInstId = mission.ParamInt2;
+            if (targetGroupId <= 0 || targetInstId <= 0) continue;
+
+            var groupEntities = scene.Entities.Values
+                .Where(x => x.GroupId == targetGroupId)
+                .ToList();
+
+            if (groupEntities.Count == 0)
+            {
+                await scene.EntityLoader.LoadGroup(targetGroupId);
+                continue;
+            }
+
+            var target = groupEntities
+                .OfType<EntityMonster>()
+                .FirstOrDefault(x => x.InstId == targetInstId);
+            if (target is not { IsAlive: true }) continue;
+
+            await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, groupEntities));
+        }
+    }
+
+    private async ValueTask LoadRunningMissionGroupsForCurrentFloor()
+    {
+        var scene = Player.SceneInstance;
+        if (scene?.EntityLoader == null) return;
+
+        foreach (var mission in GetRunningSubMissionList())
+        {
+            if (mission.LevelFloorID != scene.FloorId) continue;
+            foreach (var group in mission.GroupIDList ?? [])
+                await scene.EntityLoader.LoadGroup(group);
+        }
+    }
+
     #endregion
 
     #region Handlers
@@ -670,31 +759,50 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             Player.SceneInstance?.FloorInfo?.Groups.Values.SelectMany(x => x.RelatedMissionId).ToList() ?? [];
 
         HashSet<int> mainIds = [];
+        HashSet<int> subIds = [];
+        var currentPlane = Player.SceneInstance?.PlaneId ?? 0;
+        var currentFloor = Player.SceneInstance?.FloorId ?? 0;
+
+        void AddSubMissionStatus(SubMissionInfo subMission, int mainMissionId)
+        {
+            if (!subIds.Add(subMission.ID)) return;
+
+            info.SceneMissionInfo.SubMissionStatusList.Add(new Proto.Mission
+            {
+                Id = (uint)subMission.ID,
+                Status = GetSubMissionStatus(subMission.ID).ToProto(),
+                Progress = (uint)GetMissionProgress(subMission.ID)
+            });
+
+            mainIds.Add(mainMissionId);
+        }
+
         foreach (var mainMission in GameData.MainMissionData.Values)
         foreach (var subMission in mainMission.MissionInfo.SubMissionList)
             if (targetSubIds.Contains(subMission.ID))
-            {
-                info.SceneMissionInfo.SubMissionStatusList.Add(new Proto.Mission
-                {
-                    Id = (uint)subMission.ID,
-                    Status = GetSubMissionStatus(subMission.ID).ToProto(),
-                    Progress = (uint)GetMissionProgress(subMission.ID)
-                });
+                AddSubMissionStatus(subMission, mainMission.MainMissionID);
 
-                mainIds.Add(mainMission.MainMissionID);
+        if (currentFloor != 0)
+            foreach (var mainMission in GameData.MainMissionData.Values)
+            foreach (var subMission in mainMission.MissionInfo.SubMissionList)
+            {
+                if (subMission.LevelFloorID != currentFloor) continue;
+                if (subMission.LevelPlaneID != 0 && currentPlane != 0 && subMission.LevelPlaneID != currentPlane)
+                    continue;
+
+                AddSubMissionStatus(subMission, mainMission.MainMissionID);
             }
 
         foreach (var mainId in mainIds)
             if (GetMainMissionStatus(mainId) == MissionPhaseEnum.Finish)
                 info.SceneMissionInfo.FinishedMainMissionIdList.Add((uint)mainId);
-            else if (GetMainMissionStatus(mainId) == MissionPhaseEnum.Accept)
+            else
                 info.SceneMissionInfo.UnfinishedMainMissionIdList.Add((uint)mainId);
 
         // Activity-bound main missions: for each ContentPackage whose entrance lives on the
         // floor the player is loading, surface its main missions as "unfinished" so the client
         // treats the activity entry (map icons, in-scene activity NPCs) as live. We keep the
         // regular Mission system untouched - this only affects scene-mission serialization.
-        var currentFloor = Player.SceneInstance?.FloorId ?? 0;
         if (currentFloor != 0)
             foreach (var pkg in GameData.ContentPackageConfigData.Values)
             {
