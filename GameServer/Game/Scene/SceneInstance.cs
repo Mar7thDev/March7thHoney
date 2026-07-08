@@ -22,6 +22,20 @@ public partial class SceneInstance
 {
     #region Scene Details
 
+    public bool HasClientSceneSnapshotGroup(int groupId)
+    {
+        return ClientSceneSnapshotGroupIds.Contains(groupId);
+    }
+
+    public void MarkClientSceneSnapshotSynced()
+    {
+        ClientSceneSnapshotGroupIds.Clear();
+        foreach (var groupId in Groups.Where(groupId => groupId != 0))
+            ClientSceneSnapshotGroupIds.Add(groupId);
+        foreach (var groupId in Entities.Values.Select(entity => entity.GroupId).Where(groupId => groupId != 0))
+            ClientSceneSnapshotGroupIds.Add(groupId);
+    }
+
     public EntityProp? GetNearestSpring(long minDistSq)
     {
         EntityProp? spring = null;
@@ -62,6 +76,7 @@ public partial class SceneInstance
     public int LeaderEntityId { get; set; }
     public Dictionary<int, BaseGameEntity> Entities { get; set; } = [];
     public List<int> Groups { get; set; } = [];
+    public HashSet<int> ClientSceneSnapshotGroupIds { get; set; } = [];
     public List<EntityProp> HealingSprings { get; set; } = [];
 
     public SceneEntityLoader? EntityLoader { get; set; }
