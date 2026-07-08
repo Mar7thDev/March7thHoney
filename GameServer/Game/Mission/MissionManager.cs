@@ -14,6 +14,7 @@ using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
 using March7thHoney.GameServer.Server.Packet.Send.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 using MissionData = March7thHoney.Database.Quests.MissionData;
@@ -181,6 +182,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             {
                 await Player.SceneInstance.SyncGroupInfo();
                 await EnsureRunningKillMonsterTargetsVisible();
+                await SyncStartedKillMonsterSceneSnapshot(sync);
             }
         }
 
@@ -239,6 +241,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             await Player.SceneInstance.SyncGroupInfo();
             await LoadRunningMissionGroupsForCurrentFloor();
             await EnsureRunningKillMonsterTargetsVisible();
+            await SyncStartedKillMonsterSceneSnapshot(sync);
         }
 
         await Player.SendPacket(new PacketStartFinishMainMissionScNotify(missionId));
@@ -279,6 +282,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             await Player.SceneInstance.SyncGroupInfo();
             await LoadRunningMissionGroupsForCurrentFloor();
             await EnsureRunningKillMonsterTargetsVisible();
+            await SyncStartedKillMonsterSceneSnapshot(sync);
         }
 
         await Player.SendPacket(new PacketStartFinishSubMissionScNotify(missionId));
@@ -667,30 +671,62 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         foreach (var mission in GetRunningSubMissionList())
         {
-            if (mission.FinishType != MissionFinishTypeEnum.KillMonster) continue;
-            if (mission.LevelFloorID != scene.FloorId) continue;
-
-            var targetGroupId = mission.ParamInt1;
-            var targetInstId = mission.ParamInt2;
-            if (targetGroupId <= 0 || targetInstId <= 0) continue;
-
-            var groupEntities = scene.Entities.Values
-                .Where(x => x.GroupId == targetGroupId)
-                .ToList();
-
-            if (groupEntities.Count == 0)
-            {
-                await scene.EntityLoader.LoadGroup(targetGroupId);
-                continue;
-            }
-
-            var target = groupEntities
-                .OfType<EntityMonster>()
-                .FirstOrDefault(x => x.InstId == targetInstId);
-            if (target is not { IsAlive: true }) continue;
-
-            await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, groupEntities));
+            await EnsureKillMonsterTargetVisible(mission, true);
         }
+    }
+
+    private async ValueTask SyncStartedKillMonsterSceneSnapshot(MissionSync sync)
+    {
+        var scene = Player.SceneInstance;
+        if (scene?.EntityLoader == null) return;
+
+        var shouldSyncScene = false;
+        foreach (var missionSync in sync.MissionList)
+        {
+            if (missionSync.Status != MissionStatus.MissionDoing) continue;
+            if (!GameData.SubMissionInfoData.TryGetValue((int)missionSync.Id, out var subMission)) continue;
+            if (subMission.SubMissionInfo is not { } mission) continue;
+
+            shouldSyncScene = await EnsureKillMonsterTargetVisible(mission, false) || shouldSyncScene;
+        }
+
+        if (!shouldSyncScene) return;
+
+        Player.Connection?.SendPacket(CmdIds.SyncServerSceneChangeNotify);
+        await Player.SendPacket(new PacketEnterSceneByServerScNotify(scene));
+    }
+
+    private async ValueTask<bool> EnsureKillMonsterTargetVisible(SubMissionInfo mission, bool sendRefresh)
+    {
+        var scene = Player.SceneInstance;
+        if (scene?.EntityLoader == null) return false;
+        if (mission.FinishType != MissionFinishTypeEnum.KillMonster) return false;
+        if (mission.LevelFloorID != scene.FloorId) return false;
+
+        var targetGroupId = mission.ParamInt1;
+        var targetInstId = mission.ParamInt2;
+        if (targetGroupId <= 0 || targetInstId <= 0) return false;
+
+        var groupEntities = scene.Entities.Values
+            .Where(x => x.GroupId == targetGroupId)
+            .ToList();
+
+        if (groupEntities.Count == 0)
+        {
+            groupEntities = await scene.EntityLoader.LoadGroup(targetGroupId, false) ?? [];
+        }
+
+        if (groupEntities.Count == 0) return false;
+
+        var target = groupEntities
+            .OfType<EntityMonster>()
+            .FirstOrDefault(x => x.InstId == targetInstId);
+        if (target is not { IsAlive: true }) return false;
+
+        if (sendRefresh)
+            await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, groupEntities));
+
+        return true;
     }
 
     private async ValueTask LoadRunningMissionGroupsForCurrentFloor()
