@@ -340,8 +340,6 @@ public class LineupManager : BasePlayerManager<LineupData>
         if (sendPacket)
         {
             Player.SceneInstance?.SyncLineup();
-            await Player.SendPacket(
-                new PacketVirtualLineupTrialAvatarChangeScNotify(Player.Data.PlaneId, true, [specialAvatarId]));
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
@@ -355,15 +353,12 @@ public class LineupManager : BasePlayerManager<LineupData>
 
         if (!sendPacket) return;
         Player.SceneInstance?.SyncLineup();
-        await Player.SendPacket(
-            new PacketVirtualLineupTrialAvatarChangeScNotify(Player.Data.PlaneId, false, [specialAvatarId]));
 
         // a virtual lineup only exists to host trial avatars; tear it down once the last one leaves
         if (lineup.IsExtraLineup() && lineup.BaseAvatars!.Count == 0)
         {
             Data.Lineups.Remove(Data.GetCurLineupIndex());
             Data.CurExtraLineup = -1;
-            await Player.SendPacket(new PacketVirtualLineupDestroyNotify(Player.Data.PlaneId));
         }
         else
         {
