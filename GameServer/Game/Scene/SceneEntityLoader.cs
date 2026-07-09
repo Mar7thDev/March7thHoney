@@ -252,7 +252,7 @@ public class SceneEntityLoader(SceneInstance scene)
 
     public virtual async ValueTask<EntityNpc?> LoadNpc(NpcInfo info, GroupInfo group, bool sendPacket = false)
     {
-        if (info.IsClientOnly || info.IsDelete) return null;
+        if (info.IsClientOnly || info.IsDelete || !info.LoadOnInitial) return null;
 
         if (!GameData.NpcDataData.ContainsKey(info.NPCID)) return null;
 

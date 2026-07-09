@@ -424,9 +424,9 @@ public partial class PlayerInstance(PlayerData data)
         if (baseAvatarId == 8001)
         {
             var id = (int)((int)type + Data.CurrentGender - 1);
-            if (Data.CurBasicType == id) return;
-            Data.CurBasicType = id;
             avatar = AvatarManager!.GetHero()!;
+            if (Data.CurBasicType == id && avatar.AvatarId == id) return; // CurBasicType can desync from the hero record (e.g. stale seed data); check both
+            Data.CurBasicType = id;
             // Set avatar path
             avatar.AvatarId = id;
             avatar.ValidateHero(Data.CurrentGender);

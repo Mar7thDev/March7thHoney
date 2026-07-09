@@ -69,7 +69,9 @@ public partial class SceneInstance
             PlaneId = (uint)PlaneId,
             FloorId = (uint)FloorId,
             EntryId = (uint)EntryId,
+            ClientPosVersion = 1,
             SceneMissionInfo = new MissionStatusBySceneInfo(),
+            FOJJGJPIMBL = new BELNLOJAFCM(),
             DimensionId = (uint)ResolveDimensionId(),
             GameStoryLineId = (uint)(Player.StoryLineManager?.StoryLineData.CurStoryLineId ?? 0),
             // 4.2.0 client expects SceneInfo.SceneIdentifier to be present during scene sync.

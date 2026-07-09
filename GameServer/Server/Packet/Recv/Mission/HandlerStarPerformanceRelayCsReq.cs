@@ -25,7 +25,10 @@ public class HandlerStarPerformanceRelayCsReq : Handler<StarPerformanceRelayCsRe
                 await player.StoryLineManager.CheckIfEnterStoryLine();
         }
 
-        player.SceneInstance?.SyncGroupInfo();
+        if (player.SceneInstance != null)
+            await player.SceneInstance.SyncGroupInfo();
+        await player.MissionManager!.EnsureRunningKillMonsterTargetsVisible();
+
         if (player.QuestManager != null)
             await player.QuestManager.SyncQuest();
     }
