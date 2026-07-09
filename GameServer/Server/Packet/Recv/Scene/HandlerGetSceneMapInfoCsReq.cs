@@ -10,5 +10,7 @@ public class HandlerGetSceneMapInfoCsReq : Handler<GetSceneMapInfoCsReq>
     protected override async Task OnHandle(Connection connection, PlayerInstance player, GetSceneMapInfoCsReq req)
     {
         await connection.SendPacket(new PacketGetSceneMapInfoScRsp(req, player));
+        if (player.MissionManager != null)
+            await player.MissionManager.EnsureRunningKillMonsterTargetsVisible();
     }
 }

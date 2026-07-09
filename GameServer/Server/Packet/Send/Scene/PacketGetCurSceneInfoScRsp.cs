@@ -8,10 +8,12 @@ public class PacketGetCurSceneInfoScRsp : BasePacket
 {
     public PacketGetCurSceneInfoScRsp(PlayerInstance player) : base(CmdIds.GetCurSceneInfoScRsp)
     {
+        var scene = player.SceneInstance!;
         var proto = new GetCurSceneInfoScRsp
         {
-            Scene = player.SceneInstance!.ToProto()
+            Scene = scene.ToProto()
         };
+        scene.MarkClientSceneSnapshotSynced();
 
         SetData(proto);
     }

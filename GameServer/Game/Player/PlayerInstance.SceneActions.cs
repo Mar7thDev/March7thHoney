@@ -398,21 +398,20 @@ public partial class PlayerInstance
             }
 
             if (MissionManager != null)
+            {
                 await MissionManager.OnPlayerChangeScene();
+                await MissionManager.HandleFinishType(MissionFinishTypeEnum.EnterFloor);
+                await MissionManager.HandleFinishType(MissionFinishTypeEnum.EnterPlane);
+                await MissionManager.HandleFinishType(MissionFinishTypeEnum.NotInFloor);
+                await MissionManager.HandleFinishType(MissionFinishTypeEnum.NotInPlane);
+                if (SceneInstance != null) await SceneInstance.SyncGroupInfo();
+            }
 
             Connection?.SendPacket(CmdIds.SyncServerSceneChangeNotify);
             if (sendPacket && notSendMove)
                 await SendPacket(new PacketEnterSceneByServerScNotify(SceneInstance!));
             else if (sendPacket && !notSendMove) // send move packet
                 await SendPacket(new PacketSceneEntityMoveScNotify(this));
-
-            if (MissionManager != null)
-            {
-                await MissionManager.HandleFinishType(MissionFinishTypeEnum.EnterFloor);
-                await MissionManager.HandleFinishType(MissionFinishTypeEnum.EnterPlane);
-                await MissionManager.HandleFinishType(MissionFinishTypeEnum.NotInFloor);
-                await MissionManager.HandleFinishType(MissionFinishTypeEnum.NotInPlane);
-            }
         }
         finally
         {
@@ -521,4 +520,3 @@ public partial class PlayerInstance
 
     #endregion
 }
-
