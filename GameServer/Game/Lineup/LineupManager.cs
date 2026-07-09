@@ -281,6 +281,12 @@ public class LineupManager : BasePlayerManager<LineupData>
         await AddAvatar(Data.GetCurLineupIndex(), avatarId, sendPacket);
     }
 
+    // targets the real (non-virtual) lineup even while a story virtual lineup is still active
+    public async ValueTask AddAvatarToRealTeam(int avatarId, bool sendPacket = true)
+    {
+        await AddAvatar(Data.CurLineup, avatarId, sendPacket);
+    }
+
     public async ValueTask AddSpecialAvatarToCurTeam(int specialAvatarId, bool sendPacket = true)
     {
         Data.Lineups.TryGetValue(Data.GetCurLineupIndex(), out var lineup);
@@ -314,6 +320,48 @@ public class LineupManager : BasePlayerManager<LineupData>
         if (sendPacket)
         {
             Player.SceneInstance?.SyncLineup();
+            await Player.SendPacket(new PacketSyncLineupNotify(lineup));
+        }
+    }
+
+    public async ValueTask AddTrialAvatarToCurTeam(int specialAvatarId, bool sendPacket = true)
+    {
+        var lineup = GetCurLineup();
+        if (lineup == null) return;
+        var trial = Player.AvatarManager!.GetTrialAvatar(specialAvatarId);
+        if (trial == null) return;
+        if (lineup.BaseAvatars!.Any(a => a.SpecialAvatarId == trial.SpecialAvatarId)) return; // already joined
+        trial.CheckLevel(Player.Data.WorldLevel);
+        if (lineup.BaseAvatars!.Count >= 4) lineup.BaseAvatars.RemoveAt(lineup.BaseAvatars.Count - 1);
+        lineup.BaseAvatars.Add(new LineupAvatarInfo
+            { BaseAvatarId = trial.BaseAvatarId, SpecialAvatarId = trial.SpecialAvatarId });
+        MarkDirty();
+
+        if (sendPacket)
+        {
+            Player.SceneInstance?.SyncLineup();
+            await Player.SendPacket(new PacketSyncLineupNotify(lineup));
+        }
+    }
+
+    public async ValueTask RemoveTrialAvatarFromCurTeam(int specialAvatarId, bool sendPacket = true)
+    {
+        var lineup = GetCurLineup();
+        if (lineup == null) return;
+        if (lineup.BaseAvatars!.RemoveAll(a => a.SpecialAvatarId == specialAvatarId) == 0) return;
+        MarkDirty();
+
+        if (!sendPacket) return;
+        Player.SceneInstance?.SyncLineup();
+
+        // a virtual lineup only exists to host trial avatars; tear it down once the last one leaves
+        if (lineup.IsExtraLineup() && lineup.BaseAvatars!.Count == 0)
+        {
+            Data.Lineups.Remove(Data.GetCurLineupIndex());
+            Data.CurExtraLineup = -1;
+        }
+        else
+        {
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
