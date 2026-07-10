@@ -44,6 +44,46 @@ public class CommandCalyx : ICommand
             return;
         }
 
+        if (mode == "modify")
+        {
+            var manager = player.CalyxOverrideManager!;
+            if (!manager.IsActive)
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.ModifyRequiresActive"));
+                return;
+            }
+
+            if (manager.IsCurrentBattleChallengePeak)
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.ModifyChallengePeakUnsupported"));
+                return;
+            }
+
+            if (tokens.Length != 4 || !int.TryParse(tokens[1], out var waveIndex) || waveIndex <= 0 ||
+                !int.TryParse(tokens[2], out var monsterIndex) || monsterIndex <= 0)
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.ModifyUsage"));
+                return;
+            }
+
+            if (!uint.TryParse(tokens[3], out var hp) || hp == 0)
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.ModifyInvalidHp"));
+                return;
+            }
+
+            if (!manager.TrySetMonsterHp(waveIndex, monsterIndex, hp, out var monsterId))
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.ModifyInvalidPosition",
+                    waveIndex.ToString(), monsterIndex.ToString()));
+                return;
+            }
+
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.ModifySuccess",
+                waveIndex.ToString(), monsterIndex.ToString(), monsterId.ToString(), hp.ToString()));
+            return;
+        }
+
         await arg.SendMsg(I18NManager.Translate("Game.Command.Calyx.InvalidMode", mode));
     }
 }
