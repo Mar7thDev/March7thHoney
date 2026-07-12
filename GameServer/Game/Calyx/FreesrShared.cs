@@ -360,7 +360,10 @@ public static class FreesrShared
             var overrideData = player.CalyxOverrideManager.Data;
             overrideData.CachedJson ??= new FreesrCalyxData();
             if (data.BattleConfig != null)
+            {
                 overrideData.CachedJson.BattleConfig = data.BattleConfig;
+                overrideData.MonsterHpOverrides.Clear();
+            }
             if (data.Avatars != null)
                 overrideData.CachedJson.Avatars = data.Avatars;
             DatabaseHelper.MarkDirty(player.Uid);
