@@ -17,6 +17,7 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
 
     public CalyxOverrideData Data => _data ??= new CalyxOverrideData { Uid = Player.Uid };
     public bool IsActive => Data is { IsActive: true, CachedJson: not null };
+    public bool IsCurrentBattleChallengePeak => IsChallengePeak(Data.CachedJson?.BattleConfig);
 
     public void AttachData(CalyxOverrideData data) => _data = data;
 
@@ -31,6 +32,36 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
         Data.IsActive = true;
         Data.LoadedAtUnix = Extensions.GetUnixSec();
         DatabaseHelper.MarkDirty(Player.Uid);
+    }
+
+    public bool TrySetMonsterHp(int waveIndex, int monsterIndex, uint hp, out int monsterId)
+    {
+        monsterId = 0;
+        var waves = Data.CachedJson?.BattleConfig?.Monsters;
+        if (waves == null || waveIndex <= 0 || waveIndex > waves.Count || monsterIndex <= 0) return false;
+
+        var monsters = ExpandMonsterIds(waves[waveIndex - 1]);
+        if (monsterIndex > monsters.Count) return false;
+
+        monsterId = monsters[monsterIndex - 1];
+        var current = Data.MonsterHpOverrides.FirstOrDefault(x =>
+            x.WaveIndex == waveIndex && x.MonsterIndex == monsterIndex);
+        if (current == null)
+        {
+            Data.MonsterHpOverrides.Add(new CalyxMonsterHpOverride
+            {
+                WaveIndex = waveIndex,
+                MonsterIndex = monsterIndex,
+                Hp = hp
+            });
+        }
+        else
+        {
+            current.Hp = hp;
+        }
+
+        DatabaseHelper.MarkDirty(Player.Uid);
+        return true;
     }
 
     public async ValueTask<BattleInstance?> BuildOverrideBattle(int cocoonId, int wave, int worldLevel)
@@ -64,7 +95,13 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
             MappingInfoId = 0,
             RoundLimit = bc.CycleCount > 0 ? bc.CycleCount : 0,
             CustomLevel = ResolveUniformLevel(bc.Monsters),
-            CalyxOverride = new CalyxOverrideContext(data)
+            CalyxOverride = new CalyxOverrideContext(data, Data.MonsterHpOverrides.Select(x =>
+                new CalyxMonsterHpOverride
+                {
+                    WaveIndex = x.WaveIndex,
+                    MonsterIndex = x.MonsterIndex,
+                    Hp = x.Hp
+                }).ToList())
         };
 
         var avatarList = lineup.BaseAvatars!.Select(item =>
@@ -157,14 +194,7 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
         var result = new List<StageMonsterList>(waves.Count);
         foreach (var wave in waves)
         {
-            var expanded = new List<int>(5);
-            foreach (var entry in wave)
-            {
-                if (entry.MonsterId <= 0) continue;
-                var amount = Math.Max(1, entry.Amount);
-                for (var i = 0; i < amount && expanded.Count < 5; i++)
-                    expanded.Add(entry.MonsterId);
-            }
+            var expanded = ExpandMonsterIds(wave);
 
             result.Add(new StageMonsterList
             {
@@ -179,6 +209,31 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
         return result;
     }
 
+    private static List<int> ExpandMonsterIds(IEnumerable<FreesrMonsterEntry> wave)
+    {
+        var expanded = new List<int>(5);
+        foreach (var entry in wave)
+        {
+            if (entry.MonsterId <= 0) continue;
+            var amount = Math.Max(1, entry.Amount);
+            for (var i = 0; i < amount && expanded.Count < 5; i++)
+                expanded.Add(entry.MonsterId);
+        }
+
+        return expanded;
+    }
+
+    internal static bool IsChallengePeak(FreesrBattleConfig? battleConfig)
+    {
+        if (battleConfig == null) return false;
+        if (string.Equals(battleConfig.BattleType, "ChallengePeak", StringComparison.OrdinalIgnoreCase)) return true;
+        if (battleConfig.StageId <= 0) return false;
+
+        return GameData.ChallengePeakConfigData.Values.Any(config =>
+            config.EventIDList.Contains(battleConfig.StageId) ||
+            config.BossExcel?.HardEventIDList.Contains(battleConfig.StageId) == true);
+    }
+
     private static int ResolveUniformLevel(List<List<FreesrMonsterEntry>>? waves)
     {
         if (waves == null) return 0;
@@ -187,10 +242,14 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
     }
 }
 
-public sealed class CalyxOverrideContext(FreesrCalyxData data)
+public sealed class CalyxOverrideContext(
+    FreesrCalyxData data,
+    IReadOnlyList<CalyxMonsterHpOverride> monsterHpOverrides)
 {
     public void Apply(BattleInstance battle, SceneBattleInfo proto)
     {
+        ApplyMonsterHp(proto);
+
         if (data.BattleConfig?.Blessings != null)
             foreach (var b in data.BattleConfig.Blessings)
                 battle.Buffs.Add(new MazeBuff(b.Id, Math.Max(1, b.Level), -1) { WaveFlag = -1 });
@@ -248,6 +307,22 @@ public sealed class CalyxOverrideContext(FreesrCalyxData data)
                 mb.DynamicValues["SkillIndex"] = 0;
                 battle.Buffs.Add(mb);
             }
+        }
+    }
+
+    private void ApplyMonsterHp(SceneBattleInfo proto)
+    {
+        if (CalyxOverrideManager.IsChallengePeak(data.BattleConfig)) return;
+
+        foreach (var hpOverride in monsterHpOverrides)
+        {
+            if (hpOverride.WaveIndex <= 0 || hpOverride.WaveIndex > proto.MonsterWaveList.Count) continue;
+            var wave = proto.MonsterWaveList[hpOverride.WaveIndex - 1];
+            if (hpOverride.MonsterIndex <= 0 || hpOverride.MonsterIndex > wave.MonsterList.Count) continue;
+
+            var monster = wave.MonsterList[hpOverride.MonsterIndex - 1];
+            monster.MaxHp = hpOverride.Hp;
+            monster.CurHp = hpOverride.Hp;
         }
     }
 }
