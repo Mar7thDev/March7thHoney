@@ -54,6 +54,7 @@ public partial class GameDataSnapshot
     public Dictionary<int, ChallengePeakConfigExcel> ChallengePeakConfigData { get; set; } = [];
     public Dictionary<int, ChallengePeakBossConfigExcel> ChallengePeakBossConfigData { get; set; } = [];
     public ChallengePeakOverrideConfig ChallengePeakOverrideConfig { get; set; } = new();
+    public int? CurrentChallengePeakGroupId { get; set; }
     public Dictionary<int, List<ChallengeRewardExcel>> ChallengeRewardData { get; set; } = [];
     public Dictionary<int, List<ChallengePeakRewardExcel>> ChallengePeakRewardData { get; set; } = [];
     public Dictionary<int, CocoonConfigExcel> CocoonConfigData { get; set; } = [];
@@ -305,6 +306,7 @@ public static partial class GameData
             ChallengePeakConfigData = GameData.ChallengePeakConfigData,
             ChallengePeakBossConfigData = GameData.ChallengePeakBossConfigData,
             ChallengePeakOverrideConfig = GameData.ChallengePeakOverrideConfig,
+            CurrentChallengePeakGroupId = GameData.CurrentChallengePeakGroupId,
             ChallengeRewardData = GameData.ChallengeRewardData,
             ChallengePeakRewardData = GameData.ChallengePeakRewardData,
             CocoonConfigData = GameData.CocoonConfigData,
@@ -551,6 +553,7 @@ public static partial class GameData
         GameData.ChallengePeakConfigData = snapshot.ChallengePeakConfigData;
         GameData.ChallengePeakBossConfigData = snapshot.ChallengePeakBossConfigData;
         GameData.ChallengePeakOverrideConfig = snapshot.ChallengePeakOverrideConfig;
+        GameData.CurrentChallengePeakGroupId = snapshot.CurrentChallengePeakGroupId;
         GameData.ChallengeRewardData = snapshot.ChallengeRewardData;
         GameData.ChallengePeakRewardData = snapshot.ChallengePeakRewardData;
         GameData.CocoonConfigData = snapshot.CocoonConfigData;

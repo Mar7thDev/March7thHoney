@@ -19,6 +19,7 @@ public static class CommandRoles
                 CommandPermissions.Calyx,
                 CommandPermissions.Scene,
                 CommandPermissions.Mission,
+                CommandPermissions.Peak,
                 CommandPermissions.Avatar,
                 CommandPermissions.Give,
                 CommandPermissions.GiveAll,

@@ -103,6 +103,13 @@ public static partial class GameData
     public static Dictionary<int, ChallengePeakConfigExcel> ChallengePeakConfigData { get; private set; } = [];
     public static Dictionary<int, ChallengePeakBossConfigExcel> ChallengePeakBossConfigData { get; private set; } = [];
     public static ChallengePeakOverrideConfig ChallengePeakOverrideConfig { get; set; } = new();
+
+    /// <summary>
+    ///     Selected ChallengePeak group from Config/Custom/ChallengePeak.json (switched via /peak).
+    ///     Null means "use default max group_id" until explicitly set.
+    /// </summary>
+    public static int? CurrentChallengePeakGroupId { get; set; }
+
     public static Dictionary<int, List<ChallengeRewardExcel>> ChallengeRewardData { get; private set; } = [];
 
     public static Dictionary<int, List<ChallengePeakRewardExcel>> ChallengePeakRewardData { get; private set; } = [];
@@ -521,7 +528,11 @@ public static partial class GameData
 
     public static int GetCurrentChallengePeakGroupId()
     {
-        // Prefer explicit group order from Config/Data/ChallengePeak.json overrides.
+        if (CurrentChallengePeakGroupId is { } selected &&
+            IsChallengePeakGroupAvailable(selected))
+            return selected;
+
+        // Prefer explicit group order from Config/Custom/ChallengePeak.json overrides.
         if (ChallengePeakOverrideConfig.ChallengePeak.Count > 0)
             return ChallengePeakOverrideConfig.ChallengePeak.Max(x => x.GroupId);
 
@@ -529,6 +540,39 @@ public static partial class GameData
             return ChallengePeakGroupConfigData.Keys.Max();
 
         return 1;
+    }
+
+    public static bool TrySetCurrentChallengePeakGroupId(int groupId)
+    {
+        if (!IsChallengePeakGroupAvailable(groupId)) return false;
+        CurrentChallengePeakGroupId = groupId;
+        return true;
+    }
+
+    public static bool IsChallengePeakGroupAvailable(int groupId)
+    {
+        return ChallengePeakOverrideConfig.ChallengePeak.Any(x => x.GroupId == groupId);
+    }
+
+    public static IEnumerable<int> GetAvailableChallengePeakGroupIds()
+    {
+        return ChallengePeakOverrideConfig.ChallengePeak
+            .Select(x => x.GroupId)
+            .Distinct()
+            .OrderBy(x => x);
+    }
+
+    /// <summary>
+    ///     After (re)loading ChallengePeak.json, keep a still-valid selection or fall back to the latest group.
+    /// </summary>
+    public static void SyncCurrentChallengePeakGroupId()
+    {
+        if (CurrentChallengePeakGroupId is { } selected && IsChallengePeakGroupAvailable(selected))
+            return;
+
+        CurrentChallengePeakGroupId = ChallengePeakOverrideConfig.ChallengePeak.Count > 0
+            ? ChallengePeakOverrideConfig.ChallengePeak.Max(x => x.GroupId)
+            : null;
     }
 
     #endregion
