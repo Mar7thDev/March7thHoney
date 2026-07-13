@@ -562,6 +562,8 @@ public class ResourceManager
                 levelExcel.RebuildChallengeMonsters();
             }
         }
+
+        GameData.SyncCurrentChallengePeakGroupId();
     }
 
     public static void LoadMazeSkill()
