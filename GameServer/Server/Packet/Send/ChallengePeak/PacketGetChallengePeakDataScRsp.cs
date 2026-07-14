@@ -9,7 +9,8 @@ public class PacketGetChallengePeakDataScRsp : BasePacket
 {
     public PacketGetChallengePeakDataScRsp(PlayerInstance player) : base(CmdIds.GetChallengePeakDataScRsp)
     {
-        var currentGroupId = GameData.GetCurrentChallengePeakGroupId();
+        var currentGroupId = player.ChallengePeakManager?.GetCurrentGroupId() ??
+                             GameData.GetCurrentChallengePeakGroupId();
         if (!GameData.ChallengePeakGroupConfigData.ContainsKey(currentGroupId) &&
             GameData.ChallengePeakGroupConfigData.Count > 0)
             currentGroupId = GameData.ChallengePeakGroupConfigData.Keys.Max();

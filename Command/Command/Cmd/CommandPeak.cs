@@ -1,8 +1,6 @@
 using March7thHoney.Data;
-using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
 using March7thHoney.Internationalization;
-using March7thHoney.Kcp;
 
 namespace March7thHoney.Command.Command.Cmd;
 
@@ -12,13 +10,21 @@ public class CommandPeak : ICommand
     [CommandDefault]
     public async ValueTask Default(CommandArg arg)
     {
+        var player = arg.Target?.Player;
+        if (player == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
         if (arg.BasicArgs.Count < 1 || !int.TryParse(arg.BasicArgs[0], out var groupId))
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Peak.Usage"));
             return;
         }
 
-        if (!GameData.TrySetCurrentChallengePeakGroupId(groupId))
+        var manager = player.ChallengePeakManager!;
+        if (!manager.TrySetCurrentGroupId(groupId))
         {
             var available = string.Join(", ", GameData.GetAvailableChallengePeakGroupIds());
             await arg.SendMsg(I18NManager.Translate("Game.Command.Peak.InvalidGroup",
@@ -27,17 +33,13 @@ public class CommandPeak : ICommand
             return;
         }
 
-        var refreshed = 0;
-        foreach (var connection in March7thHoneyListener.GetSnapshot().OfType<Connection>())
-        {
-            if (!connection.IsOnline || connection.Player?.ChallengePeakManager == null) continue;
-            await connection.SendPacket(new PacketGetChallengePeakDataScRsp(connection.Player));
-            await connection.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(
-                connection.Player.ChallengePeakManager.GetChallengePeakInfo(groupId)));
-            refreshed++;
-        }
+        var currentGroupId = manager.GetCurrentGroupId();
+        await arg.Target!.SendPacket(new PacketGetChallengePeakDataScRsp(player));
+        await arg.Target.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(
+            manager.GetChallengePeakInfo(currentGroupId)));
 
-        await arg.SendMsg(I18NManager.Translate("Game.Command.Peak.Switched",
-            groupId.ToString(), refreshed.ToString()));
+        await arg.SendMsg(groupId == 0
+            ? I18NManager.Translate("Game.Command.Peak.Reset", currentGroupId.ToString())
+            : I18NManager.Translate("Game.Command.Peak.Switched", groupId.ToString()));
     }
 }

@@ -17,6 +17,7 @@ public class ChallengeData : BaseDatabaseDataHelper
     public Dictionary<int, ChallengePeakLevelData> PeakLevelDatas { get; set; } = new();
 
     public Dictionary<int, ChallengePeakBossLevelData> PeakBossLevelDatas { get; set; } = new();
+    public int CurrentPeakGroupId { get; set; }
 
     public string? TierceInstance { get; set; }
 

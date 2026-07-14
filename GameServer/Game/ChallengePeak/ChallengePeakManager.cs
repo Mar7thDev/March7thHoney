@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
+using March7thHoney.Database;
 using March7thHoney.Database.Challenge;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Lineup;
@@ -23,6 +24,24 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
     private readonly Dictionary<int, bool> _bossHardByGroup = [];
     public void SetBossHard(int groupId, bool hard) => _bossHardByGroup[groupId] = hard;
     public bool IsBossHard(int groupId) => _bossHardByGroup.GetValueOrDefault(groupId, false);
+
+    public int GetCurrentGroupId()
+    {
+        var selected = Player.ChallengeManager!.ChallengeData.CurrentPeakGroupId;
+        return GameData.IsChallengePeakGroupAvailable(selected)
+            ? selected
+            : GameData.GetCurrentChallengePeakGroupId();
+    }
+
+    public bool TrySetCurrentGroupId(int groupId)
+    {
+        if (groupId != 0 && !GameData.IsChallengePeakGroupAvailable(groupId)) return false;
+        var data = Player.ChallengeManager!.ChallengeData;
+        data.CurrentPeakGroupId = groupId;
+        DatabaseHelper.MarkDirty(Player.Uid);
+        DatabaseHelper.SaveDatabaseType(data);
+        return true;
+    }
 
     public ChallengePeakGroup GetChallengePeakInfo(int groupId, bool disableHardMode = true)
     {
@@ -378,7 +397,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             {
                 CurrentPeakGroupId = (uint)(GameData.ChallengePeakGroupConfigData.Values
                     .FirstOrDefault(x => x.BossLevelID == levelId || x.PreLevelIDList.Contains(levelId))?.ID ??
-                    GameData.GetCurrentChallengePeakGroupId()),
+                    GetCurrentGroupId()),
                 CurrentPeakLevelId = (uint)levelId,
                 CurrentExtraLineup = ChallengeLineupType.Challenge1,
                 CurStatus = 1
