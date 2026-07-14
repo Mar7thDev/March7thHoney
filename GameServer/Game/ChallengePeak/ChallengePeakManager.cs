@@ -19,10 +19,26 @@ namespace March7thHoney.GameServer.Game.ChallengePeak;
 /// <see cref="March7thHoney.GameServer.Game.Challenge.ChallengeManager" />
 public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(player)
 {
+    private int? _currentGroupId;
+
     // 王棋难度按 group 记忆(随 SetChallengePeakBossHardMode 改变, 离开不重置), 对齐官服按 peakGroupId 跟踪
     private readonly Dictionary<int, bool> _bossHardByGroup = [];
     public void SetBossHard(int groupId, bool hard) => _bossHardByGroup[groupId] = hard;
     public bool IsBossHard(int groupId) => _bossHardByGroup.GetValueOrDefault(groupId, false);
+
+    public int GetCurrentGroupId()
+    {
+        return _currentGroupId is { } selected && GameData.IsChallengePeakGroupAvailable(selected)
+            ? selected
+            : GameData.GetCurrentChallengePeakGroupId();
+    }
+
+    public bool TrySetCurrentGroupId(int groupId)
+    {
+        if (!GameData.IsChallengePeakGroupAvailable(groupId)) return false;
+        _currentGroupId = groupId;
+        return true;
+    }
 
     public ChallengePeakGroup GetChallengePeakInfo(int groupId, bool disableHardMode = true)
     {
@@ -378,7 +394,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             {
                 CurrentPeakGroupId = (uint)(GameData.ChallengePeakGroupConfigData.Values
                     .FirstOrDefault(x => x.BossLevelID == levelId || x.PreLevelIDList.Contains(levelId))?.ID ??
-                    GameData.GetCurrentChallengePeakGroupId()),
+                    GetCurrentGroupId()),
                 CurrentPeakLevelId = (uint)levelId,
                 CurrentExtraLineup = ChallengeLineupType.Challenge1,
                 CurStatus = 1
