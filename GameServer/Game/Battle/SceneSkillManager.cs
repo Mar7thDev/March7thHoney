@@ -9,6 +9,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Game.Task.AvatarTask;
+using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 
@@ -163,6 +164,16 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             if (entity is not EntityProp prop) continue;
             if (prop.Excel.PropType != PropTypeEnum.PROP_DESTRUCT) continue;
             handled = true;
+
+            if (prop.Excel.IsMpRecover)
+            {
+                await Player.LineupManager!.GainMp(2, true, SyncLineupReason.SyncReasonMpAddPropHit);
+            }
+            else if (prop.Excel.IsHpRecover)
+            {
+                Player.LineupManager!.GetCurLineup()!.Heal(2000, false);
+                await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager.GetCurLineup()!));
+            }
 
             if (prop.PropInfo.EventID > 0)
             {
