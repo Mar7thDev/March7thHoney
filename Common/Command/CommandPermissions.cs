@@ -25,6 +25,7 @@ public static class CommandPermissions
     public const string Kick = "command.kick";
     public const string Lineup = "command.lineup";
     public const string Mission = "command.mission";
+    public const string Peak = "command.peak";
     public const string Raid = "command.raid";
     public const string Relic = "command.relic";
     public const string Reload = "command.reload";
@@ -129,6 +130,7 @@ public static class CommandPermissions
             Lineup,
             Mail,
             Mission,
+            Peak,
             Raid,
             Relic,
             Reload,
