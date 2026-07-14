@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
+using March7thHoney.Database;
 using March7thHoney.Database.Challenge;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Lineup;
@@ -19,8 +20,6 @@ namespace March7thHoney.GameServer.Game.ChallengePeak;
 /// <see cref="March7thHoney.GameServer.Game.Challenge.ChallengeManager" />
 public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(player)
 {
-    private int? _currentGroupId;
-
     // 王棋难度按 group 记忆(随 SetChallengePeakBossHardMode 改变, 离开不重置), 对齐官服按 peakGroupId 跟踪
     private readonly Dictionary<int, bool> _bossHardByGroup = [];
     public void SetBossHard(int groupId, bool hard) => _bossHardByGroup[groupId] = hard;
@@ -28,7 +27,8 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
     public int GetCurrentGroupId()
     {
-        return _currentGroupId is { } selected && GameData.IsChallengePeakGroupAvailable(selected)
+        var selected = Player.ChallengeManager!.ChallengeData.CurrentPeakGroupId;
+        return GameData.IsChallengePeakGroupAvailable(selected)
             ? selected
             : GameData.GetCurrentChallengePeakGroupId();
     }
@@ -36,7 +36,10 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
     public bool TrySetCurrentGroupId(int groupId)
     {
         if (!GameData.IsChallengePeakGroupAvailable(groupId)) return false;
-        _currentGroupId = groupId;
+        var data = Player.ChallengeManager!.ChallengeData;
+        data.CurrentPeakGroupId = groupId;
+        DatabaseHelper.MarkDirty(Player.Uid);
+        DatabaseHelper.SaveDatabaseType(data);
         return true;
     }
 
