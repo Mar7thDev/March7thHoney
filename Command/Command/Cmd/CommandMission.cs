@@ -1,6 +1,7 @@
 using System.Text;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Mission;
+using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
@@ -197,5 +198,28 @@ public class CommandMission : ICommand
         var mission = arg.Target!.Player!.MissionManager!;
         await mission.FinishMainMission(missionId);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionFinished", missionId.ToString()));
+    }
+
+    [CommandMethod("0 start")]
+    public async ValueTask StartMission(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        var player = arg.Target.Player!;
+        var uid = player.Uid;
+        var displayName = player.Data.Name ?? uid.ToString();
+        var isSelf = uid == arg.Sender.GetSender();
+
+        if (isSelf)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.StartStarted", displayName));
+
+        await PlayerResetHelper.ResetGameplayAsync(uid);
+
+        if (!isSelf)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.StartSuccess", displayName));
     }
 }
