@@ -35,7 +35,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
     public bool TrySetCurrentGroupId(int groupId)
     {
-        if (!GameData.IsChallengePeakGroupAvailable(groupId)) return false;
+        if (groupId != 0 && !GameData.IsChallengePeakGroupAvailable(groupId)) return false;
         var data = Player.ChallengeManager!.ChallengeData;
         data.CurrentPeakGroupId = groupId;
         DatabaseHelper.MarkDirty(Player.Uid);

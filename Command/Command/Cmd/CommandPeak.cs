@@ -23,7 +23,8 @@ public class CommandPeak : ICommand
             return;
         }
 
-        if (!player.ChallengePeakManager!.TrySetCurrentGroupId(groupId))
+        var manager = player.ChallengePeakManager!;
+        if (!manager.TrySetCurrentGroupId(groupId))
         {
             var available = string.Join(", ", GameData.GetAvailableChallengePeakGroupIds());
             await arg.SendMsg(I18NManager.Translate("Game.Command.Peak.InvalidGroup",
@@ -32,10 +33,13 @@ public class CommandPeak : ICommand
             return;
         }
 
+        var currentGroupId = manager.GetCurrentGroupId();
         await arg.Target!.SendPacket(new PacketGetChallengePeakDataScRsp(player));
         await arg.Target.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(
-            player.ChallengePeakManager.GetChallengePeakInfo(groupId)));
+            manager.GetChallengePeakInfo(currentGroupId)));
 
-        await arg.SendMsg(I18NManager.Translate("Game.Command.Peak.Switched", groupId.ToString()));
+        await arg.SendMsg(groupId == 0
+            ? I18NManager.Translate("Game.Command.Peak.Reset", currentGroupId.ToString())
+            : I18NManager.Translate("Game.Command.Peak.Switched", groupId.ToString()));
     }
 }
