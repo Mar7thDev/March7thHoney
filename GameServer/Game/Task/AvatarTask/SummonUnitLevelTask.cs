@@ -27,13 +27,14 @@ public class SummonUnitLevelTask
 
     #region Manage
 
-    public void TriggerTasks(List<TaskConfigInfo> tasks, List<BaseGameEntity> targetEntities,
+    public async ValueTask TriggerTasks(List<TaskConfigInfo> tasks, List<BaseGameEntity> targetEntities,
         EntitySummonUnit? summonUnit)
     {
-        foreach (var task in tasks) TriggerTask(task, targetEntities, summonUnit);
+        foreach (var task in tasks) await TriggerTask(task, targetEntities, summonUnit);
     }
 
-    public void TriggerTask(TaskConfigInfo act, List<BaseGameEntity> targetEntities, EntitySummonUnit? summonUnit)
+    public async ValueTask TriggerTask(TaskConfigInfo act, List<BaseGameEntity> targetEntities,
+        EntitySummonUnit? summonUnit)
     {
         try
         {
@@ -43,7 +44,7 @@ public class SummonUnitLevelTask
             var method = GetOrCreateExecuteTask(methodName);
             if (method == null) return;
 
-            method(act, targetEntities, summonUnit);
+            await method(act, targetEntities, summonUnit);
         }
         catch (Exception e)
         {
@@ -87,10 +88,10 @@ public class SummonUnitLevelTask
             var resp = await method(predicateTaskList.Predicate, targetEntities, summonUnit);
             if (resp is true)
                 foreach (var task in predicateTaskList.SuccessTaskList)
-                    TriggerTask(task, targetEntities, summonUnit);
+                    await TriggerTask(task, targetEntities, summonUnit);
             else
                 foreach (var task in predicateTaskList.FailedTaskList)
-                    TriggerTask(task, targetEntities, summonUnit);
+                    await TriggerTask(task, targetEntities, summonUnit);
         }
 
         return null;
@@ -190,4 +191,3 @@ public class SummonUnitLevelTask
 
     #endregion
 }
-
