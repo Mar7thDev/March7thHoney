@@ -12,6 +12,7 @@ using March7thHoney.GameServer.Game.Task.AvatarTask;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Battle;
 
@@ -66,6 +67,9 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             return handledDestruct
                 ? new SkillResultData(Retcode.RetSucc)
                 : new SkillResultData(Retcode.RetSceneEntityNotExist);
+
+        await TriggerAttackDetectSummons(targetEntities);
+
         // get ability file
         var abilities = GetAbilityConfig(attackEntity);
 
@@ -142,6 +146,39 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         }
 
         return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
+    }
+
+    private async ValueTask TriggerAttackDetectSummons(List<BaseGameEntity> targetEntities)
+    {
+        if (Player.SceneInstance == null || targetEntities.Count == 0) return;
+
+        foreach (var summon in Player.SceneInstance.SummonUnit.Values)
+        {
+            var center = summon.Motion.Pos;
+            if (center == null) continue;
+
+            foreach (var trigger in summon.TriggerList)
+            {
+                if (!trigger.OnTriggerEnter.Any(x => x is AddMazeBuff)) continue;
+
+                var radius = trigger.Radius.GetValue() * 1000L;
+                if (radius <= 0) continue;
+
+                var targetIds = targetEntities.OfType<EntityMonster>()
+                    .Where(x => x.IsAlive && GetDistanceSquared(x.Position, center) <= radius * radius)
+                    .Select(x => (uint)x.EntityId)
+                    .ToList();
+                if (targetIds.Count > 0)
+                    await Player.SceneInstance.TriggerSummonUnit(summon.EntityId, trigger.TriggerName, targetIds);
+            }
+        }
+    }
+
+    private static long GetDistanceSquared(Position position, Vector center)
+    {
+        var x = (long)position.X - center.X;
+        var z = (long)position.Z - center.Z;
+        return x * x + z * z;
     }
 
     private async ValueTask<bool> HandleDestructPropDrops(SceneCastSkillCsReq req)

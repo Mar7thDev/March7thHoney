@@ -87,7 +87,7 @@ public partial class SceneInstance
             // enter
             var config = trigger.OnTriggerEnter;
 
-            Player.TaskManager!.SummonUnitLevelTask.TriggerTasks(config, targetEnter, summonUnit);
+            await Player.TaskManager!.SummonUnitLevelTask.TriggerTasks(config, targetEnter, summonUnit);
         }
 
         if (targetExit.Count <= 0) return Retcode.RetSucc;
@@ -95,7 +95,7 @@ public partial class SceneInstance
             // enter
             var config = trigger.OnTriggerExit;
 
-            Player.TaskManager!.SummonUnitLevelTask.TriggerTasks(config, targetExit, summonUnit);
+            await Player.TaskManager!.SummonUnitLevelTask.TriggerTasks(config, targetExit, summonUnit);
         }
 
         return Retcode.RetSucc;
