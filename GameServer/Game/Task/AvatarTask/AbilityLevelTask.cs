@@ -276,6 +276,36 @@ public class AbilityLevelTask(PlayerInstance player)
         return new AbilityLevelResult(instance, battleInfos);
     }
 
+    public async ValueTask<object> AdventureTriggerTargetAbility(AbilityLevelParam param)
+    {
+        if (param.Act is not AdventureTriggerTargetAbility trigger || string.IsNullOrEmpty(trigger.AbilityName))
+            return new AbilityLevelResult();
+
+        var targetAbility = param.AdventureAbility.AbilityList.FirstOrDefault(x => x.Name == trigger.AbilityName);
+        if (targetAbility == null) return new AbilityLevelResult();
+
+        var activeAbilities = param.ActiveAbilities ?? new HashSet<string>(StringComparer.Ordinal);
+        if (!activeAbilities.Add(targetAbility.Name)) return new AbilityLevelResult();
+
+        try
+        {
+            BattleInstance? instance = null;
+            List<HitMonsterInstance> battleInfos = [];
+            foreach (var task in targetAbility.OnStart)
+            {
+                var result = await TriggerTask(param with { Act = task, ActiveAbilities = activeAbilities });
+                if (result.Instance != null) instance = result.Instance;
+                if (result.BattleInfos != null) battleInfos.AddRange(result.BattleInfos);
+            }
+
+            return new AbilityLevelResult(instance, battleInfos);
+        }
+        finally
+        {
+            activeAbilities.Remove(targetAbility.Name);
+        }
+    }
+
     // 停云秘技（技能 120207）：立即为施法者恢复 50 点能量。唯一使用 AdventureModifyTeamPlayerSP 的角色。
     // 引擎 SP 为「能量 ×100」，满能量归一化为 10000，故 50 点 = 5000。
     private const int TechniqueSpRecoverFallback = 5000;
@@ -721,4 +751,5 @@ public record AbilityLevelParam(
     List<BaseGameEntity> TargetEntities,
     SceneCastSkillCsReq Request,
     string? ModifierName,
-    TargetEvaluator? TargetEvaluator = null);
+    TargetEvaluator? TargetEvaluator = null,
+    HashSet<string>? ActiveAbilities = null);
