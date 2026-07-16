@@ -37,6 +37,7 @@ public partial class SceneInstance
 
         List<BaseGameEntity> targetEnter = [];
         List<BaseGameEntity> targetExit = [];
+        HashSet<int> currentTargetIds = [];
         foreach (var targetId in targetIds)
         {
             if (!Entities.TryGetValue((int)targetId, out var entity)) continue;
@@ -56,6 +57,7 @@ public partial class SceneInstance
             if (monster != null)
             {
                 if (!monster.IsAlive) continue;
+                currentTargetIds.Add(monster.EntityId);
                 if (summonUnit.CaughtEntityIds.Contains(monster.EntityId)) continue;
 
                 summonUnit.CaughtEntityIds.Add(monster.EntityId);
@@ -64,6 +66,7 @@ public partial class SceneInstance
 
             if (prop != null)
             {
+                currentTargetIds.Add(prop.EntityId);
                 if (summonUnit.CaughtEntityIds.Contains(prop.EntityId)) continue;
 
                 summonUnit.CaughtEntityIds.Add(prop.EntityId);
@@ -75,7 +78,7 @@ public partial class SceneInstance
         {
             if (gameEntity is not EntityMonster monster) continue;
 
-            if (summonUnit.CaughtEntityIds.Contains(monster.EntityId) && !targetEnter.Contains(monster))
+            if (summonUnit.CaughtEntityIds.Contains(monster.EntityId) && !currentTargetIds.Contains(monster.EntityId))
             {
                 summonUnit.CaughtEntityIds.Remove(monster.EntityId);
                 targetExit.Add(monster);
