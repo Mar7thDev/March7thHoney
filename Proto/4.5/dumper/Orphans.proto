@@ -876,7 +876,7 @@ enum BINKOMNEIPE {
 }
 
 message BJMPHAAOEFL {
-    int32 value = 6;
+    sint32 value = 6;
     uint32 key = 8;
 }
 
@@ -3514,7 +3514,7 @@ message GetDataCsReq {
 message GetDataScRsp {
     uint32 avatar_id = 5;
     uint32 DIKBLIJHNHP = 8;
-    uint32 is_taken_reward = 4;
+    bool is_taken_reward = 4;
     uint32 KFLINIHMELH = 2;
     repeated ONNMLLIEENI KCHBKMGJAGH = 11;
     uint32 CDAGJENADMN = 7;
@@ -10083,9 +10083,9 @@ message V2FinishPveStageScRsp {
 }
 
 message VectorSnapshot {
-    int32 x = 1;
-    int32 y = 2;
-    int32 z = 3;
+    sint32 x = 1;
+    sint32 y = 2;
+    sint32 z = 3;
 }
 
 // ========================= Museum =========================

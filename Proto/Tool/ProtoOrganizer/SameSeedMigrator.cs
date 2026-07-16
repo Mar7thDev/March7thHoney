@@ -7,6 +7,7 @@ public sealed record SameSeedMigrationResult(
     List<TypeDef> Definitions,
     Dictionary<string, string> TypeMappings,
     int FieldNames,
+    int ScalarTypes,
     int EnumValues,
     int OneofNames);
 
@@ -53,7 +54,12 @@ public static class SameSeedMigrator
                     currentTypeAlignments[source.Name] = targetName;
             }
         var typeMappings = ResolveTypeMappings(currentTypeAlignments);
+        var currentByTarget = current
+            .GroupBy(def => typeMappings.GetValueOrDefault(def.Name, def.Name), StringComparer.Ordinal)
+            .Where(group => group.Count() == 1)
+            .ToDictionary(group => group.Key, group => group.Single(), StringComparer.Ordinal);
         var fieldMappings = new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
+        var scalarTypeMappings = new Dictionary<string, Dictionary<int, ScalarTypeMigration>>(StringComparer.Ordinal);
         var enumMappings = new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
         var oneofMappings = new Dictionary<string, Dictionary<string, string>>(StringComparer.Ordinal);
 
@@ -73,6 +79,28 @@ public static class SameSeedMigrator
                     if (targetFields.TryGetValue(tag, out var targetField))
                         AddProposal(fields, sourceField.Name, targetField.Name);
                 fieldMappings[targetName] = ResolveIdentifierMappings(fields);
+
+                var scalarTypes = new Dictionary<int, ScalarTypeMigration>();
+                var currentFields = currentByTarget.TryGetValue(targetName, out var currentDef)
+                    ? ParseFields(currentDef.Body)
+                    : new Dictionary<int, FieldSpec>();
+                foreach (var (tag, sourceField) in sourceFields)
+                {
+                    if (!targetFields.TryGetValue(tag, out var targetField) ||
+                        sourceField.MapKey != null || targetField.MapKey != null ||
+                        !Scalars.Contains(Leaf(sourceField.Type)) || !Scalars.Contains(Leaf(targetField.Type)) ||
+                        sourceField.Type == targetField.Type) continue;
+                    var currentMatches = currentFields
+                        .Where(pair => pair.Value.Name == sourceField.Name)
+                        .ToList();
+                    if (currentMatches.Count != 1) continue;
+                    var currentField = currentMatches[0];
+                    if (currentField.Value.MapKey != null ||
+                        currentField.Value.Type != sourceField.Type ||
+                        currentField.Value.Label != sourceField.Label) continue;
+                    scalarTypes[currentField.Key] = new ScalarTypeMigration(sourceField.Type, targetField.Type);
+                }
+                if (scalarTypes.Count > 0) scalarTypeMappings[targetName] = scalarTypes;
 
                 var oneofs = new Dictionary<string, HashSet<string>>(StringComparer.Ordinal);
                 var sourceOneofs = ParseOneofs(source.Body);
@@ -98,9 +126,10 @@ public static class SameSeedMigrator
         }
 
         return new SameSeedMigrationResult(
-            Translate(currentDefs, typeMappings, fieldMappings, enumMappings, oneofMappings),
+            Translate(currentDefs, typeMappings, fieldMappings, scalarTypeMappings, enumMappings, oneofMappings),
             typeMappings,
             fieldMappings.Values.Sum(mapping => mapping.Count),
+            scalarTypeMappings.Values.Sum(mapping => mapping.Count),
             enumMappings.Values.Sum(mapping => mapping.Count),
             oneofMappings.Values.Sum(mapping => mapping.Count));
     }
@@ -301,6 +330,7 @@ public static class SameSeedMigrator
         List<TypeDef> defs,
         IReadOnlyDictionary<string, string> typeMappings,
         IReadOnlyDictionary<string, Dictionary<string, string>> fieldMappings,
+        IReadOnlyDictionary<string, Dictionary<int, ScalarTypeMigration>> scalarTypeMappings,
         IReadOnlyDictionary<string, Dictionary<string, string>> enumMappings,
         IReadOnlyDictionary<string, Dictionary<string, string>> oneofMappings)
     {
@@ -335,6 +365,7 @@ public static class SameSeedMigrator
             var fields = def.Kind == DefKind.Message
                 ? WithoutFieldCollisions(def.Body, fieldMappings.GetValueOrDefault(name) ?? new Dictionary<string, string>())
                 : new Dictionary<string, string>(StringComparer.Ordinal);
+            var scalarTypes = scalarTypeMappings.GetValueOrDefault(name) ?? new Dictionary<int, ScalarTypeMigration>();
             var enumValues = enumMappings.GetValueOrDefault(name) ?? new Dictionary<string, string>();
             var oneofs = oneofMappings.GetValueOrDefault(name) ?? new Dictionary<string, string>();
             var body = RewriteBody(
@@ -344,6 +375,7 @@ public static class SameSeedMigrator
                 effectiveTypeMappings,
                 typeTokenRx,
                 fields,
+                scalarTypes,
                 enumValues,
                 oneofs,
                 Rewrite);
@@ -367,6 +399,7 @@ public static class SameSeedMigrator
         IReadOnlyDictionary<string, string> typeMappings,
         Regex? typeTokenRx,
         IReadOnlyDictionary<string, string> fieldMappings,
+        IReadOnlyDictionary<int, ScalarTypeMigration> scalarTypeMappings,
         IReadOnlyDictionary<string, string> enumMappings,
         IReadOnlyDictionary<string, string> oneofMappings,
         Func<string, IReadOnlyDictionary<string, string>, Regex?, string> rewrite)
@@ -384,7 +417,11 @@ public static class SameSeedMigrator
             var field = FieldRx.Match(lines[i]);
             if (field.Success)
             {
-                var type = rewrite(field.Groups[2].Value, typeMappings, typeTokenRx);
+                var originalType = field.Groups[2].Value;
+                var type = rewrite(originalType, typeMappings, typeTokenRx);
+                var tag = int.Parse(field.Groups[7].Value);
+                if (scalarTypeMappings.TryGetValue(tag, out var scalarType) && originalType == scalarType.Source)
+                    type = scalarType.Target;
                 var fieldName = MappedIdentifier(field.Groups[6].Value, fieldMappings);
                 lines[i] = ReplaceGroups(lines[i], (field.Groups[6], fieldName), (field.Groups[2], type));
                 continue;
@@ -534,4 +571,5 @@ public static class SameSeedMigrator
         name.Length == 11 && name.All(character => character is >= 'A' and <= 'Z');
 
     private sealed record FieldSpec(string Name, string Type, string? MapKey, string Label);
+    private sealed record ScalarTypeMigration(string Source, string Target);
 }

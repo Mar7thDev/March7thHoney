@@ -231,7 +231,7 @@ namespace March7thHoney.Proto {
             "ASgLMgwuS0lBS0tORkxFUE4SEQoJZGlyZWN0aW9uGAsgASgFEhEKCXVuaXF1",
             "ZV9pZBgFIAEoBSIiCgtCSUNEUFBPR0hORBITCgtQTERLRU5KTEtNRRgFIAEo",
             "DSIiCgtCSUpQRkVIRUJMShITCgtJRUlGTU5OTUlOQRgLIAEoDSIpCgtCSk1Q",
-            "SEFBT0VGTBINCgV2YWx1ZRgGIAEoBRILCgNrZXkYCCABKA0iMgoLQkpOQ05F",
+            "SEFBT0VGTBINCgV2YWx1ZRgGIAEoERILCgNrZXkYCCABKA0iMgoLQkpOQ05F",
             "TEVPTU8SDwoHaXRlbV9pZBgBIAEoDRISCgppdGVtX2NvdW50GAIgASgNIrwH",
             "CgtCS0ZERkxOSEtJRhIWCg5xdWV1ZV9wb3NpdGlvbhgBIAEoDRITCgtJQ0JG",
             "RE1OTkVOSRgCIAEoDRInChFtYXJibGVfZ2FtZV9iZWdpbhhlIAEoCzIMLkNK",
@@ -800,7 +800,7 @@ namespace March7thHoney.Proto {
             "Q01PS01JRUhEQhgLIAEoAxITCgtLTktHSUVOQ0xKShgPIAMoDRITCgtOSklJ",
             "UEJIQkVESxgIIAMoDSIVChNHZXREYWlseVJlcG9ydENzUmVxIg4KDEdldERh",
             "dGFDc1JlcSLCAwoMR2V0RGF0YVNjUnNwEhEKCWF2YXRhcl9pZBgFIAEoDRIT",
-            "CgtESUtCTElKSE5IUBgIIAEoDRIXCg9pc190YWtlbl9yZXdhcmQYBCABKA0S",
+            "CgtESUtCTElKSE5IUBgIIAEoDRIXCg9pc190YWtlbl9yZXdhcmQYBCABKAgS",
             "EwoLS0ZMSU5JSE1FTEgYAiABKA0SIQoLS0NIQktNR0pBR0gYCyADKAsyDC5P",
             "Tk5NTExJRUVOSRITCgtDREFHSkVOQURNThgHIAEoDRITCgtFQUJGTUZIQ0VG",
             "RBgBIAEoDRIhCgtLQk1HR0dIRUxKUBgMIAEoCzIMLkdDRkdDSEFNTk9MEiEK",
@@ -1730,8 +1730,8 @@ namespace March7thHoney.Proto {
             "Eg4KBmlzX3dpbhgPIAEoCBITCgtBSU5LRkVJTk5BSxgOIAEoCCJoChVWMkZp",
             "bmlzaFB2ZVN0YWdlU2NSc3ASGQoGcmV3YXJkGAIgASgLMgkuSXRlbUxpc3QS",
             "DwoHcmV0Y29kZRgMIAEoDRITCgtNUERITkZOQ0lFQRgNIAEoDRIOCgZpc193",
-            "aW4YDiABKAgiMQoOVmVjdG9yU25hcHNob3QSCQoBeBgBIAEoBRIJCgF5GAIg",
-            "ASgFEgkKAXoYAyABKAUiMgoeU3luY011c2V1bUZ1bmRzQ2hhbmdlZFNjTm90",
+            "aW4YDiABKAgiMQoOVmVjdG9yU25hcHNob3QSCQoBeBgBIAEoERIJCgF5GAIg",
+            "ASgREgkKAXoYAyABKBEiMgoeU3luY011c2V1bUZ1bmRzQ2hhbmdlZFNjTm90",
             "aWZ5EhAKCGN1cl9mdW5kGA0gASgNItACCh1TeW5jTXVzZXVtSW5mb0NoYW5n",
             "ZWRTY05vdGlmeRITCgtLQUFER1BPTElFThgNIAEoDRILCgNleHAYBSABKA0S",
             "IQoLREhJT0hJT1BDR1AYCyADKAsyDC5GRUhIS0RJSUVOQRITCgtPTkNCSkhC",
@@ -38764,7 +38764,7 @@ namespace March7thHoney.Proto {
     #else
       if (Value != 0) {
         output.WriteRawTag(48);
-        output.WriteInt32(Value);
+        output.WriteSInt32(Value);
       }
       if (Key != 0) {
         output.WriteRawTag(64);
@@ -38782,7 +38782,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Value != 0) {
         output.WriteRawTag(48);
-        output.WriteInt32(Value);
+        output.WriteSInt32(Value);
       }
       if (Key != 0) {
         output.WriteRawTag(64);
@@ -38799,7 +38799,7 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       if (Value != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Value);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Value);
       }
       if (Key != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Key);
@@ -38842,7 +38842,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 48: {
-            Value = input.ReadInt32();
+            Value = input.ReadSInt32();
             break;
           }
           case 64: {
@@ -38869,7 +38869,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 48: {
-            Value = input.ReadInt32();
+            Value = input.ReadSInt32();
             break;
           }
           case 64: {
@@ -115569,10 +115569,10 @@ namespace March7thHoney.Proto {
 
     /// <summary>Field number for the "is_taken_reward" field.</summary>
     public const int IsTakenRewardFieldNumber = 4;
-    private uint isTakenReward_;
+    private bool isTakenReward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint IsTakenReward {
+    public bool IsTakenReward {
       get { return isTakenReward_; }
       set {
         isTakenReward_ = value;
@@ -115798,7 +115798,7 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (DIKBLIJHNHP != 0) hash ^= DIKBLIJHNHP.GetHashCode();
-      if (IsTakenReward != 0) hash ^= IsTakenReward.GetHashCode();
+      if (IsTakenReward != false) hash ^= IsTakenReward.GetHashCode();
       if (KFLINIHMELH != 0) hash ^= KFLINIHMELH.GetHashCode();
       hash ^= kCHBKMGJAGH_.GetHashCode();
       if (CDAGJENADMN != 0) hash ^= CDAGJENADMN.GetHashCode();
@@ -115841,9 +115841,9 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(KFLINIHMELH);
       }
       bIIJBDALLMI_.WriteTo(output, _repeated_bIIJBDALLMI_codec);
-      if (IsTakenReward != 0) {
+      if (IsTakenReward != false) {
         output.WriteRawTag(32);
-        output.WriteUInt32(IsTakenReward);
+        output.WriteBool(IsTakenReward);
       }
       if (AvatarId != 0) {
         output.WriteRawTag(40);
@@ -115914,9 +115914,9 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(KFLINIHMELH);
       }
       bIIJBDALLMI_.WriteTo(ref output, _repeated_bIIJBDALLMI_codec);
-      if (IsTakenReward != 0) {
+      if (IsTakenReward != false) {
         output.WriteRawTag(32);
-        output.WriteUInt32(IsTakenReward);
+        output.WriteBool(IsTakenReward);
       }
       if (AvatarId != 0) {
         output.WriteRawTag(40);
@@ -115984,8 +115984,8 @@ namespace March7thHoney.Proto {
       if (DIKBLIJHNHP != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(DIKBLIJHNHP);
       }
-      if (IsTakenReward != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IsTakenReward);
+      if (IsTakenReward != false) {
+        size += 1 + 1;
       }
       if (KFLINIHMELH != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(KFLINIHMELH);
@@ -116044,7 +116044,7 @@ namespace March7thHoney.Proto {
       if (other.DIKBLIJHNHP != 0) {
         DIKBLIJHNHP = other.DIKBLIJHNHP;
       }
-      if (other.IsTakenReward != 0) {
+      if (other.IsTakenReward != false) {
         IsTakenReward = other.IsTakenReward;
       }
       if (other.KFLINIHMELH != 0) {
@@ -116121,7 +116121,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            IsTakenReward = input.ReadUInt32();
+            IsTakenReward = input.ReadBool();
             break;
           }
           case 40: {
@@ -116216,7 +116216,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 32: {
-            IsTakenReward = input.ReadUInt32();
+            IsTakenReward = input.ReadBool();
             break;
           }
           case 40: {
@@ -240659,15 +240659,15 @@ namespace March7thHoney.Proto {
     #else
       if (X != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(X);
+        output.WriteSInt32(X);
       }
       if (Y != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(Y);
+        output.WriteSInt32(Y);
       }
       if (Z != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(Z);
+        output.WriteSInt32(Z);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -240681,15 +240681,15 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (X != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(X);
+        output.WriteSInt32(X);
       }
       if (Y != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(Y);
+        output.WriteSInt32(Y);
       }
       if (Z != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(Z);
+        output.WriteSInt32(Z);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -240702,13 +240702,13 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       if (X != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(X);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(X);
       }
       if (Y != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Y);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Y);
       }
       if (Z != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Z);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Z);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -240751,15 +240751,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            X = input.ReadInt32();
+            X = input.ReadSInt32();
             break;
           }
           case 16: {
-            Y = input.ReadInt32();
+            Y = input.ReadSInt32();
             break;
           }
           case 24: {
-            Z = input.ReadInt32();
+            Z = input.ReadSInt32();
             break;
           }
         }
@@ -240782,15 +240782,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            X = input.ReadInt32();
+            X = input.ReadSInt32();
             break;
           }
           case 16: {
-            Y = input.ReadInt32();
+            Y = input.ReadSInt32();
             break;
           }
           case 24: {
-            Z = input.ReadInt32();
+            Z = input.ReadSInt32();
             break;
           }
         }
