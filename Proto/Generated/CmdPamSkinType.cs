@@ -25,23 +25,25 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRDbWRQYW1Ta2luVHlwZS5wcm90byIVChNHZXRQYW1Ta2luRGF0YUNzUmVx",
-            "IlIKE0dldFBhbVNraW5EYXRhU2NSc3ASDwoHcmV0Y29kZRgDIAEoDRIYChB1",
-            "bmxvY2tfc2tpbl9saXN0GAYgAygNEhAKCGN1cl9za2luGAggASgNIkkKElNl",
-            "bGVjdFBhbVNraW5TY1JzcBIPCgdyZXRjb2RlGAIgASgNEhAKCHNldF9za2lu",
-            "GAMgASgNEhAKCGN1cl9za2luGAUgASgNIikKFVVubG9ja1BhbVNraW5TY05v",
-            "dGlmeRIQCghwYW1fc2tpbhgDIAEoDSr2AQoOQ21kUGFtU2tpblR5cGUSHgoa",
-            "Q21kUGFtU2tpblR5cGVfTkxDREdJUEdGREoQABIpCiRDbWRQYW1Ta2luVHlw",
-            "ZV9VbmxvY2tQYW1Ta2luU2NOb3RpZnkQuj8SHwoaQ21kUGFtU2tpblR5cGVf",
-            "TkpNQk9JTUlLT0QQuz8SJwoiQ21kUGFtU2tpblR5cGVfR2V0UGFtU2tpbkRh",
-            "dGFTY1JzcBDAPxImCiFDbWRQYW1Ta2luVHlwZV9TZWxlY3RQYW1Ta2luU2NS",
-            "c3AQxD8SJwoiQ21kUGFtU2tpblR5cGVfR2V0UGFtU2tpbkRhdGFDc1JlcRDK",
-            "P0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "IlIKE0dldFBhbVNraW5EYXRhU2NSc3ASDwoHcmV0Y29kZRgLIAEoDRIQCghj",
+            "dXJfc2tpbhgNIAEoDRIYChB1bmxvY2tfc2tpbl9saXN0GAIgAygNIiYKElNl",
+            "bGVjdFBhbVNraW5Dc1JlcRIQCghwYW1fc2tpbhgKIAEoDSJJChJTZWxlY3RQ",
+            "YW1Ta2luU2NSc3ASEAoIY3VyX3NraW4YByABKA0SDwoHcmV0Y29kZRgKIAEo",
+            "DRIQCghzZXRfc2tpbhgPIAEoDSIpChVVbmxvY2tQYW1Ta2luU2NOb3RpZnkS",
+            "EAoIcGFtX3NraW4YBiABKA0q9gEKDkNtZFBhbVNraW5UeXBlEhcKE0NtZFBh",
+            "bVNraW5UeXBlX05vbmUQABImCiFDbWRQYW1Ta2luVHlwZV9TZWxlY3RQYW1T",
+            "a2luU2NSc3AQxT8SJwoiQ21kUGFtU2tpblR5cGVfR2V0UGFtU2tpbkRhdGFD",
+            "c1JlcRC9PxImCiFDbWRQYW1Ta2luVHlwZV9TZWxlY3RQYW1Ta2luQ3NSZXEQ",
+            "zD8SJwoiQ21kUGFtU2tpblR5cGVfR2V0UGFtU2tpbkRhdGFTY1JzcBDHPxIp",
+            "CiRDbWRQYW1Ta2luVHlwZV9VbmxvY2tQYW1Ta2luU2NOb3RpZnkQwT9CFqoC",
+            "E01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPamSkinType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPamSkinDataCsReq), global::March7thHoney.Proto.GetPamSkinDataCsReq.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPamSkinDataScRsp), global::March7thHoney.Proto.GetPamSkinDataScRsp.Parser, new[]{ "Retcode", "UnlockSkinList", "CurSkin" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPamSkinScRsp), global::March7thHoney.Proto.SelectPamSkinScRsp.Parser, new[]{ "Retcode", "SetSkin", "CurSkin" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPamSkinDataScRsp), global::March7thHoney.Proto.GetPamSkinDataScRsp.Parser, new[]{ "Retcode", "CurSkin", "UnlockSkinList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPamSkinCsReq), global::March7thHoney.Proto.SelectPamSkinCsReq.Parser, new[]{ "PamSkin" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPamSkinScRsp), global::March7thHoney.Proto.SelectPamSkinScRsp.Parser, new[]{ "CurSkin", "Retcode", "SetSkin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UnlockPamSkinScNotify), global::March7thHoney.Proto.UnlockPamSkinScNotify.Parser, new[]{ "PamSkin" }, null, null, null, null)
           }));
     }
@@ -50,12 +52,12 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPamSkinType {
-    [pbr::OriginalName("CmdPamSkinType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdPamSkinType_UnlockPamSkinScNotify")] UnlockPamSkinScNotify = 8122,
-    [pbr::OriginalName("CmdPamSkinType_NJMBOIMIKOD")] Njmboimikod = 8123,
-    [pbr::OriginalName("CmdPamSkinType_GetPamSkinDataScRsp")] GetPamSkinDataScRsp = 8128,
-    [pbr::OriginalName("CmdPamSkinType_SelectPamSkinScRsp")] SelectPamSkinScRsp = 8132,
-    [pbr::OriginalName("CmdPamSkinType_GetPamSkinDataCsReq")] GetPamSkinDataCsReq = 8138,
+    [pbr::OriginalName("CmdPamSkinType_None")] None = 0,
+    [pbr::OriginalName("CmdPamSkinType_SelectPamSkinScRsp")] SelectPamSkinScRsp = 8133,
+    [pbr::OriginalName("CmdPamSkinType_GetPamSkinDataCsReq")] GetPamSkinDataCsReq = 8125,
+    [pbr::OriginalName("CmdPamSkinType_SelectPamSkinCsReq")] SelectPamSkinCsReq = 8140,
+    [pbr::OriginalName("CmdPamSkinType_GetPamSkinDataScRsp")] GetPamSkinDataScRsp = 8135,
+    [pbr::OriginalName("CmdPamSkinType_UnlockPamSkinScNotify")] UnlockPamSkinScNotify = 8129,
   }
 
   #endregion
@@ -258,8 +260,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetPamSkinDataScRsp(GetPamSkinDataScRsp other) : this() {
       retcode_ = other.retcode_;
-      unlockSkinList_ = other.unlockSkinList_.Clone();
       curSkin_ = other.curSkin_;
+      unlockSkinList_ = other.unlockSkinList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -270,7 +272,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
+    public const int RetcodeFieldNumber = 11;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -281,19 +283,8 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "unlock_skin_list" field.</summary>
-    public const int UnlockSkinListFieldNumber = 6;
-    private static readonly pb::FieldCodec<uint> _repeated_unlockSkinList_codec
-        = pb::FieldCodec.ForUInt32(50);
-    private readonly pbc::RepeatedField<uint> unlockSkinList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnlockSkinList {
-      get { return unlockSkinList_; }
-    }
-
     /// <summary>Field number for the "cur_skin" field.</summary>
-    public const int CurSkinFieldNumber = 8;
+    public const int CurSkinFieldNumber = 13;
     private uint curSkin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -302,6 +293,17 @@ namespace March7thHoney.Proto {
       set {
         curSkin_ = value;
       }
+    }
+
+    /// <summary>Field number for the "unlock_skin_list" field.</summary>
+    public const int UnlockSkinListFieldNumber = 2;
+    private static readonly pb::FieldCodec<uint> _repeated_unlockSkinList_codec
+        = pb::FieldCodec.ForUInt32(18);
+    private readonly pbc::RepeatedField<uint> unlockSkinList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UnlockSkinList {
+      get { return unlockSkinList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -320,8 +322,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Retcode != other.Retcode) return false;
-      if(!unlockSkinList_.Equals(other.unlockSkinList_)) return false;
       if (CurSkin != other.CurSkin) return false;
+      if(!unlockSkinList_.Equals(other.unlockSkinList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -330,8 +332,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      hash ^= unlockSkinList_.GetHashCode();
       if (CurSkin != 0) hash ^= CurSkin.GetHashCode();
+      hash ^= unlockSkinList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -350,13 +352,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      unlockSkinList_.WriteTo(output, _repeated_unlockSkinList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      unlockSkinList_.WriteTo(output, _repeated_unlockSkinList_codec);
       if (CurSkin != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(104);
         output.WriteUInt32(CurSkin);
       }
       if (_unknownFields != null) {
@@ -369,13 +371,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      unlockSkinList_.WriteTo(ref output, _repeated_unlockSkinList_codec);
       if (Retcode != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(88);
         output.WriteUInt32(Retcode);
       }
-      unlockSkinList_.WriteTo(ref output, _repeated_unlockSkinList_codec);
       if (CurSkin != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(104);
         output.WriteUInt32(CurSkin);
       }
       if (_unknownFields != null) {
@@ -391,10 +393,10 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += unlockSkinList_.CalculateSize(_repeated_unlockSkinList_codec);
       if (CurSkin != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSkin);
       }
+      size += unlockSkinList_.CalculateSize(_repeated_unlockSkinList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -410,10 +412,10 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      unlockSkinList_.Add(other.unlockSkinList_);
       if (other.CurSkin != 0) {
         CurSkin = other.CurSkin;
       }
+      unlockSkinList_.Add(other.unlockSkinList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -433,16 +435,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 50:
-          case 48: {
+          case 18:
+          case 16: {
             unlockSkinList_.AddEntriesFrom(input, _repeated_unlockSkinList_codec);
             break;
           }
-          case 64: {
+          case 88: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 104: {
             CurSkin = input.ReadUInt32();
             break;
           }
@@ -465,17 +467,215 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 50:
-          case 48: {
+          case 18:
+          case 16: {
             unlockSkinList_.AddEntriesFrom(ref input, _repeated_unlockSkinList_codec);
             break;
           }
-          case 64: {
+          case 88: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 104: {
             CurSkin = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class SelectPamSkinCsReq : pb::IMessage<SelectPamSkinCsReq>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<SelectPamSkinCsReq> _parser = new pb::MessageParser<SelectPamSkinCsReq>(() => new SelectPamSkinCsReq());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<SelectPamSkinCsReq> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::March7thHoney.Proto.CmdPamSkinTypeReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectPamSkinCsReq() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectPamSkinCsReq(SelectPamSkinCsReq other) : this() {
+      pamSkin_ = other.pamSkin_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SelectPamSkinCsReq Clone() {
+      return new SelectPamSkinCsReq(this);
+    }
+
+    /// <summary>Field number for the "pam_skin" field.</summary>
+    public const int PamSkinFieldNumber = 10;
+    private uint pamSkin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PamSkin {
+      get { return pamSkin_; }
+      set {
+        pamSkin_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as SelectPamSkinCsReq);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(SelectPamSkinCsReq other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PamSkin != other.PamSkin) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PamSkin != 0) hash ^= PamSkin.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (PamSkin != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(PamSkin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PamSkin != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(PamSkin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (PamSkin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PamSkin);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(SelectPamSkinCsReq other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PamSkin != 0) {
+        PamSkin = other.PamSkin;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 80: {
+            PamSkin = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 80: {
+            PamSkin = input.ReadUInt32();
             break;
           }
         }
@@ -500,7 +700,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdPamSkinTypeReflection.Descriptor.MessageTypes[2]; }
+      get { return global::March7thHoney.Proto.CmdPamSkinTypeReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -520,9 +720,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectPamSkinScRsp(SelectPamSkinScRsp other) : this() {
+      curSkin_ = other.curSkin_;
       retcode_ = other.retcode_;
       setSkin_ = other.setSkin_;
-      curSkin_ = other.curSkin_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -532,8 +732,20 @@ namespace March7thHoney.Proto {
       return new SelectPamSkinScRsp(this);
     }
 
+    /// <summary>Field number for the "cur_skin" field.</summary>
+    public const int CurSkinFieldNumber = 7;
+    private uint curSkin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurSkin {
+      get { return curSkin_; }
+      set {
+        curSkin_ = value;
+      }
+    }
+
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 10;
     private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -545,7 +757,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "set_skin" field.</summary>
-    public const int SetSkinFieldNumber = 3;
+    public const int SetSkinFieldNumber = 15;
     private uint setSkin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -553,18 +765,6 @@ namespace March7thHoney.Proto {
       get { return setSkin_; }
       set {
         setSkin_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "cur_skin" field.</summary>
-    public const int CurSkinFieldNumber = 5;
-    private uint curSkin_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurSkin {
-      get { return curSkin_; }
-      set {
-        curSkin_ = value;
       }
     }
 
@@ -583,9 +783,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (CurSkin != other.CurSkin) return false;
       if (Retcode != other.Retcode) return false;
       if (SetSkin != other.SetSkin) return false;
-      if (CurSkin != other.CurSkin) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -593,9 +793,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (CurSkin != 0) hash ^= CurSkin.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (SetSkin != 0) hash ^= SetSkin.GetHashCode();
-      if (CurSkin != 0) hash ^= CurSkin.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -614,17 +814,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (CurSkin != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(CurSkin);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(80);
         output.WriteUInt32(Retcode);
       }
       if (SetSkin != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(120);
         output.WriteUInt32(SetSkin);
-      }
-      if (CurSkin != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(CurSkin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -636,17 +836,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (CurSkin != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(CurSkin);
+      }
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(80);
         output.WriteUInt32(Retcode);
       }
       if (SetSkin != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(120);
         output.WriteUInt32(SetSkin);
-      }
-      if (CurSkin != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(CurSkin);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -658,14 +858,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (CurSkin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSkin);
+      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (SetSkin != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SetSkin);
-      }
-      if (CurSkin != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSkin);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -679,14 +879,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.CurSkin != 0) {
+        CurSkin = other.CurSkin;
+      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
       if (other.SetSkin != 0) {
         SetSkin = other.SetSkin;
-      }
-      if (other.CurSkin != 0) {
-        CurSkin = other.CurSkin;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -707,16 +907,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 56: {
+            CurSkin = input.ReadUInt32();
+            break;
+          }
+          case 80: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 120: {
             SetSkin = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            CurSkin = input.ReadUInt32();
             break;
           }
         }
@@ -738,16 +938,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 56: {
+            CurSkin = input.ReadUInt32();
+            break;
+          }
+          case 80: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 120: {
             SetSkin = input.ReadUInt32();
-            break;
-          }
-          case 40: {
-            CurSkin = input.ReadUInt32();
             break;
           }
         }
@@ -772,7 +972,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdPamSkinTypeReflection.Descriptor.MessageTypes[3]; }
+      get { return global::March7thHoney.Proto.CmdPamSkinTypeReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -803,7 +1003,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "pam_skin" field.</summary>
-    public const int PamSkinFieldNumber = 3;
+    public const int PamSkinFieldNumber = 6;
     private uint pamSkin_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -857,7 +1057,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (PamSkin != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(48);
         output.WriteUInt32(PamSkin);
       }
       if (_unknownFields != null) {
@@ -871,7 +1071,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PamSkin != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(48);
         output.WriteUInt32(PamSkin);
       }
       if (_unknownFields != null) {
@@ -921,7 +1121,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 48: {
             PamSkin = input.ReadUInt32();
             break;
           }
@@ -944,7 +1144,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 48: {
             PamSkin = input.ReadUInt32();
             break;
           }

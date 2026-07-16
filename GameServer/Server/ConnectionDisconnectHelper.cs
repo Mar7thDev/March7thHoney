@@ -20,7 +20,7 @@ public static class ConnectionDisconnectHelper
     public static Task KickByGmAsync(Connection? connection)
     {
         return DisconnectAsync(connection,
-            new PacketPlayerSqueezedScNotify(PlayerSqueezedScNotify.Types.KickType.KickByGm));
+            new PacketPlayerSqueezedScNotify((JNFDGPDHENJ)5));
     }
 
     public static void KickBanned(Connection? connection, AccountBanStatus banStatus)
@@ -31,7 +31,7 @@ public static class ConnectionDisconnectHelper
     public static Task KickBannedAsync(Connection? connection, AccountBanStatus banStatus)
     {
         return DisconnectAsync(connection, new PacketPlayerSqueezedScNotify(
-            PlayerSqueezedScNotify.Types.KickType.KickBlack,
+            (JNFDGPDHENJ)1,
             AccountBanHelper.ToBlackInfo(banStatus)));
     }
 

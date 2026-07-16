@@ -12,10 +12,6 @@ public class PacketDoGachaScRsp : BasePacket
 
     public PacketDoGachaScRsp() : base(CmdIds.DoGachaScRsp)
     {
-        var rsp = new DoGachaScRsp
-        {
-            Retcode = 1
-        };
-        SetData(rsp);
+        SetData(new DoGachaScRsp());
     }
 }

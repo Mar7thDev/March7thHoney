@@ -24,57 +24,62 @@ namespace March7thHoney.Proto {
     static CmdMusicRhythmTypeReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhDbWRNdXNpY1JoeXRobVR5cGUucHJvdG8iiQIKFE11c2ljUmh5dGhtRGF0",
-            "YVNjUnNwEhkKEXVubG9ja190cmFja19saXN0GAEgAygNEhEKCXNob3dfaGlu",
-            "dBgCIAEoCBIqCg9sZXZlbF9kYXRhX2xpc3QYBCADKAsyES5NdXNpY1JoeXRo",
-            "bUxldmVsEiYKC211c2ljX2dyb3VwGAUgAygLMhEuTXVzaWNSaHl0aG1Hcm91",
-            "cBITCgtjdXJfc29uZ19pZBgHIAEoDRIZChF1bmxvY2tfcGhhc2VfbGlzdBgI",
-            "IAMoDRIUCgxjdXJfbGV2ZWxfaWQYCiABKA0SDwoHcmV0Y29kZRgLIAEoDRIY",
-            "ChB1bmxvY2tfc29uZ19saXN0GAwgAygNIlYKG011c2ljUmh5dGhtRmluaXNo",
-            "TGV2ZWxDc1JlcRISCgpmdWxsX2NvbWJvGAQgASgIEhEKCXJvbGVfc3RhchgG",
-            "IAEoDRIQCghzY29yZV9pZBgPIAEoDSJAChtNdXNpY1JoeXRobUZpbmlzaExl",
-            "dmVsU2NSc3ASDwoHcmV0Y29kZRgHIAEoDRIQCghsZXZlbF9pZBgPIAEoDSJv",
-            "ChBNdXNpY1JoeXRobUdyb3VwEhMKC0JCSU5GREhNR0lJGAIgAygNEhYKDm11",
-            "c2ljX2dyb3VwX2lkGAMgASgNEhkKEW11c2ljX2dyb3VwX3BoYXNlGAQgASgN",
-            "EhMKC0VPSE1OQ0JPQUxDGAogAygNIk4KEE11c2ljUmh5dGhtTGV2ZWwSFAoM",
-            "dW5sb2NrX2xldmVsGAIgASgNEhAKCGxldmVsX2lkGAkgASgNEhIKCmZ1bGxf",
-            "Y29tYm8YDCABKAgiLAoqTXVzaWNSaHl0aG1NYXhEaWZmaWN1bHR5TGV2ZWxz",
-            "VW5sb2NrTm90aWZ5Il8KIk11c2ljUmh5dGhtU2F2ZVNvbmdDb25maWdEYXRh",
-            "U2NSc3ASEwoLRUZFR0xBT0FKREEYBCABKA0SEwoLY3VyX3NvbmdfaWQYDCAB",
-            "KA0SDwoHcmV0Y29kZRgNIAEoDSIuChpNdXNpY1JoeXRobVN0YXJ0TGV2ZWxD",
-            "c1JlcRIQCghsZXZlbF9pZBgOIAEoDSJRChpNdXNpY1JoeXRobVN0YXJ0TGV2",
-            "ZWxTY1JzcBIQCgh0cmFuc19ubxgGIAEoCRIPCgdyZXRjb2RlGAogASgNEhAK",
-            "CGxldmVsX2lkGA8gASgNIjcKIE11c2ljUmh5dGhtVW5sb2NrU29uZ1NmeFNj",
-            "Tm90aWZ5EhMKC1BIQ0hGS01IRE1BGAogAygNIjUKHk11c2ljUmh5dGhtVW5s",
-            "b2NrVHJhY2tTY05vdGlmeRITCgtQRkhOT05LTkhBQxgLIAMoDSqZBQoSQ21k",
-            "TXVzaWNSaHl0aG1UeXBlEiIKHkNtZE11c2ljUmh5dGhtVHlwZV9OTENER0lQ",
-            "R0ZEShAAEjIKLUNtZE11c2ljUmh5dGhtVHlwZV9NdXNpY1JoeXRobVN0YXJ0",
-            "TGV2ZWxTY1JzcBCWOxJCCj1DbWRNdXNpY1JoeXRobVR5cGVfTXVzaWNSaHl0",
-            "aG1NYXhEaWZmaWN1bHR5TGV2ZWxzVW5sb2NrTm90aWZ5EKY7EjgKM0NtZE11",
-            "c2ljUmh5dGhtVHlwZV9NdXNpY1JoeXRobVVubG9ja1NvbmdTZnhTY05vdGlm",
-            "eRChOxIyCi1DbWRNdXNpY1JoeXRobVR5cGVfTXVzaWNSaHl0aG1TdGFydExl",
-            "dmVsQ3NSZXEQpDsSIwoeQ21kTXVzaWNSaHl0aG1UeXBlX0JIR0FBRUJPQk9P",
-            "EJ47EjoKNUNtZE11c2ljUmh5dGhtVHlwZV9NdXNpY1JoeXRobVNhdmVTb25n",
-            "Q29uZmlnRGF0YVNjUnNwEKc7EjMKLkNtZE11c2ljUmh5dGhtVHlwZV9NdXNp",
-            "Y1JoeXRobUZpbmlzaExldmVsU2NSc3AQqDsSIwoeQ21kTXVzaWNSaHl0aG1U",
-            "eXBlX0lNQktDSE9NR0JQEK87EjYKMUNtZE11c2ljUmh5dGhtVHlwZV9NdXNp",
-            "Y1JoeXRobVVubG9ja1RyYWNrU2NOb3RpZnkQmTsSMwouQ21kTXVzaWNSaHl0",
-            "aG1UeXBlX011c2ljUmh5dGhtRmluaXNoTGV2ZWxDc1JlcRCXOxIjCh5DbWRN",
-            "dXNpY1JoeXRobVR5cGVfUEdHUElOS0pQSkEQmzsSLAonQ21kTXVzaWNSaHl0",
-            "aG1UeXBlX011c2ljUmh5dGhtRGF0YVNjUnNwEKs7QhaqAhNNYXJjaDd0aEhv",
-            "bmV5LlByb3RvYgZwcm90bzM="));
+            "ChhDbWRNdXNpY1JoeXRobVR5cGUucHJvdG8iFgoUTXVzaWNSaHl0aG1EYXRh",
+            "Q3NSZXEiiQIKFE11c2ljUmh5dGhtRGF0YVNjUnNwEhMKC2N1cl9zb25nX2lk",
+            "GAMgASgNEhgKEHVubG9ja19zb25nX2xpc3QYCSADKA0SEQoJc2hvd19oaW50",
+            "GAUgASgIEiYKC211c2ljX2dyb3VwGAwgAygLMhEuTXVzaWNSaHl0aG1Hcm91",
+            "cBIUCgxjdXJfbGV2ZWxfaWQYDiABKA0SGQoRdW5sb2NrX3BoYXNlX2xpc3QY",
+            "CCADKA0SKgoPbGV2ZWxfZGF0YV9saXN0GAEgAygLMhEuTXVzaWNSaHl0aG1M",
+            "ZXZlbBIZChF1bmxvY2tfdHJhY2tfbGlzdBgLIAMoDRIPCgdyZXRjb2RlGAIg",
+            "ASgNIlYKG011c2ljUmh5dGhtRmluaXNoTGV2ZWxDc1JlcRIRCglyb2xlX3N0",
+            "YXIYCSABKA0SEgoKZnVsbF9jb21ibxgNIAEoCBIQCghzY29yZV9pZBgEIAEo",
+            "DSJAChtNdXNpY1JoeXRobUZpbmlzaExldmVsU2NSc3ASEAoIbGV2ZWxfaWQY",
+            "ASABKA0SDwoHcmV0Y29kZRgNIAEoDSJvChBNdXNpY1JoeXRobUdyb3VwEhkK",
+            "EW11c2ljX2dyb3VwX3BoYXNlGA0gASgNEhYKDm11c2ljX2dyb3VwX2lkGAIg",
+            "ASgNEhMKC0JCSU5GREhNR0lJGAUgAygNEhMKC0VPSE1OQ0JPQUxDGAEgAygN",
+            "Ik4KEE11c2ljUmh5dGhtTGV2ZWwSFAoMdW5sb2NrX2xldmVsGA8gASgNEhAK",
+            "CGxldmVsX2lkGAwgASgNEhIKCmZ1bGxfY29tYm8YBSABKAgiLAoqTXVzaWNS",
+            "aHl0aG1NYXhEaWZmaWN1bHR5TGV2ZWxzVW5sb2NrTm90aWZ5IkwKIk11c2lj",
+            "Umh5dGhtU2F2ZVNvbmdDb25maWdEYXRhQ3NSZXESJgoLQkVOQUZOSExDRU8Y",
+            "ASABKAsyES5NdXNpY1JoeXRobUdyb3VwIl8KIk11c2ljUmh5dGhtU2F2ZVNv",
+            "bmdDb25maWdEYXRhU2NSc3ASEwoLRUZFR0xBT0FKREEYDiABKA0SDwoHcmV0",
+            "Y29kZRgPIAEoDRITCgtjdXJfc29uZ19pZBgBIAEoDSIuChpNdXNpY1JoeXRo",
+            "bVN0YXJ0TGV2ZWxDc1JlcRIQCghsZXZlbF9pZBgPIAEoDSJRChpNdXNpY1Jo",
+            "eXRobVN0YXJ0TGV2ZWxTY1JzcBIQCghsZXZlbF9pZBgLIAEoDRIQCgh0cmFu",
+            "c19ubxgCIAEoCRIPCgdyZXRjb2RlGAogASgNIjcKIE11c2ljUmh5dGhtVW5s",
+            "b2NrU29uZ1NmeFNjTm90aWZ5EhMKC1BIQ0hGS01IRE1BGAQgAygNIjUKHk11",
+            "c2ljUmh5dGhtVW5sb2NrVHJhY2tTY05vdGlmeRITCgtQRkhOT05LTkhBQxgJ",
+            "IAMoDSrCBQoSQ21kTXVzaWNSaHl0aG1UeXBlEhsKF0NtZE11c2ljUmh5dGht",
+            "VHlwZV9Ob25lEAASOAozQ21kTXVzaWNSaHl0aG1UeXBlX011c2ljUmh5dGht",
+            "VW5sb2NrU29uZ1NmeFNjTm90aWZ5EK87EjMKLkNtZE11c2ljUmh5dGhtVHlw",
+            "ZV9NdXNpY1JoeXRobUZpbmlzaExldmVsU2NSc3AQmzsSLAonQ21kTXVzaWNS",
+            "aHl0aG1UeXBlX011c2ljUmh5dGhtRGF0YUNzUmVxEKw7EjoKNUNtZE11c2lj",
+            "Umh5dGhtVHlwZV9NdXNpY1JoeXRobVNhdmVTb25nQ29uZmlnRGF0YUNzUmVx",
+            "EJ47EjIKLUNtZE11c2ljUmh5dGhtVHlwZV9NdXNpY1JoeXRobVN0YXJ0TGV2",
+            "ZWxDc1JlcRCgOxJCCj1DbWRNdXNpY1JoeXRobVR5cGVfTXVzaWNSaHl0aG1N",
+            "YXhEaWZmaWN1bHR5TGV2ZWxzVW5sb2NrTm90aWZ5EKQ7EjIKLUNtZE11c2lj",
+            "Umh5dGhtVHlwZV9NdXNpY1JoeXRobVN0YXJ0TGV2ZWxTY1JzcBClOxIzCi5D",
+            "bWRNdXNpY1JoeXRobVR5cGVfTXVzaWNSaHl0aG1VbmxvY2tTb25nTm90aWZ5",
+            "EKE7EjYKMUNtZE11c2ljUmh5dGhtVHlwZV9NdXNpY1JoeXRobVVubG9ja1Ry",
+            "YWNrU2NOb3RpZnkQnTsSMwouQ21kTXVzaWNSaHl0aG1UeXBlX011c2ljUmh5",
+            "dGhtRmluaXNoTGV2ZWxDc1JlcRCWOxIsCidDbWRNdXNpY1JoeXRobVR5cGVf",
+            "TXVzaWNSaHl0aG1EYXRhU2NSc3AQsDsSOgo1Q21kTXVzaWNSaHl0aG1UeXBl",
+            "X011c2ljUmh5dGhtU2F2ZVNvbmdDb25maWdEYXRhU2NSc3AQnDtCFqoCE01h",
+            "cmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdMusicRhythmType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmDataScRsp), global::March7thHoney.Proto.MusicRhythmDataScRsp.Parser, new[]{ "UnlockTrackList", "ShowHint", "LevelDataList", "MusicGroup", "CurSongId", "UnlockPhaseList", "CurLevelId", "Retcode", "UnlockSongList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmFinishLevelCsReq), global::March7thHoney.Proto.MusicRhythmFinishLevelCsReq.Parser, new[]{ "FullCombo", "RoleStar", "ScoreId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmFinishLevelScRsp), global::March7thHoney.Proto.MusicRhythmFinishLevelScRsp.Parser, new[]{ "Retcode", "LevelId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmGroup), global::March7thHoney.Proto.MusicRhythmGroup.Parser, new[]{ "BBINFDHMGII", "MusicGroupId", "MusicGroupPhase", "EOHMNCBOALC" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmDataCsReq), global::March7thHoney.Proto.MusicRhythmDataCsReq.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmDataScRsp), global::March7thHoney.Proto.MusicRhythmDataScRsp.Parser, new[]{ "CurSongId", "UnlockSongList", "ShowHint", "MusicGroup", "CurLevelId", "UnlockPhaseList", "LevelDataList", "UnlockTrackList", "Retcode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmFinishLevelCsReq), global::March7thHoney.Proto.MusicRhythmFinishLevelCsReq.Parser, new[]{ "RoleStar", "FullCombo", "ScoreId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmFinishLevelScRsp), global::March7thHoney.Proto.MusicRhythmFinishLevelScRsp.Parser, new[]{ "LevelId", "Retcode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmGroup), global::March7thHoney.Proto.MusicRhythmGroup.Parser, new[]{ "MusicGroupPhase", "MusicGroupId", "BBINFDHMGII", "EOHMNCBOALC" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmLevel), global::March7thHoney.Proto.MusicRhythmLevel.Parser, new[]{ "UnlockLevel", "LevelId", "FullCombo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmMaxDifficultyLevelsUnlockNotify), global::March7thHoney.Proto.MusicRhythmMaxDifficultyLevelsUnlockNotify.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataScRsp), global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataScRsp.Parser, new[]{ "EFEGLAOAJDA", "CurSongId", "Retcode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataCsReq), global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataCsReq.Parser, new[]{ "BENAFNHLCEO" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataScRsp), global::March7thHoney.Proto.MusicRhythmSaveSongConfigDataScRsp.Parser, new[]{ "EFEGLAOAJDA", "Retcode", "CurSongId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmStartLevelCsReq), global::March7thHoney.Proto.MusicRhythmStartLevelCsReq.Parser, new[]{ "LevelId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmStartLevelScRsp), global::March7thHoney.Proto.MusicRhythmStartLevelScRsp.Parser, new[]{ "TransNo", "Retcode", "LevelId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmStartLevelScRsp), global::March7thHoney.Proto.MusicRhythmStartLevelScRsp.Parser, new[]{ "LevelId", "TransNo", "Retcode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmUnlockSongSfxScNotify), global::March7thHoney.Proto.MusicRhythmUnlockSongSfxScNotify.Parser, new[]{ "PHCHFKMHDMA" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.MusicRhythmUnlockTrackScNotify), global::March7thHoney.Proto.MusicRhythmUnlockTrackScNotify.Parser, new[]{ "PFHNONKNHAC" }, null, null, null, null)
           }));
@@ -84,35 +89,35 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdMusicRhythmType {
-    [pbr::OriginalName("CmdMusicRhythmType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmStartLevelScRsp")] MusicRhythmStartLevelScRsp = 7574,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmMaxDifficultyLevelsUnlockNotify")] MusicRhythmMaxDifficultyLevelsUnlockNotify = 7590,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmUnlockSongSfxScNotify")] MusicRhythmUnlockSongSfxScNotify = 7585,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmStartLevelCsReq")] MusicRhythmStartLevelCsReq = 7588,
-    [pbr::OriginalName("CmdMusicRhythmType_BHGAAEBOBOO")] Bhgaaeboboo = 7582,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmSaveSongConfigDataScRsp")] MusicRhythmSaveSongConfigDataScRsp = 7591,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmFinishLevelScRsp")] MusicRhythmFinishLevelScRsp = 7592,
-    [pbr::OriginalName("CmdMusicRhythmType_IMBKCHOMGBP")] Imbkchomgbp = 7599,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmUnlockTrackScNotify")] MusicRhythmUnlockTrackScNotify = 7577,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmFinishLevelCsReq")] MusicRhythmFinishLevelCsReq = 7575,
-    [pbr::OriginalName("CmdMusicRhythmType_PGGPINKJPJA")] Pggpinkjpja = 7579,
-    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmDataScRsp")] MusicRhythmDataScRsp = 7595,
+    [pbr::OriginalName("CmdMusicRhythmType_None")] None = 0,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmUnlockSongSfxScNotify")] MusicRhythmUnlockSongSfxScNotify = 7599,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmFinishLevelScRsp")] MusicRhythmFinishLevelScRsp = 7579,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmDataCsReq")] MusicRhythmDataCsReq = 7596,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmSaveSongConfigDataCsReq")] MusicRhythmSaveSongConfigDataCsReq = 7582,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmStartLevelCsReq")] MusicRhythmStartLevelCsReq = 7584,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmMaxDifficultyLevelsUnlockNotify")] MusicRhythmMaxDifficultyLevelsUnlockNotify = 7588,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmStartLevelScRsp")] MusicRhythmStartLevelScRsp = 7589,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmUnlockSongNotify")] MusicRhythmUnlockSongNotify = 7585,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmUnlockTrackScNotify")] MusicRhythmUnlockTrackScNotify = 7581,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmFinishLevelCsReq")] MusicRhythmFinishLevelCsReq = 7574,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmDataScRsp")] MusicRhythmDataScRsp = 7600,
+    [pbr::OriginalName("CmdMusicRhythmType_MusicRhythmSaveSongConfigDataScRsp")] MusicRhythmSaveSongConfigDataScRsp = 7580,
   }
 
   #endregion
 
   #region Messages
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class MusicRhythmDataScRsp : pb::IMessage<MusicRhythmDataScRsp>
+  public sealed partial class MusicRhythmDataCsReq : pb::IMessage<MusicRhythmDataCsReq>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<MusicRhythmDataScRsp> _parser = new pb::MessageParser<MusicRhythmDataScRsp>(() => new MusicRhythmDataScRsp());
+    private static readonly pb::MessageParser<MusicRhythmDataCsReq> _parser = new pb::MessageParser<MusicRhythmDataCsReq>(() => new MusicRhythmDataCsReq());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<MusicRhythmDataScRsp> Parser { get { return _parser; } }
+    public static pb::MessageParser<MusicRhythmDataCsReq> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -128,7 +133,7 @@ namespace March7thHoney.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public MusicRhythmDataScRsp() {
+    public MusicRhythmDataCsReq() {
       OnConstruction();
     }
 
@@ -136,152 +141,31 @@ namespace March7thHoney.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public MusicRhythmDataScRsp(MusicRhythmDataScRsp other) : this() {
-      unlockTrackList_ = other.unlockTrackList_.Clone();
-      showHint_ = other.showHint_;
-      levelDataList_ = other.levelDataList_.Clone();
-      musicGroup_ = other.musicGroup_.Clone();
-      curSongId_ = other.curSongId_;
-      unlockPhaseList_ = other.unlockPhaseList_.Clone();
-      curLevelId_ = other.curLevelId_;
-      retcode_ = other.retcode_;
-      unlockSongList_ = other.unlockSongList_.Clone();
+    public MusicRhythmDataCsReq(MusicRhythmDataCsReq other) : this() {
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public MusicRhythmDataScRsp Clone() {
-      return new MusicRhythmDataScRsp(this);
-    }
-
-    /// <summary>Field number for the "unlock_track_list" field.</summary>
-    public const int UnlockTrackListFieldNumber = 1;
-    private static readonly pb::FieldCodec<uint> _repeated_unlockTrackList_codec
-        = pb::FieldCodec.ForUInt32(10);
-    private readonly pbc::RepeatedField<uint> unlockTrackList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnlockTrackList {
-      get { return unlockTrackList_; }
-    }
-
-    /// <summary>Field number for the "show_hint" field.</summary>
-    public const int ShowHintFieldNumber = 2;
-    private bool showHint_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool ShowHint {
-      get { return showHint_; }
-      set {
-        showHint_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "level_data_list" field.</summary>
-    public const int LevelDataListFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicRhythmLevel> _repeated_levelDataList_codec
-        = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.MusicRhythmLevel.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel> levelDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel> LevelDataList {
-      get { return levelDataList_; }
-    }
-
-    /// <summary>Field number for the "music_group" field.</summary>
-    public const int MusicGroupFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicRhythmGroup> _repeated_musicGroup_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.MusicRhythmGroup.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup> musicGroup_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup> MusicGroup {
-      get { return musicGroup_; }
-    }
-
-    /// <summary>Field number for the "cur_song_id" field.</summary>
-    public const int CurSongIdFieldNumber = 7;
-    private uint curSongId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurSongId {
-      get { return curSongId_; }
-      set {
-        curSongId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "unlock_phase_list" field.</summary>
-    public const int UnlockPhaseListFieldNumber = 8;
-    private static readonly pb::FieldCodec<uint> _repeated_unlockPhaseList_codec
-        = pb::FieldCodec.ForUInt32(66);
-    private readonly pbc::RepeatedField<uint> unlockPhaseList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnlockPhaseList {
-      get { return unlockPhaseList_; }
-    }
-
-    /// <summary>Field number for the "cur_level_id" field.</summary>
-    public const int CurLevelIdFieldNumber = 10;
-    private uint curLevelId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurLevelId {
-      get { return curLevelId_; }
-      set {
-        curLevelId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "unlock_song_list" field.</summary>
-    public const int UnlockSongListFieldNumber = 12;
-    private static readonly pb::FieldCodec<uint> _repeated_unlockSongList_codec
-        = pb::FieldCodec.ForUInt32(98);
-    private readonly pbc::RepeatedField<uint> unlockSongList_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> UnlockSongList {
-      get { return unlockSongList_; }
+    public MusicRhythmDataCsReq Clone() {
+      return new MusicRhythmDataCsReq(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as MusicRhythmDataScRsp);
+      return Equals(other as MusicRhythmDataCsReq);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(MusicRhythmDataScRsp other) {
+    public bool Equals(MusicRhythmDataCsReq other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!unlockTrackList_.Equals(other.unlockTrackList_)) return false;
-      if (ShowHint != other.ShowHint) return false;
-      if(!levelDataList_.Equals(other.levelDataList_)) return false;
-      if(!musicGroup_.Equals(other.musicGroup_)) return false;
-      if (CurSongId != other.CurSongId) return false;
-      if(!unlockPhaseList_.Equals(other.unlockPhaseList_)) return false;
-      if (CurLevelId != other.CurLevelId) return false;
-      if (Retcode != other.Retcode) return false;
-      if(!unlockSongList_.Equals(other.unlockSongList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -289,15 +173,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= unlockTrackList_.GetHashCode();
-      if (ShowHint != false) hash ^= ShowHint.GetHashCode();
-      hash ^= levelDataList_.GetHashCode();
-      hash ^= musicGroup_.GetHashCode();
-      if (CurSongId != 0) hash ^= CurSongId.GetHashCode();
-      hash ^= unlockPhaseList_.GetHashCode();
-      if (CurLevelId != 0) hash ^= CurLevelId.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      hash ^= unlockSongList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -316,27 +191,6 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      unlockTrackList_.WriteTo(output, _repeated_unlockTrackList_codec);
-      if (ShowHint != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(ShowHint);
-      }
-      levelDataList_.WriteTo(output, _repeated_levelDataList_codec);
-      musicGroup_.WriteTo(output, _repeated_musicGroup_codec);
-      if (CurSongId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CurSongId);
-      }
-      unlockPhaseList_.WriteTo(output, _repeated_unlockPhaseList_codec);
-      if (CurLevelId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CurLevelId);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(Retcode);
-      }
-      unlockSongList_.WriteTo(output, _repeated_unlockSongList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -347,27 +201,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      unlockTrackList_.WriteTo(ref output, _repeated_unlockTrackList_codec);
-      if (ShowHint != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(ShowHint);
-      }
-      levelDataList_.WriteTo(ref output, _repeated_levelDataList_codec);
-      musicGroup_.WriteTo(ref output, _repeated_musicGroup_codec);
-      if (CurSongId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CurSongId);
-      }
-      unlockPhaseList_.WriteTo(ref output, _repeated_unlockPhaseList_codec);
-      if (CurLevelId != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CurLevelId);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(Retcode);
-      }
-      unlockSongList_.WriteTo(ref output, _repeated_unlockSongList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -378,23 +211,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += unlockTrackList_.CalculateSize(_repeated_unlockTrackList_codec);
-      if (ShowHint != false) {
-        size += 1 + 1;
-      }
-      size += levelDataList_.CalculateSize(_repeated_levelDataList_codec);
-      size += musicGroup_.CalculateSize(_repeated_musicGroup_codec);
-      if (CurSongId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSongId);
-      }
-      size += unlockPhaseList_.CalculateSize(_repeated_unlockPhaseList_codec);
-      if (CurLevelId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurLevelId);
-      }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      size += unlockSongList_.CalculateSize(_repeated_unlockSongList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -403,27 +219,10 @@ namespace March7thHoney.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(MusicRhythmDataScRsp other) {
+    public void MergeFrom(MusicRhythmDataCsReq other) {
       if (other == null) {
         return;
       }
-      unlockTrackList_.Add(other.unlockTrackList_);
-      if (other.ShowHint != false) {
-        ShowHint = other.ShowHint;
-      }
-      levelDataList_.Add(other.levelDataList_);
-      musicGroup_.Add(other.musicGroup_);
-      if (other.CurSongId != 0) {
-        CurSongId = other.CurSongId;
-      }
-      unlockPhaseList_.Add(other.unlockPhaseList_);
-      if (other.CurLevelId != 0) {
-        CurLevelId = other.CurLevelId;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      unlockSongList_.Add(other.unlockSongList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -443,25 +242,387 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10:
-          case 8: {
-            unlockTrackList_.AddEntriesFrom(input, _repeated_unlockTrackList_codec);
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          }
-          case 16: {
-            ShowHint = input.ReadBool();
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MusicRhythmDataScRsp : pb::IMessage<MusicRhythmDataScRsp>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MusicRhythmDataScRsp> _parser = new pb::MessageParser<MusicRhythmDataScRsp>(() => new MusicRhythmDataScRsp());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MusicRhythmDataScRsp> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MusicRhythmDataScRsp() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MusicRhythmDataScRsp(MusicRhythmDataScRsp other) : this() {
+      curSongId_ = other.curSongId_;
+      unlockSongList_ = other.unlockSongList_.Clone();
+      showHint_ = other.showHint_;
+      musicGroup_ = other.musicGroup_.Clone();
+      curLevelId_ = other.curLevelId_;
+      unlockPhaseList_ = other.unlockPhaseList_.Clone();
+      levelDataList_ = other.levelDataList_.Clone();
+      unlockTrackList_ = other.unlockTrackList_.Clone();
+      retcode_ = other.retcode_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MusicRhythmDataScRsp Clone() {
+      return new MusicRhythmDataScRsp(this);
+    }
+
+    /// <summary>Field number for the "cur_song_id" field.</summary>
+    public const int CurSongIdFieldNumber = 3;
+    private uint curSongId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurSongId {
+      get { return curSongId_; }
+      set {
+        curSongId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unlock_song_list" field.</summary>
+    public const int UnlockSongListFieldNumber = 9;
+    private static readonly pb::FieldCodec<uint> _repeated_unlockSongList_codec
+        = pb::FieldCodec.ForUInt32(74);
+    private readonly pbc::RepeatedField<uint> unlockSongList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UnlockSongList {
+      get { return unlockSongList_; }
+    }
+
+    /// <summary>Field number for the "show_hint" field.</summary>
+    public const int ShowHintFieldNumber = 5;
+    private bool showHint_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ShowHint {
+      get { return showHint_; }
+      set {
+        showHint_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "music_group" field.</summary>
+    public const int MusicGroupFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicRhythmGroup> _repeated_musicGroup_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.MusicRhythmGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup> musicGroup_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmGroup> MusicGroup {
+      get { return musicGroup_; }
+    }
+
+    /// <summary>Field number for the "cur_level_id" field.</summary>
+    public const int CurLevelIdFieldNumber = 14;
+    private uint curLevelId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurLevelId {
+      get { return curLevelId_; }
+      set {
+        curLevelId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "unlock_phase_list" field.</summary>
+    public const int UnlockPhaseListFieldNumber = 8;
+    private static readonly pb::FieldCodec<uint> _repeated_unlockPhaseList_codec
+        = pb::FieldCodec.ForUInt32(66);
+    private readonly pbc::RepeatedField<uint> unlockPhaseList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UnlockPhaseList {
+      get { return unlockPhaseList_; }
+    }
+
+    /// <summary>Field number for the "level_data_list" field.</summary>
+    public const int LevelDataListFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.MusicRhythmLevel> _repeated_levelDataList_codec
+        = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MusicRhythmLevel.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel> levelDataList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.MusicRhythmLevel> LevelDataList {
+      get { return levelDataList_; }
+    }
+
+    /// <summary>Field number for the "unlock_track_list" field.</summary>
+    public const int UnlockTrackListFieldNumber = 11;
+    private static readonly pb::FieldCodec<uint> _repeated_unlockTrackList_codec
+        = pb::FieldCodec.ForUInt32(90);
+    private readonly pbc::RepeatedField<uint> unlockTrackList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> UnlockTrackList {
+      get { return unlockTrackList_; }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 2;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MusicRhythmDataScRsp);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MusicRhythmDataScRsp other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (CurSongId != other.CurSongId) return false;
+      if(!unlockSongList_.Equals(other.unlockSongList_)) return false;
+      if (ShowHint != other.ShowHint) return false;
+      if(!musicGroup_.Equals(other.musicGroup_)) return false;
+      if (CurLevelId != other.CurLevelId) return false;
+      if(!unlockPhaseList_.Equals(other.unlockPhaseList_)) return false;
+      if(!levelDataList_.Equals(other.levelDataList_)) return false;
+      if(!unlockTrackList_.Equals(other.unlockTrackList_)) return false;
+      if (Retcode != other.Retcode) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (CurSongId != 0) hash ^= CurSongId.GetHashCode();
+      hash ^= unlockSongList_.GetHashCode();
+      if (ShowHint != false) hash ^= ShowHint.GetHashCode();
+      hash ^= musicGroup_.GetHashCode();
+      if (CurLevelId != 0) hash ^= CurLevelId.GetHashCode();
+      hash ^= unlockPhaseList_.GetHashCode();
+      hash ^= levelDataList_.GetHashCode();
+      hash ^= unlockTrackList_.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      levelDataList_.WriteTo(output, _repeated_levelDataList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Retcode);
+      }
+      if (CurSongId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(CurSongId);
+      }
+      if (ShowHint != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(ShowHint);
+      }
+      unlockPhaseList_.WriteTo(output, _repeated_unlockPhaseList_codec);
+      unlockSongList_.WriteTo(output, _repeated_unlockSongList_codec);
+      unlockTrackList_.WriteTo(output, _repeated_unlockTrackList_codec);
+      musicGroup_.WriteTo(output, _repeated_musicGroup_codec);
+      if (CurLevelId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(CurLevelId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      levelDataList_.WriteTo(ref output, _repeated_levelDataList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Retcode);
+      }
+      if (CurSongId != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(CurSongId);
+      }
+      if (ShowHint != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(ShowHint);
+      }
+      unlockPhaseList_.WriteTo(ref output, _repeated_unlockPhaseList_codec);
+      unlockSongList_.WriteTo(ref output, _repeated_unlockSongList_codec);
+      unlockTrackList_.WriteTo(ref output, _repeated_unlockTrackList_codec);
+      musicGroup_.WriteTo(ref output, _repeated_musicGroup_codec);
+      if (CurLevelId != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(CurLevelId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (CurSongId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSongId);
+      }
+      size += unlockSongList_.CalculateSize(_repeated_unlockSongList_codec);
+      if (ShowHint != false) {
+        size += 1 + 1;
+      }
+      size += musicGroup_.CalculateSize(_repeated_musicGroup_codec);
+      if (CurLevelId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurLevelId);
+      }
+      size += unlockPhaseList_.CalculateSize(_repeated_unlockPhaseList_codec);
+      size += levelDataList_.CalculateSize(_repeated_levelDataList_codec);
+      size += unlockTrackList_.CalculateSize(_repeated_unlockTrackList_codec);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MusicRhythmDataScRsp other) {
+      if (other == null) {
+        return;
+      }
+      if (other.CurSongId != 0) {
+        CurSongId = other.CurSongId;
+      }
+      unlockSongList_.Add(other.unlockSongList_);
+      if (other.ShowHint != false) {
+        ShowHint = other.ShowHint;
+      }
+      musicGroup_.Add(other.musicGroup_);
+      if (other.CurLevelId != 0) {
+        CurLevelId = other.CurLevelId;
+      }
+      unlockPhaseList_.Add(other.unlockPhaseList_);
+      levelDataList_.Add(other.levelDataList_);
+      unlockTrackList_.Add(other.unlockTrackList_);
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          }
-          case 34: {
+          case 10: {
             levelDataList_.AddEntriesFrom(input, _repeated_levelDataList_codec);
             break;
           }
-          case 42: {
-            musicGroup_.AddEntriesFrom(input, _repeated_musicGroup_codec);
+          case 16: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 24: {
             CurSongId = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            ShowHint = input.ReadBool();
             break;
           }
           case 66:
@@ -469,17 +630,22 @@ namespace March7thHoney.Proto {
             unlockPhaseList_.AddEntriesFrom(input, _repeated_unlockPhaseList_codec);
             break;
           }
-          case 80: {
-            CurLevelId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 98:
-          case 96: {
+          case 74:
+          case 72: {
             unlockSongList_.AddEntriesFrom(input, _repeated_unlockSongList_codec);
+            break;
+          }
+          case 90:
+          case 88: {
+            unlockTrackList_.AddEntriesFrom(input, _repeated_unlockTrackList_codec);
+            break;
+          }
+          case 98: {
+            musicGroup_.AddEntriesFrom(input, _repeated_musicGroup_codec);
+            break;
+          }
+          case 112: {
+            CurLevelId = input.ReadUInt32();
             break;
           }
         }
@@ -501,25 +667,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10:
-          case 8: {
-            unlockTrackList_.AddEntriesFrom(ref input, _repeated_unlockTrackList_codec);
-            break;
-          }
-          case 16: {
-            ShowHint = input.ReadBool();
-            break;
-          }
-          case 34: {
+          case 10: {
             levelDataList_.AddEntriesFrom(ref input, _repeated_levelDataList_codec);
             break;
           }
-          case 42: {
-            musicGroup_.AddEntriesFrom(ref input, _repeated_musicGroup_codec);
+          case 16: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 24: {
             CurSongId = input.ReadUInt32();
+            break;
+          }
+          case 40: {
+            ShowHint = input.ReadBool();
             break;
           }
           case 66:
@@ -527,17 +688,22 @@ namespace March7thHoney.Proto {
             unlockPhaseList_.AddEntriesFrom(ref input, _repeated_unlockPhaseList_codec);
             break;
           }
-          case 80: {
-            CurLevelId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 98:
-          case 96: {
+          case 74:
+          case 72: {
             unlockSongList_.AddEntriesFrom(ref input, _repeated_unlockSongList_codec);
+            break;
+          }
+          case 90:
+          case 88: {
+            unlockTrackList_.AddEntriesFrom(ref input, _repeated_unlockTrackList_codec);
+            break;
+          }
+          case 98: {
+            musicGroup_.AddEntriesFrom(ref input, _repeated_musicGroup_codec);
+            break;
+          }
+          case 112: {
+            CurLevelId = input.ReadUInt32();
             break;
           }
         }
@@ -562,7 +728,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[1]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -582,8 +748,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmFinishLevelCsReq(MusicRhythmFinishLevelCsReq other) : this() {
-      fullCombo_ = other.fullCombo_;
       roleStar_ = other.roleStar_;
+      fullCombo_ = other.fullCombo_;
       scoreId_ = other.scoreId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -594,20 +760,8 @@ namespace March7thHoney.Proto {
       return new MusicRhythmFinishLevelCsReq(this);
     }
 
-    /// <summary>Field number for the "full_combo" field.</summary>
-    public const int FullComboFieldNumber = 4;
-    private bool fullCombo_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool FullCombo {
-      get { return fullCombo_; }
-      set {
-        fullCombo_ = value;
-      }
-    }
-
     /// <summary>Field number for the "role_star" field.</summary>
-    public const int RoleStarFieldNumber = 6;
+    public const int RoleStarFieldNumber = 9;
     private uint roleStar_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -618,8 +772,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "full_combo" field.</summary>
+    public const int FullComboFieldNumber = 13;
+    private bool fullCombo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool FullCombo {
+      get { return fullCombo_; }
+      set {
+        fullCombo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "score_id" field.</summary>
-    public const int ScoreIdFieldNumber = 15;
+    public const int ScoreIdFieldNumber = 4;
     private uint scoreId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -645,8 +811,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (FullCombo != other.FullCombo) return false;
       if (RoleStar != other.RoleStar) return false;
+      if (FullCombo != other.FullCombo) return false;
       if (ScoreId != other.ScoreId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -655,8 +821,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (FullCombo != false) hash ^= FullCombo.GetHashCode();
       if (RoleStar != 0) hash ^= RoleStar.GetHashCode();
+      if (FullCombo != false) hash ^= FullCombo.GetHashCode();
       if (ScoreId != 0) hash ^= ScoreId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -676,17 +842,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (FullCombo != false) {
+      if (ScoreId != 0) {
         output.WriteRawTag(32);
-        output.WriteBool(FullCombo);
+        output.WriteUInt32(ScoreId);
       }
       if (RoleStar != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(72);
         output.WriteUInt32(RoleStar);
       }
-      if (ScoreId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(ScoreId);
+      if (FullCombo != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(FullCombo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -698,17 +864,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (FullCombo != false) {
+      if (ScoreId != 0) {
         output.WriteRawTag(32);
-        output.WriteBool(FullCombo);
+        output.WriteUInt32(ScoreId);
       }
       if (RoleStar != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(72);
         output.WriteUInt32(RoleStar);
       }
-      if (ScoreId != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(ScoreId);
+      if (FullCombo != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(FullCombo);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -720,11 +886,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (FullCombo != false) {
-        size += 1 + 1;
-      }
       if (RoleStar != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RoleStar);
+      }
+      if (FullCombo != false) {
+        size += 1 + 1;
       }
       if (ScoreId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ScoreId);
@@ -741,11 +907,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.FullCombo != false) {
-        FullCombo = other.FullCombo;
-      }
       if (other.RoleStar != 0) {
         RoleStar = other.RoleStar;
+      }
+      if (other.FullCombo != false) {
+        FullCombo = other.FullCombo;
       }
       if (other.ScoreId != 0) {
         ScoreId = other.ScoreId;
@@ -770,15 +936,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 32: {
-            FullCombo = input.ReadBool();
+            ScoreId = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 72: {
             RoleStar = input.ReadUInt32();
             break;
           }
-          case 120: {
-            ScoreId = input.ReadUInt32();
+          case 104: {
+            FullCombo = input.ReadBool();
             break;
           }
         }
@@ -801,15 +967,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 32: {
-            FullCombo = input.ReadBool();
+            ScoreId = input.ReadUInt32();
             break;
           }
-          case 48: {
+          case 72: {
             RoleStar = input.ReadUInt32();
             break;
           }
-          case 120: {
-            ScoreId = input.ReadUInt32();
+          case 104: {
+            FullCombo = input.ReadBool();
             break;
           }
         }
@@ -834,7 +1000,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[2]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -854,8 +1020,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmFinishLevelScRsp(MusicRhythmFinishLevelScRsp other) : this() {
-      retcode_ = other.retcode_;
       levelId_ = other.levelId_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -865,20 +1031,8 @@ namespace March7thHoney.Proto {
       return new MusicRhythmFinishLevelScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 15;
+    public const int LevelIdFieldNumber = 1;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -886,6 +1040,18 @@ namespace March7thHoney.Proto {
       get { return levelId_; }
       set {
         levelId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 13;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
       }
     }
 
@@ -904,8 +1070,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
       if (LevelId != other.LevelId) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -913,8 +1079,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (LevelId != 0) hash ^= LevelId.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -933,13 +1099,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Retcode);
-      }
       if (LevelId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(8);
         output.WriteUInt32(LevelId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -951,13 +1117,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(Retcode);
-      }
       if (LevelId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(8);
         output.WriteUInt32(LevelId);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -969,11 +1135,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
       if (LevelId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -987,11 +1153,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
       if (other.LevelId != 0) {
         LevelId = other.LevelId;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1012,12 +1178,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            Retcode = input.ReadUInt32();
+          case 8: {
+            LevelId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            LevelId = input.ReadUInt32();
+          case 104: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -1039,12 +1205,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            Retcode = input.ReadUInt32();
+          case 8: {
+            LevelId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            LevelId = input.ReadUInt32();
+          case 104: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -1069,7 +1235,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[3]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1089,9 +1255,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmGroup(MusicRhythmGroup other) : this() {
-      bBINFDHMGII_ = other.bBINFDHMGII_.Clone();
-      musicGroupId_ = other.musicGroupId_;
       musicGroupPhase_ = other.musicGroupPhase_;
+      musicGroupId_ = other.musicGroupId_;
+      bBINFDHMGII_ = other.bBINFDHMGII_.Clone();
       eOHMNCBOALC_ = other.eOHMNCBOALC_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1102,31 +1268,8 @@ namespace March7thHoney.Proto {
       return new MusicRhythmGroup(this);
     }
 
-    /// <summary>Field number for the "BBINFDHMGII" field.</summary>
-    public const int BBINFDHMGIIFieldNumber = 2;
-    private static readonly pb::FieldCodec<uint> _repeated_bBINFDHMGII_codec
-        = pb::FieldCodec.ForUInt32(18);
-    private readonly pbc::RepeatedField<uint> bBINFDHMGII_ = new pbc::RepeatedField<uint>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> BBINFDHMGII {
-      get { return bBINFDHMGII_; }
-    }
-
-    /// <summary>Field number for the "music_group_id" field.</summary>
-    public const int MusicGroupIdFieldNumber = 3;
-    private uint musicGroupId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MusicGroupId {
-      get { return musicGroupId_; }
-      set {
-        musicGroupId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "music_group_phase" field.</summary>
-    public const int MusicGroupPhaseFieldNumber = 4;
+    public const int MusicGroupPhaseFieldNumber = 13;
     private uint musicGroupPhase_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1137,10 +1280,33 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "music_group_id" field.</summary>
+    public const int MusicGroupIdFieldNumber = 2;
+    private uint musicGroupId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MusicGroupId {
+      get { return musicGroupId_; }
+      set {
+        musicGroupId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "BBINFDHMGII" field.</summary>
+    public const int BBINFDHMGIIFieldNumber = 5;
+    private static readonly pb::FieldCodec<uint> _repeated_bBINFDHMGII_codec
+        = pb::FieldCodec.ForUInt32(42);
+    private readonly pbc::RepeatedField<uint> bBINFDHMGII_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> BBINFDHMGII {
+      get { return bBINFDHMGII_; }
+    }
+
     /// <summary>Field number for the "EOHMNCBOALC" field.</summary>
-    public const int EOHMNCBOALCFieldNumber = 10;
+    public const int EOHMNCBOALCFieldNumber = 1;
     private static readonly pb::FieldCodec<uint> _repeated_eOHMNCBOALC_codec
-        = pb::FieldCodec.ForUInt32(82);
+        = pb::FieldCodec.ForUInt32(10);
     private readonly pbc::RepeatedField<uint> eOHMNCBOALC_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1163,9 +1329,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!bBINFDHMGII_.Equals(other.bBINFDHMGII_)) return false;
-      if (MusicGroupId != other.MusicGroupId) return false;
       if (MusicGroupPhase != other.MusicGroupPhase) return false;
+      if (MusicGroupId != other.MusicGroupId) return false;
+      if(!bBINFDHMGII_.Equals(other.bBINFDHMGII_)) return false;
       if(!eOHMNCBOALC_.Equals(other.eOHMNCBOALC_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1174,9 +1340,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= bBINFDHMGII_.GetHashCode();
-      if (MusicGroupId != 0) hash ^= MusicGroupId.GetHashCode();
       if (MusicGroupPhase != 0) hash ^= MusicGroupPhase.GetHashCode();
+      if (MusicGroupId != 0) hash ^= MusicGroupId.GetHashCode();
+      hash ^= bBINFDHMGII_.GetHashCode();
       hash ^= eOHMNCBOALC_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1196,16 +1362,16 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      bBINFDHMGII_.WriteTo(output, _repeated_bBINFDHMGII_codec);
+      eOHMNCBOALC_.WriteTo(output, _repeated_eOHMNCBOALC_codec);
       if (MusicGroupId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(MusicGroupId);
       }
+      bBINFDHMGII_.WriteTo(output, _repeated_bBINFDHMGII_codec);
       if (MusicGroupPhase != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(104);
         output.WriteUInt32(MusicGroupPhase);
       }
-      eOHMNCBOALC_.WriteTo(output, _repeated_eOHMNCBOALC_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1216,16 +1382,16 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      bBINFDHMGII_.WriteTo(ref output, _repeated_bBINFDHMGII_codec);
+      eOHMNCBOALC_.WriteTo(ref output, _repeated_eOHMNCBOALC_codec);
       if (MusicGroupId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteUInt32(MusicGroupId);
       }
+      bBINFDHMGII_.WriteTo(ref output, _repeated_bBINFDHMGII_codec);
       if (MusicGroupPhase != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(104);
         output.WriteUInt32(MusicGroupPhase);
       }
-      eOHMNCBOALC_.WriteTo(ref output, _repeated_eOHMNCBOALC_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1236,13 +1402,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += bBINFDHMGII_.CalculateSize(_repeated_bBINFDHMGII_codec);
-      if (MusicGroupId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MusicGroupId);
-      }
       if (MusicGroupPhase != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MusicGroupPhase);
       }
+      if (MusicGroupId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MusicGroupId);
+      }
+      size += bBINFDHMGII_.CalculateSize(_repeated_bBINFDHMGII_codec);
       size += eOHMNCBOALC_.CalculateSize(_repeated_eOHMNCBOALC_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1256,13 +1422,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      bBINFDHMGII_.Add(other.bBINFDHMGII_);
-      if (other.MusicGroupId != 0) {
-        MusicGroupId = other.MusicGroupId;
-      }
       if (other.MusicGroupPhase != 0) {
         MusicGroupPhase = other.MusicGroupPhase;
       }
+      if (other.MusicGroupId != 0) {
+        MusicGroupId = other.MusicGroupId;
+      }
+      bBINFDHMGII_.Add(other.bBINFDHMGII_);
       eOHMNCBOALC_.Add(other.eOHMNCBOALC_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1283,22 +1449,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18:
-          case 16: {
-            bBINFDHMGII_.AddEntriesFrom(input, _repeated_bBINFDHMGII_codec);
+          case 10:
+          case 8: {
+            eOHMNCBOALC_.AddEntriesFrom(input, _repeated_eOHMNCBOALC_codec);
             break;
           }
-          case 24: {
+          case 16: {
             MusicGroupId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            MusicGroupPhase = input.ReadUInt32();
+          case 42:
+          case 40: {
+            bBINFDHMGII_.AddEntriesFrom(input, _repeated_bBINFDHMGII_codec);
             break;
           }
-          case 82:
-          case 80: {
-            eOHMNCBOALC_.AddEntriesFrom(input, _repeated_eOHMNCBOALC_codec);
+          case 104: {
+            MusicGroupPhase = input.ReadUInt32();
             break;
           }
         }
@@ -1320,22 +1486,22 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18:
-          case 16: {
-            bBINFDHMGII_.AddEntriesFrom(ref input, _repeated_bBINFDHMGII_codec);
+          case 10:
+          case 8: {
+            eOHMNCBOALC_.AddEntriesFrom(ref input, _repeated_eOHMNCBOALC_codec);
             break;
           }
-          case 24: {
+          case 16: {
             MusicGroupId = input.ReadUInt32();
             break;
           }
-          case 32: {
-            MusicGroupPhase = input.ReadUInt32();
+          case 42:
+          case 40: {
+            bBINFDHMGII_.AddEntriesFrom(ref input, _repeated_bBINFDHMGII_codec);
             break;
           }
-          case 82:
-          case 80: {
-            eOHMNCBOALC_.AddEntriesFrom(ref input, _repeated_eOHMNCBOALC_codec);
+          case 104: {
+            MusicGroupPhase = input.ReadUInt32();
             break;
           }
         }
@@ -1360,7 +1526,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[4]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1393,7 +1559,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "unlock_level" field.</summary>
-    public const int UnlockLevelFieldNumber = 2;
+    public const int UnlockLevelFieldNumber = 15;
     private uint unlockLevel_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1405,7 +1571,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 9;
+    public const int LevelIdFieldNumber = 12;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1417,7 +1583,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "full_combo" field.</summary>
-    public const int FullComboFieldNumber = 12;
+    public const int FullComboFieldNumber = 5;
     private bool fullCombo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1474,17 +1640,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (UnlockLevel != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(UnlockLevel);
+      if (FullCombo != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(FullCombo);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(96);
         output.WriteUInt32(LevelId);
       }
-      if (FullCombo != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(FullCombo);
+      if (UnlockLevel != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(UnlockLevel);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1496,17 +1662,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (UnlockLevel != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(UnlockLevel);
+      if (FullCombo != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(FullCombo);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(96);
         output.WriteUInt32(LevelId);
       }
-      if (FullCombo != false) {
-        output.WriteRawTag(96);
-        output.WriteBool(FullCombo);
+      if (UnlockLevel != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(UnlockLevel);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1567,16 +1733,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            UnlockLevel = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            LevelId = input.ReadUInt32();
+          case 40: {
+            FullCombo = input.ReadBool();
             break;
           }
           case 96: {
-            FullCombo = input.ReadBool();
+            LevelId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            UnlockLevel = input.ReadUInt32();
             break;
           }
         }
@@ -1598,16 +1764,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            UnlockLevel = input.ReadUInt32();
-            break;
-          }
-          case 72: {
-            LevelId = input.ReadUInt32();
+          case 40: {
+            FullCombo = input.ReadBool();
             break;
           }
           case 96: {
-            FullCombo = input.ReadBool();
+            LevelId = input.ReadUInt32();
+            break;
+          }
+          case 120: {
+            UnlockLevel = input.ReadUInt32();
             break;
           }
         }
@@ -1632,7 +1798,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[5]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1779,21 +1945,21 @@ namespace March7thHoney.Proto {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class MusicRhythmSaveSongConfigDataScRsp : pb::IMessage<MusicRhythmSaveSongConfigDataScRsp>
+  public sealed partial class MusicRhythmSaveSongConfigDataCsReq : pb::IMessage<MusicRhythmSaveSongConfigDataCsReq>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<MusicRhythmSaveSongConfigDataScRsp> _parser = new pb::MessageParser<MusicRhythmSaveSongConfigDataScRsp>(() => new MusicRhythmSaveSongConfigDataScRsp());
+    private static readonly pb::MessageParser<MusicRhythmSaveSongConfigDataCsReq> _parser = new pb::MessageParser<MusicRhythmSaveSongConfigDataCsReq>(() => new MusicRhythmSaveSongConfigDataCsReq());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<MusicRhythmSaveSongConfigDataScRsp> Parser { get { return _parser; } }
+    public static pb::MessageParser<MusicRhythmSaveSongConfigDataCsReq> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[6]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1804,7 +1970,7 @@ namespace March7thHoney.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public MusicRhythmSaveSongConfigDataScRsp() {
+    public MusicRhythmSaveSongConfigDataCsReq() {
       OnConstruction();
     }
 
@@ -1812,73 +1978,45 @@ namespace March7thHoney.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public MusicRhythmSaveSongConfigDataScRsp(MusicRhythmSaveSongConfigDataScRsp other) : this() {
-      eFEGLAOAJDA_ = other.eFEGLAOAJDA_;
-      curSongId_ = other.curSongId_;
-      retcode_ = other.retcode_;
+    public MusicRhythmSaveSongConfigDataCsReq(MusicRhythmSaveSongConfigDataCsReq other) : this() {
+      bENAFNHLCEO_ = other.bENAFNHLCEO_ != null ? other.bENAFNHLCEO_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public MusicRhythmSaveSongConfigDataScRsp Clone() {
-      return new MusicRhythmSaveSongConfigDataScRsp(this);
+    public MusicRhythmSaveSongConfigDataCsReq Clone() {
+      return new MusicRhythmSaveSongConfigDataCsReq(this);
     }
 
-    /// <summary>Field number for the "EFEGLAOAJDA" field.</summary>
-    public const int EFEGLAOAJDAFieldNumber = 4;
-    private uint eFEGLAOAJDA_;
+    /// <summary>Field number for the "BENAFNHLCEO" field.</summary>
+    public const int BENAFNHLCEOFieldNumber = 1;
+    private global::March7thHoney.Proto.MusicRhythmGroup bENAFNHLCEO_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EFEGLAOAJDA {
-      get { return eFEGLAOAJDA_; }
+    public global::March7thHoney.Proto.MusicRhythmGroup BENAFNHLCEO {
+      get { return bENAFNHLCEO_; }
       set {
-        eFEGLAOAJDA_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "cur_song_id" field.</summary>
-    public const int CurSongIdFieldNumber = 12;
-    private uint curSongId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurSongId {
-      get { return curSongId_; }
-      set {
-        curSongId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
+        bENAFNHLCEO_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as MusicRhythmSaveSongConfigDataScRsp);
+      return Equals(other as MusicRhythmSaveSongConfigDataCsReq);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(MusicRhythmSaveSongConfigDataScRsp other) {
+    public bool Equals(MusicRhythmSaveSongConfigDataCsReq other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EFEGLAOAJDA != other.EFEGLAOAJDA) return false;
-      if (CurSongId != other.CurSongId) return false;
-      if (Retcode != other.Retcode) return false;
+      if (!object.Equals(BENAFNHLCEO, other.BENAFNHLCEO)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1886,9 +2024,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EFEGLAOAJDA != 0) hash ^= EFEGLAOAJDA.GetHashCode();
-      if (CurSongId != 0) hash ^= CurSongId.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (bENAFNHLCEO_ != null) hash ^= BENAFNHLCEO.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1907,17 +2043,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EFEGLAOAJDA != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(EFEGLAOAJDA);
-      }
-      if (CurSongId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(CurSongId);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Retcode);
+      if (bENAFNHLCEO_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(BENAFNHLCEO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1929,17 +2057,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EFEGLAOAJDA != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(EFEGLAOAJDA);
-      }
-      if (CurSongId != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(CurSongId);
-      }
-      if (Retcode != 0) {
-        output.WriteRawTag(104);
-        output.WriteUInt32(Retcode);
+      if (bENAFNHLCEO_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(BENAFNHLCEO);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1951,14 +2071,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EFEGLAOAJDA != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EFEGLAOAJDA);
-      }
-      if (CurSongId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSongId);
-      }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      if (bENAFNHLCEO_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BENAFNHLCEO);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1968,18 +2082,15 @@ namespace March7thHoney.Proto {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(MusicRhythmSaveSongConfigDataScRsp other) {
+    public void MergeFrom(MusicRhythmSaveSongConfigDataCsReq other) {
       if (other == null) {
         return;
       }
-      if (other.EFEGLAOAJDA != 0) {
-        EFEGLAOAJDA = other.EFEGLAOAJDA;
-      }
-      if (other.CurSongId != 0) {
-        CurSongId = other.CurSongId;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
+      if (other.bENAFNHLCEO_ != null) {
+        if (bENAFNHLCEO_ == null) {
+          BENAFNHLCEO = new global::March7thHoney.Proto.MusicRhythmGroup();
+        }
+        BENAFNHLCEO.MergeFrom(other.BENAFNHLCEO);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2000,15 +2111,277 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            EFEGLAOAJDA = input.ReadUInt32();
+          case 10: {
+            if (bENAFNHLCEO_ == null) {
+              BENAFNHLCEO = new global::March7thHoney.Proto.MusicRhythmGroup();
+            }
+            input.ReadMessage(BENAFNHLCEO);
             break;
           }
-          case 96: {
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (bENAFNHLCEO_ == null) {
+              BENAFNHLCEO = new global::March7thHoney.Proto.MusicRhythmGroup();
+            }
+            input.ReadMessage(BENAFNHLCEO);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MusicRhythmSaveSongConfigDataScRsp : pb::IMessage<MusicRhythmSaveSongConfigDataScRsp>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MusicRhythmSaveSongConfigDataScRsp> _parser = new pb::MessageParser<MusicRhythmSaveSongConfigDataScRsp>(() => new MusicRhythmSaveSongConfigDataScRsp());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MusicRhythmSaveSongConfigDataScRsp> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MusicRhythmSaveSongConfigDataScRsp() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MusicRhythmSaveSongConfigDataScRsp(MusicRhythmSaveSongConfigDataScRsp other) : this() {
+      eFEGLAOAJDA_ = other.eFEGLAOAJDA_;
+      retcode_ = other.retcode_;
+      curSongId_ = other.curSongId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MusicRhythmSaveSongConfigDataScRsp Clone() {
+      return new MusicRhythmSaveSongConfigDataScRsp(this);
+    }
+
+    /// <summary>Field number for the "EFEGLAOAJDA" field.</summary>
+    public const int EFEGLAOAJDAFieldNumber = 14;
+    private uint eFEGLAOAJDA_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EFEGLAOAJDA {
+      get { return eFEGLAOAJDA_; }
+      set {
+        eFEGLAOAJDA_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 15;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cur_song_id" field.</summary>
+    public const int CurSongIdFieldNumber = 1;
+    private uint curSongId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CurSongId {
+      get { return curSongId_; }
+      set {
+        curSongId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MusicRhythmSaveSongConfigDataScRsp);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MusicRhythmSaveSongConfigDataScRsp other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (EFEGLAOAJDA != other.EFEGLAOAJDA) return false;
+      if (Retcode != other.Retcode) return false;
+      if (CurSongId != other.CurSongId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (EFEGLAOAJDA != 0) hash ^= EFEGLAOAJDA.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (CurSongId != 0) hash ^= CurSongId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (CurSongId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(CurSongId);
+      }
+      if (EFEGLAOAJDA != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(EFEGLAOAJDA);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Retcode);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (CurSongId != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(CurSongId);
+      }
+      if (EFEGLAOAJDA != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(EFEGLAOAJDA);
+      }
+      if (Retcode != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(Retcode);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (EFEGLAOAJDA != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EFEGLAOAJDA);
+      }
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (CurSongId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurSongId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MusicRhythmSaveSongConfigDataScRsp other) {
+      if (other == null) {
+        return;
+      }
+      if (other.EFEGLAOAJDA != 0) {
+        EFEGLAOAJDA = other.EFEGLAOAJDA;
+      }
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      if (other.CurSongId != 0) {
+        CurSongId = other.CurSongId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
             CurSongId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 112: {
+            EFEGLAOAJDA = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -2031,15 +2404,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            EFEGLAOAJDA = input.ReadUInt32();
-            break;
-          }
-          case 96: {
+          case 8: {
             CurSongId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 112: {
+            EFEGLAOAJDA = input.ReadUInt32();
+            break;
+          }
+          case 120: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -2065,7 +2438,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[7]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2096,7 +2469,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 14;
+    public const int LevelIdFieldNumber = 15;
     private uint levelId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2150,7 +2523,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (LevelId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteUInt32(LevelId);
       }
       if (_unknownFields != null) {
@@ -2164,7 +2537,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (LevelId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(120);
         output.WriteUInt32(LevelId);
       }
       if (_unknownFields != null) {
@@ -2214,7 +2587,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 112: {
+          case 120: {
             LevelId = input.ReadUInt32();
             break;
           }
@@ -2237,7 +2610,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 112: {
+          case 120: {
             LevelId = input.ReadUInt32();
             break;
           }
@@ -2263,7 +2636,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[8]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2283,9 +2656,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public MusicRhythmStartLevelScRsp(MusicRhythmStartLevelScRsp other) : this() {
+      levelId_ = other.levelId_;
       transNo_ = other.transNo_;
       retcode_ = other.retcode_;
-      levelId_ = other.levelId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2295,8 +2668,20 @@ namespace March7thHoney.Proto {
       return new MusicRhythmStartLevelScRsp(this);
     }
 
+    /// <summary>Field number for the "level_id" field.</summary>
+    public const int LevelIdFieldNumber = 11;
+    private uint levelId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint LevelId {
+      get { return levelId_; }
+      set {
+        levelId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "trans_no" field.</summary>
-    public const int TransNoFieldNumber = 6;
+    public const int TransNoFieldNumber = 2;
     private string transNo_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2319,18 +2704,6 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "level_id" field.</summary>
-    public const int LevelIdFieldNumber = 15;
-    private uint levelId_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LevelId {
-      get { return levelId_; }
-      set {
-        levelId_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2346,9 +2719,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (LevelId != other.LevelId) return false;
       if (TransNo != other.TransNo) return false;
       if (Retcode != other.Retcode) return false;
-      if (LevelId != other.LevelId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2356,9 +2729,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (LevelId != 0) hash ^= LevelId.GetHashCode();
       if (TransNo.Length != 0) hash ^= TransNo.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (LevelId != 0) hash ^= LevelId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2378,7 +2751,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (TransNo.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(18);
         output.WriteString(TransNo);
       }
       if (Retcode != 0) {
@@ -2386,7 +2759,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Retcode);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(LevelId);
       }
       if (_unknownFields != null) {
@@ -2400,7 +2773,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (TransNo.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(18);
         output.WriteString(TransNo);
       }
       if (Retcode != 0) {
@@ -2408,7 +2781,7 @@ namespace March7thHoney.Proto {
         output.WriteUInt32(Retcode);
       }
       if (LevelId != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(LevelId);
       }
       if (_unknownFields != null) {
@@ -2421,14 +2794,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (LevelId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
+      }
       if (TransNo.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TransNo);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (LevelId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2442,14 +2815,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      if (other.LevelId != 0) {
+        LevelId = other.LevelId;
+      }
       if (other.TransNo.Length != 0) {
         TransNo = other.TransNo;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
-      }
-      if (other.LevelId != 0) {
-        LevelId = other.LevelId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2470,7 +2843,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 50: {
+          case 18: {
             TransNo = input.ReadString();
             break;
           }
@@ -2478,7 +2851,7 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 88: {
             LevelId = input.ReadUInt32();
             break;
           }
@@ -2501,7 +2874,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 50: {
+          case 18: {
             TransNo = input.ReadString();
             break;
           }
@@ -2509,7 +2882,7 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 88: {
             LevelId = input.ReadUInt32();
             break;
           }
@@ -2535,7 +2908,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[9]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2566,9 +2939,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PHCHFKMHDMA" field.</summary>
-    public const int PHCHFKMHDMAFieldNumber = 10;
+    public const int PHCHFKMHDMAFieldNumber = 4;
     private static readonly pb::FieldCodec<uint> _repeated_pHCHFKMHDMA_codec
-        = pb::FieldCodec.ForUInt32(82);
+        = pb::FieldCodec.ForUInt32(34);
     private readonly pbc::RepeatedField<uint> pHCHFKMHDMA_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2673,8 +3046,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 82:
-          case 80: {
+          case 34:
+          case 32: {
             pHCHFKMHDMA_.AddEntriesFrom(input, _repeated_pHCHFKMHDMA_codec);
             break;
           }
@@ -2697,8 +3070,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 82:
-          case 80: {
+          case 34:
+          case 32: {
             pHCHFKMHDMA_.AddEntriesFrom(ref input, _repeated_pHCHFKMHDMA_codec);
             break;
           }
@@ -2724,7 +3097,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[10]; }
+      get { return global::March7thHoney.Proto.CmdMusicRhythmTypeReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2755,9 +3128,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "PFHNONKNHAC" field.</summary>
-    public const int PFHNONKNHACFieldNumber = 11;
+    public const int PFHNONKNHACFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_pFHNONKNHAC_codec
-        = pb::FieldCodec.ForUInt32(90);
+        = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> pFHNONKNHAC_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2862,8 +3235,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 90:
-          case 88: {
+          case 74:
+          case 72: {
             pFHNONKNHAC_.AddEntriesFrom(input, _repeated_pFHNONKNHAC_codec);
             break;
           }
@@ -2886,8 +3259,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 90:
-          case 88: {
+          case 74:
+          case 72: {
             pFHNONKNHAC_.AddEntriesFrom(ref input, _repeated_pFHNONKNHAC_codec);
             break;
           }

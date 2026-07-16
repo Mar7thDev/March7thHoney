@@ -5,13 +5,8 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Message;
 
 public class PacketFinishPerformSectionIdScRsp : BasePacket
 {
-    public PacketFinishPerformSectionIdScRsp(uint sectionId) : base(CmdIds.FinishPerformSectionIdScRsp)
+    public PacketFinishPerformSectionIdScRsp() : base(CmdIds.FinishPerformSectionIdScRsp)
     {
-        var proto = new FinishPerformSectionIdScRsp
-        {
-            SectionId = sectionId
-        };
-
-        SetData(proto);
+        SetData(new FinishPerformSectionIdScRsp());
     }
 }

@@ -9,8 +9,6 @@ public class HandlerFinishPerformSectionIdCsReq : Handler<FinishPerformSectionId
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, FinishPerformSectionIdCsReq req)
     {
-        await player.MessageManager!.FinishSection((int)req.SectionId);
-
-        await connection.SendPacket(new PacketFinishPerformSectionIdScRsp(req.SectionId));
+        await connection.SendPacket(new PacketFinishPerformSectionIdScRsp());
     }
 }

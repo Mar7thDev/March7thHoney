@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace March7thHoney.ProtoOrganizer;
 
@@ -24,11 +25,37 @@ public static class Compiler
                 .OrderByDescending(v => v == "3.33.1").ThenByDescending(v => v, StringComparer.Ordinal);
             foreach (var v in versions)
             {
-                var exe = Path.Combine(toolsDir, v!, "tools", "windows_x64", "protoc.exe");
-                if (File.Exists(exe)) return exe;
+                foreach (var relative in ProtocCandidates())
+                {
+                    var executable = Path.Combine(toolsDir, v!, "tools", relative);
+                    if (File.Exists(executable)) return executable;
+                }
             }
         }
         return configured; // fall back to PATH lookup
+    }
+
+    private static IEnumerable<string> ProtocCandidates()
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            yield return RuntimeInformation.ProcessArchitecture == Architecture.X86
+                ? "windows_x86/protoc.exe"
+                : "windows_x64/protoc.exe";
+            yield break;
+        }
+        if (OperatingSystem.IsMacOS())
+        {
+            yield return "macosx_arm64/protoc";
+            yield return "macosx_x64/protoc";
+            yield break;
+        }
+        if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
+            yield return "linux_aarch64/protoc";
+        else if (RuntimeInformation.ProcessArchitecture == Architecture.X86)
+            yield return "linux_x86/protoc";
+        else
+            yield return "linux_x64/protoc";
     }
 
     public static int Run(GroupResult gr, Args opts)

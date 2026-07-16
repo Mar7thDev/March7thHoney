@@ -10,6 +10,12 @@ public sealed class Args
     public string CsOutDir = "Proto/Generated";
     public string Protoc = "protoc";
     public string Version = "4.4";
+    public string? SameSeedRawDir;
+    public string? SameSeedProtoDir;
+    public List<string> TranslationPaths { get; } = new();
+    public List<string> CompatibilityTypePaths { get; } = new();
+    public List<string> CmdIdAliasPaths { get; } = new();
+    public List<string> CmdIdsOutPaths { get; } = new();
     public bool Active;
     public bool ReportOnly;
     public bool Compile;
@@ -29,6 +35,12 @@ public sealed class Args
                 case "--cs-out": o.CsOutDir = a[++i]; break;
                 case "--protoc": o.Protoc = a[++i]; break;
                 case "--version": o.Version = a[++i]; break;
+                case "--same-seed-raw": o.SameSeedRawDir = a[++i]; break;
+                case "--same-seed-proto": o.SameSeedProtoDir = a[++i]; break;
+                case "--translation": o.TranslationPaths.Add(a[++i]); break;
+                case "--compat-types": o.CompatibilityTypePaths.Add(a[++i]); break;
+                case "--cmdid-aliases": o.CmdIdAliasPaths.Add(a[++i]); break;
+                case "--cmdids-out": o.CmdIdsOutPaths.Add(a[++i]); break;
                 case "--active": o.Active = true; break;
                 case "--report": o.ReportOnly = true; break;
                 case "--compile": o.Compile = true; break;

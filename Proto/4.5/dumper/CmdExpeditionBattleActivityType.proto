@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ALLNMAAOELO {
+    uint32 OICKCNEBADE = 3;
+}
+
+enum CmdExpeditionBattleActivityType {
+    CmdExpeditionBattleActivityType_None = 0;
+    CmdExpeditionBattleActivityType_ExpeditionBattleSettleScNotify = 9332;
+    CmdExpeditionBattleActivityType_GetExpeditionBattleDataScRsp = 9350;
+    CmdExpeditionBattleActivityType_ExpeditionBattleEndScNotify = 9331;
+    CmdExpeditionBattleActivityType_GetExpeditionBattleDataCsReq = 9346;
+    CmdExpeditionBattleActivityType_ExpeditionBattleStartScRsp = 9329;
+    CmdExpeditionBattleActivityType_ExpeditionBattleSetLineupScRsp = 9339;
+    CmdExpeditionBattleActivityType_ExpeditionBattleSetLineupCsReq = 9334;
+    CmdExpeditionBattleActivityType_ExpeditionBattleStartCsReq = 9324;
+}
+
+message MFBKEMKDKLO {
+}
