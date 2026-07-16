@@ -25,18 +25,20 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChZDbWRSbmRPcHRpb25UeXBlLnByb3RvIhgKFkRhaWx5Rmlyc3RNZWV0UGFt",
-            "Q3NSZXEiHwoRR2V0Um5kT3B0aW9uQ3NSZXESCgoCaWQYBiABKA0q0QEKEENt",
-            "ZFJuZE9wdGlvblR5cGUSIAocQ21kUm5kT3B0aW9uVHlwZV9OTENER0lQR0ZE",
-            "ShAAEicKIkNtZFJuZE9wdGlvblR5cGVfR2V0Um5kT3B0aW9uQ3NSZXEQ4RoS",
-            "LAonQ21kUm5kT3B0aW9uVHlwZV9EYWlseUZpcnN0TWVldFBhbUNzUmVxEKUb",
-            "EiEKHENtZFJuZE9wdGlvblR5cGVfQUtFS0ZOT1BQTEYQlhsSIQocQ21kUm5k",
-            "T3B0aW9uVHlwZV9JRk1FSlBKSkVMThCCG0IWqgITTWFyY2g3dGhIb25leS5Q",
-            "cm90b2IGcHJvdG8z"));
+            "Q3NSZXEiHwoRR2V0Um5kT3B0aW9uQ3NSZXESCgoCaWQYAyABKA0iOQoRR2V0",
+            "Um5kT3B0aW9uU2NSc3ASEwoLRUZMT0lMTkxGSUMYDyADKA0SDwoHcmV0Y29k",
+            "ZRgJIAEoDSrbAQoQQ21kUm5kT3B0aW9uVHlwZRIZChVDbWRSbmRPcHRpb25U",
+            "eXBlX05vbmUQABInCiJDbWRSbmRPcHRpb25UeXBlX0dldFJuZE9wdGlvblNj",
+            "UnNwEJobEicKIkNtZFJuZE9wdGlvblR5cGVfR2V0Um5kT3B0aW9uQ3NSZXEQ",
+            "6hoSLAonQ21kUm5kT3B0aW9uVHlwZV9EYWlseUZpcnN0TWVldFBhbUNzUmVx",
+            "EJcbEiwKJ0NtZFJuZE9wdGlvblR5cGVfRGFpbHlGaXJzdE1lZXRQYW1TY1Jz",
+            "cBDvGkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRndOptionType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DailyFirstMeetPamCsReq), global::March7thHoney.Proto.DailyFirstMeetPamCsReq.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetRndOptionCsReq), global::March7thHoney.Proto.GetRndOptionCsReq.Parser, new[]{ "Id" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetRndOptionCsReq), global::March7thHoney.Proto.GetRndOptionCsReq.Parser, new[]{ "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetRndOptionScRsp), global::March7thHoney.Proto.GetRndOptionScRsp.Parser, new[]{ "EFLOILNLFIC", "Retcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -44,11 +46,11 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdRndOptionType {
-    [pbr::OriginalName("CmdRndOptionType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdRndOptionType_GetRndOptionCsReq")] GetRndOptionCsReq = 3425,
-    [pbr::OriginalName("CmdRndOptionType_DailyFirstMeetPamCsReq")] DailyFirstMeetPamCsReq = 3493,
-    [pbr::OriginalName("CmdRndOptionType_AKEKFNOPPLF")] Akekfnopplf = 3478,
-    [pbr::OriginalName("CmdRndOptionType_IFMEJPJJELN")] Ifmejpjjeln = 3458,
+    [pbr::OriginalName("CmdRndOptionType_None")] None = 0,
+    [pbr::OriginalName("CmdRndOptionType_GetRndOptionScRsp")] GetRndOptionScRsp = 3482,
+    [pbr::OriginalName("CmdRndOptionType_GetRndOptionCsReq")] GetRndOptionCsReq = 3434,
+    [pbr::OriginalName("CmdRndOptionType_DailyFirstMeetPamCsReq")] DailyFirstMeetPamCsReq = 3479,
+    [pbr::OriginalName("CmdRndOptionType_DailyFirstMeetPamScRsp")] DailyFirstMeetPamScRsp = 3439,
   }
 
   #endregion
@@ -261,7 +263,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 6;
+    public const int IdFieldNumber = 3;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -315,7 +317,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Id != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
@@ -329,7 +331,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(24);
         output.WriteUInt32(Id);
       }
       if (_unknownFields != null) {
@@ -379,7 +381,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 24: {
             Id = input.ReadUInt32();
             break;
           }
@@ -402,8 +404,234 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 24: {
             Id = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetRndOptionScRsp : pb::IMessage<GetRndOptionScRsp>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetRndOptionScRsp> _parser = new pb::MessageParser<GetRndOptionScRsp>(() => new GetRndOptionScRsp());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetRndOptionScRsp> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::March7thHoney.Proto.CmdRndOptionTypeReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetRndOptionScRsp() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetRndOptionScRsp(GetRndOptionScRsp other) : this() {
+      eFLOILNLFIC_ = other.eFLOILNLFIC_.Clone();
+      retcode_ = other.retcode_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetRndOptionScRsp Clone() {
+      return new GetRndOptionScRsp(this);
+    }
+
+    /// <summary>Field number for the "EFLOILNLFIC" field.</summary>
+    public const int EFLOILNLFICFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_eFLOILNLFIC_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> eFLOILNLFIC_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> EFLOILNLFIC {
+      get { return eFLOILNLFIC_; }
+    }
+
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 9;
+    private uint retcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetRndOptionScRsp);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetRndOptionScRsp other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!eFLOILNLFIC_.Equals(other.eFLOILNLFIC_)) return false;
+      if (Retcode != other.Retcode) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= eFLOILNLFIC_.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
+      }
+      eFLOILNLFIC_.WriteTo(output, _repeated_eFLOILNLFIC_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
+      }
+      eFLOILNLFIC_.WriteTo(ref output, _repeated_eFLOILNLFIC_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += eFLOILNLFIC_.CalculateSize(_repeated_eFLOILNLFIC_codec);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetRndOptionScRsp other) {
+      if (other == null) {
+        return;
+      }
+      eFLOILNLFIC_.Add(other.eFLOILNLFIC_);
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 72: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 122:
+          case 120: {
+            eFLOILNLFIC_.AddEntriesFrom(input, _repeated_eFLOILNLFIC_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 72: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 122:
+          case 120: {
+            eFLOILNLFIC_.AddEntriesFrom(ref input, _repeated_eFLOILNLFIC_codec);
             break;
           }
         }

@@ -97,7 +97,7 @@ public class TrainPartyGameplayRun
             return (uint)Retcode.RetFail;
         }
 
-        var settling = PendingAction.FGLIODAJFMLCase == HJLECIIEKGI.FGLIODAJFMLOneofCase.AKDJGIJMHPJ;
+        var settling = PendingAction.AKDJGIJMHPJ != null;
 
         PendingDeltas.Clear();
         ApplyAnswer(req, rsp);
@@ -137,74 +137,49 @@ public class TrainPartyGameplayRun
 
     private void ApplyAnswer(TrainPartyHandlePendingActionCsReq req, TrainPartyHandlePendingActionScRsp rsp)
     {
-        switch (req.KILBFAAFDPDCase)
+        if (req.KLONPDNKBJF != null)
         {
-            case TrainPartyHandlePendingActionCsReq.KILBFAAFDPDOneofCase.KLONPDNKBJF:
-                // Event option picked — deterministic placeholder effect: score up.
-                Score += 100;
-                RecordMove(1, req.KLONPDNKBJF.EventId);
-                rsp.EEBFCLFOBPG = new OLBKADIKIGL { CBFPJAJAKGI = BuildStatus() };
-                QueuePassengerDelta();
-                break;
-
-            case TrainPartyHandlePendingActionCsReq.KILBFAAFDPDOneofCase.LGBJDFHBIND:
-                // Skill picked from the offer.
-                var pickedId = req.LGBJDFHBIND.BFPAFELCMGF;
-                var picked = SkillPool.FirstOrDefault(x => x.SkillId == pickedId)
-                             ?? new LMKECAPDMAC { SkillId = pickedId, SkillLevel = 1, MaxLevel = 6 };
-                if (LearnedSkills.All(x => x.SkillId != picked.SkillId))
-                    LearnedSkills.Add(picked);
-                RecordMove(2, pickedId);
-                var skillResult = new KDBJBEJPGOO();
-                skillResult.SkillList.AddRange(LearnedSkills);
-                rsp.OMLNCJEGJAC = skillResult;
-                QueueDelta(new GMCPCKHHPOB
-                {
-                    CNLGPLJFMKA = new DMFMMKJOCNJ { CBKINAFEDJC = picked }
-                });
-                break;
-
-            case TrainPartyHandlePendingActionCsReq.KILBFAAFDPDOneofCase.NELLGPKHIKE:
-                // Id-list answer (inferred: passenger selection).
-                foreach (var id in req.NELLGPKHIKE.LKNGKJCFFBH) RecordMove(3, id);
-                var listResult = new DJKACFOFFAH { OENPDHNALLA = Score };
-                listResult.EEOEFLKFNIM.AddRange(Passengers.Select((x, i) => new ELBILFGFDHA
-                {
-                    PassengerId = x.PassengerId,
-                    GPIGNHPKFFB = x.Atk,
-                    UniqueId = (uint)(i + 1)
-                }));
-                listResult.COBENBOBPKD.AddRange(Passengers.Select(x => new DKIGCLFPGFO
-                {
-                    PassengerId = x.PassengerId,
-                    Num = 1
-                }));
-                listResult.CIKDPHGPIGK.Clear();
-                rsp.IGMEPOBLFFB = listResult;
-                QueuePassengerDelta();
-                break;
-
-            case TrainPartyHandlePendingActionCsReq.KILBFAAFDPDOneofCase.NMEFKABDHAN:
-                // Id-list answer (inferred: card discard/order).
-                foreach (var id in req.NMEFKABDHAN.LKNGKJCFFBH) RecordMove(4, id);
-                var summary = new AHHMLENLDEF
-                {
-                    TotalScore = Score,
-                    KNMADMBFEDB = new ECDINHEHKOJ()
-                };
-                summary.COBENBOBPKD.AddRange(Passengers.Select(x => new DKIGCLFPGFO
-                {
-                    PassengerId = x.PassengerId,
-                    Num = 1
-                }));
-                rsp.BHMJDNEOBNK = summary;
-                QueueHandDelta();
-                break;
-
-            default:
-                // Bare acknowledge (settle confirmation arrives with no payload case).
-                RecordMove(0, 0);
-                break;
+            Score += 100;
+            RecordMove(1, req.KLONPDNKBJF.EventId);
+            rsp.EEBFCLFOBPG = new OLBKADIKIGL { CBFPJAJAKGI = BuildStatus() };
+            QueuePassengerDelta();
+        }
+        else if (req.LGBJDFHBIND != null)
+        {
+            var pickedId = req.LGBJDFHBIND.BFPAFELCMGF;
+            var picked = SkillPool.FirstOrDefault(x => x.SkillId == pickedId)
+                         ?? new LMKECAPDMAC { SkillId = pickedId, SkillLevel = 1, MaxLevel = 6 };
+            if (LearnedSkills.All(x => x.SkillId != picked.SkillId)) LearnedSkills.Add(picked);
+            RecordMove(2, pickedId);
+            var skillResult = new KDBJBEJPGOO();
+            skillResult.SkillList.AddRange(LearnedSkills);
+            rsp.OMLNCJEGJAC = skillResult;
+            QueueDelta(new GMCPCKHHPOB { CNLGPLJFMKA = new DMFMMKJOCNJ { CBKINAFEDJC = picked } });
+        }
+        else if (req.NELLGPKHIKE != null)
+        {
+            foreach (var id in req.NELLGPKHIKE.LKNGKJCFFBH) RecordMove(3, id);
+            var listResult = new DJKACFOFFAH { OENPDHNALLA = Score };
+            listResult.EEOEFLKFNIM.AddRange(Passengers.Select((x, i) => new ELBILFGFDHA
+                { PassengerId = x.PassengerId, GPIGNHPKFFB = x.Atk, UniqueId = (uint)(i + 1) }));
+            listResult.COBENBOBPKD.AddRange(Passengers.Select(x => new DKIGCLFPGFO
+                { PassengerId = x.PassengerId, Num = 1 }));
+            listResult.CIKDPHGPIGK.Clear();
+            rsp.IGMEPOBLFFB = listResult;
+            QueuePassengerDelta();
+        }
+        else if (req.NMEFKABDHAN != null)
+        {
+            foreach (var id in req.NMEFKABDHAN.LKNGKJCFFBH) RecordMove(4, id);
+            var summary = new AHHMLENLDEF { TotalScore = Score, KNMADMBFEDB = new ECDINHEHKOJ() };
+            summary.COBENBOBPKD.AddRange(Passengers.Select(x => new DKIGCLFPGFO
+                { PassengerId = x.PassengerId, Num = 1 }));
+            rsp.BHMJDNEOBNK = summary;
+            QueueHandDelta();
+        }
+        else
+        {
+            RecordMove(0, 0);
         }
     }
 

@@ -10,6 +10,44 @@ Console.WriteLine($"[organizer] proto-file = {opts.ProtoFileDir}");
 Console.WriteLine($"[organizer] packetIds  = {opts.PacketIdsPath}");
 
 var rawDefs = CuratedParser.ParseDirectory(opts.ProtoFileDir);
+var packetIds = PacketIds.Load(opts.PacketIdsPath);
+var typeMappings = new Dictionary<string, string>(StringComparer.Ordinal);
+var seedReadableDefs = opts.SameSeedProtoDir != null
+    ? CuratedParser.ParseDirectory(opts.SameSeedProtoDir)
+    : new List<TypeDef>();
+var catalogNames = CmdCatalog.Apply(rawDefs, packetIds);
+Console.WriteLine($"[organizer] Cmd*Type catalog = {catalogNames} readable cmdids, {packetIds.Count} total packet ids");
+
+if (opts.SameSeedRawDir != null && opts.SameSeedProtoDir != null)
+{
+    var translationPaths = opts.TranslationPaths
+        .Concat(new[]
+        {
+            Path.Combine(opts.SameSeedRawDir, "translations.txt"),
+            Path.Combine(opts.SameSeedProtoDir, "Raw", "translations.txt"),
+            Path.Combine(opts.RawDir, "translations.txt"),
+        });
+    var seedTranslations = Translations.Load(translationPaths);
+    foreach (var row in packetIds.Values)
+        if (row.Obf != null && row.Name.Any(char.IsLower))
+            seedTranslations.Add(row.Obf, row.Name);
+    var migration = SameSeedMigrator.Apply(
+        rawDefs,
+        CuratedParser.ParseDirectory(opts.SameSeedRawDir),
+        seedReadableDefs,
+        seedTranslations);
+    rawDefs = migration.Definitions;
+    typeMappings = migration.TypeMappings;
+    var packetNames = PacketIds.Translate(packetIds, typeMappings);
+    Console.WriteLine($"[organizer] same-seed = {migration.TypeMappings.Count} types, {migration.FieldNames} fields, {migration.EnumValues} enum values, {migration.OneofNames} oneofs");
+    Console.WriteLine($"[organizer] same-seed packet names = {packetNames}");
+}
+
+if (opts.CompatibilityTypePaths.Count > 0)
+{
+    var compatibility = CompatibilityTypes.Add(rawDefs, seedReadableDefs, opts.CompatibilityTypePaths);
+    Console.WriteLine($"[organizer] compatibility = {compatibility.Added} types, {compatibility.Unresolved} unresolved");
+}
 
 // A type name may appear in more than one curated file; keep the first and report the rest so we
 // never emit a duplicate definition (protoc rejects those).
@@ -20,14 +58,14 @@ foreach (var d in rawDefs)
     if (seenNames.Add(d.Name)) defs.Add(d); else dupCount++;
 if (dupCount > 0) Console.WriteLine($"[organizer] dropped {dupCount} duplicate-named curated defs (kept first)");
 
-var packetIds = PacketIds.Load(opts.PacketIdsPath);
-
 // Translate Cmd*Type enum entries (cmdid -> message name) for readability.
 var translated = EnumTranslator.TranslateAll(defs, packetIds);
 Console.WriteLine($"[organizer] translated {translated} Cmd*Type enum entries");
 
 var rawDir = Path.GetDirectoryName(opts.PacketIdsPath) ?? opts.RawDir;
-var translations = Translations.Load(Path.Combine(rawDir, "translations.txt"));
+var translations = typeMappings.Count > 0
+    ? Translations.FromMappings(typeMappings)
+    : Translations.Load(Path.Combine(rawDir, "translations.txt"));
 var masterPath = Path.Combine(rawDir, "StarRail.proto");
 var masterEdges = File.Exists(masterPath)
     ? MasterParser.ParseEdges(masterPath)
@@ -72,6 +110,12 @@ if (Directory.Exists(opts.RawDir) && Path.GetFullPath(opts.RawDir) != Path.GetFu
 }
 
 Console.WriteLine($"[organizer] wrote {gr.Buckets.Count} proto files.");
+
+if (opts.Active && opts.CmdIdsOutPaths.Count == 0)
+    opts.CmdIdsOutPaths.Add("KcpSharp/CmdIds.cs");
+var cmdIdResult = CmdIdEmitter.Emit(defs, packetIds, opts.CmdIdsOutPaths, opts.CmdIdAliasPaths);
+if (cmdIdResult.Outputs > 0)
+    Console.WriteLine($"[organizer] cmdids = {cmdIdResult.Constants} constants, {cmdIdResult.Aliases} aliases, {cmdIdResult.UnresolvedAliases} unresolved aliases -> {cmdIdResult.Outputs} files");
 
 if (opts.Compile)
 {

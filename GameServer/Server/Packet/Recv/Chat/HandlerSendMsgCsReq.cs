@@ -11,14 +11,12 @@ public class HandlerSendMsgCsReq : Handler<SendMsgCsReq>
         var nestedChatData = req.MessageDatas?.ChatData;
 
         string? text = null;
-        if (nestedChatData?.HasMessageText == true)
+        if (!string.IsNullOrEmpty(nestedChatData?.MessageText))
             text = nestedChatData.MessageText;
 
         text = text?.Trim('\0').Trim();
 
-        var extraId = 0u;
-        if (nestedChatData?.HasExtraId == true)
-            extraId = nestedChatData.ExtraId;
+        var extraId = nestedChatData?.ExtraId ?? 0;
 
         var msgType = MsgType.None;
         if (req.MessageDatas != null && req.MessageDatas.MessageType != MsgType.None)
@@ -46,4 +44,3 @@ public class HandlerSendMsgCsReq : Handler<SendMsgCsReq>
         await connection.SendPacket(CmdIds.SendMsgScRsp);
     }
 }
-

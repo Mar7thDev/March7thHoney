@@ -1,62 +1,53 @@
 # Proto
 
-Version-aware, CmdType-grouped protobuf definitions for the server.
+按游戏版本保存、按 `Cmd*Type` 分组的 protobuf 定义。仓库可以同时保留多个版本，但只有一个版本会生成到 `Proto/Generated` 并参与构建。
 
-## Layout
+## 目录
 
-```
+```text
 Proto/
-  <version>/                 active + reference game versions (e.g. 4.4)
-    Raw/                     authoritative dump for that version (Mar7thDumper)
-      StarRail.proto         full AST: 589 enums + 4469 messages, all Cmd*Type enums,
-                             // cmdid / // obf annotations  (closure source)
-      packetIds.txt          cmdid -> message
-      translations.txt       obf -> real name
-      Gateserver.proto, Mar7thDumper.log
-      dump.cs                119MB il2cpp dump (git-ignored)
-    Common.proto             core types referenced by >=2 CmdType groups (internally sectioned by category)
-    Common<Module>.proto     separable shared modules split out of Common
-    Cmd<Xxx>Type.proto       one file per command category: the enum + its closure
-    Orphans.proto            core unreferenced types (internally sectioned by category)
-    Orphans<Module>.proto    separable peripheral modules split out of Orphans
-  Generated/                 generated C# for the ACTIVE version (the only thing Proto.csproj compiles)
-  Tool/ProtoOrganizer/       the reorganizer (see below)
+  <version>/
+    dumper/                    Mar7thDumper 自有产物及整理后的 proto
+      Raw/                     Dumper 原始 StarRail.proto、packetIds、translations 和日志
+      Cmd<Xxx>Type.proto       按命令模块分组的当前版本定义
+      Common.proto             跨模块共享类型
+      Orphans*.proto           尚未归入命令闭包的类型
+      CmdIds.cs                当前版本 cmdid 快照
+    reference/                 可选的外部 reference，只在对应版本真实存在时保存
+    compat-types.txt           进门阶段暂从上一版本保留的 API 类型
+    cmdid-aliases.txt          旧服务端命令名到当前 cmdid 名的兼容别名
+  Generated/                   活动版本生成的 C#，由 Proto.csproj 编译
+  Tool/ProtoOrganizer/         版本迁移、分组、cmdid 和 C# 生成工具
 ```
 
-The grouped `Proto/<version>/*.proto` tree is the source of truth — edit definitions there. (The old
-flat `ProtoFile/` library has been retired; `Proto/4.4/` is a complete, verified-equivalent replacement.)
+`Proto/4.4/` 是迁移到上述布局之前的兼容基线：根目录 grouped proto 和 `Raw/` 仍保留，`Proto/4.4/dumper/Raw/` 保存自有 Dumper 原始产物。`Proto/4.5/` 不创建虚假的 reference；在 4.5 reference 实际可用前，只使用 Dumper 结果、同混淆种子的 4.4 对齐信息和显式兼容清单。
 
-**On Common/Orphans subdivision:** the organizer splits these catch-alls into per-major-category files
-(Avatar, Lineup, Battle, …) wherever a module is *separable*. Core gameplay types are densely
-mutually-recursive, and protobuf forbids circular imports between files, so a strongly-connected set
-must stay in one file — those remain in `Common.proto` / `Orphans.proto`, sectioned internally by
-category. A file-level SCC pass guarantees the split never produces an import cycle.
+资源提取与 Honey 资源缓存是两个边界：Mar7thDumper 仍执行包括原始资源导出在内的完整流程；ProtoOrganizer 只消费 proto/cmdid 产物，不会写 `Config/Resource.bin` 或切换 Honey 的资源目录。
 
-Only **one** version is active and compiles into the `March7thHoney.Proto` assembly via
-`Proto/Generated/`. Other versions are kept as data/translation reference. C# references proto types by
-real name (e.g. `Handler<FinishTutorialCsReq>`) — unchanged by the regrouping.
-
-## Regenerating the active version
-
-Replaces the old `RefreshProtoFromLunarCoreCyt.ps1`. The tool parses the curated definitions, groups
-them by Cmd*Type via the master AST + `packetIds.txt`, factors shared types into `Common.proto`, emits
-the grouped tree, and runs `protoc` to (re)generate `Proto/Generated/*.cs`.
+## 生成 4.5 活动版本
 
 ```sh
-# dry run: print the grouping report, write nothing
-dotnet run --project Proto/Tool/ProtoOrganizer -- --report
-
-# emit Proto/4.4 + regenerate Proto/Generated/*.cs (active version)
-dotnet run --project Proto/Tool/ProtoOrganizer -- --active --compile --out Proto/4.4 --cs-out Proto/Generated
+dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
+  --proto-file Proto/4.5/dumper/Raw \
+  --raw Proto/4.5/dumper/Raw \
+  --out Proto/4.5/dumper \
+  --same-seed-raw Proto/4.4/dumper/Raw \
+  --same-seed-proto Proto/4.4 \
+  --compat-types Proto/4.5/compat-types.txt \
+  --cmdid-aliases Proto/4.5/cmdid-aliases.txt \
+  --version 4.5 --active --compile \
+  --cs-out Proto/Generated \
+  --cmdids-out Proto/4.5/dumper/CmdIds.cs \
+  --cmdids-out KcpSharp/CmdIds.cs
 ```
 
-`protoc` is auto-located from the `Google.Protobuf.Tools` 3.33.1 NuGet cache; override with `--protoc <path>`.
+工具会依次完成：读取 Dumper 原始定义与 `Cmd*Type` enum、恢复 cmdid、利用同种子旧版本对齐类型和字段、加入版本化兼容类型/命令别名、重新分组、运行 `protoc`。当前活动版本必须达到全部 proto 编译成功后才会用于 Honey 构建。
 
-The regrouping is guaranteed type-safe: it re-emits curated bodies verbatim, so the generated C# type
-set, field numbers, and properties are identical to before — only the descriptor file grouping changes.
+`protoc` 默认从 `Google.Protobuf.Tools` NuGet 缓存按当前系统自动定位，也可用 `--protoc <path>` 覆盖。
 
-## Adding a new version
+## 新版本约束
 
-Drop a new dump's `StarRail.proto` / `packetIds.txt` / `translations.txt` into `Proto/<newVer>/Raw/`,
-then run the organizer pointed at it. Names still obfuscated after grouping are reported for recovery
-into the cross-version translation source (`ProtoBase/`, planned).
+- 自有 Dumper 产物始终放入该版本的 `dumper/Raw/`，不可混入 reference。
+- `reference/` 只保存同一游戏版本的参考定义，未更新时保持不存在或保持旧版本目录，不得伪造新版本 reference。
+- 兼容类型和命令别名必须放在对应版本清单中，禁止把旧 cmdid 数值覆盖到新版本。
+- 切换活动版本后必须重新生成 `Proto/Generated`、`KcpSharp/CmdIds.cs`，并执行 `dotnet build March7thHoney.sln`。
