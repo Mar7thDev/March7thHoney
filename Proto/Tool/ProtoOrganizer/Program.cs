@@ -39,7 +39,7 @@ if (opts.SameSeedRawDir != null && opts.SameSeedProtoDir != null)
     rawDefs = migration.Definitions;
     typeMappings = migration.TypeMappings;
     var packetNames = PacketIds.Translate(packetIds, typeMappings);
-    Console.WriteLine($"[organizer] same-seed = {migration.TypeMappings.Count} types, {migration.FieldNames} fields, {migration.EnumValues} enum values, {migration.OneofNames} oneofs");
+    Console.WriteLine($"[organizer] same-seed = {migration.TypeMappings.Count} types, {migration.FieldNames} fields, {migration.ScalarTypes} scalar types, {migration.EnumValues} enum values, {migration.OneofNames} oneofs");
     Console.WriteLine($"[organizer] same-seed packet names = {packetNames}");
 }
 
