@@ -8,5 +8,14 @@ public enum RogueTournWorkbenchFuncTypeEnum
     FormulaReforge = 3,
     MiracleCompose = 4,
     MiracleReforge = 5,
-    HexEquipment = 6
+    MagicScepterShop = 6,
+    MagicUnitShop = 7,
+    MagicUnitCompose = 8,
+    MagicUnitReforge = 9,
+    MagicScepterLevelUp = 10,
+    HexEquipment = 11,
+    AncientCoinTradeBuy = 12,
+    AncientCoinTradeSell = 13,
+    AncientCoinTradeLeverageBuy = 14,
+    AncientCoinRecycle = 15
 }

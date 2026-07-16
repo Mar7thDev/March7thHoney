@@ -93,7 +93,7 @@ public class CommandGiveall : ICommand
             return;
         }
 
-        var lightconeList = GameData.EquipmentConfigData.Values;
+        var lightconeList = GameData.EquipmentConfigData.Values.Where(x => x.Release);
         var items = new List<ItemData>();
 
         for (var i = 0; i < amount; i++)
