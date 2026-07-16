@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using March7thHoney.Data;
 using March7thHoney.Data.Config;
+using March7thHoney.Data.Config.SummonUnit;
 using March7thHoney.Data.Config.Task;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.RogueMagic;
@@ -212,6 +213,28 @@ public class AbilityLevelTask(PlayerInstance player)
                 target = [.. param.TargetEntities];
             }
 
+            var detect = adventureTriggerAttack.SummonUnitTriggerAttackDetectConfig;
+            EntitySummonUnit? detectSummon = null;
+            UnitCustomTriggerConfigInfo? detectTrigger = null;
+            if (detect != null && Player.SceneInstance != null)
+            {
+                detectSummon = Player.SceneInstance.SummonUnit.Values
+                    .FirstOrDefault(x => x.SummonUnitId == (int)detect.SummonUnitID);
+                detectTrigger = detectSummon?.TriggerList
+                    .FirstOrDefault(x => x.TriggerName == detect.DetectSummonUnitTriggerName);
+
+                if (target.Count == 0 && detectSummon?.Motion.Pos != null && detectTrigger != null)
+                {
+                    var center = detectSummon.Motion.Pos;
+                    var radius = detectTrigger.Radius.GetValue() * 1000L;
+                    if (radius > 0)
+                        target = Player.SceneInstance.Entities.Values.OfType<EntityMonster>()
+                            .Where(x => x.IsAlive && GetDistanceSquared(x.Position, center) <= radius * radius)
+                            .Cast<BaseGameEntity>()
+                            .ToList();
+                }
+            }
+
             foreach (var task in adventureTriggerAttack.OnAttack)
             {
                 var result = await TriggerTask(param with { Act = task, TargetEntities = target });
@@ -219,26 +242,18 @@ public class AbilityLevelTask(PlayerInstance player)
             }
 
             // attack-detect 场域：把召唤物对应 trigger 的 maze buff 下发给被攻击的敌人（如吉尔伽美什 150901，随敌人带进战斗）
-            var detect = adventureTriggerAttack.SummonUnitTriggerAttackDetectConfig;
-            if (detect != null && Player.SceneInstance != null)
+            if (detectSummon != null && detectTrigger != null && Player.SceneInstance != null)
             {
-                var summon = Player.SceneInstance.SummonUnit.Values
-                    .FirstOrDefault(x => x.SummonUnitId == (int)detect.SummonUnitID);
-                if (summon != null)
-                {
-                    // 记下经 attack-detect 投放的 buff，供 backfill 排除（避免同一 buff 又被加到施法者，如 150901 致冻）
-                    var trig = summon.TriggerList.FirstOrDefault(t => t.TriggerName == detect.DetectSummonUnitTriggerName);
-                    if (trig != null)
-                        foreach (var t in trig.OnTriggerEnter)
-                            if (t is AddMazeBuff amb)
-                                SummonAttackDetectBuffs.Add(amb.ID);
+                // 记下经 attack-detect 投放的 buff，供 backfill 排除（避免同一 buff 又被加到施法者，如 150901 致冻）
+                foreach (var task in detectTrigger.OnTriggerEnter)
+                    if (task is AddMazeBuff addMazeBuff)
+                        SummonAttackDetectBuffs.Add(addMazeBuff.ID);
 
-                    var detectIds = target.OfType<EntityMonster>().Where(x => x.IsAlive)
-                        .Select(x => (uint)x.EntityId).ToList();
-                    if (detectIds.Count > 0)
-                        await Player.SceneInstance.TriggerSummonUnit(summon.EntityId,
-                            detect.DetectSummonUnitTriggerName, detectIds);
-                }
+                var detectIds = target.OfType<EntityMonster>().Where(x => x.IsAlive)
+                    .Select(x => (uint)x.EntityId).ToList();
+                if (detectIds.Count > 0)
+                    await Player.SceneInstance.TriggerSummonUnit(detectSummon.EntityId,
+                        detectTrigger.TriggerName, detectIds);
             }
 
             // 开战判定：
@@ -274,6 +289,13 @@ public class AbilityLevelTask(PlayerInstance player)
         }
 
         return new AbilityLevelResult(instance, battleInfos);
+    }
+
+    private static long GetDistanceSquared(Position position, Vector center)
+    {
+        var x = (long)position.X - center.X;
+        var z = (long)position.Z - center.Z;
+        return x * x + z * z;
     }
 
     public async ValueTask<object> AdventureTriggerTargetAbility(AbilityLevelParam param)
