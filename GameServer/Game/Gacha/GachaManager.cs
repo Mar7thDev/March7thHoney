@@ -70,7 +70,7 @@ public class GachaManager : BasePlayerManager<GachaData>
     {
         var purpleWeapons = new List<int>();
         foreach (var weapon in GameData.EquipmentConfigData.Values)
-            if (weapon.Rarity == RarityEnum.CombatPowerLightconeRarity3)
+            if (weapon.Release && weapon.Rarity == RarityEnum.CombatPowerLightconeRarity3)
                 purpleWeapons.Add(weapon.EquipmentID);
         return purpleWeapons;
     }
@@ -79,7 +79,7 @@ public class GachaManager : BasePlayerManager<GachaData>
     {
         var purpleWeapons = new List<int>();
         foreach (var weapon in GameData.EquipmentConfigData.Values)
-            if (weapon.Rarity == RarityEnum.CombatPowerLightconeRarity4 &&
+            if (weapon.Release && weapon.Rarity == RarityEnum.CombatPowerLightconeRarity4 &&
                 IsGachaEligibleFourStarLightCone(weapon.EquipmentID))
                 purpleWeapons.Add(weapon.EquipmentID);
         return purpleWeapons;
@@ -94,7 +94,7 @@ public class GachaManager : BasePlayerManager<GachaData>
     {
         var weapons = new List<int>();
         foreach (var weapon in GameData.EquipmentConfigData.Values)
-            if (weapon.Rarity == RarityEnum.CombatPowerLightconeRarity5)
+            if (weapon.Release && weapon.Rarity == RarityEnum.CombatPowerLightconeRarity5)
                 weapons.Add(weapon.EquipmentID);
         return weapons;
     }

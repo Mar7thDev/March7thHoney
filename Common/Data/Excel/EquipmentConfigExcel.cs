@@ -27,7 +27,6 @@ public partial class EquipmentConfigExcel : ExcelResource
 
     public override void Loaded()
     {
-        if (Release == false) return;
         GameData.EquipmentConfigData.Add(EquipmentID, this);
     }
 }
