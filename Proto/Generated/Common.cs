@@ -803,7 +803,7 @@ namespace March7thHoney.Proto {
             "DRIYChBjYXN0ZXJfZW50aXR5X2lkGAggASgNEhYKDmNyZWF0ZV90aW1lX21z",
             "GA0gASgEEhgKEGF0dGFjaF9lbnRpdHlfaWQYDyABKA0SFAoMbGlmZV90aW1l",
             "X21zGAYgASgFEhkKEXRyaWdnZXJfbmFtZV9saXN0GAogAygJIikKBlZlY3Rv",
-            "chIJCgF4GAEgASgFEgkKAXkYAiABKAUSCQoBehgDIAEoBSI/Cg9BcmVhRHlu",
+            "chIJCgF4GAEgASgREgkKAXkYAiABKBESCQoBehgDIAEoESI/Cg9BcmVhRHlu",
             "YW1pY0luZm8SFgoOZGl5X2R5bmFtaWNfaWQYCyABKA0SFAoMZGljZV9zbG90",
             "X2lkGAggASgNInoKC09JSVBKRkROUEFIEiUKC0dPRUpJTU5FTkRDGAwgAygL",
             "MhAuQXJlYUR5bmFtaWNJbmZvEiEKC09GT0tPSEdQRURPGAIgAygLMgwuQ0xM",
@@ -90177,15 +90177,15 @@ namespace March7thHoney.Proto {
     #else
       if (X != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(X);
+        output.WriteSInt32(X);
       }
       if (Y != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(Y);
+        output.WriteSInt32(Y);
       }
       if (Z != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(Z);
+        output.WriteSInt32(Z);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -90199,15 +90199,15 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (X != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(X);
+        output.WriteSInt32(X);
       }
       if (Y != 0) {
         output.WriteRawTag(16);
-        output.WriteInt32(Y);
+        output.WriteSInt32(Y);
       }
       if (Z != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(Z);
+        output.WriteSInt32(Z);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -90220,13 +90220,13 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       if (X != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(X);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(X);
       }
       if (Y != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Y);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Y);
       }
       if (Z != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Z);
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Z);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -90269,15 +90269,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            X = input.ReadInt32();
+            X = input.ReadSInt32();
             break;
           }
           case 16: {
-            Y = input.ReadInt32();
+            Y = input.ReadSInt32();
             break;
           }
           case 24: {
-            Z = input.ReadInt32();
+            Z = input.ReadSInt32();
             break;
           }
         }
@@ -90300,15 +90300,15 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            X = input.ReadInt32();
+            X = input.ReadSInt32();
             break;
           }
           case 16: {
-            Y = input.ReadInt32();
+            Y = input.ReadSInt32();
             break;
           }
           case 24: {
-            Z = input.ReadInt32();
+            Z = input.ReadSInt32();
             break;
           }
         }
