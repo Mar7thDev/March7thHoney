@@ -11,10 +11,19 @@ public sealed class Translations
     private static readonly Regex RowRx =
         new(@"^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*([A-Za-z_][A-Za-z0-9_]*)\s*$", RegexOptions.Compiled);
 
-    public static Translations Load(string path)
+    public void Add(string obf, string real)
+    {
+        ObfToReal[obf] = real;
+        if (!RealToObf.TryGetValue(real, out var list)) RealToObf[real] = list = new();
+        if (!list.Contains(obf, StringComparer.Ordinal)) list.Add(obf);
+    }
+
+    public static Translations Load(string path) => Load(new[] { path });
+
+    public static Translations Load(IEnumerable<string> paths)
     {
         var t = new Translations();
-        if (!File.Exists(path)) return t;
+        foreach (var path in paths.Where(File.Exists))
         foreach (var raw in File.ReadLines(path))
         {
             var line = raw.Trim();
@@ -23,9 +32,17 @@ public sealed class Translations
             if (!m.Success) continue;
             var obf = m.Groups[1].Value;
             var real = m.Groups[2].Value;
-            t.ObfToReal[obf] = real;
-            if (!t.RealToObf.TryGetValue(real, out var list)) t.RealToObf[real] = list = new();
-            list.Add(obf);
+            t.Add(obf, real);
+        }
+        return t;
+    }
+
+    public static Translations FromMappings(IReadOnlyDictionary<string, string> mappings)
+    {
+        var t = new Translations();
+        foreach (var (obf, real) in mappings)
+        {
+            t.Add(obf, real);
         }
         return t;
     }

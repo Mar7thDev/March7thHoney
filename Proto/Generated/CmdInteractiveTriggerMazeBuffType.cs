@@ -25,18 +25,17 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CidDbWRJbnRlcmFjdGl2ZVRyaWdnZXJNYXplQnVmZlR5cGUucHJvdG8iIgoL",
-            "RENBQk9BTEZKQVASEwoLT0hNQkVQSEVCREoYDSABKA0iMwoLTk1FS0pBQklH",
-            "R0gSDwoHcmV0Y29kZRgFIAEoDRITCgtPSE1CRVBIRUJEShgLIAEoDSq+AQoh",
-            "Q21kSW50ZXJhY3RpdmVUcmlnZ2VyTWF6ZUJ1ZmZUeXBlEjEKLUNtZEludGVy",
-            "YWN0aXZlVHJpZ2dlck1hemVCdWZmVHlwZV9OTENER0lQR0ZEShAAEjIKLUNt",
-            "ZEludGVyYWN0aXZlVHJpZ2dlck1hemVCdWZmVHlwZV9ETERBSUNBRk1QUBD/",
-            "SRIyCi1DbWRJbnRlcmFjdGl2ZVRyaWdnZXJNYXplQnVmZlR5cGVfR0RJTkZN",
-            "RkRPUEQQiEpCFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "RENBQk9BTEZKQVASEwoLT0hNQkVQSEVCREoYDSABKA0q3QEKIUNtZEludGVy",
+            "YWN0aXZlVHJpZ2dlck1hemVCdWZmVHlwZRIqCiZDbWRJbnRlcmFjdGl2ZVRy",
+            "aWdnZXJNYXplQnVmZlR5cGVfTm9uZRAAEkUKQENtZEludGVyYWN0aXZlVHJp",
+            "Z2dlck1hemVCdWZmVHlwZV9JbnRlcmFjdGl2ZVRyaWdnZXJBZGRCdWZmQ3NS",
+            "ZXEQg0oSRQpAQ21kSW50ZXJhY3RpdmVUcmlnZ2VyTWF6ZUJ1ZmZUeXBlX0lu",
+            "dGVyYWN0aXZlVHJpZ2dlckFkZEJ1ZmZTY1JzcBCISkIWqgITTWFyY2g3dGhI",
+            "b25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdInteractiveTriggerMazeBuffType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DCABOALFJAP), global::March7thHoney.Proto.DCABOALFJAP.Parser, new[]{ "OHMBEPHEBDJ" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NMEKJABIGGH), global::March7thHoney.Proto.NMEKJABIGGH.Parser, new[]{ "Retcode", "OHMBEPHEBDJ" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.DCABOALFJAP), global::March7thHoney.Proto.DCABOALFJAP.Parser, new[]{ "OHMBEPHEBDJ" }, null, null, null, null)
           }));
     }
     #endregion
@@ -44,9 +43,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdInteractiveTriggerMazeBuffType {
-    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_DLDAICAFMPP")] Dldaicafmpp = 9471,
-    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_GDINFMFDOPD")] Gdinfmfdopd = 9480,
+    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_None")] None = 0,
+    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_InteractiveTriggerAddBuffCsReq")] InteractiveTriggerAddBuffCsReq = 9475,
+    [pbr::OriginalName("CmdInteractiveTriggerMazeBuffType_InteractiveTriggerAddBuffScRsp")] InteractiveTriggerAddBuffScRsp = 9480,
   }
 
   #endregion
@@ -240,241 +239,6 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 104: {
-            OHMBEPHEBDJ = input.ReadUInt32();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class NMEKJABIGGH : pb::IMessage<NMEKJABIGGH>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<NMEKJABIGGH> _parser = new pb::MessageParser<NMEKJABIGGH>(() => new NMEKJABIGGH());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<NMEKJABIGGH> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdInteractiveTriggerMazeBuffTypeReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public NMEKJABIGGH() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public NMEKJABIGGH(NMEKJABIGGH other) : this() {
-      retcode_ = other.retcode_;
-      oHMBEPHEBDJ_ = other.oHMBEPHEBDJ_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public NMEKJABIGGH Clone() {
-      return new NMEKJABIGGH(this);
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "OHMBEPHEBDJ" field.</summary>
-    public const int OHMBEPHEBDJFieldNumber = 11;
-    private uint oHMBEPHEBDJ_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint OHMBEPHEBDJ {
-      get { return oHMBEPHEBDJ_; }
-      set {
-        oHMBEPHEBDJ_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as NMEKJABIGGH);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(NMEKJABIGGH other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Retcode != other.Retcode) return false;
-      if (OHMBEPHEBDJ != other.OHMBEPHEBDJ) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (OHMBEPHEBDJ != 0) hash ^= OHMBEPHEBDJ.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Retcode != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Retcode);
-      }
-      if (OHMBEPHEBDJ != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(OHMBEPHEBDJ);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(Retcode);
-      }
-      if (OHMBEPHEBDJ != 0) {
-        output.WriteRawTag(88);
-        output.WriteUInt32(OHMBEPHEBDJ);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (OHMBEPHEBDJ != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(OHMBEPHEBDJ);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(NMEKJABIGGH other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      if (other.OHMBEPHEBDJ != 0) {
-        OHMBEPHEBDJ = other.OHMBEPHEBDJ;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 40: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 88: {
-            OHMBEPHEBDJ = input.ReadUInt32();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 40: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 88: {
             OHMBEPHEBDJ = input.ReadUInt32();
             break;
           }

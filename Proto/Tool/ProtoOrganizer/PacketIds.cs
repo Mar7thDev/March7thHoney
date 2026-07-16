@@ -36,4 +36,22 @@ public static class PacketIds
         }
         return map;
     }
+
+    public static int Translate(
+        Dictionary<int, PacketIdRow> packetIds,
+        IReadOnlyDictionary<string, string> mappings)
+    {
+        var changed = 0;
+        foreach (var (cmdId, row) in packetIds.ToList())
+        {
+            if (row.Name.Any(char.IsLower)) continue;
+            string? translated = null;
+            if (row.Obf != null) mappings.TryGetValue(row.Obf, out translated);
+            if (translated == null) mappings.TryGetValue(row.Name, out translated);
+            if (translated == null || translated == row.Name) continue;
+            packetIds[cmdId] = row with { Name = translated };
+            changed++;
+        }
+        return changed;
+    }
 }

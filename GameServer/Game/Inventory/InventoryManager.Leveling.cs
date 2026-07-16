@@ -251,7 +251,7 @@ public partial class InventoryManager
         List<uint> staleEquipmentIds = [];
 
         foreach (var cost in item.ItemList)
-            if (cost.HasEquipmentUniqueId)
+            if (cost.EquipmentUniqueId != 0)
             {
                 if (cost.EquipmentUniqueId == equipmentUniqueId)
                     return (Retcode.RetEquipmentConsumeSelf, []);
@@ -563,7 +563,7 @@ public partial class InventoryManager
         List<uint> staleEquipmentIds = [];
         foreach (var cost in costData.ItemList)
         {
-            if (!cost.HasEquipmentUniqueId) continue;
+            if (cost.EquipmentUniqueId == 0) continue;
             if (cost.EquipmentUniqueId == equipmentUniqueId) return Retcode.RetEquipmentConsumeSelf;
             if (!costEquipmentIds.Add(cost.EquipmentUniqueId)) continue;
 

@@ -25,16 +25,14 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFDbWRQbG90VHlwZS5wcm90byIiCgtIUE9GTUdPT0hBThITCgtDQU1DQkpQ",
-            "T01MQxgPIAEoDSIzCgtPTk5JRFBLTU9QQhIPCgdyZXRjb2RlGAMgASgNEhMK",
-            "C0NBTUNCSlBPTUxDGAwgASgNKmoKC0NtZFBsb3RUeXBlEhsKF0NtZFBsb3RU",
-            "eXBlX05MQ0RHSVBHRkRKEAASHAoXQ21kUGxvdFR5cGVfT0NFSUdFTkJISEcQ",
-            "mgkSIAobQ21kUGxvdFR5cGVfRmluaXNoUGxvdENzUmVxEOUIQhaqAhNNYXJj",
-            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "T01MQxgCIAEoDSpnCgtDbWRQbG90VHlwZRIUChBDbWRQbG90VHlwZV9Ob25l",
+            "EAASIAobQ21kUGxvdFR5cGVfRmluaXNoUGxvdENzUmVxEO4IEiAKG0NtZFBs",
+            "b3RUeXBlX0ZpbmlzaFBsb3RTY1JzcBCeCUIWqgITTWFyY2g3dGhIb25leS5Q",
+            "cm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPlotType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HPOFMGOOHAN), global::March7thHoney.Proto.HPOFMGOOHAN.Parser, new[]{ "CAMCBJPOMLC" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ONNIDPKMOPB), global::March7thHoney.Proto.ONNIDPKMOPB.Parser, new[]{ "Retcode", "CAMCBJPOMLC" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.HPOFMGOOHAN), global::March7thHoney.Proto.HPOFMGOOHAN.Parser, new[]{ "CAMCBJPOMLC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -42,9 +40,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdPlotType {
-    [pbr::OriginalName("CmdPlotType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdPlotType_OCEIGENBHHG")] Oceigenbhhg = 1178,
-    [pbr::OriginalName("CmdPlotType_FinishPlotCsReq")] FinishPlotCsReq = 1125,
+    [pbr::OriginalName("CmdPlotType_None")] None = 0,
+    [pbr::OriginalName("CmdPlotType_FinishPlotCsReq")] FinishPlotCsReq = 1134,
+    [pbr::OriginalName("CmdPlotType_FinishPlotScRsp")] FinishPlotScRsp = 1182,
   }
 
   #endregion
@@ -96,7 +94,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CAMCBJPOMLC" field.</summary>
-    public const int CAMCBJPOMLCFieldNumber = 15;
+    public const int CAMCBJPOMLCFieldNumber = 2;
     private uint cAMCBJPOMLC_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -150,7 +148,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CAMCBJPOMLC != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(16);
         output.WriteUInt32(CAMCBJPOMLC);
       }
       if (_unknownFields != null) {
@@ -164,7 +162,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CAMCBJPOMLC != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(16);
         output.WriteUInt32(CAMCBJPOMLC);
       }
       if (_unknownFields != null) {
@@ -214,7 +212,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 120: {
+          case 16: {
             CAMCBJPOMLC = input.ReadUInt32();
             break;
           }
@@ -237,242 +235,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 120: {
-            CAMCBJPOMLC = input.ReadUInt32();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class ONNIDPKMOPB : pb::IMessage<ONNIDPKMOPB>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<ONNIDPKMOPB> _parser = new pb::MessageParser<ONNIDPKMOPB>(() => new ONNIDPKMOPB());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<ONNIDPKMOPB> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::March7thHoney.Proto.CmdPlotTypeReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ONNIDPKMOPB() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ONNIDPKMOPB(ONNIDPKMOPB other) : this() {
-      retcode_ = other.retcode_;
-      cAMCBJPOMLC_ = other.cAMCBJPOMLC_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ONNIDPKMOPB Clone() {
-      return new ONNIDPKMOPB(this);
-    }
-
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 3;
-    private uint retcode_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "CAMCBJPOMLC" field.</summary>
-    public const int CAMCBJPOMLCFieldNumber = 12;
-    private uint cAMCBJPOMLC_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CAMCBJPOMLC {
-      get { return cAMCBJPOMLC_; }
-      set {
-        cAMCBJPOMLC_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as ONNIDPKMOPB);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(ONNIDPKMOPB other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Retcode != other.Retcode) return false;
-      if (CAMCBJPOMLC != other.CAMCBJPOMLC) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (CAMCBJPOMLC != 0) hash ^= CAMCBJPOMLC.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Retcode != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Retcode);
-      }
-      if (CAMCBJPOMLC != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(CAMCBJPOMLC);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Retcode);
-      }
-      if (CAMCBJPOMLC != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(CAMCBJPOMLC);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
-      if (CAMCBJPOMLC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CAMCBJPOMLC);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(ONNIDPKMOPB other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
-      if (other.CAMCBJPOMLC != 0) {
-        CAMCBJPOMLC = other.CAMCBJPOMLC;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 96: {
-            CAMCBJPOMLC = input.ReadUInt32();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 24: {
-            Retcode = input.ReadUInt32();
-            break;
-          }
-          case 96: {
+          case 16: {
             CAMCBJPOMLC = input.ReadUInt32();
             break;
           }
