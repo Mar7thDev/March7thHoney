@@ -258,6 +258,7 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
             StageScores = CurrentInstance.StageScores.ToList()
         };
         ChallengeData.TierceInstance = Convert.ToBase64String(MemoryPackSerializer.Serialize(snap));
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     public void ClearInstance()
@@ -266,6 +267,7 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         ChallengeData.TierceInstance = null;
         if (Player.ChallengeManager != null && Player.ChallengeManager.ChallengeInstance is ChallengeTierceInstance)
             Player.ChallengeManager.ChallengeInstance = null;
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     // 星启模式 (Tierce) relogin workaround. Restoring a Tierce pre-battle scene on login leaves
@@ -353,6 +355,8 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
                 history.StageLineups[i] = ids;
             history.StageBuffIds[i] = stageInfoList[i].BuffId;
         }
+
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     public void RecordStageClear(ChallengeTierceInstance inst, uint stageIndex)
@@ -380,11 +384,14 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         if (inst.IsPassed)
         {
             history.IsPassed = true;
-            history.Stars = (uint)inst.FinishedTargetList.Count;
+            history.Stars = (uint)inst.Config.ChallengeTargetID.Count(targetId =>
+                inst.FinishedTargetList.Contains((uint)targetId));
             history.FinishedTargetList = inst.FinishedTargetList.ToList();
             history.UsedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool);
             history.RecordScore = (uint)Math.Max(0, inst.GetRecordScore());
         }
+
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     // Re-shape slot lists to exactly 3 entries. Newtonsoft.Json deserialisation appends to a
