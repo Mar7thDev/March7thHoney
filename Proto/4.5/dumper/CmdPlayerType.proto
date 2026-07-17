@@ -679,27 +679,29 @@ message UpdateFeatureSwitchScNotify {
 }
 
 message UpdatePlayerSetting {
-    bool AACOEHCFNDB = 9;
-    bool DGCNHMIHFJB = 14;
-    bool FDHEPCKLCAM = 13;
-    bool DCJECFMMIBC = 11;
-    bool IOJEAOCOBBF = 15;
-    bool PFBHGAHAFMD = 3;
-    bool GNFDDPEMMFN = 7;
-    bool MAKOLELFLFH = 5;
-    bool NJAKOMDMFJD = 12;
-    PNOLLIAKGDB OJPAODIHAJE = 2;
-    bool BOMGNMDOGLM = 1701;
-    bool BBEEBBIDJHE = 85;
-    bool HGPFFGKNPFB = 1503;
-    bool LNGHIJGFDKP = 761;
-    bool GOKFNGFFMOB = 654;
-    JPGACKPLGCD CMFCOOEEECB = 1412;
-    KVP EGLOIFDIDPK = 1077;
+    oneof BKAGLMFNKKA {
+        bool AACOEHCFNDB = 9;
+        bool DGCNHMIHFJB = 14;
+        bool FDHEPCKLCAM = 13;
+        bool DCJECFMMIBC = 11;
+        bool IOJEAOCOBBF = 15;
+        bool PFBHGAHAFMD = 3;
+        bool GNFDDPEMMFN = 7;
+        bool MAKOLELFLFH = 5;
+        bool NJAKOMDMFJD = 12;
+        PNOLLIAKGDB OJPAODIHAJE = 2;
+        bool BOMGNMDOGLM = 1701;
+        bool BBEEBBIDJHE = 85;
+        bool HGPFFGKNPFB = 1503;
+        bool LNGHIJGFDKP = 761;
+        bool GOKFNGFFMOB = 654;
+        JPGACKPLGCD CMFCOOEEECB = 1412;
+        KVP EGLOIFDIDPK = 1077;
+    }
 }
 
 message UpdatePlayerSettingCsReq {
-    UpdatePlayerSetting player_setting = 3;
+    UpdatePlayerSetting player_setting = 12;
 }
 
 message UpdatePlayerSettingScRsp {
