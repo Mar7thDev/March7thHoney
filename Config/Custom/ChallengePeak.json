@@ -212,20 +212,24 @@
       "group_id": 9,
       "stages": {
         "901": {
-          "map_entrance_id": 3014401,
-          "maze_group_id": 5
+          "npc_monster_id": 8033020,
+          "map_entrance_id": 3014501,
+          "maze_group_id": 7
         },
         "902": {
-          "map_entrance_id": 3014401,
-          "maze_group_id": 5
+          "npc_monster_id": 5014010,
+          "map_entrance_id": 3014501,
+          "maze_group_id": 7
         },
         "903": {
-          "map_entrance_id": 3014401,
-          "maze_group_id": 5
+          "npc_monster_id": 4053010,
+          "map_entrance_id": 3014501,
+          "maze_group_id": 7
         },
         "904": {
-          "map_entrance_id": 3014401,
-          "maze_group_id": 5
+          "npc_monster_id": 4035010,
+          "map_entrance_id": 3014501,
+          "maze_group_id": 8
         }
       }
     }
