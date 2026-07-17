@@ -105,9 +105,9 @@ namespace March7thHoney.Proto {
             "KAkSCwoDdWlkGA8gASgNImIKFFBsYXllckhlYXJ0QmVhdENzUmVxEh0KB3Nj",
             "X2RhdGEYCyABKAsyDC5MRktLT01CS0pJUBIWCg5jbGllbnRfdGltZV9tcxgJ",
             "IAEoBBITCgtFT0hGQ09ES0tNRBgKIAEoDSKDAQoUUGxheWVySGVhcnRCZWF0",
-            "U2NSc3ASFgoOY2xpZW50X3RpbWVfbXMYBSABKAQSKgoNZG93bmxvYWRfZGF0",
-            "YRgGIAEoCzITLkNsaWVudERvd25sb2FkRGF0YRIPCgdyZXRjb2RlGAkgASgN",
-            "EhYKDnNlcnZlcl90aW1lX21zGA0gASgEIqYFChBQbGF5ZXJMb2dpbkNzUmVx",
+            "U2NSc3ASFgoOY2xpZW50X3RpbWVfbXMYDSABKAQSKgoNZG93bmxvYWRfZGF0",
+            "YRgMIAEoCzITLkNsaWVudERvd25sb2FkRGF0YRIPCgdyZXRjb2RlGAkgASgN",
+            "EhYKDnNlcnZlcl90aW1lX21zGAggASgEIqYFChBQbGF5ZXJMb2dpbkNzUmVx",
             "EhQKC0pLR0FLREFMRlBFGKIJIAEoCRIUCgtJSktPTUlLRktFSxioCiABKAkS",
             "EwoLTklCTUZDRkJIRVAYCSABKAkSEwoLSk1NSEhGTEVFUEcYDyABKA0SIgoL",
             "RU9OREdFQ05BSUgY3AogASgLMgwuQ01DSkZKRUJCQ08SHwoIcGxhdGZvcm0Y",
@@ -11704,7 +11704,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "client_time_ms" field.</summary>
-    public const int ClientTimeMsFieldNumber = 5;
+    public const int ClientTimeMsFieldNumber = 13;
     private ulong clientTimeMs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -11716,7 +11716,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "download_data" field.</summary>
-    public const int DownloadDataFieldNumber = 6;
+    public const int DownloadDataFieldNumber = 12;
     private global::March7thHoney.Proto.ClientDownloadData downloadData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -11740,7 +11740,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "server_time_ms" field.</summary>
-    public const int ServerTimeMsFieldNumber = 13;
+    public const int ServerTimeMsFieldNumber = 8;
     private ulong serverTimeMs_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -11799,21 +11799,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ClientTimeMs != 0UL) {
-        output.WriteRawTag(40);
-        output.WriteUInt64(ClientTimeMs);
-      }
-      if (downloadData_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(DownloadData);
+      if (ServerTimeMs != 0UL) {
+        output.WriteRawTag(64);
+        output.WriteUInt64(ServerTimeMs);
       }
       if (Retcode != 0) {
         output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
-      if (ServerTimeMs != 0UL) {
+      if (downloadData_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(DownloadData);
+      }
+      if (ClientTimeMs != 0UL) {
         output.WriteRawTag(104);
-        output.WriteUInt64(ServerTimeMs);
+        output.WriteUInt64(ClientTimeMs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -11825,21 +11825,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ClientTimeMs != 0UL) {
-        output.WriteRawTag(40);
-        output.WriteUInt64(ClientTimeMs);
-      }
-      if (downloadData_ != null) {
-        output.WriteRawTag(50);
-        output.WriteMessage(DownloadData);
+      if (ServerTimeMs != 0UL) {
+        output.WriteRawTag(64);
+        output.WriteUInt64(ServerTimeMs);
       }
       if (Retcode != 0) {
         output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
       }
-      if (ServerTimeMs != 0UL) {
+      if (downloadData_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(DownloadData);
+      }
+      if (ClientTimeMs != 0UL) {
         output.WriteRawTag(104);
-        output.WriteUInt64(ServerTimeMs);
+        output.WriteUInt64(ClientTimeMs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -11909,23 +11909,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            ClientTimeMs = input.ReadUInt64();
-            break;
-          }
-          case 50: {
-            if (downloadData_ == null) {
-              DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
-            }
-            input.ReadMessage(DownloadData);
+          case 64: {
+            ServerTimeMs = input.ReadUInt64();
             break;
           }
           case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
+          case 98: {
+            if (downloadData_ == null) {
+              DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
+            }
+            input.ReadMessage(DownloadData);
+            break;
+          }
           case 104: {
-            ServerTimeMs = input.ReadUInt64();
+            ClientTimeMs = input.ReadUInt64();
             break;
           }
         }
@@ -11947,23 +11947,23 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            ClientTimeMs = input.ReadUInt64();
-            break;
-          }
-          case 50: {
-            if (downloadData_ == null) {
-              DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
-            }
-            input.ReadMessage(DownloadData);
+          case 64: {
+            ServerTimeMs = input.ReadUInt64();
             break;
           }
           case 72: {
             Retcode = input.ReadUInt32();
             break;
           }
+          case 98: {
+            if (downloadData_ == null) {
+              DownloadData = new global::March7thHoney.Proto.ClientDownloadData();
+            }
+            input.ReadMessage(DownloadData);
+            break;
+          }
           case 104: {
-            ServerTimeMs = input.ReadUInt64();
+            ClientTimeMs = input.ReadUInt64();
             break;
           }
         }
