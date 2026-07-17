@@ -47,7 +47,9 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                 continue;
             }
 
-            var mapData = mapDatas.RandomElement();
+            var mapData = mapDatas.FirstOrDefault(x => x.ID == player.Data.EntryId)
+                          ?? mapDatas.MinBy(x => x.ID)!;
+            mazeMap.EntryId = (uint)mapData.ID;
             GameData.GetFloorInfo(mapData.PlaneID, mapData.FloorID, out var floorInfo);
             if (floorInfo == null)
             {
@@ -170,4 +172,3 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
         SetData(rsp);
     }
 }
-
