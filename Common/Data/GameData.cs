@@ -563,13 +563,10 @@ public static partial class GameData
     }
 
     /// <summary>
-    ///     After (re)loading ChallengePeak.json, keep a still-valid selection or fall back to the latest group.
+    ///     After (re)loading ChallengePeak.json, use its latest group as the global default.
     /// </summary>
     public static void SyncCurrentChallengePeakGroupId()
     {
-        if (CurrentChallengePeakGroupId is { } selected && IsChallengePeakGroupAvailable(selected))
-            return;
-
         CurrentChallengePeakGroupId = ChallengePeakOverrideConfig.ChallengePeak.Count > 0
             ? ChallengePeakOverrideConfig.ChallengePeak.Max(x => x.GroupId)
             : null;
