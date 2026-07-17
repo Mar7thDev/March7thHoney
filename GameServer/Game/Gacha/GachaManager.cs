@@ -312,10 +312,12 @@ public class GachaManager : BasePlayerManager<GachaData>
         await Player.SendPacket(new PacketPlayerSyncScNotify(syncItems));
         var proto = new DoGachaScRsp
         {
-            GachaId = (uint)bannerId
+            GachaId = (uint)bannerId,
+            GachaNum = (uint)times
         };
         // TODO 4.3: 4.2 的 DoGachaScRsp 新手池抽数/上限字段 (FJIBOAGDNDG/OKFNNHNLBOO) 在 4.3
         // proto 重排后无法可靠对应，暂不下发新手池进度计数 (pity 状态仍持久化于 GachaData)。
+        proto.GachaItemList.AddRange(gachaItems);
         return proto;
     }
 
@@ -448,7 +450,8 @@ public class GachaManager : BasePlayerManager<GachaData>
     {
         return new DoGachaScRsp
         {
-            GachaId = (uint)Math.Max(0, bannerId)
+            GachaId = (uint)Math.Max(0, bannerId),
+            Retcode = (uint)retcode
         };
     }
 
