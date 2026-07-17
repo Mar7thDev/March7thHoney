@@ -10,6 +10,7 @@ public class HandlerTakeChallengeRewardCsReq : Handler<TakeChallengeRewardCsReq>
     protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeChallengeRewardCsReq req)
     {
         var rewardInfos = await player.ChallengeManager!.TakeRewards((int)req.GroupId)!;
-        await connection.SendPacket(new PacketTakeChallengeRewardScRsp((int)req.GroupId, rewardInfos));
+        var tierceReward = await player.ChallengeManager.TakeTierceReward((int)req.GroupId);
+        await connection.SendPacket(new PacketTakeChallengeRewardScRsp((int)req.GroupId, rewardInfos, tierceReward));
     }
 }
