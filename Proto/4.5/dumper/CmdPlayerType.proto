@@ -446,10 +446,10 @@ message PlayerHeartBeatCsReq {
 }
 
 message PlayerHeartBeatScRsp {
-    uint64 client_time_ms = 5;
-    ClientDownloadData download_data = 6;
+    uint64 client_time_ms = 13;
+    ClientDownloadData download_data = 12;
     uint32 retcode = 9;
-    uint64 server_time_ms = 13;
+    uint64 server_time_ms = 8;
 }
 
 message PlayerLoginCsReq {
