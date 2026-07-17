@@ -145,6 +145,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
         // Set
         info.SetStars(stars);
         info.Score = score;
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     public async ValueTask<List<TakenChallengeRewardInfo>?> TakeRewards(int groupId)
@@ -160,6 +161,17 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
         foreach (var challengeExcel in GameData.ChallengeConfigData.Values)
         {
             if (challengeExcel.GroupID != groupId) continue;
+
+            var tierceExcel = GameData.ChallengeMazeTierceConfigData.Values
+                .FirstOrDefault(x => x.PreChallengeMazeID == challengeExcel.ID);
+            if (tierceExcel != null &&
+                ChallengeData.TierceHistory.TryGetValue(tierceExcel.ID, out var tierceHistory) &&
+                tierceHistory.FinishedTargetList.Count > 0)
+            {
+                totalStars += tierceExcel.ChallengeTargetID.Count(targetId =>
+                    tierceHistory.FinishedTargetList.Contains((uint)targetId));
+                continue;
+            }
 
             if (ChallengeData.History.TryGetValue(challengeExcel.ID, out var ch))
             {
@@ -223,18 +235,21 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
 
         // Add items to inventory
         await Player.InventoryManager!.AddItems(data);
+        if (rewardInfos.Count > 0) DatabaseHelper.MarkDirty(Player.Uid);
         return rewardInfos;
     }
 
     public void SaveInstance(BaseChallengeInstance instance)
     {
         ChallengeData.ChallengeInstance = Convert.ToBase64String(MemoryPackSerializer.Serialize(instance.Data));
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     public void ClearInstance()
     {
         ChallengeData.ChallengeInstance = null;
         ChallengeInstance = null;
+        DatabaseHelper.MarkDirty(Player.Uid);
     }
 
     public void ResurrectInstance()
