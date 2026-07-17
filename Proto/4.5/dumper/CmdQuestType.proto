@@ -73,7 +73,7 @@ message TakeQuestOptionalRewardScRsp {
 }
 
 message TakeQuestRewardCsReq {
-    repeated uint32 succ_quest_id_list = 2;
+    repeated uint32 succ_quest_id_list = 7;
 }
 
 message TakeQuestRewardScRsp {

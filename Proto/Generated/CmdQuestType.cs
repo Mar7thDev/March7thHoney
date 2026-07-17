@@ -40,7 +40,7 @@ namespace March7thHoney.Proto {
             "AyABKA0iXAocVGFrZVF1ZXN0T3B0aW9uYWxSZXdhcmRTY1JzcBIPCgdyZXRj",
             "b2RlGAYgASgNEhAKCHF1ZXN0X2lkGAkgASgNEhkKBnJld2FyZBgMIAEoCzIJ",
             "Lkl0ZW1MaXN0IjIKFFRha2VRdWVzdFJld2FyZENzUmVxEhoKEnN1Y2NfcXVl",
-            "c3RfaWRfbGlzdBgCIAMoDSJ1ChRUYWtlUXVlc3RSZXdhcmRTY1JzcBIaChJz",
+            "c3RfaWRfbGlzdBgHIAMoDSJ1ChRUYWtlUXVlc3RSZXdhcmRTY1JzcBIaChJz",
             "dWNjX3F1ZXN0X2lkX2xpc3QYDiADKA0SFQoNcXVlc3RfaWRfbGlzdBgHIAMo",
             "DRIZCgZyZXdhcmQYCSABKAsyCS5JdGVtTGlzdBIPCgdyZXRjb2RlGAQgASgN",
             "KrAECgxDbWRRdWVzdFR5cGUSFQoRQ21kUXVlc3RUeXBlX05vbmUQABImCiFD",
@@ -2567,9 +2567,9 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "succ_quest_id_list" field.</summary>
-    public const int SuccQuestIdListFieldNumber = 2;
+    public const int SuccQuestIdListFieldNumber = 7;
     private static readonly pb::FieldCodec<uint> _repeated_succQuestIdList_codec
-        = pb::FieldCodec.ForUInt32(18);
+        = pb::FieldCodec.ForUInt32(58);
     private readonly pbc::RepeatedField<uint> succQuestIdList_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2674,8 +2674,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 18:
-          case 16: {
+          case 58:
+          case 56: {
             succQuestIdList_.AddEntriesFrom(input, _repeated_succQuestIdList_codec);
             break;
           }
@@ -2698,8 +2698,8 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 18:
-          case 16: {
+          case 58:
+          case 56: {
             succQuestIdList_.AddEntriesFrom(ref input, _repeated_succQuestIdList_codec);
             break;
           }
