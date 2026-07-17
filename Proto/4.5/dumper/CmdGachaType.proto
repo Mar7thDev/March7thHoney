@@ -3,6 +3,7 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 import "Common.proto";
+import "Orphans.proto";
 
 enum CmdGachaType {
     CmdGachaType_None = 0;
@@ -27,10 +28,10 @@ message DoGachaCsReq {
 }
 
 message DoGachaScRsp {
-    uint32 LDBCKJIPDHF = 7;
-    uint32 gacha_id = 4;
-    repeated IGGFCPNDMPN retcode = 1;
-    repeated EBNKDHCIJPH GPNLDDLBOLM = 14;
+    uint32 gacha_id = 1;
+    uint32 retcode = 4;
+    repeated GachaItem gacha_item_list = 11;
+    uint32 gacha_num = 15;
 }
 
 message EBNKDHCIJPH {
