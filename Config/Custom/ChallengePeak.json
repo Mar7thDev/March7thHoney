@@ -207,6 +207,27 @@
           "maze_group_id": 5
         }
       }
+    },
+    {
+      "group_id": 9,
+      "stages": {
+        "901": {
+          "map_entrance_id": 3014401,
+          "maze_group_id": 5
+        },
+        "902": {
+          "map_entrance_id": 3014401,
+          "maze_group_id": 5
+        },
+        "903": {
+          "map_entrance_id": 3014401,
+          "maze_group_id": 5
+        },
+        "904": {
+          "map_entrance_id": 3014401,
+          "maze_group_id": 5
+        }
+      }
     }
   ]
 }
