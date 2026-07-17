@@ -239,6 +239,50 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
         return rewardInfos;
     }
 
+    public async ValueTask<ItemList?> TakeTierceReward(int groupId)
+    {
+        var tierceExcel = GameData.ChallengeMazeTierceConfigData.Values.FirstOrDefault(tierce =>
+            GameData.ChallengeConfigData.TryGetValue(tierce.PreChallengeMazeID, out var preChallenge) &&
+            preChallenge.GroupID == groupId);
+        if (tierceExcel == null || tierceExcel.ChallengeTierceTargetID == 0) return null;
+
+        if (!ChallengeData.TierceHistory.TryGetValue(tierceExcel.ID, out var history) ||
+            !history.IsPassed ||
+            !history.FinishedTargetList.Contains((uint)tierceExcel.ChallengeTierceTargetID))
+            return null;
+
+        if (!ChallengeData.TakenRewards.TryGetValue(groupId, out var takenRewards))
+        {
+            takenRewards = new ChallengeGroupReward(Player.Uid, groupId);
+            ChallengeData.TakenRewards[groupId] = takenRewards;
+        }
+
+        if (takenRewards.HasTakenReward(0) ||
+            !GameData.RewardDataData.TryGetValue(tierceExcel.RewardID, out var rewardExcel))
+            return null;
+
+        var reward = new ItemList();
+        var items = new List<ItemData>();
+        if (rewardExcel.Hcoin > 0)
+        {
+            var item = new ItemData { ItemId = 1, Count = rewardExcel.Hcoin };
+            reward.ItemList_.Add(item.ToProto());
+            items.Add(item);
+        }
+
+        foreach (var (itemId, count) in rewardExcel.GetItems())
+        {
+            var item = new ItemData { ItemId = itemId, Count = count };
+            reward.ItemList_.Add(item.ToProto());
+            items.Add(item);
+        }
+
+        takenRewards.SetTakenReward(0);
+        await Player.InventoryManager!.AddItems(items);
+        DatabaseHelper.MarkDirty(Player.Uid);
+        return reward;
+    }
+
     public void SaveInstance(BaseChallengeInstance instance)
     {
         ChallengeData.ChallengeInstance = Convert.ToBase64String(MemoryPackSerializer.Serialize(instance.Data));
