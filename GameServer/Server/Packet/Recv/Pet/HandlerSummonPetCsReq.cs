@@ -10,7 +10,7 @@ public class HandlerSummonPetCsReq : Handler<SummonPetCsReq>
     protected override async Task OnHandle(Connection connection, PlayerInstance player, SummonPetCsReq req)
     {
         var curPetId = player.Data.Pet;
-        if (curPetId != req.SummonedPetId && curPetId != 0)
+        if (curPetId != req.SummonedPetId)
             await connection.SendPacket(new PacketCurPetChangedScNotify(req.SummonedPetId));
 
         player.Data.Pet = (int)req.SummonedPetId;
