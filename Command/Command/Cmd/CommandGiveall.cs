@@ -3,6 +3,7 @@ using March7thHoney.Database.Inventory;
 using March7thHoney.Database.TrainParty;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Item;
+using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Internationalization;
 
@@ -270,6 +271,8 @@ public class CommandGiveall : ICommand
                 if (material.ItemSubType == ItemSubTypeEnum.AvatarSkin ||
                     material.ItemSubType == ItemSubTypeEnum.PlayerOutfit)
                     await player.InventoryManager!.AddItem(material.ID, 1, false);
+
+        await player.SendPacket(new PacketGetAvatarDataScRsp(player));
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.GiveAll.GiveAllItems",
             I18NManager.Translate("Word.Skin"), "1"));
