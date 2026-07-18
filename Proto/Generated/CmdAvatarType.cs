@@ -106,7 +106,7 @@ namespace March7thHoney.Proto {
             "b2NrQXZhdGFyUGF0aFNjUnNwEhoKEmJhc2ljX3R5cGVfaWRfbGlzdBgDIAMo",
             "DRIPCgdyZXRjb2RlGAUgASgNEhkKBnJld2FyZBgLIAEoCzIJLkl0ZW1MaXN0",
             "EicKCWF2YXRhcl9pZBgPIAEoDjIULk11bHRpUGF0aEF2YXRhclR5cGUiKwoY",
-            "VW5sb2NrQXZhdGFyU2tpblNjTm90aWZ5Eg8KB3NraW5faWQYDCABKA0qfQoR",
+            "VW5sb2NrQXZhdGFyU2tpblNjTm90aWZ5Eg8KB3NraW5faWQYBiABKA0qfQoR",
             "QWRkQXZhdGFyU3JjU3RhdGUSFwoTQUREX0FWQVRBUl9TUkNfTk9ORRAAEhgK",
             "FEFERF9BVkFUQVJfU1JDX0dBQ0hBEAESGAoUQUREX0FWQVRBUl9TUkNfUk9H",
             "VUUQAhIbChdBRERfQVZBVEFSX1NSQ19ERUxJVkVSWRADKkcKC0NGTURLTkNE",
@@ -10365,7 +10365,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "skin_id" field.</summary>
-    public const int SkinIdFieldNumber = 12;
+    public const int SkinIdFieldNumber = 6;
     private uint skinId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -10419,7 +10419,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (SkinId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(SkinId);
       }
       if (_unknownFields != null) {
@@ -10433,7 +10433,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (SkinId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(48);
         output.WriteUInt32(SkinId);
       }
       if (_unknownFields != null) {
@@ -10483,7 +10483,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
+          case 48: {
             SkinId = input.ReadUInt32();
             break;
           }
@@ -10506,7 +10506,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
+          case 48: {
             SkinId = input.ReadUInt32();
             break;
           }
