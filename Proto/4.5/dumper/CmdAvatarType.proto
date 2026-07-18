@@ -309,5 +309,5 @@ message UnlockAvatarPathScRsp {
 }
 
 message UnlockAvatarSkinScNotify {
-    uint32 skin_id = 12;
+    uint32 skin_id = 6;
 }
