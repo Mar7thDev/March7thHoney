@@ -1,1 +1,4 @@
 PLOBOMJLAPE = UnlockAvatarSkinScNotify
+LHENKFJFGKH = SummonPetCsReq
+NCLGCOEMLIF = RecallPetCsReq
+LFLHHCAMABD = CurPetChangedScNotify
