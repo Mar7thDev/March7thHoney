@@ -71,6 +71,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public int StageId { get; set; } = stages.Count > 0 ? stages[0].StageID : 0; // Set to 0 when hit monster
     public int EventId { get; set; }
     public int CustomLevel { get; set; }
+    public int? LeaderIndexOverride { get; set; }
     public BattleEndStatus BattleEndStatus { get; set; }
 
     public List<ItemData> MonsterDropItems { get; set; } = [];
@@ -303,6 +304,17 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
             proto.BattleTargetInfo.Add((uint)i, battleTargetEntry);
         }
 
+        var leaderBuff = GameData.MazeBuffData.Values.FirstOrDefault(x =>
+            x.InBattleBindingKey == "StageAbility_MazeCommon_EnterBattle_CheckTeamLeader");
+        if (leaderBuff != null && Buffs.All(x => x.BuffID != leaderBuff.ID))
+        {
+            var leaderIndex = LeaderIndexOverride ?? Math.Max(Lineup.GetSlot(Lineup.LeaderAvatarId), 0);
+            Buffs.Add(new MazeBuff(leaderBuff.ID, leaderBuff.Lv, leaderIndex)
+            {
+                WaveFlag = -1
+            });
+        }
+
         // global buff
         foreach (var buff in GameData.AvatarGlobalBuffConfigData.Values)
             if (Player.AvatarManager!.GetFormalAvatar(buff.AvatarID) != null)
@@ -355,4 +367,3 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         return false;
     }
 }
-
