@@ -1,4 +1,16 @@
 {
   "scheduleData": [
+    {
+      "activityId": 5010601,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50106
+    },
+    {
+      "activityId": 5011101,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50111
+    }
   ]
 }
