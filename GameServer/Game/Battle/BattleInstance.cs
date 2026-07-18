@@ -303,6 +303,17 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
             proto.BattleTargetInfo.Add((uint)i, battleTargetEntry);
         }
 
+        var leaderBuff = GameData.MazeBuffData.Values.FirstOrDefault(x =>
+            x.InBattleBindingKey == "StageAbility_MazeCommon_EnterBattle_CheckTeamLeader");
+        if (leaderBuff != null && Buffs.All(x => x.BuffID != leaderBuff.ID))
+        {
+            var leaderIndex = Lineup.GetSlot(Lineup.LeaderAvatarId);
+            Buffs.Add(new MazeBuff(leaderBuff.ID, leaderBuff.Lv, Math.Max(leaderIndex, 0))
+            {
+                WaveFlag = -1
+            });
+        }
+
         // global buff
         foreach (var buff in GameData.AvatarGlobalBuffConfigData.Values)
             if (Player.AvatarManager!.GetFormalAvatar(buff.AvatarID) != null)
@@ -355,4 +366,3 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         return false;
     }
 }
-
