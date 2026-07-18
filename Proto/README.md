@@ -33,6 +33,7 @@ dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
   --out Proto/4.5/dumper \
   --same-seed-raw Proto/4.4/dumper/Raw \
   --same-seed-proto Proto/4.4 \
+  --translation Proto/4.5/translations.txt \
   --compat-types Proto/4.5/compat-types.txt \
   --cmdid-aliases Proto/4.5/cmdid-aliases.txt \
   --version 4.5 --active --compile \
