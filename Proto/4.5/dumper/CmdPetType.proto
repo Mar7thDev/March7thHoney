@@ -14,7 +14,7 @@ enum CmdPetType {
 }
 
 message CurPetChangedScNotify {
-    uint32 cur_pet_id = 14;
+    uint32 cur_pet_id = 11;
 }
 
 message GetPetDataCsReq {
@@ -27,7 +27,7 @@ message GetPetDataScRsp {
 }
 
 message RecallPetCsReq {
-    uint32 summoned_pet_id = 3;
+    uint32 summoned_pet_id = 5;
 }
 
 message RecallPetScRsp {
@@ -37,7 +37,7 @@ message RecallPetScRsp {
 }
 
 message SummonPetCsReq {
-    uint32 summoned_pet_id = 7;
+    uint32 summoned_pet_id = 6;
 }
 
 message SummonPetScRsp {

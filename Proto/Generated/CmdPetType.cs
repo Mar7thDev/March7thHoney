@@ -25,13 +25,13 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChBDbWRQZXRUeXBlLnByb3RvIisKFUN1clBldENoYW5nZWRTY05vdGlmeRIS",
-            "CgpjdXJfcGV0X2lkGA4gASgNIhEKD0dldFBldERhdGFDc1JlcSJPCg9HZXRQ",
+            "CgpjdXJfcGV0X2lkGAsgASgNIhEKD0dldFBldERhdGFDc1JlcSJPCg9HZXRQ",
             "ZXREYXRhU2NSc3ASFwoPdW5sb2NrZWRfcGV0X2lkGAcgAygNEg8KB3JldGNv",
             "ZGUYCCABKA0SEgoKY3VyX3BldF9pZBgEIAEoDSIpCg5SZWNhbGxQZXRDc1Jl",
-            "cRIXCg9zdW1tb25lZF9wZXRfaWQYAyABKA0iTAoOUmVjYWxsUGV0U2NSc3AS",
+            "cRIXCg9zdW1tb25lZF9wZXRfaWQYBSABKA0iTAoOUmVjYWxsUGV0U2NSc3AS",
             "EgoKY3VyX3BldF9pZBgOIAEoDRIVCg1zZWxlY3RfcGV0X2lkGAIgASgNEg8K",
             "B3JldGNvZGUYDSABKA0iKQoOU3VtbW9uUGV0Q3NSZXESFwoPc3VtbW9uZWRf",
-            "cGV0X2lkGAcgASgNIkwKDlN1bW1vblBldFNjUnNwEhIKCmN1cl9wZXRfaWQY",
+            "cGV0X2lkGAYgASgNIkwKDlN1bW1vblBldFNjUnNwEhIKCmN1cl9wZXRfaWQY",
             "DyABKA0SDwoHcmV0Y29kZRgBIAEoDRIVCg1zZWxlY3RfcGV0X2lkGAogASgN",
             "KooCCgpDbWRQZXRUeXBlEhMKD0NtZFBldFR5cGVfTm9uZRAAEh4KGUNtZFBl",
             "dFR5cGVfU3VtbW9uUGV0Q3NSZXEQuzsSHgoZQ21kUGV0VHlwZV9SZWNhbGxQ",
@@ -116,7 +116,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cur_pet_id" field.</summary>
-    public const int CurPetIdFieldNumber = 14;
+    public const int CurPetIdFieldNumber = 11;
     private uint curPetId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -170,7 +170,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CurPetId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(88);
         output.WriteUInt32(CurPetId);
       }
       if (_unknownFields != null) {
@@ -184,7 +184,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CurPetId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(88);
         output.WriteUInt32(CurPetId);
       }
       if (_unknownFields != null) {
@@ -234,7 +234,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 112: {
+          case 88: {
             CurPetId = input.ReadUInt32();
             break;
           }
@@ -257,7 +257,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 112: {
+          case 88: {
             CurPetId = input.ReadUInt32();
             break;
           }
@@ -738,7 +738,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "summoned_pet_id" field.</summary>
-    public const int SummonedPetIdFieldNumber = 3;
+    public const int SummonedPetIdFieldNumber = 5;
     private uint summonedPetId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -792,7 +792,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (SummonedPetId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteUInt32(SummonedPetId);
       }
       if (_unknownFields != null) {
@@ -806,7 +806,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (SummonedPetId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(40);
         output.WriteUInt32(SummonedPetId);
       }
       if (_unknownFields != null) {
@@ -856,7 +856,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 40: {
             SummonedPetId = input.ReadUInt32();
             break;
           }
@@ -879,7 +879,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 40: {
             SummonedPetId = input.ReadUInt32();
             break;
           }
@@ -1208,7 +1208,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "summoned_pet_id" field.</summary>
-    public const int SummonedPetIdFieldNumber = 7;
+    public const int SummonedPetIdFieldNumber = 6;
     private uint summonedPetId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1262,7 +1262,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (SummonedPetId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(SummonedPetId);
       }
       if (_unknownFields != null) {
@@ -1276,7 +1276,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (SummonedPetId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteUInt32(SummonedPetId);
       }
       if (_unknownFields != null) {
@@ -1326,7 +1326,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 48: {
             SummonedPetId = input.ReadUInt32();
             break;
           }
@@ -1349,7 +1349,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 48: {
             SummonedPetId = input.ReadUInt32();
             break;
           }
