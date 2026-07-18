@@ -36,7 +36,6 @@ SetChallengeTierceLineupScRsp
 LeaveChallengeTierceScRsp
 TrainPartyGamePlayStartScRsp
 ConfirmChallengeTierceStageSettleScRsp
-UnlockAvatarSkinScNotify
 SetPlayerOutfitScRsp
 ForceSyncGameStateFinishCSReq
 ForceSyncGameStateFinishScRsp
