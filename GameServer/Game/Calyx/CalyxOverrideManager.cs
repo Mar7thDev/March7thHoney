@@ -95,6 +95,7 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
             MappingInfoId = 0,
             RoundLimit = bc.CycleCount > 0 ? bc.CycleCount : 0,
             CustomLevel = ResolveUniformLevel(bc.Monsters),
+            LeaderIndexOverride = 0,
             CalyxOverride = new CalyxOverrideContext(data, Data.MonsterHpOverrides.Select(x =>
                 new CalyxMonsterHpOverride
                 {

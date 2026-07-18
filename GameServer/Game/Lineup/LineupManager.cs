@@ -409,6 +409,7 @@ public class LineupManager : BasePlayerManager<LineupData>
         lineup.BaseAvatars = [];
         var index = lineup.LineupType == 0 ? lineupIndex : Data.GetCurLineupIndex();
         foreach (var avatar in lineupSlotList) await AddAvatar(index, avatar, false);
+        lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault()?.BaseAvatarId ?? 0;
 
         if (index == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
@@ -432,6 +433,7 @@ public class LineupManager : BasePlayerManager<LineupData>
         lineup.BaseAvatars = [];
         var index = lineup.LineupType == 0 ? (int)req.Index : Data.GetCurLineupIndex();
         foreach (var avatar in req.LineupSlotList) await AddAvatar(index, (int)avatar.Id, false);
+        lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault()?.BaseAvatarId ?? 0;
 
         if (index == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
