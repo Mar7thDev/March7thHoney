@@ -112,17 +112,6 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
         return (Rewards & (1 << promotion)) != 0;
     }
 
-    public void ValidateHero(Gender gender)
-    {
-        foreach (var pathInfo in PathInfos.ToArray())
-        {
-            if (!GameData.MultiplePathAvatarConfigData.TryGetValue(pathInfo.Key, out var path)) continue;
-            if (path.Gender == GenderTypeEnum.GENDER_NONE) continue;
-            if (path.Gender == (GenderTypeEnum)gender) continue;
-            PathInfos.Remove(pathInfo.Key);
-        }
-    }
-
     public void CheckPathSkillTree()
     {
         if (!GameData.AvatarConfigData.TryGetValue(AvatarId, out var excel)) return;
