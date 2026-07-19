@@ -3,12 +3,15 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Database.Activity;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Proto;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.ExpeditionBattle;
 
 public class ExpeditionBattleManager(PlayerInstance player) : BasePlayerManager<ExpeditionBattleData>(player)
 {
     private const int RequiredRouteCount = 4;
+    private const int CurrentStateVersion = 1;
+    private const uint MaxDailyChallengeCount = 30;
     private bool _lastResultIsNewRecord;
 
     private ExpeditionBattleMapExcel? GetSupportedMap()
@@ -43,11 +46,16 @@ public class ExpeditionBattleManager(PlayerInstance player) : BasePlayerManager<
         return Retcode.RetSucc;
     }
 
-    public bool CanStart(uint mapId)
+    public bool TryStart(uint mapId)
     {
         var map = GetSupportedMap();
-        return map != null && mapId == map.ID && Data.Lineups.TryGetValue(mapId, out var lineups) &&
-               ValidateLineups(map, lineups.Select(ToProto).ToList());
+        if (map == null || mapId != map.ID || GetRemainingChallengeCount() == 0 ||
+            !Data.Lineups.TryGetValue(mapId, out var lineups) ||
+            !ValidateLineups(map, lineups.Select(ToProto).ToList())) return false;
+
+        Data.DailyChallengeCount++;
+        MarkDirty();
+        return true;
     }
 
     public int GetLevelCount(uint mapId)
@@ -70,7 +78,7 @@ public class ExpeditionBattleManager(PlayerInstance player) : BasePlayerManager<
         var notify = new ExpeditionBattleSettleScNotify
         {
             MapId = mapId,
-            RemainingChallengeCount = 0
+            RemainingChallengeCount = GetRemainingChallengeCount()
         };
 
         foreach (var routeId in map.RouteIDList)
@@ -118,7 +126,7 @@ public class ExpeditionBattleManager(PlayerInstance player) : BasePlayerManager<
         var result = new ExpeditionBattleMapData
         {
             MapId = (uint)map.ID,
-            RemainingChallengeCount = Data.CompletedMaps.Contains((uint)map.ID) ? 0u : 1u
+            RemainingChallengeCount = GetRemainingChallengeCount()
         };
 
         if (!Data.Lineups.TryGetValue((uint)map.ID, out var lineups)) return result;
@@ -146,6 +154,35 @@ public class ExpeditionBattleManager(PlayerInstance player) : BasePlayerManager<
         }
 
         return result;
+    }
+
+    private uint GetRemainingChallengeCount()
+    {
+        RefreshDailyChallengeCount();
+        return MaxDailyChallengeCount - Math.Min(Data.DailyChallengeCount, MaxDailyChallengeCount);
+    }
+
+    private void RefreshDailyChallengeCount()
+    {
+        EnsureState();
+        var localDate = DateTimeOffset.FromUnixTimeSeconds(ServerTimeProvider.GetServerUnixSec()).ToLocalTime().Date;
+        var today = localDate.Year * 10000 + localDate.Month * 100 + localDate.Day;
+        if (Data.LastChallengeDate == today) return;
+
+        Data.LastChallengeDate = today;
+        Data.DailyChallengeCount = 0;
+        MarkDirty();
+    }
+
+    private void EnsureState()
+    {
+        if (Data.StateVersion >= CurrentStateVersion) return;
+
+        Data.CompletedMaps.Clear();
+        Data.DailyChallengeCount = 0;
+        Data.LastChallengeDate = 0;
+        Data.StateVersion = CurrentStateVersion;
+        MarkDirty();
     }
 
     private static bool ValidateLineups(ExpeditionBattleMapExcel map,
