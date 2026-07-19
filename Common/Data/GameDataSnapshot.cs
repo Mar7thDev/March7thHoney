@@ -25,6 +25,9 @@ public partial class GameDataSnapshot
     public QueryProductInfoConfig QueryProductInfoConfig { get; set; } = new();
     public Dictionary<int, PamSkinConfigExcel> PamSkinConfigData { get; set; } = [];
     public ActivityConfig ActivityConfig { get; set; } = new();
+    public Dictionary<int, ExpeditionBattleMapExcel> ExpeditionBattleMapData { get; set; } = [];
+    public Dictionary<int, ExpeditionBattleRouteExcel> ExpeditionBattleRouteData { get; set; } = [];
+    public Dictionary<int, ExpeditionBattleLevelExcel> ExpeditionBattleLevelData { get; set; } = [];
     public Dictionary<int, MarbleMatchInfoExcel> MarbleMatchInfoData { get; set; } = [];
     public Dictionary<int, MarbleSealExcel> MarbleSealData { get; set; } = [];
     public Dictionary<int, AvatarConfigExcel> AvatarConfigData { get; set; } = [];
@@ -277,6 +280,9 @@ public static partial class GameData
             QueryProductInfoConfig = GameData.QueryProductInfoConfig,
             PamSkinConfigData = GameData.PamSkinConfigData,
             ActivityConfig = GameData.ActivityConfig,
+            ExpeditionBattleMapData = GameData.ExpeditionBattleMapData,
+            ExpeditionBattleRouteData = GameData.ExpeditionBattleRouteData,
+            ExpeditionBattleLevelData = GameData.ExpeditionBattleLevelData,
             MarbleMatchInfoData = GameData.MarbleMatchInfoData,
             MarbleSealData = GameData.MarbleSealData,
             AvatarConfigData = GameData.AvatarConfigData,
@@ -524,6 +530,9 @@ public static partial class GameData
         GameData.QueryProductInfoConfig = snapshot.QueryProductInfoConfig;
         GameData.PamSkinConfigData = snapshot.PamSkinConfigData;
         GameData.ActivityConfig = snapshot.ActivityConfig;
+        GameData.ExpeditionBattleMapData = snapshot.ExpeditionBattleMapData;
+        GameData.ExpeditionBattleRouteData = snapshot.ExpeditionBattleRouteData;
+        GameData.ExpeditionBattleLevelData = snapshot.ExpeditionBattleLevelData;
         GameData.MarbleMatchInfoData = snapshot.MarbleMatchInfoData;
         GameData.MarbleSealData = snapshot.MarbleSealData;
         GameData.AvatarConfigData = snapshot.AvatarConfigData;

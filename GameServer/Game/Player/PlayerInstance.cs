@@ -14,6 +14,7 @@ using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.GameServer.Game.ChallengePeak;
 using March7thHoney.GameServer.Game.Expedition;
+using March7thHoney.GameServer.Game.ExpeditionBattle;
 using March7thHoney.GameServer.Game.Friend;
 // TODO 4.3: GridFight (货币战争) 模块暂停编译，等待 proto 重整
 using March7thHoney.GameServer.Game.Gacha;
@@ -92,6 +93,7 @@ public partial class PlayerInstance(PlayerData data)
     public ChallengeTierceManager? ChallengeTierceManager { get; private set; }
     // TODO 4.3: GridFight Manager 暂停编译
     public ExpeditionManager? ExpeditionManager { get; private set; }
+    public ExpeditionBattleManager? ExpeditionBattleManager { get; private set; }
     public TrainPartyManager? TrainPartyManager { get; private set; }
 
     #endregion
@@ -186,6 +188,7 @@ public partial class PlayerInstance(PlayerData data)
         ChallengeTierceManager = new ChallengeTierceManager(this);
         // TODO 4.3: GridFightManager 暂停初始化
         ExpeditionManager = new ExpeditionManager(this);
+        ExpeditionBattleManager = new ExpeditionBattleManager(this);
         TrainPartyManager = new TrainPartyManager(this);
         TrainCakeCatchManager = new TrainCakeCatchManager(this);
         TaskManager = new TaskManager(this);
