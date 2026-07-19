@@ -120,7 +120,8 @@ public class CommandJson : ICommand
         {
             if (msg[0] == "Game.Command.Json.ImportSummary")
             {
-                await arg.SendMsg(I18NManager.Translate("Game.Command.Json.ImportSummary", Path.GetFileName(selectedPath), msg[1], msg[2], msg[3]));
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Json.ImportSummary", Path.GetFileName(selectedPath),
+                    msg[1], msg[2], msg[3], msg[4], msg[5]));
             } else
             {
                 await arg.SendMsg(I18NManager.Translate(msg[0], msg.Skip(1).ToArray()));
