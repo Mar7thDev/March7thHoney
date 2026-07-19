@@ -432,7 +432,6 @@ public partial class PlayerInstance(PlayerData data)
             Data.CurBasicType = id;
             // Set avatar path
             avatar.AvatarId = id;
-            avatar.ValidateHero(Data.CurrentGender);
             avatar.SetCurSp(0, LineupManager!.GetCurLineup()!.IsExtraLineup());
             // Save new skill tree
             avatar.CheckPathSkillTree();
@@ -475,12 +474,12 @@ public partial class PlayerInstance(PlayerData data)
         Data.CurrentGender = gender;
         Data.IsGenderSet = true;
         Data.CurBasicType = newId;
+        await SendPacket(new PacketGetBasicInfoScRsp(this));
 
         var hero = AvatarManager!.GetHero();
         if (hero != null)
         {
             hero.AvatarId = newId;
-            hero.ValidateHero(gender);
             hero.CheckPathSkillTree();
             hero.SetCurSp(0, LineupManager!.GetCurLineup()?.IsExtraLineup() ?? false);
 
