@@ -34,7 +34,7 @@ public class HandlerExpeditionBattleStartCsReq : Handler<ExpeditionBattleStartCs
     protected override async Task OnHandle(Connection connection, PlayerInstance player, ExpeditionBattleStartCsReq req)
     {
         var manager = player.ExpeditionBattleManager!;
-        if (!manager.CanStart(req.MapId))
+        if (!manager.TryStart(req.MapId))
         {
             await connection.SendPacket(new PacketExpeditionBattleStartScRsp(Retcode.RetReqParaInvalid));
             return;
