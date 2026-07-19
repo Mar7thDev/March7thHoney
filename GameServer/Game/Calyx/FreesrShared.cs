@@ -72,35 +72,27 @@ public static class FreesrShared
 
         var inv = player.InventoryManager!.Data;
 
-        foreach (var item in inv.EquipmentItems)
+        foreach (var avatar in player.AvatarManager?.Data.FormalAvatars ?? [])
         {
-            if (item.EquipAvatar <= 0) continue;
-            var avatar = player.AvatarManager?.GetFormalAvatar(item.EquipAvatar);
-            if (avatar == null) continue;
-            var pathInfo = avatar.PathInfos.GetValueOrDefault(item.EquipAvatar)
-                           ?? avatar.PathInfos.Values.FirstOrDefault(x => x.EquipId == item.UniqueId);
-            if (pathInfo != null && pathInfo.EquipId == item.UniqueId)
-                pathInfo.EquipId = 0;
-            item.EquipAvatar = 0;
-            MarkChanged(avatar);
-        }
-
-        foreach (var item in inv.RelicItems)
-        {
-            if (item.EquipAvatar <= 0) continue;
-            var avatar = player.AvatarManager?.GetFormalAvatar(item.EquipAvatar);
-            if (avatar == null) continue;
-            var pathInfo = avatar.PathInfos.GetValueOrDefault(item.EquipAvatar)
-                           ?? avatar.PathInfos.Values.FirstOrDefault(x => x.Relic.Values.Contains(item.UniqueId));
-            if (pathInfo != null)
+            var hasChanged = false;
+            foreach (var pathInfo in avatar.PathInfos.Values)
             {
-                var toRemoveSlots = pathInfo.Relic.Where(kv => kv.Value == item.UniqueId).Select(kv => kv.Key).ToList();
-                foreach (var slot in toRemoveSlots) pathInfo.Relic.Remove(slot);
+                if (pathInfo.EquipId != 0)
+                {
+                    pathInfo.EquipId = 0;
+                    hasChanged = true;
+                }
+
+                if (pathInfo.Relic.Count == 0) continue;
+                pathInfo.Relic.Clear();
+                hasChanged = true;
             }
 
-            item.EquipAvatar = 0;
-            MarkChanged(avatar);
+            if (hasChanged) MarkChanged(avatar);
         }
+
+        foreach (var item in inv.EquipmentItems) item.EquipAvatar = 0;
+        foreach (var item in inv.RelicItems) item.EquipAvatar = 0;
 
         // Do not rely on item-config lookup during removal; clear relic/equipment entries directly for a clean sync.
         var removed = new List<ItemData>(inv.EquipmentItems.Count + inv.RelicItems.Count);
@@ -199,13 +191,16 @@ public static class FreesrShared
         return [.. changed.Values];
     }
 
-    public static async ValueTask<List<ItemData>> ImportRelicsAndLightcones(
+    public static async ValueTask<(List<ItemData> Items, int Relics, int Lightcones)> ImportRelicsAndLightcones(
         PlayerInstance player,
         FreesrCalyxData data,
         List<FormalAvatarInfo> avatarChanged)
     {
         var importedItems = new List<ItemData>(Math.Max(16, (data.Relics?.Count ?? 0) + (data.Lightcones?.Count ?? 0)));
+        var importedRelics = 0;
+        var importedLightcones = 0;
         var avatarChangedMap = avatarChanged.ToDictionary(x => x.BaseAvatarId, x => x);
+        var inventoryManager = player.InventoryManager!;
 
         FormalAvatarInfo? GetAvatar(int pathOrBaseAvatarId)
         {
@@ -231,7 +226,7 @@ public static class FreesrShared
 
         if (data.Relics != null)
         {
-            foreach (var relic in data.Relics)
+            foreach (var relic in data.Relics.OrderByDescending(x => x.EquipAvatar > 0))
             {
                 if (!GameData.RelicConfigData.TryGetValue(relic.RelicId, out var relicConfig)) continue;
                 if (!GameData.ItemConfigData.TryGetValue(relic.RelicId, out var itemConfig) ||
@@ -260,15 +255,19 @@ public static class FreesrShared
                     ? relic.MainAffixId
                     : mainAffixGroup.Keys.First();
 
-                var item = await player.InventoryManager!.PutItem(
+                if (inventoryManager.Data.RelicItems.Count >= GameConstants.INVENTORY_MAX_RELIC) continue;
+
+                var item = await inventoryManager.PutItem(
                     relic.RelicId,
                     1,
                     level: Math.Max(0, relic.Level),
                     mainAffix: mainAffixId,
                     subAffixes: subAffixes,
-                    uniqueId: ++player.InventoryManager.Data.NextUniqueId);
+                    uniqueId: ++inventoryManager.Data.NextUniqueId);
 
+                if (!inventoryManager.Data.RelicItems.Contains(item)) continue;
                 importedItems.Add(item);
+                importedRelics++;
 
                 if (relic.EquipAvatar > 0)
                 {
@@ -288,7 +287,7 @@ public static class FreesrShared
 
         if (data.Lightcones != null)
         {
-            foreach (var lightcone in data.Lightcones)
+            foreach (var lightcone in data.Lightcones.OrderByDescending(x => x.EquipAvatar > 0))
             {
                 if (!GameData.ItemConfigData.TryGetValue(lightcone.ItemId, out var itemConfig) ||
                     itemConfig.ItemMainType != ItemMainTypeEnum.Equipment)
@@ -296,15 +295,19 @@ public static class FreesrShared
                 if (!GameData.EquipmentConfigData.TryGetValue(lightcone.ItemId, out var equipmentConfig))
                     continue;
 
-                var item = await player.InventoryManager!.PutItem(
+                if (inventoryManager.Data.EquipmentItems.Count >= GameConstants.INVENTORY_MAX_EQUIPMENT) continue;
+
+                var item = await inventoryManager.PutItem(
                     lightcone.ItemId,
                     1,
                     rank: Math.Clamp(lightcone.Rank, 1, Math.Max(1, equipmentConfig.MaxRank)),
                     promotion: Math.Clamp(lightcone.Promotion, 0, Math.Max(0, equipmentConfig.MaxPromotion)),
                     level: Math.Clamp(lightcone.Level, 1, 80),
-                    uniqueId: ++player.InventoryManager.Data.NextUniqueId);
+                    uniqueId: ++inventoryManager.Data.NextUniqueId);
 
+                if (!inventoryManager.Data.EquipmentItems.Contains(item)) continue;
                 importedItems.Add(item);
+                importedLightcones++;
 
                 if (lightcone.EquipAvatar > 0)
                 {
@@ -323,7 +326,7 @@ public static class FreesrShared
         avatarChanged.Clear();
         avatarChanged.AddRange(avatarChangedMap.Values);
 
-        return importedItems;
+        return (importedItems, importedRelics, importedLightcones);
     }
 
     public static async ValueTask ImportJson(
@@ -347,10 +350,10 @@ public static class FreesrShared
 
         // Keep enhanced-id special handling in ImportAvatars.
         var avatarChanged = await ImportAvatars(player, data);
-        var importedItems = await ImportRelicsAndLightcones(player, data, avatarChanged);
+        var importResult = await ImportRelicsAndLightcones(player, data, avatarChanged);
 
-        if (importedItems.Count > 0)
-            await player.SendPacket(new PacketPlayerSyncScNotify(importedItems));
+        if (importResult.Items.Count > 0)
+            await player.SendPacket(new PacketPlayerSyncScNotify(importResult.Items));
         if (avatarChanged.Count > 0)
             await player.SendPacket(new PacketPlayerSyncScNotify(avatarChanged));
 
@@ -374,7 +377,9 @@ public static class FreesrShared
         await sendI18nCallback([
             "Game.Command.Json.ImportSummary",
             (data.Avatars?.Count ?? 0).ToString(),
+            importResult.Relics.ToString(),
             (data.Relics?.Count ?? 0).ToString(),
+            importResult.Lightcones.ToString(),
             (data.Lightcones?.Count ?? 0).ToString()
         ]);
     }
