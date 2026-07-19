@@ -72,35 +72,27 @@ public static class FreesrShared
 
         var inv = player.InventoryManager!.Data;
 
-        foreach (var item in inv.EquipmentItems)
+        foreach (var avatar in player.AvatarManager?.Data.FormalAvatars ?? [])
         {
-            if (item.EquipAvatar <= 0) continue;
-            var avatar = player.AvatarManager?.GetFormalAvatar(item.EquipAvatar);
-            if (avatar == null) continue;
-            var pathInfo = avatar.PathInfos.GetValueOrDefault(item.EquipAvatar)
-                           ?? avatar.PathInfos.Values.FirstOrDefault(x => x.EquipId == item.UniqueId);
-            if (pathInfo != null && pathInfo.EquipId == item.UniqueId)
-                pathInfo.EquipId = 0;
-            item.EquipAvatar = 0;
-            MarkChanged(avatar);
-        }
-
-        foreach (var item in inv.RelicItems)
-        {
-            if (item.EquipAvatar <= 0) continue;
-            var avatar = player.AvatarManager?.GetFormalAvatar(item.EquipAvatar);
-            if (avatar == null) continue;
-            var pathInfo = avatar.PathInfos.GetValueOrDefault(item.EquipAvatar)
-                           ?? avatar.PathInfos.Values.FirstOrDefault(x => x.Relic.Values.Contains(item.UniqueId));
-            if (pathInfo != null)
+            var hasChanged = false;
+            foreach (var pathInfo in avatar.PathInfos.Values)
             {
-                var toRemoveSlots = pathInfo.Relic.Where(kv => kv.Value == item.UniqueId).Select(kv => kv.Key).ToList();
-                foreach (var slot in toRemoveSlots) pathInfo.Relic.Remove(slot);
+                if (pathInfo.EquipId != 0)
+                {
+                    pathInfo.EquipId = 0;
+                    hasChanged = true;
+                }
+
+                if (pathInfo.Relic.Count == 0) continue;
+                pathInfo.Relic.Clear();
+                hasChanged = true;
             }
 
-            item.EquipAvatar = 0;
-            MarkChanged(avatar);
+            if (hasChanged) MarkChanged(avatar);
         }
+
+        foreach (var item in inv.EquipmentItems) item.EquipAvatar = 0;
+        foreach (var item in inv.RelicItems) item.EquipAvatar = 0;
 
         // Do not rely on item-config lookup during removal; clear relic/equipment entries directly for a clean sync.
         var removed = new List<ItemData>(inv.EquipmentItems.Count + inv.RelicItems.Count);
