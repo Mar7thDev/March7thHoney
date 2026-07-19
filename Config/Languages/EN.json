@@ -106,7 +106,7 @@
   "Game.Command.Json.FileListItem": "{0}. {1}",
   "Game.Command.Json.FileNotFound": "File not found: {0}",
   "Game.Command.Json.FoundFiles": "Found the following JSON files:",
-  "Game.Command.Json.ImportSummary": "Import finished: {0}, avatars {1}, relics {2}, light cones {3}.",
+  "Game.Command.Json.ImportSummary": "Import finished: {0}, avatars {1}, relics {2}/{3}, light cones {4}/{5}.",
   "Game.Command.Json.InvalidChoice": "Invalid index. Available range: 1 ~ {0}",
   "Game.Command.Json.InvalidJsonContent": "JSON content is invalid or empty.",
   "Game.Command.Json.NoFileFound": "No importable JSON files found.",

@@ -106,7 +106,7 @@
   "Game.Command.Json.FileListItem": "{0}. {1}",
   "Game.Command.Json.FileNotFound": "未找到文件：{0}",
   "Game.Command.Json.FoundFiles": "找到以下 JSON 文件：",
-  "Game.Command.Json.ImportSummary": "导入完成：{0}，角色 {1}，遗器 {2}，光锥 {3}。",
+  "Game.Command.Json.ImportSummary": "导入完成：{0}，角色 {1}，遗器 {2}/{3}，光锥 {4}/{5}。",
   "Game.Command.Json.InvalidChoice": "无效序号，可选范围：1 ~ {0}",
   "Game.Command.Json.InvalidJsonContent": "JSON 内容无效或为空。",
   "Game.Command.Json.NoFileFound": "未找到可导入的 JSON 文件。",
