@@ -91,7 +91,7 @@ message ExpeditionBattleSetLineupScRsp {
 
 message ExpeditionBattleSettleScNotify {
     repeated ExpeditionBattleFunRecord fun_list = 7;
-    uint32 remaining_challenge_count = 14;
+    uint32 level_turn = 14;
     uint32 map_id = 13;
     repeated ExpeditionBattleRouteSettleInfo route_settle_list = 6;
 }

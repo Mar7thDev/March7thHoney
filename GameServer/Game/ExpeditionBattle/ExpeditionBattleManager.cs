@@ -78,7 +78,7 @@ public class ExpeditionBattleManager(PlayerInstance player) : BasePlayerManager<
         var notify = new ExpeditionBattleSettleScNotify
         {
             MapId = mapId,
-            RemainingChallengeCount = GetRemainingChallengeCount()
+            LevelTurn = (uint)(levelIndex + 1)
         };
 
         foreach (var routeId in map.RouteIDList)
