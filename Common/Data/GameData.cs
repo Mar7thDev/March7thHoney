@@ -42,6 +42,9 @@ public static partial class GameData
 
     public static Dictionary<int, List<DailyActiveConfigExcel>> DailyActiveConfigData { get; private set; } = [];
     public static Dictionary<int, DailyActiveQuestPoolExcel> DailyActiveQuestPoolData { get; private set; } = [];
+    public static Dictionary<int, ExpeditionBattleMapExcel> ExpeditionBattleMapData { get; private set; } = [];
+    public static Dictionary<int, ExpeditionBattleRouteExcel> ExpeditionBattleRouteData { get; private set; } = [];
+    public static Dictionary<int, ExpeditionBattleLevelExcel> ExpeditionBattleLevelData { get; private set; } = [];
 
     #region Marble
 

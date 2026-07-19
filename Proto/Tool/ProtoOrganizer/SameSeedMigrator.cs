@@ -50,7 +50,7 @@ public static class SameSeedMigrator
             if (translations.ObfToReal.TryGetValue(source.Name, out var real))
             {
                 var targetName = typeAlignments.GetValueOrDefault(real, real);
-                if (readableByName.TryGetValue(targetName, out var target) && target.Kind == source.Kind)
+                if (!readableByName.TryGetValue(targetName, out var target) || target.Kind == source.Kind)
                     currentTypeAlignments[source.Name] = targetName;
             }
         var typeMappings = ResolveTypeMappings(currentTypeAlignments);
@@ -123,6 +123,16 @@ public static class SameSeedMigrator
                         AddProposal(values, sourceValue, targetValue);
                 enumMappings[targetName] = ResolveIdentifierMappings(values);
             }
+        }
+
+        foreach (var source in current.Where(def => def.Kind == DefKind.Message))
+        {
+            var targetName = typeMappings.GetValueOrDefault(source.Name, source.Name);
+            if (!translations.ScopedFields.TryGetValue(source.Name, out var explicitFields) &&
+                !translations.ScopedFields.TryGetValue(targetName, out explicitFields)) continue;
+            if (!fieldMappings.TryGetValue(targetName, out var fields))
+                fieldMappings[targetName] = fields = new Dictionary<string, string>(StringComparer.Ordinal);
+            foreach (var (obf, real) in explicitFields) fields[obf] = real;
         }
 
         return new SameSeedMigrationResult(
