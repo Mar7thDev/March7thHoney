@@ -28,9 +28,6 @@ public class HandlerExpeditionBattleSetLineupCsReq : Handler<ExpeditionBattleSet
 [Opcode(CmdIds.ExpeditionBattleStartCsReq)]
 public class HandlerExpeditionBattleStartCsReq : Handler<ExpeditionBattleStartCsReq>
 {
-    private static readonly TimeSpan InitialSettleDelay = TimeSpan.FromSeconds(2);
-    private static readonly TimeSpan AnimationStepDelay = TimeSpan.FromSeconds(10);
-
     protected override async Task OnHandle(Connection connection, PlayerInstance player, ExpeditionBattleStartCsReq req)
     {
         var manager = player.ExpeditionBattleManager!;
@@ -40,16 +37,14 @@ public class HandlerExpeditionBattleStartCsReq : Handler<ExpeditionBattleStartCs
             return;
         }
 
-        await connection.SendPacket(new PacketExpeditionBattleStartScRsp());
-        await Task.Delay(InitialSettleDelay);
         for (var levelIndex = 0; levelIndex < manager.GetLevelCount(req.MapId); levelIndex++)
         {
             await connection.SendPacket(
                 new PacketExpeditionBattleSettleScNotify(manager.BuildSettleNotify(req.MapId, levelIndex)));
-            await Task.Delay(AnimationStepDelay);
         }
 
         manager.Complete(req.MapId);
         await connection.SendPacket(new PacketExpeditionBattleEndScNotify(manager.BuildEndNotify()));
+        await connection.SendPacket(new PacketExpeditionBattleStartScRsp());
     }
 }

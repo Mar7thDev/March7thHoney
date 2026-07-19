@@ -59,31 +59,30 @@ namespace March7thHoney.Proto {
             "AygLMhcuRXhwZWRpdGlvbkJhdHRsZUxpbmV1cBIOCgZtYXBfaWQYCSABKA0i",
             "bwoeRXhwZWRpdGlvbkJhdHRsZVNldExpbmV1cFNjUnNwEiwKC2xpbmV1cF9s",
             "aXN0GAIgAygLMhcuRXhwZWRpdGlvbkJhdHRsZUxpbmV1cBIOCgZtYXBfaWQY",
-            "BCABKA0SDwoHcmV0Y29kZRgPIAEoDSK+AQoeRXhwZWRpdGlvbkJhdHRsZVNl",
+            "BCABKA0SDwoHcmV0Y29kZRgPIAEoDSKvAQoeRXhwZWRpdGlvbkJhdHRsZVNl",
             "dHRsZVNjTm90aWZ5EiwKCGZ1bl9saXN0GAcgAygLMhouRXhwZWRpdGlvbkJh",
-            "dHRsZUZ1blJlY29yZBIhChlyZW1haW5pbmdfY2hhbGxlbmdlX2NvdW50GA4g",
-            "ASgNEg4KBm1hcF9pZBgNIAEoDRI7ChFyb3V0ZV9zZXR0bGVfbGlzdBgGIAMo",
-            "CzIgLkV4cGVkaXRpb25CYXR0bGVSb3V0ZVNldHRsZUluZm8iLAoaRXhwZWRp",
-            "dGlvbkJhdHRsZVN0YXJ0Q3NSZXESDgoGbWFwX2lkGAMgASgNIi0KGkV4cGVk",
-            "aXRpb25CYXR0bGVTdGFydFNjUnNwEg8KB3JldGNvZGUYDSABKA0iHgocR2V0",
-            "RXhwZWRpdGlvbkJhdHRsZURhdGFDc1JlcSJgChxHZXRFeHBlZGl0aW9uQmF0",
-            "dGxlRGF0YVNjUnNwEg8KB3JldGNvZGUYASABKA0SLwoNbWFwX2RhdGFfbGlz",
-            "dBgLIAMoCzIYLkV4cGVkaXRpb25CYXR0bGVNYXBEYXRhKuQECh9DbWRFeHBl",
-            "ZGl0aW9uQmF0dGxlQWN0aXZpdHlUeXBlEigKJENtZEV4cGVkaXRpb25CYXR0",
-            "bGVBY3Rpdml0eVR5cGVfTm9uZRAAEkMKPkNtZEV4cGVkaXRpb25CYXR0bGVB",
-            "Y3Rpdml0eVR5cGVfRXhwZWRpdGlvbkJhdHRsZVNldHRsZVNjTm90aWZ5EPRI",
-            "EkEKPENtZEV4cGVkaXRpb25CYXR0bGVBY3Rpdml0eVR5cGVfR2V0RXhwZWRp",
-            "dGlvbkJhdHRsZURhdGFTY1JzcBCGSRJACjtDbWRFeHBlZGl0aW9uQmF0dGxl",
-            "QWN0aXZpdHlUeXBlX0V4cGVkaXRpb25CYXR0bGVFbmRTY05vdGlmeRDzSBJB",
-            "CjxDbWRFeHBlZGl0aW9uQmF0dGxlQWN0aXZpdHlUeXBlX0dldEV4cGVkaXRp",
-            "b25CYXR0bGVEYXRhQ3NSZXEQgkkSPwo6Q21kRXhwZWRpdGlvbkJhdHRsZUFj",
-            "dGl2aXR5VHlwZV9FeHBlZGl0aW9uQmF0dGxlU3RhcnRTY1JzcBDxSBJDCj5D",
-            "bWRFeHBlZGl0aW9uQmF0dGxlQWN0aXZpdHlUeXBlX0V4cGVkaXRpb25CYXR0",
-            "bGVTZXRMaW5ldXBTY1JzcBD7SBJDCj5DbWRFeHBlZGl0aW9uQmF0dGxlQWN0",
-            "aXZpdHlUeXBlX0V4cGVkaXRpb25CYXR0bGVTZXRMaW5ldXBDc1JlcRD2SBI/",
-            "CjpDbWRFeHBlZGl0aW9uQmF0dGxlQWN0aXZpdHlUeXBlX0V4cGVkaXRpb25C",
-            "YXR0bGVTdGFydENzUmVxEOxIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZw",
-            "cm90bzM="));
+            "dHRsZUZ1blJlY29yZBISCgpsZXZlbF90dXJuGA4gASgNEg4KBm1hcF9pZBgN",
+            "IAEoDRI7ChFyb3V0ZV9zZXR0bGVfbGlzdBgGIAMoCzIgLkV4cGVkaXRpb25C",
+            "YXR0bGVSb3V0ZVNldHRsZUluZm8iLAoaRXhwZWRpdGlvbkJhdHRsZVN0YXJ0",
+            "Q3NSZXESDgoGbWFwX2lkGAMgASgNIi0KGkV4cGVkaXRpb25CYXR0bGVTdGFy",
+            "dFNjUnNwEg8KB3JldGNvZGUYDSABKA0iHgocR2V0RXhwZWRpdGlvbkJhdHRs",
+            "ZURhdGFDc1JlcSJgChxHZXRFeHBlZGl0aW9uQmF0dGxlRGF0YVNjUnNwEg8K",
+            "B3JldGNvZGUYASABKA0SLwoNbWFwX2RhdGFfbGlzdBgLIAMoCzIYLkV4cGVk",
+            "aXRpb25CYXR0bGVNYXBEYXRhKuQECh9DbWRFeHBlZGl0aW9uQmF0dGxlQWN0",
+            "aXZpdHlUeXBlEigKJENtZEV4cGVkaXRpb25CYXR0bGVBY3Rpdml0eVR5cGVf",
+            "Tm9uZRAAEkMKPkNtZEV4cGVkaXRpb25CYXR0bGVBY3Rpdml0eVR5cGVfRXhw",
+            "ZWRpdGlvbkJhdHRsZVNldHRsZVNjTm90aWZ5EPRIEkEKPENtZEV4cGVkaXRp",
+            "b25CYXR0bGVBY3Rpdml0eVR5cGVfR2V0RXhwZWRpdGlvbkJhdHRsZURhdGFT",
+            "Y1JzcBCGSRJACjtDbWRFeHBlZGl0aW9uQmF0dGxlQWN0aXZpdHlUeXBlX0V4",
+            "cGVkaXRpb25CYXR0bGVFbmRTY05vdGlmeRDzSBJBCjxDbWRFeHBlZGl0aW9u",
+            "QmF0dGxlQWN0aXZpdHlUeXBlX0dldEV4cGVkaXRpb25CYXR0bGVEYXRhQ3NS",
+            "ZXEQgkkSPwo6Q21kRXhwZWRpdGlvbkJhdHRsZUFjdGl2aXR5VHlwZV9FeHBl",
+            "ZGl0aW9uQmF0dGxlU3RhcnRTY1JzcBDxSBJDCj5DbWRFeHBlZGl0aW9uQmF0",
+            "dGxlQWN0aXZpdHlUeXBlX0V4cGVkaXRpb25CYXR0bGVTZXRMaW5ldXBTY1Jz",
+            "cBD7SBJDCj5DbWRFeHBlZGl0aW9uQmF0dGxlQWN0aXZpdHlUeXBlX0V4cGVk",
+            "aXRpb25CYXR0bGVTZXRMaW5ldXBDc1JlcRD2SBI/CjpDbWRFeHBlZGl0aW9u",
+            "QmF0dGxlQWN0aXZpdHlUeXBlX0V4cGVkaXRpb25CYXR0bGVTdGFydENzUmVx",
+            "EOxIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdExpeditionBattleActivityType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -98,7 +97,7 @@ namespace March7thHoney.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExpeditionBattleRouteSettleInfo), global::March7thHoney.Proto.ExpeditionBattleRouteSettleInfo.Parser, new[]{ "IsPassed", "DeadAvatarIdList", "LastLevelPercent", "BattleRoundCount", "RouteId", "AvatarDamageList", "BuffValue" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExpeditionBattleSetLineupCsReq), global::March7thHoney.Proto.ExpeditionBattleSetLineupCsReq.Parser, new[]{ "LineupList", "MapId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExpeditionBattleSetLineupScRsp), global::March7thHoney.Proto.ExpeditionBattleSetLineupScRsp.Parser, new[]{ "LineupList", "MapId", "Retcode" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExpeditionBattleSettleScNotify), global::March7thHoney.Proto.ExpeditionBattleSettleScNotify.Parser, new[]{ "FunList", "RemainingChallengeCount", "MapId", "RouteSettleList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExpeditionBattleSettleScNotify), global::March7thHoney.Proto.ExpeditionBattleSettleScNotify.Parser, new[]{ "FunList", "LevelTurn", "MapId", "RouteSettleList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExpeditionBattleStartCsReq), global::March7thHoney.Proto.ExpeditionBattleStartCsReq.Parser, new[]{ "MapId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ExpeditionBattleStartScRsp), global::March7thHoney.Proto.ExpeditionBattleStartScRsp.Parser, new[]{ "Retcode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetExpeditionBattleDataCsReq), global::March7thHoney.Proto.GetExpeditionBattleDataCsReq.Parser, null, null, null, null, null),
@@ -3283,7 +3282,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ExpeditionBattleSettleScNotify(ExpeditionBattleSettleScNotify other) : this() {
       funList_ = other.funList_.Clone();
-      remainingChallengeCount_ = other.remainingChallengeCount_;
+      levelTurn_ = other.levelTurn_;
       mapId_ = other.mapId_;
       routeSettleList_ = other.routeSettleList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -3306,15 +3305,15 @@ namespace March7thHoney.Proto {
       get { return funList_; }
     }
 
-    /// <summary>Field number for the "remaining_challenge_count" field.</summary>
-    public const int RemainingChallengeCountFieldNumber = 14;
-    private uint remainingChallengeCount_;
+    /// <summary>Field number for the "level_turn" field.</summary>
+    public const int LevelTurnFieldNumber = 14;
+    private uint levelTurn_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint RemainingChallengeCount {
-      get { return remainingChallengeCount_; }
+    public uint LevelTurn {
+      get { return levelTurn_; }
       set {
-        remainingChallengeCount_ = value;
+        levelTurn_ = value;
       }
     }
 
@@ -3357,7 +3356,7 @@ namespace March7thHoney.Proto {
         return true;
       }
       if(!funList_.Equals(other.funList_)) return false;
-      if (RemainingChallengeCount != other.RemainingChallengeCount) return false;
+      if (LevelTurn != other.LevelTurn) return false;
       if (MapId != other.MapId) return false;
       if(!routeSettleList_.Equals(other.routeSettleList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -3368,7 +3367,7 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= funList_.GetHashCode();
-      if (RemainingChallengeCount != 0) hash ^= RemainingChallengeCount.GetHashCode();
+      if (LevelTurn != 0) hash ^= LevelTurn.GetHashCode();
       if (MapId != 0) hash ^= MapId.GetHashCode();
       hash ^= routeSettleList_.GetHashCode();
       if (_unknownFields != null) {
@@ -3395,9 +3394,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(104);
         output.WriteUInt32(MapId);
       }
-      if (RemainingChallengeCount != 0) {
+      if (LevelTurn != 0) {
         output.WriteRawTag(112);
-        output.WriteUInt32(RemainingChallengeCount);
+        output.WriteUInt32(LevelTurn);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3415,9 +3414,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(104);
         output.WriteUInt32(MapId);
       }
-      if (RemainingChallengeCount != 0) {
+      if (LevelTurn != 0) {
         output.WriteRawTag(112);
-        output.WriteUInt32(RemainingChallengeCount);
+        output.WriteUInt32(LevelTurn);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3430,8 +3429,8 @@ namespace March7thHoney.Proto {
     public int CalculateSize() {
       int size = 0;
       size += funList_.CalculateSize(_repeated_funList_codec);
-      if (RemainingChallengeCount != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(RemainingChallengeCount);
+      if (LevelTurn != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LevelTurn);
       }
       if (MapId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MapId);
@@ -3450,8 +3449,8 @@ namespace March7thHoney.Proto {
         return;
       }
       funList_.Add(other.funList_);
-      if (other.RemainingChallengeCount != 0) {
-        RemainingChallengeCount = other.RemainingChallengeCount;
+      if (other.LevelTurn != 0) {
+        LevelTurn = other.LevelTurn;
       }
       if (other.MapId != 0) {
         MapId = other.MapId;
@@ -3489,7 +3488,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 112: {
-            RemainingChallengeCount = input.ReadUInt32();
+            LevelTurn = input.ReadUInt32();
             break;
           }
         }
@@ -3524,7 +3523,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 112: {
-            RemainingChallengeCount = input.ReadUInt32();
+            LevelTurn = input.ReadUInt32();
             break;
           }
         }
