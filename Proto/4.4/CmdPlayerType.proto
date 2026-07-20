@@ -613,7 +613,8 @@ message UpdatePlayerSettingScRsp {
 }
 
 message VideoKeyInfo {
-    uint64 IBDIMHPOPOJ = 1;
+    uint64 hca_key = 1;
     uint32 id = 2;
+    uint64 key_seed = 3;
     uint64 video_key = 11;
 }

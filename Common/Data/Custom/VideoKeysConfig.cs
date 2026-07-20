@@ -14,6 +14,8 @@ public partial class ActivityVideoKeyInfoList
 {
     public int Id { get; set; }
     public ulong VideoKey { get; set; }
+    public ulong HcaKey { get; set; }
+    public ulong KeySeed { get; set; }
 }
 
 [MemoryPackable]
@@ -21,4 +23,6 @@ public partial class VideoKeyInfoList
 {
     public int Id { get; set; }
     public ulong VideoKey { get; set; }
+    public ulong HcaKey { get; set; }
+    public ulong KeySeed { get; set; }
 }

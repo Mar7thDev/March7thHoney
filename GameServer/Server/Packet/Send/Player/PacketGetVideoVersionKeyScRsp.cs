@@ -15,7 +15,9 @@ public class PacketGetVideoVersionKeyScRsp : BasePacket
                 GameData.VideoKeysConfig.ActivityVideoKeyData.Select(activity => new VideoKeyInfo
                 {
                     Id = (uint)activity.Id,
-                    VideoKey = activity.VideoKey
+                    VideoKey = activity.VideoKey,
+                    HcaKey = activity.HcaKey,
+                    KeySeed = activity.KeySeed
                 })
             },
             VideoKeyInfoList =
@@ -23,7 +25,9 @@ public class PacketGetVideoVersionKeyScRsp : BasePacket
                 GameData.VideoKeysConfig.VideoKeyInfoData.Select(video => new VideoKeyInfo
                 {
                     Id = (uint)video.Id,
-                    VideoKey = video.VideoKey
+                    VideoKey = video.VideoKey,
+                    HcaKey = video.HcaKey,
+                    KeySeed = video.KeySeed
                 })
             }
         };
