@@ -67,3 +67,5 @@ ExpeditionBattleSettleScNotify.OICKCNEBADE = map_id
 ExpeditionBattleSettleScNotify.LIFIJBIKBDJ = route_settle_list
 ExpeditionBattleEndScNotify.NLBBKKMIMDO = is_new_record
 ExpeditionBattleEndScNotify.JALDHEPEHNJ = map_data
+DOPHNDHILPA.HNMBPPLAINN = medal
+FLIPNFHAMPO.JJENEEKNAHB = group_id

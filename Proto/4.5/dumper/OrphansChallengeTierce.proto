@@ -6,7 +6,7 @@ import "CmdChallengeTierceType.proto";
 import "Common.proto";
 
 message ChallengeTierceMedal {
-    uint32 MGLLKBNFKFG = 14;
+    uint32 group_id = 14;
 }
 
 message ChallengeTierceReward {
@@ -33,7 +33,7 @@ message ChallengeTierceSyncNotify {
     ChallengeTierceSyncAllStage DFNNKENBOEN = 4;
     ChallengeTierceStageClear IBFHHKHNEFL = 1;
     ChallengeTiercePendingStageSettle IIHFEDLHOPI = 2;
-    ChallengeTierceMedal HNHCFJJNJCE = 9;
+    ChallengeTierceMedal medal = 9;
 }
 
 message ChallengeTierceSyncSingleStage {
