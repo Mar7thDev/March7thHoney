@@ -130,6 +130,11 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             var detectBuffs = Player.TaskManager!.AbilityLevelTask.SummonAttackDetectBuffs;
             candidates = candidates.Where(c => !detectBuffs.Contains(c.BuffId)).ToList();
 
+            // 敌方时停效果只能由领域触发器投放, 禁止回填到施法者
+            candidates = candidates.Where(c =>
+                !GameData.AdventureModifierData.TryGetValue(c.Excel.ModifierName, out var modifier)
+                || !modifier.BehaviorFlagList.Contains("TimeLock", StringComparer.OrdinalIgnoreCase)).ToList();
+
             var alreadyApplied = candidates.Any(c =>
                 casterAvatar.BuffList.Any(b => b.BuffId == c.BuffId));
 

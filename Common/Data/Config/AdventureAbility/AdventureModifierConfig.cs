@@ -13,8 +13,7 @@ public partial class AdventureModifierConfig
     public bool IsCountDownAfterBattle { get; set; }
 
     public bool ApplyBehaviorFlagBindEffects { get; set; }
-
-    //public AdventureModifierBehaviorFlag[] BehaviorFlagList{ get; set; }     
+    public List<string> BehaviorFlagList { get; set; } = [];
     public float TickInterval { get; set; }
     public List<TaskConfigInfo> OnInterval { get; set; } = [];
     public List<TaskConfigInfo> OnAdd { get; set; } = [];
@@ -72,6 +71,9 @@ public partial class AdventureModifierConfig
 
         if (obj.ContainsKey(nameof(ApplyBehaviorFlagBindEffects)))
             info.ApplyBehaviorFlagBindEffects = obj[nameof(ApplyBehaviorFlagBindEffects)]!.ToObject<bool>();
+
+        if (obj.ContainsKey(nameof(BehaviorFlagList)))
+            info.BehaviorFlagList = obj[nameof(BehaviorFlagList)]?.ToObject<List<string>>() ?? [];
 
         if (obj.ContainsKey(nameof(OnInterval)))
             info.OnInterval = obj[nameof(OnInterval)]?.Select(x => TaskConfigInfo.LoadFromJsonObject((x as JObject)!))
