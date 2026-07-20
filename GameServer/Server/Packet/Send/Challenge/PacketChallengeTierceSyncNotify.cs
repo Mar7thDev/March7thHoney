@@ -53,9 +53,9 @@ public class PacketChallengeTierceSyncNotify : BasePacket
     {
         return new PacketChallengeTierceSyncNotify(new ChallengeTierceSyncNotify
         {
-            HNHCFJJNJCE = new ChallengeTierceMedal
+            Medal = new ChallengeTierceMedal
             {
-                MGLLKBNFKFG = groupId
+                GroupId = groupId
             }
         });
     }
