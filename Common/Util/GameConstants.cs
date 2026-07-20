@@ -10,7 +10,7 @@ public static class GameConstants
     public const int STAMINA_RECOVERY_TIME = 360; // 6 minutes
     public const int STAMINA_RESERVE_RECOVERY_TIME = 1080; // 18 minutes
     public const int INVENTORY_MAX_EQUIPMENT = 1500;
-    public const int INVENTORY_MAX_RELIC = 1500;
+    public const int INVENTORY_MAX_RELIC = 3000;
     public const int INVENTORY_MAX_MATERIAL = 2000;
     public const int MAX_LINEUP_COUNT = 9;
     public const int LAST_TRAIN_WORLD_ID = 501;
