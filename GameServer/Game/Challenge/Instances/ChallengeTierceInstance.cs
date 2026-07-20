@@ -265,6 +265,7 @@ public class ChallengeTierceInstance : BaseChallengeInstance
             IsPassed = true;
             Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
+            await Player.SendPacket(PacketChallengeTierceSyncNotify.ForMedal((uint)PreConfig.GroupID));
             Player.ChallengeTierceManager.SaveInstance();
         }
     }

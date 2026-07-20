@@ -48,4 +48,15 @@ public class PacketChallengeTierceSyncNotify : BasePacket
             DFNNKENBOEN = all
         });
     }
+
+    public static PacketChallengeTierceSyncNotify ForMedal(uint groupId)
+    {
+        return new PacketChallengeTierceSyncNotify(new ChallengeTierceSyncNotify
+        {
+            Medal = new ChallengeTierceMedal
+            {
+                GroupId = groupId
+            }
+        });
+    }
 }
