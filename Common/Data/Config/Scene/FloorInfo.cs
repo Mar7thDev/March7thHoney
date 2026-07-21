@@ -4,6 +4,7 @@ using March7thHoney.Enums.Scene;
 using March7thHoney.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 namespace March7thHoney.Data.Config.Scene;
 
@@ -30,6 +31,7 @@ public partial class FloorInfo
     public string NavmapConfigPath { get; set; } = "";
     public List<FloorGroupInfo> GroupInstanceList { get; set; } = [];
     public List<FloorDimensionInfo> DimensionList { get; set; } = [];
+    [MemoryPackIgnore] public List<JObject> CustomValues { get; set; } = [];
 
     [JsonProperty(ItemConverterType = typeof(StringEnumConverter))]
     public List<LevelFeatureTypeEnum> LevelFeatureModules { get; set; } = [];
@@ -51,6 +53,29 @@ public partial class FloorInfo
         if (Loaded) return;
 
         StartGroupID = GroupInstanceList[StartGroupIndex].ID;
+
+        foreach (var data in CustomValues)
+        {
+            var type = data["$type"]?.ToString();
+            if (type is not "RPG.GameCore.FloorCustomBoolConfig" and
+                not "RPG.GameCore.FloorCustomFloatConfig") continue;
+
+            var name = data[nameof(FloorSavedValueInfo.Name)]?.ToString();
+            if (string.IsNullOrEmpty(name) || FloorSavedValue.Any(x => x.Name == name)) continue;
+
+            var defaultValue = data[nameof(FloorSavedValueInfo.DefaultValue)] switch
+            {
+                { Type: JTokenType.Boolean } value => value.Value<bool>() ? 1 : 0,
+                { Type: JTokenType.Integer or JTokenType.Float } value => (int)value.Value<double>(),
+                _ => 0
+            };
+            FloorSavedValue.Add(new FloorSavedValueInfo
+            {
+                ID = data[nameof(FloorSavedValueInfo.ID)]?.Value<int>() ?? 0,
+                Name = name,
+                DefaultValue = defaultValue
+            });
+        }
 
         foreach (var dimension in DimensionList) dimension.OnLoad(this);
 
