@@ -131,7 +131,7 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
         return new Column(p.Name, fqType, underlyingFq, kind, sql, nullable, prim);
     }
 
-    // Complex (MemoryPack) columns are serialized at top level, so List<>/Dictionary<> wrappers at every nesting
+    // Complex (MemoryPack) columns are serialized at top level, so collection wrappers at every nesting
     // level need their formatter registered up front — nothing else registers them (entities aren't
     // [MemoryPackable]), and under NativeAOT the provider's reflection fallback throws ("failed in provider at
     // creating formatter"). Walks the column type and records a Register(...) expression per collection level.
@@ -161,6 +161,15 @@ public sealed class DatabaseStoreGenerator : IIncrementalGenerator
                     {
                         var a = named.TypeArguments[0];
                         regs.Add($"new global::MemoryPack.Formatters.ListFormatter<{a.ToDisplayString(fmt)}>()");
+                        CollectCollectionFormatters(a, regs);
+                        return;
+                    }
+
+                    if (named.Name == "HashSet" && named.TypeArguments.Length == 1)
+                    {
+                        var a = named.TypeArguments[0];
+                        regs.Add(
+                            $"new global::MemoryPack.Formatters.GenericSetFormatter<{named.ToDisplayString(fmt)}, {a.ToDisplayString(fmt)}>()");
                         CollectCollectionFormatters(a, regs);
                         return;
                     }
