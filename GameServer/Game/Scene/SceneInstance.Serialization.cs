@@ -171,19 +171,6 @@ public partial class SceneInstance
 
         Player.SceneData!.FloorSavedData.TryGetValue(FloorId, out var floorData);
 
-        var floorTouchedByActivity = GameData.ContentPackageConfigData.Values
-            .Any(pkg => pkg.MainMissionIDList.Count > 0 && pkg.TouchesFloor(FloorId));
-
-        foreach (var value in FloorInfo?.FloorSavedValue ?? [])
-            if (floorData != null && floorData.TryGetValue(value.Name, out var v))
-                sceneInfo.FloorSavedData[value.Name] = v;
-            else if (value.Name.Contains("_IsHidden"))
-                sceneInfo.FloorSavedData[value.Name] = 0;
-            else if (floorTouchedByActivity && value.DefaultValue == 0)
-                sceneInfo.FloorSavedData[value.Name] = 1;
-            else
-                sceneInfo.FloorSavedData[value.Name] = value.DefaultValue;
-
         foreach (var value in floorData ?? [])
             sceneInfo.FloorSavedData[value.Key] = value.Value;
 
