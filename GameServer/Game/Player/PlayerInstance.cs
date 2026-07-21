@@ -9,6 +9,7 @@ using March7thHoney.Database.Tutorial;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Activity;
 using March7thHoney.GameServer.Game.Avatar;
+using March7thHoney.GameServer.Game.B51Racing;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.Challenge;
@@ -94,6 +95,7 @@ public partial class PlayerInstance(PlayerData data)
     // TODO 4.3: GridFight Manager 暂停编译
     public ExpeditionManager? ExpeditionManager { get; private set; }
     public ExpeditionBattleManager? ExpeditionBattleManager { get; private set; }
+    public B51RacingManager? B51RacingManager { get; private set; }
     public TrainPartyManager? TrainPartyManager { get; private set; }
 
     #endregion
@@ -189,6 +191,7 @@ public partial class PlayerInstance(PlayerData data)
         // TODO 4.3: GridFightManager 暂停初始化
         ExpeditionManager = new ExpeditionManager(this);
         ExpeditionBattleManager = new ExpeditionBattleManager(this);
+        B51RacingManager = new B51RacingManager(this);
         TrainPartyManager = new TrainPartyManager(this);
         TrainCakeCatchManager = new TrainCakeCatchManager(this);
         TaskManager = new TaskManager(this);
