@@ -2,7 +2,6 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Activity;
 using March7thHoney.GameServer.Game.Player;
-using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.B51Racing;
@@ -11,62 +10,6 @@ public class B51RacingManager(PlayerInstance player) : BasePlayerManager<B51Raci
 {
     private const uint PlayerTeamId = 10;
     private const uint DevelopmentActionLimit = 3;
-    private const string RacingRegionState = "B51RacingLevelRegionState";
-
-    public bool IsRacingSceneReady
-    {
-        get
-        {
-            var entrance = GetRacingEntrance();
-            return entrance != null && Player.Data.FloorId == entrance.FloorID &&
-                   Player.SceneInstance?.FloorId == entrance.FloorID;
-        }
-    }
-
-    public async ValueTask<bool> EnterRacingScene(uint trackId)
-    {
-        if (!GameData.B51RacingTrackData.ContainsKey((int)trackId)) return false;
-        var entrance = GetRacingEntrance();
-        if (entrance == null || !GameData.RaidConfigData.ContainsKey(entrance.ID * 100)) return false;
-
-        if (IsRacingSceneReady)
-        {
-            await Player.SceneInstance!.UpdateFloorSavedValue(RacingRegionState, (int)trackId);
-            return true;
-        }
-
-        if (!Player.SceneData!.FloorSavedData.TryGetValue(entrance.FloorID, out var floorSavedData))
-        {
-            floorSavedData = [];
-            Player.SceneData.FloorSavedData[entrance.FloorID] = floorSavedData;
-        }
-        floorSavedData[RacingRegionState] = (int)trackId;
-
-        if (Player.RaidManager!.Data.CurRaidId == entrance.ID)
-        {
-            await Player.EnterScene(entrance.ID, 0, true);
-            return IsRacingSceneReady;
-        }
-
-        if (Player.RaidManager.Data.CurRaidId != 0) return false;
-
-        var record = await Player.RaidManager.EnterRaid(entrance.ID, 0);
-        if (record == null || !IsRacingSceneReady) return false;
-
-        await Player.SendPacket(new PacketEnterSceneByServerScNotify(Player.SceneInstance!));
-        return true;
-    }
-
-    private static MapEntranceExcel? GetRacingEntrance()
-    {
-        foreach (var entrance in GameData.MapEntranceData.Values)
-        {
-            GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floor);
-            if (floor?.FloorSavedValue.Any(x => x.Name == RacingRegionState) == true) return entrance;
-        }
-
-        return null;
-    }
 
     public B51RacingGetDataScRsp BuildGetDataResponse()
     {
