@@ -1,4 +1,5 @@
 using MemoryPack;
+using March7thHoney.Data;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 
@@ -83,6 +84,12 @@ public partial class ChallengeHistoryData(int uid, int challengeId)
     public int TakenReward { get; set; }
     public int Stars { get; set; }
     public int Score { get; set; }
+    public int ScoreOne { get; set; }
+    public int ScoreTwo { get; set; }
+    public int BuffOne { get; set; }
+    public int BuffTwo { get; set; }
+    public bool FirstNodeWon { get; set; }
+    public bool SecondNodeWon { get; set; }
 
     public void SetStars(int stars)
     {
@@ -98,13 +105,43 @@ public partial class ChallengeHistoryData(int uid, int challengeId)
 
     public Proto.Challenge ToProto()
     {
+        var hasSplitScore = ScoreOne > 0 || ScoreTwo > 0;
+        var isBossChallenge = GameData.ChallengeConfigData.TryGetValue(ChallengeId, out var config) && config.IsBoss();
+        var firstNodeWon = FirstNodeWon || (isBossChallenge && Stars > 0 && Score > 0);
+        var secondNodeWon = SecondNodeWon || (isBossChallenge && Stars > 0 && Score > 0);
         var proto = new Proto.Challenge
         {
             ChallengeId = (uint)ChallengeId,
             TakenReward = (uint)TakenReward,
-            ScoreId = (uint)Score,
+            ScoreId = (uint)(hasSplitScore ? ScoreOne : Score),
+            ScoreTwo = (uint)ScoreTwo,
             Star = (uint)Stars
         };
+
+        if (firstNodeWon || secondNodeWon || BuffOne > 0 || BuffTwo > 0 || hasSplitScore || isBossChallenge)
+        {
+            proto.StageInfo = new ChallengeStageInfo
+            {
+                BossInfo = new ChallengeBossInfo
+                {
+                    FirstNode = new ChallengeBossSingleNodeInfo
+                    {
+                        BuffId = (uint)BuffOne,
+                        IsWin = firstNodeWon,
+                        MaxScore = (uint)ScoreOne,
+                        MBHCJPONJOM = firstNodeWon
+                    },
+                    SecondNode = new ChallengeBossSingleNodeInfo
+                    {
+                        BuffId = (uint)BuffTwo,
+                        IsWin = secondNodeWon,
+                        MaxScore = (uint)ScoreTwo,
+                        MBHCJPONJOM = secondNodeWon
+                    },
+                    Unk1 = true
+                }
+            };
+        }
 
         return proto;
     }

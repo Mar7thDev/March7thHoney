@@ -168,6 +168,7 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
         {
             // Last stage
             Memory.CurStatus = (int)ChallengeStatus.ChallengeFinish;
+            IsWin = true;
             Memory.Stars = CalculateStars();
 
             // Save history
