@@ -8,13 +8,6 @@ public class HandlerTrainPartyGetDataCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
-        var player = connection.Player!;
-        var manager = player.TrainPartyManager!;
-        manager.EnsureDefaults();
-
-        await connection.SendPacket(new PacketTrainPartyGetDataScRsp(player));
-        await connection.SendPacket(new PacketTrainPartyBuildRoomScNotify(player));
-        await connection.SendPacket(new PacketTrainWorldIdChangeScNotify(manager.GetWorldId()));
-        await connection.SendPacket(new PacketTrainRefreshTimeNotify(manager.GetRefreshTime()));
+        await connection.SendPacket(new PacketTrainPartyGetDataScRsp());
     }
 }
