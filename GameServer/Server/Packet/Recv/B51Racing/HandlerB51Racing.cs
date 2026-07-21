@@ -53,8 +53,16 @@ public class HandlerB51RacingStartMatchCsReq : Handler<B51RacingStartMatchCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, B51RacingStartMatchCsReq req)
     {
+        var manager = player.B51RacingManager!;
+        if (!await manager.EnterRacingScene(req.TrackId))
+        {
+            await connection.SendPacket(new PacketB51Racing(CmdIds.B51RacingStartMatchScRsp,
+                new B51RacingStartMatchScRsp { Retcode = (uint)Retcode.RetNotInCorrectScene }));
+            return;
+        }
+
         await connection.SendPacket(new PacketB51Racing(CmdIds.B51RacingStartMatchScRsp,
-            player.B51RacingManager!.StartMatch(req)));
+            manager.StartMatch(req)));
     }
 }
 
