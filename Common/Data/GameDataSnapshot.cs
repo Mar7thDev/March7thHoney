@@ -28,6 +28,7 @@ public partial class GameDataSnapshot
     public Dictionary<int, ExpeditionBattleMapExcel> ExpeditionBattleMapData { get; set; } = [];
     public Dictionary<int, ExpeditionBattleRouteExcel> ExpeditionBattleRouteData { get; set; } = [];
     public Dictionary<int, ExpeditionBattleLevelExcel> ExpeditionBattleLevelData { get; set; } = [];
+    public B51RacingGameDataSnapshot B51RacingData { get; set; } = new();
     public Dictionary<int, MarbleMatchInfoExcel> MarbleMatchInfoData { get; set; } = [];
     public Dictionary<int, MarbleSealExcel> MarbleSealData { get; set; } = [];
     public Dictionary<int, AvatarConfigExcel> AvatarConfigData { get; set; } = [];
@@ -269,6 +270,24 @@ public partial class GameDataSnapshot
     public Dictionary<int, DailyActiveQuestPoolExcel> DailyActiveQuestPoolData { get; set; } = [];
 }
 
+[MemoryPackable]
+public partial class B51RacingGameDataSnapshot
+{
+    public Dictionary<int, B51RacingAgendaExcel> AgendaData { get; set; } = [];
+    public Dictionary<int, B51RacingCarExcel> CarData { get; set; } = [];
+    public Dictionary<int, B51RacingChallengeCarExcel> ChallengeCarData { get; set; } = [];
+    public Dictionary<int, B51RacingCycleExcel> CycleData { get; set; } = [];
+    public Dictionary<int, B51RacingDevelopmentActionExcel> DevelopmentActionData { get; set; } = [];
+    public Dictionary<int, B51RacingDriverExcel> DriverData { get; set; } = [];
+    public Dictionary<int, B51RacingLiveryExcel> LiveryData { get; set; } = [];
+    public Dictionary<int, B51RacingMatchExcel> MatchData { get; set; } = [];
+    public Dictionary<int, B51RacingPartExcel> PartData { get; set; } = [];
+    public Dictionary<int, B51RacingSkillExcel> SkillData { get; set; } = [];
+    public Dictionary<int, B51RacingStatExcel> StatData { get; set; } = [];
+    public Dictionary<int, B51RacingTeamExcel> TeamData { get; set; } = [];
+    public Dictionary<int, B51RacingTrackExcel> TrackData { get; set; } = [];
+}
+
 public static partial class GameData
 {
     public static GameDataSnapshot CreateSnapshot()
@@ -283,6 +302,22 @@ public static partial class GameData
             ExpeditionBattleMapData = GameData.ExpeditionBattleMapData,
             ExpeditionBattleRouteData = GameData.ExpeditionBattleRouteData,
             ExpeditionBattleLevelData = GameData.ExpeditionBattleLevelData,
+            B51RacingData = new B51RacingGameDataSnapshot
+            {
+                AgendaData = GameData.B51RacingAgendaData,
+                CarData = GameData.B51RacingCarData,
+                ChallengeCarData = GameData.B51RacingChallengeCarData,
+                CycleData = GameData.B51RacingCycleData,
+                DevelopmentActionData = GameData.B51RacingDevelopmentActionData,
+                DriverData = GameData.B51RacingDriverData,
+                LiveryData = GameData.B51RacingLiveryData,
+                MatchData = GameData.B51RacingMatchData,
+                PartData = GameData.B51RacingPartData,
+                SkillData = GameData.B51RacingSkillData,
+                StatData = GameData.B51RacingStatData,
+                TeamData = GameData.B51RacingTeamData,
+                TrackData = GameData.B51RacingTrackData
+            },
             MarbleMatchInfoData = GameData.MarbleMatchInfoData,
             MarbleSealData = GameData.MarbleSealData,
             AvatarConfigData = GameData.AvatarConfigData,
@@ -533,6 +568,19 @@ public static partial class GameData
         GameData.ExpeditionBattleMapData = snapshot.ExpeditionBattleMapData;
         GameData.ExpeditionBattleRouteData = snapshot.ExpeditionBattleRouteData;
         GameData.ExpeditionBattleLevelData = snapshot.ExpeditionBattleLevelData;
+        GameData.B51RacingAgendaData = snapshot.B51RacingData.AgendaData;
+        GameData.B51RacingCarData = snapshot.B51RacingData.CarData;
+        GameData.B51RacingChallengeCarData = snapshot.B51RacingData.ChallengeCarData;
+        GameData.B51RacingCycleData = snapshot.B51RacingData.CycleData;
+        GameData.B51RacingDevelopmentActionData = snapshot.B51RacingData.DevelopmentActionData;
+        GameData.B51RacingDriverData = snapshot.B51RacingData.DriverData;
+        GameData.B51RacingLiveryData = snapshot.B51RacingData.LiveryData;
+        GameData.B51RacingMatchData = snapshot.B51RacingData.MatchData;
+        GameData.B51RacingPartData = snapshot.B51RacingData.PartData;
+        GameData.B51RacingSkillData = snapshot.B51RacingData.SkillData;
+        GameData.B51RacingStatData = snapshot.B51RacingData.StatData;
+        GameData.B51RacingTeamData = snapshot.B51RacingData.TeamData;
+        GameData.B51RacingTrackData = snapshot.B51RacingData.TrackData;
         GameData.MarbleMatchInfoData = snapshot.MarbleMatchInfoData;
         GameData.MarbleSealData = snapshot.MarbleSealData;
         GameData.AvatarConfigData = snapshot.AvatarConfigData;

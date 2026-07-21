@@ -3,21 +3,46 @@ syntax = "proto3";
 option csharp_namespace = "March7thHoney.Proto";
 
 import "Common.proto";
+import "CmdB51RacingType.proto";
 
-message BCJNPKDDKDK {
-    uint32 JBLABOEPILK = 5;
-    uint32 KPGNEGMDKCI = 9;
-    uint32 FPKJMJADEBI = 11;
+message B51RacingChallengeEndMatchCsReq {
+    uint32 match_id = 9;
+    B51RacingMatchStats stats = 1;
+    uint32 rank = 11;
+    HPICFNLLMCO result_type = 13;
+    uint32 track_id = 14;
+    uint32 finish_time_ms = 15;
+    uint32 random_seed = 8;
 }
 
-message CAIHDDPGGJA {
-    uint32 FPKJMJADEBI = 9;
-    HCAJDCFFEAE EDKMCLPFFOE = 1;
-    uint32 CJIHHBEOLPP = 11;
-    HPICFNLLMCO LMKKBGJEEJF = 13;
-    uint32 KPGNEGMDKCI = 14;
-    uint32 BDDGFOPHBML = 15;
-    uint32 KGGPPGLFICI = 8;
+message B51RacingChallengeEndMatchScRsp {
+    uint32 score = 14;
+    uint32 match_id = 9;
+    uint32 track_id = 15;
+    uint32 retcode = 4;
+}
+
+message B51RacingChallengeStartMatchCsReq {
+    uint32 driver_id = 5;
+    uint32 track_id = 9;
+    uint32 match_id = 11;
+}
+
+message B51RacingChallengeStartMatchScRsp {
+    uint32 random_seed = 5;
+    uint32 driver_id = 10;
+    uint32 retcode = 12;
+}
+
+message B51RacingChallengeUpdateCarCsReq {
+    repeated uint32 equipped_part_id_list = 10;
+    B51RacingCarLivery livery = 3;
+    uint32 cycle_id = 12;
+}
+
+message B51RacingChallengeUpdateCarScRsp {
+    uint32 retcode = 4;
+    B51RacingChallengeCarData car = 8;
 }
 
 enum CmdB51RacingExtType {
