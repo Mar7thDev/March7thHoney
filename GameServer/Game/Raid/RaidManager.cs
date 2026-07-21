@@ -75,23 +75,17 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         if (record == null)
         {
             // first enter
-            var firstMission = excel.MainMissionIDList.FirstOrDefault();
-            var entranceId = excel.RaidID;
-            if (firstMission != 0)
-            {
-                var subMissionId = GameData.MainMissionData[firstMission].MissionInfo!.StartSubMissionList[0];
-                var subMission = GameData.SubMissionInfoData[subMissionId];
-                entranceId = int.Parse(subMission.SubMissionInfo!.LevelFloorID.ToString().Replace("00", "0"));
-                if (!GameData.MapEntranceData.ContainsKey(entranceId))
-                    entranceId = subMission.SubMissionInfo.LevelFloorID;
-            }
+            var entranceId = 0;
+            var firstMission = excel.MainMissionIDList[0];
+            var subMissionId =
+                GameData.MainMissionData[firstMission].MissionInfo!.StartSubMissionList[0]; // get the first sub mission
+            var subMission = GameData.SubMissionInfoData[subMissionId];
 
-            if (!GameData.MapEntranceData.ContainsKey(entranceId))
-            {
-                Data.CurRaidId = 0;
-                Data.CurRaidWorldLevel = 0;
-                return null;
-            }
+            entranceId =
+                int.Parse(subMission.SubMissionInfo!.LevelFloorID.ToString()
+                    .Replace("00", "0")); // get entrance id  ( need to find a better way to do it )
+
+            if (!GameData.MapEntranceData.ContainsKey(entranceId)) entranceId = subMission.SubMissionInfo!.LevelFloorID;
 
             if (avatarList?.Count > 0)
             {
@@ -142,7 +136,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             var oldPos = Player.Data.Pos;
             var oldRot = Player.Data.Rot;
 
-            if (firstMission != 0) await Player.MissionManager!.AcceptMainMission(firstMission);
+            await Player.MissionManager!.AcceptMainMission(firstMission);
 
             await Player.EnterScene(entranceId, 0, false);
 
