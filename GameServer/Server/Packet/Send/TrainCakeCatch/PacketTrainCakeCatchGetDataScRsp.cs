@@ -1,12 +1,12 @@
-using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Kcp;
+using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Send.TrainCakeCatch;
 
 public class PacketTrainCakeCatchGetDataScRsp : BasePacket
 {
-    public PacketTrainCakeCatchGetDataScRsp(PlayerInstance player) : base(CmdIds.TrainCakeCatchGetDataScRsp)
+    public PacketTrainCakeCatchGetDataScRsp() : base(CmdIds.TrainCakeCatchGetDataScRsp)
     {
-        SetData(player.TrainCakeCatchManager!.ToGetDataProto());
+        SetData(new TrainCakeCatchGetDataScRsp());
     }
 }

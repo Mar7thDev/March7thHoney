@@ -8,9 +8,6 @@ public class HandlerTrainCakeCatchGetDataCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
-        var player = connection.Player!;
-        player.TrainCakeCatchManager!.EnsureDefaults();
-        await player.TrainCakeCatchManager!.UnlockAllPerformanceQuests();
-        await connection.SendPacket(new PacketTrainCakeCatchGetDataScRsp(player));
+        await connection.SendPacket(new PacketTrainCakeCatchGetDataScRsp());
     }
 }
