@@ -1,7 +1,7 @@
 using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("ChallengeTargetConfig.json,ChallengeStoryTargetConfig.json", true)]
+[ResourceEntity("ChallengeTargetConfig.json,ChallengeStoryTargetConfig.json,ChallengeBossTargetConfig.json", true)]
 [MemoryPackable]
 public partial class ChallengeTargetExcel : ExcelResource
 {
