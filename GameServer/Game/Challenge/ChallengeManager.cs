@@ -134,7 +134,8 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
         SaveInstance(instance);
     }
 
-    public void AddHistory(int challengeId, int stars, int score)
+    public void AddHistory(int challengeId, int stars, int score, int scoreOne = 0, int scoreTwo = 0,
+        int buffOne = 0, int buffTwo = 0, bool firstNodeWon = false, bool secondNodeWon = false)
     {
         if (stars <= 0) return;
 
@@ -145,6 +146,12 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
         // Set
         info.SetStars(stars);
         info.Score = score;
+        info.ScoreOne = scoreOne;
+        info.ScoreTwo = scoreTwo;
+        info.BuffOne = buffOne;
+        info.BuffTwo = buffTwo;
+        info.FirstNodeWon = firstNodeWon;
+        info.SecondNodeWon = secondNodeWon;
         DatabaseHelper.MarkDirty(Player.Uid);
     }
 

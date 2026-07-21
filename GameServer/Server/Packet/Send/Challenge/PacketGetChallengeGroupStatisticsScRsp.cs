@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.Database.Friend;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -12,8 +13,11 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
     {
         var proto = new GetChallengeGroupStatisticsScRsp
         {
-            GroupId = groupId
+            GroupId = groupId,
+            Retcode = 0
         };
+
+        var hasStatistics = false;
 
         if (data != null)
         {
@@ -33,6 +37,7 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
                     }
                 };
                 AddLineups(proto.ChallengeStory.PPBHLLOJNEK.LineupList, top.Lineups);
+                hasStatistics = true;
             }
             else if (data.MemoryGroupStatistics != null && data.MemoryGroupStatistics.Count > 0)
             {
@@ -48,6 +53,7 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
                     }
                 };
                 AddLineups(proto.ChallengeDefault.PPBHLLOJNEK.LineupList, top.Lineups);
+                hasStatistics = true;
             }
             else if (data.BossGroupStatistics != null && data.BossGroupStatistics.Count > 0)
             {
@@ -65,10 +71,35 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
                     }
                 };
                 AddLineups(proto.ChallengeBoss.PPBHLLOJNEK.LineupList, top.Lineups);
+                hasStatistics = true;
             }
         }
+        
+        if (!hasStatistics)
+            AddBossStatisticsFallback(proto, groupId);
 
         SetData(proto);
+    }
+
+    private static void AddBossStatisticsFallback(GetChallengeGroupStatisticsScRsp proto, uint groupId)
+    {
+        var top = GameData.ChallengeConfigData.Values
+            .Where(x => (uint)x.GroupID == groupId && x.IsBoss())
+            .MaxBy(x => x.Floor);
+
+        if (top == null)
+            return;
+
+        proto.ChallengeBoss = new ChallengeBossStatistics
+        {
+            RecordId = 1,
+            PPBHLLOJNEK = new AANLJBLOOFO
+            {
+                Level = top.Floor,
+                EEJCPNAEKLJ = top.Floor,
+                ScoreId = top.Floor * 1000u
+            }
+        };
     }
 
     private static void AddLineups(RepeatedField<ChallengeLineupList> target,

@@ -213,6 +213,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         }
 
         if (gainItems.Count > 0) await Player.InventoryManager!.AddItems(gainItems);
+        if (rspGroups.Count > 0) DatabaseHelper.MarkDirty(Player.Uid);
         return rspGroups;
     }
 
@@ -257,6 +258,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             }; // reset
         }
 
+        DatabaseHelper.MarkDirty(Player.Uid);
         await Player.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(GetChallengePeakInfo(groupId)));
     }
 
@@ -332,6 +334,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             Player.ChallengeManager!.ChallengeData.PeakLevelDatas[levelId] = data;
         }
 
+        DatabaseHelper.MarkDirty(Player.Uid);
         await Player.SendPacket(
             new PacketChallengePeakGroupDataUpdateScNotify(
                 GetChallengePeakInfo((int)inst.Data.Peak!.CurrentPeakGroupId, !inst.Data.Peak!.IsHard)));

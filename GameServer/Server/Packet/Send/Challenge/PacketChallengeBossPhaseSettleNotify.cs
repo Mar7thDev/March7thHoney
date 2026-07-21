@@ -14,6 +14,7 @@ public class PacketChallengeBossPhaseSettleNotify : BasePacket
         {
             ChallengeId = (uint)challenge.Config.ID,
             IsWin = challenge.IsWin,
+            IsSecondHalf = challenge.Data.Boss!.CurrentStage == 2,
             ChallengeScore = (uint)challenge.Data.Boss!.ScoreStage1,
             ScoreTwo = (uint)challenge.Data.Boss!.ScoreStage2,
             Star = (uint)challenge.Data.Boss!.Stars,

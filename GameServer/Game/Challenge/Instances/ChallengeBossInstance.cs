@@ -278,10 +278,15 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
         {
             // Last stage
             Boss.CurStatus = (int)ChallengeStatus.ChallengeFinish;
+            IsWin = true;
             Boss.Stars = CalculateStars();
 
             // Save history
-            Player.ChallengeManager!.AddHistory((int)Boss.ChallengeMazeId, (int)GetStars(), GetTotalScore());
+            Player.ChallengeManager!.AddHistory((int)Boss.ChallengeMazeId, (int)GetStars(), GetTotalScore(),
+                (int)Boss.ScoreStage1, (int)Boss.ScoreStage2,
+                Boss.Buffs.Count > 0 ? (int)Boss.Buffs[0] : 0,
+                Boss.Buffs.Count > 1 ? (int)Boss.Buffs[1] : 0,
+                true, true);
 
             // Send challenge result data
             await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, req.Stt.BattleTargetInfo[1]));

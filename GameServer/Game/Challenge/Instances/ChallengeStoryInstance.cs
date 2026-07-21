@@ -211,10 +211,15 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
         {
             // Last stage
             Story.CurStatus = (int)ChallengeStatus.ChallengeFinish;
+            IsWin = true;
             Story.Stars = CalculateStars();
 
             // Save history
-            Player.ChallengeManager!.AddHistory((int)Story.ChallengeMazeId, (int)GetStars(), GetTotalScore());
+            Player.ChallengeManager!.AddHistory((int)Story.ChallengeMazeId, (int)GetStars(), GetTotalScore(),
+                (int)Story.ScoreStage1, (int)Story.ScoreStage2,
+                Story.Buffs.Count > 0 ? (int)Story.Buffs[0] : 0,
+                Story.Buffs.Count > 1 ? (int)Story.Buffs[1] : 0,
+                Story.ScoreStage1 > 0, Story.ScoreStage2 > 0);
 
             // Send challenge result data
             await Player.SendPacket(new PacketChallengeSettleNotify(this));
