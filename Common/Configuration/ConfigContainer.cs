@@ -22,7 +22,7 @@ public class HttpServerConfig
     public int Port { get; set; } = 21000;
     public bool UseSSL { get; set; } = false;
     public bool SendHotfix { get; set; } = true;
-    public bool UseFetchRemoteHotfix { get; set; } = false;
+    public bool UseFetchRemoteHotfix { get; set; } = true;
 
     public string GetDisplayAddress()
     {

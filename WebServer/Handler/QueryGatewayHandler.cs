@@ -100,24 +100,19 @@ internal class QueryGatewayHandler
     {
         try
         {
-            var gatewayUrl = GetGatewayUrlByVersion(req.version);
+            var gatewayUrl = await GetGatewayUrlByVersion(req.version);
             var queryParams = new Dictionary<string, string>
             {
                 ["version"] = req.version,
-                ["t"] = req.t,
-                ["uid"] = req.uid,
-                ["language_type"] = req.language_type,
-                ["platform_type"] = req.platform_type,
+                ["language_type"] = ValueOrDefault(req.language_type, "3"),
+                ["platform_type"] = ValueOrDefault(req.platform_type, "1"),
                 ["dispatch_seed"] = req.dispatch_seed,
-                ["channel_id"] = req.channel_id,
-                ["sub_channel_id"] = req.sub_channel_id,
-                ["is_need_url"] = req.is_need_url,
-                ["game_version"] = req.game_version,
-                ["account_type"] = req.account_type,
-                ["account_uid"] = req.account_uid
+                ["channel_id"] = ValueOrDefault(req.channel_id, "1"),
+                ["sub_channel_id"] = ValueOrDefault(req.sub_channel_id, "1"),
+                ["is_need_url"] = ValueOrDefault(req.is_need_url, "1")
             };
 
-            var queryString = string.Join("&", queryParams.Select(kv => $"{kv.Key}={kv.Value}"));
+            var queryString = BuildQueryString(queryParams);
             var fullUrl = $"{gatewayUrl}?{queryString}";
 
             var (statusCode, response) = await HttpNetwork.SendGetRequest(fullUrl, 5);
@@ -129,17 +124,35 @@ internal class QueryGatewayHandler
                     var bytes = Convert.FromBase64String(response);
                     var remoteGateServer = GateServer.Parser.ParseFrom(bytes);
 
-                    if (!string.IsNullOrEmpty(remoteGateServer.AssetBundleUrl))
+                    if (HasHotfixUrl(remoteGateServer))
                     {
                         gateServer.AssetBundleUrl = remoteGateServer.AssetBundleUrl;
                         gateServer.AssetBundleUrlAndroid = remoteGateServer.AssetBundleUrlAndroid;
                         gateServer.ExResourceUrl = remoteGateServer.ExResourceUrl;
                         gateServer.LuaUrl = remoteGateServer.LuaUrl;
                         gateServer.IfixUrl = remoteGateServer.IfixUrl;
+
+                        try
+                        {
+                            var changed = ConfigManager.UpdateHotfixData(req.version, new DownloadUrlConfig
+                            {
+                                AssetBundleUrl = remoteGateServer.AssetBundleUrl,
+                                ExAssetBundleUrl = remoteGateServer.AssetBundleUrlAndroid,
+                                ExResourceUrl = remoteGateServer.ExResourceUrl,
+                                LuaUrl = remoteGateServer.LuaUrl,
+                                IfixUrl = remoteGateServer.IfixUrl
+                            });
+                            if (changed) Logger.Info($"Saved remote hotfix for version: {req.version}");
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.Warn($"Failed to persist remote hotfix for {req.version}: {ex.Message}");
+                        }
+
                         return true;
                     }
 
-                    Logger.Warn("Remote hotfix return empty, fall back to local hotfix");
+                    Logger.Warn($"Remote hotfix returned no URL (retcode={remoteGateServer.Retcode}), fall back to local hotfix");
                 }
                 catch (Exception ex)
                 {
@@ -161,7 +174,7 @@ internal class QueryGatewayHandler
 
     private void UseLocalHotfix(GateWayRequest req, string baseUrl, GateServer gateServer)
     {
-        ConfigManager.Hotfix.HotfixData.TryGetValue(req.version, out var urls);
+        ConfigManager.TryGetHotfixData(req.version, out var urls);
 
         if (urls != null)
         {
@@ -215,7 +228,72 @@ internal class QueryGatewayHandler
         return string.Empty;
     }
 
-    private string GetGatewayUrlByVersion(string version)
+    private async Task<string> GetGatewayUrlByVersion(string version)
+    {
+        var fallback = GetFallbackGatewayUrlByVersion(version);
+
+        try
+        {
+            var queryParams = new Dictionary<string, string>
+            {
+                ["version"] = version,
+                ["language_type"] = "3",
+                ["platform_type"] = "3",
+                ["channel_id"] = "1",
+                ["sub_channel_id"] = "1",
+                ["is_new_format"] = "1"
+            };
+            var dispatchUrl = GetDispatchUrlByVersion(version);
+            var (statusCode, response) = await HttpNetwork.SendGetRequest(
+                $"{dispatchUrl}?{BuildQueryString(queryParams)}", 5);
+
+            if (statusCode != 200 || string.IsNullOrWhiteSpace(response))
+            {
+                Logger.Warn($"Remote dispatch request failed with status: {statusCode}, use fallback gateway");
+                return fallback;
+            }
+
+            var dispatch = Dispatch.Parser.ParseFrom(Convert.FromBase64String(response));
+            var region = SelectPreferredRegion(dispatch, version);
+            if (region == null || string.IsNullOrWhiteSpace(region.DispatchUrl))
+            {
+                Logger.Warn("Remote dispatch returned no usable gateway, use fallback gateway");
+                return fallback;
+            }
+
+            Debug($"Remote dispatch selected gateway: region={region.Name} url={region.DispatchUrl}");
+            return region.DispatchUrl;
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"Remote dispatch lookup failed: {ex.Message}; use fallback gateway");
+            return fallback;
+        }
+    }
+
+    private static RegionInfo? SelectPreferredRegion(Dispatch dispatch, string version)
+    {
+        var regions = dispatch.RegionList.Where(region => !string.IsNullOrWhiteSpace(region.DispatchUrl));
+        if (version.StartsWith("OS", StringComparison.OrdinalIgnoreCase))
+            return regions.FirstOrDefault(region =>
+                       region.Name.Contains("asia", StringComparison.OrdinalIgnoreCase))
+                   ?? regions.FirstOrDefault();
+
+        return regions.FirstOrDefault();
+    }
+
+    private static string GetDispatchUrlByVersion(string version)
+    {
+        if (version.Contains("CNBETA", StringComparison.OrdinalIgnoreCase))
+            return GateWayBaseUrl.CNBETA_DISPATCH;
+        if (version.Contains("CNPROD", StringComparison.OrdinalIgnoreCase))
+            return GateWayBaseUrl.CNPROD_DISPATCH;
+        if (version.Contains("OSBETA", StringComparison.OrdinalIgnoreCase))
+            return GateWayBaseUrl.OSBETA_DISPATCH;
+        return GateWayBaseUrl.OSPROD_DISPATCH;
+    }
+
+    private static string GetFallbackGatewayUrlByVersion(string version)
     {
         if (version.Contains("CNPROD", StringComparison.OrdinalIgnoreCase))
         {
@@ -236,5 +314,25 @@ internal class QueryGatewayHandler
 
         var region = version[..2];
         return region.Equals("CN", StringComparison.OrdinalIgnoreCase) ? GateWayBaseUrl.CNPROD : GateWayBaseUrl.OSPROD;
+    }
+
+    private static bool HasHotfixUrl(GateServer gateServer)
+    {
+        return !string.IsNullOrWhiteSpace(gateServer.AssetBundleUrl)
+               || !string.IsNullOrWhiteSpace(gateServer.AssetBundleUrlAndroid)
+               || !string.IsNullOrWhiteSpace(gateServer.ExResourceUrl)
+               || !string.IsNullOrWhiteSpace(gateServer.LuaUrl)
+               || !string.IsNullOrWhiteSpace(gateServer.IfixUrl);
+    }
+
+    private static string BuildQueryString(IEnumerable<KeyValuePair<string, string>> parameters)
+    {
+        return string.Join("&", parameters.Select(pair =>
+            $"{Uri.EscapeDataString(pair.Key)}={Uri.EscapeDataString(pair.Value)}"));
+    }
+
+    private static string ValueOrDefault(string value, string fallback)
+    {
+        return string.IsNullOrWhiteSpace(value) ? fallback : value;
     }
 }
