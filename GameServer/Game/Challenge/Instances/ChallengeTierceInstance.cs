@@ -38,10 +38,7 @@ public class ChallengeTierceInstance : BaseChallengeInstance
     public List<int> StageScores { get; } = [0, 0, 0];
     public int GetTotalScore() => StageScores.Sum();
 
-    // AS final settle reports only the final node's score, PF/MOC use the sum.
-    public int GetRecordScore() => IsBossMode
-        ? (StageScores.Count > 2 ? StageScores[2] : 0)
-        : GetTotalScore();
+    public int GetRecordScore() => GetTotalScore();
 
     public bool IsStoryMode => PreConfig.IsStory();
     public bool IsBossMode => PreConfig.IsBoss();

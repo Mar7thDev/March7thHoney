@@ -45,6 +45,7 @@ public partial class ChallengeTierceHistoryData
     public List<uint> StageScores { get; set; } = [];
     public uint UsedCycleCount { get; set; }
     public uint RecordScore { get; set; }
+    public uint RecordId { get; set; }
 }
 
 [MemoryPackable]
@@ -107,8 +108,6 @@ public partial class ChallengeHistoryData(int uid, int challengeId)
     {
         var hasSplitScore = ScoreOne > 0 || ScoreTwo > 0;
         var isBossChallenge = GameData.ChallengeConfigData.TryGetValue(ChallengeId, out var config) && config.IsBoss();
-        var firstNodeWon = FirstNodeWon || (isBossChallenge && Stars > 0 && Score > 0);
-        var secondNodeWon = SecondNodeWon || (isBossChallenge && Stars > 0 && Score > 0);
         var proto = new Proto.Challenge
         {
             ChallengeId = (uint)ChallengeId,
@@ -118,7 +117,7 @@ public partial class ChallengeHistoryData(int uid, int challengeId)
             Star = (uint)Stars
         };
 
-        if (firstNodeWon || secondNodeWon || BuffOne > 0 || BuffTwo > 0 || hasSplitScore || isBossChallenge)
+        if (isBossChallenge && (FirstNodeWon || SecondNodeWon || BuffOne > 0 || BuffTwo > 0 || hasSplitScore))
         {
             proto.StageInfo = new ChallengeStageInfo
             {
@@ -127,16 +126,16 @@ public partial class ChallengeHistoryData(int uid, int challengeId)
                     FirstNode = new ChallengeBossSingleNodeInfo
                     {
                         BuffId = (uint)BuffOne,
-                        IsWin = firstNodeWon,
+                        IsWin = FirstNodeWon,
                         MaxScore = (uint)ScoreOne,
-                        MBHCJPONJOM = firstNodeWon
+                        MBHCJPONJOM = FirstNodeWon
                     },
                     SecondNode = new ChallengeBossSingleNodeInfo
                     {
                         BuffId = (uint)BuffTwo,
-                        IsWin = secondNodeWon,
+                        IsWin = SecondNodeWon,
                         MaxScore = (uint)ScoreTwo,
-                        MBHCJPONJOM = secondNodeWon
+                        MBHCJPONJOM = SecondNodeWon
                     },
                     Unk1 = true
                 }
