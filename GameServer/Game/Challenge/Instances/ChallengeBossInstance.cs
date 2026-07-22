@@ -231,21 +231,12 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
                 await Player.MoveTo(Boss.StartPos, Boss.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
+            case BattleEndStatus.BattleEndLose:
+                await AdvanceStage(req);
+                break;
             default:
-                // Determine challenge result
-                if (req.Stt.EndReason == BattleEndReason.TurnLimit)
-                {
-                    await AdvanceStage(req);
-                }
-                else
-                {
-                    // Fail challenge
-                    Boss.CurStatus = (int)ChallengeStatus.ChallengeFailed;
-
-                    // Send challenge result data
-                    await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this));
-                }
-
+                Boss.CurStatus = (int)ChallengeStatus.ChallengeFailed;
+                await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this));
                 break;
         }
     }
