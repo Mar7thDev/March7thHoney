@@ -374,6 +374,14 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         }
         NormaliseSlots(history);
 
+        history.StageCleared[(int)stageIndex] = true;
+        if (stageIndex < inst.StageLineupSnapshot.Count)
+            history.StageLineups[(int)stageIndex] = inst.StageLineupSnapshot[(int)stageIndex].ToList();
+        if (stageIndex < inst.StageBuffIds.Count)
+            history.StageBuffIds[(int)stageIndex] = inst.StageBuffIds[(int)stageIndex];
+        if (stageIndex < inst.StageScores.Count)
+            history.StageScores[(int)stageIndex] = (uint)Math.Max(0, inst.StageScores[(int)stageIndex]);
+
         if (inst.IsPassed)
         {
             var usedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool);
@@ -402,18 +410,27 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
             return;
         }
 
-        history.StageCleared[(int)stageIndex] = true;
-        if (stageIndex < inst.StageLineupSnapshot.Count)
-            history.StageLineups[(int)stageIndex] = inst.StageLineupSnapshot[(int)stageIndex].ToList();
-        if (stageIndex < inst.StageBuffIds.Count)
-            history.StageBuffIds[(int)stageIndex] = inst.StageBuffIds[(int)stageIndex];
-        if (stageIndex < inst.StageScores.Count)
-            history.StageScores[(int)stageIndex] = (uint)Math.Max(0, inst.StageScores[(int)stageIndex]);
+        EnsureHistoryCompletion(inst.Config, history);
 
         if (history.RecordId == 0)
             history.RecordId = Player.FriendRecordData!.AllocateChallengeRecordId();
 
         DatabaseHelper.MarkDirty(Player.Uid);
+    }
+
+    public bool EnsureHistoryCompletion(ChallengeMazeTierceConfigExcel config, ChallengeTierceHistoryData history)
+    {
+        NormaliseSlots(history);
+        if (!history.StageCleared.All(cleared => cleared)) return false;
+        if (history.IsPassed && history.FinishedTargetList.Count > 0) return true;
+
+        history.IsPassed = true;
+        history.Stars = (uint)config.ChallengeTargetID.Count;
+        history.FinishedTargetList = config.ChallengeTargetID.Select(targetId => (uint)targetId).ToList();
+        if (config.ChallengeTierceTargetID != 0)
+            history.FinishedTargetList.Add((uint)config.ChallengeTierceTargetID);
+        DatabaseHelper.MarkDirty(Player.Uid);
+        return true;
     }
 
     // Re-shape slot lists to exactly 3 entries. Newtonsoft.Json deserialisation appends to a
