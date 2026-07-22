@@ -174,7 +174,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
             if (tierceExcel != null &&
                 ChallengeData.TierceHistory.TryGetValue(tierceExcel.ID, out var tierceHistory))
             {
-                Player.ChallengeTierceManager!.EnsureHistoryCompletion(tierceExcel, tierceHistory);
+                Player.ChallengeTierceManager!.RefreshHistoryProgress(tierceExcel, tierceHistory);
                 if (tierceHistory.FinishedTargetList.Count > 0)
                 {
                     totalStars += tierceExcel.ChallengeTargetID.Count(targetId =>
