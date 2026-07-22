@@ -193,6 +193,9 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         };
         instance.StageLineupSnapshot.AddRange(snapshot);
         instance.StageBuffIds.AddRange(buffs);
+        if (hasHistory)
+            for (var i = 0; i < 3 && i < history!.StageScores.Count; i++)
+                instance.StageScores[i] = (int)history.StageScores[i];
 
         CurrentInstance = instance;
         Player.ChallengeManager!.ChallengeInstance = instance;
@@ -344,6 +347,7 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
             ChallengeData.TierceHistory[(int)challengeId] = history;
         }
         NormaliseSlots(history);
+        if (history.IsPassed) return;
 
         for (var i = 0; i < stageInfoList.Count && i < 3; i++)
         {
@@ -370,6 +374,45 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         }
         NormaliseSlots(history);
 
+        if (history.IsPassed && !inst.IsPassed) return;
+
+        if (inst.IsPassed)
+        {
+            var usedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool);
+            var recordScore = (uint)Math.Max(0, inst.GetRecordScore());
+            if (history.IsPassed)
+            {
+                var keepExisting = inst.IsSingleStage && !inst.IsStoryMode && !inst.IsBossMode;
+                if (inst.IsStoryMode || inst.IsBossMode)
+                    keepExisting = history.RecordScore >= recordScore;
+                else if (!keepExisting)
+                    keepExisting = history.UsedCycleCount <= usedCycleCount;
+                if (keepExisting) return;
+            }
+
+            for (var i = 0; i < 3; i++)
+            {
+                history.StageCleared[i] = true;
+                if (i < inst.StageLineupSnapshot.Count)
+                    history.StageLineups[i] = inst.StageLineupSnapshot[i].ToList();
+                if (i < inst.StageBuffIds.Count)
+                    history.StageBuffIds[i] = inst.StageBuffIds[i];
+                if (i < inst.StageScores.Count)
+                    history.StageScores[i] = (uint)Math.Max(0, inst.StageScores[i]);
+            }
+
+            history.IsPassed = true;
+            history.Stars = (uint)inst.Config.ChallengeTargetID.Count(targetId =>
+                inst.FinishedTargetList.Contains((uint)targetId));
+            history.FinishedTargetList = inst.FinishedTargetList.ToList();
+            history.UsedCycleCount = usedCycleCount;
+            history.RecordScore = recordScore;
+            if (history.RecordId == 0)
+                history.RecordId = Player.FriendRecordData!.AllocateChallengeRecordId();
+            DatabaseHelper.MarkDirty(Player.Uid);
+            return;
+        }
+
         history.StageCleared[(int)stageIndex] = true;
         if (stageIndex < inst.StageLineupSnapshot.Count)
             history.StageLineups[(int)stageIndex] = inst.StageLineupSnapshot[(int)stageIndex].ToList();
@@ -378,18 +421,8 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         if (stageIndex < inst.StageScores.Count)
             history.StageScores[(int)stageIndex] = (uint)Math.Max(0, inst.StageScores[(int)stageIndex]);
 
-        if (history.StageCleared.All(c => c))
-            history.IsPassed = true;
-
-        if (inst.IsPassed)
-        {
-            history.IsPassed = true;
-            history.Stars = (uint)inst.Config.ChallengeTargetID.Count(targetId =>
-                inst.FinishedTargetList.Contains((uint)targetId));
-            history.FinishedTargetList = inst.FinishedTargetList.ToList();
-            history.UsedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool);
-            history.RecordScore = (uint)Math.Max(0, inst.GetRecordScore());
-        }
+        if (history.RecordId == 0)
+            history.RecordId = Player.FriendRecordData!.AllocateChallengeRecordId();
 
         DatabaseHelper.MarkDirty(Player.Uid);
     }
@@ -425,6 +458,76 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
     public ChallengeTierceData? BuildHistorySnapshotFor(int challengeId)
     {
         return ChallengeData.TierceHistory.TryGetValue(challengeId, out var h) ? BuildHistorySnapshot(h) : null;
+    }
+
+    public PlayerChallengeTierceRecord? BuildGroupStatisticsRecord(int groupId)
+    {
+        var candidate = ChallengeData.TierceHistory.Values
+            .Select(history =>
+            {
+                if (!GameData.ChallengeMazeTierceConfigData.TryGetValue(history.ChallengeId, out var tierce) ||
+                    !GameData.ChallengeConfigData.TryGetValue(tierce.PreChallengeMazeID, out var preConfig) ||
+                    preConfig.GroupID != groupId)
+                    return null;
+                NormaliseSlots(history);
+                return history.IsPassed || history.StageCleared.Any(cleared => cleared)
+                    ? new { History = history, Config = preConfig }
+                    : null;
+            })
+            .Where(entry => entry != null)
+            .OrderByDescending(entry => entry!.Config.Floor)
+            .FirstOrDefault();
+        if (candidate == null) return null;
+
+        var history = candidate.History;
+        var stageScoreTotal = history.StageScores.Aggregate(0u, (sum, score) => sum + score);
+        if ((candidate.Config.IsStory() || candidate.Config.IsBoss()) && stageScoreTotal > 0 &&
+            history.RecordScore != stageScoreTotal)
+        {
+            history.RecordScore = stageScoreTotal;
+            DatabaseHelper.MarkDirty(Player.Uid);
+        }
+        if (history.RecordId == 0)
+        {
+            history.RecordId = Player.FriendRecordData!.AllocateChallengeRecordId();
+            DatabaseHelper.MarkDirty(Player.Uid);
+        }
+
+        var proto = new PlayerChallengeTierceRecord
+        {
+            EGLLMGLLHDL = history.IsPassed,
+            RecordId = history.RecordId,
+            UsedCycleCount = history.UsedCycleCount,
+            TotalScore = history.RecordScore
+        };
+        proto.FinishedTargetList.AddRange(history.FinishedTargetList);
+
+        for (var stageIndex = 0; stageIndex < 3; stageIndex++)
+        {
+            var lineup = new ChallengeLineupList();
+            for (var index = 0; index < history.StageLineups[stageIndex].Count; index++)
+            {
+                var avatarId = history.StageLineups[stageIndex][index];
+                var avatar = Player.AvatarManager!.GetFormalAvatar((int)avatarId);
+                lineup.AvatarList.Add(new ChallengeAvatarInfo
+                {
+                    Id = avatarId,
+                    Index = (uint)index,
+                    Level = (uint)(avatar?.Level ?? 0),
+                    SkinId = (uint)(avatar?.GetCurPathInfo().Skin ?? 0),
+                    AvatarType = AvatarType.AvatarFormalType
+                });
+            }
+
+            proto.GBMBAHHDONN.Add(new AIIGHJEIGHE
+            {
+                StageIndex = (uint)stageIndex,
+                BuffId = history.StageBuffIds[stageIndex],
+                Lineup = lineup
+            });
+        }
+
+        return proto;
     }
 
     private static ChallengeTierceData BuildHistorySnapshot(ChallengeTierceHistoryData h)
