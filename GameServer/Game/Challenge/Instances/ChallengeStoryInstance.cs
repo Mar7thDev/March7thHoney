@@ -164,21 +164,12 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
                 await Player.MoveTo(Story.StartPos, Story.StartRot);
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
+            case BattleEndStatus.BattleEndLose:
+                await AdvanceStage();
+                break;
             default:
-                // Determine challenge result
-                if (req.Stt.EndReason == BattleEndReason.TurnLimit)
-                {
-                    await AdvanceStage();
-                }
-                else
-                {
-                    // Fail challenge
-                    Story.CurStatus = (int)ChallengeStatus.ChallengeFailed;
-
-                    // Send challenge result data
-                    await Player.SendPacket(new PacketChallengeSettleNotify(this));
-                }
-
+                Story.CurStatus = (int)ChallengeStatus.ChallengeFailed;
+                await Player.SendPacket(new PacketChallengeSettleNotify(this));
                 break;
         }
     }
