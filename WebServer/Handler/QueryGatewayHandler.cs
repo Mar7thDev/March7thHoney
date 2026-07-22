@@ -11,6 +11,9 @@ namespace March7thHoney.WebServer.Handler;
 
 internal class QueryGatewayHandler
 {
+    private static readonly string[] VersionBranches =
+        ["PREbeta", "BETA", "PROD", "DEV", "PRE", "GM", "CECREATION"];
+    private static readonly string[] VersionPlatforms = ["Win", "Android", "iOS"];
     public static Logger Logger = new("GatewayServer");
     private static bool GatewayDebugEnabled => ConfigManager.Config.ServerOption.LogOption.EnableGamePacketLog;
     private static void Debug(string message)
@@ -98,12 +101,30 @@ internal class QueryGatewayHandler
 
     private async Task<bool> FetchRemoteHotfix(GateWayRequest req, GateServer gateServer)
     {
+        var remoteGateServer = await FetchRemoteHotfixForVersion(req, req.version);
+        if (remoteGateServer == null) return false;
+
+        ApplyHotfix(gateServer, remoteGateServer);
+        PersistHotfixForPlatforms(req.version, remoteGateServer);
+
+        var peerVersion = GetPeerRegionVersion(req.version);
+        if (peerVersion != null)
+        {
+            var peerGateServer = await FetchRemoteHotfixForVersion(req, peerVersion);
+            if (peerGateServer != null) PersistHotfixForPlatforms(peerVersion, peerGateServer);
+        }
+
+        return true;
+    }
+
+    private async Task<GateServer?> FetchRemoteHotfixForVersion(GateWayRequest req, string version)
+    {
         try
         {
-            var gatewayUrl = await GetGatewayUrlByVersion(req.version);
+            var gatewayUrl = await GetGatewayUrlByVersion(version);
             var queryParams = new Dictionary<string, string>
             {
-                ["version"] = req.version,
+                ["version"] = version,
                 ["language_type"] = ValueOrDefault(req.language_type, "3"),
                 ["platform_type"] = ValueOrDefault(req.platform_type, "1"),
                 ["dispatch_seed"] = req.dispatch_seed,
@@ -124,35 +145,9 @@ internal class QueryGatewayHandler
                     var bytes = Convert.FromBase64String(response);
                     var remoteGateServer = GateServer.Parser.ParseFrom(bytes);
 
-                    if (HasHotfixUrl(remoteGateServer))
-                    {
-                        gateServer.AssetBundleUrl = remoteGateServer.AssetBundleUrl;
-                        gateServer.AssetBundleUrlAndroid = remoteGateServer.AssetBundleUrlAndroid;
-                        gateServer.ExResourceUrl = remoteGateServer.ExResourceUrl;
-                        gateServer.LuaUrl = remoteGateServer.LuaUrl;
-                        gateServer.IfixUrl = remoteGateServer.IfixUrl;
+                    if (HasHotfixUrl(remoteGateServer)) return remoteGateServer;
 
-                        try
-                        {
-                            var changed = ConfigManager.UpdateHotfixData(req.version, new DownloadUrlConfig
-                            {
-                                AssetBundleUrl = remoteGateServer.AssetBundleUrl,
-                                ExAssetBundleUrl = remoteGateServer.AssetBundleUrlAndroid,
-                                ExResourceUrl = remoteGateServer.ExResourceUrl,
-                                LuaUrl = remoteGateServer.LuaUrl,
-                                IfixUrl = remoteGateServer.IfixUrl
-                            });
-                            if (changed) Logger.Info($"Saved remote hotfix for version: {req.version}");
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Warn($"Failed to persist remote hotfix for {req.version}: {ex.Message}");
-                        }
-
-                        return true;
-                    }
-
-                    Logger.Warn($"Remote hotfix returned no URL (retcode={remoteGateServer.Retcode}), fall back to local hotfix");
+                    Logger.Warn($"Remote hotfix returned no URL for {version} (retcode={remoteGateServer.Retcode})");
                 }
                 catch (Exception ex)
                 {
@@ -169,7 +164,38 @@ internal class QueryGatewayHandler
             Logger.Warn($"Remote hotfix fetch failed: {ex.Message}");
         }
 
-        return false;
+        return null;
+    }
+
+    private static void ApplyHotfix(GateServer target, GateServer source)
+    {
+        target.AssetBundleUrl = source.AssetBundleUrl;
+        target.AssetBundleUrlAndroid = source.AssetBundleUrlAndroid;
+        target.ExResourceUrl = source.ExResourceUrl;
+        target.LuaUrl = source.LuaUrl;
+        target.IfixUrl = source.IfixUrl;
+    }
+
+    private static void PersistHotfixForPlatforms(string version, GateServer remoteGateServer)
+    {
+        try
+        {
+            var versions = GetSameRegionPlatformVersions(version);
+            var changedCount = ConfigManager.UpdateHotfixData(versions, new DownloadUrlConfig
+            {
+                AssetBundleUrl = remoteGateServer.AssetBundleUrl,
+                ExAssetBundleUrl = remoteGateServer.AssetBundleUrlAndroid,
+                ExResourceUrl = remoteGateServer.ExResourceUrl,
+                LuaUrl = remoteGateServer.LuaUrl,
+                IfixUrl = remoteGateServer.IfixUrl
+            });
+            if (changedCount > 0)
+                Logger.Info($"Saved remote hotfix for versions: {string.Join(", ", versions)}");
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"Failed to persist remote hotfix for {version}: {ex.Message}");
+        }
     }
 
     private void UseLocalHotfix(GateWayRequest req, string baseUrl, GateServer gateServer)
@@ -334,5 +360,47 @@ internal class QueryGatewayHandler
     private static string ValueOrDefault(string value, string fallback)
     {
         return string.IsNullOrWhiteSpace(value) ? fallback : value;
+    }
+
+    private static string[] GetSameRegionPlatformVersions(string version)
+    {
+        if (!TryParseVersion(version, out var region, out var branch, out _, out var number))
+            return [version];
+
+        return VersionPlatforms.Select(platform => $"{region}{branch}{platform}{number}").ToArray();
+    }
+
+    private static string? GetPeerRegionVersion(string version)
+    {
+        if (!TryParseVersion(version, out var region, out var branch, out var platform, out var number)
+            || !branch.Equals("BETA", StringComparison.OrdinalIgnoreCase))
+            return null;
+
+        var peerRegion = region.Equals("CN", StringComparison.OrdinalIgnoreCase) ? "OS" : "CN";
+        return $"{peerRegion}{branch}{platform}{number}";
+    }
+
+    private static bool TryParseVersion(string version, out string region, out string branch,
+        out string platform, out string number)
+    {
+        region = version.StartsWith("CN", StringComparison.OrdinalIgnoreCase) ? "CN"
+            : version.StartsWith("OS", StringComparison.OrdinalIgnoreCase) ? "OS" : string.Empty;
+        branch = string.Empty;
+        platform = string.Empty;
+        number = string.Empty;
+        if (region.Length == 0) return false;
+
+        var remainder = version[2..];
+        branch = VersionBranches.FirstOrDefault(candidate =>
+            remainder.StartsWith(candidate, StringComparison.OrdinalIgnoreCase)) ?? string.Empty;
+        if (branch.Length == 0) return false;
+
+        remainder = remainder[branch.Length..];
+        platform = VersionPlatforms.FirstOrDefault(candidate =>
+            remainder.StartsWith(candidate, StringComparison.OrdinalIgnoreCase)) ?? string.Empty;
+        if (platform.Length == 0) return false;
+
+        number = remainder[platform.Length..];
+        return number.Length > 0;
     }
 }
