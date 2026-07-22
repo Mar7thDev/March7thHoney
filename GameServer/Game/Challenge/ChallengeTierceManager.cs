@@ -124,22 +124,28 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         if (stageIndex > 2) return false;
         if (!ResolveNodes((int)challengeId, out var tierceConf, out var preConf)) return false;
 
-        // Resolve each node's roster independently: prefer history (saved per-stage lineup),
-        // otherwise fall back to the current LineupChallenge / Challenge2 / Challenge3 the
-        // player set in any earlier attempt. The targeted stage must end up with a non-empty
-        // roster — empty siblings are fine (UI just hides them).
+        // 单关使用编辑态编队，未编辑的节点沿用已结算编队。
         var lineupTypes = new[] { ExtraLineupType.LineupChallenge, ExtraLineupType.LineupChallenge2, ExtraLineupType.LineupChallenge3 };
         var rosters = new List<List<uint>>();
         var buffs = new List<uint> { 0u, 0u, 0u };
 
         var hasHistory = ChallengeData.TierceHistory.TryGetValue((int)challengeId, out var history);
+        if (hasHistory) NormaliseSlots(history!);
 
         for (var i = 0; i < 3; i++)
         {
             List<uint>? roster = null;
 
-            if (hasHistory && i < history!.StageLineups.Count && history.StageLineups[i].Count > 0)
+            if (hasHistory && history!.EditorStageLineups[i].Count > 0)
+            {
+                roster = history.EditorStageLineups[i].ToList();
+                buffs[i] = history.EditorStageBuffIds[i];
+            }
+            else if (hasHistory && history!.StageLineups[i].Count > 0)
+            {
                 roster = history.StageLineups[i].ToList();
+                buffs[i] = history.StageBuffIds[i];
+            }
 
             if (roster == null)
             {
@@ -149,9 +155,6 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
             }
 
             rosters.Add(roster ?? []);
-
-            if (hasHistory && i < history!.StageBuffIds.Count)
-                buffs[i] = history.StageBuffIds[i];
         }
 
         if (rosters[(int)stageIndex].Count == 0) return false;
@@ -159,9 +162,7 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         var snapshot = new List<List<uint>>();
         for (var i = 0; i < 3; i++)
         {
-            // Only write the slot when we actually have a roster — never overwrite an
-            // existing extra lineup with an empty list, since that would wipe data the
-            // client still needs (e.g. the other two nodes' rosters for the editor UI).
+            // 空节点不覆盖客户端仍在编辑的其他节点编队。
             if (rosters[i].Count > 0)
             {
                 var avatarIds = rosters[i].Select(x => (int)x).ToList();
@@ -347,7 +348,6 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
             ChallengeData.TierceHistory[(int)challengeId] = history;
         }
         NormaliseSlots(history);
-        if (history.IsPassed) return;
 
         for (var i = 0; i < stageInfoList.Count && i < 3; i++)
         {
@@ -356,8 +356,8 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
                 .Where(id => id > 0)
                 .ToList();
             if (ids.Count > 0)
-                history.StageLineups[i] = ids;
-            history.StageBuffIds[i] = stageInfoList[i].BuffId;
+                history.EditorStageLineups[i] = ids;
+            history.EditorStageBuffIds[i] = stageInfoList[i].BuffId;
         }
 
         DatabaseHelper.MarkDirty(Player.Uid);
@@ -374,21 +374,10 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         }
         NormaliseSlots(history);
 
-        if (history.IsPassed && !inst.IsPassed) return;
-
         if (inst.IsPassed)
         {
             var usedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool);
             var recordScore = (uint)Math.Max(0, inst.GetRecordScore());
-            if (history.IsPassed)
-            {
-                var keepExisting = inst.IsSingleStage && !inst.IsStoryMode && !inst.IsBossMode;
-                if (inst.IsStoryMode || inst.IsBossMode)
-                    keepExisting = history.RecordScore >= recordScore;
-                else if (!keepExisting)
-                    keepExisting = history.UsedCycleCount <= usedCycleCount;
-                if (keepExisting) return;
-            }
 
             for (var i = 0; i < 3; i++)
             {
@@ -436,6 +425,8 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         h.StageBuffIds = NormaliseList(h.StageBuffIds, () => 0u);
         h.StageCleared = NormaliseList(h.StageCleared, () => false);
         h.StageScores = NormaliseList(h.StageScores, () => 0u);
+        h.EditorStageLineups = NormaliseList(h.EditorStageLineups ?? [], () => new List<uint>());
+        h.EditorStageBuffIds = NormaliseList(h.EditorStageBuffIds ?? [], () => 0u);
     }
 
     private static List<T> NormaliseList<T>(List<T> src, Func<T> defaultFactory)
@@ -550,14 +541,13 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         for (var i = 0; i < 3; i++)
         {
             var info = new ChallengeTierceStageInfo { StageIndex = (uint)i };
-            if (i < h.StageBuffIds.Count) info.BuffId = h.StageBuffIds[i];
-            if (i < h.StageLineups.Count)
+            var useEditor = h.EditorStageLineups[i].Count > 0;
+            info.BuffId = useEditor ? h.EditorStageBuffIds[i] : h.StageBuffIds[i];
+            var stageLineup = useEditor ? h.EditorStageLineups[i] : h.StageLineups[i];
+            foreach (var id in stageLineup)
             {
-                foreach (var id in h.StageLineups[i])
-                {
-                    info.Lineup.Add(new AvatarIdentifier { Id = id, AvatarType = AvatarType.AvatarFormalType });
-                    info.PeakAvatarIdList.Add(id);
-                }
+                info.Lineup.Add(new AvatarIdentifier { Id = id, AvatarType = AvatarType.AvatarFormalType });
+                info.PeakAvatarIdList.Add(id);
             }
             data.StageInfoList.Add(info);
         }

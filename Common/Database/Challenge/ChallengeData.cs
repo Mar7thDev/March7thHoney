@@ -46,6 +46,8 @@ public partial class ChallengeTierceHistoryData
     public uint UsedCycleCount { get; set; }
     public uint RecordScore { get; set; }
     public uint RecordId { get; set; }
+    public List<List<uint>> EditorStageLineups { get; set; } = [];
+    public List<uint> EditorStageBuffIds { get; set; } = [];
 }
 
 [MemoryPackable]
