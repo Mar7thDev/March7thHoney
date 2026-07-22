@@ -149,38 +149,19 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         switch (req.EndStatus)
         {
             case BattleEndStatus.BattleEndWin:
-                foreach (var avatar in battle.Lineup.AvatarData!.FormalAvatars)
-                    if (avatar.CurrentHp <= 0)
-                    {
-                        DeadAvatarNum++;
-                        StageDeadAvatarNums[(int)CurStageIndex]++;
-                    }
-
-                if (IsStoryMode)
-                {
-                    var stageScore = (int)req.Stt.ChallengeScore - GetTotalScore();
-                    if (stageScore < 0) stageScore = 0;
-                    StageScores[(int)CurStageIndex] = stageScore;
-                }
-                else if (IsBossMode)
-                {
-                    var stageScore = 0;
-                    if (req.Stt.BattleTargetInfo.TryGetValue(1, out var targets))
-                        foreach (var t in targets.BattleTargetList_)
-                            stageScore += (int)t.Progress;
-                    StageScores[(int)CurStageIndex] = stageScore;
-                }
-                else
-                {
-                    StageUsedCycles[(int)CurStageIndex] = Math.Max(
-                        StageUsedCycles[(int)CurStageIndex], req.Stt.RoundCnt);
-                    RoundsLeftPool = Math.Max(Config.ChallengeCountDown -
-                        (int)StageUsedCycles.Aggregate(0u, (sum, count) => sum + count), 0);
-                }
+                RecordDeadAvatars(battle, req);
+                UpdateStageMetrics(req);
                 SavedMp = Player.LineupManager!.GetCurLineup()!.Mp;
 
                 long monsters = Player.SceneInstance!.Entities.Values.OfType<EntityMonster>().Count();
                 if (monsters == 0) await OnStageCleared(req);
+                break;
+
+            case BattleEndStatus.BattleEndLose when IsStoryMode || IsBossMode:
+                RecordDeadAvatars(battle, req);
+                UpdateStageMetrics(req);
+                SavedMp = Player.LineupManager!.GetCurLineup()!.Mp;
+                await OnStageCleared(req);
                 break;
 
             case BattleEndStatus.BattleEndQuit:
@@ -199,6 +180,39 @@ public class ChallengeTierceInstance : BaseChallengeInstance
                 ResultList.Add(failStage);
                 await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
                 break;
+        }
+    }
+
+    private void RecordDeadAvatars(BattleInstance battle, PVEBattleResultCsReq req)
+    {
+        var deadCount = req.Stt.BattleAvatarList.Count(avatar => avatar.AvatarStatus.LeftHp <= 0);
+        if (req.Stt.EndReason == BattleEndReason.AllDie && deadCount == 0)
+            deadCount = battle.Lineup.BaseAvatars?.Count ?? 0;
+        DeadAvatarNum += (uint)deadCount;
+        StageDeadAvatarNums[(int)CurStageIndex] += (uint)deadCount;
+    }
+
+    private void UpdateStageMetrics(PVEBattleResultCsReq req)
+    {
+        if (IsStoryMode)
+        {
+            var stageScore = (int)req.Stt.ChallengeScore - GetTotalScore();
+            StageScores[(int)CurStageIndex] = Math.Max(stageScore, 0);
+        }
+        else if (IsBossMode)
+        {
+            var stageScore = 0;
+            if (req.Stt.BattleTargetInfo.TryGetValue(1, out var targets))
+                foreach (var target in targets.BattleTargetList_)
+                    stageScore += (int)target.Progress;
+            StageScores[(int)CurStageIndex] = stageScore;
+        }
+        else
+        {
+            StageUsedCycles[(int)CurStageIndex] = Math.Max(
+                StageUsedCycles[(int)CurStageIndex], req.Stt.RoundCnt);
+            RoundsLeftPool = Math.Max(Config.ChallengeCountDown -
+                (int)StageUsedCycles.Aggregate(0u, (sum, count) => sum + count), 0);
         }
     }
 
