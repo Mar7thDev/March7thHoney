@@ -172,12 +172,15 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
             var tierceExcel = GameData.ChallengeMazeTierceConfigData.Values
                 .FirstOrDefault(x => x.PreChallengeMazeID == challengeExcel.ID);
             if (tierceExcel != null &&
-                ChallengeData.TierceHistory.TryGetValue(tierceExcel.ID, out var tierceHistory) &&
-                tierceHistory.FinishedTargetList.Count > 0)
+                ChallengeData.TierceHistory.TryGetValue(tierceExcel.ID, out var tierceHistory))
             {
-                totalStars += tierceExcel.ChallengeTargetID.Count(targetId =>
-                    tierceHistory.FinishedTargetList.Contains((uint)targetId));
-                continue;
+                Player.ChallengeTierceManager!.RefreshHistoryProgress(tierceExcel, tierceHistory);
+                if (tierceHistory.FinishedTargetList.Count > 0)
+                {
+                    totalStars += tierceExcel.ChallengeTargetID.Count(targetId =>
+                        tierceHistory.FinishedTargetList.Contains((uint)targetId));
+                    continue;
+                }
             }
 
             if (ChallengeData.History.TryGetValue(challengeExcel.ID, out var ch))
@@ -350,15 +353,16 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                 var starCount = 0u;
                 for (var i = 0; i < 3; i++) starCount += (memory.Data.Memory!.Stars & (1 << i)) != 0 ? 1u : 0u;
 
-                if (stats.MemoryGroupStatistics.GetValueOrDefault((uint)memory.Config.ID)?.Stars >
-                    starCount) return; // dont save if we have more stars already
+                var oldMemory = stats.MemoryGroupStatistics.GetValueOrDefault((uint)memory.Config.ID);
+                var roundCount = (uint)(memory.Config.ChallengeCountDown - memory.Data.Memory!.RoundsLeft);
+                if (oldMemory?.Stars > starCount) return;
 
 
                 var pb = new MemoryGroupStatisticsPb
                 {
-                    RoundCount = (uint)(memory.Config.ChallengeCountDown - memory.Data.Memory!.RoundsLeft),
+                    RoundCount = roundCount,
                     Stars = starCount,
-                    RecordId = Player.FriendRecordData!.NextRecordId++,
+                    RecordId = Player.FriendRecordData!.AllocateChallengeRecordId(),
                     Level = memory.Config.Floor
                 };
 
@@ -388,7 +392,8 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                             Index = index++,
                             Id = (uint)formalAvatar.BaseAvatarId,
                             AvatarType = AvatarType.AvatarFormalType,
-                            Level = (uint)formalAvatar.Level
+                            Level = (uint)formalAvatar.Level,
+                            SkinId = (uint)formalAvatar.GetCurPathInfo().Skin
                         });
                     }
 
@@ -412,17 +417,18 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                 var starCount = 0u;
                 for (var i = 0; i < 3; i++) starCount += (story.Data.Story!.Stars & (1 << i)) != 0 ? 1u : 0u;
 
-                if (stats.StoryGroupStatistics.GetValueOrDefault((uint)story.Config.ID)?.Stars >
-                    starCount) return; // dont save if we have more stars already
+                var oldStory = stats.StoryGroupStatistics.GetValueOrDefault((uint)story.Config.ID);
+                var score = (uint)story.GetTotalScore();
+                if (oldStory?.Stars > starCount) return;
 
                 var pb = new StoryGroupStatisticsPb
                 {
                     Stars = starCount,
-                    RecordId = Player.FriendRecordData!.NextRecordId++,
+                    RecordId = Player.FriendRecordData!.AllocateChallengeRecordId(),
                     Level = story.Config.Floor,
                     BuffOne = story.Data.Story!.Buffs.Count > 0 ? story.Data.Story!.Buffs[0] : 0,
                     BuffTwo = story.Data.Story!.Buffs.Count > 1 ? story.Data.Story!.Buffs[1] : 0,
-                    Score = (uint)story.GetTotalScore()
+                    Score = score
                 };
 
                 List<ExtraLineupType> lineupTypes =
@@ -451,7 +457,8 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                             Index = index++,
                             Id = (uint)formalAvatar.BaseAvatarId,
                             AvatarType = AvatarType.AvatarFormalType,
-                            Level = (uint)formalAvatar.Level
+                            Level = (uint)formalAvatar.Level,
+                            SkinId = (uint)formalAvatar.GetCurPathInfo().Skin
                         });
                     }
 
@@ -475,17 +482,18 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                 var starCount = 0u;
                 for (var i = 0; i < 3; i++) starCount += (boss.Data.Boss!.Stars & (1 << i)) != 0 ? 1u : 0u;
 
-                if (stats.BossGroupStatistics.GetValueOrDefault((uint)boss.Config.ID)?.Stars >
-                    starCount) return; // dont save if we have more stars already
+                var oldBoss = stats.BossGroupStatistics.GetValueOrDefault((uint)boss.Config.ID);
+                var score = (uint)boss.GetTotalScore();
+                if (oldBoss?.Stars > starCount) return;
 
                 var pb = new BossGroupStatisticsPb
                 {
                     Stars = starCount,
-                    RecordId = Player.FriendRecordData!.NextRecordId++,
+                    RecordId = Player.FriendRecordData!.AllocateChallengeRecordId(),
                     Level = boss.Config.Floor,
                     BuffOne = boss.Data.Boss!.Buffs.Count > 0 ? boss.Data.Boss!.Buffs[0] : 0,
                     BuffTwo = boss.Data.Boss!.Buffs.Count > 1 ? boss.Data.Boss!.Buffs[1] : 0,
-                    Score = (uint)boss.GetTotalScore()
+                    Score = score
                 };
 
                 List<ExtraLineupType> lineupTypes =
@@ -514,7 +522,8 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
                             Index = index++,
                             Id = (uint)formalAvatar.BaseAvatarId,
                             AvatarType = AvatarType.AvatarFormalType,
-                            Level = (uint)formalAvatar.Level
+                            Level = (uint)formalAvatar.Level,
+                            SkinId = (uint)formalAvatar.GetCurPathInfo().Skin
                         });
                     }
 

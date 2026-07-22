@@ -36,12 +36,11 @@ public class ChallengeTierceInstance : BaseChallengeInstance
 
     // Per-stage score for PF/AS Tierce (MOC keeps these zero).
     public List<int> StageScores { get; } = [0, 0, 0];
+    public List<uint> StageUsedCycles { get; } = [0, 0, 0];
+    public List<uint> StageDeadAvatarNums { get; } = [0, 0, 0];
     public int GetTotalScore() => StageScores.Sum();
 
-    // AS final settle reports only the final node's score, PF/MOC use the sum.
-    public int GetRecordScore() => IsBossMode
-        ? (StageScores.Count > 2 ? StageScores[2] : 0)
-        : GetTotalScore();
+    public int GetRecordScore() => GetTotalScore();
 
     public bool IsStoryMode => PreConfig.IsStory();
     public bool IsBossMode => PreConfig.IsBoss();
@@ -152,7 +151,10 @@ public class ChallengeTierceInstance : BaseChallengeInstance
             case BattleEndStatus.BattleEndWin:
                 foreach (var avatar in battle.Lineup.AvatarData!.FormalAvatars)
                     if (avatar.CurrentHp <= 0)
+                    {
                         DeadAvatarNum++;
+                        StageDeadAvatarNums[(int)CurStageIndex]++;
+                    }
 
                 if (IsStoryMode)
                 {
@@ -170,7 +172,10 @@ public class ChallengeTierceInstance : BaseChallengeInstance
                 }
                 else
                 {
-                    RoundsLeftPool = (int)Math.Max(RoundsLeftPool - req.Stt.RoundCnt, 0L);
+                    StageUsedCycles[(int)CurStageIndex] = Math.Max(
+                        StageUsedCycles[(int)CurStageIndex], req.Stt.RoundCnt);
+                    RoundsLeftPool = Math.Max(Config.ChallengeCountDown -
+                        (int)StageUsedCycles.Aggregate(0u, (sum, count) => sum + count), 0);
                 }
                 SavedMp = Player.LineupManager!.GetCurLineup()!.Mp;
 
@@ -203,7 +208,9 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         {
             EndStatus = BattleEndStatus.BattleEndWin,
             StageIndex = CurStageIndex,
-            ScoreId = (uint)Math.Max(0, StageScores[(int)CurStageIndex])
+            ScoreId = (uint)Math.Max(0, StageScores[(int)CurStageIndex]),
+            INLLMKEDGLC = StageUsedCycles[(int)CurStageIndex],
+            IBECKONIICF = StageDeadAvatarNums[(int)CurStageIndex]
         };
         // Echo back the battle's target progress so the client renders per-node detail
         // ("对首领造成总伤害量 X%" etc.) — for AS that's the type-1 targets, for PF the type-5 list.
@@ -211,24 +218,15 @@ public class ChallengeTierceInstance : BaseChallengeInstance
             stageData.BattleTargetList.AddRange(targets.BattleTargetList_);
         ResultList.Add(stageData);
 
-        // FinishedTargetList stays stable across all three nodes — client uses it for the
-        // overall progress chips. Captured packets show this list duplicated on every sync.
+        Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
         FinishedTargetList.Clear();
-        foreach (var tid in Config.ChallengeTargetID) FinishedTargetList.Add((uint)tid);
-        if (Config.ChallengeTierceTargetID != 0) FinishedTargetList.Add((uint)Config.ChallengeTierceTargetID);
+        if (Player.ChallengeTierceManager.ChallengeData.TierceHistory.TryGetValue((int)ChallengeId, out var progress))
+            FinishedTargetList.AddRange(progress.FinishedTargetList);
 
         if (IsSingleStage)
         {
-            // Single-stage replay. Captured packets show node 0/1 single-replays use
-            // SingleStage settle, but a node 3 single-replay uses the AllStage settle so
-            // the client renders Restart + Leave instead of "前往节点 X".
-            Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             if (CurStageIndex == 2)
             {
-                // AllStage settle has to carry three stage results for the client to
-                // render Restart/Leave instead of "前往节点 X"; this is unconditional
-                // even if the player has never cleared the other two nodes (matches the
-                // captured behaviour of node 3 single-replay).
                 Player.ChallengeTierceManager!.ChallengeData.TierceHistory
                     .TryGetValue((int)ChallengeId, out var history);
                 var existing = ResultList.ToDictionary(r => r.StageIndex, r => r);
@@ -237,13 +235,15 @@ public class ChallengeTierceInstance : BaseChallengeInstance
                     if (existing.ContainsKey(i)) continue;
                     ResultList.Add(new ChallengeTierceStageData
                     {
-                        EndStatus = BattleEndStatus.BattleEndWin,
+                        EndStatus = history != null && history.StageCleared[(int)i]
+                            ? BattleEndStatus.BattleEndWin
+                            : BattleEndStatus.BattleEndNone,
                         StageIndex = i,
                         ScoreId = (history != null && i < history.StageScores.Count) ? history.StageScores[(int)i] : 0u
                     });
                 }
                 ResultList.Sort((a, b) => a.StageIndex.CompareTo(b.StageIndex));
-                IsPassed = true;
+                IsPassed = history?.IsPassed == true;
                 await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
             }
             else
@@ -255,7 +255,6 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         else if (CurStageIndex < 2)
         {
             // Intermediate node — wait for client to confirm via StartChallengeTierceNextStageCsReq.
-            Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForSingleStage(this, stageData));
             Player.ChallengeTierceManager!.SaveInstance();
         }
@@ -263,7 +262,6 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         {
             // 末关通关: 保活实例(对齐单关重打)供「重新挑战」用, 清理交给 Leave()/重开内部
             IsPassed = true;
-            Player.ChallengeTierceManager!.RecordStageClear(this, CurStageIndex);
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForMedal((uint)PreConfig.GroupID));
             Player.ChallengeTierceManager.SaveInstance();
