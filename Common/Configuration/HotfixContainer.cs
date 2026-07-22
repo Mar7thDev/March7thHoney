@@ -22,6 +22,10 @@ public class DownloadUrlConfig
 
 public static class GateWayBaseUrl
 {
+    public const string CNBETA_DISPATCH = "https://globaldp-beta-cn01.bhsr.com/query_dispatch";
+    public const string CNPROD_DISPATCH = "https://globaldp-prod-cn01.bhsr.com/query_dispatch";
+    public const string OSBETA_DISPATCH = "https://globaldp-beta-os01.starrails.com/query_dispatch";
+    public const string OSPROD_DISPATCH = "https://globaldp-prod-os01.starrails.com/query_dispatch";
     public const string CNBETA = "https://beta-release01-cn.bhsr.com/query_gateway";
     public const string CNPROD = "https://prod-gf-cn-dp01.bhsr.com/query_gateway";
     public const string OSBETA = "https://beta-release01-asia.starrails.com/query_gateway";
