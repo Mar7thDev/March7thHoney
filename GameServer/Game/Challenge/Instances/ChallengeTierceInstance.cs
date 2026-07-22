@@ -172,8 +172,10 @@ public class ChallengeTierceInstance : BaseChallengeInstance
                 }
                 else
                 {
-                    StageUsedCycles[(int)CurStageIndex] += req.Stt.RoundCnt;
-                    RoundsLeftPool = (int)Math.Max(RoundsLeftPool - req.Stt.RoundCnt, 0L);
+                    StageUsedCycles[(int)CurStageIndex] = Math.Max(
+                        StageUsedCycles[(int)CurStageIndex], req.Stt.RoundCnt);
+                    RoundsLeftPool = Math.Max(Config.ChallengeCountDown -
+                        (int)StageUsedCycles.Aggregate(0u, (sum, count) => sum + count), 0);
                 }
                 SavedMp = Player.LineupManager!.GetCurLineup()!.Mp;
 
@@ -206,7 +208,9 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         {
             EndStatus = BattleEndStatus.BattleEndWin,
             StageIndex = CurStageIndex,
-            ScoreId = (uint)Math.Max(0, StageScores[(int)CurStageIndex])
+            ScoreId = (uint)Math.Max(0, StageScores[(int)CurStageIndex]),
+            INLLMKEDGLC = StageUsedCycles[(int)CurStageIndex],
+            IBECKONIICF = StageDeadAvatarNums[(int)CurStageIndex]
         };
         // Echo back the battle's target progress so the client renders per-node detail
         // ("对首领造成总伤害量 X%" etc.) — for AS that's the type-1 targets, for PF the type-5 list.
