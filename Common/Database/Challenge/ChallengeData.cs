@@ -48,6 +48,9 @@ public partial class ChallengeTierceHistoryData
     public uint RecordId { get; set; }
     public List<List<uint>> EditorStageLineups { get; set; } = [];
     public List<uint> EditorStageBuffIds { get; set; } = [];
+    public List<uint> StageUsedCycles { get; set; } = [];
+    public List<uint> StageDeadAvatarNums { get; set; } = [];
+    public List<bool> StageMetricsRecorded { get; set; } = [];
 }
 
 [MemoryPackable]
