@@ -143,11 +143,6 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
             ChallengeData.History[challengeId] = new ChallengeHistoryData(Player.Uid, challengeId);
         var info = ChallengeData.History[challengeId];
 
-        var newStarCount = CountStars(stars);
-        var oldStarCount = info.GetTotalStars();
-        if (oldStarCount > newStarCount) return;
-        if (oldStarCount == newStarCount && score > 0 && info.Score >= score) return;
-
         // Set
         info.SetStars(stars);
         info.Score = score;
@@ -158,13 +153,6 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
         info.FirstNodeWon = firstNodeWon;
         info.SecondNodeWon = secondNodeWon;
         DatabaseHelper.MarkDirty(Player.Uid);
-    }
-
-    private static int CountStars(int stars)
-    {
-        var count = 0;
-        for (var i = 0; i < 3; i++) count += (stars & (1 << i)) != 0 ? 1 : 0;
-        return count;
     }
 
     public async ValueTask<List<TakenChallengeRewardInfo>?> TakeRewards(int groupId)
@@ -364,9 +352,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
 
                 var oldMemory = stats.MemoryGroupStatistics.GetValueOrDefault((uint)memory.Config.ID);
                 var roundCount = (uint)(memory.Config.ChallengeCountDown - memory.Data.Memory!.RoundsLeft);
-                if (oldMemory != null && (oldMemory.Stars > starCount ||
-                                          oldMemory.Stars == starCount && oldMemory.RoundCount <= roundCount))
-                    return;
+                if (oldMemory?.Stars > starCount) return;
 
 
                 var pb = new MemoryGroupStatisticsPb
@@ -430,9 +416,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
 
                 var oldStory = stats.StoryGroupStatistics.GetValueOrDefault((uint)story.Config.ID);
                 var score = (uint)story.GetTotalScore();
-                if (oldStory != null && (oldStory.Stars > starCount ||
-                                         oldStory.Stars == starCount && oldStory.Score >= score))
-                    return;
+                if (oldStory?.Stars > starCount) return;
 
                 var pb = new StoryGroupStatisticsPb
                 {
@@ -497,9 +481,7 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
 
                 var oldBoss = stats.BossGroupStatistics.GetValueOrDefault((uint)boss.Config.ID);
                 var score = (uint)boss.GetTotalScore();
-                if (oldBoss != null && (oldBoss.Stars > starCount ||
-                                        oldBoss.Stars == starCount && oldBoss.Score >= score))
-                    return;
+                if (oldBoss?.Stars > starCount) return;
 
                 var pb = new BossGroupStatisticsPb
                 {
