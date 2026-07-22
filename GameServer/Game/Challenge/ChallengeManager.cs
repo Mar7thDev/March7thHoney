@@ -172,12 +172,15 @@ public class ChallengeManager(PlayerInstance player) : BasePlayerManager(player)
             var tierceExcel = GameData.ChallengeMazeTierceConfigData.Values
                 .FirstOrDefault(x => x.PreChallengeMazeID == challengeExcel.ID);
             if (tierceExcel != null &&
-                ChallengeData.TierceHistory.TryGetValue(tierceExcel.ID, out var tierceHistory) &&
-                tierceHistory.FinishedTargetList.Count > 0)
+                ChallengeData.TierceHistory.TryGetValue(tierceExcel.ID, out var tierceHistory))
             {
-                totalStars += tierceExcel.ChallengeTargetID.Count(targetId =>
-                    tierceHistory.FinishedTargetList.Contains((uint)targetId));
-                continue;
+                Player.ChallengeTierceManager!.EnsureHistoryCompletion(tierceExcel, tierceHistory);
+                if (tierceHistory.FinishedTargetList.Count > 0)
+                {
+                    totalStars += tierceExcel.ChallengeTargetID.Count(targetId =>
+                        tierceHistory.FinishedTargetList.Contains((uint)targetId));
+                    continue;
+                }
             }
 
             if (ChallengeData.History.TryGetValue(challengeExcel.ID, out var ch))
