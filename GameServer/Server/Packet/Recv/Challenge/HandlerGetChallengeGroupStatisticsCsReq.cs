@@ -9,8 +9,6 @@ public class HandlerGetChallengeGroupStatisticsCsReq : Handler<GetChallengeGroup
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, GetChallengeGroupStatisticsCsReq req)
     {
-        await connection.SendPacket(new PacketGetChallengeGroupStatisticsScRsp(req.GroupId,
-            player.FriendRecordData!.ChallengeGroupStatistics.Values.FirstOrDefault(x =>
-                x.GroupId == req.GroupId)));
+        await connection.SendPacket(new PacketGetChallengeGroupStatisticsScRsp(player, req.GroupId));
     }
 }
