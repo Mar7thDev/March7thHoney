@@ -55,29 +55,21 @@ public static class ConfigManager
 
     public static bool UpdateHotfixData(string version, DownloadUrlConfig remote)
     {
+        return UpdateHotfixData([version], remote) > 0;
+    }
+
+    public static int UpdateHotfixData(IEnumerable<string> versions, DownloadUrlConfig remote)
+    {
         lock (HotfixDataLock)
         {
-            var changed = false;
-            if (!Hotfix.HotfixData.TryGetValue(version, out var current))
+            var changedCount = 0;
+            foreach (var version in versions.Distinct(StringComparer.Ordinal))
             {
-                current = new DownloadUrlConfig();
-                Hotfix.HotfixData[version] = current;
-                changed = true;
+                if (UpdateHotfixDataCore(version, remote)) changedCount++;
             }
 
-            changed |= UpdateValue(remote.AssetBundleUrl, current.AssetBundleUrl,
-                value => current.AssetBundleUrl = value);
-            changed |= UpdateValue(remote.ExAssetBundleUrl, current.ExAssetBundleUrl,
-                value => current.ExAssetBundleUrl = value);
-            changed |= UpdateValue(remote.ExResourceUrl, current.ExResourceUrl,
-                value => current.ExResourceUrl = value);
-            changed |= UpdateValue(remote.LuaUrl, current.LuaUrl,
-                value => current.LuaUrl = value);
-            changed |= UpdateValue(remote.IfixUrl, current.IfixUrl,
-                value => current.IfixUrl = value);
-
-            if (changed) SaveHotfixDataAtomic();
-            return changed;
+            if (changedCount > 0) SaveHotfixDataAtomic();
+            return changedCount;
         }
     }
 
@@ -188,6 +180,29 @@ public static class ConfigManager
 
         setter(value);
         return true;
+    }
+
+    private static bool UpdateHotfixDataCore(string version, DownloadUrlConfig remote)
+    {
+        var changed = false;
+        if (!Hotfix.HotfixData.TryGetValue(version, out var current))
+        {
+            current = new DownloadUrlConfig();
+            Hotfix.HotfixData[version] = current;
+            changed = true;
+        }
+
+        changed |= UpdateValue(remote.AssetBundleUrl, current.AssetBundleUrl,
+            value => current.AssetBundleUrl = value);
+        changed |= UpdateValue(remote.ExAssetBundleUrl, current.ExAssetBundleUrl,
+            value => current.ExAssetBundleUrl = value);
+        changed |= UpdateValue(remote.ExResourceUrl, current.ExResourceUrl,
+            value => current.ExResourceUrl = value);
+        changed |= UpdateValue(remote.LuaUrl, current.LuaUrl,
+            value => current.LuaUrl = value);
+        changed |= UpdateValue(remote.IfixUrl, current.IfixUrl,
+            value => current.IfixUrl = value);
+        return changed;
     }
 
     private static void SaveHotfixDataAtomic()
