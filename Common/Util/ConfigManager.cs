@@ -8,6 +8,7 @@ namespace March7thHoney.Util;
 public static class ConfigManager
 {
     public static readonly Logger Logger = new("ConfigManager");
+    private static readonly object HotfixDataLock = new();
     private static readonly string ConfigFilePath = "Config.json";
     private static string HotfixFilePath => Config.Path.ConfigPath + "/Hotfix.json";
     public static bool IsPublicMode { get; private set; }
@@ -28,6 +29,56 @@ public static class ConfigManager
     {
         if (IsPublicMode) return;
         SaveData(Config, ConfigFilePath);
+    }
+
+    public static bool TryGetHotfixData(string version, out DownloadUrlConfig? urls)
+    {
+        lock (HotfixDataLock)
+        {
+            if (!Hotfix.HotfixData.TryGetValue(version, out var current))
+            {
+                urls = null;
+                return false;
+            }
+
+            urls = new DownloadUrlConfig
+            {
+                AssetBundleUrl = current.AssetBundleUrl,
+                ExAssetBundleUrl = current.ExAssetBundleUrl,
+                ExResourceUrl = current.ExResourceUrl,
+                LuaUrl = current.LuaUrl,
+                IfixUrl = current.IfixUrl
+            };
+            return true;
+        }
+    }
+
+    public static bool UpdateHotfixData(string version, DownloadUrlConfig remote)
+    {
+        lock (HotfixDataLock)
+        {
+            var changed = false;
+            if (!Hotfix.HotfixData.TryGetValue(version, out var current))
+            {
+                current = new DownloadUrlConfig();
+                Hotfix.HotfixData[version] = current;
+                changed = true;
+            }
+
+            changed |= UpdateValue(remote.AssetBundleUrl, current.AssetBundleUrl,
+                value => current.AssetBundleUrl = value);
+            changed |= UpdateValue(remote.ExAssetBundleUrl, current.ExAssetBundleUrl,
+                value => current.ExAssetBundleUrl = value);
+            changed |= UpdateValue(remote.ExResourceUrl, current.ExResourceUrl,
+                value => current.ExResourceUrl = value);
+            changed |= UpdateValue(remote.LuaUrl, current.LuaUrl,
+                value => current.LuaUrl = value);
+            changed |= UpdateValue(remote.IfixUrl, current.IfixUrl,
+                value => current.IfixUrl = value);
+
+            if (changed) SaveHotfixDataAtomic();
+            return changed;
+        }
     }
 
     private static void LoadConfigData()
@@ -130,6 +181,30 @@ public static class ConfigManager
         writer.Write(json);
     }
 
+    private static bool UpdateValue(string value, string current, Action<string> setter)
+    {
+        if (string.IsNullOrWhiteSpace(value) || string.Equals(value, current, StringComparison.Ordinal))
+            return false;
+
+        setter(value);
+        return true;
+    }
+
+    private static void SaveHotfixDataAtomic()
+    {
+        var json = JsonSerializer.Serialize(Hotfix, ConfigJsonContext.Default.HotfixContainer);
+        var tempPath = $"{HotfixFilePath}.tmp.{Guid.NewGuid():N}";
+        try
+        {
+            File.WriteAllText(tempPath, json);
+            File.Move(tempPath, HotfixFilePath, true);
+        }
+        finally
+        {
+            if (File.Exists(tempPath)) File.Delete(tempPath);
+        }
+    }
+
     public static void InitDirectories()
     {
         foreach (var property in Config.Path.GetType().GetProperties())
@@ -142,4 +217,3 @@ public static class ConfigManager
         }
     }
 }
-
