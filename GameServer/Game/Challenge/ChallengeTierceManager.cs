@@ -195,8 +195,21 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         instance.StageLineupSnapshot.AddRange(snapshot);
         instance.StageBuffIds.AddRange(buffs);
         if (hasHistory)
+        {
             for (var i = 0; i < 3 && i < history!.StageScores.Count; i++)
                 instance.StageScores[i] = (int)history.StageScores[i];
+            for (var i = 0; i < 3 && i < history!.StageUsedCycles.Count; i++)
+                instance.StageUsedCycles[i] = history.StageUsedCycles[i];
+            for (var i = 0; i < 3 && i < history!.StageDeadAvatarNums.Count; i++)
+                instance.StageDeadAvatarNums[i] = history.StageDeadAvatarNums[i];
+
+            instance.StageScores[(int)stageIndex] = 0;
+            instance.StageUsedCycles[(int)stageIndex] = 0;
+            instance.StageDeadAvatarNums[(int)stageIndex] = 0;
+            instance.RoundsLeftPool = Math.Max(tierceConf.ChallengeCountDown -
+                (int)instance.StageUsedCycles.Aggregate(0u, (sum, count) => sum + count), 0);
+            instance.DeadAvatarNum = instance.StageDeadAvatarNums.Aggregate(0u, (sum, count) => sum + count);
+        }
 
         CurrentInstance = instance;
         Player.ChallengeManager!.ChallengeInstance = instance;
@@ -259,7 +272,9 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
             StageEndStatuses = CurrentInstance.ResultList.Select(r => (int)r.EndStatus).ToList(),
             StageLineupSnapshot = CurrentInstance.StageLineupSnapshot.Select(l => l.ToList()).ToList(),
             StageBuffIds = CurrentInstance.StageBuffIds.ToList(),
-            StageScores = CurrentInstance.StageScores.ToList()
+            StageScores = CurrentInstance.StageScores.ToList(),
+            StageUsedCycles = CurrentInstance.StageUsedCycles.ToList(),
+            StageDeadAvatarNums = CurrentInstance.StageDeadAvatarNums.ToList()
         };
         ChallengeData.TierceInstance = Convert.ToBase64String(MemoryPackSerializer.Serialize(snap));
         DatabaseHelper.MarkDirty(Player.Uid);
@@ -324,6 +339,10 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         instance.StageBuffIds.AddRange(snap.StageBuffIds);
         for (var i = 0; i < 3 && i < snap.StageScores.Count; i++)
             instance.StageScores[i] = snap.StageScores[i];
+        for (var i = 0; i < 3 && i < snap.StageUsedCycles.Count; i++)
+            instance.StageUsedCycles[i] = snap.StageUsedCycles[i];
+        for (var i = 0; i < 3 && i < snap.StageDeadAvatarNums.Count; i++)
+            instance.StageDeadAvatarNums[i] = snap.StageDeadAvatarNums[i];
         for (var i = 0; i < snap.StageEndStatuses.Count; i++)
         {
             instance.ResultList.Add(new ChallengeTierceStageData
@@ -381,36 +400,13 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
             history.StageBuffIds[(int)stageIndex] = inst.StageBuffIds[(int)stageIndex];
         if (stageIndex < inst.StageScores.Count)
             history.StageScores[(int)stageIndex] = (uint)Math.Max(0, inst.StageScores[(int)stageIndex]);
+        if (stageIndex < inst.StageUsedCycles.Count)
+            history.StageUsedCycles[(int)stageIndex] = inst.StageUsedCycles[(int)stageIndex];
+        if (stageIndex < inst.StageDeadAvatarNums.Count)
+            history.StageDeadAvatarNums[(int)stageIndex] = inst.StageDeadAvatarNums[(int)stageIndex];
+        history.StageMetricsRecorded[(int)stageIndex] = true;
 
-        if (inst.IsPassed)
-        {
-            var usedCycleCount = (uint)Math.Max(0, inst.Config.ChallengeCountDown - inst.RoundsLeftPool);
-            var recordScore = (uint)Math.Max(0, inst.GetRecordScore());
-
-            for (var i = 0; i < 3; i++)
-            {
-                history.StageCleared[i] = true;
-                if (i < inst.StageLineupSnapshot.Count)
-                    history.StageLineups[i] = inst.StageLineupSnapshot[i].ToList();
-                if (i < inst.StageBuffIds.Count)
-                    history.StageBuffIds[i] = inst.StageBuffIds[i];
-                if (i < inst.StageScores.Count)
-                    history.StageScores[i] = (uint)Math.Max(0, inst.StageScores[i]);
-            }
-
-            history.IsPassed = true;
-            history.Stars = (uint)inst.Config.ChallengeTargetID.Count(targetId =>
-                inst.FinishedTargetList.Contains((uint)targetId));
-            history.FinishedTargetList = inst.FinishedTargetList.ToList();
-            history.UsedCycleCount = usedCycleCount;
-            history.RecordScore = recordScore;
-            if (history.RecordId == 0)
-                history.RecordId = Player.FriendRecordData!.AllocateChallengeRecordId();
-            DatabaseHelper.MarkDirty(Player.Uid);
-            return;
-        }
-
-        EnsureHistoryCompletion(inst.Config, history);
+        RefreshHistoryProgress(inst.Config, history);
 
         if (history.RecordId == 0)
             history.RecordId = Player.FriendRecordData!.AllocateChallengeRecordId();
@@ -418,19 +414,62 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         DatabaseHelper.MarkDirty(Player.Uid);
     }
 
-    public bool EnsureHistoryCompletion(ChallengeMazeTierceConfigExcel config, ChallengeTierceHistoryData history)
+    public void RefreshHistoryProgress(ChallengeMazeTierceConfigExcel config, ChallengeTierceHistoryData history)
     {
         NormaliseSlots(history);
-        if (!history.StageCleared.All(cleared => cleared)) return false;
-        if (history.IsPassed && history.FinishedTargetList.Count > 0) return true;
+        var oldIsPassed = history.IsPassed;
+        var oldStars = history.Stars;
+        var oldUsedCycleCount = history.UsedCycleCount;
+        var oldRecordScore = history.RecordScore;
+        var previousTargets = history.FinishedTargetList.ToList();
+        history.IsPassed = history.StageCleared.All(cleared => cleared);
+        var metricsComplete = history.StageMetricsRecorded.All(recorded => recorded);
+        if (metricsComplete)
+            history.UsedCycleCount = history.StageUsedCycles.Aggregate(0u, (sum, count) => sum + count);
+        history.RecordScore = history.StageScores.Aggregate(0u, (sum, score) => sum + score);
+        var roundsLeft = Math.Max(config.ChallengeCountDown - (int)history.UsedCycleCount, 0);
+        var deadAvatarNum = history.StageDeadAvatarNums.Aggregate(0u, (sum, count) => sum + count);
+        history.FinishedTargetList = EvaluateFinishedTargets(config, roundsLeft, deadAvatarNum,
+            (int)history.RecordScore, history.IsPassed);
+        if (!metricsComplete)
+        {
+            foreach (var targetId in previousTargets)
+            {
+                if (GameData.ChallengeTargetData.TryGetValue((int)targetId, out var target) &&
+                    target.ChallengeTargetType == ChallengeTargetExcel.ChallengeType.DEAD_AVATAR &&
+                    !history.FinishedTargetList.Contains(targetId))
+                    history.FinishedTargetList.Add(targetId);
+            }
+        }
+        history.Stars = (uint)config.ChallengeTargetID.Count(targetId =>
+            history.FinishedTargetList.Contains((uint)targetId));
+        if (oldIsPassed != history.IsPassed || oldStars != history.Stars ||
+            oldUsedCycleCount != history.UsedCycleCount || oldRecordScore != history.RecordScore ||
+            !previousTargets.SequenceEqual(history.FinishedTargetList))
+            DatabaseHelper.MarkDirty(Player.Uid);
+    }
 
-        history.IsPassed = true;
-        history.Stars = (uint)config.ChallengeTargetID.Count;
-        history.FinishedTargetList = config.ChallengeTargetID.Select(targetId => (uint)targetId).ToList();
-        if (config.ChallengeTierceTargetID != 0)
-            history.FinishedTargetList.Add((uint)config.ChallengeTierceTargetID);
-        DatabaseHelper.MarkDirty(Player.Uid);
-        return true;
+    public List<uint> EvaluateFinishedTargets(ChallengeMazeTierceConfigExcel config, int roundsLeft,
+        uint deadAvatarNum, int totalScore, bool allStagesCleared)
+    {
+        var targetIds = config.ChallengeTargetID.ToList();
+        if (config.ChallengeTierceTargetID != 0) targetIds.Add(config.ChallengeTierceTargetID);
+
+        var finished = new List<uint>();
+        foreach (var targetId in targetIds)
+        {
+            if (!GameData.ChallengeTargetData.TryGetValue(targetId, out var target)) continue;
+            var achieved = target.ChallengeTargetType switch
+            {
+                ChallengeTargetExcel.ChallengeType.ROUNDS_LEFT => allStagesCleared &&
+                    roundsLeft >= target.ChallengeTargetParam1,
+                ChallengeTargetExcel.ChallengeType.DEAD_AVATAR => allStagesCleared && deadAvatarNum == 0,
+                ChallengeTargetExcel.ChallengeType.TOTAL_SCORE => totalScore >= target.ChallengeTargetParam1,
+                _ => false
+            };
+            if (achieved) finished.Add((uint)targetId);
+        }
+        return finished;
     }
 
     // Re-shape slot lists to exactly 3 entries. Newtonsoft.Json deserialisation appends to a
@@ -442,6 +481,9 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         h.StageBuffIds = NormaliseList(h.StageBuffIds, () => 0u);
         h.StageCleared = NormaliseList(h.StageCleared, () => false);
         h.StageScores = NormaliseList(h.StageScores, () => 0u);
+        h.StageUsedCycles = NormaliseList(h.StageUsedCycles ?? [], () => 0u);
+        h.StageDeadAvatarNums = NormaliseList(h.StageDeadAvatarNums ?? [], () => 0u);
+        h.StageMetricsRecorded = NormaliseList(h.StageMetricsRecorded ?? [], () => false);
         h.EditorStageLineups = NormaliseList(h.EditorStageLineups ?? [], () => new List<uint>());
         h.EditorStageBuffIds = NormaliseList(h.EditorStageBuffIds ?? [], () => 0u);
     }
@@ -459,13 +501,20 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
     {
         var list = new List<ChallengeTierceData>();
         foreach (var (challengeId, h) in ChallengeData.TierceHistory)
+        {
+            if (GameData.ChallengeMazeTierceConfigData.TryGetValue(challengeId, out var config))
+                RefreshHistoryProgress(config, h);
             list.Add(BuildHistorySnapshot(h));
+        }
         return list;
     }
 
     public ChallengeTierceData? BuildHistorySnapshotFor(int challengeId)
     {
-        return ChallengeData.TierceHistory.TryGetValue(challengeId, out var h) ? BuildHistorySnapshot(h) : null;
+        if (!ChallengeData.TierceHistory.TryGetValue(challengeId, out var history)) return null;
+        if (GameData.ChallengeMazeTierceConfigData.TryGetValue(challengeId, out var config))
+            RefreshHistoryProgress(config, history);
+        return BuildHistorySnapshot(history);
     }
 
     public PlayerChallengeTierceRecord? BuildGroupStatisticsRecord(int groupId)
@@ -477,7 +526,7 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
                     !GameData.ChallengeConfigData.TryGetValue(tierce.PreChallengeMazeID, out var preConfig) ||
                     preConfig.GroupID != groupId)
                     return null;
-                NormaliseSlots(history);
+                RefreshHistoryProgress(tierce, history);
                 return history.IsPassed || history.StageCleared.Any(cleared => cleared)
                     ? new { History = history, Config = preConfig }
                     : null;
@@ -646,5 +695,7 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         public List<List<uint>> StageLineupSnapshot { get; set; } = [];
         public List<uint> StageBuffIds { get; set; } = [];
         public List<int> StageScores { get; set; } = [];
+        public List<uint> StageUsedCycles { get; set; } = [];
+        public List<uint> StageDeadAvatarNums { get; set; } = [];
     }
 }
