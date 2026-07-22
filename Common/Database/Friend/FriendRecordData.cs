@@ -14,6 +14,12 @@ public class FriendRecordData : BaseDatabaseDataHelper
 
     public uint NextRecordId { get; set; }
 
+    public uint AllocateChallengeRecordId()
+    {
+        if (NextRecordId == 0) NextRecordId = 1;
+        return NextRecordId++;
+    }
+
     public void AddAndRemoveOld(FriendDevelopmentInfoPb info)
     {
         // get same type
@@ -110,6 +116,7 @@ public partial class ChallengeAvatarInfoPb
     public uint Index { get; set; }
     public uint Id { get; set; }
     public AvatarType AvatarType { get; set; } = AvatarType.AvatarFormalType;
+    public uint SkinId { get; set; }
 
     public ChallengeAvatarInfo ToProto()
     {
@@ -118,7 +125,8 @@ public partial class ChallengeAvatarInfoPb
             Level = Level,
             AvatarType = AvatarType,
             Id = Id,
-            Index = Index
+            Index = Index,
+            SkinId = SkinId
         };
     }
 }

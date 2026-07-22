@@ -99,22 +99,9 @@ public static class ResourceCache
 
         var staleEquipmentConfig = GameData.EquipmentConfigData.Values
             .Any(config => config.Release && (config.ExpProvide <= 0 || config.CoinCost <= 0));
-        if (staleEquipmentConfig)
-        {
-            Logger.Warn("Resource cache is stale: EquipmentConfigData is missing Light Cone EXP/cost fields.");
-            return false;
-        }
+        if (!staleEquipmentConfig) return true;
 
-        var missingBossTargets = GameData.ChallengeConfigData.Values
-            .Where(config => config.IsBoss())
-            .SelectMany(config => config.ChallengeTargetID ?? [])
-            .Any(targetId => !GameData.ChallengeTargetData.ContainsKey(targetId));
-        if (missingBossTargets)
-        {
-            Logger.Warn("Resource cache is stale: ChallengeBossTargetConfig data is missing.");
-            return false;
-        }
-
-        return true;
+        Logger.Warn("Resource cache is stale: EquipmentConfigData is missing Light Cone EXP/cost fields.");
+        return false;
     }
 }

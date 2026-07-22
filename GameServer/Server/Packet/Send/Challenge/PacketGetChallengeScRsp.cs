@@ -46,6 +46,23 @@ public class PacketGetChallengeScRsp : BasePacket
             }
         }
 
+        foreach (var groupId in GameData.ChallengeGroupData.Keys.OrderBy(x => x))
+        {
+            var tierce = GameData.ChallengeMazeTierceConfigData.Values.FirstOrDefault(config =>
+                GameData.ChallengeConfigData.TryGetValue(config.PreChallengeMazeID, out var preConfig) &&
+                preConfig.GroupID == groupId);
+            if (tierce == null) continue;
+
+            player.ChallengeManager!.ChallengeData.TierceHistory.TryGetValue(tierce.ID, out var history);
+            proto.KKIAFPFKLGE.Add(new FMDAAIKLAJA
+            {
+                GroupId = (uint)groupId,
+                EGLLMGLLHDL = history?.IsPassed == true,
+                JFKMNBHOBCL = takenRewardDict.TryGetValue(groupId, out var reward) &&
+                              reward.HasTakenReward(0)
+            });
+        }
+
         // Keep this aligned with official behavior: non-empty max level list controls client unlock display paths.
         proto.MaxLevelList.Add(new ChallengeHistoryMaxLevel { RewardDisplayType = 1, Level = 12 });
         proto.MaxLevelList.Add(new ChallengeHistoryMaxLevel { RewardDisplayType = 2, Level = 4 });
