@@ -627,7 +627,9 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
                 {
                     EndStatus = BattleEndStatus.BattleEndWin,
                     StageIndex = (uint)i,
-                    ScoreId = i < h.StageScores.Count ? h.StageScores[i] : 0u
+                    ScoreId = h.StageScores[i],
+                    INLLMKEDGLC = h.StageUsedCycles[i],
+                    IBECKONIICF = h.StageDeadAvatarNums[i]
                 });
         }
         else
@@ -638,7 +640,9 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
                     {
                         EndStatus = BattleEndStatus.BattleEndWin,
                         StageIndex = (uint)i,
-                        ScoreId = i < h.StageScores.Count ? h.StageScores[i] : 0u
+                        ScoreId = h.StageScores[i],
+                        INLLMKEDGLC = h.StageUsedCycles[i],
+                        IBECKONIICF = h.StageDeadAvatarNums[i]
                     });
         }
 
