@@ -67,6 +67,7 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
     private static void AddStoryStatistics(GetChallengeGroupStatisticsScRsp proto,
         ChallengeGroupStatisticsPb? data)
     {
+        proto.ChallengeStory = new ChallengeStoryStatistics();
         if (data?.StoryGroupStatistics is not { Count: > 0 }) return;
         var top = data.StoryGroupStatistics.Values
             .OrderByDescending(record => record.Level)
@@ -91,6 +92,7 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
     private static void AddMemoryStatistics(GetChallengeGroupStatisticsScRsp proto,
         ChallengeGroupStatisticsPb? data)
     {
+        proto.ChallengeDefault = new ChallengeStatistics();
         if (data?.MemoryGroupStatistics is not { Count: > 0 }) return;
         var top = data.MemoryGroupStatistics.Values
             .OrderByDescending(record => record.Level)
@@ -113,6 +115,7 @@ public class PacketGetChallengeGroupStatisticsScRsp : BasePacket
     private static void AddBossStatistics(GetChallengeGroupStatisticsScRsp proto,
         ChallengeGroupStatisticsPb? data)
     {
+        proto.ChallengeBoss = new ChallengeBossStatistics();
         if (data?.BossGroupStatistics is not { Count: > 0 }) return;
         var top = data.BossGroupStatistics.Values
             .OrderByDescending(record => record.Level)
