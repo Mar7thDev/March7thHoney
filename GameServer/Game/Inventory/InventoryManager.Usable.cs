@@ -69,6 +69,7 @@ public partial class InventoryManager
                 {
                     value.Add(itemId);
                     MarkDirty();
+                    await Player.SendPacket(new PacketUnlockAvatarSkinScNotify(itemId));
                 }
                 break;
             case ItemSubTypeEnum.Food:
