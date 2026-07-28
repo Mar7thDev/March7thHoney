@@ -223,9 +223,6 @@ message AEGGFGBNLPE {
     bool FOGGEJIIJCM = 12;
 }
 
-message AEGLEIHJKFN {
-}
-
 message AEJLPCAIODP {
     uint32 BAOFIGFFMLN = 6;
 }
@@ -2145,9 +2142,6 @@ message BMCNDLNONMO {
     EOLKILAIAKL DOLKNBFGCAD = 5;
 }
 
-message BMDACCNEEPL {
-}
-
 message BMDEEMIDNEL {
     uint32 CEDDGAMLKJK = 4;
     repeated uint32 IHOMKIICBLP = 6;
@@ -3045,9 +3039,6 @@ message CEKMLMOCLHF {
     uint32 IHAOMLEPHOM = 7;
 }
 
-message CELCIDNLPPO {
-}
-
 message CENBJOMMJGD {
     uint32 item_type = 4;
     uint32 item_count = 8;
@@ -3495,9 +3486,6 @@ message COMJKPOMILA {
 message COOIDLLFFIJ {
     uint32 KNILAKJMEEP = 3;
     uint32 PGGDEHKKINP = 12;
-}
-
-message CPFBHLBMJOG {
 }
 
 message CPFCAJBHOIB {
@@ -4928,6 +4916,9 @@ message ClockParkBuffList {
 
 message ClockParkFinishScriptScNotify {
     GIPBHLBFDAH NLEOMLNOKCC = 4;
+}
+
+message ClockParkGetInfoCsReq {
 }
 
 message ClockParkGetInfoScRsp {
@@ -6610,9 +6601,6 @@ message EGMPACONNFP {
     uint32 GNCFHIKODKE = 1;
 }
 
-message EGNKGGAIGBJ {
-}
-
 message EHELNMGMENO {
     repeated NEFBECKCJIH MALDOMHPILM = 11;
 }
@@ -8288,9 +8276,6 @@ message FKOGDINOBDF {
     GGGBAIAPDLO PCHGEGFBKLF = 10;
 }
 
-message FKONEIIILGP {
-}
-
 message FLCJMPNDMMH {
     uint32 NFCMAEIGKHK = 5;
     map<uint32, uint32> ODICAOCLJKO = 15;
@@ -8404,9 +8389,6 @@ message FNIDNGOGAFF {
 
 message FNNFHNKHIDD {
     uint32 PFIKCNFBGHE = 3;
-}
-
-message FNOACGHLHGM {
 }
 
 message FNOMEBNDGJI {
@@ -9525,9 +9507,6 @@ message GFGHGCIMKGA {
     uint32 unlock_aeon_enhance_num = 15;
 }
 
-message GFIIJCDEBDH {
-}
-
 message GFNAPELNFIC {
     uint32 CLFBBAPEPML = 1;
     bool is_locked = 2;
@@ -10289,6 +10268,9 @@ message GetAllServerPrefsDataScRsp {
     uint32 retcode = 5;
 }
 
+message GetAlleyInfoCsReq {
+}
+
 message GetAlleyInfoScRsp {
     repeated uint32 AMHAEPILIKF = 11;
     uint32 level = 12;
@@ -10396,6 +10378,9 @@ message GetBasicInfoScRsp {
     uint32 exchange_times = 2;
     uint32 retcode = 12;
     int64 last_set_nickname_time = 11;
+}
+
+message GetBattleCollegeDataCsReq {
 }
 
 message GetBattleCollegeDataScRsp {
@@ -10824,6 +10809,9 @@ message GetFarmStageGachaInfoScRsp {
     uint32 retcode = 13;
 }
 
+message GetFeverTimeActivityDataCsReq {
+}
+
 message GetFeverTimeActivityDataScRsp {
     uint32 retcode = 6;
     repeated JBMJOIPJPLH GNDEFEAEDNJ = 14;
@@ -11042,6 +11030,9 @@ message GetGachaCeilingScRsp {
     GachaCeiling gacha_ceiling = 3;
 }
 
+message GetGachaInfoCsReq {
+}
+
 message GetGachaInfoScRsp {
     repeated GachaInfo gacha_info_list = 7;
     uint32 GPNLDDLBOLM = 5;
@@ -11184,6 +11175,9 @@ message GetMainMissionCustomValueScRsp {
     uint32 retcode = 12;
 }
 
+message GetMapRotationDataCsReq {
+}
+
 message GetMapRotationDataScRsp {
     uint32 retcode = 8;
     uint32 JPPMEKJGJFD = 4;
@@ -11193,6 +11187,9 @@ message GetMapRotationDataScRsp {
     bool BHABAIFPOOA = 13;
     RotaterEnergyInfo energy_info = 1;
     int32 region_id = 6;
+}
+
+message GetMarkChestCsReq {
 }
 
 message GetMarkChestScRsp {
@@ -11326,10 +11323,16 @@ message GetMovieRacingDataScRsp {
     uint32 retcode = 10;
 }
 
+message GetMultipleDropInfoCsReq {
+}
+
 message GetMultipleDropInfoScRsp {
     uint32 retcode = 11;
     repeated BMJHAHOLEGH FAFFFJGJHHC = 13;
     repeated NGLOBFBCGBB MOPAGKNEMOD = 12;
+}
+
+message GetMuseumInfoCsReq {
 }
 
 message GetMuseumInfoScRsp {
@@ -11347,6 +11350,10 @@ message GetMuseumInfoScRsp {
     CDNPKGOKEPK PKJCHLDHKBL = 13;
     uint32 exp = 12;
     uint32 level = 7;
+}
+
+message GetNpcMessageGroupCsReq {
+    repeated uint32 BJIPBBFIBPD = 12;
 }
 
 message GetNpcMessageGroupScRsp {
@@ -11466,6 +11473,9 @@ message GetPlayerDetailInfoScRsp {
     PlayerDetailInfo detail_info = 13;
 }
 
+message GetPlayerReturnMultiDropInfoCsReq {
+}
+
 message GetPlayerReturnMultiDropInfoScRsp {
     uint32 retcode = 4;
     GCLPBMPOHLI HDLIGGEMOKM = 12;
@@ -11541,9 +11551,15 @@ message GetQuestDataScRsp {
     uint32 retcode = 5;
 }
 
+message GetQuestRecordCsReq {
+}
+
 message GetQuestRecordScRsp {
     uint32 retcode = 11;
     repeated ECLGDFGGOFH AOOFGCNFBPL = 7;
+}
+
+message GetRaidInfoCsReq {
 }
 
 message GetRaidInfoScRsp {
@@ -11553,9 +11569,15 @@ message GetRaidInfoScRsp {
     repeated FinishedRaidInfo finished_raid_info_list = 4;
 }
 
+message GetRechargeBenefitInfoCsReq {
+}
+
 message GetRechargeBenefitInfoScRsp {
     uint32 retcode = 14;
     repeated BCAJNMLLIED OABBABNPPOO = 3;
+}
+
+message GetRechargeGiftInfoCsReq {
 }
 
 message GetRechargeGiftInfoScRsp {
@@ -11894,6 +11916,9 @@ message GetSystemDataRsp {
     PDEIEDGCOBA DGFNLDBFLAJ = 6;
 }
 
+message GetTelevisionActivityDataCsReq {
+}
+
 message GetTelevisionActivityDataScRsp {
     uint32 retcode = 15;
     repeated PAAIMLDHJCI AKDFABDHHIO = 9;
@@ -11923,6 +11948,9 @@ message GetTreasureDungeonActivityDataCsReq {
 message GetTreasureDungeonActivityDataScRsp {
     uint32 retcode = 11;
     repeated DCMCLHJINBD NFEJLHOCFMC = 4;
+}
+
+message GetTrialActivityDataCsReq {
 }
 
 message GetTrialActivityDataScRsp {
@@ -12923,9 +12951,6 @@ message HANMCLKOCBO {
     uint32 time = 14;
 }
 
-message HAOAFJLCIMO {
-}
-
 message HBACEFIACOI {
     repeated LMAKFCIHCMA EBAIMMGLGFO = 15;
 }
@@ -13096,9 +13121,6 @@ message HDOKNMGIDMB {
 }
 
 message HDOLIECDHAO {
-}
-
-message HEENDFJBHCB {
 }
 
 message HEGGPIEGBIN {
@@ -14756,9 +14778,6 @@ message IPGIJFNAFLC {
     uint32 IGDOFKLAILH = 5;
 }
 
-message IPIFCANPPEO {
-}
-
 message IPIJFDIPNDE {
     repeated DiceCombatAvatar avatar_list = 1;
     BOFHHEBDEOD BAEGDJILMBL = 2;
@@ -15056,9 +15075,6 @@ enum JDHJMNAGIIA {
     JDHJMNAGIIA_CPBNIGEIKJA = 14;
 }
 
-message JDKEAPHHLBM {
-}
-
 message JDLIPNFGEID {
     uint32 avatar_id = 15;
     uint32 avatar_type = 4;
@@ -15201,9 +15217,6 @@ message JGAMMPGMCNI {
 
 message JGAONCGEIND {
     repeated uint32 MDCDGIGBNFD = 11;
-}
-
-message JGBGMGIBDHM {
 }
 
 message JGCMGAMHDHM {
@@ -15403,9 +15416,6 @@ message JJNHIKIGKJC {
 }
 
 message JJONBPINLJJ {
-}
-
-message JJPAAFLHHKC {
 }
 
 message JJPDJPINDOA {
@@ -16031,9 +16041,6 @@ message KFOOLGFCNDN {
 message KGBAFBEMICB {
     uint32 AACGBEBGDPE = 3;
     bool MNDCIBFEJOP = 14;
-}
-
-message KGGIFOABIDF {
 }
 
 message KGHDDIBDABP {
@@ -17125,13 +17132,6 @@ message LNCHJBMIMAF {
     uint32 event_id = 8;
 }
 
-message LNDMHNMPGNP {
-    repeated uint32 BJIPBBFIBPD = 12;
-}
-
-message LNFGDEAIHNL {
-}
-
 message LNGLLJKNKHG {
     bool BDCNNNNLLHJ = 12;
     uint32 retcode = 14;
@@ -17697,9 +17697,6 @@ message MDGIOENHBEJ {
     string OAPACMJOIKC = 2;
     uint32 ENHLKLFLCKG = 3;
     KKNGAGGAJKC tag = 4;
-}
-
-message MDGPIJNKMLO {
 }
 
 message MDJAPHPOABA {
@@ -19664,9 +19661,6 @@ message NKOBPBBONDJ {
 message NKOCCGLHOML {
 }
 
-message NKOIPKDPHGF {
-}
-
 message NLAGKOJKHCN {
     NCFKHDIKCNI GALBOLNODBB = 6;
     uint32 retcode = 7;
@@ -19724,9 +19718,6 @@ message NMFEHEHPGAB {
     uint32 MGCACGFLKEK = 13;
 }
 
-message NMGHOJBDFJJ {
-}
-
 message NMHMGHEHHCM {
     uint32 PNHGLNPDFEA = 6;
     bool ALAJJMKOMML = 4;
@@ -19777,9 +19768,6 @@ message NNFFGHJKPJD {
 }
 
 message NNFPCAPDENH {
-}
-
-message NNKJBOKLHAF {
 }
 
 message NOAKCDKAAFB {
@@ -23452,6 +23440,9 @@ message RogueMagicLevelInfoUpdateScNotify {
     JAMINGBJHBK reason = 1;
 }
 
+message RogueMagicQueryCsReq {
+}
+
 message RogueMagicQueryScRsp {
     GCBCKOKEAJH PHGJIJELKDB = 15;
     uint32 retcode = 10;
@@ -23806,6 +23797,9 @@ enum RogueTournLevelStatus {
 
 message RogueTournPersonaRoomCardZoneUpdateScNotify {
     ODHJEDHKHOD NHNBJLLDOHO = 8;
+}
+
+message RogueTournQueryCsReq {
 }
 
 message RogueTournQueryScRsp {
@@ -24957,6 +24951,9 @@ message SpaceZooCatUpdateNotify {
     bool FHHCNGAGFCJ = 2;
     repeated DBLILHCLPPL HMAIHHCBFKP = 11;
     bool HCGHLFAKIKI = 6;
+}
+
+message SpaceZooDataCsReq {
 }
 
 message SpaceZooDataScRsp {
@@ -26404,6 +26401,9 @@ message TrainCakeCatchDiyLikeScRsp {
 message TrainCakeCatchDiyScRsp {
     BFAKMCIJFCB NLJBJMDPBGN = 10;
     uint32 retcode = 3;
+}
+
+message TrainCakeCatchGetDataCsReq {
 }
 
 message TrainCakeCatchGetDataScRsp {
