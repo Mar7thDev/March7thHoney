@@ -11,6 +11,8 @@ using March7thHoney.GameServer.Game.Activity;
 using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Calyx;
+using March7thHoney.GameServer.Game.Challenge;
+using March7thHoney.GameServer.Game.ChallengePeak;
 using March7thHoney.GameServer.Game.Expedition;
 using March7thHoney.GameServer.Game.Friend;
 // TODO 4.3: GridFight (货币战争) 模块暂停编译，等待 proto 重整
@@ -83,6 +85,9 @@ public partial class PlayerInstance(PlayerData data)
 
     public MailManager? MailManager { get; private set; }
     public FriendManager? FriendManager { get; private set; }
+    public ChallengeManager? ChallengeManager { get; private set; }
+    public ChallengePeakManager? ChallengePeakManager { get; private set; }
+    public ChallengeTierceManager? ChallengeTierceManager { get; private set; }
     // TODO 4.3: GridFight Manager 暂停编译
     public ExpeditionManager? ExpeditionManager { get; private set; }
     public TrainPartyManager? TrainPartyManager { get; private set; }
@@ -173,6 +178,9 @@ public partial class PlayerInstance(PlayerData data)
         MailManager = new MailManager(this);
         FriendManager = new FriendManager(this);
         ShopService = new ShopService(this);
+        ChallengeManager = new ChallengeManager(this);
+        ChallengePeakManager = new ChallengePeakManager(this);
+        ChallengeTierceManager = new ChallengeTierceManager(this);
         // TODO 4.3: GridFightManager 暂停初始化
         ExpeditionManager = new ExpeditionManager(this);
         TrainPartyManager = new TrainPartyManager(this);
@@ -298,6 +306,11 @@ public partial class PlayerInstance(PlayerData data)
     {
         await SendPacket(new PacketStaminaInfoScNotify(this));
 
+        ChallengeManager?.ResurrectInstance();
+        ChallengeTierceManager?.ResurrectInstance();
+
+        var tierceLobbyEntry = ChallengeTierceManager?.ConsumeReloginRedirect();
+
         if (StoryLineManager != null)
             await StoryLineManager.OnLogin();
 
@@ -307,7 +320,8 @@ public partial class PlayerInstance(PlayerData data)
         if (LineupManager!.GetCurLineup() != null) // null -> ignore(new player)
         {
             if (LineupManager!.GetCurLineup()!.IsExtraLineup() &&
-                RaidManager!.Data.CurRaidId == 0 && StoryLineManager!.StoryLineData.CurStoryLineId == 0)
+                RaidManager!.Data.CurRaidId == 0 && StoryLineManager!.StoryLineData.CurStoryLineId == 0 &&
+                ChallengeManager!.ChallengeInstance == null)
             {
                 LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
                 if (LineupManager!.GetCurLineup()!.IsExtraLineup()) await LineupManager!.SetCurLineup(0);
@@ -349,7 +363,10 @@ public partial class PlayerInstance(PlayerData data)
             }
         }
 
-        await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos!, Data.Rot!, false);
+        if (tierceLobbyEntry is { } lobbyEntry)
+            await EnterScene(lobbyEntry, 0, false);
+        else
+            await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos!, Data.Rot!, false);
         if (SceneInstance == null) await EnterScene(2000101, 0, false);
 
     }

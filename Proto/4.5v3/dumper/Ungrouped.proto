@@ -58,10 +58,6 @@ message AALCHOPCBEM {
     CABCPFKAOPP JOOEEKMDAEO = 13;
 }
 
-message AAMDILFLLCL {
-    uint32 PLDKENJLKME = 2;
-}
-
 message AAMEAOBEGKA {
     uint32 unique_id = 10;
 }
@@ -1224,6 +1220,11 @@ message AvatarSkillTree {
     uint32 level = 2;
 }
 
+message AvatarSpecialSkilltreeUnlockScNotify {
+    uint32 point_id = 5;
+    uint32 avatar_id = 15;
+}
+
 message AvatarSync {
     repeated AvatarPathData avatar_path_data_info_list = 8;
     repeated Avatar avatar_list = 1;
@@ -1680,10 +1681,6 @@ message BCIMOPDDKHH {
 
 message BCKBEMGGGIF {
     uint32 EECIJBLGLNG = 3;
-}
-
-message BCLNFODBDMH {
-    uint32 KOEOEHIMOEI = 14;
 }
 
 message BCMGFCDNAIE {
@@ -2246,10 +2243,6 @@ message BNJAIHINJIK {
     uint32 OBGKOOAPCEM = 2;
     GEFEDOAOKNO IPDLBJHAJOO = 5;
     HINIJKGDDBI FBECMPGLPKK = 15;
-}
-
-message BNLAMHMALIC {
-    uint32 PLDKENJLKME = 5;
 }
 
 message BODEMOLDHAA {
@@ -2917,9 +2910,6 @@ message CCHMHOONEGG {
     uint32 num = 14;
 }
 
-message CCHPHOIKECB {
-}
-
 message CCKJAEDDDCL {
     KPIHDPGDMKB BMGOLFNGHGH = 9;
     AHLALEEJOEG BBEKBJPHEJK = 15;
@@ -3214,10 +3204,6 @@ message CHMJIHDLDEB {
     uint32 PIACMPBJOIK = 10;
 }
 
-message CHOEFNJIHKB {
-    uint32 PLDKENJLKME = 11;
-}
-
 message CIBMBDDOGBH {
     uint32 OOMKNHFIGAF = 12;
 }
@@ -3295,10 +3281,6 @@ message CJHOCMLPMJD {
 message CJHPPLHFNAB {
     EMLFDPFAPJP BJMJBLCMPAL = 1;
     repeated KCIEGDGJMBE AHBOCLNGFNM = 2;
-}
-
-message CJICCPDKOHF {
-    uint32 PLDKENJLKME = 6;
 }
 
 message CJIFMPGCOOC {
@@ -5138,6 +5120,10 @@ message ConfirmChallengeTierceStageSettleCsReq {
     bool IOBCIMIPEOM = 5;
 }
 
+message ConfirmChallengeTierceStageSettleScRsp {
+    uint32 retcode = 10;
+}
+
 message ConfirmRelicBoxCsReq {
     bool BBNIFADMHHO = 9;
 }
@@ -5506,10 +5492,6 @@ message DEGFFGKMFJJ {
 
 message DEHDGGEDJHI {
     ChatMessageData stop_desc = 1;
-}
-
-message DEIKCHNBAGL {
-    uint32 PLDKENJLKME = 12;
 }
 
 message DEJGMBKPHEC {
@@ -6256,9 +6238,22 @@ message DoGachaScRsp {
     uint32 retcode = 14;
 }
 
+message DressAvatarCsReq {
+    uint32 equipment_unique_id = 15;
+    uint32 avatar_id = 11;
+}
+
+message DressAvatarScRsp {
+    uint32 PLDKENJLKME = 12;
+}
+
 message DressAvatarSkinCsReq {
     uint32 skin_id = 14;
     uint32 avatar_id = 2;
+}
+
+message DressAvatarSkinScRsp {
+    uint32 PLDKENJLKME = 15;
 }
 
 message DressRelicAvatarCsReq {
@@ -6385,10 +6380,6 @@ message EBFKLKGHAMJ {
 message EBGJAKBKPAN {
     uint32 avatar_id = 3;
     AvatarType avatar_type = 5;
-}
-
-message EBIDCJCHKAA {
-    uint32 PLDKENJLKME = 15;
 }
 
 message EBNKDHCIJPH {
@@ -6535,10 +6526,6 @@ message EDOIEMCFFCA {
 
 message EEAGACLNDFN {
     uint32 LOPNADHJKBF = 8;
-}
-
-message EEANCDFECGN {
-    uint32 PLDKENJLKME = 2;
 }
 
 message EEFDJLPDCFO {
@@ -6829,9 +6816,6 @@ message ELBILFGFDHA {
 
 message ELEMFBMOMMM {
     BGNIMFMFKLH ECMBBBAPAJC = 7;
-}
-
-message ELFNJCILJGK {
 }
 
 message ELGLKEAPLGM {
@@ -7464,6 +7448,10 @@ message EnterSectionCsReq {
     uint64 interact_id = 9;
 }
 
+message EnterSectionScRsp {
+    uint32 retcode = 11;
+}
+
 message EnterStageScRsp {
     string CCPKFOKOLJB = 14;
     uint32 retcode = 12;
@@ -7827,9 +7815,6 @@ message FAHGFCIJHFK {
     double total_hp_recover = 7;
     double total_shield_taken = 8;
     repeated PMPCIBGILIE INBNCAKGDPJ = 9;
-}
-
-message FAHIACFGMMP {
 }
 
 message FAICKIOJMDI {
@@ -8469,10 +8454,6 @@ message FOJDKLCHCKG {
 message FOMCONFODHH {
     JDGNMIDMACL GBJEALNCMJC = 7;
     BIKNPJPLDAO HNMLBLGGOLB = 2;
-}
-
-message FOMGGGKLGLP {
-    uint32 KOEOEHIMOEI = 5;
 }
 
 message FOOFAIFPOOI {
@@ -9250,10 +9231,6 @@ message GADFFIFFNHM {
     int32 hp = 4;
 }
 
-message GADFJNMKAAN {
-    uint32 PLDKENJLKME = 9;
-}
-
 message GAEKHIDCFHF {
     repeated uint32 NGKOFMBBGNL = 8;
     NDLNIKCCALK MGBNEAHCDMA = 3;
@@ -9537,10 +9514,6 @@ message GEIBJKJDOHO {
 message GEIELBEBJCK {
 }
 
-message GEKMCGJPEEF {
-    uint32 PLDKENJLKME = 15;
-}
-
 message GELEHDAJMED {
     uint32 dialogue_id = 8;
 }
@@ -9591,10 +9564,6 @@ message GFOMAIAIDFA {
 
 message GGAMIKNEDGE {
     uint32 retcode = 12;
-}
-
-message GGCBEKKJCJN {
-    uint32 PLDKENJLKME = 6;
 }
 
 message GGCFMPIBGHA {
@@ -9785,10 +9754,6 @@ enum GJJEOANEDDO {
     GJJEOANEDDO_NLCDGIPGFDJ = 0;
     GJJEOANEDDO_GHDEPAGOKBE = 1;
     GJJEOANEDDO_GGEKFBGIJID = 2;
-}
-
-message GJNEHIMBFMC {
-    uint32 PLDKENJLKME = 10;
 }
 
 message GKCNOIGHOPM {
@@ -10140,9 +10105,6 @@ message GOMKGHJBNFM {
     uint32 level = 13;
 }
 
-message GOMLCMBBPCH {
-}
-
 message GOOJIJDPKIP {
     uint32 retcode = 4;
 }
@@ -10341,6 +10303,9 @@ message GetAllSaveRaidScRsp {
     repeated RaidData raid_data_list = 9;
 }
 
+message GetAllServerPrefsDataCsReq {
+}
+
 message GetAllServerPrefsDataScRsp {
     repeated ServerPrefs server_prefs_list = 4;
     uint32 retcode = 5;
@@ -10417,6 +10382,9 @@ message GetAvatarDataScRsp {
     repeated uint32 skin_list = 4;
     repeated AvatarPathData avatar_path_data_info_list = 6;
     repeated uint32 basic_type_id_list = 8;
+}
+
+message GetBagCsReq {
 }
 
 message GetBagScRsp {
@@ -10539,10 +10507,16 @@ message GetChallengeScRsp {
     uint32 retcode = 6;
 }
 
+message GetChallengeTierceControllerCsReq {
+}
+
 message GetChallengeTierceControllerScRsp {
     ChallengeTierceChallengeInfo challenge_tierce_info = 9;
     ChallengeTierceRecordInfo OHPGEHKFABM = 3;
     uint32 retcode = 14;
+}
+
+message GetChallengeTierceDataCsReq {
 }
 
 message GetChallengeTierceDataScRsp {
@@ -11178,6 +11152,9 @@ message GetLevelRewardTakenListCsReq {
 message GetLevelRewardTakenListScRsp {
     repeated uint32 level_reward_taken_list = 2;
     uint32 retcode = 4;
+}
+
+message GetLineupAvatarDataCsReq {
 }
 
 message GetLineupAvatarDataScRsp {
@@ -12968,10 +12945,6 @@ message HBCOFDDCGOL {
     uint32 GCAHKLNGFCK = 1;
 }
 
-message HBFNNCGECMO {
-    uint32 PLDKENJLKME = 5;
-}
-
 message HBFODNLIBFI {
     uint32 JALHKMEOOPN = 6;
     uint32 JENKDACFCDO = 13;
@@ -13308,9 +13281,6 @@ message HGJHBCBIONE {
     GJJEOANEDDO GMKICMIMAAB = 13;
 }
 
-message HGKLNOIKPPE {
-}
-
 message HGMJFBCFJFN {
     ACAKOLCGDLL JNBFIBDKLGB = 14;
     OBDBODNJACD LEMCGNHLOOI = 6;
@@ -13413,10 +13383,6 @@ message HIGAMEJNCJJ {
 message HIHEHNIAGPF {
     uint32 progress = 4;
     uint32 FBDENECLHIH = 11;
-}
-
-message HIIAFEKODHJ {
-    uint32 PLDKENJLKME = 13;
 }
 
 message HIJCLODMBPO {
@@ -14555,9 +14521,6 @@ message IJJKHFPLLIF {
     repeated LJEMPEHADKJ FLOKEJHHPPO = 3;
 }
 
-message IJKAGDIBGNJ {
-}
-
 message IJLEFNJPFKP {
     uint32 rogue_mode = 1;
 }
@@ -15062,11 +15025,6 @@ message JDDFIGPOKHC {
     repeated MGEAPNBMJKJ JHJEJKGFJMN = 9;
 }
 
-message JDDFIOBBHOF {
-    uint32 PLDKENJLKME = 3;
-    uint32 IEIFMNNMINA = 13;
-}
-
 message JDFNPICGCGI {
     uint32 LIFJCJKNKNJ = 11;
     uint32 FAHAMJFPMMI = 9;
@@ -15500,11 +15458,6 @@ message JKHGDJGBHCD {
     repeated KJAMNAOLOLL LFEGDDMBLEE = 9;
 }
 
-message JKHHNBLECCG {
-    uint32 MABEMCMAJAH = 5;
-    uint32 KOEOEHIMOEI = 15;
-}
-
 message JKILAALMFIB {
     uint32 retcode = 11;
 }
@@ -15597,10 +15550,6 @@ message JMPNGBAILBG {
 enum JNBOIFCNBCH {
     JNBOIFCNBCH_HGLIFJGHADE = 0;
     JNBOIFCNBCH_LCFJOOIAEHD = 1;
-}
-
-message JNEBIKHBHOB {
-    uint32 PLDKENJLKME = 4;
 }
 
 enum JNFDGPDHENJ {
@@ -15717,9 +15666,6 @@ message JPIEAEJIDAO {
     repeated FNIDNGOGAFF LMLLNJBLPGC = 7;
 }
 
-message JPIMBJPMFBP {
-}
-
 message JPKIDILKOAK {
     repeated uint32 AEJPCFLOPAL = 1;
     uint32 buff_id = 2;
@@ -15740,7 +15686,7 @@ message JPLJJHFFODO {
 
 message JoinLineupCsReq {
     bool OPHLICGEPIC = 15;
-    repeated LineupSlotData JIKAFFEIGDA = 13;
+    repeated LineupSlotData lineup_slot_list = 13;
     uint32 index = 10;
     uint32 plane_id = 3;
     bool MIJJPJEPJFP = 6;
@@ -15958,10 +15904,6 @@ message KDPGIMOOLON {
     repeated uint32 KNJMPBHKHCJ = 5;
     bool BDEFAFFDBCC = 13;
     repeated uint32 PGMHMPEHPHP = 9;
-}
-
-message KEALONANBJO {
-    uint32 PLDKENJLKME = 1;
 }
 
 message KEEPBBDICFN {
@@ -16406,16 +16348,6 @@ message KMCCCOKIOFD {
     uint32 JBGENFIKGGF = 6;
 }
 
-message KMEHKMDADJO {
-    uint32 HCCMOEAHHJE = 13;
-    uint32 KOEOEHIMOEI = 8;
-}
-
-message KMHBOEAKDCF {
-    uint32 OFIPFNEENJL = 12;
-    uint32 ILFADHBKBCA = 8;
-}
-
 message KMLOMKCMGHD {
     uint32 JCNDBKGBLLJ = 4;
     uint32 DAMIHCPPJAB = 2;
@@ -16455,10 +16387,6 @@ message KNLJDBNOPKD {
 message KNMNEJCMHGE {
     float GMPKBKLGDMA = 2;
     int32 MNLINFEODPJ = 6;
-}
-
-message KNOGAGKIKHH {
-    uint32 PLDKENJLKME = 15;
 }
 
 message KNOLJDOPBDG {
@@ -16847,10 +16775,6 @@ message LFKKOMBKJIP {
     string value = 2;
 }
 
-message LFKNBJPPOGC {
-    uint32 PLDKENJLKME = 1;
-}
-
 message LFKOLKFKOAP {
     uint32 LGIPILAKIKB = 14;
     repeated uint32 CLEJHGMAFOD = 5;
@@ -17087,10 +17011,6 @@ message LJKFPPDFHMH {
     uint32 retcode = 3;
     TurnFoodSwitch KLAJGAKAFCP = 1;
     bool is_open = 14;
-}
-
-message LJOHANHDEOE {
-    uint32 PLDKENJLKME = 2;
 }
 
 message LKCDLJCKCJI {
@@ -17339,8 +17259,22 @@ enum LanguageType {
 message LeaveChallengeCsReq {
 }
 
+message LeaveChallengePeakCsReq {
+}
+
+message LeaveChallengePeakScRsp {
+    uint32 retcode = 13;
+}
+
 message LeaveChallengeScRsp {
     uint32 retcode = 13;
+}
+
+message LeaveChallengeTierceCsReq {
+}
+
+message LeaveChallengeTierceScRsp {
+    uint32 retcode = 5;
 }
 
 message LeaveFiveDimGameCsReq {
@@ -17384,6 +17318,11 @@ message LeaveRogueScRsp {
     SceneInfo scene = 2;
     FHEGNOPNICH JNKLNLKHGBB = 14;
     LineupInfo lineup = 6;
+}
+
+message LeaveTrialActivityScRsp {
+    uint32 retcode = 3;
+    uint32 stage_id = 13;
 }
 
 enum LimaoNewsOfficeSurveyState {
@@ -17575,10 +17514,18 @@ message LockEquipmentCsReq {
     bool is_locked = 13;
 }
 
+message LockEquipmentScRsp {
+    uint32 retcode = 11;
+}
+
 message LockRelicCsReq {
     repeated uint32 relic_ids = 11;
     bool NPPKABBJCMI = 9;
     bool is_locked = 3;
+}
+
+message LockRelicScRsp {
+    uint32 retcode = 2;
 }
 
 message LoginActivityData {
@@ -17919,9 +17866,6 @@ message MHJIOJNNPDM {
     repeated uint32 KBECJMLLCEJ = 8;
 }
 
-message MHJNOBBOFOC {
-}
-
 message MHKNPBJDFIC {
     uint32 role_id = 2;
 }
@@ -18099,10 +18043,6 @@ enum MLJIILDNDPL {
     MLJIILDNDPL_FAGECPGMPEH = 2;
 }
 
-message MLPHCNIKCJK {
-    uint32 PLDKENJLKME = 15;
-}
-
 message MMBBHFNJILI {
     uint32 unique_id = 2;
     OKCCLEEPELM OJEANDPABHC = 8;
@@ -18154,10 +18094,6 @@ message MNGNLOCLNOF {
 
 message MNILJCPCOFG {
     uint32 retcode = 13;
-}
-
-message MNJILKCIOKI {
-    uint32 PLDKENJLKME = 13;
 }
 
 message MNKGDKAIELH {
@@ -19270,10 +19206,6 @@ message NCBOENDMDIC {
     uint32 level = 2;
 }
 
-message NCFHPBHFGLE {
-    uint32 PLDKENJLKME = 12;
-}
-
 message NCFKHDIKCNI {
     repeated uint32 GFKAFIFMHNF = 12;
 }
@@ -19983,11 +19915,6 @@ message NpcStatus {
     uint32 npc_id = 3;
 }
 
-message OAIPMLDNDFN {
-    uint32 PJHHJKCAPFG = 15;
-    uint32 KOEOEHIMOEI = 11;
-}
-
 message OBDBODNJACD {
     uint32 LOPNADHJKBF = 14;
     uint32 IHAOMLEPHOM = 11;
@@ -20545,10 +20472,6 @@ message OKBLBLPOENO {
 message OKCCLEEPELM {
     uint32 CFKKKPNKHEL = 2;
     uint32 level = 9;
-}
-
-message OKEDFNJJGHB {
-    uint32 PLDKENJLKME = 10;
 }
 
 message OKEFGCNNEKI {
@@ -21375,11 +21298,6 @@ message PIJDFMAJMFD {
     uint32 JMNMFMHPCKD = 13;
 }
 
-message PIKGCABFJAE {
-    uint32 EIGEDOPBCKH = 14;
-    uint32 KLJANMLJHEF = 4;
-}
-
 message PIKIDDEEDII {
     repeated uint32 BAHMHMDOMPB = 7;
 }
@@ -21456,10 +21374,6 @@ message PJMGBLIFDFP {
     ONNHDODIIED GOKJCFBPHCJ = 1002;
     GBAKEFGOLCB FNNOPJBPLPF = 1003;
     HFAAFFDPBIL MPNPIIHHFPN = 1004;
-}
-
-message PJMIAMJLMPA {
-    uint32 PLDKENJLKME = 7;
 }
 
 message PJOHABIOPPI {
@@ -21550,9 +21464,6 @@ message PKHKEEKIODC {
     OEPIHJOHLKM FLPDILMMCFK = 534;
 }
 
-message PKKFNODINEM {
-}
-
 message PKOHBLEGMAO {
     LEJFIEPMMGG DKEENIMPLKD = 12;
 }
@@ -21632,15 +21543,8 @@ message PLPDNKNJBAA {
     repeated OHABCOEGDEH HBGPLDACACI = 8;
 }
 
-message PLPGNCMHKHB {
-    uint32 PLDKENJLKME = 11;
-}
-
 message PMDGOKCLELJ {
     uint32 CEIGBGIIMFI = 8;
-}
-
-message PMEANPGBPIN {
 }
 
 message PMEHLELAFJI {
@@ -22743,6 +22647,10 @@ message PromoteAvatarCsReq {
     repeated ItemCost item_list = 6;
 }
 
+message PromoteAvatarScRsp {
+    uint32 PLDKENJLKME = 1;
+}
+
 message PromoteEquipmentCsReq {
     ItemCostData BHHLDGKJNBE = 3;
     uint32 HAIOMLKEIBF = 5;
@@ -22895,6 +22803,10 @@ message QuitBattleCsReq {
     BattleStatistics stt = 10;
 }
 
+message QuitBattleScRsp {
+    uint32 retcode = 2;
+}
+
 message QuitLineupCsReq {
     uint32 index = 10;
     uint32 base_avatar_id = 2;
@@ -22981,9 +22893,17 @@ message RankUpAvatarCsReq {
     ItemCostData cost_data = 13;
 }
 
+message RankUpAvatarScRsp {
+    uint32 PLDKENJLKME = 10;
+}
+
 message RankUpEquipmentCsReq {
     ItemCostData cost_data = 3;
     uint32 equipment_unique_id = 2;
+}
+
+message RankUpEquipmentScRsp {
+    uint32 retcode = 4;
 }
 
 message ReEnterLastElementStageCsReq {
@@ -22994,6 +22914,21 @@ message ReEnterLastElementStageScRsp {
     uint32 stage_id = 13;
     SceneBattleInfo battle_info = 4;
     uint32 retcode = 8;
+}
+
+message ReStartChallengePeakCsReq {
+}
+
+message ReStartChallengePeakScRsp {
+    uint32 retcode = 7;
+}
+
+message ReStartChallengeTierceCsReq {
+}
+
+message ReStartChallengeTierceScRsp {
+    uint32 retcode = 7;
+    SceneInfo scene = 8;
 }
 
 message RebattleByClientCsNotify {
@@ -23166,6 +23101,19 @@ message RelicReforgeConfirmCsReq {
     bool is_cancel = 7;
 }
 
+message RelicReforgeConfirmScRsp {
+    uint32 PLDKENJLKME = 9;
+}
+
+message RelicReforgeCsReq {
+    uint32 reforge_block_sub_affix_id = 12;
+    uint32 relic_unique_id = 8;
+}
+
+message RelicReforgeScRsp {
+    uint32 PLDKENJLKME = 12;
+}
+
 message RelicSmartWearAddPlanCsReq {
     RelicSmartWearPlan relic_plan = 4;
 }
@@ -23332,11 +23280,6 @@ message RestartChallengePhaseCsReq {
 message RestartChallengePhaseScRsp {
     SceneInfo scene = 14;
     uint32 retcode = 8;
-}
-
-message RestartChallengeTierceScRsp {
-    uint32 retcode = 7;
-    SceneInfo scene = 8;
 }
 
 message RevcMsgScNotify {
@@ -24255,15 +24198,15 @@ message SceneMapInfo {
     repeated uint32 unlock_teleport_list = 1957;
     uint32 dimension_id = 4;
     uint32 floor_id = 6;
-    repeated ChestMonsterStat maze_prop_list = 11;
+    repeated ChestMonsterStat chest_monster_list = 11;
     repeated uint32 lighten_section_list = 15;
     uint32 entry_id = 1;
-    repeated MazePropState maze_group_list = 8;
+    repeated MazePropState maze_prop_list = 8;
     repeated uint32 opened_chest_id_list = 12;
-    repeated ChestInfo chest_monster_list = 10;
+    repeated ChestInfo chest_list = 10;
     map<string, int32> floor_saved_value_map = 13;
     MissionStatusBySceneInfo client_group_mission_info = 370;
-    repeated MazeGroup chest_list = 3;
+    repeated MazeGroup maze_group_list = 3;
 }
 
 message SceneMonster {
@@ -24322,6 +24265,10 @@ message ScenePropInfo {
 
 message SceneReviveAfterRebattleCsReq {
     RebattleType NKDAAAGPCDB = 12;
+}
+
+message SceneReviveAfterRebattleScRsp {
+    uint32 retcode = 5;
 }
 
 message SceneSummonUnitInfo {
@@ -24499,6 +24446,11 @@ message SetAssistScRsp {
     uint32 retcode = 14;
 }
 
+message SetAvatarEnhancedIdCsReq {
+    uint32 enhanced_id = 13;
+    uint32 avatar_id = 8;
+}
+
 message SetAvatarEnhancedIdScRsp {
     uint32 growth_avatar_id = 15;
     uint32 retcode = 9;
@@ -24540,9 +24492,17 @@ message SetChallengePeakMobLineupAvatarCsReq {
     uint32 peak_group_id = 14;
 }
 
+message SetChallengePeakMobLineupAvatarScRsp {
+    uint32 retcode = 15;
+}
+
 message SetChallengeTierceLineupCsReq {
     repeated ChallengeTierceStageLineupInfo stage_info_list = 9;
     uint32 challenge_id = 15;
+}
+
+message SetChallengeTierceLineupScRsp {
+    uint32 retcode = 6;
 }
 
 message SetClientPausedCsReq {
@@ -24552,6 +24512,11 @@ message SetClientPausedCsReq {
 message SetClientPausedScRsp {
     bool paused = 10;
     uint32 retcode = 11;
+}
+
+message SetClientRaidTargetCountCsReq {
+    uint32 KJKGHIEKNID = 14;
+    uint32 progress = 4;
 }
 
 message SetClientRaidTargetCountScRsp {
@@ -24718,6 +24683,10 @@ message SetMultipleAvatarPathsCsReq {
     repeated MultiPathAvatarType avatar_id_list = 7;
 }
 
+message SetMultipleAvatarPathsScRsp {
+    uint32 PLDKENJLKME = 13;
+}
+
 message SetNicknameCsReq {
     string nickname = 8;
     bool is_modify = 5;
@@ -24753,6 +24722,10 @@ message SetPlayerInfoScRsp {
 
 message SetPlayerOutfitCsReq {
     CJLCPMDGIBO DHKFCDAGHDM = 11;
+}
+
+message SetPlayerOutfitScRsp {
+    uint32 PLDKENJLKME = 6;
 }
 
 message SetRedPointStatusScNotify {
@@ -25111,6 +25084,10 @@ message StartChallengePeakCsReq {
     uint32 peak_id = 9;
 }
 
+message StartChallengePeakScRsp {
+    uint32 retcode = 15;
+}
+
 message StartChallengeScRsp {
     SceneInfo scene = 1;
     repeated LineupInfo lineup_list = 11;
@@ -25124,12 +25101,6 @@ message StartChallengeTierceCsReq {
     bool is_single_stage = 4;
     uint32 stage_index = 11;
     repeated ChallengeTierceStageLineupInfo stage_info_list = 1;
-}
-
-message StartChallengeTierceNextStageScRsp {
-    SceneInfo scene = 8;
-    uint32 retcode = 5;
-    ChallengeTierceChallengeInfo challenge_tierce_info = 13;
 }
 
 message StartChallengeTierceScRsp {
@@ -25198,6 +25169,15 @@ message StartFinishSubMissionScNotify {
 message StartMatchCsReq {
     LobbyGameExtInfo JIDKDPPPDPF = 10;
     FightGameMode GJNMHILINHC = 4;
+}
+
+message StartNextChallengeTierceCsReq {
+}
+
+message StartNextChallengeTierceScRsp {
+    SceneInfo scene = 8;
+    uint32 retcode = 5;
+    ChallengeTierceChallengeInfo challenge_tierce_info = 13;
 }
 
 message StartNodeBattleCsReq {
@@ -26019,9 +25999,29 @@ message TakeMultipleExpeditionRewardScRsp {
     repeated ItemList DJOBNPIAEJP = 9;
 }
 
+message TakeOffAvatarSkinCsReq {
+    uint32 avatar_id = 14;
+}
+
+message TakeOffAvatarSkinScRsp {
+    uint32 PLDKENJLKME = 15;
+}
+
+message TakeOffEquipmentCsReq {
+    uint32 avatar_id = 5;
+}
+
+message TakeOffEquipmentScRsp {
+    uint32 PLDKENJLKME = 1;
+}
+
 message TakeOffRelicCsReq {
     repeated uint32 relic_type_list = 9;
     uint32 avatar_id = 13;
+}
+
+message TakeOffRelicScRsp {
+    uint32 PLDKENJLKME = 2;
 }
 
 message TakeOffSkillCoreCsReq {
@@ -26814,7 +26814,7 @@ message UnlockAvatarPathScRsp {
 }
 
 message UnlockAvatarSkinScNotify {
-    uint32 GEDMKNBINHK = 7;
+    uint32 skin_id = 7;
 }
 
 message UnlockBackGroundMusicCsReq {

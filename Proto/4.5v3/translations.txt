@@ -240,3 +240,75 @@ MPDNBOMJIKD = PlayerHeartBeatScRsp
 KMHGIMGMOCJ = GetShopListCsReq
 INLFBAGCCLG = GetBasicInfoCsReq
 LIFMGAFOBPC = GetMissionDataCsReq
+
+OAIPMLDNDFN = DressAvatarCsReq
+DEIKCHNBAGL = DressAvatarScRsp
+GEKMCGJPEEF = DressAvatarSkinScRsp
+KMEHKMDADJO = SetAvatarEnhancedIdCsReq
+NJKLLJELADJ = SetAvatarEnhancedIdScRsp
+BCLNFODBDMH = TakeOffAvatarSkinCsReq
+MLPHCNIKCJK = TakeOffAvatarSkinScRsp
+FOMGGGKLGLP = TakeOffEquipmentCsReq
+KEALONANBJO = TakeOffEquipmentScRsp
+KMHBOEAKDCF = RelicReforgeCsReq
+NCFHPBHFGLE = RelicReforgeScRsp
+GADFJNMKAAN = RelicReforgeConfirmScRsp
+HGKLNOIKPPE = GetBagCsReq
+ELFNJCILJGK = GetLineupAvatarDataCsReq
+LFKNBJPPOGC = PromoteAvatarScRsp
+GJNEHIMBFMC = RankUpAvatarScRsp
+HIIAFEKODHJ = SetMultipleAvatarPathsScRsp
+CJICCPDKOHF = SetPlayerOutfitScRsp
+EEANCDFECGN = TakeOffRelicScRsp
+AAMDILFLLCL = LockRelicScRsp
+CHOEFNJIHKB = LockEquipmentScRsp
+JNEBIKHBHOB = RankUpEquipmentScRsp
+UnlockAvatarSkinScNotify.GEDMKNBINHK = skin_id
+
+IJKAGDIBGNJ = LeaveChallengePeakCsReq
+MNJILKCIOKI = LeaveChallengePeakScRsp
+FAHIACFGMMP = ReStartChallengePeakCsReq
+PJMIAMJLMPA = ReStartChallengePeakScRsp
+JPIMBJPMFBP = LeaveChallengeTierceCsReq
+HBFNNCGECMO = LeaveChallengeTierceScRsp
+CCHPHOIKECB = GetChallengeTierceControllerCsReq
+LPIHJBELIBN = GetChallengeTierceControllerScRsp
+GOMLCMBBPCH = GetChallengeTierceDataCsReq
+HFGMOFBDAON = GetChallengeTierceDataScRsp
+PKKFNODINEM = ReStartChallengeTierceCsReq
+JMPJCAPKNGI = ReStartChallengeTierceScRsp
+MHJNOBBOFOC = StartNextChallengeTierceCsReq
+LHAKNKHBLBI = StartNextChallengeTierceScRsp
+
+LJOHANHDEOE = QuitBattleScRsp
+PLPGNCMHKHB = EnterSectionScRsp
+BNLAMHMALIC = SceneReviveAfterRebattleScRsp
+KNOGAGKIKHH = StartChallengePeakScRsp
+EBIDCJCHKAA = SetChallengePeakMobLineupAvatarScRsp
+GGCBEKKJCJN = SetChallengeTierceLineupScRsp
+OKEDFNJJGHB = ConfirmChallengeTierceStageSettleScRsp
+
+QuitBattleScRsp.PLDKENJLKME = retcode
+EnterSectionScRsp.PLDKENJLKME = retcode
+SceneReviveAfterRebattleScRsp.PLDKENJLKME = retcode
+StartChallengePeakScRsp.PLDKENJLKME = retcode
+SetChallengePeakMobLineupAvatarScRsp.PLDKENJLKME = retcode
+SetChallengeTierceLineupScRsp.PLDKENJLKME = retcode
+ConfirmChallengeTierceStageSettleScRsp.PLDKENJLKME = retcode
+LeaveChallengePeakScRsp.PLDKENJLKME = retcode
+ReStartChallengePeakScRsp.PLDKENJLKME = retcode
+LeaveChallengeTierceScRsp.PLDKENJLKME = retcode
+
+HEACNLOGGPH.KOJIOIBGEIN = maze_prop_list
+HEACNLOGGPH.PKJIAKKOOHH = chest_monster_list
+HEACNLOGGPH.PBIDEDAMEPD = chest_list
+HEACNLOGGPH.PCKHOBBGKHE = maze_group_list
+
+StartNextChallengeTierceScRsp.CJDOLCNNPKL = scene
+StartNextChallengeTierceScRsp.PLDKENJLKME = retcode
+StartNextChallengeTierceScRsp.BEIENNFBJPB = challenge_tierce_info
+ReStartChallengeTierceScRsp.PLDKENJLKME = retcode
+ReStartChallengeTierceScRsp.CJDOLCNNPKL = scene
+
+JoinLineupCsReq.JIKAFFEIGDA = lineup_slot_list
+PMEANPGBPIN = GetAllServerPrefsDataCsReq
