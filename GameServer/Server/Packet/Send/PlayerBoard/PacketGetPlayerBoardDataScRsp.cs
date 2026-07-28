@@ -24,10 +24,10 @@ public class PacketGetPlayerBoardDataScRsp : BasePacket
         var pos = 0;
         player.AvatarManager?.Data!.DisplayAvatars.ForEach(avatar =>
         {
-            proto.DisplayAvatarVec.DisplayAvatarList.Add(new SetDisplayAvatarCsReq
+            proto.DisplayAvatarVec.DisplayAvatarList.Add(new BMJPAPIDKKM
             {
-                KOEOEHIMOEI = (uint)avatar,
-                GKKKEHJAKII = (uint)pos++
+                AvatarId = (uint)avatar,
+                Pos = (uint)pos++
             });
         });
 

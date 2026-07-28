@@ -2176,8 +2176,8 @@ message BMJHAHOLEGH {
 }
 
 message BMJPAPIDKKM {
-    uint32 KOEOEHIMOEI = 7;
-    uint32 GKKKEHJAKII = 9;
+    uint32 avatar_id = 7;
+    uint32 pos = 9;
 }
 
 message BMKIIODBMJF {
@@ -24516,7 +24516,7 @@ message SetClientRaidTargetCountScRsp {
 }
 
 message SetDisplayAvatarCsReq {
-    repeated BMJPAPIDKKM HEKNKDNFIME = 13;
+    repeated BMJPAPIDKKM display_avatar_list = 13;
 }
 
 message SetDisplayAvatarScRsp {

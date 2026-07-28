@@ -1,4 +1,7 @@
 PLOBOMJLAPE = UnlockAvatarSkinScNotify
+BMJPAPIDKKM.KOEOEHIMOEI = avatar_id
+BMJPAPIDKKM.GKKKEHJAKII = pos
+SetDisplayAvatarCsReq.HEKNKDNFIME = display_avatar_list
 LHENKFJFGKH = SummonPetCsReq
 NCLGCOEMLIF = RecallPetCsReq
 LFLHHCAMABD = CurPetChangedScNotify
