@@ -238,8 +238,13 @@ EGLBADOKDEN.DGKPJCLNGJO = DHKFCDAGHDM
 EFKHBCOKGLG = PlayerHeartBeatCsReq
 MPDNBOMJIKD = PlayerHeartBeatScRsp
 KMHGIMGMOCJ = GetShopListCsReq
-INLFBAGCCLG = GetBasicInfoCsReq
-LIFMGAFOBPC = GetMissionDataCsReq
+DABIFJNADLI = GetBasicInfoCsReq
+EMIFJNLDKDE = GetMissionDataCsReq
+EMKAACCBCCB = GetQuestDataCsReq
+FAICKIOJMDI = QueryProductInfoCsReq
+ILIHCBAFEJH = SyncClientResVersionCsReq
+SyncClientResVersionCsReq.IHNNNFJAEJO = client_res_version
+EMACPOEHODE = GetNpcStatusCsReq
 
 OAIPMLDNDFN = DressAvatarCsReq
 DEIKCHNBAGL = DressAvatarScRsp
