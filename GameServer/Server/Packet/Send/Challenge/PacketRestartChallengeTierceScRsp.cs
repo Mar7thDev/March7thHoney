@@ -7,6 +7,6 @@ public class PacketRestartChallengeTierceScRsp : BasePacket
 {
     public PacketRestartChallengeTierceScRsp(uint retcode = 0) : base(CmdIds.RestartChallengeTierceScRsp)
     {
-        SetData(new RestartChallengeTierceScRsp { Retcode = retcode });
+        SetData(new ReStartChallengeTierceScRsp { Retcode = retcode });
     }
 }
