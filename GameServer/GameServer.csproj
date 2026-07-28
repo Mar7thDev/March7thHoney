@@ -22,14 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Game/Gacha/**/*.cs" />
     <Compile Remove="Game/MultiPlayer/DiceCombat/**/*.cs" />
     <Compile Remove="Server/Packet/Recv/DiceCombat/**/*.cs" />
-    <Compile Remove="Server/Packet/Recv/Gacha/**/*.cs" />
     <Compile Remove="Server/Packet/Recv/JukeBox/**/*.cs" />
     <Compile Remove="Server/Packet/Recv/Item/HandlerPromoteEquipmentCsReq.cs" />
     <Compile Remove="Server/Packet/Send/DiceCombat/**/*.cs" />
-    <Compile Remove="Server/Packet/Send/Gacha/**/*.cs" />
     <Compile Remove="Server/Packet/Send/JukeBox/**/*.cs" />
     <Compile Remove="Server/Packet/Send/Lineup/PacketVirtualLineupDestroyNotify.cs" />
     <Compile Remove="Server/Packet/Recv/Music/HandlerMusicRhythmDataCsReq.cs" />
@@ -49,7 +46,6 @@
     <Compile Remove="Server/Packet/Recv/BattleCollege/HandlerGetBattleCollegeDataCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/DiceCombat/HandlerGetDiceCombatShopDataCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/DiceCombat/HandlerGetDiceCombatSystemDataCsReq.cs" />
-    <Compile Remove="Server/Packet/Recv/Gacha/HandlerGetGachaInfoCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/JukeBox/HandlerPlayBackGroundMusicCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Lobby/HandlerLobbyQuitCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Lobby/HandlerLobbyStartFightCsReq.cs" />

@@ -28,3 +28,5 @@ DiceCombatMainPageRollDiceScRsp = DiceCombatRollDiceScRsp
 ForceSyncGameStateFinishScRsp = PlayerForceSyncGameStateFinishScRsp
 UnlockSkilltreeCsReq = UnlockSkillTreeCsReq
 UnlockSkilltreeScRsp = UnlockSkillTreeScRsp
+IAOPGJEOHOM = DoGachaScRsp
+DoGachaScRsp = NILCAHCBKAI
