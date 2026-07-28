@@ -693,7 +693,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         if (!shouldSyncScene) return;
 
-        Player.Connection?.SendPacket(CmdIds.SyncServerSceneChangeNotify);
         await Player.SendPacket(new PacketEnterSceneByServerScNotify(scene));
     }
 

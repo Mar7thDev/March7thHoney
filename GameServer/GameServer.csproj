@@ -22,6 +22,71 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Game/Gacha/**/*.cs" />
+    <Compile Remove="Game/MultiPlayer/DiceCombat/**/*.cs" />
+    <Compile Remove="Server/Packet/Recv/DiceCombat/**/*.cs" />
+    <Compile Remove="Server/Packet/Recv/Gacha/**/*.cs" />
+    <Compile Remove="Server/Packet/Recv/JukeBox/**/*.cs" />
+    <Compile Remove="Server/Packet/Recv/Pet/**/*.cs" />
+    <Compile Remove="Server/Packet/Recv/PlayerBoard/**/*.cs" />
+    <Compile Remove="Server/Packet/Recv/Item/HandlerPromoteEquipmentCsReq.cs" />
+    <Compile Remove="Server/Packet/Send/DiceCombat/**/*.cs" />
+    <Compile Remove="Server/Packet/Send/Gacha/**/*.cs" />
+    <Compile Remove="Server/Packet/Send/JukeBox/**/*.cs" />
+    <Compile Remove="Server/Packet/Send/Pet/**/*.cs" />
+    <Compile Remove="Server/Packet/Send/PlayerBoard/**/*.cs" />
+    <Compile Remove="Server/Packet/Send/Lineup/PacketVirtualLineupDestroyNotify.cs" />
+    <Compile Remove="Server/Packet/Recv/Music/HandlerMusicRhythmDataCsReq.cs" />
+    <Compile Remove="Server/Packet/Send/Mission/PacketMissionAcceptScNotify.cs" />
+    <Compile Remove="Server/Packet/Send/Mission/PacketUpdateTrackMainMissionIdScRsp.cs" />
+    <Compile Remove="Server/Packet/Recv/Lobby/HandlerLobbyModifyPlayerInfoCsReq.cs" />
+    <Compile Remove="Server/Packet/Send/Lobby/PacketLobbyModifyPlayerInfoScRsp.cs" />
+    <Compile Remove="Server/Packet/Send/Lobby/PacketLobbyQuitScRsp.cs" />
+    <Compile Remove="Server/Packet/Send/Lobby/PacketLobbyStartFightScRsp.cs" />
+    <Compile Remove="Server/Packet/Send/Multiplayer/PacketMultiplayerFightGameFinishScNotify.cs" />
+    <Compile Remove="Server/Packet/Send/Multiplayer/PacketMultiplayerGetFightGateScRsp.cs" />
+    <Compile Remove="Server/Packet/Send/Quest/PacketFinishQuestScRsp.cs" />
+    <Compile Remove="Server/Packet/Send/Scene/PacketActivateFarmElementScRsp.cs" />
+    <Compile Remove="Server/Packet/Recv/Activity/HandlerGetTrialActivityDataCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Activity/HandlerLeaveTrialActivityCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Activity/HandlerStartTrialActivityCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/BattleCollege/HandlerGetBattleCollegeDataCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/DiceCombat/HandlerGetDiceCombatShopDataCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/DiceCombat/HandlerGetDiceCombatSystemDataCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Gacha/HandlerGetGachaInfoCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/JukeBox/HandlerPlayBackGroundMusicCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Lobby/HandlerLobbyQuitCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Lobby/HandlerLobbyStartFightCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Mail/HandlerMarkReadMailCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/MapRotation/HandlerInteractChargerCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/MarkChest/HandlerGetMarkChestCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Message/HandlerGetNpcMessageGroupCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Mission/HandlerStarPerformanceRelayCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Mission/HandlerUpdateTrackMainMissionIdCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Multiplayer/HandlerMultiplayerFightGiveUpCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Multiplayer/HandlerMultiplayerGetFightGateCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Player/HandlerForceSyncGameStateFinishCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Player/HandlerGetLevelRewardCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Player/HandlerPlayerLogoutCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Quest/HandlerFinishQuestCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Quest/HandlerTakeQuestRewardCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Raid/HandlerGetAllSaveRaidCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Raid/HandlerGetRaidInfoCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/RechargeGift/HandlerGetRechargeGiftInfoCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/RndOption/HandlerGetRndOptionCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Scene/HandlerActivateFarmElementCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/StoryLine/HandlerGetStoryLineInfoCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/TalkEvent/HandlerSelectInclinationTextCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/TrainCakeCatch/HandlerTrainCakeCatchGetDataCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/TrainParty/HandlerTrainPartyAddBuildDynamicBuffCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/TrainParty/HandlerTrainPartyEnterCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/TrainParty/HandlerTrainPartyGamePlayStartCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Tutorial/HandlerGetTutorialCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Tutorial/HandlerGetTutorialGuideCsReq.cs" />
+    <Compile Remove="Server/Packet/Recv/Tutorial/HandlerUnlockTutorialCsReq.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\KcpSharp\KcpSharp.csproj" />
     <ProjectReference Include="..\Proto\Proto.csproj" />
@@ -31,4 +96,3 @@
   </ItemGroup>
 
 </Project>
-

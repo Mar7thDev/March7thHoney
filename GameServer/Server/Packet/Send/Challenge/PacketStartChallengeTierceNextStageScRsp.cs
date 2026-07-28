@@ -9,7 +9,7 @@ public class PacketStartChallengeTierceNextStageScRsp : BasePacket
 {
     public PacketStartChallengeTierceNextStageScRsp(uint retcode) : base(CmdIds.StartChallengeTierceNextStageScRsp)
     {
-        SetData(new StartChallengeTierceNextStageScRsp { Retcode = retcode });
+        SetData(new StartNextChallengeTierceScRsp { Retcode = retcode });
     }
 
     public PacketStartChallengeTierceNextStageScRsp(PlayerInstance player, ChallengeTierceInstance inst)
@@ -28,7 +28,7 @@ public class PacketStartChallengeTierceNextStageScRsp : BasePacket
             if (lineup != null) info.LineupList.Add(lineup.ToProto());
         }
 
-        SetData(new StartChallengeTierceNextStageScRsp
+        SetData(new StartNextChallengeTierceScRsp
         {
             ChallengeTierceInfo = info,
             Scene = player.SceneInstance!.ToProto(),
