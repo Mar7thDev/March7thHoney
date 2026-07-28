@@ -1036,10 +1036,6 @@ message CPPENGOOHGN {
     uint32 DDGDPDIPJPP = 3;
 }
 
-message ConfirmChallengeTierceStageSettleScRsp {
-    uint32 retcode = 2;
-}
-
 enum DABHLIADLFA {
     DABHLIADLFA_NLCDGIPGFDJ = 0;
     DABHLIADLFA_NJLBMCJIKBC = 11;
@@ -6426,10 +6422,6 @@ enum LPMAENKEEHO {
     LPMAENKEEHO_JKILIBCLKPK = 6796;
 }
 
-message LeaveChallengeTierceScRsp {
-    uint32 retcode = 13;
-}
-
 enum MAMMDADNGLP {
     MAMMDADNGLP_NLCDGIPGFDJ = 0;
     MAMMDADNGLP_NDBDDBICHPP = 7605;
@@ -9253,10 +9245,6 @@ message PropInfoSnapshot {
     uint32 prop_state = 1;
 }
 
-message ReStartChallengePeakScRsp {
-    uint32 retcode = 15;
-}
-
 message RegionInfo {
     string name = 1;
     string title = 2;
@@ -10463,22 +10451,6 @@ enum Retcode {
 message RotationMapInfoSnapshot {
     VectorSnapshot map_pos = 1;
     VectorSnapshot map_rot = 2;
-}
-
-message SceneReviveAfterRebattleScRsp {
-    uint32 retcode = 11;
-}
-
-message SetChallengeTierceLineupScRsp {
-    uint32 retcode = 12;
-}
-
-message SetPlayerOutfitScRsp {
-    uint32 retcode = 9;
-}
-
-message StartChallengePeakScRsp {
-    uint32 retcode = 1;
 }
 
 message SubMissionSnapshot {
