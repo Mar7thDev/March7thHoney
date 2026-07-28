@@ -5,7 +5,7 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Player;
 
 public class PacketPlayerSqueezedScNotify : BasePacket
 {
-    public PacketPlayerSqueezedScNotify() : base(CmdIds.PlayerKickOutScNotify)
+    public PacketPlayerSqueezedScNotify() : base(CmdIds.PlayerSqueezedScNotify)
     {
         var proto = new PlayerSqueezedScNotify
         {
@@ -14,7 +14,7 @@ public class PacketPlayerSqueezedScNotify : BasePacket
         SetData(proto);
     }
 
-    public PacketPlayerSqueezedScNotify(JNFDGPDHENJ type, BlackInfo? info = null) : base(CmdIds.PlayerKickOutScNotify)
+    public PacketPlayerSqueezedScNotify(JNFDGPDHENJ type, BlackInfo? info = null) : base(CmdIds.PlayerSqueezedScNotify)
     {
         var proto = new PlayerSqueezedScNotify
         {
