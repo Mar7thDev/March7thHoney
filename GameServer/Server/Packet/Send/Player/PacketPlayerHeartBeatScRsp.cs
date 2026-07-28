@@ -8,6 +8,10 @@ public class PacketPlayerHeartBeatScRsp : BasePacket
 {
     public PacketPlayerHeartBeatScRsp(long clientTime) : base(CmdIds.PlayerHeartBeatScRsp)
     {
-        SetData(new PlayerHeartBeatScRsp());
+        SetData(new PlayerHeartBeatScRsp
+        {
+            ClientTimeMs = (ulong)clientTime,
+            ServerTimeMs = (ulong)ServerTimeProvider.GetServerUnixMs()
+        });
     }
 }

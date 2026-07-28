@@ -22329,10 +22329,10 @@ message PlayerHeartBeatCsReq {
 }
 
 message PlayerHeartBeatScRsp {
-    uint64 FFFNHDEGOGJ = 9;
-    uint64 NGGHNIIOMBB = 10;
-    uint32 PLDKENJLKME = 6;
-    ClientDownloadData HIPHCCAKDHG = 8;
+    uint64 server_time_ms = 9;
+    uint64 client_time_ms = 10;
+    uint32 retcode = 6;
+    ClientDownloadData download_data = 8;
 }
 
 message PlayerLoginCsReq {
