@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.ServerPrefs;
 
-[Opcode(CmdIds.UpdateServerPrefsDataCsReq)]
+[Opcode(CmdIds.UpdateServerPrefsCsReq)]
 public class HandlerUpdateServerPrefsDataCsReq : Handler<UpdateServerPrefsCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, UpdateServerPrefsCsReq req)

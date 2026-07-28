@@ -132,7 +132,20 @@ public static class SameSeedMigrator
                 !translations.ScopedFields.TryGetValue(targetName, out explicitFields)) continue;
             if (!fieldMappings.TryGetValue(targetName, out var fields))
                 fieldMappings[targetName] = fields = new Dictionary<string, string>(StringComparer.Ordinal);
-            foreach (var (obf, real) in explicitFields) fields[obf] = real;
+            foreach (var (obf, real) in explicitFields) fields.TryAdd(obf, real);
+        }
+
+        foreach (var source in current.Where(def => def.Kind == DefKind.Enum))
+        {
+            if (!typeMappings.TryGetValue(source.Name, out var targetName) ||
+                !readableByName.TryGetValue(targetName, out var target) ||
+                target.Kind != DefKind.Enum) continue;
+            var sourceValues = ParseEnumValues(source.Body);
+            var targetValues = ParseEnumValues(target.Body);
+            if (!sourceValues.Keys.ToHashSet().SetEquals(targetValues.Keys)) continue;
+            enumMappings[targetName] = sourceValues
+                .Where(pair => pair.Value != targetValues[pair.Key])
+                .ToDictionary(pair => pair.Value, pair => targetValues[pair.Key], StringComparer.Ordinal);
         }
 
         return new SameSeedMigrationResult(
@@ -477,12 +490,17 @@ public static class SameSeedMigrator
     {
         var result = new Dictionary<string, string>(mappings, StringComparer.Ordinal);
         var fields = ParseFields(body).Values.ToList();
-        var collisions = fields
-            .GroupBy(field => Normalize(result.GetValueOrDefault(field.Name, field.Name)), StringComparer.Ordinal)
-            .Where(group => group.Count() > 1)
-            .SelectMany(group => group.Select(field => field.Name))
-            .ToHashSet(StringComparer.Ordinal);
-        foreach (var name in collisions) result.Remove(name);
+        while (true)
+        {
+            var collisions = fields
+                .GroupBy(field => Normalize(result.GetValueOrDefault(field.Name, field.Name)), StringComparer.Ordinal)
+                .Where(group => group.Count() > 1)
+                .SelectMany(group => group.Select(field => field.Name))
+                .Where(result.ContainsKey)
+                .ToHashSet(StringComparer.Ordinal);
+            if (collisions.Count == 0) break;
+            foreach (var name in collisions) result.Remove(name);
+        }
         return result;
     }
 

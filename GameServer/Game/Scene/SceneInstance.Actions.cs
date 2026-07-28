@@ -7,7 +7,6 @@ using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Activity.Loaders;
 using March7thHoney.GameServer.Game.Battle;
-using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene.Component;
