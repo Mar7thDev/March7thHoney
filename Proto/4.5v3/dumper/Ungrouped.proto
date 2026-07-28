@@ -22487,23 +22487,23 @@ message PlayerSettingInfo {
 }
 
 message PlayerSimpleInfo {
-    uint32 level = 13;
+    uint32 chat_bubble_id = 13;
     CJLCPMDGIBO player_outfit_data = 5;
-    uint32 head_icon = 1;
+    uint32 level = 1;
     repeated AssistSimpleInfo assist_simple_info_list = 12;
     FriendOnlineStatus online_status = 14;
     PlatformType platform = 8;
-    string nickname = 9;
+    string platform_nick = 9;
     int64 last_active_time = 11;
-    uint32 personal_card = 3;
-    uint32 chat_bubble_id = 1395;
-    string platform_nick = 7;
+    uint32 uid = 3;
+    uint32 gender = 1395;
+    string nickname = 7;
     int64 update_time = 1565;
-    uint32 gender = 6;
-    string platform_uuid = 2;
+    uint32 head_icon = 6;
+    string signature = 2;
     HeadFrameInfo head_frame_info = 1196;
-    uint32 uid = 10;
-    string signature = 4;
+    uint32 personal_card = 10;
+    string platform_uuid = 4;
     bool is_banned = 15;
 }
 
