@@ -298,7 +298,7 @@ public class CmdIds
     public const int TakeQuestOptionalRewardScRsp = 977;
     public const int TakeQuestRewardScRsp = 978;
     public const int QuestRecordScNotify = 981;
-    public const int NKOIPKDPHGF = 983;
+    public const int GetQuestRecordCsReq = 983;
     public const int BICDPPOGHND = 996;
     public const int FightGameStateScRsp = 1013;
     public const int GetFriendRankingInfoRsp = 1018;
@@ -524,7 +524,7 @@ public class CmdIds
     public const int GetGachaCeilingScRsp = 1919;
     public const int ExchangeGachaCeilingScRsp = 1924;
     public const int DoGachaCsReq = 1929;
-    public const int JDKEAPHHLBM = 1932;
+    public const int GetGachaInfoCsReq = 1932;
     public const int GHJGEGJAODM = 1944;
     public const int SetGachaDecideItemScRsp = 1961;
     public const int IAOPGJEOHOM = 1978;
@@ -547,7 +547,7 @@ public class CmdIds
     public const int LeaveRaidCsReq = 2203;
     public const int RaidKickByServer = 2204;
     public const int GetSaveRaidCsReq = 2205;
-    public const int CELCIDNLPPO = 2206;
+    public const int GetRaidInfoCsReq = 2206;
     public const int OICLHALJIEH = 2209;
     public const int LeaveRaidScRsp = 2210;
     public const int SetClientRaidTargetCountScRsp = 2211;
@@ -647,7 +647,7 @@ public class CmdIds
     public const int GetActivityScheduleConfigCsReq = 2644;
     public const int DBJDNDEIKDM = 2647;
     public const int EnterTrialActivityStageCsReq = 2653;
-    public const int JJPAAFLHHKC = 2655;
+    public const int GetTrialActivityDataCsReq = 2655;
     public const int PIGBCIDLGCA = 2663;
     public const int ChooseAvatarCsReq = 2665;
     public const int StartTrialActivityScRsp = 2666;
@@ -662,7 +662,7 @@ public class CmdIds
     public const int FinishItemIdScRsp = 2719;
     public const int FinishSectionIdScRsp = 2724;
     public const int GetNpcStatusCsReq = 2729;
-    public const int LNDMHNMPGNP = 2732;
+    public const int GetNpcMessageGroupCsReq = 2732;
     public const int FinishItemIdCsReq = 2744;
     public const int GetMissionMessageScRsp = 2745;
     public const int FinishPerformSectionIdScRsp = 2761;
@@ -908,7 +908,7 @@ public class CmdIds
     public const int BKCPHOMPACI = 4321;
     public const int RemoveStuffFromAreaScRsp = 4324;
     public const int FOOHBPABPNO = 4329;
-    public const int NNKJBOKLHAF = 4332;
+    public const int GetMuseumInfoCsReq = 4332;
     public const int MuseumRandomEventSelectCsReq = 4334;
     public const int SyncMuseumInfoChangedScNotify = 4340;
     public const int SetStuffToAreaCsReq = 4344;
@@ -966,9 +966,9 @@ public class CmdIds
     public const int GetMultipleDropInfoScRsp = 4613;
     public const int MultipleDropInfoNotify = 4619;
     public const int MultipleDropInfoScNotify = 4629;
-    public const int FKONEIIILGP = 4632;
+    public const int GetMultipleDropInfoCsReq = 4632;
     public const int GetPlayerReturnMultiDropInfoScRsp = 4644;
-    public const int FNOACGHLHGM = 4678;
+    public const int GetPlayerReturnMultiDropInfoCsReq = 4678;
     public const int PrestigeLevelUpCsReq = 4710;
     public const int GetAlleyInfoScRsp = 4713;
     public const int AlleyOrderChangedScNotify = 4714;
@@ -979,7 +979,7 @@ public class CmdIds
     public const int PPJKEKEPFMF = 4724;
     public const int NGOKHFLMLNJ = 4726;
     public const int LogisticsGameCsReq = 4729;
-    public const int CPFBHLBMJOG = 4732;
+    public const int GetAlleyInfoCsReq = 4732;
     public const int PrestigeLevelUpScRsp = 4734;
     public const int GetSaveLogisticsMapScRsp = 4743;
     public const int TakePrestigeRewardScRsp = 4745;
@@ -1197,7 +1197,7 @@ public class CmdIds
     public const int BuyRogueShopBuffScRsp = 5696;
     public const int GetBattleCollegeDataScRsp = 5713;
     public const int SyncBattleCollegeDataChangeScNotify = 5729;
-    public const int LNFGDEAIHNL = 5732;
+    public const int GetBattleCollegeDataCsReq = 5732;
     public const int StartBattleCollegeScRsp = 5744;
     public const int StartBattleCollegeCsReq = 5778;
     public const int HeliobusEnterBattleScRsp = 5810;
@@ -1314,7 +1314,7 @@ public class CmdIds
     public const int PALAOPCBAPC = 6066;
     public const int RogueTournQueryScRsp = 6067;
     public const int RogueTournEnterLayerScRsp = 6068;
-    public const int KGGIFOABIDF = 6069;
+    public const int RogueTournQueryCsReq = 6069;
     public const int IDCDOCPNPMD = 6071;
     public const int RogueTournRenameBuildRefCsReq = 6072;
     public const int RogueTournEnableSeasonTalentScRsp = 6073;
@@ -1422,7 +1422,7 @@ public class CmdIds
     public const int SpaceZooMutateScRsp = 6719;
     public const int SpaceZooOpCatteryScRsp = 6724;
     public const int JJMJCLMPCMF = 6729;
-    public const int JGBGMGIBDHM = 6732;
+    public const int SpaceZooDataCsReq = 6732;
     public const int CHEKMBNIGBP = 6744;
     public const int CGFMDMPCKDN = 6745;
     public const int SpaceZooTakeScRsp = 6754;
@@ -1450,7 +1450,7 @@ public class CmdIds
     public const int InteractChargerScRsp = 6878;
     public const int LeaveMapRotationRegionCsReq = 6881;
     public const int RotateMapCsReq = 6883;
-    public const int MDGPIJNKMLO = 6896;
+    public const int GetMapRotationDataCsReq = 6896;
     public const int GetRollShopInfoCsReq = 6902;
     public const int TakeRollShopRewardScRsp = 6903;
     public const int DoGachaInRollShopScRsp = 6904;
@@ -1468,7 +1468,7 @@ public class CmdIds
     public const int RaidCollectionEnterNextRaidCsReq = 6944;
     public const int RaidCollectionEnterNextRaidScRsp = 6952;
     public const int RaidCollectionDataScRsp = 6954;
-    public const int HAOAFJLCIMO = 6962;
+    public const int GetTelevisionActivityDataCsReq = 6962;
     public const int TelevisionActivityBattleEndScNotify = 6963;
     public const int EnterTelevisionActivityStageCsReq = 6964;
     public const int EnterTelevisionActivityStageScRsp = 6972;
@@ -1595,7 +1595,7 @@ public class CmdIds
     public const int GetEvolveBuildReRandomStageCsReq = 7140;
     public const int GetEvolveBuildShopAbilityDownCsReq = 7149;
     public const int FeverTimeActivityBattleEndScNotify = 7152;
-    public const int AEGLEIHJKFN = 7153;
+    public const int GetFeverTimeActivityDataCsReq = 7153;
     public const int EnterFeverTimeActivityStageScRsp = 7154;
     public const int GetFeverTimeActivityDataScRsp = 7156;
     public const int EnterFeverTimeActivityStageCsReq = 7159;
@@ -1617,7 +1617,7 @@ public class CmdIds
     public const int ClockParkGetInfoScRsp = 7231;
     public const int OMPEMGHMDPM = 7233;
     public const int ClockParkFinishScriptScNotify = 7235;
-    public const int HEENDFJBHCB = 7237;
+    public const int ClockParkGetInfoCsReq = 7237;
     public const int ClockParkHandleWaitOperationScRsp = 7240;
     public const int ClockParkGetOngoingScriptInfoScRsp = 7247;
     public const int StartFightFestCsReq = 7253;
@@ -1770,7 +1770,7 @@ public class CmdIds
     public const int RogueMagicSetAutoDressInMagicUnitScRsp = 7726;
     public const int RogueMagicEnterCsReq = 7729;
     public const int RogueMagicStartCsReq = 7732;
-    public const int IPIFCANPPEO = 7734;
+    public const int RogueMagicQueryCsReq = 7734;
     public const int RogueMagicLeaveCsReq = 7744;
     public const int RogueMagicEnterLayerScRsp = 7745;
     public const int DBOMCCEIFJO = 7749;
@@ -1872,7 +1872,7 @@ public class CmdIds
     public const int LBMLOLGEHIM = 8177;
     public const int ChimeraDoFinalRoundScRsp = 8179;
     public const int ChimeraStartEndlessScRsp = 8180;
-    public const int BMDACCNEEPL = 8182;
+    public const int GetMarkChestCsReq = 8182;
     public const int UpdateMarkChestScRsp = 8184;
     public const int MarkChestChangedScNotify = 8192;
     public const int GetMarkChestScRsp = 8194;
@@ -1937,12 +1937,12 @@ public class CmdIds
     public const int PlanetFesGetOfferedCardPieceScRsp = 8330;
     public const int PlanetFesHandleCardPieceApplyScRsp = 8337;
     public const int AAHPJECONDN = 8339;
-    public const int GFIIJCDEBDH = 8362;
+    public const int GetRechargeGiftInfoCsReq = 8362;
     public const int GetRechargeBenefitInfoScRsp = 8363;
     public const int TakeRechargeGiftRewardScRsp = 8364;
     public const int SyncRechargeBenefitInfoScNotify = 8365;
     public const int TakeRechargeBenefitRewardScRsp = 8367;
-    public const int EGNKGGAIGBJ = 8372;
+    public const int GetRechargeBenefitInfoCsReq = 8372;
     public const int GetRechargeGiftInfoScRsp = 8374;
     public const int TakeRechargeGiftRewardCsReq = 8375;
     public const int TakeRechargeBenefitRewardCsReq = 8380;
@@ -2396,7 +2396,7 @@ public class CmdIds
     public const int ChenLingRefreshCardScRsp = 9619;
     public const int TrainCakeCatchDiyScRsp = 9634;
     public const int JKILAALMFIB = 9646;
-    public const int NMGHOJBDFJJ = 9652;
+    public const int TrainCakeCatchGetDataCsReq = 9652;
     public const int NDCCLPKPEKJ = 9657;
     public const int TrainCakeCatchSearchCsReq = 9661;
     public const int SocialPlayPreCheckEnterRoomCsReq = 9664;
