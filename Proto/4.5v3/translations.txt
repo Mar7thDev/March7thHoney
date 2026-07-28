@@ -5,6 +5,7 @@ SetDisplayAvatarCsReq.HEKNKDNFIME = display_avatar_list
 LHENKFJFGKH = SummonPetCsReq
 NCLGCOEMLIF = RecallPetCsReq
 LFLHHCAMABD = CurPetChangedScNotify
+CurPetChangedScNotify.OIOLDPIAOPF = cur_pet_id
 DDBHIOHEHHC = ExpeditionBattleFunRecord
 JHKFCANMFOE = ExpeditionBattleAvatarInfo
 DIJJBADACIH = ExpeditionBattleAvatarDamage
