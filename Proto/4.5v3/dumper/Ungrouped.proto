@@ -6219,7 +6219,7 @@ message DoGachaInRollShopScRsp {
     uint32 retcode = 3;
 }
 
-message DoGachaScRsp {
+message NILCAHCBKAI {
     repeated EBNKDHCIJPH gacha_item_list = 10;
     uint32 PDANNONFHNI = 13;
     repeated IGGFCPNDMPN KIJCKCJKDEB = 2;
@@ -14078,16 +14078,16 @@ message IAOMNBIBCNP {
     uint32 HFIBLHAFONM = 5;
 }
 
-message IAOPGJEOHOM {
-    uint32 IPMDENGDKFE = 14;
-    uint32 DCMCFDFHLLD = 8;
-    uint32 HNPDCDCCAPH = 11;
-    uint32 PLDKENJLKME = 13;
-    uint32 EKLKIMFLMMJ = 12;
-    repeated PEGDMEJLFML ENMKBBJBBJN = 9;
-    uint32 GBNLKOICNNK = 4;
-    uint32 HIEKGFGLCML = 1;
-    uint32 FJBEAPNFBHF = 15;
+message DoGachaScRsp {
+    uint32 gacha_id = 14;
+    uint32 gacha_num = 8;
+    uint32 retcode = 11;
+    uint32 GBNLKOICNNK = 13;
+    uint32 HIEKGFGLCML = 12;
+    repeated GachaItem gacha_item_list = 9;
+    uint32 EKLKIMFLMMJ = 4;
+    uint32 FJBEAPNFBHF = 1;
+    uint32 IPMDENGDKFE = 15;
 }
 
 enum IAPIIEJHLMP {
@@ -21055,11 +21055,11 @@ message PEGDBKDLJDJ {
     IIMHLPBEDDH CENIOBBIJMF = 2;
 }
 
-message PEGDMEJLFML {
-    bool OOLLDLHKDOH = 13;
-    ItemList KOKPPJDDOAH = 6;
-    ItemList OFMLLNDPBAM = 1;
-    Item PFJLHDMLHIE = 7;
+message GachaItem {
+    bool is_new = 13;
+    ItemList transfer_item_list = 6;
+    ItemList token_item = 1;
+    Item gacha_item = 7;
 }
 
 message PEGJIHHIFOP {
