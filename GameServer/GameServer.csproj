@@ -61,7 +61,6 @@
     <Compile Remove="Server/Packet/Recv/MapRotation/HandlerInteractChargerCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/MarkChest/HandlerGetMarkChestCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Message/HandlerGetNpcMessageGroupCsReq.cs" />
-    <Compile Remove="Server/Packet/Recv/Message/HandlerGetNpcStatusCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Mission/HandlerStarPerformanceRelayCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Mission/HandlerUpdateTrackMainMissionIdCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Multiplayer/HandlerMultiplayerFightGiveUpCsReq.cs" />
@@ -69,9 +68,7 @@
     <Compile Remove="Server/Packet/Recv/Player/HandlerForceSyncGameStateFinishCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Player/HandlerGetLevelRewardCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Player/HandlerPlayerLogoutCsReq.cs" />
-    <Compile Remove="Server/Packet/Recv/Player/HandlerQueryProductInfoCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Quest/HandlerFinishQuestCsReq.cs" />
-    <Compile Remove="Server/Packet/Recv/Quest/HandlerGetQuestDataCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Quest/HandlerTakeQuestRewardCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Raid/HandlerGetAllSaveRaidCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Raid/HandlerGetRaidInfoCsReq.cs" />
