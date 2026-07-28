@@ -78,9 +78,7 @@
     <Compile Remove="Server/Packet/Recv/RechargeGift/HandlerGetRechargeGiftInfoCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/RndOption/HandlerGetRndOptionCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Scene/HandlerActivateFarmElementCsReq.cs" />
-    <Compile Remove="Server/Packet/Recv/Scene/HandlerDeactivateFarmElementCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/StoryLine/HandlerGetStoryLineInfoCsReq.cs" />
-    <Compile Remove="Server/Packet/Recv/TalkEvent/HandlerGetFirstTalkNpcCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/TalkEvent/HandlerSelectInclinationTextCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/TrainCakeCatch/HandlerTrainCakeCatchGetDataCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/TrainParty/HandlerTrainPartyAddBuildDynamicBuffCsReq.cs" />
@@ -89,7 +87,6 @@
     <Compile Remove="Server/Packet/Recv/Tutorial/HandlerGetTutorialCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Tutorial/HandlerGetTutorialGuideCsReq.cs" />
     <Compile Remove="Server/Packet/Recv/Tutorial/HandlerUnlockTutorialCsReq.cs" />
-    <Compile Remove="Server/Packet/Send/TalkEvent/PacketGetFirstTalkNpcScRsp.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5596,10 +5596,6 @@ message DGLBOFKGGLL {
     uint32 EECIJBLGLNG = 12;
 }
 
-message DGPHMHCOPPO {
-    uint32 KKHPBDAEOLM = 1;
-}
-
 message DHFGMHFEHEB {
     uint32 retcode = 8;
     JKEBEAKOHJJ BJBJLBIOPKA = 15;
@@ -6011,6 +6007,10 @@ message DailyFirstEnterMonopolyActivityScRsp {
     NJHAGKGHKJJ OLAONLGLAJO = 9;
     uint32 retcode = 4;
     bool GLEJFCIOMKC = 6;
+}
+
+message DeactivateFarmElementCsReq {
+    uint32 entity_id = 1;
 }
 
 message DeactivateFarmElementScRsp {
@@ -8466,9 +8466,6 @@ message FOOHBPABPNO {
     uint32 CLJJLLDPMBN = 11;
 }
 
-message FPBDJBIFJHA {
-}
-
 message FPDBFGBJOFD {
     uint32 MGPGDLIJKLM = 4;
     repeated MessageItem DPPAFBAHEFH = 9;
@@ -9988,10 +9985,6 @@ message GNILAAACODB {
 message GNKOABEBAIA {
 }
 
-message GNLACIGLJJN {
-    repeated uint32 FDAFMPNPIMA = 13;
-}
-
 message GNLBCCHFILK {
     bool BJDEBHMKJBC = 4;
     BDJLHJDPEEK KDFKDNLNDHN = 13;
@@ -10467,13 +10460,6 @@ message GetBoxingClubInfoScRsp {
     repeated CIEEKOEECHB challenge_list = 3;
 }
 
-message GetChallangeTierceScRsp {
-    uint32 retcode = 11;
-    repeated uint32 NJIIPBHBEDK = 4;
-    int64 GCMOKMIEHDB = 7;
-    repeated uint32 KNKGIENCLJJ = 13;
-}
-
 message GetChallengeCsReq {
 }
 
@@ -10887,6 +10873,10 @@ message GetFirstTalkByPerformanceNpcCsReq {
 message GetFirstTalkByPerformanceNpcScRsp {
     repeated NpcMeetByPerformanceStatus npc_meet_status_list = 1;
     uint32 retcode = 13;
+}
+
+message GetFirstTalkNpcCsReq {
+    repeated uint32 npc_id_list = 13;
 }
 
 message GetFirstTalkNpcScRsp {
@@ -11969,6 +11959,16 @@ message GetUnlockTeleportCsReq {
 message GetUnlockTeleportScRsp {
     repeated uint32 unlocked_teleport_list = 13;
     uint32 retcode = 5;
+}
+
+message GetUnreleasedBlockInfoCsReq {
+}
+
+message GetUnreleasedBlockInfoScRsp {
+    uint32 retcode = 11;
+    repeated uint32 KNKGIENCLJJ = 4;
+    int64 GCMOKMIEHDB = 7;
+    repeated uint32 NJIIPBHBEDK = 13;
 }
 
 message GetUpdatedArchiveDataScRsp {

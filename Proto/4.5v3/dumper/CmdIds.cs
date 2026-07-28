@@ -361,7 +361,7 @@ public class CmdIds
     public const int TrainWorldIdChangeScNotify = 1404;
     public const int UpdateFloorSavedValueNotify = 1405;
     public const int CounterDownCsReq = 1406;
-    public const int DGPHMHCOPPO = 1407;
+    public const int DeactivateFarmElementCsReq = 1407;
     public const int DeactivateFarmElementScRsp = 1408;
     public const int OOFDADLENDH = 1410;
     public const int SceneEntityMoveScRsp = 1413;
@@ -536,7 +536,7 @@ public class CmdIds
     public const int FinishFirstTalkNpcScRsp = 2124;
     public const int TakeTalkRewardCsReq = 2129;
     public const int GetNpcTakenRewardCsReq = 2132;
-    public const int GNLACIGLJJN = 2144;
+    public const int GetFirstTalkNpcCsReq = 2144;
     public const int GetFirstTalkByPerformanceNpcScRsp = 2145;
     public const int SelectInclinationTextScRsp = 2161;
     public const int FinishFirstTalkByPerformanceNpcCsReq = 2177;
@@ -867,9 +867,9 @@ public class CmdIds
     public const int DifficultyAdjustmentGetDataCsReq = 4159;
     public const int INKEEEKKNKF = 4161;
     public const int UpdateMovieRacingDataCsReq = 4168;
-    public const int GetChallangeTierceScRsp = 4174;
+    public const int GetUnreleasedBlockInfoScRsp = 4174;
     public const int UpdateMovieRacingDataScRsp = 4175;
-    public const int FPBDJBIFJHA = 4176;
+    public const int GetUnreleasedBlockInfoCsReq = 4176;
     public const int MNCFPNFGAOH = 4177;
     public const int GetShareDataScRsp = 4178;
     public const int CancelDirectDeliveryNoticeScRsp = 4179;
