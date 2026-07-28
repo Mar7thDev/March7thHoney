@@ -5216,9 +5216,6 @@ message DAAKGEDPPJJ {
     uint32 func_id = 9;
 }
 
-message DABIFJNADLI {
-}
-
 message DACCNAFGHFJ {
     KCLHMJHIDOB AKGJOPBLPNE = 4;
 }
@@ -6856,9 +6853,6 @@ message ELOFLNEAHPD {
 message ELPPDAHKLBE {
 }
 
-message EMACPOEHODE {
-}
-
 message EMCJBMOICJN {
     uint32 retcode = 9;
     PFPHKOAFPCJ AIBHMDPILKE = 14;
@@ -6909,14 +6903,8 @@ message EMHEOJNCGFH {
     uint32 level = 1;
 }
 
-message EMIFJNLDKDE {
-}
-
 message EMJCPFCMOMK {
     repeated uint32 CPIKEIGHMGB = 8;
-}
-
-message EMKAACCBCCB {
 }
 
 message EMLDLBKPEFD {
@@ -7815,9 +7803,6 @@ message FAHGFCIJHFK {
     double total_hp_recover = 7;
     double total_shield_taken = 8;
     repeated PMPCIBGILIE INBNCAKGDPJ = 9;
-}
-
-message FAICKIOJMDI {
 }
 
 message FAICNBKIELL {
@@ -11258,7 +11243,6 @@ message GetMbtiReportScRsp {
 }
 
 message GetMissionDataCsReq {
-    string AFBDHEMJEPP = 13;
 }
 
 message GetMissionDataScRsp {
@@ -11368,6 +11352,9 @@ message GetMuseumInfoScRsp {
 message GetNpcMessageGroupScRsp {
     uint32 retcode = 11;
     repeated MessageGroup message_group_list = 7;
+}
+
+message GetNpcStatusCsReq {
 }
 
 message GetNpcStatusScRsp {
@@ -11544,6 +11531,9 @@ message GetPunkLordMonsterDataCsReq {
 message GetPunkLordMonsterDataScRsp {
     repeated JEIAEAEGEBJ PBLBBDBDLEK = 5;
     uint32 retcode = 13;
+}
+
+message GetQuestDataCsReq {
 }
 
 message GetQuestDataScRsp {
@@ -14603,10 +14593,6 @@ message ILHFAFGOJAC {
     uint32 star = 1;
 }
 
-message ILIHCBAFEJH {
-    uint32 IHNNNFJAEJO = 10;
-}
-
 message ILMFJKCGBCK {
     uint32 LJCCANLCGHI = 14;
     repeated EIDFCGLODFB EGDNFKHLKKE = 11;
@@ -14667,6 +14653,9 @@ message INKEEEKKNKF {
 
 message INKPGECIDNE {
     repeated uint32 KPJPABDIOJB = 5;
+}
+
+message INLFBAGCCLG {
 }
 
 message IODAFIBPAGM {
@@ -16932,6 +16921,10 @@ message LHNMDFOPMKN {
 }
 
 message LIFDLLPAAKF {
+}
+
+message LIFMGAFOBPC {
+    string AFBDHEMJEPP = 13;
 }
 
 message LIHMMAPDCMN {
@@ -22742,6 +22735,9 @@ enum PunkLordShareType {
     PunkLordShareType_All = 2;
 }
 
+message QueryProductInfoCsReq {
+}
+
 message QueryProductInfoScRsp {
     uint32 BEBFNDIGKFK = 5;
     uint32 BFFHEKCGLMA = 10;
@@ -25611,6 +25607,10 @@ message SyncChessRogueNousSubStoryScNotify {
 
 message SyncChessRogueNousValueScNotify {
     EPDDOMFGIMK AJPMADHMGML = 7;
+}
+
+message SyncClientResVersionCsReq {
+    uint32 client_res_version = 10;
 }
 
 message SyncClientResVersionScRsp {

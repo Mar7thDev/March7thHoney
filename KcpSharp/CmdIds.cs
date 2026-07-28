@@ -60,7 +60,7 @@ public class CmdIds
     public const int ANCNILJJBND = 4;
     public const int UpdatePlayerSettingScRsp = 5;
     public const int ClientObjDownloadDataScNotify = 6;
-    public const int FAICKIOJMDI = 7;
+    public const int QueryProductInfoCsReq = 7;
     public const int QueryProductInfoScRsp = 8;
     public const int GetBasicInfoScRsp = 9;
     public const int SetNicknameScRsp = 10;
@@ -68,7 +68,7 @@ public class CmdIds
     public const int PlayerLoginScRsp = 13;
     public const int AntiAddictScNotify = 14;
     public const int RegionStopScNotify = 15;
-    public const int GetBasicInfoCsReq = 18;
+    public const int INLFBAGCCLG = 18;
     public const int PlayerGetTokenScRsp = 19;
     public const int SetPlayerInfoCsReq = 20;
     public const int SetNicknameCsReq = 21;
@@ -94,7 +94,7 @@ public class CmdIds
     public const int OKFLAHFIBCM = 45;
     public const int GetAuthkeyCsReq = 46;
     public const int PlayerHeartBeatScRsp = 47;
-    public const int DABIFJNADLI = 50;
+    public const int GetBasicInfoCsReq = 50;
     public const int StaminaInfoScNotify = 52;
     public const int MHMFPLEKOIL = 53;
     public const int ExchangeStaminaScRsp = 54;
@@ -133,7 +133,7 @@ public class CmdIds
     public const int BattleReplayScNotify = 154;
     public const int QuitBattleScRsp = 178;
     public const int KLMKJAANLKB = 181;
-    public const int ILIHCBAFEJH = 183;
+    public const int SyncClientResVersionCsReq = 183;
     public const int SetAvatarPathCsReq = 307;
     public const int SetAvatarPathScRsp = 308;
     public const int SetMultipleAvatarPathsCsReq = 309;
@@ -290,7 +290,7 @@ public class CmdIds
     public const int GetQuestDataScRsp = 913;
     public const int GetQuestRecordScRsp = 924;
     public const int EMHALMBFHKG = 929;
-    public const int EMKAACCBCCB = 932;
+    public const int GetQuestDataCsReq = 932;
     public const int TakeQuestOptionalRewardCsReq = 945;
     public const int BatchGetQuestDataScRsp = 946;
     public const int JGAONCGEIND = 954;
@@ -323,13 +323,13 @@ public class CmdIds
     public const int GetMissionDataScRsp = 1213;
     public const int TeleportToMissionResetPointCsReq = 1217;
     public const int FinishCosumeItemMissionScRsp = 1218;
-    public const int GetMissionDataCsReq = 1219;
+    public const int LIFMGAFOBPC = 1219;
     public const int UpdateMainMissionCustomValueCsReq = 1220;
     public const int GetMissionStatusCsReq = 1221;
     public const int StartFinishMainMissionScNotify = 1223;
     public const int UpdateTrackMainMissionScRsp = 1226;
     public const int FinishTalkMissionCsReq = 1229;
-    public const int EMIFJNLDKDE = 1232;
+    public const int GetMissionDataCsReq = 1232;
     public const int AcceptMainMissionCsReq = 1243;
     public const int MissionRewardScNotify = 1244;
     public const int MissionGroupWarnScNotify = 1245;
@@ -661,7 +661,7 @@ public class CmdIds
     public const int FinishMultiPerformSectionIdScRsp = 2718;
     public const int FinishItemIdScRsp = 2719;
     public const int FinishSectionIdScRsp = 2724;
-    public const int EMACPOEHODE = 2729;
+    public const int GetNpcStatusCsReq = 2729;
     public const int LNDMHNMPGNP = 2732;
     public const int FinishItemIdCsReq = 2744;
     public const int GetMissionMessageScRsp = 2745;
