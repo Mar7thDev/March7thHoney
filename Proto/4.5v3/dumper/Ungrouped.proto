@@ -27003,23 +27003,25 @@ message UpdateMovieRacingDataScRsp {
 }
 
 message UpdatePlayerSetting {
-    bool AACOEHCFNDB = 3;
-    bool DGCNHMIHFJB = 10;
-    bool FDHEPCKLCAM = 5;
-    bool DCJECFMMIBC = 4;
-    bool IOJEAOCOBBF = 7;
-    bool PFBHGAHAFMD = 1;
-    bool GNFDDPEMMFN = 9;
-    bool MAKOLELFLFH = 14;
-    bool NJAKOMDMFJD = 15;
-    PNOLLIAKGDB OJPAODIHAJE = 11;
-    bool BOMGNMDOGLM = 1075;
-    bool BBEEBBIDJHE = 173;
-    bool HGPFFGKNPFB = 363;
-    bool LNGHIJGFDKP = 117;
-    bool GOKFNGFFMOB = 816;
-    JPGACKPLGCD CMFCOOEEECB = 568;
-    KVP EGLOIFDIDPK = 1757;
+    oneof ELMHJNLKNHI {
+        bool AACOEHCFNDB = 3;
+        bool DGCNHMIHFJB = 10;
+        bool FDHEPCKLCAM = 5;
+        bool DCJECFMMIBC = 4;
+        bool IOJEAOCOBBF = 7;
+        bool PFBHGAHAFMD = 1;
+        bool GNFDDPEMMFN = 9;
+        bool MAKOLELFLFH = 14;
+        bool NJAKOMDMFJD = 15;
+        PNOLLIAKGDB OJPAODIHAJE = 11;
+        bool BOMGNMDOGLM = 1075;
+        bool BBEEBBIDJHE = 173;
+        bool HGPFFGKNPFB = 363;
+        bool LNGHIJGFDKP = 117;
+        bool GOKFNGFFMOB = 816;
+        JPGACKPLGCD CMFCOOEEECB = 568;
+        KVP EGLOIFDIDPK = 1757;
+    }
 }
 
 message UpdatePlayerSettingCsReq {
