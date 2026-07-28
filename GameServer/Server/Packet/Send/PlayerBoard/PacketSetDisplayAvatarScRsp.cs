@@ -8,7 +8,7 @@ public class PacketSetDisplayAvatarScRsp : BasePacket
     public PacketSetDisplayAvatarScRsp(SetDisplayAvatarCsReq avatar) : base(CmdIds.SetDisplayAvatarScRsp)
     {
         var proto = new SetDisplayAvatarScRsp();
-        proto.DisplayAvatarList.Add(avatar);
+        proto.DisplayAvatarList.AddRange(avatar.DisplayAvatarList);
 
         SetData(proto);
     }

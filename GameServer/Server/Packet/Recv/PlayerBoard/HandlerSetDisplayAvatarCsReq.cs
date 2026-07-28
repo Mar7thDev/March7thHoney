@@ -11,9 +11,12 @@ public class HandlerSetDisplayAvatarCsReq : Handler<SetDisplayAvatarCsReq>
     {
         var avatars = player.AvatarManager!.Data!.DisplayAvatars;
         avatars.Clear();
-        var avatarData = player.AvatarManager!.Data.FormalAvatars.FirstOrDefault(x =>
-            x.BaseAvatarId == (int)req.KOEOEHIMOEI);
-        if (avatarData != null) avatars.Add(avatarData.BaseAvatarId);
+        foreach (var displayAvatar in req.DisplayAvatarList.OrderBy(x => x.Pos))
+        {
+            var avatarData = player.AvatarManager!.Data.FormalAvatars.FirstOrDefault(x =>
+                x.BaseAvatarId == (int)displayAvatar.AvatarId);
+            if (avatarData != null) avatars.Add(avatarData.BaseAvatarId);
+        }
 
         await connection.SendPacket(new PacketSetDisplayAvatarScRsp(req));
     }
