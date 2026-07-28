@@ -527,7 +527,7 @@ public class CmdIds
     public const int GetGachaInfoCsReq = 1932;
     public const int GHJGEGJAODM = 1944;
     public const int SetGachaDecideItemScRsp = 1961;
-    public const int IAOPGJEOHOM = 1978;
+    public const int DoGachaScRsp = 1978;
     public const int SetGachaDecideItemCsReq = 1981;
     public const int ExchangeGachaCeilingCsReq = 1983;
     public const int GetNpcTakenRewardScRsp = 2113;
@@ -2318,7 +2318,7 @@ public class CmdIds
     public const int TechTreeChangeNodeStateCsRsp = 9436;
     public const int KKGJPMCFDON = 9437;
     public const int IABBGPLBLML = 9446;
-    public const int DoGachaScRsp = 9447;
+    public const int NILCAHCBKAI = 9447;
     public const int NOHKADAPKHE = 9448;
     public const int FAJEJCBILIA = 9449;
     public const int NMEKJABIGGH = 9474;

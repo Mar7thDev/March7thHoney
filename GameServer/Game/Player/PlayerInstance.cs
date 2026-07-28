@@ -15,6 +15,7 @@ using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.GameServer.Game.ChallengePeak;
 using March7thHoney.GameServer.Game.Expedition;
 using March7thHoney.GameServer.Game.Friend;
+using March7thHoney.GameServer.Game.Gacha;
 // TODO 4.3: GridFight (货币战争) 模块暂停编译，等待 proto 重整
 using March7thHoney.GameServer.Game.Inventory;
 using March7thHoney.GameServer.Game.Lineup;
@@ -58,6 +59,7 @@ public partial class PlayerInstance(PlayerData data)
 
     #region Shopping Managers
 
+    public GachaManager? GachaManager { get; private set; }
     public ShopService? ShopService { get; private set; }
     public OfferingManager? OfferingManager { get; private set; }
 
@@ -174,6 +176,7 @@ public partial class PlayerInstance(PlayerData data)
         SceneSkillManager = new SceneSkillManager(this);
         CalyxOverrideManager = new CalyxOverrideManager(this);
         MissionManager = new MissionManager(this);
+        GachaManager = new GachaManager(this);
         MessageManager = new MessageManager(this);
         MailManager = new MailManager(this);
         FriendManager = new FriendManager(this);
