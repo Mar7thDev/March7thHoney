@@ -28,13 +28,11 @@
     <Compile Remove="Server/Packet/Recv/Gacha/**/*.cs" />
     <Compile Remove="Server/Packet/Recv/JukeBox/**/*.cs" />
     <Compile Remove="Server/Packet/Recv/Pet/**/*.cs" />
-    <Compile Remove="Server/Packet/Recv/PlayerBoard/**/*.cs" />
     <Compile Remove="Server/Packet/Recv/Item/HandlerPromoteEquipmentCsReq.cs" />
     <Compile Remove="Server/Packet/Send/DiceCombat/**/*.cs" />
     <Compile Remove="Server/Packet/Send/Gacha/**/*.cs" />
     <Compile Remove="Server/Packet/Send/JukeBox/**/*.cs" />
     <Compile Remove="Server/Packet/Send/Pet/**/*.cs" />
-    <Compile Remove="Server/Packet/Send/PlayerBoard/**/*.cs" />
     <Compile Remove="Server/Packet/Send/Lineup/PacketVirtualLineupDestroyNotify.cs" />
     <Compile Remove="Server/Packet/Recv/Music/HandlerMusicRhythmDataCsReq.cs" />
     <Compile Remove="Server/Packet/Send/Mission/PacketMissionAcceptScNotify.cs" />
