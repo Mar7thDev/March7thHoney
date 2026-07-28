@@ -5181,7 +5181,7 @@ message CurChallenge {
 }
 
 message CurPetChangedScNotify {
-    uint32 OIOLDPIAOPF = 12;
+    uint32 cur_pet_id = 12;
 }
 
 message CurTrialActivityScNotify {
