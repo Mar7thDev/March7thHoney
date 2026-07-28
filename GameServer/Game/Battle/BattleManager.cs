@@ -133,7 +133,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             battleInstance.AvatarInfo = avatarList;
 
             // call battle start
-            Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
             Player.QuestManager!.OnBattleStart(battleInstance);
 
             Player.BattleInstance = battleInstance;
@@ -183,7 +182,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         battleInstance.AvatarInfo = avatarList;
 
         // call battle start
-        Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
         Player.QuestManager!.OnBattleStart(battleInstance);
 
         Player.BattleInstance = battleInstance;
@@ -299,7 +297,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         };
 
         // call battle start
-        Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
         Player.QuestManager!.OnBattleStart(battleInstance);
 
         Player.BattleInstance = battleInstance;

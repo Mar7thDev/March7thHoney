@@ -219,3 +219,24 @@ B51RacingChallengeEndMatchScRsp.FFGOKJJLENB = score
 B51RacingChallengeEndMatchScRsp.FPKJMJADEBI = match_id
 B51RacingChallengeEndMatchScRsp.KPGNEGMDKCI = track_id
 B51RacingChallengeEndMatchScRsp.PLDKENJLKME = retcode
+
+// 4.4.53 same-type field disambiguation
+NPOICBFPPHK.ONPFLOJLCEI = NMGIABHIJJB
+NPOICBFPPHK.CKEBDAILMIG = monster_list
+NPCCFNJPBNL.GPIOPLACLLD = equip_relic_list
+NPCCFNJPBNL.ONGOEFPNCLH = avatar_path_skill_tree
+DisplayAvatarDetailInfo.RelicList = relic_list
+DisplayAvatarDetailInfo.SkilltreeList = skilltree_list
+EPBMGIOIHEI.GPIOGFAMFEG = online_status
+EPBMGIOIHEI.HJBIINDNJFD = platform
+EPBMGIOIHEI.DGKPJCLNGJO = player_outfit_data
+EPBMGIOIHEI.OBDFDELGKGL = head_frame_info
+EGLBADOKDEN.AALLLAMOKJA = BOKLABGLEFL
+EGLBADOKDEN.GMCMDFPEPNE = record_info
+EGLBADOKDEN.DKOMFOABLFD = AIHNDIAFGPM
+EGLBADOKDEN.DGKPJCLNGJO = DHKFCDAGHDM
+EFKHBCOKGLG = PlayerHeartBeatCsReq
+MPDNBOMJIKD = PlayerHeartBeatScRsp
+KMHGIMGMOCJ = GetShopListCsReq
+INLFBAGCCLG = GetBasicInfoCsReq
+LIFMGAFOBPC = GetMissionDataCsReq

@@ -10,7 +10,7 @@ public sealed class Translations
     public Dictionary<string, Dictionary<string, string>> ScopedFields { get; } = new(StringComparer.Ordinal);
 
     private static readonly Regex RowRx =
-        new(@"^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*([A-Za-z_][A-Za-z0-9_]*)\s*$", RegexOptions.Compiled);
+        new(@"^!?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*([A-Za-z_][A-Za-z0-9_]*)\s*$", RegexOptions.Compiled);
     private static readonly Regex FieldRowRx =
         new(@"^([A-Za-z_][A-Za-z0-9_]*)\.([A-Za-z_][A-Za-z0-9_]*)\s*=\s*([A-Za-z_][A-Za-z0-9_]*)\s*$", RegexOptions.Compiled);
 

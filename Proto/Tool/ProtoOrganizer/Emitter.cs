@@ -11,6 +11,8 @@ public static class Emitter
     public static void Emit(GroupResult gr, string outDir, bool active)
     {
         Directory.CreateDirectory(outDir);
+        foreach (var path in Directory.EnumerateFiles(outDir, "*.proto", SearchOption.TopDirectoryOnly))
+            File.Delete(path);
 
         var byName = gr.Buckets.Values.SelectMany(b => b.Members)
             .ToDictionary(d => d.Name, StringComparer.Ordinal);
