@@ -312,3 +312,11 @@ ReStartChallengeTierceScRsp.CJDOLCNNPKL = scene
 
 JoinLineupCsReq.JIKAFFEIGDA = lineup_slot_list
 PMEANPGBPIN = GetAllServerPrefsDataCsReq
+
+DGPHMHCOPPO = DeactivateFarmElementCsReq
+DeactivateFarmElementCsReq.KKHPBDAEOLM = entity_id
+GNLACIGLJJN = GetFirstTalkNpcCsReq
+GetFirstTalkNpcCsReq.FDAFMPNPIMA = npc_id_list
+FPBDJBIFJHA = GetUnreleasedBlockInfoCsReq
+NOMPAIPDNKC = GetUnreleasedBlockInfoScRsp
+GetUnreleasedBlockInfoScRsp.PLDKENJLKME = retcode
