@@ -2830,10 +2830,6 @@ message GateServer {
     string personal_information_in_game_url = 1310;
 }
 
-message GetNpcMessageGroupCsReq {
-    repeated uint32 contact_id_list = 14;
-}
-
 message GroupSnapshot {
     uint32 group_id = 1;
     uint32 group_state = 2;
