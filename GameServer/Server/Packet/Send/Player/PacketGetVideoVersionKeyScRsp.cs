@@ -14,16 +14,14 @@ public class PacketGetVideoVersionKeyScRsp : BasePacket
             {
                 GameData.VideoKeysConfig.ActivityVideoKeyData.Select(activity => new VideoKeyInfo
                 {
-                    Id = (uint)activity.Id,
-                    VideoKey = activity.VideoKey
+                    Id = (uint)activity.Id
                 })
             },
             VideoKeyInfoList =
             {
                 GameData.VideoKeysConfig.VideoKeyInfoData.Select(video => new VideoKeyInfo
                 {
-                    Id = (uint)video.Id,
-                    VideoKey = video.VideoKey
+                    Id = (uint)video.Id
                 })
             }
         };

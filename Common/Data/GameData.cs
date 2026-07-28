@@ -42,23 +42,6 @@ public static partial class GameData
 
     public static Dictionary<int, List<DailyActiveConfigExcel>> DailyActiveConfigData { get; private set; } = [];
     public static Dictionary<int, DailyActiveQuestPoolExcel> DailyActiveQuestPoolData { get; private set; } = [];
-    public static Dictionary<int, ExpeditionBattleMapExcel> ExpeditionBattleMapData { get; private set; } = [];
-    public static Dictionary<int, ExpeditionBattleRouteExcel> ExpeditionBattleRouteData { get; private set; } = [];
-    public static Dictionary<int, ExpeditionBattleLevelExcel> ExpeditionBattleLevelData { get; private set; } = [];
-    public static Dictionary<int, B51RacingAgendaExcel> B51RacingAgendaData { get; private set; } = [];
-    public static Dictionary<int, B51RacingCarExcel> B51RacingCarData { get; private set; } = [];
-    public static Dictionary<int, B51RacingChallengeCarExcel> B51RacingChallengeCarData { get; private set; } = [];
-    public static Dictionary<int, B51RacingCycleExcel> B51RacingCycleData { get; private set; } = [];
-    public static Dictionary<int, B51RacingDevelopmentActionExcel> B51RacingDevelopmentActionData { get; private set; } = [];
-    public static Dictionary<int, B51RacingDriverExcel> B51RacingDriverData { get; private set; } = [];
-    public static Dictionary<int, B51RacingLiveryExcel> B51RacingLiveryData { get; private set; } = [];
-    public static Dictionary<int, B51RacingMatchExcel> B51RacingMatchData { get; private set; } = [];
-    public static Dictionary<int, B51RacingPartExcel> B51RacingPartData { get; private set; } = [];
-    public static Dictionary<int, B51RacingSkillExcel> B51RacingSkillData { get; private set; } = [];
-    public static Dictionary<int, B51RacingStatExcel> B51RacingStatData { get; private set; } = [];
-    public static Dictionary<int, B51RacingTeamExcel> B51RacingTeamData { get; private set; } = [];
-    public static Dictionary<int, B51RacingTrackExcel> B51RacingTrackData { get; private set; } = [];
-
     #region Marble
 
     public static Dictionary<int, MarbleMatchInfoExcel> MarbleMatchInfoData { get; private set; } = [];
