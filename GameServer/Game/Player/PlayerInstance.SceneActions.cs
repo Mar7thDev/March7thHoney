@@ -363,16 +363,6 @@ public partial class PlayerInstance
                 return;
             }
 
-            if (plane.PlaneType == PlaneTypeEnum.Challenge && ChallengeManager!.ChallengeInstance == null &&
-                entryId is not GameConstants.CHALLENGE_ENTRANCE and
-                    not GameConstants.CHALLENGE_BOSS_ENTRANCE and
-                    not GameConstants.CHALLENGE_PEAK_ENTRANCE and
-                    not GameConstants.CHALLENGE_STORY_ENTRANCE)
-            {
-                await EnterScene(GameConstants.CHALLENGE_ENTRANCE, 0, sendPacket);
-                return;
-            }
-
             Data.Pos = pos;
             Data.Rot = rot;
             var notSendMove = true;
@@ -407,7 +397,6 @@ public partial class PlayerInstance
                 if (SceneInstance != null) await SceneInstance.SyncGroupInfo();
             }
 
-            Connection?.SendPacket(CmdIds.SyncServerSceneChangeNotify);
             if (sendPacket && notSendMove)
                 await SendPacket(new PacketEnterSceneByServerScNotify(SceneInstance!));
             else if (sendPacket && !notSendMove) // send move packet
@@ -514,7 +503,6 @@ public partial class PlayerInstance
         if (BattleInstance != null)
         {
             BattleInstance = null;
-            await Connection!.SendPacket(CmdIds.QuitBattleScNotify);
         }
     }
 
