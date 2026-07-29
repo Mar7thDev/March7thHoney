@@ -5,10 +5,10 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.TalkEvent;
 
 [Opcode(CmdIds.SelectInclinationTextCsReq)]
-public class HandlerSelectInclinationTextCsReq : Handler<SelectInclinationTextCsReq>
+public class HandlerSelectInclinationTextCsReq : Handler<APJNPPGJELG>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, SelectInclinationTextCsReq req)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, APJNPPGJELG req)
     {
-        await connection.SendPacket(new PacketSelectInclinationTextScRsp(req.TalkSentenceId));
+        await connection.SendPacket(new PacketSelectInclinationTextScRsp(req.OBOHIPEGAGM));
     }
 }

@@ -9,15 +9,15 @@ public class HandlerTrainPartyGamePlayStartCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
-        var req = TrainPartyGamePlayStartCsReq.Parser.ParseFrom(data);
+        var req = TrainPartyLeaveCsReq.Parser.ParseFrom(data);
         var manager = connection.Player!.TrainPartyManager!;
-        var ret = manager.StartGameplay(req.IDBDBICPBBG, out var gameplayData);
+        var ret = manager.StartGameplay(req.KPMNBDKJBCI, out var gameplayData);
 
         var rsp = new BasePacket(CmdIds.TrainPartyGamePlayStartScRsp);
-        rsp.SetData(new TrainPartyGamePlayStartScRsp
+        rsp.SetData(new TrainPartyLeaveScRsp
         {
-            FJKHJADDKLD = gameplayData,
-            Retcode = ret
+            LIADDJKCKFA = gameplayData,
+            PLDKENJLKME = ret
         });
         await connection.SendPacket(rsp);
         await connection.SendPacket(new PacketTrainPartyMoveScNotify(connection.Player!));

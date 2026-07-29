@@ -8,16 +8,16 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Quest;
 
 [Opcode(CmdIds.TakeQuestRewardCsReq)]
-public class HandlerTakeQuestRewardCsReq : Handler<TakeQuestRewardCsReq>
+public class HandlerTakeQuestRewardCsReq : Handler<EMHALMBFHKG>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, TakeQuestRewardCsReq req)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, EMHALMBFHKG req)
     {
         List<ItemData> rewardItems = [];
         var firstError = Retcode.RetSucc;
         List<int> succQuestIds = [];
         List<QuestInfo> refreshQuestList = [];
 
-        foreach (var quest in req.SuccQuestIdList)
+        foreach (var quest in req.ODJIJFJCHHB)
         {
             var (retCode, items) = await player.QuestManager!.TakeQuestReward((int)quest);
             if (retCode != Retcode.RetSucc)

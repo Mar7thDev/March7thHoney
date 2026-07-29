@@ -7,9 +7,9 @@ public class PacketLobbyQuitScRsp : BasePacket
 {
     public PacketLobbyQuitScRsp(Retcode code) : base(CmdIds.LobbyQuitScRsp)
     {
-        var proto = new LobbyQuitScRsp
+        var proto = new JDHEDGIGKBM
         {
-            Retcode = (uint)code
+            PLDKENJLKME = (uint)code
         };
 
         SetData(proto);

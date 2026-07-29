@@ -9,6 +9,6 @@ public class HandlerGetNpcMessageGroupCsReq : Handler<GetNpcMessageGroupCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, GetNpcMessageGroupCsReq req)
     {
-        await connection.SendPacket(new PacketGetNpcMessageGroupScRsp(req.ContactIdList, player));
+        await connection.SendPacket(new PacketGetNpcMessageGroupScRsp(req.BJIPBBFIBPD, player));
     }
 }

@@ -526,7 +526,7 @@ message ALCDAEIDEAM {
     uint32 retcode = 6;
 }
 
-message ALCGMMOEKHM {
+message LobbyQuitCsReq {
 }
 
 message ALEEDHCDIAL {
@@ -622,7 +622,7 @@ message ANAJELDHDBH {
     double damage = 4;
 }
 
-message ANCNILJJBND {
+message PlayerForceSyncGameStateFinishCsReq {
 }
 
 message ANDPLLAKCLE {
@@ -711,8 +711,8 @@ enum APHBPMBMLOM {
     APHBPMBMLOM_OJBIMIOEABG = 3;
 }
 
-message APJNPPGJELG {
-    uint32 OBOHIPEGAGM = 8;
+message SelectInclinationTextCsReq {
+    uint32 talk_sentence_id = 8;
 }
 
 message APKENKIDMGC {
@@ -5211,7 +5211,7 @@ message DACCNAFGHFJ {
     KCLHMJHIDOB AKGJOPBLPNE = 4;
 }
 
-message DACEFJFGLGM {
+message LobbyStartFightCsReq {
 }
 
 message DAEDLFEEGIB {
@@ -5270,8 +5270,8 @@ message DBGHCHPONOH {
     uint32 retcode = 9;
 }
 
-message DBJDNDEIKDM {
-    uint32 IEIFMNNMINA = 7;
+message StartTrialActivityCsReq {
+    uint32 stage_id = 7;
 }
 
 enum DBKAAJAEGNM {
@@ -5758,8 +5758,8 @@ message DLCNDCKCIPC {
     uint32 JGCCIMMEDIJ = 4;
 }
 
-message DLDOBEMCFFA {
-    uint32 AKFFJEHMCCB = 10;
+message GetRndOptionCsReq {
+    uint32 id = 10;
 }
 
 message DLDPJEILCDB {
@@ -8130,7 +8130,7 @@ message FHEGNOPNICH {
     RotaterEnergyInfo energy_info = 1;
 }
 
-message FHJENMNMMKO {
+message GetAllSaveRaidCsReq {
 }
 
 message FHKKPNDLLLO {
@@ -8142,7 +8142,7 @@ message FHLEBDMFCHL {
     uint32 content_id = 11;
 }
 
-message FHLHOEPCKAG {
+message TrainPartyEnterCsReq {
 }
 
 message FHMNLHLADJO {
@@ -9554,7 +9554,7 @@ message GGHOBPBFFOB {
     uint32 CHCOPKAKBNO = 5;
 }
 
-message GGIHCKPGACF {
+message PlayerForceSyncGameStateFinishScRsp {
     repeated string HBBIHGLHKDM = 10;
     repeated string EHMGEMMNPLA = 3;
     repeated string PKLFOJBALKK = 1;
@@ -9946,7 +9946,7 @@ message GNILAAACODB {
     uint32 DCIJEFMACME = 15;
 }
 
-message GNKOABEBAIA {
+message PlayerLogoutCsReq {
 }
 
 message GNLBCCHFILK {
@@ -13360,7 +13360,7 @@ message HHJLCGGEHPB {
     PlayerSimpleInfo CILGIDDHODG = 6;
 }
 
-message HHKPBPHJOMO {
+message GetDiceCombatSystemDataCsReq {
 }
 
 message HHNBCLPNDFI {
@@ -14144,7 +14144,7 @@ message IBKDHOIDKJA {
     uint32 CLALLJOACNF = 1257;
 }
 
-message IBNCBEPCAPF {
+message TrainPartyAddBuildDynamicBuffCsReq {
 }
 
 message IBPDPCOGDEP {
@@ -14445,7 +14445,7 @@ message IHBOLKMEEMG {
     uint32 EPJBFAEPFNI = 8;
 }
 
-message IHGLPGLPDFF {
+message MultiplayerFightGiveUpCsReq {
 }
 
 message IHHBDEJOCGI {
@@ -14996,9 +14996,9 @@ message JDAALEACPKL {
     uint32 KPKEBLOEFCP = 11;
 }
 
-message JDAFEAJCJIB {
-    uint32 FDDDLMBHDMC = 4;
-    uint32 AOEBNCAILPJ = 10;
+message GetLevelRewardCsReq {
+    uint32 interacted_prop_entity_id = 4;
+    uint32 level = 10;
 }
 
 message JDAIOFEPGCC {
@@ -15147,9 +15147,9 @@ message JFCPFBLKJAB {
     IOFKKOEJFHI HCAAHIGINOM = 14;
 }
 
-message JFDDOPKGIKG {
-    uint32 BFLCNOEHNIC = 1;
-    uint32 ELFBAKNFEIG = 5;
+message StarPerformanceRelayCsReq {
+    uint32 performance_type = 1;
+    uint32 performance_id = 5;
 }
 
 message JFGCABMMKAB {
@@ -15164,7 +15164,7 @@ message JFGGDMPDKNH {
     uint32 FGKPOBCOCKM = 3;
 }
 
-message JFGGPGHOANG {
+message GetDiceCombatShopDataCsReq {
 }
 
 enum JFIIIHFBLPA {
@@ -16967,7 +16967,7 @@ message LJEMPEHADKJ {
     repeated uint32 avatar_id_list = 1;
 }
 
-message LJEOPDIBMCL {
+message GetStoryLineInfoCsReq {
 }
 
 message LJFEONHOKAG {
@@ -19681,7 +19681,7 @@ enum NLNEBDEEONP {
     NLNEBDEEONP_LDANCJMPNMB = 1;
 }
 
-message NLOPJLCMLEN {
+message MultiplayerGetFightGateCsReq {
 }
 
 message NMACHAFCGNI {
@@ -21047,8 +21047,8 @@ message PEEEEGAPCOK {
     string AALDPOAKJBK = 5;
 }
 
-message PEEIPMKDOOL {
-    uint32 AKFFJEHMCCB = 11;
+message MarkReadMailCsReq {
+    uint32 id = 11;
 }
 
 message PEGDBKDLJDJ {
@@ -21267,8 +21267,8 @@ message PIFMLFKCOOG {
     uint32 MJGCDMOFALP = 1;
 }
 
-message PIGBCIDLGCA {
-    uint32 IEIFMNNMINA = 7;
+message LeaveTrialActivityCsReq {
+    uint32 stage_id = 7;
 }
 
 message PIIJEIADMFP {
