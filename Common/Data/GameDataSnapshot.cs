@@ -264,6 +264,21 @@ public partial class GameDataSnapshot
     // Append-only: MemoryPack serializes in declaration order; never insert mid-class.
     public Dictionary<int, List<DailyActiveConfigExcel>> DailyActiveConfigData { get; set; } = [];
     public Dictionary<int, DailyActiveQuestPoolExcel> DailyActiveQuestPoolData { get; set; } = [];
+    public GridFightRuntimeDataSnapshot? GridFightRuntimeData { get; set; } = new();
+}
+
+[MemoryPackable]
+public partial class GridFightRuntimeDataSnapshot
+{
+    public Dictionary<string, GridFightDynamicValue> ConstValueData { get; set; } = [];
+    public List<GridFightModuleBanRoleExcel> ModuleBanRoleData { get; set; } = [];
+    public List<GridFightModuleBanPortalExcel> ModuleBanPortalData { get; set; } = [];
+    public List<GridFightModuleBanAugmentExcel> ModuleBanAugmentData { get; set; } = [];
+    public Dictionary<int, GridFightSeasonModuleExcel> SeasonModuleData { get; set; } = [];
+    public Dictionary<uint, GridFightTutorialStageExcel> TutorialStageData { get; set; } = [];
+    public List<GridFightTutorialStageNodeExcel> TutorialStageNodeData { get; set; } = [];
+    public Dictionary<uint, List<uint>> SeasonAugmentData { get; set; } = [];
+    public Dictionary<uint, GridFightBonusPoolV2Excel> BonusPoolV2Data { get; set; } = [];
 }
 
 public static partial class GameData
@@ -514,6 +529,18 @@ public static partial class GameData
             TutorialGuideDataData = GameData.TutorialGuideDataData,
             DailyActiveConfigData = GameData.DailyActiveConfigData,
             DailyActiveQuestPoolData = GameData.DailyActiveQuestPoolData,
+            GridFightRuntimeData = new GridFightRuntimeDataSnapshot
+            {
+                ConstValueData = GameData.GridFightConstValueData,
+                ModuleBanRoleData = GameData.GridFightModuleBanRoleData,
+                ModuleBanPortalData = GameData.GridFightModuleBanPortalData,
+                ModuleBanAugmentData = GameData.GridFightModuleBanAugmentData,
+                SeasonModuleData = GameData.GridFightSeasonModuleData,
+                TutorialStageData = GameData.GridFightTutorialStageData,
+                TutorialStageNodeData = GameData.GridFightTutorialStageNodeData,
+                SeasonAugmentData = GameData.GridFightSeasonAugmentData,
+                BonusPoolV2Data = GameData.GridFightBonusPoolV2Data,
+            },
         };
     }
 
@@ -761,5 +788,15 @@ public static partial class GameData
         GameData.TutorialGuideDataData = snapshot.TutorialGuideDataData;
         GameData.DailyActiveConfigData = snapshot.DailyActiveConfigData;
         GameData.DailyActiveQuestPoolData = snapshot.DailyActiveQuestPoolData;
+        var gridFightRuntimeData = snapshot.GridFightRuntimeData ?? new GridFightRuntimeDataSnapshot();
+        GameData.GridFightConstValueData = gridFightRuntimeData.ConstValueData;
+        GameData.GridFightModuleBanRoleData = gridFightRuntimeData.ModuleBanRoleData;
+        GameData.GridFightModuleBanPortalData = gridFightRuntimeData.ModuleBanPortalData;
+        GameData.GridFightModuleBanAugmentData = gridFightRuntimeData.ModuleBanAugmentData;
+        GameData.GridFightSeasonModuleData = gridFightRuntimeData.SeasonModuleData;
+        GameData.GridFightTutorialStageData = gridFightRuntimeData.TutorialStageData;
+        GameData.GridFightTutorialStageNodeData = gridFightRuntimeData.TutorialStageNodeData;
+        GameData.GridFightSeasonAugmentData = gridFightRuntimeData.SeasonAugmentData;
+        GameData.GridFightBonusPoolV2Data = gridFightRuntimeData.BonusPoolV2Data;
     }
 }

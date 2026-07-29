@@ -2,8 +2,8 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.Player;
-// TODO 4.3: GridFight 模块暂停编译
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Battle;
@@ -307,8 +307,6 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         return (Retcode.RetSucc, battleInstance);
     }
 
-    // TODO 4.3: StartGridFightBattle 暂停（GridFight 模块未编译）
-
     public async ValueTask EndBattle(PVEBattleResultCsReq req)
     {
 
@@ -325,7 +323,9 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         var isActiveFarmBattle = false;
         var minimumHp = 0;
         var dropItems = new List<ItemData>();
-        switch (req.EndStatus)
+        if (battle.GridFightContext != null)
+            updateStatus = false;
+        else switch (req.EndStatus)
         {
             case BattleEndStatus.BattleEndWin:
                 if (battle.EntityMonsters.Count == 0)
@@ -404,7 +404,8 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         Player.BattleInstance = null;
 
-        // TODO 4.3: GridFightManager 分支暂停
+        if (battle.GridFightContext != null && Player.GridFightManager != null)
+            await Player.GridFightManager.EndBattle(battle, req);
 
         battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
         await battle.TriggerOnBattleEnd();

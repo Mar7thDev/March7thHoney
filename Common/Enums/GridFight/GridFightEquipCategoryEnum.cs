@@ -15,5 +15,6 @@ public enum GridFightEquipCategoryEnum
     Material = 10,
     Trash = 11,
     GoldTrash = 12,
-    Hack = 13
+    Hack = 13,
+    FateEquip = 14
 }
