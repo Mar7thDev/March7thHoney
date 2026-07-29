@@ -48,5 +48,5 @@ public class DiceCombatActivityInstance : BaseActivityInstance
         state.CompletedTime = time;
     }
 
-    public byte[] BuildSystemDataPayload() => Snapshot.ToByteArray();
+    public byte[] BuildSystemDataPayload() => DiceCombatConfig.BuildV3Payload(Snapshot);
 }

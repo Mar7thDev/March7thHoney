@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Scene;
 
-[Opcode(CmdIds.ActivateFarmElementCsReq)]
+[Opcode(CmdIds.ActiveFarmElementCsReq)]
 public class HandlerActivateFarmElementCsReq : Handler<ActiveFarmElementCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, ActiveFarmElementCsReq req)
@@ -16,4 +16,3 @@ public class HandlerActivateFarmElementCsReq : Handler<ActiveFarmElementCsReq>
         await connection.SendPacket(new PacketActivateFarmElementScRsp(req.EntityId, req.WorldLevel));
     }
 }
-

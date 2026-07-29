@@ -322,6 +322,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         var battle = Player.BattleInstance;
         var updateStatus = true;
         var teleportToAnchor = false;
+        var isActiveFarmBattle = false;
         var minimumHp = 0;
         var dropItems = new List<ItemData>();
         switch (req.EndStatus)
@@ -332,6 +333,8 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
                 // Drops
                 var farmEntityId = (int)Player.ActiveFarmElementEntityId;
+                isActiveFarmBattle = farmEntityId != 0 &&
+                                     battle.EntityMonsters.Any(monster => monster.EntityId == farmEntityId);
                 foreach (var monster in battle.EntityMonsters)
                 {
                     var keepInScene = farmEntityId != 0 && monster.EntityId == farmEntityId;
@@ -390,7 +393,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 if (anchor != null) await Player.MoveTo(anchor.ToPositionProto());
             }
         }
-        else if (Player.ActiveFarmElementEntityId != 0 && Player.FarmElementReturnPos != null)
+        else if (isActiveFarmBattle && Player.FarmElementReturnPos != null)
         {
             await Player.MoveTo(Player.FarmElementReturnPos, Player.FarmElementReturnRot ?? Player.Data.Rot!);
         }
@@ -406,8 +409,12 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
         await battle.TriggerOnBattleEnd();
 
-        if (Player.ActivityManager!.TrialActivityInstance != null && req.EndStatus == BattleEndStatus.BattleEndWin)
-            await Player.ActivityManager.TrialActivityInstance.EndActivity(TrialActivityStatus.Finish);
+        var trialActivity = Player.ActivityManager!.TrialActivityInstance;
+        var trialStageId = trialActivity?.Data.CurTrialStageId ?? 0;
+        if (req.EndStatus == BattleEndStatus.BattleEndWin &&
+            trialActivity != null && trialStageId != 0 &&
+            battle.StageId == trialStageId)
+            await trialActivity.EndActivity(TrialActivityStatus.Finish);
 
         var dropItemList = await battle.GetDropItemListAsync();
         await Player.SendPacket(new PacketPVEBattleResultScRsp(req, Player, battle, dropItemList));

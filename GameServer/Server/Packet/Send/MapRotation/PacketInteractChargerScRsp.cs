@@ -5,7 +5,7 @@ namespace March7thHoney.GameServer.Server.Packet.Send.MapRotation;
 
 public class PacketInteractChargerScRsp : BasePacket
 {
-    public PacketInteractChargerScRsp(ChargerInfo chargerInfo) : base(CmdIds.InteractChargerScRsp)
+    public PacketInteractChargerScRsp() : base(CmdIds.InteractChargerScRsp)
     {
         SetData(new InteractChargerScRsp());
     }
