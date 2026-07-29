@@ -8,10 +8,10 @@ public class HandlerForceSyncGameStateFinishCSReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
     {
-        _ = ANCNILJJBND.Parser.ParseFrom(data);
+        _ = PlayerForceSyncGameStateFinishCsReq.Parser.ParseFrom(data);
 
         var packet = new BasePacket((ushort)CmdIds.PlayerForceSyncGameStateFinishScRsp);
-        packet.SetData(new GGIHCKPGACF());
+        packet.SetData(new PlayerForceSyncGameStateFinishScRsp());
         await connection.SendPacket(packet);
     }
 }

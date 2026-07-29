@@ -83,7 +83,7 @@ public class ResourceManager
     // Excel tables belonging to paused / uncompiled gameplay modules. Verified to have no live reader
     // (only their own self-populating Loaded() hooks touch them), so they are skipped unless
     // ServerOption.LoadPausedModuleData is enabled — see that flag for the rationale.
-    private static readonly string[] PausedModuleResourcePrefixes = ["GridFight", "MatchThree", "Marble", "Cake"];
+    private static readonly string[] PausedModuleResourcePrefixes = ["MatchThree", "Marble", "Cake"];
 
     private static bool IsPausedModuleResource(Type cls)
     {
@@ -1302,6 +1302,5 @@ public class ResourceManager
             GameData.ChessRogueRoomData.Add(type, [room]);
     }
 }
-
 
 

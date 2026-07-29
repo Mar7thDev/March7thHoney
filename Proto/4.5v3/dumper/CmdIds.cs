@@ -2573,4 +2573,20 @@ public class CmdIds
     public const int ChallengeTierceSettleNotify = 8978;
     public const int UnlockSkilltreeCsReq = 344;
     public const int UnlockSkilltreeScRsp = 319;
+    public const int ForceSyncGameStateFinishCSReq = 4;
+    public const int ForceSyncGameStateFinishScRsp = 3;
+    public const int IAOPGJEOHOM = 1978;
+    public const int GridFightBuyGoodsCsReq = 8539;
+    public const int GridFightBuyGoodsScRsp = 8445;
+    public const int GridFightStartGamePlayCsReq = 8581;
+    public const int GridFightStartGamePlayScRsp = 8640;
+    public const int GridFightResumeGamePlayCsReq = 8590;
+    public const int GridFightResumeGamePlayScRsp = 8620;
+    public const int GridFightQuitSettleCsReq = 8454;
+    public const int GridFightQuitLeaveGamePlayCsReq = 8766;
+    public const int GridFightGetOrbScRsp = 8604;
+    public const int GridFightBuyExpCsReq = 8658;
+    public const int GridFightBackToPrepareCsReq = 8495;
+    public const int GridFightFinishTutorialCsReq = 8527;
+    public const int GridFightGetFormationCsReq = 8784;
 }

@@ -15,6 +15,7 @@ public partial class GridFightRoleBasicInfoExcel : ExcelResource
     public List<uint> TraitList { get; set; } = [];
     public List<string> RoleSavedValueList { get; set; } = [];
     public bool IsInPool { get; set; }
+    public bool IsInBook { get; set; }
 
     public override int GetId()
     {

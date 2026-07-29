@@ -14,5 +14,8 @@ public enum GridFightTraitEffectTypeEnum
     SelectEnhance = 9,
     GainFrontTrait = 10,
     BackStrengthenFront = 11,
-    Elation = 12
+    Elation = 12,
+    HolyGrailPray = 13,
+    PartnerRoleChoose = 14,
+    ChooseTraitByModule = 15
 }
