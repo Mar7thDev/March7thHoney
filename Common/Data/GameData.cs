@@ -173,6 +173,15 @@ public static partial class GameData
     public static Dictionary<uint, List<uint>> GridFightSeasonPortalData { get; private set; } = [];
     public static Dictionary<uint, Dictionary<uint, GridFightStageRouteExcel>> GridFightStageRouteData { get; private set; } = [];
     public static Dictionary<uint, GridFightNodeTemplateExcel> GridFightNodeTemplateData { get; private set; } = [];
+    public static Dictionary<string, GridFightDynamicValue> GridFightConstValueData { get; private set; } = [];
+    public static List<GridFightModuleBanRoleExcel> GridFightModuleBanRoleData { get; private set; } = [];
+    public static List<GridFightModuleBanPortalExcel> GridFightModuleBanPortalData { get; private set; } = [];
+    public static List<GridFightModuleBanAugmentExcel> GridFightModuleBanAugmentData { get; private set; } = [];
+    public static Dictionary<int, GridFightSeasonModuleExcel> GridFightSeasonModuleData { get; private set; } = [];
+    public static Dictionary<uint, GridFightTutorialStageExcel> GridFightTutorialStageData { get; private set; } = [];
+    public static List<GridFightTutorialStageNodeExcel> GridFightTutorialStageNodeData { get; private set; } = [];
+    public static Dictionary<uint, List<uint>> GridFightSeasonAugmentData { get; private set; } = [];
+    public static Dictionary<uint, GridFightBonusPoolV2Excel> GridFightBonusPoolV2Data { get; private set; } = [];
 
     #endregion
 

@@ -10,6 +10,9 @@ public static class CmdIdEmitter
     private static readonly Regex EntryRx = new(
         @"^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(\d+)\s*;",
         RegexOptions.Compiled);
+    private static readonly Regex ConstantRx = new(
+        @"(?m)^\s*public\s+const\s+int\s+([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(\d+)\s*;",
+        RegexOptions.Compiled);
 
     public static CmdIdEmitResult Emit(
         List<TypeDef> defs,
@@ -85,5 +88,55 @@ public static class CmdIdEmitter
             File.WriteAllText(path, builder.ToString(), new UTF8Encoding(false));
         }
         return new CmdIdEmitResult(entries.Count, outputPaths.Distinct(StringComparer.Ordinal).Count(), aliases, unresolvedAliases);
+    }
+
+    public static CmdIdEmitResult AddAliases(
+        IReadOnlyList<string> outputPaths,
+        IReadOnlyList<string> aliasPaths)
+    {
+        var aliases = 0;
+        var unresolvedAliases = 0;
+        var outputs = 0;
+        var constants = 0;
+
+        foreach (var path in outputPaths.Distinct(StringComparer.Ordinal))
+        {
+            if (!File.Exists(path)) continue;
+            var text = File.ReadAllText(path).Replace("\r\n", "\n");
+            var values = new Dictionary<string, int>(StringComparer.Ordinal);
+            foreach (Match match in ConstantRx.Matches(text))
+                values[match.Groups[1].Value] = int.Parse(match.Groups[2].Value);
+            constants = Math.Max(constants, values.Count);
+
+            var additions = new List<(string Name, int Value)>();
+            foreach (var aliasPath in aliasPaths.Where(File.Exists))
+            foreach (var raw in File.ReadLines(aliasPath))
+            {
+                var line = raw.Split('#', 2)[0].Trim();
+                if (line.Length == 0) continue;
+                var parts = line.Split('=', 2, StringSplitOptions.TrimEntries);
+                if (parts.Length != 2 || !values.TryGetValue(parts[1], out var value))
+                {
+                    unresolvedAliases++;
+                    continue;
+                }
+                if (values.ContainsKey(parts[0])) continue;
+                values[parts[0]] = value;
+                additions.Add((parts[0], value));
+            }
+            if (additions.Count == 0) continue;
+
+            var closingBrace = text.LastIndexOf('}');
+            if (closingBrace < 0) continue;
+            var builder = new StringBuilder();
+            foreach (var (name, value) in additions)
+                builder.Append("    public const int ").Append(name).Append(" = ").Append(value).Append(";\n");
+            text = text.Insert(closingBrace, builder.ToString());
+            File.WriteAllText(path, text, new UTF8Encoding(false));
+            aliases += additions.Count;
+            outputs++;
+        }
+
+        return new CmdIdEmitResult(constants + aliases, outputs, aliases, unresolvedAliases);
     }
 }

@@ -102,9 +102,7 @@ public class ServerOption
     public int FarmingDropRate { get; set; } = 1;
     public bool UseCache { get; set; } = true;
 
-    // Load Excel tables for paused / uncompiled gameplay modules (GridFight / MatchThree / Marble / Cake).
-    // Off by default: none of these tables are read by a live handler or manager, so loading them only
-    // wastes RAM and inflates the resource cache. Flip on (and regenerate the cache) when reviving a module.
+    // Load Excel tables for paused gameplay modules (MatchThree / Marble / Cake).
     public bool LoadPausedModuleData { get; set; } = false;
 
     public bool EnableMonthCard { get; set; } = true;

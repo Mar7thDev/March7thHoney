@@ -16,6 +16,8 @@ public sealed class Args
     public List<string> CompatibilityTypePaths { get; } = new();
     public List<string> CmdIdAliasPaths { get; } = new();
     public List<string> CmdIdsOutPaths { get; } = new();
+    public List<string> RewriteProtoPaths { get; } = new();
+    public List<string> CompileRewritePaths { get; } = new();
     public bool Active;
     public bool ReportOnly;
     public bool Compile;
@@ -41,6 +43,8 @@ public sealed class Args
                 case "--compat-types": o.CompatibilityTypePaths.Add(a[++i]); break;
                 case "--cmdid-aliases": o.CmdIdAliasPaths.Add(a[++i]); break;
                 case "--cmdids-out": o.CmdIdsOutPaths.Add(a[++i]); break;
+                case "--rewrite-proto": o.RewriteProtoPaths.Add(a[++i]); break;
+                case "--compile-rewrite": o.CompileRewritePaths.Add(a[++i]); break;
                 case "--active": o.Active = true; break;
                 case "--report": o.ReportOnly = true; break;
                 case "--compile": o.Compile = true; break;
