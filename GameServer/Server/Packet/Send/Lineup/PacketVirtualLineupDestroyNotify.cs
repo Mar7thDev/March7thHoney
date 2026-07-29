@@ -7,9 +7,9 @@ public class PacketVirtualLineupDestroyNotify : BasePacket
 {
     public PacketVirtualLineupDestroyNotify(int planeId) : base(CmdIds.VirtualLineupDestroyNotify)
     {
-        var proto = new VirtualLineupDestroyNotify
+        var proto = new HPHANFONFPF
         {
-            PlaneId = (uint)planeId
+            OEMNIDFIJEO = (uint)planeId
         };
 
         SetData(proto);

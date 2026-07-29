@@ -7,9 +7,9 @@ public class PacketLobbyModifyPlayerInfoScRsp : BasePacket
 {
     public PacketLobbyModifyPlayerInfoScRsp(Retcode code) : base(CmdIds.LobbyModifyPlayerInfoScRsp)
     {
-        var proto = new LobbyModifyPlayerInfoScRsp
+        var proto = new GHGECAINBLA
         {
-            Retcode = (uint)code
+            PLDKENJLKME = (uint)code
         };
 
         SetData(proto);

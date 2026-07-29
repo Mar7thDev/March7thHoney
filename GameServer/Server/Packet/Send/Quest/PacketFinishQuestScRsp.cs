@@ -7,9 +7,9 @@ public class PacketFinishQuestScRsp : BasePacket
 {
     public PacketFinishQuestScRsp(Retcode retCode) : base(CmdIds.FinishQuestScRsp)
     {
-        var proto = new FinishQuestScRsp
+        var proto = new BICDPPOGHND
         {
-            Retcode = (uint)retCode
+            PLDKENJLKME = (uint)retCode
         };
 
         SetData(proto);

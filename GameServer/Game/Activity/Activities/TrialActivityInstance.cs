@@ -21,6 +21,7 @@ public class TrialActivityInstance : BaseActivityInstance
         GameData.AvatarDemoConfigData.TryGetValue(stageId, out var excel);
         if (excel == null)
         {
+            ActivityManager.TrialActivityInstance = null;
             await player.SendPacket(new PacketStartTrialActivityScRsp((uint)stageId, Retcode.RetReqParaInvalid));
             return;
         }
@@ -42,6 +43,9 @@ public class TrialActivityInstance : BaseActivityInstance
     public async ValueTask EndActivity(TrialActivityStatus status = TrialActivityStatus.None)
     {
         var player = ActivityManager.Player!;
+        var stageId = Data.CurTrialStageId;
+        Data.CurTrialStageId = 0;
+        ActivityManager.TrialActivityInstance = null;
 
         // Remove trial lineup
         await player.LineupManager!.DestroyExtraLineup(ExtraLineupType.LineupStageTrial);
@@ -63,11 +67,9 @@ public class TrialActivityInstance : BaseActivityInstance
         {
             Data.Activities.Add(new TrialActivityResultData
             {
-                StageId = Data.CurTrialStageId
+                StageId = stageId
             });
-            await player.SendPacket(new PacketCurTrialActivityScNotify((uint)Data.CurTrialStageId, status));
+            await player.SendPacket(new PacketCurTrialActivityScNotify((uint)stageId, status));
         }
-
-        Data.CurTrialStageId = 0;
     }
 }

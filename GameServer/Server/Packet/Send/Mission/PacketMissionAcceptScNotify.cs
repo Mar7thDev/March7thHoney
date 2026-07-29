@@ -9,12 +9,11 @@ public class PacketMissionAcceptScNotify : BasePacket
     {
     }
 
-    public PacketMissionAcceptScNotify(List<int> missionIds) : base(1251)
+    public PacketMissionAcceptScNotify(List<int> missionIds) : base(CmdIds.MainMissionAcceptNotify)
     {
-        var proto = new MainMissionAcceptNotify();
-        foreach (var missionId in missionIds) proto.MainMissionIdList.Add((uint)missionId);
+        var proto = new CPFCAJBHOIB();
+        foreach (var missionId in missionIds) proto.FKOABFGMHJI.Add((uint)missionId);
 
         SetData(proto);
     }
 }
-

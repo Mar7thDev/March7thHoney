@@ -1,3 +1,4 @@
+using Google.Protobuf;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.MultiPlayer.DiceCombat;
@@ -9,6 +10,79 @@ internal static class DiceCombatItems
 
 internal static class DiceCombatConfig
 {
+    public static byte[] BuildV3Payload(GetSystemDataRsp snapshot)
+    {
+        return Encode(output =>
+        {
+            foreach (var avatar in snapshot.AvatarList)
+                WriteMessage(output, 2, Encode(message =>
+                {
+                    WriteUInt32(message, 1, avatar.DiceAvatarId);
+                    WriteUInt32(message, 2, avatar.Level);
+                    WritePackedUInt32(message, 3, avatar.DiceIdList);
+                    WriteInt64(message, 4, avatar.UnlockTime);
+                }));
+
+            WriteMessage(output, 6, Encode(message =>
+            {
+                foreach (var stage in snapshot.DGFNLDBFLAJ.LNPPFHHACPF)
+                    WriteMessage(message, 3, Encode(item =>
+                    {
+                        WriteUInt32(item, 4, stage.StageId);
+                        WriteUInt32(item, 14, stage.FPJMKDNDENK);
+                    }));
+                WritePackedUInt32(message, 5, snapshot.DGFNLDBFLAJ.GNNBMNHOIFG);
+            }));
+
+            WritePackedUInt32(output, 11, snapshot.OHFIIBEIPJE);
+            foreach (var stage in snapshot.KCNEKEGGAGG)
+                WriteMessage(output, 15, Encode(message =>
+                {
+                    WriteUInt32(message, 12, stage.CLEKAKLPNBP);
+                    WriteInt64(message, 15, stage.UnlockTime);
+                }));
+        });
+    }
+
+    private static byte[] Encode(Action<CodedOutputStream> writer)
+    {
+        using var stream = new MemoryStream();
+        using var output = new CodedOutputStream(stream, true);
+        writer(output);
+        output.Flush();
+        return stream.ToArray();
+    }
+
+    private static void WriteMessage(CodedOutputStream output, int fieldNumber, byte[] data)
+    {
+        output.WriteTag(fieldNumber, WireFormat.WireType.LengthDelimited);
+        output.WriteBytes(ByteString.CopyFrom(data));
+    }
+
+    private static void WritePackedUInt32(CodedOutputStream output, int fieldNumber, IEnumerable<uint> values)
+    {
+        var data = Encode(packed =>
+        {
+            foreach (var value in values) packed.WriteUInt32(value);
+        });
+        if (data.Length == 0) return;
+        WriteMessage(output, fieldNumber, data);
+    }
+
+    private static void WriteUInt32(CodedOutputStream output, int fieldNumber, uint value)
+    {
+        if (value == 0) return;
+        output.WriteTag(fieldNumber, WireFormat.WireType.Varint);
+        output.WriteUInt32(value);
+    }
+
+    private static void WriteInt64(CodedOutputStream output, int fieldNumber, long value)
+    {
+        if (value == 0) return;
+        output.WriteTag(fieldNumber, WireFormat.WireType.Varint);
+        output.WriteInt64(value);
+    }
+
     public static GetSystemDataRsp BuildOfficialCompletedSnapshot()
     {
         var rsp = new GetSystemDataRsp();
