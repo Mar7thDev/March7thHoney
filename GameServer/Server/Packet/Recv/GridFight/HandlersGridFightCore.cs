@@ -61,8 +61,22 @@ public sealed class HandlerGridFightQuitSettleCsReq : Handler<GridFightQuitSettl
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightQuitSettleCsReq request)
     {
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightSettleNotify, new GridFightSettleNotify()));
-        player.GridFightManager!.ClearSession();
+        var manager = player.GridFightManager!;
+        var session = manager.Session;
+        if (session == null)
+        {
+            await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitSettleScRsp,
+                new GridFightQuitSettleScRsp { Retcode = (uint)Retcode.RetFail }));
+            return;
+        }
+
+        var settle = manager.BuildSettleNotify(GridFightSettleReason.Quit);
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightSyncKeepWinCntNotify,
+            new GridFightSyncKeepWinCntNotify { KeepWinCount = session.KeepWinCount }));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightSettleNotify, settle));
+        manager.ClearSession();
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitSettleScRsp,
+            new GridFightQuitSettleScRsp()));
     }
 }
 
