@@ -117,9 +117,9 @@ public sealed class GridFightManager : BasePlayerManager
         if (pending != null) current.PendingAction = pending;
         current.GameInfoList.Add(BuildBasicInfo());
         current.GameInfoList.Add(new GridFightGameInfo { TeamInfo = BuildTeamInfo() });
-        current.GameInfoList.Add(new GridFightGameInfo { ItemsInfo = new GridFightGameItemsInfo() });
+        current.GameInfoList.Add(new GridFightGameInfo { ItemsInfo = BuildItemsInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { ShopInfo = BuildShopInfo() });
-        current.GameInfoList.Add(new GridFightGameInfo { OrbInfo = new GridFightGameOrbInfo() });
+        current.GameInfoList.Add(new GridFightGameInfo { OrbInfo = BuildOrbInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { LevelInfo = BuildLevelInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { AugmentInfo = new GridFightGameAugmentSync() });
         current.GameInfoList.Add(new GridFightGameInfo { TraitInfo = new GridFightGameTraitInfo() });
@@ -313,6 +313,87 @@ public sealed class GridFightManager : BasePlayerManager
             });
         if (change != null) AppendRoleChanges(result, change);
         notify.ResultList.Add(result);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildGoldSync()
+    {
+        return BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeGold: true);
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildRoleAddedSync(GridFightSessionChange change)
+    {
+        return BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, change);
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildEquipmentAddedSync(GridFightEquipmentState equipment)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+        var items = new GridFightGameItemSyncInfo();
+        items.GridFightEquipmentList.Add(BuildEquipment(equipment));
+        var result = new GridFightSyncResultData();
+        result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        notify.ResultList.Add(result);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildOrbAddedSync(GridFightOrbState orb)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+        var result = new GridFightSyncResultData();
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            OrbInfo = new GridFightOrbSyncInfo
+            {
+                UniqueId = orb.UniqueId,
+                OrbItemId = orb.OrbItemId,
+            },
+        });
+        notify.ResultList.Add(result);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildConsumableSync(
+        GridFightConsumableState consumable,
+        bool isNew)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+        var items = new GridFightGameItemSyncInfo();
+        items.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
+        {
+            ItemId = consumable.ItemId,
+            ItemStackCount = 1,
+            Num = consumable.Count,
+        });
+        var result = new GridFightSyncResultData();
+        result.UpdateDynamicList.Add(isNew
+            ? new GridFightSyncData { AddGameItemInfo = items }
+            : new GridFightSyncData { UpdateGameItemInfo = items });
+        notify.ResultList.Add(result);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildSectionMoveSync(uint finishedPendingPosition)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+        var finishResult = new GridFightSyncResultData();
+        if (finishedPendingPosition != 0)
+            finishResult.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                FinishPendingActionPos = finishedPendingPosition,
+            });
+        finishResult.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+        notify.ResultList.Add(finishResult);
+
+        var section = BuildSync(
+            GridFightUpdateSrcType.KgridFightSrcEnterNode,
+            includeShop: true,
+            includeRoute: true);
+        notify.ResultList.Add(section.ResultList);
         return notify;
     }
 
@@ -584,6 +665,40 @@ public sealed class GridFightManager : BasePlayerManager
         info.RolePoolList.Add(Catalog.RolePool.Select(role => role.ID));
         info.GoodsList.Add(session.Shop.Select(BuildShopGoods));
         return info;
+    }
+
+    private GridFightGameItemsInfo BuildItemsInfo()
+    {
+        var session = Session!;
+        var info = new GridFightGameItemsInfo();
+        info.GridFightEquipmentList.Add(session.Equipments.Select(BuildEquipment));
+        info.GridFightConsumableList.Add(session.Consumables.Select(consumable => new GridFightConsumableInfo
+        {
+            ItemId = consumable.ItemId,
+            Num = consumable.Count,
+        }));
+        return info;
+    }
+
+    private GridFightGameOrbInfo BuildOrbInfo()
+    {
+        var info = new GridFightGameOrbInfo();
+        info.GridGameOrbList.Add(Session!.Orbs.Select(orb => new GridGameOrbInfo
+        {
+            UniqueId = orb.UniqueId,
+            OrbItemId = orb.OrbItemId,
+        }));
+        return info;
+    }
+
+    private static GridFightEquipmentInfo BuildEquipment(GridFightEquipmentState equipment)
+    {
+        return new GridFightEquipmentInfo
+        {
+            UniqueId = equipment.UniqueId,
+            GridFightEquipmentId = equipment.EquipmentId,
+            Source = equipment.Source,
+        };
     }
 
     private GridFightShopSyncInfo BuildShopSyncInfo()
