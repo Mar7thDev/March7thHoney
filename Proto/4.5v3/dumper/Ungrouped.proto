@@ -12060,7 +12060,7 @@ message GridFightConsumableTargetInfo {
 
 message GridFightConsumableUpdateInfo {
     uint32 num = 6;
-    int32 HFNNNGHBHGG = 1;
+    int32 item_stack_count = 1;
     uint32 item_id = 14;
     uint32 group_id = 8;
     uint32 round_cnt = 15;
@@ -12268,18 +12268,18 @@ message GridFightGameItemInfo {
 }
 
 message GridFightGameItemSyncInfo {
-    repeated GridFightConsumableUpdateInfo PFMDKHIDDLB = 12;
+    repeated GridFightConsumableUpdateInfo update_grid_fight_consumable_list = 12;
     repeated GridFightEquipmentInfo grid_fight_equipment_list = 13;
 }
 
 message GridFightGameItemsInfo {
-    repeated GridFightConsumableInfo IPMKOMEHBMP = 13;
+    repeated GridFightConsumableInfo grid_fight_consumable_list = 13;
     repeated GridFightEquipmentInfo grid_fight_equipment_list = 2;
 }
 
 message GridFightGameOrbInfo {
     repeated PFBCBNMKFAK ODCMJGHEOMG = 10;
-    repeated IBPDPCOGDEP MDKGCIKOMLI = 1;
+    repeated GridGameOrbInfo grid_game_orb_list = 1;
 }
 
 message GridFightGamePortalBuffInfo {
@@ -12465,7 +12465,7 @@ message GridFightNPCInfo {
 }
 
 message GridFightOrbSyncInfo {
-    uint32 LDBNOMPCOKK = 8;
+    uint32 orb_item_id = 8;
     uint32 unique_id = 9;
 }
 
@@ -14147,9 +14147,9 @@ message IBKDHOIDKJA {
 message TrainPartyAddBuildDynamicBuffCsReq {
 }
 
-message IBPDPCOGDEP {
+message GridGameOrbInfo {
     uint32 unique_id = 2;
-    uint32 LDBNOMPCOKK = 4;
+    uint32 orb_item_id = 4;
 }
 
 message IBPHNIBGMPH {
