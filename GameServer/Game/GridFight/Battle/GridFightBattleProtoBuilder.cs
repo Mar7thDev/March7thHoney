@@ -42,7 +42,7 @@ public static class GridFightBattleProtoBuilder
                      .Where(role => role.Position is >= 1 and <= 4)
                      .OrderBy(role => role.Position))
         {
-            var avatar = ResolveBattleAvatar(battle, role.RoleId);
+            var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: true);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
             proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
@@ -99,7 +99,7 @@ public static class GridFightBattleProtoBuilder
             });
         foreach (var role in activeRoles.Where(role => role.Position is >= 5 and <= 13))
         {
-            var avatar = ResolveBattleAvatar(battle, role.RoleId);
+            var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: false);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
             gridFightInfo.BackgroundAvatarList.Add(
@@ -175,7 +175,7 @@ public static class GridFightBattleProtoBuilder
                      .Where(role => role.Position is >= 1 and <= 13)
                      .OrderBy(role => role.Position))
         {
-            var avatar = ResolveBattleAvatar(battle, role.RoleId);
+            var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: role.Position <= 4);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
             avatars.Add(avatar);
@@ -183,11 +183,17 @@ public static class GridFightBattleProtoBuilder
         return avatars;
     }
 
-    private static AvatarLineupData? ResolveBattleAvatar(BattleInstance battle, uint roleId)
+    private static AvatarLineupData? ResolveBattleAvatar(BattleInstance battle, uint roleId, bool isForeground)
     {
         if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var basic)) return null;
         var formal = battle.Player.AvatarManager!.GetFormalAvatar((int)basic.AvatarID);
-        if (formal != null) return new AvatarLineupData(formal, AvatarType.AvatarGridFightType);
+        if (formal != null)
+        {
+            var avatarType = isForeground && string.Equals(basic.FrontBackType, "Back", StringComparison.Ordinal)
+                ? AvatarType.AvatarFormalType
+                : AvatarType.AvatarGridFightType;
+            return new AvatarLineupData(formal, avatarType);
+        }
         var trial = battle.Player.AvatarManager.GetTrialAvatarByWorldLevel(
             (int)basic.SpecialAvatarID,
             battle.Player.Data.WorldLevel);
