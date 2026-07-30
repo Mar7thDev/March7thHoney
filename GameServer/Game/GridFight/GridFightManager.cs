@@ -344,6 +344,23 @@ public sealed class GridFightManager : BasePlayerManager
         return notify;
     }
 
+    public GridFightSyncUpdateResultScNotify BuildRefreshShopSync()
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var session = Session;
+        if (session == null) return notify;
+
+        var refreshResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcManualRefreshGoods,
+        };
+        refreshResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
+        refreshResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+        notify.ResultList.Add(refreshResult);
+        notify.ResultList.Add(new GridFightSyncResultData());
+        return notify;
+    }
+
     private static void AppendRoleChanges(GridFightSyncResultData result, GridFightSessionChange change)
     {
         foreach (var role in change.AddedRoles)
@@ -561,7 +578,6 @@ public sealed class GridFightManager : BasePlayerManager
         var session = Session!;
         var info = new GridFightGameShopInfo
         {
-            ShopId = session.PlayerLevel,
             RefreshCost = Catalog.RefreshCost,
             RarityWeightInfo = BuildRarityWeights(),
         };
@@ -575,7 +591,6 @@ public sealed class GridFightManager : BasePlayerManager
         var session = Session!;
         var info = new GridFightShopSyncInfo
         {
-            ShopId = session.PlayerLevel,
             RefreshCost = Catalog.RefreshCost,
             RarityWeightInfo = BuildRarityWeights(),
         };
