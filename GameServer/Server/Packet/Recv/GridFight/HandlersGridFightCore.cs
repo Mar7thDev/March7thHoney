@@ -211,6 +211,8 @@ public sealed class HandlerGridFightBuyExpCsReq : Handler<GridFightBuyExpCsReq>
                 includeShop: true,
                 includeLevel: true,
                 levelChanged: session!.PlayerLevel != previousLevel)));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightBuyExpScRsp,
+            new GridFightBuyExpScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail }));
     }
 }
 

@@ -13577,7 +13577,7 @@ message HMBCOANODNA {
     uint32 ELMGEBCLLFP = 10;
 }
 
-message HMBDOOHKIBC {
+message GridFightBuyExpScRsp {
     uint32 retcode = 10;
 }
 

@@ -2589,4 +2589,5 @@ public class CmdIds
     public const int GridFightBackToPrepareCsReq = 8495;
     public const int GridFightFinishTutorialCsReq = 8527;
     public const int GridFightGetFormationCsReq = 8784;
+    public const int GridFightBuyExpScRsp = 8507;
 }
