@@ -539,7 +539,7 @@ enum ALGMICKCABI {
 
 message ALIMNHEENPP {
     uint32 role_star = 1;
-    repeated BCCONKJHDJL IEBNOGOOEMO = 2;
+    repeated GridFightDropEntry IEBNOGOOEMO = 2;
 }
 
 message ALJJNBKGEOC {
@@ -1653,9 +1653,9 @@ message BCBHFBPADEE {
     uint32 MGGNKENIPFC = 6;
 }
 
-message BCCONKJHDJL {
-    GridFightDropType FKKGLFOHGGA = 1;
-    uint32 FNLMKJLKLFH = 2;
+message GridFightDropEntry {
+    GridFightDropType drop_type = 1;
+    uint32 item_id = 2;
     uint32 num = 3;
     AOHKKFHDALO param = 5;
 }
@@ -12089,7 +12089,7 @@ message GridFightDamageSttInfo {
 }
 
 message GridFightDropInfo {
-    repeated BCCONKJHDJL NMGIABHIJJB = 1;
+    repeated GridFightDropEntry drop_list = 1;
 }
 
 enum GridFightDropType {
@@ -13629,7 +13629,7 @@ message HNDAOBACJOA {
 
 message GridFightMonsterBattleInfo {
     uint32 role_star = 15;
-    repeated BCCONKJHDJL drop_list = 6;
+    repeated GridFightDropEntry drop_list = 6;
 }
 
 message HNGLCIGBNGB {
@@ -17814,7 +17814,7 @@ message MGMJOPHJCNL {
     uint32 NBPFMFMKJHI = 2;
     repeated ADHGIJPHLEB MFOOECCEOBO = 3;
     repeated HFKKKFJHPHJ LLOFONJOGCE = 4;
-    repeated BCCONKJHDJL ODMCMPIDJNH = 5;
+    repeated GridFightDropEntry ODMCMPIDJNH = 5;
     repeated LFLENBDPNJN NELAKLKIDDK = 6;
     repeated CPNCAPLOIHI DOGMMGLBJIJ = 8;
     uint32 OAHFCPPIMLF = 9;
