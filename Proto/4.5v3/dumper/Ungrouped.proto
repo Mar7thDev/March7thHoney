@@ -3006,7 +3006,7 @@ message CEFEIJFPCKE {
     uint32 MNLAMKJIAOC = 9;
 }
 
-message CEGIAKADMHP {
+message GridFightRefreshShopScRsp {
     uint32 retcode = 14;
 }
 
@@ -17018,7 +17018,7 @@ message LKCDLJCKCJI {
     uint32 KMNILIKJFHD = 2;
 }
 
-message LKDMCPDHEGM {
+message GridFightRefreshShopCsReq {
 }
 
 enum LKFBIALLBDK {
