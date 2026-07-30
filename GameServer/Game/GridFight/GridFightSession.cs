@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Enums.GridFight;
 
@@ -32,6 +33,25 @@ public sealed class GridFightRoleState
     public uint Position { get; set; }
 }
 
+public sealed class GridFightEquipmentState
+{
+    public uint UniqueId { get; init; }
+    public uint EquipmentId { get; init; }
+    public uint Source { get; init; }
+}
+
+public sealed class GridFightOrbState
+{
+    public uint UniqueId { get; init; }
+    public uint OrbItemId { get; init; }
+}
+
+public sealed class GridFightConsumableState
+{
+    public uint ItemId { get; init; }
+    public uint Count { get; set; }
+}
+
 public sealed class GridFightShopSlot
 {
     public uint Index { get; init; }
@@ -55,6 +75,8 @@ public sealed class GridFightSession
 {
     private readonly GridFightResourceCatalog _catalog;
     private uint _nextRoleUniqueId = 1;
+    private uint _nextEquipmentUniqueId = 1;
+    private uint _nextOrbUniqueId = 1;
     private bool _orbClaimed;
 
     public uint Season { get; }
@@ -80,6 +102,9 @@ public sealed class GridFightSession
     public IReadOnlyList<uint> PortalOffer { get; private set; }
     public IReadOnlyList<GridFightMonsterExcel> Enemies { get; private set; }
     public List<GridFightRoleState> Roles { get; } = [];
+    public List<GridFightEquipmentState> Equipments { get; } = [];
+    public List<GridFightOrbState> Orbs { get; } = [];
+    public List<GridFightConsumableState> Consumables { get; } = [];
     public List<GridFightShopSlot> Shop { get; } = [];
 
     public GridFightSession(
@@ -156,6 +181,110 @@ public sealed class GridFightSession
         if (Phase != GridFightSessionPhase.AwaitingInitialOrb) return false;
         _orbClaimed = true;
         Phase = GridFightSessionPhase.AwaitingInitialReturn;
+        return true;
+    }
+
+    public uint AdjustGold(int delta)
+    {
+        if (delta >= 0)
+        {
+            Gold = (uint)Math.Min(uint.MaxValue, (ulong)Gold + (uint)delta);
+            return Gold;
+        }
+
+        var amount = (ulong)(-(long)delta);
+        Gold = amount >= Gold ? 0 : Gold - (uint)amount;
+        return Gold;
+    }
+
+    public bool TryAddRole(uint roleId, uint star, out GridFightSessionChange change)
+    {
+        change = GridFightSessionChange.Failed;
+        if (!GameData.GridFightRoleBasicInfoData.ContainsKey(roleId) ||
+            !GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | star))
+            return false;
+
+        var role = new GridFightRoleState
+        {
+            UniqueId = _nextRoleUniqueId++,
+            RoleId = roleId,
+            Star = star,
+            Position = GetFreeBenchPosition(),
+        };
+        Roles.Add(role);
+        change = new GridFightSessionChange(true, [role], [], []);
+        return true;
+    }
+
+    public bool TryAddEquipment(uint equipmentId, out GridFightEquipmentState equipment)
+    {
+        equipment = null!;
+        if (!GameData.GridFightEquipmentData.ContainsKey(equipmentId)) return false;
+        equipment = new GridFightEquipmentState
+        {
+            UniqueId = _nextEquipmentUniqueId++,
+            EquipmentId = equipmentId,
+            Source = 1,
+        };
+        Equipments.Add(equipment);
+        return true;
+    }
+
+    public bool TryAddOrb(uint orbItemId, out GridFightOrbState orb)
+    {
+        orb = null!;
+        if (!GameData.GridFightOrbData.ContainsKey(orbItemId)) return false;
+        orb = new GridFightOrbState
+        {
+            UniqueId = _nextOrbUniqueId++,
+            OrbItemId = orbItemId,
+        };
+        Orbs.Add(orb);
+        return true;
+    }
+
+    public bool TryAddConsumable(
+        uint itemId,
+        out GridFightConsumableState consumable,
+        out bool isNew)
+    {
+        consumable = null!;
+        isNew = false;
+        if (!GameData.GridFightConsumablesData.ContainsKey(itemId)) return false;
+
+        consumable = Consumables.FirstOrDefault(item => item.ItemId == itemId)!;
+        if (consumable == null)
+        {
+            consumable = new GridFightConsumableState { ItemId = itemId, Count = 1 };
+            Consumables.Add(consumable);
+            isNew = true;
+            return true;
+        }
+
+        if (consumable.Count < uint.MaxValue) consumable.Count++;
+        return true;
+    }
+
+    public bool TryMoveToSection(uint chapterId, uint sectionId, out uint finishedPendingPosition)
+    {
+        finishedPendingPosition = 0;
+        if (Phase == GridFightSessionPhase.InBattle ||
+            !_catalog.StandardRoute.Any(node => node.ChapterId == chapterId && node.SectionId == sectionId))
+            return false;
+
+        if (Phase is GridFightSessionPhase.SelectingPortal or
+            GridFightSessionPhase.AwaitingInitialRound or
+            GridFightSessionPhase.AwaitingInitialOrb or
+            GridFightSessionPhase.AwaitingInitialReturn or
+            GridFightSessionPhase.AwaitingBattleRound or
+            GridFightSessionPhase.AwaitingBattleReturn)
+            finishedPendingPosition = PendingQueuePosition;
+
+        ChapterId = chapterId;
+        SectionId = sectionId;
+        Enemies = _catalog.RollEnemyRoster(FightCampId, CurrentNode);
+        RefreshShop(false);
+        Phase = GridFightSessionPhase.Preparing;
         return true;
     }
 
