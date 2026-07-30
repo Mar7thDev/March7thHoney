@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Database.Avatar;
+using March7thHoney.Enums.GridFight;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.Proto;
@@ -149,11 +150,9 @@ public static class GridFightBattleProtoBuilder
                 MemberRoleId = entry.Role.RoleId,
                 UpdateSource = GridFightUpdateSource.Role,
             }));
+            if (activeLayer > 0)
+                PopulateTraitEffects(traitInfo);
             gridFightInfo.GridFightTraitInfo.Add(traitInfo);
-            if (activeLayer == 0 ||
-                !GameData.GridFightTraitLayerData[group.Key].TryGetValue(activeLayer, out var layer) ||
-                battle.Buffs.Any(buff => buff.BuffID == layer.MazebuffID)) continue;
-            battle.Buffs.Add(new MazeBuff((int)layer.MazebuffID, 1, -1) { WaveFlag = -1 });
         }
         foreach (var role in activeRoles)
             if (GameData.GridFightRoleStarData.TryGetValue(role.RoleId << 4 | role.Star, out var roleStar) &&
@@ -181,6 +180,52 @@ public static class GridFightBattleProtoBuilder
             avatars.Add(avatar);
         }
         return avatars;
+    }
+
+    private static void PopulateTraitEffects(GridFightTraitInfo traitInfo)
+    {
+        if (!GameData.GridFightTraitBasicInfoData.TryGetValue(traitInfo.TraitId, out var trait)) return;
+        foreach (var effectId in trait.TraitEffectList)
+        {
+            var effectInfo = new BattleGridFightTraitEffectInfo { EffectId = effectId };
+            PopulateTraitBonusLevelInfo(effectInfo);
+            traitInfo.TraitEffectList.Add(effectInfo);
+        }
+    }
+
+    private static void PopulateTraitBonusLevelInfo(BattleGridFightTraitEffectInfo effectInfo)
+    {
+        if (!GameData.GridFightTraitEffectData.TryGetValue(effectInfo.EffectId, out var effect) ||
+            effect.TraitEffectType != GridFightTraitEffectTypeEnum.TraitBonus ||
+            !GameData.GridFightTraitBonusData.TryGetValue(effectInfo.EffectId, out var bonuses)) return;
+
+        var levelInfo = new GridFightTraitEffectLevelInfo();
+        foreach (var (threshold, bonus) in bonuses.OrderBy(entry => entry.Key))
+        {
+            var dropInfo = new GridFightDropInfo();
+            foreach (var combinationId in bonus.BonusParamList)
+            {
+                if (!GameData.GridFightCombinationBonusData.TryGetValue(combinationId, out var combination)) continue;
+                foreach (var poolId in combination.CombinationBonusList)
+                {
+                    if (!GameData.GridFightBasicBonusPoolV2Data.TryGetValue(poolId, out var pool)) continue;
+                    if (pool.BonusType != GridFightBonusTypeEnum.Orb) continue;
+                    var orbId = pool.BonusTypeParamList.FirstOrDefault();
+                    if (orbId == 0) orbId = pool.BonusTypeParam;
+                    if (orbId == 0) continue;
+                    dropInfo.DropList.Add(new GridFightDropEntry
+                    {
+                        DropType = GridFightDropType.Orb,
+                        ItemId = orbId,
+                        Num = 1,
+                    });
+                }
+            }
+            if (dropInfo.DropList.Count > 0)
+                levelInfo.TraitEffectLevelReward[threshold] = dropInfo;
+        }
+        if (levelInfo.TraitEffectLevelReward.Count > 0)
+            effectInfo.TraitEffectLevelInfo = levelInfo;
     }
 
     private static AvatarLineupData? ResolveBattleAvatar(BattleInstance battle, uint roleId, bool isForeground)
