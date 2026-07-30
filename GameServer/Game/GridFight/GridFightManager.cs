@@ -132,6 +132,62 @@ public sealed class GridFightManager : BasePlayerManager
         return current;
     }
 
+    public GridFightSettleNotify BuildSettleNotify(GridFightSettleReason reason)
+    {
+        var session = Session ?? throw new InvalidOperationException("GridFight session is not active");
+        var context = new GridFightContextData();
+        context.InitialEquipmentIdList.Add(Catalog.InitialEquipmentIds);
+
+        var avatars = new GridFightSettleAvatarInfo();
+        avatars.GridFightAvatarList.Add(session.Roles
+            .Select(role => role.RoleId)
+            .Distinct()
+            .Order());
+
+        var bosses = new GridFightBossInfo();
+        bosses.MonsterList.Add(session.Bosses.Select(monster => new GridFightMonsterInfo
+        {
+            MonsterId = monster.MonsterID,
+            RoleStar = 1,
+        }));
+
+        var finish = new GridFightFinishInfo
+        {
+            Reason = reason,
+            ContextData = context,
+            AvatarInfo = avatars,
+            IsOverlock = session.IsOverlock,
+            Basic = new GridFightSettleBasicInfo
+            {
+                RouteId = Catalog.StandardRouteId,
+                ChapterId = session.ChapterId,
+                SectionId = session.SectionId,
+                DivisionId = session.DivisionId,
+                LineupHp = session.LineupHp,
+                MaxLineupHp = session.MaxLineupHp,
+                BattlesFinished = session.BattlesFinished,
+            },
+            BossInfo = bosses,
+        };
+        finish.AffixInfoList.Add(session.AffixIds.Select(id => new GridFightAffixInfo { AffixId = id }));
+        finish.GridGameRoleList.Add(session.Roles
+            .OrderBy(role => role.Position)
+            .ThenBy(role => role.UniqueId)
+            .Select(BuildRole));
+        if (session.SelectedPortalId != 0)
+            finish.PortalBuffInfoList.Add(new GridFightGamePortalBuffInfo
+            {
+                PortalBuffId = session.SelectedPortalId,
+            });
+
+        return new GridFightSettleNotify
+        {
+            DivisionId = session.DivisionId,
+            HighestDivisionId = Catalog.HighestDivision.ID,
+            FinishInfo = finish,
+        };
+    }
+
     private static GridFightGameData BuildGameData()
     {
         var levelProgression = new GridFightPlayerLevelProgressionInfo();

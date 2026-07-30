@@ -70,6 +70,8 @@ public sealed class GridFightSession
     public uint PlayerExp { get; private set; }
     public uint LineupHp { get; private set; }
     public uint MaxLineupHp { get; }
+    public uint KeepWinCount { get; private set; }
+    public uint BattlesFinished { get; private set; }
     public uint SelectedPortalId { get; private set; }
     public IReadOnlyList<uint> CampIds { get; }
     public uint RewardCampId { get; }
@@ -251,6 +253,8 @@ public sealed class GridFightSession
         if (Phase != GridFightSessionPhase.InBattle) return false;
         if (!win)
         {
+            BattlesFinished++;
+            KeepWinCount = 0;
             Phase = GridFightSessionPhase.Preparing;
             return true;
         }
@@ -258,6 +262,8 @@ public sealed class GridFightSession
         Gold += CurrentNode.BasicGoldReward;
         AddPlayerExp(_catalog.BattleWinExp);
         if (!AdvanceToNextNode()) return false;
+        BattlesFinished++;
+        KeepWinCount++;
         Phase = GridFightSessionPhase.AwaitingBattleRound;
         PendingQueuePosition = 19;
         return true;
