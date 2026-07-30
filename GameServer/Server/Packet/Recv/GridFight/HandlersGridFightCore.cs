@@ -167,11 +167,8 @@ public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsR
             : request.GoodsIndexList.ToList();
         var change = manager.Session?.BuyGoods(indices) ?? GridFightSessionChange.Failed;
         if (change.Success)
-            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSync(
-                GridFightUpdateSrcType.KgridFightSrcBuyGoods,
-                change,
-                includeGold: true,
-                includeShop: true)));
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildBuyGoodsSync(indices, change)));
         var response = new GridFightBuyGoodsScRsp { Retcode = change.Success ? 0 : (uint)Retcode.RetFail };
         response.GoodsIndexList.Add(indices);
         await connection.SendPacket(CreatePacket(CmdIds.GridFightBuyGoodsScRsp, response));

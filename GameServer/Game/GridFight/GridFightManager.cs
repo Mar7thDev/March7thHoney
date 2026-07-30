@@ -255,17 +255,47 @@ public sealed class GridFightManager : BasePlayerManager
                     LayerInfo = BuildLayerInfo(),
                 },
             });
-        if (change != null)
-        {
-            foreach (var role in change.AddedRoles)
-                result.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
-            foreach (var uniqueId in change.RemovedRoleIds)
-                result.UpdateDynamicList.Add(new GridFightSyncData { RemoveRoleUniqueId = uniqueId });
-            foreach (var role in change.UpdatedRoles)
-                result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
-        }
+        if (change != null) AppendRoleChanges(result, change);
         notify.ResultList.Add(result);
         return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildBuyGoodsSync(
+        IReadOnlyList<uint> goodsIndices,
+        GridFightSessionChange change)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var session = Session;
+        if (session == null || !change.Success) return notify;
+
+        var purchaseResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcBuyGoods,
+        };
+        purchaseResult.EffectParamList.Add(goodsIndices);
+        purchaseResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
+        AppendRoleChanges(purchaseResult, change);
+        notify.ResultList.Add(purchaseResult);
+
+        var shopResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcBuyGoods,
+        };
+        shopResult.EffectParamList.Add(goodsIndices);
+        shopResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+        notify.ResultList.Add(shopResult);
+        notify.ResultList.Add(new GridFightSyncResultData());
+        return notify;
+    }
+
+    private static void AppendRoleChanges(GridFightSyncResultData result, GridFightSessionChange change)
+    {
+        foreach (var role in change.AddedRoles)
+            result.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
+        foreach (var uniqueId in change.RemovedRoleIds)
+            result.UpdateDynamicList.Add(new GridFightSyncData { RemoveRoleUniqueId = uniqueId });
+        foreach (var role in change.UpdatedRoles)
+            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
     }
 
     public GridFightSyncUpdateResultScNotify BuildPortalSelectionSync(
