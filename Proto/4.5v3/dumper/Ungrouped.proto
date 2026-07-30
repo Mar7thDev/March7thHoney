@@ -8313,7 +8313,7 @@ message FLFHACPLDJE {
     uint32 gold = 4;
 }
 
-message FLHIDBDFFKG {
+message GridFightQuitSettleScRsp {
     uint32 retcode = 2;
 }
 
@@ -9847,7 +9847,7 @@ message GLNJKGOGKKL {
     repeated string ODAHKGONNHJ = 10;
 }
 
-message GLPCEKMKLGG {
+message GridFightSettleAvatarInfo {
     repeated uint32 grid_fight_avatar_list = 12;
 }
 
@@ -10001,14 +10001,14 @@ message GOCBELPFLHO {
     uint64 LLIOEMOBFGD = 17;
 }
 
-message GOCIGPCDKDJ {
-    uint32 EMOHLJHPOPC = 12;
-    uint32 PAGPKOKMDBK = 4;
+message GridFightSettleBasicInfo {
+    uint32 route_id = 12;
+    uint32 lineup_hp = 4;
     uint32 section_id = 14;
-    uint32 FDGKBOIEHBD = 9;
-    uint32 LKCJAPIGEND = 3;
-    uint32 AACGBEBGDPE = 13;
-    uint32 DCAHJELNJNP = 8;
+    uint32 battles_finished = 9;
+    uint32 max_lineup_hp = 3;
+    uint32 division_id = 13;
+    uint32 chapter_id = 8;
     repeated uint32 FMEOHKHGMJM = 7;
 }
 
@@ -12032,7 +12032,7 @@ message GridFightArchiveData {
     bool IECKKCHJMLP = 8;
     int64 OBNEAIPKGKL = 7;
     uint32 GEGMHOMNBDG = 5;
-    OEDHMAHDECC BFLLJJBHLDF = 3;
+    GridFightFinishInfo BFLLJJBHLDF = 3;
 }
 
 message GridFightAugmentActionInfo {
@@ -12595,21 +12595,21 @@ message GridFightSectionRecordInfo {
 message GridFightSettleNotify {
     uint32 MNNKKEPCPPL = 463;
     uint32 EDHKHJAPMKA = 12;
-    uint32 FLHOPMMEGAI = 1;
+    uint32 division_id = 1;
     uint32 NMCKJPEMACM = 15;
-    uint32 CDANKDNACJP = 9;
+    uint32 highest_division_id = 9;
     uint32 CGKNDIJMOCJ = 1439;
     uint32 KEJGCDOGEDD = 14;
-    OEDHMAHDECC BFLLJJBHLDF = 797;
+    GridFightFinishInfo finish_info = 797;
     uint32 GEBGGMAGDJB = 8;
 }
 
 enum GridFightSettleReason {
-    GridFightSettleReason_AIBAFPBKDJI = 0;
-    GridFightSettleReason_NOCIJDINKPJ = 1;
-    GridFightSettleReason_HIGMFLKHGNJ = 2;
-    GridFightSettleReason_JOJPGBCECLN = 3;
-    GridFightSettleReason_NBPPJEDAIFN = 4;
+    GridFightSettleReason_Unknown = 0;
+    GridFightSettleReason_Quit = 1;
+    GridFightSettleReason_Defeat = 2;
+    GridFightSettleReason_Victory = 3;
+    GridFightSettleReason_Complete = 4;
 }
 
 message GridFightShopGoodsInfo {
@@ -12701,7 +12701,7 @@ message GridFightSyncData {
     uint32 CDKJHJNFDIH = 1688;
     uint32 LDPPDHGNCHL = 335;
     FADHEIGJENF HJMAEDKCONE = 1585;
-    GLPCEKMKLGG PPJFPNMIFHL = 781;
+    GridFightSettleAvatarInfo PPJFPNMIFHL = 781;
     uint32 LOGJNAICJPA = 242;
     GridFightAffixInfo MHFOELCFJGK = 23;
     HOGJECBMFHD BKDDCFHELNB = 1015;
@@ -20026,8 +20026,8 @@ enum OEDABANAJEK {
     OEDABANAJEK_OHLJJBCALBF = 2;
 }
 
-message OEDHMAHDECC {
-    repeated GridFightAffixInfo CFFCNEDGCJJ = 1891;
+message GridFightFinishInfo {
+    repeated GridFightAffixInfo affix_info_list = 1891;
     repeated uint32 HGAGKFEKBDA = 812;
     repeated GridFightEquipmentInfo grid_fight_equipment_list = 1356;
     repeated GridGameRoleInfo grid_game_role_list = 109;
@@ -20035,11 +20035,11 @@ message OEDHMAHDECC {
     GridFightSettleReason reason = 668;
     repeated uint32 MHLBIBGKIOB = 1974;
     repeated GridGameNpcInfo grid_game_npc_list = 2003;
-    GridFightContextData JLDDDLDNFEF = 514;
+    GridFightContextData context_data = 514;
     uint32 MBMJNEDIFFC = 1243;
-    GLPCEKMKLGG PPJFPNMIFHL = 1234;
+    GridFightSettleAvatarInfo avatar_info = 1234;
     repeated KINJHHBJNJP APABPAFGCIA = 1292;
-    repeated GridFightGamePortalBuffInfo OAIGAGABCMK = 9;
+    repeated GridFightGamePortalBuffInfo portal_buff_info_list = 9;
     repeated GridGameAugmentInfo sync_augment_info = 8;
     bool is_overlock = 1656;
     uint32 AKEGLJLCFPH = 1571;
@@ -20048,7 +20048,7 @@ message OEDHMAHDECC {
     repeated NFIDNDFHJGN JFCHLABGFJO = 321;
     bool DBODGPBOIHC = 394;
     repeated GridGameTraitInfo grid_fight_trait_info = 15;
-    GOCIGPCDKDJ basic = 12;
+    GridFightSettleBasicInfo basic = 12;
     GridFightBossInfo boss_info = 1202;
 }
 
@@ -20383,8 +20383,8 @@ message OIMLMDHOHAP {
     uint32 area_id = 11;
 }
 
-message OIOELLNKEDJ {
-    uint32 JGIAJDEPFFF = 9;
+message GridFightSyncKeepWinCntNotify {
+    uint32 keep_win_count = 9;
 }
 
 message OJEANLINGCJ {
