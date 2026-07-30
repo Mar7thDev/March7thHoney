@@ -40,6 +40,7 @@ GridFightQuitSettleCsReq = ILCPGLAAADL
 GridFightQuitLeaveGamePlayCsReq = CFIDOJGKBHB
 GridFightGetOrbScRsp = PNHDGCBLPGD
 GridFightBuyExpCsReq = LFEFLIMJOGO
+GridFightBuyExpScRsp = HMBDOOHKIBC
 GridFightBackToPrepareCsReq = MEPDHDGCGKH
 GridFightFinishTutorialCsReq = PAJHFEKAPMN
 GridFightGetFormationCsReq = CBEHKFHNNAI
