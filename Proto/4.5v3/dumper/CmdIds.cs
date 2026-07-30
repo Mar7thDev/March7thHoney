@@ -2592,4 +2592,6 @@ public class CmdIds
     public const int GridFightBuyExpScRsp = 8507;
     public const int GridFightQuitSettleScRsp = 8618;
     public const int GridFightSyncKeepWinCntNotify = 8624;
+    public const int GridFightRefreshShopCsReq = 8689;
+    public const int GridFightRefreshShopScRsp = 8716;
 }

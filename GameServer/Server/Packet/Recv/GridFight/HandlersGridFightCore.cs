@@ -189,6 +189,21 @@ public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsR
     }
 }
 
+[Opcode(CmdIds.GridFightRefreshShopCsReq)]
+public sealed class HandlerGridFightRefreshShopCsReq : Handler<GridFightRefreshShopCsReq>
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightRefreshShopCsReq request)
+    {
+        var manager = player.GridFightManager!;
+        var success = manager.Session?.RefreshShop(true) == true;
+        if (success)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildRefreshShopSync()));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightRefreshShopScRsp,
+            new GridFightRefreshShopScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail }));
+    }
+}
+
 [Opcode(CmdIds.GridFightRecycleRoleCsReq)]
 public sealed class HandlerGridFightRecycleRoleCsReq : Handler<GridFightRecycleRoleCsReq>
 {
