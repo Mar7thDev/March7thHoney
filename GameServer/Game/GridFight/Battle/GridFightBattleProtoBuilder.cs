@@ -39,15 +39,20 @@ public static class GridFightBattleProtoBuilder
             battle.Player.InventoryManager!.Data,
             battle.Lineup);
         var avatars = BuildBattleAvatars(battle, session);
-        foreach (var role in session.Roles
-                     .Where(role => role.Position is >= 1 and <= 4)
-                     .OrderBy(role => role.Position))
+        var foregroundRoles = session.Roles
+            .Where(role => role.Position is >= 1 and <= 4)
+            .OrderBy(role => role.Position)
+            .ToList();
+        var battleRoles = new List<GridFightRoleState>(foregroundRoles.Count);
+        foreach (var role in foregroundRoles)
         {
             var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: true);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
             proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+            battleRoles.Add(role);
         }
+        AddEntryBuffs(battle, battleRoles);
 
         proto.MonsterWaveList.Clear();
         var wave = new SceneMonsterWave
@@ -165,6 +170,59 @@ public static class GridFightBattleProtoBuilder
             battle.BattleEvents.TryAdd((int)battleEventId, new BattleEventInstance((int)battleEventId, 0, 100000));
         proto.BattleGridFightData = gridFightInfo;
         return avatars;
+    }
+
+    private static void AddEntryBuffs(BattleInstance battle, IReadOnlyList<GridFightRoleState> roles)
+    {
+        for (var ownerIndex = 0; ownerIndex < roles.Count; ownerIndex++)
+        {
+            var role = roles[ownerIndex];
+            if (!TryResolveEntryMazeSkill(role, out var mazeSkillId)) continue;
+            if (battle.Buffs.Any(buff => buff.BuffID == mazeSkillId && buff.OwnerIndex == ownerIndex)) continue;
+            battle.Buffs.Add(new MazeBuff(mazeSkillId, 1, ownerIndex)
+            {
+                WaveFlag = -1,
+                IncludeOwnerInTargetList = false,
+            });
+        }
+
+        var leader = roles.FirstOrDefault();
+        if (leader == null ||
+            !GameData.GridFightRoleBasicInfoData.TryGetValue(leader.RoleId, out var basic) ||
+            !GameData.AvatarConfigData.TryGetValue((int)basic.AvatarID, out var avatar) ||
+            avatar.DamageType == 0)
+            return;
+
+        var buffId = (int)avatar.DamageType;
+        if (battle.Buffs.Any(buff => buff.BuffID == buffId && buff.OwnerIndex == 0)) return;
+        var skillIndex = GameData.GridFightRoleStarData.TryGetValue(leader.RoleId << 4 | leader.Star, out var roleStar) &&
+                         !roleStar.SkillOverrideSrc.Contains(0)
+            ? 2
+            : 1;
+        var buff = new MazeBuff(buffId, 1, 0)
+        {
+            WaveFlag = -1,
+            IncludeOwnerInTargetList = false,
+        };
+        buff.DynamicValues["SkillIndex"] = skillIndex;
+        battle.Buffs.Add(buff);
+    }
+
+    private static bool TryResolveEntryMazeSkill(GridFightRoleState role, out int mazeSkillId)
+    {
+        mazeSkillId = 0;
+        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(role.RoleId, out var basic)) return false;
+        var adventurePlayerId = (int)basic.AvatarID;
+        if (GameData.AvatarConfigData.TryGetValue(adventurePlayerId, out var avatar) && avatar.AdventurePlayerID != 0)
+            adventurePlayerId = avatar.AdventurePlayerID;
+        if (!GameData.AdventurePlayerData.TryGetValue(adventurePlayerId, out var adventure) ||
+            adventure.MazeSkillIdList.Count == 0)
+            return false;
+
+        if (GameData.GridFightRoleStarData.TryGetValue(role.RoleId << 4 | role.Star, out var roleStar))
+            mazeSkillId = adventure.MazeSkillIdList.FirstOrDefault(id => roleStar.SkillOverrideSrc.Contains((uint)id));
+        if (mazeSkillId == 0) mazeSkillId = adventure.MazeSkillIdList[0];
+        return mazeSkillId != 0;
     }
 
     public static List<AvatarLineupData> BuildBattleAvatars(BattleInstance battle, GridFightSession session)

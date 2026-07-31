@@ -20,6 +20,7 @@ public class MazeBuff(int buffID, int buffLevel, int owner)
     public int OwnerAvatarId { get; set; } = -1;
     public int? WaveFlag { get; set; } = null;
     public int Duration { get; private set; } = -1;
+    public bool IncludeOwnerInTargetList { get; init; } = true;
     public Dictionary<string, float> DynamicValues { get; } = [];
 
     public BattleBuff ToProto(BattleInstance battle)
@@ -49,7 +50,7 @@ public class MazeBuff(int buffID, int buffLevel, int owner)
             OwnerIndex = (int)buffInfo.OwnerIndex;
         }
 
-        if (OwnerIndex != -1)
+        if (OwnerIndex != -1 && IncludeOwnerInTargetList)
             buffInfo.TargetIndexList.Add((uint)OwnerIndex);
 
         return buffInfo;
