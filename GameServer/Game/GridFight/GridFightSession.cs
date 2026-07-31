@@ -370,8 +370,8 @@ public sealed class GridFightSession
 
     public bool EnterBattle()
     {
-        if (Phase != GridFightSessionPhase.Preparing ||
-            Roles.Count(role => IsActivePosition(role.Position)) != MaxActiveRoles)
+        var activeRoleCount = Roles.Count(role => IsActivePosition(role.Position));
+        if (Phase != GridFightSessionPhase.Preparing || activeRoleCount == 0 || activeRoleCount > MaxActiveRoles)
             return false;
         Phase = GridFightSessionPhase.InBattle;
         return true;
