@@ -17,6 +17,29 @@ public sealed record GridFightRouteNode(
     public IReadOnlyList<uint> Parameters => Template.ParamList;
 }
 
+public sealed record GridFightMonsterPlan(GridFightMonsterExcel Monster, uint RoleStar);
+
+public sealed record GridFightMonsterWavePlan(
+    uint WaveId,
+    uint FormationWaveId,
+    IReadOnlyList<GridFightMonsterPlan> Monsters);
+
+public sealed record GridFightBattlePlan(
+    uint CampId,
+    uint EliteGroupId,
+    uint PenaltyRuleId,
+    uint DifficultyAdd,
+    IReadOnlyList<GridFightMonsterWavePlan> Waves)
+{
+    public IReadOnlyList<GridFightMonsterPlan> Monsters => Waves.SelectMany(wave => wave.Monsters).ToList();
+}
+
+public sealed record GridFightEncounterOptionState(
+    uint EliteBranchId,
+    uint EncounterId,
+    uint Quality,
+    GridFightBattlePlan BattlePlan);
+
 public sealed class GridFightResourceCatalog
 {
     private readonly Random _random;
@@ -144,6 +167,8 @@ public sealed class GridFightResourceCatalog
         if (RolePool.Count(row => !InitialExcludedRoleIds.Contains(row.ID)) < InitialRoleCount)
             errors.Add("initial role pool is too small");
         if (CampPool.Count == 0) errors.Add("monster camp pool is empty");
+        if (CampPool.Any(camp => GetCampMonsters(camp.ID, monster => monster.MonsterTier == 2).Count == 0))
+            errors.Add("monster camp pool contains a camp without normal monsters");
         if (RewardCampPool.Count == 0) errors.Add("reward monster camp pool is empty");
         if (PortalPool.Count == 0) errors.Add("portal pool is empty");
         if (AugmentPool.Count == 0) errors.Add("augment pool is empty");
@@ -165,6 +190,30 @@ public sealed class GridFightResourceCatalog
         if (GameData.GridFightShopPriceData.Count == 0) errors.Add("shop price table is empty");
         if (!GameData.GridFightDivisionStageData.ContainsKey(HighestDivision.ID))
             errors.Add("highest division has no stage difficulty row");
+        if (Enumerable.Range(1801, 19).Any(id => !GameData.GridFightEliteGroupData.ContainsKey((uint)id)))
+            errors.Add("GridFight progression elite groups are incomplete");
+        if (GameData.GridFightDivisionStageData.TryGetValue(HighestDivision.ID, out var divisionStage))
+        {
+            var baseDifficulty = divisionStage.EnemyDifficultyLevel;
+            if (StandardRoute.Select(node => node.ChapterId).Distinct().Any(chapter =>
+                    !GameData.GridFightEnemyDifficultyLvData.TryGetValue(chapter, out var rows) ||
+                    !rows.ContainsKey(baseDifficulty)))
+                errors.Add("GridFight enemy difficulty table has no highest-division baseline");
+        }
+        if (StandardRoute.Any(node => !GameData.GridFightStageLevelValueData.ContainsKey(node.StageId)))
+            errors.Add("standard route references missing GridFight stage level values");
+        if (!GameData.GridFightFormationWaveData.ContainsKey(3) ||
+            !GameData.GridFightFormationWaveData.ContainsKey(5))
+            errors.Add("GridFight formation wave table is incomplete");
+        foreach (var node in StandardRoute.Where(node => node.NodeType == GridFightNodeTypeEnum.EliteBranch))
+        {
+            var group = node.Parameters.FirstOrDefault();
+            if (GameData.GridFightBinaryNodeRuleData.Values.Count(rule => rule.ID / 100 == group) != 4)
+                errors.Add($"GridFight encounter group {group} is incomplete");
+            if (Enumerable.Range(1, 4).Any(quality =>
+                    !GameData.GridFightPenaltyRuleData.ContainsKey(91000u + node.ChapterId * 100 + 10u + (uint)quality)))
+                errors.Add($"GridFight encounter penalties for chapter {node.ChapterId} are incomplete");
+        }
         if (GameData.GridFightCampData.Values.All(row => row.SeasonID != CurrentSeason))
             errors.Add("current season has no monster camp");
         return errors;
@@ -306,24 +355,243 @@ public sealed class GridFightResourceCatalog
         return result;
     }
 
-    public IReadOnlyList<GridFightMonsterExcel> RollEnemyRoster(uint campId, GridFightRouteNode node)
+    public GridFightBattlePlan? RollBattlePlan(
+        GridFightRouteNode node,
+        IReadOnlyList<uint> activeCampIds,
+        uint rewardCampId,
+        IReadOnlyList<GridFightMonsterExcel> bosses)
     {
         if (node.NodeType is GridFightNodeTypeEnum.GridFightNodeNone or GridFightNodeTypeEnum.Supply)
-            return [];
+            return null;
+
+        var parameter = node.Parameters.FirstOrDefault();
+        if (node.NodeType == GridFightNodeTypeEnum.Boss)
+        {
+            var bossIndex = checked((int)node.ChapterId - 1);
+            if (bossIndex < 0 || bossIndex >= bosses.Count) return null;
+            return BuildPlan(
+                activeCampIds.ElementAtOrDefault(bossIndex),
+                node,
+                [[new GridFightMonsterPlan(bosses[bossIndex], Math.Min(4u, node.ChapterId + 1))]],
+                [1]);
+        }
+
+        if (node.NodeType == GridFightNodeTypeEnum.Monster)
+        {
+            var count = parameter == 900 ? 4 : 5;
+            return BuildPlan(
+                rewardCampId,
+                node,
+                [RollRewardMonsters(rewardCampId, parameter, count)],
+                [Math.Min(5u, (uint)count)]);
+        }
+
+        var campId = activeCampIds[_random.Next(activeCampIds.Count)];
+        var tier2 = GetCampMonsters(campId, monster => monster.MonsterTier == 2);
+        var tier3 = GetCampMonsters(campId, monster => monster.MonsterTier == 3);
+        if (tier2.Count == 0)
+            tier2 = GetCampMonsters(campId, monster => monster.MonsterTier < 3);
+        if (tier2.Count == 0) return null;
+
+        if (node.NodeType == GridFightNodeTypeEnum.EliteBranch)
+            return BuildEncounterBattlePlan(node, campId, tier2, tier3, 1);
+
+        var variant = parameter % 100;
+        return variant switch
+        {
+            1 => BuildPlan(campId, node,
+                SplitWaves(RollEarlyMonsters(tier2, 8, maxStar: 3), node.ChapterId == 1 ? 3 : 4),
+                [5, 5]),
+            2 => BuildPlan(campId, node,
+                SplitWaves(RollEarlyMonsters(tier2, 10, maxStar: 2), 5),
+                [5, 5]),
+            4 => BuildPlan(campId, node,
+                [RollMixedMonsters(tier2, tier3, 7, 3, maxStar: 2)],
+                [3]),
+            _ => BuildPlan(campId, node,
+                SplitWaves(RollEarlyMonsters(tier2, 10, maxStar: 2), 5),
+                [5, 5]),
+        };
+    }
+
+    public IReadOnlyList<GridFightEncounterOptionState> RollEncounterOptions(
+        GridFightRouteNode node,
+        IReadOnlyList<uint> activeCampIds,
+        uint divisionId)
+    {
+        var group = node.Parameters.FirstOrDefault();
+        var ruleIds = GameData.GridFightBinaryNodeRuleData.Values
+            .Where(rule => rule.ID / 100 == group)
+            .OrderBy(rule => rule.Quality)
+            .ToList();
+        if (ruleIds.Count == 0)
+            ruleIds = GameData.GridFightBinaryNodeRuleData.Values
+                .Where(rule => rule.ID is >= 1 and <= 4)
+                .OrderBy(rule => rule.Quality)
+                .ToList();
+        ruleIds = ruleIds.Where(rule => rule.Quality is 1 or 2 or 4).ToList();
+        var rules = TakeRandomDistinct(ruleIds, 2).OrderBy(rule => rule.Quality).ToList();
+        var result = new List<GridFightEncounterOptionState>(rules.Count);
+        var campId = activeCampIds[_random.Next(activeCampIds.Count)];
+        var tier2 = GetCampMonsters(campId, monster => monster.MonsterTier == 2);
+        var tier3 = GetCampMonsters(campId, monster => monster.MonsterTier == 3);
+        if (tier2.Count == 0) tier2 = GetCampMonsters(campId, monster => monster.MonsterTier < 3);
+        for (var index = 0; index < rules.Count; index++)
+        {
+            var rule = rules[index];
+            var plan = BuildEncounterBattlePlan(node, campId, tier2, tier3, rule.Quality);
+            var penaltyRuleId = 91000u + node.ChapterId * 100 + 10 + rule.Quality;
+            plan = plan with
+            {
+                PenaltyRuleId = penaltyRuleId,
+                DifficultyAdd = GetEncounterDifficultyAdd(divisionId, rule.Quality),
+            };
+            result.Add(new GridFightEncounterOptionState(
+                (uint)index + 1,
+                group * 100 + rule.Quality,
+                rule.Quality,
+                plan));
+        }
+        return result;
+    }
+
+    public uint GetEncounterDifficultyAdd(uint divisionId, uint quality)
+    {
+        if (!GameData.GridFightDivisionStageData.TryGetValue(divisionId, out var stage) ||
+            !GameData.GridFightBinaryDiffAddRuleData.TryGetValue(stage.BinaryNodeDiffAddRule, out var rules) ||
+            !rules.TryGetValue(quality, out var rule))
+            return 0;
+        return rule.EnemyDifficultyAddValue;
+    }
+
+    private GridFightBattlePlan BuildEncounterBattlePlan(
+        GridFightRouteNode node,
+        uint campId,
+        IReadOnlyList<GridFightMonsterExcel> tier2,
+        IReadOnlyList<GridFightMonsterExcel> tier3,
+        uint quality)
+    {
+        var eliteCount = tier3.Count == 0 ? 0 : Math.Clamp(2 + checked((int)quality - 1) / 2, 2, 3);
+        return BuildPlan(campId, node,
+            [RollMixedMonsters(tier2, tier3, 10, eliteCount, 3)],
+            [5]);
+    }
+
+    private GridFightBattlePlan BuildPlan(
+        uint campId,
+        GridFightRouteNode node,
+        IReadOnlyList<IReadOnlyList<GridFightMonsterPlan>> waves,
+        IReadOnlyList<uint> formationWaveIds)
+    {
+        var result = waves.Select((monsters, index) => new GridFightMonsterWavePlan(
+            (uint)index + 1,
+            formationWaveIds[Math.Min(index, formationWaveIds.Count - 1)],
+            monsters)).ToList();
+        return new GridFightBattlePlan(
+            campId,
+            ResolveEliteGroupId(node),
+            node.PenaltyBonusRuleId,
+            0,
+            result);
+    }
+
+    private uint ResolveEliteGroupId(GridFightRouteNode node)
+    {
+        if (node.NodeType == GridFightNodeTypeEnum.Monster)
+        {
+            var parameter = node.Parameters.FirstOrDefault();
+            return parameter <= 901 ? 1816u : 1815u + parameter - 900;
+        }
+        var combatNodes = StandardRoute.Where(candidate => candidate.NodeType is
+            GridFightNodeTypeEnum.CampMonster or GridFightNodeTypeEnum.EliteBranch or GridFightNodeTypeEnum.Boss).ToList();
+        var index = combatNodes.FindIndex(candidate =>
+            candidate.ChapterId == node.ChapterId && candidate.SectionId == node.SectionId);
+        return index < 0 ? 0 : 1801u + (uint)index;
+    }
+
+    private static IReadOnlyList<IReadOnlyList<GridFightMonsterPlan>> SplitWaves(
+        IReadOnlyList<GridFightMonsterPlan> monsters,
+        int firstWaveCount)
+    {
+        return [monsters.Take(firstWaveCount).ToList(), monsters.Skip(firstWaveCount).ToList()];
+    }
+
+    private IReadOnlyList<GridFightMonsterPlan> RollEarlyMonsters(
+        IReadOnlyList<GridFightMonsterExcel> pool,
+        int count,
+        uint maxStar)
+    {
+        var result = RollMonsters(pool, count, 1).ToList();
+        var enhanced = maxStar >= 2 ? Math.Min(2, count) : 0;
+        for (var index = 0; index < enhanced; index++)
+            result[index] = result[index] with { RoleStar = index == 0 && maxStar >= 3 ? 3u : 2u };
+        Shuffle(result);
+        return result;
+    }
+
+    private IReadOnlyList<GridFightMonsterPlan> RollRewardMonsters(uint campId, uint parameter, int count)
+    {
+        var tier1 = GetCampMonsters(campId, monster => monster.MonsterTier == 1);
+        var tier2 = GetCampMonsters(campId, monster => monster.MonsterTier == 2);
+        var lowTier = GetCampMonsters(campId, monster => monster.MonsterTier <= 3);
+        if (lowTier.Count == 0) return [];
+        if (parameter == 900 && tier1.Count > 0 && tier2.Count > 0)
+            return RollMonsters(tier2, 1, 1).Concat(RollMonsters(tier1, count - 1, 1)).ToList();
+        var pool = parameter switch
+        {
+            901 when tier1.Count > 0 => tier1,
+            902 when tier2.Count > 0 => tier2,
+            _ => lowTier,
+        };
+        return RollMonsters(pool, count, 1);
+    }
+
+    private IReadOnlyList<GridFightMonsterPlan> RollMixedMonsters(
+        IReadOnlyList<GridFightMonsterExcel> tier2,
+        IReadOnlyList<GridFightMonsterExcel> tier3,
+        int totalCount,
+        int eliteCount,
+        uint maxStar)
+    {
+        eliteCount = Math.Min(eliteCount, totalCount);
+        var result = RollMonsters(tier3.Count > 0 ? tier3 : tier2, eliteCount, Math.Min(2u, maxStar)).ToList();
+        result.AddRange(RollMonsters(tier2, totalCount - eliteCount, 1));
+        var enhancedCount = Math.Min(3, result.Count);
+        for (var index = 0; index < enhancedCount; index++)
+            result[index] = result[index] with { RoleStar = Math.Min(maxStar, (uint)(2 + index / 2)) };
+        Shuffle(result);
+        return result;
+    }
+
+    private IReadOnlyList<GridFightMonsterPlan> RollMonsters(
+        IReadOnlyList<GridFightMonsterExcel> pool,
+        int count,
+        uint star)
+    {
+        return Enumerable.Range(0, count)
+            .Select(_ => new GridFightMonsterPlan(pool[_random.Next(pool.Count)], star))
+            .ToList();
+    }
+
+    private static List<GridFightMonsterExcel> GetCampMonsters(
+        uint campId,
+        Func<GridFightMonsterExcel, bool> predicate)
+    {
         if (!GameData.GridFightCampData.TryGetValue(campId, out var camp)) return [];
-        var candidates = camp.MonsterList
+        return camp.MonsterList
             .Select(id => GameData.GridFightMonsterData.GetValueOrDefault(id))
             .OfType<GridFightMonsterExcel>()
+            .Where(predicate)
             .ToList();
-        if (candidates.Count == 0) return [];
-        var lowTier = candidates.Where(monster => monster.MonsterTier == 1).ToList();
-        if (node.NodeType == GridFightNodeTypeEnum.Monster && lowTier.Count > 0) candidates = lowTier;
-        var count = node.NodeType == GridFightNodeTypeEnum.Monster
-            ? checked((int)InitialPlayerLevel)
-            : checked((int)Math.Min(ShopSize, (uint)candidates.Count));
-        return Enumerable.Range(0, count)
-            .Select(_ => candidates[_random.Next(candidates.Count)])
-            .ToList();
+    }
+
+    private void Shuffle<T>(IList<T> values)
+    {
+        for (var index = values.Count - 1; index > 0; index--)
+        {
+            var other = _random.Next(index + 1);
+            (values[index], values[other]) = (values[other], values[index]);
+        }
     }
 
     private uint ResolveContentModuleId()

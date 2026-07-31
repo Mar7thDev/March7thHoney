@@ -15,6 +15,7 @@ public enum GridFightSessionPhase
     AwaitingBattleRound,
     SelectingInvestment,
     SelectingSupply,
+    SelectingEncounter,
     AwaitingSupplyRound,
     AwaitingBattleReturn,
     AwaitingBackToPrepare,
@@ -111,6 +112,7 @@ public sealed class GridFightSession
     private uint _nextOrbUniqueId = 1;
     private bool _orbClaimed;
     private readonly HashSet<uint> _rerolledInvestmentIds = [];
+    private uint _encounterRerollCount;
 
     public uint Season { get; }
     public uint DivisionId { get; }
@@ -137,7 +139,9 @@ public sealed class GridFightSession
     public IReadOnlyList<GridFightSupplyOfferState> SupplyOffer { get; private set; } = [];
     public List<uint> ActiveInvestmentIds { get; } = [];
     public uint SupplyRerollCount { get; private set; }
-    public IReadOnlyList<GridFightMonsterExcel> Enemies { get; private set; }
+    public GridFightBattlePlan? BattlePlan { get; private set; }
+    public IReadOnlyList<GridFightEncounterOptionState> EncounterOptions { get; private set; } = [];
+    public IReadOnlyList<GridFightMonsterPlan> Enemies => BattlePlan?.Monsters ?? [];
     public List<GridFightRoleState> Roles { get; } = [];
     public List<GridFightEquipmentState> Equipments { get; } = [];
     public List<GridFightOrbState> Orbs { get; } = [];
@@ -165,7 +169,7 @@ public sealed class GridFightSession
         RewardCampId = catalog.RollRewardCampId();
         Bosses = CampIds.Select(catalog.RollBossMonster).ToList();
         AffixIds = catalog.RollAffixIds(divisionId);
-        Enemies = catalog.RollEnemyRoster(FightCampId, CurrentNode);
+        PrepareCurrentNode();
     }
 
     public uint MaxActiveRoles => _catalog.GetPlayerLevel(PlayerLevel).AvatarMaxNumber;
@@ -205,6 +209,10 @@ public sealed class GridFightSession
                 {
                     PrepareSupplyOffer();
                     Phase = GridFightSessionPhase.SelectingSupply;
+                }
+                else if (CurrentNode.NodeType == GridFightNodeTypeEnum.EliteBranch)
+                {
+                    Phase = GridFightSessionPhase.SelectingEncounter;
                 }
                 else if (CurrentNode.Template.IsAugment != 0)
                 {
@@ -275,6 +283,30 @@ public sealed class GridFightSession
             .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
             .ToList();
         SupplyRerollCount = 1;
+        return true;
+    }
+
+    public bool RerollEncounter(uint queuePosition)
+    {
+        if (Phase != GridFightSessionPhase.SelectingEncounter ||
+            queuePosition != PendingQueuePosition ||
+            _encounterRerollCount != 0)
+            return false;
+        EncounterOptions = _catalog.RollEncounterOptions(CurrentNode, CampIds, DivisionId);
+        _encounterRerollCount = 1;
+        return EncounterOptions.Count == 2;
+    }
+
+    public bool SelectEncounter(uint queuePosition, uint eliteBranchId)
+    {
+        if (Phase != GridFightSessionPhase.SelectingEncounter ||
+            queuePosition != PendingQueuePosition)
+            return false;
+        var selected = EncounterOptions.FirstOrDefault(option => option.EliteBranchId == eliteBranchId);
+        if (selected == null) return false;
+        BattlePlan = selected.BattlePlan;
+        Phase = GridFightSessionPhase.AwaitingBattleReturn;
+        PendingQueuePosition++;
         return true;
     }
 
@@ -428,7 +460,7 @@ public sealed class GridFightSession
         SupplyOffer = [];
         _rerolledInvestmentIds.Clear();
         SupplyRerollCount = 0;
-        Enemies = _catalog.RollEnemyRoster(FightCampId, CurrentNode);
+        PrepareCurrentNode();
         RefreshShop(false);
         Phase = GridFightSessionPhase.Preparing;
         return true;
@@ -522,6 +554,7 @@ public sealed class GridFightSession
         var activeRoleCount = Roles.Count(role => IsActivePosition(role.Position));
         if (Phase != GridFightSessionPhase.Preparing ||
             !IsCombatNode(CurrentNode) ||
+            BattlePlan == null ||
             activeRoleCount == 0 ||
             activeRoleCount > MaxActiveRoles)
             return false;
@@ -580,8 +613,11 @@ public sealed class GridFightSession
 
     public GridFightRouteNode CurrentNode => _catalog.GetNode(ChapterId, SectionId);
     public uint CampId => CampIds[checked((int)ChapterId - 1)];
-    public uint FightCampId => CurrentNode.NodeType == GridFightNodeTypeEnum.Monster ? RewardCampId : CampId;
-    public uint EliteBranchId => 1;
+    public uint FightCampId => BattlePlan?.CampId ??
+                               (CurrentNode.NodeType == GridFightNodeTypeEnum.Monster ? RewardCampId : 0);
+    public uint EliteBranchId => EncounterOptions.FirstOrDefault(option => option.BattlePlan == BattlePlan)?.EliteBranchId ?? 0;
+    public uint EncounterRerollCount => _encounterRerollCount;
+    public uint CurrentPenaltyRuleId => BattlePlan?.PenaltyRuleId ?? CurrentNode.PenaltyBonusRuleId;
 
     public uint EffectiveEnemyDifficultyLevel
     {
@@ -589,7 +625,8 @@ public sealed class GridFightSession
         {
             var value = (ulong)_catalog.GetEnemyDifficultyLevel(DivisionId) +
                         ActiveInvestmentIds.Aggregate(0UL,
-                            (sum, id) => sum + _catalog.GetInvestmentDifficultyAdd(DivisionId, id));
+                            (sum, id) => sum + _catalog.GetInvestmentDifficultyAdd(DivisionId, id)) +
+                        (BattlePlan?.DifficultyAdd ?? 0);
             return (uint)Math.Min(value, uint.MaxValue);
         }
     }
@@ -677,9 +714,22 @@ public sealed class GridFightSession
         if (next == null) return false;
         ChapterId = next.ChapterId;
         SectionId = next.SectionId;
-        Enemies = _catalog.RollEnemyRoster(FightCampId, next);
+        PrepareCurrentNode();
         RefreshShop(false);
         return true;
+    }
+
+    private void PrepareCurrentNode()
+    {
+        BattlePlan = null;
+        EncounterOptions = [];
+        _encounterRerollCount = 0;
+        if (CurrentNode.NodeType == GridFightNodeTypeEnum.EliteBranch)
+        {
+            EncounterOptions = _catalog.RollEncounterOptions(CurrentNode, CampIds, DivisionId);
+            return;
+        }
+        BattlePlan = _catalog.RollBattlePlan(CurrentNode, CampIds, RewardCampId, Bosses);
     }
 
     private uint GetFreeBenchPosition()

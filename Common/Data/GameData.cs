@@ -163,6 +163,12 @@ public static partial class GameData
     public static Dictionary<uint, GridFightOrbExcel> GridFightOrbData { get; private set; } = [];
     public static Dictionary<uint, Dictionary<GridFightAugmentQualityEnum, GridFightAugmentMonsterExcel>> GridFightAugmentMonsterData { get; private set; } = [];
     public static Dictionary<uint, Dictionary<uint, GridFightBinaryDiffAddRuleExcel>> GridFightBinaryDiffAddRuleData { get; private set; } = [];
+    public static Dictionary<uint, GridFightBinaryNodeRuleExcel> GridFightBinaryNodeRuleData { get; private set; } = [];
+    public static Dictionary<uint, GridFightEliteGroupExcel> GridFightEliteGroupData { get; private set; } = [];
+    public static Dictionary<uint, Dictionary<uint, GridFightEnemyDifficultyLvExcel>> GridFightEnemyDifficultyLvData { get; private set; } = [];
+    public static Dictionary<uint, GridFightStageLevelValueExcel> GridFightStageLevelValueData { get; private set; } = [];
+    public static Dictionary<uint, GridFightFormationWaveExcel> GridFightFormationWaveData { get; private set; } = [];
+    public static Dictionary<uint, GridFightPenaltyRuleExcel> GridFightPenaltyRuleData { get; private set; } = [];
     public static Dictionary<uint, GridFightPortalBuffExcel> GridFightPortalBuffData { get; private set; } = [];
     public static Dictionary<uint, GridFightItemsExcel> GridFightItemsData { get; private set; } = [];
     public static Dictionary<uint, GridFightTalentExcel> GridFightTalentData { get; private set; } = [];
