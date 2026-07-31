@@ -32,11 +32,11 @@ public sealed record GridFightSupplyOfferState(uint RoleId, uint EquipmentId);
 
 public sealed record GridFightSupplySelectionResult(
     bool Success,
-    GridFightSessionChange Change,
+    GridFightRoleAcquisitionResult Acquisition,
     GridFightEquipmentState? Equipment)
 {
     public static GridFightSupplySelectionResult Failed { get; } =
-        new(false, GridFightSessionChange.Failed, null);
+        new(false, GridFightRoleAcquisitionResult.Failed, null);
 }
 
 public sealed class GridFightRoleState
@@ -83,6 +83,19 @@ public sealed record GridFightSessionChange(
 {
     public static GridFightSessionChange Failed { get; } = new(false, [], [], []);
     public static GridFightSessionChange Succeeded { get; } = new(true, [], [], []);
+}
+
+public sealed record GridFightRoleMergeStep(
+    IReadOnlyList<uint> RemovedRoleIds,
+    GridFightRoleState AddedRole);
+
+public sealed record GridFightRoleAcquisitionResult(
+    bool Success,
+    IReadOnlyList<GridFightRoleState> AcquiredRoles,
+    IReadOnlyList<GridFightRoleMergeStep> MergeSteps,
+    IReadOnlyList<GridFightRoleState> FinalMergedRoles)
+{
+    public static GridFightRoleAcquisitionResult Failed { get; } = new(false, [], [], []);
 }
 
 public sealed class GridFightSession
@@ -286,10 +299,12 @@ public sealed class GridFightSession
             Position = GetFreeBenchPosition(),
         };
         Roles.Add(role);
-        var added = new List<GridFightRoleState> { role };
-        var removed = new List<uint>();
-        var updated = new List<GridFightRoleState>();
-        MergeRoles(role.RoleId, removed, updated);
+        var mergeSteps = MergeRoles(role.RoleId);
+        var acquisition = new GridFightRoleAcquisitionResult(
+            true,
+            [role],
+            mergeSteps,
+            GetFinalMergedRoles(mergeSteps));
 
         SupplyOffer = [];
         SupplyRerollCount = 0;
@@ -298,7 +313,7 @@ public sealed class GridFightSession
         PendingQueuePosition += SupplySelectionQueueAdvance;
         return new GridFightSupplySelectionResult(
             true,
-            new GridFightSessionChange(true, added, removed, updated),
+            acquisition,
             equipment);
     }
 
@@ -419,19 +434,18 @@ public sealed class GridFightSession
         return true;
     }
 
-    public GridFightSessionChange BuyGoods(IReadOnlyList<uint> indices)
+    public GridFightRoleAcquisitionResult BuyGoods(IReadOnlyList<uint> indices)
     {
         if (Phase != GridFightSessionPhase.Preparing || indices.Count == 0 || indices.Distinct().Count() != indices.Count)
-            return GridFightSessionChange.Failed;
+            return GridFightRoleAcquisitionResult.Failed;
         var slots = indices.Select(index => Shop.FirstOrDefault(slot => slot.Index == index)).ToList();
-        if (slots.Any(slot => slot == null || slot.SoldOut)) return GridFightSessionChange.Failed;
+        if (slots.Any(slot => slot == null || slot.SoldOut)) return GridFightRoleAcquisitionResult.Failed;
         var cost = slots.OfType<GridFightShopSlot>().Aggregate(0UL, (sum, slot) => sum + slot.Price);
-        if (cost > Gold) return GridFightSessionChange.Failed;
+        if (cost > Gold) return GridFightRoleAcquisitionResult.Failed;
 
         Gold -= (uint)cost;
-        var added = new List<GridFightRoleState>();
-        var removed = new List<uint>();
-        var updated = new List<GridFightRoleState>();
+        var acquiredRoles = new List<GridFightRoleState>();
+        var mergeSteps = new List<GridFightRoleMergeStep>();
         foreach (var slot in slots.OfType<GridFightShopSlot>())
         {
             slot.SoldOut = true;
@@ -443,10 +457,14 @@ public sealed class GridFightSession
                 Position = GetFreeBenchPosition(),
             };
             Roles.Add(role);
-            added.Add(role);
-            MergeRoles(role.RoleId, removed, updated);
+            acquiredRoles.Add(role);
+            mergeSteps.AddRange(MergeRoles(role.RoleId));
         }
-        return new GridFightSessionChange(true, added, removed, updated);
+        return new GridFightRoleAcquisitionResult(
+            true,
+            acquiredRoles,
+            mergeSteps,
+            GetFinalMergedRoles(mergeSteps));
     }
 
     public GridFightSessionChange RecycleRole(uint uniqueId)
@@ -604,25 +622,40 @@ public sealed class GridFightSession
             });
     }
 
-    private void MergeRoles(uint roleId, ICollection<uint> removed, ICollection<GridFightRoleState> updated)
+    private List<GridFightRoleMergeStep> MergeRoles(uint roleId)
     {
+        var steps = new List<GridFightRoleMergeStep>();
         while (true)
         {
             var group = Roles.Where(role => role.RoleId == roleId)
                 .GroupBy(role => role.Star)
                 .OrderBy(grouping => grouping.Key)
-                .FirstOrDefault(grouping => grouping.Count() >= 3);
-            if (group == null) return;
+                .FirstOrDefault(grouping => grouping.Count() >= 3 &&
+                    GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | (grouping.Key + 1)));
+            if (group == null) return steps;
             var merge = group.OrderBy(role => role.UniqueId).Take(3).ToList();
-            var keeper = merge[0];
-            keeper.Star++;
-            foreach (var role in merge.Skip(1))
+            foreach (var role in merge) Roles.Remove(role);
+            var mergedRole = new GridFightRoleState
             {
-                Roles.Remove(role);
-                removed.Add(role.UniqueId);
-            }
-            updated.Add(keeper);
+                UniqueId = _nextRoleUniqueId++,
+                RoleId = roleId,
+                Star = group.Key + 1,
+                Position = merge[0].Position,
+            };
+            Roles.Add(mergedRole);
+            steps.Add(new GridFightRoleMergeStep(
+                merge.Select(role => role.UniqueId).ToList(),
+                mergedRole));
         }
+    }
+
+    private IReadOnlyList<GridFightRoleState> GetFinalMergedRoles(
+        IEnumerable<GridFightRoleMergeStep> mergeSteps)
+    {
+        return mergeSteps
+            .Select(step => step.AddedRole)
+            .Where(role => Roles.Contains(role))
+            .ToList();
     }
 
     private bool GameDataHasNextLevel()
@@ -651,7 +684,7 @@ public sealed class GridFightSession
 
     private uint GetFreeBenchPosition()
     {
-        var max = 13u + _catalog.BenchSize;
+        var max = 13u + _catalog.BenchSize + _catalog.BenchOverflowSize;
         for (var position = 14u; position <= max; position++)
             if (Roles.All(role => role.Position != position)) return position;
         return 0;
@@ -660,7 +693,7 @@ public sealed class GridFightSession
     private bool IsValidPosition(uint position)
     {
         return position == 0 || IsActivePosition(position) ||
-               position is >= 14 && position <= 13 + _catalog.BenchSize;
+               position is >= 14 && position <= 13 + _catalog.BenchSize + _catalog.BenchOverflowSize;
     }
 
     private static bool IsActivePosition(uint position) => position is >= 1 and <= 13;
