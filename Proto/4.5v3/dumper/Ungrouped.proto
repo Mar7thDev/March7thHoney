@@ -3304,7 +3304,7 @@ message CJOCDGGCPCN {
     bool KBNNOPHGGIN = 2;
 }
 
-message CJPOMFIDLOA {
+message GridFightInvestmentSelectActionRequest {
     uint32 augment_id = 2;
 }
 
@@ -5557,7 +5557,7 @@ message DFLIHGGNBDB {
     uint32 row = 15;
 }
 
-message DFMGEJCCBPD {
+message GridFightSupplyRerollActionRequest {
 }
 
 message DGFHEGJKHFO {
@@ -9674,7 +9674,7 @@ message GILMFECEBFE {
     uint32 EOPHMLBEPGK = 2;
 }
 
-message GIOLAAKLDED {
+message GridFightInvestmentRerollActionRequest {
     uint32 augment_id = 3;
 }
 
@@ -12036,7 +12036,7 @@ message GridFightArchiveData {
 }
 
 message GridFightAugmentActionInfo {
-    repeated GridFightPendingAugmentInfo CEBFFDFMKGK = 13;
+    repeated GridFightPendingAugmentInfo pending_investment_list = 13;
 }
 
 message GridFightAugmentInfo {
@@ -12172,7 +12172,7 @@ message GridFightForgeRoleActionInfo {
 }
 
 message GridFightGameAugmentAdd {
-    GridGameAugmentInfo MCPIKEHDMND = 3;
+    GridGameAugmentInfo update_augment_info = 3;
 }
 
 message GridFightGameAugmentSync {
@@ -12180,7 +12180,7 @@ message GridFightGameAugmentSync {
 }
 
 message GridFightGameAugmentUpdate {
-    GridGameAugmentInfo MCPIKEHDMND = 3;
+    GridGameAugmentInfo update_augment_info = 3;
 }
 
 message GridFightGameBasicInfo {
@@ -12362,16 +12362,16 @@ message GridFightHandlePendingActionCsReq {
     uint32 queue_position = 8;
     GridFightPortalBuffSelectAction portal_select_action = 1465;
     GridFightPortalBuffRerollAction portal_reroll_action = 1796;
-    CJPOMFIDLOA IBCHMBNIPLK = 1996;
-    GIOLAAKLDED DAJDBBEPMMA = 1960;
+    GridFightInvestmentSelectActionRequest investment_select_action = 1996;
+    GridFightInvestmentRerollActionRequest investment_reroll_action = 1960;
     GKLDOELMEIN PKHJLKNGCGH = 1315;
     OHAINOHGKCM BAKAKODKECM = 1553;
     NIDJPBLNDLH JLPOPEAJHMF = 272;
     NNFPCAPDENH KEBDKGKEJDD = 2009;
     GridFightRoundBeginActionRequest round_begin_action = 446;
     GridFightReturnPreparationActionRequest return_preparation_action = 149;
-    HMNMJKCHABE FIKAGBAEOAP = 1256;
-    DFMGEJCCBPD IACBCOBMGJB = 744;
+    GridFightSupplySelectActionRequest supply_select_action = 1256;
+    GridFightSupplyRerollActionRequest supply_reroll_action = 744;
     PDKGKIDCBKA HOKCPPPLJIO = 1742;
     DGILDLDMGEI EMMPHLKJAJN = 549;
     PCCGPNAFMHP HHNPEHMBDKD = 1037;
@@ -12472,13 +12472,13 @@ message GridFightOrbSyncInfo {
 message GridFightPendingAction {
     uint32 queue_position = 15;
     GridFightPortalBuffActionInfo portal_action = 1601;
-    GridFightAugmentActionInfo IBCHMBNIPLK = 966;
+    GridFightAugmentActionInfo investment_action = 966;
     NGNKIIOHBAI PKHJLKNGCGH = 1028;
     HNPHLAHJPOB BAKAKODKECM = 505;
     LEGPFIAPLOO JLPOPEAJHMF = 1871;
     GridFightRoundBeginActionInfo round_begin_action = 930;
     GridFightReturnPreparationActionInfo return_preparation_action = 180;
-    IAKEDFLIOFD FIKAGBAEOAP = 417;
+    GridFightSupplyActionInfo supply_action = 417;
     MHJIOJNNPDM HOKCPPPLJIO = 1935;
     GridFightRecommendEquipmentActionInfo HHNPEHMBDKD = 974;
     GridFightForgeRoleActionInfo HHNHGJMOGDD = 158;
@@ -12490,8 +12490,8 @@ message GridFightPendingAction {
 
 message GridFightPendingAugmentInfo {
     uint32 augment_id = 15;
-    uint32 FEGDEOEHLFD = 2;
-    uint32 KKIOBDHKPPK = 3;
+    uint32 reroll_count = 2;
+    uint32 free_reroll_count = 3;
 }
 
 message GridFightPermanentTalentEnableCsReq {
@@ -12685,7 +12685,7 @@ message GridFightSyncData {
     GridGameForgeItemInfo OLCKALFILKK = 1388;
     GridGameForgeItemInfo FEKCPKAPHHO = 16;
     uint32 OACCGHIHLBA = 34;
-    GridFightGameAugmentAdd EIKHFBCKIFA = 780;
+    GridFightGameAugmentAdd add_augment_info = 780;
     MDKHMNKAECP BMGFDIKDOBE = 1675;
     GridFightGameItemInfo GOOCHGKBIPN = 1862;
     uint32 GOHHJLAPMBB = 530;
@@ -12854,7 +12854,7 @@ message GridFightWeeklyExtraSeasonExpScRsp {
 
 message GridGameAugmentInfo {
     bool NEKJGIDPCAI = 10;
-    bool AEKOKMPIFLN = 13;
+    bool is_active = 13;
     uint32 augment_id = 14;
 }
 
@@ -13594,8 +13594,8 @@ message HMMHDEKAHEA {
     bool IHPJDDCIIDB = 10;
 }
 
-message HMNMJKCHABE {
-    repeated uint32 LOAFKKAFBOK = 15;
+message GridFightSupplySelectActionRequest {
+    repeated uint32 select_supply_indexes = 15;
 }
 
 message HMOECPBNAOK {
@@ -14040,12 +14040,12 @@ message IAFJANHGCLL {
 message IAGGIFBOFDF {
 }
 
-message IAKEDFLIOFD {
-    uint32 JJPMDBCPJBA = 8;
+message GridFightSupplyActionInfo {
+    uint32 free_reroll_count = 8;
     uint32 IONLFBNMOFP = 4;
-    repeated GridFightSupplyRoleInfo MFBAKLCBPCJ = 15;
-    uint32 DAEMEBCKHIK = 1;
-    uint32 PLPJNCDKMAD = 10;
+    repeated GridFightSupplyRoleInfo supply_role_info_list = 15;
+    uint32 select_count = 1;
+    uint32 reroll_count = 10;
 }
 
 message IAKFBFJCHFB {

@@ -121,7 +121,9 @@ public sealed class GridFightManager : BasePlayerManager
         current.GameInfoList.Add(new GridFightGameInfo { ShopInfo = BuildShopInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { OrbInfo = BuildOrbInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { LevelInfo = BuildLevelInfo() });
-        current.GameInfoList.Add(new GridFightGameInfo { AugmentInfo = new GridFightGameAugmentSync() });
+        var augmentInfo = new GridFightGameAugmentSync();
+        augmentInfo.SyncAugmentInfo.Add(session.ActiveInvestmentIds.Select(BuildInvestment));
+        current.GameInfoList.Add(new GridFightGameInfo { AugmentInfo = augmentInfo });
         current.GameInfoList.Add(new GridFightGameInfo { TraitInfo = new GridFightGameTraitInfo() });
         current.GameInfoList.Add(new GridFightGameInfo());
         current.GameInfoList.Add(new GridFightGameInfo
@@ -174,6 +176,7 @@ public sealed class GridFightManager : BasePlayerManager
             .OrderBy(role => role.Position)
             .ThenBy(role => role.UniqueId)
             .Select(BuildRole));
+        finish.SyncAugmentInfo.Add(session.ActiveInvestmentIds.Select(BuildInvestment));
         if (session.SelectedPortalId != 0)
             finish.PortalBuffInfoList.Add(new GridFightGamePortalBuffInfo
             {
@@ -258,7 +261,32 @@ public sealed class GridFightManager : BasePlayerManager
                 break;
             case GridFightSessionPhase.AwaitingInitialRound:
             case GridFightSessionPhase.AwaitingBattleRound:
+            case GridFightSessionPhase.AwaitingSupplyRound:
                 pending.RoundBeginAction = new GridFightRoundBeginActionInfo();
+                break;
+            case GridFightSessionPhase.SelectingInvestment:
+                pending.InvestmentAction = new GridFightAugmentActionInfo();
+                pending.InvestmentAction.PendingInvestmentList.Add(session.InvestmentOffer.Select(augmentId =>
+                    new GridFightPendingAugmentInfo
+                    {
+                        AugmentId = augmentId,
+                        FreeRerollCount = 1,
+                        RerollCount = session.IsInvestmentRerolled(augmentId) ? 1u : 0u,
+                    }));
+                break;
+            case GridFightSessionPhase.SelectingSupply:
+                pending.SupplyAction = new GridFightSupplyActionInfo
+                {
+                    SelectCount = 1,
+                    FreeRerollCount = 1,
+                    RerollCount = session.SupplyRerollCount,
+                };
+                pending.SupplyAction.SupplyRoleInfoList.Add(session.SupplyOffer.Select(offer =>
+                {
+                    var role = new GridFightSupplyRoleInfo { RoleId = offer.RoleId };
+                    role.GridFightItemList.Add(offer.EquipmentId);
+                    return role;
+                }));
                 break;
             case GridFightSessionPhase.AwaitingInitialOrb:
             case GridFightSessionPhase.AwaitingInitialReturn:
@@ -560,6 +588,78 @@ public sealed class GridFightManager : BasePlayerManager
         return notify;
     }
 
+    public GridFightSyncUpdateResultScNotify BuildInvestmentSelectionSync(
+        uint finishedQueuePosition,
+        uint augmentId)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+
+        var selectionResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcSelectAugment,
+        };
+        selectionResult.EffectParamList.Add(augmentId);
+        selectionResult.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            AddAugmentInfo = new GridFightGameAugmentAdd
+            {
+                UpdateAugmentInfo = BuildInvestment(augmentId),
+            },
+        });
+        notify.ResultList.Add(selectionResult);
+        notify.ResultList.Add(BuildPendingAdvanceSync(finishedQueuePosition).ResultList);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildSupplySelectionSync(
+        uint finishedQueuePosition,
+        uint selectedIndex,
+        GridFightSupplySelectionResult selection)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null || !selection.Success || selection.Equipment == null) return notify;
+
+        var selectionResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcSelectSupply,
+        };
+        selectionResult.EffectParamList.Add(selectedIndex);
+        var items = new GridFightGameItemSyncInfo();
+        items.GridFightEquipmentList.Add(BuildEquipment(selection.Equipment));
+        selectionResult.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        AppendRoleChanges(selectionResult, selection.Change);
+        notify.ResultList.Add(selectionResult);
+
+        var finishResult = new GridFightSyncResultData();
+        finishResult.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            FinishPendingActionPos = finishedQueuePosition,
+        });
+        finishResult.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+        notify.ResultList.Add(finishResult);
+
+        var routeResult = new GridFightSyncResultData();
+        routeResult.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            LevelInfo = new GridFightLevelSyncInfo
+            {
+                ChapterId = Session.ChapterId,
+                SectionId = Session.SectionId,
+                LayerInfo = BuildLayerInfo(),
+            },
+        });
+        notify.ResultList.Add(routeResult);
+
+        if (BuildPendingAction() is { } pending)
+        {
+            var pendingResult = new GridFightSyncResultData();
+            pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+            notify.ResultList.Add(pendingResult);
+        }
+        return notify;
+    }
+
     public GridFightSyncUpdateResultScNotify BuildPositionSync(IEnumerable<uint> uniqueIds)
     {
         var session = Session;
@@ -698,6 +798,15 @@ public sealed class GridFightManager : BasePlayerManager
             UniqueId = equipment.UniqueId,
             GridFightEquipmentId = equipment.EquipmentId,
             Source = equipment.Source,
+        };
+    }
+
+    private static GridGameAugmentInfo BuildInvestment(uint augmentId)
+    {
+        return new GridGameAugmentInfo
+        {
+            AugmentId = augmentId,
+            IsActive = true,
         };
     }
 
