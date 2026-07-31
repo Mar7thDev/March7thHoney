@@ -11,23 +11,6 @@ public static class GridFightBattleProtoBuilder
 {
     private const uint GridFightBattleMode = 2;
 
-    private static readonly KeyValuePair<uint, uint>[] PropertyFixpointScales =
-    [
-        new(32, 180),
-        new(33, 480),
-        new(34, 440),
-        new(44, 304),
-        new(49, 180),
-        new(52, 240),
-        new(53, 480),
-        new(57, 240),
-        new(59, 450),
-        new(1013, 100),
-        new(1014, 100),
-        new(1019, 100),
-        new(1025, 100),
-    ];
-
     public static List<AvatarLineupData> Populate(
         BattleInstance battle,
         GridFightSession session,
@@ -129,8 +112,7 @@ public static class GridFightBattleProtoBuilder
                     StateInfo = new GridFightRoleBattleStateInfo(),
                 },
             };
-            foreach (var scale in PropertyFixpointScales)
-                roleInfo.ConvertPropertyToFixpoint.Add(scale.Key, scale.Value);
+            GridFightManager.PopulateRolePropertyScales(roleInfo.ConvertPropertyToFixpoint);
             gridFightInfo.GridGameRoleList.Add(roleInfo);
             foreach (var key in basic.RoleSavedValueList)
                 gridFightInfo.RoleSavedValues[key] = 0;
