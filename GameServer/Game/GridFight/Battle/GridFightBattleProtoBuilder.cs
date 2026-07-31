@@ -85,7 +85,7 @@ public static class GridFightBattleProtoBuilder
             GridFightLineupHp = session.LineupHp,
             MaxActiveRoleCount = session.MaxActiveRoles,
             PenaltyBonusRuleId = session.CurrentNode.PenaltyBonusRuleId,
-            EnemyDifficultyLevel = catalog.GetEnemyDifficultyLevel(session.DivisionId),
+            EnemyDifficultyLevel = session.EffectiveEnemyDifficultyLevel,
             Season = session.Season,
             DivisionId = session.DivisionId,
             ActiveRoleCount = (uint)activeRoles.Count,
@@ -103,6 +103,8 @@ public static class GridFightBattleProtoBuilder
             {
                 PortalBuffId = session.SelectedPortalId,
             });
+        gridFightInfo.SyncAugmentInfo.Add(session.ActiveInvestmentIds.Select(augmentId =>
+            new GridFightAugmentInfo { AugmentId = augmentId }));
         foreach (var role in activeRoles.Where(role => role.Position is >= 5 and <= 13))
         {
             var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: false);

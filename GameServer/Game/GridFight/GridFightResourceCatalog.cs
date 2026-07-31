@@ -33,6 +33,7 @@ public sealed class GridFightResourceCatalog
     public IReadOnlyList<GridFightCampExcel> RewardCampPool { get; }
     public IReadOnlyList<uint> PortalPool { get; }
     public IReadOnlyList<uint> AugmentPool { get; }
+    public IReadOnlyList<uint> BasicEquipmentPool { get; }
     public IReadOnlySet<uint> InitialExcludedRoleIds { get; }
     public uint ShopSize => GetUInt("GridFight_CardNumberPerRefresh");
     public uint RefreshCost => GetUInt("GridFight_LotteryRefreshGold");
@@ -117,6 +118,12 @@ public sealed class GridFightResourceCatalog
             .Distinct()
             .Order()
             .ToList();
+        BasicEquipmentPool = GameData.GridFightEquipmentData.Values
+            .Where(row => row.EquipCategory == GridFightEquipCategoryEnum.Basic)
+            .Select(row => row.ID)
+            .Distinct()
+            .Order()
+            .ToList();
 
         InitialExcludedRoleIds = GetUIntList("GridFight_InitialExceptRoleIdList").ToHashSet();
         InitialGold = ResolveInitialGold();
@@ -140,6 +147,12 @@ public sealed class GridFightResourceCatalog
         if (RewardCampPool.Count == 0) errors.Add("reward monster camp pool is empty");
         if (PortalPool.Count == 0) errors.Add("portal pool is empty");
         if (AugmentPool.Count == 0) errors.Add("augment pool is empty");
+        if (Enum.GetValues<GridFightAugmentQualityEnum>()
+            .Where(quality => quality != GridFightAugmentQualityEnum.None)
+            .Any(quality => AugmentPool.Count(id => GameData.GridFightAugmentData[id].Quality == quality) < 3))
+            errors.Add("augment quality pool has fewer than three entries");
+        if (BasicEquipmentPool.Count == 0) errors.Add("basic equipment pool is empty");
+        if (RolePool.Count < 5) errors.Add("supply role pool has fewer than five entries");
         if (StandardRoute.Count < 2) errors.Add("standard route has fewer than two nodes");
         if (!StandardRoute.Any(node => node.ChapterId == 1 && node.SectionId == 1))
             errors.Add("standard route has no 1-1 node");
@@ -220,6 +233,44 @@ public sealed class GridFightResourceCatalog
         return TakeRandomDistinct(PortalPool.ToList(), count);
     }
 
+    public GridFightAugmentQualityEnum RollInvestmentQuality()
+    {
+        var qualities = Enum.GetValues<GridFightAugmentQualityEnum>()
+            .Where(quality => quality != GridFightAugmentQualityEnum.None)
+            .Where(quality => AugmentPool.Count(id => GameData.GridFightAugmentData[id].Quality == quality) >= 3)
+            .ToList();
+        return qualities[_random.Next(qualities.Count)];
+    }
+
+    public IReadOnlyList<uint> RollInvestmentOffer(
+        GridFightAugmentQualityEnum quality,
+        int count,
+        IEnumerable<uint>? exclude = null)
+    {
+        var excluded = exclude?.ToHashSet() ?? [];
+        var candidates = AugmentPool
+            .Where(id => GameData.GridFightAugmentData[id].Quality == quality && !excluded.Contains(id))
+            .ToList();
+        return TakeRandomDistinct(candidates, count);
+    }
+
+    public IReadOnlyList<(uint RoleId, uint EquipmentId)> RollSupplyOffer(int count)
+    {
+        var roles = TakeRandomDistinct(RolePool.ToList(), count);
+        return roles.Select(role =>
+            (role.ID, BasicEquipmentPool[_random.Next(BasicEquipmentPool.Count)])).ToList();
+    }
+
+    public uint GetInvestmentDifficultyAdd(uint divisionId, uint augmentId)
+    {
+        if (!GameData.GridFightDivisionInfoData.TryGetValue(divisionId, out var division) ||
+            !GameData.GridFightAugmentData.TryGetValue(augmentId, out var augment) ||
+            !GameData.GridFightAugmentMonsterData.TryGetValue(division.DivisionLevel, out var byQuality) ||
+            !byQuality.TryGetValue(augment.Quality, out var difficulty))
+            return 0;
+        return difficulty.EnemyDiffLvAdd;
+    }
+
     public IReadOnlyList<uint> RollCampIds(int count)
     {
         return TakeRandomDistinct(CampPool.ToList(), count).Select(camp => camp.ID).ToList();
@@ -257,6 +308,8 @@ public sealed class GridFightResourceCatalog
 
     public IReadOnlyList<GridFightMonsterExcel> RollEnemyRoster(uint campId, GridFightRouteNode node)
     {
+        if (node.NodeType is GridFightNodeTypeEnum.GridFightNodeNone or GridFightNodeTypeEnum.Supply)
+            return [];
         if (!GameData.GridFightCampData.TryGetValue(campId, out var camp)) return [];
         var candidates = camp.MonsterList
             .Select(id => GameData.GridFightMonsterData.GetValueOrDefault(id))

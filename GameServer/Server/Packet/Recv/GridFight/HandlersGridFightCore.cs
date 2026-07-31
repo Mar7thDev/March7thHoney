@@ -96,37 +96,80 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
+        if (session != null && request.InvestmentRerollAction != null)
+        {
+            var success = session.RerollInvestment(
+                request.QueuePosition,
+                request.InvestmentRerollAction.AugmentId);
+            if (success)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSync(
+                    GridFightUpdateSrcType.KgridFightSrcNone,
+                    includePending: true)));
+            await SendResponse(connection, request.QueuePosition, success);
+            return;
+        }
+        if (session != null && request.InvestmentSelectAction != null)
+        {
+            var augmentId = request.InvestmentSelectAction.AugmentId;
+            var success = session.SelectInvestment(request.QueuePosition, augmentId);
+            if (success)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildInvestmentSelectionSync(request.QueuePosition, augmentId)));
+            await SendResponse(connection, request.QueuePosition, success);
+            return;
+        }
+        if (session != null && request.SupplyRerollAction != null)
+        {
+            var success = session.RerollSupply(request.QueuePosition);
+            if (success)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSync(
+                    GridFightUpdateSrcType.KgridFightSrcNone,
+                    includePending: true)));
+            await SendResponse(connection, request.QueuePosition, success);
+            return;
+        }
+        if (session != null && request.SupplySelectAction != null)
+        {
+            var indices = request.SupplySelectAction.SelectSupplyIndexes.ToList();
+            var selection = session.SelectSupply(request.QueuePosition, indices);
+            if (selection.Success)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildSupplySelectionSync(request.QueuePosition, indices[0], selection)));
+            await SendResponse(connection, request.QueuePosition, selection.Success);
+            return;
+        }
+
         var beforeIds = session?.Roles.Select(role => role.UniqueId).ToHashSet() ?? [];
         var kind = ResolveKind(request);
         var portalId = request.PortalSelectAction?.PortalId ?? 0;
-        var success = session != null && kind != null &&
-                      session.HandlePending(request.QueuePosition, kind.Value, portalId);
+        var pendingHandled = session != null && kind != null &&
+                             session.HandlePending(request.QueuePosition, kind.Value, portalId);
         GridFightSessionChange? change = null;
-        if (success)
+        if (pendingHandled)
         {
             var added = session!.Roles.Where(role => !beforeIds.Contains(role.UniqueId)).ToList();
             change = new GridFightSessionChange(true, added, [], []);
         }
 
-        if (success && kind == GridFightPendingRequestKind.PortalSelect)
+        if (pendingHandled && kind == GridFightPendingRequestKind.PortalSelect)
         {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildPortalSelectionSync(request.QueuePosition, change!)));
         }
-        else if (success && kind == GridFightPendingRequestKind.RoundBegin &&
+        else if (pendingHandled && kind == GridFightPendingRequestKind.RoundBegin &&
                  session!.Phase == GridFightSessionPhase.AwaitingInitialOrb)
         {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildInitialRoundSync(request.QueuePosition)));
         }
-        else if (success && kind is GridFightPendingRequestKind.RoundBegin or GridFightPendingRequestKind.ReturnPreparation)
+        else if (pendingHandled && kind is GridFightPendingRequestKind.RoundBegin or GridFightPendingRequestKind.ReturnPreparation)
         {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 kind == GridFightPendingRequestKind.RoundBegin
                     ? manager.BuildBattleRoundSync(request.QueuePosition)
                     : manager.BuildPendingAdvanceSync(request.QueuePosition)));
         }
-        else if (success)
+        else if (pendingHandled)
         {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSync(
                 GridFightUpdateSrcType.KgridFightSrcNone,
@@ -134,11 +177,16 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
                 includePending: true)));
         }
 
-        await connection.SendPacket(CreatePacket(CmdIds.GridFightHandlePendingActionScRsp,
+        await SendResponse(connection, request.QueuePosition, pendingHandled);
+    }
+
+    private static Task SendResponse(Connection connection, uint queuePosition, bool success)
+    {
+        return connection.SendPacket(CreatePacket(CmdIds.GridFightHandlePendingActionScRsp,
             new GridFightHandlePendingActionScRsp
             {
                 Retcode = success ? 0 : (uint)Retcode.RetFail,
-                QueuePosition = request.QueuePosition,
+                QueuePosition = queuePosition,
             }));
     }
 

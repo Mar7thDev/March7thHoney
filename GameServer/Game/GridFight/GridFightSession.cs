@@ -13,6 +13,9 @@ public enum GridFightSessionPhase
     Preparing,
     InBattle,
     AwaitingBattleRound,
+    SelectingInvestment,
+    SelectingSupply,
+    AwaitingSupplyRound,
     AwaitingBattleReturn,
     AwaitingBackToPrepare,
 }
@@ -23,6 +26,17 @@ public enum GridFightPendingRequestKind
     PortalSelect,
     RoundBegin,
     ReturnPreparation,
+}
+
+public sealed record GridFightSupplyOfferState(uint RoleId, uint EquipmentId);
+
+public sealed record GridFightSupplySelectionResult(
+    bool Success,
+    GridFightSessionChange Change,
+    GridFightEquipmentState? Equipment)
+{
+    public static GridFightSupplySelectionResult Failed { get; } =
+        new(false, GridFightSessionChange.Failed, null);
 }
 
 public sealed class GridFightRoleState
@@ -73,11 +87,17 @@ public sealed record GridFightSessionChange(
 
 public sealed class GridFightSession
 {
+    private const int InvestmentOfferCount = 3;
+    private const int SupplyOfferCount = 5;
+    private const uint SupplySelectionQueueAdvance = 4;
+    private const uint SupplyEquipmentSource = 9;
+
     private readonly GridFightResourceCatalog _catalog;
     private uint _nextRoleUniqueId = 1;
     private uint _nextEquipmentUniqueId = 1;
     private uint _nextOrbUniqueId = 1;
     private bool _orbClaimed;
+    private readonly HashSet<uint> _rerolledInvestmentIds = [];
 
     public uint Season { get; }
     public uint DivisionId { get; }
@@ -100,6 +120,10 @@ public sealed class GridFightSession
     public IReadOnlyList<GridFightMonsterExcel> Bosses { get; }
     public IReadOnlyList<uint> AffixIds { get; }
     public IReadOnlyList<uint> PortalOffer { get; private set; }
+    public IReadOnlyList<uint> InvestmentOffer { get; private set; } = [];
+    public IReadOnlyList<GridFightSupplyOfferState> SupplyOffer { get; private set; } = [];
+    public List<uint> ActiveInvestmentIds { get; } = [];
+    public uint SupplyRerollCount { get; private set; }
     public IReadOnlyList<GridFightMonsterExcel> Enemies { get; private set; }
     public List<GridFightRoleState> Roles { get; } = [];
     public List<GridFightEquipmentState> Equipments { get; } = [];
@@ -163,6 +187,24 @@ public sealed class GridFightSession
                 return true;
             case GridFightPendingRequestKind.RoundBegin
                 when Phase == GridFightSessionPhase.AwaitingBattleRound:
+                PendingQueuePosition++;
+                if (CurrentNode.NodeType == GridFightNodeTypeEnum.Supply)
+                {
+                    PrepareSupplyOffer();
+                    Phase = GridFightSessionPhase.SelectingSupply;
+                }
+                else if (CurrentNode.Template.IsAugment != 0)
+                {
+                    PrepareInvestmentOffer();
+                    Phase = GridFightSessionPhase.SelectingInvestment;
+                }
+                else
+                {
+                    Phase = GridFightSessionPhase.AwaitingBattleReturn;
+                }
+                return true;
+            case GridFightPendingRequestKind.RoundBegin
+                when Phase == GridFightSessionPhase.AwaitingSupplyRound:
                 Phase = GridFightSessionPhase.AwaitingBattleReturn;
                 PendingQueuePosition++;
                 return true;
@@ -173,6 +215,91 @@ public sealed class GridFightSession
             default:
                 return false;
         }
+    }
+
+    public bool IsInvestmentRerolled(uint augmentId) => _rerolledInvestmentIds.Contains(augmentId);
+
+    public bool RerollInvestment(uint queuePosition, uint augmentId)
+    {
+        if (Phase != GridFightSessionPhase.SelectingInvestment ||
+            queuePosition != PendingQueuePosition ||
+            _rerolledInvestmentIds.Contains(augmentId))
+            return false;
+        var index = InvestmentOffer.ToList().IndexOf(augmentId);
+        if (index < 0) return false;
+        var quality = GameData.GridFightAugmentData[augmentId].Quality;
+        var excluded = InvestmentOffer.Concat(ActiveInvestmentIds).ToHashSet();
+        var replacement = _catalog.RollInvestmentOffer(quality, 1, excluded).SingleOrDefault();
+        if (replacement == 0) return false;
+        var offer = InvestmentOffer.ToList();
+        offer[index] = replacement;
+        InvestmentOffer = offer;
+        _rerolledInvestmentIds.Add(replacement);
+        return true;
+    }
+
+    public bool SelectInvestment(uint queuePosition, uint augmentId)
+    {
+        if (Phase != GridFightSessionPhase.SelectingInvestment ||
+            queuePosition != PendingQueuePosition ||
+            !InvestmentOffer.Contains(augmentId))
+            return false;
+        if (!ActiveInvestmentIds.Contains(augmentId)) ActiveInvestmentIds.Add(augmentId);
+        InvestmentOffer = [];
+        _rerolledInvestmentIds.Clear();
+        Phase = GridFightSessionPhase.AwaitingBattleReturn;
+        PendingQueuePosition++;
+        return true;
+    }
+
+    public bool RerollSupply(uint queuePosition)
+    {
+        if (Phase != GridFightSessionPhase.SelectingSupply ||
+            queuePosition != PendingQueuePosition ||
+            SupplyRerollCount != 0)
+            return false;
+        SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount)
+            .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
+            .ToList();
+        SupplyRerollCount = 1;
+        return true;
+    }
+
+    public GridFightSupplySelectionResult SelectSupply(uint queuePosition, IReadOnlyList<uint> indices)
+    {
+        if (Phase != GridFightSessionPhase.SelectingSupply ||
+            queuePosition != PendingQueuePosition ||
+            indices.Count != 1 ||
+            indices[0] == 0 ||
+            indices[0] > SupplyOffer.Count ||
+            _catalog.GetNextNode(ChapterId, SectionId) == null)
+            return GridFightSupplySelectionResult.Failed;
+
+        var selected = SupplyOffer[checked((int)indices[0] - 1)];
+        if (!TryAddEquipment(selected.EquipmentId, out var equipment, SupplyEquipmentSource))
+            return GridFightSupplySelectionResult.Failed;
+
+        var role = new GridFightRoleState
+        {
+            UniqueId = _nextRoleUniqueId++,
+            RoleId = selected.RoleId,
+            Position = GetFreeBenchPosition(),
+        };
+        Roles.Add(role);
+        var added = new List<GridFightRoleState> { role };
+        var removed = new List<uint>();
+        var updated = new List<GridFightRoleState>();
+        MergeRoles(role.RoleId, removed, updated);
+
+        SupplyOffer = [];
+        SupplyRerollCount = 0;
+        if (!AdvanceToNextNode()) return GridFightSupplySelectionResult.Failed;
+        Phase = GridFightSessionPhase.AwaitingSupplyRound;
+        PendingQueuePosition += SupplySelectionQueueAdvance;
+        return new GridFightSupplySelectionResult(
+            true,
+            new GridFightSessionChange(true, added, removed, updated),
+            equipment);
     }
 
     public bool ClaimInitialOrb()
@@ -216,7 +343,7 @@ public sealed class GridFightSession
         return true;
     }
 
-    public bool TryAddEquipment(uint equipmentId, out GridFightEquipmentState equipment)
+    public bool TryAddEquipment(uint equipmentId, out GridFightEquipmentState equipment, uint source = 1)
     {
         equipment = null!;
         if (!GameData.GridFightEquipmentData.ContainsKey(equipmentId)) return false;
@@ -224,7 +351,7 @@ public sealed class GridFightSession
         {
             UniqueId = _nextEquipmentUniqueId++,
             EquipmentId = equipmentId,
-            Source = 1,
+            Source = source,
         };
         Equipments.Add(equipment);
         return true;
@@ -282,6 +409,10 @@ public sealed class GridFightSession
 
         ChapterId = chapterId;
         SectionId = sectionId;
+        InvestmentOffer = [];
+        SupplyOffer = [];
+        _rerolledInvestmentIds.Clear();
+        SupplyRerollCount = 0;
         Enemies = _catalog.RollEnemyRoster(FightCampId, CurrentNode);
         RefreshShop(false);
         Phase = GridFightSessionPhase.Preparing;
@@ -371,7 +502,10 @@ public sealed class GridFightSession
     public bool EnterBattle()
     {
         var activeRoleCount = Roles.Count(role => IsActivePosition(role.Position));
-        if (Phase != GridFightSessionPhase.Preparing || activeRoleCount == 0 || activeRoleCount > MaxActiveRoles)
+        if (Phase != GridFightSessionPhase.Preparing ||
+            !IsCombatNode(CurrentNode) ||
+            activeRoleCount == 0 ||
+            activeRoleCount > MaxActiveRoles)
             return false;
         Phase = GridFightSessionPhase.InBattle;
         return true;
@@ -430,6 +564,32 @@ public sealed class GridFightSession
     public uint CampId => CampIds[checked((int)ChapterId - 1)];
     public uint FightCampId => CurrentNode.NodeType == GridFightNodeTypeEnum.Monster ? RewardCampId : CampId;
     public uint EliteBranchId => 1;
+
+    public uint EffectiveEnemyDifficultyLevel
+    {
+        get
+        {
+            var value = (ulong)_catalog.GetEnemyDifficultyLevel(DivisionId) +
+                        ActiveInvestmentIds.Aggregate(0UL,
+                            (sum, id) => sum + _catalog.GetInvestmentDifficultyAdd(DivisionId, id));
+            return (uint)Math.Min(value, uint.MaxValue);
+        }
+    }
+
+    private void PrepareInvestmentOffer()
+    {
+        var quality = _catalog.RollInvestmentQuality();
+        InvestmentOffer = _catalog.RollInvestmentOffer(quality, InvestmentOfferCount, ActiveInvestmentIds);
+        _rerolledInvestmentIds.Clear();
+    }
+
+    private void PrepareSupplyOffer()
+    {
+        SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount)
+            .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
+            .ToList();
+        SupplyRerollCount = 0;
+    }
 
     private void MaterializeInitialRoles()
     {
@@ -504,4 +664,12 @@ public sealed class GridFightSession
     }
 
     private static bool IsActivePosition(uint position) => position is >= 1 and <= 13;
+
+    private static bool IsCombatNode(GridFightRouteNode node)
+    {
+        return node.NodeType is GridFightNodeTypeEnum.Monster or
+            GridFightNodeTypeEnum.CampMonster or
+            GridFightNodeTypeEnum.EliteBranch or
+            GridFightNodeTypeEnum.Boss;
+    }
 }
