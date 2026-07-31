@@ -38,25 +38,29 @@ public static class GridFightBattleProtoBuilder
         AddEntryBuffs(battle, battleRoles);
 
         proto.MonsterWaveList.Clear();
-        var wave = new SceneMonsterWave
+        foreach (var wavePlan in session.BattlePlan?.Waves ?? [])
         {
-            BattleStageId = session.CurrentNode.StageId,
-            BattleWaveId = 1,
-            MonsterParam = new SceneMonsterWaveParam
+            var wave = new SceneMonsterWave
             {
-                MonsterWorldLevel = (uint)Math.Max(1, battle.Player.Data.WorldLevel - 1),
-                EliteGroup = session.Enemies.FirstOrDefault()?.Star1EliteGroup3 ?? 0,
-            },
-        };
-        wave.MonsterList.Add(session.Enemies.Select(monster => new SceneMonster
-        {
-            MonsterId = monster.MonsterID,
-            ExtraInfo = new GridFightSceneMonsterExtraInfo
+                BattleStageId = session.CurrentNode.StageId,
+                BattleWaveId = wavePlan.WaveId,
+                MonsterParam = new SceneMonsterWaveParam
+                {
+                    MonsterWorldLevel = wavePlan.FormationWaveId,
+                    EliteGroup = session.BattlePlan!.EliteGroupId,
+                    SupplementalEliteGroup = wavePlan.FormationWaveId == 3 ? 846u : 0,
+                },
+            };
+            wave.MonsterList.Add(wavePlan.Monsters.Select(monster => new SceneMonster
             {
-                GridFightInfo = new GridFightMonsterBattleInfo { RoleStar = 1 },
-            },
-        }));
-        proto.MonsterWaveList.Add(wave);
+                MonsterId = monster.Monster.MonsterID,
+                ExtraInfo = new GridFightSceneMonsterExtraInfo
+                {
+                    GridFightInfo = new GridFightMonsterBattleInfo { RoleStar = monster.RoleStar },
+                },
+            }));
+            proto.MonsterWaveList.Add(wave);
+        }
 
         var activeRoles = session.Roles
             .Where(role => role.Position is >= 1 and <= 13)
@@ -67,7 +71,7 @@ public static class GridFightBattleProtoBuilder
             BattleWaveId = 1,
             GridFightLineupHp = session.LineupHp,
             MaxActiveRoleCount = session.MaxActiveRoles,
-            PenaltyBonusRuleId = session.CurrentNode.PenaltyBonusRuleId,
+            PenaltyBonusRuleId = session.CurrentPenaltyRuleId,
             EnemyDifficultyLevel = session.EffectiveEnemyDifficultyLevel,
             Season = session.Season,
             DivisionId = session.DivisionId,

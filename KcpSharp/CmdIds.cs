@@ -1972,7 +1972,7 @@ public class CmdIds
     public const int CNOAPAMNDOA = 8468;
     public const int AGOBLKJFJDL = 8469;
     public const int GridFightGetDataCsReq = 8476;
-    public const int GridFightUpdateEliteBranchSelectCsReq = 8483;
+    public const int GridFightGetArchiveCsReq = 8483;
     public const int OENNAOAFAMA = 8484;
     public const int ENDFBBDFFDH = 8485;
     public const int MEPDHDGCGKH = 8495;
@@ -2014,7 +2014,7 @@ public class CmdIds
     public const int FavourArchiveScRsp = 8625;
     public const int DHOCOJLJPPA = 8640;
     public const int GridFightEnterBattleStageScRsp = 8641;
-    public const int NDAMFDIDKGB = 8642;
+    public const int GridFightUpdateEliteBranchSelectCsReq = 8642;
     public const int KOIAMDKEFKH = 8650;
     public const int GridFightHandlePendingActionScRsp = 8652;
     public const int IIFPPBCFBBC = 8654;
