@@ -227,11 +227,11 @@ public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsR
         var indices = request.BuyAll
             ? manager.Session?.Shop.Where(slot => !slot.SoldOut).Select(slot => slot.Index).ToList() ?? []
             : request.GoodsIndexList.ToList();
-        var change = manager.Session?.BuyGoods(indices) ?? GridFightSessionChange.Failed;
-        if (change.Success)
+        var acquisition = manager.Session?.BuyGoods(indices) ?? GridFightRoleAcquisitionResult.Failed;
+        if (acquisition.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                manager.BuildBuyGoodsSync(indices, change)));
-        var response = new GridFightBuyGoodsScRsp { Retcode = change.Success ? 0 : (uint)Retcode.RetFail };
+                manager.BuildBuyGoodsSync(indices, acquisition)));
+        var response = new GridFightBuyGoodsScRsp { Retcode = acquisition.Success ? 0 : (uint)Retcode.RetFail };
         response.GoodsIndexList.Add(indices);
         await connection.SendPacket(CreatePacket(CmdIds.GridFightBuyGoodsScRsp, response));
     }

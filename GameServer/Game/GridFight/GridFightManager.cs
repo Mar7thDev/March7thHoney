@@ -427,11 +427,11 @@ public sealed class GridFightManager : BasePlayerManager
 
     public GridFightSyncUpdateResultScNotify BuildBuyGoodsSync(
         IReadOnlyList<uint> goodsIndices,
-        GridFightSessionChange change)
+        GridFightRoleAcquisitionResult acquisition)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         var session = Session;
-        if (session == null || !change.Success) return notify;
+        if (session == null || !acquisition.Success) return notify;
 
         var purchaseResult = new GridFightSyncResultData
         {
@@ -439,8 +439,13 @@ public sealed class GridFightManager : BasePlayerManager
         };
         purchaseResult.EffectParamList.Add(goodsIndices);
         purchaseResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
-        AppendRoleChanges(purchaseResult, change);
+        AppendAcquiredRoles(purchaseResult, acquisition);
         notify.ResultList.Add(purchaseResult);
+        AppendRoleMergeResults(
+            notify,
+            GridFightUpdateSrcType.KgridFightSrcBuyGoods,
+            goodsIndices,
+            acquisition);
 
         var shopResult = new GridFightSyncResultData
         {
@@ -478,6 +483,40 @@ public sealed class GridFightManager : BasePlayerManager
             result.UpdateDynamicList.Add(new GridFightSyncData { RemoveRoleUniqueId = uniqueId });
         foreach (var role in change.UpdatedRoles)
             result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+    }
+
+    private static void AppendAcquiredRoles(
+        GridFightSyncResultData result,
+        GridFightRoleAcquisitionResult acquisition)
+    {
+        foreach (var role in acquisition.AcquiredRoles)
+            result.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
+    }
+
+    private static void AppendRoleMergeResults(
+        GridFightSyncUpdateResultScNotify notify,
+        GridFightUpdateSrcType acquisitionSource,
+        IEnumerable<uint> effectParameters,
+        GridFightRoleAcquisitionResult acquisition)
+    {
+        foreach (var step in acquisition.MergeSteps)
+        {
+            var mergeResult = new GridFightSyncResultData
+            {
+                UpdateSource = GridFightUpdateSrcType.KgridFightSrcMergeRole,
+            };
+            foreach (var uniqueId in step.RemovedRoleIds)
+                mergeResult.UpdateDynamicList.Add(new GridFightSyncData { RemoveRoleUniqueId = uniqueId });
+            mergeResult.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(step.AddedRole) });
+            notify.ResultList.Add(mergeResult);
+        }
+
+        if (acquisition.FinalMergedRoles.Count == 0) return;
+        var finalResult = new GridFightSyncResultData { UpdateSource = acquisitionSource };
+        finalResult.EffectParamList.Add(effectParameters);
+        foreach (var role in acquisition.FinalMergedRoles)
+            finalResult.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        notify.ResultList.Add(finalResult);
     }
 
     public GridFightSyncUpdateResultScNotify BuildPortalSelectionSync(
@@ -628,8 +667,20 @@ public sealed class GridFightManager : BasePlayerManager
         var items = new GridFightGameItemSyncInfo();
         items.GridFightEquipmentList.Add(BuildEquipment(selection.Equipment));
         selectionResult.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
-        AppendRoleChanges(selectionResult, selection.Change);
         notify.ResultList.Add(selectionResult);
+
+        var roleResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcSelectSupply,
+        };
+        roleResult.EffectParamList.Add(selectedIndex);
+        AppendAcquiredRoles(roleResult, selection.Acquisition);
+        notify.ResultList.Add(roleResult);
+        AppendRoleMergeResults(
+            notify,
+            GridFightUpdateSrcType.KgridFightSrcSelectSupply,
+            [selectedIndex],
+            selection.Acquisition);
 
         var finishResult = new GridFightSyncResultData();
         finishResult.UpdateDynamicList.Add(new GridFightSyncData
@@ -916,8 +967,26 @@ public sealed class GridFightManager : BasePlayerManager
             RoleStar = role.Star,
             Pos = role.Position,
         };
+        PopulateRolePropertyScales(info.ConvertPropertyToFixpoint);
         foreach (var key in GameData.GridFightRoleBasicInfoData[role.RoleId].RoleSavedValueList)
             info.GridFightValueInitComponent[key] = 0;
         return info;
+    }
+
+    internal static void PopulateRolePropertyScales(IDictionary<uint, uint> properties)
+    {
+        properties[32] = 180;
+        properties[33] = 480;
+        properties[34] = 440;
+        properties[44] = 304;
+        properties[49] = 180;
+        properties[52] = 240;
+        properties[53] = 480;
+        properties[57] = 240;
+        properties[59] = 450;
+        properties[1013] = 100;
+        properties[1014] = 100;
+        properties[1019] = 100;
+        properties[1025] = 100;
     }
 }
