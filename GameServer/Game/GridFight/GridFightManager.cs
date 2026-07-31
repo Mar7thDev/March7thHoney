@@ -288,6 +288,13 @@ public sealed class GridFightManager : BasePlayerManager
                     return role;
                 }));
                 break;
+            case GridFightSessionPhase.SelectingEncounter:
+                pending.EliteBranchAction = new GridFightEliteBranchActionInfo
+                {
+                    FreeRerollCount = 1,
+                    RerollCount = session.EncounterRerollCount,
+                };
+                break;
             case GridFightSessionPhase.AwaitingInitialOrb:
             case GridFightSessionPhase.AwaitingInitialReturn:
             case GridFightSessionPhase.AwaitingBattleReturn:
@@ -627,6 +634,62 @@ public sealed class GridFightManager : BasePlayerManager
         return notify;
     }
 
+    public GridFightSyncUpdateResultScNotify BuildEncounterRerollSync()
+    {
+        return BuildSync(
+            GridFightUpdateSrcType.KgridFightSrcNone,
+            includePending: true,
+            includeRoute: true);
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildEncounterSelectionSync(
+        uint finishedQueuePosition,
+        uint eliteBranchId)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+        var selection = new GridFightSyncResultData();
+        selection.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            EliteBranchSyncInfo = new GridFightEliteBranchSyncInfo { EliteBranchId = eliteBranchId },
+        });
+        notify.ResultList.Add(selection);
+        notify.ResultList.Add(BuildPendingAdvanceSync(finishedQueuePosition).ResultList);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildBattleEndRouteSync()
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+        var routeResult = new GridFightSyncResultData();
+        routeResult.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            LevelInfo = new GridFightLevelSyncInfo
+            {
+                ChapterId = Session.ChapterId,
+                SectionId = Session.SectionId,
+                LayerInfo = BuildLayerInfo(),
+            },
+        });
+        notify.ResultList.Add(routeResult);
+        if (BuildPendingAction() is { } pending)
+        {
+            var pendingResult = new GridFightSyncResultData();
+            pendingResult.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                LockInfo = new GridFightLockInfo
+                {
+                    LockType = GridFightLockType.Gameplay,
+                    LockReason = GridFightLockReason.PendingAction,
+                },
+            });
+            pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+            notify.ResultList.Add(pendingResult);
+        }
+        return notify;
+    }
+
     public GridFightSyncUpdateResultScNotify BuildInvestmentSelectionSync(
         uint finishedQueuePosition,
         uint augmentId)
@@ -771,10 +834,8 @@ public sealed class GridFightManager : BasePlayerManager
                 },
             },
         }));
-        await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildSync(
-            GridFightUpdateSrcType.KgridFightSrcBattleEnd,
-            includePending: win,
-            includeRoute: win)));
+        if (win)
+            await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildBattleEndRouteSync()));
     }
 
     private GridFightGameInfo BuildBasicInfo()
@@ -930,25 +991,68 @@ public sealed class GridFightManager : BasePlayerManager
         var session = Session!;
         var data = new GridFightLayerData
         {
-            NodeType = (uint)session.CurrentNode.NodeType,
-            RewardValue = session.CurrentNode.BasicGoldReward,
+            FightCampId = session.BattlePlan?.CampId ??
+                          session.EncounterOptions.FirstOrDefault()?.BattlePlan.CampId ?? 0,
+            SelectedEliteBranchId = session.CurrentNode.NodeType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch
+                ? session.EliteBranchId
+                : 1,
         };
-        if (session.Enemies.Count > 0)
+        var plans = session.CurrentNode.NodeType == Enums.GridFight.GridFightNodeTypeEnum.EliteBranch &&
+                    session.BattlePlan == null
+            ? session.EncounterOptions.Select(option => (option.BattlePlan, Option: option)).ToList()
+            : session.BattlePlan == null
+                ? []
+                : [(session.BattlePlan, (GridFightEncounterOptionState?)null)];
+        foreach (var (plan, option) in plans)
         {
-            var wave = new GridFightMonsterWaveInfo { WaveId = 1 };
-            wave.MonsterList.Add(session.Enemies.Select(monster => new GridFightMonsterInfo
-            {
-                MonsterId = monster.MonsterID,
-                RoleStar = 1,
-            }));
             var encounter = new GridFightEncounterInfo
             {
-                PenaltyRuleId = session.CurrentNode.PenaltyBonusRuleId,
+                EncounterId = option?.EncounterId ?? 0,
+                EnemyDifficultyAdd = plan.DifficultyAdd,
+                PenaltyRuleId = plan.PenaltyRuleId,
             };
-            encounter.MonsterWaveList.Add(wave);
+            if (option != null)
+                encounter.DropInfo = BuildEncounterDropInfo(option.Quality, session.ChapterId);
+            foreach (var wavePlan in plan.Waves)
+            {
+                var wave = new GridFightMonsterWaveInfo { WaveId = wavePlan.WaveId };
+                wave.MonsterList.Add(wavePlan.Monsters.Select(monster => new GridFightMonsterInfo
+                {
+                    MonsterId = monster.Monster.MonsterID,
+                    RoleStar = monster.RoleStar,
+                }));
+                encounter.MonsterWaveList.Add(wave);
+            }
             data.EncounterList.Add(encounter);
         }
         return new GridFightLayerInfo { Data = data };
+    }
+
+    private static GridFightDropInfo BuildEncounterDropInfo(uint quality, uint chapterId)
+    {
+        var entry = quality switch
+        {
+            1 => new GridFightDropEntry
+            {
+                DropType = GridFightDropType.Coin,
+                Num = chapterId + 1,
+            },
+            2 => new GridFightDropEntry
+            {
+                DropType = GridFightDropType.Refresh,
+                Num = 4,
+            },
+            4 => new GridFightDropEntry
+            {
+                DropType = GridFightDropType.Item,
+                ItemId = 350701,
+                Num = 1,
+            },
+            _ => null,
+        };
+        var result = new GridFightDropInfo();
+        if (entry != null) result.DropList.Add(entry);
+        return result;
     }
 
     private GridFightGameTeamInfo BuildTeamInfo()

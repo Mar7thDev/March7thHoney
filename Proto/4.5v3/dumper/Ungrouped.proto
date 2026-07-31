@@ -5571,7 +5571,7 @@ message DGHPIDMDOJM {
     BLPHONLBNBO OEIBHLMDJKA = 1;
 }
 
-message DGILDLDMGEI {
+message GridFightEliteBranchRerollActionRequest {
 }
 
 message DGKLPPLJBNB {
@@ -12104,8 +12104,8 @@ enum GridFightDropType {
 }
 
 message GridFightEncounterInfo {
-    uint32 EPPHOFDAEMI = 3;
-    uint32 CJADMFDOBAI = 1;
+    uint32 enemy_difficulty_add = 3;
+    uint32 encounter_id = 1;
     GridFightDropInfo drop_info = 12;
     repeated GridFightMonsterWaveInfo monster_wave_list = 7;
     uint32 penalty_rule_id = 15;
@@ -12365,7 +12365,7 @@ message GridFightHandlePendingActionCsReq {
     GridFightInvestmentSelectActionRequest investment_select_action = 1996;
     GridFightInvestmentRerollActionRequest investment_reroll_action = 1960;
     GKLDOELMEIN PKHJLKNGCGH = 1315;
-    OHAINOHGKCM BAKAKODKECM = 1553;
+    GridFightEliteBranchSelectActionRequest elite_branch_select_action = 1553;
     NIDJPBLNDLH JLPOPEAJHMF = 272;
     NNFPCAPDENH KEBDKGKEJDD = 2009;
     GridFightRoundBeginActionRequest round_begin_action = 446;
@@ -12373,7 +12373,7 @@ message GridFightHandlePendingActionCsReq {
     GridFightSupplySelectActionRequest supply_select_action = 1256;
     GridFightSupplyRerollActionRequest supply_reroll_action = 744;
     PDKGKIDCBKA HOKCPPPLJIO = 1742;
-    DGILDLDMGEI EMMPHLKJAJN = 549;
+    GridFightEliteBranchRerollActionRequest elite_branch_reroll_action = 549;
     PCCGPNAFMHP HHNPEHMBDKD = 1037;
     LFONAPFHAOB HHNHGJMOGDD = 1216;
     FNNFHNKHIDD CFDIPFKBFJB = 1464;
@@ -12474,7 +12474,7 @@ message GridFightPendingAction {
     GridFightPortalBuffActionInfo portal_action = 1601;
     GridFightAugmentActionInfo investment_action = 966;
     NGNKIIOHBAI PKHJLKNGCGH = 1028;
-    HNPHLAHJPOB BAKAKODKECM = 505;
+    GridFightEliteBranchActionInfo elite_branch_action = 505;
     LEGPFIAPLOO JLPOPEAJHMF = 1871;
     GridFightRoundBeginActionInfo round_begin_action = 930;
     GridFightReturnPreparationActionInfo return_preparation_action = 180;
@@ -12678,7 +12678,7 @@ message GridFightSyncData {
     uint32 JLOCMDIDPCI = 1047;
     uint32 DNCOOFMDDAM = 1794;
     GridFightDamageSttInfo damage_stat = 1484;
-    KEPIEGKPFIJ FGODNPLCECH = 2006;
+    GridFightEliteBranchSyncInfo elite_branch_sync_info = 2006;
     GridGameNpcInfo EJMDHDJCGDI = 1275;
     GridGameNpcInfo DHLEOLKNAMI = 1425;
     uint32 NJCEFEJBEOP = 373;
@@ -13649,9 +13649,9 @@ message HNKAOFDGLIE {
     CIFCAIEDOLK AEFMMOHKCHJ = 5;
 }
 
-message HNPHLAHJPOB {
-    uint32 PLPJNCDKMAD = 13;
-    uint32 DAEMEBCKHIK = 3;
+message GridFightEliteBranchActionInfo {
+    uint32 reroll_count = 13;
+    uint32 free_reroll_count = 3;
 }
 
 message HOALCJNIJJC {
@@ -15940,8 +15940,8 @@ message KELKOMPBONA {
 message KELNHIOMCNF {
 }
 
-message KEPIEGKPFIJ {
-    uint32 MOADBALHMFD = 9;
+message GridFightEliteBranchSyncInfo {
+    uint32 elite_branch_id = 9;
 }
 
 message KFACLOGFNJF {
@@ -17705,8 +17705,8 @@ message MDJAPHPOABA {
 }
 
 message GridFightLayerData {
-    uint32 node_type = 14;
-    uint32 reward_value = 6;
+    uint32 selected_elite_branch_id = 14;
+    uint32 fight_camp_id = 6;
     repeated GridFightEncounterInfo encounter_list = 3;
 }
 
@@ -19217,8 +19217,8 @@ message NCPJGBCCGGI {
     uint32 CBILPMICEKC = 5;
 }
 
-message NDAMFDIDKGB {
-    uint32 MOADBALHMFD = 14;
+message GridFightUpdateEliteBranchSelectCsReq {
+    uint32 elite_branch_id = 14;
 }
 
 message NDCCLPKPEKJ {
@@ -20268,8 +20268,8 @@ message OHABCOEGDEH {
     repeated GLECNCOBKCJ FIHPPANOOFL = 6;
 }
 
-message OHAINOHGKCM {
-    uint32 MOADBALHMFD = 1;
+message GridFightEliteBranchSelectActionRequest {
+    uint32 elite_branch_id = 1;
 }
 
 message OHBLOLLNHIC {
@@ -24219,7 +24219,7 @@ message SceneMonsterWaveParam {
     uint32 monster_world_level = 3;
     uint32 hard_level_group = 12;
     uint32 elite_group = 7;
-    uint32 IEDEBFCCKNL = 4;
+    uint32 supplemental_elite_group = 4;
 }
 
 message SceneNpcInfo {
@@ -27200,4 +27200,8 @@ enum GridFightGameplayLockReason {
     GridFightGameplayLockReason_Reserved1 = 1;
     GridFightGameplayLockReason_Reserved2 = 2;
     GridFightGameplayLockReason_PendingAction = 3;
+}
+
+message GridFightUpdateEliteBranchSelectScRsp {
+    uint32 retcode = 3;
 }

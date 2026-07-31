@@ -96,6 +96,25 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
+        if (session != null && request.EliteBranchRerollAction != null)
+        {
+            var success = session.RerollEncounter(request.QueuePosition);
+            if (success)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildEncounterRerollSync()));
+            await SendResponse(connection, request.QueuePosition, success);
+            return;
+        }
+        if (session != null && request.EliteBranchSelectAction != null)
+        {
+            var eliteBranchId = request.EliteBranchSelectAction.EliteBranchId;
+            var success = session.SelectEncounter(request.QueuePosition, eliteBranchId);
+            if (success)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildEncounterSelectionSync(request.QueuePosition, eliteBranchId)));
+            await SendResponse(connection, request.QueuePosition, success);
+            return;
+        }
         if (session != null && request.InvestmentRerollAction != null)
         {
             var success = session.RerollInvestment(
@@ -197,6 +216,29 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
         if (request.RoundBeginAction != null) return GridFightPendingRequestKind.RoundBegin;
         if (request.ReturnPreparationAction != null) return GridFightPendingRequestKind.ReturnPreparation;
         return null;
+    }
+}
+
+[Opcode(CmdIds.GridFightUpdateEliteBranchSelectCsReq)]
+public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : Handler<GridFightUpdateEliteBranchSelectCsReq>
+{
+    protected override async Task OnHandle(
+        Connection connection,
+        PlayerInstance player,
+        GridFightUpdateEliteBranchSelectCsReq request)
+    {
+        var manager = player.GridFightManager!;
+        var session = manager.Session;
+        var queuePosition = session?.PendingQueuePosition ?? 0;
+        var success = session != null && session.SelectEncounter(queuePosition, request.EliteBranchId);
+        if (success)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildEncounterSelectionSync(queuePosition, request.EliteBranchId)));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdateEliteBranchSelectScRsp,
+            new GridFightUpdateEliteBranchSelectScRsp
+            {
+                Retcode = success ? 0 : (uint)Retcode.RetFail,
+            }));
     }
 }
 
