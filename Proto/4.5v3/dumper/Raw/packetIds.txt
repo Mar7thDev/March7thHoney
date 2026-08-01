@@ -1975,7 +1975,7 @@
 8574 = GridFightSeasonTalentResetCsReq  // obf: OCFPHHCOIHI; via: registry
 8579 = KAHAOOJHJPK
 8581 = IAABDBBJHOL
-8583 = GridFightEquipDressCsReq  // obf: FDBMEIIMMJD; via: registry
+8583 = GridFightUpdateEquipTrackCsReq  // obf: FDBMEIIMMJD; via: registry
 8585 = OLPFMPIKIPK
 8586 = IBEMBMGFDBJ
 8587 = GridFightWeeklyExtraSeasonExpScRsp  // obf: JEBPPPNJJJM; via: registry
@@ -1987,7 +1987,7 @@
 8611 = IKMOCJBMGOJ
 8618 = FLHIDBDFFKG
 8620 = MCIPOMDGBCA
-8623 = GridFightEquipDressScRsp  // obf: KLLHNFLCDGF; via: registry
+8623 = GridFightUpdateEquipTrackScRsp  // obf: KLLHNFLCDGF; via: registry
 8624 = OIOELLNKEDJ
 8625 = FavourArchiveScRsp  // obf: CECPPJBHMMH; via: registry
 8640 = DHOCOJLJPPA

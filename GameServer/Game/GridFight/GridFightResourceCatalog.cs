@@ -388,6 +388,37 @@ public sealed class GridFightResourceCatalog
         return TakeRandomDistinct(candidates, checked((int)forge.EquipNum));
     }
 
+    public uint RollEquipment(GridFightEquipCategoryEnum category, uint excludedEquipmentId)
+    {
+        var candidates = GameData.GridFightEquipmentData.Values
+            .Where(equipment => equipment.EquipCategory == category && equipment.ID != excludedEquipmentId)
+            .Select(equipment => equipment.ID)
+            .Order()
+            .ToList();
+        return candidates.Count == 0 ? 0 : candidates[_random.Next(candidates.Count)];
+    }
+
+    public IReadOnlyList<uint> RollRecommendedEquipment(uint roleId, string frontBackType, int count)
+    {
+        if (count <= 0 || !GameData.GridFightRoleRecommendEquipData.TryGetValue(roleId, out var rows)) return [];
+        var row = rows.FirstOrDefault(candidate =>
+                      string.Equals(candidate.FrontBackType, frontBackType, StringComparison.OrdinalIgnoreCase)) ??
+                  rows.FirstOrDefault();
+        if (row == null) return [];
+
+        var firstCount = (count + 1) / 2;
+        var selected = TakeRandomDistinct(row.FirstRecommendEquipList.Distinct().ToList(), firstCount).ToList();
+        selected.AddRange(TakeRandomDistinct(
+            row.SecondRecommendEquipList.Where(id => !selected.Contains(id)).Distinct().ToList(),
+            count - selected.Count));
+        if (selected.Count < count)
+            selected.AddRange(TakeRandomDistinct(
+                row.FirstRecommendEquipList.Concat(row.SecondRecommendEquipList)
+                    .Where(id => !selected.Contains(id)).Distinct().ToList(),
+                count - selected.Count));
+        return TakeRandomDistinct(selected, selected.Count);
+    }
+
     public uint GetInvestmentDifficultyAdd(uint divisionId, uint augmentId)
     {
         if (!GameData.GridFightDivisionInfoData.TryGetValue(divisionId, out var division) ||

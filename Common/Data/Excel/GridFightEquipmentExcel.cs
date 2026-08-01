@@ -12,6 +12,9 @@ public partial class GridFightEquipmentExcel : ExcelResource
     public uint ID { get; set; }
 
     [JsonConverter(typeof(StringEnumConverter))]
+    public GridFightEquipmentTypeEnum EquipType { get; set; }
+
+    [JsonConverter(typeof(StringEnumConverter))]
     public GridFightEquipCategoryEnum EquipCategory { get; set; }
 
 

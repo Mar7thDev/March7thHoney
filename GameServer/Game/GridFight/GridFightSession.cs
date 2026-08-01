@@ -46,6 +46,7 @@ public sealed class GridFightRoleState
     public uint RoleId { get; init; }
     public uint Star { get; set; } = 1;
     public uint Position { get; set; }
+    public List<uint> EquippedEquipmentUniqueIds { get; } = [];
 }
 
 public sealed class GridFightEquipmentState
@@ -169,7 +170,7 @@ public sealed record GridFightBattleSettlementResult(
         GridFightBattleStatistics.Empty);
 }
 
-public sealed class GridFightSession
+public sealed partial class GridFightSession
 {
     private const int InvestmentOfferCount = 3;
     private const int SupplyOfferCount = 5;
@@ -249,7 +250,19 @@ public sealed class GridFightSession
         PrepareCurrentNode();
     }
 
-    public uint MaxActiveRoles => _catalog.GetPlayerLevel(PlayerLevel).AvatarMaxNumber;
+    public uint MaxActiveRoles
+    {
+        get
+        {
+            var baseCount = _catalog.GetPlayerLevel(PlayerLevel).AvatarMaxNumber;
+            var equipmentBonus = Equipments
+                .Select(equipment => GameData.GridFightEquipmentData.GetValueOrDefault(equipment.EquipmentId))
+                .Where(equipment => equipment?.EquipFunc == GridFightEquipFuncTypeEnum.AvatarMaxNumberAdd)
+                .Aggregate(0UL, (total, equipment) =>
+                    total + equipment!.EquipFuncParamList.FirstOrDefault());
+            return (uint)Math.Min(uint.MaxValue, (ulong)baseCount + equipmentBonus);
+        }
+    }
 
     public bool HandlePending(uint queuePosition, GridFightPendingRequestKind kind, uint portalId = 0)
     {
@@ -423,7 +436,7 @@ public sealed class GridFightSession
             Position = GetFreeBenchPosition(),
         };
         Roles.Add(role);
-        var mergeSteps = MergeRoles(role.RoleId);
+        var mergeSteps = MergeRoles(role.RoleId, role);
         var acquisition = new GridFightRoleAcquisitionResult(
             true,
             [role],
@@ -855,7 +868,7 @@ public sealed class GridFightSession
             };
             Roles.Add(role);
             acquiredRoles.Add(role);
-            mergeSteps.AddRange(MergeRoles(role.RoleId));
+            mergeSteps.AddRange(MergeRoles(role.RoleId, role));
         }
         return FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
             true,
@@ -1149,7 +1162,7 @@ public sealed class GridFightSession
             });
     }
 
-    private List<GridFightRoleMergeStep> MergeRoles(uint roleId)
+    private List<GridFightRoleMergeStep> MergeRoles(uint roleId, GridFightRoleState? anchor = null)
     {
         var steps = new List<GridFightRoleMergeStep>();
         while (true)
@@ -1160,16 +1173,22 @@ public sealed class GridFightSession
                 .FirstOrDefault(grouping => grouping.Count() >= 3 &&
                     GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | (grouping.Key + 1)));
             if (group == null) return steps;
-            var merge = group.OrderBy(role => role.UniqueId).Take(3).ToList();
+            var ordered = group.OrderBy(role => role.UniqueId).ToList();
+            var merge = anchor != null && ordered.Contains(anchor)
+                ? new[] { anchor }.Concat(ordered.Where(role => role != anchor).Take(2)).ToList()
+                : ordered.Take(3).ToList();
+            var retained = anchor != null && merge.Contains(anchor) ? anchor : merge[0];
             foreach (var role in merge) Roles.Remove(role);
             var mergedRole = new GridFightRoleState
             {
                 UniqueId = _nextEntityUniqueId++,
                 RoleId = roleId,
                 Star = group.Key + 1,
-                Position = merge[0].Position,
+                Position = retained.Position,
             };
+            mergedRole.EquippedEquipmentUniqueIds.AddRange(retained.EquippedEquipmentUniqueIds);
             Roles.Add(mergedRole);
+            anchor = mergedRole;
             steps.Add(new GridFightRoleMergeStep(
                 merge.Select(role => role.UniqueId).ToList(),
                 mergedRole));

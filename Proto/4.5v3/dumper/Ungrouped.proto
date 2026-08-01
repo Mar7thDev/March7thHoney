@@ -591,8 +591,8 @@ message AMEMKFNABGG {
     uint32 ODHIDLBAPIG = 4;
 }
 
-message AMFIFNOCDOF {
-    uint32 MDNAGANGNKK = 14;
+message GridFightConsumableRecommendTargetInfo {
+    uint32 role_unique_id = 14;
 }
 
 message AMKALFJHFJP {
@@ -1716,8 +1716,8 @@ message BCPMPHNADMN {
     uint32 LMEDKDNNNKL = 10;
 }
 
-message BDDDLOFNCHN {
-    uint32 MDNAGANGNKK = 15;
+message GridFightConsumableRemoveTargetInfo {
+    uint32 role_unique_id = 15;
 }
 
 enum BDEJGKKACMA {
@@ -1755,11 +1755,11 @@ message BDJLHJDPEEK {
     uint32 unique_id = 6;
 }
 
-message BDNCOOANAEA {
-    repeated uint32 EHDAKFEHPMF = 15;
+message GridFightEquipCraftCsReq {
+    repeated uint32 material_unique_id_list = 15;
     GridFightEquipCraftSource source = 9;
-    uint32 NNFECNICMOD = 4;
-    uint32 JCNLCNFHHDG = 10;
+    uint32 track_id = 4;
+    uint32 target_equipment_id = 10;
 }
 
 message BDOEDOEBFAJ {
@@ -1794,8 +1794,8 @@ enum BEAIKEEANDP {
     BEAIKEEANDP_LONKNKFDPII = 2;
 }
 
-message BEBIJAKFNLO {
-    uint32 PEBCBLBLMPH = 15;
+message GridFightConsumableUpgradeTargetInfo {
+    uint32 equipment_unique_id = 15;
 }
 
 message BEBNHPCBMPF {
@@ -5812,10 +5812,10 @@ message DMGODFDFPEI {
     uint32 MNMJCNOLIII = 8;
 }
 
-enum DMGOKGLBNJJ {
-    DMGOKGLBNJJ_IMLHGIMCJGG = 0;
-    DMGOKGLBNJJ_GPAPBPFNKBI = 1;
-    DMGOKGLBNJJ_PBKFJGEFCID = 2;
+enum GridFightEquipDressSource {
+    GridFightEquipDressSource_None = 0;
+    GridFightEquipDressSource_Manual = 1;
+    GridFightEquipDressSource_Recommend = 2;
 }
 
 message DMHADFNOIGP {
@@ -9279,8 +9279,8 @@ message GBHAHDBDOIE {
     repeated OMLMOJIGLEE KJFEFFGPNFF = 13;
 }
 
-message GBJHJGCOJBC {
-    uint32 MDNAGANGNKK = 3;
+message GridFightConsumableCopyTargetInfo {
+    uint32 role_unique_id = 3;
 }
 
 message GBJMLKNLEPD {
@@ -12051,11 +12051,11 @@ message GridFightConsumableInfo {
 }
 
 message GridFightConsumableTargetInfo {
-    BDDDLOFNCHN AALCFBOGFKP = 492;
-    HPJKBFKAKJH IMILGHELNBJ = 1986;
-    BEBIJAKFNLO KMCBBKIHBKF = 1426;
-    GBJHJGCOJBC AEOIKFNKAAP = 1659;
-    AMFIFNOCDOF HLKKCAFGCIJ = 1192;
+    GridFightConsumableRemoveTargetInfo remove_target = 492;
+    GridFightConsumableRollTargetInfo roll_target = 1986;
+    GridFightConsumableUpgradeTargetInfo upgrade_target = 1426;
+    GridFightConsumableCopyTargetInfo copy_target = 1659;
+    GridFightConsumableRecommendTargetInfo recommend_target = 1192;
 }
 
 message GridFightConsumableUpdateInfo {
@@ -12147,8 +12147,8 @@ enum GridFightEquipCraftSource {
     GridFightEquipCraftSource_KGridFightEquipCraftSourceRecommend = 3;
 }
 
-message GridFightEquipDressScRsp {
-    uint32 PLDKENJLKME = 2;
+message GridFightUpdateEquipTrackScRsp {
+    uint32 retcode = 2;
 }
 
 enum GridFightEquipTrackSource {
@@ -12374,7 +12374,7 @@ message GridFightHandlePendingActionCsReq {
     GridFightSupplyRerollActionRequest supply_reroll_action = 744;
     PDKGKIDCBKA HOKCPPPLJIO = 1742;
     GridFightEliteBranchRerollActionRequest elite_branch_reroll_action = 549;
-    PCCGPNAFMHP HHNPEHMBDKD = 1037;
+    GridFightRecommendEquipmentSelectActionRequest recommend_equipment_select_action = 1037;
     LFONAPFHAOB HHNHGJMOGDD = 1216;
     FNNFHNKHIDD CFDIPFKBFJB = 1464;
     IDOJADMFGKF NFBJINKLLLK = 681;
@@ -12480,7 +12480,7 @@ message GridFightPendingAction {
     GridFightReturnPreparationActionInfo return_preparation_action = 180;
     GridFightSupplyActionInfo supply_action = 417;
     MHJIOJNNPDM HOKCPPPLJIO = 1935;
-    GridFightRecommendEquipmentActionInfo HHNPEHMBDKD = 974;
+    GridFightRecommendEquipmentActionInfo recommend_equipment_action = 974;
     GridFightForgeRoleActionInfo HHNHGJMOGDD = 158;
     FKJMGFOPHHN CFDIPFKBFJB = 283;
     GEIBJKJDOHO LAJGNNBOLDG = 464;
@@ -12534,7 +12534,7 @@ message GridFightProjectionInfo {
 }
 
 message GridFightRecommendEquipmentActionInfo {
-    repeated uint32 KBECJMLLCEJ = 12;
+    repeated uint32 equipment_id_list = 12;
 }
 
 message GridFightRecycleRoleCsReq {
@@ -12671,7 +12671,7 @@ message GridFightSyncData {
     uint32 finish_pending_action_pos = 1820;
     uint32 KNFOCCPOJEA = 194;
     uint32 BEPMODICONA = 178;
-    GridFightTraitSyncInfo HKHJJCMKKJE = 1264;
+    GridFightTraitSyncInfo trait_info = 1264;
     GridFightTraitTrackSyncInfo HGNDMOODNKF = 1102;
     uint32 keep_win_count = 1933;
     uint32 MICEOJBAKGN = 1117;
@@ -12757,7 +12757,7 @@ message GridFightTraitInfo {
 }
 
 message GridFightTraitSyncInfo {
-    GridFightTraitEffectInfo ENPLACDLJGA = 9;
+    GridFightTraitEffectInfo trait_effect_info = 9;
     bool is_recover = 10;
     uint32 trait_id = 15;
 }
@@ -12876,14 +12876,14 @@ message GridGameRoleInfo {
     uint32 unique_id = 10;
     uint32 pos = 3;
     uint32 id = 9;
-    repeated uint32 PNJIPHJJONG = 13;
+    repeated uint32 equipped_equipment_unique_id_list = 13;
     map<uint32, uint32> convert_property_to_fixpoint = 4;
     uint32 role_star = 11;
     map<string, uint32> grid_fight_value_init_component = 8;
 }
 
 message GridGameTraitInfo {
-    repeated uint32 OLPPMEAMFFO = 8;
+    repeated uint32 member_role_unique_id_list = 8;
     uint32 CGIEODOGAIE = 10;
     repeated GridFightTraitEffectInfo trait_effect_list = 9;
     uint32 trait_id = 7;
@@ -13736,9 +13736,9 @@ message HPIPKICGABB {
     AMKALFJHFJP AMIBPAGBMFP = 5;
 }
 
-message HPJKBFKAKJH {
-    uint32 PEBCBLBLMPH = 14;
-    uint32 MDNAGANGNKK = 4;
+message GridFightConsumableRollTargetInfo {
+    uint32 equipment_unique_id = 14;
+    uint32 role_unique_id = 4;
 }
 
 message HPMNCENLCAB {
@@ -15356,7 +15356,7 @@ message JINFLJMPPHN {
     uint32 OJPGDDFJCHB = 12;
 }
 
-message JIOMOCFOMOA {
+message GridFightEquipDressScRsp {
     uint32 retcode = 10;
 }
 
@@ -15704,7 +15704,7 @@ message KAAJEKKIDIE {
     EMHEOJNCGFH equip = 15;
 }
 
-message KAHAOOJHJPK {
+message GridFightUseConsumableScRsp {
     uint32 retcode = 13;
 }
 
@@ -16421,10 +16421,10 @@ message KOFMGCNIMIN {
     uint32 total_count = 15;
 }
 
-message KOIAMDKEFKH {
-    uint32 MDNAGANGNKK = 2;
-    uint32 PEBCBLBLMPH = 5;
-    DMGOKGLBNJJ CPFCNOAJCGK = 8;
+message GridFightEquipDressCsReq {
+    uint32 role_unique_id = 2;
+    uint32 equipment_unique_id = 5;
+    GridFightEquipDressSource source = 8;
 }
 
 message KPBAIEMEFFH {
@@ -17760,7 +17760,7 @@ message MFIJFCEAKHA {
     bool is_active = 1;
 }
 
-message MFLDDCIFAJN {
+message GridFightEquipCraftScRsp {
     uint32 retcode = 15;
 }
 
@@ -18161,10 +18161,10 @@ message MOIOKCDLNHE {
     bool HIFMFMBCODL = 7;
 }
 
-message MOIONLDJGJI {
+message GridFightUseConsumableCsReq {
     uint32 group_id = 12;
     uint32 item_id = 7;
-    GridFightConsumableTargetInfo param = 4;
+    GridFightConsumableTargetInfo target = 4;
 }
 
 message MOJCEJIPPGO {
@@ -20969,8 +20969,8 @@ message PCBOLEAFMDN {
     repeated uint32 FOLMLBOLGEM = 7;
 }
 
-message PCCGPNAFMHP {
-    uint32 BCIGPPFMLJB = 7;
+message GridFightRecommendEquipmentSelectActionRequest {
+    uint32 equipment_id = 7;
 }
 
 message PCFJAHNECFM {

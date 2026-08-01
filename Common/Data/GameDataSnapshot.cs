@@ -73,7 +73,7 @@ public partial class GameDataSnapshot
     public Dictionary<uint, GridFightBasicBonusPoolV2Excel> GridFightBasicBonusPoolV2Data { get; set; } = [];
     public Dictionary<uint, GridFightRoleBasicInfoExcel> GridFightRoleBasicInfoData { get; set; } = [];
     public Dictionary<uint, GridFightRoleStarExcel> GridFightRoleStarData { get; set; } = [];
-    public Dictionary<uint, GridFightRoleRecommendEquipExcel> GridFightRoleRecommendEquipData { get; set; } = [];
+    public Dictionary<uint, List<GridFightRoleRecommendEquipExcel>> GridFightRoleRecommendEquipData { get; set; } = [];
     public Dictionary<uint, GridFightCombinationBonusExcel> GridFightCombinationBonusData { get; set; } = [];
     public Dictionary<uint, GridFightDivisionInfoExcel> GridFightDivisionInfoData { get; set; } = [];
     public Dictionary<uint, GridFightDivisionStageExcel> GridFightDivisionStageData { get; set; } = [];
@@ -286,6 +286,7 @@ public partial class GridFightRuntimeDataSnapshot
     public Dictionary<uint, List<uint>> SeasonAugmentData { get; set; } = [];
     public Dictionary<uint, GridFightBonusPoolV2Excel> BonusPoolV2Data { get; set; } = [];
     public Dictionary<uint, GridFightVictoryBonusExcel> VictoryBonusData { get; set; } = [];
+    public Dictionary<uint, GridFightCraftConfigExcel> CraftConfigData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -554,6 +555,7 @@ public static partial class GameData
                 SeasonAugmentData = GameData.GridFightSeasonAugmentData,
                 BonusPoolV2Data = GameData.GridFightBonusPoolV2Data,
                 VictoryBonusData = GameData.GridFightVictoryBonusData,
+                CraftConfigData = GameData.GridFightCraftConfigData,
             },
         };
     }
@@ -819,5 +821,6 @@ public static partial class GameData
         GameData.GridFightSeasonAugmentData = gridFightRuntimeData.SeasonAugmentData;
         GameData.GridFightBonusPoolV2Data = gridFightRuntimeData.BonusPoolV2Data;
         GameData.GridFightVictoryBonusData = gridFightRuntimeData.VictoryBonusData;
+        GameData.GridFightCraftConfigData = gridFightRuntimeData.CraftConfigData;
     }
 }
