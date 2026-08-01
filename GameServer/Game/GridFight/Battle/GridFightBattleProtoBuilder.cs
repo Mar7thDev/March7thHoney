@@ -73,6 +73,8 @@ public static class GridFightBattleProtoBuilder
             MaxActiveRoleCount = session.MaxActiveRoles,
             PenaltyBonusRuleId = session.CurrentPenaltyRuleId,
             EnemyDifficultyLevel = session.EffectiveEnemyDifficultyLevel,
+            EnemyHpPercent = session.HackConsole?.EnemyHpPercent ??
+                             GridFightSpecialFeatures.DefaultEnemyHpPercent,
             Season = session.Season,
             DivisionId = session.DivisionId,
             ActiveRoleCount = (uint)activeRoles.Count,
@@ -116,7 +118,9 @@ public static class GridFightBattleProtoBuilder
                     StateInfo = new GridFightRoleBattleStateInfo(),
                 },
             };
-            GridFightManager.PopulateRolePropertyScales(roleInfo.ConvertPropertyToFixpoint);
+            GridFightManager.PopulateRolePropertyScales(
+                roleInfo.ConvertPropertyToFixpoint,
+                session.HasCyreneCombatEnhancement);
             gridFightInfo.GridGameRoleList.Add(roleInfo);
             foreach (var key in basic.RoleSavedValueList)
                 gridFightInfo.RoleSavedValues[key] = 0;

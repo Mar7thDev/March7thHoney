@@ -216,6 +216,20 @@ public sealed class GridFightResourceCatalog
         }
         if (GameData.GridFightCampData.Values.All(row => row.SeasonID != CurrentSeason))
             errors.Add("current season has no monster camp");
+        if (!GameData.GridFightRoleStarData.ContainsKey(
+                GridFightSpecialFeatures.CyreneRoleId << 4 | 3) ||
+            !GameData.GridFightRoleStarData.ContainsKey(
+                GridFightSpecialFeatures.SilverWolfFiveCostRoleId << 4 | 3))
+            errors.Add("GridFight special roles have no three-star resource");
+        if (!GridFightSpecialFeatures.TryResolveSilverWolfEquipmentId(out _))
+            errors.Add("Silver Wolf hack equipment is missing");
+        if (GridFightSpecialFeatures.HackOrbIds.Any(id =>
+                !GridFightSpecialFeatures.TryResolveOrb(id, out _)))
+            errors.Add("GridFight hack orb rewards are incomplete");
+        if (!GridFightSpecialFeatures.TryResolveBonus(GridFightSpecialFeatures.CyreneWealthBonusId, out _) ||
+            !GridFightSpecialFeatures.TryResolveBonus(GridFightSpecialFeatures.CyreneInsigniaBonusId, out _) ||
+            !GridFightSpecialFeatures.TryResolveBonus(GridFightSpecialFeatures.CyreneHeroBonusId, out _))
+            errors.Add("Cyrene special goods rewards are incomplete");
         return errors;
     }
 
@@ -308,6 +322,21 @@ public sealed class GridFightResourceCatalog
         var roles = TakeRandomDistinct(RolePool.ToList(), count);
         return roles.Select(role =>
             (role.ID, BasicEquipmentPool[_random.Next(BasicEquipmentPool.Count)])).ToList();
+    }
+
+    public IReadOnlyList<uint> RollForgeEquipment(uint forgeItemId)
+    {
+        if (!GameData.GridFightForgeData.TryGetValue(forgeItemId, out var forge) ||
+            forge.FuncType != GridFightForgeFuncTypeEnum.Equip)
+            return [];
+        var category = (GridFightEquipCategoryEnum)forge.ParamList.FirstOrDefault();
+        var candidates = GameData.GridFightEquipmentData.Values
+            .Where(row => row.EquipCategory == category)
+            .Select(row => row.ID)
+            .Distinct()
+            .ToList();
+        if (candidates.Count < forge.EquipNum) return [];
+        return TakeRandomDistinct(candidates, checked((int)forge.EquipNum));
     }
 
     public uint GetInvestmentDifficultyAdd(uint divisionId, uint augmentId)

@@ -71,6 +71,7 @@ public sealed class GridFightShopSlot
 {
     public uint Index { get; init; }
     public uint RoleId { get; init; }
+    public uint SpecialGoodsId { get; init; }
     public uint Star { get; init; } = 1;
     public uint Price { get; init; }
     public bool SoldOut { get; set; }
@@ -97,6 +98,7 @@ public sealed record GridFightRoleAcquisitionResult(
     IReadOnlyList<GridFightRoleState> FinalMergedRoles)
 {
     public static GridFightRoleAcquisitionResult Failed { get; } = new(false, [], [], []);
+    public IReadOnlyList<GridFightRoleUnlockEffect> UnlockEffects { get; init; } = [];
 }
 
 public sealed class GridFightSession
@@ -110,7 +112,12 @@ public sealed class GridFightSession
     private uint _nextRoleUniqueId = 1;
     private uint _nextEquipmentUniqueId = 1;
     private uint _nextOrbUniqueId = 1;
+    private uint _nextForgeUniqueId = 1;
+    private uint _nextGameItemUniqueId = 100;
     private bool _orbClaimed;
+    private bool _cyrenePoemShopUnlocked;
+    private bool _silverWolfHackUnlocked;
+    private uint? _traitEffectSelectEnhanceQueuePosition;
     private readonly HashSet<uint> _rerolledInvestmentIds = [];
     private uint _encounterRerollCount;
 
@@ -146,7 +153,11 @@ public sealed class GridFightSession
     public List<GridFightEquipmentState> Equipments { get; } = [];
     public List<GridFightOrbState> Orbs { get; } = [];
     public List<GridFightConsumableState> Consumables { get; } = [];
+    public List<GridFightForgeItemState> ForgeItems { get; } = [];
     public List<GridFightShopSlot> Shop { get; } = [];
+    public bool HasCyreneCombatEnhancement { get; private set; }
+    public GridFightHackConsoleState? HackConsole { get; private set; }
+    public uint? TraitEffectSelectEnhanceQueuePosition => _traitEffectSelectEnhanceQueuePosition;
 
     public GridFightSession(
         GridFightResourceCatalog catalog,
@@ -357,6 +368,7 @@ public sealed class GridFightSession
         if (!AdvanceToNextNode()) return GridFightSupplySelectionResult.Failed;
         Phase = GridFightSessionPhase.AwaitingSupplyRound;
         PendingQueuePosition += SupplySelectionQueueAdvance;
+        acquisition = FinalizeRoleAcquisition(acquisition);
         return new GridFightSupplySelectionResult(
             true,
             acquisition,
@@ -385,9 +397,9 @@ public sealed class GridFightSession
         return Gold;
     }
 
-    public bool TryAddRole(uint roleId, uint star, out GridFightSessionChange change)
+    public bool TryAddRole(uint roleId, uint star, out GridFightRoleAcquisitionResult acquisition)
     {
-        change = GridFightSessionChange.Failed;
+        acquisition = GridFightRoleAcquisitionResult.Failed;
         if (!GameData.GridFightRoleBasicInfoData.ContainsKey(roleId) ||
             !GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | star))
             return false;
@@ -400,7 +412,7 @@ public sealed class GridFightSession
             Position = GetFreeBenchPosition(),
         };
         Roles.Add(role);
-        change = new GridFightSessionChange(true, [role], [], []);
+        acquisition = FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(true, [role], [], []));
         return true;
     }
 
@@ -434,22 +446,261 @@ public sealed class GridFightSession
     public bool TryAddConsumable(
         uint itemId,
         out GridFightConsumableState consumable,
-        out bool isNew)
+        out bool isNew,
+        uint count = 1)
     {
         consumable = null!;
         isNew = false;
-        if (!GameData.GridFightConsumablesData.ContainsKey(itemId)) return false;
+        if (!GameData.GridFightConsumablesData.ContainsKey(itemId) || count == 0) return false;
 
         consumable = Consumables.FirstOrDefault(item => item.ItemId == itemId)!;
         if (consumable == null)
         {
-            consumable = new GridFightConsumableState { ItemId = itemId, Count = 1 };
+            consumable = new GridFightConsumableState { ItemId = itemId, Count = count };
             Consumables.Add(consumable);
             isNew = true;
             return true;
         }
 
-        if (consumable.Count < uint.MaxValue) consumable.Count++;
+        consumable.Count = (uint)Math.Min(uint.MaxValue, (ulong)consumable.Count + count);
+        return true;
+    }
+
+    public bool IsSpecialGoodsPurchase(IReadOnlyList<uint> indices)
+    {
+        if (indices.Count == 0) return false;
+        return indices.All(index => Shop.FirstOrDefault(slot => slot.Index == index) is
+        {
+            SoldOut: false,
+            SpecialGoodsId: not 0,
+        });
+    }
+
+    public IReadOnlyList<GridFightSpecialGoodsPurchaseResult> BuySpecialGoods(IReadOnlyList<uint> indices)
+    {
+        if (Phase != GridFightSessionPhase.Preparing ||
+            indices.Count == 0 ||
+            indices.Distinct().Count() != indices.Count ||
+            !IsSpecialGoodsPurchase(indices))
+            return [];
+
+        var results = new List<GridFightSpecialGoodsPurchaseResult>();
+        foreach (var index in indices)
+        {
+            var slot = Shop.Single(goods => goods.Index == index);
+            var application = ApplyCyreneSpecialGoods(slot.SpecialGoodsId);
+            if (!application.Success) return [];
+            slot.SoldOut = true;
+            results.Add(new GridFightSpecialGoodsPurchaseResult(index, slot.SpecialGoodsId, application));
+        }
+        return results;
+    }
+
+    public IReadOnlyList<GridFightRewardApplication> OpenOrbs(
+        IReadOnlyList<uint> uniqueIds,
+        bool takeAll)
+    {
+        var selected = takeAll
+            ? Orbs.ToList()
+            : uniqueIds.Distinct()
+                .Select(uniqueId => Orbs.FirstOrDefault(orb => orb.UniqueId == uniqueId))
+                .Where(orb => orb != null)
+                .Cast<GridFightOrbState>()
+                .ToList();
+        if (selected.Count == 0 || (!takeAll && selected.Count != uniqueIds.Distinct().Count())) return [];
+
+        var applications = new List<GridFightRewardApplication>();
+        foreach (var orb in selected)
+        {
+            if (!GridFightSpecialFeatures.TryResolveOrb(orb.OrbItemId, out var rewards)) return [];
+            var application = ApplyRewards(rewards, orb.UniqueId, orb.OrbItemId);
+            if (!application.Success) return [];
+            Orbs.Remove(orb);
+            applications.Add(application);
+        }
+        return applications;
+    }
+
+    public GridFightTraitEnhanceActivationResult ActivateSilverWolfHackConsole(
+        uint queuePosition,
+        uint enhanceOptionId)
+    {
+        if (_traitEffectSelectEnhanceQueuePosition != queuePosition ||
+            enhanceOptionId != GridFightSpecialFeatures.SilverWolfEnhanceOptionId ||
+            HackConsole != null)
+            return GridFightTraitEnhanceActivationResult.Failed;
+
+        if (!GridFightSpecialFeatures.TryResolveSilverWolfEquipmentId(out var equipmentId) ||
+            !TryAddEquipment(equipmentId, out var equipment, GridFightSpecialFeatures.HackEquipmentSource))
+            return GridFightTraitEnhanceActivationResult.Failed;
+
+        HackConsole = new GridFightHackConsoleState { GameItemUniqueId = _nextGameItemUniqueId++ };
+        _traitEffectSelectEnhanceQueuePosition = null;
+        return new GridFightTraitEnhanceActivationResult(true, queuePosition, equipment);
+    }
+
+    public GridFightHackOptionResult UseHackOption(uint optionId, uint enemyHpPercent)
+    {
+        var console = HackConsole;
+        if (console == null) return GridFightHackOptionResult.Failed;
+        var application = new GridFightRewardApplication { Success = true };
+
+        switch (optionId)
+        {
+            case 0 when enemyHpPercent is >= GridFightSpecialFeatures.MinimumEnemyHpPercent and
+                <= GridFightSpecialFeatures.MaximumEnemyHpPercent:
+                console.EnemyHpPercent = enemyHpPercent;
+                break;
+            case GridFightSpecialFeatures.HackAddGoldOptionId when console.RemainingGoldActions > 0:
+                console.RemainingGoldActions--;
+                AdjustGold(checked((int)GridFightSpecialFeatures.HackGoldPerAction));
+                application.GoldChanged = true;
+                break;
+            case GridFightSpecialFeatures.HackFullHealOptionId when console.RemainingHealActions > 0:
+                console.RemainingHealActions--;
+                LineupHp = MaxLineupHp;
+                application.LineupHpChanged = true;
+                break;
+            case GridFightSpecialFeatures.HackGrantOrbOptionId when console.RemainingOrbActions > 0:
+                var index = GridFightSpecialFeatures.HackOrbActionCount - console.RemainingOrbActions;
+                if (!TryAddOrb(GridFightSpecialFeatures.HackOrbIds[checked((int)index)], out var orb))
+                    return GridFightHackOptionResult.Failed;
+                console.RemainingOrbActions--;
+                application.AddedOrbs.Add(orb);
+                break;
+            default:
+                return GridFightHackOptionResult.Failed;
+        }
+
+        return new GridFightHackOptionResult(true, optionId, application);
+    }
+
+    private GridFightRewardApplication ApplyCyreneSpecialGoods(uint specialGoodsId)
+    {
+        switch (specialGoodsId)
+        {
+            case GridFightSpecialFeatures.CyreneHealGoodsId:
+                LineupHp = (uint)Math.Min(MaxLineupHp, (ulong)LineupHp + GridFightSpecialFeatures.CyreneHealAmount);
+                return new GridFightRewardApplication { Success = true, LineupHpChanged = true };
+            case GridFightSpecialFeatures.CyreneWealthGoodsId:
+                return GridFightSpecialFeatures.TryResolveBonus(
+                    GridFightSpecialFeatures.CyreneWealthBonusId,
+                    out var wealthRewards)
+                    ? ApplyRewards(wealthRewards)
+                    : new GridFightRewardApplication();
+            case GridFightSpecialFeatures.CyreneInsigniaGoodsId:
+                return GridFightSpecialFeatures.TryResolveBonus(
+                    GridFightSpecialFeatures.CyreneInsigniaBonusId,
+                    out var insigniaRewards)
+                    ? ApplyRewards(insigniaRewards)
+                    : new GridFightRewardApplication();
+            case GridFightSpecialFeatures.CyreneCombatGoodsId:
+                HasCyreneCombatEnhancement = true;
+                return new GridFightRewardApplication { Success = true, RolePropertiesChanged = true };
+            case GridFightSpecialFeatures.CyreneHeroGoodsId:
+                return GridFightSpecialFeatures.TryResolveBonus(
+                    GridFightSpecialFeatures.CyreneHeroBonusId,
+                    out var heroRewards)
+                    ? ApplyRewards(heroRewards)
+                    : new GridFightRewardApplication();
+            default:
+                return new GridFightRewardApplication();
+        }
+    }
+
+    private GridFightRewardApplication ApplyRewards(
+        IReadOnlyList<GridFightRewardEntry> rewards,
+        uint sourceUniqueId = 0,
+        uint sourceItemId = 0)
+    {
+        var application = new GridFightRewardApplication
+        {
+            Success = true,
+            SourceUniqueId = sourceUniqueId,
+            SourceItemId = sourceItemId,
+        };
+        foreach (var reward in rewards)
+        {
+            application.Drops.Add(reward);
+            switch (reward.Type)
+            {
+                case GridFightBonusTypeEnum.Gold:
+                    Gold = (uint)Math.Min(uint.MaxValue, (ulong)Gold + reward.Count);
+                    application.GoldChanged = true;
+                    break;
+                case GridFightBonusTypeEnum.Exp:
+                    var previousLevel = PlayerLevel;
+                    var previousExp = PlayerExp;
+                    AddPlayerExp(reward.Count);
+                    application.PlayerLevelChanged |= PlayerLevel != previousLevel;
+                    application.PlayerExpChanged |= PlayerExp != previousExp;
+                    break;
+                case GridFightBonusTypeEnum.SpecificAvatar:
+                    for (var index = 0u; index < reward.Count; index++)
+                    {
+                        if (!TryAddRole(reward.ItemId, reward.RoleStar == 0 ? 1 : reward.RoleStar, out var acquisition))
+                            return new GridFightRewardApplication();
+                        application.RoleAcquisitions.Add(acquisition);
+                    }
+                    break;
+                case GridFightBonusTypeEnum.Item:
+                    if (GameData.GridFightEquipmentData.ContainsKey(reward.ItemId))
+                    {
+                        for (var index = 0u; index < reward.Count; index++)
+                        {
+                            if (!TryAddEquipment(reward.ItemId, out var equipment))
+                                return new GridFightRewardApplication();
+                            application.AddedEquipments.Add(equipment);
+                        }
+                    }
+                    else if (GameData.GridFightConsumablesData.ContainsKey(reward.ItemId))
+                    {
+                        if (!TryAddConsumable(reward.ItemId, out var consumable, out var isNew, reward.Count))
+                            return new GridFightRewardApplication();
+                        application.ConsumableChanges.Add(new GridFightConsumableChange(consumable, isNew));
+                    }
+                    else if (GameData.GridFightForgeData.ContainsKey(reward.ItemId))
+                    {
+                        for (var index = 0u; index < reward.Count; index++)
+                        {
+                            if (!TryAddForgeItem(reward.ItemId, out var forgeItem))
+                                return new GridFightRewardApplication();
+                            application.AddedForgeItems.Add(forgeItem);
+                        }
+                    }
+                    else
+                    {
+                        return new GridFightRewardApplication();
+                    }
+                    break;
+                case GridFightBonusTypeEnum.Orb:
+                    for (var index = 0u; index < reward.Count; index++)
+                    {
+                        if (!TryAddOrb(reward.ItemId, out var orb)) return new GridFightRewardApplication();
+                        application.AddedOrbs.Add(orb);
+                    }
+                    break;
+                default:
+                    return new GridFightRewardApplication();
+            }
+        }
+        return application;
+    }
+
+    private bool TryAddForgeItem(uint forgeItemId, out GridFightForgeItemState forgeItem)
+    {
+        forgeItem = null!;
+        var choices = _catalog.RollForgeEquipment(forgeItemId);
+        var position = GetFreeBenchPosition();
+        if (choices.Count == 0 || position == 0) return false;
+        forgeItem = new GridFightForgeItemState
+        {
+            UniqueId = _nextForgeUniqueId++,
+            ForgeItemId = forgeItemId,
+            Position = position,
+            EquipmentChoices = choices,
+        };
+        ForgeItems.Add(forgeItem);
         return true;
     }
 
@@ -485,7 +736,8 @@ public sealed class GridFightSession
         if (Phase != GridFightSessionPhase.Preparing || indices.Count == 0 || indices.Distinct().Count() != indices.Count)
             return GridFightRoleAcquisitionResult.Failed;
         var slots = indices.Select(index => Shop.FirstOrDefault(slot => slot.Index == index)).ToList();
-        if (slots.Any(slot => slot == null || slot.SoldOut)) return GridFightRoleAcquisitionResult.Failed;
+        if (slots.Any(slot => slot == null || slot.SoldOut || slot.SpecialGoodsId != 0))
+            return GridFightRoleAcquisitionResult.Failed;
         var cost = slots.OfType<GridFightShopSlot>().Aggregate(0UL, (sum, slot) => sum + slot.Price);
         if (cost > Gold) return GridFightRoleAcquisitionResult.Failed;
 
@@ -506,11 +758,11 @@ public sealed class GridFightSession
             acquiredRoles.Add(role);
             mergeSteps.AddRange(MergeRoles(role.RoleId));
         }
-        return new GridFightRoleAcquisitionResult(
+        return FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
             true,
             acquiredRoles,
             mergeSteps,
-            GetFinalMergedRoles(mergeSteps));
+            GetFinalMergedRoles(mergeSteps)));
     }
 
     public GridFightSessionChange RecycleRole(uint uniqueId)
@@ -555,7 +807,9 @@ public sealed class GridFightSession
         var positions = Roles.ToDictionary(role => role.UniqueId, role => role.Position);
         foreach (var update in updates) positions[update.UniqueId] = update.Position;
         var occupied = positions.Values.Where(position => position != 0).ToList();
-        if (occupied.Distinct().Count() != occupied.Count) return false;
+        if (occupied.Distinct().Count() != occupied.Count ||
+            occupied.Any(position => ForgeItems.Any(item => item.Position == position)))
+            return false;
         if (positions.Values.Count(IsActivePosition) > MaxActiveRoles) return false;
 
         foreach (var update in updates)
@@ -611,7 +865,11 @@ public sealed class GridFightSession
 
     public bool RefreshShop(bool chargeGold)
     {
-        if (chargeGold && (Phase != GridFightSessionPhase.Preparing || Gold < _catalog.RefreshCost)) return false;
+        if (chargeGold &&
+            (Phase != GridFightSessionPhase.Preparing ||
+             Gold < _catalog.RefreshCost ||
+             Shop.Any(slot => slot.SpecialGoodsId != 0 && !slot.SoldOut)))
+            return false;
         if (chargeGold) Gold -= _catalog.RefreshCost;
         Shop.Clear();
         var roles = _catalog.RollShop(PlayerLevel);
@@ -709,6 +967,47 @@ public sealed class GridFightSession
             .ToList();
     }
 
+    private GridFightRoleAcquisitionResult FinalizeRoleAcquisition(GridFightRoleAcquisitionResult acquisition)
+    {
+        if (!acquisition.Success) return acquisition;
+        var acquiredStars = acquisition.AcquiredRoles
+            .Concat(acquisition.MergeSteps.Select(step => step.AddedRole))
+            .Concat(acquisition.FinalMergedRoles)
+            .Where(role => role.Star >= 3)
+            .ToList();
+        var effects = new List<GridFightRoleUnlockEffect>();
+
+        if (!_cyrenePoemShopUnlocked &&
+            acquiredStars.Any(role => role.RoleId == GridFightSpecialFeatures.CyreneRoleId))
+        {
+            _cyrenePoemShopUnlocked = true;
+            RefreshCyrenePoemShop();
+            effects.Add(GridFightRoleUnlockEffect.CyrenePoemShop);
+        }
+
+        if (!_silverWolfHackUnlocked &&
+            acquiredStars.Any(role => role.RoleId == GridFightSpecialFeatures.SilverWolfFiveCostRoleId))
+        {
+            _silverWolfHackUnlocked = true;
+            _traitEffectSelectEnhanceQueuePosition = PendingQueuePosition;
+            effects.Add(GridFightRoleUnlockEffect.SilverWolfHackConsole);
+        }
+
+        return effects.Count == 0 ? acquisition : acquisition with { UnlockEffects = effects };
+    }
+
+    private void RefreshCyrenePoemShop()
+    {
+        Shop.Clear();
+        for (var index = 0; index < GridFightSpecialFeatures.CyreneSpecialGoodsIds.Count; index++)
+            Shop.Add(new GridFightShopSlot
+            {
+                Index = (uint)index,
+                SpecialGoodsId = GridFightSpecialFeatures.CyreneSpecialGoodsIds[index],
+                Price = 0,
+            });
+    }
+
     private bool GameDataHasNextLevel()
     {
         try
@@ -750,7 +1049,9 @@ public sealed class GridFightSession
     {
         var max = 13u + _catalog.BenchSize + _catalog.BenchOverflowSize;
         for (var position = 14u; position <= max; position++)
-            if (Roles.All(role => role.Position != position)) return position;
+            if (Roles.All(role => role.Position != position) &&
+                ForgeItems.All(item => item.Position != position))
+                return position;
         return 0;
     }
 
