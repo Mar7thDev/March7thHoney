@@ -159,14 +159,14 @@ public sealed class CommandGrid : ICommand
             return;
         }
 
-        if (!session.TryAddConsumable((uint)consumableId, out var consumable, out var isNew))
+        if (!session.TryAddConsumable((uint)consumableId, out var change))
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.InvalidConsumable"));
             return;
         }
 
         await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-            manager.BuildConsumableSync(consumable, isNew)));
+            manager.BuildConsumableSync(change)));
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.AddConsumable", consumableId.ToString()));
     }
 

@@ -33,7 +33,10 @@ public sealed class GridFightRewardApplication
     public List<GridFightForgeItemState> AddedForgeItems { get; } = [];
 }
 
-public sealed record GridFightConsumableChange(GridFightConsumableState Consumable, bool IsNew);
+public sealed record GridFightConsumableChange(
+    GridFightConsumableState Consumable,
+    bool IsNew,
+    uint StackDelta);
 
 public sealed class GridFightForgeItemState
 {

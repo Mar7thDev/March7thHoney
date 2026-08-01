@@ -63,6 +63,7 @@ public sealed class GridFightOrbState
 
 public sealed class GridFightConsumableState
 {
+    public uint GroupId { get; init; }
     public uint ItemId { get; init; }
     public uint Count { get; set; }
 }
@@ -114,6 +115,7 @@ public sealed class GridFightSession
     private uint _nextOrbUniqueId = 1;
     private uint _nextForgeUniqueId = 1;
     private uint _nextGameItemUniqueId = 100;
+    private uint _nextConsumableGroupId = 1;
     private bool _orbClaimed;
     private bool _cyrenePoemShopUnlocked;
     private bool _silverWolfHackUnlocked;
@@ -446,24 +448,31 @@ public sealed class GridFightSession
 
     public bool TryAddConsumable(
         uint itemId,
-        out GridFightConsumableState consumable,
-        out bool isNew,
+        out GridFightConsumableChange change,
         uint count = 1)
     {
-        consumable = null!;
-        isNew = false;
+        change = null!;
         if (!GameData.GridFightConsumablesData.ContainsKey(itemId) || count == 0) return false;
 
-        consumable = Consumables.FirstOrDefault(item => item.ItemId == itemId)!;
+        var consumable = Consumables.FirstOrDefault(item => item.ItemId == itemId);
         if (consumable == null)
         {
-            consumable = new GridFightConsumableState { ItemId = itemId, Count = count };
+            consumable = new GridFightConsumableState
+            {
+                GroupId = _nextConsumableGroupId++,
+                ItemId = itemId,
+                Count = count,
+            };
             Consumables.Add(consumable);
-            isNew = true;
+            change = new GridFightConsumableChange(consumable, true, count);
             return true;
         }
 
-        consumable.Count = (uint)Math.Min(uint.MaxValue, (ulong)consumable.Count + count);
+        var previousCount = consumable.Count;
+        consumable.Count = (uint)Math.Min(uint.MaxValue, (ulong)previousCount + count);
+        var stackDelta = consumable.Count - previousCount;
+        if (stackDelta == 0) return false;
+        change = new GridFightConsumableChange(consumable, false, stackDelta);
         return true;
     }
 
@@ -656,9 +665,9 @@ public sealed class GridFightSession
                     }
                     else if (GameData.GridFightConsumablesData.ContainsKey(reward.ItemId))
                     {
-                        if (!TryAddConsumable(reward.ItemId, out var consumable, out var isNew, reward.Count))
+                        if (!TryAddConsumable(reward.ItemId, out var change, reward.Count))
                             return new GridFightRewardApplication();
-                        application.ConsumableChanges.Add(new GridFightConsumableChange(consumable, isNew));
+                        application.ConsumableChanges.Add(change);
                     }
                     else if (GameData.GridFightForgeData.ContainsKey(reward.ItemId))
                     {
