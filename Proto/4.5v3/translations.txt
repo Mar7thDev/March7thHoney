@@ -623,6 +623,7 @@ GridFightStartGamePlayScRsp.PLDKENJLKME = retcode
 !GridFightFinishInfo.EEGPILJDLBG = role_statistics
 !GridFightFinishInfo.APABPAFGCIA = trait_statistics
 !GridFightFinishInfo.JFCHLABGFJO = augment_statistics
+!GridFightFinishInfo.LLJJCOOKANH = settle_rank
 !GridFightSettleBasicInfo.EMOHLJHPOPC = route_id
 !GridFightSettleBasicInfo.PAGPKOKMDBK = lineup_hp
 !GridFightSettleBasicInfo.FDGKBOIEHBD = battles_finished

@@ -175,6 +175,8 @@ public sealed class GridFightResourceCatalog
         var errors = new List<string>();
         if (HighestDivision.Progress == 0) errors.Add("highest division progress is zero");
         if (SeasonExpLimit == 0) errors.Add("season exp limit is zero");
+        if (Enumerable.Range(0, checked((int)InitialHp + 1)).Any(hp => FindSettleRank((uint)hp) == null))
+            errors.Add("settle rank table does not cover the lineup HP range");
         if (InitialEquipmentIds.Count == 0) errors.Add("initial equipment list is empty");
         if (InitialEquipmentIds.Any(id => !GameData.GridFightEquipmentData.ContainsKey(id)))
             errors.Add("initial equipment list references missing equipment");
@@ -946,5 +948,20 @@ public sealed class GridFightResourceCatalog
     private static uint GetEffectParameter(IReadOnlyList<GridFightRatioValue> parameters, int index)
     {
         return checked((uint)Math.Floor(parameters[index].Value));
+    }
+
+    public uint GetSettleRank(uint lineupHp)
+    {
+        var row = FindSettleRank(lineupHp) ??
+                  throw new InvalidDataException($"Missing GridFight settle rank for lineup HP {lineupHp}");
+        return row.ID == 0 ? 0 : row.ID - 1;
+    }
+
+    private static GridFightSettleRankExcel? FindSettleRank(uint lineupHp)
+    {
+        return GameData.GridFightSettleRankData.Values
+            .Where(row => lineupHp >= row.Rank_LeftInterval && lineupHp <= row.Rank_RightInterval)
+            .OrderBy(row => row.ID)
+            .FirstOrDefault();
     }
 }

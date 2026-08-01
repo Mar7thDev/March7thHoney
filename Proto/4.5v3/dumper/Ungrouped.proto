@@ -20044,7 +20044,7 @@ message GridFightFinishInfo {
     bool is_overlock = 1656;
     uint32 AKEGLJLCFPH = 1571;
     repeated FPHPFJLAJDK KCOMPKMJCMC = 1305;
-    uint32 LLJJCOOKANH = 3;
+    uint32 settle_rank = 3;
     repeated GridFightAugmentDamageStatistics augment_statistics = 321;
     bool DBODGPBOIHC = 394;
     repeated GridGameTraitInfo grid_fight_trait_info = 15;
