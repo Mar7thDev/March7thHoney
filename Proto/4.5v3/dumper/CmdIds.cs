@@ -1968,7 +1968,7 @@ public class CmdIds
     public const int GridFightPermanentTalentEnableCsReq = 8453;
     public const int ILCPGLAAADL = 8454;
     public const int MCDBJHOCGHI = 8456;
-    public const int GridFightUpdateEliteBranchSelectScRsp = 8464;
+    public const int GridFightUpdateEliteBranchSelectScRsp = 8697;
     public const int CNOAPAMNDOA = 8468;
     public const int AGOBLKJFJDL = 8469;
     public const int GridFightGetDataCsReq = 8476;

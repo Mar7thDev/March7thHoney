@@ -27203,5 +27203,5 @@ enum GridFightGameplayLockReason {
 }
 
 message GridFightUpdateEliteBranchSelectScRsp {
-    uint32 retcode = 3;
+    uint32 retcode = 8;
 }
