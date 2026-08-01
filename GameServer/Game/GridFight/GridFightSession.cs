@@ -310,6 +310,20 @@ public sealed class GridFightSession
         return true;
     }
 
+    public bool UpdateEncounterSelection(uint eliteBranchId)
+    {
+        if (CurrentNode.NodeType != GridFightNodeTypeEnum.EliteBranch ||
+            BattlePlan == null ||
+            Phase is not (GridFightSessionPhase.AwaitingBattleReturn or
+                GridFightSessionPhase.AwaitingBackToPrepare or
+                GridFightSessionPhase.Preparing))
+            return false;
+        var selected = EncounterOptions.FirstOrDefault(option => option.EliteBranchId == eliteBranchId);
+        if (selected == null) return false;
+        BattlePlan = selected.BattlePlan;
+        return true;
+    }
+
     public GridFightSupplySelectionResult SelectSupply(uint queuePosition, IReadOnlyList<uint> indices)
     {
         if (Phase != GridFightSessionPhase.SelectingSupply ||

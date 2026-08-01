@@ -229,11 +229,10 @@ public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : Handler<GridF
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
-        var queuePosition = session?.PendingQueuePosition ?? 0;
-        var success = session != null && session.SelectEncounter(queuePosition, request.EliteBranchId);
+        var success = session != null && session.UpdateEncounterSelection(request.EliteBranchId);
         if (success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                manager.BuildEncounterSelectionSync(queuePosition, request.EliteBranchId)));
+                manager.BuildEncounterSelectionUpdateSync(request.EliteBranchId)));
         await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdateEliteBranchSelectScRsp,
             new GridFightUpdateEliteBranchSelectScRsp
             {
