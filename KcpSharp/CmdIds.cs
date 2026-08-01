@@ -2581,7 +2581,6 @@ public class CmdIds
     public const int GridFightStartGamePlayCsReq = 8581;
     public const int GridFightStartGamePlayScRsp = 8640;
     public const int GridFightResumeGamePlayCsReq = 8590;
-    public const int GridFightResumeGamePlayScRsp = 8620;
     public const int GridFightQuitSettleCsReq = 8454;
     public const int GridFightQuitLeaveGamePlayCsReq = 8766;
     public const int GridFightGetOrbScRsp = 8604;
@@ -2597,4 +2596,6 @@ public class CmdIds
     public const int GridFightOpenOrbResultScNotify = 8679;
     public const int GridFightUseHackOptionCsReq = 8469;
     public const int GridFightUseHackOptionScRsp = 8514;
+    public const int GridFightQuitLeaveGamePlayScRsp = 8498;
+    public const int GridFightResumeGamePlayScRsp = 8425;
 }
