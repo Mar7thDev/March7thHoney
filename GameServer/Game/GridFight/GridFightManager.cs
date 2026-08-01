@@ -474,6 +474,20 @@ public sealed class GridFightManager : BasePlayerManager
             includeShop: true,
             includeRoute: true);
         notify.ResultList.Add(section.ResultList);
+        if (BuildPendingAction() is { } pending)
+        {
+            var pendingResult = new GridFightSyncResultData();
+            pendingResult.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                LockInfo = new GridFightLockInfo
+                {
+                    LockType = GridFightLockType.Gameplay,
+                    LockReason = GridFightLockReason.PendingAction,
+                },
+            });
+            pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+            notify.ResultList.Add(pendingResult);
+        }
         return notify;
     }
 
