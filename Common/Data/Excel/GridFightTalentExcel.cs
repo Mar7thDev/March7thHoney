@@ -8,6 +8,7 @@ public partial class GridFightTalentExcel : ExcelResource
     public uint ID { get; set; }
     public uint Cost { get; set; }
     public List<uint> PreTalentIDList { get; set; } = [];
+    public List<GridFightRatioValue> EffectParamList { get; set; } = [];
 
     public override int GetId()
     {

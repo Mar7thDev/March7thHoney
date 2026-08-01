@@ -68,6 +68,13 @@ public class ResourceManager
         GameData.ChallengePeakOverrideConfig =
             LoadCustomFile<ChallengePeakOverrideConfig>("ChallengePeak Override", "ChallengePeak") ??
             new ChallengePeakOverrideConfig();
+        GameData.GridFightRewardRulesConfig =
+            LoadCustomFile<GridFightRewardRulesConfig>("GridFight Reward Rules", "GridFightRewardRules") ??
+            new GridFightRewardRulesConfig();
+        GameData.GridFightBasicOrbRewardsConfig =
+            LoadCustomFile<GridFightBasicOrbRewardsConfig>("GridFight Orb Rewards", "GridFightBasicOrbRewards") ??
+            new GridFightBasicOrbRewardsConfig();
+        GameData.GridFightBasicOrbRewardsConfig.RewardRules = GameData.GridFightRewardRulesConfig;
         ApplyChallengePeakOverrides();
 
         Task.WaitAll(t1, t2, t3, t4, t5, t6, t8, t9);
@@ -83,7 +90,7 @@ public class ResourceManager
     // Excel tables belonging to paused / uncompiled gameplay modules. Verified to have no live reader
     // (only their own self-populating Loaded() hooks touch them), so they are skipped unless
     // ServerOption.LoadPausedModuleData is enabled — see that flag for the rationale.
-    private static readonly string[] PausedModuleResourcePrefixes = ["GridFight", "MatchThree", "Marble", "Cake"];
+    private static readonly string[] PausedModuleResourcePrefixes = ["MatchThree", "Marble", "Cake"];
 
     private static bool IsPausedModuleResource(Type cls)
     {
@@ -1302,6 +1309,3 @@ public class ResourceManager
             GameData.ChessRogueRoomData.Add(type, [room]);
     }
 }
-
-
-

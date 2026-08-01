@@ -11,6 +11,7 @@ public partial class GridFightAffixConfigExcel : ExcelResource
 {
     public uint ID { get; set; }
     public List<uint> RuleParamList { get; set; } = [];
+    public List<GridFightRatioValue> EffectParamList { get; set; } = [];
     [JsonConverter(typeof(StringEnumConverter))] public GridFightAffixRuleEnum AffixRule { get; set; }
 
     public override int GetId()

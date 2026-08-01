@@ -8,6 +8,7 @@ public partial class GridFightRoleStarExcel : ExcelResource
     public uint ID { get; set; }
     public uint Star { get; set; }
     public uint BEID { get; set; }
+    public List<uint> SkillOverrideSrc { get; set; } = [];
 
     public override int GetId()
     {

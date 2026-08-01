@@ -59,6 +59,24 @@ public partial class SceneInstance
                ?? 0;
     }
 
+    public Dictionary<string, int> BuildClientFloorSavedData()
+    {
+        var result = new Dictionary<string, int>();
+        if (Player.SceneData!.FloorSavedData.TryGetValue(FloorId, out var persisted))
+            foreach (var (key, value) in persisted)
+                result[key] = value;
+
+        var exposeActivityEntries = Excel.PlaneType is PlaneTypeEnum.Town or PlaneTypeEnum.Maze &&
+                                    GameData.ContentPackageConfigData.Values.Any(package =>
+                                        package.MainMissionIDList.Count > 0 && package.TouchesFloor(FloorId));
+        if (exposeActivityEntries)
+            foreach (var value in FloorInfo?.FloorSavedValue ?? [])
+                if (value.DefaultValue == 0 && !value.Name.Contains("_IsHidden") && !result.ContainsKey(value.Name))
+                    result[value.Name] = 1;
+
+        return result;
+    }
+
     public SceneInfo ToProto()
     {
         SceneInfo sceneInfo = new()
@@ -168,10 +186,8 @@ public partial class SceneInstance
                     SaveData = customData.Value
                 });
 
-        Player.SceneData!.FloorSavedData.TryGetValue(FloorId, out var floorData);
-
-        foreach (var value in floorData ?? [])
-            sceneInfo.FloorSavedData[value.Key] = value.Value;
+        foreach (var (key, value) in BuildClientFloorSavedData())
+            sceneInfo.FloorSavedData[key] = value;
 
         // mission
         Player.MissionManager!.OnLoadScene(sceneInfo);
