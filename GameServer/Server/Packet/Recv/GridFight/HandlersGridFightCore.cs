@@ -44,15 +44,7 @@ public sealed class HandlerGridFightResumeGamePlayCsReq : Handler<GridFightResum
             new GridFightResumeGamePlayScRsp
             {
                 Retcode = success ? 0 : (uint)Retcode.RetFail,
-                CurrentInfo = success ? manager.BuildCurrentInfo() : null,
             }));
-        if (!success) return;
-        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSync(
-            GridFightUpdateSrcType.KgridFightSrcNone,
-            includeGold: true,
-            includeShop: true,
-            includeLevel: true,
-            includePending: true)));
     }
 }
 
@@ -85,7 +77,8 @@ public sealed class HandlerGridFightQuitLeaveGamePlayCsReq : Handler<GridFightQu
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightQuitLeaveGamePlayCsReq request)
     {
-        player.GridFightManager!.ClearSession();
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitLeaveGamePlayScRsp,
+            new GridFightQuitLeaveGamePlayScRsp()));
     }
 }
 

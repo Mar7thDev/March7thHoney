@@ -8085,7 +8085,7 @@ message FGHIMGPGBNF {
     repeated uint32 OGOILMLPDEO = 3;
 }
 
-message FGMKGOIIFFL {
+message GridFightResumeGamePlayScRsp {
     uint32 retcode = 8;
 }
 
@@ -9523,7 +9523,7 @@ message GFOMAIAIDFA {
     uint32 IEOGEFBLNEL = 6;
 }
 
-message GGAMIKNEDGE {
+message GridFightQuitLeaveGamePlayScRsp {
     uint32 retcode = 12;
 }
 
@@ -17655,9 +17655,9 @@ message MCHIJNKKOAM {
     HHAGOFKBFAP DJMHHMMABJL = 1;
 }
 
-message GridFightResumeGamePlayScRsp {
-    uint32 retcode = 13;
-    GridFightCurrentInfo current_info = 12;
+message MCIPOMDGBCA {
+    uint32 PLDKENJLKME = 13;
+    GridFightCurrentInfo GEKOGKHOFNG = 12;
 }
 
 message MCKLINCMDKK {
