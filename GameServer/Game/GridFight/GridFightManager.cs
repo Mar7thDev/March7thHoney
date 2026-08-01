@@ -646,6 +646,13 @@ public sealed class GridFightManager : BasePlayerManager
         uint finishedQueuePosition,
         uint eliteBranchId)
     {
+        var notify = BuildEncounterSelectionUpdateSync(eliteBranchId);
+        notify.ResultList.Add(BuildPendingAdvanceSync(finishedQueuePosition).ResultList);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildEncounterSelectionUpdateSync(uint eliteBranchId)
+    {
         var notify = new GridFightSyncUpdateResultScNotify();
         if (Session == null) return notify;
         var selection = new GridFightSyncResultData();
@@ -654,7 +661,6 @@ public sealed class GridFightManager : BasePlayerManager
             EliteBranchSyncInfo = new GridFightEliteBranchSyncInfo { EliteBranchId = eliteBranchId },
         });
         notify.ResultList.Add(selection);
-        notify.ResultList.Add(BuildPendingAdvanceSync(finishedQueuePosition).ResultList);
         return notify;
     }
 
