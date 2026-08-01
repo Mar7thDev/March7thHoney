@@ -1,0 +1,103 @@
+{
+  "NodeProfiles": {
+    "900": {
+      "MonsterTiers": [1, 1, 1],
+      "OrbRollCount": 4,
+      "MinimumOrbPerMonster": 1,
+      "FormationWaveId": 5,
+      "RoleStar": 1,
+      "OrbWeights": {
+        "102": 1,
+        "199": 1,
+        "203": 1,
+        "204": 1
+      }
+    },
+    "901": {
+      "MonsterTiers": [1, 1, 1, 1, 1],
+      "OrbRollCount": 5,
+      "MinimumOrbPerMonster": 1,
+      "FormationWaveId": 5,
+      "RoleStar": 1,
+      "OrbWeights": {
+        "103": 1,
+        "199": 2,
+        "203": 1,
+        "204": 1
+      }
+    },
+    "902": {
+      "MonsterTiers": [2, 2, 2, 2, 2],
+      "OrbRollCount": 8,
+      "MinimumOrbPerMonster": 1,
+      "FormationWaveId": 5,
+      "RoleStar": 1,
+      "OrbWeights": {
+        "102": 1,
+        "103": 1,
+        "203": 2,
+        "205": 1,
+        "206": 3
+      }
+    },
+    "903": {
+      "MonsterTiers": [1, 1, 1, 1, 2, 3],
+      "OrbRollCount": 10,
+      "MinimumOrbPerMonster": 1,
+      "FormationWaveId": 5,
+      "RoleStar": 1,
+      "OrbWeights": {
+        "102": 1,
+        "103": 1,
+        "199": 2,
+        "203": 3,
+        "205": 1,
+        "207": 2
+      }
+    },
+    "904": {
+      "MonsterTiers": [2, 2, 2, 2, 3],
+      "OrbRollCount": 6,
+      "MinimumOrbPerMonster": 1,
+      "FormationWaveId": 5,
+      "RoleStar": 1,
+      "OrbWeights": {
+        "103": 1,
+        "203": 1,
+        "208": 2,
+        "305": 1,
+        "120031": 1
+      }
+    }
+  },
+  "TalentRules": [
+    {
+      "TalentId": 1031,
+      "EffectId": 26,
+      "Trigger": "PlaneEnter",
+      "ChapterIds": [1, 2, 3],
+      "OrbIds": [199]
+    },
+    {
+      "TalentId": 1081,
+      "EffectId": 36,
+      "Trigger": "PlaneEnter",
+      "ChapterIds": [1],
+      "OrbIds": [203]
+    },
+    {
+      "TalentId": 1061,
+      "EffectId": 30,
+      "Trigger": "BossClear",
+      "ChapterIds": [1, 2],
+      "OrbIds": [203]
+    },
+    {
+      "TalentId": 4032,
+      "EffectId": 87,
+      "Trigger": "PlaneEnter",
+      "ChapterIds": [2],
+      "OrbIds": [102, 103]
+    }
+  ]
+}

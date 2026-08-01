@@ -3244,8 +3244,8 @@ message CIOAOEGEIKH {
     repeated PEGJIHHIFOP DNIGKDKIPPJ = 1;
 }
 
-message CJAFIJAFIPN {
-    uint32 EOKOPAFFMII = 1;
+message GridFightKilledMonsterInfo {
+    uint32 monster_index = 1;
     uint32 monster_id = 2;
 }
 
@@ -16776,9 +16776,9 @@ message LFKOLKFKOAP {
     repeated uint32 CLEJHGMAFOD = 5;
 }
 
-message LFLENBDPNJN {
-    uint32 PBFMLGOCOPF = 1;
-    repeated CJAFIJAFIPN kill_monster_list = 2;
+message GridFightWaveKilledMonsterInfo {
+    uint32 wave_index = 1;
+    repeated GridFightKilledMonsterInfo kill_monster_list = 2;
 }
 
 message LFLMJKLKBIL {
@@ -17815,7 +17815,7 @@ message GridFightBattleResultStatistics {
     repeated GridFightTraitBattleStatistics trait_statistics = 3;
     repeated GridFightAugmentBattleStatistics augment_statistics = 4;
     repeated GridFightDropEntry ODMCMPIDJNH = 5;
-    repeated LFLENBDPNJN NELAKLKIDDK = 6;
+    repeated GridFightWaveKilledMonsterInfo wave_killed_monster_info_list = 6;
     repeated GridFightRoleBattleStatistics role_statistics = 8;
     uint32 dead_line_percent = 9;
     repeated FHKKPNDLLLO JHBJNKCJINO = 10;

@@ -1,4 +1,6 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
 using March7thHoney.Enums.GridFight;
 
 namespace March7thHoney.GameServer.Game.GridFight;
@@ -130,7 +132,27 @@ public static class GridFightSpecialFeatures
     {
         rewards = [];
         if (!GameData.GridFightOrbData.TryGetValue(orbItemId, out var orb)) return false;
+        if (GameData.GridFightBasicOrbRewardsConfig.OrbRewards.TryGetValue(orbItemId, out var configured))
+            return TryResolveConfiguredOrb(configured, out rewards);
         return TryResolveBonus(orb.BonusID, out rewards);
+    }
+
+    public static IReadOnlyList<string> ValidateConfiguredOrbRewards()
+    {
+        var errors = new List<string>();
+        foreach (var (orbId, configured) in GameData.GridFightBasicOrbRewardsConfig.OrbRewards)
+        {
+            if (configured.OrbId != orbId)
+                errors.Add($"GridFight orb reward {orbId} has mismatched orb id {configured.OrbId}");
+            if (!GameData.GridFightOrbData.ContainsKey(orbId))
+                errors.Add($"GridFight orb reward {orbId} references missing orb");
+            if (configured.Rewards.Count == 0 || configured.Rewards.Values.Any(rewards => rewards.Count == 0))
+                errors.Add($"GridFight orb reward {orbId} has an empty variant");
+            foreach (var reward in configured.Rewards.Values.SelectMany(rewards => rewards))
+                if (!CanResolveConfiguredReward(reward))
+                    errors.Add($"GridFight orb reward {orbId} contains invalid {reward.BonusType} reward");
+        }
+        return errors;
     }
 
     public static bool TryResolveBonus(uint bonusId, out IReadOnlyList<GridFightRewardEntry> rewards)
@@ -176,5 +198,127 @@ public static class GridFightSpecialFeatures
         {
             resolving.Remove(bonusId);
         }
+    }
+
+    private static bool TryResolveConfiguredOrb(
+        GridFightBasicOrbRewardsInfo configured,
+        out IReadOnlyList<GridFightRewardEntry> rewards)
+    {
+        rewards = [];
+        var variants = configured.Rewards.OrderBy(entry => entry.Key).Select(entry => entry.Value).ToList();
+        if (variants.Count == 0) return false;
+        var result = new List<GridFightRewardEntry>();
+        foreach (var reward in variants[Random.Shared.Next(variants.Count)])
+            if (!TryResolveConfiguredReward(reward, result))
+                return false;
+        rewards = result;
+        return true;
+    }
+
+    private static bool TryResolveConfiguredReward(
+        GridFightBasicBonusPoolV2Excel reward,
+        List<GridFightRewardEntry> result)
+    {
+        var count = reward.Value;
+        if (count == 0) return false;
+        var firstParam = reward.BonusTypeParamList.FirstOrDefault();
+        if (firstParam == 0) firstParam = reward.BonusTypeParam;
+        switch (reward.BonusType)
+        {
+            case GridFightBonusTypeEnum.Gold:
+            case GridFightBonusTypeEnum.Exp:
+                result.Add(new GridFightRewardEntry(reward.BonusType, 0, count));
+                return true;
+            case GridFightBonusTypeEnum.SpecificAvatar:
+                var star = reward.BonusTypeParamList.ElementAtOrDefault(1);
+                if (!IsValidRoleReward(firstParam, star)) return false;
+                result.Add(new GridFightRewardEntry(reward.BonusType, firstParam, count, star));
+                return true;
+            case GridFightBonusTypeEnum.RandomAvatar:
+                var rarity = firstParam;
+                var randomStar = reward.BonusTypeParamList.ElementAtOrDefault(1);
+                var roles = GameData.GridFightRoleBasicInfoData.Values
+                    .Where(role => role.IsInPool && role.Rarity == rarity &&
+                                   GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | randomStar))
+                    .OrderBy(role => role.ID)
+                    .ToList();
+                if (roles.Count == 0) return false;
+                var role = roles[Random.Shared.Next(roles.Count)];
+                result.Add(new GridFightRewardEntry(
+                    GridFightBonusTypeEnum.SpecificAvatar,
+                    role.ID,
+                    count,
+                    randomStar));
+                return true;
+            case GridFightBonusTypeEnum.Item:
+                if (!IsValidItemReward(firstParam)) return false;
+                result.Add(new GridFightRewardEntry(reward.BonusType, firstParam, count));
+                return true;
+            case GridFightBonusTypeEnum.Orb:
+                if (!GameData.GridFightOrbData.ContainsKey(firstParam)) return false;
+                result.Add(new GridFightRewardEntry(reward.BonusType, firstParam, count));
+                return true;
+            case GridFightBonusTypeEnum.RandomEquipByCategory:
+                var category = (GridFightEquipCategoryEnum)firstParam;
+                if (category != GridFightEquipCategoryEnum.Basic) return false;
+                var equipmentByCategory = GameData.GridFightEquipmentData.Values
+                    .Where(equipment => equipment.EquipCategory == category)
+                    .OrderBy(equipment => equipment.ID)
+                    .ToList();
+                return AddRandomEquipment(equipmentByCategory, count, result);
+            default:
+                return false;
+        }
+    }
+
+    private static bool CanResolveConfiguredReward(GridFightBasicBonusPoolV2Excel reward)
+    {
+        if (reward.Value == 0) return false;
+        var firstParam = reward.BonusTypeParamList.FirstOrDefault();
+        if (firstParam == 0) firstParam = reward.BonusTypeParam;
+        return reward.BonusType switch
+        {
+            GridFightBonusTypeEnum.Gold or GridFightBonusTypeEnum.Exp => true,
+            GridFightBonusTypeEnum.SpecificAvatar =>
+                IsValidRoleReward(firstParam, reward.BonusTypeParamList.ElementAtOrDefault(1)),
+            GridFightBonusTypeEnum.RandomAvatar =>
+                GameData.GridFightRoleBasicInfoData.Values.Any(role => role.IsInPool && role.Rarity == firstParam &&
+                    GameData.GridFightRoleStarData.ContainsKey(
+                        role.ID << 4 | reward.BonusTypeParamList.ElementAtOrDefault(1))),
+            GridFightBonusTypeEnum.Item => IsValidItemReward(firstParam),
+            GridFightBonusTypeEnum.Orb => GameData.GridFightOrbData.ContainsKey(firstParam),
+            GridFightBonusTypeEnum.RandomEquipByCategory =>
+                (GridFightEquipCategoryEnum)firstParam == GridFightEquipCategoryEnum.Basic &&
+                GameData.GridFightEquipmentData.Values.Any(equipment =>
+                    equipment.EquipCategory == GridFightEquipCategoryEnum.Basic),
+            _ => false,
+        };
+    }
+
+    private static bool IsValidRoleReward(uint roleId, uint star)
+    {
+        return roleId != 0 && star != 0 && GameData.GridFightRoleBasicInfoData.ContainsKey(roleId) &&
+               GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | star);
+    }
+
+    private static bool IsValidItemReward(uint itemId)
+    {
+        return itemId != 0 && (GameData.GridFightEquipmentData.ContainsKey(itemId) ||
+                              GameData.GridFightConsumablesData.ContainsKey(itemId) ||
+                              GameData.GridFightForgeData.ContainsKey(itemId));
+    }
+
+    private static bool AddRandomEquipment(
+        IReadOnlyList<GridFightEquipmentExcel> equipment,
+        uint count,
+        List<GridFightRewardEntry> result)
+    {
+        if (equipment.Count == 0) return false;
+        for (var index = 0u; index < count; index++)
+        {
+            var selected = equipment[Random.Shared.Next(equipment.Count)];
+            result.Add(new GridFightRewardEntry(GridFightBonusTypeEnum.Item, selected.ID, 1));
+        }
+        return true;
     }
 }

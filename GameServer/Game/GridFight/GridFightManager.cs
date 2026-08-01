@@ -955,17 +955,25 @@ public sealed partial class GridFightManager : BasePlayerManager
         return notify;
     }
 
-    public GridFightSyncUpdateResultScNotify BuildInitialRoundSync(uint finishedQueuePosition)
+    public GridFightSyncUpdateResultScNotify BuildInitialRoundSync(
+        uint finishedQueuePosition,
+        IReadOnlyList<GridFightTalentOrbReward> talentRewards)
     {
-        var notify = BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeShop: true);
+        var notify = new GridFightSyncUpdateResultScNotify();
+        AppendTalentOrbRewards(notify, talentRewards);
+        notify.ResultList.Add(BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeShop: true).ResultList);
         var pending = BuildPendingAdvanceSync(finishedQueuePosition);
         notify.ResultList.Add(pending.ResultList);
         return notify;
     }
 
-    public GridFightSyncUpdateResultScNotify BuildBattleRoundSync(uint finishedQueuePosition)
+    public GridFightSyncUpdateResultScNotify BuildBattleRoundSync(
+        uint finishedQueuePosition,
+        IReadOnlyList<GridFightTalentOrbReward> talentRewards)
     {
-        var notify = BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeShop: true);
+        var notify = new GridFightSyncUpdateResultScNotify();
+        AppendTalentOrbRewards(notify, talentRewards);
+        notify.ResultList.Add(BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeShop: true).ResultList);
         var pending = BuildPendingAdvanceSync(finishedQueuePosition);
         notify.ResultList.Add(pending.ResultList);
         return notify;
@@ -1237,8 +1245,42 @@ public sealed partial class GridFightManager : BasePlayerManager
             rewardResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = settlement.GoldAfterInterest });
         if (settlement.KeepWinGold > 0)
             rewardResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = settlement.GoldAfterKeepWin });
+        foreach (var orb in settlement.AddedBattleOrbs)
+            rewardResult.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                OrbInfo = new GridFightOrbSyncInfo
+                {
+                    UniqueId = orb.UniqueId,
+                    OrbItemId = orb.OrbItemId,
+                },
+            });
         notify.ResultList.Add(rewardResult);
+        AppendTalentOrbRewards(notify, settlement.TalentRewards);
         return notify;
+    }
+
+    private static void AppendTalentOrbRewards(
+        GridFightSyncUpdateResultScNotify notify,
+        IReadOnlyList<GridFightTalentOrbReward> rewards)
+    {
+        foreach (var reward in rewards)
+        {
+            var result = new GridFightSyncResultData
+            {
+                UpdateSource = GridFightUpdateSrcType.KgridFightSrcTalent,
+            };
+            result.EffectParamList.Add(new[] { reward.TalentId, reward.EffectId });
+            foreach (var orb in reward.AddedOrbs)
+                result.UpdateDynamicList.Add(new GridFightSyncData
+                {
+                    OrbInfo = new GridFightOrbSyncInfo
+                    {
+                        UniqueId = orb.UniqueId,
+                        OrbItemId = orb.OrbItemId,
+                    },
+                });
+            notify.ResultList.Add(result);
+        }
     }
 
     private static GridFightBattleStatistics ReadBattleStatistics(PVEBattleResultCsReq request)
@@ -1259,6 +1301,11 @@ public sealed partial class GridFightManager : BasePlayerManager
                 row.AugmentId,
                 NormalizeDamage(row.Damage),
                 NormalizeDamage(row.SecondaryDamage))).ToList(),
+            statistics.WaveKilledMonsterInfoList.SelectMany(wave =>
+                wave.KillMonsterList.Select(monster => new GridFightKilledMonsterInstance(
+                    wave.WaveIndex,
+                    monster.MonsterIndex,
+                    monster.MonsterId))).ToList(),
             true);
     }
 
