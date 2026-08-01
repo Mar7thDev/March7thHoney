@@ -769,7 +769,7 @@ public sealed class GridFightSession
         SupplyRerollCount = 0;
         PrepareCurrentNode();
         RefreshShop(false);
-        Phase = GridFightSessionPhase.Preparing;
+        Phase = GridFightSessionPhase.AwaitingBattleRound;
         return true;
     }
 
