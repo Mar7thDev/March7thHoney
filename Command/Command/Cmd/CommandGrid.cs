@@ -58,13 +58,14 @@ public sealed class CommandGrid : ICommand
             return;
         }
 
-        if (!session.TryAddRole((uint)roleId, (uint)Math.Max(1, roleStar), out var change))
+        if (!session.TryAddRole((uint)roleId, (uint)Math.Max(1, roleStar), out var acquisition))
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.InvalidRole"));
             return;
         }
 
-        await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildRoleAddedSync(change)));
+        await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+            manager.BuildRoleAcquisitionSync(acquisition)));
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.AddedRole"));
     }
 

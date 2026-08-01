@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
@@ -191,7 +192,7 @@ public sealed class GridFightManager : BasePlayerManager
         };
     }
 
-    private static GridFightGameData BuildGameData()
+    private GridFightGameData BuildGameData()
     {
         var levelProgression = new GridFightPlayerLevelProgressionInfo();
         foreach (var row in GameData.GridFightPlayerLevelData.Values.OrderBy(row => row.PlayerLevel))
@@ -234,6 +235,8 @@ public sealed class GridFightManager : BasePlayerManager
             CountInfo = new GridFightCountItemInfo { Count = 1 },
             Descriptor_ = BuildGameItemDescriptor(GridFightGameItemCategory.Type107, 4061),
         });
+        if (Session?.HackConsole is { } hackConsole)
+            data.GameItemList.Add(BuildHackConsoleItem(hackConsole));
         return data;
     }
 
@@ -248,6 +251,22 @@ public sealed class GridFightManager : BasePlayerManager
     {
         var session = Session;
         if (session == null) return null;
+        if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
+        {
+            var action = new GridFightTraitEffectSelectEnhanceActionInfo
+            {
+                TraitId = GridFightSpecialFeatures.SilverWolfTraitId,
+                EffectId = GridFightSpecialFeatures.SilverWolfTraitEffectId,
+                IsOptional = false,
+            };
+            action.EnhanceIndexList.Add(0);
+            action.EnhanceOptionIdList.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
+            return new GridFightPendingAction
+            {
+                QueuePosition = traitQueuePosition,
+                TraitEffectSelectEnhanceAction = action,
+            };
+        }
         var pending = new GridFightPendingAction { QueuePosition = session.PendingQueuePosition };
         switch (session.Phase)
         {
@@ -361,6 +380,19 @@ public sealed class GridFightManager : BasePlayerManager
         return BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, change);
     }
 
+    public GridFightSyncUpdateResultScNotify BuildRoleAcquisitionSync(
+        GridFightRoleAcquisitionResult acquisition)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null || !acquisition.Success) return notify;
+        var result = new GridFightSyncResultData();
+        AppendAcquiredRoles(result, acquisition);
+        notify.ResultList.Add(result);
+        AppendRoleMergeResults(notify, GridFightUpdateSrcType.KgridFightSrcNone, [], acquisition);
+        AppendUnlockEffects(notify, acquisition);
+        return notify;
+    }
+
     public GridFightSyncUpdateResultScNotify BuildEquipmentAddedSync(GridFightEquipmentState equipment)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
@@ -453,6 +485,7 @@ public sealed class GridFightManager : BasePlayerManager
             GridFightUpdateSrcType.KgridFightSrcBuyGoods,
             goodsIndices,
             acquisition);
+        AppendUnlockEffects(notify, acquisition);
 
         var shopResult = new GridFightSyncResultData
         {
@@ -482,7 +515,232 @@ public sealed class GridFightManager : BasePlayerManager
         return notify;
     }
 
-    private static void AppendRoleChanges(GridFightSyncResultData result, GridFightSessionChange change)
+    public GridFightSyncUpdateResultScNotify BuildSpecialGoodsSync(
+        IReadOnlyList<GridFightSpecialGoodsPurchaseResult> purchases)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null || purchases.Count == 0) return notify;
+        foreach (var purchase in purchases)
+        {
+            var result = new GridFightSyncResultData
+            {
+                UpdateSource = GridFightUpdateSrcType.KgridFightSrcSpecialGoods,
+            };
+            result.EffectParamList.Add(purchase.SpecialGoodsId);
+            result.EffectParamList.Add(purchase.GoodsIndex);
+            AppendRewardApplication(result, purchase.Application);
+            foreach (var acquisition in purchase.Application.RoleAcquisitions)
+                AppendAcquiredRoles(result, acquisition);
+            notify.ResultList.Add(result);
+            foreach (var acquisition in purchase.Application.RoleAcquisitions)
+            {
+                AppendRoleMergeResults(
+                    notify,
+                    GridFightUpdateSrcType.KgridFightSrcSpecialGoods,
+                    [purchase.SpecialGoodsId, purchase.GoodsIndex],
+                    acquisition);
+                AppendUnlockEffects(notify, acquisition);
+            }
+        }
+
+        var shopResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcBuyGoods,
+        };
+        shopResult.EffectParamList.Add(purchases.Select(purchase => purchase.GoodsIndex));
+        shopResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+        notify.ResultList.Add(shopResult);
+        notify.ResultList.Add(new GridFightSyncResultData());
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildOrbOpenSync(GridFightRewardApplication application)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null || !application.Success) return notify;
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcUseOrb,
+        };
+        result.EffectParamList.Add(application.SourceUniqueId);
+        result.EffectParamList.Add(application.SourceItemId);
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            RemoveOrbUniqueId = application.SourceUniqueId,
+        });
+        AppendRewardApplication(result, application);
+        foreach (var acquisition in application.RoleAcquisitions)
+            AppendAcquiredRoles(result, acquisition);
+        notify.ResultList.Add(result);
+        foreach (var acquisition in application.RoleAcquisitions)
+        {
+            AppendRoleMergeResults(
+                notify,
+                GridFightUpdateSrcType.KgridFightSrcUseOrb,
+                [application.SourceUniqueId, application.SourceItemId],
+                acquisition);
+            AppendUnlockEffects(notify, acquisition);
+        }
+        return notify;
+    }
+
+    public GridFightOpenOrbResultScNotify BuildOpenOrbResult(GridFightRewardApplication application)
+    {
+        var result = new GridFightOpenOrbResultScNotify
+        {
+            UniqueId = application.SourceUniqueId,
+            DropInfo = new GridFightDropInfo(),
+        };
+        result.DropInfo.DropList.Add(application.Drops.Select(BuildDropEntry));
+        return result;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildTraitEnhanceActivationSync(
+        GridFightTraitEnhanceActivationResult activation)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session?.HackConsole == null || !activation.Success || activation.Equipment == null) return notify;
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
+        };
+        result.EffectParamList.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
+        var items = new GridFightGameItemSyncInfo();
+        items.GridFightEquipmentList.Add(BuildEquipment(activation.Equipment));
+        result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            GameDataItemInfo = BuildHackConsoleItem(Session.HackConsole),
+        });
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            FinishPendingActionPos = activation.FinishedQueuePosition,
+        });
+        result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+        notify.ResultList.Add(result);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildHackOptionSync(GridFightHackOptionResult option)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session?.HackConsole == null || !option.Success) return notify;
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
+        };
+        result.EffectParamList.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
+        result.EffectParamList.Add(Session.HackConsole.GameItemUniqueId);
+        AppendRewardApplication(result, option.Application);
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            GameDataItemInfo = BuildHackConsoleItem(Session.HackConsole),
+        });
+        notify.ResultList.Add(result);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildPreparationSync()
+    {
+        var notify = BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includePending: true);
+        if (Session?.HackConsole is not { } hackConsole) return notify;
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
+        };
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            GameDataItemInfo = BuildHackConsoleItem(hackConsole),
+        });
+        notify.ResultList.Add(result);
+        return notify;
+    }
+
+    private void AppendRewardApplication(
+        GridFightSyncResultData result,
+        GridFightRewardApplication application)
+    {
+        var session = Session!;
+        if (application.GoldChanged)
+            result.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
+        if (application.PlayerLevelChanged || application.PlayerExpChanged)
+            result.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                PlayerLevel = new GridFightPlayerLevelSyncInfo
+                {
+                    Level = session.PlayerLevel,
+                    Exp = session.PlayerExp,
+                    MaxLevel = Catalog.MaxPlayerLevel,
+                },
+            });
+        if (application.PlayerLevelChanged)
+            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
+        if (application.LineupHpChanged)
+            result.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                LineupHp = new GridFightLineupHpSyncInfo
+                {
+                    CurrentHp = session.LineupHp,
+                    MaxHp = session.MaxLineupHp,
+                },
+            });
+        if (application.AddedEquipments.Count > 0)
+        {
+            var items = new GridFightGameItemSyncInfo();
+            items.GridFightEquipmentList.Add(application.AddedEquipments.Select(BuildEquipment));
+            result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        }
+        foreach (var change in application.ConsumableChanges)
+        {
+            var items = new GridFightGameItemSyncInfo();
+            items.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
+            {
+                ItemId = change.Consumable.ItemId,
+                ItemStackCount = 1,
+                Num = change.Consumable.Count,
+            });
+            result.UpdateDynamicList.Add(change.IsNew
+                ? new GridFightSyncData { AddGameItemInfo = items }
+                : new GridFightSyncData { UpdateGameItemInfo = items });
+        }
+        foreach (var orb in application.AddedOrbs)
+            result.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                OrbInfo = new GridFightOrbSyncInfo
+                {
+                    UniqueId = orb.UniqueId,
+                    OrbItemId = orb.OrbItemId,
+                },
+            });
+        foreach (var forgeItem in application.AddedForgeItems)
+            result.UpdateDynamicList.Add(new GridFightSyncData { AddForgeItemInfo = BuildForgeItem(forgeItem) });
+        if (application.RolePropertiesChanged)
+            foreach (var role in session.Roles)
+                result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+    }
+
+    private static GridFightDropEntry BuildDropEntry(GridFightRewardEntry reward)
+    {
+        var entry = new GridFightDropEntry
+        {
+            DropType = reward.Type switch
+            {
+                Enums.GridFight.GridFightBonusTypeEnum.Gold => GridFightDropType.Coin,
+                Enums.GridFight.GridFightBonusTypeEnum.Exp => GridFightDropType.Exp,
+                Enums.GridFight.GridFightBonusTypeEnum.SpecificAvatar => GridFightDropType.Role,
+                Enums.GridFight.GridFightBonusTypeEnum.Item => GridFightDropType.Item,
+                Enums.GridFight.GridFightBonusTypeEnum.Orb => GridFightDropType.Orb,
+                _ => GridFightDropType.None,
+            },
+            ItemId = reward.ItemId,
+            Num = reward.Count,
+        };
+        if (reward.RoleStar != 0)
+            entry.Param = new GridFightDropParam { RoleStar = reward.RoleStar };
+        return entry;
+    }
+
+    private void AppendRoleChanges(GridFightSyncResultData result, GridFightSessionChange change)
     {
         foreach (var role in change.AddedRoles)
             result.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
@@ -492,7 +750,7 @@ public sealed class GridFightManager : BasePlayerManager
             result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
     }
 
-    private static void AppendAcquiredRoles(
+    private void AppendAcquiredRoles(
         GridFightSyncResultData result,
         GridFightRoleAcquisitionResult acquisition)
     {
@@ -500,7 +758,7 @@ public sealed class GridFightManager : BasePlayerManager
             result.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
     }
 
-    private static void AppendRoleMergeResults(
+    private void AppendRoleMergeResults(
         GridFightSyncUpdateResultScNotify notify,
         GridFightUpdateSrcType acquisitionSource,
         IEnumerable<uint> effectParameters,
@@ -524,6 +782,39 @@ public sealed class GridFightManager : BasePlayerManager
         foreach (var role in acquisition.FinalMergedRoles)
             finalResult.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
         notify.ResultList.Add(finalResult);
+    }
+
+    private void AppendUnlockEffects(
+        GridFightSyncUpdateResultScNotify notify,
+        GridFightRoleAcquisitionResult acquisition)
+    {
+        foreach (var effect in acquisition.UnlockEffects)
+        {
+            var result = new GridFightSyncResultData
+            {
+                UpdateSource = effect == GridFightRoleUnlockEffect.CyrenePoemShop
+                    ? GridFightUpdateSrcType.KgridFightSrcSpecialGoods
+                    : GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
+            };
+            if (effect == GridFightRoleUnlockEffect.CyrenePoemShop)
+            {
+                result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+            }
+            else
+            {
+                result.UpdateDynamicList.Add(new GridFightSyncData
+                {
+                    LockInfo = new GridFightLockInfo
+                    {
+                        LockType = GridFightLockType.Gameplay,
+                        LockReason = GridFightLockReason.PendingAction,
+                    },
+                });
+                if (BuildPendingAction() is { } pending)
+                    result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+            }
+            notify.ResultList.Add(result);
+        }
     }
 
     public GridFightSyncUpdateResultScNotify BuildPortalSelectionSync(
@@ -750,6 +1041,7 @@ public sealed class GridFightManager : BasePlayerManager
             GridFightUpdateSrcType.KgridFightSrcSelectSupply,
             [selectedIndex],
             selection.Acquisition);
+        AppendUnlockEffects(notify, selection.Acquisition);
 
         var finishResult = new GridFightSyncResultData();
         finishResult.UpdateDynamicList.Add(new GridFightSyncData
@@ -919,6 +1211,47 @@ public sealed class GridFightManager : BasePlayerManager
         };
     }
 
+    private static GridGameForgeItemInfo BuildForgeItem(GridFightForgeItemState forgeItem)
+    {
+        var info = new GridGameForgeItemInfo
+        {
+            UniqueId = forgeItem.UniqueId,
+            ForgeItemId = forgeItem.ForgeItemId,
+            Pos = forgeItem.Position,
+        };
+        info.ForgeGoodsList.Add(forgeItem.EquipmentChoices.Select(equipmentId =>
+            new GridFightForgeGoodsInfo
+            {
+                EquipmentGoodsInfo = new GridFightForgeEquipmentInfo
+                {
+                    GridFightEquipmentId = equipmentId,
+                },
+            }));
+        return info;
+    }
+
+    private static GridFightGameItemInfo BuildHackConsoleItem(GridFightHackConsoleState state)
+    {
+        var hackState = new GridFightHackStateInfo
+        {
+            MinimumEnemyHpPercent = GridFightSpecialFeatures.MinimumEnemyHpPercent,
+            MaximumEnemyHpPercent = GridFightSpecialFeatures.MaximumEnemyHpPercent,
+            EnemyHpPercent = state.EnemyHpPercent,
+            EnhanceOptionId = GridFightSpecialFeatures.SilverWolfEnhanceOptionId,
+        };
+        hackState.RemainingActionCountList.Add(state.RemainingGoldActions);
+        hackState.RemainingActionCountList.Add(state.RemainingHealActions);
+        hackState.RemainingActionCountList.Add(state.RemainingOrbActions);
+        return new GridFightGameItemInfo
+        {
+            UniqueId = state.GameItemUniqueId,
+            Descriptor_ = BuildGameItemDescriptor(
+                GridFightGameItemCategory.HackConsole,
+                GridFightSpecialFeatures.SilverWolfEnhanceOptionId),
+            HackStateInfo = hackState,
+        };
+    }
+
     private static GridGameAugmentInfo BuildInvestment(uint augmentId)
     {
         return new GridGameAugmentInfo
@@ -955,16 +1288,23 @@ public sealed class GridFightManager : BasePlayerManager
 
     private static GridFightShopGoodsInfo BuildShopGoods(GridFightShopSlot slot)
     {
-        return new GridFightShopGoodsInfo
+        var goods = new GridFightShopGoodsInfo
         {
             SoldOut = slot.SoldOut,
             Price = slot.Price,
-            RoleGoodsInfo = new GridFightRoleGoodsInfo
+        };
+        if (slot.SpecialGoodsId != 0)
+            goods.SpecialGoodsInfo = new GridFightSpecialGoodsInfo
+            {
+                SpecialGoodsId = slot.SpecialGoodsId,
+            };
+        else
+            goods.RoleGoodsInfo = new GridFightRoleGoodsInfo
             {
                 RoleId = slot.RoleId,
                 RoleStar = slot.Star,
-            },
-        };
+            };
+        return goods;
     }
 
     private GridFightLevelInfo BuildLevelInfo()
@@ -1065,10 +1405,11 @@ public sealed class GridFightManager : BasePlayerManager
     {
         var team = new GridFightGameTeamInfo();
         team.GridGameRoleList.Add(Session!.Roles.Select(BuildRole));
+        team.ForgeItemList.Add(Session.ForgeItems.Select(BuildForgeItem));
         return team;
     }
 
-    private static GridGameRoleInfo BuildRole(GridFightRoleState role)
+    private GridGameRoleInfo BuildRole(GridFightRoleState role)
     {
         var info = new GridGameRoleInfo
         {
@@ -1077,13 +1418,15 @@ public sealed class GridFightManager : BasePlayerManager
             RoleStar = role.Star,
             Pos = role.Position,
         };
-        PopulateRolePropertyScales(info.ConvertPropertyToFixpoint);
+        PopulateRolePropertyScales(info.ConvertPropertyToFixpoint, Session?.HasCyreneCombatEnhancement == true);
         foreach (var key in GameData.GridFightRoleBasicInfoData[role.RoleId].RoleSavedValueList)
             info.GridFightValueInitComponent[key] = 0;
         return info;
     }
 
-    internal static void PopulateRolePropertyScales(IDictionary<uint, uint> properties)
+    internal static void PopulateRolePropertyScales(
+        IDictionary<uint, uint> properties,
+        bool hasCyreneCombatEnhancement = false)
     {
         properties[32] = 180;
         properties[33] = 480;
@@ -1098,5 +1441,8 @@ public sealed class GridFightManager : BasePlayerManager
         properties[1014] = 100;
         properties[1019] = 100;
         properties[1025] = 100;
+        if (!hasCyreneCombatEnhancement) return;
+        properties[(uint)AvatarPropertyTypeEnum.ExtraAllDamageTypeAddedRatio1] = 1090;
+        properties[(uint)AvatarPropertyTypeEnum.ExtraAllDamageReduce] = 990;
     }
 }
