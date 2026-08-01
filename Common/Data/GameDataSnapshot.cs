@@ -285,6 +285,7 @@ public partial class GridFightRuntimeDataSnapshot
     public List<GridFightTutorialStageNodeExcel> TutorialStageNodeData { get; set; } = [];
     public Dictionary<uint, List<uint>> SeasonAugmentData { get; set; } = [];
     public Dictionary<uint, GridFightBonusPoolV2Excel> BonusPoolV2Data { get; set; } = [];
+    public Dictionary<uint, GridFightVictoryBonusExcel> VictoryBonusData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -552,6 +553,7 @@ public static partial class GameData
                 TutorialStageNodeData = GameData.GridFightTutorialStageNodeData,
                 SeasonAugmentData = GameData.GridFightSeasonAugmentData,
                 BonusPoolV2Data = GameData.GridFightBonusPoolV2Data,
+                VictoryBonusData = GameData.GridFightVictoryBonusData,
             },
         };
     }
@@ -816,5 +818,6 @@ public static partial class GameData
         GameData.GridFightTutorialStageNodeData = gridFightRuntimeData.TutorialStageNodeData;
         GameData.GridFightSeasonAugmentData = gridFightRuntimeData.SeasonAugmentData;
         GameData.GridFightBonusPoolV2Data = gridFightRuntimeData.BonusPoolV2Data;
+        GameData.GridFightVictoryBonusData = gridFightRuntimeData.VictoryBonusData;
     }
 }

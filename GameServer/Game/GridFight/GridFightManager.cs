@@ -1,6 +1,7 @@
 using March7thHoney.Data;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Proto;
@@ -11,6 +12,7 @@ public sealed class GridFightManager : BasePlayerManager
 {
     private uint _nextSessionUniqueId = 1;
     private readonly Lazy<GridFightResourceCatalog> _catalog;
+    private GridFightDamageSttInfo _lastBattleDamageStatistics = new();
 
     public GridFightResourceCatalog Catalog => _catalog.Value;
     public GridFightSession? Session { get; private set; }
@@ -33,12 +35,14 @@ public sealed class GridFightManager : BasePlayerManager
             division.SeasonID != season)
             return false;
         Session = new GridFightSession(Catalog, season, divisionId, isOverlock, _nextSessionUniqueId++);
+        _lastBattleDamageStatistics = new GridFightDamageSttInfo();
         return true;
     }
 
     public void ClearSession()
     {
         Session = null;
+        _lastBattleDamageStatistics = new GridFightDamageSttInfo();
     }
 
     public GridFightSystemInfo BuildSystemInfo()
@@ -1118,36 +1122,44 @@ public sealed class GridFightManager : BasePlayerManager
     {
         var session = Session;
         if (session == null) return;
-        var win = request.EndStatus == BattleEndStatus.BattleEndWin;
+        var battleEndedNormally = request.EndStatus == BattleEndStatus.BattleEndWin;
         var chapterId = session.ChapterId;
         var sectionId = session.SectionId;
-        var goldReward = win ? session.CurrentNode.BasicGoldReward : 0;
         var previousLevel = session.PlayerLevel;
         var previousExp = session.PlayerExp;
         var previousMaxExp = Catalog.GetPlayerLevel(previousLevel).LevelUpExp;
-        if (!session.ResolveBattle(win)) return;
+        var statistics = ReadBattleStatistics(request);
+        var settlement = session.ResolveBattle(battleEndedNormally, statistics);
+        if (!settlement.Success) return;
+        var damageStatistics = BuildDamageStatistics(settlement.Statistics);
+        _lastBattleDamageStatistics = damageStatistics.Clone();
 
-        await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildSync(
-            GridFightUpdateSrcType.KgridFightSrcBattleEnd,
-            includeGold: true,
-            includeLevel: true,
-            levelChanged: session.PlayerLevel != previousLevel)));
-        await Player.SendPacket(new PacketGridFightEndBattleStageNotify(new GridFightEndBattleStageNotify
+        await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildBattleSettlementSync(
+            settlement,
+            damageStatistics,
+            chapterId,
+            sectionId,
+            session.PlayerLevel != previousLevel)));
+        var endNotify = new GridFightEndBattleStageNotify
         {
-            Win = win,
+            IsPerfectFinish = settlement.IsPerfectFinish,
             SectionId = sectionId,
-            GoldReward = goldReward,
-            LineupHpBefore = session.LineupHp,
-            LineupHpAfter = session.LineupHp,
+            BasicGold = settlement.BasicGold,
+            InterestGold = settlement.InterestGold,
+            KeepWinGold = settlement.KeepWinGold,
+            PreviousKeepWinCount = settlement.PreviousKeepWinCount,
+            KeepWinCount = settlement.KeepWinCount,
+            ProgressPercent = settlement.ProgressPercent,
+            DeadLinePercent = settlement.DeadLinePercent,
+            LineupHpBefore = settlement.LineupHpBefore,
+            LineupHpAfter = settlement.LineupHpAfter,
             MaxLineupHp = session.MaxLineupHp,
             ChapterId = chapterId,
             RouteId = Catalog.StandardRouteId,
-            ComboCount = win ? 1u : 0,
-            FinishProgress = win ? 100u : 0,
-            DamageStatistics = new GridFightDamageSttInfo(),
+            DamageStatistics = damageStatistics,
             LevelUpdateInfo = new GridFightLevelUpdateInfo
             {
-                AddedExp = win ? Catalog.BattleWinExp : 0,
+                AddedExp = settlement.AddedExp,
                 PreviousLevelInfo = new GridFightLevelDisplayInfo
                 {
                     Level = previousLevel,
@@ -1161,9 +1173,169 @@ public sealed class GridFightManager : BasePlayerManager
                     MaxExp = Catalog.GetPlayerLevel(session.PlayerLevel).LevelUpExp,
                 },
             },
-        }));
-        if (win)
+        };
+        endNotify.HpModifyList.Add(settlement.HpChanges.Select(BuildHpModifyInfo));
+        await Player.SendPacket(new PacketGridFightEndBattleStageNotify(endNotify));
+        if (settlement.RouteAdvanced)
             await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildBattleEndRouteSync()));
+    }
+
+    private GridFightSyncUpdateResultScNotify BuildBattleSettlementSync(
+        GridFightBattleSettlementResult settlement,
+        GridFightDamageSttInfo damageStatistics,
+        uint chapterId,
+        uint sectionId,
+        bool levelChanged)
+    {
+        var session = Session!;
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var battleResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcBattleEnd,
+        };
+        battleResult.EffectParamList.Add(new[] { chapterId, sectionId });
+        battleResult.UpdateDynamicList.Add(new GridFightSyncData { DamageStat = damageStatistics });
+        battleResult.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            LineupHp = new GridFightLineupHpSyncInfo
+            {
+                CurrentHp = settlement.LineupHpAfter,
+                MaxHp = session.MaxLineupHp,
+            },
+        });
+        battleResult.UpdateDynamicList.Add(new GridFightSyncData { KeepWinCount = settlement.KeepWinCount });
+        notify.ResultList.Add(battleResult);
+
+        var rewardResult = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcBattleEnd,
+        };
+        rewardResult.EffectParamList.Add(new[] { chapterId, sectionId });
+        if (levelChanged)
+            rewardResult.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
+        rewardResult.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            PlayerLevel = new GridFightPlayerLevelSyncInfo
+            {
+                Level = session.PlayerLevel,
+                Exp = session.PlayerExp,
+                MaxLevel = Catalog.MaxPlayerLevel,
+            },
+        });
+        rewardResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = settlement.GoldAfterBasic });
+        if (settlement.InterestGold > 0)
+            rewardResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = settlement.GoldAfterInterest });
+        if (settlement.KeepWinGold > 0)
+            rewardResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = settlement.GoldAfterKeepWin });
+        notify.ResultList.Add(rewardResult);
+        return notify;
+    }
+
+    private static GridFightBattleStatistics ReadBattleStatistics(PVEBattleResultCsReq request)
+    {
+        var statistics = request.Stt?.GridFightStatistics;
+        if (statistics == null) return GridFightBattleStatistics.Empty;
+        return new GridFightBattleStatistics(
+            Math.Min(statistics.ProgressPercent, 100u),
+            statistics.RoleStatistics.Select(row => new GridFightRoleBattleDamage(
+                row.RoleId,
+                NormalizeDamage(row.Damage),
+                NormalizeDamage(row.SecondaryDamage))).ToList(),
+            statistics.TraitStatistics.Select(row => new GridFightTraitBattleDamage(
+                row.TraitId,
+                NormalizeDamage(row.Damage),
+                NormalizeDamage(row.SecondaryDamage))).ToList(),
+            statistics.AugmentStatistics.Select(row => new GridFightAugmentBattleDamage(
+                row.AugmentId,
+                NormalizeDamage(row.Damage),
+                NormalizeDamage(row.SecondaryDamage))).ToList(),
+            true);
+    }
+
+    private GridFightDamageSttInfo BuildDamageStatistics(GridFightBattleStatistics statistics)
+    {
+        var session = Session!;
+        var result = new GridFightDamageSttInfo();
+        if (!statistics.IsPresent) return result;
+        var uploadedRoleDamage = statistics.RoleDamage
+            .GroupBy(row => row.RoleId)
+            .ToDictionary(group => group.Key, group => group.Sum(row => row.Damage));
+        var activeRoles = session.Roles
+            .Where(role => role.Position is >= 1 and <= 13)
+            .GroupBy(role => role.RoleId)
+            .Select(group => group.OrderBy(role => role.Position).First())
+            .OrderBy(role => role.Position)
+            .ToList();
+        var equipmentIds = session.Equipments.Select(item => item.EquipmentId).Distinct().Order().ToList();
+        foreach (var role in activeRoles)
+        {
+            var row = new GridFightRoleDamageStatistics
+            {
+                RoleId = role.RoleId,
+                RoleStar = role.Star,
+                TotalDamage = uploadedRoleDamage.GetValueOrDefault(role.RoleId),
+                IsFrontPosition = role.Position is >= 1 and <= 4,
+                IsBackPosition = role.Position is >= 5 and <= 13,
+            };
+            row.GridFightEquipmentList.Add(equipmentIds);
+            result.RoleStatistics.Add(row);
+        }
+        foreach (var missing in uploadedRoleDamage.Where(pair => activeRoles.All(role => role.RoleId != pair.Key)))
+            result.RoleStatistics.Add(new GridFightRoleDamageStatistics
+            {
+                RoleId = missing.Key,
+                RoleStar = 1,
+                TotalDamage = missing.Value,
+            });
+
+        foreach (var group in statistics.TraitDamage.GroupBy(row => row.TraitId))
+        {
+            var memberCount = (uint)activeRoles.Count(role =>
+                GameData.GridFightRoleBasicInfoData.GetValueOrDefault(role.RoleId)?.TraitList.Contains(group.Key) == true);
+            result.TraitStatistics.Add(new GridFightTraitDamageStatistics
+            {
+                TraitId = group.Key,
+                Layer = GridFightBattleProtoBuilder.ResolveTraitLayer(group.Key, memberCount),
+                Damage = group.Sum(row => row.Damage),
+            });
+        }
+        foreach (var group in statistics.AugmentDamage.GroupBy(row => row.AugmentId))
+        {
+            var damage = group.Sum(row => row.Damage);
+            var secondaryDamage = group.Sum(row => row.SecondaryDamage);
+            if (damage == 0 && secondaryDamage == 0) continue;
+            result.AugmentStatistics.Add(new GridFightAugmentDamageStatistics
+            {
+                AugmentId = group.Key,
+                Damage = damage,
+                SecondaryDamage = secondaryDamage,
+            });
+        }
+        return result;
+    }
+
+    private static GridFightHpModifyInfo BuildHpModifyInfo(GridFightHpChange change)
+    {
+        return new GridFightHpModifyInfo
+        {
+            PreviousHp = checked((int)change.PreviousHp),
+            CurrentHp = checked((int)change.CurrentHp),
+            ChangeValue = change.Amount,
+            SourceId = change.SourceId,
+            Reason = change.Kind switch
+            {
+                GridFightHpChangeKind.BasicPenalty => GridFightUpdateGlobalHpReason.KsubGlobalHpBaseCost,
+                GridFightHpChangeKind.ProgressPenalty => GridFightUpdateGlobalHpReason.KsubGlobalHpExtraCost,
+                GridFightHpChangeKind.ThresholdPenalty => GridFightUpdateGlobalHpReason.KsubGlobalHpThresholdCost,
+                GridFightHpChangeKind.TalentHealing => GridFightUpdateGlobalHpReason.KaddGlobalHpTalent,
+                _ => GridFightUpdateGlobalHpReason.KupdateGlobalHpNone,
+            },
+        };
+    }
+
+    private static double NormalizeDamage(double value)
+    {
+        return double.IsFinite(value) && value > 0 ? value : 0;
     }
 
     private GridFightGameInfo BuildBasicInfo(bool hasPendingAction)
@@ -1363,7 +1535,7 @@ public sealed class GridFightManager : BasePlayerManager
             BossInfo = new GridFightBossInfo(),
             BattleStatisticsInfo = new GridFightBattleStatisticsInfo
             {
-                DamageStatistics = new GridFightDamageSttInfo(),
+                DamageStatistics = _lastBattleDamageStatistics.Clone(),
             },
         };
         info.CampInfoList.Add(session.CampIds.Select(id => new GridFightCampInfo { CampId = id }));

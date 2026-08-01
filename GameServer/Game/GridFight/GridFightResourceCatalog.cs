@@ -42,6 +42,9 @@ public sealed record GridFightEncounterOptionState(
 
 public sealed class GridFightResourceCatalog
 {
+    private const uint HighestDivisionStartingHpAffixId = 4020;
+    private const uint PostBattleHealingTalentId = 1081;
+    private const int PostBattleHealingEffectIndex = 2;
     private readonly Random _random;
 
     public uint CurrentSeason { get; }
@@ -72,6 +75,7 @@ public sealed class GridFightResourceCatalog
     public uint OffFieldInitialCount => RequireUInt("GridFight_Back_AvatarInitialNum");
     public uint DepositPerInterest => RequireUInt("GridFight_DepositPerInterest");
     public uint MaxInterestGold => RequireUInt("GridFight_GainInterestMax");
+    public uint PostBattleHealingSourceId => PostBattleHealingTalentId;
     public uint SeasonExpLimit => RequireUInt("GridFight_ExtraSeasonExp_Limit");
     public IReadOnlyList<uint> InitialEquipmentIds => GetUIntList("GridFight_PhainonEquipPreset");
     public uint InitialGold { get; }
@@ -188,6 +192,14 @@ public sealed class GridFightResourceCatalog
             errors.Add("standard route references missing stage configs");
         if (GameData.GridFightPlayerLevelData.Count == 0) errors.Add("player level table is empty");
         if (GameData.GridFightShopPriceData.Count == 0) errors.Add("shop price table is empty");
+        if (DepositPerInterest == 0) errors.Add("interest deposit step is zero");
+        if (GameData.GridFightVictoryBonusData.Count == 0 || !GameData.GridFightVictoryBonusData.ContainsKey(0))
+            errors.Add("victory bonus table has no zero-win reward");
+        if (!HasEffectParameter(GameData.GridFightAffixConfigData.GetValueOrDefault(HighestDivisionStartingHpAffixId), 0))
+            errors.Add("highest-division starting HP affix is incomplete");
+        if (!HasEffectParameter(GameData.GridFightTalentData.GetValueOrDefault(PostBattleHealingTalentId),
+                PostBattleHealingEffectIndex))
+            errors.Add("post-battle healing talent is incomplete");
         if (!GameData.GridFightDivisionStageData.ContainsKey(HighestDivision.ID))
             errors.Add("highest division has no stage difficulty row");
         if (Enumerable.Range(1801, 19).Any(id => !GameData.GridFightEliteGroupData.ContainsKey((uint)id)))
@@ -253,6 +265,43 @@ public sealed class GridFightResourceCatalog
     public uint GetEnemyDifficultyLevel(uint divisionId)
     {
         return GameData.GridFightDivisionStageData[divisionId].EnemyDifficultyLevel;
+    }
+
+    public uint GetInitialLineupHp(uint divisionId)
+    {
+        if (divisionId != HighestDivision.ID) return InitialHp;
+        var reduction = GetEffectParameter(
+            GameData.GridFightAffixConfigData[HighestDivisionStartingHpAffixId].EffectParamList,
+            0);
+        return reduction >= InitialHp ? 0 : InitialHp - reduction;
+    }
+
+    public uint GetPostBattleHealing()
+    {
+        return GetEffectParameter(
+            GameData.GridFightTalentData[PostBattleHealingTalentId].EffectParamList,
+            PostBattleHealingEffectIndex);
+    }
+
+    public GridFightPenaltyRuleExcel GetPenaltyRule(uint penaltyRuleId)
+    {
+        if (!GameData.GridFightPenaltyRuleData.TryGetValue(penaltyRuleId, out var rule))
+            throw new InvalidDataException($"Missing GridFight penalty rule: {penaltyRuleId}");
+        return rule;
+    }
+
+    public uint CalculateInterest(uint balance)
+    {
+        return Math.Min(balance / DepositPerInterest, MaxInterestGold);
+    }
+
+    public uint GetVictoryGoldBonus(uint keepWinCount)
+    {
+        return GameData.GridFightVictoryBonusData.Values
+            .Where(row => row.VictoryCount <= keepWinCount)
+            .OrderBy(row => row.VictoryCount)
+            .Last()
+            .GoldBonus;
     }
 
     public uint GetBuyPrice(uint roleId, uint star = 1)
@@ -714,5 +763,20 @@ public sealed class GridFightResourceCatalog
     private static IReadOnlyList<uint> GetUIntList(string key)
     {
         return GameData.GridFightConstValueData.GetValueOrDefault(key)?.AsUInt32List() ?? [];
+    }
+
+    private static bool HasEffectParameter(GridFightAffixConfigExcel? row, int index)
+    {
+        return row?.EffectParamList.Count > index && row.EffectParamList[index].Value >= 0;
+    }
+
+    private static bool HasEffectParameter(GridFightTalentExcel? row, int index)
+    {
+        return row?.EffectParamList.Count > index && row.EffectParamList[index].Value >= 0;
+    }
+
+    private static uint GetEffectParameter(IReadOnlyList<GridFightRatioValue> parameters, int index)
+    {
+        return checked((uint)Math.Floor(parameters[index].Value));
     }
 }

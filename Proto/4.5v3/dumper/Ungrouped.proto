@@ -182,11 +182,11 @@ enum ACOKICDKFCI {
     ACOKICDKFCI_MJMCGPFLDIM = 4;
 }
 
-message ADHGIJPHLEB {
+message GridFightTraitBattleStatistics {
     uint32 trait_id = 1;
     repeated OBIMHNFFLEM MFJCLCJNAFO = 2;
     double damage = 3;
-    double KINKMHEAANP = 4;
+    double secondary_damage = 4;
 }
 
 message ADIHAECHADG {
@@ -2637,7 +2637,7 @@ message BattleStatistics {
     FMEKABDGCEC OFMIGBJPKMH = 40;
     uint32 IEOGEFBLNEL = 41;
     repeated BattleAvatarGlobalBuffInfo MHLCFDEGOGN = 42;
-    MGMJOPHJCNL APAGMJNECCN = 43;
+    GridFightBattleResultStatistics grid_fight_statistics = 43;
     repeated uint32 GBLEKIOCFMA = 44;
     repeated uint32 MEBKILMPMGA = 45;
     KNBMAPNNDJL KFPEKBCKKPM = 46;
@@ -3520,10 +3520,10 @@ message CPMNHNHKLBK {
     uint32 role_id = 1;
 }
 
-message CPNCAPLOIHI {
+message GridFightRoleBattleStatistics {
     uint32 role_id = 1;
     double damage = 2;
-    double KINKMHEAANP = 5;
+    double secondary_damage = 5;
     map<uint32, double> ICECCHMAGNO = 6;
     uint32 CAKAOJGILMG = 7;
     uint32 OKMHKBOJBOB = 8;
@@ -12083,9 +12083,9 @@ message GridFightCurrentTask {
 }
 
 message GridFightDamageSttInfo {
-    repeated NFIDNDFHJGN JFCHLABGFJO = 2;
-    repeated KINJHHBJNJP APABPAFGCIA = 14;
-    repeated PLFKMENCDMM EEGPILJDLBG = 15;
+    repeated GridFightAugmentDamageStatistics augment_statistics = 2;
+    repeated GridFightTraitDamageStatistics trait_statistics = 14;
+    repeated GridFightRoleDamageStatistics role_statistics = 15;
 }
 
 message GridFightDropInfo {
@@ -12112,23 +12112,23 @@ message GridFightEncounterInfo {
 }
 
 message GridFightEndBattleStageNotify {
-    uint32 OCCOHKIMGCN = 536;
+    uint32 previous_keep_win_count = 536;
     uint32 lineup_hp_after = 643;
-    uint32 finish_progress = 430;
+    uint32 progress_percent = 430;
     uint32 route_id = 3;
-    bool win = 14;
+    bool is_perfect_finish = 14;
     map<uint32, GridFightDropInfo> drop_item_map = 15;
-    uint32 gold_reward = 1419;
-    uint32 DMNILJEGICO = 5;
+    uint32 basic_gold = 1419;
+    uint32 interest_gold = 5;
     uint32 lineup_hp_before = 1369;
     GridFightLevelUpdateInfo level_update_info = 1925;
     uint32 max_lineup_hp = 12;
     repeated GridFightHpModifyInfo hp_modify_list = 1847;
-    uint32 combo_count = 1;
+    uint32 keep_win_gold = 1;
     uint32 chapter_id = 8;
-    uint32 OAHFCPPIMLF = 345;
+    uint32 dead_line_percent = 345;
     uint32 section_id = 4;
-    uint32 JPKHBELGHCG = 11;
+    uint32 keep_win_count = 11;
     GridFightDamageSttInfo damage_statistics = 9;
 }
 
@@ -12389,11 +12389,11 @@ message GridFightHandlePendingActionScRsp {
 }
 
 message GridFightHpModifyInfo {
-    int32 BMMADDOCJOG = 8;
+    int32 current_hp = 8;
     GridFightUpdateGlobalHpReason reason = 10;
-    uint32 IOAOHNDEJNB = 6;
-    int32 ODJEBDNBLLC = 13;
-    uint32 EOBOFDOGDDM = 12;
+    uint32 change_value = 6;
+    int32 previous_hp = 13;
+    uint32 source_id = 12;
 }
 
 message GridFightInfo {
@@ -12673,7 +12673,7 @@ message GridFightSyncData {
     uint32 BEPMODICONA = 178;
     GridFightTraitSyncInfo HKHJJCMKKJE = 1264;
     GridFightTraitTrackSyncInfo HGNDMOODNKF = 1102;
-    uint32 GDAKCOICIDA = 1933;
+    uint32 keep_win_count = 1933;
     uint32 MICEOJBAKGN = 1117;
     uint32 JLOCMDIDPCI = 1047;
     uint32 DNCOOFMDDAM = 1794;
@@ -13221,10 +13221,10 @@ message HFKKEDPMKKF {
     repeated uint32 JBJNHJNMPAP = 3;
 }
 
-message HFKKKFJHPHJ {
+message GridFightAugmentBattleStatistics {
     uint32 augment_id = 1;
     double damage = 3;
-    double KINKMHEAANP = 4;
+    double secondary_damage = 4;
 }
 
 message HFMLKIIOGBP {
@@ -16177,7 +16177,7 @@ message KINFINGMICK {
     uint32 PIFNIJHPLJC = 5;
 }
 
-message KINJHHBJNJP {
+message GridFightTraitDamageStatistics {
     double damage = 8;
     uint32 layer = 13;
     uint32 trait_id = 6;
@@ -17809,15 +17809,15 @@ message MGMDNBOLBMO {
     uint32 MONFBLGFKGB = 9;
 }
 
-message MGMJOPHJCNL {
-    uint32 HFLPDCJDIAC = 1;
+message GridFightBattleResultStatistics {
+    uint32 progress_percent = 1;
     uint32 NBPFMFMKJHI = 2;
-    repeated ADHGIJPHLEB MFOOECCEOBO = 3;
-    repeated HFKKKFJHPHJ LLOFONJOGCE = 4;
+    repeated GridFightTraitBattleStatistics trait_statistics = 3;
+    repeated GridFightAugmentBattleStatistics augment_statistics = 4;
     repeated GridFightDropEntry ODMCMPIDJNH = 5;
     repeated LFLENBDPNJN NELAKLKIDDK = 6;
-    repeated CPNCAPLOIHI DOGMMGLBJIJ = 8;
-    uint32 OAHFCPPIMLF = 9;
+    repeated GridFightRoleBattleStatistics role_statistics = 8;
+    uint32 dead_line_percent = 9;
     repeated FHKKPNDLLLO JHBJNKCJINO = 10;
     double NDKJJIFIFNJ = 11;
     double FLFEAJFNPAP = 12;
@@ -19345,9 +19345,9 @@ message NFDHOCKEPGD {
     uint32 LOPNADHJKBF = 1;
 }
 
-message NFIDNDFHJGN {
+message GridFightAugmentDamageStatistics {
     uint32 augment_id = 5;
-    double KINKMHEAANP = 2;
+    double secondary_damage = 2;
     double damage = 6;
 }
 
@@ -20031,21 +20031,21 @@ message GridFightFinishInfo {
     repeated uint32 HGAGKFEKBDA = 812;
     repeated GridFightEquipmentInfo grid_fight_equipment_list = 1356;
     repeated GridGameRoleInfo grid_game_role_list = 109;
-    repeated PLFKMENCDMM EEGPILJDLBG = 5;
+    repeated GridFightRoleDamageStatistics EEGPILJDLBG = 5;
     GridFightSettleReason reason = 668;
     repeated uint32 MHLBIBGKIOB = 1974;
     repeated GridGameNpcInfo grid_game_npc_list = 2003;
     GridFightContextData context_data = 514;
     uint32 MBMJNEDIFFC = 1243;
     GridFightSettleAvatarInfo avatar_info = 1234;
-    repeated KINJHHBJNJP APABPAFGCIA = 1292;
+    repeated GridFightTraitDamageStatistics APABPAFGCIA = 1292;
     repeated GridFightGamePortalBuffInfo portal_buff_info_list = 9;
     repeated GridGameAugmentInfo sync_augment_info = 8;
     bool is_overlock = 1656;
     uint32 AKEGLJLCFPH = 1571;
     repeated FPHPFJLAJDK KCOMPKMJCMC = 1305;
     uint32 LLJJCOOKANH = 3;
-    repeated NFIDNDFHJGN JFCHLABGFJO = 321;
+    repeated GridFightAugmentDamageStatistics JFCHLABGFJO = 321;
     bool DBODGPBOIHC = 394;
     repeated GridGameTraitInfo grid_fight_trait_info = 15;
     GridFightSettleBasicInfo basic = 12;
@@ -21478,13 +21478,13 @@ message PLBAMNCLBHB {
     uint32 NBMNPGKEIIH = 10;
 }
 
-message PLFKMENCDMM {
-    bool OGIBPMBELKC = 10;
+message GridFightRoleDamageStatistics {
+    bool is_front_position = 10;
     uint32 role_star = 11;
     repeated uint32 grid_fight_equipment_list = 15;
     uint32 role_id = 2;
     double total_damage = 1;
-    bool DIGNECHKINI = 14;
+    bool is_back_position = 14;
 }
 
 message PLHFGMCNOAJ {
