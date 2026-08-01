@@ -149,12 +149,11 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                 }
             }
 
-            // Official-like payload may include floor saved values in SceneMapInfo.
-            if (player.SceneData!.FloorSavedData.TryGetValue((int)floorId, out var floorSavedData))
-            {
-                foreach (var (key, value) in floorSavedData)
-                    mazeMap.FloorSavedValueMap[key] = value;
-            }
+            var floorSavedData = player.SceneInstance?.FloorId == floorId
+                ? player.SceneInstance.BuildClientFloorSavedData()
+                : player.SceneData!.FloorSavedData.GetValueOrDefault((int)floorId, []);
+            foreach (var (key, value) in floorSavedData)
+                mazeMap.FloorSavedValueMap[key] = value;
 
             if (!ConfigManager.Config.ServerOption.AutoLightSection)
             {

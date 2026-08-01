@@ -7,6 +7,7 @@ namespace March7thHoney.Data.Custom;
 public partial class GridFightBasicOrbRewardsConfig
 {
     public Dictionary<uint, GridFightBasicOrbRewardsInfo> OrbRewards { get; set; } = [];
+    public GridFightRewardRulesConfig RewardRules { get; set; } = new();
 }
 
 [MemoryPackable]

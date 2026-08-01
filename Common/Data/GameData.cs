@@ -135,14 +135,16 @@ public static partial class GameData
     #region GridFight
 
     public static GridFightBasicOrbRewardsConfig GridFightBasicOrbRewardsConfig { get; set; } = new();
+    public static GridFightRewardRulesConfig GridFightRewardRulesConfig { get; set; } = new();
     public static Dictionary<uint, GridFightBasicBonusPoolV2Excel> GridFightBasicBonusPoolV2Data { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleBasicInfoExcel> GridFightRoleBasicInfoData { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleStarExcel> GridFightRoleStarData { get; private set; } = [];
-    public static Dictionary<uint, GridFightRoleRecommendEquipExcel> GridFightRoleRecommendEquipData { get; private set; } =
+    public static Dictionary<uint, List<GridFightRoleRecommendEquipExcel>> GridFightRoleRecommendEquipData { get; private set; } =
         [];
     public static Dictionary<uint, GridFightCombinationBonusExcel> GridFightCombinationBonusData { get; private set; } =
         [];
     public static Dictionary<uint, GridFightDivisionInfoExcel> GridFightDivisionInfoData { get; private set; } = [];
+    public static Dictionary<uint, GridFightSettleRankExcel> GridFightSettleRankData { get; private set; } = [];
     public static Dictionary<uint, GridFightDivisionStageExcel> GridFightDivisionStageData { get; private set; } = [];
     public static Dictionary<uint, GridFightEquipmentExcel> GridFightEquipmentData { get; private set; } = [];
     public static Dictionary<uint, GridFightForgeExcel> GridFightForgeData { get; private set; } = [];
@@ -153,6 +155,7 @@ public static partial class GameData
 
     public static Dictionary<uint, Dictionary<uint, GridFightTraitBonusExcel>> GridFightTraitBonusData{ get; private set; } = [];
     public static Dictionary<uint, GridFightEquipUpgradeExcel> GridFightEquipUpgradeData { get; private set; } = [];
+    public static Dictionary<uint, GridFightCraftConfigExcel> GridFightCraftConfigData { get; private set; } = [];
     public static Dictionary<uint, GridFightConsumablesExcel> GridFightConsumablesData { get; private set; } = [];
     public static Dictionary<uint, GridFightCampExcel> GridFightCampData { get; private set; } = [];
     public static Dictionary<uint, GridFightShopPriceExcel> GridFightShopPriceData { get; private set; } = [];
@@ -163,6 +166,13 @@ public static partial class GameData
     public static Dictionary<uint, GridFightOrbExcel> GridFightOrbData { get; private set; } = [];
     public static Dictionary<uint, Dictionary<GridFightAugmentQualityEnum, GridFightAugmentMonsterExcel>> GridFightAugmentMonsterData { get; private set; } = [];
     public static Dictionary<uint, Dictionary<uint, GridFightBinaryDiffAddRuleExcel>> GridFightBinaryDiffAddRuleData { get; private set; } = [];
+    public static Dictionary<uint, GridFightBinaryNodeRuleExcel> GridFightBinaryNodeRuleData { get; private set; } = [];
+    public static Dictionary<uint, GridFightEliteGroupExcel> GridFightEliteGroupData { get; private set; } = [];
+    public static Dictionary<uint, Dictionary<uint, GridFightEnemyDifficultyLvExcel>> GridFightEnemyDifficultyLvData { get; private set; } = [];
+    public static Dictionary<uint, GridFightStageLevelValueExcel> GridFightStageLevelValueData { get; private set; } = [];
+    public static Dictionary<uint, GridFightFormationWaveExcel> GridFightFormationWaveData { get; private set; } = [];
+    public static Dictionary<uint, GridFightPenaltyRuleExcel> GridFightPenaltyRuleData { get; private set; } = [];
+    public static Dictionary<uint, GridFightVictoryBonusExcel> GridFightVictoryBonusData { get; private set; } = [];
     public static Dictionary<uint, GridFightPortalBuffExcel> GridFightPortalBuffData { get; private set; } = [];
     public static Dictionary<uint, GridFightItemsExcel> GridFightItemsData { get; private set; } = [];
     public static Dictionary<uint, GridFightTalentExcel> GridFightTalentData { get; private set; } = [];
@@ -173,6 +183,15 @@ public static partial class GameData
     public static Dictionary<uint, List<uint>> GridFightSeasonPortalData { get; private set; } = [];
     public static Dictionary<uint, Dictionary<uint, GridFightStageRouteExcel>> GridFightStageRouteData { get; private set; } = [];
     public static Dictionary<uint, GridFightNodeTemplateExcel> GridFightNodeTemplateData { get; private set; } = [];
+    public static Dictionary<string, GridFightDynamicValue> GridFightConstValueData { get; private set; } = [];
+    public static List<GridFightModuleBanRoleExcel> GridFightModuleBanRoleData { get; private set; } = [];
+    public static List<GridFightModuleBanPortalExcel> GridFightModuleBanPortalData { get; private set; } = [];
+    public static List<GridFightModuleBanAugmentExcel> GridFightModuleBanAugmentData { get; private set; } = [];
+    public static Dictionary<int, GridFightSeasonModuleExcel> GridFightSeasonModuleData { get; private set; } = [];
+    public static Dictionary<uint, GridFightTutorialStageExcel> GridFightTutorialStageData { get; private set; } = [];
+    public static List<GridFightTutorialStageNodeExcel> GridFightTutorialStageNodeData { get; private set; } = [];
+    public static Dictionary<uint, List<uint>> GridFightSeasonAugmentData { get; private set; } = [];
+    public static Dictionary<uint, GridFightBonusPoolV2Excel> GridFightBonusPoolV2Data { get; private set; } = [];
 
     #endregion
 

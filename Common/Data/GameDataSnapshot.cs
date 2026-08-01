@@ -73,7 +73,7 @@ public partial class GameDataSnapshot
     public Dictionary<uint, GridFightBasicBonusPoolV2Excel> GridFightBasicBonusPoolV2Data { get; set; } = [];
     public Dictionary<uint, GridFightRoleBasicInfoExcel> GridFightRoleBasicInfoData { get; set; } = [];
     public Dictionary<uint, GridFightRoleStarExcel> GridFightRoleStarData { get; set; } = [];
-    public Dictionary<uint, GridFightRoleRecommendEquipExcel> GridFightRoleRecommendEquipData { get; set; } = [];
+    public Dictionary<uint, List<GridFightRoleRecommendEquipExcel>> GridFightRoleRecommendEquipData { get; set; } = [];
     public Dictionary<uint, GridFightCombinationBonusExcel> GridFightCombinationBonusData { get; set; } = [];
     public Dictionary<uint, GridFightDivisionInfoExcel> GridFightDivisionInfoData { get; set; } = [];
     public Dictionary<uint, GridFightDivisionStageExcel> GridFightDivisionStageData { get; set; } = [];
@@ -93,6 +93,12 @@ public partial class GameDataSnapshot
     public Dictionary<uint, GridFightOrbExcel> GridFightOrbData { get; set; } = [];
     public Dictionary<uint, Dictionary<GridFightAugmentQualityEnum, GridFightAugmentMonsterExcel>> GridFightAugmentMonsterData { get; set; } = [];
     public Dictionary<uint, Dictionary<uint, GridFightBinaryDiffAddRuleExcel>> GridFightBinaryDiffAddRuleData { get; set; } = [];
+    public Dictionary<uint, GridFightBinaryNodeRuleExcel> GridFightBinaryNodeRuleData { get; set; } = [];
+    public Dictionary<uint, GridFightEliteGroupExcel> GridFightEliteGroupData { get; set; } = [];
+    public Dictionary<uint, Dictionary<uint, GridFightEnemyDifficultyLvExcel>> GridFightEnemyDifficultyLvData { get; set; } = [];
+    public Dictionary<uint, GridFightStageLevelValueExcel> GridFightStageLevelValueData { get; set; } = [];
+    public Dictionary<uint, GridFightFormationWaveExcel> GridFightFormationWaveData { get; set; } = [];
+    public Dictionary<uint, GridFightPenaltyRuleExcel> GridFightPenaltyRuleData { get; set; } = [];
     public Dictionary<uint, GridFightPortalBuffExcel> GridFightPortalBuffData { get; set; } = [];
     public Dictionary<uint, GridFightItemsExcel> GridFightItemsData { get; set; } = [];
     public Dictionary<uint, GridFightTalentExcel> GridFightTalentData { get; set; } = [];
@@ -264,6 +270,24 @@ public partial class GameDataSnapshot
     // Append-only: MemoryPack serializes in declaration order; never insert mid-class.
     public Dictionary<int, List<DailyActiveConfigExcel>> DailyActiveConfigData { get; set; } = [];
     public Dictionary<int, DailyActiveQuestPoolExcel> DailyActiveQuestPoolData { get; set; } = [];
+    public GridFightRuntimeDataSnapshot? GridFightRuntimeData { get; set; } = new();
+}
+
+[MemoryPackable]
+public partial class GridFightRuntimeDataSnapshot
+{
+    public Dictionary<string, GridFightDynamicValue> ConstValueData { get; set; } = [];
+    public List<GridFightModuleBanRoleExcel> ModuleBanRoleData { get; set; } = [];
+    public List<GridFightModuleBanPortalExcel> ModuleBanPortalData { get; set; } = [];
+    public List<GridFightModuleBanAugmentExcel> ModuleBanAugmentData { get; set; } = [];
+    public Dictionary<int, GridFightSeasonModuleExcel> SeasonModuleData { get; set; } = [];
+    public Dictionary<uint, GridFightTutorialStageExcel> TutorialStageData { get; set; } = [];
+    public List<GridFightTutorialStageNodeExcel> TutorialStageNodeData { get; set; } = [];
+    public Dictionary<uint, List<uint>> SeasonAugmentData { get; set; } = [];
+    public Dictionary<uint, GridFightBonusPoolV2Excel> BonusPoolV2Data { get; set; } = [];
+    public Dictionary<uint, GridFightVictoryBonusExcel> VictoryBonusData { get; set; } = [];
+    public Dictionary<uint, GridFightCraftConfigExcel> CraftConfigData { get; set; } = [];
+    public Dictionary<uint, GridFightSettleRankExcel> SettleRankData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -345,6 +369,12 @@ public static partial class GameData
             GridFightOrbData = GameData.GridFightOrbData,
             GridFightAugmentMonsterData = GameData.GridFightAugmentMonsterData,
             GridFightBinaryDiffAddRuleData = GameData.GridFightBinaryDiffAddRuleData,
+            GridFightBinaryNodeRuleData = GameData.GridFightBinaryNodeRuleData,
+            GridFightEliteGroupData = GameData.GridFightEliteGroupData,
+            GridFightEnemyDifficultyLvData = GameData.GridFightEnemyDifficultyLvData,
+            GridFightStageLevelValueData = GameData.GridFightStageLevelValueData,
+            GridFightFormationWaveData = GameData.GridFightFormationWaveData,
+            GridFightPenaltyRuleData = GameData.GridFightPenaltyRuleData,
             GridFightPortalBuffData = GameData.GridFightPortalBuffData,
             GridFightItemsData = GameData.GridFightItemsData,
             GridFightTalentData = GameData.GridFightTalentData,
@@ -514,6 +544,21 @@ public static partial class GameData
             TutorialGuideDataData = GameData.TutorialGuideDataData,
             DailyActiveConfigData = GameData.DailyActiveConfigData,
             DailyActiveQuestPoolData = GameData.DailyActiveQuestPoolData,
+            GridFightRuntimeData = new GridFightRuntimeDataSnapshot
+            {
+                ConstValueData = GameData.GridFightConstValueData,
+                ModuleBanRoleData = GameData.GridFightModuleBanRoleData,
+                ModuleBanPortalData = GameData.GridFightModuleBanPortalData,
+                ModuleBanAugmentData = GameData.GridFightModuleBanAugmentData,
+                SeasonModuleData = GameData.GridFightSeasonModuleData,
+                TutorialStageData = GameData.GridFightTutorialStageData,
+                TutorialStageNodeData = GameData.GridFightTutorialStageNodeData,
+                SeasonAugmentData = GameData.GridFightSeasonAugmentData,
+                BonusPoolV2Data = GameData.GridFightBonusPoolV2Data,
+                VictoryBonusData = GameData.GridFightVictoryBonusData,
+                CraftConfigData = GameData.GridFightCraftConfigData,
+                SettleRankData = GameData.GridFightSettleRankData,
+            },
         };
     }
 
@@ -569,6 +614,7 @@ public static partial class GameData
         GameData.BattleCollegeConfigData = snapshot.BattleCollegeConfigData;
         GameData.BattleTargetConfigData = snapshot.BattleTargetConfigData;
         GameData.GridFightBasicOrbRewardsConfig = snapshot.GridFightBasicOrbRewardsConfig;
+        GameData.GridFightRewardRulesConfig = snapshot.GridFightBasicOrbRewardsConfig.RewardRules;
         GameData.GridFightBasicBonusPoolV2Data = snapshot.GridFightBasicBonusPoolV2Data;
         GameData.GridFightRoleBasicInfoData = snapshot.GridFightRoleBasicInfoData;
         GameData.GridFightRoleStarData = snapshot.GridFightRoleStarData;
@@ -592,6 +638,12 @@ public static partial class GameData
         GameData.GridFightOrbData = snapshot.GridFightOrbData;
         GameData.GridFightAugmentMonsterData = snapshot.GridFightAugmentMonsterData;
         GameData.GridFightBinaryDiffAddRuleData = snapshot.GridFightBinaryDiffAddRuleData;
+        GameData.GridFightBinaryNodeRuleData = snapshot.GridFightBinaryNodeRuleData;
+        GameData.GridFightEliteGroupData = snapshot.GridFightEliteGroupData;
+        GameData.GridFightEnemyDifficultyLvData = snapshot.GridFightEnemyDifficultyLvData;
+        GameData.GridFightStageLevelValueData = snapshot.GridFightStageLevelValueData;
+        GameData.GridFightFormationWaveData = snapshot.GridFightFormationWaveData;
+        GameData.GridFightPenaltyRuleData = snapshot.GridFightPenaltyRuleData;
         GameData.GridFightPortalBuffData = snapshot.GridFightPortalBuffData;
         GameData.GridFightItemsData = snapshot.GridFightItemsData;
         GameData.GridFightTalentData = snapshot.GridFightTalentData;
@@ -761,5 +813,18 @@ public static partial class GameData
         GameData.TutorialGuideDataData = snapshot.TutorialGuideDataData;
         GameData.DailyActiveConfigData = snapshot.DailyActiveConfigData;
         GameData.DailyActiveQuestPoolData = snapshot.DailyActiveQuestPoolData;
+        var gridFightRuntimeData = snapshot.GridFightRuntimeData ?? new GridFightRuntimeDataSnapshot();
+        GameData.GridFightConstValueData = gridFightRuntimeData.ConstValueData;
+        GameData.GridFightModuleBanRoleData = gridFightRuntimeData.ModuleBanRoleData;
+        GameData.GridFightModuleBanPortalData = gridFightRuntimeData.ModuleBanPortalData;
+        GameData.GridFightModuleBanAugmentData = gridFightRuntimeData.ModuleBanAugmentData;
+        GameData.GridFightSeasonModuleData = gridFightRuntimeData.SeasonModuleData;
+        GameData.GridFightTutorialStageData = gridFightRuntimeData.TutorialStageData;
+        GameData.GridFightTutorialStageNodeData = gridFightRuntimeData.TutorialStageNodeData;
+        GameData.GridFightSeasonAugmentData = gridFightRuntimeData.SeasonAugmentData;
+        GameData.GridFightBonusPoolV2Data = gridFightRuntimeData.BonusPoolV2Data;
+        GameData.GridFightVictoryBonusData = gridFightRuntimeData.VictoryBonusData;
+        GameData.GridFightCraftConfigData = gridFightRuntimeData.CraftConfigData;
+        GameData.GridFightSettleRankData = gridFightRuntimeData.SettleRankData;
     }
 }

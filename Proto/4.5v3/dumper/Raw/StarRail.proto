@@ -23255,8 +23255,8 @@ message LCFAAGEJGBG {
     uint32 PLDKENJLKME = 3;
 }
 
-// cmdid: 8642
-message NDAMFDIDKGB {
+// cmdid: 8642 obf: NDAMFDIDKGB
+message GridFightUpdateEliteBranchSelectCsReq {
     uint32 AGLBKMEBBPE = 14;
 }
 
@@ -23513,7 +23513,7 @@ message FAIHLAKPABN {
 }
 
 // cmdid: 8483 obf: KOKMBKGPCFE
-message GridFightUpdateEliteBranchSelectCsReq {
+message GridFightGetArchiveCsReq {
     MLJIILDNDPL GDFHGOOLLFD = 7;
 }
 

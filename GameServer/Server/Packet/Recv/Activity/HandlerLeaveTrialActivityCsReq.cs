@@ -4,9 +4,9 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Activity;
 
 [Opcode(CmdIds.LeaveTrialActivityCsReq)]
-public class HandlerLeaveTrialActivityCsReq : Handler<PIGBCIDLGCA>
+public class HandlerLeaveTrialActivityCsReq : Handler<LeaveTrialActivityCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, PIGBCIDLGCA req)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, LeaveTrialActivityCsReq req)
     {
         if (player.ActivityManager!.TrialActivityInstance != null)
         {

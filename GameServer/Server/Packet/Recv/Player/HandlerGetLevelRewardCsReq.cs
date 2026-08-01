@@ -6,30 +6,30 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Server.Packet.Recv.Player;
 
 [Opcode(CmdIds.GetLevelRewardCsReq)]
-public class HandlerGetLevelRewardCsReq : Handler<JDAFEAJCJIB>
+public class HandlerGetLevelRewardCsReq : Handler<GetLevelRewardCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, JDAFEAJCJIB req)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, GetLevelRewardCsReq req)
     {
-        if (player.Data.TakenLevelReward.Contains((int)req.AOEBNCAILPJ))
+        if (player.Data.TakenLevelReward.Contains((int)req.Level))
         {
             await connection.SendPacket(new PacketGetLevelRewardScRsp(Retcode.RetLevelRewardHasTaken));
             return;
         }
 
-        if (player.Data.Level < req.AOEBNCAILPJ)
+        if (player.Data.Level < req.Level)
         {
             await connection.SendPacket(new PacketGetLevelRewardScRsp(Retcode.RetLevelRewardLevelError));
             return;
         }
 
-        if (!GameData.PlayerLevelConfigData.TryGetValue((int)req.AOEBNCAILPJ, out var levelExcel))
+        if (!GameData.PlayerLevelConfigData.TryGetValue((int)req.Level, out var levelExcel))
         {
             await connection.SendPacket(new PacketGetLevelRewardScRsp(Retcode.RetLevelRewardLevelError));
             return;
         }
 
-        player.Data.TakenLevelReward.Add((int)req.AOEBNCAILPJ);
+        player.Data.TakenLevelReward.Add((int)req.Level);
         var rewards = await player.InventoryManager!.HandleReward(levelExcel.LevelRewardID);
-        await connection.SendPacket(new PacketGetLevelRewardScRsp(req.AOEBNCAILPJ, rewards));
+        await connection.SendPacket(new PacketGetLevelRewardScRsp(req.Level, rewards));
     }
 }
