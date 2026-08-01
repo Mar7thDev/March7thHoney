@@ -954,7 +954,14 @@ public sealed class GridFightResourceCatalog
     {
         var row = FindSettleRank(lineupHp) ??
                   throw new InvalidDataException($"Missing GridFight settle rank for lineup HP {lineupHp}");
-        return row.ID == 0 ? 0 : row.ID - 1;
+        return ToProtocolSettleRank(row);
+    }
+
+    public uint GetMinimumSettleRank()
+    {
+        var row = GameData.GridFightSettleRankData.Values.OrderBy(candidate => candidate.ID).FirstOrDefault() ??
+                  throw new InvalidDataException("Missing GridFight settle rank table");
+        return ToProtocolSettleRank(row);
     }
 
     private static GridFightSettleRankExcel? FindSettleRank(uint lineupHp)
@@ -963,5 +970,10 @@ public sealed class GridFightResourceCatalog
             .Where(row => lineupHp >= row.Rank_LeftInterval && lineupHp <= row.Rank_RightInterval)
             .OrderBy(row => row.ID)
             .FirstOrDefault();
+    }
+
+    private static uint ToProtocolSettleRank(GridFightSettleRankExcel row)
+    {
+        return row.ID == 0 ? 0 : row.ID - 1;
     }
 }
