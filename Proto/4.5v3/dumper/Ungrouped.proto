@@ -8154,7 +8154,7 @@ message FHNAEJBKINH {
     repeated uint32 KCNPFIGHDAL = 4;
 }
 
-message FHNLBDMKPEM {
+message GridFightUseForgeScRsp {
     uint32 retcode = 15;
 }
 
@@ -12684,7 +12684,7 @@ message GridFightSyncData {
     uint32 NJCEFEJBEOP = 373;
     GridGameForgeItemInfo add_forge_item_info = 1388;
     GridGameForgeItemInfo update_forge_item_info = 16;
-    uint32 OACCGHIHLBA = 34;
+    uint32 remove_forge_unique_id = 34;
     GridFightGameAugmentAdd add_augment_info = 780;
     MDKHMNKAECP BMGFDIKDOBE = 1675;
     GridFightGameItemInfo game_data_item_info = 1862;
@@ -20010,9 +20010,9 @@ message OEBBNFANHLK {
     double AALPICLABCO = 2;
 }
 
-message OEBKLEPMMKE {
+message GridFightUseForgeCsReq {
     uint32 unique_id = 7;
-    uint32 PFIKCNFBGHE = 3;
+    uint32 forge_target_index = 3;
 }
 
 message OECNJOAPCKO {

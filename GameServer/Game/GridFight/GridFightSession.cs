@@ -82,10 +82,21 @@ public sealed record GridFightSessionChange(
     bool Success,
     IReadOnlyList<GridFightRoleState> AddedRoles,
     IReadOnlyList<uint> RemovedRoleIds,
-    IReadOnlyList<GridFightRoleState> UpdatedRoles)
+    IReadOnlyList<GridFightRoleState> UpdatedRoles,
+    IReadOnlyList<GridFightForgeItemState> UpdatedForgeItems)
 {
-    public static GridFightSessionChange Failed { get; } = new(false, [], [], []);
-    public static GridFightSessionChange Succeeded { get; } = new(true, [], [], []);
+    public static GridFightSessionChange Failed { get; } = new(false, [], [], [], []);
+    public static GridFightSessionChange Succeeded { get; } = new(true, [], [], [], []);
+}
+
+public sealed record GridFightForgeUseResult(
+    bool Success,
+    uint RemovedForgeUniqueId,
+    GridFightEquipmentState? Equipment,
+    IReadOnlyList<GridFightRoleState> UpdatedRoles,
+    IReadOnlyList<GridFightForgeItemState> UpdatedForgeItems)
+{
+    public static GridFightForgeUseResult Failed { get; } = new(false, 0, null, [], []);
 }
 
 public sealed record GridFightRoleMergeStep(
@@ -110,11 +121,7 @@ public sealed class GridFightSession
     private const uint SupplyEquipmentSource = 9;
 
     private readonly GridFightResourceCatalog _catalog;
-    private uint _nextRoleUniqueId = 1;
-    private uint _nextEquipmentUniqueId = 1;
-    private uint _nextOrbUniqueId = 1;
-    private uint _nextForgeUniqueId = 1;
-    private uint _nextGameItemUniqueId = 100;
+    private uint _nextEntityUniqueId = 1;
     private uint _nextConsumableGroupId = 1;
     private bool _orbClaimed;
     private bool _cyrenePoemShopUnlocked;
@@ -354,7 +361,7 @@ public sealed class GridFightSession
 
         var role = new GridFightRoleState
         {
-            UniqueId = _nextRoleUniqueId++,
+            UniqueId = _nextEntityUniqueId++,
             RoleId = selected.RoleId,
             Position = GetFreeBenchPosition(),
         };
@@ -409,7 +416,7 @@ public sealed class GridFightSession
 
         var role = new GridFightRoleState
         {
-            UniqueId = _nextRoleUniqueId++,
+            UniqueId = _nextEntityUniqueId++,
             RoleId = roleId,
             Star = star,
             Position = GetFreeBenchPosition(),
@@ -425,7 +432,7 @@ public sealed class GridFightSession
         if (!GameData.GridFightEquipmentData.ContainsKey(equipmentId)) return false;
         equipment = new GridFightEquipmentState
         {
-            UniqueId = _nextEquipmentUniqueId++,
+            UniqueId = _nextEntityUniqueId++,
             EquipmentId = equipmentId,
             Source = source,
         };
@@ -439,7 +446,7 @@ public sealed class GridFightSession
         if (!GameData.GridFightOrbData.ContainsKey(orbItemId)) return false;
         orb = new GridFightOrbState
         {
-            UniqueId = _nextOrbUniqueId++,
+            UniqueId = _nextEntityUniqueId++,
             OrbItemId = orbItemId,
         };
         Orbs.Add(orb);
@@ -544,7 +551,7 @@ public sealed class GridFightSession
             !TryAddEquipment(equipmentId, out var equipment, GridFightSpecialFeatures.HackEquipmentSource))
             return GridFightTraitEnhanceActivationResult.Failed;
 
-        HackConsole = new GridFightHackConsoleState { GameItemUniqueId = _nextGameItemUniqueId++ };
+        HackConsole = new GridFightHackConsoleState { GameItemUniqueId = _nextEntityUniqueId++ };
         _traitEffectSelectEnhanceQueuePosition = null;
         return new GridFightTraitEnhanceActivationResult(true, queuePosition, equipment);
     }
@@ -705,13 +712,38 @@ public sealed class GridFightSession
         if (choices.Count == 0 || position == 0) return false;
         forgeItem = new GridFightForgeItemState
         {
-            UniqueId = _nextForgeUniqueId++,
+            UniqueId = _nextEntityUniqueId++,
             ForgeItemId = forgeItemId,
             Position = position,
             EquipmentChoices = choices,
         };
         ForgeItems.Add(forgeItem);
         return true;
+    }
+
+    public GridFightForgeUseResult UseForge(uint uniqueId, uint targetIndex)
+    {
+        if (Phase != GridFightSessionPhase.Preparing || targetIndex == 0)
+            return GridFightForgeUseResult.Failed;
+        var forgeItem = ForgeItems.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
+        if (forgeItem == null ||
+            !GameData.GridFightForgeData.TryGetValue(forgeItem.ForgeItemId, out var forge) ||
+            forge.FuncType != GridFightForgeFuncTypeEnum.Equip ||
+            targetIndex > forgeItem.EquipmentChoices.Count)
+            return GridFightForgeUseResult.Failed;
+
+        var equipmentId = forgeItem.EquipmentChoices[checked((int)targetIndex - 1)];
+        if (!TryAddEquipment(equipmentId, out var equipment))
+            return GridFightForgeUseResult.Failed;
+
+        ForgeItems.Remove(forgeItem);
+        var promoted = PromoteOverflowItemsToBench();
+        return new GridFightForgeUseResult(
+            true,
+            uniqueId,
+            equipment,
+            promoted.Roles,
+            promoted.ForgeItems);
     }
 
     public bool TryMoveToSection(uint chapterId, uint sectionId, out uint finishedPendingPosition)
@@ -759,7 +791,7 @@ public sealed class GridFightSession
             slot.SoldOut = true;
             var role = new GridFightRoleState
             {
-                UniqueId = _nextRoleUniqueId++,
+                UniqueId = _nextEntityUniqueId++,
                 RoleId = slot.RoleId,
                 Star = slot.Star,
                 Position = GetFreeBenchPosition(),
@@ -782,8 +814,8 @@ public sealed class GridFightSession
         if (role == null) return GridFightSessionChange.Failed;
         Gold += _catalog.GetSellPrice(role.RoleId, role.Star);
         Roles.Remove(role);
-        var promotedRoles = PromoteOverflowRolesToBench();
-        return new GridFightSessionChange(true, [], [uniqueId], promotedRoles);
+        var promoted = PromoteOverflowItemsToBench();
+        return new GridFightSessionChange(true, [], [uniqueId], promoted.Roles, promoted.ForgeItems);
     }
 
     public bool BuyExp()
@@ -812,28 +844,50 @@ public sealed class GridFightSession
         if (Phase != GridFightSessionPhase.Preparing || updates.Count == 0 ||
             updates.Select(update => update.UniqueId).Distinct().Count() != updates.Count)
             return GridFightSessionChange.Failed;
-        if (updates.Any(update => Roles.All(role => role.UniqueId != update.UniqueId) || !IsValidPosition(update.Position)))
+        var rolesById = Roles.ToDictionary(role => role.UniqueId);
+        var forgeItemsById = ForgeItems.ToDictionary(item => item.UniqueId);
+        if (updates.Any(update =>
+                rolesById.ContainsKey(update.UniqueId) == forgeItemsById.ContainsKey(update.UniqueId) ||
+                rolesById.ContainsKey(update.UniqueId) && !IsValidPosition(update.Position) ||
+                forgeItemsById.ContainsKey(update.UniqueId) && !IsBenchPosition(update.Position)))
             return GridFightSessionChange.Failed;
 
-        var positions = Roles.ToDictionary(role => role.UniqueId, role => role.Position);
-        foreach (var update in updates) positions[update.UniqueId] = update.Position;
-        var occupied = positions.Values.Where(position => position != 0).ToList();
-        if (occupied.Distinct().Count() != occupied.Count ||
-            occupied.Any(position => ForgeItems.Any(item => item.Position == position)))
+        var rolePositions = Roles.ToDictionary(role => role.UniqueId, role => role.Position);
+        var forgePositions = ForgeItems.ToDictionary(item => item.UniqueId, item => item.Position);
+        foreach (var update in updates)
+            if (rolePositions.ContainsKey(update.UniqueId))
+                rolePositions[update.UniqueId] = update.Position;
+            else
+                forgePositions[update.UniqueId] = update.Position;
+        var occupied = rolePositions.Values.Concat(forgePositions.Values)
+            .Where(position => position != 0)
+            .ToList();
+        if (occupied.Distinct().Count() != occupied.Count)
             return GridFightSessionChange.Failed;
-        if (positions.Values.Count(IsActivePosition) > MaxActiveRoles) return GridFightSessionChange.Failed;
+        if (rolePositions.Values.Count(IsActivePosition) > MaxActiveRoles) return GridFightSessionChange.Failed;
 
         var updatedRoles = new List<GridFightRoleState>();
+        var updatedForgeItems = new List<GridFightForgeItemState>();
         foreach (var update in updates)
         {
-            var role = Roles.Single(role => role.UniqueId == update.UniqueId);
-            role.Position = update.Position;
-            updatedRoles.Add(role);
+            if (rolesById.TryGetValue(update.UniqueId, out var role))
+            {
+                role.Position = update.Position;
+                updatedRoles.Add(role);
+            }
+            else
+            {
+                var forgeItem = forgeItemsById[update.UniqueId];
+                forgeItem.Position = update.Position;
+                updatedForgeItems.Add(forgeItem);
+            }
         }
         var updatedRoleIds = updatedRoles.Select(role => role.UniqueId).ToHashSet();
-        updatedRoles.AddRange(PromoteOverflowRolesToBench()
-            .Where(role => updatedRoleIds.Add(role.UniqueId)));
-        return new GridFightSessionChange(true, [], [], updatedRoles);
+        var updatedForgeItemIds = updatedForgeItems.Select(item => item.UniqueId).ToHashSet();
+        var promoted = PromoteOverflowItemsToBench();
+        updatedRoles.AddRange(promoted.Roles.Where(role => updatedRoleIds.Add(role.UniqueId)));
+        updatedForgeItems.AddRange(promoted.ForgeItems.Where(item => updatedForgeItemIds.Add(item.UniqueId)));
+        return new GridFightSessionChange(true, [], [], updatedRoles, updatedForgeItems);
     }
 
     public bool EnterBattle()
@@ -944,7 +998,7 @@ public sealed class GridFightSession
         for (var index = 0; index < roles.Count; index++)
             Roles.Add(new GridFightRoleState
             {
-                UniqueId = _nextRoleUniqueId++,
+                UniqueId = _nextEntityUniqueId++,
                 RoleId = roles[index].ID,
                 Position = 14u + (uint)index,
             });
@@ -965,7 +1019,7 @@ public sealed class GridFightSession
             foreach (var role in merge) Roles.Remove(role);
             var mergedRole = new GridFightRoleState
             {
-                UniqueId = _nextRoleUniqueId++,
+                UniqueId = _nextEntityUniqueId++,
                 RoleId = roleId,
                 Star = group.Key + 1,
                 Position = merge[0].Position,
@@ -1074,7 +1128,8 @@ public sealed class GridFightSession
         return 0;
     }
 
-    private IReadOnlyList<GridFightRoleState> PromoteOverflowRolesToBench()
+    private (IReadOnlyList<GridFightRoleState> Roles, IReadOnlyList<GridFightForgeItemState> ForgeItems)
+        PromoteOverflowItemsToBench()
     {
         const uint firstBenchPosition = 14;
         var firstOverflowPosition = firstBenchPosition + _catalog.BenchSize;
@@ -1084,25 +1139,50 @@ public sealed class GridFightSession
                 ForgeItems.All(item => item.Position != position))
                 freeBenchPositions.Add(position);
 
-        var overflowRoles = Roles
+        var overflowItems = Roles
             .Where(role => role.Position >= firstOverflowPosition)
-            .OrderBy(role => role.Position)
-            .ThenBy(role => role.UniqueId)
+            .Select(role => (
+                role.Position,
+                role.UniqueId,
+                Role: (GridFightRoleState?)role,
+                ForgeItem: (GridFightForgeItemState?)null))
+            .Concat(ForgeItems
+                .Where(item => item.Position >= firstOverflowPosition)
+                .Select(item => (
+                    item.Position,
+                    item.UniqueId,
+                    Role: (GridFightRoleState?)null,
+                    ForgeItem: (GridFightForgeItemState?)item)))
+            .OrderBy(item => item.Position)
+            .ThenBy(item => item.UniqueId)
             .ToList();
         var promotedRoles = new List<GridFightRoleState>();
-        for (var index = 0; index < freeBenchPositions.Count && index < overflowRoles.Count; index++)
+        var promotedForgeItems = new List<GridFightForgeItemState>();
+        for (var index = 0; index < freeBenchPositions.Count && index < overflowItems.Count; index++)
         {
-            overflowRoles[index].Position = freeBenchPositions[index];
-            promotedRoles.Add(overflowRoles[index]);
+            var item = overflowItems[index];
+            if (item.Role != null)
+            {
+                item.Role.Position = freeBenchPositions[index];
+                promotedRoles.Add(item.Role);
+            }
+            else
+            {
+                item.ForgeItem!.Position = freeBenchPositions[index];
+                promotedForgeItems.Add(item.ForgeItem);
+            }
         }
-        return promotedRoles;
+        return (promotedRoles, promotedForgeItems);
     }
 
     private bool IsValidPosition(uint position)
     {
         return position == 0 || IsActivePosition(position) ||
-               position is >= 14 && position <= 13 + _catalog.BenchSize + _catalog.BenchOverflowSize;
+               IsBenchPosition(position);
     }
+
+    private bool IsBenchPosition(uint position) =>
+        position is >= 14 && position <= 13 + _catalog.BenchSize + _catalog.BenchOverflowSize;
 
     private static bool IsActivePosition(uint position) => position is >= 1 and <= 13;
 
