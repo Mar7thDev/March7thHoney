@@ -21479,7 +21479,7 @@ message PLBAMNCLBHB {
 }
 
 message GridFightRoleDamageStatistics {
-    bool is_front_position = 10;
+    bool is_trial_role = 10;
     uint32 role_star = 11;
     repeated uint32 grid_fight_equipment_list = 15;
     uint32 role_id = 2;

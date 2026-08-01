@@ -1131,7 +1131,7 @@ public sealed class GridFightManager : BasePlayerManager
         var statistics = ReadBattleStatistics(request);
         var settlement = session.ResolveBattle(battleEndedNormally, statistics);
         if (!settlement.Success) return;
-        var damageStatistics = BuildDamageStatistics(settlement.Statistics);
+        var damageStatistics = BuildDamageStatistics(battle, settlement.Statistics);
         _lastBattleDamageStatistics = damageStatistics.Clone();
 
         await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildBattleSettlementSync(
@@ -1252,7 +1252,7 @@ public sealed class GridFightManager : BasePlayerManager
             true);
     }
 
-    private GridFightDamageSttInfo BuildDamageStatistics(GridFightBattleStatistics statistics)
+    private GridFightDamageSttInfo BuildDamageStatistics(BattleInstance battle, GridFightBattleStatistics statistics)
     {
         var session = Session!;
         var result = new GridFightDamageSttInfo();
@@ -1269,13 +1269,15 @@ public sealed class GridFightManager : BasePlayerManager
         var equipmentIds = session.Equipments.Select(item => item.EquipmentId).Distinct().Order().ToList();
         foreach (var role in activeRoles)
         {
+            var isForeground = role.Position is >= 1 and <= 4;
+            var isTrialRole = GridFightBattleProtoBuilder.IsTrialRole(battle, role.RoleId, isForeground);
             var row = new GridFightRoleDamageStatistics
             {
                 RoleId = role.RoleId,
                 RoleStar = role.Star,
                 TotalDamage = uploadedRoleDamage.GetValueOrDefault(role.RoleId),
-                IsFrontPosition = role.Position is >= 1 and <= 4,
-                IsBackPosition = role.Position is >= 5 and <= 13,
+                IsTrialRole = isTrialRole,
+                IsBackPosition = !isTrialRole && role.Position is >= 5 and <= 13,
             };
             row.GridFightEquipmentList.Add(equipmentIds);
             result.RoleStatistics.Add(row);
