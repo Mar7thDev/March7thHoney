@@ -140,14 +140,6 @@ Workflow publishes self-contained builds for:
 | `linux-x64` | `March7thHoney-linux-x64` |
 | `linux-arm64` | `March7thHoney-linux-arm64` |
 
-<details>
-<summary>Manual Publish Notes</summary>
-
-- Artifact upload is intended for manual workflow runs when storage is tight.
-- If Actions storage quota is exceeded, wait for usage recalculation or delete old artifacts.
-
-</details>
-
 ## Notes
 
 - If behavior looks inconsistent after updating commits, clear runtime cache/data and retest with a fresh account state first.
@@ -157,7 +149,7 @@ Workflow publishes self-contained builds for:
 
 - Check server logs under your configured log path.
 - `/scene reload` can solve most of the problem.
-- Community support: <https://discord.gg/castoriceps>
+- Community support: <https://discord.gg/CyreneEchoes>
 
 ## Credits
 
@@ -174,6 +166,5 @@ Workflow publishes self-contained builds for:
 
 ### Projects
 
-- [SqlSugar](https://github.com/donet5/SqlSugar)
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
