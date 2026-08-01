@@ -365,7 +365,7 @@ public sealed class GridFightManager : BasePlayerManager
                     LayerInfo = BuildLayerInfo(),
                 },
             });
-        if (change != null) AppendRoleChanges(result, change);
+        if (change != null) AppendSessionChanges(result, change);
         notify.ResultList.Add(result);
         return notify;
     }
@@ -401,6 +401,26 @@ public sealed class GridFightManager : BasePlayerManager
         items.GridFightEquipmentList.Add(BuildEquipment(equipment));
         var result = new GridFightSyncResultData();
         result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        notify.ResultList.Add(result);
+        return notify;
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildForgeUseSync(GridFightForgeUseResult useResult)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null || !useResult.Success || useResult.Equipment == null) return notify;
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcUseForge,
+        };
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            RemoveForgeUniqueId = useResult.RemovedForgeUniqueId,
+        });
+        var items = new GridFightGameItemSyncInfo();
+        items.GridFightEquipmentList.Add(BuildEquipment(useResult.Equipment));
+        result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        AppendPositionChanges(result, useResult.UpdatedRoles, useResult.UpdatedForgeItems);
         notify.ResultList.Add(result);
         return notify;
     }
@@ -728,14 +748,24 @@ public sealed class GridFightManager : BasePlayerManager
         return entry;
     }
 
-    private void AppendRoleChanges(GridFightSyncResultData result, GridFightSessionChange change)
+    private void AppendSessionChanges(GridFightSyncResultData result, GridFightSessionChange change)
     {
         foreach (var role in change.AddedRoles)
             result.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
         foreach (var uniqueId in change.RemovedRoleIds)
             result.UpdateDynamicList.Add(new GridFightSyncData { RemoveRoleUniqueId = uniqueId });
-        foreach (var role in change.UpdatedRoles)
+        AppendPositionChanges(result, change.UpdatedRoles, change.UpdatedForgeItems);
+    }
+
+    private void AppendPositionChanges(
+        GridFightSyncResultData result,
+        IEnumerable<GridFightRoleState> roles,
+        IEnumerable<GridFightForgeItemState> forgeItems)
+    {
+        foreach (var role in roles)
             result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        foreach (var forgeItem in forgeItems)
+            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateForgeItemInfo = BuildForgeItem(forgeItem) });
     }
 
     private void AppendAcquiredRoles(
@@ -1060,14 +1090,12 @@ public sealed class GridFightManager : BasePlayerManager
         return notify;
     }
 
-    public GridFightSyncUpdateResultScNotify BuildPositionSync(IEnumerable<uint> uniqueIds)
+    public GridFightSyncUpdateResultScNotify BuildPositionSync(GridFightSessionChange change)
     {
-        var session = Session;
         var notify = new GridFightSyncUpdateResultScNotify();
-        if (session == null) return notify;
+        if (Session == null || !change.Success) return notify;
         var result = new GridFightSyncResultData();
-        foreach (var role in session.Roles.Where(role => uniqueIds.Contains(role.UniqueId)))
-            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        AppendPositionChanges(result, change.UpdatedRoles, change.UpdatedForgeItems);
         notify.ResultList.Add(result);
         return notify;
     }

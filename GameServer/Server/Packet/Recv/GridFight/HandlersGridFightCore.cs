@@ -171,7 +171,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
         if (pendingHandled)
         {
             var added = session!.Roles.Where(role => !beforeIds.Contains(role.UniqueId)).ToList();
-            change = new GridFightSessionChange(true, added, [], []);
+            change = new GridFightSessionChange(true, added, [], [], []);
         }
 
         if (pendingHandled && kind == GridFightPendingRequestKind.PortalSelect)
@@ -406,10 +406,29 @@ public sealed class HandlerGridFightUpdatePosCsReq : Handler<GridFightUpdatePosC
         var change = manager.Session?.UpdatePositions(updates) ?? GridFightSessionChange.Failed;
         if (change.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                manager.BuildPositionSync(change.UpdatedRoles.Select(role => role.UniqueId))));
+                manager.BuildPositionSync(change)));
         var response = new GridFightUpdatePosScRsp { Retcode = change.Success ? 0 : (uint)Retcode.RetFail };
         response.PosInfoList.Add(request.PosInfoList);
         await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdatePosScRsp, response));
+    }
+}
+
+[Opcode(CmdIds.GridFightUseForgeCsReq)]
+public sealed class HandlerGridFightUseForgeCsReq : Handler<GridFightUseForgeCsReq>
+{
+    protected override async Task OnHandle(
+        Connection connection,
+        PlayerInstance player,
+        GridFightUseForgeCsReq request)
+    {
+        var manager = player.GridFightManager!;
+        var result = manager.Session?.UseForge(request.UniqueId, request.ForgeTargetIndex) ??
+                     GridFightForgeUseResult.Failed;
+        if (result.Success)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildForgeUseSync(result)));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightUseForgeScRsp,
+            new GridFightUseForgeScRsp { Retcode = result.Success ? 0 : (uint)Retcode.RetFail }));
     }
 }
 

@@ -2598,4 +2598,6 @@ public class CmdIds
     public const int GridFightUseHackOptionScRsp = 8514;
     public const int GridFightQuitLeaveGamePlayScRsp = 8498;
     public const int GridFightResumeGamePlayScRsp = 8425;
+    public const int GridFightUseForgeCsReq = 8451;
+    public const int GridFightUseForgeScRsp = 8440;
 }
