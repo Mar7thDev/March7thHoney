@@ -422,21 +422,14 @@ public sealed class GridFightManager : BasePlayerManager
         return notify;
     }
 
-    public GridFightSyncUpdateResultScNotify BuildConsumableSync(
-        GridFightConsumableState consumable,
-        bool isNew)
+    public GridFightSyncUpdateResultScNotify BuildConsumableSync(GridFightConsumableChange change)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         if (Session == null) return notify;
         var items = new GridFightGameItemSyncInfo();
-        items.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
-        {
-            ItemId = consumable.ItemId,
-            ItemStackCount = 1,
-            Num = consumable.Count,
-        });
+        items.UpdateGridFightConsumableList.Add(BuildConsumableUpdate(change));
         var result = new GridFightSyncResultData();
-        result.UpdateDynamicList.Add(isNew
+        result.UpdateDynamicList.Add(change.IsNew
             ? new GridFightSyncData { AddGameItemInfo = items }
             : new GridFightSyncData { UpdateGameItemInfo = items });
         notify.ResultList.Add(result);
@@ -693,12 +686,7 @@ public sealed class GridFightManager : BasePlayerManager
         foreach (var change in application.ConsumableChanges)
         {
             var items = new GridFightGameItemSyncInfo();
-            items.UpdateGridFightConsumableList.Add(new GridFightConsumableUpdateInfo
-            {
-                ItemId = change.Consumable.ItemId,
-                ItemStackCount = 1,
-                Num = change.Consumable.Count,
-            });
+            items.UpdateGridFightConsumableList.Add(BuildConsumableUpdate(change));
             result.UpdateDynamicList.Add(change.IsNew
                 ? new GridFightSyncData { AddGameItemInfo = items }
                 : new GridFightSyncData { UpdateGameItemInfo = items });
@@ -1186,10 +1174,22 @@ public sealed class GridFightManager : BasePlayerManager
         info.GridFightEquipmentList.Add(session.Equipments.Select(BuildEquipment));
         info.GridFightConsumableList.Add(session.Consumables.Select(consumable => new GridFightConsumableInfo
         {
+            GroupId = consumable.GroupId,
             ItemId = consumable.ItemId,
             Num = consumable.Count,
         }));
         return info;
+    }
+
+    private static GridFightConsumableUpdateInfo BuildConsumableUpdate(GridFightConsumableChange change)
+    {
+        return new GridFightConsumableUpdateInfo
+        {
+            GroupId = change.Consumable.GroupId,
+            ItemId = change.Consumable.ItemId,
+            ItemStackCount = checked((int)change.StackDelta),
+            Num = change.Consumable.Count,
+        };
     }
 
     private GridFightGameOrbInfo BuildOrbInfo()
