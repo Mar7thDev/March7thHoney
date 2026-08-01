@@ -248,10 +248,8 @@ public sealed partial class GridFightSession
             .ToList();
         if (config.EquipType != GridFightEquipmentTypeEnum.Implants)
         {
-            var willAutoCraft = config.EquipCategory == GridFightEquipCategoryEnum.Basic &&
-                                normalEquipped.Any(candidate =>
-                                    GameData.GridFightEquipmentData[candidate.EquipmentId].EquipCategory ==
-                                    GridFightEquipCategoryEnum.Basic);
+            var willAutoCraft = normalEquipped.Any(candidate =>
+                ResolveCraftedEquipmentId(equipment.EquipmentId, candidate.EquipmentId) != 0);
             if (normalEquipped.Count >= NormalEquipmentSlotCount && !willAutoCraft) return false;
             if (normalEquipped.Any(candidate =>
                     GameData.GridFightEquipmentData[candidate.EquipmentId].DressRule ==
@@ -283,21 +281,15 @@ public sealed partial class GridFightSession
         ICollection<GridFightEquipmentState> added)
     {
         var newlyEquipped = Equipments.First(equipment => equipment.UniqueId == newlyEquippedUniqueId);
-        if (GameData.GridFightEquipmentData[newlyEquipped.EquipmentId].EquipCategory !=
-            GridFightEquipCategoryEnum.Basic)
-            return false;
-        var otherBasics = GetEquippedEquipment(role)
+        var craftCandidates = GetEquippedEquipment(role)
             .Where(equipment => equipment.UniqueId != newlyEquippedUniqueId)
-            .Where(equipment => GameData.GridFightEquipmentData[equipment.EquipmentId].EquipCategory ==
-                                GridFightEquipCategoryEnum.Basic)
+            .Where(equipment => GameData.GridFightEquipmentData[equipment.EquipmentId].EquipType !=
+                                GridFightEquipmentTypeEnum.Implants)
             .ToList();
-        foreach (var other in otherBasics)
+        foreach (var other in craftCandidates)
         {
-            var materialIds = new[] { newlyEquipped.EquipmentId, other.EquipmentId }.Order().ToList();
-            var recipe = GameData.GridFightCraftConfigData.Values
-                .OrderBy(candidate => candidate.CraftID)
-                .FirstOrDefault(candidate => candidate.CostEquipList.Order().SequenceEqual(materialIds));
-            if (recipe == null || !GameData.GridFightEquipmentData.ContainsKey(recipe.CraftEquipID)) continue;
+            var craftedEquipmentId = ResolveCraftedEquipmentId(newlyEquipped.EquipmentId, other.EquipmentId);
+            if (craftedEquipmentId == 0) continue;
 
             var insertIndex = Math.Min(
                 role.EquippedEquipmentUniqueIds.IndexOf(newlyEquipped.UniqueId),
@@ -308,12 +300,23 @@ public sealed partial class GridFightSession
             Equipments.Remove(other);
             removed.Add(newlyEquipped);
             removed.Add(other);
-            var crafted = CreateEquipment(recipe.CraftEquipID, CraftedEquipmentSource);
+            var crafted = CreateEquipment(craftedEquipmentId, CraftedEquipmentSource);
             role.EquippedEquipmentUniqueIds.Insert(Math.Max(0, insertIndex), crafted.UniqueId);
             added.Add(crafted);
             return true;
         }
         return false;
+    }
+
+    private static uint ResolveCraftedEquipmentId(uint firstEquipmentId, uint secondEquipmentId)
+    {
+        var materialIds = new[] { firstEquipmentId, secondEquipmentId }.Order().ToList();
+        var recipe = GameData.GridFightCraftConfigData.Values
+            .OrderBy(candidate => candidate.CraftID)
+            .FirstOrDefault(candidate => candidate.CostEquipList.Order().SequenceEqual(materialIds));
+        return recipe != null && GameData.GridFightEquipmentData.ContainsKey(recipe.CraftEquipID)
+            ? recipe.CraftEquipID
+            : 0;
     }
 
     private bool RemoveEquipmentFromRole(uint roleUniqueId, ICollection<GridFightRoleState> updatedRoles)
