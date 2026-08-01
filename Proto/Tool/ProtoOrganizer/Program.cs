@@ -6,6 +6,9 @@ using March7thHoney.ProtoOrganizer;
 
 var opts = Args.Parse(args);
 
+if (opts.RewriteProtoPaths.Count > 0)
+    return ProtoRewriteMode.Run(opts);
+
 Console.WriteLine($"[organizer] proto-file = {opts.ProtoFileDir}");
 Console.WriteLine($"[organizer] packetIds  = {opts.PacketIdsPath}");
 

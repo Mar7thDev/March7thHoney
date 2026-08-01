@@ -1946,11 +1946,11 @@
 8453 = GridFightPermanentTalentEnableCsReq  // obf: CKIKMLCGLFK; via: registry
 8454 = ILCPGLAAADL
 8456 = MCDBJHOCGHI
-8464 = GridFightUpdateEliteBranchSelectScRsp  // obf: NABNCJEJGLG; via: registry
+8464 = GridFightGetArchiveScRsp  // obf: NABNCJEJGLG; via: registry
 8468 = CNOAPAMNDOA
 8469 = AGOBLKJFJDL
 8476 = GridFightGetDataCsReq  // obf: AEFBLHALOFO; via: registry
-8483 = GridFightUpdateEliteBranchSelectCsReq  // obf: KOKMBKGPCFE; via: registry
+8483 = GridFightGetArchiveCsReq  // obf: KOKMBKGPCFE; via: same-seed
 8484 = OENNAOAFAMA
 8485 = ENDFBBDFFDH
 8495 = MEPDHDGCGKH
@@ -1975,7 +1975,7 @@
 8574 = GridFightSeasonTalentResetCsReq  // obf: OCFPHHCOIHI; via: registry
 8579 = KAHAOOJHJPK
 8581 = IAABDBBJHOL
-8583 = GridFightEquipDressCsReq  // obf: FDBMEIIMMJD; via: registry
+8583 = GridFightUpdateEquipTrackCsReq  // obf: FDBMEIIMMJD; via: registry
 8585 = OLPFMPIKIPK
 8586 = IBEMBMGFDBJ
 8587 = GridFightWeeklyExtraSeasonExpScRsp  // obf: JEBPPPNJJJM; via: registry
@@ -1987,12 +1987,12 @@
 8611 = IKMOCJBMGOJ
 8618 = FLHIDBDFFKG
 8620 = MCIPOMDGBCA
-8623 = GridFightEquipDressScRsp  // obf: KLLHNFLCDGF; via: registry
+8623 = GridFightUpdateEquipTrackScRsp  // obf: KLLHNFLCDGF; via: registry
 8624 = OIOELLNKEDJ
 8625 = FavourArchiveScRsp  // obf: CECPPJBHMMH; via: registry
 8640 = DHOCOJLJPPA
 8641 = GridFightEnterBattleStageScRsp  // obf: NGIPBCJPFPG; via: registry
-8642 = NDAMFDIDKGB
+8642 = GridFightUpdateEliteBranchSelectCsReq  // obf: NDAMFDIDKGB; via: capture
 8650 = KOIAMDKEFKH
 8652 = GridFightHandlePendingActionScRsp  // obf: CJLEJIGIKOF; via: registry
 8654 = IIFPPBCFBBC
@@ -2006,7 +2006,7 @@
 8682 = ELDJBEKOLHB
 8689 = LKDMCPDHEGM
 8692 = GridFightPermanentTalentResetScRsp  // obf: AMELHLBNKAM; via: registry
-8697 = AIDDODLHDLE
+8697 = GridFightUpdateEliteBranchSelectScRsp  // obf: AIDDODLHDLE; via: paired proto declaration
 8699 = OFADBBMPDMM
 8700 = LLPMAKIHAPL
 8707 = LCFAAGEJGBG
