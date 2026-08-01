@@ -138,7 +138,7 @@ public static partial class GameData
     public static Dictionary<uint, GridFightBasicBonusPoolV2Excel> GridFightBasicBonusPoolV2Data { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleBasicInfoExcel> GridFightRoleBasicInfoData { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleStarExcel> GridFightRoleStarData { get; private set; } = [];
-    public static Dictionary<uint, GridFightRoleRecommendEquipExcel> GridFightRoleRecommendEquipData { get; private set; } =
+    public static Dictionary<uint, List<GridFightRoleRecommendEquipExcel>> GridFightRoleRecommendEquipData { get; private set; } =
         [];
     public static Dictionary<uint, GridFightCombinationBonusExcel> GridFightCombinationBonusData { get; private set; } =
         [];
@@ -153,6 +153,7 @@ public static partial class GameData
 
     public static Dictionary<uint, Dictionary<uint, GridFightTraitBonusExcel>> GridFightTraitBonusData{ get; private set; } = [];
     public static Dictionary<uint, GridFightEquipUpgradeExcel> GridFightEquipUpgradeData { get; private set; } = [];
+    public static Dictionary<uint, GridFightCraftConfigExcel> GridFightCraftConfigData { get; private set; } = [];
     public static Dictionary<uint, GridFightConsumablesExcel> GridFightConsumablesData { get; private set; } = [];
     public static Dictionary<uint, GridFightCampExcel> GridFightCampData { get; private set; } = [];
     public static Dictionary<uint, GridFightShopPriceExcel> GridFightShopPriceData { get; private set; } = [];

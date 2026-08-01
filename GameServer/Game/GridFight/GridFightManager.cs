@@ -8,7 +8,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;
 
-public sealed class GridFightManager : BasePlayerManager
+public sealed partial class GridFightManager : BasePlayerManager
 {
     private uint _nextSessionUniqueId = 1;
     private readonly Lazy<GridFightResourceCatalog> _catalog;
@@ -129,7 +129,7 @@ public sealed class GridFightManager : BasePlayerManager
         var augmentInfo = new GridFightGameAugmentSync();
         augmentInfo.SyncAugmentInfo.Add(session.ActiveInvestmentIds.Select(BuildInvestment));
         current.GameInfoList.Add(new GridFightGameInfo { AugmentInfo = augmentInfo });
-        current.GameInfoList.Add(new GridFightGameInfo { TraitInfo = new GridFightGameTraitInfo() });
+        current.GameInfoList.Add(new GridFightGameInfo { TraitInfo = BuildGameTraitInfo() });
         current.GameInfoList.Add(new GridFightGameInfo());
         current.GameInfoList.Add(new GridFightGameInfo
         {
@@ -255,6 +255,16 @@ public sealed class GridFightManager : BasePlayerManager
     {
         var session = Session;
         if (session == null) return null;
+        if (session.EquipmentRecommendation is { } recommendation)
+        {
+            var action = new GridFightRecommendEquipmentActionInfo();
+            action.EquipmentIdList.Add(recommendation.EquipmentIds);
+            return new GridFightPendingAction
+            {
+                QueuePosition = recommendation.QueuePosition,
+                RecommendEquipmentAction = action,
+            };
+        }
         if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
         {
             var action = new GridFightTraitEffectSelectEnhanceActionInfo
@@ -1266,7 +1276,6 @@ public sealed class GridFightManager : BasePlayerManager
             .Select(group => group.OrderBy(role => role.Position).First())
             .OrderBy(role => role.Position)
             .ToList();
-        var equipmentIds = session.Equipments.Select(item => item.EquipmentId).Distinct().Order().ToList();
         foreach (var role in activeRoles)
         {
             var isForeground = role.Position is >= 1 and <= 4;
@@ -1279,7 +1288,10 @@ public sealed class GridFightManager : BasePlayerManager
                 IsTrialRole = isTrialRole,
                 IsBackPosition = !isTrialRole && role.Position is >= 5 and <= 13,
             };
-            row.GridFightEquipmentList.Add(equipmentIds);
+            row.GridFightEquipmentList.Add(session.GetEquippedEquipment(role)
+                .Select(item => item.EquipmentId)
+                .Distinct()
+                .Order());
             result.RoleStatistics.Add(row);
         }
         foreach (var missing in uploadedRoleDamage.Where(pair => activeRoles.All(role => role.RoleId != pair.Key)))
@@ -1292,8 +1304,8 @@ public sealed class GridFightManager : BasePlayerManager
 
         foreach (var group in statistics.TraitDamage.GroupBy(row => row.TraitId))
         {
-            var memberCount = (uint)activeRoles.Count(role =>
-                GameData.GridFightRoleBasicInfoData.GetValueOrDefault(role.RoleId)?.TraitList.Contains(group.Key) == true);
+            var memberCount = (uint)activeRoles.Count(role => session.ResolveRoleTraitIds(role).Contains(group.Key)) +
+                              session.ResolveTraitExtraMemberCount(group.Key, activeRoles);
             result.TraitStatistics.Add(new GridFightTraitDamageStatistics
             {
                 TraitId = group.Key,
@@ -1636,6 +1648,7 @@ public sealed class GridFightManager : BasePlayerManager
             RoleStar = role.Star,
             Pos = role.Position,
         };
+        info.EquippedEquipmentUniqueIdList.Add(role.EquippedEquipmentUniqueIds);
         PopulateRolePropertyScales(info.ConvertPropertyToFixpoint, Session?.HasCyreneCombatEnhancement == true);
         foreach (var key in GameData.GridFightRoleBasicInfoData[role.RoleId].RoleSavedValueList)
             info.GridFightValueInitComponent[key] = 0;

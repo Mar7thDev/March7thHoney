@@ -1997,7 +1997,7 @@ public class CmdIds
     public const int GridFightSeasonTalentResetCsReq = 8574;
     public const int KAHAOOJHJPK = 8579;
     public const int IAABDBBJHOL = 8581;
-    public const int GridFightEquipDressCsReq = 8583;
+    public const int GridFightUpdateEquipTrackCsReq = 8583;
     public const int GridFightSettleNotify = 8585;
     public const int UpdateGameFormationCsReq = 8586;
     public const int GridFightWeeklyExtraSeasonExpScRsp = 8587;
@@ -2009,7 +2009,7 @@ public class CmdIds
     public const int GridFightGetOrbCsReq = 8611;
     public const int FLHIDBDFFKG = 8618;
     public const int MCIPOMDGBCA = 8620;
-    public const int GridFightEquipDressScRsp = 8623;
+    public const int GridFightUpdateEquipTrackScRsp = 8623;
     public const int OIOELLNKEDJ = 8624;
     public const int FavourArchiveScRsp = 8625;
     public const int DHOCOJLJPPA = 8640;
@@ -2600,4 +2600,10 @@ public class CmdIds
     public const int GridFightResumeGamePlayScRsp = 8425;
     public const int GridFightUseForgeCsReq = 8451;
     public const int GridFightUseForgeScRsp = 8440;
+    public const int GridFightEquipDressCsReq = 8650;
+    public const int GridFightEquipDressScRsp = 8753;
+    public const int GridFightEquipCraftCsReq = 8434;
+    public const int GridFightEquipCraftScRsp = 8519;
+    public const int GridFightUseConsumableCsReq = 8739;
+    public const int GridFightUseConsumableScRsp = 8579;
 }
