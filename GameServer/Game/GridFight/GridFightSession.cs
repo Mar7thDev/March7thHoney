@@ -113,6 +113,62 @@ public sealed record GridFightRoleAcquisitionResult(
     public IReadOnlyList<GridFightRoleUnlockEffect> UnlockEffects { get; init; } = [];
 }
 
+public sealed record GridFightRoleBattleDamage(uint RoleId, double Damage, double SecondaryDamage);
+
+public sealed record GridFightTraitBattleDamage(uint TraitId, double Damage, double SecondaryDamage);
+
+public sealed record GridFightAugmentBattleDamage(uint AugmentId, double Damage, double SecondaryDamage);
+
+public sealed record GridFightBattleStatistics(
+    uint ProgressPercent,
+    IReadOnlyList<GridFightRoleBattleDamage> RoleDamage,
+    IReadOnlyList<GridFightTraitBattleDamage> TraitDamage,
+    IReadOnlyList<GridFightAugmentBattleDamage> AugmentDamage,
+    bool IsPresent = true)
+{
+    public static GridFightBattleStatistics Empty { get; } = new(0, [], [], [], false);
+}
+
+public enum GridFightHpChangeKind
+{
+    BasicPenalty,
+    ProgressPenalty,
+    ThresholdPenalty,
+    TalentHealing,
+}
+
+public sealed record GridFightHpChange(
+    GridFightHpChangeKind Kind,
+    uint PreviousHp,
+    uint CurrentHp,
+    uint Amount,
+    uint SourceId = 0);
+
+public sealed record GridFightBattleSettlementResult(
+    bool Success,
+    bool RouteAdvanced,
+    uint ProgressPercent,
+    uint DeadLinePercent,
+    bool IsPerfectFinish,
+    uint PreviousKeepWinCount,
+    uint KeepWinCount,
+    uint BasicGold,
+    uint InterestGold,
+    uint KeepWinGold,
+    uint GoldAfterBasic,
+    uint GoldAfterInterest,
+    uint GoldAfterKeepWin,
+    uint AddedExp,
+    uint LineupHpBefore,
+    uint LineupHpAfter,
+    IReadOnlyList<GridFightHpChange> HpChanges,
+    GridFightBattleStatistics Statistics)
+{
+    public static GridFightBattleSettlementResult Failed { get; } = new(
+        false, false, 0, 0, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, [],
+        GridFightBattleStatistics.Empty);
+}
+
 public sealed class GridFightSession
 {
     private const int InvestmentOfferCount = 3;
@@ -167,6 +223,7 @@ public sealed class GridFightSession
     public bool HasCyreneCombatEnhancement { get; private set; }
     public GridFightHackConsoleState? HackConsole { get; private set; }
     public uint? TraitEffectSelectEnhanceQueuePosition => _traitEffectSelectEnhanceQueuePosition;
+    public GridFightBattleStatistics LastBattleStatistics { get; private set; } = GridFightBattleStatistics.Empty;
 
     public GridFightSession(
         GridFightResourceCatalog catalog,
@@ -181,7 +238,7 @@ public sealed class GridFightSession
         IsOverlock = isOverlock;
         UniqueId = uniqueId;
         PlayerLevel = catalog.InitialPlayerLevel;
-        LineupHp = catalog.InitialHp;
+        LineupHp = catalog.GetInitialLineupHp(divisionId);
         MaxLineupHp = catalog.InitialHp;
         PortalOffer = catalog.RollPortalOffer(3);
         var chapterCount = checked((int)catalog.StandardRoute.Max(node => node.ChapterId));
@@ -903,25 +960,113 @@ public sealed class GridFightSession
         return true;
     }
 
-    public bool ResolveBattle(bool win)
+    public GridFightBattleSettlementResult ResolveBattle(
+        bool battleEndedNormally,
+        GridFightBattleStatistics statistics)
     {
-        if (Phase != GridFightSessionPhase.InBattle) return false;
-        if (!win)
+        if (Phase != GridFightSessionPhase.InBattle) return GridFightBattleSettlementResult.Failed;
+        if (!battleEndedNormally)
         {
             BattlesFinished++;
             KeepWinCount = 0;
             Phase = GridFightSessionPhase.Preparing;
-            return true;
+            return GridFightBattleSettlementResult.Failed;
         }
 
-        Gold += CurrentNode.BasicGoldReward;
+        var progressPercent = Math.Min(statistics.ProgressPercent, 100u);
+        statistics = statistics with { ProgressPercent = progressPercent };
+        var isPerfectFinish = progressPercent == 100;
+        var penaltyRule = _catalog.GetPenaltyRule(CurrentPenaltyRuleId);
+        var lineupHpBefore = LineupHp;
+        var hpChanges = ApplyBattleHpChanges(penaltyRule, progressPercent, isPerfectFinish);
+        var previousKeepWinCount = KeepWinCount;
+        if (CurrentNode.NodeType is GridFightNodeTypeEnum.CampMonster or
+            GridFightNodeTypeEnum.EliteBranch or GridFightNodeTypeEnum.Boss)
+            KeepWinCount = isPerfectFinish ? KeepWinCount + 1 : 0;
+
+        var settlementBalance = Gold;
+        var basicGold = CurrentNode.BasicGoldReward;
+        var interestGold = _catalog.CalculateInterest(settlementBalance);
+        var keepWinGold = _catalog.GetVictoryGoldBonus(KeepWinCount);
+        var goldAfterBasic = AddGold(basicGold);
+        var goldAfterInterest = AddGold(interestGold);
+        var goldAfterKeepWin = AddGold(keepWinGold);
         AddPlayerExp(_catalog.BattleWinExp);
-        if (!AdvanceToNextNode()) return false;
+        var routeAdvanced = AdvanceToNextNode();
         BattlesFinished++;
-        KeepWinCount++;
-        Phase = GridFightSessionPhase.AwaitingBattleRound;
-        PendingQueuePosition = 19;
-        return true;
+        LastBattleStatistics = statistics;
+        if (routeAdvanced)
+        {
+            Phase = GridFightSessionPhase.AwaitingBattleRound;
+            PendingQueuePosition = 19;
+        }
+        else
+        {
+            Phase = GridFightSessionPhase.Preparing;
+        }
+        return new GridFightBattleSettlementResult(
+            true,
+            routeAdvanced,
+            progressPercent,
+            penaltyRule.ThresholdPosition,
+            isPerfectFinish,
+            previousKeepWinCount,
+            KeepWinCount,
+            basicGold,
+            interestGold,
+            keepWinGold,
+            goldAfterBasic,
+            goldAfterInterest,
+            goldAfterKeepWin,
+            _catalog.BattleWinExp,
+            lineupHpBefore,
+            LineupHp,
+            hpChanges,
+            statistics);
+    }
+
+    private IReadOnlyList<GridFightHpChange> ApplyBattleHpChanges(
+        GridFightPenaltyRuleExcel penaltyRule,
+        uint progressPercent,
+        bool isPerfectFinish)
+    {
+        var basicPenalty = isPerfectFinish ? 0 : penaltyRule.ThresholdPassBasicPlayerHPPenalty;
+        var progressPenalty = isPerfectFinish
+            ? 0
+            : (uint)(((ulong)(100 - progressPercent) * penaltyRule.ProgressPenaltyCoefficient) / 100);
+        var thresholdPenalty = isPerfectFinish || progressPercent >= penaltyRule.ThresholdPosition
+            ? 0
+            : penaltyRule.ThresholdFailPlayerHPPenalty;
+        return
+        [
+            ApplyHpLoss(GridFightHpChangeKind.BasicPenalty, basicPenalty),
+            ApplyHpLoss(GridFightHpChangeKind.ProgressPenalty, progressPenalty),
+            ApplyHpLoss(GridFightHpChangeKind.ThresholdPenalty, thresholdPenalty),
+            ApplyHpHealing(
+                GridFightHpChangeKind.TalentHealing,
+                _catalog.GetPostBattleHealing(),
+                _catalog.PostBattleHealingSourceId),
+        ];
+    }
+
+    private GridFightHpChange ApplyHpLoss(GridFightHpChangeKind kind, uint amount)
+    {
+        var previous = LineupHp;
+        LineupHp = amount >= LineupHp ? 0 : LineupHp - amount;
+        return new GridFightHpChange(kind, previous, LineupHp, previous - LineupHp);
+    }
+
+    private GridFightHpChange ApplyHpHealing(GridFightHpChangeKind kind, uint amount, uint sourceId)
+    {
+        var previous = LineupHp;
+        LineupHp = (uint)Math.Min(MaxLineupHp, (ulong)LineupHp + amount);
+        return new GridFightHpChange(kind, previous, LineupHp, LineupHp - previous, sourceId);
+    }
+
+    private uint AddGold(uint amount)
+    {
+        Gold = (uint)Math.Min(uint.MaxValue, (ulong)Gold + amount);
+        return Gold;
     }
 
     public void AbortBattleStart()

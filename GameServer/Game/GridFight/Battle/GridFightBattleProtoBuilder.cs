@@ -131,10 +131,7 @@ public static class GridFightBattleProtoBuilder
                      .GroupBy(entry => entry.TraitId))
         {
             var count = (uint)group.Count();
-            var activeLayer = GameData.GridFightTraitLayerData.GetValueOrDefault(group.Key)?.Keys
-                .Where(layer => layer <= count)
-                .DefaultIfEmpty()
-                .Max() ?? 0;
+            var activeLayer = ResolveTraitLayer(group.Key, count);
             var traitInfo = new GridFightTraitInfo
             {
                 TraitId = group.Key,
@@ -162,6 +159,14 @@ public static class GridFightBattleProtoBuilder
             battle.BattleEvents.TryAdd((int)battleEventId, new BattleEventInstance((int)battleEventId, 0, 100000));
         proto.BattleGridFightData = gridFightInfo;
         return avatars;
+    }
+
+    public static uint ResolveTraitLayer(uint traitId, uint memberCount)
+    {
+        return GameData.GridFightTraitLayerData.GetValueOrDefault(traitId)?.Keys
+            .Where(layer => layer <= memberCount)
+            .DefaultIfEmpty()
+            .Max() ?? 0;
     }
 
     private static void AddEntryBuffs(BattleInstance battle, IReadOnlyList<GridFightRoleState> roles)

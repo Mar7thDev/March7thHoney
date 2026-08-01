@@ -100,11 +100,31 @@ public partial class GridFightFormationWaveExcel : ExcelResource
 public partial class GridFightPenaltyRuleExcel : ExcelResource
 {
     public uint ID { get; set; }
+    public uint ThresholdPosition { get; set; }
+    public uint ThresholdFailPlayerHPPenalty { get; set; }
+    public uint ThresholdPassBasicPlayerHPPenalty { get; set; }
+    public uint ProgressPenaltyCoefficient { get; set; }
 
     public override int GetId() => (int)ID;
 
     public override void Loaded()
     {
         GameData.GridFightPenaltyRuleData.TryAdd(ID, this);
+    }
+}
+
+[ResourceEntity("GridFightVictoryBonus.json")]
+[MemoryPackable]
+public partial class GridFightVictoryBonusExcel : ExcelResource
+{
+    public uint VictoryCount { get; set; }
+    public uint GoldBonus { get; set; }
+    public uint ExtraGroupID { get; set; }
+
+    public override int GetId() => (int)VictoryCount;
+
+    public override void Loaded()
+    {
+        GameData.GridFightVictoryBonusData.TryAdd(VictoryCount, this);
     }
 }
