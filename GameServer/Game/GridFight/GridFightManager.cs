@@ -181,7 +181,14 @@ public sealed partial class GridFightManager : BasePlayerManager
             .OrderBy(role => role.Position)
             .ThenBy(role => role.UniqueId)
             .Select(BuildRole));
+        finish.GridFightEquipmentList.Add(session.Equipments
+            .OrderBy(equipment => equipment.UniqueId)
+            .Select(BuildEquipment));
+        finish.GridFightTraitInfo.Add(BuildGameTraitInfo().GridFightTraitInfo);
         finish.SyncAugmentInfo.Add(session.ActiveInvestmentIds.Select(BuildInvestment));
+        finish.RoleStatistics.Add(_lastBattleDamageStatistics.RoleStatistics.Select(row => row.Clone()));
+        finish.TraitStatistics.Add(_lastBattleDamageStatistics.TraitStatistics.Select(row => row.Clone()));
+        finish.AugmentStatistics.Add(_lastBattleDamageStatistics.AugmentStatistics.Select(row => row.Clone()));
         if (session.SelectedPortalId != 0)
             finish.PortalBuffInfoList.Add(new GridFightGamePortalBuffInfo
             {
@@ -192,6 +199,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         {
             DivisionId = session.DivisionId,
             HighestDivisionId = Catalog.HighestDivision.ID,
+            SeasonExp = Catalog.SeasonExpLimit,
             FinishInfo = finish,
         };
     }
@@ -1196,6 +1204,13 @@ public sealed partial class GridFightManager : BasePlayerManager
         await Player.SendPacket(new PacketGridFightEndBattleStageNotify(endNotify));
         if (settlement.RouteAdvanced)
             await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildBattleEndRouteSync()));
+        else
+        {
+            var settle = BuildSettleNotify(GridFightSettleReason.Victory);
+            await Player.SendPacket(new PacketGridFightSyncKeepWinCntNotify(1));
+            await Player.SendPacket(new PacketGridFightSettleNotify(settle));
+            ClearSession();
+        }
     }
 
     private GridFightSyncUpdateResultScNotify BuildBattleSettlementSync(
@@ -1285,8 +1300,9 @@ public sealed partial class GridFightManager : BasePlayerManager
 
     private static GridFightBattleStatistics ReadBattleStatistics(PVEBattleResultCsReq request)
     {
+        var roundCount = request.Stt?.RoundCnt ?? 0;
         var statistics = request.Stt?.GridFightStatistics;
-        if (statistics == null) return GridFightBattleStatistics.Empty;
+        if (statistics == null) return GridFightBattleStatistics.Empty with { RoundCount = roundCount };
         return new GridFightBattleStatistics(
             Math.Min(statistics.ProgressPercent, 100u),
             statistics.RoleStatistics.Select(row => new GridFightRoleBattleDamage(
@@ -1306,6 +1322,7 @@ public sealed partial class GridFightManager : BasePlayerManager
                     wave.WaveIndex,
                     monster.MonsterIndex,
                     monster.MonsterId))).ToList(),
+            roundCount,
             true);
     }
 
@@ -1389,6 +1406,8 @@ public sealed partial class GridFightManager : BasePlayerManager
                 GridFightHpChangeKind.ProgressPenalty => GridFightUpdateGlobalHpReason.KsubGlobalHpExtraCost,
                 GridFightHpChangeKind.ThresholdPenalty => GridFightUpdateGlobalHpReason.KsubGlobalHpThresholdCost,
                 GridFightHpChangeKind.TalentHealing => GridFightUpdateGlobalHpReason.KaddGlobalHpTalent,
+                GridFightHpChangeKind.FinalBattleTurnHealing =>
+                    GridFightUpdateGlobalHpReason.KaddGlobalHpFinalBattleTurn,
                 _ => GridFightUpdateGlobalHpReason.KupdateGlobalHpNone,
             },
         };
