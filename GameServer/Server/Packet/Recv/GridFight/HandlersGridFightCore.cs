@@ -403,11 +403,11 @@ public sealed class HandlerGridFightUpdatePosCsReq : Handler<GridFightUpdatePosC
     {
         var manager = player.GridFightManager!;
         var updates = request.PosInfoList.Select(info => (info.UniqueId, info.Pos)).ToList();
-        var success = manager.Session?.UpdatePositions(updates) == true;
-        if (success)
+        var change = manager.Session?.UpdatePositions(updates) ?? GridFightSessionChange.Failed;
+        if (change.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                manager.BuildPositionSync(updates.Select(update => update.UniqueId))));
-        var response = new GridFightUpdatePosScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail };
+                manager.BuildPositionSync(change.UpdatedRoles.Select(role => role.UniqueId))));
+        var response = new GridFightUpdatePosScRsp { Retcode = change.Success ? 0 : (uint)Retcode.RetFail };
         response.PosInfoList.Add(request.PosInfoList);
         await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdatePosScRsp, response));
     }
