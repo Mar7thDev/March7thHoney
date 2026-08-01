@@ -807,25 +807,33 @@ public sealed class GridFightSession
         }
     }
 
-    public bool UpdatePositions(IReadOnlyList<(uint UniqueId, uint Position)> updates)
+    public GridFightSessionChange UpdatePositions(IReadOnlyList<(uint UniqueId, uint Position)> updates)
     {
         if (Phase != GridFightSessionPhase.Preparing || updates.Count == 0 ||
             updates.Select(update => update.UniqueId).Distinct().Count() != updates.Count)
-            return false;
+            return GridFightSessionChange.Failed;
         if (updates.Any(update => Roles.All(role => role.UniqueId != update.UniqueId) || !IsValidPosition(update.Position)))
-            return false;
+            return GridFightSessionChange.Failed;
 
         var positions = Roles.ToDictionary(role => role.UniqueId, role => role.Position);
         foreach (var update in updates) positions[update.UniqueId] = update.Position;
         var occupied = positions.Values.Where(position => position != 0).ToList();
         if (occupied.Distinct().Count() != occupied.Count ||
             occupied.Any(position => ForgeItems.Any(item => item.Position == position)))
-            return false;
-        if (positions.Values.Count(IsActivePosition) > MaxActiveRoles) return false;
+            return GridFightSessionChange.Failed;
+        if (positions.Values.Count(IsActivePosition) > MaxActiveRoles) return GridFightSessionChange.Failed;
 
+        var updatedRoles = new List<GridFightRoleState>();
         foreach (var update in updates)
-            Roles.Single(role => role.UniqueId == update.UniqueId).Position = update.Position;
-        return true;
+        {
+            var role = Roles.Single(role => role.UniqueId == update.UniqueId);
+            role.Position = update.Position;
+            updatedRoles.Add(role);
+        }
+        var updatedRoleIds = updatedRoles.Select(role => role.UniqueId).ToHashSet();
+        updatedRoles.AddRange(PromoteOverflowRolesToBench()
+            .Where(role => updatedRoleIds.Add(role.UniqueId)));
+        return new GridFightSessionChange(true, [], [], updatedRoles);
     }
 
     public bool EnterBattle()
