@@ -164,7 +164,9 @@ public sealed partial class GridFightManager : BasePlayerManager
             ContextData = context,
             AvatarInfo = avatars,
             IsOverlock = session.IsOverlock,
-            SettleRank = Catalog.GetSettleRank(session.LineupHp),
+            SettleRank = reason == GridFightSettleReason.Victory
+                ? Catalog.GetSettleRank(session.LineupHp)
+                : Catalog.GetMinimumSettleRank(),
             Basic = new GridFightSettleBasicInfo
             {
                 RouteId = Catalog.StandardRouteId,
