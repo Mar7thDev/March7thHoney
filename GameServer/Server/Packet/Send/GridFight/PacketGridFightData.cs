@@ -37,6 +37,24 @@ public sealed class PacketGridFightEndBattleStageNotify : BasePacket
     }
 }
 
+public sealed class PacketGridFightSyncKeepWinCntNotify : BasePacket
+{
+    public PacketGridFightSyncKeepWinCntNotify(uint keepWinCount)
+        : base(CmdIds.GridFightSyncKeepWinCntNotify)
+    {
+        SetData(new GridFightSyncKeepWinCntNotify { KeepWinCount = keepWinCount });
+    }
+}
+
+public sealed class PacketGridFightSettleNotify : BasePacket
+{
+    public PacketGridFightSettleNotify(GridFightSettleNotify data)
+        : base(CmdIds.GridFightSettleNotify)
+    {
+        SetData(data);
+    }
+}
+
 public sealed class PacketGridFightEnterBattleStageScRsp : BasePacket
 {
     public PacketGridFightEnterBattleStageScRsp(SceneBattleInfo? battleInfo)

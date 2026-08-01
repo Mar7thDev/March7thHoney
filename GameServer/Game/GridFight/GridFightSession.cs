@@ -129,9 +129,10 @@ public sealed record GridFightBattleStatistics(
     IReadOnlyList<GridFightTraitBattleDamage> TraitDamage,
     IReadOnlyList<GridFightAugmentBattleDamage> AugmentDamage,
     IReadOnlyList<GridFightKilledMonsterInstance> KilledMonsters,
+    uint RoundCount,
     bool IsPresent = true)
 {
-    public static GridFightBattleStatistics Empty { get; } = new(0, [], [], [], [], false);
+    public static GridFightBattleStatistics Empty { get; } = new(0, [], [], [], [], 0, false);
 }
 
 public sealed record GridFightTalentOrbReward(
@@ -145,6 +146,7 @@ public enum GridFightHpChangeKind
     ProgressPenalty,
     ThresholdPenalty,
     TalentHealing,
+    FinalBattleTurnHealing,
 }
 
 public sealed record GridFightHpChange(
@@ -354,7 +356,7 @@ public sealed partial class GridFightSession
         if (index < 0) return false;
         var quality = GameData.GridFightAugmentData[augmentId].Quality;
         var excluded = InvestmentOffer.Concat(ActiveInvestmentIds).ToHashSet();
-        var replacement = _catalog.RollInvestmentOffer(quality, 1, excluded).SingleOrDefault();
+        var replacement = _catalog.RollInvestmentOffer(ChapterId, quality, 1, excluded).SingleOrDefault();
         if (replacement == 0) return false;
         var offer = InvestmentOffer.ToList();
         offer[index] = replacement;
@@ -1154,7 +1156,14 @@ public sealed partial class GridFightSession
         var isPerfectFinish = progressPercent == 100;
         var penaltyRule = _catalog.GetPenaltyRule(CurrentPenaltyRuleId);
         var lineupHpBefore = LineupHp;
-        var hpChanges = ApplyBattleHpChanges(penaltyRule, progressPercent, isPerfectFinish);
+        var isFinalBoss = CurrentNode.NodeType == GridFightNodeTypeEnum.Boss &&
+                          _catalog.GetNextNode(ChapterId, SectionId) == null;
+        var hpChanges = ApplyBattleHpChanges(
+            penaltyRule,
+            progressPercent,
+            isPerfectFinish,
+            isFinalBoss,
+            statistics.RoundCount);
         var previousKeepWinCount = KeepWinCount;
         if (CurrentNode.NodeType is GridFightNodeTypeEnum.CampMonster or
             GridFightNodeTypeEnum.EliteBranch or GridFightNodeTypeEnum.Boss)
@@ -1239,7 +1248,9 @@ public sealed partial class GridFightSession
     private IReadOnlyList<GridFightHpChange> ApplyBattleHpChanges(
         GridFightPenaltyRuleExcel penaltyRule,
         uint progressPercent,
-        bool isPerfectFinish)
+        bool isPerfectFinish,
+        bool isFinalBoss,
+        uint roundCount)
     {
         var basicPenalty = isPerfectFinish ? 0 : penaltyRule.ThresholdPassBasicPlayerHPPenalty;
         var progressPenalty = isPerfectFinish
@@ -1248,7 +1259,7 @@ public sealed partial class GridFightSession
         var thresholdPenalty = isPerfectFinish || progressPercent >= penaltyRule.ThresholdPosition
             ? 0
             : penaltyRule.ThresholdFailPlayerHPPenalty;
-        return
+        List<GridFightHpChange> changes =
         [
             ApplyHpLoss(GridFightHpChangeKind.BasicPenalty, basicPenalty),
             ApplyHpLoss(GridFightHpChangeKind.ProgressPenalty, progressPenalty),
@@ -1258,6 +1269,13 @@ public sealed partial class GridFightSession
                 _catalog.GetPostBattleHealing(),
                 _catalog.PostBattleHealingSourceId),
         ];
+        var finalBattleHealing = isFinalBoss ? _catalog.GetFinalBattleTurnHealing(roundCount) : 0;
+        if (finalBattleHealing > 0)
+            changes.Add(ApplyHpHealing(
+                GridFightHpChangeKind.FinalBattleTurnHealing,
+                finalBattleHealing,
+                _catalog.FinalBattleTurnHealingSourceId));
+        return changes;
     }
 
     private GridFightHpChange ApplyHpLoss(GridFightHpChangeKind kind, uint amount)
@@ -1271,7 +1289,7 @@ public sealed partial class GridFightSession
     {
         var previous = LineupHp;
         LineupHp = (uint)Math.Min(MaxLineupHp, (ulong)LineupHp + amount);
-        return new GridFightHpChange(kind, previous, LineupHp, LineupHp - previous, sourceId);
+        return new GridFightHpChange(kind, previous, LineupHp, amount, sourceId);
     }
 
     private uint AddGold(uint amount)
@@ -1334,8 +1352,8 @@ public sealed partial class GridFightSession
 
     private void PrepareInvestmentOffer()
     {
-        var quality = _catalog.RollInvestmentQuality();
-        InvestmentOffer = _catalog.RollInvestmentOffer(quality, InvestmentOfferCount, ActiveInvestmentIds);
+        var quality = _catalog.RollInvestmentQuality(ChapterId, InvestmentOfferCount, ActiveInvestmentIds);
+        InvestmentOffer = _catalog.RollInvestmentOffer(ChapterId, quality, InvestmentOfferCount, ActiveInvestmentIds);
         _rerolledInvestmentIds.Clear();
     }
 
