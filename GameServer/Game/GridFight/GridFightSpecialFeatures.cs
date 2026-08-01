@@ -42,7 +42,7 @@ public sealed class GridFightForgeItemState
 {
     public uint UniqueId { get; init; }
     public uint ForgeItemId { get; init; }
-    public uint Position { get; init; }
+    public uint Position { get; set; }
     public IReadOnlyList<uint> EquipmentChoices { get; init; } = [];
 }
 
