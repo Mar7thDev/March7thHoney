@@ -51,13 +51,22 @@ public static class GridFightBattleProtoBuilder
                     SupplementalEliteGroup = wavePlan.FormationWaveId == 3 ? 846u : 0,
                 },
             };
-            wave.MonsterList.Add(wavePlan.Monsters.Select(monster => new SceneMonster
+            wave.MonsterList.Add(wavePlan.Monsters.Select(monster =>
             {
-                MonsterId = monster.Monster.MonsterID,
-                ExtraInfo = new GridFightSceneMonsterExtraInfo
+                var battleInfo = new GridFightMonsterBattleInfo { RoleStar = monster.RoleStar };
+                battleInfo.DropList.Add(monster.Drops
+                    .Where(drop => drop.Type == GridFightBonusTypeEnum.Orb)
+                    .Select(drop => new GridFightDropEntry
+                    {
+                        DropType = GridFightDropType.Orb,
+                        ItemId = drop.ItemId,
+                        Num = drop.Count,
+                    }));
+                return new SceneMonster
                 {
-                    GridFightInfo = new GridFightMonsterBattleInfo { RoleStar = monster.RoleStar },
-                },
+                    MonsterId = monster.Monster.MonsterID,
+                    ExtraInfo = new GridFightSceneMonsterExtraInfo { GridFightInfo = battleInfo },
+                };
             }));
             proto.MonsterWaveList.Add(wave);
         }

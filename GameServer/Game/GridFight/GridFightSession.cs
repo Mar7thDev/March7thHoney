@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
 using March7thHoney.Enums.GridFight;
 
@@ -120,15 +121,23 @@ public sealed record GridFightTraitBattleDamage(uint TraitId, double Damage, dou
 
 public sealed record GridFightAugmentBattleDamage(uint AugmentId, double Damage, double SecondaryDamage);
 
+public sealed record GridFightKilledMonsterInstance(uint WaveIndex, uint MonsterIndex, uint MonsterId);
+
 public sealed record GridFightBattleStatistics(
     uint ProgressPercent,
     IReadOnlyList<GridFightRoleBattleDamage> RoleDamage,
     IReadOnlyList<GridFightTraitBattleDamage> TraitDamage,
     IReadOnlyList<GridFightAugmentBattleDamage> AugmentDamage,
+    IReadOnlyList<GridFightKilledMonsterInstance> KilledMonsters,
     bool IsPresent = true)
 {
-    public static GridFightBattleStatistics Empty { get; } = new(0, [], [], [], false);
+    public static GridFightBattleStatistics Empty { get; } = new(0, [], [], [], [], false);
 }
+
+public sealed record GridFightTalentOrbReward(
+    uint TalentId,
+    uint EffectId,
+    IReadOnlyList<GridFightOrbState> AddedOrbs);
 
 public enum GridFightHpChangeKind
 {
@@ -163,11 +172,13 @@ public sealed record GridFightBattleSettlementResult(
     uint LineupHpBefore,
     uint LineupHpAfter,
     IReadOnlyList<GridFightHpChange> HpChanges,
-    GridFightBattleStatistics Statistics)
+    GridFightBattleStatistics Statistics,
+    IReadOnlyList<GridFightOrbState> AddedBattleOrbs,
+    IReadOnlyList<GridFightTalentOrbReward> TalentRewards)
 {
     public static GridFightBattleSettlementResult Failed { get; } = new(
         false, false, 0, 0, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, [],
-        GridFightBattleStatistics.Empty);
+        GridFightBattleStatistics.Empty, [], []);
 }
 
 public sealed partial class GridFightSession
@@ -185,6 +196,8 @@ public sealed partial class GridFightSession
     private bool _silverWolfHackUnlocked;
     private uint? _traitEffectSelectEnhanceQueuePosition;
     private readonly HashSet<uint> _rerolledInvestmentIds = [];
+    private readonly HashSet<(uint TalentId, uint EffectId, GridFightTalentRewardTrigger Trigger, uint ChapterId)>
+        _triggeredTalentRewards = [];
     private uint _encounterRerollCount;
 
     public uint Season { get; }
@@ -596,17 +609,167 @@ public sealed partial class GridFightSession
                 .ToList();
         if (selected.Count == 0 || (!takeAll && selected.Count != uniqueIds.Distinct().Count())) return [];
 
-        var applications = new List<GridFightRewardApplication>();
+        var resolved = new List<(GridFightOrbState Orb, IReadOnlyList<GridFightRewardEntry> Rewards)>();
         foreach (var orb in selected)
         {
             if (!GridFightSpecialFeatures.TryResolveOrb(orb.OrbItemId, out var rewards)) return [];
-            var application = ApplyRewards(rewards, orb.UniqueId, orb.OrbItemId);
-            if (!application.Success) return [];
-            Orbs.Remove(orb);
-            applications.Add(application);
+            resolved.Add((orb, rewards));
         }
-        return applications;
+
+        var snapshot = CaptureRewardState();
+        try
+        {
+            var applications = new List<GridFightRewardApplication>();
+            foreach (var (orb, rewards) in resolved)
+            {
+                var application = ApplyRewards(rewards, orb.UniqueId, orb.OrbItemId);
+                if (!application.Success)
+                {
+                    RestoreRewardState(snapshot);
+                    return [];
+                }
+                applications.Add(application);
+            }
+            foreach (var (orb, _) in resolved) Orbs.Remove(orb);
+            return applications;
+        }
+        catch
+        {
+            RestoreRewardState(snapshot);
+            return [];
+        }
     }
+
+    public IReadOnlyList<GridFightTalentOrbReward> TakeTalentOrbRewards(
+        GridFightTalentRewardTrigger trigger,
+        uint chapterId)
+    {
+        var result = new List<GridFightTalentOrbReward>();
+        foreach (var rule in GameData.GridFightRewardRulesConfig.TalentRules.Where(rule =>
+                     rule.Trigger == trigger && rule.ChapterIds.Contains(chapterId)))
+        {
+            var key = (rule.TalentId, rule.EffectId, rule.Trigger, chapterId);
+            if (_triggeredTalentRewards.Contains(key)) continue;
+            var nextEntityUniqueId = _nextEntityUniqueId;
+            var added = new List<GridFightOrbState>();
+            foreach (var orbId in rule.OrbIds)
+            {
+                if (TryAddOrb(orbId, out var orb))
+                {
+                    added.Add(orb);
+                    continue;
+                }
+                Orbs.RemoveAll(orb => added.Contains(orb));
+                _nextEntityUniqueId = nextEntityUniqueId;
+                added.Clear();
+                break;
+            }
+            if (added.Count == 0) continue;
+            _triggeredTalentRewards.Add(key);
+            result.Add(new GridFightTalentOrbReward(rule.TalentId, rule.EffectId, added));
+        }
+        return result;
+    }
+
+    private GridFightRewardStateSnapshot CaptureRewardState()
+    {
+        return new GridFightRewardStateSnapshot(
+            _nextEntityUniqueId,
+            _nextConsumableGroupId,
+            _cyrenePoemShopUnlocked,
+            _silverWolfHackUnlocked,
+            _traitEffectSelectEnhanceQueuePosition,
+            Gold,
+            PlayerLevel,
+            PlayerExp,
+            Roles.Select(CloneRole).ToList(),
+            Equipments.Select(equipment => new GridFightEquipmentState
+            {
+                UniqueId = equipment.UniqueId,
+                EquipmentId = equipment.EquipmentId,
+                Source = equipment.Source,
+            }).ToList(),
+            Orbs.Select(orb => new GridFightOrbState
+            {
+                UniqueId = orb.UniqueId,
+                OrbItemId = orb.OrbItemId,
+            }).ToList(),
+            Consumables.Select(consumable => new GridFightConsumableState
+            {
+                GroupId = consumable.GroupId,
+                ItemId = consumable.ItemId,
+                Count = consumable.Count,
+            }).ToList(),
+            ForgeItems.Select(forgeItem => new GridFightForgeItemState
+            {
+                UniqueId = forgeItem.UniqueId,
+                ForgeItemId = forgeItem.ForgeItemId,
+                Position = forgeItem.Position,
+                EquipmentChoices = forgeItem.EquipmentChoices.ToList(),
+            }).ToList(),
+            Shop.Select(slot => new GridFightShopSlot
+            {
+                Index = slot.Index,
+                RoleId = slot.RoleId,
+                SpecialGoodsId = slot.SpecialGoodsId,
+                Star = slot.Star,
+                Price = slot.Price,
+                SoldOut = slot.SoldOut,
+            }).ToList());
+    }
+
+    private void RestoreRewardState(GridFightRewardStateSnapshot snapshot)
+    {
+        _nextEntityUniqueId = snapshot.NextEntityUniqueId;
+        _nextConsumableGroupId = snapshot.NextConsumableGroupId;
+        _cyrenePoemShopUnlocked = snapshot.CyrenePoemShopUnlocked;
+        _silverWolfHackUnlocked = snapshot.SilverWolfHackUnlocked;
+        _traitEffectSelectEnhanceQueuePosition = snapshot.TraitEffectSelectEnhanceQueuePosition;
+        Gold = snapshot.Gold;
+        PlayerLevel = snapshot.PlayerLevel;
+        PlayerExp = snapshot.PlayerExp;
+        Roles.Clear();
+        Roles.AddRange(snapshot.Roles.Select(CloneRole));
+        Equipments.Clear();
+        Equipments.AddRange(snapshot.Equipments);
+        Orbs.Clear();
+        Orbs.AddRange(snapshot.Orbs);
+        Consumables.Clear();
+        Consumables.AddRange(snapshot.Consumables);
+        ForgeItems.Clear();
+        ForgeItems.AddRange(snapshot.ForgeItems);
+        Shop.Clear();
+        Shop.AddRange(snapshot.Shop);
+    }
+
+    private static GridFightRoleState CloneRole(GridFightRoleState role)
+    {
+        var clone = new GridFightRoleState
+        {
+            UniqueId = role.UniqueId,
+            RoleId = role.RoleId,
+            Star = role.Star,
+            Position = role.Position,
+        };
+        clone.EquippedEquipmentUniqueIds.AddRange(role.EquippedEquipmentUniqueIds);
+        return clone;
+    }
+
+    private sealed record GridFightRewardStateSnapshot(
+        uint NextEntityUniqueId,
+        uint NextConsumableGroupId,
+        bool CyrenePoemShopUnlocked,
+        bool SilverWolfHackUnlocked,
+        uint? TraitEffectSelectEnhanceQueuePosition,
+        uint Gold,
+        uint PlayerLevel,
+        uint PlayerExp,
+        IReadOnlyList<GridFightRoleState> Roles,
+        IReadOnlyList<GridFightEquipmentState> Equipments,
+        IReadOnlyList<GridFightOrbState> Orbs,
+        IReadOnlyList<GridFightConsumableState> Consumables,
+        IReadOnlyList<GridFightForgeItemState> ForgeItems,
+        IReadOnlyList<GridFightShopSlot> Shop);
 
     public GridFightTraitEnhanceActivationResult ActivateSilverWolfHackConsole(
         uint queuePosition,
@@ -1005,6 +1168,15 @@ public sealed partial class GridFightSession
         var goldAfterInterest = AddGold(interestGold);
         var goldAfterKeepWin = AddGold(keepWinGold);
         AddPlayerExp(_catalog.BattleWinExp);
+        var battlePlan = BattlePlan;
+        var nodeType = CurrentNode.NodeType;
+        var chapterId = ChapterId;
+        IReadOnlyList<GridFightOrbState> addedBattleOrbs = nodeType == GridFightNodeTypeEnum.Monster && battlePlan != null
+            ? AddKilledMonsterOrbs(battlePlan, statistics.KilledMonsters)
+            : [];
+        IReadOnlyList<GridFightTalentOrbReward> talentRewards = nodeType == GridFightNodeTypeEnum.Boss
+            ? TakeTalentOrbRewards(GridFightTalentRewardTrigger.BossClear, chapterId)
+            : [];
         var routeAdvanced = AdvanceToNextNode();
         BattlesFinished++;
         LastBattleStatistics = statistics;
@@ -1035,7 +1207,33 @@ public sealed partial class GridFightSession
             lineupHpBefore,
             LineupHp,
             hpChanges,
-            statistics);
+            statistics,
+            addedBattleOrbs,
+            talentRewards);
+    }
+
+    private IReadOnlyList<GridFightOrbState> AddKilledMonsterOrbs(
+        GridFightBattlePlan battlePlan,
+        IReadOnlyList<GridFightKilledMonsterInstance> killedMonsters)
+    {
+        var result = new List<GridFightOrbState>();
+        var seen = new HashSet<(uint WaveIndex, uint MonsterIndex)>();
+        foreach (var killed in killedMonsters)
+        {
+            if (!seen.Add((killed.WaveIndex, killed.MonsterIndex)) ||
+                killed.WaveIndex == 0 || killed.WaveIndex > battlePlan.Waves.Count)
+                continue;
+            var wave = battlePlan.Waves[checked((int)killed.WaveIndex - 1)];
+            if (killed.MonsterIndex == 0 || killed.MonsterIndex > wave.Monsters.Count)
+                continue;
+            var monster = wave.Monsters[checked((int)killed.MonsterIndex - 1)];
+            if (monster.Monster.MonsterID != killed.MonsterId) continue;
+            foreach (var drop in monster.Drops.Where(drop => drop.Type == GridFightBonusTypeEnum.Orb))
+            for (var index = 0u; index < drop.Count; index++)
+                if (TryAddOrb(drop.ItemId, out var orb))
+                    result.Add(orb);
+        }
+        return result;
     }
 
     private IReadOnlyList<GridFightHpChange> ApplyBattleHpChanges(

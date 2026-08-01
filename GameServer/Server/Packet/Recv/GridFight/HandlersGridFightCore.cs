@@ -1,3 +1,4 @@
+using March7thHoney.Data.Custom;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.GameServer.Game.Player;
@@ -193,14 +194,18 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
         else if (pendingHandled && kind == GridFightPendingRequestKind.RoundBegin &&
                  session!.Phase == GridFightSessionPhase.AwaitingInitialOrb)
         {
+            var rewards = session.TakeTalentOrbRewards(GridFightTalentRewardTrigger.PlaneEnter, session.ChapterId);
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                manager.BuildInitialRoundSync(request.QueuePosition)));
+                manager.BuildInitialRoundSync(request.QueuePosition, rewards)));
         }
         else if (pendingHandled && kind is GridFightPendingRequestKind.RoundBegin or GridFightPendingRequestKind.ReturnPreparation)
         {
+            IReadOnlyList<GridFightTalentOrbReward> rewards = kind == GridFightPendingRequestKind.RoundBegin
+                ? session!.TakeTalentOrbRewards(GridFightTalentRewardTrigger.PlaneEnter, session.ChapterId)
+                : [];
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 kind == GridFightPendingRequestKind.RoundBegin
-                    ? manager.BuildBattleRoundSync(request.QueuePosition)
+                    ? manager.BuildBattleRoundSync(request.QueuePosition, rewards)
                     : manager.BuildPendingAdvanceSync(request.QueuePosition)));
         }
         else if (pendingHandled)
