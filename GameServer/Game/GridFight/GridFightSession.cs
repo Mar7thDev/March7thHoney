@@ -723,16 +723,16 @@ public sealed class GridFightSession
 
     public GridFightForgeUseResult UseForge(uint uniqueId, uint targetIndex)
     {
-        if (Phase != GridFightSessionPhase.Preparing || targetIndex == 0)
+        if (Phase != GridFightSessionPhase.Preparing)
             return GridFightForgeUseResult.Failed;
         var forgeItem = ForgeItems.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
         if (forgeItem == null ||
             !GameData.GridFightForgeData.TryGetValue(forgeItem.ForgeItemId, out var forge) ||
             forge.FuncType != GridFightForgeFuncTypeEnum.Equip ||
-            targetIndex > forgeItem.EquipmentChoices.Count)
+            targetIndex >= forgeItem.EquipmentChoices.Count)
             return GridFightForgeUseResult.Failed;
 
-        var equipmentId = forgeItem.EquipmentChoices[checked((int)targetIndex - 1)];
+        var equipmentId = forgeItem.EquipmentChoices[checked((int)targetIndex)];
         if (!TryAddEquipment(equipmentId, out var equipment))
             return GridFightForgeUseResult.Failed;
 
