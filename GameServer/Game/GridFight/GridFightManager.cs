@@ -116,7 +116,7 @@ public sealed class GridFightManager : BasePlayerManager
         current.ContextData.InitialEquipmentIdList.Add(Catalog.InitialEquipmentIds);
         var pending = BuildPendingAction();
         if (pending != null) current.PendingAction = pending;
-        current.GameInfoList.Add(BuildBasicInfo());
+        current.GameInfoList.Add(BuildBasicInfo(pending != null));
         current.GameInfoList.Add(new GridFightGameInfo { TeamInfo = BuildTeamInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { ItemsInfo = BuildItemsInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { ShopInfo = BuildShopInfo() });
@@ -1136,9 +1136,15 @@ public sealed class GridFightManager : BasePlayerManager
             await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildBattleEndRouteSync()));
     }
 
-    private GridFightGameInfo BuildBasicInfo()
+    private GridFightGameInfo BuildBasicInfo(bool hasPendingAction)
     {
         var session = Session!;
+        var lockInfo = new GridFightLockInfo();
+        if (hasPendingAction)
+        {
+            lockInfo.LockType = GridFightLockType.Gameplay;
+            lockInfo.LockReason = GridFightLockReason.PendingAction;
+        }
         var basic = new GridFightGameBasicInfo
         {
             LineupHp = session.LineupHp,
@@ -1154,11 +1160,7 @@ public sealed class GridFightManager : BasePlayerManager
             DepositPerInterest = Catalog.DepositPerInterest,
             BenchOverflowSize = Catalog.BenchOverflowSize,
             CurrentTaskInfo = new GridFightSyncCurrentTaskInfo(),
-            LockInfo = new GridFightLockInfo
-            {
-                LockType = GridFightLockType.Gameplay,
-                LockReason = GridFightLockReason.PendingAction,
-            },
+            LockInfo = lockInfo,
         };
         basic.ModuleIdList.Add(Catalog.ContentModuleId);
         return new GridFightGameInfo { BasicInfo = basic };
