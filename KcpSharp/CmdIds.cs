@@ -2594,4 +2594,7 @@ public class CmdIds
     public const int GridFightSyncKeepWinCntNotify = 8624;
     public const int GridFightRefreshShopCsReq = 8689;
     public const int GridFightRefreshShopScRsp = 8716;
+    public const int GridFightOpenOrbResultScNotify = 8679;
+    public const int GridFightUseHackOptionCsReq = 8469;
+    public const int GridFightUseHackOptionScRsp = 8514;
 }

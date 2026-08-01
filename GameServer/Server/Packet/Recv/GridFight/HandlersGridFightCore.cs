@@ -96,6 +96,17 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
+        if (session != null && request.TraitEffectSelectEnhanceAction != null)
+        {
+            var activation = session.ActivateSilverWolfHackConsole(
+                request.QueuePosition,
+                request.TraitEffectSelectEnhanceAction.EnhanceOptionId);
+            if (activation.Success)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildTraitEnhanceActivationSync(activation)));
+            await SendResponse(connection, request.QueuePosition, activation.Success);
+            return;
+        }
         if (session != null && request.EliteBranchRerollAction != null)
         {
             var success = session.RerollEncounter(request.QueuePosition);
@@ -247,13 +258,38 @@ public sealed class HandlerGridFightGetOrbCsReq : Handler<GridFightGetOrbCsReq>
     protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightGetOrbCsReq request)
     {
         var manager = player.GridFightManager!;
-        var success = manager.Session?.ClaimInitialOrb() == true;
-        if (success)
-            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSync(
-                GridFightUpdateSrcType.KgridFightSrcUseOrb,
-                includeGold: true,
-                includeShop: true,
-                includePending: true)));
+        var session = manager.Session;
+        if (session == null)
+        {
+            await connection.SendPacket(CreatePacket(CmdIds.GridFightGetOrbScRsp,
+                new GridFightGetOrbScRsp { Retcode = (uint)Retcode.RetFail }));
+            return;
+        }
+
+        if (!request.TakeAll && request.OrbUniqueIdList.Count == 0)
+        {
+            var initialSuccess = session.ClaimInitialOrb();
+            if (initialSuccess)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSync(
+                    GridFightUpdateSrcType.KgridFightSrcUseOrb,
+                    includeGold: true,
+                    includeShop: true,
+                    includePending: true)));
+            await connection.SendPacket(CreatePacket(CmdIds.GridFightGetOrbScRsp,
+                new GridFightGetOrbScRsp { Retcode = initialSuccess ? 0 : (uint)Retcode.RetFail }));
+            return;
+        }
+
+        var applications = session.OpenOrbs(request.OrbUniqueIdList.ToList(), request.TakeAll);
+        foreach (var application in applications)
+        {
+            await connection.SendPacket(CreatePacket(
+                CmdIds.GridFightOpenOrbResultScNotify,
+                manager.BuildOpenOrbResult(application)));
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildOrbOpenSync(application)));
+        }
+        var success = applications.Count > 0;
         await connection.SendPacket(CreatePacket(CmdIds.GridFightGetOrbScRsp,
             new GridFightGetOrbScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail }));
     }
@@ -268,6 +304,20 @@ public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsR
         var indices = request.BuyAll
             ? manager.Session?.Shop.Where(slot => !slot.SoldOut).Select(slot => slot.Index).ToList() ?? []
             : request.GoodsIndexList.ToList();
+        if (manager.Session?.IsSpecialGoodsPurchase(indices) == true)
+        {
+            var purchases = manager.Session.BuySpecialGoods(indices);
+            if (purchases.Count > 0)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildSpecialGoodsSync(purchases)));
+            var specialResponse = new GridFightBuyGoodsScRsp
+            {
+                Retcode = purchases.Count > 0 ? 0 : (uint)Retcode.RetFail,
+            };
+            specialResponse.GoodsIndexList.Add(indices);
+            await connection.SendPacket(CreatePacket(CmdIds.GridFightBuyGoodsScRsp, specialResponse));
+            return;
+        }
         var acquisition = manager.Session?.BuyGoods(indices) ?? GridFightRoleAcquisitionResult.Failed;
         if (acquisition.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
@@ -275,6 +325,28 @@ public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsR
         var response = new GridFightBuyGoodsScRsp { Retcode = acquisition.Success ? 0 : (uint)Retcode.RetFail };
         response.GoodsIndexList.Add(indices);
         await connection.SendPacket(CreatePacket(CmdIds.GridFightBuyGoodsScRsp, response));
+    }
+}
+
+[Opcode(CmdIds.GridFightUseHackOptionCsReq)]
+public sealed class HandlerGridFightUseHackOptionCsReq : Handler<GridFightUseHackOptionCsReq>
+{
+    protected override async Task OnHandle(
+        Connection connection,
+        PlayerInstance player,
+        GridFightUseHackOptionCsReq request)
+    {
+        var manager = player.GridFightManager!;
+        var result = manager.Session?.UseHackOption(request.OptionId, request.EnemyHpPercent) ??
+                     GridFightHackOptionResult.Failed;
+        if (result.Success)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildHackOptionSync(result)));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightUseHackOptionScRsp,
+            new GridFightUseHackOptionScRsp
+            {
+                Retcode = result.Success ? 0 : (uint)Retcode.RetFail,
+            }));
     }
 }
 
@@ -381,7 +453,7 @@ public sealed class HandlerGridFightBackToPrepareCsReq : Handler<GridFightBackTo
         var success = player.GridFightManager!.Session?.BackToPrepare() == true;
         if (success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                player.GridFightManager.BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includePending: true)));
+                player.GridFightManager.BuildPreparationSync()));
     }
 }
 
