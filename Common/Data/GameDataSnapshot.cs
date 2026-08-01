@@ -287,6 +287,7 @@ public partial class GridFightRuntimeDataSnapshot
     public Dictionary<uint, GridFightBonusPoolV2Excel> BonusPoolV2Data { get; set; } = [];
     public Dictionary<uint, GridFightVictoryBonusExcel> VictoryBonusData { get; set; } = [];
     public Dictionary<uint, GridFightCraftConfigExcel> CraftConfigData { get; set; } = [];
+    public Dictionary<uint, GridFightSettleRankExcel> SettleRankData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -556,6 +557,7 @@ public static partial class GameData
                 BonusPoolV2Data = GameData.GridFightBonusPoolV2Data,
                 VictoryBonusData = GameData.GridFightVictoryBonusData,
                 CraftConfigData = GameData.GridFightCraftConfigData,
+                SettleRankData = GameData.GridFightSettleRankData,
             },
         };
     }
@@ -823,5 +825,6 @@ public static partial class GameData
         GameData.GridFightBonusPoolV2Data = gridFightRuntimeData.BonusPoolV2Data;
         GameData.GridFightVictoryBonusData = gridFightRuntimeData.VictoryBonusData;
         GameData.GridFightCraftConfigData = gridFightRuntimeData.CraftConfigData;
+        GameData.GridFightSettleRankData = gridFightRuntimeData.SettleRankData;
     }
 }
