@@ -299,4 +299,9 @@ public static class GridFightBattleProtoBuilder
             battle.Player.Data.WorldLevel);
         return trial == null ? null : new AvatarLineupData(trial, AvatarType.AvatarTrialType);
     }
+
+    public static bool IsTrialRole(BattleInstance battle, uint roleId, bool isForeground)
+    {
+        return ResolveBattleAvatar(battle, roleId, isForeground)?.AvatarType == AvatarType.AvatarTrialType;
+    }
 }
