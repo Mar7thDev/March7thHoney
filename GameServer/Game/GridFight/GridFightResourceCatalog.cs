@@ -54,6 +54,9 @@ public sealed class GridFightResourceCatalog
     private const uint HighestDivisionStartingHpAffixId = 4020;
     private const uint PostBattleHealingTalentId = 1081;
     private const int PostBattleHealingEffectIndex = 2;
+    private const uint FinalBattleTurnHealingTalentId = 2011;
+    private const int FinalBattleTurnThresholdEffectIndex = 1;
+    private const int FinalBattleTurnHealingEffectIndex = 2;
     private readonly Random _random;
 
     public uint CurrentSeason { get; }
@@ -85,6 +88,7 @@ public sealed class GridFightResourceCatalog
     public uint DepositPerInterest => RequireUInt("GridFight_DepositPerInterest");
     public uint MaxInterestGold => RequireUInt("GridFight_GainInterestMax");
     public uint PostBattleHealingSourceId => PostBattleHealingTalentId;
+    public uint FinalBattleTurnHealingSourceId => FinalBattleTurnHealingTalentId;
     public uint SeasonExpLimit => RequireUInt("GridFight_ExtraSeasonExp_Limit");
     public IReadOnlyList<uint> InitialEquipmentIds => GetUIntList("GridFight_PhainonEquipPreset");
     public uint InitialGold { get; }
@@ -186,10 +190,11 @@ public sealed class GridFightResourceCatalog
         ValidateRewardRules(errors);
         if (PortalPool.Count == 0) errors.Add("portal pool is empty");
         if (AugmentPool.Count == 0) errors.Add("augment pool is empty");
-        if (Enum.GetValues<GridFightAugmentQualityEnum>()
-            .Where(quality => quality != GridFightAugmentQualityEnum.None)
-            .Any(quality => AugmentPool.Count(id => GameData.GridFightAugmentData[id].Quality == quality) < 3))
-            errors.Add("augment quality pool has fewer than three entries");
+        foreach (var chapterId in StandardRoute.Select(node => node.ChapterId).Distinct())
+            if (!Enum.GetValues<GridFightAugmentQualityEnum>()
+                    .Where(quality => quality != GridFightAugmentQualityEnum.None)
+                    .Any(quality => GetInvestmentCandidates(chapterId, quality).Count >= 3))
+                errors.Add($"chapter {chapterId} has no augment quality pool with three entries");
         if (BasicEquipmentPool.Count == 0) errors.Add("basic equipment pool is empty");
         if (RolePool.Count < 5) errors.Add("supply role pool has fewer than five entries");
         if (StandardRoute.Count < 2) errors.Add("standard route has fewer than two nodes");
@@ -210,6 +215,8 @@ public sealed class GridFightResourceCatalog
         if (!HasEffectParameter(GameData.GridFightTalentData.GetValueOrDefault(PostBattleHealingTalentId),
                 PostBattleHealingEffectIndex))
             errors.Add("post-battle healing talent is incomplete");
+        if (!HasFinalBattleTurnHealing())
+            errors.Add("final-battle turn healing talent is incomplete");
         if (!GameData.GridFightDivisionStageData.ContainsKey(HighestDivision.ID))
             errors.Add("highest division has no stage difficulty row");
         if (Enumerable.Range(1801, 19).Any(id => !GameData.GridFightEliteGroupData.ContainsKey((uint)id)))
@@ -346,6 +353,15 @@ public sealed class GridFightResourceCatalog
             PostBattleHealingEffectIndex);
     }
 
+    public uint GetFinalBattleTurnHealing(uint roundCount)
+    {
+        var talent = GameData.GridFightSeasonTalentData[FinalBattleTurnHealingTalentId];
+        var threshold = GetEffectParameter(talent.EffectParamList, FinalBattleTurnThresholdEffectIndex);
+        return roundCount < threshold
+            ? GetEffectParameter(talent.EffectParamList, FinalBattleTurnHealingEffectIndex)
+            : 0;
+    }
+
     public GridFightPenaltyRuleExcel GetPenaltyRule(uint penaltyRuleId)
     {
         if (!GameData.GridFightPenaltyRuleData.TryGetValue(penaltyRuleId, out var rule))
@@ -408,25 +424,39 @@ public sealed class GridFightResourceCatalog
         return TakeRandomDistinct(PortalPool.ToList(), count);
     }
 
-    public GridFightAugmentQualityEnum RollInvestmentQuality()
+    public GridFightAugmentQualityEnum RollInvestmentQuality(
+        uint chapterId,
+        int count,
+        IEnumerable<uint>? exclude = null)
     {
+        var excluded = exclude?.ToHashSet() ?? [];
         var qualities = Enum.GetValues<GridFightAugmentQualityEnum>()
             .Where(quality => quality != GridFightAugmentQualityEnum.None)
-            .Where(quality => AugmentPool.Count(id => GameData.GridFightAugmentData[id].Quality == quality) >= 3)
+            .Where(quality => GetInvestmentCandidates(chapterId, quality).Count(id => !excluded.Contains(id)) >= count)
             .ToList();
         return qualities[_random.Next(qualities.Count)];
     }
 
     public IReadOnlyList<uint> RollInvestmentOffer(
+        uint chapterId,
         GridFightAugmentQualityEnum quality,
         int count,
         IEnumerable<uint>? exclude = null)
     {
         var excluded = exclude?.ToHashSet() ?? [];
-        var candidates = AugmentPool
-            .Where(id => GameData.GridFightAugmentData[id].Quality == quality && !excluded.Contains(id))
+        var candidates = GetInvestmentCandidates(chapterId, quality)
+            .Where(id => !excluded.Contains(id))
             .ToList();
         return TakeRandomDistinct(candidates, count);
+    }
+
+    private List<uint> GetInvestmentCandidates(uint chapterId, GridFightAugmentQualityEnum quality)
+    {
+        return AugmentPool
+            .Where(id => GameData.GridFightAugmentData.TryGetValue(id, out var augment) &&
+                         augment.Quality == quality &&
+                         (augment.ChapterLimitList.Count == 0 || augment.ChapterLimitList.Contains(chapterId)))
+            .ToList();
     }
 
     public IReadOnlyList<(uint RoleId, uint EquipmentId)> RollSupplyOffer(int count)
@@ -902,6 +932,15 @@ public sealed class GridFightResourceCatalog
     private static bool HasEffectParameter(GridFightTalentExcel? row, int index)
     {
         return row?.EffectParamList.Count > index && row.EffectParamList[index].Value >= 0;
+    }
+
+    private bool HasFinalBattleTurnHealing()
+    {
+        return GameData.GridFightSeasonTalentData.TryGetValue(FinalBattleTurnHealingTalentId, out var row) &&
+               row.SeasonID == CurrentSeason &&
+               row.EffectParamList.Count > FinalBattleTurnHealingEffectIndex &&
+               row.EffectParamList[FinalBattleTurnThresholdEffectIndex].Value > 0 &&
+               row.EffectParamList[FinalBattleTurnHealingEffectIndex].Value >= 0;
     }
 
     private static uint GetEffectParameter(IReadOnlyList<GridFightRatioValue> parameters, int index)
