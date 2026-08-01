@@ -243,6 +243,7 @@ public sealed class GridFightSession
             case GridFightPendingRequestKind.ReturnPreparation
                 when Phase == GridFightSessionPhase.AwaitingBattleReturn:
                 Phase = GridFightSessionPhase.AwaitingBackToPrepare;
+                PendingQueuePosition++;
                 return true;
             default:
                 return false;
