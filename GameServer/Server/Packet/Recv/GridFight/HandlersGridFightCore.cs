@@ -89,6 +89,17 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
+        if (session != null && request.RecommendEquipmentSelectAction != null)
+        {
+            var selection = session.SelectRecommendedEquipment(
+                request.QueuePosition,
+                request.RecommendEquipmentSelectAction.EquipmentId);
+            if (selection.Success)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildRecommendationSelectionSync(selection)));
+            await SendResponse(connection, request.QueuePosition, selection.Success);
+            return;
+        }
         if (session != null && request.TraitEffectSelectEnhanceAction != null)
         {
             var activation = session.ActivateSilverWolfHackConsole(

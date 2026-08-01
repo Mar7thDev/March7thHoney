@@ -6,6 +6,7 @@ namespace March7thHoney.Data.Excel;
 public partial class GridFightRoleRecommendEquipExcel : ExcelResource
 {
     public uint RoleID { get; set; }
+    public string FrontBackType { get; set; } = "Front";
     public List<uint> FirstRecommendEquipList { get; set; } = [];
     public List<uint> SecondRecommendEquipList { get; set; } = [];
 
@@ -16,6 +17,8 @@ public partial class GridFightRoleRecommendEquipExcel : ExcelResource
 
     public override void Loaded()
     {
-        GameData.GridFightRoleRecommendEquipData.TryAdd(RoleID, this);
+        if (!GameData.GridFightRoleRecommendEquipData.TryGetValue(RoleID, out var rows))
+            GameData.GridFightRoleRecommendEquipData[RoleID] = rows = [];
+        rows.Add(this);
     }
 }

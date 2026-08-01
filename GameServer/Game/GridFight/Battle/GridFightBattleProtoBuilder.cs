@@ -105,44 +105,31 @@ public static class GridFightBattleProtoBuilder
         foreach (var role in activeRoles)
         {
             var basic = GameData.GridFightRoleBasicInfoData[role.RoleId];
-            var roleInfo = new GridFightRoleInfo
-            {
-                RoleId = role.RoleId,
-                AvatarId = basic.AvatarID,
-                RoleStar = role.Star,
-                Pos = role.Position,
-                UniqueId = role.UniqueId,
-                BattleExtInfo = new GridFightRoleBattleExtInfo
-                {
-                    ModeInfo = new GridFightRoleBattleModeInfo { Mode = GridFightBattleMode },
-                    StateInfo = new GridFightRoleBattleStateInfo(),
-                },
-            };
-            GridFightManager.PopulateRolePropertyScales(
-                roleInfo.ConvertPropertyToFixpoint,
-                session.HasCyreneCombatEnhancement);
-            gridFightInfo.GridGameRoleList.Add(roleInfo);
+            gridFightInfo.GridGameRoleList.Add(BuildRoleInfo(session, role));
             foreach (var key in basic.RoleSavedValueList)
                 gridFightInfo.RoleSavedValues[key] = 0;
         }
         foreach (var group in activeRoles
-                     .SelectMany(role => GameData.GridFightRoleBasicInfoData[role.RoleId].TraitList
+                     .SelectMany(role => session.ResolveRoleTraitIds(role)
                          .Select(traitId => (TraitId: traitId, Role: role)))
                      .GroupBy(entry => entry.TraitId))
         {
-            var count = (uint)group.Count();
+            var members = group.Select(entry => entry.Role).Distinct().ToList();
+            var count = (uint)members.Count + session.ResolveTraitExtraMemberCount(group.Key, activeRoles);
             var activeLayer = ResolveTraitLayer(group.Key, count);
             var traitInfo = new GridFightTraitInfo
             {
                 TraitId = group.Key,
                 Layer = activeLayer,
             };
-            traitInfo.MemberList.Add(group.Select(entry => new GridFightTraitMemberInfo
+            traitInfo.MemberList.Add(members.Select(role => new GridFightTraitMemberInfo
             {
-                MemberRoleUniqueId = entry.Role.UniqueId,
+                MemberRoleUniqueId = role.UniqueId,
                 MemberType = GridFightTraitMemberType.Role,
-                MemberRoleId = entry.Role.RoleId,
-                UpdateSource = GridFightUpdateSource.Role,
+                MemberRoleId = role.RoleId,
+                UpdateSource = GameData.GridFightRoleBasicInfoData[role.RoleId].TraitList.Contains(group.Key)
+                    ? GridFightUpdateSource.Role
+                    : GridFightUpdateSource.Equipment,
             }));
             if (activeLayer > 0)
                 PopulateTraitEffects(traitInfo);
@@ -159,6 +146,34 @@ public static class GridFightBattleProtoBuilder
             battle.BattleEvents.TryAdd((int)battleEventId, new BattleEventInstance((int)battleEventId, 0, 100000));
         proto.BattleGridFightData = gridFightInfo;
         return avatars;
+    }
+
+    public static GridFightRoleInfo BuildRoleInfo(GridFightSession session, GridFightRoleState role)
+    {
+        var basic = GameData.GridFightRoleBasicInfoData[role.RoleId];
+        var result = new GridFightRoleInfo
+        {
+            RoleId = role.RoleId,
+            AvatarId = basic.AvatarID,
+            RoleStar = role.Star,
+            Pos = role.Position,
+            UniqueId = role.UniqueId,
+            BattleExtInfo = new GridFightRoleBattleExtInfo
+            {
+                ModeInfo = new GridFightRoleBattleModeInfo { Mode = GridFightBattleMode },
+                StateInfo = new GridFightRoleBattleStateInfo(),
+            },
+        };
+        GridFightManager.PopulateRolePropertyScales(
+            result.ConvertPropertyToFixpoint,
+            session.HasCyreneCombatEnhancement);
+        result.RoleEquipmentList.Add(session.GetEquippedEquipment(role).Select(equipment =>
+            new BattleGridFightEquipInfo
+            {
+                GridFightEquipmentId = equipment.EquipmentId,
+                UniqueId = equipment.UniqueId,
+            }));
+        return result;
     }
 
     public static uint ResolveTraitLayer(uint traitId, uint memberCount)
