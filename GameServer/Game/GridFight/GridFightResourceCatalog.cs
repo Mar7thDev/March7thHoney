@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
 using March7thHoney.Enums.GridFight;
 
@@ -17,7 +18,15 @@ public sealed record GridFightRouteNode(
     public IReadOnlyList<uint> Parameters => Template.ParamList;
 }
 
-public sealed record GridFightMonsterPlan(GridFightMonsterExcel Monster, uint RoleStar);
+public sealed record GridFightMonsterPlan(
+    GridFightMonsterExcel Monster,
+    uint RoleStar,
+    IReadOnlyList<GridFightRewardEntry> Drops)
+{
+    public GridFightMonsterPlan(GridFightMonsterExcel monster, uint roleStar) : this(monster, roleStar, [])
+    {
+    }
+}
 
 public sealed record GridFightMonsterWavePlan(
     uint WaveId,
@@ -174,6 +183,7 @@ public sealed class GridFightResourceCatalog
         if (CampPool.Any(camp => GetCampMonsters(camp.ID, monster => monster.MonsterTier == 2).Count == 0))
             errors.Add("monster camp pool contains a camp without normal monsters");
         if (RewardCampPool.Count == 0) errors.Add("reward monster camp pool is empty");
+        ValidateRewardRules(errors);
         if (PortalPool.Count == 0) errors.Add("portal pool is empty");
         if (AugmentPool.Count == 0) errors.Add("augment pool is empty");
         if (Enum.GetValues<GridFightAugmentQualityEnum>()
@@ -243,6 +253,59 @@ public sealed class GridFightResourceCatalog
             !GridFightSpecialFeatures.TryResolveBonus(GridFightSpecialFeatures.CyreneHeroBonusId, out _))
             errors.Add("Cyrene special goods rewards are incomplete");
         return errors;
+    }
+
+    private void ValidateRewardRules(List<string> errors)
+    {
+        errors.AddRange(GridFightSpecialFeatures.ValidateConfiguredOrbRewards());
+        var rules = GameData.GridFightRewardRulesConfig;
+        var rewardParameters = StandardRoute
+            .Where(node => node.NodeType == GridFightNodeTypeEnum.Monster)
+            .Select(node => node.Parameters.FirstOrDefault())
+            .Where(parameter => parameter != 0)
+            .Distinct()
+            .ToList();
+        foreach (var parameter in rewardParameters)
+        {
+            if (!rules.NodeProfiles.TryGetValue(parameter, out var profile))
+            {
+                errors.Add($"GridFight reward node {parameter} has no reward profile");
+                continue;
+            }
+            if (profile.MonsterTiers.Count == 0 || profile.MonsterTiers.Any(tier => tier == 0))
+                errors.Add($"GridFight reward node {parameter} has invalid monster tiers");
+            if (profile.MinimumOrbPerMonster == 0 ||
+                (ulong)profile.MonsterTiers.Count * profile.MinimumOrbPerMonster > profile.OrbRollCount)
+                errors.Add($"GridFight reward node {parameter} cannot give every monster a minimum orb");
+            if (profile.OrbWeights.Count == 0 || profile.OrbWeights.Values.Any(weight => weight == 0))
+                errors.Add($"GridFight reward node {parameter} has invalid orb weights");
+            if (profile.OrbWeights.Keys.Any(orbId =>
+                    !GameData.GridFightBasicOrbRewardsConfig.OrbRewards.ContainsKey(orbId)))
+                errors.Add($"GridFight reward node {parameter} references an orb without an opening recipe");
+            if (profile.FormationWaveId != 5 ||
+                !GameData.GridFightFormationWaveData.ContainsKey(profile.FormationWaveId))
+                errors.Add($"GridFight reward node {parameter} has invalid formation wave");
+            if (profile.RoleStar != 1)
+                errors.Add($"GridFight reward node {parameter} has invalid monster star");
+            foreach (var camp in RewardCampPool)
+                if (profile.MonsterTiers.Any(tier =>
+                        GetCampMonsters(camp.ID, monster => monster.MonsterTier == tier).Count == 0))
+                    errors.Add($"GridFight reward camp {camp.ID} cannot satisfy node {parameter} tiers");
+        }
+
+        var chapters = StandardRoute.Select(node => node.ChapterId).ToHashSet();
+        foreach (var rule in rules.TalentRules)
+        {
+            if (!GameData.GridFightTalentData.ContainsKey(rule.TalentId) &&
+                !GameData.GridFightSeasonTalentData.ContainsKey(rule.TalentId))
+                errors.Add($"GridFight talent reward references missing talent {rule.TalentId}");
+            if (rule.EffectId == 0 || rule.ChapterIds.Count == 0 ||
+                rule.ChapterIds.Any(chapterId => !chapters.Contains(chapterId)))
+                errors.Add($"GridFight talent reward {rule.TalentId} has invalid trigger parameters");
+            if (rule.OrbIds.Count == 0 || rule.OrbIds.Any(orbId =>
+                    !GameData.GridFightBasicOrbRewardsConfig.OrbRewards.ContainsKey(orbId)))
+                errors.Add($"GridFight talent reward {rule.TalentId} references an orb without an opening recipe");
+        }
     }
 
     public GridFightRouteNode GetNode(uint chapterId, uint sectionId)
@@ -487,12 +550,13 @@ public sealed class GridFightResourceCatalog
 
         if (node.NodeType == GridFightNodeTypeEnum.Monster)
         {
-            var count = parameter == 900 ? 4 : 5;
+            if (!GameData.GridFightRewardRulesConfig.NodeProfiles.TryGetValue(parameter, out var profile))
+                return null;
             return BuildPlan(
                 rewardCampId,
                 node,
-                [RollRewardMonsters(rewardCampId, parameter, count)],
-                [Math.Min(5u, (uint)count)]);
+                [RollRewardMonsters(rewardCampId, profile)],
+                [profile.FormationWaveId]);
         }
 
         var campId = activeCampIds[_random.Next(activeCampIds.Count)];
@@ -638,21 +702,55 @@ public sealed class GridFightResourceCatalog
         return result;
     }
 
-    private IReadOnlyList<GridFightMonsterPlan> RollRewardMonsters(uint campId, uint parameter, int count)
+    private IReadOnlyList<GridFightMonsterPlan> RollRewardMonsters(
+        uint campId,
+        GridFightRewardNodeProfile profile)
     {
-        var tier1 = GetCampMonsters(campId, monster => monster.MonsterTier == 1);
-        var tier2 = GetCampMonsters(campId, monster => monster.MonsterTier == 2);
-        var lowTier = GetCampMonsters(campId, monster => monster.MonsterTier <= 3);
-        if (lowTier.Count == 0) return [];
-        if (parameter == 900 && tier1.Count > 0 && tier2.Count > 0)
-            return RollMonsters(tier2, 1, 1).Concat(RollMonsters(tier1, count - 1, 1)).ToList();
-        var pool = parameter switch
+        var monsters = new List<GridFightMonsterExcel>(profile.MonsterTiers.Count);
+        foreach (var tier in profile.MonsterTiers)
         {
-            901 when tier1.Count > 0 => tier1,
-            902 when tier2.Count > 0 => tier2,
-            _ => lowTier,
-        };
-        return RollMonsters(pool, count, 1);
+            var pool = GetCampMonsters(campId, monster => monster.MonsterTier == tier);
+            if (pool.Count == 0) return [];
+            monsters.Add(pool[_random.Next(pool.Count)]);
+        }
+        Shuffle(monsters);
+
+        var drops = Enumerable.Range(0, monsters.Count)
+            .Select(_ => new List<GridFightRewardEntry>())
+            .ToList();
+        var remaining = profile.OrbRollCount;
+        for (var minimumIndex = 0u; minimumIndex < profile.MinimumOrbPerMonster; minimumIndex++)
+        for (var monsterIndex = 0; monsterIndex < monsters.Count; monsterIndex++)
+        {
+            drops[monsterIndex].Add(new GridFightRewardEntry(
+                GridFightBonusTypeEnum.Orb,
+                RollWeightedOrb(profile.OrbWeights),
+                1));
+            remaining--;
+        }
+        while (remaining > 0)
+        {
+            var monsterIndex = _random.Next(monsters.Count);
+            drops[monsterIndex].Add(new GridFightRewardEntry(
+                GridFightBonusTypeEnum.Orb,
+                RollWeightedOrb(profile.OrbWeights),
+                1));
+            remaining--;
+        }
+        return monsters.Select((monster, index) =>
+            new GridFightMonsterPlan(monster, profile.RoleStar, drops[index])).ToList();
+    }
+
+    private uint RollWeightedOrb(IReadOnlyDictionary<uint, uint> weights)
+    {
+        var total = weights.Values.Aggregate(0L, (sum, weight) => sum + weight);
+        var roll = _random.NextInt64(total);
+        foreach (var (orbId, weight) in weights.OrderBy(entry => entry.Key))
+        {
+            if (roll < weight) return orbId;
+            roll -= weight;
+        }
+        throw new InvalidOperationException("GridFight orb weight selection failed");
     }
 
     private IReadOnlyList<GridFightMonsterPlan> RollMixedMonsters(
