@@ -782,7 +782,8 @@ public sealed class GridFightSession
         if (role == null) return GridFightSessionChange.Failed;
         Gold += _catalog.GetSellPrice(role.RoleId, role.Star);
         Roles.Remove(role);
-        return new GridFightSessionChange(true, [], [uniqueId], []);
+        var promotedRoles = PromoteOverflowRolesToBench();
+        return new GridFightSessionChange(true, [], [uniqueId], promotedRoles);
     }
 
     public bool BuyExp()
@@ -1063,6 +1064,30 @@ public sealed class GridFightSession
                 ForgeItems.All(item => item.Position != position))
                 return position;
         return 0;
+    }
+
+    private IReadOnlyList<GridFightRoleState> PromoteOverflowRolesToBench()
+    {
+        const uint firstBenchPosition = 14;
+        var firstOverflowPosition = firstBenchPosition + _catalog.BenchSize;
+        var freeBenchPositions = new List<uint>();
+        for (var position = firstBenchPosition; position < firstOverflowPosition; position++)
+            if (Roles.All(role => role.Position != position) &&
+                ForgeItems.All(item => item.Position != position))
+                freeBenchPositions.Add(position);
+
+        var overflowRoles = Roles
+            .Where(role => role.Position >= firstOverflowPosition)
+            .OrderBy(role => role.Position)
+            .ThenBy(role => role.UniqueId)
+            .ToList();
+        var promotedRoles = new List<GridFightRoleState>();
+        for (var index = 0; index < freeBenchPositions.Count && index < overflowRoles.Count; index++)
+        {
+            overflowRoles[index].Position = freeBenchPositions[index];
+            promotedRoles.Add(overflowRoles[index]);
+        }
+        return promotedRoles;
     }
 
     private bool IsValidPosition(uint position)
