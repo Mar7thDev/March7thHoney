@@ -1192,7 +1192,7 @@ public sealed partial class GridFightSession
         if (routeAdvanced)
         {
             Phase = GridFightSessionPhase.AwaitingBattleRound;
-            PendingQueuePosition = 19;
+            PendingQueuePosition++;
         }
         else
         {

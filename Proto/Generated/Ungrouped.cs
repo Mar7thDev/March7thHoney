@@ -6686,7 +6686,7 @@ namespace March7thHoney.Proto {
             "QnVmZkluZm8SLwoRc3luY19hdWdtZW50X2luZm8YCCADKAsyFC5HcmlkR2Ft",
             "ZUF1Z21lbnRJbmZvEhQKC2lzX292ZXJsb2NrGPgMIAEoCBIUCgtBS0VHTEpM",
             "Q0ZQSBijDCABKA0SIgoLS0NPTVBLTUpDTUMYmQogAygLMgwuRlBIUEZKTEFK",
-            "REsSEwoLTExKSkNPT0tBTkgYAyABKA0SPgoSYXVnbWVudF9zdGF0aXN0aWNz",
+            "REsSEwoLc2V0dGxlX3JhbmsYAyABKA0SPgoSYXVnbWVudF9zdGF0aXN0aWNz",
             "GMECIAMoCzIhLkdyaWRGaWdodEF1Z21lbnREYW1hZ2VTdGF0aXN0aWNzEhQK",
             "C0RCT0RHUEJPSUhDGIoDIAEoCBIxChVncmlkX2ZpZ2h0X3RyYWl0X2luZm8Y",
             "DyADKAsyEi5HcmlkR2FtZVRyYWl0SW5mbxIoCgViYXNpYxgMIAEoCzIZLkdy",
@@ -13566,7 +13566,7 @@ namespace March7thHoney.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OEBBNFANHLK), global::March7thHoney.Proto.OEBBNFANHLK.Parser, new[]{ "JBPNBECLGKN", "AALPICLABCO" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightUseForgeCsReq), global::March7thHoney.Proto.GridFightUseForgeCsReq.Parser, new[]{ "UniqueId", "ForgeTargetIndex" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OECNJOAPCKO), global::March7thHoney.Proto.OECNJOAPCKO.Parser, new[]{ "FAGJACOFHGF", "KMIKBANMAFK" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightFinishInfo), global::March7thHoney.Proto.GridFightFinishInfo.Parser, new[]{ "AffixInfoList", "HGAGKFEKBDA", "GridFightEquipmentList", "GridGameRoleList", "RoleStatistics", "Reason", "MHLBIBGKIOB", "GridGameNpcList", "ContextData", "MBMJNEDIFFC", "AvatarInfo", "TraitStatistics", "PortalBuffInfoList", "SyncAugmentInfo", "IsOverlock", "AKEGLJLCFPH", "KCOMPKMJCMC", "LLJJCOOKANH", "AugmentStatistics", "DBODGPBOIHC", "GridFightTraitInfo", "Basic", "BossInfo" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GridFightFinishInfo), global::March7thHoney.Proto.GridFightFinishInfo.Parser, new[]{ "AffixInfoList", "HGAGKFEKBDA", "GridFightEquipmentList", "GridGameRoleList", "RoleStatistics", "Reason", "MHLBIBGKIOB", "GridGameNpcList", "ContextData", "MBMJNEDIFFC", "AvatarInfo", "TraitStatistics", "PortalBuffInfoList", "SyncAugmentInfo", "IsOverlock", "AKEGLJLCFPH", "KCOMPKMJCMC", "SettleRank", "AugmentStatistics", "DBODGPBOIHC", "GridFightTraitInfo", "Basic", "BossInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OEDNNHAOHAB), global::March7thHoney.Proto.OEDNNHAOHAB.Parser, new[]{ "MAJGMMCOCIG" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OEIHBAJCCAF), global::March7thHoney.Proto.OEIHBAJCCAF.Parser, new[]{ "IEBALCFJBCM", "JFFDHONHFOA", "IHIOGBMCFIE", "ADHFOFCHBII", "GKFNOCPMJLC", "CMOOAFMCMDC", "OABNIMBJJGP", "FIAOCDAJBLD" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.OEMOIGDNPNP), global::March7thHoney.Proto.OEMOIGDNPNP.Parser, new[]{ "CardId", "Param", "IsEnable", "SwitchList" }, null, null, null, null),
@@ -860579,7 +860579,7 @@ namespace March7thHoney.Proto {
       isOverlock_ = other.isOverlock_;
       aKEGLJLCFPH_ = other.aKEGLJLCFPH_;
       kCOMPKMJCMC_ = other.kCOMPKMJCMC_.Clone();
-      lLJJCOOKANH_ = other.lLJJCOOKANH_;
+      settleRank_ = other.settleRank_;
       augmentStatistics_ = other.augmentStatistics_.Clone();
       dBODGPBOIHC_ = other.dBODGPBOIHC_;
       gridFightTraitInfo_ = other.gridFightTraitInfo_.Clone();
@@ -860787,15 +860787,15 @@ namespace March7thHoney.Proto {
       get { return kCOMPKMJCMC_; }
     }
 
-    /// <summary>Field number for the "LLJJCOOKANH" field.</summary>
-    public const int LLJJCOOKANHFieldNumber = 3;
-    private uint lLJJCOOKANH_;
+    /// <summary>Field number for the "settle_rank" field.</summary>
+    public const int SettleRankFieldNumber = 3;
+    private uint settleRank_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LLJJCOOKANH {
-      get { return lLJJCOOKANH_; }
+    public uint SettleRank {
+      get { return settleRank_; }
       set {
-        lLJJCOOKANH_ = value;
+        settleRank_ = value;
       }
     }
 
@@ -860889,7 +860889,7 @@ namespace March7thHoney.Proto {
       if (IsOverlock != other.IsOverlock) return false;
       if (AKEGLJLCFPH != other.AKEGLJLCFPH) return false;
       if(!kCOMPKMJCMC_.Equals(other.kCOMPKMJCMC_)) return false;
-      if (LLJJCOOKANH != other.LLJJCOOKANH) return false;
+      if (SettleRank != other.SettleRank) return false;
       if(!augmentStatistics_.Equals(other.augmentStatistics_)) return false;
       if (DBODGPBOIHC != other.DBODGPBOIHC) return false;
       if(!gridFightTraitInfo_.Equals(other.gridFightTraitInfo_)) return false;
@@ -860919,7 +860919,7 @@ namespace March7thHoney.Proto {
       if (IsOverlock != false) hash ^= IsOverlock.GetHashCode();
       if (AKEGLJLCFPH != 0) hash ^= AKEGLJLCFPH.GetHashCode();
       hash ^= kCOMPKMJCMC_.GetHashCode();
-      if (LLJJCOOKANH != 0) hash ^= LLJJCOOKANH.GetHashCode();
+      if (SettleRank != 0) hash ^= SettleRank.GetHashCode();
       hash ^= augmentStatistics_.GetHashCode();
       if (DBODGPBOIHC != false) hash ^= DBODGPBOIHC.GetHashCode();
       hash ^= gridFightTraitInfo_.GetHashCode();
@@ -860943,9 +860943,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LLJJCOOKANH != 0) {
+      if (SettleRank != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(LLJJCOOKANH);
+        output.WriteUInt32(SettleRank);
       }
       roleStatistics_.WriteTo(output, _repeated_roleStatistics_codec);
       syncAugmentInfo_.WriteTo(output, _repeated_syncAugmentInfo_codec);
@@ -861006,9 +861006,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LLJJCOOKANH != 0) {
+      if (SettleRank != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(LLJJCOOKANH);
+        output.WriteUInt32(SettleRank);
       }
       roleStatistics_.WriteTo(ref output, _repeated_roleStatistics_codec);
       syncAugmentInfo_.WriteTo(ref output, _repeated_syncAugmentInfo_codec);
@@ -861098,8 +861098,8 @@ namespace March7thHoney.Proto {
         size += 2 + pb::CodedOutputStream.ComputeUInt32Size(AKEGLJLCFPH);
       }
       size += kCOMPKMJCMC_.CalculateSize(_repeated_kCOMPKMJCMC_codec);
-      if (LLJJCOOKANH != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LLJJCOOKANH);
+      if (SettleRank != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SettleRank);
       }
       size += augmentStatistics_.CalculateSize(_repeated_augmentStatistics_codec);
       if (DBODGPBOIHC != false) {
@@ -861159,8 +861159,8 @@ namespace March7thHoney.Proto {
         AKEGLJLCFPH = other.AKEGLJLCFPH;
       }
       kCOMPKMJCMC_.Add(other.kCOMPKMJCMC_);
-      if (other.LLJJCOOKANH != 0) {
-        LLJJCOOKANH = other.LLJJCOOKANH;
+      if (other.SettleRank != 0) {
+        SettleRank = other.SettleRank;
       }
       augmentStatistics_.Add(other.augmentStatistics_);
       if (other.DBODGPBOIHC != false) {
@@ -861199,7 +861199,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            LLJJCOOKANH = input.ReadUInt32();
+            SettleRank = input.ReadUInt32();
             break;
           }
           case 42: {
@@ -861324,7 +861324,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            LLJJCOOKANH = input.ReadUInt32();
+            SettleRank = input.ReadUInt32();
             break;
           }
           case 42: {
