@@ -1,4 +1,85 @@
 {
+  "CombatNodeProfiles": {
+    "101": {
+      "Waves": [
+        { "MonsterCount": 3, "MaxActiveMonsterCount": 5 },
+        { "MonsterCount": 5, "MaxActiveMonsterCount": 5 }
+      ],
+      "EliteMonsterCount": 0,
+      "MaxRoleStar": 2
+    },
+    "102": {
+      "Waves": [
+        { "MonsterCount": 5, "MaxActiveMonsterCount": 5 },
+        { "MonsterCount": 5, "MaxActiveMonsterCount": 5 }
+      ],
+      "EliteMonsterCount": 0,
+      "MaxRoleStar": 2
+    },
+    "104": {
+      "Waves": [
+        { "MonsterCount": 12, "MaxActiveMonsterCount": 5 }
+      ],
+      "EliteMonsterCount": 2,
+      "MaxRoleStar": 3
+    },
+    "201": {
+      "Waves": [
+        { "MonsterCount": 4, "MaxActiveMonsterCount": 5 },
+        { "MonsterCount": 4, "MaxActiveMonsterCount": 5 }
+      ],
+      "EliteMonsterCount": 0,
+      "MaxRoleStar": 3
+    },
+    "202": {
+      "Waves": [
+        { "MonsterCount": 5, "MaxActiveMonsterCount": 5 },
+        { "MonsterCount": 5, "MaxActiveMonsterCount": 5 }
+      ],
+      "EliteMonsterCount": 0,
+      "MaxRoleStar": 3
+    },
+    "204": {
+      "Waves": [
+        { "MonsterCount": 7, "MaxActiveMonsterCount": 3 }
+      ],
+      "EliteMonsterCount": 3,
+      "MaxRoleStar": 3
+    },
+    "301": {
+      "Waves": [
+        { "MonsterCount": 8, "MaxActiveMonsterCount": 5 }
+      ],
+      "EliteMonsterCount": 0,
+      "MaxRoleStar": 3
+    },
+    "302": {
+      "Waves": [
+        { "MonsterCount": 5, "MaxActiveMonsterCount": 5 },
+        { "MonsterCount": 5, "MaxActiveMonsterCount": 5 }
+      ],
+      "EliteMonsterCount": 0,
+      "MaxRoleStar": 3
+    },
+    "304": {
+      "Waves": [
+        { "MonsterCount": 7, "MaxActiveMonsterCount": 3 }
+      ],
+      "EliteMonsterCount": 3,
+      "MaxRoleStar": 3
+    }
+  },
+  "BossNodeProfiles": {
+    "105": { "MonsterTier": 5 },
+    "205": { "MonsterTier": 5 },
+    "3051": { "MonsterTier": 6 }
+  },
+  "EncounterBattleProfile": {
+    "MinimumMonsterCount": 10,
+    "MaximumMonsterCount": 12,
+    "MaxActiveMonsterCount": 5,
+    "MaxRoleStar": 3
+  },
   "NodeProfiles": {
     "900": {
       "MonsterTiers": [1, 1, 1],
