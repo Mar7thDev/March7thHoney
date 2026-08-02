@@ -82,8 +82,6 @@ public static class GridFightBattleProtoBuilder
             MaxActiveRoleCount = session.MaxActiveRoles,
             PenaltyBonusRuleId = session.CurrentPenaltyRuleId,
             EnemyDifficultyLevel = session.EffectiveEnemyDifficultyLevel,
-            EnemyHpPercent = session.HackConsole?.EnemyHpPercent ??
-                             GridFightSpecialFeatures.DefaultEnemyHpPercent,
             Season = session.Season,
             DivisionId = session.DivisionId,
             ActiveRoleCount = (uint)activeRoles.Count,
@@ -96,6 +94,8 @@ public static class GridFightBattleProtoBuilder
                 NodeType = (uint)session.CurrentNode.NodeType,
             },
         };
+        if (session.HackConsole != null)
+            gridFightInfo.EnemyHpPercent = session.HackConsole.EnemyHpPercent;
         if (session.SelectedPortalId != 0)
             gridFightInfo.GridFightPortalBuffList.Add(new GridFightPortalInfo
             {

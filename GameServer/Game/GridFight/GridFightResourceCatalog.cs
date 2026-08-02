@@ -235,10 +235,17 @@ public sealed class GridFightResourceCatalog
         }
         if (StandardRoute.Any(node => !GameData.GridFightStageLevelValueData.ContainsKey(node.StageId)))
             errors.Add("standard route references missing GridFight stage level values");
-        if (new[] { 3u, BossFormationMaxTeammateCount }.Any(maxTeammateCount =>
+        var requiredFormationSizes = GameData.GridFightRewardRulesConfig.CombatNodeProfiles.Values
+            .SelectMany(profile => profile.Waves)
+            .Select(wave => wave.MaxActiveMonsterCount)
+            .Append(GameData.GridFightRewardRulesConfig.EncounterBattleProfile.MaxActiveMonsterCount)
+            .Append(BossFormationMaxTeammateCount)
+            .Distinct();
+        if (requiredFormationSizes.Any(maxTeammateCount =>
                 GameData.GridFightFormationWaveData.Values.Count(row =>
                     row.MaxTeammateCount == maxTeammateCount) != 1))
             errors.Add("GridFight formation wave table is incomplete");
+        ValidateCombatRules(errors);
         foreach (var node in StandardRoute.Where(node => node.NodeType == GridFightNodeTypeEnum.EliteBranch))
         {
             var group = node.Parameters.FirstOrDefault();
@@ -318,6 +325,53 @@ public sealed class GridFightResourceCatalog
                     !GameData.GridFightBasicOrbRewardsConfig.OrbRewards.ContainsKey(orbId)))
                 errors.Add($"GridFight talent reward {rule.TalentId} references an orb without an opening recipe");
         }
+    }
+
+    private void ValidateCombatRules(List<string> errors)
+    {
+        var rules = GameData.GridFightRewardRulesConfig;
+        foreach (var parameter in StandardRoute
+                     .Where(node => node.NodeType == GridFightNodeTypeEnum.CampMonster)
+                     .Select(node => node.Parameters.FirstOrDefault())
+                     .Distinct())
+        {
+            if (!rules.CombatNodeProfiles.TryGetValue(parameter, out var profile))
+            {
+                errors.Add($"GridFight combat node {parameter} has no battle profile");
+                continue;
+            }
+            var totalCount = profile.Waves.Aggregate(0UL, (sum, wave) => sum + wave.MonsterCount);
+            if (profile.Waves.Count == 0 || profile.Waves.Any(wave =>
+                    wave.MonsterCount == 0 || wave.MaxActiveMonsterCount == 0))
+                errors.Add($"GridFight combat node {parameter} has an invalid wave profile");
+            if (profile.EliteMonsterCount > totalCount || profile.MaxRoleStar == 0)
+                errors.Add($"GridFight combat node {parameter} has an invalid monster profile");
+        }
+
+        var bossNodes = StandardRoute
+            .Where(node => node.NodeType == GridFightNodeTypeEnum.Boss)
+            .ToList();
+        if (bossNodes.GroupBy(node => node.ChapterId).Any(group => group.Count() != 1))
+            errors.Add("GridFight route must contain one boss node per chapter");
+        foreach (var node in bossNodes)
+        {
+            var parameter = node.Parameters.FirstOrDefault();
+            if (!rules.BossNodeProfiles.TryGetValue(parameter, out var profile) || profile.MonsterTier == 0)
+            {
+                errors.Add($"GridFight boss node {parameter} has no valid battle profile");
+                continue;
+            }
+            foreach (var camp in CampPool)
+                if (GetCampMonsters(camp.ID, monster => monster.MonsterTier == profile.MonsterTier).Count == 0)
+                    errors.Add(
+                        $"GridFight camp {camp.ID} cannot satisfy boss node {parameter} tier {profile.MonsterTier}");
+        }
+
+        var encounter = rules.EncounterBattleProfile;
+        if (encounter.MinimumMonsterCount == 0 ||
+            encounter.MaximumMonsterCount < encounter.MinimumMonsterCount ||
+            encounter.MaxActiveMonsterCount == 0 || encounter.MaxRoleStar == 0)
+            errors.Add("GridFight encounter battle profile is invalid");
     }
 
     public GridFightRouteNode GetNode(uint chapterId, uint sectionId)
@@ -537,12 +591,18 @@ public sealed class GridFightResourceCatalog
         return RewardCampPool[_random.Next(RewardCampPool.Count)].ID;
     }
 
-    public GridFightMonsterExcel RollBossMonster(uint campId)
+    public GridFightMonsterExcel RollBossMonster(uint campId, GridFightRouteNode bossNode)
     {
+        var parameter = bossNode.Parameters.FirstOrDefault();
+        if (!GameData.GridFightRewardRulesConfig.BossNodeProfiles.TryGetValue(parameter, out var profile))
+            throw new InvalidOperationException($"GridFight boss node {parameter} has no battle profile");
         var candidates = GameData.GridFightCampData[campId].MonsterList
             .Select(id => GameData.GridFightMonsterData[id])
-            .Where(monster => monster.MonsterTier >= 5)
+            .Where(monster => monster.MonsterTier == profile.MonsterTier)
             .ToList();
+        if (candidates.Count == 0)
+            throw new InvalidOperationException(
+                $"GridFight camp {campId} has no tier {profile.MonsterTier} boss monster");
         return candidates[_random.Next(candidates.Count)];
     }
 
@@ -585,13 +645,13 @@ public sealed class GridFightResourceCatalog
 
         if (node.NodeType == GridFightNodeTypeEnum.Monster)
         {
-            if (!GameData.GridFightRewardRulesConfig.NodeProfiles.TryGetValue(parameter, out var profile))
+            if (!GameData.GridFightRewardRulesConfig.NodeProfiles.TryGetValue(parameter, out var rewardProfile))
                 return null;
             return BuildPlan(
                 rewardCampId,
                 node,
-                [RollRewardMonsters(rewardCampId, profile)],
-                [profile.FormationWaveId]);
+                [RollRewardMonsters(rewardCampId, rewardProfile)],
+                [rewardProfile.FormationWaveId]);
         }
 
         var campId = activeCampIds[_random.Next(activeCampIds.Count)];
@@ -604,22 +664,22 @@ public sealed class GridFightResourceCatalog
         if (node.NodeType == GridFightNodeTypeEnum.EliteBranch)
             return BuildEncounterBattlePlan(node, campId, tier2, tier3, 1);
 
-        var variant = parameter % 100;
-        return variant switch
-        {
-            1 => BuildPlan(campId, node,
-                SplitWaves(RollEarlyMonsters(tier2, 8, maxStar: 3), node.ChapterId == 1 ? 3 : 4),
-                [5, 5]),
-            2 => BuildPlan(campId, node,
-                SplitWaves(RollEarlyMonsters(tier2, 10, maxStar: 2), 5),
-                [5, 5]),
-            4 => BuildPlan(campId, node,
-                [RollMixedMonsters(tier2, tier3, 7, 3, maxStar: 2)],
-                [3]),
-            _ => BuildPlan(campId, node,
-                SplitWaves(RollEarlyMonsters(tier2, 10, maxStar: 2), 5),
-                [5, 5]),
-        };
+        if (!GameData.GridFightRewardRulesConfig.CombatNodeProfiles.TryGetValue(parameter, out var combatProfile))
+            return null;
+        var totalCount = checked((int)combatProfile.Waves.Sum(wave => wave.MonsterCount));
+        var monsters = combatProfile.EliteMonsterCount == 0
+            ? RollEarlyMonsters(tier2, totalCount, combatProfile.MaxRoleStar)
+            : RollMixedMonsters(
+                tier2,
+                tier3,
+                totalCount,
+                checked((int)combatProfile.EliteMonsterCount),
+                combatProfile.MaxRoleStar);
+        return BuildPlan(
+            campId,
+            node,
+            SplitWaves(monsters, combatProfile.Waves),
+            combatProfile.Waves.Select(wave => ResolveFormationWaveId(wave.MaxActiveMonsterCount)).ToList());
     }
 
     public IReadOnlyList<GridFightEncounterOptionState> RollEncounterOptions(
@@ -679,10 +739,14 @@ public sealed class GridFightResourceCatalog
         IReadOnlyList<GridFightMonsterExcel> tier3,
         uint quality)
     {
+        var profile = GameData.GridFightRewardRulesConfig.EncounterBattleProfile;
+        var totalCount = _random.Next(
+            checked((int)profile.MinimumMonsterCount),
+            checked((int)profile.MaximumMonsterCount + 1));
         var eliteCount = tier3.Count == 0 ? 0 : Math.Clamp(2 + checked((int)quality - 1) / 2, 2, 3);
         return BuildPlan(campId, node,
-            [RollMixedMonsters(tier2, tier3, 10, eliteCount, 3)],
-            [5]);
+            [RollMixedMonsters(tier2, tier3, totalCount, eliteCount, profile.MaxRoleStar)],
+            [ResolveFormationWaveId(profile.MaxActiveMonsterCount)]);
     }
 
     private GridFightBattlePlan BuildPlan(
@@ -776,9 +840,17 @@ public sealed class GridFightResourceCatalog
 
     private static IReadOnlyList<IReadOnlyList<GridFightMonsterPlan>> SplitWaves(
         IReadOnlyList<GridFightMonsterPlan> monsters,
-        int firstWaveCount)
+        IReadOnlyList<GridFightCombatWaveProfile> waveProfiles)
     {
-        return [monsters.Take(firstWaveCount).ToList(), monsters.Skip(firstWaveCount).ToList()];
+        var result = new List<IReadOnlyList<GridFightMonsterPlan>>(waveProfiles.Count);
+        var offset = 0;
+        foreach (var profile in waveProfiles)
+        {
+            var count = checked((int)profile.MonsterCount);
+            result.Add(monsters.Skip(offset).Take(count).ToList());
+            offset += count;
+        }
+        return result;
     }
 
     private IReadOnlyList<GridFightMonsterPlan> RollEarlyMonsters(
