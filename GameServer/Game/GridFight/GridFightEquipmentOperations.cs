@@ -90,6 +90,7 @@ public sealed partial class GridFightSession
         var removed = new List<GridFightEquipmentState>();
         var added = new List<GridFightEquipmentState>();
         var crafted = TryAutoCraftOnRole(role, equipmentUniqueId, removed, added);
+        RecalculateRoleSwitches();
         return new GridFightEquipDressResult(
             true,
             removed,
@@ -123,6 +124,7 @@ public sealed partial class GridFightSession
         var removed = materials.Cast<GridFightEquipmentState>().ToList();
         foreach (var material in removed) Equipments.Remove(material);
         var added = CreateEquipment(recipe.CraftEquipID, CraftedEquipmentSource);
+        RecalculateRoleSwitches();
         return new GridFightEquipCraftResult(
             true,
             removed,
@@ -162,6 +164,7 @@ public sealed partial class GridFightSession
         };
         if (!success) return GridFightConsumableUseResult.Failed;
 
+        RecalculateRoleSwitches();
         var inventoryChange = ConsumeConsumable(consumable, config.IfConsume);
         return new GridFightConsumableUseResult(
             true,
