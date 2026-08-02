@@ -69,6 +69,11 @@
       "MaxRoleStar": 3
     }
   },
+  "BossNodeProfiles": {
+    "105": { "MonsterTier": 5 },
+    "205": { "MonsterTier": 5 },
+    "3051": { "MonsterTier": 6 }
+  },
   "EncounterBattleProfile": {
     "MinimumMonsterCount": 10,
     "MaximumMonsterCount": 12,
