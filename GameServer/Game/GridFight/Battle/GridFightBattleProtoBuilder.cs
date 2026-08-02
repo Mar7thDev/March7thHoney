@@ -325,36 +325,38 @@ public static class GridFightBattleProtoBuilder
     private static void PopulateTraitBonusLevelInfo(BattleGridFightTraitEffectInfo effectInfo)
     {
         if (!GameData.GridFightTraitEffectData.TryGetValue(effectInfo.EffectId, out var effect) ||
-            effect.TraitEffectType != GridFightTraitEffectTypeEnum.TraitBonus ||
-            !GameData.GridFightTraitBonusData.TryGetValue(effectInfo.EffectId, out var bonuses)) return;
+            effect.TraitEffectType != GridFightTraitEffectTypeEnum.TraitBonus) return;
 
         var levelInfo = new GridFightTraitEffectLevelInfo();
-        foreach (var (threshold, bonus) in bonuses.OrderBy(entry => entry.Key))
+        if (GameData.GridFightTraitBonusData.TryGetValue(effectInfo.EffectId, out var bonuses))
         {
-            var dropInfo = new GridFightDropInfo();
-            foreach (var combinationId in bonus.BonusParamList)
+            foreach (var (threshold, bonus) in bonuses.OrderBy(entry => entry.Key))
             {
-                if (!GameData.GridFightCombinationBonusData.TryGetValue(combinationId, out var combination)) continue;
-                foreach (var poolId in combination.CombinationBonusList)
+                var dropInfo = new GridFightDropInfo();
+                foreach (var combinationId in bonus.BonusParamList)
                 {
-                    if (!GameData.GridFightBasicBonusPoolV2Data.TryGetValue(poolId, out var pool)) continue;
-                    if (pool.BonusType != GridFightBonusTypeEnum.Orb) continue;
-                    var orbId = pool.BonusTypeParamList.FirstOrDefault();
-                    if (orbId == 0) orbId = pool.BonusTypeParam;
-                    if (orbId == 0) continue;
-                    dropInfo.DropList.Add(new GridFightDropEntry
+                    if (!GameData.GridFightCombinationBonusData.TryGetValue(combinationId, out var combination))
+                        continue;
+                    foreach (var poolId in combination.CombinationBonusList)
                     {
-                        DropType = GridFightDropType.Orb,
-                        ItemId = orbId,
-                        Num = 1,
-                    });
+                        if (!GameData.GridFightBasicBonusPoolV2Data.TryGetValue(poolId, out var pool)) continue;
+                        if (pool.BonusType != GridFightBonusTypeEnum.Orb) continue;
+                        var orbId = pool.BonusTypeParamList.FirstOrDefault();
+                        if (orbId == 0) orbId = pool.BonusTypeParam;
+                        if (orbId == 0) continue;
+                        dropInfo.DropList.Add(new GridFightDropEntry
+                        {
+                            DropType = GridFightDropType.Orb,
+                            ItemId = orbId,
+                            Num = 1,
+                        });
+                    }
                 }
+                if (dropInfo.DropList.Count > 0)
+                    levelInfo.TraitEffectLevelReward[threshold] = dropInfo;
             }
-            if (dropInfo.DropList.Count > 0)
-                levelInfo.TraitEffectLevelReward[threshold] = dropInfo;
         }
-        if (levelInfo.TraitEffectLevelReward.Count > 0)
-            effectInfo.TraitEffectLevelInfo = levelInfo;
+        effectInfo.TraitEffectLevelInfo = levelInfo;
     }
 
     private static uint ResolveAvatarId(GridFightRoleBasicInfoExcel basic, uint star, Gender gender)
