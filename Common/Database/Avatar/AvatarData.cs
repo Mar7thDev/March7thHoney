@@ -173,38 +173,73 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
 
     public override BattleAvatar ToBattleProto(PlayerDataCollection collection, AvatarType avatarType = AvatarType.AvatarFormalType)
     {
-        var proto = CreateBaseProto(collection, avatarType);
+        return ToBattleProto(collection, avatarType, AvatarId, GetCurPathInfo());
+    }
+
+    public BattleAvatar ToBattleProto(PlayerDataCollection collection, int avatarId,
+        AvatarType avatarType = AvatarType.AvatarFormalType)
+    {
+        return ToBattleProto(collection, avatarType, avatarId, CreateSerializationPathInfo(avatarId));
+    }
+
+    private BattleAvatar ToBattleProto(PlayerDataCollection collection, AvatarType avatarType,
+        int avatarId, PathInfo pathInfo)
+    {
+        var proto = CreateBaseProto(collection, avatarType, avatarId, pathInfo);
         var isUpgradable = IsUpgradableType(avatarType);
 
-        if (!GameData.AvatarConfigData.TryGetValue(AvatarId, out var avatarConf))
+        if (!GameData.AvatarConfigData.TryGetValue(avatarId, out var avatarConf))
             return proto;
 
         if (isUpgradable)
             ApplyMaxLevel(proto);
 
-        ProcessSkills(proto, isUpgradable);
-        ProcessRelics(proto, collection, isUpgradable);
-        ProcessEquipment(proto, collection, isUpgradable, avatarConf);
+        ProcessSkills(proto, isUpgradable, pathInfo);
+        ProcessRelics(proto, collection, isUpgradable, avatarId, pathInfo);
+        ProcessEquipment(proto, collection, isUpgradable, avatarConf, pathInfo);
 
         return proto;
     }
 
-    private BattleAvatar CreateBaseProto(PlayerDataCollection collection, AvatarType avatarType)
+    private PathInfo CreateSerializationPathInfo(int avatarId)
+    {
+        var source = PathInfos.GetValueOrDefault(avatarId);
+        var pathInfo = new PathInfo(avatarId)
+        {
+            Skin = source?.Skin ?? 0,
+            Rank = source?.Rank ?? 0,
+            EquipId = source?.EquipId ?? 0,
+            Relic = source?.Relic.ToDictionary(entry => entry.Key, entry => entry.Value) ?? [],
+            EquipData = source?.EquipData?.Clone(),
+            EnhanceId = source?.EnhanceId ?? 0,
+            EnhanceInfos = source?.EnhanceInfos.ToDictionary(
+                entry => entry.Key,
+                entry => new EnhanceInfo(entry.Value.EnhanceId)
+                {
+                    SkillTree = new Dictionary<int, int>(entry.Value.SkillTree)
+                }) ?? []
+        };
+        pathInfo.GetSkillTree();
+        return pathInfo;
+    }
+
+    private BattleAvatar CreateBaseProto(PlayerDataCollection collection, AvatarType avatarType,
+        int avatarId, PathInfo pathInfo)
     {
         var isBattle = collection.LineupInfo.LineupType != 0;
 
         return new BattleAvatar
         {
-            Id = (uint)AvatarId,
+            Id = (uint)avatarId,
             AvatarType = avatarType,
             Level = (uint)Level,
             Promotion = (uint)Promotion,
-            Rank = (uint)GetCurPathInfo().Rank,
+            Rank = (uint)pathInfo.Rank,
             Index = (uint)collection.LineupInfo.GetSlot(BaseAvatarId),
             Hp = (uint)GetCurHp(isBattle),
             SpBar = new SpBarInfo { CurSp = (uint)GetCurSp(isBattle), MaxSp = 10000 },
             WorldLevel = (uint)collection.PlayerData.WorldLevel,
-            EnhancedId = (uint)GetCurPathInfo().EnhanceId
+            EnhancedId = (uint)pathInfo.EnhanceId
         };
     }
 
@@ -217,9 +252,9 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
         proto.Promotion = 6;
     }
 
-    private void ProcessSkills(BattleAvatar proto, bool isUpgradable)
+    private void ProcessSkills(BattleAvatar proto, bool isUpgradable, PathInfo pathInfo)
     {
-        foreach (var (skillId, level) in GetCurPathInfo().GetSkillTree())
+        foreach (var (skillId, level) in pathInfo.GetSkillTree())
         {
             var finalLevel = isUpgradable ? GetUpgradedSkillLevel(skillId, level) : level;
 
@@ -237,14 +272,15 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
         return Math.Max(Math.Max(1, maxLevel - 2), currentLevel);
     }
 
-    private void ProcessRelics(BattleAvatar proto, PlayerDataCollection collection, bool isUpgradable)
+    private void ProcessRelics(BattleAvatar proto, PlayerDataCollection collection, bool isUpgradable,
+        int avatarId, PathInfo pathInfo)
     {
-        var relicUpgradeType = GameData.UpgradeAvatarSubTypeData.GetValueOrDefault((uint)AvatarId)?.SubType
+        var relicUpgradeType = GameData.UpgradeAvatarSubTypeData.GetValueOrDefault((uint)avatarId)?.SubType
                              ?? UpgradeAvatarSubRelicTypeEnum.Base;
-        var relicRecommend = GameData.AvatarRelicRecommendData.GetValueOrDefault((uint)AvatarId);
+        var relicRecommend = GameData.AvatarRelicRecommendData.GetValueOrDefault((uint)avatarId);
 
         // Ensure all relic slots exist
-        var equippedRelics = GetCurPathInfo().Relic;
+        var equippedRelics = pathInfo.Relic;
         for (var slot = 1; slot <= 6; slot++)
             equippedRelics.TryAdd(slot, 0);
 
@@ -350,10 +386,11 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
         return battleRelic;
     }
 
-    private void ProcessEquipment(BattleAvatar proto, PlayerDataCollection collection, bool isUpgradable, AvatarConfigExcel avatarConf)
+    private void ProcessEquipment(BattleAvatar proto, PlayerDataCollection collection, bool isUpgradable,
+        AvatarConfigExcel avatarConf, PathInfo pathInfo)
     {
-        var equipId = GetCurPathInfo().EquipId;
-        var equipData = GetCurPathInfo().EquipData;
+        var equipId = pathInfo.EquipId;
+        var equipData = pathInfo.EquipData;
 
         if (equipId != 0)
         {
