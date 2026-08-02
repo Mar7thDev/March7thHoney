@@ -13,8 +13,34 @@ public enum GridFightTalentRewardTrigger
 [MemoryPackable]
 public partial class GridFightRewardRulesConfig
 {
+    public Dictionary<uint, GridFightCombatNodeProfile> CombatNodeProfiles { get; set; } = [];
+    public GridFightEncounterBattleProfile EncounterBattleProfile { get; set; } = new();
     public Dictionary<uint, GridFightRewardNodeProfile> NodeProfiles { get; set; } = [];
     public List<GridFightTalentRewardRule> TalentRules { get; set; } = [];
+}
+
+[MemoryPackable]
+public partial class GridFightCombatNodeProfile
+{
+    public List<GridFightCombatWaveProfile> Waves { get; set; } = [];
+    public uint EliteMonsterCount { get; set; }
+    public uint MaxRoleStar { get; set; } = 2;
+}
+
+[MemoryPackable]
+public partial class GridFightCombatWaveProfile
+{
+    public uint MonsterCount { get; set; }
+    public uint MaxActiveMonsterCount { get; set; } = 5;
+}
+
+[MemoryPackable]
+public partial class GridFightEncounterBattleProfile
+{
+    public uint MinimumMonsterCount { get; set; } = 10;
+    public uint MaximumMonsterCount { get; set; } = 12;
+    public uint MaxActiveMonsterCount { get; set; } = 5;
+    public uint MaxRoleStar { get; set; } = 3;
 }
 
 [MemoryPackable]
