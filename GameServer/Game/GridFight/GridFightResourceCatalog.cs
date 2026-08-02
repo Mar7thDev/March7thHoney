@@ -348,6 +348,25 @@ public sealed class GridFightResourceCatalog
                 errors.Add($"GridFight combat node {parameter} has an invalid monster profile");
         }
 
+        var bossNodes = StandardRoute
+            .Where(node => node.NodeType == GridFightNodeTypeEnum.Boss)
+            .ToList();
+        if (bossNodes.GroupBy(node => node.ChapterId).Any(group => group.Count() != 1))
+            errors.Add("GridFight route must contain one boss node per chapter");
+        foreach (var node in bossNodes)
+        {
+            var parameter = node.Parameters.FirstOrDefault();
+            if (!rules.BossNodeProfiles.TryGetValue(parameter, out var profile) || profile.MonsterTier == 0)
+            {
+                errors.Add($"GridFight boss node {parameter} has no valid battle profile");
+                continue;
+            }
+            foreach (var camp in CampPool)
+                if (GetCampMonsters(camp.ID, monster => monster.MonsterTier == profile.MonsterTier).Count == 0)
+                    errors.Add(
+                        $"GridFight camp {camp.ID} cannot satisfy boss node {parameter} tier {profile.MonsterTier}");
+        }
+
         var encounter = rules.EncounterBattleProfile;
         if (encounter.MinimumMonsterCount == 0 ||
             encounter.MaximumMonsterCount < encounter.MinimumMonsterCount ||
@@ -572,12 +591,18 @@ public sealed class GridFightResourceCatalog
         return RewardCampPool[_random.Next(RewardCampPool.Count)].ID;
     }
 
-    public GridFightMonsterExcel RollBossMonster(uint campId)
+    public GridFightMonsterExcel RollBossMonster(uint campId, GridFightRouteNode bossNode)
     {
+        var parameter = bossNode.Parameters.FirstOrDefault();
+        if (!GameData.GridFightRewardRulesConfig.BossNodeProfiles.TryGetValue(parameter, out var profile))
+            throw new InvalidOperationException($"GridFight boss node {parameter} has no battle profile");
         var candidates = GameData.GridFightCampData[campId].MonsterList
             .Select(id => GameData.GridFightMonsterData[id])
-            .Where(monster => monster.MonsterTier >= 5)
+            .Where(monster => monster.MonsterTier == profile.MonsterTier)
             .ToList();
+        if (candidates.Count == 0)
+            throw new InvalidOperationException(
+                $"GridFight camp {campId} has no tier {profile.MonsterTier} boss monster");
         return candidates[_random.Next(candidates.Count)];
     }
 
