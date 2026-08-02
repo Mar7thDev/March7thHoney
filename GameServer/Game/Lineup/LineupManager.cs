@@ -469,4 +469,4 @@ public class LineupManager : BasePlayerManager<LineupData>
     #endregion
 }
 
-public record AvatarLineupData(BaseAvatarInfo AvatarInfo, AvatarType AvatarType);
+public record AvatarLineupData(BaseAvatarInfo AvatarInfo, AvatarType AvatarType, int? BattleAvatarId = null);
