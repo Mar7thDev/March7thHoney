@@ -57,6 +57,8 @@ public sealed class GridFightResourceCatalog
     private const uint FinalBattleTurnHealingTalentId = 2011;
     private const int FinalBattleTurnThresholdEffectIndex = 1;
     private const int FinalBattleTurnHealingEffectIndex = 2;
+    private const uint BossRoleStar = 2;
+    private const uint BossFormationMaxTeammateCount = 5;
     private readonly Random _random;
 
     public uint CurrentSeason { get; }
@@ -233,8 +235,9 @@ public sealed class GridFightResourceCatalog
         }
         if (StandardRoute.Any(node => !GameData.GridFightStageLevelValueData.ContainsKey(node.StageId)))
             errors.Add("standard route references missing GridFight stage level values");
-        if (!GameData.GridFightFormationWaveData.ContainsKey(3) ||
-            !GameData.GridFightFormationWaveData.ContainsKey(5))
+        if (new[] { 3u, BossFormationMaxTeammateCount }.Any(maxTeammateCount =>
+                GameData.GridFightFormationWaveData.Values.Count(row =>
+                    row.MaxTeammateCount == maxTeammateCount) != 1))
             errors.Add("GridFight formation wave table is incomplete");
         foreach (var node in StandardRoute.Where(node => node.NodeType == GridFightNodeTypeEnum.EliteBranch))
         {
@@ -576,8 +579,8 @@ public sealed class GridFightResourceCatalog
             return BuildPlan(
                 activeCampIds.ElementAtOrDefault(bossIndex),
                 node,
-                [[new GridFightMonsterPlan(bosses[bossIndex], Math.Min(4u, node.ChapterId + 1))]],
-                [1]);
+                [BuildBossMonsterPlans(activeCampIds.ElementAtOrDefault(bossIndex), bosses[bossIndex])],
+                [ResolveFormationWaveId(BossFormationMaxTeammateCount)]);
         }
 
         if (node.NodeType == GridFightNodeTypeEnum.Monster)
@@ -712,6 +715,63 @@ public sealed class GridFightResourceCatalog
         var index = combatNodes.FindIndex(candidate =>
             candidate.ChapterId == node.ChapterId && candidate.SectionId == node.SectionId);
         return index < 0 ? 0 : 1801u + (uint)index;
+    }
+
+    private static uint ResolveFormationWaveId(uint maxTeammateCount)
+    {
+        return GameData.GridFightFormationWaveData.Values
+            .Single(row => row.MaxTeammateCount == maxTeammateCount).ID;
+    }
+
+    private static IReadOnlyList<GridFightMonsterPlan> BuildBossMonsterPlans(
+        uint campId,
+        GridFightMonsterExcel boss)
+    {
+        var result = new List<GridFightMonsterPlan> { new(boss, BossRoleStar) };
+        if (!GameData.MonsterConfigData.TryGetValue((int)boss.MonsterID, out var bossConfig)) return result;
+
+        var componentByTemplate = GetCampMonsters(campId, monster => monster.MonsterTier == 0)
+            .Select(monster => new
+            {
+                Monster = monster,
+                Config = GameData.MonsterConfigData.GetValueOrDefault((int)monster.MonsterID),
+            })
+            .Where(entry => entry.Config != null)
+            .GroupBy(entry => entry.Config!.MonsterTemplateID)
+            .Where(group => group.Count() == 1)
+            .ToDictionary(group => group.Key, group => group.Single().Monster);
+        if (componentByTemplate.Count == 0) return result;
+
+        var components = GameData.StageConfigData.Values
+            .SelectMany(stage => stage.MonsterList)
+            .Select(GetStageMonsterIds)
+            .Where(ids => ids.Count(id => ResolveMonsterTemplateId(id) == bossConfig.MonsterTemplateID) == 1)
+            .Select(ids => ids
+                .Where(id => ResolveMonsterTemplateId(id) != bossConfig.MonsterTemplateID)
+                .Select(id => componentByTemplate.GetValueOrDefault(ResolveMonsterTemplateId(id)))
+                .ToList())
+            .Where(monsters => monsters.Count > 0 && monsters.All(monster => monster != null))
+            .Select(monsters => monsters.OfType<GridFightMonsterExcel>().ToList())
+            .OrderByDescending(monsters => monsters.Count)
+            .FirstOrDefault();
+        if (components == null) return result;
+
+        result.AddRange(components.Select(monster => new GridFightMonsterPlan(monster, BossRoleStar)));
+        return result;
+    }
+
+    private static IReadOnlyList<int> GetStageMonsterIds(StageMonsterList monsters)
+    {
+        return new[] { monsters.Monster0, monsters.Monster1, monsters.Monster2, monsters.Monster3, monsters.Monster4 }
+            .Where(id => id != 0)
+            .ToList();
+    }
+
+    private static int ResolveMonsterTemplateId(int monsterId)
+    {
+        return GameData.MonsterConfigData.TryGetValue(monsterId, out var config)
+            ? config.MonsterTemplateID
+            : monsterId;
     }
 
     private static IReadOnlyList<IReadOnlyList<GridFightMonsterPlan>> SplitWaves(
