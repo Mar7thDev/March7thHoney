@@ -288,6 +288,8 @@ public partial class GridFightRuntimeDataSnapshot
     public Dictionary<uint, GridFightVictoryBonusExcel> VictoryBonusData { get; set; } = [];
     public Dictionary<uint, GridFightCraftConfigExcel> CraftConfigData { get; set; } = [];
     public Dictionary<uint, GridFightSettleRankExcel> SettleRankData { get; set; } = [];
+    public Dictionary<uint, GridFightGenderOverrideExcel> GridFightGenderOverrideData { get; set; } = [];
+    public Dictionary<uint, GridFightRoleSwitchConfigExcel> GridFightRoleSwitchConfigData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -558,6 +560,8 @@ public static partial class GameData
                 VictoryBonusData = GameData.GridFightVictoryBonusData,
                 CraftConfigData = GameData.GridFightCraftConfigData,
                 SettleRankData = GameData.GridFightSettleRankData,
+                GridFightGenderOverrideData = GameData.GridFightGenderOverrideData,
+                GridFightRoleSwitchConfigData = GameData.GridFightRoleSwitchConfigData,
             },
         };
     }
@@ -826,5 +830,7 @@ public static partial class GameData
         GameData.GridFightVictoryBonusData = gridFightRuntimeData.VictoryBonusData;
         GameData.GridFightCraftConfigData = gridFightRuntimeData.CraftConfigData;
         GameData.GridFightSettleRankData = gridFightRuntimeData.SettleRankData;
+        GameData.GridFightGenderOverrideData = gridFightRuntimeData.GridFightGenderOverrideData;
+        GameData.GridFightRoleSwitchConfigData = gridFightRuntimeData.GridFightRoleSwitchConfigData;
     }
 }

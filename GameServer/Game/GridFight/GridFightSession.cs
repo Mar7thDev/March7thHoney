@@ -44,7 +44,7 @@ public sealed record GridFightSupplySelectionResult(
 public sealed class GridFightRoleState
 {
     public uint UniqueId { get; init; }
-    public uint RoleId { get; init; }
+    public uint RoleId { get; set; }
     public uint Star { get; set; } = 1;
     public uint Position { get; set; }
     public List<uint> EquippedEquipmentUniqueIds { get; } = [];
@@ -201,6 +201,8 @@ public sealed partial class GridFightSession
     private readonly HashSet<(uint TalentId, uint EffectId, GridFightTalentRewardTrigger Trigger, uint ChapterId)>
         _triggeredTalentRewards = [];
     private uint _encounterRerollCount;
+    private Dictionary<uint, uint> _roleSwitchIds = [];
+    private GridFightRoleSwitchUpdate? _roleSwitchUpdate;
 
     public uint Season { get; }
     public uint DivisionId { get; }
@@ -240,6 +242,99 @@ public sealed partial class GridFightSession
     public GridFightHackConsoleState? HackConsole { get; private set; }
     public uint? TraitEffectSelectEnhanceQueuePosition => _traitEffectSelectEnhanceQueuePosition;
     public GridFightBattleStatistics LastBattleStatistics { get; private set; } = GridFightBattleStatistics.Empty;
+    public IReadOnlyList<GridFightRoleSwitchEntryState> RoleSwitchEntries =>
+        _catalog.RoleSwitchGroups
+            .Select(group => new GridFightRoleSwitchEntryState(
+                group.RoleIdList,
+                _roleSwitchIds.GetValueOrDefault(group.BaseRoleId, group.BaseRoleId)))
+            .ToList();
+
+    public GridFightRoleSwitchUpdate? ConsumeRoleSwitchUpdate()
+    {
+        var update = _roleSwitchUpdate;
+        _roleSwitchUpdate = null;
+        return update;
+    }
+
+    private void RecalculateRoleSwitches(bool emit = true)
+    {
+        var previousRoleIds = Roles.ToDictionary(role => role.UniqueId, role => role.RoleId);
+        var previousSwitchIds = _roleSwitchIds.ToDictionary(pair => pair.Key, pair => pair.Value);
+        var currentSwitchIds = ResolveRoleSwitchIds();
+        foreach (var role in Roles)
+        {
+            var group = _catalog.RoleSwitchGroups.FirstOrDefault(candidate =>
+                candidate.RoleIdList.Contains(role.RoleId));
+            if (group != null)
+                role.RoleId = currentSwitchIds[group.BaseRoleId];
+        }
+
+        _roleSwitchIds = currentSwitchIds;
+        if (!emit)
+        {
+            _roleSwitchUpdate = null;
+            return;
+        }
+
+        var baselineRoleIds = _roleSwitchUpdate?.PreviousRoleIds ?? previousRoleIds;
+        var baselineSwitchIds = _roleSwitchUpdate?.PreviousRoleSwitchIds ?? previousSwitchIds;
+        var currentRoleIds = Roles.ToDictionary(role => role.UniqueId, role => role.RoleId);
+        var changedRoleIds = baselineRoleIds.Keys
+            .Intersect(currentRoleIds.Keys)
+            .Where(uniqueId => baselineRoleIds.GetValueOrDefault(uniqueId) !=
+                               currentRoleIds.GetValueOrDefault(uniqueId))
+            .ToHashSet();
+        var changedSwitchIds = baselineSwitchIds.Keys
+            .Concat(currentSwitchIds.Keys)
+            .Distinct()
+            .Where(baseRoleId => baselineSwitchIds.GetValueOrDefault(baseRoleId, baseRoleId) !=
+                                 currentSwitchIds.GetValueOrDefault(baseRoleId, baseRoleId))
+            .ToHashSet();
+        if (changedRoleIds.Count == 0 && changedSwitchIds.Count == 0)
+        {
+            _roleSwitchUpdate = null;
+            return;
+        }
+
+        _roleSwitchUpdate = new GridFightRoleSwitchUpdate(
+            new Dictionary<uint, uint>(baselineRoleIds),
+            new Dictionary<uint, uint>(baselineSwitchIds),
+            changedRoleIds,
+            changedSwitchIds);
+    }
+
+    private Dictionary<uint, uint> ResolveRoleSwitchIds()
+    {
+        var result = new Dictionary<uint, uint>();
+        foreach (var group in _catalog.RoleSwitchGroups)
+        {
+            var members = Roles
+                .Where(role => group.RoleIdList.Contains(role.RoleId))
+                .ToList();
+            var useSwitchRole = group.Condition switch
+            {
+                "ByPlacedInBackRegion" => members.Any(role => IsBackPosition(role.Position)),
+                "ByMaxTrait" => ResolveByMaxTrait(group),
+                _ => false,
+            };
+            result[group.BaseRoleId] = useSwitchRole ? group.SwitchRoleId : group.BaseRoleId;
+        }
+        return result;
+    }
+
+    private bool ResolveByMaxTrait(GridFightRoleSwitchGroup group)
+    {
+        var groupRoleIds = group.RoleIdList.ToHashSet();
+        var activeRoles = Roles
+            .Where(role => IsActivePosition(role.Position) && !groupRoleIds.Contains(role.RoleId))
+            .ToList();
+        var firstTrait = group.ParamList.ElementAtOrDefault(0);
+        var secondTrait = group.ParamList.ElementAtOrDefault(1);
+        if (firstTrait == 0 || secondTrait == 0) return false;
+        var firstCount = activeRoles.Count(role => ResolveRoleTraitIds(role).Contains(firstTrait));
+        var secondCount = activeRoles.Count(role => ResolveRoleTraitIds(role).Contains(secondTrait));
+        return firstCount > secondCount;
+    }
 
     public GridFightSession(
         GridFightResourceCatalog catalog,
@@ -249,6 +344,8 @@ public sealed partial class GridFightSession
         uint uniqueId)
     {
         _catalog = catalog;
+        _roleSwitchIds = catalog.RoleSwitchGroups
+            .ToDictionary(group => group.BaseRoleId, group => group.BaseRoleId);
         Season = season;
         DivisionId = divisionId;
         IsOverlock = isOverlock;
@@ -455,7 +552,9 @@ public sealed partial class GridFightSession
             Position = GetFreeBenchPosition(),
         };
         Roles.Add(role);
+        RecalculateRoleSwitches();
         var mergeSteps = MergeRoles(role.RoleId, role);
+        RecalculateRoleSwitches();
         var acquisition = new GridFightRoleAcquisitionResult(
             true,
             [role],
@@ -511,6 +610,7 @@ public sealed partial class GridFightSession
             Position = GetFreeBenchPosition(),
         };
         Roles.Add(role);
+        RecalculateRoleSwitches();
         acquisition = FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(true, [role], [], []));
         return true;
     }
@@ -746,6 +846,7 @@ public sealed partial class GridFightSession
         ForgeItems.AddRange(snapshot.ForgeItems);
         Shop.Clear();
         Shop.AddRange(snapshot.Shop);
+        RecalculateRoleSwitches(false);
     }
 
     private static GridFightRoleState CloneRole(GridFightRoleState role)
@@ -1039,6 +1140,7 @@ public sealed partial class GridFightSession
             acquiredRoles.Add(role);
             mergeSteps.AddRange(MergeRoles(role.RoleId, role));
         }
+        RecalculateRoleSwitches();
         return FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
             true,
             acquiredRoles,
@@ -1053,6 +1155,7 @@ public sealed partial class GridFightSession
         if (role == null) return GridFightSessionChange.Failed;
         Gold += _catalog.GetSellPrice(role.RoleId, role.Star);
         Roles.Remove(role);
+        RecalculateRoleSwitches();
         var promoted = PromoteOverflowItemsToBench();
         return new GridFightSessionChange(true, [], [uniqueId], promoted.Roles, promoted.ForgeItems);
     }
@@ -1121,6 +1224,7 @@ public sealed partial class GridFightSession
                 updatedForgeItems.Add(forgeItem);
             }
         }
+        RecalculateRoleSwitches();
         var updatedRoleIds = updatedRoles.Select(role => role.UniqueId).ToHashSet();
         var updatedForgeItemIds = updatedForgeItems.Select(item => item.UniqueId).ToHashSet();
         var promoted = PromoteOverflowItemsToBench();
@@ -1380,18 +1484,22 @@ public sealed partial class GridFightSession
                 RoleId = roles[index].ID,
                 Position = 14u + (uint)index,
             });
+        RecalculateRoleSwitches();
     }
 
     private List<GridFightRoleMergeStep> MergeRoles(uint roleId, GridFightRoleState? anchor = null)
     {
         var steps = new List<GridFightRoleMergeStep>();
+        var switchGroup = _catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(roleId));
+        var mergeRoleIds = switchGroup?.RoleIdList.ToHashSet() ?? [roleId];
+        var starRoleId = switchGroup?.BaseRoleId ?? roleId;
         while (true)
         {
-            var group = Roles.Where(role => role.RoleId == roleId)
+            var group = Roles.Where(role => mergeRoleIds.Contains(role.RoleId))
                 .GroupBy(role => role.Star)
                 .OrderBy(grouping => grouping.Key)
                 .FirstOrDefault(grouping => grouping.Count() >= 3 &&
-                    GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | (grouping.Key + 1)));
+                    GameData.GridFightRoleStarData.ContainsKey(starRoleId << 4 | (grouping.Key + 1)));
             if (group == null) return steps;
             var ordered = group.OrderBy(role => role.UniqueId).ToList();
             var merge = anchor != null && ordered.Contains(anchor)
@@ -1569,6 +1677,8 @@ public sealed partial class GridFightSession
         position is >= 14 && position <= 13 + _catalog.BenchSize + _catalog.BenchOverflowSize;
 
     private static bool IsActivePosition(uint position) => position is >= 1 and <= 13;
+
+    private static bool IsBackPosition(uint position) => position is >= 5 and <= 13;
 
     private static bool IsCombatNode(GridFightRouteNode node)
     {

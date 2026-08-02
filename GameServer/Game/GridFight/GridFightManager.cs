@@ -392,6 +392,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             });
         if (change != null) AppendSessionChanges(result, change);
         notify.ResultList.Add(result);
+        AppendRoleSwitchResult(notify, source);
         return notify;
     }
 
@@ -415,6 +416,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         notify.ResultList.Add(result);
         AppendRoleMergeResults(notify, GridFightUpdateSrcType.KgridFightSrcNone, [], acquisition);
         AppendUnlockEffects(notify, acquisition);
+        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcNone);
         return notify;
     }
 
@@ -538,6 +540,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             goodsIndices,
             acquisition);
         AppendUnlockEffects(notify, acquisition);
+        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcBuyGoods);
 
         var shopResult = new GridFightSyncResultData
         {
@@ -595,6 +598,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             }
         }
 
+        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcSpecialGoods);
         var shopResult = new GridFightSyncResultData
         {
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcBuyGoods,
@@ -633,6 +637,7 @@ public sealed partial class GridFightManager : BasePlayerManager
                 acquisition);
             AppendUnlockEffects(notify, acquisition);
         }
+        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcUseOrb);
         return notify;
     }
 
@@ -796,6 +801,44 @@ public sealed partial class GridFightManager : BasePlayerManager
         AppendPositionChanges(result, change.UpdatedRoles, change.UpdatedForgeItems);
     }
 
+    private GridFightRoleSwitchInfo BuildRoleSwitchInfo()
+    {
+        var info = new GridFightRoleSwitchInfo();
+        if (Session == null) return info;
+        info.RoleSwitchList.Add(Session.RoleSwitchEntries.Select(entry =>
+        {
+            var result = new GridFightRoleSwitchEntry
+            {
+                CurrentRoleId = entry.CurrentRoleId,
+            };
+            result.RoleIdList.Add(entry.RoleIdList);
+            return result;
+        }));
+        return info;
+    }
+
+    private void AppendRoleSwitchResult(
+        GridFightSyncUpdateResultScNotify notify,
+        GridFightUpdateSrcType source,
+        bool includeShop = false)
+    {
+        var session = Session;
+        var update = session?.ConsumeRoleSwitchUpdate();
+        if (session == null || update == null) return;
+
+        var result = new GridFightSyncResultData { UpdateSource = source };
+        result.UpdateDynamicList.Add(new GridFightSyncData { RoleSwitchInfo = BuildRoleSwitchInfo() });
+        foreach (var uniqueId in update.ChangedRoleUniqueIds)
+        {
+            var role = session.Roles.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
+            if (role != null)
+                result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        }
+        if (includeShop)
+            result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+        notify.ResultList.Add(result);
+    }
+
     private void AppendPositionChanges(
         GridFightSyncResultData result,
         IEnumerable<GridFightRoleState> roles,
@@ -900,6 +943,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         foreach (var role in change.AddedRoles)
             supplyResult.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
         notify.ResultList.Add(supplyResult);
+        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcInitialSupplySelect);
 
         var finishResult = new GridFightSyncResultData();
         finishResult.UpdateDynamicList.Add(new GridFightSyncData
@@ -1107,6 +1151,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             [selectedIndex],
             selection.Acquisition);
         AppendUnlockEffects(notify, selection.Acquisition);
+        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcSelectSupply);
 
         var finishResult = new GridFightSyncResultData();
         finishResult.UpdateDynamicList.Add(new GridFightSyncData
@@ -1141,6 +1186,37 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         if (Session == null || !change.Success) return notify;
+        if (Session.ConsumeRoleSwitchUpdate() is { } update)
+        {
+            var previousResult = new GridFightSyncResultData();
+            foreach (var role in change.UpdatedRoles)
+            {
+                var previousRoleId = update.PreviousRoleIds.GetValueOrDefault(role.UniqueId, role.RoleId);
+                previousResult.UpdateDynamicList.Add(new GridFightSyncData
+                {
+                    UpdateRoleInfo = BuildRole(role, previousRoleId),
+                });
+            }
+            foreach (var forgeItem in change.UpdatedForgeItems)
+                previousResult.UpdateDynamicList.Add(new GridFightSyncData
+                {
+                    UpdateForgeItemInfo = BuildForgeItem(forgeItem),
+                });
+            notify.ResultList.Add(previousResult);
+
+            var switchResult = new GridFightSyncResultData();
+            switchResult.UpdateDynamicList.Add(new GridFightSyncData { RoleSwitchInfo = BuildRoleSwitchInfo() });
+            foreach (var uniqueId in update.ChangedRoleUniqueIds)
+            {
+                var role = Session.Roles.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
+                if (role != null)
+                    switchResult.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+            }
+            switchResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+            notify.ResultList.Add(switchResult);
+            notify.ResultList.Add(new GridFightSyncResultData());
+            return notify;
+        }
         var result = new GridFightSyncResultData();
         AppendPositionChanges(result, change.UpdatedRoles, change.UpdatedForgeItems);
         notify.ResultList.Add(result);
@@ -1710,16 +1786,21 @@ public sealed partial class GridFightManager : BasePlayerManager
 
     private GridGameRoleInfo BuildRole(GridFightRoleState role)
     {
+        return BuildRole(role, role.RoleId);
+    }
+
+    private GridGameRoleInfo BuildRole(GridFightRoleState role, uint roleId)
+    {
         var info = new GridGameRoleInfo
         {
-            Id = role.RoleId,
+            Id = roleId,
             UniqueId = role.UniqueId,
             RoleStar = role.Star,
             Pos = role.Position,
         };
         info.EquippedEquipmentUniqueIdList.Add(role.EquippedEquipmentUniqueIds);
         PopulateRolePropertyScales(info.ConvertPropertyToFixpoint, Session?.HasCyreneCombatEnhancement == true);
-        foreach (var key in GameData.GridFightRoleBasicInfoData[role.RoleId].RoleSavedValueList)
+        foreach (var key in GameData.GridFightRoleBasicInfoData[roleId].RoleSavedValueList)
             info.GridFightValueInitComponent[key] = 0;
         return info;
     }

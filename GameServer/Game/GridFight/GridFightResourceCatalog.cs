@@ -49,6 +49,13 @@ public sealed record GridFightEncounterOptionState(
     uint Quality,
     GridFightBattlePlan BattlePlan);
 
+public sealed record GridFightRoleSwitchGroup(
+    uint BaseRoleId,
+    uint SwitchRoleId,
+    string Condition,
+    IReadOnlyList<uint> ParamList,
+    IReadOnlyList<uint> RoleIdList);
+
 public sealed class GridFightResourceCatalog
 {
     private const uint HighestDivisionStartingHpAffixId = 4020;
@@ -69,6 +76,7 @@ public sealed class GridFightResourceCatalog
     public uint StandardRouteId { get; }
     public IReadOnlyList<GridFightRouteNode> StandardRoute { get; }
     public IReadOnlyList<GridFightRoleBasicInfoExcel> RolePool { get; }
+    public IReadOnlyList<GridFightRoleSwitchGroup> RoleSwitchGroups { get; }
     public IReadOnlyList<GridFightCampExcel> CampPool { get; }
     public IReadOnlyList<GridFightCampExcel> RewardCampPool { get; }
     public IReadOnlyList<uint> PortalPool { get; }
@@ -121,6 +129,25 @@ public sealed class GridFightResourceCatalog
             .Where(row => row.SeasonID == CurrentSeason && row.IsInPool && !bannedRoles.Contains(row.ID))
             .Where(row => row.AvatarID is >= 1000 and < 2000 && row.RoleSavedValueList.Count > 0)
             .OrderBy(row => row.ID)
+            .ToList();
+        RoleSwitchGroups = GameData.GridFightRoleSwitchConfigData.Values
+            .GroupBy(row => row.BaseRoleID)
+            .OrderBy(group => group.Key)
+            .Select(group =>
+            {
+                var rows = group.OrderBy(row => row.RoleID).ToList();
+                var roleIds = rows.Select(row => row.RoleID)
+                    .Prepend(group.Key)
+                    .Distinct()
+                    .ToList();
+                var first = rows[0];
+                return new GridFightRoleSwitchGroup(
+                    group.Key,
+                    first.RoleID,
+                    first.Condition,
+                    first.ParamList.ToList(),
+                    roleIds);
+            })
             .ToList();
         CampPool = GameData.GridFightCampData.Values
             .Where(row => row.SeasonID == CurrentSeason && row.IfRandomEnabled != 0 && row.MonsterList.Count > 0)

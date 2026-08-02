@@ -40,7 +40,7 @@ public class PacketPVEBattleResultScRsp : BasePacket
         {
             var collection = new PlayerDataCollection(player.Data, player.InventoryManager!.Data, battle.Lineup);
             foreach (var avatar in GridFightBattleProtoBuilder.BuildBattleAvatars(battle, battle.GridFightContext))
-                proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+                proto.BattleAvatarList.Add(GridFightBattleProtoBuilder.BuildBattleAvatarProto(avatar, collection));
         }
 
         SetData(proto);
