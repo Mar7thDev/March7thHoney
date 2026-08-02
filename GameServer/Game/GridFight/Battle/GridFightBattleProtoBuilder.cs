@@ -32,7 +32,7 @@ public static class GridFightBattleProtoBuilder
             var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: true);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
-            proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+            proto.BattleAvatarList.Add(BuildBattleAvatarProto(avatar, collection));
             battleRoles.Add(role);
         }
         AddEntryBuffs(battle, battleRoles);
@@ -108,8 +108,7 @@ public static class GridFightBattleProtoBuilder
             var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: false);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
-            gridFightInfo.BackgroundAvatarList.Add(
-                avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+            gridFightInfo.BackgroundAvatarList.Add(BuildBattleAvatarProto(avatar, collection));
         }
         foreach (var role in activeRoles)
         {
@@ -259,6 +258,52 @@ public static class GridFightBattleProtoBuilder
             avatars.Add(avatar);
         }
         return avatars;
+    }
+
+    internal static BattleAvatar BuildBattleAvatarProto(
+        AvatarLineupData avatar,
+        PlayerDataCollection collection)
+    {
+        var proto = avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType);
+        ApplyDefaultEnhancement(proto, avatar.AvatarInfo.AvatarId);
+        return proto;
+    }
+
+    private static void ApplyDefaultEnhancement(BattleAvatar proto, int avatarId)
+    {
+        if (!GameData.AvatarConfigData.TryGetValue(avatarId, out var avatarConfig)) return;
+        var enhancedId = avatarConfig.SkillTree.Keys
+            .Where(id => id > 0)
+            .DefaultIfEmpty()
+            .Min();
+        if (enhancedId == 0 || proto.EnhancedId == enhancedId) return;
+        if (!avatarConfig.SkillTree.TryGetValue(enhancedId, out var enhancedSkills)) return;
+
+        var levelBySlot = new Dictionary<int, uint>();
+        foreach (var skill in proto.SkilltreeList)
+        {
+            var skillKey = checked((int)skill.PointId * 100 + 1);
+            if (!GameData.AvatarSkillTreeConfigData.TryGetValue(skillKey, out var skillConfig)) continue;
+            var slot = skillConfig.GetMultiPointId();
+            if (slot > 0) levelBySlot[slot] = skill.Level;
+        }
+
+        var transformed = new List<AvatarSkillTree>();
+        foreach (var skillConfig in enhancedSkills)
+        {
+            var slot = skillConfig.GetMultiPointId();
+            if (slot <= 0 || !levelBySlot.TryGetValue(slot, out var level)) continue;
+            transformed.Add(new AvatarSkillTree
+            {
+                PointId = (uint)skillConfig.PointID,
+                Level = Math.Min(level, (uint)skillConfig.MaxLevel),
+            });
+        }
+        if (transformed.Count == 0) return;
+
+        proto.SkilltreeList.Clear();
+        proto.SkilltreeList.Add(transformed);
+        proto.EnhancedId = (uint)enhancedId;
     }
 
     private static void PopulateTraitEffects(GridFightTraitInfo traitInfo)
