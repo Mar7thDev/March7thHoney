@@ -260,7 +260,11 @@ public sealed partial class GridFightSession
         var chapterCount = checked((int)catalog.StandardRoute.Max(node => node.ChapterId));
         CampIds = catalog.RollCampIds(chapterCount);
         RewardCampId = catalog.RollRewardCampId();
-        Bosses = CampIds.Select(catalog.RollBossMonster).ToList();
+        var bossNodes = catalog.StandardRoute
+            .Where(node => node.NodeType == GridFightNodeTypeEnum.Boss)
+            .OrderBy(node => node.ChapterId)
+            .ToList();
+        Bosses = CampIds.Zip(bossNodes, catalog.RollBossMonster).ToList();
         AffixIds = catalog.RollAffixIds(divisionId);
         PrepareCurrentNode();
     }
