@@ -239,7 +239,8 @@ public static class GridFightBattleProtoBuilder
             adventure.MazeSkillIdList.Count == 0)
             return false;
 
-        if (GameData.GridFightRoleStarData.TryGetValue(role.RoleId << 4 | role.Star, out var roleStar))
+        if (GameData.GridFightRoleStarData.TryGetValue(role.RoleId << 4 | role.Star, out var roleStar) &&
+            roleStar.SkillOverrideSrc.Contains(0))
             mazeSkillId = adventure.MazeSkillIdList.FirstOrDefault(id => roleStar.SkillOverrideSrc.Contains((uint)id));
         if (mazeSkillId == 0) mazeSkillId = adventure.MazeSkillIdList[0];
         return mazeSkillId != 0;
