@@ -33,6 +33,15 @@ public sealed partial class GridFightManager
                     new GridFightTraitEffectInfo { EffectId = effectId }));
             result.GridFightTraitInfo.Add(trait);
         }
+        foreach (var entry in session.RoleSwitchEntries)
+        {
+            var switchEntry = new GridFightRoleSwitchEntry
+            {
+                CurrentRoleId = entry.CurrentRoleId,
+            };
+            switchEntry.RoleIdList.Add(entry.RoleIdList);
+            result.RoleSwitchList.Add(switchEntry);
+        }
         return result;
     }
 
@@ -67,6 +76,7 @@ public sealed partial class GridFightManager
                 MaxActiveRoleCount = Session.MaxActiveRoles,
             });
         notify.ResultList.Add(dressResult);
+        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcDressEquip);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
     }
@@ -127,6 +137,7 @@ public sealed partial class GridFightManager
                 roleAcquisition);
             AppendUnlockEffects(notify, roleAcquisition);
         }
+        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcUseConsumable);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
     }

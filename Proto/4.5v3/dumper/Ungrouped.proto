@@ -12305,7 +12305,7 @@ message GridFightGameTeamInfo {
 
 message GridFightGameTraitInfo {
     repeated GridGameTraitInfo grid_fight_trait_info = 15;
-    repeated IGKKILFFNJK DAOOOBLJOLB = 10;
+    repeated GridFightRoleSwitchEntry role_switch_list = 10;
 }
 
 message GridFightGetArchiveCsReq {
@@ -12704,7 +12704,7 @@ message GridFightSyncData {
     GridFightSettleAvatarInfo PPJFPNMIFHL = 781;
     uint32 LOGJNAICJPA = 242;
     GridFightAffixInfo MHFOELCFJGK = 23;
-    HOGJECBMFHD BKDDCFHELNB = 1015;
+    GridFightRoleSwitchInfo role_switch_info = 1015;
     HJCAJKHNCDH CKNDFNACIPO = 1009;
 }
 
@@ -13659,8 +13659,8 @@ message HOALCJNIJJC {
     uint32 event_id = 9;
 }
 
-message HOGJECBMFHD {
-    repeated IGKKILFFNJK DAOOOBLJOLB = 14;
+message GridFightRoleSwitchInfo {
+    repeated GridFightRoleSwitchEntry role_switch_list = 14;
 }
 
 enum HOIFDJPBGLB {
@@ -14394,9 +14394,9 @@ message IGKBMLELJDH {
     uint32 retcode = 3;
 }
 
-message IGKKILFFNJK {
-    repeated uint32 LEOCEFMKAEM = 5;
-    uint32 BLAEAAFANBM = 9;
+message GridFightRoleSwitchEntry {
+    repeated uint32 role_id_list = 5;
+    uint32 current_role_id = 9;
 }
 
 message IGMOKOENLDK {
