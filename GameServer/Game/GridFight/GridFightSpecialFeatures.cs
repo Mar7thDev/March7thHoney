@@ -54,7 +54,7 @@ public sealed class GridFightHackConsoleState
     public uint RemainingGoldActions { get; set; } = GridFightSpecialFeatures.HackGoldActionCount;
     public uint RemainingHealActions { get; set; } = GridFightSpecialFeatures.HackHealActionCount;
     public uint RemainingOrbActions { get; set; } = GridFightSpecialFeatures.HackOrbActionCount;
-    public uint EnemyHpPercent { get; set; } = GridFightSpecialFeatures.DefaultEnemyHpPercent;
+    public uint EnemyHpPercent { get; set; } = GridFightSpecialFeatures.InitialHackEnemyHpPercent;
 }
 
 public sealed record GridFightSpecialGoodsPurchaseResult(
@@ -105,7 +105,7 @@ public static class GridFightSpecialFeatures
     public const uint HackOrbActionCount = 5;
     public const uint MinimumEnemyHpPercent = 1;
     public const uint MaximumEnemyHpPercent = 1000;
-    public const uint DefaultEnemyHpPercent = MaximumEnemyHpPercent;
+    public const uint InitialHackEnemyHpPercent = MinimumEnemyHpPercent;
     public const uint HackEquipmentSource = 1;
     public const string HackRankFiveEquipmentConstName = "GridFight_Hack_Rank5";
 
