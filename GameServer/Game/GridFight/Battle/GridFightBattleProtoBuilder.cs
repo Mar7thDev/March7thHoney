@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Enums.GridFight;
 using March7thHoney.GameServer.Game.Battle;
@@ -29,10 +30,10 @@ public static class GridFightBattleProtoBuilder
         var battleRoles = new List<GridFightRoleState>(foregroundRoles.Count);
         foreach (var role in foregroundRoles)
         {
-            var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: true);
+            var avatar = ResolveBattleAvatar(battle, role, battle.Player.Data.CurrentGender, isForeground: true);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
-            proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+            proto.BattleAvatarList.Add(BuildBattleAvatarProto(avatar, collection));
             battleRoles.Add(role);
         }
         AddEntryBuffs(battle, battleRoles);
@@ -105,16 +106,15 @@ public static class GridFightBattleProtoBuilder
             new GridFightAugmentInfo { AugmentId = augmentId }));
         foreach (var role in activeRoles.Where(role => role.Position is >= 5 and <= 13))
         {
-            var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: false);
+            var avatar = ResolveBattleAvatar(battle, role, battle.Player.Data.CurrentGender, isForeground: false);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
-            gridFightInfo.BackgroundAvatarList.Add(
-                avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+            gridFightInfo.BackgroundAvatarList.Add(BuildBattleAvatarProto(avatar, collection));
         }
         foreach (var role in activeRoles)
         {
             var basic = GameData.GridFightRoleBasicInfoData[role.RoleId];
-            gridFightInfo.GridGameRoleList.Add(BuildRoleInfo(session, role));
+            gridFightInfo.GridGameRoleList.Add(BuildRoleInfo(session, role, battle.Player.Data.CurrentGender));
             foreach (var key in basic.RoleSavedValueList)
                 gridFightInfo.RoleSavedValues[key] = 0;
         }
@@ -157,13 +157,13 @@ public static class GridFightBattleProtoBuilder
         return avatars;
     }
 
-    public static GridFightRoleInfo BuildRoleInfo(GridFightSession session, GridFightRoleState role)
+    public static GridFightRoleInfo BuildRoleInfo(GridFightSession session, GridFightRoleState role, Gender gender)
     {
         var basic = GameData.GridFightRoleBasicInfoData[role.RoleId];
         var result = new GridFightRoleInfo
         {
             RoleId = role.RoleId,
-            AvatarId = basic.AvatarID,
+            AvatarId = ResolveAvatarId(basic, role.Star, gender),
             RoleStar = role.Star,
             Pos = role.Position,
             UniqueId = role.UniqueId,
@@ -240,7 +240,8 @@ public static class GridFightBattleProtoBuilder
             adventure.MazeSkillIdList.Count == 0)
             return false;
 
-        if (GameData.GridFightRoleStarData.TryGetValue(role.RoleId << 4 | role.Star, out var roleStar))
+        if (GameData.GridFightRoleStarData.TryGetValue(role.RoleId << 4 | role.Star, out var roleStar) &&
+            roleStar.SkillOverrideSrc.Contains(0))
             mazeSkillId = adventure.MazeSkillIdList.FirstOrDefault(id => roleStar.SkillOverrideSrc.Contains((uint)id));
         if (mazeSkillId == 0) mazeSkillId = adventure.MazeSkillIdList[0];
         return mazeSkillId != 0;
@@ -253,12 +254,61 @@ public static class GridFightBattleProtoBuilder
                      .Where(role => role.Position is >= 1 and <= 13)
                      .OrderBy(role => role.Position))
         {
-            var avatar = ResolveBattleAvatar(battle, role.RoleId, isForeground: role.Position <= 4);
+            var avatar = ResolveBattleAvatar(battle, role, battle.Player.Data.CurrentGender,
+                isForeground: role.Position <= 4);
             if (avatar == null) continue;
             avatar.AvatarInfo.SetCurHp(10000, true);
             avatars.Add(avatar);
         }
         return avatars;
+    }
+
+    internal static BattleAvatar BuildBattleAvatarProto(
+        AvatarLineupData avatar,
+        PlayerDataCollection collection)
+    {
+        var proto = avatar.AvatarInfo is FormalAvatarInfo formal && avatar.BattleAvatarId is int battleAvatarId
+            ? formal.ToBattleProto(collection, battleAvatarId, avatar.AvatarType)
+            : avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType);
+        ApplyDefaultEnhancement(proto, (int)proto.Id);
+        return proto;
+    }
+
+    private static void ApplyDefaultEnhancement(BattleAvatar proto, int avatarId)
+    {
+        if (!GameData.AvatarConfigData.TryGetValue(avatarId, out var avatarConfig)) return;
+        var enhancedId = avatarConfig.SkillTree.Keys
+            .Where(id => id > 0)
+            .DefaultIfEmpty()
+            .Min();
+        if (enhancedId == 0 || proto.EnhancedId == enhancedId) return;
+        if (!avatarConfig.SkillTree.TryGetValue(enhancedId, out var enhancedSkills)) return;
+
+        var levelBySlot = new Dictionary<int, uint>();
+        foreach (var skill in proto.SkilltreeList)
+        {
+            var skillKey = checked((int)skill.PointId * 100 + 1);
+            if (!GameData.AvatarSkillTreeConfigData.TryGetValue(skillKey, out var skillConfig)) continue;
+            var slot = skillConfig.GetMultiPointId();
+            if (slot > 0) levelBySlot[slot] = skill.Level;
+        }
+
+        var transformed = new List<AvatarSkillTree>();
+        foreach (var skillConfig in enhancedSkills)
+        {
+            var slot = skillConfig.GetMultiPointId();
+            if (slot <= 0 || !levelBySlot.TryGetValue(slot, out var level)) continue;
+            transformed.Add(new AvatarSkillTree
+            {
+                PointId = (uint)skillConfig.PointID,
+                Level = Math.Min(level, (uint)skillConfig.MaxLevel),
+            });
+        }
+        if (transformed.Count == 0) return;
+
+        proto.SkilltreeList.Clear();
+        proto.SkilltreeList.Add(transformed);
+        proto.EnhancedId = (uint)enhancedId;
     }
 
     private static void PopulateTraitEffects(GridFightTraitInfo traitInfo)
@@ -307,16 +357,27 @@ public static class GridFightBattleProtoBuilder
             effectInfo.TraitEffectLevelInfo = levelInfo;
     }
 
-    private static AvatarLineupData? ResolveBattleAvatar(BattleInstance battle, uint roleId, bool isForeground)
+    private static uint ResolveAvatarId(GridFightRoleBasicInfoExcel basic, uint star, Gender gender)
     {
-        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var basic)) return null;
-        var formal = battle.Player.AvatarManager!.GetFormalAvatar((int)basic.AvatarID);
+        if (gender != Gender.Woman) return basic.AvatarID;
+        var key = (basic.ID << 4) | star;
+        return GameData.GridFightGenderOverrideData.TryGetValue(key, out var genderOverride)
+            ? genderOverride.AvatarID
+            : basic.AvatarID;
+    }
+
+    private static AvatarLineupData? ResolveBattleAvatar(BattleInstance battle, GridFightRoleState role, Gender gender,
+        bool isForeground)
+    {
+        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(role.RoleId, out var basic)) return null;
+        var avatarId = ResolveAvatarId(basic, role.Star, gender);
+        var formal = battle.Player.AvatarManager!.GetFormalAvatar((int)avatarId);
         if (formal != null)
         {
             var avatarType = isForeground && string.Equals(basic.FrontBackType, "Back", StringComparison.Ordinal)
                 ? AvatarType.AvatarFormalType
                 : AvatarType.AvatarGridFightType;
-            return new AvatarLineupData(formal, avatarType);
+            return new AvatarLineupData(formal, avatarType, (int)avatarId);
         }
         var trial = battle.Player.AvatarManager.GetTrialAvatarByWorldLevel(
             (int)basic.SpecialAvatarID,
@@ -326,6 +387,8 @@ public static class GridFightBattleProtoBuilder
 
     public static bool IsTrialRole(BattleInstance battle, uint roleId, bool isForeground)
     {
-        return ResolveBattleAvatar(battle, roleId, isForeground)?.AvatarType == AvatarType.AvatarTrialType;
+        var role = new GridFightRoleState { RoleId = roleId };
+        return ResolveBattleAvatar(battle, role, battle.Player.Data.CurrentGender, isForeground)?.AvatarType ==
+               AvatarType.AvatarTrialType;
     }
 }
