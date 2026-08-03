@@ -76,6 +76,7 @@ public static class GridFightBattleProtoBuilder
             .Where(role => role.Position is >= 1 and <= 13)
             .OrderBy(role => role.Position)
             .ToList();
+        session.RefreshRoleSavedValues();
         var gridFightInfo = new GridFightInfo
         {
             BattleWaveId = 1,
@@ -112,12 +113,9 @@ public static class GridFightBattleProtoBuilder
             gridFightInfo.BackgroundAvatarList.Add(BuildBattleAvatarProto(avatar, collection));
         }
         foreach (var role in activeRoles)
-        {
-            var basic = GameData.GridFightRoleBasicInfoData[role.RoleId];
             gridFightInfo.GridGameRoleList.Add(BuildRoleInfo(session, role, battle.Player.Data.CurrentGender));
-            foreach (var key in basic.RoleSavedValueList)
-                gridFightInfo.RoleSavedValues[key] = 0;
-        }
+        foreach (var (key, value) in session.RoleSavedValues)
+            gridFightInfo.RoleSavedValues[key] = value;
         foreach (var group in activeRoles
                      .SelectMany(role => session.ResolveRoleTraitIds(role)
                          .Select(traitId => (TraitId: traitId, Role: role)))

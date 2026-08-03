@@ -76,7 +76,7 @@ public sealed partial class GridFightManager
                 MaxActiveRoleCount = Session.MaxActiveRoles,
             });
         notify.ResultList.Add(dressResult);
-        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcDressEquip);
+        AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcDressEquip);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
     }
@@ -135,9 +135,10 @@ public sealed partial class GridFightManager
                 GridFightUpdateSrcType.KgridFightSrcCopyRole,
                 [use.ItemId],
                 roleAcquisition);
-            AppendUnlockEffects(notify, roleAcquisition);
         }
-        AppendRoleSwitchResult(notify, GridFightUpdateSrcType.KgridFightSrcUseConsumable);
+        AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcUseConsumable);
+        if (use.RoleAcquisition is { Success: true } finalizedAcquisition)
+            AppendUnlockEffects(notify, finalizedAcquisition);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
     }
