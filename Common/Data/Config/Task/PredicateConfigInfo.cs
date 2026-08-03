@@ -14,6 +14,7 @@ namespace March7thHoney.Data.Config.Task;
 [MemoryPackUnion(6, typeof(ByCompareSubMissionState))]
 [MemoryPackUnion(7, typeof(ByIsContainAdventureModifier))]
 [MemoryPackUnion(8, typeof(AdvByCompareDynamicValue))]
+[MemoryPackUnion(9, typeof(AdvByContainBehaviorFlag))]
 public abstract partial class PredicateConfigInfo : TaskConfigInfo
 {
     public bool Inverse { get; set; } = false;
@@ -26,6 +27,8 @@ public abstract partial class PredicateConfigInfo : TaskConfigInfo
 
         switch (typeStr)
         {
+            case "AdvByContainBehaviorFlag":
+                return AdvByContainBehaviorFlag.LoadFromJsonObject(obj);
             case "ByIsContainAdventureModifier":
                 return ByIsContainAdventureModifier.LoadFromJsonObject(obj);
             case "ByAnd":

@@ -1,4 +1,6 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Config;
+using March7thHoney.Data.Config.AdventureAbility;
 using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Avatar;
@@ -28,16 +30,13 @@ public class AvatarSceneInfo : BaseGameEntity, IGameModifier
         // initialize enter ability
         if (!GameData.AvatarConfigData.TryGetValue(avatarInfo.AvatarId, out var excel)) return;
         var configInfo = GameData.CharacterConfigInfoData.GetValueOrDefault(excel.AdventurePlayerID);
-        GameData.AdventureAbilityConfigListData.TryGetValue(excel.AdventurePlayerID, out var avatarAbility);
-        if (configInfo == null || avatarAbility == null) return;
+        if (configInfo == null) return;
 
         foreach (var info in configInfo.SkillList.Where(x => x.UseType == SkillUseTypeEnum.Passive))
         {
-            // cast ability
-            var abilityStr = info.EntryAbility;
-            // get ability
-            var ability = avatarAbility.AbilityList.FirstOrDefault(x => x.Name == abilityStr);
-            if (ability == null) continue;
+            if (!TryResolveAbility(excel.AdventurePlayerID, info.EntryAbility, out var avatarAbility, out var ability))
+                continue;
+
             _ = Player.TaskManager!.AbilityLevelTask.TriggerTasks(avatarAbility, ability.OnStart, this, [],
                 new SceneCastSkillCsReq());
         }
@@ -53,14 +52,59 @@ public class AvatarSceneInfo : BaseGameEntity, IGameModifier
 
     public List<string> Modifiers { get; set; } = [];
 
+    private static bool TryResolveAbility(int preferredAdventurePlayerId, string abilityName,
+        out AdventureAbilityConfigListInfo abilityList, out AdventureAbilityConfigInfo ability)
+    {
+        if (GameData.AdventureAbilityConfigListData.TryGetValue(preferredAdventurePlayerId, out abilityList!))
+        {
+            ability = abilityList.AbilityList.FirstOrDefault(x => x.Name == abilityName)!;
+            if (ability != null) return true;
+        }
+
+        foreach (var entry in GameData.AdventureAbilityConfigListData.OrderBy(x => x.Key))
+        {
+            ability = entry.Value.AbilityList.FirstOrDefault(x => x.Name == abilityName)!;
+            if (ability == null) continue;
+
+            abilityList = entry.Value;
+            return true;
+        }
+
+        abilityList = null!;
+        ability = null!;
+        return false;
+    }
+
+    public bool TryResolveModifier(string modifierName, out AdventureAbilityConfigListInfo abilityList,
+        out AdventureModifierConfig modifier)
+    {
+        var preferredAdventurePlayerId = AvatarInfo.AvatarId;
+        if (GameData.AvatarConfigData.TryGetValue(AvatarInfo.AvatarId, out var avatarConfig))
+            preferredAdventurePlayerId = avatarConfig.AdventurePlayerID;
+
+        if (GameData.AdventureAbilityConfigListData.TryGetValue(preferredAdventurePlayerId, out abilityList!) &&
+            abilityList.GlobalModifiers?.TryGetValue(modifierName, out modifier!) == true)
+            return true;
+
+        foreach (var entry in GameData.AdventureAbilityConfigListData.OrderBy(x => x.Key))
+        {
+            if (entry.Value.GlobalModifiers?.TryGetValue(modifierName, out modifier!) != true) continue;
+
+            abilityList = entry.Value;
+            return true;
+        }
+
+        abilityList = null!;
+        modifier = null!;
+        return false;
+    }
+
     public async ValueTask AddModifier(string modifierName)
     {
         if (Modifiers.Contains(modifierName)) return;
         Modifiers.Add(modifierName);
 
-        GameData.AdventureModifierData.TryGetValue(modifierName, out var modifier);
-        GameData.AdventureAbilityConfigListData.TryGetValue(AvatarInfo.AvatarId, out var avatarAbility);
-        if (modifier == null || avatarAbility == null) return;
+        if (!TryResolveModifier(modifierName, out var avatarAbility, out var modifier)) return;
 
         await Player.TaskManager!.AbilityLevelTask.TriggerTasks(avatarAbility, modifier.OnCreate, this, [],
             new SceneCastSkillCsReq
@@ -88,9 +132,7 @@ public class AvatarSceneInfo : BaseGameEntity, IGameModifier
         if (!Modifiers.Contains(modifierName)) return;
 
         Modifiers.Remove(modifierName);
-        GameData.AdventureModifierData.TryGetValue(modifierName, out var modifier);
-        GameData.AdventureAbilityConfigListData.TryGetValue(AvatarInfo.AvatarId, out var avatarAbility);
-        if (modifier == null || avatarAbility == null) return;
+        if (!TryResolveModifier(modifierName, out var avatarAbility, out var modifier)) return;
 
         await Player.TaskManager!.AbilityLevelTask.TriggerTasks(avatarAbility, modifier.OnDestroy, this, [],
             new SceneCastSkillCsReq());

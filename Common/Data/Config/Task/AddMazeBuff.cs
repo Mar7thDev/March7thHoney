@@ -34,12 +34,8 @@ public partial class AddMazeBuff : TaskConfigInfo
         if (obj.TryGetValue(nameof(ID), out value)) info.ID = value.ToObject<int>()!;
         if (obj.TryGetValue(nameof(Condition), out value))
         {
-            var condition = value as JObject;
-            var classType =
-                System.Type.GetType(
-                    $"March7thHoney.Data.Config.Task.{condition?["Type"]?.ToString().Replace("RPG.GameCore.", "")}");
-            classType ??= System.Type.GetType("March7thHoney.Data.Config.Task.PredicateConfigInfo");
-            info.Condition = (condition!.ToObject(classType!) as PredicateConfigInfo)!;
+            if (value is JObject condition)
+                info.Condition = PredicateConfigInfo.LoadFromJsonObject(condition);
         }
 
         if (obj.TryGetValue(nameof(BindingAffectedTarget), out value))
