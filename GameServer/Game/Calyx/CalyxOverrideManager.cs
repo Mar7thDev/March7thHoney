@@ -2,24 +2,51 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Data.Freesr;
 using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Calyx;
+using March7thHoney.Database.Lineup;
+using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.Proto;
 using March7thHoney.Util;
+using LineupInfo = March7thHoney.Database.Lineup.LineupInfo;
 
 namespace March7thHoney.GameServer.Game.Calyx;
 
 public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(player)
 {
     private CalyxOverrideData? _data;
+    private int[]? _lineupOverride;
 
     public CalyxOverrideData Data => _data ??= new CalyxOverrideData { Uid = Player.Uid };
     public bool IsActive => Data is { IsActive: true, CachedJson: not null };
     public bool IsCurrentBattleChallengePeak => IsChallengePeak(Data.CachedJson?.BattleConfig);
 
     public void AttachData(CalyxOverrideData data) => _data = data;
+
+    public bool TrySetLineupOverride(IReadOnlyList<int> avatarIds, out int invalidAvatarId)
+    {
+        invalidAvatarId = 0;
+        foreach (var avatarId in avatarIds)
+        {
+            if (avatarId > 0 && GameData.AvatarConfigData.ContainsKey(avatarId) &&
+                Player.AvatarManager?.GetFormalAvatar(avatarId) != null)
+                continue;
+
+            invalidAvatarId = avatarId;
+            return false;
+        }
+
+        _lineupOverride = avatarIds.ToArray();
+        return true;
+    }
+
+    public void ResetLineupOverride() => _lineupOverride = null;
+
+    private int[]? GetLineupOverrideSnapshot() => _lineupOverride?.ToArray();
 
     public void Disable()
     {
@@ -86,7 +113,39 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
             MonsterList = monsterWaves ?? anchor.MonsterList
         };
 
-        var lineup = Player.LineupManager!.GetCurLineup()!;
+        var sourceLineup = Player.LineupManager!.GetCurLineup()!;
+        var lineup = sourceLineup;
+        List<AvatarLineupData>? battleLineupOverride = null;
+        var lineupOverride = GetLineupOverrideSnapshot();
+        if (lineupOverride is { Length: > 0 })
+        {
+            var lineupAvatars = new List<LineupAvatarInfo>(lineupOverride.Length);
+            battleLineupOverride = new List<AvatarLineupData>(lineupOverride.Length);
+            foreach (var avatarId in lineupOverride)
+            {
+                var avatar = Player.AvatarManager!.GetFormalAvatar(avatarId);
+                if (avatar == null) return null;
+
+                var baseAvatarId = GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPath)
+                    ? multiPath.BaseAvatarID
+                    : avatarId;
+                lineupAvatars.Add(new LineupAvatarInfo { BaseAvatarId = baseAvatarId });
+                battleLineupOverride.Add(new AvatarLineupData(
+                    avatar, AvatarType.AvatarFormalType, avatarId));
+            }
+
+            lineup = new LineupInfo
+            {
+                Name = sourceLineup.Name,
+                LineupType = sourceLineup.LineupType,
+                LeaderAvatarId = lineupAvatars[0].BaseAvatarId,
+                BaseAvatars = lineupAvatars,
+                Mp = sourceLineup.Mp,
+                LineupData = sourceLineup.LineupData,
+                AvatarData = sourceLineup.AvatarData
+            };
+        }
+
         var battle = new BattleInstance(Player, lineup, [synthetic])
         {
             StaminaCost = 0,
@@ -96,13 +155,15 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
             RoundLimit = bc.CycleCount > 0 ? bc.CycleCount : 0,
             CustomLevel = ResolveUniformLevel(bc.Monsters),
             LeaderIndexOverride = 0,
-            CalyxOverride = new CalyxOverrideContext(data, Data.MonsterHpOverrides.Select(x =>
-                new CalyxMonsterHpOverride
+            CalyxOverride = new CalyxOverrideContext(
+                data,
+                Data.MonsterHpOverrides.Select(x => new CalyxMonsterHpOverride
                 {
                     WaveIndex = x.WaveIndex,
                     MonsterIndex = x.MonsterIndex,
                     Hp = x.Hp
-                }).ToList())
+                }).ToList(),
+                battleLineupOverride)
         };
 
         var avatarList = lineup.BaseAvatars!.Select(item =>
@@ -245,8 +306,12 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
 
 public sealed class CalyxOverrideContext(
     FreesrCalyxData data,
-    IReadOnlyList<CalyxMonsterHpOverride> monsterHpOverrides)
+    IReadOnlyList<CalyxMonsterHpOverride> monsterHpOverrides,
+    IReadOnlyList<AvatarLineupData>? lineupOverride)
 {
+    public IReadOnlyList<AvatarLineupData>? LineupOverride { get; } = lineupOverride;
+    public bool HasLineupOverride => LineupOverride is { Count: > 0 };
+
     public void Apply(BattleInstance battle, SceneBattleInfo proto)
     {
         ApplyMonsterHp(proto);
@@ -279,15 +344,15 @@ public sealed class CalyxOverrideContext(
                 ApplyEnhancedState(ba, eid);
         }
 
-        var lineupAvatarIds = proto.BattleAvatarList.Select(b => (int)b.Id).ToHashSet();
-
         // freesr `techniques` is an array of maze buff IDs to activate for this avatar.
         // Data-driven: trust the IDs verbatim, look up Lv from MazeBuffData when available.
-        foreach (var (avatarKey, aj) in data.Avatars)
+        for (var index = 0; index < proto.BattleAvatarList.Count; index++)
         {
-            if (aj.Techniques == null || aj.Techniques.Count == 0) continue;
-            var avatarId = aj.AvatarId > 0 ? aj.AvatarId : avatarKey;
-            if (!lineupAvatarIds.Contains(avatarId)) continue;
+            var avatarId = (int)proto.BattleAvatarList[index].Id;
+            FreesrCalyxAvatar? aj = null;
+            if (data.Avatars.TryGetValue(avatarId, out var direct)) aj = direct;
+            else aj = data.Avatars.Values.FirstOrDefault(avatar => avatar.AvatarId == avatarId);
+            if (aj?.Techniques == null || aj.Techniques.Count == 0) continue;
 
             foreach (var buffId in aj.Techniques)
             {
@@ -298,9 +363,8 @@ public sealed class CalyxOverrideContext(
                     .DefaultIfEmpty(1)
                     .Max();
 
-                var mb = new MazeBuff(buffId, lv, -1)
+                var mb = new MazeBuff(buffId, lv, index)
                 {
-                    OwnerAvatarId = avatarId,
                     WaveFlag = -1
                 };
                 // Client uses SkillIndex=0 to recognize a technique-triggered buff
