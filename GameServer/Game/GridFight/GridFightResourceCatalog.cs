@@ -104,6 +104,11 @@ public sealed class GridFightResourceCatalog
     public uint InitialGold { get; }
     public uint TutorialCompletion { get; }
 
+    private static IReadOnlySet<string> RoleModifierSavedValueKeys => GameData.GridFightRoleSkillModifyData
+        .Select(row => row.MultipleValueKey)
+        .Where(key => !string.IsNullOrWhiteSpace(key))
+        .ToHashSet(StringComparer.Ordinal);
+
     public GridFightResourceCatalog(Random? random = null)
     {
         _random = random ?? Random.Shared;
@@ -212,6 +217,24 @@ public sealed class GridFightResourceCatalog
         if (RolePool.Count == 0) errors.Add("role pool is empty");
         if (RolePool.Any(row => row.AvatarID is < 1000 or >= 2000 || row.RoleSavedValueList.Count == 0))
             errors.Add("role pool contains an unusable runtime role");
+        if (GameData.GridFightFrontSkillData.Count == 0)
+            errors.Add("grid fight front skill data is empty");
+        if (RoleModifierSavedValueKeys.Count == 0)
+            errors.Add("grid fight role modifier saved value keys are empty");
+        foreach (var key in RoleModifierSavedValueKeys)
+        {
+            var owners = GameData.GridFightRoleBasicInfoData.Values
+                .Where(role => role.RoleSavedValueList.Contains(key, StringComparer.Ordinal))
+                .ToList();
+            if (owners.Count != 1)
+            {
+                errors.Add($"grid fight role modifier key {key} has {owners.Count} owners");
+                continue;
+            }
+            foreach (var roleStar in GameData.GridFightRoleStarData.Values.Where(row => row.ID == owners[0].ID))
+                if (!TryResolveRoleSavedValueLayer(roleStar, out _))
+                    errors.Add($"grid fight role {roleStar.ID} star {roleStar.Star} has no saved value layer");
+        }
         if (RolePool.Count(row => !InitialExcludedRoleIds.Contains(row.ID)) < InitialRoleCount)
             errors.Add("initial role pool is too small");
         if (CampPool.Count == 0) errors.Add("monster camp pool is empty");
@@ -299,6 +322,42 @@ public sealed class GridFightResourceCatalog
             !GridFightSpecialFeatures.TryResolveBonus(GridFightSpecialFeatures.CyreneHeroBonusId, out _))
             errors.Add("Cyrene special goods rewards are incomplete");
         return errors;
+    }
+
+    public IReadOnlyDictionary<string, uint> ResolveRoleSavedValues(uint roleId, uint star)
+    {
+        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var role)) return new Dictionary<string, uint>();
+        var values = role.RoleSavedValueList
+            .Distinct(StringComparer.Ordinal)
+            .ToDictionary(key => key, _ => 0u, StringComparer.Ordinal);
+        if (!GameData.GridFightRoleStarData.TryGetValue(roleId << 4 | star, out var roleStar) ||
+            !TryResolveRoleSavedValueLayer(roleStar, out var layer))
+            return values;
+
+        var modifierKeys = RoleModifierSavedValueKeys;
+        foreach (var key in role.RoleSavedValueList.Where(modifierKeys.Contains))
+        {
+            values[key] = layer;
+            var companionIndex = role.RoleSavedValueList.IndexOf(key) + 1;
+            if (companionIndex < role.RoleSavedValueList.Count)
+                values[role.RoleSavedValueList[companionIndex]] = layer;
+        }
+        return values;
+    }
+
+    private static bool TryResolveRoleSavedValueLayer(GridFightRoleStarExcel roleStar, out uint layer)
+    {
+        layer = 0;
+        var passiveIndex = roleStar.SkillOverrideSrc.IndexOf(0);
+        if (passiveIndex < 0 || passiveIndex >= roleStar.SkillOverrideDest.Count ||
+            !GameData.GridFightFrontSkillData.TryGetValue(roleStar.SkillOverrideDest[passiveIndex], out var skill) ||
+            skill.ParamList.Count == 0)
+            return false;
+        var value = skill.ParamList[0].Value;
+        if (!double.IsFinite(value) || value < 0 || value > uint.MaxValue || value != Math.Truncate(value))
+            return false;
+        layer = (uint)value;
+        return true;
     }
 
     private void ValidateRewardRules(List<string> errors)
