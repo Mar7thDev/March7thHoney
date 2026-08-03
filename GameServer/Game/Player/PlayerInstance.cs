@@ -307,6 +307,7 @@ public partial class PlayerInstance(PlayerData data)
 
     public async ValueTask OnLogin()
     {
+        CalyxOverrideManager?.ResetLineupOverride();
         await SendPacket(new PacketStaminaInfoScNotify(this));
 
         ChallengeManager?.ResurrectInstance();

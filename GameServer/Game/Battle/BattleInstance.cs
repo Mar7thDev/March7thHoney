@@ -279,6 +279,21 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                 GridFightContext,
                 Player.GridFightManager!.Catalog,
                 proto);
+        else if (CalyxOverride?.LineupOverride is { Count: > 0 } lineupOverride)
+        {
+            avatars = [.. lineupOverride];
+            var collection = new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup);
+            for (var index = 0; index < lineupOverride.Count; index++)
+            {
+                var avatar = lineupOverride[index];
+                var battleAvatar = avatar.AvatarInfo is FormalAvatarInfo formal &&
+                                   avatar.BattleAvatarId is int battleAvatarId
+                    ? formal.ToBattleProto(collection, battleAvatarId, avatar.AvatarType)
+                    : avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType);
+                battleAvatar.Index = (uint)index;
+                proto.BattleAvatarList.Add(battleAvatar);
+            }
+        }
         else
         {
             avatars = GetBattleAvatars();

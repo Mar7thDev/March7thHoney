@@ -355,6 +355,9 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 break;
         }
 
+        if (battle.CalyxOverride?.HasLineupOverride == true)
+            updateStatus = false;
+
         if (updateStatus)
         {
             var lineup = Player.LineupManager!.GetCurLineup()!;
