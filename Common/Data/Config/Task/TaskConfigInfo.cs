@@ -38,6 +38,7 @@ namespace March7thHoney.Data.Config.Task;
 [MemoryPackUnion(30, typeof(UnknownPredicateConfigInfo))]
 [MemoryPackUnion(31, typeof(AdventureModifyTeamPlayerSP))]
 [MemoryPackUnion(32, typeof(AdventureTriggerTargetAbility))]
+[MemoryPackUnion(33, typeof(AdvByContainBehaviorFlag))]
 public abstract partial class TaskConfigInfo
 {
     public string Type { get; set; } = "";
