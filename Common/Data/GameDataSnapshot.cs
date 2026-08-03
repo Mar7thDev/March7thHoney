@@ -290,6 +290,8 @@ public partial class GridFightRuntimeDataSnapshot
     public Dictionary<uint, GridFightSettleRankExcel> SettleRankData { get; set; } = [];
     public Dictionary<uint, GridFightGenderOverrideExcel> GridFightGenderOverrideData { get; set; } = [];
     public Dictionary<uint, GridFightRoleSwitchConfigExcel> GridFightRoleSwitchConfigData { get; set; } = [];
+    public Dictionary<uint, GridFightFrontSkillExcel> GridFightFrontSkillData { get; set; } = [];
+    public List<GridFightRoleSkillModifyExcel> GridFightRoleSkillModifyData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -562,6 +564,8 @@ public static partial class GameData
                 SettleRankData = GameData.GridFightSettleRankData,
                 GridFightGenderOverrideData = GameData.GridFightGenderOverrideData,
                 GridFightRoleSwitchConfigData = GameData.GridFightRoleSwitchConfigData,
+                GridFightFrontSkillData = GameData.GridFightFrontSkillData,
+                GridFightRoleSkillModifyData = GameData.GridFightRoleSkillModifyData,
             },
         };
     }
@@ -832,5 +836,7 @@ public static partial class GameData
         GameData.GridFightSettleRankData = gridFightRuntimeData.SettleRankData;
         GameData.GridFightGenderOverrideData = gridFightRuntimeData.GridFightGenderOverrideData;
         GameData.GridFightRoleSwitchConfigData = gridFightRuntimeData.GridFightRoleSwitchConfigData;
+        GameData.GridFightFrontSkillData = gridFightRuntimeData.GridFightFrontSkillData;
+        GameData.GridFightRoleSkillModifyData = gridFightRuntimeData.GridFightRoleSkillModifyData;
     }
 }

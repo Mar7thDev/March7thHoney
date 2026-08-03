@@ -139,6 +139,8 @@ public static partial class GameData
     public static Dictionary<uint, GridFightBasicBonusPoolV2Excel> GridFightBasicBonusPoolV2Data { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleBasicInfoExcel> GridFightRoleBasicInfoData { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleStarExcel> GridFightRoleStarData { get; private set; } = [];
+    public static Dictionary<uint, GridFightFrontSkillExcel> GridFightFrontSkillData { get; private set; } = [];
+    public static List<GridFightRoleSkillModifyExcel> GridFightRoleSkillModifyData { get; private set; } = [];
     public static Dictionary<uint, GridFightGenderOverrideExcel> GridFightGenderOverrideData { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleSwitchConfigExcel> GridFightRoleSwitchConfigData { get; private set; } = [];
     public static Dictionary<uint, List<GridFightRoleRecommendEquipExcel>> GridFightRoleRecommendEquipData { get; private set; } =
