@@ -275,8 +275,8 @@ public sealed class CalyxOverrideContext(
                 };
             }
 
-            if (aj.EnhancedId is { } eid && eid > 0)
-                ba.EnhancedId = (uint)eid;
+            if (aj.EnhancedId is { } eid)
+                ApplyEnhancedState(ba, eid);
         }
 
         var lineupAvatarIds = proto.BattleAvatarList.Select(b => (int)b.Id).ToHashSet();
@@ -309,6 +309,46 @@ public sealed class CalyxOverrideContext(
                 battle.Buffs.Add(mb);
             }
         }
+    }
+
+    private static void ApplyEnhancedState(BattleAvatar avatar, int requestedEnhancedId)
+    {
+        var avatarId = (int)avatar.Id;
+        if (!GameData.AvatarConfigData.TryGetValue(avatarId, out var avatarConfig)) return;
+
+        var enhancedId = avatarConfig.SkillTree.ContainsKey(requestedEnhancedId) ||
+                         avatarConfig.DefaultSkillTree.ContainsKey(requestedEnhancedId)
+            ? requestedEnhancedId
+            : 0;
+        if (!avatarConfig.SkillTree.TryGetValue(enhancedId, out var targetSkills)) return;
+
+        var targetByAnchor = targetSkills
+            .Select(skill => (Anchor: skill.GetMultiPointId(), Skill: skill))
+            .Where(entry => entry.Anchor > 0)
+            .GroupBy(entry => entry.Anchor)
+            .ToDictionary(group => group.Key, group => group.First().Skill);
+        var mappedSkills = new List<AvatarSkillTree>(avatar.SkilltreeList.Count);
+        var mappedPointIds = new HashSet<int>();
+
+        foreach (var skill in avatar.SkilltreeList)
+        {
+            if (!GameData.AvatarSkillTreeConfigData.TryGetValue((int)skill.PointId * 100 + 1, out var source))
+                continue;
+            var anchor = source.GetMultiPointId();
+            if (!targetByAnchor.TryGetValue(anchor, out var target) || !mappedPointIds.Add(target.PointID)) continue;
+
+            mappedSkills.Add(new AvatarSkillTree
+            {
+                PointId = (uint)target.PointID,
+                Level = (uint)Math.Clamp((int)skill.Level, 1, Math.Max(1, target.MaxLevel))
+            });
+        }
+
+        if (avatar.SkilltreeList.Count > 0 && mappedSkills.Count == 0) return;
+
+        avatar.SkilltreeList.Clear();
+        avatar.SkilltreeList.AddRange(mappedSkills);
+        avatar.EnhancedId = (uint)enhancedId;
     }
 
     private void ApplyMonsterHp(SceneBattleInfo proto)
