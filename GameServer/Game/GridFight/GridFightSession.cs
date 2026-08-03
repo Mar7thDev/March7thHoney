@@ -191,6 +191,7 @@ public sealed partial class GridFightSession
     private const uint SupplyEquipmentSource = 9;
 
     private readonly GridFightResourceCatalog _catalog;
+    private readonly Dictionary<string, uint> _roleSavedValues = new(StringComparer.Ordinal);
     private uint _nextEntityUniqueId = 1;
     private uint _nextConsumableGroupId = 1;
     private bool _orbClaimed;
@@ -238,6 +239,7 @@ public sealed partial class GridFightSession
     public List<GridFightConsumableState> Consumables { get; } = [];
     public List<GridFightForgeItemState> ForgeItems { get; } = [];
     public List<GridFightShopSlot> Shop { get; } = [];
+    public IReadOnlyDictionary<string, uint> RoleSavedValues => _roleSavedValues;
     public bool HasCyreneCombatEnhancement { get; private set; }
     public GridFightHackConsoleState? HackConsole { get; private set; }
     public uint? TraitEffectSelectEnhanceQueuePosition => _traitEffectSelectEnhanceQueuePosition;
@@ -248,6 +250,29 @@ public sealed partial class GridFightSession
                 group.RoleIdList,
                 _roleSwitchIds.GetValueOrDefault(group.BaseRoleId, group.BaseRoleId)))
             .ToList();
+
+    public IReadOnlyDictionary<string, uint> RefreshRoleSavedValues()
+    {
+        var next = new Dictionary<string, uint>(StringComparer.Ordinal);
+        foreach (var role in Roles.Where(role => IsActivePosition(role.Position)))
+            foreach (var (key, value) in _catalog.ResolveRoleSavedValues(role.RoleId, role.Star))
+                next[key] = Math.Max(next.GetValueOrDefault(key), value);
+
+        var changes = _roleSavedValues.Keys
+            .Concat(next.Keys)
+            .Distinct(StringComparer.Ordinal)
+            .Where(key => _roleSavedValues.GetValueOrDefault(key) != next.GetValueOrDefault(key))
+            .Order(StringComparer.Ordinal)
+            .ToDictionary(key => key, key => next.GetValueOrDefault(key), StringComparer.Ordinal);
+        _roleSavedValues.Clear();
+        foreach (var (key, value) in next) _roleSavedValues[key] = value;
+        return changes;
+    }
+
+    public IReadOnlyDictionary<string, uint> ResolveRoleSavedValues(GridFightRoleState role, uint roleId)
+    {
+        return _catalog.ResolveRoleSavedValues(roleId, role.Star);
+    }
 
     public GridFightRoleSwitchUpdate? ConsumeRoleSwitchUpdate()
     {

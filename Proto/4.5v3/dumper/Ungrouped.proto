@@ -7768,8 +7768,8 @@ enum ExtraLineupType {
     ExtraLineupType_LineupGridFight = 19;
 }
 
-message FADHEIGJENF {
-    map<string, uint32> HJMAEDKCONE = 14;
+message GridFightSavedValueUpdate {
+    map<string, uint32> saved_values = 14;
 }
 
 message FAFBDGCEAHD {
@@ -12700,7 +12700,7 @@ message GridFightSyncData {
     uint32 OOAGJADOJNB = 285;
     uint32 CDKJHJNFDIH = 1688;
     uint32 LDPPDHGNCHL = 335;
-    FADHEIGJENF HJMAEDKCONE = 1585;
+    GridFightSavedValueUpdate saved_value_update = 1585;
     GridFightSettleAvatarInfo PPJFPNMIFHL = 781;
     uint32 LOGJNAICJPA = 242;
     GridFightAffixInfo MHFOELCFJGK = 23;
