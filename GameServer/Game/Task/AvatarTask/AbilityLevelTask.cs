@@ -40,7 +40,7 @@ public class AbilityLevelTask(PlayerInstance player)
             return target.Alias switch
             {
                 "Caster" or "ModifierOwnerEntity" => [casterEntity],
-                "ParamEntity" or "AllEnemy" or "AbilityTargetEntity" => targetEntities,
+                "ParamEntity" or "ParamEntityList" or "AllEnemy" or "AbilityTargetEntity" => targetEntities,
                 "AdvTeamMembers" => Player.SceneInstance!.AvatarInfo.Values.ToList().OfType<BaseGameEntity>().ToList(),
                 "AdvLocalPlayer" => Player.SceneInstance!.AvatarInfo.Values
                     .Where(x => x.AvatarInfo.BaseAvatarId == Player.LineupManager!.GetCurLineup()?.LeaderAvatarId)
@@ -117,6 +117,19 @@ public class AbilityLevelTask(PlayerInstance player)
     private delegate ValueTask<object> ExecuteTask(AbilityLevelParam param);
 
     private readonly ConcurrentDictionary<string, ExecuteTask> _cachedTasks = [];
+
+    private async ValueTask<bool> EvaluatePredicate(PredicateConfigInfo predicate, AbilityLevelParam param)
+    {
+        if (predicate is UnknownPredicateConfigInfo || string.IsNullOrEmpty(predicate.Type)) return true;
+
+        var methodName = predicate.Type.Replace("RPG.GameCore.", "");
+        var method = GetOrCreateExecuteTask(methodName);
+        if (method == null) return true;
+
+        var resp = await method(param with { Act = predicate });
+        if (resp is not bool result) return false;
+        return predicate.Inverse ? !result : result;
+    }
 
     #endregion
 
@@ -394,6 +407,9 @@ public class AbilityLevelTask(PlayerInstance player)
 
             foreach (var entity in target)
             {
+                if (!await EvaluatePredicate(addMazeBuff.Condition, param with { TargetEntities = [entity] }))
+                    continue;
+
                 var buffOwnerAvatarId = (param.CasterEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0;
                 var summonCaster = param.CasterEntity as EntitySummonUnit;
                 if (summonCaster != null) buffOwnerAvatarId = summonCaster.CreateAvatarId;
@@ -664,6 +680,29 @@ public class AbilityLevelTask(PlayerInstance player)
     #endregion
 
     #region Predicate
+
+    public async ValueTask<object> AdvByContainBehaviorFlag(AbilityLevelParam param)
+    {
+        if (param.Act is not Data.Config.Task.AdvByContainBehaviorFlag predicate ||
+            string.IsNullOrEmpty(predicate.Flag))
+            return false;
+
+        List<BaseGameEntity> targets = param.TargetEntities;
+        if (!string.IsNullOrEmpty(predicate.TargetType.Type))
+        {
+            var methodName = predicate.TargetType.Type.Replace("RPG.GameCore.", "");
+            var method = GetOrCreateExecuteTask(methodName);
+            if (method == null ||
+                await method(param with { TargetEvaluator = predicate.TargetType }) is not List<BaseGameEntity> resolved)
+                return false;
+
+            targets = resolved;
+        }
+
+        return targets.OfType<IGameModifier>().Any(entity => entity.Modifiers.Any(modifierName =>
+            GameData.AdventureModifierData.TryGetValue(modifierName, out var modifier) &&
+            modifier.BehaviorFlagList.Contains(predicate.Flag, StringComparer.Ordinal)));
+    }
 
     public async ValueTask<object> ByAllowInstantKill(AbilityLevelParam param)
     {
