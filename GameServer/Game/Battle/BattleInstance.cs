@@ -304,13 +304,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
 
         System.Threading.Tasks.Task.Run(async () =>
         {
-            foreach (var monster in EntityMonsters) await monster.ApplyBuff(this);
-
-            foreach (var avatar in AvatarInfo)
-                if (avatars.Select(x => x.AvatarInfo).FirstOrDefault(x =>
-                        x.BaseAvatarId == avatar.AvatarInfo.BaseAvatarId) !=
-                    null) // if avatar is in lineup
-                    await avatar.ApplyBuff(this);
+            await PrepareSceneBuffs(avatars);
         }).Wait();
 
         foreach (var buff in Buffs.Clone())
@@ -366,6 +360,27 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
 
         proto.BuffList.AddRange(Buffs.Select(buff => buff.ToProto(this)));
         return proto;
+    }
+
+    private async ValueTask PrepareSceneBuffs(List<AvatarLineupData> avatars)
+    {
+        var battleAvatarIds = avatars.Select(x => x.AvatarInfo.BaseAvatarId).ToHashSet();
+        var battleAvatars = AvatarInfo.Where(x => battleAvatarIds.Contains(x.AvatarInfo.BaseAvatarId)).ToList();
+        var battleTargets = EntityMonsters.Cast<BaseGameEntity>().ToList();
+
+        foreach (var avatar in battleAvatars)
+        foreach (var modifierName in avatar.Modifiers.ToArray())
+        {
+            if (!avatar.TryResolveModifier(modifierName, out var abilityList, out var modifier) ||
+                modifier.OnBeforeBattle.Count == 0)
+                continue;
+
+            await Player.TaskManager!.AbilityLevelTask.TriggerTasks(abilityList, modifier.OnBeforeBattle, avatar,
+                battleTargets, new SceneCastSkillCsReq());
+        }
+
+        foreach (var monster in EntityMonsters) await monster.ApplyBuff(this);
+        foreach (var avatar in battleAvatars) await avatar.ApplyBuff(this);
     }
 
     private static bool TryResolveStageFromEvent(int eventId, int worldLevel, out StageConfigExcel? stage)
