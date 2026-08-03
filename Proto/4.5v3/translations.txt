@@ -404,6 +404,7 @@ NNKJBOKLHAF = GetMuseumInfoCsReq
 
 // GridFight protocol compatibility
 !ABPLALCHNFA = GridFightSyncResultData
+!FADHEIGJENF = GridFightSavedValueUpdate
 !MHEGMHKHAAD = GridFightPosInfo
 !JBOOPAPNFDC = GridFightBuyGoodsCsReq
 !CBEEKLPIEMK = GridFightBuyGoodsScRsp
@@ -589,6 +590,8 @@ GridFightRecommendEquipmentSelectActionRequest.KHENDMLMNMB = equipment_id
 !GridFightRoleSwitchEntry.LEOCEFMKAEM = role_id_list
 !GridFightRoleSwitchEntry.BLAEAAFANBM = current_role_id
 !GridFightSyncData.BKDDCFHELNB = role_switch_info
+!GridFightSyncData.HJMAEDKCONE = saved_value_update
+!GridFightSavedValueUpdate.HJMAEDKCONE = saved_values
 
 !GridFightEquipDressSource.DMGOKGLBNJJ_IMLHGIMCJGG = GridFightEquipDressSource_None
 !GridFightEquipDressSource.DMGOKGLBNJJ_GPAPBPFNKBI = GridFightEquipDressSource_Manual
