@@ -1,5 +1,6 @@
 using March7thHoney.Command;
 using March7thHoney.Util;
+using System.Text.Json.Serialization;
 
 namespace March7thHoney.Configuration;
 
@@ -10,9 +11,18 @@ public class ConfigContainer
     public GameServerConfig GameServer { get; set; } = new();
     public PathConfig Path { get; set; } = new();
     public DatabaseConfig Database { get; set; } = new();
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public LifecycleNotificationConfig? LifecycleNotification { get; set; }
     public ServerOption ServerOption { get; set; } = new();
     public MuipServerConfig MuipServer { get; set; } = new();
     public WebSecurityConfig WebSecurity { get; set; } = new();
+}
+
+public class LifecycleNotificationConfig
+{
+    public bool Enabled { get; set; } = false;
+    public int ControlApiPort { get; set; } = 3101;
+    public string ControlApiToken { get; set; } = "";
 }
 
 public class HttpServerConfig

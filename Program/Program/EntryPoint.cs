@@ -29,6 +29,7 @@ public class EntryPoint
     public static readonly DatabaseHelper DatabaseHelper = new();
     public static readonly Listener Listener = new();
     public static readonly CommandManager CommandManager = new();
+    private static PosixSignalRegistration? _sigtermRegistration;
 
     public static async Task Main(string[] args)
     {
@@ -58,6 +59,8 @@ public class EntryPoint
         // .NET 10 dropped ProcessExit on window-close/logoff/shutdown; hook the Win32 console control events so the DB save runs (Windows-only kernel32 P/Invoke).
         if (OperatingSystem.IsWindows())
             SetConsoleCtrlHandler(ConsoleCtrlHandlerKeepAlive, true);
+        else if (OperatingSystem.IsLinux())
+            _sigtermRegistration = PosixSignalRegistration.Create(PosixSignal.SIGTERM, OnSigTerm);
         var time = DateTime.Now;
 
         // pack the old log
@@ -432,6 +435,7 @@ public class EntryPoint
             Logger.Warn(I18NManager.Translate("Server.ServerInfo.MissionEnabled"));
 
         ResourceManager.IsLoaded = true;
+        await LifecycleNotifier.NotifyStartedAsync(GameConstants.GAME_VERSION);
 
         IConsole.OnConsoleExcuteCommand += command =>
         {
@@ -440,6 +444,7 @@ public class EntryPoint
         };
 
         IConsole.ListenConsole();
+        GC.KeepAlive(_sigtermRegistration);
     }
 
     public static ConfigContainer GetConfig()
@@ -461,12 +466,20 @@ public class EntryPoint
         return false;
     }
 
+    private static void OnSigTerm(PosixSignalContext context)
+    {
+        context.Cancel = true;
+        Environment.Exit(0);
+    }
+
     private static void PerformCleanup()
     {
+        var notificationTask = LifecycleNotifier.NotifyMaintenanceAsync();
         // Stopping a live connection on shutdown can throw (disposed CancellationTokenSource race); never let it skip the save.
         try { March7thHoneyListener.GetSnapshot().ForEach(x => x.Stop()); }
         catch (Exception e) { Logger.Error("Cleanup: failed to stop connections", e); }
         DatabaseHelper.SaveDatabase();
+        notificationTask.GetAwaiter().GetResult();
     }
 
     private static void GenerateLogMap()
@@ -481,4 +494,3 @@ public class EntryPoint
         }
     }
 }
-
