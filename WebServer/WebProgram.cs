@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text.RegularExpressions;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Controllers;
 using Microsoft.AspNetCore.Builder;
@@ -13,6 +14,11 @@ namespace March7thHoney.WebServer;
 
 public class WebProgram
 {
+    private static readonly Logger Logger = new("WebServer");
+
+    private static readonly Regex TokenPattern =
+        new("(\"[a-z_]*(?:token|sign|auth_key)\"\\s*:\\s*\")[^\"]*\"", RegexOptions.IgnoreCase);
+
     public static void Main(string[] args, int port, string address)
     {
         BuildWebApp(args, port, address).Start();
@@ -73,6 +79,7 @@ public class WebProgram
             try
             {
                 await next.Invoke();
+                await LogUnhandledRequest(context);
                 buffer.Position = 0;
 
                 if (!response.HasStarted)
@@ -101,8 +108,31 @@ public class WebProgram
         app.MapHandbookRoutes();
         app.MapJsonRoutes();
         app.MapDispatchRoutes();
+        app.MapSdkShopRoutes();
         app.MapAdminRoutes();
 
         return app;
+    }
+
+    // Surfaces routes the client asks for but the server does not implement yet.
+    private static async Task LogUnhandledRequest(HttpContext context)
+    {
+        if (context.Response.StatusCode != StatusCodes.Status404NotFound) return;
+
+        var body = "";
+        try
+        {
+            using var reader = new StreamReader(context.Request.Body);
+            body = await reader.ReadToEndAsync();
+            if (body.Length > 512) body = body[..512];
+            body = TokenPattern.Replace(body, "$1<redacted>\"");
+        }
+        catch (Exception)
+        {
+            body = "<unreadable>";
+        }
+
+        Logger.Warn($"Unhandled request. {context.Request.Method} {context.Request.Path}{context.Request.QueryString} " +
+                    $"body={body}");
     }
 }
