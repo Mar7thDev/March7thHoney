@@ -124,7 +124,7 @@ public static class SdkShopRoutes
     {
         var request = await SdkRequest.Read(ctx);
         Logger.Info($"checkOrder. {request.Describe()}");
-        await Json(ctx, PayAborted("order not found"));
+        await Json(ctx, PayAborted());
     }
 
     private static async Task CreateOrder(HttpContext ctx)
@@ -134,7 +134,8 @@ public static class SdkShopRoutes
 
         if (!Config.ServerOption.EnableFakeRecharge)
         {
-            await Json(ctx, PayAborted("fake recharge disabled"));
+            Logger.Info("createOrder ignored, fake recharge is disabled");
+            await Json(ctx, PayAborted());
             return;
         }
 
@@ -142,14 +143,14 @@ public static class SdkShopRoutes
         if (product == null)
         {
             Logger.Warn($"createOrder did not match any recharge tier. {request.Describe()}");
-            await Json(ctx, PayAborted("unknown product"));
+            await Json(ctx, PayAborted());
             return;
         }
 
         if (product.GiftType != (int)ProductGiftType.ProductGiftCoin)
         {
             Logger.Warn($"createOrder for unsupported gift type {product.GiftType}, product={product.ProductID}");
-            await Json(ctx, PayAborted("unsupported product"));
+            await Json(ctx, PayAborted());
             return;
         }
 
@@ -157,19 +158,19 @@ public static class SdkShopRoutes
         if (player?.InventoryManager == null)
         {
             Logger.Warn($"createOrder has no online player. {request.Describe()}");
-            await Json(ctx, PayAborted("player offline"));
+            await Json(ctx, PayAborted());
             return;
         }
 
         if (!TryMarkGranted(player.Uid, product.ProductID))
         {
             Logger.Info($"createOrder deduplicated. uid={player.Uid} product={product.ProductID}");
-            await Json(ctx, PayAborted("duplicated"));
+            await Json(ctx, PayAborted());
             return;
         }
 
         await GrantRecharge(player, product);
-        await Json(ctx, PayAborted("granted"));
+        await Json(ctx, PayAborted());
     }
 
     private static async Task GrantRecharge(PlayerInstance player, RechargeConfigExcel product)
@@ -260,9 +261,10 @@ public static class SdkShopRoutes
         return version.ToString(CultureInfo.InvariantCulture);
     }
 
-    private static string PayAborted(string reason)
+    // The client surfaces this message in a toast, so keep it empty and log the reason instead.
+    private static string PayAborted()
     {
-        return $"{{\"retcode\":{PayAbortedRetcode},\"message\":\"{reason}\",\"data\":null}}";
+        return $"{{\"retcode\":{PayAbortedRetcode},\"message\":\"\",\"data\":null}}";
     }
 }
 
