@@ -20,10 +20,17 @@ namespace March7thHoney.GameServer.Game.ChallengePeak;
 /// <see cref="March7thHoney.GameServer.Game.Challenge.ChallengeManager" />
 public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(player)
 {
-    // 王棋难度按 group 记忆(随 SetChallengePeakBossHardMode 改变, 离开不重置), 对齐官服按 peakGroupId 跟踪
-    private readonly Dictionary<int, bool> _bossHardByGroup = [];
-    public void SetBossHard(int groupId, bool hard) => _bossHardByGroup[groupId] = hard;
-    public bool IsBossHard(int groupId) => _bossHardByGroup.GetValueOrDefault(groupId, false);
+    // 王棋难度按 group 持久化(随 SetChallengePeakBossHardMode 改变, 离开/重登都不重置), 对齐官服按 peakGroupId 跟踪
+    public void SetBossHard(int groupId, bool hard)
+    {
+        var data = Player.ChallengeManager!.ChallengeData;
+        data.PeakBossHardByGroup[groupId] = hard;
+        DatabaseHelper.MarkDirty(Player.Uid);
+        DatabaseHelper.SaveDatabaseType(data);
+    }
+
+    public bool IsBossHard(int groupId) =>
+        Player.ChallengeManager!.ChallengeData.PeakBossHardByGroup.GetValueOrDefault(groupId, false);
 
     public int GetCurrentGroupId()
     {
@@ -43,13 +50,13 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         return true;
     }
 
-    public ChallengePeakGroup GetChallengePeakInfo(int groupId, bool disableHardMode = true)
+    public ChallengePeakGroup GetChallengePeakInfo(int groupId, bool? disableHardMode = null)
     {
         var proto = new ChallengePeakGroup
         {
             PeakGroupId = (uint)groupId,
-            // 总览/普通局=true(普通绝境开关均可选); 绝境局进行中=false, 否则客户端结算按普通蓝色模板渲染
-            DisableHardMode = disableHardMode
+            // 未显式指定则按 group 记忆的难度下发: true=普通蓝, false=绝境红
+            DisableHardMode = disableHardMode ?? !IsBossHard(groupId)
         };
 
         var data = GameData.ChallengePeakGroupConfigData.GetValueOrDefault(groupId);
