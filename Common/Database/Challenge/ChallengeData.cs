@@ -20,6 +20,9 @@ public class ChallengeData : BaseDatabaseDataHelper
     public Dictionary<int, ChallengePeakBossLevelData> PeakBossLevelDatas { get; set; } = new();
     public int CurrentPeakGroupId { get; set; }
 
+    // 王棋难度按 peakGroupId 持久化, 跨登录记忆玩家选择的普通/绝境
+    public Dictionary<int, bool> PeakBossHardByGroup { get; set; } = new();
+
     public string? TierceInstance { get; set; }
 
     public Dictionary<int, ChallengeTierceHistoryData> TierceHistory { get; set; } = new();
