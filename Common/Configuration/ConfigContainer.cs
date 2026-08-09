@@ -116,6 +116,9 @@ public class ServerOption
     public bool LoadPausedModuleData { get; set; } = false;
 
     public bool EnableMonthCard { get; set; } = true;
+
+    // Show the Oneiric Shard tiers and grant them instantly instead of running the real SDK payment.
+    public bool EnableFakeRecharge { get; set; } = true;
     public ServerTimeOption ServerTime { get; set; } = new();
     public WelcomeMailConfig WelcomeMail { get; set; } = new();
 

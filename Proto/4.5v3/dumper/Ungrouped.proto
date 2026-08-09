@@ -14669,7 +14669,7 @@ message INIMLGAKMFB {
     repeated FPDBFGBJOFD NGKKFPLHMEM = 6;
 }
 
-message INKEEEKKNKF {
+message CancelAutoConversionCacheScRsp {
     uint32 retcode = 10;
 }
 
@@ -21293,7 +21293,7 @@ message PILLGGGIPAF {
     uint32 PLDKENJLKME = 10;
 }
 
-message PIMFFPGEPIO {
+message CancelAutoConversionCacheCsReq {
     repeated string OKFMBDEECCH = 7;
     BMHIHBHECKD type = 1;
     repeated uint32 JALHKMEOOPN = 2;
@@ -22583,14 +22583,14 @@ message PrestigeLevelUpScRsp {
 }
 
 message Product {
-    uint32 CLDELMPNAPB = 7;
-    uint32 ENCDABOOIKJ = 4;
+    uint32 max_buy_times = 7;
+    uint32 buy_times = 4;
     int64 begin_time = 11;
     string price_tier = 15;
     bool double_reward = 13;
     int64 end_time = 1;
     ProductGiftType gift_type = 8;
-    uint32 EMIHEDNKBCA = 6;
+    uint32 gift_version = 6;
     string product_id = 3;
 }
 
