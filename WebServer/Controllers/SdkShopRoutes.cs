@@ -287,11 +287,12 @@ public static class SdkShopRoutes
         return version.ToString(CultureInfo.InvariantCulture);
     }
 
-    // The payment page reads order_no and jwt off this reply; anything else it takes from its own state.
+    // The SDK rejects the order outright when session_token is missing, and the page reads order_no and jwt.
     private static string CreatedOrder(string orderNumber)
     {
+        var token = BuildOrderToken(orderNumber);
         return $"{{\"retcode\":0,\"message\":\"OK\",\"data\":{{\"order_no\":\"{orderNumber}\"," +
-               $"\"jwt\":\"{BuildOrderToken(orderNumber)}\"}}}}";
+               $"\"session_token\":\"{token}\",\"jwt\":\"{token}\"}}}}";
     }
 
     private static string BuildOrderToken(string orderNumber)
