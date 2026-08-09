@@ -101,6 +101,7 @@ public class WebProgram
         app.MapHandbookRoutes();
         app.MapJsonRoutes();
         app.MapDispatchRoutes();
+        app.MapSdkShopRoutes();
         app.MapAdminRoutes();
 
         return app;

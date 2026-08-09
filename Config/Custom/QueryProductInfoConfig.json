@@ -1,7 +1,364 @@
 {
+  "currency": "CNY",
+  "currencySymbol": "￥",
+  "countryCode": "CN",
+  "tierPriceList": [
+    {
+      "tierId": "Tier_1",
+      "price": 6.0
+    },
+    {
+      "tierId": "Tier_2",
+      "price": 12.0
+    },
+    {
+      "tierId": "Tier_3",
+      "price": 18.0
+    },
+    {
+      "tierId": "Tier_4",
+      "price": 24.0
+    },
+    {
+      "tierId": "Tier_5",
+      "price": 30.0
+    },
+    {
+      "tierId": "Tier_6",
+      "price": 40.0
+    },
+    {
+      "tierId": "Tier_7",
+      "price": 45.0
+    },
+    {
+      "tierId": "Tier_8",
+      "price": 50.0
+    },
+    {
+      "tierId": "Tier_9",
+      "price": 60.0
+    },
+    {
+      "tierId": "Tier_10",
+      "price": 68.0
+    },
+    {
+      "tierId": "Tier_11",
+      "price": 73.0
+    },
+    {
+      "tierId": "Tier_12",
+      "price": 78.0
+    },
+    {
+      "tierId": "Tier_13",
+      "price": 88.0
+    },
+    {
+      "tierId": "Tier_14",
+      "price": 93.0
+    },
+    {
+      "tierId": "Tier_15",
+      "price": 98.0
+    },
+    {
+      "tierId": "Tier_16",
+      "price": 108.0
+    },
+    {
+      "tierId": "Tier_17",
+      "price": 113.0
+    },
+    {
+      "tierId": "Tier_18",
+      "price": 118.0
+    },
+    {
+      "tierId": "Tier_19",
+      "price": 123.0
+    },
+    {
+      "tierId": "Tier_20",
+      "price": 128.0
+    },
+    {
+      "tierId": "Tier_21",
+      "price": 138.0
+    },
+    {
+      "tierId": "Tier_22",
+      "price": 148.0
+    },
+    {
+      "tierId": "Tier_23",
+      "price": 153.0
+    },
+    {
+      "tierId": "Tier_24",
+      "price": 158.0
+    },
+    {
+      "tierId": "Tier_25",
+      "price": 163.0
+    },
+    {
+      "tierId": "Tier_26",
+      "price": 168.0
+    },
+    {
+      "tierId": "Tier_27",
+      "price": 178.0
+    },
+    {
+      "tierId": "Tier_28",
+      "price": 188.0
+    },
+    {
+      "tierId": "Tier_29",
+      "price": 193.0
+    },
+    {
+      "tierId": "Tier_30",
+      "price": 198.0
+    },
+    {
+      "tierId": "Tier_31",
+      "price": 208.0
+    },
+    {
+      "tierId": "Tier_32",
+      "price": 218.0
+    },
+    {
+      "tierId": "Tier_33",
+      "price": 223.0
+    },
+    {
+      "tierId": "Tier_34",
+      "price": 228.0
+    },
+    {
+      "tierId": "Tier_35",
+      "price": 233.0
+    },
+    {
+      "tierId": "Tier_36",
+      "price": 238.0
+    },
+    {
+      "tierId": "Tier_37",
+      "price": 243.0
+    },
+    {
+      "tierId": "Tier_38",
+      "price": 248.0
+    },
+    {
+      "tierId": "Tier_39",
+      "price": 253.0
+    },
+    {
+      "tierId": "Tier_40",
+      "price": 258.0
+    },
+    {
+      "tierId": "Tier_41",
+      "price": 263.0
+    },
+    {
+      "tierId": "Tier_42",
+      "price": 268.0
+    },
+    {
+      "tierId": "Tier_43",
+      "price": 273.0
+    },
+    {
+      "tierId": "Tier_44",
+      "price": 278.0
+    },
+    {
+      "tierId": "Tier_45",
+      "price": 283.0
+    },
+    {
+      "tierId": "Tier_46",
+      "price": 288.0
+    },
+    {
+      "tierId": "Tier_47",
+      "price": 298.0
+    },
+    {
+      "tierId": "Tier_48",
+      "price": 308.0
+    },
+    {
+      "tierId": "Tier_49",
+      "price": 318.0
+    },
+    {
+      "tierId": "Tier_50",
+      "price": 328.0
+    },
+    {
+      "tierId": "Tier_51",
+      "price": 348.0
+    },
+    {
+      "tierId": "Tier_52",
+      "price": 388.0
+    },
+    {
+      "tierId": "Tier_53",
+      "price": 418.0
+    },
+    {
+      "tierId": "Tier_54",
+      "price": 448.0
+    },
+    {
+      "tierId": "Tier_55",
+      "price": 488.0
+    },
+    {
+      "tierId": "Tier_56",
+      "price": 518.0
+    },
+    {
+      "tierId": "Tier_57",
+      "price": 548.0
+    },
+    {
+      "tierId": "Tier_58",
+      "price": 588.0
+    },
+    {
+      "tierId": "Tier_59",
+      "price": 618.0
+    },
+    {
+      "tierId": "Tier_60",
+      "price": 648.0
+    },
+    {
+      "tierId": "Tier_61",
+      "price": 698.0
+    },
+    {
+      "tierId": "Tier_62",
+      "price": 798.0
+    },
+    {
+      "tierId": "Tier_63",
+      "price": 818.0
+    },
+    {
+      "tierId": "Tier_64",
+      "price": 848.0
+    },
+    {
+      "tierId": "Tier_65",
+      "price": 898.0
+    },
+    {
+      "tierId": "Tier_66",
+      "price": 998.0
+    },
+    {
+      "tierId": "Tier_67",
+      "price": 1048.0
+    },
+    {
+      "tierId": "Tier_68",
+      "price": 1098.0
+    },
+    {
+      "tierId": "Tier_69",
+      "price": 1148.0
+    },
+    {
+      "tierId": "Tier_70",
+      "price": 1198.0
+    },
+    {
+      "tierId": "Tier_71",
+      "price": 1248.0
+    },
+    {
+      "tierId": "Tier_72",
+      "price": 1298.0
+    },
+    {
+      "tierId": "Tier_73",
+      "price": 1398.0
+    },
+    {
+      "tierId": "Tier_74",
+      "price": 1448.0
+    },
+    {
+      "tierId": "Tier_75",
+      "price": 1498.0
+    },
+    {
+      "tierId": "Tier_76",
+      "price": 1598.0
+    },
+    {
+      "tierId": "Tier_77",
+      "price": 1648.0
+    },
+    {
+      "tierId": "Tier_78",
+      "price": 1998.0
+    },
+    {
+      "tierId": "Tier_79",
+      "price": 2298.0
+    },
+    {
+      "tierId": "Tier_80",
+      "price": 2598.0
+    },
+    {
+      "tierId": "Alternate_Tier_A",
+      "price": 1.0
+    },
+    {
+      "tierId": "Alternate_Tier_B",
+      "price": 3.0
+    },
+    {
+      "tierId": "Alternate_Tier_1",
+      "price": 8.0
+    },
+    {
+      "tierId": "Alternate_Tier_2",
+      "price": 12.0
+    },
+    {
+      "tierId": "Alternate_Tier_3",
+      "price": 18.0
+    },
+    {
+      "tierId": "Alternate_Tier_4",
+      "price": 28.0
+    },
+    {
+      "tierId": "Alternate_Tier_5",
+      "price": 30.0
+    },
+    {
+      "tierId": "Alternate_Tier_5_99",
+      "price": 36.0
+    }
+  ],
   "productList": [
     {
-      "JCJGHCOEOOJ": 50,
+      "maxBuyTimes": 50,
       "beginTime": "978325200",
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_APPLE_GIFT_CARD",
@@ -9,7 +366,7 @@
       "productId": "rpgglbios050giftcard"
     },
     {
-      "JCJGHCOEOOJ": 2000,
+      "maxBuyTimes": 2000,
       "beginTime": "978325200",
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_GOOGLE_POINTS_150",
@@ -17,7 +374,7 @@
       "productId": "rpgglbgoogle150giftcard"
     },
     {
-      "JCJGHCOEOOJ": 2,
+      "maxBuyTimes": 2,
       "beginTime": "1751274000",
       "endTime": "1755028799",
       "giftType": "PRODUCT_GIFT_TICKET_10",
@@ -25,7 +382,7 @@
       "productId": "rpgglbtickettier15"
     },
     {
-      "JCJGHCOEOOJ": 1,
+      "maxBuyTimes": 1,
       "beginTime": "1751274000",
       "endTime": "1755028799",
       "giftType": "PRODUCT_GIFT_SINGLE_6",
@@ -47,8 +404,8 @@
       "productId": "rpgftcticket1tierusd259"
     },
     {
-      "JCJGHCOEOOJ": 1,
-      "MEMNCJLKAEE": 2,
+      "maxBuyTimes": 1,
+      "giftVersion": 2,
       "beginTime": "1770897600",
       "endTime": "1774382400",
       "giftType": "PRODUCT_GIFT_SINGLE_6",
@@ -57,7 +414,6 @@
     },
     {
       "beginTime": "1577854800",
-      "doubleReward": true,
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_COIN",
       "priceTier": "Tier_1",
@@ -65,7 +421,6 @@
     },
     {
       "beginTime": "1577854800",
-      "doubleReward": true,
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_COIN",
       "priceTier": "Tier_60",
@@ -73,15 +428,14 @@
     },
     {
       "beginTime": "1577854800",
-      "doubleReward": true,
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_COIN",
       "priceTier": "Tier_50",
       "productId": "rpgglbcoin3280tier50"
     },
     {
-      "JCJGHCOEOOJ": 1,
-      "MEMNCJLKAEE": 3,
+      "maxBuyTimes": 1,
+      "giftVersion": 3,
       "beginTime": "1776722400",
       "endTime": "1780257599",
       "giftType": "PRODUCT_GIFT_DAILY_LOGIN_30",
@@ -90,7 +444,6 @@
     },
     {
       "beginTime": "1577854800",
-      "doubleReward": true,
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_COIN",
       "priceTier": "Tier_30",
@@ -112,7 +465,6 @@
     },
     {
       "beginTime": "1577854800",
-      "doubleReward": true,
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_COIN",
       "priceTier": "Tier_15",
@@ -120,14 +472,13 @@
     },
     {
       "beginTime": "1577854800",
-      "doubleReward": true,
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_COIN",
       "priceTier": "Tier_5",
       "productId": "rpgglbcoin300tier5"
     },
     {
-      "JCJGHCOEOOJ": 1,
+      "maxBuyTimes": 1,
       "beginTime": "1744016400",
       "endTime": "1747771199",
       "giftType": "PRODUCT_GIFT_SINGLE_6",
@@ -135,8 +486,8 @@
       "productId": "rpgglbyeartier1"
     },
     {
-      "JCJGHCOEOOJ": 2,
-      "MEMNCJLKAEE": 1,
+      "maxBuyTimes": 2,
+      "giftVersion": 1,
       "beginTime": "1770897600",
       "endTime": "1774382400",
       "giftType": "PRODUCT_GIFT_TICKET_10",
@@ -165,8 +516,8 @@
       "productId": "rpgglbpointcardtierx"
     },
     {
-      "JCJGHCOEOOJ": 1,
-      "MEMNCJLKAEE": 1,
+      "maxBuyTimes": 1,
+      "giftVersion": 1,
       "beginTime": "1776810600",
       "endTime": "4070926800",
       "giftType": "EJEBHIIKAJF_DBIADNGNFMD",
@@ -174,8 +525,8 @@
       "productId": "rpgglbskintier4"
     },
     {
-      "JCJGHCOEOOJ": 1,
-      "MEMNCJLKAEE": 1,
+      "maxBuyTimes": 1,
+      "giftVersion": 1,
       "beginTime": "1776722400",
       "endTime": "1780257599",
       "giftType": 25,
@@ -183,7 +534,7 @@
       "productId": "rpgglbyear4tierusd029"
     },
     {
-      "JCJGHCOEOOJ": 2000,
+      "maxBuyTimes": 2000,
       "beginTime": "978325200",
       "endTime": "4070926800",
       "giftType": "PRODUCT_GIFT_GOOGLE_POINTS_100",
