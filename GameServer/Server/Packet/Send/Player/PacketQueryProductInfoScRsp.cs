@@ -35,9 +35,9 @@ public class PacketQueryProductInfoScRsp : BasePacket
 
             products.Add(new Product
             {
-                CLDELMPNAPB = item.JCJGHCOEOOJ,
-                EMIHEDNKBCA = item.MEMNCJLKAEE,
-                ENCDABOOIKJ = item.EEFHEBKHKAB,
+                MaxBuyTimes = item.MaxBuyTimes,
+                GiftVersion = item.GiftVersion,
+                BuyTimes = item.BuyTimes,
                 BeginTime = item.BeginTime,
                 EndTime = item.EndTime,
                 GiftType = giftType,

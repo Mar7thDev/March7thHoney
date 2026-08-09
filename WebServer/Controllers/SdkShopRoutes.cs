@@ -29,6 +29,18 @@ public static class SdkShopRoutes
     private static readonly Logger Logger = new("SdkShop");
     private static readonly Lock GrantLock = new();
     private static readonly Dictionary<string, long> LastGrantAt = [];
+    private static int _orderCounter;
+
+    // Mirrors the SDK's own closeWebview(): a hidden iframe navigating to the uniwebview scheme.
+    private const string PaymentPageHtml =
+        "<!doctype html><html><head><meta charset=\"utf-8\"><title></title>" +
+        "<style>html,body{margin:0;padding:0;width:100%;height:100%;background:transparent;overflow:hidden}</style>" +
+        "<script>(function(){var i='miHoYoGameJSSDKIframe';function c(){var f=document.getElementById(i);" +
+        "if(!f){f=document.createElement('iframe');f.id=i;f.style.display='none';" +
+        "(document.body||document.documentElement).appendChild(f);}f.src='uniwebview://close';}" +
+        "if(document.body){c();}else{document.addEventListener('DOMContentLoaded',c);}" +
+        "setTimeout(c,50);setTimeout(c,250);setTimeout(c,1000);})();</script>" +
+        "</head><body></body></html>";
 
     private static ConfigContainer Config => ConfigManager.Config;
 
@@ -58,8 +70,11 @@ public static class SdkShopRoutes
             app.MapMethods($"{prefix}mdk/luckycat/luckycat/createOrder", ["GET", "POST"], CreateOrder);
             app.MapMethods($"{prefix}combo/cashier/cashier/createOrder", ["GET", "POST"], CreateOrder);
             app.MapMethods($"{prefix}mdk/luckycat/luckycat/checkOrder", ["GET", "POST"], CheckOrder);
+            app.MapGet($"{prefix}payment/global-platform/checkout/index.html", PaymentPage);
+            app.MapGet($"{prefix}payment/platform/checkout-shell/index.html", PaymentPage);
         }
 
+        app.MapGet("/payment/global/sdk-pay/index.html", PaymentPage);
         app.MapMethods("/mm-backpack/v1/listGoods", ["GET", "POST"], ListGoods);
     }
 
@@ -120,11 +135,22 @@ public static class SdkShopRoutes
         await Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{}}");
     }
 
+    // Claiming the order was paid would push the SDK onto its success terminal, which pops its own dialog.
     private static async Task CheckOrder(HttpContext ctx)
     {
         var request = await SdkRequest.Read(ctx);
         Logger.Info($"checkOrder. {request.Describe()}");
         await Json(ctx, PayAborted());
+    }
+
+    // The SDK opens this page in a webview; closing it right away is the only silent way out of the pay flow.
+    private static Task PaymentPage(HttpContext ctx)
+    {
+        Logger.Info($"payment page requested. path={ctx.Request.Path}");
+
+        ctx.Response.ContentType = "text/html; charset=utf-8";
+        ctx.Response.Headers.CacheControl = "no-store";
+        return ctx.Response.WriteAsync(PaymentPageHtml);
     }
 
     private static async Task CreateOrder(HttpContext ctx)
@@ -170,7 +196,7 @@ public static class SdkShopRoutes
         }
 
         await GrantRecharge(player, product);
-        await Json(ctx, PayAborted());
+        await Json(ctx, CreatedOrder(NextOrderNumber()));
     }
 
     private static async Task GrantRecharge(PlayerInstance player, RechargeConfigExcel product)
@@ -261,10 +287,35 @@ public static class SdkShopRoutes
         return version.ToString(CultureInfo.InvariantCulture);
     }
 
-    // The client surfaces this message in a toast, so keep it empty and log the reason instead.
+    // The payment page reads order_no and jwt off this reply; anything else it takes from its own state.
+    private static string CreatedOrder(string orderNumber)
+    {
+        return $"{{\"retcode\":0,\"message\":\"OK\",\"data\":{{\"order_no\":\"{orderNumber}\"," +
+               $"\"jwt\":\"{BuildOrderToken(orderNumber)}\"}}}}";
+    }
+
+    private static string BuildOrderToken(string orderNumber)
+    {
+        var header = Base64Url("{\"alg\":\"HS256\",\"typ\":\"JWT\"}");
+        var payload = Base64Url($"{{\"order_no\":\"{orderNumber}\"}}");
+        return $"{header}.{payload}.{Base64Url(orderNumber)}";
+    }
+
+    private static string Base64Url(string value)
+    {
+        return Convert.ToBase64String(Encoding.UTF8.GetBytes(value))
+            .TrimEnd('=').Replace('+', '-').Replace('/', '_');
+    }
+
+    private static string NextOrderNumber()
+    {
+        return $"{Extensions.GetUnixMs()}{Interlocked.Increment(ref _orderCounter) % 1000:D3}";
+    }
+
+    // A blank message renders as an empty toast box, so keep it readable and log the real reason.
     private static string PayAborted()
     {
-        return $"{{\"retcode\":{PayAbortedRetcode},\"message\":\"\",\"data\":null}}";
+        return $"{{\"retcode\":{PayAbortedRetcode},\"message\":\"Order unavailable\",\"data\":null}}";
     }
 }
 
