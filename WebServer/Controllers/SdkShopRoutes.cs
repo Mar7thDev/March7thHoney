@@ -24,11 +24,8 @@ public static class SdkShopRoutes
 {
     private const int OneiricShardItemId = 3; // Mcoin
     private const int PayAbortedRetcode = -1;
-    private static readonly TimeSpan GrantDedupeWindow = TimeSpan.FromSeconds(5);
 
     private static readonly Logger Logger = new("SdkShop");
-    private static readonly Lock GrantLock = new();
-    private static readonly Dictionary<string, long> LastGrantAt = [];
     private static int _orderCounter;
 
     // Mirrors the SDK's own closeWebview(): a hidden iframe navigating to the uniwebview scheme.
@@ -78,29 +75,21 @@ public static class SdkShopRoutes
         app.MapMethods("/mm-backpack/v1/listGoods", ["GET", "POST"], ListGoods);
     }
 
-    private static async Task BeforeVerify(HttpContext ctx)
+    private static Task BeforeVerify(HttpContext ctx)
     {
-        var request = await SdkRequest.Read(ctx);
-        Logger.Info($"beforeVerify. {request.Describe()}");
-        await Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{}}");
+        return Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{}}");
     }
 
-    private static async Task CurrencyAndCountry(HttpContext ctx)
+    private static Task CurrencyAndCountry(HttpContext ctx)
     {
-        var request = await SdkRequest.Read(ctx);
-        Logger.Info($"getCurrencyAndCountryByIp. {request.Describe()}");
-
         var config = GameData.QueryProductInfoConfig;
-        await Json(ctx,
+        return Json(ctx,
             $"{{\"retcode\":0,\"message\":\"OK\",\"data\":{{\"currency\":\"{config.Currency}\"," +
             $"\"country\":\"{config.CountryCode}\"}}}}");
     }
 
-    private static async Task ListPriceTier(HttpContext ctx)
+    private static Task ListPriceTier(HttpContext ctx)
     {
-        var request = await SdkRequest.Read(ctx);
-        Logger.Info($"listPriceTier. {request.Describe()}");
-
         var config = GameData.QueryProductInfoConfig;
         var rows = new StringBuilder();
         foreach (var tier in config.TierPriceList)
@@ -109,45 +98,35 @@ public static class SdkShopRoutes
             rows.Append(BuildTierJson(config, tier));
         }
 
-        await Json(ctx,
+        return Json(ctx,
             $"{{\"retcode\":0,\"message\":\"OK\",\"data\":{{\"suggest_currency\":\"\",\"tiers\":[{rows}]," +
             $"\"price_tier_version\":\"{PriceTierVersion(config)}\"}}}}");
     }
 
-    private static async Task ListGoods(HttpContext ctx)
+    private static Task ListGoods(HttpContext ctx)
     {
-        var request = await SdkRequest.Read(ctx);
-        Logger.Info($"listGoods. {request.Describe()}");
-        await Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{\"goods_list\":[]}}");
+        return Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{\"goods_list\":[]}}");
     }
 
-    private static async Task ListPayPlat(HttpContext ctx)
+    private static Task ListPayPlat(HttpContext ctx)
     {
-        var request = await SdkRequest.Read(ctx);
-        Logger.Info($"listPayPlat. {request.Describe()}");
-        await Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{\"pay_plat\":[]}}");
+        return Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{\"pay_plat\":[]}}");
     }
 
-    private static async Task EmptyOk(HttpContext ctx)
+    private static Task EmptyOk(HttpContext ctx)
     {
-        var request = await SdkRequest.Read(ctx);
-        Logger.Info($"sdk pay endpoint. {request.Describe()}");
-        await Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{}}");
+        return Json(ctx, "{\"retcode\":0,\"message\":\"OK\",\"data\":{}}");
     }
 
     // Claiming the order was paid would push the SDK onto its success terminal, which pops its own dialog.
-    private static async Task CheckOrder(HttpContext ctx)
+    private static Task CheckOrder(HttpContext ctx)
     {
-        var request = await SdkRequest.Read(ctx);
-        Logger.Info($"checkOrder. {request.Describe()}");
-        await Json(ctx, PayAborted());
+        return Json(ctx, PayAborted());
     }
 
     // The SDK opens this page in a webview; closing it right away is the only silent way out of the pay flow.
     private static Task PaymentPage(HttpContext ctx)
     {
-        Logger.Info($"payment page requested. path={ctx.Request.Path}");
-
         ctx.Response.ContentType = "text/html; charset=utf-8";
         ctx.Response.Headers.CacheControl = "no-store";
         return ctx.Response.WriteAsync(PaymentPageHtml);
@@ -156,7 +135,6 @@ public static class SdkShopRoutes
     private static async Task CreateOrder(HttpContext ctx)
     {
         var request = await SdkRequest.Read(ctx);
-        Logger.Info($"createOrder. {request.Describe()}");
 
         if (!Config.ServerOption.EnableFakeRecharge)
         {
@@ -184,13 +162,6 @@ public static class SdkShopRoutes
         if (player?.InventoryManager == null)
         {
             Logger.Warn($"createOrder has no online player. {request.Describe()}");
-            await Json(ctx, PayAborted());
-            return;
-        }
-
-        if (!TryMarkGranted(player.Uid, product.ProductID))
-        {
-            Logger.Info($"createOrder deduplicated. uid={player.Uid} product={product.ProductID}");
             await Json(ctx, PayAborted());
             return;
         }
@@ -250,19 +221,6 @@ public static class SdkShopRoutes
         return online[0].Player;
     }
 
-    private static bool TryMarkGranted(int uid, string productId)
-    {
-        var now = Extensions.GetUnixMs();
-        var key = $"{uid}:{productId}";
-        lock (GrantLock)
-        {
-            if (LastGrantAt.TryGetValue(key, out var last) && now - last < (long)GrantDedupeWindow.TotalMilliseconds)
-                return false;
-
-            LastGrantAt[key] = now;
-            return true;
-        }
-    }
 
     // Shape recovered from the SDK's own cached price-tier payload; price is in minor units.
     private static string BuildTierJson(QueryProductInfoConfig config, QueryProductTierPrice tier)
