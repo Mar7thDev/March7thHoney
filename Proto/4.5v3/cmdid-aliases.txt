@@ -60,3 +60,5 @@ GridFightBuyExpScRsp = HMBDOOHKIBC
 GridFightBackToPrepareCsReq = MEPDHDGCGKH
 GridFightFinishTutorialCsReq = PAJHFEKAPMN
 GridFightGetFormationCsReq = CBEHKFHNNAI
+CancelAutoConversionCacheCsReq = PIMFFPGEPIO
+CancelAutoConversionCacheScRsp = INKEEEKKNKF
