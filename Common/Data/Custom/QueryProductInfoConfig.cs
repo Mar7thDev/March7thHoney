@@ -14,9 +14,9 @@ public partial class QueryProductInfoConfig
 [MemoryPackable]
 public partial class QueryProductInfoItem
 {
-    public uint JCJGHCOEOOJ { get; set; }
-    public uint MEMNCJLKAEE { get; set; }
-    public uint EEFHEBKHKAB { get; set; }
+    public uint MaxBuyTimes { get; set; }
+    public uint GiftVersion { get; set; }
+    public uint BuyTimes { get; set; }
     public long BeginTime { get; set; }
     public long EndTime { get; set; }
     public string GiftType { get; set; } = "";

@@ -5,8 +5,8 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Player;
 
 public class PacketCancelAutoConversionCacheScRsp : BasePacket
 {
-    public PacketCancelAutoConversionCacheScRsp() : base(CmdIds.INKEEEKKNKF)
+    public PacketCancelAutoConversionCacheScRsp() : base(CmdIds.CancelAutoConversionCacheScRsp)
     {
-        SetData(new INKEEEKKNKF());
+        SetData(new CancelAutoConversionCacheScRsp());
     }
 }

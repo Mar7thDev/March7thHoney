@@ -2606,4 +2606,6 @@ public class CmdIds
     public const int GridFightEquipCraftScRsp = 8519;
     public const int GridFightUseConsumableCsReq = 8739;
     public const int GridFightUseConsumableScRsp = 8579;
+    public const int CancelAutoConversionCacheCsReq = 4181;
+    public const int CancelAutoConversionCacheScRsp = 4161;
 }
