@@ -59,20 +59,35 @@ public partial class SceneInstance
                ?? 0;
     }
 
+    // 客户端不会自己套用资源里的楼层存档默认值, 缺省即 0, 关卡图会走错分支
+    private IEnumerable<(string Name, int DefaultValue)> ResolveFloorSavedValueDefaults()
+    {
+        var dimension = FloorInfo?.DimensionList.Find(x => x.ID == ResolveDimensionId());
+        if (dimension != null)
+            return dimension.SavedValues.Select(x => (x.Name, x.DefaultValue));
+
+        return (FloorInfo?.FloorSavedValue ?? []).Select(x => (x.Name, x.DefaultValue));
+    }
+
     public Dictionary<string, int> BuildClientFloorSavedData()
     {
         var result = new Dictionary<string, int>();
-        if (Player.SceneData!.FloorSavedData.TryGetValue(FloorId, out var persisted))
-            foreach (var (key, value) in persisted)
-                result[key] = value;
+        var persisted = Player.SceneData!.FloorSavedData.GetValueOrDefault(FloorId, []);
+
+        foreach (var (name, defaultValue) in ResolveFloorSavedValueDefaults())
+            if (defaultValue != 0)
+                result[name] = defaultValue;
 
         var exposeActivityEntries = Excel.PlaneType is PlaneTypeEnum.Town or PlaneTypeEnum.Maze &&
                                     GameData.ContentPackageConfigData.Values.Any(package =>
                                         package.MainMissionIDList.Count > 0 && package.TouchesFloor(FloorId));
         if (exposeActivityEntries)
             foreach (var value in FloorInfo?.FloorSavedValue ?? [])
-                if (value.DefaultValue == 0 && !value.Name.Contains("_IsHidden") && !result.ContainsKey(value.Name))
+                if (value.DefaultValue == 0 && !value.Name.Contains("_IsHidden") && !persisted.ContainsKey(value.Name))
                     result[value.Name] = 1;
+
+        foreach (var (key, value) in persisted)
+            result[key] = value;
 
         return result;
     }
