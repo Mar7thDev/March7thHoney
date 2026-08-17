@@ -39,9 +39,9 @@ public class HandlerLeaveChallengePeakCsReq : PlayerHandler
 
         await connection.SendPacket(CmdIds.LeaveChallengePeakScRsp);
 
-        // 离开后回到总览, 补发一次 group 数据让客户端把上次队伍+特性回填进编队槽位; disableHardMode 按当前难度=!isHard, 否则绝境后 toggle 会翻回普通
+        // 离开后回到总览, 补发一次 group 数据让客户端把上次队伍+特性回填进编队槽位; 难度走 group 记忆的默认值
         if (peakGroupId is { } gid)
             await player.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(
-                player.ChallengePeakManager!.GetChallengePeakInfo(gid, !player.ChallengePeakManager.IsBossHard(gid))));
+                player.ChallengePeakManager!.GetChallengePeakInfo(gid)));
     }
 }

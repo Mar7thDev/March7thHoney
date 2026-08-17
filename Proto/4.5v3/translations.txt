@@ -1037,3 +1037,14 @@ GridFightLevelDisplayInfo.KDBMPKJKAKI = max_exp
 !Product.CLDELMPNAPB = max_buy_times
 !Product.ENCDABOOIKJ = buy_times
 !Product.EMIHEDNKBCA = gift_version
+// ChallengePeak best record
+!ABCHBKBKCDF = ChallengePeakRecordAvatar
+!JFBFFIAOPCC = ChallengePeakBestRecordList
+!MEKPDDBLCGK = ChallengePeakBestRecord
+!ChallengePeakGroup.PAPDCCKPEPK = best_record_list
+!ChallengePeakBossClearance.EBNNJAEPBGD = best_record_avatar_list
+!ChallengePeakBossClearance.NHOJDHPGBBO = best_record_buff_id
+!ChallengePeakBossClearance.DJFGDMIDEHJ = max_left_turn
+// 实测: 服务端写 f14 客户端显示为普通, 且官服 boss.finished_target_list(普通目标) 恰好与 f14 同时出现
+!ChallengePeakBoss.FIDOPNMNFAI = easy_mode
+!ChallengePeakBoss.CNCIHLBFNFF = hard_mode
