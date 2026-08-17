@@ -21,6 +21,7 @@ public static class CommandRoles
                 CommandPermissions.Mission,
                 CommandPermissions.Peak,
                 CommandPermissions.Avatar,
+                CommandPermissions.FakeTime,
                 CommandPermissions.Give,
                 CommandPermissions.GiveAll,
                 CommandPermissions.Grid,
