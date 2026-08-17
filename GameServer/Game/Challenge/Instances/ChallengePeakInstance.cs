@@ -186,7 +186,16 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
             }
         }
 
-        if (Peak.IsHard && Config.BossExcel != null) stars = 3;
+        if (Peak.IsHard && Config.BossExcel != null)
+        {
+            // 绝境目标客户端未必回传进度, 用实际回合数兜底判定, 否则战绩存下来是 0 目标
+            var hardTargetId = (uint)Config.BossExcel.HardTarget;
+            var hardExcel = GameData.BattleTargetConfigData.GetValueOrDefault(Config.BossExcel.HardTarget);
+            if (hardExcel != null && !finishedIds.Contains(hardTargetId) && req.Stt.RoundCnt <= hardExcel.TargetParam)
+                finishedIds.Add(hardTargetId);
+
+            stars = 3;
+        }
 
         return (Math.Min(stars, 3), finishedIds);
     }

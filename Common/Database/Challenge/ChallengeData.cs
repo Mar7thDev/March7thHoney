@@ -64,6 +64,12 @@ public partial class ChallengePeakLevelData
     public uint PeakStar { get; set; }
     public List<uint> BaseAvatarList { get; set; } = [];
     public List<uint> FinishedTargetList { get; set; } = [];
+    // 以下为最佳战绩, 与上方"上一次编队"BaseAvatarList 分开, 只在刷新纪录时写
+    public bool HasRecord { get; set; }
+    public List<uint> RecordAvatarList { get; set; } = [];
+
+    // 占位: 旧 blob 已写入该成员位, 删掉会让 MemoryPack 拒绝反序列化
+    public bool ReservedSlot { get; set; }
 }
 
 [MemoryPackable]
@@ -76,6 +82,13 @@ public partial class ChallengePeakBossLevelData
     public uint PeakStar { get; set; }
     public List<uint> BaseAvatarList { get; set; } = [];
     public List<uint> FinishedTargetList { get; set; } = [];
+    // 以下为最佳战绩, 与上方"上一次编队+特性"BaseAvatarList/BuffId 分开, 不跨难度镜像
+    public bool HasRecord { get; set; }
+    public List<uint> RecordAvatarList { get; set; } = [];
+    public uint RecordBuffId { get; set; }
+
+    // 占位: 旧 blob 已写入该成员位, 删掉会让 MemoryPack 拒绝反序列化
+    public bool ReservedSlot { get; set; }
 }
 
 [MemoryPackable]

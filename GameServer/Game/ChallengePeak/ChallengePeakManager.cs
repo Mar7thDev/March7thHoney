@@ -63,6 +63,8 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         if (data == null) return proto;
 
         var starNum = 0;
+        // 骑士关最佳战绩容器, 客户端据此渲染各关战绩(轮数/星/通关阵容)
+        var records = new ChallengePeakBestRecordList();
         foreach (var levelId in data.PreLevelIDList)
         {
             var levelData = GameData.ChallengePeakConfigData.GetValueOrDefault(levelId);
@@ -74,17 +76,35 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
                 HasPassed = true
             };
 
-            if (Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelPbData))
-            {
-                starNum += (int)levelPbData.PeakStar;
+            Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelPbData);
+            var hasRecord = levelPbData?.HasRecord == true;
 
-                levelProto.CyclesUsed = levelPbData.RoundCnt;
-                levelProto.PeakAvatarIdList.AddRange(levelPbData.BaseAvatarList);
-                levelProto.FinishedTargetList.AddRange(levelPbData.FinishedTargetList);
-            }
+            // 无真实战绩时沿用解锁种子的口径伪造满星
+            var finishedTargets = hasRecord
+                ? levelPbData!.FinishedTargetList
+                : levelData.NormalTargetList.Select(x => (uint)x).ToList();
+            var recordTeam = hasRecord && levelPbData!.RecordAvatarList is { Count: > 0 }
+                ? levelPbData.RecordAvatarList
+                : levelPbData?.BaseAvatarList ?? [];
+
+            starNum += finishedTargets.Count;
+            levelProto.CyclesUsed = levelPbData?.RoundCnt ?? 0;
+            levelProto.PeakAvatarIdList.AddRange(levelPbData?.BaseAvatarList ?? []);
+            levelProto.FinishedTargetList.AddRange(finishedTargets);
+
+            var record = new ChallengePeakBestRecord
+            {
+                PeakId = (uint)levelId,
+                CyclesUsed = levelProto.CyclesUsed
+            };
+            record.FinishedTargetList.AddRange(finishedTargets);
+            record.PeakAvatarIdList.AddRange(ToRecordAvatars(recordTeam));
+            records.Peaks.Add(record);
 
             proto.Peaks.Add(levelProto);
         }
+
+        if (records.Peaks.Count > 0) proto.BestRecordList = records;
 
         // The client gates the boss 普通/绝境 toggle behind "3 knights cleared" (judged by star
         // count, not the per-peak HasPassed flag). Report full stars so both difficulties are
@@ -117,37 +137,79 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var easySrc = easyRec ?? hardRec;
         var hardSrc = hardRec ?? easyRec;
 
-        HashSet<uint> targetIds = [];
         if (easySrc != null)
         {
             bossProto.EasyMode.PeakAvatarIdList.AddRange(easySrc.BaseAvatarList);
-            bossProto.EasyMode.BestCycleCount = easySrc.RoundCnt;
             bossProto.EasyMode.BuffId = easySrc.BuffId;
-            foreach (var t in easySrc.FinishedTargetList) targetIds.Add(t);
         }
 
         if (hardSrc != null)
         {
             bossProto.HardMode.PeakAvatarIdList.AddRange(hardSrc.BaseAvatarList);
-            bossProto.HardMode.BestCycleCount = hardSrc.RoundCnt;
             bossProto.HardMode.BuffId = hardSrc.BuffId;
-            foreach (var t in hardSrc.FinishedTargetList) targetIds.Add(t);
         }
 
-        // No real clearance record yet: seed the full target set (normal + hard) so the boss reads as
-        // cleared on both difficulties — matches captured accounts that expose the 普通/绝境 toggle.
-        if (targetIds.Count == 0)
+        // 最佳战绩按难度各记各的, 不跨难度回退, 否则普通/绝境会互相串味
+        FillBossRecord(bossProto.EasyMode, easyRec, bossLevelId, bossLevelData, false);
+        FillBossRecord(bossProto.HardMode, hardRec, bossLevelId, bossLevelData, true);
+
+        // 客户端只用它渲染普通难度星级(绝境靠 hardModeHasPassed), 无真实记录时沿用解锁种子
+        HashSet<uint> easyTargets = [];
+        if (easyRec?.HasRecord == true)
         {
+            foreach (var t in easyRec.FinishedTargetList) easyTargets.Add(t);
+        }
+        else
+        {
+            // No real clearance record yet: seed normal + hard targets so the boss reads as cleared on both difficulties.
             if (GameData.ChallengePeakConfigData.TryGetValue(bossLevelId, out var bossPeakCfg))
                 foreach (var t in bossPeakCfg.NormalTargetList)
-                    targetIds.Add((uint)t);
-            if (bossLevelData.HardTarget > 0) targetIds.Add((uint)bossLevelData.HardTarget);
+                    easyTargets.Add((uint)t);
+            if (bossLevelData.HardTarget > 0) easyTargets.Add((uint)bossLevelData.HardTarget);
         }
 
-        bossProto.FinishedTargetList.AddRange(targetIds);
+        bossProto.FinishedTargetList.AddRange(easyTargets);
         proto.PeakBoss = bossProto;
 
         return proto;
+    }
+
+    // 把 base avatar id 转成带皮肤的记录阵容项
+    private IEnumerable<ChallengePeakRecordAvatar> ToRecordAvatars(IEnumerable<uint> avatarIds)
+    {
+        foreach (var avatarId in avatarIds)
+        {
+            var avatar = Player.AvatarManager!.GetFormalAvatar((int)avatarId);
+            yield return new ChallengePeakRecordAvatar
+            {
+                AvatarId = avatarId,
+                SkinId = (uint)(avatar?.GetCurPathInfo().Skin ?? 0)
+            };
+        }
+    }
+
+    // 王棋回合上限: 普通取最宽松的普通目标, 绝境取绝境目标, 与官服 maxLeftTurn 普通6/绝境2 吻合
+    private static int GetBossTurnBudget(int bossLevelId, ChallengePeakBossConfigExcel bossExcel, bool isHard)
+    {
+        if (isHard) return GameData.BattleTargetConfigData.GetValueOrDefault(bossExcel.HardTarget)?.TargetParam ?? 0;
+        if (!GameData.ChallengePeakConfigData.TryGetValue(bossLevelId, out var bossPeakCfg)) return 0;
+        return bossPeakCfg.NormalTargetList
+            .Select(t => GameData.BattleTargetConfigData.GetValueOrDefault(t)?.TargetParam ?? 0)
+            .DefaultIfEmpty(0)
+            .Max();
+    }
+
+    private void FillBossRecord(ChallengePeakBossClearance clearance, ChallengePeakBossLevelData? rec,
+        int bossLevelId, ChallengePeakBossConfigExcel bossExcel, bool isHard)
+    {
+        if (rec?.HasRecord != true) return;
+
+        clearance.BestCycleCount = rec.RoundCnt;
+        clearance.BestRecordBuffId = rec.RecordBuffId;
+        clearance.MaxLeftTurn =
+            (uint)Math.Max(0, GetBossTurnBudget(bossLevelId, bossExcel, isHard) - (int)rec.RoundCnt);
+        clearance.BestRecordAvatarList.AddRange(
+            ToRecordAvatars(rec.RecordAvatarList is { Count: > 0 } ? rec.RecordAvatarList : rec.BaseAvatarList));
     }
 
     public async ValueTask<List<ChallengePeakRewardGroup>?> TakeRewards(int groupId, IEnumerable<uint> requestRewardIds)
@@ -258,48 +320,67 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
                     avatarIds.Add((uint)avatar.BaseAvatarId);
             }
 
-            datas[(int)lineup.PeakId] = new ChallengePeakLevelData
+            // 只更新上一次编队, 保留该关已有的最佳战绩
+            if (!datas.TryGetValue((int)lineup.PeakId, out var levelData))
             {
-                LevelId = (int)lineup.PeakId,
-                BaseAvatarList = avatarIds
-            }; // reset
+                levelData = new ChallengePeakLevelData { LevelId = (int)lineup.PeakId };
+                datas[(int)lineup.PeakId] = levelData;
+            }
+
+            levelData.BaseAvatarList = avatarIds;
         }
 
         DatabaseHelper.MarkDirty(Player.Uid);
         await Player.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(GetChallengePeakInfo(groupId)));
     }
 
+    // 择优: 目标数更多, 或目标数持平但轮数更少
+    private static bool IsBetterRecord(bool hasRecord, int oldTargetCount, uint oldRoundCnt, int newTargetCount,
+        uint newRoundCnt)
+    {
+        if (!hasRecord) return true;
+        if (newTargetCount != oldTargetCount) return newTargetCount > oldTargetCount;
+        return newRoundCnt < oldRoundCnt;
+    }
+
     public async ValueTask SaveHistory(ChallengePeakInstance inst, List<uint> targetIds)
     {
+        var peak = inst.Data.Peak!;
+        var team = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.Select(x => (uint)x.BaseAvatarId).ToList() ?? [];
+        var roundCnt = peak.RoundCnt;
+
         if (inst.Config.BossExcel != null)
         {
             // is hard
-            var isHard = inst.Data.Peak!.IsHard;
-            var levelId = ((int)inst.Data.Peak!.CurrentPeakLevelId << 2) | (isHard ? 1 : 0);
+            var isHard = peak.IsHard;
+            var levelId = ((int)peak.CurrentPeakLevelId << 2) | (isHard ? 1 : 0);
+            var buffId = peak.Buffs.FirstOrDefault();
 
-            // get old data
-            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(levelId, out var oldData) &&
-                oldData.FinishedTargetList.Count > targetIds.Count && oldData.RoundCnt < inst.Data.Peak!.RoundCnt)
-                // better data already exists, do not overwrite
-                return;
-
-            // Save boss data
-            var data = new ChallengePeakBossLevelData
+            var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+            if (!bossDatas.TryGetValue(levelId, out var data))
             {
-                LevelId = (int)inst.Data.Peak!.CurrentPeakLevelId,
-                IsHard = isHard,
-                BaseAvatarList = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.Select(x => (uint)x.BaseAvatarId)
-                    .ToList() ?? [],
-                RoundCnt = inst.Data.Peak!.RoundCnt,
-                BuffId = inst.Data.Peak!.Buffs.FirstOrDefault(),
-                FinishedTargetList = targetIds,
-                PeakStar = (uint)targetIds.Count
-            };
+                data = new ChallengePeakBossLevelData { LevelId = (int)peak.CurrentPeakLevelId, IsHard = isHard };
+                bossDatas[levelId] = data;
+            }
 
-            Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas[levelId] = data;
+            // 上一次编队+特性每次都刷新
+            data.BaseAvatarList = team;
+            data.BuffId = buffId;
+
+            // 最佳战绩只在刷新纪录时写, 且不跨难度镜像
+            if (IsBetterRecord(data.HasRecord, data.FinishedTargetList.Count, data.RoundCnt, targetIds.Count,
+                    roundCnt))
+            {
+                data.HasRecord = true;
+                data.RoundCnt = roundCnt;
+                data.PeakStar = (uint)targetIds.Count;
+                data.FinishedTargetList = targetIds;
+                data.RecordAvatarList = [.. team];
+                data.RecordBuffId = buffId;
+            }
 
             // 最新队伍+buff 镜像到另一难度记录, 让普通/绝境槽位都显示上一次挑战的队伍(客户端槽位只读 easyMode)
-            if (Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas.TryGetValue(levelId ^ 1, out var mirror))
+            if (bossDatas.TryGetValue(levelId ^ 1, out var mirror))
             {
                 mirror.BaseAvatarList = data.BaseAvatarList;
                 mirror.BuffId = data.BuffId;
@@ -312,7 +393,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             }
             else
             {
-                var targetFrameId = data.PeakStar + 226000;
+                var targetFrameId = (uint)targetIds.Count + 226000;
                 if (Player.Data.HeadFrame.HeadFrameId < targetFrameId)
                     await Player.SetPlayerHeadFrameId(targetFrameId, long.MaxValue);
             }
@@ -320,31 +401,34 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         else
         {
             // Save level data
-            var levelId = (int)inst.Data.Peak!.CurrentPeakLevelId;
+            var levelId = (int)peak.CurrentPeakLevelId;
 
-            // get old data
-            if (Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var oldData) &&
-                oldData.FinishedTargetList.Count > targetIds.Count && oldData.RoundCnt < inst.Data.Peak!.RoundCnt)
-                // better data already exists, do not overwrite
-                return;
-
-            var data = new ChallengePeakLevelData
+            var levelDatas = Player.ChallengeManager!.ChallengeData.PeakLevelDatas;
+            if (!levelDatas.TryGetValue(levelId, out var data))
             {
-                LevelId = levelId,
-                BaseAvatarList = Player.LineupManager!.GetCurLineup()?.BaseAvatars?.Select(x => (uint)x.BaseAvatarId)
-                    .ToList() ?? [],
-                RoundCnt = inst.Data.Peak!.RoundCnt,
-                FinishedTargetList = targetIds,
-                PeakStar = (uint)targetIds.Count
-            };
+                data = new ChallengePeakLevelData { LevelId = levelId };
+                levelDatas[levelId] = data;
+            }
 
-            Player.ChallengeManager!.ChallengeData.PeakLevelDatas[levelId] = data;
+            data.BaseAvatarList = team;
+
+            if (IsBetterRecord(data.HasRecord, data.FinishedTargetList.Count, data.RoundCnt, targetIds.Count,
+                    roundCnt))
+            {
+                data.HasRecord = true;
+                data.RoundCnt = roundCnt;
+                data.PeakStar = (uint)targetIds.Count;
+                data.FinishedTargetList = targetIds;
+                data.RecordAvatarList = [.. team];
+            }
         }
 
         DatabaseHelper.MarkDirty(Player.Uid);
+        // 只有王棋局有难度概念, 骑士局的 IsHard 恒为 false, 必须走 group 记忆否则会把总览翻回普通
+        var disableHardMode = inst.Config.BossExcel != null ? !peak.IsHard : (bool?)null;
         await Player.SendPacket(
             new PacketChallengePeakGroupDataUpdateScNotify(
-                GetChallengePeakInfo((int)inst.Data.Peak!.CurrentPeakGroupId, !inst.Data.Peak!.IsHard)));
+                GetChallengePeakInfo((int)peak.CurrentPeakGroupId, disableHardMode)));
     }
 
     public async ValueTask<Retcode> StartChallenge(int levelId, uint buffId, List<int> avatarIdList)
@@ -471,9 +555,10 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         data.Peak!.StartRot = Player.Data.Rot!;
         data.Peak!.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
 
-        // 进入即下发难度状态: 绝境局 disableHardMode=false, 客户端据此对本局结算渲染红色绝境界面
+        // 王棋局进入即下发本局难度, 客户端据此渲染红色绝境结算界面; 骑士局没有难度, 走 group 记忆
+        var disableHardMode = excel.BossExcel != null ? !data.Peak!.IsHard : (bool?)null;
         await Player.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(
-            GetChallengePeakInfo((int)data.Peak!.CurrentPeakGroupId, !data.Peak!.IsHard)));
+            GetChallengePeakInfo((int)data.Peak!.CurrentPeakGroupId, disableHardMode)));
 
         // Save instance
         Player.ChallengeManager!.SaveInstance(instance);
