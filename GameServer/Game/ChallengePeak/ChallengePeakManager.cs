@@ -424,9 +424,11 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         }
 
         DatabaseHelper.MarkDirty(Player.Uid);
+        // 只有王棋局有难度概念, 骑士局的 IsHard 恒为 false, 必须走 group 记忆否则会把总览翻回普通
+        var disableHardMode = inst.Config.BossExcel != null ? !peak.IsHard : (bool?)null;
         await Player.SendPacket(
             new PacketChallengePeakGroupDataUpdateScNotify(
-                GetChallengePeakInfo((int)inst.Data.Peak!.CurrentPeakGroupId, !inst.Data.Peak!.IsHard)));
+                GetChallengePeakInfo((int)peak.CurrentPeakGroupId, disableHardMode)));
     }
 
     public async ValueTask<Retcode> StartChallenge(int levelId, uint buffId, List<int> avatarIdList)
@@ -553,9 +555,10 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         data.Peak!.StartRot = Player.Data.Rot!;
         data.Peak!.SavedMp = (uint)Player.LineupManager.GetCurLineup()!.Mp;
 
-        // 进入即下发难度状态: 绝境局 disableHardMode=false, 客户端据此对本局结算渲染红色绝境界面
+        // 王棋局进入即下发本局难度, 客户端据此渲染红色绝境结算界面; 骑士局没有难度, 走 group 记忆
+        var disableHardMode = excel.BossExcel != null ? !data.Peak!.IsHard : (bool?)null;
         await Player.SendPacket(new PacketChallengePeakGroupDataUpdateScNotify(
-            GetChallengePeakInfo((int)data.Peak!.CurrentPeakGroupId, !data.Peak!.IsHard)));
+            GetChallengePeakInfo((int)data.Peak!.CurrentPeakGroupId, disableHardMode)));
 
         // Save instance
         Player.ChallengeManager!.SaveInstance(instance);
