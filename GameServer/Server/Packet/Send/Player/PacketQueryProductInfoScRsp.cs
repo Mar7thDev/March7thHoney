@@ -17,15 +17,15 @@ public class PacketQueryProductInfoScRsp : BasePacket
             MonthCardOutDateTime = playerData == null ? 0 : (ulong)MonthCardService.GetMonthCardOutDateTime(playerData)
         };
 
-        foreach (var item in BuildProducts(GameData.QueryProductInfoConfig))
+        foreach (var item in BuildProducts(GameData.QueryProductInfoConfig, playerData))
             proto.ProductList.Add(item);
 
         SetData(proto);
     }
 
-    private static List<Product> BuildProducts(QueryProductInfoConfig config)
+    private static List<Product> BuildProducts(QueryProductInfoConfig config, PlayerData? playerData)
     {
-        var now = ServerTimeProvider.GetServerUnixSec();
+        var now = ServerTimeProvider.GetServerUnixSec(playerData);
         List<Product> products = [];
         foreach (var item in config.ProductList)
         {
