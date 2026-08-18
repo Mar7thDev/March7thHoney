@@ -16,6 +16,7 @@ public static class CommandPermissions
     public const string Avatar = "command.avatar";
     public const string Calyx = "command.calyx";
     public const string Clear = "command.clear";
+    public const string FakeTime = "command.faketime";
     public const string Give = "command.give";
     public const string GiveAll = "command.giveall";
     public const string Grid = "command.grid";
@@ -120,6 +121,7 @@ public static class CommandPermissions
             Calyx,
             Clear,
             Debug,
+            FakeTime,
             Give,
             GiveAll,
             Grid,

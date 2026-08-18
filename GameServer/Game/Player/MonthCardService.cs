@@ -15,7 +15,7 @@ public static class MonthCardService
     {
         if (!ConfigManager.Config.ServerOption.EnableMonthCard) return 0;
 
-        var now = ServerTimeProvider.GetServerUnixSec();
+        var now = ServerTimeProvider.GetServerUnixSec(data);
         if (data.MonthCardExpireTime > now) return data.MonthCardExpireTime;
 
         data.MonthCardExpireTime = now + (long)TimeSpan.FromDays(DefaultActiveDays).TotalSeconds;
@@ -29,7 +29,7 @@ public static class MonthCardService
         var monthCardOutDateTime = GetMonthCardOutDateTime(data);
         if (monthCardOutDateTime <= 0) return false;
 
-        var now = ServerTimeProvider.GetServerUnixSec();
+        var now = ServerTimeProvider.GetServerUnixSec(data);
         if (monthCardOutDateTime <= now) return false;
 
         var today = GetLocalDayStamp(now);

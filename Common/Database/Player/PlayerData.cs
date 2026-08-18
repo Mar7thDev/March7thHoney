@@ -61,6 +61,8 @@ public class PlayerData : BaseDatabaseDataHelper
     public List<int> TakenLevelReward { get; set; } = [];
     public PrivacySettingsPb PrivacySettings { get; set; } = new();
 
+    public int FakeTimeDate { get; set; } = 0; // yyyyMMdd, 0 = off
+
     public static PlayerData? GetPlayerByUid(long uid)
     {
         var result = DatabaseHelper.Instance?.GetInstance<PlayerData>((int)uid);
