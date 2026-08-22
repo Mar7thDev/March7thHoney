@@ -107,8 +107,18 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
                 request.QueuePosition,
                 request.TraitEffectSelectEnhanceAction.EnhanceOptionId);
             if (activation.Success)
+            {
+                if (activation.ShopNeedsRefresh)
+                    session.RefreshShop(chargeGold: false);
                 await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                     manager.BuildTraitEnhanceActivationSync(activation)));
+            }
+            else
+            {
+                // 失败也下发 FinishPending + 解锁，避免进度卡死
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildTraitEnhanceForceUnlockSync(request.QueuePosition)));
+            }
             await SendResponse(connection, request.QueuePosition, activation.Success);
             return;
         }

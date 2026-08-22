@@ -25,6 +25,7 @@ public partial class GridFightEquipmentExcel : ExcelResource
     public GridFightEquipFuncTypeEnum EquipFunc { get; set; }
 
     public List<uint> EquipFuncParamList { get; set; } = [];
+    public List<GridFightRatioValue> ParamList { get; set; } = [];
     public List<uint> DressRuleParamList { get; set; } = [];
 
     public override int GetId()

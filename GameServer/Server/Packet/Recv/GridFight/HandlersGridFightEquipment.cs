@@ -19,8 +19,13 @@ public sealed class HandlerGridFightEquipDressCsReq : Handler<GridFightEquipDres
         var result = manager.Session?.DressEquipment(request.RoleUniqueId, request.EquipmentUniqueId) ??
                      GridFightEquipDressResult.Failed;
         if (result.Success)
+        {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildEquipDressSync(result)));
+            if (result.MaxActiveRolesChanged)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildPopulationLimitNotify()));
+        }
         await connection.SendPacket(CreatePacket(CmdIds.GridFightEquipDressScRsp,
             new GridFightEquipDressScRsp
             {
@@ -43,8 +48,14 @@ public sealed class HandlerGridFightEquipCraftCsReq : Handler<GridFightEquipCraf
                          request.MaterialUniqueIdList.ToList()) ??
                      GridFightEquipCraftResult.Failed;
         if (result.Success)
+        {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildEquipCraftSync(result)));
+            // 人口变化时再推一次人口上限（MaxActiveRoleCount），配合进局预解锁的后台格立即生效
+            if (result.MaxActiveRolesChanged)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                    manager.BuildPopulationLimitNotify()));
+        }
         await connection.SendPacket(CreatePacket(CmdIds.GridFightEquipCraftScRsp,
             new GridFightEquipCraftScRsp
             {
