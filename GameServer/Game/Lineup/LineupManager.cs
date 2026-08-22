@@ -1,4 +1,6 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Config.AdventureAbility;
+using March7thHoney.Data.Config.Task;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Lineup;
@@ -21,6 +23,7 @@ public class LineupManager : BasePlayerManager<LineupData>
             lineupInfo.LineupData = Data;
             lineupInfo.AvatarData = player.AvatarManager!.Data;
         }
+        RecalculateExtraMpCount();
     }
 
     #region Detail
@@ -47,6 +50,60 @@ public class LineupManager : BasePlayerManager<LineupData>
     public int GetMaxMp()
     {
         return 5 + Data.ExtraMpCount;
+    }
+
+    /// <summary>按当前编队重算 ExtraMpCount，加成来自角色 AdventureAbility 的 AdvModifyMaxMazeMP。</summary>
+    public void RecalculateExtraMpCount()
+    {
+        var extra = 0;
+        var lineup = GetCurLineup();
+        foreach (var slot in lineup?.BaseAvatars ?? [])
+            extra += ResolveExtraMazeMp(ResolveAvatarId(slot));
+
+        Data.ExtraMpCount = extra;
+        if (lineup != null)
+            lineup.Mp = Math.Min(Math.Max(0, lineup.Mp), 5 + extra);
+    }
+
+    /// <summary>试用角色归一到本体，多命途角色归一到 BaseAvatarID。</summary>
+    private static int ResolveAvatarId(LineupAvatarInfo slot)
+    {
+        var avatarId = slot.BaseAvatarId;
+        if (slot.SpecialAvatarId > 0 &&
+            GameData.SpecialAvatarData.TryGetValue(slot.SpecialAvatarId, out var special))
+            avatarId = special.AvatarID;
+        if (GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPath))
+            avatarId = multiPath.BaseAvatarID;
+        return avatarId;
+    }
+
+    /// <summary>角色上场时 modifier 的 OnCreate 里声明的秘技点上限加成。</summary>
+    private static int ResolveExtraMazeMp(int avatarId)
+    {
+        if (!GameData.AvatarConfigData.TryGetValue(avatarId, out var avatar)) return 0;
+        if (!GameData.AdventureAbilityConfigListData.TryGetValue(avatar.AdventurePlayerID, out var abilities))
+            return 0;
+
+        var extra = 0;
+        var modifiers = abilities.GlobalModifiers?.Values ?? Enumerable.Empty<AdventureModifierConfig>();
+        foreach (var modifier in modifiers)
+        foreach (var task in modifier.OnCreate)
+        {
+            if (task is not AdvModifyMaxMazeMP modify) continue;
+            var value = modify.ModifyValue.GetValue();
+            extra = modify.ModifyFunction == PropertyModifyFunctionEnum.Set ? value - 5 : extra + value;
+        }
+        return extra;
+    }
+
+    /// <summary>写入协议 LineupInfo.MaxMp，ToProto 可能漏带 ExtraMpCount 故发包前强制设置。</summary>
+    public void ApplyMaxMp(Proto.LineupInfo proto)
+    {
+        if (proto == null) return;
+        RecalculateExtraMpCount();
+        proto.MaxMp = (uint)GetMaxMp();
+        if (proto.Mp > proto.MaxMp)
+            proto.Mp = proto.MaxMp;
     }
 
     public List<AvatarLineupData> GetAvatarsFromTeam(int index)
@@ -271,7 +328,11 @@ public class LineupManager : BasePlayerManager<LineupData>
         MarkDirty();
         if (sendPacket)
         {
-            if (lineupIndex == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+            if (lineupIndex == Data.GetCurLineupIndex())
+            {
+                RecalculateExtraMpCount();
+                Player.SceneInstance?.SyncLineup();
+            }
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
@@ -380,7 +441,11 @@ public class LineupManager : BasePlayerManager<LineupData>
 
         if (sendPacket)
         {
-            if (lineupIndex == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+            if (lineupIndex == Data.GetCurLineupIndex())
+            {
+                RecalculateExtraMpCount();
+                Player.SceneInstance?.SyncLineup();
+            }
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
@@ -411,7 +476,11 @@ public class LineupManager : BasePlayerManager<LineupData>
         foreach (var avatar in lineupSlotList) await AddAvatar(index, avatar, false);
         lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault()?.BaseAvatarId ?? 0;
 
-        if (index == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+        if (index == Data.GetCurLineupIndex())
+        {
+            RecalculateExtraMpCount();
+            Player.SceneInstance?.SyncLineup();
+        }
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 
@@ -435,7 +504,11 @@ public class LineupManager : BasePlayerManager<LineupData>
         foreach (var avatar in req.LineupSlotList) await AddAvatar(index, (int)avatar.Id, false);
         lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault()?.BaseAvatarId ?? 0;
 
-        if (index == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+        if (index == Data.GetCurLineupIndex())
+        {
+            RecalculateExtraMpCount();
+            Player.SceneInstance?.SyncLineup();
+        }
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 

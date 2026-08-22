@@ -281,17 +281,22 @@ public sealed partial class GridFightManager : BasePlayerManager
             var action = new GridFightTraitEffectSelectEnhanceActionInfo
             {
                 TraitId = GridFightSpecialFeatures.SilverWolfTraitId,
-                EffectId = GridFightSpecialFeatures.SilverWolfTraitEffectId,
+                // 档位不同 EffectId 也不同，取角色当前所在的 TraitEffect 组
+                EffectId = session.SilverWolfPendingEffectGroupId,
                 IsOptional = false,
             };
-            action.EnhanceIndexList.Add(0);
-            action.EnhanceOptionIdList.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
+            foreach (var optionId in session.SilverWolfPendingOptionIds)
+            {
+                action.EnhanceIndexList.Add((uint)action.EnhanceOptionIdList.Count);
+                action.EnhanceOptionIdList.Add(optionId);
+            }
             return new GridFightPendingAction
             {
                 QueuePosition = traitQueuePosition,
                 TraitEffectSelectEnhanceAction = action,
             };
         }
+
         var pending = new GridFightPendingAction { QueuePosition = session.PendingQueuePosition };
         switch (session.Phase)
         {
@@ -365,8 +370,8 @@ public sealed partial class GridFightManager : BasePlayerManager
         if (session == null) return notify;
         var result = new GridFightSyncResultData { UpdateSource = source };
         if (includeGold) result.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
-        if (levelChanged)
-            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
+        // 始终下发总人口 + 后台席位上限（财富宝钻解锁后台格子）
+        result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
         if (includeShop) result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         if (includeLevel)
             result.UpdateDynamicList.Add(new GridFightSyncData
@@ -424,10 +429,12 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         if (Session == null) return notify;
+        var result = new GridFightSyncResultData();
         var items = new GridFightGameItemSyncInfo();
         items.GridFightEquipmentList.Add(BuildEquipment(equipment));
-        var result = new GridFightSyncResultData();
         result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        // 获得财富宝钻等改变人口的装备时，立刻尝试刷新后台席位
+        AppendPopulationLimitSync(result);
         notify.ResultList.Add(result);
         return notify;
     }
@@ -447,6 +454,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var items = new GridFightGameItemSyncInfo();
         items.GridFightEquipmentList.Add(BuildEquipment(useResult.Equipment));
         result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        AppendPopulationLimitSync(result);
         AppendPositionChanges(result, useResult.UpdatedRoles, useResult.UpdatedForgeItems);
         notify.ResultList.Add(result);
         return notify;
@@ -654,23 +662,58 @@ public sealed partial class GridFightManager : BasePlayerManager
         return result;
     }
 
+    /// <summary>激活失败时也解锁，避免客户端卡在「请选择骇入效果」。</summary>
+    public GridFightSyncUpdateResultScNotify BuildTraitEnhanceForceUnlockSync(uint queuePosition)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
+        };
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            FinishPendingActionPos = queuePosition,
+        });
+        result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+        notify.ResultList.Add(result);
+        return notify;
+    }
+
     public GridFightSyncUpdateResultScNotify BuildTraitEnhanceActivationSync(
         GridFightTraitEnhanceActivationResult activation)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
-        if (Session?.HackConsole == null || !activation.Success || activation.Equipment == null) return notify;
+        if (Session == null || !activation.Success) return notify;
         var result = new GridFightSyncResultData
         {
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
         };
         result.EffectParamList.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
-        var items = new GridFightGameItemSyncInfo();
-        items.GridFightEquipmentList.Add(BuildEquipment(activation.Equipment));
-        result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
-        result.UpdateDynamicList.Add(new GridFightSyncData
+
+        if (activation.Equipment != null)
         {
-            GameDataItemInfo = BuildHackConsoleItem(Session.HackConsole),
-        });
+            var items = new GridFightGameItemSyncInfo();
+            items.GridFightEquipmentList.Add(BuildEquipment(activation.Equipment));
+            result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        }
+
+        if (Session.HackConsole is { } console)
+        {
+            result.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                GameDataItemInfo = BuildHackConsoleItem(console),
+            });
+        }
+
+        if (activation.UpdatedRole != null)
+            result.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                UpdateRoleInfo = BuildRole(activation.UpdatedRole),
+            });
+
+        if (activation.ShopNeedsRefresh)
+            result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+
         result.UpdateDynamicList.Add(new GridFightSyncData
         {
             FinishPendingActionPos = activation.FinishedQueuePosition,
@@ -748,6 +791,8 @@ public sealed partial class GridFightManager : BasePlayerManager
             var items = new GridFightGameItemSyncInfo();
             items.GridFightEquipmentList.Add(application.AddedEquipments.Select(BuildEquipment));
             result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+            // 获得装备后刷新总人口 + 后台席位
+            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
         }
         foreach (var change in application.ConsumableChanges)
         {
@@ -1237,13 +1282,38 @@ public sealed partial class GridFightManager : BasePlayerManager
             AppendRoleSavedValueUpdates(switchResult, savedValueChanges);
             notify.ResultList.Add(switchResult);
             notify.ResultList.Add(new GridFightSyncResultData());
+            AppendSilverWolfPendingUnlockIfNeeded(notify);
             return notify;
         }
         var result = new GridFightSyncResultData();
         AppendPositionChanges(result, change.UpdatedRoles, change.UpdatedForgeItems);
         AppendRoleSavedValueUpdates(result, savedValueChanges);
         notify.ResultList.Add(result);
+        AppendSilverWolfPendingUnlockIfNeeded(notify);
         return notify;
+    }
+
+    /// <summary>上阵触发银狼待生效骇入时，附带 Lock + Pending。</summary>
+    private void AppendSilverWolfPendingUnlockIfNeeded(GridFightSyncUpdateResultScNotify notify)
+    {
+        if (Session == null || !Session.ConsumeSilverWolfPendingJustActivated())
+            return;
+        if (BuildPendingAction() is not { } pending)
+            return;
+        var unlock = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
+        };
+        unlock.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            LockInfo = new GridFightLockInfo
+            {
+                LockType = GridFightLockType.Gameplay,
+                LockReason = GridFightLockReason.PendingAction,
+            },
+        });
+        unlock.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+        notify.ResultList.Add(unlock);
     }
 
     public async ValueTask EndBattle(BattleInstance battle, PVEBattleResultCsReq request)
@@ -1373,6 +1443,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             });
         notify.ResultList.Add(rewardResult);
         AppendTalentOrbRewards(notify, settlement.TalentRewards);
+        AppendDiceEquipmentRefreshSync(notify);
         return notify;
     }
 
@@ -1520,7 +1591,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         return double.IsFinite(value) && value > 0 ? value : 0;
     }
 
-    private GridFightGameInfo BuildBasicInfo(bool hasPendingAction)
+    public GridFightGameInfo BuildBasicInfo(bool hasPendingAction)
     {
         var session = Session!;
         var lockInfo = new GridFightLockInfo();
@@ -1539,7 +1610,8 @@ public sealed partial class GridFightManager : BasePlayerManager
             MaxAvatarCount = Catalog.BenchSize,
             BuyExpCost = Catalog.BuyExpCost,
             MaxInterestGold = Catalog.MaxInterestGold,
-            OffFieldMaxCount = Catalog.OffFieldInitialCount,
+            // 协议无法中途单独下发 OffFieldMaxCount，进局先预解锁到上限，实际人数仍由 MaxActiveRoleCount 限制
+            OffFieldMaxCount = session.MaxOffFieldRolesCap,
             MaxActiveRoleCount = session.MaxActiveRoles,
             DepositPerInterest = Catalog.DepositPerInterest,
             BenchOverflowSize = Catalog.BenchOverflowSize,
@@ -1548,6 +1620,30 @@ public sealed partial class GridFightManager : BasePlayerManager
         };
         basic.ModuleIdList.Add(Catalog.ContentModuleId);
         return new GridFightGameInfo { BasicInfo = basic };
+    }
+
+    /// <summary>同步总出战人数上限 MaxActiveRoleCount；后台格已在进局时预解锁。</summary>
+    public void AppendPopulationLimitSync(GridFightSyncResultData result)
+    {
+        if (Session == null) return;
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            MaxActiveRoleCount = Session.MaxActiveRoles,
+        });
+    }
+
+    /// <summary>人口变化时的独立同步包，可与装备/合成回包一起发给客户端。</summary>
+    public GridFightSyncUpdateResultScNotify BuildPopulationLimitNotify()
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcCraftEquip,
+        };
+        AppendPopulationLimitSync(result);
+        notify.ResultList.Add(result);
+        return notify;
     }
 
     private GridFightGameShopInfo BuildShopInfo()

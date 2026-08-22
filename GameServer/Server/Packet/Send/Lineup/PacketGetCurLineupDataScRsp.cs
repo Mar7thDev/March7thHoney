@@ -8,9 +8,16 @@ public class PacketGetCurLineupDataScRsp : BasePacket
 {
     public PacketGetCurLineupDataScRsp(PlayerInstance player) : base(CmdIds.GetCurLineupDataScRsp)
     {
+        player.LineupManager?.RecalculateExtraMpCount();
+        var lineupProto = player.LineupManager?.GetCurLineup()?.ToProto() ?? new LineupInfo();
+        var maxMp = (uint)(player.LineupManager?.GetMaxMp() ?? 5);
+        lineupProto.MaxMp = maxMp;
+        if (lineupProto.Mp > maxMp)
+            lineupProto.Mp = maxMp;
+
         var data = new GetCurLineupDataScRsp
         {
-            Lineup = player.LineupManager?.GetCurLineup()?.ToProto() ?? new LineupInfo()
+            Lineup = lineupProto
         };
 
         SetData(data);

@@ -632,18 +632,9 @@ public class AbilityLevelTask(PlayerInstance player)
     public async ValueTask<object> AdvModifyMaxMazeMP(AbilityLevelParam param)
     {
         await ValueTask.CompletedTask;
-
-        if (param.Act is AdvModifyMaxMazeMP advModifyMaxMazeMp)
-            switch (advModifyMaxMazeMp.ModifyFunction)
-            {
-                case PropertyModifyFunctionEnum.Add:
-                    Player.LineupManager!.Data.ExtraMpCount += advModifyMaxMazeMp.ModifyValue.GetValue();
-                    break;
-                case PropertyModifyFunctionEnum.Set:
-                    Player.LineupManager!.Data.ExtraMpCount = advModifyMaxMazeMp.ModifyValue.GetValue() - 5;
-                    break;
-            }
-
+        // 以编队重算为准，避免与 ToProto/发包路径不一致
+        if (param.Act is AdvModifyMaxMazeMP)
+            Player.LineupManager!.RecalculateExtraMpCount();
         return new AbilityLevelResult();
     }
 
