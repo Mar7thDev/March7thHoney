@@ -10,10 +10,18 @@ public class PacketEnterSceneByServerScNotify : BasePacket
     {
         var sceneInfo = scene.ToProto();
         scene.MarkClientSceneSnapshotSynced();
+
+        scene.Player.LineupManager!.RecalculateExtraMpCount();
+        var lineupProto = scene.Player.LineupManager!.GetCurLineup()!.ToProto();
+        var maxMp = (uint)scene.Player.LineupManager.GetMaxMp();
+        lineupProto.MaxMp = maxMp;
+        if (lineupProto.Mp > maxMp)
+            lineupProto.Mp = maxMp;
+
         var notify = new EnterSceneByServerScNotify
         {
             Scene = sceneInfo,
-            Lineup = scene.Player.LineupManager!.GetCurLineup()!.ToProto()
+            Lineup = lineupProto
         };
 
         SetData(notify);
