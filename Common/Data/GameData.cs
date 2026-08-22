@@ -153,6 +153,7 @@ public static partial class GameData
     public static Dictionary<uint, GridFightEquipmentExcel> GridFightEquipmentData { get; private set; } = [];
     public static Dictionary<uint, GridFightForgeExcel> GridFightForgeData { get; private set; } = [];
     public static Dictionary<uint, GridFightTraitEffectExcel> GridFightTraitEffectData { get; private set; } = [];
+    public static Dictionary<uint, GridFightEnhanceExcel> GridFightEnhanceData { get; private set; } = [];
 
     public static Dictionary<uint, GridFightTraitBonusAddRuleExcel>
         GridFightTraitBonusAddRuleData { get; private set; } = [];

@@ -276,33 +276,28 @@ public sealed partial class GridFightManager : BasePlayerManager
                 RecommendEquipmentAction = action,
             };
         }
-if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
+        if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
         {
             var action = new GridFightTraitEffectSelectEnhanceActionInfo
             {
                 TraitId = GridFightSpecialFeatures.SilverWolfTraitId,
-                EffectId = GridFightSpecialFeatures.SilverWolfTraitEffectId,
+                // 档位不同 EffectId 也不同，取角色当前所在的 TraitEffect 组
+                EffectId = session.SilverWolfPendingEffectGroupId,
                 IsOptional = false,
             };
-            if (session.SilverWolfPendingIsFinal)
+            foreach (var optionId in session.SilverWolfPendingOptionIds)
             {
-                action.EnhanceIndexList.Add(0);
-                action.EnhanceOptionIdList.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
-            }
-            else
-            {
-                // 左：改件 OptionId；右：升费 8/13 或另一件改件
-                action.EnhanceIndexList.Add(0);
-                action.EnhanceIndexList.Add(1);
-                action.EnhanceOptionIdList.Add(session.SilverWolfPendingLeftOptionId);
-                action.EnhanceOptionIdList.Add(session.SilverWolfPendingRightOptionId);
+                action.EnhanceIndexList.Add((uint)action.EnhanceOptionIdList.Count);
+                action.EnhanceOptionIdList.Add(optionId);
             }
             return new GridFightPendingAction
             {
                 QueuePosition = traitQueuePosition,
                 TraitEffectSelectEnhanceAction = action,
             };
-        }        var pending = new GridFightPendingAction { QueuePosition = session.PendingQueuePosition };
+        }
+
+        var pending = new GridFightPendingAction { QueuePosition = session.PendingQueuePosition };
         switch (session.Phase)
         {
             case GridFightSessionPhase.SelectingPortal:
@@ -667,7 +662,7 @@ if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
         return result;
     }
 
-        /// <summary>激活失败时也解锁，避免客户端卡在「请选择骇入效果」。</summary>
+    /// <summary>激活失败时也解锁，避免客户端卡在「请选择骇入效果」。</summary>
     public GridFightSyncUpdateResultScNotify BuildTraitEnhanceForceUnlockSync(uint queuePosition)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
@@ -728,7 +723,6 @@ if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
         return notify;
     }
 
-
     public GridFightSyncUpdateResultScNotify BuildHackOptionSync(GridFightHackOptionResult option)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
@@ -782,9 +776,7 @@ if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
                 },
             });
         if (application.PlayerLevelChanged)
-        {
             result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
-        }
         if (application.LineupHpChanged)
             result.UpdateDynamicList.Add(new GridFightSyncData
             {
@@ -1451,8 +1443,7 @@ if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
             });
         notify.ResultList.Add(rewardResult);
         AppendTalentOrbRewards(notify, settlement.TalentRewards);
-                AppendDiceEquipmentRefreshSync(notify);
-
+        AppendDiceEquipmentRefreshSync(notify);
         return notify;
     }
 
@@ -1642,7 +1633,6 @@ if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
     }
 
     /// <summary>人口变化时的独立同步包，可与装备/合成回包一起发给客户端。</summary>
-
     public GridFightSyncUpdateResultScNotify BuildPopulationLimitNotify()
     {
         var notify = new GridFightSyncUpdateResultScNotify();

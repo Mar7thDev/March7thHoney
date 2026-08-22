@@ -189,10 +189,6 @@ public sealed partial class GridFightSession
     private const int SupplyOfferCount = 5;
     private const uint SupplySelectionQueueAdvance = 4;
     private const uint SupplyEquipmentSource = 9;
-    /// <summary>财富宝钻装备 ID（官服配置）。</summary>
-    public const uint WealthDiamondEquipmentId = 350701;
-    /// <summary>财富宝钻：每 N 个备战阶段产金 1。</summary>
-    private const uint WealthDiamondGoldInterval = 3;
 
     private readonly GridFightResourceCatalog _catalog;
     /// <summary>进入备战阶段次数，用于财富宝钻产金。</summary>
@@ -205,20 +201,20 @@ public sealed partial class GridFightSession
     private bool _silverWolfHackUnlocked;
     private uint? _traitEffectSelectEnhanceQueuePosition;
     /// <summary>商店中银狼 LV999 当前费用档对应 RoleId（15061/62/63）</summary>
-    private uint _silverWolfShopRoleId = GridFightSpecialFeatures.SilverWolfThreeCostRoleId;
+    private uint _silverWolfShopRoleId;
     /// <summary>是否已放弃过「提升费用」选项</summary>
     private bool _silverWolfCostUpgradeAbandoned;
     /// <summary>当前骇入弹窗对应的角色 UniqueId</summary>
     private uint? _silverWolfPendingRoleUniqueId;
-    /// <summary>当前弹窗是否为五费三星终局（仅 352507）</summary>
+    /// <summary>当前弹窗是否为最高费用档三星终局（管理员手套）</summary>
     private bool _silverWolfPendingIsFinal;
-    private uint _silverWolfPendingLeftOptionId;
-    private uint _silverWolfPendingRightOptionId;
+    private uint _silverWolfPendingEffectGroupId;
+    private readonly List<uint> _silverWolfPendingOptionIds = [];
     private uint? _silverWolfDeferredRoleUniqueId;
     private uint _silverWolfDeferredStar;
     private bool _silverWolfDeferredIsFinal;
-    private uint _silverWolfDeferredLeftOptionId;
-    private uint _silverWolfDeferredRightOptionId;
+    private uint _silverWolfDeferredEffectGroupId;
+    private readonly List<uint> _silverWolfDeferredOptionIds = [];
     private bool _silverWolfPendingJustActivated;
     /// <summary>骰子 UniqueId → 绑定的 2 个装备配置 ID（卸下不丢，战斗结束才重随）</summary>
     private readonly Dictionary<uint, uint[]> _diceBoundEquipmentConfigIds = new();
@@ -267,16 +263,11 @@ public sealed partial class GridFightSession
     public bool HasCyreneCombatEnhancement { get; private set; }
     public GridFightHackConsoleState? HackConsole { get; private set; }
     public uint? TraitEffectSelectEnhanceQueuePosition => _traitEffectSelectEnhanceQueuePosition;
-    public bool SilverWolfPendingIsFinal => _silverWolfPendingIsFinal;
-    public bool SilverWolfCanOfferCostUpgrade =>
-        !_silverWolfCostUpgradeAbandoned &&
-        !_silverWolfPendingIsFinal &&
-        _silverWolfPendingRoleUniqueId is { } uid &&
-        Roles.FirstOrDefault(r => r.UniqueId == uid) is { } role &&
-        GridFightSpecialFeatures.GetSilverWolfNextCostRoleId(role.RoleId) != 0;
-    public uint SilverWolfShopRoleId => _silverWolfShopRoleId;
-    public uint SilverWolfPendingLeftOptionId => _silverWolfPendingLeftOptionId;
-    public uint SilverWolfPendingRightOptionId => _silverWolfPendingRightOptionId;
+    /// <summary>商店中银狼当前费用档；未升过费时取资源链首档。</summary>
+    public uint SilverWolfShopRoleId =>
+        _silverWolfShopRoleId != 0 ? _silverWolfShopRoleId : GridFightSpecialFeatures.SilverWolfBaseRoleId;
+    public IReadOnlyList<uint> SilverWolfPendingOptionIds => _silverWolfPendingOptionIds;
+    public uint SilverWolfPendingEffectGroupId => _silverWolfPendingEffectGroupId;
     public bool ConsumeSilverWolfPendingJustActivated()
     {
         if (!_silverWolfPendingJustActivated) return false;
@@ -431,39 +422,29 @@ public sealed partial class GridFightSession
         PrepareCurrentNode();
     }
 
-    /// <summary>财富宝钻人口加成：每件拥有 +1，最多 3（官服后台席位上限规则）。</summary>
+    /// <summary>后台席位可被装备解锁的格数，超出部分官服不再生效。</summary>
+    private uint MaxRoleCountBonus =>
+        _catalog.OffFieldMaxCount > _catalog.OffFieldInitialCount
+            ? _catalog.OffFieldMaxCount - _catalog.OffFieldInitialCount
+            : 0;
+
+    /// <summary>财富宝钻等 AvatarMaxNumberAdd 装备提供的人口加成，无论是否被角色穿戴。</summary>
     public uint WealthDiamondBonus
     {
         get
         {
-            uint bonus = 0;
-            foreach (var state in Equipments)
-            {
-                if (state.EquipmentId == WealthDiamondEquipmentId)
-                {
-                    bonus += 1;
-                    continue;
-                }
-                var config = GameData.GridFightEquipmentData.GetValueOrDefault(state.EquipmentId);
-                if (config?.EquipFunc == GridFightEquipFuncTypeEnum.AvatarMaxNumberAdd)
-                {
-                    var add = config.EquipFuncParamList.FirstOrDefault();
-                    bonus += add == 0 ? 1u : add;
-                }
-            }
-            return Math.Min(bonus, 3u);
+            var bonus = Equipments
+                .Select(state => GameData.GridFightEquipmentData.GetValueOrDefault(state.EquipmentId))
+                .Where(config => config?.EquipFunc == GridFightEquipFuncTypeEnum.AvatarMaxNumberAdd)
+                .Aggregate(0UL, (total, config) => total + Math.Max(1u, config!.EquipFuncParamList.FirstOrDefault()));
+            return (uint)Math.Min(bonus, MaxRoleCountBonus);
         }
     }
 
-    /// <summary>后台出战席位上限 = GridFight_Back_AvatarInitialNum + 财富宝钻加成，客户端用 OffFieldMaxCount 控制格子。</summary>
-    public uint MaxOffFieldRoles =>
-        (uint)Math.Min(uint.MaxValue, (ulong)_catalog.OffFieldInitialCount + WealthDiamondBonus);
+    /// <summary>后台格 UI 预解锁上限，进局时写入 OffFieldMaxCount 以规避中途无法推送。</summary>
+    public uint MaxOffFieldRolesCap => _catalog.OffFieldMaxCount;
 
-    /// <summary>后台格 UI 预解锁上限 = 初始 + 3，进局时写入 OffFieldMaxCount 以规避中途无法推送。</summary>
-    public uint MaxOffFieldRolesCap =>
-        (uint)Math.Min(uint.MaxValue, (ulong)_catalog.OffFieldInitialCount + 3u);
-
-    /// <summary>总出战人数上限 = 等级基础人口 + 财富宝钻加成（≤3），UpdatePositions / EnterBattle 校验读此值。</summary>
+    /// <summary>总出战人数上限 = 等级基础人口 + 装备加成，UpdatePositions / EnterBattle 校验读此值。</summary>
     public uint MaxActiveRoles
     {
         get
@@ -882,6 +863,14 @@ public sealed partial class GridFightSession
             _silverWolfCostUpgradeAbandoned,
             _silverWolfPendingRoleUniqueId,
             _silverWolfPendingIsFinal,
+            _silverWolfPendingEffectGroupId,
+            [.._silverWolfPendingOptionIds],
+            _silverWolfPendingJustActivated,
+            _silverWolfDeferredRoleUniqueId,
+            _silverWolfDeferredStar,
+            _silverWolfDeferredIsFinal,
+            _silverWolfDeferredEffectGroupId,
+            [.._silverWolfDeferredOptionIds],
             Gold,
             PlayerLevel,
             PlayerExp,
@@ -932,6 +921,16 @@ public sealed partial class GridFightSession
         _silverWolfCostUpgradeAbandoned = snapshot.SilverWolfCostUpgradeAbandoned;
         _silverWolfPendingRoleUniqueId = snapshot.SilverWolfPendingRoleUniqueId;
         _silverWolfPendingIsFinal = snapshot.SilverWolfPendingIsFinal;
+        _silverWolfPendingEffectGroupId = snapshot.SilverWolfPendingEffectGroupId;
+        _silverWolfPendingOptionIds.Clear();
+        _silverWolfPendingOptionIds.AddRange(snapshot.SilverWolfPendingOptionIds);
+        _silverWolfPendingJustActivated = snapshot.SilverWolfPendingJustActivated;
+        _silverWolfDeferredRoleUniqueId = snapshot.SilverWolfDeferredRoleUniqueId;
+        _silverWolfDeferredStar = snapshot.SilverWolfDeferredStar;
+        _silverWolfDeferredIsFinal = snapshot.SilverWolfDeferredIsFinal;
+        _silverWolfDeferredEffectGroupId = snapshot.SilverWolfDeferredEffectGroupId;
+        _silverWolfDeferredOptionIds.Clear();
+        _silverWolfDeferredOptionIds.AddRange(snapshot.SilverWolfDeferredOptionIds);
         Gold = snapshot.Gold;
         PlayerLevel = snapshot.PlayerLevel;
         PlayerExp = snapshot.PlayerExp;
@@ -973,6 +972,14 @@ public sealed partial class GridFightSession
         bool SilverWolfCostUpgradeAbandoned,
         uint? SilverWolfPendingRoleUniqueId,
         bool SilverWolfPendingIsFinal,
+        uint SilverWolfPendingEffectGroupId,
+        IReadOnlyList<uint> SilverWolfPendingOptionIds,
+        bool SilverWolfPendingJustActivated,
+        uint? SilverWolfDeferredRoleUniqueId,
+        uint SilverWolfDeferredStar,
+        bool SilverWolfDeferredIsFinal,
+        uint SilverWolfDeferredEffectGroupId,
+        IReadOnlyList<uint> SilverWolfDeferredOptionIds,
         uint Gold,
         uint PlayerLevel,
         uint PlayerExp,
@@ -987,28 +994,26 @@ public sealed partial class GridFightSession
         uint queuePosition,
         uint enhanceOptionId)
     {
-        if (_traitEffectSelectEnhanceQueuePosition != queuePosition)
+        if (_traitEffectSelectEnhanceQueuePosition != queuePosition ||
+            !_silverWolfPendingOptionIds.Contains(enhanceOptionId))
             return GridFightTraitEnhanceActivationResult.Failed;
 
-        var shouldClear = true;
         try
         {
-            // 终局手套
+            // 终局手套：解锁骇入控制台
             if (_silverWolfPendingIsFinal)
             {
-                if (HackConsole != null)
-                    return GridFightTraitEnhanceActivationResult.Failed;
-                var gloveId = GridFightSpecialFeatures.SilverWolfHackEquipmentId;
-                if (!TryAddEquipment(gloveId, out var equipment, GridFightSpecialFeatures.HackEquipmentSource))
+                if (HackConsole != null ||
+                    !GridFightSpecialFeatures.TryResolveSilverWolfEquipmentId(out var gloveId) ||
+                    !TryAddEquipment(gloveId, out var glove, GridFightSpecialFeatures.HackEquipmentSource))
                     return GridFightTraitEnhanceActivationResult.Failed;
                 HackConsole = new GridFightHackConsoleState { GameItemUniqueId = _nextEntityUniqueId++ };
                 _silverWolfHackUnlocked = true;
-                return new GridFightTraitEnhanceActivationResult(true, queuePosition, equipment);
+                return new GridFightTraitEnhanceActivationResult(true, queuePosition, glove);
             }
 
-            // 升费 8 / 13
-            if (enhanceOptionId is GridFightSpecialFeatures.SilverWolfCostUpgradeToFourOptionId
-                or GridFightSpecialFeatures.SilverWolfCostUpgradeToFiveOptionId)
+            // 升费：选项 SelectCondition 为 Permanent，EffectParamList[0] 指向下一档角色
+            if (enhanceOptionId == GridFightSpecialFeatures.GetCostUpgradeOptionId(SilverWolfPendingRoleId))
             {
                 if (!TryApplySilverWolfCostUpgrade(out var upgraded))
                     return GridFightTraitEnhanceActivationResult.Failed;
@@ -1016,46 +1021,29 @@ public sealed partial class GridFightSession
                     true, queuePosition, null, upgraded, ShopNeedsRefresh: true);
             }
 
-            // OptionId → 装备
-            if (GridFightSpecialFeatures.TryGetEquipmentIdForOption(enhanceOptionId, out var equipId))
-            {
-                if (!_silverWolfCostUpgradeAbandoned &&
-                    (_silverWolfPendingRightOptionId == GridFightSpecialFeatures.SilverWolfCostUpgradeToFourOptionId ||
-                     _silverWolfPendingRightOptionId == GridFightSpecialFeatures.SilverWolfCostUpgradeToFiveOptionId))
-                    _silverWolfCostUpgradeAbandoned = true;
+            if (!GridFightSpecialFeatures.TryGetEquipmentIdForOption(enhanceOptionId, out var equipmentId) ||
+                !TryAddEquipment(equipmentId, out var part, GridFightSpecialFeatures.HackEquipmentSource))
+                return GridFightTraitEnhanceActivationResult.Failed;
 
-                if (!TryAddEquipment(equipId, out var part, GridFightSpecialFeatures.HackEquipmentSource))
-                    return GridFightTraitEnhanceActivationResult.Failed;
-                return new GridFightTraitEnhanceActivationResult(true, queuePosition, part);
-            }
-
-            // 兼容直接装备 ID
-            if (enhanceOptionId is >= 352300 and <= 352599)
-            {
-                if (!_silverWolfCostUpgradeAbandoned)
-                    _silverWolfCostUpgradeAbandoned = true;
-                if (!TryAddEquipment(enhanceOptionId, out var part, GridFightSpecialFeatures.HackEquipmentSource))
-                    return GridFightTraitEnhanceActivationResult.Failed;
-                if (enhanceOptionId == GridFightSpecialFeatures.SilverWolfHackEquipmentId && HackConsole == null)
-                {
-                    HackConsole = new GridFightHackConsoleState { GameItemUniqueId = _nextEntityUniqueId++ };
-                    _silverWolfHackUnlocked = true;
-                }
-                return new GridFightTraitEnhanceActivationResult(true, queuePosition, part);
-            }
-
-            return GridFightTraitEnhanceActivationResult.Failed;
+            // 本次弹窗提供过升费却选了改件，视为永久放弃升费
+            if (_silverWolfPendingOptionIds.Contains(
+                    GridFightSpecialFeatures.GetCostUpgradeOptionId(SilverWolfPendingRoleId)))
+                _silverWolfCostUpgradeAbandoned = true;
+            return new GridFightTraitEnhanceActivationResult(true, queuePosition, part);
         }
         finally
         {
-            if (shouldClear)
-            {
-                ClearSilverWolfPending();
-                // 关键：推进 PendingQueuePosition，防止第二次弹窗复用同一位置导致卡死
-                PendingQueuePosition++;
-            }
+            ClearSilverWolfPending();
+            // 推进 PendingQueuePosition，防止第二次弹窗复用同一位置导致卡死
+            PendingQueuePosition++;
         }
     }
+
+    /// <summary>当前弹窗对应角色的 RoleId，弹窗已失效时为 0。</summary>
+    private uint SilverWolfPendingRoleId =>
+        _silverWolfPendingRoleUniqueId is { } uniqueId
+            ? Roles.FirstOrDefault(role => role.UniqueId == uniqueId)?.RoleId ?? 0
+            : 0;
 
     private bool TryApplySilverWolfCostUpgrade(out GridFightRoleState? upgraded)
     {
@@ -1074,37 +1062,33 @@ public sealed partial class GridFightSession
         return true;
     }
 
+    /// <summary>组一次骇入弹窗：终局只给手套，否则一件改件 + 升费（放弃过则再来一件改件）。</summary>
     private void PrepareSilverWolfEnhanceOptions(GridFightRoleState role)
     {
+        _silverWolfPendingEffectGroupId = GridFightSpecialFeatures.GetSilverWolfEffectGroup(role.RoleId);
+        _silverWolfPendingOptionIds.Clear();
         if (_silverWolfPendingIsFinal)
         {
-            _silverWolfPendingLeftOptionId = GridFightSpecialFeatures.SilverWolfEnhanceOptionId;
-            _silverWolfPendingRightOptionId = 0;
+            _silverWolfPendingOptionIds.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
             return;
         }
 
-        var owned = Equipments.Select(e => e.EquipmentId).ToHashSet();
+        var owned = Equipments.Select(equipment => equipment.EquipmentId).ToHashSet();
+        var pool = GridFightSpecialFeatures.GetHackEquipmentOptionPoolForRole(role.RoleId);
         var left = GridFightSpecialFeatures.RollRandomHackOptionId(Random.Shared, role.RoleId, owned);
-        if (left == 0)
-            left = GridFightSpecialFeatures.GetHackEquipmentOptionPoolForRole(role.RoleId).FirstOrDefault();
-        _silverWolfPendingLeftOptionId = left;
+        if (left == 0) left = pool.FirstOrDefault();
+        if (left != 0) _silverWolfPendingOptionIds.Add(left);
 
-        var costOpt = GridFightSpecialFeatures.GetCostUpgradeOptionId(role.RoleId);
-        var fullPool = GridFightSpecialFeatures.GetHackOptionPoolForRole(role.RoleId);
-        if (!_silverWolfCostUpgradeAbandoned && costOpt != 0 && fullPool.Contains(costOpt))
-            _silverWolfPendingRightOptionId = costOpt;
-        else
+        var costOptionId = GridFightSpecialFeatures.GetCostUpgradeOptionId(role.RoleId);
+        if (!_silverWolfCostUpgradeAbandoned && costOptionId != 0)
         {
-            var right = GridFightSpecialFeatures.RollRandomHackOptionId(Random.Shared, role.RoleId, owned);
-            if (right == 0 || right == left)
-            {
-                var alts = GridFightSpecialFeatures.GetHackEquipmentOptionPoolForRole(role.RoleId)
-                    .Where(o => o != left)
-                    .ToList();
-                right = alts.Count > 0 ? alts[Random.Shared.Next(alts.Count)] : left;
-            }
-            _silverWolfPendingRightOptionId = right;
+            _silverWolfPendingOptionIds.Add(costOptionId);
+            return;
         }
+
+        var alternatives = pool.Where(optionId => optionId != left).ToList();
+        if (alternatives.Count > 0)
+            _silverWolfPendingOptionIds.Add(alternatives[Random.Shared.Next(alternatives.Count)]);
     }
 
     private void ClearSilverWolfPending()
@@ -1112,8 +1096,8 @@ public sealed partial class GridFightSession
         _traitEffectSelectEnhanceQueuePosition = null;
         _silverWolfPendingRoleUniqueId = null;
         _silverWolfPendingIsFinal = false;
-        _silverWolfPendingLeftOptionId = 0;
-        _silverWolfPendingRightOptionId = 0;
+        _silverWolfPendingEffectGroupId = 0;
+        _silverWolfPendingOptionIds.Clear();
         _silverWolfPendingJustActivated = false;
     }
 
@@ -1122,8 +1106,8 @@ public sealed partial class GridFightSession
         _silverWolfDeferredRoleUniqueId = null;
         _silverWolfDeferredStar = 0;
         _silverWolfDeferredIsFinal = false;
-        _silverWolfDeferredLeftOptionId = 0;
-        _silverWolfDeferredRightOptionId = 0;
+        _silverWolfDeferredEffectGroupId = 0;
+        _silverWolfDeferredOptionIds.Clear();
     }
 
     /// <summary>是否已持有同费用档、星数≥2 的另一只银狼，用于二星重复合成时不再弹骇入。</summary>
@@ -1138,13 +1122,15 @@ public sealed partial class GridFightSession
         _silverWolfDeferredRoleUniqueId = role.UniqueId;
         _silverWolfDeferredStar = role.Star;
         _silverWolfDeferredIsFinal = _silverWolfPendingIsFinal;
-        _silverWolfDeferredLeftOptionId = _silverWolfPendingLeftOptionId;
-        _silverWolfDeferredRightOptionId = _silverWolfPendingRightOptionId;
+        _silverWolfDeferredEffectGroupId = _silverWolfPendingEffectGroupId;
+        _silverWolfDeferredOptionIds.Clear();
+        _silverWolfDeferredOptionIds.AddRange(_silverWolfPendingOptionIds);
     }
 
     private bool TryQueueSilverWolfPendingFromPrepared(GridFightRoleState role)
     {
-        if (_traitEffectSelectEnhanceQueuePosition != null)
+        // 选项组不出来就别弹窗，否则客户端会收到空列表卡住
+        if (_traitEffectSelectEnhanceQueuePosition != null || _silverWolfPendingOptionIds.Count == 0)
             return false;
         _silverWolfPendingRoleUniqueId = role.UniqueId;
         _traitEffectSelectEnhanceQueuePosition = PendingQueuePosition;
@@ -1185,8 +1171,9 @@ public sealed partial class GridFightSession
         chosen ??= eligible.FirstOrDefault(r => r.UniqueId == deferredUid) ?? eligible[0];
 
         _silverWolfPendingIsFinal = _silverWolfDeferredIsFinal;
-        _silverWolfPendingLeftOptionId = _silverWolfDeferredLeftOptionId;
-        _silverWolfPendingRightOptionId = _silverWolfDeferredRightOptionId;
+        _silverWolfPendingEffectGroupId = _silverWolfDeferredEffectGroupId;
+        _silverWolfPendingOptionIds.Clear();
+        _silverWolfPendingOptionIds.AddRange(_silverWolfDeferredOptionIds);
         if (_silverWolfPendingIsFinal && HackConsole != null)
         {
             ClearSilverWolfDeferred();
@@ -1534,9 +1521,8 @@ public sealed partial class GridFightSession
         var promoted = PromoteOverflowItemsToBench();
         updatedRoles.AddRange(promoted.Roles.Where(role => updatedRoleIds.Add(role.UniqueId)));
         updatedForgeItems.AddRange(promoted.ForgeItems.Where(item => updatedForgeItemIds.Add(item.UniqueId)));
-                // 银狼待生效：有角色进入出战席时尝试弹出骇入
-        TryPromoteDeferredSilverWolfEnhance(updatedRoles.Select(r => r.UniqueId).ToList());
-
+        // 银狼待生效：有角色进入出战席时尝试弹出骇入
+        TryPromoteDeferredSilverWolfEnhance(updatedRoles.Select(role => role.UniqueId).ToList());
         return new GridFightSessionChange(true, [], [], updatedRoles, updatedForgeItems);
     }
 
@@ -1715,8 +1701,8 @@ public sealed partial class GridFightSession
 
     public void AbortBattleStart()
     {
-        // 开战取消：回到备战，计一次备战阶段
-        if (Phase == GridFightSessionPhase.InBattle) EnterPreparingPhase();
+        // 开战构建失败：只回退阶段，不推进备战计数、不重随骰子
+        if (Phase == GridFightSessionPhase.InBattle) Phase = GridFightSessionPhase.Preparing;
     }
 
     public bool BackToPrepare()
@@ -1734,22 +1720,29 @@ public sealed partial class GridFightSession
 
         // 每个节点：随便骰子 / 特权随便骰子刷新随机装备填充
         ApplyDiceEquipmentRefills();
+        GrantEquippedPeriodicGold();
+    }
 
-        // 财富宝钻：每 3 次进入备战，每件已穿戴宝钻 +1 金币
-        if (_preparationPhaseCount % WealthDiamondGoldInterval != 0) return;
+    /// <summary>已穿戴的产金装备（财富宝钻）按 ParamList 的「每 N 个备战阶段给 M 金」结算。</summary>
+    private void GrantEquippedPeriodicGold()
+    {
+        var equippedIds = Roles
+            .SelectMany(role => role.EquippedEquipmentUniqueIds)
+            .Select(uniqueId => Equipments.FirstOrDefault(item => item.UniqueId == uniqueId)?.EquipmentId ?? 0)
+            .Where(id => id != 0);
 
-        var equippedWealthDiamonds = 0;
-        foreach (var role in Roles)
+        uint gold = 0;
+        foreach (var equipmentId in equippedIds)
         {
-            foreach (var uniqueId in role.EquippedEquipmentUniqueIds)
-            {
-                var equipment = Equipments.FirstOrDefault(item => item.UniqueId == uniqueId);
-                if (equipment?.EquipmentId == WealthDiamondEquipmentId)
-                    equippedWealthDiamonds++;
-            }
+            var config = GameData.GridFightEquipmentData.GetValueOrDefault(equipmentId);
+            if (config?.EquipFunc != GridFightEquipFuncTypeEnum.AvatarMaxNumberAdd) continue;
+            var interval = (uint)Math.Max(0, config.ParamList.ElementAtOrDefault(0)?.Value ?? 0);
+            var amount = (uint)Math.Max(0, config.ParamList.ElementAtOrDefault(1)?.Value ?? 0);
+            if (interval == 0 || amount == 0) continue;
+            if (_preparationPhaseCount % interval != 0) continue;
+            gold += amount;
         }
-        if (equippedWealthDiamonds > 0)
-            AddGold((uint)equippedWealthDiamonds);
+        if (gold > 0) AddGold(gold);
     }
 
     public bool RefreshShop(bool chargeGold)
@@ -1762,9 +1755,8 @@ public sealed partial class GridFightSession
         if (chargeGold) Gold -= _catalog.RefreshCost;
         Shop.Clear();
         var excluded = GetShopExcludedRoleIds();
-        var rolled = _catalog.RollShop(PlayerLevel, excluded);
+        var rolled = _catalog.RollShop(PlayerLevel, excluded, GetShopExtraCandidateRoleIds(excluded));
         var roleIds = rolled.Select(role => role.ID).ToList();
-        TryInjectSilverWolfRoleId(roleIds, excluded);
         for (var index = 0; index < roleIds.Count; index++)
         {
             var roleId = roleIds[index];
@@ -1778,14 +1770,14 @@ public sealed partial class GridFightSession
         return true;
     }
 
-    /// <summary>银狼常不在 RolePool，强制把当前费用档 ID 写入商店一格。</summary>
-    private void TryInjectSilverWolfRoleId(List<uint> roleIds, HashSet<uint> excluded)
+    /// <summary>银狼 RoleSavedValueList 为空被 RolePool 过滤掉，按当前费用档补进候选池参与稀有度抽取。</summary>
+    private IReadOnlyList<GridFightRoleBasicInfoExcel> GetShopExtraCandidateRoleIds(HashSet<uint> excluded)
     {
-        var swId = _silverWolfShopRoleId;
-        if (roleIds.Count == 0 || excluded.Contains(swId)) return;
-        if (!GameData.GridFightRoleBasicInfoData.ContainsKey(swId)) return;
-        if (roleIds.Contains(swId)) return;
-        roleIds[Random.Shared.Next(roleIds.Count)] = swId;
+        var roleId = SilverWolfShopRoleId;
+        if (roleId == 0 || excluded.Contains(roleId)) return [];
+        if (_catalog.RolePool.Any(row => row.ID == roleId)) return [];
+        var row = GameData.GridFightRoleBasicInfoData.GetValueOrDefault(roleId);
+        return row is { IsInPool: true } ? [row] : [];
     }
 
     /// <summary>收集局内已达到三星的角色 ID；若存在切换组，整组一并排除。</summary>
@@ -1810,14 +1802,9 @@ public sealed partial class GridFightSession
     private HashSet<uint> GetShopExcludedRoleIds()
     {
         var excluded = GetMaxStarExcludedRoleIds();
-        foreach (var id in new uint[]
-                 {
-                     GridFightSpecialFeatures.SilverWolfThreeCostRoleId,
-                     GridFightSpecialFeatures.SilverWolfFourCostRoleId,
-                     GridFightSpecialFeatures.SilverWolfFiveCostRoleId,
-                 })
+        foreach (var id in GridFightSpecialFeatures.SilverWolfRoleChain)
         {
-            if (id != _silverWolfShopRoleId)
+            if (id != SilverWolfShopRoleId)
                 excluded.Add(id);
         }
         return excluded;
@@ -1947,21 +1934,18 @@ public sealed partial class GridFightSession
             {
                 var role = swMerged[^1];
                 var isFinal =
-                    role.RoleId == GridFightSpecialFeatures.SilverWolfFiveCostRoleId &&
+                    role.RoleId == GridFightSpecialFeatures.SilverWolfTopRoleId &&
                     role.Star >= 3 &&
                     HackConsole == null;
 
                 // 已有同费用二星时，再次合成第二个二星不触发（3/4/5 费均适用；三星终局除外）
-                if (!isFinal &&
-                    role.Star == 2 &&
-                    HasOtherSameTierTwoStarOrAbove(role.RoleId, role.UniqueId))
-                {
-                    // skip
-                }
-                else
+                var alreadyOffered = !isFinal &&
+                                     role.Star == 2 &&
+                                     HasOtherSameTierTwoStarOrAbove(role.RoleId, role.UniqueId);
+                if (!alreadyOffered)
                 {
                     if (GridFightSpecialFeatures.GetSilverWolfCostTier(role.RoleId) >
-                        GridFightSpecialFeatures.GetSilverWolfCostTier(_silverWolfShopRoleId))
+                        GridFightSpecialFeatures.GetSilverWolfCostTier(SilverWolfShopRoleId))
                         _silverWolfShopRoleId = role.RoleId;
 
                     _silverWolfPendingIsFinal = isFinal;

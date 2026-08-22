@@ -95,6 +95,7 @@ public sealed class GridFightResourceCatalog
     public uint BenchSize => RequireUInt("GridFight_Bench_AvatarNum");
     public uint BenchOverflowSize => RequireUInt("GridFight_Bench_OverFlow_AvatarNum");
     public uint OffFieldInitialCount => RequireUInt("GridFight_Back_AvatarInitialNum");
+    public uint OffFieldMaxCount => RequireUInt("GridFight_Back_AvatarMaxNum");
     public uint DepositPerInterest => RequireUInt("GridFight_DepositPerInterest");
     public uint MaxInterestGold => RequireUInt("GridFight_GainInterestMax");
     public uint PostBattleHealingSourceId => PostBattleHealingTalentId;
@@ -310,7 +311,7 @@ public sealed class GridFightResourceCatalog
         if (!GameData.GridFightRoleStarData.ContainsKey(
                 GridFightSpecialFeatures.CyreneRoleId << 4 | 3) ||
             !GameData.GridFightRoleStarData.ContainsKey(
-                GridFightSpecialFeatures.SilverWolfFiveCostRoleId << 4 | 3))
+                GridFightSpecialFeatures.SilverWolfTopRoleId << 4 | 3))
             errors.Add("GridFight special roles have no three-star resource");
         if (!GridFightSpecialFeatures.TryResolveSilverWolfEquipmentId(out _))
             errors.Add("Silver Wolf hack equipment is missing");
@@ -545,7 +546,8 @@ public sealed class GridFightResourceCatalog
     /// <summary>按玩家等级稀有度权重抽取商店角色；excludedRoleIds 为已满三星（含同切换组）不再出现的角色。</summary>
     public IReadOnlyList<GridFightRoleBasicInfoExcel> RollShop(
         uint level,
-        IReadOnlyCollection<uint>? excludedRoleIds = null)
+        IReadOnlyCollection<uint>? excludedRoleIds = null,
+        IReadOnlyList<GridFightRoleBasicInfoExcel>? extraCandidates = null)
     {
         var count = checked((int)ShopSize);
         var weights = GetUIntList($"GridFight_CardWeight_Lv{level}");
@@ -553,24 +555,25 @@ public sealed class GridFightResourceCatalog
         var excluded = excludedRoleIds is { Count: > 0 }
             ? excludedRoleIds as HashSet<uint> ?? excludedRoleIds.ToHashSet()
             : null;
+        var pool = extraCandidates is { Count: > 0 } ? [..RolePool, ..extraCandidates] : RolePool;
 
         var result = new List<GridFightRoleBasicInfoExcel>(count);
         for (var index = 0; index < count; index++)
         {
             var rarity = RollIndex(weights) + 1u;
-            var candidates = RolePool
+            var candidates = pool
                 .Where(role => role.Rarity == rarity && (excluded == null || !excluded.Contains(role.ID)))
                 .ToList();
             // 该稀有度在排除后为空：退回「全池但排除满星」
             if (candidates.Count == 0)
-                candidates = RolePool
+                candidates = pool
                     .Where(role => excluded == null || !excluded.Contains(role.ID))
                     .ToList();
             // 仍为空（几乎全满星）：兜底不排除，避免商店抽空崩溃
             if (candidates.Count == 0)
-                candidates = RolePool.Where(role => role.Rarity == rarity).ToList();
+                candidates = pool.Where(role => role.Rarity == rarity).ToList();
             if (candidates.Count == 0)
-                candidates = RolePool.ToList();
+                candidates = pool.ToList();
 
             result.Add(candidates[_random.Next(candidates.Count)]);
         }

@@ -1,4 +1,3 @@
-using System;
 using March7thHoney.Data;
 using March7thHoney.Enums.GridFight;
 
@@ -92,7 +91,7 @@ public sealed partial class GridFightSession
         {
             previousWearer.EquippedEquipmentUniqueIds.Remove(equipmentUniqueId);
             // 骰子从原角色卸下：其填充装备直接销毁（不进背包）
-            if (IsDiceEquipmentId(equipment.EquipmentId))
+            if (IsDiceEquipment(equipment.EquipmentId))
                 DestroyDiceFilledOnRole(previousWearer, removed);
             updatedRoles.Add(previousWearer);
         }
@@ -100,7 +99,7 @@ public sealed partial class GridFightSession
         if (!updatedRoles.Contains(role)) updatedRoles.Add(role);
 
         var crafted = TryAutoCraftOnRole(role, equipmentUniqueId, removed, added);
-        if (IsDiceEquipmentId(equipment.EquipmentId))
+        if (IsDiceEquipment(equipment.EquipmentId))
             ApplyDiceEquipmentRefillForRole(role, removed, added, updatedRoles);
         RecalculateRoleSwitches();
         return new GridFightEquipDressResult(
@@ -530,7 +529,7 @@ public sealed partial class GridFightSession
     /// <summary>战斗结束：所有骰子重随绑定；已穿戴的角色立刻换上新绑定装备。</summary>
     public void ApplyDiceEquipmentRefills()
     {
-        foreach (var dice in Equipments.Where(item => IsDiceEquipmentId(item.EquipmentId)).ToList())
+        foreach (var dice in Equipments.Where(item => IsDiceEquipment(item.EquipmentId)).ToList())
         {
             var privilege = dice.EquipmentId == PrivilegeDiceEquipmentId;
             RerollDiceBinding(dice.UniqueId, privilege);
@@ -538,7 +537,7 @@ public sealed partial class GridFightSession
 
         foreach (var role in Roles.ToList())
         {
-            var dice = GetEquippedEquipment(role).FirstOrDefault(item => IsDiceEquipmentId(item.EquipmentId));
+            var dice = GetEquippedEquipment(role).FirstOrDefault(item => IsDiceEquipment(item.EquipmentId));
             if (dice == null) continue;
             ApplyDiceBoundToRole(role, dice, null, null, null);
         }
@@ -551,7 +550,7 @@ public sealed partial class GridFightSession
         ICollection<GridFightEquipmentState>? added,
         ICollection<GridFightRoleState>? updatedRoles)
     {
-        var dice = GetEquippedEquipment(role).FirstOrDefault(item => IsDiceEquipmentId(item.EquipmentId));
+        var dice = GetEquippedEquipment(role).FirstOrDefault(item => IsDiceEquipment(item.EquipmentId));
         if (dice == null) return;
         ApplyDiceBoundToRole(role, dice, removed, added, updatedRoles);
     }
@@ -599,42 +598,29 @@ public sealed partial class GridFightSession
         return binding;
     }
 
-    private static bool IsDiceEquipmentId(uint equipmentId) =>
+    /// <summary>骰子自身：DressRuleAllSlotEmpty 的可合成 / 特权装备。</summary>
+    public static bool IsDiceEquipment(uint equipmentId) =>
         equipmentId is CasualDiceEquipmentId or PrivilegeDiceEquipmentId;
 
-    /// <summary>随便骰子：3503xxxx 排除 35030404；特权：3504xxxx 排除 35040404。</summary>
+    public bool IsDiceFilledEquipment(GridFightEquipmentState equipment) =>
+        equipment.Source == DiceFilledEquipmentSource;
+
+    /// <summary>填充池取骰子同类别（Craftable / Radiant）的普通装备，排除骰子自身与改件。</summary>
     private uint RollDiceFillEquipmentId(bool privilege)
     {
-        uint prefixMin, prefixMax, excludeId;
-        if (privilege)
-        {
-            prefixMin = 35040000;
-            prefixMax = 35049999;
-            excludeId = PrivilegeDiceEquipmentId;
-        }
-        else
-        {
-            prefixMin = 35030000;
-            prefixMax = 35039999;
-            excludeId = CasualDiceEquipmentId;
-        }
+        var diceId = privilege ? PrivilegeDiceEquipmentId : CasualDiceEquipmentId;
+        var category = GameData.GridFightEquipmentData.GetValueOrDefault(diceId)?.EquipCategory;
+        if (category is null or GridFightEquipCategoryEnum.None) return 0;
 
         var poolIds = GameData.GridFightEquipmentData.Values
             .Where(row =>
-                row.ID >= prefixMin &&
-                row.ID <= prefixMax &&
-                row.ID != excludeId &&
+                row.EquipCategory == category &&
+                !IsDiceEquipment(row.ID) &&
                 row.EquipType != GridFightEquipmentTypeEnum.Implants &&
                 row.DressRule != GridFightEquipDressTypeEnum.DressRuleAllSlotEmpty)
             .Select(row => row.ID)
             .ToList();
 
-        if (poolIds.Count == 0) return 0;
-        return poolIds[Random.Shared.Next(poolIds.Count)];
+        return poolIds.Count == 0 ? 0 : poolIds[Random.Shared.Next(poolIds.Count)];
     }
-
-
-
-
-
 }
