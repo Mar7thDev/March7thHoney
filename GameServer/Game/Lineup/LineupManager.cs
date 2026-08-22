@@ -21,6 +21,7 @@ public class LineupManager : BasePlayerManager<LineupData>
             lineupInfo.LineupData = Data;
             lineupInfo.AvatarData = player.AvatarManager!.Data;
         }
+        RecalculateExtraMpCount();
     }
 
     #region Detail
@@ -47,6 +48,51 @@ public class LineupManager : BasePlayerManager<LineupData>
     public int GetMaxMp()
     {
         return 5 + Data.ExtraMpCount;
+    }
+
+    /// <summary>根据当前编队重算 ExtraMpCount：白厄(1408)、姬子•启行(1510) 在队时各 +3。</summary>
+    public void RecalculateExtraMpCount()
+    {
+        var extra = 0;
+        var lineup = GetCurLineup();
+        if (lineup?.BaseAvatars != null)
+        {
+            foreach (var slot in lineup.BaseAvatars)
+            {
+                var id = slot.BaseAvatarId;
+                if (slot.SpecialAvatarId > 0 &&
+                    GameData.SpecialAvatarData.TryGetValue(slot.SpecialAvatarId, out var special) &&
+                    special != null)
+                    id = special.AvatarID;
+
+                // 多命途角色归一到 BaseAvatarID
+                if (GameData.MultiplePathAvatarConfigData.TryGetValue(id, out var multi) && multi != null)
+                    id = multi.BaseAvatarID;
+
+                if (GrantsExtraTechniquePoints(id))
+                    extra += 3;
+            }
+        }
+
+        Data.ExtraMpCount = extra;
+        if (lineup != null)
+            lineup.Mp = Math.Min(Math.Max(0, lineup.Mp), 5 + extra);
+    }
+
+    private static bool GrantsExtraTechniquePoints(int baseAvatarId) =>
+        baseAvatarId is
+            1408 or // 白厄
+            1510;   // 姬子•启行 Himeko Nova (客户端实际 ID)
+
+
+    /// <summary>写入协议 LineupInfo.MaxMp，ToProto 可能漏带 ExtraMpCount 故发包前强制设置。</summary>
+    public void ApplyMaxMp(Proto.LineupInfo proto)
+    {
+        if (proto == null) return;
+        RecalculateExtraMpCount();
+        proto.MaxMp = (uint)GetMaxMp();
+        if (proto.Mp > proto.MaxMp)
+            proto.Mp = proto.MaxMp;
     }
 
     public List<AvatarLineupData> GetAvatarsFromTeam(int index)
@@ -271,7 +317,11 @@ public class LineupManager : BasePlayerManager<LineupData>
         MarkDirty();
         if (sendPacket)
         {
-            if (lineupIndex == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+            if (lineupIndex == Data.GetCurLineupIndex())
+            {
+                RecalculateExtraMpCount();
+                Player.SceneInstance?.SyncLineup();
+            }
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
@@ -380,7 +430,11 @@ public class LineupManager : BasePlayerManager<LineupData>
 
         if (sendPacket)
         {
-            if (lineupIndex == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+            if (lineupIndex == Data.GetCurLineupIndex())
+            {
+                RecalculateExtraMpCount();
+                Player.SceneInstance?.SyncLineup();
+            }
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }
@@ -411,7 +465,11 @@ public class LineupManager : BasePlayerManager<LineupData>
         foreach (var avatar in lineupSlotList) await AddAvatar(index, avatar, false);
         lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault()?.BaseAvatarId ?? 0;
 
-        if (index == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+        if (index == Data.GetCurLineupIndex())
+        {
+            RecalculateExtraMpCount();
+            Player.SceneInstance?.SyncLineup();
+        }
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 
@@ -435,7 +493,11 @@ public class LineupManager : BasePlayerManager<LineupData>
         foreach (var avatar in req.LineupSlotList) await AddAvatar(index, (int)avatar.Id, false);
         lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault()?.BaseAvatarId ?? 0;
 
-        if (index == Data.GetCurLineupIndex()) Player.SceneInstance?.SyncLineup();
+        if (index == Data.GetCurLineupIndex())
+        {
+            RecalculateExtraMpCount();
+            Player.SceneInstance?.SyncLineup();
+        }
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 

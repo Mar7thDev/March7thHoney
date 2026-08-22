@@ -542,17 +542,36 @@ public sealed class GridFightResourceCatalog
         return prices[(int)Math.Clamp(star, 1u, (uint)prices.Count) - 1];
     }
 
-    public IReadOnlyList<GridFightRoleBasicInfoExcel> RollShop(uint level)
+    /// <summary>按玩家等级稀有度权重抽取商店角色；excludedRoleIds 为已满三星（含同切换组）不再出现的角色。</summary>
+    public IReadOnlyList<GridFightRoleBasicInfoExcel> RollShop(
+        uint level,
+        IReadOnlyCollection<uint>? excludedRoleIds = null)
     {
         var count = checked((int)ShopSize);
         var weights = GetUIntList($"GridFight_CardWeight_Lv{level}");
         if (weights.Count == 0) weights = GetPlayerLevel(level).RarityWeights;
+        var excluded = excludedRoleIds is { Count: > 0 }
+            ? excludedRoleIds as HashSet<uint> ?? excludedRoleIds.ToHashSet()
+            : null;
+
         var result = new List<GridFightRoleBasicInfoExcel>(count);
         for (var index = 0; index < count; index++)
         {
             var rarity = RollIndex(weights) + 1u;
-            var candidates = RolePool.Where(role => role.Rarity == rarity).ToList();
-            if (candidates.Count == 0) candidates = RolePool.ToList();
+            var candidates = RolePool
+                .Where(role => role.Rarity == rarity && (excluded == null || !excluded.Contains(role.ID)))
+                .ToList();
+            // 该稀有度在排除后为空：退回「全池但排除满星」
+            if (candidates.Count == 0)
+                candidates = RolePool
+                    .Where(role => excluded == null || !excluded.Contains(role.ID))
+                    .ToList();
+            // 仍为空（几乎全满星）：兜底不排除，避免商店抽空崩溃
+            if (candidates.Count == 0)
+                candidates = RolePool.Where(role => role.Rarity == rarity).ToList();
+            if (candidates.Count == 0)
+                candidates = RolePool.ToList();
+
             result.Add(candidates[_random.Next(candidates.Count)]);
         }
         return result;

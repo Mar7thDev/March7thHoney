@@ -57,10 +57,7 @@ public sealed partial class GridFightManager
             };
             AppendEquipmentChanges(craftResult, dress.RemovedEquipments, dress.AddedEquipments);
             if (dress.MaxActiveRolesChanged)
-                craftResult.UpdateDynamicList.Add(new GridFightSyncData
-                {
-                    MaxActiveRoleCount = Session.MaxActiveRoles,
-                });
+                AppendPopulationLimitSync(craftResult);
             notify.ResultList.Add(craftResult);
         }
 
@@ -68,17 +65,39 @@ public sealed partial class GridFightManager
         {
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcDressEquip,
         };
+        // 非合成穿装也下发装备增删（骰子填充 / 卸下销毁）
+        if (!dress.AutoCrafted)
+            AppendEquipmentChanges(dressResult, dress.RemovedEquipments, dress.AddedEquipments);
         foreach (var role in dress.UpdatedRoles.Distinct())
             dressResult.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
         if (!dress.AutoCrafted && dress.MaxActiveRolesChanged)
-            dressResult.UpdateDynamicList.Add(new GridFightSyncData
-            {
-                MaxActiveRoleCount = Session.MaxActiveRoles,
-            });
+            AppendPopulationLimitSync(dressResult);
         notify.ResultList.Add(dressResult);
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcDressEquip);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
+    }
+
+    /// <summary>战斗结束后立刻把骰子重随结果推给客户端（不等待下次点开战）。</summary>
+    public void AppendDiceEquipmentRefreshSync(GridFightSyncUpdateResultScNotify notify)
+    {
+        if (Session == null) return;
+        var diceRoles = Session.Roles
+            .Where(role => Session.GetEquippedEquipment(role)
+                .Any(item => item.EquipmentId is 35030404 or 35040404))
+            .ToList();
+        if (diceRoles.Count == 0) return;
+
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcDressEquip,
+        };
+        var temps = Session.Equipments.Where(item => item.Source == 100u).ToList();
+        if (temps.Count > 0)
+            AppendEquipmentChanges(result, [], temps);
+        foreach (var role in diceRoles)
+            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        notify.ResultList.Add(result);
     }
 
     public GridFightSyncUpdateResultScNotify BuildEquipCraftSync(GridFightEquipCraftResult craft)
@@ -90,8 +109,10 @@ public sealed partial class GridFightManager
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcCraftEquip,
         };
         AppendEquipmentChanges(result, craft.RemovedEquipments, [craft.AddedEquipment]);
-        if (craft.MaxActiveRolesChanged)
-            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = Session.MaxActiveRoles });
+        // 合成成功后若人口上限可能变化（财富宝钻等），立刻刷新后台席位
+        if (craft.MaxActiveRolesChanged ||
+            craft.AddedEquipment.EquipmentId == GridFightSession.WealthDiamondEquipmentId)
+            AppendPopulationLimitSync(result);
         notify.ResultList.Add(result);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
@@ -111,7 +132,7 @@ public sealed partial class GridFightManager
         foreach (var role in use.UpdatedRoles.Distinct())
             result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
         if (use.MaxActiveRolesChanged)
-            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = Session.MaxActiveRoles });
+            AppendPopulationLimitSync(result);
         if (use.RoleAcquisition is { Success: true } acquisition)
             AppendAcquiredRoles(result, acquisition);
         if (use.RecommendationStarted && BuildPendingAction() is { } pending)
