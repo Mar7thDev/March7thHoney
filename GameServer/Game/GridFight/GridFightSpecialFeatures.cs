@@ -1,4 +1,3 @@
-using System;
 using March7thHoney.Data;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
@@ -85,9 +84,6 @@ public sealed record GridFightHackOptionResult(
 public static class GridFightSpecialFeatures
 {
     public const uint CyreneRoleId = 1415;
-    public const uint SilverWolfFiveCostRoleId = 15063;
-    public const uint SilverWolfThreeCostRoleId = 15061;
-    public const uint SilverWolfFourCostRoleId = 15062;
     public const uint CyreneHealGoodsId = 201;
     public const uint CyreneWealthGoodsId = 202;
     public const uint CyreneInsigniaGoodsId = 203;
@@ -98,52 +94,56 @@ public static class GridFightSpecialFeatures
     public const uint CyreneInsigniaBonusId = 11060;
     public const uint CyreneHeroBonusId = 11063;
     public const uint SilverWolfTraitId = 3006;
-    public const uint SilverWolfTraitEffectId = 30063;
-    public const uint SilverWolfEnhanceOptionId = 25;
-    public const uint SilverWolfCostUpgradeToFourOptionId = 8;
-    public const uint SilverWolfCostUpgradeToFiveOptionId = 13;
-    public const uint SilverWolfCostUpgradeOptionId = 8;
     public const uint SilverWolfHackEquipmentId = 352507;
 
-    public static readonly IReadOnlyDictionary<uint, uint> SilverWolfOptionToEquipmentId =
-        new Dictionary<uint, uint>
-        {
-            [9] = 352301,
-            [10] = 352302,
-            [11] = 352303,
-            [12] = 352304,
-            [14] = 352401,
-            [15] = 352402,
-            [16] = 352404,
-            [17] = 352405,
-            [18] = 352406,
-            [19] = 352502,
-            [20] = 352503,
-            [21] = 352501,
-            [22] = 352504,
-            [23] = 352505,
-            [24] = 352506,
-            [25] = 352507,
-        };
+    /// <summary>最低 / 最高费用档角色 ID。</summary>
+    public static uint SilverWolfBaseRoleId => SilverWolfRoleChain.FirstOrDefault();
 
-    public static readonly uint[] SilverWolfTier3OptionPool = [8, 9, 10, 11, 12];
-    public static readonly uint[] SilverWolfTier4OptionPool = [13, 14, 15, 16, 17, 18];
-    public static readonly uint[] SilverWolfTier5OptionPool = [19, 20, 21, 22, 23, 24];
+    public static uint SilverWolfTopRoleId => SilverWolfRoleChain.LastOrDefault();
 
-    public static uint[] GetHackOptionPoolForRole(uint roleId) =>
-        GetSilverWolfCostTier(roleId) switch
-        {
-            3 => SilverWolfTier3OptionPool,
-            4 => SilverWolfTier4OptionPool,
-            5 => SilverWolfTier5OptionPool,
-            _ => [],
-        };
+    /// <summary>终局手套所在的 TraitEffect 组，即最高费用档。</summary>
+    public static uint SilverWolfTraitEffectId => SilverWolfEffectGroups.LastOrDefault();
 
-    public static uint[] GetHackEquipmentOptionPoolForRole(uint roleId) =>
-        GetHackOptionPoolForRole(roleId)
-            .Where(id => id is not (SilverWolfCostUpgradeToFourOptionId or SilverWolfCostUpgradeToFiveOptionId
-                or SilverWolfEnhanceOptionId))
-            .ToArray();
+    /// <summary>终局手套对应的骇入选项，反查 EffectParamList 指向 352507 的那一条。</summary>
+    public static uint SilverWolfEnhanceOptionId =>
+        GameData.GridFightEnhanceData.Values
+            .FirstOrDefault(row => row.FirstEffectParam == SilverWolfHackEquipmentId)?.ID ?? 0;
+
+    /// <summary>银狼费用档 → TraitEffect 组，来自 GridFightTraitBasicInfo[3006].TraitEffectList。</summary>
+    public static IReadOnlyList<uint> SilverWolfEffectGroups =>
+        GameData.GridFightTraitBasicInfoData.GetValueOrDefault(SilverWolfTraitId)?.TraitEffectList ?? [];
+
+    /// <summary>某档位的全部骇入选项，来自 GridFightEnhance.GroupID。</summary>
+    public static IReadOnlyList<GridFightEnhanceExcel> GetEnhanceOptions(uint effectGroupId) =>
+        GameData.GridFightEnhanceData.Values
+            .Where(row => row.GroupID == effectGroupId)
+            .OrderBy(row => row.ID)
+            .ToList();
+
+    /// <summary>升费选项：SelectCondition 为 Permanent，EffectParamList[0] 即下一档角色 ID。</summary>
+    private static GridFightEnhanceExcel? GetCostUpgradeOption(uint effectGroupId) =>
+        GetEnhanceOptions(effectGroupId)
+            .FirstOrDefault(row => row.SelectCondition == GridFightEnhanceConditionEnum.Permanent &&
+                                   GameData.GridFightRoleBasicInfoData.ContainsKey(row.FirstEffectParam));
+
+    /// <summary>档位内可产出装备的选项（排除升费与终局手套）。</summary>
+    public static IReadOnlyList<uint> GetHackEquipmentOptionPoolForRole(uint roleId)
+    {
+        var group = GetSilverWolfEffectGroup(roleId);
+        if (group == 0) return [];
+        return GetEnhanceOptions(group)
+            .Where(row => GameData.GridFightEquipmentData.ContainsKey(row.FirstEffectParam) &&
+                          row.FirstEffectParam != SilverWolfHackEquipmentId)
+            .Select(row => row.ID)
+            .ToList();
+    }
+
+    /// <summary>角色当前所处的 TraitEffect 组，未在银狼档位链上返回 0。</summary>
+    public static uint GetSilverWolfEffectGroup(uint roleId)
+    {
+        var tier = GetSilverWolfCostTier(roleId);
+        return tier == 0 ? 0 : SilverWolfEffectGroups[(int)tier - 1];
+    }
 
     public const uint HackAddGoldOptionId = 1;
     public const uint HackFullHealOptionId = 2;
@@ -165,32 +165,33 @@ public static class GridFightSpecialFeatures
 
     public static uint RollRandomHackOptionId(Random random, uint roleId, IReadOnlyCollection<uint>? ownedEquipmentIds = null)
     {
-        var pool = GetHackEquipmentOptionPoolForRole(roleId).ToList();
+        var full = GetHackEquipmentOptionPoolForRole(roleId);
+        var pool = full;
         if (ownedEquipmentIds is { Count: > 0 })
         {
-            pool = pool
-                .Where(opt =>
-                    !TryGetEquipmentIdForOption(opt, out var eq) ||
-                    !ownedEquipmentIds.Contains(eq))
+            pool = full
+                .Where(opt => !TryGetEquipmentIdForOption(opt, out var eq) || !ownedEquipmentIds.Contains(eq))
                 .ToList();
         }
-        if (pool.Count == 0)
-            pool = GetHackEquipmentOptionPoolForRole(roleId).ToList();
-        if (pool.Count == 0)
-            return 0;
-        return pool[random.Next(pool.Count)];
+        if (pool.Count == 0) pool = full;
+        return pool.Count == 0 ? 0 : pool[random.Next(pool.Count)];
     }
 
-    public static bool TryGetEquipmentIdForOption(uint optionId, out uint equipmentId) =>
-        SilverWolfOptionToEquipmentId.TryGetValue(optionId, out equipmentId);
+    /// <summary>选项产出的装备 ID，来自 GridFightEnhance.EffectParamList[0]。</summary>
+    public static bool TryGetEquipmentIdForOption(uint optionId, out uint equipmentId)
+    {
+        equipmentId = 0;
+        if (GameData.GridFightEnhanceData.GetValueOrDefault(optionId) is not { } row) return false;
+        if (!GameData.GridFightEquipmentData.ContainsKey(row.FirstEffectParam)) return false;
+        equipmentId = row.FirstEffectParam;
+        return true;
+    }
 
-    public static uint GetCostUpgradeOptionId(uint currentRoleId) =>
-        GetSilverWolfCostTier(currentRoleId) switch
-        {
-            3 => SilverWolfCostUpgradeToFourOptionId,
-            4 => SilverWolfCostUpgradeToFiveOptionId,
-            _ => 0,
-        };
+    public static uint GetCostUpgradeOptionId(uint currentRoleId)
+    {
+        var group = GetSilverWolfEffectGroup(currentRoleId);
+        return group == 0 ? 0 : GetCostUpgradeOption(group)?.ID ?? 0;
+    }
 
     public static bool TryResolveSilverWolfEquipmentId(out uint equipmentId)
     {
@@ -199,41 +200,49 @@ public static class GridFightSpecialFeatures
             !rankFiveEquipment.AsUInt32List().Contains(SilverWolfHackEquipmentId) ||
             !GameData.GridFightEquipmentData.TryGetValue(SilverWolfHackEquipmentId, out var equipment) ||
             equipment.EquipCategory != GridFightEquipCategoryEnum.Hack ||
-            !equipment.DressRuleParamList.Contains(SilverWolfFiveCostRoleId))
+            !equipment.DressRuleParamList.Contains(SilverWolfTopRoleId))
             return false;
 
         equipmentId = equipment.ID;
         return true;
     }
 
-    public static bool IsSilverWolfRoleId(uint roleId) =>
-        roleId is SilverWolfThreeCostRoleId or SilverWolfFourCostRoleId or SilverWolfFiveCostRoleId;
+    public static bool IsSilverWolfRoleId(uint roleId) => SilverWolfRoleChain.Contains(roleId);
 
-    public static uint GetSilverWolfNextCostRoleId(uint roleId) => roleId switch
+    /// <summary>银狼费用档角色链，按费用升序；同一 AvatarID 下的全部档位。</summary>
+    public static IReadOnlyList<uint> SilverWolfRoleChain
     {
-        SilverWolfThreeCostRoleId => SilverWolfFourCostRoleId,
-        SilverWolfFourCostRoleId => SilverWolfFiveCostRoleId,
-        _ => 0,
-    };
+        get
+        {
+            var groups = SilverWolfEffectGroups;
+            if (groups.Count == 0) return [];
+            var upgradeTarget = groups
+                .Select(group => GetCostUpgradeOption(group)?.FirstEffectParam ?? 0)
+                .FirstOrDefault(id => id != 0);
+            if (upgradeTarget == 0) return [];
+            var avatarId = GameData.GridFightRoleBasicInfoData.GetValueOrDefault(upgradeTarget)?.AvatarID ?? 0;
+            if (avatarId == 0) return [];
+            return GameData.GridFightRoleBasicInfoData.Values
+                .Where(row => row.AvatarID == avatarId)
+                .OrderBy(row => row.Rarity)
+                .ThenBy(row => row.ID)
+                .Select(row => row.ID)
+                .Take(groups.Count)
+                .ToList();
+        }
+    }
 
-    public static uint GetSilverWolfCostTier(uint roleId) => roleId switch
+    public static uint GetSilverWolfNextCostRoleId(uint roleId)
     {
-        SilverWolfThreeCostRoleId => 3,
-        SilverWolfFourCostRoleId => 4,
-        SilverWolfFiveCostRoleId => 5,
-        _ => 0,
-    };
+        var group = GetSilverWolfEffectGroup(roleId);
+        return group == 0 ? 0 : GetCostUpgradeOption(group)?.FirstEffectParam ?? 0;
+    }
 
-    public static uint RollRandomHackPartEquipmentId(Random random)
+    /// <summary>1-based 费用档序号，非银狼返回 0。</summary>
+    public static uint GetSilverWolfCostTier(uint roleId)
     {
-        var pool = SilverWolfOptionToEquipmentId
-            .Where(kv => kv.Key != 25 && kv.Value != SilverWolfHackEquipmentId)
-            .Select(kv => kv.Value)
-            .Distinct()
-            .ToList();
-        if (pool.Count == 0)
-            return 352301;
-        return pool[random.Next(pool.Count)];
+        var index = SilverWolfRoleChain.ToList().IndexOf(roleId);
+        return index < 0 ? 0 : (uint)index + 1;
     }
 
     public static bool TryResolveOrb(uint orbItemId, out IReadOnlyList<GridFightRewardEntry> rewards)
@@ -429,5 +438,4 @@ public static class GridFightSpecialFeatures
         }
         return true;
     }
-
 }

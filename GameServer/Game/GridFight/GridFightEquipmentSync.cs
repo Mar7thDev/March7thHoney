@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Enums.GridFight;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;
@@ -83,8 +84,7 @@ public sealed partial class GridFightManager
     {
         if (Session == null) return;
         var diceRoles = Session.Roles
-            .Where(role => Session.GetEquippedEquipment(role)
-                .Any(item => item.EquipmentId is 35030404 or 35040404))
+            .Where(role => Session.GetEquippedEquipment(role).Any(item => GridFightSession.IsDiceEquipment(item.EquipmentId)))
             .ToList();
         if (diceRoles.Count == 0) return;
 
@@ -92,13 +92,17 @@ public sealed partial class GridFightManager
         {
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcDressEquip,
         };
-        var temps = Session.Equipments.Where(item => item.Source == 100u).ToList();
+        var temps = Session.Equipments.Where(item => Session.IsDiceFilledEquipment(item)).ToList();
         if (temps.Count > 0)
             AppendEquipmentChanges(result, [], temps);
         foreach (var role in diceRoles)
             result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
         notify.ResultList.Add(result);
     }
+
+    private static bool IsPopulationEquipment(uint equipmentId) =>
+        GameData.GridFightEquipmentData.GetValueOrDefault(equipmentId)?.EquipFunc ==
+        GridFightEquipFuncTypeEnum.AvatarMaxNumberAdd;
 
     public GridFightSyncUpdateResultScNotify BuildEquipCraftSync(GridFightEquipCraftResult craft)
     {
@@ -109,9 +113,8 @@ public sealed partial class GridFightManager
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcCraftEquip,
         };
         AppendEquipmentChanges(result, craft.RemovedEquipments, [craft.AddedEquipment]);
-        // 合成成功后若人口上限可能变化（财富宝钻等），立刻刷新后台席位
-        if (craft.MaxActiveRolesChanged ||
-            craft.AddedEquipment.EquipmentId == GridFightSession.WealthDiamondEquipmentId)
+        // 合成出人口装备时上限会变，立刻刷新后台席位
+        if (craft.MaxActiveRolesChanged || IsPopulationEquipment(craft.AddedEquipment.EquipmentId))
             AppendPopulationLimitSync(result);
         notify.ResultList.Add(result);
         notify.ResultList.Add(new GridFightSyncResultData());

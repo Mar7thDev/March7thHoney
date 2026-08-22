@@ -1,4 +1,6 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Config.AdventureAbility;
+using March7thHoney.Data.Config.Task;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Lineup;
@@ -50,40 +52,49 @@ public class LineupManager : BasePlayerManager<LineupData>
         return 5 + Data.ExtraMpCount;
     }
 
-    /// <summary>根据当前编队重算 ExtraMpCount：白厄(1408)、姬子•启行(1510) 在队时各 +3。</summary>
+    /// <summary>按当前编队重算 ExtraMpCount，加成来自角色 AdventureAbility 的 AdvModifyMaxMazeMP。</summary>
     public void RecalculateExtraMpCount()
     {
         var extra = 0;
         var lineup = GetCurLineup();
-        if (lineup?.BaseAvatars != null)
-        {
-            foreach (var slot in lineup.BaseAvatars)
-            {
-                var id = slot.BaseAvatarId;
-                if (slot.SpecialAvatarId > 0 &&
-                    GameData.SpecialAvatarData.TryGetValue(slot.SpecialAvatarId, out var special) &&
-                    special != null)
-                    id = special.AvatarID;
-
-                // 多命途角色归一到 BaseAvatarID
-                if (GameData.MultiplePathAvatarConfigData.TryGetValue(id, out var multi) && multi != null)
-                    id = multi.BaseAvatarID;
-
-                if (GrantsExtraTechniquePoints(id))
-                    extra += 3;
-            }
-        }
+        foreach (var slot in lineup?.BaseAvatars ?? [])
+            extra += ResolveExtraMazeMp(ResolveAvatarId(slot));
 
         Data.ExtraMpCount = extra;
         if (lineup != null)
             lineup.Mp = Math.Min(Math.Max(0, lineup.Mp), 5 + extra);
     }
 
-    private static bool GrantsExtraTechniquePoints(int baseAvatarId) =>
-        baseAvatarId is
-            1408 or // 白厄
-            1510;   // 姬子•启行 Himeko Nova (客户端实际 ID)
+    /// <summary>试用角色归一到本体，多命途角色归一到 BaseAvatarID。</summary>
+    private static int ResolveAvatarId(LineupAvatarInfo slot)
+    {
+        var avatarId = slot.BaseAvatarId;
+        if (slot.SpecialAvatarId > 0 &&
+            GameData.SpecialAvatarData.TryGetValue(slot.SpecialAvatarId, out var special))
+            avatarId = special.AvatarID;
+        if (GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPath))
+            avatarId = multiPath.BaseAvatarID;
+        return avatarId;
+    }
 
+    /// <summary>角色上场时 modifier 的 OnCreate 里声明的秘技点上限加成。</summary>
+    private static int ResolveExtraMazeMp(int avatarId)
+    {
+        if (!GameData.AvatarConfigData.TryGetValue(avatarId, out var avatar)) return 0;
+        if (!GameData.AdventureAbilityConfigListData.TryGetValue(avatar.AdventurePlayerID, out var abilities))
+            return 0;
+
+        var extra = 0;
+        var modifiers = abilities.GlobalModifiers?.Values ?? Enumerable.Empty<AdventureModifierConfig>();
+        foreach (var modifier in modifiers)
+        foreach (var task in modifier.OnCreate)
+        {
+            if (task is not AdvModifyMaxMazeMP modify) continue;
+            var value = modify.ModifyValue.GetValue();
+            extra = modify.ModifyFunction == PropertyModifyFunctionEnum.Set ? value - 5 : extra + value;
+        }
+        return extra;
+    }
 
     /// <summary>写入协议 LineupInfo.MaxMp，ToProto 可能漏带 ExtraMpCount 故发包前强制设置。</summary>
     public void ApplyMaxMp(Proto.LineupInfo proto)
