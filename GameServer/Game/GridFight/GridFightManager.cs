@@ -705,11 +705,13 @@ public sealed partial class GridFightManager : BasePlayerManager
             });
         }
 
-        if (activation.UpdatedRole != null)
-            result.UpdateDynamicList.Add(new GridFightSyncData
-            {
-                UpdateRoleInfo = BuildRole(activation.UpdatedRole),
-            });
+        var updatedRoles = activation.UpdatedRoles is { Count: > 0 }
+            ? activation.UpdatedRoles
+            : activation.UpdatedRole != null
+                ? (IReadOnlyList<GridFightRoleState>)[activation.UpdatedRole]
+                : [];
+        foreach (var role in updatedRoles.DistinctBy(role => role.UniqueId))
+            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
 
         if (activation.ShopNeedsRefresh)
             result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
@@ -720,6 +722,19 @@ public sealed partial class GridFightManager : BasePlayerManager
         });
         result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
         notify.ResultList.Add(result);
+
+        if (activation.FollowUpAcquisition is { Success: true } followUp)
+        {
+            AppendRoleMergeResults(
+                notify,
+                GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
+                [],
+                followUp);
+            AppendRoleDerivedStateResult(
+                notify,
+                GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance);
+            AppendUnlockEffects(notify, followUp);
+        }
         return notify;
     }
 
@@ -1007,6 +1022,12 @@ public sealed partial class GridFightManager : BasePlayerManager
         supplyResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
         foreach (var role in change.AddedRoles)
             supplyResult.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
+        if (session.Equipments.Count > 0)
+        {
+            var items = new GridFightGameItemSyncInfo();
+            items.GridFightEquipmentList.Add(session.Equipments.Select(BuildEquipment));
+            supplyResult.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
+        }
         notify.ResultList.Add(supplyResult);
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcInitialSupplySelect);
 
@@ -1045,7 +1066,9 @@ public sealed partial class GridFightManager : BasePlayerManager
         return notify;
     }
 
-    public GridFightSyncUpdateResultScNotify BuildPendingAdvanceSync(uint finishedQueuePosition)
+    public GridFightSyncUpdateResultScNotify BuildPendingAdvanceSync(
+        uint finishedQueuePosition,
+        bool includeShop = false)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         if (Session == null) return notify;
@@ -1056,6 +1079,8 @@ public sealed partial class GridFightManager : BasePlayerManager
             FinishPendingActionPos = finishedQueuePosition,
         });
         finishResult.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+        if (includeShop)
+            finishResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         notify.ResultList.Add(finishResult);
 
         if (BuildPendingAction() is { } pending)
@@ -1417,7 +1442,10 @@ public sealed partial class GridFightManager : BasePlayerManager
         };
         rewardResult.EffectParamList.Add(new[] { chapterId, sectionId });
         if (levelChanged)
+        {
             rewardResult.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
+            rewardResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+        }
         rewardResult.UpdateDynamicList.Add(new GridFightSyncData
         {
             PlayerLevel = new GridFightPlayerLevelSyncInfo
@@ -1770,7 +1798,7 @@ public sealed partial class GridFightManager : BasePlayerManager
     private GridFightRarityWeightInfo BuildRarityWeights()
     {
         var result = new GridFightRarityWeightInfo();
-        var weights = Catalog.GetPlayerLevel(Session!.PlayerLevel).RarityWeights;
+        var weights = Session!.ShopRarityDisplayWeights;
         for (var index = 0; index < weights.Count; index++)
             result.EntryList.Add(new GridFightRarityWeightEntry
             {

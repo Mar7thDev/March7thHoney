@@ -136,6 +136,7 @@ public static partial class GameData
 
     public static GridFightBasicOrbRewardsConfig GridFightBasicOrbRewardsConfig { get; set; } = new();
     public static GridFightRewardRulesConfig GridFightRewardRulesConfig { get; set; } = new();
+    public static GridFightRuntimeConfig GridFightRuntimeConfig { get; set; } = new();
     public static Dictionary<uint, GridFightBasicBonusPoolV2Excel> GridFightBasicBonusPoolV2Data { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleBasicInfoExcel> GridFightRoleBasicInfoData { get; private set; } = [];
     public static Dictionary<uint, GridFightRoleStarExcel> GridFightRoleStarData { get; private set; } = [];

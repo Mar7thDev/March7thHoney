@@ -110,6 +110,8 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
             {
                 if (activation.ShopNeedsRefresh)
                     session.RefreshShop(chargeGold: false);
+                if (session.ProcessPendingAutoMerge() is { } followUp)
+                    activation = activation with { FollowUpAcquisition = followUp };
                 await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                     manager.BuildTraitEnhanceActivationSync(activation)));
             }
@@ -216,7 +218,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 kind == GridFightPendingRequestKind.RoundBegin
                     ? manager.BuildBattleRoundSync(request.QueuePosition, rewards)
-                    : manager.BuildPendingAdvanceSync(request.QueuePosition)));
+                    : manager.BuildPendingAdvanceSync(request.QueuePosition, includeShop: true)));
         }
         else if (pendingHandled)
         {

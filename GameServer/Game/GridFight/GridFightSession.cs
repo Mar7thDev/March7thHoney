@@ -216,12 +216,15 @@ public sealed partial class GridFightSession
     private uint _silverWolfDeferredEffectGroupId;
     private readonly List<uint> _silverWolfDeferredOptionIds = [];
     private bool _silverWolfPendingJustActivated;
+    private uint? _pendingAutoMergeRoleId;
     /// <summary>骰子 UniqueId → 绑定的 2 个装备配置 ID（卸下不丢，战斗结束才重随）</summary>
     private readonly Dictionary<uint, uint[]> _diceBoundEquipmentConfigIds = new();
     private readonly HashSet<uint> _rerolledInvestmentIds = [];
     private readonly HashSet<(uint TalentId, uint EffectId, GridFightTalentRewardTrigger Trigger, uint ChapterId)>
         _triggeredTalentRewards = [];
     private uint _encounterRerollCount;
+    /// <summary>Zero-based rarity selected by the rotation portal for the current preparation phase.</summary>
+    private int? _rotationTargetRarityIndex;
     private Dictionary<uint, uint> _roleSwitchIds = [];
     private GridFightRoleSwitchUpdate? _roleSwitchUpdate;
 
@@ -241,6 +244,11 @@ public sealed partial class GridFightSession
     public uint KeepWinCount { get; private set; }
     public uint BattlesFinished { get; private set; }
     public uint SelectedPortalId { get; private set; }
+    public IReadOnlyList<double> ShopRarityRollWeights =>
+        BuildRotationShopWeights()?.RollWeights ??
+        _catalog.GetShopRarityWeights(PlayerLevel).Select(weight => (double)weight).ToArray();
+    public IReadOnlyList<uint> ShopRarityDisplayWeights =>
+        BuildRotationShopWeights()?.DisplayWeights ?? _catalog.GetShopRarityWeights(PlayerLevel);
     public IReadOnlyList<uint> CampIds { get; }
     public uint RewardCampId { get; }
     public IReadOnlyList<GridFightMonsterExcel> Bosses { get; }
@@ -466,7 +474,9 @@ public sealed partial class GridFightSession
             case GridFightPendingRequestKind.PortalSelect
                 when Phase == GridFightSessionPhase.SelectingPortal && PortalOffer.Contains(portalId):
                 SelectedPortalId = portalId;
-                MaterializeInitialRoles();
+                var portalEffects = _catalog.GetPortalRuntimeEffects(portalId);
+                ApplyPortalEntryEquipments(portalEffects);
+                MaterializeInitialRoles(portalEffects.EntryRoleIds);
                 Gold += _catalog.InitialGold;
                 Phase = GridFightSessionPhase.AwaitingInitialRound;
                 PendingQueuePosition++;
@@ -998,6 +1008,7 @@ public sealed partial class GridFightSession
             !_silverWolfPendingOptionIds.Contains(enhanceOptionId))
             return GridFightTraitEnhanceActivationResult.Failed;
 
+        _pendingAutoMergeRoleId = null;
         try
         {
             // 终局手套：解锁骇入控制台
@@ -1015,10 +1026,16 @@ public sealed partial class GridFightSession
             // 升费：选项 SelectCondition 为 Permanent，EffectParamList[0] 指向下一档角色
             if (enhanceOptionId == GridFightSpecialFeatures.GetCostUpgradeOptionId(SilverWolfPendingRoleId))
             {
-                if (!TryApplySilverWolfCostUpgrade(out var upgraded))
+                if (!TryApplySilverWolfCostUpgrade(out var upgraded, out var updatedRoles))
                     return GridFightTraitEnhanceActivationResult.Failed;
+                _pendingAutoMergeRoleId = upgraded!.RoleId;
                 return new GridFightTraitEnhanceActivationResult(
-                    true, queuePosition, null, upgraded, ShopNeedsRefresh: true);
+                    true,
+                    queuePosition,
+                    null,
+                    upgraded,
+                    ShopNeedsRefresh: true,
+                    UpdatedRoles: updatedRoles);
             }
 
             if (!GridFightSpecialFeatures.TryGetEquipmentIdForOption(enhanceOptionId, out var equipmentId) ||
@@ -1045,20 +1062,50 @@ public sealed partial class GridFightSession
             ? Roles.FirstOrDefault(role => role.UniqueId == uniqueId)?.RoleId ?? 0
             : 0;
 
-    private bool TryApplySilverWolfCostUpgrade(out GridFightRoleState? upgraded)
+    /// <summary>
+    /// Runs merges only after the enhance pending state has been cleared. A resulting two/three-star
+    /// Silver Wolf may enqueue the next resource-driven enhance choice.
+    /// </summary>
+    public GridFightRoleAcquisitionResult? ProcessPendingAutoMerge()
+    {
+        if (_pendingAutoMergeRoleId is not { } roleId) return null;
+        _pendingAutoMergeRoleId = null;
+        var mergeSteps = MergeRoles(roleId);
+        if (mergeSteps.Count == 0) return null;
+        RecalculateRoleSwitches();
+        return FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
+            true,
+            [],
+            mergeSteps,
+            GetFinalMergedRoles(mergeSteps)));
+    }
+
+    private bool TryApplySilverWolfCostUpgrade(
+        out GridFightRoleState? upgraded,
+        out IReadOnlyList<GridFightRoleState> updatedRoles)
     {
         upgraded = null;
+        updatedRoles = [];
         if (_silverWolfCostUpgradeAbandoned) return false;
         if (_silverWolfPendingRoleUniqueId is not { } roleUid) return false;
         var role = Roles.FirstOrDefault(r => r.UniqueId == roleUid);
         if (role == null) return false;
-        var nextId = GridFightSpecialFeatures.GetSilverWolfNextCostRoleId(role.RoleId);
+        var currentId = role.RoleId;
+        var nextId = GridFightSpecialFeatures.GetSilverWolfNextCostRoleId(currentId);
         if (nextId == 0 || !GameData.GridFightRoleBasicInfoData.ContainsKey(nextId)) return false;
-        role.RoleId = nextId;
-        role.Star = 1;
+
+        var changed = Roles.Where(candidate => candidate.RoleId == currentId).ToList();
+        foreach (var candidate in changed)
+        {
+            candidate.RoleId = nextId;
+            candidate.Star = 1;
+        }
+        if (changed.Count == 0) return false;
+
         _silverWolfShopRoleId = nextId;
         RecalculateRoleSwitches();
-        upgraded = role;
+        upgraded = changed.FirstOrDefault(candidate => candidate.UniqueId == roleUid) ?? changed[0];
+        updatedRoles = changed;
         return true;
     }
 
@@ -1712,16 +1759,78 @@ public sealed partial class GridFightSession
         return true;
     }
 
-    /// <summary>进入备战阶段：每件已穿戴的财富宝钻，每 3 次进入备战提供 1 金币。</summary>
+    /// <summary>进入备战阶段：刷新 Portal 阶段效果，并结算装备的周期收益。</summary>
     private void EnterPreparingPhase()
     {
         Phase = GridFightSessionPhase.Preparing;
         _preparationPhaseCount++;
+        RollRotationShopRarity();
 
         // 每个节点：随便骰子 / 特权随便骰子刷新随机装备填充
         ApplyDiceEquipmentRefills();
         GrantEquippedPeriodicGold();
     }
+
+    private void RollRotationShopRarity()
+    {
+        _rotationTargetRarityIndex = null;
+        if (!_catalog.IsRotationPortal(SelectedPortalId)) return;
+        var rarityCount = _catalog.GetShopRarityWeights(PlayerLevel).Count;
+        if (rarityCount > 0)
+            _rotationTargetRarityIndex = Random.Shared.Next(rarityCount);
+    }
+
+    /// <summary>
+    /// Doubles the selected rarity for the current preparation phase. Remaining rarities share the
+    /// leftover probability in their original ratio; the roll weights retain fractions while the
+    /// protocol-facing weights are rounded to whole percentages.
+    /// </summary>
+    private RotationShopWeights? BuildRotationShopWeights()
+    {
+        if (!_catalog.IsRotationPortal(SelectedPortalId) ||
+            _rotationTargetRarityIndex is not { } targetIndex)
+            return null;
+
+        var baseWeights = _catalog.GetShopRarityWeights(PlayerLevel).ToList();
+        if (targetIndex < 0 || targetIndex >= baseWeights.Count) return null;
+        var total = baseWeights.Sum(weight => (double)weight);
+        if (total <= 0) return null;
+
+        var doubledTargetWeight = baseWeights[targetIndex] * 2.0;
+        var rollWeights = new double[baseWeights.Count];
+        var displayWeights = new uint[baseWeights.Count];
+        if (doubledTargetWeight >= total)
+        {
+            rollWeights[targetIndex] = total;
+            displayWeights[targetIndex] = RoundPercentage(doubledTargetWeight, total);
+        }
+        else
+        {
+            rollWeights[targetIndex] = doubledTargetWeight;
+            var otherBaseTotal = total - baseWeights[targetIndex];
+            for (var index = 0; index < baseWeights.Count; index++)
+            {
+                if (index == targetIndex) continue;
+                rollWeights[index] = otherBaseTotal <= 0
+                    ? 0
+                    : baseWeights[index] * (total - doubledTargetWeight) / otherBaseTotal;
+            }
+            for (var index = 0; index < rollWeights.Length; index++)
+                displayWeights[index] = RoundPercentage(rollWeights[index], total);
+        }
+
+        return new RotationShopWeights(rollWeights, displayWeights);
+    }
+
+    private static uint RoundPercentage(double weight, double total)
+    {
+        if (total <= 0 || weight <= 0) return 0;
+        return (uint)Math.Round(weight * 100.0 / total, MidpointRounding.AwayFromZero);
+    }
+
+    private sealed record RotationShopWeights(
+        IReadOnlyList<double> RollWeights,
+        IReadOnlyList<uint> DisplayWeights);
 
     /// <summary>已穿戴的产金装备（财富宝钻）按 ParamList 的「每 N 个备战阶段给 M 金」结算。</summary>
     private void GrantEquippedPeriodicGold()
@@ -1755,7 +1864,14 @@ public sealed partial class GridFightSession
         if (chargeGold) Gold -= _catalog.RefreshCost;
         Shop.Clear();
         var excluded = GetShopExcludedRoleIds();
-        var rolled = _catalog.RollShop(PlayerLevel, excluded, GetShopExtraCandidateRoleIds(excluded));
+        var portalEffects = _catalog.GetPortalRuntimeEffects(SelectedPortalId);
+        var rolled = _catalog.RollShop(
+            PlayerLevel,
+            excluded,
+            GetShopExtraCandidateRoleIds(excluded),
+            portalEffects.ShopBoostTraitIds,
+            portalEffects.ShopBoostMultiplier,
+            ShopRarityRollWeights);
         var roleIds = rolled.Select(role => role.ID).ToList();
         for (var index = 0; index < roleIds.Count; index++)
         {
@@ -1845,21 +1961,37 @@ public sealed partial class GridFightSession
         SupplyRerollCount = 0;
     }
 
-    private void MaterializeInitialRoles()
+    private void ApplyPortalEntryEquipments(GridFightPortalRuntimeEffects effects)
+    {
+        foreach (var equipmentId in effects.EntryEquipmentIds)
+            TryAddEquipment(equipmentId, out _);
+    }
+
+    private void MaterializeInitialRoles(IReadOnlyCollection<uint>? entryRoleIds = null)
     {
         if (Roles.Count > 0) return;
-        var roles = _catalog.RollInitialRoles(checked((int)_catalog.InitialRoleCount));
+        var roles = _catalog.RollInitialRoles(checked((int)_catalog.InitialRoleCount)).ToList();
+        if (entryRoleIds is { Count: > 0 })
+            foreach (var roleId in entryRoleIds)
+            {
+                if (roles.Any(role => role.ID == roleId) ||
+                    !GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var role) ||
+                    !GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | 1))
+                    continue;
+                roles.Add(role);
+            }
         for (var index = 0; index < roles.Count; index++)
             Roles.Add(new GridFightRoleState
             {
                 UniqueId = _nextEntityUniqueId++,
                 RoleId = roles[index].ID,
+                Star = 1,
                 Position = 14u + (uint)index,
             });
         RecalculateRoleSwitches();
     }
 
-    private List<GridFightRoleMergeStep> MergeRoles(uint roleId, GridFightRoleState? anchor = null)
+    private List<GridFightRoleMergeStep> MergeRoles(uint roleId, GridFightRoleState? preferred = null)
     {
         var steps = new List<GridFightRoleMergeStep>();
         var switchGroup = _catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(roleId));
@@ -1873,11 +2005,10 @@ public sealed partial class GridFightSession
                 .FirstOrDefault(grouping => grouping.Count() >= 3 &&
                     GameData.GridFightRoleStarData.ContainsKey(starRoleId << 4 | (grouping.Key + 1)));
             if (group == null) return steps;
-            var ordered = group.OrderBy(role => role.UniqueId).ToList();
-            var merge = anchor != null && ordered.Contains(anchor)
-                ? new[] { anchor }.Concat(ordered.Where(role => role != anchor).Take(2)).ToList()
-                : ordered.Take(3).ToList();
-            var retained = anchor != null && merge.Contains(anchor) ? anchor : merge[0];
+            var merge = SelectMergeParticipants(group.ToList(), preferred);
+            var retained = SelectMergeAnchor(merge);
+            foreach (var role in merge.Where(role => role != retained))
+                role.EquippedEquipmentUniqueIds.Clear();
             foreach (var role in merge) Roles.Remove(role);
             var mergedRole = new GridFightRoleState
             {
@@ -1888,11 +2019,37 @@ public sealed partial class GridFightSession
             };
             mergedRole.EquippedEquipmentUniqueIds.AddRange(retained.EquippedEquipmentUniqueIds);
             Roles.Add(mergedRole);
-            anchor = mergedRole;
+            preferred = mergedRole;
             steps.Add(new GridFightRoleMergeStep(
                 merge.Select(role => role.UniqueId).ToList(),
                 mergedRole));
         }
+    }
+
+    private static List<GridFightRoleState> SelectMergeParticipants(
+        IReadOnlyList<GridFightRoleState> candidates,
+        GridFightRoleState? preferred)
+    {
+        if (candidates.Count <= 3) return candidates.ToList();
+        var selected = new List<GridFightRoleState>(3);
+        if (preferred != null && candidates.Contains(preferred))
+            selected.Add(preferred);
+        selected.AddRange(candidates
+            .Where(role => !selected.Contains(role))
+            .OrderByDescending(role => IsActivePosition(role.Position))
+            .ThenByDescending(role => role.EquippedEquipmentUniqueIds.Count)
+            .ThenBy(role => role.UniqueId)
+            .Take(3 - selected.Count));
+        return selected;
+    }
+
+    private static GridFightRoleState SelectMergeAnchor(IReadOnlyList<GridFightRoleState> roles)
+    {
+        return roles
+            .OrderByDescending(role => IsActivePosition(role.Position))
+            .ThenByDescending(role => role.EquippedEquipmentUniqueIds.Count)
+            .ThenBy(role => role.UniqueId)
+            .First();
     }
 
     private IReadOnlyList<GridFightRoleState> GetFinalMergedRoles(
