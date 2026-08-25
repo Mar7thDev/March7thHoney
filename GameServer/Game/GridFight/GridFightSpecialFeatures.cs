@@ -67,7 +67,9 @@ public sealed record GridFightTraitEnhanceActivationResult(
     uint FinishedQueuePosition,
     GridFightEquipmentState? Equipment,
     GridFightRoleState? UpdatedRole = null,
-    bool ShopNeedsRefresh = false)
+    bool ShopNeedsRefresh = false,
+    IReadOnlyList<GridFightRoleState>? UpdatedRoles = null,
+    GridFightRoleAcquisitionResult? FollowUpAcquisition = null)
 {
     public static GridFightTraitEnhanceActivationResult Failed { get; } = new(false, 0, null);
 }

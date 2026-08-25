@@ -56,6 +56,15 @@ public sealed record GridFightRoleSwitchGroup(
     IReadOnlyList<uint> ParamList,
     IReadOnlyList<uint> RoleIdList);
 
+public sealed record GridFightPortalRuntimeEffects(
+    IReadOnlyList<uint> EntryRoleIds,
+    IReadOnlyList<uint> EntryEquipmentIds,
+    IReadOnlySet<uint> ShopBoostTraitIds,
+    double ShopBoostMultiplier)
+{
+    public static GridFightPortalRuntimeEffects Empty { get; } = new([], [], new HashSet<uint>(), 1.0);
+}
+
 public sealed class GridFightResourceCatalog
 {
     private const uint HighestDivisionStartingHpAffixId = 4020;
@@ -244,6 +253,19 @@ public sealed class GridFightResourceCatalog
         if (RewardCampPool.Count == 0) errors.Add("reward monster camp pool is empty");
         ValidateRewardRules(errors);
         if (PortalPool.Count == 0) errors.Add("portal pool is empty");
+        var runtimeConfig = GameData.GridFightRuntimeConfig;
+        if (runtimeConfig.RotationPortalId != 0 && !PortalPool.Contains(runtimeConfig.RotationPortalId))
+            errors.Add($"rotation portal {runtimeConfig.RotationPortalId} is not in the current portal pool");
+        foreach (var (level, weights) in runtimeConfig.ShopRarityWeightOverrides)
+        {
+            if (!GameData.GridFightPlayerLevelData.TryGetValue(level, out var playerLevel))
+            {
+                errors.Add($"shop rarity override references missing player level {level}");
+                continue;
+            }
+            if (weights.Count != playerLevel.RarityWeights.Count || weights.All(weight => weight == 0))
+                errors.Add($"shop rarity override for level {level} has invalid weights");
+        }
         if (AugmentPool.Count == 0) errors.Add("augment pool is empty");
         foreach (var chapterId in StandardRoute.Select(node => node.ChapterId).Distinct())
             if (!Enum.GetValues<GridFightAugmentQualityEnum>()
@@ -478,6 +500,68 @@ public sealed class GridFightResourceCatalog
         return GameData.GridFightPlayerLevelData[level];
     }
 
+    public IReadOnlyList<uint> GetShopRarityWeights(uint level)
+    {
+        if (GameData.GridFightRuntimeConfig.ShopRarityWeightOverrides.TryGetValue(level, out var configured) &&
+            configured.Count > 0)
+            return configured;
+        var weights = GetUIntList($"GridFight_CardWeight_Lv{level}");
+        return weights.Count > 0 ? weights : GetPlayerLevel(level).RarityWeights;
+    }
+
+    public bool IsRotationPortal(uint portalId) =>
+        portalId != 0 && portalId == GameData.GridFightRuntimeConfig.RotationPortalId;
+
+    /// <summary>
+    /// Resolves the two portal reward shapes used at session entry directly from the resource graph:
+    /// concept packages contain two fixed roles and a basic equipment, while invitations contain an emblem.
+    /// </summary>
+    public GridFightPortalRuntimeEffects GetPortalRuntimeEffects(uint portalId)
+    {
+        if (!GameData.GridFightPortalBuffData.TryGetValue(portalId, out var portal))
+            return GridFightPortalRuntimeEffects.Empty;
+
+        var rewards = new List<GridFightRewardEntry>();
+        foreach (var bonusId in portal.ShowBonusIDList)
+            if (GridFightSpecialFeatures.TryResolveBonus(bonusId, out var resolved))
+                rewards.AddRange(resolved);
+
+        var roleIds = rewards
+            .Where(reward => reward.Type == GridFightBonusTypeEnum.SpecificAvatar)
+            .Select(reward => reward.ItemId)
+            .Where(roleId => GameData.GridFightRoleBasicInfoData.ContainsKey(roleId) &&
+                             GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | 1))
+            .Distinct()
+            .ToList();
+        var equipments = rewards
+            .Where(reward => reward.Type == GridFightBonusTypeEnum.Item)
+            .Select(reward => GameData.GridFightEquipmentData.GetValueOrDefault(reward.ItemId))
+            .Where(equipment => equipment != null)
+            .Cast<GridFightEquipmentExcel>()
+            .DistinctBy(equipment => equipment.ID)
+            .ToList();
+
+        var basicEquipmentIds = equipments
+            .Where(equipment => equipment.EquipCategory == GridFightEquipCategoryEnum.Basic)
+            .Select(equipment => equipment.ID)
+            .ToList();
+        if (roleIds.Count >= 2 && basicEquipmentIds.Count > 0)
+        {
+            var boostPercent = portal.EffectParamList.ElementAtOrDefault(2)?.Value ?? 0;
+            var traits = portal.PortalGameRefTrait.Where(traitId => traitId != 0).ToHashSet();
+            var multiplier = boostPercent == 0 ? 1.0 : 1.0 + boostPercent / 100.0;
+            return new GridFightPortalRuntimeEffects(roleIds, basicEquipmentIds, traits, multiplier);
+        }
+
+        var emblemIds = equipments
+            .Where(equipment => equipment.EquipCategory == GridFightEquipCategoryEnum.Emblem)
+            .Select(equipment => equipment.ID)
+            .ToList();
+        return emblemIds.Count > 0
+            ? new GridFightPortalRuntimeEffects([], emblemIds, new HashSet<uint>(), 1.0)
+            : GridFightPortalRuntimeEffects.Empty;
+    }
+
     public uint GetEnemyDifficultyLevel(uint divisionId)
     {
         return GameData.GridFightDivisionStageData[divisionId].EnemyDifficultyLevel;
@@ -547,15 +631,19 @@ public sealed class GridFightResourceCatalog
     public IReadOnlyList<GridFightRoleBasicInfoExcel> RollShop(
         uint level,
         IReadOnlyCollection<uint>? excludedRoleIds = null,
-        IReadOnlyList<GridFightRoleBasicInfoExcel>? extraCandidates = null)
+        IReadOnlyList<GridFightRoleBasicInfoExcel>? extraCandidates = null,
+        IReadOnlySet<uint>? boostedTraitIds = null,
+        double boostedTraitMultiplier = 1.0,
+        IReadOnlyList<double>? rarityWeights = null)
     {
         var count = checked((int)ShopSize);
-        var weights = GetUIntList($"GridFight_CardWeight_Lv{level}");
-        if (weights.Count == 0) weights = GetPlayerLevel(level).RarityWeights;
+        var weights = rarityWeights ?? GetShopRarityWeights(level).Select(weight => (double)weight).ToArray();
         var excluded = excludedRoleIds is { Count: > 0 }
             ? excludedRoleIds as HashSet<uint> ?? excludedRoleIds.ToHashSet()
             : null;
-        var pool = extraCandidates is { Count: > 0 } ? [..RolePool, ..extraCandidates] : RolePool;
+        var pool = extraCandidates is { Count: > 0 }
+            ? RolePool.Concat(extraCandidates).DistinctBy(role => role.ID).ToList()
+            : RolePool;
 
         var result = new List<GridFightRoleBasicInfoExcel>(count);
         for (var index = 0; index < count; index++)
@@ -575,9 +663,33 @@ public sealed class GridFightResourceCatalog
             if (candidates.Count == 0)
                 candidates = pool.ToList();
 
-            result.Add(candidates[_random.Next(candidates.Count)]);
+            result.Add(PickShopCandidate(candidates, boostedTraitIds, boostedTraitMultiplier));
         }
         return result;
+    }
+
+    private GridFightRoleBasicInfoExcel PickShopCandidate(
+        IReadOnlyList<GridFightRoleBasicInfoExcel> candidates,
+        IReadOnlySet<uint>? boostedTraitIds,
+        double boostedTraitMultiplier)
+    {
+        if (candidates.Count == 0)
+            throw new InvalidOperationException("GridFight shop candidate list is empty");
+        if (boostedTraitIds is not { Count: > 0 } ||
+            !double.IsFinite(boostedTraitMultiplier) ||
+            boostedTraitMultiplier <= 1.0)
+            return candidates[_random.Next(candidates.Count)];
+
+        var total = candidates.Sum(role =>
+            role.TraitList.Any(boostedTraitIds.Contains) ? boostedTraitMultiplier : 1.0);
+        var roll = _random.NextDouble() * total;
+        foreach (var role in candidates)
+        {
+            var weight = role.TraitList.Any(boostedTraitIds.Contains) ? boostedTraitMultiplier : 1.0;
+            if (roll < weight) return role;
+            roll -= weight;
+        }
+        return candidates[^1];
     }
 
     public IReadOnlyList<GridFightRoleBasicInfoExcel> RollInitialRoles(int count)
@@ -1124,15 +1236,17 @@ public sealed class GridFightResourceCatalog
             : 0;
     }
 
-    private uint RollIndex(IReadOnlyList<uint> weights)
+    private uint RollIndex(IReadOnlyList<double> weights)
     {
-        var total = weights.Aggregate(0UL, (value, weight) => value + weight);
-        if (total == 0) return 0;
-        var roll = (ulong)_random.NextInt64((long)total);
+        var total = weights.Where(double.IsFinite).Where(weight => weight > 0).Sum();
+        if (total <= 0) return 0;
+        var roll = _random.NextDouble() * total;
         for (var index = 0; index < weights.Count; index++)
         {
-            if (roll < weights[index]) return (uint)index;
-            roll -= weights[index];
+            var weight = weights[index];
+            if (!double.IsFinite(weight) || weight <= 0) continue;
+            if (roll < weight) return (uint)index;
+            roll -= weight;
         }
         return (uint)(weights.Count - 1);
     }
