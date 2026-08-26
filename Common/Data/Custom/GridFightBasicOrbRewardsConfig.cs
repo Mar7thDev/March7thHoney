@@ -8,6 +8,7 @@ public partial class GridFightBasicOrbRewardsConfig
 {
     public Dictionary<uint, GridFightBasicOrbRewardsInfo> OrbRewards { get; set; } = [];
     public GridFightRewardRulesConfig RewardRules { get; set; } = new();
+    public GridFightRuntimeConfig RuntimeConfig { get; set; } = new();
 }
 
 [MemoryPackable]

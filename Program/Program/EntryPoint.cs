@@ -2,7 +2,6 @@ using March7thHoney.Command;
 using March7thHoney.Command.Command;
 using March7thHoney.Configuration;
 using March7thHoney.Data;
-using March7thHoney.Data.Custom;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Enums;
@@ -255,12 +254,6 @@ public class EntryPoint
                         await ResourceCache.SaveCache();
                     }
                 }
-
-                // Runtime corrections are intentionally kept outside Resource.bin so they can be
-                // changed without regenerating the full game-data cache.
-                GameData.GridFightRuntimeConfig =
-                    ResourceManager.LoadCustomFile<GridFightRuntimeConfig>(
-                        "GridFight Runtime Config", "GridFightRuntime") ?? new GridFightRuntimeConfig();
             }
             catch (Exception e)
             {
