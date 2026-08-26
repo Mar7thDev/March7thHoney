@@ -74,7 +74,11 @@ public class ResourceManager
         GameData.GridFightBasicOrbRewardsConfig =
             LoadCustomFile<GridFightBasicOrbRewardsConfig>("GridFight Orb Rewards", "GridFightBasicOrbRewards") ??
             new GridFightBasicOrbRewardsConfig();
+        GameData.GridFightRuntimeConfig =
+            LoadCustomFile<GridFightRuntimeConfig>("GridFight Runtime Config", "GridFightRuntime") ??
+            new GridFightRuntimeConfig();
         GameData.GridFightBasicOrbRewardsConfig.RewardRules = GameData.GridFightRewardRulesConfig;
+        GameData.GridFightBasicOrbRewardsConfig.RuntimeConfig = GameData.GridFightRuntimeConfig;
         ApplyChallengePeakOverrides();
 
         Task.WaitAll(t1, t2, t3, t4, t5, t6, t8, t9);

@@ -625,6 +625,7 @@ public static partial class GameData
         GameData.BattleTargetConfigData = snapshot.BattleTargetConfigData;
         GameData.GridFightBasicOrbRewardsConfig = snapshot.GridFightBasicOrbRewardsConfig;
         GameData.GridFightRewardRulesConfig = snapshot.GridFightBasicOrbRewardsConfig.RewardRules;
+        GameData.GridFightRuntimeConfig = snapshot.GridFightBasicOrbRewardsConfig.RuntimeConfig;
         GameData.GridFightBasicBonusPoolV2Data = snapshot.GridFightBasicBonusPoolV2Data;
         GameData.GridFightRoleBasicInfoData = snapshot.GridFightRoleBasicInfoData;
         GameData.GridFightRoleStarData = snapshot.GridFightRoleStarData;
