@@ -7,5 +7,7 @@ public enum GridFightOrbTypeEnum
     Glod = 3,  // lmao
     Colorful = 4,
     BigColorful = 5,
-    GoldenEgg = 6
+    GoldenEgg = 6,
+    None = 0,
+    Present = 7
 }

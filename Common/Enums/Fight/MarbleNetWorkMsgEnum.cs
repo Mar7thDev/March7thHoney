@@ -17,5 +17,6 @@ public enum MarbleNetWorkMsgEnum
     SyncNotify = 12,
     GameFinish = 13,
     SyncSnapShot = 14,
-    Operation = 15
+    Operation = 15,
+    ChoosePet = 16
 }

@@ -132,5 +132,9 @@ public enum AvatarPropertyTypeEnum
     ExtraHealConvert = 1057,
     ExtraShieldConvert = 1058,
     ExtraAllDamageReduceConvert = 1059,
-    ExtraTotalAllDamageReduce = 1060
+    ExtraTotalAllDamageReduce = 1060,
+    ElationDamageAddedRatio = 71,
+    ElationDamageAddedRatioBase = 72,
+    ExtraAllDamageTypeAddedRatio5 = 1061,
+    ExtraElationDamageAddedRatio1 = 1062
 }
