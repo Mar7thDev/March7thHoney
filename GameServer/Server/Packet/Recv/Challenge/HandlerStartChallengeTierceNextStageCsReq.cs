@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Challenge;
 
-[Opcode(CmdIds.StartChallengeTierceNextStageCsReq)]
+[Opcode(CmdIds.StartNextChallengeTierceCsReq)]
 public class HandlerStartChallengeTierceNextStageCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)

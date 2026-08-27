@@ -8,7 +8,7 @@ public class HandlerPromoteEquipmentCsReq : Handler<PromoteEquipmentCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, PromoteEquipmentCsReq req)
     {
-        await player.InventoryManager!.PromoteEquipment((int)req.PJHHJKCAPFG);
+        await player.InventoryManager!.PromoteEquipment((int)req.FANHGFFLIID);
 
         await connection.SendPacket(CmdIds.PromoteEquipmentScRsp);
     }

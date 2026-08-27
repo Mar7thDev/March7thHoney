@@ -8,7 +8,7 @@ public class PacketChallengeTierceSyncNotify : BasePacket
 {
     // 4.4: cmdid ChallengeTierceSyncNotify 被改名为 ChallengeTierceSettleNotify(值仍是 8973)。
     // 移植时误置为 None 导致 Tierce 节点结算同步发不出去（"missing cmd id"），客户端无结算界面、退回场景。
-    private PacketChallengeTierceSyncNotify(ChallengeTierceSyncNotify proto) : base(CmdIds.ChallengeTierceSettleNotify)
+    private PacketChallengeTierceSyncNotify(ChallengeTierceSyncNotify proto) : base(CmdIds.ChallengeTierceSyncNotify)
     {
         SetData(proto);
     }

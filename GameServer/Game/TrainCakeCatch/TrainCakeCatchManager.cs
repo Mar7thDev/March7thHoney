@@ -131,61 +131,6 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             DatabaseHelper.MarkDirty(targetUid);
     }
 
-    public TrainCakeCatchGetDataScRsp ToGetDataProto()
-    {
-        return ToGetDataProto(CurrentRoomOwnerUid);
-    }
-
-    public TrainCakeCatchGetDataScRsp ToGetDataProto(uint? roomOwnerUid)
-    {
-        var view = ResolveRoomView(roomOwnerUid);
-        EnsureDefaults(view.Data, (int)view.OwnerUid);
-        EnsureDefaults();
-        POBLGKIGINE socialPlayRoomData;
-
-        lock (RoomLock)
-        {
-            socialPlayRoomData = Rooms.TryGetValue(view.OwnerUid, out var room)
-                ? BuildSocialPlayRoomDataLocked(room, view.OwnerUid, (uint)Player.Uid)
-                : BuildSocialPlayRoomData(view.OwnerUid, (uint)Player.Uid);
-        }
-
-        var rsp = new TrainCakeCatchGetDataScRsp
-        {
-            CMHKFNFKGOI = view.Data.RefreshTime,
-            NLJBJMDPBGN = BuildDiyProto(view.Data),
-            DJMHHMMABJL = socialPlayRoomData,
-            JIELLGELABA = new KKACLNNMMAM(),
-            NAIFOMCLGLN = new ONAADAJBLEB
-            {
-                ONOHPMDGNNH = (uint)Math.Max(0, Data.AvailableSearchCount),
-                DBIKJPDBMOE = Data.DailyRefreshTime
-            }
-        };
-
-        rsp.PerformanceIdList.AddRange(GetUnlockedPerformanceIds(Data).Select(x => (uint)x));
-
-        rsp.BJPHDKEBOBK.AddRange(view.Data.CatTreeSlots.Select(x => new IKAHKMNCFDN
-        {
-            PCPDHEIEJFO = (uint)x.CreatureId,
-            Slot = (uint)x.Slot
-        }));
-
-        foreach (var entry in GetCollectedCreatures(Data))
-        {
-            rsp.NIELDCLPOLA.Add(new JOFHMCJPBCE
-            {
-                PCPDHEIEJFO = (uint)entry.CreatureId,
-                Count = (uint)entry.Count
-            });
-        }
-
-        foreach (var creatureId in Data.SearchCreatureIds)
-            rsp.CEMFBJPOLNP.Add(new PJFIMFJPMCN { PCPDHEIEJFO = (uint)creatureId });
-
-        return rsp;
-    }
-
     public uint GetGameplayType(uint roomOwnerUid, uint roomPlayerUid)
     {
         return (uint)(roomOwnerUid == roomPlayerUid
@@ -497,7 +442,6 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             {
                 JKNLCEEDAHJ = new KHADHDLCNOI()
             },
-            DLKOEIANIMK = gameplayType,
             PKHFMJDNKOE = new JPAOIPLDKHB
             {
                 CMHKFNFKGOI = view.Data.RefreshTime,
@@ -835,7 +779,6 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
         return new JBJNJPAOCDA
         {
             Uid = (uint)data.Uid,
-            SummonedPetId = data.Pet > 0 ? (uint)data.Pet : 0,
             AJIPBLCIONL = data.ToSimpleProto(FriendOnlineStatus.Online),
             AIMNJIMDIKM = Math.Max(0, data.LastActiveTime),
             OJPDDAOJJKC = true,
@@ -852,9 +795,6 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             AJIPBLCIONL = data.ToSimpleProto(FriendOnlineStatus.Online),
             NJDCPMENIFG = CreatePlaceholderMotion()
         };
-
-        if (isSelf && data.Pet > 0)
-            proto.SummonedPetId = (uint)data.Pet;
 
         return proto;
     }
