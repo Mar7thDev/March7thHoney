@@ -382,6 +382,10 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         }
 
         // No handler found
+        // 教程请求收到任何响应都会让客户端弹出本不该出现的教程界面，与 csproj 排除这三个 handler 同源
+        if (opcode == CmdIds.GetTutorialCsReq || opcode == CmdIds.GetTutorialGuideCsReq ||
+            opcode == CmdIds.UnlockTutorialCsReq) return;
+
         // get the packet name
         if (packetName == null) return;
 
