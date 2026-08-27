@@ -24,7 +24,7 @@ public class PacketGetPlayerBoardDataScRsp : BasePacket
         var pos = 0;
         player.AvatarManager?.Data!.DisplayAvatars.ForEach(avatar =>
         {
-            proto.DisplayAvatarVec.DisplayAvatarList.Add(new BMJPAPIDKKM
+            proto.DisplayAvatarVec.DisplayAvatarList.Add(new DisplayAvatarData
             {
                 AvatarId = (uint)avatar,
                 Pos = (uint)pos++
