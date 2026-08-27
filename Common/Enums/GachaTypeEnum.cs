@@ -6,7 +6,9 @@ public enum GachaTypeEnum
     Newbie = 1,
     Normal = 2,
     AvatarUp = 11,
-    WeaponUp = 12
+    WeaponUp = 12,
+    CollaborationAvatarUp = 5,
+    CollaborationWeaponUp = 6
 }
 
 public static class GachaTypeEnumExtensions

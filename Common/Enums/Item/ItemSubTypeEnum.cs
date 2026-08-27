@@ -52,5 +52,9 @@ public enum ItemSubTypeEnum
     Mission = 701,
     RelicSetShowOnly = 801,
     RelicRarityShowOnly = 802,
-    NormalPet = 901
+    NormalPet = 901,
+    DiceCombatDice = 614,
+    FateRinHougu = 615,
+    IdleLiveItem = 616,
+    PixAirMaterial = 617
 }

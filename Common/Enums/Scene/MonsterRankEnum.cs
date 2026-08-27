@@ -7,5 +7,6 @@ public enum MonsterRankEnum
     MinionLv2 = 2,
     Elite = 3,
     LittleBoss = 4,
-    BigBoss = 5
+    BigBoss = 5,
+    Unknow = 0
 }
