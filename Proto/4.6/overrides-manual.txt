@@ -8,6 +8,9 @@ JAGAEDNEKNM = UnlockSkillTreeCsReq
 POLMJOOOBNK = UnlockSkillTreeScRsp
 // 4.6 只剩这一个未命名 uint32，4.5v3 也只剩 turn_left 未配对，单槽位可确定
 AFALNHPPKAD.LCIBIELNPDD = turn_left
+// SceneInfo 槽位迁移把 offset 160/164 这两个相邻 uint32 互换了：#3 的值恒等于 MazePlane.WorldID，#9 恒等于队长的角色实体
+KHNBFDNKLHE.#3 = world_id
+KHNBFDNKLHE.#9 = leader_entity_id
 // --- GateServer 逐字段钉死（自动生成，勿手改）---
 // 真实 gateway wire 已证实 retcode#7 / stop_desc#10 / region_name#12，dump 字段号可信；
 // 槽位迁移曾把 ban_appeal_url 改成 ifix_url，故这里按 dump 原名逐条覆盖。

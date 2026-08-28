@@ -747,12 +747,12 @@ namespace March7thHoney.Proto {
             "ZUluZm8SDwoHcm9vbV9pZBgDIAEoDRITCgtHRUNPQ01MQkJQRRgEIAEoDRIT",
             "CgtLS01FRkRFRkxCSRgLIAEoDRITCgtNQUpLRklNUE9PRhgMIAEoDSL5BgoJ",
             "U2NlbmVJbmZvEjAKC0JJS0JGR1BGQUFDGAEgAygLMhsuU2NlbmVJbmZvLkJJ",
-            "S0JGR1BGQUFDRW50cnkSEAoIZmxvb3JfaWQYAiABKA0SGAoQbGVhZGVyX2Vu",
-            "dGl0eV9pZBgDIAEoDRIcChRsaWdodGVuX3NlY3Rpb25fbGlzdBgEIAMoDRIn",
-            "ChRzY2VuZV9idWZmX2luZm9fbGlzdBgFIAMoCzIJLkJ1ZmZJbmZvEikKEGN1",
-            "c3RvbV9kYXRhX2xpc3QYBiADKAsyDy5DdXN0b21TYXZlRGF0YRIlCgtlbnRp",
-            "dHlfbGlzdBgHIAMoCzIQLlNjZW5lRW50aXR5SW5mbxIQCghlbnRyeV9pZBgI",
-            "IAEoDRIQCgh3b3JsZF9pZBgJIAEoDRIQCghwbGFuZV9pZBgKIAEoDRIhCgtD",
+            "S0JGR1BGQUFDRW50cnkSEAoIZmxvb3JfaWQYAiABKA0SEAoId29ybGRfaWQY",
+            "AyABKA0SHAoUbGlnaHRlbl9zZWN0aW9uX2xpc3QYBCADKA0SJwoUc2NlbmVf",
+            "YnVmZl9pbmZvX2xpc3QYBSADKAsyCS5CdWZmSW5mbxIpChBjdXN0b21fZGF0",
+            "YV9saXN0GAYgAygLMg8uQ3VzdG9tU2F2ZURhdGESJQoLZW50aXR5X2xpc3QY",
+            "ByADKAsyEC5TY2VuZUVudGl0eUluZm8SEAoIZW50cnlfaWQYCCABKA0SGAoQ",
+            "bGVhZGVyX2VudGl0eV9pZBgJIAEoDRIQCghwbGFuZV9pZBgKIAEoDRIhCgtD",
             "UElLRkdQQ09DRRgMIAMoCzIMLkhHTkJQQU5FQ0FMEhoKEmNsaWVudF9wb3Nf",
             "dmVyc2lvbhgOIAEoDRIWCg5nYW1lX21vZGVfdHlwZRgPIAEoDRI4ChBmbG9v",
             "cl9zYXZlZF9kYXRhGBQgAygLMh4uU2NlbmVJbmZvLkZsb29yU2F2ZWREYXRh",
@@ -1414,7 +1414,7 @@ namespace March7thHoney.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcMonsterRogueInfo), global::March7thHoney.Proto.NpcMonsterRogueInfo.Parser, new[]{ "IEDEBFCCKNL", "DPCNDADDCAJ", "HardLevelGroup", "EliteGroup", "Level", "RogueMonsterId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.NpcRogueGameInfo), global::March7thHoney.Proto.NpcRogueGameInfo.Parser, new[]{ "MJBKNMJHOGP", "LDPAJKIEPIP", "AIAFEKGBFIF", "NLAFLKPLPFE", "OEANPIHCHHF", "DJEPGKBMICM", "FKKMLJNKHDH" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.PropRogueInfo), global::March7thHoney.Proto.PropRogueInfo.Parser, new[]{ "RoomId", "GECOCMLBBPE", "KKMEFDEFLBI", "MAJKFIMPOOF" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneInfo), global::March7thHoney.Proto.SceneInfo.Parser, new[]{ "BIKBFGPFAAC", "FloorId", "LeaderEntityId", "LightenSectionList", "SceneBuffInfoList", "CustomDataList", "EntityList", "EntryId", "WorldId", "PlaneId", "CPIKFGPCOCE", "ClientPosVersion", "GameModeType", "FloorSavedData", "ContentId", "FOJJGJPIMBL", "SceneIdentifier", "InteractId", "DimensionId", "SceneMissionInfo", "OpenedChestsList", "EntityGroupList", "GameStoryLineId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SceneInfo), global::March7thHoney.Proto.SceneInfo.Parser, new[]{ "BIKBFGPFAAC", "FloorId", "WorldId", "LightenSectionList", "SceneBuffInfoList", "CustomDataList", "EntityList", "EntryId", "LeaderEntityId", "PlaneId", "CPIKFGPCOCE", "ClientPosVersion", "GameModeType", "FloorSavedData", "ContentId", "FOJJGJPIMBL", "SceneIdentifier", "InteractId", "DimensionId", "SceneMissionInfo", "OpenedChestsList", "EntityGroupList", "GameStoryLineId" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AKMCODLAEKI), global::March7thHoney.Proto.AKMCODLAEKI.Parser, new[]{ "Key", "Value" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.AMKALFJHFJP), global::March7thHoney.Proto.AMKALFJHFJP.Parser, new[]{ "LIFJCJKNKNJ", "BPDDBKGDMDD", "LGIPILAKIKB", "FAHAMJFPMMI" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.BDJLHJDPEEK), global::March7thHoney.Proto.BDJLHJDPEEK.Parser, new[]{ "AttributeList", "CompositionType", "Level", "UniqueId" }, null, null, null, null),
@@ -91504,13 +91504,13 @@ namespace March7thHoney.Proto {
     public SceneInfo(SceneInfo other) : this() {
       bIKBFGPFAAC_ = other.bIKBFGPFAAC_.Clone();
       floorId_ = other.floorId_;
-      leaderEntityId_ = other.leaderEntityId_;
+      worldId_ = other.worldId_;
       lightenSectionList_ = other.lightenSectionList_.Clone();
       sceneBuffInfoList_ = other.sceneBuffInfoList_.Clone();
       customDataList_ = other.customDataList_.Clone();
       entityList_ = other.entityList_.Clone();
       entryId_ = other.entryId_;
-      worldId_ = other.worldId_;
+      leaderEntityId_ = other.leaderEntityId_;
       planeId_ = other.planeId_;
       cPIKFGPCOCE_ = other.cPIKFGPCOCE_.Clone();
       clientPosVersion_ = other.clientPosVersion_;
@@ -91563,18 +91563,18 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "leader_entity_id" field.</summary>
-    public const int LeaderEntityIdFieldNumber = 3;
-    private uint leaderEntityId_;
+    /// <summary>Field number for the "world_id" field.</summary>
+    public const int WorldIdFieldNumber = 3;
+    private uint worldId_;
     /// <summary>
     /// offset: 160
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint LeaderEntityId {
-      get { return leaderEntityId_; }
+    public uint WorldId {
+      get { return worldId_; }
       set {
-        leaderEntityId_ = value;
+        worldId_ = value;
       }
     }
 
@@ -91649,18 +91649,18 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "world_id" field.</summary>
-    public const int WorldIdFieldNumber = 9;
-    private uint worldId_;
+    /// <summary>Field number for the "leader_entity_id" field.</summary>
+    public const int LeaderEntityIdFieldNumber = 9;
+    private uint leaderEntityId_;
     /// <summary>
     /// offset: 164
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint WorldId {
-      get { return worldId_; }
+    public uint LeaderEntityId {
+      get { return leaderEntityId_; }
       set {
-        worldId_ = value;
+        leaderEntityId_ = value;
       }
     }
 
@@ -91887,13 +91887,13 @@ namespace March7thHoney.Proto {
       }
       if (!BIKBFGPFAAC.Equals(other.BIKBFGPFAAC)) return false;
       if (FloorId != other.FloorId) return false;
-      if (LeaderEntityId != other.LeaderEntityId) return false;
+      if (WorldId != other.WorldId) return false;
       if(!lightenSectionList_.Equals(other.lightenSectionList_)) return false;
       if(!sceneBuffInfoList_.Equals(other.sceneBuffInfoList_)) return false;
       if(!customDataList_.Equals(other.customDataList_)) return false;
       if(!entityList_.Equals(other.entityList_)) return false;
       if (EntryId != other.EntryId) return false;
-      if (WorldId != other.WorldId) return false;
+      if (LeaderEntityId != other.LeaderEntityId) return false;
       if (PlaneId != other.PlaneId) return false;
       if(!cPIKFGPCOCE_.Equals(other.cPIKFGPCOCE_)) return false;
       if (ClientPosVersion != other.ClientPosVersion) return false;
@@ -91917,13 +91917,13 @@ namespace March7thHoney.Proto {
       int hash = 1;
       hash ^= BIKBFGPFAAC.GetHashCode();
       if (FloorId != 0) hash ^= FloorId.GetHashCode();
-      if (LeaderEntityId != 0) hash ^= LeaderEntityId.GetHashCode();
+      if (WorldId != 0) hash ^= WorldId.GetHashCode();
       hash ^= lightenSectionList_.GetHashCode();
       hash ^= sceneBuffInfoList_.GetHashCode();
       hash ^= customDataList_.GetHashCode();
       hash ^= entityList_.GetHashCode();
       if (EntryId != 0) hash ^= EntryId.GetHashCode();
-      if (WorldId != 0) hash ^= WorldId.GetHashCode();
+      if (LeaderEntityId != 0) hash ^= LeaderEntityId.GetHashCode();
       if (PlaneId != 0) hash ^= PlaneId.GetHashCode();
       hash ^= cPIKFGPCOCE_.GetHashCode();
       if (ClientPosVersion != 0) hash ^= ClientPosVersion.GetHashCode();
@@ -91961,9 +91961,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(FloorId);
       }
-      if (LeaderEntityId != 0) {
+      if (WorldId != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(LeaderEntityId);
+        output.WriteUInt32(WorldId);
       }
       lightenSectionList_.WriteTo(output, _repeated_lightenSectionList_codec);
       sceneBuffInfoList_.WriteTo(output, _repeated_sceneBuffInfoList_codec);
@@ -91973,9 +91973,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(64);
         output.WriteUInt32(EntryId);
       }
-      if (WorldId != 0) {
+      if (LeaderEntityId != 0) {
         output.WriteRawTag(72);
-        output.WriteUInt32(WorldId);
+        output.WriteUInt32(LeaderEntityId);
       }
       if (PlaneId != 0) {
         output.WriteRawTag(80);
@@ -92036,9 +92036,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(FloorId);
       }
-      if (LeaderEntityId != 0) {
+      if (WorldId != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(LeaderEntityId);
+        output.WriteUInt32(WorldId);
       }
       lightenSectionList_.WriteTo(ref output, _repeated_lightenSectionList_codec);
       sceneBuffInfoList_.WriteTo(ref output, _repeated_sceneBuffInfoList_codec);
@@ -92048,9 +92048,9 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(64);
         output.WriteUInt32(EntryId);
       }
-      if (WorldId != 0) {
+      if (LeaderEntityId != 0) {
         output.WriteRawTag(72);
-        output.WriteUInt32(WorldId);
+        output.WriteUInt32(LeaderEntityId);
       }
       if (PlaneId != 0) {
         output.WriteRawTag(80);
@@ -92110,8 +92110,8 @@ namespace March7thHoney.Proto {
       if (FloorId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(FloorId);
       }
-      if (LeaderEntityId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LeaderEntityId);
+      if (WorldId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldId);
       }
       size += lightenSectionList_.CalculateSize(_repeated_lightenSectionList_codec);
       size += sceneBuffInfoList_.CalculateSize(_repeated_sceneBuffInfoList_codec);
@@ -92120,8 +92120,8 @@ namespace March7thHoney.Proto {
       if (EntryId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EntryId);
       }
-      if (WorldId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(WorldId);
+      if (LeaderEntityId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(LeaderEntityId);
       }
       if (PlaneId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PlaneId);
@@ -92173,8 +92173,8 @@ namespace March7thHoney.Proto {
       if (other.FloorId != 0) {
         FloorId = other.FloorId;
       }
-      if (other.LeaderEntityId != 0) {
-        LeaderEntityId = other.LeaderEntityId;
+      if (other.WorldId != 0) {
+        WorldId = other.WorldId;
       }
       lightenSectionList_.Add(other.lightenSectionList_);
       sceneBuffInfoList_.Add(other.sceneBuffInfoList_);
@@ -92183,8 +92183,8 @@ namespace March7thHoney.Proto {
       if (other.EntryId != 0) {
         EntryId = other.EntryId;
       }
-      if (other.WorldId != 0) {
-        WorldId = other.WorldId;
+      if (other.LeaderEntityId != 0) {
+        LeaderEntityId = other.LeaderEntityId;
       }
       if (other.PlaneId != 0) {
         PlaneId = other.PlaneId;
@@ -92257,7 +92257,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 24: {
-            LeaderEntityId = input.ReadUInt32();
+            WorldId = input.ReadUInt32();
             break;
           }
           case 34:
@@ -92282,7 +92282,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 72: {
-            WorldId = input.ReadUInt32();
+            LeaderEntityId = input.ReadUInt32();
             break;
           }
           case 80: {
@@ -92379,7 +92379,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 24: {
-            LeaderEntityId = input.ReadUInt32();
+            WorldId = input.ReadUInt32();
             break;
           }
           case 34:
@@ -92404,7 +92404,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 72: {
-            WorldId = input.ReadUInt32();
+            LeaderEntityId = input.ReadUInt32();
             break;
           }
           case 80: {

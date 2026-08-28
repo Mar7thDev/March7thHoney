@@ -14,6 +14,7 @@ public partial class StageConfigExcel : ExcelResource
     public List<StageMonsterList> MonsterList { get; set; } = [];
     public List<StageConfigInfo> StageConfigData { get; set; } = [];
     public List<int> TrialAvatarList { get; set; } = [];
+    [JsonIgnore] public int InvasionMazeBuffID { get; set; }
 
 
     public override int GetId()
