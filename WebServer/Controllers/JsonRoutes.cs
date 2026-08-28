@@ -110,18 +110,27 @@ public static class JsonRoutes
             if (acc.HasPassword() && (string.IsNullOrEmpty(password) || !acc.VerifyPassword(password)))
                 return ConsoleJson(1, "Invalid password for this uid.", null, 401);
 
-            // Commands run against the live session, so the player must be online.
-            // Use the same active-connection lookup the command pipeline uses.
-            var con = Listener.GetActiveConnection(acc.Uid);
-            if (con?.Player == null)
-                return ConsoleJson(1, "player offline", null, 400);
-
             command = command.Trim();
             if (command.Length > 4096)
                 return ConsoleJson(1, "Command too long.", null, 400);
 
+            // Use the same active-connection lookup the command pipeline uses.
+            var con = Listener.GetActiveConnection(acc.Uid);
+            var online = con?.Player != null;
+
+            // Signing in must succeed while offline: resetting save data does not need
+            // a live session, so only real command execution is gated on being online.
             if (string.IsNullOrWhiteSpace(command))
-                return ConsoleJson(0, "OK", $"Connected as UID {acc.Uid} (role: {acc.GetRole()}).");
+            {
+                var status = online
+                    ? "Status: online."
+                    : "Status: offline - commands require you to be in-game, but resetting save data does not.";
+                return ConsoleJson(0, "OK", $"Connected as UID {acc.Uid} (role: {acc.GetRole()}). {status}");
+            }
+
+            // Commands run against the live session, so the player must be online.
+            if (!online)
+                return ConsoleJson(1, "player offline", null, 400);
 
             // Run through the MUIP pipeline with a non-admin session bound to the
             // player's account and targeting their own uid. MuipCommandSender then
