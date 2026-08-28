@@ -1364,7 +1364,7 @@ message GateServer {
 	string region_name = 12; // offset: 288
 	uint32 port = 13; // offset: 544
 	string ip = 14; // offset: 488
-	string video_bundle_version_update_url_with_suffix = 15; // offset: 496
+	string asset_bundle_url = 15; // offset: 496
 	string anniv_3_rd_live_mainpage = 32; // offset: 344
 	string official_community_url = 33; // offset: 480
 	string rogue_tourn_build_ref_api_req_color_header_key = 87; // offset: 16
@@ -1398,7 +1398,7 @@ message GateServer {
 	uint32 cdn_ipv_6_enable = 816; // offset: 520
 	string redeem_code_url = 850; // offset: 504
 	string player_return_questionnaire_a_url = 886; // offset: 224
-	string player_return_invite_h_5_url = 941; // offset: 72
+	string player_return_invite_h_6_url = 941; // offset: 72
 	string rogue_tourn_h_5_url = 980; // offset: 32
 	string anniv_2_nd_os = 998; // offset: 56
 	string anniv_3_rd_book = 1070; // offset: 264
@@ -1408,7 +1408,7 @@ message GateServer {
 	bool mtp_switch = 1150; // offset: 573
 	uint32 rogue_tourn_notice_id = 1192; // offset: 548
 	string predownload_update_url = 1206; // offset: 464
-	string server_description = 1239; // offset: 280
+	string player_return_invite_h_5_url = 1239; // offset: 280
 	string anniv_3_rd_live_inprogress = 1280; // offset: 320
 	uint32 rogue_tourn_notice_pic_type = 1288; // offset: 560
 	string teenager_privacy_in_game_url = 1301; // offset: 184
@@ -1420,7 +1420,7 @@ message GateServer {
 	string temporary_maintenance_url = 1439; // offset: 328
 	bool ftc_switch = 1463; // offset: 574
 	string JDMJIGDPDNB = 1468; // offset: 64
-	string asset_bundle_url = 1525; // offset: 192
+	string ban_appeal_url = 1525; // offset: 192
 	string client_secret_key = 1569; // offset: 424
 	string rogue_tourn_build_ref_h_5_url = 1588; // offset: 472
 	bool enable_save_replay_file = 1641; // offset: 567
@@ -1429,7 +1429,7 @@ message GateServer {
 	bool watermark_enable = 1660; // offset: 537
 	string grid_fight_intro_h_5_url = 1679; // offset: 128
 	bool close_redeem_code = 1682; // offset: 526
-	string server_description_x = 1720; // offset: 360
+	string server_description = 1720; // offset: 360
 	string login_white_msg = 1774; // offset: 144
 	bool enable_upload_battle_log = 1789; // offset: 525
 	bool FMLPNNMJDIC = 1880; // offset: 566
