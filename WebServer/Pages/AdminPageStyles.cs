@@ -7,20 +7,22 @@ public static class AdminPageStyles
         return """
     :root {
       color-scheme: dark;
-      --bg: #101114;
-      --band: #17191f;
-      --panel: #1f232b;
-      --panel-2: #272d36;
-      --panel-3: #303844;
-      --ink: #f4f6f8;
-      --muted: #aeb7c2;
-      --soft: #818b98;
-      --line: #3a424e;
-      --blue: #5796ff;
-      --green: #43c889;
-      --amber: #efb557;
-      --red: #ef6f64;
-      --shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+      --bg: #0b0d11;
+      --band: #12151b;
+      --panel: #161a21;
+      --panel-2: #1d222b;
+      --panel-3: #262d38;
+      --ink: #eef2f7;
+      --muted: #9aa5b4;
+      --soft: #6f7b8b;
+      --line: #262d38;
+      --blue: #4c8dff;
+      --green: #35c98a;
+      --amber: #e9b558;
+      --red: #f2726a;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      --radius: 12px;
+      --radius-sm: 8px;
     }
 
     * {
@@ -32,7 +34,9 @@ public static class AdminPageStyles
       min-height: 100vh;
       background: var(--bg);
       color: var(--ink);
-      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      font-family: "Inter", "Segoe UI", system-ui, "Microsoft YaHei", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     button,
@@ -50,13 +54,14 @@ public static class AdminPageStyles
     select,
     textarea {
       width: 100%;
-      min-height: 40px;
+      min-height: 42px;
       border: 1px solid var(--line);
-      border-radius: 6px;
-      background: #15181e;
+      border-radius: var(--radius-sm);
+      background: #0f1319;
       color: var(--ink);
       outline: none;
-      padding: 9px 11px;
+      padding: 10px 13px;
+      transition: border-color .15s ease, box-shadow .15s ease;
     }
 
     textarea {
@@ -69,7 +74,7 @@ public static class AdminPageStyles
     select:focus,
     textarea:focus {
       border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(87, 150, 255, 0.22);
+      box-shadow: 0 0 0 3px rgba(76, 141, 255, 0.18);
     }
 
     label {
@@ -77,7 +82,7 @@ public static class AdminPageStyles
       gap: 7px;
       color: var(--muted);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     label span {
@@ -92,7 +97,7 @@ public static class AdminPageStyles
 
     th,
     td {
-      padding: 12px 14px;
+      padding: 13px 16px;
       border-bottom: 1px solid var(--line);
       text-align: left;
       vertical-align: middle;
@@ -100,9 +105,15 @@ public static class AdminPageStyles
     }
 
     th {
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.03);
-      font-weight: 800;
+      color: var(--soft);
+      background: var(--panel-2);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      position: sticky;
+      top: 0;
+      z-index: 1;
     }
 
     td {
@@ -117,11 +128,12 @@ public static class AdminPageStyles
     }
 
     tbody tr:hover {
-      background: rgba(87, 150, 255, 0.08);
+      background: rgba(76, 141, 255, 0.07);
     }
 
     tbody tr.selected {
-      background: rgba(67, 200, 137, 0.12);
+      background: rgba(53, 201, 138, 0.10);
+      box-shadow: inset 3px 0 0 var(--green);
     }
 
     .hidden {
@@ -141,7 +153,7 @@ public static class AdminPageStyles
       gap: 24px;
       padding: 28px;
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius);
       background: var(--panel);
       box-shadow: var(--shadow);
     }
@@ -372,7 +384,8 @@ public static class AdminPageStyles
     }
 
     .toolbar input {
-      max-width: 520px;
+      flex: 1 1 280px;
+      max-width: 560px;
     }
 
     .table-scroller {
@@ -391,17 +404,23 @@ public static class AdminPageStyles
     }
 
     .button {
-      min-height: 38px;
-      border-radius: 6px;
-      padding: 8px 12px;
+      min-height: 40px;
+      border-radius: var(--radius-sm);
+      padding: 9px 16px;
       background: var(--panel-3);
       color: var(--ink);
       cursor: pointer;
-      font-weight: 800;
+      font-weight: 600;
+      transition: filter .15s ease, transform .1s ease;
     }
 
     .button:hover:not(:disabled) {
-      filter: brightness(1.12);
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+    }
+
+    .button:active:not(:disabled) {
+      transform: translateY(0);
     }
 
     .button:disabled {
@@ -559,6 +578,13 @@ public static class AdminPageStyles
     }
 
     @media (max-width: 820px) {
+      /* iOS Safari force-zooms the page when a focused field is under 16px. */
+      input,
+      select,
+      textarea {
+        font-size: 16px;
+      }
+
       .topbar,
       .module-heading {
         align-items: stretch;
