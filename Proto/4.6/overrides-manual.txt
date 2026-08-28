@@ -14,7 +14,7 @@ KHNBFDNKLHE.#9 = leader_entity_id
 // --- GateServer 逐字段钉死（自动生成，勿手改）---
 // 真实 gateway wire 已证实 retcode#7 / stop_desc#10 / region_name#12，dump 字段号可信；
 // 槽位迁移曾把 ban_appeal_url 改成 ifix_url，故这里按 dump 原名逐条覆盖。
-// #14=ip 与 #1525=asset_bundle_url 证据不足，取剩余唯一槽位，须实机确认。
+// #15/#941/#1239/#1525 按 4.5/4.6 两份 dump.cs 的混淆常量名 join 订正（87/87 对齐），并与真实 gateway wire 一致。
 EBIPBHFLPHL.#1 = stop_end_time
 EBIPBHFLPHL.#2 = lua_url
 EBIPBHFLPHL.#3 = enable_design_data_bundle_version_update
@@ -29,7 +29,7 @@ EBIPBHFLPHL.#11 = design_data_relogin_type
 EBIPBHFLPHL.#12 = region_name
 EBIPBHFLPHL.#13 = port
 EBIPBHFLPHL.#14 = ip
-EBIPBHFLPHL.#15 = video_bundle_version_update_url_with_suffix
+EBIPBHFLPHL.#15 = asset_bundle_url
 EBIPBHFLPHL.#32 = anniv_3_rd_live_mainpage
 EBIPBHFLPHL.#33 = official_community_url
 EBIPBHFLPHL.#87 = rogue_tourn_build_ref_api_req_color_header_key
@@ -63,7 +63,7 @@ EBIPBHFLPHL.#778 = anniv_3_rd_callback
 EBIPBHFLPHL.#816 = cdn_ipv_6_enable
 EBIPBHFLPHL.#850 = redeem_code_url
 EBIPBHFLPHL.#886 = player_return_questionnaire_a_url
-EBIPBHFLPHL.#941 = player_return_invite_h_5_url
+EBIPBHFLPHL.#941 = player_return_invite_h_6_url
 EBIPBHFLPHL.#980 = rogue_tourn_h_5_url
 EBIPBHFLPHL.#998 = anniv_2_nd_os
 EBIPBHFLPHL.#1070 = anniv_3_rd_book
@@ -73,7 +73,7 @@ EBIPBHFLPHL.#1094 = i_fix_patch_revision
 EBIPBHFLPHL.#1150 = mtp_switch
 EBIPBHFLPHL.#1192 = rogue_tourn_notice_id
 EBIPBHFLPHL.#1206 = predownload_update_url
-EBIPBHFLPHL.#1239 = server_description
+EBIPBHFLPHL.#1239 = player_return_invite_h_5_url
 EBIPBHFLPHL.#1280 = anniv_3_rd_live_inprogress
 EBIPBHFLPHL.#1288 = rogue_tourn_notice_pic_type
 EBIPBHFLPHL.#1301 = teenager_privacy_in_game_url
@@ -85,7 +85,7 @@ EBIPBHFLPHL.#1427 = forbid_recharge
 EBIPBHFLPHL.#1439 = temporary_maintenance_url
 EBIPBHFLPHL.#1463 = ftc_switch
 EBIPBHFLPHL.#1468 = JDMJIGDPDNB
-EBIPBHFLPHL.#1525 = asset_bundle_url
+EBIPBHFLPHL.#1525 = ban_appeal_url
 EBIPBHFLPHL.#1569 = client_secret_key
 EBIPBHFLPHL.#1588 = rogue_tourn_build_ref_h_5_url
 EBIPBHFLPHL.#1641 = enable_save_replay_file
