@@ -400,37 +400,9 @@ public static class AdminPageScripts
                   ${option("password-missing", "No password", state.accountFilter)}
                 </select>
                 <button id="new-account-button" class="button primary" type="button">New account</button>
-                <span class="chip">${rows.length} ${rows.length === 1 ? "user" : "users"}</span>
+                <span class="chip" id="account-count">${rows.length} ${rows.length === 1 ? "user" : "users"}</span>
               </div>
-              ${rows.length ? `
-                <div class="table-scroller">
-                  <table aria-label="User accounts">
-                    <thead>
-                      <tr>
-                        <th style="width: 90px;">UID</th>
-                        <th>User</th>
-                        <th>Email</th>
-                        <th style="width: 120px;">Role</th>
-                        <th style="width: 100px;">State</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${rows.map(account => `
-                        <tr data-select-uid="${account.uid}" class="${account.uid === state.selectedUid ? "selected" : ""}">
-                          <td>${escapeHtml(account.uid)}</td>
-                          <td>
-                            <strong>${escapeHtml(account.username || "")}</strong>
-                            <div class="muted">${escapeHtml(account.nickname || "No nickname")}</div>
-                          </td>
-                          <td class="muted">${escapeHtml(account.email || "")}</td>
-                          <td><span class="chip">${escapeHtml(account.role || "")}</span></td>
-                          <td>${accountStateChips(account)}</td>
-                        </tr>
-                      `).join("")}
-                    </tbody>
-                  </table>
-                </div>
-              ` : `<div class="empty">No accounts match the current view.</div>`}
+              <div id="account-results">${accountRowsMarkup(rows)}</div>
             </section>
 
             ${state.accountEditorMode === "create" ? renderCreateAccountPanel() : renderAccountEditor(selected)}
@@ -438,6 +410,66 @@ public static class AdminPageScripts
         `;
 
         bindAccountModule();
+      }
+
+      function accountRowsMarkup(rows) {
+        if (!rows.length) {
+          return `<div class="empty">No accounts match the current view.</div>`;
+        }
+        return `
+          <div class="table-scroller">
+            <table aria-label="User accounts">
+              <thead>
+                <tr>
+                  <th style="width: 90px;">UID</th>
+                  <th>User</th>
+                  <th>Email</th>
+                  <th style="width: 120px;">Role</th>
+                  <th style="width: 100px;">State</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows.map(account => `
+                  <tr data-select-uid="${account.uid}" class="${account.uid === state.selectedUid ? "selected" : ""}">
+                    <td>${escapeHtml(account.uid)}</td>
+                    <td>
+                      <strong>${escapeHtml(account.username || "")}</strong>
+                      <div class="muted">${escapeHtml(account.nickname || "No nickname")}</div>
+                    </td>
+                    <td class="muted">${escapeHtml(account.email || "")}</td>
+                    <td><span class="chip">${escapeHtml(account.role || "")}</span></td>
+                    <td>${accountStateChips(account)}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>`;
+      }
+
+      function bindAccountRows() {
+        for (const row of els.moduleRoot.querySelectorAll("[data-select-uid]")) {
+          row.addEventListener("click", () => {
+            state.selectedUid = Number(row.dataset.selectUid);
+            state.accountEditorMode = "detail";
+            renderAccountsModule();
+          });
+        }
+      }
+
+      // Typing must never rebuild the search box. Replacing the live input drops
+      // focus, aborts IME composition, and makes iOS offer "Undo Typing" after a
+      // single character, so filtering only swaps the results list.
+      function renderAccountResults() {
+        const rows = filteredAccounts();
+        const count = document.getElementById("account-count");
+        const host = document.getElementById("account-results");
+        if (count) {
+          count.textContent = `${rows.length} ${rows.length === 1 ? "user" : "users"}`;
+        }
+        if (host) {
+          host.innerHTML = accountRowsMarkup(rows);
+          bindAccountRows();
+        }
       }
 
       function renderCreateAccountPanel() {
@@ -580,7 +612,7 @@ public static class AdminPageScripts
         if (search) {
           search.addEventListener("input", event => {
             state.accountQuery = event.currentTarget.value;
-            renderAccountsModule();
+            renderAccountResults();
           });
         }
         if (filter) {
@@ -603,13 +635,7 @@ public static class AdminPageScripts
           });
         }
 
-        for (const row of els.moduleRoot.querySelectorAll("[data-select-uid]")) {
-          row.addEventListener("click", () => {
-            state.selectedUid = Number(row.dataset.selectUid);
-            state.accountEditorMode = "detail";
-            renderAccountsModule();
-          });
-        }
+        bindAccountRows();
 
         for (const tab of els.moduleRoot.querySelectorAll("[data-account-tab]")) {
           tab.addEventListener("click", () => {
