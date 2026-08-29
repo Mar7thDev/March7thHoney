@@ -1,4 +1,4 @@
-using JNFDGPDHENJ = March7thHoney.Proto.PlayerSqueezedScNotify.Types.AAFEHKFADDH.Types.JNFDGPDHENJ;
+using JNFDGPDHENJ = March7thHoney.Proto.JNFDGPDHENJ;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
