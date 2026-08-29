@@ -185,36 +185,66 @@ public class LevelTask(PlayerInstance player)
     public async ValueTask<object?> ChangePropState(TaskConfigInfo act, SubMissionData subMission,
         GroupInfo? group = null)
     {
-        if (subMission.SubMissionInfo?.FinishType != MissionFinishTypeEnum.PropState) return null;
+        await ApplyMissionPropState(subMission);
+        return null;
+    }
 
-        foreach (var entity in Player.SceneInstance!.Entities.Values)
+    /// <summary>
+    ///     The body of the ChangePropState level task, callable without a TaskConfigInfo so the scene
+    ///     reconcile pass (MissionManager.ApplyRunningMissionPropStates) can re-run it on a scene build.
+    /// </summary>
+    public async ValueTask ApplyMissionPropState(SubMissionData subMission)
+    {
+        if (subMission.SubMissionInfo?.FinishType != MissionFinishTypeEnum.PropState) return;
+        if (Player.SceneInstance == null) return;
+
+        foreach (var entity in Player.SceneInstance.Entities.Values)
             if (entity is EntityProp prop && prop.GroupId == subMission.SubMissionInfo.ParamInt1 &&
                 prop.InstId == subMission.SubMissionInfo.ParamInt2)
                 try
                 {
-                    if (prop.Excel.PropStateList.Contains(PropStateEnum.Closed))
-                    {
-                        await prop.SetState(PropStateEnum.Closed);
-                    }
-                    else
-                    {
-                        await prop.SetState(
-                            prop.Excel.PropStateList[prop.Excel.PropStateList.IndexOf(prop.State) + 1]);
+                    var (target, viaClosed) = StepToClosedOrNext(prop.Excel.PropStateList, prop.State);
+                    if (target == prop.State) continue; // nothing left to advance - keep it idempotent
 
-                        // Elevator
-                        foreach (var id in prop.PropInfo.UnlockControllerID)
-                        foreach (var entity2 in Player.SceneInstance!.Entities.Values)
-                            if (entity2 is EntityProp prop2 && prop2.GroupId == id.Key &&
-                                id.Value.Contains(prop2.InstId))
-                                await prop2.SetState(PropStateEnum.Closed);
-                    }
+                    await prop.SetState(target);
+
+                    // Elevator: only the advance-to-next branch unlocks the linked controllers.
+                    if (viaClosed) continue;
+
+                    foreach (var id in prop.PropInfo.UnlockControllerID)
+                    foreach (var entity2 in Player.SceneInstance!.Entities.Values)
+                        if (entity2 is EntityProp prop2 && prop2.GroupId == id.Key &&
+                            id.Value.Contains(prop2.InstId))
+                            await prop2.SetState(PropStateEnum.Closed);
                 }
                 catch
                 {
                     // ignored
                 }
+    }
 
-        return null;
+    /// <summary>
+    ///     Where a mission's ChangePropState task should move a prop: straight to Closed when the prop
+    ///     declares that state (a console going from Locked to interactable), otherwise one step forward
+    ///     along its declared state list.
+    /// </summary>
+    /// <remarks>
+    ///     Returns <paramref name="current" /> unchanged when there is nothing to do - the prop is already
+    ///     at the end of its list, or its current state is not in the list at all because something opened
+    ///     it ahead of the mission. The old code indexed <c>PropStateList[IndexOf(state) + 1]</c>, which
+    ///     threw on the last entry and was swallowed, so a prop that had already been advanced silently
+    ///     stopped responding to its mission. Being a no-op instead also makes the task safe to re-run,
+    ///     which is what lets the scene reconcile itself on every (re)build.
+    /// </remarks>
+    public static (PropStateEnum State, bool ViaClosed) StepToClosedOrNext(List<PropStateEnum> stateList,
+        PropStateEnum current)
+    {
+        if (stateList.Contains(PropStateEnum.Closed)) return (PropStateEnum.Closed, true);
+
+        var index = stateList.IndexOf(current);
+        if (index >= 0 && index + 1 < stateList.Count) return (stateList[index + 1], false);
+
+        return (current, false);
     }
 
     public async ValueTask<object?> CreateTrialPlayer(TaskConfigInfo act, SubMissionData subMission,
