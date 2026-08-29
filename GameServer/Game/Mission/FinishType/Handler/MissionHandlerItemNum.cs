@@ -14,7 +14,11 @@ public class MissionHandlerItemNum : MissionFinishTypeHandler
         var item = player.InventoryManager?.GetItem(info.ParamInt1);
         if (item != null) count += item.Count;
 
-        if (count == info.Progress)
+        // Progress is a floor, not an exact match: this handler only re-evaluates on item events, so a
+        // single grant that overshoots (bundle reward, /give, multi-item drop) would otherwise miss the
+        // gate permanently — the count never comes back down to exactly Progress unless the player
+        // spends the items. Matches the sibling UseItem / SubMissionFinishCnt handlers.
+        if (count >= info.Progress)
         {
             await player.MissionManager!.FinishSubMission(info.ID);
         }

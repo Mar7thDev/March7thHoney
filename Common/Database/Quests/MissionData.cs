@@ -27,6 +27,16 @@ public class MissionData : BaseDatabaseDataHelper
 
     public int TrackingMainMissionId { get; set; }
 
+    /// <summary>
+    ///     Per-player override of ServerOption.EnableMission; null means "follow the server config".
+    ///     /mission start sets it so a single player can play the story on a server that otherwise runs
+    ///     with the mission system off.
+    /// </summary>
+    public bool? EnableMissionOverride { get; set; }
+
+    /// <summary>Whether the mission system is live for this player. Get-only, so it is not a DB column.</summary>
+    public bool MissionEnabled => EnableMissionOverride ?? ConfigManager.Config.ServerOption.EnableMission;
+
     public MissionPhaseEnum GetMainMissionStatus(int missionId)
     {
         if (FinishedMainMissionIds.Contains(missionId)) return MissionPhaseEnum.Finish;

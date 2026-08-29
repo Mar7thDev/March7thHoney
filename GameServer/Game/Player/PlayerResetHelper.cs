@@ -13,7 +13,13 @@ namespace March7thHoney.GameServer.Game.Player;
 public static class PlayerResetHelper
 {
     /// <summary>Resets the given uid's gameplay data. Returns whether the player was online.</summary>
-    public static async Task<bool> ResetGameplayAsync(int uid)
+    /// <param name="uid">Account to wipe.</param>
+    /// <param name="enableMission">
+    ///     Per-player mission-system override to stamp onto the fresh save (null keeps the server default).
+    ///     /mission start passes true so the rebuilt account bootstraps the story chain and gets the story
+    ///     starting lineup even on a server running with ServerOption.EnableMission off.
+    /// </param>
+    public static async Task<bool> ResetGameplayAsync(int uid, bool? enableMission = null)
     {
         if (DatabaseHelper.Instance == null) return false;
 
@@ -24,7 +30,7 @@ public static class PlayerResetHelper
 
         DatabaseHelper.Instance.DeleteUidGameplayData(uid);
 
-        var fresh = new PlayerInstance(uid);
+        var fresh = new PlayerInstance(uid) { PendingMissionEnabledOverride = enableMission };
         // Construction no longer self-initialises (the old ctor did init+seed via Task.Wait);
         // drive the awaited bootstrap explicitly so the reset trailblazer gets its starting roster.
         await fresh.InitializeAsync();
