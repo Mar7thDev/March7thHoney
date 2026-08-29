@@ -261,6 +261,8 @@ public class EntryPoint
                 // those edits invisible until the whole resource cache was regenerated - which needs the
                 // raw Resources tree most deployments do not ship. Re-read them after the cache branch so
                 // a change only needs a restart (or the matching /reload subcommand).
+                ResourceManager.LoadMissionInfoOverrides();
+                ResourceManager.ReportTruncatedMissionGraphs();
                 GameData.BannersConfig = ResourceManager.LoadBanners();
                 GameData.VideoKeysConfig =
                     ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
