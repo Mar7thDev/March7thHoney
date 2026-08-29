@@ -14,5 +14,8 @@ public enum RogueTournRoomTypeEnum
     Adventure = 9,
     Respite = 10,
     Reforge = 11,
-    Hidden = 12
+    Hidden = 12,
+    Conversion = 13,
+    Blank = 14,
+    Puman = 15
 }

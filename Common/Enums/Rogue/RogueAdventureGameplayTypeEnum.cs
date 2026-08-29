@@ -7,5 +7,6 @@ public enum RogueAdventureGameplayTypeEnum
     RogueCaptureMonster = 2,
     RogueTurntable = 3,
     RogueEscapeLaser = 4,
-    RogueWolfGun = 5
+    RogueWolfGun = 5,
+    RogueCandyCrash = 6
 }

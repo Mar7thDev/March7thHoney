@@ -169,9 +169,6 @@ public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainD
         foreach (var pair in Data.PropTimes)
             info.MHABCMLHCGD.Add(new GAGGCODGDLB { PropId = (uint)pair.Key, Time = pair.Value });
 
-        foreach (var pair in Data.TimedDynamicPropTimes)
-            info.FOOPKFCIHBA.Add(new HELJNONBKPH { EIKLMFPMJJD = (uint)pair.Key, ExpireTime = pair.Value });
-
         info.AreaList.AddRange(Data.Areas.OrderBy(x => x.Key).Select(x => x.Value.ToProto()));
         return info;
     }

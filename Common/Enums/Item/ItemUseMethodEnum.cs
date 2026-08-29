@@ -24,5 +24,6 @@ public enum ItemUseMethodEnum
     TravelBrochurePasterUse = 902,
     PetSummonRecall = 1001,
     ClientGoto = 1101,
-    FightFestMemorialPaper = 2501
+    FightFestMemorialPaper = 2501,
+    Anniv3rdLiveItem = 4201
 }

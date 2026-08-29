@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Quest;
 
-[Opcode(CmdIds.FinishClientAchievementCsReq)]
+[Opcode(CmdIds.FinishQuestCsReq)]
 public class HandlerFinishQuestCsReq : Handler<FinishQuestCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, FinishQuestCsReq req)

@@ -46,5 +46,19 @@ public enum DialogueEventTypeEnum
     GetDestroyedRogueMiracle = 42,
     ChangeDestroyedRogueMiracleToRogueMiracle = 43,
     DestroyRogueMiracleThenGetRogueMiracle = 44,
-    TriggerDestroyedRogueMiracleSelect = 45
+    TriggerDestroyedRogueMiracleSelect = 45,
+    GetRogueItem = 1,
+    UpRogueBuffLevel = 2,
+    AddMazeBuff = 4,
+    RecoverLineup = 5,
+    AddMazeBuffWithParam = 9,
+    GetRogueBuffWithRatio = 10,
+    RecoverLineupByCurrent = 11,
+    TriggerRogueBuffSwap = 14,
+    TriggerRandomEvent = 16,
+    AlwaysCanSelect = 17,
+    RecoverEnergy = 18,
+    TriggerRandomResult = 21,
+    GetRogueBuffWithoutDefault = 22,
+    RepairRogueMiracleByGroup = 36
 }

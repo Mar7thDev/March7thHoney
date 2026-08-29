@@ -6,5 +6,6 @@ public enum SkillUseTypeEnum
     UIButtonClick = 1,
     SelectEntity = 2,
     Passive = 3,
-    UIButtonPress = 4
+    UIButtonPress = 4,
+    AutoUse = 5
 }
