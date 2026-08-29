@@ -10,6 +10,7 @@ using March7thHoney.GameServer.Game.Mission.FinishAction;
 using March7thHoney.GameServer.Game.Mission.FinishType;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Game.Task;
 using March7thHoney.GameServer.Server.Packet.Send.HeartDial;
 using March7thHoney.GameServer.Server.Packet.Send.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -960,6 +961,56 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
                     await Player.SceneInstance.EntityLoader!.LoadGroup(group, false);
             }
         }
+
+        await ApplyRunningMissionPropStates();
+    }
+
+    /// <summary>
+    ///     Re-applies the ChangePropState level task of every RUNNING PropState sub on the current floor.
+    /// </summary>
+    /// <remarks>
+    ///     The task normally runs once, from AcceptSubMission, against whatever scene happened to be
+    ///     loaded at that moment. That leaves two ways for a mission to become impossible: the sub was
+    ///     accepted while the player stood on another floor, so the loop matched no entity; or the player
+    ///     relogged / teleported away and back, and the rebuilt scene restored the prop's configured
+    ///     Locked state. Either way the console the objective depends on never becomes interactable, the
+    ///     PropState gate never fires, the main mission never finishes, and its successor never enters the
+    ///     player's mission list. Reconciling on every scene build closes both, and StepToClosedOrNext
+    ///     makes the re-application a no-op once the prop is already where the mission wants it.
+    /// </remarks>
+    public async ValueTask ApplyRunningMissionPropStates()
+    {
+        if (!Enabled) return;
+
+        var scene = Player.SceneInstance;
+        if (scene == null) return;
+
+        var levelTask = Player.TaskManager?.LevelTask;
+        if (levelTask == null) return;
+
+        foreach (var id in GetRunningSubMissionIdList())
+        {
+            if (!GameData.SubMissionInfoData.TryGetValue(id, out var subMission)) continue;
+            var info = subMission.SubMissionInfo;
+            if (info == null) continue;
+            if (info.FinishType != MissionFinishTypeEnum.PropState) continue;
+            if (info.LevelFloorID != 0 && info.LevelFloorID != scene.FloorId) continue;
+            if (!GraphRunsChangePropState(subMission)) continue;
+
+            await levelTask.ApplyMissionPropState(subMission);
+        }
+    }
+
+    // Only re-apply for subs whose own level graph actually carries the task, so a PropState sub that
+    // never asked for a prop change is left alone.
+    private static bool GraphRunsChangePropState(SubMissionData subMission)
+    {
+        var graph = subMission.SubMissionTaskInfo;
+        if (graph == null) return false;
+
+        return graph.OnInitSequece.SelectMany(x => x.TaskList)
+            .Concat(graph.OnStartSequece.SelectMany(x => x.TaskList))
+            .Any(x => x.Type.EndsWith("ChangePropState", StringComparison.Ordinal));
     }
 
     public void OnLoadScene(SceneInfo info)
