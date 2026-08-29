@@ -9,7 +9,7 @@ public class HandlerGetTutorialGuideCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        if (ConfigManager.Config.ServerOption.EnableMission) // If missions are enabled
+        if (player.MissionEnabled) // If missions are enabled
             await connection.SendPacket(new PacketGetTutorialGuideScRsp(player)); // some bug
     }
 }

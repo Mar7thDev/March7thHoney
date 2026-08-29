@@ -12,7 +12,9 @@ public class PacketGetMissionDataScRsp : BasePacket
     {
         var trackMissionId = player.MissionManager!.Data.TrackingMainMissionId;
         if (trackMissionId <= 0 || player.MissionManager.GetMainMissionStatus(trackMissionId) != MissionPhaseEnum.Accept)
-            trackMissionId = player.MissionManager.Data.RunningMainMissionIds.FirstOrDefault();
+            // Same auto-select rule as UpdateTrackMainMissionCsReq: never land on a hidden
+            // Branch/Gap transition mission, and follow NextTrackMainMission after a beat closes.
+            trackMissionId = player.MissionManager.ResolveTrackingMainMissionId(0);
         player.MissionManager.Data.TrackingMainMissionId = trackMissionId;
 
         var proto = new GetMissionDataScRsp

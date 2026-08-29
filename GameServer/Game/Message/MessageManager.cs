@@ -28,7 +28,7 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
     {
         GameData.MessageContactsConfigData.TryGetValue(contactId, out var contactConfig);
         if (contactConfig == null) return [];
-        var stubFinishUnseen = !ConfigManager.Config.ServerOption.EnableMission;
+        var stubFinishUnseen = !Player.MissionEnabled;
         var result = new List<MessageGroup>();
         foreach (var item in contactConfig.Groups)
             if (Data.Groups.TryGetValue(item.ID, out var group))

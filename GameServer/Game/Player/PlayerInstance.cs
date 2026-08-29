@@ -124,6 +124,20 @@ public partial class PlayerInstance(PlayerData data)
     /// </summary>
     public string Language { get; set; } = ConfigManager.Config.ServerOption.Language;
 
+    /// <summary>
+    ///     Mission-system switch for this player: the persisted per-player override, falling back to the
+    ///     server config. Reads before the managers are wired fall back to the config.
+    /// </summary>
+    public bool MissionEnabled =>
+        MissionManager?.Data.MissionEnabled ??
+        PendingMissionEnabledOverride ?? ConfigManager.Config.ServerOption.EnableMission;
+
+    /// <summary>
+    ///     Override to stamp onto the fresh MissionData during InitializeAsync. Set by PlayerResetHelper so
+    ///     /mission start can turn the mission system on for a wiped account before it bootstraps.
+    /// </summary>
+    public bool? PendingMissionEnabledOverride { get; set; }
+
     public int NextBattleId { get; set; } = 0;
     public int ChargerNum { get; set; } = 0;
     public bool LoginAnnounceSent { get; set; }
@@ -242,7 +256,12 @@ public partial class PlayerInstance(PlayerData data)
                 AvatarManager!.GetTrialAvatar(e.SpecialAvatarID)?.CheckLevel(Data.WorldLevel);
         }
 
-        if (ConfigManager.Config.ServerOption.EnableMission) await MissionManager!.AcceptMainMissionByCondition();
+        // Applied before the bootstrap below so a /mission start reset seeds the story roster and accepts
+        // the opening mission even when the server-wide EnableMission is off.
+        if (PendingMissionEnabledOverride.HasValue)
+            MissionManager!.Data.EnableMissionOverride = PendingMissionEnabledOverride;
+
+        if (MissionEnabled) await MissionManager!.AcceptMainMissionByCondition();
 
         foreach (var friendDevelopmentInfoPb in FriendRecordData!.DevelopmentInfos.ToArray())
             if (Extensions.GetUnixSec() - friendDevelopmentInfoPb.Time >=
@@ -280,7 +299,7 @@ public partial class PlayerInstance(PlayerData data)
         await AddAvatar(8001);
         await AddAvatar(8002);
         await AddAvatar(1001);
-        if (ConfigManager.Config.ServerOption.EnableMission)
+        if (MissionEnabled)
         {
             await LineupManager!.AddSpecialAvatarToCurTeam(10010050);
         }
