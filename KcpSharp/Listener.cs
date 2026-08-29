@@ -24,10 +24,13 @@ public class March7thHoneyListener
             return [.. Connections.Values];
     }
 
+    /// <summary>KCP MTU. Also fixes the maximum message size — see March7thHoneyConnection.MaxPacketBytes.</summary>
+    public const int KcpMtu = 1400;
+
     private static readonly KcpConversationOptions ConvOpt = new()
     {
         StreamMode = false,
-        Mtu = 1400,
+        Mtu = KcpMtu,
         ReceiveWindow = 256,
         SendWindow = 256,
         NoDelay = true,
