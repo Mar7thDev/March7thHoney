@@ -792,4 +792,5 @@ public enum MissionFinishTypeEnum
     GridFightSettleWithNpcCnt = 370061,
     GridFightSettleWithEquipCnt = 370062,
     GridFightSettleWinWithTraitLayerAndRoleRarityNum = 370063,
+    LeaveRegion = 5
 }

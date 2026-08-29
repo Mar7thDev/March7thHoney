@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.DiceCombat;
 
-[Opcode(CmdIds.FinishPveStageCsReq)]
+[Opcode(CmdIds.DiceCombatFinishPveStageCsReq)]
 public class HandlerDiceCombatFinishPveStageCsReq : Handler
 {
     public override async Task OnHandle(Connection connection, byte[] header, byte[] data)

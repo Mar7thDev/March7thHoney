@@ -334,6 +334,21 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
             });
         }
 
+        // 贪饕侵蚀：档位与对应 buff 由 StageInvasionConfig/StageInvasionBuff 决定
+        foreach (var stage in Stages)
+        {
+            if (stage.InvasionMazeBuffID == 0) continue;
+            if (Buffs.Any(x => x.BuffID == stage.InvasionMazeBuffID)) continue;
+
+            var level = GameData.MazeBuffData.TryGetValue(stage.InvasionMazeBuffID * 10 + 1, out var mazeBuff)
+                ? mazeBuff.Lv
+                : 1;
+            Buffs.Add(new MazeBuff(stage.InvasionMazeBuffID, level, -1)
+            {
+                WaveFlag = -1
+            });
+        }
+
         // global buff
         foreach (var buff in GameData.AvatarGlobalBuffConfigData.Values)
             if (Player.AvatarManager!.GetFormalAvatar(buff.AvatarID) != null)

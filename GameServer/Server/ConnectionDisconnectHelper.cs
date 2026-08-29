@@ -1,3 +1,4 @@
+using JNFDGPDHENJ = March7thHoney.Proto.PlayerSqueezedScNotify.Types.AAFEHKFADDH.Types.JNFDGPDHENJ;
 using March7thHoney.Database.Account;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Kcp;

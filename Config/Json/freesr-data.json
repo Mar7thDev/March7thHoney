@@ -167,24 +167,24 @@
 			"data": {
 				"rank": 6,
 				"skills": {
-					"11004001": 6,
-					"11004002": 10,
-					"11004003": 10,
-					"11004004": 10,
-					"11004007": 1,
-					"11004101": 1,
-					"11004102": 1,
-					"11004103": 1,
-					"11004201": 1,
-					"11004202": 1,
-					"11004203": 1,
-					"11004204": 1,
-					"11004205": 1,
-					"11004206": 1,
-					"11004207": 1,
-					"11004208": 1,
-					"11004209": 1,
-					"11004210": 1
+					"1004001": 6,
+					"1004002": 10,
+					"1004003": 10,
+					"1004004": 10,
+					"1004007": 1,
+					"1004101": 1,
+					"1004102": 1,
+					"1004103": 1,
+					"1004201": 1,
+					"1004202": 1,
+					"1004203": 1,
+					"1004204": 1,
+					"1004205": 1,
+					"1004206": 1,
+					"1004207": 1,
+					"1004208": 1,
+					"1004209": 1,
+					"1004210": 1
 				},
 				"skills_by_anchor_type": {
 					"1": 6,
@@ -213,8 +213,7 @@
 			"sp_max": 120,
 			"techniques": [
 				100401
-			],
-			"enhanced_id": 1
+			]
 		},
 		"1005": {
 			"avatar_id": 1005,
@@ -4257,6 +4256,61 @@
 			],
 			"is_marked": true
 		},
+		"1503": {
+			"avatar_id": 1503,
+			"data": {
+				"rank": 6,
+				"skills": {
+					"1503001": 6,
+					"1503002": 10,
+					"1503003": 10,
+					"1503004": 10,
+					"1503007": 1,
+					"1503101": 1,
+					"1503102": 1,
+					"1503103": 1,
+					"1503201": 1,
+					"1503202": 1,
+					"1503203": 1,
+					"1503204": 1,
+					"1503205": 1,
+					"1503206": 1,
+					"1503207": 1,
+					"1503208": 1,
+					"1503209": 1,
+					"1503210": 1,
+					"1503420": 10
+				},
+				"skills_by_anchor_type": {
+					"1": 6,
+					"2": 10,
+					"3": 10,
+					"4": 10,
+					"5": 1,
+					"6": 1,
+					"7": 1,
+					"8": 1,
+					"9": 1,
+					"10": 1,
+					"11": 1,
+					"12": 1,
+					"13": 1,
+					"14": 1,
+					"15": 1,
+					"16": 1,
+					"17": 1,
+					"18": 1,
+					"22": 10
+				}
+			},
+			"level": 80,
+			"promotion": 6,
+			"sp_max": 180,
+			"sp_value": 90,
+			"techniques": [
+				150301
+			]
+		},
 		"1504": {
 			"avatar_id": 1504,
 			"data": {
@@ -7971,11 +8025,11 @@
 		},
 		{
 			"internal_uid": 221,
-			"equip_avatar": 0,
+			"equip_avatar": 1503,
 			"level": 15,
 			"main_affix_id": 4,
-			"relic_id": 61194,
-			"relic_set_id": 119,
+			"relic_id": 61344,
+			"relic_set_id": 134,
 			"sub_affixes": [
 				{
 					"count": 1,
@@ -13701,11 +13755,11 @@
 		},
 		{
 			"internal_uid": 507,
-			"equip_avatar": 0,
+			"equip_avatar": 1503,
 			"level": 15,
 			"main_affix_id": 1,
-			"relic_id": 61132,
-			"relic_set_id": 113,
+			"relic_id": 61332,
+			"relic_set_id": 133,
 			"sub_affixes": [
 				{
 					"count": 3,
@@ -18201,7 +18255,7 @@
 		},
 		{
 			"internal_uid": 658,
-			"equip_avatar": 0,
+			"equip_avatar": 1503,
 			"level": 15,
 			"main_affix_id": 2,
 			"relic_id": 63176,
@@ -31191,7 +31245,7 @@
 		},
 		{
 			"internal_uid": 1093,
-			"equip_avatar": 0,
+			"equip_avatar": 1503,
 			"level": 15,
 			"main_affix_id": 1,
 			"relic_id": 63175,
@@ -44358,6 +44412,66 @@
 			"relic_id": 63135,
 			"main_affix_id": 9,
 			"relic_set_id": 313
+		},
+		{
+			"equip_avatar": 1503,
+			"internal_uid": 1545,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"sub_affix_id": 12,
+					"count": 2,
+					"step": 1
+				},
+				{
+					"sub_affix_id": 2,
+					"count": 2,
+					"step": 2
+				},
+				{
+					"sub_affix_id": 11,
+					"count": 3,
+					"step": 3
+				},
+				{
+					"sub_affix_id": 8,
+					"count": 1,
+					"step": 1
+				}
+			],
+			"relic_id": 61331,
+			"main_affix_id": 1,
+			"relic_set_id": 133
+		},
+		{
+			"equip_avatar": 1503,
+			"internal_uid": 1546,
+			"level": 15,
+			"sub_affixes": [
+				{
+					"count": 1,
+					"step": 2,
+					"sub_affix_id": 4
+				},
+				{
+					"count": 3,
+					"step": 6,
+					"sub_affix_id": 5
+				},
+				{
+					"count": 1,
+					"step": 2,
+					"sub_affix_id": 6
+				},
+				{
+					"count": 4,
+					"step": 6,
+					"sub_affix_id": 9
+				}
+			],
+			"relic_id": 61343,
+			"main_affix_id": 4,
+			"relic_set_id": 134
 		}
 	],
 	"lightcones": [
@@ -45520,6 +45634,14 @@
 			"level": 80,
 			"promotion": 6,
 			"rank": 5
+		},
+		{
+			"equip_avatar": 1503,
+			"internal_uid": 146,
+			"item_id": 23055,
+			"level": 80,
+			"promotion": 6,
+			"rank": 5
 		}
 	],
 	"battle_config": {
@@ -45532,7 +45654,7 @@
 				{
 					"monster_id": 403501001,
 					"amount": 1,
-					"level": 95
+					"level": 120
 				}
 			]
 		],
@@ -45547,7 +45669,7 @@
 			},
 			{
 				"level": 1,
-				"id": 3033075
+				"id": 3033073
 			}
 		],
 		"custom_stats": []

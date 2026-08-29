@@ -8,5 +8,6 @@ public enum SpecialAvatarTypeEnum
     TYPE_FAKE = 3,
     TYPE_PLOT = 4,
     TYPE_ACTIVITY_SUMMON = 5,
-    TYPE_ACTIVITY_ELATION = 6
+    TYPE_ACTIVITY_ELATION = 6,
+    TYPE_ACTIVITY_FINALITY = 7
 }

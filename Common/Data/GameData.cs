@@ -122,6 +122,7 @@ public static partial class GameData
     public static Dictionary<int, StageConfigExcel> StageConfigData { get; private set; } = [];
     public static Dictionary<int, RaidConfigExcel> RaidConfigData { get; private set; } = [];
     public static Dictionary<int, MazeBuffExcel> MazeBuffData { get; private set; } = [];
+    public static Dictionary<int, StageInvasionBuffExcel> StageInvasionBuffData { get; private set; } = [];
     public static Dictionary<int, InteractConfigExcel> InteractConfigData { get; private set; } = [];
     public static Dictionary<int, NPCMonsterDataExcel> NpcMonsterDataData { get; private set; } = [];
     public static Dictionary<int, MonsterConfigExcel> MonsterConfigData { get; private set; } = [];
