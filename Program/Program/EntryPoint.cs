@@ -2,6 +2,7 @@ using March7thHoney.Command;
 using March7thHoney.Command.Command;
 using March7thHoney.Configuration;
 using March7thHoney.Data;
+using March7thHoney.Data.Custom;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Enums;
@@ -255,12 +256,15 @@ public class EntryPoint
                     }
                 }
 
-                // Banners.json is operator-authored content, not dumped game data: it is the one file a
-                // server owner edits to open or close a warp banner. Baking it into Resource.bin made
+                // Operator-authored content, not dumped game data: the banner list and the video keys
+                // are the two files a server owner actually edits. Baking them into Resource.bin made
                 // those edits invisible until the whole resource cache was regenerated - which needs the
-                // raw Resources tree most deployments do not ship. Re-read it after the cache branch so a
-                // banner change only needs a restart (or /reload banner).
+                // raw Resources tree most deployments do not ship. Re-read them after the cache branch so
+                // a change only needs a restart (or the matching /reload subcommand).
                 GameData.BannersConfig = ResourceManager.LoadBanners();
+                GameData.VideoKeysConfig =
+                    ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
+                    new VideoKeysConfig();
             }
             catch (Exception e)
             {
