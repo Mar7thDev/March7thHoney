@@ -30,6 +30,12 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public readonly List<int> SkipSubMissionList = []; // bug
 
+    /// <summary>
+    ///     Whether the mission system runs for THIS player. Normally the server config, but /mission start
+    ///     flips it on per player so the story is playable on a server that ships with missions off.
+    /// </summary>
+    public bool Enabled => Data.MissionEnabled;
+
     #endregion
 
     #region Mission Actions
@@ -46,13 +52,27 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask<List<MissionSync?>> AcceptMainMission(int missionId, bool sendPacket = true)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return [];
+        if (!Enabled) return [];
         if (Data.GetMainMissionStatus(missionId) != MissionPhaseEnum.None) return []; // already accepted
         // Get entry sub mission
         GameData.MainMissionData.TryGetValue(missionId, out var mission);
         if (mission == null) return [];
 
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Accept);
+
+        // A "Gap" row with no MissionInfo wiring is a display-only transition entry (e.g. the
+        // Trailblaze chain 1054400/1054402/1054403 and the beat missions 1054407/1054408/1054409):
+        // it has no start subs and no finish gate, so FinishSubMission can never close it and every
+        // successor whose TakeParam is MultiSequence on it stalls forever. Auto-finish it on accept
+        // so the chain cascades the way the official server advances it — FinishMainMission re-runs
+        // AcceptMainMissionByCondition, which picks up the next stage in the same pass.
+        // Deliberately restricted to Gap: a Main-type mission with a missing MissionInfo is playable
+        // content (or a resource-dump gap) and must never be silently skipped.
+        if (mission.IsDisplayOnlyGap)
+        {
+            await FinishMainMission(missionId);
+            return [];
+        }
 
         var list = new List<MissionSync?>();
         foreach (var i in mission.MissionInfo?.StartSubMissionList ?? [])
@@ -104,7 +124,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask<List<MissionSync?>> ReAcceptMainMission(int missionId, bool sendPacket = true)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return [];
+        if (!Enabled) return [];
 
         GameData.MainMissionData.TryGetValue(missionId, out var mission);
         if (mission == null) return [];
@@ -130,7 +150,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask RemoveMainMission(int missionId)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return;
+        if (!Enabled) return;
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None);
 
         GameData.MainMissionData.TryGetValue(missionId, out var mission);
@@ -154,14 +174,14 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask AcceptSubMission(int missionId)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return;
+        if (!Enabled) return;
         await AcceptSubMission(missionId, true);
     }
 
     public async ValueTask<MissionSync?> AcceptSubMission(int missionId, bool sendPacket,
         bool doFinishTypeAction = true)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return null;
+        if (!Enabled) return null;
         GameData.SubMissionInfoData.TryGetValue(missionId, out var mission);
         if (mission == null) return null;
         if (Data.GetSubMissionStatus(missionId) != MissionPhaseEnum.None) return null; // already accepted
@@ -213,7 +233,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask FinishMainMission(int missionId)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return;
+        if (!Enabled) return;
         if (!GameData.MainMissionData.TryGetValue(missionId, out var mainMission)) return;
         if (Data.GetMainMissionStatus(missionId) != MissionPhaseEnum.Accept) return;
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Finish);
@@ -255,7 +275,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask FinishSubMission(int missionId)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return;
+        if (!Enabled) return;
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
         if (subMission == null) return;
         var mainMissionId = subMission.MainMissionId;
@@ -468,14 +488,20 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         await Player.QuestManager!.SyncQuest();
     }
 
-    public async ValueTask HandleTalkStr(string talkString)
+    /// <summary>Returns whether the talk string closed any mission or quest gate.</summary>
+    public async ValueTask<bool> HandleTalkStr(string talkString)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return;
+        if (!Enabled) return false;
+
+        var handled = false;
 
         foreach (var mission in GetRunningSubMissionList())
             if (mission.FinishType == MissionFinishTypeEnum.Talk)
                 if (mission.ParamStr1 == talkString)
+                {
                     await FinishSubMission(mission.ID);
+                    handled = true;
+                }
 
         foreach (var quest in Player.QuestManager?.GetRunningQuest() ?? [])
         {
@@ -485,13 +511,59 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             if (finishWay == null) continue;
             if (finishWay.FinishType == MissionFinishTypeEnum.Talk)
                 if (finishWay.ParamStr1 == talkString)
+                {
                     await Player.QuestManager!.FinishQuest(quest.QuestId);
+                    handled = true;
+                }
         }
+
+        return handled;
+    }
+
+    /// <summary>
+    ///     Fallback for a degenerate FinishTalkMissionCsReq — a talk report whose string matches no
+    ///     configured ParamStr1 gate and that carries sub_mission_id 0. The client emits that shape when
+    ///     its local client-side ("type C") performance for the step never armed, so it reports a plain
+    ///     NPC dialogue (talk_str "0") instead of the mission string, and the story chain stalls.
+    /// </summary>
+    /// <remarks>
+    ///     The candidate set is deliberately narrow: only a FINISH GATE of the currently tracked main,
+    ///     with FinishType Talk, on the floor the player is standing on, and currently running. That is
+    ///     the single step whose completion unlocks the next main, so a generic dialogue can never
+    ///     advance a mid-chain objective. Zero or several candidates are a no-op, so an ordinary floor
+    ///     with multiple talk NPCs can never be mis-advanced.
+    /// </remarks>
+    public async ValueTask<bool> FinishDegenerateTalk()
+    {
+        if (!Enabled) return false;
+
+        var floorId = Player.SceneInstance?.FloorId ?? 0;
+        if (floorId == 0) return false;
+
+        var trackedMainId = Data.TrackingMainMissionId;
+        if (trackedMainId <= 0) return false;
+        if (!GameData.MainMissionData.TryGetValue(trackedMainId, out var mainMission)) return false;
+
+        var candidates = new List<int>();
+        foreach (var subId in mainMission.MissionInfo.FinishSubMissionList)
+        {
+            if (GetSubMissionStatus(subId) != MissionPhaseEnum.Accept) continue;
+            var info = GetSubMissionInfo(subId);
+            if (info == null) continue;
+            if (info.FinishType != MissionFinishTypeEnum.Talk) continue;
+            if (info.LevelFloorID != floorId) continue;
+            candidates.Add(subId);
+        }
+
+        if (candidates.Count != 1) return false;
+
+        await FinishSubMission(candidates[0]);
+        return true;
     }
 
     public async ValueTask HandleCustomValue(List<MissionCustomValue> values, int missionId)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return;
+        if (!Enabled) return;
 
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
         if (subMission == null) return;
@@ -502,7 +574,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         foreach (var mission in mainMission.MissionInfo?.SubMissionList ?? [])
             if (mission.TakeType == SubMissionTakeTypeEnum.CustomValue)
             {
-                var index = 0;
                 var accept = false;
                 List<List<int>> list = [mission.TakeParamIntList ?? []];
                 if (mission.TakeParamIntList?.Count > 5)
@@ -520,21 +591,30 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
                 foreach (var customValues in list)
                 {
                     var thisAccept = true;
-                    foreach (var customValue in customValues)
+                    var matched = 0;
+
+                    // The groups are alternatives, so each one restarts at request index 0, and the
+                    // index advances per config slot — not only on a match. Sharing one cursor across
+                    // groups made the second group of a >5-entry list read request indices 3-5.
+                    for (var index = 0; index < customValues.Count; index++)
                     {
+                        var customValue = customValues[index];
                         if (customValue == 0 && index == 0) continue; // skip 0
                         var valueInst = values.Find(x => x.Index == index);
-                        if (valueInst == null) continue;
+                        if (valueInst == null) continue; // a missing request entry does not fail the group
                         if (valueInst.CustomValue != customValue)
                         {
                             thisAccept = false;
                             break;
                         }
 
-                        index++;
+                        matched++;
                     }
 
-                    if (thisAccept) accept = true; // accept if any group is true
+                    // A group that matched nothing must not accept: `values` is raw client input, so a
+                    // request carrying a single unrelated index would otherwise leave thisAccept true
+                    // and open every CustomValue-gated sub of the client-chosen main mission.
+                    if (thisAccept && matched > 0) accept = true; // accept if any group is satisfied
                 }
 
                 if (accept) await AcceptSubMission(mission.ID);
@@ -543,7 +623,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask AddMissionProgress(int missionId, int progress)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return;
+        if (!Enabled) return;
 
         Data.SubMissionProgressDict.TryGetValue(missionId, out var currentProgress);
         Data.SubMissionProgressDict[missionId] = currentProgress + progress;
@@ -564,7 +644,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask SetMissionProgress(int missionId, int progress, bool sendPacket = true)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return;
+        if (!Enabled) return;
 
         Data.SubMissionProgressDict[missionId] = progress;
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
@@ -589,14 +669,14 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public MissionPhaseEnum GetMainMissionStatus(int missionId)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return MissionPhaseEnum.Finish;
+        if (!Enabled) return MissionPhaseEnum.Finish;
 
         return Data.GetMainMissionStatus(missionId);
     }
 
     public MissionPhaseEnum GetSubMissionStatus(int missionId)
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return MissionPhaseEnum.Finish;
+        if (!Enabled) return MissionPhaseEnum.Finish;
 
         return Data.GetSubMissionStatus(missionId);
     }
@@ -610,7 +690,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public List<int> GetRunningSubMissionIdList()
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return [];
+        if (!Enabled) return [];
 
         var list = new List<int>();
         list.AddRange(Data.RunningSubMissionIds);
@@ -619,7 +699,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public List<SubMissionInfo> GetRunningSubMissionList()
     {
-        if (!ConfigManager.Config.ServerOption.EnableMission) return [];
+        if (!Enabled) return [];
 
         var list = new List<SubMissionInfo>();
         var ids = new List<int>();
@@ -636,10 +716,49 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     public int GetMissionProgress(int missionId)
     {
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
-        if (!ConfigManager.Config.ServerOption.EnableMission) return subMission?.SubMissionInfo?.Progress ?? 0;
+        if (!Enabled) return subMission?.SubMissionInfo?.Progress ?? 0;
 
         Data.SubMissionProgressDict.TryGetValue(missionId, out var progress);
         return progress;
+    }
+
+    /// <summary>
+    ///     Resolves which main mission the navigator should track.
+    ///     <paramref name="requested" /> is the client's explicit target; anything &lt;= 1 is the
+    ///     "unset / auto-select" sentinel the client sends on login and right after a main completes.
+    /// </summary>
+    /// <remarks>
+    ///     Order: explicit request → keep the current track while it is still running → follow the
+    ///     just-finished track's NextTrackMainMission → lowest running Main-type mission.
+    ///     The last two steps matter after a story beat closes: without them the auto-track lands on
+    ///     a hidden Branch/Gap transition (e.g. 1000111, whose only sub has no finishable graph), the
+    ///     client renders an empty objective list and the player has nothing to follow.
+    /// </remarks>
+    public int ResolveTrackingMainMissionId(int requested)
+    {
+        if (requested > 1) return requested;
+
+        var data = Data;
+        var prev = data.TrackingMainMissionId;
+        if (prev > 0 && data.RunningMainMissionIds.Contains(prev)) return prev;
+
+        if (prev > 0 &&
+            GameData.MainMissionData.TryGetValue(prev, out var prevExcel) &&
+            prevExcel.NextTrackMainMission > 0 &&
+            data.RunningMainMissionIds.Contains(prevExcel.NextTrackMainMission))
+            return prevExcel.NextTrackMainMission;
+
+        var running = data.RunningMainMissionIds.Where(x => x > 0).OrderBy(x => x).ToList();
+        foreach (var id in running)
+        {
+            // Type is Unknown when the resource cache predates the column — treat that as "no
+            // information" and keep the old first-running-mission behaviour instead of skipping.
+            if (!GameData.MainMissionData.TryGetValue(id, out var excel)) continue;
+            if (excel.Type is not (MainMissionTypeEnum.Unknown or MainMissionTypeEnum.Main)) continue;
+            return id;
+        }
+
+        return running.FirstOrDefault();
     }
 
     public int GetTrackMissionAnchorSubMissionId(int mainMissionId)
@@ -662,6 +781,60 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             .Where(x => GetSubMissionStatus(x.ID) == MissionPhaseEnum.Finish)
             .Select(x => x.ID)
             .LastOrDefault();
+    }
+
+    /// <summary>
+    ///     Floor a main mission wants the player on: the first running sub that names one, otherwise the
+    ///     tracked anchor sub. When the mission's own subs carry no floor (a transition row), the search
+    ///     walks back along NextTrackMainMission to the mission that leads into it. 0 = unknown.
+    /// </summary>
+    public int GetMissionFloorId(int mainMissionId)
+    {
+        var visited = new HashSet<int>();
+        while (mainMissionId > 0 && visited.Add(mainMissionId))
+        {
+            var floor = GetOwnFloorId(mainMissionId);
+            if (floor != 0) return floor;
+
+            mainMissionId = GameData.MainMissionData.Values
+                .FirstOrDefault(x => x.NextTrackMainMission == mainMissionId)?.MainMissionID ?? 0;
+        }
+
+        return 0;
+    }
+
+    private int GetOwnFloorId(int mainMissionId)
+    {
+        if (!GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission)) return 0;
+
+        foreach (var subId in GetRunningSubMissionIdList())
+        {
+            if (!GameData.SubMissionInfoData.TryGetValue(subId, out var sub)) continue;
+            if (sub.MainMissionId != mainMissionId) continue;
+            if (sub.SubMissionInfo is { LevelFloorID: > 0 } running) return running.LevelFloorID;
+        }
+
+        var anchorId = GetTrackMissionAnchorSubMissionId(mainMissionId);
+        if (anchorId > 0 && GetSubMissionInfo(anchorId) is { LevelFloorID: > 0 } anchor) return anchor.LevelFloorID;
+
+        // Nothing running yet (the mission was only just accepted): fall back to the first sub that
+        // declares a floor at all, so /mission goto still lands somewhere sensible.
+        return mainMission.MissionInfo.SubMissionList
+            .Select(x => x.LevelFloorID)
+            .FirstOrDefault(x => x > 0);
+    }
+
+    /// <summary>Map entrance to use when teleporting to a floor, preferring one with a start anchor.</summary>
+    public static MapEntranceExcel? FindEntranceForFloor(int floorId)
+    {
+        if (floorId == 0) return null;
+
+        var candidates = GameData.MapEntranceData.Values
+            .Where(x => x.FloorID == floorId)
+            .OrderBy(x => x.ID)
+            .ToList();
+
+        return candidates.FirstOrDefault(x => x.StartAnchorID > 0) ?? candidates.FirstOrDefault();
     }
 
     public async ValueTask EnsureRunningKillMonsterTargetsVisible()

@@ -137,6 +137,12 @@ public class GachaManager : BasePlayerManager<GachaData>
         if (!HasEnoughItem(costItemId, costItemCount))
             return BuildGachaError(bannerId, Retcode.RetItemNotEnough);
 
+        // Resolved before anything is charged: a banner can list rate-up ids the loaded resources do not
+        // contain, in which case a draw yields 0 and the ItemConfigData lookup further down would throw
+        // after the tickets were already spent.
+        var fallbackItem = GetBlueWeapons().FirstOrDefault(GameData.ItemConfigData.ContainsKey);
+        if (fallbackItem == 0) return BuildGachaError(bannerId, Retcode.RetGachaIdNotExist);
+
         ItemData? removedCostItem = null;
         if (costItemId > 0 && costItemCount > 0 && Player.InventoryManager != null)
             removedCostItem = await Player.InventoryManager.RemoveItem(costItemId, costItemCount, sync: false);
@@ -147,6 +153,9 @@ public class GachaManager : BasePlayerManager<GachaData>
         {
             var item = banner.DoGacha(decideItem, GetGoldAvatars(), GetPurpleAvatars(), GetPurpleWeapons(),
                 GetGoldWeapons(), GetBlueWeapons(), Data);
+            // Empty pool -> substitute the 3-star fallback so the player still gets a result.
+            if (item == 0 || !GameData.ItemConfigData.ContainsKey(item)) item = fallbackItem;
+
             items.Add(item);
         }
         MarkGachaDataDirty();
@@ -327,11 +336,16 @@ public class GachaManager : BasePlayerManager<GachaData>
         {
             GachaRandom = (uint)Random.Shared.Next(1000, 1999)
         };
+        var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         foreach (var banner in GameData.BannersConfig.Banners)
         {
             if (banner.GachaType == GachaTypeEnum.Newbie &&
                 Data.GetPityState(GachaPityFamilyEnum.Newbie).TotalPulls >= NewbieGachaLimit)
                 continue;
+
+            // The client hides a banner whose window has closed anyway; skipping it here keeps the
+            // response honest and makes DoGacha's RetGachaIdNotExist the only "no such pool" path.
+            if (!banner.IsActiveAt(now)) continue;
 
             var newbiePulls = banner.GachaType == GachaTypeEnum.Newbie
                 ? Data.GetPityState(GachaPityFamilyEnum.Newbie).TotalPulls
@@ -353,7 +367,7 @@ public class GachaManager : BasePlayerManager<GachaData>
         if (banner == null)
             return Retcode.RetGachaIdNotExist;
 
-        if (banner.GachaType != GachaTypeEnum.AvatarUp)
+        if (banner.GachaType is not (GachaTypeEnum.AvatarUp or GachaTypeEnum.CollaborationAvatarUp))
             return Retcode.RetGachaDecideItemTypeInvalid;
 
         var selected = selectedItems.Select(id => (int)id).Distinct().ToList();
@@ -411,6 +425,8 @@ public class GachaManager : BasePlayerManager<GachaData>
             GachaTypeEnum.Normal => GachaPityFamilyEnum.Normal,
             GachaTypeEnum.WeaponUp => GachaPityFamilyEnum.WeaponUp,
             GachaTypeEnum.AvatarUp => GachaPityFamilyEnum.AvatarUp,
+            GachaTypeEnum.CollaborationAvatarUp => GachaPityFamilyEnum.AvatarCollaboration,
+            GachaTypeEnum.CollaborationWeaponUp => GachaPityFamilyEnum.WeaponCollaboration,
             _ => GachaPityFamilyEnum.Normal
         };
     }

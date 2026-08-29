@@ -104,6 +104,13 @@ public partial class LoadCondition
     [JsonConverter(typeof(StringEnumConverter))]
     public OperationEnum Operation { get; set; } = OperationEnum.And;
 
+    /// <summary>
+    ///     Official deferral marker on an unload condition: once it turns true the group must stay in the
+    ///     scene the player is currently in and only disappear on the next level load. Ignored for load
+    ///     conditions (a load is always evaluated at build time anyway).
+    /// </summary>
+    public bool DelayToLevelReload { get; set; }
+
     public bool IsTrue(MissionData mission, bool defaultResult = true)
     {
         if (Conditions.Count == 0) return defaultResult;
@@ -115,7 +122,7 @@ public partial class LoadCondition
             if (condition.Type == LevelGroupMissionTypeEnum.MainMission)
             {
                 var status = mission.GetMainMissionStatus(condition.ID);
-                if (!ConfigManager.Config.ServerOption.EnableMission) status = MissionPhaseEnum.Finish;
+                if (!mission.MissionEnabled) status = MissionPhaseEnum.Finish;
 
                 condition.Phase = condition.Phase == MissionPhaseEnum.Cancel
                     ? MissionPhaseEnum.Finish
@@ -133,7 +140,7 @@ public partial class LoadCondition
             {
                 // sub mission
                 var status = mission.GetSubMissionStatus(condition.ID);
-                if (!ConfigManager.Config.ServerOption.EnableMission) status = MissionPhaseEnum.Finish;
+                if (!mission.MissionEnabled) status = MissionPhaseEnum.Finish;
                 condition.Phase = condition.Phase == MissionPhaseEnum.Cancel
                     ? MissionPhaseEnum.Finish
                     : condition.Phase;

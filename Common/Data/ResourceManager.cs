@@ -7,6 +7,7 @@ using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Config.SummonUnit;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
+using March7thHoney.Enums;
 using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.RogueMagic;
 using March7thHoney.Enums.TournRogue;
@@ -56,7 +57,7 @@ public class ResourceManager
         var t8 = Task.Run(LoadAdventureModifier);
         var t9 = Task.Run(LoadLocalPlayer);
         GameData.ActivityConfig = LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig") ?? new ActivityConfig();
-        GameData.BannersConfig = LoadCustomFile<BannersConfig>("Banner", "Banners") ?? new BannersConfig();
+        GameData.BannersConfig = LoadBanners();
         GameData.VideoKeysConfig =
             LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ?? new VideoKeysConfig();
         GameData.QueryProductInfoConfig =
@@ -462,6 +463,88 @@ public class ResourceManager
             I18NManager.Translate("Word.MissionInfo")));
     }
 
+    /// <summary>
+    ///     Reads Config/Custom/Banners.json.
+    ///     Parsed entry by entry on purpose: a single bad row (most often a gachaType the server does not
+    ///     know) used to abort the whole file and leave the player with no banners at all, standard pool
+    ///     included. A broken row is now reported and skipped, and the rest still load.
+    ///     This is also NOT served from Resource.bin — see EntryPoint, where it is re-read after the cache
+    ///     path so operators can edit the banner list without regenerating the resource cache.
+    /// </summary>
+    public static BannersConfig LoadBanners()
+    {
+        const string filetype = "Banner";
+        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", filetype));
+
+        var customPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", "Banners.json");
+        var legacyPath = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Banners.json");
+        FileInfo file = new(File.Exists(customPath) ? customPath : legacyPath);
+        var config = new BannersConfig();
+
+        if (!file.Exists)
+        {
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing", filetype,
+                $"{ConfigManager.Config.Path.ConfigPath}/Banners.json", filetype));
+            return config;
+        }
+
+        JToken token;
+        try
+        {
+            token = JToken.Parse(File.ReadAllText(file.FullName));
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                    I18NManager.Translate("Word.Error")), ex);
+            return config;
+        }
+
+        var entries = token.Type == JTokenType.Array
+            ? token.Children().ToList()
+            : (token["Banners"] ?? token["banners"])?.Children().ToList() ?? [];
+
+        var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        foreach (var entry in entries)
+        {
+            BannerConfig? banner;
+            try
+            {
+                banner = entry.ToObject<BannerConfig>();
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn($"Skipping a banner entry in {file.Name}: {ex.Message}");
+                continue;
+            }
+
+            if (banner == null) continue;
+
+            if (banner.GachaType == GachaTypeEnum.Unknown)
+            {
+                Logger.Warn($"Banner {banner.GachaId} in {file.Name} has no usable gachaType; skipped. " +
+                            "Valid values: Newbie, Normal, AvatarUp, WeaponUp, " +
+                            "CollaborationAvatarUp, CollaborationWeaponUp.");
+                continue;
+            }
+
+            // The client hides a pool outside its window, so a stale beginTime/endTime is by far the most
+            // common reason a freshly added event banner "does not show up". Say so instead of silently
+            // handing the client a banner it will never render.
+            if (!banner.IsActiveAt(now))
+                Logger.Warn(
+                    $"Banner {banner.GachaId} ({banner.GachaType}) is outside its time window " +
+                    $"(beginTime {banner.BeginTime}, endTime {banner.EndTime}, now {now}) and will not be " +
+                    "shown by the client.");
+
+            config.Banners.Add(banner);
+        }
+
+        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", config.Banners.Count.ToString(), filetype));
+        return config;
+    }
+
     public static T? LoadCustomFile<T>(string filetype, string filename)
     {
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", filetype));
@@ -481,26 +564,7 @@ public class ResourceManager
             using var reader = file.OpenRead();
             using StreamReader reader2 = new(reader);
             var text = reader2.ReadToEnd();
-            if (typeof(T) == typeof(BannersConfig))
-            {
-                var token = JToken.Parse(text);
-                if (token.Type == JTokenType.Array)
-                {
-                    var banners = token.ToObject<List<BannerConfig>>() ?? [];
-                    customFile = (T)(object)new BannersConfig
-                    {
-                        Banners = banners
-                    };
-                }
-                else
-                {
-                    customFile = JsonConvert.DeserializeObject<T>(text);
-                }
-            }
-            else
-            {
-                customFile = JsonConvert.DeserializeObject<T>(text);
-            }
+            customFile = JsonConvert.DeserializeObject<T>(text);
         }
         catch (Exception ex)
         {

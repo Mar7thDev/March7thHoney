@@ -16,6 +16,8 @@ namespace March7thHoney.GameServer.Game.Player;
 
 public partial class PlayerInstance
 {
+    private static readonly Logger SceneLogger = new("Scene");
+
     #region Scene Actions
 
     public async ValueTask OnMove()
@@ -270,6 +272,14 @@ public partial class PlayerInstance
         if (entrance == null) return false;
 
         GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floorInfo);
+        // GetFloorInfo hands back null for a floor the resource dump does not contain. Dereferencing it
+        // used to throw, the handler answered a bare failure, and the client sat on the loading screen
+        // with no way to tell what happened — report it instead.
+        if (floorInfo == null)
+        {
+            SceneLogger.Warn($"EnterScene({entryId}) aborted: no floor data for P{entrance.PlaneID}_F{entrance.FloorID}.");
+            return false;
+        }
 
         var startGroup = entrance.StartGroupID;
         var startAnchor = entrance.StartAnchorID;
@@ -289,13 +299,24 @@ public partial class PlayerInstance
             startAnchor = floorInfo.StartAnchorID;
         }
 
-        var anchor = floorInfo.GetAnchorInfo(startGroup, startAnchor);
+        var anchor = floorInfo.GetAnchorInfo(startGroup, startAnchor)
+                     // The entrance may point at a group the dump does not carry; fall back to the floor's
+                     // own start anchor, then to any anchor at all, so a teleport degrades to "wrong spot"
+                     // instead of "stuck on the loading screen".
+                     ?? floorInfo.GetAnchorInfo(floorInfo.StartGroupID, floorInfo.StartAnchorID)
+                     ?? floorInfo.Groups.Values.SelectMany(x => x.AnchorList).FirstOrDefault();
+        if (anchor == null)
+        {
+            SceneLogger.Warn($"EnterScene({entryId}) aborted: no usable anchor on P{entrance.PlaneID}_F{entrance.FloorID} " +
+                        $"(group {startGroup}, anchor {startAnchor}).");
+            return false;
+        }
 
         await MissionManager!.HandleFinishType(MissionFinishTypeEnum.EnterMapByEntrance, entrance);
 
         var beforeEntryId = Data.EntryId;
 
-        await LoadScene(entrance.PlaneID, entrance.FloorID, entryId, anchor!.ToPositionProto(),
+        await LoadScene(entrance.PlaneID, entrance.FloorID, entryId, anchor.ToPositionProto(),
             anchor.ToRotationProto(), sendPacket, mapTp);
 
         var afterEntryId = Data.EntryId;
@@ -310,6 +331,12 @@ public partial class PlayerInstance
         if (entrance == null) return;
 
         GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floorInfo);
+        if (floorInfo == null)
+        {
+            SceneLogger.Warn(
+                $"EnterSceneByEntranceId({entranceId}) aborted: no floor data for P{entrance.PlaneID}_F{entrance.FloorID}.");
+            return;
+        }
 
         var startGroup = anchorGroupId == 0 ? entrance.StartGroupID : anchorGroupId;
         var startAnchor = anchorId == 0 ? entrance.StartAnchorID : anchorId;
@@ -320,9 +347,17 @@ public partial class PlayerInstance
             startAnchor = floorInfo.StartAnchorID;
         }
 
-        var anchor = floorInfo.GetAnchorInfo(startGroup, startAnchor);
+        var anchor = floorInfo.GetAnchorInfo(startGroup, startAnchor)
+                     ?? floorInfo.GetAnchorInfo(floorInfo.StartGroupID, floorInfo.StartAnchorID)
+                     ?? floorInfo.Groups.Values.SelectMany(x => x.AnchorList).FirstOrDefault();
+        if (anchor == null)
+        {
+            SceneLogger.Warn($"EnterSceneByEntranceId({entranceId}) aborted: no usable anchor on " +
+                        $"P{entrance.PlaneID}_F{entrance.FloorID} (group {startGroup}, anchor {startAnchor}).");
+            return;
+        }
 
-        await LoadScene(entrance.PlaneID, entrance.FloorID, entranceId, anchor!.ToPositionProto(),
+        await LoadScene(entrance.PlaneID, entrance.FloorID, entranceId, anchor.ToPositionProto(),
             anchor.ToRotationProto(), sendPacket);
     }
 

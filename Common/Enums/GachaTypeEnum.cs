@@ -7,6 +7,10 @@ public enum GachaTypeEnum
     Normal = 2,
     AvatarUp = 11,
     WeaponUp = 12,
+
+    // GachaBasicInfo.json ships two more pool types. Without them Newtonsoft throws on
+    // "gachaType": "CollaborationAvatarUp" and the WHOLE Banners.json fails to deserialize, so the
+    // client receives no banners at all - not even the standard one.
     CollaborationAvatarUp = 5,
     CollaborationWeaponUp = 6
 }
@@ -18,7 +22,8 @@ public static class GachaTypeEnumExtensions
         return type switch
         {
             GachaTypeEnum.Newbie or GachaTypeEnum.Normal => 101,
-            GachaTypeEnum.AvatarUp or GachaTypeEnum.WeaponUp => 102,
+            GachaTypeEnum.AvatarUp or GachaTypeEnum.WeaponUp or GachaTypeEnum.CollaborationAvatarUp
+                or GachaTypeEnum.CollaborationWeaponUp => 102,
             _ => 0
         };
     }

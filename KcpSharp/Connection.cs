@@ -118,7 +118,14 @@ public class March7thHoneyConnection
         return Writer;
     }
 
-    public async Task SendPacket(byte[] packet)
+    /// <summary>
+    ///     Largest message KCP can carry in packet (non-stream) mode: the per-segment fragment counter is a
+    ///     single byte, so a message may span at most 256 segments of <c>mtu - 24</c> bytes. Anything bigger
+    ///     is rejected outright by the send queue — the client never sees it at all.
+    /// </summary>
+    public const int MaxPacketBytes = 256 * (March7thHoneyListener.KcpMtu - 24);
+
+    public async Task SendPacket(byte[] packet, int cmdId = 0)
     {
         try
         {
@@ -127,9 +134,18 @@ public class March7thHoneyConnection
 
             _ = await Conversation.SendAsync(packet, CancelToken.Token);
         }
-        catch
+        catch (Exception e)
         {
-            // ignore
+            // Never swallow this silently. A dropped response is invisible to the client, which simply
+            // keeps waiting — the classic symptom is a black screen with the loading bar frozen after a
+            // teleport into a dense floor, where the scene notify exceeds MaxPacketBytes.
+            var name = cmdId != 0 ? LogMap.GetValueOrDefault(cmdId, cmdId.ToString()) : "<raw>";
+            if (packet.Length > MaxPacketBytes)
+                Logger.Error(
+                    $"Dropped {name} ({packet.Length} bytes): over the {MaxPacketBytes}-byte KCP message limit. " +
+                    "The client will wait forever for this response.", e);
+            else
+                Logger.Error($"Failed to send {name} ({packet.Length} bytes)", e);
         }
     }
 
@@ -148,14 +164,7 @@ public class March7thHoneyConnection
         // Header
         var packetBytes = packet.BuildPacket();
 
-        try
-        {
-            await SendPacket(packetBytes);
-        }
-        catch
-        {
-            // ignore
-        }
+        await SendPacket(packetBytes, packet.CmdId);
 
         if (packet.CmdId == CmdIds.SetClientPausedScRsp)
         {

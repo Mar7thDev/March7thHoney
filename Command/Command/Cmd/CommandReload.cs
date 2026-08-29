@@ -11,8 +11,7 @@ public class CommandReload : ICommand
     public async ValueTask ReloadBanner(CommandArg arg)
     {
         // Reload the banners
-        GameData.BannersConfig =
-            ResourceManager.LoadCustomFile<BannersConfig>("Banner", "Banners") ?? new BannersConfig();
+        GameData.BannersConfig = ResourceManager.LoadBanners();
         await arg.SendMsg(I18NManager.Translate("Game.Command.Reload.ConfigReloaded",
             I18NManager.Translate("Word.Banner")));
     }

@@ -12,20 +12,12 @@ public class HandlerUpdateTrackMainMissionIdCsReq : Handler<UpdateTrackMainMissi
     {
         var missionData = player.MissionManager!.Data;
         var prev = missionData.TrackingMainMissionId;
-        var target = ResolveTrackMissionId(req, missionData, prev);
-        missionData.TrackingMainMissionId = target;
+        // The client sends 0/1 as the "auto-select" sentinel, in either of the two request fields.
+        var requested = req.TrackMissionId > 1 ? (int)req.TrackMissionId : (int)req.JFONDEBDIOO;
+        missionData.TrackingMainMissionId = player.MissionManager.ResolveTrackingMainMissionId(requested);
         DatabaseHelper.MarkDirty(player.Uid);
 
         await connection.SendPacket(new PacketUpdateTrackMainMissionIdScRsp(prev,
             missionData.TrackingMainMissionId));
-    }
-
-    private static int ResolveTrackMissionId(UpdateTrackMainMissionCsReq req, March7thHoney.Database.Quests.MissionData data,
-        int prev)
-    {
-        if (req.TrackMissionId > 1) return (int)req.TrackMissionId;
-        if (req.JFONDEBDIOO > 1) return (int)req.JFONDEBDIOO;
-        if (prev > 0 && data.RunningMainMissionIds.Contains(prev)) return prev;
-        return data.RunningMainMissionIds.Count > 0 ? data.RunningMainMissionIds[0] : 0;
     }
 }

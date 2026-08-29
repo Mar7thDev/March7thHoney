@@ -1,7 +1,10 @@
 using System.Text;
+using March7thHoney.Data;
+using March7thHoney.Database;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
 
 namespace March7thHoney.Command.Command.Cmd;
@@ -200,6 +203,45 @@ public class CommandMission : ICommand
         await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionFinished", missionId.ToString()));
     }
 
+    [CommandMethod("0 remove")]
+    public async ValueTask RemoveMainMission(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        if (!await RequireMissionSystem(arg)) return;
+        if (!TryReadMissionId(arg, out var missionId))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.InvalidMissionId"));
+            return;
+        }
+
+        await arg.Target.Player!.MissionManager!.RemoveMainMission(missionId);
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionRemoved", missionId.ToString()));
+    }
+
+    [CommandMethod("0 goto")]
+    public async ValueTask GotoMission(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        if (!await RequireMissionSystem(arg)) return;
+        if (!TryReadMissionId(arg, out var missionId))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.InvalidMissionId"));
+            return;
+        }
+
+        await TeleportToMission(arg, missionId);
+    }
+
     [CommandMethod("0 start")]
     public async ValueTask StartMission(CommandArg arg)
     {
@@ -210,6 +252,48 @@ public class CommandMission : ICommand
         }
 
         var player = arg.Target.Player!;
+
+        // start is the one subcommand that does NOT require the mission system to be on already: it turns
+        // it on for this player (MissionData.EnableMissionOverride) so the story is playable on a server
+        // running with ServerOption.EnableMission off. If it is already on, this is a plain restart.
+        var wasEnabled = player.MissionEnabled;
+
+        // /mission start <mainMissionId> restarts one chapter in place — no save wipe, no kick.
+        if (arg.BasicArgs.Count >= 1)
+        {
+            if (!TryReadMissionId(arg, out var missionId))
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.InvalidMissionId"));
+                return;
+            }
+
+            player.MissionManager!.Data.EnableMissionOverride = true;
+            if (!wasEnabled)
+            {
+                // The player has been running in "everything finished" mode, so there is no real mission
+                // state to rewind to; bootstrap the chain from its entry conditions first.
+                await player.MissionManager.AcceptMainMissionByCondition();
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionEnabledForPlayer"));
+            }
+
+            await player.MissionManager.ReAcceptMainMission(missionId);
+            player.MissionManager.Data.TrackingMainMissionId = missionId;
+            DatabaseHelper.MarkDirty(player.Uid);
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.StartFromMission", missionId.ToString()));
+
+            if (!wasEnabled)
+            {
+                // The client only fetches the mission log at login, so a session that started in the
+                // all-finished lite view has to reconnect before it can render real objectives.
+                DatabaseHelper.Instance?.SaveUidData(player.Uid);
+                ConnectionDisconnectHelper.KickByGm(arg.Target);
+                return;
+            }
+
+            await TeleportToMission(arg, missionId);
+            return;
+        }
+
         var uid = player.Uid;
         var displayName = player.Data.Name ?? uid.ToString();
         var isSelf = uid == arg.Sender.GetSender();
@@ -217,9 +301,49 @@ public class CommandMission : ICommand
         if (isSelf)
             await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.StartStarted", displayName));
 
-        await PlayerResetHelper.ResetGameplayAsync(uid);
+        // true, not wasEnabled: the wipe rebuilds MissionData from scratch, so the override has to be
+        // re-stamped, and a server with missions off must still hand this account the story.
+        await PlayerResetHelper.ResetGameplayAsync(uid, true);
 
         if (!isSelf)
             await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.StartSuccess", displayName));
+    }
+
+    private static bool TryReadMissionId(CommandArg arg, out int missionId)
+    {
+        missionId = 0;
+        if (arg.BasicArgs.Count < 1) return false;
+        if (!int.TryParse(arg.BasicArgs[0], out missionId)) return false;
+        return GameData.MainMissionData.ContainsKey(missionId);
+    }
+
+    // Gate for the subcommands that read or edit real mission state. It checks the PLAYER's switch, not
+    // the server config, so everything works again once /mission start has turned the system on for them.
+    private static async ValueTask<bool> RequireMissionSystem(CommandArg arg)
+    {
+        if (arg.Target?.Player?.MissionEnabled == true) return true;
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionDisabled"));
+        return false;
+    }
+
+    // Moves the player to the floor the mission takes place on, so "start over from mission X" actually
+    // puts them where X happens instead of leaving them wherever they were standing.
+    private static async ValueTask TeleportToMission(CommandArg arg, int missionId)
+    {
+        var player = arg.Target!.Player!;
+        var floorId = player.MissionManager!.GetMissionFloorId(missionId);
+        var entrance = MissionManager.FindEntranceForFloor(floorId);
+        if (entrance != null) await player.EnterScene(entrance.ID, 0, true);
+
+        // EnterScene's return value only reports whether the entry changed, so verify against the floor
+        // the player actually ended up on — being there already is a success, not a failure.
+        if (entrance == null || player.Data.FloorId != floorId)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.NoTeleportTarget", missionId.ToString()));
+            return;
+        }
+
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.Teleported", missionId.ToString(),
+            floorId.ToString(), entrance.ID.ToString()));
     }
 }
