@@ -382,9 +382,9 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         }
 
         // No handler found
-        // 教程请求收到任何响应都会让客户端弹出本不该出现的教程界面，与 csproj 排除这三个 handler 同源
-        if (opcode == CmdIds.GetTutorialCsReq || opcode == CmdIds.GetTutorialGuideCsReq ||
-            opcode == CmdIds.UnlockTutorialCsReq) return;
+        // 教程请求收到任何响应都会让客户端弹出本不该出现的教程界面。4.6 dump 给这三个请求起了名字，
+        // 下面的按名自动应答就会命中，必须显式拦掉；4.5v3 dump 里它们没有命名，packetName 为 null
+        // 会在下一行直接 return，因此这里不需要额外的 opcode 判断（加了反而引用不存在的常量）。
 
         // get the packet name
         if (packetName == null) return;
