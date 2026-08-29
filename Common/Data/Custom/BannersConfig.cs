@@ -111,11 +111,11 @@ public partial class BannerConfig
                 info.ItemDetailList.Add(11);
         }
 
-        // Featured (rate-up) pool the client renders in the banner's probability panel. This is the
-        // field the 4.2 code filled as CBHAEFNAFLE; the 4.3 proto rename left it unset, which leaves an
-        // event banner with an empty rate-up section.
-        if (RateUpItems4.Count > 0)
-            info.ONIHOMCELJK.AddRange(RateUpItems4.Select(id => (uint)id));
+        // NOTE: GachaInfo still has two unidentified repeated-uint32 fields (ONIHOMCELJK, and whatever
+        // itemDetailList really means here). The 4.2 code filled a "featured pool" field the 4.3 proto
+        // rename lost; filling ONIHOMCELJK with RateUpItems4 was a guess and is NOT correct - the 4.5
+        // client renders the warp screen but wedges on it. Left unset until the real field is identified
+        // from a capture; the only visible cost is an empty rate-up section on the banner.
 
         return info;
     }
