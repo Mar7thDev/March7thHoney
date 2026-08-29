@@ -74,9 +74,6 @@ public partial class BannerConfig
             HistoryUrl = ""
         };
 
-        // TODO 4.3: 4.2 的 CBHAEFNAFLE (repeated uint32) 在 4.3 tag=9 被替换为 GachaCeiling 子消息，
-        // 抽卡不在登录路径，banner featured pool 暂时不下发
-
         if (GachaType != GachaTypeEnum.Normal)
         {
             info.BeginTime = BeginTime;
@@ -110,10 +107,29 @@ public partial class BannerConfig
             }
 
             // Observed official packet behavior: avatar event banners carry marker "11" here.
-            if (GachaType == GachaTypeEnum.AvatarUp) info.ItemDetailList.Add(11);
+            if (GachaType is GachaTypeEnum.AvatarUp or GachaTypeEnum.CollaborationAvatarUp)
+                info.ItemDetailList.Add(11);
         }
 
+        // Featured (rate-up) pool the client renders in the banner's probability panel. This is the
+        // field the 4.2 code filled as CBHAEFNAFLE; the 4.3 proto rename left it unset, which leaves an
+        // event banner with an empty rate-up section.
+        if (RateUpItems4.Count > 0)
+            info.ONIHOMCELJK.AddRange(RateUpItems4.Select(id => (uint)id));
+
         return info;
+    }
+
+    /// <summary>
+    ///     Whether the banner's configured time window covers <paramref name="unixSeconds" />. A window
+    ///     bound of 0 means "unbounded". The client hides a banner whose window has closed, which is the
+    ///     usual reason a freshly configured event pool never shows up.
+    /// </summary>
+    public bool IsActiveAt(long unixSeconds)
+    {
+        if (BeginTime > 0 && unixSeconds < BeginTime) return false;
+        if (EndTime > 0 && unixSeconds > EndTime) return false;
+        return true;
     }
 
     private GachaRuleProfile ResolveRuleProfile()
@@ -154,6 +170,32 @@ public partial class BannerConfig
                 HasFeaturedFourStarGuarantee = true,
                 FiveStarChanceAtPull = FiveStarChance90
             },
+            // Collaboration pools share the AvatarUp / WeaponUp rules (GachaTypeBasicInfo.json lists the
+            // same UpPropability 50 / 75) but keep their own pity counters, like the official server.
+            GachaTypeEnum.CollaborationAvatarUp => new GachaRuleProfile
+            {
+                Family = GachaPityFamilyEnum.AvatarCollaboration,
+                FiveStarHardPity = 90,
+                FourStarHardPity = 10,
+                FiveStarFeaturedChance = 0.5,
+                FourStarFeaturedChance = 0.5,
+                FourStarBaseChance = 0.051,
+                HasFeaturedFiveStarGuarantee = true,
+                HasFeaturedFourStarGuarantee = true,
+                FiveStarChanceAtPull = FiveStarChance90
+            },
+            GachaTypeEnum.CollaborationWeaponUp => new GachaRuleProfile
+            {
+                Family = GachaPityFamilyEnum.WeaponCollaboration,
+                FiveStarHardPity = 80,
+                FourStarHardPity = 10,
+                FiveStarFeaturedChance = 0.75,
+                FourStarFeaturedChance = 0.75,
+                FourStarBaseChance = 0.066,
+                HasFeaturedFiveStarGuarantee = true,
+                HasFeaturedFourStarGuarantee = true,
+                FiveStarChanceAtPull = FiveStarChance80
+            },
             _ => new GachaRuleProfile
             {
                 Family = GachaPityFamilyEnum.Normal,
@@ -175,9 +217,10 @@ public partial class BannerConfig
         return GachaType switch
         {
             GachaTypeEnum.Newbie => PickOne(standardGoldAvatars),
-            GachaTypeEnum.WeaponUp => ResolveFeaturedOrStandardFiveStar(profile, state, featured,
-                standardGoldWeapons),
-            GachaTypeEnum.AvatarUp => ResolveFeaturedOrStandardFiveStar(profile, state, featured,
+            GachaTypeEnum.WeaponUp or GachaTypeEnum.CollaborationWeaponUp => ResolveFeaturedOrStandardFiveStar(
+                profile, state, featured, standardGoldWeapons),
+            GachaTypeEnum.AvatarUp or GachaTypeEnum.CollaborationAvatarUp => ResolveFeaturedOrStandardFiveStar(
+                profile, state, featured,
                 GetCharacterEventNonFeaturedPool(characterEventNonFeaturedPool, standardGoldAvatars, featured)),
             _ => PickByCategory(standardGoldAvatars, standardGoldWeapons)
         };
@@ -201,13 +244,14 @@ public partial class BannerConfig
     private int ResolveFourStarItem(GachaRuleProfile profile, GachaPityState state, List<int> purpleAvatars,
         List<int> purpleWeapons)
     {
-        var featured = GachaType == GachaTypeEnum.WeaponUp
+        var isWeaponPool = GachaType is GachaTypeEnum.WeaponUp or GachaTypeEnum.CollaborationWeaponUp;
+        var featured = isWeaponPool
             ? RateUpItems4.Where(purpleWeapons.Contains).Distinct().ToList()
             : RateUpItems4.Where(id => purpleAvatars.Contains(id) || purpleWeapons.Contains(id)).Distinct().ToList();
 
         if (!profile.HasFeaturedFourStarGuarantee || featured.Count == 0)
         {
-            return GachaType == GachaTypeEnum.WeaponUp
+            return isWeaponPool
                 ? PickOne(WithoutFeatured(purpleAvatars.Concat(purpleWeapons), featured))
                 : PickByCategory(purpleAvatars, purpleWeapons);
         }

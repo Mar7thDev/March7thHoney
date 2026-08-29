@@ -254,6 +254,13 @@ public class EntryPoint
                         await ResourceCache.SaveCache();
                     }
                 }
+
+                // Banners.json is operator-authored content, not dumped game data: it is the one file a
+                // server owner edits to open or close a warp banner. Baking it into Resource.bin made
+                // those edits invisible until the whole resource cache was regenerated - which needs the
+                // raw Resources tree most deployments do not ship. Re-read it after the cache branch so a
+                // banner change only needs a restart (or /reload banner).
+                GameData.BannersConfig = ResourceManager.LoadBanners();
             }
             catch (Exception e)
             {
