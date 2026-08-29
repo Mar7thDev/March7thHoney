@@ -3,6 +3,7 @@ using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Mission;
+using March7thHoney.Util;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using MissionInfo = March7thHoney.Data.Config.MissionInfo;
@@ -29,6 +30,23 @@ public partial class MainMissionExcel : ExcelResource
 
     [JsonIgnore] public MissionInfo MissionInfo { get; protected set; } = new();
     [JsonIgnore] public List<int> SubMissionIds { get; set; } = [];
+
+    // Appended after every pre-existing member on purpose: MemoryPack object payloads are
+    // forward-tolerant only for members added at the END, so a Resource.bin generated before these
+    // columns existed still deserializes (the new members simply restore as Unknown/0).
+    [JsonConverter(typeof(SafeStringEnumConverter<MainMissionTypeEnum>))]
+    public MainMissionTypeEnum Type { get; set; }
+
+    /// <summary>Main mission the official client auto-tracks once this one finishes (0 = none).</summary>
+    public int NextTrackMainMission { get; set; }
+
+    /// <summary>
+    ///     A "Gap" row with no MissionInfo_&lt;id&gt;.json is a display-only transition entry: it ships no
+    ///     start sub-missions and no finish gate, so gameplay can never close it and every successor
+    ///     gated on its completion stalls forever.
+    /// </summary>
+    [JsonIgnore]
+    public bool IsDisplayOnlyGap => Type == MainMissionTypeEnum.Gap && MissionInfo.SubMissionList.Count == 0;
 
     public override int GetId()
     {

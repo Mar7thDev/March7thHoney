@@ -50,10 +50,19 @@ public class SceneEntityLoader(SceneInstance scene)
 
             if (oldGroupId.Contains(group.Id)) // check if it should be unloaded
             {
-                if (group.ForceUnloadCondition.IsTrue(Scene.Player.MissionManager!.Data,
-                        false) || // condition: Force Unload Condition
-                    group.UnloadCondition.IsTrue(Scene.Player.MissionManager!.Data,
-                        false)) // condition: Unload Condition  anyone of the conditions is true then unload
+                // DelayToLevelReload defers an unload to the next level (re)load: the group must stay
+                // in the scene the player is currently standing in even after its condition turns true.
+                // Ground truth: floor 80112001 group 2 (Herta) unloads on main 1000401 Finish with
+                // DelayToLevelReload set — the official server keeps her standing so the follow-on
+                // 4030001 talks can fire, and only drops her on the next entry to the floor. LoadGroup
+                // still evaluates the same condition at build time, so the deferred unload applies
+                // naturally on the next scene build. "Force" overrides the delay by definition.
+                var forceUnload = !group.ForceUnloadCondition.DelayToLevelReload &&
+                                  group.ForceUnloadCondition.IsTrue(Scene.Player.MissionManager!.Data, false);
+                var unload = !group.UnloadCondition.DelayToLevelReload &&
+                             group.UnloadCondition.IsTrue(Scene.Player.MissionManager!.Data, false);
+
+                if (forceUnload || unload) // any of the conditions is true then unload
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -310,7 +319,7 @@ public class SceneEntityLoader(SceneInstance scene)
         }
 
         // Missions off: open doors so they don't block the way.
-        if (!ConfigManager.Config.ServerOption.EnableMission && !hasSavedState && prop.Excel.IsDoor)
+        if (!Scene.Player.MissionEnabled && !hasSavedState && prop.Excel.IsDoor)
             prop.State = PropStateEnum.Open;
 
         var timelineData = Scene.Player.GetScenePropTimelineData(Scene.FloorId, group.Id, info.ID);
