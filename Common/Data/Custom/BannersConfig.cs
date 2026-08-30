@@ -111,11 +111,7 @@ public partial class BannerConfig
                 info.ItemDetailList.Add(11);
         }
 
-        // Featured (rate-up) pool the client renders in the banner's probability panel. This is the
-        // field the 4.2 code filled as CBHAEFNAFLE; the 4.3 proto rename left it unset, which leaves an
-        // event banner with an empty rate-up section.
-        if (RateUpItems4.Count > 0)
-            info.ONIHOMCELJK.AddRange(RateUpItems4.Select(id => (uint)id));
+        // ONIHOMCELJK is still unidentified; filling it with RateUpItems4 was a guess that wedges the client.
 
         return info;
     }
