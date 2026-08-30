@@ -2,13 +2,13 @@ namespace March7thHoney.Util;
 
 public static class GameConstants
 {
-    // 版本号规则：x.y.5 等价于客户端 x.(y+1).0 —— 末位 .5 就是下一个版本的测试版。
-    // 所以 4.4.5 = 客户端 4.5.0，4.5.5 = 客户端 4.6.0。中间号（4.4.51/52/53 之类）互不兼容，直接跳过，
+    // 直接写客户端正式服版本号（x.y.0）。同一个版本序列里，正式服是 x.y.0，测试服是 x.y.51~x.y.55，
+    // ConfigManager.LoadHotfixData 由此推出全部 hotfix key。中间号（4.5.51/52/53 之类）互不兼容，
     // 因此版本号相近并不代表协议可以互换：换版本必须同时换 Proto/Generated 与 KcpSharp/CmdIds.cs。
-    // 当前服务端面向客户端 4.5.0，协议取自 Proto/4.5v3 dump。
-    public const string GAME_VERSION = "4.4.5";
+    // 当前服务端面向客户端 4.5.0，协议取自 Proto/4.5v3 dump，资源取自 StarRailData OSPRODWin4.5.0。
+    public const string GAME_VERSION = "4.5.0";
     public const string AvatarDbVersion = "20250430";
-    public const int GameVersionInt = 4450;
+    public const int GameVersionInt = 4500;
     public const int MAX_STAMINA = 300;
     public const int MAX_STAMINA_RESERVE = 2400;
     public const int STAMINA_RECOVERY_TIME = 360; // 6 minutes
