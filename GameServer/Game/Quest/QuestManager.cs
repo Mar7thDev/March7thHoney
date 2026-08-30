@@ -80,6 +80,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
                 case QuestUnlockTypeEnum.ManualUnlock: // idk what this is
                     break;
                 case QuestUnlockTypeEnum.BattlePassWeekly:
+                case QuestUnlockTypeEnum.CakeCatchNotFinish:
                 case QuestUnlockTypeEnum.Unknown:
                 default:
                     break;
