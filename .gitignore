@@ -368,6 +368,7 @@ MigrationBackup/
 FodyWeavers.xsd
 /GameServer/OriginalProto
 Resources/
+TurnBasedGameData/
 CyreneRes/
 Config/Handbook
 Config/Logs

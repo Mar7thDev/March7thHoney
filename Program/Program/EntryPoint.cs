@@ -254,6 +254,15 @@ public class EntryPoint
                             I18NManager.Translate("Word.Cache")));
                         await ResourceCache.SaveCache();
                     }
+                    else if (ConfigManager.Config.ServerOption.UseCache)
+                    {
+                        // A single unparseable record anywhere in the tree clears IsComplete, and the
+                        // cache write was then skipped without a word - every later boot re-read the raw
+                        // Resources tree and the operator had no idea why Resource.bin never appeared.
+                        Logger.Warn(
+                            "Resource cache NOT written: one or more resources failed to load (see the errors above). " +
+                            "Fix them and restart, or the server will re-read the raw resource tree on every boot.");
+                    }
                 }
 
                 // Operator-authored content, not dumped game data: the banner list and the video keys
