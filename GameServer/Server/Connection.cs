@@ -341,12 +341,13 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
                 if (!TryGetOpcodeByName(rspName, out var rspOpcode)) return;
 
                 // get proto class
-                var typ = AppDomain.CurrentDomain.GetAssemblies()
-                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes()
-                    .First(t => t.Name == rspName); //get the type using the packet name
-                var curTyp = AppDomain.CurrentDomain.GetAssemblies()
-                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes()
-                    .First(t => t.Name == curPacket); //get the type using the packet name
+                // cmdid 别名（cmdid-aliases.txt）让 LogMap 里的名字可能不是 proto 里真实存在的消息名，
+                // 找不到就放弃兜底应答 —— 这里再抛异常会直接把接收循环带下去。
+                var protoTypes = AppDomain.CurrentDomain.GetAssemblies()
+                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes();
+                var typ = protoTypes.FirstOrDefault(t => t.Name == rspName); //get the type using the packet name
+                var curTyp = protoTypes.FirstOrDefault(t => t.Name == curPacket); //get the type using the packet name
+                if (typ == null || curTyp == null) return;
 
                 // create the response packet
                 if (Activator.CreateInstance(typ) is not IMessage rsp) return;
