@@ -20,6 +20,7 @@ public partial class BannerConfig
     public long BeginTime { get; set; }
     public long EndTime { get; set; }
     public GachaTypeEnum GachaType { get; set; }
+    public List<int> PrizeItems { get; set; } = [];
     public List<int> RateUpItems5 { get; set; } = [];
     public List<int> RateUpItems4 { get; set; } = [];
     public int GetRateUpItem5Chance { get; set; } = 6; // 0.6% chance (0.6%*1000)
@@ -74,6 +75,14 @@ public partial class BannerConfig
             HistoryUrl = ""
         };
 
+        // Client renders the banner featured panel from prize_item_list (the 4.2 proto called the
+        // featured-pool field CBHAEFNAFLE); ONIHOMCELJK carries the featured 5-star(s).
+        var displayItems = PrizeItems.Count > 0
+            ? PrizeItems
+            : RateUpItems4.Concat(RateUpItems5).Distinct();
+        info.PrizeItemList.AddRange(displayItems.Select(id => (uint)id));
+        info.ONIHOMCELJK.AddRange(RateUpItems5.Select(id => (uint)id));
+
         if (GachaType != GachaTypeEnum.Normal)
         {
             info.BeginTime = BeginTime;
@@ -88,11 +97,6 @@ public partial class BannerConfig
 
         if (GachaId == 1001)
         {
-            if (RateUpItems5.Count > 0)
-            {
-                info.PrizeItemList.AddRange(RateUpItems5.Select(id => (uint)id));
-            }
-
             info.GachaCeiling = new GachaCeiling
             {
                 IsClaimed = true, // TODO: Implement this
@@ -101,21 +105,13 @@ public partial class BannerConfig
         }
         else
         {
-            if (RateUpItems5.Count > 0)
-            {
-                info.PrizeItemList.AddRange(RateUpItems5.Select(id => (uint)id));
-            }
-
             // Observed official packet behavior: avatar event banners carry marker "11" here.
             if (GachaType is GachaTypeEnum.AvatarUp or GachaTypeEnum.CollaborationAvatarUp)
+            {
+                info.MMELNCHIDNC = 1;
                 info.ItemDetailList.Add(11);
+            }
         }
-
-        // NOTE: GachaInfo still has two unidentified repeated-uint32 fields (ONIHOMCELJK, and whatever
-        // itemDetailList really means here). The 4.2 code filled a "featured pool" field the 4.3 proto
-        // rename lost; filling ONIHOMCELJK with RateUpItems4 was a guess and is NOT correct - the 4.5
-        // client renders the warp screen but wedges on it. Left unset until the real field is identified
-        // from a capture; the only visible cost is an empty rate-up section on the banner.
 
         return info;
     }
