@@ -242,4 +242,70 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     {
         Player.InventoryManager!.Data.RelicPlans[uniqueId] = new RelicPlanData();
     }
+
+    // ---- 遗器预设（4.5 智能装配保存下来的方案）----
+    // 4.5 客户端的智能装配走的是 RelicPreset 这套协议，和上面 2.3 时代的 RelicSmartWear 方案是两套东西。
+
+    public List<PFCKBFLDHNI> GetRelicPresetPlans(int avatarId)
+    {
+        return
+        [
+            .. Player.InventoryManager!.Data.RelicPresetPlans
+                .Where(plan => plan.Value.AvatarId == avatarId)
+                .Select(plan => BuildRelicPresetPlan(plan.Key, plan.Value))
+        ];
+    }
+
+    public PFCKBFLDHNI AddRelicPresetPlan(uint avatarId, string name, IEnumerable<uint> relicIds,
+        RelicPresetPlanSourceType sourceType)
+    {
+        var plans = Player.InventoryManager!.Data.RelicPresetPlans;
+        var uniqueId = plans.Count > 0 ? plans.Keys.Max() + 1 : 1;
+        var plan = new RelicPresetPlanData
+        {
+            AvatarId = (int)avatarId,
+            Name = name,
+            SourceType = (int)sourceType,
+            RelicIds = [.. relicIds.Select(x => (int)x)]
+        };
+
+        plans[uniqueId] = plan;
+        return BuildRelicPresetPlan(uniqueId, plan);
+    }
+
+    /// <summary>
+    ///     一次请求要么改名要么换遗器（4.6 dump 里这两个字段是 oneof），请求带了什么就改什么。
+    /// </summary>
+    public bool UpdateRelicPresetPlan(int uniqueId, HPPOINFLEPJ? relicList, string? name)
+    {
+        if (!Player.InventoryManager!.Data.RelicPresetPlans.TryGetValue(uniqueId, out var plan)) return false;
+
+        if (relicList != null)
+        {
+            plan.RelicIds = [.. relicList.RelicIds.Select(x => (int)x)];
+            plan.SourceType = (int)relicList.SourceType;
+        }
+
+        if (!string.IsNullOrEmpty(name)) plan.Name = name;
+        return true;
+    }
+
+    public bool DeleteRelicPresetPlan(int uniqueId)
+    {
+        return Player.InventoryManager!.Data.RelicPresetPlans.Remove(uniqueId);
+    }
+
+    private static PFCKBFLDHNI BuildRelicPresetPlan(int uniqueId, RelicPresetPlanData plan)
+    {
+        var proto = new PFCKBFLDHNI
+        {
+            UniqueId = (uint)uniqueId,
+            AvatarId = (uint)plan.AvatarId,
+            Name = plan.Name,
+            SourceType = (RelicPresetPlanSourceType)plan.SourceType
+        };
+
+        proto.RelicIds.AddRange(plan.RelicIds.Select(x => (uint)x));
+        return proto;
+    }
 }
