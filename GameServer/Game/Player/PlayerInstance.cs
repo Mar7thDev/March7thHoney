@@ -261,7 +261,13 @@ public partial class PlayerInstance(PlayerData data)
         if (PendingMissionEnabledOverride.HasValue)
             MissionManager!.Data.EnableMissionOverride = PendingMissionEnabledOverride;
 
-        if (MissionEnabled) await MissionManager!.AcceptMainMissionByCondition();
+        if (MissionEnabled)
+        {
+            await MissionManager!.AcceptMainMissionByCondition();
+            // Runs on every load, not just once: a save can stall at any point in the chain, and the
+            // pass is a no-op when every accepted main already has a running sub-mission.
+            await MissionManager.RepairStalledMainMissions(false);
+        }
 
         foreach (var friendDevelopmentInfoPb in FriendRecordData!.DevelopmentInfos.ToArray())
             if (Extensions.GetUnixSec() - friendDevelopmentInfoPb.Time >=

@@ -26,6 +26,8 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 {
     #region Initializer & Properties
 
+    private static readonly Logger Logger = new("Mission");
+
     public static readonly Dictionary<FinishActionTypeEnum, MissionFinishActionHandler> ActionHandlers = [];
     public static readonly Dictionary<MissionFinishTypeEnum, MissionFinishTypeHandler> FinishTypeHandlers = [];
 
@@ -147,6 +149,152 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
 
         return await AcceptMainMission(missionId, sendPacket);
+    }
+
+    /// <summary>
+    ///     Re-derives the running sub-missions of every accepted main mission, so a save written while the
+    ///     mission graph was incomplete becomes playable again instead of staying frozen forever.
+    /// </summary>
+    /// <remarks>
+    ///     A main mission with no running sub is a dead end: the client renders an empty objective list,
+    ///     no finish gate can ever close, and every successor gated on it stays out of the mission log.
+    ///     Saves made before the 4.5.0 resource rebuild are full of them - the truncated MissionInfo
+    ///     registered no sub-missions at all, so AcceptMainMission flipped the main to Accept and then
+    ///     accepted nothing. The data is fixed now, but the stored state is not, and nothing in the normal
+    ///     login path ever revisits an already-accepted main.
+    ///     For each stalled main this replays the steps the live flow would have taken: auto-close a
+    ///     display-only Gap row, close a main whose finish gate is already fully satisfied, and otherwise
+    ///     re-arm the front line - first the successors of the subs the player did finish, so a half-played
+    ///     chapter resumes where it stopped rather than replaying from the top, then the entry subs, which
+    ///     is a no-op unless the mission never actually started.
+    ///     A main that is still empty afterwards is a real data gap: it is reported, never force-skipped,
+    ///     because skipping a playable Main-type row silently eats content.
+    /// </remarks>
+    public async ValueTask<MissionRepairReport> RepairStalledMainMissions(bool sendPacket = true)
+    {
+        var report = new MissionRepairReport();
+        if (!Enabled) return report;
+
+        // Closing one main accepts its successors, and a successor can itself land stalled, so keep
+        // sweeping. `handled` makes every main a one-shot, which is what bounds the loop.
+        var handled = new HashSet<int>();
+        while (true)
+        {
+            var pending = Data.RunningMainMissionIds
+                .Where(x => x > 0 && !handled.Contains(x))
+                .OrderBy(x => x)
+                .ToList();
+            if (pending.Count == 0) break;
+
+            var changed = false;
+            foreach (var mainId in pending)
+            {
+                handled.Add(mainId);
+                if (!GameData.MainMissionData.TryGetValue(mainId, out var main)) continue;
+                // Closing an earlier main can cascade through this one, so re-check the snapshot entry.
+                if (Data.GetMainMissionStatus(mainId) != MissionPhaseEnum.Accept) continue;
+                if (HasRunningSubMission(main)) continue; // healthy: the player has something to do
+
+                if (await CloseSatisfiedMainMission(mainId, main))
+                {
+                    report.Closed.Add(mainId);
+                    changed = true;
+                    continue;
+                }
+
+                var sync = new MissionSync();
+                await TriggerNextSubMissions(main, sync, true);
+                if (sendPacket && sync.MissionList.Count > 0)
+                    await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+
+                // Only when the continuation found nothing: an entry sub is None either because the
+                // mission never started, or because it is genuinely still ahead of the player.
+                if (!HasRunningSubMission(main))
+                    foreach (var subId in main.MissionInfo.StartSubMissionList)
+                        await AcceptSubMission(subId, sendPacket);
+
+                if (HasRunningSubMission(main))
+                {
+                    report.Resumed.Add(mainId);
+                    changed = true;
+                }
+                else
+                {
+                    report.Stalled.Add(mainId);
+                }
+            }
+
+            if (!changed) break;
+        }
+
+        // A track pointing at a main with nothing running is the "lost objective list" symptom, so
+        // re-resolve it whenever the repair left the tracked mission without a front line.
+        var tracked = Data.TrackingMainMissionId;
+        if (tracked <= 0 || Data.GetMainMissionStatus(tracked) != MissionPhaseEnum.Accept ||
+            !HasRunningSubMission(tracked))
+        {
+            var resolved = ResolveTrackingMainMissionId(0);
+            if (resolved != tracked)
+            {
+                Data.TrackingMainMissionId = resolved;
+                report.RetrackedTo = resolved;
+            }
+        }
+
+        if (report.Changed) MarkDirty();
+
+        if (report.Resumed.Count > 0 || report.Closed.Count > 0)
+            Logger.Info($"Repaired stalled mission state for uid {Player.Uid}: " +
+                        $"resumed [{string.Join(", ", report.Resumed)}], closed [{string.Join(", ", report.Closed)}]" +
+                        (report.RetrackedTo > 0 ? $", tracking -> {report.RetrackedTo}" : ""));
+
+        if (report.Stalled.Count > 0)
+            Logger.Warn($"uid {Player.Uid} has {report.Stalled.Count} accepted main mission(s) with no " +
+                        $"runnable sub-mission left: [{string.Join(", ", report.Stalled)}]. Their sub-mission " +
+                        "graph is missing or their gate is unreachable, so they block every successor - " +
+                        "restore the graph (Config/Custom/MissionInfoOverride.json or a resource rebuild), " +
+                        "or close them by hand with /mission finishmain <id>.");
+
+        return report;
+    }
+
+    /// <summary>
+    ///     Closes a stalled main that has nothing left to run: a row that ships no gameplay at all, or one
+    ///     whose finish gate is already fully satisfied and that FinishSubMission simply never got to close.
+    /// </summary>
+    private async ValueTask<bool> CloseSatisfiedMainMission(int mainId, MainMissionExcel main)
+    {
+        var gate = main.MissionInfo.FinishSubMissionList;
+
+        // Neither sub-missions nor a finish gate: there is no objective to run and no condition that
+        // could ever close it. Besides the display-only Gap rows, the 4.5.0 tree has eight Branch rows in
+        // that shape (4010146, 4010241-4010246, 4011800). Closing them skips nothing, because there is
+        // nothing there. Deliberately limited to Branch/Gap: on a Main-type row - and on Unknown, which
+        // is what a Resource.bin predating the Type column restores to - an empty graph means a truncated
+        // dump, and auto-closing that would silently eat playable content.
+        var empty = main.MissionInfo.SubMissionList.Count == 0 && gate.Count == 0 &&
+                    main.Type is MainMissionTypeEnum.Branch or MainMissionTypeEnum.Gap;
+
+        var satisfied = main.IsDisplayOnlyGap || empty ||
+                        (gate.Count > 0 && gate.All(x => GetSubMissionStatus(x) == MissionPhaseEnum.Finish));
+        if (!satisfied) return false;
+
+        await FinishMainMission(mainId);
+        return Data.GetMainMissionStatus(mainId) == MissionPhaseEnum.Finish;
+    }
+
+    private bool HasRunningSubMission(int mainMissionId)
+    {
+        return GameData.MainMissionData.TryGetValue(mainMissionId, out var main) && HasRunningSubMission(main);
+    }
+
+    private bool HasRunningSubMission(MainMissionExcel main)
+    {
+        foreach (var sub in main.MissionInfo.SubMissionList)
+            if (Data.GetSubMissionStatus(sub.ID) == MissionPhaseEnum.Accept)
+                return true;
+
+        return false;
     }
 
     public async ValueTask RemoveMainMission(int missionId)
@@ -337,7 +485,8 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     }
 
     // Accept the sub-missions unlocked by finishing one, honoring AnySequence (OR) / MultiSequence (AND) gates.
-    private async ValueTask TriggerNextSubMissions(MainMissionExcel mainMission, MissionSync sync)
+    private async ValueTask TriggerNextSubMissions(MainMissionExcel mainMission, MissionSync sync,
+        bool doFinishTypeAction = false)
     {
         foreach (var nextMission in mainMission.MissionInfo?.SubMissionList ?? [])
         {
@@ -360,7 +509,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
             if (canAccept)
             {
-                var s = await AcceptSubMission(nextMission.ID, false, false);
+                var s = await AcceptSubMission(nextMission.ID, false, doFinishTypeAction);
                 if (s != null)
                     sync.MissionList.Add(new Proto.Mission
                     {
@@ -734,6 +883,10 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     ///     The last two steps matter after a story beat closes: without them the auto-track lands on
     ///     a hidden Branch/Gap transition (e.g. 1000111, whose only sub has no finishable graph), the
     ///     client renders an empty objective list and the player has nothing to follow.
+    ///     The whole order runs twice: once accepting only missions that actually have a running
+    ///     sub-mission, then again without that filter. Tracking a running-but-empty main is the other
+    ///     way to end up with a blank objective list, and it survives relogs because the stored track is
+    ///     kept as long as its mission is merely "accepted".
     /// </remarks>
     public int ResolveTrackingMainMissionId(int requested)
     {
@@ -741,22 +894,32 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         var data = Data;
         var prev = data.TrackingMainMissionId;
-        if (prev > 0 && data.RunningMainMissionIds.Contains(prev)) return prev;
-
-        if (prev > 0 &&
-            GameData.MainMissionData.TryGetValue(prev, out var prevExcel) &&
-            prevExcel.NextTrackMainMission > 0 &&
-            data.RunningMainMissionIds.Contains(prevExcel.NextTrackMainMission))
-            return prevExcel.NextTrackMainMission;
-
         var running = data.RunningMainMissionIds.Where(x => x > 0).OrderBy(x => x).ToList();
-        foreach (var id in running)
+
+        for (var pass = 0; pass < 2; pass++)
         {
-            // Type is Unknown when the resource cache predates the column — treat that as "no
-            // information" and keep the old first-running-mission behaviour instead of skipping.
-            if (!GameData.MainMissionData.TryGetValue(id, out var excel)) continue;
-            if (excel.Type is not (MainMissionTypeEnum.Unknown or MainMissionTypeEnum.Main)) continue;
-            return id;
+            var mustHaveWork = pass == 0;
+
+            if (prev > 0 && data.RunningMainMissionIds.Contains(prev) &&
+                (!mustHaveWork || HasRunningSubMission(prev)))
+                return prev;
+
+            if (prev > 0 &&
+                GameData.MainMissionData.TryGetValue(prev, out var prevExcel) &&
+                prevExcel.NextTrackMainMission > 0 &&
+                data.RunningMainMissionIds.Contains(prevExcel.NextTrackMainMission) &&
+                (!mustHaveWork || HasRunningSubMission(prevExcel.NextTrackMainMission)))
+                return prevExcel.NextTrackMainMission;
+
+            foreach (var id in running)
+            {
+                // Type is Unknown when the resource cache predates the column — treat that as "no
+                // information" and keep the old first-running-mission behaviour instead of skipping.
+                if (!GameData.MainMissionData.TryGetValue(id, out var excel)) continue;
+                if (excel.Type is not (MainMissionTypeEnum.Unknown or MainMissionTypeEnum.Main)) continue;
+                if (mustHaveWork && !HasRunningSubMission(excel)) continue;
+                return id;
+            }
         }
 
         return running.FirstOrDefault();
@@ -1080,4 +1243,22 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     }
 
     #endregion
+}
+
+/// <summary>Outcome of <see cref="MissionManager.RepairStalledMainMissions" />.</summary>
+public class MissionRepairReport
+{
+    /// <summary>Stalled mains that got a runnable sub-mission back.</summary>
+    public List<int> Resumed { get; } = [];
+
+    /// <summary>Stalled mains whose finish gate was already satisfied, so they were closed.</summary>
+    public List<int> Closed { get; } = [];
+
+    /// <summary>Accepted mains that are still empty: their graph is missing or their gate is unreachable.</summary>
+    public List<int> Stalled { get; } = [];
+
+    /// <summary>New tracked main mission, or 0 when tracking was left alone.</summary>
+    public int RetrackedTo { get; set; }
+
+    public bool Changed => Resumed.Count > 0 || Closed.Count > 0 || RetrackedTo > 0;
 }
