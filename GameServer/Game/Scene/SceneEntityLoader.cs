@@ -296,11 +296,7 @@ public class SceneEntityLoader(SceneInstance scene)
 
         var prop = new EntityProp(Scene, excel, group, info);
 
-        if (excel.PropType == PropTypeEnum.PROP_SPRING)
-        {
-            Scene.HealingSprings.Add(prop);
-            await prop.SetState(PropStateEnum.CheckPointEnable);
-        }
+        if (excel.PropType == PropTypeEnum.PROP_SPRING) Scene.HealingSprings.Add(prop);
 
         // load from database
         var propData = Scene.Player.GetScenePropData(Scene.FloorId, group.Id, info.ID);
@@ -316,6 +312,22 @@ public class SceneEntityLoader(SceneInstance scene)
             else
                 // elevator
                 prop.State = prop.Excel.PropType == PropTypeEnum.PROP_ELEVATOR ? PropStateEnum.Elevator1 : info.State;
+        }
+
+        if (!hasSavedState)
+        {
+            // A spring's checkpoint comes from its configured State when the level export declares one
+            // (CheckPointDisable keeps it hidden until a mission or the player enables it - official 20002001
+            // sends 300006/8 and 300021/300022/300007/7) and defaults to CheckPointEnable otherwise. Healing stays
+            // PropType-based, so a disabled spring still heals on proximity.
+            if (excel.PropType == PropTypeEnum.PROP_SPRING &&
+                prop.State is not (PropStateEnum.CheckPointDisable or PropStateEnum.CheckPointEnable))
+                prop.State = PropStateEnum.CheckPointEnable;
+
+            // Story off: every teleport waypoint is usable from the start (the pre-story-mode behaviour, kept
+            // per scene instead of being baked into the shared config).
+            if (!Scene.Player.MissionEnabled && info.MappingInfoID != 0 && prop.State == PropStateEnum.CheckPointDisable)
+                prop.State = PropStateEnum.CheckPointEnable;
         }
 
         // Missions off: open doors so they don't block the way.
