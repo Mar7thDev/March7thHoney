@@ -148,7 +148,7 @@ public static class JsonRoutes
             try
             {
                 var encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(command));
-                var response = MuipManager.ExecuteCommand(sessionId, encoded, acc.Uid);
+                var response = await MuipManager.ExecuteCommandAsync(sessionId, encoded, acc.Uid);
                 if (response.Code != 0)
                     return ConsoleJson(1, response.Message, null, 400);
 
@@ -160,7 +160,7 @@ public static class JsonRoutes
             }
             finally
             {
-                MuipManager.Sessions.Remove(sessionId);
+                MuipManager.Sessions.TryRemove(sessionId, out _);
             }
         }
         catch (Exception ex)

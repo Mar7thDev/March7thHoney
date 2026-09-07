@@ -40,7 +40,8 @@ public class MailManager(PlayerInstance player) : BasePlayerManager<MailData>(pl
         Data.MailList.RemoveAt(index);
     }
 
-    public async ValueTask SendMail(string sender, string title, string content, int templateId, int expiredDay = 30)
+    public async ValueTask SendMail(string sender, string title, string content, int templateId, int expiredDay = 30,
+        bool isStar = false)
     {
         var mail = new MailInfo
         {
@@ -49,6 +50,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager<MailData>(pl
             Content = content,
             Title = title,
             TemplateID = templateId,
+            IsStar = isStar,
             SendTime = DateTime.Now.ToUnixSec(),
             ExpireTime = DateTime.Now.AddDays(expiredDay).ToUnixSec()
         };
@@ -60,7 +62,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager<MailData>(pl
     }
 
     public async ValueTask SendMail(string sender, string title, string content, int templateId,
-        List<ItemData> attachments, int expiredDay = 30)
+        List<ItemData> attachments, int expiredDay = 30, bool isStar = false)
     {
         var mail = new MailInfo
         {
@@ -69,6 +71,7 @@ public class MailManager(PlayerInstance player) : BasePlayerManager<MailData>(pl
             Content = content,
             Title = title,
             TemplateID = templateId,
+            IsStar = isStar,
             SendTime = DateTime.Now.ToUnixSec(),
             ExpireTime = DateTime.Now.AddDays(expiredDay).ToUnixSec(),
             Attachment = new MailAttachmentInfo

@@ -230,6 +230,15 @@ public class DatabaseHelper
         lock (DirtyLock) DirtyUids.Remove(uid);
     }
 
+    /// <summary>Number of uids currently waiting for a flush (admin console diagnostics).</summary>
+    public static int DirtyCount
+    {
+        get
+        {
+            lock (DirtyLock) return DirtyUids.Count;
+        }
+    }
+
     /// <summary>
     ///     Atomically take and clear the current dirty set. MarkDirty calls that race a flush land in the freshly
     ///     emptied set and survive to the next cycle, instead of being lost by a blanket Clear().

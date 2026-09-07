@@ -16,10 +16,18 @@ public interface ICommandSender
     ///     language their client reported at login. Console/admin senders keep the server default.
     /// </summary>
     public string? Language => null;
+
+    /// <summary>
+    ///     True for senders that act like the server console: no player of their own, commands run without an
+    ///     implicit player and "@uid" picks a target. Admin requests may also supply a target via GetSender().
+    /// </summary>
+    public bool IsConsole => false;
 }
 
 public class ConsoleCommandSender(Logger logger) : ICommandSender
 {
+    public bool IsConsole => true;
+
     public async ValueTask SendMsg(string msg)
     {
         logger.Info(msg);

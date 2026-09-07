@@ -2,6 +2,7 @@ using System.Net;
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Objects;
+using March7thHoney.WebServer.Pages;
 using Microsoft.AspNetCore.Http;
 
 namespace March7thHoney.WebServer.Handler;
@@ -139,31 +140,38 @@ public class AccountRecoveryHandler
 
     private static IResult VerificationPage(string title, string message, int statusCode = 200)
     {
-        var encodedTitle = WebUtility.HtmlEncode(title);
-        var encodedMessage = WebUtility.HtmlEncode(message);
-        return Results.Text($$"""
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{encodedTitle}}</title>
-  <style>
-    :root { color-scheme: dark; --ink: #f5f7fb; --muted: #a9b2c4; --surface: #161b26; --line: #303849; }
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #0d111a; color: var(--ink); font-family: "Inter", "Segoe UI", Arial, sans-serif; }
-    main { width: min(100%, 420px); padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
-    h1 { margin: 0 0 8px; font-size: 24px; letter-spacing: 0; }
-    p { margin: 0; color: var(--muted); line-height: 1.5; }
-  </style>
-</head>
-<body>
-  <main>
-    <h1>{{encodedTitle}}</h1>
-    <p>{{encodedMessage}}</p>
-  </main>
-</body>
-</html>
-""", "text/html; charset=utf-8", null, statusCode);
+        var success = statusCode == 200;
+        var serverName = ConfigManager.Config.GameServer.GameServerName;
+        var iconMarkup = LoginPlatformPage.RenderIconMarkup(ConfigManager.Config.ServerOption.Auth.RegistrationPageIcon,
+            serverName);
+        var key = success ? "verify.ok" : "verify.failed";
+        var body = $$"""
+{{LoginPlatformPage.Brand(iconMarkup, key + ".title", title, serverName)}}
+      <div class="status">
+        <div class="icon {{(success ? "good" : "bad")}}" aria-hidden="true">{{(success ? "&#10003;" : "!")}}</div>
+        <p data-i18n="{{key}}.message">{{WebUtility.HtmlEncode(message)}}</p>
+      </div>
+      <div class="links">
+        <a href="/login-platform/forgot-password.html" data-i18n="lp.forgot_link">Forgot password?</a>
+      </div>
+""";
+        var strings = """
+    LP.extend({
+      "zh-CN": {
+        "verify.ok.title": "邮箱已验证",
+        "verify.ok.message": "验证完成，现在可以回到游戏登录界面登录了。",
+        "verify.failed.title": "邮箱验证失败",
+        "verify.failed.message": "验证链接无效或已过期，请重新发送验证邮件。"
+      },
+      "en": {
+        "verify.ok.title": "Email verified",
+        "verify.ok.message": "You can return to the game login screen.",
+        "verify.failed.title": "Email verification failed",
+        "verify.failed.message": "The verification link is invalid or expired."
+      }
+    });
+""";
+        return Results.Text(LoginPlatformPage.Wrap(title, serverName, body, "    LP.init();", strings),
+            "text/html; charset=utf-8", null, statusCode);
     }
 }

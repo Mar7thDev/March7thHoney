@@ -77,16 +77,19 @@ public readonly record struct AccountSummary(
     int? level, bool has_password, string role, string permissions, string base_permissions,
     string effective_permissions, long dispatch_token_expires_at, long combo_token_expires_at, bool online,
     bool banned, string ban_reason, long ban_expires_at, long ban_created_at, bool ban_permanent,
-    long ban_remaining_seconds);
+    long ban_remaining_seconds, int identity_keys, int world_level);
 
 public sealed record AccountsData(List<AccountSummary> accounts, int count, List<string> roles, string default_role);
 
 public sealed record OverviewStats(
-    int total_accounts, int online_players, int banned_accounts, int unverified_email, int roles);
+    int total_accounts, int online_players, int banned_accounts, int unverified_email, int roles,
+    int connections, int password_missing);
 
 public sealed record OverviewServer(
     string name, string game_address, string database, long uptime_seconds, double process_memory_mb,
-    long server_time, bool registration_enabled, bool limit_registration_per_identity);
+    long server_time, bool registration_enabled, bool limit_registration_per_identity, string version,
+    double machine_total_mb, double machine_available_mb, long last_save, int dirty_uids, string os,
+    bool announce_enabled, bool email_enabled, bool fake_time_enabled, string fake_date, bool public_mode);
 
 public sealed record OnlinePlayer(int uid, string nickname, int level, string endpoint, string state);
 

@@ -37,6 +37,8 @@ public class EntryPoint
         var publicMode = PublicModeSwitch.Enabled;
         IConsole.InitConsole();
         IConsole.RedrawInput(IConsole.Input);
+        // Capture log output from the very first line so the admin console's log viewer has the boot history.
+        AdminLogBuffer.Attach();
         AppDomain.CurrentDomain.ProcessExit += (_, _) =>
         {
             Logger.Info(I18NManager.Translate("Server.ServerInfo.Shutdown"));
@@ -310,7 +312,8 @@ public class EntryPoint
 
         CommandExecutor.OnRunCommand += (sender, e) => { CommandManager.HandleCommand(e, sender); };
 
-        MuipManager.OnExecuteCommand += CommandManager.HandleCommand;
+        MuipManager.OnExecuteCommand += CommandManager.HandleCommandAsync;
+        MuipManager.CommandCatalogProvider = CommandManager.BuildCatalog;
         MuipManager.OnGetServerInformation += x =>
         {
             foreach (var con in March7thHoneyListener.GetSnapshot())

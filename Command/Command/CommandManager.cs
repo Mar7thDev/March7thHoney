@@ -37,6 +37,37 @@ public class CommandManager
             I18NManager.Translate("Word.Command")));
     }
 
+    /// <summary>
+    ///     Snapshot of every registered command for the admin console's command reference. Descriptions and
+    ///     usages are translated with the server language; subcommands are derived from the method conditions.
+    /// </summary>
+    public IReadOnlyList<CommandCatalogEntry> BuildCatalog()
+    {
+        var entries = new List<CommandCatalogEntry>();
+        foreach (var (name, gen) in _generated.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
+        {
+            var info = gen.Info;
+            var subcommands = gen.Methods
+                .Select(method => string.Join(" ", method.Conditions
+                    .OrderBy(condition => condition.Index)
+                    .Select(condition => condition.ShouldBe)
+                    .Where(value => !string.IsNullOrWhiteSpace(value))))
+                .Where(value => value.Length > 0)
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
+            entries.Add(new CommandCatalogEntry(
+                name,
+                I18NManager.Translate(info.Description),
+                I18NManager.Translate(info.Usage),
+                info.Permission,
+                info.Alias,
+                subcommands));
+        }
+
+        return entries;
+    }
+
     public void Start()
     {
         while (true)
@@ -137,8 +168,13 @@ public class CommandManager
 
     public void HandleCommand(string input, ICommandSender sender)
     {
+        _ = ObserveCommandTask(HandleCommandAsync(input, sender), sender, input, nameof(HandleCommandAsync));
+    }
+
+    public async Task HandleCommandAsync(string input, ICommandSender sender)
+    {
         // Localize every reply (notices + command output) to the sender's language for this command only.
-        // Set on the synchronous entry so it flows into the command's async continuations via AsyncLocal.
+        var previousLanguage = I18NManager.LanguageOverride;
         I18NManager.LanguageOverride = sender.Language;
         try
         {
@@ -147,9 +183,24 @@ public class CommandManager
 
             var cmd = split[0].TrimStart('/');
 
-            var tempTarget = Target;
-            var isTargetExplicit = sender is ConsoleCommandSender && tempTarget != null;
-            if (sender is ConsoleCommandSender)
+            // Only the local terminal owns the persistent target; HTTP requests are independent.
+            var isLocalConsole = sender is ConsoleCommandSender;
+            var tempTarget = isLocalConsole ? Target : null;
+            var isTargetExplicit = tempTarget != null;
+            if (!sender.IsConsole || sender.GetSender() != 0)
+            {
+                tempTarget = Listener.GetActiveConnection(sender.GetSender());
+                if (tempTarget == null)
+                {
+                    await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetNotFound",
+                        sender.GetSender().ToString()));
+                    return;
+                }
+
+                isTargetExplicit = sender.IsConsole;
+            }
+
+            if (sender.IsConsole)
             {
                 if (IsTargetToken(cmd))
                 {
@@ -159,9 +210,17 @@ public class CommandManager
                     {
                         if (split.Count == 1)
                         {
-                            Target = con;
-                            sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetFound", target,
-                                con.Player!.Data.Name!));
+                            if (isLocalConsole)
+                            {
+                                Target = con;
+                                await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetFound", target,
+                                    con.Player!.Data.Name!));
+                            }
+                            else
+                            {
+                                // A standalone @uid cannot persist a selection between HTTP requests.
+                                await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+                            }
                             return;
                         }
 
@@ -173,26 +232,14 @@ public class CommandManager
                     else
                     {
                         // offline or not exist
-                        sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetNotFound", target));
+                        await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetNotFound", target));
                         return;
                     }
                 }
             }
-            else
-            {
-                // player 
-                tempTarget = Listener.GetActiveConnection(sender.GetSender());
-                if (tempTarget == null)
-                {
-                    sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetNotFound",
-                        sender.GetSender().ToString()));
-                    return;
-                }
-            }
-
             if (tempTarget is { IsOnline: false })
             {
-                sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetOffline",
+                await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetOffline",
                     tempTarget.Player!.Uid.ToString(), tempTarget.Player!.Data.Name!));
                 tempTarget = null;
             }
@@ -216,7 +263,7 @@ public class CommandManager
                         continue;
                     }
 
-                    sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetNotFound", target));
+                    await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.TargetNotFound", target));
                     return;
                 }
 
@@ -225,7 +272,7 @@ public class CommandManager
                 // judge permission
                 if (arg.Target?.Player?.Uid != sender.GetSender() && !sender.HasPermission(CommandPermissions.TargetOthers))
                 {
-                    sender.SendMsg(I18NManager.Translate("Game.Command.Notice.NoPermission"));
+                    await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.NoPermission"));
                     return;
                 }
 
@@ -235,7 +282,7 @@ public class CommandManager
 
                 if (!sender.HasPermission(info.Permission))
                 {
-                    sender.SendMsg(I18NManager.Translate("Game.Command.Notice.NoPermission"));
+                    await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.NoPermission"));
                     return;
                 }
 
@@ -257,33 +304,31 @@ public class CommandManager
                     }
 
                     if (!canRun) continue;
-                    InvokeCommandMethod(method, command, arg, sender, cmd);
+                    await InvokeCommandMethod(method, command, arg, sender, cmd);
                     return;
                 }
 
                 if (gen.Default != null)
                 {
-                    InvokeCommandMethod(gen.Default, command, arg, sender, cmd);
+                    await InvokeCommandMethod(gen.Default, command, arg, sender, cmd);
                     return;
                 }
 
-                sender.SendMsg(I18NManager.Translate(info.Usage));
+                await sender.SendMsg(I18NManager.Translate(info.Usage));
             }
             else
             {
-                sender.SendMsg(I18NManager.Translate("Game.Command.Notice.CommandNotFound"));
+                await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.CommandNotFound"));
             }
         }
         catch (Exception e)
         {
             Logger.Error(I18NManager.Translate("Game.Command.Notice.InternalError"), e);
-            sender.SendMsg(I18NManager.Translate("Game.Command.Notice.InternalError"));
+            await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.InternalError"));
         }
         finally
         {
-            // Clear our own flow's override. In-flight async command tasks already captured it, so they
-            // keep localizing; this only stops the value leaking onto unrelated Translate calls.
-            I18NManager.LanguageOverride = null;
+            I18NManager.LanguageOverride = previousLanguage;
         }
     }
 
@@ -292,22 +337,17 @@ public class CommandManager
         return token.Length > 1 && token[0] == '@' && int.TryParse(token[1..], out _);
     }
 
-    private void InvokeCommandMethod(GeneratedCommandMethod method, ICommand command, CommandArg arg,
+    private async Task InvokeCommandMethod(GeneratedCommandMethod method, ICommand command, CommandArg arg,
         ICommandSender sender, string commandName)
     {
         var result = method.Invoke(command, arg);
-        ObserveCommandResult(result, sender, commandName, method.Name);
-    }
-
-    private void ObserveCommandResult(object? result, ICommandSender sender, string commandName, string methodName)
-    {
         switch (result)
         {
             case Task task:
-                _ = ObserveCommandTask(task, sender, commandName, methodName);
+                await ObserveCommandTask(task, sender, commandName, method.Name);
                 break;
             case ValueTask valueTask:
-                _ = ObserveCommandTask(valueTask.AsTask(), sender, commandName, methodName);
+                await ObserveCommandTask(valueTask.AsTask(), sender, commandName, method.Name);
                 break;
         }
     }

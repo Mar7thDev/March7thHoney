@@ -1,12 +1,8 @@
 using March7thHoney.Data;
-using March7thHoney.Database;
-using March7thHoney.Database.Account;
 using March7thHoney.Database.Inventory;
-using March7thHoney.Database.Mail;
 using March7thHoney.Enums.Item;
-using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Game.Mail;
 using March7thHoney.Internationalization;
-using March7thHoney.Util;
 
 namespace March7thHoney.Command.Command.Cmd;
 
@@ -29,7 +25,8 @@ public class CommandMail : ICommand
         }
 
         var player = arg.Target.Player!;
-        await SendDraftToConnection(arg.Target, BuildWelcomeDraft(player.Uid, player.Data.Name ?? ""));
+        await MailDeliveryHelper.SendToConnectionAsync(arg.Target,
+            MailDeliveryHelper.BuildWelcomeDraft(player.Uid, player.Data.Name ?? ""));
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.Mail.MailSentWithAttachment"));
     }
@@ -49,7 +46,7 @@ public class CommandMail : ICommand
             return;
         }
 
-        var sentCount = await SendDraftToAllUsers(draft);
+        var sentCount = await MailDeliveryHelper.SendToAllAccountsAsync(draft);
         await arg.SendMsg($"Mail sent to {sentCount} users.");
     }
 
@@ -74,7 +71,7 @@ public class CommandMail : ICommand
             return;
         }
 
-        await SendDraftToConnection(arg.Target, draft);
+        await MailDeliveryHelper.SendToConnectionAsync(arg.Target, draft);
         await arg.SendMsg(draft.Attachments.Count > 0
             ? I18NManager.Translate("Game.Command.Mail.MailSentWithAttachment")
             : I18NManager.Translate("Game.Command.Mail.MailSent"));
@@ -252,139 +249,8 @@ public class CommandMail : ICommand
             return;
         }
 
-        var sentCount = 0;
-        foreach (var account in GetAllAccounts())
-        {
-            await SendDraftToUid(account.Uid, BuildWelcomeDraft(account.Uid, GetRecipientName(account)));
-            sentCount++;
-        }
-
+        var sentCount = await MailDeliveryHelper.SendWelcomeToAllAsync();
         await arg.SendMsg($"Welcome mail sent to {sentCount} users.");
-    }
-
-    private static async ValueTask<int> SendDraftToAllUsers(MailDraft draft)
-    {
-        var sentCount = 0;
-        foreach (var account in GetAllAccounts())
-        {
-            await SendDraftToUid(account.Uid, draft);
-            sentCount++;
-        }
-
-        return sentCount;
-    }
-
-    private static List<AccountData> GetAllAccounts()
-    {
-        var accounts = DatabaseHelper.GetAllInstanceFromMap<AccountData>();
-        if (accounts == null || accounts.Count == 0)
-            accounts = DatabaseHelper.GetAllInstance<AccountData>();
-
-        return accounts?
-            .Where(account => account.Uid > 0)
-            .GroupBy(account => account.Uid)
-            .Select(group => group.First())
-            .ToList() ?? [];
-    }
-
-    private static async ValueTask SendDraftToUid(int uid, MailDraft draft)
-    {
-        var connection = Listener.GetActiveConnection(uid);
-        if (connection?.Player != null)
-        {
-            await SendDraftToConnection(connection, draft);
-            return;
-        }
-
-        var mailData = DatabaseHelper.Instance?.GetInstanceOrCreateNew<MailData>(uid);
-        if (mailData == null) return;
-
-        mailData.MailList.Add(CreateMailInfo(mailData.NextMailId++, draft));
-        DatabaseHelper.SaveDatabaseType(mailData);
-    }
-
-    private static async ValueTask SendDraftToConnection(Connection connection, MailDraft draft)
-    {
-        if (draft.Attachments.Count > 0)
-        {
-            await connection.Player!.MailManager!.SendMail(draft.Sender, draft.Title, draft.Content, draft.TemplateId,
-                CloneAttachments(draft.Attachments), draft.ExpireDays);
-            return;
-        }
-
-        await connection.Player!.MailManager!.SendMail(draft.Sender, draft.Title, draft.Content, draft.TemplateId,
-            draft.ExpireDays);
-    }
-
-    private static MailInfo CreateMailInfo(int mailId, MailDraft draft)
-    {
-        var now = DateTime.Now;
-        return new MailInfo
-        {
-            MailID = mailId,
-            SenderName = draft.Sender,
-            Title = draft.Title,
-            Content = draft.Content,
-            TemplateID = draft.TemplateId,
-            SendTime = now.ToUnixSec(),
-            ExpireTime = now.AddDays(draft.ExpireDays).ToUnixSec(),
-            Attachment = new MailAttachmentInfo
-            {
-                Items = CloneAttachments(draft.Attachments)
-            }
-        };
-    }
-
-    private static MailDraft BuildWelcomeDraft(int uid, string username)
-    {
-        var config = ConfigManager.Config.ServerOption.WelcomeMail;
-        var attachments = config.Items
-            .Where(item => item.ItemId > 0 && item.Count > 0 && GameData.ItemConfigData.ContainsKey(item.ItemId))
-            .Select(item => new ItemData
-            {
-                ItemId = item.ItemId,
-                Count = item.Count,
-                Rank = GetConfiguredAttachmentRank(item.ItemId, item.Rank),
-                Level = item.Level,
-                Promotion = item.Promotion,
-                TalentLevel = item.TalentLevel
-            })
-            .ToList();
-
-        return new MailDraft(
-            FormatText(config.Sender, uid, username),
-            FormatText(config.Title, uid, username),
-            FormatText(config.Content, uid, username),
-            config.TemplateId,
-            config.ExpireDays,
-            attachments);
-    }
-
-    private static List<ItemData> CloneAttachments(List<ItemData> attachments)
-    {
-        return [.. attachments.Select(attachment => attachment.Clone())];
-    }
-
-    private static string GetRecipientName(AccountData account)
-    {
-        return account.Username ?? account.Uid.ToString();
-    }
-
-    private static int GetConfiguredAttachmentRank(int itemId, int rank)
-    {
-        return GameData.ItemConfigData.TryGetValue(itemId, out var itemConfig) &&
-               itemConfig.ItemMainType == ItemMainTypeEnum.Equipment &&
-               rank <= 0
-            ? 1
-            : rank;
-    }
-
-    private static string FormatText(string value, int uid, string username)
-    {
-        return value
-            .Replace("{uid}", uid.ToString())
-            .Replace("{username}", username)
-            .Replace("{account}", username);
     }
 
     private enum MailParseMode
@@ -394,12 +260,4 @@ public class CommandMail : ICommand
         Content,
         Attachment
     }
-
-    private record MailDraft(
-        string Sender,
-        string Title,
-        string Content,
-        int TemplateId,
-        int ExpireDays,
-        List<ItemData> Attachments);
 }
