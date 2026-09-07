@@ -5,14 +5,15 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Tutorial;
 
 public class PacketUnlockTutorialScRsp : BasePacket
 {
-    public PacketUnlockTutorialScRsp(uint tutorialId) : base(CmdIds.UnlockTutorialScRsp)
+    public PacketUnlockTutorialScRsp(uint tutorialId, TutorialStatus status = TutorialStatus.TutorialUnlock) : base(
+        CmdIds.UnlockTutorialScRsp)
     {
         var proto = new UnlockTutorialScRsp
         {
             Tutorial = new Proto.Tutorial
             {
                 Id = tutorialId,
-                Status = TutorialStatus.TutorialUnlock
+                Status = status
             }
         };
         SetData(proto);
