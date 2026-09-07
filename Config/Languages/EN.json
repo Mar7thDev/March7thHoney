@@ -213,6 +213,7 @@
   "Game.Command.Scene.PropNotFound": "Prop not found!",
   "Game.Command.Scene.PropStateChanged": "Prop: {0} state set to {1}",
   "Game.Command.Scene.SceneChanged": "Entered scene {0}",
+  "Game.Command.Scene.SceneEnterFailed": "Could not enter scene {0}. Check the scene entrance ID and scene resources.",
   "Game.Command.Scene.SceneReloaded": "Scene reloaded!",
   "Game.Command.Scene.SceneReset": "Reset all prop states in scene {0}!",
   "Game.Command.Scene.Teleported": "Teleported!",

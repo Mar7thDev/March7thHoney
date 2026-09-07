@@ -312,16 +312,27 @@ public partial class PlayerInstance
     public async ValueTask<bool> EnterScene(int entryId, int teleportId, bool sendPacket, int storyLineId = 0,
         bool mapTp = false)
     {
-        var beforeStoryLineId = StoryLineManager?.StoryLineData.CurStoryLineId;
-        if (storyLineId != StoryLineManager?.StoryLineData.CurStoryLineId)
+        // Preserve the existing return contract for callers that only need the over-map flag.
+        return (await TryEnterScene(entryId, teleportId, sendPacket, storyLineId, mapTp)).IsOverMap;
+    }
+
+    public async ValueTask<(bool Success, bool IsOverMap)> TryEnterScene(int entryId, int teleportId,
+        bool sendPacket, int storyLineId = 0, bool mapTp = false)
+    {
+        var beforeStoryLineId = StoryLineManager?.StoryLineData.CurStoryLineId ?? 0;
+        if (entryId == 0)
         {
-            if (StoryLineManager != null)
-                await StoryLineManager.EnterStoryLine(storyLineId, entryId == 0); // entryId == 0 -> teleport
-            mapTp = false; // do not use mapTp when enter story line
+            // Story-line transitions with no entrance use the story's saved position.
+            if (StoryLineManager == null || storyLineId == beforeStoryLineId) return (false, false);
+            var beforeScene = SceneInstance;
+            await StoryLineManager.EnterStoryLine(storyLineId, true);
+            var transitioned = StoryLineManager.StoryLineData.CurStoryLineId == storyLineId
+                               && SceneInstance != null && !ReferenceEquals(beforeScene, SceneInstance);
+            return (transitioned, transitioned);
         }
 
         GameData.MapEntranceData.TryGetValue(entryId, out var entrance);
-        if (entrance == null) return false;
+        if (entrance == null || !GameData.MazePlaneData.ContainsKey(entrance.PlaneID)) return (false, false);
 
         GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floorInfo);
         // GetFloorInfo hands back null for a floor the resource dump does not contain. Dereferencing it
@@ -330,7 +341,7 @@ public partial class PlayerInstance
         if (floorInfo == null)
         {
             SceneLogger.Warn($"EnterScene({entryId}) aborted: no floor data for P{entrance.PlaneID}_F{entrance.FloorID}.");
-            return false;
+            return (false, false);
         }
 
         var startGroup = entrance.StartGroupID;
@@ -361,20 +372,26 @@ public partial class PlayerInstance
         {
             SceneLogger.Warn($"EnterScene({entryId}) aborted: no usable anchor on P{entrance.PlaneID}_F{entrance.FloorID} " +
                         $"(group {startGroup}, anchor {startAnchor}).");
-            return false;
+            return (false, false);
+        }
+
+        // Validate the destination before changing the player's story-line state.
+        if (storyLineId != beforeStoryLineId)
+        {
+            if (StoryLineManager == null) return (false, false);
+            await StoryLineManager.EnterStoryLine(storyLineId, false);
+            if (StoryLineManager.StoryLineData.CurStoryLineId != storyLineId) return (false, false);
+            mapTp = false;
         }
 
         await MissionManager!.HandleFinishType(MissionFinishTypeEnum.EnterMapByEntrance, entrance);
 
         var beforeEntryId = Data.EntryId;
 
-        await LoadScene(entrance.PlaneID, entrance.FloorID, entryId, anchor.ToPositionProto(),
+        var loaded = await TryLoadScene(entrance.PlaneID, entrance.FloorID, entryId, anchor.ToPositionProto(),
             anchor.ToRotationProto(), sendPacket, mapTp);
 
-        var afterEntryId = Data.EntryId;
-
-        return beforeEntryId != afterEntryId ||
-               beforeStoryLineId != storyLineId; // return true if entryId changed or story line changed
+        return (loaded, loaded && (beforeEntryId != Data.EntryId || beforeStoryLineId != storyLineId));
     }
 
     public async ValueTask EnterSceneByEntranceId(int entranceId, int anchorGroupId, int anchorId, bool sendPacket)
@@ -437,17 +454,23 @@ public partial class PlayerInstance
     public async ValueTask LoadScene(int planeId, int floorId, int entryId, Position pos, Position rot, bool sendPacket,
         bool mapTp = false)
     {
+        await TryLoadScene(planeId, floorId, entryId, pos, rot, sendPacket, mapTp);
+    }
+
+    private async ValueTask<bool> TryLoadScene(int planeId, int floorId, int entryId, Position pos, Position rot,
+        bool sendPacket, bool mapTp = false)
+    {
         GameData.MazePlaneData.TryGetValue(planeId, out var plane);
-        if (plane == null) return;
+        if (plane == null) return false;
 
         var floorKey = ((long)planeId << 32) | (uint)floorId;
-        if (!_loadingFloors.Add(floorKey)) return; // cycle guard: floor already loading (orphan level-graph EnterMap) -> stack overflow
+        if (!_loadingFloors.Add(floorKey)) return false; // cycle guard: floor already loading (orphan level-graph EnterMap) -> stack overflow
         try
         {
             if (plane.PlaneType == PlaneTypeEnum.Raid && RaidManager!.Data.CurRaidId == 0)
             {
                 await EnterScene(2000101, 0, sendPacket);
-                return;
+                return false; // The requested raid was not entered, even if the fallback succeeded.
             }
 
             Data.Pos = pos;
@@ -486,9 +509,14 @@ public partial class PlayerInstance
             }
 
             if (sendPacket && notSendMove)
+            {
+                await SendPacket(new PacketSyncServerSceneChangeNotify());
                 await SendPacket(new PacketEnterSceneByServerScNotify(SceneInstance!));
+            }
             else if (sendPacket && !notSendMove) // send move packet
                 await SendPacket(new PacketSceneEntityMoveScNotify(this));
+
+            return Data.PlaneId == planeId && Data.FloorId == floorId && Data.EntryId == entryId;
         }
         finally
         {

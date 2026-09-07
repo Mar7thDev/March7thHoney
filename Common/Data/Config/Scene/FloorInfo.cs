@@ -58,6 +58,9 @@ public partial class FloorInfo
         if (!string.IsNullOrEmpty(common.Category) &&
             Enum.TryParse<GroupCategoryEnum>(common.Category, out var category))
             group.Category = category;
+
+        if (common.IsHoyoGroup is { } isHoyoGroup)
+            group.IsHoyoGroup = isHoyoGroup;
     }
 
     public AnchorInfo? GetAnchorInfo(int groupId, int anchorId)
@@ -117,6 +120,7 @@ public partial class FloorInfo
 /// <summary>One GroupInstanceCommonMap row of a runtime floor export (only the fields the server consumes).</summary>
 public class GroupInstanceCommonInfo
 {
+    public bool? IsHoyoGroup { get; set; }
     public string? SaveType { get; set; }
     public string? Category { get; set; }
     public string? LoadSide { get; set; }

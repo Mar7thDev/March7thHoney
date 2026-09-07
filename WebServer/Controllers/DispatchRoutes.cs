@@ -368,9 +368,10 @@ public static class DispatchRoutes
 
     private static IResult ShieldLogin(HttpContext ctx, LoginReqJson req)
     {
-        Debug($"shield login: account={req.account} is_crypto={req.is_crypto}");
+        Debug($"shield login: account_len={req.account?.Length ?? 0} is_crypto={req.is_crypto}");
         var useRsa = Config.WebSecurity.EnableRsaLoginDecrypt && req.is_crypto;
-        var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(req.account, req.password, useRsa);
+        var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(
+            req.account, req.password, useRsa, requireEncryptedPassword: req.is_crypto);
         if (decryptFailed)
             return Results.Json(LoginResJson.Error(-202, "Invalid login data"));
         var identityKeys = LoginIdentityContextFactory.Build(ctx.Request, req.device, req.device_id, req.device_fp);
@@ -382,9 +383,11 @@ public static class DispatchRoutes
 
     private static IResult PassportLogin(HttpContext ctx, PassportLoginReqJson req)
     {
-        Debug($"appLoginByPassword: account={req.account}");
-        var (account, password) =
-            LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
+        Debug($"appLoginByPassword: account_len={req.account?.Length ?? 0}");
+        var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(
+            req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
+        if (decryptFailed)
+            return Results.Json(new StatusResult(-202, "Invalid login data"));
         var identityKeys = LoginIdentityContextFactory.Build(ctx.Request, req.device, req.device_id, req.device_fp);
         if (AuthRateLimiter.TryReject(ctx, AuthRateLimitAction.Login, identityKeys, account, out var limited))
             return limited;
@@ -409,9 +412,12 @@ public static class DispatchRoutes
 
     private static IResult LegacyPassportLogin(HttpContext ctx, PassportLoginReqJson req)
     {
-        Debug($"ma loginByPassword: account={req.account}");
-        var (account, password) =
-            LoginCryptoHelper.TryDecryptCredentials(req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
+        Debug($"ma loginByPassword: account_len={req.account?.Length ?? 0}");
+        var (account, password, decryptFailed) = LoginCryptoHelper.TryDecryptCredentialsStrict(
+            req.account, req.password, Config.WebSecurity.EnableRsaLoginDecrypt);
+        if (decryptFailed)
+            return Results.Text(JsonSerializer.Serialize(PassportLoginResJson.Error(-202, "Invalid login data"),
+                WebJsonContext.Default.PassportLoginResJson), "application/json");
         var identityKeys = LoginIdentityContextFactory.Build(ctx.Request, req.device, req.device_id, req.device_fp);
         if (AuthRateLimiter.TryReject(ctx, AuthRateLimitAction.Login, identityKeys, account, out var limited))
             return limited;

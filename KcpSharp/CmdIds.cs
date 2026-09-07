@@ -2610,4 +2610,5 @@ public class CmdIds
     public const int CancelAutoConversionCacheScRsp = 4161;
     public const int RelicPresetGetPlanCsReq = 9842;
     public const int RelicPresetDeletePlanCsReq = 9852;
+    public const int SyncServerSceneChangeNotify = 1491;
 }

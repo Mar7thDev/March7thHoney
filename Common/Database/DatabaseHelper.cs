@@ -44,7 +44,9 @@ public class DatabaseHelper
         return conn;
     }
 
-    public void Initialize()
+    public void Initialize() => Initialize(startSaveThread: true);
+
+    public void Initialize(bool startSaveThread)
     {
         logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Database")));
         var config = ConfigManager.Config;
@@ -95,7 +97,7 @@ public class DatabaseHelper
                 Thread.Sleep(1000);
             }
         });
-        SaveThread.Start();
+        if (startSaveThread) SaveThread.Start();
 
         LoadAllData = true;
     }
