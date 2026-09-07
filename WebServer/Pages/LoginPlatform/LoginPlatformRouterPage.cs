@@ -15,10 +15,11 @@ public static class LoginPlatformRouterPage
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light">
   <title>Login Platform</title>
   <style>
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0b0e14; color: #98a3b6; font-family: "Inter", "Segoe UI", system-ui, sans-serif; }
-    a { color: #7aa5ff; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f4f7fb; color: #5f6f82; font-family: "Inter", "Segoe UI", system-ui, sans-serif; }
+    a { color: #2f68c5; }
   </style>
 </head>
 <body>

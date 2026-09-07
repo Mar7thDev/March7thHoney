@@ -30,7 +30,7 @@ public static class LoginPlatformPage
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <meta name="color-scheme" content="dark">
+  <meta name="color-scheme" content="light">
   <title>{{encodedTitle}}</title>
   <style>
 {{Styles()}}
@@ -175,22 +175,22 @@ public static class LoginPlatformPage
     {
         return """
     :root {
-      color-scheme: dark;
-      --bg: #0b0e14;
-      --surface: #151a23;
-      --field: #10141c;
-      --line: #262f40;
-      --line-2: #33405a;
-      --ink: #eef2f8;
-      --muted: #98a3b6;
-      --soft: #6c7788;
-      --accent: #5b8def;
-      --accent-2: #7aa5ff;
-      --accent-soft: rgba(91, 141, 239, 0.18);
-      --green: #3ecf8e;
-      --amber: #f0b45a;
-      --red: #f26d6a;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --field: #f7f9fc;
+      --line: #dce3ec;
+      --line-2: #c7d2e0;
+      --ink: #182230;
+      --muted: #5f6f82;
+      --soft: #8492a6;
+      --accent: #477dd8;
+      --accent-2: #2f68c5;
+      --accent-soft: rgba(71, 125, 216, 0.13);
+      --green: #16835b;
+      --amber: #a96713;
+      --red: #cc4545;
+      --shadow: 0 24px 70px rgba(33, 52, 79, 0.14);
       --font: "Inter", "Segoe UI", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
     }
     * { box-sizing: border-box; }
@@ -202,8 +202,8 @@ public static class LoginPlatformPage
       line-height: 1.5;
       color: var(--ink);
       background:
-        radial-gradient(900px 500px at 15% -10%, rgba(91, 141, 239, 0.2), transparent 60%),
-        radial-gradient(700px 400px at 110% 110%, rgba(167, 139, 250, 0.16), transparent 55%),
+        radial-gradient(900px 500px at 15% -10%, rgba(71, 125, 216, 0.14), transparent 60%),
+        radial-gradient(700px 400px at 110% 110%, rgba(115, 87, 200, 0.1), transparent 55%),
         var(--bg);
       -webkit-font-smoothing: antialiased;
     }
