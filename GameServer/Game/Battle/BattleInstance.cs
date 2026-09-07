@@ -225,6 +225,39 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         }
     }
 
+    /// <summary>
+    ///     The fight roster the official PVEBattleResultScRsp echoes (battle_avatar_list with the full
+    ///     skilltree/equipment payload per avatar - part4.1.json idx 12989/13275). The client's battle-end chain
+    ///     for mission fights (client-side TriggerBattle graphs) settles off this result; an empty roster left the
+    ///     prologue re-triggering the same battle. Mirrors the non-GridFight branches of <see cref="ToProto" />.
+    /// </summary>
+    public List<BattleAvatar> BuildResultBattleAvatars()
+    {
+        var result = new List<BattleAvatar>();
+        var collection = new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup);
+
+        if (CalyxOverride?.LineupOverride is { Count: > 0 } lineupOverride)
+        {
+            for (var index = 0; index < lineupOverride.Count; index++)
+            {
+                var avatar = lineupOverride[index];
+                var battleAvatar = avatar.AvatarInfo is FormalAvatarInfo formal &&
+                                   avatar.BattleAvatarId is int battleAvatarId
+                    ? formal.ToBattleProto(collection, battleAvatarId, avatar.AvatarType)
+                    : avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType);
+                battleAvatar.Index = (uint)index;
+                result.Add(battleAvatar);
+            }
+
+            return result;
+        }
+
+        foreach (var avatar in GetBattleAvatars())
+            result.Add(avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+
+        return result;
+    }
+
     public SceneBattleInfo ToProto()
     {
         var proto = new SceneBattleInfo
