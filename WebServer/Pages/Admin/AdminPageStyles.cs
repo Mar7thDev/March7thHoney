@@ -6,29 +6,29 @@ public static class AdminPageStyles
     {
         return """
     :root {
-      color-scheme: dark;
-      --bg: #0b0e14;
-      --bg-2: #10141c;
-      --panel: #151a23;
-      --panel-2: #1b2130;
-      --panel-3: #232b3b;
-      --line: #262f40;
-      --line-2: #33405a;
-      --ink: #eef2f8;
-      --muted: #98a3b6;
-      --soft: #6c7788;
-      --accent: #5b8def;
-      --accent-2: #7aa5ff;
-      --accent-soft: rgba(91, 141, 239, 0.16);
-      --green: #3ecf8e;
-      --green-soft: rgba(62, 207, 142, 0.14);
-      --amber: #f0b45a;
-      --amber-soft: rgba(240, 180, 90, 0.16);
-      --red: #f26d6a;
-      --red-soft: rgba(242, 109, 106, 0.16);
-      --purple: #a78bfa;
-      --cyan: #5fd3e8;
-      --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --bg-2: #eef3f8;
+      --panel: #ffffff;
+      --panel-2: #f7f9fc;
+      --panel-3: #e8eef6;
+      --line: #dce3ec;
+      --line-2: #c7d2e0;
+      --ink: #182230;
+      --muted: #5f6f82;
+      --soft: #8492a6;
+      --accent: #477dd8;
+      --accent-2: #2f68c5;
+      --accent-soft: rgba(71, 125, 216, 0.13);
+      --green: #16835b;
+      --green-soft: rgba(22, 131, 91, 0.11);
+      --amber: #a96713;
+      --amber-soft: rgba(169, 103, 19, 0.12);
+      --red: #cc4545;
+      --red-soft: rgba(204, 69, 69, 0.11);
+      --purple: #7357c8;
+      --cyan: #137b92;
+      --shadow: 0 16px 40px rgba(33, 52, 79, 0.12);
       --radius: 14px;
       --radius-sm: 9px;
       --topbar: 60px;
@@ -121,7 +121,7 @@ public static class AdminPageStyles
     .btn.primary:hover:not(:disabled) { background: var(--accent-2); border-color: var(--accent-2); }
     .btn.danger { background: transparent; border-color: rgba(242, 109, 106, 0.5); color: var(--red); }
     .btn.danger:hover:not(:disabled) { background: var(--red-soft); }
-    .btn.success { background: var(--green); border-color: var(--green); color: #06261a; }
+    .btn.success { background: var(--green); border-color: var(--green); color: #fff; }
     .btn.ghost { background: transparent; border-color: var(--line); color: var(--muted); }
     .btn.ghost:hover:not(:disabled) { color: var(--ink); background: var(--panel-2); }
     .btn.small { min-height: 30px; padding: 0 11px; font-size: 12.5px; }
@@ -186,7 +186,7 @@ public static class AdminPageStyles
     .chip-list { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 
     /* ------------------------------------------------------------- login */
-    .login-view { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(1200px 600px at 20% -10%, rgba(91, 141, 239, 0.18), transparent 60%), radial-gradient(900px 500px at 110% 110%, rgba(167, 139, 250, 0.14), transparent 55%), var(--bg); }
+    .login-view { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(1200px 600px at 20% -10%, rgba(71, 125, 216, 0.14), transparent 60%), radial-gradient(900px 500px at 110% 110%, rgba(115, 87, 200, 0.1), transparent 55%), var(--bg); }
     .login-card { width: min(100%, 420px); padding: 32px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); box-shadow: var(--shadow); }
     .login-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
     .brand-mark { display: grid; place-items: center; width: 46px; height: 46px; flex: 0 0 46px; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--purple)); color: #fff; font-weight: 800; font-size: 16px; letter-spacing: 0.02em; }
@@ -204,7 +204,7 @@ public static class AdminPageStyles
       position: sticky; top: 0; z-index: 30;
       display: flex; align-items: center; gap: 14px;
       height: var(--topbar); padding: 0 18px;
-      background: rgba(11, 14, 20, 0.85); backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
     .topbar .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
@@ -395,9 +395,9 @@ public static class AdminPageStyles
     .log-message { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink); }
     .lvl-INFO .log-level { color: var(--accent-2); }
     .lvl-WARN .log-level { color: var(--amber); }
-    .lvl-WARN .log-message { color: #f6d6a3; }
+    .lvl-WARN .log-message { color: #8a5815; }
     .lvl-ERROR .log-level, .lvl-FATAL .log-level { color: var(--red); }
-    .lvl-ERROR .log-message, .lvl-FATAL .log-message { color: #ffb3b0; }
+    .lvl-ERROR .log-message, .lvl-FATAL .log-message { color: #b93636; }
     .lvl-DEBUG .log-level { color: var(--purple); }
     .lvl-DEBUG .log-message { color: var(--muted); }
     .segmented button.lvl-INFO.active { color: var(--accent-2); }
@@ -422,10 +422,10 @@ public static class AdminPageStyles
     .toast { padding: 11px 14px; border: 1px solid var(--line-2); border-radius: var(--radius-sm); background: var(--panel-2); color: var(--ink); font-size: 13px; box-shadow: var(--shadow); opacity: 0; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease; cursor: pointer; overflow-wrap: anywhere; }
     .toast.show { opacity: 1; transform: none; }
     .toast.good { border-color: rgba(62, 207, 142, 0.5); }
-    .toast.bad { border-color: rgba(242, 109, 106, 0.6); background: #2a1a1e; }
+    .toast.bad { border-color: rgba(204, 69, 69, 0.45); background: #fff0f0; }
 
     /* -------------------------------------------------------------- modal */
-    .modal-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; background: rgba(4, 6, 10, 0.7); backdrop-filter: blur(4px); }
+    .modal-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 20px; background: rgba(24, 34, 48, 0.28); backdrop-filter: blur(4px); }
     .modal { width: min(100%, 460px); padding: 22px; border: 1px solid var(--line-2); border-radius: 16px; background: var(--panel); box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; }
     .modal-message { color: var(--muted); font-size: 13.5px; white-space: pre-wrap; }
     .modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
