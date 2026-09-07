@@ -32,6 +32,53 @@ public static class AuthRateLimiter
             AttemptIndex[attempt.AttemptKey] = attempt;
     }
 
+    public sealed record SnapshotEntry(
+        string Key, string Action, int Count, long WindowStart, long BlockedUntil, long UpdatedAt);
+
+    /// <summary>Current attempt counters, blocked entries first (admin console).</summary>
+    public static List<SnapshotEntry> GetSnapshot()
+    {
+        lock (SyncRoot)
+        {
+            return AttemptIndex.Values
+                .Select(x => new SnapshotEntry(x.AttemptKey, x.Action, x.Count, x.WindowStart, x.BlockedUntil,
+                    x.UpdatedAt))
+                .OrderByDescending(x => x.BlockedUntil)
+                .ThenByDescending(x => x.UpdatedAt)
+                .ToList();
+        }
+    }
+
+    /// <summary>Drop one counter (lifts its block). Returns false when the key is unknown.</summary>
+    public static bool Clear(string attemptKey)
+    {
+        lock (SyncRoot)
+        {
+            if (!AttemptIndex.TryRemove(attemptKey, out var attempt))
+                return false;
+
+            DatabaseHelper.Instance?.DeleteInstance(attempt);
+            return true;
+        }
+    }
+
+    /// <summary>Drop every counter, or only the ones currently blocking, and return how many were removed.</summary>
+    public static int ClearAll(bool blockedOnly)
+    {
+        lock (SyncRoot)
+        {
+            var now = Extensions.GetUnixSec();
+            var targets = AttemptIndex.Values.Where(x => !blockedOnly || x.BlockedUntil > now).ToList();
+            foreach (var attempt in targets)
+            {
+                DatabaseHelper.Instance?.DeleteInstance(attempt);
+                AttemptIndex.TryRemove(attempt.AttemptKey, out _);
+            }
+
+            return targets.Count;
+        }
+    }
+
     public static bool TryReject(HttpContext context, AuthRateLimitAction action,
         IEnumerable<string>? identityKeys, string? accountIdentifier, out IResult result)
     {

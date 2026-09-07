@@ -1,8 +1,10 @@
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using March7thHoney.Command;
 using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
@@ -20,7 +22,7 @@ namespace March7thHoney.WebServer.Server;
 
 public static class MuipManager
 {
-    public delegate void ExecuteCommandDelegate(string message, MuipCommandSender sender);
+    public delegate Task ExecuteCommandDelegate(string message, MuipCommandSender sender);
 
     public delegate void GetPlayerStatusDelegate(int uid, out PlayerStatusEnum status,
         out PlayerSubStatusEnum subStatus);
@@ -32,7 +34,14 @@ public static class MuipManager
     public static string RsaPublicKey { get; private set; } = "";
     public static string RsaPrivateKey { get; private set; } = "";
 
-    public static Dictionary<string, MuipSession> Sessions { get; } = [];
+    public static ConcurrentDictionary<string, MuipSession> Sessions { get; } = [];
+
+    /// <summary>
+    ///     Supplies the registered command list to the admin console. Wired by the entry point because the
+    ///     Command project sits above WebServer in the dependency graph.
+    /// </summary>
+    public static Func<IReadOnlyList<CommandCatalogEntry>>? CommandCatalogProvider { get; set; }
+
     public static event ExecuteCommandDelegate? OnExecuteCommand;
     public static event ServerInformationDelegate? OnGetServerInformation;
     public static event GetPlayerStatusDelegate? OnGetPlayerStatus;
@@ -53,7 +62,7 @@ public static class MuipManager
             // convert to PEM
             session.RsaPublicKey = XMLToPEM_Pub(session.RsaPublicKey);
 
-        Sessions.Add(session.SessionId, session);
+        Sessions.TryAdd(session.SessionId, session);
 
         var data = new CreateSessionData
         {
@@ -72,7 +81,7 @@ public static class MuipManager
             var session = value;
             if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
             {
-                Sessions.Remove(sessionId);
+                Sessions.TryRemove(sessionId, out _);
                 return new AuthAdminKeyResponse(1, "Session has expired!", null);
             }
 
@@ -101,7 +110,7 @@ public static class MuipManager
             var session = value;
             if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
             {
-                Sessions.Remove(sessionId);
+                Sessions.TryRemove(sessionId, out _);
                 return null;
             }
 
@@ -113,12 +122,17 @@ public static class MuipManager
 
     public static ExecuteCommandResponse ExecuteCommand(string sessionId, string command, int targetUid)
     {
+        return ExecuteCommandAsync(sessionId, command, targetUid).GetAwaiter().GetResult();
+    }
+
+    public static async Task<ExecuteCommandResponse> ExecuteCommandAsync(string sessionId, string command, int targetUid)
+    {
         if (Sessions.TryGetValue(sessionId, out var value))
         {
             var session = value;
             if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
             {
-                Sessions.Remove(sessionId);
+                Sessions.TryRemove(sessionId, out _);
                 return new ExecuteCommandResponse(1, "Session has expired!");
             }
 
@@ -129,21 +143,24 @@ public static class MuipManager
             if (string.IsNullOrWhiteSpace(commandStr))
                 return new ExecuteCommandResponse(3, "Wrong encrypted key");
 
+            var handlers = OnExecuteCommand;
+            if (handlers == null)
+                return new ExecuteCommandResponse(5, "Command handler is not initialized!");
+
             logger.Info($"SessionId: {sessionId}, UID: {targetUid}, ExecuteCommand: {commandStr}");
-            var returnStr = "";
+            var output = new StringBuilder();
+            var sender = new MuipCommandSender(session, msg =>
+            {
+                lock (output) output.Append(msg).Append("\r\n");
+            }) { SenderUid = targetUid };
 
-            var sync = Task.Run(() => OnExecuteCommand?.Invoke(commandStr,
-                new MuipCommandSender(session, msg => { returnStr += msg + "\r\n"; })
-                {
-                    SenderUid = targetUid
-                }));
-
-            sync.Wait();
+            foreach (ExecuteCommandDelegate handler in handlers.GetInvocationList())
+                await handler(commandStr, sender).ConfigureAwait(false);
 
             return new ExecuteCommandResponse(0, "Success", new ExecuteCommandData
             {
                 SessionId = sessionId,
-                Message = Convert.ToBase64String(Encoding.UTF8.GetBytes(returnStr))
+                Message = Convert.ToBase64String(Encoding.UTF8.GetBytes(output.ToString()))
             });
         }
 
@@ -157,7 +174,7 @@ public static class MuipManager
             var session = value;
             if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
             {
-                Sessions.Remove(sessionId);
+                Sessions.TryRemove(sessionId, out _);
                 return new ServerInformationResponse(1, "Session has expired!");
             }
 
@@ -217,7 +234,7 @@ public static class MuipManager
             var session = value;
             if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
             {
-                Sessions.Remove(sessionId);
+                Sessions.TryRemove(sessionId, out _);
                 return new PlayerInformationResponse(1, "Session has expired!");
             }
 
@@ -381,41 +398,64 @@ public static class MuipManager
         return result;
     }
 
+    /// <summary>Total and available physical memory in MB for the current OS (0 when unavailable).</summary>
+    public static (float TotalMb, float AvailableMb) GetMachineMemory()
+    {
+        try
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                return GetMemoryWindows();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                return (GetTotalMemoryLinux(), GetAvailableMemoryLinux());
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                return (GetTotalMemoryMacOS(), GetAvailableMemoryMacOS());
+        }
+        catch
+        {
+            // Diagnostics only.
+        }
+
+        return (0, 0);
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct MemoryStatusEx
+    {
+        public uint Length;
+        public uint MemoryLoad;
+        public ulong TotalPhysical;
+        public ulong AvailablePhysical;
+        public ulong TotalPageFile;
+        public ulong AvailablePageFile;
+        public ulong TotalVirtual;
+        public ulong AvailableVirtual;
+        public ulong AvailableExtendedVirtual;
+    }
+
+    [DllImport("kernel32.dll", ExactSpelling = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool GlobalMemoryStatusEx(ref MemoryStatusEx status);
+
+    private static (float TotalMb, float AvailableMb) GetMemoryWindows()
+    {
+        if (!OperatingSystem.IsWindows()) return (0, 0);
+
+        // A single native snapshot avoids WMI/PerformanceCounter initialization on the HTTP request path
+        // and works under NativeAOT without COM. Read both values together so they describe one sample.
+        var status = new MemoryStatusEx { Length = (uint)Marshal.SizeOf<MemoryStatusEx>() };
+        return GlobalMemoryStatusEx(ref status)
+            ? (status.TotalPhysical / (1024f * 1024f), status.AvailablePhysical / (1024f * 1024f))
+            : (0, 0);
+    }
+
     public static float GetTotalMemoryWindows()
     {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            try
-            {
-                // WMI (System.Management) is COM-based and throws under NativeAOT — degrade gracefully.
-                var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_ComputerSystem");
-                foreach (var obj in searcher.Get())
-                {
-                    var memory = Convert.ToUInt64(obj["TotalPhysicalMemory"]);
-                    return memory / 1024 / 1024;
-                }
-            }
-            catch
-            {
-                // WMI unavailable (e.g. NativeAOT) — report 0.
-            }
-
-        return 0;
+        return GetMemoryWindows().TotalMb;
     }
 
     public static float GetAvailableMemoryWindows()
     {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            try
-            {
-                var pc = new PerformanceCounter("Memory", "Available MBytes");
-                return pc.NextValue();
-            }
-            catch
-            {
-                // Performance counters unavailable — report 0.
-            }
-
-        return 0;
+        return GetMemoryWindows().AvailableMb;
     }
 
     public static float GetTotalMemoryLinux()

@@ -1,5 +1,6 @@
 using System.Text.Json;
 using March7thHoney.Configuration;
+using March7thHoney.Enums;
 using March7thHoney.Internationalization;
 using March7thHoney.Util.License;
 
@@ -56,6 +57,43 @@ public static class ConfigManager
     public static bool UpdateHotfixData(string version, DownloadUrlConfig remote)
     {
         return UpdateHotfixData([version], remote) > 0;
+    }
+
+    /// <summary>
+    ///     Overwrite every URL of the given versions with the supplied values (empty strings clear the URL, unlike
+    ///     <see cref="UpdateHotfixData(string, DownloadUrlConfig)" /> which only fills in non-empty ones) and persist.
+    /// </summary>
+    public static int ReplaceHotfixData(IEnumerable<string> versions, DownloadUrlConfig urls)
+    {
+        lock (HotfixDataLock)
+        {
+            var count = 0;
+            foreach (var version in versions.Distinct(StringComparer.Ordinal))
+            {
+                if (string.IsNullOrWhiteSpace(version)) continue;
+                Hotfix.HotfixData[version] = new DownloadUrlConfig
+                {
+                    AssetBundleUrl = urls.AssetBundleUrl ?? "",
+                    ExAssetBundleUrl = urls.ExAssetBundleUrl ?? "",
+                    ExResourceUrl = urls.ExResourceUrl ?? "",
+                    LuaUrl = urls.LuaUrl ?? "",
+                    IfixUrl = urls.IfixUrl ?? ""
+                };
+                count++;
+            }
+
+            if (count > 0) SaveHotfixDataAtomic();
+            return count;
+        }
+    }
+
+    public static void SetHotfixRegion(BaseRegionEnum region)
+    {
+        lock (HotfixDataLock)
+        {
+            Hotfix.Region = region;
+            SaveHotfixDataAtomic();
+        }
     }
 
     public static int UpdateHotfixData(IEnumerable<string> versions, DownloadUrlConfig remote)

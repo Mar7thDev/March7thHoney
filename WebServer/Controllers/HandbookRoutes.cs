@@ -93,7 +93,7 @@ public static class HandbookRoutes
         return entry;
     }
 
-    private static List<string> GetLanguages()
+    public static List<string> GetLanguages()
     {
         var dir = new DirectoryInfo(HandbookDir);
         if (!dir.Exists) return [];
