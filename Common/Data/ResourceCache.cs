@@ -91,6 +91,15 @@ public static class ResourceCache
 
     private static bool ValidateLoadedCache()
     {
+        if (GameData.FloorInfoData.Values.Any(floor => floor.Groups.Values.Any(group =>
+                group.LoadSide != Enums.Scene.GroupLoadSideEnum.Client &&
+                group.Category == Enums.Scene.GroupCategoryEnum.Atmosphere && group.IsHoyoGroup == null)))
+        {
+            Logger.Warn("Resource cache is stale: scene IsHoyoGroup metadata is missing. " +
+                        "Deploy the matching Resource.bin or upgrade it with scripts/SceneCacheUpgrade.");
+            return false;
+        }
+
         if (GameData.EquipmentConfigData.Count == 0)
         {
             Logger.Warn("Resource cache is stale: EquipmentConfigData is missing.");

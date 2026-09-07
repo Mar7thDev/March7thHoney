@@ -78,14 +78,8 @@ public partial class SceneInstance
             if (defaultValue != 0)
                 result[name] = defaultValue;
 
-        var exposeActivityEntries = Excel.PlaneType is PlaneTypeEnum.Town or PlaneTypeEnum.Maze &&
-                                    GameData.ContentPackageConfigData.Values.Any(package =>
-                                        package.MainMissionIDList.Count > 0 && package.TouchesFloor(FloorId));
-        if (exposeActivityEntries)
-            foreach (var value in FloorInfo?.FloorSavedValue ?? [])
-                if (value.DefaultValue == 0 && !value.Name.Contains("_IsHidden") && !persisted.ContainsKey(value.Name))
-                    result[value.Name] = 1;
-
+        // Activity availability must not turn unrelated floor switches on. Use only the
+        // current dimension's resource defaults and the player's explicitly saved values.
         foreach (var (key, value) in persisted)
             result[key] = value;
 
@@ -103,7 +97,8 @@ public partial class SceneInstance
             EntryId = (uint)EntryId,
             ClientPosVersion = 1,
             SceneMissionInfo = new MissionStatusBySceneInfo(),
-            FOJJGJPIMBL = new BELNLOJAFCM(),
+            // 4.5 PROD scene-saved-value initialization (450 part3_train-only, idx 279/526).
+            FOJJGJPIMBL = new BELNLOJAFCM { MHFBCGMDDOO = 2 },
             DimensionId = (uint)ResolveDimensionId(),
             GameStoryLineId = (uint)(Player.StoryLineManager?.StoryLineData.CurStoryLineId ?? 0),
             // 4.2.0 client expects SceneInfo.SceneIdentifier to be present during scene sync.

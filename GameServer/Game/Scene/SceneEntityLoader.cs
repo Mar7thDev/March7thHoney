@@ -35,7 +35,9 @@ public class SceneEntityLoader(SceneInstance scene)
     public virtual async ValueTask SyncEntity()
     {
         var refreshed = false;
-        var oldGroupId = new List<int>();
+        // Empty runtime groups (for example StageItemsHandler) are still loaded groups.
+        // Deriving membership only from entities reloads them on every sync and duplicates Groups.
+        var oldGroupId = new HashSet<int>(Scene.Groups);
         foreach (var entity in Scene.Entities.Values.Where(entity => !oldGroupId.Contains(entity.GroupId)))
             oldGroupId.Add(entity.GroupId);
 
@@ -62,7 +64,7 @@ public class SceneEntityLoader(SceneInstance scene)
                 var unload = !group.UnloadCondition.DelayToLevelReload &&
                              group.UnloadCondition.IsTrue(Scene.Player.MissionManager!.Data, false);
 
-                if (forceUnload || unload) // any of the conditions is true then unload
+                if (forceUnload || unload || (group.Category == GroupCategoryEnum.Atmosphere && group.IsHoyoGroup == true))
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -87,8 +89,7 @@ public class SceneEntityLoader(SceneInstance scene)
                     Scene.Groups.Remove(group.Id);
                 }
                 else if (!group.SavedValueCondition.IsTrue(
-                             Scene.Player.SceneData!
-                                 .GetFloorSavedValues(Scene.FloorId))) // condition: Saved Value Condition
+                             Scene.BuildClientFloorSavedData())) // same dimension defaults as the scene snapshot
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -130,6 +131,9 @@ public class SceneEntityLoader(SceneInstance scene)
         if (!LoadGroups.Contains(info.Id)) return null; // check if group should be loaded in this dimension
         var missionData = Scene.Player.MissionManager!.Data; // get mission data
         if (info.LoadSide == GroupLoadSideEnum.Client) return null; // check if group should be loaded on client side
+        // Hoyo atmosphere is driven by the client's atmosphere system. Do not suppress ordinary
+        // server Hoyo groups: elevators and other initial scene infrastructure use the same flag.
+        if (info.Category == GroupCategoryEnum.Atmosphere && info.IsHoyoGroup == true) return null;
         if (info.GroupName.Contains("TrainVisitor")) return null; // certain group name
         if (info.GroupName.Contains("DeployPuzzle_Repeat_Area")) return null;
         if (info.GroupName.Contains("TrainVisiter")) return null;
@@ -173,13 +177,11 @@ public class SceneEntityLoader(SceneInstance scene)
              info.ForceUnloadCondition.IsTrue(missionData, false)) &&
             !forceLoad) return null; // check if group should be loaded forcefully
 
-        if (!info.SavedValueCondition.IsTrue(
-                Scene.Player.SceneData!.FloorSavedData.GetValueOrDefault(Scene.FloorId, [])) &&
+        if (!info.SavedValueCondition.IsTrue(Scene.BuildClientFloorSavedData()) &&
             !forceLoad) // condition: Saved Value Condition
             return null;
 
-        if (Scene.Entities.Values.ToList().FindIndex(x => x.GroupId == info.Id) !=
-            -1) // check if group is already loaded
+        if (Scene.Groups.Contains(info.Id) || Scene.Entities.Values.Any(x => x.GroupId == info.Id))
             return null;
 
         if (info.RelatedBattleId.Count > 0 && !Scene.Player.MissionManager!.GetRunningSubMissionList().Any(x =>
@@ -212,7 +214,9 @@ public class SceneEntityLoader(SceneInstance scene)
                 // ignored
             }
 
-        foreach (var prop in info.PropList)
+        // This is the group's initial population, including when the group is activated later.
+        // Explicit prop creation may still call LoadProp; it must not be blocked by this flag.
+        foreach (var prop in info.PropList.Where(prop => prop.LoadOnInitial))
             try
             {
                 if (await LoadProp(prop, info) is { } entity) entityList.Add(entity);
@@ -287,8 +291,8 @@ public class SceneEntityLoader(SceneInstance scene)
 
     public virtual async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
     {
-        // Runtime floor/group exports are not always consistent for IsClientOnly/LoadOnInitial on props.
-        // Keep server-side prop availability driven by group-level loading and explicit deletion only.
+        // LoadOnInitial is enforced by LoadGroup, not explicit creation. IsClientOnly alone is
+        // not a server-prop exclusion: runtime exports also set it on usable server props.
         if (info.IsDelete) return null;
 
         GameData.MazePropData.TryGetValue(info.PropID, out var excel);

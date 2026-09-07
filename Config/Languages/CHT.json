@@ -213,6 +213,7 @@
   "Game.Command.Scene.PropNotFound": "未找到道具!",
   "Game.Command.Scene.PropStateChanged": "道具: {0} 的狀態已設置為 {1}",
   "Game.Command.Scene.SceneChanged": "已進入場景 {0}",
+  "Game.Command.Scene.SceneEnterFailed": "無法進入場景 {0}，請檢查場景入口 ID 和場景資源。",
   "Game.Command.Scene.SceneReloaded": "場景已重新加載!",
   "Game.Command.Scene.SceneReset": "已重置場景 {0} 中所有道具狀態！",
   "Game.Command.Scene.Teleported": "已傳送！",

@@ -213,6 +213,7 @@
   "Game.Command.Scene.PropNotFound": "未找到道具!",
   "Game.Command.Scene.PropStateChanged": "道具: {0} 的状态已设置为 {1}",
   "Game.Command.Scene.SceneChanged": "已进入场景 {0}",
+  "Game.Command.Scene.SceneEnterFailed": "无法进入场景 {0}，请检查场景入口 ID 和场景资源。",
   "Game.Command.Scene.SceneReloaded": "场景已重新加载!",
   "Game.Command.Scene.SceneReset": "已重置场景 {0} 中所有道具状态！",
   "Game.Command.Scene.Teleported": "已传送！",

@@ -2608,4 +2608,7 @@ public class CmdIds
     public const int GridFightUseConsumableScRsp = 8579;
     public const int CancelAutoConversionCacheCsReq = 4181;
     public const int CancelAutoConversionCacheScRsp = 4161;
+    public const int RelicPresetGetPlanCsReq = 9842;
+    public const int RelicPresetDeletePlanCsReq = 9852;
+    public const int SyncServerSceneChangeNotify = 1491;
 }

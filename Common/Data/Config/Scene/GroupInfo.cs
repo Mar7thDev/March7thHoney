@@ -52,8 +52,13 @@ public partial class GroupInfo
     [JsonIgnore] public List<int> RelatedBattleId { get; set; } = [];
     [JsonIgnore] public List<int> RelatedMissionId { get; set; } = [];
 
+    // Append-only for MemoryPack compatibility. Null identifies caches created before this
+    // resource flag was retained; raw resources normalize an omitted flag to false in Load().
+    public bool? IsHoyoGroup { get; set; }
+
     public void Load()
     {
+        IsHoyoGroup ??= false;
         foreach (var prop in PropList) prop.Load(this);
 
         foreach (var source in ValueSource?.Values ?? [])
@@ -176,33 +181,25 @@ public partial class SavedValueLoadCondition
     {
         if (Conditions.Count == 0) return defaultResult;
 
-        // check load condition
-        List<Func<bool>> conditionChecks = [];
-        foreach (var condition in Conditions)
+        bool Matches(SavedValueCondition condition)
         {
-            // saved value
             var status = savedValue.GetValueOrDefault(condition.SavedValueName, 0);
-            if (condition.Operation == CompareTypeEnum.Unknow) continue;
-
-            conditionChecks.Add(CheckFunc);
-            continue;
-
-            bool CheckFunc()
-            {
-                return UtilTools.CompareNumberByOperationEnum(status, condition.Value, condition.Operation);
-            }
+            // Runtime exports omit the comparator for equality. Existing resource caches retain
+            // that omission as Unknow, so normalize it here without changing the cache format.
+            var comparison = condition.Operation == CompareTypeEnum.Unknow
+                ? CompareTypeEnum.Equal
+                : condition.Operation;
+            return UtilTools.CompareNumberByOperationEnum(status, condition.Value, comparison);
         }
 
-        switch (Operation)
+        // defaultResult only applies to an empty condition list, not to a failed comparison.
+        return Operation switch
         {
-            case OperationEnum.And when UtilTools.CheckAnd(conditionChecks, defaultResult):
-            case OperationEnum.Or when UtilTools.CheckOr(conditionChecks, defaultResult):
-                return true;
-            case OperationEnum.Not:
-                return !UtilTools.CheckOr(conditionChecks, defaultResult);
-            default:
-                return defaultResult;
-        }
+            OperationEnum.And => Conditions.All(Matches),
+            OperationEnum.Or => Conditions.Any(Matches),
+            OperationEnum.Not => !Conditions.Any(Matches),
+            _ => false
+        };
     }
 }
 
