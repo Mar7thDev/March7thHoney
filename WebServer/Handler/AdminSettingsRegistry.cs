@@ -130,6 +130,15 @@ public static class AdminSettingsRegistry
         yield return Str("ServerOption.ServerConfig.FromDispatchBaseUrl", "network", () => serverConfig.FromDispatchBaseUrl, v => serverConfig.FromDispatchBaseUrl = v, 0, 512);
         yield return Bool("HttpServer.SendHotfix", "network", () => http.SendHotfix, v => http.SendHotfix = v);
         yield return Bool("HttpServer.UseFetchRemoteHotfix", "network", () => http.UseFetchRemoteHotfix, v => http.UseFetchRemoteHotfix = v);
+        yield return new SettingDef("HttpServer.TrustedProxies", "network", "string",
+            () => string.Join(",", http.TrustedProxies ?? []), value =>
+            {
+                var addresses = value.Split([',', ' ', '\n'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+                if (addresses.Length > 64 || addresses.Any(ip => !System.Net.IPAddress.TryParse(ip, out _)))
+                    return "expected up to 64 proxy IP addresses separated by commas";
+                http.TrustedProxies = addresses.Distinct().ToList();
+                return null;
+            }, true, null, null);
 
         // --- auth ---
         yield return Bool("ServerOption.Auth.EnableRegistration", "auth", () => auth.EnableRegistration, v => auth.EnableRegistration = v);

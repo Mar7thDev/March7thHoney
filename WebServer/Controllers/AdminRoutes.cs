@@ -243,7 +243,12 @@ public static partial class AdminRoutes
             banStatus.IsPermanent,
             banStatus.RemainingSeconds,
             AccountBanHelper.ParseIdentityKeys(account.KnownIdentityKeys).Count,
-            player?.WorldLevel ?? 0);
+            player?.WorldLevel ?? 0,
+            account.RegistrationIp ?? "", account.LastIp ?? "",
+            AccountBanHelper.NormalizeIpAddress(Listener.GetActiveConnection(account.Uid)?.RemoteEndPoint.Address.ToString()) ?? "",
+            account.CreatedAt, account.LastSeenAt,
+            account.KnownIpAddresses?.ToList() ?? [], account.KnownDeviceIds?.ToList() ?? [],
+            AccountBanHelper.ParseIdentityKeys(account.KnownIdentityKeys).Where(k => k.StartsWith("device:")).ToList());
     }
 
     private static List<OnlinePlayer> GetOnlinePlayers()

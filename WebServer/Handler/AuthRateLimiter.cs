@@ -83,6 +83,11 @@ public static class AuthRateLimiter
         IEnumerable<string>? identityKeys, string? accountIdentifier, out IResult result)
     {
         result = default!;
+        if (IdentityBlockHelper.TryGetActiveBan(identityKeys, out var block))
+        {
+            result = Results.Json(new StatusResult(-203, block.FormatLoginMessage()));
+            return true;
+        }
         var rule = GetRule(action);
         if (!rule.Enabled)
             return false;

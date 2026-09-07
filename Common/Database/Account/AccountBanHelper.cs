@@ -46,8 +46,9 @@ public static class AccountBanHelper
     public static IReadOnlyCollection<string> BuildIdentityKeys(IEnumerable<string?> deviceValues, string? ipAddress)
     {
         var keys = new HashSet<string>(StringComparer.Ordinal);
+        var devices = deviceValues.Select(NormalizeDeviceValue).OfType<string>().Distinct(StringComparer.Ordinal).Take(16).ToList();
 
-        foreach (var value in deviceValues)
+        foreach (var value in devices)
         {
             var key = CreateDeviceIdentityKey(value);
             if (!string.IsNullOrWhiteSpace(key)) keys.Add(key);
@@ -56,7 +57,7 @@ public static class AccountBanHelper
         var ipKey = CreateIpIdentityKey(ipAddress);
         if (!string.IsNullOrWhiteSpace(ipKey)) keys.Add(ipKey);
 
-        return keys;
+        return new LoginIdentityContext(keys, NormalizeIpAddress(ipAddress), devices);
     }
 
     public static string? CreateDeviceIdentityKey(string? value)
@@ -73,9 +74,10 @@ public static class AccountBanHelper
 
     public static string MergeIdentityKeys(string? existingIdentityKeys, IEnumerable<string>? newIdentityKeys)
     {
+        var incoming = NormalizeIdentityKeys(newIdentityKeys).ToList();
         var merged = ParseIdentityKeys(existingIdentityKeys)
-            .Concat(NormalizeIdentityKeys(newIdentityKeys))
-            .Distinct(StringComparer.Ordinal)
+            .Except(incoming, StringComparer.Ordinal)
+            .Concat(incoming)
             .TakeLast(MaxStoredIdentityKeys)
             .ToList();
 
@@ -101,6 +103,11 @@ public static class AccountBanHelper
         if (status.IsActive)
             return true;
 
+        // A client cannot evade a device block by omitting its ID on the next token exchange.
+        if (IdentityBlockHelper.TryGetActiveBan(ParseIdentityKeys(account.KnownIdentityKeys)
+                .Where(IsDeviceIdentityKey), out status))
+            return true;
+
         return TryFindActiveBanByIdentityKeys(identityKeys, account.Uid, out status);
     }
 
@@ -109,6 +116,8 @@ public static class AccountBanHelper
     {
         status = AccountBanStatus.Inactive;
         var currentKeys = NormalizeIdentityKeys(identityKeys).ToHashSet(StringComparer.Ordinal);
+        if (IdentityBlockHelper.TryGetActiveBan(currentKeys, out status))
+            return true;
         if (currentKeys.Count == 0)
             return false;
 
@@ -213,7 +222,10 @@ public static class AccountBanHelper
 
     private static bool IsIdentityKey(string? key)
     {
-        return IsDeviceIdentityKey(key) || IsIpIdentityKey(key);
+        if (!IsDeviceIdentityKey(key) && !IsIpIdentityKey(key)) return false;
+        var hash = key![(key!.IndexOf(':') + 1)..];
+        Span<byte> buffer = stackalloc byte[32];
+        return Convert.TryFromBase64String(hash, buffer, out var written) && written == 32;
     }
 
     private static bool IsDeviceIdentityKey(string? key)
@@ -228,20 +240,20 @@ public static class AccountBanHelper
                key.StartsWith("ip:", StringComparison.Ordinal);
     }
 
-    private static string? NormalizeDeviceValue(string? value)
+    public static string? NormalizeDeviceValue(string? value)
     {
         value = value?.Trim();
         if (string.IsNullOrWhiteSpace(value))
             return null;
 
-        if (value.Length > 512)
-            value = value[..512];
+        if (value.Length > 512 || value.Any(char.IsControl))
+            return null;
 
         var lowered = value.ToLowerInvariant();
         return lowered is "null" or "undefined" or "unknown" or "{}" or "[]" ? null : lowered;
     }
 
-    private static string? NormalizeIpAddress(string? ipAddress)
+    public static string? NormalizeIpAddress(string? ipAddress)
     {
         if (string.IsNullOrWhiteSpace(ipAddress))
             return null;

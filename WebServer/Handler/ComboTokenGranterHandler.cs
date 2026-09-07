@@ -39,37 +39,8 @@ public class ComboTokenGranterHandler
             return Results.Json(res);
         }
 
-        var autoCreateUser = ConfigManager.Config.ServerOption.AutoCreateUser;
+        // Every combo login must present a token issued by this server.
         var account = AccountData.GetAccountByUid(uid);
-        var trustedExternalComboLogin = false;
-
-        // The OS client validates username/password against the real HoYoverse shield
-        // endpoint (not proxied), so only the combo login reaches us, carrying the player's
-        // real account uid. When auto-create is enabled, map that real uid to a LOCAL
-        // account with a normal local uid (so the real uid is never exposed in-game) and
-        // trust the combo login instead of validating a token this server never issued.
-        // This branch only runs when no account exists for the incoming uid, so the normal
-        // flow on every platform (shield login proxied -> account already exists) is
-        // unaffected and keeps using its own uid unchanged.
-        if (account == null && autoCreateUser)
-        {
-            trustedExternalComboLogin = true;
-            var externalKey = $"os_{uid}";
-            account = AccountData.GetAccountByUserName(externalKey);
-            if (account == null)
-            {
-                try
-                {
-                    AccountHelper.CreateAccount(externalKey, $"{externalKey}@autocreate.local", null, 0);
-                    account = AccountData.GetAccountByUserName(externalKey);
-                    Logger.Info($"Combo login mapped external uid={uid} -> local uid={account?.Uid}");
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn($"Combo login auto-create failed. external_uid={uid}: {ex.Message}");
-                }
-            }
-        }
 
         if (account == null)
         {
@@ -82,7 +53,7 @@ public class ComboTokenGranterHandler
 
         var isDispatchToken = account.ValidateDispatchToken(tokenData.token);
         var isComboToken = account.ValidateComboToken(tokenData.token);
-        if (!trustedExternalComboLogin && !isDispatchToken && !isComboToken)
+        if (!isDispatchToken && !isComboToken)
         {
             Logger.Warn(
                 $"Combo login cache validation failed. uid={uid} token_len={tokenData.token?.Length ?? 0} account_exists=True");
@@ -104,7 +75,7 @@ public class ComboTokenGranterHandler
 
         account.AddKnownIdentityKeys(identityKeys);
         Logger.Info(
-            $"Combo login validated. uid={uid} token_type={(isDispatchToken ? "dispatch" : isComboToken ? "combo" : "trusted")} token_len={tokenData.token?.Length ?? 0}");
+            $"Combo login validated. uid={uid} token_type={(isDispatchToken ? "dispatch" : "combo")} token_len={tokenData.token?.Length ?? 0}");
         res.message = "OK";
         res.data = new ComboTokenResJson.LoginData(account.Uid.ToString(), account.GenerateComboToken());
         return Results.Json(res);

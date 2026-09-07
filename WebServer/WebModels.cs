@@ -77,7 +77,16 @@ public readonly record struct AccountSummary(
     int? level, bool has_password, string role, string permissions, string base_permissions,
     string effective_permissions, long dispatch_token_expires_at, long combo_token_expires_at, bool online,
     bool banned, string ban_reason, long ban_expires_at, long ban_created_at, bool ban_permanent,
-    long ban_remaining_seconds, int identity_keys, int world_level);
+    long ban_remaining_seconds, int identity_keys, int world_level,
+    string registration_ip, string last_ip, string current_ip, long created_at, long last_seen_at,
+    List<string> ip_addresses, List<string> device_ids, List<string> device_keys);
+
+public sealed record AccountDeleteFailure(int uid, string message);
+public sealed record BulkDeleteData(List<int> deleted_uids, List<int> missing_uids, List<AccountDeleteFailure> failed);
+public sealed record IdentityBlockSummary(int id, string kind, string value, string identity_key, string reason,
+    long created_at, long expires_at, bool active);
+public sealed record IdentityBlocksData(List<IdentityBlockSummary> blocks);
+public sealed record IdentityBlockWrap(IdentityBlockSummary block, int affected_accounts);
 
 public sealed record AccountsData(List<AccountSummary> accounts, int count, List<string> roles, string default_role);
 
