@@ -430,6 +430,11 @@ public static class AdminPageStyles
     .modal-message { color: var(--muted); font-size: 13.5px; white-space: pre-wrap; }
     .modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
 
+    .wrap { overflow-wrap: anywhere; white-space: normal; min-width: 0; }
+    #acc-results input[type=checkbox] { width: 16px; height: 16px; cursor: pointer; }
+    #block-results td { max-width: 260px; }
+    .modal-message { max-height: 45vh; overflow-y: auto; overflow-wrap: anywhere; }
+
     /* -------------------------------------------------------- responsive */
     @media (max-width: 1180px) {
       .split, .console-split { grid-template-columns: minmax(0, 1fr); }

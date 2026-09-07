@@ -2,6 +2,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
+using March7thHoney.Kcp;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
 using Microsoft.AspNetCore.Builder;
@@ -16,6 +17,10 @@ public static partial class AdminRoutes
     {
         app.MapGet("/admin/api/accounts", GetAccounts);
         app.MapPost("/admin/api/accounts", CreateAccount);
+        app.MapPost("/admin/api/accounts/bulk-delete", BulkDeleteAccounts);
+        app.MapGet("/admin/api/identity-blocks", GetIdentityBlocks);
+        app.MapPost("/admin/api/identity-blocks", BlockIdentity);
+        app.MapDelete("/admin/api/identity-blocks/{id:int}", UnblockIdentity);
         app.MapPut("/admin/api/accounts/{uid:int}", UpdateAccount);
         app.MapPut("/admin/api/accounts/{uid:int}/password", SetPassword);
         app.MapPost("/admin/api/accounts/{uid:int}/email/verification", SendAccountVerificationEmail);
@@ -261,13 +266,16 @@ public static partial class AdminRoutes
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
 
         account.KnownIdentityKeys = null;
+        account.KnownDeviceIds = [];
+        account.KnownIpAddresses = [];
+        account.LastIp = null;
         DatabaseHelper.MarkDirty(uid);
         DatabaseHelper.SaveDatabaseType(account);
 
         return Success(new AccountWrap(ToAccountSummary(account)));
     }
 
-    private static IResult DeleteAccount(HttpContext ctx, int uid)
+    private static async Task<IResult> DeleteAccount(HttpContext ctx, int uid)
     {
         if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
@@ -276,10 +284,60 @@ public static partial class AdminRoutes
         if (account == null)
             return Error("Account not found", statusCode: StatusCodes.Status404NotFound);
 
-        // Drop the live session first so the client does not keep writing into data that is being removed.
-        ConnectionDisconnectHelper.KickByGm(Listener.GetActiveConnection(uid));
-        DatabaseHelper.Instance?.DeleteUidData(uid);
+        await DeleteAccountData(account);
         return Success(new DeletedUid(uid));
+    }
+
+    private static async Task DeleteAccountData(AccountData account)
+    {
+        var database = DatabaseHelper.Instance ?? throw new InvalidOperationException("Database is not initialized");
+        if (!DatabaseHelper.LoadAllData) throw new InvalidOperationException("Database is still loading; retry deletion shortly");
+        lock (account)
+        {
+            if (account.IsDeleting) throw new InvalidOperationException("Account deletion is already in progress");
+            account.IsDeleting = true;
+        }
+        try
+        {
+            account.ClearLoginTokens();
+            var connections = March7thHoneyListener.GetSnapshot().OfType<Connection>()
+                .Where(c => c.Player?.Uid == account.Uid).ToList();
+            await Task.WhenAll(connections.Select(ConnectionDisconnectHelper.KickByGmAsync));
+            if (connections.Any(c => c.IsOnline))
+                throw new InvalidOperationException("Session could not be stopped; retry deletion");
+            database.DeleteUidData(account.Uid);
+        }
+        finally
+        {
+            if (!DatabaseHelper.IsUidDeleted(account.Uid)) account.IsDeleting = false;
+        }
+    }
+
+    private static async Task<IResult> BulkDeleteAccounts(HttpContext ctx, AdminBulkDeleteRequest? request)
+    {
+        if (!IsAuthorized(ctx, out var unauthorized)) return unauthorized;
+        if (request?.confirm != "DELETE") return Error("Deletion confirmation is required");
+        if (request.uids == null || request.uids.Count is < 1 or > 500 || request.uids.Any(uid => uid <= 0))
+            return Error("Select between 1 and 500 positive UIDs");
+        if (DatabaseHelper.Instance == null) return Error("Database is not initialized");
+
+        var deleted = new List<int>();
+        var missing = new List<int>();
+        var failed = new List<AccountDeleteFailure>();
+        foreach (var uid in request.uids.Distinct())
+        {
+            var account = AccountData.GetAccountByUid(uid);
+            if (account == null) { missing.Add(uid); continue; }
+            try { await DeleteAccountData(account); deleted.Add(uid); }
+            catch (Exception ex) { failed.Add(new AccountDeleteFailure(uid, ex.Message)); }
+        }
+        return Success(new BulkDeleteData(deleted, missing, failed));
+    }
+
+    public class AdminBulkDeleteRequest
+    {
+        public List<int>? uids { get; set; }
+        public string? confirm { get; set; }
     }
 
     private static bool TryResolveBanExpireAt(AdminBanAccountRequest request, out long expireAt, out string error)
@@ -294,7 +352,7 @@ public static partial class AdminRoutes
         if (request.expire_at.HasValue)
         {
             expireAt = request.expire_at.Value;
-            if (expireAt <= now)
+            if (expireAt <= now || expireAt > DateTimeOffset.MaxValue.ToUnixTimeSeconds())
             {
                 error = "Ban expiry must be in the future";
                 return false;

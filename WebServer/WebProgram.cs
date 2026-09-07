@@ -40,9 +40,18 @@ public class WebProgram
         builder.Services.Configure<ForwardedHeadersOptions>(options =>
         {
             options.ForwardedHeaders =
-                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedHost | ForwardedHeaders.XForwardedProto;
+                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             options.KnownIPNetworks.Clear();
             options.KnownProxies.Clear();
+            foreach (var proxy in ConfigManager.Config.HttpServer.TrustedProxies ?? [])
+            {
+                if (!IPAddress.TryParse(proxy, out var ip))
+                    throw new InvalidOperationException($"Invalid HttpServer.TrustedProxies address: {proxy}");
+                options.KnownProxies.Add(ip);
+            }
+            // The middleware interprets two empty trust lists as trusting everyone.
+            if (options.KnownProxies.Count == 0) options.ForwardedHeaders = ForwardedHeaders.None;
+            options.ForwardLimit = 1;
         });
 
         builder.Services.AddCors(options =>

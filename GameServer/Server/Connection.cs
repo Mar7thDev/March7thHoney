@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Net;
 using System.Reflection;
 using March7thHoney.Configuration;
+using March7thHoney.Database;
 using March7thHoney.Data.Custom;
 using March7thHoney.Enums.Server;
 using March7thHoney.GameServer.Game.Player;
@@ -271,6 +272,11 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     private async Task HandlePacket(ushort opcode, byte[] header, byte[] payload)
     {
+        if (Player != null && DatabaseHelper.IsUidDeleted(Player.Uid))
+        {
+            Stop();
+            return;
+        }
         // check if it's a custom packet
         var action = GetCurActionData();
         var packetName = LogMap.GetValueOrDefault(opcode);

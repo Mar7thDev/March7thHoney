@@ -24,6 +24,9 @@ public class DatabaseHelper
     public static readonly ConcurrentDictionary<int, List<BaseDatabaseDataHelper>> UidInstanceMap = [];
     private static readonly HashSet<int> DirtyUids = [];
     private static readonly object DirtyLock = new();
+    // All writers take this before a UID lock. A flush must not hold SQLite's write lock
+    // while waiting for a UID lock held by a concurrent deletion waiting for that same database.
+    private static readonly object PersistenceLock = new();
     public static long LastSaveTick = DateTime.UtcNow.Ticks;
     public static Thread? SaveThread;
     public static bool LoadAccount;
@@ -77,11 +80,14 @@ public class DatabaseHelper
         // Load account data first so the dispatch server can start accepting logins.
         LoadType(conn, typeof(AccountData));
         foreach (var account in GetAllInstanceFromMap<AccountData>() ?? []) account.SyncPermissionsWithRole();
+        LoadType(conn, typeof(IdentityBlockData));
+        LoadType(conn, typeof(DeletedAccountData));
+        IdentityBlockHelper.Initialize();
         LoadAccount = true;
 
         foreach (var type in EntityStores.Map.Keys)
         {
-            if (type == typeof(AccountData)) continue;
+            if (type == typeof(AccountData) || type == typeof(IdentityBlockData) || type == typeof(DeletedAccountData)) continue;
             LoadType(conn, type);
         }
 
@@ -192,27 +198,61 @@ public class DatabaseHelper
 
     public static void SaveInstance<T>(T instance) where T : BaseDatabaseDataHelper
     {
-        if (EntityStores.Map.TryGetValue(instance.GetType(), out var store))
+        lock (PersistenceLock)
         {
-            using var conn = Open();
-            store.Insert(conn, instance);
+            var list = UidInstanceMap.GetOrAdd(instance.Uid, static _ => []);
+            lock (list)
+            {
+                if (IsPlayerData(instance) && list.OfType<DeletedAccountData>().Any())
+                    throw new InvalidOperationException("Account has been deleted");
+                if (EntityStores.Map.TryGetValue(instance.GetType(), out var store))
+                {
+                    using var conn = Open();
+                    store.Insert(conn, instance);
+                }
+                list.Add(instance);
+            }
         }
+    }
 
-        var list = UidInstanceMap.GetOrAdd(instance.Uid, static _ => []);
-        lock (list) list.Add(instance);
+    public static bool IsUidDeleted(int uid)
+    {
+        if (!UidInstanceMap.TryGetValue(uid, out var list)) return false;
+        lock (list) return list.OfType<DeletedAccountData>().Any();
+    }
+
+    private static bool IsPlayerData(BaseDatabaseDataHelper instance) =>
+        instance is not (IdentityBlockData or AuthAttemptData or DeletedAccountData);
+
+    public static void UpdateInstanceStrict<T>(T previous, T replacement) where T : BaseDatabaseDataHelper
+    {
+        lock (PersistenceLock)
+        {
+            var list = UidInstanceMap[previous.Uid];
+            lock (list)
+            {
+                using var conn = Open();
+                EntityStores.Map[typeof(T)].Update(conn, replacement);
+                list.Remove(previous);
+                list.Add(replacement);
+            }
+        }
     }
 
     public static void SaveDatabaseType<T>(T instance) where T : BaseDatabaseDataHelper
     {
-        try
+        lock (PersistenceLock)
         {
-            if (!EntityStores.Map.TryGetValue(instance.GetType(), out var store)) return;
-            using var conn = Open();
-            store.Update(conn, instance);
-        }
-        catch (Exception e)
-        {
-            logger.Error("An error occurred while saving the database", e);
+            try
+            {
+                if (!EntityStores.Map.TryGetValue(instance.GetType(), out var store)) return;
+                using var conn = Open();
+                store.Update(conn, instance);
+            }
+            catch (Exception e)
+            {
+                logger.Error("An error occurred while saving the database", e);
+            }
         }
     }
 
@@ -265,45 +305,48 @@ public class DatabaseHelper
 
     public void SaveDatabase()
     {
-        // Drained up front so concurrent MarkDirty calls during the flush are kept for the next cycle.
-        var uids = DrainDirty();
-
-        DbConnection? conn = null;
-        try
+        lock (PersistenceLock)
         {
-            conn = Open();
-            var prev = DateTime.Now;
-            Exec(conn, "BEGIN");
+            // Drained up front so concurrent MarkDirty calls during the flush are kept for the next cycle.
+            var uids = DrainDirty();
 
-            foreach (var uid in uids)
-                if (UidInstanceMap.TryGetValue(uid, out var value))
-                    lock (value)
-                        foreach (var inst in value)
-                            if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
-                                store.Update(conn, inst);
+            DbConnection? conn = null;
+            try
+            {
+                conn = Open();
+                var prev = DateTime.Now;
+                Exec(conn, "BEGIN");
 
-            Exec(conn, "COMMIT");
+                foreach (var uid in uids)
+                    if (UidInstanceMap.TryGetValue(uid, out var value))
+                        lock (value)
+                            foreach (var inst in value)
+                                if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
+                                    store.Update(conn, inst);
 
-            var t = (DateTime.Now - prev).TotalSeconds;
-            logger.Info(I18NManager.Translate("Server.ServerInfo.SaveDatabase",
-                Math.Round(t, 2).ToString(CultureInfo.InvariantCulture)));
+                Exec(conn, "COMMIT");
+
+                var t = (DateTime.Now - prev).TotalSeconds;
+                logger.Info(I18NManager.Translate("Server.ServerInfo.SaveDatabase",
+                    Math.Round(t, 2).ToString(CultureInfo.InvariantCulture)));
+            }
+            catch (Exception e)
+            {
+                logger.Error("An error occurred while saving the database", e);
+                // Roll back so the pooled connection isn't returned mid-transaction.
+                if (conn != null)
+                    try { Exec(conn, "ROLLBACK"); }
+                    catch { /* no active transaction */ }
+                // Re-flag the failed batch so it retries next cycle (matches the old "only clear on success" behaviour).
+                foreach (var uid in uids) MarkDirty(uid);
+            }
+            finally
+            {
+                conn?.Dispose();
+            }
+
+            LastSaveTick = DateTime.UtcNow.Ticks;
         }
-        catch (Exception e)
-        {
-            logger.Error("An error occurred while saving the database", e);
-            // Roll back so the pooled connection isn't returned mid-transaction.
-            if (conn != null)
-                try { Exec(conn, "ROLLBACK"); }
-                catch { /* no active transaction */ }
-            // Re-flag the failed batch so it retries next cycle (matches the old "only clear on success" behaviour).
-            foreach (var uid in uids) MarkDirty(uid);
-        }
-        finally
-        {
-            conn?.Dispose();
-        }
-
-        LastSaveTick = DateTime.UtcNow.Ticks;
     }
 
     private static void Exec(DbConnection conn, string sql)
@@ -315,66 +358,92 @@ public class DatabaseHelper
 
     public void SaveUidData(int uid)
     {
-        try
+        lock (PersistenceLock)
         {
-            if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
-            using var conn = Open();
-            lock (value)
-                foreach (var inst in value)
-                    if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
-                        store.Update(conn, inst);
+            try
+            {
+                if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
+                using var conn = Open();
+                lock (value)
+                    foreach (var inst in value)
+                        if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
+                            store.Update(conn, inst);
 
-            ClearDirty(uid);
-        }
-        catch (Exception e)
-        {
-            logger.Error($"An error occurred while saving gameplay data for uid {uid}", e);
+                ClearDirty(uid);
+            }
+            catch (Exception e)
+            {
+                logger.Error($"An error occurred while saving gameplay data for uid {uid}", e);
+            }
         }
     }
 
     public void DeleteUidGameplayData(int uid)
     {
-        if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
-        using var conn = Open();
-        lock (value)
+        lock (PersistenceLock)
         {
-            foreach (var inst in value.Where(i => i is not AccountData).ToList())
-                if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
-                    store.Delete(conn, uid);
+            if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
+            using var conn = Open();
+            lock (value)
+            {
+                foreach (var inst in value.Where(i => i is not AccountData && IsPlayerData(i)).ToList())
+                    if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
+                        store.Delete(conn, uid);
 
-            value.RemoveAll(instance => instance is not AccountData);
+                value.RemoveAll(instance => instance is not AccountData && IsPlayerData(instance));
+            }
+
+            ClearDirty(uid);
         }
-
-        ClearDirty(uid);
     }
 
     public void DeleteInstance<T>(T instance) where T : BaseDatabaseDataHelper
     {
-        if (EntityStores.Map.TryGetValue(instance.GetType(), out var store))
+        lock (PersistenceLock)
         {
-            using var conn = Open();
-            store.Delete(conn, instance.Uid);
-        }
+            if (EntityStores.Map.TryGetValue(instance.GetType(), out var store))
+            {
+                using var conn = Open();
+                store.Delete(conn, instance.Uid);
+            }
 
-        if (UidInstanceMap.TryGetValue(instance.Uid, out var value))
-            lock (value) value.Remove(instance);
-        ClearDirty(instance.Uid);
+            if (UidInstanceMap.TryGetValue(instance.Uid, out var value))
+                lock (value) value.Remove(instance);
+            ClearDirty(instance.Uid);
+        }
     }
 
     public void DeleteUidData(int uid)
     {
-        if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
-
-        using (var conn = Open())
+        lock (PersistenceLock)
         {
-            lock (value)
-                foreach (var inst in value.ToList())
-                    if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
-                        store.Delete(conn, uid);
-        }
+            if (!UidInstanceMap.TryGetValue(uid, out var value)) return;
 
-        UidInstanceMap.TryRemove(uid, out _);
-        ClearDirty(uid);
+            lock (value)
+            {
+                if (value.OfType<DeletedAccountData>().Any()) return;
+                using var conn = Open();
+                var tombstone = new DeletedAccountData { Uid = uid, DeletedAt = Extensions.GetUnixSec() };
+                Exec(conn, "BEGIN");
+                try
+                {
+                    foreach (var inst in value.Where(IsPlayerData).ToList())
+                        if (EntityStores.Map.TryGetValue(inst.GetType(), out var store))
+                            store.Delete(conn, uid);
+                    EntityStores.Map[typeof(DeletedAccountData)].Insert(conn, tombstone);
+                    Exec(conn, "COMMIT");
+                }
+                catch
+                {
+                    Exec(conn, "ROLLBACK");
+                    throw;
+                }
+                value.RemoveAll(IsPlayerData);
+                value.Add(tombstone);
+            }
+
+            ClearDirty(uid);
+        }
     }
 
     public void UpgradeDatabase()

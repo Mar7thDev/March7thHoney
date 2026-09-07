@@ -55,9 +55,10 @@ public class RegistrationHandler
         if (AccountData.GetAccountByEmail(email) != null)
             return Error("Email already exists");
 
+        AccountData account;
         try
         {
-            AccountHelper.CreateAccount(username, email, password, 0);
+            account = AccountHelper.CreatePublicAccount(username, email, password, identityKeys);
         }
         catch (Exception ex)
         {
@@ -65,8 +66,6 @@ public class RegistrationHandler
         }
 
         var emailSent = false;
-        var account = AccountData.GetAccountByUserName(username);
-        account?.AddKnownIdentityKeys(identityKeys);
         if (account != null && ConfigManager.Config.ServerOption.Auth.SendVerificationEmailOnRegister)
         {
             var verificationToken = account.GenerateEmailVerificationToken();

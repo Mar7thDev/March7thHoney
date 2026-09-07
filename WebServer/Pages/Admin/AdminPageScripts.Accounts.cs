@@ -16,6 +16,7 @@ public static partial class AdminPageScripts
         sort: "uid",
         page: 1,
         pageSize: 25,
+        checkedUids: new Set(),
         selectedUid: null,
         mode: "detail",
         tab: "profile",
@@ -42,6 +43,8 @@ public static partial class AdminPageScripts
       async function loadAccounts() {
         const data = await api("/admin/api/accounts");
         accountsState.list = data.accounts || [];
+        const existingUids = new Set(accountsState.list.map(account => account.uid));
+        accountsState.checkedUids = new Set([...accountsState.checkedUids].filter(uid => existingUids.has(uid)));
         accountsState.roles = data.roles || [];
         accountsState.defaultRole = data.default_role || accountsState.roles[0] || "User";
         accountsState.loaded = true;
@@ -74,7 +77,7 @@ public static partial class AdminPageScripts
           if (filter === "overrides" && !account.permissions) return false;
           if (filter.startsWith("role:") && account.role !== filter.slice(5)) return false;
           if (!query) return true;
-          return [account.uid, account.username, account.email, account.role, account.nickname, account.permissions, account.ban_reason]
+          return [account.uid, account.username, account.email, account.role, account.nickname, account.permissions, account.ban_reason, account.last_ip, account.registration_ip, account.current_ip, ...(account.ip_addresses || []), ...(account.device_ids || [])]
             .join(" ").toLowerCase().includes(query);
         });
 
@@ -125,11 +128,13 @@ public static partial class AdminPageScripts
 
         // Typing must never rebuild the search box: replacing the live input drops focus and IME composition.
         $("#acc-search").addEventListener("input", event => {
+          accountsState.checkedUids.clear();
           accountsState.query = event.currentTarget.value;
           accountsState.page = 1;
           renderAccountResults();
         });
         $("#acc-filter").addEventListener("change", event => {
+          accountsState.checkedUids.clear();
           accountsState.filter = event.currentTarget.value;
           accountsState.page = 1;
           renderAccountResults();
@@ -154,6 +159,11 @@ public static partial class AdminPageScripts
         accountsState.page = pagination.page;
 
         host.innerHTML = String(html`
+          <div class="toolbar">
+            <button id="acc-select-filtered" class="btn ghost small" type="button" ${!rows.length || rows.length > 500 ? "disabled" : ""}>${t("accounts.select_filtered", { count: rows.length })}</button>
+            <button id="acc-clear-selection" class="btn ghost small" type="button">${t("accounts.clear_selection")}</button>
+            <button id="acc-bulk-delete" class="btn danger small" type="button" ${!accountsState.checkedUids.size || accountsState.checkedUids.size > 500 ? "disabled" : ""}>${t("accounts.bulk_delete", { count: accountsState.checkedUids.size })}</button>
+          </div>
           <div class="table-meta">
             <span class="muted">${t("accounts.count", { shown: pagination.items.length, total: rows.length, all: accountsState.list.length })}</span>
             ${pager(pagination, "acc-page")}
@@ -163,9 +173,11 @@ public static partial class AdminPageScripts
               <table aria-label="${t("nav.accounts")}">
                 <thead>
                   <tr>
+                    <th><input id="acc-select-page" type="checkbox" aria-label="${t("accounts.select_page")}" ${pagination.items.every(a => accountsState.checkedUids.has(a.uid)) ? "checked" : ""}></th>
                     <th class="w-uid">UID</th>
                     <th>${t("common.user")}</th>
                     <th>${t("common.email")}</th>
+                    <th>${t("accounts.last_ip")}</th>
                     <th class="w-md">${t("common.role")}</th>
                     <th class="w-sm">${t("common.level")}</th>
                     <th class="w-md">${t("common.state")}</th>
@@ -174,9 +186,11 @@ public static partial class AdminPageScripts
                 <tbody>
                   ${pagination.items.map(account => html`
                     <tr class="clickable ${account.uid === accountsState.selectedUid && accountsState.mode === "detail" ? "selected" : ""}" data-select-uid="${account.uid}">
+                      <td><input type="checkbox" data-check-uid="${account.uid}" aria-label="${t("accounts.select_uid", { uid: account.uid })}" ${accountsState.checkedUids.has(account.uid) ? "checked" : ""}></td>
                       <td class="mono">${account.uid}</td>
                       <td><strong>${account.username}</strong><div class="muted small">${account.nickname || t("common.no_nickname")}</div></td>
                       <td class="muted">${account.email}</td>
+                      <td class="mono">${account.current_ip || account.last_ip || t("blocks.no_records")}</td>
                       <td>${chip(account.role, account.permissions ? "accent" : "")}</td>
                       <td>${account.level ?? "-"}</td>
                       <td>${accountStateChips(account)}</td>
@@ -186,11 +200,48 @@ public static partial class AdminPageScripts
             </div>` : emptyState(t("accounts.empty"))}`);
 
         on(host, "[data-select-uid]", "click", event => {
+          if (event.target.closest("input, button, a")) return;
           accountsState.selectedUid = Number(event.currentTarget.dataset.selectUid);
           accountsState.mode = "detail";
           for (const row of $$("[data-select-uid]", host)) row.classList.toggle("selected", row === event.currentTarget);
           renderAccountEditor();
           if (window.innerWidth < 1100) $("#acc-editor")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        const selectPage = $("#acc-select-page", host);
+        if (selectPage) {
+          selectPage.indeterminate = pagination.items.some(a => accountsState.checkedUids.has(a.uid)) && !selectPage.checked;
+          selectPage.addEventListener("change", event => {
+            for (const account of pagination.items) {
+              if (event.currentTarget.checked) accountsState.checkedUids.add(account.uid);
+              else accountsState.checkedUids.delete(account.uid);
+            }
+            renderAccountResults();
+          });
+        }
+        on(host, "[data-check-uid]", "change", event => {
+          const uid = Number(event.currentTarget.dataset.checkUid);
+          if (event.currentTarget.checked) accountsState.checkedUids.add(uid);
+          else accountsState.checkedUids.delete(uid);
+          renderAccountResults();
+        });
+        $("#acc-select-filtered", host).addEventListener("click", () => {
+          accountsState.checkedUids = new Set(rows.map(account => account.uid));
+          renderAccountResults();
+        });
+        $("#acc-clear-selection", host).addEventListener("click", () => {
+          accountsState.checkedUids.clear(); renderAccountResults();
+        });
+        $("#acc-bulk-delete", host).addEventListener("click", async event => {
+          const uids = [...accountsState.checkedUids];
+          const preview = accountsState.list.filter(a => accountsState.checkedUids.has(a.uid)).map(a => `${a.uid} (${a.username})`).join(", ");
+          if (!await confirmDialog({ title: t("accounts.bulk_delete", { count: uids.length }), message: t("accounts.bulk_confirm", { accounts: preview }), danger: true, requireText: "DELETE", confirmLabel: t("common.delete") })) return;
+          await run(event.currentTarget, async () => {
+            const data = await api("/admin/api/accounts/bulk-delete", { method: "POST", body: { uids, confirm: "DELETE" } });
+            accountsState.checkedUids = new Set(data.failed.map(item => item.uid));
+            await refreshAccounts();
+            toast(t("accounts.bulk_result", { deleted: data.deleted_uids.length, missing: data.missing_uids.length, failed: data.failed.length }), data.failed.length ? "bad" : "good");
+            if (data.failed.length) await confirmDialog({ title: t("accounts.bulk_failures"), message: data.failed.map(item => `${item.uid}: ${item.message}`).join("; ") });
+          });
         });
         on(host, "[data-acc-page]", "click", event => {
           accountsState.page = Number(event.currentTarget.dataset.accPage);
@@ -210,7 +261,7 @@ public static partial class AdminPageScripts
 
       function exportAccountsCsv() {
         const rows = filteredAccounts();
-        const header = ["uid", "username", "email", "role", "nickname", "level", "world_level", "email_verified", "has_password", "banned", "ban_reason", "online", "permissions"];
+        const header = ["uid", "username", "email", "role", "nickname", "level", "world_level", "email_verified", "has_password", "banned", "ban_reason", "online", "permissions", "registration_ip", "last_ip", "current_ip", "created_at", "last_seen_at"];
         const escapeCsv = value => `"${String(value ?? "").replaceAll('"', '""')}"`;
         const lines = [header.join(",")];
         for (const account of rows) {
@@ -362,6 +413,10 @@ public static partial class AdminPageScripts
               ${kv(t("accounts.dispatch_token"), fmt.unix(account.dispatch_token_expires_at))}
               ${kv(t("accounts.combo_token"), fmt.unix(account.combo_token_expires_at))}
               ${kv(t("accounts.identity_keys"), account.identity_keys)}
+              ${kv(t("accounts.registration_ip"), account.registration_ip || t("blocks.no_records"), { mono: true })}
+              ${kv(t("accounts.last_ip"), account.last_ip || t("blocks.no_records"), { mono: true })}
+              ${kv(t("accounts.current_ip"), account.current_ip || t("common.offline"), { mono: true })}
+              ${kv(t("accounts.created_at"), account.created_at ? fmt.unix(account.created_at) : t("blocks.no_records"))}
             </div>
             <div class="actions wide">
               <button class="btn primary" type="submit">${t("accounts.save_profile")}</button>
@@ -412,6 +467,7 @@ public static partial class AdminPageScripts
               </div>
             </form>
 
+            ${renderAccountIdentityRecords(account)}
             <form id="acc-ban-form" class="form-grid">
               <div class="wide section-title">${t("accounts.ban_section")}</div>
               ${account.banned ? html`
@@ -584,6 +640,11 @@ public static partial class AdminPageScripts
       }
 
       function bindAccountTab(host, account) {
+        on(host, "[data-block-kind]", "click", event => {
+          const data = event.currentTarget.dataset;
+          navigate("blocks", { kind: data.blockKind, ...(data.blockKey ? { identity_key: data.blockKey } : { value: data.blockValue }) });
+        });
+        on(host, "[data-open-blocks]", "click", () => navigate("blocks"));
         on(host, "[data-open-command]", "click", event => navigate("commands", { target: event.currentTarget.dataset.openCommand }));
         on(host, "[data-open-mail]", "click", event => navigate("mail", { uid: event.currentTarget.dataset.openMail }));
 

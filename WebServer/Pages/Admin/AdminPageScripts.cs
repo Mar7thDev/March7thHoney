@@ -14,6 +14,7 @@ public static partial class AdminPageScripts
             Core(),
             OverviewModule(),
             AccountsModule(),
+            IdentityBlocksModule(),
             SessionsModule(),
             MailModule(),
             AnnounceModule(),
@@ -67,7 +68,7 @@ public static partial class AdminPageScripts
       const modules = [];
       const moduleGroups = [
         { id: "overview", modules: ["overview"] },
-        { id: "players", modules: ["accounts", "sessions", "mail", "announce"] },
+        { id: "players", modules: ["accounts", "blocks", "sessions", "mail", "announce"] },
         { id: "server", modules: ["commands", "access", "settings", "hotfix"] },
         { id: "ops", modules: ["logs", "maintenance", "handbook"] }
       ];
@@ -793,7 +794,8 @@ public static partial class AdminPageScripts
       function routeFromHash() {
         if (!state.token) return;
         const hash = window.location.hash.replace(/^#\/?/, "");
-        const [moduleId, ...rest] = hash.split("/").filter(Boolean);
+        const path = hash.split("?", 1)[0];
+        const [moduleId, ...rest] = path.split("/").filter(Boolean);
         const target = findModule(moduleId) ? moduleId : (readStorage(STORAGE.module) || "overview");
         const params = {};
         if (rest.length) params.id = decodeURIComponent(rest[0]);
