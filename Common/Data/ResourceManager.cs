@@ -327,6 +327,8 @@ public class ResourceManager
                         if (group != null)
                         {
                             group.Id = groupInfo.ID;
+                            // The common map carries the authoritative per-instance SaveType/Category.
+                            info.StampCommonMapFields(group);
                             // Use a sorted collection or maintain order manually
                             info.Groups[groupInfo.ID] = group;
 
@@ -344,6 +346,9 @@ public class ResourceManager
                             }
 
                             group.Load();
+                            // Prop InitLevelGraph fan-out (PropReqInteract) - must run while the props still
+                            // hold their ValueSource / InitLevelGraph (FloorInfo.OnLoad clears both).
+                            PropInteractGraphLoader.Populate(group, ConfigManager.Config.Path.ResourcePath);
                         }
                     }
                     catch (Exception ex)

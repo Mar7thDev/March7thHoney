@@ -35,6 +35,12 @@ public partial class PropInfo : PositionInfo
 
     [JsonIgnore] public bool IsLevelBtn { get; set; }
 
+    /// <summary>
+    ///     Server-side PropReqInteract edges of this prop's InitLevelGraph, resolved at load by
+    ///     PropInteractGraphLoader. Applied by SceneInstance.ApplyPropInteractFanOut on every successful interact.
+    /// </summary>
+    [JsonIgnore] public List<PropInteractLink> InteractLinks { get; set; } = [];
+
     public void Load(GroupInfo info)
     {
         if (ValueSource == null) return;

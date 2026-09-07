@@ -31,7 +31,54 @@ public partial class PlayerInstance
             if (isInRange)
                 if (LineupManager?.GetCurLineup()?.Heal(10000, true) == true)
                     await SendPacket(new PacketSyncLineupNotify(LineupManager.GetCurLineup()!));
+
+            // Waypoint unlock is independent of the spring heal: Space Anchors / Calyx checkpoints far from any
+            // spring must still flip CheckPointEnable + UnlockTeleportNotify when the player walks up to them.
+            await SceneInstance.TryUnlockNearbyWaypoint(Data.Pos);
         }
+    }
+
+    /// <summary>Remembers a floor the player has entered (GetEnteredSceneScRsp with the story enabled).</summary>
+    public void RecordEnteredScene(int planeId, int floorId)
+    {
+        if (SceneData == null || planeId == 0 || floorId == 0) return;
+        if (!SceneData.EnteredSceneData.TryGetValue(planeId, out var floors))
+        {
+            floors = [];
+            SceneData.EnteredSceneData[planeId] = floors;
+        }
+
+        if (!floors.Contains(floorId)) floors.Add(floorId);
+    }
+
+    /// <summary>Whether the map may offer this waypoint. Story off: every waypoint is unlocked (legacy behaviour).</summary>
+    public bool IsTeleportUnlocked(int floorId, int mappingInfoId)
+    {
+        if (!MissionEnabled) return true;
+        return SceneData != null && SceneData.UnlockedTeleportData.TryGetValue(floorId, out var list) &&
+               list.Contains(mappingInfoId);
+    }
+
+    /// <summary>
+    ///     Records a reached waypoint and, when <paramref name="notify" /> is set, sends UnlockTeleportNotify the
+    ///     first time. Returns true when the unlock was new.
+    /// </summary>
+    public async ValueTask<bool> RecordTeleportUnlock(int floorId, int mappingInfoId, bool notify)
+    {
+        if (SceneData == null || mappingInfoId == 0) return false;
+        if (!SceneData.UnlockedTeleportData.TryGetValue(floorId, out var list))
+        {
+            list = [];
+            SceneData.UnlockedTeleportData[floorId] = list;
+        }
+
+        if (list.Contains(mappingInfoId)) return false;
+        list.Add(mappingInfoId);
+
+        if (notify)
+            await SendPacket(new PacketUnlockTeleportNotify(mappingInfoId,
+                SceneInstance?.FloorId == floorId ? SceneInstance.EntryId : Data.EntryId));
+        return true;
     }
 
     public async ValueTask<EntityProp?> InteractProp(int propEntityId, int interactId)
@@ -162,6 +209,11 @@ public partial class PlayerInstance
 
                 break;
         }
+
+        // Prop-graph fan-out (RPG.GameCore.PropReqInteract): the interacted prop's InitLevelGraph may request
+        // sibling interacts server-side - the robot treasure-hunt scan (floor 20111001 g47) reveals its chest
+        // this way. The target's own graph is re-driven recursively so the whole chain lands at once.
+        await SceneInstance.ApplyPropInteractFanOut(prop);
 
         // for door unlock
         if (prop.PropInfo.UnlockDoorID.Count > 0)
@@ -414,6 +466,7 @@ public partial class PlayerInstance
                 Data.PlaneId = planeId;
                 Data.FloorId = floorId;
                 Data.EntryId = entryId;
+                RecordEnteredScene(planeId, floorId);
                 March7thHoney.Database.DatabaseHelper.MarkDirty(Uid);
             }
             else if (StoryLineManager?.StoryLineData.CurStoryLineId == 0 &&

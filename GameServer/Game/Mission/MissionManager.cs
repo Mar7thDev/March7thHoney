@@ -1129,7 +1129,9 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     }
 
     /// <summary>
-    ///     Re-applies the ChangePropState level task of every RUNNING PropState sub on the current floor.
+    ///     Re-applies the ChangePropState level task of every RUNNING sub on the current floor whose graph
+    ///     carries the task - PropState subs (target in ParamInt1/ParamInt2) and story Talk subs whose graph
+    ///     names the target itself (LevelTask.ResolveMissionPropTarget).
     /// </summary>
     /// <remarks>
     ///     The task normally runs once, from AcceptSubMission, against whatever scene happened to be
@@ -1156,7 +1158,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             if (!GameData.SubMissionInfoData.TryGetValue(id, out var subMission)) continue;
             var info = subMission.SubMissionInfo;
             if (info == null) continue;
-            if (info.FinishType != MissionFinishTypeEnum.PropState) continue;
             if (info.LevelFloorID != 0 && info.LevelFloorID != scene.FloorId) continue;
             if (!GraphRunsChangePropState(subMission)) continue;
 

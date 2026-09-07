@@ -195,12 +195,13 @@ public class LevelTask(PlayerInstance player)
     /// </summary>
     public async ValueTask ApplyMissionPropState(SubMissionData subMission)
     {
-        if (subMission.SubMissionInfo?.FinishType != MissionFinishTypeEnum.PropState) return;
         if (Player.SceneInstance == null) return;
 
+        var (groupId, instId) = ResolveMissionPropTarget(subMission);
+        if (groupId == 0 || instId == 0) return;
+
         foreach (var entity in Player.SceneInstance.Entities.Values)
-            if (entity is EntityProp prop && prop.GroupId == subMission.SubMissionInfo.ParamInt1 &&
-                prop.InstId == subMission.SubMissionInfo.ParamInt2)
+            if (entity is EntityProp prop && prop.GroupId == groupId && prop.InstId == instId)
                 try
                 {
                     var (target, viaClosed) = StepToClosedOrNext(prop.Excel.PropStateList, prop.State);
@@ -221,6 +222,51 @@ public class LevelTask(PlayerInstance player)
                 {
                     // ignored
                 }
+    }
+
+    /// <summary>
+    ///     The prop a sub-mission's ChangePropState task targets. PropState subs carry it in
+    ///     ParamInt1 (group) / ParamInt2 (inst); story Talk subs whose graph's ChangePropState unlocks an
+    ///     interactive controller leave those empty (the CablePuzzle controller sub 101030104 unlocks 21/300007
+    ///     so the player can press it), so the target falls back to the one the graph itself names.
+    /// </summary>
+    public static (int GroupId, int InstId) ResolveMissionPropTarget(SubMissionData subMission)
+    {
+        var info = subMission.SubMissionInfo;
+        if (info is { FinishType: MissionFinishTypeEnum.PropState, ParamInt1: not 0, ParamInt2: not 0 })
+            return (info.ParamInt1, info.ParamInt2);
+
+        return ResolveGraphPropTarget(subMission.SubMissionTaskInfo);
+    }
+
+    /// <summary>
+    ///     The first SinglePropByPropID target named by a graph's own prop tasks (PropSetupUITrigger /
+    ///     PropSetupTrigger / PropStateExecute). The tasks operating on one interactive prop share its
+    ///     SinglePropID, so no task-type preference is applied. (0, 0) when the graph names none.
+    /// </summary>
+    public static (int GroupId, int InstId) ResolveGraphPropTarget(LevelGraphConfigInfo? graph)
+    {
+        if (graph == null) return (0, 0);
+
+        foreach (var task in graph.OnInitSequece.SelectMany(x => x.TaskList)
+                     .Concat(graph.OnStartSequece.SelectMany(x => x.TaskList)))
+        {
+            var target = task switch
+            {
+                PropSetupUITrigger t => t.TargetType,
+                PropSetupTrigger t => t.TargetType,
+                PropStateExecute t => t.TargetType,
+                _ => null
+            };
+            if (target is not TargetFetchAdvPropEx { FetchType: TargetFetchAdvPropFetchTypeEnum.SinglePropByPropID }
+                fetch) continue;
+
+            var groupId = fetch.SinglePropID.GroupID.GetValue();
+            var instId = fetch.SinglePropID.ID.GetValue();
+            if (groupId != 0 && instId != 0) return (groupId, instId);
+        }
+
+        return (0, 0);
     }
 
     /// <summary>
