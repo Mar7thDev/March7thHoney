@@ -109,6 +109,7 @@ public class WebProgram
         app.MapMuipServerRoutes();
         app.MapHandbookRoutes();
         app.MapJsonRoutes();
+        app.MapConsoleRoutes();
         app.MapDispatchRoutes();
         app.MapSdkShopRoutes();
         app.MapAdminRoutes();

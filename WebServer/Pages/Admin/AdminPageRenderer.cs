@@ -16,7 +16,9 @@ public static class AdminPageRenderer
         var displayName = string.IsNullOrWhiteSpace(serverName) ? "March7thHoney" : serverName.Trim();
         var encodedDisplayName = WebUtility.HtmlEncode(displayName);
         var encodedTitle = WebUtility.HtmlEncode($"Admin console - {displayName}");
-        var encodedInitials = WebUtility.HtmlEncode(BuildInitials(displayName));
+        var configuredIcon = ConfigManager.Config.ServerOption.Auth.RegistrationPageIcon;
+        var iconMarkup = BrandIcon.RenderMarkup(configuredIcon, displayName);
+        var faviconHref = WebUtility.HtmlEncode(BrandIcon.FaviconHref(configuredIcon, displayName));
         var serverNameJson = JsonSerializer.Serialize(displayName, WebJsonContext.Default.String);
         var languageJson = JsonSerializer.Serialize(ConfigManager.Config.ServerOption.Language ?? "EN",
             WebJsonContext.Default.String);
@@ -32,6 +34,7 @@ public static class AdminPageRenderer
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <meta name="color-scheme" content="light">
+  <link rel="icon" href="{{faviconHref}}">
   <title>{{encodedTitle}}</title>
   <style>
 {{AdminPageStyles.Render()}}
@@ -41,7 +44,7 @@ public static class AdminPageRenderer
   <section id="login-view" class="login-view">
     <div class="login-card">
       <div class="login-brand">
-        <span class="brand-mark" aria-hidden="true">{{encodedInitials}}</span>
+        <span class="brand-mark" aria-hidden="true">{{iconMarkup}}</span>
         <div>
           <p class="eyebrow" data-i18n="login.eyebrow">Admin console</p>
           <h1>{{encodedDisplayName}}</h1>
@@ -72,7 +75,7 @@ public static class AdminPageRenderer
         <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
       </button>
       <div class="brand">
-        <span class="brand-mark" aria-hidden="true">{{encodedInitials}}</span>
+        <span class="brand-mark" aria-hidden="true">{{iconMarkup}}</span>
         <div>
           <strong>{{encodedDisplayName}}</strong>
           <span><span data-i18n="app.title">Admin console</span> · v{{GameConstants.GAME_VERSION}}</span>
@@ -125,20 +128,5 @@ public static class AdminPageRenderer
 </body>
 </html>
 """;
-    }
-
-    private static string BuildInitials(string serverName)
-    {
-        var chars = serverName
-            .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-            .Select(part => part[0])
-            .Where(char.IsLetterOrDigit)
-            .Take(2)
-            .ToArray();
-
-        if (chars.Length == 0)
-            chars = serverName.Where(char.IsLetterOrDigit).Take(2).ToArray();
-
-        return chars.Length == 0 ? "M7" : new string(chars).ToUpperInvariant();
     }
 }
