@@ -10,6 +10,24 @@ public sealed record StatusResult(int retcode, string message, string? data = nu
 // /console/* launcher endpoints
 public sealed record ConsoleResult(int retcode, string message, string output);
 
+// /console — player self-service console (typed endpoints; ConsoleResult stays the launcher contract)
+public sealed record ConsoleEnvelope<T>(int retcode, string message, T data);
+
+public sealed record ConsolePlayerData(
+    int uid, string username, string nickname, int level, int world_level, string role, bool online,
+    bool has_password, List<string> permissions, long expires_at);
+
+public sealed record ConsoleLoginData(string token, ConsolePlayerData player);
+
+// Same shape as the admin CommandCatalogItem plus the per-player verdict, so the page can grey out
+// commands the account's role does not grant instead of hiding why they fail.
+public sealed record ConsoleCommandItem(
+    string name, string description, string usage, string permission, List<string> aliases,
+    List<string> subcommands, bool allowed);
+
+public sealed record ConsoleCatalogData(
+    List<ConsoleCommandItem> commands, int count, int allowed_count, string role, List<string> permissions);
+
 // /handbook/languages
 public sealed record HandbookLanguages(List<string> languages);
 

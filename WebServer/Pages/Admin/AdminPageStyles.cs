@@ -189,7 +189,9 @@ public static class AdminPageStyles
     .login-view { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(1200px 600px at 20% -10%, rgba(71, 125, 216, 0.14), transparent 60%), radial-gradient(900px 500px at 110% 110%, rgba(115, 87, 200, 0.1), transparent 55%), var(--bg); }
     .login-card { width: min(100%, 420px); padding: 32px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); box-shadow: var(--shadow); }
     .login-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-    .brand-mark { display: grid; place-items: center; width: 46px; height: 46px; flex: 0 0 46px; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--purple)); color: #fff; font-weight: 800; font-size: 16px; letter-spacing: 0.02em; }
+    .brand-mark { display: grid; place-items: center; width: 46px; height: 46px; flex: 0 0 46px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--accent), var(--purple)); color: #fff; font-weight: 800; font-size: 16px; letter-spacing: 0.02em; }
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brand-mark span { display: grid; place-items: center; width: 100%; height: 100%; padding: 0 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .login-card .message { min-height: 20px; color: var(--muted); font-size: 13px; }
     .login-card .message.bad { color: var(--red); }
     .login-card .message.good { color: var(--green); }

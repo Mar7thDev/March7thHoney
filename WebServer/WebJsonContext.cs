@@ -48,6 +48,9 @@ namespace March7thHoney.WebServer;
 // Response records (former anonymous payloads)
 [JsonSerializable(typeof(StatusResult))]
 [JsonSerializable(typeof(ConsoleResult))]
+[JsonSerializable(typeof(ConsoleEnvelope<ConsoleLoginData>))]
+[JsonSerializable(typeof(ConsoleEnvelope<ConsolePlayerData>))]
+[JsonSerializable(typeof(ConsoleEnvelope<ConsoleCatalogData>))]
 [JsonSerializable(typeof(HandbookLanguages))]
 [JsonSerializable(typeof(PassportConfigResult))]
 [JsonSerializable(typeof(LoadConfigResult))]

@@ -209,28 +209,29 @@ public static partial class AdminPageScripts
         });
         const selectPage = $("#acc-select-page", host);
         if (selectPage) {
-          selectPage.indeterminate = pagination.items.some(a => accountsState.checkedUids.has(a.uid)) && !selectPage.checked;
           selectPage.addEventListener("change", event => {
             for (const account of pagination.items) {
               if (event.currentTarget.checked) accountsState.checkedUids.add(account.uid);
               else accountsState.checkedUids.delete(account.uid);
             }
-            renderAccountResults();
+            syncAccountSelection(host);
           });
         }
         on(host, "[data-check-uid]", "change", event => {
           const uid = Number(event.currentTarget.dataset.checkUid);
           if (event.currentTarget.checked) accountsState.checkedUids.add(uid);
           else accountsState.checkedUids.delete(uid);
-          renderAccountResults();
+          syncAccountSelection(host);
         });
         $("#acc-select-filtered", host).addEventListener("click", () => {
           accountsState.checkedUids = new Set(rows.map(account => account.uid));
-          renderAccountResults();
+          syncAccountSelection(host);
         });
         $("#acc-clear-selection", host).addEventListener("click", () => {
-          accountsState.checkedUids.clear(); renderAccountResults();
+          accountsState.checkedUids.clear();
+          syncAccountSelection(host);
         });
+        syncAccountSelection(host);
         $("#acc-bulk-delete", host).addEventListener("click", async event => {
           const uids = [...accountsState.checkedUids];
           const preview = accountsState.list.filter(a => accountsState.checkedUids.has(a.uid)).map(a => `${a.uid} (${a.username})`).join(", ");
@@ -247,6 +248,26 @@ public static partial class AdminPageScripts
           accountsState.page = Number(event.currentTarget.dataset.accPage);
           renderAccountResults();
         });
+      }
+
+      // Ticking a checkbox must not rebuild the table: replacing the rows resets the scroll position and
+      // drops the pointer, so only the selection-dependent bits are updated in place.
+      function syncAccountSelection(host) {
+        const checkboxes = $$("[data-check-uid]", host);
+        const pageUids = checkboxes.map(box => Number(box.dataset.checkUid));
+        for (const box of checkboxes) box.checked = accountsState.checkedUids.has(Number(box.dataset.checkUid));
+
+        const selectPage = $("#acc-select-page", host);
+        if (selectPage) {
+          selectPage.checked = pageUids.length > 0 && pageUids.every(uid => accountsState.checkedUids.has(uid));
+          selectPage.indeterminate = !selectPage.checked && pageUids.some(uid => accountsState.checkedUids.has(uid));
+        }
+
+        const bulkDelete = $("#acc-bulk-delete", host);
+        if (bulkDelete) {
+          bulkDelete.disabled = !accountsState.checkedUids.size || accountsState.checkedUids.size > 500;
+          bulkDelete.textContent = t("accounts.bulk_delete", { count: accountsState.checkedUids.size });
+        }
       }
 
       function accountStateChips(account) {

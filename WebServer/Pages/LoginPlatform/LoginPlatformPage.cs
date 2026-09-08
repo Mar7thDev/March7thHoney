@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text.Json;
+using March7thHoney.Util;
 
 namespace March7thHoney.WebServer.Pages;
 
@@ -22,6 +23,8 @@ public static class LoginPlatformPage
         var displayName = DisplayName(serverName);
         var encodedTitle = WebUtility.HtmlEncode($"{title} - {displayName}");
         var serverNameJson = JsonSerializer.Serialize(displayName, WebJsonContext.Default.String);
+        var faviconHref = WebUtility.HtmlEncode(
+            BrandIcon.FaviconHref(ConfigManager.Config.ServerOption.Auth.RegistrationPageIcon, displayName));
 
         return $$"""
 <!doctype html>
@@ -31,6 +34,7 @@ public static class LoginPlatformPage
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <meta name="color-scheme" content="light">
+  <link rel="icon" href="{{faviconHref}}">
   <title>{{encodedTitle}}</title>
   <style>
 {{Styles()}}
@@ -72,103 +76,7 @@ public static class LoginPlatformPage
 
     public static string RenderIconMarkup(string configuredIcon, string serverName)
     {
-        var displayName = DisplayName(serverName);
-        var icon = string.IsNullOrWhiteSpace(configuredIcon) ? BuildInitials(displayName) : configuredIcon.Trim();
-
-        if (TryCreateImageSource(icon, out var imageSource))
-        {
-            var encodedSource = WebUtility.HtmlEncode(imageSource);
-            return $"""<img src="{encodedSource}" alt="">""";
-        }
-
-        return $"<span>{WebUtility.HtmlEncode(icon)}</span>";
-    }
-
-    private static string BuildInitials(string serverName)
-    {
-        var chars = serverName
-            .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-            .Select(part => part[0])
-            .Where(char.IsLetterOrDigit)
-            .Take(2)
-            .ToArray();
-
-        if (chars.Length == 0)
-            chars = serverName.Where(char.IsLetterOrDigit).Take(2).ToArray();
-
-        return chars.Length == 0 ? "M7" : new string(chars).ToUpperInvariant();
-    }
-
-    private static bool TryCreateImageSource(string icon, out string source)
-    {
-        source = string.Empty;
-
-        if (icon.StartsWith("data:image/", StringComparison.OrdinalIgnoreCase) ||
-            (Uri.TryCreate(icon, UriKind.Absolute, out var uri) &&
-             (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)))
-        {
-            source = icon;
-            return true;
-        }
-
-        if (!IsSupportedImagePath(icon))
-            return false;
-
-        if (TryCreateLocalImageDataUri(icon, out source))
-            return true;
-
-        source = icon.StartsWith('/') ? icon : "/" + icon.Replace('\\', '/').TrimStart('/');
-        return true;
-    }
-
-    private static bool TryCreateLocalImageDataUri(string iconPath, out string source)
-    {
-        source = string.Empty;
-        var normalizedPath = iconPath.Replace('\\', Path.DirectorySeparatorChar);
-        var candidates = new[]
-        {
-            normalizedPath,
-            Path.Combine(Environment.CurrentDirectory, normalizedPath)
-        };
-
-        foreach (var candidate in candidates)
-        {
-            try
-            {
-                if (!File.Exists(candidate))
-                    continue;
-
-                var mimeType = GetImageMimeType(candidate);
-                var bytes = File.ReadAllBytes(candidate);
-                source = $"data:{mimeType};base64,{Convert.ToBase64String(bytes)}";
-                return true;
-            }
-            catch
-            {
-                // Fall back to rendering the configured value as a web path.
-            }
-        }
-
-        return false;
-    }
-
-    private static bool IsSupportedImagePath(string value)
-    {
-        return GetImageMimeType(value) != "application/octet-stream";
-    }
-
-    private static string GetImageMimeType(string value)
-    {
-        return Path.GetExtension(value).ToLowerInvariant() switch
-        {
-            ".gif" => "image/gif",
-            ".jpg" => "image/jpeg",
-            ".jpeg" => "image/jpeg",
-            ".png" => "image/png",
-            ".svg" => "image/svg+xml",
-            ".webp" => "image/webp",
-            _ => "application/octet-stream"
-        };
+        return BrandIcon.RenderMarkup(configuredIcon, DisplayName(serverName));
     }
 
     private static string Styles()

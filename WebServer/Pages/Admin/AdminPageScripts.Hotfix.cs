@@ -160,22 +160,30 @@ public static partial class AdminPageScripts
           renderHotfix(root);
           $("#hotfix-filter").focus();
         }, 200));
+        // Selecting rows only changes checkbox state and one button label — rebuilding the table here would
+        // reset the scroll position, so the boxes are ticked in place instead.
+        const syncHotfixSelection = () => {
+          for (const box of $$("[data-hf-select]", root)) box.checked = hotfixState.selected.has(box.dataset.hfSelect);
+          const count = hotfixState.selected.size;
+          const submit = $("#hotfix-bulk-form button[type=submit]");
+          if (submit) {
+            submit.disabled = !count;
+            submit.textContent = t("hotfix.apply_selected", { count });
+          }
+        };
         $("#hotfix-select-visible").addEventListener("click", () => {
           for (const entry of hotfixEntries()) hotfixState.selected.add(entry.version);
-          renderHotfix(root);
+          syncHotfixSelection();
         });
         $("#hotfix-select-none").addEventListener("click", () => {
           hotfixState.selected.clear();
-          renderHotfix(root);
+          syncHotfixSelection();
         });
         on(root, "[data-hf-select]", "change", event => {
           const version = event.currentTarget.dataset.hfSelect;
           if (event.currentTarget.checked) hotfixState.selected.add(version);
           else hotfixState.selected.delete(version);
-          const count = hotfixState.selected.size;
-          const submit = $("#hotfix-bulk-form button[type=submit]");
-          submit.disabled = !count;
-          submit.textContent = t("hotfix.apply_selected", { count });
+          syncHotfixSelection();
         });
         on(root, "[data-hf-version]", "input", event => {
           const { hfVersion: version, hfField: field } = event.currentTarget.dataset;

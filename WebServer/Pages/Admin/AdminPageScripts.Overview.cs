@@ -169,8 +169,10 @@ public static partial class AdminPageScripts
           input.disabled = true;
           try {
             await api(endpoint, { method: "POST", body: { enabled } });
+            // Refresh the cache for the other modules, but leave the DOM alone: the browser already
+            // flipped this switch, and re-rendering the module would scroll the page back to the top.
             state.cache.overview = await api("/admin/api/overview");
-            renderOverview(root);
+            input.disabled = false;
             toast(t(enabled ? "common.enabled" : "common.disabled"), "good");
           } catch (error) {
             input.checked = !enabled;
