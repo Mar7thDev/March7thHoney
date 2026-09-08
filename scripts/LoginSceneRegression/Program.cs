@@ -286,8 +286,15 @@ var synthetic = new FloorInfo { FloorID = 99000001, StartGroupID = 901, Dimensio
     new() { ID = 0, GroupIDList = [901], SavedValues = [new() { Name = "defaultOn", DefaultValue = 1 }, new() { Name = "zero", DefaultValue = 0 }] },
     new() { ID = 2, GroupIDList = [902], SavedValues = [new() { Name = "otherDimension", DefaultValue = 9 }] }
 ] };
-var syntheticGroup = new GroupInfo { Id = 901, LoadSide = GroupLoadSideEnum.Server, SavedValueCondition = Condition(OperationEnum.And,
-    new SavedValueCondition { SavedValueName = "defaultOn", Value = 1, Operation = CompareTypeEnum.Equal }) };
+var syntheticGroup = new GroupInfo
+{
+    Id = 901,
+    LoadSide = GroupLoadSideEnum.Server,
+    SavedValueCondition = Condition(OperationEnum.And,
+        new SavedValueCondition { SavedValueName = "defaultOn", Value = 1, Operation = CompareTypeEnum.Equal }),
+    PropList = [new PropInfo { ID = 300001, PropID = 100, LoadOnInitial = false }],
+    NPCList = [new NpcInfo { ID = 400001, NPCID = 100, LoadOnInitial = false }]
+};
 synthetic.Groups[901] = syntheticGroup;
 var syntheticScene = new SceneInstance(player, GameData.MazePlaneData[10202], synthetic.FloorID, 0) { FloorInfo = synthetic };
 syntheticScene.EntityLoader = new SceneEntityLoader(syntheticScene) { LoadGroups = [901] };
@@ -295,14 +302,22 @@ typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.SceneInstance))!.SetVal
 var defaults = syntheticScene.BuildClientFloorSavedData();
 Check("scene defaults come only from the active dimension", defaults.GetValueOrDefault("defaultOn") == 1
     && defaults.GetValueOrDefault("zero") == 0 && !defaults.ContainsKey("otherDimension"));
-Check("entity loader evaluates nonzero resource defaults", await syntheticScene.EntityLoader.LoadGroup(syntheticGroup) != null);
-syntheticScene.Entities[1] = new ProbeEntity { EntityId = 1, GroupId = 901 };
+var syntheticEntities = await syntheticScene.EntityLoader.LoadGroup(syntheticGroup);
+Check("entity loader evaluates nonzero resource defaults", syntheticEntities != null);
+Check("ordinary LoadOnInitial=false server prop remains available", syntheticEntities?.OfType<EntityProp>()
+    .Any(prop => prop.InstId == 300001) == true);
+Check("ordinary LoadOnInitial=false server NPC remains available", syntheticEntities?.OfType<EntityNpc>()
+    .Any(npc => npc.InstId == 400001) == true);
+const int SyntheticProbeEntityId = 900001;
+syntheticScene.Entities[SyntheticProbeEntityId] = new ProbeEntity { EntityId = SyntheticProbeEntityId, GroupId = 901 };
 await syntheticScene.EntityLoader.SyncEntity();
-Check("entity sync retains groups enabled by resource defaults", syntheticScene.Entities.ContainsKey(1));
+Check("entity sync retains groups enabled by resource defaults", syntheticScene.Entities.ContainsKey(SyntheticProbeEntityId));
 player.SceneData.FloorSavedData[synthetic.FloorID] = new() { ["defaultOn"] = 0 };
 Check("persisted zero overrides a nonzero default", syntheticScene.BuildClientFloorSavedData()["defaultOn"] == 0);
 await syntheticScene.EntityLoader.SyncEntity();
-Check("entity sync unloads group when persisted switch becomes zero", !syntheticScene.Entities.ContainsKey(1) && !syntheticScene.Groups.Contains(901));
+Check("entity sync unloads group when persisted switch becomes zero",
+    !syntheticScene.Entities.ContainsKey(SyntheticProbeEntityId) && !syntheticScene.Groups.Contains(901)
+    && syntheticScene.Entities.Values.All(entity => entity.GroupId != 901));
 Check("entity loader respects persisted zero", await syntheticScene.EntityLoader.LoadGroup(syntheticGroup) == null);
 var ordinaryAtmosphere = new GroupInfo { Id = 902, LoadSide = GroupLoadSideEnum.Server,
     Category = GroupCategoryEnum.Atmosphere, IsHoyoGroup = false };
