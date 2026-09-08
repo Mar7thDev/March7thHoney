@@ -22,6 +22,8 @@ public static class ConfigManager
             LoadPublicConfigData();
         else
             LoadConfigData();
+        if (Config.ServerOption.NetStatus is { Enabled: true } netStatus && !netStatus.TryGetColor(out _))
+            Logger.Warn("ServerOption.NetStatus requires a non-negative LatencyMs and a #RRGGBB Color; signal override is disabled.");
         LoadHotfixData();
     }
 

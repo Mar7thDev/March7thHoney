@@ -11,6 +11,7 @@ public class HandlerSetChallengePeakBossHardModeCsReq : Handler<SetChallengePeak
     {
         player.ChallengePeakManager!.SetBossHard((int)req.PeakGroupId, req.IsHardMode);
 
-        await connection.SendPacket(new PacketSetChallengePeakBossHardModeScRsp(req.PeakGroupId, req.IsHardMode));
+        await connection.SendPacket(new PacketSetChallengePeakBossHardModeScRsp(req.PeakGroupId,
+            player.ChallengePeakManager.IsBossHard((int)req.PeakGroupId)));
     }
 }

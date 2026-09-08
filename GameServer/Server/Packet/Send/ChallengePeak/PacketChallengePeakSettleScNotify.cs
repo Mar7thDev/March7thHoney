@@ -20,6 +20,10 @@ public class PacketChallengePeakSettleScNotify : BasePacket
             CyclesUsed = peak.RoundCnt
         };
 
+        if (inst.IsWin && !isBoss)
+            proto.IsUnlockEasyBoss = inst.Player.ChallengePeakManager!.WillUnlockEasyBoss(
+                (int)peak.CurrentPeakGroupId, (int)peak.CurrentPeakLevelId);
+
         if (inst.IsWin && isBoss && peak.IsHard)
         {
             // 绝境王棋通关：客户端按红色绝境模板渲染钻石+三星，不下发普通目标列表

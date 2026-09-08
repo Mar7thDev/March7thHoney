@@ -168,7 +168,7 @@ public class March7thHoneyConnection
 
         if (packet.CmdId == CmdIds.SetClientPausedScRsp)
         {
-            await SendWatermarkLuaAsync();
+            await SendClientUiLuaAsync();
         }
 
     }
@@ -179,4 +179,5 @@ public class March7thHoneyConnection
     }
 
     public virtual Task SendWatermarkLuaAsync() => Task.CompletedTask;
+    public virtual Task SendClientUiLuaAsync() => SendWatermarkLuaAsync();
 }
