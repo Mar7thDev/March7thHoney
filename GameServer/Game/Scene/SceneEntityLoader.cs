@@ -11,6 +11,16 @@ namespace March7thHoney.GameServer.Game.Scene;
 
 public class SceneEntityLoader(SceneInstance scene)
 {
+    // These 4.5 PROD props are known to break the initial Changle Tian scene on Android. The resource
+    // LoadOnInitial flag cannot be used as a global filter: many ordinary server props carry false and
+    // this server has no dynamic CreateProp path that could add them later.
+    private static readonly HashSet<(int FloorId, int GroupId, int InstId)> InitialPropExclusions =
+    [
+        (10202001, 144, 300003),
+        (10202001, 208, 300001),
+        (10202001, 208, 300002)
+    ];
+
     public SceneInstance Scene { get; set; } = scene;
     public List<int> LoadGroups { get; set; } = [];
 
@@ -214,9 +224,10 @@ public class SceneEntityLoader(SceneInstance scene)
                 // ignored
             }
 
-        // This is the group's initial population, including when the group is activated later.
-        // Explicit prop creation may still call LoadProp; it must not be blocked by this flag.
-        foreach (var prop in info.PropList.Where(prop => prop.LoadOnInitial))
+        // Group activation is the only production path that creates props. Keep the compatibility
+        // behaviour for unreliable LoadOnInitial metadata and suppress only verified bad fixtures.
+        foreach (var prop in info.PropList.Where(prop =>
+                     !InitialPropExclusions.Contains((Scene.FloorId, info.Id, prop.ID))))
             try
             {
                 if (await LoadProp(prop, info) is { } entity) entityList.Add(entity);
@@ -265,7 +276,9 @@ public class SceneEntityLoader(SceneInstance scene)
 
     public virtual async ValueTask<EntityNpc?> LoadNpc(NpcInfo info, GroupInfo group, bool sendPacket = false)
     {
-        if (info.IsClientOnly || info.IsDelete || !info.LoadOnInitial) return null;
+        // Like props, NPCs have no later server-side creation path. Some ordinary server NPC exports
+        // incorrectly say LoadOnInitial=false, so let the containing group's lifecycle own visibility.
+        if (info.IsClientOnly || info.IsDelete) return null;
 
         if (!GameData.NpcDataData.ContainsKey(info.NPCID)) return null;
 
@@ -291,8 +304,8 @@ public class SceneEntityLoader(SceneInstance scene)
 
     public virtual async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
     {
-        // LoadOnInitial is enforced by LoadGroup, not explicit creation. IsClientOnly alone is
-        // not a server-prop exclusion: runtime exports also set it on usable server props.
+        // IsClientOnly/LoadOnInitial alone are not server-prop exclusions: runtime exports also set
+        // them on usable server props. Initial compatibility exclusions are handled by LoadGroup.
         if (info.IsDelete) return null;
 
         GameData.MazePropData.TryGetValue(info.PropID, out var excel);
