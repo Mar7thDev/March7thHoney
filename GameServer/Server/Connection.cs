@@ -50,9 +50,29 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     public override async Task SendWatermarkLuaAsync()
     {
+        var lua = BuildWatermarkLua();
+        if (lua != null) await SendLuaAsync(lua);
+    }
+
+    public override async Task SendClientUiLuaAsync()
+    {
         if (Player == null) return;
+        var watermark = BuildWatermarkLua();
+        var signal = NetStatusLua.Build(ConfigManager.Config.ServerOption.NetStatus);
+        var lua = watermark == null ? signal : $"pcall(function()\n{watermark}\nend)\n{signal}";
+        await SendLuaAsync(lua);
+    }
+
+    private async Task SendLuaAsync(string lua)
+    {
+        await SendPacket(new HandshakePacket(System.Text.Encoding.UTF8.GetBytes(lua)));
+    }
+
+    private string? BuildWatermarkLua()
+    {
+        if (Player == null) return null;
         var watermark = ConfigManager.Config.ServerOption.Watermark;
-        if (!watermark.Enabled) return;
+        if (!watermark.Enabled) return null;
 
         var nickname = Player.Data.Name ?? "";
         var uid = Player.Uid.ToString();
@@ -66,7 +86,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         var lines = new List<string>();
         if (!string.IsNullOrWhiteSpace(line1)) lines.Add(line1);
         if (!string.IsNullOrWhiteSpace(line2)) lines.Add(line2);
-        if (lines.Count == 0) return;
+        if (lines.Count == 0) return null;
 
         var luaText = EscapeLuaString(string.Join("\n", lines));
         var fontSize = watermark.FontSize.ToString(CultureInfo.InvariantCulture);
@@ -90,8 +110,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
             "local status, err = pcall(modify_texts)\n" +
             "if not status then on_error(err) end\n";
 
-        var pkt = new HandshakePacket(System.Text.Encoding.UTF8.GetBytes(lua));
-        await SendPacket(pkt.BuildPacket());
+        return lua;
     }
 
     private static string BuildWatermarkLine(string template, string nickname, string uid, string version,

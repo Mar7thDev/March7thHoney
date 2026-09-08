@@ -105,6 +105,8 @@ public class ServerOption
     public ServerAnnounce ServerAnnounce { get; set; } = new();
     public ServerProfile ServerProfile { get; set; } = new();
     public WatermarkConfig Watermark { get; set; } = new();
+    public NetStatusConfig NetStatus { get; set; } = new();
+    public ChallengePeakOption ChallengePeak { get; set; } = new();
     public AuthOption Auth { get; set; } = new();
     public bool AutoCreateUser { get; set; } = false;
     public LogOption LogOption { get; set; } = new();
@@ -126,6 +128,27 @@ public class ServerOption
     {
         return Math.Max(Math.Min(FarmingDropRate, 999), 1);
     }
+}
+
+public class NetStatusConfig
+{
+    public bool Enabled { get; set; } = false;
+    public int LatencyMs { get; set; } = 37;
+    public string Color { get; set; } = "#FEC6DF";
+
+    public bool TryGetColor(out int rgb)
+    {
+        rgb = 0;
+        var color = Color?.Trim();
+        return LatencyMs >= 0 && color is { Length: 7 } && color[0] == '#' &&
+               int.TryParse(color.AsSpan(1), System.Globalization.NumberStyles.AllowHexSpecifier,
+                   System.Globalization.CultureInfo.InvariantCulture, out rgb);
+    }
+}
+
+public class ChallengePeakOption
+{
+    public bool RequireKnightClearsForNormalBoss { get; set; } = false;
 }
 
 public class WatermarkConfig

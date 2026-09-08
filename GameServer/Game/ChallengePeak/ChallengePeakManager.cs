@@ -13,13 +13,12 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.ChallengePeak;
 
-/// <summary>
-///     this class is used to manage the challenge peak for a player
-///     but the challenge instance shouldnt be stored here ( see ChallengeManager )
-/// </summary>
-/// <see cref="March7thHoney.GameServer.Game.Challenge.ChallengeManager" />
+// Challenge instances are owned by ChallengeManager.
 public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(player)
 {
+    private static bool RequiresKnightClears =>
+        ConfigManager.Config.ServerOption.ChallengePeak?.RequireKnightClearsForNormalBoss == true;
+
     // 王棋难度按 group 持久化(随 SetChallengePeakBossHardMode 改变, 离开/重登都不重置), 对齐官服按 peakGroupId 跟踪
     public void SetBossHard(int groupId, bool hard)
     {
@@ -29,7 +28,26 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         DatabaseHelper.SaveDatabaseType(data);
     }
 
+    public bool IsEasyBossUnlocked(int groupId)
+    {
+        if (!RequiresKnightClears) return true;
+        var group = GameData.ChallengePeakGroupConfigData.GetValueOrDefault(groupId);
+        if (group == null) return false;
+        var records = Player.ChallengeManager!.ChallengeData.PeakLevelDatas;
+        return group.PreLevelIDList.All(id => records.GetValueOrDefault(id)?.HasRecord == true);
+    }
+
+    public bool WillUnlockEasyBoss(int groupId, int clearedLevelId)
+    {
+        if (!RequiresKnightClears || IsEasyBossUnlocked(groupId)) return false;
+        var group = GameData.ChallengePeakGroupConfigData.GetValueOrDefault(groupId);
+        if (group == null || !group.PreLevelIDList.Contains(clearedLevelId)) return false;
+        var records = Player.ChallengeManager!.ChallengeData.PeakLevelDatas;
+        return group.PreLevelIDList.All(id => id == clearedLevelId || records.GetValueOrDefault(id)?.HasRecord == true);
+    }
+
     public bool IsBossHard(int groupId) =>
+        !IsEasyBossUnlocked(groupId) ||
         Player.ChallengeManager!.ChallengeData.PeakBossHardByGroup.GetValueOrDefault(groupId, false);
 
     public int GetCurrentGroupId()
@@ -52,17 +70,19 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
 
     public ChallengePeakGroup GetChallengePeakInfo(int groupId, bool? disableHardMode = null)
     {
+        var realProgress = RequiresKnightClears;
         var proto = new ChallengePeakGroup
         {
             PeakGroupId = (uint)groupId,
             // 未显式指定则按 group 记忆的难度下发: true=普通蓝, false=绝境红
-            DisableHardMode = disableHardMode ?? !IsBossHard(groupId)
+            DisableHardMode = IsEasyBossUnlocked(groupId) && (disableHardMode ?? !IsBossHard(groupId))
         };
 
         var data = GameData.ChallengePeakGroupConfigData.GetValueOrDefault(groupId);
         if (data == null) return proto;
 
         var starNum = 0;
+        var clearedPeaks = 0;
         // 骑士关最佳战绩容器, 客户端据此渲染各关战绩(轮数/星/通关阵容)
         var records = new ChallengePeakBestRecordList();
         foreach (var levelId in data.PreLevelIDList)
@@ -70,27 +90,31 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             var levelData = GameData.ChallengePeakConfigData.GetValueOrDefault(levelId);
             if (levelData == null) continue;
 
+            Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelPbData);
+            var hasRecord = levelPbData?.HasRecord == true;
+            if (hasRecord) clearedPeaks++;
+
             var levelProto = new Proto.ChallengePeak
             {
                 PeakId = (uint)levelId,
-                HasPassed = true
+                HasPassed = !realProgress || hasRecord
             };
 
-            Player.ChallengeManager!.ChallengeData.PeakLevelDatas.TryGetValue(levelId, out var levelPbData);
-            var hasRecord = levelPbData?.HasRecord == true;
-
-            // 无真实战绩时沿用解锁种子的口径伪造满星
+            // 默认模式保留满星补值, 真实进度模式只使用已通关记录。
             var finishedTargets = hasRecord
                 ? levelPbData!.FinishedTargetList
-                : levelData.NormalTargetList.Select(x => (uint)x).ToList();
+                : realProgress ? [] : levelData.NormalTargetList.Select(x => (uint)x).ToList();
             var recordTeam = hasRecord && levelPbData!.RecordAvatarList is { Count: > 0 }
                 ? levelPbData.RecordAvatarList
                 : levelPbData?.BaseAvatarList ?? [];
 
             starNum += finishedTargets.Count;
-            levelProto.CyclesUsed = levelPbData?.RoundCnt ?? 0;
+            levelProto.CyclesUsed = realProgress && !hasRecord ? 0 : levelPbData?.RoundCnt ?? 0;
             levelProto.PeakAvatarIdList.AddRange(levelPbData?.BaseAvatarList ?? []);
             levelProto.FinishedTargetList.AddRange(finishedTargets);
+            proto.Peaks.Add(levelProto);
+
+            if (realProgress && !hasRecord) continue;
 
             var record = new ChallengePeakBestRecord
             {
@@ -100,16 +124,12 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             record.FinishedTargetList.AddRange(finishedTargets);
             record.PeakAvatarIdList.AddRange(ToRecordAvatars(recordTeam));
             records.Peaks.Add(record);
-
-            proto.Peaks.Add(levelProto);
         }
 
         if (records.Peaks.Count > 0) proto.BestRecordList = records;
 
-        // The client gates the boss 普通/绝境 toggle behind "3 knights cleared" (judged by star
-        // count, not the per-peak HasPassed flag). Report full stars so both difficulties are
-        // selectable from the start — captured toggle-enabled accounts carry obtainedStars == peaks*3.
-        proto.ObtainedStars = (uint)Math.Max(starNum, proto.Peaks.Count * 3);
+        // 客户端以 ObtainedStars 表示骑士通关数, 默认模式保留原有解锁补值。
+        proto.ObtainedStars = (uint)(realProgress ? clearedPeaks : Math.Max(starNum, proto.Peaks.Count * 3));
         proto.CountOfPeaks = (uint)proto.Peaks.Count;
         if (Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenRewards))
             proto.TakenStarRewards.AddRange(takenRewards.Select(x => (uint)x));
@@ -121,18 +141,18 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var bossLevelData = GameData.ChallengePeakBossConfigData.GetValueOrDefault(bossLevelId);
         if (bossLevelData == null) return proto;
 
-        var bossProto = new Proto.ChallengePeakBoss
-        {
-            HardModeHasPassed = true,
-            // Mark both difficulties unlocked even with no clearance record, so the client always
-            // offers the 普通/绝境 switch from the start (real records below override with avatars/cycles).
-            EasyMode = new ChallengePeakBossClearance { HasPassed = true },
-            HardMode = new ChallengePeakBossClearance { HasPassed = true }
-        };
-
         var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
         bossDatas.TryGetValue((bossLevelId << 2) | 0, out var easyRec);
         bossDatas.TryGetValue((bossLevelId << 2) | 1, out var hardRec);
+
+        var bossProto = new Proto.ChallengePeakBoss
+        {
+            // 颜色勋章沿用结算口径: 普通零轮或绝境通关。
+            HardModeHasPassed = !realProgress || hardRec?.HasRecord == true || easyRec is { HasRecord: true, RoundCnt: 0 },
+            EasyMode = new ChallengePeakBossClearance { HasPassed = !realProgress || easyRec?.HasRecord == true },
+            HardMode = new ChallengePeakBossClearance { HasPassed = !realProgress || hardRec?.HasRecord == true }
+        };
+
         // 普通/绝境槽位都回填保存的队伍(自身记录优先,无则回退另一难度), 同一支队伍同时显示在两个难度
         var easySrc = easyRec ?? hardRec;
         var hardSrc = hardRec ?? easyRec;
@@ -159,7 +179,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         {
             foreach (var t in easyRec.FinishedTargetList) easyTargets.Add(t);
         }
-        else
+        else if (!realProgress)
         {
             // No real clearance record yet: seed normal + hard targets so the boss reads as cleared on both difficulties.
             if (GameData.ChallengePeakConfigData.TryGetValue(bossLevelId, out var bossPeakCfg))

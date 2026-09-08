@@ -14,8 +14,15 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Challenge.Instances;
 
-public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData data) : BaseChallengeInstance(player, data)
+public class ChallengePeakInstance : BaseChallengeInstance
 {
+    public ChallengePeakInstance(PlayerInstance player, ChallengeStateData data) : base(player, data)
+    {
+        Config = GameData.ChallengePeakConfigData[(int)data.Peak!.CurrentPeakLevelId];
+        if (Config.BossExcel != null && !player.ChallengePeakManager!.IsEasyBossUnlocked((int)data.Peak.CurrentPeakGroupId))
+            data.Peak.IsHard = true;
+    }
+
     #region Setter & Getter
 
     public override Dictionary<int, List<ChallengeConfigExcel.ChallengeMonsterInfo>> GetStageMonsters()
@@ -54,8 +61,7 @@ public class ChallengePeakInstance(PlayerInstance player, ChallengeStateData dat
 
     private PeakChallengeState Peak => Data.Peak!;
 
-    public ChallengePeakConfigExcel Config { get; } =
-        GameData.ChallengePeakConfigData[(int)data.Peak!.CurrentPeakLevelId];
+    public ChallengePeakConfigExcel Config { get; }
 
     public List<int> AllBattleTargets { get; } = [];
     public bool IsWin { get; private set; }
