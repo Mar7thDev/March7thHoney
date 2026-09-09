@@ -78,8 +78,16 @@ public partial class SceneInstance
             if (defaultValue != 0)
                 result[name] = defaultValue;
 
-        // Activity availability must not turn unrelated floor switches on. Use only the
-        // current dimension's resource defaults and the player's explicitly saved values.
+        // Preserve the floor-wide activity-entry compatibility defaults. Platform-only stage
+        // captures are excluded at prop creation, not by disabling ordinary floor content.
+        var exposeActivityEntries = Excel.PlaneType is PlaneTypeEnum.Town or PlaneTypeEnum.Maze &&
+                                    GameData.ContentPackageConfigData.Values.Any(package =>
+                                        package.MainMissionIDList.Count > 0 && package.TouchesFloor(FloorId));
+        if (exposeActivityEntries)
+            foreach (var value in FloorInfo?.FloorSavedValue ?? [])
+                if (value.DefaultValue == 0 && !value.Name.Contains("_IsHidden") && !persisted.ContainsKey(value.Name))
+                    result[value.Name] = 1;
+
         foreach (var (key, value) in persisted)
             result[key] = value;
 

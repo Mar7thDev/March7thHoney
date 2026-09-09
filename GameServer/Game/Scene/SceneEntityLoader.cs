@@ -11,14 +11,14 @@ namespace March7thHoney.GameServer.Game.Scene;
 
 public class SceneEntityLoader(SceneInstance scene)
 {
-    // These 4.5 PROD props are known to break the initial Changle Tian scene on Android. The resource
-    // LoadOnInitial flag cannot be used as a global filter: many ordinary server props carry false and
-    // this server has no dynamic CreateProp path that could add them later.
-    private static readonly HashSet<(int FloorId, int GroupId, int InstId)> InitialPropExclusions =
+    // 4.5 Xianzhou StageObjectCapture references to PCOnly blocks, unavailable on Android.
+    // Resource.bin does not retain StageObjectCapture, so identify these exact resource instances
+    // without requiring raw JSON or a cache rebuild. Do not infer platform restrictions from
+    // LoadOnInitial, IsHoyoGroup, or Atmosphere: ordinary props/NPCs use those flags too.
+    private static readonly HashSet<(int FloorId, int GroupId, int InstId)> PcOnlyStageCaptures =
     [
-        (10202001, 144, 300003),
-        (10202001, 208, 300001),
-        (10202001, 208, 300002)
+        (10201001, 280, 300001), // Chap02_CloseView_ADV_X01_StarSkiff_11_PCOnly_BlockData / TeaSet0
+        (10202001, 208, 300001)  // Chap02_CloseView_ADV_X02_Sanctum_01_PCOnly_BlockData / UmbrellaGroup0
     ];
 
     public SceneInstance Scene { get; set; } = scene;
@@ -74,7 +74,7 @@ public class SceneEntityLoader(SceneInstance scene)
                 var unload = !group.UnloadCondition.DelayToLevelReload &&
                              group.UnloadCondition.IsTrue(Scene.Player.MissionManager!.Data, false);
 
-                if (forceUnload || unload || (group.Category == GroupCategoryEnum.Atmosphere && group.IsHoyoGroup == true))
+                if (forceUnload || unload)
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -141,9 +141,6 @@ public class SceneEntityLoader(SceneInstance scene)
         if (!LoadGroups.Contains(info.Id)) return null; // check if group should be loaded in this dimension
         var missionData = Scene.Player.MissionManager!.Data; // get mission data
         if (info.LoadSide == GroupLoadSideEnum.Client) return null; // check if group should be loaded on client side
-        // Hoyo atmosphere is driven by the client's atmosphere system. Do not suppress ordinary
-        // server Hoyo groups: elevators and other initial scene infrastructure use the same flag.
-        if (info.Category == GroupCategoryEnum.Atmosphere && info.IsHoyoGroup == true) return null;
         if (info.GroupName.Contains("TrainVisitor")) return null; // certain group name
         if (info.GroupName.Contains("DeployPuzzle_Repeat_Area")) return null;
         if (info.GroupName.Contains("TrainVisiter")) return null;
@@ -224,10 +221,9 @@ public class SceneEntityLoader(SceneInstance scene)
                 // ignored
             }
 
-        // Group activation is the only production path that creates props. Keep the compatibility
-        // behaviour for unreliable LoadOnInitial metadata and suppress only verified bad fixtures.
-        foreach (var prop in info.PropList.Where(prop =>
-                     !InitialPropExclusions.Contains((Scene.FloorId, info.Id, prop.ID))))
+        // Keep compatibility with ordinary noninitial props; platform exclusions live in LoadProp
+        // so direct creation and forced group activation use the same rule as initial loading.
+        foreach (var prop in info.PropList)
             try
             {
                 if (await LoadProp(prop, info) is { } entity) entityList.Add(entity);
@@ -305,8 +301,8 @@ public class SceneEntityLoader(SceneInstance scene)
     public virtual async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
     {
         // IsClientOnly/LoadOnInitial alone are not server-prop exclusions: runtime exports also set
-        // them on usable server props. Initial compatibility exclusions are handled by LoadGroup.
-        if (info.IsDelete) return null;
+        // them on usable server props. Only the exact PCOnly stage captures are incompatible.
+        if (info.IsDelete || PcOnlyStageCaptures.Contains((Scene.FloorId, group.Id, info.ID))) return null;
 
         GameData.MazePropData.TryGetValue(info.PropID, out var excel);
         if (excel == null) return null;

@@ -270,15 +270,20 @@ var player = new PlayerInstance(60001);
 await player.InitializeAsync();
 var scene = new SceneInstance(player, GameData.MazePlaneData[10202], 10202001, 102020107);
 var snapshot = scene.BuildClientFloorSavedData();
-Check("Changle Tian does not invent LoadBianZhong/ChallengeStoryEntrance=1",
-    snapshot.GetValueOrDefault("LoadBianZhong") == 0 && snapshot.GetValueOrDefault("ChallengeStoryEntrance") == 0
+Check("Changle Tian restores floor-wide activity defaults without writing player saves",
+    snapshot.GetValueOrDefault("LoadBianZhong") == 1 && snapshot.GetValueOrDefault("ChallengeStoryEntrance") == 1
+    && snapshot.GetValueOrDefault("FSV_UmbrellaGroup_IsHidden") == 0
     && !player.SceneData!.FloorSavedData.ContainsKey(10202001));
 var group170 = scene.FloorInfo!.Groups[170];
-Check("production-cache group 170 is blocked with empty save", !group170.SavedValueCondition.IsTrue(snapshot));
+Check("production-cache Pure Fiction entrance is enabled with empty save", group170.SavedValueCondition.IsTrue(snapshot));
 scene.EntityLoader!.LoadGroups.Add(170);
-Check("production-cache group 170 is not loaded by server", await scene.EntityLoader.LoadGroup(group170) == null);
-player.SceneData!.FloorSavedData[10202001] = new() { ["ChallengeStoryEntrance"] = 1 };
-Check("actual persisted activity switch still loads group 170", await scene.EntityLoader.LoadGroup(group170) != null);
+Check("production-cache Pure Fiction entrance props are actually created", (await scene.EntityLoader.LoadGroup(group170))
+    ?.OfType<EntityProp>().Any(prop => prop.InstId == 300002 && prop.Excel.ID == 102226) == true);
+player.SceneData!.FloorSavedData[10202001] = new() { ["ChallengeStoryEntrance"] = 0, ["LoadBianZhong"] = 0 };
+Check("explicit saved zero still overrides floor-wide activity defaults",
+    scene.BuildClientFloorSavedData().GetValueOrDefault("ChallengeStoryEntrance") == 0
+    && scene.BuildClientFloorSavedData().GetValueOrDefault("LoadBianZhong") == 0
+    && !group170.SavedValueCondition.IsTrue(scene.BuildClientFloorSavedData()));
 player.SceneData.FloorSavedData.Remove(10202001);
 
 var synthetic = new FloorInfo { FloorID = 99000001, StartGroupID = 901, DimensionList =
@@ -326,7 +331,9 @@ syntheticScene.EntityLoader.LoadGroups.Add(902);
 Check("non-Hoyo atmosphere groups remain loadable", await syntheticScene.EntityLoader.LoadGroup(ordinaryAtmosphere) != null);
 ordinaryAtmosphere.IsHoyoGroup = true;
 await syntheticScene.EntityLoader.SyncEntity();
-Check("sync also removes a disallowed empty Hoyo atmosphere group", !syntheticScene.Groups.Contains(902));
+Check("sync retains ordinary empty Hoyo atmosphere groups", syntheticScene.Groups.Count(id => id == 902) == 1);
+await syntheticScene.EntityLoader.UnloadGroup(902);
+Check("Hoyo atmosphere alone does not block group activation", await syntheticScene.EntityLoader.LoadGroup(ordinaryAtmosphere) != null);
 typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.SceneInstance))!.SetValue(player, null);
 
 var badEntry = await player.TryEnterScene(10001, 0, false);
@@ -338,29 +345,28 @@ Check("same-scene teleport is success with IsOverMap=false", same.Success && !sa
 Check("legacy EnterScene API keeps its over-map return contract", !await player.EnterScene(1000001, 0, false));
 var realEntry = await player.TryEnterScene(102020107, 0, false);
 Check("Changle Tian scene can be built from production cache", realEntry.Success && realEntry.IsOverMap && player.Data.FloorId == 10202001);
-Check("Changle Tian scene snapshot excludes disabled activity group", !player.SceneInstance!.Groups.Contains(170)
-    && player.SceneInstance.BuildClientFloorSavedData().GetValueOrDefault("ChallengeStoryEntrance") == 0);
+Check("Changle Tian scene snapshot includes the enabled activity group", player.SceneInstance!.Groups.Contains(170)
+    && player.SceneInstance.BuildClientFloorSavedData().GetValueOrDefault("ChallengeStoryEntrance") == 1);
 var changle = player.SceneInstance!;
-foreach (var (groupId, instanceId) in new[] { (144, 300003), (208, 300001), (208, 300002) })
-    Check($"Changle Tian initial scene omits LoadOnInitial=false prop {groupId}/{instanceId}",
-        !changle.Entities.Values.OfType<EntityProp>().Any(prop => prop.GroupId == groupId && prop.InstId == instanceId));
-Check("initially loaded puzzle props remain available", changle.Entities.Values.OfType<EntityProp>()
-    .Any(prop => prop.GroupId == 144 && prop.InstId == 300001));
-Check("Hoyo atmosphere group 169 is not server-spawned", !changle.Groups.Contains(169)
-    && changle.Entities.Values.All(entity => entity.GroupId != 169));
-Check("forced group activation cannot server-spawn Hoyo atmosphere", await changle.EntityLoader!.LoadGroup(
-    changle.FloorInfo!.Groups[169], forceLoad: true) == null);
-Check("stage handler group 208 remains active with no initial props", changle.Groups.Contains(208)
-    && changle.Entities.Values.All(entity => entity.GroupId != 208));
+Check("Changle Tian excludes only the PCOnly stage capture prop", !changle.Entities.Values.OfType<EntityProp>()
+    .Any(prop => prop.GroupId == 208 && prop.InstId == 300001));
+foreach (var (groupId, instanceId) in new[] { (144, 300001), (144, 300003), (208, 300002), (169, 300001) })
+    Check($"non-PCOnly Changle Tian prop {groupId}/{instanceId} remains available", changle.Entities.Values.OfType<EntityProp>()
+        .Any(prop => prop.GroupId == groupId && prop.InstId == instanceId));
 await changle.EntityLoader!.SyncEntity();
 await changle.EntityLoader.SyncEntity();
-Check("empty groups stay loaded exactly once across repeated sync", changle.Groups.Count(id => id == 208) == 1
+Check("stage handler stays loaded exactly once across repeated sync", changle.Groups.Count(id => id == 208) == 1
     && await changle.EntityLoader.LoadGroup(changle.FloorInfo!.Groups[208]) == null);
+Check("sync retains non-PCOnly props and Hoyo atmosphere", changle.Entities.Values.OfType<EntityProp>()
+    .Any(prop => prop.GroupId == 208 && prop.InstId == 300002)
+    && changle.Entities.Values.OfType<EntityProp>().Any(prop => prop.GroupId == 169 && prop.InstId == 300001));
 var stageGroup = changle.FloorInfo!.Groups[208];
-var explicitProp = await changle.EntityLoader.LoadProp(stageGroup.PropList.First(), stageGroup);
-Check("explicit prop creation can still create a noninitial prop", explicitProp != null
-    && changle.Entities.ContainsKey(explicitProp.EntityId));
-if (explicitProp != null) await changle.RemoveEntity(explicitProp, false);
+Check("explicit creation cannot reintroduce the PCOnly capture", await changle.EntityLoader.LoadProp(
+    stageGroup.PropList.Single(prop => prop.ID == 300001), stageGroup) == null);
+await changle.EntityLoader.UnloadGroup(208);
+var forcedStage = await changle.EntityLoader.LoadGroup(stageGroup, forceLoad: true);
+Check("forced stage activation retains the normal capture but excludes PCOnly", forcedStage?.OfType<EntityProp>()
+    .Any(prop => prop.InstId == 300002) == true && forcedStage.All(entity => entity is not EntityProp { InstId: 300001 }));
 var elevatorScene = new SceneInstance(player, GameData.MazePlaneData[20002], 20002001, 2000201);
 elevatorScene.EntityLoader!.LoadGroups.Add(8);
 var elevatorGroup = elevatorScene.FloorInfo!.Groups[8];
@@ -372,9 +378,9 @@ var loginScenePacket = new PacketGetCurSceneInfoScRsp(player);
 var loginScene = GetCurSceneInfoScRsp.Parser.ParseFrom(loginScenePacket.Data).Scene;
 Check("login restoration also carries the 4.5 scene initialization value",
     UIntFields(loginScene.FOJJGJPIMBL.ToByteArray()).GetValueOrDefault(11) == 2);
-Check("login restoration does not reintroduce filtered groups/props", loginScene.EntityGroupList.All(group =>
-    group.GroupId != 169 && (group.GroupId != 208 || group.EntityList.Count == 0)
-    && (group.GroupId != 144 || group.EntityList.All(entity => entity.InstId != 300003))));
+Check("login restoration excludes PCOnly but retains ordinary captures and atmosphere",
+    !HasSceneProp(loginScene, 208, 300001, 100) && HasSceneProp(loginScene, 208, 300002, 100)
+    && HasSceneProp(loginScene, 144, 300003, 100000) && HasSceneProp(loginScene, 169, 300001, 102009));
 var mapPacket = new PacketGetSceneMapInfoScRsp(new GetSceneMapInfoCsReq
     { SceneIdentifiers = { new SceneIdentifier { FloorId = 10202001 } } }, player);
 var mapInfo = GetSceneMapInfoScRsp.Parser.ParseFrom(mapPacket.Data).SceneMapInfo.Single();
@@ -382,6 +388,62 @@ Check("real map response carries Changle Tian floor at tag 14 and success at tag
     UIntFields(mapInfo.ToByteArray()).GetValueOrDefault(14) == 10202001 && mapInfo.Retcode == 0);
 Console.WriteLine($"Changle Tian fixture: {changle.Entities.Count} total entities, " +
                   $"{changle.Entities.Values.OfType<EntityProp>().Count()} props, groups [{string.Join(',', changle.Groups.Order())}].");
+
+bool HasSceneProp(SceneInfo info, int groupId, int instanceId, int propId) => info.EntityGroupList
+    .Any(group => group.GroupId == groupId && group.EntityList.Any(entity =>
+        entity.InstId == instanceId && entity.Prop?.PropId == propId));
+
+foreach (var (entryId, floorId, groupId, savedName, propId) in new[]
+{
+    (102020107, 10202001, 170, "ChallengeStoryEntrance", 102226),
+    (1030402, 10304001, 145, "ChallengeEntrance", 103249)
+})
+{
+    var entered = await player.TryEnterScene(entryId, 0, false);
+    var entryScene = player.SceneInstance!;
+    var instanceId = floorId == 10202001 ? 300002 : 300001;
+    Check($"challenge entrance {floorId}/{groupId} loads with no persisted switch", entered.Success
+        && !player.SceneData.FloorSavedData.GetValueOrDefault(floorId, []).ContainsKey(savedName)
+        && HasSceneProp(entryScene.ToProto(), groupId, instanceId, propId));
+    var floorWideDefaults = entryScene.BuildClientFloorSavedData();
+    Check($"activity floor {floorId} restores all zero defaults, not only the challenge switch",
+        entryScene.FloorInfo!.FloorSavedValue.Where(value => value.DefaultValue == 0 && !value.Name.Contains("_IsHidden"))
+            .All(value => floorWideDefaults.GetValueOrDefault(value.Name) == 1));
+    var entryPacket = EnterSceneByServerScNotify.Parser.ParseFrom(new PacketEnterSceneByServerScNotify(entryScene).Data);
+    Check($"teleport snapshot includes challenge entrance {floorId}/{groupId} and enabled switch",
+        entryPacket.Scene.FloorSavedData.GetValueOrDefault(savedName) == 1
+        && HasSceneProp(entryPacket.Scene, groupId, instanceId, propId));
+    await entryScene.EntityLoader!.SyncEntity();
+    await entryScene.EntityLoader.SyncEntity();
+    var restoredScene = GetCurSceneInfoScRsp.Parser.ParseFrom(new PacketGetCurSceneInfoScRsp(player).Data).Scene;
+    Check($"login snapshot after sync retains challenge entrance {floorId}/{groupId}",
+        restoredScene.FloorSavedData.GetValueOrDefault(savedName) == 1
+        && HasSceneProp(restoredScene, groupId, instanceId, propId));
+    player.SceneData.FloorSavedData[floorId] = new() { [savedName] = 0 };
+    await entryScene.EntityLoader.SyncEntity();
+    Check($"explicit saved zero still unloads challenge entrance {floorId}/{groupId}",
+        !entryScene.Groups.Contains(groupId) && !HasSceneProp(entryScene.ToProto(), groupId, instanceId, propId));
+    player.SceneData.FloorSavedData.Remove(floorId);
+    await entryScene.EntityLoader.SyncEntity();
+    Check($"removing the saved override restores challenge entrance {floorId}/{groupId}",
+        HasSceneProp(entryScene.ToProto(), groupId, instanceId, propId));
+}
+
+var starskiff = new SceneInstance(player, GameData.MazePlaneData[10201], 10201001, 1020101);
+starskiff.EntityLoader!.LoadGroups.Add(280);
+var starskiffGroup = starskiff.FloorInfo!.Groups[280];
+var starskiffEntities = await starskiff.EntityLoader.LoadGroup(starskiffGroup);
+Check("Starskiff Haven PCOnly capture is excluded while its empty handler loads",
+    starskiffEntities is { Count: 0 } && starskiff.Groups.Contains(280));
+await starskiff.EntityLoader.SyncEntity();
+await starskiff.EntityLoader.SyncEntity();
+Check("PCOnly-only handler remains loaded exactly once after sync", starskiff.Groups.Count(id => id == 280) == 1
+    && starskiff.Entities.Values.All(entity => entity.GroupId != 280));
+Check("explicit creation also excludes Starskiff Haven PCOnly capture", await starskiff.EntityLoader.LoadProp(
+    starskiffGroup.PropList.Single(prop => prop.ID == 300001), starskiffGroup) == null);
+await starskiff.EntityLoader.UnloadGroup(280);
+Check("forced Starskiff Haven activation still excludes PCOnly", (await starskiff.EntityLoader.LoadGroup(
+    starskiffGroup, forceLoad: true)) is { Count: 0 });
 
 var previousScene = player.SceneInstance;
 const int MissingEntry = 99000002;
