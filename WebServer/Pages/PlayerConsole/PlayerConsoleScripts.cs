@@ -604,7 +604,7 @@ public static partial class PlayerConsoleScripts
         }
         if (button) button.disabled = true;
         try {
-          const payload = await api("/console/exec", { command: text });
+          const payload = await api("/player/exec", { command: text });
           pushConsoleEntry(text, payload.output || t("console.no_result"), true);
           return payload;
         } catch (error) {
@@ -618,14 +618,14 @@ public static partial class PlayerConsoleScripts
 
       // ------------------------------------------------------------- session
       async function refreshPlayer() {
-        const payload = await api("/console/session", {});
+        const payload = await api("/player/session", {});
         state.player = payload.data;
         renderShell();
         return state.player;
       }
 
       async function loadCatalog() {
-        const payload = await api("/console/catalog", {});
+        const payload = await api("/player/catalog", {});
         state.catalog = payload.data.commands || [];
         commandModel.rebuild(state.catalog);
         state.catalogMeta = { role: payload.data.role, allowed: payload.data.allowed_count, count: payload.data.count };
@@ -643,7 +643,7 @@ public static partial class PlayerConsoleScripts
         const button = $("button[type=submit]", els.loginForm);
         button.disabled = true;
         try {
-          const payload = await api("/console/login", { username: uid, password: els.loginPassword.value });
+          const payload = await api("/player/login", { username: uid, password: els.loginPassword.value });
           state.token = payload.data.token;
           state.player = payload.data.player;
           writeSession(TOKEN_KEY, state.token);
@@ -681,7 +681,7 @@ public static partial class PlayerConsoleScripts
       }
 
       async function handleLogout() {
-        try { await api("/console/logout", {}); } catch { /* the token is dropped either way */ }
+        try { await api("/player/logout", {}); } catch { /* the token is dropped either way */ }
         clearSession(false);
         toast(t("login.signed_out"), "");
       }

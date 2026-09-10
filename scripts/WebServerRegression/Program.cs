@@ -49,7 +49,7 @@ manager.RegisterCommands();
 MuipManager.OnExecuteCommand += manager.HandleCommandAsync;
 MuipManager.CommandCatalogProvider = manager.BuildCatalog;
 
-// A fixture player for the self-service console at /console: default role, so the page shows both the
+// A fixture player for the self-service console at /player: default role, so the page shows both the
 // commands a normal account may run and the ones it may not.
 const int fixtureUid = 10002;
 const string fixturePassword = "fixture-console-only";
@@ -67,7 +67,7 @@ if (serve)
     // Pretend the fixture player is in-game so the console can actually run commands.
     connections.Add(2, new TestConnection(fixtureUid));
     Console.WriteLine($"UI fixture: {address}/admin/index.html (key: local-web-regression-only)");
-    Console.WriteLine($"UI fixture: {address}/console/index.html (uid: {fixtureUid}, password: {fixturePassword})");
+    Console.WriteLine($"UI fixture: {address}/player/index.html (uid: {fixtureUid}, password: {fixturePassword})");
     await app.WaitForShutdownAsync();
     return;
 }
@@ -132,7 +132,7 @@ Check("invalid target is rejected", (await Execute("/help", 99999)).Contains("99
 manager.HandleCommand("/regression-probe", new ConsoleCommandSender(new Logger("Regression")));
 Check("terminal retains its selected target", probe.LastTarget == terminalTarget && probe.LastExplicit);
 
-// --- player self-service console (/console) -----------------------------------------------------------
+// --- player self-service console (/player) ------------------------------------------------------------
 // A separate client: the admin bearer on `client` must never stand in for a console session.
 using var consoleClient = new HttpClient { BaseAddress = new Uri(address), Timeout = TimeSpan.FromSeconds(60) };
 
@@ -144,13 +144,13 @@ async Task<JsonDocument> ConsolePost(string path, object body, string? token = n
     return JsonDocument.Parse(await response.Content.ReadAsStringAsync());
 }
 
-using (var denied = await ConsolePost("/console/catalog", new { }))
+using (var denied = await ConsolePost("/player/catalog", new { }))
     Check("console catalog requires credentials", denied.RootElement.GetProperty("retcode").GetInt32() != 0);
-using (var denied = await ConsolePost("/console/login", new { username = fixtureUid, password = "wrong" }))
+using (var denied = await ConsolePost("/player/login", new { username = fixtureUid, password = "wrong" }))
     Check("console login rejects a wrong password", denied.RootElement.GetProperty("retcode").GetInt32() != 0);
 
 string consoleToken;
-using (var login = await ConsolePost("/console/login", new { username = fixtureUid, password = fixturePassword }))
+using (var login = await ConsolePost("/player/login", new { username = fixtureUid, password = fixturePassword }))
 {
     Check("console login succeeds", login.RootElement.GetProperty("retcode").GetInt32() == 0);
     var data = login.RootElement.GetProperty("data");
@@ -158,7 +158,7 @@ using (var login = await ConsolePost("/console/login", new { username = fixtureU
     Check("console login reports the player online", data.GetProperty("player").GetProperty("online").GetBoolean());
 }
 
-using (var catalog = await ConsolePost("/console/catalog", new { }, consoleToken))
+using (var catalog = await ConsolePost("/player/catalog", new { }, consoleToken))
 {
     var commands = catalog.RootElement.GetProperty("data").GetProperty("commands").EnumerateArray().ToList();
     bool Allowed(string name) => commands.Single(c => c.GetProperty("name").GetString() == name).GetProperty("allowed").GetBoolean();
@@ -167,20 +167,20 @@ using (var catalog = await ConsolePost("/console/catalog", new { }, consoleToken
     Check("console catalog denies an Administrator command", !Allowed("account"));
 }
 
-using (var connect = await ConsolePost("/console/exec", new { command = "" }, consoleToken))
+using (var connect = await ConsolePost("/player/exec", new { command = "" }, consoleToken))
     Check("console connect reports the session", connect.RootElement.GetProperty("output").GetString()!.Contains($"UID {fixtureUid}"));
-using (var help = await ConsolePost("/console/exec", new { command = "/help" }, consoleToken))
+using (var help = await ConsolePost("/player/exec", new { command = "/help" }, consoleToken))
     Check("console runs an allowed command", help.RootElement.GetProperty("output").GetString()!.Contains("/help"));
-using (var denied = await ConsolePost("/console/exec", new { command = "/account roles" }, consoleToken))
+using (var denied = await ConsolePost("/player/exec", new { command = "/account roles" }, consoleToken))
     Check("console refuses a command the role lacks",
         denied.RootElement.GetProperty("output").GetString()!.Contains(I18NManager.Translate("Game.Command.Notice.NoPermission")));
 // The launcher still posts uid + password on every call; that path must keep working.
-using (var legacy = await ConsolePost("/console/exec", new { username = fixtureUid.ToString(), password = fixturePassword, command = "/help" }))
+using (var legacy = await ConsolePost("/player/exec", new { username = fixtureUid.ToString(), password = fixturePassword, command = "/help" }))
     Check("console keeps the launcher uid+password path", legacy.RootElement.GetProperty("output").GetString()!.Contains("/help"));
-using (var forged = await ConsolePost("/console/exec", new { command = "/help" }, "not-a-real-token"))
+using (var forged = await ConsolePost("/player/exec", new { command = "/help" }, "not-a-real-token"))
     Check("console rejects a forged token", forged.RootElement.GetProperty("retcode").GetInt32() != 0);
 
-using (var page = await consoleClient.GetAsync("/console/index.html"))
+using (var page = await consoleClient.GetAsync("/player/index.html"))
 {
     var body = await page.Content.ReadAsStringAsync();
     Check("console page renders", page.IsSuccessStatusCode && body.Contains("M7_CONSOLE_I18N"));

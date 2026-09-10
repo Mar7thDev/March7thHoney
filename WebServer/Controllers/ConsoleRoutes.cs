@@ -17,11 +17,11 @@ using Microsoft.AspNetCore.Routing;
 namespace March7thHoney.WebServer.Controllers;
 
 /// <summary>
-///     The player self-service console: a page at /console plus the endpoints behind it. Everything runs with
+///     The player self-service console: a page at /player plus the endpoints behind it. Everything runs with
 ///     the exact permissions of in-game chat (resolved through <see cref="AccountData.HasPermission" />), so a
 ///     player can only do what their role already lets them type in the game.
 ///     <para>
-///         Two credential styles are accepted everywhere: a session token from /console/login (used by the page,
+///         Two credential styles are accepted everywhere: a session token from /player/login (used by the page,
 ///         so the password travels once) and the original uid+password body the launcher's console tab sends.
 ///     </para>
 /// </summary>
@@ -32,12 +32,22 @@ public static class ConsoleRoutes
 
     public static void MapConsoleRoutes(this IEndpointRouteBuilder app)
     {
-        // One template serves "/console" and "/console/"; registering both is an ambiguous match.
-        app.MapGet("/console", () => Results.Redirect("/console/index.html"));
-        app.MapGet("/console/index.html", RenderPage);
+        // One template serves "/player" and "/player/"; registering both is an ambiguous match.
+        app.MapGet("/player", () => Results.Redirect("/player/index.html"));
+        app.MapGet("/player/index.html", RenderPage);
 
         // Cast to Delegate: a Func<HttpContext, Task<IResult>> otherwise binds as a RequestDelegate, which
         // discards the returned result and answers every call with an empty 200.
+        app.MapPost("/player/login", (Delegate)Login);
+        app.MapPost("/player/logout", (Delegate)Logout);
+        app.MapPost("/player/session", (Delegate)Session);
+        app.MapPost("/player/catalog", (Delegate)Catalog);
+        app.MapPost("/player/exec", (Delegate)Exec);
+        app.MapPost("/player/self-reset", (Delegate)SelfReset);
+
+        // Keep the original launcher integration working while /player is the canonical browser route.
+        app.MapGet("/console", () => Results.Redirect("/player/index.html"));
+        app.MapGet("/console/index.html", () => Results.Redirect("/player/index.html"));
         app.MapPost("/console/login", (Delegate)Login);
         app.MapPost("/console/logout", (Delegate)Logout);
         app.MapPost("/console/session", (Delegate)Session);

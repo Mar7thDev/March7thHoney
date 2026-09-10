@@ -381,8 +381,8 @@ public static partial class PlayerConsoleScripts
         })) return;
 
         await run(button, async () => {
-          const payload = await api("/console/self-reset", { confirm: "true" });
-          pushConsoleEntry("/console/self-reset", payload.output || t("quick.reset.done"), true);
+          const payload = await api("/player/self-reset", { confirm: "true" });
+          pushConsoleEntry("/player/self-reset", payload.output || t("quick.reset.done"), true);
           clearSession(false);
           return payload;
         }, t("quick.reset.done"));
