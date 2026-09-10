@@ -11,15 +11,20 @@ namespace March7thHoney.GameServer.Game.Scene;
 
 public class SceneEntityLoader(SceneInstance scene)
 {
-    // 4.5 Xianzhou StageObjectCapture references to PCOnly blocks, unavailable on Android.
-    // Resource.bin does not retain StageObjectCapture, so identify these exact resource instances
-    // without requiring raw JSON or a cache rebuild. Do not infer platform restrictions from
-    // LoadOnInitial, IsHoyoGroup, or Atmosphere: ordinary props/NPCs use those flags too.
-    private static readonly HashSet<(int FloorId, int GroupId, int InstId)> PcOnlyStageCaptures =
+    // 4.5 Xianzhou compatibility exclusions. PCOnly captures are not the only problematic props:
+    // narrowing the earlier Android fix to PCOnly reintroduced the Changle Tian loading failure.
+    // Match exact cached instances; LoadOnInitial=false is also used by ordinary usable props.
+    private static readonly HashSet<(int FloorId, int GroupId, int InstId)> IncompatibleProps =
     [
         (10201001, 280, 300001), // Chap02_CloseView_ADV_X01_StarSkiff_11_PCOnly_BlockData / TeaSet0
-        (10202001, 208, 300001)  // Chap02_CloseView_ADV_X02_Sanctum_01_PCOnly_BlockData / UmbrellaGroup0
+        (10202001, 144, 300003), // Noninitial CommandRobotPuzzle prop from the earlier Android fix
+        (10202001, 208, 300001), // Chap02_CloseView_ADV_X02_Sanctum_01_PCOnly_BlockData / UmbrellaGroup0
+        (10202001, 208, 300002)  // Noninitial StageItemsHandler capture from the earlier Android fix
     ];
+
+    // Restore only the known problematic Reading atmosphere group. Other atmosphere/Hoyo groups
+    // and floor-wide activity defaults remain available; those flags alone are not exclusions.
+    private bool IsIncompatibleGroup(GroupInfo group) => Scene.FloorId == 10202001 && group.Id == 169;
 
     public SceneInstance Scene { get; set; } = scene;
     public List<int> LoadGroups { get; set; } = [];
@@ -74,7 +79,7 @@ public class SceneEntityLoader(SceneInstance scene)
                 var unload = !group.UnloadCondition.DelayToLevelReload &&
                              group.UnloadCondition.IsTrue(Scene.Player.MissionManager!.Data, false);
 
-                if (forceUnload || unload)
+                if (forceUnload || unload || IsIncompatibleGroup(group))
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -141,6 +146,7 @@ public class SceneEntityLoader(SceneInstance scene)
         if (!LoadGroups.Contains(info.Id)) return null; // check if group should be loaded in this dimension
         var missionData = Scene.Player.MissionManager!.Data; // get mission data
         if (info.LoadSide == GroupLoadSideEnum.Client) return null; // check if group should be loaded on client side
+        if (IsIncompatibleGroup(info)) return null;
         if (info.GroupName.Contains("TrainVisitor")) return null; // certain group name
         if (info.GroupName.Contains("DeployPuzzle_Repeat_Area")) return null;
         if (info.GroupName.Contains("TrainVisiter")) return null;
@@ -221,7 +227,7 @@ public class SceneEntityLoader(SceneInstance scene)
                 // ignored
             }
 
-        // Keep compatibility with ordinary noninitial props; platform exclusions live in LoadProp
+        // Keep compatibility with ordinary noninitial props; compatibility exclusions live in LoadProp
         // so direct creation and forced group activation use the same rule as initial loading.
         foreach (var prop in info.PropList)
             try
@@ -274,7 +280,7 @@ public class SceneEntityLoader(SceneInstance scene)
     {
         // Like props, NPCs have no later server-side creation path. Some ordinary server NPC exports
         // incorrectly say LoadOnInitial=false, so let the containing group's lifecycle own visibility.
-        if (info.IsClientOnly || info.IsDelete) return null;
+        if (info.IsClientOnly || info.IsDelete || IsIncompatibleGroup(group)) return null;
 
         if (!GameData.NpcDataData.ContainsKey(info.NPCID)) return null;
 
@@ -287,7 +293,7 @@ public class SceneEntityLoader(SceneInstance scene)
     public virtual async ValueTask<EntityMonster?> LoadMonster(MonsterInfo info, GroupInfo group,
         bool sendPacket = false)
     {
-        if (info.IsClientOnly || info.IsDelete) return null;
+        if (info.IsClientOnly || info.IsDelete || IsIncompatibleGroup(group)) return null;
 
         GameData.NpcMonsterDataData.TryGetValue(info.NPCMonsterID, out var excel);
         if (excel == null) return null;
@@ -301,8 +307,9 @@ public class SceneEntityLoader(SceneInstance scene)
     public virtual async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
     {
         // IsClientOnly/LoadOnInitial alone are not server-prop exclusions: runtime exports also set
-        // them on usable server props. Only the exact PCOnly stage captures are incompatible.
-        if (info.IsDelete || PcOnlyStageCaptures.Contains((Scene.FloorId, group.Id, info.ID))) return null;
+        // them on usable server props. Keep exclusions consistent for direct and group creation.
+        if (info.IsDelete || IsIncompatibleGroup(group) ||
+            IncompatibleProps.Contains((Scene.FloorId, group.Id, info.ID))) return null;
 
         GameData.MazePropData.TryGetValue(info.PropID, out var excel);
         if (excel == null) return null;
