@@ -348,25 +348,46 @@ Check("Changle Tian scene can be built from production cache", realEntry.Success
 Check("Changle Tian scene snapshot includes the enabled activity group", player.SceneInstance!.Groups.Contains(170)
     && player.SceneInstance.BuildClientFloorSavedData().GetValueOrDefault("ChallengeStoryEntrance") == 1);
 var changle = player.SceneInstance!;
-Check("Changle Tian excludes only the PCOnly stage capture prop", !changle.Entities.Values.OfType<EntityProp>()
-    .Any(prop => prop.GroupId == 208 && prop.InstId == 300001));
-foreach (var (groupId, instanceId) in new[] { (144, 300001), (144, 300003), (208, 300002), (169, 300001) })
-    Check($"non-PCOnly Changle Tian prop {groupId}/{instanceId} remains available", changle.Entities.Values.OfType<EntityProp>()
+var excludedChangleProps = new[] { (144, 300003), (208, 300001), (208, 300002) };
+foreach (var (groupId, instanceId) in excludedChangleProps)
+    Check($"Changle Tian omits Android-incompatible prop {groupId}/{instanceId}", !changle.Entities.Values.OfType<EntityProp>()
         .Any(prop => prop.GroupId == groupId && prop.InstId == instanceId));
+Check("ordinary Changle Tian puzzle prop remains available", changle.Entities.Values.OfType<EntityProp>()
+    .Any(prop => prop.GroupId == 144 && prop.InstId == 300001));
+Check("Changle Tian incompatible atmosphere group is not spawned", !changle.Groups.Contains(169)
+    && changle.Entities.Values.All(entity => entity.GroupId != 169));
 await changle.EntityLoader!.SyncEntity();
 await changle.EntityLoader.SyncEntity();
 Check("stage handler stays loaded exactly once across repeated sync", changle.Groups.Count(id => id == 208) == 1
     && await changle.EntityLoader.LoadGroup(changle.FloorInfo!.Groups[208]) == null);
-Check("sync retains non-PCOnly props and Hoyo atmosphere", changle.Entities.Values.OfType<EntityProp>()
-    .Any(prop => prop.GroupId == 208 && prop.InstId == 300002)
-    && changle.Entities.Values.OfType<EntityProp>().Any(prop => prop.GroupId == 169 && prop.InstId == 300001));
+Check("sync does not reintroduce incompatible Changle Tian content", !changle.Groups.Contains(169)
+    && changle.Entities.Values.All(entity => entity.GroupId != 208 && entity.GroupId != 169
+        && (entity.GroupId != 144 || entity is not EntityProp { InstId: 300003 })));
+foreach (var (groupId, instanceId) in excludedChangleProps.Append((169, 300001)))
+{
+    var group = changle.FloorInfo!.Groups[groupId];
+    Check($"direct creation cannot reintroduce incompatible prop {groupId}/{instanceId}",
+        await changle.EntityLoader.LoadProp(group.PropList.Single(prop => prop.ID == instanceId), group) == null);
+}
+Check("forced group activation cannot reintroduce incompatible atmosphere",
+    await changle.EntityLoader.LoadGroup(changle.FloorInfo!.Groups[169], forceLoad: true) == null);
+// Simulate stale group membership and an entity created before the compatibility rule applied.
+changle.Groups.Add(169);
+changle.Entities[SyntheticProbeEntityId] = new ProbeEntity { EntityId = SyntheticProbeEntityId, GroupId = 169 };
+await changle.EntityLoader.SyncEntity();
+Check("sync removes stale incompatible atmosphere membership and entities", !changle.Groups.Contains(169)
+    && changle.Entities.Values.All(entity => entity.GroupId != 169));
 var stageGroup = changle.FloorInfo!.Groups[208];
 Check("explicit creation cannot reintroduce the PCOnly capture", await changle.EntityLoader.LoadProp(
     stageGroup.PropList.Single(prop => prop.ID == 300001), stageGroup) == null);
 await changle.EntityLoader.UnloadGroup(208);
 var forcedStage = await changle.EntityLoader.LoadGroup(stageGroup, forceLoad: true);
-Check("forced stage activation retains the normal capture but excludes PCOnly", forcedStage?.OfType<EntityProp>()
-    .Any(prop => prop.InstId == 300002) == true && forcedStage.All(entity => entity is not EntityProp { InstId: 300001 }));
+Check("forced stage activation keeps an empty handler without incompatible captures", forcedStage is { Count: 0 }
+    && changle.Groups.Count(id => id == 208) == 1);
+await changle.EntityLoader.UnloadGroup(144);
+var forcedPuzzle = await changle.EntityLoader.LoadGroup(changle.FloorInfo!.Groups[144], forceLoad: true);
+Check("forced puzzle activation retains ordinary prop but excludes incompatible prop", forcedPuzzle?.OfType<EntityProp>()
+    .Any(prop => prop.InstId == 300001) == true && forcedPuzzle.All(entity => entity is not EntityProp { InstId: 300003 }));
 var elevatorScene = new SceneInstance(player, GameData.MazePlaneData[20002], 20002001, 2000201);
 elevatorScene.EntityLoader!.LoadGroups.Add(8);
 var elevatorGroup = elevatorScene.FloorInfo!.Groups[8];
@@ -378,9 +399,12 @@ var loginScenePacket = new PacketGetCurSceneInfoScRsp(player);
 var loginScene = GetCurSceneInfoScRsp.Parser.ParseFrom(loginScenePacket.Data).Scene;
 Check("login restoration also carries the 4.5 scene initialization value",
     UIntFields(loginScene.FOJJGJPIMBL.ToByteArray()).GetValueOrDefault(11) == 2);
-Check("login restoration excludes PCOnly but retains ordinary captures and atmosphere",
-    !HasSceneProp(loginScene, 208, 300001, 100) && HasSceneProp(loginScene, 208, 300002, 100)
-    && HasSceneProp(loginScene, 144, 300003, 100000) && HasSceneProp(loginScene, 169, 300001, 102009));
+bool ExcludesIncompatibleChangleContent(SceneInfo info) => info.EntityGroupList.All(group =>
+    group.GroupId != 169 && (group.GroupId != 208 || group.EntityList.Count == 0)
+    && (group.GroupId != 144 || group.EntityList.All(entity => entity.InstId != 300003)));
+Check("login restoration excludes incompatible Changle Tian content", ExcludesIncompatibleChangleContent(loginScene));
+Check("teleport snapshot excludes incompatible Changle Tian content", ExcludesIncompatibleChangleContent(
+    EnterSceneByServerScNotify.Parser.ParseFrom(new PacketEnterSceneByServerScNotify(changle).Data).Scene));
 var mapPacket = new PacketGetSceneMapInfoScRsp(new GetSceneMapInfoCsReq
     { SceneIdentifiers = { new SceneIdentifier { FloorId = 10202001 } } }, player);
 var mapInfo = GetSceneMapInfoScRsp.Parser.ParseFrom(mapPacket.Data).SceneMapInfo.Single();
@@ -419,6 +443,10 @@ foreach (var (entryId, floorId, groupId, savedName, propId) in new[]
     Check($"login snapshot after sync retains challenge entrance {floorId}/{groupId}",
         restoredScene.FloorSavedData.GetValueOrDefault(savedName) == 1
         && HasSceneProp(restoredScene, groupId, instanceId, propId));
+    if (floorId == 10202001)
+        Check("all activities stay enabled while teleport/login snapshots exclude incompatible content",
+            ExcludesIncompatibleChangleContent(entryPacket.Scene) && ExcludesIncompatibleChangleContent(restoredScene)
+            && restoredScene.FloorSavedData.GetValueOrDefault("LoadBianZhong") == 1);
     player.SceneData.FloorSavedData[floorId] = new() { [savedName] = 0 };
     await entryScene.EntityLoader.SyncEntity();
     Check($"explicit saved zero still unloads challenge entrance {floorId}/{groupId}",
