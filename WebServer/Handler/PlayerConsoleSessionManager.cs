@@ -6,7 +6,7 @@ using March7thHoney.Util.Security;
 namespace March7thHoney.WebServer.Handler;
 
 /// <summary>
-///     Short-lived sessions for the player self-service console (/console). A session is bound to one account
+///     Short-lived sessions for the player self-service console (/player). A session is bound to one account
 ///     uid, so the page sends the password once instead of attaching it to every command — the launcher's older
 ///     uid+password calls keep working next to this, see <see cref="Controllers.ConsoleRoutes" />.
 /// </summary>

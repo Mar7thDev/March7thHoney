@@ -7,10 +7,10 @@ namespace March7thHoney.WebServer;
 // Generic envelope used by endpoints that only ever return null data.
 public sealed record StatusResult(int retcode, string message, string? data = null);
 
-// /console/* launcher endpoints
+// /player/* self-service endpoints (legacy /console/* aliases remain available to launchers)
 public sealed record ConsoleResult(int retcode, string message, string output);
 
-// /console — player self-service console (typed endpoints; ConsoleResult stays the launcher contract)
+// /player — player self-service console (typed endpoints; ConsoleResult stays the launcher contract)
 public sealed record ConsoleEnvelope<T>(int retcode, string message, T data);
 
 public sealed record ConsolePlayerData(
