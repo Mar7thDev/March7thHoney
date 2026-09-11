@@ -1,5 +1,4 @@
 using March7thHoney.Data;
-using March7thHoney.Enums.GridFight;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;
@@ -15,23 +14,47 @@ public sealed partial class GridFightManager
             .Where(role => role.Position is >= 1 and <= 13)
             .OrderBy(role => role.Position)
             .ToList();
-        foreach (var group in activeRoles
-                     .SelectMany(role => session.ResolveRoleTraitIds(role)
-                         .Select(traitId => (TraitId: traitId, Role: role)))
-                     .GroupBy(entry => entry.TraitId)
-                     .OrderBy(group => group.Key))
+        var roleTraitMembers = activeRoles
+            .SelectMany(role => session.ResolveRoleTraitIds(role)
+                .Select(traitId => (TraitId: traitId, Role: role)))
+            .ToList();
+        var pepeTraitMembers = session.ResolvePepeTraitMembers();
+        foreach (var traitId in roleTraitMembers.Select(entry => entry.TraitId)
+                     .Concat(pepeTraitMembers.Select(entry => entry.TraitId))
+                     .Distinct()
+                     .Order())
         {
-            var members = group.Select(entry => entry.Role).Distinct().ToList();
-            var memberCount = (uint)members.Count + session.ResolveTraitExtraMemberCount(group.Key, activeRoles);
+            var members = roleTraitMembers
+                .Where(entry => entry.TraitId == traitId)
+                .Select(entry => entry.Role)
+                .Distinct()
+                .ToList();
+            var hasPepeMember = session.PepeNpc != null && pepeTraitMembers.Any(entry => entry.TraitId == traitId);
+            var memberCount = (uint)members.Count +
+                              (hasPepeMember ? 1u : 0u) +
+                              session.ResolveTraitExtraMemberCount(traitId, activeRoles);
             var trait = new GridGameTraitInfo
             {
-                TraitId = group.Key,
-                Layer = Battle.GridFightBattleProtoBuilder.ResolveTraitLayer(group.Key, memberCount),
+                TraitId = traitId,
+                Layer = Battle.GridFightBattleProtoBuilder.ResolveTraitLayer(traitId, memberCount),
             };
             trait.MemberRoleUniqueIdList.Add(members.Select(role => role.UniqueId));
-            if (trait.Layer > 0 && GameData.GridFightTraitBasicInfoData.TryGetValue(group.Key, out var config))
+            if (hasPepeMember) trait.MemberRoleUniqueIdList.Add(session.PepeNpc!.UniqueId);
+            if (trait.Layer > 0 &&
+                !GridFightTraitCompatibility.UsesLayerOnlyWireShape(traitId) &&
+                GameData.GridFightTraitBasicInfoData.TryGetValue(traitId, out var config))
                 trait.TraitEffectList.Add(config.TraitEffectList.Select(effectId =>
-                    new GridFightTraitEffectInfo { EffectId = effectId }));
+                    new GridFightTraitEffectInfo
+                    {
+                        EffectId = effectId,
+                        ECEMNCJBFOP = traitId == GridFightSession.GalaxyScholarTraitId &&
+                                       effectId == GridFightSession.GalaxyScholarTraitEffectId
+                            ? session.GalaxyScholarDna
+                            : 0,
+                    }));
+            if (trait.Layer > 0 && traitId == GridFightSession.FateDivinerTraitId &&
+                trait.TraitEffectList.All(effect => effect.EffectId != GridFightSession.FateDivinerEffectId))
+                trait.TraitEffectList.Add(new GridFightTraitEffectInfo { EffectId = GridFightSession.FateDivinerEffectId });
             result.GridFightTraitInfo.Add(trait);
         }
         foreach (var entry in session.RoleSwitchEntries)
@@ -57,52 +80,36 @@ public sealed partial class GridFightManager
                 UpdateSource = GridFightUpdateSrcType.KgridFightSrcCraftEquip,
             };
             AppendEquipmentChanges(craftResult, dress.RemovedEquipments, dress.AddedEquipments);
-            if (dress.MaxActiveRolesChanged)
-                AppendPopulationLimitSync(craftResult);
+            var craftedCrown = dress.AddedEquipments.FirstOrDefault(equipment =>
+                equipment.EquipmentId == GridFightSession.WealthDiamondEquipmentId);
+            if (dress.MaxActiveRolesChanged && craftedCrown == null)
+                craftResult.UpdateDynamicList.Add(new GridFightSyncData
+                {
+                    MaxActiveRoleCount = Session.MaxActiveRoles,
+                });
             notify.ResultList.Add(craftResult);
+            if (craftedCrown != null) AppendWealthDiamondCapacityResult(notify, craftedCrown);
         }
 
         var dressResult = new GridFightSyncResultData
         {
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcDressEquip,
         };
-        // 非合成穿装也下发装备增删（骰子填充 / 卸下销毁）
-        if (!dress.AutoCrafted)
-            AppendEquipmentChanges(dressResult, dress.RemovedEquipments, dress.AddedEquipments);
         foreach (var role in dress.UpdatedRoles.Distinct())
             dressResult.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        if (Session.EquipmentTracks.Count > 0)
+            AppendEquipmentTrackState(dressResult);
         if (!dress.AutoCrafted && dress.MaxActiveRolesChanged)
-            AppendPopulationLimitSync(dressResult);
+            dressResult.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                MaxActiveRoleCount = Session.MaxActiveRoles,
+            });
         notify.ResultList.Add(dressResult);
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcDressEquip);
+        AppendOotdRefreshResult(notify);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
     }
-
-    /// <summary>战斗结束后立刻把骰子重随结果推给客户端（不等待下次点开战）。</summary>
-    public void AppendDiceEquipmentRefreshSync(GridFightSyncUpdateResultScNotify notify)
-    {
-        if (Session == null) return;
-        var diceRoles = Session.Roles
-            .Where(role => Session.GetEquippedEquipment(role).Any(item => GridFightSession.IsDiceEquipment(item.EquipmentId)))
-            .ToList();
-        if (diceRoles.Count == 0) return;
-
-        var result = new GridFightSyncResultData
-        {
-            UpdateSource = GridFightUpdateSrcType.KgridFightSrcDressEquip,
-        };
-        var temps = Session.Equipments.Where(item => Session.IsDiceFilledEquipment(item)).ToList();
-        if (temps.Count > 0)
-            AppendEquipmentChanges(result, [], temps);
-        foreach (var role in diceRoles)
-            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
-        notify.ResultList.Add(result);
-    }
-
-    private static bool IsPopulationEquipment(uint equipmentId) =>
-        GameData.GridFightEquipmentData.GetValueOrDefault(equipmentId)?.EquipFunc ==
-        GridFightEquipFuncTypeEnum.AvatarMaxNumberAdd;
 
     public GridFightSyncUpdateResultScNotify BuildEquipCraftSync(GridFightEquipCraftResult craft)
     {
@@ -113,12 +120,34 @@ public sealed partial class GridFightManager
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcCraftEquip,
         };
         AppendEquipmentChanges(result, craft.RemovedEquipments, [craft.AddedEquipment]);
-        // 合成出人口装备时上限会变，立刻刷新后台席位
-        if (craft.MaxActiveRolesChanged || IsPopulationEquipment(craft.AddedEquipment.EquipmentId))
-            AppendPopulationLimitSync(result);
+        var isWealthDiamond = craft.AddedEquipment.EquipmentId == GridFightSession.WealthDiamondEquipmentId;
+        if (craft.MaxActiveRolesChanged && !isWealthDiamond)
+            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = Session.MaxActiveRoles });
         notify.ResultList.Add(result);
+        // Official craft auto-dress is a second CraftEquip result. Keeping it
+        // separate is important for the recommended-equipment UI to consume the
+        // freshly-created item first and then apply the dress update.
+        AppendPendingTrackedAutoEquipResult(notify, GridFightUpdateSrcType.KgridFightSrcCraftEquip);
+        if (isWealthDiamond) AppendWealthDiamondCapacityResult(notify, craft.AddedEquipment);
+        AppendDiceEquipmentRefreshSync(notify);
+        AppendOotdRefreshResult(notify);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
+    }
+
+    private void AppendWealthDiamondCapacityResult(
+        GridFightSyncUpdateResultScNotify notify,
+        GridFightEquipmentState crown)
+    {
+        if (Session == null) return;
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcAddCrown,
+        };
+        result.EffectParamList.Add(crown.UniqueId);
+        result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = Session.MaxActiveRoles });
+        result.UpdateDynamicList.Add(new GridFightSyncData { JLOCMDIDPCI = Session.OffFieldMaxCount });
+        notify.ResultList.Add(result);
     }
 
     public GridFightSyncUpdateResultScNotify BuildConsumableUseSync(GridFightConsumableUseResult use)
@@ -132,12 +161,18 @@ public sealed partial class GridFightManager
         result.EffectParamList.Add(use.ItemId);
         AppendConsumableChange(result, use.InventoryChange);
         AppendEquipmentChanges(result, use.RemovedEquipments, use.AddedEquipments);
+        AppendPendingTrackedAutoEquipRoles(result);
         foreach (var role in use.UpdatedRoles.Distinct())
             result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
         if (use.MaxActiveRolesChanged)
-            AppendPopulationLimitSync(result);
-        if (use.RoleAcquisition is { Success: true } acquisition)
-            AppendAcquiredRoles(result, acquisition);
+        {
+            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = Session.MaxActiveRoles });
+            if (use.RemovedEquipments.Concat(use.AddedEquipments).Any(equipment =>
+                    equipment.EquipmentId == GridFightSession.WealthDiamondEquipmentId))
+                result.UpdateDynamicList.Add(new GridFightSyncData { JLOCMDIDPCI = Session.OffFieldMaxCount });
+        }
+        // Copy-role consumables emit the copied role in a dedicated CopyRole result below.
+        // Putting it in UseConsumable suppresses the official copy animation on the client.
         if (use.RecommendationStarted && BuildPendingAction() is { } pending)
         {
             result.UpdateDynamicList.Add(new GridFightSyncData
@@ -154,11 +189,14 @@ public sealed partial class GridFightManager
 
         if (use.RoleAcquisition is { Success: true } roleAcquisition)
         {
-            AppendRoleMergeResults(
-                notify,
-                GridFightUpdateSrcType.KgridFightSrcCopyRole,
-                [use.ItemId],
-                roleAcquisition);
+            var copyResult = new GridFightSyncResultData
+            {
+                UpdateSource = GridFightUpdateSrcType.KgridFightSrcCopyRole,
+            };
+            copyResult.EffectParamList.Add(new[] { use.TargetRoleUniqueId, use.ItemId });
+            AppendAcquiredRoles(copyResult, roleAcquisition);
+            notify.ResultList.Add(copyResult);
+            AppendRoleMergeSteps(notify, roleAcquisition);
         }
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcUseConsumable);
         if (use.RoleAcquisition is { Success: true } finalizedAcquisition)
@@ -180,6 +218,7 @@ public sealed partial class GridFightManager
         {
             AddGameItemInfo = BuildEquipmentItems([selection.Equipment]),
         });
+        AppendPendingTrackedAutoEquipRoles(addResult);
         notify.ResultList.Add(addResult);
 
         var finishResult = new GridFightSyncResultData();
@@ -190,6 +229,9 @@ public sealed partial class GridFightManager
         finishResult.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
         notify.ResultList.Add(finishResult);
         notify.ResultList.Add(new GridFightSyncResultData());
+        AppendOotdRefreshResult(notify);
+        AppendDiceEquipmentRefreshSync(notify);
+        AppendNextTraitEnhancement(notify);
         return notify;
     }
 

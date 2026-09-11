@@ -307,11 +307,15 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
 
         List<AvatarLineupData> avatars;
         if (GridFightContext != null)
+        {
+            // Presence of the empty event message is significant to the 4.5 battle client.
+            proto.BattleActionEventId = new EDCFKACPFNB();
             avatars = GridFightBattleProtoBuilder.Populate(
                 this,
                 GridFightContext,
                 Player.GridFightManager!.Catalog,
                 proto);
+        }
         else if (CalyxOverride?.LineupOverride is { Count: > 0 } lineupOverride)
         {
             avatars = [.. lineupOverride];

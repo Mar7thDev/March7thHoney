@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Enums.GridFight;
+using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;
 
@@ -43,6 +44,7 @@ public sealed record GridFightConsumableUseResult(
 {
     public static GridFightConsumableUseResult Failed { get; } =
         new(false, 0, GridFightConsumeTypeEnum.Remove, null, [], [], [], null, false, false);
+    public uint TargetRoleUniqueId { get; init; }
 }
 
 public sealed record GridFightRecommendEquipmentSelectionResult(
@@ -63,13 +65,7 @@ public sealed partial class GridFightSession
     private const uint CraftedEquipmentSource = 5;
     private const uint RolledEquipmentSource = 0;
     private const uint RecommendedEquipmentSource = 0;
-    /// <summary>骰子每节点随机填充的临时装备 Source，刷新/拆装时回收。</summary>
-    private const uint DiceFilledEquipmentSource = 100;
     private const int NormalEquipmentSlotCount = 3;
-    /// <summary>随便骰子</summary>
-    private const uint CasualDiceEquipmentId = 35030404;
-    /// <summary>随便骰子•特权</summary>
-    private const uint PrivilegeDiceEquipmentId = 35040404;
 
     public GridFightEquipmentRecommendationState? EquipmentRecommendation { get; private set; }
 
@@ -78,29 +74,29 @@ public sealed partial class GridFightSession
         if (!CanModifyEquipment()) return GridFightEquipDressResult.Failed;
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == roleUniqueId);
         var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
-        if (role == null || equipment == null || role.EquippedEquipmentUniqueIds.Contains(equipmentUniqueId))
+        if (role == null || equipment == null || equipment.IsLocked ||
+            role.EquippedEquipmentUniqueIds.Contains(equipmentUniqueId))
             return GridFightEquipDressResult.Failed;
         var previousWearer = FindEquipmentWearer(equipmentUniqueId);
         if (!CanDress(role, equipment)) return GridFightEquipDressResult.Failed;
 
         var previousMaxActiveRoles = MaxActiveRoles;
         var updatedRoles = new List<GridFightRoleState>();
-        var removed = new List<GridFightEquipmentState>();
-        var added = new List<GridFightEquipmentState>();
         if (previousWearer != null)
         {
             previousWearer.EquippedEquipmentUniqueIds.Remove(equipmentUniqueId);
-            // 骰子从原角色卸下：其填充装备直接销毁（不进背包）
-            if (IsDiceEquipment(equipment.EquipmentId))
-                DestroyDiceFilledOnRole(previousWearer, removed);
+            if (IsDiceEquipment(equipment.EquipmentId)) DestroyDiceFilledOnRole(previousWearer);
             updatedRoles.Add(previousWearer);
         }
         role.EquippedEquipmentUniqueIds.Add(equipmentUniqueId);
         if (!updatedRoles.Contains(role)) updatedRoles.Add(role);
 
+        var removed = new List<GridFightEquipmentState>();
+        var added = new List<GridFightEquipmentState>();
         var crafted = TryAutoCraftOnRole(role, equipmentUniqueId, removed, added);
-        if (IsDiceEquipment(equipment.EquipmentId))
-            ApplyDiceEquipmentRefillForRole(role, removed, added, updatedRoles);
+        ApplyDiceEquipmentToRole(role);
+        foreach (var updatedRole in updatedRoles.Distinct())
+            RefreshEquipmentTrackCompletionForRole(updatedRole);
         RecalculateRoleSwitches();
         return new GridFightEquipDressResult(
             true,
@@ -113,7 +109,9 @@ public sealed partial class GridFightSession
 
     public GridFightEquipCraftResult CraftEquipment(
         uint targetEquipmentId,
-        IReadOnlyList<uint> materialUniqueIds)
+        IReadOnlyList<uint> materialUniqueIds,
+        GridFightEquipCraftSource source,
+        uint trackId)
     {
         if (!CanModifyEquipment() || materialUniqueIds.Count != 2 || materialUniqueIds.Distinct().Count() != 2)
             return GridFightEquipCraftResult.Failed;
@@ -121,20 +119,18 @@ public sealed partial class GridFightSession
             .Select(uniqueId => Equipments.FirstOrDefault(equipment => equipment.UniqueId == uniqueId))
             .ToList();
         if (materials.Any(equipment => equipment == null) ||
-            materials.Any(equipment => FindEquipmentWearer(equipment!.UniqueId) != null))
+            materials.Any(equipment => equipment!.IsLocked || FindEquipmentWearer(equipment.UniqueId) != null))
             return GridFightEquipCraftResult.Failed;
-        var materialIds = materials.Select(equipment => equipment!.EquipmentId).Order().ToList();
-        var recipe = GameData.GridFightCraftConfigData.Values
-            .Where(candidate => candidate.CraftEquipID == targetEquipmentId)
-            .OrderBy(candidate => candidate.CraftID)
-            .FirstOrDefault(candidate => candidate.CostEquipList.Order().SequenceEqual(materialIds));
-        if (recipe == null || !GameData.GridFightEquipmentData.ContainsKey(recipe.CraftEquipID))
+        var craftedEquipmentId = ResolveCraftedEquipmentId(
+            materials[0]!.EquipmentId, materials[1]!.EquipmentId, targetEquipmentId);
+        if (craftedEquipmentId == 0 || !GameData.GridFightEquipmentData.ContainsKey(craftedEquipmentId))
             return GridFightEquipCraftResult.Failed;
 
         var previousMaxActiveRoles = MaxActiveRoles;
         var removed = materials.Cast<GridFightEquipmentState>().ToList();
         foreach (var material in removed) Equipments.Remove(material);
-        var added = CreateEquipment(recipe.CraftEquipID, CraftedEquipmentSource);
+        var added = CreateEquipment(craftedEquipmentId, CraftedEquipmentSource);
+        TryAutoEquipCraftedEquipment(added, source, trackId);
         RecalculateRoleSwitches();
         return new GridFightEquipCraftResult(
             true,
@@ -163,7 +159,7 @@ public sealed partial class GridFightSession
         var recommendationStarted = false;
         var success = config.ConsumableRule switch
         {
-            GridFightConsumeTypeEnum.Remove => RemoveEquipmentFromRole(roleUniqueId, updatedRoles, removed),
+            GridFightConsumeTypeEnum.Remove => RemoveEquipmentFromRole(roleUniqueId, updatedRoles),
             GridFightConsumeTypeEnum.Roll => RollEquipment(roleUniqueId, equipmentUniqueId, removed, added, updatedRoles),
             GridFightConsumeTypeEnum.Upgrade => UpgradeEquipment(equipmentUniqueId, removed, added, updatedRoles),
             GridFightConsumeTypeEnum.Copy => CopyRole(roleUniqueId, config.ConsumableParamList, out acquisition),
@@ -174,6 +170,7 @@ public sealed partial class GridFightSession
             _ => false,
         };
         if (!success) return GridFightConsumableUseResult.Failed;
+        foreach (var role in updatedRoles) RefreshEquipmentTrackCompletionForRole(role);
 
         RecalculateRoleSwitches();
         var inventoryChange = ConsumeConsumable(consumable, config.IfConsume);
@@ -187,7 +184,10 @@ public sealed partial class GridFightSession
             updatedRoles,
             acquisition,
             recommendationStarted,
-            previousMaxActiveRoles != MaxActiveRoles);
+            previousMaxActiveRoles != MaxActiveRoles)
+        {
+            TargetRoleUniqueId = roleUniqueId,
+        };
     }
 
     public GridFightRecommendEquipmentSelectionResult SelectRecommendedEquipment(
@@ -200,6 +200,7 @@ public sealed partial class GridFightSession
             !GameData.GridFightEquipmentData.ContainsKey(equipmentId))
             return GridFightRecommendEquipmentSelectionResult.Failed;
         var equipment = CreateEquipment(equipmentId, RecommendedEquipmentSource);
+        TryAutoEquipTrackedEquipment(equipment);
         EquipmentRecommendation = null;
         PendingQueuePosition++;
         return new GridFightRecommendEquipmentSelectionResult(true, queuePosition, equipment);
@@ -242,7 +243,7 @@ public sealed partial class GridFightSession
 
     private bool CanModifyEquipment()
     {
-        return Phase == GridFightSessionPhase.Preparing && EquipmentRecommendation == null;
+        return Phase == GridFightSessionPhase.Preparing && !HasPendingSelection;
     }
 
     private GridFightRoleState? FindEquipmentWearer(uint equipmentUniqueId)
@@ -297,6 +298,7 @@ public sealed partial class GridFightSession
         var newlyEquipped = Equipments.First(equipment => equipment.UniqueId == newlyEquippedUniqueId);
         var craftCandidates = GetEquippedEquipment(role)
             .Where(equipment => equipment.UniqueId != newlyEquippedUniqueId)
+            .Where(equipment => !equipment.IsLocked)
             .Where(equipment => GameData.GridFightEquipmentData[equipment.EquipmentId].EquipType !=
                                 GridFightEquipmentTypeEnum.Implants)
             .ToList();
@@ -322,10 +324,17 @@ public sealed partial class GridFightSession
         return false;
     }
 
-    private static uint ResolveCraftedEquipmentId(uint firstEquipmentId, uint secondEquipmentId)
+    private static uint ResolveCraftedEquipmentId(uint firstEquipmentId, uint secondEquipmentId, uint targetEquipmentId = 0)
     {
+        // Both manual crafting and on-role crafting accept every red/blue diamond pair.
+        if (firstEquipmentId is RawDiamondEquipmentId or BlueDiamondEquipmentId &&
+            secondEquipmentId is RawDiamondEquipmentId or BlueDiamondEquipmentId &&
+            targetEquipmentId is 0 or WealthDiamondEquipmentId &&
+            GameData.GridFightEquipmentData.ContainsKey(WealthDiamondEquipmentId))
+            return WealthDiamondEquipmentId;
         var materialIds = new[] { firstEquipmentId, secondEquipmentId }.Order().ToList();
         var recipe = GameData.GridFightCraftConfigData.Values
+            .Where(candidate => targetEquipmentId == 0 || candidate.CraftEquipID == targetEquipmentId)
             .OrderBy(candidate => candidate.CraftID)
             .FirstOrDefault(candidate => candidate.CostEquipList.Order().SequenceEqual(materialIds));
         return recipe != null && GameData.GridFightEquipmentData.ContainsKey(recipe.CraftEquipID)
@@ -333,33 +342,14 @@ public sealed partial class GridFightSession
             : 0;
     }
 
-    private bool RemoveEquipmentFromRole(
-        uint roleUniqueId,
-        ICollection<GridFightRoleState> updatedRoles,
-        ICollection<GridFightEquipmentState>? removed = null)
+    private bool RemoveEquipmentFromRole(uint roleUniqueId, ICollection<GridFightRoleState> updatedRoles)
     {
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == roleUniqueId);
         if (role == null || role.EquippedEquipmentUniqueIds.Count == 0) return false;
-        // 拆装：填充件从角色身上移除并销毁「显示实体」（不进背包），但骰子绑定配置保留
-        DestroyDiceFilledOnRole(role, removed);
+        DestroyDiceFilledOnRole(role);
         role.EquippedEquipmentUniqueIds.Clear();
         updatedRoles.Add(role);
         return true;
-    }
-
-    /// <summary>销毁角色身上所有骰子临时填充装备（不进背包）。</summary>
-    private void DestroyDiceFilledOnRole(
-        GridFightRoleState role,
-        ICollection<GridFightEquipmentState>? removed = null)
-    {
-        foreach (var uniqueId in role.EquippedEquipmentUniqueIds.ToList())
-        {
-            var equipment = Equipments.FirstOrDefault(item => item.UniqueId == uniqueId);
-            if (equipment == null || equipment.Source != DiceFilledEquipmentSource) continue;
-            role.EquippedEquipmentUniqueIds.Remove(uniqueId);
-            Equipments.Remove(equipment);
-            removed?.Add(equipment);
-        }
     }
 
     private bool RollEquipment(
@@ -372,13 +362,14 @@ public sealed partial class GridFightSession
         if (equipmentUniqueId != 0)
         {
             var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
-            if (equipment == null || FindEquipmentWearer(equipmentUniqueId) != null) return false;
+            if (equipment == null || equipment.IsLocked || FindEquipmentWearer(equipmentUniqueId) != null) return false;
             return RollOneEquipment(equipment, removed, added);
         }
 
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == roleUniqueId);
         if (role == null) return false;
         var replacements = GetEquippedEquipment(role)
+            .Where(equipment => !equipment.IsLocked)
             .Select(equipment =>
             {
                 var config = GameData.GridFightEquipmentData[equipment.EquipmentId];
@@ -390,6 +381,8 @@ public sealed partial class GridFightSession
             .Where(replacement => replacement.ReplacementId != 0)
             .ToList();
         if (replacements.Count == 0) return false;
+        if (replacements.Any(replacement => IsDiceEquipment(replacement.Equipment.EquipmentId)))
+            DestroyDiceFilledOnRole(role);
         foreach (var replacement in replacements)
         {
             role.EquippedEquipmentUniqueIds.Remove(replacement.Equipment.UniqueId);
@@ -406,6 +399,7 @@ public sealed partial class GridFightSession
         ICollection<GridFightEquipmentState> removed,
         ICollection<GridFightEquipmentState> added)
     {
+        if (equipment.IsLocked) return false;
         var config = GameData.GridFightEquipmentData[equipment.EquipmentId];
         if (config.EquipType == GridFightEquipmentTypeEnum.Implants) return false;
         var replacementId = _catalog.RollEquipment(config.EquipCategory, equipment.EquipmentId);
@@ -423,13 +417,14 @@ public sealed partial class GridFightSession
         ICollection<GridFightRoleState> updatedRoles)
     {
         var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
-        if (equipment == null ||
+        if (equipment == null || equipment.IsLocked ||
             !GameData.GridFightEquipUpgradeData.TryGetValue(equipment.EquipmentId, out var upgrade) ||
             !GameData.GridFightEquipmentData.ContainsKey(upgrade.UpgradeID))
             return false;
         var wearer = FindEquipmentWearer(equipmentUniqueId);
         if (wearer != null)
         {
+            if (IsDiceEquipment(equipment.EquipmentId)) DestroyDiceFilledOnRole(wearer);
             wearer.EquippedEquipmentUniqueIds.Remove(equipmentUniqueId);
             updatedRoles.Add(wearer);
         }
@@ -464,7 +459,7 @@ public sealed partial class GridFightSession
             if (role.Position == 0) return false;
             Roles.Add(role);
             acquired.Add(role);
-            mergeSteps.AddRange(MergeRoles(role.RoleId, role));
+            mergeSteps.AddRange(MergeRoles(role.RoleId));
         }
         acquisition = FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
             true,
@@ -524,103 +519,5 @@ public sealed partial class GridFightSession
         };
         Equipments.Add(equipment);
         return equipment;
-    }
-
-    /// <summary>战斗结束：所有骰子重随绑定；已穿戴的角色立刻换上新绑定装备。</summary>
-    public void ApplyDiceEquipmentRefills()
-    {
-        foreach (var dice in Equipments.Where(item => IsDiceEquipment(item.EquipmentId)).ToList())
-        {
-            var privilege = dice.EquipmentId == PrivilegeDiceEquipmentId;
-            RerollDiceBinding(dice.UniqueId, privilege);
-        }
-
-        foreach (var role in Roles.ToList())
-        {
-            var dice = GetEquippedEquipment(role).FirstOrDefault(item => IsDiceEquipment(item.EquipmentId));
-            if (dice == null) continue;
-            ApplyDiceBoundToRole(role, dice, null, null, null);
-        }
-    }
-
-    /// <summary>穿上骰子沿用已有绑定，无绑定则首次随机；卸下再穿不变，战斗结束才重随。</summary>
-    private void ApplyDiceEquipmentRefillForRole(
-        GridFightRoleState role,
-        ICollection<GridFightEquipmentState>? removed,
-        ICollection<GridFightEquipmentState>? added,
-        ICollection<GridFightRoleState>? updatedRoles)
-    {
-        var dice = GetEquippedEquipment(role).FirstOrDefault(item => IsDiceEquipment(item.EquipmentId));
-        if (dice == null) return;
-        ApplyDiceBoundToRole(role, dice, removed, added, updatedRoles);
-    }
-
-    private void ApplyDiceBoundToRole(
-        GridFightRoleState role,
-        GridFightEquipmentState dice,
-        ICollection<GridFightEquipmentState>? removed,
-        ICollection<GridFightEquipmentState>? added,
-        ICollection<GridFightRoleState>? updatedRoles)
-    {
-        var privilege = dice.EquipmentId == PrivilegeDiceEquipmentId;
-        DestroyDiceFilledOnRole(role, removed);
-
-        var binding = GetOrCreateDiceBinding(dice.UniqueId, privilege, forceReroll: false);
-        foreach (var equipmentId in binding)
-        {
-            if (equipmentId == 0) continue;
-            var created = CreateEquipment(equipmentId, DiceFilledEquipmentSource);
-            role.EquippedEquipmentUniqueIds.Add(created.UniqueId);
-            added?.Add(created);
-        }
-
-        if (updatedRoles != null && !updatedRoles.Contains(role))
-            updatedRoles.Add(role);
-    }
-
-    private uint[] GetOrCreateDiceBinding(uint diceUniqueId, bool privilege, bool forceReroll)
-    {
-        if (!forceReroll &&
-            _diceBoundEquipmentConfigIds.TryGetValue(diceUniqueId, out var existing) &&
-            existing.Length > 0)
-            return existing;
-        return RerollDiceBinding(diceUniqueId, privilege);
-    }
-
-    private uint[] RerollDiceBinding(uint diceUniqueId, bool privilege)
-    {
-        var binding = new uint[]
-        {
-            RollDiceFillEquipmentId(privilege),
-            RollDiceFillEquipmentId(privilege),
-        };
-        _diceBoundEquipmentConfigIds[diceUniqueId] = binding;
-        return binding;
-    }
-
-    /// <summary>骰子自身：DressRuleAllSlotEmpty 的可合成 / 特权装备。</summary>
-    public static bool IsDiceEquipment(uint equipmentId) =>
-        equipmentId is CasualDiceEquipmentId or PrivilegeDiceEquipmentId;
-
-    public bool IsDiceFilledEquipment(GridFightEquipmentState equipment) =>
-        equipment.Source == DiceFilledEquipmentSource;
-
-    /// <summary>填充池取骰子同类别（Craftable / Radiant）的普通装备，排除骰子自身与改件。</summary>
-    private uint RollDiceFillEquipmentId(bool privilege)
-    {
-        var diceId = privilege ? PrivilegeDiceEquipmentId : CasualDiceEquipmentId;
-        var category = GameData.GridFightEquipmentData.GetValueOrDefault(diceId)?.EquipCategory;
-        if (category is null or GridFightEquipCategoryEnum.None) return 0;
-
-        var poolIds = GameData.GridFightEquipmentData.Values
-            .Where(row =>
-                row.EquipCategory == category &&
-                !IsDiceEquipment(row.ID) &&
-                row.EquipType != GridFightEquipmentTypeEnum.Implants &&
-                row.DressRule != GridFightEquipDressTypeEnum.DressRuleAllSlotEmpty)
-            .Select(row => row.ID)
-            .ToList();
-
-        return poolIds.Count == 0 ? 0 : poolIds[Random.Shared.Next(poolIds.Count)];
     }
 }
