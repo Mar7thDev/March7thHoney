@@ -56,6 +56,7 @@ public class ResourceManager
         var t6 = Task.Run(LoadDialogueInfo);
         var t8 = Task.Run(LoadAdventureModifier);
         var t9 = Task.Run(LoadLocalPlayer);
+        var t10 = Task.Run(LoadFinalityBattleTurnLimit);
         GameData.ActivityConfig = LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig") ?? new ActivityConfig();
         GameData.BannersConfig = LoadBanners();
         GameData.VideoKeysConfig =
@@ -82,7 +83,7 @@ public class ResourceManager
         GameData.GridFightBasicOrbRewardsConfig.RuntimeConfig = GameData.GridFightRuntimeConfig;
         ApplyChallengePeakOverrides();
 
-        Task.WaitAll(t1, t2, t3, t4, t5, t6, t8, t9);
+        Task.WaitAll(t1, t2, t3, t4, t5, t6, t8, t9, t10);
 
         // copy modifiers
         foreach (var value in GameData.AdventureAbilityConfigListData.Values)
@@ -1007,6 +1008,25 @@ public class ResourceManager
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.RogueChestMapInfo")));
+    }
+
+    // Reads the lose-side round limit of FinalityBattle_TurnLimit so settle records can derive remaining rounds.
+    public static void LoadFinalityBattleTurnLimit()
+    {
+        var path = $"{ConfigManager.Config.Path.ResourcePath}/Config/ConfigAbility/FinalityBattle/Avatar_FinalityBattle_BattleTarget_Ability.json";
+        if (!File.Exists(path)) return;
+        try
+        {
+            var obj = JObject.Parse(File.ReadAllText(path));
+            var ability = obj["AbilityList"]?.FirstOrDefault(x => x["Name"]?.ToString() == "FinalityBattle_TurnLimit");
+            var task = ability?["OnAdd"]?.FirstOrDefault(x => x["$type"]?.ToString().EndsWith("SetLevelChallengeTurnLimit") == true);
+            var value = task?["LimitCount"]?["FixedValue"]?["Value"]?.Value<double>();
+            if (value != null) GameData.FinalityBattleTurnLimit = (int)value.Value;
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", path, ""), ex);
+        }
     }
 
     public static void LoadAdventureModifier()

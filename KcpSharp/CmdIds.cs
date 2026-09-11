@@ -2871,4 +2871,7 @@ public class CmdIds
     public const int StartChallengeTierceNextStageScRsp = 8980;
     public const int UnlockSkilltreeCsReq = 360;
     public const int UnlockSkilltreeScRsp = 316;
+    public const int FinalityBattleGetDataCsReq = 10022;
+    public const int FinalityBattleGetDataScRsp = 10023;
+    public const int FinalityBattleSettleScNotify = 10024;
 }

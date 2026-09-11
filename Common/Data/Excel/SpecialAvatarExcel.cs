@@ -13,6 +13,7 @@ public partial class SpecialAvatarExcel : ExcelResource
     public int WorldLevel { get; set; }
     public int AvatarID { get; set; }
     public int PlayerID { get; set; }
+    public int EnhancedID { get; set; }
 
     [JsonConverter(typeof(StringEnumConverter))]
     public SpecialAvatarTypeEnum Type { get; set; }

@@ -8,6 +8,7 @@ using March7thHoney.Database.Scene;
 using March7thHoney.Database.Tutorial;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Activity;
+using March7thHoney.GameServer.Game.Activity.FinalityBattle;
 using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Calyx;
@@ -80,6 +81,7 @@ public partial class PlayerInstance(PlayerData data)
 
     public ActivityManager? ActivityManager { get; private set; }
     public TrainCakeCatchManager? TrainCakeCatchManager { get; private set; }
+    public FinalityBattleManager? FinalityBattleManager { get; private set; }
 
     #endregion
 
@@ -202,6 +204,7 @@ public partial class PlayerInstance(PlayerData data)
         ExpeditionManager = new ExpeditionManager(this);
         TrainPartyManager = new TrainPartyManager(this);
         TrainCakeCatchManager = new TrainCakeCatchManager(this);
+        FinalityBattleManager = new FinalityBattleManager(this);
         TaskManager = new TaskManager(this);
         RaidManager = new RaidManager(this);
         StoryLineManager = new StoryLineManager(this);
