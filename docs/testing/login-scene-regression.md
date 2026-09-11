@@ -1,5 +1,7 @@
 # 4.5 PROD 登录与场景回归
 
+测试项目：[`scripts/LoginSceneRegression/`](../../scripts/LoginSceneRegression/)
+
 从仓库根目录运行：
 
 ```powershell

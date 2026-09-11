@@ -10,7 +10,7 @@
 March7thHoney 是一個基於 .NET 10 的伺服器專案。
 專案仍在持續開發中，功能會持續更新。
 
-[EN](../README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [JP](README_ja-JP.md)
+[EN](../../README.md) | [简中](README.zh-CN.md) | [繁中](README.zh-TW.md) | [JP](README.ja-JP.md)
 
 ## 目錄
 
@@ -42,11 +42,12 @@ March7thHoney 是一個基於 .NET 10 的伺服器專案。
 | 貨幣戰爭 | 持續完善 | 基礎流程已接入 |
 | 成就系統 | 持續完善 | 大多數成就可追蹤與完成 |
 
-詳細開發進度： [英文](GameplayImplementationTree.md) | [簡中](GameplayImplementationTree_zh-CN.md) | [繁中](GameplayImplementationTree_zh-TW.md) | [日文](GameplayImplementationTree_ja-JP.md)
+詳細開發進度： [英文](../development/gameplay-implementation.md) | [簡中](../development/gameplay-implementation.zh-CN.md) | [繁中](../development/gameplay-implementation.zh-TW.md) | [日文](../development/gameplay-implementation.ja-JP.md)
 
 ## Muip API 入口
 
-- Muip API 文件： [英文](MuipAPI.md) | [簡中](MuipAPI_zh-CN.md) | [繁中](MuipAPI_zh-TW.md) | [日文](MuipAPI_ja-JP.md)
+- 文件索引：[docs/](../README.md)
+- Muip API 文件： [英文](../api/muip-api.md) | [簡中](../api/muip-api.zh-CN.md) | [繁中](../api/muip-api.zh-TW.md) | [日文](../api/muip-api.ja-JP.md)
 
 ## 開發計畫
 

@@ -1,5 +1,7 @@
 # 账号安全回归
 
+测试项目：[`scripts/AuthRegression/`](../../scripts/AuthRegression/)
+
 ```powershell
 dotnet run --project scripts/AuthRegression/AuthRegression.csproj
 ```

@@ -54,4 +54,4 @@ Dispatch 与 GameServer 分开运行时，两端必须设置一致且非空的 `
 
 封锁已有哈希时，以 `identity_key` 替换 `value`，两者不能同时提供。API 同样验证类型、地址格式和时长；重复封锁同一规范化标识会更新该规则。
 
-隔离回归测试及浏览器测试夹具见 [AuthRegression](../scripts/AuthRegression/README.md)。
+隔离回归测试及浏览器测试夹具见 [账号安全回归](../testing/auth-regression.md)。

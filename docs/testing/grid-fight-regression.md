@@ -1,5 +1,7 @@
 # GridFight 对比与回归验证
 
+测试项目：[`scripts/GridFightRegression/`](../../scripts/GridFightRegression/)
+
 本次对比基于当前 `4.5` 分支与 `C:\Users\Administrator\Downloads\GridFight`。
 排除了仅换行不同的文件，迁入 GridFight 会话、资源目录、战斗消息和请求处理器的功能改动。
 

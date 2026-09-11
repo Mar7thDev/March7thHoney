@@ -10,12 +10,12 @@
 March7thHoney is a server project built with .NET 10.
 The project is actively developed, with regular feature updates and fixes.
 
-[EN](README.md) | [简中](docs/README_zh-CN.md) | [繁中](docs/README_zh-TW.md) | [JP](docs/README_ja-JP.md)
+[EN](README.md) | [简中](docs/project-overview/README.zh-CN.md) | [繁中](docs/project-overview/README.zh-TW.md) | [JP](docs/project-overview/README.ja-JP.md)
 
 ## Table of Contents
 
 - [Feature Progress](#feature-progress)
-- [Gameplay Implementation Tree](docs/GameplayImplementationTree.md)
+- [Gameplay Implementation Tree](docs/development/gameplay-implementation.md)
 - [Muip API Entry](#muip-api-entry)
 - [Roadmap](#roadmap)
 - [Repository Layout](#repository-layout)
@@ -45,11 +45,12 @@ The project is actively developed, with regular feature updates and fixes.
 | Currency War | In progress | Basic gameplay flow available |
 | Achievement system | Stable | Most achievements supported |
 
-Detailed implementation progress: [Gameplay Implementation Tree](docs/GameplayImplementationTree.md) | [简中](docs/GameplayImplementationTree_zh-CN.md) | [繁中](docs/GameplayImplementationTree_zh-TW.md) | [JP](docs/GameplayImplementationTree_ja-JP.md)
+Detailed implementation progress: [Gameplay Implementation Tree](docs/development/gameplay-implementation.md) | [简中](docs/development/gameplay-implementation.zh-CN.md) | [繁中](docs/development/gameplay-implementation.zh-TW.md) | [JP](docs/development/gameplay-implementation.ja-JP.md)
 
 ## Muip API Entry
 
-- Muip API docs: [English](docs/MuipAPI.md) | [简中](docs/MuipAPI_zh-CN.md) | [繁中](docs/MuipAPI_zh-TW.md) | [日本語](docs/MuipAPI_ja-JP.md)
+- Documentation index: [docs/](docs/README.md)
+- Muip API docs: [English](docs/api/muip-api.md) | [简中](docs/api/muip-api.zh-CN.md) | [繁中](docs/api/muip-api.zh-TW.md) | [日本語](docs/api/muip-api.ja-JP.md)
 
 
 ## Roadmap
@@ -69,7 +70,7 @@ Detailed implementation progress: [Gameplay Implementation Tree](docs/GameplayIm
 - `Command/` command implementations
 - `Common/` shared data models, config, enums, and database entities
 - `Config/` runtime resources and custom data
-- `docs/` multilingual docs and API docs
+- [`docs/`](docs/README.md) categorized project documentation
 
 ## Requirements
 
@@ -122,7 +123,7 @@ sudo bash scripts/install-systemd-service.sh
 sudo systemctl start march7thhoney
 ```
 
-More details: [Native Linux Setup](docs/native-linux.md).
+More details: [Native Linux Setup](docs/getting-started/native-linux.md).
 
 ## Build
 

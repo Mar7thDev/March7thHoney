@@ -1,7 +1,7 @@
 # ゲームプレイ開発進捗ツリー
 
-[EN](GameplayImplementationTree.md) | [简中](GameplayImplementationTree_zh-CN.md) | [繁中](GameplayImplementationTree_zh-TW.md) | [JP](GameplayImplementationTree_ja-JP.md)
-[多言語名称対応表](GameplayModuleNameMap.md)
+[EN](gameplay-implementation.md) | [简中](gameplay-implementation.zh-CN.md) | [繁中](gameplay-implementation.zh-TW.md) | [JP](gameplay-implementation.ja-JP.md)
+[多言語名称対応表](gameplay-name-map.md)
 
 凡例：
 - [x] 実装済み（主フローは利用可能）

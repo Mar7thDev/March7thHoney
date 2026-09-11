@@ -1,4 +1,6 @@
-## Introduction of Player Components Part
+# Player Components
+
+Source: [`GameServer/Game/Player/Components/`](../../GameServer/Game/Player/Components/)
 
 ### Why Components?
 Components are a way to organize code in a modular fashion, allowing for better separation of concerns and easier maintenance.

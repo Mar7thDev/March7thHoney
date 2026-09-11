@@ -1,7 +1,7 @@
 # Gameplay Development Progress Tree
 
-[EN](GameplayImplementationTree.md) | [简中](GameplayImplementationTree_zh-CN.md) | [繁中](GameplayImplementationTree_zh-TW.md) | [JP](GameplayImplementationTree_ja-JP.md)
-[Multilingual Name Mapping](GameplayModuleNameMap.md)
+[EN](gameplay-implementation.md) | [简中](gameplay-implementation.zh-CN.md) | [繁中](gameplay-implementation.zh-TW.md) | [JP](gameplay-implementation.ja-JP.md)
+[Multilingual Name Mapping](gameplay-name-map.md)
 
 Legend:
 - [x] Implemented (core flow works)
