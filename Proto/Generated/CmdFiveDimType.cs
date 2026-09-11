@@ -35,48 +35,48 @@ namespace March7thHoney.Proto {
             "R0ZNQU1FUEQYASABKA4yDC5LRkRFUEJDTEVORhIhCgtQUEpGTUJJR0lHQhgD",
             "IAEoCzIMLkFIQ0xNQUdBSFBOEhMKC0NPR0RMQk1QUE5NGAogASgNEiEKC09F",
             "SUJITE1ESktBGAwgASgLMgwuQkxQSE9OTEJOQk8iKwoYRml2ZURpbUdhbWVU",
-            "cmFuc2ZlclNjUnNwEg8KB3JldGNvZGUYCCABKA0iNgofRml2ZURpbUp1bXBF",
-            "bmVyZ3lDaGFuZ2VTY05vdGlmeRITCgtDUEZDTUtMQ01GRxgOIAEoDSJGChpG",
-            "aXZlRGltTW9uZXlDaGFuZ2VTY05vdGlmeRITCgtPRVBDQ01BUEZGSBgMIAEo",
-            "DRITCgtLRkJKR0ZKSEdFSxgNIAEoDSIZChdHZXRGaXZlRGltR2FtZURhdGFD",
-            "c1JlcSJ3ChdHZXRGaXZlRGltR2FtZURhdGFTY1JzcBITCgtDUEZDTUtMQ01G",
-            "RxgDIAEoDRITCgtLRUdBT0hHT0FMRBgGIAMoDRIPCgdyZXRjb2RlGAwgASgN",
-            "EiEKC0NGRElLTEJJTkhLGA8gASgLMgwuREdIUElETURPSk0iKwoUR2V0Rml2",
-            "ZURpbU1vbmV5Q3NSZXESEwoLRERBRVBFTk1OSUYYDCABKA0iGgoYR2V0Rml2",
-            "ZURpbU1vbmV5RGF0YUNzUmVxIlUKGEdldEZpdmVEaW1Nb25leURhdGFTY1Jz",
-            "cBITCgtPRVBDQ01BUEZGSBgDIAEoDRIPCgdyZXRjb2RlGAsgASgNEhMKC0tG",
-            "QkpHRkpIR0VLGA4gASgNIlEKFEdldEZpdmVEaW1Nb25leVNjUnNwEhMKC0dK",
-            "SEtQSUdFSUlPGAQgASgNEhMKC0pJRENETENCS0hHGAcgASgNEg8KB3JldGNv",
-            "ZGUYDiABKA0ihgEKFUxlYXZlRml2ZURpbUdhbWVDc1JlcRIgCgtIS0dESE9Q",
-            "R0NLRhgDIAEoCzILLk1vdGlvbkluZm8SIQoLS0VIR0ZNQU1FUEQYCCABKA4y",
-            "DC5LRkRFUEJDTEVORhITCgtQSkxLRUhPTkhFRBgNIAEoDRITCgtDT0dETEJN",
-            "UFBOTRgPIAEoDSJEChVMZWF2ZUZpdmVEaW1HYW1lU2NSc3ASGgoSY2xpZW50",
-            "X3Bvc192ZXJzaW9uGAcgASgNEg8KB3JldGNvZGUYCCABKA0iVAoaVXBkYXRl",
-            "Rml2ZURpbUdhbWVEYXRhQ3NSZXESEwoLR0FCT0RGRE1QTU0YCCABKA0SIQoL",
-            "UFBKRk1CSUdJR0IYCyABKAsyDC5BSENMTUFHQUhQTiItChpVcGRhdGVGaXZl",
-            "RGltR2FtZURhdGFTY1JzcBIPCgdyZXRjb2RlGAggASgNKroGCg5DbWRGaXZl",
-            "RGltVHlwZRIeChpDbWRGaXZlRGltVHlwZV9OTENER0lQR0ZEShAAEikKJENt",
-            "ZEZpdmVEaW1UeXBlX0VudGVyRml2ZURpbUdhbWVTY1JzcBDSERIrCiZDbWRG",
-            "aXZlRGltVHlwZV9HZXRGaXZlRGltR2FtZURhdGFTY1JzcBDbERIuCilDbWRG",
-            "aXZlRGltVHlwZV9VcGRhdGVGaXZlRGltR2FtZURhdGFDc1JlcRDXERIsCidD",
-            "bWRGaXZlRGltVHlwZV9GaXZlRGltR2FtZVRyYW5zZmVyU2NSc3AQ1hESLgop",
-            "Q21kRml2ZURpbVR5cGVfVXBkYXRlRml2ZURpbUdhbWVEYXRhU2NSc3AQzxES",
-            "MwouQ21kRml2ZURpbVR5cGVfRml2ZURpbUp1bXBFbmVyZ3lDaGFuZ2VTY05v",
-            "dGlmeRDTERIsCidDbWRGaXZlRGltVHlwZV9HZXRGaXZlRGltTW9uZXlEYXRh",
-            "U2NSc3AQzBESMQosQ21kRml2ZURpbVR5cGVfRml2ZURpbUdhbWVEYXRhVXBk",
-            "YXRlU2NOb3RpZnkQ3hESKAojQ21kRml2ZURpbVR5cGVfR2V0Rml2ZURpbU1v",
-            "bmV5U2NSc3AQ0BESKwomQ21kRml2ZURpbVR5cGVfR2V0Rml2ZURpbUdhbWVE",
-            "YXRhQ3NSZXEQ4xESKQokQ21kRml2ZURpbVR5cGVfTGVhdmVGaXZlRGltR2Ft",
-            "ZUNzUmVxEM4REigKI0NtZEZpdmVEaW1UeXBlX0dldEZpdmVEaW1Nb25leUNz",
-            "UmVxENEREi4KKUNtZEZpdmVEaW1UeXBlX0ZpdmVEaW1Nb25leUNoYW5nZVNj",
-            "Tm90aWZ5EM0REikKJENtZEZpdmVEaW1UeXBlX0xlYXZlRml2ZURpbUdhbWVT",
-            "Y1JzcBDfERIsCidDbWRGaXZlRGltVHlwZV9GaXZlRGltR2FtZVRyYW5zZmVy",
-            "Q3NSZXEQ1BESKQokQ21kRml2ZURpbVR5cGVfRW50ZXJGaXZlRGltR2FtZUNz",
-            "UmVxENoREiwKJ0NtZEZpdmVEaW1UeXBlX0dldEZpdmVEaW1Nb25leURhdGFD",
-            "c1JlcRDiESpkCgtLRkRFUEJDTEVORhIbChdLRkRFUEJDTEVORl9OTENER0lQ",
-            "R0ZEShAAEhsKF0tGREVQQkNMRU5GX0tBTEpDQUJESkxDEAESGwoXS0ZERVBC",
-            "Q0xFTkZfSEpKRExQSEhGUEEQAkIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IG",
-            "cHJvdG8z"));
+            "cmFuc2ZlclNjUnNwEg8KB3JldGNvZGUYCCABKA0iOgofRml2ZURpbUp1bXBF",
+            "bmVyZ3lDaGFuZ2VTY05vdGlmeRIXCg9tYXhfanVtcF9lbmVyZ3kYDiABKA0i",
+            "RgoaRml2ZURpbU1vbmV5Q2hhbmdlU2NOb3RpZnkSEwoLT0VQQ0NNQVBGRkgY",
+            "DCABKA0SEwoLS0ZCSkdGSkhHRUsYDSABKA0iGQoXR2V0Rml2ZURpbUdhbWVE",
+            "YXRhQ3NSZXEiewoXR2V0Rml2ZURpbUdhbWVEYXRhU2NSc3ASFwoPbWF4X2p1",
+            "bXBfZW5lcmd5GAMgASgNEhMKC0tFR0FPSEdPQUxEGAYgAygNEg8KB3JldGNv",
+            "ZGUYDCABKA0SIQoLQ0ZESUtMQklOSEsYDyABKAsyDC5ER0hQSURNRE9KTSIr",
+            "ChRHZXRGaXZlRGltTW9uZXlDc1JlcRITCgtEREFFUEVOTU5JRhgMIAEoDSIa",
+            "ChhHZXRGaXZlRGltTW9uZXlEYXRhQ3NSZXEiVQoYR2V0Rml2ZURpbU1vbmV5",
+            "RGF0YVNjUnNwEhMKC09FUENDTUFQRkZIGAMgASgNEg8KB3JldGNvZGUYCyAB",
+            "KA0SEwoLS0ZCSkdGSkhHRUsYDiABKA0iUQoUR2V0Rml2ZURpbU1vbmV5U2NS",
+            "c3ASEwoLR0pIS1BJR0VJSU8YBCABKA0SEwoLSklEQ0RMQ0JLSEcYByABKA0S",
+            "DwoHcmV0Y29kZRgOIAEoDSKGAQoVTGVhdmVGaXZlRGltR2FtZUNzUmVxEiAK",
+            "C0hLR0RIT1BHQ0tGGAMgASgLMgsuTW90aW9uSW5mbxIhCgtLRUhHRk1BTUVQ",
+            "RBgIIAEoDjIMLktGREVQQkNMRU5GEhMKC1BKTEtFSE9OSEVEGA0gASgNEhMK",
+            "C0NPR0RMQk1QUE5NGA8gASgNIkQKFUxlYXZlRml2ZURpbUdhbWVTY1JzcBIa",
+            "ChJjbGllbnRfcG9zX3ZlcnNpb24YByABKA0SDwoHcmV0Y29kZRgIIAEoDSJU",
+            "ChpVcGRhdGVGaXZlRGltR2FtZURhdGFDc1JlcRITCgtHQUJPREZETVBNTRgI",
+            "IAEoDRIhCgtQUEpGTUJJR0lHQhgLIAEoCzIMLkFIQ0xNQUdBSFBOIi0KGlVw",
+            "ZGF0ZUZpdmVEaW1HYW1lRGF0YVNjUnNwEg8KB3JldGNvZGUYCCABKA0qugYK",
+            "DkNtZEZpdmVEaW1UeXBlEh4KGkNtZEZpdmVEaW1UeXBlX05MQ0RHSVBHRkRK",
+            "EAASKQokQ21kRml2ZURpbVR5cGVfRW50ZXJGaXZlRGltR2FtZVNjUnNwENIR",
+            "EisKJkNtZEZpdmVEaW1UeXBlX0dldEZpdmVEaW1HYW1lRGF0YVNjUnNwENsR",
+            "Ei4KKUNtZEZpdmVEaW1UeXBlX1VwZGF0ZUZpdmVEaW1HYW1lRGF0YUNzUmVx",
+            "ENcREiwKJ0NtZEZpdmVEaW1UeXBlX0ZpdmVEaW1HYW1lVHJhbnNmZXJTY1Jz",
+            "cBDWERIuCilDbWRGaXZlRGltVHlwZV9VcGRhdGVGaXZlRGltR2FtZURhdGFT",
+            "Y1JzcBDPERIzCi5DbWRGaXZlRGltVHlwZV9GaXZlRGltSnVtcEVuZXJneUNo",
+            "YW5nZVNjTm90aWZ5ENMREiwKJ0NtZEZpdmVEaW1UeXBlX0dldEZpdmVEaW1N",
+            "b25leURhdGFTY1JzcBDMERIxCixDbWRGaXZlRGltVHlwZV9GaXZlRGltR2Ft",
+            "ZURhdGFVcGRhdGVTY05vdGlmeRDeERIoCiNDbWRGaXZlRGltVHlwZV9HZXRG",
+            "aXZlRGltTW9uZXlTY1JzcBDQERIrCiZDbWRGaXZlRGltVHlwZV9HZXRGaXZl",
+            "RGltR2FtZURhdGFDc1JlcRDjERIpCiRDbWRGaXZlRGltVHlwZV9MZWF2ZUZp",
+            "dmVEaW1HYW1lQ3NSZXEQzhESKAojQ21kRml2ZURpbVR5cGVfR2V0Rml2ZURp",
+            "bU1vbmV5Q3NSZXEQ0RESLgopQ21kRml2ZURpbVR5cGVfRml2ZURpbU1vbmV5",
+            "Q2hhbmdlU2NOb3RpZnkQzRESKQokQ21kRml2ZURpbVR5cGVfTGVhdmVGaXZl",
+            "RGltR2FtZVNjUnNwEN8REiwKJ0NtZEZpdmVEaW1UeXBlX0ZpdmVEaW1HYW1l",
+            "VHJhbnNmZXJDc1JlcRDUERIpCiRDbWRGaXZlRGltVHlwZV9FbnRlckZpdmVE",
+            "aW1HYW1lQ3NSZXEQ2hESLAonQ21kRml2ZURpbVR5cGVfR2V0Rml2ZURpbU1v",
+            "bmV5RGF0YUNzUmVxEOIRKmQKC0tGREVQQkNMRU5GEhsKF0tGREVQQkNMRU5G",
+            "X05MQ0RHSVBHRkRKEAASGwoXS0ZERVBCQ0xFTkZfS0FMSkNBQkRKTEMQARIb",
+            "ChdLRkRFUEJDTEVORl9ISkpETFBISEZQQRACQhaqAhNNYXJjaDd0aEhvbmV5",
+            "LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdFiveDimType), typeof(global::March7thHoney.Proto.KFDEPBCLENF), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -85,10 +85,10 @@ namespace March7thHoney.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FiveDimGameDataUpdateScNotify), global::March7thHoney.Proto.FiveDimGameDataUpdateScNotify.Parser, new[]{ "HBJLJJAJHOI", "CFDIKLBINHK", "ClientPosVersion" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FiveDimGameTransferCsReq), global::March7thHoney.Proto.FiveDimGameTransferCsReq.Parser, new[]{ "KEHGFMAMEPD", "PPJFMBIGIGB", "COGDLBMPPNM", "OEIBHLMDJKA" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FiveDimGameTransferScRsp), global::March7thHoney.Proto.FiveDimGameTransferScRsp.Parser, new[]{ "Retcode" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FiveDimJumpEnergyChangeScNotify), global::March7thHoney.Proto.FiveDimJumpEnergyChangeScNotify.Parser, new[]{ "CPFCMKLCMFG" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FiveDimJumpEnergyChangeScNotify), global::March7thHoney.Proto.FiveDimJumpEnergyChangeScNotify.Parser, new[]{ "MaxJumpEnergy" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FiveDimMoneyChangeScNotify), global::March7thHoney.Proto.FiveDimMoneyChangeScNotify.Parser, new[]{ "OEPCCMAPFFH", "KFBJGFJHGEK" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFiveDimGameDataCsReq), global::March7thHoney.Proto.GetFiveDimGameDataCsReq.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFiveDimGameDataScRsp), global::March7thHoney.Proto.GetFiveDimGameDataScRsp.Parser, new[]{ "CPFCMKLCMFG", "KEGAOHGOALD", "Retcode", "CFDIKLBINHK" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFiveDimGameDataScRsp), global::March7thHoney.Proto.GetFiveDimGameDataScRsp.Parser, new[]{ "MaxJumpEnergy", "KEGAOHGOALD", "Retcode", "CFDIKLBINHK" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFiveDimMoneyCsReq), global::March7thHoney.Proto.GetFiveDimMoneyCsReq.Parser, new[]{ "DDAEPENMNIF" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFiveDimMoneyDataCsReq), global::March7thHoney.Proto.GetFiveDimMoneyDataCsReq.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetFiveDimMoneyDataScRsp), global::March7thHoney.Proto.GetFiveDimMoneyDataScRsp.Parser, new[]{ "OEPCCMAPFFH", "Retcode", "KFBJGFJHGEK" }, null, null, null, null),
@@ -1507,7 +1507,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FiveDimJumpEnergyChangeScNotify(FiveDimJumpEnergyChangeScNotify other) : this() {
-      cPFCMKLCMFG_ = other.cPFCMKLCMFG_;
+      maxJumpEnergy_ = other.maxJumpEnergy_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1517,18 +1517,16 @@ namespace March7thHoney.Proto {
       return new FiveDimJumpEnergyChangeScNotify(this);
     }
 
-    /// <summary>Field number for the "CPFCMKLCMFG" field.</summary>
-    public const int CPFCMKLCMFGFieldNumber = 14;
-    private uint cPFCMKLCMFG_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
+    /// <summary>Field number for the "max_jump_energy" field.</summary>
+    public const int MaxJumpEnergyFieldNumber = 14;
+    private uint maxJumpEnergy_;
+    /// <summary>offset: 24</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CPFCMKLCMFG {
-      get { return cPFCMKLCMFG_; }
+    public uint MaxJumpEnergy {
+      get { return maxJumpEnergy_; }
       set {
-        cPFCMKLCMFG_ = value;
+        maxJumpEnergy_ = value;
       }
     }
 
@@ -1547,7 +1545,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CPFCMKLCMFG != other.CPFCMKLCMFG) return false;
+      if (MaxJumpEnergy != other.MaxJumpEnergy) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1555,7 +1553,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CPFCMKLCMFG != 0) hash ^= CPFCMKLCMFG.GetHashCode();
+      if (MaxJumpEnergy != 0) hash ^= MaxJumpEnergy.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1574,9 +1572,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CPFCMKLCMFG != 0) {
+      if (MaxJumpEnergy != 0) {
         output.WriteRawTag(112);
-        output.WriteUInt32(CPFCMKLCMFG);
+        output.WriteUInt32(MaxJumpEnergy);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1588,9 +1586,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CPFCMKLCMFG != 0) {
+      if (MaxJumpEnergy != 0) {
         output.WriteRawTag(112);
-        output.WriteUInt32(CPFCMKLCMFG);
+        output.WriteUInt32(MaxJumpEnergy);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1602,8 +1600,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CPFCMKLCMFG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CPFCMKLCMFG);
+      if (MaxJumpEnergy != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxJumpEnergy);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1617,8 +1615,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CPFCMKLCMFG != 0) {
-        CPFCMKLCMFG = other.CPFCMKLCMFG;
+      if (other.MaxJumpEnergy != 0) {
+        MaxJumpEnergy = other.MaxJumpEnergy;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1640,7 +1638,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 112: {
-            CPFCMKLCMFG = input.ReadUInt32();
+            MaxJumpEnergy = input.ReadUInt32();
             break;
           }
         }
@@ -1663,7 +1661,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 112: {
-            CPFCMKLCMFG = input.ReadUInt32();
+            MaxJumpEnergy = input.ReadUInt32();
             break;
           }
         }
@@ -2110,7 +2108,7 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetFiveDimGameDataScRsp(GetFiveDimGameDataScRsp other) : this() {
-      cPFCMKLCMFG_ = other.cPFCMKLCMFG_;
+      maxJumpEnergy_ = other.maxJumpEnergy_;
       kEGAOHGOALD_ = other.kEGAOHGOALD_.Clone();
       retcode_ = other.retcode_;
       cFDIKLBINHK_ = other.cFDIKLBINHK_ != null ? other.cFDIKLBINHK_.Clone() : null;
@@ -2123,18 +2121,16 @@ namespace March7thHoney.Proto {
       return new GetFiveDimGameDataScRsp(this);
     }
 
-    /// <summary>Field number for the "CPFCMKLCMFG" field.</summary>
-    public const int CPFCMKLCMFGFieldNumber = 3;
-    private uint cPFCMKLCMFG_;
-    /// <summary>
-    /// offset: 44
-    /// </summary>
+    /// <summary>Field number for the "max_jump_energy" field.</summary>
+    public const int MaxJumpEnergyFieldNumber = 3;
+    private uint maxJumpEnergy_;
+    /// <summary>offset: 44</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CPFCMKLCMFG {
-      get { return cPFCMKLCMFG_; }
+    public uint MaxJumpEnergy {
+      get { return maxJumpEnergy_; }
       set {
-        cPFCMKLCMFG_ = value;
+        maxJumpEnergy_ = value;
       }
     }
 
@@ -2197,7 +2193,7 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CPFCMKLCMFG != other.CPFCMKLCMFG) return false;
+      if (MaxJumpEnergy != other.MaxJumpEnergy) return false;
       if(!kEGAOHGOALD_.Equals(other.kEGAOHGOALD_)) return false;
       if (Retcode != other.Retcode) return false;
       if (!object.Equals(CFDIKLBINHK, other.CFDIKLBINHK)) return false;
@@ -2208,7 +2204,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CPFCMKLCMFG != 0) hash ^= CPFCMKLCMFG.GetHashCode();
+      if (MaxJumpEnergy != 0) hash ^= MaxJumpEnergy.GetHashCode();
       hash ^= kEGAOHGOALD_.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (cFDIKLBINHK_ != null) hash ^= CFDIKLBINHK.GetHashCode();
@@ -2230,9 +2226,9 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CPFCMKLCMFG != 0) {
+      if (MaxJumpEnergy != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(CPFCMKLCMFG);
+        output.WriteUInt32(MaxJumpEnergy);
       }
       kEGAOHGOALD_.WriteTo(output, _repeated_kEGAOHGOALD_codec);
       if (Retcode != 0) {
@@ -2253,9 +2249,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CPFCMKLCMFG != 0) {
+      if (MaxJumpEnergy != 0) {
         output.WriteRawTag(24);
-        output.WriteUInt32(CPFCMKLCMFG);
+        output.WriteUInt32(MaxJumpEnergy);
       }
       kEGAOHGOALD_.WriteTo(ref output, _repeated_kEGAOHGOALD_codec);
       if (Retcode != 0) {
@@ -2276,8 +2272,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CPFCMKLCMFG != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CPFCMKLCMFG);
+      if (MaxJumpEnergy != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxJumpEnergy);
       }
       size += kEGAOHGOALD_.CalculateSize(_repeated_kEGAOHGOALD_codec);
       if (Retcode != 0) {
@@ -2298,8 +2294,8 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CPFCMKLCMFG != 0) {
-        CPFCMKLCMFG = other.CPFCMKLCMFG;
+      if (other.MaxJumpEnergy != 0) {
+        MaxJumpEnergy = other.MaxJumpEnergy;
       }
       kEGAOHGOALD_.Add(other.kEGAOHGOALD_);
       if (other.Retcode != 0) {
@@ -2331,7 +2327,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 24: {
-            CPFCMKLCMFG = input.ReadUInt32();
+            MaxJumpEnergy = input.ReadUInt32();
             break;
           }
           case 50:
@@ -2370,7 +2366,7 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 24: {
-            CPFCMKLCMFG = input.ReadUInt32();
+            MaxJumpEnergy = input.ReadUInt32();
             break;
           }
           case 50:

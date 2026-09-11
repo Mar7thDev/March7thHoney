@@ -7,5 +7,6 @@ public enum QuestUnlockTypeEnum
     FinishQuest = 2,
     FinishMission = 3,
     BattlePassWeekly = 4,
-    ManualUnlock = 5
+    ManualUnlock = 5,
+    CakeCatchNotFinish = 6
 }

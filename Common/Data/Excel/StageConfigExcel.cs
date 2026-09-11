@@ -99,4 +99,11 @@ public partial class StageMonsterList
 public partial class HashName
 {
     public BigInteger Hash { get; set; } = 0;
+
+    [JsonProperty("Hash64")]
+    [MemoryPackIgnore]
+    public BigInteger Hash64
+    {
+        set => Hash = value;
+    }
 }
