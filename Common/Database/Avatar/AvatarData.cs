@@ -649,7 +649,8 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
                 CurSp = (uint)GetCurSp(collection.LineupInfo.LineupType != 0),
                 MaxSp = 10000
             },
-            WorldLevel = (uint)collection.PlayerData.WorldLevel
+            WorldLevel = (uint)collection.PlayerData.WorldLevel,
+            EnhancedId = (uint)GetCurPathInfo().EnhanceId
         };
 
         foreach (var skill in GetCurPathInfo().GetSkillTree())

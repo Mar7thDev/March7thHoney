@@ -130,6 +130,9 @@ public static partial class GameData
     public static Dictionary<int, MonsterDropExcel> MonsterDropData { get; private set; } = [];
     public static Dictionary<int, BattleCollegeConfigExcel> BattleCollegeConfigData { get; private set; } = [];
     public static Dictionary<int, BattleTargetConfigExcel> BattleTargetConfigData { get; private set; } = [];
+    public static Dictionary<int, ActivityFinalityBattleExcel> ActivityFinalityBattleData { get; private set; } = [];
+    public static Dictionary<int, FinalityBattleLevelExcel> FinalityBattleLevelData { get; private set; } = [];
+    public static int FinalityBattleTurnLimit { get; set; }
 
     #endregion
 

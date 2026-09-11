@@ -4,6 +4,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.GameServer.Game.Activity.FinalityBattle;
 using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -90,6 +91,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public bool IsTournRogue { get; set; }
     public GridFightSession? GridFightContext { get; set; }
     public CalyxOverrideContext? CalyxOverride { get; set; }
+    public FinalityBattleContext? FinalityContext { get; set; }
 
     public delegate ValueTask OnBattleEndDelegate(BattleInstance battle, PVEBattleResultCsReq req);
 
@@ -279,7 +281,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                 GridFightContext,
                 Player.GridFightManager!.Catalog,
                 proto);
-        else if (CalyxOverride?.LineupOverride is { Count: > 0 } lineupOverride)
+        else if ((CalyxOverride?.LineupOverride ?? FinalityContext?.LineupOverride) is { Count: > 0 } lineupOverride)
         {
             avatars = [.. lineupOverride];
             var collection = new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup);

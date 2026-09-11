@@ -22,3 +22,6 @@ GetDiceCombatSystemDataScRsp = GetSystemDataRsp
 StartChallengeTierceNextStageScRsp = StartNextChallengeTierceScRsp
 UnlockSkilltreeCsReq = UnlockSkillTreeCsReq
 UnlockSkilltreeScRsp = UnlockSkillTreeScRsp
+FinalityBattleGetDataCsReq = ABGMGHNOONM
+FinalityBattleGetDataScRsp = FIJJHJADLLM
+FinalityBattleSettleScNotify = MGFJDLIBABO

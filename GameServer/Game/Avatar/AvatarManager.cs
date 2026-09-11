@@ -98,6 +98,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         avatar.PathInfos.Add(excel.AvatarID, new PathInfo(excel.AvatarID)
         {
             Rank = excel.Rank,
+            EnhanceId = excel.EnhancedID,
             EquipData = new ItemData
             {
                 ItemId = excel.EquipmentID,
@@ -137,6 +138,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         avatar.PathInfos.Add(excel.AvatarID, new PathInfo(excel.AvatarID)
         {
             Rank = excel.Rank,
+            EnhanceId = excel.EnhancedID,
             EquipData = new ItemData
             {
                 ItemId = excel.EquipmentID,

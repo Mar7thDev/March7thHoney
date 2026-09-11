@@ -10,7 +10,7 @@ message AAOAEMOHCEP {
 	uint32 progress = 8; // offset: 28
 }
 
-message ABGMGHNOONM {
+message FinalityBattleGetDataCsReq {
 }
 
 message ADDMKOIFOEF {
@@ -546,9 +546,9 @@ message FGLAJHMCJLL {
 	uint32 EIKLMFPMJJD = 12; // offset: 32
 }
 
-message FIJJHJADLLM {
+message FinalityBattleGetDataScRsp {
 	uint32 retcode = 5; // offset: 32
-	repeated NPLMMCGAJDF DODHMIDBNHC = 10; // offset: 24
+	repeated FinalityBattleLevelRecord level_record_list = 10; // offset: 24
 }
 
 message FJEMMEGKKHE {
@@ -819,10 +819,10 @@ enum MFPDAKOIOED {
 	MFPDAKOIOED_LKKNMKEIBEJ = 3;
 }
 
-message MGFJDLIBABO {
-	BattleEndStatus JPPKLEIPKAN = 6; // offset: 32
-	NPLMMCGAJDF PLAPNCJJAOP = 11; // offset: 24
-	bool ELHJAMKKKLH = 12; // offset: 36
+message FinalityBattleSettleScNotify {
+	BattleEndStatus end_status = 6; // offset: 32
+	FinalityBattleLevelRecord level_record = 11; // offset: 24
+	bool is_new_record = 12; // offset: 36
 }
 
 message MHNNEFBOPIE {
@@ -901,9 +901,9 @@ message NMEGIPHFFDA {
 	MKGODFLGEAM DFAACJDIFBL = 15; // offset: 16
 }
 
-message NPLMMCGAJDF {
-	repeated uint32 DFFPHJJIHFJ = 2; // offset: 16
-	uint32 LAPLGJOBGAN = 4; // offset: 32
+message FinalityBattleLevelRecord {
+	repeated uint32 finished_battle_target_id_list = 2; // offset: 16
+	uint32 finished_wave = 4; // offset: 32
 	uint32 remaining_round = 12; // offset: 36
 	uint32 level_id = 14; // offset: 40
 }
@@ -1201,14 +1201,14 @@ message SocialPlayTalkScRsp {
 }
 
 message StartFinalityBattleLevelCsReq {
-	repeated KPNHGDGLICN IIDCAINNELL = 4; // offset: 24
-	uint32 JGACJDGNBAC = 5; // offset: 32
+	repeated KPNHGDGLICN avatar_list = 4; // offset: 24
+	uint32 leading_role_id = 5; // offset: 32
 	uint32 level_id = 8; // offset: 36
 }
 
 message StartFinalityBattleLevelScRsp {
 	uint32 level_id = 4; // offset: 32
-	SceneBattleInfo FKCJCHCAPCC = 7; // offset: 16
+	SceneBattleInfo battle_info = 7; // offset: 16
 	uint32 retcode = 10; // offset: 36
 }
 

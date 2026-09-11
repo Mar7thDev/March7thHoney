@@ -268,9 +268,18 @@ public partial class GameDataSnapshot
     public Dictionary<int, TutorialGuideDataExcel> TutorialGuideDataData { get; set; } = [];
 
     // Append-only: MemoryPack serializes in declaration order; never insert mid-class.
+    public GridFightRuntimeDataSnapshot? GridFightRuntimeData { get; set; } = new();
+    public ActivityRuntimeDataSnapshot? ActivityRuntimeData { get; set; } = new();
+}
+
+[MemoryPackable]
+public partial class ActivityRuntimeDataSnapshot
+{
     public Dictionary<int, List<DailyActiveConfigExcel>> DailyActiveConfigData { get; set; } = [];
     public Dictionary<int, DailyActiveQuestPoolExcel> DailyActiveQuestPoolData { get; set; } = [];
-    public GridFightRuntimeDataSnapshot? GridFightRuntimeData { get; set; } = new();
+    public Dictionary<int, ActivityFinalityBattleExcel> ActivityFinalityBattleData { get; set; } = [];
+    public Dictionary<int, FinalityBattleLevelExcel> FinalityBattleLevelData { get; set; } = [];
+    public int FinalityBattleTurnLimit { get; set; }
 }
 
 [MemoryPackable]
@@ -547,8 +556,6 @@ public static partial class GameData
             MatchThreeBirdData = GameData.MatchThreeBirdData,
             TutorialDataData = GameData.TutorialDataData,
             TutorialGuideDataData = GameData.TutorialGuideDataData,
-            DailyActiveConfigData = GameData.DailyActiveConfigData,
-            DailyActiveQuestPoolData = GameData.DailyActiveQuestPoolData,
             GridFightRuntimeData = new GridFightRuntimeDataSnapshot
             {
                 ConstValueData = GameData.GridFightConstValueData,
@@ -568,6 +575,14 @@ public static partial class GameData
                 GridFightRoleSwitchConfigData = GameData.GridFightRoleSwitchConfigData,
                 GridFightFrontSkillData = GameData.GridFightFrontSkillData,
                 GridFightRoleSkillModifyData = GameData.GridFightRoleSkillModifyData,
+            },
+            ActivityRuntimeData = new ActivityRuntimeDataSnapshot
+            {
+                DailyActiveConfigData = GameData.DailyActiveConfigData,
+                DailyActiveQuestPoolData = GameData.DailyActiveQuestPoolData,
+                ActivityFinalityBattleData = GameData.ActivityFinalityBattleData,
+                FinalityBattleLevelData = GameData.FinalityBattleLevelData,
+                FinalityBattleTurnLimit = GameData.FinalityBattleTurnLimit,
             },
         };
     }
@@ -822,8 +837,6 @@ public static partial class GameData
         GameData.MatchThreeBirdData = snapshot.MatchThreeBirdData;
         GameData.TutorialDataData = snapshot.TutorialDataData;
         GameData.TutorialGuideDataData = snapshot.TutorialGuideDataData;
-        GameData.DailyActiveConfigData = snapshot.DailyActiveConfigData;
-        GameData.DailyActiveQuestPoolData = snapshot.DailyActiveQuestPoolData;
         var gridFightRuntimeData = snapshot.GridFightRuntimeData ?? new GridFightRuntimeDataSnapshot();
         GameData.GridFightConstValueData = gridFightRuntimeData.ConstValueData;
         GameData.GridFightModuleBanRoleData = gridFightRuntimeData.ModuleBanRoleData;
@@ -842,5 +855,11 @@ public static partial class GameData
         GameData.GridFightRoleSwitchConfigData = gridFightRuntimeData.GridFightRoleSwitchConfigData;
         GameData.GridFightFrontSkillData = gridFightRuntimeData.GridFightFrontSkillData;
         GameData.GridFightRoleSkillModifyData = gridFightRuntimeData.GridFightRoleSkillModifyData;
+        var activityRuntimeData = snapshot.ActivityRuntimeData ?? new ActivityRuntimeDataSnapshot();
+        GameData.DailyActiveConfigData = activityRuntimeData.DailyActiveConfigData;
+        GameData.DailyActiveQuestPoolData = activityRuntimeData.DailyActiveQuestPoolData;
+        GameData.ActivityFinalityBattleData = activityRuntimeData.ActivityFinalityBattleData;
+        GameData.FinalityBattleLevelData = activityRuntimeData.FinalityBattleLevelData;
+        GameData.FinalityBattleTurnLimit = activityRuntimeData.FinalityBattleTurnLimit;
     }
 }

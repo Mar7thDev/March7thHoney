@@ -323,7 +323,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         var isActiveFarmBattle = false;
         var minimumHp = 0;
         var dropItems = new List<ItemData>();
-        if (battle.GridFightContext != null)
+        if (battle.GridFightContext != null || battle.FinalityContext != null)
             updateStatus = false;
         else switch (req.EndStatus)
         {
@@ -355,7 +355,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 break;
         }
 
-        if (battle.CalyxOverride?.HasLineupOverride == true)
+        if (battle.CalyxOverride?.HasLineupOverride == true || battle.FinalityContext != null)
             updateStatus = false;
 
         if (updateStatus)

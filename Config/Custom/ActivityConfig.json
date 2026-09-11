@@ -23,6 +23,42 @@
       "beginTime": "1783886400",
       "endTime": "1794348000",
       "panelId": 71005
+    },
+    {
+      "activityId": 5012501,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50125
+    },
+    {
+      "activityId": 5013201,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50132
+    },
+    {
+      "activityId": 5012502,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50125
+    },
+    {
+      "activityId": 5012503,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50125
+    },
+    {
+      "activityId": 5012504,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50125
+    },
+    {
+      "activityId": 5012505,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50125
     }
   ]
 }
