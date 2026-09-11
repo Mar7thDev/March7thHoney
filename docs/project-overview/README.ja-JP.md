@@ -10,7 +10,7 @@
 March7thHoneyは、.NET 10をベースとしたサーバープロジェクトです。
 このプロジェクトは現在も継続的に開発が進められており、新機能の追加やバグ修正が行われています。
 
-[EN](../README.md) | [简中](README_zh-CN.md) | [繁中](README_zh-TW.md) | [JP](README_ja-JP.md)
+[EN](../../README.md) | [简中](README.zh-CN.md) | [繁中](README.zh-TW.md) | [JP](README.ja-JP.md)
 
 ## 目次
 
@@ -42,11 +42,12 @@ March7thHoneyは、.NET 10をベースとしたサーバープロジェクトで
 | 差分宇宙関連 | 改善中 | 基本フロー導入済み |
 | 実績 | 安定 | 多くの実績に対応 |
 
-詳細な開発進捗： [英語](GameplayImplementationTree.md) | [簡体字中国語](GameplayImplementationTree_zh-CN.md) | [繁体字中国語](GameplayImplementationTree_zh-TW.md) | [日本語](GameplayImplementationTree_ja-JP.md)
+詳細な開発進捗： [英語](../development/gameplay-implementation.md) | [簡体字中国語](../development/gameplay-implementation.zh-CN.md) | [繁体字中国語](../development/gameplay-implementation.zh-TW.md) | [日本語](../development/gameplay-implementation.ja-JP.md)
 
 ## Muip API 入口
 
-- Muip API ドキュメント： [英語](MuipAPI.md) | [簡体字中国語](MuipAPI_zh-CN.md) | [繁体字中国語](MuipAPI_zh-TW.md) | [日本語](MuipAPI_ja-JP.md)
+- ドキュメント索引：[docs/](../README.md)
+- Muip API ドキュメント： [英語](../api/muip-api.md) | [簡体字中国語](../api/muip-api.zh-CN.md) | [繁体字中国語](../api/muip-api.zh-TW.md) | [日本語](../api/muip-api.ja-JP.md)
 
 ## ロードマップ
 

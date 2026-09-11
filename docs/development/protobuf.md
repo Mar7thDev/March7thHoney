@@ -1,5 +1,7 @@
 # Proto
 
+Source: [`Proto/`](../../Proto/)
+
 按游戏版本保存、按 `Cmd*Type` 分组的 protobuf 定义。仓库可以同时保留多个版本，但只有一个版本会生成到 `Proto/Generated` 并参与构建。
 
 ## 目录

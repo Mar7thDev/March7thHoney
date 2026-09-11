@@ -1,5 +1,7 @@
 # 场景缓存元数据升级
 
+升级工具：[`scripts/SceneCacheUpgrade/`](../../scripts/SceneCacheUpgrade/)
+
 `IsHoyoGroup` 以追加的可空字段保存：旧缓存为 `null`，原始资源省略该字段时为 `false`。运行时拒绝服务端氛围组缺少该元数据的缓存，避免只更新程序后仍然加载错误的氛围组。发布时必须携带配套的 `Config/Resource.bin`。
 
 如需保留已有缓存中的其他修改，可在有同版本原始资源的开发机执行：

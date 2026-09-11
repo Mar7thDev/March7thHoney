@@ -1,4 +1,7 @@
 # Mission Part
+
+Source: [`GameServer/Game/Mission/`](../../GameServer/Game/Mission/)
+
 ## Menu
 - [MissionManager](#missionmanager)
 - [FinishTypeHandler](#finishtypehandler)
