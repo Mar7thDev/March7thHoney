@@ -103,25 +103,24 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
         }
         if (session != null && request.TraitEffectSelectEnhanceAction != null)
         {
-            var activation = session.ActivateSilverWolfHackConsole(
+            if (session.FateDivinerPending != null)
+            {
+                var fate = session.ResolveFateDivinerEnhance(
+                    request.QueuePosition,
+                    request.TraitEffectSelectEnhanceAction.EnhanceOptionId);
+                if (fate.Success)
+                    await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                        manager.BuildFateDivinerEnhanceSync(fate)));
+                await SendResponse(connection, request.QueuePosition, fate.Success);
+                return;
+            }
+            var enhancement = session.ResolveHeadPlayerEnhance(
                 request.QueuePosition,
                 request.TraitEffectSelectEnhanceAction.EnhanceOptionId);
-            if (activation.Success)
-            {
-                if (activation.ShopNeedsRefresh)
-                    session.RefreshShop(chargeGold: false);
-                if (session.ProcessPendingAutoMerge() is { } followUp)
-                    activation = activation with { FollowUpAcquisition = followUp };
+            if (enhancement.Success)
                 await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                    manager.BuildTraitEnhanceActivationSync(activation)));
-            }
-            else
-            {
-                // 失败也下发 FinishPending + 解锁，避免进度卡死
-                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                    manager.BuildTraitEnhanceForceUnlockSync(request.QueuePosition)));
-            }
-            await SendResponse(connection, request.QueuePosition, activation.Success);
+                    manager.BuildHeadPlayerEnhanceSync(enhancement)));
+            await SendResponse(connection, request.QueuePosition, enhancement.Success);
             return;
         }
         if (session != null && request.EliteBranchRerollAction != null)
@@ -201,14 +200,16 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
         if (pendingHandled && kind == GridFightPendingRequestKind.PortalSelect)
         {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                manager.BuildPortalSelectionSync(request.QueuePosition, change!)));
+                session!.Phase == GridFightSessionPhase.SelectingNestedPortal
+                    ? manager.BuildBlueSeaSelectionSync(request.QueuePosition)
+                    : manager.BuildPortalSelectionSync(request.QueuePosition, change!)));
         }
         else if (pendingHandled && kind == GridFightPendingRequestKind.RoundBegin &&
                  session!.Phase == GridFightSessionPhase.AwaitingInitialOrb)
         {
-            var rewards = session.TakeTalentOrbRewards(GridFightTalentRewardTrigger.PlaneEnter, session.ChapterId);
+            var rewards = session.GrantOfficialInitialRoundRewards(out var initialConsumable);
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                manager.BuildInitialRoundSync(request.QueuePosition, rewards)));
+                manager.BuildInitialRoundSync(request.QueuePosition, rewards, initialConsumable)));
         }
         else if (pendingHandled && kind is GridFightPendingRequestKind.RoundBegin or GridFightPendingRequestKind.ReturnPreparation)
         {
@@ -218,7 +219,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 kind == GridFightPendingRequestKind.RoundBegin
                     ? manager.BuildBattleRoundSync(request.QueuePosition, rewards)
-                    : manager.BuildPendingAdvanceSync(request.QueuePosition, includeShop: true)));
+                    : manager.BuildPendingAdvanceSync(request.QueuePosition)));
         }
         else if (pendingHandled)
         {
@@ -435,7 +436,10 @@ public sealed class HandlerGridFightUpdatePosCsReq : Handler<GridFightUpdatePosC
         if (change.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildPositionSync(change)));
-        var response = new GridFightUpdatePosScRsp { Retcode = change.Success ? 0 : (uint)Retcode.RetFail };
+        var response = new GridFightUpdatePosScRsp
+        {
+            Retcode = change.Success ? 0 : change.FailureRetcode,
+        };
         response.PosInfoList.Add(request.PosInfoList);
         await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdatePosScRsp, response));
     }
@@ -472,6 +476,7 @@ public sealed class HandlerGridFightEnterBattleStageCsReq : Handler<GridFightEnt
             await connection.SendPacket(new PacketGridFightEnterBattleStageScRsp(null));
             return;
         }
+        session.PrepareMortenaxBladeBattleEffects();
         var battle = GridFightBattleModule.StartBattle(player, session, manager.Catalog);
         if (battle == null)
         {
@@ -479,8 +484,7 @@ public sealed class HandlerGridFightEnterBattleStageCsReq : Handler<GridFightEnt
             await connection.SendPacket(new PacketGridFightEnterBattleStageScRsp(null));
             return;
         }
-        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSync(
-            GridFightUpdateSrcType.KgridFightSrcEnterNode)));
+        await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildBattleEnterSync()));
         await connection.SendPacket(new PacketGridFightEnterBattleStageScRsp(battle.ToProto()));
     }
 }
@@ -490,10 +494,16 @@ public sealed class HandlerGridFightBackToPrepareCsReq : Handler<GridFightBackTo
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightBackToPrepareCsReq request)
     {
-        var success = player.GridFightManager!.Session?.BackToPrepare() == true;
-        if (success)
-            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                player.GridFightManager.BuildPreparationSync()));
+        var manager = player.GridFightManager!;
+        var session = manager.Session;
+        var success = session?.BackToPrepare() == true;
+        // Official recurring Fate flow already published the PendingAction immediately after
+        // ReturnPreparation. Re-sending the same pending here can reset/close the divination UI.
+        if (success && session?.FateDivinerPending == null)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildPreparationSync()));
+
+        // 4.5v3 cmd 8680 (LFDIMJCMNDJ) is the empty BackToPrepare response seen in captures.
+        await connection.SendPacket(CreatePacket(CmdIds.LFDIMJCMNDJ, new LFDIMJCMNDJ()));
     }
 }
 
@@ -504,5 +514,21 @@ internal static class GridFightPacketFactory
         var packet = new BasePacket((ushort)cmdId);
         packet.SetData(data);
         return packet;
+    }
+}
+
+[Opcode(CmdIds.CFHEKNFNMIP)]
+public sealed class HandlerGridFightShopLockCsReq : Handler<CFHEKNFNMIP>
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, CFHEKNFNMIP request)
+    {
+        var manager = player.GridFightManager!;
+        var success = manager.Session?.SetShopLocked(request.IsLocked) == true;
+        if (success)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildShopLockSync()));
+        await connection.SendPacket(CreatePacket(CmdIds.CGBKKGNFMKL, new CGBKKGNFMKL
+        {
+            Retcode = success ? 0 : (uint)Retcode.RetFail,
+        }));
     }
 }

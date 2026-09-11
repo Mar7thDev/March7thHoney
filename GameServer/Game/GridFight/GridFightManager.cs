@@ -184,6 +184,11 @@ public sealed partial class GridFightManager : BasePlayerManager
             .OrderBy(role => role.Position)
             .ThenBy(role => role.UniqueId)
             .Select(BuildRole));
+        if (session.PepeNpc != null)
+            finish.GridGameNpcList.Add(BuildPepeNpc(session.PepeNpc));
+        if (session.AstaDogNpc != null)
+            finish.GridGameNpcList.Add(BuildPepeNpc(session.AstaDogNpc));
+        finish.GridGameNpcList.Add(session.LizhiNpcs.Select(BuildPepeNpc));
         finish.GridFightEquipmentList.Add(session.Equipments
             .OrderBy(equipment => equipment.UniqueId)
             .Select(BuildEquipment));
@@ -192,11 +197,11 @@ public sealed partial class GridFightManager : BasePlayerManager
         finish.RoleStatistics.Add(_lastBattleDamageStatistics.RoleStatistics.Select(row => row.Clone()));
         finish.TraitStatistics.Add(_lastBattleDamageStatistics.TraitStatistics.Select(row => row.Clone()));
         finish.AugmentStatistics.Add(_lastBattleDamageStatistics.AugmentStatistics.Select(row => row.Clone()));
-        if (session.SelectedPortalId != 0)
-            finish.PortalBuffInfoList.Add(new GridFightGamePortalBuffInfo
+        finish.PortalBuffInfoList.Add(session.ActivePortalIds.Select(portalId =>
+            new GridFightGamePortalBuffInfo
             {
-                PortalBuffId = session.SelectedPortalId,
-            });
+                PortalBuffId = portalId,
+            }));
 
         return new GridFightSettleNotify
         {
@@ -250,8 +255,12 @@ public sealed partial class GridFightManager : BasePlayerManager
             CountInfo = new GridFightCountItemInfo { Count = 1 },
             Descriptor_ = BuildGameItemDescriptor(GridFightGameItemCategory.Type107, 4061),
         });
+        if (Session is { } portalSession)
+            data.GameItemList.Add(portalSession.BuildPortalRuntimeGameItems());
         if (Session?.HackConsole is { } hackConsole)
             data.GameItemList.Add(BuildHackConsoleItem(hackConsole));
+        if (Session is { FateOption5GameItemUniqueId: > 0 } fateSession)
+            data.GameItemList.Add(BuildFateDivinerGameItem(fateSession, true));
         return data;
     }
 
@@ -276,27 +285,24 @@ public sealed partial class GridFightManager : BasePlayerManager
                 RecommendEquipmentAction = action,
             };
         }
-        if (session.TraitEffectSelectEnhanceQueuePosition is { } traitQueuePosition)
+        if (session.FateDivinerPending is { } fate)
+            return BuildFateDivinerPendingAction(fate);
+        if (session.HeadPlayerPending is { } headPlayer)
         {
             var action = new GridFightTraitEffectSelectEnhanceActionInfo
             {
                 TraitId = GridFightSpecialFeatures.SilverWolfTraitId,
-                // 档位不同 EffectId 也不同，取角色当前所在的 TraitEffect 组
-                EffectId = session.SilverWolfPendingEffectGroupId,
+                EffectId = headPlayer.EffectId,
                 IsOptional = false,
             };
-            foreach (var optionId in session.SilverWolfPendingOptionIds)
-            {
-                action.EnhanceIndexList.Add((uint)action.EnhanceOptionIdList.Count);
-                action.EnhanceOptionIdList.Add(optionId);
-            }
+            action.EnhanceIndexList.Add(Enumerable.Repeat(0u, headPlayer.OptionIds.Count));
+            action.EnhanceOptionIdList.Add(headPlayer.OptionIds);
             return new GridFightPendingAction
             {
-                QueuePosition = traitQueuePosition,
+                QueuePosition = headPlayer.QueuePosition,
                 TraitEffectSelectEnhanceAction = action,
             };
         }
-
         var pending = new GridFightPendingAction { QueuePosition = session.PendingQueuePosition };
         switch (session.Phase)
         {
@@ -304,9 +310,14 @@ public sealed partial class GridFightManager : BasePlayerManager
                 pending.PortalAction = new GridFightPortalBuffActionInfo
                 {
                     FreeRerollCount = 1,
-                    SelectCount = 1,
                 };
                 pending.PortalAction.PortalIdList.Add(session.PortalOffer);
+                break;
+            case GridFightSessionPhase.SelectingNestedPortal:
+                pending.PortalAction = new GridFightPortalBuffActionInfo();
+                pending.PortalAction.PortalIdList.Add(session.PortalOffer);
+                if (session.PortalOffer.Count == 1)
+                    pending.PortalAction.SelectCount = session.PortalOffer[0];
                 break;
             case GridFightSessionPhase.AwaitingInitialRound:
             case GridFightSessionPhase.AwaitingBattleRound:
@@ -316,12 +327,14 @@ public sealed partial class GridFightManager : BasePlayerManager
             case GridFightSessionPhase.SelectingInvestment:
                 pending.InvestmentAction = new GridFightAugmentActionInfo();
                 pending.InvestmentAction.PendingInvestmentList.Add(session.InvestmentOffer.Select(augmentId =>
-                    new GridFightPendingAugmentInfo
-                    {
-                        AugmentId = augmentId,
-                        FreeRerollCount = 1,
-                        RerollCount = session.IsInvestmentRerolled(augmentId) ? 1u : 0u,
-                    }));
+                    session.IsGoldFuturesInvestmentPending
+                        ? new GridFightPendingAugmentInfo { AugmentId = augmentId }
+                        : new GridFightPendingAugmentInfo
+                        {
+                            AugmentId = augmentId,
+                            FreeRerollCount = 1,
+                            RerollCount = session.IsInvestmentRerolled(augmentId) ? 1u : 0u,
+                        }));
                 break;
             case GridFightSessionPhase.SelectingSupply:
                 pending.SupplyAction = new GridFightSupplyActionInfo
@@ -370,8 +383,8 @@ public sealed partial class GridFightManager : BasePlayerManager
         if (session == null) return notify;
         var result = new GridFightSyncResultData { UpdateSource = source };
         if (includeGold) result.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
-        // 始终下发总人口 + 后台席位上限（财富宝钻解锁后台格子）
-        result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
+        if (levelChanged)
+            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
         if (includeShop) result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         if (includeLevel)
             result.UpdateDynamicList.Add(new GridFightSyncData
@@ -397,6 +410,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             });
         if (change != null) AppendSessionChanges(result, change);
         notify.ResultList.Add(result);
+        AppendMarketVitalitySavedValueResults(notify);
         AppendRoleDerivedStateResult(notify, source);
         return notify;
     }
@@ -429,13 +443,13 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         if (Session == null) return notify;
-        var result = new GridFightSyncResultData();
         var items = new GridFightGameItemSyncInfo();
         items.GridFightEquipmentList.Add(BuildEquipment(equipment));
+        var result = new GridFightSyncResultData();
         result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
-        // 获得财富宝钻等改变人口的装备时，立刻尝试刷新后台席位
-        AppendPopulationLimitSync(result);
+        AppendPendingTrackedAutoEquipRoles(result);
         notify.ResultList.Add(result);
+        AppendDiceEquipmentRefreshSync(notify);
         return notify;
     }
 
@@ -454,9 +468,11 @@ public sealed partial class GridFightManager : BasePlayerManager
         var items = new GridFightGameItemSyncInfo();
         items.GridFightEquipmentList.Add(BuildEquipment(useResult.Equipment));
         result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
-        AppendPopulationLimitSync(result);
+        AppendPendingTrackedAutoEquipRoles(result);
         AppendPositionChanges(result, useResult.UpdatedRoles, useResult.UpdatedForgeItems);
         notify.ResultList.Add(result);
+        AppendDiceEquipmentRefreshSync(notify);
+        AppendOotdRefreshResult(notify);
         return notify;
     }
 
@@ -549,6 +565,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             acquisition);
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcBuyGoods);
         AppendUnlockEffects(notify, acquisition);
+        AppendTwinPrimesResults(notify);
 
         var shopResult = new GridFightSyncResultData
         {
@@ -557,6 +574,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         shopResult.EffectParamList.Add(goodsIndices);
         shopResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         notify.ResultList.Add(shopResult);
+        AppendOotdRefreshResult(notify);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
     }
@@ -662,79 +680,53 @@ public sealed partial class GridFightManager : BasePlayerManager
         return result;
     }
 
-    /// <summary>激活失败时也解锁，避免客户端卡在「请选择骇入效果」。</summary>
-    public GridFightSyncUpdateResultScNotify BuildTraitEnhanceForceUnlockSync(uint queuePosition)
+    public GridFightSyncUpdateResultScNotify BuildHeadPlayerEnhanceSync(
+        GridFightHeadPlayerEnhanceResult enhancement)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
+        var session = Session;
+        if (session == null || !enhancement.Success) return notify;
+
         var result = new GridFightSyncResultData
         {
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
         };
-        result.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            FinishPendingActionPos = queuePosition,
-        });
-        result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
-        notify.ResultList.Add(result);
-        return notify;
-    }
+        result.EffectParamList.Add(enhancement.OptionId);
 
-    public GridFightSyncUpdateResultScNotify BuildTraitEnhanceActivationSync(
-        GridFightTraitEnhanceActivationResult activation)
-    {
-        var notify = new GridFightSyncUpdateResultScNotify();
-        if (Session == null || !activation.Success) return notify;
-        var result = new GridFightSyncResultData
-        {
-            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
-        };
-        result.EffectParamList.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
-
-        if (activation.Equipment != null)
+        foreach (var uniqueId in enhancement.RemovedRoleIds)
+            result.UpdateDynamicList.Add(new GridFightSyncData { RemoveRoleUniqueId = uniqueId });
+        if (enhancement.GoldChanged)
+            result.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
+        if (enhancement.UpdatedRole != null)
+            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(enhancement.UpdatedRole) });
+        if (enhancement.Equipment != null)
         {
             var items = new GridFightGameItemSyncInfo();
-            items.GridFightEquipmentList.Add(BuildEquipment(activation.Equipment));
+            items.GridFightEquipmentList.Add(BuildEquipment(enhancement.Equipment));
             result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
         }
-
-        if (Session.HackConsole is { } console)
-        {
+        if (enhancement.IsFinalHack && session.HackConsole != null)
             result.UpdateDynamicList.Add(new GridFightSyncData
             {
-                GameDataItemInfo = BuildHackConsoleItem(console),
+                GameDataItemInfo = BuildHackConsoleItem(session.HackConsole),
             });
-        }
-
-        var updatedRoles = activation.UpdatedRoles is { Count: > 0 }
-            ? activation.UpdatedRoles
-            : activation.UpdatedRole != null
-                ? (IReadOnlyList<GridFightRoleState>)[activation.UpdatedRole]
-                : [];
-        foreach (var role in updatedRoles.DistinctBy(role => role.UniqueId))
-            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
-
-        if (activation.ShopNeedsRefresh)
+        if (enhancement.ShopChanged)
             result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
-
-        result.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            FinishPendingActionPos = activation.FinishedQueuePosition,
-        });
-        result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
         notify.ResultList.Add(result);
 
-        if (activation.FollowUpAcquisition is { Success: true } followUp)
+        if (enhancement.UpdatedRole != null)
+            AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance);
+
+        AppendJoyContractHeadPlayerReward(notify, enhancement);
+
+        var finishResult = new GridFightSyncResultData();
+        finishResult.UpdateDynamicList.Add(new GridFightSyncData
         {
-            AppendRoleMergeResults(
-                notify,
-                GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
-                [],
-                followUp);
-            AppendRoleDerivedStateResult(
-                notify,
-                GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance);
-            AppendUnlockEffects(notify, followUp);
-        }
+            FinishPendingActionPos = enhancement.FinishedQueuePosition,
+        });
+        finishResult.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+        notify.ResultList.Add(finishResult);
+        AppendNextTraitEnhancement(notify);
         return notify;
     }
 
@@ -759,7 +751,8 @@ public sealed partial class GridFightManager : BasePlayerManager
 
     public GridFightSyncUpdateResultScNotify BuildPreparationSync()
     {
-        var notify = BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includePending: true);
+        var notify = BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeGold: true, includePending: true);
+        AppendNextTraitEnhancement(notify);
         if (Session?.HackConsole is not { } hackConsole) return notify;
         var result = new GridFightSyncResultData
         {
@@ -806,8 +799,6 @@ public sealed partial class GridFightManager : BasePlayerManager
             var items = new GridFightGameItemSyncInfo();
             items.GridFightEquipmentList.Add(application.AddedEquipments.Select(BuildEquipment));
             result.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
-            // 获得装备后刷新总人口 + 后台席位
-            result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
         }
         foreach (var change in application.ConsumableChanges)
         {
@@ -831,6 +822,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         if (application.RolePropertiesChanged)
             foreach (var role in session.Roles)
                 result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        AppendPendingTrackedAutoEquipRoles(result);
     }
 
     private static GridFightDropEntry BuildDropEntry(GridFightRewardEntry reward)
@@ -884,6 +876,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         GridFightUpdateSrcType source,
         bool includeShop = false)
     {
+        AppendDiceEquipmentRefreshSync(notify);
         var session = Session;
         var update = session?.ConsumeRoleSwitchUpdate();
         if (session == null) return;
@@ -938,10 +931,8 @@ public sealed partial class GridFightManager : BasePlayerManager
             result.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
     }
 
-    private void AppendRoleMergeResults(
+    private void AppendRoleMergeSteps(
         GridFightSyncUpdateResultScNotify notify,
-        GridFightUpdateSrcType acquisitionSource,
-        IEnumerable<uint> effectParameters,
         GridFightRoleAcquisitionResult acquisition)
     {
         foreach (var step in acquisition.MergeSteps)
@@ -955,7 +946,16 @@ public sealed partial class GridFightManager : BasePlayerManager
             mergeResult.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(step.AddedRole) });
             notify.ResultList.Add(mergeResult);
         }
+        AppendHeroEntranceDirtyResult(notify);
+    }
 
+    private void AppendRoleMergeResults(
+        GridFightSyncUpdateResultScNotify notify,
+        GridFightUpdateSrcType acquisitionSource,
+        IEnumerable<uint> effectParameters,
+        GridFightRoleAcquisitionResult acquisition)
+    {
+        AppendRoleMergeSteps(notify, acquisition);
         if (acquisition.FinalMergedRoles.Count == 0) return;
         var finalResult = new GridFightSyncResultData { UpdateSource = acquisitionSource };
         finalResult.EffectParamList.Add(effectParameters);
@@ -970,31 +970,73 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         foreach (var effect in acquisition.UnlockEffects)
         {
-            var result = new GridFightSyncResultData
+            switch (effect)
             {
-                UpdateSource = effect == GridFightRoleUnlockEffect.CyrenePoemShop
-                    ? GridFightUpdateSrcType.KgridFightSrcSpecialGoods
-                    : GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
-            };
-            if (effect == GridFightRoleUnlockEffect.CyrenePoemShop)
-            {
-                result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
-            }
-            else
-            {
-                result.UpdateDynamicList.Add(new GridFightSyncData
+                case GridFightRoleUnlockEffect.CyrenePoemShop:
                 {
-                    LockInfo = new GridFightLockInfo
+                    var result = new GridFightSyncResultData
                     {
-                        LockType = GridFightLockType.Gameplay,
-                        LockReason = GridFightLockReason.PendingAction,
-                    },
-                });
-                if (BuildPendingAction() is { } pending)
-                    result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+                        UpdateSource = GridFightUpdateSrcType.KgridFightSrcSpecialGoods,
+                    };
+                    result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+                    notify.ResultList.Add(result);
+                    break;
+                }
+                case GridFightRoleUnlockEffect.SilverWolfTraitActivation:
+                    AppendSilverWolfTraitActivationResults(notify);
+                    break;
+                case GridFightRoleUnlockEffect.SilverWolfHeadPlayerPending:
+                case GridFightRoleUnlockEffect.SilverWolfHackConsole:
+                    AppendHeadPlayerPendingResult(notify);
+                    break;
             }
+        }
+    }
+
+    private static void AppendSilverWolfTraitActivationResults(GridFightSyncUpdateResultScNotify notify)
+    {
+        foreach (var effectId in new[]
+                 {
+                     GridFightSpecialFeatures.SilverWolfThreeCostTraitEffectId,
+                     GridFightSpecialFeatures.SilverWolfFourCostTraitEffectId,
+                     GridFightSpecialFeatures.SilverWolfFiveCostTraitEffectId,
+                 })
+        {
+            var result = new GridFightSyncResultData();
+            result.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                TraitInfo = new GridFightTraitSyncInfo
+                {
+                    TraitId = GridFightSpecialFeatures.SilverWolfTraitId,
+                    TraitEffectInfo = new GridFightTraitEffectInfo { EffectId = effectId },
+                },
+            });
             notify.ResultList.Add(result);
         }
+    }
+
+    private void AppendHeadPlayerPendingResult(GridFightSyncUpdateResultScNotify notify)
+    {
+        var headPlayer = Session?.HeadPlayerPending;
+        if (headPlayer == null) return;
+
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectUpdate,
+        };
+        result.EffectParamList.Add(GridFightSpecialFeatures.SilverWolfTraitId);
+        result.EffectParamList.Add(headPlayer.EffectId);
+        result.UpdateDynamicList.Add(new GridFightSyncData
+        {
+            LockInfo = new GridFightLockInfo
+            {
+                LockType = GridFightLockType.Gameplay,
+                LockReason = GridFightLockReason.PendingAction,
+            },
+        });
+        if (BuildPendingAction() is { } pending)
+            result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+        notify.ResultList.Add(result);
     }
 
     public GridFightSyncUpdateResultScNotify BuildPortalSelectionSync(
@@ -1004,6 +1046,14 @@ public sealed partial class GridFightManager : BasePlayerManager
         var notify = new GridFightSyncUpdateResultScNotify();
         var session = Session;
         if (session == null) return notify;
+
+        AppendRotationHeroPortalInitialResults(notify);
+        AppendInvitationPortalInitialResult(notify);
+        AppendLaborDispatchPortalInitialResult(notify);
+        AppendPepePortalInitialResults(notify);
+        AppendJoyContractInitialResults(notify);
+        AppendDotContractInitialResults(notify);
+        AppendP0PortalInitialResults(notify);
 
         var portalResult = new GridFightSyncResultData
         {
@@ -1020,14 +1070,16 @@ public sealed partial class GridFightManager : BasePlayerManager
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcInitialSupplySelect,
         };
         supplyResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
-        foreach (var role in change.AddedRoles)
-            supplyResult.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
-        if (session.Equipments.Count > 0)
+        if (session.ConceptStockInitialEquipment is { } conceptEquipment)
         {
             var items = new GridFightGameItemSyncInfo();
-            items.GridFightEquipmentList.Add(session.Equipments.Select(BuildEquipment));
+            items.GridFightEquipmentList.Add(BuildEquipment(conceptEquipment));
             supplyResult.UpdateDynamicList.Add(new GridFightSyncData { AddGameItemInfo = items });
         }
+        foreach (var role in change.AddedRoles.Where(role =>
+                     role.UniqueId != session.JoyContractInitialRoleUniqueId &&
+                     role.UniqueId != session.HeroEntranceRoleUniqueId))
+            supplyResult.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
         notify.ResultList.Add(supplyResult);
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcInitialSupplySelect);
 
@@ -1066,9 +1118,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         return notify;
     }
 
-    public GridFightSyncUpdateResultScNotify BuildPendingAdvanceSync(
-        uint finishedQueuePosition,
-        bool includeShop = false)
+    public GridFightSyncUpdateResultScNotify BuildPendingAdvanceSync(uint finishedQueuePosition)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
         if (Session == null) return notify;
@@ -1079,8 +1129,6 @@ public sealed partial class GridFightManager : BasePlayerManager
             FinishPendingActionPos = finishedQueuePosition,
         });
         finishResult.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
-        if (includeShop)
-            finishResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         notify.ResultList.Add(finishResult);
 
         if (BuildPendingAction() is { } pending)
@@ -1102,10 +1150,32 @@ public sealed partial class GridFightManager : BasePlayerManager
 
     public GridFightSyncUpdateResultScNotify BuildInitialRoundSync(
         uint finishedQueuePosition,
-        IReadOnlyList<GridFightTalentOrbReward> talentRewards)
+        IReadOnlyList<GridFightTalentOrbReward> talentRewards,
+        GridFightConsumableChange? initialConsumable)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
+
+        // Official order: Talent 1081/36 -> Orb 203, then 350101 with source value 21,
+        // then the first shop, then pending-action advancement.
         AppendTalentOrbRewards(notify, talentRewards);
+        if (initialConsumable != null)
+        {
+            var consumableResult = new GridFightSyncResultData
+            {
+                // Wire value confirmed by both official captures. The community enum label for 21
+                // is not semantically reliable, therefore retain the official numeric value.
+                UpdateSource = (GridFightUpdateSrcType)21,
+            };
+            consumableResult.EffectParamList.Add(new uint[] { 10101, 3 });
+            var items = new GridFightGameItemSyncInfo();
+            items.UpdateGridFightConsumableList.Add(BuildConsumableUpdate(initialConsumable));
+            consumableResult.UpdateDynamicList.Add(initialConsumable.IsNew
+                ? new GridFightSyncData { AddGameItemInfo = items }
+                : new GridFightSyncData { UpdateGameItemInfo = items });
+            notify.ResultList.Add(consumableResult);
+        }
+
+        AppendRotationHeroRoundBeginResult(notify);
         notify.ResultList.Add(BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeShop: true).ResultList);
         var pending = BuildPendingAdvanceSync(finishedQueuePosition);
         notify.ResultList.Add(pending.ResultList);
@@ -1117,7 +1187,12 @@ public sealed partial class GridFightManager : BasePlayerManager
         IReadOnlyList<GridFightTalentOrbReward> talentRewards)
     {
         var notify = new GridFightSyncUpdateResultScNotify();
+        AppendLaborDispatchBossReward(notify);
+        AppendGalaxyScholarRoundBeginResult(notify);
+        AppendRoundBeginInvestmentRewards(notify);
+        AppendPepeDropResult(notify);
         AppendTalentOrbRewards(notify, talentRewards);
+        AppendRotationHeroRoundBeginResult(notify);
         notify.ResultList.Add(BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeShop: true).ResultList);
         var pending = BuildPendingAdvanceSync(finishedQueuePosition);
         notify.ResultList.Add(pending.ResultList);
@@ -1193,19 +1268,46 @@ public sealed partial class GridFightManager : BasePlayerManager
         var notify = new GridFightSyncUpdateResultScNotify();
         if (Session == null) return notify;
 
-        var selectionResult = new GridFightSyncResultData
+        foreach (var itemReward in Session.TakeInvestmentSelectionRewards())
+            AppendInvestmentItemReward(notify, itemReward);
+        AppendSpecialInvestmentSelectionResults(notify, augmentId);
+        AppendP0InvestmentSelectionResults(notify, augmentId);
+
+        if (Session.TakeGoldFuturesChildSelection(augmentId))
         {
-            UpdateSource = GridFightUpdateSrcType.KgridFightSrcSelectAugment,
-        };
-        selectionResult.EffectParamList.Add(augmentId);
-        selectionResult.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            AddAugmentInfo = new GridFightGameAugmentAdd
+            var selectionResult = new GridFightSyncResultData
             {
-                UpdateAugmentInfo = BuildInvestment(augmentId),
-            },
-        });
-        notify.ResultList.Add(selectionResult);
+                UpdateSource = GridFightUpdateSrcType.KgridFightSrcAugment,
+            };
+            selectionResult.EffectParamList.Add(GridFightSession.GoldFuturesPlusAugmentId);
+            selectionResult.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                AddAugmentInfo = new GridFightGameAugmentAdd
+                {
+                    UpdateAugmentInfo = new GridGameAugmentInfo
+                    {
+                        AugmentId = augmentId,
+                        NEKJGIDPCAI = true,
+                    },
+                },
+            });
+            notify.ResultList.Add(selectionResult);
+        }
+        else
+        {
+            var selectionResult = new GridFightSyncResultData
+            {
+                UpdateSource = GridFightUpdateSrcType.KgridFightSrcSelectAugment,
+            };
+            selectionResult.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                AddAugmentInfo = new GridFightGameAugmentAdd
+                {
+                    UpdateAugmentInfo = BuildInvestment(augmentId),
+                },
+            });
+            notify.ResultList.Add(selectionResult);
+        }
         notify.ResultList.Add(BuildPendingAdvanceSync(finishedQueuePosition).ResultList);
         return notify;
     }
@@ -1306,39 +1408,81 @@ public sealed partial class GridFightManager : BasePlayerManager
             switchResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
             AppendRoleSavedValueUpdates(switchResult, savedValueChanges);
             notify.ResultList.Add(switchResult);
+            AppendHeadPlayerPositionEffects(notify, change);
+            AppendFateDivinerInitialActivationResults(notify);
             notify.ResultList.Add(new GridFightSyncResultData());
-            AppendSilverWolfPendingUnlockIfNeeded(notify);
             return notify;
         }
         var result = new GridFightSyncResultData();
         AppendPositionChanges(result, change.UpdatedRoles, change.UpdatedForgeItems);
         AppendRoleSavedValueUpdates(result, savedValueChanges);
         notify.ResultList.Add(result);
-        AppendSilverWolfPendingUnlockIfNeeded(notify);
+        AppendHeadPlayerPositionEffects(notify, change);
+        AppendFateDivinerInitialActivationResults(notify);
         return notify;
     }
 
-    /// <summary>上阵触发银狼待生效骇入时，附带 Lock + Pending。</summary>
-    private void AppendSilverWolfPendingUnlockIfNeeded(GridFightSyncUpdateResultScNotify notify)
+    private void AppendHeadPlayerPositionEffects(
+        GridFightSyncUpdateResultScNotify notify,
+        GridFightSessionChange change)
     {
-        if (Session == null || !Session.ConsumeSilverWolfPendingJustActivated())
-            return;
-        if (BuildPendingAction() is not { } pending)
-            return;
-        var unlock = new GridFightSyncResultData
-        {
-            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectSelectEnhance,
-        };
-        unlock.UpdateDynamicList.Add(new GridFightSyncData
+        if (change.SilverWolfTraitActivated)
+            AppendSilverWolfTraitActivationResults(notify);
+        if (change.HeadPlayerPendingStarted)
+            AppendHeadPlayerPendingResult(notify);
+    }
+
+    public GridFightSyncUpdateResultScNotify BuildBattleEnterSync()
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        if (Session == null) return notify;
+
+        // First Mortenax Blade activation is preceded by the official TraitEffectUpdate.
+        if (Session.HasMortenaxBladeTraitEffectSync)
+            notify.ResultList.Add(BuildMortenaxBladeTraitEffectResult().ResultList);
+
+        // Official GridFight captures send a gameplay lock (Reserved1) immediately before
+        // GridFightEnterBattleStageScRsp. This is not an EnterNode update: the client uses
+        // the lock transition to enter the battle state machine. Omitting it leaves the
+        // client in the board state even though a valid SceneBattleInfo follows.
+        var battleLockResult = new GridFightSyncResultData();
+        battleLockResult.UpdateDynamicList.Add(new GridFightSyncData
         {
             LockInfo = new GridFightLockInfo
             {
                 LockType = GridFightLockType.Gameplay,
-                LockReason = GridFightLockReason.PendingAction,
+                LockReason = GridFightLockReason.Reserved1,
             },
         });
-        unlock.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
-        notify.ResultList.Add(unlock);
+        notify.ResultList.Add(battleLockResult);
+        return notify;
+    }
+
+    private GridFightSyncUpdateResultScNotify BuildMortenaxBladeTraitEffectResult()
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var session = Session;
+        if (session == null) return notify;
+        var effect = session.MortenaxBladeBattleEffects.FirstOrDefault(item => item.NeedsTraitEffectSync);
+        if (effect == null) return notify;
+
+        var result = new GridFightSyncResultData
+        {
+            UpdateSource = GridFightUpdateSrcType.KgridFightSrcTraitEffectUpdate,
+        };
+        result.EffectParamList.Add(new[]
+        {
+            effect.EquipmentId,
+            0u,
+            effect.TemporaryInstanceId,
+            session.MortenaxBladeTraitEffectParam,
+        });
+        foreach (var role in session.Roles
+                     .Where(role => role.Position is >= 1 and <= 13)
+                     .OrderBy(role => role.Position))
+            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        notify.ResultList.Add(result);
+        return notify;
     }
 
     public async ValueTask EndBattle(BattleInstance battle, PVEBattleResultCsReq request)
@@ -1353,16 +1497,54 @@ public sealed partial class GridFightManager : BasePlayerManager
         var previousMaxExp = Catalog.GetPlayerLevel(previousLevel).LevelUpExp;
         var statistics = ReadBattleStatistics(request);
         var settlement = session.ResolveBattle(battleEndedNormally, statistics);
-        if (!settlement.Success) return;
+        if (!settlement.Success)
+        {
+            // Every official GridFight battle releases the gameplay lock when leaving battle,
+            // including an abnormal/failed settlement. Keep the Mortenax trait cleanup behind it.
+            var cleanup = new GridFightSyncUpdateResultScNotify();
+            cleanup.ResultList.Add(BuildBattleUnlockResult());
+            var completeMortenaxTraitLifecycleOnFailure = session.HasMortenaxBladeTraitEffectSync;
+            if (completeMortenaxTraitLifecycleOnFailure)
+                cleanup.ResultList.Add(BuildMortenaxBladeTraitEffectResult().ResultList);
+            await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(cleanup));
+            if (completeMortenaxTraitLifecycleOnFailure)
+                session.CompleteMortenaxBladeTraitEffectSync();
+            session.ClearMortenaxBladeBattleEffects();
+            return;
+        }
         var damageStatistics = BuildDamageStatistics(battle, settlement.Statistics);
         _lastBattleDamageStatistics = damageStatistics.Clone();
 
-        await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildBattleSettlementSync(
+        var settlementSync = BuildBattleSettlementSync(
             settlement,
             damageStatistics,
             chapterId,
             sectionId,
-            session.PlayerLevel != previousLevel)));
+            session.PlayerLevel != previousLevel);
+        var completeMortenaxTraitLifecycle = false;
+        if (session.HasMortenaxBladeTraitEffectSync)
+        {
+            // Official first-battle order: clear the battle lock, repeat the TraitEffectUpdate with
+            // the same parameters used at battle entry, then append ordinary BattleEnd results.
+            // BuildBattleSettlementSync already starts with that mandatory unlock result.
+            var combined = new GridFightSyncUpdateResultScNotify();
+            combined.ResultList.Add(settlementSync.ResultList[0]);
+            combined.ResultList.Add(BuildMortenaxBladeTraitEffectResult().ResultList);
+            combined.ResultList.Add(settlementSync.ResultList.Skip(1));
+            settlementSync = combined;
+            completeMortenaxTraitLifecycle = true;
+        }
+        try
+        {
+            await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(settlementSync));
+            if (completeMortenaxTraitLifecycle)
+                session.CompleteMortenaxBladeTraitEffectSync();
+        }
+        finally
+        {
+            // Temporary equipment exists only in the battle snapshot.
+            session.ClearMortenaxBladeBattleEffects();
+        }
         var endNotify = new GridFightEndBattleStageNotify
         {
             IsPerfectFinish = settlement.IsPerfectFinish,
@@ -1410,6 +1592,13 @@ public sealed partial class GridFightManager : BasePlayerManager
         }
     }
 
+    private static GridFightSyncResultData BuildBattleUnlockResult()
+    {
+        var result = new GridFightSyncResultData();
+        result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+        return result;
+    }
+
     private GridFightSyncUpdateResultScNotify BuildBattleSettlementSync(
         GridFightBattleSettlementResult settlement,
         GridFightDamageSttInfo damageStatistics,
@@ -1419,6 +1608,9 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         var session = Session!;
         var notify = new GridFightSyncUpdateResultScNotify();
+        // Captures consistently begin the post-battle sync with an empty LockInfo, which
+        // releases the Reserved1/Gameplay lock sent immediately before battle entry.
+        notify.ResultList.Add(BuildBattleUnlockResult());
         var battleResult = new GridFightSyncResultData
         {
             UpdateSource = GridFightUpdateSrcType.KgridFightSrcBattleEnd,
@@ -1444,6 +1636,9 @@ public sealed partial class GridFightManager : BasePlayerManager
         if (levelChanged)
         {
             rewardResult.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
+            // Official battle-end level-ups immediately refresh the displayed rarity weights.
+            // This is also required by portal 114 so its selected doubled tier is re-normalized
+            // against the newly unlocked base shop probabilities without rerandomizing the tier.
             rewardResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         }
         rewardResult.UpdateDynamicList.Add(new GridFightSyncData
@@ -1470,7 +1665,9 @@ public sealed partial class GridFightManager : BasePlayerManager
                 },
             });
         notify.ResultList.Add(rewardResult);
+        AppendMarketVitalitySavedValueResults(notify);
         AppendTalentOrbRewards(notify, settlement.TalentRewards);
+        AppendDotContractBattleResults(notify);
         AppendDiceEquipmentRefreshSync(notify);
         return notify;
     }
@@ -1524,6 +1721,7 @@ public sealed partial class GridFightManager : BasePlayerManager
                     monster.MonsterIndex,
                     monster.MonsterId))).ToList(),
             roundCount,
+            statistics.POCKGKDFLKK.ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal),
             true);
     }
 
@@ -1570,6 +1768,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         foreach (var group in statistics.TraitDamage.GroupBy(row => row.TraitId))
         {
             var memberCount = (uint)activeRoles.Count(role => session.ResolveRoleTraitIds(role).Contains(group.Key)) +
+                              (session.ResolvePepeTraitMembers().Any(entry => entry.TraitId == group.Key) ? 1u : 0u) +
                               session.ResolveTraitExtraMemberCount(group.Key, activeRoles);
             result.TraitStatistics.Add(new GridFightTraitDamageStatistics
             {
@@ -1619,7 +1818,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         return double.IsFinite(value) && value > 0 ? value : 0;
     }
 
-    public GridFightGameInfo BuildBasicInfo(bool hasPendingAction)
+    private GridFightGameInfo BuildBasicInfo(bool hasPendingAction)
     {
         var session = Session!;
         var lockInfo = new GridFightLockInfo();
@@ -1638,8 +1837,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             MaxAvatarCount = Catalog.BenchSize,
             BuyExpCost = Catalog.BuyExpCost,
             MaxInterestGold = Catalog.MaxInterestGold,
-            // 协议无法中途单独下发 OffFieldMaxCount，进局先预解锁到上限，实际人数仍由 MaxActiveRoleCount 限制
-            OffFieldMaxCount = session.MaxOffFieldRolesCap,
+            OffFieldMaxCount = session.OffFieldMaxCount,
             MaxActiveRoleCount = session.MaxActiveRoles,
             DepositPerInterest = Catalog.DepositPerInterest,
             BenchOverflowSize = Catalog.BenchOverflowSize,
@@ -1648,30 +1846,6 @@ public sealed partial class GridFightManager : BasePlayerManager
         };
         basic.ModuleIdList.Add(Catalog.ContentModuleId);
         return new GridFightGameInfo { BasicInfo = basic };
-    }
-
-    /// <summary>同步总出战人数上限 MaxActiveRoleCount；后台格已在进局时预解锁。</summary>
-    public void AppendPopulationLimitSync(GridFightSyncResultData result)
-    {
-        if (Session == null) return;
-        result.UpdateDynamicList.Add(new GridFightSyncData
-        {
-            MaxActiveRoleCount = Session.MaxActiveRoles,
-        });
-    }
-
-    /// <summary>人口变化时的独立同步包，可与装备/合成回包一起发给客户端。</summary>
-    public GridFightSyncUpdateResultScNotify BuildPopulationLimitNotify()
-    {
-        var notify = new GridFightSyncUpdateResultScNotify();
-        if (Session == null) return notify;
-        var result = new GridFightSyncResultData
-        {
-            UpdateSource = GridFightUpdateSrcType.KgridFightSrcCraftEquip,
-        };
-        AppendPopulationLimitSync(result);
-        notify.ResultList.Add(result);
-        return notify;
     }
 
     private GridFightGameShopInfo BuildShopInfo()
@@ -1730,6 +1904,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             UniqueId = equipment.UniqueId,
             GridFightEquipmentId = equipment.EquipmentId,
             Source = equipment.Source,
+            IODIJBEHEGF = equipment.IsLocked,
         };
     }
 
@@ -1788,6 +1963,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var session = Session!;
         var info = new GridFightShopSyncInfo
         {
+            ABGEKPJHHIA = session.ShopLocked,
             RefreshCost = Catalog.RefreshCost,
             RarityWeightInfo = BuildRarityWeights(),
         };
@@ -1798,7 +1974,8 @@ public sealed partial class GridFightManager : BasePlayerManager
     private GridFightRarityWeightInfo BuildRarityWeights()
     {
         var result = new GridFightRarityWeightInfo();
-        var weights = Session!.ShopRarityDisplayWeights;
+        var baseWeights = Catalog.GetShopRarityWeights(Session!.PlayerLevel);
+        var weights = Session.GetEffectiveShopRarityWeights(baseWeights);
         for (var index = 0; index < weights.Count; index++)
             result.EntryList.Add(new GridFightRarityWeightEntry
             {
@@ -1927,6 +2104,11 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         var team = new GridFightGameTeamInfo();
         team.GridGameRoleList.Add(Session!.Roles.Select(BuildRole));
+        if (Session.PepeNpc != null)
+            team.GridGameNpcList.Add(BuildPepeNpc(Session.PepeNpc));
+        if (Session.AstaDogNpc != null)
+            team.GridGameNpcList.Add(BuildPepeNpc(Session.AstaDogNpc));
+        team.GridGameNpcList.Add(Session.LizhiNpcs.Select(BuildPepeNpc));
         team.ForgeItemList.Add(Session.ForgeItems.Select(BuildForgeItem));
         return team;
     }
@@ -1947,6 +2129,8 @@ public sealed partial class GridFightManager : BasePlayerManager
         };
         info.EquippedEquipmentUniqueIdList.Add(role.EquippedEquipmentUniqueIds);
         PopulateRolePropertyScales(info.ConvertPropertyToFixpoint, Session?.HasCyreneCombatEnhancement == true);
+        Session?.ApplyInvestmentPropertyScales(info.ConvertPropertyToFixpoint);
+        Session?.ApplyFateDivinerPropertyScales(info.ConvertPropertyToFixpoint, roleId);
         if (Session != null)
             foreach (var (key, value) in Session.ResolveRoleSavedValues(role, roleId))
                 info.GridFightValueInitComponent[key] = value;

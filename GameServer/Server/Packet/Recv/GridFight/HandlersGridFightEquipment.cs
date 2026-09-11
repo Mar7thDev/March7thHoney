@@ -19,13 +19,8 @@ public sealed class HandlerGridFightEquipDressCsReq : Handler<GridFightEquipDres
         var result = manager.Session?.DressEquipment(request.RoleUniqueId, request.EquipmentUniqueId) ??
                      GridFightEquipDressResult.Failed;
         if (result.Success)
-        {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildEquipDressSync(result)));
-            if (result.MaxActiveRolesChanged)
-                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                    manager.BuildPopulationLimitNotify()));
-        }
         await connection.SendPacket(CreatePacket(CmdIds.GridFightEquipDressScRsp,
             new GridFightEquipDressScRsp
             {
@@ -45,17 +40,13 @@ public sealed class HandlerGridFightEquipCraftCsReq : Handler<GridFightEquipCraf
         var manager = player.GridFightManager!;
         var result = manager.Session?.CraftEquipment(
                          request.TargetEquipmentId,
-                         request.MaterialUniqueIdList.ToList()) ??
+                         request.MaterialUniqueIdList.ToList(),
+                         request.Source,
+                         request.TrackId) ??
                      GridFightEquipCraftResult.Failed;
         if (result.Success)
-        {
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
                 manager.BuildEquipCraftSync(result)));
-            // 人口变化时再推一次人口上限（MaxActiveRoleCount），配合进局预解锁的后台格立即生效
-            if (result.MaxActiveRolesChanged)
-                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
-                    manager.BuildPopulationLimitNotify()));
-        }
         await connection.SendPacket(CreatePacket(CmdIds.GridFightEquipCraftScRsp,
             new GridFightEquipCraftScRsp
             {
@@ -94,5 +85,24 @@ public sealed class HandlerGridFightUseConsumableCsReq : Handler<GridFightUseCon
             {
                 Retcode = result.Success ? 0 : (uint)Retcode.RetFail,
             }));
+    }
+}
+
+[Opcode(CmdIds.GridFightUpdateEquipTrackCsReq)]
+public sealed class HandlerGridFightUpdateEquipTrackCsReq : Handler<GridFightUpdateEquipTrackCsReq>
+{
+    protected override async Task OnHandle(
+        Connection connection,
+        PlayerInstance player,
+        GridFightUpdateEquipTrackCsReq request)
+    {
+        var manager = player.GridFightManager!;
+        var retcode = manager.Session?.UpdateEquipmentTracks(request.DKEIDONNDCJ, request.Source) ??
+                      (uint)Retcode.RetFail;
+        if (retcode == 0)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildEquipmentTrackSync()));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightUpdateEquipTrackScRsp,
+            new GridFightUpdateEquipTrackScRsp { Retcode = retcode }));
     }
 }

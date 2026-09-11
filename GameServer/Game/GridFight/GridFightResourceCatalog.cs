@@ -56,15 +56,6 @@ public sealed record GridFightRoleSwitchGroup(
     IReadOnlyList<uint> ParamList,
     IReadOnlyList<uint> RoleIdList);
 
-public sealed record GridFightPortalRuntimeEffects(
-    IReadOnlyList<uint> EntryRoleIds,
-    IReadOnlyList<uint> EntryEquipmentIds,
-    IReadOnlySet<uint> ShopBoostTraitIds,
-    double ShopBoostMultiplier)
-{
-    public static GridFightPortalRuntimeEffects Empty { get; } = new([], [], new HashSet<uint>(), 1.0);
-}
-
 public sealed class GridFightResourceCatalog
 {
     private const uint HighestDivisionStartingHpAffixId = 4020;
@@ -75,6 +66,36 @@ public sealed class GridFightResourceCatalog
     private const int FinalBattleTurnHealingEffectIndex = 2;
     private const uint BossRoleStar = 2;
     private const uint BossFormationMaxTeammateCount = 5;
+    // Per-run restriction seed for automatic role sources. These roles stay in the global
+    // pool so GM/direct grants, portals and investment effects remain valid; shop, supply
+    // and crystal/orb rolls may use them only after the current run has unlocked them.
+    internal static readonly HashSet<uint> OpeningAndShopBannedRoleIds =
+    [
+        1003,  // Himeko
+        1006,  // Silver Wolf
+        1106,  // Pela
+        1108,  // Sampo
+        1201,  // Qingque
+        1202,  // Tingyun
+        1205,  // Blade
+        1223,  // Moze
+        1301,  // Gallagher
+        12041, // Jing Yuan, 1-cost variant
+        12042, // Jing Yuan, 3-cost variant
+    ];
+
+    internal static bool IsRestrictedRole(uint roleId) => OpeningAndShopBannedRoleIds.Contains(roleId);
+
+    private static bool IsRestrictedRoleAllowed(uint roleId, IReadOnlySet<uint>? temporarilyUnlockedRoleIds) =>
+        !OpeningAndShopBannedRoleIds.Contains(roleId) ||
+        temporarilyUnlockedRoleIds?.Contains(roleId) == true;
+
+    private static bool IsRestrictedRoleOrbAllowed(uint orbId, IReadOnlySet<uint>? temporarilyUnlockedRoleIds)
+    {
+        if (orbId is < 101000 or >= 102000) return true;
+        return IsRestrictedRoleAllowed(orbId - 100000, temporarilyUnlockedRoleIds);
+    }
+
     private readonly Random _random;
 
     public uint CurrentSeason { get; }
@@ -104,7 +125,6 @@ public sealed class GridFightResourceCatalog
     public uint BenchSize => RequireUInt("GridFight_Bench_AvatarNum");
     public uint BenchOverflowSize => RequireUInt("GridFight_Bench_OverFlow_AvatarNum");
     public uint OffFieldInitialCount => RequireUInt("GridFight_Back_AvatarInitialNum");
-    public uint OffFieldMaxCount => RequireUInt("GridFight_Back_AvatarMaxNum");
     public uint DepositPerInterest => RequireUInt("GridFight_DepositPerInterest");
     public uint MaxInterestGold => RequireUInt("GridFight_GainInterestMax");
     public uint PostBattleHealingSourceId => PostBattleHealingTalentId;
@@ -245,7 +265,9 @@ public sealed class GridFightResourceCatalog
                 if (!TryResolveRoleSavedValueLayer(roleStar, out _))
                     errors.Add($"grid fight role {roleStar.ID} star {roleStar.Star} has no saved value layer");
         }
-        if (RolePool.Count(row => !InitialExcludedRoleIds.Contains(row.ID)) < InitialRoleCount)
+        if (RolePool.Count(row =>
+                !InitialExcludedRoleIds.Contains(row.ID) &&
+                !OpeningAndShopBannedRoleIds.Contains(row.ID)) < InitialRoleCount)
             errors.Add("initial role pool is too small");
         if (CampPool.Count == 0) errors.Add("monster camp pool is empty");
         if (CampPool.Any(camp => GetCampMonsters(camp.ID, monster => monster.MonsterTier == 2).Count == 0))
@@ -253,19 +275,6 @@ public sealed class GridFightResourceCatalog
         if (RewardCampPool.Count == 0) errors.Add("reward monster camp pool is empty");
         ValidateRewardRules(errors);
         if (PortalPool.Count == 0) errors.Add("portal pool is empty");
-        var runtimeConfig = GameData.GridFightRuntimeConfig;
-        if (runtimeConfig.RotationPortalId != 0 && !PortalPool.Contains(runtimeConfig.RotationPortalId))
-            errors.Add($"rotation portal {runtimeConfig.RotationPortalId} is not in the current portal pool");
-        foreach (var (level, weights) in runtimeConfig.ShopRarityWeightOverrides)
-        {
-            if (!GameData.GridFightPlayerLevelData.TryGetValue(level, out var playerLevel))
-            {
-                errors.Add($"shop rarity override references missing player level {level}");
-                continue;
-            }
-            if (weights.Count != playerLevel.RarityWeights.Count || weights.All(weight => weight == 0))
-                errors.Add($"shop rarity override for level {level} has invalid weights");
-        }
         if (AugmentPool.Count == 0) errors.Add("augment pool is empty");
         foreach (var chapterId in StandardRoute.Select(node => node.ChapterId).Distinct())
             if (!Enum.GetValues<GridFightAugmentQualityEnum>()
@@ -333,7 +342,7 @@ public sealed class GridFightResourceCatalog
         if (!GameData.GridFightRoleStarData.ContainsKey(
                 GridFightSpecialFeatures.CyreneRoleId << 4 | 3) ||
             !GameData.GridFightRoleStarData.ContainsKey(
-                GridFightSpecialFeatures.SilverWolfTopRoleId << 4 | 3))
+                GridFightSpecialFeatures.SilverWolfFiveCostRoleId << 4 | 3))
             errors.Add("GridFight special roles have no three-star resource");
         if (!GridFightSpecialFeatures.TryResolveSilverWolfEquipmentId(out _))
             errors.Add("Silver Wolf hack equipment is missing");
@@ -500,68 +509,6 @@ public sealed class GridFightResourceCatalog
         return GameData.GridFightPlayerLevelData[level];
     }
 
-    public IReadOnlyList<uint> GetShopRarityWeights(uint level)
-    {
-        if (GameData.GridFightRuntimeConfig.ShopRarityWeightOverrides.TryGetValue(level, out var configured) &&
-            configured.Count > 0)
-            return configured;
-        var weights = GetUIntList($"GridFight_CardWeight_Lv{level}");
-        return weights.Count > 0 ? weights : GetPlayerLevel(level).RarityWeights;
-    }
-
-    public bool IsRotationPortal(uint portalId) =>
-        portalId != 0 && portalId == GameData.GridFightRuntimeConfig.RotationPortalId;
-
-    /// <summary>
-    /// Resolves the two portal reward shapes used at session entry directly from the resource graph:
-    /// concept packages contain two fixed roles and a basic equipment, while invitations contain an emblem.
-    /// </summary>
-    public GridFightPortalRuntimeEffects GetPortalRuntimeEffects(uint portalId)
-    {
-        if (!GameData.GridFightPortalBuffData.TryGetValue(portalId, out var portal))
-            return GridFightPortalRuntimeEffects.Empty;
-
-        var rewards = new List<GridFightRewardEntry>();
-        foreach (var bonusId in portal.ShowBonusIDList)
-            if (GridFightSpecialFeatures.TryResolveBonus(bonusId, out var resolved))
-                rewards.AddRange(resolved);
-
-        var roleIds = rewards
-            .Where(reward => reward.Type == GridFightBonusTypeEnum.SpecificAvatar)
-            .Select(reward => reward.ItemId)
-            .Where(roleId => GameData.GridFightRoleBasicInfoData.ContainsKey(roleId) &&
-                             GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | 1))
-            .Distinct()
-            .ToList();
-        var equipments = rewards
-            .Where(reward => reward.Type == GridFightBonusTypeEnum.Item)
-            .Select(reward => GameData.GridFightEquipmentData.GetValueOrDefault(reward.ItemId))
-            .Where(equipment => equipment != null)
-            .Cast<GridFightEquipmentExcel>()
-            .DistinctBy(equipment => equipment.ID)
-            .ToList();
-
-        var basicEquipmentIds = equipments
-            .Where(equipment => equipment.EquipCategory == GridFightEquipCategoryEnum.Basic)
-            .Select(equipment => equipment.ID)
-            .ToList();
-        if (roleIds.Count >= 2 && basicEquipmentIds.Count > 0)
-        {
-            var boostPercent = portal.EffectParamList.ElementAtOrDefault(2)?.Value ?? 0;
-            var traits = portal.PortalGameRefTrait.Where(traitId => traitId != 0).ToHashSet();
-            var multiplier = boostPercent == 0 ? 1.0 : 1.0 + boostPercent / 100.0;
-            return new GridFightPortalRuntimeEffects(roleIds, basicEquipmentIds, traits, multiplier);
-        }
-
-        var emblemIds = equipments
-            .Where(equipment => equipment.EquipCategory == GridFightEquipCategoryEnum.Emblem)
-            .Select(equipment => equipment.ID)
-            .ToList();
-        return emblemIds.Count > 0
-            ? new GridFightPortalRuntimeEffects([], emblemIds, new HashSet<uint>(), 1.0)
-            : GridFightPortalRuntimeEffects.Empty;
-    }
-
     public uint GetEnemyDifficultyLevel(uint divisionId)
     {
         return GameData.GridFightDivisionStageData[divisionId].EnemyDifficultyLevel;
@@ -627,80 +574,229 @@ public sealed class GridFightResourceCatalog
         return prices[(int)Math.Clamp(star, 1u, (uint)prices.Count) - 1];
     }
 
-    /// <summary>按玩家等级稀有度权重抽取商店角色；excludedRoleIds 为已满三星（含同切换组）不再出现的角色。</summary>
+    // 4.5 client shop rarity table. Keep the roll source and the UI source identical;
+    // stale GridFight_CardWeight constants in older resource caches otherwise diverge from
+    // the client formula (and also make portal 114 double the wrong base probability).
+    private static readonly IReadOnlyDictionary<uint, uint[]> OfficialShopRarityWeights =
+        new Dictionary<uint, uint[]>
+        {
+            [1] = [100, 0, 0, 0, 0],
+            [2] = [100, 0, 0, 0, 0],
+            [3] = [100, 0, 0, 0, 0],
+            [4] = [65, 25, 10, 0, 0],
+            [5] = [45, 33, 20, 2, 0],
+            [6] = [30, 40, 25, 5, 0],
+            [7] = [19, 30, 40, 10, 1],
+            [8] = [18, 25, 32, 22, 3],
+            [9] = [15, 20, 25, 30, 10],
+            [10] = [5, 10, 20, 40, 25],
+        };
+
+    public IReadOnlyList<uint> GetShopRarityWeights(uint level)
+    {
+        var resolved = Math.Clamp(level, 1u, 10u);
+        return OfficialShopRarityWeights.TryGetValue(resolved, out var weights)
+            ? weights
+            : GetPlayerLevel(level).RarityWeights;
+    }
+
     public IReadOnlyList<GridFightRoleBasicInfoExcel> RollShop(
         uint level,
-        IReadOnlyCollection<uint>? excludedRoleIds = null,
-        IReadOnlyList<GridFightRoleBasicInfoExcel>? extraCandidates = null,
-        IReadOnlySet<uint>? boostedTraitIds = null,
-        double boostedTraitMultiplier = 1.0,
-        IReadOnlyList<double>? rarityWeights = null)
+        uint silverWolfRoleId = 0,
+        IReadOnlyList<uint>? rarityWeights = null,
+        uint boostedTraitId = 0,
+        double boostedTraitWeightMultiplier = 1.0,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null,
+        IReadOnlySet<uint>? excludedRoleIds = null)
     {
         var count = checked((int)ShopSize);
-        var weights = rarityWeights ?? GetShopRarityWeights(level).Select(weight => (double)weight).ToArray();
-        var excluded = excludedRoleIds is { Count: > 0 }
-            ? excludedRoleIds as HashSet<uint> ?? excludedRoleIds.ToHashSet()
-            : null;
-        var pool = extraCandidates is { Count: > 0 }
-            ? RolePool.Concat(extraCandidates).DistinctBy(role => role.ID).ToList()
-            : RolePool;
+        var weights = rarityWeights?.ToList() ?? GetShopRarityWeights(level).ToList();
+        if (weights.Count == 0) weights = GetShopRarityWeights(level).ToList();
+
+        bool IsAllowedSilverWolfRole(GridFightRoleBasicInfoExcel role) =>
+            silverWolfRoleId == 0 ||
+            !GridFightSpecialFeatures.IsSilverWolfLv999Role(role.ID) ||
+            role.ID == silverWolfRoleId;
+
+        var shopPool = RolePool
+            .Where(role => IsRestrictedRoleAllowed(role.ID, temporarilyUnlockedRoleIds))
+            .Where(role => excludedRoleIds?.Contains(role.ID) != true)
+            .ToList();
+        // LV999 variants may have no RoleSavedValueList and thus be absent from RolePool.
+        if (silverWolfRoleId != 0 && excludedRoleIds?.Contains(silverWolfRoleId) != true &&
+            !shopPool.Any(role => role.ID == silverWolfRoleId) &&
+            GameData.GridFightRoleBasicInfoData.TryGetValue(silverWolfRoleId, out var silverWolf) &&
+            silverWolf.IsInPool && silverWolf.SeasonID == CurrentSeason &&
+            !GameData.GridFightModuleBanRoleData.Any(row =>
+                row.ModuleId == ContentModuleId && row.RoleId == silverWolfRoleId))
+            shopPool.Add(silverWolf);
+        var allowedPool = shopPool.Where(IsAllowedSilverWolfRole).ToList();
+        if (allowedPool.Count == 0) return [];
 
         var result = new List<GridFightRoleBasicInfoExcel>(count);
         for (var index = 0; index < count; index++)
         {
             var rarity = RollIndex(weights) + 1u;
-            var candidates = pool
-                .Where(role => role.Rarity == rarity && (excluded == null || !excluded.Contains(role.ID)))
-                .ToList();
-            // 该稀有度在排除后为空：退回「全池但排除满星」
-            if (candidates.Count == 0)
-                candidates = pool
-                    .Where(role => excluded == null || !excluded.Contains(role.ID))
-                    .ToList();
-            // 仍为空（几乎全满星）：兜底不排除，避免商店抽空崩溃
-            if (candidates.Count == 0)
-                candidates = pool.Where(role => role.Rarity == rarity).ToList();
-            if (candidates.Count == 0)
-                candidates = pool.ToList();
+            var candidates = allowedPool.Where(role => role.Rarity == rarity).ToList();
+            if (candidates.Count == 0) candidates = allowedPool;
 
-            result.Add(PickShopCandidate(candidates, boostedTraitIds, boostedTraitMultiplier));
+            // Concept-stock portals do not alter the rarity/cost distribution. They only
+            // increase the relative weight of roles that belong to the selected trait.
+            // Current packet sampling is best explained by a 1.5x same-rarity weight.
+            if (boostedTraitId == 0 || boostedTraitWeightMultiplier <= 1.0)
+            {
+                result.Add(candidates[_random.Next(candidates.Count)]);
+                continue;
+            }
+
+            var weighted = candidates
+                .Select(role => (Role: role, Weight:
+                    role.TraitList.Contains(boostedTraitId) ? boostedTraitWeightMultiplier : 1.0))
+                .ToList();
+            var totalWeight = weighted.Sum(entry => entry.Weight);
+            var roll = _random.NextDouble() * totalWeight;
+            var selected = weighted[^1].Role;
+            foreach (var entry in weighted)
+            {
+                roll -= entry.Weight;
+                if (roll > 0) continue;
+                selected = entry.Role;
+                break;
+            }
+            result.Add(selected);
         }
         return result;
     }
 
-    private GridFightRoleBasicInfoExcel PickShopCandidate(
-        IReadOnlyList<GridFightRoleBasicInfoExcel> candidates,
-        IReadOnlySet<uint>? boostedTraitIds,
-        double boostedTraitMultiplier)
+    public IReadOnlyList<GridFightRoleBasicInfoExcel> RollInitialRoles(int count, IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null)
     {
-        if (candidates.Count == 0)
-            throw new InvalidOperationException("GridFight shop candidate list is empty");
-        if (boostedTraitIds is not { Count: > 0 } ||
-            !double.IsFinite(boostedTraitMultiplier) ||
-            boostedTraitMultiplier <= 1.0)
-            return candidates[_random.Next(candidates.Count)];
+        var candidates = RolePool.Where(role =>
+                !InitialExcludedRoleIds.Contains(role.ID) &&
+                IsRestrictedRoleAllowed(role.ID, temporarilyUnlockedRoleIds))
+            .ToList();
+        if (count != 4) return TakeRandomDistinct(candidates, count);
 
-        var total = candidates.Sum(role =>
-            role.TraitList.Any(boostedTraitIds.Contains) ? boostedTraitMultiplier : 1.0);
-        var roll = _random.NextDouble() * total;
-        foreach (var role in candidates)
+        // Official ordinary opening supply: four one-star roles whose base costs sum to exactly 6.
+        // Duplicate role IDs are allowed (confirmed by multiple official captures).
+        // GridFightRoleBasicInfo.Rarity is the base cost tier used by one-star shop goods.
+        const uint targetTotalCost = 6;
+        if (candidates.Count == 0) return [];
+
+        // Roll with replacement so duplicated opening roles remain possible, then condition on cost=6.
+        // This avoids inventing an unobserved fixed probability between the two valid partitions
+        // (1+1+1+3 and 1+1+2+2).
+        for (var attempt = 0; attempt < 512; attempt++)
         {
-            var weight = role.TraitList.Any(boostedTraitIds.Contains) ? boostedTraitMultiplier : 1.0;
-            if (roll < weight) return role;
-            roll -= weight;
+            var rolled = new List<GridFightRoleBasicInfoExcel>(count);
+            for (var index = 0; index < count; index++)
+                rolled.Add(candidates[_random.Next(candidates.Count)]);
+            if (rolled.Aggregate(0u, (sum, role) => sum + role.Rarity) == targetTotalCost)
+                return rolled;
         }
-        return candidates[^1];
+
+        // Deterministic safety fallback. With four positive cost tiers summing to six, the only
+        // possible sorted partitions are 1+1+1+3 and 1+1+2+2. Choose a valid partition, then
+        // sample each tier independently (still allowing duplicate role IDs).
+        var byCost = candidates
+            .GroupBy(role => role.Rarity)
+            .ToDictionary(group => group.Key, group => group.ToList());
+        var patterns = new[]
+            {
+                new uint[] { 1, 1, 1, 3 },
+                new uint[] { 1, 1, 2, 2 },
+            }
+            .Where(pattern => pattern.All(byCost.ContainsKey))
+            .ToList();
+        if (patterns.Count == 0)
+            throw new InvalidDataException("GridFight opening supply cannot satisfy the official total-cost=6 constraint.");
+
+        var selectedPattern = patterns[_random.Next(patterns.Count)].OrderBy(_ => _random.Next()).ToList();
+        return selectedPattern
+            .Select(costTier => byCost[costTier][_random.Next(byCost[costTier].Count)])
+            .ToList();
     }
 
-    public IReadOnlyList<GridFightRoleBasicInfoExcel> RollInitialRoles(int count)
+    /// <summary>
+    /// Fills the non-guaranteed opening slots for concept-stock portals. Official captures
+    /// do not enforce the ordinary opening total-cost=6 rule here; featured-role portals can override it.
+    /// </summary>
+    public IReadOnlyList<GridFightRoleBasicInfoExcel> RollConceptStockFillRoles(int count, IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null)
     {
-        var candidates = RolePool.Where(role => !InitialExcludedRoleIds.Contains(role.ID)).ToList();
-        return TakeRandomDistinct(candidates, count);
+        var candidates = RolePool.Where(role =>
+                !InitialExcludedRoleIds.Contains(role.ID) &&
+                IsRestrictedRoleAllowed(role.ID, temporarilyUnlockedRoleIds))
+            .ToList();
+        if (candidates.Count == 0 || count <= 0) return [];
+        var result = new List<GridFightRoleBasicInfoExcel>(count);
+        for (var index = 0; index < count; index++)
+            result.Add(candidates[_random.Next(candidates.Count)]);
+        return result;
+    }
+
+    public uint RollMortenaxBladeTemporaryEquipment(uint roleId, string frontBackType)
+    {
+        if (!GameData.GridFightRoleRecommendEquipData.TryGetValue(roleId, out var rows)) return 0;
+        var row = rows.FirstOrDefault(candidate =>
+                      string.Equals(candidate.FrontBackType, frontBackType, StringComparison.OrdinalIgnoreCase)) ??
+                  rows.FirstOrDefault();
+        if (row == null) return 0;
+
+        var recommended = row.FirstRecommendEquipList
+            .Concat(row.SecondRecommendEquipList)
+            .Distinct()
+            .ToHashSet();
+
+        static bool IsAdvanced(uint id) => id is >= 35030000 and < 35040000;
+
+        // Prefer advanced equipment directly present in the character's recommendation table.
+        var candidates = recommended
+            .Where(IsAdvanced)
+            .Where(GameData.GridFightEquipmentData.ContainsKey)
+            .Order()
+            .ToList();
+
+        // When the recommendation table lists components, derive matching advanced equipment from recipes.
+        if (candidates.Count == 0)
+            candidates = GameData.GridFightCraftConfigData.Values
+                .Where(recipe => IsAdvanced(recipe.CraftEquipID))
+                .Where(recipe => recipe.CostEquipList.Count > 0 &&
+                                 recipe.CostEquipList.All(recommended.Contains))
+                .Select(recipe => recipe.CraftEquipID)
+                .Where(GameData.GridFightEquipmentData.ContainsKey)
+                .Distinct()
+                .Order()
+                .ToList();
+
+        if (candidates.Count == 0)
+            candidates = GameData.GridFightCraftConfigData.Values
+                .Where(recipe => IsAdvanced(recipe.CraftEquipID))
+                .Where(recipe => recipe.CostEquipList.Any(recommended.Contains))
+                .Select(recipe => recipe.CraftEquipID)
+                .Where(GameData.GridFightEquipmentData.ContainsKey)
+                .Distinct()
+                .Order()
+                .ToList();
+
+        // Capture-confirmed compatibility fallback for 4.4.5.
+        if (candidates.Count == 0)
+            candidates = new uint[] { 35030407, 35030102 }
+                .Where(GameData.GridFightEquipmentData.ContainsKey)
+                .ToList();
+
+        return candidates.Count == 0 ? 0 : candidates[_random.Next(candidates.Count)];
     }
 
     public IReadOnlyList<uint> RollPortalOffer(int count)
     {
         return TakeRandomDistinct(PortalPool.ToList(), count);
+    }
+
+    public uint RollBlueSeaPortal()
+    {
+        var candidates = PortalPool
+            .Where(id => id != GridFightSession.BlueSeaPortalId)
+            .ToList();
+        return candidates.Count == 0 ? 0u : candidates[_random.Next(candidates.Count)];
     }
 
     public GridFightAugmentQualityEnum RollInvestmentQuality(
@@ -738,15 +834,29 @@ public sealed class GridFightResourceCatalog
             .ToList();
     }
 
-    public IReadOnlyList<(uint RoleId, uint EquipmentId)> RollSupplyOffer(int count)
+    public IReadOnlyList<(uint RoleId, uint EquipmentId)> RollSupplyOffer(int count, IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null)
     {
-        var roles = TakeRandomDistinct(RolePool.ToList(), count);
+        var candidates = RolePool.Where(role => IsRestrictedRoleAllowed(role.ID, temporarilyUnlockedRoleIds)).ToList();
+        var roles = TakeRandomDistinct(candidates, count);
         return roles.Select(role =>
             (role.ID, BasicEquipmentPool[_random.Next(BasicEquipmentPool.Count)])).ToList();
     }
 
     public IReadOnlyList<uint> RollForgeEquipment(uint forgeItemId)
     {
+        // 4.5 Secret Codex+ uses forge 99991 (four Emblem choices). Older Resource.bin
+        // snapshots may lack only the forge row while still containing all 35051/35052 items.
+        if (forgeItemId == GridFightSession.SecretCodexForgeItemId &&
+            !GameData.GridFightForgeData.ContainsKey(forgeItemId))
+        {
+            var emblems = GameData.GridFightEquipmentData.Values
+                .Where(row => row.EquipCategory == GridFightEquipCategoryEnum.Emblem)
+                .Select(row => row.ID)
+                .Distinct()
+                .ToList();
+            return emblems.Count < 4 ? [] : TakeRandomDistinct(emblems, 4);
+        }
+
         if (!GameData.GridFightForgeData.TryGetValue(forgeItemId, out var forge) ||
             forge.FuncType != GridFightForgeFuncTypeEnum.Equip)
             return [];
@@ -768,6 +878,62 @@ public sealed class GridFightResourceCatalog
             .Order()
             .ToList();
         return candidates.Count == 0 ? 0 : candidates[_random.Next(candidates.Count)];
+    }
+
+    public IReadOnlyList<uint> RollPepeEmblems(int count)
+    {
+        if (count <= 0) return [];
+        var candidates = GameData.GridFightEquipmentData.Values
+            .Where(equipment => equipment.EquipCategory == GridFightEquipCategoryEnum.Emblem)
+            .Where(equipment => equipment.EquipFunc is GridFightEquipFuncTypeEnum.OriginEmblem or
+                GridFightEquipFuncTypeEnum.ClassEmblem)
+            .Select(equipment => equipment.ID)
+            .Distinct()
+            .Order()
+            .ToList();
+        return TakeRandomDistinct(candidates, count);
+    }
+
+    public uint RollLaborDispatchEmblem()
+    {
+        var roleTraits = RolePool
+            .Where(role => GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | 1u))
+            .SelectMany(role => role.TraitList)
+            .ToHashSet();
+        var candidates = GameData.GridFightEquipmentData.Values
+            .Where(equipment => equipment.EquipCategory == GridFightEquipCategoryEnum.Emblem)
+            .Where(equipment => equipment.EquipFunc is GridFightEquipFuncTypeEnum.OriginEmblem or
+                GridFightEquipFuncTypeEnum.ClassEmblem)
+            .Where(equipment => roleTraits.Contains(equipment.EquipFuncParamList.FirstOrDefault()))
+            .Select(equipment => equipment.ID)
+            .Distinct()
+            .Order()
+            .ToList();
+        return candidates.Count == 0 ? 0 : candidates[_random.Next(candidates.Count)];
+    }
+
+    public uint RollRoleForTrait(uint traitId)
+    {
+        var candidates = RolePool
+            .Where(role => role.TraitList.Contains(traitId))
+            .Where(role => GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | 1u))
+            .Select(role => role.ID)
+            .Distinct()
+            .Order()
+            .ToList();
+        return candidates.Count == 0 ? 0 : candidates[_random.Next(candidates.Count)];
+    }
+
+    public bool RollChance(double probability)
+    {
+        if (probability <= 0) return false;
+        if (probability >= 1) return true;
+        return _random.NextDouble() < probability;
+    }
+
+    public uint RollOne(IReadOnlyList<uint> values)
+    {
+        return values.Count == 0 ? 0 : values[_random.Next(values.Count)];
     }
 
     public IReadOnlyList<uint> RollRecommendedEquipment(uint roleId, string frontBackType, int count)
@@ -846,7 +1012,9 @@ public sealed class GridFightResourceCatalog
         GridFightRouteNode node,
         IReadOnlyList<uint> activeCampIds,
         uint rewardCampId,
-        IReadOnlyList<GridFightMonsterExcel> bosses)
+        IReadOnlyList<GridFightMonsterExcel> bosses,
+        uint selectedPortalId = 0,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null)
     {
         if (node.NodeType is GridFightNodeTypeEnum.GridFightNodeNone or GridFightNodeTypeEnum.Supply)
             return null;
@@ -867,10 +1035,14 @@ public sealed class GridFightResourceCatalog
         {
             if (!GameData.GridFightRewardRulesConfig.NodeProfiles.TryGetValue(parameter, out var rewardProfile))
                 return null;
+
+            var rewardMonsters = selectedPortalId == 119
+                ? BuildSevereOverheatRewardMonsters(parameter, rewardProfile, temporarilyUnlockedRoleIds)
+                : RollRewardMonsters(rewardCampId, parameter, rewardProfile, temporarilyUnlockedRoleIds);
             return BuildPlan(
                 rewardCampId,
                 node,
-                [RollRewardMonsters(rewardCampId, rewardProfile)],
+                [rewardMonsters],
                 [rewardProfile.FormationWaveId]);
         }
 
@@ -1086,9 +1258,122 @@ public sealed class GridFightResourceCatalog
         return result;
     }
 
+    private static IReadOnlyList<IReadOnlyList<GridFightRewardEntry>>? BuildOfficialRewardNodeDrops(
+        uint rewardNodeParameter,
+        int monsterCount)
+    {
+        IReadOnlyList<IReadOnlyList<GridFightRewardEntry>>? drops = rewardNodeParameter switch
+        {
+            // Capture-confirmed normal reward node 70000001 / parameter 900.
+            900 =>
+            [
+                [new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 102, 1),
+                 new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 204, 1)],
+                [new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 203, 1)],
+                [new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 199, 1)],
+            ],
+            // Capture-confirmed normal reward node 70000002 / parameter 901.
+            901 =>
+            [
+                [new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 204, 1)],
+                [new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 203, 1)],
+                [new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 199, 1)],
+                [new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 199, 1)],
+                [new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 103, 1)],
+            ],
+            _ => null,
+        };
+        return drops?.Count == monsterCount ? drops : null;
+    }
+
+    private IReadOnlyList<GridFightMonsterPlan> BuildSevereOverheatRewardMonsters(
+        uint rewardNodeParameter,
+        GridFightRewardNodeProfile profile,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds)
+    {
+        var monster = GetRequiredGridFightMonster(800205802);
+        return rewardNodeParameter switch
+        {
+            // Official 119 capture: first reward node has two Super Trotters.
+            900 =>
+            [
+                new GridFightMonsterPlan(monster, 1,
+                [
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 199, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 204, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 200003, 1),
+                ]),
+                new GridFightMonsterPlan(monster, 1,
+                [
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 102, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 203, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 200006, 1),
+                ]),
+            ],
+            // Official 119 capture: second reward node has three Super Trotters.
+            901 =>
+            [
+                new GridFightMonsterPlan(monster, 1,
+                [
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 199, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 303, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 200006, 1),
+                ]),
+                new GridFightMonsterPlan(monster, 1,
+                [
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 199, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 204, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 200019, 1),
+                ]),
+                new GridFightMonsterPlan(monster, 1,
+                [
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 103, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 203, 1),
+                    new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, 200002, 2),
+                ]),
+            ],
+            // Later 119 reward nodes are not present in the supplied captures. Keep the
+            // official semantic (all reward monsters become Super Trotters) while preserving
+            // the existing node's base reward pool instead of inventing advanced rewards.
+            _ => BuildSevereOverheatFallback(monster, profile, temporarilyUnlockedRoleIds),
+        };
+    }
+
+    private static IReadOnlyList<GridFightMonsterPlan> BuildSevereOverheatFallback(
+        GridFightMonsterExcel monster,
+        GridFightRewardNodeProfile profile,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds)
+    {
+        var orbBag = profile.OrbWeights
+            .Where(entry => IsRestrictedRoleOrbAllowed(entry.Key, temporarilyUnlockedRoleIds))
+            .OrderBy(entry => entry.Key)
+            .SelectMany(entry => Enumerable.Repeat(entry.Key, checked((int)entry.Value)))
+            .ToList();
+        if (orbBag.Count == 0) return [];
+
+        var monsterCount = Math.Max(1, checked((int)Math.Ceiling(orbBag.Count / 2.0)));
+        var drops = Enumerable.Range(0, monsterCount)
+            .Select(_ => new List<GridFightRewardEntry>())
+            .ToList();
+        for (var index = 0; index < orbBag.Count; index++)
+            drops[index % monsterCount].Add(new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, orbBag[index], 1));
+
+        return drops.Select(monsterDrops =>
+            new GridFightMonsterPlan(monster, profile.RoleStar, monsterDrops)).ToList();
+    }
+
+    private static GridFightMonsterExcel GetRequiredGridFightMonster(uint monsterId)
+    {
+        if (!GameData.GridFightMonsterData.TryGetValue(monsterId, out var monster))
+            throw new KeyNotFoundException($"GridFight monster not found: {monsterId}");
+        return monster;
+    }
+
     private IReadOnlyList<GridFightMonsterPlan> RollRewardMonsters(
         uint campId,
-        GridFightRewardNodeProfile profile)
+        uint rewardNodeParameter,
+        GridFightRewardNodeProfile profile,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds)
     {
         var monsters = new List<GridFightMonsterExcel>(profile.MonsterTiers.Count);
         foreach (var tier in profile.MonsterTiers)
@@ -1099,6 +1384,11 @@ public sealed class GridFightResourceCatalog
         }
         Shuffle(monsters);
 
+        var officialDrops = BuildOfficialRewardNodeDrops(rewardNodeParameter, monsters.Count);
+        if (officialDrops != null)
+            return monsters.Select((monster, index) =>
+                new GridFightMonsterPlan(monster, profile.RoleStar, officialDrops[index])).ToList();
+
         var drops = Enumerable.Range(0, monsters.Count)
             .Select(_ => new List<GridFightRewardEntry>())
             .ToList();
@@ -1108,7 +1398,7 @@ public sealed class GridFightResourceCatalog
         {
             drops[monsterIndex].Add(new GridFightRewardEntry(
                 GridFightBonusTypeEnum.Orb,
-                RollWeightedOrb(profile.OrbWeights),
+                RollWeightedOrb(profile.OrbWeights, temporarilyUnlockedRoleIds),
                 1));
             remaining--;
         }
@@ -1117,7 +1407,7 @@ public sealed class GridFightResourceCatalog
             var monsterIndex = _random.Next(monsters.Count);
             drops[monsterIndex].Add(new GridFightRewardEntry(
                 GridFightBonusTypeEnum.Orb,
-                RollWeightedOrb(profile.OrbWeights),
+                RollWeightedOrb(profile.OrbWeights, temporarilyUnlockedRoleIds),
                 1));
             remaining--;
         }
@@ -1125,11 +1415,19 @@ public sealed class GridFightResourceCatalog
             new GridFightMonsterPlan(monster, profile.RoleStar, drops[index])).ToList();
     }
 
-    private uint RollWeightedOrb(IReadOnlyDictionary<uint, uint> weights)
+    private uint RollWeightedOrb(
+        IReadOnlyDictionary<uint, uint> weights,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds)
     {
-        var total = weights.Values.Aggregate(0L, (sum, weight) => sum + weight);
+        var allowed = weights
+            .Where(entry => entry.Value > 0 && IsRestrictedRoleOrbAllowed(entry.Key, temporarilyUnlockedRoleIds))
+            .OrderBy(entry => entry.Key)
+            .ToList();
+        if (allowed.Count == 0)
+            throw new InvalidOperationException("GridFight orb pool contains only locked restricted role orbs");
+        var total = allowed.Aggregate(0L, (sum, entry) => sum + entry.Value);
         var roll = _random.NextInt64(total);
-        foreach (var (orbId, weight) in weights.OrderBy(entry => entry.Key))
+        foreach (var (orbId, weight) in allowed)
         {
             if (roll < weight) return orbId;
             roll -= weight;
@@ -1236,17 +1534,15 @@ public sealed class GridFightResourceCatalog
             : 0;
     }
 
-    private uint RollIndex(IReadOnlyList<double> weights)
+    private uint RollIndex(IReadOnlyList<uint> weights)
     {
-        var total = weights.Where(double.IsFinite).Where(weight => weight > 0).Sum();
-        if (total <= 0) return 0;
-        var roll = _random.NextDouble() * total;
+        var total = weights.Aggregate(0UL, (value, weight) => value + weight);
+        if (total == 0) return 0;
+        var roll = (ulong)_random.NextInt64((long)total);
         for (var index = 0; index < weights.Count; index++)
         {
-            var weight = weights[index];
-            if (!double.IsFinite(weight) || weight <= 0) continue;
-            if (roll < weight) return (uint)index;
-            roll -= weight;
+            if (roll < weights[index]) return (uint)index;
+            roll -= weights[index];
         }
         return (uint)(weights.Count - 1);
     }

@@ -8,6 +8,7 @@ namespace March7thHoney.GameServer.Game.GridFight;
 public enum GridFightSessionPhase
 {
     SelectingPortal,
+    SelectingNestedPortal,
     AwaitingInitialRound,
     AwaitingInitialOrb,
     AwaitingInitialReturn,
@@ -55,6 +56,7 @@ public sealed class GridFightEquipmentState
     public uint UniqueId { get; init; }
     public uint EquipmentId { get; init; }
     public uint Source { get; init; }
+    public bool IsLocked { get; set; }
 }
 
 public sealed class GridFightOrbState
@@ -73,10 +75,10 @@ public sealed class GridFightConsumableState
 public sealed class GridFightShopSlot
 {
     public uint Index { get; init; }
-    public uint RoleId { get; init; }
+    public uint RoleId { get; set; }
     public uint SpecialGoodsId { get; init; }
     public uint Star { get; init; } = 1;
-    public uint Price { get; init; }
+    public uint Price { get; set; }
     public bool SoldOut { get; set; }
 }
 
@@ -89,6 +91,9 @@ public sealed record GridFightSessionChange(
 {
     public static GridFightSessionChange Failed { get; } = new(false, [], [], [], []);
     public static GridFightSessionChange Succeeded { get; } = new(true, [], [], [], []);
+    public bool SilverWolfTraitActivated { get; init; }
+    public bool HeadPlayerPendingStarted { get; init; }
+    public uint FailureRetcode { get; init; } = 1;
 }
 
 public sealed record GridFightForgeUseResult(
@@ -130,15 +135,23 @@ public sealed record GridFightBattleStatistics(
     IReadOnlyList<GridFightAugmentBattleDamage> AugmentDamage,
     IReadOnlyList<GridFightKilledMonsterInstance> KilledMonsters,
     uint RoundCount,
+    IReadOnlyDictionary<string, uint> SavedValues,
     bool IsPresent = true)
 {
-    public static GridFightBattleStatistics Empty { get; } = new(0, [], [], [], [], 0, false);
+    public static GridFightBattleStatistics Empty { get; } = new(0, [], [], [], [], 0, new Dictionary<string, uint>(), false);
 }
 
 public sealed record GridFightTalentOrbReward(
     uint TalentId,
     uint EffectId,
     IReadOnlyList<GridFightOrbState> AddedOrbs);
+
+public sealed record GridFightMortenaxBladeBattleEffect(
+    uint RoleUniqueId,
+    uint EquipmentId,
+    uint ReplacedEquipmentUniqueId,
+    uint TemporaryInstanceId,
+    bool NeedsTraitEffectSync);
 
 public enum GridFightHpChangeKind
 {
@@ -189,44 +202,37 @@ public sealed partial class GridFightSession
     private const int SupplyOfferCount = 5;
     private const uint SupplySelectionQueueAdvance = 4;
     private const uint SupplyEquipmentSource = 9;
+    private const uint OfficialInitialGold = 3;
+    private const int OfficialInitialRoleCount = 4;
+    private const uint OfficialInitialOrbId = 203;
+    private const uint OfficialInitialConsumableId = 350101;
+    private const uint OfficialInitialTalentId = 1081;
+    private const uint OfficialInitialTalentEffectId = 36;
+    private const uint MortenaxBladeRoleId = 1507;
+    private const uint MortenaxBladeTraitEffectParamValue = 106;
 
     private readonly GridFightResourceCatalog _catalog;
-    /// <summary>进入备战阶段次数，用于财富宝钻产金。</summary>
-    private uint _preparationPhaseCount;
     private readonly Dictionary<string, uint> _roleSavedValues = new(StringComparer.Ordinal);
-    private uint _nextEntityUniqueId = 1;
-    private uint _nextConsumableGroupId = 1;
+    // Official runtime entity IDs reserve 1/2; capture-visible roles/items begin at 3.
+    private uint _nextEntityUniqueId = 3;
     private bool _orbClaimed;
+    private bool _officialInitialRoundGranted;
+    private bool _mortenaxBladeTraitEffectInitialized;
+    private IReadOnlyList<GridFightMortenaxBladeBattleEffect> _mortenaxBladeBattleEffects = [];
     private bool _cyrenePoemShopUnlocked;
     private bool _silverWolfHackUnlocked;
     private uint? _traitEffectSelectEnhanceQueuePosition;
-    /// <summary>商店中银狼 LV999 当前费用档对应 RoleId（15061/62/63）</summary>
-    private uint _silverWolfShopRoleId;
-    /// <summary>是否已放弃过「提升费用」选项</summary>
-    private bool _silverWolfCostUpgradeAbandoned;
-    /// <summary>当前骇入弹窗对应的角色 UniqueId</summary>
-    private uint? _silverWolfPendingRoleUniqueId;
-    /// <summary>当前弹窗是否为最高费用档三星终局（管理员手套）</summary>
-    private bool _silverWolfPendingIsFinal;
-    private uint _silverWolfPendingEffectGroupId;
-    private readonly List<uint> _silverWolfPendingOptionIds = [];
-    private uint? _silverWolfDeferredRoleUniqueId;
-    private uint _silverWolfDeferredStar;
-    private bool _silverWolfDeferredIsFinal;
-    private uint _silverWolfDeferredEffectGroupId;
-    private readonly List<uint> _silverWolfDeferredOptionIds = [];
-    private bool _silverWolfPendingJustActivated;
-    private uint? _pendingAutoMergeRoleId;
-    /// <summary>骰子 UniqueId → 绑定的 2 个装备配置 ID（卸下不丢，战斗结束才重随）</summary>
-    private readonly Dictionary<uint, uint[]> _diceBoundEquipmentConfigIds = new();
     private readonly HashSet<uint> _rerolledInvestmentIds = [];
+    private readonly HashSet<uint> _temporarilyUnlockedRestrictedRoleIds = [];
     private readonly HashSet<(uint TalentId, uint EffectId, GridFightTalentRewardTrigger Trigger, uint ChapterId)>
         _triggeredTalentRewards = [];
     private uint _encounterRerollCount;
-    /// <summary>Zero-based rarity selected by the rotation portal for the current preparation phase.</summary>
-    private int? _rotationTargetRarityIndex;
     private Dictionary<uint, uint> _roleSwitchIds = [];
     private GridFightRoleSwitchUpdate? _roleSwitchUpdate;
+
+    public IReadOnlyList<GridFightMortenaxBladeBattleEffect> MortenaxBladeBattleEffects => _mortenaxBladeBattleEffects;
+    public bool HasMortenaxBladeTraitEffectSync => _mortenaxBladeBattleEffects.Any(effect => effect.NeedsTraitEffectSync);
+    public uint MortenaxBladeTraitEffectParam => MortenaxBladeTraitEffectParamValue;
 
     public uint Season { get; }
     public uint DivisionId { get; }
@@ -244,11 +250,7 @@ public sealed partial class GridFightSession
     public uint KeepWinCount { get; private set; }
     public uint BattlesFinished { get; private set; }
     public uint SelectedPortalId { get; private set; }
-    public IReadOnlyList<double> ShopRarityRollWeights =>
-        BuildRotationShopWeights()?.RollWeights ??
-        _catalog.GetShopRarityWeights(PlayerLevel).Select(weight => (double)weight).ToArray();
-    public IReadOnlyList<uint> ShopRarityDisplayWeights =>
-        BuildRotationShopWeights()?.DisplayWeights ?? _catalog.GetShopRarityWeights(PlayerLevel);
+    public IReadOnlyList<uint> ActivePortalIds => _activePortalIds;
     public IReadOnlyList<uint> CampIds { get; }
     public uint RewardCampId { get; }
     public IReadOnlyList<GridFightMonsterExcel> Bosses { get; }
@@ -268,20 +270,10 @@ public sealed partial class GridFightSession
     public List<GridFightForgeItemState> ForgeItems { get; } = [];
     public List<GridFightShopSlot> Shop { get; } = [];
     public IReadOnlyDictionary<string, uint> RoleSavedValues => _roleSavedValues;
+    public IReadOnlySet<uint> TemporarilyUnlockedRestrictedRoleIds => _temporarilyUnlockedRestrictedRoleIds;
     public bool HasCyreneCombatEnhancement { get; private set; }
     public GridFightHackConsoleState? HackConsole { get; private set; }
     public uint? TraitEffectSelectEnhanceQueuePosition => _traitEffectSelectEnhanceQueuePosition;
-    /// <summary>商店中银狼当前费用档；未升过费时取资源链首档。</summary>
-    public uint SilverWolfShopRoleId =>
-        _silverWolfShopRoleId != 0 ? _silverWolfShopRoleId : GridFightSpecialFeatures.SilverWolfBaseRoleId;
-    public IReadOnlyList<uint> SilverWolfPendingOptionIds => _silverWolfPendingOptionIds;
-    public uint SilverWolfPendingEffectGroupId => _silverWolfPendingEffectGroupId;
-    public bool ConsumeSilverWolfPendingJustActivated()
-    {
-        if (!_silverWolfPendingJustActivated) return false;
-        _silverWolfPendingJustActivated = false;
-        return true;
-    }
     public GridFightBattleStatistics LastBattleStatistics { get; private set; } = GridFightBattleStatistics.Empty;
     public IReadOnlyList<GridFightRoleSwitchEntryState> RoleSwitchEntries =>
         _catalog.RoleSwitchGroups
@@ -430,37 +422,8 @@ public sealed partial class GridFightSession
         PrepareCurrentNode();
     }
 
-    /// <summary>后台席位可被装备解锁的格数，超出部分官服不再生效。</summary>
-    private uint MaxRoleCountBonus =>
-        _catalog.OffFieldMaxCount > _catalog.OffFieldInitialCount
-            ? _catalog.OffFieldMaxCount - _catalog.OffFieldInitialCount
-            : 0;
-
-    /// <summary>财富宝钻等 AvatarMaxNumberAdd 装备提供的人口加成，无论是否被角色穿戴。</summary>
-    public uint WealthDiamondBonus
-    {
-        get
-        {
-            var bonus = Equipments
-                .Select(state => GameData.GridFightEquipmentData.GetValueOrDefault(state.EquipmentId))
-                .Where(config => config?.EquipFunc == GridFightEquipFuncTypeEnum.AvatarMaxNumberAdd)
-                .Aggregate(0UL, (total, config) => total + Math.Max(1u, config!.EquipFuncParamList.FirstOrDefault()));
-            return (uint)Math.Min(bonus, MaxRoleCountBonus);
-        }
-    }
-
-    /// <summary>后台格 UI 预解锁上限，进局时写入 OffFieldMaxCount 以规避中途无法推送。</summary>
-    public uint MaxOffFieldRolesCap => _catalog.OffFieldMaxCount;
-
-    /// <summary>总出战人数上限 = 等级基础人口 + 装备加成，UpdatePositions / EnterBattle 校验读此值。</summary>
-    public uint MaxActiveRoles
-    {
-        get
-        {
-            var baseCount = _catalog.GetPlayerLevel(PlayerLevel).AvatarMaxNumber;
-            return (uint)Math.Min(uint.MaxValue, (ulong)baseCount + WealthDiamondBonus);
-        }
-    }
+    public uint MaxActiveRoles => Math.Min(TeamPopulationLimit,
+        BattleMaxActiveRoles + EffectiveWealthDiamondBonus + LizhiActiveRoleBonus);
 
     public bool HandlePending(uint queuePosition, GridFightPendingRequestKind kind, uint portalId = 0)
     {
@@ -473,16 +436,20 @@ public sealed partial class GridFightSession
                 return true;
             case GridFightPendingRequestKind.PortalSelect
                 when Phase == GridFightSessionPhase.SelectingPortal && PortalOffer.Contains(portalId):
-                SelectedPortalId = portalId;
-                var portalEffects = _catalog.GetPortalRuntimeEffects(portalId);
-                ApplyPortalEntryEquipments(portalEffects);
-                MaterializeInitialRoles(portalEffects.EntryRoleIds);
-                Gold += _catalog.InitialGold;
-                Phase = GridFightSessionPhase.AwaitingInitialRound;
-                PendingQueuePosition++;
+                if (portalId == BlueSeaPortalId)
+                {
+                    BeginBlueSeaNestedPortal();
+                    return true;
+                }
+                FinalizeInitialPortalSelection(portalId, PendingQueuePosition + 1);
+                return true;
+            case GridFightPendingRequestKind.PortalSelect
+                when Phase == GridFightSessionPhase.SelectingNestedPortal && PortalOffer.Contains(portalId):
+                FinalizeInitialPortalSelection(portalId, 2);
                 return true;
             case GridFightPendingRequestKind.RoundBegin
                 when Phase == GridFightSessionPhase.AwaitingInitialRound:
+                AdvanceRotationHeroPortalRound();
                 RefreshShop(false);
                 Phase = GridFightSessionPhase.AwaitingInitialOrb;
                 PendingQueuePosition = 10;
@@ -494,28 +461,15 @@ public sealed partial class GridFightSession
                 return true;
             case GridFightPendingRequestKind.RoundBegin
                 when Phase == GridFightSessionPhase.AwaitingBattleRound:
+                AdvanceRotationHeroPortalRound();
+                PrepareLaborDispatchBossReward();
                 PendingQueuePosition++;
-                if (CurrentNode.NodeType == GridFightNodeTypeEnum.Supply)
-                {
-                    PrepareSupplyOffer();
-                    Phase = GridFightSessionPhase.SelectingSupply;
-                }
-                else if (CurrentNode.NodeType == GridFightNodeTypeEnum.EliteBranch)
-                {
-                    Phase = GridFightSessionPhase.SelectingEncounter;
-                }
-                else if (CurrentNode.Template.IsAugment != 0)
-                {
-                    PrepareInvestmentOffer();
-                    Phase = GridFightSessionPhase.SelectingInvestment;
-                }
-                else
-                {
-                    Phase = GridFightSessionPhase.AwaitingBattleReturn;
-                }
+                EnterCurrentNodePostRoundPhase();
                 return true;
             case GridFightPendingRequestKind.RoundBegin
                 when Phase == GridFightSessionPhase.AwaitingSupplyRound:
+                AdvanceRotationHeroPortalRound();
+                PrepareLaborDispatchBossReward();
                 Phase = GridFightSessionPhase.AwaitingBattleReturn;
                 PendingQueuePosition++;
                 return true;
@@ -523,6 +477,7 @@ public sealed partial class GridFightSession
                 when Phase == GridFightSessionPhase.AwaitingBattleReturn:
                 Phase = GridFightSessionPhase.AwaitingBackToPrepare;
                 PendingQueuePosition++;
+                QueueRecurringFateDivinerAfterReturnPreparation();
                 return true;
             default:
                 return false;
@@ -535,6 +490,7 @@ public sealed partial class GridFightSession
     {
         if (Phase != GridFightSessionPhase.SelectingInvestment ||
             queuePosition != PendingQueuePosition ||
+            _goldFuturesInvestmentPending ||
             _rerolledInvestmentIds.Contains(augmentId))
             return false;
         var index = InvestmentOffer.ToList().IndexOf(augmentId);
@@ -556,11 +512,19 @@ public sealed partial class GridFightSession
             queuePosition != PendingQueuePosition ||
             !InvestmentOffer.Contains(augmentId))
             return false;
+        var isGoldFuturesChild = _goldFuturesInvestmentPending;
         if (!ActiveInvestmentIds.Contains(augmentId)) ActiveInvestmentIds.Add(augmentId);
+        PrepareInvestmentSelectionReward(augmentId);
+        OnP0InvestmentSelected(augmentId);
         InvestmentOffer = [];
         _rerolledInvestmentIds.Clear();
-        Phase = GridFightSessionPhase.AwaitingBattleReturn;
+        _goldFuturesInvestmentPending = false;
+        if (isGoldFuturesChild) _lastGoldFuturesChildSelection = augmentId;
         PendingQueuePosition++;
+        if (isGoldFuturesChild)
+            EnterCurrentNodePostRoundPhase();
+        else
+            Phase = GridFightSessionPhase.AwaitingBattleReturn;
         return true;
     }
 
@@ -570,7 +534,7 @@ public sealed partial class GridFightSession
             queuePosition != PendingQueuePosition ||
             SupplyRerollCount != 0)
             return false;
-        SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount)
+        SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount, _temporarilyUnlockedRestrictedRoleIds)
             .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
             .ToList();
         SupplyRerollCount = 1;
@@ -637,7 +601,7 @@ public sealed partial class GridFightSession
         };
         Roles.Add(role);
         RecalculateRoleSwitches();
-        var mergeSteps = MergeRoles(role.RoleId, role);
+        var mergeSteps = MergeRoles(role.RoleId);
         RecalculateRoleSwitches();
         var acquisition = new GridFightRoleAcquisitionResult(
             true,
@@ -679,6 +643,53 @@ public sealed partial class GridFightSession
         return Gold;
     }
 
+    public bool IsRestrictedRoleUnlockedForRun(uint roleId) =>
+        !GridFightResourceCatalog.IsRestrictedRole(roleId) ||
+        _temporarilyUnlockedRestrictedRoleIds.Contains(roleId);
+
+    private void UnlockRestrictedRoleForRun(uint roleId)
+    {
+        if (GridFightResourceCatalog.IsRestrictedRole(roleId))
+            _temporarilyUnlockedRestrictedRoleIds.Add(roleId);
+    }
+
+    private bool TryResolveOrbRewardsForCurrentRun(
+        uint orbItemId,
+        out IReadOnlyList<GridFightRewardEntry> rewards)
+    {
+        rewards = [];
+
+        // Portal 109 talent recruitment is an investment-environment grant and intentionally
+        // bypasses the automatic-source restricted-role filter. FinalizeRoleAcquisition() will
+        // transiently unlock a restricted role if this orb legitimately rolls one.
+        if (orbItemId == TalentRecruitmentOrbId)
+            return GridFightSpecialFeatures.TryResolveOrb(orbItemId, out rewards);
+
+        // Direct role-orbs are deterministic. A locked restricted role must not be obtainable
+        // from the crystal/orb path until that role has been unlocked by another acquisition source.
+        if (orbItemId is >= 101000 and < 102000 &&
+            !IsRestrictedRoleUnlockedForRun(orbItemId - 100000))
+            return false;
+
+        // Generic crystals/orbs may resolve RandomAvatar pools at open time. Re-resolve until
+        // the result contains no still-locked restricted role. This keeps the restriction local
+        // to crystal rewards without changing investment/portal/GM bonus resolution.
+        for (var attempt = 0; attempt < 128; attempt++)
+        {
+            if (!GridFightSpecialFeatures.TryResolveOrb(orbItemId, out var candidate))
+                return false;
+            if (candidate.All(reward =>
+                    reward.Type != GridFightBonusTypeEnum.SpecificAvatar ||
+                    IsRestrictedRoleUnlockedForRun(reward.ItemId)))
+            {
+                rewards = candidate;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public bool TryAddRole(uint roleId, uint star, out GridFightRoleAcquisitionResult acquisition)
     {
         acquisition = GridFightRoleAcquisitionResult.Failed;
@@ -695,11 +706,20 @@ public sealed partial class GridFightSession
         };
         Roles.Add(role);
         RecalculateRoleSwitches();
-        acquisition = FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(true, [role], [], []));
+        // All role acquisition sources must run through the same merge pipeline.
+        // Shop purchases already did this, while orb/crystal rewards used TryAddRole()
+        // and could leave three identical copies unmerged until the next shop purchase.
+        var mergeSteps = MergeRoles(role.RoleId);
+        RecalculateRoleSwitches();
+        acquisition = FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
+            true,
+            [role],
+            mergeSteps,
+            GetFinalMergedRoles(mergeSteps)));
         return true;
     }
 
-    public bool TryAddEquipment(uint equipmentId, out GridFightEquipmentState equipment, uint source = 1)
+    public bool TryAddEquipment(uint equipmentId, out GridFightEquipmentState equipment, uint source = 1, bool isLocked = false)
     {
         equipment = null!;
         if (!GameData.GridFightEquipmentData.ContainsKey(equipmentId)) return false;
@@ -708,15 +728,17 @@ public sealed partial class GridFightSession
             UniqueId = _nextEntityUniqueId++,
             EquipmentId = equipmentId,
             Source = source,
+            IsLocked = isLocked,
         };
         Equipments.Add(equipment);
+        TryAutoEquipTrackedEquipment(equipment);
         return true;
     }
 
     public bool TryAddOrb(uint orbItemId, out GridFightOrbState orb)
     {
         orb = null!;
-        if (!GameData.GridFightOrbData.ContainsKey(orbItemId)) return false;
+        if (!GridFightSpecialFeatures.CanMaterializeOrb(orbItemId)) return false;
         orb = new GridFightOrbState
         {
             UniqueId = _nextEntityUniqueId++,
@@ -739,7 +761,7 @@ public sealed partial class GridFightSession
         {
             consumable = new GridFightConsumableState
             {
-                GroupId = _nextConsumableGroupId++,
+                GroupId = _nextEntityUniqueId++,
                 ItemId = itemId,
                 Count = count,
             };
@@ -802,7 +824,7 @@ public sealed partial class GridFightSession
         var resolved = new List<(GridFightOrbState Orb, IReadOnlyList<GridFightRewardEntry> Rewards)>();
         foreach (var orb in selected)
         {
-            if (!GridFightSpecialFeatures.TryResolveOrb(orb.OrbItemId, out var rewards)) return [];
+            if (!TryResolveOrbRewardsForCurrentRun(orb.OrbItemId, out var rewards)) return [];
             resolved.Add((orb, rewards));
         }
 
@@ -828,6 +850,34 @@ public sealed partial class GridFightSession
             RestoreRewardState(snapshot);
             return [];
         }
+    }
+
+    public IReadOnlyList<GridFightTalentOrbReward> GrantOfficialInitialRoundRewards(
+        out GridFightConsumableChange? initialConsumable)
+    {
+        initialConsumable = null;
+        if (_officialInitialRoundGranted) return [];
+
+        var nextEntityUniqueId = _nextEntityUniqueId;
+        if (!TryAddOrb(OfficialInitialOrbId, out var orb)) return [];
+        if (!TryAddConsumable(OfficialInitialConsumableId, out var consumable))
+        {
+            Orbs.Remove(orb);
+            _nextEntityUniqueId = nextEntityUniqueId;
+            return [];
+        }
+
+        _officialInitialRoundGranted = true;
+        _triggeredTalentRewards.Add((
+            OfficialInitialTalentId,
+            OfficialInitialTalentEffectId,
+            GridFightTalentRewardTrigger.PlaneEnter,
+            ChapterId));
+        initialConsumable = consumable;
+        return [new GridFightTalentOrbReward(
+            OfficialInitialTalentId,
+            OfficialInitialTalentEffectId,
+            [orb])];
     }
 
     public IReadOnlyList<GridFightTalentOrbReward> TakeTalentOrbRewards(
@@ -865,22 +915,19 @@ public sealed partial class GridFightSession
     {
         return new GridFightRewardStateSnapshot(
             _nextEntityUniqueId,
-            _nextConsumableGroupId,
             _cyrenePoemShopUnlocked,
             _silverWolfHackUnlocked,
             _traitEffectSelectEnhanceQueuePosition,
-            _silverWolfShopRoleId,
-            _silverWolfCostUpgradeAbandoned,
-            _silverWolfPendingRoleUniqueId,
-            _silverWolfPendingIsFinal,
-            _silverWolfPendingEffectGroupId,
-            [.._silverWolfPendingOptionIds],
-            _silverWolfPendingJustActivated,
-            _silverWolfDeferredRoleUniqueId,
-            _silverWolfDeferredStar,
-            _silverWolfDeferredIsFinal,
-            _silverWolfDeferredEffectGroupId,
-            [.._silverWolfDeferredOptionIds],
+            _headPlayerPending,
+            _silverWolfTraitInitialized,
+            _silverWolfUpgradeRouteClosed,
+            _silverWolfCurrentRoleId,
+            _handledHeadPlayerStates.ToList(),
+            _heroEntranceRoleUniqueId,
+            _heroEntranceRoleId,
+            _heroEntranceRemaining,
+            _heroEntrancePerfectAdvancePending,
+            _heroEntranceStateDirty,
             Gold,
             PlayerLevel,
             PlayerExp,
@@ -890,6 +937,7 @@ public sealed partial class GridFightSession
                 UniqueId = equipment.UniqueId,
                 EquipmentId = equipment.EquipmentId,
                 Source = equipment.Source,
+                IsLocked = equipment.IsLocked,
             }).ToList(),
             Orbs.Select(orb => new GridFightOrbState
             {
@@ -923,24 +971,20 @@ public sealed partial class GridFightSession
     private void RestoreRewardState(GridFightRewardStateSnapshot snapshot)
     {
         _nextEntityUniqueId = snapshot.NextEntityUniqueId;
-        _nextConsumableGroupId = snapshot.NextConsumableGroupId;
         _cyrenePoemShopUnlocked = snapshot.CyrenePoemShopUnlocked;
         _silverWolfHackUnlocked = snapshot.SilverWolfHackUnlocked;
         _traitEffectSelectEnhanceQueuePosition = snapshot.TraitEffectSelectEnhanceQueuePosition;
-        _silverWolfShopRoleId = snapshot.SilverWolfShopRoleId;
-        _silverWolfCostUpgradeAbandoned = snapshot.SilverWolfCostUpgradeAbandoned;
-        _silverWolfPendingRoleUniqueId = snapshot.SilverWolfPendingRoleUniqueId;
-        _silverWolfPendingIsFinal = snapshot.SilverWolfPendingIsFinal;
-        _silverWolfPendingEffectGroupId = snapshot.SilverWolfPendingEffectGroupId;
-        _silverWolfPendingOptionIds.Clear();
-        _silverWolfPendingOptionIds.AddRange(snapshot.SilverWolfPendingOptionIds);
-        _silverWolfPendingJustActivated = snapshot.SilverWolfPendingJustActivated;
-        _silverWolfDeferredRoleUniqueId = snapshot.SilverWolfDeferredRoleUniqueId;
-        _silverWolfDeferredStar = snapshot.SilverWolfDeferredStar;
-        _silverWolfDeferredIsFinal = snapshot.SilverWolfDeferredIsFinal;
-        _silverWolfDeferredEffectGroupId = snapshot.SilverWolfDeferredEffectGroupId;
-        _silverWolfDeferredOptionIds.Clear();
-        _silverWolfDeferredOptionIds.AddRange(snapshot.SilverWolfDeferredOptionIds);
+        _headPlayerPending = snapshot.HeadPlayerPending;
+        _silverWolfTraitInitialized = snapshot.SilverWolfTraitInitialized;
+        _silverWolfUpgradeRouteClosed = snapshot.SilverWolfUpgradeRouteClosed;
+        _silverWolfCurrentRoleId = snapshot.SilverWolfCurrentRoleId;
+        _handledHeadPlayerStates.Clear();
+        foreach (var state in snapshot.HandledHeadPlayerStates) _handledHeadPlayerStates.Add(state);
+        _heroEntranceRoleUniqueId = snapshot.HeroEntranceRoleUniqueId;
+        _heroEntranceRoleId = snapshot.HeroEntranceRoleId;
+        _heroEntranceRemaining = snapshot.HeroEntranceRemaining;
+        _heroEntrancePerfectAdvancePending = snapshot.HeroEntrancePerfectAdvancePending;
+        _heroEntranceStateDirty = snapshot.HeroEntranceStateDirty;
         Gold = snapshot.Gold;
         PlayerLevel = snapshot.PlayerLevel;
         PlayerExp = snapshot.PlayerExp;
@@ -974,22 +1018,19 @@ public sealed partial class GridFightSession
 
     private sealed record GridFightRewardStateSnapshot(
         uint NextEntityUniqueId,
-        uint NextConsumableGroupId,
         bool CyrenePoemShopUnlocked,
         bool SilverWolfHackUnlocked,
         uint? TraitEffectSelectEnhanceQueuePosition,
-        uint SilverWolfShopRoleId,
-        bool SilverWolfCostUpgradeAbandoned,
-        uint? SilverWolfPendingRoleUniqueId,
-        bool SilverWolfPendingIsFinal,
-        uint SilverWolfPendingEffectGroupId,
-        IReadOnlyList<uint> SilverWolfPendingOptionIds,
-        bool SilverWolfPendingJustActivated,
-        uint? SilverWolfDeferredRoleUniqueId,
-        uint SilverWolfDeferredStar,
-        bool SilverWolfDeferredIsFinal,
-        uint SilverWolfDeferredEffectGroupId,
-        IReadOnlyList<uint> SilverWolfDeferredOptionIds,
+        GridFightHeadPlayerPendingState? HeadPlayerPending,
+        bool SilverWolfTraitInitialized,
+        bool SilverWolfUpgradeRouteClosed,
+        uint SilverWolfCurrentRoleId,
+        IReadOnlyList<(uint UniqueId, uint RoleId, uint Star)> HandledHeadPlayerStates,
+        uint HeroEntranceRoleUniqueId,
+        uint HeroEntranceRoleId,
+        uint HeroEntranceRemaining,
+        bool HeroEntrancePerfectAdvancePending,
+        bool HeroEntranceStateDirty,
         uint Gold,
         uint PlayerLevel,
         uint PlayerExp,
@@ -1005,233 +1046,17 @@ public sealed partial class GridFightSession
         uint enhanceOptionId)
     {
         if (_traitEffectSelectEnhanceQueuePosition != queuePosition ||
-            !_silverWolfPendingOptionIds.Contains(enhanceOptionId))
+            enhanceOptionId != GridFightSpecialFeatures.SilverWolfEnhanceOptionId ||
+            HackConsole != null)
             return GridFightTraitEnhanceActivationResult.Failed;
 
-        _pendingAutoMergeRoleId = null;
-        try
-        {
-            // 终局手套：解锁骇入控制台
-            if (_silverWolfPendingIsFinal)
-            {
-                if (HackConsole != null ||
-                    !GridFightSpecialFeatures.TryResolveSilverWolfEquipmentId(out var gloveId) ||
-                    !TryAddEquipment(gloveId, out var glove, GridFightSpecialFeatures.HackEquipmentSource))
-                    return GridFightTraitEnhanceActivationResult.Failed;
-                HackConsole = new GridFightHackConsoleState { GameItemUniqueId = _nextEntityUniqueId++ };
-                _silverWolfHackUnlocked = true;
-                return new GridFightTraitEnhanceActivationResult(true, queuePosition, glove);
-            }
+        if (!GridFightSpecialFeatures.TryResolveSilverWolfEquipmentId(out var equipmentId) ||
+            !TryAddEquipment(equipmentId, out var equipment, GridFightSpecialFeatures.HackEquipmentSource))
+            return GridFightTraitEnhanceActivationResult.Failed;
 
-            // 升费：选项 SelectCondition 为 Permanent，EffectParamList[0] 指向下一档角色
-            if (enhanceOptionId == GridFightSpecialFeatures.GetCostUpgradeOptionId(SilverWolfPendingRoleId))
-            {
-                if (!TryApplySilverWolfCostUpgrade(out var upgraded, out var updatedRoles))
-                    return GridFightTraitEnhanceActivationResult.Failed;
-                _pendingAutoMergeRoleId = upgraded!.RoleId;
-                return new GridFightTraitEnhanceActivationResult(
-                    true,
-                    queuePosition,
-                    null,
-                    upgraded,
-                    ShopNeedsRefresh: true,
-                    UpdatedRoles: updatedRoles);
-            }
-
-            if (!GridFightSpecialFeatures.TryGetEquipmentIdForOption(enhanceOptionId, out var equipmentId) ||
-                !TryAddEquipment(equipmentId, out var part, GridFightSpecialFeatures.HackEquipmentSource))
-                return GridFightTraitEnhanceActivationResult.Failed;
-
-            // 本次弹窗提供过升费却选了改件，视为永久放弃升费
-            if (_silverWolfPendingOptionIds.Contains(
-                    GridFightSpecialFeatures.GetCostUpgradeOptionId(SilverWolfPendingRoleId)))
-                _silverWolfCostUpgradeAbandoned = true;
-            return new GridFightTraitEnhanceActivationResult(true, queuePosition, part);
-        }
-        finally
-        {
-            ClearSilverWolfPending();
-            // 推进 PendingQueuePosition，防止第二次弹窗复用同一位置导致卡死
-            PendingQueuePosition++;
-        }
-    }
-
-    /// <summary>当前弹窗对应角色的 RoleId，弹窗已失效时为 0。</summary>
-    private uint SilverWolfPendingRoleId =>
-        _silverWolfPendingRoleUniqueId is { } uniqueId
-            ? Roles.FirstOrDefault(role => role.UniqueId == uniqueId)?.RoleId ?? 0
-            : 0;
-
-    /// <summary>
-    /// Runs merges only after the enhance pending state has been cleared. A resulting two/three-star
-    /// Silver Wolf may enqueue the next resource-driven enhance choice.
-    /// </summary>
-    public GridFightRoleAcquisitionResult? ProcessPendingAutoMerge()
-    {
-        if (_pendingAutoMergeRoleId is not { } roleId) return null;
-        _pendingAutoMergeRoleId = null;
-        var mergeSteps = MergeRoles(roleId);
-        if (mergeSteps.Count == 0) return null;
-        RecalculateRoleSwitches();
-        return FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
-            true,
-            [],
-            mergeSteps,
-            GetFinalMergedRoles(mergeSteps)));
-    }
-
-    private bool TryApplySilverWolfCostUpgrade(
-        out GridFightRoleState? upgraded,
-        out IReadOnlyList<GridFightRoleState> updatedRoles)
-    {
-        upgraded = null;
-        updatedRoles = [];
-        if (_silverWolfCostUpgradeAbandoned) return false;
-        if (_silverWolfPendingRoleUniqueId is not { } roleUid) return false;
-        var role = Roles.FirstOrDefault(r => r.UniqueId == roleUid);
-        if (role == null) return false;
-        var currentId = role.RoleId;
-        var nextId = GridFightSpecialFeatures.GetSilverWolfNextCostRoleId(currentId);
-        if (nextId == 0 || !GameData.GridFightRoleBasicInfoData.ContainsKey(nextId)) return false;
-
-        var changed = Roles.Where(candidate => candidate.RoleId == currentId).ToList();
-        foreach (var candidate in changed)
-        {
-            candidate.RoleId = nextId;
-            candidate.Star = 1;
-        }
-        if (changed.Count == 0) return false;
-
-        _silverWolfShopRoleId = nextId;
-        RecalculateRoleSwitches();
-        upgraded = changed.FirstOrDefault(candidate => candidate.UniqueId == roleUid) ?? changed[0];
-        updatedRoles = changed;
-        return true;
-    }
-
-    /// <summary>组一次骇入弹窗：终局只给手套，否则一件改件 + 升费（放弃过则再来一件改件）。</summary>
-    private void PrepareSilverWolfEnhanceOptions(GridFightRoleState role)
-    {
-        _silverWolfPendingEffectGroupId = GridFightSpecialFeatures.GetSilverWolfEffectGroup(role.RoleId);
-        _silverWolfPendingOptionIds.Clear();
-        if (_silverWolfPendingIsFinal)
-        {
-            _silverWolfPendingOptionIds.Add(GridFightSpecialFeatures.SilverWolfEnhanceOptionId);
-            return;
-        }
-
-        var owned = Equipments.Select(equipment => equipment.EquipmentId).ToHashSet();
-        var pool = GridFightSpecialFeatures.GetHackEquipmentOptionPoolForRole(role.RoleId);
-        var left = GridFightSpecialFeatures.RollRandomHackOptionId(Random.Shared, role.RoleId, owned);
-        if (left == 0) left = pool.FirstOrDefault();
-        if (left != 0) _silverWolfPendingOptionIds.Add(left);
-
-        var costOptionId = GridFightSpecialFeatures.GetCostUpgradeOptionId(role.RoleId);
-        if (!_silverWolfCostUpgradeAbandoned && costOptionId != 0)
-        {
-            _silverWolfPendingOptionIds.Add(costOptionId);
-            return;
-        }
-
-        var alternatives = pool.Where(optionId => optionId != left).ToList();
-        if (alternatives.Count > 0)
-            _silverWolfPendingOptionIds.Add(alternatives[Random.Shared.Next(alternatives.Count)]);
-    }
-
-    private void ClearSilverWolfPending()
-    {
+        HackConsole = new GridFightHackConsoleState { GameItemUniqueId = _nextEntityUniqueId++ };
         _traitEffectSelectEnhanceQueuePosition = null;
-        _silverWolfPendingRoleUniqueId = null;
-        _silverWolfPendingIsFinal = false;
-        _silverWolfPendingEffectGroupId = 0;
-        _silverWolfPendingOptionIds.Clear();
-        _silverWolfPendingJustActivated = false;
-    }
-
-    private void ClearSilverWolfDeferred()
-    {
-        _silverWolfDeferredRoleUniqueId = null;
-        _silverWolfDeferredStar = 0;
-        _silverWolfDeferredIsFinal = false;
-        _silverWolfDeferredEffectGroupId = 0;
-        _silverWolfDeferredOptionIds.Clear();
-    }
-
-    /// <summary>是否已持有同费用档、星数≥2 的另一只银狼，用于二星重复合成时不再弹骇入。</summary>
-    private bool HasOtherSameTierTwoStarOrAbove(uint roleId, uint excludeUniqueId) =>
-        Roles.Any(r =>
-            r.UniqueId != excludeUniqueId &&
-            r.RoleId == roleId &&
-            r.Star >= 2);
-
-    private void StoreSilverWolfDeferred(GridFightRoleState role)
-    {
-        _silverWolfDeferredRoleUniqueId = role.UniqueId;
-        _silverWolfDeferredStar = role.Star;
-        _silverWolfDeferredIsFinal = _silverWolfPendingIsFinal;
-        _silverWolfDeferredEffectGroupId = _silverWolfPendingEffectGroupId;
-        _silverWolfDeferredOptionIds.Clear();
-        _silverWolfDeferredOptionIds.AddRange(_silverWolfPendingOptionIds);
-    }
-
-    private bool TryQueueSilverWolfPendingFromPrepared(GridFightRoleState role)
-    {
-        // 选项组不出来就别弹窗，否则客户端会收到空列表卡住
-        if (_traitEffectSelectEnhanceQueuePosition != null || _silverWolfPendingOptionIds.Count == 0)
-            return false;
-        _silverWolfPendingRoleUniqueId = role.UniqueId;
-        _traitEffectSelectEnhanceQueuePosition = PendingQueuePosition;
-        _silverWolfPendingJustActivated = true;
-        return true;
-    }
-
-    public bool TryPromoteDeferredSilverWolfEnhance(IReadOnlyList<uint>? movedRoleUniqueIds = null)
-    {
-        if (_traitEffectSelectEnhanceQueuePosition != null)
-            return false;
-        if (_silverWolfDeferredRoleUniqueId is not { } deferredUid)
-            return false;
-
-        var onField = Roles
-            .Where(r => GridFightSpecialFeatures.IsSilverWolfRoleId(r.RoleId) && IsActivePosition(r.Position))
-            .ToList();
-        if (onField.Count == 0)
-            return false;
-
-        var eligible = onField.Where(r => r.Star >= _silverWolfDeferredStar).ToList();
-        if (eligible.Count == 0)
-            return false;
-
-        var maxStar = eligible.Max(r => r.Star);
-        eligible = eligible.Where(r => r.Star == maxStar).ToList();
-
-        GridFightRoleState? chosen = null;
-        if (movedRoleUniqueIds is { Count: > 0 })
-        {
-            foreach (var id in movedRoleUniqueIds)
-            {
-                chosen = eligible.FirstOrDefault(r => r.UniqueId == id);
-                if (chosen != null)
-                    break;
-            }
-        }
-        chosen ??= eligible.FirstOrDefault(r => r.UniqueId == deferredUid) ?? eligible[0];
-
-        _silverWolfPendingIsFinal = _silverWolfDeferredIsFinal;
-        _silverWolfPendingEffectGroupId = _silverWolfDeferredEffectGroupId;
-        _silverWolfPendingOptionIds.Clear();
-        _silverWolfPendingOptionIds.AddRange(_silverWolfDeferredOptionIds);
-        if (_silverWolfPendingIsFinal && HackConsole != null)
-        {
-            ClearSilverWolfDeferred();
-            return false;
-        }
-
-        if (!TryQueueSilverWolfPendingFromPrepared(chosen))
-            return false;
-
-        ClearSilverWolfDeferred();
-        return true;
+        return new GridFightTraitEnhanceActivationResult(true, queuePosition, equipment);
     }
 
     public GridFightHackOptionResult UseHackOption(uint optionId, uint enemyHpPercent)
@@ -1453,7 +1278,7 @@ public sealed partial class GridFightSession
 
     public GridFightRoleAcquisitionResult BuyGoods(IReadOnlyList<uint> indices)
     {
-        if (Phase != GridFightSessionPhase.Preparing || indices.Count == 0 || indices.Distinct().Count() != indices.Count)
+        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection || indices.Count == 0 || indices.Distinct().Count() != indices.Count)
             return GridFightRoleAcquisitionResult.Failed;
         var slots = indices.Select(index => Shop.FirstOrDefault(slot => slot.Index == index)).ToList();
         if (slots.Any(slot => slot == null || slot.SoldOut || slot.SpecialGoodsId != 0))
@@ -1462,6 +1287,7 @@ public sealed partial class GridFightSession
         if (cost > Gold) return GridFightRoleAcquisitionResult.Failed;
 
         Gold -= (uint)cost;
+        PrepareTwinPrimesRewards(slots.OfType<GridFightShopSlot>().Select(slot => slot.RoleId));
         var acquiredRoles = new List<GridFightRoleState>();
         var mergeSteps = new List<GridFightRoleMergeStep>();
         foreach (var slot in slots.OfType<GridFightShopSlot>())
@@ -1476,7 +1302,7 @@ public sealed partial class GridFightSession
             };
             Roles.Add(role);
             acquiredRoles.Add(role);
-            mergeSteps.AddRange(MergeRoles(role.RoleId, role));
+            mergeSteps.AddRange(MergeRoles(role.RoleId));
         }
         RecalculateRoleSwitches();
         return FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
@@ -1488,10 +1314,11 @@ public sealed partial class GridFightSession
 
     public GridFightSessionChange RecycleRole(uint uniqueId)
     {
-        if (Phase != GridFightSessionPhase.Preparing) return GridFightSessionChange.Failed;
+        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection) return GridFightSessionChange.Failed;
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
         if (role == null) return GridFightSessionChange.Failed;
-        Gold += _catalog.GetSellPrice(role.RoleId, role.Star);
+        AddGold(_catalog.GetSellPrice(role.RoleId, role.Star));
+        DestroyDiceFilledOnRole(role);
         Roles.Remove(role);
         RecalculateRoleSwitches();
         var promoted = PromoteOverflowItemsToBench();
@@ -1511,25 +1338,36 @@ public sealed partial class GridFightSession
 
     private void AddPlayerExp(uint amount)
     {
+        var previousLevel = PlayerLevel;
         PlayerExp += amount;
         while (GameDataHasNextLevel() && PlayerExp >= _catalog.GetPlayerLevel(PlayerLevel).LevelUpExp)
         {
             PlayerExp -= _catalog.GetPlayerLevel(PlayerLevel).LevelUpExp;
             PlayerLevel++;
         }
+        if (PlayerLevel != previousLevel)
+            QueueMarketVitalitySavedValue(109);
     }
 
     public GridFightSessionChange UpdatePositions(IReadOnlyList<(uint UniqueId, uint Position)> updates)
     {
-        if (Phase != GridFightSessionPhase.Preparing || updates.Count == 0 ||
+        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection || updates.Count == 0 ||
             updates.Select(update => update.UniqueId).Distinct().Count() != updates.Count)
             return GridFightSessionChange.Failed;
         var rolesById = Roles.ToDictionary(role => role.UniqueId);
         var forgeItemsById = ForgeItems.ToDictionary(item => item.UniqueId);
+        if (updates.Any(update => rolesById.ContainsKey(update.UniqueId) &&
+                                  IsHeroEntrancePositionBanned(update.UniqueId, update.Position)))
+            return GridFightSessionChange.Failed with
+            {
+                FailureRetcode = HeroEntrancePositionBanRetcode,
+            };
         if (updates.Any(update =>
                 rolesById.ContainsKey(update.UniqueId) == forgeItemsById.ContainsKey(update.UniqueId) ||
                 rolesById.ContainsKey(update.UniqueId) && !IsValidPosition(update.Position) ||
-                forgeItemsById.ContainsKey(update.UniqueId) && !IsBenchPosition(update.Position)))
+                forgeItemsById.ContainsKey(update.UniqueId) && !IsBenchPosition(update.Position) ||
+                PepeNpc != null && update.Position == PepeNpc.Position ||
+                AstaDogNpc != null && update.Position == AstaDogNpc.Position))
             return GridFightSessionChange.Failed;
 
         var rolePositions = Roles.ToDictionary(role => role.UniqueId, role => role.Position);
@@ -1542,6 +1380,8 @@ public sealed partial class GridFightSession
         var occupied = rolePositions.Values.Concat(forgePositions.Values)
             .Where(position => position != 0)
             .ToList();
+        if (PepeNpc != null) occupied.Add(PepeNpc.Position);
+        if (AstaDogNpc != null) occupied.Add(AstaDogNpc.Position);
         if (occupied.Distinct().Count() != occupied.Count)
             return GridFightSessionChange.Failed;
         if (rolePositions.Values.Count(IsActivePosition) > MaxActiveRoles) return GridFightSessionChange.Failed;
@@ -1568,15 +1408,97 @@ public sealed partial class GridFightSession
         var promoted = PromoteOverflowItemsToBench();
         updatedRoles.AddRange(promoted.Roles.Where(role => updatedRoleIds.Add(role.UniqueId)));
         updatedForgeItems.AddRange(promoted.ForgeItems.Where(item => updatedForgeItemIds.Add(item.UniqueId)));
-        // 银狼待生效：有角色进入出战席时尝试弹出骇入
-        TryPromoteDeferredSilverWolfEnhance(updatedRoles.Select(role => role.UniqueId).ToList());
-        return new GridFightSessionChange(true, [], [], updatedRoles, updatedForgeItems);
+        var headPlayer = RefreshHeadPlayerAfterRoleStateChange();
+        RefreshFateDivinerAfterRoleStateChange();
+        return new GridFightSessionChange(true, [], [], updatedRoles, updatedForgeItems)
+        {
+            SilverWolfTraitActivated = headPlayer.TraitActivated,
+            HeadPlayerPendingStarted = headPlayer.PendingStarted,
+        };
+    }
+
+    public void PrepareMortenaxBladeBattleEffects()
+    {
+        _mortenaxBladeBattleEffects = [];
+        var effects = new List<GridFightMortenaxBladeBattleEffect>();
+        foreach (var role in Roles.Where(role =>
+                     role.RoleId == MortenaxBladeRoleId && IsActivePosition(role.Position)))
+        {
+            var equipped = GetEquippedEquipment(role).ToList();
+            uint equipmentId;
+            uint replacedUniqueId = 0;
+
+            if (equipped.Count >= 3)
+            {
+                // Official talent: when already wearing 3 items, one item is temporarily promoted
+                // to its privileged counterpart for this battle only.
+                var upgradable = equipped
+                    .Where(item => GameData.GridFightEquipUpgradeData.TryGetValue(item.EquipmentId, out var upgrade) &&
+                                   upgrade.UpgradeID != 0 &&
+                                   GameData.GridFightEquipmentData.ContainsKey(upgrade.UpgradeID))
+                    .ToList();
+                if (upgradable.Count == 0) continue;
+                var selected = upgradable[Random.Shared.Next(upgradable.Count)];
+                equipmentId = GameData.GridFightEquipUpgradeData[selected.EquipmentId].UpgradeID;
+                replacedUniqueId = selected.UniqueId;
+            }
+            else
+            {
+                if (!GameData.GridFightRoleBasicInfoData.TryGetValue(role.RoleId, out var basic)) continue;
+                equipmentId = _catalog.RollMortenaxBladeTemporaryEquipment(role.RoleId, basic.FrontBackType);
+                if (equipmentId == 0) continue;
+            }
+
+            // Captures show the TraitEffect lifecycle only on the first activation in a run.
+            var needsTraitSync = !_mortenaxBladeTraitEffectInitialized && effects.Count == 0;
+            var temporaryInstanceId = needsTraitSync ? _nextEntityUniqueId++ : 0u;
+            effects.Add(new GridFightMortenaxBladeBattleEffect(
+                role.UniqueId,
+                equipmentId,
+                replacedUniqueId,
+                temporaryInstanceId,
+                needsTraitSync));
+        }
+        _mortenaxBladeBattleEffects = effects;
+    }
+
+    public IReadOnlyList<(uint EquipmentId, uint UniqueId)> GetBattleEquipment(GridFightRoleState role)
+    {
+        var result = GetEquippedEquipment(role)
+            .Select(item => (item.EquipmentId, item.UniqueId))
+            .ToList();
+        var effect = _mortenaxBladeBattleEffects.FirstOrDefault(item => item.RoleUniqueId == role.UniqueId);
+        if (effect == null) return result;
+
+        if (effect.ReplacedEquipmentUniqueId != 0)
+        {
+            var index = result.FindIndex(item => item.UniqueId == effect.ReplacedEquipmentUniqueId);
+            if (index >= 0) result[index] = (effect.EquipmentId, 0u);
+        }
+        else
+        {
+            // Official battle packets carry temporary equipment without a persistent UniqueId.
+            result.Add((effect.EquipmentId, 0u));
+        }
+        return result;
+    }
+
+    public void CompleteMortenaxBladeTraitEffectSync()
+    {
+        if (_mortenaxBladeBattleEffects.Any(effect => effect.NeedsTraitEffectSync))
+            _mortenaxBladeTraitEffectInitialized = true;
+    }
+
+    public void ClearMortenaxBladeBattleEffects()
+    {
+        _mortenaxBladeBattleEffects = [];
     }
 
     public bool EnterBattle()
     {
         var activeRoleCount = Roles.Count(role => IsActivePosition(role.Position));
         if (Phase != GridFightSessionPhase.Preparing ||
+            HasPendingSelection ||
             !IsCombatNode(CurrentNode) ||
             BattlePlan == null ||
             activeRoleCount == 0 ||
@@ -1595,7 +1517,10 @@ public sealed partial class GridFightSession
         {
             BattlesFinished++;
             KeepWinCount = 0;
-            EnterPreparingPhase();
+            RecordHeroEntranceBattleResult(false);
+            // Keep battle-only Mortenax state alive until the manager sends the official
+            // post-battle TraitEffectUpdate. The manager clears it immediately afterward.
+            Phase = GridFightSessionPhase.Preparing;
             return GridFightBattleSettlementResult.Failed;
         }
 
@@ -1634,9 +1559,15 @@ public sealed partial class GridFightSession
         IReadOnlyList<GridFightTalentOrbReward> talentRewards = nodeType == GridFightNodeTypeEnum.Boss
             ? TakeTalentOrbRewards(GridFightTalentRewardTrigger.BossClear, chapterId)
             : [];
+        ScheduleRoughPepeDrop(battleEndedNormally);
+        RecordHeroEntranceBattleResult(isPerfectFinish);
+        PrepareGalaxyScholarBattleReward();
+        ApplyDotContractBattleStatistics(statistics);
+        RecordFateDivinerBattleParticipation();
         var routeAdvanced = AdvanceToNextNode();
         BattlesFinished++;
         LastBattleStatistics = statistics;
+        ApplyDiceEquipmentRefills();
         if (routeAdvanced)
         {
             Phase = GridFightSessionPhase.AwaitingBattleRound;
@@ -1644,7 +1575,7 @@ public sealed partial class GridFightSession
         }
         else
         {
-            EnterPreparingPhase();
+            Phase = GridFightSessionPhase.Preparing;
         }
         return new GridFightBattleSettlementResult(
             true,
@@ -1748,7 +1679,7 @@ public sealed partial class GridFightSession
 
     public void AbortBattleStart()
     {
-        // 开战构建失败：只回退阶段，不推进备战计数、不重随骰子
+        ClearMortenaxBladeBattleEffects();
         if (Phase == GridFightSessionPhase.InBattle) Phase = GridFightSessionPhase.Preparing;
     }
 
@@ -1759,101 +1690,6 @@ public sealed partial class GridFightSession
         return true;
     }
 
-    /// <summary>进入备战阶段：刷新 Portal 阶段效果，并结算装备的周期收益。</summary>
-    private void EnterPreparingPhase()
-    {
-        Phase = GridFightSessionPhase.Preparing;
-        _preparationPhaseCount++;
-        RollRotationShopRarity();
-
-        // 每个节点：随便骰子 / 特权随便骰子刷新随机装备填充
-        ApplyDiceEquipmentRefills();
-        GrantEquippedPeriodicGold();
-    }
-
-    private void RollRotationShopRarity()
-    {
-        _rotationTargetRarityIndex = null;
-        if (!_catalog.IsRotationPortal(SelectedPortalId)) return;
-        var rarityCount = _catalog.GetShopRarityWeights(PlayerLevel).Count;
-        if (rarityCount > 0)
-            _rotationTargetRarityIndex = Random.Shared.Next(rarityCount);
-    }
-
-    /// <summary>
-    /// Doubles the selected rarity for the current preparation phase. Remaining rarities share the
-    /// leftover probability in their original ratio; the roll weights retain fractions while the
-    /// protocol-facing weights are rounded to whole percentages.
-    /// </summary>
-    private RotationShopWeights? BuildRotationShopWeights()
-    {
-        if (!_catalog.IsRotationPortal(SelectedPortalId) ||
-            _rotationTargetRarityIndex is not { } targetIndex)
-            return null;
-
-        var baseWeights = _catalog.GetShopRarityWeights(PlayerLevel).ToList();
-        if (targetIndex < 0 || targetIndex >= baseWeights.Count) return null;
-        var total = baseWeights.Sum(weight => (double)weight);
-        if (total <= 0) return null;
-
-        var doubledTargetWeight = baseWeights[targetIndex] * 2.0;
-        var rollWeights = new double[baseWeights.Count];
-        var displayWeights = new uint[baseWeights.Count];
-        if (doubledTargetWeight >= total)
-        {
-            rollWeights[targetIndex] = total;
-            displayWeights[targetIndex] = RoundPercentage(doubledTargetWeight, total);
-        }
-        else
-        {
-            rollWeights[targetIndex] = doubledTargetWeight;
-            var otherBaseTotal = total - baseWeights[targetIndex];
-            for (var index = 0; index < baseWeights.Count; index++)
-            {
-                if (index == targetIndex) continue;
-                rollWeights[index] = otherBaseTotal <= 0
-                    ? 0
-                    : baseWeights[index] * (total - doubledTargetWeight) / otherBaseTotal;
-            }
-            for (var index = 0; index < rollWeights.Length; index++)
-                displayWeights[index] = RoundPercentage(rollWeights[index], total);
-        }
-
-        return new RotationShopWeights(rollWeights, displayWeights);
-    }
-
-    private static uint RoundPercentage(double weight, double total)
-    {
-        if (total <= 0 || weight <= 0) return 0;
-        return (uint)Math.Round(weight * 100.0 / total, MidpointRounding.AwayFromZero);
-    }
-
-    private sealed record RotationShopWeights(
-        IReadOnlyList<double> RollWeights,
-        IReadOnlyList<uint> DisplayWeights);
-
-    /// <summary>已穿戴的产金装备（财富宝钻）按 ParamList 的「每 N 个备战阶段给 M 金」结算。</summary>
-    private void GrantEquippedPeriodicGold()
-    {
-        var equippedIds = Roles
-            .SelectMany(role => role.EquippedEquipmentUniqueIds)
-            .Select(uniqueId => Equipments.FirstOrDefault(item => item.UniqueId == uniqueId)?.EquipmentId ?? 0)
-            .Where(id => id != 0);
-
-        uint gold = 0;
-        foreach (var equipmentId in equippedIds)
-        {
-            var config = GameData.GridFightEquipmentData.GetValueOrDefault(equipmentId);
-            if (config?.EquipFunc != GridFightEquipFuncTypeEnum.AvatarMaxNumberAdd) continue;
-            var interval = (uint)Math.Max(0, config.ParamList.ElementAtOrDefault(0)?.Value ?? 0);
-            var amount = (uint)Math.Max(0, config.ParamList.ElementAtOrDefault(1)?.Value ?? 0);
-            if (interval == 0 || amount == 0) continue;
-            if (_preparationPhaseCount % interval != 0) continue;
-            gold += amount;
-        }
-        if (gold > 0) AddGold(gold);
-    }
-
     public bool RefreshShop(bool chargeGold)
     {
         if (chargeGold &&
@@ -1861,68 +1697,42 @@ public sealed partial class GridFightSession
              Gold < _catalog.RefreshCost ||
              Shop.Any(slot => slot.SpecialGoodsId != 0 && !slot.SoldOut)))
             return false;
-        if (chargeGold) Gold -= _catalog.RefreshCost;
-        Shop.Clear();
-        var excluded = GetShopExcludedRoleIds();
-        var portalEffects = _catalog.GetPortalRuntimeEffects(SelectedPortalId);
-        var rolled = _catalog.RollShop(
-            PlayerLevel,
-            excluded,
-            GetShopExtraCandidateRoleIds(excluded),
-            portalEffects.ShopBoostTraitIds,
-            portalEffects.ShopBoostMultiplier,
-            ShopRarityRollWeights);
-        var roleIds = rolled.Select(role => role.ID).ToList();
-        for (var index = 0; index < roleIds.Count; index++)
+        if (!chargeGold && _shopLocked && Shop.Count > 0) return true;
+        if (chargeGold)
         {
-            var roleId = roleIds[index];
+            Gold -= _catalog.RefreshCost;
+            _shopLocked = false;
+        }
+        Shop.Clear();
+        var boostedTraitId = ConceptStockBoostedTraitId;
+        var roles = _catalog.RollShop(
+            PlayerLevel,
+            _silverWolfCurrentRoleId == 0 ? GridFightSpecialFeatures.SilverWolfThreeCostRoleId : _silverWolfCurrentRoleId,
+            HasRotationPortal ? GetEffectiveShopRarityWeights(_catalog.GetShopRarityWeights(PlayerLevel)) : null,
+            boostedTraitId,
+            ConceptStockShopWeightMultiplier,
+            _temporarilyUnlockedRestrictedRoleIds,
+            GetMaxStarExcludedRoleIds());
+        for (var index = 0; index < roles.Count; index++)
+        {
+            var star = ResolveMarketVitalityStar(roles[index].ID);
             Shop.Add(new GridFightShopSlot
             {
                 Index = (uint)index,
-                RoleId = roleId,
-                Price = _catalog.GetBuyPrice(roleId),
+                RoleId = roles[index].ID,
+                Star = star,
+                Price = _catalog.GetBuyPrice(roles[index].ID, star),
             });
         }
         return true;
     }
 
-    /// <summary>银狼 RoleSavedValueList 为空被 RolePool 过滤掉，按当前费用档补进候选池参与稀有度抽取。</summary>
-    private IReadOnlyList<GridFightRoleBasicInfoExcel> GetShopExtraCandidateRoleIds(HashSet<uint> excluded)
-    {
-        var roleId = SilverWolfShopRoleId;
-        if (roleId == 0 || excluded.Contains(roleId)) return [];
-        if (_catalog.RolePool.Any(row => row.ID == roleId)) return [];
-        var row = GameData.GridFightRoleBasicInfoData.GetValueOrDefault(roleId);
-        return row is { IsInPool: true } ? [row] : [];
-    }
-
-    /// <summary>收集局内已达到三星的角色 ID；若存在切换组，整组一并排除。</summary>
     private HashSet<uint> GetMaxStarExcludedRoleIds()
     {
-        const uint maxStar = 3;
-        var excluded = new HashSet<uint>();
-        foreach (var role in Roles)
-        {
-            if (role.Star < maxStar) continue;
-            excluded.Add(role.RoleId);
-            var group = _catalog.RoleSwitchGroups
-                .FirstOrDefault(g => g.RoleIdList.Contains(role.RoleId));
-            if (group == null) continue;
-            foreach (var id in group.RoleIdList)
-                excluded.Add(id);
-        }
-        return excluded;
-    }
-
-    /// <summary>商店排除：满三星角色 + 银狼非当前费用档的其它 ID。</summary>
-    private HashSet<uint> GetShopExcludedRoleIds()
-    {
-        var excluded = GetMaxStarExcludedRoleIds();
-        foreach (var id in GridFightSpecialFeatures.SilverWolfRoleChain)
-        {
-            if (id != SilverWolfShopRoleId)
-                excluded.Add(id);
-        }
+        var excluded = Roles.Where(role => role.Star >= 3).Select(role => role.RoleId).ToHashSet();
+        foreach (var group in _catalog.RoleSwitchGroups)
+            if (group.RoleIdList.Any(excluded.Contains))
+                excluded.UnionWith(group.RoleIdList);
         return excluded;
     }
 
@@ -1955,43 +1765,29 @@ public sealed partial class GridFightSession
 
     private void PrepareSupplyOffer()
     {
-        SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount)
+        SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount, _temporarilyUnlockedRestrictedRoleIds)
             .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
             .ToList();
         SupplyRerollCount = 0;
     }
 
-    private void ApplyPortalEntryEquipments(GridFightPortalRuntimeEffects effects)
+    private void MaterializeInitialRoles()
     {
-        foreach (var equipmentId in effects.EntryEquipmentIds)
-            TryAddEquipment(equipmentId, out _);
-    }
-
-    private void MaterializeInitialRoles(IReadOnlyCollection<uint>? entryRoleIds = null)
-    {
-        if (Roles.Count > 0) return;
-        var roles = _catalog.RollInitialRoles(checked((int)_catalog.InitialRoleCount)).ToList();
-        if (entryRoleIds is { Count: > 0 })
-            foreach (var roleId in entryRoleIds)
-            {
-                if (roles.Any(role => role.ID == roleId) ||
-                    !GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var role) ||
-                    !GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | 1))
-                    continue;
-                roles.Add(role);
-            }
-        for (var index = 0; index < roles.Count; index++)
+        if (_initialRolesMaterialized) return;
+        _initialRolesMaterialized = true;
+        var conceptRoleIds = RollConceptStockInitialRoleIds();
+        var roleIds = conceptRoleIds ?? _catalog.RollInitialRoles(OfficialInitialRoleCount, _temporarilyUnlockedRestrictedRoleIds).Select(role => role.ID).ToList();
+        foreach (var roleId in roleIds)
             Roles.Add(new GridFightRoleState
             {
                 UniqueId = _nextEntityUniqueId++,
-                RoleId = roles[index].ID,
-                Star = 1,
-                Position = 14u + (uint)index,
+                RoleId = roleId,
+                Position = GetFreeBenchPosition(),
             });
         RecalculateRoleSwitches();
     }
 
-    private List<GridFightRoleMergeStep> MergeRoles(uint roleId, GridFightRoleState? preferred = null)
+    private List<GridFightRoleMergeStep> MergeRoles(uint roleId)
     {
         var steps = new List<GridFightRoleMergeStep>();
         var switchGroup = _catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(roleId));
@@ -2005,51 +1801,57 @@ public sealed partial class GridFightSession
                 .FirstOrDefault(grouping => grouping.Count() >= 3 &&
                     GameData.GridFightRoleStarData.ContainsKey(starRoleId << 4 | (grouping.Key + 1)));
             if (group == null) return steps;
-            var merge = SelectMergeParticipants(group.ToList(), preferred);
-            var retained = SelectMergeAnchor(merge);
-            foreach (var role in merge.Where(role => role != retained))
-                role.EquippedEquipmentUniqueIds.Clear();
-            foreach (var role in merge) Roles.Remove(role);
+
+            // Official GridFight merge packets do not anchor the upgrade on the newly acquired
+            // third copy. The upgraded role keeps the state of an existing deployed copy: its
+            // board position is preserved and equipment remains attached to the upgraded entity.
+            // Prefer foreground -> background -> bench, then an equipped copy, then the oldest
+            // entity. This also keeps chained 1->2->3 star merges on the deployed copy whenever
+            // one participates in the next merge.
+            var candidates = group.ToList();
+            var retained = candidates
+                .OrderBy(GetMergePositionPriority)
+                .ThenByDescending(role => role.EquippedEquipmentUniqueIds.Count)
+                .ThenBy(role => role.UniqueId)
+                .First();
+            var merge = new[] { retained }
+                .Concat(candidates
+                    .Where(role => role != retained)
+                    .OrderBy(role => role.UniqueId)
+                    .Take(2))
+                .ToList();
+
+            foreach (var role in merge)
+            {
+                if (role != retained) DestroyDiceFilledOnRole(role);
+                Roles.Remove(role);
+            }
             var mergedRole = new GridFightRoleState
             {
                 UniqueId = _nextEntityUniqueId++,
                 RoleId = roleId,
                 Star = group.Key + 1,
-                Position = retained.Position,
+                Position = ResolveHeroEntranceMergedPosition(merge, retained.Position),
             };
             mergedRole.EquippedEquipmentUniqueIds.AddRange(retained.EquippedEquipmentUniqueIds);
             Roles.Add(mergedRole);
-            preferred = mergedRole;
+            var removedUniqueIds = merge.Select(role => role.UniqueId).ToList();
+            RebindHeroEntranceAfterMerge(removedUniqueIds, mergedRole);
             steps.Add(new GridFightRoleMergeStep(
-                merge.Select(role => role.UniqueId).ToList(),
+                removedUniqueIds,
                 mergedRole));
         }
     }
 
-    private static List<GridFightRoleState> SelectMergeParticipants(
-        IReadOnlyList<GridFightRoleState> candidates,
-        GridFightRoleState? preferred)
+    private static int GetMergePositionPriority(GridFightRoleState role)
     {
-        if (candidates.Count <= 3) return candidates.ToList();
-        var selected = new List<GridFightRoleState>(3);
-        if (preferred != null && candidates.Contains(preferred))
-            selected.Add(preferred);
-        selected.AddRange(candidates
-            .Where(role => !selected.Contains(role))
-            .OrderByDescending(role => IsActivePosition(role.Position))
-            .ThenByDescending(role => role.EquippedEquipmentUniqueIds.Count)
-            .ThenBy(role => role.UniqueId)
-            .Take(3 - selected.Count));
-        return selected;
-    }
-
-    private static GridFightRoleState SelectMergeAnchor(IReadOnlyList<GridFightRoleState> roles)
-    {
-        return roles
-            .OrderByDescending(role => IsActivePosition(role.Position))
-            .ThenByDescending(role => role.EquippedEquipmentUniqueIds.Count)
-            .ThenBy(role => role.UniqueId)
-            .First();
+        return role.Position switch
+        {
+            >= 1 and <= 4 => 0,  // foreground: never kick an on-field role back to the bench
+            >= 5 and <= 13 => 1, // active background slot
+            >= 14 => 2,          // bench
+            _ => 3,
+        };
     }
 
     private IReadOnlyList<GridFightRoleState> GetFinalMergedRoles(
@@ -2064,6 +1866,14 @@ public sealed partial class GridFightSession
     private GridFightRoleAcquisitionResult FinalizeRoleAcquisition(GridFightRoleAcquisitionResult acquisition)
     {
         if (!acquisition.Success) return acquisition;
+
+        // Restricted roles are only filtered from shop/crystal/supply sources. Once any other
+        // source successfully grants one (GM, investment, portal, equipment effect, etc.), the
+        // role is temporarily unlocked for the rest of this GridFight run. Shop/supply/orb paths
+        // also pass through here, but they can only reach it after the role was already unlocked.
+        foreach (var role in acquisition.AcquiredRoles)
+            UnlockRestrictedRoleForRun(role.RoleId);
+
         var acquiredStars = acquisition.AcquiredRoles
             .Concat(acquisition.MergeSteps.Select(step => step.AddedRole))
             .Concat(acquisition.FinalMergedRoles)
@@ -2079,47 +1889,12 @@ public sealed partial class GridFightSession
             effects.Add(GridFightRoleUnlockEffect.CyrenePoemShop);
         }
 
-        // 银狼 LV999：分段选项池；出战席立即弹窗，否则待生效
-        if (_traitEffectSelectEnhanceQueuePosition == null)
-        {
-            var swMerged = acquisition.MergeSteps
-                .Select(step => step.AddedRole)
-                .Where(role => Roles.Contains(role) &&
-                               GridFightSpecialFeatures.IsSilverWolfRoleId(role.RoleId))
-                .ToList();
-            if (swMerged.Count > 0)
-            {
-                var role = swMerged[^1];
-                var isFinal =
-                    role.RoleId == GridFightSpecialFeatures.SilverWolfTopRoleId &&
-                    role.Star >= 3 &&
-                    HackConsole == null;
-
-                // 已有同费用二星时，再次合成第二个二星不触发（3/4/5 费均适用；三星终局除外）
-                var alreadyOffered = !isFinal &&
-                                     role.Star == 2 &&
-                                     HasOtherSameTierTwoStarOrAbove(role.RoleId, role.UniqueId);
-                if (!alreadyOffered)
-                {
-                    if (GridFightSpecialFeatures.GetSilverWolfCostTier(role.RoleId) >
-                        GridFightSpecialFeatures.GetSilverWolfCostTier(SilverWolfShopRoleId))
-                        _silverWolfShopRoleId = role.RoleId;
-
-                    _silverWolfPendingIsFinal = isFinal;
-                    PrepareSilverWolfEnhanceOptions(role);
-
-                    if (IsActivePosition(role.Position))
-                    {
-                        if (TryQueueSilverWolfPendingFromPrepared(role))
-                            effects.Add(GridFightRoleUnlockEffect.SilverWolfHackConsole);
-                    }
-                    else
-                    {
-                        StoreSilverWolfDeferred(role);
-                    }
-                }
-            }
-        }
+        var headPlayer = RefreshHeadPlayerAfterRoleStateChange();
+        RefreshFateDivinerAfterRoleStateChange();
+        if (headPlayer.TraitActivated)
+            effects.Add(GridFightRoleUnlockEffect.SilverWolfTraitActivation);
+        if (headPlayer.PendingStarted)
+            effects.Add(GridFightRoleUnlockEffect.SilverWolfHeadPlayerPending);
 
         return effects.Count == 0 ? acquisition : acquisition with { UnlockEffects = effects };
     }
@@ -2156,6 +1931,7 @@ public sealed partial class GridFightSession
         ChapterId = next.ChapterId;
         SectionId = next.SectionId;
         PrepareCurrentNode();
+        OnInvestmentNodeEntered();
         RefreshShop(false);
         return true;
     }
@@ -2170,7 +1946,13 @@ public sealed partial class GridFightSession
             EncounterOptions = _catalog.RollEncounterOptions(CurrentNode, CampIds, DivisionId);
             return;
         }
-        BattlePlan = _catalog.RollBattlePlan(CurrentNode, CampIds, RewardCampId, Bosses);
+        BattlePlan = _catalog.RollBattlePlan(
+            CurrentNode,
+            CampIds,
+            RewardCampId,
+            Bosses,
+            SelectedPortalId,
+            _temporarilyUnlockedRestrictedRoleIds);
     }
 
     private uint GetFreeBenchPosition()
