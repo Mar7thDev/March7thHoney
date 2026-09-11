@@ -213,40 +213,29 @@ public class EntryPoint
 
         GenerateLogMap();
 
-        // Load the game data
+        var loadedFromResources = false;
         if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
         {
             try
             {
-                var isCache = false;
                 if (File.Exists(ResourceCache.CachePath))
-                    if (ConfigManager.Config.ServerOption.UseCache)
+                {
+                    Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
+                        I18NManager.Translate("Word.Cache")));
+                    if (!ResourceCache.LoadCache())
                     {
-                        Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
-                            I18NManager.Translate("Word.Cache")));
-                        isCache = ResourceCache.LoadCache();
-
-                        // Clear all game data if cache loading fails
-                        if (!isCache)
-                        {
-                            ResourceCache.ClearGameData();
-                            Logger.Warn(I18NManager.Translate("Server.ServerInfo.CacheLoadFailed"));
-                        }
+                        ResourceCache.ClearGameData();
+                        throw new InvalidDataException("Resource cache is invalid. Delete it before restarting to rebuild from Resources.");
                     }
-                    else
-                    {
-                        File.Delete(ResourceCache.CachePath);
-                        Logger.Warn(I18NManager.Translate("Server.ServerInfo.CacheLoadSkip"));
-                    }
-
-                if (!isCache)
+                }
+                else
                 {
                     Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
                         I18NManager.Translate("Word.GameData")));
                     ResourceManager.LoadGameData();
+                    loadedFromResources = true;
 
-                    // Generate the binary cache synchronously so it is guaranteed to be written before
-                    // startup completes (otherwise a fire-and-forget save can be lost on early exit).
+                    // Finish writing the cache before startup completes.
                     if (ConfigManager.Config.ServerOption.UseCache && ResourceCache.IsComplete)
                     {
                         Logger.Warn(I18NManager.Translate("Server.ServerInfo.WaitingItem",
@@ -330,8 +319,8 @@ public class EntryPoint
             status = PlayerStatusEnum.Offline;
         };
 
-        // generate the handbook
-        if (ConfigManager.Config.ServerOption.ServerConfig.RunGateway)
+        // Generate handbooks only when this startup reads raw resources.
+        if (loadedFromResources)
         {
             var handbookThread = new Thread(HandbookGenerator.GenerateAll)
             {

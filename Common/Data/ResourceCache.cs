@@ -49,9 +49,7 @@ public static class ResourceCache
         {
             var bytes = File.ReadAllBytes(CachePath);
 
-            // Legacy uncompressed caches (raw MemoryPack) lack the gzip magic (0x1F 0x8B). Reject them so
-            // the caller rebuilds in the current compressed format instead of feeding a non-gzip blob to
-            // the decoder. A corrupt/truncated cache likewise falls through to a clean rebuild below.
+            // Reject uncompressed or truncated caches before deserializing.
             if (bytes.Length < 2 || bytes[0] != 0x1F || bytes[1] != 0x8B) return false;
 
             using var input = new MemoryStream(bytes);

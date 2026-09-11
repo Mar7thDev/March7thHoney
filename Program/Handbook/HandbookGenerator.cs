@@ -13,6 +13,31 @@ public static class HandbookGenerator
 {
     private static string HandbookDir => Path.Combine(ConfigManager.Config.Path.ConfigPath, "Handbook");
 
+    // the client names simplified Chinese "CN"; the server and older res trees name it "CHS"
+    private static readonly Dictionary<string, string[]> LanguageAliases = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["CHS"] = ["CHS", "CN"],
+        ["CN"] = ["CHS", "CN"]
+    };
+
+    private static string[] AliasesOf(string lang)
+    {
+        return LanguageAliases.TryGetValue(lang, out var aliases) ? aliases : [lang];
+    }
+
+    // the first alias is the server-side spelling, which i18n and the handbook filename both use
+    private static string NormalizeLanguage(string lang)
+    {
+        return AliasesOf(lang)[0];
+    }
+
+    private static FileInfo? ResolveTextMap(string lang)
+    {
+        return AliasesOf(lang)
+            .Select(alias => new FileInfo($"{ConfigManager.Config.Path.ResourcePath}/TextMap/TextMap{alias}.json"))
+            .FirstOrDefault(file => file.Exists);
+    }
+
     public static void GenerateAll()
     {
         var config = ConfigManager.Config;
@@ -24,12 +49,16 @@ public static class HandbookGenerator
             return;
 
         Dictionary<BigInteger, string>? sharedFallback = null;
+        var generated = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var langFile in directory.GetFiles())
         {
             if (langFile.Extension != ".json") continue;
             if (langFile.Name.StartsWith("TextMapMain", StringComparison.OrdinalIgnoreCase)) continue;
-            var lang = langFile.Name.Replace("TextMap", "").Replace(".json", "");
+
+            // a res tree ships only one spelling per language, so fold both onto a single handbook
+            var lang = NormalizeLanguage(langFile.Name.Replace("TextMap", "").Replace(".json", ""));
+            if (!generated.Add(lang)) continue;
 
             // Check if handbook needs to regenerate
             var handbookPath = Path.Combine(HandbookDir, $"Handbook {lang}.txt");
@@ -56,33 +85,35 @@ public static class HandbookGenerator
     private static void Generate(string lang, ref Dictionary<BigInteger, string>? sharedFallback)
     {
         var config = ConfigManager.Config;
-        var handbookLang = lang == "CN" ? "CHS" : lang;
-        var textMapPath = config.Path.ResourcePath + "/TextMap/TextMap" + lang + ".json";
-        var fallbackTextMapPath = config.Path.ResourcePath + "/TextMap/TextMap" + config.ServerOption.FallbackLanguage +
-                                  ".json";
-        if (!File.Exists(textMapPath))
+        var handbookLang = NormalizeLanguage(lang);
+        var textMapFile = ResolveTextMap(handbookLang);
+        if (textMapFile == null)
         {
-            Logger.GetByClassName().Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", textMapPath,
+            Logger.GetByClassName().Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
+                $"{config.Path.ResourcePath}/TextMap/TextMap{handbookLang}.json",
                 I18NManager.Translate("Word.NotFound")));
             return;
         }
 
-        if (!File.Exists(fallbackTextMapPath))
+        var fallbackFile = ResolveTextMap(config.ServerOption.FallbackLanguage);
+        if (fallbackFile == null)
         {
             Logger.GetByClassName().Warn(I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
-                fallbackTextMapPath, I18NManager.Translate("Word.NotFound")));
-            fallbackTextMapPath = textMapPath;
+                $"{config.Path.ResourcePath}/TextMap/TextMap{NormalizeLanguage(config.ServerOption.FallbackLanguage)}.json",
+                I18NManager.Translate("Word.NotFound")));
+            fallbackFile = textMapFile;
         }
 
-        var textMap = JsonConvert.DeserializeObject<Dictionary<BigInteger, string>>(File.ReadAllText(textMapPath));
+        var textMap = JsonConvert.DeserializeObject<Dictionary<BigInteger, string>>(
+            File.ReadAllText(textMapFile.FullName));
         sharedFallback ??=
-            JsonConvert.DeserializeObject<Dictionary<BigInteger, string>>(File.ReadAllText(fallbackTextMapPath));
+            JsonConvert.DeserializeObject<Dictionary<BigInteger, string>>(File.ReadAllText(fallbackFile.FullName));
         var fallbackTextMap = sharedFallback;
 
         if (textMap == null || fallbackTextMap == null)
         {
-            Logger.GetByClassName().Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", textMapPath,
-                I18NManager.Translate("Word.Error")));
+            Logger.GetByClassName().Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem",
+                textMapFile.FullName, I18NManager.Translate("Word.Error")));
             return;
         }
 

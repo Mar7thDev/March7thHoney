@@ -102,3 +102,6 @@ EBIPBHFLPHL.#1882 = grid_fight_game_ref_cdn_url
 EBIPBHFLPHL.#1934 = rogue_tourn_build_ref_api_req_color_header_value
 EBIPBHFLPHL.#1943 = custom_service_url
 EBIPBHFLPHL.#1991 = user_agreement_url
+// 两条消息的字段均表示最大跳跃能量。
+BNFGMKBICKJ.CPFCMKLCMFG = max_jump_energy
+IBCFCAOKMOP.CPFCMKLCMFG = max_jump_energy

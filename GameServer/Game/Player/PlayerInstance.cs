@@ -224,6 +224,7 @@ public partial class PlayerInstance(PlayerData data)
     private async ValueTask NormalizePostLoad()
     {
         Components.Add(new SwitchHandComponent(this));
+        Components.Add(new FiveDimComponent(this));
 
         if ((int)(ServerPrefsData!.Version * 1000) != GameConstants.GameVersionInt)
         {

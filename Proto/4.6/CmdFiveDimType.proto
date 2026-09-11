@@ -53,7 +53,7 @@ message FiveDimGameTransferScRsp {
 }
 
 message FiveDimJumpEnergyChangeScNotify {
-	uint32 CPFCMKLCMFG = 14; // offset: 24
+	uint32 max_jump_energy = 14; // offset: 24
 }
 
 message FiveDimMoneyChangeScNotify {
@@ -65,7 +65,7 @@ message GetFiveDimGameDataCsReq {
 }
 
 message GetFiveDimGameDataScRsp {
-	uint32 CPFCMKLCMFG = 3; // offset: 44
+	uint32 max_jump_energy = 3; // offset: 44
 	repeated uint32 KEGAOHGOALD = 6; // offset: 24
 	uint32 retcode = 12; // offset: 40
 	DGHPIDMDOJM CFDIKLBINHK = 15; // offset: 32
