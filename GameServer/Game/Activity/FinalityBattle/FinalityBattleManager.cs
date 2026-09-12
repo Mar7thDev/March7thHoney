@@ -42,12 +42,14 @@ public class FinalityBattleManager(PlayerInstance player) : BasePlayerManager(pl
         var group = GameData.ActivityFinalityBattleData.Values.FirstOrDefault(x => x.LevelList.Contains(levelId));
         if (group == null || !group.LeadingRoleList.Contains(leadingRoleId)) return (Retcode.RetStageConfigNotExist, null);
         if (!GameData.StageConfigData.TryGetValue(level.StageID, out var stage)) return (Retcode.RetStageConfigNotExist, null);
+        if (avatarList.Any(x => x.AvatarType is not (AvatarType.AvatarTrialType or AvatarType.AvatarFormalType or AvatarType.AvatarUpgradeAvailableType)))
+            return (Retcode.RetLineupAvatarTypeInvalid, null);
 
         var lineupOverride = new List<AvatarLineupData>();
         var baseAvatars = new List<LineupAvatarInfo>();
         // Rebuild trial avatars so the special-avatar form and state come fresh from the excel every run.
         Player.AvatarManager!.Data.TrialAvatars.RemoveAll(x =>
-            x.SpecialAvatarId == leadingRoleId || avatarList.Any(a => a.AvatarType != AvatarType.AvatarFormalType && (int)a.Id == x.SpecialAvatarId));
+            x.SpecialAvatarId == leadingRoleId || avatarList.Any(a => a.AvatarType == AvatarType.AvatarTrialType && a.Id == x.SpecialAvatarId));
         var leading = Player.AvatarManager.GetTrialAvatarByWorldLevel(leadingRoleId, Player.Data.WorldLevel);
         if (leading == null) return (Retcode.RetStageConfigNotExist, null);
         AddAvatar(leading, AvatarType.AvatarTrialType);
@@ -55,12 +57,12 @@ public class FinalityBattleManager(PlayerInstance player) : BasePlayerManager(pl
         foreach (var entry in avatarList)
         {
             if ((int)entry.Id == leadingRoleId || lineupOverride.Count >= 4) continue;
-            BaseAvatarInfo? avatar = entry.AvatarType == AvatarType.AvatarFormalType
-                ? Player.AvatarManager.GetFormalAvatar((int)entry.Id)
-                : Player.AvatarManager.GetTrialAvatarByWorldLevel((int)entry.Id, Player.Data.WorldLevel);
-            if (avatar == null) continue;
+            BaseAvatarInfo? avatar = entry.AvatarType == AvatarType.AvatarTrialType
+                ? Player.AvatarManager.GetTrialAvatarByWorldLevel(entry.Id, Player.Data.WorldLevel)
+                : Player.AvatarManager.GetFormalAvatar(entry.Id);
+            if (avatar == null) return (Retcode.RetAvatarNotExist, null);
             if (lineupOverride.Any(x => x.AvatarInfo.BaseAvatarId == avatar.BaseAvatarId)) continue;
-            AddAvatar(avatar, entry.AvatarType == AvatarType.AvatarFormalType ? AvatarType.AvatarFormalType : AvatarType.AvatarTrialType);
+            AddAvatar(avatar, entry.AvatarType, avatar is FormalAvatarInfo ? entry.Id : null);
         }
 
         var lineup = new LineupInfo
@@ -88,9 +90,9 @@ public class FinalityBattleManager(PlayerInstance player) : BasePlayerManager(pl
         Player.BattleInstance = battle;
         return (Retcode.RetSucc, battle);
 
-        void AddAvatar(BaseAvatarInfo avatar, AvatarType type)
+        void AddAvatar(BaseAvatarInfo avatar, AvatarType type, int? battleAvatarId = null)
         {
-            lineupOverride.Add(new AvatarLineupData(avatar, type));
+            lineupOverride.Add(new AvatarLineupData(avatar, type, battleAvatarId));
             baseAvatars.Add(avatar is SpecialAvatarInfo special
                 ? new LineupAvatarInfo { BaseAvatarId = special.BaseAvatarId, SpecialAvatarId = special.SpecialAvatarId }
                 : new LineupAvatarInfo { BaseAvatarId = avatar.BaseAvatarId });
