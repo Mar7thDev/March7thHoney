@@ -45,6 +45,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
         var syncList = new List<QuestInfo>();
         foreach (var quest in GameData.QuestDataData.Values)
         {
+            if (Player.MechCraftManager?.ManagesQuest(quest.QuestID) == true) continue;
             if (Data.Quests.ContainsKey(quest.QuestID)) continue; // Already accepted
             QuestInfo? acceptQuest = null;
             switch (quest.UnlockType)
@@ -94,6 +95,11 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
     public async ValueTask<QuestInfo?> AcceptQuest(int questId, bool sync = true)
     {
+        if (Player.MechCraftManager?.GetQuestInfo(questId) is { } activityQuest)
+        {
+            if (sync) await Player.SendPacket(new PacketPlayerSyncScNotify(activityQuest));
+            return activityQuest;
+        }
         if (!ConfigManager.Config.ServerOption.EnableQuest) return null;
 
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
@@ -118,6 +124,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
     public async ValueTask FinishQuest(int questId, bool push = true)
     {
+        if (Player.MechCraftManager?.ManagesQuest(questId) == true) return;
         if (!ConfigManager.Config.ServerOption.EnableQuest) return;
 
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
@@ -143,6 +150,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
     public async ValueTask<Retcode> FinishQuestByClient(int questId)
     {
+        if (Player.MechCraftManager?.ManagesQuest(questId) == true) return Retcode.RetSucc;
         if (!ConfigManager.Config.ServerOption.EnableQuest) return Retcode.RetSucc;
 
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
@@ -170,6 +178,8 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
     public async ValueTask<(Retcode, List<ItemData>?)> TakeQuestReward(int questId)
     {
+        if (Player.MechCraftManager?.ManagesQuest(questId) == true)
+            return await Player.MechCraftManager.TakeQuestReward(questId);
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
         if (questExcel == null) return (Retcode.RetFail, null);
 
@@ -195,6 +205,12 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
     public async ValueTask<(Retcode, List<ItemData>)> TakeQuestOptionalReward(int questId, int optionalRewardId)
     {
+        if (Player.MechCraftManager?.ManagesQuest(questId) == true)
+        {
+            if (optionalRewardId != 0) return (Retcode.RetFail, []);
+            var (retcode, granted) = await Player.MechCraftManager.TakeQuestReward(questId);
+            return (retcode, granted ?? []);
+        }
         var rewards = new List<ItemData>();
 
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
@@ -258,6 +274,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
     public async ValueTask AddQuestProgress(int questId, int progress, bool push = false)
     {
+        if (Player.MechCraftManager?.ManagesQuest(questId) == true) return;
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
         if (questExcel == null) return;
         GameData.FinishWayData.TryGetValue(questExcel.FinishWayID, out var finishWayExcel);
@@ -277,6 +294,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
     public async ValueTask UpdateQuestProgress(int questId, int progress, bool push = false)
     {
+        if (Player.MechCraftManager?.ManagesQuest(questId) == true) return;
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
         if (questExcel == null) return;
         GameData.FinishWayData.TryGetValue(questExcel.FinishWayID, out var finishWayExcel);
@@ -309,6 +327,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
     public QuestStatus GetQuestStatus(int questId)
     {
+        if (Player.MechCraftManager?.GetQuestInfo(questId) is { } activityQuest) return activityQuest.QuestStatus;
         if (!ConfigManager.Config.ServerOption.EnableQuest)
         {
             if (!Data.Quests.TryGetValue(questId, out var disabledQuestInfo)) return QuestStatus.QuestFinish;
@@ -325,14 +344,18 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
     {
         if (!ConfigManager.Config.ServerOption.EnableQuest) return [];
 
-        return Data.Quests.Values.Where(x => x.QuestStatus == QuestStatus.QuestDoing).ToList();
+        return Data.Quests.Values.Where(x => x.QuestStatus == QuestStatus.QuestDoing &&
+            Player.MechCraftManager?.ManagesQuest(x.QuestId) != true).ToList();
     }
 
     public int GetQuestProgress(int questId)
     {
+        if (Player.MechCraftManager?.GetQuestInfo(questId) is { } activityQuest) return activityQuest.Progress;
         if (!Data.Quests.TryGetValue(questId, out var questInfo)) return 0;
         return questInfo.Progress;
     }
+
+    public QuestInfo? GetQuestInfo(int questId) => Player.MechCraftManager?.GetQuestInfo(questId) ?? Data.Quests.GetValueOrDefault(questId);
 
     #endregion
 

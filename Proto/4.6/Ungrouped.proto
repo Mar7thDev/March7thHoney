@@ -13,41 +13,14 @@ message AAOAEMOHCEP {
 message FinalityBattleGetDataCsReq {
 }
 
-message ADDMKOIFOEF {
-}
-
 message AFAIGBNOCJB {
 	FOEPMKFEJMK info = 12; // offset: 16
-}
-
-message AFKFJCPELEM {
-	uint32 NGPBPFKGNLI = 4; // offset: 24
-	uint32 retcode = 11; // offset: 28
 }
 
 message AHBLKPAJDPI {
 	uint32 CHILKFNAINA = 13; // offset: 24
 	uint32 LBMGKCMHKLN = 14; // offset: 28
 	uint32 HEMOHFJJMJG = 15; // offset: 32
-}
-
-message ALAMOHABJIP {
-	uint32 ILBFMJKABFO = 4; // offset: 36
-	uint32 JPPMEKJGJFD = 10; // offset: 28
-	uint32 LLNNOPDLLED = 11; // offset: 32
-	uint32 GNFDFIIKJHI = 14; // offset: 24
-}
-
-message AOBDHCFGGBH {
-	uint32 design_level = 3; // offset: 56
-	repeated uint32 DLDELBKOMDK = 4; // offset: 16
-	uint32 retcode = 7; // offset: 36
-	uint32 AFMDPIAFPNF = 8; // offset: 32
-	uint32 EIFICNFGGHI = 9; // offset: 40
-	uint32 LAOPAGMAAHD = 11; // offset: 60
-	uint32 OOIMHIJFHDI = 12; // offset: 48
-	uint32 PDNHGNDAHBA = 14; // offset: 44
-	uint32 FDGKBOIEHBD = 15; // offset: 52
 }
 
 message B51RacingAgendaInfo {
@@ -296,15 +269,6 @@ message BHJEBMOOJED {
 message BMJHNDBOPLC {
 }
 
-message BNKDEHGIJMH {
-	oneof MMCGBGDJIPN {
-		JCAHAPMBCOC LLCHGCNFOJJ = 15; // offset: 16
-		PACMGHKKGKN IKMADODLNJD = 2; // offset: 16
-		ONJIANLPDBE EPLGOGFAHDM = 9; // offset: 16
-		FJEMMEGKKHE PPNNPIGCHOL = 11; // offset: 16
-	}
-}
-
 message BODEMOLDHAA {
 	uint32 teleport_id = 10; // offset: 24
 }
@@ -443,10 +407,6 @@ message EBGAMBKHDBO {
 	}
 }
 
-message ELNAIJEFGMK {
-	uint32 NMELIDCDKAK = 5; // offset: 24
-}
-
 message ExpeditionBattleAvatarDamage {
 	uint32 avatar_id = 11; // offset: 24
 	uint64 damage = 14; // offset: 32
@@ -537,10 +497,6 @@ message FAKNKCAOHON {
 	uint64 FIEOPKNBHKJ = 14; // offset: 24
 }
 
-message FDCJIIKHHHB {
-	uint32 retcode = 10; // offset: 24
-}
-
 message FGLAJHMCJLL {
 	int64 expire_time = 10; // offset: 24
 	uint32 EIKLMFPMJJD = 12; // offset: 32
@@ -551,29 +507,8 @@ message FinalityBattleGetDataScRsp {
 	repeated FinalityBattleLevelRecord level_record_list = 10; // offset: 24
 }
 
-message FJEMMEGKKHE {
-	repeated uint32 KIEBAPFGCCN = 7; // offset: 24
-}
-
 message FJKEGMEPLDI {
 	repeated HKHKEMHCHEB CPPBNJLABGE = 8; // offset: 24
-}
-
-message FKPKLHICPFO {
-	uint32 LENMCGCGBOA = 7; // offset: 24
-	uint32 retcode = 14; // offset: 28
-}
-
-message FMOEINGLFGG {
-	oneof MMCGBGDJIPN {
-		PGLBKDELHJK FLKIEILIBJA = 4; // offset: 16
-		FODAGGODIJM OGOCOFPHIIK = 1; // offset: 16
-	}
-}
-
-message FODAGGODIJM {
-	uint32 FLBOPEJIGJF = 5; // offset: 24
-	uint32 DGONPFLCOMO = 7; // offset: 28
 }
 
 message FOEPMKFEJMK {
@@ -651,20 +586,11 @@ message HMACEHDGGHB {
 	int64 CMHKFNFKGOI = 3; // offset: 40
 }
 
-message HMLFGDFLIBP {
-	repeated BNKDEHGIJMH DGNGMJMPFGK = 8; // offset: 16
-}
-
 enum HPICFNLLMCO {
 	HPICFNLLMCO_NLCDGIPGFDJ = 0;
 	HPICFNLLMCO_CIHFGJDCHIA = 1;
 	HPICFNLLMCO_INCLHHDFCEL = 2;
 	HPICFNLLMCO_EMMGHDLIPOH = 3;
-}
-
-message HPJONNDENCB {
-	repeated ALAMOHABJIP EEFLBHGIAAN = 4; // offset: 16
-	uint32 OFNDFACDNOC = 11; // offset: 32
 }
 
 message IAKKHBENIOL {
@@ -707,14 +633,6 @@ message JBJNJPAOCDA {
 	CBPDACMBHGL LHLKJIDFLIN = 7; // offset: 52
 }
 
-message JCAHAPMBCOC {
-	repeated uint32 EJHKAHEGCDC = 8; // offset: 16
-}
-
-message JCIPKHCJLBM {
-	uint32 retcode = 11; // offset: 24
-}
-
 message JDNHIMDLIHH {
 }
 
@@ -732,11 +650,6 @@ message JKILAALMFIB {
 
 message JLMKPMCDOKC {
 	uint32 CLGMOPPOGGC = 13; // offset: 24
-}
-
-message JNDBILOGFAF {
-	repeated MNGADDFICJF FBDIGGDLDCP = 1; // offset: 16
-	uint32 FLBOPEJIGJF = 10; // offset: 32
 }
 
 message JOLAHHGIFHA {
@@ -757,10 +670,6 @@ message JPAOIPLDKHB {
 	int64 CMHKFNFKGOI = 4; // offset: 48
 	uint32 HBKEPFKDAMI = 5; // offset: 56
 	uint32 GAEKEFEKCBD = 6; // offset: 60
-}
-
-message JPPCNOGIMFD {
-	uint32 DHAKONBPFMC = 7; // offset: 24
 }
 
 message KKACLNNMMAM {
@@ -858,14 +767,6 @@ message MMBIBKFEFNG {
 	repeated uint32 PODLFMBEKEG = 9; // offset: 16
 }
 
-message MNGADDFICJF {
-	uint32 ENPNDBIBPLE = 1; // offset: 28
-	bool PANMEBACIBF = 2; // offset: 36
-	uint32 rotation = 3; // offset: 24
-	uint32 x = 8; // offset: 40
-	uint32 y = 11; // offset: 32
-}
-
 message MNGELOJBJGC {
 	uint32 retcode = 7; // offset: 36
 	uint32 FMACGJBHLPF = 10; // offset: 32
@@ -906,11 +807,6 @@ message FinalityBattleLevelRecord {
 	uint32 finished_wave = 4; // offset: 32
 	uint32 remaining_round = 12; // offset: 36
 	uint32 level_id = 14; // offset: 40
-}
-
-message NPMOBJOCIAF {
-	uint32 DGONPFLCOMO = 11; // offset: 32
-	repeated MNGADDFICJF FBDIGGDLDCP = 15; // offset: 16
 }
 
 message OAOONIMHKLA {
@@ -972,14 +868,6 @@ message ONAADAJBLEB {
 	uint32 ONOHPMDGNNH = 14; // offset: 24
 }
 
-message ONJIANLPDBE {
-	repeated uint32 LEJEBBCKPCI = 9; // offset: 16
-}
-
-message PACMGHKKGKN {
-	repeated uint32 IEOAHLNBBBB = 13; // offset: 16
-}
-
 message PBMDEBCGNMD {
 	MNCBEDBDDHL IKJNIKIGFLF = 1; // offset: 16
 	JPAOIPLDKHB PKHFMJDNKOE = 2; // offset: 24
@@ -1010,20 +898,9 @@ enum PEHEBABHPBH {
 message PEMMJHDFOLM {
 }
 
-message PGLBKDELHJK {
-	uint32 FLBOPEJIGJF = 1; // offset: 36
-	uint32 status = 5; // offset: 32
-	uint32 DGONPFLCOMO = 7; // offset: 40
-	repeated MNGADDFICJF FBDIGGDLDCP = 9; // offset: 16
-}
-
 message PHIMNIFMBMI {
 	uint64 MJNENEAAOAE = 2; // offset: 32
 	uint32 retcode = 14; // offset: 24
-}
-
-message PMBMFHMKBNC {
-	uint32 retcode = 4; // offset: 24
 }
 
 message POBLGKIGINE {
@@ -1039,23 +916,6 @@ message POBLGKIGINE {
 message PPELMHMMCHP {
 	uint32 KLOJONBEJKJ = 1; // offset: 32
 	uint64 ONMDDKGCEHK = 4; // offset: 24
-}
-
-message PPFAMGCOOFP {
-	uint32 GALBOLNODBB = 1; // offset: 84
-	uint32 LENMCGCGBOA = 2; // offset: 100
-	repeated ALAMOHABJIP EEFLBHGIAAN = 3; // offset: 32
-	uint32 NGPBPFKGNLI = 4; // offset: 76
-	repeated uint32 IEOAHLNBBBB = 5; // offset: 48
-	repeated uint32 EJHKAHEGCDC = 6; // offset: 40
-	repeated uint32 LEJEBBCKPCI = 8; // offset: 56
-	uint32 design_level = 9; // offset: 96
-	uint32 OOIMHIJFHDI = 10; // offset: 72
-	repeated uint32 DEJOLCEPDCF = 11; // offset: 16
-	uint32 retcode = 12; // offset: 80
-	uint32 OFNDFACDNOC = 13; // offset: 88
-	repeated uint32 KIEBAPFGCCN = 14; // offset: 24
-	uint32 LAOPAGMAAHD = 15; // offset: 92
 }
 
 message PPOPABLIHNI {
