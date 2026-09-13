@@ -99,6 +99,18 @@ public static class ResourceCache
             return false;
         }
 
+        // Caches built while the ChessRogue room/dice configs and chessboard maps were not loaded, or before the
+        // 4.5 RogueDLCArea score-map keys were mapped.
+        if (GameData.RogueSwarmChessBoardData.Count > 0 &&
+            (GameData.ChessRogueRoomData.Count == 0 || GameData.ChessRogueDiceSurfaceEffectData.Count == 0 ||
+             GameData.RogueSwarmChessBoardData.Values.SelectMany(boards => boards).All(board => board.MapInfo == null) ||
+             GameData.RogueDLCAreaData.Values.Any(area =>
+                 area.AreaScoreMap.Count > 0 && area.AreaScoreMap.All(score => score.Layer == 0))))
+        {
+            Logger.Warn("Resource cache is stale: ChessRogue room/dice/chessboard data is missing.");
+            return false;
+        }
+
         if (GameData.FloorInfoData.Values.Any(floor => floor.Groups.Values.Any(group =>
                 group.LoadSide != Enums.Scene.GroupLoadSideEnum.Client &&
                 group.Category == Enums.Scene.GroupCategoryEnum.Atmosphere && group.IsHoyoGroup == null)))
