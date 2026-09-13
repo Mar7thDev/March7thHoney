@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
@@ -215,19 +216,22 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, OFEDNNJIJFL req)
     {
-        // RogueTourn only claims its own answer arms, so it goes first and returns null for everything else.
-        if (player.RogueTournManager != null &&
-            await player.RogueTournManager.HandlePendingAction(req) is { } tournRsp)
+        // Each mode only claims its own answer arms in its own scene and returns null otherwise.
+        var modeRsp = player.RogueMagicManager != null ? await player.RogueMagicManager.HandlePendingAction(req) : null;
+        if (modeRsp == null && player.RogueTournManager != null)
+            modeRsp = await player.RogueTournManager.HandlePendingAction(req);
+        if (modeRsp != null)
         {
-            await connection.SendPacket(new PacketRogueScRsp(CmdIds.HandleRogueCommonPendingActionScRsp, tournRsp));
+            await connection.SendPacket(new PacketRogueScRsp(CmdIds.HandleRogueCommonPendingActionScRsp, modeRsp));
             return;
         }
 
         var manager = player.RogueManager!;
         var rsp = new HandleRogueCommonPendingActionScRsp();
 
-        // An unclaimed parameterless answer during a tourn run is a tourn arm we don't implement, not a reroll.
-        if (req.DLKIKBIDJDB == null && player.RogueTournManager?.RunInstance == null && IsRerollAnswer(req))
+        // Outside a Simulated Universe scene an unclaimed parameterless answer is another mode's arm, not a reroll.
+        if (req.DLKIKBIDJDB == null && player.SceneInstance?.GameModeType == GameModeTypeEnum.RogueExplore &&
+            IsRerollAnswer(req))
         {
             // The reroll callback (field 7) is the only response arm carrying the buff draft info.
             var info = manager.RerollBuff();

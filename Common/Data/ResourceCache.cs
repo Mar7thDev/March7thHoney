@@ -99,6 +99,15 @@ public static class ResourceCache
             return false;
         }
 
+        // Caches built before RogueMagicRoomGen.json was loaded, or before the 4.5 scepter lock-unit key mapping.
+        if ((GameData.RogueMagicRoomGenData.Count == 0 &&
+             File.Exists(ConfigManager.Config.Path.ConfigPath + "/RogueMagicRoomGen.json")) ||
+            GameData.RogueMagicScepterData.Values.Any(scepter => scepter.LockMagicUnit.Any(unit => unit.MagicUnitId == 0)))
+        {
+            Logger.Warn("Resource cache is stale: RogueMagic room/scepter data is missing.");
+            return false;
+        }
+
         if (GameData.FloorInfoData.Values.Any(floor => floor.Groups.Values.Any(group =>
                 group.LoadSide != Enums.Scene.GroupLoadSideEnum.Client &&
                 group.Category == Enums.Scene.GroupCategoryEnum.Atmosphere && group.IsHoyoGroup == null)))
