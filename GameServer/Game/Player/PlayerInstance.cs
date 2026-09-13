@@ -25,6 +25,7 @@ using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player.Components;
 using March7thHoney.GameServer.Game.Quest;
 using March7thHoney.GameServer.Game.Raid;
+using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Shop;
 using March7thHoney.GameServer.Game.Sync.Player;
@@ -91,6 +92,7 @@ public partial class PlayerInstance(PlayerData data)
     public ChallengePeakManager? ChallengePeakManager { get; private set; }
     public ChallengeTierceManager? ChallengeTierceManager { get; private set; }
     public GridFightManager? GridFightManager { get; private set; }
+    public RogueManager? RogueManager { get; private set; }
     public ExpeditionManager? ExpeditionManager { get; private set; }
     public TrainPartyManager? TrainPartyManager { get; private set; }
 
@@ -199,6 +201,7 @@ public partial class PlayerInstance(PlayerData data)
         ChallengePeakManager = new ChallengePeakManager(this);
         ChallengeTierceManager = new ChallengeTierceManager(this);
         GridFightManager = new GridFightManager(this);
+        RogueManager = new RogueManager(this);
         RogueTournManager = new RogueTourn.RogueTournManager(this);
         ExpeditionManager = new ExpeditionManager(this);
         TrainPartyManager = new TrainPartyManager(this);

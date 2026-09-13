@@ -1,0 +1,672 @@
+using March7thHoney.Data;
+using March7thHoney.Data.Custom;
+using March7thHoney.Data.Excel;
+using March7thHoney.Database;
+using March7thHoney.Database.Avatar;
+using March7thHoney.Database.Rogue;
+using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Rogue;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
+using March7thHoney.Proto;
+using MemoryPack;
+
+namespace March7thHoney.GameServer.Game.Rogue;
+
+public class RogueManager : BasePlayerManager
+{
+    public const int RogueEntranceId = 801120102;
+
+    // Official 4.4 capture grants 50 (Java/C# references say 100).
+    private const int StartCoinCount = 50;
+    private const int TalentCoinItemId = 32;
+
+    // The official login capture lists aeons 1..7 although RogueAeon has 9 rows.
+    private const int AeonLimit = 7;
+    private const int NormalDraftGroupId = 100005;
+    private const int EliteDraftGroupId = 100003;
+    private const int RoomTypeElite = 6;
+    private const int RoomTypeBoss = 7;
+    private const uint CommonQueryTypeFunctionUnlock = 15;
+
+    public RogueManager(PlayerInstance player) : base(player)
+    {
+        RogueData = DatabaseHelper.Instance!.GetInstanceOrCreateNew<RogueData>(player.Uid);
+        ResurrectInstance();
+    }
+
+    public RogueData RogueData { get; }
+    public RogueInstance? RogueInstance { get; private set; }
+
+    #region Persistence
+
+    private void SaveRun()
+    {
+        RogueData.RunBlob = RogueInstance == null
+            ? null
+            : Convert.ToBase64String(MemoryPackSerializer.Serialize(RogueInstance));
+        DatabaseHelper.MarkDirty(Player.Uid);
+    }
+
+    private void ResurrectInstance()
+    {
+        if (string.IsNullOrEmpty(RogueData.RunBlob)) return;
+
+        RogueInstance? inst;
+        try
+        {
+            inst = MemoryPackSerializer.Deserialize<RogueInstance>(Convert.FromBase64String(RogueData.RunBlob));
+        }
+        catch
+        {
+            inst = null;
+        }
+
+        // A run that already won but was never left is dropped: resuming it strands the client on a finished run.
+        if (inst is { Status: RogueStatus.Doing, IsWin: false })
+        {
+            RogueInstance = inst;
+            return;
+        }
+
+        RogueData.RunBlob = null;
+        DatabaseHelper.MarkDirty(Player.Uid);
+    }
+
+    #endregion
+
+    #region Run lifecycle
+
+    public async ValueTask<Retcode> StartRogue(int areaId, int aeonId, List<int> avatarIds, bool trial)
+    {
+        // A resurrected stale run is abandoned: the official instance is transient, a relog always starts fresh.
+        if (RogueInstance != null) await ClearRun();
+
+        if (!GameData.RogueAreaConfigData.TryGetValue(areaId, out var area)) return Retcode.RetRogueAreaInvalid;
+
+        var inst = new RogueInstance
+        {
+            AreaId = areaId,
+            MapId = ResolveRunMapId(area),
+            AeonId = aeonId,
+            Coin = StartCoinCount,
+            Status = RogueStatus.Doing,
+            ActionSeq = 1,
+            BaseAvatarIds = avatarIds,
+            Trial = trial
+        };
+        inst.InitRooms();
+        if (inst.StartSiteId == 0 || inst.Rooms.Count == 0) return Retcode.RetRogueAreaInvalid;
+
+        if (!await ActivateRogueLineup(avatarIds)) return Retcode.RetRogueStatusNotMatch;
+
+        var room = inst.EnterRoom(inst.StartSiteId);
+        RogueInstance = inst;
+        if (room == null || !await EnterRoomScene(room))
+        {
+            await ClearRun();
+            return Retcode.RetRogueAreaInvalid;
+        }
+
+        SaveRun();
+        return Retcode.RetSucc;
+    }
+
+    public async ValueTask<(Retcode Ret, RogueRoomData? Room)> EnterRoom(int siteId)
+    {
+        if (RogueInstance == null) return (Retcode.RetRogueStatusNotMatch, null);
+
+        var room = RogueInstance.EnterRoom(siteId);
+        if (room == null) return (Retcode.RetRogueStatusNotMatch, null);
+        if (!await EnterRoomScene(room)) return (Retcode.RetFail, null);
+
+        SaveRun();
+        return (Retcode.RetSucc, room);
+    }
+
+    public void QuitRogue()
+    {
+        if (RogueInstance == null) return;
+        RogueInstance.Status = RogueStatus.Finish;
+        SaveRun();
+    }
+
+    public async ValueTask<RogueInstance?> FinishRun()
+    {
+        var inst = RogueInstance;
+        if (inst == null) return null;
+
+        var area = GameData.RogueAreaConfigData.GetValueOrDefault(inst.AreaId);
+        var completedRooms = inst.IsWin ? inst.CurrentRoomProgress : Math.Max(0, inst.CurrentRoomProgress - 1);
+        inst.RoomScore = area?.ScoreMap.GetValueOrDefault(completedRooms) ?? 0;
+        inst.EarnedTalentCoin = inst.RoomScore / 10;
+        inst.Status = RogueStatus.Finish;
+
+        if (inst.EarnedTalentCoin > 0)
+            await Player.InventoryManager!.AddItem(TalentCoinItemId, inst.EarnedTalentCoin);
+
+        if (area != null && !RogueData.FirstPassAreas.Contains(inst.AreaId))
+            RogueData.FirstPassAreas.Add(inst.AreaId);
+        RogueData.ExploreScore += inst.RoomScore;
+
+        // A won run advances the area's difficulty tier while the next tier's map exists.
+        if (inst.IsWin && area != null)
+        {
+            var tier = RogueData.AreaDifficulty.GetValueOrDefault(inst.AreaId);
+            if (tier == 0) tier = Math.Max(1, area.Difficulty);
+            if (GameData.RogueMapData.ContainsKey(area.AreaProgress * 100 + tier + 1))
+                RogueData.AreaDifficulty[inst.AreaId] = tier + 1;
+        }
+
+        RogueData.FinishCnt++;
+        SaveRun();
+        return inst;
+    }
+
+    public async ValueTask<bool> LeaveRun()
+    {
+        if (RogueInstance == null) return false;
+
+        await ClearRun();
+        await Player.EnterScene(RogueEntranceId, 0, false);
+        return Player.SceneInstance?.EntryId == RogueEntranceId;
+    }
+
+    private async ValueTask ClearRun()
+    {
+        RogueInstance = null;
+        await Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, false);
+        SaveRun();
+    }
+
+    private int ResolveRunMapId(RogueAreaConfigExcel area)
+    {
+        var tier = RogueData.AreaDifficulty.GetValueOrDefault(area.RogueAreaID);
+        if (tier == 0) tier = Math.Max(1, area.Difficulty);
+        var mapId = area.AreaProgress * 100 + tier;
+        return GameData.RogueMapData.ContainsKey(mapId) ? mapId : area.MapId;
+    }
+
+    private async ValueTask<bool> ActivateRogueLineup(List<int> avatarIds)
+    {
+        var lineupManager = Player.LineupManager!;
+        lineupManager.SetExtraLineup(ExtraLineupType.LineupRogue, avatarIds);
+        var lineup = lineupManager.GetExtraLineup(ExtraLineupType.LineupRogue);
+        if (lineup?.BaseAvatars is not { Count: > 0 }) return false;
+
+        await lineupManager.SetExtraLineup(ExtraLineupType.LineupRogue, false);
+
+        // The official rogue lineup starts at 3 technique points, not the challenge full reset.
+        lineup.Mp = 3;
+        foreach (var slot in lineup.BaseAvatars)
+        {
+            BaseAvatarInfo? avatar = slot.SpecialAvatarId > 0
+                ? Player.AvatarManager!.GetTrialAvatar(slot.SpecialAvatarId)
+                : Player.AvatarManager!.GetFormalAvatar(slot.BaseAvatarId);
+            avatar?.SetCurHp(10000, true);
+            avatar?.SetCurSp(5000, true);
+        }
+
+        return true;
+    }
+
+    private async ValueTask<bool> EnterRoomScene(RogueRoomData room)
+    {
+        if (!GameData.RogueRoomData.TryGetValue(room.RoomId, out var roomExcel)) return false;
+
+        // Spawn at the room's group anchor; the entrance's own start anchor is a positionless placeholder.
+        await Player.EnterSceneByEntranceId(roomExcel.MapEntrance, roomExcel.GroupID, 1, false);
+        return Player.SceneInstance?.EntryId == roomExcel.MapEntrance;
+    }
+
+    #endregion
+
+    #region Scene
+
+    public RogueRoomExcel? GetActiveRoomExcel(int entryId)
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst) return null;
+        var room = inst.GetCurrentRoom();
+        if (room == null || !GameData.RogueRoomData.TryGetValue(room.RoomId, out var excel)) return null;
+        return excel.MapEntrance == entryId ? excel : null;
+    }
+
+    public int GetCurrentMonsterLevel()
+    {
+        if (RogueInstance == null) return 0;
+        return GameData.RogueMapData.TryGetValue(RogueInstance.MapId, out var sites) &&
+               sites.TryGetValue(RogueInstance.CurrentSiteId, out var site) && site.LevelList.Count > 0
+            ? site.LevelList[0]
+            : 0;
+    }
+
+    public static int ResolveRogueMonsterId(int content)
+    {
+        // Dump corrections verified against official captures: the tutorial elite ships 1006 and the
+        // map-2 boss 2007, neither resolves; the official server uses groups 1101 and 2101.
+        content = content switch
+        {
+            1006 => 1101,
+            2007 => 2101,
+            _ => content
+        };
+
+        if (GameData.RogueMonsterGroupData.TryGetValue(content, out var group) &&
+            group.RogueMonsterListAndWeight.Count > 0)
+            return PickWeighted(group.RogueMonsterListAndWeight);
+
+        var fallbackId = content * 10 + 1;
+        return GameData.RogueMonsterData.ContainsKey(fallbackId) ? fallbackId : 0;
+    }
+
+    private static int PickWeighted(Dictionary<string, double> weights)
+    {
+        var roll = Random.Shared.NextDouble() * weights.Values.Sum();
+        foreach (var (id, weight) in weights)
+        {
+            roll -= weight;
+            if (roll < 0) return int.TryParse(id, out var value) ? value : 0;
+        }
+
+        return 0;
+    }
+
+    #endregion
+
+    #region Battle
+
+    public void OnBattleStart(BattleInstance battle)
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst) return;
+        if (Player.SceneInstance?.Excel.PlaneType != PlaneTypeEnum.Rogue) return;
+
+        foreach (var buff in inst.Buffs.Values)
+            battle.Buffs.Add(new MazeBuff(buff.BuffId, buff.Level, -1) { WaveFlag = -1 });
+
+        var level = GetCurrentMonsterLevel();
+        if (level > 0) battle.CustomLevel = level;
+
+        battle.OnBattleEnd += OnBattleEnd;
+    }
+
+    private async ValueTask OnBattleEnd(BattleInstance battle, PVEBattleResultCsReq req)
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst) return;
+
+        if (req.EndStatus != BattleEndStatus.BattleEndWin)
+        {
+            inst.Status = RogueStatus.Finish;
+            SaveRun();
+            return;
+        }
+
+        var room = inst.GetCurrentRoom();
+        if (room == null) return;
+
+        // The official win flow sends an empty plane event before the draft to mark the battle plane settled.
+        await Player.SendPacket(new PacketScenePlaneEventScNotify(new ItemList()));
+
+        // The final room still drafts after each battle; only the boss room ends without one.
+        if (room.NextSiteIds.Count == 0) inst.IsWin = true;
+
+        if (room.RoomType == RoomTypeBoss)
+        {
+            inst.ExploreWin = true;
+        }
+        else
+        {
+            inst.Coin += Random.Shared.Next(20, 41) * Math.Max(1, battle.EntityMonsters.Count);
+
+            var pool = ResolveDraftPool(room, battle);
+            if (pool.Count == 0)
+            {
+                // A last-room win with no draft pool is the leader battle that completes the explore.
+                if (inst.IsWin) inst.ExploreWin = true;
+            }
+            else
+            {
+                inst.ActionSeq += 2;
+                inst.BuffSelect = RogueBuffSelectMenu.Create(inst, pool);
+            }
+        }
+
+        SaveRun();
+
+        if (inst.BuffSelect?.HasSelection == true)
+        {
+            // The 4.5 client needs the identical draft notify twice to arm RogueSelectBuffPage.
+            await Player.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(BuildPendingAction(inst)));
+            await Player.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(BuildPendingAction(inst)));
+        }
+
+        if (inst is { IsWin: true, ExploreWin: true })
+        {
+            inst.ExploreWin = false;
+            await Player.SendPacket(new PacketSyncRogueExploreWinScNotify());
+        }
+    }
+
+    private static List<BaseRogueBuffExcel> ResolveDraftPool(RogueRoomData room, BattleInstance battle)
+    {
+        var groupId = room.RoomType == RoomTypeElite ? EliteDraftGroupId : NormalDraftGroupId;
+
+        // The official draft pool is the killed group's room content + 8000 when that pool exists.
+        if (GameData.RogueRoomData.TryGetValue(room.RoomId, out var roomExcel))
+            foreach (var killedGroup in battle.EntityMonsters.Select(x => x.GroupId).Distinct())
+            {
+                var content = roomExcel.GroupWithContent.GetValueOrDefault(killedGroup);
+                if (content == 0 || GetBuffPool(content + 8000).Count == 0) continue;
+                groupId = content + 8000;
+                break;
+            }
+
+        return GetBuffPool(groupId);
+    }
+
+    private static List<BaseRogueBuffExcel> GetBuffPool(int groupId)
+    {
+        return GameData.RogueBuffGroupData.TryGetValue(groupId, out var group)
+            ? group.BuffList.Where(x => x is RogueBuffExcel).ToList()
+            : [];
+    }
+
+    public Retcode? SelectBuff(int buffId)
+    {
+        if (RogueInstance?.BuffSelect is not { HasSelection: true } menu) return null;
+        if (buffId == 0 || menu.Select(RogueInstance, buffId) == null) return Retcode.RetRogueSelectBuffNotExist;
+
+        SaveRun();
+        return Retcode.RetSucc;
+    }
+
+    #endregion
+
+    #region Talent
+
+    public bool HasTalent(int talentId)
+    {
+        return RogueData.Talents.Contains(talentId);
+    }
+
+    public async ValueTask<bool> EnableTalent(int talentId)
+    {
+        if (!GameData.RogueTalentData.TryGetValue(talentId, out var talent)) return false;
+        if (HasTalent(talentId)) return true;
+
+        var inventory = Player.InventoryManager!;
+        if (talent.Cost.Any(cost => (inventory.GetItem(cost.ItemID)?.Count ?? 0) < cost.ItemNum)) return false;
+        foreach (var cost in talent.Cost) await inventory.RemoveItem(cost.ItemID, cost.ItemNum);
+
+        RogueData.Talents.Add(talentId);
+        DatabaseHelper.MarkDirty(Player.Uid);
+        return true;
+    }
+
+    #endregion
+
+    #region Proto
+
+    public AGEHGBKOBEF BuildRogueGameInfo()
+    {
+        var info = new AGEHGBKOBEF { LFLCDNGALME = BuildRogueInfoData() };
+        if (RogueInstance != null) info.CFDIKLBINHK = BuildCurrentInfo(RogueInstance);
+        return info;
+    }
+
+    private EDOIEMCFFCA BuildRogueInfoData()
+    {
+        var data = new EDOIEMCFFCA
+        {
+            NIKDPODBIEF = new MBCBDJNKFEB(),
+            HHFAAFOBKME = new CGNNMPIKBBB(),
+            ACLKMFCDMED = BuildAreaInfo(),
+            AEFMMOHKCHJ = BuildAeonInfo()
+        };
+
+        var season = GetCurrentSeason();
+        if (season != null)
+        {
+            data.HHFAAFOBKME.LJNGPCKPJLF = (uint)season.RogueSeason;
+            data.HHFAAFOBKME.BeginTime = new DateTimeOffset(season.BeginTimeDate).ToUnixTimeSeconds();
+            data.HHFAAFOBKME.EndTime = new DateTimeOffset(season.EndTimeDate).ToUnixTimeSeconds();
+        }
+
+        return data;
+    }
+
+    private static RogueManagerExcel? GetCurrentSeason()
+    {
+        var now = DateTime.Now;
+        return GameData.RogueManagerData.Values
+            .Where(x => x.BeginTimeDate <= now && now < x.EndTimeDate)
+            .OrderBy(x => x.BeginTimeDate)
+            .FirstOrDefault();
+    }
+
+    private GOIEJOCFKEE BuildAreaInfo()
+    {
+        var info = new GOIEJOCFKEE();
+        var areaIds = GetCurrentSeason()?.RogueAreaIDList ?? [.. GameData.RogueAreaConfigData.Keys];
+        foreach (var areaId in areaIds)
+        {
+            var firstPassed = RogueData.FirstPassAreas.Contains(areaId);
+
+            // Lock (0) is never sent: proto3 drops a zero enum and the entrance panel NREs on the missing field.
+            var row = new CAJEBOPPMCJ
+            {
+                AreaId = (uint)areaId,
+                ALAJJMKOMML = firstPassed,
+                AreaStatus = firstPassed ? RogueAreaStatus.FirstPass : RogueAreaStatus.Unlock
+            };
+
+            if (RogueInstance?.AreaId == areaId)
+            {
+                row.NHDLEFAAPOB = RogueInstance.Status;
+                row.MapId = (uint)RogueInstance.MapId;
+                row.KNDHMNBIIDF = (uint)RogueInstance.CurrentRoomProgress;
+            }
+
+            info.OJGOAOPLMLB.Add(row);
+        }
+
+        return info;
+    }
+
+    private static GFGHGCIMKGA BuildAeonInfo()
+    {
+        var info = new GFGHGCIMKGA();
+        info.OPAEGCBNACJ.AddRange(GameData.RogueAeonData.Keys
+            .Where(id => id is > 0 and <= AeonLimit)
+            .OrderBy(id => id)
+            .Select(id => (uint)id));
+        return info;
+    }
+
+    private static HNKAOFDGLIE BuildCurrentInfo(RogueInstance inst)
+    {
+        return new HNKAOFDGLIE
+        {
+            Status = inst.Status,
+            ILOFGCAFHAH = inst.IsWin,
+            COOOMDKGODF = BuildMapInfo(inst),
+            DHEKLJDBNNP = new AGEOGDOGDMM { RogueMoney = (uint)inst.Coin },
+            DNPCCFFFBHN = BuildMiracleInfo(inst),
+            FMIGOKIDKJL = BuildPendingAction(inst),
+            EIOHFJMFOKF = BuildLineupInfo(inst),
+            AEFMMOHKCHJ = new CIFCAIEDOLK(),
+            HABJHGPFGEB = BuildBuffList(inst)
+        };
+    }
+
+    private static DNDMLICBKEF BuildMapInfo(RogueInstance inst)
+    {
+        var map = new DNDMLICBKEF
+        {
+            ANHDBMOPGDC = (uint)inst.CurrentSiteId,
+            HPKMGKPPELC = (uint)(inst.GetCurrentRoom()?.RoomId ?? 0),
+            AreaId = (uint)inst.AreaId,
+            MapId = (uint)inst.MapId
+        };
+        foreach (var room in inst.Rooms.Values.OrderBy(x => x.SiteId))
+            map.LLNICHDDIAN.Add(BuildRoom(room, room.Status));
+        return map;
+    }
+
+    public static PAIJCBOKIFO BuildRoom(RogueRoomData room, RogueRoomStatus status)
+    {
+        return new PAIJCBOKIFO
+        {
+            RoomId = (uint)room.RoomId,
+            MAJKFIMPOOF = (uint)room.SiteId,
+            CAGDNHCOCKM = status
+        };
+    }
+
+    private static HIKOBOMBMPB BuildMiracleInfo(RogueInstance inst)
+    {
+        var list = new OEDNNHAOHAB();
+        foreach (var miracle in inst.Miracles.Values)
+            list.MAJGMMCOCIG.Add(new EFDAIBDBFEA { NPHAJEKCBKF = (uint)miracle.MiracleId, TotalCount = 1 });
+        return new HIKOBOMBMPB { DNPCCFFFBHN = list };
+    }
+
+    public static INHBMHCJJCN BuildPendingAction(RogueInstance inst)
+    {
+        var action = new INHBMHCJJCN();
+        if (inst.BuffSelect is not { HasSelection: true } menu) return action;
+
+        action.QueuePosition = (uint)inst.ActionSeq;
+        action.Detail = new DCFPEIMAMCN { PCHGEGFBKLF = BuildBuffSelectInfo(menu) };
+        return action;
+    }
+
+    private static GGGBAIAPDLO BuildBuffSelectInfo(RogueBuffSelectMenu menu)
+    {
+        // Byte-exact with the official 4.5 draft: no source_type and no zero-valued counters.
+        var info = new GGGBAIAPDLO
+        {
+            CanRoll = true,
+            NKGGAOJLCMD = 1,
+            EIALMEADLGF = 1,
+            FIMMFJCKCNK = 1
+        };
+        info.EBMEEKJGPPM.AddRange(menu.SelectBuffs.Select(x => (uint)x.RogueBuffType).Distinct());
+        foreach (var buff in menu.SelectBuffs)
+            info.LEOFNINDJDB.Add(new KJAMNOGFAMJ { BuffId = (uint)buff.MazeBuffID, HAGDKKBAAKK = (uint)buff.MazeBuffLevel });
+        return info;
+    }
+
+    private static ENOBKLGCHOD BuildLineupInfo(RogueInstance inst)
+    {
+        // Revive cost shown by the client: item 31 x80 (official capture).
+        var info = new ENOBKLGCHOD
+        {
+            MFEODNJNGDP = new KCMFAIBMOHB
+            {
+                LNIEFKBMIPD = new ItemCostData
+                {
+                    ItemList = { new ItemCost { PileItem = new PileItem { ItemId = 31, ItemNum = 80 } } }
+                }
+            }
+        };
+
+        // Trial rosters travel in the story-line list with an empty base list, like the official response.
+        var avatarIds = inst.BaseAvatarIds.Select(x => (uint)x);
+        if (inst.Trial) info.UnfinishedStoryLineIdList.AddRange(avatarIds);
+        else info.NOEPBNMJFGL.AddRange(avatarIds);
+        return info;
+    }
+
+    private static CFMHEMGEANC BuildBuffList(RogueInstance inst)
+    {
+        var list = new CFMHEMGEANC();
+        foreach (var buff in inst.Buffs.Values)
+            list.CHCMEKAFKAF.Add(new ABOFJEIMLLJ { BuffId = (uint)buff.BuffId, Level = (uint)buff.Level });
+        return list;
+    }
+
+    public static GKHGFCBMLBL BuildFinishInfo(RogueInstance inst)
+    {
+        var area = GameData.RogueAreaConfigData.GetValueOrDefault(inst.AreaId);
+        var info = new GKHGFCBMLBL
+        {
+            ScoreId = (uint)(area?.ScoreMap.GetValueOrDefault(inst.CurrentRoomProgress) ?? 0),
+            IsWin = inst.IsWin,
+            GMIIMAHLIJF = 1,
+            AreaId = (uint)inst.AreaId,
+            RecordInfo = new KCOEJJKGNIG()
+        };
+
+        info.RecordInfo.MAJGMMCOCIG.AddRange(inst.Miracles.Keys.Select(x => (uint)x));
+        for (var slot = 0; slot < inst.BaseAvatarIds.Count; slot++)
+            info.RecordInfo.AvatarList.Add(new ALBLEFHHJIC
+            {
+                AvatarType = inst.Trial ? AvatarType.AvatarTrialType : AvatarType.AvatarFormalType,
+                Slot = (uint)slot,
+                Id = (uint)inst.BaseAvatarIds[slot]
+            });
+        foreach (var buff in inst.Buffs.Values)
+            info.RecordInfo.BuffList.Add(new ABOFJEIMLLJ { BuffId = (uint)buff.BuffId, Level = (uint)buff.Level });
+
+        return info;
+    }
+
+    public FDBDLBAPDBE BuildTalentInfo()
+    {
+        var info = new FDBDLBAPDBE();
+        foreach (var talentId in GameData.RogueTalentData.Keys.OrderBy(x => x))
+            info.BLHJIPBHHFO.Add(new OKPIPFKONMG
+            {
+                CKHCLKOALKE = (uint)talentId,
+                Status = HasTalent(talentId) ? RogueTalentStatus.Enable : RogueTalentStatus.Unlock
+            });
+        return info;
+    }
+
+    public static NHGJEIHKKHB BuildHandbookData()
+    {
+        var data = new NHGJEIHKKHB();
+        foreach (var id in GameData.RogueHandBookEventData.Keys.OrderBy(x => x))
+            data.PMIFFBHOOOO.Add(new NMHMGHEHHCM { PNHGLNPDFEA = (uint)id, ALAJJMKOMML = true });
+        foreach (var id in GameData.RogueHandbookMiracleData.Keys.OrderBy(x => x))
+            data.MAJGMMCOCIG.Add(new CIGDBCKOFBN { NPNMLPNBHDP = (uint)id, ALAJJMKOMML = true });
+        foreach (var id in GameData.RogueBuffData.Values.OfType<RogueBuffExcel>().Select(x => x.MazeBuffID)
+                     .Distinct().OrderBy(x => x))
+            data.BuffList.Add(new BPHIKPCNBHM { MazeBuffId = (uint)id });
+        return data;
+    }
+
+    public static IEnumerable<CCKJAEDDDCL> BuildCommonQueryEntries(IEnumerable<uint> types)
+    {
+        // One entry per requested type in request order; types 2/6/9 are per-account progress with no
+        // table source and stay branch-less. Type 15 is the client's only source of rogue function unlocks.
+        foreach (var type in types)
+        {
+            var entry = new CCKJAEDDDCL();
+            if (type == CommonQueryTypeFunctionUnlock)
+            {
+                entry.BBEKBJPHEJK = new AHLALEEJOEG();
+                entry.BBEKBJPHEJK.LFCGPOKMJLC.AddRange(Enum.GetValues<MGJDNGHDIKG>());
+            }
+
+            yield return entry;
+        }
+    }
+
+    public static GAAMBBFPCHB BuildCycleScoreData()
+    {
+        // ConstValueCommon is not loaded server-side; these are its 4.5 CycleScore_StartDate/Refresh rows (UTC+8).
+        var anchor = new DateTimeOffset(2026, 2, 9, 4, 0, 0, TimeSpan.FromHours(8));
+        var period = TimeSpan.FromDays(7);
+        var now = DateTimeOffset.UtcNow;
+        var begin = now < anchor ? anchor : anchor + (now - anchor).Ticks / period.Ticks * period;
+        return new GAAMBBFPCHB
+        {
+            StartTime = begin.ToUnixTimeSeconds(),
+            EndTime = (begin + period).ToUnixTimeSeconds() - 1
+        };
+    }
+
+    #endregion
+}

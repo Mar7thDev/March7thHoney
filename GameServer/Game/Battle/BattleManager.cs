@@ -134,6 +134,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
             // call battle start
             Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
+            Player.RogueManager?.OnBattleStart(battleInstance);
             Player.RogueTournManager?.OnBattleStart(battleInstance);
             Player.QuestManager!.OnBattleStart(battleInstance);
 
@@ -185,6 +186,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         // call battle start
         Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
+        Player.RogueManager?.OnBattleStart(battleInstance);
         Player.RogueTournManager?.OnBattleStart(battleInstance);
         Player.QuestManager!.OnBattleStart(battleInstance);
 
