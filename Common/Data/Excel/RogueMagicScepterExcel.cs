@@ -44,7 +44,8 @@ public partial class RogueMagicScepterExcel : ExcelResource
 [MemoryPackable]
 public partial class LockMagicUnitInfo
 {
-    [JsonProperty("GHFHMJLCIEC")] public int MagicUnitId { get; set; }
+    // 4.5 ExcelOutputGameCore keys.
+    [JsonProperty("GDDPJLJKGEO")] public int MagicUnitId { get; set; }
 
-    [JsonProperty("LDEDAMNEIJO")] public int MagicUnitLevel { get; set; }
+    [JsonProperty("LPCBFACBGAE")] public int MagicUnitLevel { get; set; }
 }
