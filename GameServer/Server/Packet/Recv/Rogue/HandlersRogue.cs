@@ -215,11 +215,32 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, OFEDNNJIJFL req)
     {
+        var manager = player.RogueManager!;
+        var rsp = new HandleRogueCommonPendingActionScRsp();
+
+        if (req.DLKIKBIDJDB == null && IsRerollAnswer(req))
+        {
+            // The reroll callback (field 7) is the only response arm carrying the buff draft info.
+            var info = manager.RerollBuff();
+            if (info == null)
+            {
+                rsp.Retcode = (uint)Retcode.RetFail;
+            }
+            else
+            {
+                rsp.JFHKDEIDMOG = new FKOGDINOBDF { PCHGEGFBKLF = info };
+                rsp.QueuePosition = req.MPLGEEGOAMC;
+                rsp.BFNEPPCNOOI = req.MPLGEEGOAMC;
+            }
+
+            await connection.SendPacket(new PacketRogueScRsp(CmdIds.HandleRogueCommonPendingActionScRsp, rsp));
+            return;
+        }
+
         // Field 1588 is the buff-select answer (yuukisr OPDCGJEKEKP); other arms are unrelated actions.
         var buffId = req.DLKIKBIDJDB?.BAOFIGFFMLN ?? 0;
-        var ret = player.RogueManager!.SelectBuff((int)buffId);
+        var ret = manager.SelectBuff((int)buffId);
 
-        var rsp = new HandleRogueCommonPendingActionScRsp();
         if (ret is { } retcode and not Retcode.RetSucc)
         {
             rsp.Retcode = (uint)retcode;
@@ -232,6 +253,21 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
         }
 
         await connection.SendPacket(new PacketRogueScRsp(CmdIds.HandleRogueCommonPendingActionScRsp, rsp));
+
+        // A pick that completes a path-resonance threshold opens the aeon draft; the client needs it twice.
+        if (ret == Retcode.RetSucc && manager.RogueInstance is { BuffSelect.HasSelection: true } inst)
+        {
+            await connection.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(RogueManager.BuildPendingAction(inst)));
+            await connection.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(RogueManager.BuildPendingAction(inst)));
+        }
+    }
+
+    // Parameterless arms are reroll answers; a Simulated Universe run only holds a blessing draft to reroll.
+    private static bool IsRerollAnswer(OFEDNNJIJFL req)
+    {
+        return req.KBNLGEMNDEN != null || req.KCPJPFIPBKM != null || req.KJFHBMICMME != null ||
+               req.LGBJFCFLOGN != null || req.INPCEEAAKKG != null || req.HKJGJHCKJCJ != null ||
+               req.JHGCIENPBBA != null;
     }
 }
 
