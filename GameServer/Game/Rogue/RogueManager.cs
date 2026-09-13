@@ -4,6 +4,7 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Rogue;
+using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
@@ -280,9 +281,21 @@ public class RogueManager : BasePlayerManager
     {
         if (RogueInstance is not { Status: RogueStatus.Doing } inst) return;
         if (Player.SceneInstance?.Excel.PlaneType != PlaneTypeEnum.Rogue) return;
+        // Divergent Universe rooms are Rogue planes too; a saved Simulated Universe run must not claim them.
+        if (Player.SceneInstance.GameModeType == GameModeTypeEnum.TournRogue) return;
 
         foreach (var buff in inst.Buffs.Values)
+        {
             battle.Buffs.Add(new MazeBuff(buff.BuffId, buff.Level, -1) { WaveFlag = -1 });
+
+            // The path-resonance buff also carries its aeon's battle event, starting full.
+            if (GameData.RogueBuffData.GetValueOrDefault(buff.BuffId * 100 + buff.Level) is RogueBuffExcel
+                {
+                    BattleEventBuffType: RogueBuffAeonTypeEnum.BattleEventBuff
+                } excel &&
+                GameData.RogueBattleEventData.TryGetValue(excel.RogueBuffType, out var battleEvent))
+                battle.BattleEvents[buff.BuffId] = new BattleEventInstance(battleEvent.BattleEventID, 10000, 10000);
+        }
 
         var level = GetCurrentMonsterLevel();
         if (level > 0) battle.CustomLevel = level;
@@ -310,6 +323,7 @@ public class RogueManager : BasePlayerManager
         // The final room still drafts after each battle; only the boss room ends without one.
         if (room.NextSiteIds.Count == 0) inst.IsWin = true;
 
+        var coinGained = false;
         if (room.RoomType == RoomTypeBoss)
         {
             inst.ExploreWin = true;
@@ -317,6 +331,7 @@ public class RogueManager : BasePlayerManager
         else
         {
             inst.Coin += Random.Shared.Next(20, 41) * Math.Max(1, battle.EntityMonsters.Count);
+            coinGained = true;
 
             var pool = ResolveDraftPool(room, battle);
             if (pool.Count == 0)
@@ -339,6 +354,8 @@ public class RogueManager : BasePlayerManager
             await Player.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(BuildPendingAction(inst)));
             await Player.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(BuildPendingAction(inst)));
         }
+
+        if (coinGained) await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
 
         if (inst is { IsWin: true, ExploreWin: true })
         {
@@ -376,8 +393,52 @@ public class RogueManager : BasePlayerManager
         if (RogueInstance?.BuffSelect is not { HasSelection: true } menu) return null;
         if (buffId == 0 || menu.Select(RogueInstance, buffId) == null) return Retcode.RetRogueSelectBuffNotExist;
 
+        TryOfferAeonBuff(RogueInstance);
         SaveRun();
         return Retcode.RetSucc;
+    }
+
+    public GGGBAIAPDLO? RerollBuff()
+    {
+        if (RogueInstance?.BuffSelect is not { } menu || !menu.Reroll(RogueInstance)) return null;
+
+        SaveRun();
+        return BuildBuffSelectInfo(menu);
+    }
+
+    // Path resonance (legacy thresholds): the aeon buff after 3 same-path blessings, then enhance drafts at
+    // 6/10/14, at most 4 in total. Counts come from owned buffs so nothing extra is persisted.
+    private static void TryOfferAeonBuff(RogueInstance inst)
+    {
+        if (inst.BuffSelect?.HasSelection == true) return;
+        if (!GameData.RogueAeonData.TryGetValue(inst.AeonId, out var aeon)) return;
+
+        var owned = inst.Buffs.Values
+            .Select(x => GameData.RogueBuffData.GetValueOrDefault(x.BuffId * 100 + x.Level))
+            .OfType<RogueBuffExcel>()
+            .ToList();
+        var pathCount = owned.Count(x => x.RogueBuffType == aeon.RogueBuffType && !x.IsAeonBuff);
+        var aeonCount = owned.Count(x => x.IsAeonBuff);
+        var required = aeonCount switch
+        {
+            0 => 3,
+            1 => 6,
+            2 => 10,
+            3 => 14,
+            _ => int.MaxValue
+        };
+        if (pathCount < required) return;
+
+        List<BaseRogueBuffExcel> pool = aeonCount == 0
+            ? GameData.RogueAeonBuffData.TryGetValue(inst.AeonId, out var aeonBuff) ? [aeonBuff] : []
+            : [.. GameData.RogueAeonEnhanceData.GetValueOrDefault(inst.AeonId, [])];
+
+        // Aeon drafts offer every candidate and cannot be rerolled.
+        var menu = RogueBuffSelectMenu.Create(inst, pool, pool.Count, 0);
+        if (!menu.HasSelection) return;
+
+        inst.ActionSeq += 2;
+        inst.BuffSelect = menu;
     }
 
     #endregion
@@ -546,7 +607,7 @@ public class RogueManager : BasePlayerManager
         // Byte-exact with the official 4.5 draft: no source_type and no zero-valued counters.
         var info = new GGGBAIAPDLO
         {
-            CanRoll = true,
+            CanRoll = menu.CanRoll,
             NKGGAOJLCMD = 1,
             EIALMEADLGF = 1,
             FIMMFJCKCNK = 1
