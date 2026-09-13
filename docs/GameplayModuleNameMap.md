@@ -34,6 +34,7 @@ This table separates user-facing names from technical module names.
 | March 7th Sword Training | 三月七学剑 | 三月七學劍 | 三月なのか剣術イベント | `SwordTraining*` protocol family |
 | Train Party | 派对车厢 | 派對車廂 | パーティー車両 | `TrainParty` |
 | Cake Catch | 抓猫猫糕 | 抓貓貓糕 | ネコケーキキャッチ | `TrainCakeCatch` |
+| Expedition Battle | 方寸大冒险 | 方寸大冒險 | 方寸大冒険 | `ExpeditionBattle` |
 | Rolling Shop | 滚动商店 | 滾動商店 | ロールショップ | `RollShop` |
 | Map Rotation | 地图轮转 | 地圖輪轉 | マップ輪転 | `MapRotation` |
 | Clockie Trick | 钟表把戏 | 鐘錶把戲 | 時計のトリック | `HeartDial` |

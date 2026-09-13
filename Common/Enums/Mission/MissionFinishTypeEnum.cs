@@ -794,5 +794,6 @@ public enum MissionFinishTypeEnum
     GridFightSettleWinWithTraitLayerAndRoleRarityNum = 370063,
     FinalityBattleLevelFinish = 370070,
     FinalityBattleHardLevelPerfectFinishCnt = 370071,
+    ExpeditionBattlePassStageCnt = 430011,
     LeaveRegion = 5
 }

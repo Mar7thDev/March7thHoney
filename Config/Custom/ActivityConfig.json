@@ -47,6 +47,30 @@
       "beginTime": "1664355600",
       "endTime": "4294967295",
       "panelId": 50125
+    },
+    {
+      "activityId": 5010601,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50106
+    },
+    {
+      "activityId": 5010602,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50106
+    },
+    {
+      "activityId": 5010603,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50106
+    },
+    {
+      "activityId": 5010604,
+      "beginTime": "1664355600",
+      "endTime": "4294967295",
+      "panelId": 50106
     }
   ]
 }
