@@ -281,8 +281,8 @@ public class RogueManager : BasePlayerManager
     {
         if (RogueInstance is not { Status: RogueStatus.Doing } inst) return;
         if (Player.SceneInstance?.Excel.PlaneType != PlaneTypeEnum.Rogue) return;
-        // Divergent Universe rooms are Rogue planes too; a saved Simulated Universe run must not claim them.
-        if (Player.SceneInstance.GameModeType == GameModeTypeEnum.TournRogue) return;
+        // Tourn, chess and magic rooms are Rogue planes too; their loaders retag the scene, so only claim RogueExplore.
+        if (Player.SceneInstance.GameModeType != GameModeTypeEnum.RogueExplore) return;
 
         foreach (var buff in inst.Buffs.Values)
         {
