@@ -10,6 +10,7 @@ using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Challenge;
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.Scene.Component;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -103,7 +104,7 @@ public partial class SceneInstance
         switch (Excel.PlaneType)
         {
             case PlaneTypeEnum.Rogue:
-                EntityLoader = Player.RogueTournManager?.CreateEntityLoader(this) ?? new SceneEntityLoader(this);
+                EntityLoader = Player.RogueTournManager?.CreateEntityLoader(this) ?? new RogueEntityLoader(this, Player);
                 break;
             case PlaneTypeEnum.Challenge:
                 EntityLoader = new ChallengeEntityLoader(this, Player);
