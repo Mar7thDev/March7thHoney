@@ -91,6 +91,14 @@ public static class ResourceCache
 
     private static bool ValidateLoadedCache()
     {
+        // Caches built before RogueTournArea's obfuscated-key mapping collapse every area onto id 0.
+        if (GameData.RogueTournAreaData.ContainsKey(0) ||
+            (GameData.RogueTournAreaData.Count > 0 && GameData.RoguePersonaTalentData.Count == 0))
+        {
+            Logger.Warn("Resource cache is stale: RogueTourn area/persona tables are missing.");
+            return false;
+        }
+
         if (GameData.FloorInfoData.Values.Any(floor => floor.Groups.Values.Any(group =>
                 group.LoadSide != Enums.Scene.GroupLoadSideEnum.Client &&
                 group.Category == Enums.Scene.GroupCategoryEnum.Atmosphere && group.IsHoyoGroup == null)))

@@ -293,6 +293,11 @@ public partial class GridFightRuntimeDataSnapshot
     public Dictionary<uint, GridFightFrontSkillExcel> GridFightFrontSkillData { get; set; } = [];
     public List<GridFightRoleSkillModifyExcel> GridFightRoleSkillModifyData { get; set; } = [];
     public Dictionary<uint, GridFightEnhanceExcel> GridFightEnhanceData { get; set; } = [];
+
+    // GameDataSnapshot is at MemoryPack's 249-member cap, so later tables append here.
+    public Dictionary<int, RoguePersonaTalentExcel> RoguePersonaTalentData { get; set; } = [];
+    public Dictionary<int, RoguePersonaStyleExcel> RoguePersonaStyleData { get; set; } = [];
+    public Dictionary<int, RogueTournKeywordExcel> RogueTournKeywordData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -568,6 +573,9 @@ public static partial class GameData
                 GridFightRoleSwitchConfigData = GameData.GridFightRoleSwitchConfigData,
                 GridFightFrontSkillData = GameData.GridFightFrontSkillData,
                 GridFightRoleSkillModifyData = GameData.GridFightRoleSkillModifyData,
+                RoguePersonaTalentData = GameData.RoguePersonaTalentData,
+                RoguePersonaStyleData = GameData.RoguePersonaStyleData,
+                RogueTournKeywordData = GameData.RogueTournKeywordData,
             },
         };
     }
@@ -842,5 +850,8 @@ public static partial class GameData
         GameData.GridFightRoleSwitchConfigData = gridFightRuntimeData.GridFightRoleSwitchConfigData;
         GameData.GridFightFrontSkillData = gridFightRuntimeData.GridFightFrontSkillData;
         GameData.GridFightRoleSkillModifyData = gridFightRuntimeData.GridFightRoleSkillModifyData;
+        GameData.RoguePersonaTalentData = gridFightRuntimeData.RoguePersonaTalentData;
+        GameData.RoguePersonaStyleData = gridFightRuntimeData.RoguePersonaStyleData;
+        GameData.RogueTournKeywordData = gridFightRuntimeData.RogueTournKeywordData;
     }
 }
