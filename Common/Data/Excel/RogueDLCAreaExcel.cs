@@ -34,9 +34,10 @@ public partial class RogueDLCAreaExcel : ExcelResource
 [MemoryPackable]
 public partial class RogueDLCAreaScoreMap
 {
-    [JsonProperty("NALLPFKBHIO")] public int Layer { get; set; }
+    // 4.5 keys, verified against rows: layer 1/2, explore 1300/5200, finish 2600/7800.
+    [JsonProperty("FFAIBNDHOBI")] public int Layer { get; set; }
 
-    [JsonProperty("GGOHPEDAKJE")] public int ExploreScore { get; set; }
+    [JsonProperty("DICDMGODBCF")] public int ExploreScore { get; set; }
 
-    [JsonProperty("BELDLJADLKO")] public int FinishScore { get; set; }
+    [JsonProperty("EFGMPBPHGPA")] public int FinishScore { get; set; }
 }

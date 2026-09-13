@@ -1,8 +1,8 @@
 using MemoryPack;
-using March7thHoney.Proto;
 
 namespace March7thHoney.Database.ChessRogue;
 
+// Per-branch dice loadouts edited in the Nous dice workshop; the run itself lives in ChessRogueData.
 [DbTable("ChessRogueNous")]
 public class ChessRogueNousData : BaseDatabaseDataHelper
 {
@@ -13,9 +13,9 @@ public class ChessRogueNousData : BaseDatabaseDataHelper
 public partial class ChessRogueNousDiceData
 {
     public int BranchId { get; set; }
+
+    // Slot (1..6) -> surface id.
     public Dictionary<int, int> Surfaces { get; set; } = [];
     public int AreaId { get; set; }
     public int DifficultyLevel { get; set; }
-
-    // TODO 4.3: DFAOIALEBOH 在 4.3 已消失或更名，棋盘大冒险不在登录路径，暂时移除
 }
