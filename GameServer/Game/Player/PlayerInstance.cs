@@ -199,6 +199,7 @@ public partial class PlayerInstance(PlayerData data)
         ChallengePeakManager = new ChallengePeakManager(this);
         ChallengeTierceManager = new ChallengeTierceManager(this);
         GridFightManager = new GridFightManager(this);
+        RogueTournManager = new RogueTourn.RogueTournManager(this);
         ExpeditionManager = new ExpeditionManager(this);
         TrainPartyManager = new TrainPartyManager(this);
         TrainCakeCatchManager = new TrainCakeCatchManager(this);

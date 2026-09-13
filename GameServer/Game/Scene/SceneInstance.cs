@@ -103,7 +103,7 @@ public partial class SceneInstance
         switch (Excel.PlaneType)
         {
             case PlaneTypeEnum.Rogue:
-                EntityLoader = new SceneEntityLoader(this);
+                EntityLoader = Player.RogueTournManager?.CreateEntityLoader(this) ?? new SceneEntityLoader(this);
                 break;
             case PlaneTypeEnum.Challenge:
                 EntityLoader = new ChallengeEntityLoader(this, Player);
