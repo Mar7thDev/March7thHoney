@@ -104,7 +104,8 @@ public partial class SceneInstance
         switch (Excel.PlaneType)
         {
             case PlaneTypeEnum.Rogue:
-                EntityLoader = Player.RogueTournManager?.CreateEntityLoader(this) ?? new RogueEntityLoader(this, Player);
+                EntityLoader = Player.RogueMagicManager?.CreateEntityLoader(this) ??
+                               Player.RogueTournManager?.CreateEntityLoader(this) ?? new RogueEntityLoader(this, Player);
                 break;
             case PlaneTypeEnum.Challenge:
                 EntityLoader = new ChallengeEntityLoader(this, Player);

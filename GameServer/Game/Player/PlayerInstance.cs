@@ -203,6 +203,7 @@ public partial class PlayerInstance(PlayerData data)
         GridFightManager = new GridFightManager(this);
         RogueManager = new RogueManager(this);
         RogueTournManager = new RogueTourn.RogueTournManager(this);
+        RogueMagicManager = new RogueMagic.RogueMagicManager(this);
         ExpeditionManager = new ExpeditionManager(this);
         TrainPartyManager = new TrainPartyManager(this);
         TrainCakeCatchManager = new TrainCakeCatchManager(this);
