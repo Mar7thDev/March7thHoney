@@ -9,6 +9,7 @@ using March7thHoney.GameServer.Game.Activity.Loaders;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Player.Components;
 using March7thHoney.GameServer.Game.Scene.Component;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -103,7 +104,10 @@ public partial class SceneInstance
             EntryId = (uint)EntryId,
             ClientPosVersion = 1,
             SceneMissionInfo = new MissionStatusBySceneInfo(),
-            FOJJGJPIMBL = new BELNLOJAFCM(),
+            FiveDimGameData = new SceneFiveDimGameData
+            {
+                MaxJumpEnergy = Player.GetComponent<FiveDimComponent>().MaxJumpEnergy
+            },
             DimensionId = (uint)ResolveDimensionId(),
             GameStoryLineId = (uint)(Player.StoryLineManager?.StoryLineData.CurStoryLineId ?? 0),
             // 4.2.0 client expects SceneInfo.SceneIdentifier to be present during scene sync.

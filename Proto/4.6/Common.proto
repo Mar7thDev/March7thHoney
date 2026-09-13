@@ -1168,9 +1168,9 @@ enum BEAIKEEANDP {
 	BEAIKEEANDP_LONKNKFDPII = 2;
 }
 
-message BELNLOJAFCM {
+message SceneFiveDimGameData {
 	repeated uint32 HLLLIKPGOFG = 2; // offset: 32
-	uint32 MHFBCGMDDOO = 5; // offset: 40
+	uint32 max_jump_energy = 5; // offset: 40
 	DGHPIDMDOJM JHBAAHGLFCB = 14; // offset: 16
 }
 
@@ -2412,7 +2412,7 @@ message SceneInfo {
 	uint32 game_mode_type = 15; // offset: 148
 	map<string, int32> floor_saved_data = 20; // offset: 32
 	uint32 content_id = 98; // offset: 136
-	BELNLOJAFCM FOJJGJPIMBL = 345; // offset: 112
+	SceneFiveDimGameData five_dim_game_data = 345; // offset: 112
 	SceneIdentifier scene_identifier = 348; // offset: 80
 	uint64 interact_id = 1031; // offset: 152
 	uint32 dimension_id = 1225; // offset: 132

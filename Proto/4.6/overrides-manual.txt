@@ -105,6 +105,10 @@ EBIPBHFLPHL.#1991 = user_agreement_url
 // 两条消息的字段均表示最大跳跃能量。
 BNFGMKBICKJ.CPFCMKLCMFG = max_jump_energy
 IBCFCAOKMOP.CPFCMKLCMFG = max_jump_energy
+// 场景同步携带最大跳跃能量，客户端创建地图时用该值更新五维模块。
+BELNLOJAFCM = SceneFiveDimGameData
+BELNLOJAFCM.#5 = max_jump_energy
+KHNBFDNKLHE.#345 = five_dim_game_data
 // FinalityBattle：10022 空请求为面板全量同步，10023 回 NPLMMCGAJDF 列表，10024 结算通知；字段按客户端域类 CAPKINMFNIL(LevelID/CompletedWave/RemainingRound/CompletedBattleTargetIDs) 对齐
 ABGMGHNOONM = FinalityBattleGetDataCsReq
 FIJJHJADLLM = FinalityBattleGetDataScRsp
