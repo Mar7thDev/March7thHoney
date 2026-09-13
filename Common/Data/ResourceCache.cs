@@ -91,6 +91,20 @@ public static class ResourceCache
 
     private static bool ValidateLoadedCache()
     {
+        // 4.5 moved content-package entrances (including the Divergent Universe lobby) into
+        // MapEntranceLD.json. Reject an old cache only when the matching raw table is available,
+        // so deployments that intentionally ship cache-only resources keep working.
+        var hasMapEntranceLd = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "MapEntranceLD.json")));
+        if (hasMapEntranceLd && GameData.ContentPackageConfigData.Values.Any(package =>
+                (package.InitEntranceID != 0 && !GameData.MapEntranceData.ContainsKey(package.InitEntranceID)) ||
+                (package.AfterGuideEntranceID != 0 &&
+                 !GameData.MapEntranceData.ContainsKey(package.AfterGuideEntranceID))))
+        {
+            Logger.Warn("Resource cache is stale: MapEntranceLD content-package entrances are missing.");
+            return false;
+        }
+
         // Caches built before RogueTournArea's obfuscated-key mapping collapse every area onto id 0.
         if (GameData.RogueTournAreaData.ContainsKey(0) ||
             (GameData.RogueTournAreaData.Count > 0 && GameData.RoguePersonaTalentData.Count == 0))

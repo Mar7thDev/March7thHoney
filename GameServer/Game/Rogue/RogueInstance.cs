@@ -2,6 +2,7 @@ using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Data.Custom;
 using March7thHoney.Proto;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Rogue;
 
@@ -53,6 +54,14 @@ public partial class RogueInstance
             // Core maps key rooms as mapId*100+siteId; the tutorial map only has room mapId*100.
             var room = GameData.RogueRoomData.GetValueOrDefault(MapId * 100 + site.SiteID) ??
                        GameData.RogueRoomData.GetValueOrDefault(MapId * 100);
+            // Later Rogue maps no longer encode their room pool in the map id. Keep the direct lookup
+            // first for the tutorial/core maps, then select a valid room from the site's configured pool.
+            if (room == null && GameData.RogueMapGenData.TryGetValue(site.SiteID, out var roomPool))
+            {
+                var availableRoomIds = roomPool.Where(GameData.RogueRoomData.ContainsKey).ToList();
+                if (availableRoomIds.Count > 0)
+                    room = GameData.RogueRoomData[availableRoomIds.RandomElement()];
+            }
             if (room == null) continue;
 
             Rooms[site.SiteID] = new RogueRoomData

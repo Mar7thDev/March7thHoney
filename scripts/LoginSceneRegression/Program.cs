@@ -20,6 +20,9 @@ using March7thHoney.Enums;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.ChessRogue;
+using March7thHoney.GameServer.Game.Rogue;
+using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server;
@@ -220,6 +223,26 @@ Check("upgraded cache loads without the raw Resources tree", loadedCache);
 if (!loadedCache) throw new InvalidOperationException("The checked-out 4.5 resource cache could not be loaded.");
 config.Path.ResourcePath = rawResourcePath;
 Check("cache preserves Hoyo atmosphere metadata", GameData.FloorInfoData["P10202_F10202001"].Groups[169].IsHoyoGroup == true);
+var mapEntranceFiles = typeof(MapEntranceExcel).GetCustomAttribute<ResourceEntity>()!.FileName;
+Check("map entrance loader includes the 4.5 LD table", mapEntranceFiles.Contains("MapEntranceLD.json"));
+
+GameData.RogueMapGenData = JsonSerializer.Deserialize<Dictionary<int, List<int>>>(
+    File.ReadAllText(Path.Combine(repository, "Config/Custom/RogueMapGen.json")))!;
+var rogueMap = new RogueInstance { MapId = 904 };
+rogueMap.InitRooms();
+Check("new Rogue maps resolve every site through the room pools",
+    rogueMap.StartSiteId != 0 && rogueMap.Rooms.Count == GameData.RogueMapData[904].Count &&
+    rogueMap.Rooms.Values.All(room => GameData.RogueRoomData.ContainsKey(room.RoomId)));
+
+var defaultChessBranch = ChessRogueResources.ResolveBranchId(0);
+Check("ChessRogue omitted dice branch resolves to a complete default",
+    defaultChessBranch != 0 &&
+    ChessRogueResources.DefaultSurfaces(defaultChessBranch).Count == ChessRogueResources.DiceSlotCount);
+var rogueMagicQuery = RogueMagicProtoBuilder.BuildQueryInfo();
+Check("RogueMagic map query includes every area and required nested metadata",
+    rogueMagicQuery.DANNIDIPFAL.Count == GameData.RogueMagicAreaData.Count &&
+    rogueMagicQuery.DANNIDIPFAL.Count > 0 && rogueMagicQuery.StoryInfo != null &&
+    rogueMagicQuery.IHJKLHGMKBI?.JCOBJAMPOAL != null);
 var absentFlag = new GroupInfo();
 Check("old-cache metadata remains distinguishable from false", MemoryPackSerializer.Deserialize<GroupInfo>(
     MemoryPackSerializer.Serialize(absentFlag))!.IsHoyoGroup == null);
@@ -268,6 +291,41 @@ Check("4.5 scene boundary has cmdid 1491 and empty protobuf payload",
 
 var player = new PlayerInstance(60001);
 await player.InitializeAsync();
+
+var roguePlayer = new PlayerInstance(60002);
+await roguePlayer.InitializeAsync();
+var rogueAvatarIds = roguePlayer.AvatarManager!.Data.FormalAvatars
+    .Select(avatar => avatar.BaseAvatarId).Distinct().Take(2).ToList();
+var rogueStart = await roguePlayer.RogueManager!.StartRogue(193, 4, rogueAvatarIds, false);
+Check("new Rogue area starts and enters its generated first room",
+    rogueStart == Retcode.RetSucc && roguePlayer.RogueManager.RogueInstance?.MapId == 904 &&
+    roguePlayer.SceneInstance?.EntryId != 0);
+
+var chessPlayer = new PlayerInstance(60003);
+await chessPlayer.InitializeAsync();
+var chessAvatarIds = chessPlayer.AvatarManager!.Data.FormalAvatars
+    .Select(avatar => avatar.BaseAvatarId).Distinct().Take(2).ToList();
+var chessStart = await chessPlayer.ChessRogueManager!.StartRun(205, 6, 0, chessAvatarIds, []);
+Check("ChessRogue start accepts the client's omitted dice branch",
+    chessStart == Retcode.RetSucc && chessPlayer.ChessRogueManager.RunInstance?.BranchId == defaultChessBranch);
+
+var magicPlayer = new PlayerInstance(60004);
+await magicPlayer.InitializeAsync();
+var magicAvatarIds = magicPlayer.AvatarManager!.Data.FormalAvatars
+    .Select(avatar => avatar.BaseAvatarId).Distinct().Take(2).ToList();
+var magicAreaId = GameData.RogueMagicAreaData.Keys.Min();
+var magicStart = await magicPlayer.RogueMagicManager!.StartRun(magicAreaId, 1, [], magicAvatarIds);
+Check("RogueMagic area data builds a playable run",
+    magicStart.Ret == Retcode.RetSucc && magicStart.Run?.Layers.Count > 0);
+
+var rogueTournLobby = new SceneInstance(player, GameData.MazePlaneData[10341], 10341001, 10341901);
+var rogueTournLobbyGroup = rogueTournLobby.FloorInfo!.Groups[13];
+var rogueTournEntrance = await rogueTournLobby.EntityLoader!.LoadProp(
+    rogueTournLobbyGroup.PropList.Single(prop => prop.ID == 300001), rogueTournLobbyGroup);
+var rogueTournEmblem = await rogueTournLobby.EntityLoader.LoadProp(
+    rogueTournLobbyGroup.PropList.Single(prop => prop.ID == 300002), rogueTournLobbyGroup);
+Check("RogueTourn lobby entrance and emblem default open",
+    rogueTournEntrance?.State == PropStateEnum.Open && rogueTournEmblem?.State == PropStateEnum.Open);
 var scene = new SceneInstance(player, GameData.MazePlaneData[10202], 10202001, 102020107);
 var snapshot = scene.BuildClientFloorSavedData();
 Check("Changle Tian restores floor-wide activity defaults without writing player saves",

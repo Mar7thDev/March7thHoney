@@ -336,6 +336,15 @@ public class SceneEntityLoader(SceneInstance scene)
 
         if (!hasSavedState)
         {
+            // Rogue lobby exports may omit State even though the same props are Open on their other
+            // floors. Their client graphs expose the Rogue/RogueTourn entry button only in Open state.
+            // Keep this scoped to the lobby-console assets; Rogue doors and chests retain their state.
+            if (prop.State == PropStateEnum.Closed &&
+                (excel.JsonPath.Contains("LobbyEntrance", StringComparison.Ordinal) ||
+                 excel.JsonPath.Contains("RougueEmblem", StringComparison.Ordinal) ||
+                 excel.JsonPath.Contains("RogueEmblem", StringComparison.Ordinal)))
+                prop.State = PropStateEnum.Open;
+
             // A spring's checkpoint comes from its configured State when the level export declares one
             // (CheckPointDisable keeps it hidden until a mission or the player enables it - official 20002001
             // sends 300006/8 and 300021/300022/300007/7) and defaults to CheckPointEnable otherwise. Healing stays

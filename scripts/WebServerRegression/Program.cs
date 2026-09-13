@@ -14,6 +14,7 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
+using March7thHoney.Proto;
 using March7thHoney.Util;
 using March7thHoney.WebServer;
 using March7thHoney.WebServer.Server;
@@ -36,6 +37,8 @@ config.GameServer.UsePacketEncryption = false;
 config.GameServer.GameServerName = "WebServer regression";
 config.ServerOption.Language = "CHS";
 config.HttpServer.UseSSL = false;
+config.HttpServer.SendHotfix = false;
+config.ServerOption.ServerConfig.RunGateway = true;
 config.MuipServer.AdminKey = "local-web-regression-only";
 // The shipped Config.json grants "*" to everyone; clear it here so the fixture account really is limited
 // to its role and the self-service console's permission gating is exercised rather than short-circuited.
@@ -80,6 +83,32 @@ void Check(string name, bool pass)
 }
 
 using var client = new HttpClient { BaseAddress = new Uri(address), Timeout = TimeSpan.FromSeconds(60) };
+using (var response = await client.GetAsync("/query_gateway?version=CNBETAWin4.5.0"))
+{
+    response.EnsureSuccessStatusCode();
+    var gateway = GateServer.Parser.ParseFrom(Convert.FromBase64String(await response.Content.ReadAsStringAsync()));
+    Check("gateway advertises the local RogueTourn BuildRef prefix",
+        gateway.RogueTournBuildRefStaticDataUrlPrefix == address.TrimEnd('/') + "/rpgsimulator/0/");
+    Check("gateway advertises the RogueTourn BuildRef color header",
+        gateway.RogueTournBuildRefApiReqColorHeaderKey == "x-rpc-rpglineup-tourn" &&
+        gateway.RogueTournBuildRefApiReqColorHeaderValue == "tourn");
+}
+foreach (var path in new[]
+         {
+             "/rpgsimulator/0/rpg_lineup_list.json",
+             "/event/rpgsimulator/game/tourn/lineup/cdn_content"
+         })
+{
+    using var response = await client.GetAsync(path);
+    response.EnsureSuccessStatusCode();
+    using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+    Check($"RogueTourn BuildRef route {path}",
+        json.RootElement.GetProperty("version").GetInt32() == 249 &&
+        json.RootElement.GetProperty("lineups").GetArrayLength() == 0);
+}
+using (var response = await client.GetAsync("/rpgsimulator/0/not-a-build-ref.json"))
+    Check("RogueTourn BuildRef prefix is not a wildcard", response.StatusCode == HttpStatusCode.NotFound);
+
 using (var unauthorized = await client.GetAsync("/admin/api/maintenance"))
     Check("maintenance requires authentication", unauthorized.StatusCode == HttpStatusCode.Unauthorized);
 using (var unauthorized = await client.PostAsJsonAsync("/admin/api/commands", new { command = "/help" }))
