@@ -24,6 +24,16 @@ public static class ChessRogueResources
             .ToDictionary(x => x.slot, x => x.surfaceId);
     }
 
+    public static int ResolveBranchId(int branchId)
+    {
+        // The 4.5 start request omits the dice branch when the player has not edited a preset.
+        // Treat only that omitted value as the first complete default; an explicit invalid id
+        // must still be rejected by StartRun.
+        if (branchId != 0) return branchId;
+        return GameData.RogueNousDiceBranchData.Keys.OrderBy(id => id)
+            .FirstOrDefault(id => DefaultSurfaces(id).Count == DiceSlotCount);
+    }
+
     public static RogueDLCChessBoardExcel? PickBoard(int subMode, int level)
     {
         var boards = subMode == (int)RogueSubModeEnum.ChessRogueNous

@@ -278,6 +278,12 @@ public class EntryPoint
                 GameData.VideoKeysConfig =
                     ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
                     new VideoKeysConfig();
+                // RogueMapGen is operator-side compatibility data rather than a dumped Excel table.
+                // Reload it after either cache path so new Rogue room pools do not require replacing
+                // an otherwise valid Resource.bin.
+                var rogueMapGen =
+                    ResourceManager.LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen");
+                if (rogueMapGen != null) GameData.RogueMapGenData = rogueMapGen;
             }
             catch (Exception e)
             {

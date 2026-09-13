@@ -110,6 +110,8 @@ public partial class ChessRogueManager : BasePlayerManager
     {
         if (RunInstance != null) await ClearRun();
 
+        branchId = ChessRogueResources.ResolveBranchId(branchId);
+
         if (!GameData.RogueDLCAreaData.TryGetValue(areaId, out var area) || area.LayerIDList.Count == 0)
             return Retcode.RetRogueAreaInvalid;
         if (!GameData.RogueNousAeonData.ContainsKey(aeonId) || !GameData.RogueNousDiceBranchData.ContainsKey(branchId))

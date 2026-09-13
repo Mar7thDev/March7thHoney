@@ -62,6 +62,8 @@ public class ResourceManager
         GameData.BannersConfig = LoadBanners();
         GameData.VideoKeysConfig =
             LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ?? new VideoKeysConfig();
+        GameData.RogueMapGenData =
+            LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen") ?? [];
         GameData.QueryProductInfoConfig =
             LoadCustomFile<QueryProductInfoConfig>("QueryProductInfo", "QueryProductInfoConfig") ??
             new QueryProductInfoConfig();
