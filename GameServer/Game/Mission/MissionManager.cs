@@ -130,7 +130,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         if (mission == null) return [];
         MissionSync sync = new();
 
-        foreach (var subMission in mission.SubMissionIds)
+        foreach (var subMission in mission.SubMissionIds.Where(id => !IsMechCraftSubMission(id)))
             if (Data.GetSubMissionStatus(subMission) == MissionPhaseEnum.Finish ||
                 Data.GetSubMissionStatus(subMission) == MissionPhaseEnum.Accept)
                 sync.MissionList.Add(new Proto.Mission
@@ -140,7 +140,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
                 });
 
         foreach (var subMission in
-                 mission.SubMissionIds) Data.SetSubMissionStatus(subMission, MissionPhaseEnum.None); // reset
+                 mission.SubMissionIds.Where(id => !IsMechCraftSubMission(id))) Data.SetSubMissionStatus(subMission, MissionPhaseEnum.None); // reset
 
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None); // reset
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
@@ -158,7 +158,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         MissionSync sync = new();
 
-        foreach (var subMission in mission.SubMissionIds)
+        foreach (var subMission in mission.SubMissionIds.Where(id => !IsMechCraftSubMission(id)))
         {
             Data.SetSubMissionStatus(subMission, MissionPhaseEnum.None);
             await SetMissionProgress(subMission, 0, false);
@@ -181,7 +181,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     public async ValueTask<MissionSync?> AcceptSubMission(int missionId, bool sendPacket,
         bool doFinishTypeAction = true)
     {
-        if (!Enabled) return null;
+        if (!Enabled || IsMechCraftSubMission(missionId)) return null;
         GameData.SubMissionInfoData.TryGetValue(missionId, out var mission);
         if (mission == null) return null;
         if (Data.GetSubMissionStatus(missionId) != MissionPhaseEnum.None) return null; // already accepted
@@ -275,7 +275,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask FinishSubMission(int missionId)
     {
-        if (!Enabled) return;
+        if (!Enabled || IsMechCraftSubMission(missionId)) return;
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
         if (subMission == null) return;
         var mainMissionId = subMission.MainMissionId;
@@ -623,7 +623,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask AddMissionProgress(int missionId, int progress)
     {
-        if (!Enabled) return;
+        if (!Enabled || IsMechCraftSubMission(missionId)) return;
 
         Data.SubMissionProgressDict.TryGetValue(missionId, out var currentProgress);
         Data.SubMissionProgressDict[missionId] = currentProgress + progress;
@@ -644,7 +644,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask SetMissionProgress(int missionId, int progress, bool sendPacket = true)
     {
-        if (!Enabled) return;
+        if (!Enabled || IsMechCraftSubMission(missionId)) return;
 
         Data.SubMissionProgressDict[missionId] = progress;
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
@@ -667,6 +667,8 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     #region Mission Status
 
+    private bool IsMechCraftSubMission(int missionId) => Player.MechCraftManager?.IsCompletedSubMission(missionId) == true;
+
     public MissionPhaseEnum GetMainMissionStatus(int missionId)
     {
         if (!Enabled) return MissionPhaseEnum.Finish;
@@ -676,6 +678,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public MissionPhaseEnum GetSubMissionStatus(int missionId)
     {
+        if (IsMechCraftSubMission(missionId)) return MissionPhaseEnum.Finish;
         if (!Enabled) return MissionPhaseEnum.Finish;
 
         return Data.GetSubMissionStatus(missionId);
@@ -693,7 +696,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         if (!Enabled) return [];
 
         var list = new List<int>();
-        list.AddRange(Data.RunningSubMissionIds);
+        list.AddRange(Data.RunningSubMissionIds.Where(id => !IsMechCraftSubMission(id)));
         return list;
     }
 
@@ -703,7 +706,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         var list = new List<SubMissionInfo>();
         var ids = new List<int>();
-        ids.AddRange(Data.RunningSubMissionIds);
+        ids.AddRange(Data.RunningSubMissionIds.Where(id => !IsMechCraftSubMission(id)));
         foreach (var id in ids)
         {
             GameData.SubMissionInfoData.TryGetValue(id, out var mission);
@@ -716,6 +719,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     public int GetMissionProgress(int missionId)
     {
         GameData.SubMissionInfoData.TryGetValue(missionId, out var subMission);
+        if (IsMechCraftSubMission(missionId)) return subMission?.SubMissionInfo?.Progress ?? 1;
         if (!Enabled) return subMission?.SubMissionInfo?.Progress ?? 0;
 
         Data.SubMissionProgressDict.TryGetValue(missionId, out var progress);

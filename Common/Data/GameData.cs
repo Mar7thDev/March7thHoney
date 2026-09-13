@@ -142,6 +142,44 @@ public static partial class GameData
 
     #endregion
 
+    #region MechCraft
+
+    public static Dictionary<int, MechCraftOrderExcel> MechCraftOrderData { get; private set; } = [];
+    public static Dictionary<int, MechCraftExamExcel> MechCraftExamData { get; private set; } = [];
+    public static Dictionary<int, MechCraftRequirementExcel> MechCraftRequirementData { get; private set; } = [];
+    public static Dictionary<int, MechCraftBanCellSchemeExcel> MechCraftBanCellSchemeData { get; private set; } = [];
+    public static Dictionary<int, MechCraftConditionExcel> MechCraftConditionData { get; private set; } = [];
+    public static Dictionary<int, MechCraftChipExcel> MechCraftChipData { get; private set; } = [];
+    public static Dictionary<int, MechCraftTalentPathExcel> MechCraftTalentPathData { get; private set; } = [];
+    public static Dictionary<int, MechCraftTalentPointExcel> MechCraftTalentPointData { get; private set; } = [];
+    public static Dictionary<int, MechCraftEffectExcel> MechCraftEffectData { get; private set; } = [];
+    public static Dictionary<int, MechCraftWorkshopLevelExcel> MechCraftWorkshopLevelData { get; private set; } = [];
+    public static Dictionary<int, MechCraftDesignLevelExcel> MechCraftDesignLevelData { get; private set; } = [];
+    public static Dictionary<int, MechCraftDiyMechatronExcel> MechCraftDiyMechatronData { get; private set; } = [];
+    public static Dictionary<int, MechCraftDiyPoseExcel> MechCraftDiyPoseData { get; private set; } = [];
+    public static Dictionary<int, MechCraftDiyPaintColorExcel> MechCraftDiyPaintColorData { get; private set; } = [];
+    public static Dictionary<int, MechCraftDiyEffectColorExcel> MechCraftDiyEffectColorData { get; private set; } = [];
+    public static List<MechCraftDiyMechInstanceExcel> MechCraftDiyMechInstanceData { get; private set; } = [];
+    public static Dictionary<int, List<MechCraftPlaceChipSchemeExcel>> MechCraftPlaceChipSchemeData { get; private set; } = [];
+    public static Dictionary<int, MechCraftReportExcel> MechCraftReportData { get; private set; } = [];
+    public static Dictionary<int, MechCraftReportCmtExcel> MechCraftReportCmtData { get; private set; } = [];
+    public static Dictionary<int, MechCraftActorExcel> MechCraftActorData { get; private set; } = [];
+    public static HashSet<int> MechCraftRewardQuestIDs { get; private set; } = [];
+    public static int MechCraftActivityPanelID { get; private set; }
+    public static int MechCraftActivityModuleID { get; private set; }
+    public static Dictionary<string, int> MechCraftIntegerConstants { get; private set; } = [];
+    public static Dictionary<string, List<int>> MechCraftIntegerListConstants { get; private set; } = [];
+    public static Dictionary<int, int> MechCraftAttributeLevelThresholds { get; private set; } = [];
+
+    internal static void SetMechCraftActivityCatalog(int panelID, int moduleID, IEnumerable<int> questIDs)
+    {
+        MechCraftActivityPanelID = panelID;
+        MechCraftActivityModuleID = moduleID;
+        MechCraftRewardQuestIDs = questIDs.ToHashSet();
+    }
+
+    #endregion
+
     #region GridFight
 
     public static GridFightBasicOrbRewardsConfig GridFightBasicOrbRewardsConfig { get; set; } = new();
