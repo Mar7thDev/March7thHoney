@@ -204,6 +204,7 @@ public partial class PlayerInstance(PlayerData data)
         RogueManager = new RogueManager(this);
         RogueTournManager = new RogueTourn.RogueTournManager(this);
         RogueMagicManager = new RogueMagic.RogueMagicManager(this);
+        ChessRogueManager = new ChessRogue.ChessRogueManager(this);
         ExpeditionManager = new ExpeditionManager(this);
         TrainPartyManager = new TrainPartyManager(this);
         TrainCakeCatchManager = new TrainCakeCatchManager(this);

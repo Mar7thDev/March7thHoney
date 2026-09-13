@@ -105,6 +105,7 @@ public partial class SceneInstance
         {
             case PlaneTypeEnum.Rogue:
                 EntityLoader = Player.RogueMagicManager?.CreateEntityLoader(this) ??
+                               Player.ChessRogueManager?.CreateEntityLoader(this) ??
                                Player.RogueTournManager?.CreateEntityLoader(this) ?? new RogueEntityLoader(this, Player);
                 break;
             case PlaneTypeEnum.Challenge:

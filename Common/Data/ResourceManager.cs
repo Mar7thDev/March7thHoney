@@ -54,6 +54,7 @@ public class ResourceManager
         });
         var t5 = Task.Run(LoadPerformanceInfo);
         var t6 = Task.Run(LoadDialogueInfo);
+        var t7 = Task.Run(LoadRogueChestMapInfo);
         var t8 = Task.Run(LoadAdventureModifier);
         var t9 = Task.Run(LoadLocalPlayer);
         GameData.ActivityConfig = LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig") ?? new ActivityConfig();
@@ -84,7 +85,10 @@ public class ResourceManager
         ApplyChallengePeakOverrides();
         LoadRogueMagicRoomData();
 
-        Task.WaitAll(t1, t2, t3, t4, t5, t6, t8, t9);
+        LoadChessRogueRoomData();
+        LoadChessRogueDiceSurfaceEffectData();
+
+        Task.WaitAll(t1, t2, t3, t4, t5, t6, t7, t8, t9);
 
         // copy modifiers
         foreach (var value in GameData.AdventureAbilityConfigListData.Values)
@@ -1192,7 +1196,10 @@ public class ResourceManager
             I18NManager.Translate("Word.ChessRogueRoomInfo")));
         var count = 0;
 
-        FileInfo file = new(ConfigManager.Config.Path.ConfigPath + "/ChessRogueRoomGen.json");
+        var customRoomGen = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", "ChessRogueRoomGen.json");
+        FileInfo file = new(File.Exists(customRoomGen)
+            ? customRoomGen
+            : ConfigManager.Config.Path.ConfigPath + "/ChessRogueRoomGen.json");
         List<ChessRogueRoomConfig>? customFile;
         if (!file.Exists)
         {
@@ -1359,7 +1366,11 @@ public class ResourceManager
             I18NManager.Translate("Word.RogueDiceSurfaceInfo")));
         var count = 0;
 
-        FileInfo file = new(ConfigManager.Config.Path.ConfigPath + "/ChessRogueDiceSurfaceEffect.json");
+        var customDiceEffect =
+            Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", "ChessRogueDiceSurfaceEffect.json");
+        FileInfo file = new(File.Exists(customDiceEffect)
+            ? customDiceEffect
+            : ConfigManager.Config.Path.ConfigPath + "/ChessRogueDiceSurfaceEffect.json");
 
         if (!file.Exists)
         {
