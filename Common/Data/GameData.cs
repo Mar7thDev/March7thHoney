@@ -133,6 +133,12 @@ public static partial class GameData
     public static Dictionary<int, ActivityFinalityBattleExcel> ActivityFinalityBattleData { get; private set; } = [];
     public static Dictionary<int, FinalityBattleLevelExcel> FinalityBattleLevelData { get; private set; } = [];
     public static int FinalityBattleTurnLimit { get; set; }
+    public static Dictionary<int, ExpeditionBattleMapExcel> ExpeditionBattleMapData { get; private set; } = [];
+    public static Dictionary<int, ExpeditionBattleRouteExcel> ExpeditionBattleRouteData { get; private set; } = [];
+    public static Dictionary<int, ExpeditionBattleLevelExcel> ExpeditionBattleLevelData { get; private set; } = [];
+    public static Dictionary<int, ExpeditionBattleBuffExcel> ExpeditionBattleBuffData { get; private set; } = [];
+    public static Dictionary<int, ExpeditionBattleFunTitleExcel> ExpeditionBattleFunTitleData { get; private set; } = [];
+    public static Dictionary<string, GridFightDynamicValue> ConstValueClientData { get; private set; } = [];
 
     #endregion
 

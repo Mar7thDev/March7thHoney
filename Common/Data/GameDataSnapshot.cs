@@ -280,6 +280,12 @@ public partial class ActivityRuntimeDataSnapshot
     public Dictionary<int, ActivityFinalityBattleExcel> ActivityFinalityBattleData { get; set; } = [];
     public Dictionary<int, FinalityBattleLevelExcel> FinalityBattleLevelData { get; set; } = [];
     public int FinalityBattleTurnLimit { get; set; }
+    public Dictionary<int, ExpeditionBattleMapExcel> ExpeditionBattleMapData { get; set; } = [];
+    public Dictionary<int, ExpeditionBattleRouteExcel> ExpeditionBattleRouteData { get; set; } = [];
+    public Dictionary<int, ExpeditionBattleLevelExcel> ExpeditionBattleLevelData { get; set; } = [];
+    public Dictionary<int, ExpeditionBattleBuffExcel> ExpeditionBattleBuffData { get; set; } = [];
+    public Dictionary<int, ExpeditionBattleFunTitleExcel> ExpeditionBattleFunTitleData { get; set; } = [];
+    public Dictionary<string, GridFightDynamicValue> ConstValueClientData { get; set; } = [];
 }
 
 [MemoryPackable]
@@ -583,6 +589,12 @@ public static partial class GameData
                 ActivityFinalityBattleData = GameData.ActivityFinalityBattleData,
                 FinalityBattleLevelData = GameData.FinalityBattleLevelData,
                 FinalityBattleTurnLimit = GameData.FinalityBattleTurnLimit,
+                ExpeditionBattleMapData = GameData.ExpeditionBattleMapData,
+                ExpeditionBattleRouteData = GameData.ExpeditionBattleRouteData,
+                ExpeditionBattleLevelData = GameData.ExpeditionBattleLevelData,
+                ExpeditionBattleBuffData = GameData.ExpeditionBattleBuffData,
+                ExpeditionBattleFunTitleData = GameData.ExpeditionBattleFunTitleData,
+                ConstValueClientData = GameData.ConstValueClientData,
             },
         };
     }
@@ -861,5 +873,11 @@ public static partial class GameData
         GameData.ActivityFinalityBattleData = activityRuntimeData.ActivityFinalityBattleData;
         GameData.FinalityBattleLevelData = activityRuntimeData.FinalityBattleLevelData;
         GameData.FinalityBattleTurnLimit = activityRuntimeData.FinalityBattleTurnLimit;
+        GameData.ExpeditionBattleMapData = activityRuntimeData.ExpeditionBattleMapData;
+        GameData.ExpeditionBattleRouteData = activityRuntimeData.ExpeditionBattleRouteData;
+        GameData.ExpeditionBattleLevelData = activityRuntimeData.ExpeditionBattleLevelData;
+        GameData.ExpeditionBattleBuffData = activityRuntimeData.ExpeditionBattleBuffData;
+        GameData.ExpeditionBattleFunTitleData = activityRuntimeData.ExpeditionBattleFunTitleData;
+        GameData.ConstValueClientData = activityRuntimeData.ConstValueClientData;
     }
 }
