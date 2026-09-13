@@ -218,6 +218,8 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
     {
         // Each mode only claims its own answer arms in its own scene and returns null otherwise.
         var modeRsp = player.RogueMagicManager != null ? await player.RogueMagicManager.HandlePendingAction(req) : null;
+        if (modeRsp == null && player.ChessRogueManager != null)
+            modeRsp = await player.ChessRogueManager.HandlePendingAction(req);
         if (modeRsp == null && player.RogueTournManager != null)
             modeRsp = await player.RogueTournManager.HandlePendingAction(req);
         if (modeRsp != null)
