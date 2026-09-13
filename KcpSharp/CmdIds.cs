@@ -2874,4 +2874,19 @@ public class CmdIds
     public const int FinalityBattleGetDataCsReq = 10022;
     public const int FinalityBattleGetDataScRsp = 10023;
     public const int FinalityBattleSettleScNotify = 10024;
+    public const int MechCraftReportGameStateScRsp = 10003;
+    public const int MechCraftSubmitExamCsReq = 10004;
+    public const int MechCraftActivateTalentPointCsReq = 10005;
+    public const int MechCraftReportGameStateCsReq = 10006;
+    public const int MechCraftSaveDiyScRsp = 10007;
+    public const int MechCraftSubmitOrderScRsp = 10008;
+    public const int MechCraftSaveDiyCsReq = 10009;
+    public const int MechCraftGetDataCsReq = 10010;
+    public const int MechCraftActivateTalentPointScRsp = 10012;
+    public const int MechCraftSubmitExamScRsp = 10013;
+    public const int MechCraftGetDataScRsp = 10016;
+    public const int MechCraftSubmitOrderCsReq = 10017;
+    public const int MechCraftFinishReportScRsp = 10018;
+    public const int MechCraftFinishReportCsReq = 10019;
+    public const int MechCraftUnlockScNotify = 10020;
 }

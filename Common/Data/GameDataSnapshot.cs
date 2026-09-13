@@ -286,6 +286,38 @@ public partial class ActivityRuntimeDataSnapshot
     public Dictionary<int, ExpeditionBattleBuffExcel> ExpeditionBattleBuffData { get; set; } = [];
     public Dictionary<int, ExpeditionBattleFunTitleExcel> ExpeditionBattleFunTitleData { get; set; } = [];
     public Dictionary<string, GridFightDynamicValue> ConstValueClientData { get; set; } = [];
+    public MechCraftRuntimeDataSnapshot? MechCraftData { get; set; } = new();
+}
+
+[MemoryPackable]
+public partial class MechCraftRuntimeDataSnapshot
+{
+    public Dictionary<int, MechCraftOrderExcel> MechCraftOrderData { get; set; } = [];
+    public Dictionary<int, MechCraftExamExcel> MechCraftExamData { get; set; } = [];
+    public Dictionary<int, MechCraftRequirementExcel> MechCraftRequirementData { get; set; } = [];
+    public Dictionary<int, MechCraftBanCellSchemeExcel> MechCraftBanCellSchemeData { get; set; } = [];
+    public Dictionary<int, MechCraftConditionExcel> MechCraftConditionData { get; set; } = [];
+    public Dictionary<int, MechCraftChipExcel> MechCraftChipData { get; set; } = [];
+    public Dictionary<int, MechCraftTalentPathExcel> MechCraftTalentPathData { get; set; } = [];
+    public Dictionary<int, MechCraftTalentPointExcel> MechCraftTalentPointData { get; set; } = [];
+    public Dictionary<int, MechCraftEffectExcel> MechCraftEffectData { get; set; } = [];
+    public Dictionary<int, MechCraftWorkshopLevelExcel> MechCraftWorkshopLevelData { get; set; } = [];
+    public Dictionary<int, MechCraftDesignLevelExcel> MechCraftDesignLevelData { get; set; } = [];
+    public Dictionary<int, MechCraftDiyMechatronExcel> MechCraftDiyMechatronData { get; set; } = [];
+    public Dictionary<int, MechCraftDiyPoseExcel> MechCraftDiyPoseData { get; set; } = [];
+    public Dictionary<int, MechCraftDiyPaintColorExcel> MechCraftDiyPaintColorData { get; set; } = [];
+    public Dictionary<int, MechCraftDiyEffectColorExcel> MechCraftDiyEffectColorData { get; set; } = [];
+    public List<MechCraftDiyMechInstanceExcel> MechCraftDiyMechInstanceData { get; set; } = [];
+    public Dictionary<int, List<MechCraftPlaceChipSchemeExcel>> MechCraftPlaceChipSchemeData { get; set; } = [];
+    public Dictionary<int, MechCraftReportExcel> MechCraftReportData { get; set; } = [];
+    public Dictionary<int, MechCraftReportCmtExcel> MechCraftReportCmtData { get; set; } = [];
+    public Dictionary<int, MechCraftActorExcel> MechCraftActorData { get; set; } = [];
+    public HashSet<int> MechCraftRewardQuestIDs { get; set; } = [];
+    public int MechCraftActivityPanelID { get; set; }
+    public int MechCraftActivityModuleID { get; set; }
+    public Dictionary<string, int> MechCraftIntegerConstants { get; set; } = [];
+    public Dictionary<string, List<int>> MechCraftIntegerListConstants { get; set; } = [];
+    public Dictionary<int, int> MechCraftAttributeLevelThresholds { get; set; } = [];
 }
 
 [MemoryPackable]
@@ -595,6 +627,35 @@ public static partial class GameData
                 ExpeditionBattleBuffData = GameData.ExpeditionBattleBuffData,
                 ExpeditionBattleFunTitleData = GameData.ExpeditionBattleFunTitleData,
                 ConstValueClientData = GameData.ConstValueClientData,
+                MechCraftData = new MechCraftRuntimeDataSnapshot
+                {
+                    MechCraftOrderData = GameData.MechCraftOrderData,
+                    MechCraftExamData = GameData.MechCraftExamData,
+                    MechCraftRequirementData = GameData.MechCraftRequirementData,
+                    MechCraftBanCellSchemeData = GameData.MechCraftBanCellSchemeData,
+                    MechCraftConditionData = GameData.MechCraftConditionData,
+                    MechCraftChipData = GameData.MechCraftChipData,
+                    MechCraftTalentPathData = GameData.MechCraftTalentPathData,
+                    MechCraftTalentPointData = GameData.MechCraftTalentPointData,
+                    MechCraftEffectData = GameData.MechCraftEffectData,
+                    MechCraftWorkshopLevelData = GameData.MechCraftWorkshopLevelData,
+                    MechCraftDesignLevelData = GameData.MechCraftDesignLevelData,
+                    MechCraftDiyMechatronData = GameData.MechCraftDiyMechatronData,
+                    MechCraftDiyPoseData = GameData.MechCraftDiyPoseData,
+                    MechCraftDiyPaintColorData = GameData.MechCraftDiyPaintColorData,
+                    MechCraftDiyEffectColorData = GameData.MechCraftDiyEffectColorData,
+                    MechCraftDiyMechInstanceData = GameData.MechCraftDiyMechInstanceData,
+                    MechCraftPlaceChipSchemeData = GameData.MechCraftPlaceChipSchemeData,
+                    MechCraftReportData = GameData.MechCraftReportData,
+                    MechCraftReportCmtData = GameData.MechCraftReportCmtData,
+                    MechCraftActorData = GameData.MechCraftActorData,
+                    MechCraftRewardQuestIDs = GameData.MechCraftRewardQuestIDs,
+                    MechCraftActivityPanelID = GameData.MechCraftActivityPanelID,
+                    MechCraftActivityModuleID = GameData.MechCraftActivityModuleID,
+                    MechCraftIntegerConstants = GameData.MechCraftIntegerConstants,
+                    MechCraftIntegerListConstants = GameData.MechCraftIntegerListConstants,
+                    MechCraftAttributeLevelThresholds = GameData.MechCraftAttributeLevelThresholds,
+                },
             },
         };
     }
@@ -879,5 +940,32 @@ public static partial class GameData
         GameData.ExpeditionBattleBuffData = activityRuntimeData.ExpeditionBattleBuffData;
         GameData.ExpeditionBattleFunTitleData = activityRuntimeData.ExpeditionBattleFunTitleData;
         GameData.ConstValueClientData = activityRuntimeData.ConstValueClientData;
+        var mechCraftData = activityRuntimeData.MechCraftData ?? new MechCraftRuntimeDataSnapshot();
+        GameData.MechCraftOrderData = mechCraftData.MechCraftOrderData;
+        GameData.MechCraftExamData = mechCraftData.MechCraftExamData;
+        GameData.MechCraftRequirementData = mechCraftData.MechCraftRequirementData;
+        GameData.MechCraftBanCellSchemeData = mechCraftData.MechCraftBanCellSchemeData;
+        GameData.MechCraftConditionData = mechCraftData.MechCraftConditionData;
+        GameData.MechCraftChipData = mechCraftData.MechCraftChipData;
+        GameData.MechCraftTalentPathData = mechCraftData.MechCraftTalentPathData;
+        GameData.MechCraftTalentPointData = mechCraftData.MechCraftTalentPointData;
+        GameData.MechCraftEffectData = mechCraftData.MechCraftEffectData;
+        GameData.MechCraftWorkshopLevelData = mechCraftData.MechCraftWorkshopLevelData;
+        GameData.MechCraftDesignLevelData = mechCraftData.MechCraftDesignLevelData;
+        GameData.MechCraftDiyMechatronData = mechCraftData.MechCraftDiyMechatronData;
+        GameData.MechCraftDiyPoseData = mechCraftData.MechCraftDiyPoseData;
+        GameData.MechCraftDiyPaintColorData = mechCraftData.MechCraftDiyPaintColorData;
+        GameData.MechCraftDiyEffectColorData = mechCraftData.MechCraftDiyEffectColorData;
+        GameData.MechCraftDiyMechInstanceData = mechCraftData.MechCraftDiyMechInstanceData;
+        GameData.MechCraftPlaceChipSchemeData = mechCraftData.MechCraftPlaceChipSchemeData;
+        GameData.MechCraftReportData = mechCraftData.MechCraftReportData;
+        GameData.MechCraftReportCmtData = mechCraftData.MechCraftReportCmtData;
+        GameData.MechCraftActorData = mechCraftData.MechCraftActorData;
+        GameData.MechCraftRewardQuestIDs = mechCraftData.MechCraftRewardQuestIDs;
+        GameData.MechCraftActivityPanelID = mechCraftData.MechCraftActivityPanelID;
+        GameData.MechCraftActivityModuleID = mechCraftData.MechCraftActivityModuleID;
+        GameData.MechCraftIntegerConstants = mechCraftData.MechCraftIntegerConstants;
+        GameData.MechCraftIntegerListConstants = mechCraftData.MechCraftIntegerListConstants;
+        GameData.MechCraftAttributeLevelThresholds = mechCraftData.MechCraftAttributeLevelThresholds;
     }
 }
