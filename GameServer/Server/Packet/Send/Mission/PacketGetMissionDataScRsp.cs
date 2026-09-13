@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Kcp;
@@ -38,14 +39,19 @@ public class PacketGetMissionDataScRsp : BasePacket
                     Status = MissionStatus.MissionDoing
                 });
 
-        foreach (var mission in GameData.SubMissionInfoData.Keys.Concat(GameData.SubMissionData.Keys).Distinct())
-            if (player.MissionManager!.GetSubMissionStatus(mission) == MissionPhaseEnum.Accept)
+        foreach (var mission in GameData.SubMissionInfoData.Keys.Concat(GameData.SubMissionData.Keys)
+                     .Concat(MechCraftResourceCatalog.BlockingSubMissionIDs)
+                     .Append(MechCraftResourceCatalog.TutorialSubMissionID).Where(id => id > 0).Distinct())
+        {
+            var isMechCraftMission = player.MechCraftManager?.IsCompletedSubMission(mission) == true;
+            if (isMechCraftMission || player.MissionManager!.GetSubMissionStatus(mission) == MissionPhaseEnum.Accept)
                 proto.MissionList.Add(new Proto.Mission
                 {
                     Id = (uint)mission,
-                    Status = MissionStatus.MissionDoing,
+                    Status = isMechCraftMission ? MissionStatus.MissionFinish : MissionStatus.MissionDoing,
                     Progress = (uint)player.MissionManager!.GetMissionProgress(mission)
                 });
+        }
 
         SetData(proto);
     }
