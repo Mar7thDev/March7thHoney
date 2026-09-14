@@ -9,6 +9,11 @@ public class HandlerSceneEntityMoveCsReq : Handler<SceneEntityMoveCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, SceneEntityMoveCsReq req)
     {
+        if (player.B51RacingManager?.HandleSceneMove(req) == true)
+        {
+            await connection.SendPacket(CmdIds.SceneEntityMoveScRsp);
+            return;
+        }
         if (req != null)
             foreach (var motion in req.EntityMotionList)
                 if (player.SceneInstance!.AvatarInfo.ContainsKey((int)motion.EntityId))

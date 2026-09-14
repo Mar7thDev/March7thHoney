@@ -9,7 +9,7 @@ public class PacketGetCurLineupDataScRsp : BasePacket
     public PacketGetCurLineupDataScRsp(PlayerInstance player) : base(CmdIds.GetCurLineupDataScRsp)
     {
         player.LineupManager?.RecalculateExtraMpCount();
-        var lineupProto = player.LineupManager?.GetCurLineup()?.ToProto() ?? new LineupInfo();
+        var lineupProto = player.B51RacingManager?.GetRaidLineup() ?? player.LineupManager?.GetCurLineup()?.ToProto() ?? new LineupInfo();
         var maxMp = (uint)(player.LineupManager?.GetMaxMp() ?? 5);
         lineupProto.MaxMp = maxMp;
         if (lineupProto.Mp > maxMp)

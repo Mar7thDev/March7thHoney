@@ -30,16 +30,16 @@ namespace March7thHoney.Proto {
             "CgdyZXRjb2RlGAMgASgNEiQKDmNoYWxsZW5nZV9saXN0GAogAygLMgwuQk9Q",
             "T0JIR0RJS04ibgogUmFpZENvbGxlY3Rpb25FbnRlck5leHRSYWlkQ3NSZXES",
             "DwoHcmFpZF9pZBgIIAEoDRITCgthdmF0YXJfbGlzdBgJIAMoDRITCgt3b3Js",
-            "ZF9sZXZlbBgNIAEoDRIPCgdpc19zYXZlGA4gASgNIlAKIFJhaWRDb2xsZWN0",
-            "aW9uRW50ZXJOZXh0UmFpZFNjUnNwEhsKBXNjZW5lGAggASgLMgwuR0VHTEpE",
-            "RUxCSEESDwoHcmV0Y29kZRgLIAEoDSqgAgoVQ21kUmFpZENvbGxlY3Rpb25U",
-            "eXBlEiUKIUNtZFJhaWRDb2xsZWN0aW9uVHlwZV9OTENER0lQR0ZEShAAEjIK",
-            "LUNtZFJhaWRDb2xsZWN0aW9uVHlwZV9SYWlkQ29sbGVjdGlvbkRhdGFDc1Jl",
-            "cRCmNhI7CjZDbWRSYWlkQ29sbGVjdGlvblR5cGVfUmFpZENvbGxlY3Rpb25F",
-            "bnRlck5leHRSYWlkU2NSc3AQoDYSMgotQ21kUmFpZENvbGxlY3Rpb25UeXBl",
-            "X1JhaWRDb2xsZWN0aW9uRGF0YVNjUnNwEKw2EjsKNkNtZFJhaWRDb2xsZWN0",
-            "aW9uVHlwZV9SYWlkQ29sbGVjdGlvbkVudGVyTmV4dFJhaWRDc1JlcRCkNkIW",
-            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
+            "ZF9sZXZlbBgNIAEoDRIPCgdpc19zYXZlGA4gASgNIlIKIFJhaWRDb2xsZWN0",
+            "aW9uRW50ZXJOZXh0UmFpZFNjUnNwEh0KBXNjZW5lGAggASgLMg4uUmFpZFNj",
+            "ZW5lRGF0YRIPCgdyZXRjb2RlGAsgASgNKqACChVDbWRSYWlkQ29sbGVjdGlv",
+            "blR5cGUSJQohQ21kUmFpZENvbGxlY3Rpb25UeXBlX05MQ0RHSVBHRkRKEAAS",
+            "MgotQ21kUmFpZENvbGxlY3Rpb25UeXBlX1JhaWRDb2xsZWN0aW9uRGF0YUNz",
+            "UmVxEKY2EjsKNkNtZFJhaWRDb2xsZWN0aW9uVHlwZV9SYWlkQ29sbGVjdGlv",
+            "bkVudGVyTmV4dFJhaWRTY1JzcBCgNhIyCi1DbWRSYWlkQ29sbGVjdGlvblR5",
+            "cGVfUmFpZENvbGxlY3Rpb25EYXRhU2NSc3AQrDYSOwo2Q21kUmFpZENvbGxl",
+            "Y3Rpb25UeXBlX1JhaWRDb2xsZWN0aW9uRW50ZXJOZXh0UmFpZENzUmVxEKQ2",
+            "QhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRaidCollectionType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -1017,13 +1017,13 @@ namespace March7thHoney.Proto {
 
     /// <summary>Field number for the "scene" field.</summary>
     public const int SceneFieldNumber = 8;
-    private global::March7thHoney.Proto.GEGLJDELBHA scene_;
+    private global::March7thHoney.Proto.RaidSceneData scene_;
     /// <summary>
     /// offset: 24
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GEGLJDELBHA Scene {
+    public global::March7thHoney.Proto.RaidSceneData Scene {
       get { return scene_; }
       set {
         scene_ = value;
@@ -1145,7 +1145,7 @@ namespace March7thHoney.Proto {
       }
       if (other.scene_ != null) {
         if (scene_ == null) {
-          Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+          Scene = new global::March7thHoney.Proto.RaidSceneData();
         }
         Scene.MergeFrom(other.Scene);
       }
@@ -1173,7 +1173,7 @@ namespace March7thHoney.Proto {
             break;
           case 66: {
             if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+              Scene = new global::March7thHoney.Proto.RaidSceneData();
             }
             input.ReadMessage(Scene);
             break;
@@ -1203,7 +1203,7 @@ namespace March7thHoney.Proto {
             break;
           case 66: {
             if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+              Scene = new global::March7thHoney.Proto.RaidSceneData();
             }
             input.ReadMessage(Scene);
             break;

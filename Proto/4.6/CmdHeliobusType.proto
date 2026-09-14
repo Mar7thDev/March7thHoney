@@ -168,7 +168,7 @@ message HeliobusStartRaidCsReq {
 
 message HeliobusStartRaidScRsp {
 	uint32 retcode = 7; // offset: 32
-	GEGLJDELBHA scene = 12; // offset: 16
+	RaidSceneData scene = 12; // offset: 16
 }
 
 message HeliobusUnlockSkillScNotify {

@@ -11,7 +11,7 @@ public class PacketGetCurSceneInfoScRsp : BasePacket
         var scene = player.SceneInstance!;
         var proto = new GetCurSceneInfoScRsp
         {
-            Scene = scene.ToProto()
+            Scene = player.B51RacingManager?.GetRaidScene() ?? scene.ToProto()
         };
         scene.MarkClientSceneSnapshotSynced();
 

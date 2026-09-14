@@ -61,40 +61,40 @@ namespace March7thHoney.Proto {
             "HVNldENsaWVudFJhaWRUYXJnZXRDb3VudENzUmVxEhAKCHByb2dyZXNzGAcg",
             "ASgNEhMKC0tKS0dISUVLTklEGAggASgNIlcKHVNldENsaWVudFJhaWRUYXJn",
             "ZXRDb3VudFNjUnNwEg8KB3JldGNvZGUYAiABKA0SEwoLS0pLR0hJRUtOSUQY",
-            "CSABKA0SEAoIcHJvZ3Jlc3MYDCABKA0inAEKDlN0YXJ0UmFpZENzUmVxEhMK",
-            "C3dvcmxkX2xldmVsGAIgASgNEg8KB2lzX3NhdmUYAyABKA0SJgoLTklNREVQ",
-            "RkpKTkkYBCADKAsyES5BdmF0YXJJZGVudGlmaWVyEhYKDnByb3BfZW50aXR5",
-            "X2lkGAYgASgNEg8KB3JhaWRfaWQYCSABKA0SEwoLYXZhdGFyX2xpc3QYDSAD",
-            "KA0iPgoOU3RhcnRSYWlkU2NSc3ASGwoFc2NlbmUYBSABKAsyDC5HRUdMSkRF",
-            "TEJIQRIPCgdyZXRjb2RlGAwgASgNIjMKHFRha2VDaGFsbGVuZ2VSYWlkUmV3",
-            "YXJkQ3NSZXESEwoLSEVKQU5DQ0RHQVAYDCABKA0iXwocVGFrZUNoYWxsZW5n",
-            "ZVJhaWRSZXdhcmRTY1JzcBIPCgdyZXRjb2RlGAIgASgNEhMKC0hFSkFOQ0NE",
-            "R0FQGAwgASgNEhkKBnJld2FyZBgPIAEoCzIJLkl0ZW1MaXN0Kp4GCgtDbWRS",
-            "YWlkVHlwZRIbChdDbWRSYWlkVHlwZV9OTENER0lQR0ZEShAAEiEKHENtZFJh",
-            "aWRUeXBlX0dldFJhaWRJbmZvU2NSc3AQphESHAoXQ21kUmFpZFR5cGVfR0RK",
-            "Q09GS0dKQ0cQuBESKgolQ21kUmFpZFR5cGVfR2V0Q2hhbGxlbmdlUmFpZElu",
-            "Zm9TY1JzcBCoERIfChpDbWRSYWlkVHlwZV9TdGFydFJhaWRTY1JzcBCeERIt",
-            "CihDbWRSYWlkVHlwZV9UYWtlQ2hhbGxlbmdlUmFpZFJld2FyZFNjUnNwELIR",
-            "EiQKH0NtZFJhaWRUeXBlX0dldEFsbFNhdmVSYWlkU2NSc3AQmhESHwoaQ21k",
-            "UmFpZFR5cGVfU3RhcnRSYWlkQ3NSZXEQuhESHwoaQ21kUmFpZFR5cGVfUmFp",
-            "ZEluZm9Ob3RpZnkQtRESIQocQ21kUmFpZFR5cGVfR2V0UmFpZEluZm9Dc1Jl",
-            "cRDIERIkCh9DbWRSYWlkVHlwZV9EZWxTYXZlUmFpZFNjTm90aWZ5EKoREiEK",
-            "HENtZFJhaWRUeXBlX0dldFNhdmVSYWlkQ3NSZXEQxxESJAofQ21kUmFpZFR5",
-            "cGVfR2V0QWxsU2F2ZVJhaWRDc1JlcRCvERIfChpDbWRSYWlkVHlwZV9MZWF2",
-            "ZVJhaWRDc1JlcRCsERIfChpDbWRSYWlkVHlwZV9MZWF2ZVJhaWRTY1JzcBC3",
-            "ERIhChxDbWRSYWlkVHlwZV9SYWlkS2lja0J5U2VydmVyEL4REi4KKUNtZFJh",
-            "aWRUeXBlX1NldENsaWVudFJhaWRUYXJnZXRDb3VudFNjUnNwEKAREiEKHENt",
-            "ZFJhaWRUeXBlX0dldFNhdmVSYWlkU2NSc3AQsRESLgopQ21kUmFpZFR5cGVf",
-            "U2V0Q2xpZW50UmFpZFRhcmdldENvdW50Q3NSZXEQwBESJAofQ21kUmFpZFR5",
-            "cGVfQ2hhbGxlbmdlUmFpZE5vdGlmeRCcERItCihDbWRSYWlkVHlwZV9UYWtl",
-            "Q2hhbGxlbmdlUmFpZFJld2FyZENzUmVxEKMRKkcKC0dNRk1QUEtBRUhFEhsK",
-            "F0dNRk1QUEtBRUhFX05MQ0RHSVBHRkRKEAASGwoXR01GTVBQS0FFSEVfSE5B",
-            "RENBSEhLSUoQASpkCgtNSlBHREpJR0xLTxIbChdNSlBHREpJR0xLT19OTENE",
-            "R0lQR0ZEShAAEhsKF01KUEdESklHTEtPX0JNT09HQk5QRUFBEAESGwoXTUpQ",
-            "R0RKSUdMS09fQ0lIRkdKRENISUEQAippCgpSYWlkU3RhdHVzEhQKEFJBSURf",
-            "U1RBVFVTX05PTkUQABIVChFSQUlEX1NUQVRVU19ET0lORxABEhYKElJBSURf",
-            "U1RBVFVTX0ZJTklTSBACEhYKElJBSURfU1RBVFVTX0ZBSUxFRBADQhaqAhNN",
-            "YXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "CSABKA0SEAoIcHJvZ3Jlc3MYDCABKA0ipwEKDlN0YXJ0UmFpZENzUmVxEhMK",
+            "C3dvcmxkX2xldmVsGAIgASgNEg8KB2lzX3NhdmUYAyABKA0SMQoWYXZhdGFy",
+            "X2lkZW50aWZpZXJfbGlzdBgEIAMoCzIRLkF2YXRhcklkZW50aWZpZXISFgoO",
+            "cHJvcF9lbnRpdHlfaWQYBiABKA0SDwoHcmFpZF9pZBgJIAEoDRITCgthdmF0",
+            "YXJfbGlzdBgNIAMoDSJACg5TdGFydFJhaWRTY1JzcBIdCgVzY2VuZRgFIAEo",
+            "CzIOLlJhaWRTY2VuZURhdGESDwoHcmV0Y29kZRgMIAEoDSIzChxUYWtlQ2hh",
+            "bGxlbmdlUmFpZFJld2FyZENzUmVxEhMKC0hFSkFOQ0NER0FQGAwgASgNIl8K",
+            "HFRha2VDaGFsbGVuZ2VSYWlkUmV3YXJkU2NSc3ASDwoHcmV0Y29kZRgCIAEo",
+            "DRITCgtIRUpBTkNDREdBUBgMIAEoDRIZCgZyZXdhcmQYDyABKAsyCS5JdGVt",
+            "TGlzdCqeBgoLQ21kUmFpZFR5cGUSGwoXQ21kUmFpZFR5cGVfTkxDREdJUEdG",
+            "REoQABIhChxDbWRSYWlkVHlwZV9HZXRSYWlkSW5mb1NjUnNwEKYREhwKF0Nt",
+            "ZFJhaWRUeXBlX0dESkNPRktHSkNHELgREioKJUNtZFJhaWRUeXBlX0dldENo",
+            "YWxsZW5nZVJhaWRJbmZvU2NSc3AQqBESHwoaQ21kUmFpZFR5cGVfU3RhcnRS",
+            "YWlkU2NSc3AQnhESLQooQ21kUmFpZFR5cGVfVGFrZUNoYWxsZW5nZVJhaWRS",
+            "ZXdhcmRTY1JzcBCyERIkCh9DbWRSYWlkVHlwZV9HZXRBbGxTYXZlUmFpZFNj",
+            "UnNwEJoREh8KGkNtZFJhaWRUeXBlX1N0YXJ0UmFpZENzUmVxELoREh8KGkNt",
+            "ZFJhaWRUeXBlX1JhaWRJbmZvTm90aWZ5ELUREiEKHENtZFJhaWRUeXBlX0dl",
+            "dFJhaWRJbmZvQ3NSZXEQyBESJAofQ21kUmFpZFR5cGVfRGVsU2F2ZVJhaWRT",
+            "Y05vdGlmeRCqERIhChxDbWRSYWlkVHlwZV9HZXRTYXZlUmFpZENzUmVxEMcR",
+            "EiQKH0NtZFJhaWRUeXBlX0dldEFsbFNhdmVSYWlkQ3NSZXEQrxESHwoaQ21k",
+            "UmFpZFR5cGVfTGVhdmVSYWlkQ3NSZXEQrBESHwoaQ21kUmFpZFR5cGVfTGVh",
+            "dmVSYWlkU2NSc3AQtxESIQocQ21kUmFpZFR5cGVfUmFpZEtpY2tCeVNlcnZl",
+            "chC+ERIuCilDbWRSYWlkVHlwZV9TZXRDbGllbnRSYWlkVGFyZ2V0Q291bnRT",
+            "Y1JzcBCgERIhChxDbWRSYWlkVHlwZV9HZXRTYXZlUmFpZFNjUnNwELEREi4K",
+            "KUNtZFJhaWRUeXBlX1NldENsaWVudFJhaWRUYXJnZXRDb3VudENzUmVxEMAR",
+            "EiQKH0NtZFJhaWRUeXBlX0NoYWxsZW5nZVJhaWROb3RpZnkQnBESLQooQ21k",
+            "UmFpZFR5cGVfVGFrZUNoYWxsZW5nZVJhaWRSZXdhcmRDc1JlcRCjESpHCgtH",
+            "TUZNUFBLQUVIRRIbChdHTUZNUFBLQUVIRV9OTENER0lQR0ZEShAAEhsKF0dN",
+            "Rk1QUEtBRUhFX0hOQURDQUhIS0lKEAEqZAoLTUpQR0RKSUdMS08SGwoXTUpQ",
+            "R0RKSUdMS09fTkxDREdJUEdGREoQABIbChdNSlBHREpJR0xLT19CTU9PR0JO",
+            "UEVBQRABEhsKF01KUEdESklHTEtPX0NJSEZHSkRDSElBEAIqaQoKUmFpZFN0",
+            "YXR1cxIUChBSQUlEX1NUQVRVU19OT05FEAASFQoRUkFJRF9TVEFUVVNfRE9J",
+            "TkcQARIWChJSQUlEX1NUQVRVU19GSU5JU0gQAhIWChJSQUlEX1NUQVRVU19G",
+            "QUlMRUQQA0IWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdRaidType), typeof(global::March7thHoney.Proto.GMFMPPKAEHE), typeof(global::March7thHoney.Proto.MJPGDJIGLKO), typeof(global::March7thHoney.Proto.RaidStatus), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -118,7 +118,7 @@ namespace March7thHoney.Proto {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.RaidTargetInfo), global::March7thHoney.Proto.RaidTargetInfo.Parser, new[]{ "KCEEHIOCBPC", "KKCKMCDGCGK", "LCILPGIDEAC" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetClientRaidTargetCountCsReq), global::March7thHoney.Proto.SetClientRaidTargetCountCsReq.Parser, new[]{ "Progress", "KJKGHIEKNID" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetClientRaidTargetCountScRsp), global::March7thHoney.Proto.SetClientRaidTargetCountScRsp.Parser, new[]{ "Retcode", "KJKGHIEKNID", "Progress" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartRaidCsReq), global::March7thHoney.Proto.StartRaidCsReq.Parser, new[]{ "WorldLevel", "IsSave", "NIMDEPFJJNI", "PropEntityId", "RaidId", "AvatarList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartRaidCsReq), global::March7thHoney.Proto.StartRaidCsReq.Parser, new[]{ "WorldLevel", "IsSave", "AvatarIdentifierList", "PropEntityId", "RaidId", "AvatarList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartRaidScRsp), global::March7thHoney.Proto.StartRaidScRsp.Parser, new[]{ "Scene", "Retcode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeChallengeRaidRewardCsReq), global::March7thHoney.Proto.TakeChallengeRaidRewardCsReq.Parser, new[]{ "HEJANCCDGAP" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeChallengeRaidRewardScRsp), global::March7thHoney.Proto.TakeChallengeRaidRewardScRsp.Parser, new[]{ "Retcode", "HEJANCCDGAP", "Reward" }, null, null, null, null)
@@ -5402,7 +5402,7 @@ namespace March7thHoney.Proto {
     public StartRaidCsReq(StartRaidCsReq other) : this() {
       worldLevel_ = other.worldLevel_;
       isSave_ = other.isSave_;
-      nIMDEPFJJNI_ = other.nIMDEPFJJNI_.Clone();
+      avatarIdentifierList_ = other.avatarIdentifierList_.Clone();
       propEntityId_ = other.propEntityId_;
       raidId_ = other.raidId_;
       avatarList_ = other.avatarList_.Clone();
@@ -5445,18 +5445,18 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "NIMDEPFJJNI" field.</summary>
-    public const int NIMDEPFJJNIFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_nIMDEPFJJNI_codec
+    /// <summary>Field number for the "avatar_identifier_list" field.</summary>
+    public const int AvatarIdentifierListFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.AvatarIdentifier> _repeated_avatarIdentifierList_codec
         = pb::FieldCodec.ForMessage(34, global::March7thHoney.Proto.AvatarIdentifier.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> nIMDEPFJJNI_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> avatarIdentifierList_ = new pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier>();
     /// <summary>
     /// offset: 16
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> NIMDEPFJJNI {
-      get { return nIMDEPFJJNI_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.AvatarIdentifier> AvatarIdentifierList {
+      get { return avatarIdentifierList_; }
     }
 
     /// <summary>Field number for the "prop_entity_id" field.</summary>
@@ -5520,7 +5520,7 @@ namespace March7thHoney.Proto {
       }
       if (WorldLevel != other.WorldLevel) return false;
       if (IsSave != other.IsSave) return false;
-      if(!nIMDEPFJJNI_.Equals(other.nIMDEPFJJNI_)) return false;
+      if(!avatarIdentifierList_.Equals(other.avatarIdentifierList_)) return false;
       if (PropEntityId != other.PropEntityId) return false;
       if (RaidId != other.RaidId) return false;
       if(!avatarList_.Equals(other.avatarList_)) return false;
@@ -5533,7 +5533,7 @@ namespace March7thHoney.Proto {
       int hash = 1;
       if (WorldLevel != 0) hash ^= WorldLevel.GetHashCode();
       if (IsSave != 0) hash ^= IsSave.GetHashCode();
-      hash ^= nIMDEPFJJNI_.GetHashCode();
+      hash ^= avatarIdentifierList_.GetHashCode();
       if (PropEntityId != 0) hash ^= PropEntityId.GetHashCode();
       if (RaidId != 0) hash ^= RaidId.GetHashCode();
       hash ^= avatarList_.GetHashCode();
@@ -5563,7 +5563,7 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(IsSave);
       }
-      nIMDEPFJJNI_.WriteTo(output, _repeated_nIMDEPFJJNI_codec);
+      avatarIdentifierList_.WriteTo(output, _repeated_avatarIdentifierList_codec);
       if (PropEntityId != 0) {
         output.WriteRawTag(48);
         output.WriteUInt32(PropEntityId);
@@ -5591,7 +5591,7 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(24);
         output.WriteUInt32(IsSave);
       }
-      nIMDEPFJJNI_.WriteTo(ref output, _repeated_nIMDEPFJJNI_codec);
+      avatarIdentifierList_.WriteTo(ref output, _repeated_avatarIdentifierList_codec);
       if (PropEntityId != 0) {
         output.WriteRawTag(48);
         output.WriteUInt32(PropEntityId);
@@ -5617,7 +5617,7 @@ namespace March7thHoney.Proto {
       if (IsSave != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(IsSave);
       }
-      size += nIMDEPFJJNI_.CalculateSize(_repeated_nIMDEPFJJNI_codec);
+      size += avatarIdentifierList_.CalculateSize(_repeated_avatarIdentifierList_codec);
       if (PropEntityId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PropEntityId);
       }
@@ -5643,7 +5643,7 @@ namespace March7thHoney.Proto {
       if (other.IsSave != 0) {
         IsSave = other.IsSave;
       }
-      nIMDEPFJJNI_.Add(other.nIMDEPFJJNI_);
+      avatarIdentifierList_.Add(other.avatarIdentifierList_);
       if (other.PropEntityId != 0) {
         PropEntityId = other.PropEntityId;
       }
@@ -5679,7 +5679,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 34: {
-            nIMDEPFJJNI_.AddEntriesFrom(input, _repeated_nIMDEPFJJNI_codec);
+            avatarIdentifierList_.AddEntriesFrom(input, _repeated_avatarIdentifierList_codec);
             break;
           }
           case 48: {
@@ -5723,7 +5723,7 @@ namespace March7thHoney.Proto {
             break;
           }
           case 34: {
-            nIMDEPFJJNI_.AddEntriesFrom(ref input, _repeated_nIMDEPFJJNI_codec);
+            avatarIdentifierList_.AddEntriesFrom(ref input, _repeated_avatarIdentifierList_codec);
             break;
           }
           case 48: {
@@ -5794,13 +5794,13 @@ namespace March7thHoney.Proto {
 
     /// <summary>Field number for the "scene" field.</summary>
     public const int SceneFieldNumber = 5;
-    private global::March7thHoney.Proto.GEGLJDELBHA scene_;
+    private global::March7thHoney.Proto.RaidSceneData scene_;
     /// <summary>
     /// offset: 24
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GEGLJDELBHA Scene {
+    public global::March7thHoney.Proto.RaidSceneData Scene {
       get { return scene_; }
       set {
         scene_ = value;
@@ -5922,7 +5922,7 @@ namespace March7thHoney.Proto {
       }
       if (other.scene_ != null) {
         if (scene_ == null) {
-          Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+          Scene = new global::March7thHoney.Proto.RaidSceneData();
         }
         Scene.MergeFrom(other.Scene);
       }
@@ -5950,7 +5950,7 @@ namespace March7thHoney.Proto {
             break;
           case 42: {
             if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+              Scene = new global::March7thHoney.Proto.RaidSceneData();
             }
             input.ReadMessage(Scene);
             break;
@@ -5980,7 +5980,7 @@ namespace March7thHoney.Proto {
             break;
           case 42: {
             if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+              Scene = new global::March7thHoney.Proto.RaidSceneData();
             }
             input.ReadMessage(Scene);
             break;

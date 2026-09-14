@@ -160,14 +160,14 @@ message SetClientRaidTargetCountScRsp {
 message StartRaidCsReq {
 	uint32 world_level = 2; // offset: 48
 	uint32 is_save = 3; // offset: 52
-	repeated AvatarIdentifier NIMDEPFJJNI = 4; // offset: 16
+	repeated AvatarIdentifier avatar_identifier_list = 4; // offset: 16
 	uint32 prop_entity_id = 6; // offset: 40
 	uint32 raid_id = 9; // offset: 44
 	repeated uint32 avatar_list = 13; // offset: 32
 }
 
 message StartRaidScRsp {
-	GEGLJDELBHA scene = 5; // offset: 24
+	RaidSceneData scene = 5; // offset: 24
 	uint32 retcode = 12; // offset: 32
 }
 

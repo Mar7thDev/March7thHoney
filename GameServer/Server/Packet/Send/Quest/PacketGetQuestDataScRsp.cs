@@ -12,7 +12,7 @@ public class PacketGetQuestDataScRsp : BasePacket
         var proto = new GetQuestDataScRsp();
         foreach (var quest in GameData.QuestDataData.Values)
         {
-            if (player.MechCraftManager?.GetQuestInfo(quest.QuestID) is { } activityQuest)
+            if ((player.B51RacingManager?.GetQuestInfo(quest.QuestID) ?? player.MechCraftManager?.GetQuestInfo(quest.QuestID)) is { } activityQuest)
             {
                 proto.QuestList.Add(activityQuest.ToProto());
                 continue;

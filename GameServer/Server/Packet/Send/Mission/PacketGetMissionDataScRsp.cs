@@ -27,6 +27,7 @@ public class PacketGetMissionDataScRsp : BasePacket
         if (anchorSubMissionId > 0) proto.GKFPKBGJBGN = (uint)anchorSubMissionId;
 
         proto.FinishedMainMissionIdList.AddRange(player.MissionManager.Data.FinishedMainMissionIds
+            .Concat(player.B51RacingManager?.CompletedMainMissionIDs ?? [])
             .Where(x => x > 0)
             .Select(x => (uint)x)
             .Distinct());
@@ -43,12 +44,13 @@ public class PacketGetMissionDataScRsp : BasePacket
                      .Concat(MechCraftResourceCatalog.BlockingSubMissionIDs)
                      .Append(MechCraftResourceCatalog.TutorialSubMissionID).Where(id => id > 0).Distinct())
         {
-            var isMechCraftMission = player.MechCraftManager?.IsCompletedSubMission(mission) == true;
-            if (isMechCraftMission || player.MissionManager!.GetSubMissionStatus(mission) == MissionPhaseEnum.Accept)
+            var isCompletedActivityMission = player.MechCraftManager?.IsCompletedSubMission(mission) == true ||
+                player.B51RacingManager?.IsCompletedSubMission(mission) == true;
+            if (isCompletedActivityMission || player.MissionManager!.GetSubMissionStatus(mission) == MissionPhaseEnum.Accept)
                 proto.MissionList.Add(new Proto.Mission
                 {
                     Id = (uint)mission,
-                    Status = isMechCraftMission ? MissionStatus.MissionFinish : MissionStatus.MissionDoing,
+                    Status = isCompletedActivityMission ? MissionStatus.MissionFinish : MissionStatus.MissionDoing,
                     Progress = (uint)player.MissionManager!.GetMissionProgress(mission)
                 });
         }

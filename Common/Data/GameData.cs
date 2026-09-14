@@ -38,6 +38,8 @@ public static partial class GameData
 
     #region Activity
 
+    public static B51RacingResourceCatalog B51RacingData { get; private set; } = new();
+
     public static ActivityConfig ActivityConfig { get; set; } = new();
 
     public static Dictionary<int, List<DailyActiveConfigExcel>> DailyActiveConfigData { get; private set; } = [];

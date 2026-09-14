@@ -828,8 +828,8 @@ enum GridFightUpdateSource {
 
 // ========================= Heliobus =========================
 
-message GEGLJDELBHA {
-	SceneInfo MOPHKIGKDIK = 1; // offset: 16
+message RaidSceneData {
+	SceneInfo scene_info = 1; // offset: 16
 	LineupInfo lineup = 9; // offset: 24
 	uint32 raid_id = 12; // offset: 44
 	uint32 world_level = 15; // offset: 40
