@@ -287,6 +287,7 @@ public partial class ActivityRuntimeDataSnapshot
     public Dictionary<int, ExpeditionBattleFunTitleExcel> ExpeditionBattleFunTitleData { get; set; } = [];
     public Dictionary<string, GridFightDynamicValue> ConstValueClientData { get; set; } = [];
     public MechCraftRuntimeDataSnapshot? MechCraftData { get; set; } = new();
+    public B51RacingResourceCatalog? B51RacingData { get; set; } = new();
 }
 
 [MemoryPackable]
@@ -627,6 +628,7 @@ public static partial class GameData
                 ExpeditionBattleBuffData = GameData.ExpeditionBattleBuffData,
                 ExpeditionBattleFunTitleData = GameData.ExpeditionBattleFunTitleData,
                 ConstValueClientData = GameData.ConstValueClientData,
+                B51RacingData = GameData.B51RacingData,
                 MechCraftData = new MechCraftRuntimeDataSnapshot
                 {
                     MechCraftOrderData = GameData.MechCraftOrderData,
@@ -940,6 +942,7 @@ public static partial class GameData
         GameData.ExpeditionBattleBuffData = activityRuntimeData.ExpeditionBattleBuffData;
         GameData.ExpeditionBattleFunTitleData = activityRuntimeData.ExpeditionBattleFunTitleData;
         GameData.ConstValueClientData = activityRuntimeData.ConstValueClientData;
+        GameData.B51RacingData = activityRuntimeData.B51RacingData ?? new B51RacingResourceCatalog();
         var mechCraftData = activityRuntimeData.MechCraftData ?? new MechCraftRuntimeDataSnapshot();
         GameData.MechCraftOrderData = mechCraftData.MechCraftOrderData;
         GameData.MechCraftExamData = mechCraftData.MechCraftExamData;

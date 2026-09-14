@@ -72,39 +72,39 @@ namespace March7thHoney.Proto {
             "MgwuQkdPTUlIRUZIUEEijgEKFkhlbGlvYnVzU3RhcnRSYWlkQ3NSZXESFgoO",
             "cHJvcF9lbnRpdHlfaWQYASABKA0SEwoLRE5PQUVQRFBIS0sYAiABKA0SEAoI",
             "c2tpbGxfaWQYAyABKA0SDwoHcmFpZF9pZBgIIAEoDRIPCgdpc19zYXZlGAkg",
-            "ASgIEhMKC2F2YXRhcl9saXN0GAsgAygNIkYKFkhlbGlvYnVzU3RhcnRSYWlk",
-            "U2NSc3ASDwoHcmV0Y29kZRgHIAEoDRIbCgVzY2VuZRgMIAEoCzIMLkdFR0xK",
-            "REVMQkhBIkQKG0hlbGlvYnVzVW5sb2NrU2tpbGxTY05vdGlmeRITCgtFTkdF",
-            "UE1QQ0pQQxgEIAEoDRIQCghza2lsbF9pZBgLIAEoDSIbChlIZWxpb2J1c1Vw",
-            "Z3JhZGVMZXZlbENzUmVxIjsKGUhlbGlvYnVzVXBncmFkZUxldmVsU2NSc3AS",
-            "DQoFbGV2ZWwYAyABKA0SDwoHcmV0Y29kZRgPIAEoDSI3CgtPTkJMTEdIRUxP",
-            "QhITCgtOR09OQU5LQktNRhgIIAMoDRITCgtFTkdFUE1QQ0pQQxgKIAEoDSrj",
-            "CAoPQ21kSGVsaW9idXNUeXBlEh8KG0NtZEhlbGlvYnVzVHlwZV9OTENER0lQ",
-            "R0ZEShAAEi0KKENtZEhlbGlvYnVzVHlwZV9IZWxpb2J1c0VudGVyQmF0dGxl",
-            "U2NSc3AQzi0SKQokQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVzU25zUG9zdENz",
-            "UmVxEOQtEikKJENtZEhlbGlvYnVzVHlwZV9IZWxpb2J1c1Nuc1Bvc3RTY1Jz",
-            "cBC4LRIsCidDbWRIZWxpb2J1c1R5cGVfSGVsaW9idXNTbnNDb21tZW50U2NS",
-            "c3AQty0SLgopQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVzVXBncmFkZUxldmVs",
-            "U2NSc3AQsC0SMQosQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVzTGluZXVwVXBk",
-            "YXRlU2NOb3RpZnkQ/S0SLAonQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVzU25z",
-            "Q29tbWVudENzUmVxEPstEikKJENtZEhlbGlvYnVzVHlwZV9IZWxpb2J1c1Nu",
-            "c0xpa2VDc1JlcRDiLRItCihDbWRIZWxpb2J1c1R5cGVfSGVsaW9idXNTZWxl",
-            "Y3RTa2lsbFNjUnNwEL0tEisKJkNtZEhlbGlvYnVzVHlwZV9IZWxpb2J1c1N0",
-            "YXJ0UmFpZFNjUnNwEKwtEi0KKENtZEhlbGlvYnVzVHlwZV9IZWxpb2J1c0Vu",
-            "dGVyQmF0dGxlQ3NSZXEQuS0SKQokQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVz",
-            "U25zTGlrZVNjUnNwEOAtEjQKL0NtZEhlbGlvYnVzVHlwZV9IZWxpb2J1c0No",
-            "YWxsZW5nZVVwZGF0ZVNjTm90aWZ5ELstEi0KKENtZEhlbGlvYnVzVHlwZV9I",
-            "ZWxpb2J1c1NlbGVjdFNraWxsQ3NSZXEQ6C0SLgopQ21kSGVsaW9idXNUeXBl",
-            "X0hlbGlvYnVzVXBncmFkZUxldmVsQ3NSZXEQ5S0SMAorQ21kSGVsaW9idXNU",
-            "eXBlX0hlbGlvYnVzSW5mb0NoYW5nZWRTY05vdGlmeRDPLRIrCiZDbWRIZWxp",
-            "b2J1c1R5cGVfSGVsaW9idXNTdGFydFJhaWRDc1JlcRD2LRIpCiRDbWRIZWxp",
-            "b2J1c1R5cGVfSGVsaW9idXNTbnNSZWFkU2NSc3AQ8y0SLgopQ21kSGVsaW9i",
-            "dXNUeXBlX0hlbGlvYnVzQWN0aXZpdHlEYXRhU2NSc3AQwS0SLgopQ21kSGVs",
-            "aW9idXNUeXBlX0hlbGlvYnVzU25zVXBkYXRlU2NOb3RpZnkQ0i0SKQokQ21k",
-            "SGVsaW9idXNUeXBlX0hlbGlvYnVzU25zUmVhZENzUmVxEK0tEjAKK0NtZEhl",
-            "bGlvYnVzVHlwZV9IZWxpb2J1c1VubG9ja1NraWxsU2NOb3RpZnkQ7C0SLgop",
-            "Q21kSGVsaW9idXNUeXBlX0hlbGlvYnVzQWN0aXZpdHlEYXRhQ3NSZXEQyi1C",
-            "FqoCE01hcmNoN3RoSG9uZXkuUHJvdG9iBnByb3RvMw=="));
+            "ASgIEhMKC2F2YXRhcl9saXN0GAsgAygNIkgKFkhlbGlvYnVzU3RhcnRSYWlk",
+            "U2NSc3ASDwoHcmV0Y29kZRgHIAEoDRIdCgVzY2VuZRgMIAEoCzIOLlJhaWRT",
+            "Y2VuZURhdGEiRAobSGVsaW9idXNVbmxvY2tTa2lsbFNjTm90aWZ5EhMKC0VO",
+            "R0VQTVBDSlBDGAQgASgNEhAKCHNraWxsX2lkGAsgASgNIhsKGUhlbGlvYnVz",
+            "VXBncmFkZUxldmVsQ3NSZXEiOwoZSGVsaW9idXNVcGdyYWRlTGV2ZWxTY1Jz",
+            "cBINCgVsZXZlbBgDIAEoDRIPCgdyZXRjb2RlGA8gASgNIjcKC09OQkxMR0hF",
+            "TE9CEhMKC05HT05BTktCS01GGAggAygNEhMKC0VOR0VQTVBDSlBDGAogASgN",
+            "KuMICg9DbWRIZWxpb2J1c1R5cGUSHwobQ21kSGVsaW9idXNUeXBlX05MQ0RH",
+            "SVBHRkRKEAASLQooQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVzRW50ZXJCYXR0",
+            "bGVTY1JzcBDOLRIpCiRDbWRIZWxpb2J1c1R5cGVfSGVsaW9idXNTbnNQb3N0",
+            "Q3NSZXEQ5C0SKQokQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVzU25zUG9zdFNj",
+            "UnNwELgtEiwKJ0NtZEhlbGlvYnVzVHlwZV9IZWxpb2J1c1Nuc0NvbW1lbnRT",
+            "Y1JzcBC3LRIuCilDbWRIZWxpb2J1c1R5cGVfSGVsaW9idXNVcGdyYWRlTGV2",
+            "ZWxTY1JzcBCwLRIxCixDbWRIZWxpb2J1c1R5cGVfSGVsaW9idXNMaW5ldXBV",
+            "cGRhdGVTY05vdGlmeRD9LRIsCidDbWRIZWxpb2J1c1R5cGVfSGVsaW9idXNT",
+            "bnNDb21tZW50Q3NSZXEQ+y0SKQokQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVz",
+            "U25zTGlrZUNzUmVxEOItEi0KKENtZEhlbGlvYnVzVHlwZV9IZWxpb2J1c1Nl",
+            "bGVjdFNraWxsU2NSc3AQvS0SKwomQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVz",
+            "U3RhcnRSYWlkU2NSc3AQrC0SLQooQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVz",
+            "RW50ZXJCYXR0bGVDc1JlcRC5LRIpCiRDbWRIZWxpb2J1c1R5cGVfSGVsaW9i",
+            "dXNTbnNMaWtlU2NSc3AQ4C0SNAovQ21kSGVsaW9idXNUeXBlX0hlbGlvYnVz",
+            "Q2hhbGxlbmdlVXBkYXRlU2NOb3RpZnkQuy0SLQooQ21kSGVsaW9idXNUeXBl",
+            "X0hlbGlvYnVzU2VsZWN0U2tpbGxDc1JlcRDoLRIuCilDbWRIZWxpb2J1c1R5",
+            "cGVfSGVsaW9idXNVcGdyYWRlTGV2ZWxDc1JlcRDlLRIwCitDbWRIZWxpb2J1",
+            "c1R5cGVfSGVsaW9idXNJbmZvQ2hhbmdlZFNjTm90aWZ5EM8tEisKJkNtZEhl",
+            "bGlvYnVzVHlwZV9IZWxpb2J1c1N0YXJ0UmFpZENzUmVxEPYtEikKJENtZEhl",
+            "bGlvYnVzVHlwZV9IZWxpb2J1c1Nuc1JlYWRTY1JzcBDzLRIuCilDbWRIZWxp",
+            "b2J1c1R5cGVfSGVsaW9idXNBY3Rpdml0eURhdGFTY1JzcBDBLRIuCilDbWRI",
+            "ZWxpb2J1c1R5cGVfSGVsaW9idXNTbnNVcGRhdGVTY05vdGlmeRDSLRIpCiRD",
+            "bWRIZWxpb2J1c1R5cGVfSGVsaW9idXNTbnNSZWFkQ3NSZXEQrS0SMAorQ21k",
+            "SGVsaW9idXNUeXBlX0hlbGlvYnVzVW5sb2NrU2tpbGxTY05vdGlmeRDsLRIu",
+            "CilDbWRIZWxpb2J1c1R5cGVfSGVsaW9idXNBY3Rpdml0eURhdGFDc1JlcRDK",
+            "LUIWqgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdHeliobusType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -6528,13 +6528,13 @@ namespace March7thHoney.Proto {
 
     /// <summary>Field number for the "scene" field.</summary>
     public const int SceneFieldNumber = 12;
-    private global::March7thHoney.Proto.GEGLJDELBHA scene_;
+    private global::March7thHoney.Proto.RaidSceneData scene_;
     /// <summary>
     /// offset: 16
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.GEGLJDELBHA Scene {
+    public global::March7thHoney.Proto.RaidSceneData Scene {
       get { return scene_; }
       set {
         scene_ = value;
@@ -6644,7 +6644,7 @@ namespace March7thHoney.Proto {
       }
       if (other.scene_ != null) {
         if (scene_ == null) {
-          Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+          Scene = new global::March7thHoney.Proto.RaidSceneData();
         }
         Scene.MergeFrom(other.Scene);
       }
@@ -6673,7 +6673,7 @@ namespace March7thHoney.Proto {
           }
           case 98: {
             if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+              Scene = new global::March7thHoney.Proto.RaidSceneData();
             }
             input.ReadMessage(Scene);
             break;
@@ -6703,7 +6703,7 @@ namespace March7thHoney.Proto {
           }
           case 98: {
             if (scene_ == null) {
-              Scene = new global::March7thHoney.Proto.GEGLJDELBHA();
+              Scene = new global::March7thHoney.Proto.RaidSceneData();
             }
             input.ReadMessage(Scene);
             break;

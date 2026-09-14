@@ -388,6 +388,7 @@ public partial class PlayerInstance
         GameData.MazePlaneData.TryGetValue(planeId, out var plane);
         if (plane == null) return;
 
+        B51RacingManager?.ClearRace();
         var floorKey = ((long)planeId << 32) | (uint)floorId;
         if (!_loadingFloors.Add(floorKey)) return; // cycle guard: floor already loading (orphan level-graph EnterMap) -> stack overflow
         try

@@ -32,6 +32,6 @@ message RaidCollectionEnterNextRaidCsReq {
 }
 
 message RaidCollectionEnterNextRaidScRsp {
-	GEGLJDELBHA scene = 8; // offset: 24
+	RaidSceneData scene = 8; // offset: 24
 	uint32 retcode = 11; // offset: 32
 }

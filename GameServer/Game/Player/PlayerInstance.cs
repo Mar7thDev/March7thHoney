@@ -11,6 +11,7 @@ using March7thHoney.GameServer.Game.Activity;
 using March7thHoney.GameServer.Game.Activity.ExpeditionBattle;
 using March7thHoney.GameServer.Game.Activity.FinalityBattle;
 using March7thHoney.GameServer.Game.Activity.MechCraft;
+using March7thHoney.GameServer.Game.Activity.B51Racing;
 using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Calyx;
@@ -85,6 +86,7 @@ public partial class PlayerInstance(PlayerData data)
     public TrainCakeCatchManager? TrainCakeCatchManager { get; private set; }
     public FinalityBattleManager? FinalityBattleManager { get; private set; }
     public MechCraftManager? MechCraftManager { get; private set; }
+    public B51RacingManager? B51RacingManager { get; private set; }
     public ExpeditionBattleManager? ExpeditionBattleManager { get; private set; }
 
     #endregion
@@ -210,6 +212,7 @@ public partial class PlayerInstance(PlayerData data)
         TrainCakeCatchManager = new TrainCakeCatchManager(this);
         FinalityBattleManager = new FinalityBattleManager(this);
         MechCraftManager = new MechCraftManager(this);
+        B51RacingManager = new B51RacingManager(this);
         ExpeditionBattleManager = new ExpeditionBattleManager(this);
         TaskManager = new TaskManager(this);
         RaidManager = new RaidManager(this);
@@ -424,6 +427,7 @@ public partial class PlayerInstance(PlayerData data)
 
     public void OnLogoutAsync()
     {
+        B51RacingManager?.ClearRace();
     }
 
     public async ValueTask SendPacket(BasePacket packet)

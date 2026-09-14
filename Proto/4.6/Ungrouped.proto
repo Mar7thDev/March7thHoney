@@ -31,7 +31,7 @@ message B51RacingAgendaInfo {
 
 message B51RacingCarDisplay {
 	repeated uint32 equipped_part_id_list = 3; // offset: 16
-	uint32 car_id = 4; // offset: 32
+	uint32 driver_id = 4; // offset: 32
 	uint32 car_num = 6; // offset: 36
 	uint32 paint_id = 12; // offset: 40
 }
@@ -51,14 +51,14 @@ message B51RacingCarLiveryScRsp {
 }
 
 message B51RacingChallengeCarData {
-	uint32 cycle_id = 10; // offset: 40
+	uint32 car_id = 10; // offset: 40
 	repeated uint32 equipped_part_id_list = 13; // offset: 24
 	B51RacingCarLivery livery = 15; // offset: 16
 }
 
 message B51RacingChallengeData {
 	uint32 driver_id = 1; // offset: 40
-	repeated KVP team_point_list = 13; // offset: 24
+	repeated KVP track_best_time_list = 13; // offset: 24
 	B51RacingChallengeCarData car = 14; // offset: 16
 }
 
@@ -66,8 +66,8 @@ message B51RacingChallengeEndMatchCsReq {
 	uint32 match_id = 1; // offset: 44
 	B51RacingMatchStats stats = 2; // offset: 16
 	uint32 rank = 7; // offset: 36
-	uint32 random_seed = 9; // offset: 32
-	HPICFNLLMCO result_type = 11; // offset: 52
+	uint32 session_id = 9; // offset: 32
+	B51RacingMatchResultType result_type = 11; // offset: 52
 	uint32 finish_time_ms = 13; // offset: 48
 	uint32 track_id = 14; // offset: 40
 }
@@ -76,7 +76,7 @@ message B51RacingChallengeEndMatchScRsp {
 	uint32 match_id = 7; // offset: 32
 	uint32 track_id = 10; // offset: 24
 	uint32 retcode = 11; // offset: 36
-	uint32 score = 13; // offset: 28
+	uint32 best_time_ms = 13; // offset: 28
 }
 
 message B51RacingChallengeStartMatchCsReq {
@@ -86,14 +86,14 @@ message B51RacingChallengeStartMatchCsReq {
 }
 
 message B51RacingChallengeStartMatchScRsp {
-	uint32 random_seed = 3; // offset: 28
-	uint32 driver_id = 11; // offset: 24
+	uint32 driver_id = 3; // offset: 28
+	uint32 session_id = 11; // offset: 24
 	uint32 retcode = 12; // offset: 32
 }
 
 message B51RacingChallengeUpdateCarCsReq {
 	repeated uint32 equipped_part_id_list = 3; // offset: 32
-	uint32 cycle_id = 11; // offset: 40
+	uint32 car_id = 11; // offset: 40
 	B51RacingCarLivery livery = 12; // offset: 24
 }
 
@@ -126,8 +126,8 @@ message B51RacingDriverUnlockScNotify {
 
 message B51RacingEndMatchCsReq {
 	B51RacingMatchStats stats = 2; // offset: 24
-	uint32 random_seed = 7; // offset: 48
-	HPICFNLLMCO result_type = 8; // offset: 32
+	uint32 session_id = 7; // offset: 48
+	B51RacingMatchResultType result_type = 8; // offset: 32
 	uint32 track_id = 10; // offset: 40
 	uint32 finish_time_ms = 11; // offset: 36
 	uint32 rank = 15; // offset: 44
@@ -155,7 +155,7 @@ message B51RacingGetDataScRsp {
 
 message B51RacingMatchInfo {
 	uint32 match_id = 2; // offset: 32
-	uint32 random_seed = 4; // offset: 28
+	uint32 session_id = 4; // offset: 28
 	uint32 track_id = 6; // offset: 24
 	uint64 start_time_ms = 14; // offset: 40
 }
@@ -586,11 +586,11 @@ message HMACEHDGGHB {
 	int64 CMHKFNFKGOI = 3; // offset: 40
 }
 
-enum HPICFNLLMCO {
-	HPICFNLLMCO_NLCDGIPGFDJ = 0;
-	HPICFNLLMCO_CIHFGJDCHIA = 1;
-	HPICFNLLMCO_INCLHHDFCEL = 2;
-	HPICFNLLMCO_EMMGHDLIPOH = 3;
+enum B51RacingMatchResultType {
+	B51RacingMatchResultType_NONE = 0;
+	B51RacingMatchResultType_COMPLETED = 1;
+	B51RacingMatchResultType_INCOMPLETE = 2;
+	B51RacingMatchResultType_INTERRUPTED = 3;
 }
 
 message IAKKHBENIOL {

@@ -209,7 +209,7 @@ message StartPunkLordRaidCsReq {
 }
 
 message StartPunkLordRaidScRsp {
-	GEGLJDELBHA scene = 1; // offset: 40
+	RaidSceneData scene = 1; // offset: 40
 	repeated uint32 FNMGMNABAJG = 2; // offset: 16
 	JEIAEAEGEBJ ONICJOAOEMA = 4; // offset: 24
 	uint32 retcode = 7; // offset: 56
