@@ -1,4 +1,5 @@
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Tutorial;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -13,7 +14,8 @@ public class PacketGetTutorialGuideScRsp : BasePacket
             proto.TutorialGuideList.Add(new TutorialGuide
             {
                 Id = (uint)data.Key,
-                Status = data.Value
+                Status = data.Value,
+                Type = TutorialHelper.GuideTypeOf(player, data.Key)
             });
 
         SetData(proto);

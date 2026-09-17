@@ -128,11 +128,22 @@ public static class SameSeedMigrator
         foreach (var source in current.Where(def => def.Kind == DefKind.Message))
         {
             var targetName = typeMappings.GetValueOrDefault(source.Name, source.Name);
-            if (!translations.ScopedFields.TryGetValue(source.Name, out var explicitFields) &&
-                !translations.ScopedFields.TryGetValue(targetName, out explicitFields)) continue;
-            if (!fieldMappings.TryGetValue(targetName, out var fields))
-                fieldMappings[targetName] = fields = new Dictionary<string, string>(StringComparer.Ordinal);
-            foreach (var (obf, real) in explicitFields) fields.TryAdd(obf, real);
+            // A table can contain both raw-scoped and semantic-scoped fields for the same type.
+            // Merge both; choosing the raw scope alone silently drops semantic corrections.
+            foreach (var scope in new[] { source.Name, targetName }.Distinct(StringComparer.Ordinal))
+            {
+                if (!translations.ScopedFields.TryGetValue(scope, out var explicitFields)) continue;
+                if (!fieldMappings.TryGetValue(targetName, out var fields))
+                    fieldMappings[targetName] = fields = new Dictionary<string, string>(StringComparer.Ordinal);
+                foreach (var (obf, real) in explicitFields)
+                {
+                    // A verified current-version correction must win over inferred old-version names.
+                    if (translations.ForcedFields.Contains($"{scope}.{obf}"))
+                        fields[obf] = real;
+                    else
+                        fields.TryAdd(obf, real);
+                }
+            }
         }
 
         foreach (var source in current.Where(def => def.Kind == DefKind.Enum))

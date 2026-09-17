@@ -30,6 +30,13 @@ public class HandlerPlayerGetTokenCsReq : Handler
 
         // Validate the game login token before creating a player session.
         int uid;
+        var connectionIdentity = AccountBanHelper.BuildIdentityKeys([], connection.RemoteEndPoint.Address.ToString());
+        if (IdentityBlockHelper.TryGetActiveBan(connectionIdentity, out var networkBan))
+        {
+            await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList,
+                AccountBanHelper.ToBlackInfo(networkBan), networkBan.FormatLoginMessage()));
+            return;
+        }
 
         if (ConfigManager.Config.ServerOption.ServerConfig.RunDispatch ||
             string.IsNullOrEmpty(ConfigManager.Config.ServerOption.ServerConfig.FromDispatchBaseUrl))
@@ -96,7 +103,8 @@ public class HandlerPlayerGetTokenCsReq : Handler
             var form = new Dictionary<string, string>
             {
                 ["accountUid"] = req.AccountUid,
-                ["token"] = req.Token
+                ["token"] = req.Token,
+                ["clientIp"] = connection.RemoteEndPoint.Address.ToString()
             };
 
             var res = await HttpNetwork.SendPostFormRequest(targetUrl, form, headers);
@@ -118,6 +126,9 @@ public class HandlerPlayerGetTokenCsReq : Handler
             }
         }
 
+
+        if (DatabaseHelper.IsUidDeleted(uid) || AccountData.GetAccountByUid(uid)?.IsDeleting == true)
+            return;
 
         if (!ResourceManager.IsLoaded)
         {
@@ -141,6 +152,11 @@ public class HandlerPlayerGetTokenCsReq : Handler
             $"Debug-{DateTime.Now:yyyy-MM-dd HH-mm-ss}.log");
 
         await connection.Player.OnGetToken();
+        if (DatabaseHelper.IsUidDeleted(uid) || AccountData.GetAccountByUid(uid)?.IsDeleting == true)
+        {
+            connection.Stop();
+            return;
+        }
         connection.Player.Connection = connection;
         await connection.SendPacket(new PacketPlayerGetTokenScRsp(connection));
 

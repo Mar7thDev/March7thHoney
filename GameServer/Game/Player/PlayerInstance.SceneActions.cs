@@ -31,7 +31,54 @@ public partial class PlayerInstance
             if (isInRange)
                 if (LineupManager?.GetCurLineup()?.Heal(10000, true) == true)
                     await SendPacket(new PacketSyncLineupNotify(LineupManager.GetCurLineup()!));
+
+            // Waypoint unlock is independent of the spring heal: Space Anchors / Calyx checkpoints far from any
+            // spring must still flip CheckPointEnable + UnlockTeleportNotify when the player walks up to them.
+            await SceneInstance.TryUnlockNearbyWaypoint(Data.Pos);
         }
+    }
+
+    /// <summary>Remembers a floor the player has entered (GetEnteredSceneScRsp with the story enabled).</summary>
+    public void RecordEnteredScene(int planeId, int floorId)
+    {
+        if (SceneData == null || planeId == 0 || floorId == 0) return;
+        if (!SceneData.EnteredSceneData.TryGetValue(planeId, out var floors))
+        {
+            floors = [];
+            SceneData.EnteredSceneData[planeId] = floors;
+        }
+
+        if (!floors.Contains(floorId)) floors.Add(floorId);
+    }
+
+    /// <summary>Whether the map may offer this waypoint. Story off: every waypoint is unlocked (legacy behaviour).</summary>
+    public bool IsTeleportUnlocked(int floorId, int mappingInfoId)
+    {
+        if (!MissionEnabled) return true;
+        return SceneData != null && SceneData.UnlockedTeleportData.TryGetValue(floorId, out var list) &&
+               list.Contains(mappingInfoId);
+    }
+
+    /// <summary>
+    ///     Records a reached waypoint and, when <paramref name="notify" /> is set, sends UnlockTeleportNotify the
+    ///     first time. Returns true when the unlock was new.
+    /// </summary>
+    public async ValueTask<bool> RecordTeleportUnlock(int floorId, int mappingInfoId, bool notify)
+    {
+        if (SceneData == null || mappingInfoId == 0) return false;
+        if (!SceneData.UnlockedTeleportData.TryGetValue(floorId, out var list))
+        {
+            list = [];
+            SceneData.UnlockedTeleportData[floorId] = list;
+        }
+
+        if (list.Contains(mappingInfoId)) return false;
+        list.Add(mappingInfoId);
+
+        if (notify)
+            await SendPacket(new PacketUnlockTeleportNotify(mappingInfoId,
+                SceneInstance?.FloorId == floorId ? SceneInstance.EntryId : Data.EntryId));
+        return true;
     }
 
     public async ValueTask<EntityProp?> InteractProp(int propEntityId, int interactId)
@@ -163,6 +210,11 @@ public partial class PlayerInstance
                 break;
         }
 
+        // Prop-graph fan-out (RPG.GameCore.PropReqInteract): the interacted prop's InitLevelGraph may request
+        // sibling interacts server-side - the robot treasure-hunt scan (floor 20111001 g47) reveals its chest
+        // this way. The target's own graph is re-driven recursively so the whole chain lands at once.
+        await SceneInstance.ApplyPropInteractFanOut(prop);
+
         // for door unlock
         if (prop.PropInfo.UnlockDoorID.Count > 0)
             foreach (var p in prop.PropInfo.UnlockDoorID.SelectMany(id =>
@@ -260,16 +312,27 @@ public partial class PlayerInstance
     public async ValueTask<bool> EnterScene(int entryId, int teleportId, bool sendPacket, int storyLineId = 0,
         bool mapTp = false)
     {
-        var beforeStoryLineId = StoryLineManager?.StoryLineData.CurStoryLineId;
-        if (storyLineId != StoryLineManager?.StoryLineData.CurStoryLineId)
+        // Preserve the existing return contract for callers that only need the over-map flag.
+        return (await TryEnterScene(entryId, teleportId, sendPacket, storyLineId, mapTp)).IsOverMap;
+    }
+
+    public async ValueTask<(bool Success, bool IsOverMap)> TryEnterScene(int entryId, int teleportId,
+        bool sendPacket, int storyLineId = 0, bool mapTp = false)
+    {
+        var beforeStoryLineId = StoryLineManager?.StoryLineData.CurStoryLineId ?? 0;
+        if (entryId == 0)
         {
-            if (StoryLineManager != null)
-                await StoryLineManager.EnterStoryLine(storyLineId, entryId == 0); // entryId == 0 -> teleport
-            mapTp = false; // do not use mapTp when enter story line
+            // Story-line transitions with no entrance use the story's saved position.
+            if (StoryLineManager == null || storyLineId == beforeStoryLineId) return (false, false);
+            var beforeScene = SceneInstance;
+            await StoryLineManager.EnterStoryLine(storyLineId, true);
+            var transitioned = StoryLineManager.StoryLineData.CurStoryLineId == storyLineId
+                               && SceneInstance != null && !ReferenceEquals(beforeScene, SceneInstance);
+            return (transitioned, transitioned);
         }
 
         GameData.MapEntranceData.TryGetValue(entryId, out var entrance);
-        if (entrance == null) return false;
+        if (entrance == null || !GameData.MazePlaneData.ContainsKey(entrance.PlaneID)) return (false, false);
 
         GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floorInfo);
         // GetFloorInfo hands back null for a floor the resource dump does not contain. Dereferencing it
@@ -278,7 +341,7 @@ public partial class PlayerInstance
         if (floorInfo == null)
         {
             SceneLogger.Warn($"EnterScene({entryId}) aborted: no floor data for P{entrance.PlaneID}_F{entrance.FloorID}.");
-            return false;
+            return (false, false);
         }
 
         var startGroup = entrance.StartGroupID;
@@ -309,20 +372,26 @@ public partial class PlayerInstance
         {
             SceneLogger.Warn($"EnterScene({entryId}) aborted: no usable anchor on P{entrance.PlaneID}_F{entrance.FloorID} " +
                         $"(group {startGroup}, anchor {startAnchor}).");
-            return false;
+            return (false, false);
+        }
+
+        // Validate the destination before changing the player's story-line state.
+        if (storyLineId != beforeStoryLineId)
+        {
+            if (StoryLineManager == null) return (false, false);
+            await StoryLineManager.EnterStoryLine(storyLineId, false);
+            if (StoryLineManager.StoryLineData.CurStoryLineId != storyLineId) return (false, false);
+            mapTp = false;
         }
 
         await MissionManager!.HandleFinishType(MissionFinishTypeEnum.EnterMapByEntrance, entrance);
 
         var beforeEntryId = Data.EntryId;
 
-        await LoadScene(entrance.PlaneID, entrance.FloorID, entryId, anchor.ToPositionProto(),
+        var loaded = await TryLoadScene(entrance.PlaneID, entrance.FloorID, entryId, anchor.ToPositionProto(),
             anchor.ToRotationProto(), sendPacket, mapTp);
 
-        var afterEntryId = Data.EntryId;
-
-        return beforeEntryId != afterEntryId ||
-               beforeStoryLineId != storyLineId; // return true if entryId changed or story line changed
+        return (loaded, loaded && (beforeEntryId != Data.EntryId || beforeStoryLineId != storyLineId));
     }
 
     public async ValueTask EnterSceneByEntranceId(int entranceId, int anchorGroupId, int anchorId, bool sendPacket)
@@ -385,18 +454,24 @@ public partial class PlayerInstance
     public async ValueTask LoadScene(int planeId, int floorId, int entryId, Position pos, Position rot, bool sendPacket,
         bool mapTp = false)
     {
+        await TryLoadScene(planeId, floorId, entryId, pos, rot, sendPacket, mapTp);
+    }
+
+    private async ValueTask<bool> TryLoadScene(int planeId, int floorId, int entryId, Position pos, Position rot,
+        bool sendPacket, bool mapTp = false)
+    {
         GameData.MazePlaneData.TryGetValue(planeId, out var plane);
-        if (plane == null) return;
+        if (plane == null) return false;
 
         B51RacingManager?.ClearRace();
         var floorKey = ((long)planeId << 32) | (uint)floorId;
-        if (!_loadingFloors.Add(floorKey)) return; // cycle guard: floor already loading (orphan level-graph EnterMap) -> stack overflow
+        if (!_loadingFloors.Add(floorKey)) return false; // cycle guard: floor already loading (orphan level-graph EnterMap) -> stack overflow
         try
         {
             if (plane.PlaneType == PlaneTypeEnum.Raid && RaidManager!.Data.CurRaidId == 0)
             {
                 await EnterScene(2000101, 0, sendPacket);
-                return;
+                return false; // The requested raid was not entered, even if the fallback succeeded.
             }
 
             Data.Pos = pos;
@@ -415,6 +490,7 @@ public partial class PlayerInstance
                 Data.PlaneId = planeId;
                 Data.FloorId = floorId;
                 Data.EntryId = entryId;
+                RecordEnteredScene(planeId, floorId);
                 March7thHoney.Database.DatabaseHelper.MarkDirty(Uid);
             }
             else if (StoryLineManager?.StoryLineData.CurStoryLineId == 0 &&
@@ -434,9 +510,14 @@ public partial class PlayerInstance
             }
 
             if (sendPacket && notSendMove)
+            {
+                await SendPacket(new PacketSyncServerSceneChangeNotify());
                 await SendPacket(new PacketEnterSceneByServerScNotify(SceneInstance!));
+            }
             else if (sendPacket && !notSendMove) // send move packet
                 await SendPacket(new PacketSceneEntityMoveScNotify(this));
+
+            return Data.PlaneId == planeId && Data.FloorId == floorId && Data.EntryId == entryId;
         }
         finally
         {

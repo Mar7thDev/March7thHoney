@@ -89,9 +89,15 @@ public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
             await connection.SendPacket(new PacketTrainPartyBuildRoomScNotify(player));
         }
 
-        var overMapTp = await player.EnterScene(sceneEntryId, teleportId, true,
+        var result = await player.TryEnterScene(sceneEntryId, teleportId, true,
             storyLineId, req.IsCloseMap);
-        await connection.SendPacket(new PacketEnterSceneScRsp(overMapTp, req.IsCloseMap, storyLineId,
+        if (!result.Success)
+        {
+            await connection.SendPacket(new PacketEnterSceneScRsp(Retcode.RetFail));
+            return;
+        }
+
+        await connection.SendPacket(new PacketEnterSceneScRsp(result.IsOverMap, req.IsCloseMap, storyLineId,
             (uint)player.Data.FloorId, isSocialPlayEnter ? roomOwnerUid : 0));
 
         await player.TrySendWelcomeAnnounce();

@@ -10,7 +10,72 @@ namespace March7thHoney.GameServer.Game.GridFight.Battle;
 
 public static class GridFightBattleProtoBuilder
 {
-    private const uint GridFightBattleMode = 2;
+    private const int GridFightBaselineBuffId = 35509001;
+    private const int FinalBattleTurnHealingBuffId = 35602011;
+    private const int RewardBattleTalentBuffId = 35602061;
+    private const int GridFightCombatTalentBuffId = 35604031;
+
+    // 4.5 GridFight affix -> battle MazeBuff compatibility. The bundled Resource.bin still
+    // contains several 4.4 RuleParamList mappings, while official 4.5 packets use the IDs below.
+    // Packet captures directly confirm the mappings used by the supplied runs. The 200x and missing
+    // 402x members follow the same contiguous 4.5 numbering observed around their confirmed peers;
+    // they are kept here because the bundled 4.4 resource points at stale IDs or no ID at all.
+    private static readonly IReadOnlyDictionary<uint, int> GridFight45AffixBuffs =
+        new Dictionary<uint, int>
+        {
+            [1001] = 35301001,
+            [1002] = 35301002,
+            [1003] = 35301003,
+            [1004] = 35301004,
+            [1005] = 35301005,
+            [2002] = 35302002,
+            [2003] = 35302003,
+            [2004] = 35302004,
+            [2005] = 35302005,
+            [2006] = 35302006,
+            [3002] = 35302001,
+            [3003] = 35303003,
+            [3006] = 35302007,
+            [3007] = 35302009,
+            [4001] = 35303006,
+            [4002] = 35303001,
+            [4003] = 35303013,
+            [4006] = 35303016,
+            [4010] = 35303011,
+            [4011] = 35303012,
+            [4012] = 35303002,
+            [4016] = 35303028,
+            [4017] = 35303029,
+            [4021] = 35303031,
+            [4022] = 35303032,
+            [4023] = 35303033,
+            [4024] = 35303034,
+            [4025] = 35303035,
+            [4026] = 35303036,
+            [4027] = 35303037,
+            [4028] = 35303038,
+            [40140] = 35303020,
+        };
+    // In the supplied 4.5 captures SkillIndex is stable for the actual team-leader role.
+    // These are the roles observed using technique-style entry (SkillIndex=2). Unobserved roles
+    // retain the resource-based fallback below instead of being guessed.
+    private static readonly HashSet<uint> GridFightSkillIndex2RoleIds =
+        [1005, 1009, 1317, 1402, 1505];
+    private static readonly HashSet<uint> GridFightSkillIndex1RoleIds =
+        [1013, 1102, 1213, 1404, 1502, 1504, 15061, 15062, 15063];
+
+    private static readonly (int Id, int CurSp, int MaxSp)[] OfficialBattleEvents =
+    [
+        (11216, 0, 100000),
+        (60014, 0, 100000),
+        (60020, 70000, 100000),
+        (60023, 0, 100000),
+        (60024, 0, 200000),
+        (60028, 100000, 100000),
+        (60036, 0, 40000),
+        (60045, 60000, 60000),
+        (60047, 0, 100000),
+    ];
 
     public static List<AvatarLineupData> Populate(
         BattleInstance battle,
@@ -37,13 +102,21 @@ public static class GridFightBattleProtoBuilder
             battleRoles.Add(role);
         }
         AddEntryBuffs(battle, battleRoles);
+        AddGridFightTeamLeaderBuff(battle);
+        AddAffixBattleBuffs(battle, session);
+        session.ApplyDotContractBattleBuff(battle);
+        session.ApplyFateDivinerBattleBuffs(battle);
+        session.ApplyAstaDogBattleBuff(battle);
+        AddOfficialGridFightCombatBuffs(battle, session);
 
         proto.MonsterWaveList.Clear();
         foreach (var wavePlan in session.BattlePlan?.Waves ?? [])
         {
             var wave = new SceneMonsterWave
             {
-                BattleStageId = session.CurrentNode.StageId,
+                // Official GridFight battle packets keep the stage id only on SceneBattleInfo.
+                // Setting the wave-level BattleStageId changes the packet shape and can make
+                // the client resolve the wave through the normal stage pipeline instead.
                 BattleWaveId = wavePlan.WaveId,
                 MonsterParam = new SceneMonsterWaveParam
                 {
@@ -79,14 +152,19 @@ public static class GridFightBattleProtoBuilder
         session.RefreshRoleSavedValues();
         var gridFightInfo = new GridFightInfo
         {
-            BattleWaveId = 1,
+            // Official 4.5 packets leave GridFightInfo.BattleWaveId at its protobuf default (0).
+            // SceneMonsterWave.BattleWaveId is the per-wave field; forcing this outer field to 1
+            // changes the GridFight battle-runtime packet shape.
             GridFightLineupHp = session.LineupHp,
-            MaxActiveRoleCount = session.MaxActiveRoles,
+            // Official 4.5 crown capture keeps this field at the pre-crown level cap while
+            // ActiveRoleCount may be one or more higher. Capacity UI/validation uses MaxActiveRoles.
+            MaxActiveRoleCount = Math.Min(GridFightSession.TeamPopulationLimit, session.BattleMaxActiveRoles + session.LizhiActiveRoleBonus),
             PenaltyBonusRuleId = session.CurrentPenaltyRuleId,
             EnemyDifficultyLevel = session.EffectiveEnemyDifficultyLevel,
             Season = session.Season,
             DivisionId = session.DivisionId,
-            ActiveRoleCount = (uint)activeRoles.Count,
+            ActiveRoleCount = (uint)activeRoles.Count + (session.PepeNpc == null ? 0u : 1u) +
+                              (session.AstaDogNpc == null ? 0u : 1u) + (uint)session.LizhiNpcs.Count,
             IsOverlock = session.IsOverlock,
             NodeInfo = new GridFightNodeInfo
             {
@@ -98,13 +176,63 @@ public static class GridFightBattleProtoBuilder
         };
         if (session.HackConsole != null)
             gridFightInfo.EnemyHpPercent = session.HackConsole.EnemyHpPercent;
-        if (session.SelectedPortalId != 0)
-            gridFightInfo.GridFightPortalBuffList.Add(new GridFightPortalInfo
+        gridFightInfo.GridFightPortalBuffList.Add(session.ActivePortalIds.Select(portalId =>
+            new GridFightPortalInfo
             {
-                PortalBuffId = session.SelectedPortalId,
-            });
+                PortalBuffId = portalId,
+            }));
         gridFightInfo.SyncAugmentInfo.Add(session.ActiveInvestmentIds.Select(augmentId =>
             new GridFightAugmentInfo { AugmentId = augmentId }));
+        if (session.PepeNpc != null)
+        {
+            var npc = new GridFightNPCInfo
+            {
+                UniqueId = session.PepeNpc.UniqueId,
+                NpcId = session.PepeNpc.NpcId,
+                Pos = session.PepeNpc.Position,
+            };
+            npc.GridFightEquipmentList.Add(session.GetPepeEquippedEquipment().Select(equipment =>
+                new BattleGridFightEquipInfo
+                {
+                    GridFightEquipmentId = equipment.EquipmentId,
+                    UniqueId = equipment.UniqueId,
+                }));
+            gridFightInfo.GridGameNpcList.Add(npc);
+        }
+        if (session.AstaDogNpc != null)
+        {
+            var dog = new GridFightNPCInfo
+            {
+                UniqueId = session.AstaDogNpc.UniqueId,
+                NpcId = session.AstaDogNpc.NpcId,
+                Pos = session.AstaDogNpc.Position,
+            };
+            dog.GridFightEquipmentList.Add(session.GetAstaDogEquipment().Select(equipment =>
+                new BattleGridFightEquipInfo
+                {
+                    GridFightEquipmentId = equipment.EquipmentId,
+                    UniqueId = equipment.UniqueId,
+                }));
+            gridFightInfo.GridGameNpcList.Add(dog);
+        }
+        foreach (var lizhiNpc in session.LizhiNpcs)
+        {
+            var npc = new GridFightNPCInfo
+            {
+                UniqueId = lizhiNpc.UniqueId,
+                NpcId = lizhiNpc.NpcId,
+                Pos = lizhiNpc.Position,
+            };
+            npc.GridFightEquipmentList.Add(lizhiNpc.EquippedEquipmentUniqueIds
+                .Select(uid => session.Equipments.FirstOrDefault(item => item.UniqueId == uid))
+                .Where(item => item != null)
+                .Select(item => new BattleGridFightEquipInfo
+                {
+                    GridFightEquipmentId = item!.EquipmentId,
+                    UniqueId = item.UniqueId,
+                }));
+            gridFightInfo.GridGameNpcList.Add(npc);
+        }
         foreach (var role in activeRoles.Where(role => role.Position is >= 5 and <= 13))
         {
             var avatar = ResolveBattleAvatar(battle, role, battle.Player.Data.CurrentGender, isForeground: false);
@@ -114,19 +242,33 @@ public static class GridFightBattleProtoBuilder
         }
         foreach (var role in activeRoles)
             gridFightInfo.GridGameRoleList.Add(BuildRoleInfo(session, role, battle.Player.Data.CurrentGender));
+        foreach (var (key, value) in session.PortalSavedValues)
+            gridFightInfo.RoleSavedValues[key] = value;
         foreach (var (key, value) in session.RoleSavedValues)
             gridFightInfo.RoleSavedValues[key] = value;
-        foreach (var group in activeRoles
-                     .SelectMany(role => session.ResolveRoleTraitIds(role)
-                         .Select(traitId => (TraitId: traitId, Role: role)))
-                     .GroupBy(entry => entry.TraitId))
+        var roleTraitMembers = activeRoles
+            .SelectMany(role => session.ResolveRoleTraitIds(role)
+                .Select(traitId => (TraitId: traitId, Role: role)))
+            .ToList();
+        var pepeTraitMembers = session.ResolvePepeTraitMembers();
+        foreach (var traitId in roleTraitMembers.Select(entry => entry.TraitId)
+                     .Concat(pepeTraitMembers.Select(entry => entry.TraitId))
+                     .Distinct()
+                     .Order())
         {
-            var members = group.Select(entry => entry.Role).Distinct().ToList();
-            var count = (uint)members.Count + session.ResolveTraitExtraMemberCount(group.Key, activeRoles);
-            var activeLayer = ResolveTraitLayer(group.Key, count);
+            var members = roleTraitMembers
+                .Where(entry => entry.TraitId == traitId)
+                .Select(entry => entry.Role)
+                .Distinct()
+                .ToList();
+            var hasPepeMember = session.PepeNpc != null && pepeTraitMembers.Any(entry => entry.TraitId == traitId);
+            var count = (uint)members.Count +
+                        (hasPepeMember ? 1u : 0u) +
+                        session.ResolveTraitExtraMemberCount(traitId, activeRoles);
+            var activeLayer = ResolveTraitLayer(traitId, count);
             var traitInfo = new GridFightTraitInfo
             {
-                TraitId = group.Key,
+                TraitId = traitId,
                 Layer = activeLayer,
             };
             traitInfo.MemberList.Add(members.Select(role => new GridFightTraitMemberInfo
@@ -134,25 +276,147 @@ public static class GridFightBattleProtoBuilder
                 MemberRoleUniqueId = role.UniqueId,
                 MemberType = GridFightTraitMemberType.Role,
                 MemberRoleId = role.RoleId,
-                UpdateSource = GameData.GridFightRoleBasicInfoData[role.RoleId].TraitList.Contains(group.Key)
+                UpdateSource = GameData.GridFightRoleBasicInfoData[role.RoleId].TraitList.Contains(traitId)
                     ? GridFightUpdateSource.Role
                     : GridFightUpdateSource.Equipment,
             }));
-            if (activeLayer > 0)
+            if (hasPepeMember)
+                traitInfo.MemberList.Add(new GridFightTraitMemberInfo
+                {
+                    MemberRoleUniqueId = session.PepeNpc!.UniqueId,
+                    MemberRoleId = session.PepeNpc.NpcId,
+                    MemberType = GridFightTraitMemberType.Reserved2,
+                    UpdateSource = GridFightUpdateSource.Equipment,
+                });
+            if (activeLayer > 0 && !GridFightTraitCompatibility.UsesLayerOnlyWireShape(traitId))
+            {
                 PopulateTraitEffects(traitInfo);
+                if (traitId == GridFightSession.FateDivinerTraitId &&
+                    traitInfo.TraitEffectList.All(effect => effect.EffectId != GridFightSession.FateDivinerEffectId))
+                    traitInfo.TraitEffectList.Add(new BattleGridFightTraitEffectInfo
+                    {
+                        EffectId = GridFightSession.FateDivinerEffectId,
+                    });
+            }
             gridFightInfo.GridFightTraitInfo.Add(traitInfo);
         }
-        foreach (var role in activeRoles)
-            if (GameData.GridFightRoleStarData.TryGetValue(role.RoleId << 4 | role.Star, out var roleStar) &&
-                roleStar.BEID != 0)
-                battle.BattleEvents.TryAdd((int)roleStar.BEID, new BattleEventInstance((int)roleStar.BEID, 0, 100000));
-        foreach (var battleEventId in gridFightInfo.GridFightTraitInfo
-                     .Select(info => GameData.GridFightTraitBasicInfoData.GetValueOrDefault(info.TraitId))
-                     .Where(info => info != null)
-                     .SelectMany(info => info!.BEIDList))
-            battle.BattleEvents.TryAdd((int)battleEventId, new BattleEventInstance((int)battleEventId, 0, 100000));
+        // GridFight uses a fixed group of event controllers. Role-star/trait BEIDs are resource-side
+        // implementation details and are not sent as BattleEvent entries by the official server.
+        // Sending those dynamic 62xxx entries leaves the client's GridFight trait controller absent,
+        // so damage-producing traits such as DoT (2008) report zero or severely reduced damage.
+        battle.BattleEvents.Clear();
+        foreach (var (id, curSp, maxSp) in OfficialBattleEvents)
+            battle.BattleEvents.Add(id, new BattleEventInstance(id, curSp, maxSp));
         proto.BattleGridFightData = gridFightInfo;
         return avatars;
+    }
+
+    private static uint ResolveRoleBattleMode(GridFightSession session, GridFightRoleState role)
+    {
+        var roleTraitIds = session.ResolveRoleTraitIds(role).Distinct().ToList();
+        if (roleTraitIds.Count == 0) return 0;
+
+        var activeRoles = session.Roles
+            .Where(candidate => candidate.Position is >= 1 and <= 13)
+            .ToList();
+        var pepeTraits = session.ResolvePepeTraitMembers()
+            .Select(entry => entry.TraitId)
+            .ToHashSet();
+
+        uint inactiveTraitCount = 0;
+        foreach (var traitId in roleTraitIds)
+        {
+            var memberCount = (uint)activeRoles.Count(candidate =>
+                                  session.ResolveRoleTraitIds(candidate).Contains(traitId)) +
+                              (pepeTraits.Contains(traitId) ? 1u : 0u) +
+                              session.ResolveTraitExtraMemberCount(traitId, activeRoles);
+            if (ResolveTraitLayer(traitId, memberCount) == 0) inactiveTraitCount++;
+        }
+
+        return inactiveTraitCount;
+    }
+
+    private static void AddAffixBattleBuffs(BattleInstance battle, GridFightSession session)
+    {
+        foreach (var affixId in session.AffixIds.Distinct())
+            foreach (var buffId in ResolveAffixBattleBuffIds(session, affixId))
+                AddGlobalBuffIfMissing(battle, buffId);
+    }
+
+    private static IEnumerable<int> ResolveAffixBattleBuffIds(GridFightSession session, uint affixId)
+    {
+        // These affixes are conditional in the official captures and must not be emitted globally.
+        switch (affixId)
+        {
+            case 1004:
+                if (session.ChapterId >= 2) yield return 35301004;
+                yield break;
+            case 1005:
+                if (session.ChapterId >= 3) yield return 35301005;
+                yield break;
+            case 3004:
+                if (session.CurrentNode.NodeType == GridFightNodeTypeEnum.EliteBranch)
+                    yield return 35303004;
+                else if (session.CurrentNode.NodeType == GridFightNodeTypeEnum.Boss)
+                    yield return 35303005;
+                yield break;
+            case 4013:
+                if (session.CurrentNode.NodeType == GridFightNodeTypeEnum.CampMonster)
+                    yield return 35303030;
+                yield break;
+        }
+
+        if (GridFight45AffixBuffs.TryGetValue(affixId, out var capturedBuffId))
+        {
+            yield return capturedBuffId;
+            yield break;
+        }
+
+        // Future/newer resources can supply their own binding. Do not trust the bundled stale
+        // group-3/group-4 mappings blindly: several of them are known to point at 4.4 IDs.
+        if (!GameData.GridFightAffixConfigData.TryGetValue(affixId, out var affix)) yield break;
+        var isBundledStaleResource = GameData.GridFightAffixConfigData.TryGetValue(3002, out var sentinel) &&
+                                     !sentinel.RuleParamList.Contains(35302001u);
+        if (isBundledStaleResource && affixId >= 3000) yield break;
+
+        foreach (var buffId in affix.RuleParamList.Where(id => id > 0 && id <= (uint)int.MaxValue).Distinct())
+            yield return (int)buffId;
+    }
+
+    private static void AddGridFightTeamLeaderBuff(BattleInstance battle)
+    {
+        var leaderBuff = GameData.MazeBuffData.Values.FirstOrDefault(row =>
+            row.InBattleBindingKey == "StageAbility_MazeCommon_EnterBattle_CheckTeamLeader");
+        if (leaderBuff == null || battle.Buffs.Any(buff => buff.BuffID == leaderBuff.ID)) return;
+
+        var leaderIndex = battle.LeaderIndexOverride ?? Math.Max(battle.Lineup.GetSlot(battle.Lineup.LeaderAvatarId), 0);
+        battle.Buffs.Add(new MazeBuff(leaderBuff.ID, leaderBuff.Lv, leaderIndex)
+        {
+            WaveFlag = -1,
+            // Official GridFight packets carry OwnerIndex but no TargetIndexList for this buff.
+            IncludeOwnerInTargetList = false,
+        });
+    }
+
+    private static void AddOfficialGridFightCombatBuffs(BattleInstance battle, GridFightSession session)
+    {
+        AddGlobalBuffIfMissing(battle, GridFightBaselineBuffId);
+        AddGlobalBuffIfMissing(battle, FinalBattleTurnHealingBuffId);
+        AddGlobalBuffIfMissing(battle, GridFightCombatTalentBuffId);
+
+        // 35602061 is present only in official reward-node battles (node type 1).
+        if (session.CurrentNode.NodeType == GridFightNodeTypeEnum.Monster)
+            AddGlobalBuffIfMissing(battle, RewardBattleTalentBuffId);
+    }
+
+    private static void AddGlobalBuffIfMissing(BattleInstance battle, int buffId)
+    {
+        if (battle.Buffs.Any(buff => buff.BuffID == buffId)) return;
+        battle.Buffs.Add(new MazeBuff(buffId, 1, -1)
+        {
+            WaveFlag = -1,
+            IncludeOwnerInTargetList = false,
+        });
     }
 
     public static GridFightRoleInfo BuildRoleInfo(GridFightSession session, GridFightRoleState role, Gender gender)
@@ -167,14 +431,19 @@ public static class GridFightBattleProtoBuilder
             UniqueId = role.UniqueId,
             BattleExtInfo = new GridFightRoleBattleExtInfo
             {
-                ModeInfo = new GridFightRoleBattleModeInfo { Mode = GridFightBattleMode },
+                // Official 4.5 packets encode the number of this role's currently inactive
+                // traits here. Across the supplied captures this rule matches every observed
+                // role entry (632/632), including equipment-added traits.
+                ModeInfo = new GridFightRoleBattleModeInfo { Mode = ResolveRoleBattleMode(session, role) },
                 StateInfo = new GridFightRoleBattleStateInfo(),
             },
         };
         GridFightManager.PopulateRolePropertyScales(
             result.ConvertPropertyToFixpoint,
             session.HasCyreneCombatEnhancement);
-        result.RoleEquipmentList.Add(session.GetEquippedEquipment(role).Select(equipment =>
+        session.ApplyInvestmentPropertyScales(result.ConvertPropertyToFixpoint);
+        session.ApplyFateDivinerPropertyScales(result.ConvertPropertyToFixpoint, role.RoleId);
+        result.RoleEquipmentList.Add(session.GetBattleEquipment(role).Select(equipment =>
             new BattleGridFightEquipInfo
             {
                 GridFightEquipmentId = equipment.EquipmentId,
@@ -185,6 +454,8 @@ public static class GridFightBattleProtoBuilder
 
     public static uint ResolveTraitLayer(uint traitId, uint memberCount)
     {
+        if (GridFightTraitCompatibility.TryResolveLayer(traitId, memberCount, out var compatibilityLayer))
+            return compatibilityLayer;
         return GameData.GridFightTraitLayerData.GetValueOrDefault(traitId)?.Keys
             .Where(layer => layer <= memberCount)
             .DefaultIfEmpty()
@@ -205,20 +476,18 @@ public static class GridFightBattleProtoBuilder
             });
         }
 
-        var leader = roles.FirstOrDefault();
-        if (leader == null ||
-            !GameData.GridFightRoleBasicInfoData.TryGetValue(leader.RoleId, out var basic) ||
+        if (roles.Count == 0) return;
+        var leaderIndex = ResolveGridFightLeaderIndex(battle, roles.Count);
+        var leader = roles[leaderIndex];
+        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(leader.RoleId, out var basic) ||
             !GameData.AvatarConfigData.TryGetValue((int)basic.AvatarID, out var avatar) ||
             avatar.DamageType == 0)
             return;
 
         var buffId = (int)avatar.DamageType;
-        if (battle.Buffs.Any(buff => buff.BuffID == buffId && buff.OwnerIndex == 0)) return;
-        var skillIndex = GameData.GridFightRoleStarData.TryGetValue(leader.RoleId << 4 | leader.Star, out var roleStar) &&
-                         !roleStar.SkillOverrideSrc.Contains(0)
-            ? 2
-            : 1;
-        var buff = new MazeBuff(buffId, 1, 0)
+        if (battle.Buffs.Any(buff => buff.BuffID == buffId && buff.OwnerIndex == leaderIndex)) return;
+        var skillIndex = ResolveGridFightLeaderSkillIndex(leader);
+        var buff = new MazeBuff(buffId, 1, leaderIndex)
         {
             WaveFlag = -1,
             IncludeOwnerInTargetList = false,
@@ -227,9 +496,33 @@ public static class GridFightBattleProtoBuilder
         battle.Buffs.Add(buff);
     }
 
+    private static int ResolveGridFightLeaderIndex(BattleInstance battle, int roleCount)
+    {
+        var index = battle.LeaderIndexOverride ?? battle.Lineup.GetSlot(battle.Lineup.LeaderAvatarId);
+        return index >= 0 && index < roleCount ? index : 0;
+    }
+
+    private static int ResolveGridFightLeaderSkillIndex(GridFightRoleState leader)
+    {
+        if (GridFightSkillIndex2RoleIds.Contains(leader.RoleId)) return 2;
+        if (GridFightSkillIndex1RoleIds.Contains(leader.RoleId)) return 1;
+
+        return GameData.GridFightRoleStarData.TryGetValue(leader.RoleId << 4 | leader.Star, out var roleStar) &&
+               !roleStar.SkillOverrideSrc.Contains(0)
+            ? 2
+            : 1;
+    }
+
     private static bool TryResolveEntryMazeSkill(GridFightRoleState role, out int mazeSkillId)
     {
         mazeSkillId = 0;
+
+        // Official 4.5 GridFight captures never attach an entry maze buff to Asta,
+        // including when she is a one-star foreground role. 100902 is an override
+        // skill rather than a valid battle-entry MazeBuff; sending it makes the
+        // client dereference a missing MazeBuffData record while the level starts.
+        if (role.RoleId == 1009) return false;
+
         if (!GameData.GridFightRoleBasicInfoData.TryGetValue(role.RoleId, out var basic)) return false;
         var adventurePlayerId = (int)basic.AvatarID;
         if (GameData.AvatarConfigData.TryGetValue(adventurePlayerId, out var avatar) && avatar.AdventurePlayerID != 0)

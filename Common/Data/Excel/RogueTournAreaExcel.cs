@@ -31,6 +31,22 @@ public partial class RogueTournAreaExcel : ExcelResource
     [JsonConverter(typeof(StringEnumConverter))]
     public RogueTournAreaGroupIDEnum AreaGroupID { get; set; }
 
+    // 4.5 aliases. Keep the 4.6 property names above as the primary JSON contract.
+    [JsonProperty("GLNDIILFKBN")] private List<int>? LayerIdList45 { set => LayerIDList = value ?? []; }
+    [JsonProperty("EODCEHDOAEB")] private List<int>? DifficultyIdList45 { set => DifficultyIDList = value ?? []; }
+    [JsonProperty("IMNLCDOMMOG")] private int FirstReward45 { set => FirstReward = value; }
+    [JsonProperty("GOEDJMNFALN"), JsonConverter(typeof(StringEnumConverter))]
+    private RogueTournDifficultyTypeEnum Difficulty45 { set => Difficulty = value; }
+    [JsonProperty("JJKLIJNFIBB")] private int ExpScoreId45 { set => ExpScoreID = value; }
+    [JsonProperty("FOMEIPIEGII")] private int UnlockId45 { set => UnlockID = value; }
+    [JsonProperty("BEOFPCAACEP")] private int AreaId45 { set => AreaID = value; }
+    [JsonProperty("NKLFPMKHELN")] private int DivisionLevel45 { set => DivisionLevel = value; }
+    [JsonProperty("PCBLHKODOMG")] private bool IsHard45 { set => IsHard = value; }
+    [JsonProperty("HILINOJPLGA"), JsonConverter(typeof(StringEnumConverter))]
+    private RogueTournModeEnum TournMode45 { set => TournMode = value; }
+    [JsonProperty("PJGJLMIODBD"), JsonConverter(typeof(StringEnumConverter))]
+    private RogueTournAreaGroupIDEnum AreaGroupId45 { set => AreaGroupID = value; }
+
     public override int GetId()
     {
         return AreaID;

@@ -62,3 +62,6 @@ GridFightFinishTutorialCsReq = PAJHFEKAPMN
 GridFightGetFormationCsReq = CBEHKFHNNAI
 CancelAutoConversionCacheCsReq = PIMFFPGEPIO
 CancelAutoConversionCacheScRsp = INKEEEKKNKF
+RelicPresetGetPlanCsReq = PCFJAHNECFM
+RelicPresetDeletePlanCsReq = DCJGPJGJFIF
+SyncServerSceneChangeNotify = OIMLFNKOCLN

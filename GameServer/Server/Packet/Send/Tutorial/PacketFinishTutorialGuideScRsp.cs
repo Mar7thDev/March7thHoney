@@ -5,14 +5,16 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Tutorial;
 
 public class PacketFinishTutorialGuideScRsp : BasePacket
 {
-    public PacketFinishTutorialGuideScRsp(uint tutorialId) : base(CmdIds.FinishTutorialGuideScRsp)
+    public PacketFinishTutorialGuideScRsp(uint groupId, TutorialGuideType type = TutorialGuideType.TutorialGuideDefault)
+        : base(CmdIds.FinishTutorialGuideScRsp)
     {
         var rsp = new FinishTutorialGuideScRsp
         {
             TutorialGuide = new TutorialGuide
             {
-                Id = tutorialId,
-                Status = TutorialStatus.TutorialFinish
+                Id = groupId,
+                Status = TutorialStatus.TutorialFinish,
+                Type = type
             },
             Reward = new ItemList()
         };

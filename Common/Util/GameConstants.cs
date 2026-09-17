@@ -3,6 +3,7 @@ namespace March7thHoney.Util;
 public static class GameConstants
 {
     public const string GAME_VERSION = "4.5.5";
+    public static bool IsVersion(string version) => string.Equals(GAME_VERSION, version, StringComparison.Ordinal);
     public const string AvatarDbVersion = "20250430";
     public const int GameVersionInt = 4550;
     public const int MAX_STAMINA = 300;

@@ -4,6 +4,7 @@ using March7thHoney.Database.Account;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
 using March7thHoney.Util;
+using March7thHoney.WebServer.Controllers;
 using March7thHoney.WebServer.Request;
 using Google.Protobuf;
 
@@ -24,7 +25,7 @@ internal class QueryGatewayHandler
 
     public string Data;
 
-    public QueryGatewayHandler(GateWayRequest req)
+    public QueryGatewayHandler(GateWayRequest req, string publicBaseUrl)
     {
         var config = ConfigManager.Config;
 
@@ -62,6 +63,13 @@ internal class QueryGatewayHandler
         gateServer.NNFLHCGDGJM = true;
         gateServer.FMLPNNMJDIC = true;
         // gateServer.UseTcp 保持默认 false = KCP
+
+        // Divergent Universe awaits this BuildRef fetch before it sends RogueTournStartCsReq.
+        // Host the empty community-build catalogue locally so starting a run has no CDN dependency.
+        gateServer.RogueTournBuildRefStaticDataUrlPrefix =
+            publicBaseUrl.TrimEnd('/') + GateServerRoutes.RogueTournBuildRefStaticPath;
+        gateServer.RogueTournBuildRefApiReqColorHeaderKey = "x-rpc-rpglineup-tourn";
+        gateServer.RogueTournBuildRefApiReqColorHeaderValue = "tourn";
 
         if (ConfigManager.Config.GameServer.UsePacketEncryption)
             gateServer.ClientSecretKey = Convert.ToBase64String(Crypto.ClientSecretKey!.GetBytes());

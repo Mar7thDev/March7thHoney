@@ -8,6 +8,29 @@ namespace March7thHoney.Database.Account;
 
 public static class AccountHelper
 {
+    private static readonly object CreationLock = new();
+    private static int _nextUid = 10001;
+
+    public static AccountData CreatePublicAccount(string username, string email, string password,
+        IReadOnlyCollection<string> identityKeys)
+    {
+        // Keep policy checks, UID allocation and identity persistence in one critical section.
+        lock (CreationLock)
+        {
+            var auth = ConfigManager.Config.ServerOption.Auth;
+            if (!auth.EnableRegistration) throw new InvalidOperationException("Registration is disabled");
+            if (AccountBanHelper.TryFindActiveBanByIdentityKeys(identityKeys, null, out var ban))
+                throw new InvalidOperationException(ban.FormatLoginMessage());
+            if (auth.AntiAbuse.RequireRegistrationIdentity && !identityKeys.Any(k => k.StartsWith("device:")))
+                throw new InvalidOperationException("Registration requires a device ID");
+            if (auth.AntiAbuse.LimitRegistrationPerIdentity && AccountBanHelper.TryFindAccountByIdentityKeys(
+                    identityKeys, auth.AntiAbuse.RegistrationIdentityMode, out _))
+                throw new InvalidOperationException("Registration is not available for this device or network");
+            ValidatePassword(password);
+            return CreateAccount(username, email, password, 0, null, identityKeys: identityKeys);
+        }
+    }
+
     public static void CreateAccount(string username, int uid)
     {
         CreateAccount(username, null, uid);
@@ -28,22 +51,33 @@ public static class AccountHelper
         CreateAccount(username, email, password, uid, null);
     }
 
-    public static void CreateAccount(string username, string? email, string? password, int uid, string? role,
-        bool emailVerified = false)
+    public static AccountData CreateAccount(string username, string? email, string? password, int uid, string? role,
+        bool emailVerified = false, IReadOnlyCollection<string>? identityKeys = null)
+    {
+        lock (CreationLock)
+            return CreateAccountCore(username, email, password, uid, role, emailVerified, identityKeys);
+    }
+
+    private static AccountData CreateAccountCore(string username, string? email, string? password, int uid, string? role,
+        bool emailVerified, IReadOnlyCollection<string>? identityKeys)
     {
         username = username.Trim();
         if (string.IsNullOrWhiteSpace(username)) throw new Exception("Username cannot be empty");
+        if (username.Length > 64 || username.Any(char.IsControl)) throw new Exception("Invalid username");
+        if (uid < 0) throw new Exception("UID must be positive");
         email = NormalizeAndValidateEmail(email);
 
         if (AccountData.GetAccountByUserName(username) != null) throw new Exception("Account already exists");
         if (AccountData.GetAccountByEmail(email) != null) throw new Exception("Email already exists");
         if (uid != 0 && AccountData.GetAccountByUid(uid) != null) throw new Exception("UID already exists");
+        if (uid != 0 && DatabaseHelper.IsUidDeleted(uid)) throw new Exception("UID has been retired");
 
         var newUid = uid;
         if (uid == 0)
         {
-            newUid = 10001; // start from 10001
-            while (AccountData.GetAccountByUid(newUid) != null) newUid++;
+            newUid = _nextUid;
+            while (AccountData.GetAccountByUid(newUid) != null || DatabaseHelper.IsUidDeleted(newUid)) newUid++;
+            _nextUid = checked(newUid + 1);
         }
 
         var roleName = CommandRoles.NormalizeRole(role, ConfigManager.Config.ServerOption.DefaultPermissionRole,
@@ -56,9 +90,12 @@ public static class AccountHelper
             NormalizedEmail = AccountData.NormalizeEmail(email),
             IsEmailVerified = emailVerified,
             EmailVerifiedAt = emailVerified ? Extensions.GetUnixSec() : 0,
-            Role = roleName
+            Role = roleName,
+            CreatedAt = Extensions.GetUnixSec(),
+            RegistrationIp = (identityKeys as LoginIdentityContext)?.IpAddress
         };
         account.SyncPermissionsWithRole(false);
+        account.AddKnownIdentityKeys(identityKeys, false);
 
         if (!string.IsNullOrWhiteSpace(password))
         {
@@ -71,6 +108,7 @@ public static class AccountHelper
 
         DatabaseHelper.SaveInstance(account);
         MailHelper.SendWelcomeMail(newUid, username);
+        return account;
     }
 
     public static void SetPassword(AccountData account, string password)
@@ -94,6 +132,7 @@ public static class AccountHelper
             throw new Exception("Email cannot be empty");
 
         email = email.Trim();
+        if (email.Length > 254) throw new Exception("Email is too long");
         try
         {
             var address = new MailAddress(email);
@@ -112,6 +151,7 @@ public static class AccountHelper
     {
         if (string.IsNullOrWhiteSpace(password))
             throw new Exception("Password cannot be empty");
+        if (password.Length > 1024) throw new Exception("Password is too long");
 
         var minLength = Math.Max(ConfigManager.Config.ServerOption.Auth.MinimumPasswordLength, 1);
         if (password.Length < minLength)

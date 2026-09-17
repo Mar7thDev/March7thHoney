@@ -26,6 +26,9 @@ public partial class BannerConfig
     public int MaxCount { get; set; } = 90;
     public int EventChance { get; set; } = 50;
 
+    // Append-only for compatibility with existing MemoryPack resource caches.
+    public List<int> PrizeItems { get; set; } = [];
+
     public int DoGacha(
         List<int> characterEventNonFeaturedPool,
         List<int> standardGoldAvatars,
@@ -74,6 +77,14 @@ public partial class BannerConfig
             HistoryUrl = ""
         };
 
+        // Client renders the banner featured panel from prize_item_list (the 4.2 proto called the
+        // featured-pool field CBHAEFNAFLE); ONIHOMCELJK carries the featured 5-star(s).
+        var displayItems = PrizeItems.Count > 0
+            ? PrizeItems
+            : RateUpItems4.Concat(RateUpItems5).Distinct();
+        info.PrizeItemList.AddRange(displayItems.Select(id => (uint)id));
+        info.ONIHOMCELJK.AddRange(RateUpItems5.Select(id => (uint)id));
+
         if (GachaType != GachaTypeEnum.Normal)
         {
             info.BeginTime = BeginTime;
@@ -88,11 +99,6 @@ public partial class BannerConfig
 
         if (GachaId == 1001)
         {
-            if (RateUpItems5.Count > 0)
-            {
-                info.PrizeItemList.AddRange(RateUpItems5.Select(id => (uint)id));
-            }
-
             info.GachaCeiling = new GachaCeiling
             {
                 IsClaimed = true, // TODO: Implement this
@@ -101,21 +107,13 @@ public partial class BannerConfig
         }
         else
         {
-            if (RateUpItems5.Count > 0)
-            {
-                info.PrizeItemList.AddRange(RateUpItems5.Select(id => (uint)id));
-            }
-
             // Observed official packet behavior: avatar event banners carry marker "11" here.
             if (GachaType is GachaTypeEnum.AvatarUp or GachaTypeEnum.CollaborationAvatarUp)
+            {
+                info.MMELNCHIDNC = 1;
                 info.ItemDetailList.Add(11);
+            }
         }
-
-        // Featured (rate-up) pool the client renders in the banner's probability panel. This is the
-        // field the 4.2 code filled as CBHAEFNAFLE; the 4.3 proto rename left it unset, which leaves an
-        // event banner with an empty rate-up section.
-        if (RateUpItems4.Count > 0)
-            info.ONIHOMCELJK.AddRange(RateUpItems4.Select(id => (uint)id));
 
         return info;
     }

@@ -65,7 +65,12 @@ public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo grou
                 SceneGroupRefreshType.Afibfmafncc));
 
         // save
-        if (Group.SaveType == SaveTypeEnum.Reset) return;
-        Scene.Player.SetScenePropData(Scene.FloorId, Group.Id, PropInfo.ID, state);
+        if (Group.SaveType != SaveTypeEnum.Reset)
+            Scene.Player.SetScenePropData(Scene.FloorId, Group.Id, PropInfo.ID, state);
+
+        // A checkpoint that just became enabled (reached on foot / by map teleport, or a mission's
+        // ChangePropState) is a newly unlocked map waypoint: official SceneGroupRefresh → UnlockTeleportNotify.
+        if (state == PropStateEnum.CheckPointEnable && PropInfo.MappingInfoID != 0)
+            await Scene.Player.RecordTeleportUnlock(Scene.FloorId, PropInfo.MappingInfoID, sendPacket);
     }
 }

@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Net;
 using System.Reflection;
 using March7thHoney.Configuration;
+using March7thHoney.Database;
 using March7thHoney.Data.Custom;
 using March7thHoney.Enums.Server;
 using March7thHoney.GameServer.Game.Player;
@@ -290,6 +291,11 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     private async Task HandlePacket(ushort opcode, byte[] header, byte[] payload)
     {
+        if (Player != null && DatabaseHelper.IsUidDeleted(Player.Uid))
+        {
+            Stop();
+            return;
+        }
         // check if it's a custom packet
         var action = GetCurActionData();
         var packetName = LogMap.GetValueOrDefault(opcode);
@@ -360,12 +366,13 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
                 if (!TryGetOpcodeByName(rspName, out var rspOpcode)) return;
 
                 // get proto class
-                var typ = AppDomain.CurrentDomain.GetAssemblies()
-                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes()
-                    .First(t => t.Name == rspName); //get the type using the packet name
-                var curTyp = AppDomain.CurrentDomain.GetAssemblies()
-                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes()
-                    .First(t => t.Name == curPacket); //get the type using the packet name
+                // cmdid 别名（cmdid-aliases.txt）让 LogMap 里的名字可能不是 proto 里真实存在的消息名，
+                // 找不到就放弃兜底应答 —— 这里再抛异常会直接把接收循环带下去。
+                var protoTypes = AppDomain.CurrentDomain.GetAssemblies()
+                    .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes();
+                var typ = protoTypes.FirstOrDefault(t => t.Name == rspName); //get the type using the packet name
+                var curTyp = protoTypes.FirstOrDefault(t => t.Name == curPacket); //get the type using the packet name
+                if (typ == null || curTyp == null) return;
 
                 // create the response packet
                 if (Activator.CreateInstance(typ) is not IMessage rsp) return;
@@ -401,7 +408,7 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         }
 
         // No handler found
-        // 教程请求收到任何响应都会让客户端弹出本不该出现的教程界面，与 csproj 排除这三个 handler 同源
+        // 教程请求收到任何响应都会让客户端弹出本不该出现的教程界面，与 csproj 排除这三个 handler 同源。
         if (opcode == CmdIds.GetTutorialCsReq || opcode == CmdIds.GetTutorialGuideCsReq ||
             opcode == CmdIds.UnlockTutorialCsReq) return;
 

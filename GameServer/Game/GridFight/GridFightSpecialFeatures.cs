@@ -8,6 +8,9 @@ namespace March7thHoney.GameServer.Game.GridFight;
 public enum GridFightRoleUnlockEffect
 {
     CyrenePoemShop,
+    SilverWolfTraitActivation,
+    SilverWolfHeadPlayerPending,
+    // Kept for source compatibility; new Head Player scheduling uses SilverWolfHeadPlayerPending.
     SilverWolfHackConsole,
 }
 
@@ -65,11 +68,7 @@ public sealed record GridFightSpecialGoodsPurchaseResult(
 public sealed record GridFightTraitEnhanceActivationResult(
     bool Success,
     uint FinishedQueuePosition,
-    GridFightEquipmentState? Equipment,
-    GridFightRoleState? UpdatedRole = null,
-    bool ShopNeedsRefresh = false,
-    IReadOnlyList<GridFightRoleState>? UpdatedRoles = null,
-    GridFightRoleAcquisitionResult? FollowUpAcquisition = null)
+    GridFightEquipmentState? Equipment)
 {
     public static GridFightTraitEnhanceActivationResult Failed { get; } = new(false, 0, null);
 }
@@ -95,58 +94,44 @@ public static class GridFightSpecialFeatures
     public const uint CyreneWealthBonusId = 11059;
     public const uint CyreneInsigniaBonusId = 11060;
     public const uint CyreneHeroBonusId = 11063;
+    public const uint SilverWolfThreeCostRoleId = 15061;
+    public const uint SilverWolfFourCostRoleId = 15062;
+    public const uint SilverWolfFiveCostRoleId = 15063;
     public const uint SilverWolfTraitId = 3006;
+    public const uint SilverWolfThreeCostTraitEffectId = 30061;
+    public const uint SilverWolfFourCostTraitEffectId = 30062;
+    public const uint SilverWolfFiveCostTraitEffectId = 30063;
+    // Compatibility aliases kept for the already-implemented five-cost/three-star HackConsole.
+    public const uint SilverWolfTraitEffectId = SilverWolfFiveCostTraitEffectId;
+    public const uint SilverWolfUpgradeToFourCostOptionId = 8;
+    public const uint SilverWolfUpgradeToFiveCostOptionId = 13;
+    public const uint SilverWolfEnhanceOptionId = 25;
     public const uint SilverWolfHackEquipmentId = 352507;
+    public const uint HeadPlayerEquipmentSource = 1;
 
-    /// <summary>最低 / 最高费用档角色 ID。</summary>
-    public static uint SilverWolfBaseRoleId => SilverWolfRoleChain.FirstOrDefault();
+    public static IReadOnlyList<uint> SilverWolfThreeCostEquipmentOptions { get; } = [9, 10, 11, 12];
+    public static IReadOnlyList<uint> SilverWolfFourCostEquipmentOptions { get; } = [14, 15, 16, 17, 18];
+    public static IReadOnlyList<uint> SilverWolfFiveCostEquipmentOptions { get; } = [19, 20, 21, 22, 23, 24];
 
-    public static uint SilverWolfTopRoleId => SilverWolfRoleChain.LastOrDefault();
-
-    /// <summary>终局手套所在的 TraitEffect 组，即最高费用档。</summary>
-    public static uint SilverWolfTraitEffectId => SilverWolfEffectGroups.LastOrDefault();
-
-    /// <summary>终局手套对应的骇入选项，反查 EffectParamList 指向 352507 的那一条。</summary>
-    public static uint SilverWolfEnhanceOptionId =>
-        GameData.GridFightEnhanceData.Values
-            .FirstOrDefault(row => row.FirstEffectParam == SilverWolfHackEquipmentId)?.ID ?? 0;
-
-    /// <summary>银狼费用档 → TraitEffect 组，来自 GridFightTraitBasicInfo[3006].TraitEffectList。</summary>
-    public static IReadOnlyList<uint> SilverWolfEffectGroups =>
-        GameData.GridFightTraitBasicInfoData.GetValueOrDefault(SilverWolfTraitId)?.TraitEffectList ?? [];
-
-    /// <summary>某档位的全部骇入选项，来自 GridFightEnhance.GroupID。</summary>
-    public static IReadOnlyList<GridFightEnhanceExcel> GetEnhanceOptions(uint effectGroupId) =>
-        GameData.GridFightEnhanceData.Values
-            .Where(row => row.GroupID == effectGroupId)
-            .OrderBy(row => row.ID)
-            .ToList();
-
-    /// <summary>升费选项：SelectCondition 为 Permanent，EffectParamList[0] 即下一档角色 ID。</summary>
-    private static GridFightEnhanceExcel? GetCostUpgradeOption(uint effectGroupId) =>
-        GetEnhanceOptions(effectGroupId)
-            .FirstOrDefault(row => row.SelectCondition == GridFightEnhanceConditionEnum.Permanent &&
-                                   GameData.GridFightRoleBasicInfoData.ContainsKey(row.FirstEffectParam));
-
-    /// <summary>档位内可产出装备的选项（排除升费与终局手套）。</summary>
-    public static IReadOnlyList<uint> GetHackEquipmentOptionPoolForRole(uint roleId)
-    {
-        var group = GetSilverWolfEffectGroup(roleId);
-        if (group == 0) return [];
-        return GetEnhanceOptions(group)
-            .Where(row => GameData.GridFightEquipmentData.ContainsKey(row.FirstEffectParam) &&
-                          row.FirstEffectParam != SilverWolfHackEquipmentId)
-            .Select(row => row.ID)
-            .ToList();
-    }
-
-    /// <summary>角色当前所处的 TraitEffect 组，未在银狼档位链上返回 0。</summary>
-    public static uint GetSilverWolfEffectGroup(uint roleId)
-    {
-        var tier = GetSilverWolfCostTier(roleId);
-        return tier == 0 ? 0 : SilverWolfEffectGroups[(int)tier - 1];
-    }
-
+    public static IReadOnlyDictionary<uint, uint> SilverWolfOptionEquipmentIds { get; } =
+        new Dictionary<uint, uint>
+        {
+            [9] = 352301,   // 数据拷贝仪
+            [10] = 352302,  // 病毒防火墙
+            [11] = 352303,  // 破解芯片
+            [12] = 352304,  // 扑满病毒
+            [14] = 352401,  // 数据拷贝仪 Pro
+            [15] = 352402,  // 欢愉卡带
+            [16] = 352404,  // 星核猎手卡带
+            [17] = 352405,  // 分身墨镜
+            [18] = 352406,  // 扑满病毒 Pro
+            [19] = 352502,  // 欢愉卡带 Max
+            [20] = 352503,  // 星核猎手卡带 Max
+            [21] = 352501,  // 数据拷贝仪 Max
+            [22] = 352504,  // 分身墨镜 Max
+            [23] = 352505,  // 病毒防火墙 Max
+            [24] = 352506,  // 扑满病毒 Max
+        };
     public const uint HackAddGoldOptionId = 1;
     public const uint HackFullHealOptionId = 2;
     public const uint HackGrantOrbOptionId = 3;
@@ -165,35 +150,35 @@ public static class GridFightSpecialFeatures
 
     public static IReadOnlyList<uint> HackOrbIds { get; } = [111079, 111080, 111081, 111082, 111083];
 
-    public static uint RollRandomHackOptionId(Random random, uint roleId, IReadOnlyCollection<uint>? ownedEquipmentIds = null)
-    {
-        var full = GetHackEquipmentOptionPoolForRole(roleId);
-        var pool = full;
-        if (ownedEquipmentIds is { Count: > 0 })
-        {
-            pool = full
-                .Where(opt => !TryGetEquipmentIdForOption(opt, out var eq) || !ownedEquipmentIds.Contains(eq))
-                .ToList();
-        }
-        if (pool.Count == 0) pool = full;
-        return pool.Count == 0 ? 0 : pool[random.Next(pool.Count)];
-    }
+    public static bool IsSilverWolfLv999Role(uint roleId) =>
+        roleId is SilverWolfThreeCostRoleId or SilverWolfFourCostRoleId or SilverWolfFiveCostRoleId;
 
-    /// <summary>选项产出的装备 ID，来自 GridFightEnhance.EffectParamList[0]。</summary>
-    public static bool TryGetEquipmentIdForOption(uint optionId, out uint equipmentId)
+    public static uint GetSilverWolfTraitEffectId(uint roleId) => roleId switch
     {
-        equipmentId = 0;
-        if (GameData.GridFightEnhanceData.GetValueOrDefault(optionId) is not { } row) return false;
-        if (!GameData.GridFightEquipmentData.ContainsKey(row.FirstEffectParam)) return false;
-        equipmentId = row.FirstEffectParam;
-        return true;
-    }
+        SilverWolfThreeCostRoleId => SilverWolfThreeCostTraitEffectId,
+        SilverWolfFourCostRoleId => SilverWolfFourCostTraitEffectId,
+        SilverWolfFiveCostRoleId => SilverWolfFiveCostTraitEffectId,
+        _ => 0,
+    };
 
-    public static uint GetCostUpgradeOptionId(uint currentRoleId)
+    public static uint GetSilverWolfCostTier(uint roleId) => roleId switch
     {
-        var group = GetSilverWolfEffectGroup(currentRoleId);
-        return group == 0 ? 0 : GetCostUpgradeOption(group)?.ID ?? 0;
-    }
+        SilverWolfThreeCostRoleId => 3,
+        SilverWolfFourCostRoleId => 4,
+        SilverWolfFiveCostRoleId => 5,
+        _ => 0,
+    };
+
+    public static IReadOnlyList<uint> GetSilverWolfEquipmentOptionPool(uint roleId) => roleId switch
+    {
+        SilverWolfThreeCostRoleId => SilverWolfThreeCostEquipmentOptions,
+        SilverWolfFourCostRoleId => SilverWolfFourCostEquipmentOptions,
+        SilverWolfFiveCostRoleId => SilverWolfFiveCostEquipmentOptions,
+        _ => [],
+    };
+
+    public static bool TryResolveSilverWolfOptionEquipmentId(uint optionId, out uint equipmentId) =>
+        SilverWolfOptionEquipmentIds.TryGetValue(optionId, out equipmentId);
 
     public static bool TryResolveSilverWolfEquipmentId(out uint equipmentId)
     {
@@ -202,58 +187,143 @@ public static class GridFightSpecialFeatures
             !rankFiveEquipment.AsUInt32List().Contains(SilverWolfHackEquipmentId) ||
             !GameData.GridFightEquipmentData.TryGetValue(SilverWolfHackEquipmentId, out var equipment) ||
             equipment.EquipCategory != GridFightEquipCategoryEnum.Hack ||
-            !equipment.DressRuleParamList.Contains(SilverWolfTopRoleId))
+            !equipment.DressRuleParamList.Contains(SilverWolfFiveCostRoleId))
             return false;
 
         equipmentId = equipment.ID;
         return true;
     }
 
-    public static bool IsSilverWolfRoleId(uint roleId) => SilverWolfRoleChain.Contains(roleId);
-
-    /// <summary>银狼费用档角色链，按费用升序；同一 AvatarID 下的全部档位。</summary>
-    public static IReadOnlyList<uint> SilverWolfRoleChain
+    /// <summary>
+    /// Returns whether the server can safely materialize an orb instance. 4.4 Currency War
+    /// added several reward orbs that can be present in the client/capture while an older
+    /// server Resource.bin does not yet contain the corresponding GridFightOrb row.
+    /// A configured reward therefore counts as a valid server-side definition as well.
+    /// </summary>
+    public static bool CanMaterializeOrb(uint orbItemId)
     {
-        get
-        {
-            var groups = SilverWolfEffectGroups;
-            if (groups.Count == 0) return [];
-            var upgradeTarget = groups
-                .Select(group => GetCostUpgradeOption(group)?.FirstEffectParam ?? 0)
-                .FirstOrDefault(id => id != 0);
-            if (upgradeTarget == 0) return [];
-            var avatarId = GameData.GridFightRoleBasicInfoData.GetValueOrDefault(upgradeTarget)?.AvatarID ?? 0;
-            if (avatarId == 0) return [];
-            return GameData.GridFightRoleBasicInfoData.Values
-                .Where(row => row.AvatarID == avatarId)
-                .OrderBy(row => row.Rarity)
-                .ThenBy(row => row.ID)
-                .Select(row => row.ID)
-                .Take(groups.Count)
-                .ToList();
-        }
-    }
-
-    public static uint GetSilverWolfNextCostRoleId(uint roleId)
-    {
-        var group = GetSilverWolfEffectGroup(roleId);
-        return group == 0 ? 0 : GetCostUpgradeOption(group)?.FirstEffectParam ?? 0;
-    }
-
-    /// <summary>1-based 费用档序号，非银狼返回 0。</summary>
-    public static uint GetSilverWolfCostTier(uint roleId)
-    {
-        var index = SilverWolfRoleChain.ToList().IndexOf(roleId);
-        return index < 0 ? 0 : (uint)index + 1;
+        // These Currency War orb IDs are capture-confirmed in 4.4 but can be absent from an
+        // older server Resource.bin. Keep the compatibility knowledge in code so it also works
+        // on the binary-cache startup path where Config/Custom is not re-read.
+        if (orbItemId is 103 or 303 or 200002 or 200003 or 200004 or 200006 or 200019) return true;
+        if (orbItemId is >= 101000 and < 102000 &&
+            GameData.GridFightRoleBasicInfoData.ContainsKey(orbItemId - 100000)) return true;
+        return GameData.GridFightOrbData.ContainsKey(orbItemId) ||
+               GameData.GridFightBasicOrbRewardsConfig.OrbRewards.ContainsKey(orbItemId);
     }
 
     public static bool TryResolveOrb(uint orbItemId, out IReadOnlyList<GridFightRewardEntry> rewards)
     {
         rewards = [];
-        if (!GameData.GridFightOrbData.TryGetValue(orbItemId, out var orb)) return false;
+
+        // Capture-confirmed 4.4 Currency War semantics. Put these before cached custom data:
+        // older Resource.bin snapshots contain the pre-4.4 definition for 103 (350101 x1),
+        // while the official 119 reward capture opens it as 350101 x2.
+        if (TryResolveCapturedCurrencyWarOrb(orbItemId, out rewards)) return true;
+
+        // Prefer explicit server-side compatibility definitions before GridFightOrbData lookup.
+        // A newer client may know an orb that an older Resource.bin does not.
         if (GameData.GridFightBasicOrbRewardsConfig.OrbRewards.TryGetValue(orbItemId, out var configured))
             return TryResolveConfiguredOrb(configured, out rewards);
-        return TryResolveBonus(orb.BonusID, out rewards);
+
+        // A cached Resource.bin can contain the 4.4 orb row while still missing (or carrying an
+        // older form of) the bonus rows it references. Do not let a failed native bonus lookup
+        // suppress the capture-backed compatibility fallback below.
+        if (GameData.GridFightOrbData.TryGetValue(orbItemId, out var orb) &&
+            TryResolveBonus(orb.BonusID, out rewards))
+            return true;
+
+        // 4.5 role orbs use 100000 + GridFight role id (e.g. 101005 Kafka, 101218 Jiaoqiu).
+        if (orbItemId is >= 101000 and < 102000)
+        {
+            var roleId = orbItemId - 100000;
+            if (GameData.GridFightRoleBasicInfoData.ContainsKey(roleId))
+            {
+                rewards = [new GridFightRewardEntry(GridFightBonusTypeEnum.SpecificAvatar, roleId, 1, 1)];
+                return true;
+            }
+        }
+
+        // 303 is present in normal 4.4 data, but keep a narrow compatibility fallback for an
+        // older cache. The capture only proves that the opened result is an Emblem-class item,
+        // so do not hard-code the single observed equipment ID.
+        if (orbItemId == 303)
+        {
+            var result = new List<GridFightRewardEntry>();
+            var emblems = GameData.GridFightEquipmentData.Values
+                .Where(row => row.EquipCategory == GridFightEquipCategoryEnum.Emblem)
+                .OrderBy(row => row.ID)
+                .ToList();
+            if (!AddRandomEquipment(emblems, 1, result)) return false;
+            rewards = result;
+            return true;
+        }
+
+        return false;
+    }
+
+    private static bool TryResolveCapturedCurrencyWarOrb(
+        uint orbItemId,
+        out IReadOnlyList<GridFightRewardEntry> rewards)
+    {
+        var result = new List<GridFightRewardEntry>();
+        switch (orbItemId)
+        {
+            case 103:
+                // Official 119 second reward node: 103 -> 350101 x2.
+                if (!IsValidItemReward(350101))
+                {
+                    rewards = [];
+                    return false;
+                }
+                result.Add(new GridFightRewardEntry(GridFightBonusTypeEnum.Item, 350101, 2));
+                break;
+            case 200002:
+                if (!AddRandomAvatar(2, 1, 1, result))
+                {
+                    rewards = [];
+                    return false;
+                }
+                break;
+            case 200003:
+                if (!AddRandomAvatar(3, 1, 1, result))
+                {
+                    rewards = [];
+                    return false;
+                }
+                break;
+            case 200004:
+                if (!AddRandomAvatar(4, 1, 1, result))
+                {
+                    rewards = [];
+                    return false;
+                }
+                break;
+            case 200006:
+                var basicEquipment = GameData.GridFightEquipmentData.Values
+                    .Where(row => row.EquipCategory == GridFightEquipCategoryEnum.Basic)
+                    .OrderBy(row => row.ID)
+                    .ToList();
+                if (!AddRandomEquipment(basicEquipment, 1, result))
+                {
+                    rewards = [];
+                    return false;
+                }
+                break;
+            case 200019:
+                if (!AddRandomAvatar(1, 2, 1, result))
+                {
+                    rewards = [];
+                    return false;
+                }
+                break;
+            default:
+                rewards = [];
+                return false;
+        }
+
+        rewards = result;
+        return true;
     }
 
     public static IReadOnlyList<string> ValidateConfiguredOrbRewards()
@@ -263,8 +333,9 @@ public static class GridFightSpecialFeatures
         {
             if (configured.OrbId != orbId)
                 errors.Add($"GridFight orb reward {orbId} has mismatched orb id {configured.OrbId}");
-            if (!GameData.GridFightOrbData.ContainsKey(orbId))
-                errors.Add($"GridFight orb reward {orbId} references missing orb");
+            // Do not reject a configured orb solely because the server Resource.bin is older.
+            // Config/Custom/GridFightBasicOrbRewards.json is also used as a forward-compatibility
+            // definition for capture-confirmed Currency War orbs.
             if (configured.Rewards.Count == 0 || configured.Rewards.Values.Any(rewards => rewards.Count == 0))
                 errors.Add($"GridFight orb reward {orbId} has an empty variant");
             foreach (var reward in configured.Rewards.Values.SelectMany(rewards => rewards))
@@ -305,17 +376,68 @@ public static class GridFightSpecialFeatures
             }
 
             if (!GameData.GridFightBasicBonusPoolV2Data.TryGetValue(bonusId, out var basic)) return false;
-            var itemId = basic.BonusTypeParamList.FirstOrDefault();
-            if (itemId == 0) itemId = basic.BonusTypeParam;
-            var roleStar = basic.BonusType == GridFightBonusTypeEnum.SpecificAvatar
-                ? basic.BonusTypeParamList.ElementAtOrDefault(1)
-                : 0;
-            rewards.Add(new GridFightRewardEntry(basic.BonusType, itemId, multiplier, roleStar));
-            return true;
+            return TryMaterializeBasicBonus(basic, multiplier, rewards);
         }
         finally
         {
             resolving.Remove(bonusId);
+        }
+    }
+
+    private static bool TryMaterializeBasicBonus(
+        GridFightBasicBonusPoolV2Excel basic,
+        uint multiplier,
+        List<GridFightRewardEntry> result)
+    {
+        if (multiplier == 0) return false;
+        var firstParam = basic.BonusTypeParamList.FirstOrDefault();
+        if (firstParam == 0) firstParam = basic.BonusTypeParam;
+
+        switch (basic.BonusType)
+        {
+            case GridFightBonusTypeEnum.Gold:
+            case GridFightBonusTypeEnum.Exp:
+                result.Add(new GridFightRewardEntry(basic.BonusType, 0, multiplier));
+                return true;
+            case GridFightBonusTypeEnum.SpecificAvatar:
+                var star = basic.BonusTypeParamList.ElementAtOrDefault(1);
+                if (!IsValidRoleReward(firstParam, star)) return false;
+                result.Add(new GridFightRewardEntry(GridFightBonusTypeEnum.SpecificAvatar, firstParam, multiplier, star));
+                return true;
+            case GridFightBonusTypeEnum.RandomAvatar:
+                var rarity = firstParam;
+                var randomStar = basic.BonusTypeParamList.ElementAtOrDefault(1);
+                var roles = GameData.GridFightRoleBasicInfoData.Values
+                    .Where(role => role.IsInPool && role.Rarity == rarity &&
+                                   GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | randomStar))
+                    .OrderBy(role => role.ID)
+                    .ToList();
+                if (roles.Count == 0) return false;
+                for (var index = 0u; index < multiplier; index++)
+                {
+                    var role = roles[Random.Shared.Next(roles.Count)];
+                    result.Add(new GridFightRewardEntry(
+                        GridFightBonusTypeEnum.SpecificAvatar, role.ID, 1, randomStar));
+                }
+                return true;
+            case GridFightBonusTypeEnum.Item:
+                if (!IsValidItemReward(firstParam)) return false;
+                result.Add(new GridFightRewardEntry(GridFightBonusTypeEnum.Item, firstParam, multiplier));
+                return true;
+            case GridFightBonusTypeEnum.Orb:
+                if (!CanMaterializeOrb(firstParam)) return false;
+                result.Add(new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, firstParam, multiplier));
+                return true;
+            case GridFightBonusTypeEnum.RandomEquipByCategory:
+                var category = (GridFightEquipCategoryEnum)firstParam;
+                if (category == GridFightEquipCategoryEnum.None) return false;
+                var equipment = GameData.GridFightEquipmentData.Values
+                    .Where(row => row.EquipCategory == category)
+                    .OrderBy(row => row.ID)
+                    .ToList();
+                return AddRandomEquipment(equipment, multiplier, result);
+            default:
+                return false;
         }
     }
 
@@ -374,12 +496,12 @@ public static class GridFightSpecialFeatures
                 result.Add(new GridFightRewardEntry(reward.BonusType, firstParam, count));
                 return true;
             case GridFightBonusTypeEnum.Orb:
-                if (!GameData.GridFightOrbData.ContainsKey(firstParam)) return false;
+                if (!CanMaterializeOrb(firstParam)) return false;
                 result.Add(new GridFightRewardEntry(reward.BonusType, firstParam, count));
                 return true;
             case GridFightBonusTypeEnum.RandomEquipByCategory:
                 var category = (GridFightEquipCategoryEnum)firstParam;
-                if (category != GridFightEquipCategoryEnum.Basic) return false;
+                if (category == GridFightEquipCategoryEnum.None) return false;
                 var equipmentByCategory = GameData.GridFightEquipmentData.Values
                     .Where(equipment => equipment.EquipCategory == category)
                     .OrderBy(equipment => equipment.ID)
@@ -405,11 +527,11 @@ public static class GridFightSpecialFeatures
                     GameData.GridFightRoleStarData.ContainsKey(
                         role.ID << 4 | reward.BonusTypeParamList.ElementAtOrDefault(1))),
             GridFightBonusTypeEnum.Item => IsValidItemReward(firstParam),
-            GridFightBonusTypeEnum.Orb => GameData.GridFightOrbData.ContainsKey(firstParam),
+            GridFightBonusTypeEnum.Orb => CanMaterializeOrb(firstParam),
             GridFightBonusTypeEnum.RandomEquipByCategory =>
-                (GridFightEquipCategoryEnum)firstParam == GridFightEquipCategoryEnum.Basic &&
+                (GridFightEquipCategoryEnum)firstParam != GridFightEquipCategoryEnum.None &&
                 GameData.GridFightEquipmentData.Values.Any(equipment =>
-                    equipment.EquipCategory == GridFightEquipCategoryEnum.Basic),
+                    equipment.EquipCategory == (GridFightEquipCategoryEnum)firstParam),
             _ => false,
         };
     }
@@ -425,6 +547,27 @@ public static class GridFightSpecialFeatures
         return itemId != 0 && (GameData.GridFightEquipmentData.ContainsKey(itemId) ||
                               GameData.GridFightConsumablesData.ContainsKey(itemId) ||
                               GameData.GridFightForgeData.ContainsKey(itemId));
+    }
+
+    private static bool AddRandomAvatar(
+        uint rarity,
+        uint star,
+        uint count,
+        List<GridFightRewardEntry> result)
+    {
+        if (rarity == 0 || star == 0 || count == 0) return false;
+        var roles = GameData.GridFightRoleBasicInfoData.Values
+            .Where(role => role.IsInPool && role.Rarity == rarity &&
+                           GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | star))
+            .OrderBy(role => role.ID)
+            .ToList();
+        if (roles.Count == 0) return false;
+        for (var index = 0u; index < count; index++)
+        {
+            var role = roles[Random.Shared.Next(roles.Count)];
+            result.Add(new GridFightRewardEntry(GridFightBonusTypeEnum.SpecificAvatar, role.ID, 1, star));
+        }
+        return true;
     }
 
     private static bool AddRandomEquipment(

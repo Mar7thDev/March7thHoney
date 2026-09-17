@@ -9,6 +9,10 @@ namespace March7thHoney.WebServer.Controllers;
 
 public static class GateServerRoutes
 {
+    internal const string RogueTournBuildRefStaticPath = "/rpgsimulator/0/";
+    internal const string RogueTournBuildRefFile = "rpg_lineup_list.json";
+    private const string RogueTournBuildRefPayload = "{\"lineups\":[],\"version\":249}";
+
     public static void MapGateServerRoutes(this IEndpointRouteBuilder app)
     {
         app.MapGet("/query_gateway", (HttpContext ctx) =>
@@ -36,8 +40,16 @@ public static class GateServerRoutes
                 account_uid = q["account_uid"].ToString(),
             };
 
-            var handler = new QueryGatewayHandler(req);
+            var publicBaseUrl = $"{ctx.Request.Scheme}://{ctx.Request.Host}{ctx.Request.PathBase}";
+            var handler = new QueryGatewayHandler(req, publicBaseUrl);
             return Results.Text(handler.Data, "text/plain");
         });
+
+        // These are exact routes because the prefix is under our control and the client appends the
+        // known file name. The second path is the API fallback used when CDN lookup is unavailable.
+        app.MapGet(RogueTournBuildRefStaticPath + RogueTournBuildRefFile,
+            () => Results.Text(RogueTournBuildRefPayload, "application/json; charset=utf-8"));
+        app.MapGet("/event/rpgsimulator/game/tourn/lineup/cdn_content",
+            () => Results.Text(RogueTournBuildRefPayload, "application/json; charset=utf-8"));
     }
 }

@@ -11,6 +11,33 @@ namespace March7thHoney.GameServer.Game.Scene;
 
 public class SceneEntityLoader(SceneInstance scene)
 {
+    private static bool Is45Prod => GameConstants.IsVersion("4.5.0");
+
+    // 4.5 Xianzhou compatibility exclusions. PCOnly captures are not the only problematic props:
+    // narrowing the earlier Android fix to PCOnly reintroduced the Changle Tian loading failure.
+    // Match exact cached instances; LoadOnInitial=false is also used by ordinary usable props.
+    private static readonly HashSet<(int FloorId, int GroupId, int InstId)> IncompatibleProps =
+    [
+        (10201001, 280, 300001), // Chap02_CloseView_ADV_X01_StarSkiff_11_PCOnly_BlockData / TeaSet0
+        (10202001, 144, 300003), // Noninitial CommandRobotPuzzle prop from the earlier Android fix
+        (10202001, 208, 300001), // Chap02_CloseView_ADV_X02_Sanctum_01_PCOnly_BlockData / UmbrellaGroup0
+        (10202001, 208, 300002)  // Noninitial StageItemsHandler capture from the earlier Android fix
+    ];
+
+    // Restore only the known problematic Reading atmosphere group. Other atmosphere/Hoyo groups
+    // and floor-wide activity defaults remain available; those flags alone are not exclusions.
+    private bool IsIncompatibleGroup(GroupInfo group) =>
+        Is45Prod && Scene.FloorId == 10202001 && group.Id == 169;
+
+    private bool IsIncompatibleProp(GroupInfo group, PropInfo info) =>
+        Is45Prod && IncompatibleProps.Contains((Scene.FloorId, group.Id, info.ID));
+
+    private bool IsRogueLobbyConsole(GroupInfo group, PropInfo info, int propId) =>
+        // The 4.6 cache identifies these two lobby consoles by their authored scene identities even when
+        // MazeProp.JsonPath is absent. Keep the fallback exact so unrelated Rogue doors/chests stay closed.
+        Scene.FloorId == 10341001 && group.Id == 13 &&
+        (info.ID, propId) is (300001, 1025) or (300002, 1032);
+
     public SceneInstance Scene { get; set; } = scene;
     public List<int> LoadGroups { get; set; } = [];
 
@@ -35,7 +62,9 @@ public class SceneEntityLoader(SceneInstance scene)
     public virtual async ValueTask SyncEntity()
     {
         var refreshed = false;
-        var oldGroupId = new List<int>();
+        // Empty runtime groups (for example StageItemsHandler) are still loaded groups.
+        // Deriving membership only from entities reloads them on every sync and duplicates Groups.
+        var oldGroupId = new HashSet<int>(Scene.Groups);
         foreach (var entity in Scene.Entities.Values.Where(entity => !oldGroupId.Contains(entity.GroupId)))
             oldGroupId.Add(entity.GroupId);
 
@@ -62,7 +91,7 @@ public class SceneEntityLoader(SceneInstance scene)
                 var unload = !group.UnloadCondition.DelayToLevelReload &&
                              group.UnloadCondition.IsTrue(Scene.Player.MissionManager!.Data, false);
 
-                if (forceUnload || unload) // any of the conditions is true then unload
+                if (forceUnload || unload || IsIncompatibleGroup(group))
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -87,8 +116,7 @@ public class SceneEntityLoader(SceneInstance scene)
                     Scene.Groups.Remove(group.Id);
                 }
                 else if (!group.SavedValueCondition.IsTrue(
-                             Scene.Player.SceneData!
-                                 .GetFloorSavedValues(Scene.FloorId))) // condition: Saved Value Condition
+                             Scene.BuildClientFloorSavedData())) // same dimension defaults as the scene snapshot
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -130,6 +158,7 @@ public class SceneEntityLoader(SceneInstance scene)
         if (!LoadGroups.Contains(info.Id)) return null; // check if group should be loaded in this dimension
         var missionData = Scene.Player.MissionManager!.Data; // get mission data
         if (info.LoadSide == GroupLoadSideEnum.Client) return null; // check if group should be loaded on client side
+        if (IsIncompatibleGroup(info)) return null;
         if (info.GroupName.Contains("TrainVisitor")) return null; // certain group name
         if (info.GroupName.Contains("DeployPuzzle_Repeat_Area")) return null;
         if (info.GroupName.Contains("TrainVisiter")) return null;
@@ -173,13 +202,11 @@ public class SceneEntityLoader(SceneInstance scene)
              info.ForceUnloadCondition.IsTrue(missionData, false)) &&
             !forceLoad) return null; // check if group should be loaded forcefully
 
-        if (!info.SavedValueCondition.IsTrue(
-                Scene.Player.SceneData!.FloorSavedData.GetValueOrDefault(Scene.FloorId, [])) &&
+        if (!info.SavedValueCondition.IsTrue(Scene.BuildClientFloorSavedData()) &&
             !forceLoad) // condition: Saved Value Condition
             return null;
 
-        if (Scene.Entities.Values.ToList().FindIndex(x => x.GroupId == info.Id) !=
-            -1) // check if group is already loaded
+        if (Scene.Groups.Contains(info.Id) || Scene.Entities.Values.Any(x => x.GroupId == info.Id))
             return null;
 
         if (info.RelatedBattleId.Count > 0 && !Scene.Player.MissionManager!.GetRunningSubMissionList().Any(x =>
@@ -212,6 +239,8 @@ public class SceneEntityLoader(SceneInstance scene)
                 // ignored
             }
 
+        // Keep compatibility with ordinary noninitial props; compatibility exclusions live in LoadProp
+        // so direct creation and forced group activation use the same rule as initial loading.
         foreach (var prop in info.PropList)
             try
             {
@@ -261,7 +290,9 @@ public class SceneEntityLoader(SceneInstance scene)
 
     public virtual async ValueTask<EntityNpc?> LoadNpc(NpcInfo info, GroupInfo group, bool sendPacket = false)
     {
-        if (info.IsClientOnly || info.IsDelete || !info.LoadOnInitial) return null;
+        // Like props, NPCs have no later server-side creation path. Some ordinary server NPC exports
+        // incorrectly say LoadOnInitial=false, so let the containing group's lifecycle own visibility.
+        if (info.IsClientOnly || info.IsDelete || IsIncompatibleGroup(group)) return null;
 
         if (!GameData.NpcDataData.ContainsKey(info.NPCID)) return null;
 
@@ -274,7 +305,7 @@ public class SceneEntityLoader(SceneInstance scene)
     public virtual async ValueTask<EntityMonster?> LoadMonster(MonsterInfo info, GroupInfo group,
         bool sendPacket = false)
     {
-        if (info.IsClientOnly || info.IsDelete) return null;
+        if (info.IsClientOnly || info.IsDelete || IsIncompatibleGroup(group)) return null;
 
         GameData.NpcMonsterDataData.TryGetValue(info.NPCMonsterID, out var excel);
         if (excel == null) return null;
@@ -287,20 +318,16 @@ public class SceneEntityLoader(SceneInstance scene)
 
     public virtual async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
     {
-        // Runtime floor/group exports are not always consistent for IsClientOnly/LoadOnInitial on props.
-        // Keep server-side prop availability driven by group-level loading and explicit deletion only.
-        if (info.IsDelete) return null;
+        // IsClientOnly/LoadOnInitial alone are not server-prop exclusions: runtime exports also set
+        // them on usable server props. Keep exclusions consistent for direct and group creation.
+        if (info.IsDelete || IsIncompatibleGroup(group) || IsIncompatibleProp(group, info)) return null;
 
         GameData.MazePropData.TryGetValue(info.PropID, out var excel);
         if (excel == null) return null;
 
         var prop = new EntityProp(Scene, excel, group, info);
 
-        if (excel.PropType == PropTypeEnum.PROP_SPRING)
-        {
-            Scene.HealingSprings.Add(prop);
-            await prop.SetState(PropStateEnum.CheckPointEnable);
-        }
+        if (excel.PropType == PropTypeEnum.PROP_SPRING) Scene.HealingSprings.Add(prop);
 
         // load from database
         var propData = Scene.Player.GetScenePropData(Scene.FloorId, group.Id, info.ID);
@@ -316,6 +343,32 @@ public class SceneEntityLoader(SceneInstance scene)
             else
                 // elevator
                 prop.State = prop.Excel.PropType == PropTypeEnum.PROP_ELEVATOR ? PropStateEnum.Elevator1 : info.State;
+        }
+
+        if (!hasSavedState)
+        {
+            // Rogue lobby exports may omit State even though the same props are Open on their other
+            // floors. Their client graphs expose the Rogue/RogueTourn entry button only in Open state.
+            // Keep this scoped to the lobby-console assets; Rogue doors and chests retain their state.
+            if (IsRogueLobbyConsole(group, info, excel.ID) ||
+                prop.State == PropStateEnum.Closed &&
+                (excel.JsonPath.Contains("LobbyEntrance", StringComparison.Ordinal) ||
+                 excel.JsonPath.Contains("RougueEmblem", StringComparison.Ordinal) ||
+                 excel.JsonPath.Contains("RogueEmblem", StringComparison.Ordinal)))
+                prop.State = PropStateEnum.Open;
+
+            // A spring's checkpoint comes from its configured State when the level export declares one
+            // (CheckPointDisable keeps it hidden until a mission or the player enables it - official 20002001
+            // sends 300006/8 and 300021/300022/300007/7) and defaults to CheckPointEnable otherwise. Healing stays
+            // PropType-based, so a disabled spring still heals on proximity.
+            if (excel.PropType == PropTypeEnum.PROP_SPRING &&
+                prop.State is not (PropStateEnum.CheckPointDisable or PropStateEnum.CheckPointEnable))
+                prop.State = PropStateEnum.CheckPointEnable;
+
+            // Story off: every teleport waypoint is usable from the start (the pre-story-mode behaviour, kept
+            // per scene instead of being baked into the shared config).
+            if (!Scene.Player.MissionEnabled && info.MappingInfoID != 0 && prop.State == PropStateEnum.CheckPointDisable)
+                prop.State = PropStateEnum.CheckPointEnable;
         }
 
         // Missions off: open doors so they don't block the way.

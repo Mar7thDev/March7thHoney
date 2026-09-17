@@ -1,7 +1,7 @@
 using MemoryPack;
 using March7thHoney.Enums.Quest;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using March7thHoney.Util;
 
 namespace March7thHoney.Data.Excel;
 
@@ -15,7 +15,7 @@ public partial class QuestDataExcel : ExcelResource
     public int RewardID { get; set; }
     public int FinishWayID { get; set; }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(SafeStringEnumConverter<QuestUnlockTypeEnum>))]
     public QuestUnlockTypeEnum UnlockType { get; set; }
 
     public List<int> UnlockParamList { get; set; } = [];

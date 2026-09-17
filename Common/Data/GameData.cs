@@ -516,6 +516,10 @@ public static partial class GameData
     public static Dictionary<int, RogueTournPermanentTalentExcel> RogueTournPermanentTalentData { get; private set; } =
         [];
 
+    public static Dictionary<int, RoguePersonaTalentExcel> RoguePersonaTalentData { get; private set; } = [];
+    public static Dictionary<int, RoguePersonaStyleExcel> RoguePersonaStyleData { get; private set; } = [];
+    public static Dictionary<int, RogueTournKeywordExcel> RogueTournKeywordData { get; private set; } = [];
+
     public static List<RogueTournRoomConfig> RogueTournRoomGenData { get; set; } =
         [];
 

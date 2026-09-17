@@ -21,6 +21,8 @@ public partial class FloorInfo
     [JsonConverter(typeof(ConcurrentBagConverter<int>))]
     public ConcurrentBag<int> MapSections = [];
 
+    // Retained at its original MemoryPack position for existing Resource.bin compatibility.
+    // Runtime waypoint state now lives in SceneData.UnlockedTeleportData and this bag is not populated.
     [JsonConverter(typeof(ConcurrentBagConverter<PropInfo>))]
     public ConcurrentBag<PropInfo> UnlockedCheckpoints = [];
 
@@ -31,11 +33,40 @@ public partial class FloorInfo
     public List<FloorGroupInfo> GroupInstanceList { get; set; } = [];
     public List<FloorDimensionInfo> DimensionList { get; set; } = [];
 
+    /// <summary>
+    ///     Per-instance lifecycle fields of the runtime floor export, keyed by group id. Consumed at load time
+    ///     by <see cref="StampCommonMapFields" /> and not cached: the stamped values live on the group.
+    /// </summary>
+    [MemoryPackIgnore]
+    public Dictionary<string, GroupInstanceCommonInfo> GroupInstanceCommonMap { get; set; } = [];
+
     [JsonProperty(ItemConverterType = typeof(StringEnumConverter))]
     public List<LevelFeatureTypeEnum> LevelFeatureModules { get; set; } = [];
 
     [JsonIgnore] public int StartGroupID { get; set; }
     [JsonIgnore] public List<FloorSavedValueInfo> FloorSavedValue { get; set; } = [];
+
+    /// <summary>
+    ///     Overlays the floor's GroupInstanceCommonMap entry onto a freshly loaded group. The group FILE usually
+    ///     omits SaveType (in the 4.5 dump 10.7k groups carry none while their common-map row says Permanent);
+    ///     the runtime floor export is the authoritative per-instance source, so it wins whenever it names a
+    ///     value. Persistence (EntityProp.SetState / SceneSkillManager) reads the resulting SaveType.
+    /// </summary>
+    public void StampCommonMapFields(GroupInfo group)
+    {
+        if (!GroupInstanceCommonMap.TryGetValue(group.Id.ToString(), out var common)) return;
+
+        if (!string.IsNullOrEmpty(common.SaveType) &&
+            Enum.TryParse<SaveTypeEnum>(common.SaveType, out var saveType))
+            group.SaveType = saveType;
+
+        if (!string.IsNullOrEmpty(common.Category) &&
+            Enum.TryParse<GroupCategoryEnum>(common.Category, out var category))
+            group.Category = category;
+
+        if (common.IsHoyoGroup is { } isHoyoGroup)
+            group.IsHoyoGroup = isHoyoGroup;
+    }
 
     public AnchorInfo? GetAnchorInfo(int groupId, int anchorId)
     {
@@ -60,12 +91,13 @@ public partial class FloorInfo
             // Check if prop can be teleported to
             if (prop.AnchorID > 0)
             {
-                // Put inside cached teleport list to send to client when they request map info
+                // Teleport destinations by MappingInfoID (EnterScene(teleportId) + GetUnlockTeleport). The
+                // checkpoint's STATE is no longer forced here: with the story enabled a waypoint starts in its
+                // configured CheckPointDisable and is unlocked when the player reaches it
+                // (SceneInstance.TryUnlockNearbyWaypoint); the story-off mode re-enables them per scene in
+                // SceneEntityLoader.LoadProp. Forcing the config copy made every waypoint permanently unlocked
+                // and broke the mission PropState gates that watch these checkpoints.
                 CachedTeleports.TryAdd(prop.MappingInfoID, prop);
-                UnlockedCheckpoints.Add(prop);
-
-                // Force prop to be in the unlocked state
-                prop.State = PropStateEnum.CheckPointEnable;
             }
             else if (!string.IsNullOrEmpty(prop.InitLevelGraph))
             {
@@ -88,6 +120,16 @@ public partial class FloorInfo
 
         Loaded = true;
     }
+}
+
+/// <summary>One GroupInstanceCommonMap row of a runtime floor export (only the fields the server consumes).</summary>
+public class GroupInstanceCommonInfo
+{
+    public bool? IsHoyoGroup { get; set; }
+    public string? SaveType { get; set; }
+    public string? Category { get; set; }
+    public string? LoadSide { get; set; }
+    public bool? LoadOnInitial { get; set; }
 }
 
 [MemoryPackable]
