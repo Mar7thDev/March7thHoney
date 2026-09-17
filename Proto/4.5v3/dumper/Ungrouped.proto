@@ -20373,7 +20373,7 @@ enum OIKBIPICGDN {
     OIKBIPICGDN_ONAANCDBFJK = 3;
 }
 
-message OIMLFNKOCLN {
+message SyncServerSceneChangeNotify {
 }
 
 message OIMLMDHOHAP {
@@ -24181,13 +24181,13 @@ message SceneInfo {
 }
 
 message SceneMapInfo {
-    uint32 retcode = 14;
+    uint32 floor_id = 14;
     SceneIdentifier scene_identifier = 76;
     repeated uint32 finished_chest_monster_id_list = 187;
     uint32 cur_map_entry_id = 5;
     repeated uint32 unlock_teleport_list = 1957;
     uint32 dimension_id = 4;
-    uint32 floor_id = 6;
+    uint32 retcode = 6;
     repeated ChestMonsterStat chest_monster_list = 11;
     repeated uint32 lighten_section_list = 15;
     uint32 entry_id = 1;

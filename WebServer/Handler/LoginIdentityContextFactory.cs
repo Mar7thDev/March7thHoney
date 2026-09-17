@@ -10,10 +10,7 @@ internal static class LoginIdentityContextFactory
     private static readonly string[] DeviceHeaderNames =
     [
         "x-rpc-device_fp",
-        "x-rpc-device_id",
-        "x-rpc-device_model",
-        "x-rpc-device_name",
-        "x-rpc-app_id"
+        "x-rpc-device_id"
     ];
 
     private static readonly HashSet<string> DevicePropertyNames = new(StringComparer.OrdinalIgnoreCase)
@@ -93,10 +90,8 @@ internal static class LoginIdentityContextFactory
                 if (value == null)
                     continue;
 
-                if (DevicePropertyNames.Contains(name))
-                    deviceValues.Add(value.GetValueKind() == JsonValueKind.String
-                        ? value.GetValue<string>()
-                        : value.ToJsonString());
+                if (DevicePropertyNames.Contains(name) && value.GetValueKind() == JsonValueKind.String)
+                    deviceValues.Add(value.GetValue<string>());
 
                 ExtractDeviceValues(value, deviceValues);
             }

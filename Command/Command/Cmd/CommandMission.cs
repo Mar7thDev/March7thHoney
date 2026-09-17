@@ -177,6 +177,39 @@ public class CommandMission : ICommand
         await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.MissionReAccepted", missionId.ToString()));
     }
 
+    [CommandMethod("0 repair")]
+    public async ValueTask RepairMission(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        if (!await RequireMissionSystem(arg)) return;
+
+        var report = await arg.Target.Player!.MissionManager!.RepairStalledMainMissions();
+
+        if (report.Resumed.Count > 0)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.RepairResumed",
+                report.Resumed.Count.ToString(), string.Join("、", report.Resumed)));
+
+        if (report.Closed.Count > 0)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.RepairClosed",
+                report.Closed.Count.ToString(), string.Join("、", report.Closed)));
+
+        if (report.RetrackedTo > 0)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.RepairRetracked",
+                report.RetrackedTo.ToString()));
+
+        if (report.Stalled.Count > 0)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.RepairStalled",
+                string.Join("、", report.Stalled)));
+
+        if (!report.Changed && report.Stalled.Count == 0)
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.RepairNone"));
+    }
+
     [CommandMethod("0 finishmain")]
     public async ValueTask FinishMainMission(CommandArg arg)
     {

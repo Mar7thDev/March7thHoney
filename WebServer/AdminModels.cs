@@ -1,0 +1,102 @@
+namespace March7thHoney.WebServer;
+
+// Response payloads for the admin console beyond the account basics in WebModels.cs. Property names are the
+// exact JSON keys (snake_case, unchanged by the camelCase policy) so the page can consume them directly.
+
+// GET /admin/api/session
+public sealed record AdminSessionData(
+    long expires_at, string server_name, string version, string language, int active_sessions);
+
+// GET /admin/api/sessions — every live connection, with or without a logged-in player
+public sealed record SessionInfo(
+    int uid, string nickname, int level, int world_level, string endpoint, string state, long conversation_id,
+    int plane_id, int floor_id, int entry_id, bool in_battle, bool in_raid, string language, List<int> lineup,
+    long last_active, bool has_player);
+
+public sealed record SessionsData(List<SessionInfo> sessions, int count, int active);
+
+public sealed record KickAllData(int kicked);
+
+// GET /admin/api/players/{uid}
+public sealed record AvatarBrief(int id, int level, int promotion, int rank);
+
+public sealed record PlayerDetailData(
+    int uid, bool exists, bool online, string name, string signature, int level, int exp, int world_level,
+    int scoin, int hcoin, int mcoin, int stamina, double stamina_reserve, int head_icon, int plane_id, int floor_id,
+    int entry_id, long last_active, long month_card_expire, int fake_time_date, int avatar_count,
+    List<AvatarBrief> avatars, List<int> lineup, int finished_main_missions, int running_main_missions,
+    int mail_count, int material_count, int equipment_count, int relic_count, bool in_battle, bool in_raid,
+    string language);
+
+// Mail
+public sealed record MailAttachmentBrief(
+    int item_id, int count, int level, int rank, int promotion, int talent_level);
+
+public sealed record MailboxEntry(
+    int mail_id, string sender, string title, string content, bool is_read, bool is_star, long send_time,
+    long expire_time, int template_id, List<MailAttachmentBrief> attachments);
+
+public sealed record MailboxData(int uid, List<MailboxEntry> mails, int count, bool online);
+
+public sealed record MailSendData(int sent, int failed, List<string> errors, List<int> recipients);
+
+// Announcements
+public sealed record AnnounceSendData(int sent, long duration_seconds, long frequency_seconds);
+
+public sealed record AnnounceConfigData(
+    bool enabled, string content, string duration, string frequency, long duration_seconds,
+    long frequency_seconds);
+
+// Commands
+public sealed record CommandCatalogItem(
+    string name, string description, string usage, string permission, List<string> aliases,
+    List<string> subcommands);
+
+public sealed record CommandCatalogData(List<CommandCatalogItem> commands, int count);
+
+// Settings
+public sealed record AdminSettingField(
+    string key, string group, string type, string value, bool restart, List<string>? options, bool configured);
+
+public sealed record SettingsData(List<AdminSettingField> fields, bool public_mode);
+
+public sealed record SettingsApplyData(
+    int applied, List<string> errors, bool restart_required, bool persisted, List<AdminSettingField> fields);
+
+// Hotfix
+public sealed record HotfixEntry(
+    string version, string asset_bundle_url, string ex_asset_bundle_url, string ex_resource_url, string lua_url,
+    string ifix_url);
+
+public sealed record HotfixData(
+    string region, bool send_hotfix, bool fetch_remote, List<HotfixEntry> entries, List<string> regions);
+
+// Logs
+public sealed record LogEntry(long seq, long time, string module, string level, string message);
+
+public sealed record LogsData(List<LogEntry> entries, long latest_seq, long oldest_seq, int buffered, bool truncated);
+
+public sealed record LogFileInfo(string name, long size, long modified, bool active);
+
+public sealed record LogFilesData(List<LogFileInfo> files, string directory);
+
+// Maintenance
+public sealed record MaintenanceData(
+    int uid_count, int dirty_uids, long last_save, string db_type, string db_name, long db_size,
+    int rate_limit_entries, int blocked_entries, long server_time, string version, string os, int processors,
+    double process_memory_mb, double machine_total_mb, double machine_available_mb, long uptime_seconds,
+    int threads, int connections, int admin_sessions, bool public_mode, List<string> handbook_languages,
+    int gc_collections, double gc_heap_mb);
+
+public sealed record SaveDatabaseData(bool saved, double seconds, int flushed);
+
+public sealed record ReloadData(string target, string message);
+
+public sealed record RateLimitEntry(
+    string key, string action, int count, long window_start, long blocked_until, long updated_at);
+
+public sealed record RateLimitData(List<RateLimitEntry> entries, int count, int blocked, long server_time);
+
+public sealed record ClearedData(int cleared);
+
+public sealed record AdminKeyRotateData(string admin_key, int revoked_sessions);

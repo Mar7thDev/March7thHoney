@@ -42,6 +42,19 @@ public class PacketPVEBattleResultScRsp : BasePacket
             foreach (var avatar in GridFightBattleProtoBuilder.BuildBattleAvatars(battle, battle.GridFightContext))
                 proto.BattleAvatarList.Add(GridFightBattleProtoBuilder.BuildBattleAvatarProto(avatar, collection));
         }
+        else
+        {
+            // Wire parity: the official result ALWAYS echoes the fight roster; the client's mission battle-end
+            // chain settles off it (a bare result left the prologue looping the same battle).
+            try
+            {
+                proto.BattleAvatarList.AddRange(battle.BuildResultBattleAvatars());
+            }
+            catch
+            {
+                // A roster that cannot be rebuilt (stage row gone) must not swallow the result itself.
+            }
+        }
 
         SetData(proto);
     }

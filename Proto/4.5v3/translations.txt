@@ -1048,3 +1048,10 @@ GridFightLevelDisplayInfo.KDBMPKJKAKI = max_exp
 // 实测: 服务端写 f14 客户端显示为普通, 且官服 boss.finished_target_list(普通目标) 恰好与 f14 同时出现
 !ChallengePeakBoss.FIDOPNMNFAI = easy_mode
 !ChallengePeakBoss.CNCIHLBFNFF = hard_mode
+// 4.5 PROD SceneMapInfo: official 450 captures put the requested floor in field 14,
+// not field 6 (yuukisr_go 450.nt.txt, 2026-08-30). Pin raw names so regeneration is idempotent.
+!HEACNLOGGPH = SceneMapInfo
+!SceneMapInfo.JFFKLDOPFOJ = floor_id
+!SceneMapInfo.BPKNKCKFEIF = retcode
+// Empty scene-transition boundary, cmdid 1491 in the 4.5 dump.
+!OIMLFNKOCLN = SyncServerSceneChangeNotify

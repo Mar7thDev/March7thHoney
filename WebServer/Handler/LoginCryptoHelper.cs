@@ -1,6 +1,6 @@
 using March7thHoney.Util;
-using March7thHoney.Util.Security;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace March7thHoney.WebServer.Handler;
 
@@ -10,56 +10,59 @@ public static class LoginCryptoHelper
     private static string SecurityDir => Path.Combine(ConfigManager.Config.Path.ConfigPath, "Security");
     private static string PrivateKeyPath => Path.Combine(SecurityDir, "LoginRsaPrivateKey.pem");
 
-    public static (string account, string password) TryDecryptCredentials(string? account, string? password, bool decryptRequested)
-    {
-        var rawAccount = account ?? string.Empty;
-        var rawPassword = password ?? string.Empty;
-        if (!decryptRequested)
-            return (rawAccount, rawPassword);
-
-        var privatePem = LoadPrivateKey();
-        var hasPrivateKey = !string.IsNullOrWhiteSpace(privatePem);
-        if (!hasPrivateKey)
-        {
-            Logger.Warn(
-                $"RSA login decrypt was requested but no private key was found. Expected file: {PrivateKeyPath}");
-            return (rawAccount, rawPassword);
-        }
-
-        privatePem = NormalizePem(privatePem);
-        var accountResult = TryDecrypt(rawAccount, privatePem);
-        var passwordResult = TryDecrypt(rawPassword, privatePem);
-
-        return (accountResult.Value, passwordResult.Value);
-    }
-
     public static (string account, string password, bool decryptFailed) TryDecryptCredentialsStrict(
-        string? account, string? password, bool decryptRequested)
+        string? account, string? password, bool decryptRequested, bool requireEncryptedPassword = false)
     {
         var rawAccount = account ?? string.Empty;
         var rawPassword = password ?? string.Empty;
         if (!decryptRequested)
+            return requireEncryptedPassword ? (string.Empty, string.Empty, true) : (rawAccount, rawPassword, false);
+
+        // Passport clients also send plaintext credentials. A short Base64-looking username or
+        // password is not an RSA block; only infer encryption for RSA-sized Base64 values.
+        var decryptAccount = LooksLikeRsaCiphertext(rawAccount);
+        var decryptPassword = requireEncryptedPassword || LooksLikeRsaCiphertext(rawPassword);
+        if (!decryptAccount && !decryptPassword)
             return (rawAccount, rawPassword, false);
 
         var privatePem = LoadPrivateKey();
         if (string.IsNullOrWhiteSpace(privatePem))
-            return (rawAccount, rawPassword, true);
+        {
+            Logger.Warn($"RSA login requires a private key. Expected file: {PrivateKeyPath}");
+            return (string.Empty, string.Empty, true);
+        }
 
-        privatePem = NormalizePem(privatePem);
-        var accountResult = TryDecrypt(rawAccount, privatePem);
-        var passwordResult = TryDecrypt(rawPassword, privatePem);
-        var shouldDecryptAccount = LooksLikeBase64(rawAccount);
-        var shouldDecryptPassword = LooksLikeBase64(rawPassword);
-        var accountFailed = shouldDecryptAccount && !accountResult.Succeeded;
-        var passwordFailed = shouldDecryptPassword && !passwordResult.Succeeded;
+        try
+        {
+            using var rsa = RSA.Create();
+            rsa.ImportFromPem(NormalizePem(privatePem));
+            var accountResult = decryptAccount ? TryDecrypt(rawAccount, rsa) : new DecryptResult(rawAccount, true);
+            var passwordResult = decryptPassword ? TryDecrypt(rawPassword, rsa) : new DecryptResult(rawPassword, true);
+            if (!accountResult.Succeeded || !passwordResult.Succeeded)
+                return (string.Empty, string.Empty, true);
 
-        return (accountResult.Value, passwordResult.Value, accountFailed || passwordFailed);
+            return (accountResult.Value, passwordResult.Value, false);
+        }
+        catch (Exception ex) when (ex is CryptographicException or ArgumentException)
+        {
+            Logger.Warn("RSA login private key could not be loaded; rejecting encrypted login.");
+            return (string.Empty, string.Empty, true);
+        }
     }
 
-    private static DecryptResult TryDecrypt(string raw, string privatePem)
+    private static DecryptResult TryDecrypt(string raw, RSA rsa)
     {
-        if (string.IsNullOrWhiteSpace(raw)) return new DecryptResult(raw, false);
-        if (!LooksLikeBase64(raw)) return new DecryptResult(raw, false);
+        byte[] cipher;
+        try
+        {
+            cipher = Convert.FromBase64String(raw);
+        }
+        catch (FormatException)
+        {
+            return new DecryptResult(string.Empty, false);
+        }
+        if (cipher.Length != rsa.KeySize / 8)
+            return new DecryptResult(string.Empty, false);
 
         var paddings = new[]
         {
@@ -72,23 +75,25 @@ public static class LoginCryptoHelper
         {
             try
             {
-                return new DecryptResult(
-                    March7thHoney.Util.Security.RSA.DecryptFromBase64(raw, privatePem, null, padding), true);
+                return new DecryptResult(new UTF8Encoding(false, true).GetString(rsa.Decrypt(cipher, padding)), true);
             }
-            catch (Exception e)
+            catch (Exception ex) when (ex is CryptographicException or DecoderFallbackException)
             {
-                Logger.Debug($"RSA login decrypt with {padding.Mode} failed, fallback next. len={raw.Length}", e);
+                // Try the other supported SDK paddings; never reinterpret failed ciphertext as plaintext.
             }
         }
 
-        Logger.Debug($"RSA login decrypt failed for all paddings, fallback plaintext. len={raw.Length}");
-        return new DecryptResult(raw, false);
+        Logger.Warn($"RSA login decrypt failed for all supported paddings; rejecting login. len={raw.Length}");
+        return new DecryptResult(string.Empty, false);
     }
 
-    private static bool LooksLikeBase64(string value)
+    private static bool LooksLikeRsaCiphertext(string value)
     {
-        if (value.Length < 16 || value.Length % 4 != 0) return false;
-        return Convert.TryFromBase64String(value, new Span<byte>(new byte[value.Length]), out _);
+        // Include the 1024-bit ciphertext seen in legacy clients even when the server key is 2048-bit,
+        // so a key-size mismatch is rejected instead of auto-registering the ciphertext as an account.
+        if (value.Length < 172) return false;
+        return Convert.TryFromBase64String(value, new byte[value.Length], out var bytesWritten)
+               && bytesWritten >= 128;
     }
 
     private static string NormalizePem(string pem)

@@ -38,6 +38,20 @@ public class SceneData : BaseDatabaseDataHelper
 
     public Dictionary<int, SwitchHandInfo> SwitchHandData { get; set; } = new();
 
+    /// <summary>
+    ///     Teleport waypoints (MappingInfoID) the player has actually reached, per floor - the official
+    ///     unlock_teleport_list. Written by EntityProp.SetState(CheckPointEnable) and
+    ///     SceneInstance.TryUnlockNearbyWaypoint; independent of the group SaveType so Reset-group checkpoints
+    ///     stay unlocked too. Appended for persisted-data compatibility.
+    /// </summary>
+    public Dictionary<int, List<int>> UnlockedTeleportData { get; set; } = []; // Dictionary<FloorId, List<MappingInfoID>>
+
+    /// <summary>
+    ///     Floors the player has actually entered, per plane - the official entered_scene_info_list the map's region
+    ///     unlock reads. Written by PlayerInstance.LoadScene. Appended for persisted-data compatibility.
+    /// </summary>
+    public Dictionary<int, List<int>> EnteredSceneData { get; set; } = []; // Dictionary<PlaneId, List<FloorId>>
+
     public int GetFloorSavedValue(int floorId, string key)
     {
         if (FloorSavedData.TryGetValue(floorId, out var data) && data.TryGetValue(key, out var value)) return value;

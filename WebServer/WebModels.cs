@@ -7,8 +7,26 @@ namespace March7thHoney.WebServer;
 // Generic envelope used by endpoints that only ever return null data.
 public sealed record StatusResult(int retcode, string message, string? data = null);
 
-// /console/* launcher endpoints
+// /player/* self-service endpoints (legacy /console/* aliases remain available to launchers)
 public sealed record ConsoleResult(int retcode, string message, string output);
+
+// /player — player self-service console (typed endpoints; ConsoleResult stays the launcher contract)
+public sealed record ConsoleEnvelope<T>(int retcode, string message, T data);
+
+public sealed record ConsolePlayerData(
+    int uid, string username, string nickname, int level, int world_level, string role, bool online,
+    bool has_password, List<string> permissions, long expires_at);
+
+public sealed record ConsoleLoginData(string token, ConsolePlayerData player);
+
+// Same shape as the admin CommandCatalogItem plus the per-player verdict, so the page can grey out
+// commands the account's role does not grant instead of hiding why they fail.
+public sealed record ConsoleCommandItem(
+    string name, string description, string usage, string permission, List<string> aliases,
+    List<string> subcommands, bool allowed);
+
+public sealed record ConsoleCatalogData(
+    List<ConsoleCommandItem> commands, int count, int allowed_count, string role, List<string> permissions);
 
 // /handbook/languages
 public sealed record HandbookLanguages(List<string> languages);
@@ -77,16 +95,28 @@ public readonly record struct AccountSummary(
     int? level, bool has_password, string role, string permissions, string base_permissions,
     string effective_permissions, long dispatch_token_expires_at, long combo_token_expires_at, bool online,
     bool banned, string ban_reason, long ban_expires_at, long ban_created_at, bool ban_permanent,
-    long ban_remaining_seconds);
+    long ban_remaining_seconds, int identity_keys, int world_level,
+    string registration_ip, string last_ip, string current_ip, long created_at, long last_seen_at,
+    List<string> ip_addresses, List<string> device_ids, List<string> device_keys);
+
+public sealed record AccountDeleteFailure(int uid, string message);
+public sealed record BulkDeleteData(List<int> deleted_uids, List<int> missing_uids, List<AccountDeleteFailure> failed);
+public sealed record IdentityBlockSummary(int id, string kind, string value, string identity_key, string reason,
+    long created_at, long expires_at, bool active);
+public sealed record IdentityBlocksData(List<IdentityBlockSummary> blocks);
+public sealed record IdentityBlockWrap(IdentityBlockSummary block, int affected_accounts);
 
 public sealed record AccountsData(List<AccountSummary> accounts, int count, List<string> roles, string default_role);
 
 public sealed record OverviewStats(
-    int total_accounts, int online_players, int banned_accounts, int unverified_email, int roles);
+    int total_accounts, int online_players, int banned_accounts, int unverified_email, int roles,
+    int connections, int password_missing);
 
 public sealed record OverviewServer(
     string name, string game_address, string database, long uptime_seconds, double process_memory_mb,
-    long server_time, bool registration_enabled, bool limit_registration_per_identity);
+    long server_time, bool registration_enabled, bool limit_registration_per_identity, string version,
+    double machine_total_mb, double machine_available_mb, long last_save, int dirty_uids, string os,
+    bool announce_enabled, bool email_enabled, bool fake_time_enabled, string fake_date, bool public_mode);
 
 public sealed record OnlinePlayer(int uid, string nickname, int level, string endpoint, string state);
 

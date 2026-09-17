@@ -42,6 +42,13 @@ public class AccountData : BaseDatabaseDataHelper
     public long BanCreatedAt { get; set; }
     public long BanUpdatedAt { get; set; }
     public string? KnownIdentityKeys { get; set; }
+    public string? RegistrationIp { get; set; }
+    public string? LastIp { get; set; }
+    public long CreatedAt { get; set; }
+    public long LastSeenAt { get; set; }
+    public List<string> KnownIpAddresses { get; set; } = [];
+    public List<string> KnownDeviceIds { get; set; } = [];
+    public volatile bool IsDeleting;
 
     public static AccountData? GetAccountByUserName(string username)
     {
@@ -97,8 +104,7 @@ public class AccountData : BaseDatabaseDataHelper
 
     public bool CanLogin()
     {
-        if (ConfigManager.Config.ServerOption.AutoCreateUser)
-            return true;
+        if (IsDeleting || DatabaseHelper.IsUidDeleted(Uid)) return false;
 
         return !ConfigManager.Config.ServerOption.Auth.RequireVerifiedEmailForLogin || IsEmailVerified;
     }
@@ -147,11 +153,24 @@ public class AccountData : BaseDatabaseDataHelper
 
     public void AddKnownIdentityKeys(IEnumerable<string>? identityKeys, bool persist = true)
     {
+        if (IsDeleting || DatabaseHelper.IsUidDeleted(Uid)) return;
+        var observed = identityKeys as LoginIdentityContext;
         var merged = AccountBanHelper.MergeIdentityKeys(KnownIdentityKeys, identityKeys);
-        if (string.Equals(KnownIdentityKeys ?? string.Empty, merged, StringComparison.Ordinal))
+        if (observed == null && string.Equals(KnownIdentityKeys ?? string.Empty, merged, StringComparison.Ordinal))
             return;
 
         KnownIdentityKeys = string.IsNullOrWhiteSpace(merged) ? null : merged;
+        if (observed != null)
+        {
+            LastSeenAt = Extensions.GetUnixSec();
+            if (observed.IpAddress != null)
+            {
+                LastIp = observed.IpAddress;
+                KnownIpAddresses = (KnownIpAddresses ?? []).Where(ip => ip != LastIp).Append(LastIp).TakeLast(16).ToList();
+            }
+            KnownDeviceIds = (KnownDeviceIds ?? []).Except(observed.Devices, StringComparer.Ordinal)
+                .Concat(observed.Devices).TakeLast(16).ToList();
+        }
         if (persist) PersistAuthState();
     }
 
@@ -365,6 +384,7 @@ public class AccountData : BaseDatabaseDataHelper
 
     private bool ValidateLoginToken(string? providedToken, bool isDispatchToken)
     {
+        if (IsDeleting || DatabaseHelper.IsUidDeleted(Uid)) return false;
         var storedTokenHash = isDispatchToken ? DispatchTokenHash : ComboTokenHash;
         var storedToken = isDispatchToken ? DispatchToken : ComboToken;
         var expireAt = isDispatchToken ? DispatchTokenExpireAt : ComboTokenExpireAt;
@@ -429,6 +449,7 @@ public class AccountData : BaseDatabaseDataHelper
 
     private void PersistAuthState()
     {
+        if (DatabaseHelper.IsUidDeleted(Uid)) return;
         DatabaseHelper.MarkDirty(Uid);
         DatabaseHelper.SaveDatabaseType(this);
     }

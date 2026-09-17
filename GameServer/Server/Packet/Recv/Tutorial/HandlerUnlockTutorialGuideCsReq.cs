@@ -1,3 +1,4 @@
+using March7thHoney.GameServer.Game.Tutorial;
 using March7thHoney.GameServer.Server.Packet.Send.Tutorial;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -9,9 +10,10 @@ public class HandlerUnlockTutorialGuideCsReq : Handler<UnlockTutorialGuideCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, UnlockTutorialGuideCsReq req)
     {
-        if (!player.TutorialGuideData!.Tutorials.TryGetValue((int)req.GroupId, out _))
-            player.TutorialGuideData!.Tutorials.Add((int)req.GroupId, TutorialStatus.TutorialUnlock);
+        TutorialHelper.RecordGuide(player, (int)req.GroupId, TutorialStatus.TutorialUnlock, req.Type);
 
-        await connection.SendPacket(new PacketUnlockTutorialGuideScRsp(req.GroupId));
+        await connection.SendPacket(new PacketUnlockTutorialGuideScRsp(req.GroupId,
+            player.TutorialGuideData!.Tutorials.GetValueOrDefault((int)req.GroupId, TutorialStatus.TutorialUnlock),
+            TutorialHelper.GuideTypeOf(player, (int)req.GroupId)));
     }
 }

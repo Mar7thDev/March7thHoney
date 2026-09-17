@@ -22,7 +22,6 @@ internal static class LoginSessionFactory
         session = default;
         failure = LoginFailure.InvalidCredentials();
         var autoCreateUser = ConfigManager.Config.ServerOption.AutoCreateUser;
-        var createdByAutoCreate = false;
 
         var normalizedAccount = (account ?? string.Empty).Trim();
         var normalizedPassword = password ?? string.Empty;
@@ -35,9 +34,7 @@ internal static class LoginSessionFactory
             try
             {
                 var autoEmail = BuildAutoCreateEmail(normalizedAccount);
-                AccountHelper.CreateAccount(normalizedAccount, autoEmail, normalizedPassword, 0);
-                accountData = AccountData.GetAccountByLoginIdentifier(normalizedAccount);
-                createdByAutoCreate = true;
+                accountData = AccountHelper.CreatePublicAccount(normalizedAccount, autoEmail, normalizedPassword, identityKeys);
             }
             catch (Exception ex)
             {
@@ -50,37 +47,9 @@ internal static class LoginSessionFactory
             return false;
 
         var canonicalAccount = AccountData.GetAccountByUid(accountData.Uid) ?? accountData;
-        if (!canonicalAccount.HasPassword())
-        {
-            if (autoCreateUser && !createdByAutoCreate)
-            {
-                if (canonicalAccount.GetBanStatus().IsActive)
-                    canonicalAccount.AddKnownIdentityKeys(identityKeys);
-
-                if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
-                    return false;
-
-                failure = LoginFailure.InvalidCredentials();
-                return false;
-            }
-
-            if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
-                return false;
-
-            try
-            {
-                AccountHelper.SetPassword(canonicalAccount, normalizedPassword);
-            }
-            catch (Exception ex)
-            {
-                failure = new LoginFailure(-201, ex.Message);
-                return false;
-            }
-        }
-        else if (!canonicalAccount.VerifyPassword(normalizedPassword))
-        {
+        // Passwordless accounts must be provisioned by an administrator; first login cannot claim them.
+        if (!canonicalAccount.HasPassword() || !canonicalAccount.VerifyPassword(normalizedPassword))
             return false;
-        }
 
         if (canonicalAccount.GetBanStatus().IsActive)
             canonicalAccount.AddKnownIdentityKeys(identityKeys);
@@ -118,8 +87,8 @@ internal static class LoginSessionFactory
             return false;
         }
 
-        if (ConfigManager.Config.ServerOption.AutoCreateUser)
-            return true;
+        if (account.IsDeleting || !ReferenceEquals(AccountData.GetAccountByUid(account.Uid), account))
+            return false;
 
         if (account.CanLogin())
             return true;

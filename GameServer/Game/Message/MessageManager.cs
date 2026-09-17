@@ -46,11 +46,17 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
                         Id = (uint)section.SectionId,
                         Status = section.Status
                     };
-                    sectionInfo.MessageItemList.AddRange(section.ToChooseItemId.Select(m => (uint)m));
-                    sectionInfo.ItemList.AddRange(section.Items.Select(m => new MessageItem
-                    {
-                        ItemId = (uint)m.ItemId
-                    }));
+                    // Official wire shape (GetNpcMessageGroupScRsp): only a DOING section carries its offered
+                    // list - shipping it for a finished section kept those bubbles selectable, so chats looked
+                    // un-finished / re-opened.
+                    if (section.Status == MessageSectionStatus.MessageSectionDoing)
+                        sectionInfo.MessageItemList.AddRange(section.ToChooseItemId.Select(m => (uint)m));
+                    // The history echoes only the LAST consumed item (official: one row, not the whole chain).
+                    if (section.Items.Count > 0)
+                        sectionInfo.ItemList.Add(new MessageItem
+                        {
+                            ItemId = (uint)section.Items[^1].ItemId
+                        });
                     groupInfo.MessageSectionList.Add(sectionInfo);
                 }
 
@@ -81,15 +87,9 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
                 }
                 result.Add(stub);
             }
-            else
-            {
-                result.Add(new MessageGroup
-                {
-                    Id = (uint)item.ID,
-                    Status = MessageGroupStatus.MessageGroupNone,
-                    RefreshTime = 0
-                });
-            }
+            // Unstarted groups are NOT serialized: the official server ships only groups with real player
+            // state (4 groups / 112 bytes on the prologue capture) and the client resolves the rest from its
+            // own config. Sending a None row per config group pre-rendered every chat as already sent.
 
         return result;
     }

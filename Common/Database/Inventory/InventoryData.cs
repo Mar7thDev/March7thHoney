@@ -19,6 +19,12 @@ public class InventoryData : BaseDatabaseDataHelper
     public Dictionary<int, RelicPlanData> RelicPlans { get; set; } = [];
 
     public int NextUniqueId { get; set; } = 100;
+
+    /// <summary>
+    ///     4.5 的遗器预设（智能装配保存下来的方案），键为方案 unique id。
+    ///     与旧的 <see cref="RelicPlans" />（2.3 的 RelicSmartWear 方案）是两套并存的协议，互不共用。
+    /// </summary>
+    public Dictionary<int, RelicPresetPlanData> RelicPresetPlans { get; set; } = [];
 }
 
 [MemoryPackable]
@@ -387,4 +393,18 @@ public partial class RelicPlanData
     public int EquipAvatar { get; set; }
     public List<int> InsideRelic { get; set; } = [];
     public List<int> OutsideRelic { get; set; } = [];
+}
+
+[MemoryPackable]
+public partial class RelicPresetPlanData
+{
+    public int AvatarId { get; set; }
+    public string Name { get; set; } = "";
+
+    /// <summary>
+    ///     <see cref="March7thHoney.Proto.RelicPresetPlanSourceType" />：方案来自智能装配、自定义还是大数据推荐。
+    /// </summary>
+    public int SourceType { get; set; }
+
+    public List<int> RelicIds { get; set; } = [];
 }

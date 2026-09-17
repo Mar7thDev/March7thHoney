@@ -7,6 +7,7 @@ public partial class RogueTalentExcel : ExcelResource
 {
     public int TalentID { get; set; }
     public bool IsImportant { get; set; }
+    public List<MaterialItem> Cost { get; set; } = [];
 
     public override int GetId()
     {

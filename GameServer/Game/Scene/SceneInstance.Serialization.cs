@@ -79,6 +79,8 @@ public partial class SceneInstance
             if (defaultValue != 0)
                 result[name] = defaultValue;
 
+        // Preserve the floor-wide activity-entry compatibility defaults. Platform-only stage
+        // captures are excluded at prop creation, not by disabling ordinary floor content.
         var exposeActivityEntries = Excel.PlaneType is PlaneTypeEnum.Town or PlaneTypeEnum.Maze &&
                                     GameData.ContentPackageConfigData.Values.Any(package =>
                                         package.MainMissionIDList.Count > 0 && package.TouchesFloor(FloorId));

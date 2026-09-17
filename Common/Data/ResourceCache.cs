@@ -89,6 +89,61 @@ public static class ResourceCache
 
     private static bool ValidateLoadedCache()
     {
+        var validates45ProdData = GameConstants.IsVersion("4.5.0");
+
+        // 4.5 moved content-package entrances (including the Divergent Universe lobby) into
+        // MapEntranceLD.json. Reject an old cache only when the matching raw table is available,
+        // so deployments that intentionally ship cache-only resources keep working.
+        var hasMapEntranceLd = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "MapEntranceLD.json")));
+        if (validates45ProdData && hasMapEntranceLd && GameData.ContentPackageConfigData.Values.Any(package =>
+                (package.InitEntranceID != 0 && !GameData.MapEntranceData.ContainsKey(package.InitEntranceID)) ||
+                (package.AfterGuideEntranceID != 0 &&
+                 !GameData.MapEntranceData.ContainsKey(package.AfterGuideEntranceID))))
+        {
+            Logger.Warn("Resource cache is stale: MapEntranceLD content-package entrances are missing.");
+            return false;
+        }
+
+        // Caches built before RogueTournArea's obfuscated-key mapping collapse every area onto id 0.
+        if (validates45ProdData &&
+            (GameData.RogueTournAreaData.ContainsKey(0) ||
+             GameData.RogueTournAreaData.Count > 0 && GameData.RoguePersonaTalentData.Count == 0))
+        {
+            Logger.Warn("Resource cache is stale: RogueTourn area/persona tables are missing.");
+            return false;
+        }
+
+        // Caches built before RogueMagicRoomGen.json was loaded, or before the 4.5 scepter lock-unit key mapping.
+        if (validates45ProdData && ((GameData.RogueMagicRoomGenData.Count == 0 &&
+             File.Exists(ConfigManager.Config.Path.ConfigPath + "/RogueMagicRoomGen.json")) ||
+            GameData.RogueMagicScepterData.Values.Any(scepter => scepter.LockMagicUnit.Any(unit => unit.MagicUnitId == 0))))
+        {
+            Logger.Warn("Resource cache is stale: RogueMagic room/scepter data is missing.");
+            return false;
+        }
+
+        // Caches built while the ChessRogue room/dice configs and chessboard maps were not loaded, or before the
+        // 4.5 RogueDLCArea score-map keys were mapped.
+        if (validates45ProdData && GameData.RogueSwarmChessBoardData.Count > 0 &&
+            (GameData.ChessRogueRoomData.Count == 0 || GameData.ChessRogueDiceSurfaceEffectData.Count == 0 ||
+             GameData.RogueSwarmChessBoardData.Values.SelectMany(boards => boards).All(board => board.MapInfo == null) ||
+             GameData.RogueDLCAreaData.Values.Any(area =>
+                 area.AreaScoreMap.Count > 0 && area.AreaScoreMap.All(score => score.Layer == 0))))
+        {
+            Logger.Warn("Resource cache is stale: ChessRogue room/dice/chessboard data is missing.");
+            return false;
+        }
+
+        if (validates45ProdData && GameData.FloorInfoData.Values.Any(floor => floor.Groups.Values.Any(group =>
+                group.LoadSide != Enums.Scene.GroupLoadSideEnum.Client &&
+                group.Category == Enums.Scene.GroupCategoryEnum.Atmosphere && group.IsHoyoGroup == null)))
+        {
+            Logger.Warn("Resource cache is stale: scene IsHoyoGroup metadata is missing. " +
+                        "Deploy the matching Resource.bin or upgrade it with scripts/SceneCacheUpgrade.");
+            return false;
+        }
+
         if (GameData.EquipmentConfigData.Count == 0)
         {
             Logger.Warn("Resource cache is stale: EquipmentConfigData is missing.");

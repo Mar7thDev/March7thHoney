@@ -1,3 +1,5 @@
+using March7thHoney.GameServer.Game.GridFight;
+using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -21,5 +23,25 @@ public sealed class HandlerGridFightFinishTutorialCsReq : PlayerHandler
     protected override Task OnHandle(Connection connection, PlayerInstance player)
     {
         return Task.CompletedTask;
+    }
+}
+
+[Opcode(CmdIds.GridFightTrackTraitCsReq)]
+public sealed class HandlerGridFightTraitTrackCsReq : Handler<GridFightTrackTraitCsReq>
+{
+    protected override async Task OnHandle(
+        Connection connection,
+        PlayerInstance player,
+        GridFightTrackTraitCsReq request)
+    {
+        var manager = player.GridFightManager!;
+        var retcode = manager.Session?.UpdateTraitTrack(request.COPNJMBGNDO, request.BJDOINAHDLN) ??
+                      (uint)Retcode.RetFail;
+        if (retcode == 0)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildTraitTrackSync()));
+        await connection.SendPacket(GridFightPacketFactory.CreatePacket(
+            CmdIds.GridFightTrackTraitScRsp,
+            new GridFightTrackTraitScRsp { Retcode = retcode }));
     }
 }

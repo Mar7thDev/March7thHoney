@@ -341,6 +341,11 @@ public partial class GridFightRuntimeDataSnapshot
     public Dictionary<uint, GridFightFrontSkillExcel> GridFightFrontSkillData { get; set; } = [];
     public List<GridFightRoleSkillModifyExcel> GridFightRoleSkillModifyData { get; set; } = [];
     public Dictionary<uint, GridFightEnhanceExcel> GridFightEnhanceData { get; set; } = [];
+
+    // GameDataSnapshot is at MemoryPack's 249-member cap, so later tables append here.
+    public Dictionary<int, RoguePersonaTalentExcel> RoguePersonaTalentData { get; set; } = [];
+    public Dictionary<int, RoguePersonaStyleExcel> RoguePersonaStyleData { get; set; } = [];
+    public Dictionary<int, RogueTournKeywordExcel> RogueTournKeywordData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -614,6 +619,9 @@ public static partial class GameData
                 GridFightRoleSwitchConfigData = GameData.GridFightRoleSwitchConfigData,
                 GridFightFrontSkillData = GameData.GridFightFrontSkillData,
                 GridFightRoleSkillModifyData = GameData.GridFightRoleSkillModifyData,
+                RoguePersonaTalentData = GameData.RoguePersonaTalentData,
+                RoguePersonaStyleData = GameData.RoguePersonaStyleData,
+                RogueTournKeywordData = GameData.RogueTournKeywordData,
             },
             ActivityRuntimeData = new ActivityRuntimeDataSnapshot
             {
@@ -970,5 +978,8 @@ public static partial class GameData
         GameData.MechCraftIntegerConstants = mechCraftData.MechCraftIntegerConstants;
         GameData.MechCraftIntegerListConstants = mechCraftData.MechCraftIntegerListConstants;
         GameData.MechCraftAttributeLevelThresholds = mechCraftData.MechCraftAttributeLevelThresholds;
+        GameData.RoguePersonaTalentData = gridFightRuntimeData.RoguePersonaTalentData;
+        GameData.RoguePersonaStyleData = gridFightRuntimeData.RoguePersonaStyleData;
+        GameData.RogueTournKeywordData = gridFightRuntimeData.RogueTournKeywordData;
     }
 }

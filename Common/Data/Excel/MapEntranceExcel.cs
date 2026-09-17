@@ -1,7 +1,7 @@
 using MemoryPack;
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("MapEntrance.json", true)]
+[ResourceEntity("MapEntrance.json,MapEntranceLD.json", true)]
 [MemoryPackable]
 public partial class MapEntranceExcel : ExcelResource
 {

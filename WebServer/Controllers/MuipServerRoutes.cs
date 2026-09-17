@@ -18,12 +18,12 @@ public static class MuipServerRoutes
             ([FromBody] AuthAdminKeyRequestBody req) => Results.Json(MuipManager.AuthAdmin(req.session_id, req.admin_key)));
 
         app.MapGet("/muip/exec_cmd",
-            ([AsParameters] AdminExecRequest req) =>
-                Results.Json(MuipManager.ExecuteCommand(req.SessionId, req.Command, req.TargetUid)));
+            async ([AsParameters] AdminExecRequest req) =>
+                Results.Json(await MuipManager.ExecuteCommandAsync(req.SessionId, req.Command, req.TargetUid)));
 
         app.MapPost("/muip/exec_cmd",
-            ([FromBody] AdminExecRequest req) =>
-                Results.Json(MuipManager.ExecuteCommand(req.SessionId, req.Command, req.TargetUid)));
+            async ([FromBody] AdminExecRequest req) =>
+                Results.Json(await MuipManager.ExecuteCommandAsync(req.SessionId, req.Command, req.TargetUid)));
 
         app.MapGet("/muip/server_information",
             ([AsParameters] ServerInformationRequest req) => Results.Json(MuipManager.GetInformation(req.SessionId)));

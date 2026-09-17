@@ -29,6 +29,7 @@ using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player.Components;
 using March7thHoney.GameServer.Game.Quest;
 using March7thHoney.GameServer.Game.Raid;
+using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Shop;
 using March7thHoney.GameServer.Game.Sync.Player;
@@ -99,6 +100,7 @@ public partial class PlayerInstance(PlayerData data)
     public ChallengePeakManager? ChallengePeakManager { get; private set; }
     public ChallengeTierceManager? ChallengeTierceManager { get; private set; }
     public GridFightManager? GridFightManager { get; private set; }
+    public RogueManager? RogueManager { get; private set; }
     public ExpeditionManager? ExpeditionManager { get; private set; }
     public TrainPartyManager? TrainPartyManager { get; private set; }
 
@@ -207,6 +209,10 @@ public partial class PlayerInstance(PlayerData data)
         ChallengePeakManager = new ChallengePeakManager(this);
         ChallengeTierceManager = new ChallengeTierceManager(this);
         GridFightManager = new GridFightManager(this);
+        RogueManager = new RogueManager(this);
+        RogueTournManager = new RogueTourn.RogueTournManager(this);
+        RogueMagicManager = new RogueMagic.RogueMagicManager(this);
+        ChessRogueManager = new ChessRogue.ChessRogueManager(this);
         ExpeditionManager = new ExpeditionManager(this);
         TrainPartyManager = new TrainPartyManager(this);
         TrainCakeCatchManager = new TrainCakeCatchManager(this);
@@ -274,7 +280,13 @@ public partial class PlayerInstance(PlayerData data)
         if (PendingMissionEnabledOverride.HasValue)
             MissionManager!.Data.EnableMissionOverride = PendingMissionEnabledOverride;
 
-        if (MissionEnabled) await MissionManager!.AcceptMainMissionByCondition();
+        if (MissionEnabled)
+        {
+            await MissionManager!.AcceptMainMissionByCondition();
+            // Runs on every load, not just once: a save can stall at any point in the chain, and the
+            // pass is a no-op when every accepted main already has a running sub-mission.
+            await MissionManager.RepairStalledMainMissions(false);
+        }
 
         foreach (var friendDevelopmentInfoPb in FriendRecordData!.DevelopmentInfos.ToArray())
             if (Extensions.GetUnixSec() - friendDevelopmentInfoPb.Time >=

@@ -90,16 +90,25 @@ public class March7thHoneyConnection
         }
         catch
         {
-            var output = $"{sendOrRecv}: {LogMap.GetValueOrDefault(opcode, "UnknownPacket")}({opcode})";
-
-            if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
-                Logger.Debug(output);
-
-            if (DebugFile != "" && ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile)
+            // 这里是正常控制流：DisableLogDetailPacket 为 true 时上面会主动 throw 走到这一支。
+            // 写日志失败（典型场景：磁盘写满）绝不能把游戏服务器进程带崩，所以整段再包一层保护。
+            try
             {
-                var sw = GetWriter();
-                sw.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
-                sw.Flush();
+                var output = $"{sendOrRecv}: {LogMap.GetValueOrDefault(opcode, "UnknownPacket")}({opcode})";
+
+                if (ConfigManager.Config.ServerOption.LogOption.LogPacketToConsole)
+                    Logger.Debug(output);
+
+                if (DebugFile != "" && ConfigManager.Config.ServerOption.LogOption.SavePersonalDebugFile)
+                {
+                    var sw = GetWriter();
+                    sw.WriteLine($"[{DateTime.Now:HH:mm:ss}] [GameServer] [DEBUG] " + output);
+                    sw.Flush();
+                }
+            }
+            catch
+            {
+                // 有意吞掉：丢一条包日志远好过整个服务器进程 abort。
             }
         }
     }

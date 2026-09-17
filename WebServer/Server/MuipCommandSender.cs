@@ -8,6 +8,9 @@ public class MuipCommandSender(MuipSession session, Action<string> action) : ICo
     public Action<string> MsgAction { get; } = action;
     public int SenderUid { get; set; } = session.Account?.Uid ?? 0;
 
+    // An administrator has no implicit player. A supplied UID is an explicit command target.
+    public bool IsConsole => Session.IsAdmin;
+
     public bool HasPermission(string permission)
     {
         if (Session.IsAdmin) return true;

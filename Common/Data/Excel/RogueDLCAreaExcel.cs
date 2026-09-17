@@ -39,4 +39,9 @@ public partial class RogueDLCAreaScoreMap
     [JsonProperty("GGOHPEDAKJE")] public int ExploreScore { get; set; }
 
     [JsonProperty("BELDLJADLKO")] public int FinishScore { get; set; }
+
+    // 4.5 aliases, verified against rows: layer 1/2, explore 1300/5200, finish 2600/7800.
+    [JsonProperty("FFAIBNDHOBI")] private int Layer45 { set => Layer = value; }
+    [JsonProperty("DICDMGODBCF")] private int ExploreScore45 { set => ExploreScore = value; }
+    [JsonProperty("EFGMPBPHGPA")] private int FinishScore45 { set => FinishScore = value; }
 }

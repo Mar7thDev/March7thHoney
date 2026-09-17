@@ -33,6 +33,8 @@ public class HttpServerConfig
     public bool UseSSL { get; set; } = false;
     public bool SendHotfix { get; set; } = true;
     public bool UseFetchRemoteHotfix { get; set; } = true;
+    // Only these reverse proxies may supply X-Forwarded-For/Proto. Empty means direct connections.
+    public List<string> TrustedProxies { get; set; } = ["127.0.0.1", "::1"];
 
     public string GetDisplayAddress()
     {

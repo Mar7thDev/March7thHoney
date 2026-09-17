@@ -33,7 +33,7 @@ public static class ServerExchangeRoutes
         });
 
         app.MapPost("/validate_account_token",
-            (HttpContext ctx, [FromForm] string accountUid, [FromForm] string token) =>
+            (HttpContext ctx, [FromForm] string accountUid, [FromForm] string token, [FromForm] string? clientIp) =>
             {
                 if (!ConfigManager.Config.ServerOption.ServerConfig.RunDispatch)
                     return Results.StatusCode(404);
@@ -50,7 +50,9 @@ public static class ServerExchangeRoutes
                     return Results.Text("Account token not found", "text/plain", null, 404);
 
                 var identityKeys = AccountBanHelper.BuildIdentityKeys([],
-                    ctx.Connection.RemoteIpAddress?.ToString());
+                    clientIp ?? ctx.Connection.RemoteIpAddress?.ToString());
+                if (clientIp != null && AccountBanHelper.NormalizeIpAddress(clientIp) == null)
+                    return Results.Text("Invalid client IP", "text/plain", null, 400);
                 if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
                 {
                     account.ClearLoginTokens();
@@ -64,6 +66,7 @@ public static class ServerExchangeRoutes
                         "text/plain", null, 403);
                 }
 
+                account.AddKnownIdentityKeys(identityKeys);
                 return Results.Text(account.Uid.ToString(), "plain/text; charset=utf-8");
             }).DisableAntiforgery();
     }
@@ -72,7 +75,7 @@ public static class ServerExchangeRoutes
     {
         var expectedSecret = ConfigManager.Config.ServerOption.ServerConfig.ServerExchangeSecret;
         if (string.IsNullOrWhiteSpace(expectedSecret))
-            return true;
+            return false;
 
         if (!ctx.Request.Headers.TryGetValue("X-March7thHoney-Server-Secret", out var providedValues))
             return false;

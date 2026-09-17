@@ -1,5 +1,6 @@
 using System.Text.Json;
 using March7thHoney.Configuration;
+using March7thHoney.Enums;
 using March7thHoney.Internationalization;
 using March7thHoney.Util.License;
 
@@ -60,6 +61,43 @@ public static class ConfigManager
         return UpdateHotfixData([version], remote) > 0;
     }
 
+    /// <summary>
+    ///     Overwrite every URL of the given versions with the supplied values (empty strings clear the URL, unlike
+    ///     <see cref="UpdateHotfixData(string, DownloadUrlConfig)" /> which only fills in non-empty ones) and persist.
+    /// </summary>
+    public static int ReplaceHotfixData(IEnumerable<string> versions, DownloadUrlConfig urls)
+    {
+        lock (HotfixDataLock)
+        {
+            var count = 0;
+            foreach (var version in versions.Distinct(StringComparer.Ordinal))
+            {
+                if (string.IsNullOrWhiteSpace(version)) continue;
+                Hotfix.HotfixData[version] = new DownloadUrlConfig
+                {
+                    AssetBundleUrl = urls.AssetBundleUrl ?? "",
+                    ExAssetBundleUrl = urls.ExAssetBundleUrl ?? "",
+                    ExResourceUrl = urls.ExResourceUrl ?? "",
+                    LuaUrl = urls.LuaUrl ?? "",
+                    IfixUrl = urls.IfixUrl ?? ""
+                };
+                count++;
+            }
+
+            if (count > 0) SaveHotfixDataAtomic();
+            return count;
+        }
+    }
+
+    public static void SetHotfixRegion(BaseRegionEnum region)
+    {
+        lock (HotfixDataLock)
+        {
+            Hotfix.Region = region;
+            SaveHotfixDataAtomic();
+        }
+    }
+
     public static int UpdateHotfixData(IEnumerable<string> versions, DownloadUrlConfig remote)
     {
         lock (HotfixDataLock)
@@ -117,20 +155,17 @@ public static class ConfigManager
         var file = new FileInfo(HotfixFilePath);
 
         // 生成客户端真实格式的版本 key：{CN|OS}{BETA|PROD}{Win|Android|iOS}{版本号}
-        // BETA 用 GAME_VERSION（末位 5 时展开 4.3.51~4.3.55），PROD 用正式服号（4.3.5 -> 4.3.0）
+        // 只取 GAME_VERSION 的大版本号（x.y）作为版本序列，正式服是 x.y.0，测试服是 x.y.51~x.y.55。
+        // 旧写法把 GAME_VERSION 的末位当成"是不是测试版"的开关，写 4.4.5 时生成的是 4.4 这一列的 key，
+        // 和注释声称的"4.4.5 = 客户端 4.5.0"对不上，真正的 4.5.0 客户端反而查不到自己的 hotfix。
         var verList = new List<string>();
         string[] regions = ["CN", "OS"];
         string[] platforms = ["Win", "Android", "iOS"];
 
-        var betaVersions = new List<string>();
-        if (GameConstants.GAME_VERSION[^1] == '5')
-            for (var i = 1; i < 6; i++)
-                betaVersions.Add(GameConstants.GAME_VERSION + i);
-        else
-            betaVersions.Add(GameConstants.GAME_VERSION);
-
         var verParts = GameConstants.GAME_VERSION.Split('.');
-        var prodVersion = $"{verParts[0]}.{verParts[1]}.0";
+        var branch = $"{verParts[0]}.{verParts[1]}";
+        var prodVersion = $"{branch}.0";
+        var betaVersions = Enumerable.Range(1, 5).Select(i => $"{branch}.5{i}").ToList();
 
         foreach (var region in regions)
         {

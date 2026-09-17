@@ -54,13 +54,17 @@ public class ResourceManager
         });
         var t5 = Task.Run(LoadPerformanceInfo);
         var t6 = Task.Run(LoadDialogueInfo);
+        var t7 = Task.Run(LoadRogueChestMapInfo);
         var t8 = Task.Run(LoadAdventureModifier);
         var t9 = Task.Run(LoadLocalPlayer);
         var t10 = Task.Run(LoadFinalityBattleTurnLimit);
         GameData.ActivityConfig = LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig") ?? new ActivityConfig();
+        LoadMissionInfoOverrides();
         GameData.BannersConfig = LoadBanners();
         GameData.VideoKeysConfig =
             LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ?? new VideoKeysConfig();
+        GameData.RogueMapGenData =
+            LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen") ?? [];
         GameData.QueryProductInfoConfig =
             LoadCustomFile<QueryProductInfoConfig>("QueryProductInfo", "QueryProductInfoConfig") ??
             new QueryProductInfoConfig();
@@ -82,8 +86,12 @@ public class ResourceManager
         GameData.GridFightBasicOrbRewardsConfig.RewardRules = GameData.GridFightRewardRulesConfig;
         GameData.GridFightBasicOrbRewardsConfig.RuntimeConfig = GameData.GridFightRuntimeConfig;
         ApplyChallengePeakOverrides();
+        LoadRogueMagicRoomData();
 
-        Task.WaitAll(t1, t2, t3, t4, t5, t6, t8, t9, t10);
+        LoadChessRogueRoomData();
+        LoadChessRogueDiceSurfaceEffectData();
+
+        Task.WaitAll(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
 
         // copy modifiers
         foreach (var value in GameData.AdventureAbilityConfigListData.Values)
@@ -327,6 +335,8 @@ public class ResourceManager
                         if (group != null)
                         {
                             group.Id = groupInfo.ID;
+                            // The common map carries the authoritative per-instance SaveType/Category.
+                            info.StampCommonMapFields(group);
                             // Use a sorted collection or maintain order manually
                             info.Groups[groupInfo.ID] = group;
 
@@ -344,6 +354,9 @@ public class ResourceManager
                             }
 
                             group.Load();
+                            // Prop InitLevelGraph fan-out (PropReqInteract) - must run while the props still
+                            // hold their ValueSource / InitLevelGraph (FloorInfo.OnLoad clears both).
+                            PropInteractGraphLoader.Populate(group, ConfigManager.Config.Path.ResourcePath);
                         }
                     }
                     catch (Exception ex)
@@ -462,6 +475,85 @@ public class ResourceManager
             LogPartialMissingSummary(I18NManager.Translate("Word.MissionInfo"), missingCount, missingFiles);
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.MissionInfo")));
+    }
+
+    /// <summary>
+    ///     Applies Config/Custom/MissionInfoOverride.json on top of the loaded mission graphs.
+    /// </summary>
+    /// <remarks>
+    ///     The dump ships MissionInfo_&lt;id&gt;.json with only a Start/Finish list for a large number of
+    ///     mains; their SubMissionList lives in a MissionInfo_&lt;id&gt;.partial.json that is not always
+    ///     present. A main in that state registers NONE of its sub-missions, so AcceptSubMission finds
+    ///     nothing to accept, the finish gate can never turn Finish, the main never completes and every
+    ///     successor stays out of the player's mission list. This file lets an operator restore those
+    ///     lists without a Resources tree and without regenerating Resource.bin — it is re-read after the
+    ///     cache branch, exactly like Banners.json.
+    ///     Shape: { "&lt;mainMissionId&gt;": { "StartSubMissionList": [...], "FinishSubMissionList": [...],
+    ///     "SubMissionList": [ ...SubMissionInfo... ] } }.
+    ///     Note the level graphs (SubMissionTaskInfo) still come from the Resources tree, so on a
+    ///     cache-only deployment a restored PropState sub is accepted and finishable but its
+    ///     ChangePropState task cannot run.
+    /// </remarks>
+    public static void LoadMissionInfoOverrides()
+    {
+        var path = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", "MissionInfoOverride.json");
+        if (!File.Exists(path)) return;
+
+        Dictionary<int, Config.MissionInfo>? overrides;
+        try
+        {
+            overrides = JsonConvert.DeserializeObject<Dictionary<int, Config.MissionInfo>>(File.ReadAllText(path));
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(
+                I18NManager.Translate("Server.ServerInfo.FailedToReadItem", "MissionInfoOverride.json",
+                    I18NManager.Translate("Word.Error")), ex);
+            return;
+        }
+
+        var applied = 0;
+        foreach (var (mainId, info) in overrides ?? [])
+        {
+            if (info == null) continue;
+            if (!GameData.MainMissionData.TryGetValue(mainId, out var main)) continue;
+
+            // Re-registering would append duplicates to SubMissionIds, so start from a clean list.
+            main.SubMissionIds = [];
+            info.MainMissionID = mainId;
+            foreach (var sub in info.SubMissionList) sub.MainMissionID = mainId;
+            main.SetMissionInfo(info);
+            applied++;
+        }
+
+        if (applied > 0)
+            Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", applied.ToString(),
+                "MissionInfoOverride"));
+    }
+
+    /// <summary>
+    ///     Warns about mains whose start/finish gate points at a sub-mission that is not registered.
+    ///     Those mains can be accepted but never completed, which silently truncates the story chain, so
+    ///     the gap is worth naming at boot instead of leaving it to be discovered in-game.
+    /// </summary>
+    public static void ReportTruncatedMissionGraphs()
+    {
+        var broken = new List<int>();
+        foreach (var main in GameData.MainMissionData.Values)
+        {
+            var info = main.MissionInfo;
+            var gate = info.StartSubMissionList.Concat(info.FinishSubMissionList);
+            if (gate.Any(x => !GameData.SubMissionInfoData.ContainsKey(x))) broken.Add(main.MainMissionID);
+        }
+
+        if (broken.Count == 0) return;
+
+        broken.Sort();
+        Logger.Warn($"{broken.Count} main missions reference sub-missions that are not registered and can " +
+                    "therefore never be completed - their successors will never appear in the mission log. " +
+                    "Restore their SubMissionList via Config/Custom/MissionInfoOverride.json or a " +
+                    $"MissionInfo_<id>.partial.json. Affected: {string.Join(", ", broken.Take(20))}" +
+                    (broken.Count > 20 ? $", ... (+{broken.Count - 20} more)" : ""));
     }
 
     /// <summary>
@@ -1126,7 +1218,10 @@ public class ResourceManager
             I18NManager.Translate("Word.ChessRogueRoomInfo")));
         var count = 0;
 
-        FileInfo file = new(ConfigManager.Config.Path.ConfigPath + "/ChessRogueRoomGen.json");
+        var customRoomGen = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", "ChessRogueRoomGen.json");
+        FileInfo file = new(File.Exists(customRoomGen)
+            ? customRoomGen
+            : ConfigManager.Config.Path.ConfigPath + "/ChessRogueRoomGen.json");
         List<ChessRogueRoomConfig>? customFile;
         if (!file.Exists)
         {
@@ -1146,6 +1241,9 @@ public class ResourceManager
             var json = JsonConvert.DeserializeObject<List<ChessRogueRoomConfig>>(text);
             customFile = json;
 
+            // This file is also overlaid after a cache load. Replace the cached pool instead of appending
+            // duplicate rooms every time the loader is invoked.
+            GameData.ChessRogueRoomData.Clear();
             foreach (var room in customFile!)
                 switch (room.BlockType)
                 {
@@ -1293,7 +1391,11 @@ public class ResourceManager
             I18NManager.Translate("Word.RogueDiceSurfaceInfo")));
         var count = 0;
 
-        FileInfo file = new(ConfigManager.Config.Path.ConfigPath + "/ChessRogueDiceSurfaceEffect.json");
+        var customDiceEffect =
+            Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", "ChessRogueDiceSurfaceEffect.json");
+        FileInfo file = new(File.Exists(customDiceEffect)
+            ? customDiceEffect
+            : ConfigManager.Config.Path.ConfigPath + "/ChessRogueDiceSurfaceEffect.json");
 
         if (!file.Exists)
         {

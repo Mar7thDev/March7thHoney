@@ -47,4 +47,8 @@ public partial class LockMagicUnitInfo
     [JsonProperty("GHFHMJLCIEC")] public int MagicUnitId { get; set; }
 
     [JsonProperty("LDEDAMNEIJO")] public int MagicUnitLevel { get; set; }
+
+    // 4.5 ExcelOutputGameCore aliases.
+    [JsonProperty("GDDPJLJKGEO")] private int MagicUnitId45 { set => MagicUnitId = value; }
+    [JsonProperty("LPCBFACBGAE")] private int MagicUnitLevel45 { set => MagicUnitLevel = value; }
 }

@@ -39,6 +39,7 @@ namespace March7thHoney.Data.Config.Task;
 [MemoryPackUnion(31, typeof(AdventureModifyTeamPlayerSP))]
 [MemoryPackUnion(32, typeof(AdventureTriggerTargetAbility))]
 [MemoryPackUnion(33, typeof(AdvByContainBehaviorFlag))]
+[MemoryPackUnion(34, typeof(PropSetupTrigger))]
 public abstract partial class TaskConfigInfo
 {
     public string Type { get; set; } = "";
@@ -69,6 +70,13 @@ public abstract partial class TaskConfigInfo
         if (typeStr == "PropStateExecute")
         {
             var res = PropStateExecute.LoadFromJsonObject(json);
+            res.Type = type;
+            return res;
+        }
+
+        if (typeStr == "PropSetupTrigger")
+        {
+            var res = PropSetupTrigger.LoadFromJsonObject(json);
             res.Type = type;
             return res;
         }

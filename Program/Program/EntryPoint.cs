@@ -2,6 +2,7 @@ using March7thHoney.Command;
 using March7thHoney.Command.Command;
 using March7thHoney.Configuration;
 using March7thHoney.Data;
+using March7thHoney.Data.Custom;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Enums;
@@ -36,6 +37,8 @@ public class EntryPoint
         var publicMode = PublicModeSwitch.Enabled;
         IConsole.InitConsole();
         IConsole.RedrawInput(IConsole.Input);
+        // Capture log output from the very first line so the admin console's log viewer has the boot history.
+        AdminLogBuffer.Attach();
         AppDomain.CurrentDomain.ProcessExit += (_, _) =>
         {
             Logger.Info(I18NManager.Translate("Server.ServerInfo.Shutdown"));
@@ -242,14 +245,45 @@ public class EntryPoint
                             I18NManager.Translate("Word.Cache")));
                         await ResourceCache.SaveCache();
                     }
+                    else if (ConfigManager.Config.ServerOption.UseCache)
+                    {
+                        // A single unparseable record anywhere in the tree clears IsComplete, and the
+                        // cache write was then skipped without a word - every later boot re-read the raw
+                        // Resources tree and the operator had no idea why Resource.bin never appeared.
+                        Logger.Warn(
+                            "Resource cache NOT written: one or more resources failed to load (see the errors above). " +
+                            "Fix them and restart, or the server will re-read the raw resource tree on every boot.");
+                    }
                 }
 
-                // Banners.json is operator-authored content, not dumped game data: it is the one file a
-                // server owner edits to open or close a warp banner. Baking it into Resource.bin made
+                // Operator-authored content, not dumped game data: the banner list and the video keys
+                // are the two files a server owner actually edits. Baking them into Resource.bin made
                 // those edits invisible until the whole resource cache was regenerated - which needs the
-                // raw Resources tree most deployments do not ship. Re-read it after the cache branch so a
-                // banner change only needs a restart (or /reload banner).
+                // raw Resources tree most deployments do not ship. Re-read them after the cache branch so
+                // a change only needs a restart (or the matching /reload subcommand).
+                ResourceManager.LoadMissionInfoOverrides();
+                ResourceManager.ReportTruncatedMissionGraphs();
                 GameData.BannersConfig = ResourceManager.LoadBanners();
+                GameData.VideoKeysConfig =
+                    ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
+                    new VideoKeysConfig();
+                // RogueMapGen is operator-side compatibility data rather than a dumped Excel table.
+                // Reload it after either cache path so new Rogue room pools do not require replacing
+                // an otherwise valid Resource.bin.
+                var rogueMapGen =
+                    ResourceManager.LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen");
+                if (rogueMapGen != null) GameData.RogueMapGenData = rogueMapGen;
+
+                // These runtime room/dice definitions were added after the checked-in 4.6 cache was built.
+                // They are operator-authored JSON rather than dumped tables, so a cache boot must overlay the
+                // current files just like banners, video keys and RogueMapGen do above.
+                if (!loadedFromResources)
+                {
+                    ResourceManager.LoadRogueMagicRoomData();
+                    ResourceManager.LoadChessRogueRoomData();
+                    ResourceManager.LoadChessRogueDiceSurfaceEffectData();
+                    ResourceManager.LoadRogueChestMapInfo();
+                }
             }
             catch (Exception e)
             {
@@ -284,7 +318,8 @@ public class EntryPoint
 
         CommandExecutor.OnRunCommand += (sender, e) => { CommandManager.HandleCommand(e, sender); };
 
-        MuipManager.OnExecuteCommand += CommandManager.HandleCommand;
+        MuipManager.OnExecuteCommand += CommandManager.HandleCommandAsync;
+        MuipManager.CommandCatalogProvider = CommandManager.BuildCatalog;
         MuipManager.OnGetServerInformation += x =>
         {
             foreach (var con in March7thHoneyListener.GetSnapshot())

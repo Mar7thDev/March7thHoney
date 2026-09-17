@@ -47,6 +47,14 @@ public class Logger(string moduleName)
 
             var logMessage = $"[{time}][{moduleName}][{level}] {message}";
             PluginEventCommon.InvokeOnConsoleLog(logMessage);
+            try
+            {
+                PluginEventCommon.InvokeOnLogEntry(moduleName, level, message);
+            }
+            catch
+            {
+                // A misbehaving subscriber must never break logging.
+            }
 
             if (level == LoggerLevel.DEBUG)
             {
@@ -125,6 +133,8 @@ public class Logger(string moduleName)
 
     public static void SetLogFile(FileInfo file) => _logFile = file;
     public static void SetDebugLogFile(FileInfo file) => _debugLogFile = file;
+    public static FileInfo? CurrentLogFile => _logFile;
+    public static FileInfo? CurrentDebugLogFile => _debugLogFile;
 
     public static void WriteToFile(string message)
     {

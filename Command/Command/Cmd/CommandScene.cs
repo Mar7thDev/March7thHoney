@@ -155,14 +155,19 @@ public class CommandScene : ICommand
             return;
         }
 
-        if (!arg.TryGetInt(0, out var entryId) || entryId == 0)
+        if (!arg.TryGetInt(0, out var entryId) || entryId <= 0)
         {
             await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
             return;
         }
 
         var player = arg.Target!.Player!;
-        await player.EnterScene(entryId, 0, true);
+        var result = await player.TryEnterScene(entryId, 0, true);
+        if (!result.Success)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.SceneEnterFailed", entryId.ToString()));
+            return;
+        }
         await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.SceneChanged", entryId.ToString()));
     }
 
@@ -176,7 +181,13 @@ public class CommandScene : ICommand
         }
 
         var player = arg.Target!.Player!;
-        await player.EnterScene(player.Data.EntryId, 0, true);
+        var entryId = player.Data.EntryId;
+        var result = await player.TryEnterScene(entryId, 0, true);
+        if (!result.Success)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.SceneEnterFailed", entryId.ToString()));
+            return;
+        }
         await arg.SendMsg(I18NManager.Translate("Game.Command.Scene.SceneReloaded"));
     }
 
