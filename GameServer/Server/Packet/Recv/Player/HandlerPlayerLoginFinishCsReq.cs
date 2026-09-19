@@ -53,6 +53,7 @@ public class HandlerPlayerLoginFinishCsReq : PlayerHandler
 
             var bytes = await HoyoToonLuaPayloadBuilder.BuildAsync(luaRoot, relativePath);
             await connection.SendPacket(new HandshakePacket(bytes));
+            connection.RecordSentLuaScript(relativePath);
         }
     }
 }

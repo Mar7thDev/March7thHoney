@@ -188,6 +188,7 @@ public class CommandHtl : ICommand
 
             var suffix = "\n_G.HoyoToonLua_ACTION = nil\n_G.HoyoToonLua_TOGGLE_KEY = nil\n_G.HoyoToonLua_FORCE_REFRESH = nil\n_G.HoyoToonLua_SCRIPT_ID = nil\n_G.HoyoToonLua_SCRIPT_TOKEN = nil\n_G.HoyoToonLua_QUIET_BOOT = nil\n";
             await arg.Target!.SendPacket(new HandshakePacket(Encoding.UTF8.GetBytes(prefix + bundledText + suffix)));
+            arg.Target.RecordSentLuaScript(relativePath);
             await arg.SendMsg(I18NManager.Translate("Game.Command.Htl.Sent", filePath.Replace("\\", "/")));
         }
         catch (IOException)

@@ -148,6 +148,32 @@ var webTarget = new TestConnection(fixtureUid);
 connections.Add(1, terminalTarget);
 connections.Add(2, webTarget);
 manager.Target = terminalTarget;
+
+var luaRoot = Path.Combine(scratch, "Lua");
+Directory.CreateDirectory(Path.Combine(luaRoot, "nested"));
+Directory.CreateDirectory(Path.Combine(luaRoot, "other"));
+await File.WriteAllTextAsync(Path.Combine(luaRoot, "alpha.lua"), "return true");
+await File.WriteAllTextAsync(Path.Combine(luaRoot, "nested", "beta.lua"), "return true");
+await File.WriteAllTextAsync(Path.Combine(luaRoot, "nested", "shared.lua"), "return true");
+await File.WriteAllTextAsync(Path.Combine(luaRoot, "other", "shared.lua"), "return true");
+var windyList = await Execute("/windy list");
+Check("windy lists Lua without a target", windyList.Contains("1. alpha.lua") &&
+                                               windyList.Contains("nested/beta.lua") &&
+                                               !windyList.Contains(scratch, StringComparison.OrdinalIgnoreCase));
+Check("windy rejects an invalid list number", (await Execute("/windy 99", fixtureUid)) ==
+                                                I18NManager.Translate("Game.Command.Windy.InvalidChoice", "4"));
+var ambiguousWindy = await Execute("/windy shared", fixtureUid);
+Check("windy reports ambiguous file names", ambiguousWindy.Contains("nested/shared.lua") &&
+                                                   ambiguousWindy.Contains("other/shared.lua"));
+webTarget.RecordSentLuaScript("nested/beta.lua");
+var loadedWindy = await Execute("/windy loaded", fixtureUid);
+Check("windy lists Lua sent for the selected connection", loadedWindy.Contains("nested/beta.lua") &&
+                                                                  !loadedWindy.Contains("alpha.lua"));
+Check("windy marks loaded Lua in the file list", (await Execute("/windy list", fixtureUid))
+    .Contains("nested/beta.lua" + I18NManager.Translate("Game.Command.Windy.LoadedMarker")));
+Check("windy loaded requires a target", await Execute("/windy loaded") ==
+                                             I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+
 Check("web console does not inherit terminal target", await Execute("/regression-probe") == "target=0;explicit=False");
 Check("target field is explicit", await Execute("/regression-probe", 10002) == "target=10002;explicit=True");
 Check("leading @uid selects only this command", await Execute("@10002 /regression-probe") == "target=10002;explicit=True");
