@@ -20,9 +20,30 @@ namespace March7thHoney.GameServer.Server;
 public class Connection(KcpConversation conversation, IPEndPoint remote) : March7thHoneyConnection(conversation, remote)
 {
     private static readonly Logger Logger = new("GameServer");
+    private readonly Lock _sentLuaScriptsLock = new();
+    private readonly HashSet<string> _sentLuaScripts = new(StringComparer.OrdinalIgnoreCase);
 
     public PlayerInstance? Player { get; set; }
     public List<PacketActionData> CustomPacketQueue { get; set; } = [];
+
+    /// <summary>
+    ///     Records a named Lua script sent during this connection. The client protocol does not acknowledge
+    ///     successful execution, so this deliberately tracks server sends rather than claiming execution success.
+    /// </summary>
+    public void RecordSentLuaScript(string relativePath)
+    {
+        var normalized = relativePath.Replace("\\", "/", StringComparison.Ordinal).TrimStart('/');
+        if (string.IsNullOrWhiteSpace(normalized)) return;
+
+        lock (_sentLuaScriptsLock)
+            _sentLuaScripts.Add(normalized);
+    }
+
+    public IReadOnlyList<string> GetSentLuaScripts()
+    {
+        lock (_sentLuaScriptsLock)
+            return _sentLuaScripts.Order(StringComparer.OrdinalIgnoreCase).ToList();
+    }
 
     private PacketActionData? GetCurActionData()
     {
