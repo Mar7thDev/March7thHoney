@@ -143,6 +143,18 @@ public static class ResourceCache
             return false;
         }
 
+        // Caches built before the daily-training tables (DailyQuest / DailyMissionData / DailyMissionCount) and
+        // the CocoonConfig type columns were loaded. Only rejected when the raw table is available to rebuild from.
+        var hasDailyQuest = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "DailyQuest.json")));
+        if (hasDailyQuest && (GameData.DailyQuestData.Count == 0 ||
+                              (GameData.CocoonConfigData.Count > 0 &&
+                               GameData.CocoonConfigData.Values.All(cocoon => cocoon.FarmType == 0))))
+        {
+            Logger.Warn("Resource cache is stale: daily training tables are missing.");
+            return false;
+        }
+
         if (GameData.EquipmentConfigData.Count == 0)
         {
             Logger.Warn("Resource cache is stale: EquipmentConfigData is missing.");
