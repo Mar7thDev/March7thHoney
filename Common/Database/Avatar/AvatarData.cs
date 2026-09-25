@@ -114,15 +114,25 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
 
     public void CheckPathSkillTree()
     {
-        if (!GameData.AvatarConfigData.TryGetValue(AvatarId, out var excel)) return;
-        if (PathInfos.ContainsKey(AvatarId)) return;
-        if (excel.DefaultSkillTree[0].Count == 0) return;
+        EnsurePathInfo(AvatarId);
+    }
+
+    /// <summary>
+    ///     Creates the stored path (with its default skill tree) without switching the current path. Returns whether
+    ///     the path exists afterwards.
+    /// </summary>
+    public bool EnsurePathInfo(int pathId)
+    {
+        if (PathInfos.ContainsKey(pathId)) return true;
+        if (!GameData.AvatarConfigData.TryGetValue(pathId, out var excel)) return false;
+        if (excel.DefaultSkillTree.GetValueOrDefault(0) is not { Count: > 0 }) return false;
 
         // create path info
-        var path = new PathInfo(AvatarId);
+        var path = new PathInfo(pathId);
         path.GetSkillTree();
 
-        PathInfos.Add(AvatarId, path);
+        PathInfos.Add(pathId, path);
+        return true;
     }
 
     public void TakeReward(int promotion)
