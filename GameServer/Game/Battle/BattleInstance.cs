@@ -4,6 +4,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -24,43 +25,43 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public BattleInstance(PlayerInstance player, LineupInfo lineup, List<EntityMonster> monsters) : this(player, lineup,
         new List<StageConfigExcel>())
     {
-        if (player.ActivityManager!.TrialActivityInstance != null &&
-            player.ActivityManager!.TrialActivityInstance.Data.CurTrialStageId != 0)
-        {
-            var instance = player.ActivityManager!.TrialActivityInstance;
-            GameData.StageConfigData.TryGetValue(instance.Data.CurTrialStageId, out var stage);
-            if (stage != null) Stages.Add(stage);
-            StageId = Stages[0].StageID;
-        }
-        else
-        {
-            var addedStageIds = new HashSet<int>();
+        // A Role Trial battle is fought on the trial's own plane while a trial is running. Its monsters carry the
+        // stage's authored event (TrialActivityEntityLoader), which is not always the trial stage id itself
+        // (e.g. trial 315120 fights stage 315121, and several trial ids have no StageConfig row at all).
+        var trialStageId = player.ActivityManager?.TrialActivityInstance?.Data.CurTrialStageId ?? 0;
+        IsTrialActivityBattle = trialStageId != 0 &&
+                                player.SceneInstance?.Excel.PlaneType == PlaneTypeEnum.TrialActivity;
 
+        var addedStageIds = new HashSet<int>();
+
+        foreach (var monster in monsters)
+        {
+            if (!TryResolveStageFromEvent(monster.GetStageId(), player.Data.WorldLevel, out var stage) ||
+                stage == null)
+                continue;
+            if (addedStageIds.Add(stage.StageID))
+                Stages.Add(stage);
+        }
+
+        // Fallback: some resources use base EventID in monster config while challenge injects custom IDs.
+        if (Stages.Count == 0)
             foreach (var monster in monsters)
             {
-                if (!TryResolveStageFromEvent(monster.GetStageId(), player.Data.WorldLevel, out var stage) ||
+                if (!TryResolveStageFromEvent(monster.Info.EventID, player.Data.WorldLevel, out var stage) ||
                     stage == null)
                     continue;
+
                 if (addedStageIds.Add(stage.StageID))
                     Stages.Add(stage);
             }
 
-            // Fallback: some resources use base EventID in monster config while challenge injects custom IDs.
-            if (Stages.Count == 0)
-                foreach (var monster in monsters)
-                {
-                    if (!TryResolveStageFromEvent(monster.Info.EventID, player.Data.WorldLevel, out var stage) ||
-                        stage == null)
-                        continue;
+        if (Stages.Count == 0 && IsTrialActivityBattle &&
+            GameData.StageConfigData.TryGetValue(trialStageId, out var trialStage))
+            Stages.Add(trialStage);
 
-                    if (addedStageIds.Add(stage.StageID))
-                        Stages.Add(stage);
-                }
-
-            EntityMonsters = monsters;
-            if (Stages.Count > 0)
-                StageId = Stages[0].StageID;
-        }
+        EntityMonsters = monsters;
+        if (Stages.Count > 0)
+            StageId = Stages[0].StageID;
     }
 
     public int BattleId { get; set; } = ++player.NextBattleId;
@@ -88,6 +89,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public BattleCollegeConfigExcel? CollegeConfigExcel { get; set; }
     public PVEBattleResultCsReq? BattleResult { get; set; }
     public bool IsTournRogue { get; set; }
+    public bool IsTrialActivityBattle { get; set; }
     public GridFightSession? GridFightContext { get; set; }
     public CalyxOverrideContext? CalyxOverride { get; set; }
 

@@ -1,3 +1,4 @@
+using March7thHoney.Database.Activity;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -5,15 +6,18 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Activity;
 
 public class PacketTrialActivityDataChangeScNotify : BasePacket
 {
-    public PacketTrialActivityDataChangeScNotify(uint stageId) : base(CmdIds.TrialActivityDataChangeScNotify)
+    public PacketTrialActivityDataChangeScNotify(TrialActivityResultData record, IEnumerable<PAALDKHKOLE> avatars)
+        : base(CmdIds.TrialActivityDataChangeScNotify)
     {
         var proto = new TrialActivityDataChangeScNotify
         {
-            TrialActivityInfo =
+            TrialActivityInfo = new TrialActivityInfo
             {
-                StageId = stageId
+                StageId = (uint)record.StageId,
+                TakenReward = record.TakenReward
             }
         };
+        proto.OBOPMFBGBAE.Add(avatars);
 
         SetData(proto);
     }

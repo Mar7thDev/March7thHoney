@@ -341,6 +341,9 @@ public partial class PlayerInstance(PlayerData data)
         CalyxOverrideManager?.ResetLineupOverride();
         await SendPacket(new PacketStaminaInfoScNotify(this));
 
+        // Before the extra-lineup reset and the scene load: a trial left open at logout is abandoned.
+        ActivityManager?.RescueTrialAtLogin();
+
         ChallengeManager?.ResurrectInstance();
         ChallengeTierceManager?.ResurrectInstance();
 
