@@ -1,3 +1,4 @@
+using March7thHoney.GameServer.Server.Packet.Send.Activity;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -8,14 +9,12 @@ public class HandlerLeaveTrialActivityCsReq : Handler<LeaveTrialActivityCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, LeaveTrialActivityCsReq req)
     {
-        if (player.ActivityManager!.TrialActivityInstance != null)
-        {
-            var manager = player.ActivityManager;
-            await manager.TrialActivityInstance.EndActivity();
-        }
+        var manager = player.ActivityManager!;
+        if (manager.TrialActivityInstance is { Data.CurTrialStageId: not 0 } instance)
+            await instance.LeaveActivity();
 
-        player.ActivityManager!.TrialActivityInstance = null;
+        manager.TrialActivityInstance = null;
 
-        await connection.SendPacket(CmdIds.LeaveTrialActivityScRsp);
+        await connection.SendPacket(new PacketLeaveTrialActivityScRsp(req.StageId));
     }
 }

@@ -143,6 +143,18 @@ public static class ResourceCache
             return false;
         }
 
+        // Caches built before AvatarDemoConfig.StageType/SPList were modelled deserialize with empty values,
+        // which would make every Role Trial stage look like a non-trial row. Like MapEntranceLD above, only
+        // reject when the raw table is available to rebuild from.
+        var hasAvatarDemoConfig = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "AvatarDemoConfig.json")));
+        if (hasAvatarDemoConfig && GameData.AvatarDemoConfigData.Count > 0 &&
+            GameData.AvatarDemoConfigData.Values.All(stage => string.IsNullOrEmpty(stage.StageType)))
+        {
+            Logger.Warn("Resource cache is stale: AvatarDemoConfig StageType/SPList are missing.");
+            return false;
+        }
+
         if (GameData.EquipmentConfigData.Count == 0)
         {
             Logger.Warn("Resource cache is stale: EquipmentConfigData is missing.");

@@ -457,12 +457,12 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
         await battle.TriggerOnBattleEnd();
 
+        // Only a won trial battle clears the trial. The clear notifies and the return scene go out before the
+        // battle result, matching the official order.
         var trialActivity = Player.ActivityManager!.TrialActivityInstance;
-        var trialStageId = trialActivity?.Data.CurTrialStageId ?? 0;
-        if (req.EndStatus == BattleEndStatus.BattleEndWin &&
-            trialActivity != null && trialStageId != 0 &&
-            battle.StageId == trialStageId)
-            await trialActivity.EndActivity(TrialActivityStatus.Finish);
+        if (req.EndStatus == BattleEndStatus.BattleEndWin && battle.IsTrialActivityBattle &&
+            trialActivity is { Data.CurTrialStageId: not 0 })
+            await trialActivity.FinishActivity();
 
         var dropItemList = await battle.GetDropItemListAsync();
         await Player.SendPacket(new PacketPVEBattleResultScRsp(req, Player, battle, dropItemList));
