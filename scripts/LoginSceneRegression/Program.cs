@@ -636,6 +636,22 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         && !quietPackets.Contains(CmdIds.EnterSceneByServerScNotify));
     var restorePackets = await SentPackets(async () => { await player.SendPacket(new PacketGetCurSceneInfoScRsp(player)); });
     Check("login snapshot is not mistaken for a scene transition", restorePackets.SequenceEqual(new ushort[] { CmdIds.GetCurSceneInfoScRsp }));
+    // A virtual lineup that only hosted a trial avatar is torn down, announced, and replaced by the own lineup.
+    var ownLineupIndex = player.LineupManager!.Data.GetCurLineupIndex();
+    player.LineupManager.SetExtraLineup(ExtraLineupType.LineupHeliobus, []);
+    player.LineupManager.GetCurLineup()!.BaseAvatars!.Add(new March7thHoney.Database.Lineup.LineupAvatarInfo
+        { BaseAvatarId = 1001, SpecialAvatarId = 9_999_001 });
+    var trialTeardownPackets = await SentPackets(async () =>
+    {
+        await player.LineupManager.RemoveTrialAvatarFromCurTeam(9_999_001);
+    });
+    Check("removing the last trial avatar destroys the virtual lineup and restores the own lineup",
+        player.LineupManager.Data.CurExtraLineup == -1
+        && !player.LineupManager.Data.Lineups.ContainsKey((int)ExtraLineupType.LineupHeliobus + 10)
+        && player.LineupManager.Data.GetCurLineupIndex() == ownLineupIndex);
+    Check("trial lineup teardown notifies destroy before syncing the restored lineup",
+        trialTeardownPackets.IndexOf((ushort)CmdIds.ExtraLineupDestroyNotify) is >= 0 and var destroyAt
+        && trialTeardownPackets.LastIndexOf((ushort)CmdIds.SyncLineupNotify) > destroyAt);
     player.Connection = null;
     await outbound.StopAsync();
     await inbound.StopAsync();
