@@ -68,7 +68,7 @@ public partial class SceneInstance
     private EntityProp? FindProp(int groupId, int instId)
     {
         foreach (var entity in Entities.Values)
-            if (entity is EntityProp prop && prop.GroupId == groupId && prop.InstId == instId)
+            if (entity is EntityProp { IsGmSpawned: false } prop && prop.GroupId == groupId && prop.InstId == instId)
                 return prop;
         return null;
     }

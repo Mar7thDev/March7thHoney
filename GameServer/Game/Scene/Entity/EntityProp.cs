@@ -19,6 +19,13 @@ public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo grou
     public PropInfo PropInfo { get; set; } = prop;
     public GroupInfo Group { get; set; } = group;
     public ScenePropTimelineData? PropTimelineData { get; set; }
+
+    /// <summary>
+    ///     Created at runtime by the /spawn GM command. It borrows a real prop's group/instance ID, so its
+    ///     state is never persisted (that would overwrite the real prop's saved state).
+    /// </summary>
+    public bool IsGmSpawned { get; set; }
+
     public override int EntityId { get; set; }
     public override int GroupId { get; set; } = group.Id;
 
@@ -63,6 +70,8 @@ public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo grou
         if (sendPacket)
             await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene.Player, this, null,
                 SceneGroupRefreshType.Afibfmafncc));
+
+        if (IsGmSpawned) return;
 
         // save
         if (Group.SaveType != SaveTypeEnum.Reset)
