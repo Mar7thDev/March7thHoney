@@ -265,6 +265,9 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
             // The official response echoes the queue position in both fields.
             rsp.QueuePosition = req.MPLGEEGOAMC;
             rsp.BFNEPPCNOOI = req.MPLGEEGOAMC;
+
+            // The resolved draft clears the room: the official refreshes the exit portal Open before the response.
+            await manager.OpenRoomExit();
         }
 
         await connection.SendPacket(new PacketRogueScRsp(CmdIds.HandleRogueCommonPendingActionScRsp, rsp));

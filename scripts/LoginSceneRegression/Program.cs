@@ -19,6 +19,7 @@ using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
+using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.ChessRogue;
 using March7thHoney.GameServer.Game.Rogue;
@@ -26,6 +27,7 @@ using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -300,6 +302,30 @@ var rogueStart = await roguePlayer.RogueManager!.StartRogue(193, 4, rogueAvatarI
 Check("new Rogue area starts and enters its generated first room",
     rogueStart == Retcode.RetSucc && roguePlayer.RogueManager.RogueInstance?.MapId == 904 &&
     roguePlayer.SceneInstance?.EntryId != 0);
+
+var rogueRoomScene = roguePlayer.SceneInstance!;
+var rogueRoomExcel = roguePlayer.RogueManager.GetActiveRoomExcel(rogueRoomScene.EntryId)!;
+var rogueExitTargets = roguePlayer.RogueManager.GetRoomExitTargets();
+List<EntityProp> RogueExitDoors(SceneInstance scene) => scene.GetEntitiesInGroup<EntityProp>(rogueRoomExcel.GroupID)
+    .Where(prop => prop.Excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR).ToList();
+var rogueRoomHasMonsters = rogueRoomScene.Entities.Values.OfType<EntityMonster>().Any();
+var rogueDoors = RogueExitDoors(rogueRoomScene);
+Check("Rogue room exit portals carry a next-room destination",
+    rogueExitTargets.Count > 0 && rogueDoors.Count > 0 &&
+    rogueDoors.All(door => door.RogueDoorTarget is { } target && rogueExitTargets.Contains(target)));
+Check("Rogue room exit portal serializes rogue_game_info {room_id, site}", rogueDoors.All(door =>
+    door.ToProto().Prop.ExtraInfo?.RogueGameInfo is { } info && info.RoomId == door.RogueDoorTarget!.Value.RoomId &&
+    info.MAJKFIMPOOF == door.RogueDoorTarget.Value.SiteId));
+Check("Rogue combat room exit portal loads Closed until the room is cleared", !rogueRoomHasMonsters ||
+    rogueDoors.All(door => door.State == PropStateEnum.Closed));
+var seededDoor = rogueDoors[0];
+roguePlayer.SetScenePropData(rogueRoomScene.FloorId, seededDoor.GroupId, seededDoor.InstId, PropStateEnum.Open);
+var rebuiltRogueRoom = new SceneInstance(roguePlayer, rogueRoomScene.Excel, rogueRoomScene.FloorId, rogueRoomScene.EntryId);
+var rebuiltDoor = await rebuiltRogueRoom.EntityLoader!.LoadProp(seededDoor.PropInfo, seededDoor.Group);
+Check("Rogue room ignores a saved portal state and ships it Closed with its destination",
+    rebuiltRogueRoom.EntityLoader is RogueEntityLoader && rebuiltDoor?.State == PropStateEnum.Closed &&
+    rebuiltDoor.RogueDoorTarget == seededDoor.RogueDoorTarget);
+roguePlayer.SceneData!.ScenePropData.Remove(rogueRoomScene.FloorId);
 
 var chessPlayer = new PlayerInstance(60003);
 await chessPlayer.InitializeAsync();
@@ -637,6 +663,68 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     var restorePackets = await SentPackets(async () => { await player.SendPacket(new PacketGetCurSceneInfoScRsp(player)); });
     Check("login snapshot is not mistaken for a scene transition", restorePackets.SequenceEqual(new ushort[] { CmdIds.GetCurSceneInfoScRsp }));
     player.Connection = null;
+
+    // Rogue flows run through the real handlers on the rogue player's connection.
+    var rogueConnection = new ProbeConnection(serverPeer) { Player = roguePlayer };
+    roguePlayer.Connection = rogueConnection;
+    async Task<List<(ushort Id, byte[] Body)>> SentFrames(Func<Task> action)
+    {
+        await action();
+        await roguePlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var frames = new List<(ushort, byte[])>();
+        while (true)
+        {
+            var received = await clientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP rogue test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            if (id == ushort.MaxValue) return frames;
+            var length = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            frames.Add((id, buffer.AsSpan(12, length).ToArray()));
+        }
+    }
+
+    var rogueInst = roguePlayer.RogueManager.RogueInstance!;
+    // Any level-1 blessing rows: the draft mechanics, not the pool contents, are under test here.
+    var draftPool = GameData.RogueBuffData.Values.Where(buff => buff.MazeBuffLevel == 1).Take(5).ToList();
+    rogueInst.BuffSelect = RogueBuffSelectMenu.Create(rogueInst, draftPool);
+    var pickedBuff = rogueInst.BuffSelect.SelectBuffs[0].MazeBuffID;
+    Check("Rogue exit stays shut while a blessing draft is pending",
+        !await roguePlayer.RogueManager.OpenRoomExit() &&
+        (!rogueRoomHasMonsters || rogueDoors.All(door => door.State == PropStateEnum.Closed)));
+    var pickRequest = new OFEDNNJIJFL { MPLGEEGOAMC = 3, DLKIKBIDJDB = new BPLNKHGAILK { BAOFIGFFMLN = (uint)pickedBuff } };
+    var pickFrames = await SentFrames(() => new HandlerHandleRogueCommonPendingActionCsReq()
+        .OnHandle(rogueConnection, [], pickRequest.ToByteArray()));
+    var doorRefreshIndex = pickFrames.FindIndex(frame => frame.Id == CmdIds.SceneGroupRefreshScNotify);
+    var pickRspIndex = pickFrames.FindIndex(frame => frame.Id == CmdIds.HandleRogueCommonPendingActionScRsp);
+    List<SceneEntityInfo> openedDoors = doorRefreshIndex < 0 ? [] : SceneGroupRefreshScNotify.Parser.ParseFrom(pickFrames[doorRefreshIndex].Body)
+        .GroupRefreshList.SelectMany(group => group.RefreshEntity).Select(refresh => refresh.AddEntity)
+        .Where(entity => entity?.Prop != null).ToList();
+    Check("blessing pick refreshes the exit portal Open with its destination before the response",
+        doorRefreshIndex >= 0 && doorRefreshIndex < pickRspIndex && openedDoors.Count == rogueDoors.Count &&
+        openedDoors.All(entity => entity.Prop.PropState == (uint)PropStateEnum.Open &&
+                                  entity.Prop.ExtraInfo?.RogueGameInfo?.RoomId > 0) &&
+        rogueDoors.All(door => door.State == PropStateEnum.Open));
+    Check("opened Rogue exit portal is not persisted to the floor prop data",
+        rogueDoors.All(door => roguePlayer.GetScenePropData(rogueRoomScene.FloorId, door.GroupId, door.InstId) == null));
+    Check("an already open Rogue exit is not refreshed again", !await roguePlayer.RogueManager.OpenRoomExit());
+
+    // A won battle with no blessing to draft clears the room at once.
+    foreach (var door in rogueDoors) door.State = PropStateEnum.Closed;
+    var roomMonsters = rogueRoomScene.Entities.Values.OfType<EntityMonster>().Take(1).ToList();
+    var rogueBattle = new BattleInstance(roguePlayer, roguePlayer.LineupManager!.GetCurLineup()!, roomMonsters);
+    var rogueBattleEnd = typeof(RogueManager).GetMethod("OnBattleEnd", BindingFlags.Instance | BindingFlags.NonPublic)!;
+    var battleFrames = await SentFrames(async () => await (ValueTask)rogueBattleEnd.Invoke(roguePlayer.RogueManager,
+        [rogueBattle, new PVEBattleResultCsReq { EndStatus = BattleEndStatus.BattleEndWin }])!);
+    var draftedAfterBattle = rogueInst.BuffSelect?.HasSelection == true;
+    Check("Rogue battle win opens the exit unless it drafts a blessing", roomMonsters.Count > 0 && (draftedAfterBattle
+        ? rogueDoors.All(door => door.State == PropStateEnum.Closed)
+        : rogueDoors.All(door => door.State == PropStateEnum.Open) &&
+          battleFrames.Any(frame => frame.Id == CmdIds.SceneGroupRefreshScNotify)));
+    rogueInst.BuffSelect = null;
+    roguePlayer.Connection = null;
     await outbound.StopAsync();
     await inbound.StopAsync();
 }
