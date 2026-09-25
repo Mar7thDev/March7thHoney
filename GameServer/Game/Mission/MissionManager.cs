@@ -113,7 +113,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         var sync = new MissionSync();
         foreach (var nextMission in GameData.MainMissionData.Values)
         {
-            if (!nextMission.IsEqual(Data)) continue;
+            if (!nextMission.IsEqual(Data) || !nextMission.IsBeginSatisfied(Data)) continue;
             if (Data.GetMainMissionStatus(nextMission.MainMissionID) != MissionPhaseEnum.None)
                 continue; // already accepted
             var res = await AcceptMainMission(nextMission.MainMissionID, sendPacket);
