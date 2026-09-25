@@ -172,6 +172,25 @@ public class RogueManager : BasePlayerManager
         if (RogueInstance == null) return false;
 
         await ClearRun();
+        return await ExitToLobby();
+    }
+
+    /// <summary>
+    ///     Leaves a Simulated Universe room whose run no longer exists. A won-but-not-left run is dropped on
+    ///     relog while login still restores its room scene, so LeaveRogue has no run to settle.
+    /// </summary>
+    public async ValueTask<bool> LeaveOrphanedRoom()
+    {
+        if (RogueInstance != null) return false;
+        if (Player.SceneInstance is not
+            { Excel.PlaneType: PlaneTypeEnum.Rogue, GameModeType: GameModeTypeEnum.RogueExplore }) return false;
+
+        return await ExitToLobby();
+    }
+
+    private async ValueTask<bool> ExitToLobby()
+    {
+        await Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, false);
         await Player.EnterScene(RogueEntranceId, 0, false);
         return Player.SceneInstance?.EntryId == RogueEntranceId;
     }
