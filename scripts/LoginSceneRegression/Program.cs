@@ -29,6 +29,7 @@ using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Game.Tutorial;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.GameServer.Server.Packet.Recv.Mission;
 using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -829,6 +830,25 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     Check("the client's own talk string still finishes the gate",
         talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Finish);
     talkPlayer.Connection = null;
+
+    // Classic Simulated Universe command pairs (4.5v3 packetIds.txt): enhance 1858/1849, pick 1846/1840.
+    int OpcodeOf(Type handler) => handler.GetCustomAttribute<Opcode>()!.CmdId;
+    Check("classic Simulated Universe enhance and pick handlers listen on the 18xx command ids",
+        OpcodeOf(typeof(HandlerEnhanceRogueBuffCsReq)) == 1858 && CmdIds.CmdEnhanceRogueBuffScRsp == 1849 &&
+        OpcodeOf(typeof(HandlerPickRogueAvatarCsReq)) == 1846 && CmdIds.PickRogueAvatarScRsp == 1840);
+    var enhanceFrames = await SentFrames(() => new HandlerEnhanceRogueBuffCsReq().OnHandle(rogueConnection, [], []));
+    Check("classic Simulated Universe enhance answers on 1849", enhanceFrames.Select(frame => frame.Id)
+        .SequenceEqual(new[] { (ushort)CmdIds.CmdEnhanceRogueBuffScRsp }));
+    var pickAvatarRequest = new PickRogueAvatarCsReq { PropEntityId = 4194339, DFPPCAJDBFK = { 4000005 }, NOEPBNMJFGL = { 1001 } };
+    var pickAvatarFrames = await SentFrames(() => new HandlerPickRogueAvatarCsReq()
+        .OnHandle(rogueConnection, [], pickAvatarRequest.ToByteArray()));
+    var pickAvatarRsp = pickAvatarFrames.Where(frame => frame.Id == CmdIds.PickRogueAvatarScRsp)
+        .Select(frame => PickRogueAvatarScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
+    Check("PickRogueAvatar echoes special ids (req #14) in rsp #9 and base ids (req #9) in rsp #2",
+        PickRogueAvatarCsReq.DFPPCAJDBFKFieldNumber == 14 && PickRogueAvatarCsReq.NOEPBNMJFGLFieldNumber == 9 &&
+        PickRogueAvatarScRsp.NDFHHFGKMAIFieldNumber == 9 && PickRogueAvatarScRsp.DFPPCAJDBFKFieldNumber == 2 &&
+        pickAvatarRsp is { Retcode: 0 } && pickAvatarRsp.NDFHHFGKMAI.SequenceEqual(new uint[] { 4000005 }) &&
+        pickAvatarRsp.DFPPCAJDBFK.SequenceEqual(new uint[] { 1001 }));
     roguePlayer.Connection = null;
     await outbound.StopAsync();
     await inbound.StopAsync();
