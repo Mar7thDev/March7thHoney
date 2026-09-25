@@ -29,6 +29,12 @@ public class SceneEntityLoader(SceneInstance scene)
     public SceneInstance Scene { get; set; } = scene;
     public List<int> LoadGroups { get; set; } = [];
 
+    /// <summary>
+    ///     False for scenes whose props are rebuilt per run: their state is neither restored from nor written to
+    ///     the player's floor prop data.
+    /// </summary>
+    public virtual bool PersistsPropState => true;
+
     public virtual async ValueTask LoadEntity()
     {
         if (Scene.IsLoaded) return;
@@ -319,7 +325,7 @@ public class SceneEntityLoader(SceneInstance scene)
         if (excel.PropType == PropTypeEnum.PROP_SPRING) Scene.HealingSprings.Add(prop);
 
         // load from database
-        var propData = Scene.Player.GetScenePropData(Scene.FloorId, group.Id, info.ID);
+        var propData = PersistsPropState ? Scene.Player.GetScenePropData(Scene.FloorId, group.Id, info.ID) : null;
         var hasSavedState = propData != null && Scene.Excel.PlaneType != PlaneTypeEnum.Raid; // raid is not saved
         if (hasSavedState)
         {

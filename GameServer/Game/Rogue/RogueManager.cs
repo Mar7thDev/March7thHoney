@@ -8,6 +8,8 @@ using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
@@ -233,6 +235,42 @@ public class RogueManager : BasePlayerManager
         return excel.MapEntrance == entryId ? excel : null;
     }
 
+    /// <summary>The rooms the current room's exit portals lead to, in ascending site order.</summary>
+    public List<RogueDoorTarget> GetRoomExitTargets()
+    {
+        if (RogueInstance?.GetCurrentRoom() is not { } room) return [];
+        return room.NextSiteIds
+            .Order()
+            .Select(siteId => RogueInstance.Rooms.GetValueOrDefault(siteId))
+            .OfType<RogueRoomData>()
+            .Select(next => new RogueDoorTarget(next.RoomId, next.SiteId))
+            .ToList();
+    }
+
+    /// <summary>
+    ///     Opens the current room's exit portals once the room is cleared and no blessing draft is pending.
+    ///     Official 4.5: the portal is re-sent with prop state Open right after the draft resolves, before
+    ///     HandleRogueCommonPendingActionScRsp; the client only sends EnterRogueMapRoomCsReq through an open portal.
+    /// </summary>
+    public async ValueTask<bool> OpenRoomExit()
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst || inst.BuffSelect?.HasSelection == true)
+            return false;
+        var scene = Player.SceneInstance;
+        var roomExcel = scene == null ? null : GetActiveRoomExcel(scene.EntryId);
+        if (scene == null || roomExcel == null) return false;
+
+        var doors = scene.GetEntitiesInGroup<EntityProp>(roomExcel.GroupID)
+            .Where(door => door.RogueDoorTarget != null && door.State != PropStateEnum.Open)
+            .ToList();
+        if (doors.Count == 0) return false;
+
+        foreach (var door in doors) door.State = PropStateEnum.Open;
+        await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, doors.Cast<BaseGameEntity>().ToList(),
+            null, SceneGroupRefreshType.Afibfmafncc));
+        return true;
+    }
+
     public int GetCurrentMonsterLevel()
     {
         if (RogueInstance == null) return 0;
@@ -353,6 +391,11 @@ public class RogueManager : BasePlayerManager
             // The 4.5 client needs the identical draft notify twice to arm RogueSelectBuffPage.
             await Player.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(BuildPendingAction(inst)));
             await Player.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(BuildPendingAction(inst)));
+        }
+        else if (!inst.IsWin)
+        {
+            // A win with nothing to draft clears the room on the spot; a draft opens the exit when it resolves.
+            await OpenRoomExit();
         }
 
         if (coinGained) await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));
