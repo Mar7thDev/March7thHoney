@@ -351,6 +351,14 @@ public class SceneEntityLoader(SceneInstance scene)
                  excel.JsonPath.Contains("RogueEmblem", StringComparison.Ordinal)))
                 prop.State = PropStateEnum.Open;
 
+            // Rogue Index arms (lobby 80112001 group 3, MazeProp 1005): the 4.5 dump strips the ChangePropState
+            // that opens them at the end of the Simulated Universe tutorial, whose main 4030002 is auto-finished.
+            if (prop.State == PropStateEnum.Closed &&
+                excel.JsonPath.Contains("Prop_Rogue_Gallery", StringComparison.Ordinal) &&
+                (!Scene.Player.MissionEnabled ||
+                 Scene.Player.MissionManager!.GetMainMissionStatus(4030002) == MissionPhaseEnum.Finish))
+                prop.State = PropStateEnum.Open;
+
             // A spring's checkpoint comes from its configured State when the level export declares one
             // (CheckPointDisable keeps it hidden until a mission or the player enables it - official 20002001
             // sends 300006/8 and 300021/300022/300007/7) and defaults to CheckPointEnable otherwise. Healing stays

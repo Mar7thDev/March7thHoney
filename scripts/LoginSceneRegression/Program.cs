@@ -668,6 +668,25 @@ Check("an empty or Auto BeginParam does not gate a main", GameData.MainMissionDa
     .Where(main => main.BeginParam.All(param => param.Type == MissionTakeTypeEnum.Auto))
     .All(main => main.IsBeginSatisfied(gatedMissions)));
 
+// Rogue Index arms in the Simulated Universe lobby (80112001 group 3, MazeProp 1005 Prop_Rogue_Gallery).
+async Task<List<PropStateEnum?>> RogueIndexArmStates(PlayerInstance owner)
+{
+    var lobby = new SceneInstance(owner, GameData.MazePlaneData[80112], 80112001, RogueManager.RogueEntranceId);
+    var armGroup = lobby.FloorInfo!.Groups[3];
+    var states = new List<PropStateEnum?>();
+    foreach (var armId in new[] { 300003, 300008 })
+        states.Add((await lobby.EntityLoader!.LoadProp(armGroup.PropList.Single(prop => prop.ID == armId), armGroup))?.State);
+    return states;
+}
+Check("Rogue Index arms default open with missions disabled",
+    (await RogueIndexArmStates(player)).All(state => state == PropStateEnum.Open));
+tutorialMissions.SetMainMissionStatus(4030002, MissionPhaseEnum.Accept);
+Check("Rogue Index arms stay closed until the Simulated Universe tutorial main 4030002 finishes",
+    (await RogueIndexArmStates(tutorialPlayer)).All(state => state == PropStateEnum.Closed));
+tutorialMissions.SetMainMissionStatus(4030002, MissionPhaseEnum.Finish);
+Check("Rogue Index arms open once main 4030002 is finished",
+    (await RogueIndexArmStates(tutorialPlayer)).All(state => state == PropStateEnum.Open));
+
 // Exercise the real send path with two in-memory KCP peers: no sockets or production server.
 var outbound = new LoopbackKcpTransport();
 var inbound = new LoopbackKcpTransport();
