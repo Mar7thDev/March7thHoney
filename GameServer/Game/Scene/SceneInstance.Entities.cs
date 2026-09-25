@@ -47,15 +47,7 @@ public partial class SceneInstance
         var summonUnitKey = summonUnitExcel.UniqueGroup == SummonUnitUniqueGroupEnum.None ? summonUnitExcel.ID : 1;
         if (SummonUnit.TryGetValue(summonUnitKey, out var oldSummonUnit))
         {
-            foreach (var e in Entities.Values.Where(x => x is EntityMonster))
-            {
-                var monster = e as EntityMonster;
-                List<SceneBuff> buffList = [.. monster!.BuffList];
-                foreach (var sceneBuff in buffList)
-                    if (sceneBuff.SummonUnitEntityId == oldSummonUnit.EntityId)
-                        // clear old buff
-                        await monster.RemoveBuff(sceneBuff.BuffId);
-            }
+            await RemoveSummonDeliveredBuffs(oldSummonUnit);
 
             await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, null, oldSummonUnit));
             SummonUnit.Remove(summonUnitKey);

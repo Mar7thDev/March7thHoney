@@ -83,15 +83,25 @@ public partial class SceneInstance
         var exposeActivityEntries = Excel.PlaneType is PlaneTypeEnum.Town or PlaneTypeEnum.Maze &&
                                     GameData.ContentPackageConfigData.Values.Any(package =>
                                         package.MainMissionIDList.Count > 0 && package.TouchesFloor(FloorId));
+        // With missions enabled the main-mission scene/world state belongs to the story's SetFloorSavedValue
+        // actions: official 20001001 ships SceneStateByMainMission 0, and forcing 1 made the client (and the
+        // server group gate) create the floor's mission-gated groups early.
+        var missionEnabled = Player.MissionEnabled;
         if (exposeActivityEntries)
             foreach (var value in FloorInfo?.FloorSavedValue ?? [])
-                if (value.DefaultValue == 0 && !value.Name.Contains("_IsHidden") && !persisted.ContainsKey(value.Name))
+                if (value.DefaultValue == 0 && !value.Name.Contains("_IsHidden") && !persisted.ContainsKey(value.Name)
+                    && !(missionEnabled && IsMainMissionStateValue(value.Name)))
                     result[value.Name] = 1;
 
         foreach (var (key, value) in persisted)
             result[key] = value;
 
         return result;
+    }
+
+    private static bool IsMainMissionStateValue(string name)
+    {
+        return name is "SceneStateByMainMission" or "WorldStateByMainMission";
     }
 
     public SceneInfo ToProto()
