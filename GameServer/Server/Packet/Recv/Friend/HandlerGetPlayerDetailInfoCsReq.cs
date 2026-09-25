@@ -9,7 +9,8 @@ public class HandlerGetPlayerDetailInfoCsReq : Handler<GetPlayerDetailInfoCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, GetPlayerDetailInfoCsReq req)
     {
-        var playerData = player.FriendManager!.GetFriendPlayerData([(int)req.Uid]).FirstOrDefault();
+        var playerData = player.FriendManager!.GetFriendPlayerData([(int)req.Uid])
+            .FirstOrDefault(x => x.Uid == (int)req.Uid);
         if (playerData == null)
         {
             await connection.SendPacket(new PacketGetPlayerDetailInfoScRsp());
