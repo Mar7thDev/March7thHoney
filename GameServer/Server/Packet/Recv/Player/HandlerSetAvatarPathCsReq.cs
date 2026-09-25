@@ -13,19 +13,15 @@ public class HandlerSetAvatarPathCsReq : Handler<SetAvatarPathCsReq>
     {
         GameData.MultiplePathAvatarConfigData.TryGetValue((int)req.AvatarId, out var avatar);
 
-        if (avatar != null)
-        {
-            if (avatar.BaseAvatarID == 8001)
-                await player.ChangeAvatarPathType(avatar.BaseAvatarID,
-                    (MultiPathAvatarTypeEnum)(avatar.AvatarID - (player.Data.CurrentGender - 1)));
-            else
-                await player.ChangeAvatarPathType(avatar.BaseAvatarID,
-                    (MultiPathAvatarTypeEnum)avatar.AvatarID);
-            await connection.SendPacket(new PacketSetAvatarPathScRsp(avatar.AvatarID));
-        }
+        // ChangeAvatarPathType normalizes Trailblazer variants to the player's gender. Echo the id actually stored:
+        // echoing the request contradicts the avatar sync and the path panel never marks the chosen row.
+        var storedId = avatar == null
+            ? 0
+            : await player.ChangeAvatarPathType(avatar.BaseAvatarID, (MultiPathAvatarTypeEnum)avatar.AvatarID);
+
+        if (storedId != 0)
+            await connection.SendPacket(new PacketSetAvatarPathScRsp(storedId));
         else
-        {
             await connection.SendPacket(CmdIds.SetAvatarPathScRsp);
-        }
     }
 }

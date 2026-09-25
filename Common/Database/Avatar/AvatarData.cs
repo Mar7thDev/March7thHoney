@@ -505,12 +505,29 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
         };
     }
 
+    /// <summary>
+    ///     Whether a stored path is announced to the client. The Trailblazer keeps both genders' variants in
+    ///     <see cref="BaseAvatarInfo.PathInfos" /> (a gender switch must not lose either), but only the variants of the
+    ///     current gender may be sent, otherwise the change-path panel lists every path twice.
+    /// </summary>
+    public bool IsPathVisible(int pathId)
+    {
+        if (BaseAvatarId != 8001) return true;
+        if (!GameData.MultiplePathAvatarConfigData.TryGetValue(AvatarId, out var current) ||
+            current.Gender == GenderTypeEnum.GENDER_NONE) return true;
+        if (!GameData.MultiplePathAvatarConfigData.TryGetValue(pathId, out var path) ||
+            path.Gender == GenderTypeEnum.GENDER_NONE) return true;
+        return path.Gender == current.Gender;
+    }
+
     public List<AvatarPathData> ToAvatarPathDataProto()
     {
         var res = new List<AvatarPathData>();
 
         foreach (var pathInfo in PathInfos.Values)
         {
+            if (!IsPathVisible(pathInfo.PathId)) continue;
+
             var proto = new AvatarPathData
             {
                 AvatarId = (uint)pathInfo.PathId,
