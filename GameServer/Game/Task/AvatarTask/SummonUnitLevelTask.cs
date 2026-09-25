@@ -102,19 +102,23 @@ public class SummonUnitLevelTask
     {
         if (act is not AddMazeBuff addMazeBuff) return null;
 
-        var buff = new SceneBuff(addMazeBuff.ID, 1, summonUnit?.CreateAvatarId ?? 0)
-        {
-            SummonUnitEntityId = summonUnit?.AttachEntityId ?? 0,
-            CastEntityId = summonUnit?.AttachEntityId ?? 0,
-            ChangeReason = SceneEntityBuffChangeType.AddMazebuff
-        };
-
-        foreach (var item in addMazeBuff.DynamicValues)
-            buff.DynamicValues.Add(item.Key, item.Value.GetValue());
-
+        // Summon-delivered buffs reference the summon itself and keep the authored lifetime (no ability-path
+        // clamp). Official 4.5: Cyrene's summon delivers 141502 with BuffSummonEntityId = the summon's entity id
+        // and LifeTime 500. The summon removal paths match on this id to clear the buffs it delivered.
+        var lifeTime = addMazeBuff.LifeTime.GetValue();
         foreach (var targetEntity in targetEntities)
         {
             if (targetEntity is not EntityMonster monster) continue;
+
+            var buff = new SceneBuff(addMazeBuff.ID, 1, summonUnit?.CreateAvatarId ?? 0, lifeTime == 0 ? -1 : lifeTime)
+            {
+                SummonUnitEntityId = summonUnit?.EntityId ?? 0,
+                CastEntityId = summonUnit?.AttachEntityId ?? 0,
+                ChangeReason = SceneEntityBuffChangeType.AddMazebuff
+            };
+
+            foreach (var item in addMazeBuff.DynamicValues)
+                buff.DynamicValues.Add(item.Key, item.Value.GetValue());
 
             await monster.AddBuff(buff);
         }
@@ -142,17 +146,17 @@ public class SummonUnitLevelTask
     {
         if (act is not RefreshMazeBuffTime refreshMazeBuffTime) return null;
 
-        var buff = new SceneBuff(refreshMazeBuffTime.ID, 1, summonUnit?.CreateAvatarId ?? 0)
-        {
-            SummonUnitEntityId = summonUnit?.AttachEntityId ?? 0,
-            CastEntityId = summonUnit?.AttachEntityId ?? 0,
-            ChangeReason = SceneEntityBuffChangeType.AddMazebuff,
-            Duration = refreshMazeBuffTime.LifeTime.GetValue() == 0 ? -1 : refreshMazeBuffTime.LifeTime.GetValue()
-        };
-
         foreach (var targetEntity in targetEntities)
         {
             if (targetEntity is not EntityMonster monster) continue;
+
+            var buff = new SceneBuff(refreshMazeBuffTime.ID, 1, summonUnit?.CreateAvatarId ?? 0)
+            {
+                SummonUnitEntityId = summonUnit?.EntityId ?? 0,
+                CastEntityId = summonUnit?.AttachEntityId ?? 0,
+                ChangeReason = SceneEntityBuffChangeType.AddMazebuff,
+                Duration = refreshMazeBuffTime.LifeTime.GetValue() == 0 ? -1 : refreshMazeBuffTime.LifeTime.GetValue()
+            };
 
             await monster.AddBuff(buff);
         }

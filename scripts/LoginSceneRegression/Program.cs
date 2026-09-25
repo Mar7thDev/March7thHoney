@@ -531,6 +531,81 @@ await starskiff.EntityLoader.UnloadGroup(280);
 Check("forced Starskiff Haven activation still excludes PCOnly", (await starskiff.EntityLoader.LoadGroup(
     starskiffGroup, forceLoad: true)) is { Count: 0 });
 
+// Main-mission state on a content-package Maze floor: missions off keeps the lite-mode 1, missions on keeps the
+// resource/official 0 (official 20001001 feed ships SceneStateByMainMission 0).
+var missionFloorEntry = GameData.MapEntranceData.Values.Where(entry => entry.FloorID == 20001001).Min(entry => entry.ID);
+var missionFloorEntered = await player.TryEnterScene(missionFloorEntry, 0, false);
+var missionFloor = player.SceneInstance!;
+Check("floor 20001001 declares a zero-default SceneStateByMainMission in the production cache", missionFloorEntered.Success
+    && missionFloor.FloorInfo!.FloorSavedValue.Any(value => value.Name == "SceneStateByMainMission" && value.DefaultValue == 0));
+Check("missions disabled: content-package floor still exposes SceneStateByMainMission as 1",
+    missionFloor.BuildClientFloorSavedData().GetValueOrDefault("SceneStateByMainMission") == 1);
+player.MissionManager!.Data.EnableMissionOverride = true;
+var missionSnapshot = missionFloor.BuildClientFloorSavedData();
+Check("missions enabled: SceneStateByMainMission is not forced to 1",
+    missionSnapshot.GetValueOrDefault("SceneStateByMainMission") == 0
+    && missionFloor.FloorInfo!.Groups.Values.Any(group => group.SavedValueCondition.Conditions
+        .Any(condition => condition.SavedValueName == "SceneStateByMainMission") && !group.SavedValueCondition.IsTrue(missionSnapshot)));
+player.SceneData!.FloorSavedData[20001001] = new() { ["SceneStateByMainMission"] = 1 };
+Check("missions enabled: a story-written SceneStateByMainMission still wins",
+    missionFloor.BuildClientFloorSavedData().GetValueOrDefault("SceneStateByMainMission") == 1);
+player.SceneData.FloorSavedData.Remove(20001001);
+player.MissionManager.Data.EnableMissionOverride = null;
+
+// Summon-delivered maze buffs (Cyrene 14151 -> 141502) reference the summon entity, keep the authored lifetime,
+// and leave with the summon; the summon's lifetime is owned by the caster's timed maze buff 141501.
+var fieldScene = missionFloor;
+var fieldMonsters = fieldScene.Entities.Values.OfType<EntityMonster>().Where(monster => monster.IsAlive).Take(2).ToList();
+var fieldCaster = fieldScene.AvatarInfo.Values.First();
+Console.WriteLine($"Summon fixture: floor {fieldScene.FloorId}, {fieldMonsters.Count} monsters, caster entity {fieldCaster.EntityId}.");
+Check("summon fixture has two live monsters", fieldMonsters.Count == 2);
+Check("cache keeps SummonUnitData destroy flags", GameData.SummonUnitDataData[14151].RemoveMazeBuffOnDestroy
+    && !GameData.SummonUnitDataData[14101].RemoveMazeBuffOnDestroy);
+await fieldCaster.AddBuff(new SceneBuff(141501, 1, 1415, 30));
+var cyreneField = fieldScene.SummonUnit.Values.SingleOrDefault(unit => unit.SummonUnitId == 14151);
+Check("timed technique buff creates the field summon with official infinite lifetime",
+    cyreneField is { LifeTimeMs: -1 } && cyreneField.AttachEntityId == fieldCaster.EntityId);
+if (cyreneField != null && fieldMonsters.Count == 2)
+{
+    var fieldTargets = fieldMonsters.Select(monster => (uint)monster.EntityId).ToList();
+    Check("field trigger accepts the monsters", await fieldScene.TriggerSummonUnit(cyreneField.EntityId,
+        "HitNpcMonsterTrigger", fieldTargets) == Retcode.RetSucc);
+    var delivered = fieldMonsters.Select(monster => monster.BuffList.SingleOrDefault(buff => buff.BuffId == 141502)).ToList();
+    Check("summon-delivered buff references the summon entity with authored lifetime 500", delivered.All(buff =>
+        buff is { SummonUnitEntityId: var summonId, Duration: 500 } && summonId == cyreneField.EntityId
+        && buff.ToProto().BuffSummonEntityId == (uint)cyreneField.EntityId && buff.ToProto().LifeTime == 500));
+    Check("each monster receives its own buff instance", !ReferenceEquals(delivered[0], delivered[1]));
+    await fieldScene.TriggerSummonUnit(cyreneField.EntityId, "HitNpcMonsterTrigger", [fieldTargets[0]]);
+    var refreshed = fieldMonsters[1].BuffList.SingleOrDefault(buff => buff.BuffId == 141502);
+    Check("trigger exit refreshes the lifetime and keeps the summon reference",
+        refreshed is { Duration: 1 } && refreshed.SummonUnitEntityId == cyreneField.EntityId
+        && fieldMonsters[0].BuffList.Single(buff => buff.BuffId == 141502).Duration == 500);
+    await fieldCaster.RemoveBuff(141501);
+    Check("technique buff removal destroys the summon and the buffs it delivered",
+        !fieldScene.SummonUnit.Values.Any(unit => unit.SummonUnitId == 14151)
+        && fieldMonsters.All(monster => monster.BuffList.All(buff => buff.BuffId != 141502)));
+}
+await fieldCaster.AddBuff(new SceneBuff(141501, 1, 1415));
+Check("permanent owning buff keeps the bounded 45s summon lifetime",
+    fieldScene.SummonUnit.Values.SingleOrDefault(unit => unit.SummonUnitId == 14151)?.LifeTimeMs == 45000);
+await fieldCaster.RemoveBuff(141501);
+var keepBuffSummon = new EntitySummonUnit
+{
+    SummonUnitId = 14101, CreateAvatarEntityId = fieldCaster.EntityId, LifeTimeMs = -1,
+    TriggerList = GameData.SummonUnitDataData[14101].ConfigInfo?.TriggerConfig.CustomTriggers ?? []
+};
+await fieldScene.AddSummonUnitEntity(keepBuffSummon);
+if (fieldMonsters.Count == 2)
+{
+    await fieldScene.TriggerSummonUnit(keepBuffSummon.EntityId, keepBuffSummon.TriggerList[0].TriggerName,
+        [(uint)fieldMonsters[0].EntityId]);
+    var keptBuffIds = fieldMonsters[0].BuffList.Where(buff => buff.SummonUnitEntityId == keepBuffSummon.EntityId)
+        .Select(buff => buff.BuffId).ToList();
+    await fieldScene.RemoveSummonUnitById(14101);
+    Check("summon without RemoveMazeBuffOnDestroy leaves its delivered buffs", keptBuffIds.Count > 0
+        && keptBuffIds.All(id => fieldMonsters[0].BuffList.Any(buff => buff.BuffId == id)));
+}
+
 var previousScene = player.SceneInstance;
 const int MissingEntry = 99000002;
 GameData.MapEntranceData[MissingEntry] = new MapEntranceExcel { ID = MissingEntry, PlaneID = 10202, FloorID = 99000002 };
