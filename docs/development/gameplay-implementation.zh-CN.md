@@ -86,5 +86,6 @@
 - [x] 项目自定义扩展
   - [x] Muip 管理接口（`/muip/*`）
   - [x] Freesr 同步接口（`/sr-tools`、`/sr-tools-export`）
-  - [x] 扩展管理指令（`/json`、`/grid`、`/calyx` 等）
+  - [x] 扩展管理指令（`/json`、`/grid`、`/calyx`、`/spawn` 等）
+    - [x] `/spawn`：在玩家附近运行时生成怪物/物件，并可自定义其战斗（`s`/`lv`/`hp`，以 `/`、`|` 或 `\` 分隔的 MonsterConfig 波次）；仅限普通世界与剧情场景，不存档，不推进任务
 

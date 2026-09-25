@@ -35,6 +35,21 @@ public class EntityMonster(
     public int RogueMonsterId { get; set; } = 0;
     public int CustomLevel { get; set; } = 0;
     public int HardLevelGroup { get; set; } = 0;
+
+    /// <summary>
+    ///     Created at runtime by the /spawn GM command. Such monsters live only in memory, never advance
+    ///     KillMonster/StageWin missions, and <see cref="CustomLevel" /> is honoured as their battle level.
+    /// </summary>
+    public bool IsGmSpawned { get; set; }
+
+    /// <summary>
+    ///     /spawn custom battle: MonsterConfig IDs per wave. When set, these waves replace the stage's waves.
+    /// </summary>
+    public List<List<int>>? CustomBattleWaves { get; set; }
+
+    /// <summary>/spawn HP override applied to every monster of the battle this monster starts (0 = unchanged).</summary>
+    public uint CustomBattleHp { get; set; }
+
     public override int EntityId { get; set; } = 0;
     public override int GroupId { get; set; } = groupId;
 
@@ -163,8 +178,9 @@ public class EntityMonster(
         await Scene.Player.InventoryManager!.AddItems(dropItems, sendPacket);
 
         // TODO: Rogue support
-        // call mission handler
-        await Scene.Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.KillMonster, this);
+        // call mission handler; a GM-spawned copy borrows a real monster's group/instance and must not count as it
+        if (!IsGmSpawned)
+            await Scene.Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.KillMonster, this);
         if (removeFromScene) await Scene.RemoveEntity(this);
         return dropItems;
     }

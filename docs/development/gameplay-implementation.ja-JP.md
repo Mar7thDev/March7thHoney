@@ -86,5 +86,6 @@
 - [x] プロジェクト独自拡張
   - [x] Muip 管理 API（`/muip/*`）
   - [x] Freesr 同期 API（`/sr-tools`、`/sr-tools-export`）
-  - [x] 拡張管理コマンド（`/json`、`/grid`、`/calyx` など）
+  - [x] 拡張管理コマンド（`/json`、`/grid`、`/calyx`、`/spawn` など）
+    - [x] `/spawn`：プレイヤー付近に実行時のみのモンスター/オブジェクトを生成し、戦闘を任意に指定（`s`/`lv`/`hp`、`/`・`|`・`\` で区切る MonsterConfig ウェーブ）。通常ワールドとストーリーのシーンのみ、保存されず、ミッションも進行しない
 
