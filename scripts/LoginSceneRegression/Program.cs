@@ -26,6 +26,7 @@ using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Command;
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.ChessRogue;
 using March7thHoney.GameServer.Game.Friend;
@@ -33,6 +34,7 @@ using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Game.Tutorial;
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.GameServer.Server.Packet.Recv.Activity;
@@ -40,6 +42,8 @@ using March7thHoney.GameServer.Server.Packet.Send.Activity;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Chat;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.GameServer.Server.Packet.Recv.Mission;
+using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -322,6 +326,30 @@ var rogueStart = await roguePlayer.RogueManager!.StartRogue(193, 4, rogueAvatarI
 Check("new Rogue area starts and enters its generated first room",
     rogueStart == Retcode.RetSucc && roguePlayer.RogueManager.RogueInstance?.MapId == 904 &&
     roguePlayer.SceneInstance?.EntryId != 0);
+
+var rogueRoomScene = roguePlayer.SceneInstance!;
+var rogueRoomExcel = roguePlayer.RogueManager.GetActiveRoomExcel(rogueRoomScene.EntryId)!;
+var rogueExitTargets = roguePlayer.RogueManager.GetRoomExitTargets();
+List<EntityProp> RogueExitDoors(SceneInstance scene) => scene.GetEntitiesInGroup<EntityProp>(rogueRoomExcel.GroupID)
+    .Where(prop => prop.Excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR).ToList();
+var rogueRoomHasMonsters = rogueRoomScene.Entities.Values.OfType<EntityMonster>().Any();
+var rogueDoors = RogueExitDoors(rogueRoomScene);
+Check("Rogue room exit portals carry a next-room destination",
+    rogueExitTargets.Count > 0 && rogueDoors.Count > 0 &&
+    rogueDoors.All(door => door.RogueDoorTarget is { } target && rogueExitTargets.Contains(target)));
+Check("Rogue room exit portal serializes rogue_game_info {room_id, site}", rogueDoors.All(door =>
+    door.ToProto().Prop.ExtraInfo?.RogueGameInfo is { } info && info.RoomId == door.RogueDoorTarget!.Value.RoomId &&
+    info.MAJKFIMPOOF == door.RogueDoorTarget.Value.SiteId));
+Check("Rogue combat room exit portal loads Closed until the room is cleared", !rogueRoomHasMonsters ||
+    rogueDoors.All(door => door.State == PropStateEnum.Closed));
+var seededDoor = rogueDoors[0];
+roguePlayer.SetScenePropData(rogueRoomScene.FloorId, seededDoor.GroupId, seededDoor.InstId, PropStateEnum.Open);
+var rebuiltRogueRoom = new SceneInstance(roguePlayer, rogueRoomScene.Excel, rogueRoomScene.FloorId, rogueRoomScene.EntryId);
+var rebuiltDoor = await rebuiltRogueRoom.EntityLoader!.LoadProp(seededDoor.PropInfo, seededDoor.Group);
+Check("Rogue room ignores a saved portal state and ships it Closed with its destination",
+    rebuiltRogueRoom.EntityLoader is RogueEntityLoader && rebuiltDoor?.State == PropStateEnum.Closed &&
+    rebuiltDoor.RogueDoorTarget == seededDoor.RogueDoorTarget);
+roguePlayer.SceneData!.ScenePropData.Remove(rogueRoomScene.FloorId);
 
 var chessPlayer = new PlayerInstance(60003);
 await chessPlayer.InitializeAsync();
@@ -1041,6 +1069,76 @@ Check("spawn rejects invalid ID, unknown stage, entity cap, missing ID and speci
         I18NManager.Translate("Game.Command.Spawn.UnsupportedScene")
     ]));
 sender.Messages.Clear();
+// Tutorials popped from the maze main page hold free-play input, so a merely running target cannot close them.
+var tutorialPlayer = new PlayerInstance(60006);
+await tutorialPlayer.InitializeAsync();
+var tutorialMissions = tutorialPlayer.MissionManager!.Data;
+tutorialMissions.EnableMissionOverride = true;
+bool TutorialClosesWith(int tutorialId, int mainId, MissionPhaseEnum status)
+{
+    tutorialMissions.SetMainMissionStatus(mainId, status);
+    return TutorialHelper.CanClose(tutorialPlayer, tutorialId);
+}
+Check("free-play tutorial 3006 is not closable while its target main 1000511 only runs",
+    GameData.TutorialDataData[3006].TriggerParams.Any(trigger => trigger.TriggerType == "OnMazeMainPage") &&
+    !TutorialClosesWith(3006, 1000511, MissionPhaseEnum.Accept) && TutorialClosesWith(3006, 1000511, MissionPhaseEnum.Finish));
+Check("battle tutorial 1001 stays closable on a running target main 1000101",
+    TutorialClosesWith(1001, 1000101, MissionPhaseEnum.Accept) && TutorialClosesWith(1001, 1000101, MissionPhaseEnum.Finish) &&
+    !TutorialClosesWith(1001, 1000101, MissionPhaseEnum.None));
+TutorialDataExcel SyntheticTutorial(int id, bool freePlay, string finishType, string finishParam) => new()
+{
+    TutorialID = id,
+    TriggerParams = freePlay ? [new TutorialTriggerParam { TriggerType = "OnMazeMainPage", TriggerParam = "0" }] : [],
+    FinishTriggerParams = [new TutorialTriggerParam { TriggerType = finishType, TriggerParam = finishParam }]
+};
+GameData.TutorialDataData[99000001] = SyntheticTutorial(99000001, false, "TutorialFinish", "99000002");
+GameData.TutorialDataData[99000002] = SyntheticTutorial(99000002, true, "FinishMainMission", "1000511");
+GameData.TutorialDataData[99000003] = SyntheticTutorial(99000003, true, "TutorialFinish", "99000004");
+GameData.TutorialDataData[99000004] = SyntheticTutorial(99000004, false, "FinishMainMission", "1000511");
+Check("TutorialFinish recursion takes strictness from the target tutorial's own triggers",
+    !TutorialClosesWith(99000001, 1000511, MissionPhaseEnum.Accept) && TutorialClosesWith(99000003, 1000511, MissionPhaseEnum.Accept));
+foreach (var id in new[] { 99000001, 99000002, 99000003, 99000004 }) GameData.TutorialDataData.Remove(id);
+
+// BeginParam is a second gate after TakeParam: 1010502 is taken after 1010403 but begins at Trailblaze Level 13.
+var gatedPlayer = new PlayerInstance(60007);
+await gatedPlayer.InitializeAsync();
+var gatedMissions = gatedPlayer.MissionManager!.Data;
+gatedMissions.EnableMissionOverride = true;
+const int LevelGatedMain = 1010502;
+var levelGatedExcel = GameData.MainMissionData[LevelGatedMain];
+gatedPlayer.Data.Level = 11;
+gatedPlayer.Data.Exp = 0;
+gatedMissions.SetMainMissionStatus(1010403, MissionPhaseEnum.Finish);
+await gatedPlayer.MissionManager.AcceptMainMissionByCondition(false);
+Check("BeginParam PlayerLevel 13 keeps 1010502 unaccepted at level 11 although its take gate is met",
+    levelGatedExcel.IsEqual(gatedMissions) && !levelGatedExcel.IsBeginSatisfied(gatedMissions) &&
+    gatedMissions.GetMainMissionStatus(LevelGatedMain) == MissionPhaseEnum.None);
+var expToLevel13 = GameData.PlayerLevelConfigData[13].PlayerExp - GameData.PlayerLevelConfigData[11].PlayerExp;
+await gatedPlayer.InventoryManager!.AddItem(22, expToLevel13);
+Check("reaching level 13 through an exp grant accepts the level-gated main",
+    gatedPlayer.Data.Level == 13 && gatedMissions.GetMainMissionStatus(LevelGatedMain) == MissionPhaseEnum.Accept);
+Check("an empty or Auto BeginParam does not gate a main", GameData.MainMissionData.Values
+    .Where(main => main.BeginParam.All(param => param.Type == MissionTakeTypeEnum.Auto))
+    .All(main => main.IsBeginSatisfied(gatedMissions)));
+
+// Rogue Index arms in the Simulated Universe lobby (80112001 group 3, MazeProp 1005 Prop_Rogue_Gallery).
+async Task<List<PropStateEnum?>> RogueIndexArmStates(PlayerInstance owner)
+{
+    var lobby = new SceneInstance(owner, GameData.MazePlaneData[80112], 80112001, RogueManager.RogueEntranceId);
+    var armGroup = lobby.FloorInfo!.Groups[3];
+    var states = new List<PropStateEnum?>();
+    foreach (var armId in new[] { 300003, 300008 })
+        states.Add((await lobby.EntityLoader!.LoadProp(armGroup.PropList.Single(prop => prop.ID == armId), armGroup))?.State);
+    return states;
+}
+Check("Rogue Index arms default open with missions disabled",
+    (await RogueIndexArmStates(player)).All(state => state == PropStateEnum.Open));
+tutorialMissions.SetMainMissionStatus(4030002, MissionPhaseEnum.Accept);
+Check("Rogue Index arms stay closed until the Simulated Universe tutorial main 4030002 finishes",
+    (await RogueIndexArmStates(tutorialPlayer)).All(state => state == PropStateEnum.Closed));
+tutorialMissions.SetMainMissionStatus(4030002, MissionPhaseEnum.Finish);
+Check("Rogue Index arms open once main 4030002 is finished",
+    (await RogueIndexArmStates(tutorialPlayer)).All(state => state == PropStateEnum.Open));
 
 // Exercise the real send path with two in-memory KCP peers: no sockets or production server.
 var outbound = new LoopbackKcpTransport();
@@ -1109,6 +1207,137 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         trialTeardownPackets.IndexOf((ushort)CmdIds.ExtraLineupDestroyNotify) is >= 0 and var destroyAt
         && trialTeardownPackets.LastIndexOf((ushort)CmdIds.SyncLineupNotify) > destroyAt);
     player.Connection = null;
+
+    // Rogue flows run through the real handlers on the rogue player's connection.
+    var rogueConnection = new ProbeConnection(serverPeer) { Player = roguePlayer };
+    roguePlayer.Connection = rogueConnection;
+    async Task<List<(ushort Id, byte[] Body)>> SentFrames(Func<Task> action)
+    {
+        await action();
+        await roguePlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var frames = new List<(ushort, byte[])>();
+        while (true)
+        {
+            var received = await clientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP rogue test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            if (id == ushort.MaxValue) return frames;
+            var length = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            frames.Add((id, buffer.AsSpan(12, length).ToArray()));
+        }
+    }
+
+    var rogueInst = roguePlayer.RogueManager.RogueInstance!;
+    // Any level-1 blessing rows: the draft mechanics, not the pool contents, are under test here.
+    var draftPool = GameData.RogueBuffData.Values.Where(buff => buff.MazeBuffLevel == 1).Take(5).ToList();
+    rogueInst.BuffSelect = RogueBuffSelectMenu.Create(rogueInst, draftPool);
+    var pickedBuff = rogueInst.BuffSelect.SelectBuffs[0].MazeBuffID;
+    Check("Rogue exit stays shut while a blessing draft is pending",
+        !await roguePlayer.RogueManager.OpenRoomExit() &&
+        (!rogueRoomHasMonsters || rogueDoors.All(door => door.State == PropStateEnum.Closed)));
+    var pickRequest = new OFEDNNJIJFL { MPLGEEGOAMC = 3, DLKIKBIDJDB = new BPLNKHGAILK { BAOFIGFFMLN = (uint)pickedBuff } };
+    var pickFrames = await SentFrames(() => new HandlerHandleRogueCommonPendingActionCsReq()
+        .OnHandle(rogueConnection, [], pickRequest.ToByteArray()));
+    var doorRefreshIndex = pickFrames.FindIndex(frame => frame.Id == CmdIds.SceneGroupRefreshScNotify);
+    var pickRspIndex = pickFrames.FindIndex(frame => frame.Id == CmdIds.HandleRogueCommonPendingActionScRsp);
+    List<SceneEntityInfo> openedDoors = doorRefreshIndex < 0 ? [] : SceneGroupRefreshScNotify.Parser.ParseFrom(pickFrames[doorRefreshIndex].Body)
+        .GroupRefreshList.SelectMany(group => group.RefreshEntity).Select(refresh => refresh.AddEntity)
+        .Where(entity => entity?.Prop != null).ToList();
+    Check("blessing pick refreshes the exit portal Open with its destination before the response",
+        doorRefreshIndex >= 0 && doorRefreshIndex < pickRspIndex && openedDoors.Count == rogueDoors.Count &&
+        openedDoors.All(entity => entity.Prop.PropState == (uint)PropStateEnum.Open &&
+                                  entity.Prop.ExtraInfo?.RogueGameInfo?.RoomId > 0) &&
+        rogueDoors.All(door => door.State == PropStateEnum.Open));
+    Check("opened Rogue exit portal is not persisted to the floor prop data",
+        rogueDoors.All(door => roguePlayer.GetScenePropData(rogueRoomScene.FloorId, door.GroupId, door.InstId) == null));
+    Check("an already open Rogue exit is not refreshed again", !await roguePlayer.RogueManager.OpenRoomExit());
+
+    // A won battle with no blessing to draft clears the room at once.
+    foreach (var door in rogueDoors) door.State = PropStateEnum.Closed;
+    var roomMonsters = rogueRoomScene.Entities.Values.OfType<EntityMonster>().Take(1).ToList();
+    var rogueBattle = new BattleInstance(roguePlayer, roguePlayer.LineupManager!.GetCurLineup()!, roomMonsters);
+    var rogueBattleEnd = typeof(RogueManager).GetMethod("OnBattleEnd", BindingFlags.Instance | BindingFlags.NonPublic)!;
+    var battleFrames = await SentFrames(async () => await (ValueTask)rogueBattleEnd.Invoke(roguePlayer.RogueManager,
+        [rogueBattle, new PVEBattleResultCsReq { EndStatus = BattleEndStatus.BattleEndWin }])!);
+    var draftedAfterBattle = rogueInst.BuffSelect?.HasSelection == true;
+    Check("Rogue battle win opens the exit unless it drafts a blessing", roomMonsters.Count > 0 && (draftedAfterBattle
+        ? rogueDoors.All(door => door.State == PropStateEnum.Closed)
+        : rogueDoors.All(door => door.State == PropStateEnum.Open) &&
+          battleFrames.Any(frame => frame.Id == CmdIds.SceneGroupRefreshScNotify)));
+    rogueInst.BuffSelect = null;
+
+    // A won run is dropped on relog while login restores its room scene: LeaveRogue has no run to settle.
+    typeof(RogueManager).GetProperty(nameof(RogueManager.RogueInstance))!.SetValue(roguePlayer.RogueManager, null);
+    async Task<(List<(ushort Id, byte[] Body)> Frames, LeaveRogueScRsp? Rsp)> LeaveRogue()
+    {
+        var frames = await SentFrames(() => new HandlerLeaveRogueCsReq().OnHandle(rogueConnection, [], []));
+        var rsp = frames.Where(frame => frame.Id == CmdIds.LeaveRogueScRsp)
+            .Select(frame => LeaveRogueScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
+        return (frames, rsp);
+    }
+    var orphanLeave = await LeaveRogue();
+    Check("LeaveRogue with no live run returns an orphaned Rogue room to the lobby",
+        orphanLeave.Rsp is { Retcode: 0 } && orphanLeave.Rsp.Scene?.EntryId == RogueManager.RogueEntranceId &&
+        orphanLeave.Rsp.Lineup != null && roguePlayer.SceneInstance?.EntryId == RogueManager.RogueEntranceId &&
+        roguePlayer.LineupManager.Data.CurExtraLineup == -1 &&
+        orphanLeave.Frames.FindIndex(frame => frame.Id == CmdIds.SyncServerSceneChangeNotify) is var boundary and >= 0 &&
+        boundary < orphanLeave.Frames.FindIndex(frame => frame.Id == CmdIds.LeaveRogueScRsp) &&
+        orphanLeave.Frames.All(frame => frame.Id != CmdIds.SyncRogueFinishScNotify));
+    var lobbyLeave = await LeaveRogue();
+    Check("LeaveRogue outside a Rogue room with no run still reports status mismatch",
+        lobbyLeave.Rsp?.Retcode == (uint)Retcode.RetRogueStatusNotMatch);
+
+    // A degenerate talk report ("0", no sub id) is ACK-only even when the tracked main has exactly one running
+    // Talk finish gate on the current floor (the official capture ACKs it and the client finishes the gate later).
+    var talkPlayer = new PlayerInstance(60008);
+    await talkPlayer.InitializeAsync();
+    talkPlayer.MissionManager!.Data.EnableMissionOverride = true;
+    const int TalkGateMain = 1010202;
+    const int TalkGateSub = 101020206;
+    var talkGate = GameData.SubMissionInfoData[TalkGateSub].SubMissionInfo!;
+    var talkEntrance = GameData.MapEntranceData.Values.First(entrance => entrance.FloorID == talkGate.LevelFloorID);
+    var talkScene = new SceneInstance(talkPlayer, GameData.MazePlaneData[talkEntrance.PlaneID], talkEntrance.FloorID,
+        talkEntrance.ID);
+    typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.SceneInstance))!.SetValue(talkPlayer, talkScene);
+    talkPlayer.MissionManager.Data.SetMainMissionStatus(TalkGateMain, MissionPhaseEnum.Accept);
+    talkPlayer.MissionManager.Data.SetSubMissionStatus(TalkGateSub, MissionPhaseEnum.Accept);
+    talkPlayer.MissionManager.Data.TrackingMainMissionId = TalkGateMain;
+    talkPlayer.Connection = new ProbeConnection(serverPeer) { Player = talkPlayer };
+    var talkFrames = await SentFrames(() => new HandlerFinishTalkMissionCsReq()
+        .OnHandle(talkPlayer.Connection, [], new FinishTalkMissionCsReq { TalkStr = "0" }.ToByteArray()));
+    Check("degenerate FinishTalkMission is ACK-only and leaves the talk finish gate running",
+        talkGate.FinishType == MissionFinishTypeEnum.Talk &&
+        talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Accept &&
+        talkPlayer.MissionManager.GetMainMissionStatus(TalkGateMain) == MissionPhaseEnum.Accept &&
+        talkFrames.Select(frame => frame.Id).SequenceEqual(new[] { (ushort)CmdIds.FinishTalkMissionScRsp }));
+    await SentFrames(() => new HandlerFinishTalkMissionCsReq()
+        .OnHandle(talkPlayer.Connection, [], new FinishTalkMissionCsReq { TalkStr = talkGate.ParamStr1 }.ToByteArray()));
+    Check("the client's own talk string still finishes the gate",
+        talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Finish);
+    talkPlayer.Connection = null;
+
+    // Classic Simulated Universe command pairs (4.5v3 packetIds.txt): enhance 1858/1849, pick 1846/1840.
+    int OpcodeOf(Type handler) => handler.GetCustomAttribute<Opcode>()!.CmdId;
+    Check("classic Simulated Universe enhance and pick handlers listen on the 18xx command ids",
+        OpcodeOf(typeof(HandlerEnhanceRogueBuffCsReq)) == 1858 && CmdIds.CmdEnhanceRogueBuffScRsp == 1849 &&
+        OpcodeOf(typeof(HandlerPickRogueAvatarCsReq)) == 1846 && CmdIds.PickRogueAvatarScRsp == 1840);
+    var enhanceFrames = await SentFrames(() => new HandlerEnhanceRogueBuffCsReq().OnHandle(rogueConnection, [], []));
+    Check("classic Simulated Universe enhance answers on 1849", enhanceFrames.Select(frame => frame.Id)
+        .SequenceEqual(new[] { (ushort)CmdIds.CmdEnhanceRogueBuffScRsp }));
+    var pickAvatarRequest = new PickRogueAvatarCsReq { PropEntityId = 4194339, DFPPCAJDBFK = { 4000005 }, NOEPBNMJFGL = { 1001 } };
+    var pickAvatarFrames = await SentFrames(() => new HandlerPickRogueAvatarCsReq()
+        .OnHandle(rogueConnection, [], pickAvatarRequest.ToByteArray()));
+    var pickAvatarRsp = pickAvatarFrames.Where(frame => frame.Id == CmdIds.PickRogueAvatarScRsp)
+        .Select(frame => PickRogueAvatarScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
+    Check("PickRogueAvatar echoes special ids (req #14) in rsp #9 and base ids (req #9) in rsp #2",
+        PickRogueAvatarCsReq.DFPPCAJDBFKFieldNumber == 14 && PickRogueAvatarCsReq.NOEPBNMJFGLFieldNumber == 9 &&
+        PickRogueAvatarScRsp.NDFHHFGKMAIFieldNumber == 9 && PickRogueAvatarScRsp.DFPPCAJDBFKFieldNumber == 2 &&
+        pickAvatarRsp is { Retcode: 0 } && pickAvatarRsp.NDFHHFGKMAI.SequenceEqual(new uint[] { 4000005 }) &&
+        pickAvatarRsp.DFPPCAJDBFK.SequenceEqual(new uint[] { 1001 }));
+    roguePlayer.Connection = null;
     await outbound.StopAsync();
     await inbound.StopAsync();
 }
@@ -1145,7 +1374,7 @@ if (!GameData.AvatarDemoConfigData[315130].IsTrialActivity)
     throw new InvalidOperationException("The resource cache predates AvatarDemoConfig StageType/SPList. Regenerate " +
                                         "Config/Resource.bin or pass --resource-cache <regenerated cache>.");
 
-var trialPlayer = new PlayerInstance(60006);
+var trialPlayer = new PlayerInstance(60010);
 await trialPlayer.InitializeAsync();
 const int TrialReturnEntry = 1000001;
 await trialPlayer.TryEnterScene(TrialReturnEntry, 0, false);

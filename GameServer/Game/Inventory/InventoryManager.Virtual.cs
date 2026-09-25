@@ -10,6 +10,7 @@ public partial class InventoryManager
     private async ValueTask<ItemData?> AddVirtualItem(int itemId, int count, ItemConfigExcel itemConfig)
     {
         var actualCount = 0;
+        var levelBefore = Player.Data.Level;
         switch (itemConfig.ID)
         {
             case 1:
@@ -46,6 +47,7 @@ public partial class InventoryManager
         if (count != 0)
         {
             await Player.SendPacket(new PacketPlayerSyncScNotify(Player.ToProto()));
+            if (Player.Data.Level > levelBefore) await Player.OnLevelUp();
             return new ItemData
             {
                 ItemId = itemId,

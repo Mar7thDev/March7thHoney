@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Config.Scene;
+using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
@@ -8,12 +9,24 @@ namespace March7thHoney.GameServer.Game.Rogue;
 
 public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : SceneEntityLoader(scene)
 {
+    // Room props belong to one run: a portal opened or a chest used in an earlier run must not carry over.
+    public override bool PersistsPropState => false;
+
     public override async ValueTask LoadEntity()
     {
-        if (!Scene.IsLoaded && player.RogueManager?.GetActiveRoomExcel(Scene.EntryId) != null)
+        var firstLoad = !Scene.IsLoaded;
+        var roomExcel = player.RogueManager?.GetActiveRoomExcel(Scene.EntryId);
+        if (firstLoad && roomExcel != null)
             Scene.LeaveEntryId = RogueManager.RogueEntranceId;
 
         await base.LoadEntity();
+
+        // A room that spawned no monster has no battle that could ever clear it, so its exit starts open
+        // instead of leaving the run at a dead end. Not verified against an official capture.
+        if (firstLoad && roomExcel != null && !Scene.Entities.Values.OfType<EntityMonster>().Any())
+            foreach (var door in Scene.GetEntitiesInGroup<EntityProp>(roomExcel.GroupID)
+                         .Where(door => door.RogueDoorTarget != null))
+                door.State = PropStateEnum.Open;
     }
 
     public override async ValueTask<EntityMonster?> LoadMonster(MonsterInfo info, GroupInfo group,
@@ -43,5 +56,37 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
 
         await Scene.AddEntity(entity, sendPacket);
         return entity;
+    }
+
+    public override async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
+    {
+        var prop = await base.LoadProp(info, group, sendPacket);
+        if (prop?.Excel.PropType != PropTypeEnum.PROP_ROGUE_DOOR) return prop;
+
+        var manager = player.RogueManager;
+        var roomExcel = manager?.GetActiveRoomExcel(Scene.EntryId);
+        if (manager == null || roomExcel == null || group.Id != roomExcel.GroupID) return prop;
+
+        // The official room ships its exit portal Closed with the destination attached
+        // (rogue_game_info{room_id, site}); RogueManager.OpenRoomExit opens it once the room is cleared.
+        prop.State = PropStateEnum.Closed;
+        prop.RogueDoorTarget = ResolveDoorTarget(manager.GetRoomExitTargets(), group, info.ID);
+        return prop;
+    }
+
+    // Doors are paired with next sites in ascending inst id / site id order; a surplus door leads to the last
+    // site. Official captures only cover single-door rooms, so the pairing itself is unverified.
+    private static RogueDoorTarget? ResolveDoorTarget(List<RogueDoorTarget> targets, GroupInfo group, int instId)
+    {
+        if (targets.Count == 0) return null;
+
+        var doors = group.PropList
+            .Where(prop => !prop.IsDelete && GameData.MazePropData.TryGetValue(prop.PropID, out var excel) &&
+                           excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR)
+            .Select(prop => prop.ID)
+            .Order()
+            .ToList();
+        var index = doors.IndexOf(instId);
+        return index < 0 ? null : targets[Math.Min(index, targets.Count - 1)];
     }
 }

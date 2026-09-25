@@ -248,7 +248,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 SceneGroupRefreshType.Afibfmafncc));
 
             // Persist as opened for non-reset groups so relog won't respawn it.
-            if (prop.Group.SaveType != SaveTypeEnum.Reset)
+            if (prop.Group.SaveType != SaveTypeEnum.Reset && Player.SceneInstance.PersistsPropState)
                 Player.SetScenePropData(Player.SceneInstance.FloorId, prop.GroupId, prop.PropInfo.ID, PropStateEnum.Open);
         }
 

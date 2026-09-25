@@ -114,7 +114,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         var sync = new MissionSync();
         foreach (var nextMission in GameData.MainMissionData.Values)
         {
-            if (!nextMission.IsEqual(Data)) continue;
+            if (!nextMission.IsEqual(Data) || !nextMission.IsBeginSatisfied(Data)) continue;
             if (Data.GetMainMissionStatus(nextMission.MainMissionID) != MissionPhaseEnum.None)
                 continue; // already accepted
             var res = await AcceptMainMission(nextMission.MainMissionID, sendPacket);
@@ -684,47 +684,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         }
 
         return handled;
-    }
-
-    /// <summary>
-    ///     Fallback for a degenerate FinishTalkMissionCsReq — a talk report whose string matches no
-    ///     configured ParamStr1 gate and that carries sub_mission_id 0. The client emits that shape when
-    ///     its local client-side ("type C") performance for the step never armed, so it reports a plain
-    ///     NPC dialogue (talk_str "0") instead of the mission string, and the story chain stalls.
-    /// </summary>
-    /// <remarks>
-    ///     The candidate set is deliberately narrow: only a FINISH GATE of the currently tracked main,
-    ///     with FinishType Talk, on the floor the player is standing on, and currently running. That is
-    ///     the single step whose completion unlocks the next main, so a generic dialogue can never
-    ///     advance a mid-chain objective. Zero or several candidates are a no-op, so an ordinary floor
-    ///     with multiple talk NPCs can never be mis-advanced.
-    /// </remarks>
-    public async ValueTask<bool> FinishDegenerateTalk()
-    {
-        if (!Enabled) return false;
-
-        var floorId = Player.SceneInstance?.FloorId ?? 0;
-        if (floorId == 0) return false;
-
-        var trackedMainId = Data.TrackingMainMissionId;
-        if (trackedMainId <= 0) return false;
-        if (!GameData.MainMissionData.TryGetValue(trackedMainId, out var mainMission)) return false;
-
-        var candidates = new List<int>();
-        foreach (var subId in mainMission.MissionInfo.FinishSubMissionList)
-        {
-            if (GetSubMissionStatus(subId) != MissionPhaseEnum.Accept) continue;
-            var info = GetSubMissionInfo(subId);
-            if (info == null) continue;
-            if (info.FinishType != MissionFinishTypeEnum.Talk) continue;
-            if (info.LevelFloorID != floorId) continue;
-            candidates.Add(subId);
-        }
-
-        if (candidates.Count != 1) return false;
-
-        await FinishSubMission(candidates[0]);
-        return true;
     }
 
     public async ValueTask HandleCustomValue(List<MissionCustomValue> values, int missionId)
