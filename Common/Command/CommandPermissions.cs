@@ -32,6 +32,7 @@ public static class CommandPermissions
     public const string Reload = "command.reload";
     public const string Remove = "command.remove";
     public const string SetLevel = "command.setlevel";
+    public const string Spawn = "command.spawn";
     public const string UnlockAll = "command.unlockall";
     public const string Unstuck = "command.unstuck";
     public const string Windy = "command.windy";
@@ -66,6 +67,7 @@ public static class CommandPermissions
         Reload,
         Remove,
         SetLevel,
+        Spawn,
             UnlockAll,
             Unstuck,
             Windy
@@ -139,6 +141,7 @@ public static class CommandPermissions
             Remove,
             Scene,
             SetLevel,
+            Spawn,
             TargetOthers,
             UnlockAll,
             Unstuck,

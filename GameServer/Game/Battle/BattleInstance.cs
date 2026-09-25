@@ -72,6 +72,19 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public int StageId { get; set; } = stages.Count > 0 ? stages[0].StageID : 0; // Set to 0 when hit monster
     public int EventId { get; set; }
     public int CustomLevel { get; set; }
+
+    /// <summary>
+    ///     /spawn custom battle: MonsterConfig IDs per wave. When non-empty these waves replace the stage waves
+    ///     (wave IDs 1..N, all on <see cref="StageId" />).
+    /// </summary>
+    public List<List<int>>? CustomWaves { get; set; }
+
+    /// <summary>/spawn HP override: max and current HP of every battle monster (0 = unchanged).</summary>
+    public uint CustomHp { get; set; }
+
+    /// <summary>Every scene monster in this fight was created by /spawn, so it must not advance missions.</summary>
+    public bool IsGmSpawnedEncounter => EntityMonsters.Count > 0 && EntityMonsters.All(monster => monster.IsGmSpawned);
+
     public int? LeaderIndexOverride { get; set; }
     public BattleEndStatus BattleEndStatus { get; set; }
 
@@ -271,13 +284,33 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
 
         if (MagicInfo != null) proto.BattleRogueMagicInfo = MagicInfo;
 
-        foreach (var protoWave in Stages.Select(wave => wave.ToProto()))
+        if (CustomWaves is { Count: > 0 })
         {
-            if (CustomLevel > 0)
-                foreach (var item in protoWave)
-                    item.MonsterParam.Level = (uint)CustomLevel;
+            foreach (var waveIds in CustomWaves)
+            {
+                var wave = new SceneMonsterWave
+                {
+                    BattleWaveId = (uint)(proto.MonsterWaveList.Count + 1),
+                    BattleStageId = (uint)StageId,
+                    MonsterParam = new SceneMonsterWaveParam()
+                };
+                if (CustomLevel > 0) wave.MonsterParam.Level = (uint)CustomLevel;
+                foreach (var monsterId in waveIds.Where(id => id > 0))
+                    wave.MonsterList.Add(new SceneMonster { MonsterId = (uint)monsterId });
 
-            proto.MonsterWaveList.AddRange(protoWave);
+                proto.MonsterWaveList.Add(wave);
+            }
+        }
+        else
+        {
+            foreach (var protoWave in Stages.Select(wave => wave.ToProto()))
+            {
+                if (CustomLevel > 0)
+                    foreach (var item in protoWave)
+                        item.MonsterParam.Level = (uint)CustomLevel;
+
+                proto.MonsterWaveList.AddRange(protoWave);
+            }
         }
 
         if (Player.BattleManager!.NextBattleMonsterIds.Count > 0)
@@ -304,6 +337,15 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                 });
             }
         }
+
+        // Both fields, like CalyxOverrideManager.ApplyMonsterHp: the client reads max_hp for the bar and
+        // cur_hp for the starting value.
+        if (CustomHp > 0)
+            foreach (var monster in proto.MonsterWaveList.SelectMany(wave => wave.MonsterList))
+            {
+                monster.MaxHp = CustomHp;
+                monster.CurHp = CustomHp;
+            }
 
         List<AvatarLineupData> avatars;
         if (GridFightContext != null)
@@ -435,7 +477,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         foreach (var avatar in battleAvatars) await avatar.ApplyBuff(this);
     }
 
-    private static bool TryResolveStageFromEvent(int eventId, int worldLevel, out StageConfigExcel? stage)
+    public static bool TryResolveStageFromEvent(int eventId, int worldLevel, out StageConfigExcel? stage)
     {
         stage = null;
         if (eventId <= 0) return false;

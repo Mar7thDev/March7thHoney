@@ -47,6 +47,7 @@ public static class CommandRoles
                 CommandPermissions.Raid,
                 CommandPermissions.Reload,
                 CommandPermissions.Remove,
+                CommandPermissions.Spawn,
                 CommandPermissions.Anno
 
             ],

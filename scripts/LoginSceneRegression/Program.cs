@@ -586,6 +586,162 @@ var storyLeave = await player.TryEnterScene(0, 0, false);
 Check("entry-zero story exit returns to original scene", storyLeave.Success && storyLeave.IsOverMap
     && player.StoryLineManager.StoryLineData.CurStoryLineId == 0 && player.Data.EntryId == 102020107);
 
+// /spawn: runtime monster/prop injection into the real Changle Tian scene and the custom battle it defines.
+var spawnCommand = new CommandSpawn();
+var spawnScene = player.SceneInstance!;
+var spawnOrigin = player.Data.Pos!;
+var battleMonsterIds = GameData.MonsterConfigData.Keys.Order().Take(8).ToList();
+Check("spawn parser reads two-letter options, clamps them and splits waves at separators and every 5 monsters",
+    CommandSpawn.TryParse(["monster", "lv150", "hp900", "x0", "r2", "s7", "@60001",
+            $"{battleMonsterIds[0]}", $"{battleMonsterIds[1]}", "/", .. battleMonsterIds.Skip(2).Select(id => $"{id}"), "bogus", "0"],
+        out var spawnRequest)
+    && spawnRequest.SpawnId == "monster" && spawnRequest.Level == CommandSpawn.MaxLevel && spawnRequest.Hp == 900
+    && spawnRequest.Amount == 1 && spawnRequest.Radius == CommandSpawn.MinRadius && spawnRequest.StageId == 7
+    && spawnRequest.Waves.Count == 3 && spawnRequest.Waves[0].SequenceEqual(battleMonsterIds.Take(2))
+    && spawnRequest.Waves[1].SequenceEqual(battleMonsterIds.Skip(2).Take(5)) && spawnRequest.Waves[2].SequenceEqual(battleMonsterIds.Skip(7))
+    && spawnRequest.InvalidBattleMonsters.SequenceEqual(["bogus", "0"]));
+Check("spawn parser rejects an overflowing option value", !CommandSpawn.TryParse(["monster", "x99999999999"], out _));
+Check("spawn 'monster' resolves the smallest NPC monster", CommandSpawn.Resolve("monster") is
+    { Kind: CommandSpawn.SpawnTargetKind.Monster } baseTarget && baseTarget.Monster!.ID == GameData.NpcMonsterDataData.Keys.Min());
+var mappedBattleMonster = GameData.MonsterConfigData.Values.FirstOrDefault(monster =>
+    !GameData.NpcMonsterDataData.ContainsKey(monster.MonsterID) &&
+    GameData.MonsterTemplateConfigData.TryGetValue(monster.MonsterTemplateID, out var template) &&
+    template.NPCMonsterList.Any(GameData.NpcMonsterDataData.ContainsKey));
+if (mappedBattleMonster != null)
+    Check("spawn maps a battle MonsterID to its template's first spawnable NPC monster",
+        CommandSpawn.Resolve(mappedBattleMonster.MonsterID.ToString()).Monster?.ID == GameData
+            .MonsterTemplateConfigData[mappedBattleMonster.MonsterTemplateID].NPCMonsterList.First(GameData.NpcMonsterDataData.ContainsKey));
+var battleOnlyMonster = GameData.MonsterConfigData.Values.FirstOrDefault(monster =>
+    !GameData.NpcMonsterDataData.ContainsKey(monster.MonsterID) && !GameData.MazePropData.ContainsKey(monster.MonsterID) &&
+    !(GameData.MonsterTemplateConfigData.TryGetValue(monster.MonsterTemplateID, out var template) &&
+      template.NPCMonsterList.Any(GameData.NpcMonsterDataData.ContainsKey)));
+if (battleOnlyMonster != null)
+    Check("spawn reports a battle-only MonsterID instead of a bare invalid ID",
+        CommandSpawn.Resolve(battleOnlyMonster.MonsterID.ToString()).Kind == CommandSpawn.SpawnTargetKind.BattleMonsterNoScene);
+Check("spawn maze prop and unknown IDs resolve distinctly", CommandSpawn.Resolve("102226").Kind == CommandSpawn.SpawnTargetKind.Prop
+    && CommandSpawn.Resolve("abc").Kind == CommandSpawn.SpawnTargetKind.Invalid);
+
+// Changle Tian is a town floor with no monster groups at all: nothing to borrow, nothing spawned.
+var townEntityCount = spawnScene.Entities.Count;
+sender.Messages.Clear();
+await spawnCommand.Spawn(new CommandArg("monster", sender, target));
+Check("spawn on a floor without monster configs reports it and spawns nothing",
+    spawnScene.Entities.Count == townEntityCount
+    && sender.Messages.SequenceEqual([I18NManager.Translate("Game.Command.Spawn.NoMonsterTemplate")]));
+
+// Move to the first ordinary maze floor whose loaded dimension has a usable server monster group.
+bool HasSpawnableMonsterGroup(MapEntranceExcel entrance)
+{
+    if (!GameData.MazePlaneData.TryGetValue(entrance.PlaneID, out var plane) || plane.PlaneType != PlaneTypeEnum.Maze)
+        return false;
+    GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floor);
+    var dimension = floor?.DimensionList.Find(item => item.ID == 0);
+    return floor != null && dimension != null && floor.Groups.Values.Any(group =>
+        group.LoadSide == GroupLoadSideEnum.Server && dimension.GroupIDList.Contains(group.Id)
+        && group.MonsterList.Any(monster => monster.FarmElementID == 0 && !monster.IsDelete
+            && March7thHoney.GameServer.Game.Battle.BattleInstance.TryResolveStageFromEvent(
+                monster.EventID, player.Data.WorldLevel, out _)));
+}
+var mazeEntry = GameData.MapEntranceData.Values.OrderBy(entrance => entrance.ID).First(HasSpawnableMonsterGroup);
+Check($"spawn fixture enters maze entry {mazeEntry.ID} (floor {mazeEntry.FloorID})",
+    (await player.TryEnterScene(mazeEntry.ID, 0, false)).Success && player.SceneInstance?.FloorId == mazeEntry.FloorID);
+spawnScene = player.SceneInstance!;
+spawnOrigin = player.Data.Pos!;
+
+List<T> NewEntities<T>(HashSet<int> before) where T : BaseGameEntity =>
+    spawnScene.Entities.Values.OfType<T>().Where(entity => !before.Contains(entity.EntityId)).ToList();
+bool UsesMonsterTemplate(EntityMonster monster) => spawnScene.Groups.Contains(monster.GroupId)
+    && spawnScene.FloorInfo!.Groups[monster.GroupId].MonsterList.Any(template => template.ID == monster.InstId
+        && template.FarmElementID == 0 && template.EventID == monster.EventId);
+bool NearOrigin(Position pos) => Math.Abs(pos.X - spawnOrigin.X) <= 5000 && pos.Y == spawnOrigin.Y
+    && Math.Abs(pos.Z - spawnOrigin.Z) <= 5000;
+
+var spawnStage = GameData.StageConfigData.Values.First(stage => stage.MonsterList.Count > 0);
+var baseNpcMonsterId = GameData.NpcMonsterDataData.Keys.Min();
+var entitiesBefore = spawnScene.Entities.Keys.ToHashSet();
+sender.Messages.Clear();
+await spawnCommand.Spawn(new CommandArg(
+    $"monster s{spawnStage.StageID} lv50 hp12345 x2 r1 {battleMonsterIds[0]} {battleMonsterIds[1]} / {battleMonsterIds[2]} bogus",
+    sender, target));
+var spawnedMonsters = NewEntities<EntityMonster>(entitiesBefore);
+Check("spawn adds the requested monsters to a loaded group with the borrowed template identity",
+    spawnedMonsters.Count == 2 && spawnedMonsters.All(monster => monster.IsGmSpawned && monster.MonsterData.ID == baseNpcMonsterId
+        && UsesMonsterTemplate(monster) && NearOrigin(monster.Position)
+        && monster.Rotation is { X: 0, Y: 0, Z: 0 }));
+Check("spawn stores stage, level, HP and waves on each spawned monster", spawnedMonsters.All(monster =>
+    monster.CustomStageId == spawnStage.StageID && monster.CustomLevel == 50 && monster.CustomBattleHp == 12345
+    && monster.CustomBattleWaves is { Count: 2 } waves && waves[0].SequenceEqual(battleMonsterIds.Take(2))
+    && waves[1].SequenceEqual([battleMonsterIds[2]])));
+Check("spawn reports skipped wave IDs and the spawn result", sender.Messages.Contains(
+        I18NManager.Translate("Game.Command.Spawn.InvalidBattleMonster", "bogus"))
+    && sender.Messages.Contains(I18NManager.Translate("Game.Command.Spawn.SpawnedMonsters", "2", baseNpcMonsterId.ToString())));
+Console.WriteLine($"/spawn monster template: group {spawnedMonsters.FirstOrDefault()?.GroupId}, inst {spawnedMonsters.FirstOrDefault()?.InstId}.");
+
+var castAvatar = spawnScene.AvatarInfo.Values.First();
+var gmBattle = await player.BattleManager!.StartBattle(castAvatar, [spawnedMonsters[0]], false);
+var gmBattleProto = gmBattle!.ToProto();
+Check("custom waves replace the stage waves with sequential wave IDs on the pinned stage",
+    gmBattle.StageId == spawnStage.StageID && gmBattle.IsGmSpawnedEncounter && gmBattleProto.MonsterWaveList.Count == 2
+    && gmBattleProto.MonsterWaveList.Select(wave => wave.BattleWaveId).SequenceEqual([1u, 2u])
+    && gmBattleProto.MonsterWaveList.All(wave => wave.BattleStageId == spawnStage.StageID)
+    && gmBattleProto.MonsterWaveList[0].MonsterList.Select(monster => (int)monster.MonsterId).SequenceEqual(battleMonsterIds.Take(2))
+    && gmBattleProto.MonsterWaveList[1].MonsterList.Select(monster => (int)monster.MonsterId).SequenceEqual([battleMonsterIds[2]]));
+Check("custom battle carries the HP override and level on every wave",
+    gmBattleProto.MonsterWaveList.All(wave => wave.MonsterParam.Level == 50
+        && wave.MonsterList.All(monster => monster.MaxHp == 12345 && monster.CurHp == 12345)));
+player.BattleInstance = null;
+
+entitiesBefore = spawnScene.Entities.Keys.ToHashSet();
+await spawnCommand.Spawn(new CommandArg("monster hp777 lv0", sender, target));
+var hpOnlyMonster = NewEntities<EntityMonster>(entitiesBefore).Single();
+var hpOnlyBattle = await player.BattleManager.StartBattle(castAvatar, [hpOnlyMonster], false);
+var hpOnlyProto = hpOnlyBattle!.ToProto();
+var expectedStageWaves = hpOnlyBattle.Stages.SelectMany(stage => stage.ToProto()).ToList();
+Check("HP override without custom waves keeps the stage waves and level",
+    hpOnlyBattle.CustomWaves == null && hpOnlyBattle.CustomLevel == 0 && hpOnlyProto.MonsterWaveList.Count == expectedStageWaves.Count
+    && hpOnlyProto.MonsterWaveList.Zip(expectedStageWaves).All(pair => pair.First.MonsterList.Select(monster => monster.MonsterId)
+        .SequenceEqual(pair.Second.MonsterList.Select(monster => monster.MonsterId)) && pair.First.MonsterParam.Level == 0)
+    && hpOnlyProto.MonsterWaveList.SelectMany(wave => wave.MonsterList).All(monster => monster.MaxHp == 777 && monster.CurHp == 777));
+player.BattleInstance = null;
+var sceneMonster = spawnScene.Entities.Values.OfType<EntityMonster>().FirstOrDefault(monster => !monster.IsGmSpawned && monster.IsAlive);
+if (sceneMonster != null)
+{
+    var mixedBattle = await player.BattleManager.StartBattle(castAvatar, [sceneMonster, hpOnlyMonster], false);
+    Check("a fight that includes a real scene monster still counts for missions", mixedBattle is { IsGmSpawnedEncounter: false });
+    player.BattleInstance = null;
+}
+
+entitiesBefore = spawnScene.Entities.Keys.ToHashSet();
+await spawnCommand.Spawn(new CommandArg("102226 x3", sender, target));
+var spawnedProps = NewEntities<EntityProp>(entitiesBefore);
+Check("spawn adds open props borrowing a plain prop's group and instance", spawnedProps.Count == 3 && spawnedProps.All(prop =>
+    prop.IsGmSpawned && prop.State == PropStateEnum.Open && prop.Excel.ID == 102226 && NearOrigin(prop.Position)
+    && spawnScene.Groups.Contains(prop.GroupId) && spawnScene.FloorInfo!.Groups[prop.GroupId].PropList.Any(template =>
+        template.ID == prop.InstId && template.FarmElementID == 0 && template.AnchorID == 0)
+    && prop.PropInfo is { EventID: 0, ChestID: 0, CocoonID: 0, InteractLinks.Count: 0 }));
+var spawnedProp = spawnedProps[0];
+var savedTemplateState = player.GetScenePropData(spawnScene.FloorId, spawnedProp.GroupId, spawnedProp.InstId)?.State;
+await spawnedProp.SetState(PropStateEnum.Closed);
+Check("spawned prop state change is not persisted onto the template prop", spawnedProp.State == PropStateEnum.Closed
+    && player.GetScenePropData(spawnScene.FloorId, spawnedProp.GroupId, spawnedProp.InstId)?.State == savedTemplateState);
+
+var entityCount = spawnScene.Entities.Count;
+sender.Messages.Clear();
+await spawnCommand.Spawn(new CommandArg("abc", sender, target));
+await spawnCommand.Spawn(new CommandArg($"monster s{GameData.StageConfigData.Keys.Max() + 1}", sender, target));
+await spawnCommand.Spawn(new CommandArg($"monster x{SceneInstance.GmSpawnMaxEntities}", sender, target));
+await spawnCommand.Spawn(new CommandArg("", sender, target));
+await spawnCommand.Spawn(new CommandArg("monster", sender, new ProbeConnection { Player = roguePlayer }));
+Check("spawn rejects invalid ID, unknown stage, entity cap, missing ID and special-mode scenes without spawning",
+    spawnScene.Entities.Count == entityCount && sender.Messages.SequenceEqual([
+        I18NManager.Translate("Game.Command.Spawn.InvalidId", "abc"),
+        I18NManager.Translate("Game.Command.Spawn.InvalidStageId", (GameData.StageConfigData.Keys.Max() + 1).ToString()),
+        I18NManager.Translate("Game.Command.Spawn.MaxEntities", SceneInstance.GmSpawnMaxEntities.ToString()),
+        I18NManager.Translate("Game.Command.Spawn.Usage"),
+        I18NManager.Translate("Game.Command.Spawn.UnsupportedScene")
+    ]));
+sender.Messages.Clear();
+
 // Exercise the real send path with two in-memory KCP peers: no sockets or production server.
 var outbound = new LoopbackKcpTransport();
 var inbound = new LoopbackKcpTransport();
