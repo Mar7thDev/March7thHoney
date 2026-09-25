@@ -298,6 +298,9 @@ public partial class GridFightRuntimeDataSnapshot
     public Dictionary<int, RoguePersonaTalentExcel> RoguePersonaTalentData { get; set; } = [];
     public Dictionary<int, RoguePersonaStyleExcel> RoguePersonaStyleData { get; set; } = [];
     public Dictionary<int, RogueTournKeywordExcel> RogueTournKeywordData { get; set; } = [];
+    public Dictionary<int, DailyQuestExcel> DailyQuestData { get; set; } = [];
+    public Dictionary<int, DailyMissionDataExcel> DailyMissionDataData { get; set; } = [];
+    public Dictionary<int, DailyMissionCountExcel> DailyMissionCountData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -576,6 +579,9 @@ public static partial class GameData
                 RoguePersonaTalentData = GameData.RoguePersonaTalentData,
                 RoguePersonaStyleData = GameData.RoguePersonaStyleData,
                 RogueTournKeywordData = GameData.RogueTournKeywordData,
+                DailyQuestData = GameData.DailyQuestData,
+                DailyMissionDataData = GameData.DailyMissionDataData,
+                DailyMissionCountData = GameData.DailyMissionCountData,
             },
         };
     }
@@ -853,5 +859,9 @@ public static partial class GameData
         GameData.RoguePersonaTalentData = gridFightRuntimeData.RoguePersonaTalentData;
         GameData.RoguePersonaStyleData = gridFightRuntimeData.RoguePersonaStyleData;
         GameData.RogueTournKeywordData = gridFightRuntimeData.RogueTournKeywordData;
+        // Members appended after a cache was built deserialize as null; keep those tables empty instead.
+        GameData.DailyQuestData = gridFightRuntimeData.DailyQuestData ?? [];
+        GameData.DailyMissionDataData = gridFightRuntimeData.DailyMissionDataData ?? [];
+        GameData.DailyMissionCountData = gridFightRuntimeData.DailyMissionCountData ?? [];
     }
 }
