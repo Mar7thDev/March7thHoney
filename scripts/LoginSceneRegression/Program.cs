@@ -17,6 +17,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
+using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Game.Battle;
@@ -27,6 +28,7 @@ using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Recv.Mission;
 using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
@@ -745,6 +747,35 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     var lobbyLeave = await LeaveRogue();
     Check("LeaveRogue outside a Rogue room with no run still reports status mismatch",
         lobbyLeave.Rsp?.Retcode == (uint)Retcode.RetRogueStatusNotMatch);
+
+    // A degenerate talk report ("0", no sub id) is ACK-only even when the tracked main has exactly one running
+    // Talk finish gate on the current floor (the official capture ACKs it and the client finishes the gate later).
+    var talkPlayer = new PlayerInstance(60005);
+    await talkPlayer.InitializeAsync();
+    talkPlayer.MissionManager!.Data.EnableMissionOverride = true;
+    const int TalkGateMain = 1010202;
+    const int TalkGateSub = 101020206;
+    var talkGate = GameData.SubMissionInfoData[TalkGateSub].SubMissionInfo!;
+    var talkEntrance = GameData.MapEntranceData.Values.First(entrance => entrance.FloorID == talkGate.LevelFloorID);
+    var talkScene = new SceneInstance(talkPlayer, GameData.MazePlaneData[talkEntrance.PlaneID], talkEntrance.FloorID,
+        talkEntrance.ID);
+    typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.SceneInstance))!.SetValue(talkPlayer, talkScene);
+    talkPlayer.MissionManager.Data.SetMainMissionStatus(TalkGateMain, MissionPhaseEnum.Accept);
+    talkPlayer.MissionManager.Data.SetSubMissionStatus(TalkGateSub, MissionPhaseEnum.Accept);
+    talkPlayer.MissionManager.Data.TrackingMainMissionId = TalkGateMain;
+    talkPlayer.Connection = new ProbeConnection(serverPeer) { Player = talkPlayer };
+    var talkFrames = await SentFrames(() => new HandlerFinishTalkMissionCsReq()
+        .OnHandle(talkPlayer.Connection, [], new FinishTalkMissionCsReq { TalkStr = "0" }.ToByteArray()));
+    Check("degenerate FinishTalkMission is ACK-only and leaves the talk finish gate running",
+        talkGate.FinishType == MissionFinishTypeEnum.Talk &&
+        talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Accept &&
+        talkPlayer.MissionManager.GetMainMissionStatus(TalkGateMain) == MissionPhaseEnum.Accept &&
+        talkFrames.Select(frame => frame.Id).SequenceEqual(new[] { (ushort)CmdIds.FinishTalkMissionScRsp }));
+    await SentFrames(() => new HandlerFinishTalkMissionCsReq()
+        .OnHandle(talkPlayer.Connection, [], new FinishTalkMissionCsReq { TalkStr = talkGate.ParamStr1 }.ToByteArray()));
+    Check("the client's own talk string still finishes the gate",
+        talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Finish);
+    talkPlayer.Connection = null;
     roguePlayer.Connection = null;
     await outbound.StopAsync();
     await inbound.StopAsync();
