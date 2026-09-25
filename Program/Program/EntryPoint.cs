@@ -278,6 +278,10 @@ public class EntryPoint
                 GameData.VideoKeysConfig =
                     ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
                     new VideoKeysConfig();
+                // The activity schedule is operator data too (Config/Custom/ActivityConfig.json). Keep the
+                // cached copy only when the file is missing or unreadable.
+                var activityConfig = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig");
+                if (activityConfig != null) GameData.ActivityConfig = activityConfig;
                 // RogueMapGen is operator-side compatibility data rather than a dumped Excel table.
                 // Reload it after either cache path so new Rogue room pools do not require replacing
                 // an otherwise valid Resource.bin.

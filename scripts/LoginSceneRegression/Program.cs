@@ -12,6 +12,7 @@ using March7thHoney.Command.Command;
 using March7thHoney.Command.Command.Cmd;
 using March7thHoney.Data;
 using March7thHoney.Data.Config.Scene;
+using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
@@ -19,6 +20,7 @@ using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
+using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.ChessRogue;
 using March7thHoney.GameServer.Game.Rogue;
@@ -26,6 +28,9 @@ using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet;
+using March7thHoney.GameServer.Server.Packet.Recv.Activity;
+using March7thHoney.GameServer.Server.Packet.Send.Activity;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -209,13 +214,20 @@ foreach (var (comparison, expected) in new[] { (CompareTypeEnum.Equal, false), (
         new SavedValueCondition { SavedValueName = "x", Value = 1, Operation = comparison }).IsTrue(new() { ["x"] = 2 }) == expected);
 }
 
-if (args is ["--legacy-cache", var legacyCachePath])
+string? OptionValue(string name)
 {
-    File.Copy(Path.GetFullPath(legacyCachePath, repository), Path.Combine(scratch, "Resource.bin"));
+    var index = Array.IndexOf(args, name);
+    return index >= 0 && index + 1 < args.Length ? Path.GetFullPath(args[index + 1], repository) : null;
+}
+if (OptionValue("--legacy-cache") is { } legacyCachePath)
+{
+    File.Copy(legacyCachePath, Path.Combine(scratch, "Resource.bin"));
     Check("legacy cache deserializes but is rejected when server atmosphere metadata is missing", !ResourceCache.LoadCache()
         && GameData.FloorInfoData["P10202_F10202001"].Groups[169].IsHoyoGroup == null);
 }
-File.Copy(Path.Combine(repository, "Config/Resource.bin"), Path.Combine(scratch, "Resource.bin"), overwrite: true);
+// --resource-cache tests a freshly generated cache before it replaces the tracked Config/Resource.bin.
+var cacheSource = OptionValue("--resource-cache") ?? Path.Combine(repository, "Config/Resource.bin");
+File.Copy(cacheSource, Path.Combine(scratch, "Resource.bin"), overwrite: true);
 var rawResourcePath = config.Path.ResourcePath;
 config.Path.ResourcePath = Path.Combine(scratch, "no-raw-resource-json");
 var loadedCache = ResourceCache.LoadCache();
@@ -887,6 +899,226 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     await outbound.StopAsync();
     await inbound.StopAsync();
 }
+
+// Role Trial (TrialActivity): start, battle stage choice, clear, reward claim, leave and relogin rescue, driven
+// through the real request handlers and captured over the in-memory KCP pair.
+Directory.CreateDirectory(Path.Combine(scratch, "Custom"));
+File.Copy(Path.Combine(repository, "Config/Custom/ActivityConfig.json"), Path.Combine(scratch, "Custom/ActivityConfig.json"));
+var schedule = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig");
+int[] trialModules = [2000502, 2000603, 2000903, 2001101, 2001102, 2001103, 2001104, 2001105, 2001106, 2001107,
+    2001108, 2001109, 2001303, 2001703, 2002803, 2006001, 2006301, 2006302, 2008001, 2008601, 2008701, 2008901, 2009001];
+Check("activity schedule lists every Role Trial module", schedule != null &&
+    trialModules.All(id => schedule.ScheduleData.Any(row => row.ActivityId == id && row.PanelId is 20011 or 20064 or 20087 or 20089 or 20090)));
+
+var validateCache = typeof(ResourceCache).GetMethod("ValidateLoadedCache", BindingFlags.Static | BindingFlags.NonPublic)!;
+var fakeRaw = Path.Combine(scratch, "fake-raw");
+Directory.CreateDirectory(Path.Combine(fakeRaw, "ExcelOutputGameCore"));
+File.WriteAllText(Path.Combine(fakeRaw, "ExcelOutputGameCore/AvatarDemoConfig.json"), "[]");
+var savedResourcePath = config.Path.ResourcePath;
+config.Path.ResourcePath = fakeRaw;
+Check("cache with AvatarDemoConfig StageType passes validation", (bool)validateCache.Invoke(null, null)!);
+var stageTypes = GameData.AvatarDemoConfigData.ToDictionary(pair => pair.Key, pair => pair.Value.StageType);
+foreach (var row in GameData.AvatarDemoConfigData.Values) row.StageType = "";
+Check("stale cache without AvatarDemoConfig StageType is rejected when the raw table exists",
+    !(bool)validateCache.Invoke(null, null)!);
+config.Path.ResourcePath = Path.Combine(scratch, "no-raw-resource-json");
+Check("cache-only deployments keep a cache without StageType", (bool)validateCache.Invoke(null, null)!);
+foreach (var (id, type) in stageTypes) GameData.AvatarDemoConfigData[id].StageType = type;
+config.Path.ResourcePath = savedResourcePath;
+Check("trial stage 315130 carries StageType and SPList", GameData.AvatarDemoConfigData[315130].IsTrialActivity
+    && GameData.AvatarDemoConfigData[315130].SPList.SequenceEqual([6500, 6500, 7500, 7000])
+    && !GameData.AvatarDemoConfigData[313079].IsTrialActivity);
+if (!GameData.AvatarDemoConfigData[315130].IsTrialActivity)
+    throw new InvalidOperationException("The resource cache predates AvatarDemoConfig StageType/SPList. Regenerate " +
+                                        "Config/Resource.bin or pass --resource-cache <regenerated cache>.");
+
+var trialPlayer = new PlayerInstance(60005);
+await trialPlayer.InitializeAsync();
+const int TrialReturnEntry = 1000001;
+await trialPlayer.TryEnterScene(TrialReturnEntry, 0, false);
+var trialReturnPos = trialPlayer.Data.Pos!;
+var trialData = trialPlayer.ActivityManager!.Data.TrialActivityData;
+var trialOutbound = new LoopbackKcpTransport();
+var trialInbound = new LoopbackKcpTransport();
+using (var trialServerPeer = new KcpConversation(endpoint, trialOutbound, options))
+using (var trialClientPeer = new KcpConversation(endpoint, trialInbound, options))
+{
+    trialOutbound.Peer = trialClientPeer;
+    trialInbound.Peer = trialServerPeer;
+    trialOutbound.Start();
+    trialInbound.Start();
+    var trialConnection = new ProbeConnection(trialServerPeer) { Player = trialPlayer };
+    trialPlayer.Connection = trialConnection;
+    async Task<List<(ushort Id, byte[] Body)>> Capture(Func<Task> action)
+    {
+        await action();
+        await trialPlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var packets = new List<(ushort, byte[])>();
+        while (true)
+        {
+            var received = await trialClientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP trial test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            var length = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            if (id == ushort.MaxValue) return packets;
+            packets.Add((id, buffer.AsSpan(12, length).ToArray()));
+        }
+    }
+    Task Send<TReq>(Handler handler, TReq req) where TReq : IMessage =>
+        handler.OnHandle(trialConnection, [], req.ToByteArray());
+    Task Start(int stageId) => Send(new HandlerStartTrialActivityCsReq(), new StartTrialActivityCsReq { StageId = (uint)stageId });
+    StartTrialActivityScRsp StartRsp(List<(ushort Id, byte[] Body)> packets) =>
+        StartTrialActivityScRsp.Parser.ParseFrom(packets.Last(p => p.Id == CmdIds.StartTrialActivityScRsp).Body);
+    async Task<List<(ushort Id, byte[] Body)>> WinTrialBattle()
+    {
+        var monsters = trialPlayer.SceneInstance!.Entities.Values.OfType<EntityMonster>().Where(m => m.IsAlive).ToList();
+        trialPlayer.BattleInstance = new BattleInstance(trialPlayer, trialPlayer.LineupManager!.GetCurLineup()!, monsters);
+        return await Capture(async () => await trialPlayer.BattleManager!.EndBattle(
+            new PVEBattleResultCsReq { EndStatus = BattleEndStatus.BattleEndWin, Stt = new() }));
+    }
+
+    foreach (var invalidStage in new[] { 313079, 1 })
+    {
+        var rejected = await Capture(() => Start(invalidStage));
+        var rsp = StartRsp(rejected);
+        Check($"trial start rejects non-trial stage {invalidStage} without side effects",
+            rsp.Retcode == (uint)Retcode.RetReqParaInvalid && rsp.StageId == invalidStage && trialData.CurTrialStageId == 0
+            && trialPlayer.ActivityManager.TrialActivityInstance == null
+            && !rejected.Any(p => p.Id == CmdIds.ExtraLineupDestroyNotify || p.Id == CmdIds.EnterSceneByServerScNotify));
+    }
+
+    var started = await Capture(() => Start(315130));
+    var startRsp = StartRsp(started);
+    var trialLineup = trialPlayer.LineupManager!.GetCurLineup()!;
+    Check("trial 315130 starts and records the world return point", startRsp.Retcode == 0 && startRsp.StageId == 315130
+        && trialData.CurTrialStageId == 315130 && trialData.ReturnEntryId == TrialReturnEntry
+        && trialPlayer.SceneInstance?.Excel.PlaneType == PlaneTypeEnum.TrialActivity);
+    Check("trial lineup uses the stage's special trial avatars", trialLineup.IsExtraLineup()
+        && trialLineup.BaseAvatars!.Select(a => a.SpecialAvatarId).SequenceEqual([2001381, 2001382, 2001383, 2001384]));
+    var enterTrial = EnterSceneByServerScNotify.Parser.ParseFrom(started.Last(p => p.Id == CmdIds.EnterSceneByServerScNotify).Body);
+    Check("trial team starts with SPList 6500/6500/7500/7000",
+        enterTrial.Lineup.AvatarList.OrderBy(a => a.Slot).Select(a => a.SpBar.CurSp).SequenceEqual([6500u, 6500u, 7500u, 7000u]));
+    Check("trial scene stages the stage's own monster event", trialPlayer.SceneInstance!.Entities.Values.OfType<EntityMonster>()
+        .Any(m => m.GroupId == GameData.AvatarDemoConfigData[315130].MazeGroupID1 && m.EventId == 315130));
+    Check("trial scene resolves world 999 to the return point's world", enterTrial.Scene.WorldId != 999
+        && enterTrial.Scene.WorldId == (uint)trialPlayer.SceneInstance.ResolveWorldId());
+    Check("start sends lineup destroy, scene change and response in order", started.Select(p => p.Id)
+        .Where(id => id is CmdIds.ExtraLineupDestroyNotify or CmdIds.SyncServerSceneChangeNotify
+            or CmdIds.EnterSceneByServerScNotify or CmdIds.StartTrialActivityScRsp)
+        .SequenceEqual(new ushort[] { CmdIds.ExtraLineupDestroyNotify, CmdIds.SyncServerSceneChangeNotify,
+            CmdIds.EnterSceneByServerScNotify, CmdIds.StartTrialActivityScRsp }));
+
+    var runningInstance = trialPlayer.ActivityManager.TrialActivityInstance;
+    var rejectedWhileRunning = StartRsp(await Capture(() => Start(313079)));
+    Check("rejected start keeps the running trial", rejectedWhileRunning.Retcode == (uint)Retcode.RetReqParaInvalid
+        && trialData.CurTrialStageId == 315130 && ReferenceEquals(runningInstance, trialPlayer.ActivityManager.TrialActivityInstance)
+        && trialPlayer.LineupManager.GetCurLineup()!.IsExtraLineup());
+    var dataRsp = GetTrialActivityDataScRsp.Parser.ParseFrom(new PacketGetTrialActivityDataScRsp(trialPlayer).Data);
+    Check("trial data reports the running stage", dataRsp.ActivityStageId == 315130);
+
+    var brokenStage = GameData.AvatarDemoConfigData[315130];
+    var brokenEntrance = brokenStage.MapEntranceID;
+    brokenStage.MapEntranceID = 99000003;
+    var failedStart = StartRsp(await Capture(() => Start(315130)));
+    brokenStage.MapEntranceID = brokenEntrance;
+    Check("failed scene entry rolls back to the running trial", failedStart.Retcode == (uint)Retcode.RetFail
+        && trialData.CurTrialStageId == 315130 && trialData.ReturnEntryId == TrialReturnEntry
+        && trialPlayer.LineupManager.GetCurLineup()!.BaseAvatars!.Select(a => a.SpecialAvatarId).First() == 2001381);
+
+    Check("switching trials keeps the original return point", StartRsp(await Capture(() => Start(315120))).Retcode == 0
+        && trialData.CurTrialStageId == 315120 && trialData.ReturnEntryId == TrialReturnEntry);
+    var trialMonsters = trialPlayer.SceneInstance!.Entities.Values.OfType<EntityMonster>().Where(m => m.IsAlive).ToList();
+    BattleInstance? trialBattle = null;
+    try { trialBattle = new BattleInstance(trialPlayer, trialPlayer.LineupManager.GetCurLineup()!, trialMonsters); }
+    catch (Exception ex) { Console.WriteLine(ex); }
+    Check("trial 315120 battle resolves stage 315121 from the monster event", trialBattle is { StageId: 315121, IsTrialActivityBattle: true }
+        && trialBattle.EntityMonsters.Count > 0);
+
+    var lost = trialPlayer.BattleInstance = new BattleInstance(trialPlayer, trialPlayer.LineupManager.GetCurLineup()!, trialMonsters);
+    var lostPackets = await Capture(async () => await trialPlayer.BattleManager!.EndBattle(
+        new PVEBattleResultCsReq { EndStatus = BattleEndStatus.BattleEndLose, Stt = new() }));
+    Check("lost trial battle does not clear the trial", trialData.CurTrialStageId == 315120 && trialData.Activities.Count == 0
+        && !lostPackets.Any(p => p.Id == CmdIds.CurTrialActivityScNotify));
+
+    var hcoinBeforeClear = trialPlayer.Data.Hcoin;
+    var finished = await WinTrialBattle();
+    var finishOrder = finished.Select(p => p.Id).Where(id => id is CmdIds.TrialActivityDataChangeScNotify
+        or CmdIds.SyncServerSceneChangeNotify or CmdIds.EnterSceneByServerScNotify or CmdIds.CurTrialActivityScNotify
+        or CmdIds.PVEBattleResultScRsp).ToList();
+    Check("trial clear sends data change, return scene, finish notify, then battle result", finishOrder.SequenceEqual(new ushort[] {
+        CmdIds.TrialActivityDataChangeScNotify, CmdIds.SyncServerSceneChangeNotify, CmdIds.EnterSceneByServerScNotify,
+        CmdIds.CurTrialActivityScNotify, CmdIds.PVEBattleResultScRsp }));
+    var change = TrialActivityDataChangeScNotify.Parser.ParseFrom(finished.First(p => p.Id == CmdIds.TrialActivityDataChangeScNotify).Body);
+    Check("data change notify carries the cleared stage and featured avatar", change.TrialActivityInfo?.StageId == 315120
+        && !change.TrialActivityInfo.TakenReward && change.OBOPMFBGBAE.Any(a => a.AvatarId == 1512));
+    var finishNotify = CurTrialActivityScNotify.Parser.ParseFrom(finished.First(p => p.Id == CmdIds.CurTrialActivityScNotify).Body);
+    Check("finish notify reports the stage as finished", finishNotify.ActivityStageId == 315120
+        && finishNotify.Status == TrialActivityStatus.Finish);
+    Check("trial clear returns the player to the saved world point without the trial lineup",
+        trialData.CurTrialStageId == 0 && trialPlayer.ActivityManager.TrialActivityInstance == null
+        && trialPlayer.Data.EntryId == TrialReturnEntry && trialPlayer.Data.Pos!.X == trialReturnPos.X
+        && trialPlayer.Data.Pos.Z == trialReturnPos.Z && !trialPlayer.LineupManager.GetCurLineup()!.IsExtraLineup()
+        && trialPlayer.LineupManager.GetExtraLineup(ExtraLineupType.LineupStageTrial) == null
+        && trialPlayer.Data.Hcoin == hcoinBeforeClear);
+    await Capture(() => Start(315120));
+    await WinTrialBattle();
+    Check("clearing a stage again keeps one record", trialData.Activities.Count(r => r.StageId == 315120) == 1);
+    var afterClear = GetTrialActivityDataScRsp.Parser.ParseFrom(new PacketGetTrialActivityDataScRsp(trialPlayer).Data);
+    Check("trial data lists the record and the featured avatar", afterClear.ActivityStageId == 0
+        && afterClear.TrialActivityInfoList.Any(i => i.StageId == 315120)
+        && afterClear.OBOPMFBGBAE.Count(a => a.AvatarId == 1512) == 1);
+
+    Check("stage without a StageConfig row resolves its battle from the monster event",
+        StartRsp(await Capture(() => Start(380060))).Retcode == 0 && new BattleInstance(trialPlayer,
+            trialPlayer.LineupManager.GetCurLineup()!, trialPlayer.SceneInstance!.Entities.Values.OfType<EntityMonster>()
+                .Where(m => m.IsAlive).ToList()) is { StageId: 380050, IsTrialActivityBattle: true });
+    var left = await Capture(() => Send(new HandlerLeaveTrialActivityCsReq(), new LeaveTrialActivityCsReq { StageId = 380060 }));
+    Check("leaving echoes the stage and returns without recording a clear",
+        LeaveTrialActivityScRsp.Parser.ParseFrom(left.Last(p => p.Id == CmdIds.LeaveTrialActivityScRsp).Body).StageId == 380060
+        && trialData.CurTrialStageId == 0 && trialPlayer.Data.EntryId == TrialReturnEntry
+        && trialData.Activities.All(r => r.StageId != 380060));
+
+    TakeTrialActivityRewardScRsp Claim(List<(ushort Id, byte[] Body)> packets) =>
+        TakeTrialActivityRewardScRsp.Parser.ParseFrom(packets.Last(p => p.Id == CmdIds.TakeTrialActivityRewardScRsp).Body);
+    Task<List<(ushort Id, byte[] Body)>> TakeReward(int stageId) => Capture(() =>
+        Send(new HandlerTakeTrialActivityRewardCsReq(), new TakeTrialActivityRewardCsReq { StageId = (uint)stageId }));
+    var rewardHcoin = GameData.RewardDataData[GameData.AvatarDemoConfigData[315120].RewardID].Hcoin;
+    var hcoinBeforeClaim = trialPlayer.Data.Hcoin;
+    var firstClaimPackets = await TakeReward(315120);
+    var firstClaim = Claim(firstClaimPackets);
+    Check("first claim grants the reward with Hcoin as item 1", firstClaim.Retcode == 0 && firstClaim.StageId == 315120
+        && rewardHcoin > 0 && firstClaim.Reward.ItemList_.First().ItemId == 1
+        && firstClaim.Reward.ItemList_.First().Num == (uint)rewardHcoin && firstClaim.Reward.ItemList_.Count > 1
+        && trialPlayer.Data.Hcoin == hcoinBeforeClaim + rewardHcoin
+        && trialData.Activities.Single(r => r.StageId == 315120).TakenReward
+        && !firstClaimPackets.Any(p => p.Id == CmdIds.ScenePlaneEventScNotify));
+    var secondClaim = Claim(await TakeReward(315120));
+    Check("second claim is refused without granting", secondClaim.Retcode == (uint)Retcode.RetFail
+        && secondClaim.StageId == 315120 && trialPlayer.Data.Hcoin == hcoinBeforeClaim + rewardHcoin);
+    var unclearedClaim = Claim(await TakeReward(315130));
+    Check("uncleared trial reward is refused", unclearedClaim.Retcode == (uint)Retcode.RetFail && unclearedClaim.StageId == 315130);
+    var displayClaim = Claim(await TakeReward(313079));
+    Check("non-trial reward claim is invalid", displayClaim.Retcode == (uint)Retcode.RetReqParaInvalid && displayClaim.StageId == 313079);
+
+    await Capture(() => Start(315130));
+    trialPlayer.Connection = null;
+    await trialOutbound.StopAsync();
+    await trialInbound.StopAsync();
+}
+Check("trial is running on the trial plane before relogin", trialData.CurTrialStageId == 315130
+    && GameData.MazePlaneData[trialPlayer.Data.PlaneId].PlaneType == PlaneTypeEnum.TrialActivity);
+var relogin = new PlayerInstance(trialPlayer.Data);
+await relogin.InitializeAsync();
+await relogin.OnLogin();
+Check("relogin mid-trial abandons the run and returns to the return point", trialData.CurTrialStageId == 0
+    && relogin.ActivityManager!.TrialActivityInstance == null && relogin.Data.EntryId == TrialReturnEntry
+    && relogin.SceneInstance?.Excel.PlaneType != PlaneTypeEnum.TrialActivity
+    && relogin.LineupManager!.GetExtraLineup(ExtraLineupType.LineupStageTrial) == null
+    && !relogin.LineupManager.GetCurLineup()!.IsExtraLineup()
+    && GetTrialActivityDataScRsp.Parser.ParseFrom(new PacketGetTrialActivityDataScRsp(relogin).Data).ActivityStageId == 0);
 
 Console.WriteLine($"Login/scene regression: {checks} checks, {failures.Count} failures. Temporary artifacts: {scratch}");
 Environment.ExitCode = failures.Count == 0 ? 0 : 1;
