@@ -151,6 +151,7 @@ public class CalyxOverrideManager(PlayerInstance player) : BasePlayerManager(pla
             StaminaCost = 0,
             WorldLevel = worldLevel > 0 ? worldLevel : Player.Data.WorldLevel,
             CocoonWave = Math.Max(wave, 1),
+            CocoonId = cocoonId,
             MappingInfoId = 0,
             RoundLimit = bc.CycleCount > 0 ? bc.CycleCount : 0,
             CustomLevel = ResolveUniformLevel(bc.Monsters),

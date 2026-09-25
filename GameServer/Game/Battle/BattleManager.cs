@@ -233,6 +233,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             StaminaCost = cost,
             WorldLevel = config.WorldLevel,
             CocoonWave = wave,
+            CocoonId = cocoonId,
             MappingInfoId = config.MappingInfoID
         };
 

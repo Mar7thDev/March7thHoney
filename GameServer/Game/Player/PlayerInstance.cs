@@ -22,6 +22,7 @@ using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.GameServer.Game.Mail;
 using March7thHoney.GameServer.Game.Message;
 using March7thHoney.GameServer.Game.Mission;
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Player.Components;
 using March7thHoney.GameServer.Game.Quest;
 using March7thHoney.GameServer.Game.Raid;
@@ -230,6 +231,7 @@ public partial class PlayerInstance(PlayerData data)
     private async ValueTask NormalizePostLoad()
     {
         Components.Add(new SwitchHandComponent(this));
+        Components.Add(new DailyActiveManager(this));
 
         if ((int)(ServerPrefsData!.Version * 1000) != GameConstants.GameVersionInt)
         {
@@ -340,6 +342,10 @@ public partial class PlayerInstance(PlayerData data)
     {
         CalyxOverrideManager?.ResetLineupOverride();
         await SendPacket(new PacketStaminaInfoScNotify(this));
+
+        // Roll today's daily training window (and offer today's daily missions) before the client asks for it.
+        // Silent: the client pulls quest and mission data after the login response.
+        await GetComponent<DailyActiveManager>().OnLogin();
 
         ChallengeManager?.ResurrectInstance();
         ChallengeTierceManager?.ResurrectInstance();
@@ -627,6 +633,12 @@ public partial class PlayerInstance(PlayerData data)
     {
         return Components.OfType<T>().FirstOrDefault() ??
                throw new InvalidOperationException($"Component {typeof(T)} not found.");
+    }
+
+    /// <summary>Like <see cref="GetComponent{T}" />, but null before the components are registered.</summary>
+    public T? GetComponentOrDefault<T>() where T : BasePlayerComponent
+    {
+        return Components.OfType<T>().FirstOrDefault();
     }
 
     #endregion

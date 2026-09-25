@@ -154,6 +154,7 @@ public partial class InventoryManager
         var maxLevel = promotionConfig.MaxLevel;
         var curExp = avatarData.Exp;
         var curLevel = avatarData.Level;
+        var startLevel = curLevel;
         var nextLevelExp = GameData.GetAvatarExpRequired(avatarConfig.ExpGroup, avatarData.Level);
         do
         {
@@ -210,6 +211,8 @@ public partial class InventoryManager
 
         if (list.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(list.Values.ToList()));
         await Player.SendPacket(new PacketPlayerSyncScNotify(avatarData));
+        if (curLevel > startLevel)
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.AnyAvatarLevelUp);
         return [.. list.Values];
     }
 
@@ -295,6 +298,7 @@ public partial class InventoryManager
         var maxLevel = equipmentPromotionConfig.MaxLevel;
         var curExp = itemData.Exp;
         var curLevel = itemData.Level;
+        var startLevel = curLevel;
         var nextLevelExp = GameData.GetEquipmentExpRequired(equipmentConfig.ExpType, itemData.Level);
         do
         {
@@ -352,6 +356,8 @@ public partial class InventoryManager
 
         if (list.Count > 0) await Player.SendPacket(new PacketPlayerSyncScNotify(list.Values.ToList()));
         await Player.SendPacket(new PacketPlayerSyncScNotify(itemData));
+        if (curLevel > startLevel)
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.AnyEquipmentLevelUp);
         return (Retcode.RetSucc, [.. list.Values]);
     }
 
@@ -460,6 +466,7 @@ public partial class InventoryManager
         GameData.RelicConfigData.TryGetValue(relicItem.ItemId, out var relicExcel);
         if (relicExcel == null) return [];
 
+        var startLevel = relicItem.Level;
         GameData.RelicExpTypeData.TryGetValue(relicExcel.ExpType * 100 + relicItem.Level, out var relicType);
         do
         {
@@ -526,6 +533,8 @@ public partial class InventoryManager
 
         // sync
         await Player.SendPacket(new PacketPlayerSyncScNotify(relicItem));
+        if (relicItem.Level > startLevel)
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.AnyRelicLevelUp);
 
         return [.. list.Values];
     }
