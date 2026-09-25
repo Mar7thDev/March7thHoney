@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.Expedition;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -12,5 +13,7 @@ public class HandlerAcceptMultipleExpeditionCsReq : Handler<AcceptMultipleExpedi
         var accepted = player.ExpeditionManager!.AcceptMultipleExpedition(req.Expedition);
 
         await connection.SendPacket(new PacketAcceptMultipleExpeditionScRsp(player, accepted));
+        if (accepted.Count > 0)
+            await player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.ExpeditionSetOrTakeReward);
     }
 }

@@ -1,5 +1,6 @@
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 
 namespace March7thHoney.GameServer.Game.Inventory;
@@ -35,6 +36,10 @@ public partial class InventoryManager
             case 32:
                 Player.Data.TalentPoints += count;
                 actualCount = Player.Data.TalentPoints;
+                break;
+            case DailyActiveManager.DailyActivePointItemId:
+                // Daily active points: today's window, not a stored item.
+                actualCount = Player.GetComponentOrDefault<DailyActiveManager>()?.AddPoint(count) ?? 0;
                 break;
         }
 

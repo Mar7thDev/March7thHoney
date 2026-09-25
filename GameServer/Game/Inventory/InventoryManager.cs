@@ -2,6 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -301,6 +302,12 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
                         {
                             ItemId = itemId,
                             Count = Player.Data.TalentPoints
+                        };
+                    case DailyActiveManager.DailyActivePointItemId:
+                        return new ItemData
+                        {
+                            ItemId = itemId,
+                            Count = Player.GetComponentOrDefault<DailyActiveManager>()?.Point ?? 0
                         };
                 }
 

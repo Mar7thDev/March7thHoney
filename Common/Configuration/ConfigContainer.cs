@@ -124,9 +124,17 @@ public class ServerOption
     public ServerTimeOption ServerTime { get; set; } = new();
     public WelcomeMailConfig WelcomeMail { get; set; } = new();
 
+    // Local hour (server time zone, the one PlayerLoginScRsp advertises) at which daily training rolls over.
+    public int DailyResetHour { get; set; } = 4;
+
     public int ValidFarmingDropRate()
     {
         return Math.Max(Math.Min(FarmingDropRate, 999), 1);
+    }
+
+    public int ValidDailyResetHour()
+    {
+        return Math.Clamp(DailyResetHour, 0, 23);
     }
 }
 

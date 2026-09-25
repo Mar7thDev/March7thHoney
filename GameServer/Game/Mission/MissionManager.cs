@@ -6,6 +6,7 @@ using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Mission.FinishAction;
 using March7thHoney.GameServer.Game.Mission.FinishType;
 using March7thHoney.GameServer.Game.Player;
@@ -297,7 +298,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         return false;
     }
 
-    public async ValueTask RemoveMainMission(int missionId)
+    public async ValueTask RemoveMainMission(int missionId, bool sendPacket = true)
     {
         if (!Enabled) return;
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None);
@@ -318,7 +319,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             });
         }
 
-        await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+        if (sendPacket) await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
     }
 
     public async ValueTask AcceptSubMission(int missionId)
@@ -417,6 +418,15 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         await Player.SendPacket(new PacketFinishedMissionScNotify(missionId));
         await HandleMissionReward(missionId);
         await HandleFinishType(MissionFinishTypeEnum.FinishMission);
+
+        // A finished daily main mission feeds the daily training counters (quest 2100003 "Complete 1 Daily
+        // Mission" is FinishTodayDailyMissionCnt; cycle quests 1001802/1001925 are FinishDailyMissionCnt).
+        if (mainMission.Type == MainMissionTypeEnum.Daily &&
+            Player.GetComponentOrDefault<DailyActiveManager>()?.RecordDailyMission(missionId) == true)
+        {
+            await HandleFinishType(MissionFinishTypeEnum.FinishTodayDailyMissionCnt);
+            await HandleFinishType(MissionFinishTypeEnum.FinishDailyMissionCnt);
+        }
 
         await Player.RaidManager!.CheckIfLeaveRaid();
 
@@ -630,6 +640,12 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
         if (pushQuest)
             await Player.QuestManager!.SyncQuest();
+    }
+
+    /// <summary>Raises one occurrence of a "+N per event" finish type (see <see cref="MissionCountEvent" />).</summary>
+    public ValueTask TriggerCountEvent(MissionFinishTypeEnum finishType, int count = 1, int param = 0)
+    {
+        return HandleFinishType(finishType, new MissionCountEvent(finishType, count, param));
     }
 
     public async ValueTask HandleAllFinishType(object? arg = null)
