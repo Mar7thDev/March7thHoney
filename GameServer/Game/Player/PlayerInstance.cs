@@ -127,6 +127,12 @@ public partial class PlayerInstance(PlayerData data)
     public string Language { get; set; } = ConfigManager.Config.ServerOption.Language;
 
     /// <summary>
+    ///     Language server-rendered text for this player is translated to: the persisted /language pin, falling back to
+    ///     the client-reported <see cref="Language" />.
+    /// </summary>
+    public string EffectiveLanguage => Data.LanguagePin ?? Language;
+
+    /// <summary>
     ///     Mission-system switch for this player: the persisted per-player override, falling back to the
     ///     server config. Reads before the managers are wired fall back to the config.
     /// </summary>

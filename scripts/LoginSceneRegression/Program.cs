@@ -16,10 +16,13 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Database.Friend;
+using March7thHoney.Database.Generated;
+using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
+using March7thHoney.GameServer.Command;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.ChessRogue;
 using March7thHoney.GameServer.Game.Friend;
@@ -37,6 +40,7 @@ using March7thHoney.Kcp;
 using March7thHoney.Kcp.KcpSharp;
 using Google.Protobuf;
 using MemoryPack;
+using Microsoft.Data.Sqlite;
 using March7thHoney.Util;
 using March7thHoney.WebServer;
 using March7thHoney.WebServer.Handler;
@@ -431,6 +435,61 @@ Check("explicit giveall level applies without touching Eidolons", ownedMarch.Lev
     && newAvatar?.Level == 80 && ownedMarch.PathInfos.Values.All(path => path.Rank == 6)
     && ownedMarch.Promotion == GameData.GetMinPromotionForLevel(80));
 
+// /language: per-player pin persisted on PlayerData, used by command replies and chat notices.
+var languageCommand = new CommandLanguage();
+var languageTarget = new ProbeConnection { Player = givePlayer };
+var languageSender = new ProbeSender(givePlayer.Uid);
+async Task<string> LanguageReply(string raw, ICommandSender who)
+{
+    var probeWho = who as ProbeSender;
+    probeWho?.Messages.Clear();
+    await languageCommand.Language(new CommandArg(raw, who, languageTarget));
+    return probeWho?.Messages.LastOrDefault() ?? "";
+}
+givePlayer.Language = "CHS";
+Check("console cannot pin a language", await LanguageReply("en", new ProbeSender())
+    == I18NManager.Translate("Game.Command.Language.PlayerOnly") && givePlayer.Data.LanguagePin == null);
+Check("language list shows only installed language files", (await LanguageReply("list", languageSender))
+    == I18NManager.Translate("Game.Command.Language.Available", "CHS, CHT, EN"));
+Check("language alias pins EN and answers in English", await LanguageReply("English", languageSender)
+    == I18NManager.TranslateAsCertainLang("EN", "Game.Command.Language.Set", "EN")
+    && givePlayer.Data.LanguagePin == "EN" && givePlayer.EffectiveLanguage == "EN"
+    && new PlayerCommandSender(givePlayer).Language == "EN");
+Check("language aliases are case-insensitive", await LanguageReply("ZH-Hant", languageSender)
+    == I18NManager.TranslateAsCertainLang("CHT", "Game.Command.Language.Set", "CHT") && givePlayer.Data.LanguagePin == "CHT");
+Check("language code without a file is rejected", (await LanguageReply("id", languageSender))
+    == I18NManager.Translate("Game.Command.Language.NotFound", "id", "CHS, CHT, EN") && givePlayer.Data.LanguagePin == "CHT");
+Check("language auto clears the pin and answers in the client language", await LanguageReply("auto", languageSender)
+    == I18NManager.TranslateAsCertainLang("CHS", "Game.Command.Language.Cleared", "CHS")
+    && givePlayer.Data.LanguagePin == null && givePlayer.EffectiveLanguage == "CHS");
+givePlayer.Data.LanguagePin = "EN";
+DatabaseHelper.MarkDirty(givePlayer.Uid);
+DatabaseHelper.Instance!.SaveDatabase();
+await using (var db = new SqliteConnection($"Data Source={Path.Combine(scratch, "regression.db")}"))
+{
+    await db.OpenAsync();
+    await using var query = db.CreateCommand();
+    query.CommandText = "select LanguagePin from Player where Uid = $uid";
+    query.Parameters.AddWithValue("$uid", givePlayer.Uid);
+    Check("language pin is persisted in the Player table", (await query.ExecuteScalarAsync()) as string == "EN");
+}
+await using (var oldDb = new SqliteConnection($"Data Source={Path.Combine(scratch, "old-player-table.db")}"))
+{
+    await oldDb.OpenAsync();
+    await using (var create = oldDb.CreateCommand())
+    {
+        create.CommandText = "create table \"Player\" (\"Uid\" INTEGER PRIMARY KEY, \"Name\" TEXT); " +
+                             "insert into \"Player\" (\"Uid\", \"Name\") values (70001, 'legacy')";
+        await create.ExecuteNonQueryAsync();
+    }
+    var playerStore = EntityStores.Map[typeof(PlayerData)];
+    playerStore.EnsureTable(oldDb);
+    var legacyPlayer = playerStore.LoadAll(oldDb).OfType<PlayerData>().Single();
+    Check("old Player tables gain a nullable LanguagePin column that loads as unpinned",
+        legacyPlayer.Uid == 70001 && legacyPlayer.Name == "legacy" && legacyPlayer.LanguagePin == null);
+}
+givePlayer.Data.LanguagePin = null;
+
 var rogueTournLobby = new SceneInstance(player, GameData.MazePlaneData[10341], 10341001, 10341901);
 var rogueTournLobbyGroup = rogueTournLobby.FloorInfo!.Groups[13];
 var rogueTournEntrance = await rogueTournLobby.EntityLoader!.LoadProp(
@@ -764,12 +823,13 @@ sealed class ProbeEntity : BaseGameEntity
     public override SceneEntityInfo ToProto() => new() { EntityId = (uint)EntityId, GroupId = (uint)GroupId };
 }
 
-sealed class ProbeSender : ICommandSender
+sealed class ProbeSender(int uid = 0) : ICommandSender
 {
     public List<string> Messages { get; } = [];
     public ValueTask SendMsg(string msg) { Messages.Add(msg); return ValueTask.CompletedTask; }
     public bool HasPermission(string permission) => true;
-    public int GetSender() => 0;
+    public int GetSender() => uid;
+    public bool IsConsole => uid == 0;
 }
 
 sealed class ProbeConnection(KcpConversation? conversation = null) : Connection(conversation!, new IPEndPoint(IPAddress.Loopback, 60001))

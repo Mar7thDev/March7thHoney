@@ -8,7 +8,7 @@
 dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj
 ```
 
-检查无目标命令、目标隔离、异步输出和异常、并发请求、MUIP GET/POST、登录保护及维护接口内存数据；同时验证 `query_gateway` 下发差分宇宙 BuildRef 地址与请求头，以及两个精确 BuildRef JSON 路由。测试会打印维护接口耗时；异常测试会打印一条预期的错误日志，最终以 `Regression failures: 0` 为通过。
+检查无目标命令、目标隔离、异步输出和异常、并发请求、MUIP GET/POST、登录保护及维护接口内存数据；同时验证 `query_gateway` 下发差分宇宙 BuildRef 地址与请求头，以及两个精确 BuildRef JSON 路由；`/language` 对后台控制台返回仅限玩家，玩家自助控制台可固定自身语言并以新语言回复。测试会打印维护接口耗时；异常测试会打印一条预期的错误日志，最终以 `Regression failures: 0` 为通过。
 
 测试使用独立内存数据和临时目录，不加载项目的 `Config.json` 或玩家数据库。模拟连接和命令仅在测试进程内注册。
 

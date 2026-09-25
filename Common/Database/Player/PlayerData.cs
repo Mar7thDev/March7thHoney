@@ -63,6 +63,9 @@ public class PlayerData : BaseDatabaseDataHelper
 
     public int FakeTimeDate { get; set; } = 0; // yyyyMMdd, 0 = off
 
+    // Language-file code pinned with /language; null follows the client-reported language.
+    public string? LanguagePin { get; set; }
+
     public static PlayerData? GetPlayerByUid(long uid)
     {
         var result = DatabaseHelper.Instance?.GetInstance<PlayerData>((int)uid);
