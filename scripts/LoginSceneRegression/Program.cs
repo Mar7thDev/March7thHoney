@@ -394,6 +394,43 @@ Check("disabled global chat removes the contact and relays nothing", serverOptio
     == GlobalChatRelayResultEnum.Disabled);
 serverOption.GlobalChat.Enabled = true;
 
+// /giveall avatar: only typed values touch owned characters; new characters start at l1 / r0.
+var givePlayer = new PlayerInstance(60005);
+await givePlayer.InitializeAsync();
+var giveTarget = new ProbeConnection { Player = givePlayer };
+var giveSender = new ProbeSender();
+var ownedHero = givePlayer.AvatarManager!.GetHero()!;
+var ownedMarch = givePlayer.AvatarManager.GetFormalAvatar(1001)!;
+ownedHero.Level = 70;
+ownedHero.GetCurPathInfo().Rank = 2;
+ownedMarch.Level = 50;
+ownedMarch.GetCurPathInfo().Rank = 4;
+var heroPathBefore = ownedHero.AvatarId;
+var marchPathBefore = ownedMarch.AvatarId;
+var maleHeroPathsBefore = ownedHero.PathInfos.Keys.Where(pathId => pathId % 2 == 1).ToHashSet();
+var giveall = new CommandGiveall();
+await giveall.GiveAllAvatar(new CommandArg("avatar", giveSender, giveTarget));
+var newAvatar = givePlayer.AvatarManager.Data.FormalAvatars.FirstOrDefault(avatar => avatar.BaseAvatarId == 1002);
+Check("bare /giveall avatar keeps owned levels and Eidolons", ownedHero.Level == 70 && ownedHero.GetCurPathInfo().Rank == 2
+    && ownedMarch.Level == 50 && ownedMarch.GetCurPathInfo().Rank == 4);
+Check("bare /giveall avatar keeps the current path of owned characters",
+    ownedHero.AvatarId == heroPathBefore && ownedMarch.AvatarId == marchPathBefore);
+Check("bare /giveall avatar creates missing characters at l1 / r0",
+    newAvatar is { Level: 1 } && newAvatar.PathInfos.Values.All(path => path.Rank == 0));
+Check("giveall unlocks every Path of multi-path characters", ownedMarch.PathInfos.ContainsKey(1224)
+    && GameData.MultiplePathAvatarConfigData.Values.Where(x => x.BaseAvatarID == 8001 && x.AvatarID % 2 == 0)
+        .All(x => ownedHero.PathInfos.ContainsKey(x.AvatarID)));
+Check("giveall unlocks only the Trailblazer paths of the player's gender",
+    ownedHero.PathInfos.Keys.Where(pathId => pathId % 2 == 1).ToHashSet().SetEquals(maleHeroPathsBefore));
+await giveall.GiveAllAvatar(new CommandArg("avatar r6", giveSender, giveTarget));
+Check("explicit giveall Eidolon applies to every owned path without touching levels",
+    ownedMarch.PathInfos.Values.All(path => path.Rank == 6) && ownedHero.PathInfos.Values.All(path => path.Rank == 6)
+    && ownedMarch.Level == 50 && ownedHero.Level == 70 && newAvatar?.Level == 1);
+await giveall.GiveAllAvatar(new CommandArg("avatar l80", giveSender, giveTarget));
+Check("explicit giveall level applies without touching Eidolons", ownedMarch.Level == 80 && ownedHero.Level == 80
+    && newAvatar?.Level == 80 && ownedMarch.PathInfos.Values.All(path => path.Rank == 6)
+    && ownedMarch.Promotion == GameData.GetMinPromotionForLevel(80));
+
 var rogueTournLobby = new SceneInstance(player, GameData.MazePlaneData[10341], 10341001, 10341901);
 var rogueTournLobbyGroup = rogueTournLobby.FloorInfo!.Groups[13];
 var rogueTournEntrance = await rogueTournLobby.EntityLoader!.LoadProp(
