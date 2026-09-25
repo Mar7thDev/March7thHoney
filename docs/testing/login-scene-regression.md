@@ -28,5 +28,6 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - 登录恢复场景和传送场景都有 4.5 初始化值；两端内存 KCP 验证 `1491 → EnterSceneByServerScNotify → EnterSceneScRsp` 顺序，同地图移动、静默构建、无效传送和登录快照不会误发切换边界。
 - Rogue 系列兼容：`MapEntranceLD.json` 已纳入入口资源；经典 Rogue 的 904 地图可由站点房间池完整生成；ChessRogue 在开始包省略骰面分支时选择完整默认分支；RogueMagic 查询包含非空区域及必需嵌套信息；差分宇宙大厅入口和徽标在无存档时默认开启。
 - 经典模拟宇宙房间出口：锚点组的 `PROP_ROGUE_DOOR` 携带 `rogue_game_info{room_id, MAJKFIMPOOF}` 指向下一房间，战斗房间以 Closed 加载且忽略已存的道具状态；祝福待选时不开门，经真实 `HandleRogueCommonPendingActionCsReq` 选择后在响应前下发 Open 刷新；无祝福可选的战斗胜利直接开门；开门状态不写入楼层道具存档。
+- 经典模拟宇宙离开：已胜利未离开的对局在重新登录时被丢弃而登录仍恢复其房间场景，此时 `LeaveRogueCsReq` 不结算、直接返回大厅（先 `1491` 再成功响应，附阵容与大厅场景，并清除额外阵容）；不在模拟宇宙房间时仍返回状态不匹配。
 
 边界：这不是安卓客户端测试，不能据此宣称加载卡死已在实机消失。密钥不匹配会被明确拒绝；让对应客户端成功登录仍需配套的公私钥。本修复不删除或合并历史 Base64 账号。

@@ -132,6 +132,13 @@ public sealed class HandlerLeaveRogueCsReq : PlayerHandler
         var inst = await manager.FinishRun();
         if (inst == null)
         {
+            // No run to settle, but a room scene restored at login still has to return to the lobby.
+            if (await manager.LeaveOrphanedRoom())
+            {
+                await SendLeft(connection, player);
+                return;
+            }
+
             await connection.SendPacket(new PacketRogueScRsp(CmdIds.LeaveRogueScRsp,
                 new LeaveRogueScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
@@ -146,6 +153,11 @@ public sealed class HandlerLeaveRogueCsReq : PlayerHandler
             return;
         }
 
+        await SendLeft(connection, player);
+    }
+
+    private static async Task SendLeft(Connection connection, PlayerInstance player)
+    {
         // Without the scene-change signal the client can stay in the rogue-scene state after leaving.
         await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
         await connection.SendPacket(new PacketRogueScRsp(CmdIds.LeaveRogueScRsp, new LeaveRogueScRsp

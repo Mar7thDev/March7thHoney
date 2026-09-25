@@ -724,6 +724,27 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         : rogueDoors.All(door => door.State == PropStateEnum.Open) &&
           battleFrames.Any(frame => frame.Id == CmdIds.SceneGroupRefreshScNotify)));
     rogueInst.BuffSelect = null;
+
+    // A won run is dropped on relog while login restores its room scene: LeaveRogue has no run to settle.
+    typeof(RogueManager).GetProperty(nameof(RogueManager.RogueInstance))!.SetValue(roguePlayer.RogueManager, null);
+    async Task<(List<(ushort Id, byte[] Body)> Frames, LeaveRogueScRsp? Rsp)> LeaveRogue()
+    {
+        var frames = await SentFrames(() => new HandlerLeaveRogueCsReq().OnHandle(rogueConnection, [], []));
+        var rsp = frames.Where(frame => frame.Id == CmdIds.LeaveRogueScRsp)
+            .Select(frame => LeaveRogueScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
+        return (frames, rsp);
+    }
+    var orphanLeave = await LeaveRogue();
+    Check("LeaveRogue with no live run returns an orphaned Rogue room to the lobby",
+        orphanLeave.Rsp is { Retcode: 0 } && orphanLeave.Rsp.Scene?.EntryId == RogueManager.RogueEntranceId &&
+        orphanLeave.Rsp.Lineup != null && roguePlayer.SceneInstance?.EntryId == RogueManager.RogueEntranceId &&
+        roguePlayer.LineupManager.Data.CurExtraLineup == -1 &&
+        orphanLeave.Frames.FindIndex(frame => frame.Id == CmdIds.SyncServerSceneChangeNotify) is var boundary and >= 0 &&
+        boundary < orphanLeave.Frames.FindIndex(frame => frame.Id == CmdIds.LeaveRogueScRsp) &&
+        orphanLeave.Frames.All(frame => frame.Id != CmdIds.SyncRogueFinishScNotify));
+    var lobbyLeave = await LeaveRogue();
+    Check("LeaveRogue outside a Rogue room with no run still reports status mismatch",
+        lobbyLeave.Rsp?.Retcode == (uint)Retcode.RetRogueStatusNotMatch);
     roguePlayer.Connection = null;
     await outbound.StopAsync();
     await inbound.StopAsync();
