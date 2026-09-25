@@ -20,6 +20,7 @@ using March7thHoney.Database.Generated;
 using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
+using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Command;
@@ -31,7 +32,9 @@ using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Chat;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -489,6 +492,44 @@ await using (var oldDb = new SqliteConnection($"Data Source={Path.Combine(scratc
         legacyPlayer.Uid == 70001 && legacyPlayer.Name == "legacy" && legacyPlayer.LanguagePin == null);
 }
 givePlayer.Data.LanguagePin = null;
+
+// Trailblazer paths: both genders stay stored, only the current gender is announced, and path changes are
+// normalized to the player's gender and echo the stored id.
+var heroPathConfigs = GameData.MultiplePathAvatarConfigData.Values.Where(x => x.BaseAvatarID == 8001).ToList();
+Check("Trailblazer path configs pair odd=male / even=female", heroPathConfigs.Count > 0 && heroPathConfigs.All(x =>
+    x.Gender == (x.AvatarID % 2 == 1 ? GenderTypeEnum.GENDER_MAN : GenderTypeEnum.GENDER_WOMAN)));
+var hero = givePlayer.AvatarManager.GetHero()!;
+List<uint> AnnouncedHeroPaths() => hero.ToAvatarPathDataProto().Select(path => path.AvatarId).ToList();
+bool OnlyGender(IEnumerable<uint> ids, int parity) => ids.Where(id => id is > 8000 and < 9000).All(id => id % 2 == parity);
+Check("female hero stores both genders but announces only female paths", givePlayer.Data.CurrentGender == Gender.Woman
+    && hero.PathInfos.ContainsKey(8001) && hero.PathInfos.ContainsKey(8002) && OnlyGender(AnnouncedHeroPaths(), 0)
+    && AnnouncedHeroPaths().Count == heroPathConfigs.Count(x => x.AvatarID % 2 == 0));
+var avatarDataRsp = GetAvatarDataScRsp.Parser.ParseFrom(new PacketGetAvatarDataScRsp(givePlayer).Data);
+Check("avatar data basic types and path list agree on the hero's gender",
+    OnlyGender(avatarDataRsp.BasicTypeIdList, 0) && OnlyGender(avatarDataRsp.AvatarPathDataInfoList.Select(x => x.AvatarId), 0)
+    && avatarDataRsp.BasicTypeIdList.Contains(8004u) && !avatarDataRsp.BasicTypeIdList.Contains(8003u));
+var heroSync = PlayerSyncScNotify.Parser.ParseFrom(new PacketPlayerSyncScNotify(hero).Data);
+Check("avatar sync announces only the hero's gender paths",
+    OnlyGender(heroSync.AvatarSync.AvatarPathDataInfoList.Select(x => x.AvatarId), 0));
+Check("female choosing a male path id stores the female variant", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8003) == 8004 && hero.AvatarId == 8004 && givePlayer.Data.CurBasicType == 8004);
+Check("female choosing a female path id keeps it", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8006) == 8006 && hero.AvatarId == 8006);
+Check("path change accepts any variant id as the base", await givePlayer.ChangeAvatarPathType(8004,
+    (MultiPathAvatarTypeEnum)8002) == 8002 && hero.AvatarId == 8002);
+Check("another character's path cannot be put on the hero", await givePlayer.ChangeAvatarPathType(8001,
+    MultiPathAvatarTypeEnum.Mar_7thRogue) == 0 && hero.AvatarId == 8002);
+Check("non-hero path change stores the requested path", await givePlayer.ChangeAvatarPathType(1001,
+    MultiPathAvatarTypeEnum.Mar_7thRogue) == 1224 && ownedMarch.AvatarId == 1224);
+giveSender.Messages.Clear();
+await new CommandHero().ChangeType(new CommandArg("type 1001", giveSender, giveTarget));
+Check("/hero type rejects a non-Trailblazer path", hero.AvatarId == 8002
+    && giveSender.Messages.Single() == I18NManager.Translate("Game.Command.Hero.HeroTypeNotSpecified"));
+await givePlayer.SetHeroGender(Gender.Man);
+Check("gender switch keeps stored paths and announces only male paths", hero.AvatarId == 8001
+    && hero.PathInfos.ContainsKey(8004) && OnlyGender(AnnouncedHeroPaths(), 1));
+Check("male choosing a female path id stores the male variant", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8004) == 8003 && hero.AvatarId == 8003 && OnlyGender(AnnouncedHeroPaths(), 1));
 
 var rogueTournLobby = new SceneInstance(player, GameData.MazePlaneData[10341], 10341001, 10341901);
 var rogueTournLobbyGroup = rogueTournLobby.FloorInfo!.Groups[13];
