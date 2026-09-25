@@ -29,5 +29,6 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - 登录恢复场景和传送场景都有 4.5 初始化值；两端内存 KCP 验证 `1491 → EnterSceneByServerScNotify → EnterSceneScRsp` 顺序，同地图移动、静默构建、无效传送和登录快照不会误发切换边界。
 - Rogue 系列兼容：`MapEntranceLD.json` 已纳入入口资源；经典 Rogue 的 904 地图可由站点房间池完整生成；ChessRogue 在开始包省略骰面分支时选择完整默认分支；RogueMagic 查询包含非空区域及必需嵌套信息；差分宇宙大厅入口和徽标在无存档时默认开启。
 - 试用角色虚拟队伍：移除最后一名试用角色时拆除虚拟队伍并恢复自身队伍，按 `ExtraLineupDestroyNotify → SyncLineupNotify` 顺序通知客户端。
+- `/spawn`：参数解析（`lv`/`hp`/`s`/`x`/`r`、`/`、`|`、`\` 分波及每波 5 只自动分波、无效 ID 汇总）与 ID 解析（`monster`、NPC 怪物、战斗 MonsterID 经模板映射、物件、纯战斗怪物）；长乐天无怪物配置时报告无模板；在资源中首个含可用怪物组的 Maze 楼层验证怪物借用已加载组的组/实例/EventID、偏移半径与零旋转，战斗中自定义波次替换关卡波次（波次号 1..N、固定关卡、等级与血量覆盖），仅血量覆盖时保留关卡波次；混入真实怪物的战斗仍计入任务；生成物件为 Open 状态、不带模板的事件/宝箱/交互且状态不写入存档；无效 ID、不存在的关卡、实体上限、缺少 ID 及模拟宇宙场景均不生成实体。
 
 边界：这不是安卓客户端测试，不能据此宣称加载卡死已在实机消失。密钥不匹配会被明确拒绝；让对应客户端成功登录仍需配套的公私钥。本修复不删除或合并历史 Base64 账号。

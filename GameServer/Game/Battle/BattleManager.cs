@@ -132,6 +132,8 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
             battleInstance.AvatarInfo = avatarList;
 
+            var gmSpawnLevel = ApplyGmSpawnLoadout(battleInstance, targetList.Where(x => x.IsAlive));
+
             // call battle start
             Player.ChallengeManager!.ChallengeInstance?.OnBattleStart(battleInstance);
             Player.RogueManager?.OnBattleStart(battleInstance);
@@ -140,6 +142,9 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             Player.ChessRogueManager?.OnBattleStart(battleInstance);
             Player.QuestManager!.OnBattleStart(battleInstance);
 
+            // A mode's own level override (challenge/rogue) always wins over the /spawn lvN request.
+            if (gmSpawnLevel > 0 && battleInstance.CustomLevel == 0) battleInstance.CustomLevel = gmSpawnLevel;
+
             Player.BattleInstance = battleInstance;
 
 
@@ -147,6 +152,27 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         }
 
         return null;
+    }
+
+    /// <summary>
+    ///     Copies the /spawn custom battle carried by GM-spawned monsters onto the battle. A battle is one
+    ///     encounter, so the first monster that sets a field supplies it for the whole fight.
+    /// </summary>
+    /// <returns>The requested battle level, applied by the caller only when no mode set its own.</returns>
+    private static int ApplyGmSpawnLoadout(BattleInstance battle, IEnumerable<EntityMonster> monsters)
+    {
+        var level = 0;
+        foreach (var monster in monsters)
+        {
+            if (!monster.IsGmSpawned) continue;
+
+            if (battle.CustomWaves is not { Count: > 0 } && monster.CustomBattleWaves is { Count: > 0 } waves)
+                battle.CustomWaves = waves.Select(wave => wave.ToList()).ToList();
+            if (battle.CustomHp == 0 && monster.CustomBattleHp > 0) battle.CustomHp = monster.CustomBattleHp;
+            if (level == 0 && monster.CustomLevel > 0) level = monster.CustomLevel;
+        }
+
+        return level;
     }
 
     public async ValueTask StartStage(int eventId)
@@ -426,7 +452,9 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         if (battle.GridFightContext != null && Player.GridFightManager != null)
             await Player.GridFightManager.EndBattle(battle, req);
 
-        battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
+        // A fight made only of /spawn monsters reuses real group/instance/stage IDs; it must not finish missions.
+        if (!battle.IsGmSpawnedEncounter)
+            battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
         await battle.TriggerOnBattleEnd();
 
         var trialActivity = Player.ActivityManager!.TrialActivityInstance;
