@@ -127,6 +127,12 @@ public partial class PlayerInstance(PlayerData data)
     public string Language { get; set; } = ConfigManager.Config.ServerOption.Language;
 
     /// <summary>
+    ///     Language server-rendered text for this player is translated to: the persisted /language pin, falling back to
+    ///     the client-reported <see cref="Language" />.
+    /// </summary>
+    public string EffectiveLanguage => Data.LanguagePin ?? Language;
+
+    /// <summary>
     ///     Mission-system switch for this player: the persisted per-player override, falling back to the
     ///     server config. Reads before the managers are wired fall back to the config.
     /// </summary>
@@ -451,14 +457,39 @@ public partial class PlayerInstance(PlayerData data)
         await SendPacket(new PacketPlayerSyncScNotify([new PlayerBoardSync(this)]));
     }
 
-    public async ValueTask ChangeAvatarPathType(int baseAvatarId, MultiPathAvatarTypeEnum type)
+    /// <summary>
+    ///     Maps a Trailblazer path variant to the player's gender: variants pair as male (odd) / female (even = odd + 1).
+    ///     Ids without a matching config entry, and players without a gender, are returned unchanged.
+    /// </summary>
+    public static int NormalizeHeroPathId(int pathId, Gender gender)
     {
+        if (gender is not (Gender.Man or Gender.Woman)) return pathId;
+        var maleId = pathId % 2 == 0 ? pathId - 1 : pathId;
+        var id = gender == Gender.Woman ? maleId + 1 : maleId;
+        return GameData.MultiplePathAvatarConfigData.TryGetValue(id, out var excel) && excel.BaseAvatarID == 8001
+            ? id
+            : pathId;
+    }
+
+    /// <summary>
+    ///     Switches a multi-path character to <paramref name="type" /> (any variant of the path; Trailblazer ids are
+    ///     normalized to the player's gender). Returns the avatar id actually stored, or 0 when the path does not
+    ///     belong to that character.
+    /// </summary>
+    public async ValueTask<int> ChangeAvatarPathType(int baseAvatarId, MultiPathAvatarTypeEnum type)
+    {
+        if (!GameData.MultiplePathAvatarConfigData.TryGetValue((int)type, out var pathExcel)) return 0;
+        var owner = AvatarManager!.GetFormalAvatar(baseAvatarId);
+        if (owner == null || owner.BaseAvatarId != pathExcel.BaseAvatarID) return 0;
+        baseAvatarId = owner.BaseAvatarId;
+
         FormalAvatarInfo avatar;
+        int id;
         if (baseAvatarId == 8001)
         {
-            var id = (int)((int)type + Data.CurrentGender - 1);
-            avatar = AvatarManager!.GetHero()!;
-            if (Data.CurBasicType == id && avatar.AvatarId == id) return; // CurBasicType can desync from the hero record (e.g. stale seed data); check both
+            id = NormalizeHeroPathId((int)type, Data.CurrentGender);
+            avatar = owner;
+            if (Data.CurBasicType == id && avatar.AvatarId == id) return id; // CurBasicType can desync from the hero record (e.g. stale seed data); check both
             Data.CurBasicType = id;
             // Set avatar path
             avatar.AvatarId = id;
@@ -470,8 +501,9 @@ public partial class PlayerInstance(PlayerData data)
         }
         else
         {
-            avatar = AvatarManager!.GetFormalAvatar(baseAvatarId)!;
-            avatar.AvatarId = (int)type;
+            id = (int)type;
+            avatar = owner;
+            avatar.AvatarId = id;
             avatar.SetCurSp(0, LineupManager!.GetCurLineup()!.IsExtraLineup());
             // Save new skill tree
             avatar.CheckPathSkillTree();
@@ -484,10 +516,12 @@ public partial class PlayerInstance(PlayerData data)
         {
             var avatarScene =
                 SceneInstance.AvatarInfo.Values.FirstOrDefault(x => x.AvatarInfo.BaseAvatarId == baseAvatarId);
-            if (avatarScene == null) return;
+            if (avatarScene == null) return id;
 
             await avatarScene.ClearAllBuff();
         }
+
+        return id;
     }
 
     public async ValueTask SetHeroGender(Gender gender)

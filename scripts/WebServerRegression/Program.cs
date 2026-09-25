@@ -182,6 +182,8 @@ await Execute("@10002");
 Check("web target selection does not change terminal target", manager.Target == terminalTarget);
 Check("web target selection does not leak to next request", await Execute("/regression-probe") == "target=0;explicit=False");
 Check("invalid target is rejected", (await Execute("/help", 99999)).Contains("99999"));
+Check("admin console cannot pin a language", await Execute("/language en", fixtureUid)
+    == I18NManager.Translate("Game.Command.Language.PlayerOnly"));
 
 // A real terminal retains its target behavior, observed through the probe's captured argument.
 manager.HandleCommand("/regression-probe", new ConsoleCommandSender(new Logger("Regression")));
@@ -220,6 +222,7 @@ using (var catalog = await ConsolePost("/player/catalog", new { }, consoleToken)
     Check("console catalog lists commands", commands.Count > 0);
     Check("console catalog allows a User-role command", Allowed("give"));
     Check("console catalog denies an Administrator command", !Allowed("account"));
+    Check("console catalog allows the public language command", Allowed("language"));
 }
 
 using (var connect = await ConsolePost("/player/exec", new { command = "" }, consoleToken))
@@ -232,6 +235,12 @@ using (var denied = await ConsolePost("/player/exec", new { command = "/account 
 // The launcher still posts uid + password on every call; that path must keep working.
 using (var legacy = await ConsolePost("/player/exec", new { username = fixtureUid.ToString(), password = fixturePassword, command = "/help" }))
     Check("console keeps the launcher uid+password path", legacy.RootElement.GetProperty("output").GetString()!.Contains("/help"));
+using (var pin = await ConsolePost("/player/exec", new { command = "/lang english" }, consoleToken))
+    Check("player console pins its own language and answers in it",
+        pin.RootElement.GetProperty("output").GetString()!.Contains(
+            I18NManager.TranslateAsCertainLang("EN", "Game.Command.Language.Set", "EN"))
+        && webTarget.Player!.Data.LanguagePin == "EN");
+webTarget.Player!.Data.LanguagePin = null;
 using (var forged = await ConsolePost("/player/exec", new { command = "/help" }, "not-a-real-token"))
     Check("console rejects a forged token", forged.RootElement.GetProperty("retcode").GetInt32() != 0);
 

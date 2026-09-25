@@ -16,13 +16,19 @@ using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
+using March7thHoney.Database.Friend;
+using March7thHoney.Database.Generated;
+using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
+using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Command;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.ChessRogue;
+using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
@@ -31,6 +37,9 @@ using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.GameServer.Server.Packet.Recv.Activity;
 using March7thHoney.GameServer.Server.Packet.Send.Activity;
+using March7thHoney.GameServer.Server.Packet.Send.Avatar;
+using March7thHoney.GameServer.Server.Packet.Send.Chat;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -39,6 +48,7 @@ using March7thHoney.Kcp;
 using March7thHoney.Kcp.KcpSharp;
 using Google.Protobuf;
 using MemoryPack;
+using Microsoft.Data.Sqlite;
 using March7thHoney.Util;
 using March7thHoney.WebServer;
 using March7thHoney.WebServer.Handler;
@@ -329,6 +339,209 @@ var magicAreaId = GameData.RogueMagicAreaData.Keys.Min();
 var magicStart = await magicPlayer.RogueMagicManager!.StartRun(magicAreaId, 1, [], magicAvatarIds);
 Check("RogueMagic area data builds a playable run",
     magicStart.Ret == Retcode.RetSucc && magicStart.Run?.Layers.Count > 0);
+
+// Global chat: a second synthetic contact whose messages are relayed to every online player.
+var serverOption = config.ServerOption;
+var globalChatUid = serverOption.GetGlobalChatUid() ?? 0;
+Check("global chat is enabled by default on its own uid", globalChatUid == 98 && globalChatUid != serverOption.ServerProfile.Uid);
+var friendList = player.FriendManager!.ToProto();
+var globalContact = friendList.FriendList.SingleOrDefault(friend => friend.PlayerInfo.Uid == globalChatUid);
+Check("friend list shows the global chat contact next to the command bot", globalContact != null
+    && friendList.FriendList.Any(friend => friend.PlayerInfo.Uid == serverOption.ServerProfile.Uid)
+    && globalContact.IsMarked && globalContact.PlayerInfo.OnlineStatus == FriendOnlineStatus.Online
+    && globalContact.PlayerInfo.Nickname == serverOption.GlobalChat.Name
+    && globalContact.PlayerInfo.AssistSimpleInfoList.Count == serverOption.GlobalChat.AssistInfo.Count);
+Check("player detail lookup resolves the global contact, not the first system entry",
+    player.FriendManager.GetFriendPlayerData([globalChatUid]).FirstOrDefault(x => x.Uid == globalChatUid)?.Name
+    == serverOption.GlobalChat.Name);
+Check("friend requests to system contacts are rejected", await player.FriendManager.AddFriend(globalChatUid)
+    == Retcode.RetFriendAlreadyIsFriend && !player.FriendManager.FriendData.SendApplyList.Contains(globalChatUid));
+List<FriendChatData> GlobalHistory(PlayerInstance p) =>
+    p.FriendManager!.FriendData.ChatHistory.GetValueOrDefault(globalChatUid)?.MessageList ?? [];
+var chatClock = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+var relayRecipients = new[] { player, roguePlayer, chessPlayer };
+var relayResult = await GlobalChatManager.RelayAsync(magicPlayer, "  hello everyone  ", relayRecipients, chatClock);
+var expectedRelay = $"[{magicPlayer.Data.Name} / {magicPlayer.Uid}]: hello everyone";
+Check("global chat relays to every recipient and the sender from the contact", relayResult == GlobalChatRelayResultEnum.Relayed
+    && relayRecipients.Append(magicPlayer).All(p => GlobalHistory(p).LastOrDefault() is { } last
+        && last.Message == expectedRelay && last.SendUid == globalChatUid && last.ReceiveUid == p.Uid));
+Check("global chat never runs through the command bot conversation",
+    !magicPlayer.FriendManager!.FriendData.ChatHistory.ContainsKey(serverOption.ServerProfile.Uid));
+var historyBefore = GlobalHistory(player).Count;
+Check("empty global chat text is ignored", await GlobalChatManager.RelayAsync(magicPlayer, "   ", relayRecipients, chatClock)
+    == GlobalChatRelayResultEnum.Ignored && GlobalHistory(player).Count == historyBefore);
+Check("too-long global chat text is rejected without relaying", await GlobalChatManager.RelayAsync(magicPlayer,
+    new string('x', serverOption.GlobalChat.MaxLength + 1), relayRecipients, chatClock) == GlobalChatRelayResultEnum.TooLong
+    && GlobalHistory(player).Count == historyBefore);
+Check("global chat rate limit allows the configured burst", await GlobalChatManager.RelayAsync(magicPlayer, "two",
+    relayRecipients, chatClock.AddSeconds(1)) == GlobalChatRelayResultEnum.Relayed
+    && await GlobalChatManager.RelayAsync(magicPlayer, "three", relayRecipients, chatClock.AddSeconds(2))
+    == GlobalChatRelayResultEnum.Relayed);
+Check("global chat rate limit rejects the next message inside the window", await GlobalChatManager.RelayAsync(magicPlayer,
+    "four", relayRecipients, chatClock.AddSeconds(59)) == GlobalChatRelayResultEnum.RateLimited
+    && GlobalHistory(player).Last().Message.EndsWith(": three"));
+Check("global chat rate limit is per sender", await GlobalChatManager.RelayAsync(chessPlayer, "other sender",
+    relayRecipients, chatClock.AddSeconds(59)) == GlobalChatRelayResultEnum.Relayed);
+Check("global chat rate limit window slides", await GlobalChatManager.RelayAsync(magicPlayer, "five", relayRecipients,
+    chatClock.AddSeconds(60)) == GlobalChatRelayResultEnum.Relayed);
+var rateLimitCount = serverOption.GlobalChat.RateLimitCount;
+serverOption.GlobalChat.RateLimitCount = 0;
+for (var i = 0; i < serverOption.GlobalChat.MaxHistory + 5; i++)
+    await GlobalChatManager.RelayAsync(roguePlayer, $"flood {i}", relayRecipients, chatClock.AddMinutes(5));
+serverOption.GlobalChat.RateLimitCount = rateLimitCount;
+Check("global chat history is trimmed to MaxHistory per player", relayRecipients.All(p =>
+    GlobalHistory(p).Count == serverOption.GlobalChat.MaxHistory
+    && GlobalHistory(p).Last().Message.EndsWith($": flood {serverOption.GlobalChat.MaxHistory + 4}")));
+var globalHistoryPacket = GetPrivateChatHistoryScRsp.Parser.ParseFrom(
+    new PacketGetPrivateChatHistoryScRsp((uint)player.Uid, (uint)globalChatUid, player).Data);
+Check("global chat history ends with the configured welcome as its oldest entry",
+    globalHistoryPacket.ChatMessageList.Count == serverOption.GlobalChat.MaxHistory + 1
+    && globalHistoryPacket.ChatMessageList.Last().MessageDatas.Single().ChatData.MessageText
+    == serverOption.GlobalChat.WelcomeMessage);
+var botHistoryPacket = GetPrivateChatHistoryScRsp.Parser.ParseFrom(new PacketGetPrivateChatHistoryScRsp(
+    (uint)player.Uid, (uint)serverOption.ServerProfile.Uid, player).Data);
+Check("command bot history gets no global chat welcome", botHistoryPacket.ChatMessageList.All(message =>
+    message.MessageDatas.All(data => data.ChatData.MessageText != serverOption.GlobalChat.WelcomeMessage)));
+serverOption.GlobalChat.Uid = serverOption.ServerProfile.Uid;
+Check("global chat uid colliding with the command bot disables the contact", serverOption.GetGlobalChatUid() == null
+    && player.FriendManager.GetFriendPlayerData().Count(x => x.Uid == serverOption.ServerProfile.Uid) == 1);
+serverOption.GlobalChat.Uid = globalChatUid;
+serverOption.GlobalChat.Enabled = false;
+Check("disabled global chat removes the contact and relays nothing", serverOption.GetGlobalChatUid() == null
+    && player.FriendManager.GetFriendPlayerData().All(x => x.Uid != globalChatUid)
+    && await GlobalChatManager.RelayAsync(magicPlayer, "off", relayRecipients, chatClock.AddHours(1))
+    == GlobalChatRelayResultEnum.Disabled);
+serverOption.GlobalChat.Enabled = true;
+
+// /giveall avatar: only typed values touch owned characters; new characters start at l1 / r0.
+var givePlayer = new PlayerInstance(60005);
+await givePlayer.InitializeAsync();
+var giveTarget = new ProbeConnection { Player = givePlayer };
+var giveSender = new ProbeSender();
+var ownedHero = givePlayer.AvatarManager!.GetHero()!;
+var ownedMarch = givePlayer.AvatarManager.GetFormalAvatar(1001)!;
+ownedHero.Level = 70;
+ownedHero.GetCurPathInfo().Rank = 2;
+ownedMarch.Level = 50;
+ownedMarch.GetCurPathInfo().Rank = 4;
+var heroPathBefore = ownedHero.AvatarId;
+var marchPathBefore = ownedMarch.AvatarId;
+var maleHeroPathsBefore = ownedHero.PathInfos.Keys.Where(pathId => pathId % 2 == 1).ToHashSet();
+var giveall = new CommandGiveall();
+await giveall.GiveAllAvatar(new CommandArg("avatar", giveSender, giveTarget));
+var newAvatar = givePlayer.AvatarManager.Data.FormalAvatars.FirstOrDefault(avatar => avatar.BaseAvatarId == 1002);
+Check("bare /giveall avatar keeps owned levels and Eidolons", ownedHero.Level == 70 && ownedHero.GetCurPathInfo().Rank == 2
+    && ownedMarch.Level == 50 && ownedMarch.GetCurPathInfo().Rank == 4);
+Check("bare /giveall avatar keeps the current path of owned characters",
+    ownedHero.AvatarId == heroPathBefore && ownedMarch.AvatarId == marchPathBefore);
+Check("bare /giveall avatar creates missing characters at l1 / r0",
+    newAvatar is { Level: 1 } && newAvatar.PathInfos.Values.All(path => path.Rank == 0));
+Check("giveall unlocks every Path of multi-path characters", ownedMarch.PathInfos.ContainsKey(1224)
+    && GameData.MultiplePathAvatarConfigData.Values.Where(x => x.BaseAvatarID == 8001 && x.AvatarID % 2 == 0)
+        .All(x => ownedHero.PathInfos.ContainsKey(x.AvatarID)));
+Check("giveall unlocks only the Trailblazer paths of the player's gender",
+    ownedHero.PathInfos.Keys.Where(pathId => pathId % 2 == 1).ToHashSet().SetEquals(maleHeroPathsBefore));
+await giveall.GiveAllAvatar(new CommandArg("avatar r6", giveSender, giveTarget));
+Check("explicit giveall Eidolon applies to every owned path without touching levels",
+    ownedMarch.PathInfos.Values.All(path => path.Rank == 6) && ownedHero.PathInfos.Values.All(path => path.Rank == 6)
+    && ownedMarch.Level == 50 && ownedHero.Level == 70 && newAvatar?.Level == 1);
+await giveall.GiveAllAvatar(new CommandArg("avatar l80", giveSender, giveTarget));
+Check("explicit giveall level applies without touching Eidolons", ownedMarch.Level == 80 && ownedHero.Level == 80
+    && newAvatar?.Level == 80 && ownedMarch.PathInfos.Values.All(path => path.Rank == 6)
+    && ownedMarch.Promotion == GameData.GetMinPromotionForLevel(80));
+
+// /language: per-player pin persisted on PlayerData, used by command replies and chat notices.
+var languageCommand = new CommandLanguage();
+var languageTarget = new ProbeConnection { Player = givePlayer };
+var languageSender = new ProbeSender(givePlayer.Uid);
+async Task<string> LanguageReply(string raw, ICommandSender who)
+{
+    var probeWho = who as ProbeSender;
+    probeWho?.Messages.Clear();
+    await languageCommand.Language(new CommandArg(raw, who, languageTarget));
+    return probeWho?.Messages.LastOrDefault() ?? "";
+}
+givePlayer.Language = "CHS";
+Check("console cannot pin a language", await LanguageReply("en", new ProbeSender())
+    == I18NManager.Translate("Game.Command.Language.PlayerOnly") && givePlayer.Data.LanguagePin == null);
+Check("language list shows only installed language files", (await LanguageReply("list", languageSender))
+    == I18NManager.Translate("Game.Command.Language.Available", "CHS, CHT, EN"));
+Check("language alias pins EN and answers in English", await LanguageReply("English", languageSender)
+    == I18NManager.TranslateAsCertainLang("EN", "Game.Command.Language.Set", "EN")
+    && givePlayer.Data.LanguagePin == "EN" && givePlayer.EffectiveLanguage == "EN"
+    && new PlayerCommandSender(givePlayer).Language == "EN");
+Check("language aliases are case-insensitive", await LanguageReply("ZH-Hant", languageSender)
+    == I18NManager.TranslateAsCertainLang("CHT", "Game.Command.Language.Set", "CHT") && givePlayer.Data.LanguagePin == "CHT");
+Check("language code without a file is rejected", (await LanguageReply("id", languageSender))
+    == I18NManager.Translate("Game.Command.Language.NotFound", "id", "CHS, CHT, EN") && givePlayer.Data.LanguagePin == "CHT");
+Check("language auto clears the pin and answers in the client language", await LanguageReply("auto", languageSender)
+    == I18NManager.TranslateAsCertainLang("CHS", "Game.Command.Language.Cleared", "CHS")
+    && givePlayer.Data.LanguagePin == null && givePlayer.EffectiveLanguage == "CHS");
+givePlayer.Data.LanguagePin = "EN";
+DatabaseHelper.MarkDirty(givePlayer.Uid);
+DatabaseHelper.Instance!.SaveDatabase();
+await using (var db = new SqliteConnection($"Data Source={Path.Combine(scratch, "regression.db")}"))
+{
+    await db.OpenAsync();
+    await using var query = db.CreateCommand();
+    query.CommandText = "select LanguagePin from Player where Uid = $uid";
+    query.Parameters.AddWithValue("$uid", givePlayer.Uid);
+    Check("language pin is persisted in the Player table", (await query.ExecuteScalarAsync()) as string == "EN");
+}
+await using (var oldDb = new SqliteConnection($"Data Source={Path.Combine(scratch, "old-player-table.db")}"))
+{
+    await oldDb.OpenAsync();
+    await using (var create = oldDb.CreateCommand())
+    {
+        create.CommandText = "create table \"Player\" (\"Uid\" INTEGER PRIMARY KEY, \"Name\" TEXT); " +
+                             "insert into \"Player\" (\"Uid\", \"Name\") values (70001, 'legacy')";
+        await create.ExecuteNonQueryAsync();
+    }
+    var playerStore = EntityStores.Map[typeof(PlayerData)];
+    playerStore.EnsureTable(oldDb);
+    var legacyPlayer = playerStore.LoadAll(oldDb).OfType<PlayerData>().Single();
+    Check("old Player tables gain a nullable LanguagePin column that loads as unpinned",
+        legacyPlayer.Uid == 70001 && legacyPlayer.Name == "legacy" && legacyPlayer.LanguagePin == null);
+}
+givePlayer.Data.LanguagePin = null;
+
+// Trailblazer paths: both genders stay stored, only the current gender is announced, and path changes are
+// normalized to the player's gender and echo the stored id.
+var heroPathConfigs = GameData.MultiplePathAvatarConfigData.Values.Where(x => x.BaseAvatarID == 8001).ToList();
+Check("Trailblazer path configs pair odd=male / even=female", heroPathConfigs.Count > 0 && heroPathConfigs.All(x =>
+    x.Gender == (x.AvatarID % 2 == 1 ? GenderTypeEnum.GENDER_MAN : GenderTypeEnum.GENDER_WOMAN)));
+var hero = givePlayer.AvatarManager.GetHero()!;
+List<uint> AnnouncedHeroPaths() => hero.ToAvatarPathDataProto().Select(path => path.AvatarId).ToList();
+bool OnlyGender(IEnumerable<uint> ids, int parity) => ids.Where(id => id is > 8000 and < 9000).All(id => id % 2 == parity);
+Check("female hero stores both genders but announces only female paths", givePlayer.Data.CurrentGender == Gender.Woman
+    && hero.PathInfos.ContainsKey(8001) && hero.PathInfos.ContainsKey(8002) && OnlyGender(AnnouncedHeroPaths(), 0)
+    && AnnouncedHeroPaths().Count == heroPathConfigs.Count(x => x.AvatarID % 2 == 0));
+var avatarDataRsp = GetAvatarDataScRsp.Parser.ParseFrom(new PacketGetAvatarDataScRsp(givePlayer).Data);
+Check("avatar data basic types and path list agree on the hero's gender",
+    OnlyGender(avatarDataRsp.BasicTypeIdList, 0) && OnlyGender(avatarDataRsp.AvatarPathDataInfoList.Select(x => x.AvatarId), 0)
+    && avatarDataRsp.BasicTypeIdList.Contains(8004u) && !avatarDataRsp.BasicTypeIdList.Contains(8003u));
+var heroSync = PlayerSyncScNotify.Parser.ParseFrom(new PacketPlayerSyncScNotify(hero).Data);
+Check("avatar sync announces only the hero's gender paths",
+    OnlyGender(heroSync.AvatarSync.AvatarPathDataInfoList.Select(x => x.AvatarId), 0));
+Check("female choosing a male path id stores the female variant", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8003) == 8004 && hero.AvatarId == 8004 && givePlayer.Data.CurBasicType == 8004);
+Check("female choosing a female path id keeps it", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8006) == 8006 && hero.AvatarId == 8006);
+Check("path change accepts any variant id as the base", await givePlayer.ChangeAvatarPathType(8004,
+    (MultiPathAvatarTypeEnum)8002) == 8002 && hero.AvatarId == 8002);
+Check("another character's path cannot be put on the hero", await givePlayer.ChangeAvatarPathType(8001,
+    MultiPathAvatarTypeEnum.Mar_7thRogue) == 0 && hero.AvatarId == 8002);
+Check("non-hero path change stores the requested path", await givePlayer.ChangeAvatarPathType(1001,
+    MultiPathAvatarTypeEnum.Mar_7thRogue) == 1224 && ownedMarch.AvatarId == 1224);
+giveSender.Messages.Clear();
+await new CommandHero().ChangeType(new CommandArg("type 1001", giveSender, giveTarget));
+Check("/hero type rejects a non-Trailblazer path", hero.AvatarId == 8002
+    && giveSender.Messages.Single() == I18NManager.Translate("Game.Command.Hero.HeroTypeNotSpecified"));
+await givePlayer.SetHeroGender(Gender.Man);
+Check("gender switch keeps stored paths and announces only male paths", hero.AvatarId == 8001
+    && hero.PathInfos.ContainsKey(8004) && OnlyGender(AnnouncedHeroPaths(), 1));
+Check("male choosing a female path id stores the male variant", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8004) == 8003 && hero.AvatarId == 8003 && OnlyGender(AnnouncedHeroPaths(), 1));
 
 var rogueTournLobby = new SceneInstance(player, GameData.MazePlaneData[10341], 10341001, 10341901);
 var rogueTournLobbyGroup = rogueTournLobby.FloorInfo!.Groups[13];
@@ -932,7 +1145,7 @@ if (!GameData.AvatarDemoConfigData[315130].IsTrialActivity)
     throw new InvalidOperationException("The resource cache predates AvatarDemoConfig StageType/SPList. Regenerate " +
                                         "Config/Resource.bin or pass --resource-cache <regenerated cache>.");
 
-var trialPlayer = new PlayerInstance(60005);
+var trialPlayer = new PlayerInstance(60006);
 await trialPlayer.InitializeAsync();
 const int TrialReturnEntry = 1000001;
 await trialPlayer.TryEnterScene(TrialReturnEntry, 0, false);
@@ -1130,12 +1343,13 @@ sealed class ProbeEntity : BaseGameEntity
     public override SceneEntityInfo ToProto() => new() { EntityId = (uint)EntityId, GroupId = (uint)GroupId };
 }
 
-sealed class ProbeSender : ICommandSender
+sealed class ProbeSender(int uid = 0) : ICommandSender
 {
     public List<string> Messages { get; } = [];
     public ValueTask SendMsg(string msg) { Messages.Add(msg); return ValueTask.CompletedTask; }
     public bool HasPermission(string permission) => true;
-    public int GetSender() => 0;
+    public int GetSender() => uid;
+    public bool IsConsole => uid == 0;
 }
 
 sealed class ProbeConnection(KcpConversation? conversation = null) : Connection(conversation!, new IPEndPoint(IPAddress.Loopback, 60001))
