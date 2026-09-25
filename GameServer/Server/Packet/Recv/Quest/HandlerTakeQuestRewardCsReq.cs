@@ -1,3 +1,5 @@
+using March7thHoney.GameServer.Game.DailyActive;
+using March7thHoney.GameServer.Server.Packet.Send.DailyActive;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Quests;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -37,5 +39,9 @@ public class HandlerTakeQuestRewardCsReq : Handler<EMHALMBFHKG>
 
         var ret = succQuestIds.Count > 0 ? Retcode.RetSucc : firstError;
         await connection.SendPacket(new PacketTakeQuestRewardScRsp(ret, rewardItems, succQuestIds));
+
+        // A claimed daily pays the active point item; the official pushes the refreshed window right after.
+        if (rewardItems.Any(item => item.ItemId == DailyActiveManager.DailyActivePointItemId))
+            await connection.SendPacket(new PacketDailyActiveInfoNotify(player.GetComponent<DailyActiveManager>()));
     }
 }

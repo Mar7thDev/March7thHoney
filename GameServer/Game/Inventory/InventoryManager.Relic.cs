@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -119,6 +120,7 @@ public partial class InventoryManager
             items.Add(itemData);
         }
 
+        await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.AnyItemComposeCount);
         return items;
     }
 }

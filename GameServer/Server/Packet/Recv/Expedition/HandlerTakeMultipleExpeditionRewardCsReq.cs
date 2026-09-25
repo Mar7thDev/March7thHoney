@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.Expedition;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -28,5 +29,6 @@ public class HandlerTakeMultipleExpeditionRewardCsReq : PlayerHandler
             player,
             Retcode.RetSucc,
             rewards));
+        await player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.ExpeditionSetOrTakeReward);
     }
 }

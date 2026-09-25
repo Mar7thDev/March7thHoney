@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
@@ -162,6 +163,7 @@ public class RogueManager : BasePlayerManager
 
         RogueData.FinishCnt++;
         SaveRun();
+        await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueFinishCnt);
         return inst;
     }
 
