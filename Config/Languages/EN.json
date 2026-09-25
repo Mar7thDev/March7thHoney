@@ -242,6 +242,8 @@
   "Game.Command.Windy.NoLoadedFiles": "No Lua scripts have been sent for the current connection.",
   "Game.Command.Windy.ReadError": "Error reading Lua script: {0}",
   "Game.Command.Windy.Usage": "Usage: /windy [list]\nUsage: /windy <number|name|path relative to the Lua folder>\nUsage: /windy load <number|name|path relative to the Lua folder>\nUsage: /windy loaded",
+  "Game.GlobalChat.RateLimited": "You are sending messages too fast. Global chat allows {0} messages every {1} seconds.",
+  "Game.GlobalChat.TooLong": "Message too long. Global chat messages are limited to {0} characters.",
   "Server.ServerInfo.ActivationContacting": "Contacting activation server...",
   "Server.ServerInfo.ActivationDeviceAuthCode": "Authorization code: {0}",
   "Server.ServerInfo.ActivationDeviceAuthDenied": "Authorization was denied.",

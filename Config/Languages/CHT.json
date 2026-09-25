@@ -242,6 +242,8 @@
   "Game.Command.Windy.NoLoadedFiles": "目前連線還沒有發送過 Lua 腳本。",
   "Game.Command.Windy.ReadError": "讀取 Lua 腳本失敗：{0}",
   "Game.Command.Windy.Usage": "用法：/windy [list]\n用法：/windy <序號|檔名|相對於 Lua 資料夾的路徑>\n用法：/windy load <序號|檔名|相對於 Lua 資料夾的路徑>\n用法：/windy loaded",
+  "Game.GlobalChat.RateLimited": "發送過於頻繁。全服聊天每 {1} 秒最多發送 {0} 則訊息。",
+  "Game.GlobalChat.TooLong": "訊息過長。全服聊天訊息最多 {0} 個字元。",
   "Server.ServerInfo.ActivationContacting": "正在連接啟動驗證伺服器……",
   "Server.ServerInfo.ActivationDeviceAuthCode": "授權碼：{0}",
   "Server.ServerInfo.ActivationDeviceAuthDenied": "授權請求已被拒絕。",

@@ -20,6 +20,8 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
     public async ValueTask<Retcode> AddFriend(int targetUid)
     {
         if (targetUid == Player.Uid) return Retcode.RetSucc; // Cannot add self
+        // The command bot and Global Chat contacts are permanent synthetic friends, never real apply targets.
+        if (ConfigManager.Config.ServerOption.IsSystemProfileUid(targetUid)) return Retcode.RetFriendAlreadyIsFriend;
         if (FriendData.FriendDetailList.ContainsKey(targetUid)) return Retcode.RetFriendAlreadyIsFriend;
         if (FriendData.BlackList.Contains(targetUid)) return Retcode.RetFriendInBlacklist;
         if (FriendData.SendApplyList.Contains(targetUid)) return Retcode.RetSucc; // Already send apply
@@ -43,6 +45,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
     public async ValueTask<PlayerData?> ConfirmAddFriend(int targetUid)
     {
         if (targetUid == Player.Uid) return null; // Cannot add self
+        if (ConfigManager.Config.ServerOption.IsSystemProfileUid(targetUid)) return null;
         if (FriendData.FriendDetailList.ContainsKey(targetUid)) return null;
         if (FriendData.BlackList.Contains(targetUid)) return null;
 
@@ -82,7 +85,8 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 
     public async ValueTask<PlayerData?> AddBlackList(int targetUid)
     {
-        var blackInfo = GetFriendPlayerData([targetUid]).First();
+        if (ConfigManager.Config.ServerOption.IsSystemProfileUid(targetUid)) return null;
+        var blackInfo = GetFriendPlayerData([targetUid]).FirstOrDefault(x => x.Uid == targetUid);
         var target = DatabaseHelper.Instance!.GetInstance<FriendData>(targetUid);
         if (blackInfo == null || target == null) return null;
 
@@ -124,6 +128,14 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 
     public async ValueTask SendMessage(int sendUid, int recvUid, string? message = null, int? extraId = null)
     {
+        if (GlobalChatManager.IsGlobalChatUid(recvUid))
+        {
+            // Relayed to every online player instead of being delivered as a private message; text only.
+            if (sendUid == Player.Uid && extraId is null or 0)
+                await GlobalChatManager.HandleMessageAsync(Player, message);
+            return;
+        }
+
         var data = BuildChatData(sendUid, recvUid, message, extraId);
         await PushPrivateMessageAsync(recvUid, (uint)sendUid, data);
 
@@ -175,7 +187,7 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 
     public FriendDetailData? GetFriendDetailData(int uid)
     {
-        if (uid == ConfigManager.Config.ServerOption.ServerProfile.Uid)
+        if (ConfigManager.Config.ServerOption.IsSystemProfileUid(uid))
             return new FriendDetailData { IsMark = true };
 
         if (!FriendData.FriendDetailList.TryGetValue(uid, out var friend)) return null;
@@ -256,13 +268,15 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
         var list = new List<PlayerData>();
         uids ??= [.. FriendData.FriendDetailList.Keys];
 
+        var serverOption = ConfigManager.Config.ServerOption;
         foreach (var friend in uids)
         {
+            if (serverOption.IsSystemProfileUid(friend)) continue; // appended below
             var player = PlayerData.GetPlayerByUid(friend);
             if (player != null) list.Add(player);
         }
 
-        var serverProfile = ConfigManager.Config.ServerOption.ServerProfile;
+        var serverProfile = serverOption.ServerProfile;
         list.Add(new PlayerData
         {
             Uid = serverProfile.Uid,
@@ -274,6 +288,22 @@ public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
             ChatBubble = serverProfile.ChatBubbleId,
             PersonalCard = serverProfile.PersonalCardId
         });
+
+        if (serverOption.GetGlobalChatUid() is { } globalChatUid)
+        {
+            var globalChat = serverOption.GlobalChat;
+            list.Add(new PlayerData
+            {
+                Uid = globalChatUid,
+                HeadIcon = globalChat.HeadIcon,
+                Signature = globalChat.Signature,
+                Level = globalChat.Level,
+                WorldLevel = 0,
+                Name = globalChat.Name,
+                ChatBubble = globalChat.ChatBubbleId,
+                PersonalCard = globalChat.PersonalCardId
+            });
+        }
 
         return list;
     }

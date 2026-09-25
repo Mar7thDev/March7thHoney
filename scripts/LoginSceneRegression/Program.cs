@@ -15,17 +15,20 @@ using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
+using March7thHoney.Database.Friend;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.ChessRogue;
+using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Send.Chat;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -317,6 +320,79 @@ var magicAreaId = GameData.RogueMagicAreaData.Keys.Min();
 var magicStart = await magicPlayer.RogueMagicManager!.StartRun(magicAreaId, 1, [], magicAvatarIds);
 Check("RogueMagic area data builds a playable run",
     magicStart.Ret == Retcode.RetSucc && magicStart.Run?.Layers.Count > 0);
+
+// Global chat: a second synthetic contact whose messages are relayed to every online player.
+var serverOption = config.ServerOption;
+var globalChatUid = serverOption.GetGlobalChatUid() ?? 0;
+Check("global chat is enabled by default on its own uid", globalChatUid == 98 && globalChatUid != serverOption.ServerProfile.Uid);
+var friendList = player.FriendManager!.ToProto();
+var globalContact = friendList.FriendList.SingleOrDefault(friend => friend.PlayerInfo.Uid == globalChatUid);
+Check("friend list shows the global chat contact next to the command bot", globalContact != null
+    && friendList.FriendList.Any(friend => friend.PlayerInfo.Uid == serverOption.ServerProfile.Uid)
+    && globalContact.IsMarked && globalContact.PlayerInfo.OnlineStatus == FriendOnlineStatus.Online
+    && globalContact.PlayerInfo.Nickname == serverOption.GlobalChat.Name
+    && globalContact.PlayerInfo.AssistSimpleInfoList.Count == serverOption.GlobalChat.AssistInfo.Count);
+Check("player detail lookup resolves the global contact, not the first system entry",
+    player.FriendManager.GetFriendPlayerData([globalChatUid]).FirstOrDefault(x => x.Uid == globalChatUid)?.Name
+    == serverOption.GlobalChat.Name);
+Check("friend requests to system contacts are rejected", await player.FriendManager.AddFriend(globalChatUid)
+    == Retcode.RetFriendAlreadyIsFriend && !player.FriendManager.FriendData.SendApplyList.Contains(globalChatUid));
+List<FriendChatData> GlobalHistory(PlayerInstance p) =>
+    p.FriendManager!.FriendData.ChatHistory.GetValueOrDefault(globalChatUid)?.MessageList ?? [];
+var chatClock = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+var relayRecipients = new[] { player, roguePlayer, chessPlayer };
+var relayResult = await GlobalChatManager.RelayAsync(magicPlayer, "  hello everyone  ", relayRecipients, chatClock);
+var expectedRelay = $"[{magicPlayer.Data.Name} / {magicPlayer.Uid}]: hello everyone";
+Check("global chat relays to every recipient and the sender from the contact", relayResult == GlobalChatRelayResultEnum.Relayed
+    && relayRecipients.Append(magicPlayer).All(p => GlobalHistory(p).LastOrDefault() is { } last
+        && last.Message == expectedRelay && last.SendUid == globalChatUid && last.ReceiveUid == p.Uid));
+Check("global chat never runs through the command bot conversation",
+    !magicPlayer.FriendManager!.FriendData.ChatHistory.ContainsKey(serverOption.ServerProfile.Uid));
+var historyBefore = GlobalHistory(player).Count;
+Check("empty global chat text is ignored", await GlobalChatManager.RelayAsync(magicPlayer, "   ", relayRecipients, chatClock)
+    == GlobalChatRelayResultEnum.Ignored && GlobalHistory(player).Count == historyBefore);
+Check("too-long global chat text is rejected without relaying", await GlobalChatManager.RelayAsync(magicPlayer,
+    new string('x', serverOption.GlobalChat.MaxLength + 1), relayRecipients, chatClock) == GlobalChatRelayResultEnum.TooLong
+    && GlobalHistory(player).Count == historyBefore);
+Check("global chat rate limit allows the configured burst", await GlobalChatManager.RelayAsync(magicPlayer, "two",
+    relayRecipients, chatClock.AddSeconds(1)) == GlobalChatRelayResultEnum.Relayed
+    && await GlobalChatManager.RelayAsync(magicPlayer, "three", relayRecipients, chatClock.AddSeconds(2))
+    == GlobalChatRelayResultEnum.Relayed);
+Check("global chat rate limit rejects the next message inside the window", await GlobalChatManager.RelayAsync(magicPlayer,
+    "four", relayRecipients, chatClock.AddSeconds(59)) == GlobalChatRelayResultEnum.RateLimited
+    && GlobalHistory(player).Last().Message.EndsWith(": three"));
+Check("global chat rate limit is per sender", await GlobalChatManager.RelayAsync(chessPlayer, "other sender",
+    relayRecipients, chatClock.AddSeconds(59)) == GlobalChatRelayResultEnum.Relayed);
+Check("global chat rate limit window slides", await GlobalChatManager.RelayAsync(magicPlayer, "five", relayRecipients,
+    chatClock.AddSeconds(60)) == GlobalChatRelayResultEnum.Relayed);
+var rateLimitCount = serverOption.GlobalChat.RateLimitCount;
+serverOption.GlobalChat.RateLimitCount = 0;
+for (var i = 0; i < serverOption.GlobalChat.MaxHistory + 5; i++)
+    await GlobalChatManager.RelayAsync(roguePlayer, $"flood {i}", relayRecipients, chatClock.AddMinutes(5));
+serverOption.GlobalChat.RateLimitCount = rateLimitCount;
+Check("global chat history is trimmed to MaxHistory per player", relayRecipients.All(p =>
+    GlobalHistory(p).Count == serverOption.GlobalChat.MaxHistory
+    && GlobalHistory(p).Last().Message.EndsWith($": flood {serverOption.GlobalChat.MaxHistory + 4}")));
+var globalHistoryPacket = GetPrivateChatHistoryScRsp.Parser.ParseFrom(
+    new PacketGetPrivateChatHistoryScRsp((uint)player.Uid, (uint)globalChatUid, player).Data);
+Check("global chat history ends with the configured welcome as its oldest entry",
+    globalHistoryPacket.ChatMessageList.Count == serverOption.GlobalChat.MaxHistory + 1
+    && globalHistoryPacket.ChatMessageList.Last().MessageDatas.Single().ChatData.MessageText
+    == serverOption.GlobalChat.WelcomeMessage);
+var botHistoryPacket = GetPrivateChatHistoryScRsp.Parser.ParseFrom(new PacketGetPrivateChatHistoryScRsp(
+    (uint)player.Uid, (uint)serverOption.ServerProfile.Uid, player).Data);
+Check("command bot history gets no global chat welcome", botHistoryPacket.ChatMessageList.All(message =>
+    message.MessageDatas.All(data => data.ChatData.MessageText != serverOption.GlobalChat.WelcomeMessage)));
+serverOption.GlobalChat.Uid = serverOption.ServerProfile.Uid;
+Check("global chat uid colliding with the command bot disables the contact", serverOption.GetGlobalChatUid() == null
+    && player.FriendManager.GetFriendPlayerData().Count(x => x.Uid == serverOption.ServerProfile.Uid) == 1);
+serverOption.GlobalChat.Uid = globalChatUid;
+serverOption.GlobalChat.Enabled = false;
+Check("disabled global chat removes the contact and relays nothing", serverOption.GetGlobalChatUid() == null
+    && player.FriendManager.GetFriendPlayerData().All(x => x.Uid != globalChatUid)
+    && await GlobalChatManager.RelayAsync(magicPlayer, "off", relayRecipients, chatClock.AddHours(1))
+    == GlobalChatRelayResultEnum.Disabled);
+serverOption.GlobalChat.Enabled = true;
 
 var rogueTournLobby = new SceneInstance(player, GameData.MazePlaneData[10341], 10341001, 10341901);
 var rogueTournLobbyGroup = rogueTournLobby.FloorInfo!.Groups[13];
