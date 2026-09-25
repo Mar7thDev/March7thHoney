@@ -27,6 +27,7 @@ using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Game.Tutorial;
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet.Recv.Mission;
 using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
@@ -613,6 +614,36 @@ Check("entry-zero story transition preserves successful saved-scene teleport", s
 var storyLeave = await player.TryEnterScene(0, 0, false);
 Check("entry-zero story exit returns to original scene", storyLeave.Success && storyLeave.IsOverMap
     && player.StoryLineManager.StoryLineData.CurStoryLineId == 0 && player.Data.EntryId == 102020107);
+
+// Tutorials popped from the maze main page hold free-play input, so a merely running target cannot close them.
+var tutorialPlayer = new PlayerInstance(60006);
+await tutorialPlayer.InitializeAsync();
+var tutorialMissions = tutorialPlayer.MissionManager!.Data;
+tutorialMissions.EnableMissionOverride = true;
+bool TutorialClosesWith(int tutorialId, int mainId, MissionPhaseEnum status)
+{
+    tutorialMissions.SetMainMissionStatus(mainId, status);
+    return TutorialHelper.CanClose(tutorialPlayer, tutorialId);
+}
+Check("free-play tutorial 3006 is not closable while its target main 1000511 only runs",
+    GameData.TutorialDataData[3006].TriggerParams.Any(trigger => trigger.TriggerType == "OnMazeMainPage") &&
+    !TutorialClosesWith(3006, 1000511, MissionPhaseEnum.Accept) && TutorialClosesWith(3006, 1000511, MissionPhaseEnum.Finish));
+Check("battle tutorial 1001 stays closable on a running target main 1000101",
+    TutorialClosesWith(1001, 1000101, MissionPhaseEnum.Accept) && TutorialClosesWith(1001, 1000101, MissionPhaseEnum.Finish) &&
+    !TutorialClosesWith(1001, 1000101, MissionPhaseEnum.None));
+TutorialDataExcel SyntheticTutorial(int id, bool freePlay, string finishType, string finishParam) => new()
+{
+    TutorialID = id,
+    TriggerParams = freePlay ? [new TutorialTriggerParam { TriggerType = "OnMazeMainPage", TriggerParam = "0" }] : [],
+    FinishTriggerParams = [new TutorialTriggerParam { TriggerType = finishType, TriggerParam = finishParam }]
+};
+GameData.TutorialDataData[99000001] = SyntheticTutorial(99000001, false, "TutorialFinish", "99000002");
+GameData.TutorialDataData[99000002] = SyntheticTutorial(99000002, true, "FinishMainMission", "1000511");
+GameData.TutorialDataData[99000003] = SyntheticTutorial(99000003, true, "TutorialFinish", "99000004");
+GameData.TutorialDataData[99000004] = SyntheticTutorial(99000004, false, "FinishMainMission", "1000511");
+Check("TutorialFinish recursion takes strictness from the target tutorial's own triggers",
+    !TutorialClosesWith(99000001, 1000511, MissionPhaseEnum.Accept) && TutorialClosesWith(99000003, 1000511, MissionPhaseEnum.Accept));
+foreach (var id in new[] { 99000001, 99000002, 99000003, 99000004 }) GameData.TutorialDataData.Remove(id);
 
 // Exercise the real send path with two in-memory KCP peers: no sockets or production server.
 var outbound = new LoopbackKcpTransport();
