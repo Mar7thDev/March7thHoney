@@ -27,6 +27,7 @@ public class CommandSetlevel : ICommand
         player.OnLevelChange();
         player.Data.Exp = GameData.GetPlayerExpRequired(level);
         await player.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));
+        await player.OnLevelUp();
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.Setlevel.SetlevelSuccess"));
     }

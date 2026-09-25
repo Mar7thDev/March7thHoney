@@ -43,5 +43,12 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - `/giveall avatar`：不带参数时已拥有角色的等级、星魂和当前命途保持不变，新角色为 1 级 / 0 魂；显式 `r` 写入角色已拥有的全部命途且不改等级，显式 `l` 不改星魂；开拓者只解锁当前性别的命途。
 - `/language`：控制台不能固定语言；别名不区分大小写，只接受 `Config/Languages` 中存在文件的语言；固定后以新语言回复，`PlayerCommandSender` 使用固定语言，`auto` 清除后按客户端语言回复；固定值写入 `Player` 表，旧表自动补充可空 `LanguagePin` 列并读为未固定。
 - 开拓者命途：资源中开拓者命途按奇数男 / 偶数女配对；存档保留两种性别的命途，但 `GetAvatarDataScRsp` 的命途列表与 `BasicTypeIdList`、`PlayerSyncScNotify` 只下发当前性别；切换命途时按性别归一并返回实际存储的 id，其他角色的命途不能套到开拓者上，`/hero type` 拒绝非开拓者命途；切换性别后仍保留原存档命途。
+- 经典模拟宇宙房间出口：锚点组的 `PROP_ROGUE_DOOR` 携带 `rogue_game_info{room_id, MAJKFIMPOOF}` 指向下一房间，战斗房间以 Closed 加载且忽略已存的道具状态；祝福待选时不开门，经真实 `HandleRogueCommonPendingActionCsReq` 选择后在响应前下发 Open 刷新；无祝福可选的战斗胜利直接开门；开门状态不写入楼层道具存档。
+- 经典模拟宇宙离开：已胜利未离开的对局在重新登录时被丢弃而登录仍恢复其房间场景，此时 `LeaveRogueCsReq` 不结算、直接返回大厅（先 `1491` 再成功响应，附阵容与大厅场景，并清除额外阵容）；不在模拟宇宙房间时仍返回状态不匹配。
+- 任务对话：开启任务系统的玩家在追踪主线唯一的 Talk 完成门（`1010202/101020206`）所在楼层发送 `FinishTalkMissionCsReq{talk_str:"0"}` 时只回 ACK，不完成任何任务；客户端上报自己的对话串后该子任务照常完成。
+- 教程可关闭判定：触发条件含 `OnMazeMainPage` 的自由探索弹窗（如 `3006 → 1000511`）要求目标任务已完成，目标仅进行中时不可关闭；战斗内教程（如 `1001 → 1000101`）仍接受进行中或已完成；`TutorialFinish` 递归按目标教程自身的触发条件判定严格性。
+- 主线开始条件：`AcceptMainMissionByCondition` 同时要求 `TakeParam` 与 `BeginParam`；`1010502` 在 `1010403` 完成后、开拓等级 11 时不接取，经验发放升到 13 级后自动接取；空或 `Auto` 的 `BeginParam` 不构成限制。
+- 经典模拟宇宙命令号：祝福强化监听 `1858` 并在 `1849` 回复（`5571/5588` 属于 ChessRogue）；`PickRogueAvatarCsReq`（`1846`）在 `1840` 回显两组角色：请求 #14 特殊角色写入响应 #9，请求 #9 基础角色写入响应 #2。
+- 模拟宇宙大厅图鉴机械臂（`80112001/3/300003`、`300008`，`Prop_Rogue_Gallery`）：无存档时，任务系统关闭或模拟宇宙教程主线 `4030002` 已完成则以 Open 加载，教程主线未完成时保持 Closed。
 
 边界：这不是安卓客户端测试，不能据此宣称加载卡死已在实机消失。密钥不匹配会被明确拒绝；让对应客户端成功登录仍需配套的公私钥。本修复不删除或合并历史 Base64 账号。

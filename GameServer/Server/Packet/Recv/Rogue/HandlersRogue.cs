@@ -132,6 +132,13 @@ public sealed class HandlerLeaveRogueCsReq : PlayerHandler
         var inst = await manager.FinishRun();
         if (inst == null)
         {
+            // No run to settle, but a room scene restored at login still has to return to the lobby.
+            if (await manager.LeaveOrphanedRoom())
+            {
+                await SendLeft(connection, player);
+                return;
+            }
+
             await connection.SendPacket(new PacketRogueScRsp(CmdIds.LeaveRogueScRsp,
                 new LeaveRogueScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
@@ -146,6 +153,11 @@ public sealed class HandlerLeaveRogueCsReq : PlayerHandler
             return;
         }
 
+        await SendLeft(connection, player);
+    }
+
+    private static async Task SendLeft(Connection connection, PlayerInstance player)
+    {
         // Without the scene-change signal the client can stay in the rogue-scene state after leaving.
         await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
         await connection.SendPacket(new PacketRogueScRsp(CmdIds.LeaveRogueScRsp, new LeaveRogueScRsp
@@ -265,6 +277,9 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
             // The official response echoes the queue position in both fields.
             rsp.QueuePosition = req.MPLGEEGOAMC;
             rsp.BFNEPPCNOOI = req.MPLGEEGOAMC;
+
+            // The resolved draft clears the room: the official refreshes the exit portal Open before the response.
+            await manager.OpenRoomExit();
         }
 
         await connection.SendPacket(new PacketRogueScRsp(CmdIds.HandleRogueCommonPendingActionScRsp, rsp));
@@ -306,12 +321,28 @@ public sealed class HandlerGetRogueBuffEnhanceInfoCsReq : PlayerHandler
     }
 }
 
-[Opcode(CmdIds.EnhanceRogueBuffCsReq)]
+// Classic Simulated Universe enhance is the 18xx pair (4.4 SimulatedRogueEnhanceRogueBuffCsReq, obf CINMCBDCBMJ /
+// NAHANHPHGGF); the plainly named 5571/5588 pair is the ChessRogue one.
+[Opcode(CmdIds.CmdEnhanceRogueBuffCsReq)]
 public sealed class HandlerEnhanceRogueBuffCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketRogueScRsp(CmdIds.EnhanceRogueBuffScRsp, new EnhanceRogueBuffScRsp()));
+        await connection.SendPacket(new PacketRogueScRsp(CmdIds.CmdEnhanceRogueBuffScRsp, new NAHANHPHGGF()));
+    }
+}
+
+// Official 4.5 capture: each pick channel is echoed back, special ids (request #14) in response #9 and base
+// ids (request #9) in response #2. An empty response leaves the client's picker waiting with input locked.
+[Opcode(CmdIds.PickRogueAvatarCsReq)]
+public sealed class HandlerPickRogueAvatarCsReq : Handler<PickRogueAvatarCsReq>
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player, PickRogueAvatarCsReq req)
+    {
+        var rsp = new PickRogueAvatarScRsp();
+        rsp.NDFHHFGKMAI.AddRange(req.DFPPCAJDBFK);
+        rsp.DFPPCAJDBFK.AddRange(req.NOEPBNMJFGL);
+        await connection.SendPacket(new PacketRogueScRsp(CmdIds.PickRogueAvatarScRsp, rsp));
     }
 }
 

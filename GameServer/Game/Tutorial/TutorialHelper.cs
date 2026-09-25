@@ -79,6 +79,11 @@ public static class TutorialHelper
             // No finish condition: only a self-closing AutoFinish tutorial is safe.
             return config.RestoreType == "AutoFinish";
 
+        // A tutorial popped from the maze main page holds free-play input until it closes, so a target mission
+        // that is merely running can never be played to its finish while the popup is open: require it finished.
+        // Battle-triggered tutorials open inside a battle that ends on its own and keep Accept-or-Finish.
+        var strict = OpensInFreePlay(config);
+
         foreach (var finish in config.FinishTriggerParams)
             switch (finish.TriggerType)
             {
@@ -87,15 +92,15 @@ public static class TutorialHelper
                     break; // client-watched level-ups close these itself
                 case "FinishMainMission":
                 case "TakeMainMission":
-                    if (!MainMissionClosable(player, finish.TriggerParam)) return false;
+                    if (!MainMissionClosable(player, finish.TriggerParam, strict)) return false;
                     break;
                 case "FinishSubMission":
-                    if (!SubMissionClosable(player, finish.TriggerParam)) return false;
+                    if (!SubMissionClosable(player, finish.TriggerParam, strict)) return false;
                     break;
                 case "TakeSubMission":
                     // The take fires as the sub's owner main progresses; the client's watcher keys off the
                     // target's Doing status in missionSync (story tutorials 1002/1003 rely on this).
-                    if (!SubMissionTakeClosable(player, finish.TriggerParam)) return false;
+                    if (!SubMissionTakeClosable(player, finish.TriggerParam, strict)) return false;
                     break;
                 case "TutorialFinish":
                     if (!int.TryParse(finish.TriggerParam, out var target) || target == 0) break;
@@ -110,25 +115,33 @@ public static class TutorialHelper
         return true;
     }
 
-    private static bool MainMissionClosable(PlayerInstance player, string target)
+    private static bool OpensInFreePlay(TutorialDataExcel config)
     {
-        if (!int.TryParse(target, out var id) || id == 0) return true;
-        var status = player.MissionManager?.GetMainMissionStatus(id) ?? MissionPhaseEnum.None;
-        return status is MissionPhaseEnum.Finish or MissionPhaseEnum.Accept;
+        return config.TriggerParams.Any(trigger => trigger.TriggerType == "OnMazeMainPage");
     }
 
-    private static bool SubMissionClosable(PlayerInstance player, string target)
+    private static bool Closable(MissionPhaseEnum status, bool strict)
     {
-        if (!int.TryParse(target, out var id) || id == 0) return true;
-        var status = player.MissionManager?.GetSubMissionStatus(id) ?? MissionPhaseEnum.None;
-        return status is MissionPhaseEnum.Finish or MissionPhaseEnum.Accept;
+        return status == MissionPhaseEnum.Finish || (!strict && status == MissionPhaseEnum.Accept);
     }
 
-    private static bool SubMissionTakeClosable(PlayerInstance player, string target)
+    private static bool MainMissionClosable(PlayerInstance player, string target, bool strict)
+    {
+        if (!int.TryParse(target, out var id) || id == 0) return true;
+        return Closable(player.MissionManager?.GetMainMissionStatus(id) ?? MissionPhaseEnum.None, strict);
+    }
+
+    private static bool SubMissionClosable(PlayerInstance player, string target, bool strict)
+    {
+        if (!int.TryParse(target, out var id) || id == 0) return true;
+        return Closable(player.MissionManager?.GetSubMissionStatus(id) ?? MissionPhaseEnum.None, strict);
+    }
+
+    private static bool SubMissionTakeClosable(PlayerInstance player, string target, bool strict)
     {
         if (!int.TryParse(target, out var id) || id == 0) return true;
         if (!GameData.SubMissionInfoData.TryGetValue(id, out var sub) || sub.SubMissionInfo == null ||
             sub.SubMissionInfo.MainMissionID == 0) return true;
-        return MainMissionClosable(player, sub.SubMissionInfo.MainMissionID.ToString());
+        return MainMissionClosable(player, sub.SubMissionInfo.MainMissionID.ToString(), strict);
     }
 }

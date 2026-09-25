@@ -613,6 +613,12 @@ public partial class PlayerInstance(PlayerData data)
         OnLevelChange();
     }
 
+    /// <summary>Re-evaluates level-gated main missions (TakeParam/BeginParam PlayerLevel) after a level-up.</summary>
+    public async ValueTask OnLevelUp()
+    {
+        if (MissionEnabled) await MissionManager!.AcceptMainMissionByCondition();
+    }
+
     public void OnLevelChange()
     {
         if (!ConfigManager.Config.ServerOption.AutoUpgradeWorldLevel) return;
