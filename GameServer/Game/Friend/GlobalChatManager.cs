@@ -76,14 +76,14 @@ public static class GlobalChatManager
         var config = options.GlobalChat;
         if (config.MaxLength > 0 && new StringInfo(text).LengthInTextElements > config.MaxLength)
         {
-            await NotifySenderAsync(sender, globalUid, I18NManager.TranslateAsCertainLang(sender.Language,
+            await NotifySenderAsync(sender, globalUid, I18NManager.TranslateAsCertainLang(sender.EffectiveLanguage,
                 "Game.GlobalChat.TooLong", config.MaxLength.ToString()));
             return GlobalChatRelayResultEnum.TooLong;
         }
 
         if (!TryConsumeRateLimit(sender.Uid, now))
         {
-            await NotifySenderAsync(sender, globalUid, I18NManager.TranslateAsCertainLang(sender.Language,
+            await NotifySenderAsync(sender, globalUid, I18NManager.TranslateAsCertainLang(sender.EffectiveLanguage,
                 "Game.GlobalChat.RateLimited", config.RateLimitCount.ToString(),
                 config.RateLimitWindowSeconds.ToString()));
             return GlobalChatRelayResultEnum.RateLimited;
