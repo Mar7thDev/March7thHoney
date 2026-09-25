@@ -125,13 +125,13 @@ public class PlayerData : BaseDatabaseDataHelper
         var instance = DatabaseHelper.Instance!.GetInstance<AvatarData>(Uid);
         if (instance == null)
         {
-            // Handle server profile
-            var serverProfile = ConfigManager.Config.ServerOption.ServerProfile;
-            if (Uid == serverProfile.Uid)
+            // Handle the synthetic contacts (command bot / Global Chat): always online.
+            var systemAssists = ConfigManager.Config.ServerOption.GetSystemProfileAssistInfo(Uid);
+            if (systemAssists != null)
             {
                 info.OnlineStatus = FriendOnlineStatus.Online;
                 info.AssistSimpleInfoList.AddRange(
-                    serverProfile.AssistInfo.Select((x, index) =>
+                    systemAssists.Select((x, index) =>
                         new AssistSimpleInfo
                         {
                             AvatarId = (uint)x.AvatarId,
@@ -180,11 +180,11 @@ public class PlayerData : BaseDatabaseDataHelper
 
         if (avatarInfo == null || inventoryInfo == null || questInfo == null)
         {
-            // Handle server profile
-            var serverProfile = ConfigManager.Config.ServerOption.ServerProfile;
-            if (Uid == serverProfile.Uid)
+            // Handle the synthetic contacts (command bot / Global Chat)
+            var systemAssists = ConfigManager.Config.ServerOption.GetSystemProfileAssistInfo(Uid);
+            if (systemAssists != null)
                 info.AssistAvatarList.AddRange(
-                    serverProfile.AssistInfo.Select((x, index) =>
+                    systemAssists.Select((x, index) =>
                         new DisplayAvatarDetailInfo
                         {
                             AvatarId = (uint)x.AvatarId,
