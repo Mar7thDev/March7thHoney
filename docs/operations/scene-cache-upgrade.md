@@ -13,3 +13,5 @@ dotnet run --project scripts/SceneCacheUpgrade/SceneCacheUpgrade.csproj -c Relea
 工具仅补入组的 `IsHoyoGroup`，不重建全部游戏资源，不读取运营配置或数据库。它先验证新快照还原该字段后与原快照完全一致，再写入新的输出文件；遇到服务端氛围组缺资源、异常数据或已存在输出文件会停止，绝不覆盖输入。旧缓存保留但当前资源已移除的客户端组或非氛围组会原样保留并报告数量，该标记不参与这些组的服务端加载筛选。
 
 验证回归后，备份现有缓存，再将新文件复制为 `Config/Resource.bin`。回滚时程序和缓存需要一起恢复；旧程序不能读取新增字段的缓存。
+
+经典模拟宇宙祝福修复后，`RogueBuffData` / `RogueBuffGroupData` 以 MemoryPack union 保存经典与差分宇宙子类型，缓存格式随之改变：修复前的缓存无法被当前程序或本工具读取（日志报 `MemoryPackUnion` 标签错误，服务端随后尝试从原始资源重建）。此类缓存不能用本工具升级，需用同版本完整原始资源重新生成；仅部署缓存的环境必须同时更新程序与 `Config/Resource.bin`，回滚时同样一起恢复。

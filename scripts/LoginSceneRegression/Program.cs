@@ -248,6 +248,26 @@ var loadedCache = ResourceCache.LoadCache();
 Check("upgraded cache loads without the raw Resources tree", loadedCache);
 if (!loadedCache) throw new InvalidOperationException("The checked-out 4.5 resource cache could not be loaded.");
 config.Path.ResourcePath = rawResourcePath;
+
+// With the raw RogueBuffGroup table present, the stale check must accept this cache and reject one whose classic
+// groups collapsed onto id 0 (pre-4.5-key-mapping) or whose buff rows lost their classic subtype.
+var validateCache = typeof(ResourceCache).GetMethod("ValidateLoadedCache", BindingFlags.Static | BindingFlags.NonPublic)!;
+var rogueRawPath = Path.Combine(scratch, "rogue-raw-resource-json");
+Directory.CreateDirectory(Path.Combine(rogueRawPath, config.Path.ExcelOutputDirs[0]));
+File.WriteAllText(Path.Combine(rogueRawPath, config.Path.ExcelOutputDirs[0], "RogueBuffGroup.json"), "[]");
+config.Path.ResourcePath = rogueRawPath;
+var freshCacheValid = (bool)validateCache.Invoke(null, null)!;
+GameData.RogueBuffGroupData[0] = new RogueBuffGroupExcel();
+var collapsedCacheValid = (bool)validateCache.Invoke(null, null)!;
+GameData.RogueBuffGroupData.Remove(0);
+config.Path.ResourcePath = rawResourcePath;
+Check("cache keeps classic Simulated Universe buff and group subtypes",
+    GameData.RogueBuffData.Values.OfType<RogueBuffExcel>().Any() &&
+    GameData.RogueBuffData.Values.OfType<RogueTournBuffExcel>().Any() &&
+    GameData.RogueBuffGroupData.GetValueOrDefault(100005) is RogueBuffGroupExcel { IsLoaded: true } normalDraft &&
+    normalDraft.BuffList.Count > 0 && normalDraft.BuffList.All(buff => buff is RogueBuffExcel));
+Check("stale check accepts the fresh cache and rejects collapsed classic RogueBuffGroup rows",
+    freshCacheValid && !collapsedCacheValid);
 Check("cache preserves Hoyo atmosphere metadata", GameData.FloorInfoData["P10202_F10202001"].Groups[169].IsHoyoGroup == true);
 var mapEntranceFiles = typeof(MapEntranceExcel).GetCustomAttribute<ResourceEntity>()!.FileName;
 Check("map entrance loader includes the 4.5 LD table", mapEntranceFiles.Contains("MapEntranceLD.json"));
@@ -1267,6 +1287,26 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         ? rogueDoors.All(door => door.State == PropStateEnum.Closed)
         : rogueDoors.All(door => door.State == PropStateEnum.Open) &&
           battleFrames.Any(frame => frame.Id == CmdIds.SceneGroupRefreshScNotify)));
+
+    // The draft pool comes from the real RogueBuffGroup rows (100005 / 100003 / room content + 8000), so the
+    // offered blessings must be classic RogueBuff rows that some classic group resolves to.
+    var classicGroupBuffIds = GameData.RogueBuffGroupData.Values.OfType<RogueBuffGroupExcel>()
+        .SelectMany(group => group.BuffList).Select(buff => buff.GetId()).ToHashSet();
+    var draftedBuffs = rogueInst.BuffSelect?.SelectBuffs ?? [];
+    var draftNotifies = battleFrames.Where(frame => frame.Id == CmdIds.SyncRogueCommonPendingActionScNotify)
+        .Select(frame => SyncRogueCommonPendingActionScNotify.Parser.ParseFrom(frame.Body)).ToList();
+    Check("classic Simulated Universe room win drafts classic blessings from the real RogueBuffGroup data",
+        draftedAfterBattle && draftedBuffs.Count == 3 &&
+        draftedBuffs.All(buff => buff is RogueBuffExcel && classicGroupBuffIds.Contains(buff.GetId()) &&
+                                 GameData.RogueBuffData.GetValueOrDefault(buff.GetId()) is RogueBuffExcel) &&
+        draftNotifies.Count == 2 && draftNotifies.All(notify =>
+            notify.Action?.Detail?.PCHGEGFBKLF?.LEOFNINDJDB.Select(offer => (int)offer.BuffId)
+                .SequenceEqual(draftedBuffs.Select(buff => buff.MazeBuffID)) == true));
+    var draftedPick = draftedBuffs.FirstOrDefault();
+    Check("drafted classic blessing can be picked into the run",
+        draftedPick != null && roguePlayer.RogueManager.SelectBuff(draftedPick.MazeBuffID) == Retcode.RetSucc &&
+        rogueInst.Buffs.TryGetValue(draftedPick.MazeBuffID, out var ownedPick) &&
+        ownedPick.Level == draftedPick.MazeBuffLevel);
     rogueInst.BuffSelect = null;
 
     // A won run is dropped on relog while login restores its room scene: LeaveRogue has no run to settle.
@@ -1352,7 +1392,6 @@ int[] trialModules = [2000502, 2000603, 2000903, 2001101, 2001102, 2001103, 2001
 Check("activity schedule lists every Role Trial module", schedule != null &&
     trialModules.All(id => schedule.ScheduleData.Any(row => row.ActivityId == id && row.PanelId is 20011 or 20064 or 20087 or 20089 or 20090)));
 
-var validateCache = typeof(ResourceCache).GetMethod("ValidateLoadedCache", BindingFlags.Static | BindingFlags.NonPublic)!;
 var fakeRaw = Path.Combine(scratch, "fake-raw");
 Directory.CreateDirectory(Path.Combine(fakeRaw, "ExcelOutputGameCore"));
 File.WriteAllText(Path.Combine(fakeRaw, "ExcelOutputGameCore/AvatarDemoConfig.json"), "[]");

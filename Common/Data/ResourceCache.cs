@@ -1,5 +1,6 @@
 using System.IO.Compression;
 using MemoryPack;
+using March7thHoney.Data.Excel;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
 
@@ -110,6 +111,20 @@ public static class ResourceCache
             (GameData.RogueTournAreaData.Count > 0 && GameData.RoguePersonaTalentData.Count == 0))
         {
             Logger.Warn("Resource cache is stale: RogueTourn area/persona tables are missing.");
+            return false;
+        }
+
+        // Caches built before the 4.5 RogueBuffGroup key mapping collapse every classic Simulated Universe group
+        // onto id 0, and caches built before the buff/group unions lose the classic RogueBuff subtype, so no
+        // blessing draft pool resolves. Only rejected when the raw table is available to rebuild from.
+        var hasRogueBuffGroup = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "RogueBuffGroup.json")));
+        if (hasRogueBuffGroup && (GameData.RogueBuffGroupData.ContainsKey(0) ||
+                                  !GameData.RogueBuffData.Values.Any(buff => buff is RogueBuffExcel) ||
+                                  !GameData.RogueBuffGroupData.Values.Any(group =>
+                                      group is RogueBuffGroupExcel && group.BuffList.Any(buff => buff is RogueBuffExcel))))
+        {
+            Logger.Warn("Resource cache is stale: classic Simulated Universe blessing groups are missing.");
             return false;
         }
 

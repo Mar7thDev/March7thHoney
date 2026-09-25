@@ -44,6 +44,7 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - `/language`：控制台不能固定语言；别名不区分大小写，只接受 `Config/Languages` 中存在文件的语言；固定后以新语言回复，`PlayerCommandSender` 使用固定语言，`auto` 清除后按客户端语言回复；固定值写入 `Player` 表，旧表自动补充可空 `LanguagePin` 列并读为未固定。
 - 开拓者命途：资源中开拓者命途按奇数男 / 偶数女配对；存档保留两种性别的命途，但 `GetAvatarDataScRsp` 的命途列表与 `BasicTypeIdList`、`PlayerSyncScNotify` 只下发当前性别；切换命途时按性别归一并返回实际存储的 id，其他角色的命途不能套到开拓者上，`/hero type` 拒绝非开拓者命途；切换性别后仍保留原存档命途。
 - 经典模拟宇宙房间出口：锚点组的 `PROP_ROGUE_DOOR` 携带 `rogue_game_info{room_id, MAJKFIMPOOF}` 指向下一房间，战斗房间以 Closed 加载且忽略已存的道具状态；祝福待选时不开门，经真实 `HandleRogueCommonPendingActionCsReq` 选择后在响应前下发 Open 刷新；无祝福可选的战斗胜利直接开门；开门状态不写入楼层道具存档。
+- 经典模拟宇宙祝福：缓存保留经典 `RogueBuffExcel` 与差分宇宙 `RogueTournBuffExcel` 子类型，`RogueBuffGroup` 按 4.5 混淆键加载，`100005` 等祝福组完整解析为经典祝福；原始 `RogueBuffGroup.json` 存在时，过期检查接受当前缓存、拒绝祝福组塌缩到 id `0` 的旧缓存。首个战斗房间胜利后从真实祝福组抽出 3 个经典祝福，两次 `SyncRogueCommonPendingActionScNotify` 下发同一选项，并可选入对局。
 - 经典模拟宇宙离开：已胜利未离开的对局在重新登录时被丢弃而登录仍恢复其房间场景，此时 `LeaveRogueCsReq` 不结算、直接返回大厅（先 `1491` 再成功响应，附阵容与大厅场景，并清除额外阵容）；不在模拟宇宙房间时仍返回状态不匹配。
 - 任务对话：开启任务系统的玩家在追踪主线唯一的 Talk 完成门（`1010202/101020206`）所在楼层发送 `FinishTalkMissionCsReq{talk_str:"0"}` 时只回 ACK，不完成任何任务；客户端上报自己的对话串后该子任务照常完成。
 - 教程可关闭判定：触发条件含 `OnMazeMainPage` 的自由探索弹窗（如 `3006 → 1000511`）要求目标任务已完成，目标仅进行中时不可关闭；战斗内教程（如 `1001 → 1000101`）仍接受进行中或已完成；`TutorialFinish` 递归按目标教程自身的触发条件判定严格性。
