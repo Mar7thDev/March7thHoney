@@ -1,6 +1,7 @@
 using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
+using March7thHoney.Enums.Mission;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.Inventory;
@@ -21,7 +22,10 @@ public partial class InventoryManager
 
         await RemoveItem(2, composeConfig.CoinCost * count);
 
-        return await AddItem(composeConfig.ItemID, count, false);
+        var composed = await AddItem(composeConfig.ItemID, count, false);
+        if (composed != null)
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.AnyItemComposeCount);
+        return composed;
     }
 
     public async ValueTask<List<ItemData>> SellItem(ItemCostData costData, bool toMaterial)
@@ -99,6 +103,8 @@ public partial class InventoryManager
             }
 
         var removedItems = RemoveItems(removeItems);
+        var resolvedRelics = removeItems.Count(item => item.uniqueId != 0 &&
+                                                       GameData.RelicConfigData.ContainsKey(item.itemId));
 
         foreach (var itemInfo in itemMap)
         {
@@ -106,6 +112,8 @@ public partial class InventoryManager
             if (item != null) items.Add(item);
         }
 
+        if (resolvedRelics > 0)
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.ResolveRelic, resolvedRelics);
         return items;
     }
 }

@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.RogueMagic;
@@ -224,9 +225,13 @@ public class RogueMagicManager : BasePlayerManager
         return Retcode.RetSucc;
     }
 
-    public async ValueTask LeaveRun()
+    /// <param name="countAsFinished">False when a run that never started is rolled back (RogueFinishCnt).</param>
+    public async ValueTask LeaveRun(bool countAsFinished = true)
     {
+        var hadRun = RunInstance != null;
         await ClearRun();
+        if (hadRun && countAsFinished)
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueFinishCnt);
     }
 
     private async ValueTask ClearRun()

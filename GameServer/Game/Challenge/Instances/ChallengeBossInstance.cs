@@ -285,6 +285,9 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
 
             // Call MissionManager
             await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.ChallengeFinish, this);
+            // ChallengeFinishCnt ParamIntList: 1 Forgotten Hall, 2 Pure Fiction, 3 Apocalyptic Shadow.
+            if (IsWin)
+                await Player.MissionManager.TriggerCountEvent(MissionFinishTypeEnum.ChallengeFinishCnt, 1, 3);
 
             // save
             Player.ChallengeManager.SaveBattleRecord(this);
