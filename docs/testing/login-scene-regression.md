@@ -31,5 +31,6 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - 经典模拟宇宙离开：已胜利未离开的对局在重新登录时被丢弃而登录仍恢复其房间场景，此时 `LeaveRogueCsReq` 不结算、直接返回大厅（先 `1491` 再成功响应，附阵容与大厅场景，并清除额外阵容）；不在模拟宇宙房间时仍返回状态不匹配。
 - 任务对话：开启任务系统的玩家在追踪主线唯一的 Talk 完成门（`1010202/101020206`）所在楼层发送 `FinishTalkMissionCsReq{talk_str:"0"}` 时只回 ACK，不完成任何任务；客户端上报自己的对话串后该子任务照常完成。
 - 教程可关闭判定：触发条件含 `OnMazeMainPage` 的自由探索弹窗（如 `3006 → 1000511`）要求目标任务已完成，目标仅进行中时不可关闭；战斗内教程（如 `1001 → 1000101`）仍接受进行中或已完成；`TutorialFinish` 递归按目标教程自身的触发条件判定严格性。
+- 主线开始条件：`AcceptMainMissionByCondition` 同时要求 `TakeParam` 与 `BeginParam`；`1010502` 在 `1010403` 完成后、开拓等级 11 时不接取，经验发放升到 13 级后自动接取；空或 `Auto` 的 `BeginParam` 不构成限制。
 
 边界：这不是安卓客户端测试，不能据此宣称加载卡死已在实机消失。密钥不匹配会被明确拒绝；让对应客户端成功登录仍需配套的公私钥。本修复不删除或合并历史 Base64 账号。

@@ -645,6 +645,28 @@ Check("TutorialFinish recursion takes strictness from the target tutorial's own 
     !TutorialClosesWith(99000001, 1000511, MissionPhaseEnum.Accept) && TutorialClosesWith(99000003, 1000511, MissionPhaseEnum.Accept));
 foreach (var id in new[] { 99000001, 99000002, 99000003, 99000004 }) GameData.TutorialDataData.Remove(id);
 
+// BeginParam is a second gate after TakeParam: 1010502 is taken after 1010403 but begins at Trailblaze Level 13.
+var gatedPlayer = new PlayerInstance(60007);
+await gatedPlayer.InitializeAsync();
+var gatedMissions = gatedPlayer.MissionManager!.Data;
+gatedMissions.EnableMissionOverride = true;
+const int LevelGatedMain = 1010502;
+var levelGatedExcel = GameData.MainMissionData[LevelGatedMain];
+gatedPlayer.Data.Level = 11;
+gatedPlayer.Data.Exp = 0;
+gatedMissions.SetMainMissionStatus(1010403, MissionPhaseEnum.Finish);
+await gatedPlayer.MissionManager.AcceptMainMissionByCondition(false);
+Check("BeginParam PlayerLevel 13 keeps 1010502 unaccepted at level 11 although its take gate is met",
+    levelGatedExcel.IsEqual(gatedMissions) && !levelGatedExcel.IsBeginSatisfied(gatedMissions) &&
+    gatedMissions.GetMainMissionStatus(LevelGatedMain) == MissionPhaseEnum.None);
+var expToLevel13 = GameData.PlayerLevelConfigData[13].PlayerExp - GameData.PlayerLevelConfigData[11].PlayerExp;
+await gatedPlayer.InventoryManager!.AddItem(22, expToLevel13);
+Check("reaching level 13 through an exp grant accepts the level-gated main",
+    gatedPlayer.Data.Level == 13 && gatedMissions.GetMainMissionStatus(LevelGatedMain) == MissionPhaseEnum.Accept);
+Check("an empty or Auto BeginParam does not gate a main", GameData.MainMissionData.Values
+    .Where(main => main.BeginParam.All(param => param.Type == MissionTakeTypeEnum.Auto))
+    .All(main => main.IsBeginSatisfied(gatedMissions)));
+
 // Exercise the real send path with two in-memory KCP peers: no sockets or production server.
 var outbound = new LoopbackKcpTransport();
 var inbound = new LoopbackKcpTransport();
