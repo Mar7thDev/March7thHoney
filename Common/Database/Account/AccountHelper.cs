@@ -31,6 +31,25 @@ public static class AccountHelper
         }
     }
 
+    /// <summary>
+    ///     Account created on behalf of the trusted website (WebAccountApi). The website owns sign-up policy
+    ///     and email ownership, so the public registration switch and identity limits do not apply, but a
+    ///     username may not differ from an existing one only by case: players type it into the game login.
+    /// </summary>
+    public static AccountData CreateWebAccount(string username, string email, string password)
+    {
+        lock (CreationLock)
+        {
+            username = username.Trim();
+            var accounts = DatabaseHelper.GetAllInstanceFromMap<AccountData>() ??
+                           DatabaseHelper.GetAllInstance<AccountData>() ?? [];
+            if (accounts.Any(a => string.Equals(a.Username?.Trim(), username, StringComparison.OrdinalIgnoreCase)))
+                throw new Exception("Account already exists");
+            ValidatePassword(password);
+            return CreateAccountCore(username, email, password, 0, null, true, null);
+        }
+    }
+
     public static void CreateAccount(string username, int uid)
     {
         CreateAccount(username, null, uid);

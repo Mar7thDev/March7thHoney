@@ -191,6 +191,24 @@ public class AuthOption
     public int PasswordResetTokenExpireMinutes { get; set; } = 60;
     public EmailOption Email { get; set; } = new();
     public AntiAbuseOption AntiAbuse { get; set; } = new();
+
+    // When public registration is off, the built-in register page redirects here (e.g. the website
+    // that provisions accounts through WebAccountApi). Empty keeps the "registration closed" page.
+    public string ExternalRegistrationUrl { get; set; } = "";
+    public WebAccountApiOption WebAccountApi { get; set; } = new();
+}
+
+/// <summary>
+///     Server-to-server API that lets a trusted website create and manage game accounts
+///     (/external/web-account/v1/*). Requests need the shared secret in the
+///     X-March7thHoney-Web-Secret header and must come from one of <see cref="AllowedAddresses" />
+///     (checked after trusted-proxy forwarding, so traffic relayed by a reverse proxy is not local).
+/// </summary>
+public class WebAccountApiOption
+{
+    public bool Enabled { get; set; } = false;
+    public string Secret { get; set; } = "";
+    public List<string> AllowedAddresses { get; set; } = ["127.0.0.1", "::1"];
 }
 
 public class AntiAbuseOption

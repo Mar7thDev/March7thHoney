@@ -115,6 +115,13 @@ namespace March7thHoney.WebServer;
 [JsonSerializable(typeof(AdminRoutes.AdminHotfixRequest))]
 [JsonSerializable(typeof(AdminRoutes.AdminReloadRequest))]
 [JsonSerializable(typeof(AdminRoutes.AdminRateLimitClearRequest))]
+// Website game-account provisioning (WebAccountRoutes)
+[JsonSerializable(typeof(WebAccountResult<WebAccountWrap>))]
+[JsonSerializable(typeof(WebAccountResult<WebAccountStatus>))]
+[JsonSerializable(typeof(WebAccountError))]
+[JsonSerializable(typeof(WebAccountRoutes.WebCreateAccountRequest))]
+[JsonSerializable(typeof(WebAccountRoutes.WebSetPasswordRequest))]
+[JsonSerializable(typeof(WebAccountRoutes.WebBanRequest))]
 // Bare scalars embedded into the admin HTML page (AdminPageRenderer).
 [JsonSerializable(typeof(string))]
 [JsonSerializable(typeof(string[]))]
