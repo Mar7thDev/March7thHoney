@@ -11,7 +11,7 @@
 ```json
 "Auth": {
   "EnableRegistration": false,
-  "ExternalRegistrationUrl": "https://march7th.cc/cyrene/register",
+  "ExternalRegistrationUrl": "https://cyrene.march7th.cc/register",
   "WebAccountApi": {
     "Enabled": true,
     "Secret": "<随机长字符串，与网站 GAME_SERVER_SECRET 一致>",
