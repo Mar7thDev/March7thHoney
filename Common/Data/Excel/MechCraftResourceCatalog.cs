@@ -8,6 +8,8 @@ public static class MechCraftResourceCatalog
     internal static Dictionary<int, MechCraftRewardGroupExcel> RewardGroups { get; } = [];
     internal static Dictionary<int, MechCraftRewardTabExcel> RewardTabs { get; } = [];
 
+    private static readonly Dictionary<int, int> BetaAttributeLevelThresholds = new() { [1] = 520, [2] = 1120, [3] = 2100 };
+
     public static IReadOnlySet<int> RewardQuestIDs => GameData.MechCraftRewardQuestIDs;
     public static IReadOnlyDictionary<int, int> AttributeLevelThresholds => GameData.MechCraftAttributeLevelThresholds;
     public static IReadOnlyList<int> BlockingSubMissionIDs => IntListConstant("Entrance_Block_Gameplay_SubmissionIDs");
@@ -47,6 +49,16 @@ public static class MechCraftResourceCatalog
                 if (int.TryParse(key, out var level) && threshold.IntValue is >= 0 and <= int.MaxValue)
                     GameData.MechCraftAttributeLevelThresholds[level] = (int)threshold.IntValue.Value;
         }
+
+        // TurnBasedGameData collapses every ConstValue map to its last entry keyed by the value type name, e.g.
+        // {"IntValue":{"IntValue":2100}}. When only that entry survives and it still matches the top level of the
+        // complete 4.6 beta table, use the beta table instead of leaving every attribute at level 0.
+        if (GameData.MechCraftAttributeLevelThresholds.Count == 0 &&
+            GameData.ConstValueClientData.TryGetValue("MechCraft_Attribute_Level_To_MinValueMap", out var collapsed) &&
+            collapsed.MapValue is { Count: 1 } collapsedMap &&
+            collapsedMap.Values.Single().IntValue == BetaAttributeLevelThresholds[BetaAttributeLevelThresholds.Keys.Max()])
+            foreach (var (level, threshold) in BetaAttributeLevelThresholds)
+                GameData.MechCraftAttributeLevelThresholds[level] = threshold;
 
         if (!RewardAssociations.TryGetValue(panelID, out var association))
             throw new InvalidDataException($"MechCraft activity {panelID} has no reward association.");
