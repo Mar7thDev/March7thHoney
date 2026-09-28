@@ -12,20 +12,38 @@ using March7thHoney.Command.Command;
 using March7thHoney.Command.Command.Cmd;
 using March7thHoney.Data;
 using March7thHoney.Data.Config.Scene;
+using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
+using March7thHoney.Database.Friend;
+using March7thHoney.Database.Generated;
+using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
+using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
+using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Command;
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.ChessRogue;
+using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.RogueMagic;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Game.Tutorial;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet;
+using March7thHoney.GameServer.Server.Packet.Recv.Activity;
+using March7thHoney.GameServer.Server.Packet.Send.Activity;
+using March7thHoney.GameServer.Server.Packet.Send.Avatar;
+using March7thHoney.GameServer.Server.Packet.Send.Chat;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.GameServer.Server.Packet.Recv.Mission;
+using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -34,6 +52,7 @@ using March7thHoney.Kcp;
 using March7thHoney.Kcp.KcpSharp;
 using Google.Protobuf;
 using MemoryPack;
+using Microsoft.Data.Sqlite;
 using March7thHoney.Util;
 using March7thHoney.WebServer;
 using March7thHoney.WebServer.Handler;
@@ -210,21 +229,48 @@ foreach (var (comparison, expected) in new[] { (CompareTypeEnum.Equal, false), (
         new SavedValueCondition { SavedValueName = "x", Value = 1, Operation = comparison }).IsTrue(new() { ["x"] = 2 }) == expected);
 }
 
-if (args is ["--legacy-cache", var legacyCachePath])
+string? OptionValue(string name)
 {
-    File.Copy(Path.GetFullPath(legacyCachePath, repository), Path.Combine(scratch, "Resource.bin"));
+    var index = Array.IndexOf(args, name);
+    return index >= 0 && index + 1 < args.Length ? Path.GetFullPath(args[index + 1], repository) : null;
+}
+if (OptionValue("--legacy-cache") is { } legacyCachePath)
+{
+    File.Copy(legacyCachePath, Path.Combine(scratch, "Resource.bin"));
     var legacyLoaded = ResourceCache.LoadCache();
     Check("legacy cache validation follows the active protocol requirements", applies45ProdCompatibility
         ? !legacyLoaded && GameData.FloorInfoData["P10202_F10202001"].Groups[169].IsHoyoGroup == null
         : legacyLoaded);
 }
-File.Copy(Path.Combine(repository, "Config/Resource.bin"), Path.Combine(scratch, "Resource.bin"), overwrite: true);
+// --resource-cache tests a freshly generated cache before it replaces the tracked Config/Resource.bin.
+var cacheSource = OptionValue("--resource-cache") ?? Path.Combine(repository, "Config/Resource.bin");
+File.Copy(cacheSource, Path.Combine(scratch, "Resource.bin"), overwrite: true);
 var rawResourcePath = config.Path.ResourcePath;
 config.Path.ResourcePath = Path.Combine(scratch, "no-raw-resource-json");
 var loadedCache = ResourceCache.LoadCache();
 Check("upgraded cache loads without the raw Resources tree", loadedCache);
 if (!loadedCache) throw new InvalidOperationException("The checked-out 4.5 resource cache could not be loaded.");
 config.Path.ResourcePath = rawResourcePath;
+
+// With the raw RogueBuffGroup table present, the stale check must accept this cache and reject one whose classic
+// groups collapsed onto id 0 (pre-4.5-key-mapping) or whose buff rows lost their classic subtype.
+var validateCache = typeof(ResourceCache).GetMethod("ValidateLoadedCache", BindingFlags.Static | BindingFlags.NonPublic)!;
+var rogueRawPath = Path.Combine(scratch, "rogue-raw-resource-json");
+Directory.CreateDirectory(Path.Combine(rogueRawPath, config.Path.ExcelOutputDirs[0]));
+File.WriteAllText(Path.Combine(rogueRawPath, config.Path.ExcelOutputDirs[0], "RogueBuffGroup.json"), "[]");
+config.Path.ResourcePath = rogueRawPath;
+var freshCacheValid = (bool)validateCache.Invoke(null, null)!;
+GameData.RogueBuffGroupData[0] = new RogueBuffGroupExcel();
+var collapsedCacheValid = (bool)validateCache.Invoke(null, null)!;
+GameData.RogueBuffGroupData.Remove(0);
+config.Path.ResourcePath = rawResourcePath;
+Check("cache keeps classic Simulated Universe buff and group subtypes",
+    GameData.RogueBuffData.Values.OfType<RogueBuffExcel>().Any() &&
+    GameData.RogueBuffData.Values.OfType<RogueTournBuffExcel>().Any() &&
+    GameData.RogueBuffGroupData.GetValueOrDefault(100005) is RogueBuffGroupExcel { IsLoaded: true } normalDraft &&
+    normalDraft.BuffList.Count > 0 && normalDraft.BuffList.All(buff => buff is RogueBuffExcel));
+Check("stale check accepts the fresh cache and rejects collapsed classic RogueBuffGroup rows",
+    freshCacheValid && !collapsedCacheValid);
 Check("cache satisfies the active version's Hoyo metadata requirement", applies45ProdCompatibility
     ? GameData.FloorInfoData["P10202_F10202001"].Groups[169].IsHoyoGroup == true
     : GameData.FloorInfoData["P10202_F10202001"].Groups[169].IsHoyoGroup is null or true);
@@ -316,6 +362,30 @@ Check("new Rogue area starts and enters its generated first room",
     rogueStart == Retcode.RetSucc && roguePlayer.RogueManager.RogueInstance?.MapId == 904 &&
     roguePlayer.SceneInstance?.EntryId != 0);
 
+var rogueRoomScene = roguePlayer.SceneInstance!;
+var rogueRoomExcel = roguePlayer.RogueManager.GetActiveRoomExcel(rogueRoomScene.EntryId)!;
+var rogueExitTargets = roguePlayer.RogueManager.GetRoomExitTargets();
+List<EntityProp> RogueExitDoors(SceneInstance scene) => scene.GetEntitiesInGroup<EntityProp>(rogueRoomExcel.GroupID)
+    .Where(prop => prop.Excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR).ToList();
+var rogueRoomHasMonsters = rogueRoomScene.Entities.Values.OfType<EntityMonster>().Any();
+var rogueDoors = RogueExitDoors(rogueRoomScene);
+Check("Rogue room exit portals carry a next-room destination",
+    rogueExitTargets.Count > 0 && rogueDoors.Count > 0 &&
+    rogueDoors.All(door => door.RogueDoorTarget is { } target && rogueExitTargets.Contains(target)));
+Check("Rogue room exit portal serializes rogue_game_info {room_id, site}", rogueDoors.All(door =>
+    door.ToProto().Prop.ExtraInfo?.RogueGameInfo is { } info && info.RoomId == door.RogueDoorTarget!.Value.RoomId &&
+    info.MAJKFIMPOOF == door.RogueDoorTarget.Value.SiteId));
+Check("Rogue combat room exit portal loads Closed until the room is cleared", !rogueRoomHasMonsters ||
+    rogueDoors.All(door => door.State == PropStateEnum.Closed));
+var seededDoor = rogueDoors[0];
+roguePlayer.SetScenePropData(rogueRoomScene.FloorId, seededDoor.GroupId, seededDoor.InstId, PropStateEnum.Open);
+var rebuiltRogueRoom = new SceneInstance(roguePlayer, rogueRoomScene.Excel, rogueRoomScene.FloorId, rogueRoomScene.EntryId);
+var rebuiltDoor = await rebuiltRogueRoom.EntityLoader!.LoadProp(seededDoor.PropInfo, seededDoor.Group);
+Check("Rogue room ignores a saved portal state and ships it Closed with its destination",
+    rebuiltRogueRoom.EntityLoader is RogueEntityLoader && rebuiltDoor?.State == PropStateEnum.Closed &&
+    rebuiltDoor.RogueDoorTarget == seededDoor.RogueDoorTarget);
+roguePlayer.SceneData!.ScenePropData.Remove(rogueRoomScene.FloorId);
+
 var chessPlayer = new PlayerInstance(60003);
 await chessPlayer.InitializeAsync();
 var chessAvatarIds = chessPlayer.AvatarManager!.Data.FormalAvatars
@@ -332,6 +402,209 @@ var magicAreaId = GameData.RogueMagicAreaData.Keys.Min();
 var magicStart = await magicPlayer.RogueMagicManager!.StartRun(magicAreaId, 1, [], magicAvatarIds);
 Check("RogueMagic area data builds a playable run",
     magicStart.Ret == Retcode.RetSucc && magicStart.Run?.Layers.Count > 0);
+
+// Global chat: a second synthetic contact whose messages are relayed to every online player.
+var serverOption = config.ServerOption;
+var globalChatUid = serverOption.GetGlobalChatUid() ?? 0;
+Check("global chat is enabled by default on its own uid", globalChatUid == 98 && globalChatUid != serverOption.ServerProfile.Uid);
+var friendList = player.FriendManager!.ToProto();
+var globalContact = friendList.FriendList.SingleOrDefault(friend => friend.PlayerInfo.Uid == globalChatUid);
+Check("friend list shows the global chat contact next to the command bot", globalContact != null
+    && friendList.FriendList.Any(friend => friend.PlayerInfo.Uid == serverOption.ServerProfile.Uid)
+    && globalContact.IsMarked && globalContact.PlayerInfo.OnlineStatus == FriendOnlineStatus.Online
+    && globalContact.PlayerInfo.Nickname == serverOption.GlobalChat.Name
+    && globalContact.PlayerInfo.AssistSimpleInfoList.Count == serverOption.GlobalChat.AssistInfo.Count);
+Check("player detail lookup resolves the global contact, not the first system entry",
+    player.FriendManager.GetFriendPlayerData([globalChatUid]).FirstOrDefault(x => x.Uid == globalChatUid)?.Name
+    == serverOption.GlobalChat.Name);
+Check("friend requests to system contacts are rejected", await player.FriendManager.AddFriend(globalChatUid)
+    == Retcode.RetFriendAlreadyIsFriend && !player.FriendManager.FriendData.SendApplyList.Contains(globalChatUid));
+List<FriendChatData> GlobalHistory(PlayerInstance p) =>
+    p.FriendManager!.FriendData.ChatHistory.GetValueOrDefault(globalChatUid)?.MessageList ?? [];
+var chatClock = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+var relayRecipients = new[] { player, roguePlayer, chessPlayer };
+var relayResult = await GlobalChatManager.RelayAsync(magicPlayer, "  hello everyone  ", relayRecipients, chatClock);
+var expectedRelay = $"[{magicPlayer.Data.Name} / {magicPlayer.Uid}]: hello everyone";
+Check("global chat relays to every recipient and the sender from the contact", relayResult == GlobalChatRelayResultEnum.Relayed
+    && relayRecipients.Append(magicPlayer).All(p => GlobalHistory(p).LastOrDefault() is { } last
+        && last.Message == expectedRelay && last.SendUid == globalChatUid && last.ReceiveUid == p.Uid));
+Check("global chat never runs through the command bot conversation",
+    !magicPlayer.FriendManager!.FriendData.ChatHistory.ContainsKey(serverOption.ServerProfile.Uid));
+var historyBefore = GlobalHistory(player).Count;
+Check("empty global chat text is ignored", await GlobalChatManager.RelayAsync(magicPlayer, "   ", relayRecipients, chatClock)
+    == GlobalChatRelayResultEnum.Ignored && GlobalHistory(player).Count == historyBefore);
+Check("too-long global chat text is rejected without relaying", await GlobalChatManager.RelayAsync(magicPlayer,
+    new string('x', serverOption.GlobalChat.MaxLength + 1), relayRecipients, chatClock) == GlobalChatRelayResultEnum.TooLong
+    && GlobalHistory(player).Count == historyBefore);
+Check("global chat rate limit allows the configured burst", await GlobalChatManager.RelayAsync(magicPlayer, "two",
+    relayRecipients, chatClock.AddSeconds(1)) == GlobalChatRelayResultEnum.Relayed
+    && await GlobalChatManager.RelayAsync(magicPlayer, "three", relayRecipients, chatClock.AddSeconds(2))
+    == GlobalChatRelayResultEnum.Relayed);
+Check("global chat rate limit rejects the next message inside the window", await GlobalChatManager.RelayAsync(magicPlayer,
+    "four", relayRecipients, chatClock.AddSeconds(59)) == GlobalChatRelayResultEnum.RateLimited
+    && GlobalHistory(player).Last().Message.EndsWith(": three"));
+Check("global chat rate limit is per sender", await GlobalChatManager.RelayAsync(chessPlayer, "other sender",
+    relayRecipients, chatClock.AddSeconds(59)) == GlobalChatRelayResultEnum.Relayed);
+Check("global chat rate limit window slides", await GlobalChatManager.RelayAsync(magicPlayer, "five", relayRecipients,
+    chatClock.AddSeconds(60)) == GlobalChatRelayResultEnum.Relayed);
+var rateLimitCount = serverOption.GlobalChat.RateLimitCount;
+serverOption.GlobalChat.RateLimitCount = 0;
+for (var i = 0; i < serverOption.GlobalChat.MaxHistory + 5; i++)
+    await GlobalChatManager.RelayAsync(roguePlayer, $"flood {i}", relayRecipients, chatClock.AddMinutes(5));
+serverOption.GlobalChat.RateLimitCount = rateLimitCount;
+Check("global chat history is trimmed to MaxHistory per player", relayRecipients.All(p =>
+    GlobalHistory(p).Count == serverOption.GlobalChat.MaxHistory
+    && GlobalHistory(p).Last().Message.EndsWith($": flood {serverOption.GlobalChat.MaxHistory + 4}")));
+var globalHistoryPacket = GetPrivateChatHistoryScRsp.Parser.ParseFrom(
+    new PacketGetPrivateChatHistoryScRsp((uint)player.Uid, (uint)globalChatUid, player).Data);
+Check("global chat history ends with the configured welcome as its oldest entry",
+    globalHistoryPacket.ChatMessageList.Count == serverOption.GlobalChat.MaxHistory + 1
+    && globalHistoryPacket.ChatMessageList.Last().MessageDatas.Single().ChatData.MessageText
+    == serverOption.GlobalChat.WelcomeMessage);
+var botHistoryPacket = GetPrivateChatHistoryScRsp.Parser.ParseFrom(new PacketGetPrivateChatHistoryScRsp(
+    (uint)player.Uid, (uint)serverOption.ServerProfile.Uid, player).Data);
+Check("command bot history gets no global chat welcome", botHistoryPacket.ChatMessageList.All(message =>
+    message.MessageDatas.All(data => data.ChatData.MessageText != serverOption.GlobalChat.WelcomeMessage)));
+serverOption.GlobalChat.Uid = serverOption.ServerProfile.Uid;
+Check("global chat uid colliding with the command bot disables the contact", serverOption.GetGlobalChatUid() == null
+    && player.FriendManager.GetFriendPlayerData().Count(x => x.Uid == serverOption.ServerProfile.Uid) == 1);
+serverOption.GlobalChat.Uid = globalChatUid;
+serverOption.GlobalChat.Enabled = false;
+Check("disabled global chat removes the contact and relays nothing", serverOption.GetGlobalChatUid() == null
+    && player.FriendManager.GetFriendPlayerData().All(x => x.Uid != globalChatUid)
+    && await GlobalChatManager.RelayAsync(magicPlayer, "off", relayRecipients, chatClock.AddHours(1))
+    == GlobalChatRelayResultEnum.Disabled);
+serverOption.GlobalChat.Enabled = true;
+
+// /giveall avatar: only typed values touch owned characters; new characters start at l1 / r0.
+var givePlayer = new PlayerInstance(60005);
+await givePlayer.InitializeAsync();
+var giveTarget = new ProbeConnection { Player = givePlayer };
+var giveSender = new ProbeSender();
+var ownedHero = givePlayer.AvatarManager!.GetHero()!;
+var ownedMarch = givePlayer.AvatarManager.GetFormalAvatar(1001)!;
+ownedHero.Level = 70;
+ownedHero.GetCurPathInfo().Rank = 2;
+ownedMarch.Level = 50;
+ownedMarch.GetCurPathInfo().Rank = 4;
+var heroPathBefore = ownedHero.AvatarId;
+var marchPathBefore = ownedMarch.AvatarId;
+var maleHeroPathsBefore = ownedHero.PathInfos.Keys.Where(pathId => pathId % 2 == 1).ToHashSet();
+var giveall = new CommandGiveall();
+await giveall.GiveAllAvatar(new CommandArg("avatar", giveSender, giveTarget));
+var newAvatar = givePlayer.AvatarManager.Data.FormalAvatars.FirstOrDefault(avatar => avatar.BaseAvatarId == 1002);
+Check("bare /giveall avatar keeps owned levels and Eidolons", ownedHero.Level == 70 && ownedHero.GetCurPathInfo().Rank == 2
+    && ownedMarch.Level == 50 && ownedMarch.GetCurPathInfo().Rank == 4);
+Check("bare /giveall avatar keeps the current path of owned characters",
+    ownedHero.AvatarId == heroPathBefore && ownedMarch.AvatarId == marchPathBefore);
+Check("bare /giveall avatar creates missing characters at l1 / r0",
+    newAvatar is { Level: 1 } && newAvatar.PathInfos.Values.All(path => path.Rank == 0));
+Check("giveall unlocks every Path of multi-path characters", ownedMarch.PathInfos.ContainsKey(1224)
+    && GameData.MultiplePathAvatarConfigData.Values.Where(x => x.BaseAvatarID == 8001 && x.AvatarID % 2 == 0)
+        .All(x => ownedHero.PathInfos.ContainsKey(x.AvatarID)));
+Check("giveall unlocks only the Trailblazer paths of the player's gender",
+    ownedHero.PathInfos.Keys.Where(pathId => pathId % 2 == 1).ToHashSet().SetEquals(maleHeroPathsBefore));
+await giveall.GiveAllAvatar(new CommandArg("avatar r6", giveSender, giveTarget));
+Check("explicit giveall Eidolon applies to every owned path without touching levels",
+    ownedMarch.PathInfos.Values.All(path => path.Rank == 6) && ownedHero.PathInfos.Values.All(path => path.Rank == 6)
+    && ownedMarch.Level == 50 && ownedHero.Level == 70 && newAvatar?.Level == 1);
+await giveall.GiveAllAvatar(new CommandArg("avatar l80", giveSender, giveTarget));
+Check("explicit giveall level applies without touching Eidolons", ownedMarch.Level == 80 && ownedHero.Level == 80
+    && newAvatar?.Level == 80 && ownedMarch.PathInfos.Values.All(path => path.Rank == 6)
+    && ownedMarch.Promotion == GameData.GetMinPromotionForLevel(80));
+
+// /language: per-player pin persisted on PlayerData, used by command replies and chat notices.
+var languageCommand = new CommandLanguage();
+var languageTarget = new ProbeConnection { Player = givePlayer };
+var languageSender = new ProbeSender(givePlayer.Uid);
+async Task<string> LanguageReply(string raw, ICommandSender who)
+{
+    var probeWho = who as ProbeSender;
+    probeWho?.Messages.Clear();
+    await languageCommand.Language(new CommandArg(raw, who, languageTarget));
+    return probeWho?.Messages.LastOrDefault() ?? "";
+}
+givePlayer.Language = "CHS";
+Check("console cannot pin a language", await LanguageReply("en", new ProbeSender())
+    == I18NManager.Translate("Game.Command.Language.PlayerOnly") && givePlayer.Data.LanguagePin == null);
+Check("language list shows only installed language files", (await LanguageReply("list", languageSender))
+    == I18NManager.Translate("Game.Command.Language.Available", "CHS, CHT, EN"));
+Check("language alias pins EN and answers in English", await LanguageReply("English", languageSender)
+    == I18NManager.TranslateAsCertainLang("EN", "Game.Command.Language.Set", "EN")
+    && givePlayer.Data.LanguagePin == "EN" && givePlayer.EffectiveLanguage == "EN"
+    && new PlayerCommandSender(givePlayer).Language == "EN");
+Check("language aliases are case-insensitive", await LanguageReply("ZH-Hant", languageSender)
+    == I18NManager.TranslateAsCertainLang("CHT", "Game.Command.Language.Set", "CHT") && givePlayer.Data.LanguagePin == "CHT");
+Check("language code without a file is rejected", (await LanguageReply("id", languageSender))
+    == I18NManager.Translate("Game.Command.Language.NotFound", "id", "CHS, CHT, EN") && givePlayer.Data.LanguagePin == "CHT");
+Check("language auto clears the pin and answers in the client language", await LanguageReply("auto", languageSender)
+    == I18NManager.TranslateAsCertainLang("CHS", "Game.Command.Language.Cleared", "CHS")
+    && givePlayer.Data.LanguagePin == null && givePlayer.EffectiveLanguage == "CHS");
+givePlayer.Data.LanguagePin = "EN";
+DatabaseHelper.MarkDirty(givePlayer.Uid);
+DatabaseHelper.Instance!.SaveDatabase();
+await using (var db = new SqliteConnection($"Data Source={Path.Combine(scratch, "regression.db")}"))
+{
+    await db.OpenAsync();
+    await using var query = db.CreateCommand();
+    query.CommandText = "select LanguagePin from Player where Uid = $uid";
+    query.Parameters.AddWithValue("$uid", givePlayer.Uid);
+    Check("language pin is persisted in the Player table", (await query.ExecuteScalarAsync()) as string == "EN");
+}
+await using (var oldDb = new SqliteConnection($"Data Source={Path.Combine(scratch, "old-player-table.db")}"))
+{
+    await oldDb.OpenAsync();
+    await using (var create = oldDb.CreateCommand())
+    {
+        create.CommandText = "create table \"Player\" (\"Uid\" INTEGER PRIMARY KEY, \"Name\" TEXT); " +
+                             "insert into \"Player\" (\"Uid\", \"Name\") values (70001, 'legacy')";
+        await create.ExecuteNonQueryAsync();
+    }
+    var playerStore = EntityStores.Map[typeof(PlayerData)];
+    playerStore.EnsureTable(oldDb);
+    var legacyPlayer = playerStore.LoadAll(oldDb).OfType<PlayerData>().Single();
+    Check("old Player tables gain a nullable LanguagePin column that loads as unpinned",
+        legacyPlayer.Uid == 70001 && legacyPlayer.Name == "legacy" && legacyPlayer.LanguagePin == null);
+}
+givePlayer.Data.LanguagePin = null;
+
+// Trailblazer paths: both genders stay stored, only the current gender is announced, and path changes are
+// normalized to the player's gender and echo the stored id.
+var heroPathConfigs = GameData.MultiplePathAvatarConfigData.Values.Where(x => x.BaseAvatarID == 8001).ToList();
+Check("Trailblazer path configs pair odd=male / even=female", heroPathConfigs.Count > 0 && heroPathConfigs.All(x =>
+    x.Gender == (x.AvatarID % 2 == 1 ? GenderTypeEnum.GENDER_MAN : GenderTypeEnum.GENDER_WOMAN)));
+var hero = givePlayer.AvatarManager.GetHero()!;
+List<uint> AnnouncedHeroPaths() => hero.ToAvatarPathDataProto().Select(path => path.AvatarId).ToList();
+bool OnlyGender(IEnumerable<uint> ids, int parity) => ids.Where(id => id is > 8000 and < 9000).All(id => id % 2 == parity);
+Check("female hero stores both genders but announces only female paths", givePlayer.Data.CurrentGender == Gender.Woman
+    && hero.PathInfos.ContainsKey(8001) && hero.PathInfos.ContainsKey(8002) && OnlyGender(AnnouncedHeroPaths(), 0)
+    && AnnouncedHeroPaths().Count == heroPathConfigs.Count(x => x.AvatarID % 2 == 0));
+var avatarDataRsp = GetAvatarDataScRsp.Parser.ParseFrom(new PacketGetAvatarDataScRsp(givePlayer).Data);
+Check("avatar data basic types and path list agree on the hero's gender",
+    OnlyGender(avatarDataRsp.BasicTypeIdList, 0) && OnlyGender(avatarDataRsp.AvatarPathDataInfoList.Select(x => x.AvatarId), 0)
+    && avatarDataRsp.BasicTypeIdList.Contains(8004u) && !avatarDataRsp.BasicTypeIdList.Contains(8003u));
+var heroSync = PlayerSyncScNotify.Parser.ParseFrom(new PacketPlayerSyncScNotify(hero).Data);
+Check("avatar sync announces only the hero's gender paths",
+    OnlyGender(heroSync.AvatarSync.AvatarPathDataInfoList.Select(x => x.AvatarId), 0));
+Check("female choosing a male path id stores the female variant", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8003) == 8004 && hero.AvatarId == 8004 && givePlayer.Data.CurBasicType == 8004);
+Check("female choosing a female path id keeps it", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8006) == 8006 && hero.AvatarId == 8006);
+Check("path change accepts any variant id as the base", await givePlayer.ChangeAvatarPathType(8004,
+    (MultiPathAvatarTypeEnum)8002) == 8002 && hero.AvatarId == 8002);
+Check("another character's path cannot be put on the hero", await givePlayer.ChangeAvatarPathType(8001,
+    MultiPathAvatarTypeEnum.Mar_7thRogue) == 0 && hero.AvatarId == 8002);
+Check("non-hero path change stores the requested path", await givePlayer.ChangeAvatarPathType(1001,
+    MultiPathAvatarTypeEnum.Mar_7thRogue) == 1224 && ownedMarch.AvatarId == 1224);
+giveSender.Messages.Clear();
+await new CommandHero().ChangeType(new CommandArg("type 1001", giveSender, giveTarget));
+Check("/hero type rejects a non-Trailblazer path", hero.AvatarId == 8002
+    && giveSender.Messages.Single() == I18NManager.Translate("Game.Command.Hero.HeroTypeNotSpecified"));
+await givePlayer.SetHeroGender(Gender.Man);
+Check("gender switch keeps stored paths and announces only male paths", hero.AvatarId == 8001
+    && hero.PathInfos.ContainsKey(8004) && OnlyGender(AnnouncedHeroPaths(), 1));
+Check("male choosing a female path id stores the male variant", await givePlayer.ChangeAvatarPathType(8001,
+    (MultiPathAvatarTypeEnum)8004) == 8003 && hero.AvatarId == 8003 && OnlyGender(AnnouncedHeroPaths(), 1));
 
 var rogueTournLobby = new SceneInstance(player, GameData.MazePlaneData[10341], 10341001, 10341901);
 var rogueTournLobbyGroup = rogueTournLobby.FloorInfo!.Groups[13];
@@ -580,6 +853,81 @@ else
         starskiffGroup, forceLoad: true))?.OfType<EntityProp>().Any(prop => prop.InstId == 300001) == true);
 }
 
+// Main-mission state on a content-package Maze floor: missions off keeps the lite-mode 1, missions on keeps the
+// resource/official 0 (official 20001001 feed ships SceneStateByMainMission 0).
+var missionFloorEntry = GameData.MapEntranceData.Values.Where(entry => entry.FloorID == 20001001).Min(entry => entry.ID);
+var missionFloorEntered = await player.TryEnterScene(missionFloorEntry, 0, false);
+var missionFloor = player.SceneInstance!;
+Check("floor 20001001 declares a zero-default SceneStateByMainMission in the production cache", missionFloorEntered.Success
+    && missionFloor.FloorInfo!.FloorSavedValue.Any(value => value.Name == "SceneStateByMainMission" && value.DefaultValue == 0));
+Check("missions disabled: content-package floor still exposes SceneStateByMainMission as 1",
+    missionFloor.BuildClientFloorSavedData().GetValueOrDefault("SceneStateByMainMission") == 1);
+player.MissionManager!.Data.EnableMissionOverride = true;
+var missionSnapshot = missionFloor.BuildClientFloorSavedData();
+Check("missions enabled: SceneStateByMainMission is not forced to 1",
+    missionSnapshot.GetValueOrDefault("SceneStateByMainMission") == 0
+    && missionFloor.FloorInfo!.Groups.Values.Any(group => group.SavedValueCondition.Conditions
+        .Any(condition => condition.SavedValueName == "SceneStateByMainMission") && !group.SavedValueCondition.IsTrue(missionSnapshot)));
+player.SceneData!.FloorSavedData[20001001] = new() { ["SceneStateByMainMission"] = 1 };
+Check("missions enabled: a story-written SceneStateByMainMission still wins",
+    missionFloor.BuildClientFloorSavedData().GetValueOrDefault("SceneStateByMainMission") == 1);
+player.SceneData.FloorSavedData.Remove(20001001);
+player.MissionManager.Data.EnableMissionOverride = null;
+
+// Summon-delivered maze buffs (Cyrene 14151 -> 141502) reference the summon entity, keep the authored lifetime,
+// and leave with the summon; the summon's lifetime is owned by the caster's timed maze buff 141501.
+var fieldScene = missionFloor;
+var fieldMonsters = fieldScene.Entities.Values.OfType<EntityMonster>().Where(monster => monster.IsAlive).Take(2).ToList();
+var fieldCaster = fieldScene.AvatarInfo.Values.First();
+Console.WriteLine($"Summon fixture: floor {fieldScene.FloorId}, {fieldMonsters.Count} monsters, caster entity {fieldCaster.EntityId}.");
+Check("summon fixture has two live monsters", fieldMonsters.Count == 2);
+Check("cache keeps SummonUnitData destroy flags", GameData.SummonUnitDataData[14151].RemoveMazeBuffOnDestroy
+    && !GameData.SummonUnitDataData[14101].RemoveMazeBuffOnDestroy);
+await fieldCaster.AddBuff(new SceneBuff(141501, 1, 1415, 30));
+var cyreneField = fieldScene.SummonUnit.Values.SingleOrDefault(unit => unit.SummonUnitId == 14151);
+Check("timed technique buff creates the field summon with official infinite lifetime",
+    cyreneField is { LifeTimeMs: -1 } && cyreneField.AttachEntityId == fieldCaster.EntityId);
+if (cyreneField != null && fieldMonsters.Count == 2)
+{
+    var fieldTargets = fieldMonsters.Select(monster => (uint)monster.EntityId).ToList();
+    Check("field trigger accepts the monsters", await fieldScene.TriggerSummonUnit(cyreneField.EntityId,
+        "HitNpcMonsterTrigger", fieldTargets) == Retcode.RetSucc);
+    var delivered = fieldMonsters.Select(monster => monster.BuffList.SingleOrDefault(buff => buff.BuffId == 141502)).ToList();
+    Check("summon-delivered buff references the summon entity with authored lifetime 500", delivered.All(buff =>
+        buff is { SummonUnitEntityId: var summonId, Duration: 500 } && summonId == cyreneField.EntityId
+        && buff.ToProto().BuffSummonEntityId == (uint)cyreneField.EntityId && buff.ToProto().LifeTime == 500));
+    Check("each monster receives its own buff instance", !ReferenceEquals(delivered[0], delivered[1]));
+    await fieldScene.TriggerSummonUnit(cyreneField.EntityId, "HitNpcMonsterTrigger", [fieldTargets[0]]);
+    var refreshed = fieldMonsters[1].BuffList.SingleOrDefault(buff => buff.BuffId == 141502);
+    Check("trigger exit refreshes the lifetime and keeps the summon reference",
+        refreshed is { Duration: 1 } && refreshed.SummonUnitEntityId == cyreneField.EntityId
+        && fieldMonsters[0].BuffList.Single(buff => buff.BuffId == 141502).Duration == 500);
+    await fieldCaster.RemoveBuff(141501);
+    Check("technique buff removal destroys the summon and the buffs it delivered",
+        !fieldScene.SummonUnit.Values.Any(unit => unit.SummonUnitId == 14151)
+        && fieldMonsters.All(monster => monster.BuffList.All(buff => buff.BuffId != 141502)));
+}
+await fieldCaster.AddBuff(new SceneBuff(141501, 1, 1415));
+Check("permanent owning buff keeps the bounded 45s summon lifetime",
+    fieldScene.SummonUnit.Values.SingleOrDefault(unit => unit.SummonUnitId == 14151)?.LifeTimeMs == 45000);
+await fieldCaster.RemoveBuff(141501);
+var keepBuffSummon = new EntitySummonUnit
+{
+    SummonUnitId = 14101, CreateAvatarEntityId = fieldCaster.EntityId, LifeTimeMs = -1,
+    TriggerList = GameData.SummonUnitDataData[14101].ConfigInfo?.TriggerConfig.CustomTriggers ?? []
+};
+await fieldScene.AddSummonUnitEntity(keepBuffSummon);
+if (fieldMonsters.Count == 2)
+{
+    await fieldScene.TriggerSummonUnit(keepBuffSummon.EntityId, keepBuffSummon.TriggerList[0].TriggerName,
+        [(uint)fieldMonsters[0].EntityId]);
+    var keptBuffIds = fieldMonsters[0].BuffList.Where(buff => buff.SummonUnitEntityId == keepBuffSummon.EntityId)
+        .Select(buff => buff.BuffId).ToList();
+    await fieldScene.RemoveSummonUnitById(14101);
+    Check("summon without RemoveMazeBuffOnDestroy leaves its delivered buffs", keptBuffIds.Count > 0
+        && keptBuffIds.All(id => fieldMonsters[0].BuffList.Any(buff => buff.BuffId == id)));
+}
+
 var previousScene = player.SceneInstance;
 const int MissingEntry = 99000002;
 GameData.MapEntranceData[MissingEntry] = new MapEntranceExcel { ID = MissingEntry, PlaneID = 10202, FloorID = 99000002 };
@@ -635,6 +983,232 @@ var storyLeave = await player.TryEnterScene(0, 0, false);
 Check("entry-zero story exit returns to original scene", storyLeave.Success && storyLeave.IsOverMap
     && player.StoryLineManager.StoryLineData.CurStoryLineId == 0 && player.Data.EntryId == 102020107);
 
+// /spawn: runtime monster/prop injection into the real Changle Tian scene and the custom battle it defines.
+var spawnCommand = new CommandSpawn();
+var spawnScene = player.SceneInstance!;
+var spawnOrigin = player.Data.Pos!;
+var battleMonsterIds = GameData.MonsterConfigData.Keys.Order().Take(8).ToList();
+Check("spawn parser reads two-letter options, clamps them and splits waves at separators and every 5 monsters",
+    CommandSpawn.TryParse(["monster", "lv150", "hp900", "x0", "r2", "s7", "@60001",
+            $"{battleMonsterIds[0]}", $"{battleMonsterIds[1]}", "/", .. battleMonsterIds.Skip(2).Select(id => $"{id}"), "bogus", "0"],
+        out var spawnRequest)
+    && spawnRequest.SpawnId == "monster" && spawnRequest.Level == CommandSpawn.MaxLevel && spawnRequest.Hp == 900
+    && spawnRequest.Amount == 1 && spawnRequest.Radius == CommandSpawn.MinRadius && spawnRequest.StageId == 7
+    && spawnRequest.Waves.Count == 3 && spawnRequest.Waves[0].SequenceEqual(battleMonsterIds.Take(2))
+    && spawnRequest.Waves[1].SequenceEqual(battleMonsterIds.Skip(2).Take(5)) && spawnRequest.Waves[2].SequenceEqual(battleMonsterIds.Skip(7))
+    && spawnRequest.InvalidBattleMonsters.SequenceEqual(["bogus", "0"]));
+Check("spawn parser rejects an overflowing option value", !CommandSpawn.TryParse(["monster", "x99999999999"], out _));
+Check("spawn 'monster' resolves the smallest NPC monster", CommandSpawn.Resolve("monster") is
+    { Kind: CommandSpawn.SpawnTargetKind.Monster } baseTarget && baseTarget.Monster!.ID == GameData.NpcMonsterDataData.Keys.Min());
+var mappedBattleMonster = GameData.MonsterConfigData.Values.FirstOrDefault(monster =>
+    !GameData.NpcMonsterDataData.ContainsKey(monster.MonsterID) &&
+    GameData.MonsterTemplateConfigData.TryGetValue(monster.MonsterTemplateID, out var template) &&
+    template.NPCMonsterList.Any(GameData.NpcMonsterDataData.ContainsKey));
+if (mappedBattleMonster != null)
+    Check("spawn maps a battle MonsterID to its template's first spawnable NPC monster",
+        CommandSpawn.Resolve(mappedBattleMonster.MonsterID.ToString()).Monster?.ID == GameData
+            .MonsterTemplateConfigData[mappedBattleMonster.MonsterTemplateID].NPCMonsterList.First(GameData.NpcMonsterDataData.ContainsKey));
+var battleOnlyMonster = GameData.MonsterConfigData.Values.FirstOrDefault(monster =>
+    !GameData.NpcMonsterDataData.ContainsKey(monster.MonsterID) && !GameData.MazePropData.ContainsKey(monster.MonsterID) &&
+    !(GameData.MonsterTemplateConfigData.TryGetValue(monster.MonsterTemplateID, out var template) &&
+      template.NPCMonsterList.Any(GameData.NpcMonsterDataData.ContainsKey)));
+if (battleOnlyMonster != null)
+    Check("spawn reports a battle-only MonsterID instead of a bare invalid ID",
+        CommandSpawn.Resolve(battleOnlyMonster.MonsterID.ToString()).Kind == CommandSpawn.SpawnTargetKind.BattleMonsterNoScene);
+Check("spawn maze prop and unknown IDs resolve distinctly", CommandSpawn.Resolve("102226").Kind == CommandSpawn.SpawnTargetKind.Prop
+    && CommandSpawn.Resolve("abc").Kind == CommandSpawn.SpawnTargetKind.Invalid);
+
+// Changle Tian is a town floor with no monster groups at all: nothing to borrow, nothing spawned.
+var townEntityCount = spawnScene.Entities.Count;
+sender.Messages.Clear();
+await spawnCommand.Spawn(new CommandArg("monster", sender, target));
+Check("spawn on a floor without monster configs reports it and spawns nothing",
+    spawnScene.Entities.Count == townEntityCount
+    && sender.Messages.SequenceEqual([I18NManager.Translate("Game.Command.Spawn.NoMonsterTemplate")]));
+
+// Move to the first ordinary maze floor whose loaded dimension has a usable server monster group.
+bool HasSpawnableMonsterGroup(MapEntranceExcel entrance)
+{
+    if (!GameData.MazePlaneData.TryGetValue(entrance.PlaneID, out var plane) || plane.PlaneType != PlaneTypeEnum.Maze)
+        return false;
+    GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floor);
+    var dimension = floor?.DimensionList.Find(item => item.ID == 0);
+    return floor != null && dimension != null && floor.Groups.Values.Any(group =>
+        group.LoadSide == GroupLoadSideEnum.Server && dimension.GroupIDList.Contains(group.Id)
+        && group.MonsterList.Any(monster => monster.FarmElementID == 0 && !monster.IsDelete
+            && March7thHoney.GameServer.Game.Battle.BattleInstance.TryResolveStageFromEvent(
+                monster.EventID, player.Data.WorldLevel, out _)));
+}
+var mazeEntry = GameData.MapEntranceData.Values.OrderBy(entrance => entrance.ID).First(HasSpawnableMonsterGroup);
+Check($"spawn fixture enters maze entry {mazeEntry.ID} (floor {mazeEntry.FloorID})",
+    (await player.TryEnterScene(mazeEntry.ID, 0, false)).Success && player.SceneInstance?.FloorId == mazeEntry.FloorID);
+spawnScene = player.SceneInstance!;
+spawnOrigin = player.Data.Pos!;
+
+List<T> NewEntities<T>(HashSet<int> before) where T : BaseGameEntity =>
+    spawnScene.Entities.Values.OfType<T>().Where(entity => !before.Contains(entity.EntityId)).ToList();
+bool UsesMonsterTemplate(EntityMonster monster) => spawnScene.Groups.Contains(monster.GroupId)
+    && spawnScene.FloorInfo!.Groups[monster.GroupId].MonsterList.Any(template => template.ID == monster.InstId
+        && template.FarmElementID == 0 && template.EventID == monster.EventId);
+bool NearOrigin(Position pos) => Math.Abs(pos.X - spawnOrigin.X) <= 5000 && pos.Y == spawnOrigin.Y
+    && Math.Abs(pos.Z - spawnOrigin.Z) <= 5000;
+
+var spawnStage = GameData.StageConfigData.Values.First(stage => stage.MonsterList.Count > 0);
+var baseNpcMonsterId = GameData.NpcMonsterDataData.Keys.Min();
+var entitiesBefore = spawnScene.Entities.Keys.ToHashSet();
+sender.Messages.Clear();
+await spawnCommand.Spawn(new CommandArg(
+    $"monster s{spawnStage.StageID} lv50 hp12345 x2 r1 {battleMonsterIds[0]} {battleMonsterIds[1]} / {battleMonsterIds[2]} bogus",
+    sender, target));
+var spawnedMonsters = NewEntities<EntityMonster>(entitiesBefore);
+Check("spawn adds the requested monsters to a loaded group with the borrowed template identity",
+    spawnedMonsters.Count == 2 && spawnedMonsters.All(monster => monster.IsGmSpawned && monster.MonsterData.ID == baseNpcMonsterId
+        && UsesMonsterTemplate(monster) && NearOrigin(monster.Position)
+        && monster.Rotation is { X: 0, Y: 0, Z: 0 }));
+Check("spawn stores stage, level, HP and waves on each spawned monster", spawnedMonsters.All(monster =>
+    monster.CustomStageId == spawnStage.StageID && monster.CustomLevel == 50 && monster.CustomBattleHp == 12345
+    && monster.CustomBattleWaves is { Count: 2 } waves && waves[0].SequenceEqual(battleMonsterIds.Take(2))
+    && waves[1].SequenceEqual([battleMonsterIds[2]])));
+Check("spawn reports skipped wave IDs and the spawn result", sender.Messages.Contains(
+        I18NManager.Translate("Game.Command.Spawn.InvalidBattleMonster", "bogus"))
+    && sender.Messages.Contains(I18NManager.Translate("Game.Command.Spawn.SpawnedMonsters", "2", baseNpcMonsterId.ToString())));
+Console.WriteLine($"/spawn monster template: group {spawnedMonsters.FirstOrDefault()?.GroupId}, inst {spawnedMonsters.FirstOrDefault()?.InstId}.");
+
+var castAvatar = spawnScene.AvatarInfo.Values.First();
+var gmBattle = await player.BattleManager!.StartBattle(castAvatar, [spawnedMonsters[0]], false);
+var gmBattleProto = gmBattle!.ToProto();
+Check("custom waves replace the stage waves with sequential wave IDs on the pinned stage",
+    gmBattle.StageId == spawnStage.StageID && gmBattle.IsGmSpawnedEncounter && gmBattleProto.MonsterWaveList.Count == 2
+    && gmBattleProto.MonsterWaveList.Select(wave => wave.BattleWaveId).SequenceEqual([1u, 2u])
+    && gmBattleProto.MonsterWaveList.All(wave => wave.BattleStageId == spawnStage.StageID)
+    && gmBattleProto.MonsterWaveList[0].MonsterList.Select(monster => (int)monster.MonsterId).SequenceEqual(battleMonsterIds.Take(2))
+    && gmBattleProto.MonsterWaveList[1].MonsterList.Select(monster => (int)monster.MonsterId).SequenceEqual([battleMonsterIds[2]]));
+Check("custom battle carries the HP override and level on every wave",
+    gmBattleProto.MonsterWaveList.All(wave => wave.MonsterParam.Level == 50
+        && wave.MonsterList.All(monster => monster.MaxHp == 12345 && monster.CurHp == 12345)));
+player.BattleInstance = null;
+
+entitiesBefore = spawnScene.Entities.Keys.ToHashSet();
+await spawnCommand.Spawn(new CommandArg("monster hp777 lv0", sender, target));
+var hpOnlyMonster = NewEntities<EntityMonster>(entitiesBefore).Single();
+var hpOnlyBattle = await player.BattleManager.StartBattle(castAvatar, [hpOnlyMonster], false);
+var hpOnlyProto = hpOnlyBattle!.ToProto();
+var expectedStageWaves = hpOnlyBattle.Stages.SelectMany(stage => stage.ToProto()).ToList();
+Check("HP override without custom waves keeps the stage waves and level",
+    hpOnlyBattle.CustomWaves == null && hpOnlyBattle.CustomLevel == 0 && hpOnlyProto.MonsterWaveList.Count == expectedStageWaves.Count
+    && hpOnlyProto.MonsterWaveList.Zip(expectedStageWaves).All(pair => pair.First.MonsterList.Select(monster => monster.MonsterId)
+        .SequenceEqual(pair.Second.MonsterList.Select(monster => monster.MonsterId)) && pair.First.MonsterParam.Level == 0)
+    && hpOnlyProto.MonsterWaveList.SelectMany(wave => wave.MonsterList).All(monster => monster.MaxHp == 777 && monster.CurHp == 777));
+player.BattleInstance = null;
+var sceneMonster = spawnScene.Entities.Values.OfType<EntityMonster>().FirstOrDefault(monster => !monster.IsGmSpawned && monster.IsAlive);
+if (sceneMonster != null)
+{
+    var mixedBattle = await player.BattleManager.StartBattle(castAvatar, [sceneMonster, hpOnlyMonster], false);
+    Check("a fight that includes a real scene monster still counts for missions", mixedBattle is { IsGmSpawnedEncounter: false });
+    player.BattleInstance = null;
+}
+
+entitiesBefore = spawnScene.Entities.Keys.ToHashSet();
+await spawnCommand.Spawn(new CommandArg("102226 x3", sender, target));
+var spawnedProps = NewEntities<EntityProp>(entitiesBefore);
+Check("spawn adds open props borrowing a plain prop's group and instance", spawnedProps.Count == 3 && spawnedProps.All(prop =>
+    prop.IsGmSpawned && prop.State == PropStateEnum.Open && prop.Excel.ID == 102226 && NearOrigin(prop.Position)
+    && spawnScene.Groups.Contains(prop.GroupId) && spawnScene.FloorInfo!.Groups[prop.GroupId].PropList.Any(template =>
+        template.ID == prop.InstId && template.FarmElementID == 0 && template.AnchorID == 0)
+    && prop.PropInfo is { EventID: 0, ChestID: 0, CocoonID: 0, InteractLinks.Count: 0 }));
+var spawnedProp = spawnedProps[0];
+var savedTemplateState = player.GetScenePropData(spawnScene.FloorId, spawnedProp.GroupId, spawnedProp.InstId)?.State;
+await spawnedProp.SetState(PropStateEnum.Closed);
+Check("spawned prop state change is not persisted onto the template prop", spawnedProp.State == PropStateEnum.Closed
+    && player.GetScenePropData(spawnScene.FloorId, spawnedProp.GroupId, spawnedProp.InstId)?.State == savedTemplateState);
+
+var entityCount = spawnScene.Entities.Count;
+sender.Messages.Clear();
+await spawnCommand.Spawn(new CommandArg("abc", sender, target));
+await spawnCommand.Spawn(new CommandArg($"monster s{GameData.StageConfigData.Keys.Max() + 1}", sender, target));
+await spawnCommand.Spawn(new CommandArg($"monster x{SceneInstance.GmSpawnMaxEntities}", sender, target));
+await spawnCommand.Spawn(new CommandArg("", sender, target));
+await spawnCommand.Spawn(new CommandArg("monster", sender, new ProbeConnection { Player = roguePlayer }));
+Check("spawn rejects invalid ID, unknown stage, entity cap, missing ID and special-mode scenes without spawning",
+    spawnScene.Entities.Count == entityCount && sender.Messages.SequenceEqual([
+        I18NManager.Translate("Game.Command.Spawn.InvalidId", "abc"),
+        I18NManager.Translate("Game.Command.Spawn.InvalidStageId", (GameData.StageConfigData.Keys.Max() + 1).ToString()),
+        I18NManager.Translate("Game.Command.Spawn.MaxEntities", SceneInstance.GmSpawnMaxEntities.ToString()),
+        I18NManager.Translate("Game.Command.Spawn.Usage"),
+        I18NManager.Translate("Game.Command.Spawn.UnsupportedScene")
+    ]));
+sender.Messages.Clear();
+// Tutorials popped from the maze main page hold free-play input, so a merely running target cannot close them.
+var tutorialPlayer = new PlayerInstance(60006);
+await tutorialPlayer.InitializeAsync();
+var tutorialMissions = tutorialPlayer.MissionManager!.Data;
+tutorialMissions.EnableMissionOverride = true;
+bool TutorialClosesWith(int tutorialId, int mainId, MissionPhaseEnum status)
+{
+    tutorialMissions.SetMainMissionStatus(mainId, status);
+    return TutorialHelper.CanClose(tutorialPlayer, tutorialId);
+}
+Check("free-play tutorial 3006 is not closable while its target main 1000511 only runs",
+    GameData.TutorialDataData[3006].TriggerParams.Any(trigger => trigger.TriggerType == "OnMazeMainPage") &&
+    !TutorialClosesWith(3006, 1000511, MissionPhaseEnum.Accept) && TutorialClosesWith(3006, 1000511, MissionPhaseEnum.Finish));
+Check("battle tutorial 1001 stays closable on a running target main 1000101",
+    TutorialClosesWith(1001, 1000101, MissionPhaseEnum.Accept) && TutorialClosesWith(1001, 1000101, MissionPhaseEnum.Finish) &&
+    !TutorialClosesWith(1001, 1000101, MissionPhaseEnum.None));
+TutorialDataExcel SyntheticTutorial(int id, bool freePlay, string finishType, string finishParam) => new()
+{
+    TutorialID = id,
+    TriggerParams = freePlay ? [new TutorialTriggerParam { TriggerType = "OnMazeMainPage", TriggerParam = "0" }] : [],
+    FinishTriggerParams = [new TutorialTriggerParam { TriggerType = finishType, TriggerParam = finishParam }]
+};
+GameData.TutorialDataData[99000001] = SyntheticTutorial(99000001, false, "TutorialFinish", "99000002");
+GameData.TutorialDataData[99000002] = SyntheticTutorial(99000002, true, "FinishMainMission", "1000511");
+GameData.TutorialDataData[99000003] = SyntheticTutorial(99000003, true, "TutorialFinish", "99000004");
+GameData.TutorialDataData[99000004] = SyntheticTutorial(99000004, false, "FinishMainMission", "1000511");
+Check("TutorialFinish recursion takes strictness from the target tutorial's own triggers",
+    !TutorialClosesWith(99000001, 1000511, MissionPhaseEnum.Accept) && TutorialClosesWith(99000003, 1000511, MissionPhaseEnum.Accept));
+foreach (var id in new[] { 99000001, 99000002, 99000003, 99000004 }) GameData.TutorialDataData.Remove(id);
+
+// BeginParam is a second gate after TakeParam: 1010502 is taken after 1010403 but begins at Trailblaze Level 13.
+var gatedPlayer = new PlayerInstance(60007);
+await gatedPlayer.InitializeAsync();
+var gatedMissions = gatedPlayer.MissionManager!.Data;
+gatedMissions.EnableMissionOverride = true;
+const int LevelGatedMain = 1010502;
+var levelGatedExcel = GameData.MainMissionData[LevelGatedMain];
+gatedPlayer.Data.Level = 11;
+gatedPlayer.Data.Exp = 0;
+gatedMissions.SetMainMissionStatus(1010403, MissionPhaseEnum.Finish);
+await gatedPlayer.MissionManager.AcceptMainMissionByCondition(false);
+Check("BeginParam PlayerLevel 13 keeps 1010502 unaccepted at level 11 although its take gate is met",
+    levelGatedExcel.IsEqual(gatedMissions) && !levelGatedExcel.IsBeginSatisfied(gatedMissions) &&
+    gatedMissions.GetMainMissionStatus(LevelGatedMain) == MissionPhaseEnum.None);
+var expToLevel13 = GameData.PlayerLevelConfigData[13].PlayerExp - GameData.PlayerLevelConfigData[11].PlayerExp;
+await gatedPlayer.InventoryManager!.AddItem(22, expToLevel13);
+Check("reaching level 13 through an exp grant accepts the level-gated main",
+    gatedPlayer.Data.Level == 13 && gatedMissions.GetMainMissionStatus(LevelGatedMain) == MissionPhaseEnum.Accept);
+Check("an empty or Auto BeginParam does not gate a main", GameData.MainMissionData.Values
+    .Where(main => main.BeginParam.All(param => param.Type == MissionTakeTypeEnum.Auto))
+    .All(main => main.IsBeginSatisfied(gatedMissions)));
+
+// Rogue Index arms in the Simulated Universe lobby (80112001 group 3, MazeProp 1005 Prop_Rogue_Gallery).
+async Task<List<PropStateEnum?>> RogueIndexArmStates(PlayerInstance owner)
+{
+    var lobby = new SceneInstance(owner, GameData.MazePlaneData[80112], 80112001, RogueManager.RogueEntranceId);
+    var armGroup = lobby.FloorInfo!.Groups[3];
+    var states = new List<PropStateEnum?>();
+    foreach (var armId in new[] { 300003, 300008 })
+        states.Add((await lobby.EntityLoader!.LoadProp(armGroup.PropList.Single(prop => prop.ID == armId), armGroup))?.State);
+    return states;
+}
+Check("Rogue Index arms default open with missions disabled",
+    (await RogueIndexArmStates(player)).All(state => state == PropStateEnum.Open));
+tutorialMissions.SetMainMissionStatus(4030002, MissionPhaseEnum.Accept);
+Check("Rogue Index arms stay closed until the Simulated Universe tutorial main 4030002 finishes",
+    (await RogueIndexArmStates(tutorialPlayer)).All(state => state == PropStateEnum.Closed));
+tutorialMissions.SetMainMissionStatus(4030002, MissionPhaseEnum.Finish);
+Check("Rogue Index arms open once main 4030002 is finished",
+    (await RogueIndexArmStates(tutorialPlayer)).All(state => state == PropStateEnum.Open));
+
 // Exercise the real send path with two in-memory KCP peers: no sockets or production server.
 var outbound = new LoopbackKcpTransport();
 var inbound = new LoopbackKcpTransport();
@@ -685,10 +1259,396 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         && !quietPackets.Contains(CmdIds.EnterSceneByServerScNotify));
     var restorePackets = await SentPackets(async () => { await player.SendPacket(new PacketGetCurSceneInfoScRsp(player)); });
     Check("login snapshot is not mistaken for a scene transition", restorePackets.SequenceEqual(new ushort[] { CmdIds.GetCurSceneInfoScRsp }));
+    // A virtual lineup that only hosted a trial avatar is torn down, announced, and replaced by the own lineup.
+    var ownLineupIndex = player.LineupManager!.Data.GetCurLineupIndex();
+    player.LineupManager.SetExtraLineup(ExtraLineupType.LineupHeliobus, []);
+    player.LineupManager.GetCurLineup()!.BaseAvatars!.Add(new March7thHoney.Database.Lineup.LineupAvatarInfo
+        { BaseAvatarId = 1001, SpecialAvatarId = 9_999_001 });
+    var trialTeardownPackets = await SentPackets(async () =>
+    {
+        await player.LineupManager.RemoveTrialAvatarFromCurTeam(9_999_001);
+    });
+    Check("removing the last trial avatar destroys the virtual lineup and restores the own lineup",
+        player.LineupManager.Data.CurExtraLineup == -1
+        && !player.LineupManager.Data.Lineups.ContainsKey((int)ExtraLineupType.LineupHeliobus + 10)
+        && player.LineupManager.Data.GetCurLineupIndex() == ownLineupIndex);
+    Check("trial lineup teardown notifies destroy before syncing the restored lineup",
+        trialTeardownPackets.IndexOf((ushort)CmdIds.ExtraLineupDestroyNotify) is >= 0 and var destroyAt
+        && trialTeardownPackets.LastIndexOf((ushort)CmdIds.SyncLineupNotify) > destroyAt);
     player.Connection = null;
+
+    // Rogue flows run through the real handlers on the rogue player's connection.
+    var rogueConnection = new ProbeConnection(serverPeer) { Player = roguePlayer };
+    roguePlayer.Connection = rogueConnection;
+    async Task<List<(ushort Id, byte[] Body)>> SentFrames(Func<Task> action)
+    {
+        await action();
+        await roguePlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var frames = new List<(ushort, byte[])>();
+        while (true)
+        {
+            var received = await clientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP rogue test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            if (id == ushort.MaxValue) return frames;
+            var length = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            frames.Add((id, buffer.AsSpan(12, length).ToArray()));
+        }
+    }
+
+    var rogueInst = roguePlayer.RogueManager.RogueInstance!;
+    // Any level-1 blessing rows: the draft mechanics, not the pool contents, are under test here.
+    var draftPool = GameData.RogueBuffData.Values.Where(buff => buff.MazeBuffLevel == 1).Take(5).ToList();
+    rogueInst.BuffSelect = RogueBuffSelectMenu.Create(rogueInst, draftPool);
+    var pickedBuff = rogueInst.BuffSelect.SelectBuffs[0].MazeBuffID;
+    Check("Rogue exit stays shut while a blessing draft is pending",
+        !await roguePlayer.RogueManager.OpenRoomExit() &&
+        (!rogueRoomHasMonsters || rogueDoors.All(door => door.State == PropStateEnum.Closed)));
+    var pickRequest = new OFEDNNJIJFL { MPLGEEGOAMC = 3, DLKIKBIDJDB = new BPLNKHGAILK { BAOFIGFFMLN = (uint)pickedBuff } };
+    var pickFrames = await SentFrames(() => new HandlerHandleRogueCommonPendingActionCsReq()
+        .OnHandle(rogueConnection, [], pickRequest.ToByteArray()));
+    var doorRefreshIndex = pickFrames.FindIndex(frame => frame.Id == CmdIds.SceneGroupRefreshScNotify);
+    var pickRspIndex = pickFrames.FindIndex(frame => frame.Id == CmdIds.HandleRogueCommonPendingActionScRsp);
+    List<SceneEntityInfo> openedDoors = doorRefreshIndex < 0 ? [] : SceneGroupRefreshScNotify.Parser.ParseFrom(pickFrames[doorRefreshIndex].Body)
+        .GroupRefreshList.SelectMany(group => group.RefreshEntity).Select(refresh => refresh.AddEntity)
+        .Where(entity => entity?.Prop != null).ToList();
+    Check("blessing pick refreshes the exit portal Open with its destination before the response",
+        doorRefreshIndex >= 0 && doorRefreshIndex < pickRspIndex && openedDoors.Count == rogueDoors.Count &&
+        openedDoors.All(entity => entity.Prop.PropState == (uint)PropStateEnum.Open &&
+                                  entity.Prop.ExtraInfo?.RogueGameInfo?.RoomId > 0) &&
+        rogueDoors.All(door => door.State == PropStateEnum.Open));
+    Check("opened Rogue exit portal is not persisted to the floor prop data",
+        rogueDoors.All(door => roguePlayer.GetScenePropData(rogueRoomScene.FloorId, door.GroupId, door.InstId) == null));
+    Check("an already open Rogue exit is not refreshed again", !await roguePlayer.RogueManager.OpenRoomExit());
+
+    // A won battle with no blessing to draft clears the room at once.
+    foreach (var door in rogueDoors) door.State = PropStateEnum.Closed;
+    var roomMonsters = rogueRoomScene.Entities.Values.OfType<EntityMonster>().Take(1).ToList();
+    var rogueBattle = new BattleInstance(roguePlayer, roguePlayer.LineupManager!.GetCurLineup()!, roomMonsters);
+    var rogueBattleEnd = typeof(RogueManager).GetMethod("OnBattleEnd", BindingFlags.Instance | BindingFlags.NonPublic)!;
+    var battleFrames = await SentFrames(async () => await (ValueTask)rogueBattleEnd.Invoke(roguePlayer.RogueManager,
+        [rogueBattle, new PVEBattleResultCsReq { EndStatus = BattleEndStatus.BattleEndWin }])!);
+    var draftedAfterBattle = rogueInst.BuffSelect?.HasSelection == true;
+    Check("Rogue battle win opens the exit unless it drafts a blessing", roomMonsters.Count > 0 && (draftedAfterBattle
+        ? rogueDoors.All(door => door.State == PropStateEnum.Closed)
+        : rogueDoors.All(door => door.State == PropStateEnum.Open) &&
+          battleFrames.Any(frame => frame.Id == CmdIds.SceneGroupRefreshScNotify)));
+
+    // The draft pool comes from the real RogueBuffGroup rows (100005 / 100003 / room content + 8000), so the
+    // offered blessings must be classic RogueBuff rows that some classic group resolves to.
+    var classicGroupBuffIds = GameData.RogueBuffGroupData.Values.OfType<RogueBuffGroupExcel>()
+        .SelectMany(group => group.BuffList).Select(buff => buff.GetId()).ToHashSet();
+    var draftedBuffs = rogueInst.BuffSelect?.SelectBuffs ?? [];
+    var draftNotifies = battleFrames.Where(frame => frame.Id == CmdIds.SyncRogueCommonPendingActionScNotify)
+        .Select(frame => SyncRogueCommonPendingActionScNotify.Parser.ParseFrom(frame.Body)).ToList();
+    Check("classic Simulated Universe room win drafts classic blessings from the real RogueBuffGroup data",
+        draftedAfterBattle && draftedBuffs.Count == 3 &&
+        draftedBuffs.All(buff => buff is RogueBuffExcel && classicGroupBuffIds.Contains(buff.GetId()) &&
+                                 GameData.RogueBuffData.GetValueOrDefault(buff.GetId()) is RogueBuffExcel) &&
+        draftNotifies.Count == 2 && draftNotifies.All(notify =>
+            notify.Action?.Detail?.PCHGEGFBKLF?.LEOFNINDJDB.Select(offer => (int)offer.BuffId)
+                .SequenceEqual(draftedBuffs.Select(buff => buff.MazeBuffID)) == true));
+    var draftedPick = draftedBuffs.FirstOrDefault();
+    Check("drafted classic blessing can be picked into the run",
+        draftedPick != null && roguePlayer.RogueManager.SelectBuff(draftedPick.MazeBuffID) == Retcode.RetSucc &&
+        rogueInst.Buffs.TryGetValue(draftedPick.MazeBuffID, out var ownedPick) &&
+        ownedPick.Level == draftedPick.MazeBuffLevel);
+    rogueInst.BuffSelect = null;
+
+    // A won run is dropped on relog while login restores its room scene: LeaveRogue has no run to settle.
+    typeof(RogueManager).GetProperty(nameof(RogueManager.RogueInstance))!.SetValue(roguePlayer.RogueManager, null);
+    async Task<(List<(ushort Id, byte[] Body)> Frames, LeaveRogueScRsp? Rsp)> LeaveRogue()
+    {
+        var frames = await SentFrames(() => new HandlerLeaveRogueCsReq().OnHandle(rogueConnection, [], []));
+        var rsp = frames.Where(frame => frame.Id == CmdIds.LeaveRogueScRsp)
+            .Select(frame => LeaveRogueScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
+        return (frames, rsp);
+    }
+    var orphanLeave = await LeaveRogue();
+    Check("LeaveRogue with no live run returns an orphaned Rogue room to the lobby",
+        orphanLeave.Rsp is { Retcode: 0 } && orphanLeave.Rsp.Scene?.EntryId == RogueManager.RogueEntranceId &&
+        orphanLeave.Rsp.Lineup != null && roguePlayer.SceneInstance?.EntryId == RogueManager.RogueEntranceId &&
+        roguePlayer.LineupManager.Data.CurExtraLineup == -1 &&
+        orphanLeave.Frames.FindIndex(frame => frame.Id == CmdIds.SyncServerSceneChangeNotify) is var boundary and >= 0 &&
+        boundary < orphanLeave.Frames.FindIndex(frame => frame.Id == CmdIds.LeaveRogueScRsp) &&
+        orphanLeave.Frames.All(frame => frame.Id != CmdIds.SyncRogueFinishScNotify));
+    var lobbyLeave = await LeaveRogue();
+    Check("LeaveRogue outside a Rogue room with no run still reports status mismatch",
+        lobbyLeave.Rsp?.Retcode == (uint)Retcode.RetRogueStatusNotMatch);
+
+    // A degenerate talk report ("0", no sub id) is ACK-only even when the tracked main has exactly one running
+    // Talk finish gate on the current floor (the official capture ACKs it and the client finishes the gate later).
+    var talkPlayer = new PlayerInstance(60008);
+    await talkPlayer.InitializeAsync();
+    talkPlayer.MissionManager!.Data.EnableMissionOverride = true;
+    const int TalkGateMain = 1010202;
+    const int TalkGateSub = 101020206;
+    var talkGate = GameData.SubMissionInfoData[TalkGateSub].SubMissionInfo!;
+    var talkEntrance = GameData.MapEntranceData.Values.First(entrance => entrance.FloorID == talkGate.LevelFloorID);
+    var talkScene = new SceneInstance(talkPlayer, GameData.MazePlaneData[talkEntrance.PlaneID], talkEntrance.FloorID,
+        talkEntrance.ID);
+    typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.SceneInstance))!.SetValue(talkPlayer, talkScene);
+    talkPlayer.MissionManager.Data.SetMainMissionStatus(TalkGateMain, MissionPhaseEnum.Accept);
+    talkPlayer.MissionManager.Data.SetSubMissionStatus(TalkGateSub, MissionPhaseEnum.Accept);
+    talkPlayer.MissionManager.Data.TrackingMainMissionId = TalkGateMain;
+    talkPlayer.Connection = new ProbeConnection(serverPeer) { Player = talkPlayer };
+    var talkFrames = await SentFrames(() => new HandlerFinishTalkMissionCsReq()
+        .OnHandle(talkPlayer.Connection, [], new FinishTalkMissionCsReq { TalkStr = "0" }.ToByteArray()));
+    Check("degenerate FinishTalkMission is ACK-only and leaves the talk finish gate running",
+        talkGate.FinishType == MissionFinishTypeEnum.Talk &&
+        talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Accept &&
+        talkPlayer.MissionManager.GetMainMissionStatus(TalkGateMain) == MissionPhaseEnum.Accept &&
+        talkFrames.Select(frame => frame.Id).SequenceEqual(new[] { (ushort)CmdIds.FinishTalkMissionScRsp }));
+    await SentFrames(() => new HandlerFinishTalkMissionCsReq()
+        .OnHandle(talkPlayer.Connection, [], new FinishTalkMissionCsReq { TalkStr = talkGate.ParamStr1 }.ToByteArray()));
+    Check("the client's own talk string still finishes the gate",
+        talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Finish);
+    talkPlayer.Connection = null;
+
+    // Classic Simulated Universe command pairs (4.6 cmdid-registry.txt): enhance 1885/1807, pick 1864/1821.
+    int OpcodeOf(Type handler) => handler.GetCustomAttribute<Opcode>()!.CmdId;
+    Check("classic Simulated Universe enhance and pick handlers listen on the 18xx command ids",
+        OpcodeOf(typeof(HandlerEnhanceRogueBuffCsReq)) == 1885 && CmdIds.EnhanceRogueBuffScRspCmd1807 == 1807 &&
+        OpcodeOf(typeof(HandlerPickRogueAvatarCsReq)) == 1864 && CmdIds.PickRogueAvatarScRsp == 1821);
+    var enhanceFrames = await SentFrames(() => new HandlerEnhanceRogueBuffCsReq().OnHandle(rogueConnection, [], []));
+    Check("classic Simulated Universe enhance answers on 1807", enhanceFrames.Select(frame => frame.Id)
+        .SequenceEqual(new[] { (ushort)CmdIds.EnhanceRogueBuffScRspCmd1807 }));
+    var pickAvatarRequest = new PickRogueAvatarCsReq { PropEntityId = 4194339, DFPPCAJDBFK = { 4000005 }, NOEPBNMJFGL = { 1001 } };
+    var pickAvatarFrames = await SentFrames(() => new HandlerPickRogueAvatarCsReq()
+        .OnHandle(rogueConnection, [], pickAvatarRequest.ToByteArray()));
+    var pickAvatarRsp = pickAvatarFrames.Where(frame => frame.Id == CmdIds.PickRogueAvatarScRsp)
+        .Select(frame => PickRogueAvatarScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
+    Check("PickRogueAvatar echoes special ids (req #11) in rsp #6 and base ids (req #14) in rsp #15",
+        PickRogueAvatarCsReq.DFPPCAJDBFKFieldNumber == 11 && PickRogueAvatarCsReq.NOEPBNMJFGLFieldNumber == 14 &&
+        PickRogueAvatarScRsp.BFEDFBEKOBIFieldNumber == 6 && PickRogueAvatarScRsp.NOEPBNMJFGLFieldNumber == 15 &&
+        pickAvatarRsp is { Retcode: 0 } && pickAvatarRsp.BFEDFBEKOBI.SequenceEqual(new uint[] { 4000005 }) &&
+        pickAvatarRsp.NOEPBNMJFGL.SequenceEqual(new uint[] { 1001 }));
+    roguePlayer.Connection = null;
     await outbound.StopAsync();
     await inbound.StopAsync();
 }
+
+// Role Trial (TrialActivity): start, battle stage choice, clear, reward claim, leave and relogin rescue, driven
+// through the real request handlers and captured over the in-memory KCP pair.
+Directory.CreateDirectory(Path.Combine(scratch, "Custom"));
+File.Copy(Path.Combine(repository, "Config/Custom/ActivityConfig.json"), Path.Combine(scratch, "Custom/ActivityConfig.json"));
+var schedule = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig");
+int[] trialModules = [2000502, 2000603, 2000903, 2001101, 2001102, 2001103, 2001104, 2001105, 2001106, 2001107,
+    2001108, 2001109, 2001303, 2001703, 2002803, 2006001, 2006301, 2006302, 2008001, 2008601, 2008701, 2008901, 2009001];
+Check("activity schedule lists every Role Trial module", schedule != null &&
+    trialModules.All(id => schedule.ScheduleData.Any(row => row.ActivityId == id && row.PanelId is 20011 or 20064 or 20087 or 20089 or 20090)));
+
+var fakeRaw = Path.Combine(scratch, "fake-raw");
+Directory.CreateDirectory(Path.Combine(fakeRaw, "ExcelOutputGameCore"));
+File.WriteAllText(Path.Combine(fakeRaw, "ExcelOutputGameCore/AvatarDemoConfig.json"), "[]");
+var savedResourcePath = config.Path.ResourcePath;
+config.Path.ResourcePath = fakeRaw;
+Check("cache with AvatarDemoConfig StageType passes validation", (bool)validateCache.Invoke(null, null)!);
+var stageTypes = GameData.AvatarDemoConfigData.ToDictionary(pair => pair.Key, pair => pair.Value.StageType);
+foreach (var row in GameData.AvatarDemoConfigData.Values) row.StageType = "";
+Check("stale cache without AvatarDemoConfig StageType is rejected when the raw table exists",
+    !(bool)validateCache.Invoke(null, null)!);
+config.Path.ResourcePath = Path.Combine(scratch, "no-raw-resource-json");
+Check("cache-only deployments keep a cache without StageType", (bool)validateCache.Invoke(null, null)!);
+foreach (var (id, type) in stageTypes) GameData.AvatarDemoConfigData[id].StageType = type;
+config.Path.ResourcePath = savedResourcePath;
+Check("trial stage 315130 carries StageType and SPList", GameData.AvatarDemoConfigData[315130].IsTrialActivity
+    && GameData.AvatarDemoConfigData[315130].SPList.SequenceEqual([6500, 6500, 7500, 7000])
+    && !GameData.AvatarDemoConfigData[313079].IsTrialActivity);
+if (!GameData.AvatarDemoConfigData[315130].IsTrialActivity)
+    throw new InvalidOperationException("The resource cache predates AvatarDemoConfig StageType/SPList. Regenerate " +
+                                        "Config/Resource.bin or pass --resource-cache <regenerated cache>.");
+
+var trialPlayer = new PlayerInstance(60010);
+await trialPlayer.InitializeAsync();
+const int TrialReturnEntry = 1000001;
+await trialPlayer.TryEnterScene(TrialReturnEntry, 0, false);
+var trialReturnPos = trialPlayer.Data.Pos!;
+var trialData = trialPlayer.ActivityManager!.Data.TrialActivityData;
+var trialOutbound = new LoopbackKcpTransport();
+var trialInbound = new LoopbackKcpTransport();
+using (var trialServerPeer = new KcpConversation(endpoint, trialOutbound, options))
+using (var trialClientPeer = new KcpConversation(endpoint, trialInbound, options))
+{
+    trialOutbound.Peer = trialClientPeer;
+    trialInbound.Peer = trialServerPeer;
+    trialOutbound.Start();
+    trialInbound.Start();
+    var trialConnection = new ProbeConnection(trialServerPeer) { Player = trialPlayer };
+    trialPlayer.Connection = trialConnection;
+    async Task<List<(ushort Id, byte[] Body)>> Capture(Func<Task> action)
+    {
+        await action();
+        await trialPlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var packets = new List<(ushort, byte[])>();
+        while (true)
+        {
+            var received = await trialClientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP trial test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            var length = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            if (id == ushort.MaxValue) return packets;
+            packets.Add((id, buffer.AsSpan(12, length).ToArray()));
+        }
+    }
+    Task Send<TReq>(Handler handler, TReq req) where TReq : IMessage =>
+        handler.OnHandle(trialConnection, [], req.ToByteArray());
+    Task Start(int stageId) => Send(new HandlerStartTrialActivityCsReq(), new StartTrialActivityCsReq { StageId = (uint)stageId });
+    StartTrialActivityScRsp StartRsp(List<(ushort Id, byte[] Body)> packets) =>
+        StartTrialActivityScRsp.Parser.ParseFrom(packets.Last(p => p.Id == CmdIds.StartTrialActivityScRsp).Body);
+    async Task<List<(ushort Id, byte[] Body)>> WinTrialBattle()
+    {
+        var monsters = trialPlayer.SceneInstance!.Entities.Values.OfType<EntityMonster>().Where(m => m.IsAlive).ToList();
+        trialPlayer.BattleInstance = new BattleInstance(trialPlayer, trialPlayer.LineupManager!.GetCurLineup()!, monsters);
+        return await Capture(async () => await trialPlayer.BattleManager!.EndBattle(
+            new PVEBattleResultCsReq { EndStatus = BattleEndStatus.BattleEndWin, Stt = new() }));
+    }
+
+    foreach (var invalidStage in new[] { 313079, 1 })
+    {
+        var rejected = await Capture(() => Start(invalidStage));
+        var rsp = StartRsp(rejected);
+        Check($"trial start rejects non-trial stage {invalidStage} without side effects",
+            rsp.Retcode == (uint)Retcode.RetReqParaInvalid && rsp.StageId == invalidStage && trialData.CurTrialStageId == 0
+            && trialPlayer.ActivityManager.TrialActivityInstance == null
+            && !rejected.Any(p => p.Id == CmdIds.ExtraLineupDestroyNotify || p.Id == CmdIds.EnterSceneByServerScNotify));
+    }
+
+    var started = await Capture(() => Start(315130));
+    var startRsp = StartRsp(started);
+    var trialLineup = trialPlayer.LineupManager!.GetCurLineup()!;
+    Check("trial 315130 starts and records the world return point", startRsp.Retcode == 0 && startRsp.StageId == 315130
+        && trialData.CurTrialStageId == 315130 && trialData.ReturnEntryId == TrialReturnEntry
+        && trialPlayer.SceneInstance?.Excel.PlaneType == PlaneTypeEnum.TrialActivity);
+    Check("trial lineup uses the stage's special trial avatars", trialLineup.IsExtraLineup()
+        && trialLineup.BaseAvatars!.Select(a => a.SpecialAvatarId).SequenceEqual([2001381, 2001382, 2001383, 2001384]));
+    var enterTrial = EnterSceneByServerScNotify.Parser.ParseFrom(started.Last(p => p.Id == CmdIds.EnterSceneByServerScNotify).Body);
+    Check("trial team starts with SPList 6500/6500/7500/7000",
+        enterTrial.Lineup.AvatarList.OrderBy(a => a.Slot).Select(a => a.SpBar.CurSp).SequenceEqual([6500u, 6500u, 7500u, 7000u]));
+    Check("trial scene stages the stage's own monster event", trialPlayer.SceneInstance!.Entities.Values.OfType<EntityMonster>()
+        .Any(m => m.GroupId == GameData.AvatarDemoConfigData[315130].MazeGroupID1 && m.EventId == 315130));
+    Check("trial scene resolves world 999 to the return point's world", enterTrial.Scene.WorldId != 999
+        && enterTrial.Scene.WorldId == (uint)trialPlayer.SceneInstance.ResolveWorldId());
+    Check("start sends lineup destroy, scene change and response in order", started.Select(p => p.Id)
+        .Where(id => id is CmdIds.ExtraLineupDestroyNotify or CmdIds.SyncServerSceneChangeNotify
+            or CmdIds.EnterSceneByServerScNotify or CmdIds.StartTrialActivityScRsp)
+        .SequenceEqual(new ushort[] { CmdIds.ExtraLineupDestroyNotify, CmdIds.SyncServerSceneChangeNotify,
+            CmdIds.EnterSceneByServerScNotify, CmdIds.StartTrialActivityScRsp }));
+
+    var runningInstance = trialPlayer.ActivityManager.TrialActivityInstance;
+    var rejectedWhileRunning = StartRsp(await Capture(() => Start(313079)));
+    Check("rejected start keeps the running trial", rejectedWhileRunning.Retcode == (uint)Retcode.RetReqParaInvalid
+        && trialData.CurTrialStageId == 315130 && ReferenceEquals(runningInstance, trialPlayer.ActivityManager.TrialActivityInstance)
+        && trialPlayer.LineupManager.GetCurLineup()!.IsExtraLineup());
+    var dataRsp = GetTrialActivityDataScRsp.Parser.ParseFrom(new PacketGetTrialActivityDataScRsp(trialPlayer).Data);
+    Check("trial data reports the running stage", dataRsp.ActivityStageId == 315130);
+
+    var brokenStage = GameData.AvatarDemoConfigData[315130];
+    var brokenEntrance = brokenStage.MapEntranceID;
+    brokenStage.MapEntranceID = 99000003;
+    var failedStart = StartRsp(await Capture(() => Start(315130)));
+    brokenStage.MapEntranceID = brokenEntrance;
+    Check("failed scene entry rolls back to the running trial", failedStart.Retcode == (uint)Retcode.RetFail
+        && trialData.CurTrialStageId == 315130 && trialData.ReturnEntryId == TrialReturnEntry
+        && trialPlayer.LineupManager.GetCurLineup()!.BaseAvatars!.Select(a => a.SpecialAvatarId).First() == 2001381);
+
+    Check("switching trials keeps the original return point", StartRsp(await Capture(() => Start(315120))).Retcode == 0
+        && trialData.CurTrialStageId == 315120 && trialData.ReturnEntryId == TrialReturnEntry);
+    var trialMonsters = trialPlayer.SceneInstance!.Entities.Values.OfType<EntityMonster>().Where(m => m.IsAlive).ToList();
+    BattleInstance? trialBattle = null;
+    try { trialBattle = new BattleInstance(trialPlayer, trialPlayer.LineupManager.GetCurLineup()!, trialMonsters); }
+    catch (Exception ex) { Console.WriteLine(ex); }
+    Check("trial 315120 battle resolves stage 315121 from the monster event", trialBattle is { StageId: 315121, IsTrialActivityBattle: true }
+        && trialBattle.EntityMonsters.Count > 0);
+
+    var lost = trialPlayer.BattleInstance = new BattleInstance(trialPlayer, trialPlayer.LineupManager.GetCurLineup()!, trialMonsters);
+    var lostPackets = await Capture(async () => await trialPlayer.BattleManager!.EndBattle(
+        new PVEBattleResultCsReq { EndStatus = BattleEndStatus.BattleEndLose, Stt = new() }));
+    Check("lost trial battle does not clear the trial", trialData.CurTrialStageId == 315120 && trialData.Activities.Count == 0
+        && !lostPackets.Any(p => p.Id == CmdIds.CurTrialActivityScNotify));
+
+    var hcoinBeforeClear = trialPlayer.Data.Hcoin;
+    var finished = await WinTrialBattle();
+    var finishOrder = finished.Select(p => p.Id).Where(id => id is CmdIds.TrialActivityDataChangeScNotify
+        or CmdIds.SyncServerSceneChangeNotify or CmdIds.EnterSceneByServerScNotify or CmdIds.CurTrialActivityScNotify
+        or CmdIds.PVEBattleResultScRsp).ToList();
+    Check("trial clear sends data change, return scene, finish notify, then battle result", finishOrder.SequenceEqual(new ushort[] {
+        CmdIds.TrialActivityDataChangeScNotify, CmdIds.SyncServerSceneChangeNotify, CmdIds.EnterSceneByServerScNotify,
+        CmdIds.CurTrialActivityScNotify, CmdIds.PVEBattleResultScRsp }));
+    var change = TrialActivityDataChangeScNotify.Parser.ParseFrom(finished.First(p => p.Id == CmdIds.TrialActivityDataChangeScNotify).Body);
+    Check("data change notify carries the cleared stage and featured avatar", change.TrialActivityInfo?.StageId == 315120
+        && !change.TrialActivityInfo.TakenReward && change.OBOPMFBGBAE.Any(a => a.AvatarId == 1512));
+    var finishNotify = CurTrialActivityScNotify.Parser.ParseFrom(finished.First(p => p.Id == CmdIds.CurTrialActivityScNotify).Body);
+    Check("finish notify reports the stage as finished", finishNotify.ActivityStageId == 315120
+        && finishNotify.Status == TrialActivityStatus.Finish);
+    Check("trial clear returns the player to the saved world point without the trial lineup",
+        trialData.CurTrialStageId == 0 && trialPlayer.ActivityManager.TrialActivityInstance == null
+        && trialPlayer.Data.EntryId == TrialReturnEntry && trialPlayer.Data.Pos!.X == trialReturnPos.X
+        && trialPlayer.Data.Pos.Z == trialReturnPos.Z && !trialPlayer.LineupManager.GetCurLineup()!.IsExtraLineup()
+        && trialPlayer.LineupManager.GetExtraLineup(ExtraLineupType.LineupStageTrial) == null
+        && trialPlayer.Data.Hcoin == hcoinBeforeClear);
+    await Capture(() => Start(315120));
+    await WinTrialBattle();
+    Check("clearing a stage again keeps one record", trialData.Activities.Count(r => r.StageId == 315120) == 1);
+    var afterClear = GetTrialActivityDataScRsp.Parser.ParseFrom(new PacketGetTrialActivityDataScRsp(trialPlayer).Data);
+    Check("trial data lists the record and the featured avatar", afterClear.ActivityStageId == 0
+        && afterClear.TrialActivityInfoList.Any(i => i.StageId == 315120)
+        && afterClear.OBOPMFBGBAE.Count(a => a.AvatarId == 1512) == 1);
+
+    Check("stage without a StageConfig row resolves its battle from the monster event",
+        StartRsp(await Capture(() => Start(380060))).Retcode == 0 && new BattleInstance(trialPlayer,
+            trialPlayer.LineupManager.GetCurLineup()!, trialPlayer.SceneInstance!.Entities.Values.OfType<EntityMonster>()
+                .Where(m => m.IsAlive).ToList()) is { StageId: 380050, IsTrialActivityBattle: true });
+    var left = await Capture(() => Send(new HandlerLeaveTrialActivityCsReq(), new LeaveTrialActivityCsReq { StageId = 380060 }));
+    Check("leaving echoes the stage and returns without recording a clear",
+        LeaveTrialActivityScRsp.Parser.ParseFrom(left.Last(p => p.Id == CmdIds.LeaveTrialActivityScRsp).Body).StageId == 380060
+        && trialData.CurTrialStageId == 0 && trialPlayer.Data.EntryId == TrialReturnEntry
+        && trialData.Activities.All(r => r.StageId != 380060));
+
+    TakeTrialActivityRewardScRsp Claim(List<(ushort Id, byte[] Body)> packets) =>
+        TakeTrialActivityRewardScRsp.Parser.ParseFrom(packets.Last(p => p.Id == CmdIds.TakeTrialActivityRewardScRsp).Body);
+    Task<List<(ushort Id, byte[] Body)>> TakeReward(int stageId) => Capture(() =>
+        Send(new HandlerTakeTrialActivityRewardCsReq(), new TakeTrialActivityRewardCsReq { StageId = (uint)stageId }));
+    var rewardHcoin = GameData.RewardDataData[GameData.AvatarDemoConfigData[315120].RewardID].Hcoin;
+    var hcoinBeforeClaim = trialPlayer.Data.Hcoin;
+    var firstClaimPackets = await TakeReward(315120);
+    var firstClaim = Claim(firstClaimPackets);
+    Check("first claim grants the reward with Hcoin as item 1", firstClaim.Retcode == 0 && firstClaim.StageId == 315120
+        && rewardHcoin > 0 && firstClaim.Reward.ItemList_.First().ItemId == 1
+        && firstClaim.Reward.ItemList_.First().Num == (uint)rewardHcoin && firstClaim.Reward.ItemList_.Count > 1
+        && trialPlayer.Data.Hcoin == hcoinBeforeClaim + rewardHcoin
+        && trialData.Activities.Single(r => r.StageId == 315120).TakenReward
+        && !firstClaimPackets.Any(p => p.Id == CmdIds.ScenePlaneEventScNotify));
+    var secondClaim = Claim(await TakeReward(315120));
+    Check("second claim is refused without granting", secondClaim.Retcode == (uint)Retcode.RetFail
+        && secondClaim.StageId == 315120 && trialPlayer.Data.Hcoin == hcoinBeforeClaim + rewardHcoin);
+    var unclearedClaim = Claim(await TakeReward(315130));
+    Check("uncleared trial reward is refused", unclearedClaim.Retcode == (uint)Retcode.RetFail && unclearedClaim.StageId == 315130);
+    var displayClaim = Claim(await TakeReward(313079));
+    Check("non-trial reward claim is invalid", displayClaim.Retcode == (uint)Retcode.RetReqParaInvalid && displayClaim.StageId == 313079);
+
+    await Capture(() => Start(315130));
+    trialPlayer.Connection = null;
+    await trialOutbound.StopAsync();
+    await trialInbound.StopAsync();
+}
+Check("trial is running on the trial plane before relogin", trialData.CurTrialStageId == 315130
+    && GameData.MazePlaneData[trialPlayer.Data.PlaneId].PlaneType == PlaneTypeEnum.TrialActivity);
+var relogin = new PlayerInstance(trialPlayer.Data);
+await relogin.InitializeAsync();
+await relogin.OnLogin();
+Check("relogin mid-trial abandons the run and returns to the return point", trialData.CurTrialStageId == 0
+    && relogin.ActivityManager!.TrialActivityInstance == null && relogin.Data.EntryId == TrialReturnEntry
+    && relogin.SceneInstance?.Excel.PlaneType != PlaneTypeEnum.TrialActivity
+    && relogin.LineupManager!.GetExtraLineup(ExtraLineupType.LineupStageTrial) == null
+    && !relogin.LineupManager.GetCurLineup()!.IsExtraLineup()
+    && GetTrialActivityDataScRsp.Parser.ParseFrom(new PacketGetTrialActivityDataScRsp(relogin).Data).ActivityStageId == 0);
 
 Console.WriteLine($"Login/scene regression: {checks} checks, {failures.Count} failures. Temporary artifacts: {scratch}");
 Environment.ExitCode = failures.Count == 0 ? 0 : 1;
@@ -700,12 +1660,13 @@ sealed class ProbeEntity : BaseGameEntity
     public override SceneEntityInfo ToProto() => new() { EntityId = (uint)EntityId, GroupId = (uint)GroupId };
 }
 
-sealed class ProbeSender : ICommandSender
+sealed class ProbeSender(int uid = 0) : ICommandSender
 {
     public List<string> Messages { get; } = [];
     public ValueTask SendMsg(string msg) { Messages.Add(msg); return ValueTask.CompletedTask; }
     public bool HasPermission(string permission) => true;
-    public int GetSender() => 0;
+    public int GetSender() => uid;
+    public bool IsConsole => uid == 0;
 }
 
 sealed class ProbeConnection(KcpConversation? conversation = null) : Connection(conversation!, new IPEndPoint(IPAddress.Loopback, 60001))

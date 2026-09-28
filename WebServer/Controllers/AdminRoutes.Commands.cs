@@ -38,7 +38,12 @@ public static partial class AdminRoutes
 
         try
         {
-            var response = await MuipManager.ExecuteCommandAsync(sessionId, command, request.target_uid.GetValueOrDefault());
+            // The MUIP layer accepts RSA or Base64 command payloads. Passing admin-page plaintext through
+            // directly is ambiguous for commands made only of Base64 characters (for example "/windy loaded"),
+            // so encode it explicitly just like the player console does.
+            var encodedCommand = Convert.ToBase64String(Encoding.UTF8.GetBytes(command));
+            var response = await MuipManager.ExecuteCommandAsync(sessionId, encodedCommand,
+                request.target_uid.GetValueOrDefault());
             if (response.Code != 0)
                 return Error(response.Message);
 

@@ -106,6 +106,7 @@ public class ServerOption
     public HashSet<string> DefaultPermissions { get; set; } = ["*"];
     public ServerAnnounce ServerAnnounce { get; set; } = new();
     public ServerProfile ServerProfile { get; set; } = new();
+    public GlobalChatConfig GlobalChat { get; set; } = new();
     public WatermarkConfig Watermark { get; set; } = new();
     public NetStatusConfig NetStatus { get; set; } = new();
     public ChallengePeakOption ChallengePeak { get; set; } = new();
@@ -126,9 +127,42 @@ public class ServerOption
     public ServerTimeOption ServerTime { get; set; } = new();
     public WelcomeMailConfig WelcomeMail { get; set; } = new();
 
+    // Local hour (server time zone, the one PlayerLoginScRsp advertises) at which daily training rolls over.
+    public int DailyResetHour { get; set; } = 4;
+
     public int ValidFarmingDropRate()
     {
         return Math.Max(Math.Min(FarmingDropRate, 999), 1);
+    }
+
+    /// <summary>
+    ///     Uid of the Global Chat contact, or null when the feature is disabled or its uid is unusable (non-positive or
+    ///     colliding with <see cref="ServerProfile" />). Every call site goes through this so a disabled contact
+    ///     disappears everywhere at once.
+    /// </summary>
+    public int? GetGlobalChatUid()
+    {
+        if (!GlobalChat.Enabled || GlobalChat.Uid <= 0 || GlobalChat.Uid == ServerProfile.Uid) return null;
+        return GlobalChat.Uid;
+    }
+
+    /// <summary>True for the synthetic friend-list contacts (command bot and Global Chat) that have no player data.</summary>
+    public bool IsSystemProfileUid(int uid)
+    {
+        return uid == ServerProfile.Uid || uid == GetGlobalChatUid();
+    }
+
+    /// <summary>Display avatars of a synthetic contact, or null when the uid is not one.</summary>
+    public List<ServerAssistInfo>? GetSystemProfileAssistInfo(int uid)
+    {
+        if (uid == ServerProfile.Uid) return ServerProfile.AssistInfo;
+        if (uid == GetGlobalChatUid()) return GlobalChat.AssistInfo;
+        return null;
+    }
+
+    public int ValidDailyResetHour()
+    {
+        return Math.Clamp(DailyResetHour, 0, 23);
     }
 }
 
@@ -180,6 +214,24 @@ public class AuthOption
     public int PasswordResetTokenExpireMinutes { get; set; } = 60;
     public EmailOption Email { get; set; } = new();
     public AntiAbuseOption AntiAbuse { get; set; } = new();
+
+    // When public registration is off, the built-in register page redirects here (e.g. the website
+    // that provisions accounts through WebAccountApi). Empty keeps the "registration closed" page.
+    public string ExternalRegistrationUrl { get; set; } = "";
+    public WebAccountApiOption WebAccountApi { get; set; } = new();
+}
+
+/// <summary>
+///     Server-to-server API that lets a trusted website create and manage game accounts
+///     (/external/web-account/v1/*). Requests need the shared secret in the
+///     X-March7thHoney-Web-Secret header and must come from one of <see cref="AllowedAddresses" />
+///     (checked after trusted-proxy forwarding, so traffic relayed by a reverse proxy is not local).
+/// </summary>
+public class WebAccountApiOption
+{
+    public bool Enabled { get; set; } = false;
+    public string Secret { get; set; } = "";
+    public List<string> AllowedAddresses { get; set; } = ["127.0.0.1", "::1"];
 }
 
 public class AntiAbuseOption
@@ -326,6 +378,45 @@ public class ServerProfile
     [
         new() { AvatarId = 1409, Level = 80 }
     ];
+}
+
+/// <summary>
+///     Second synthetic friend-list contact acting as a server-wide chat channel. Text sent to it is relayed to every
+///     online player as a private message from this contact. Uid must differ from <see cref="ServerProfile.Uid" /> and
+///     from real player uids (accounts start at 10001); a colliding uid disables the contact.
+/// </summary>
+public class GlobalChatConfig
+{
+    public bool Enabled { get; set; } = true;
+    public int Uid { get; set; } = 98;
+    public string Name { get; set; } = "Global Chat";
+    public string Signature { get; set; } = "Say hi to everyone on this server";
+    public int Level { get; set; } = 70;
+    public int HeadIcon { get; set; } = 200101;
+    public int ChatBubbleId { get; set; } = 220000;
+    public int PersonalCardId { get; set; } = 253001;
+
+    public List<ServerAssistInfo> AssistInfo { get; set; } =
+    [
+        new() { AvatarId = 1001, Level = 80 }
+    ];
+
+    // Shown at the top of the Global Chat conversation; empty disables it.
+    public string WelcomeMessage { get; set; } =
+        "Welcome to Global Chat! Messages here reach every online player. Commands do not work here; use the other bot's chat for /help.";
+
+    // Relayed messages kept per player for this conversation.
+    public int MaxHistory { get; set; } = 15;
+
+    // At most RateLimitCount messages per RateLimitWindowSeconds per player; 0 in either disables the limit.
+    public int RateLimitCount { get; set; } = 3;
+    public int RateLimitWindowSeconds { get; set; } = 60;
+
+    // Longer messages are rejected; 0 disables the check.
+    public int MaxLength { get; set; } = 200;
+
+    // Optional Discord webhook URL that receives every relayed message; empty disables it.
+    public string Webhook { get; set; } = "";
 }
 
 

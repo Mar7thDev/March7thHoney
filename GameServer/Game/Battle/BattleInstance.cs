@@ -5,6 +5,7 @@ using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Activity.FinalityBattle;
+using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -25,54 +26,70 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public BattleInstance(PlayerInstance player, LineupInfo lineup, List<EntityMonster> monsters) : this(player, lineup,
         new List<StageConfigExcel>())
     {
-        if (player.ActivityManager!.TrialActivityInstance != null &&
-            player.ActivityManager!.TrialActivityInstance.Data.CurTrialStageId != 0)
-        {
-            var instance = player.ActivityManager!.TrialActivityInstance;
-            GameData.StageConfigData.TryGetValue(instance.Data.CurTrialStageId, out var stage);
-            if (stage != null) Stages.Add(stage);
-            StageId = Stages[0].StageID;
-        }
-        else
-        {
-            var addedStageIds = new HashSet<int>();
+        // A Role Trial battle is fought on the trial's own plane while a trial is running. Its monsters carry the
+        // stage's authored event (TrialActivityEntityLoader), which is not always the trial stage id itself
+        // (e.g. trial 315120 fights stage 315121, and several trial ids have no StageConfig row at all).
+        var trialStageId = player.ActivityManager?.TrialActivityInstance?.Data.CurTrialStageId ?? 0;
+        IsTrialActivityBattle = trialStageId != 0 &&
+                                player.SceneInstance?.Excel.PlaneType == PlaneTypeEnum.TrialActivity;
 
+        var addedStageIds = new HashSet<int>();
+
+        foreach (var monster in monsters)
+        {
+            if (!TryResolveStageFromEvent(monster.GetStageId(), player.Data.WorldLevel, out var stage) ||
+                stage == null)
+                continue;
+            if (addedStageIds.Add(stage.StageID))
+                Stages.Add(stage);
+        }
+
+        // Fallback: some resources use base EventID in monster config while challenge injects custom IDs.
+        if (Stages.Count == 0)
             foreach (var monster in monsters)
             {
-                if (!TryResolveStageFromEvent(monster.GetStageId(), player.Data.WorldLevel, out var stage) ||
+                if (!TryResolveStageFromEvent(monster.Info.EventID, player.Data.WorldLevel, out var stage) ||
                     stage == null)
                     continue;
+
                 if (addedStageIds.Add(stage.StageID))
                     Stages.Add(stage);
             }
 
-            // Fallback: some resources use base EventID in monster config while challenge injects custom IDs.
-            if (Stages.Count == 0)
-                foreach (var monster in monsters)
-                {
-                    if (!TryResolveStageFromEvent(monster.Info.EventID, player.Data.WorldLevel, out var stage) ||
-                        stage == null)
-                        continue;
+        if (Stages.Count == 0 && IsTrialActivityBattle &&
+            GameData.StageConfigData.TryGetValue(trialStageId, out var trialStage))
+            Stages.Add(trialStage);
 
-                    if (addedStageIds.Add(stage.StageID))
-                        Stages.Add(stage);
-                }
-
-            EntityMonsters = monsters;
-            if (Stages.Count > 0)
-                StageId = Stages[0].StageID;
-        }
+        EntityMonsters = monsters;
+        if (Stages.Count > 0)
+            StageId = Stages[0].StageID;
     }
 
     public int BattleId { get; set; } = ++player.NextBattleId;
     public int StaminaCost { get; set; }
     public int WorldLevel { get; set; }
     public int CocoonWave { get; set; }
+    // CocoonConfig.ID of a calyx / cavern / echo-of-war battle; 0 for everything else (including farm elements,
+    // which also set CocoonWave). Read by the CocoonFinish / FarmTypeCocoonFinish / AnyCocoonFinish handlers.
+    public int CocoonId { get; set; }
     public int MappingInfoId { get; set; }
     public int RoundLimit { get; set; }
     public int StageId { get; set; } = stages.Count > 0 ? stages[0].StageID : 0; // Set to 0 when hit monster
     public int EventId { get; set; }
     public int CustomLevel { get; set; }
+
+    /// <summary>
+    ///     /spawn custom battle: MonsterConfig IDs per wave. When non-empty these waves replace the stage waves
+    ///     (wave IDs 1..N, all on <see cref="StageId" />).
+    /// </summary>
+    public List<List<int>>? CustomWaves { get; set; }
+
+    /// <summary>/spawn HP override: max and current HP of every battle monster (0 = unchanged).</summary>
+    public uint CustomHp { get; set; }
+
+    /// <summary>Every scene monster in this fight was created by /spawn, so it must not advance missions.</summary>
+    public bool IsGmSpawnedEncounter => EntityMonsters.Count > 0 && EntityMonsters.All(monster => monster.IsGmSpawned);
+
     public int? LeaderIndexOverride { get; set; }
     public BattleEndStatus BattleEndStatus { get; set; }
 
@@ -89,6 +106,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public BattleCollegeConfigExcel? CollegeConfigExcel { get; set; }
     public PVEBattleResultCsReq? BattleResult { get; set; }
     public bool IsTournRogue { get; set; }
+    public bool IsTrialActivityBattle { get; set; }
     public GridFightSession? GridFightContext { get; set; }
     public CalyxOverrideContext? CalyxOverride { get; set; }
     public FinalityBattleContext? FinalityContext { get; set; }
@@ -273,13 +291,33 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
 
         if (MagicInfo != null) proto.BattleRogueMagicInfo = MagicInfo;
 
-        foreach (var protoWave in Stages.Select(wave => wave.ToProto()))
+        if (CustomWaves is { Count: > 0 })
         {
-            if (CustomLevel > 0)
-                foreach (var item in protoWave)
-                    item.MonsterParam.Level = (uint)CustomLevel;
+            foreach (var waveIds in CustomWaves)
+            {
+                var wave = new SceneMonsterWave
+                {
+                    BattleWaveId = (uint)(proto.MonsterWaveList.Count + 1),
+                    BattleStageId = (uint)StageId,
+                    MonsterParam = new SceneMonsterWaveParam()
+                };
+                if (CustomLevel > 0) wave.MonsterParam.Level = (uint)CustomLevel;
+                foreach (var monsterId in waveIds.Where(id => id > 0))
+                    wave.MonsterList.Add(new SceneMonster { MonsterId = (uint)monsterId });
 
-            proto.MonsterWaveList.AddRange(protoWave);
+                proto.MonsterWaveList.Add(wave);
+            }
+        }
+        else
+        {
+            foreach (var protoWave in Stages.Select(wave => wave.ToProto()))
+            {
+                if (CustomLevel > 0)
+                    foreach (var item in protoWave)
+                        item.MonsterParam.Level = (uint)CustomLevel;
+
+                proto.MonsterWaveList.AddRange(protoWave);
+            }
         }
 
         if (Player.BattleManager!.NextBattleMonsterIds.Count > 0)
@@ -306,6 +344,15 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                 });
             }
         }
+
+        // Both fields, like CalyxOverrideManager.ApplyMonsterHp: the client reads max_hp for the bar and
+        // cur_hp for the starting value.
+        if (CustomHp > 0)
+            foreach (var monster in proto.MonsterWaveList.SelectMany(wave => wave.MonsterList))
+            {
+                monster.MaxHp = CustomHp;
+                monster.CurHp = CustomHp;
+            }
 
         List<AvatarLineupData> avatars;
         if (GridFightContext != null)
@@ -437,7 +484,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         foreach (var avatar in battleAvatars) await avatar.ApplyBuff(this);
     }
 
-    private static bool TryResolveStageFromEvent(int eventId, int worldLevel, out StageConfigExcel? stage)
+    public static bool TryResolveStageFromEvent(int eventId, int worldLevel, out StageConfigExcel? stage)
     {
         stage = null;
         if (eventId <= 0) return false;

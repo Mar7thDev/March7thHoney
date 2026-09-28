@@ -15,6 +15,7 @@ March7thHoney 的文档按用途集中维护在此目录。仓库根目录的 `R
 
 ## API
 
+- [网站游戏账号接口（WebAccountApi）](api/web-account-api.zh-CN.md)
 - Muip API：[English](api/muip-api.md) | [简中](api/muip-api.zh-CN.md) | [繁中](api/muip-api.zh-TW.md) | [日本語](api/muip-api.ja-JP.md)
 
 ## 开发
@@ -36,4 +37,5 @@ March7thHoney 的文档按用途集中维护在此目录。仓库根目录的 `R
 - [账号安全回归](testing/auth-regression.md)
 - [GridFight 对比与回归](testing/grid-fight-regression.md)
 - [登录与场景回归](testing/login-scene-regression.md)
+- [每日实训回归](testing/daily-active-regression.md)
 - [Web 后台回归](testing/web-server-regression.md)

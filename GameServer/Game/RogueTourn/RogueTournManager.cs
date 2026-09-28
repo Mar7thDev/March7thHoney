@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
@@ -317,7 +318,9 @@ public class RogueTournManager : BasePlayerManager
 
     public async ValueTask LeaveRun()
     {
+        var hadRun = RunInstance != null;
         await ClearRun();
+        if (hadRun) await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueFinishCnt);
     }
 
     private async ValueTask ClearRun()

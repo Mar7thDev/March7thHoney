@@ -18,4 +18,14 @@ public class PacketTakeTrialActivityRewardScRsp : BasePacket
 
         SetData(proto);
     }
+
+    public PacketTakeTrialActivityRewardScRsp(uint stageId, Retcode retcode) : base(
+        CmdIds.TakeTrialActivityRewardScRsp)
+    {
+        SetData(new TakeTrialActivityRewardScRsp
+        {
+            StageId = stageId,
+            Retcode = (uint)retcode
+        });
+    }
 }

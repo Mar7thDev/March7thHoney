@@ -27,13 +27,9 @@ public partial class RogueTournBuffGroupExcel : BaseRogueBuffGroupExcel
     {
         if (IsLoaded) return;
         var count = 0;
+        List<RogueTournBuffExcel> buffs = [.. GameData.RogueBuffData.Values.OfType<RogueTournBuffExcel>()];
         foreach (var buffId in RogueBuffDrop)
         {
-            List<RogueTournBuffExcel> buffs =
-            [
-                .. GameData.RogueBuffData.Where(x => x.Value is RogueTournBuffExcel).Select(x =>
-                    (x.Value as RogueTournBuffExcel)!).ToList()
-            ];
             if (buffs.FirstOrDefault(x => x.RogueBuffTag == buffId) is { } buff)
             {
                 BuffList.SafeAdd(buff);
@@ -46,7 +42,8 @@ public partial class RogueTournBuffGroupExcel : BaseRogueBuffGroupExcel
                 if (group is not RogueTournBuffGroupExcel e) continue;
                 e.LoadBuff();
                 BuffList.SafeAddRange(e.BuffList);
-                count++;
+                // A child still missing rows (not loaded yet) must leave this group open for AfterAllDone.
+                if (e.IsLoaded) count++;
             }
         }
 

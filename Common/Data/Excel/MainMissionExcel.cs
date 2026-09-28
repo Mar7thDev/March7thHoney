@@ -89,6 +89,18 @@ public partial class MainMissionExcel : ExcelResource
 
         return result;
     }
+
+    /// <summary>
+    ///     The begin gate: TakeParam lets the mission be taken, BeginParam lets it actually start (e.g. 1010502
+    ///     requires Trailblaze Level 13 after its MultiSequence take gate opens). Empty means no gate.
+    /// </summary>
+    public bool IsBeginSatisfied(MissionData data)
+    {
+        if (BeginParam.Count == 0) return true;
+        return BeginOperation == OperationEnum.Or
+            ? BeginParam.Any(param => param.IsEqual(data))
+            : BeginParam.All(param => param.IsEqual(data));
+    }
 }
 
 [MemoryPackable]

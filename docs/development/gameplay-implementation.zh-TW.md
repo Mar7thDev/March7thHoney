@@ -86,5 +86,6 @@
 - [x] 專案自訂擴展
   - [x] Muip 管理介面（`/muip/*`）
   - [x] Freesr 同步介面（`/sr-tools`、`/sr-tools-export`）
-  - [x] 擴展管理指令（`/json`、`/grid`、`/calyx` 等）
+  - [x] 擴展管理指令（`/json`、`/grid`、`/calyx`、`/spawn` 等）
+    - [x] `/spawn`：在玩家附近執行期間生成怪物/物件，並可自訂其戰鬥（`s`/`lv`/`hp`，以 `/`、`|` 或 `\` 分隔的 MonsterConfig 波次）；僅限一般世界與劇情場景，不存檔，不推進任務
 

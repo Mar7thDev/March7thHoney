@@ -19,6 +19,16 @@ public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo grou
     public PropInfo PropInfo { get; set; } = prop;
     public GroupInfo Group { get; set; } = group;
     public ScenePropTimelineData? PropTimelineData { get; set; }
+
+    /// <summary>
+    ///     Created at runtime by the /spawn GM command. It borrows a real prop's group/instance ID, so its
+    ///     state is never persisted (that would overwrite the real prop's saved state).
+    /// </summary>
+    public bool IsGmSpawned { get; set; }
+
+    // Simulated Universe exit portal: the room it leads to, sent as extra_info.rogue_game_info.
+    public RogueDoorTarget? RogueDoorTarget { get; set; }
+
     public override int EntityId { get; set; }
     public override int GroupId { get; set; } = group.Id;
 
@@ -35,6 +45,16 @@ public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo grou
             {
                 TimelineInfo = PropTimelineData.ToProto()
             };
+
+        if (RogueDoorTarget is { } door)
+        {
+            prop.ExtraInfo ??= new PropExtraInfo();
+            prop.ExtraInfo.RogueGameInfo = new PropRogueInfo
+            {
+                RoomId = (uint)door.RoomId,
+                MAJKFIMPOOF = (uint)door.SiteId
+            };
+        }
 
         return new SceneEntityInfo
         {
@@ -64,8 +84,10 @@ public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo grou
             await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene.Player, this, null,
                 SceneGroupRefreshType.Afibfmafncc));
 
+        if (IsGmSpawned) return;
+
         // save
-        if (Group.SaveType != SaveTypeEnum.Reset)
+        if (Group.SaveType != SaveTypeEnum.Reset && Scene.PersistsPropState)
             Scene.Player.SetScenePropData(Scene.FloorId, Group.Id, PropInfo.ID, state);
 
         // A checkpoint that just became enabled (reached on foot / by map teleport, or a mission's
@@ -74,3 +96,6 @@ public class EntityProp(SceneInstance scene, MazePropExcel excel, GroupInfo grou
             await Scene.Player.RecordTeleportUnlock(Scene.FloorId, PropInfo.MappingInfoID, sendPacket);
     }
 }
+
+/// <summary>The next room a Simulated Universe exit portal leads to (RogueRoom id + map site id).</summary>
+public readonly record struct RogueDoorTarget(int RoomId, int SiteId);

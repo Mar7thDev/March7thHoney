@@ -113,15 +113,21 @@ public partial class SceneInstance
         SummonUnit.Remove(summonUnit.Key);
         Entities.Remove(summonUnit.Value.EntityId);
 
-        foreach (var entity in Entities.Values.Where(x => x is EntityMonster))
-        {
-            var monster = entity as EntityMonster;
-            List<SceneBuff> buffList = [.. monster!.BuffList];
-            foreach (var sceneBuff in buffList)
-                if (sceneBuff.SummonUnitEntityId == summonUnit.Value.EntityId)
-                    // clear old buff
-                    await monster.RemoveBuff(sceneBuff.BuffId);
-        }
+        await RemoveSummonDeliveredBuffs(summonUnit.Value);
+    }
+
+    // Maze buffs a summon delivered carry its entity id (SceneBuff.SummonUnitEntityId). Only summons whose
+    // SummonUnitData sets RemoveMazeBuffOnDestroy take those buffs with them when destroyed or replaced;
+    // the others leave them to expire on their own lifetime.
+    public async ValueTask RemoveSummonDeliveredBuffs(EntitySummonUnit summonUnit)
+    {
+        if (!GameData.SummonUnitDataData.TryGetValue(summonUnit.SummonUnitId, out var excel) ||
+            !excel.RemoveMazeBuffOnDestroy)
+            return;
+
+        foreach (var monster in Entities.Values.OfType<EntityMonster>().ToList())
+        foreach (var sceneBuff in monster.BuffList.Where(x => x.SummonUnitEntityId == summonUnit.EntityId).ToList())
+            await monster.RemoveBuff(sceneBuff.BuffId);
     }
 
     public async ValueTask OnEnterStage()
@@ -132,15 +138,7 @@ public partial class SceneInstance
             if (!GameData.SummonUnitDataData.TryGetValue(unit.Value.SummonUnitId, out var excel)) continue;
             if (!excel.DestroyOnEnterBattle) continue;
 
-            foreach (var entity in Entities.Values.Where(x => x is EntityMonster))
-            {
-                var monster = entity as EntityMonster;
-                List<SceneBuff> buffList = [.. monster!.BuffList];
-                foreach (var sceneBuff in buffList)
-                    if (sceneBuff.SummonUnitEntityId == unit.Value.EntityId)
-                        // clear old buff
-                        await monster.RemoveBuff(sceneBuff.BuffId);
-            }
+            await RemoveSummonDeliveredBuffs(unit.Value);
 
             removeEntities.Add(unit.Value);
             SummonUnit.Remove(unit.Key);

@@ -8,8 +8,14 @@ public class PacketGetTrialActivityDataScRsp : BasePacket
 {
     public PacketGetTrialActivityDataScRsp(PlayerInstance player) : base(CmdIds.GetTrialActivityDataScRsp)
     {
-        var proto = new GetTrialActivityDataScRsp();
-        proto.TrialActivityInfoList.Add(player.ActivityManager!.Data.TrialActivityData.ToProto());
+        var manager = player.ActivityManager!;
+        var proto = new GetTrialActivityDataScRsp
+        {
+            // The running trial stage; 0 when none is running.
+            ActivityStageId = (uint)manager.Data.TrialActivityData.CurTrialStageId
+        };
+        proto.TrialActivityInfoList.Add(manager.Data.TrialActivityData.ToProto());
+        proto.OBOPMFBGBAE.Add(manager.GetTrialAvatarProtoList());
         SetData(proto);
     }
 }

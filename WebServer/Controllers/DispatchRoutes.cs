@@ -229,11 +229,19 @@ public static class DispatchRoutes
             return Results.Text(LoginPlatformRouterPage.Render(), "text/html; charset=utf-8");
 
         if (IsLoginPlatformRegistrationRoute(route))
+        {
+            // Accounts on this server are handed out by an external website: send people there
+            // instead of showing a "registration closed" page.
+            var externalUrl = Config.ServerOption.Auth.ExternalRegistrationUrl;
+            if (!Config.ServerOption.Auth.EnableRegistration && IsHttpUrl(externalUrl))
+                return Results.Redirect(externalUrl);
+
             return Results.Text(RegistrationPage.Render(
                 Math.Max(Config.ServerOption.Auth.MinimumPasswordLength, 1),
                 Config.GameServer.GameServerName,
                 Config.ServerOption.Auth.RegistrationPageIcon,
                 Config.ServerOption.Auth.EnableRegistration), "text/html; charset=utf-8");
+        }
 
         if (IsLoginPlatformPasswordResetRoute(route))
             return Results.Text(PasswordResetPage.Render(
@@ -247,6 +255,12 @@ public static class DispatchRoutes
                 Config.ServerOption.Auth.RegistrationPageIcon), "text/html; charset=utf-8");
 
         return LoginPlatformNotFound();
+    }
+
+    private static bool IsHttpUrl(string? value)
+    {
+        return Uri.TryCreate(value, UriKind.Absolute, out var uri) &&
+               (uri.Scheme == Uri.UriSchemeHttps || uri.Scheme == Uri.UriSchemeHttp);
     }
 
     private static IResult LoginPlatformNotFound()

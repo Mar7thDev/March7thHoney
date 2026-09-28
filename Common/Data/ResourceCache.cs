@@ -1,5 +1,6 @@
 using System.IO.Compression;
 using MemoryPack;
+using March7thHoney.Data.Excel;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
 
@@ -114,6 +115,20 @@ public static class ResourceCache
             return false;
         }
 
+        // Caches built before the 4.5 RogueBuffGroup key mapping collapse every classic Simulated Universe group
+        // onto id 0, and caches built before the buff/group unions lose the classic RogueBuff subtype, so no
+        // blessing draft pool resolves. Only rejected when the raw table is available to rebuild from.
+        var hasRogueBuffGroup = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "RogueBuffGroup.json")));
+        if (hasRogueBuffGroup && (GameData.RogueBuffGroupData.ContainsKey(0) ||
+                                  !GameData.RogueBuffData.Values.Any(buff => buff is RogueBuffExcel) ||
+                                  !GameData.RogueBuffGroupData.Values.Any(group =>
+                                      group is RogueBuffGroupExcel && group.BuffList.Any(buff => buff is RogueBuffExcel))))
+        {
+            Logger.Warn("Resource cache is stale: classic Simulated Universe blessing groups are missing.");
+            return false;
+        }
+
         // Caches built before RogueMagicRoomGen.json was loaded, or before the 4.5 scepter lock-unit key mapping.
         if (validates45ProdData && ((GameData.RogueMagicRoomGenData.Count == 0 &&
              File.Exists(ConfigManager.Config.Path.ConfigPath + "/RogueMagicRoomGen.json")) ||
@@ -141,6 +156,30 @@ public static class ResourceCache
         {
             Logger.Warn("Resource cache is stale: scene IsHoyoGroup metadata is missing. " +
                         "Deploy the matching Resource.bin or upgrade it with scripts/SceneCacheUpgrade.");
+            return false;
+        }
+
+        // Caches built before AvatarDemoConfig.StageType/SPList were modelled deserialize with empty values,
+        // which would make every Role Trial stage look like a non-trial row. Like MapEntranceLD above, only
+        // reject when the raw table is available to rebuild from.
+        var hasAvatarDemoConfig = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "AvatarDemoConfig.json")));
+        if (hasAvatarDemoConfig && GameData.AvatarDemoConfigData.Count > 0 &&
+            GameData.AvatarDemoConfigData.Values.All(stage => string.IsNullOrEmpty(stage.StageType)))
+        {
+            Logger.Warn("Resource cache is stale: AvatarDemoConfig StageType/SPList are missing.");
+            return false;
+        }
+
+        // Caches built before the daily-training tables (DailyQuest / DailyMissionData / DailyMissionCount) and
+        // the CocoonConfig type columns were loaded. Only rejected when the raw table is available to rebuild from.
+        var hasDailyQuest = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "DailyQuest.json")));
+        if (hasDailyQuest && (GameData.DailyQuestData.Count == 0 ||
+                              (GameData.CocoonConfigData.Count > 0 &&
+                               GameData.CocoonConfigData.Values.All(cocoon => cocoon.FarmType == 0))))
+        {
+            Logger.Warn("Resource cache is stale: daily training tables are missing.");
             return false;
         }
 

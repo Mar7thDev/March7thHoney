@@ -421,8 +421,8 @@ public class AbilityLevelTask(PlayerInstance player)
                     CastEntityId = param.Request.CastEntityId == 0
                         ? param.CasterEntity.EntityId
                         : (int)param.Request.CastEntityId,
-                    // For summon-unit driven buffs, official uses attach entity id as summon reference.
-                    SummonUnitEntityId = summonCaster?.AttachEntityId ?? 0
+                    // For summon-unit driven buffs, official uses the summon's own entity id as summon reference.
+                    SummonUnitEntityId = summonCaster?.EntityId ?? 0
                 });
             }
         }
@@ -527,6 +527,15 @@ public class AbilityLevelTask(PlayerInstance player)
 
             const int summonLifeTimeMs = 45 * 1000;
 
+            // 官方下发的 FollowField 召唤体 LifeTimeMs 为 -1(如昔涟 14151): 资源未写召唤时长, 生命周期归属于施法者
+            // maze buff 的 modifier(OnCreate 创建 / OnDestroy 销毁)。该 buff 有限时长时由过期清理 → RemoveModifier →
+            // DestroySummonUnit 回收, 不再套 45s 兜底, 否则重复施放刷新 buff 后召唤体先于 buff 消失并带走投放给敌人的 buff。
+            // 无此归属或 buff 永久的召唤体仍用 45s 兜底, 避免常驻。
+            var lifeTimeMs = param.CasterEntity is AvatarSceneInfo avatarCaster &&
+                             IsDestroyedByTimedMazeBuff(avatarCaster, excel.ID)
+                ? -1
+                : summonLifeTimeMs;
+
             // 领域型召唤绑施法者(客户端才做领域检测上报 RefreshTrigger); 排除攻击侦测型(走服务端攻击侦测, 绑了会被客户端 OnTriggerExit 误删 buff, 如吉尔 150901)
             var attachPoint = excel.ConfigInfo?.AttachPoint;
             var attachToCaster = attachPoint == "Origin"
@@ -539,7 +548,7 @@ public class AbilityLevelTask(PlayerInstance player)
                 AttachEntityId = attachToCaster ? param.CasterEntity.EntityId : 0,
                 SummonUnitId = excel.ID,
                 CreateAvatarId = (param.CasterEntity as AvatarSceneInfo)?.AvatarInfo.BaseAvatarId ?? 0,
-                LifeTimeMs = summonLifeTimeMs,
+                LifeTimeMs = lifeTimeMs,
                 TriggerList = excel.ConfigInfo?.TriggerConfig.CustomTriggers ?? [],
                 Motion = spawnMotion
             };
@@ -566,6 +575,35 @@ public class AbilityLevelTask(PlayerInstance player)
                 return true;
             if (t is PredicateTaskList p
                 && (ContainsAttackDetect(p.SuccessTaskList, summonUnitId) || ContainsAttackDetect(p.FailedTaskList, summonUnitId)))
+                return true;
+        }
+
+        return false;
+    }
+
+    // 施法者身上是否有未过期、有限时长的 maze buff, 其 modifier 的 OnDestroy 会销毁该召唤体
+    private static bool IsDestroyedByTimedMazeBuff(AvatarSceneInfo caster, int summonUnitId)
+    {
+        foreach (var buff in caster.BuffList)
+        {
+            if (buff.Duration < 0 || buff.IsExpired()) continue;
+            if (!GameData.MazeBuffData.TryGetValue(buff.BuffId * 10 + buff.BuffLevel, out var buffExcel)) continue;
+            if (!caster.TryResolveModifier(buffExcel.ModifierName, out _, out var modifier)) continue;
+            if (ContainsDestroySummon(modifier.OnDestroy, summonUnitId)) return true;
+        }
+
+        return false;
+    }
+
+    private static bool ContainsDestroySummon(List<TaskConfigInfo> tasks, int summonUnitId)
+    {
+        foreach (var t in tasks)
+        {
+            if (t is DestroySummonUnit destroy && destroy.SummonUnit.SummonUnitID == summonUnitId)
+                return true;
+            if (t is PredicateTaskList p
+                && (ContainsDestroySummon(p.SuccessTaskList, summonUnitId) ||
+                    ContainsDestroySummon(p.FailedTaskList, summonUnitId)))
                 return true;
         }
 

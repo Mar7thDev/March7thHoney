@@ -35,6 +35,7 @@ public class HandlerGetTutorialCsReq : PlayerHandler
         {
             var fileBytes = await File.ReadAllBytesAsync(filePath);
             await connection.SendPacket(new HandshakePacket(fileBytes));
+            connection.RecordSentLuaScript("welcome.lua");
         }
     }
 }

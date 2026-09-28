@@ -57,7 +57,12 @@ public class CommandHero : ICommand
 
         var gender = (MultiPathAvatarTypeEnum)pathId;
         var player = arg.Target!.Player!;
-        await player.ChangeAvatarPathType(8001, gender);
+        if (await player.ChangeAvatarPathType(8001, gender) == 0)
+        {
+            // e.g. a March 7th path id: defined in the enum but not a Trailblazer path.
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Hero.HeroTypeNotSpecified"));
+            return;
+        }
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.Hero.HeroTypeChanged"));
     }

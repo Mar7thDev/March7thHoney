@@ -41,6 +41,12 @@ public class SceneEntityLoader(SceneInstance scene)
     public SceneInstance Scene { get; set; } = scene;
     public List<int> LoadGroups { get; set; } = [];
 
+    /// <summary>
+    ///     False for scenes whose props are rebuilt per run: their state is neither restored from nor written to
+    ///     the player's floor prop data.
+    /// </summary>
+    public virtual bool PersistsPropState => true;
+
     public virtual async ValueTask LoadEntity()
     {
         if (Scene.IsLoaded) return;
@@ -330,7 +336,7 @@ public class SceneEntityLoader(SceneInstance scene)
         if (excel.PropType == PropTypeEnum.PROP_SPRING) Scene.HealingSprings.Add(prop);
 
         // load from database
-        var propData = Scene.Player.GetScenePropData(Scene.FloorId, group.Id, info.ID);
+        var propData = PersistsPropState ? Scene.Player.GetScenePropData(Scene.FloorId, group.Id, info.ID) : null;
         var hasSavedState = propData != null && Scene.Excel.PlaneType != PlaneTypeEnum.Raid; // raid is not saved
         if (hasSavedState)
         {
@@ -355,6 +361,14 @@ public class SceneEntityLoader(SceneInstance scene)
                 (excel.JsonPath.Contains("LobbyEntrance", StringComparison.Ordinal) ||
                  excel.JsonPath.Contains("RougueEmblem", StringComparison.Ordinal) ||
                  excel.JsonPath.Contains("RogueEmblem", StringComparison.Ordinal)))
+                prop.State = PropStateEnum.Open;
+
+            // Rogue Index arms (lobby 80112001 group 3, MazeProp 1005): the 4.5 dump strips the ChangePropState
+            // that opens them at the end of the Simulated Universe tutorial, whose main 4030002 is auto-finished.
+            if (prop.State == PropStateEnum.Closed &&
+                excel.JsonPath.Contains("Prop_Rogue_Gallery", StringComparison.Ordinal) &&
+                (!Scene.Player.MissionEnabled ||
+                 Scene.Player.MissionManager!.GetMainMissionStatus(4030002) == MissionPhaseEnum.Finish))
                 prop.State = PropStateEnum.Open;
 
             // A spring's checkpoint comes from its configured State when the level export declares one

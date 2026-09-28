@@ -292,6 +292,101 @@ using (var request = new HttpRequestMessage(HttpMethod.Post, "/validate_account_
     using var response = await client.SendAsync(request);
     Check("split server validates player IP supplied by authenticated game server", response.StatusCode == HttpStatusCode.Forbidden);
 }
+await Unblock(exchangeBlock);
+
+// Website game-account provisioning (WebAccountRoutes).
+var webApi = auth.WebAccountApi;
+const string WebSecret = "regression-web-account-only";
+var webHeaders = new Dictionary<string, string> { ["X-March7thHoney-Web-Secret"] = WebSecret };
+async Task<(HttpStatusCode Status, JsonElement Body)> Web(HttpClient http, string path, object? body = null,
+    HttpMethod? method = null, Dictionary<string, string>? headers = null)
+{
+    using var request = new HttpRequestMessage(method ?? (body == null ? HttpMethod.Get : HttpMethod.Post), path);
+    if (body != null) request.Content = JsonContent.Create(body);
+    foreach (var (key, value) in headers ?? webHeaders) request.Headers.TryAddWithoutValidation(key, value);
+    using var response = await http.SendAsync(request);
+    var text = await response.Content.ReadAsStringAsync();
+    using var json = JsonDocument.Parse(string.IsNullOrEmpty(text) ? "{}" : text);
+    return (response.StatusCode, json.RootElement.Clone());
+}
+string WebError((HttpStatusCode Status, JsonElement Body) r) =>
+    r.Body.TryGetProperty("error", out var e) ? e.GetString() ?? "" : "";
+Task<JsonElement> LoginAs(string account, string password) => Send(client, "/hkrpg_global/mdk/shield/api/login",
+    new { account, password, device_id = "web-login-device", is_crypto = false });
+
+webApi.Enabled = false;
+webApi.Secret = WebSecret;
+Check("web account API is hidden while disabled",
+    (await Web(client, "/external/web-account/v1/status")).Status == HttpStatusCode.NotFound);
+webApi.Enabled = true;
+Check("web account API rejects a missing secret",
+    (await Web(client, "/external/web-account/v1/status", headers: [])).Status == HttpStatusCode.Unauthorized);
+Check("web account API rejects a wrong secret", (await Web(client, "/external/web-account/v1/status",
+    headers: new() { ["X-March7thHoney-Web-Secret"] = "regression-web-account-onlX" })).Status == HttpStatusCode.Unauthorized);
+Check("web account API answers status with the secret", (await Web(client, "/external/web-account/v1/status")).Status == HttpStatusCode.OK);
+
+// Public registration closed: the website is the only way in, and its accounts must still work.
+auth.EnableRegistration = false;
+const string WebPassword = "Web-Account-Password-1";
+var webCreated = await Web(client, "/external/web-account/v1/accounts",
+    new { username = "WebPlayer", email = "web.player@example.test", password = WebPassword });
+var webAccount = AccountData.GetAccountByUserName("WebPlayer");
+Check("web account API creates a verified account while public registration is off",
+    webCreated.Status == HttpStatusCode.OK && webAccount != null && webAccount.IsEmailVerified &&
+    webCreated.Body.GetProperty("data").GetProperty("account").GetProperty("uid").GetInt32() == webAccount.Uid);
+Check("web-created account can log in to the game", Ok(await LoginAs("WebPlayer", WebPassword)));
+Check("web account usernames are unique regardless of case", WebError(await Web(client, "/external/web-account/v1/accounts",
+    new { username = "webplayer", email = "other@example.test", password = WebPassword })) == "username_taken");
+Check("web account emails stay unique", WebError(await Web(client, "/external/web-account/v1/accounts",
+    new { username = "WebPlayer2", email = "WEB.PLAYER@example.test", password = WebPassword })) == "email_taken");
+Check("web account usernames are restricted to login-safe characters", WebError(await Web(client,
+    "/external/web-account/v1/accounts", new { username = "bad name", password = WebPassword })) == "invalid_username");
+Check("web account passwords follow the server password policy", WebError(await Web(client,
+    "/external/web-account/v1/accounts", new { username = "ShortPw", password = "x" })) == "invalid_password" &&
+    AccountData.GetAccountByUserName("ShortPw") == null);
+var placeholder = await Web(client, "/external/web-account/v1/accounts", new { username = "NoMail", password = WebPassword });
+Check("web account without an address gets a unique placeholder", placeholder.Status == HttpStatusCode.OK &&
+    AccountData.GetAccountByUserName("NoMail")?.Email == "nomail@web-account.invalid");
+var webRace = await Task.WhenAll(Enumerable.Range(0, 8).Select(i => Web(client, "/external/web-account/v1/accounts",
+    new { username = i % 2 == 0 ? "RaceWeb" : "raceweb", email = $"race-web-{i}@example.test", password = WebPassword })));
+Check("concurrent web account creation for one username creates exactly one account",
+    webRace.Count(r => r.Status == HttpStatusCode.OK) == 1);
+
+var webToken = webAccount!.GenerateDispatchToken();
+const string WebPassword2 = "Web-Account-Password-2";
+var reset = await Web(client, $"/external/web-account/v1/accounts/{webAccount.Uid}/password",
+    new { password = WebPassword2 }, HttpMethod.Put);
+Check("web password reset replaces the password and signs clients out", reset.Status == HttpStatusCode.OK &&
+    !Ok(await LoginAs("WebPlayer", WebPassword)) && !webAccount.ValidateGameToken(webToken) &&
+    Ok(await LoginAs("WebPlayer", WebPassword2)));
+Check("web password reset still enforces the password policy", WebError(await Web(client,
+    $"/external/web-account/v1/accounts/{webAccount.Uid}/password", new { password = "x" }, HttpMethod.Put)) == "invalid_password");
+var banned = await Web(client, $"/external/web-account/v1/accounts/{webAccount.Uid}/ban", new { reason = "web ban" });
+Check("web ban blocks game login", banned.Status == HttpStatusCode.OK &&
+    banned.Body.GetProperty("data").GetProperty("account").GetProperty("banned").GetBoolean() &&
+    !Ok(await LoginAs("WebPlayer", WebPassword2)));
+await Web(client, $"/external/web-account/v1/accounts/{webAccount.Uid}/ban", method: HttpMethod.Delete);
+Check("web unban restores game login", Ok(await LoginAs("WebPlayer", WebPassword2)));
+Check("web account lookup reports missing accounts", WebError(await Web(client, "/external/web-account/v1/accounts/999999")) == "not_found");
+
+// Behind a local reverse proxy, a relayed public request is not "local" even with the right secret.
+await using (var proxyApp = WebProgram.BuildWebApp([], 0, "http://127.0.0.1:0"))
+{
+    await proxyApp.StartAsync();
+    using var proxyClient = new HttpClient { BaseAddress = new Uri(proxyApp.Services.GetRequiredService<IServer>().Features.Get<IServerAddressesFeature>()!.Addresses.Single()) };
+    var relayed = await Web(proxyClient, "/external/web-account/v1/status",
+        headers: new() { ["X-March7thHoney-Web-Secret"] = WebSecret, ["X-Forwarded-For"] = "198.51.100.20" });
+    Check("web account API refuses requests relayed from outside the allowed addresses", relayed.Status == HttpStatusCode.Unauthorized);
+    await proxyApp.StopAsync();
+}
+
+auth.ExternalRegistrationUrl = "https://example.test/register";
+using (var noRedirect = new HttpClient(new HttpClientHandler { AllowAutoRedirect = false }) { BaseAddress = new Uri(address) })
+using (var response = await noRedirect.GetAsync("/login-platform/register.html"))
+    Check("closed registration page points at the external sign-up site",
+        response.StatusCode == HttpStatusCode.Redirect && response.Headers.Location?.ToString() == auth.ExternalRegistrationUrl);
+auth.ExternalRegistrationUrl = "";
+auth.EnableRegistration = true;
 
 Console.WriteLine($"Auth regression failures: {failures.Count}");
 if (serve && failures.Count == 0)

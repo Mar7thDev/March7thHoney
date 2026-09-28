@@ -82,6 +82,9 @@ public partial class SceneInstance
 
     public SceneEntityLoader? EntityLoader { get; set; }
 
+    /// <summary>Whether prop state changes in this scene are saved to and restored from the player's scene data.</summary>
+    public bool PersistsPropState => EntityLoader?.PersistsPropState ?? true;
+
     public GameModeTypeEnum GameModeType { get; set; }
     public List<BaseSceneComponent> Components { get; set; } = [];
 

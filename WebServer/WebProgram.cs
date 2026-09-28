@@ -106,6 +106,7 @@ public class WebProgram
         app.MapLogServerRoutes();
         app.MapGateServerRoutes();
         app.MapServerExchangeRoutes();
+        app.MapWebAccountRoutes();
         app.MapMuipServerRoutes();
         app.MapHandbookRoutes();
         app.MapJsonRoutes();
