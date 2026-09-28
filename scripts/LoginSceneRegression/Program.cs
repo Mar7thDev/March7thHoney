@@ -1436,10 +1436,21 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
 Directory.CreateDirectory(Path.Combine(scratch, "Custom"));
 File.Copy(Path.Combine(repository, "Config/Custom/ActivityConfig.json"), Path.Combine(scratch, "Custom/ActivityConfig.json"));
 var schedule = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig");
-int[] trialModules = [2000502, 2000603, 2000903, 2001101, 2001102, 2001103, 2001104, 2001105, 2001106, 2001107,
-    2001108, 2001109, 2001303, 2001703, 2002803, 2006001, 2006301, 2006302, 2008001, 2008601, 2008701, 2008901, 2009001];
+// The Role Trial modules of the captured 4.6 official schedule (ActivityModuleDemo -> AvatarDemoConfig TrialActivity).
+int[] trialModules = [2000603, 2001101, 2001102, 2001103, 2001104, 2001105, 2001106, 2001107, 2001108, 2001109,
+    2002303, 2002502, 2006301, 2006302, 2008201, 2008401, 2008601, 2008701, 2009301];
 Check("activity schedule lists every Role Trial module", schedule != null &&
-    trialModules.All(id => schedule.ScheduleData.Any(row => row.ActivityId == id && row.PanelId is 20011 or 20064 or 20087 or 20089 or 20090)));
+    trialModules.All(id => schedule.ScheduleData.Any(row => row.ActivityId == id && row.PanelId is 20011 or 20064 or 20087 or 20091 or 20092 or 20093)));
+
+// Banners.json is parsed row by row and a bad row is only skipped with a warning, so check that every captured 4.6
+// pool survives loading and only references avatars and light cones present in the resource cache.
+File.Copy(Path.Combine(repository, "Config/Custom/Banners.json"), Path.Combine(scratch, "Custom/Banners.json"));
+var banners = ResourceManager.LoadBanners();
+int[] bannerIds = [1001, 2139, 2140, 2141, 3139, 3140, 3141, 5001, 5002, 5003, 5004, 6001, 6002, 6003, 6004];
+Check("banner config loads every captured 4.6 pool with known rate-up items",
+    banners.Banners.Select(b => b.GachaId).Order().SequenceEqual(bannerIds) &&
+    banners.Banners.All(b => b.RateUpItems5.Concat(b.RateUpItems4).Concat(b.PrizeItems)
+        .All(id => GameData.AvatarConfigData.ContainsKey(id) || GameData.EquipmentConfigData.ContainsKey(id))));
 
 var fakeRaw = Path.Combine(scratch, "fake-raw");
 Directory.CreateDirectory(Path.Combine(fakeRaw, "ExcelOutputGameCore"));
