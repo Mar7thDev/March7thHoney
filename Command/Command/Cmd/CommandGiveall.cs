@@ -1,11 +1,11 @@
 using March7thHoney.Data;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.TrainParty;
-using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Internationalization;
+using March7thHoney.Proto;
 
 namespace March7thHoney.Command.Command.Cmd;
 
@@ -22,21 +22,36 @@ public class CommandGiveall : ICommand
             return;
         }
 
-        arg.CharacterArgs.TryGetValue("r", out var rankStr);
-        arg.CharacterArgs.TryGetValue("l", out var levelStr);
-        rankStr ??= "0";
-        levelStr ??= "1";
-        if (!int.TryParse(rankStr, out var rank) || !int.TryParse(levelStr, out var level))
+        // Only values the caller typed are applied to avatars the player already owns; a bare
+        // "/giveall avatar" must not reset built characters to level 1 / E0.
+        int? level = null;
+        int? rank = null;
+        if (arg.CharacterArgs.TryGetValue("l", out var levelStr))
         {
-            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
-            return;
+            if (!int.TryParse(levelStr, out var parsedLevel))
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+                return;
+            }
+
+            level = Math.Clamp(parsedLevel, 1, 80);
         }
 
-        await GiveAllPath(arg);
+        if (arg.CharacterArgs.TryGetValue("r", out var rankStr))
+        {
+            if (!int.TryParse(rankStr, out var parsedRank))
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+                return;
+            }
 
-        var clampedLevel = Math.Clamp(level, 1, 80);
-        var clampedRank = Math.Clamp(rank, 0, 6);
-        var promotion = GameData.GetMinPromotionForLevel(clampedLevel);
+            rank = Math.Clamp(parsedRank, 0, 6);
+        }
+
+        // GiveAllPath below may create multi-path base avatars; they still count as new here.
+        var ownedBefore = player.AvatarManager!.Data.FormalAvatars.Select(x => x.BaseAvatarId).ToHashSet();
+
+        await GiveAllPath(arg);
 
         var avatarList = GameData.AvatarConfigData.Values;
         foreach (var avatar in avatarList)
@@ -56,9 +71,22 @@ public class CommandGiveall : ICommand
                 var formalAvatar = player.AvatarManager!.GetFormalAvatar(avatar.AvatarID);
                 if (formalAvatar == null) continue;
 
-                formalAvatar.Level = clampedLevel;
-                formalAvatar.Promotion = promotion;
-                formalAvatar.GetCurPathInfo().Rank = clampedRank;
+                var isNew = !ownedBefore.Contains(formalAvatar.BaseAvatarId);
+                var targetLevel = isNew ? level ?? 1 : level;
+                var targetRank = isNew ? rank ?? 0 : rank;
+
+                if (targetLevel is { } newLevel)
+                {
+                    formalAvatar.Level = newLevel;
+                    formalAvatar.Promotion = GameData.GetMinPromotionForLevel(newLevel);
+                }
+
+                if (targetRank is { } newRank)
+                {
+                    // Multi-path characters keep Eidolons per path; set every owned path like /avatar rank.
+                    formalAvatar.GetCurPathInfo();
+                    foreach (var path in formalAvatar.PathInfos.Values) path.Rank = newRank;
+                }
             }
             catch (Exception)
             {
@@ -358,10 +386,11 @@ public class CommandGiveall : ICommand
             }
 
             var avatarData = player.AvatarManager!.GetFormalAvatar(multiPathAvatar.BaseAvatarID)!;
-            if (avatarData.PathInfos.ContainsKey(multiPathAvatar.AvatarID)) continue;
-            if (multiPathAvatar.BaseAvatarID > 8000 && multiPathAvatar.AvatarID % 2 != 1) continue;
-            await player.ChangeAvatarPathType(multiPathAvatar.BaseAvatarID,
-                (MultiPathAvatarTypeEnum)multiPathAvatar.AvatarID);
+            // Trailblazer paths come in male (odd) / female (even) pairs; unlock the player's own half.
+            if (multiPathAvatar.BaseAvatarID == 8001 &&
+                multiPathAvatar.AvatarID % 2 != (player.Data.CurrentGender == Gender.Woman ? 0 : 1)) continue;
+            // Unlock without switching the current path, so owned characters keep the path they are using.
+            avatarData.EnsurePathInfo(multiPathAvatar.AvatarID);
         }
 
         await player.SendPacket(new PacketPlayerSyncScNotify(player.AvatarManager!.Data.FormalAvatars));

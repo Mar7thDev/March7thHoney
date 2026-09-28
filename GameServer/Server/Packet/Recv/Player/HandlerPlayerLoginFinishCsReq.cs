@@ -1,3 +1,4 @@
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.Kcp;
 using March7thHoney.GameServer.Server.Packet.Send.DailyActive;
 using March7thHoney.GameServer.Game.Player;
@@ -22,7 +23,8 @@ public class HandlerPlayerLoginFinishCsReq : PlayerHandler
 
         await connection.SendPacket(new PacketFinishedMissionScNotify(
             player?.MissionManager?.Data.FinishedMainMissionIds ?? []));
-        await connection.SendPacket(new PacketDailyActiveInfoNotify(player));
+        var daily = player?.GetComponentOrDefault<DailyActiveManager>();
+        if (daily != null) await connection.SendPacket(new PacketDailyActiveInfoNotify(daily));
         await SendHoyoToonLuaAutoRun(connection);
     }
 
@@ -53,6 +55,7 @@ public class HandlerPlayerLoginFinishCsReq : PlayerHandler
 
             var bytes = await HoyoToonLuaPayloadBuilder.BuildAsync(luaRoot, relativePath);
             await connection.SendPacket(new HandshakePacket(bytes));
+            connection.RecordSentLuaScript(relativePath);
         }
     }
 }

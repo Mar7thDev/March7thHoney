@@ -6,6 +6,7 @@ using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Battle;
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Mission.FinishAction;
 using March7thHoney.GameServer.Game.Mission.FinishType;
 using March7thHoney.GameServer.Game.Player;
@@ -115,7 +116,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         var sync = new MissionSync();
         foreach (var nextMission in GameData.MainMissionData.Values)
         {
-            if (!nextMission.IsEqual(Data)) continue;
+            if (!nextMission.IsEqual(Data) || !nextMission.IsBeginSatisfied(Data)) continue;
             if (Data.GetMainMissionStatus(nextMission.MainMissionID) != MissionPhaseEnum.None)
                 continue; // already accepted
             var res = await AcceptMainMission(nextMission.MainMissionID, sendPacket);
@@ -300,7 +301,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         return false;
     }
 
-    public async ValueTask RemoveMainMission(int missionId)
+    public async ValueTask RemoveMainMission(int missionId, bool sendPacket = true)
     {
         if (Player.B51RacingManager?.IsCompletedMainMission(missionId) == true) return;
         if (!Enabled) return;
@@ -322,7 +323,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             });
         }
 
-        await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+        if (sendPacket) await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
     }
 
     public async ValueTask AcceptSubMission(int missionId)
@@ -422,6 +423,15 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         await Player.SendPacket(new PacketFinishedMissionScNotify(missionId));
         await HandleMissionReward(missionId);
         await HandleFinishType(MissionFinishTypeEnum.FinishMission);
+
+        // A finished daily main mission feeds the daily training counters (quest 2100003 "Complete 1 Daily
+        // Mission" is FinishTodayDailyMissionCnt; cycle quests 1001802/1001925 are FinishDailyMissionCnt).
+        if (mainMission.Type == MainMissionTypeEnum.Daily &&
+            Player.GetComponentOrDefault<DailyActiveManager>()?.RecordDailyMission(missionId) == true)
+        {
+            await HandleFinishType(MissionFinishTypeEnum.FinishTodayDailyMissionCnt);
+            await HandleFinishType(MissionFinishTypeEnum.FinishDailyMissionCnt);
+        }
 
         await Player.RaidManager!.CheckIfLeaveRaid();
 
@@ -637,6 +647,12 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             await Player.QuestManager!.SyncQuest();
     }
 
+    /// <summary>Raises one occurrence of a "+N per event" finish type (see <see cref="MissionCountEvent" />).</summary>
+    public ValueTask TriggerCountEvent(MissionFinishTypeEnum finishType, int count = 1, int param = 0)
+    {
+        return HandleFinishType(finishType, new MissionCountEvent(finishType, count, param));
+    }
+
     public async ValueTask HandleAllFinishType(object? arg = null)
     {
         foreach (var handler in FinishTypeHandlers) await HandleFinishType(handler.Key, arg, false);
@@ -673,47 +689,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         }
 
         return handled;
-    }
-
-    /// <summary>
-    ///     Fallback for a degenerate FinishTalkMissionCsReq — a talk report whose string matches no
-    ///     configured ParamStr1 gate and that carries sub_mission_id 0. The client emits that shape when
-    ///     its local client-side ("type C") performance for the step never armed, so it reports a plain
-    ///     NPC dialogue (talk_str "0") instead of the mission string, and the story chain stalls.
-    /// </summary>
-    /// <remarks>
-    ///     The candidate set is deliberately narrow: only a FINISH GATE of the currently tracked main,
-    ///     with FinishType Talk, on the floor the player is standing on, and currently running. That is
-    ///     the single step whose completion unlocks the next main, so a generic dialogue can never
-    ///     advance a mid-chain objective. Zero or several candidates are a no-op, so an ordinary floor
-    ///     with multiple talk NPCs can never be mis-advanced.
-    /// </remarks>
-    public async ValueTask<bool> FinishDegenerateTalk()
-    {
-        if (!Enabled) return false;
-
-        var floorId = Player.SceneInstance?.FloorId ?? 0;
-        if (floorId == 0) return false;
-
-        var trackedMainId = Data.TrackingMainMissionId;
-        if (trackedMainId <= 0) return false;
-        if (!GameData.MainMissionData.TryGetValue(trackedMainId, out var mainMission)) return false;
-
-        var candidates = new List<int>();
-        foreach (var subId in mainMission.MissionInfo.FinishSubMissionList)
-        {
-            if (GetSubMissionStatus(subId) != MissionPhaseEnum.Accept) continue;
-            var info = GetSubMissionInfo(subId);
-            if (info == null) continue;
-            if (info.FinishType != MissionFinishTypeEnum.Talk) continue;
-            if (info.LevelFloorID != floorId) continue;
-            candidates.Add(subId);
-        }
-
-        if (candidates.Count != 1) return false;
-
-        await FinishSubMission(candidates[0]);
-        return true;
     }
 
     public async ValueTask HandleCustomValue(List<MissionCustomValue> values, int missionId)

@@ -21,6 +21,15 @@ public partial class AvatarDemoConfigExcel : ExcelResource
 
     [JsonIgnore] public Dictionary<int, StageMonsterInfo> StageMonsters1 { get; set; } = new();
 
+    // Appended after the existing members so an older Resource.bin still deserializes (with empty defaults);
+    // ResourceCache.ValidateLoadedCache rejects such a cache when the raw table is available.
+    public string StageType { get; set; } = "";
+    public int[] SPList { get; set; } = [];
+
+    /// <summary>AvatarDemoConfig also carries "SpecialDisplay" demo rows; only these rows are Role Trial stages.</summary>
+    [JsonIgnore]
+    public bool IsTrialActivity => StageType == "TrialActivity";
+
     public override int GetId()
     {
         return StageID;

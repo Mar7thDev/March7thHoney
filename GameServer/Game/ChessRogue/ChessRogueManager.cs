@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
@@ -252,6 +253,7 @@ public partial class ChessRogueManager : BasePlayerManager
 
         await ClearRun();
         await Player.EnterScene(RogueLobbyEntranceId, 0, false);
+        await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueFinishCnt);
         return run;
     }
 

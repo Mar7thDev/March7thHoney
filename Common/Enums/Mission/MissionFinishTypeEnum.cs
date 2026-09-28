@@ -50,6 +50,9 @@ public enum MissionFinishTypeEnum
     GachaWithType = 48,
     Gacha = 49,
     MessagePerformSectionFinish = 50,
+    // FinishWay rows reference this by name only (daily quests 2100002/2100133); 51 is the only unused slot
+    // in this range, not a value confirmed from the client.
+    ExpeditionSetOrTakeReward = 51,
     FinishTodayDailyMissionCnt = 52,
     ExpeditionBeginCnt = 53,
     InclinationTextWithType = 54,

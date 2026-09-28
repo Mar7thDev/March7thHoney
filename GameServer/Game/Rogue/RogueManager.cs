@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
@@ -8,6 +9,8 @@ using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Server.Packet.Send.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
@@ -162,6 +165,7 @@ public class RogueManager : BasePlayerManager
 
         RogueData.FinishCnt++;
         SaveRun();
+        await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueFinishCnt);
         return inst;
     }
 
@@ -170,6 +174,25 @@ public class RogueManager : BasePlayerManager
         if (RogueInstance == null) return false;
 
         await ClearRun();
+        return await ExitToLobby();
+    }
+
+    /// <summary>
+    ///     Leaves a Simulated Universe room whose run no longer exists. A won-but-not-left run is dropped on
+    ///     relog while login still restores its room scene, so LeaveRogue has no run to settle.
+    /// </summary>
+    public async ValueTask<bool> LeaveOrphanedRoom()
+    {
+        if (RogueInstance != null) return false;
+        if (Player.SceneInstance is not
+            { Excel.PlaneType: PlaneTypeEnum.Rogue, GameModeType: GameModeTypeEnum.RogueExplore }) return false;
+
+        return await ExitToLobby();
+    }
+
+    private async ValueTask<bool> ExitToLobby()
+    {
+        await Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, false);
         await Player.EnterScene(RogueEntranceId, 0, false);
         return Player.SceneInstance?.EntryId == RogueEntranceId;
     }
@@ -231,6 +254,42 @@ public class RogueManager : BasePlayerManager
         var room = inst.GetCurrentRoom();
         if (room == null || !GameData.RogueRoomData.TryGetValue(room.RoomId, out var excel)) return null;
         return excel.MapEntrance == entryId ? excel : null;
+    }
+
+    /// <summary>The rooms the current room's exit portals lead to, in ascending site order.</summary>
+    public List<RogueDoorTarget> GetRoomExitTargets()
+    {
+        if (RogueInstance?.GetCurrentRoom() is not { } room) return [];
+        return room.NextSiteIds
+            .Order()
+            .Select(siteId => RogueInstance.Rooms.GetValueOrDefault(siteId))
+            .OfType<RogueRoomData>()
+            .Select(next => new RogueDoorTarget(next.RoomId, next.SiteId))
+            .ToList();
+    }
+
+    /// <summary>
+    ///     Opens the current room's exit portals once the room is cleared and no blessing draft is pending.
+    ///     Official 4.5: the portal is re-sent with prop state Open right after the draft resolves, before
+    ///     HandleRogueCommonPendingActionScRsp; the client only sends EnterRogueMapRoomCsReq through an open portal.
+    /// </summary>
+    public async ValueTask<bool> OpenRoomExit()
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst || inst.BuffSelect?.HasSelection == true)
+            return false;
+        var scene = Player.SceneInstance;
+        var roomExcel = scene == null ? null : GetActiveRoomExcel(scene.EntryId);
+        if (scene == null || roomExcel == null) return false;
+
+        var doors = scene.GetEntitiesInGroup<EntityProp>(roomExcel.GroupID)
+            .Where(door => door.RogueDoorTarget != null && door.State != PropStateEnum.Open)
+            .ToList();
+        if (doors.Count == 0) return false;
+
+        foreach (var door in doors) door.State = PropStateEnum.Open;
+        await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, doors.Cast<BaseGameEntity>().ToList(),
+            null, SceneGroupRefreshType.Afibfmafncc));
+        return true;
     }
 
     public int GetCurrentMonsterLevel()
@@ -353,6 +412,11 @@ public class RogueManager : BasePlayerManager
             // The 4.5 client needs the identical draft notify twice to arm RogueSelectBuffPage.
             await Player.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(BuildPendingAction(inst)));
             await Player.SendPacket(new PacketSyncRogueCommonPendingActionScNotify(BuildPendingAction(inst)));
+        }
+        else if (!inst.IsWin)
+        {
+            // A win with nothing to draft clears the room on the spot; a draft opens the exit when it resolves.
+            await OpenRoomExit();
         }
 
         if (coinGained) await Player.SendPacket(new PacketSyncRogueVirtualItemInfoScNotify(inst.Coin));

@@ -410,19 +410,30 @@ public class LineupManager : BasePlayerManager<LineupData>
         var lineup = GetCurLineup();
         if (lineup == null) return;
         if (lineup.BaseAvatars!.RemoveAll(a => a.SpecialAvatarId == specialAvatarId) == 0) return;
-        MarkDirty();
 
-        if (!sendPacket) return;
-        Player.SceneInstance?.SyncLineup();
-
-        // a virtual lineup only exists to host trial avatars; tear it down once the last one leaves
-        if (lineup.IsExtraLineup() && lineup.BaseAvatars!.Count == 0)
+        // a virtual lineup only exists to host trial avatars; tear it down once the last one leaves,
+        // even when the caller suppresses packets, so the saved state never keeps an empty extra lineup
+        var tornDown = lineup.IsExtraLineup() && lineup.BaseAvatars!.Count == 0;
+        if (tornDown)
         {
             Data.Lineups.Remove(Data.GetCurLineupIndex());
             Data.CurExtraLineup = -1;
         }
+
+        MarkDirty();
+        if (!sendPacket) return;
+
+        if (tornDown)
+        {
+            // tell the client the extra lineup is gone, then resync the scene against the restored lineup
+            await Player.SendPacket(new PacketExtraLineupDestroyNotify((ExtraLineupType)lineup.LineupType));
+            if (Player.SceneInstance != null) await Player.SceneInstance.SyncLineup();
+            var restored = GetCurLineup();
+            if (restored != null) await Player.SendPacket(new PacketSyncLineupNotify(restored));
+        }
         else
         {
+            if (Player.SceneInstance != null) await Player.SceneInstance.SyncLineup();
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
     }

@@ -86,5 +86,6 @@ Legend:
 - [x] Project-specific Extensions
   - [x] Muip API (`/muip/*`)
   - [x] Freesr sync API (`/sr-tools`, `/sr-tools-export`)
-  - [x] Extended admin commands (`/json`, `/grid`, `/calyx`, etc.)
+  - [x] Extended admin commands (`/json`, `/grid`, `/calyx`, `/spawn`, etc.)
+    - [x] `/spawn`: runtime monsters/props near a player, with an optional custom battle (`s`/`lv`/`hp`, MonsterConfig waves split by `/`, `|` or `\`); ordinary world and story scenes only, never saved, never advances missions
 

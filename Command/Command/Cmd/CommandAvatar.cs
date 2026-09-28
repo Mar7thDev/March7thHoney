@@ -276,8 +276,15 @@ public class CommandAvatar : ICommand
             return;
         }
 
-        await arg.Target.Player.ChangeAvatarPathType(avatarId, (MultiPathAvatarTypeEnum)pathId);
-        await arg.Target.SendPacket(new PacketAvatarPathChangedNotify((uint)avatarId, (MultiPathAvatarType)pathId));
+        var storedId = await arg.Target.Player.ChangeAvatarPathType(avatarId, (MultiPathAvatarTypeEnum)pathId);
+        if (storedId == 0)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Avatar.AvatarNotFound"));
+            return;
+        }
+
+        await arg.Target.SendPacket(new PacketAvatarPathChangedNotify((uint)avatar.BaseAvatarId,
+            (MultiPathAvatarType)storedId));
         await arg.Target.SendPacket(new PacketPlayerSyncScNotify(avatar));
     }
 }

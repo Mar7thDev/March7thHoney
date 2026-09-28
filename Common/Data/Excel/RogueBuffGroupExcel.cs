@@ -5,12 +5,13 @@ using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
+// 4.5 ships RogueBuffGroup with obfuscated keys (GroupID / buff tag or child group list).
 [ResourceEntity("RogueBuffGroup.json")]
 [MemoryPackable]
 public partial class RogueBuffGroupExcel : BaseRogueBuffGroupExcel
 {
-    [JsonProperty("IDLBMIHBAPB")] public int GroupID { get; set; }
-    [JsonProperty("GNGDPDOMDFH")] public List<int> BuffTagList { get; set; } = [];
+    [JsonProperty("GMLOGNJAIGI")] public int GroupID { get; set; }
+    [JsonProperty("HECJCAMDGNO")] public List<int> BuffTagList { get; set; } = [];
 
     public override int GetId()
     {
@@ -19,6 +20,7 @@ public partial class RogueBuffGroupExcel : BaseRogueBuffGroupExcel
 
     public override void Loaded()
     {
+        GroupId = GroupID;
         GameData.RogueBuffGroupData[GetId()] = this;
         LoadBuff();
     }
@@ -32,13 +34,9 @@ public partial class RogueBuffGroupExcel : BaseRogueBuffGroupExcel
     {
         if (IsLoaded) return;
         var count = 0;
+        List<RogueBuffExcel> buffs = [.. GameData.RogueBuffData.Values.OfType<RogueBuffExcel>()];
         foreach (var buffId in BuffTagList)
         {
-            List<RogueBuffExcel> buffs =
-            [
-                .. GameData.RogueBuffData.Where(x => x.Value is RogueBuffExcel).Select(x =>
-                    (x.Value as RogueBuffExcel)!).ToList()
-            ];
             if (buffs.FirstOrDefault(x => x.RogueBuffTag == buffId) is { } buff)
             {
                 BuffList.SafeAdd(buff);
@@ -51,7 +49,8 @@ public partial class RogueBuffGroupExcel : BaseRogueBuffGroupExcel
                 if (group is not RogueBuffGroupExcel e) continue;
                 e.LoadBuff();
                 BuffList.SafeAddRange(e.BuffList);
-                count++;
+                // A child still missing rows (not loaded yet) must leave this group open for AfterAllDone.
+                if (e.IsLoaded) count++;
             }
         }
 

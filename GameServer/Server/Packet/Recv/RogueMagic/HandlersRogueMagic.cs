@@ -31,7 +31,7 @@ public sealed class HandlerRogueMagicStartCsReq : Handler<RogueMagicStartCsReq>
             req.OCEGEKKFLAL.Select(id => (int)id).ToList(), req.NOEPBNMJFGL.Select(id => (int)id).ToList());
         if (ret == Retcode.RetSucc && run != null && !await manager.EnterRoomScene(run.CurRoom(), false))
         {
-            await manager.LeaveRun();
+            await manager.LeaveRun(false);
             ret = Retcode.RetFail;
         }
 

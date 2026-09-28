@@ -1,5 +1,6 @@
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Inventory;
+using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 
 namespace March7thHoney.GameServer.Game.Inventory;
@@ -9,6 +10,7 @@ public partial class InventoryManager
     private async ValueTask<ItemData?> AddVirtualItem(int itemId, int count, ItemConfigExcel itemConfig)
     {
         var actualCount = 0;
+        var levelBefore = Player.Data.Level;
         switch (itemConfig.ID)
         {
             case 1:
@@ -36,11 +38,16 @@ public partial class InventoryManager
                 Player.Data.TalentPoints += count;
                 actualCount = Player.Data.TalentPoints;
                 break;
+            case DailyActiveManager.DailyActivePointItemId:
+                // Daily active points: today's window, not a stored item.
+                actualCount = Player.GetComponentOrDefault<DailyActiveManager>()?.AddPoint(count) ?? 0;
+                break;
         }
 
         if (count != 0)
         {
             await Player.SendPacket(new PacketPlayerSyncScNotify(Player.ToProto()));
+            if (Player.Data.Level > levelBefore) await Player.OnLevelUp();
             return new ItemData
             {
                 ItemId = itemId,

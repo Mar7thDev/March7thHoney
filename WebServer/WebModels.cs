@@ -146,3 +146,17 @@ public sealed record AccountEmailWrap(AccountSummary account, bool email_sent);
 public sealed record AccountOnlineWrap(AccountSummary account, bool was_online);
 
 public sealed record DeletedUid(int uid);
+
+// === website game-account provisioning (WebAccountRoutes) ===
+public sealed record WebAccountResult<T>(int retcode, string message, T data);
+
+public sealed record WebAccountError(int retcode, string message, string error);
+
+public sealed record WebAccountInfo(
+    int uid, string username, string email, string? nickname, int? level, bool banned, string ban_reason,
+    bool online, long created_at, long last_seen_at);
+
+public sealed record WebAccountWrap(WebAccountInfo account);
+
+public sealed record WebAccountStatus(
+    string server_name, string version, int accounts, int online, bool ready);

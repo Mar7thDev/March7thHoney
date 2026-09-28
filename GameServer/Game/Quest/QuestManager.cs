@@ -15,6 +15,9 @@ namespace March7thHoney.GameServer.Game.Quest;
 
 public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(player)
 {
+    /// <summary>QuestData.QuestType of the daily training (每日实训) quests.</summary>
+    public const int DailyQuestType = 5;
+
     public UnlockHandler UnlockHandler { get; } = new(player);
     public List<QuestInfo> WaitToSync { get; } = [];
 
@@ -50,6 +53,8 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
         {
             if (IsActivityQuest(quest.QuestID)) continue;
             if (Data.Quests.ContainsKey(quest.QuestID)) continue; // Already accepted
+            // Daily training quests are handed out only by the daily roll (DailyActiveManager), 8 per day.
+            if (quest.QuestType == DailyQuestType) continue;
             QuestInfo? acceptQuest = null;
             switch (quest.UnlockType)
             {
@@ -95,6 +100,31 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
         if (syncList.Count > 0)
             await Player.SendPacket(new PacketPlayerSyncScNotify(syncList));
+    }
+
+    /// <summary>
+    ///     Puts a quest record into <paramref name="status" /> with its progress cleared, creating the record if it
+    ///     does not exist. Used by the daily roll to re-arm and expire repeatable quests, which AcceptQuest refuses
+    ///     because a record already exists. Returns the changed record for syncing.
+    /// </summary>
+    public QuestInfo ResetQuestState(int questId, QuestStatus status)
+    {
+        if (!Data.Quests.TryGetValue(questId, out var questInfo))
+        {
+            questInfo = new QuestInfo { QuestId = questId };
+            Data.Quests.Add(questId, questInfo);
+        }
+
+        questInfo.QuestStatus = status;
+        if (status == QuestStatus.QuestDoing)
+        {
+            questInfo.Progress = 0;
+            questInfo.FinishTime = 0;
+        }
+
+        WaitToSync.Remove(questInfo);
+        MarkQuestDataDirty();
+        return questInfo;
     }
 
     public async ValueTask<QuestInfo?> AcceptQuest(int questId, bool sync = true)
