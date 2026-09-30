@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdRelicPresetType {
+	CmdRelicPresetType_NLCDGIPGFDJ = 0;
+	CmdRelicPresetType_RelicPresetAddPlanCsReq = 9844;
+	CmdRelicPresetType_RelicPresetUpdatePlanScRsp = 9846;
+	CmdRelicPresetType_RelicPresetUpdatePlanCsReq = 9847;
+	CmdRelicPresetType_RelicPresetGetPlanScRsp = 9848;
+	CmdRelicPresetType_RelicPresetDeletePlanScRsp = 9849;
+	CmdRelicPresetType_BJGKLFMLMAF = 9852;
+	CmdRelicPresetType_PKLFCJBCOLE = 9853;
+	CmdRelicPresetType_RelicPresetGetPlanCsReq = 9855;
+	CmdRelicPresetType_RelicPresetDeletePlanCsReq = 9856;
+	CmdRelicPresetType_RelicPresetAddPlanScRsp = 9860;
+}
+
+message EGGOCLKIAME {
+	uint32 unique_id = 1;
+}
+
+message EJILGJGLKIO {
+	PFCKBFLDHNI relic_plan = 11;
+}
+
+enum FDJKLJGDCID {
+	FDJKLJGDCID_NLCDGIPGFDJ = 0;
+	FDJKLJGDCID_DCGAPNGCCEH = 1;
+	FDJKLJGDCID_BMHMMIMOAIJ = 2;
+	FDJKLJGDCID_JPDBDLEEHGK = 3;
+	FDJKLJGDCID_OGPNODHENKN = 4;
+	FDJKLJGDCID_PICLIGEAJFN = 5;
+	FDJKLJGDCID_FHCEFAOHJJJ = 6;
+}
+
+message HPPOINFLEPJ {
+	FDJKLJGDCID LLJJCOOKANH = 1;
+	repeated uint32 relic_ids = 3;
+	RelicPresetPlanSourceType source_type = 13;
+}
+
+message PFCKBFLDHNI {
+	string name = 1;
+	RelicPresetPlanSourceType source_type = 4;
+	repeated uint32 relic_ids = 9;
+	uint32 unique_id = 11;
+	uint32 avatar_id = 14;
+}
+
+message RelicPresetAddPlanCsReq {
+	RelicPresetPlanSourceType source_type = 3;
+	repeated uint32 relic_ids = 7;
+	FDJKLJGDCID LLJJCOOKANH = 8;
+	string name = 11;
+	uint32 avatar_id = 12;
+}
+
+message RelicPresetAddPlanScRsp {
+	PFCKBFLDHNI relic_plan = 3;
+	uint32 retcode = 6;
+}
+
+message RelicPresetDeletePlanCsReq {
+	uint32 ONIAFLNBNPN = 10;
+}
+
+message RelicPresetDeletePlanScRsp {
+	uint32 unique_id = 7;
+	uint32 retcode = 14;
+}
+
+message RelicPresetGetPlanCsReq {
+	uint32 avatar_id = 10;
+}
+
+message RelicPresetGetPlanScRsp {
+	uint32 avatar_id = 3;
+	repeated PFCKBFLDHNI relic_plan_list = 4;
+	uint32 retcode = 5;
+}
+
+enum RelicPresetPlanSourceType {
+	RelicPresetPlanSourceType_None = 0;
+	RelicPresetPlanSourceType_Mine = 1;
+	RelicPresetPlanSourceType_SmartCustom = 2;
+	RelicPresetPlanSourceType_SmartBigData = 3;
+	RelicPresetPlanSourceType_SmartSystem = 4;
+	RelicPresetPlanSourceType_FromScratch = 5;
+	RelicPresetPlanSourceType_Platform = 6;
+}
+
+message RelicPresetUpdatePlanCsReq {
+	oneof KKNBOACNCON {
+		string name = 3;
+		HPPOINFLEPJ relic_list = 8;
+	}
+	uint32 unique_id = 12;
+}
+
+message RelicPresetUpdatePlanScRsp {
+	uint32 unique_id = 3;
+	oneof KKNBOACNCON {
+		HPPOINFLEPJ relic_list = 5;
+		string name = 9;
+	}
+	uint32 retcode = 7;
+}

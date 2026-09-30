@@ -25,142 +25,142 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpDbWRDaGFsbGVuZ2VQZWFrVHlwZS5wcm90bxoMQ29tbW9uLnByb3RvIrIB",
-            "Cg1DaGFsbGVuZ2VQZWFrEhwKFGZpbmlzaGVkX3RhcmdldF9saXN0GAMgAygN",
-            "EhIKCmhhc19wYXNzZWQYBCABKAgSLAoPcGVha19idWlsZF9saXN0GAkgAygL",
-            "MhMuQ2hhbGxlbmdlUGVha0J1aWxkEhsKE3BlYWtfYXZhdGFyX2lkX2xpc3QY",
-            "CyADKA0SDwoHcGVha19pZBgNIAEoDRITCgtjeWNsZXNfdXNlZBgPIAEoDSKW",
-            "AQoXQ2hhbGxlbmdlUGVha0Jlc3RSZWNvcmQSHAoUZmluaXNoZWRfdGFyZ2V0",
-            "X2xpc3QYCCADKA0SEwoLY3ljbGVzX3VzZWQYCyABKA0SNwoTcGVha19hdmF0",
-            "YXJfaWRfbGlzdBgNIAMoCzIaLkNoYWxsZW5nZVBlYWtSZWNvcmRBdmF0YXIS",
-            "DwoHcGVha19pZBgOIAEoDSJGChtDaGFsbGVuZ2VQZWFrQmVzdFJlY29yZExp",
-            "c3QSJwoFcGVha3MYDiADKAsyGC5DaGFsbGVuZ2VQZWFrQmVzdFJlY29yZCLE",
-            "AQoRQ2hhbGxlbmdlUGVha0Jvc3MSLgoJZWFzeV9tb2RlGAUgASgLMhsuQ2hh",
-            "bGxlbmdlUGVha0Jvc3NDbGVhcmFuY2USLgoJaGFyZF9tb2RlGAggASgLMhsu",
-            "Q2hhbGxlbmdlUGVha0Jvc3NDbGVhcmFuY2USHAoUaGFyZF9tb2RlX2hhc19w",
-            "YXNzZWQYCSABKAgSEwoLQkZCSENLRUpESUcYDCABKA0SHAoUZmluaXNoZWRf",
-            "dGFyZ2V0X2xpc3QYDSADKA0i/gEKGkNoYWxsZW5nZVBlYWtCb3NzQ2xlYXJh",
-            "bmNlEhUKDW1heF9sZWZ0X3R1cm4YASABKA0SDwoHYnVmZl9pZBgCIAEoDRIb",
-            "ChNwZWFrX2F2YXRhcl9pZF9saXN0GAQgAygNEjsKF2Jlc3RfcmVjb3JkX2F2",
-            "YXRhcl9saXN0GAUgAygLMhouQ2hhbGxlbmdlUGVha1JlY29yZEF2YXRhchIY",
-            "ChBiZXN0X2N5Y2xlX2NvdW50GAYgASgNEhsKE2Jlc3RfcmVjb3JkX2J1ZmZf",
-            "aWQYCyABKA0SEgoKaGFzX3Bhc3NlZBgNIAEoCBITCgtMQU1QQ0FDT0NIUBgP",
-            "IAMoDSJ2ChJDaGFsbGVuZ2VQZWFrQnVpbGQSGwoTZXF1aXBtZW50X3VuaXF1",
-            "ZV9pZBgEIAEoDRIRCglhdmF0YXJfaWQYByABKA0SDwoHc2tpbl9pZBgLIAEo",
-            "DRIfCgpyZWxpY19saXN0GA4gAygLMgsuRXF1aXBSZWxpYyK9AgoSQ2hhbGxl",
-            "bmdlUGVha0dyb3VwEhYKDm9idGFpbmVkX3N0YXJzGAIgASgNEjYKEGJlc3Rf",
-            "cmVjb3JkX2xpc3QYAyABKAsyHC5DaGFsbGVuZ2VQZWFrQmVzdFJlY29yZExp",
-            "c3QSFQoNcGVha19ncm91cF9pZBgEIAEoDRIaChJ0YWtlbl9zdGFyX3Jld2Fy",
-            "ZHMYBSADKA0SHQoFcGVha3MYBiADKAsyDi5DaGFsbGVuZ2VQZWFrEhkKEWRp",
-            "c2FibGVfaGFyZF9tb2RlGAggASgIEiUKCXBlYWtfYm9zcxgJIAEoCzISLkNo",
-            "YWxsZW5nZVBlYWtCb3NzEisKEXdhaXRfY29uZmlybV9kYXRhGAwgASgLMhAu",
-            "V2FpdENvbmZpcm1EYXRhEhYKDmNvdW50X29mX3BlYWtzGA8gASgNIlkKJENo",
+            "Cg1DaGFsbGVuZ2VQZWFrEhsKE3BlYWtfYXZhdGFyX2lkX2xpc3QYBCADKA0S",
+            "DwoHcGVha19pZBgFIAEoDRITCgtjeWNsZXNfdXNlZBgLIAEoDRISCgpoYXNf",
+            "cGFzc2VkGAwgASgIEhwKFGZpbmlzaGVkX3RhcmdldF9saXN0GA4gAygNEiwK",
+            "D3BlYWtfYnVpbGRfbGlzdBgPIAMoCzITLkNoYWxsZW5nZVBlYWtCdWlsZCKW",
+            "AQoXQ2hhbGxlbmdlUGVha0Jlc3RSZWNvcmQSEwoLY3ljbGVzX3VzZWQYCyAB",
+            "KA0SNwoTcGVha19hdmF0YXJfaWRfbGlzdBgMIAMoCzIaLkNoYWxsZW5nZVBl",
+            "YWtSZWNvcmRBdmF0YXISDwoHcGVha19pZBgOIAEoDRIcChRmaW5pc2hlZF90",
+            "YXJnZXRfbGlzdBgPIAMoDSJGChtDaGFsbGVuZ2VQZWFrQmVzdFJlY29yZExp",
+            "c3QSJwoFcGVha3MYAyADKAsyGC5DaGFsbGVuZ2VQZWFrQmVzdFJlY29yZCLE",
+            "AQoRQ2hhbGxlbmdlUGVha0Jvc3MSEwoLQkZCSENLRUpESUcYBCABKA0SHAoU",
+            "ZmluaXNoZWRfdGFyZ2V0X2xpc3QYBiADKA0SLgoJaGFyZF9tb2RlGAkgASgL",
+            "MhsuQ2hhbGxlbmdlUGVha0Jvc3NDbGVhcmFuY2USLgoJZWFzeV9tb2RlGAsg",
+            "ASgLMhsuQ2hhbGxlbmdlUGVha0Jvc3NDbGVhcmFuY2USHAoUaGFyZF9tb2Rl",
+            "X2hhc19wYXNzZWQYDCABKAgi/gEKGkNoYWxsZW5nZVBlYWtCb3NzQ2xlYXJh",
+            "bmNlEhsKE3BlYWtfYXZhdGFyX2lkX2xpc3QYAyADKA0SEwoLTEFNUENBQ09D",
+            "SFAYBCADKA0SGwoTYmVzdF9yZWNvcmRfYnVmZl9pZBgGIAEoDRIVCg1tYXhf",
+            "bGVmdF90dXJuGAogASgNEhIKCmhhc19wYXNzZWQYCyABKAgSOwoXYmVzdF9y",
+            "ZWNvcmRfYXZhdGFyX2xpc3QYDCADKAsyGi5DaGFsbGVuZ2VQZWFrUmVjb3Jk",
+            "QXZhdGFyEg8KB2J1ZmZfaWQYDSABKA0SGAoQYmVzdF9jeWNsZV9jb3VudBgP",
+            "IAEoDSJ2ChJDaGFsbGVuZ2VQZWFrQnVpbGQSDwoHc2tpbl9pZBgBIAEoDRIb",
+            "ChNlcXVpcG1lbnRfdW5pcXVlX2lkGA0gASgNEh8KCnJlbGljX2xpc3QYDiAD",
+            "KAsyCy5FcXVpcFJlbGljEhEKCWF2YXRhcl9pZBgPIAEoDSK9AgoSQ2hhbGxl",
+            "bmdlUGVha0dyb3VwEhoKEnRha2VuX3N0YXJfcmV3YXJkcxgDIAMoDRI2ChBi",
+            "ZXN0X3JlY29yZF9saXN0GAYgASgLMhwuQ2hhbGxlbmdlUGVha0Jlc3RSZWNv",
+            "cmRMaXN0EhUKDXBlYWtfZ3JvdXBfaWQYByABKA0SFgoOb2J0YWluZWRfc3Rh",
+            "cnMYCiABKA0SKwoRd2FpdF9jb25maXJtX2RhdGEYCyABKAsyEC5XYWl0Q29u",
+            "ZmlybURhdGESGQoRZGlzYWJsZV9oYXJkX21vZGUYDCABKAgSHQoFcGVha3MY",
+            "DSADKAsyDi5DaGFsbGVuZ2VQZWFrEiUKCXBlYWtfYm9zcxgOIAEoCzISLkNo",
+            "YWxsZW5nZVBlYWtCb3NzEhYKDmNvdW50X29mX3BlYWtzGA8gASgNIlkKJENo",
             "YWxsZW5nZVBlYWtHcm91cERhdGFVcGRhdGVTY05vdGlmeRIxChRjaGFsbGVu",
-            "Z2VfcGVha19ncm91cBgHIAEoCzITLkNoYWxsZW5nZVBlYWtHcm91cCJDChND",
-            "aGFsbGVuZ2VQZWFrTGluZXVwEhsKE3BlYWtfYXZhdGFyX2lkX2xpc3QYAyAD",
-            "KA0SDwoHcGVha19pZBgMIAEoDSI/ChlDaGFsbGVuZ2VQZWFrUmVjb3JkQXZh",
-            "dGFyEg8KB3NraW5faWQYBCABKA0SEQoJYXZhdGFyX2lkGAcgASgNIkgKGENo",
-            "YWxsZW5nZVBlYWtSZXdhcmRHcm91cBIRCglyZXdhcmRfaWQYCSABKA0SGQoG",
-            "cmV3YXJkGA0gASgLMgkuSXRlbUxpc3QiyQIKG0NoYWxsZW5nZVBlYWtTZXR0",
-            "bGVTY05vdGlmeRIXCg9pc193YWl0X2NvbmZpcm0YASABKAgSDgoGaXNfd2lu",
-            "GAIgASgIEhwKFGhhcmRfbW9kZV9oYXNfcGFzc2VkGAMgASgIEg8KB3BlYWtf",
-            "aWQYBCABKA0SEQoJdHVybl9sZWZ0GAYgASgNEhMKC2N5Y2xlc191c2VkGAgg",
-            "ASgNEjkKFnBlYWtfcmV3YXJkX2dyb3VwX2xpc3QYCSADKAsyGS5DaGFsbGVu",
-            "Z2VQZWFrUmV3YXJkR3JvdXASFQoNaXNfZmlyc3RfcGFzcxgKIAEoCBIdChVp",
-            "c19ib3NzX3RhcmdldF9iZXR0ZXIYCyABKAgSHAoUZmluaXNoZWRfdGFyZ2V0",
-            "X2xpc3QYDSADKA0SGwoTaXNfdW5sb2NrX2Vhc3lfYm9zcxgPIAEoCCJHCh9D",
-            "b25maXJtQ2hhbGxlbmdlUGVha1NldHRsZUNzUmVxEg8KB3BlYWtfaWQYByAB",
-            "KA0SEwoLSU9CQ0lNSVBFT00YDSABKAgiWAofQ29uZmlybUNoYWxsZW5nZVBl",
-            "YWtTZXR0bGVTY1JzcBITCgtJT0JDSU1JUEVPTRgFIAEoCBIPCgdwZWFrX2lk",
-            "GA4gASgNEg8KB3JldGNvZGUYDyABKA0iGwoZR2V0Q2hhbGxlbmdlUGVha0Rh",
+            "Z2VfcGVha19ncm91cBgPIAEoCzITLkNoYWxsZW5nZVBlYWtHcm91cCJDChND",
+            "aGFsbGVuZ2VQZWFrTGluZXVwEg8KB3BlYWtfaWQYCiABKA0SGwoTcGVha19h",
+            "dmF0YXJfaWRfbGlzdBgPIAMoDSI/ChlDaGFsbGVuZ2VQZWFrUmVjb3JkQXZh",
+            "dGFyEhEKCWF2YXRhcl9pZBgDIAEoDRIPCgdza2luX2lkGAsgASgNIkgKGENo",
+            "YWxsZW5nZVBlYWtSZXdhcmRHcm91cBIRCglyZXdhcmRfaWQYCiABKA0SGQoG",
+            "cmV3YXJkGA4gASgLMgkuSXRlbUxpc3QiyQIKG0NoYWxsZW5nZVBlYWtTZXR0",
+            "bGVTY05vdGlmeRIdChVpc19ib3NzX3RhcmdldF9iZXR0ZXIYASABKAgSOQoW",
+            "cGVha19yZXdhcmRfZ3JvdXBfbGlzdBgDIAMoCzIZLkNoYWxsZW5nZVBlYWtS",
+            "ZXdhcmRHcm91cBIOCgZpc193aW4YBCABKAgSHAoUZmluaXNoZWRfdGFyZ2V0",
+            "X2xpc3QYBSADKA0SGwoTaXNfdW5sb2NrX2Vhc3lfYm9zcxgGIAEoCBIRCgl0",
+            "dXJuX2xlZnQYCCABKA0SDwoHcGVha19pZBgLIAEoDRIcChRoYXJkX21vZGVf",
+            "aGFzX3Bhc3NlZBgMIAEoCBIVCg1pc19maXJzdF9wYXNzGA0gASgIEhcKD2lz",
+            "X3dhaXRfY29uZmlybRgOIAEoCBITCgtjeWNsZXNfdXNlZBgPIAEoDSJHCh9D",
+            "b25maXJtQ2hhbGxlbmdlUGVha1NldHRsZUNzUmVxEhMKC0lPQkNJTUlQRU9N",
+            "GAwgASgIEg8KB3BlYWtfaWQYDSABKA0iWAofQ29uZmlybUNoYWxsZW5nZVBl",
+            "YWtTZXR0bGVTY1JzcBIPCgdyZXRjb2RlGAEgASgNEg8KB3BlYWtfaWQYCyAB",
+            "KA0SEwoLSU9CQ0lNSVBFT00YDCABKAgiGwoZR2V0Q2hhbGxlbmdlUGVha0Rh",
             "dGFDc1JlcSJ/ChlHZXRDaGFsbGVuZ2VQZWFrRGF0YVNjUnNwEg8KB3JldGNv",
-            "ZGUYAiABKA0SMgoVY2hhbGxlbmdlX3BlYWtfZ3JvdXBzGAUgAygLMhMuQ2hh",
-            "bGxlbmdlUGVha0dyb3VwEh0KFWN1cnJlbnRfcGVha19ncm91cF9pZBgOIAEo",
-            "DSIaChhHZXRDdXJDaGFsbGVuZ2VQZWFrQ3NSZXEiZgoYR2V0Q3VyQ2hhbGxl",
-            "bmdlUGVha1NjUnNwEhQKDGJvc3NfYnVmZl9pZBgDIAEoDRIPCgdwZWFrX2lk",
-            "GAggASgNEg8KB3JldGNvZGUYDSABKA0SEgoKaGFzX3Bhc3NlZBgPIAEoCCIZ",
+            "ZGUYAiABKA0SHQoVY3VycmVudF9wZWFrX2dyb3VwX2lkGAggASgNEjIKFWNo",
+            "YWxsZW5nZV9wZWFrX2dyb3VwcxgNIAMoCzITLkNoYWxsZW5nZVBlYWtHcm91",
+            "cCIaChhHZXRDdXJDaGFsbGVuZ2VQZWFrQ3NSZXEiZgoYR2V0Q3VyQ2hhbGxl",
+            "bmdlUGVha1NjUnNwEhQKDGJvc3NfYnVmZl9pZBgBIAEoDRIPCgdyZXRjb2Rl",
+            "GAIgASgNEhIKCmhhc19wYXNzZWQYBCABKAgSDwoHcGVha19pZBgJIAEoDSIZ",
             "ChdMZWF2ZUNoYWxsZW5nZVBlYWtDc1JlcSIqChdMZWF2ZUNoYWxsZW5nZVBl",
-            "YWtTY1JzcBIPCgdyZXRjb2RlGAogASgNIhsKGVJlU3RhcnRDaGFsbGVuZ2VQ",
+            "YWtTY1JzcBIPCgdyZXRjb2RlGAIgASgNIhsKGVJlU3RhcnRDaGFsbGVuZ2VQ",
             "ZWFrQ3NSZXEiLAoZUmVTdGFydENoYWxsZW5nZVBlYWtTY1JzcBIPCgdyZXRj",
-            "b2RlGAYgASgNIlAKIVNldENoYWxsZW5nZVBlYWtCb3NzSGFyZE1vZGVDc1Jl",
-            "cRIUCgxpc19oYXJkX21vZGUYBCABKAgSFQoNcGVha19ncm91cF9pZBgNIAEo",
-            "DSJhCiFTZXRDaGFsbGVuZ2VQZWFrQm9zc0hhcmRNb2RlU2NSc3ASFQoNcGVh",
-            "a19ncm91cF9pZBgEIAEoDRIPCgdyZXRjb2RlGAsgASgNEhQKDGlzX2hhcmRf",
-            "bW9kZRgPIAEoCCJoCiRTZXRDaGFsbGVuZ2VQZWFrTW9iTGluZXVwQXZhdGFy",
-            "Q3NSZXESKQoLbGluZXVwX2xpc3QYCSADKAsyFC5DaGFsbGVuZ2VQZWFrTGlu",
-            "ZXVwEhUKDXBlYWtfZ3JvdXBfaWQYDSABKA0iNwokU2V0Q2hhbGxlbmdlUGVh",
-            "a01vYkxpbmV1cEF2YXRhclNjUnNwEg8KB3JldGNvZGUYByABKA0iXQoXU3Rh",
-            "cnRDaGFsbGVuZ2VQZWFrQ3NSZXESGwoTcGVha19hdmF0YXJfaWRfbGlzdBgF",
-            "IAMoDRIUCgxib3NzX2J1ZmZfaWQYByABKA0SDwoHcGVha19pZBgNIAEoDSIq",
-            "ChdTdGFydENoYWxsZW5nZVBlYWtTY1JzcBIPCgdyZXRjb2RlGAsgASgNIlQK",
-            "HFRha2VDaGFsbGVuZ2VQZWFrUmV3YXJkQ3NSZXESHQoVbm9ybWFsX3Jld2Fy",
-            "ZF9pZF9saXN0GAcgAygNEhUKDXBlYWtfZ3JvdXBfaWQYDCABKA0igQEKHFRh",
-            "a2VDaGFsbGVuZ2VQZWFrUmV3YXJkU2NSc3ASDwoHcmV0Y29kZRgCIAEoDRIV",
-            "Cg1wZWFrX2dyb3VwX2lkGAQgASgNEjkKFnBlYWtfcmV3YXJkX2dyb3VwX2xp",
-            "c3QYDiADKAsyGS5DaGFsbGVuZ2VQZWFrUmV3YXJkR3JvdXAibgoPV2FpdENv",
-            "bmZpcm1EYXRhEhcKD2lzX3dhaXRfY29uZmlybRgCIAEoCBITCgtjeWNsZXNf",
-            "dXNlZBgHIAEoDRIcChRmaW5pc2hlZF90YXJnZXRfbGlzdBgIIAMoDRIPCgdw",
-            "ZWFrX2lkGA0gASgNKpsJChRDbWRDaGFsbGVuZ2VQZWFrVHlwZRIkCiBDbWRD",
-            "aGFsbGVuZ2VQZWFrVHlwZV9OTENER0lQR0ZEShAAEjEKLENtZENoYWxsZW5n",
-            "ZVBlYWtUeXBlX1N0YXJ0Q2hhbGxlbmdlUGVha0NzUmVxENhFEjMKLkNtZENo",
-            "YWxsZW5nZVBlYWtUeXBlX1JlU3RhcnRDaGFsbGVuZ2VQZWFrU2NSc3AQ3UUS",
-            "NgoxQ21kQ2hhbGxlbmdlUGVha1R5cGVfVGFrZUNoYWxsZW5nZVBlYWtSZXdh",
-            "cmRDc1JlcRDeRRIzCi5DbWRDaGFsbGVuZ2VQZWFrVHlwZV9HZXRDaGFsbGVu",
-            "Z2VQZWFrRGF0YUNzUmVxEOZFEjsKNkNtZENoYWxsZW5nZVBlYWtUeXBlX1Nl",
-            "dENoYWxsZW5nZVBlYWtCb3NzSGFyZE1vZGVTY1JzcBDMRRI7CjZDbWRDaGFs",
-            "bGVuZ2VQZWFrVHlwZV9TZXRDaGFsbGVuZ2VQZWFrQm9zc0hhcmRNb2RlQ3NS",
-            "ZXEQ7EUSPgo5Q21kQ2hhbGxlbmdlUGVha1R5cGVfU2V0Q2hhbGxlbmdlUGVh",
-            "a01vYkxpbmV1cEF2YXRhckNzUmVxENZFEjEKLENtZENoYWxsZW5nZVBlYWtU",
-            "eXBlX1N0YXJ0Q2hhbGxlbmdlUGVha1NjUnNwEONFEjIKLUNtZENoYWxsZW5n",
-            "ZVBlYWtUeXBlX0dldEN1ckNoYWxsZW5nZVBlYWtDc1JlcRD0RRI1CjBDbWRD",
-            "aGFsbGVuZ2VQZWFrVHlwZV9DaGFsbGVuZ2VQZWFrU2V0dGxlU2NOb3RpZnkQ",
-            "1EUSNgoxQ21kQ2hhbGxlbmdlUGVha1R5cGVfVGFrZUNoYWxsZW5nZVBlYWtS",
-            "ZXdhcmRTY1JzcBDIRRIzCi5DbWRDaGFsbGVuZ2VQZWFrVHlwZV9HZXRDaGFs",
-            "bGVuZ2VQZWFrRGF0YVNjUnNwEMpFEj4KOUNtZENoYWxsZW5nZVBlYWtUeXBl",
-            "X1NldENoYWxsZW5nZVBlYWtNb2JMaW5ldXBBdmF0YXJTY1JzcBDqRRIxCixD",
-            "bWRDaGFsbGVuZ2VQZWFrVHlwZV9MZWF2ZUNoYWxsZW5nZVBlYWtTY1JzcBDk",
-            "RRI+CjlDbWRDaGFsbGVuZ2VQZWFrVHlwZV9DaGFsbGVuZ2VQZWFrR3JvdXBE",
-            "YXRhVXBkYXRlU2NOb3RpZnkQz0USOQo0Q21kQ2hhbGxlbmdlUGVha1R5cGVf",
-            "Q29uZmlybUNoYWxsZW5nZVBlYWtTZXR0bGVTY1JzcBDrRRIxCixDbWRDaGFs",
-            "bGVuZ2VQZWFrVHlwZV9MZWF2ZUNoYWxsZW5nZVBlYWtDc1JlcRDhRRIyCi1D",
-            "bWRDaGFsbGVuZ2VQZWFrVHlwZV9HZXRDdXJDaGFsbGVuZ2VQZWFrU2NSc3AQ",
-            "0kUSMwouQ21kQ2hhbGxlbmdlUGVha1R5cGVfUmVTdGFydENoYWxsZW5nZVBl",
-            "YWtDc1JlcRDzRRI5CjRDbWRDaGFsbGVuZ2VQZWFrVHlwZV9Db25maXJtQ2hh",
-            "bGxlbmdlUGVha1NldHRsZUNzUmVxEO5FQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
+            "b2RlGA4gASgNIlAKIVNldENoYWxsZW5nZVBlYWtCb3NzSGFyZE1vZGVDc1Jl",
+            "cRIVCg1wZWFrX2dyb3VwX2lkGAEgASgNEhQKDGlzX2hhcmRfbW9kZRgCIAEo",
+            "CCJhCiFTZXRDaGFsbGVuZ2VQZWFrQm9zc0hhcmRNb2RlU2NSc3ASFAoMaXNf",
+            "aGFyZF9tb2RlGAMgASgIEg8KB3JldGNvZGUYDCABKA0SFQoNcGVha19ncm91",
+            "cF9pZBgNIAEoDSJoCiRTZXRDaGFsbGVuZ2VQZWFrTW9iTGluZXVwQXZhdGFy",
+            "Q3NSZXESKQoLbGluZXVwX2xpc3QYCyADKAsyFC5DaGFsbGVuZ2VQZWFrTGlu",
+            "ZXVwEhUKDXBlYWtfZ3JvdXBfaWQYDCABKA0iNwokU2V0Q2hhbGxlbmdlUGVh",
+            "a01vYkxpbmV1cEF2YXRhclNjUnNwEg8KB3JldGNvZGUYDyABKA0iXQoXU3Rh",
+            "cnRDaGFsbGVuZ2VQZWFrQ3NSZXESFAoMYm9zc19idWZmX2lkGAsgASgNEhsK",
+            "E3BlYWtfYXZhdGFyX2lkX2xpc3QYDSADKA0SDwoHcGVha19pZBgOIAEoDSIq",
+            "ChdTdGFydENoYWxsZW5nZVBlYWtTY1JzcBIPCgdyZXRjb2RlGA4gASgNIlQK",
+            "HFRha2VDaGFsbGVuZ2VQZWFrUmV3YXJkQ3NSZXESFQoNcGVha19ncm91cF9p",
+            "ZBgHIAEoDRIdChVub3JtYWxfcmV3YXJkX2lkX2xpc3QYDSADKA0igQEKHFRh",
+            "a2VDaGFsbGVuZ2VQZWFrUmV3YXJkU2NSc3ASOQoWcGVha19yZXdhcmRfZ3Jv",
+            "dXBfbGlzdBgIIAMoCzIZLkNoYWxsZW5nZVBlYWtSZXdhcmRHcm91cBIVCg1w",
+            "ZWFrX2dyb3VwX2lkGAsgASgNEg8KB3JldGNvZGUYDiABKA0ibgoPV2FpdENv",
+            "bmZpcm1EYXRhEhcKD2lzX3dhaXRfY29uZmlybRgCIAEoCBIcChRmaW5pc2hl",
+            "ZF90YXJnZXRfbGlzdBgJIAMoDRIPCgdwZWFrX2lkGAsgASgNEhMKC2N5Y2xl",
+            "c191c2VkGA0gASgNKpsJChRDbWRDaGFsbGVuZ2VQZWFrVHlwZRIkCiBDbWRD",
+            "aGFsbGVuZ2VQZWFrVHlwZV9OTENER0lQR0ZEShAAEj4KOUNtZENoYWxsZW5n",
+            "ZVBlYWtUeXBlX1NldENoYWxsZW5nZVBlYWtNb2JMaW5ldXBBdmF0YXJTY1Jz",
+            "cBDNRRI7CjZDbWRDaGFsbGVuZ2VQZWFrVHlwZV9TZXRDaGFsbGVuZ2VQZWFr",
+            "Qm9zc0hhcmRNb2RlU2NSc3AQzkUSNgoxQ21kQ2hhbGxlbmdlUGVha1R5cGVf",
+            "VGFrZUNoYWxsZW5nZVBlYWtSZXdhcmRTY1JzcBDPRRI+CjlDbWRDaGFsbGVu",
+            "Z2VQZWFrVHlwZV9TZXRDaGFsbGVuZ2VQZWFrTW9iTGluZXVwQXZhdGFyQ3NS",
+            "ZXEQ00USOQo0Q21kQ2hhbGxlbmdlUGVha1R5cGVfQ29uZmlybUNoYWxsZW5n",
+            "ZVBlYWtTZXR0bGVTY1JzcBDaRRI+CjlDbWRDaGFsbGVuZ2VQZWFrVHlwZV9D",
+            "aGFsbGVuZ2VQZWFrR3JvdXBEYXRhVXBkYXRlU2NOb3RpZnkQ3EUSMwouQ21k",
+            "Q2hhbGxlbmdlUGVha1R5cGVfUmVTdGFydENoYWxsZW5nZVBlYWtTY1JzcBDd",
+            "RRIyCi1DbWRDaGFsbGVuZ2VQZWFrVHlwZV9HZXRDdXJDaGFsbGVuZ2VQZWFr",
+            "U2NSc3AQ3kUSMQosQ21kQ2hhbGxlbmdlUGVha1R5cGVfTGVhdmVDaGFsbGVu",
+            "Z2VQZWFrQ3NSZXEQ4kUSOQo0Q21kQ2hhbGxlbmdlUGVha1R5cGVfQ29uZmly",
+            "bUNoYWxsZW5nZVBlYWtTZXR0bGVDc1JlcRDjRRI7CjZDbWRDaGFsbGVuZ2VQ",
+            "ZWFrVHlwZV9TZXRDaGFsbGVuZ2VQZWFrQm9zc0hhcmRNb2RlQ3NSZXEQ5EUS",
+            "NQowQ21kQ2hhbGxlbmdlUGVha1R5cGVfQ2hhbGxlbmdlUGVha1NldHRsZVNj",
+            "Tm90aWZ5EOZFEjEKLENtZENoYWxsZW5nZVBlYWtUeXBlX0xlYXZlQ2hhbGxl",
+            "bmdlUGVha1NjUnNwEOdFEjYKMUNtZENoYWxsZW5nZVBlYWtUeXBlX1Rha2VD",
+            "aGFsbGVuZ2VQZWFrUmV3YXJkQ3NSZXEQ6UUSMwouQ21kQ2hhbGxlbmdlUGVh",
+            "a1R5cGVfR2V0Q2hhbGxlbmdlUGVha0RhdGFTY1JzcBDqRRIzCi5DbWRDaGFs",
+            "bGVuZ2VQZWFrVHlwZV9SZVN0YXJ0Q2hhbGxlbmdlUGVha0NzUmVxEO1FEjMK",
+            "LkNtZENoYWxsZW5nZVBlYWtUeXBlX0dldENoYWxsZW5nZVBlYWtEYXRhQ3NS",
+            "ZXEQ7kUSMgotQ21kQ2hhbGxlbmdlUGVha1R5cGVfR2V0Q3VyQ2hhbGxlbmdl",
+            "UGVha0NzUmVxEPFFEjEKLENtZENoYWxsZW5nZVBlYWtUeXBlX1N0YXJ0Q2hh",
+            "bGxlbmdlUGVha0NzUmVxEPRFEjEKLENtZENoYWxsZW5nZVBlYWtUeXBlX1N0",
+            "YXJ0Q2hhbGxlbmdlUGVha1NjUnNwEPZFQhaqAhNNYXJjaDd0aEhvbmV5LlBy",
             "b3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::March7thHoney.Proto.CommonReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdChallengePeakType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeak), global::March7thHoney.Proto.ChallengePeak.Parser, new[]{ "FinishedTargetList", "HasPassed", "PeakBuildList", "PeakAvatarIdList", "PeakId", "CyclesUsed" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBestRecord), global::March7thHoney.Proto.ChallengePeakBestRecord.Parser, new[]{ "FinishedTargetList", "CyclesUsed", "PeakAvatarIdList", "PeakId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeak), global::March7thHoney.Proto.ChallengePeak.Parser, new[]{ "PeakAvatarIdList", "PeakId", "CyclesUsed", "HasPassed", "FinishedTargetList", "PeakBuildList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBestRecord), global::March7thHoney.Proto.ChallengePeakBestRecord.Parser, new[]{ "CyclesUsed", "PeakAvatarIdList", "PeakId", "FinishedTargetList" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBestRecordList), global::March7thHoney.Proto.ChallengePeakBestRecordList.Parser, new[]{ "Peaks" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBoss), global::March7thHoney.Proto.ChallengePeakBoss.Parser, new[]{ "EasyMode", "HardMode", "HardModeHasPassed", "BFBHCKEJDIG", "FinishedTargetList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBossClearance), global::March7thHoney.Proto.ChallengePeakBossClearance.Parser, new[]{ "MaxLeftTurn", "BuffId", "PeakAvatarIdList", "BestRecordAvatarList", "BestCycleCount", "BestRecordBuffId", "HasPassed", "LAMPCACOCHP" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBuild), global::March7thHoney.Proto.ChallengePeakBuild.Parser, new[]{ "EquipmentUniqueId", "AvatarId", "SkinId", "RelicList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakGroup), global::March7thHoney.Proto.ChallengePeakGroup.Parser, new[]{ "ObtainedStars", "BestRecordList", "PeakGroupId", "TakenStarRewards", "Peaks", "DisableHardMode", "PeakBoss", "WaitConfirmData", "CountOfPeaks" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBoss), global::March7thHoney.Proto.ChallengePeakBoss.Parser, new[]{ "BFBHCKEJDIG", "FinishedTargetList", "HardMode", "EasyMode", "HardModeHasPassed" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBossClearance), global::March7thHoney.Proto.ChallengePeakBossClearance.Parser, new[]{ "PeakAvatarIdList", "LAMPCACOCHP", "BestRecordBuffId", "MaxLeftTurn", "HasPassed", "BestRecordAvatarList", "BuffId", "BestCycleCount" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakBuild), global::March7thHoney.Proto.ChallengePeakBuild.Parser, new[]{ "SkinId", "EquipmentUniqueId", "RelicList", "AvatarId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakGroup), global::March7thHoney.Proto.ChallengePeakGroup.Parser, new[]{ "TakenStarRewards", "BestRecordList", "PeakGroupId", "ObtainedStars", "WaitConfirmData", "DisableHardMode", "Peaks", "PeakBoss", "CountOfPeaks" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakGroupDataUpdateScNotify), global::March7thHoney.Proto.ChallengePeakGroupDataUpdateScNotify.Parser, new[]{ "ChallengePeakGroup" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakLineup), global::March7thHoney.Proto.ChallengePeakLineup.Parser, new[]{ "PeakAvatarIdList", "PeakId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakRecordAvatar), global::March7thHoney.Proto.ChallengePeakRecordAvatar.Parser, new[]{ "SkinId", "AvatarId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakLineup), global::March7thHoney.Proto.ChallengePeakLineup.Parser, new[]{ "PeakId", "PeakAvatarIdList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakRecordAvatar), global::March7thHoney.Proto.ChallengePeakRecordAvatar.Parser, new[]{ "AvatarId", "SkinId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakRewardGroup), global::March7thHoney.Proto.ChallengePeakRewardGroup.Parser, new[]{ "RewardId", "Reward" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakSettleScNotify), global::March7thHoney.Proto.ChallengePeakSettleScNotify.Parser, new[]{ "IsWaitConfirm", "IsWin", "HardModeHasPassed", "PeakId", "TurnLeft", "CyclesUsed", "PeakRewardGroupList", "IsFirstPass", "IsBossTargetBetter", "FinishedTargetList", "IsUnlockEasyBoss" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleCsReq), global::March7thHoney.Proto.ConfirmChallengePeakSettleCsReq.Parser, new[]{ "PeakId", "IOBCIMIPEOM" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp), global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp.Parser, new[]{ "IOBCIMIPEOM", "PeakId", "Retcode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ChallengePeakSettleScNotify), global::March7thHoney.Proto.ChallengePeakSettleScNotify.Parser, new[]{ "IsBossTargetBetter", "PeakRewardGroupList", "IsWin", "FinishedTargetList", "IsUnlockEasyBoss", "TurnLeft", "PeakId", "HardModeHasPassed", "IsFirstPass", "IsWaitConfirm", "CyclesUsed" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleCsReq), global::March7thHoney.Proto.ConfirmChallengePeakSettleCsReq.Parser, new[]{ "IOBCIMIPEOM", "PeakId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp), global::March7thHoney.Proto.ConfirmChallengePeakSettleScRsp.Parser, new[]{ "Retcode", "PeakId", "IOBCIMIPEOM" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetChallengePeakDataCsReq), global::March7thHoney.Proto.GetChallengePeakDataCsReq.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetChallengePeakDataScRsp), global::March7thHoney.Proto.GetChallengePeakDataScRsp.Parser, new[]{ "Retcode", "ChallengePeakGroups", "CurrentPeakGroupId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetChallengePeakDataScRsp), global::March7thHoney.Proto.GetChallengePeakDataScRsp.Parser, new[]{ "Retcode", "CurrentPeakGroupId", "ChallengePeakGroups" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetCurChallengePeakCsReq), global::March7thHoney.Proto.GetCurChallengePeakCsReq.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetCurChallengePeakScRsp), global::March7thHoney.Proto.GetCurChallengePeakScRsp.Parser, new[]{ "BossBuffId", "PeakId", "Retcode", "HasPassed" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetCurChallengePeakScRsp), global::March7thHoney.Proto.GetCurChallengePeakScRsp.Parser, new[]{ "BossBuffId", "Retcode", "HasPassed", "PeakId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LeaveChallengePeakCsReq), global::March7thHoney.Proto.LeaveChallengePeakCsReq.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.LeaveChallengePeakScRsp), global::March7thHoney.Proto.LeaveChallengePeakScRsp.Parser, new[]{ "Retcode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ReStartChallengePeakCsReq), global::March7thHoney.Proto.ReStartChallengePeakCsReq.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.ReStartChallengePeakScRsp), global::March7thHoney.Proto.ReStartChallengePeakScRsp.Parser, new[]{ "Retcode" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengePeakBossHardModeCsReq), global::March7thHoney.Proto.SetChallengePeakBossHardModeCsReq.Parser, new[]{ "IsHardMode", "PeakGroupId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengePeakBossHardModeScRsp), global::March7thHoney.Proto.SetChallengePeakBossHardModeScRsp.Parser, new[]{ "PeakGroupId", "Retcode", "IsHardMode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengePeakBossHardModeCsReq), global::March7thHoney.Proto.SetChallengePeakBossHardModeCsReq.Parser, new[]{ "PeakGroupId", "IsHardMode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengePeakBossHardModeScRsp), global::March7thHoney.Proto.SetChallengePeakBossHardModeScRsp.Parser, new[]{ "IsHardMode", "Retcode", "PeakGroupId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengePeakMobLineupAvatarCsReq), global::March7thHoney.Proto.SetChallengePeakMobLineupAvatarCsReq.Parser, new[]{ "LineupList", "PeakGroupId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SetChallengePeakMobLineupAvatarScRsp), global::March7thHoney.Proto.SetChallengePeakMobLineupAvatarScRsp.Parser, new[]{ "Retcode" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengePeakCsReq), global::March7thHoney.Proto.StartChallengePeakCsReq.Parser, new[]{ "PeakAvatarIdList", "BossBuffId", "PeakId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengePeakCsReq), global::March7thHoney.Proto.StartChallengePeakCsReq.Parser, new[]{ "BossBuffId", "PeakAvatarIdList", "PeakId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.StartChallengePeakScRsp), global::March7thHoney.Proto.StartChallengePeakScRsp.Parser, new[]{ "Retcode" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeChallengePeakRewardCsReq), global::March7thHoney.Proto.TakeChallengePeakRewardCsReq.Parser, new[]{ "NormalRewardIdList", "PeakGroupId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeChallengePeakRewardScRsp), global::March7thHoney.Proto.TakeChallengePeakRewardScRsp.Parser, new[]{ "Retcode", "PeakGroupId", "PeakRewardGroupList" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.WaitConfirmData), global::March7thHoney.Proto.WaitConfirmData.Parser, new[]{ "IsWaitConfirm", "CyclesUsed", "FinishedTargetList", "PeakId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeChallengePeakRewardCsReq), global::March7thHoney.Proto.TakeChallengePeakRewardCsReq.Parser, new[]{ "PeakGroupId", "NormalRewardIdList" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.TakeChallengePeakRewardScRsp), global::March7thHoney.Proto.TakeChallengePeakRewardScRsp.Parser, new[]{ "PeakRewardGroupList", "PeakGroupId", "Retcode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.WaitConfirmData), global::March7thHoney.Proto.WaitConfirmData.Parser, new[]{ "IsWaitConfirm", "FinishedTargetList", "PeakId", "CyclesUsed" }, null, null, null, null)
           }));
     }
     #endregion
@@ -169,26 +169,26 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdChallengePeakType {
     [pbr::OriginalName("CmdChallengePeakType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdChallengePeakType_StartChallengePeakCsReq")] StartChallengePeakCsReq = 8920,
+    [pbr::OriginalName("CmdChallengePeakType_SetChallengePeakMobLineupAvatarScRsp")] SetChallengePeakMobLineupAvatarScRsp = 8909,
+    [pbr::OriginalName("CmdChallengePeakType_SetChallengePeakBossHardModeScRsp")] SetChallengePeakBossHardModeScRsp = 8910,
+    [pbr::OriginalName("CmdChallengePeakType_TakeChallengePeakRewardScRsp")] TakeChallengePeakRewardScRsp = 8911,
+    [pbr::OriginalName("CmdChallengePeakType_SetChallengePeakMobLineupAvatarCsReq")] SetChallengePeakMobLineupAvatarCsReq = 8915,
+    [pbr::OriginalName("CmdChallengePeakType_ConfirmChallengePeakSettleScRsp")] ConfirmChallengePeakSettleScRsp = 8922,
+    [pbr::OriginalName("CmdChallengePeakType_ChallengePeakGroupDataUpdateScNotify")] ChallengePeakGroupDataUpdateScNotify = 8924,
     [pbr::OriginalName("CmdChallengePeakType_ReStartChallengePeakScRsp")] ReStartChallengePeakScRsp = 8925,
-    [pbr::OriginalName("CmdChallengePeakType_TakeChallengePeakRewardCsReq")] TakeChallengePeakRewardCsReq = 8926,
-    [pbr::OriginalName("CmdChallengePeakType_GetChallengePeakDataCsReq")] GetChallengePeakDataCsReq = 8934,
-    [pbr::OriginalName("CmdChallengePeakType_SetChallengePeakBossHardModeScRsp")] SetChallengePeakBossHardModeScRsp = 8908,
-    [pbr::OriginalName("CmdChallengePeakType_SetChallengePeakBossHardModeCsReq")] SetChallengePeakBossHardModeCsReq = 8940,
-    [pbr::OriginalName("CmdChallengePeakType_SetChallengePeakMobLineupAvatarCsReq")] SetChallengePeakMobLineupAvatarCsReq = 8918,
-    [pbr::OriginalName("CmdChallengePeakType_StartChallengePeakScRsp")] StartChallengePeakScRsp = 8931,
-    [pbr::OriginalName("CmdChallengePeakType_GetCurChallengePeakCsReq")] GetCurChallengePeakCsReq = 8948,
-    [pbr::OriginalName("CmdChallengePeakType_ChallengePeakSettleScNotify")] ChallengePeakSettleScNotify = 8916,
-    [pbr::OriginalName("CmdChallengePeakType_TakeChallengePeakRewardScRsp")] TakeChallengePeakRewardScRsp = 8904,
-    [pbr::OriginalName("CmdChallengePeakType_GetChallengePeakDataScRsp")] GetChallengePeakDataScRsp = 8906,
-    [pbr::OriginalName("CmdChallengePeakType_SetChallengePeakMobLineupAvatarScRsp")] SetChallengePeakMobLineupAvatarScRsp = 8938,
-    [pbr::OriginalName("CmdChallengePeakType_LeaveChallengePeakScRsp")] LeaveChallengePeakScRsp = 8932,
-    [pbr::OriginalName("CmdChallengePeakType_ChallengePeakGroupDataUpdateScNotify")] ChallengePeakGroupDataUpdateScNotify = 8911,
-    [pbr::OriginalName("CmdChallengePeakType_ConfirmChallengePeakSettleScRsp")] ConfirmChallengePeakSettleScRsp = 8939,
-    [pbr::OriginalName("CmdChallengePeakType_LeaveChallengePeakCsReq")] LeaveChallengePeakCsReq = 8929,
-    [pbr::OriginalName("CmdChallengePeakType_GetCurChallengePeakScRsp")] GetCurChallengePeakScRsp = 8914,
-    [pbr::OriginalName("CmdChallengePeakType_ReStartChallengePeakCsReq")] ReStartChallengePeakCsReq = 8947,
-    [pbr::OriginalName("CmdChallengePeakType_ConfirmChallengePeakSettleCsReq")] ConfirmChallengePeakSettleCsReq = 8942,
+    [pbr::OriginalName("CmdChallengePeakType_GetCurChallengePeakScRsp")] GetCurChallengePeakScRsp = 8926,
+    [pbr::OriginalName("CmdChallengePeakType_LeaveChallengePeakCsReq")] LeaveChallengePeakCsReq = 8930,
+    [pbr::OriginalName("CmdChallengePeakType_ConfirmChallengePeakSettleCsReq")] ConfirmChallengePeakSettleCsReq = 8931,
+    [pbr::OriginalName("CmdChallengePeakType_SetChallengePeakBossHardModeCsReq")] SetChallengePeakBossHardModeCsReq = 8932,
+    [pbr::OriginalName("CmdChallengePeakType_ChallengePeakSettleScNotify")] ChallengePeakSettleScNotify = 8934,
+    [pbr::OriginalName("CmdChallengePeakType_LeaveChallengePeakScRsp")] LeaveChallengePeakScRsp = 8935,
+    [pbr::OriginalName("CmdChallengePeakType_TakeChallengePeakRewardCsReq")] TakeChallengePeakRewardCsReq = 8937,
+    [pbr::OriginalName("CmdChallengePeakType_GetChallengePeakDataScRsp")] GetChallengePeakDataScRsp = 8938,
+    [pbr::OriginalName("CmdChallengePeakType_ReStartChallengePeakCsReq")] ReStartChallengePeakCsReq = 8941,
+    [pbr::OriginalName("CmdChallengePeakType_GetChallengePeakDataCsReq")] GetChallengePeakDataCsReq = 8942,
+    [pbr::OriginalName("CmdChallengePeakType_GetCurChallengePeakCsReq")] GetCurChallengePeakCsReq = 8945,
+    [pbr::OriginalName("CmdChallengePeakType_StartChallengePeakCsReq")] StartChallengePeakCsReq = 8948,
+    [pbr::OriginalName("CmdChallengePeakType_StartChallengePeakScRsp")] StartChallengePeakScRsp = 8950,
   }
 
   #endregion
@@ -229,12 +229,12 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeak(ChallengePeak other) : this() {
-      finishedTargetList_ = other.finishedTargetList_.Clone();
-      hasPassed_ = other.hasPassed_;
-      peakBuildList_ = other.peakBuildList_.Clone();
       peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
       peakId_ = other.peakId_;
       cyclesUsed_ = other.cyclesUsed_;
+      hasPassed_ = other.hasPassed_;
+      finishedTargetList_ = other.finishedTargetList_.Clone();
+      peakBuildList_ = other.peakBuildList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -244,57 +244,11 @@ namespace March7thHoney.Proto {
       return new ChallengePeak(this);
     }
 
-    /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FinishedTargetList {
-      get { return finishedTargetList_; }
-    }
-
-    /// <summary>Field number for the "has_passed" field.</summary>
-    public const int HasPassedFieldNumber = 4;
-    private bool hasPassed_;
-    /// <summary>
-    /// offset: 48
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasPassed {
-      get { return hasPassed_; }
-      set {
-        hasPassed_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "peak_build_list" field.</summary>
-    public const int PeakBuildListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakBuild> _repeated_peakBuildList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ChallengePeakBuild.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBuild> peakBuildList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBuild>();
-    /// <summary>
-    /// offset: 40
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBuild> PeakBuildList {
-      get { return peakBuildList_; }
-    }
-
     /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
-    public const int PeakAvatarIdListFieldNumber = 11;
+    public const int PeakAvatarIdListFieldNumber = 4;
     private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(90);
+        = pb::FieldCodec.ForUInt32(34);
     private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> PeakAvatarIdList {
@@ -302,11 +256,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 13;
+    public const int PeakIdFieldNumber = 5;
     private uint peakId_;
-    /// <summary>
-    /// offset: 52
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakId {
@@ -317,11 +268,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cycles_used" field.</summary>
-    public const int CyclesUsedFieldNumber = 15;
+    public const int CyclesUsedFieldNumber = 11;
     private uint cyclesUsed_;
-    /// <summary>
-    /// offset: 56
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CyclesUsed {
@@ -329,6 +277,40 @@ namespace March7thHoney.Proto {
       set {
         cyclesUsed_ = value;
       }
+    }
+
+    /// <summary>Field number for the "has_passed" field.</summary>
+    public const int HasPassedFieldNumber = 12;
+    private bool hasPassed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasPassed {
+      get { return hasPassed_; }
+      set {
+        hasPassed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "finished_target_list" field.</summary>
+    public const int FinishedTargetListFieldNumber = 14;
+    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
+        = pb::FieldCodec.ForUInt32(114);
+    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> FinishedTargetList {
+      get { return finishedTargetList_; }
+    }
+
+    /// <summary>Field number for the "peak_build_list" field.</summary>
+    public const int PeakBuildListFieldNumber = 15;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakBuild> _repeated_peakBuildList_codec
+        = pb::FieldCodec.ForMessage(122, global::March7thHoney.Proto.ChallengePeakBuild.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBuild> peakBuildList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBuild>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBuild> PeakBuildList {
+      get { return peakBuildList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -346,12 +328,12 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
-      if (HasPassed != other.HasPassed) return false;
-      if(!peakBuildList_.Equals(other.peakBuildList_)) return false;
       if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
       if (PeakId != other.PeakId) return false;
       if (CyclesUsed != other.CyclesUsed) return false;
+      if (HasPassed != other.HasPassed) return false;
+      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
+      if(!peakBuildList_.Equals(other.peakBuildList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -359,12 +341,12 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= finishedTargetList_.GetHashCode();
-      if (HasPassed != false) hash ^= HasPassed.GetHashCode();
-      hash ^= peakBuildList_.GetHashCode();
       hash ^= peakAvatarIdList_.GetHashCode();
       if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
+      if (HasPassed != false) hash ^= HasPassed.GetHashCode();
+      hash ^= finishedTargetList_.GetHashCode();
+      hash ^= peakBuildList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -383,21 +365,21 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
-      if (HasPassed != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(HasPassed);
-      }
-      peakBuildList_.WriteTo(output, _repeated_peakBuildList_codec);
       peakAvatarIdList_.WriteTo(output, _repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(PeakId);
       }
       if (CyclesUsed != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(CyclesUsed);
       }
+      if (HasPassed != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(HasPassed);
+      }
+      finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
+      peakBuildList_.WriteTo(output, _repeated_peakBuildList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -408,21 +390,21 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
-      if (HasPassed != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(HasPassed);
-      }
-      peakBuildList_.WriteTo(ref output, _repeated_peakBuildList_codec);
       peakAvatarIdList_.WriteTo(ref output, _repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(40);
         output.WriteUInt32(PeakId);
       }
       if (CyclesUsed != 0) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(88);
         output.WriteUInt32(CyclesUsed);
       }
+      if (HasPassed != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(HasPassed);
+      }
+      finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
+      peakBuildList_.WriteTo(ref output, _repeated_peakBuildList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -433,11 +415,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
-      if (HasPassed != false) {
-        size += 1 + 1;
-      }
-      size += peakBuildList_.CalculateSize(_repeated_peakBuildList_codec);
       size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
@@ -445,6 +422,11 @@ namespace March7thHoney.Proto {
       if (CyclesUsed != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CyclesUsed);
       }
+      if (HasPassed != false) {
+        size += 1 + 1;
+      }
+      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
+      size += peakBuildList_.CalculateSize(_repeated_peakBuildList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -457,11 +439,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      finishedTargetList_.Add(other.finishedTargetList_);
-      if (other.HasPassed != false) {
-        HasPassed = other.HasPassed;
-      }
-      peakBuildList_.Add(other.peakBuildList_);
       peakAvatarIdList_.Add(other.peakAvatarIdList_);
       if (other.PeakId != 0) {
         PeakId = other.PeakId;
@@ -469,6 +446,11 @@ namespace March7thHoney.Proto {
       if (other.CyclesUsed != 0) {
         CyclesUsed = other.CyclesUsed;
       }
+      if (other.HasPassed != false) {
+        HasPassed = other.HasPassed;
+      }
+      finishedTargetList_.Add(other.finishedTargetList_);
+      peakBuildList_.Add(other.peakBuildList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -488,30 +470,30 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26:
-          case 24: {
-            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
-            break;
-          }
+          case 34:
           case 32: {
-            HasPassed = input.ReadBool();
-            break;
-          }
-          case 74: {
-            peakBuildList_.AddEntriesFrom(input, _repeated_peakBuildList_codec);
-            break;
-          }
-          case 90:
-          case 88: {
             peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
             break;
           }
-          case 104: {
+          case 40: {
             PeakId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 88: {
             CyclesUsed = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            HasPassed = input.ReadBool();
+            break;
+          }
+          case 114:
+          case 112: {
+            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
+            break;
+          }
+          case 122: {
+            peakBuildList_.AddEntriesFrom(input, _repeated_peakBuildList_codec);
             break;
           }
         }
@@ -533,30 +515,30 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26:
-          case 24: {
-            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
-            break;
-          }
+          case 34:
           case 32: {
-            HasPassed = input.ReadBool();
-            break;
-          }
-          case 74: {
-            peakBuildList_.AddEntriesFrom(ref input, _repeated_peakBuildList_codec);
-            break;
-          }
-          case 90:
-          case 88: {
             peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
             break;
           }
-          case 104: {
+          case 40: {
             PeakId = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 88: {
             CyclesUsed = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            HasPassed = input.ReadBool();
+            break;
+          }
+          case 114:
+          case 112: {
+            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
+            break;
+          }
+          case 122: {
+            peakBuildList_.AddEntriesFrom(ref input, _repeated_peakBuildList_codec);
             break;
           }
         }
@@ -601,10 +583,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakBestRecord(ChallengePeakBestRecord other) : this() {
-      finishedTargetList_ = other.finishedTargetList_.Clone();
       cyclesUsed_ = other.cyclesUsed_;
       peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
       peakId_ = other.peakId_;
+      finishedTargetList_ = other.finishedTargetList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -614,26 +596,9 @@ namespace March7thHoney.Proto {
       return new ChallengePeakBestRecord(this);
     }
 
-    /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 8;
-    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(66);
-    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> FinishedTargetList {
-      get { return finishedTargetList_; }
-    }
-
     /// <summary>Field number for the "cycles_used" field.</summary>
     public const int CyclesUsedFieldNumber = 11;
     private uint cyclesUsed_;
-    /// <summary>
-    /// offset: 44
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CyclesUsed {
@@ -644,13 +609,10 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
-    public const int PeakAvatarIdListFieldNumber = 13;
+    public const int PeakAvatarIdListFieldNumber = 12;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRecordAvatar> _repeated_peakAvatarIdList_codec
-        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ChallengePeakRecordAvatar.Parser);
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.ChallengePeakRecordAvatar.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar> peakAvatarIdList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar>();
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar> PeakAvatarIdList {
@@ -660,9 +622,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "peak_id" field.</summary>
     public const int PeakIdFieldNumber = 14;
     private uint peakId_;
-    /// <summary>
-    /// offset: 40
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakId {
@@ -670,6 +629,17 @@ namespace March7thHoney.Proto {
       set {
         peakId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "finished_target_list" field.</summary>
+    public const int FinishedTargetListFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> FinishedTargetList {
+      get { return finishedTargetList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -687,10 +657,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
       if (CyclesUsed != other.CyclesUsed) return false;
       if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
       if (PeakId != other.PeakId) return false;
+      if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -698,10 +668,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= finishedTargetList_.GetHashCode();
       if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
       hash ^= peakAvatarIdList_.GetHashCode();
       if (PeakId != 0) hash ^= PeakId.GetHashCode();
+      hash ^= finishedTargetList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -720,7 +690,6 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
       if (CyclesUsed != 0) {
         output.WriteRawTag(88);
         output.WriteUInt32(CyclesUsed);
@@ -730,6 +699,7 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(112);
         output.WriteUInt32(PeakId);
       }
+      finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -740,7 +710,6 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
       if (CyclesUsed != 0) {
         output.WriteRawTag(88);
         output.WriteUInt32(CyclesUsed);
@@ -750,6 +719,7 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(112);
         output.WriteUInt32(PeakId);
       }
+      finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -760,7 +730,6 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
       if (CyclesUsed != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CyclesUsed);
       }
@@ -768,6 +737,7 @@ namespace March7thHoney.Proto {
       if (PeakId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
+      size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -780,7 +750,6 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      finishedTargetList_.Add(other.finishedTargetList_);
       if (other.CyclesUsed != 0) {
         CyclesUsed = other.CyclesUsed;
       }
@@ -788,6 +757,7 @@ namespace March7thHoney.Proto {
       if (other.PeakId != 0) {
         PeakId = other.PeakId;
       }
+      finishedTargetList_.Add(other.finishedTargetList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -807,21 +777,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 66:
-          case 64: {
-            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
-            break;
-          }
           case 88: {
             CyclesUsed = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 98: {
             peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
             break;
           }
           case 112: {
             PeakId = input.ReadUInt32();
+            break;
+          }
+          case 122:
+          case 120: {
+            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
             break;
           }
         }
@@ -843,21 +813,21 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 66:
-          case 64: {
-            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
-            break;
-          }
           case 88: {
             CyclesUsed = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 98: {
             peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
             break;
           }
           case 112: {
             PeakId = input.ReadUInt32();
+            break;
+          }
+          case 122:
+          case 120: {
+            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
             break;
           }
         }
@@ -913,13 +883,10 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "peaks" field.</summary>
-    public const int PeaksFieldNumber = 14;
+    public const int PeaksFieldNumber = 3;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakBestRecord> _repeated_peaks_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.ChallengePeakBestRecord.Parser);
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.ChallengePeakBestRecord.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBestRecord> peaks_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBestRecord>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakBestRecord> Peaks {
@@ -1023,7 +990,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 114: {
+          case 26: {
             peaks_.AddEntriesFrom(input, _repeated_peaks_codec);
             break;
           }
@@ -1046,7 +1013,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 114: {
+          case 26: {
             peaks_.AddEntriesFrom(ref input, _repeated_peaks_codec);
             break;
           }
@@ -1092,11 +1059,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakBoss(ChallengePeakBoss other) : this() {
-      easyMode_ = other.easyMode_ != null ? other.easyMode_.Clone() : null;
-      hardMode_ = other.hardMode_ != null ? other.hardMode_.Clone() : null;
-      hardModeHasPassed_ = other.hardModeHasPassed_;
       bFBHCKEJDIG_ = other.bFBHCKEJDIG_;
       finishedTargetList_ = other.finishedTargetList_.Clone();
+      hardMode_ = other.hardMode_ != null ? other.hardMode_.Clone() : null;
+      easyMode_ = other.easyMode_ != null ? other.easyMode_.Clone() : null;
+      hardModeHasPassed_ = other.hardModeHasPassed_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1106,57 +1073,9 @@ namespace March7thHoney.Proto {
       return new ChallengePeakBoss(this);
     }
 
-    /// <summary>Field number for the "easy_mode" field.</summary>
-    public const int EasyModeFieldNumber = 5;
-    private global::March7thHoney.Proto.ChallengePeakBossClearance easyMode_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengePeakBossClearance EasyMode {
-      get { return easyMode_; }
-      set {
-        easyMode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "hard_mode" field.</summary>
-    public const int HardModeFieldNumber = 8;
-    private global::March7thHoney.Proto.ChallengePeakBossClearance hardMode_;
-    /// <summary>
-    /// offset: 40
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengePeakBossClearance HardMode {
-      get { return hardMode_; }
-      set {
-        hardMode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "hard_mode_has_passed" field.</summary>
-    public const int HardModeHasPassedFieldNumber = 9;
-    private bool hardModeHasPassed_;
-    /// <summary>
-    /// offset: 48
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HardModeHasPassed {
-      get { return hardModeHasPassed_; }
-      set {
-        hardModeHasPassed_ = value;
-      }
-    }
-
     /// <summary>Field number for the "BFBHCKEJDIG" field.</summary>
-    public const int BFBHCKEJDIGFieldNumber = 12;
+    public const int BFBHCKEJDIGFieldNumber = 4;
     private uint bFBHCKEJDIG_;
-    /// <summary>
-    /// offset: 52
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint BFBHCKEJDIG {
@@ -1167,17 +1086,50 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 13;
+    public const int FinishedTargetListFieldNumber = 6;
     private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(106);
+        = pb::FieldCodec.ForUInt32(50);
     private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> FinishedTargetList {
       get { return finishedTargetList_; }
+    }
+
+    /// <summary>Field number for the "hard_mode" field.</summary>
+    public const int HardModeFieldNumber = 9;
+    private global::March7thHoney.Proto.ChallengePeakBossClearance hardMode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChallengePeakBossClearance HardMode {
+      get { return hardMode_; }
+      set {
+        hardMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "easy_mode" field.</summary>
+    public const int EasyModeFieldNumber = 11;
+    private global::March7thHoney.Proto.ChallengePeakBossClearance easyMode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChallengePeakBossClearance EasyMode {
+      get { return easyMode_; }
+      set {
+        easyMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "hard_mode_has_passed" field.</summary>
+    public const int HardModeHasPassedFieldNumber = 12;
+    private bool hardModeHasPassed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HardModeHasPassed {
+      get { return hardModeHasPassed_; }
+      set {
+        hardModeHasPassed_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1195,11 +1147,11 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(EasyMode, other.EasyMode)) return false;
-      if (!object.Equals(HardMode, other.HardMode)) return false;
-      if (HardModeHasPassed != other.HardModeHasPassed) return false;
       if (BFBHCKEJDIG != other.BFBHCKEJDIG) return false;
       if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
+      if (!object.Equals(HardMode, other.HardMode)) return false;
+      if (!object.Equals(EasyMode, other.EasyMode)) return false;
+      if (HardModeHasPassed != other.HardModeHasPassed) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1207,11 +1159,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (easyMode_ != null) hash ^= EasyMode.GetHashCode();
-      if (hardMode_ != null) hash ^= HardMode.GetHashCode();
-      if (HardModeHasPassed != false) hash ^= HardModeHasPassed.GetHashCode();
       if (BFBHCKEJDIG != 0) hash ^= BFBHCKEJDIG.GetHashCode();
       hash ^= finishedTargetList_.GetHashCode();
+      if (hardMode_ != null) hash ^= HardMode.GetHashCode();
+      if (easyMode_ != null) hash ^= EasyMode.GetHashCode();
+      if (HardModeHasPassed != false) hash ^= HardModeHasPassed.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1230,23 +1182,23 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (easyMode_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(EasyMode);
-      }
-      if (hardMode_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(HardMode);
-      }
-      if (HardModeHasPassed != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(HardModeHasPassed);
-      }
       if (BFBHCKEJDIG != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteUInt32(BFBHCKEJDIG);
       }
       finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
+      if (hardMode_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(HardMode);
+      }
+      if (easyMode_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(EasyMode);
+      }
+      if (HardModeHasPassed != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(HardModeHasPassed);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1257,23 +1209,23 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (easyMode_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(EasyMode);
-      }
-      if (hardMode_ != null) {
-        output.WriteRawTag(66);
-        output.WriteMessage(HardMode);
-      }
-      if (HardModeHasPassed != false) {
-        output.WriteRawTag(72);
-        output.WriteBool(HardModeHasPassed);
-      }
       if (BFBHCKEJDIG != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(32);
         output.WriteUInt32(BFBHCKEJDIG);
       }
       finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
+      if (hardMode_ != null) {
+        output.WriteRawTag(74);
+        output.WriteMessage(HardMode);
+      }
+      if (easyMode_ != null) {
+        output.WriteRawTag(90);
+        output.WriteMessage(EasyMode);
+      }
+      if (HardModeHasPassed != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(HardModeHasPassed);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1284,19 +1236,19 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (easyMode_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EasyMode);
-      }
-      if (hardMode_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HardMode);
-      }
-      if (HardModeHasPassed != false) {
-        size += 1 + 1;
-      }
       if (BFBHCKEJDIG != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BFBHCKEJDIG);
       }
       size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
+      if (hardMode_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HardMode);
+      }
+      if (easyMode_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(EasyMode);
+      }
+      if (HardModeHasPassed != false) {
+        size += 1 + 1;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1309,25 +1261,25 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.easyMode_ != null) {
-        if (easyMode_ == null) {
-          EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
-        }
-        EasyMode.MergeFrom(other.EasyMode);
+      if (other.BFBHCKEJDIG != 0) {
+        BFBHCKEJDIG = other.BFBHCKEJDIG;
       }
+      finishedTargetList_.Add(other.finishedTargetList_);
       if (other.hardMode_ != null) {
         if (hardMode_ == null) {
           HardMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
         }
         HardMode.MergeFrom(other.HardMode);
       }
+      if (other.easyMode_ != null) {
+        if (easyMode_ == null) {
+          EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
+        }
+        EasyMode.MergeFrom(other.EasyMode);
+      }
       if (other.HardModeHasPassed != false) {
         HardModeHasPassed = other.HardModeHasPassed;
       }
-      if (other.BFBHCKEJDIG != 0) {
-        BFBHCKEJDIG = other.BFBHCKEJDIG;
-      }
-      finishedTargetList_.Add(other.finishedTargetList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1347,31 +1299,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42: {
-            if (easyMode_ == null) {
-              EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
-            }
-            input.ReadMessage(EasyMode);
+          case 32: {
+            BFBHCKEJDIG = input.ReadUInt32();
             break;
           }
-          case 66: {
+          case 50:
+          case 48: {
+            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
+            break;
+          }
+          case 74: {
             if (hardMode_ == null) {
               HardMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
             }
             input.ReadMessage(HardMode);
             break;
           }
-          case 72: {
-            HardModeHasPassed = input.ReadBool();
+          case 90: {
+            if (easyMode_ == null) {
+              EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
+            }
+            input.ReadMessage(EasyMode);
             break;
           }
           case 96: {
-            BFBHCKEJDIG = input.ReadUInt32();
-            break;
-          }
-          case 106:
-          case 104: {
-            finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
+            HardModeHasPassed = input.ReadBool();
             break;
           }
         }
@@ -1393,31 +1345,31 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42: {
-            if (easyMode_ == null) {
-              EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
-            }
-            input.ReadMessage(EasyMode);
+          case 32: {
+            BFBHCKEJDIG = input.ReadUInt32();
             break;
           }
-          case 66: {
+          case 50:
+          case 48: {
+            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
+            break;
+          }
+          case 74: {
             if (hardMode_ == null) {
               HardMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
             }
             input.ReadMessage(HardMode);
             break;
           }
-          case 72: {
-            HardModeHasPassed = input.ReadBool();
+          case 90: {
+            if (easyMode_ == null) {
+              EasyMode = new global::March7thHoney.Proto.ChallengePeakBossClearance();
+            }
+            input.ReadMessage(EasyMode);
             break;
           }
           case 96: {
-            BFBHCKEJDIG = input.ReadUInt32();
-            break;
-          }
-          case 106:
-          case 104: {
-            finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
+            HardModeHasPassed = input.ReadBool();
             break;
           }
         }
@@ -1462,14 +1414,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakBossClearance(ChallengePeakBossClearance other) : this() {
-      maxLeftTurn_ = other.maxLeftTurn_;
-      buffId_ = other.buffId_;
       peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
-      bestRecordAvatarList_ = other.bestRecordAvatarList_.Clone();
-      bestCycleCount_ = other.bestCycleCount_;
-      bestRecordBuffId_ = other.bestRecordBuffId_;
-      hasPassed_ = other.hasPassed_;
       lAMPCACOCHP_ = other.lAMPCACOCHP_.Clone();
+      bestRecordBuffId_ = other.bestRecordBuffId_;
+      maxLeftTurn_ = other.maxLeftTurn_;
+      hasPassed_ = other.hasPassed_;
+      bestRecordAvatarList_ = other.bestRecordAvatarList_.Clone();
+      buffId_ = other.buffId_;
+      bestCycleCount_ = other.bestCycleCount_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1479,85 +1431,31 @@ namespace March7thHoney.Proto {
       return new ChallengePeakBossClearance(this);
     }
 
-    /// <summary>Field number for the "max_left_turn" field.</summary>
-    public const int MaxLeftTurnFieldNumber = 1;
-    private uint maxLeftTurn_;
-    /// <summary>
-    /// offset: 56
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint MaxLeftTurn {
-      get { return maxLeftTurn_; }
-      set {
-        maxLeftTurn_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "buff_id" field.</summary>
-    public const int BuffIdFieldNumber = 2;
-    private uint buffId_;
-    /// <summary>
-    /// offset: 48
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BuffId {
-      get { return buffId_; }
-      set {
-        buffId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
-    public const int PeakAvatarIdListFieldNumber = 4;
+    public const int PeakAvatarIdListFieldNumber = 3;
     private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(34);
+        = pb::FieldCodec.ForUInt32(26);
     private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> PeakAvatarIdList {
       get { return peakAvatarIdList_; }
     }
 
-    /// <summary>Field number for the "best_record_avatar_list" field.</summary>
-    public const int BestRecordAvatarListFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRecordAvatar> _repeated_bestRecordAvatarList_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.ChallengePeakRecordAvatar.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar> bestRecordAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
+    /// <summary>Field number for the "LAMPCACOCHP" field.</summary>
+    public const int LAMPCACOCHPFieldNumber = 4;
+    private static readonly pb::FieldCodec<uint> _repeated_lAMPCACOCHP_codec
+        = pb::FieldCodec.ForUInt32(34);
+    private readonly pbc::RepeatedField<uint> lAMPCACOCHP_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar> BestRecordAvatarList {
-      get { return bestRecordAvatarList_; }
-    }
-
-    /// <summary>Field number for the "best_cycle_count" field.</summary>
-    public const int BestCycleCountFieldNumber = 6;
-    private uint bestCycleCount_;
-    /// <summary>
-    /// offset: 60
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint BestCycleCount {
-      get { return bestCycleCount_; }
-      set {
-        bestCycleCount_ = value;
-      }
+    public pbc::RepeatedField<uint> LAMPCACOCHP {
+      get { return lAMPCACOCHP_; }
     }
 
     /// <summary>Field number for the "best_record_buff_id" field.</summary>
-    public const int BestRecordBuffIdFieldNumber = 11;
+    public const int BestRecordBuffIdFieldNumber = 6;
     private uint bestRecordBuffId_;
-    /// <summary>
-    /// offset: 52
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint BestRecordBuffId {
@@ -1567,12 +1465,21 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "max_left_turn" field.</summary>
+    public const int MaxLeftTurnFieldNumber = 10;
+    private uint maxLeftTurn_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxLeftTurn {
+      get { return maxLeftTurn_; }
+      set {
+        maxLeftTurn_ = value;
+      }
+    }
+
     /// <summary>Field number for the "has_passed" field.</summary>
-    public const int HasPassedFieldNumber = 13;
+    public const int HasPassedFieldNumber = 11;
     private bool hasPassed_;
-    /// <summary>
-    /// offset: 64
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasPassed {
@@ -1582,18 +1489,39 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "LAMPCACOCHP" field.</summary>
-    public const int LAMPCACOCHPFieldNumber = 15;
-    private static readonly pb::FieldCodec<uint> _repeated_lAMPCACOCHP_codec
-        = pb::FieldCodec.ForUInt32(122);
-    private readonly pbc::RepeatedField<uint> lAMPCACOCHP_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 40
-    /// </summary>
+    /// <summary>Field number for the "best_record_avatar_list" field.</summary>
+    public const int BestRecordAvatarListFieldNumber = 12;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRecordAvatar> _repeated_bestRecordAvatarList_codec
+        = pb::FieldCodec.ForMessage(98, global::March7thHoney.Proto.ChallengePeakRecordAvatar.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar> bestRecordAvatarList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> LAMPCACOCHP {
-      get { return lAMPCACOCHP_; }
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRecordAvatar> BestRecordAvatarList {
+      get { return bestRecordAvatarList_; }
+    }
+
+    /// <summary>Field number for the "buff_id" field.</summary>
+    public const int BuffIdFieldNumber = 13;
+    private uint buffId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BuffId {
+      get { return buffId_; }
+      set {
+        buffId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "best_cycle_count" field.</summary>
+    public const int BestCycleCountFieldNumber = 15;
+    private uint bestCycleCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint BestCycleCount {
+      get { return bestCycleCount_; }
+      set {
+        bestCycleCount_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1611,14 +1539,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (MaxLeftTurn != other.MaxLeftTurn) return false;
-      if (BuffId != other.BuffId) return false;
       if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
-      if(!bestRecordAvatarList_.Equals(other.bestRecordAvatarList_)) return false;
-      if (BestCycleCount != other.BestCycleCount) return false;
-      if (BestRecordBuffId != other.BestRecordBuffId) return false;
-      if (HasPassed != other.HasPassed) return false;
       if(!lAMPCACOCHP_.Equals(other.lAMPCACOCHP_)) return false;
+      if (BestRecordBuffId != other.BestRecordBuffId) return false;
+      if (MaxLeftTurn != other.MaxLeftTurn) return false;
+      if (HasPassed != other.HasPassed) return false;
+      if(!bestRecordAvatarList_.Equals(other.bestRecordAvatarList_)) return false;
+      if (BuffId != other.BuffId) return false;
+      if (BestCycleCount != other.BestCycleCount) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1626,14 +1554,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (MaxLeftTurn != 0) hash ^= MaxLeftTurn.GetHashCode();
-      if (BuffId != 0) hash ^= BuffId.GetHashCode();
       hash ^= peakAvatarIdList_.GetHashCode();
-      hash ^= bestRecordAvatarList_.GetHashCode();
-      if (BestCycleCount != 0) hash ^= BestCycleCount.GetHashCode();
-      if (BestRecordBuffId != 0) hash ^= BestRecordBuffId.GetHashCode();
-      if (HasPassed != false) hash ^= HasPassed.GetHashCode();
       hash ^= lAMPCACOCHP_.GetHashCode();
+      if (BestRecordBuffId != 0) hash ^= BestRecordBuffId.GetHashCode();
+      if (MaxLeftTurn != 0) hash ^= MaxLeftTurn.GetHashCode();
+      if (HasPassed != false) hash ^= HasPassed.GetHashCode();
+      hash ^= bestRecordAvatarList_.GetHashCode();
+      if (BuffId != 0) hash ^= BuffId.GetHashCode();
+      if (BestCycleCount != 0) hash ^= BestCycleCount.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1652,29 +1580,29 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (MaxLeftTurn != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(MaxLeftTurn);
-      }
-      if (BuffId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(BuffId);
-      }
       peakAvatarIdList_.WriteTo(output, _repeated_peakAvatarIdList_codec);
-      bestRecordAvatarList_.WriteTo(output, _repeated_bestRecordAvatarList_codec);
-      if (BestCycleCount != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(BestCycleCount);
-      }
+      lAMPCACOCHP_.WriteTo(output, _repeated_lAMPCACOCHP_codec);
       if (BestRecordBuffId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(48);
         output.WriteUInt32(BestRecordBuffId);
       }
+      if (MaxLeftTurn != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(MaxLeftTurn);
+      }
       if (HasPassed != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteBool(HasPassed);
       }
-      lAMPCACOCHP_.WriteTo(output, _repeated_lAMPCACOCHP_codec);
+      bestRecordAvatarList_.WriteTo(output, _repeated_bestRecordAvatarList_codec);
+      if (BuffId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(BuffId);
+      }
+      if (BestCycleCount != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(BestCycleCount);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1685,29 +1613,29 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (MaxLeftTurn != 0) {
-        output.WriteRawTag(8);
-        output.WriteUInt32(MaxLeftTurn);
-      }
-      if (BuffId != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(BuffId);
-      }
       peakAvatarIdList_.WriteTo(ref output, _repeated_peakAvatarIdList_codec);
-      bestRecordAvatarList_.WriteTo(ref output, _repeated_bestRecordAvatarList_codec);
-      if (BestCycleCount != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(BestCycleCount);
-      }
+      lAMPCACOCHP_.WriteTo(ref output, _repeated_lAMPCACOCHP_codec);
       if (BestRecordBuffId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(48);
         output.WriteUInt32(BestRecordBuffId);
       }
+      if (MaxLeftTurn != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(MaxLeftTurn);
+      }
       if (HasPassed != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteBool(HasPassed);
       }
-      lAMPCACOCHP_.WriteTo(ref output, _repeated_lAMPCACOCHP_codec);
+      bestRecordAvatarList_.WriteTo(ref output, _repeated_bestRecordAvatarList_codec);
+      if (BuffId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(BuffId);
+      }
+      if (BestCycleCount != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(BestCycleCount);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1718,24 +1646,24 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (MaxLeftTurn != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxLeftTurn);
-      }
-      if (BuffId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
-      }
       size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
-      size += bestRecordAvatarList_.CalculateSize(_repeated_bestRecordAvatarList_codec);
-      if (BestCycleCount != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BestCycleCount);
-      }
+      size += lAMPCACOCHP_.CalculateSize(_repeated_lAMPCACOCHP_codec);
       if (BestRecordBuffId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BestRecordBuffId);
+      }
+      if (MaxLeftTurn != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxLeftTurn);
       }
       if (HasPassed != false) {
         size += 1 + 1;
       }
-      size += lAMPCACOCHP_.CalculateSize(_repeated_lAMPCACOCHP_codec);
+      size += bestRecordAvatarList_.CalculateSize(_repeated_bestRecordAvatarList_codec);
+      if (BuffId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BuffId);
+      }
+      if (BestCycleCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BestCycleCount);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1748,24 +1676,24 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.MaxLeftTurn != 0) {
-        MaxLeftTurn = other.MaxLeftTurn;
-      }
-      if (other.BuffId != 0) {
-        BuffId = other.BuffId;
-      }
       peakAvatarIdList_.Add(other.peakAvatarIdList_);
-      bestRecordAvatarList_.Add(other.bestRecordAvatarList_);
-      if (other.BestCycleCount != 0) {
-        BestCycleCount = other.BestCycleCount;
-      }
+      lAMPCACOCHP_.Add(other.lAMPCACOCHP_);
       if (other.BestRecordBuffId != 0) {
         BestRecordBuffId = other.BestRecordBuffId;
+      }
+      if (other.MaxLeftTurn != 0) {
+        MaxLeftTurn = other.MaxLeftTurn;
       }
       if (other.HasPassed != false) {
         HasPassed = other.HasPassed;
       }
-      lAMPCACOCHP_.Add(other.lAMPCACOCHP_);
+      bestRecordAvatarList_.Add(other.bestRecordAvatarList_);
+      if (other.BuffId != 0) {
+        BuffId = other.BuffId;
+      }
+      if (other.BestCycleCount != 0) {
+        BestCycleCount = other.BestCycleCount;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1785,38 +1713,38 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            MaxLeftTurn = input.ReadUInt32();
-            break;
-          }
-          case 16: {
-            BuffId = input.ReadUInt32();
+          case 26:
+          case 24: {
+            peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
             break;
           }
           case 34:
           case 32: {
-            peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
-            break;
-          }
-          case 42: {
-            bestRecordAvatarList_.AddEntriesFrom(input, _repeated_bestRecordAvatarList_codec);
+            lAMPCACOCHP_.AddEntriesFrom(input, _repeated_lAMPCACOCHP_codec);
             break;
           }
           case 48: {
-            BestCycleCount = input.ReadUInt32();
-            break;
-          }
-          case 88: {
             BestRecordBuffId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 80: {
+            MaxLeftTurn = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             HasPassed = input.ReadBool();
             break;
           }
-          case 122:
+          case 98: {
+            bestRecordAvatarList_.AddEntriesFrom(input, _repeated_bestRecordAvatarList_codec);
+            break;
+          }
+          case 104: {
+            BuffId = input.ReadUInt32();
+            break;
+          }
           case 120: {
-            lAMPCACOCHP_.AddEntriesFrom(input, _repeated_lAMPCACOCHP_codec);
+            BestCycleCount = input.ReadUInt32();
             break;
           }
         }
@@ -1838,38 +1766,38 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            MaxLeftTurn = input.ReadUInt32();
-            break;
-          }
-          case 16: {
-            BuffId = input.ReadUInt32();
+          case 26:
+          case 24: {
+            peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
             break;
           }
           case 34:
           case 32: {
-            peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
-            break;
-          }
-          case 42: {
-            bestRecordAvatarList_.AddEntriesFrom(ref input, _repeated_bestRecordAvatarList_codec);
+            lAMPCACOCHP_.AddEntriesFrom(ref input, _repeated_lAMPCACOCHP_codec);
             break;
           }
           case 48: {
-            BestCycleCount = input.ReadUInt32();
-            break;
-          }
-          case 88: {
             BestRecordBuffId = input.ReadUInt32();
             break;
           }
-          case 104: {
+          case 80: {
+            MaxLeftTurn = input.ReadUInt32();
+            break;
+          }
+          case 88: {
             HasPassed = input.ReadBool();
             break;
           }
-          case 122:
+          case 98: {
+            bestRecordAvatarList_.AddEntriesFrom(ref input, _repeated_bestRecordAvatarList_codec);
+            break;
+          }
+          case 104: {
+            BuffId = input.ReadUInt32();
+            break;
+          }
           case 120: {
-            lAMPCACOCHP_.AddEntriesFrom(ref input, _repeated_lAMPCACOCHP_codec);
+            BestCycleCount = input.ReadUInt32();
             break;
           }
         }
@@ -1914,10 +1842,10 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakBuild(ChallengePeakBuild other) : this() {
-      equipmentUniqueId_ = other.equipmentUniqueId_;
-      avatarId_ = other.avatarId_;
       skinId_ = other.skinId_;
+      equipmentUniqueId_ = other.equipmentUniqueId_;
       relicList_ = other.relicList_.Clone();
+      avatarId_ = other.avatarId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1927,42 +1855,9 @@ namespace March7thHoney.Proto {
       return new ChallengePeakBuild(this);
     }
 
-    /// <summary>Field number for the "equipment_unique_id" field.</summary>
-    public const int EquipmentUniqueIdFieldNumber = 4;
-    private uint equipmentUniqueId_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint EquipmentUniqueId {
-      get { return equipmentUniqueId_; }
-      set {
-        equipmentUniqueId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 7;
-    private uint avatarId_;
-    /// <summary>
-    /// offset: 36
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint AvatarId {
-      get { return avatarId_; }
-      set {
-        avatarId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "skin_id" field.</summary>
-    public const int SkinIdFieldNumber = 11;
+    public const int SkinIdFieldNumber = 1;
     private uint skinId_;
-    /// <summary>
-    /// offset: 40
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint SkinId {
@@ -1972,18 +1867,39 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "equipment_unique_id" field.</summary>
+    public const int EquipmentUniqueIdFieldNumber = 13;
+    private uint equipmentUniqueId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint EquipmentUniqueId {
+      get { return equipmentUniqueId_; }
+      set {
+        equipmentUniqueId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "relic_list" field.</summary>
     public const int RelicListFieldNumber = 14;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.EquipRelic> _repeated_relicList_codec
         = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.EquipRelic.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> relicList_ = new pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.EquipRelic> RelicList {
       get { return relicList_; }
+    }
+
+    /// <summary>Field number for the "avatar_id" field.</summary>
+    public const int AvatarIdFieldNumber = 15;
+    private uint avatarId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint AvatarId {
+      get { return avatarId_; }
+      set {
+        avatarId_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2001,10 +1917,10 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (EquipmentUniqueId != other.EquipmentUniqueId) return false;
-      if (AvatarId != other.AvatarId) return false;
       if (SkinId != other.SkinId) return false;
+      if (EquipmentUniqueId != other.EquipmentUniqueId) return false;
       if(!relicList_.Equals(other.relicList_)) return false;
+      if (AvatarId != other.AvatarId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2012,10 +1928,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (EquipmentUniqueId != 0) hash ^= EquipmentUniqueId.GetHashCode();
-      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (SkinId != 0) hash ^= SkinId.GetHashCode();
+      if (EquipmentUniqueId != 0) hash ^= EquipmentUniqueId.GetHashCode();
       hash ^= relicList_.GetHashCode();
+      if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2034,19 +1950,19 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (EquipmentUniqueId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(EquipmentUniqueId);
-      }
-      if (AvatarId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(AvatarId);
-      }
       if (SkinId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(8);
         output.WriteUInt32(SkinId);
       }
+      if (EquipmentUniqueId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(EquipmentUniqueId);
+      }
       relicList_.WriteTo(output, _repeated_relicList_codec);
+      if (AvatarId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(AvatarId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2057,19 +1973,19 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (EquipmentUniqueId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(EquipmentUniqueId);
-      }
-      if (AvatarId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(AvatarId);
-      }
       if (SkinId != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(8);
         output.WriteUInt32(SkinId);
       }
+      if (EquipmentUniqueId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(EquipmentUniqueId);
+      }
       relicList_.WriteTo(ref output, _repeated_relicList_codec);
+      if (AvatarId != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(AvatarId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2080,16 +1996,16 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (EquipmentUniqueId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipmentUniqueId);
-      }
-      if (AvatarId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
-      }
       if (SkinId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkinId);
       }
+      if (EquipmentUniqueId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(EquipmentUniqueId);
+      }
       size += relicList_.CalculateSize(_repeated_relicList_codec);
+      if (AvatarId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2102,16 +2018,16 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.EquipmentUniqueId != 0) {
-        EquipmentUniqueId = other.EquipmentUniqueId;
-      }
-      if (other.AvatarId != 0) {
-        AvatarId = other.AvatarId;
-      }
       if (other.SkinId != 0) {
         SkinId = other.SkinId;
       }
+      if (other.EquipmentUniqueId != 0) {
+        EquipmentUniqueId = other.EquipmentUniqueId;
+      }
       relicList_.Add(other.relicList_);
+      if (other.AvatarId != 0) {
+        AvatarId = other.AvatarId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2131,20 +2047,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            EquipmentUniqueId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 8: {
             SkinId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            EquipmentUniqueId = input.ReadUInt32();
             break;
           }
           case 114: {
             relicList_.AddEntriesFrom(input, _repeated_relicList_codec);
+            break;
+          }
+          case 120: {
+            AvatarId = input.ReadUInt32();
             break;
           }
         }
@@ -2166,20 +2082,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            EquipmentUniqueId = input.ReadUInt32();
-            break;
-          }
-          case 56: {
-            AvatarId = input.ReadUInt32();
-            break;
-          }
-          case 88: {
+          case 8: {
             SkinId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            EquipmentUniqueId = input.ReadUInt32();
             break;
           }
           case 114: {
             relicList_.AddEntriesFrom(ref input, _repeated_relicList_codec);
+            break;
+          }
+          case 120: {
+            AvatarId = input.ReadUInt32();
             break;
           }
         }
@@ -2224,14 +2140,14 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakGroup(ChallengePeakGroup other) : this() {
-      obtainedStars_ = other.obtainedStars_;
+      takenStarRewards_ = other.takenStarRewards_.Clone();
       bestRecordList_ = other.bestRecordList_ != null ? other.bestRecordList_.Clone() : null;
       peakGroupId_ = other.peakGroupId_;
-      takenStarRewards_ = other.takenStarRewards_.Clone();
-      peaks_ = other.peaks_.Clone();
-      disableHardMode_ = other.disableHardMode_;
-      peakBoss_ = other.peakBoss_ != null ? other.peakBoss_.Clone() : null;
+      obtainedStars_ = other.obtainedStars_;
       waitConfirmData_ = other.waitConfirmData_ != null ? other.waitConfirmData_.Clone() : null;
+      disableHardMode_ = other.disableHardMode_;
+      peaks_ = other.peaks_.Clone();
+      peakBoss_ = other.peakBoss_ != null ? other.peakBoss_.Clone() : null;
       countOfPeaks_ = other.countOfPeaks_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2242,27 +2158,20 @@ namespace March7thHoney.Proto {
       return new ChallengePeakGroup(this);
     }
 
-    /// <summary>Field number for the "obtained_stars" field.</summary>
-    public const int ObtainedStarsFieldNumber = 2;
-    private uint obtainedStars_;
-    /// <summary>
-    /// offset: 64
-    /// </summary>
+    /// <summary>Field number for the "taken_star_rewards" field.</summary>
+    public const int TakenStarRewardsFieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_takenStarRewards_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> takenStarRewards_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint ObtainedStars {
-      get { return obtainedStars_; }
-      set {
-        obtainedStars_ = value;
-      }
+    public pbc::RepeatedField<uint> TakenStarRewards {
+      get { return takenStarRewards_; }
     }
 
     /// <summary>Field number for the "best_record_list" field.</summary>
-    public const int BestRecordListFieldNumber = 3;
+    public const int BestRecordListFieldNumber = 6;
     private global::March7thHoney.Proto.ChallengePeakBestRecordList bestRecordList_;
-    /// <summary>
-    /// offset: 40
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ChallengePeakBestRecordList BestRecordList {
@@ -2273,11 +2182,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 4;
+    public const int PeakGroupIdFieldNumber = 7;
     private uint peakGroupId_;
-    /// <summary>
-    /// offset: 68
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakGroupId {
@@ -2287,70 +2193,21 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "taken_star_rewards" field.</summary>
-    public const int TakenStarRewardsFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_takenStarRewards_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> takenStarRewards_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
+    /// <summary>Field number for the "obtained_stars" field.</summary>
+    public const int ObtainedStarsFieldNumber = 10;
+    private uint obtainedStars_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> TakenStarRewards {
-      get { return takenStarRewards_; }
-    }
-
-    /// <summary>Field number for the "peaks" field.</summary>
-    public const int PeaksFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeak> _repeated_peaks_codec
-        = pb::FieldCodec.ForMessage(50, global::March7thHoney.Proto.ChallengePeak.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> peaks_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak>();
-    /// <summary>
-    /// offset: 56
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> Peaks {
-      get { return peaks_; }
-    }
-
-    /// <summary>Field number for the "disable_hard_mode" field.</summary>
-    public const int DisableHardModeFieldNumber = 8;
-    private bool disableHardMode_;
-    /// <summary>
-    /// offset: 76
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool DisableHardMode {
-      get { return disableHardMode_; }
+    public uint ObtainedStars {
+      get { return obtainedStars_; }
       set {
-        disableHardMode_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "peak_boss" field.</summary>
-    public const int PeakBossFieldNumber = 9;
-    private global::March7thHoney.Proto.ChallengePeakBoss peakBoss_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::March7thHoney.Proto.ChallengePeakBoss PeakBoss {
-      get { return peakBoss_; }
-      set {
-        peakBoss_ = value;
+        obtainedStars_ = value;
       }
     }
 
     /// <summary>Field number for the "wait_confirm_data" field.</summary>
-    public const int WaitConfirmDataFieldNumber = 12;
+    public const int WaitConfirmDataFieldNumber = 11;
     private global::March7thHoney.Proto.WaitConfirmData waitConfirmData_;
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.WaitConfirmData WaitConfirmData {
@@ -2360,12 +2217,44 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "disable_hard_mode" field.</summary>
+    public const int DisableHardModeFieldNumber = 12;
+    private bool disableHardMode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool DisableHardMode {
+      get { return disableHardMode_; }
+      set {
+        disableHardMode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "peaks" field.</summary>
+    public const int PeaksFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeak> _repeated_peaks_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ChallengePeak.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> peaks_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeak> Peaks {
+      get { return peaks_; }
+    }
+
+    /// <summary>Field number for the "peak_boss" field.</summary>
+    public const int PeakBossFieldNumber = 14;
+    private global::March7thHoney.Proto.ChallengePeakBoss peakBoss_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::March7thHoney.Proto.ChallengePeakBoss PeakBoss {
+      get { return peakBoss_; }
+      set {
+        peakBoss_ = value;
+      }
+    }
+
     /// <summary>Field number for the "count_of_peaks" field.</summary>
     public const int CountOfPeaksFieldNumber = 15;
     private uint countOfPeaks_;
-    /// <summary>
-    /// offset: 72
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CountOfPeaks {
@@ -2390,14 +2279,14 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (ObtainedStars != other.ObtainedStars) return false;
+      if(!takenStarRewards_.Equals(other.takenStarRewards_)) return false;
       if (!object.Equals(BestRecordList, other.BestRecordList)) return false;
       if (PeakGroupId != other.PeakGroupId) return false;
-      if(!takenStarRewards_.Equals(other.takenStarRewards_)) return false;
-      if(!peaks_.Equals(other.peaks_)) return false;
-      if (DisableHardMode != other.DisableHardMode) return false;
-      if (!object.Equals(PeakBoss, other.PeakBoss)) return false;
+      if (ObtainedStars != other.ObtainedStars) return false;
       if (!object.Equals(WaitConfirmData, other.WaitConfirmData)) return false;
+      if (DisableHardMode != other.DisableHardMode) return false;
+      if(!peaks_.Equals(other.peaks_)) return false;
+      if (!object.Equals(PeakBoss, other.PeakBoss)) return false;
       if (CountOfPeaks != other.CountOfPeaks) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2406,14 +2295,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ObtainedStars != 0) hash ^= ObtainedStars.GetHashCode();
+      hash ^= takenStarRewards_.GetHashCode();
       if (bestRecordList_ != null) hash ^= BestRecordList.GetHashCode();
       if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
-      hash ^= takenStarRewards_.GetHashCode();
-      hash ^= peaks_.GetHashCode();
-      if (DisableHardMode != false) hash ^= DisableHardMode.GetHashCode();
-      if (peakBoss_ != null) hash ^= PeakBoss.GetHashCode();
+      if (ObtainedStars != 0) hash ^= ObtainedStars.GetHashCode();
       if (waitConfirmData_ != null) hash ^= WaitConfirmData.GetHashCode();
+      if (DisableHardMode != false) hash ^= DisableHardMode.GetHashCode();
+      hash ^= peaks_.GetHashCode();
+      if (peakBoss_ != null) hash ^= PeakBoss.GetHashCode();
       if (CountOfPeaks != 0) hash ^= CountOfPeaks.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2433,31 +2322,31 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ObtainedStars != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(ObtainedStars);
-      }
+      takenStarRewards_.WriteTo(output, _repeated_takenStarRewards_codec);
       if (bestRecordList_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteMessage(BestRecordList);
       }
       if (PeakGroupId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(PeakGroupId);
       }
-      takenStarRewards_.WriteTo(output, _repeated_takenStarRewards_codec);
-      peaks_.WriteTo(output, _repeated_peaks_codec);
-      if (DisableHardMode != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(DisableHardMode);
-      }
-      if (peakBoss_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(PeakBoss);
+      if (ObtainedStars != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(ObtainedStars);
       }
       if (waitConfirmData_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(90);
         output.WriteMessage(WaitConfirmData);
+      }
+      if (DisableHardMode != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(DisableHardMode);
+      }
+      peaks_.WriteTo(output, _repeated_peaks_codec);
+      if (peakBoss_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(PeakBoss);
       }
       if (CountOfPeaks != 0) {
         output.WriteRawTag(120);
@@ -2473,31 +2362,31 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ObtainedStars != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(ObtainedStars);
-      }
+      takenStarRewards_.WriteTo(ref output, _repeated_takenStarRewards_codec);
       if (bestRecordList_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(50);
         output.WriteMessage(BestRecordList);
       }
       if (PeakGroupId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(56);
         output.WriteUInt32(PeakGroupId);
       }
-      takenStarRewards_.WriteTo(ref output, _repeated_takenStarRewards_codec);
-      peaks_.WriteTo(ref output, _repeated_peaks_codec);
-      if (DisableHardMode != false) {
-        output.WriteRawTag(64);
-        output.WriteBool(DisableHardMode);
-      }
-      if (peakBoss_ != null) {
-        output.WriteRawTag(74);
-        output.WriteMessage(PeakBoss);
+      if (ObtainedStars != 0) {
+        output.WriteRawTag(80);
+        output.WriteUInt32(ObtainedStars);
       }
       if (waitConfirmData_ != null) {
-        output.WriteRawTag(98);
+        output.WriteRawTag(90);
         output.WriteMessage(WaitConfirmData);
+      }
+      if (DisableHardMode != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(DisableHardMode);
+      }
+      peaks_.WriteTo(ref output, _repeated_peaks_codec);
+      if (peakBoss_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(PeakBoss);
       }
       if (CountOfPeaks != 0) {
         output.WriteRawTag(120);
@@ -2513,25 +2402,25 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ObtainedStars != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ObtainedStars);
-      }
+      size += takenStarRewards_.CalculateSize(_repeated_takenStarRewards_codec);
       if (bestRecordList_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BestRecordList);
       }
       if (PeakGroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
       }
-      size += takenStarRewards_.CalculateSize(_repeated_takenStarRewards_codec);
-      size += peaks_.CalculateSize(_repeated_peaks_codec);
-      if (DisableHardMode != false) {
-        size += 1 + 1;
-      }
-      if (peakBoss_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PeakBoss);
+      if (ObtainedStars != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(ObtainedStars);
       }
       if (waitConfirmData_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(WaitConfirmData);
+      }
+      if (DisableHardMode != false) {
+        size += 1 + 1;
+      }
+      size += peaks_.CalculateSize(_repeated_peaks_codec);
+      if (peakBoss_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(PeakBoss);
       }
       if (CountOfPeaks != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CountOfPeaks);
@@ -2548,9 +2437,7 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.ObtainedStars != 0) {
-        ObtainedStars = other.ObtainedStars;
-      }
+      takenStarRewards_.Add(other.takenStarRewards_);
       if (other.bestRecordList_ != null) {
         if (bestRecordList_ == null) {
           BestRecordList = new global::March7thHoney.Proto.ChallengePeakBestRecordList();
@@ -2560,22 +2447,24 @@ namespace March7thHoney.Proto {
       if (other.PeakGroupId != 0) {
         PeakGroupId = other.PeakGroupId;
       }
-      takenStarRewards_.Add(other.takenStarRewards_);
-      peaks_.Add(other.peaks_);
-      if (other.DisableHardMode != false) {
-        DisableHardMode = other.DisableHardMode;
-      }
-      if (other.peakBoss_ != null) {
-        if (peakBoss_ == null) {
-          PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
-        }
-        PeakBoss.MergeFrom(other.PeakBoss);
+      if (other.ObtainedStars != 0) {
+        ObtainedStars = other.ObtainedStars;
       }
       if (other.waitConfirmData_ != null) {
         if (waitConfirmData_ == null) {
           WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
         }
         WaitConfirmData.MergeFrom(other.WaitConfirmData);
+      }
+      if (other.DisableHardMode != false) {
+        DisableHardMode = other.DisableHardMode;
+      }
+      peaks_.Add(other.peaks_);
+      if (other.peakBoss_ != null) {
+        if (peakBoss_ == null) {
+          PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
+        }
+        PeakBoss.MergeFrom(other.PeakBoss);
       }
       if (other.CountOfPeaks != 0) {
         CountOfPeaks = other.CountOfPeaks;
@@ -2599,46 +2488,46 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            ObtainedStars = input.ReadUInt32();
+          case 26:
+          case 24: {
+            takenStarRewards_.AddEntriesFrom(input, _repeated_takenStarRewards_codec);
             break;
           }
-          case 26: {
+          case 50: {
             if (bestRecordList_ == null) {
               BestRecordList = new global::March7thHoney.Proto.ChallengePeakBestRecordList();
             }
             input.ReadMessage(BestRecordList);
             break;
           }
-          case 32: {
+          case 56: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 42:
-          case 40: {
-            takenStarRewards_.AddEntriesFrom(input, _repeated_takenStarRewards_codec);
+          case 80: {
+            ObtainedStars = input.ReadUInt32();
             break;
           }
-          case 50: {
-            peaks_.AddEntriesFrom(input, _repeated_peaks_codec);
-            break;
-          }
-          case 64: {
-            DisableHardMode = input.ReadBool();
-            break;
-          }
-          case 74: {
-            if (peakBoss_ == null) {
-              PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
-            }
-            input.ReadMessage(PeakBoss);
-            break;
-          }
-          case 98: {
+          case 90: {
             if (waitConfirmData_ == null) {
               WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
             }
             input.ReadMessage(WaitConfirmData);
+            break;
+          }
+          case 96: {
+            DisableHardMode = input.ReadBool();
+            break;
+          }
+          case 106: {
+            peaks_.AddEntriesFrom(input, _repeated_peaks_codec);
+            break;
+          }
+          case 114: {
+            if (peakBoss_ == null) {
+              PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
+            }
+            input.ReadMessage(PeakBoss);
             break;
           }
           case 120: {
@@ -2664,46 +2553,46 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            ObtainedStars = input.ReadUInt32();
+          case 26:
+          case 24: {
+            takenStarRewards_.AddEntriesFrom(ref input, _repeated_takenStarRewards_codec);
             break;
           }
-          case 26: {
+          case 50: {
             if (bestRecordList_ == null) {
               BestRecordList = new global::March7thHoney.Proto.ChallengePeakBestRecordList();
             }
             input.ReadMessage(BestRecordList);
             break;
           }
-          case 32: {
+          case 56: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 42:
-          case 40: {
-            takenStarRewards_.AddEntriesFrom(ref input, _repeated_takenStarRewards_codec);
+          case 80: {
+            ObtainedStars = input.ReadUInt32();
             break;
           }
-          case 50: {
-            peaks_.AddEntriesFrom(ref input, _repeated_peaks_codec);
-            break;
-          }
-          case 64: {
-            DisableHardMode = input.ReadBool();
-            break;
-          }
-          case 74: {
-            if (peakBoss_ == null) {
-              PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
-            }
-            input.ReadMessage(PeakBoss);
-            break;
-          }
-          case 98: {
+          case 90: {
             if (waitConfirmData_ == null) {
               WaitConfirmData = new global::March7thHoney.Proto.WaitConfirmData();
             }
             input.ReadMessage(WaitConfirmData);
+            break;
+          }
+          case 96: {
+            DisableHardMode = input.ReadBool();
+            break;
+          }
+          case 106: {
+            peaks_.AddEntriesFrom(ref input, _repeated_peaks_codec);
+            break;
+          }
+          case 114: {
+            if (peakBoss_ == null) {
+              PeakBoss = new global::March7thHoney.Proto.ChallengePeakBoss();
+            }
+            input.ReadMessage(PeakBoss);
             break;
           }
           case 120: {
@@ -2763,11 +2652,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "challenge_peak_group" field.</summary>
-    public const int ChallengePeakGroupFieldNumber = 7;
+    public const int ChallengePeakGroupFieldNumber = 15;
     private global::March7thHoney.Proto.ChallengePeakGroup challengePeakGroup_;
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ChallengePeakGroup ChallengePeakGroup {
@@ -2820,7 +2706,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (challengePeakGroup_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(122);
         output.WriteMessage(ChallengePeakGroup);
       }
       if (_unknownFields != null) {
@@ -2834,7 +2720,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (challengePeakGroup_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(122);
         output.WriteMessage(ChallengePeakGroup);
       }
       if (_unknownFields != null) {
@@ -2887,7 +2773,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58: {
+          case 122: {
             if (challengePeakGroup_ == null) {
               ChallengePeakGroup = new global::March7thHoney.Proto.ChallengePeakGroup();
             }
@@ -2913,7 +2799,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58: {
+          case 122: {
             if (challengePeakGroup_ == null) {
               ChallengePeakGroup = new global::March7thHoney.Proto.ChallengePeakGroup();
             }
@@ -2962,8 +2848,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakLineup(ChallengePeakLineup other) : this() {
-      peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
       peakId_ = other.peakId_;
+      peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2973,26 +2859,9 @@ namespace March7thHoney.Proto {
       return new ChallengePeakLineup(this);
     }
 
-    /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
-    public const int PeakAvatarIdListFieldNumber = 3;
-    private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(26);
-    private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> PeakAvatarIdList {
-      get { return peakAvatarIdList_; }
-    }
-
     /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 12;
+    public const int PeakIdFieldNumber = 10;
     private uint peakId_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakId {
@@ -3000,6 +2869,17 @@ namespace March7thHoney.Proto {
       set {
         peakId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
+    public const int PeakAvatarIdListFieldNumber = 15;
+    private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
+        = pb::FieldCodec.ForUInt32(122);
+    private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> PeakAvatarIdList {
+      get { return peakAvatarIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3017,8 +2897,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
       if (PeakId != other.PeakId) return false;
+      if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3026,8 +2906,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= peakAvatarIdList_.GetHashCode();
       if (PeakId != 0) hash ^= PeakId.GetHashCode();
+      hash ^= peakAvatarIdList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3046,11 +2926,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      peakAvatarIdList_.WriteTo(output, _repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(80);
         output.WriteUInt32(PeakId);
       }
+      peakAvatarIdList_.WriteTo(output, _repeated_peakAvatarIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3061,11 +2941,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      peakAvatarIdList_.WriteTo(ref output, _repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(80);
         output.WriteUInt32(PeakId);
       }
+      peakAvatarIdList_.WriteTo(ref output, _repeated_peakAvatarIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3076,10 +2956,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
+      size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3092,10 +2972,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      peakAvatarIdList_.Add(other.peakAvatarIdList_);
       if (other.PeakId != 0) {
         PeakId = other.PeakId;
       }
+      peakAvatarIdList_.Add(other.peakAvatarIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -3115,13 +2995,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 26:
-          case 24: {
-            peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
+          case 80: {
+            PeakId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            PeakId = input.ReadUInt32();
+          case 122:
+          case 120: {
+            peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
             break;
           }
         }
@@ -3143,13 +3023,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 26:
-          case 24: {
-            peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
+          case 80: {
+            PeakId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            PeakId = input.ReadUInt32();
+          case 122:
+          case 120: {
+            peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
             break;
           }
         }
@@ -3194,8 +3074,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakRecordAvatar(ChallengePeakRecordAvatar other) : this() {
-      skinId_ = other.skinId_;
       avatarId_ = other.avatarId_;
+      skinId_ = other.skinId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3205,33 +3085,27 @@ namespace March7thHoney.Proto {
       return new ChallengePeakRecordAvatar(this);
     }
 
-    /// <summary>Field number for the "skin_id" field.</summary>
-    public const int SkinIdFieldNumber = 4;
-    private uint skinId_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint SkinId {
-      get { return skinId_; }
-      set {
-        skinId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "avatar_id" field.</summary>
-    public const int AvatarIdFieldNumber = 7;
+    public const int AvatarIdFieldNumber = 3;
     private uint avatarId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint AvatarId {
       get { return avatarId_; }
       set {
         avatarId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "skin_id" field.</summary>
+    public const int SkinIdFieldNumber = 11;
+    private uint skinId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint SkinId {
+      get { return skinId_; }
+      set {
+        skinId_ = value;
       }
     }
 
@@ -3250,8 +3124,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (SkinId != other.SkinId) return false;
       if (AvatarId != other.AvatarId) return false;
+      if (SkinId != other.SkinId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3259,8 +3133,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (SkinId != 0) hash ^= SkinId.GetHashCode();
       if (AvatarId != 0) hash ^= AvatarId.GetHashCode();
+      if (SkinId != 0) hash ^= SkinId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3279,13 +3153,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (SkinId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(SkinId);
-      }
       if (AvatarId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(AvatarId);
+      }
+      if (SkinId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(SkinId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3297,13 +3171,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (SkinId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(SkinId);
-      }
       if (AvatarId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(24);
         output.WriteUInt32(AvatarId);
+      }
+      if (SkinId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(SkinId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3315,11 +3189,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (SkinId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkinId);
-      }
       if (AvatarId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AvatarId);
+      }
+      if (SkinId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(SkinId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3333,11 +3207,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.SkinId != 0) {
-        SkinId = other.SkinId;
-      }
       if (other.AvatarId != 0) {
         AvatarId = other.AvatarId;
+      }
+      if (other.SkinId != 0) {
+        SkinId = other.SkinId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3358,12 +3232,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            SkinId = input.ReadUInt32();
+          case 24: {
+            AvatarId = input.ReadUInt32();
             break;
           }
-          case 56: {
-            AvatarId = input.ReadUInt32();
+          case 88: {
+            SkinId = input.ReadUInt32();
             break;
           }
         }
@@ -3385,12 +3259,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            SkinId = input.ReadUInt32();
+          case 24: {
+            AvatarId = input.ReadUInt32();
             break;
           }
-          case 56: {
-            AvatarId = input.ReadUInt32();
+          case 88: {
+            SkinId = input.ReadUInt32();
             break;
           }
         }
@@ -3447,11 +3321,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward_id" field.</summary>
-    public const int RewardIdFieldNumber = 9;
+    public const int RewardIdFieldNumber = 10;
     private uint rewardId_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint RewardId {
@@ -3462,11 +3333,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 13;
+    public const int RewardFieldNumber = 14;
     private global::March7thHoney.Proto.ItemList reward_;
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.ItemList Reward {
@@ -3521,11 +3389,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (RewardId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(RewardId);
       }
       if (reward_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(114);
         output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
@@ -3539,11 +3407,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (RewardId != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(RewardId);
       }
       if (reward_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(114);
         output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
@@ -3602,11 +3470,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
+          case 80: {
             RewardId = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 114: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
@@ -3632,11 +3500,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
+          case 80: {
             RewardId = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 114: {
             if (reward_ == null) {
               Reward = new global::March7thHoney.Proto.ItemList();
             }
@@ -3685,17 +3553,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ChallengePeakSettleScNotify(ChallengePeakSettleScNotify other) : this() {
-      isWaitConfirm_ = other.isWaitConfirm_;
-      isWin_ = other.isWin_;
-      hardModeHasPassed_ = other.hardModeHasPassed_;
-      peakId_ = other.peakId_;
-      turnLeft_ = other.turnLeft_;
-      cyclesUsed_ = other.cyclesUsed_;
-      peakRewardGroupList_ = other.peakRewardGroupList_.Clone();
-      isFirstPass_ = other.isFirstPass_;
       isBossTargetBetter_ = other.isBossTargetBetter_;
+      peakRewardGroupList_ = other.peakRewardGroupList_.Clone();
+      isWin_ = other.isWin_;
       finishedTargetList_ = other.finishedTargetList_.Clone();
       isUnlockEasyBoss_ = other.isUnlockEasyBoss_;
+      turnLeft_ = other.turnLeft_;
+      peakId_ = other.peakId_;
+      hardModeHasPassed_ = other.hardModeHasPassed_;
+      isFirstPass_ = other.isFirstPass_;
+      isWaitConfirm_ = other.isWaitConfirm_;
+      cyclesUsed_ = other.cyclesUsed_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3705,131 +3573,9 @@ namespace March7thHoney.Proto {
       return new ChallengePeakSettleScNotify(this);
     }
 
-    /// <summary>Field number for the "is_wait_confirm" field.</summary>
-    public const int IsWaitConfirmFieldNumber = 1;
-    private bool isWaitConfirm_;
-    /// <summary>
-    /// offset: 46
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsWaitConfirm {
-      get { return isWaitConfirm_; }
-      set {
-        isWaitConfirm_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "is_win" field.</summary>
-    public const int IsWinFieldNumber = 2;
-    private bool isWin_;
-    /// <summary>
-    /// offset: 48
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsWin {
-      get { return isWin_; }
-      set {
-        isWin_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "hard_mode_has_passed" field.</summary>
-    public const int HardModeHasPassedFieldNumber = 3;
-    private bool hardModeHasPassed_;
-    /// <summary>
-    /// offset: 47
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HardModeHasPassed {
-      get { return hardModeHasPassed_; }
-      set {
-        hardModeHasPassed_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 4;
-    private uint peakId_;
-    /// <summary>
-    /// offset: 40
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakId {
-      get { return peakId_; }
-      set {
-        peakId_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "turn_left" field.</summary>
-    public const int TurnLeftFieldNumber = 6;
-    private uint turnLeft_;
-    /// <summary>
-    /// offset: 56
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint TurnLeft {
-      get { return turnLeft_; }
-      set {
-        turnLeft_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "cycles_used" field.</summary>
-    public const int CyclesUsedFieldNumber = 8;
-    private uint cyclesUsed_;
-    /// <summary>
-    /// offset: 52
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CyclesUsed {
-      get { return cyclesUsed_; }
-      set {
-        cyclesUsed_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "peak_reward_group_list" field.</summary>
-    public const int PeakRewardGroupListFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRewardGroup> _repeated_peakRewardGroupList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ChallengePeakRewardGroup.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> peakRewardGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> PeakRewardGroupList {
-      get { return peakRewardGroupList_; }
-    }
-
-    /// <summary>Field number for the "is_first_pass" field.</summary>
-    public const int IsFirstPassFieldNumber = 10;
-    private bool isFirstPass_;
-    /// <summary>
-    /// offset: 45
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsFirstPass {
-      get { return isFirstPass_; }
-      set {
-        isFirstPass_ = value;
-      }
-    }
-
     /// <summary>Field number for the "is_boss_target_better" field.</summary>
-    public const int IsBossTargetBetterFieldNumber = 11;
+    public const int IsBossTargetBetterFieldNumber = 1;
     private bool isBossTargetBetter_;
-    /// <summary>
-    /// offset: 49
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsBossTargetBetter {
@@ -3839,14 +3585,34 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "peak_reward_group_list" field.</summary>
+    public const int PeakRewardGroupListFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRewardGroup> _repeated_peakRewardGroupList_codec
+        = pb::FieldCodec.ForMessage(26, global::March7thHoney.Proto.ChallengePeakRewardGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> peakRewardGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> PeakRewardGroupList {
+      get { return peakRewardGroupList_; }
+    }
+
+    /// <summary>Field number for the "is_win" field.</summary>
+    public const int IsWinFieldNumber = 4;
+    private bool isWin_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsWin {
+      get { return isWin_; }
+      set {
+        isWin_ = value;
+      }
+    }
+
     /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 13;
+    public const int FinishedTargetListFieldNumber = 5;
     private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(106);
+        = pb::FieldCodec.ForUInt32(42);
     private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> FinishedTargetList {
@@ -3854,17 +3620,86 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "is_unlock_easy_boss" field.</summary>
-    public const int IsUnlockEasyBossFieldNumber = 15;
+    public const int IsUnlockEasyBossFieldNumber = 6;
     private bool isUnlockEasyBoss_;
-    /// <summary>
-    /// offset: 44
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsUnlockEasyBoss {
       get { return isUnlockEasyBoss_; }
       set {
         isUnlockEasyBoss_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "turn_left" field.</summary>
+    public const int TurnLeftFieldNumber = 8;
+    private uint turnLeft_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint TurnLeft {
+      get { return turnLeft_; }
+      set {
+        turnLeft_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "peak_id" field.</summary>
+    public const int PeakIdFieldNumber = 11;
+    private uint peakId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PeakId {
+      get { return peakId_; }
+      set {
+        peakId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "hard_mode_has_passed" field.</summary>
+    public const int HardModeHasPassedFieldNumber = 12;
+    private bool hardModeHasPassed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HardModeHasPassed {
+      get { return hardModeHasPassed_; }
+      set {
+        hardModeHasPassed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_first_pass" field.</summary>
+    public const int IsFirstPassFieldNumber = 13;
+    private bool isFirstPass_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsFirstPass {
+      get { return isFirstPass_; }
+      set {
+        isFirstPass_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_wait_confirm" field.</summary>
+    public const int IsWaitConfirmFieldNumber = 14;
+    private bool isWaitConfirm_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsWaitConfirm {
+      get { return isWaitConfirm_; }
+      set {
+        isWaitConfirm_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cycles_used" field.</summary>
+    public const int CyclesUsedFieldNumber = 15;
+    private uint cyclesUsed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CyclesUsed {
+      get { return cyclesUsed_; }
+      set {
+        cyclesUsed_ = value;
       }
     }
 
@@ -3883,17 +3718,17 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IsWaitConfirm != other.IsWaitConfirm) return false;
-      if (IsWin != other.IsWin) return false;
-      if (HardModeHasPassed != other.HardModeHasPassed) return false;
-      if (PeakId != other.PeakId) return false;
-      if (TurnLeft != other.TurnLeft) return false;
-      if (CyclesUsed != other.CyclesUsed) return false;
-      if(!peakRewardGroupList_.Equals(other.peakRewardGroupList_)) return false;
-      if (IsFirstPass != other.IsFirstPass) return false;
       if (IsBossTargetBetter != other.IsBossTargetBetter) return false;
+      if(!peakRewardGroupList_.Equals(other.peakRewardGroupList_)) return false;
+      if (IsWin != other.IsWin) return false;
       if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
       if (IsUnlockEasyBoss != other.IsUnlockEasyBoss) return false;
+      if (TurnLeft != other.TurnLeft) return false;
+      if (PeakId != other.PeakId) return false;
+      if (HardModeHasPassed != other.HardModeHasPassed) return false;
+      if (IsFirstPass != other.IsFirstPass) return false;
+      if (IsWaitConfirm != other.IsWaitConfirm) return false;
+      if (CyclesUsed != other.CyclesUsed) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3901,17 +3736,17 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IsWaitConfirm != false) hash ^= IsWaitConfirm.GetHashCode();
-      if (IsWin != false) hash ^= IsWin.GetHashCode();
-      if (HardModeHasPassed != false) hash ^= HardModeHasPassed.GetHashCode();
-      if (PeakId != 0) hash ^= PeakId.GetHashCode();
-      if (TurnLeft != 0) hash ^= TurnLeft.GetHashCode();
-      if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
-      hash ^= peakRewardGroupList_.GetHashCode();
-      if (IsFirstPass != false) hash ^= IsFirstPass.GetHashCode();
       if (IsBossTargetBetter != false) hash ^= IsBossTargetBetter.GetHashCode();
+      hash ^= peakRewardGroupList_.GetHashCode();
+      if (IsWin != false) hash ^= IsWin.GetHashCode();
       hash ^= finishedTargetList_.GetHashCode();
       if (IsUnlockEasyBoss != false) hash ^= IsUnlockEasyBoss.GetHashCode();
+      if (TurnLeft != 0) hash ^= TurnLeft.GetHashCode();
+      if (PeakId != 0) hash ^= PeakId.GetHashCode();
+      if (HardModeHasPassed != false) hash ^= HardModeHasPassed.GetHashCode();
+      if (IsFirstPass != false) hash ^= IsFirstPass.GetHashCode();
+      if (IsWaitConfirm != false) hash ^= IsWaitConfirm.GetHashCode();
+      if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3930,43 +3765,43 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsWaitConfirm != false) {
+      if (IsBossTargetBetter != false) {
         output.WriteRawTag(8);
-        output.WriteBool(IsWaitConfirm);
-      }
-      if (IsWin != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsWin);
-      }
-      if (HardModeHasPassed != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(HardModeHasPassed);
-      }
-      if (PeakId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(PeakId);
-      }
-      if (TurnLeft != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(TurnLeft);
-      }
-      if (CyclesUsed != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(CyclesUsed);
+        output.WriteBool(IsBossTargetBetter);
       }
       peakRewardGroupList_.WriteTo(output, _repeated_peakRewardGroupList_codec);
-      if (IsFirstPass != false) {
-        output.WriteRawTag(80);
-        output.WriteBool(IsFirstPass);
-      }
-      if (IsBossTargetBetter != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(IsBossTargetBetter);
+      if (IsWin != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(IsWin);
       }
       finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
       if (IsUnlockEasyBoss != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(48);
         output.WriteBool(IsUnlockEasyBoss);
+      }
+      if (TurnLeft != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(TurnLeft);
+      }
+      if (PeakId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(PeakId);
+      }
+      if (HardModeHasPassed != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(HardModeHasPassed);
+      }
+      if (IsFirstPass != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(IsFirstPass);
+      }
+      if (IsWaitConfirm != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(IsWaitConfirm);
+      }
+      if (CyclesUsed != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(CyclesUsed);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3978,43 +3813,43 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsWaitConfirm != false) {
+      if (IsBossTargetBetter != false) {
         output.WriteRawTag(8);
-        output.WriteBool(IsWaitConfirm);
-      }
-      if (IsWin != false) {
-        output.WriteRawTag(16);
-        output.WriteBool(IsWin);
-      }
-      if (HardModeHasPassed != false) {
-        output.WriteRawTag(24);
-        output.WriteBool(HardModeHasPassed);
-      }
-      if (PeakId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(PeakId);
-      }
-      if (TurnLeft != 0) {
-        output.WriteRawTag(48);
-        output.WriteUInt32(TurnLeft);
-      }
-      if (CyclesUsed != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(CyclesUsed);
+        output.WriteBool(IsBossTargetBetter);
       }
       peakRewardGroupList_.WriteTo(ref output, _repeated_peakRewardGroupList_codec);
-      if (IsFirstPass != false) {
-        output.WriteRawTag(80);
-        output.WriteBool(IsFirstPass);
-      }
-      if (IsBossTargetBetter != false) {
-        output.WriteRawTag(88);
-        output.WriteBool(IsBossTargetBetter);
+      if (IsWin != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(IsWin);
       }
       finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
       if (IsUnlockEasyBoss != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(48);
         output.WriteBool(IsUnlockEasyBoss);
+      }
+      if (TurnLeft != 0) {
+        output.WriteRawTag(64);
+        output.WriteUInt32(TurnLeft);
+      }
+      if (PeakId != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(PeakId);
+      }
+      if (HardModeHasPassed != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(HardModeHasPassed);
+      }
+      if (IsFirstPass != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(IsFirstPass);
+      }
+      if (IsWaitConfirm != false) {
+        output.WriteRawTag(112);
+        output.WriteBool(IsWaitConfirm);
+      }
+      if (CyclesUsed != 0) {
+        output.WriteRawTag(120);
+        output.WriteUInt32(CyclesUsed);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -4026,34 +3861,34 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IsWaitConfirm != false) {
+      if (IsBossTargetBetter != false) {
         size += 1 + 1;
-      }
-      if (IsWin != false) {
-        size += 1 + 1;
-      }
-      if (HardModeHasPassed != false) {
-        size += 1 + 1;
-      }
-      if (PeakId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
-      }
-      if (TurnLeft != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TurnLeft);
-      }
-      if (CyclesUsed != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CyclesUsed);
       }
       size += peakRewardGroupList_.CalculateSize(_repeated_peakRewardGroupList_codec);
-      if (IsFirstPass != false) {
-        size += 1 + 1;
-      }
-      if (IsBossTargetBetter != false) {
+      if (IsWin != false) {
         size += 1 + 1;
       }
       size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
       if (IsUnlockEasyBoss != false) {
         size += 1 + 1;
+      }
+      if (TurnLeft != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(TurnLeft);
+      }
+      if (PeakId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
+      }
+      if (HardModeHasPassed != false) {
+        size += 1 + 1;
+      }
+      if (IsFirstPass != false) {
+        size += 1 + 1;
+      }
+      if (IsWaitConfirm != false) {
+        size += 1 + 1;
+      }
+      if (CyclesUsed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CyclesUsed);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4067,34 +3902,34 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsWaitConfirm != false) {
-        IsWaitConfirm = other.IsWaitConfirm;
-      }
-      if (other.IsWin != false) {
-        IsWin = other.IsWin;
-      }
-      if (other.HardModeHasPassed != false) {
-        HardModeHasPassed = other.HardModeHasPassed;
-      }
-      if (other.PeakId != 0) {
-        PeakId = other.PeakId;
-      }
-      if (other.TurnLeft != 0) {
-        TurnLeft = other.TurnLeft;
-      }
-      if (other.CyclesUsed != 0) {
-        CyclesUsed = other.CyclesUsed;
-      }
-      peakRewardGroupList_.Add(other.peakRewardGroupList_);
-      if (other.IsFirstPass != false) {
-        IsFirstPass = other.IsFirstPass;
-      }
       if (other.IsBossTargetBetter != false) {
         IsBossTargetBetter = other.IsBossTargetBetter;
+      }
+      peakRewardGroupList_.Add(other.peakRewardGroupList_);
+      if (other.IsWin != false) {
+        IsWin = other.IsWin;
       }
       finishedTargetList_.Add(other.finishedTargetList_);
       if (other.IsUnlockEasyBoss != false) {
         IsUnlockEasyBoss = other.IsUnlockEasyBoss;
+      }
+      if (other.TurnLeft != 0) {
+        TurnLeft = other.TurnLeft;
+      }
+      if (other.PeakId != 0) {
+        PeakId = other.PeakId;
+      }
+      if (other.HardModeHasPassed != false) {
+        HardModeHasPassed = other.HardModeHasPassed;
+      }
+      if (other.IsFirstPass != false) {
+        IsFirstPass = other.IsFirstPass;
+      }
+      if (other.IsWaitConfirm != false) {
+        IsWaitConfirm = other.IsWaitConfirm;
+      }
+      if (other.CyclesUsed != 0) {
+        CyclesUsed = other.CyclesUsed;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4116,48 +3951,48 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            IsWaitConfirm = input.ReadBool();
-            break;
-          }
-          case 16: {
-            IsWin = input.ReadBool();
-            break;
-          }
-          case 24: {
-            HardModeHasPassed = input.ReadBool();
-            break;
-          }
-          case 32: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            TurnLeft = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            CyclesUsed = input.ReadUInt32();
-            break;
-          }
-          case 74: {
-            peakRewardGroupList_.AddEntriesFrom(input, _repeated_peakRewardGroupList_codec);
-            break;
-          }
-          case 80: {
-            IsFirstPass = input.ReadBool();
-            break;
-          }
-          case 88: {
             IsBossTargetBetter = input.ReadBool();
             break;
           }
-          case 106:
-          case 104: {
+          case 26: {
+            peakRewardGroupList_.AddEntriesFrom(input, _repeated_peakRewardGroupList_codec);
+            break;
+          }
+          case 32: {
+            IsWin = input.ReadBool();
+            break;
+          }
+          case 42:
+          case 40: {
             finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
             break;
           }
-          case 120: {
+          case 48: {
             IsUnlockEasyBoss = input.ReadBool();
+            break;
+          }
+          case 64: {
+            TurnLeft = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            PeakId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            HardModeHasPassed = input.ReadBool();
+            break;
+          }
+          case 104: {
+            IsFirstPass = input.ReadBool();
+            break;
+          }
+          case 112: {
+            IsWaitConfirm = input.ReadBool();
+            break;
+          }
+          case 120: {
+            CyclesUsed = input.ReadUInt32();
             break;
           }
         }
@@ -4180,48 +4015,48 @@ namespace March7thHoney.Proto {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            IsWaitConfirm = input.ReadBool();
-            break;
-          }
-          case 16: {
-            IsWin = input.ReadBool();
-            break;
-          }
-          case 24: {
-            HardModeHasPassed = input.ReadBool();
-            break;
-          }
-          case 32: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 48: {
-            TurnLeft = input.ReadUInt32();
-            break;
-          }
-          case 64: {
-            CyclesUsed = input.ReadUInt32();
-            break;
-          }
-          case 74: {
-            peakRewardGroupList_.AddEntriesFrom(ref input, _repeated_peakRewardGroupList_codec);
-            break;
-          }
-          case 80: {
-            IsFirstPass = input.ReadBool();
-            break;
-          }
-          case 88: {
             IsBossTargetBetter = input.ReadBool();
             break;
           }
-          case 106:
-          case 104: {
+          case 26: {
+            peakRewardGroupList_.AddEntriesFrom(ref input, _repeated_peakRewardGroupList_codec);
+            break;
+          }
+          case 32: {
+            IsWin = input.ReadBool();
+            break;
+          }
+          case 42:
+          case 40: {
             finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
             break;
           }
-          case 120: {
+          case 48: {
             IsUnlockEasyBoss = input.ReadBool();
+            break;
+          }
+          case 64: {
+            TurnLeft = input.ReadUInt32();
+            break;
+          }
+          case 88: {
+            PeakId = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            HardModeHasPassed = input.ReadBool();
+            break;
+          }
+          case 104: {
+            IsFirstPass = input.ReadBool();
+            break;
+          }
+          case 112: {
+            IsWaitConfirm = input.ReadBool();
+            break;
+          }
+          case 120: {
+            CyclesUsed = input.ReadUInt32();
             break;
           }
         }
@@ -4266,8 +4101,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ConfirmChallengePeakSettleCsReq(ConfirmChallengePeakSettleCsReq other) : this() {
-      peakId_ = other.peakId_;
       iOBCIMIPEOM_ = other.iOBCIMIPEOM_;
+      peakId_ = other.peakId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4277,33 +4112,27 @@ namespace March7thHoney.Proto {
       return new ConfirmChallengePeakSettleCsReq(this);
     }
 
-    /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 7;
-    private uint peakId_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakId {
-      get { return peakId_; }
-      set {
-        peakId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "IOBCIMIPEOM" field.</summary>
-    public const int IOBCIMIPEOMFieldNumber = 13;
+    public const int IOBCIMIPEOMFieldNumber = 12;
     private bool iOBCIMIPEOM_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IOBCIMIPEOM {
       get { return iOBCIMIPEOM_; }
       set {
         iOBCIMIPEOM_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "peak_id" field.</summary>
+    public const int PeakIdFieldNumber = 13;
+    private uint peakId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PeakId {
+      get { return peakId_; }
+      set {
+        peakId_ = value;
       }
     }
 
@@ -4322,8 +4151,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PeakId != other.PeakId) return false;
       if (IOBCIMIPEOM != other.IOBCIMIPEOM) return false;
+      if (PeakId != other.PeakId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4331,8 +4160,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (IOBCIMIPEOM != false) hash ^= IOBCIMIPEOM.GetHashCode();
+      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4351,13 +4180,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PeakId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PeakId);
-      }
       if (IOBCIMIPEOM != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteBool(IOBCIMIPEOM);
+      }
+      if (PeakId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(PeakId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4369,13 +4198,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PeakId != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(PeakId);
-      }
       if (IOBCIMIPEOM != false) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteBool(IOBCIMIPEOM);
+      }
+      if (PeakId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(PeakId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -4387,11 +4216,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PeakId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
-      }
       if (IOBCIMIPEOM != false) {
         size += 1 + 1;
+      }
+      if (PeakId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4405,11 +4234,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PeakId != 0) {
-        PeakId = other.PeakId;
-      }
       if (other.IOBCIMIPEOM != false) {
         IOBCIMIPEOM = other.IOBCIMIPEOM;
+      }
+      if (other.PeakId != 0) {
+        PeakId = other.PeakId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4430,12 +4259,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
-            PeakId = input.ReadUInt32();
+          case 96: {
+            IOBCIMIPEOM = input.ReadBool();
             break;
           }
           case 104: {
-            IOBCIMIPEOM = input.ReadBool();
+            PeakId = input.ReadUInt32();
             break;
           }
         }
@@ -4457,12 +4286,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
-            PeakId = input.ReadUInt32();
+          case 96: {
+            IOBCIMIPEOM = input.ReadBool();
             break;
           }
           case 104: {
-            IOBCIMIPEOM = input.ReadBool();
+            PeakId = input.ReadUInt32();
             break;
           }
         }
@@ -4507,9 +4336,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ConfirmChallengePeakSettleScRsp(ConfirmChallengePeakSettleScRsp other) : this() {
-      iOBCIMIPEOM_ = other.iOBCIMIPEOM_;
-      peakId_ = other.peakId_;
       retcode_ = other.retcode_;
+      peakId_ = other.peakId_;
+      iOBCIMIPEOM_ = other.iOBCIMIPEOM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4519,27 +4348,21 @@ namespace March7thHoney.Proto {
       return new ConfirmChallengePeakSettleScRsp(this);
     }
 
-    /// <summary>Field number for the "IOBCIMIPEOM" field.</summary>
-    public const int IOBCIMIPEOMFieldNumber = 5;
-    private bool iOBCIMIPEOM_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 1;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IOBCIMIPEOM {
-      get { return iOBCIMIPEOM_; }
+    public uint Retcode {
+      get { return retcode_; }
       set {
-        iOBCIMIPEOM_ = value;
+        retcode_ = value;
       }
     }
 
     /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 14;
+    public const int PeakIdFieldNumber = 11;
     private uint peakId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakId {
@@ -4549,18 +4372,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
-    private uint retcode_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
+    /// <summary>Field number for the "IOBCIMIPEOM" field.</summary>
+    public const int IOBCIMIPEOMFieldNumber = 12;
+    private bool iOBCIMIPEOM_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
+    public bool IOBCIMIPEOM {
+      get { return iOBCIMIPEOM_; }
       set {
-        retcode_ = value;
+        iOBCIMIPEOM_ = value;
       }
     }
 
@@ -4579,9 +4399,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IOBCIMIPEOM != other.IOBCIMIPEOM) return false;
-      if (PeakId != other.PeakId) return false;
       if (Retcode != other.Retcode) return false;
+      if (PeakId != other.PeakId) return false;
+      if (IOBCIMIPEOM != other.IOBCIMIPEOM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4589,9 +4409,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IOBCIMIPEOM != false) hash ^= IOBCIMIPEOM.GetHashCode();
-      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (PeakId != 0) hash ^= PeakId.GetHashCode();
+      if (IOBCIMIPEOM != false) hash ^= IOBCIMIPEOM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4610,17 +4430,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IOBCIMIPEOM != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(IOBCIMIPEOM);
+      if (Retcode != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Retcode);
       }
       if (PeakId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(88);
         output.WriteUInt32(PeakId);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
+      if (IOBCIMIPEOM != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IOBCIMIPEOM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -4632,17 +4452,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IOBCIMIPEOM != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(IOBCIMIPEOM);
+      if (Retcode != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Retcode);
       }
       if (PeakId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(88);
         output.WriteUInt32(PeakId);
       }
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
+      if (IOBCIMIPEOM != false) {
+        output.WriteRawTag(96);
+        output.WriteBool(IOBCIMIPEOM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -4654,14 +4474,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IOBCIMIPEOM != false) {
-        size += 1 + 1;
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (PeakId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      if (IOBCIMIPEOM != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4675,14 +4495,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IOBCIMIPEOM != false) {
-        IOBCIMIPEOM = other.IOBCIMIPEOM;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       if (other.PeakId != 0) {
         PeakId = other.PeakId;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
+      if (other.IOBCIMIPEOM != false) {
+        IOBCIMIPEOM = other.IOBCIMIPEOM;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4703,16 +4523,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            IOBCIMIPEOM = input.ReadBool();
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 88: {
             PeakId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            Retcode = input.ReadUInt32();
+          case 96: {
+            IOBCIMIPEOM = input.ReadBool();
             break;
           }
         }
@@ -4734,16 +4554,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            IOBCIMIPEOM = input.ReadBool();
+          case 8: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 88: {
             PeakId = input.ReadUInt32();
             break;
           }
-          case 120: {
-            Retcode = input.ReadUInt32();
+          case 96: {
+            IOBCIMIPEOM = input.ReadBool();
             break;
           }
         }
@@ -4950,8 +4770,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetChallengePeakDataScRsp(GetChallengePeakDataScRsp other) : this() {
       retcode_ = other.retcode_;
-      challengePeakGroups_ = other.challengePeakGroups_.Clone();
       currentPeakGroupId_ = other.currentPeakGroupId_;
+      challengePeakGroups_ = other.challengePeakGroups_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4964,9 +4784,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "retcode" field.</summary>
     public const int RetcodeFieldNumber = 2;
     private uint retcode_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -4976,26 +4793,9 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "challenge_peak_groups" field.</summary>
-    public const int ChallengePeakGroupsFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakGroup> _repeated_challengePeakGroups_codec
-        = pb::FieldCodec.ForMessage(42, global::March7thHoney.Proto.ChallengePeakGroup.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakGroup> challengePeakGroups_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakGroup>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakGroup> ChallengePeakGroups {
-      get { return challengePeakGroups_; }
-    }
-
     /// <summary>Field number for the "current_peak_group_id" field.</summary>
-    public const int CurrentPeakGroupIdFieldNumber = 14;
+    public const int CurrentPeakGroupIdFieldNumber = 8;
     private uint currentPeakGroupId_;
-    /// <summary>
-    /// offset: 36
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CurrentPeakGroupId {
@@ -5003,6 +4803,17 @@ namespace March7thHoney.Proto {
       set {
         currentPeakGroupId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "challenge_peak_groups" field.</summary>
+    public const int ChallengePeakGroupsFieldNumber = 13;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakGroup> _repeated_challengePeakGroups_codec
+        = pb::FieldCodec.ForMessage(106, global::March7thHoney.Proto.ChallengePeakGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakGroup> challengePeakGroups_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakGroup>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakGroup> ChallengePeakGroups {
+      get { return challengePeakGroups_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5021,8 +4832,8 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (Retcode != other.Retcode) return false;
-      if(!challengePeakGroups_.Equals(other.challengePeakGroups_)) return false;
       if (CurrentPeakGroupId != other.CurrentPeakGroupId) return false;
+      if(!challengePeakGroups_.Equals(other.challengePeakGroups_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5031,8 +4842,8 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      hash ^= challengePeakGroups_.GetHashCode();
       if (CurrentPeakGroupId != 0) hash ^= CurrentPeakGroupId.GetHashCode();
+      hash ^= challengePeakGroups_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5055,11 +4866,11 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
-      challengePeakGroups_.WriteTo(output, _repeated_challengePeakGroups_codec);
       if (CurrentPeakGroupId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(64);
         output.WriteUInt32(CurrentPeakGroupId);
       }
+      challengePeakGroups_.WriteTo(output, _repeated_challengePeakGroups_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -5074,11 +4885,11 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
-      challengePeakGroups_.WriteTo(ref output, _repeated_challengePeakGroups_codec);
       if (CurrentPeakGroupId != 0) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(64);
         output.WriteUInt32(CurrentPeakGroupId);
       }
+      challengePeakGroups_.WriteTo(ref output, _repeated_challengePeakGroups_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -5092,10 +4903,10 @@ namespace March7thHoney.Proto {
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += challengePeakGroups_.CalculateSize(_repeated_challengePeakGroups_codec);
       if (CurrentPeakGroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurrentPeakGroupId);
       }
+      size += challengePeakGroups_.CalculateSize(_repeated_challengePeakGroups_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -5111,10 +4922,10 @@ namespace March7thHoney.Proto {
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      challengePeakGroups_.Add(other.challengePeakGroups_);
       if (other.CurrentPeakGroupId != 0) {
         CurrentPeakGroupId = other.CurrentPeakGroupId;
       }
+      challengePeakGroups_.Add(other.challengePeakGroups_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -5138,12 +4949,12 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 42: {
-            challengePeakGroups_.AddEntriesFrom(input, _repeated_challengePeakGroups_codec);
+          case 64: {
+            CurrentPeakGroupId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            CurrentPeakGroupId = input.ReadUInt32();
+          case 106: {
+            challengePeakGroups_.AddEntriesFrom(input, _repeated_challengePeakGroups_codec);
             break;
           }
         }
@@ -5169,12 +4980,12 @@ namespace March7thHoney.Proto {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 42: {
-            challengePeakGroups_.AddEntriesFrom(ref input, _repeated_challengePeakGroups_codec);
+          case 64: {
+            CurrentPeakGroupId = input.ReadUInt32();
             break;
           }
-          case 112: {
-            CurrentPeakGroupId = input.ReadUInt32();
+          case 106: {
+            challengePeakGroups_.AddEntriesFrom(ref input, _repeated_challengePeakGroups_codec);
             break;
           }
         }
@@ -5381,9 +5192,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetCurChallengePeakScRsp(GetCurChallengePeakScRsp other) : this() {
       bossBuffId_ = other.bossBuffId_;
-      peakId_ = other.peakId_;
       retcode_ = other.retcode_;
       hasPassed_ = other.hasPassed_;
+      peakId_ = other.peakId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5394,11 +5205,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "boss_buff_id" field.</summary>
-    public const int BossBuffIdFieldNumber = 3;
+    public const int BossBuffIdFieldNumber = 1;
     private uint bossBuffId_;
-    /// <summary>
-    /// offset: 36
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint BossBuffId {
@@ -5408,27 +5216,9 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 8;
-    private uint peakId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakId {
-      get { return peakId_; }
-      set {
-        peakId_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 13;
+    public const int RetcodeFieldNumber = 2;
     private uint retcode_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -5439,17 +5229,26 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "has_passed" field.</summary>
-    public const int HasPassedFieldNumber = 15;
+    public const int HasPassedFieldNumber = 4;
     private bool hasPassed_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasPassed {
       get { return hasPassed_; }
       set {
         hasPassed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "peak_id" field.</summary>
+    public const int PeakIdFieldNumber = 9;
+    private uint peakId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint PeakId {
+      get { return peakId_; }
+      set {
+        peakId_ = value;
       }
     }
 
@@ -5469,9 +5268,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (BossBuffId != other.BossBuffId) return false;
-      if (PeakId != other.PeakId) return false;
       if (Retcode != other.Retcode) return false;
       if (HasPassed != other.HasPassed) return false;
+      if (PeakId != other.PeakId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5480,9 +5279,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (BossBuffId != 0) hash ^= BossBuffId.GetHashCode();
-      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (HasPassed != false) hash ^= HasPassed.GetHashCode();
+      if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5502,20 +5301,20 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BossBuffId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(BossBuffId);
       }
-      if (PeakId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PeakId);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (HasPassed != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(32);
         output.WriteBool(HasPassed);
+      }
+      if (PeakId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(PeakId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -5528,20 +5327,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BossBuffId != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(8);
         output.WriteUInt32(BossBuffId);
       }
-      if (PeakId != 0) {
-        output.WriteRawTag(64);
-        output.WriteUInt32(PeakId);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (HasPassed != false) {
-        output.WriteRawTag(120);
+        output.WriteRawTag(32);
         output.WriteBool(HasPassed);
+      }
+      if (PeakId != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(PeakId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -5556,14 +5355,14 @@ namespace March7thHoney.Proto {
       if (BossBuffId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BossBuffId);
       }
-      if (PeakId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (HasPassed != false) {
         size += 1 + 1;
+      }
+      if (PeakId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -5580,14 +5379,14 @@ namespace March7thHoney.Proto {
       if (other.BossBuffId != 0) {
         BossBuffId = other.BossBuffId;
       }
-      if (other.PeakId != 0) {
-        PeakId = other.PeakId;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
       if (other.HasPassed != false) {
         HasPassed = other.HasPassed;
+      }
+      if (other.PeakId != 0) {
+        PeakId = other.PeakId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -5608,20 +5407,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 8: {
             BossBuffId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 104: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 32: {
             HasPassed = input.ReadBool();
+            break;
+          }
+          case 72: {
+            PeakId = input.ReadUInt32();
             break;
           }
         }
@@ -5643,20 +5442,20 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 8: {
             BossBuffId = input.ReadUInt32();
             break;
           }
-          case 64: {
-            PeakId = input.ReadUInt32();
-            break;
-          }
-          case 104: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 120: {
+          case 32: {
             HasPassed = input.ReadBool();
+            break;
+          }
+          case 72: {
+            PeakId = input.ReadUInt32();
             break;
           }
         }
@@ -5873,11 +5672,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
+    public const int RetcodeFieldNumber = 2;
     private uint retcode_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -5930,7 +5726,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -5944,7 +5740,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(16);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -5994,7 +5790,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -6017,7 +5813,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
+          case 16: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -6235,11 +6031,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 14;
     private uint retcode_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -6292,7 +6085,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -6306,7 +6099,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -6356,7 +6149,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 112: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -6379,7 +6172,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 112: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -6425,8 +6218,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetChallengePeakBossHardModeCsReq(SetChallengePeakBossHardModeCsReq other) : this() {
-      isHardMode_ = other.isHardMode_;
       peakGroupId_ = other.peakGroupId_;
+      isHardMode_ = other.isHardMode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6436,33 +6229,27 @@ namespace March7thHoney.Proto {
       return new SetChallengePeakBossHardModeCsReq(this);
     }
 
-    /// <summary>Field number for the "is_hard_mode" field.</summary>
-    public const int IsHardModeFieldNumber = 4;
-    private bool isHardMode_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsHardMode {
-      get { return isHardMode_; }
-      set {
-        isHardMode_ = value;
-      }
-    }
-
     /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 13;
+    public const int PeakGroupIdFieldNumber = 1;
     private uint peakGroupId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakGroupId {
       get { return peakGroupId_; }
       set {
         peakGroupId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "is_hard_mode" field.</summary>
+    public const int IsHardModeFieldNumber = 2;
+    private bool isHardMode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool IsHardMode {
+      get { return isHardMode_; }
+      set {
+        isHardMode_ = value;
       }
     }
 
@@ -6481,8 +6268,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (IsHardMode != other.IsHardMode) return false;
       if (PeakGroupId != other.PeakGroupId) return false;
+      if (IsHardMode != other.IsHardMode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6490,8 +6277,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (IsHardMode != false) hash ^= IsHardMode.GetHashCode();
       if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
+      if (IsHardMode != false) hash ^= IsHardMode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6510,13 +6297,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (IsHardMode != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(IsHardMode);
-      }
       if (PeakGroupId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteUInt32(PeakGroupId);
+      }
+      if (IsHardMode != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IsHardMode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -6528,13 +6315,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (IsHardMode != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(IsHardMode);
-      }
       if (PeakGroupId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(8);
         output.WriteUInt32(PeakGroupId);
+      }
+      if (IsHardMode != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IsHardMode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -6546,11 +6333,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (IsHardMode != false) {
-        size += 1 + 1;
-      }
       if (PeakGroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
+      }
+      if (IsHardMode != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -6564,11 +6351,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.IsHardMode != false) {
-        IsHardMode = other.IsHardMode;
-      }
       if (other.PeakGroupId != 0) {
         PeakGroupId = other.PeakGroupId;
+      }
+      if (other.IsHardMode != false) {
+        IsHardMode = other.IsHardMode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -6589,12 +6376,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            IsHardMode = input.ReadBool();
+          case 8: {
+            PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            PeakGroupId = input.ReadUInt32();
+          case 16: {
+            IsHardMode = input.ReadBool();
             break;
           }
         }
@@ -6616,12 +6403,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            IsHardMode = input.ReadBool();
+          case 8: {
+            PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 104: {
-            PeakGroupId = input.ReadUInt32();
+          case 16: {
+            IsHardMode = input.ReadBool();
             break;
           }
         }
@@ -6666,9 +6453,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SetChallengePeakBossHardModeScRsp(SetChallengePeakBossHardModeScRsp other) : this() {
-      peakGroupId_ = other.peakGroupId_;
-      retcode_ = other.retcode_;
       isHardMode_ = other.isHardMode_;
+      retcode_ = other.retcode_;
+      peakGroupId_ = other.peakGroupId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -6678,27 +6465,21 @@ namespace March7thHoney.Proto {
       return new SetChallengePeakBossHardModeScRsp(this);
     }
 
-    /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 4;
-    private uint peakGroupId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
+    /// <summary>Field number for the "is_hard_mode" field.</summary>
+    public const int IsHardModeFieldNumber = 3;
+    private bool isHardMode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint PeakGroupId {
-      get { return peakGroupId_; }
+    public bool IsHardMode {
+      get { return isHardMode_; }
       set {
-        peakGroupId_ = value;
+        isHardMode_ = value;
       }
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
+    public const int RetcodeFieldNumber = 12;
     private uint retcode_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -6708,18 +6489,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "is_hard_mode" field.</summary>
-    public const int IsHardModeFieldNumber = 15;
-    private bool isHardMode_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
+    /// <summary>Field number for the "peak_group_id" field.</summary>
+    public const int PeakGroupIdFieldNumber = 13;
+    private uint peakGroupId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool IsHardMode {
-      get { return isHardMode_; }
+    public uint PeakGroupId {
+      get { return peakGroupId_; }
       set {
-        isHardMode_ = value;
+        peakGroupId_ = value;
       }
     }
 
@@ -6738,9 +6516,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PeakGroupId != other.PeakGroupId) return false;
-      if (Retcode != other.Retcode) return false;
       if (IsHardMode != other.IsHardMode) return false;
+      if (Retcode != other.Retcode) return false;
+      if (PeakGroupId != other.PeakGroupId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -6748,9 +6526,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (IsHardMode != false) hash ^= IsHardMode.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -6769,17 +6547,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PeakGroupId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(PeakGroupId);
+      if (IsHardMode != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsHardMode);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
-      if (IsHardMode != false) {
-        output.WriteRawTag(120);
-        output.WriteBool(IsHardMode);
+      if (PeakGroupId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(PeakGroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -6791,17 +6569,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PeakGroupId != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(PeakGroupId);
+      if (IsHardMode != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsHardMode);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(Retcode);
       }
-      if (IsHardMode != false) {
-        output.WriteRawTag(120);
-        output.WriteBool(IsHardMode);
+      if (PeakGroupId != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(PeakGroupId);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -6813,14 +6591,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (PeakGroupId != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
+      if (IsHardMode != false) {
+        size += 1 + 1;
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      if (IsHardMode != false) {
-        size += 1 + 1;
+      if (PeakGroupId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -6834,14 +6612,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.PeakGroupId != 0) {
-        PeakGroupId = other.PeakGroupId;
+      if (other.IsHardMode != false) {
+        IsHardMode = other.IsHardMode;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
       }
-      if (other.IsHardMode != false) {
-        IsHardMode = other.IsHardMode;
+      if (other.PeakGroupId != 0) {
+        PeakGroupId = other.PeakGroupId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -6862,16 +6640,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
-            PeakGroupId = input.ReadUInt32();
+          case 24: {
+            IsHardMode = input.ReadBool();
             break;
           }
-          case 88: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 120: {
-            IsHardMode = input.ReadBool();
+          case 104: {
+            PeakGroupId = input.ReadUInt32();
             break;
           }
         }
@@ -6893,16 +6671,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
-            PeakGroupId = input.ReadUInt32();
+          case 24: {
+            IsHardMode = input.ReadBool();
             break;
           }
-          case 88: {
+          case 96: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 120: {
-            IsHardMode = input.ReadBool();
+          case 104: {
+            PeakGroupId = input.ReadUInt32();
             break;
           }
         }
@@ -6959,13 +6737,10 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "lineup_list" field.</summary>
-    public const int LineupListFieldNumber = 9;
+    public const int LineupListFieldNumber = 11;
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakLineup> _repeated_lineupList_codec
-        = pb::FieldCodec.ForMessage(74, global::March7thHoney.Proto.ChallengePeakLineup.Parser);
+        = pb::FieldCodec.ForMessage(90, global::March7thHoney.Proto.ChallengePeakLineup.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakLineup> lineupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakLineup>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakLineup> LineupList {
@@ -6973,11 +6748,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 13;
+    public const int PeakGroupIdFieldNumber = 12;
     private uint peakGroupId_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakGroupId {
@@ -7033,7 +6805,7 @@ namespace March7thHoney.Proto {
     #else
       lineupList_.WriteTo(output, _repeated_lineupList_codec);
       if (PeakGroupId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(PeakGroupId);
       }
       if (_unknownFields != null) {
@@ -7048,7 +6820,7 @@ namespace March7thHoney.Proto {
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       lineupList_.WriteTo(ref output, _repeated_lineupList_codec);
       if (PeakGroupId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(96);
         output.WriteUInt32(PeakGroupId);
       }
       if (_unknownFields != null) {
@@ -7100,11 +6872,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 74: {
+          case 90: {
             lineupList_.AddEntriesFrom(input, _repeated_lineupList_codec);
             break;
           }
-          case 104: {
+          case 96: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
@@ -7127,11 +6899,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 74: {
+          case 90: {
             lineupList_.AddEntriesFrom(ref input, _repeated_lineupList_codec);
             break;
           }
-          case 104: {
+          case 96: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
@@ -7188,11 +6960,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 15;
     private uint retcode_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -7245,7 +7014,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -7259,7 +7028,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(120);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -7309,7 +7078,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 120: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -7332,7 +7101,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 120: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -7378,8 +7147,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StartChallengePeakCsReq(StartChallengePeakCsReq other) : this() {
-      peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
       bossBuffId_ = other.bossBuffId_;
+      peakAvatarIdList_ = other.peakAvatarIdList_.Clone();
       peakId_ = other.peakId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -7390,26 +7159,9 @@ namespace March7thHoney.Proto {
       return new StartChallengePeakCsReq(this);
     }
 
-    /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
-    public const int PeakAvatarIdListFieldNumber = 5;
-    private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
-        = pb::FieldCodec.ForUInt32(42);
-    private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> PeakAvatarIdList {
-      get { return peakAvatarIdList_; }
-    }
-
     /// <summary>Field number for the "boss_buff_id" field.</summary>
-    public const int BossBuffIdFieldNumber = 7;
+    public const int BossBuffIdFieldNumber = 11;
     private uint bossBuffId_;
-    /// <summary>
-    /// offset: 36
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint BossBuffId {
@@ -7419,12 +7171,20 @@ namespace March7thHoney.Proto {
       }
     }
 
+    /// <summary>Field number for the "peak_avatar_id_list" field.</summary>
+    public const int PeakAvatarIdListFieldNumber = 13;
+    private static readonly pb::FieldCodec<uint> _repeated_peakAvatarIdList_codec
+        = pb::FieldCodec.ForUInt32(106);
+    private readonly pbc::RepeatedField<uint> peakAvatarIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> PeakAvatarIdList {
+      get { return peakAvatarIdList_; }
+    }
+
     /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 13;
+    public const int PeakIdFieldNumber = 14;
     private uint peakId_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakId {
@@ -7449,8 +7209,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
       if (BossBuffId != other.BossBuffId) return false;
+      if(!peakAvatarIdList_.Equals(other.peakAvatarIdList_)) return false;
       if (PeakId != other.PeakId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -7459,8 +7219,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= peakAvatarIdList_.GetHashCode();
       if (BossBuffId != 0) hash ^= BossBuffId.GetHashCode();
+      hash ^= peakAvatarIdList_.GetHashCode();
       if (PeakId != 0) hash ^= PeakId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -7480,13 +7240,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      peakAvatarIdList_.WriteTo(output, _repeated_peakAvatarIdList_codec);
       if (BossBuffId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(BossBuffId);
       }
+      peakAvatarIdList_.WriteTo(output, _repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(112);
         output.WriteUInt32(PeakId);
       }
       if (_unknownFields != null) {
@@ -7499,13 +7259,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      peakAvatarIdList_.WriteTo(ref output, _repeated_peakAvatarIdList_codec);
       if (BossBuffId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(88);
         output.WriteUInt32(BossBuffId);
       }
+      peakAvatarIdList_.WriteTo(ref output, _repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(112);
         output.WriteUInt32(PeakId);
       }
       if (_unknownFields != null) {
@@ -7518,10 +7278,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
       if (BossBuffId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(BossBuffId);
       }
+      size += peakAvatarIdList_.CalculateSize(_repeated_peakAvatarIdList_codec);
       if (PeakId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
       }
@@ -7537,10 +7297,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      peakAvatarIdList_.Add(other.peakAvatarIdList_);
       if (other.BossBuffId != 0) {
         BossBuffId = other.BossBuffId;
       }
+      peakAvatarIdList_.Add(other.peakAvatarIdList_);
       if (other.PeakId != 0) {
         PeakId = other.PeakId;
       }
@@ -7563,16 +7323,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 42:
-          case 40: {
-            peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
-            break;
-          }
-          case 56: {
+          case 88: {
             BossBuffId = input.ReadUInt32();
             break;
           }
+          case 106:
           case 104: {
+            peakAvatarIdList_.AddEntriesFrom(input, _repeated_peakAvatarIdList_codec);
+            break;
+          }
+          case 112: {
             PeakId = input.ReadUInt32();
             break;
           }
@@ -7595,16 +7355,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 42:
-          case 40: {
-            peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
-            break;
-          }
-          case 56: {
+          case 88: {
             BossBuffId = input.ReadUInt32();
             break;
           }
+          case 106:
           case 104: {
+            peakAvatarIdList_.AddEntriesFrom(ref input, _repeated_peakAvatarIdList_codec);
+            break;
+          }
+          case 112: {
             PeakId = input.ReadUInt32();
             break;
           }
@@ -7661,11 +7421,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
+    public const int RetcodeFieldNumber = 14;
     private uint retcode_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -7718,7 +7475,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -7732,7 +7489,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(112);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -7782,7 +7539,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 88: {
+          case 112: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -7805,7 +7562,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 88: {
+          case 112: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -7851,8 +7608,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeChallengePeakRewardCsReq(TakeChallengePeakRewardCsReq other) : this() {
-      normalRewardIdList_ = other.normalRewardIdList_.Clone();
       peakGroupId_ = other.peakGroupId_;
+      normalRewardIdList_ = other.normalRewardIdList_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -7862,26 +7619,9 @@ namespace March7thHoney.Proto {
       return new TakeChallengePeakRewardCsReq(this);
     }
 
-    /// <summary>Field number for the "normal_reward_id_list" field.</summary>
-    public const int NormalRewardIdListFieldNumber = 7;
-    private static readonly pb::FieldCodec<uint> _repeated_normalRewardIdList_codec
-        = pb::FieldCodec.ForUInt32(58);
-    private readonly pbc::RepeatedField<uint> normalRewardIdList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> NormalRewardIdList {
-      get { return normalRewardIdList_; }
-    }
-
     /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 12;
+    public const int PeakGroupIdFieldNumber = 7;
     private uint peakGroupId_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakGroupId {
@@ -7889,6 +7629,17 @@ namespace March7thHoney.Proto {
       set {
         peakGroupId_ = value;
       }
+    }
+
+    /// <summary>Field number for the "normal_reward_id_list" field.</summary>
+    public const int NormalRewardIdListFieldNumber = 13;
+    private static readonly pb::FieldCodec<uint> _repeated_normalRewardIdList_codec
+        = pb::FieldCodec.ForUInt32(106);
+    private readonly pbc::RepeatedField<uint> normalRewardIdList_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> NormalRewardIdList {
+      get { return normalRewardIdList_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7906,8 +7657,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!normalRewardIdList_.Equals(other.normalRewardIdList_)) return false;
       if (PeakGroupId != other.PeakGroupId) return false;
+      if(!normalRewardIdList_.Equals(other.normalRewardIdList_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -7915,8 +7666,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= normalRewardIdList_.GetHashCode();
       if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
+      hash ^= normalRewardIdList_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -7935,11 +7686,11 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      normalRewardIdList_.WriteTo(output, _repeated_normalRewardIdList_codec);
       if (PeakGroupId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(PeakGroupId);
       }
+      normalRewardIdList_.WriteTo(output, _repeated_normalRewardIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -7950,11 +7701,11 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      normalRewardIdList_.WriteTo(ref output, _repeated_normalRewardIdList_codec);
       if (PeakGroupId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(PeakGroupId);
       }
+      normalRewardIdList_.WriteTo(ref output, _repeated_normalRewardIdList_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -7965,10 +7716,10 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += normalRewardIdList_.CalculateSize(_repeated_normalRewardIdList_codec);
       if (PeakGroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
       }
+      size += normalRewardIdList_.CalculateSize(_repeated_normalRewardIdList_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -7981,10 +7732,10 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      normalRewardIdList_.Add(other.normalRewardIdList_);
       if (other.PeakGroupId != 0) {
         PeakGroupId = other.PeakGroupId;
       }
+      normalRewardIdList_.Add(other.normalRewardIdList_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -8004,13 +7755,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 58:
           case 56: {
-            normalRewardIdList_.AddEntriesFrom(input, _repeated_normalRewardIdList_codec);
+            PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            PeakGroupId = input.ReadUInt32();
+          case 106:
+          case 104: {
+            normalRewardIdList_.AddEntriesFrom(input, _repeated_normalRewardIdList_codec);
             break;
           }
         }
@@ -8032,13 +7783,13 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 58:
           case 56: {
-            normalRewardIdList_.AddEntriesFrom(ref input, _repeated_normalRewardIdList_codec);
+            PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 96: {
-            PeakGroupId = input.ReadUInt32();
+          case 106:
+          case 104: {
+            normalRewardIdList_.AddEntriesFrom(ref input, _repeated_normalRewardIdList_codec);
             break;
           }
         }
@@ -8083,9 +7834,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TakeChallengePeakRewardScRsp(TakeChallengePeakRewardScRsp other) : this() {
-      retcode_ = other.retcode_;
-      peakGroupId_ = other.peakGroupId_;
       peakRewardGroupList_ = other.peakRewardGroupList_.Clone();
+      peakGroupId_ = other.peakGroupId_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -8095,27 +7846,20 @@ namespace March7thHoney.Proto {
       return new TakeChallengePeakRewardScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
-    private uint retcode_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
+    /// <summary>Field number for the "peak_reward_group_list" field.</summary>
+    public const int PeakRewardGroupListFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRewardGroup> _repeated_peakRewardGroupList_codec
+        = pb::FieldCodec.ForMessage(66, global::March7thHoney.Proto.ChallengePeakRewardGroup.Parser);
+    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> peakRewardGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
-      set {
-        retcode_ = value;
-      }
+    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> PeakRewardGroupList {
+      get { return peakRewardGroupList_; }
     }
 
     /// <summary>Field number for the "peak_group_id" field.</summary>
-    public const int PeakGroupIdFieldNumber = 4;
+    public const int PeakGroupIdFieldNumber = 11;
     private uint peakGroupId_;
-    /// <summary>
-    /// offset: 36
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakGroupId {
@@ -8125,18 +7869,16 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "peak_reward_group_list" field.</summary>
-    public const int PeakRewardGroupListFieldNumber = 14;
-    private static readonly pb::FieldCodec<global::March7thHoney.Proto.ChallengePeakRewardGroup> _repeated_peakRewardGroupList_codec
-        = pb::FieldCodec.ForMessage(114, global::March7thHoney.Proto.ChallengePeakRewardGroup.Parser);
-    private readonly pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> peakRewardGroupList_ = new pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 14;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::March7thHoney.Proto.ChallengePeakRewardGroup> PeakRewardGroupList {
-      get { return peakRewardGroupList_; }
+    public uint Retcode {
+      get { return retcode_; }
+      set {
+        retcode_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8154,9 +7896,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
-      if (PeakGroupId != other.PeakGroupId) return false;
       if(!peakRewardGroupList_.Equals(other.peakRewardGroupList_)) return false;
+      if (PeakGroupId != other.PeakGroupId) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -8164,9 +7906,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
       hash ^= peakRewardGroupList_.GetHashCode();
+      if (PeakGroupId != 0) hash ^= PeakGroupId.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -8185,15 +7927,15 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
-      }
+      peakRewardGroupList_.WriteTo(output, _repeated_peakRewardGroupList_codec);
       if (PeakGroupId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(PeakGroupId);
       }
-      peakRewardGroupList_.WriteTo(output, _repeated_peakRewardGroupList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Retcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -8204,15 +7946,15 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(16);
-        output.WriteUInt32(Retcode);
-      }
+      peakRewardGroupList_.WriteTo(ref output, _repeated_peakRewardGroupList_codec);
       if (PeakGroupId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(88);
         output.WriteUInt32(PeakGroupId);
       }
-      peakRewardGroupList_.WriteTo(ref output, _repeated_peakRewardGroupList_codec);
+      if (Retcode != 0) {
+        output.WriteRawTag(112);
+        output.WriteUInt32(Retcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -8223,13 +7965,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
-      }
+      size += peakRewardGroupList_.CalculateSize(_repeated_peakRewardGroupList_codec);
       if (PeakGroupId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakGroupId);
       }
-      size += peakRewardGroupList_.CalculateSize(_repeated_peakRewardGroupList_codec);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -8242,13 +7984,13 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
-      }
+      peakRewardGroupList_.Add(other.peakRewardGroupList_);
       if (other.PeakGroupId != 0) {
         PeakGroupId = other.PeakGroupId;
       }
-      peakRewardGroupList_.Add(other.peakRewardGroupList_);
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -8268,16 +8010,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 66: {
+            peakRewardGroupList_.AddEntriesFrom(input, _repeated_peakRewardGroupList_codec);
             break;
           }
-          case 32: {
+          case 88: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 114: {
-            peakRewardGroupList_.AddEntriesFrom(input, _repeated_peakRewardGroupList_codec);
+          case 112: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -8299,16 +8041,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
-            Retcode = input.ReadUInt32();
+          case 66: {
+            peakRewardGroupList_.AddEntriesFrom(ref input, _repeated_peakRewardGroupList_codec);
             break;
           }
-          case 32: {
+          case 88: {
             PeakGroupId = input.ReadUInt32();
             break;
           }
-          case 114: {
-            peakRewardGroupList_.AddEntriesFrom(ref input, _repeated_peakRewardGroupList_codec);
+          case 112: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -8354,9 +8096,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WaitConfirmData(WaitConfirmData other) : this() {
       isWaitConfirm_ = other.isWaitConfirm_;
-      cyclesUsed_ = other.cyclesUsed_;
       finishedTargetList_ = other.finishedTargetList_.Clone();
       peakId_ = other.peakId_;
+      cyclesUsed_ = other.cyclesUsed_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -8369,9 +8111,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "is_wait_confirm" field.</summary>
     public const int IsWaitConfirmFieldNumber = 2;
     private bool isWaitConfirm_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IsWaitConfirm {
@@ -8381,29 +8120,11 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cycles_used" field.</summary>
-    public const int CyclesUsedFieldNumber = 7;
-    private uint cyclesUsed_;
-    /// <summary>
-    /// offset: 36
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CyclesUsed {
-      get { return cyclesUsed_; }
-      set {
-        cyclesUsed_ = value;
-      }
-    }
-
     /// <summary>Field number for the "finished_target_list" field.</summary>
-    public const int FinishedTargetListFieldNumber = 8;
+    public const int FinishedTargetListFieldNumber = 9;
     private static readonly pb::FieldCodec<uint> _repeated_finishedTargetList_codec
-        = pb::FieldCodec.ForUInt32(66);
+        = pb::FieldCodec.ForUInt32(74);
     private readonly pbc::RepeatedField<uint> finishedTargetList_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> FinishedTargetList {
@@ -8411,17 +8132,26 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "peak_id" field.</summary>
-    public const int PeakIdFieldNumber = 13;
+    public const int PeakIdFieldNumber = 11;
     private uint peakId_;
-    /// <summary>
-    /// offset: 40
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PeakId {
       get { return peakId_; }
       set {
         peakId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cycles_used" field.</summary>
+    public const int CyclesUsedFieldNumber = 13;
+    private uint cyclesUsed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CyclesUsed {
+      get { return cyclesUsed_; }
+      set {
+        cyclesUsed_ = value;
       }
     }
 
@@ -8441,9 +8171,9 @@ namespace March7thHoney.Proto {
         return true;
       }
       if (IsWaitConfirm != other.IsWaitConfirm) return false;
-      if (CyclesUsed != other.CyclesUsed) return false;
       if(!finishedTargetList_.Equals(other.finishedTargetList_)) return false;
       if (PeakId != other.PeakId) return false;
+      if (CyclesUsed != other.CyclesUsed) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -8452,9 +8182,9 @@ namespace March7thHoney.Proto {
     public override int GetHashCode() {
       int hash = 1;
       if (IsWaitConfirm != false) hash ^= IsWaitConfirm.GetHashCode();
-      if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
       hash ^= finishedTargetList_.GetHashCode();
       if (PeakId != 0) hash ^= PeakId.GetHashCode();
+      if (CyclesUsed != 0) hash ^= CyclesUsed.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -8477,14 +8207,14 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteBool(IsWaitConfirm);
       }
-      if (CyclesUsed != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CyclesUsed);
-      }
       finishedTargetList_.WriteTo(output, _repeated_finishedTargetList_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteUInt32(PeakId);
+      }
+      if (CyclesUsed != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(CyclesUsed);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -8500,14 +8230,14 @@ namespace March7thHoney.Proto {
         output.WriteRawTag(16);
         output.WriteBool(IsWaitConfirm);
       }
-      if (CyclesUsed != 0) {
-        output.WriteRawTag(56);
-        output.WriteUInt32(CyclesUsed);
-      }
       finishedTargetList_.WriteTo(ref output, _repeated_finishedTargetList_codec);
       if (PeakId != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(88);
         output.WriteUInt32(PeakId);
+      }
+      if (CyclesUsed != 0) {
+        output.WriteRawTag(104);
+        output.WriteUInt32(CyclesUsed);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -8522,12 +8252,12 @@ namespace March7thHoney.Proto {
       if (IsWaitConfirm != false) {
         size += 1 + 1;
       }
-      if (CyclesUsed != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CyclesUsed);
-      }
       size += finishedTargetList_.CalculateSize(_repeated_finishedTargetList_codec);
       if (PeakId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(PeakId);
+      }
+      if (CyclesUsed != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CyclesUsed);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -8544,12 +8274,12 @@ namespace March7thHoney.Proto {
       if (other.IsWaitConfirm != false) {
         IsWaitConfirm = other.IsWaitConfirm;
       }
-      if (other.CyclesUsed != 0) {
-        CyclesUsed = other.CyclesUsed;
-      }
       finishedTargetList_.Add(other.finishedTargetList_);
       if (other.PeakId != 0) {
         PeakId = other.PeakId;
+      }
+      if (other.CyclesUsed != 0) {
+        CyclesUsed = other.CyclesUsed;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -8574,17 +8304,17 @@ namespace March7thHoney.Proto {
             IsWaitConfirm = input.ReadBool();
             break;
           }
-          case 56: {
-            CyclesUsed = input.ReadUInt32();
-            break;
-          }
-          case 66:
-          case 64: {
+          case 74:
+          case 72: {
             finishedTargetList_.AddEntriesFrom(input, _repeated_finishedTargetList_codec);
             break;
           }
-          case 104: {
+          case 88: {
             PeakId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            CyclesUsed = input.ReadUInt32();
             break;
           }
         }
@@ -8610,17 +8340,17 @@ namespace March7thHoney.Proto {
             IsWaitConfirm = input.ReadBool();
             break;
           }
-          case 56: {
-            CyclesUsed = input.ReadUInt32();
-            break;
-          }
-          case 66:
-          case 64: {
+          case 74:
+          case 72: {
             finishedTargetList_.AddEntriesFrom(ref input, _repeated_finishedTargetList_codec);
             break;
           }
-          case 104: {
+          case 88: {
             PeakId = input.ReadUInt32();
+            break;
+          }
+          case 104: {
+            CyclesUsed = input.ReadUInt32();
             break;
           }
         }

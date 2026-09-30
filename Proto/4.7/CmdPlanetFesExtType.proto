@@ -1,0 +1,139 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdPlanetFesExtType {
+	CmdPlanetFesExtType_NLCDGIPGFDJ = 0;
+	CmdPlanetFesExtType_PlanetFesGiveCardPieceScRsp = 8300;
+	CmdPlanetFesExtType_PlanetFesHandleCardPieceApplyScRsp = 8301;
+	CmdPlanetFesExtType_PlanetFesEnterNextBusinessDayScRsp = 8306;
+	CmdPlanetFesExtType_PlanetFesApplyCardPieceScRsp = 8314;
+	CmdPlanetFesExtType_PlanetFesLargeBonusInteractScRsp = 8315;
+	CmdPlanetFesExtType_PlanetFesGetOfferedCardPieceScRsp = 8316;
+	CmdPlanetFesExtType_PlanetFesChangeCardPieceApplyPermissionCsReq = 8320;
+	CmdPlanetFesExtType_PlanetFesGiveCardPieceCsReq = 8322;
+	CmdPlanetFesExtType_PlanetFesApplyCardPieceCsReq = 8324;
+	CmdPlanetFesExtType_PlanetFesChangeCardPieceApplyPermissionScRsp = 8325;
+	CmdPlanetFesExtType_PlanetFesHandleCardPieceApplyCsReq = 8327;
+	CmdPlanetFesExtType_PlanetFesGetExtraCardPieceInfoScRsp = 8328;
+	CmdPlanetFesExtType_PlanetFesLargeBonusInteractCsReq = 8331;
+	CmdPlanetFesExtType_PlanetFesGetExtraCardPieceInfoCsReq = 8332;
+	CmdPlanetFesExtType_PlanetFesEnterNextBusinessDayCsReq = 8334;
+	CmdPlanetFesExtType_PlanetFesGetOfferedCardPieceCsReq = 8335;
+	CmdPlanetFesExtType_PlanetFesGetFriendCardPieceCsReq = 8338;
+	CmdPlanetFesExtType_PlanetFesGetFriendCardPieceScRsp = 8340;
+}
+
+message EPPIBFOLFKN {
+	uint32 MLGAODMIHJH = 2;
+	repeated GMODJEECPPJ GMLEOJCLCFB = 7;
+	int64 OIKNNPOKKME = 9;
+	repeated DFEPHMALKDK FDHMLGFKDIP = 10;
+	repeated uint32 MLPNIPENEBG = 11;
+	uint32 uid = 12;
+	uint32 HAAHAGAPDKC = 13;
+	repeated FMKMEFMOJGJ EOMINOCGLJF = 14;
+}
+
+message PlanetFesApplyCardPieceCsReq {
+	repeated uint32 OEEGPNOCFLP = 3;
+	uint32 teleport_id = 8;
+}
+
+message PlanetFesApplyCardPieceScRsp {
+	repeated uint32 OEEGPNOCFLP = 2;
+	uint32 retcode = 3;
+	bool GOPCDFEIOEA = 4;
+	uint32 teleport_id = 6;
+	int64 GLDGCHLDMJE = 8;
+	uint32 BLGLDJHOMNO = 12;
+}
+
+message PlanetFesChangeCardPieceApplyPermissionCsReq {
+	uint32 HAAHAGAPDKC = 5;
+}
+
+message PlanetFesChangeCardPieceApplyPermissionScRsp {
+	uint32 HAAHAGAPDKC = 4;
+	uint32 retcode = 12;
+}
+
+message PlanetFesEnterNextBusinessDayCsReq {
+}
+
+message PlanetFesEnterNextBusinessDayScRsp {
+	uint32 retcode = 6;
+}
+
+message PlanetFesGetExtraCardPieceInfoCsReq {
+}
+
+message PlanetFesGetExtraCardPieceInfoScRsp {
+	EPPIBFOLFKN GIPNMPKNIFG = 3;
+	uint32 retcode = 15;
+}
+
+message PlanetFesGetFriendCardPieceCsReq {
+}
+
+message PlanetFesGetFriendCardPieceScRsp {
+	repeated EPPIBFOLFKN PEBGJJCNBMM = 1;
+	uint32 retcode = 13;
+}
+
+message PlanetFesGetOfferedCardPieceCsReq {
+	uint64 CBMBOBNCKMO = 5;
+	bool FOGGEJIIJCM = 12;
+}
+
+message PlanetFesGetOfferedCardPieceScRsp {
+	bool FOGGEJIIJCM = 4;
+	int64 MAFLGLLOKBB = 5;
+	uint32 retcode = 7;
+	repeated FMKMEFMOJGJ EOMINOCGLJF = 9;
+	uint64 CBMBOBNCKMO = 14;
+	repeated IEDPDDJAAIH CBPKFDJMGBH = 15;
+}
+
+message PlanetFesGiveCardPieceCsReq {
+	uint32 teleport_id = 2;
+	repeated uint32 JAKKDGHLJPH = 7;
+}
+
+message PlanetFesGiveCardPieceScRsp {
+	uint32 retcode = 3;
+	uint64 CBMBOBNCKMO = 4;
+	uint32 teleport_id = 10;
+	int64 JEAGHJHMCEN = 11;
+	repeated uint32 JAKKDGHLJPH = 13;
+}
+
+message PlanetFesHandleCardPieceApplyCsReq {
+	repeated uint32 JAKKDGHLJPH = 6;
+	bool IKOBGOCEHFG = 7;
+	uint32 BLGLDJHOMNO = 11;
+	uint32 APIFFHBCDKK = 13;
+}
+
+message PlanetFesHandleCardPieceApplyScRsp {
+	uint32 BLGLDJHOMNO = 1;
+	bool IKOBGOCEHFG = 5;
+	uint32 retcode = 9;
+	int64 JEAGHJHMCEN = 11;
+	repeated uint32 JAKKDGHLJPH = 14;
+}
+
+message PlanetFesLargeBonusInteractCsReq {
+	uint32 DNBKKDBFFAJ = 1;
+	uint32 IABOGPKEAGF = 8;
+	uint32 MMKABABENKE = 13;
+}
+
+message PlanetFesLargeBonusInteractScRsp {
+	uint32 DNBKKDBFFAJ = 10;
+	OJHHACMHFKA GLOAGDBEKDP = 11;
+	uint32 retcode = 14;
+	NCFKHDIKCNI CGKNMGLFKBN = 15;
+}

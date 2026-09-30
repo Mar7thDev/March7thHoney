@@ -73,7 +73,6 @@ public sealed class HandlerGridFightUseConsumableCsReq : Handler<GridFightUseCon
                                 target?.UpgradeTarget?.EquipmentUniqueId ?? 0;
         var result = manager.Session?.UseConsumable(
                          request.GroupId,
-                         request.ItemId,
                          roleUniqueId,
                          equipmentUniqueId) ??
                      GridFightConsumableUseResult.Failed;

@@ -129,9 +129,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "main_mission_id" field.</summary>
     public const int MainMissionIdFieldNumber = 1;
     private uint mainMissionId_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint MainMissionId {
@@ -144,9 +141,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "custom_value_list" field.</summary>
     public const int CustomValueListFieldNumber = 2;
     private global::March7thHoney.Proto.MissionCustomValueSnapshotList customValueList_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.MissionCustomValueSnapshotList CustomValueList {
@@ -379,9 +373,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "main_mission_id" field.</summary>
     public const int MainMissionIdFieldNumber = 1;
     private uint mainMissionId_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint MainMissionId {
@@ -396,9 +387,6 @@ namespace March7thHoney.Proto {
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.SubMissionSnapshot> _repeated_subMissionList_codec
         = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.SubMissionSnapshot.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot> subMissionList_ = new pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.SubMissionSnapshot> SubMissionList {
@@ -609,9 +597,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "custom_value" field.</summary>
     public const int CustomValueFieldNumber = 1;
     private uint customValue_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CustomValue {
@@ -624,9 +609,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "mcv_key" field.</summary>
     public const int McvKeyFieldNumber = 2;
     private string mcvKey_ = "";
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string McvKey {
@@ -851,9 +833,6 @@ namespace March7thHoney.Proto {
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MissionCustomValueSnapshot> _repeated_customValueList_codec
         = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MissionCustomValueSnapshot.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValueSnapshot> customValueList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValueSnapshot>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.MissionCustomValueSnapshot> CustomValueList {
@@ -1046,9 +1025,6 @@ namespace March7thHoney.Proto {
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionMcvSnapshot> _repeated_serverMcvList_codec
         = pb::FieldCodec.ForMessage(10, global::March7thHoney.Proto.MainMissionMcvSnapshot.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> serverMcvList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot>();
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> ServerMcvList {
@@ -1060,9 +1036,6 @@ namespace March7thHoney.Proto {
     private static readonly pb::FieldCodec<global::March7thHoney.Proto.MainMissionMcvSnapshot> _repeated_clientMcvList_codec
         = pb::FieldCodec.ForMessage(18, global::March7thHoney.Proto.MainMissionMcvSnapshot.Parser);
     private readonly pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> clientMcvList_ = new pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::March7thHoney.Proto.MainMissionMcvSnapshot> ClientMcvList {
@@ -1072,9 +1045,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "tracking_main_mission" field.</summary>
     public const int TrackingMainMissionFieldNumber = 3;
     private global::March7thHoney.Proto.MainMissionSnapshot trackingMainMission_;
-    /// <summary>
-    /// offset: 40
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::March7thHoney.Proto.MainMissionSnapshot TrackingMainMission {
@@ -1087,9 +1057,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "has_mission_audio_snapshot" field.</summary>
     public const int HasMissionAudioSnapshotFieldNumber = 4;
     private bool hasMissionAudioSnapshot_;
-    /// <summary>
-    /// offset: 64
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasMissionAudioSnapshot {
@@ -1102,9 +1069,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "cur_audio_emotion_state" field.</summary>
     public const int CurAudioEmotionStateFieldNumber = 5;
     private string curAudioEmotionState_ = "";
-    /// <summary>
-    /// offset: 16
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string CurAudioEmotionState {
@@ -1117,9 +1081,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "cur_sound_effect_state" field.</summary>
     public const int CurSoundEffectStateFieldNumber = 6;
     private string curSoundEffectState_ = "";
-    /// <summary>
-    /// offset: 48
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string CurSoundEffectState {
@@ -1427,9 +1388,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "sub_mission_id" field.</summary>
     public const int SubMissionIdFieldNumber = 1;
     private uint subMissionId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint SubMissionId {

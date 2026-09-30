@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdPetParkDiyType {
+	CmdPetParkDiyType_NLCDGIPGFDJ = 0;
+	CmdPetParkDiyType_PetParkDiyCsReq = 10164;
+	CmdPetParkDiyType_PetParkDiyScRsp = 10180;
+}
+
+message PetParkDiyCsReq {
+	HANFHCOHGBP IAPPNHBCEKO = 14;
+}
+
+message PetParkDiyScRsp {
+	HHCNMGNAIBG NLJBJMDPBGN = 4;
+	uint32 retcode = 7;
+}

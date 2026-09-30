@@ -1,0 +1,311 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BJGNOHEEIGD {
+	uint32 DCOONCCIKGL = 4;
+	repeated uint32 DECFDGJJFGL = 8;
+	uint32 LCFLDHCDNPA = 12;
+}
+
+message BMDEEMIDNEL {
+	repeated uint32 IHOMKIICBLP = 4;
+	uint32 CEDDGAMLKJK = 14;
+}
+
+enum CmdLimaoNewsType {
+	CmdLimaoNewsType_NLCDGIPGFDJ = 0;
+	CmdLimaoNewsType_LimaoNewsFinishClientMessageScRsp = 9151;
+	CmdLimaoNewsType_LimaoNewsUpvoteInterviewScRsp = 9152;
+	CmdLimaoNewsType_LimaoNewsFinishPlanPhaseCsReq = 9154;
+	CmdLimaoNewsType_OKGOKBGHECO = 9155;
+	CmdLimaoNewsType_LimaoNewsSubmitIssueCsReq = 9156;
+	CmdLimaoNewsType_LimaoNewsSetMainPageFlagScRsp = 9157;
+	CmdLimaoNewsType_MCONKMMNKHD = 9159;
+	CmdLimaoNewsType_LimaoNewsFinishFinalPerformanceCsReq = 9160;
+	CmdLimaoNewsType_LimaoNewsSubmitPostScRsp = 9161;
+	CmdLimaoNewsType_LimaoNewsUpvotePostScRsp = 9162;
+	CmdLimaoNewsType_LimaoNewsFinishClientEventCsReq = 9163;
+	CmdLimaoNewsType_LimaoNewsGetDataCsReq = 9165;
+	CmdLimaoNewsType_LimaoNewsSubmitPostCsReq = 9166;
+	CmdLimaoNewsType_LimaoNewsFinishClientEventScRsp = 9167;
+	CmdLimaoNewsType_LimaoNewsTrackSurveyCsReq = 9169;
+	CmdLimaoNewsType_LimaoNewsCompleteOfficeSurveyListCsReq = 9170;
+	CmdLimaoNewsType_LimaoNewsFinishClientReplyScRsp = 9171;
+	CmdLimaoNewsType_LimaoNewsReportEmployeeCheckRefreshCsReq = 9177;
+	CmdLimaoNewsType_LimaoNewsStartWorkCsReq = 9178;
+	CmdLimaoNewsType_DPMAAMEHJKI = 9186;
+	CmdLimaoNewsType_LimaoNewsOfficeSurveyWithFilterScRsp = 9187;
+	CmdLimaoNewsType_OACFLIFAHKN = 9188;
+	CmdLimaoNewsType_OKDICCOLPLG = 9189;
+	CmdLimaoNewsType_JKLDNBFNOGA = 9190;
+	CmdLimaoNewsType_LimaoNewsTrackSurveyScRsp = 9192;
+	CmdLimaoNewsType_LimaoNewsCompleteOfficeSurveyListScRsp = 9194;
+	CmdLimaoNewsType_LimaoNewsSubmitIssueScRsp = 9196;
+	CmdLimaoNewsType_LimaoNewsFinishClientMessageCsReq = 9198;
+	CmdLimaoNewsType_LimaoNewsFinishEmployeeCheckCsReq = 9200;
+	CmdLimaoNewsType_LimaoNewsFinishClientReplyCsReq = 9203;
+	CmdLimaoNewsType_LimaoNewsGetDataScRsp = 9204;
+	CmdLimaoNewsType_ECIIEHHBAJJ = 9205;
+	CmdLimaoNewsType_LimaoNewsDataChangeScNotify = 9206;
+	CmdLimaoNewsType_LimaoNewsSetMainPageFlagCsReq = 9207;
+	CmdLimaoNewsType_JOGEHJJCHNM = 9209;
+}
+
+message DOEOMHPIPKE {
+	uint32 retcode = 7;
+}
+
+message DPAJAECBCPA {
+	repeated LimaoNewsOfficeSurveyState CMNOBDCMGHE = 10;
+	repeated uint32 IAEAJKJDCHO = 11;
+	repeated uint32 HBEHCHBCBPG = 12;
+}
+
+message EMOPGLBEHPA {
+	uint32 PLDKENJLKME = 13;
+}
+
+message FNIDNGOGAFF {
+	uint32 IIADKFFPKGP = 3;
+	uint32 KPKJALDCMIK = 10;
+}
+
+message GNPIEPGLNPC {
+	uint32 PLDKENJLKME = 1;
+}
+
+message HDDBFAIFCGK {
+	repeated PJPMBOBAMIC EHFHDELPGLN = 2;
+	uint32 LFPABLEIKKE = 12;
+}
+
+message ICCEJJFNNBD {
+	uint32 PLDKENJLKME = 3;
+}
+
+message IGIBNBCMEAG {
+	int64 LLKBEKMEEEB = 3;
+	uint32 PLDKENJLKME = 6;
+}
+
+message JPIEAEJIDAO {
+	repeated FNIDNGOGAFF LMLLNJBLPGC = 3;
+}
+
+message KJAMNAOLOLL {
+	uint32 MBBGFJGCHGE = 12;
+	uint32 LJHGIFGINOL = 14;
+}
+
+message LFGKIJMBKJG {
+	bool KBLBFGANMPJ = 7;
+	uint32 CBGODLHCLPK = 11;
+}
+
+message LGGGHFDBCFN {
+	uint32 FDGJLMMEAOF = 6;
+	uint32 progress = 11;
+	uint32 KBDOBOODPAK = 12;
+	bool has_passed = 14;
+}
+
+message LimaoNewsCompleteOfficeSurveyListCsReq {
+}
+
+message LimaoNewsCompleteOfficeSurveyListScRsp {
+	uint32 retcode = 10;
+}
+
+message LimaoNewsDataChangeScNotify {
+	repeated OCEAHPDAPFC DGNGMJMPFGK = 11;
+}
+
+message LimaoNewsFinishClientEventCsReq {
+	uint32 param = 11;
+	uint32 event_id = 14;
+}
+
+message LimaoNewsFinishClientEventScRsp {
+	uint32 event_id = 4;
+	uint32 param = 14;
+	uint32 retcode = 15;
+}
+
+message LimaoNewsFinishClientMessageCsReq {
+	repeated uint32 AKEFNAJMCCM = 4;
+	uint32 NNDNCAEGDFI = 10;
+}
+
+message LimaoNewsFinishClientMessageScRsp {
+	uint32 NNDNCAEGDFI = 1;
+	uint32 retcode = 14;
+}
+
+message LimaoNewsFinishClientReplyCsReq {
+	uint32 BOGIJENAEHJ = 10;
+	uint32 CBGODLHCLPK = 12;
+}
+
+message LimaoNewsFinishClientReplyScRsp {
+	uint32 CBGODLHCLPK = 4;
+	uint32 BOGIJENAEHJ = 12;
+	uint32 retcode = 13;
+}
+
+message LimaoNewsFinishEmployeeCheckCsReq {
+	uint32 HAFOKMHCGFM = 4;
+	uint32 AMMPOLONOBC = 6;
+}
+
+message LimaoNewsFinishFinalPerformanceCsReq {
+	uint32 AMMPOLONOBC = 6;
+}
+
+message LimaoNewsFinishPlanPhaseCsReq {
+	uint32 NABDKGBPGOA = 4;
+	uint32 FBGGJDIGBKH = 12;
+}
+
+message LimaoNewsGetDataCsReq {
+}
+
+message LimaoNewsGetDataScRsp {
+	repeated PBLBAAMLNLH JLADELFEHNO = 1;
+	repeated HDDBFAIFCGK IDMHGCAIBNK = 2;
+	OEIHBAJCCAF OILCNNHJKLE = 4;
+	repeated uint32 BEBLBBEEIGH = 6;
+	repeated uint32 BIGCHMJEPKE = 7;
+	uint32 JDGKFGONCJI = 8;
+	repeated uint32 KBMHPOBLMKH = 9;
+	repeated FNIDNGOGAFF LBBGCNIJMJC = 10;
+	repeated KJAMNAOLOLL LFEGDDMBLEE = 11;
+	repeated LGGGHFDBCFN JEFNJEJFPGK = 12;
+	uint32 retcode = 13;
+	repeated BMDEEMIDNEL KFCEKGMDPKP = 14;
+	bool HIHOBEPGLEJ = 15;
+	repeated PPPCGBKJDAB EGIKGNHCMLF = 211;
+	repeated BJGNOHEEIGD BICJEHNPJGK = 1409;
+	int64 PKLLFPOGLML = 1456;
+}
+
+enum LimaoNewsOfficeSurveyState {
+	LimaoNewsOfficeSurveyState_None = 0;
+	LimaoNewsOfficeSurveyState_Unvisible = 1;
+	LimaoNewsOfficeSurveyState_Pending = 2;
+	LimaoNewsOfficeSurveyState_Started = 3;
+	LimaoNewsOfficeSurveyState_Finished = 4;
+}
+
+message LimaoNewsOfficeSurveyWithFilterScRsp {
+	uint32 retcode = 14;
+}
+
+message LimaoNewsReportEmployeeCheckRefreshCsReq {
+}
+
+message LimaoNewsSetMainPageFlagCsReq {
+}
+
+message LimaoNewsSetMainPageFlagScRsp {
+	uint32 retcode = 15;
+}
+
+message LimaoNewsStartWorkCsReq {
+	uint32 CKKDLHLJGMD = 7;
+	uint32 BGLGKBEKMKH = 11;
+}
+
+message LimaoNewsSubmitIssueCsReq {
+	uint32 LFPABLEIKKE = 13;
+}
+
+message LimaoNewsSubmitIssueScRsp {
+	uint32 retcode = 5;
+	uint32 LFPABLEIKKE = 9;
+}
+
+message LimaoNewsSubmitPostCsReq {
+	uint32 CBGODLHCLPK = 8;
+}
+
+message LimaoNewsSubmitPostScRsp {
+	PBLBAAMLNLH AMFEFIDDMDA = 11;
+	uint32 retcode = 12;
+}
+
+message LimaoNewsTrackSurveyCsReq {
+	uint32 KPKJALDCMIK = 4;
+}
+
+message LimaoNewsTrackSurveyScRsp {
+	uint32 KPKJALDCMIK = 4;
+	uint32 retcode = 12;
+}
+
+message LimaoNewsUpvoteInterviewScRsp {
+	bool KBLBFGANMPJ = 7;
+	uint32 BEOHGAADKPH = 10;
+	uint32 retcode = 12;
+}
+
+message LimaoNewsUpvotePostScRsp {
+	bool KBLBFGANMPJ = 1;
+	uint32 CBGODLHCLPK = 4;
+	uint32 retcode = 8;
+}
+
+message OCEAHPDAPFC {
+	oneof MMCGBGDJIPN {
+		JPIEAEJIDAO HDMEPMHHOLP = 3;
+		KJAMNAOLOLL IAFPOEBBJIL = 4;
+		BMDEEMIDNEL ANLLBMHLFFC = 5;
+		PBLBAAMLNLH NOGCKIHEDCE = 6;
+		uint32 HOCFMNJPCLI = 7;
+		uint32 OCJCOOLMCGD = 9;
+		LGGGHFDBCFN LDBGGNHLFAM = 10;
+		BJGNOHEEIGD NBCEHKBENPE = 11;
+		uint32 CGEFHJIEKGF = 12;
+		uint32 JGMJFHLIAIL = 13;
+		OEIHBAJCCAF EOKMIFNCLAB = 14;
+		uint32 JDGKFGONCJI = 15;
+		PPPCGBKJDAB JEBEMFMEEPJ = 728;
+	}
+}
+
+message OEIHBAJCCAF {
+	uint32 EEJMBOEGNIG = 5;
+	uint32 FBGGJDIGBKH = 6;
+	uint32 NABDKGBPGOA = 7;
+	bool GKFNOCPMJLC = 9;
+	uint32 MPNOHKEMGJP = 10;
+	uint32 PDDLOMPEABK = 12;
+	uint32 BGLGKBEKMKH = 14;
+	repeated uint32 IEBALCFJBCM = 15;
+}
+
+message PBLBAAMLNLH {
+	uint32 CBGODLHCLPK = 1;
+	bool is_unlocked = 5;
+	bool BBMCAHOMEFN = 8;
+	uint32 MDJMBGPLCDD = 9;
+	uint32 LJHGIFGINOL = 13;
+	bool KBLBFGANMPJ = 14;
+	uint32 BMGBBEMHLIG = 15;
+}
+
+message PJPMBOBAMIC {
+	bool KBLBFGANMPJ = 6;
+	uint32 BEOHGAADKPH = 8;
+}
+
+message PLADCLDJGKK {
+	uint32 BEOHGAADKPH = 9;
+	bool KBLBFGANMPJ = 12;
+}
+
+message PPPCGBKJDAB {
+	repeated uint32 KDEAHPHDDHH = 1;
+	uint32 AMMPOLONOBC = 4;
+	uint32 CIPADGHBJNP = 8;
+}

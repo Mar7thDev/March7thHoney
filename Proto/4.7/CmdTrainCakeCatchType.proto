@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message BPJMEGHIEIN {
+	uint32 ONOHPMDGNNH = 4;
+	uint32 retcode = 6;
+	bool JMAODNEONPF = 7;
+	ItemList reward = 8;
+}
+
+message CIEAALPHGFM {
+}
+
+enum CmdTrainCakeCatchType {
+	CmdTrainCakeCatchType_NLCDGIPGFDJ = 0;
+	CmdTrainCakeCatchType_HBFHPELOABD = 10141;
+	CmdTrainCakeCatchType_TrainCakeCatchOpenBoxCsReq = 10144;
+	CmdTrainCakeCatchType_AEFOHGJHOMB = 10145;
+	CmdTrainCakeCatchType_TrainCakeCatchDiyScRsp = 10146;
+	CmdTrainCakeCatchType_TrainCakeCatchDiyCsReq = 10147;
+	CmdTrainCakeCatchType_TrainCakeCatchSearchScRsp = 10149;
+	CmdTrainCakeCatchType_TrainPetDiyScRsp = 10150;
+	CmdTrainCakeCatchType_CFAOJOLPOPG = 10151;
+	CmdTrainCakeCatchType_TrainCakeCatchDiyLikeScRsp = 10152;
+	CmdTrainCakeCatchType_TrainCakeCatchDiyLikeCsReq = 10153;
+	CmdTrainCakeCatchType_DPDPFKFCPNP = 10154;
+	CmdTrainCakeCatchType_TrainCakeCatchSearchCsReq = 10156;
+	CmdTrainCakeCatchType_TrainCakeCatchDataScNotify = 10158;
+	CmdTrainCakeCatchType_TrainPetDiyCsReq = 10159;
+	CmdTrainCakeCatchType_TrainCakeCatchOpenBoxScRsp = 10160;
+}
+
+message GBHIPKDIMMH {
+	repeated uint32 BPAOGJPLENJ = 7;
+	uint32 retcode = 14;
+}
+
+message JJNAGGNONHA {
+}
+
+message TrainCakeCatchDataScNotify {
+	repeated uint32 performance_id_list = 12;
+	repeated JOFHMCJPBCE NIELDCLPOLA = 14;
+}
+
+message TrainCakeCatchDiyCsReq {
+	BFAKMCIJFCB NLJBJMDPBGN = 15;
+}
+
+message TrainCakeCatchDiyLikeCsReq {
+}
+
+message TrainCakeCatchDiyLikeScRsp {
+	repeated uint32 BPAOGJPLENJ = 9;
+	uint32 retcode = 10;
+}
+
+message TrainCakeCatchDiyScRsp {
+	BFAKMCIJFCB NLJBJMDPBGN = 4;
+	uint32 retcode = 5;
+}
+
+message TrainCakeCatchOpenBoxCsReq {
+}
+
+message TrainCakeCatchOpenBoxScRsp {
+	int64 CMHKFNFKGOI = 5;
+	repeated IKAHKMNCFDN BJPHDKEBOBK = 6;
+	uint32 retcode = 15;
+}
+
+message TrainCakeCatchSearchCsReq {
+	uint32 PCPDHEIEJFO = 5;
+}
+
+message TrainCakeCatchSearchScRsp {
+	repeated PJFIMFJPMCN CEMFBJPOLNP = 2;
+	JOFHMCJPBCE NIELDCLPOLA = 4;
+	uint32 retcode = 10;
+	repeated uint32 GINENNKGDMG = 14;
+	uint32 PCPDHEIEJFO = 15;
+}
+
+message TrainPetDiyCsReq {
+	HANFHCOHGBP IAPPNHBCEKO = 11;
+}
+
+message TrainPetDiyScRsp {
+	CGLJLBDFNBK KABGCGENKLK = 9;
+	uint32 retcode = 12;
+}

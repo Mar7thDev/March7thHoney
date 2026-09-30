@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdReplayType {
+	CmdReplayType_NLCDGIPGFDJ = 0;
+	CmdReplayType_GetReplayTokenScRsp = 3519;
+	CmdReplayType_GetReplayTokenCsReq = 3574;
+}
+
+message GetReplayTokenCsReq {
+	PBIEFHKNAFA replay_type = 7;
+	uint32 KLIFGJOILEE = 9;
+	uint32 stage_id = 11;
+	uint32 PBNIENNCNOP = 12;
+	string GIMGDNJPPDJ = 14;
+	string LMFFNNIGMMO = 15;
+}
+
+message GetReplayTokenScRsp {
+	uint32 stage_id = 1;
+	string token = 3;
+	string GIMGDNJPPDJ = 4;
+	uint32 retcode = 7;
+	PBIEFHKNAFA replay_type = 15;
+}

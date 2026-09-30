@@ -1,0 +1,155 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdTravelBrochureType {
+	CmdTravelBrochureType_NFDNDMDGICK = 0;
+	CmdTravelBrochureType_TravelBrochurePageResetScRsp = 6404;
+	CmdTravelBrochureType_TravelBrochureSelectMessageCsReq = 6405;
+	CmdTravelBrochureType_TravelBrochureRemovePasterCsReq = 6406;
+	CmdTravelBrochureType_TravelBrochureSetPageDescStatusScRsp = 6408;
+	CmdTravelBrochureType_TravelBrochureGetDataScRsp = 6419;
+	CmdTravelBrochureType_TravelBrochureUpdatePasterPosCsReq = 6427;
+	CmdTravelBrochureType_TravelBrochurePageUnlockScNotify = 6431;
+	CmdTravelBrochureType_TravelBrochureGetPasterScNotify = 6435;
+	CmdTravelBrochureType_TravelBrochureSetCustomValueCsReq = 6447;
+	CmdTravelBrochureType_TravelBrochureSetCustomValueScRsp = 6448;
+	CmdTravelBrochureType_TravelBrochureUpdatePasterPosScRsp = 6452;
+	CmdTravelBrochureType_TravelBrochureApplyPasterListScRsp = 6457;
+	CmdTravelBrochureType_TravelBrochureRemovePasterScRsp = 6470;
+	CmdTravelBrochureType_TravelBrochureSelectMessageScRsp = 6471;
+	CmdTravelBrochureType_TravelBrochureGetDataCsReq = 6474;
+	CmdTravelBrochureType_TravelBrochureSetPageDescStatusCsReq = 6475;
+	CmdTravelBrochureType_TravelBrochurePageResetCsReq = 6492;
+	CmdTravelBrochureType_TravelBrochureApplyPasterListCsReq = 6494;
+}
+
+message DEDKIIFNECM {
+	uint32 rotation = 2;
+	int32 KNKFPENAPBF = 4;
+	int32 APHMBADNMPH = 6;
+	uint32 EPLJKOLIPCI = 11;
+	uint32 item_id = 12;
+}
+
+message KJMKOJEHMII {
+	OLBNNJKCMAI PFOLIDBBHJN = 1;
+	OFLKOBJHFKH BEANBFLJELP = 2;
+	uint32 CFCICBNEOJB = 4;
+	repeated NGIOBCJINOG LFDLFDDEACA = 9;
+	uint32 DCIJEFMACME = 11;
+}
+
+message NGIOBCJINOG {
+	uint32 rotation = 2;
+	uint64 unique_id = 7;
+	uint32 item_id = 9;
+	int32 KNKFPENAPBF = 10;
+	int32 APHMBADNMPH = 13;
+	uint32 EPLJKOLIPCI = 14;
+}
+
+enum OFLKOBJHFKH {
+	OFLKOBJHFKH_CHDLPMPJLOJ = 0;
+	OFLKOBJHFKH_IFEOKEGHLBL = 1;
+	OFLKOBJHFKH_MDGOCIEKFJB = 2;
+}
+
+enum OLBNNJKCMAI {
+	OLBNNJKCMAI_NJBGKCIGOJE = 0;
+	OLBNNJKCMAI_GPNIFHBEHNB = 1;
+	OLBNNJKCMAI_KCEHIDFLKLM = 2;
+}
+
+message TravelBrochureApplyPasterListCsReq {
+	uint32 DCIJEFMACME = 4;
+	repeated DEDKIIFNECM GMLEOJCLCFB = 15;
+}
+
+message TravelBrochureApplyPasterListScRsp {
+	uint32 retcode = 9;
+	KJMKOJEHMII EDLLNJIEFBO = 14;
+}
+
+message TravelBrochureGetDataCsReq {
+}
+
+message TravelBrochureGetDataScRsp {
+	uint32 custom_value = 3;
+	map<uint32, KJMKOJEHMII> HJNJNFIBMEL = 4;
+	uint32 retcode = 5;
+	map<uint32, uint32> NNIDCBOKHFK = 9;
+}
+
+message TravelBrochureGetPasterScNotify {
+	uint32 num = 12;
+}
+
+message TravelBrochurePageResetCsReq {
+	uint32 DCIJEFMACME = 10;
+}
+
+message TravelBrochurePageResetScRsp {
+	KJMKOJEHMII EDLLNJIEFBO = 13;
+	uint32 retcode = 14;
+}
+
+message TravelBrochurePageUnlockScNotify {
+	uint32 DCIJEFMACME = 5;
+}
+
+message TravelBrochureRemovePasterCsReq {
+	uint32 item_id = 4;
+	uint64 ONIAFLNBNPN = 12;
+	uint32 DCIJEFMACME = 14;
+}
+
+message TravelBrochureRemovePasterScRsp {
+	KJMKOJEHMII EDLLNJIEFBO = 2;
+	uint32 retcode = 6;
+}
+
+message TravelBrochureSelectMessageCsReq {
+	uint32 CFCICBNEOJB = 12;
+	uint32 DCIJEFMACME = 13;
+}
+
+message TravelBrochureSelectMessageScRsp {
+	uint32 retcode = 2;
+	ItemList reward = 7;
+	KJMKOJEHMII EDLLNJIEFBO = 12;
+}
+
+message TravelBrochureSetCustomValueCsReq {
+	uint32 value = 11;
+}
+
+message TravelBrochureSetCustomValueScRsp {
+	uint32 retcode = 15;
+}
+
+message TravelBrochureSetPageDescStatusCsReq {
+	OFLKOBJHFKH DEBPJKJGCIE = 3;
+	uint32 DCIJEFMACME = 5;
+}
+
+message TravelBrochureSetPageDescStatusScRsp {
+	uint32 retcode = 15;
+}
+
+message TravelBrochureUpdatePasterPosCsReq {
+	uint32 EPLJKOLIPCI = 4;
+	uint64 ONIAFLNBNPN = 5;
+	uint32 item_id = 6;
+	uint32 rotation = 7;
+	int32 KNKFPENAPBF = 8;
+	int32 APHMBADNMPH = 10;
+	uint32 DCIJEFMACME = 12;
+}
+
+message TravelBrochureUpdatePasterPosScRsp {
+	uint32 retcode = 12;
+	KJMKOJEHMII EDLLNJIEFBO = 13;
+}

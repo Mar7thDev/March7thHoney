@@ -25,12 +25,12 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhDbWRXb3JsZFVubG9ja1R5cGUucHJvdG8iJwoQV29ybGRVbmxvY2tDc1Jl",
-            "cRITCgtDRkRDRUVNSU9DTxgFIAEoDSI4ChBXb3JsZFVubG9ja1NjUnNwEg8K",
-            "B3JldGNvZGUYBSABKA0SEwoLQ0ZEQ0VFTUlPQ08YCCABKA0qhQEKEkNtZFdv",
-            "cmxkVW5sb2NrVHlwZRIbChdDbWRXb3JsZFVubG9ja1R5cGVfTm9uZRAAEigK",
-            "I0NtZFdvcmxkVW5sb2NrVHlwZV9Xb3JsZFVubG9ja0NzUmVxEMo7EigKI0Nt",
-            "ZFdvcmxkVW5sb2NrVHlwZV9Xb3JsZFVubG9ja1NjUnNwEMs7QhaqAhNNYXJj",
-            "aDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "cRITCgtDRkRDRUVNSU9DTxgMIAEoDSI4ChBXb3JsZFVubG9ja1NjUnNwEg8K",
+            "B3JldGNvZGUYASABKA0SEwoLQ0ZEQ0VFTUlPQ08YBSABKA0qjAEKEkNtZFdv",
+            "cmxkVW5sb2NrVHlwZRIiCh5DbWRXb3JsZFVubG9ja1R5cGVfTkxDREdJUEdG",
+            "REoQABIoCiNDbWRXb3JsZFVubG9ja1R5cGVfV29ybGRVbmxvY2tTY1JzcBDK",
+            "OxIoCiNDbWRXb3JsZFVubG9ja1R5cGVfV29ybGRVbmxvY2tDc1JlcRDLO0IW",
+            "qgITTWFyY2g3dGhIb25leS5Qcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdWorldUnlockType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -43,9 +43,9 @@ namespace March7thHoney.Proto {
   }
   #region Enums
   public enum CmdWorldUnlockType {
-    [pbr::OriginalName("CmdWorldUnlockType_None")] None = 0,
-    [pbr::OriginalName("CmdWorldUnlockType_WorldUnlockCsReq")] WorldUnlockCsReq = 7626,
-    [pbr::OriginalName("CmdWorldUnlockType_WorldUnlockScRsp")] WorldUnlockScRsp = 7627,
+    [pbr::OriginalName("CmdWorldUnlockType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
+    [pbr::OriginalName("CmdWorldUnlockType_WorldUnlockScRsp")] WorldUnlockScRsp = 7626,
+    [pbr::OriginalName("CmdWorldUnlockType_WorldUnlockCsReq")] WorldUnlockCsReq = 7627,
   }
 
   #endregion
@@ -97,11 +97,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CFDCEEMIOCO" field.</summary>
-    public const int CFDCEEMIOCOFieldNumber = 5;
+    public const int CFDCEEMIOCOFieldNumber = 12;
     private uint cFDCEEMIOCO_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CFDCEEMIOCO {
@@ -154,7 +151,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CFDCEEMIOCO != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(96);
         output.WriteUInt32(CFDCEEMIOCO);
       }
       if (_unknownFields != null) {
@@ -168,7 +165,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CFDCEEMIOCO != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(96);
         output.WriteUInt32(CFDCEEMIOCO);
       }
       if (_unknownFields != null) {
@@ -218,7 +215,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 96: {
             CFDCEEMIOCO = input.ReadUInt32();
             break;
           }
@@ -241,7 +238,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 96: {
             CFDCEEMIOCO = input.ReadUInt32();
             break;
           }
@@ -299,11 +296,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 5;
+    public const int RetcodeFieldNumber = 1;
     private uint retcode_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -314,11 +308,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CFDCEEMIOCO" field.</summary>
-    public const int CFDCEEMIOCOFieldNumber = 8;
+    public const int CFDCEEMIOCOFieldNumber = 5;
     private uint cFDCEEMIOCO_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CFDCEEMIOCO {
@@ -373,11 +364,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
       if (CFDCEEMIOCO != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(CFDCEEMIOCO);
       }
       if (_unknownFields != null) {
@@ -391,11 +382,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(8);
         output.WriteUInt32(Retcode);
       }
       if (CFDCEEMIOCO != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(40);
         output.WriteUInt32(CFDCEEMIOCO);
       }
       if (_unknownFields != null) {
@@ -451,11 +442,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 40: {
             CFDCEEMIOCO = input.ReadUInt32();
             break;
           }
@@ -478,11 +469,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 8: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 40: {
             CFDCEEMIOCO = input.ReadUInt32();
             break;
           }

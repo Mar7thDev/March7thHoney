@@ -1,0 +1,2850 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ABNBACCKMDL {
+	uint32 MDNAGANGNKK = 9;
+}
+
+enum ACOKICDKFCI {
+	ACOKICDKFCI_LHLEHMPKDPB = 0;
+	ACOKICDKFCI_LKKKMLMOMDI = 1;
+	ACOKICDKFCI_KJLFGHAFPFP = 2;
+	ACOKICDKFCI_FJDHALMPDAO = 3;
+	ACOKICDKFCI_MJMCGPFLDIM = 4;
+}
+
+message ACPJGBNCGHP {
+	uint32 AMIFDFAHMDM = 8;
+	map<uint32, int32> additional_properties = 14;
+}
+
+message AEFKMCGKCBJ {
+}
+
+message AFCBKJEFKPG {
+	uint32 progress = 1;
+	IBBDHFAEFNH status = 2;
+	uint32 id = 3;
+	BGMLEJCOFPK CCDGGDMHMLF = 5;
+	repeated uint32 CBACAMKJFMI = 8;
+	GridFightDropInfo CLHLMNAPLNC = 9;
+	bool MHBFIGLMLFG = 10;
+}
+
+message AFPJPEABFKH {
+	uint32 EAKBFELDDBF = 6;
+}
+
+message AGGDDAJLAEB {
+	uint32 INLHPJMOOMO = 7;
+	double IDONFFOACIL = 15;
+}
+
+message AKDPLDPGGKF {
+	uint32 trait_id = 4;
+	uint32 role_id = 8;
+	repeated uint32 DAHOEGKELCI = 12;
+	uint32 effect_id = 13;
+}
+
+message AKHEHAMBLEB {
+	int64 start_time = 7;
+	int64 KAHFEFACFIE = 8;
+}
+
+message ALNFEBKHCFC {
+	uint32 retcode = 13;
+}
+
+message AMFPHALPHMF {
+	FDKAFBBHPFL type = 4;
+	uint32 param = 5;
+}
+
+message AMNAMDLMADK {
+	uint32 DNJCAMKKLPB = 12;
+	uint32 cost = 14;
+}
+
+message BAAGMMIDHDB {
+	BCCIJHPLJOJ DBIIPEEDBHI = 12;
+}
+
+enum BBFEFIPJMEB {
+	BBFEFIPJMEB_OHDJNICJKLK = 0;
+	BBFEFIPJMEB_NCBOLDFDGNL = 1;
+	BBFEFIPJMEB_EKGPCJLBINA = 2;
+}
+
+message BBHDDIPACEC {
+}
+
+message BCCIJHPLJOJ {
+	uint32 section_id = 1;
+	uint32 DCAHJELNJNP = 5;
+	OHMDHKGAEMM param = 8;
+}
+
+message BDLBHJGNCFM {
+	uint32 GFGJOKJGGCO = 2;
+	bool BKOGIFHEKHH = 4;
+	repeated FGEOPPMIHJM HPKFKBKOADP = 5;
+	bool IAJCPLMAACH = 7;
+	uint32 GFJDGNKAOFK = 8;
+	uint32 DLIANLGFMBG = 9;
+	uint32 DOAHJPPPMGM = 12;
+	bool ACKOKJBBPKH = 14;
+}
+
+message BGABEIOCONI {
+	uint32 HAFOKMHCGFM = 10;
+}
+
+enum BGMLEJCOFPK {
+	BGMLEJCOFPK_NLCDGIPGFDJ = 0;
+	BGMLEJCOFPK_ENPLACDLJGA = 1;
+	BGMLEJCOFPK_DACEMIDFHOG = 2;
+	BGMLEJCOFPK_CLKHDBBDHFJ = 3;
+	BGMLEJCOFPK_NCMIMINMBDM = 4;
+}
+
+message BJALEHOMFKH {
+	uint32 trait_id = 2;
+	repeated uint32 OLPPMEAMFFO = 3;
+	uint32 effect_id = 15;
+}
+
+message BJFLPMNPFFK {
+	uint32 MDNAGANGNKK = 3;
+}
+
+message BKAKHDGJLFO {
+	uint32 BCIGPPFMLJB = 8;
+}
+
+message BKIKOGNAECK {
+	uint32 PEBCBLBLMPH = 6;
+	uint32 DNMFNFCLOOM = 11;
+}
+
+message BMBBPPJKALE {
+	uint32 effect_id = 5;
+	repeated uint32 BKGAFMHHIHI = 11;
+	uint32 CBKPBAIKCCC = 12;
+	uint32 trait_id = 15;
+}
+
+message BMHEAGKIILO {
+	OGEIHMPCFKA LDLDLHBCFCF = 11;
+	bool BJDOINAHDLN = 13;
+}
+
+message BPENENIMEFE {
+	uint32 quest_id = 6;
+	bool IJJDEHIPOEL = 9;
+	GridFightDropInfo GHBBCIIPHKJ = 13;
+}
+
+message CAMIICJDOBO {
+	oneof FFBBOFAGGDI {
+		MLAENDOFBCK NCGOOEMOBIC = 9;
+		EFIEAIJBHIB ECDACDNDHGO = 10;
+	}
+}
+
+message CCGJDDBKIDE {
+	BBFEFIPJMEB type = 9;
+	uint32 IMJBFLJPMJB = 15;
+}
+
+message CCKPBIKOIBB {
+	uint32 LKMEMKLGIIK = 9;
+}
+
+message CDEFMKKDEHH {
+	uint32 role_id = 13;
+}
+
+message CEHDAMJJFOE {
+	uint32 JNJBMFJHBHD = 3;
+	uint32 MDNAGANGNKK = 4;
+	uint32 ENNOJCBAJEN = 8;
+}
+
+message CENBJOMMJGD {
+	uint32 item_count = 4;
+	uint32 item_type = 15;
+}
+
+message CFFDCICDAKK {
+	repeated BPENENIMEFE EKBOGBMPAPJ = 12;
+}
+
+message CGLCHFIKLPJ {
+	oneof FFBBOFAGGDI {
+		IFJHBKDGDAG HJJPILGEFKK = 2;
+		HGGGKJMCJOO HCDIBHEDDEC = 8;
+	}
+}
+
+message CGNAHGDKAFC {
+	uint32 EMLBKOKEAOH = 1;
+	repeated MLGNKOCLDCO BCGOAIPKGIK = 11;
+}
+
+message CHAIHAICBCE {
+	HOIDGPICBOJ type = 2;
+}
+
+message CHDNPFMOKKI {
+	uint32 item_id = 4;
+	uint32 DNJCAMKKLPB = 7;
+}
+
+message CJBEJEDHBFG {
+	uint32 role_id = 4;
+	uint32 priority = 9;
+}
+
+message CLKKNDMGLPP {
+	repeated uint32 LKNGKJCFFBH = 13;
+}
+
+message CNBHPJFFLEF {
+	repeated uint32 OJNEFBJHCCK = 5;
+	bool is_effect = 12;
+}
+
+message CNOAPAMNDOA {
+	repeated LHCOHLJIAII KGOEHKJIONM = 2;
+	uint32 retcode = 7;
+	repeated NBNLDHBELLO LFJLNAHJNBE = 14;
+}
+
+message CONKAFGLHFE {
+	uint32 IANFMIJBKAF = 6;
+	uint32 PLAIPMBIHGJ = 7;
+}
+
+message CPOHGANENDF {
+	uint32 GOIIFKKGGBJ = 10;
+	uint32 JGEHHFCJOCL = 12;
+}
+
+message CheckTextCsReq {
+	string OHNAIHACIKH = 12;
+}
+
+enum CmdGridFightType {
+	CmdGridFightType_NLCDGIPGFDJ = 0;
+	CmdGridFightType_GridFightUpdateGameRefScRsp = 8405;
+	CmdGridFightType_GridFightDestroyWeeklyRewardScRsp = 8409;
+	CmdGridFightType_GridFightSpotLightEnterScRsp = 8417;
+	CmdGridFightType_GridFightEquipDressScRsp = 8420;
+	CmdGridFightType_GridFightEnterBattleStageCsReq = 8429;
+	CmdGridFightType_AJAHEIHGNKD = 8433;
+	CmdGridFightType_PKCFJGCOBEC = 8440;
+	CmdGridFightType_GridFightBuyExpCsReq = 8441;
+	CmdGridFightType_GridFightPermanentTalentEnableScRsp = 8442;
+	CmdGridFightType_GridFightUseConsumableCsReq = 8445;
+	CmdGridFightType_JHGDIOHGIKG = 8448;
+	CmdGridFightType_GridFightResumeGamePlayScRsp = 8452;
+	CmdGridFightType_GridFightSyncTutorialProgressIdScNotify = 8457;
+	CmdGridFightType_GridFightSeasonTalentEnableScRsp = 8459;
+	CmdGridFightType_GridFightUseHackOptionScRsp = 8460;
+	CmdGridFightType_GridFightTrackTraitScRsp = 8463;
+	CmdGridFightType_GridFightUpdateEquipTrackPriorityScRsp = 8464;
+	CmdGridFightType_GridFightHandlePendingActionScRsp = 8466;
+	CmdGridFightType_GridFightPermanentTalentResetScRsp = 8479;
+	CmdGridFightType_GridFightHandlePendingActionCsReq = 8485;
+	CmdGridFightType_KFKDGLGFLNE = 8486;
+	CmdGridFightType_GridFightEquipCraftCsReq = 8488;
+	CmdGridFightType_GridFightGetDataScRsp = 8503;
+	CmdGridFightType_PGCFOHKIEOO = 8508;
+	CmdGridFightType_GridFightQuitLeaveGamePlayScRsp = 8509;
+	CmdGridFightType_GridFightStartGamePlayScRsp = 8511;
+	CmdGridFightType_GridFightSummonProjectionCsReq = 8514;
+	CmdGridFightType_GridFightSyncKeepWinCntNotify = 8515;
+	CmdGridFightType_GridFightBuyGoodsScRsp = 8516;
+	CmdGridFightType_GridFightSpotLightReplaceScRsp = 8518;
+	CmdGridFightType_MBDNJFEKFIG = 8532;
+	CmdGridFightType_GridFightBuyGoodsCsReq = 8533;
+	CmdGridFightType_GridFightUpdateEquipTrackCsReq = 8537;
+	CmdGridFightType_GridFightSeasonTalentResetCsReq = 8540;
+	CmdGridFightType_GridFightGetDataCsReq = 8541;
+	CmdGridFightType_MJHFMIJKHIP = 8543;
+	CmdGridFightType_HFOGOFPDKEL = 8546;
+	CmdGridFightType_GridFightUseForgeScRsp = 8551;
+	CmdGridFightType_GridFightRecycleItemCsReq = 8553;
+	CmdGridFightType_GridFightUpdateEliteBranchSelectCsReq = 8554;
+	CmdGridFightType_OOFHGFDNGIB = 8556;
+	CmdGridFightType_GridFightEnterBonfireCsReq = 8559;
+	CmdGridFightType_GridFightFinishTutorialCsReq = 8561;
+	CmdGridFightType_GridFightLockShopCsReq = 8572;
+	CmdGridFightType_GridFightUseForgeCsReq = 8573;
+	CmdGridFightType_DAIJKFAGEKN = 8576;
+	CmdGridFightType_GridFightSummonProjectionScRsp = 8577;
+	CmdGridFightType_GridFightStartGamePlayCsReq = 8579;
+	CmdGridFightType_HPIMCHMAPGA = 8580;
+	CmdGridFightType_CLIFHBGKCDJ = 8582;
+	CmdGridFightType_GetGameFormationScRsp = 8584;
+	CmdGridFightType_GridFightWeeklyExtraSeasonExpScRsp = 8591;
+	CmdGridFightType_GridFightGetFormationCsReq = 8596;
+	CmdGridFightType_GridFightPermanentTalentResetCsReq = 8603;
+	CmdGridFightType_GridFightBuyExpScRsp = 8607;
+	CmdGridFightType_GridFightLockShopScRsp = 8608;
+	CmdGridFightType_GridFightTakeWeeklyRewardScRsp = 8618;
+	CmdGridFightType_GridFightGetOrbCsReq = 8623;
+	CmdGridFightType_GridFightSeasonTalentEnableCsReq = 8626;
+	CmdGridFightType_GridFightPermanentTalentEnableCsReq = 8629;
+	CmdGridFightType_LMFPABAMKKO = 8630;
+	CmdGridFightType_GridFightResumeGamePlayCsReq = 8631;
+	CmdGridFightType_GridFightRecycleRoleScRsp = 8633;
+	CmdGridFightType_JECFGBFCEMB = 8634;
+	CmdGridFightType_GridFightUpdateSpotLightTrackCsReq = 8636;
+	CmdGridFightType_GridFightUseHackOptionCsReq = 8639;
+	CmdGridFightType_ICBHFOJFMOF = 8642;
+	CmdGridFightType_FavourArchiveScRsp = 8644;
+	CmdGridFightType_GridFightUpdatePosScRsp = 8648;
+	CmdGridFightType_GridFightTraitUpdateCsReq = 8657;
+	CmdGridFightType_GridFightGetOrbScRsp = 8659;
+	CmdGridFightType_GridFightUseConsumableScRsp = 8660;
+	CmdGridFightType_HLHAJEGJMIA = 8665;
+	CmdGridFightType_GridFightTakeWeeklyRewardCsReq = 8667;
+	CmdGridFightType_FavourArchiveCsReq = 8668;
+	CmdGridFightType_GridFightGetArchiveScRsp = 8679;
+	CmdGridFightType_GridFightSeasonHandBookNotify = 8680;
+	CmdGridFightType_GridFightSyncUpdateResultScNotify = 8683;
+	CmdGridFightType_GridFightQuitLeaveGamePlayCsReq = 8691;
+	CmdGridFightType_GridFightRecycleItemScRsp = 8695;
+	CmdGridFightType_GridFightEquipDressCsReq = 8698;
+	CmdGridFightType_GridFightRefreshShopScRsp = 8699;
+	CmdGridFightType_GridFightRefreshShopCsReq = 8701;
+	CmdGridFightType_GridFightSettleNotify = 8706;
+	CmdGridFightType_GridFightTraitUpdateScRsp = 8708;
+	CmdGridFightType_GridFightUpdateEquipTrackPriorityCsReq = 8710;
+	CmdGridFightType_GridFightRecycleRoleCsReq = 8712;
+	CmdGridFightType_GridFightSyncVirtualItemNotify = 8716;
+	CmdGridFightType_UpdateGameFormationScRsp = 8717;
+	CmdGridFightType_GridFightBackToPrepareCsReq = 8720;
+	CmdGridFightType_GridFightUpdateEliteBranchSelectScRsp = 8724;
+	CmdGridFightType_DDMHGAGFNHF = 8727;
+	CmdGridFightType_FKGCMCKPLNL = 8740;
+	CmdGridFightType_ILONCLKIMJM = 8741;
+	CmdGridFightType_GridFightOpenOrbResultScNotify = 8745;
+	CmdGridFightType_GridFightSeasonTalentResetScRsp = 8747;
+	CmdGridFightType_GridFightTrackTraitCsReq = 8748;
+	CmdGridFightType_GridFightLastTutorialFinishScNotify = 8751;
+	CmdGridFightType_GridFightQuitSettleScRsp = 8755;
+	CmdGridFightType_GridFightUpdateGameRefCsReq = 8760;
+	CmdGridFightType_GridFightFinishTutorialScRsp = 8762;
+	CmdGridFightType_GridFightDestroyWeeklyRewardCsReq = 8766;
+	CmdGridFightType_GridFightUpdateEquipTrackScRsp = 8769;
+	CmdGridFightType_GridFightEnterBattleStageScRsp = 8777;
+	CmdGridFightType_GridFightQuitSettleCsReq = 8779;
+	CmdGridFightType_CheckTextCsReq = 8781;
+	CmdGridFightType_GridFightEndBattleStageNotify = 8782;
+	CmdGridFightType_GridFightGetArchiveCsReq = 8784;
+	CmdGridFightType_GridFightEquipCraftScRsp = 8790;
+	CmdGridFightType_GridFightUpdatePosCsReq = 8795;
+}
+
+message DDGEFKPIJJJ {
+	uint32 DLFMGAGIFOH = 7;
+	uint32 FEGDEOEHLFD = 9;
+	uint32 KKIOBDHKPPK = 12;
+	repeated uint32 DDIFKADGIBO = 13;
+}
+
+message DFIIJBMPKIE {
+	uint32 FJLIFIIJGPH = 7;
+}
+
+message DFJMFJHEHLN {
+	repeated uint32 PNJIPHJJONG = 5;
+}
+
+enum DFNHMOGNJGJ {
+	DFNHMOGNJGJ_NCOCLMJIIEH = 0;
+	DFNHMOGNJGJ_HPKIIGODDFO = 1;
+	DFNHMOGNJGJ_LANDHEPBBAD = 2;
+}
+
+message DFOFPKEOPEH {
+	repeated BCCIJHPLJOJ OJOHFAHBKGE = 10;
+}
+
+message DKMMDJAOBHG {
+	HOIDGPICBOJ type = 6;
+}
+
+message DNHFCHGALDA {
+	uint32 PEBCBLBLMPH = 5;
+	map<uint32, uint32> NFNAEEMPGKN = 12;
+}
+
+message DOMKCMJFAID {
+	uint32 KHHFIEPDHHD = 9;
+}
+
+message DPMFDKPNHDA {
+	PBNJKJBIHKC op_type = 7;
+}
+
+message EBBKABIIOJB {
+	uint32 IEOGEFBLNEL = 1;
+	uint32 role_id = 5;
+	uint32 MDNAGANGNKK = 11;
+}
+
+message EDJFEKPHLFN {
+}
+
+message EEODAFPJLFE {
+	uint32 effect_id = 4;
+	repeated uint32 PNHBEHLICFL = 12;
+	uint32 trait_id = 15;
+}
+
+message EFDODBOLHGK {
+	uint32 ACNHOEDFDEM = 9;
+}
+
+message EFIEAIJBHIB {
+}
+
+message EHALAAICMKI {
+	uint32 IIJHFJFPIHK = 15;
+}
+
+message EJEFKJGAKOO {
+	uint32 trait_id = 2;
+	uint32 effect_id = 11;
+	uint32 MENFBEDCBHB = 15;
+}
+
+message ELBEHADNLBB {
+	repeated uint32 KBECJMLLCEJ = 12;
+	uint32 LPFGIGJDLFM = 13;
+}
+
+message ELPPDAHKLBE {
+}
+
+message EMOGKOKPCAC {
+	uint32 GAACGAMLFDN = 4;
+	uint32 GLKHAHHNPPA = 11;
+}
+
+message ENDFBBDFFDH {
+}
+
+message EPELDFBCCEK {
+	uint32 priority = 1;
+	uint32 BGFFICLCKHE = 4;
+}
+
+message EPKFPIDHMOC {
+	uint32 MDNAGANGNKK = 7;
+	uint32 JFCJNHNBMCB = 10;
+}
+
+message FAFBDGCEAHD {
+	uint32 trait_id = 8;
+	uint32 AFKKLDMAEDJ = 12;
+}
+
+message FBDLJKEBPHM {
+	uint32 role_id = 3;
+	map<uint32, uint32> JPIHLKGCBPC = 5;
+	uint32 MDNAGANGNKK = 9;
+}
+
+message FBFBMMAAFCP {
+	uint32 NBPFMFMKJHI = 6;
+	uint32 EMFCEMPHOPI = 13;
+}
+
+message FBKIFPOEGGO {
+	repeated LKHAJCACPBH BBEEGMDAMIB = 3;
+}
+
+message FCABIGNMAPL {
+	uint32 CKKDAEMFDPA = 4;
+}
+
+message FCPHBDPJCLK {
+	repeated uint32 KBECJMLLCEJ = 11;
+}
+
+enum FDKAFBBHPFL {
+	FDKAFBBHPFL_NLCDGIPGFDJ = 0;
+	FDKAFBBHPFL_GIKNCJMJLFE = 1;
+	FDKAFBBHPFL_MCKHGIEJLHM = 2;
+	FDKAFBBHPFL_NMPABPJHGPE = 3;
+}
+
+message FFECECBAEEH {
+	repeated OGEIHMPCFKA DKEIDONNDCJ = 4;
+}
+
+message FGEOPPMIHJM {
+	uint32 IHHNLLAJAGB = 13;
+}
+
+message FHBHIHJAOPB {
+	uint32 ODDKKGOJHFO = 6;
+	uint32 DMLFGGDECDN = 7;
+	uint32 DCAHJELNJNP = 10;
+}
+
+enum FKGIEPHGACD {
+	FKGIEPHGACD_EJKDKAJPDCO = 0;
+	FKGIEPHGACD_MPLMPPCDJGF = 1;
+}
+
+message FKILNIGOKBF {
+	uint32 role_id = 8;
+}
+
+message FKJMGFOPHHN {
+	repeated FLFHACPLDJE CKJAKKNOHEK = 6;
+	uint32 LCLPEJHEAID = 9;
+}
+
+message FLFHACPLDJE {
+	oneof OFJBCEDFLKL {
+		uint32 gold = 2;
+		PGECGKEKFNC BDPIMPJOJBK = 13;
+	}
+}
+
+message FMBACDOFCAL {
+	uint32 IHHNLLAJAGB = 1;
+	uint32 unique_id = 2;
+	uint32 MDNAGANGNKK = 9;
+	bool ELBPNDIENDL = 11;
+	uint32 role_id = 13;
+	repeated uint64 PHDNJGJLPOP = 14;
+}
+
+message FNNFHNKHIDD {
+	uint32 PFIKCNFBGHE = 13;
+}
+
+message FOCOJIDPAGO {
+	uint32 trait_id = 2;
+	repeated uint32 EGJDILDEAKP = 5;
+	uint32 effect_id = 11;
+}
+
+message FPHPFJLAJDK {
+	uint32 unique_id = 7;
+	uint32 LKMEMKLGIIK = 13;
+	uint32 pos = 14;
+}
+
+message FavourArchiveCsReq {
+	bool IECKKCHJMLP = 3;
+	uint32 BAAGDILLLME = 6;
+}
+
+message FavourArchiveScRsp {
+	uint32 retcode = 4;
+	bool IECKKCHJMLP = 10;
+	uint32 BAAGDILLLME = 15;
+}
+
+message GEBBMDCOLCH {
+	repeated EPKFPIDHMOC CONJCEMAHGN = 11;
+}
+
+message GEIBJKJDOHO {
+	uint32 trait_id = 2;
+	repeated uint32 FJBFGEIGMHF = 5;
+	uint32 effect_id = 12;
+}
+
+message GFOMAIAIDFA {
+	uint32 IEOGEFBLNEL = 12;
+}
+
+message GGFHGKGJOOB {
+	uint32 MJIGJEGMCML = 11;
+	repeated AMNAMDLMADK OGDKJPDFFAI = 14;
+	map<uint32, uint32> OBHKKOFDEFG = 15;
+}
+
+message GGHAADPCOAA {
+	uint32 CAAKCKEPMEK = 3;
+	uint32 OKFEMIMJLME = 9;
+}
+
+message GHKEBIOFDHI {
+	uint32 target = 7;
+	uint32 progress = 10;
+	uint32 trait_id = 12;
+}
+
+message GHMKAOJPAPO {
+	uint32 IHHNLLAJAGB = 5;
+}
+
+message GHMLCIMANAM {
+	ACOKICDKFCI BGEAMGMALCL = 6;
+	uint32 HDCJFJNBNBA = 8;
+	repeated uint32 GEJEJNNMGGP = 12;
+}
+
+message GILMFECEBFE {
+	uint32 EOPHMLBEPGK = 1;
+	uint32 PEBCBLBLMPH = 10;
+}
+
+message GKLDOELMEIN {
+	uint32 unique_id = 13;
+}
+
+message GLHCHCJMFGA {
+	uint32 MPJPLKKJNGE = 1;
+	uint32 GDAKCOICIDA = 7;
+	uint32 EABKMELHIML = 13;
+}
+
+message GNIIDINFPDO {
+	repeated uint32 JHGCJKCHNCO = 5;
+	repeated uint32 MOOIOOBHGKB = 12;
+}
+
+message GNOBLNOCEHA {
+	repeated FMBACDOFCAL FNNEPMAPOOF = 1;
+	uint32 GAACGAMLFDN = 2;
+	uint32 JGEHHFCJOCL = 8;
+	uint32 GOIIFKKGGBJ = 9;
+	repeated uint32 HJIOELDCANJ = 10;
+	uint32 GLKHAHHNPPA = 11;
+	repeated OGEIHMPCFKA DKEIDONNDCJ = 13;
+}
+
+message GPCFHMLMDHC {
+	uint32 unique_id = 7;
+}
+
+message GetGameFormationScRsp {
+	repeated HENDEHGPKMF FEBFMFMLHPO = 3;
+	uint32 retcode = 4;
+	uint32 DACKJGDGMLN = 5;
+}
+
+message GridFightAffixInfo {
+	uint32 affix_id = 6;
+	bool PNJCLPNFIGA = 14;
+}
+
+message GridFightArchiveData {
+	int64 OBNEAIPKGKL = 1;
+	GridFightFinishInfo BFLLJJBHLDF = 4;
+	uint32 BAAGDILLLME = 7;
+	uint32 LJNGPCKPJLF = 9;
+	bool IECKKCHJMLP = 11;
+	uint32 GEGMHOMNBDG = 12;
+	uint32 PMBNKEFCICH = 13;
+}
+
+message GridFightAugmentActionInfo {
+	repeated GridFightPendingAugmentInfo pending_investment_list = 3;
+}
+
+message GridFightAugmentDamageStatistics {
+	double secondary_damage = 6;
+	uint32 augment_id = 9;
+	double damage = 13;
+}
+
+message GridFightBackToPrepareCsReq {
+}
+
+message GridFightBattleStatisticsInfo {
+	GridFightDamageSttInfo damage_statistics = 3;
+	repeated GridFightSectionRecordInfo FNJNKKMNKIM = 14;
+}
+
+message GridFightBossInfo {
+	repeated GridFightMonsterInfo monster_list = 2;
+}
+
+message GridFightBuyExpCsReq {
+}
+
+message GridFightBuyExpScRsp {
+	uint32 retcode = 7;
+}
+
+message GridFightBuyGoodsCsReq {
+	bool buy_all = 8;
+	repeated uint32 goods_index_list = 12;
+}
+
+message GridFightBuyGoodsScRsp {
+	repeated uint32 goods_index_list = 4;
+	uint32 retcode = 5;
+}
+
+message GridFightCampInfo {
+	uint32 camp_id = 12;
+}
+
+message GridFightConsumableCopyTargetInfo {
+	uint32 role_unique_id = 3;
+}
+
+message GridFightConsumableInfo {
+	uint32 group_id = 2;
+	uint32 source = 4;
+	uint32 num = 5;
+	uint32 round_cnt = 9;
+	uint32 item_id = 11;
+	oneof NEBNJDMFELO {
+		HODMAGEMEJD EFAKDFMPKCE = 1545;
+	}
+}
+
+message GridFightConsumableRecommendTargetInfo {
+	uint32 role_unique_id = 15;
+}
+
+message GridFightConsumableRemoveTargetInfo {
+	uint32 role_unique_id = 3;
+}
+
+message GridFightConsumableRollTargetInfo {
+	uint32 equipment_unique_id = 13;
+	uint32 role_unique_id = 15;
+}
+
+message GridFightConsumableTargetInfo {
+	oneof NEBNJDMFELO {
+		ABNBACCKMDL DECONIENEJG = 53;
+		GridFightConsumableUpgradeTargetInfo upgrade_target = 803;
+		GridFightConsumableRollTargetInfo roll_target = 1025;
+		DFIIJBMPKIE CEBGLMPKPDC = 1338;
+		GridFightConsumableRemoveTargetInfo remove_target = 1364;
+		GridFightConsumableRecommendTargetInfo recommend_target = 1635;
+		IGLKPANBNBN GGDGOBFGDBD = 1702;
+		GridFightConsumableCopyTargetInfo copy_target = 1778;
+	}
+}
+
+message GridFightConsumableUpdateInfo {
+	uint32 group_id = 2;
+	uint32 num = 4;
+	uint32 item_id = 7;
+	oneof NEBNJDMFELO {
+		HODMAGEMEJD EFAKDFMPKCE = 11;
+	}
+	uint32 round_cnt = 12;
+	GridFightConsumableInfo MCKHGIEJLHM = 13;
+	int32 item_stack_count = 14;
+}
+
+message GridFightConsumableUpgradeTargetInfo {
+	uint32 equipment_unique_id = 11;
+}
+
+message GridFightContextData {
+	repeated uint32 initial_equipment_id_list = 5;
+}
+
+message GridFightContextValueInfo {
+	map<string, uint32> context_value_map = 3;
+	uint32 context_value_version = 6;
+	map<uint32, uint32> DKMNOPCJDDC = 8;
+	uint32 FMNPBOJGLFI = 11;
+}
+
+message GridFightCountItemInfo {
+	uint32 count = 4;
+}
+
+message GridFightCurrentInfo {
+	MNJAPPADDIC HHHHDNAKEGE = 2;
+	uint32 season = 3;
+	GridFightPendingAction pending_action = 5;
+	GridFightContextData context_data = 6;
+	uint32 MPJPLKKJNGE = 8;
+	uint32 unique_id = 9;
+	GridFightGameData game_data = 10;
+	repeated GridFightGameInfo game_info_list = 12;
+	uint32 division_id = 14;
+	bool is_overlock = 15;
+}
+
+message GridFightCurrentTask {
+	uint32 NLIDEKJOFMG = 4;
+	uint32 progress = 13;
+}
+
+message GridFightDamageSttInfo {
+	repeated GridFightTraitDamageStatistics trait_statistics = 8;
+	repeated GridFightAugmentDamageStatistics augment_statistics = 11;
+	repeated GridFightRoleDamageStatistics role_statistics = 14;
+}
+
+message GridFightDestroyWeeklyRewardCsReq {
+	repeated uint32 GDCFLPLFJCI = 12;
+}
+
+message GridFightDestroyWeeklyRewardScRsp {
+	uint32 retcode = 3;
+	NDLNIKCCALK MGBNEAHCDMA = 10;
+}
+
+message GridFightEliteBranchActionInfo {
+	uint32 reroll_count = 8;
+	uint32 free_reroll_count = 14;
+}
+
+message GridFightEliteBranchRerollActionRequest {
+}
+
+message GridFightEliteBranchSelectActionRequest {
+	uint32 elite_branch_id = 12;
+}
+
+message GridFightEliteBranchSyncInfo {
+	uint32 elite_branch_id = 10;
+}
+
+message GridFightEmptyGameItemInfo {
+}
+
+message GridFightEncounterInfo {
+	repeated GridFightMonsterWaveInfo monster_wave_list = 1;
+	uint32 enemy_difficulty_add = 6;
+	GridFightDropInfo drop_info = 8;
+	uint32 encounter_id = 10;
+	uint32 penalty_rule_id = 11;
+}
+
+message GridFightEndBattleStageNotify {
+	uint32 interest_gold = 1;
+	map<uint32, GridFightDropInfo> drop_item_map = 3;
+	uint32 keep_win_gold = 4;
+	uint32 section_id = 5;
+	uint32 chapter_id = 8;
+	bool is_perfect_finish = 9;
+	uint32 progress_percent = 10;
+	uint32 keep_win_count = 13;
+	GridFightDamageSttInfo damage_statistics = 14;
+	uint32 route_id = 15;
+	uint32 lineup_hp_before = 78;
+	uint32 dead_line_percent = 254;
+	uint32 basic_gold = 545;
+	OEJKAOKHPPL reason = 623;
+	uint32 max_lineup_hp = 717;
+	GridFightLevelUpdateInfo level_update_info = 1379;
+	uint32 previous_keep_win_count = 1819;
+	uint32 lineup_hp_after = 1988;
+	repeated GridFightHpModifyInfo hp_modify_list = 1994;
+}
+
+message GridFightEnterBattleStageCsReq {
+}
+
+message GridFightEnterBattleStageScRsp {
+	uint32 retcode = 3;
+	SceneBattleInfo battle_info = 8;
+}
+
+message GridFightEnterBonfireCsReq {
+}
+
+message GridFightEquipCraftCsReq {
+	repeated uint32 material_unique_id_list = 3;
+	uint32 target_equipment_id = 10;
+	uint32 track_id = 13;
+	GridFightEquipCraftSource source = 15;
+}
+
+message GridFightEquipCraftScRsp {
+	uint32 retcode = 6;
+}
+
+enum GridFightEquipCraftSource {
+	GridFightEquipCraftSource_KGridFightEquipCraftSourceNone = 0;
+	GridFightEquipCraftSource_KGridFightEquipCraftSourceManual = 1;
+	GridFightEquipCraftSource_KGridFightEquipCraftSourceTrack = 2;
+	GridFightEquipCraftSource_KGridFightEquipCraftSourceRecommend = 3;
+}
+
+message GridFightEquipDressCsReq {
+	GridFightEquipDressSource source = 3;
+	uint32 equipment_unique_id = 12;
+	uint32 role_unique_id = 13;
+}
+
+message GridFightEquipDressScRsp {
+	uint32 retcode = 11;
+}
+
+enum GridFightEquipDressSource {
+	GridFightEquipDressSource_None = 0;
+	GridFightEquipDressSource_Manual = 1;
+	GridFightEquipDressSource_Recommend = 2;
+}
+
+enum GridFightEquipTrackSource {
+	GridFightEquipTrackSource_KGridFightEquipTrackSourceNone = 0;
+	GridFightEquipTrackSource_KGridFightEquipTrackSourceRecommend = 1;
+	GridFightEquipTrackSource_KGridFightEquipTrackSourceGuide = 2;
+	GridFightEquipTrackSource_KGridFightEquipTrackSourceTraitEffect = 3;
+}
+
+message GridFightEquipmentInfo {
+	bool IODIJBEHEGF = 1;
+	uint32 source = 2;
+	map<uint32, uint32> convert_property_to_fixpoint = 6;
+	uint32 MCGHFJCBBMK = 8;
+	bool HLHGALNKHAL = 9;
+	uint32 unique_id = 11;
+	uint32 grid_fight_equipment_id = 13;
+	bool KGGHEHCBMGA = 14;
+}
+
+message GridFightFinishInfo {
+	repeated GridFightGamePortalBuffInfo portal_buff_info_list = 2;
+	repeated GridGameAugmentInfo sync_augment_info = 4;
+	uint32 settle_rank = 6;
+	GridFightSettleBasicInfo basic = 9;
+	repeated GridFightRoleDamageStatistics role_statistics = 10;
+	repeated GridGameTraitInfo grid_fight_trait_info = 12;
+	bool is_overlock = 308;
+	repeated GridFightAugmentDamageStatistics augment_statistics = 402;
+	GridFightContextData context_data = 526;
+	uint32 MBMJNEDIFFC = 623;
+	repeated FPHPFJLAJDK KCOMPKMJCMC = 645;
+	repeated AFCBKJEFKPG IBBKKFGEEPH = 728;
+	repeated GridFightEquipmentInfo grid_fight_equipment_list = 801;
+	repeated GridFightTraitDamageStatistics trait_statistics = 827;
+	repeated GridFightAffixInfo affix_info_list = 930;
+	repeated uint32 MHLBIBGKIOB = 932;
+	uint32 AKEGLJLCFPH = 934;
+	bool DBODGPBOIHC = 1042;
+	repeated GridGameNpcInfo grid_game_npc_list = 1206;
+	repeated GridGameRoleInfo grid_game_role_list = 1235;
+	repeated FMBACDOFCAL FNNEPMAPOOF = 1410;
+	GridFightBossInfo boss_info = 1431;
+	GridFightSettleAvatarInfo avatar_info = 1526;
+	repeated uint32 HGAGKFEKBDA = 1655;
+	GridFightSettleReason reason = 1712;
+	repeated LKHAJCACPBH BBEEGMDAMIB = 1836;
+}
+
+message GridFightFinishTutorialCsReq {
+	uint32 EGAPEGCKDFJ = 7;
+}
+
+message GridFightFinishTutorialScRsp {
+	uint32 retcode = 15;
+}
+
+message GridFightForgeEquipmentInfo {
+	uint32 grid_fight_equipment_id = 13;
+}
+
+message GridFightForgeGoodsInfo {
+	oneof OFJBCEDFLKL {
+		GridFightForgeEquipmentInfo equipment_goods_info = 9;
+	}
+}
+
+message GridFightForgeRoleActionInfo {
+	repeated PGECGKEKFNC CKJAKKNOHEK = 6;
+	uint32 LCLPEJHEAID = 12;
+}
+
+message GridFightGameAugmentAdd {
+	GridGameAugmentInfo update_augment_info = 7;
+}
+
+message GridFightGameAugmentSync {
+	repeated GridGameAugmentInfo sync_augment_info = 12;
+}
+
+message GridFightGameAugmentUpdate {
+	GridGameAugmentInfo update_augment_info = 11;
+}
+
+message GridFightGameBasicInfo {
+	uint32 bench_overflow_size = 1;
+	uint32 max_interest_gold = 2;
+	uint32 deposit_per_interest = 3;
+	uint32 off_field_max_count = 4;
+	uint32 max_lineup_hp = 5;
+	uint32 max_avatar_count = 6;
+	uint32 max_active_role_count = 7;
+	uint32 gold = 8;
+	uint32 level_exp = 9;
+	uint32 lineup_hp = 10;
+	uint32 player_level = 11;
+	uint32 buy_exp_cost = 12;
+	repeated RoleTrackEquipmentInfo MIIDIMOCPEB = 13;
+	repeated uint32 ONHDKLIMLNM = 14;
+	uint32 CPKLHPJMMDO = 15;
+	string ANIBGAAIAHF = 145;
+	GridFightLockInfo lock_info = 390;
+	repeated uint32 module_id_list = 842;
+	repeated uint32 JCMCCGHFIAN = 1118;
+	GridFightSyncCurrentTaskInfo current_task_info = 1296;
+	string GBGOBPOOPGO = 1707;
+}
+
+message GridFightGameData {
+	repeated GridFightGameItemInfo game_item_list = 3;
+}
+
+message GridFightGameInfo {
+	oneof LEOIAOFBBFA {
+		GridFightGameTeamInfo team_info = 1;
+		GridFightLevelInfo level_info = 2;
+		GridFightGameOrbInfo orb_info = 3;
+		GridFightPrayQuestInfo pray_quest_info = 5;
+		GridFightGameItemsInfo items_info = 6;
+		GridFightGameAugmentSync augment_info = 8;
+		GridFightGameTraitInfo trait_info = 10;
+		GridFightGameBasicInfo basic_info = 12;
+		GridFightContextValueInfo context_value_info = 13;
+		GridFightGameShopInfo shop_info = 15;
+		GNOBLNOCEHA LEGMAJLHBLA = 1658;
+		FBKIFPOEGGO OGKMAKNOPOD = 1984;
+	}
+}
+
+enum GridFightGameItemCategory {
+	JDCAPBNPOOK_NLCDGIPGFDJ = 0;
+	JDCAPBNPOOK_ENPLACDLJGA = 1;
+	JDCAPBNPOOK_NMEEOHMGPKD = 2;
+	JDCAPBNPOOK_OMKPENOHLII = 4;
+	GridFightGameItemCategory_Type5 = 5;
+	JDCAPBNPOOK_MCPIKEHDMND = 101;
+	JDCAPBNPOOK_LDPMDPAGCHM = 102;
+	JDCAPBNPOOK_EGCGFGDILBC = 103;
+	JDCAPBNPOOK_HAEHIHOCLJD = 104;
+	GridFightGameItemCategory_Type105 = 105;
+	JDCAPBNPOOK_MLOMHPFOMLO = 106;
+	GridFightGameItemCategory_Type107 = 107;
+	JDCAPBNPOOK_GGMPEGMEHPD = 108;
+	GridFightGameItemCategory_HackConsole = 109;
+	JDCAPBNPOOK_ONPNOPLOAGH = 110;
+	GridFightGameItemCategory_Type111 = 111;
+	JDCAPBNPOOK_DICKKDIAEND = 112;
+	JDCAPBNPOOK_LKPOOOLNAJC = 113;
+	CLKHDBBDHFJ = 201;
+	DECONIENEJG = 202;
+	IJBCFCMIJNK = 203;
+	DJGAKCGLDLP = 204;
+	CBNLALMEPAA = 205;
+	NCMIMINMBDM = 206;
+	LPMLNCOJHDB = 207;
+	GIKNCJMJLFE = 208;
+}
+
+message GridFightGameItemDescriptor {
+	repeated uint32 parameter_list = 9;
+	GridFightGameItemCategory category = 14;
+}
+
+message GridFightGameItemInfo {
+	uint32 unique_id = 1;
+	GridFightGameItemDescriptor descriptor = 5;
+	oneof FMEKLFFDPGG {
+		EBBKABIIOJB PKKEMDFHBCD = 61;
+		CNBHPJFFLEF PDHEDGGOPGL = 134;
+		MNMNOBGOFJD OACLADDIPNO = 138;
+		HCIFBGJCPDM OAJOEEODJAO = 173;
+		MDBELHLNMEO LAMPKAPPPPE = 201;
+		PIFMLFKCOOG GBHONNJKEHL = 211;
+		FAFBDGCEAHD FKBIGANCEPD = 215;
+		KBEKJKNCMCL KPHBBLHOPHF = 270;
+		KJJGLJEHPJE IJNOAEIAGEP = 308;
+		HDOLIECDHAO BBGLCDJPLMF = 316;
+		EHALAAICMKI ALEIDFMKMHD = 330;
+		GridFightEmptyGameItemInfo empty_info = 332;
+		ILEPGGBNADM GLLNPIHFOFP = 358;
+		IDEDIHLMEHL GEKCCCPGBGJ = 448;
+		IEOMGIBLHJB INDGPPMDFND = 471;
+		KPMOCBIIMHH NIOCABOLGLO = 574;
+		FCABIGNMAPL FLELIBAJPEC = 577;
+		IFGCHHHMFNE GBIBJIIDAKM = 587;
+		DNHFCHGALDA FEBKDLAFODG = 606;
+		IDGNEKJDCMJ FOJGMIIPKNO = 610;
+		AEFKMCGKCBJ KJJFBPOJCPJ = 637;
+		GridFightPlayerLevelProgressionInfo player_level_progression = 725;
+		BKIKOGNAECK KEHCIIEOLMD = 791;
+		HPMNCENLCAB KHNNNFBIAMA = 805;
+		LHMLIGPHOKP LJBBFDMAEOH = 820;
+		CEHDAMJJFOE PGCBFHOPLEP = 834;
+		OHBLOLLNHIC CMBMNLHAECG = 850;
+		GridFightRoleHistoryInfo role_history_info = 863;
+		GridFightHackStateInfo hack_state_info = 876;
+		DFOFPKEOPEH AOCBIJJLGML = 891;
+		NCPKKIAJKHJ CJJGFHCBONB = 972;
+		DOMKCMJFAID PPIIBIANJEC = 1025;
+		HLBNJJNHCIE EPKCCOPBDDA = 1041;
+		PIKKAEBHIKF NPHCPBDKLCH = 1130;
+		FBFBMMAAFCP IJAFFOCBKJI = 1166;
+		CDEFMKKDEHH KCPCJHHEBCH = 1239;
+		OPJALEIKFAC EJEEHDPBHLI = 1247;
+		FBDLJKEBPHM AOGFFCECKPK = 1262;
+		KCLMHIOBNLA BLKNIKDBHHK = 1291;
+		ACPJGBNCGHP PGOEHADDMAF = 1294;
+		GHMLCIMANAM BKAFGJDFMLF = 1296;
+		ICJOOGHDGDC POPELGJEIFP = 1348;
+		ILDEFHMIDKP LBFBINFMGNF = 1408;
+		CONKAFGLHFE ONKMJAGNECC = 1466;
+		MMKFIDNBEBI FGELIOCIHKK = 1472;
+		GridFightSingleValueItemInfo single_value_info = 1535;
+		PPBJJJMJOBN IBNBALOPKMM = 1538;
+		AGGDDAJLAEB CLFNPNNIFGE = 1589;
+		GFOMAIAIDFA PDADFOGABLJ = 1606;
+		GridFightCountItemInfo count_info = 1623;
+		EDJFEKPHLFN DDCOCJIEBLL = 1657;
+		AKHEHAMBLEB FHKFMFKNMCH = 1731;
+		FHBHIHJAOPB GLGPBLLICAG = 1744;
+		HEHOBDGMMJM INHGPDPNILL = 1763;
+		GILMFECEBFE PNMLHBJOABC = 1778;
+		ELPPDAHKLBE DNLGBJLPDCE = 1786;
+		PEGMFOHNNFL LKKIMPILMNC = 1789;
+		HPAJCFPNKAJ LOLMNJLLNKO = 1791;
+		JABJGAJAMPN EPPKKHMNHBN = 1805;
+		ONLFOIONDAF CHHEGLGPCCH = 1824;
+		NAEGCNHKCAB POKDMODKGPA = 1844;
+		HHNBCLPNDFI LFBGLMMDMCD = 2035;
+	}
+}
+
+message GridFightGameItemSyncInfo {
+	repeated GridFightEquipmentInfo grid_fight_equipment_list = 7;
+	repeated GridFightConsumableUpdateInfo update_grid_fight_consumable_list = 13;
+}
+
+message GridFightGameItemsInfo {
+	repeated GridFightConsumableInfo grid_fight_consumable_list = 4;
+	repeated GridFightEquipmentInfo grid_fight_equipment_list = 5;
+}
+
+message GridFightGameOrbInfo {
+	repeated GridGameOrbInfo grid_game_orb_list = 1;
+	repeated PFBCBNMKFAK ODCMJGHEOMG = 9;
+}
+
+message GridFightGamePortalBuffInfo {
+	uint32 portal_buff_id = 9;
+}
+
+message GridFightGameShopInfo {
+	GridFightRarityWeightInfo rarity_weight_info = 1;
+	repeated GridFightShopGoodsInfo goods_list = 3;
+	bool locked = 5;
+	uint32 shop_id = 6;
+	uint32 refresh_cost = 13;
+	repeated uint32 role_pool_list = 15;
+}
+
+message GridFightGameTeamInfo {
+	repeated GridGameNpcInfo grid_game_npc_list = 2;
+	repeated GridGameRoleInfo grid_game_role_list = 5;
+	repeated FPHPFJLAJDK KCOMPKMJCMC = 6;
+	repeated uint32 PLEIPHJGFIE = 8;
+	repeated GridGameForgeItemInfo forge_item_list = 15;
+}
+
+message GridFightGameTraitInfo {
+	repeated GridFightRoleSwitchEntry role_switch_list = 8;
+	repeated GridGameTraitInfo grid_fight_trait_info = 11;
+}
+
+message GridFightGetArchiveCsReq {
+	MLJIILDNDPL type = 5;
+}
+
+message GridFightGetArchiveScRsp {
+	uint32 retcode = 1;
+	repeated GridFightArchiveData MCGGPONOCKC = 7;
+	MLJIILDNDPL type = 11;
+}
+
+message GridFightGetDataCsReq {
+}
+
+message GridFightGetDataScRsp {
+	GridFightSystemInfo system_info = 3;
+	GridFightCurrentInfo current_info = 7;
+	uint32 retcode = 10;
+}
+
+message GridFightGetFormationCsReq {
+}
+
+message GridFightGetOrbCsReq {
+	repeated uint32 orb_unique_id_list = 4;
+	bool take_all = 9;
+}
+
+message GridFightGetOrbScRsp {
+	uint32 retcode = 3;
+}
+
+message GridFightHackStateInfo {
+	uint32 AMIFDFAHMDM = 2;
+	uint32 enhance_option_id = 7;
+	uint32 enemy_hp_percent = 8;
+	uint32 minimum_enemy_hp_percent = 9;
+	uint32 maximum_enemy_hp_percent = 10;
+	repeated uint32 remaining_action_count_list = 14;
+}
+
+message GridFightHandBookAugmentInfo {
+	repeated uint32 seen_augment_id_list = 2;
+	repeated uint32 unlocked_augment_id_list = 14;
+}
+
+message GridFightHandBookEquipInfo {
+	repeated uint32 grid_fight_item_list = 10;
+}
+
+message GridFightHandBookInfo {
+	GridFightHandBookRoleInfo role_info = 3;
+	GridFightHandBookMonsterInfo monster_info = 4;
+	LLBMKOILIDN EECJFCNKKMB = 5;
+	GNIIDINFPDO KJIJEGAHLGB = 6;
+	ODKODPBCDKD NNIJIFGJJJA = 7;
+	GridFightHandBookAugmentInfo augment_info = 11;
+	GridFightHandBookPortalInfo portal_info = 14;
+	GridFightHandBookEquipInfo equip_info = 15;
+}
+
+message GridFightHandBookMonsterInfo {
+	repeated uint32 monster_id_list = 12;
+}
+
+message GridFightHandBookPortalInfo {
+	repeated uint32 unlocked_portal_id_list = 7;
+	repeated uint32 seen_portal_id_list = 14;
+}
+
+message GridFightHandBookRoleInfo {
+	repeated uint32 role_id_list = 3;
+}
+
+message GridFightHandlePendingActionCsReq {
+	uint32 queue_position = 8;
+	oneof FGLIODAJFML {
+		GridFightPortalBuffSelectAction portal_select_action = 144;
+		DKMMDJAOBHG OKPMJOCEKBC = 230;
+		JGHCHCCMCBM JACEOLDFKDD = 258;
+		NIJPHAAONFB DKDFDGJGIHM = 263;
+		PDKGKIDCBKA HOKCPPPLJIO = 269;
+		KCCPHHGCPMP IOHJGOENAPF = 462;
+		FKILNIGOKBF LFIDNOAECMN = 582;
+		GridFightPortalBuffRerollAction portal_reroll_action = 637;
+		NNFPCAPDENH KEBDKGKEJDD = 656;
+		GridFightEliteBranchSelectActionRequest elite_branch_select_action = 667;
+		GridFightSupplyRerollActionRequest supply_reroll_action = 673;
+		GridFightTraitEffectSelectEnhanceActionRequest trait_effect_select_enhance_action = 896;
+		GridFightSupplySelectActionRequest supply_select_action = 898;
+		PFGCMKIJBBH PLJBPFHFAHL = 916;
+		LFONAPFHAOB HHNHGJMOGDD = 917;
+		LPHPNIEAMLL MHBGJCOIMPA = 944;
+		GridFightInvestmentRerollActionRequest investment_reroll_action = 952;
+		GridFightRoundBeginActionRequest round_begin_action = 990;
+		GridFightEliteBranchRerollActionRequest elite_branch_reroll_action = 1050;
+		MGHGMNKNJAE KDGAJCHDFOK = 1111;
+		IBLPDLHBAMO GEPGMIEPBMB = 1142;
+		GKLDOELMEIN PKHJLKNGCGH = 1162;
+		GridFightInvestmentSelectActionRequest investment_select_action = 1201;
+		PDDMLHPGOOL DPKFJEEJABC = 1216;
+		BKAKHDGJLFO EJHBPFJOBKB = 1221;
+		EJEFKJGAKOO LAJGNNBOLDG = 1280;
+		HBKDINBIIGK JMJOAOCJAAG = 1370;
+		GridFightRecommendEquipmentSelectActionRequest recommend_equipment_select_action = 1515;
+		BGABEIOCONI PFEBKFJOGKO = 1651;
+		CAMIICJDOBO IIDBLCFAAPC = 1659;
+		GridFightReturnPreparationActionRequest return_preparation_action = 1667;
+		PGGJPHKJJON FKEAHOKGDPO = 1765;
+		LPAENEHIBJP DPBFGOMKGMB = 1804;
+		EFDODBOLHGK ENMJFJGIOEM = 1840;
+		DPMFDKPNHDA FMHPKKDEHNC = 1841;
+		IDOJADMFGKF NFBJINKLLLK = 1883;
+		FNNFHNKHIDD CFDIPFKBFJB = 1890;
+		GHMKAOJPAPO PBEJCFAJLGE = 1930;
+	}
+}
+
+message GridFightHandlePendingActionScRsp {
+	uint32 queue_position = 12;
+	uint32 retcode = 13;
+}
+
+message GridFightHpModifyInfo {
+	uint32 source_id = 2;
+	GridFightUpdateGlobalHpReason reason = 3;
+	int32 current_hp = 4;
+	uint32 change_value = 5;
+	int32 previous_hp = 7;
+}
+
+message GridFightInvestmentRerollActionRequest {
+	uint32 augment_id = 6;
+}
+
+message GridFightInvestmentSelectActionRequest {
+	uint32 augment_id = 1;
+}
+
+message GridFightLastTutorialFinishScNotify {
+	uint32 ENECKKGPKHI = 15;
+}
+
+message GridFightLayerData {
+	uint32 fight_camp_id = 10;
+	repeated GridFightEncounterInfo encounter_list = 11;
+	uint32 selected_elite_branch_id = 13;
+}
+
+message GridFightLayerInfo {
+	bool completed = 6;
+	oneof EFECLPJFOCM {
+		GridFightLayerData data = 44;
+	}
+}
+
+message GridFightLevelDisplayInfo {
+	uint32 level = 6;
+	uint32 max_exp = 7;
+	uint32 exp = 12;
+}
+
+message GridFightLevelInfo {
+	GridFightBossInfo boss_info = 3;
+	uint32 chapter_id = 5;
+	repeated GridFightCampInfo camp_info_list = 6;
+	uint32 route_id = 7;
+	uint32 section_id = 8;
+	repeated GridFightGamePortalBuffInfo grid_fight_portal_buff_list = 9;
+	repeated GridFightAffixInfo affix_info_list = 10;
+	GridFightSectionProgressInfo section_progress_info = 11;
+	repeated BCCIJHPLJOJ OOMMIIKPHBC = 12;
+	GridFightLayerInfo layer_info = 13;
+	GridFightBattleStatisticsInfo battle_statistics_info = 14;
+	KOMPNJAMLPM ANJBLBEOJND = 15;
+}
+
+message GridFightLevelSyncInfo {
+	GridFightLayerInfo layer_info = 4;
+	uint32 section_id = 6;
+	uint32 chapter_id = 12;
+}
+
+message GridFightLevelUpdateInfo {
+	GridFightLevelDisplayInfo current_level_info = 3;
+	uint32 added_exp = 6;
+	GridFightLevelDisplayInfo previous_level_info = 9;
+}
+
+message GridFightLineupHpSyncInfo {
+	uint32 max_hp = 14;
+	uint32 current_hp = 15;
+}
+
+message GridFightLockInfo {
+	GridFightLockReason lock_reason = 12;
+	GridFightLockType lock_type = 15;
+}
+
+enum GridFightLockReason {
+	GridFightLockReason_None = 0;
+	GridFightLockReason_Reserved1 = 1;
+	GridFightLockReason_Reserved2 = 2;
+	GridFightLockReason_PendingAction = 3;
+}
+
+message GridFightLockShopCsReq {
+	bool is_lock = 4;
+}
+
+message GridFightLockShopScRsp {
+	uint32 retcode = 9;
+}
+
+enum GridFightLockType {
+	GridFightLockType_None = 0;
+	GridFightLockType_Gameplay = 6;
+	GridFightLockType_Reserved7 = 7;
+	GridFightLockType_Reserved8 = 8;
+}
+
+message GridFightMonsterInfo {
+	uint32 monster_id = 1;
+	uint32 IMDKLKONINF = 3;
+	uint32 role_star = 6;
+	uint32 unknown_field_5 = 10;
+	uint32 MIPDAFDLJPB = 13;
+}
+
+message GridFightMonsterWaveInfo {
+	uint32 wave_id = 11;
+	repeated GridFightMonsterInfo monster_list = 12;
+}
+
+message GridFightOpenOrbResultScNotify {
+	GridFightDropInfo drop_info = 5;
+	uint32 unique_id = 14;
+}
+
+message GridFightOrbSyncInfo {
+	uint32 unique_id = 2;
+	uint32 orb_item_id = 7;
+}
+
+message GridFightPendingAction {
+	OEJKAOKHPPL reason = 2;
+	uint32 queue_position = 6;
+	oneof FGLIODAJFML {
+		OEGLNPAMFNH JACEOLDFKDD = 154;
+		EEODAFPJLFE DPKFJEEJABC = 166;
+		GridFightRecommendEquipmentActionInfo recommend_equipment_action = 175;
+		GridFightEliteBranchActionInfo elite_branch_action = 181;
+		MHJIOJNNPDM HOKCPPPLJIO = 255;
+		GridFightPortalBuffActionInfo portal_action = 372;
+		FCPHBDPJCLK EJHBPFJOBKB = 379;
+		GEIBJKJDOHO LAJGNNBOLDG = 408;
+		BJALEHOMFKH LFIDNOAECMN = 501;
+		GridFightRoundBeginActionInfo round_begin_action = 612;
+		ELBEHADNLBB PLJBPFHFAHL = 648;
+		GridFightSupplyActionInfo supply_action = 693;
+		NGNKIIOHBAI PKHJLKNGCGH = 710;
+		FKJMGFOPHHN CFDIPFKBFJB = 729;
+		GridFightAugmentActionInfo investment_action = 859;
+		CFFDCICDAKK IOHJGOENAPF = 1054;
+		HFCFMFONGIE DPBFGOMKGMB = 1075;
+		FOCOJIDPAGO PFEBKFJOGKO = 1125;
+		HADBACOKEJN FMHPKKDEHNC = 1190;
+		CHAIHAICBCE OKPMJOCEKBC = 1240;
+		GridFightTraitEffectSelectEnhanceActionInfo trait_effect_select_enhance_action = 1576;
+		AKDPLDPGGKF GEPGMIEPBMB = 1592;
+		GridFightReturnPreparationActionInfo return_preparation_action = 1612;
+		BDLBHJGNCFM EEKMIAMGHFL = 1817;
+		GridFightForgeRoleActionInfo HHNHGJMOGDD = 1828;
+		MMFBHOGIAML JMJOAOCJAAG = 1853;
+		NCEPOLNLNKH IIDBLCFAAPC = 1920;
+		IPGOPLALEJG FKEAHOKGDPO = 1923;
+		BMBBPPJKALE KDGAJCHDFOK = 2044;
+	}
+}
+
+message GridFightPendingAugmentInfo {
+	uint32 free_reroll_count = 6;
+	uint32 augment_id = 11;
+	uint32 reroll_count = 13;
+}
+
+message GridFightPermanentGameInfo {
+	GridFightTalentInfo talent = 1;
+	map<uint32, GLHCHCJMFGA> FBJMBJKMAJA = 6;
+	uint32 ENECKKGPKHI = 11;
+}
+
+message GridFightPermanentTalentEnableCsReq {
+	uint32 FGCLPKIDGFK = 12;
+}
+
+message GridFightPermanentTalentEnableScRsp {
+	uint32 retcode = 5;
+	uint32 CKHCLKOALKE = 14;
+}
+
+message GridFightPermanentTalentResetCsReq {
+}
+
+message GridFightPermanentTalentResetScRsp {
+	uint32 retcode = 2;
+}
+
+message GridFightPlayerLevelProgressionInfo {
+	map<uint32, uint32> level_up_exp_by_level = 15;
+}
+
+message GridFightPlayerLevelSyncInfo {
+	uint32 exp = 3;
+	uint32 level = 8;
+	uint32 max_level = 13;
+}
+
+message GridFightPortalBuffActionInfo {
+	uint32 reroll_count = 3;
+	uint32 free_reroll_count = 4;
+	uint32 select_count = 5;
+	repeated uint32 portal_id_list = 7;
+}
+
+message GridFightPortalBuffRerollAction {
+}
+
+message GridFightPortalBuffSelectAction {
+	uint32 portal_id = 8;
+}
+
+message GridFightPortalBuffUpdateInfo {
+	uint32 portal_buff_id = 6;
+}
+
+message GridFightPosInfo {
+	uint32 pos = 1;
+	uint32 unique_id = 13;
+}
+
+message GridFightPrayQuestInfo {
+	repeated AFCBKJEFKPG quest_list = 3;
+}
+
+message GridFightQuitLeaveGamePlayCsReq {
+}
+
+message GridFightQuitLeaveGamePlayScRsp {
+	uint32 retcode = 4;
+}
+
+message GridFightQuitSettleCsReq {
+}
+
+message GridFightQuitSettleScRsp {
+	uint32 retcode = 1;
+}
+
+message GridFightRarityWeightEntry {
+	uint32 weight = 2;
+	uint32 rarity = 5;
+}
+
+message GridFightRarityWeightInfo {
+	repeated GridFightRarityWeightEntry entry_list = 2;
+}
+
+message GridFightRecommendEquipmentActionInfo {
+	repeated uint32 equipment_id_list = 8;
+}
+
+message GridFightRecommendEquipmentSelectActionRequest {
+	uint32 equipment_id = 1;
+}
+
+message GridFightRecycleItemCsReq {
+	uint32 PEBCBLBLMPH = 13;
+}
+
+message GridFightRecycleItemScRsp {
+	uint32 retcode = 4;
+}
+
+message GridFightRecycleRoleCsReq {
+	uint32 unique_id = 15;
+}
+
+message GridFightRecycleRoleScRsp {
+	uint32 retcode = 13;
+}
+
+message GridFightRefreshShopCsReq {
+}
+
+message GridFightRefreshShopScRsp {
+	uint32 retcode = 13;
+}
+
+message GridFightResumeGamePlayCsReq {
+	uint32 unique_id = 2;
+}
+
+message GridFightResumeGamePlayScRsp {
+	uint32 retcode = 5;
+}
+
+message GridFightReturnPreparationActionInfo {
+}
+
+message GridFightReturnPreparationActionRequest {
+}
+
+message GridFightRoleDamageStatistics {
+	bool is_trial_role = 1;
+	double total_damage = 7;
+	uint32 role_id = 10;
+	bool is_back_position = 12;
+	uint32 role_star = 13;
+	repeated uint32 grid_fight_equipment_list = 14;
+}
+
+message GridFightRoleGoodsInfo {
+	uint32 role_star = 3;
+	uint32 role_id = 15;
+}
+
+message GridFightRoleHistoryInfo {
+	repeated IFPAJBFOHLN ICDHAPACGEH = 11;
+}
+
+message GridFightRoleSwitchEntry {
+	repeated uint32 role_id_list = 6;
+	uint32 current_role_id = 11;
+}
+
+message GridFightRoleSwitchInfo {
+	repeated GridFightRoleSwitchEntry role_switch_list = 2;
+}
+
+message GridFightRoundBeginActionInfo {
+}
+
+message GridFightRoundBeginActionRequest {
+}
+
+message GridFightSavedValueUpdate {
+	map<string, uint32> saved_values = 10;
+}
+
+message GridFightSeasonExpInfo {
+	uint32 exp = 6;
+	uint32 level = 13;
+}
+
+message GridFightSeasonHandBookNotify {
+	oneof KKNBOACNCON {
+		LLBMKOILIDN PGCBJOHMGNK = 113;
+		GridFightHandBookMonsterInfo monster_info = 130;
+		GridFightHandBookRoleInfo role_info = 954;
+		GridFightHandBookEquipInfo LNLDBNIGODI = 1371;
+		GridFightHandBookPortalInfo HLHCCONOKCL = 1601;
+		GNIIDINFPDO JAKIKEAGHAM = 1683;
+		ODKODPBCDKD IJIEAHHOEBG = 1744;
+		GridFightHandBookAugmentInfo ODEJBBALEOA = 2014;
+	}
+}
+
+message GridFightSeasonTalentEnableCsReq {
+	uint32 FGCLPKIDGFK = 5;
+}
+
+message GridFightSeasonTalentEnableScRsp {
+	uint32 CKHCLKOALKE = 12;
+	uint32 retcode = 14;
+}
+
+message GridFightSeasonTalentResetCsReq {
+}
+
+message GridFightSeasonTalentResetScRsp {
+	uint32 retcode = 5;
+}
+
+message GridFightSectionProgressInfo {
+	repeated JKPOIHGIFFG section_list = 2;
+}
+
+message GridFightSectionRecordInfo {
+	uint32 section_id = 6;
+	uint32 chapter_id = 7;
+	uint32 node_type = 8;
+	oneof MMHKPJJNHDK {
+		KEEPBBDICFN GFCEGEPFCDB = 97;
+	}
+}
+
+message GridFightSettleAvatarInfo {
+	repeated uint32 grid_fight_avatar_list = 5;
+}
+
+message GridFightSettleBasicInfo {
+	uint32 max_lineup_hp = 1;
+	uint32 battles_finished = 2;
+	uint32 route_id = 3;
+	uint32 lineup_hp = 5;
+	uint32 chapter_id = 7;
+	repeated uint32 FMEOHKHGMJM = 9;
+	uint32 division_id = 13;
+	uint32 section_id = 15;
+}
+
+message GridFightSettleNotify {
+	uint32 division_id = 1;
+	uint32 GEBGGMAGDJB = 3;
+	uint32 KEJGCDOGEDD = 4;
+	uint32 season_exp = 5;
+	uint32 EDHKHJAPMKA = 9;
+	uint32 highest_division_id = 14;
+	uint32 CGKNDIJMOCJ = 452;
+	GridFightFinishInfo finish_info = 1253;
+	uint32 MNNKKEPCPPL = 1871;
+}
+
+enum GridFightSettleReason {
+	GridFightSettleReason_Unknown = 0;
+	GridFightSettleReason_Quit = 1;
+	GridFightSettleReason_Defeat = 2;
+	GridFightSettleReason_Victory = 3;
+	GridFightSettleReason_Complete = 4;
+}
+
+message GridFightShopGoodsInfo {
+	FKGIEPHGACD source = 2;
+	bool sold_out = 7;
+	uint32 price = 13;
+	oneof AELHFLGJMJN {
+		CCKPBIKOIBB INBCCAIFHNL = 179;
+		GridFightSpecialGoodsInfo special_goods_info = 391;
+		CHDNPFMOKKI IFDICIIOHHI = 859;
+		GridFightRoleGoodsInfo role_goods_info = 1403;
+	}
+}
+
+message GridFightShopSyncInfo {
+	bool ABGEKPJHHIA = 1;
+	uint32 shop_id = 4;
+	uint32 refresh_cost = 7;
+	GridFightRarityWeightInfo rarity_weight_info = 8;
+	repeated GridFightShopGoodsInfo goods_list = 14;
+}
+
+message GridFightSingleValueItemInfo {
+	uint32 KHHFIEPDHHD = 3;
+}
+
+message GridFightSpecialGoodsInfo {
+	uint32 special_goods_id = 1;
+}
+
+message GridFightSpotLightEnterScRsp {
+	uint32 retcode = 15;
+}
+
+message GridFightSpotLightReplaceScRsp {
+	uint32 retcode = 8;
+}
+
+message GridFightStartGamePlayCsReq {
+	uint32 division_id = 2;
+	uint32 MPJPLKKJNGE = 3;
+	uint32 season = 4;
+	bool is_overlock = 9;
+}
+
+message GridFightStartGamePlayScRsp {
+	GridFightCurrentInfo current_info = 8;
+	uint32 retcode = 10;
+}
+
+message GridFightStaticGameInfo {
+	uint32 weekly_progress = 1;
+	uint32 division_id = 2;
+	uint32 season = 4;
+	GridFightHandBookInfo handbook = 9;
+	GridFightTalentInfo season_talent = 10;
+	uint32 sub_season = 11;
+	GridFightSeasonExpInfo exp = 14;
+	uint32 tutorial_completion = 15;
+}
+
+message GridFightSummonProjectionCsReq {
+	uint32 LKMEMKLGIIK = 9;
+}
+
+message GridFightSummonProjectionScRsp {
+	uint32 retcode = 6;
+}
+
+message GridFightSupplyActionInfo {
+	uint32 select_count = 5;
+	uint32 free_reroll_count = 8;
+	uint32 IONLFBNMOFP = 10;
+	repeated GridFightSupplyRoleInfo supply_role_info_list = 11;
+	uint32 reroll_count = 13;
+}
+
+message GridFightSupplyRerollActionRequest {
+}
+
+message GridFightSupplyRoleInfo {
+	repeated GridFightDropEntry DHLBEFLOOPM = 6;
+	repeated uint32 grid_fight_item_list = 11;
+	GridFightDropEntry OPPFPECOBEF = 13;
+	uint32 role_id = 15;
+}
+
+message GridFightSupplySelectActionRequest {
+	repeated uint32 select_supply_indexes = 9;
+}
+
+message GridFightSyncCurrentTaskInfo {
+	repeated uint32 CAMMIIJDEKP = 3;
+	GridFightCurrentTask ONPCDAELHGP = 5;
+}
+
+message GridFightSyncData {
+	oneof MNLCHEJKDHO {
+		uint32 MDDKJGPJOAF = 79;
+		uint32 keep_win_count = 89;
+		uint32 OOAGJADOJNB = 148;
+		FMBACDOFCAL OHHBBOGFDON = 166;
+		GridFightRoleSwitchInfo role_switch_info = 283;
+		GridFightGameAugmentUpdate LEADDFOJFKD = 347;
+		uint32 KNFOCCPOJEA = 370;
+		uint32 FMNPBOJGLFI = 400;
+		GridFightLockInfo lock_info = 409;
+		FFECECBAEEH POLBMPCKFDO = 429;
+		GridFightSectionRecordInfo section_record = 438;
+		MDKHMNKAECP BMGFDIKDOBE = 446;
+		GridFightEliteBranchSyncInfo elite_branch_sync_info = 461;
+		uint32 DEKGKLGIDGI = 472;
+		GridFightTraitTrackSyncInfo HGNDMOODNKF = 511;
+		FPHPFJLAJDK GOJINGMMAIL = 669;
+		GridFightShopSyncInfo shop_info = 689;
+		uint32 BEPMODICONA = 698;
+		uint32 remove_forge_unique_id = 703;
+		GridGameNpcInfo EJMDHDJCGDI = 716;
+		uint32 MICEOJBAKGN = 724;
+		LAIKGBIIFIH KKHHIEKJAGE = 725;
+		uint32 remove_role_unique_id = 730;
+		HJCAJKHNCDH CKNDFNACIPO = 793;
+		CPOHGANENDF DPJKDMKADCD = 811;
+		uint32 JLOCMDIDPCI = 833;
+		GridFightSavedValueUpdate saved_value_update = 914;
+		GridFightGameItemSyncInfo update_game_item_info = 1029;
+		NNJDFDOFCCL NHILDPKAAHO = 1147;
+		JPGKBLDLADF LDKDJAEJMPA = 1185;
+		uint32 LDPPDHGNCHL = 1226;
+		PFBCBNMKFAK AHMMHGHNHMI = 1232;
+		FPHPFJLAJDK CPCJGHCGLIJ = 1252;
+		GridGameForgeItemInfo update_forge_item_info = 1257;
+		GridFightGameAugmentAdd add_augment_info = 1285;
+		uint32 CPKLHPJMMDO = 1286;
+		GridFightDamageSttInfo damage_stat = 1310;
+		GridFightPortalBuffUpdateInfo portal_update = 1318;
+		GridFightGameItemInfo game_data_item_info = 1384;
+		GridFightPlayerLevelSyncInfo player_level = 1399;
+		GridFightGameItemSyncInfo add_game_item_info = 1415;
+		uint32 LOGJNAICJPA = 1423;
+		FMBACDOFCAL PHNKDPMDONM = 1433;
+		KOMPNJAMLPM CEDMLOEDPEH = 1452;
+		GridFightTraitSyncInfo trait_info = 1463;
+		GridFightAffixInfo MHFOELCFJGK = 1478;
+		uint32 remove_orb_unique_id = 1503;
+		uint32 item_value = 1531;
+		uint32 DGEOHFLHAHI = 1547;
+		GridFightLevelSyncInfo level_info = 1559;
+		uint32 max_active_role_count = 1583;
+		GridGameRoleInfo update_role_info = 1634;
+		GridGameNpcInfo DHLEOLKNAMI = 1648;
+		uint32 NJCEFEJBEOP = 1650;
+		FMBACDOFCAL DEHEDLNDGND = 1651;
+		GridFightGameItemSyncInfo remove_game_item_info = 1652;
+		uint32 CDKJHJNFDIH = 1684;
+		GridFightPendingAction pending_action = 1761;
+		BAAGMMIDHDB KBHOBGHKIBA = 1779;
+		GridGameRoleInfo add_role_info = 1787;
+		uint32 finish_pending_action_pos = 1813;
+		GridGameForgeItemInfo add_forge_item_info = 1821;
+		EMOGKOKPCAC JNIGCDNHHLK = 1827;
+		GridFightLineupHpSyncInfo lineup_hp = 1884;
+		GridFightOrbSyncInfo orb_info = 1948;
+		uint32 KALKCJFFJIK = 1986;
+		GridFightSettleAvatarInfo PPJFPNMIFHL = 2033;
+	}
+}
+
+message GridFightSyncKeepWinCntNotify {
+	uint32 keep_win_count = 15;
+}
+
+message GridFightSyncResultData {
+	repeated uint32 effect_param_list = 5;
+	repeated GridFightSyncData update_dynamic_list = 14;
+	GridFightUpdateSrcType update_source = 15;
+}
+
+message GridFightSyncTutorialProgressIdScNotify {
+	uint32 MPJPLKKJNGE = 2;
+	uint32 LJNGPCKPJLF = 8;
+}
+
+message GridFightSyncUpdateResultScNotify {
+	repeated GridFightSyncResultData result_list = 2;
+}
+
+message GridFightSyncVirtualItemNotify {
+	repeated CENBJOMMJGD item_list = 15;
+}
+
+message GridFightSystemInfo {
+	GridFightPermanentGameInfo permanent_info = 8;
+	GridFightStaticGameInfo static_info = 12;
+}
+
+message GridFightTakeWeeklyRewardCsReq {
+	repeated uint32 JKCEBHFIENI = 10;
+}
+
+message GridFightTakeWeeklyRewardScRsp {
+	NDLNIKCCALK MGBNEAHCDMA = 1;
+	ItemList ENGHMIAMPLG = 2;
+	uint32 retcode = 9;
+	repeated uint32 NGKOFMBBGNL = 15;
+}
+
+message GridFightTalentInfo {
+	repeated uint32 talent_id_list = 4;
+}
+
+message GridFightTrackTraitCsReq {
+	uint32 COPNJMBGNDO = 3;
+	bool BJDOINAHDLN = 14;
+}
+
+message GridFightTrackTraitScRsp {
+	uint32 retcode = 10;
+}
+
+message GridFightTraitDamageStatistics {
+	uint32 layer = 6;
+	double damage = 8;
+	uint32 trait_id = 14;
+}
+
+message GridFightTraitEffectInfo {
+	uint32 effect_id = 13;
+	oneof NEBNJDMFELO {
+		GGHAADPCOAA AMOIMOHMBEM = 104;
+		MAKPILEOKNC CPGCCCAKACO = 125;
+		uint32 IJBCFCMIJNK = 375;
+		BJFLPMNPFFK MPHGIPCONLF = 592;
+		CGNAHGDKAFC GIKNCJMJLFE = 664;
+		JADHHGHGMPH GDAMHENIIDJ = 766;
+		HJCFNEPJKDM KJFIOEPKOBM = 793;
+		GridFightTraitElationEffectUpdate JLCLHAKNMLL = 833;
+		LDMNIHIFDFG KOEPOCADLDI = 911;
+		NBPEJFHIKJL avatar_core_info = 958;
+		LCMAKEBBBDL GEPGMIEPBMB = 960;
+		GGFHGKGJOOB KDBKIPPHMFI = 1028;
+		uint32 ECEMNCJBFOP = 1256;
+		JBGJFECBCCL PFEBKFJOGKO = 1325;
+		DFJMFJHEHLN NMHCBKFEOMM = 1358;
+		MCEDNANGIJJ MCCMPFENGCD = 1403;
+		uint32 trait_core_role = 1480;
+		IKGOIPNFDBB DPKFJEEJABC = 1672;
+		HDCJJFDLHIO IFDICIIOHHI = 1915;
+		CLKKNDMGLPP FLDEMEJEODJ = 1988;
+	}
+}
+
+message GridFightTraitEffectSelectEnhanceActionInfo {
+	repeated uint32 enhance_index_list = 1;
+	bool is_optional = 3;
+	repeated uint32 enhance_option_id_list = 5;
+	uint32 trait_id = 6;
+	uint32 effect_id = 15;
+}
+
+message GridFightTraitEffectSelectEnhanceActionRequest {
+	uint32 enhance_option_id = 3;
+}
+
+message GridFightTraitElationEffectUpdate {
+	repeated FHCEIOHLADG POJGKJENENA = 4;
+	map<uint32, uint32> BANBECDCDHG = 7;
+	uint32 DNNCAGJIOAP = 14;
+}
+
+message GridFightTraitSyncInfo {
+	GridFightTraitEffectInfo trait_effect_info = 6;
+	bool is_recover = 7;
+	uint32 trait_id = 8;
+}
+
+message GridFightTraitTrackSyncInfo {
+	repeated uint32 ONHDKLIMLNM = 2;
+	bool GHJLDDEDJLI = 14;
+}
+
+message GridFightTraitUpdateCsReq {
+	uint32 effect_id = 11;
+	uint32 trait_id = 12;
+	oneof NEBNJDMFELO {
+		OEPOFNDAMMB GDAMHENIIDJ = 30;
+		AFPJPEABFKH JLCLHAKNMLL = 227;
+		KDGHLGHJDMC KDBKIPPHMFI = 367;
+		KMPNJFLNBJG IJBCFCMIJNK = 441;
+		MHKNPBJDFIC LFIDNOAECMN = 856;
+		GPCFHMLMDHC FFBEPFLBHPL = 956;
+		NMDCNICFKGF MCCMPFENGCD = 1278;
+		CGLCHFIKLPJ IFDICIIOHHI = 1595;
+		JNKMLCAKGND FLDEMEJEODJ = 1698;
+		MFKKOIFLDCH GEPGMIEPBMB = 1946;
+		ODPMEJGOOMB DPKFJEEJABC = 1975;
+	}
+}
+
+message GridFightTraitUpdateScRsp {
+	uint32 retcode = 13;
+}
+
+message GridFightUpdateEliteBranchSelectCsReq {
+	uint32 elite_branch_id = 4;
+}
+
+message GridFightUpdateEliteBranchSelectScRsp {
+	uint32 retcode = 3;
+}
+
+message GridFightUpdateEquipTrackCsReq {
+	repeated HLHHLIGPNOM DKEIDONNDCJ = 2;
+	GridFightEquipTrackSource source = 3;
+}
+
+message GridFightUpdateEquipTrackPriorityCsReq {
+	repeated EPELDFBCCEK BFCMLCJMLOL = 15;
+}
+
+message GridFightUpdateEquipTrackPriorityScRsp {
+	uint32 retcode = 9;
+}
+
+message GridFightUpdateEquipTrackScRsp {
+	uint32 retcode = 6;
+}
+
+message GridFightUpdateGameRefCsReq {
+	string EGCPAOEAGLF = 5;
+	string PEOODHOAJMP = 10;
+}
+
+message GridFightUpdateGameRefScRsp {
+	string EGCPAOEAGLF = 9;
+	uint32 retcode = 13;
+	string PEOODHOAJMP = 15;
+}
+
+enum GridFightUpdateGlobalHpReason {
+	GridFightUpdateGlobalHpReason_KUpdateGlobalHpNone = 0;
+	GridFightUpdateGlobalHpReason_KSubGlobalHpBaseCost = 1;
+	GridFightUpdateGlobalHpReason_KSubGlobalHpExtraCost = 2;
+	GridFightUpdateGlobalHpReason_KSubGlobalHpThresholdCost = 3;
+	GridFightUpdateGlobalHpReason_KSubGlobalHpEffectCost = 4;
+	GridFightUpdateGlobalHpReason_KSubGlobalHpAugment = 5;
+	GridFightUpdateGlobalHpReason_KSubGlobalHpPrayQuest = 6;
+	GridFightUpdateGlobalHpReason_KSubGlobalHpEquip = 7;
+	GridFightUpdateGlobalHpReason_AHNGEPIENDG = 8;
+	GridFightUpdateGlobalHpReason_KAddGlobalHpTalent = 101;
+	GridFightUpdateGlobalHpReason_KAddGlobalHpAugment = 102;
+	GridFightUpdateGlobalHpReason_KAddGlobalHpFinalBattleTurn = 103;
+	GridFightUpdateGlobalHpReason_KSetGlobalHpRevive = 201;
+}
+
+message GridFightUpdatePosCsReq {
+	repeated GridFightPosInfo pos_info_list = 13;
+}
+
+message GridFightUpdatePosScRsp {
+	repeated GridFightPosInfo pos_info_list = 3;
+	uint32 retcode = 8;
+}
+
+message GridFightUpdateSpotLightTrackCsReq {
+	DFNHMOGNJGJ source = 1;
+	repeated BMHEAGKIILO ACCFJKBOJIJ = 5;
+}
+
+enum GridFightUpdateSrcType {
+	GridFightUpdateSrcType_KGridFightSrcNone = 0;
+	GridFightUpdateSrcType_KGridFightSrcUseOrb = 1;
+	GridFightUpdateSrcType_KGridFightSrcInitialSupplySelect = 2;
+	GridFightUpdateSrcType_KGridFightSrcSelectPortalBuff = 3;
+	GridFightUpdateSrcType_KGridFightSrcSelectAugment = 4;
+	GridFightUpdateSrcType_KGridFightSrcTraitEffectUpdate = 5;
+	GridFightUpdateSrcType_KGridFightSrcEnterNode = 6;
+	GridFightUpdateSrcType_KGridFightSrcManualRefreshGoods = 7;
+	GridFightUpdateSrcType_KGridFightSrcBuyGoods = 8;
+	GridFightUpdateSrcType_KGridFightSrcMergeRole = 9;
+	GridFightUpdateSrcType_KGridFightSrcAugment = 10;
+	GridFightUpdateSrcType_KGridFightSrcPortalBuff = 11;
+	GridFightUpdateSrcType_KGridFightSrcTalent = 12;
+	GridFightUpdateSrcType_KGridFightSrcCraftEquip = 13;
+	GridFightUpdateSrcType_KGridFightSrcDressEquip = 14;
+	GridFightUpdateSrcType_KGridFightSrcAffix = 15;
+	GridFightUpdateSrcType_KGridFightSrcUseForge = 16;
+	GridFightUpdateSrcType_KGridFightSrcSelectSupply = 17;
+	GridFightUpdateSrcType_KGridFightSrcBattleEnd = 18;
+	GridFightUpdateSrcType_KGridFightSrcEliteBranchBattleBonus = 19;
+	GridFightUpdateSrcType_KGridFightSrcCopyRole = 20;
+	GridFightUpdateSrcType_KGridFightSrcDivision = 21;
+	GridFightUpdateSrcType_KGridFightSrcSpecialGoods = 22;
+	GridFightUpdateSrcType_KGridFightSrcEquipModifier = 23;
+	GridFightUpdateSrcType_KGridFightSrcPreInitialSupplySelect = 24;
+	GridFightUpdateSrcType_KGridFightSrcRecycleRole = 25;
+	GridFightUpdateSrcType_KGridFightSrcUseConsumable = 26;
+	GridFightUpdateSrcType_KGridFightSrcAddCrown = 27;
+	GridFightUpdateSrcType_KGridFightSrcBuyExp = 28;
+	GridFightUpdateSrcType_KGridFightSrcTraitEffectSelectEnhance = 29;
+	GridFightUpdateSrcType_KGridFightSrcTutorial = 30;
+	GridFightUpdateSrcType_KGridFightSrcActivityModule = 31;
+	GridFightUpdateSrcType_KGridFightSrcPresent = 32;
+	GridFightUpdateSrcType_KGridFightSrcSpecialCraftEquip = 33;
+	GridFightUpdateSrcType_KGridFightSrcPrayQuest = 34;
+	GridFightUpdateSrcType_KGridFightSrcPrayQuestAccept = 35;
+	GridFightUpdateSrcType_KGridFightSrcPrayQuestFinish = 36;
+	GridFightUpdateSrcType_BIMBMLIAHAM = 37;
+	GridFightUpdateSrcType_LIHFMJOAMNJ = 38;
+	GridFightUpdateSrcType_DEMBMCAMMPF = 39;
+	GridFightUpdateSrcType_MHHHNGCJOEO = 40;
+	GridFightUpdateSrcType_CDFDEMOKKIH = 41;
+	GridFightUpdateSrcType_HLHFIMGHHNO = 42;
+	GridFightUpdateSrcType_HGOOJJCEPID = 43;
+	GridFightUpdateSrcType_HHOEEBFGJDN = 44;
+	GridFightUpdateSrcType_OGGDFDIGDOI = 45;
+	GridFightUpdateSrcType_KMIAFDJNAPN = 46;
+	GridFightUpdateSrcType_LGDFFIOMNJO = 47;
+	GridFightUpdateSrcType_LDOBCCJEGNF = 48;
+	GridFightUpdateSrcType_FNMIGJOABNB = 49;
+	GridFightUpdateSrcType_GNEDIKBELIJ = 50;
+}
+
+message GridFightUseConsumableCsReq {
+	uint32 group_id = 10;
+	GridFightConsumableTargetInfo target = 14;
+}
+
+message GridFightUseConsumableScRsp {
+	uint32 retcode = 6;
+}
+
+message GridFightUseForgeCsReq {
+	uint32 unique_id = 8;
+	uint32 forge_target_index = 9;
+}
+
+message GridFightUseForgeScRsp {
+	uint32 retcode = 14;
+}
+
+message GridFightUseHackOptionCsReq {
+	uint32 enemy_hp_percent = 7;
+	uint32 option_id = 14;
+}
+
+message GridFightUseHackOptionScRsp {
+	uint32 retcode = 8;
+}
+
+message GridFightWeeklyExtraSeasonExpScRsp {
+	uint32 ACDOIGCBGEB = 2;
+}
+
+message GridGameAugmentInfo {
+	bool is_active = 5;
+	bool NEKJGIDPCAI = 6;
+	uint32 augment_id = 11;
+}
+
+message GridGameForgeItemInfo {
+	uint32 unique_id = 4;
+	uint32 pos = 5;
+	uint32 source = 8;
+	repeated GridFightForgeGoodsInfo forge_goods_list = 10;
+	uint32 forge_item_id = 11;
+}
+
+message GridGameNpcInfo {
+	uint32 id = 1;
+	uint32 unique_id = 3;
+	repeated uint32 PNJIPHJJONG = 6;
+	uint32 pos = 11;
+}
+
+message GridGameOrbInfo {
+	uint32 unique_id = 6;
+	uint32 orb_item_id = 10;
+}
+
+message GridGameRoleInfo {
+	uint32 role_star = 3;
+	repeated uint32 equipped_equipment_unique_id_list = 4;
+	uint32 id = 5;
+	uint32 unique_id = 6;
+	uint32 pos = 7;
+	map<uint32, uint32> convert_property_to_fixpoint = 8;
+	map<string, uint32> BABNHPDGNGB = 10;
+	map<string, uint32> grid_fight_value_init_component = 15;
+}
+
+message GridGameTraitInfo {
+	uint32 trait_id = 1;
+	uint32 layer = 4;
+	repeated GridFightTraitEffectInfo trait_effect_list = 5;
+	uint32 CGIEODOGAIE = 6;
+	repeated uint32 member_role_unique_id_list = 12;
+	uint32 AFKKLDMAEDJ = 14;
+}
+
+message HADBACOKEJN {
+	int32 AAIODNCLAIP = 1;
+	GridFightUpdateSrcType LOAJNBCBAEM = 2;
+	repeated GridFightDropEntry NMGIABHIJJB = 3;
+	uint32 IDADELLGOJI = 13;
+	uint32 JOMDKGINNEK = 15;
+}
+
+message HBKDINBIIGK {
+	bool MLKBOBIEAPL = 1;
+	uint32 OBPJLMEMFHA = 13;
+}
+
+message HCIFBGJCPDM {
+}
+
+message HDCJJFDLHIO {
+	map<uint32, uint32> additional_properties = 2;
+	repeated JHCEEAPHHGK POJGKJENENA = 3;
+}
+
+message HDOLIECDHAO {
+}
+
+message HEHOBDGMMJM {
+	bool GLJPGNPPAFP = 9;
+	repeated uint32 grid_fight_avatar_list = 10;
+	uint32 trait_id = 14;
+}
+
+message HENDEHGPKMF {
+	uint32 dice_slot_id = 1;
+	string name = 2;
+	string KFPMJKCOJAJ = 4;
+	bytes JLFIAFKGCOJ = 5;
+	string MILBDIPBJGP = 6;
+}
+
+message HFCFMFONGIE {
+}
+
+message HGGGKJMCJOO {
+	uint32 AMIFDFAHMDM = 4;
+}
+
+message HHNBCLPNDFI {
+	repeated uint32 DIKFEBAJMEK = 6;
+}
+
+message HJCAJKHNCDH {
+	oneof MNLCHEJKDHO {
+		AFCBKJEFKPG JNIOBAPDKLN = 6;
+		AFCBKJEFKPG AIGPJLHBNEH = 11;
+	}
+}
+
+message HJCFNEPJKDM {
+	repeated uint32 JMLAMKFMKON = 3;
+}
+
+message HKOAOCKBBJA {
+	uint32 dice_slot_id = 8;
+}
+
+message HLBNJJNHCIE {
+	uint32 pos = 15;
+}
+
+message HLHHLIGPNOM {
+	uint32 BGFFICLCKHE = 3;
+	uint32 priority = 5;
+	bool BJDOINAHDLN = 6;
+	repeated uint32 MCJMHBIECMN = 8;
+	repeated uint32 grid_fight_item_list = 9;
+	GridFightEquipTrackSource source = 13;
+}
+
+message HODMAGEMEJD {
+	uint32 IHHKFADNADN = 5;
+	uint32 BJDCACBLEBN = 11;
+	uint32 total_progress = 15;
+}
+
+enum HOIDGPICBOJ {
+	HOIDGPICBOJ_PBLLGELFECN = 0;
+	HOIDGPICBOJ_EIAGAFFGJLH = 1;
+	HOIDGPICBOJ_JPHAKJKAPEI = 2;
+}
+
+message HPAJCFPNKAJ {
+	uint32 role_id = 3;
+}
+
+message HPMNCENLCAB {
+	uint32 role_id = 15;
+}
+
+enum IBBDHFAEFNH {
+	IBBDHFAEFNH_NLCDGIPGFDJ = 0;
+	IBBDHFAEFNH_BMOOGBNPEAA = 1;
+	IBBDHFAEFNH_CIHFGJDCHIA = 2;
+	IBBDHFAEFNH_PJPFIHFAHGO = 3;
+}
+
+message IBEMBMGFDBJ {
+	bool KLLEKHPJGLE = 2;
+	string name = 4;
+	uint32 slot_id = 7;
+	string KFPMJKCOJAJ = 8;
+	bytes JLFIAFKGCOJ = 12;
+	string MILBDIPBJGP = 15;
+}
+
+message IBLPDLHBAMO {
+	uint32 KJMFHCDACEK = 4;
+}
+
+message ICJOOGHDGDC {
+}
+
+message IDEDIHLMEHL {
+	repeated GHKEBIOFDHI grid_fight_trait_info = 15;
+}
+
+message IDGNEKJDCMJ {
+	repeated uint32 BKKHEPMMFJO = 8;
+}
+
+message IDOJADMFGKF {
+	uint32 ratio = 6;
+}
+
+message IEOMGIBLHJB {
+	uint32 IIJHFJFPIHK = 1;
+	uint32 NFFHCBDFABA = 12;
+}
+
+message IFGCHHHMFNE {
+}
+
+message IFJHBKDGDAG {
+	uint32 group_id = 6;
+	uint32 CBKPBAIKCCC = 15;
+}
+
+message IFPAJBFOHLN {
+	uint32 role_id = 6;
+	uint32 section_id = 11;
+	uint32 DCAHJELNJNP = 15;
+}
+
+message IGLKPANBNBN {
+	uint32 FJLIFIIJGPH = 13;
+}
+
+message IKGOIPNFDBB {
+	repeated uint32 HLFIOPJFHDJ = 2;
+}
+
+message ILDEFHMIDKP {
+	uint32 CKKDAEMFDPA = 8;
+}
+
+message ILEPGGBNADM {
+	repeated uint32 DFIGICBDAGH = 13;
+}
+
+message IPGOPLALEJG {
+	uint32 FKDNAMOIODL = 4;
+	repeated uint32 OHNELAIOCMP = 6;
+	uint32 trait_id = 8;
+	uint32 effect_id = 15;
+}
+
+message JABJGAJAMPN {
+	uint32 DCAHJELNJNP = 1;
+	uint32 show_type = 7;
+	uint32 section_id = 11;
+}
+
+message JADHHGHGMPH {
+	repeated LNDHKMMGBGC OGDKJPDFFAI = 5;
+	bool BCDFCFMBCCG = 10;
+	bool KPMKFGCFMHC = 14;
+}
+
+message JBGJFECBCCL {
+	repeated NJGBAAOPAOI EMAGFIBLNCJ = 13;
+}
+
+message JGHCHCCMCBM {
+	uint32 ACNHOEDFDEM = 10;
+}
+
+message JHCEEAPHHGK {
+	uint32 NHLBAOGCIAN = 1;
+	bool is_unlock = 4;
+	uint32 ACAPGLCONJH = 5;
+	uint32 pos = 15;
+}
+
+message JKGILKGILAI {
+	uint32 retcode = 8;
+	uint32 DACKJGDGMLN = 11;
+}
+
+message JKPOIHGIFFG {
+	uint32 section_id = 7;
+	uint32 DCAHJELNJNP = 15;
+}
+
+message JNKMLCAKGND {
+	repeated uint32 LKNGKJCFFBH = 1;
+}
+
+message JOEHCLLKPIP {
+	repeated CJBEJEDHBFG BLIGPPBEJJJ = 9;
+}
+
+message JPGKBLDLADF {
+	oneof MNLCHEJKDHO {
+		GridFightCurrentTask KBBOAJPMNCN = 3;
+		uint32 AOKPCNJJBAO = 10;
+		uint32 CEPEHNEOIOH = 11;
+	}
+}
+
+message KBEKJKNCMCL {
+	repeated uint32 CAOADMAKKPM = 3;
+}
+
+message KCCPHHGCPMP {
+	uint32 JLLFIDAMBCN = 12;
+}
+
+message KCLMHIOBNLA {
+	repeated uint32 LINPOFNJHHA = 9;
+}
+
+message KDGHLGHJDMC {
+	uint32 pos = 1;
+}
+
+message KEEPBBDICFN {
+	uint32 PDIAOLDMBLL = 5;
+	uint32 LOGHLGKIFEN = 7;
+}
+
+message KHPBBLLNJEF {
+	uint32 retcode = 15;
+}
+
+message KJJGLJEHPJE {
+	uint32 PGEBCGLDNMN = 4;
+}
+
+enum KMJMHDPPAKH {
+	KMJMHDPPAKH_POMADDDKFHN = 0;
+	KMJMHDPPAKH_HLLKDFFMIEN = 1;
+	KMJMHDPPAKH_BGENLPCJGJF = 2;
+}
+
+message KMPNJFLNBJG {
+	uint32 unique_id = 7;
+}
+
+message KNDOLAFNJED {
+}
+
+message KOMPNJAMLPM {
+	uint32 PIJBPDPEODG = 6;
+	map<uint32, int32> PIFNOKAMBLL = 9;
+}
+
+message KPMOCBIIMHH {
+	uint32 role_id = 5;
+	uint32 IEOGEFBLNEL = 9;
+	uint32 MDNAGANGNKK = 14;
+}
+
+message LAIKGBIIFIH {
+	repeated BCCIJHPLJOJ OJOHFAHBKGE = 10;
+}
+
+message LCMAKEBBBDL {
+	repeated uint32 CKHHAPGAAOH = 7;
+	uint32 role_id = 15;
+}
+
+message LDJOCEMPFBJ {
+	uint32 event_id = 1;
+	uint32 HAFOKMHCGFM = 14;
+}
+
+message LDMNIHIFDFG {
+	uint32 BPJKHDNBPOE = 14;
+}
+
+message LFDIMJCMNDJ {
+	uint32 PLDKENJLKME = 3;
+}
+
+message LFONAPFHAOB {
+	uint32 PFIKCNFBGHE = 12;
+}
+
+message LHCOHLJIAII {
+	uint32 num = 2;
+	uint32 role_id = 8;
+}
+
+message LHMLIGPHOKP {
+	repeated uint32 DIKFEBAJMEK = 4;
+	map<uint32, uint32> additional_properties = 9;
+}
+
+message LKHAJCACPBH {
+	bool MOCLKEPPIGA = 1;
+	uint32 OKGGFNJJLNG = 8;
+	uint32 NDAHDHKGNBG = 9;
+}
+
+message LLBMKOILIDN {
+	repeated uint32 HKKNDJJPAPI = 6;
+}
+
+message LLIKPBNDNAG {
+	uint32 unique_id = 12;
+}
+
+message LNDHKMMGBGC {
+	uint32 DNJCAMKKLPB = 2;
+	uint32 slot_id = 3;
+	GridFightDropInfo NMGIABHIJJB = 15;
+}
+
+message LPAENEHIBJP {
+	uint32 IGFAEJMKPAE = 7;
+}
+
+message LPHPNIEAMLL {
+}
+
+message MAKPILEOKNC {
+	uint32 NBDNMNBPCHB = 5;
+	uint32 INHOMJEKBCO = 12;
+	bool ILIMKMBPEHH = 13;
+	uint32 DCICMKFAOBC = 14;
+}
+
+message MCEDNANGIJJ {
+	bool GFFGMNFADBE = 4;
+	uint32 EKEDBOFGNII = 11;
+}
+
+message MCIPOMDGBCA {
+	GridFightCurrentInfo GEKOGKHOFNG = 3;
+	uint32 PLDKENJLKME = 4;
+}
+
+message MDBELHLNMEO {
+	uint32 trait_id = 13;
+}
+
+message MDKHMNKAECP {
+	repeated RoleTrackEquipmentInfo MIIDIMOCPEB = 4;
+}
+
+message MFKKOIFLDCH {
+	uint32 KJMFHCDACEK = 13;
+}
+
+message MGHGMNKNJAE {
+	uint32 OBPJLMEMFHA = 6;
+}
+
+message MHCOIBONODA {
+	uint32 IMCOGBJLOFP = 1;
+	uint32 GOFDNCIPKFH = 2;
+	repeated GridFightDropEntry NMGIABHIJJB = 10;
+	uint32 event_id = 11;
+	uint32 HAFOKMHCGFM = 13;
+}
+
+message MHJIOJNNPDM {
+	repeated uint32 KBECJMLLCEJ = 2;
+}
+
+message MHKNPBJDFIC {
+	uint32 role_id = 10;
+}
+
+message MLAENDOFBCK {
+	oneof FFBBOFAGGDI {
+		bool LGAJNMNOAEM = 3;
+		LDJOCEMPFBJ ALEGIFEHGLH = 8;
+	}
+}
+
+message MLGNKOCLDCO {
+	uint32 unique_id = 3;
+	uint32 FGECDDFBFOJ = 6;
+	uint32 role_star = 12;
+}
+
+enum MLJIILDNDPL {
+	MLJIILDNDPL_LAHJFEFDOBC = 0;
+	MLJIILDNDPL_NJOBADDLBGK = 1;
+	MLJIILDNDPL_FAGECPGMPEH = 2;
+}
+
+message MMFBHOGIAML {
+	uint32 effect_id = 1;
+	repeated AMFPHALPHMF OGDKJPDFFAI = 3;
+	uint32 trait_id = 14;
+	uint32 PLPJNCDKMAD = 15;
+}
+
+message MMKFIDNBEBI {
+	repeated uint32 DIKFEBAJMEK = 5;
+}
+
+message MNJAPPADDIC {
+	oneof OMKBBOCIJFG {
+		NDAPFIGHKMO JHEBFHEGNPG = 3;
+		BBHDDIPACEC CBFAICAGDGO = 7;
+	}
+}
+
+message MNMNOBGOFJD {
+	uint32 role_id = 2;
+}
+
+message NAEGCNHKCAB {
+	uint32 progress = 3;
+}
+
+message NAODPHAPKOA {
+	DFNHMOGNJGJ source = 2;
+	repeated uint32 JHGCJKCHNCO = 10;
+}
+
+message NBNLDHBELLO {
+	uint32 weight = 1;
+	uint32 role_id = 12;
+}
+
+message NBPEJFHIKJL {
+	repeated uint32 OLPPMEAMFFO = 15;
+}
+
+message NCEPOLNLNKH {
+	uint32 DFNJFFDNLJF = 2;
+	uint32 BCMNCBHNADN = 4;
+	uint32 DANCNIMJOLE = 5;
+	repeated GridFightDropEntry DJOBNPIAEJP = 6;
+	KMJMHDPPAKH phase = 9;
+	uint32 AHJJJNBOMPG = 11;
+	repeated MHCOIBONODA KFNMIEMBJGD = 13;
+	uint32 EIFICNFGGHI = 14;
+}
+
+message NCPKKIAJKHJ {
+	repeated uint32 DGAPHMMGJDC = 10;
+}
+
+message NDAPFIGHKMO {
+}
+
+message NDLNIKCCALK {
+	int64 start_time = 4;
+	bool BPFFFCMMMCH = 7;
+	uint32 EDHKHJAPMKA = 9;
+	int64 end_time = 11;
+	repeated uint32 OPLNKCOLCKJ = 13;
+}
+
+message NGNKIIOHBAI {
+	repeated uint32 OLPPMEAMFFO = 5;
+	uint32 trait_id = 7;
+	uint32 effect_id = 15;
+}
+
+message NIJPHAAONFB {
+	uint32 IHHNLLAJAGB = 1;
+	uint32 role_id = 9;
+}
+
+message NJGBAAOPAOI {
+	uint32 IGOHOJEJIGP = 12;
+	uint32 num = 14;
+}
+
+message NLMAAHDFLGC {
+}
+
+message NLNGEPOOMJJ {
+	uint32 retcode = 5;
+}
+
+message NMDCNICFKGF {
+	uint32 MDNAGANGNKK = 7;
+}
+
+message NNFPCAPDENH {
+}
+
+message NNJDFDOFCCL {
+	LKHAJCACPBH CLKHDBBDHFJ = 2;
+}
+
+message OCNEDLGLLEA {
+	uint32 retcode = 6;
+}
+
+message ODKODPBCDKD {
+	repeated uint32 FLMPNGCJCAI = 8;
+}
+
+message ODPMEJGOOMB {
+	uint32 role_id = 10;
+}
+
+message OEGLNPAMFNH {
+	repeated DDGEFKPIJJJ KFNMIEMBJGD = 3;
+}
+
+message OEJKAOKHPPL {
+	oneof MNIMLAPCGFJ {
+		uint32 OKGGFNJJLNG = 570;
+	}
+}
+
+message OENNAOAFAMA {
+	uint32 JBDFEHDFKNO = 2;
+	uint32 retcode = 6;
+	uint32 DACKJGDGMLN = 7;
+}
+
+message OEPOFNDAMMB {
+	oneof FFBBOFAGGDI {
+		uint32 EAKAGIKFENM = 10;
+		bool AHAIBDAJAIB = 12;
+	}
+}
+
+message OFADBBMPDMM {
+	uint32 PLDKENJLKME = 12;
+}
+
+message OGEIHMPCFKA {
+	uint32 role_id = 7;
+	repeated NAODPHAPKOA DKEIDONNDCJ = 14;
+	uint32 priority = 15;
+}
+
+message OHBLOLLNHIC {
+	uint32 role_id = 1;
+	bool ANDIPJEDGMG = 2;
+	uint32 trait_id = 3;
+	uint32 HOHDOFKJJDJ = 10;
+}
+
+message OHMDHKGAEMM {
+	uint32 stage_id = 2;
+	repeated OEJKAOKHPPL HOEKDPEPLIF = 3;
+	bool HPNNLMBHOPF = 4;
+	uint32 DLPLMJFCENM = 5;
+	repeated uint32 param_list = 6;
+	uint32 IFIIOIIKJHO = 7;
+	uint32 PFEMDGNFHNH = 8;
+	uint32 JBDIJLBNDHC = 10;
+	bool FCNNBODJNIK = 11;
+	uint32 PICMDONCKCO = 12;
+	uint32 CKOOPDFFALE = 13;
+	uint32 node_type = 14;
+	repeated uint32 HKKLNENEPNE = 15;
+}
+
+message ONLFOIONDAF {
+	uint32 JJNGGKPAKME = 3;
+	bool JMCJKPPKAIF = 9;
+	uint32 PNFOOPNCDCH = 10;
+	uint32 interval = 13;
+	int64 start_time = 15;
+}
+
+message OPJALEIKFAC {
+}
+
+enum PBNJKJBIHKC {
+	PBNJKJBIHKC_EEFPODDLKLJ = 0;
+	PBNJKJBIHKC_PBHKKAHPKGB = 1;
+}
+
+message PDDMLHPGOOL {
+	uint32 role_id = 15;
+}
+
+message PDKGKIDCBKA {
+	uint32 BCIGPPFMLJB = 9;
+}
+
+message PEGMFOHNNFL {
+	uint32 role_id = 1;
+	uint32 NODKEBKBGAN = 8;
+}
+
+message PFBCBNMKFAK {
+	uint32 DOJDFBENBEC = 10;
+	uint32 CMEHHMEEKPO = 12;
+	uint32 unique_id = 14;
+}
+
+message PFGCMKIJBBH {
+	uint32 BCIGPPFMLJB = 12;
+}
+
+message PGECGKEKFNC {
+	uint32 LPFGIGJDLFM = 11;
+	uint32 role_id = 14;
+}
+
+message PGGJPHKJJON {
+	repeated uint32 MLNHFIKMAMP = 8;
+}
+
+message PIFMLFKCOOG {
+	uint32 MJGCDMOFALP = 9;
+}
+
+message PIKKAEBHIKF {
+	uint32 PGEBCGLDNMN = 6;
+}
+
+message PPBJJJMJOBN {
+	uint32 BLAEAAFANBM = 3;
+	uint32 BINKJCPGOAB = 10;
+}
+
+message RoleTrackEquipmentInfo {
+	uint32 BGFFICLCKHE = 2;
+	repeated uint32 MCJMHBIECMN = 3;
+	repeated uint32 grid_fight_item_list = 6;
+	uint32 priority = 9;
+	GridFightEquipTrackSource source = 12;
+}
+
+message UpdateGameFormationScRsp {
+	uint32 retcode = 7;
+	HENDEHGPKMF EFBDADNLCGL = 15;
+}

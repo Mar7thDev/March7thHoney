@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdBattleCollegeType {
+	CmdBattleCollegeType_NLCDGIPGFDJ = 0;
+	CmdBattleCollegeType_StartBattleCollegeScRsp = 5705;
+	CmdBattleCollegeType_GetBattleCollegeDataScRsp = 5719;
+	CmdBattleCollegeType_SyncBattleCollegeDataChangeScNotify = 5731;
+	CmdBattleCollegeType_GetBattleCollegeDataCsReq = 5774;
+	CmdBattleCollegeType_StartBattleCollegeCsReq = 5787;
+}
+
+message GetBattleCollegeDataCsReq {
+}
+
+message GetBattleCollegeDataScRsp {
+	uint32 retcode = 1;
+	repeated uint32 finished_college_id_list = 2;
+	uint32 MNMJCNOLIII = 5;
+}
+
+message StartBattleCollegeCsReq {
+	uint32 id = 4;
+}
+
+message StartBattleCollegeScRsp {
+	uint32 id = 3;
+	uint32 retcode = 8;
+	SceneBattleInfo battle_info = 12;
+}
+
+message SyncBattleCollegeDataChangeScNotify {
+	repeated uint32 finished_college_id_list = 3;
+	ItemList reward = 11;
+	uint32 MNMJCNOLIII = 14;
+}

@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AKLDICEFCIL {
+	uint32 avatar_id = 7;
+	AvatarType avatar_type = 11;
+}
+
+message BoxingClubChallengeUpdateScNotify {
+	CIEEKOEECHB OCDLPDDMCLP = 9;
+}
+
+message BoxingClubRewardScNotify {
+	uint32 challenge_id = 4;
+	ItemList reward = 6;
+	uint32 EAFICCLCLLA = 11;
+	bool is_win = 12;
+}
+
+message CIEEKOEECHB {
+	repeated uint32 avatar_list = 1;
+	uint32 EAFICCLCLLA = 3;
+	repeated uint32 EJEFDFEFOMH = 4;
+	uint32 IFHHFBIJOFC = 7;
+	bool MLOGJKEOCPP = 8;
+	uint32 challenge_id = 9;
+	uint32 HODLKBMKMCF = 11;
+	repeated FLLJIHLMKDI OOJOMKDMBBM = 12;
+	uint32 LFFBKJBJJDD = 13;
+	uint32 stage_index = 15;
+}
+
+message ChooseBoxingClubResonanceCsReq {
+	uint32 challenge_id = 4;
+	uint32 HODLKBMKMCF = 12;
+}
+
+message ChooseBoxingClubResonanceScRsp {
+	CIEEKOEECHB OCDLPDDMCLP = 10;
+	uint32 retcode = 12;
+}
+
+message ChooseBoxingClubStageOptionalBuffCsReq {
+	uint32 MFKAOHKPIPE = 3;
+	uint32 challenge_id = 7;
+}
+
+message ChooseBoxingClubStageOptionalBuffScRsp {
+	CIEEKOEECHB OCDLPDDMCLP = 5;
+	uint32 retcode = 9;
+}
+
+enum CmdBoxingClubType {
+	CmdBoxingClubType_NLCDGIPGFDJ = 0;
+	CmdBoxingClubType_StartBoxingClubBattleCsReq = 4205;
+	CmdBoxingClubType_BoxingClubRewardScNotify = 4206;
+	CmdBoxingClubType_GiveUpBoxingClubChallengeScRsp = 4218;
+	CmdBoxingClubType_GetBoxingClubInfoScRsp = 4219;
+	CmdBoxingClubType_ChooseBoxingClubResonanceCsReq = 4227;
+	CmdBoxingClubType_MatchBoxingClubOpponentCsReq = 4231;
+	CmdBoxingClubType_SetBoxingClubResonanceCsReq = 4235;
+	CmdBoxingClubType_ChooseBoxingClubStageOptionalBuffCsReq = 4247;
+	CmdBoxingClubType_ChooseBoxingClubStageOptionalBuffScRsp = 4248;
+	CmdBoxingClubType_ChooseBoxingClubResonanceScRsp = 4252;
+	CmdBoxingClubType_GiveUpBoxingClubChallengeCsReq = 4259;
+	CmdBoxingClubType_BoxingClubChallengeUpdateScNotify = 4270;
+	CmdBoxingClubType_StartBoxingClubBattleScRsp = 4271;
+	CmdBoxingClubType_GetBoxingClubInfoCsReq = 4274;
+	CmdBoxingClubType_MatchBoxingClubOpponentScRsp = 4287;
+	CmdBoxingClubType_SetBoxingClubResonanceScRsp = 4298;
+}
+
+message FLLJIHLMKDI {
+	AvatarType avatar_type = 1;
+	uint32 avatar_id = 13;
+}
+
+message GetBoxingClubInfoCsReq {
+}
+
+message GetBoxingClubInfoScRsp {
+	uint32 retcode = 1;
+	repeated CIEEKOEECHB challenge_list = 12;
+}
+
+message GiveUpBoxingClubChallengeCsReq {
+	bool KEAAGAIAHLA = 5;
+	uint32 challenge_id = 15;
+}
+
+message GiveUpBoxingClubChallengeScRsp {
+	CIEEKOEECHB OCDLPDDMCLP = 4;
+	uint32 retcode = 10;
+}
+
+message MatchBoxingClubOpponentCsReq {
+	repeated AKLDICEFCIL OOJOMKDMBBM = 2;
+	repeated uint32 avatar_list = 3;
+	uint32 challenge_id = 5;
+}
+
+message MatchBoxingClubOpponentScRsp {
+	CIEEKOEECHB OCDLPDDMCLP = 8;
+	uint32 retcode = 13;
+}
+
+message SetBoxingClubResonanceCsReq {
+	uint32 challenge_id = 10;
+	repeated AKLDICEFCIL OOJOMKDMBBM = 15;
+}
+
+message SetBoxingClubResonanceScRsp {
+	CIEEKOEECHB OCDLPDDMCLP = 8;
+	uint32 retcode = 9;
+}
+
+message StartBoxingClubBattleCsReq {
+	uint32 challenge_id = 14;
+}
+
+message StartBoxingClubBattleScRsp {
+	uint32 challenge_id = 11;
+	uint32 retcode = 14;
+	SceneBattleInfo battle_info = 15;
+}

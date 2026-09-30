@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message CBIKIIMGKHH {
+	AvatarType avatar_type = 11;
+	uint32 avatar_id = 12;
+}
+
+enum CmdTelevisionActivityType {
+	CmdTelevisionActivityType_NLCDGIPGFDJ = 0;
+	CmdTelevisionActivityType_GetTelevisionActivityDataScRsp = 6968;
+	CmdTelevisionActivityType_TelevisionActivityBattleEndScNotify = 6969;
+	CmdTelevisionActivityType_GetTelevisionActivityDataCsReq = 6975;
+	CmdTelevisionActivityType_EnterTelevisionActivityStageScRsp = 6976;
+	CmdTelevisionActivityType_EnterTelevisionActivityStageCsReq = 6980;
+}
+
+message EnterTelevisionActivityStageCsReq {
+	uint32 KKNGIFOJLGJ = 1;
+	repeated CBIKIIMGKHH avatar_list = 10;
+	repeated uint32 buff_list = 14;
+}
+
+message EnterTelevisionActivityStageScRsp {
+	SceneBattleInfo battle_info = 1;
+	uint32 retcode = 2;
+	uint32 KKNGIFOJLGJ = 5;
+}
+
+message GetTelevisionActivityDataCsReq {
+}
+
+message GetTelevisionActivityDataScRsp {
+	repeated PAAIMLDHJCI AKDFABDHHIO = 3;
+	uint32 retcode = 7;
+}
+
+message PAAIMLDHJCI {
+	uint32 NELOAKJAABI = 1;
+	uint32 max_score = 8;
+	uint32 KKNGIFOJLGJ = 10;
+}
+
+message TelevisionActivityBattleEndScNotify {
+	uint32 round_score = 4;
+	uint32 total_score = 5;
+	uint32 turn_left = 6;
+	uint32 AAJFIPMBMHC = 13;
+	PAAIMLDHJCI GBHAIBBFPHJ = 14;
+}

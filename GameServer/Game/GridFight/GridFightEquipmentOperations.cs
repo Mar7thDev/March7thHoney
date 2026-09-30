@@ -141,15 +141,15 @@ public sealed partial class GridFightSession
 
     public GridFightConsumableUseResult UseConsumable(
         uint groupId,
-        uint itemId,
         uint roleUniqueId,
         uint equipmentUniqueId)
     {
-        if (!CanModifyEquipment() ||
-            !GameData.GridFightConsumablesData.TryGetValue(itemId, out var config))
+        // The group id is the stack's unique id; since 4.7 the request no longer repeats the item id.
+        var consumable = Consumables.FirstOrDefault(item => item.GroupId == groupId);
+        if (!CanModifyEquipment() || consumable == null || consumable.Count == 0 ||
+            !GameData.GridFightConsumablesData.TryGetValue(consumable.ItemId, out var config))
             return GridFightConsumableUseResult.Failed;
-        var consumable = Consumables.FirstOrDefault(item => item.GroupId == groupId && item.ItemId == itemId);
-        if (consumable == null || consumable.Count == 0) return GridFightConsumableUseResult.Failed;
+        var itemId = consumable.ItemId;
 
         var previousMaxActiveRoles = MaxActiveRoles;
         var removed = new List<GridFightEquipmentState>();

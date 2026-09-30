@@ -1,0 +1,189 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AIPNFBBDNEO {
+	uint32 BAKMHAPCNCJ = 4;
+}
+
+message ANDPLLAKCLE {
+	uint32 IJCJBDDGGJF = 4;
+}
+
+message BAGCLEDHOBD {
+	uint32 BAKMHAPCNCJ = 13;
+}
+
+message ChenLingGameBoyChangeSettingsCsReq {
+	bool NJBJCFLEIAP = 10;
+}
+
+message ChenLingGameBoyChangeSettingsScRsp {
+	uint32 retcode = 11;
+	bool EBAFPOLLJIA = 13;
+}
+
+message ChenLingGameBoyGetFriendRankingInfoCsReq {
+	uint32 FPEDPMAHHND = 15;
+}
+
+message ChenLingGameBoyGetFriendRankingInfoScRsp {
+	repeated NBHDCJHGKCN BEDHEKAGAPE = 2;
+	uint32 IJCJBDDGGJF = 5;
+	bool EBAFPOLLJIA = 6;
+	uint32 retcode = 13;
+}
+
+enum CmdMazePuzzleType {
+	CmdMazePuzzleType_NLCDGIPGFDJ = 0;
+	CmdMazePuzzleType_CCOKCJODLJI = 9056;
+	CmdMazePuzzleType_IPNFOOJJGMC = 9058;
+	CmdMazePuzzleType_LCKLCFFIFCC = 9059;
+	CmdMazePuzzleType_GetFiveDimMiniGameDataScRsp = 9060;
+	CmdMazePuzzleType_SetChenLingGameBoyCheatCodeInputStatusScRsp = 9061;
+	CmdMazePuzzleType_NBOOGOBHMOE = 9065;
+	CmdMazePuzzleType_GetFiveDimFluteDataScRsp = 9066;
+	CmdMazePuzzleType_MazeCrossFloorConditionChangeScNotify = 9072;
+	CmdMazePuzzleType_ChenLingGameBoyChangeSettingsScRsp = 9074;
+	CmdMazePuzzleType_FinishFiveDimMiniGameScRsp = 9075;
+	CmdMazePuzzleType_SetChenLingGameBoyCheatStatusScRsp = 9076;
+	CmdMazePuzzleType_ChenLingGameBoyGetFriendRankingInfoCsReq = 9080;
+	CmdMazePuzzleType_FiveDimFluteDataChangeNotify = 9081;
+	CmdMazePuzzleType_GetFiveDimMiniGameDataCsReq = 9082;
+	CmdMazePuzzleType_ChenLingGameBoyChangeSettingsCsReq = 9084;
+	CmdMazePuzzleType_ChenLingGameBoyGetFriendRankingInfoScRsp = 9085;
+	CmdMazePuzzleType_EEICODKONDH = 9087;
+	CmdMazePuzzleType_GetChenLingGameBoyDataScRsp = 9088;
+	CmdMazePuzzleType_FinishFiveDimMiniGameCsReq = 9091;
+	CmdMazePuzzleType_GetChenLingGameBoyDataCsReq = 9092;
+	CmdMazePuzzleType_GetFiveDimFluteDataCsReq = 9094;
+	CmdMazePuzzleType_BDFOHFOJBKK = 9095;
+	CmdMazePuzzleType_FinishChenLingGameBoyCsReq = 9098;
+	CmdMazePuzzleType_FinishChenLingGameBoyScRsp = 9100;
+}
+
+message EGJJHFIPCNB {
+	uint32 retcode = 2;
+	uint32 BAKMHAPCNCJ = 15;
+}
+
+message EMDKLICDPKK {
+	bool HIEMHCBHKEO = 4;
+	uint32 IJCJBDDGGJF = 12;
+}
+
+message FinishChenLingGameBoyCsReq {
+	uint64 BEJCJJCLJHL = 5;
+	uint32 IJCJBDDGGJF = 7;
+	bool BOHDCEOOLBA = 9;
+	repeated uint32 CJKAGEDKAFL = 11;
+	bool HOPOJGBFGEG = 13;
+}
+
+message FinishChenLingGameBoyScRsp {
+	uint32 IJCJBDDGGJF = 5;
+	uint64 BEJCJJCLJHL = 6;
+	repeated uint32 DDDGOAEEODC = 7;
+	ItemList reward = 8;
+	uint64 HLNODEFLOCF = 11;
+	uint32 retcode = 13;
+}
+
+message FinishFiveDimMiniGameCsReq {
+	uint32 score_id = 2;
+	float JAPBBDENKGM = 3;
+	uint32 CHMBABEJKGE = 4;
+	string uuid = 5;
+	uint32 BAJHKGJPFED = 6;
+	uint32 OCFCOJMIMFD = 7;
+	uint32 AKCLEAJAEPA = 8;
+	uint32 MGBDFKKMNOL = 9;
+	uint32 IPDDIKPHGPE = 10;
+	uint32 FKFGIGAPJNF = 12;
+	uint32 gold = 13;
+}
+
+message FinishFiveDimMiniGameScRsp {
+	ItemList KAFIKBEFKDH = 1;
+	uint32 AKCLEAJAEPA = 3;
+	bool ILAFNJNAFIM = 4;
+	uint32 CHMBABEJKGE = 6;
+	uint32 BAJHKGJPFED = 7;
+	uint32 retcode = 8;
+	float JAPBBDENKGM = 10;
+	uint32 score_id = 11;
+	uint32 gold = 12;
+	uint32 MGBDFKKMNOL = 13;
+	ItemList DHBABIBHNOG = 15;
+}
+
+message FiveDimFluteDataChangeNotify {
+	repeated uint32 NFOBNDJIEPL = 1;
+	repeated uint32 AOBGMMAIMHJ = 6;
+}
+
+message GetChenLingGameBoyDataCsReq {
+	uint32 FPEDPMAHHND = 13;
+}
+
+message GetChenLingGameBoyDataScRsp {
+	uint32 retcode = 10;
+	JBOBHIPHGPB game_data = 12;
+}
+
+message GetFiveDimFluteDataCsReq {
+}
+
+message GetFiveDimFluteDataScRsp {
+	repeated uint32 AOBGMMAIMHJ = 9;
+	repeated uint32 NFOBNDJIEPL = 11;
+	uint32 retcode = 15;
+}
+
+message GetFiveDimMiniGameDataCsReq {
+}
+
+message GetFiveDimMiniGameDataScRsp {
+	repeated IKHLECEJHPO content_package_list = 5;
+	uint32 retcode = 6;
+}
+
+message IKHLECEJHPO {
+	uint32 BAJHKGJPFED = 10;
+	uint32 OFNNJJNAHHH = 14;
+}
+
+message JBOBHIPHGPB {
+	uint32 IJCJBDDGGJF = 3;
+	bool OOMILCOFGPN = 5;
+	bool HIEMHCBHKEO = 11;
+	uint64 HLNODEFLOCF = 13;
+	repeated uint32 CJKAGEDKAFL = 15;
+}
+
+message MazeCrossFloorConditionChangeScNotify {
+	repeated uint32 HLLLIKPGOFG = 10;
+}
+
+message NBHDCJHGKCN {
+	uint32 uid = 5;
+	uint32 IJCJBDDGGJF = 6;
+	uint64 BEJCJJCLJHL = 14;
+}
+
+message NCGFPOKHMBL {
+	uint32 BAKMHAPCNCJ = 6;
+	uint32 retcode = 9;
+}
+
+message SetChenLingGameBoyCheatCodeInputStatusScRsp {
+	uint32 retcode = 5;
+	JBOBHIPHGPB game_data = 11;
+}
+
+message SetChenLingGameBoyCheatStatusScRsp {
+	JBOBHIPHGPB game_data = 13;
+	uint32 retcode = 14;
+}

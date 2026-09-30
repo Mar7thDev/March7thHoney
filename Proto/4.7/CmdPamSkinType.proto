@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdPamSkinType {
+	CmdPamSkinType_NLCDGIPGFDJ = 0;
+	CmdPamSkinType_SelectPamSkinCsReq = 8124;
+	CmdPamSkinType_GetPamSkinDataScRsp = 8128;
+	CmdPamSkinType_GetPamSkinDataCsReq = 8135;
+	CmdPamSkinType_UnlockPamSkinScNotify = 8136;
+	CmdPamSkinType_SelectPamSkinScRsp = 8140;
+}
+
+message GetPamSkinDataCsReq {
+}
+
+message GetPamSkinDataScRsp {
+	repeated uint32 unlock_skin_list = 1;
+	uint32 cur_skin = 4;
+	uint32 retcode = 13;
+}
+
+message SelectPamSkinCsReq {
+	uint32 pam_skin = 2;
+}
+
+message SelectPamSkinScRsp {
+	uint32 cur_skin = 2;
+	uint32 retcode = 4;
+	uint32 set_skin = 12;
+}
+
+message UnlockPamSkinScNotify {
+	uint32 pam_skin = 3;
+}

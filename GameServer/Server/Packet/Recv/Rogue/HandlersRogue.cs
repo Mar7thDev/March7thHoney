@@ -323,15 +323,14 @@ public sealed class HandlerGetRogueBuffEnhanceInfoCsReq : PlayerHandler
     }
 }
 
-// Classic Simulated Universe enhance is the 18xx pair (4.4 SimulatedRogueEnhanceRogueBuffCsReq, obf CINMCBDCBMJ /
-// NAHANHPHGGF, 1885/1807 in 4.6); the 5484/5469 pair is the ChessRogue one. The generated EnhanceRogueBuffScRsp
-// is the ChessRogue layout, which is fine here because an empty body serializes the same for both.
-[Opcode(CmdIds.EnhanceRogueBuffCsReqCmd1885)]
+// Classic Simulated Universe enhance is the 18xx pair (obf CINMCBDCBMJ / NAHANHPHGGF); EnhanceRogueBuffCsReq/ScRsp
+// is the ChessRogue one.
+[Opcode(CmdIds.SimulatedRogueEnhanceRogueBuffCsReq)]
 public sealed class HandlerEnhanceRogueBuffCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(new PacketRogueScRsp(CmdIds.EnhanceRogueBuffScRspCmd1807, new EnhanceRogueBuffScRsp()));
+        await connection.SendPacket(new PacketRogueScRsp(CmdIds.RogueEnhanceRogueBuffScRsp, new RogueEnhanceRogueBuffScRsp()));
     }
 }
 

@@ -25,10 +25,10 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChtDbWRDbGllbnRDdXN0b21PcFR5cGUucHJvdG8iMwoLSE1NSERFS0FIRUES",
-            "FQoLSUhQSkREQ0lJREIYBSABKAhIAEINCgtORUJOSkRNRkVMTypmChVDbWRD",
+            "FQoLSUhQSkREQ0lJREIYBiABKAhIAEINCgtORUJOSkRNRkVMTypmChVDbWRD",
             "bGllbnRDdXN0b21PcFR5cGUSJQohQ21kQ2xpZW50Q3VzdG9tT3BUeXBlX0dH",
             "S01GQUZPSU5QEAASJgohQ21kQ2xpZW50Q3VzdG9tT3BUeXBlX0hQTFBNREVK",
-            "T0pLEOhMQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "T0pLEOlMQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdClientCustomOpType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -41,7 +41,7 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdClientCustomOpType {
     [pbr::OriginalName("CmdClientCustomOpType_GGKMFAFOINP")] Ggkmfafoinp = 0,
-    [pbr::OriginalName("CmdClientCustomOpType_HPLPMDEJOJK")] Hplpmdejojk = 9832,
+    [pbr::OriginalName("CmdClientCustomOpType_HPLPMDEJOJK")] Hplpmdejojk = 9833,
   }
 
   #endregion
@@ -98,10 +98,7 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "IHPJDDCIIDB" field.</summary>
-    public const int IHPJDDCIIDBFieldNumber = 5;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
+    public const int IHPJDDCIIDBFieldNumber = 6;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool IHPJDDCIIDB {
@@ -130,7 +127,7 @@ namespace March7thHoney.Proto {
     /// <summary>Enum of possible cases for the "NEBNJDMFELO" oneof.</summary>
     public enum NEBNJDMFELOOneofCase {
       None = 0,
-      IHPJDDCIIDB = 5,
+      IHPJDDCIIDB = 6,
     }
     private NEBNJDMFELOOneofCase nEBNJDMFELOCase_ = NEBNJDMFELOOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -191,7 +188,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (HasIHPJDDCIIDB) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteBool(IHPJDDCIIDB);
       }
       if (_unknownFields != null) {
@@ -205,7 +202,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (HasIHPJDDCIIDB) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteBool(IHPJDDCIIDB);
       }
       if (_unknownFields != null) {
@@ -258,7 +255,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 48: {
             IHPJDDCIIDB = input.ReadBool();
             break;
           }
@@ -281,7 +278,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 48: {
             IHPJDDCIIDB = input.ReadBool();
             break;
           }
