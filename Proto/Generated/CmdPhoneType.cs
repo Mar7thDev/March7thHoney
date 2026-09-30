@@ -25,45 +25,45 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChJDbWRQaG9uZVR5cGUucHJvdG8iEwoRR2V0UGhvbmVEYXRhQ3NSZXEiwQEK",
-            "EUdldFBob25lRGF0YVNjUnNwEhcKD2N1cl9jaGF0X2J1YmJsZRgFIAEoDRIZ",
-            "ChFvd25lZF9waG9uZV9jYXNlcxgGIAMoDRIXCg9jdXJfcGhvbmVfdGhlbWUY",
-            "CiABKA0SGgoSb3duZWRfY2hhdF9idWJibGVzGAsgAygNEhYKDmN1cl9waG9u",
-            "ZV9jYXNlGAwgASgNEhoKEm93bmVkX3Bob25lX3RoZW1lcxgOIAMoDRIPCgdy",
-            "ZXRjb2RlGA8gASgNIioKFVNlbGVjdENoYXRCdWJibGVDc1JlcRIRCglidWJi",
-            "bGVfaWQYByABKA0iVgoVU2VsZWN0Q2hhdEJ1YmJsZVNjUnNwEg8KB3JldGNv",
-            "ZGUYCiABKA0SEwoLTkdKTU1NQkpGSEQYCyABKA0SFwoPY3VyX2NoYXRfYnVi",
-            "YmxlGAwgASgNIi0KFFNlbGVjdFBob25lQ2FzZUNzUmVxEhUKDXBob25lX2Nh",
-            "c2VfaWQYBCABKA0iVAoUU2VsZWN0UGhvbmVDYXNlU2NSc3ASDwoHcmV0Y29k",
-            "ZRgCIAEoDRITCgtOQU1QSEtQSU9CQRgIIAEoDRIWCg5jdXJfcGhvbmVfY2Fz",
-            "ZRgLIAEoDSIpChVTZWxlY3RQaG9uZVRoZW1lQ3NSZXESEAoIdGhlbWVfaWQY",
-            "ASABKA0iVgoVU2VsZWN0UGhvbmVUaGVtZVNjUnNwEhMKC05OT0hFTEhQSk9N",
-            "GAUgASgNEhcKD2N1cl9waG9uZV90aGVtZRgGIAEoDRIPCgdyZXRjb2RlGAcg",
+            "EUdldFBob25lRGF0YVNjUnNwEhoKEm93bmVkX2NoYXRfYnViYmxlcxgBIAMo",
+            "DRIZChFvd25lZF9waG9uZV9jYXNlcxgCIAMoDRIXCg9jdXJfY2hhdF9idWJi",
+            "bGUYBCABKA0SDwoHcmV0Y29kZRgGIAEoDRIWCg5jdXJfcGhvbmVfY2FzZRgH",
+            "IAEoDRIaChJvd25lZF9waG9uZV90aGVtZXMYCiADKA0SFwoPY3VyX3Bob25l",
+            "X3RoZW1lGAsgASgNIioKFVNlbGVjdENoYXRCdWJibGVDc1JlcRIRCglidWJi",
+            "bGVfaWQYDiABKA0iVgoVU2VsZWN0Q2hhdEJ1YmJsZVNjUnNwEhcKD2N1cl9j",
+            "aGF0X2J1YmJsZRgCIAEoDRITCgtOR0pNTU1CSkZIRBgHIAEoDRIPCgdyZXRj",
+            "b2RlGAkgASgNIi0KFFNlbGVjdFBob25lQ2FzZUNzUmVxEhUKDXBob25lX2Nh",
+            "c2VfaWQYDCABKA0iVAoUU2VsZWN0UGhvbmVDYXNlU2NSc3ASDwoHcmV0Y29k",
+            "ZRgGIAEoDRITCgtOQU1QSEtQSU9CQRgKIAEoDRIWCg5jdXJfcGhvbmVfY2Fz",
+            "ZRgPIAEoDSIpChVTZWxlY3RQaG9uZVRoZW1lQ3NSZXESEAoIdGhlbWVfaWQY",
+            "ASABKA0iVgoVU2VsZWN0UGhvbmVUaGVtZVNjUnNwEhcKD2N1cl9waG9uZV90",
+            "aGVtZRgEIAEoDRIPCgdyZXRjb2RlGAkgASgNEhMKC05OT0hFTEhQSk9NGAwg",
             "ASgNIi0KGFVubG9ja0NoYXRCdWJibGVTY05vdGlmeRIRCglidWJibGVfaWQY",
-            "BCABKA0iMAoXVW5sb2NrUGhvbmVDYXNlU2NOb3RpZnkSFQoNcGhvbmVfY2Fz",
+            "CCABKA0iMAoXVW5sb2NrUGhvbmVDYXNlU2NOb3RpZnkSFQoNcGhvbmVfY2Fz",
             "ZV9pZBgOIAEoDSIsChhVbmxvY2tQaG9uZVRoZW1lU2NOb3RpZnkSEAoIdGhl",
-            "bWVfaWQYBSABKA0q7QMKDENtZFBob25lVHlwZRIcChhDbWRQaG9uZVR5cGVf",
-            "TkxDREdJUEdGREoQABInCiJDbWRQaG9uZVR5cGVfU2VsZWN0UGhvbmVUaGVt",
-            "ZUNzUmVxEPwnEikKJENtZFBob25lVHlwZV9VbmxvY2tQaG9uZUNhc2VTY05v",
-            "dGlmeRCWKBIqCiVDbWRQaG9uZVR5cGVfVW5sb2NrUGhvbmVUaGVtZVNjTm90",
-            "aWZ5EKQoEiMKHkNtZFBob25lVHlwZV9HZXRQaG9uZURhdGFDc1JlcRCOKBIn",
-            "CiJDbWRQaG9uZVR5cGVfU2VsZWN0UGhvbmVUaGVtZVNjUnNwEKYoEiMKHkNt",
-            "ZFBob25lVHlwZV9HZXRQaG9uZURhdGFTY1JzcBCFKBImCiFDbWRQaG9uZVR5",
-            "cGVfU2VsZWN0UGhvbmVDYXNlQ3NSZXEQvygSJwoiQ21kUGhvbmVUeXBlX1Nl",
-            "bGVjdENoYXRCdWJibGVTY1JzcBC3KBInCiJDbWRQaG9uZVR5cGVfU2VsZWN0",
-            "Q2hhdEJ1YmJsZUNzUmVxEPEnEioKJUNtZFBob25lVHlwZV9VbmxvY2tDaGF0",
-            "QnViYmxlU2NOb3RpZnkQqCgSJgohQ21kUGhvbmVUeXBlX1NlbGVjdFBob25l",
-            "Q2FzZVNjUnNwEPsnQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "bWVfaWQYCSABKA0q7QMKDENtZFBob25lVHlwZRIcChhDbWRQaG9uZVR5cGVf",
+            "TkxDREdJUEdGREoQABIqCiVDbWRQaG9uZVR5cGVfVW5sb2NrQ2hhdEJ1YmJs",
+            "ZVNjTm90aWZ5EPEnEiYKIUNtZFBob25lVHlwZV9TZWxlY3RQaG9uZUNhc2VD",
+            "c1JlcRDyJxIqCiVDbWRQaG9uZVR5cGVfVW5sb2NrUGhvbmVUaGVtZVNjTm90",
+            "aWZ5EP4nEiMKHkNtZFBob25lVHlwZV9HZXRQaG9uZURhdGFTY1JzcBD/JxIp",
+            "CiRDbWRQaG9uZVR5cGVfVW5sb2NrUGhvbmVDYXNlU2NOb3RpZnkQhygSJwoi",
+            "Q21kUGhvbmVUeXBlX1NlbGVjdENoYXRCdWJibGVDc1JlcRCLKBInCiJDbWRQ",
+            "aG9uZVR5cGVfU2VsZWN0UGhvbmVUaGVtZVNjUnNwEKcoEiYKIUNtZFBob25l",
+            "VHlwZV9TZWxlY3RQaG9uZUNhc2VTY1JzcBCyKBInCiJDbWRQaG9uZVR5cGVf",
+            "U2VsZWN0UGhvbmVUaGVtZUNzUmVxELMoEiMKHkNtZFBob25lVHlwZV9HZXRQ",
+            "aG9uZURhdGFDc1JlcRC2KBInCiJDbWRQaG9uZVR5cGVfU2VsZWN0Q2hhdEJ1",
+            "YmJsZVNjUnNwEMMoQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPhoneType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPhoneDataCsReq), global::March7thHoney.Proto.GetPhoneDataCsReq.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPhoneDataScRsp), global::March7thHoney.Proto.GetPhoneDataScRsp.Parser, new[]{ "CurChatBubble", "OwnedPhoneCases", "CurPhoneTheme", "OwnedChatBubbles", "CurPhoneCase", "OwnedPhoneThemes", "Retcode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.GetPhoneDataScRsp), global::March7thHoney.Proto.GetPhoneDataScRsp.Parser, new[]{ "OwnedChatBubbles", "OwnedPhoneCases", "CurChatBubble", "Retcode", "CurPhoneCase", "OwnedPhoneThemes", "CurPhoneTheme" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectChatBubbleCsReq), global::March7thHoney.Proto.SelectChatBubbleCsReq.Parser, new[]{ "BubbleId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectChatBubbleScRsp), global::March7thHoney.Proto.SelectChatBubbleScRsp.Parser, new[]{ "Retcode", "NGJMMMBJFHD", "CurChatBubble" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectChatBubbleScRsp), global::March7thHoney.Proto.SelectChatBubbleScRsp.Parser, new[]{ "CurChatBubble", "NGJMMMBJFHD", "Retcode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPhoneCaseCsReq), global::March7thHoney.Proto.SelectPhoneCaseCsReq.Parser, new[]{ "PhoneCaseId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPhoneCaseScRsp), global::March7thHoney.Proto.SelectPhoneCaseScRsp.Parser, new[]{ "Retcode", "NAMPHKPIOBA", "CurPhoneCase" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPhoneThemeCsReq), global::March7thHoney.Proto.SelectPhoneThemeCsReq.Parser, new[]{ "ThemeId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPhoneThemeScRsp), global::March7thHoney.Proto.SelectPhoneThemeScRsp.Parser, new[]{ "NNOHELHPJOM", "CurPhoneTheme", "Retcode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.SelectPhoneThemeScRsp), global::March7thHoney.Proto.SelectPhoneThemeScRsp.Parser, new[]{ "CurPhoneTheme", "Retcode", "NNOHELHPJOM" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UnlockChatBubbleScNotify), global::March7thHoney.Proto.UnlockChatBubbleScNotify.Parser, new[]{ "BubbleId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UnlockPhoneCaseScNotify), global::March7thHoney.Proto.UnlockPhoneCaseScNotify.Parser, new[]{ "PhoneCaseId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.UnlockPhoneThemeScNotify), global::March7thHoney.Proto.UnlockPhoneThemeScNotify.Parser, new[]{ "ThemeId" }, null, null, null, null)
@@ -75,17 +75,17 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPhoneType {
     [pbr::OriginalName("CmdPhoneType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdPhoneType_SelectPhoneThemeCsReq")] SelectPhoneThemeCsReq = 5116,
-    [pbr::OriginalName("CmdPhoneType_UnlockPhoneCaseScNotify")] UnlockPhoneCaseScNotify = 5142,
-    [pbr::OriginalName("CmdPhoneType_UnlockPhoneThemeScNotify")] UnlockPhoneThemeScNotify = 5156,
-    [pbr::OriginalName("CmdPhoneType_GetPhoneDataCsReq")] GetPhoneDataCsReq = 5134,
-    [pbr::OriginalName("CmdPhoneType_SelectPhoneThemeScRsp")] SelectPhoneThemeScRsp = 5158,
-    [pbr::OriginalName("CmdPhoneType_GetPhoneDataScRsp")] GetPhoneDataScRsp = 5125,
-    [pbr::OriginalName("CmdPhoneType_SelectPhoneCaseCsReq")] SelectPhoneCaseCsReq = 5183,
-    [pbr::OriginalName("CmdPhoneType_SelectChatBubbleScRsp")] SelectChatBubbleScRsp = 5175,
-    [pbr::OriginalName("CmdPhoneType_SelectChatBubbleCsReq")] SelectChatBubbleCsReq = 5105,
-    [pbr::OriginalName("CmdPhoneType_UnlockChatBubbleScNotify")] UnlockChatBubbleScNotify = 5160,
-    [pbr::OriginalName("CmdPhoneType_SelectPhoneCaseScRsp")] SelectPhoneCaseScRsp = 5115,
+    [pbr::OriginalName("CmdPhoneType_UnlockChatBubbleScNotify")] UnlockChatBubbleScNotify = 5105,
+    [pbr::OriginalName("CmdPhoneType_SelectPhoneCaseCsReq")] SelectPhoneCaseCsReq = 5106,
+    [pbr::OriginalName("CmdPhoneType_UnlockPhoneThemeScNotify")] UnlockPhoneThemeScNotify = 5118,
+    [pbr::OriginalName("CmdPhoneType_GetPhoneDataScRsp")] GetPhoneDataScRsp = 5119,
+    [pbr::OriginalName("CmdPhoneType_UnlockPhoneCaseScNotify")] UnlockPhoneCaseScNotify = 5127,
+    [pbr::OriginalName("CmdPhoneType_SelectChatBubbleCsReq")] SelectChatBubbleCsReq = 5131,
+    [pbr::OriginalName("CmdPhoneType_SelectPhoneThemeScRsp")] SelectPhoneThemeScRsp = 5159,
+    [pbr::OriginalName("CmdPhoneType_SelectPhoneCaseScRsp")] SelectPhoneCaseScRsp = 5170,
+    [pbr::OriginalName("CmdPhoneType_SelectPhoneThemeCsReq")] SelectPhoneThemeCsReq = 5171,
+    [pbr::OriginalName("CmdPhoneType_GetPhoneDataCsReq")] GetPhoneDataCsReq = 5174,
+    [pbr::OriginalName("CmdPhoneType_SelectChatBubbleScRsp")] SelectChatBubbleScRsp = 5187,
   }
 
   #endregion
@@ -287,13 +287,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetPhoneDataScRsp(GetPhoneDataScRsp other) : this() {
-      curChatBubble_ = other.curChatBubble_;
-      ownedPhoneCases_ = other.ownedPhoneCases_.Clone();
-      curPhoneTheme_ = other.curPhoneTheme_;
       ownedChatBubbles_ = other.ownedChatBubbles_.Clone();
+      ownedPhoneCases_ = other.ownedPhoneCases_.Clone();
+      curChatBubble_ = other.curChatBubble_;
+      retcode_ = other.retcode_;
       curPhoneCase_ = other.curPhoneCase_;
       ownedPhoneThemes_ = other.ownedPhoneThemes_.Clone();
-      retcode_ = other.retcode_;
+      curPhoneTheme_ = other.curPhoneTheme_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -303,12 +303,31 @@ namespace March7thHoney.Proto {
       return new GetPhoneDataScRsp(this);
     }
 
+    /// <summary>Field number for the "owned_chat_bubbles" field.</summary>
+    public const int OwnedChatBubblesFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_ownedChatBubbles_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> ownedChatBubbles_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OwnedChatBubbles {
+      get { return ownedChatBubbles_; }
+    }
+
+    /// <summary>Field number for the "owned_phone_cases" field.</summary>
+    public const int OwnedPhoneCasesFieldNumber = 2;
+    private static readonly pb::FieldCodec<uint> _repeated_ownedPhoneCases_codec
+        = pb::FieldCodec.ForUInt32(18);
+    private readonly pbc::RepeatedField<uint> ownedPhoneCases_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> OwnedPhoneCases {
+      get { return ownedPhoneCases_; }
+    }
+
     /// <summary>Field number for the "cur_chat_bubble" field.</summary>
-    public const int CurChatBubbleFieldNumber = 5;
+    public const int CurChatBubbleFieldNumber = 4;
     private uint curChatBubble_;
-    /// <summary>
-    /// offset: 60
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CurChatBubble {
@@ -318,55 +337,21 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "owned_phone_cases" field.</summary>
-    public const int OwnedPhoneCasesFieldNumber = 6;
-    private static readonly pb::FieldCodec<uint> _repeated_ownedPhoneCases_codec
-        = pb::FieldCodec.ForUInt32(50);
-    private readonly pbc::RepeatedField<uint> ownedPhoneCases_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 40
-    /// </summary>
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 6;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OwnedPhoneCases {
-      get { return ownedPhoneCases_; }
-    }
-
-    /// <summary>Field number for the "cur_phone_theme" field.</summary>
-    public const int CurPhoneThemeFieldNumber = 10;
-    private uint curPhoneTheme_;
-    /// <summary>
-    /// offset: 48
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurPhoneTheme {
-      get { return curPhoneTheme_; }
+    public uint Retcode {
+      get { return retcode_; }
       set {
-        curPhoneTheme_ = value;
+        retcode_ = value;
       }
     }
 
-    /// <summary>Field number for the "owned_chat_bubbles" field.</summary>
-    public const int OwnedChatBubblesFieldNumber = 11;
-    private static readonly pb::FieldCodec<uint> _repeated_ownedChatBubbles_codec
-        = pb::FieldCodec.ForUInt32(90);
-    private readonly pbc::RepeatedField<uint> ownedChatBubbles_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 16
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<uint> OwnedChatBubbles {
-      get { return ownedChatBubbles_; }
-    }
-
     /// <summary>Field number for the "cur_phone_case" field.</summary>
-    public const int CurPhoneCaseFieldNumber = 12;
+    public const int CurPhoneCaseFieldNumber = 7;
     private uint curPhoneCase_;
-    /// <summary>
-    /// offset: 56
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CurPhoneCase {
@@ -377,31 +362,25 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "owned_phone_themes" field.</summary>
-    public const int OwnedPhoneThemesFieldNumber = 14;
+    public const int OwnedPhoneThemesFieldNumber = 10;
     private static readonly pb::FieldCodec<uint> _repeated_ownedPhoneThemes_codec
-        = pb::FieldCodec.ForUInt32(114);
+        = pb::FieldCodec.ForUInt32(82);
     private readonly pbc::RepeatedField<uint> ownedPhoneThemes_ = new pbc::RepeatedField<uint>();
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<uint> OwnedPhoneThemes {
       get { return ownedPhoneThemes_; }
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 15;
-    private uint retcode_;
-    /// <summary>
-    /// offset: 52
-    /// </summary>
+    /// <summary>Field number for the "cur_phone_theme" field.</summary>
+    public const int CurPhoneThemeFieldNumber = 11;
+    private uint curPhoneTheme_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
+    public uint CurPhoneTheme {
+      get { return curPhoneTheme_; }
       set {
-        retcode_ = value;
+        curPhoneTheme_ = value;
       }
     }
 
@@ -420,13 +399,13 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CurChatBubble != other.CurChatBubble) return false;
-      if(!ownedPhoneCases_.Equals(other.ownedPhoneCases_)) return false;
-      if (CurPhoneTheme != other.CurPhoneTheme) return false;
       if(!ownedChatBubbles_.Equals(other.ownedChatBubbles_)) return false;
+      if(!ownedPhoneCases_.Equals(other.ownedPhoneCases_)) return false;
+      if (CurChatBubble != other.CurChatBubble) return false;
+      if (Retcode != other.Retcode) return false;
       if (CurPhoneCase != other.CurPhoneCase) return false;
       if(!ownedPhoneThemes_.Equals(other.ownedPhoneThemes_)) return false;
-      if (Retcode != other.Retcode) return false;
+      if (CurPhoneTheme != other.CurPhoneTheme) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -434,13 +413,13 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CurChatBubble != 0) hash ^= CurChatBubble.GetHashCode();
-      hash ^= ownedPhoneCases_.GetHashCode();
-      if (CurPhoneTheme != 0) hash ^= CurPhoneTheme.GetHashCode();
       hash ^= ownedChatBubbles_.GetHashCode();
+      hash ^= ownedPhoneCases_.GetHashCode();
+      if (CurChatBubble != 0) hash ^= CurChatBubble.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (CurPhoneCase != 0) hash ^= CurPhoneCase.GetHashCode();
       hash ^= ownedPhoneThemes_.GetHashCode();
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (CurPhoneTheme != 0) hash ^= CurPhoneTheme.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -459,24 +438,24 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      ownedChatBubbles_.WriteTo(output, _repeated_ownedChatBubbles_codec);
+      ownedPhoneCases_.WriteTo(output, _repeated_ownedPhoneCases_codec);
       if (CurChatBubble != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteUInt32(CurChatBubble);
       }
-      ownedPhoneCases_.WriteTo(output, _repeated_ownedPhoneCases_codec);
-      if (CurPhoneTheme != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CurPhoneTheme);
+      if (Retcode != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Retcode);
       }
-      ownedChatBubbles_.WriteTo(output, _repeated_ownedChatBubbles_codec);
       if (CurPhoneCase != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(CurPhoneCase);
       }
       ownedPhoneThemes_.WriteTo(output, _repeated_ownedPhoneThemes_codec);
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
+      if (CurPhoneTheme != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(CurPhoneTheme);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -488,24 +467,24 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      ownedChatBubbles_.WriteTo(ref output, _repeated_ownedChatBubbles_codec);
+      ownedPhoneCases_.WriteTo(ref output, _repeated_ownedPhoneCases_codec);
       if (CurChatBubble != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteUInt32(CurChatBubble);
       }
-      ownedPhoneCases_.WriteTo(ref output, _repeated_ownedPhoneCases_codec);
-      if (CurPhoneTheme != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(CurPhoneTheme);
+      if (Retcode != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(Retcode);
       }
-      ownedChatBubbles_.WriteTo(ref output, _repeated_ownedChatBubbles_codec);
       if (CurPhoneCase != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(56);
         output.WriteUInt32(CurPhoneCase);
       }
       ownedPhoneThemes_.WriteTo(ref output, _repeated_ownedPhoneThemes_codec);
-      if (Retcode != 0) {
-        output.WriteRawTag(120);
-        output.WriteUInt32(Retcode);
+      if (CurPhoneTheme != 0) {
+        output.WriteRawTag(88);
+        output.WriteUInt32(CurPhoneTheme);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -517,20 +496,20 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      size += ownedChatBubbles_.CalculateSize(_repeated_ownedChatBubbles_codec);
+      size += ownedPhoneCases_.CalculateSize(_repeated_ownedPhoneCases_codec);
       if (CurChatBubble != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurChatBubble);
       }
-      size += ownedPhoneCases_.CalculateSize(_repeated_ownedPhoneCases_codec);
-      if (CurPhoneTheme != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurPhoneTheme);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
-      size += ownedChatBubbles_.CalculateSize(_repeated_ownedChatBubbles_codec);
       if (CurPhoneCase != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurPhoneCase);
       }
       size += ownedPhoneThemes_.CalculateSize(_repeated_ownedPhoneThemes_codec);
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      if (CurPhoneTheme != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurPhoneTheme);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -544,20 +523,20 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
+      ownedChatBubbles_.Add(other.ownedChatBubbles_);
+      ownedPhoneCases_.Add(other.ownedPhoneCases_);
       if (other.CurChatBubble != 0) {
         CurChatBubble = other.CurChatBubble;
       }
-      ownedPhoneCases_.Add(other.ownedPhoneCases_);
-      if (other.CurPhoneTheme != 0) {
-        CurPhoneTheme = other.CurPhoneTheme;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
-      ownedChatBubbles_.Add(other.ownedChatBubbles_);
       if (other.CurPhoneCase != 0) {
         CurPhoneCase = other.CurPhoneCase;
       }
       ownedPhoneThemes_.Add(other.ownedPhoneThemes_);
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
+      if (other.CurPhoneTheme != 0) {
+        CurPhoneTheme = other.CurPhoneTheme;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -578,35 +557,35 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            CurChatBubble = input.ReadUInt32();
-            break;
-          }
-          case 50:
-          case 48: {
-            ownedPhoneCases_.AddEntriesFrom(input, _repeated_ownedPhoneCases_codec);
-            break;
-          }
-          case 80: {
-            CurPhoneTheme = input.ReadUInt32();
-            break;
-          }
-          case 90:
-          case 88: {
+          case 10:
+          case 8: {
             ownedChatBubbles_.AddEntriesFrom(input, _repeated_ownedChatBubbles_codec);
             break;
           }
-          case 96: {
+          case 18:
+          case 16: {
+            ownedPhoneCases_.AddEntriesFrom(input, _repeated_ownedPhoneCases_codec);
+            break;
+          }
+          case 32: {
+            CurChatBubble = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             CurPhoneCase = input.ReadUInt32();
             break;
           }
-          case 114:
-          case 112: {
+          case 82:
+          case 80: {
             ownedPhoneThemes_.AddEntriesFrom(input, _repeated_ownedPhoneThemes_codec);
             break;
           }
-          case 120: {
-            Retcode = input.ReadUInt32();
+          case 88: {
+            CurPhoneTheme = input.ReadUInt32();
             break;
           }
         }
@@ -628,35 +607,35 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            CurChatBubble = input.ReadUInt32();
-            break;
-          }
-          case 50:
-          case 48: {
-            ownedPhoneCases_.AddEntriesFrom(ref input, _repeated_ownedPhoneCases_codec);
-            break;
-          }
-          case 80: {
-            CurPhoneTheme = input.ReadUInt32();
-            break;
-          }
-          case 90:
-          case 88: {
+          case 10:
+          case 8: {
             ownedChatBubbles_.AddEntriesFrom(ref input, _repeated_ownedChatBubbles_codec);
             break;
           }
-          case 96: {
+          case 18:
+          case 16: {
+            ownedPhoneCases_.AddEntriesFrom(ref input, _repeated_ownedPhoneCases_codec);
+            break;
+          }
+          case 32: {
+            CurChatBubble = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            Retcode = input.ReadUInt32();
+            break;
+          }
+          case 56: {
             CurPhoneCase = input.ReadUInt32();
             break;
           }
-          case 114:
-          case 112: {
+          case 82:
+          case 80: {
             ownedPhoneThemes_.AddEntriesFrom(ref input, _repeated_ownedPhoneThemes_codec);
             break;
           }
-          case 120: {
-            Retcode = input.ReadUInt32();
+          case 88: {
+            CurPhoneTheme = input.ReadUInt32();
             break;
           }
         }
@@ -712,11 +691,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "bubble_id" field.</summary>
-    public const int BubbleIdFieldNumber = 7;
+    public const int BubbleIdFieldNumber = 14;
     private uint bubbleId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint BubbleId {
@@ -769,7 +745,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BubbleId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(112);
         output.WriteUInt32(BubbleId);
       }
       if (_unknownFields != null) {
@@ -783,7 +759,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BubbleId != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(112);
         output.WriteUInt32(BubbleId);
       }
       if (_unknownFields != null) {
@@ -833,7 +809,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 56: {
+          case 112: {
             BubbleId = input.ReadUInt32();
             break;
           }
@@ -856,7 +832,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 56: {
+          case 112: {
             BubbleId = input.ReadUInt32();
             break;
           }
@@ -902,9 +878,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectChatBubbleScRsp(SelectChatBubbleScRsp other) : this() {
-      retcode_ = other.retcode_;
-      nGJMMMBJFHD_ = other.nGJMMMBJFHD_;
       curChatBubble_ = other.curChatBubble_;
+      nGJMMMBJFHD_ = other.nGJMMMBJFHD_;
+      retcode_ = other.retcode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -914,27 +890,21 @@ namespace March7thHoney.Proto {
       return new SelectChatBubbleScRsp(this);
     }
 
-    /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 10;
-    private uint retcode_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
+    /// <summary>Field number for the "cur_chat_bubble" field.</summary>
+    public const int CurChatBubbleFieldNumber = 2;
+    private uint curChatBubble_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Retcode {
-      get { return retcode_; }
+    public uint CurChatBubble {
+      get { return curChatBubble_; }
       set {
-        retcode_ = value;
+        curChatBubble_ = value;
       }
     }
 
     /// <summary>Field number for the "NGJMMMBJFHD" field.</summary>
-    public const int NGJMMMBJFHDFieldNumber = 11;
+    public const int NGJMMMBJFHDFieldNumber = 7;
     private uint nGJMMMBJFHD_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint NGJMMMBJFHD {
@@ -944,18 +914,15 @@ namespace March7thHoney.Proto {
       }
     }
 
-    /// <summary>Field number for the "cur_chat_bubble" field.</summary>
-    public const int CurChatBubbleFieldNumber = 12;
-    private uint curChatBubble_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
+    /// <summary>Field number for the "retcode" field.</summary>
+    public const int RetcodeFieldNumber = 9;
+    private uint retcode_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CurChatBubble {
-      get { return curChatBubble_; }
+    public uint Retcode {
+      get { return retcode_; }
       set {
-        curChatBubble_ = value;
+        retcode_ = value;
       }
     }
 
@@ -974,9 +941,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Retcode != other.Retcode) return false;
-      if (NGJMMMBJFHD != other.NGJMMMBJFHD) return false;
       if (CurChatBubble != other.CurChatBubble) return false;
+      if (NGJMMMBJFHD != other.NGJMMMBJFHD) return false;
+      if (Retcode != other.Retcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -984,9 +951,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Retcode != 0) hash ^= Retcode.GetHashCode();
-      if (NGJMMMBJFHD != 0) hash ^= NGJMMMBJFHD.GetHashCode();
       if (CurChatBubble != 0) hash ^= CurChatBubble.GetHashCode();
+      if (NGJMMMBJFHD != 0) hash ^= NGJMMMBJFHD.GetHashCode();
+      if (Retcode != 0) hash ^= Retcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1005,17 +972,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Retcode != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Retcode);
+      if (CurChatBubble != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(CurChatBubble);
       }
       if (NGJMMMBJFHD != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(56);
         output.WriteUInt32(NGJMMMBJFHD);
       }
-      if (CurChatBubble != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(CurChatBubble);
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1027,17 +994,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Retcode != 0) {
-        output.WriteRawTag(80);
-        output.WriteUInt32(Retcode);
+      if (CurChatBubble != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(CurChatBubble);
       }
       if (NGJMMMBJFHD != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(56);
         output.WriteUInt32(NGJMMMBJFHD);
       }
-      if (CurChatBubble != 0) {
-        output.WriteRawTag(96);
-        output.WriteUInt32(CurChatBubble);
+      if (Retcode != 0) {
+        output.WriteRawTag(72);
+        output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1049,14 +1016,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Retcode != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      if (CurChatBubble != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurChatBubble);
       }
       if (NGJMMMBJFHD != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NGJMMMBJFHD);
       }
-      if (CurChatBubble != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurChatBubble);
+      if (Retcode != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1070,14 +1037,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.Retcode != 0) {
-        Retcode = other.Retcode;
+      if (other.CurChatBubble != 0) {
+        CurChatBubble = other.CurChatBubble;
       }
       if (other.NGJMMMBJFHD != 0) {
         NGJMMMBJFHD = other.NGJMMMBJFHD;
       }
-      if (other.CurChatBubble != 0) {
-        CurChatBubble = other.CurChatBubble;
+      if (other.Retcode != 0) {
+        Retcode = other.Retcode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1098,16 +1065,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 80: {
-            Retcode = input.ReadUInt32();
+          case 16: {
+            CurChatBubble = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 56: {
             NGJMMMBJFHD = input.ReadUInt32();
             break;
           }
-          case 96: {
-            CurChatBubble = input.ReadUInt32();
+          case 72: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -1129,16 +1096,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 80: {
-            Retcode = input.ReadUInt32();
+          case 16: {
+            CurChatBubble = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 56: {
             NGJMMMBJFHD = input.ReadUInt32();
             break;
           }
-          case 96: {
-            CurChatBubble = input.ReadUInt32();
+          case 72: {
+            Retcode = input.ReadUInt32();
             break;
           }
         }
@@ -1194,11 +1161,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "phone_case_id" field.</summary>
-    public const int PhoneCaseIdFieldNumber = 4;
+    public const int PhoneCaseIdFieldNumber = 12;
     private uint phoneCaseId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PhoneCaseId {
@@ -1251,7 +1215,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (PhoneCaseId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(96);
         output.WriteUInt32(PhoneCaseId);
       }
       if (_unknownFields != null) {
@@ -1265,7 +1229,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (PhoneCaseId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(96);
         output.WriteUInt32(PhoneCaseId);
       }
       if (_unknownFields != null) {
@@ -1315,7 +1279,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 96: {
             PhoneCaseId = input.ReadUInt32();
             break;
           }
@@ -1338,7 +1302,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 96: {
             PhoneCaseId = input.ReadUInt32();
             break;
           }
@@ -1397,11 +1361,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 2;
+    public const int RetcodeFieldNumber = 6;
     private uint retcode_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -1412,11 +1373,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "NAMPHKPIOBA" field.</summary>
-    public const int NAMPHKPIOBAFieldNumber = 8;
+    public const int NAMPHKPIOBAFieldNumber = 10;
     private uint nAMPHKPIOBA_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint NAMPHKPIOBA {
@@ -1427,11 +1385,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "cur_phone_case" field.</summary>
-    public const int CurPhoneCaseFieldNumber = 11;
+    public const int CurPhoneCaseFieldNumber = 15;
     private uint curPhoneCase_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CurPhoneCase {
@@ -1488,15 +1443,15 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
       if (NAMPHKPIOBA != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(80);
         output.WriteUInt32(NAMPHKPIOBA);
       }
       if (CurPhoneCase != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteUInt32(CurPhoneCase);
       }
       if (_unknownFields != null) {
@@ -1510,15 +1465,15 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(48);
         output.WriteUInt32(Retcode);
       }
       if (NAMPHKPIOBA != 0) {
-        output.WriteRawTag(64);
+        output.WriteRawTag(80);
         output.WriteUInt32(NAMPHKPIOBA);
       }
       if (CurPhoneCase != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(120);
         output.WriteUInt32(CurPhoneCase);
       }
       if (_unknownFields != null) {
@@ -1580,15 +1535,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 16: {
+          case 48: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 80: {
             NAMPHKPIOBA = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             CurPhoneCase = input.ReadUInt32();
             break;
           }
@@ -1611,15 +1566,15 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 16: {
+          case 48: {
             Retcode = input.ReadUInt32();
             break;
           }
-          case 64: {
+          case 80: {
             NAMPHKPIOBA = input.ReadUInt32();
             break;
           }
-          case 88: {
+          case 120: {
             CurPhoneCase = input.ReadUInt32();
             break;
           }
@@ -1678,9 +1633,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "theme_id" field.</summary>
     public const int ThemeIdFieldNumber = 1;
     private uint themeId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint ThemeId {
@@ -1866,9 +1818,9 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SelectPhoneThemeScRsp(SelectPhoneThemeScRsp other) : this() {
-      nNOHELHPJOM_ = other.nNOHELHPJOM_;
       curPhoneTheme_ = other.curPhoneTheme_;
       retcode_ = other.retcode_;
+      nNOHELHPJOM_ = other.nNOHELHPJOM_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1878,27 +1830,9 @@ namespace March7thHoney.Proto {
       return new SelectPhoneThemeScRsp(this);
     }
 
-    /// <summary>Field number for the "NNOHELHPJOM" field.</summary>
-    public const int NNOHELHPJOMFieldNumber = 5;
-    private uint nNOHELHPJOM_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint NNOHELHPJOM {
-      get { return nNOHELHPJOM_; }
-      set {
-        nNOHELHPJOM_ = value;
-      }
-    }
-
     /// <summary>Field number for the "cur_phone_theme" field.</summary>
-    public const int CurPhoneThemeFieldNumber = 6;
+    public const int CurPhoneThemeFieldNumber = 4;
     private uint curPhoneTheme_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CurPhoneTheme {
@@ -1909,17 +1843,26 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 7;
+    public const int RetcodeFieldNumber = 9;
     private uint retcode_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "NNOHELHPJOM" field.</summary>
+    public const int NNOHELHPJOMFieldNumber = 12;
+    private uint nNOHELHPJOM_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint NNOHELHPJOM {
+      get { return nNOHELHPJOM_; }
+      set {
+        nNOHELHPJOM_ = value;
       }
     }
 
@@ -1938,9 +1881,9 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (NNOHELHPJOM != other.NNOHELHPJOM) return false;
       if (CurPhoneTheme != other.CurPhoneTheme) return false;
       if (Retcode != other.Retcode) return false;
+      if (NNOHELHPJOM != other.NNOHELHPJOM) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1948,9 +1891,9 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (NNOHELHPJOM != 0) hash ^= NNOHELHPJOM.GetHashCode();
       if (CurPhoneTheme != 0) hash ^= CurPhoneTheme.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (NNOHELHPJOM != 0) hash ^= NNOHELHPJOM.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1969,17 +1912,17 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (NNOHELHPJOM != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(NNOHELHPJOM);
-      }
       if (CurPhoneTheme != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteUInt32(CurPhoneTheme);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
+      }
+      if (NNOHELHPJOM != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(NNOHELHPJOM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1991,17 +1934,17 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (NNOHELHPJOM != 0) {
-        output.WriteRawTag(40);
-        output.WriteUInt32(NNOHELHPJOM);
-      }
       if (CurPhoneTheme != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(32);
         output.WriteUInt32(CurPhoneTheme);
       }
       if (Retcode != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(72);
         output.WriteUInt32(Retcode);
+      }
+      if (NNOHELHPJOM != 0) {
+        output.WriteRawTag(96);
+        output.WriteUInt32(NNOHELHPJOM);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2013,14 +1956,14 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (NNOHELHPJOM != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NNOHELHPJOM);
-      }
       if (CurPhoneTheme != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CurPhoneTheme);
       }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (NNOHELHPJOM != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NNOHELHPJOM);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2034,14 +1977,14 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.NNOHELHPJOM != 0) {
-        NNOHELHPJOM = other.NNOHELHPJOM;
-      }
       if (other.CurPhoneTheme != 0) {
         CurPhoneTheme = other.CurPhoneTheme;
       }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.NNOHELHPJOM != 0) {
+        NNOHELHPJOM = other.NNOHELHPJOM;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2062,16 +2005,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
-            NNOHELHPJOM = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 32: {
             CurPhoneTheme = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 72: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            NNOHELHPJOM = input.ReadUInt32();
             break;
           }
         }
@@ -2093,16 +2036,16 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
-            NNOHELHPJOM = input.ReadUInt32();
-            break;
-          }
-          case 48: {
+          case 32: {
             CurPhoneTheme = input.ReadUInt32();
             break;
           }
-          case 56: {
+          case 72: {
             Retcode = input.ReadUInt32();
+            break;
+          }
+          case 96: {
+            NNOHELHPJOM = input.ReadUInt32();
             break;
           }
         }
@@ -2158,11 +2101,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "bubble_id" field.</summary>
-    public const int BubbleIdFieldNumber = 4;
+    public const int BubbleIdFieldNumber = 8;
     private uint bubbleId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint BubbleId {
@@ -2215,7 +2155,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (BubbleId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteUInt32(BubbleId);
       }
       if (_unknownFields != null) {
@@ -2229,7 +2169,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (BubbleId != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(64);
         output.WriteUInt32(BubbleId);
       }
       if (_unknownFields != null) {
@@ -2279,7 +2219,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 32: {
+          case 64: {
             BubbleId = input.ReadUInt32();
             break;
           }
@@ -2302,7 +2242,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 32: {
+          case 64: {
             BubbleId = input.ReadUInt32();
             break;
           }
@@ -2361,9 +2301,6 @@ namespace March7thHoney.Proto {
     /// <summary>Field number for the "phone_case_id" field.</summary>
     public const int PhoneCaseIdFieldNumber = 14;
     private uint phoneCaseId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint PhoneCaseId {
@@ -2560,11 +2497,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "theme_id" field.</summary>
-    public const int ThemeIdFieldNumber = 5;
+    public const int ThemeIdFieldNumber = 9;
     private uint themeId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint ThemeId {
@@ -2617,7 +2551,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (ThemeId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(72);
         output.WriteUInt32(ThemeId);
       }
       if (_unknownFields != null) {
@@ -2631,7 +2565,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (ThemeId != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(72);
         output.WriteUInt32(ThemeId);
       }
       if (_unknownFields != null) {
@@ -2681,7 +2615,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 40: {
+          case 72: {
             ThemeId = input.ReadUInt32();
             break;
           }
@@ -2704,7 +2638,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 40: {
+          case 72: {
             ThemeId = input.ReadUInt32();
             break;
           }

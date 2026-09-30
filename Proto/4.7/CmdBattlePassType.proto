@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message BattlePassInfoNotify {
+	uint32 exp = 1;
+	uint64 OKPOHIHPOKI = 2;
+	uint64 ICPCCGPEJMP = 5;
+	uint64 DAFMMPKFOEA = 6;
+	uint32 AECHNDNNMLF = 7;
+	uint32 POJDILFNJAH = 8;
+	BpTierType DELEGHOCLMO = 9;
+	uint64 CBLNJDCICBC = 10;
+	uint64 PDODOAOHMAC = 11;
+	uint32 level = 12;
+	uint64 AIMGGFNLIEK = 13;
+	uint64 CHJKOFANIKA = 14;
+	uint64 NJDCMGOJOLE = 15;
+}
+
+enum BpRewardType {
+	BpRewardType_BpRewaradTypeNone = 0;
+	BpRewardType_BpRewaradTypeFree = 1;
+	BpRewardType_BpRewaradTypePremium1 = 2;
+	BpRewardType_BpRewaradTypePremium2 = 3;
+	BpRewardType_BpRewaradTypePremiumOptional = 4;
+}
+
+enum BpTierType {
+	BpTierType_None = 0;
+	BpTierType_Free = 1;
+	BpTierType_Premium1 = 2;
+	BpTierType_Premium2 = 3;
+}
+
+message BuyBpLevelCsReq {
+	uint32 IGOOJKMPMDC = 2;
+}
+
+message BuyBpLevelScRsp {
+	uint32 retcode = 11;
+}
+
+enum CmdBattlePassType {
+	CmdBattlePassType_NLCDGIPGFDJ = 0;
+	CmdBattlePassType_TakeBpRewardScRsp = 3005;
+	CmdBattlePassType_TakeAllRewardScRsp = 3006;
+	CmdBattlePassType_TakeAllRewardCsReq = 3018;
+	CmdBattlePassType_BuyBpLevelScRsp = 3059;
+	CmdBattlePassType_BuyBpLevelCsReq = 3071;
+	CmdBattlePassType_BattlePassInfoNotify = 3074;
+	CmdBattlePassType_TakeBpRewardCsReq = 3087;
+}
+
+message OptionalReward {
+	uint32 level = 8;
+	uint32 optional_reward_id = 14;
+}
+
+message TakeAllRewardCsReq {
+	repeated OptionalReward EIKKALADEHM = 1;
+}
+
+message TakeAllRewardScRsp {
+	uint32 retcode = 7;
+	ItemList reward = 15;
+}
+
+message TakeBpRewardCsReq {
+	uint32 optional_reward_id = 1;
+	uint32 level = 8;
+	BpRewardType type = 10;
+}
+
+message TakeBpRewardScRsp {
+	uint32 retcode = 4;
+	ItemList reward = 5;
+}

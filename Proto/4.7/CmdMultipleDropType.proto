@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BMJHAHOLEGH {
+	uint32 KFBIODICKGC = 2;
+	uint32 panel_id = 3;
+	uint32 total_count = 4;
+	uint32 NEKCONMFFFE = 6;
+}
+
+enum CmdMultipleDropType {
+	CmdMultipleDropType_NLCDGIPGFDJ = 0;
+	CmdMultipleDropType_GetPlayerReturnMultiDropInfoScRsp = 4605;
+	CmdMultipleDropType_GetMultipleDropInfoScRsp = 4619;
+	CmdMultipleDropType_MultipleDropInfoScNotify = 4631;
+	CmdMultipleDropType_MultipleDropInfoNotify = 4671;
+	CmdMultipleDropType_GetMultipleDropInfoCsReq = 4674;
+	CmdMultipleDropType_GetPlayerReturnMultiDropInfoCsReq = 4687;
+}
+
+message GCLPBMPOHLI {
+	uint32 JMGPFEGLCGG = 3;
+	uint32 panel_id = 8;
+	uint32 FAOAGKPPNGN = 10;
+	uint32 LFOHEBCNMDP = 12;
+}
+
+message GetMultipleDropInfoCsReq {
+}
+
+message GetMultipleDropInfoScRsp {
+	repeated BMJHAHOLEGH FAFFFJGJHHC = 3;
+	repeated NGLOBFBCGBB MOPAGKNEMOD = 9;
+	uint32 retcode = 10;
+}
+
+message GetPlayerReturnMultiDropInfoCsReq {
+}
+
+message GetPlayerReturnMultiDropInfoScRsp {
+	uint32 retcode = 8;
+	GCLPBMPOHLI HDLIGGEMOKM = 13;
+	repeated BMJHAHOLEGH FAFFFJGJHHC = 14;
+}
+
+message MultipleDropInfoNotify {
+	repeated GCLPBMPOHLI JGALOGDBCKI = 8;
+	repeated NGLOBFBCGBB MOPAGKNEMOD = 11;
+	repeated BMJHAHOLEGH FAFFFJGJHHC = 14;
+}
+
+message MultipleDropInfoScNotify {
+	repeated NGLOBFBCGBB MOPAGKNEMOD = 12;
+}
+
+message NGLOBFBCGBB {
+	uint32 CLLFACKFNBO = 4;
+	uint32 id = 11;
+}

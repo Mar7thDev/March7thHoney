@@ -1,0 +1,127 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdMapRotationType {
+	CmdMapRotationType_NLCDGIPGFDJ = 0;
+	CmdMapRotationType_UpdateRotaterScNotify = 6804;
+	CmdMapRotationType_DeployRotatorCsReq = 6805;
+	CmdMapRotationType_LeaveMapRotationRegionCsReq = 6806;
+	CmdMapRotationType_RemoveRotatorCsReq = 6808;
+	CmdMapRotationType_RotateMapScRsp = 6818;
+	CmdMapRotationType_EnterMapRotationRegionScRsp = 6819;
+	CmdMapRotationType_GetMapRotationDataCsReq = 6827;
+	CmdMapRotationType_NNFHIIFJILF = 6831;
+	CmdMapRotationType_ResetMapRotationRegionCsReq = 6835;
+	CmdMapRotationType_UpdateEnergyScNotify = 6848;
+	CmdMapRotationType_GetMapRotationDataScRsp = 6852;
+	CmdMapRotationType_RotateMapCsReq = 6859;
+	CmdMapRotationType_LeaveMapRotationRegionScRsp = 6870;
+	CmdMapRotationType_DeployRotatorScRsp = 6871;
+	CmdMapRotationType_EnterMapRotationRegionCsReq = 6874;
+	CmdMapRotationType_UpdateMapRotationDataScNotify = 6875;
+	CmdMapRotationType_InteractChargerScRsp = 6887;
+	CmdMapRotationType_RemoveRotaterScRsp = 6892;
+	CmdMapRotationType_ResetMapRotationRegionScRsp = 6898;
+}
+
+message DeployRotatorCsReq {
+	RotaterData JJBDGCGPPFI = 10;
+}
+
+message DeployRotatorScRsp {
+	RotaterData rotater_data = 2;
+	RotaterEnergyInfo energy_info = 9;
+	uint32 retcode = 11;
+}
+
+message EnterMapRotationRegionCsReq {
+	uint32 JPPMEKJGJFD = 4;
+	uint32 region_id = 10;
+	MotionInfo motion = 12;
+}
+
+message EnterMapRotationRegionScRsp {
+	uint32 client_pos_version = 4;
+	uint32 retcode = 5;
+	RotaterEnergyInfo energy_info = 7;
+	uint32 JPPMEKJGJFD = 8;
+	uint32 region_id = 11;
+	MotionInfo motion = 14;
+}
+
+message GetMapRotationDataCsReq {
+}
+
+message GetMapRotationDataScRsp {
+	uint32 retcode = 2;
+	FHEGNOPNICH BGEMGEBEHKO = 4;
+}
+
+message ICBEPDGBHMM {
+	ChargerInfo JJFNBOLFKFH = 10;
+}
+
+message InteractChargerScRsp {
+	RotaterEnergyInfo energy_info = 6;
+	uint32 retcode = 9;
+	ChargerInfo charger_info = 13;
+}
+
+message LeaveMapRotationRegionCsReq {
+	MotionInfo motion = 9;
+}
+
+message LeaveMapRotationRegionScRsp {
+	uint32 client_pos_version = 1;
+	uint32 retcode = 4;
+	MotionInfo motion = 14;
+}
+
+message RemoveRotaterScRsp {
+	RotaterEnergyInfo energy_info = 1;
+	uint32 retcode = 4;
+	RotaterData rotater_data = 12;
+}
+
+message RemoveRotatorCsReq {
+	RotaterData JJBDGCGPPFI = 4;
+}
+
+message ResetMapRotationRegionCsReq {
+	RotateMapInfo COOOMDKGODF = 7;
+	MotionInfo motion = 12;
+}
+
+message ResetMapRotationRegionScRsp {
+	uint32 client_pos_version = 2;
+	uint32 retcode = 11;
+	MotionInfo motion = 15;
+}
+
+message RotateMapCsReq {
+	MotionInfo motion = 2;
+	uint32 group_id = 3;
+	RotateMapInfo COOOMDKGODF = 7;
+	uint32 instance_id = 10;
+}
+
+message RotateMapScRsp {
+	uint32 client_pos_version = 1;
+	MotionInfo motion = 2;
+	uint32 retcode = 12;
+}
+
+message UpdateEnergyScNotify {
+	RotaterEnergyInfo energy_info = 6;
+}
+
+message UpdateMapRotationDataScNotify {
+	FHEGNOPNICH BGEMGEBEHKO = 15;
+}
+
+message UpdateRotaterScNotify {
+	repeated RotaterData CEDGGDFMILP = 15;
+}

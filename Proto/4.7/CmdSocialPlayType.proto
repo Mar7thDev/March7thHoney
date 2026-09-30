@@ -1,0 +1,268 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message BODEMOLDHAA {
+	uint32 teleport_id = 5;
+}
+
+enum CmdSocialPlayType {
+	CmdSocialPlayType_NLCDGIPGFDJ = 0;
+	CmdSocialPlayType_SocialPlayQueryRecentVisitorsScRsp = 9630;
+	CmdSocialPlayType_SocialPlaySettingInfoScNotify = 9631;
+	CmdSocialPlayType_SocialPlayPreCheckEnterRoomCsReq = 9643;
+	CmdSocialPlayType_JLBBKGOMCDE = 9649;
+	CmdSocialPlayType_SocialPlayQueryRecentVisitorsCsReq = 9652;
+	CmdSocialPlayType_SocialPlayGetOnlineRoomDataCsReq = 9666;
+	CmdSocialPlayType_SocialPlayGameplayOperationScNotify = 9672;
+	CmdSocialPlayType_PJPMBFIMNJB = 9682;
+	CmdSocialPlayType_SocialPlayGetOwnerRoomDataCsReq = 9686;
+	CmdSocialPlayType_NMEHFLHCOJI = 9707;
+	CmdSocialPlayType_SocialPlayTalkScRsp = 9722;
+	CmdSocialPlayType_SocialPlayPreCheckEnterRoomScRsp = 9724;
+	CmdSocialPlayType_SocialPlayGetOnlineRoomDataScRsp = 9733;
+	CmdSocialPlayType_SocialPlayRoomPlayerMoveScNotify = 9734;
+	CmdSocialPlayType_GCNJHGHPHDG = 9742;
+	CmdSocialPlayType_SocialPlayGetDataScRsp = 9743;
+	CmdSocialPlayType_SocialPlayGetOwnerRoomDataScRsp = 9750;
+	CmdSocialPlayType_SocialPlayTalkCsReq = 9752;
+	CmdSocialPlayType_SocialPlayGetDataCsReq = 9761;
+}
+
+message DJIHNCHDFED {
+	uint32 retcode = 1;
+}
+
+message HAIFIDAHGJG {
+	HHCNMGNAIBG JIPPNPILKDJ = 3;
+}
+
+message HHJLCGGEHPB {
+	PlayerSimpleInfo CILGIDDHODG = 3;
+	uint32 PLPPPCEPBDO = 6;
+	int64 KFACPOBAAGM = 15;
+}
+
+message HMACEHDGGHB {
+	repeated IKAHKMNCFDN BJPHDKEBOBK = 1;
+	uint32 HBKEPFKDAMI = 2;
+	int64 CMHKFNFKGOI = 3;
+}
+
+message IFEEMEAJMEJ {
+	oneof OIFBOHDMKNI {
+		uint32 ODNGMIJLKKA = 1;
+		PFNJCDINMLA ENGJIMIHCHJ = 2;
+		OELLEKNNEMK EGECDHIHFHF = 3;
+	}
+}
+
+message IKBDJLNEPBH {
+	repeated PEEEEGAPCOK HFLOPHNBKGN = 1;
+}
+
+message JBJNJPAOCDA {
+	uint32 uid = 1;
+	bool OJPDDAOJJKC = 2;
+	JOLAHHGIFHA NJDCPMENIFG = 3;
+	int64 AIMNJIMDIKM = 4;
+	PlayerSimpleInfo AJIPBLCIONL = 5;
+	IFEEMEAJMEJ DCFKJCMODKJ = 6;
+	CBPDACMBHGL LHLKJIDFLIN = 7;
+}
+
+message JGAMELLGLGE {
+	JOLAHHGIFHA NJDCPMENIFG = 11;
+}
+
+message JKILAALMFIB {
+	uint32 retcode = 12;
+}
+
+message JOLAHHGIFHA {
+	Vector pos = 1;
+	Vector rot = 2;
+	float ICNANKMDJIC = 3;
+	Vector GHMKFMBDKNE = 4;
+	float GHEMGLKGKLC = 5;
+	uint32 FPHBEHJJBIA = 6;
+	bool MGIOLDGHPMA = 7;
+	int64 time_stamp = 8;
+}
+
+message JPAOIPLDKHB {
+	repeated IKAHKMNCFDN BJPHDKEBOBK = 1;
+	BFAKMCIJFCB NLJBJMDPBGN = 2;
+	int64 DBIKJPDBMOE = 3;
+	int64 CMHKFNFKGOI = 4;
+	uint32 HBKEPFKDAMI = 5;
+	uint32 GAEKEFEKCBD = 6;
+}
+
+message KKACLNNMMAM {
+	repeated uint32 EIHOECKBDOH = 3;
+	bool JMAODNEONPF = 5;
+	repeated uint32 BPAOGJPLENJ = 7;
+}
+
+message KPBCIIFIAGI {
+	repeated JOFHMCJPBCE NIELDCLPOLA = 2;
+	ONAADAJBLEB NAIFOMCLGLN = 6;
+	int64 CMHKFNFKGOI = 7;
+	KKACLNNMMAM JIELLGELABA = 8;
+	BFAKMCIJFCB NLJBJMDPBGN = 9;
+	repeated uint32 KBEGMPBAJIL = 10;
+	repeated PJFIMFJPMCN CEMFBJPOLNP = 12;
+	repeated IKAHKMNCFDN BJPHDKEBOBK = 14;
+	CGLJLBDFNBK KABGCGENKLK = 15;
+}
+
+message LLKIFBFCMLK {
+	HHCNMGNAIBG JIPPNPILKDJ = 1;
+}
+
+enum MFPDAKOIOED {
+	MFPDAKOIOED_KCOCMMIACMB = 0;
+	MFPDAKOIOED_FLMPFOFPAGB = 1;
+	MFPDAKOIOED_BJAFPGEDNEM = 2;
+	MFPDAKOIOED_LKKNMKEIBEJ = 3;
+}
+
+message MHNNEFBOPIE {
+	uint32 op_uid = 1;
+	repeated JOLAHHGIFHA JENKGODEIOM = 2;
+}
+
+message MIKGMGBHLEN {
+	oneof IBANGBLDNIG {
+		string message_text = 1;
+		uint32 extra_id = 2;
+	}
+}
+
+message OELLEKNNEMK {
+	repeated HIMPJFMPEPA OLGCOBHGDCD = 1;
+	uint32 CGBJOAJEMKN = 2;
+}
+
+message ONAADAJBLEB {
+	uint32 ONOHPMDGNNH = 10;
+	int64 DBIKJPDBMOE = 11;
+}
+
+message PBMDEBCGNMD {
+	MNCBEDBDDHL IKJNIKIGFLF = 1;
+	JPAOIPLDKHB PKHFMJDNKOE = 2;
+	CGLJLBDFNBK KABGCGENKLK = 4;
+}
+
+message PEEEEGAPCOK {
+	uint32 PLPPPCEPBDO = 1;
+	uint32 op_uid = 2;
+	uint32 OOCPKIGPEHP = 3;
+	int64 CMIEOOODDIA = 4;
+	string AALDPOAKJBK = 5;
+}
+
+message POBLGKIGINE {
+	uint32 room_owner_uid = 1;
+	repeated JBJNJPAOCDA player_info = 2;
+	uint32 DLKOEIANIMK = 3;
+	oneof CBCJBNGJPDJ {
+		PBMDEBCGNMD LNMGOFCOMED = 100;
+		LLKIFBFCMLK MAGDHGMLLKG = 101;
+	}
+}
+
+message SocialPlayGameplayOperationScNotify {
+	uint32 room_owner_uid = 7;
+	CBPDACMBHGL LHLKJIDFLIN = 8;
+	uint32 op_uid = 11;
+	oneof NBGBONGLJHM {
+		MIKGMGBHLEN PHKCDLPHMPA = 26;
+		POBLGKIGINE LMFMBJCNALJ = 362;
+		MNCBEDBDDHL OEGCDMDMGOH = 461;
+		CGLJLBDFNBK EJAHKDJDAEM = 502;
+		uint32 HJHPHDACEHE = 518;
+		HHCNMGNAIBG EDFGENHHPGN = 558;
+		int64 DBIKJPDBMOE = 621;
+		uint32 LMGGGLECNEA = 657;
+		IKBDJLNEPBH IMPBCBPIFAG = 965;
+		uint32 DLKOEIANIMK = 1068;
+		JBJNJPAOCDA GNLAECODENP = 1330;
+		uint32 BJLCBAAKPDI = 1625;
+		uint32 EKBKIMJOKCM = 1724;
+		BFAKMCIJFCB OEMEKBOGNJH = 1796;
+		HMACEHDGGHB ONMNMLBANHK = 1860;
+	}
+}
+
+message SocialPlayGetDataCsReq {
+}
+
+message SocialPlayGetDataScRsp {
+	uint32 retcode = 5;
+	HAIFIDAHGJG NDDJFLPBHBL = 6;
+	repeated JBJNJPAOCDA AKDPEJABLPI = 10;
+	KPBCIIFIAGI ELDIONMAAHO = 12;
+}
+
+message SocialPlayGetOnlineRoomDataCsReq {
+}
+
+message SocialPlayGetOnlineRoomDataScRsp {
+	bool OJPDDAOJJKC = 1;
+	uint32 retcode = 4;
+	POBLGKIGINE DJMHHMMABJL = 15;
+}
+
+message SocialPlayGetOwnerRoomDataCsReq {
+	CBPDACMBHGL LHLKJIDFLIN = 12;
+}
+
+message SocialPlayGetOwnerRoomDataScRsp {
+	POBLGKIGINE DJMHHMMABJL = 10;
+	uint32 retcode = 12;
+}
+
+message SocialPlayPreCheckEnterRoomCsReq {
+	uint32 teleport_id = 6;
+	uint32 entry_id = 12;
+	MFPDAKOIOED GJNMHILINHC = 14;
+}
+
+message SocialPlayPreCheckEnterRoomScRsp {
+	PlayerSimpleInfo MCCEJINNADF = 4;
+	int64 CMHKFNFKGOI = 5;
+	uint32 retcode = 9;
+}
+
+message SocialPlayQueryRecentVisitorsCsReq {
+}
+
+message SocialPlayQueryRecentVisitorsScRsp {
+	repeated HHJLCGGEHPB recent_visitor_list = 6;
+	uint32 retcode = 12;
+}
+
+message SocialPlayRoomPlayerMoveScNotify {
+	uint32 op_uid = 3;
+	uint32 room_owner_uid = 8;
+	MHNNEFBOPIE JENKGODEIOM = 13;
+}
+
+message SocialPlaySettingInfoScNotify {
+	JPGACKPLGCD BOHGFDFBLEN = 5;
+}
+
+message SocialPlayTalkCsReq {
+	MIKGMGBHLEN PHKCDLPHMPA = 8;
+}
+
+message SocialPlayTalkScRsp {
+	uint32 retcode = 9;
+	MIKGMGBHLEN PHKCDLPHMPA = 10;
+	int64 end_time = 11;
+}

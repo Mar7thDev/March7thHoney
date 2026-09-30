@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message B51RacingChallengeEndMatchCsReq {
+	uint32 rank = 3;
+	uint32 match_id = 6;
+	uint32 finish_time_ms = 8;
+	B51RacingMatchStats stats = 9;
+	B51RacingMatchResultType result_type = 12;
+	uint32 session_id = 13;
+	uint32 track_id = 15;
+}
+
+message B51RacingChallengeEndMatchScRsp {
+	uint32 match_id = 3;
+	uint32 track_id = 7;
+	uint32 retcode = 8;
+	uint32 best_time_ms = 10;
+}
+
+message B51RacingChallengeStartMatchCsReq {
+	uint32 track_id = 8;
+	uint32 match_id = 9;
+	uint32 driver_id = 14;
+}
+
+message B51RacingChallengeStartMatchScRsp {
+	uint32 session_id = 4;
+	uint32 retcode = 7;
+	uint32 driver_id = 13;
+}
+
+message B51RacingChallengeUpdateCarCsReq {
+	repeated uint32 equipped_part_id_list = 2;
+	uint32 car_id = 6;
+	B51RacingCarLivery livery = 7;
+}
+
+message B51RacingChallengeUpdateCarScRsp {
+	B51RacingChallengeCarData car = 2;
+	uint32 retcode = 3;
+}
+
+enum CmdB51RacingChallengeType {
+	CmdB51RacingChallengeType_NLCDGIPGFDJ = 0;
+	CmdB51RacingChallengeType_B51RacingChallengeStartMatchCsReq = 10104;
+	CmdB51RacingChallengeType_B51RacingChallengeUpdateCarScRsp = 10108;
+	CmdB51RacingChallengeType_B51RacingChallengeEndMatchScRsp = 10109;
+	CmdB51RacingChallengeType_B51RacingChallengeUpdateCarCsReq = 10115;
+	CmdB51RacingChallengeType_B51RacingChallengeEndMatchCsReq = 10116;
+	CmdB51RacingChallengeType_B51RacingChallengeStartMatchScRsp = 10120;
+}

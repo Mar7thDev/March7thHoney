@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdStarFightType {
+	CmdStarFightType_NLCDGIPGFDJ = 0;
+	CmdStarFightType_GetStarFightDataCsReq = 7163;
+	CmdStarFightType_GetStarFightDataScRsp = 7166;
+	CmdStarFightType_StartStarFightLevelCsReq = 7167;
+	CmdStarFightType_StarFightDataChangeNotify = 7168;
+	CmdStarFightType_StartStarFightLevelScRsp = 7170;
+}
+
+message EBGJAKBKPAN {
+	AvatarType avatar_type = 7;
+	uint32 avatar_id = 9;
+}
+
+message GetStarFightDataCsReq {
+}
+
+message GetStarFightDataScRsp {
+	repeated JFGCABMMKAB JJIDNKDKMLE = 5;
+	uint32 retcode = 15;
+}
+
+message JFGCABMMKAB {
+	uint32 CEOEOEBOLNN = 1;
+	uint32 KDNBADEGDNK = 5;
+	bool NDBGPGODBPH = 6;
+	uint32 EBDDDCBKPAC = 12;
+	uint32 group_id = 14;
+}
+
+message StarFightDataChangeNotify {
+	JFGCABMMKAB KDKKNFGPNAB = 8;
+	uint32 group_id = 10;
+}
+
+message StartStarFightLevelCsReq {
+	repeated EBGJAKBKPAN avatar_list = 4;
+	uint32 DBKHHCGGKNN = 5;
+	uint32 group_id = 11;
+}
+
+message StartStarFightLevelScRsp {
+	SceneBattleInfo battle_info = 1;
+	uint32 group_id = 8;
+	uint32 DBKHHCGGKNN = 9;
+	uint32 retcode = 10;
+}

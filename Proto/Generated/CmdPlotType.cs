@@ -25,16 +25,16 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChFDbWRQbG90VHlwZS5wcm90byImCg9GaW5pc2hQbG90Q3NSZXESEwoLQ0FN",
-            "Q0JKUE9NTEMYAyABKA0iNwoPRmluaXNoUGxvdFNjUnNwEhMKC0NBTUNCSlBP",
-            "TUxDGAkgASgNEg8KB3JldGNvZGUYCyABKA0qbgoLQ21kUGxvdFR5cGUSGwoX",
+            "Q0JKUE9NTEMYDiABKA0iNwoPRmluaXNoUGxvdFNjUnNwEg8KB3JldGNvZGUY",
+            "BSABKA0SEwoLQ0FNQ0JKUE9NTEMYBiABKA0qbgoLQ21kUGxvdFR5cGUSGwoX",
             "Q21kUGxvdFR5cGVfTkxDREdJUEdGREoQABIgChtDbWRQbG90VHlwZV9GaW5p",
-            "c2hQbG90Q3NSZXEQ7ggSIAobQ21kUGxvdFR5cGVfRmluaXNoUGxvdFNjUnNw",
-            "EOUIQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
+            "c2hQbG90U2NSc3AQ3wgSIAobQ21kUGxvdFR5cGVfRmluaXNoUGxvdENzUmVx",
+            "EJYJQhaqAhNNYXJjaDd0aEhvbmV5LlByb3RvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::March7thHoney.Proto.CmdPlotType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishPlotCsReq), global::March7thHoney.Proto.FinishPlotCsReq.Parser, new[]{ "CAMCBJPOMLC" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishPlotScRsp), global::March7thHoney.Proto.FinishPlotScRsp.Parser, new[]{ "CAMCBJPOMLC", "Retcode" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::March7thHoney.Proto.FinishPlotScRsp), global::March7thHoney.Proto.FinishPlotScRsp.Parser, new[]{ "Retcode", "CAMCBJPOMLC" }, null, null, null, null)
           }));
     }
     #endregion
@@ -43,8 +43,8 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPlotType {
     [pbr::OriginalName("CmdPlotType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdPlotType_FinishPlotCsReq")] FinishPlotCsReq = 1134,
-    [pbr::OriginalName("CmdPlotType_FinishPlotScRsp")] FinishPlotScRsp = 1125,
+    [pbr::OriginalName("CmdPlotType_FinishPlotScRsp")] FinishPlotScRsp = 1119,
+    [pbr::OriginalName("CmdPlotType_FinishPlotCsReq")] FinishPlotCsReq = 1174,
   }
 
   #endregion
@@ -96,11 +96,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "CAMCBJPOMLC" field.</summary>
-    public const int CAMCBJPOMLCFieldNumber = 3;
+    public const int CAMCBJPOMLCFieldNumber = 14;
     private uint cAMCBJPOMLC_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint CAMCBJPOMLC {
@@ -153,7 +150,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (CAMCBJPOMLC != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(112);
         output.WriteUInt32(CAMCBJPOMLC);
       }
       if (_unknownFields != null) {
@@ -167,7 +164,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (CAMCBJPOMLC != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(112);
         output.WriteUInt32(CAMCBJPOMLC);
       }
       if (_unknownFields != null) {
@@ -217,7 +214,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 24: {
+          case 112: {
             CAMCBJPOMLC = input.ReadUInt32();
             break;
           }
@@ -240,7 +237,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 24: {
+          case 112: {
             CAMCBJPOMLC = input.ReadUInt32();
             break;
           }
@@ -286,8 +283,8 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FinishPlotScRsp(FinishPlotScRsp other) : this() {
-      cAMCBJPOMLC_ = other.cAMCBJPOMLC_;
       retcode_ = other.retcode_;
+      cAMCBJPOMLC_ = other.cAMCBJPOMLC_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -297,33 +294,27 @@ namespace March7thHoney.Proto {
       return new FinishPlotScRsp(this);
     }
 
-    /// <summary>Field number for the "CAMCBJPOMLC" field.</summary>
-    public const int CAMCBJPOMLCFieldNumber = 9;
-    private uint cAMCBJPOMLC_;
-    /// <summary>
-    /// offset: 28
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint CAMCBJPOMLC {
-      get { return cAMCBJPOMLC_; }
-      set {
-        cAMCBJPOMLC_ = value;
-      }
-    }
-
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 11;
+    public const int RetcodeFieldNumber = 5;
     private uint retcode_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
       get { return retcode_; }
       set {
         retcode_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "CAMCBJPOMLC" field.</summary>
+    public const int CAMCBJPOMLCFieldNumber = 6;
+    private uint cAMCBJPOMLC_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint CAMCBJPOMLC {
+      get { return cAMCBJPOMLC_; }
+      set {
+        cAMCBJPOMLC_ = value;
       }
     }
 
@@ -342,8 +333,8 @@ namespace March7thHoney.Proto {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (CAMCBJPOMLC != other.CAMCBJPOMLC) return false;
       if (Retcode != other.Retcode) return false;
+      if (CAMCBJPOMLC != other.CAMCBJPOMLC) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -351,8 +342,8 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (CAMCBJPOMLC != 0) hash ^= CAMCBJPOMLC.GetHashCode();
       if (Retcode != 0) hash ^= Retcode.GetHashCode();
+      if (CAMCBJPOMLC != 0) hash ^= CAMCBJPOMLC.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -371,13 +362,13 @@ namespace March7thHoney.Proto {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (CAMCBJPOMLC != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(CAMCBJPOMLC);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
+      }
+      if (CAMCBJPOMLC != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(CAMCBJPOMLC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -389,13 +380,13 @@ namespace March7thHoney.Proto {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (CAMCBJPOMLC != 0) {
-        output.WriteRawTag(72);
-        output.WriteUInt32(CAMCBJPOMLC);
-      }
       if (Retcode != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(40);
         output.WriteUInt32(Retcode);
+      }
+      if (CAMCBJPOMLC != 0) {
+        output.WriteRawTag(48);
+        output.WriteUInt32(CAMCBJPOMLC);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -407,11 +398,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (CAMCBJPOMLC != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CAMCBJPOMLC);
-      }
       if (Retcode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Retcode);
+      }
+      if (CAMCBJPOMLC != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(CAMCBJPOMLC);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -425,11 +416,11 @@ namespace March7thHoney.Proto {
       if (other == null) {
         return;
       }
-      if (other.CAMCBJPOMLC != 0) {
-        CAMCBJPOMLC = other.CAMCBJPOMLC;
-      }
       if (other.Retcode != 0) {
         Retcode = other.Retcode;
+      }
+      if (other.CAMCBJPOMLC != 0) {
+        CAMCBJPOMLC = other.CAMCBJPOMLC;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -450,12 +441,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 72: {
-            CAMCBJPOMLC = input.ReadUInt32();
+          case 40: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
-            Retcode = input.ReadUInt32();
+          case 48: {
+            CAMCBJPOMLC = input.ReadUInt32();
             break;
           }
         }
@@ -477,12 +468,12 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 72: {
-            CAMCBJPOMLC = input.ReadUInt32();
+          case 40: {
+            Retcode = input.ReadUInt32();
             break;
           }
-          case 88: {
-            Retcode = input.ReadUInt32();
+          case 48: {
+            CAMCBJPOMLC = input.ReadUInt32();
             break;
           }
         }

@@ -25,15 +25,15 @@ namespace March7thHoney.Proto {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChdDbWRQYW1NaXNzaW9uVHlwZS5wcm90byI0Ch1BY2NlcHRlZFBhbU1pc3Np",
-            "b25FeHBpcmVDc1JlcRITCgtFQklJS0tGSUhORxgNIAEoDSIwCh1BY2NlcHRl",
-            "ZFBhbU1pc3Npb25FeHBpcmVTY1JzcBIPCgdyZXRjb2RlGAYgASgNIkwKHFN5",
+            "b25FeHBpcmVDc1JlcRITCgtFQklJS0tGSUhORxgEIAEoDSIwCh1BY2NlcHRl",
+            "ZFBhbU1pc3Npb25FeHBpcmVTY1JzcBIPCgdyZXRjb2RlGA0gASgNIkwKHFN5",
             "bmNBY2NlcHRlZFBhbU1pc3Npb25Ob3RpZnkSFwoPbWFpbl9taXNzaW9uX2lk",
-            "GAwgASgNEhMKC2V4cGlyZV90aW1lGA4gASgEKtcBChFDbWRQYW1NaXNzaW9u",
+            "GAogASgNEhMKC2V4cGlyZV90aW1lGAwgASgEKtcBChFDbWRQYW1NaXNzaW9u",
             "VHlwZRIhCh1DbWRQYW1NaXNzaW9uVHlwZV9OTENER0lQR0ZEShAAEjQKL0Nt",
-            "ZFBhbU1pc3Npb25UeXBlX0FjY2VwdGVkUGFtTWlzc2lvbkV4cGlyZUNzUmVx",
-            "EMIfEjMKLkNtZFBhbU1pc3Npb25UeXBlX1N5bmNBY2NlcHRlZFBhbU1pc3Np",
-            "b25Ob3RpZnkQpR8SNAovQ21kUGFtTWlzc2lvblR5cGVfQWNjZXB0ZWRQYW1N",
-            "aXNzaW9uRXhwaXJlU2NSc3AQuR9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
+            "ZFBhbU1pc3Npb25UeXBlX0FjY2VwdGVkUGFtTWlzc2lvbkV4cGlyZVNjUnNw",
+            "ELMfEjMKLkNtZFBhbU1pc3Npb25UeXBlX1N5bmNBY2NlcHRlZFBhbU1pc3Np",
+            "b25Ob3RpZnkQvx8SNAovQ21kUGFtTWlzc2lvblR5cGVfQWNjZXB0ZWRQYW1N",
+            "aXNzaW9uRXhwaXJlQ3NSZXEQ6h9CFqoCE01hcmNoN3RoSG9uZXkuUHJvdG9i",
             "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -49,9 +49,9 @@ namespace March7thHoney.Proto {
   #region Enums
   public enum CmdPamMissionType {
     [pbr::OriginalName("CmdPamMissionType_NLCDGIPGFDJ")] Nlcdgipgfdj = 0,
-    [pbr::OriginalName("CmdPamMissionType_AcceptedPamMissionExpireCsReq")] AcceptedPamMissionExpireCsReq = 4034,
-    [pbr::OriginalName("CmdPamMissionType_SyncAcceptedPamMissionNotify")] SyncAcceptedPamMissionNotify = 4005,
-    [pbr::OriginalName("CmdPamMissionType_AcceptedPamMissionExpireScRsp")] AcceptedPamMissionExpireScRsp = 4025,
+    [pbr::OriginalName("CmdPamMissionType_AcceptedPamMissionExpireScRsp")] AcceptedPamMissionExpireScRsp = 4019,
+    [pbr::OriginalName("CmdPamMissionType_SyncAcceptedPamMissionNotify")] SyncAcceptedPamMissionNotify = 4031,
+    [pbr::OriginalName("CmdPamMissionType_AcceptedPamMissionExpireCsReq")] AcceptedPamMissionExpireCsReq = 4074,
   }
 
   #endregion
@@ -103,11 +103,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "EBIIKKFIHNG" field.</summary>
-    public const int EBIIKKFIHNGFieldNumber = 13;
+    public const int EBIIKKFIHNGFieldNumber = 4;
     private uint eBIIKKFIHNG_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint EBIIKKFIHNG {
@@ -160,7 +157,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (EBIIKKFIHNG != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(32);
         output.WriteUInt32(EBIIKKFIHNG);
       }
       if (_unknownFields != null) {
@@ -174,7 +171,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (EBIIKKFIHNG != 0) {
-        output.WriteRawTag(104);
+        output.WriteRawTag(32);
         output.WriteUInt32(EBIIKKFIHNG);
       }
       if (_unknownFields != null) {
@@ -224,7 +221,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 104: {
+          case 32: {
             EBIIKKFIHNG = input.ReadUInt32();
             break;
           }
@@ -247,7 +244,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 104: {
+          case 32: {
             EBIIKKFIHNG = input.ReadUInt32();
             break;
           }
@@ -304,11 +301,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "retcode" field.</summary>
-    public const int RetcodeFieldNumber = 6;
+    public const int RetcodeFieldNumber = 13;
     private uint retcode_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint Retcode {
@@ -361,7 +355,7 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -375,7 +369,7 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Retcode != 0) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(104);
         output.WriteUInt32(Retcode);
       }
       if (_unknownFields != null) {
@@ -425,7 +419,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 48: {
+          case 104: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -448,7 +442,7 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 48: {
+          case 104: {
             Retcode = input.ReadUInt32();
             break;
           }
@@ -506,11 +500,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "main_mission_id" field.</summary>
-    public const int MainMissionIdFieldNumber = 12;
+    public const int MainMissionIdFieldNumber = 10;
     private uint mainMissionId_;
-    /// <summary>
-    /// offset: 24
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public uint MainMissionId {
@@ -521,11 +512,8 @@ namespace March7thHoney.Proto {
     }
 
     /// <summary>Field number for the "expire_time" field.</summary>
-    public const int ExpireTimeFieldNumber = 14;
+    public const int ExpireTimeFieldNumber = 12;
     private ulong expireTime_;
-    /// <summary>
-    /// offset: 32
-    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ulong ExpireTime {
@@ -580,11 +568,11 @@ namespace March7thHoney.Proto {
       output.WriteRawMessage(this);
     #else
       if (MainMissionId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(80);
         output.WriteUInt32(MainMissionId);
       }
       if (ExpireTime != 0UL) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt64(ExpireTime);
       }
       if (_unknownFields != null) {
@@ -598,11 +586,11 @@ namespace March7thHoney.Proto {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (MainMissionId != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(80);
         output.WriteUInt32(MainMissionId);
       }
       if (ExpireTime != 0UL) {
-        output.WriteRawTag(112);
+        output.WriteRawTag(96);
         output.WriteUInt64(ExpireTime);
       }
       if (_unknownFields != null) {
@@ -658,11 +646,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 96: {
+          case 80: {
             MainMissionId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 96: {
             ExpireTime = input.ReadUInt64();
             break;
           }
@@ -685,11 +673,11 @@ namespace March7thHoney.Proto {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 96: {
+          case 80: {
             MainMissionId = input.ReadUInt32();
             break;
           }
-          case 112: {
+          case 96: {
             ExpireTime = input.ReadUInt64();
             break;
           }

@@ -325,8 +325,8 @@ Dictionary<int, ulong> UIntFields(byte[] bytes)
     return fields;
 }
 var successFields = UIntFields(new SceneMapInfo { FloorId = 10202001 }.ToByteArray());
-var sceneMapFloorTag = applies45ProdCompatibility ? 14 : 9;
-var sceneMapRetcodeTag = applies45ProdCompatibility ? 6 : 11;
+var sceneMapFloorTag = applies45ProdCompatibility ? 14 : 11;
+var sceneMapRetcodeTag = applies45ProdCompatibility ? 6 : 3;
 Check("active SceneMapInfo writes floor_id to its verified wire field",
     successFields.GetValueOrDefault(sceneMapFloorTag) == 10202001 && !successFields.ContainsKey(sceneMapRetcodeTag));
 var errorFields = UIntFields(new SceneMapInfo { FloorId = 10202001, Retcode = 2 }.ToByteArray());
@@ -348,7 +348,7 @@ Check("forced 4.5 field mappings override inferred older field meanings",
 var boundaryPacket = new PacketSyncServerSceneChangeNotify();
 Check("active scene boundary uses the generated cmdid and an empty protobuf payload",
     boundaryPacket.CmdId == CmdIds.SyncServerSceneChangeNotify && boundaryPacket.Data.Length == 0 &&
-    (applies45ProdCompatibility || CmdIds.SyncServerSceneChangeNotify == 1428));
+    (applies45ProdCompatibility || CmdIds.SyncServerSceneChangeNotify == 1433));
 
 var player = new PlayerInstance(60001);
 await player.InitializeAsync();
@@ -1408,22 +1408,22 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Finish);
     talkPlayer.Connection = null;
 
-    // Classic Simulated Universe command pairs (4.6 cmdid-registry.txt): enhance 1885/1807, pick 1864/1821.
+    // Classic Simulated Universe command pairs (4.7 Proto/4.7/Raw/packetIds.txt): enhance 1823/1828, pick 1848/1875.
     int OpcodeOf(Type handler) => handler.GetCustomAttribute<Opcode>()!.CmdId;
     Check("classic Simulated Universe enhance and pick handlers listen on the 18xx command ids",
-        OpcodeOf(typeof(HandlerEnhanceRogueBuffCsReq)) == 1885 && CmdIds.EnhanceRogueBuffScRspCmd1807 == 1807 &&
-        OpcodeOf(typeof(HandlerPickRogueAvatarCsReq)) == 1864 && CmdIds.PickRogueAvatarScRsp == 1821);
+        OpcodeOf(typeof(HandlerEnhanceRogueBuffCsReq)) == 1823 && CmdIds.RogueEnhanceRogueBuffScRsp == 1828 &&
+        OpcodeOf(typeof(HandlerPickRogueAvatarCsReq)) == 1848 && CmdIds.PickRogueAvatarScRsp == 1875);
     var enhanceFrames = await SentFrames(() => new HandlerEnhanceRogueBuffCsReq().OnHandle(rogueConnection, [], []));
-    Check("classic Simulated Universe enhance answers on 1807", enhanceFrames.Select(frame => frame.Id)
-        .SequenceEqual(new[] { (ushort)CmdIds.EnhanceRogueBuffScRspCmd1807 }));
+    Check("classic Simulated Universe enhance answers on 1828", enhanceFrames.Select(frame => frame.Id)
+        .SequenceEqual(new[] { (ushort)CmdIds.RogueEnhanceRogueBuffScRsp }));
     var pickAvatarRequest = new PickRogueAvatarCsReq { PropEntityId = 4194339, DFPPCAJDBFK = { 4000005 }, NOEPBNMJFGL = { 1001 } };
     var pickAvatarFrames = await SentFrames(() => new HandlerPickRogueAvatarCsReq()
         .OnHandle(rogueConnection, [], pickAvatarRequest.ToByteArray()));
     var pickAvatarRsp = pickAvatarFrames.Where(frame => frame.Id == CmdIds.PickRogueAvatarScRsp)
         .Select(frame => PickRogueAvatarScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
-    Check("PickRogueAvatar echoes special ids (req #11) in rsp #6 and base ids (req #14) in rsp #15",
-        PickRogueAvatarCsReq.DFPPCAJDBFKFieldNumber == 11 && PickRogueAvatarCsReq.NOEPBNMJFGLFieldNumber == 14 &&
-        PickRogueAvatarScRsp.BFEDFBEKOBIFieldNumber == 6 && PickRogueAvatarScRsp.NOEPBNMJFGLFieldNumber == 15 &&
+    Check("PickRogueAvatar echoes special ids (req #1) in rsp #15 and base ids (req #7) in rsp #7",
+        PickRogueAvatarCsReq.DFPPCAJDBFKFieldNumber == 1 && PickRogueAvatarCsReq.NOEPBNMJFGLFieldNumber == 7 &&
+        PickRogueAvatarScRsp.BFEDFBEKOBIFieldNumber == 15 && PickRogueAvatarScRsp.NOEPBNMJFGLFieldNumber == 7 &&
         pickAvatarRsp is { Retcode: 0 } && pickAvatarRsp.BFEDFBEKOBI.SequenceEqual(new uint[] { 4000005 }) &&
         pickAvatarRsp.NOEPBNMJFGL.SequenceEqual(new uint[] { 1001 }));
     roguePlayer.Connection = null;

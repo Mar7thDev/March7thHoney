@@ -1,0 +1,780 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AAFBNNALHDK {
+	uint32 avatar_id = 3;
+	uint32 NPHAJEKCBKF = 7;
+	uint32 BDJDAOGDBDD = 9;
+	repeated uint32 HHFPJHMEIJK = 11;
+	uint32 ALOPEGJPAKK = 15;
+}
+
+message AJCFOLGANFC {
+	uint32 EDOGNFCCGPF = 2;
+	uint32 style_level = 3;
+	uint32 style_exp = 9;
+	repeated JHECCCANFGP GJBOLJEJIEE = 10;
+	uint32 PGGDEHKKINP = 13;
+	uint32 DEDCHHNCHFM = 14;
+	repeated KVP IHFEBNBHDFM = 15;
+}
+
+message AMOHFCEEBNK {
+	FGGJCLDLMMI FCMGNLIODGI = 15;
+}
+
+message BJLNEBBMMOE {
+	bool DOFNEAPHMKH = 5;
+	uint32 PDFJMFBHPFC = 13;
+	uint32 NIOFIOOGKLD = 15;
+}
+
+message CABKLLAKHKO {
+	AJCFOLGANFC GMEPGCODKKE = 8;
+}
+
+message CFOIFHEBCJC {
+	LPADDGPLIKK CCFGCCMEFCI = 7;
+}
+
+message CGBKKJENEOF {
+	repeated uint32 BDBFENOAKOD = 7;
+}
+
+message CGNGOLJKBMP {
+	PHHLBGLNBHE MEEJDFNHBDI = 1;
+	NHLBNBBDHMI miracle = 2;
+	OHHKEOGOMCA LNCOKKIPAEP = 3;
+	DJODDECFHMC formula = 7;
+	HGGPKPPBGFP HHMLHKLKNDH = 8;
+	FKEDPCMLIFE item_value = 9;
+	EGLAPJGFKPN buff = 10;
+	JEIKFFFGONB lineup = 11;
+	HIAHPMEAGFC BCNMBONFKPK = 12;
+	ONPOFJPEBMJ level = 14;
+	CGBKKJENEOF BKIPDOFONLD = 15;
+}
+
+message CJOCDGGCPCN {
+	uint32 JNBIIJCAKKB = 1;
+	bool KBNNOPHGGIN = 2;
+	int64 end_time = 8;
+	uint32 JDPFPDECPEH = 12;
+}
+
+message COOIDLLFFIJ {
+	oneof AJOABBCKHCK {
+		uint32 KNILAKJMEEP = 2;
+		uint32 PGGDEHKKINP = 7;
+	}
+}
+
+enum CmdRogueTournType {
+	CmdRogueTournType_NLCDGIPGFDJ = 0;
+	CmdRogueTournType_RogueTournWeekChallengeUpdateScNotify = 6011;
+	CmdRogueTournType_RogueTournPersonaRoomCardZoneUpdateScNotify = 6012;
+	CmdRogueTournType_RogueTournAreaUpdateScNotify = 6014;
+	CmdRogueTournType_RogueTournReviveCostUpdateScNotify = 6015;
+	CmdRogueTournType_RogueTournTakeExpRewardCsReq = 6016;
+	CmdRogueTournType_RogueTournEnterCsReq = 6018;
+	CmdRogueTournType_RogueTournGetSeasonTalentInfoCsReq = 6019;
+	CmdRogueTournType_RogueTournUseSuperRewardKeyCsReq = 6021;
+	CmdRogueTournType_RogueTournLeaveRogueCocoonSceneCsReq = 6022;
+	CmdRogueTournType_RogueTournSaveBuildRefCsReq = 6023;
+	CmdRogueTournType_RogueTournEnablePermanentTalentCsReq = 6025;
+	CmdRogueTournType_RogueTournConfirmSettleScRsp = 6026;
+	CmdRogueTournType_RogueTournEnterRogueCocoonSceneScRsp = 6027;
+	CmdRogueTournType_RogueTournEnterScRsp = 6028;
+	CmdRogueTournType_RogueTournLeaveCsReq = 6029;
+	CmdRogueTournType_RogueTournReEnterRogueCocoonStageScRsp = 6030;
+	CmdRogueTournType_RogueTournRenameBuildRefScRsp = 6031;
+	CmdRogueTournType_RogueTournRenameArchiveScRsp = 6032;
+	CmdRogueTournType_RogueTournEnterLayerCsReq = 6033;
+	CmdRogueTournType_RogueTournTriggerRoomSelectCsReq = 6035;
+	CmdRogueTournType_RogueTournSettleCsReq = 6036;
+	CmdRogueTournType_RogueTournGetAllArchiveScRsp = 6037;
+	CmdRogueTournType_RogueTournReviveAvatarCsReq = 6038;
+	CmdRogueTournType_RogueTournReEnterRogueCocoonStageCsReq = 6039;
+	CmdRogueTournType_RogueTournGetArchiveRepositoryScRsp = 6040;
+	CmdRogueTournType_RogueTournGetAllBuildRefScRsp = 6041;
+	CmdRogueTournType_RogueTournRenameBuildRefCsReq = 6042;
+	CmdRogueTournType_RogueTournDeleteBuildRefScRsp = 6043;
+	CmdRogueTournType_RogueTournTriggerRoomSelectScRsp = 6044;
+	CmdRogueTournType_RogueTournGetAllBuildRefCsReq = 6045;
+	CmdRogueTournType_RogueTournGetArchiveRepositoryCsReq = 6046;
+	CmdRogueTournType_RogueTournClearArchiveNameScNotify = 6048;
+	CmdRogueTournType_RogueTournHandBookNotify = 6049;
+	CmdRogueTournType_RogueTournGetCurRogueCocoonInfoScRsp = 6051;
+	CmdRogueTournType_RogueTournDeleteArchiveCsReq = 6053;
+	CmdRogueTournType_RogueTournReviveAvatarScRsp = 6054;
+	CmdRogueTournType_RogueTournConfirmSettleCsReq = 6055;
+	CmdRogueTournType_RogueTournGetCurRogueCocoonInfoCsReq = 6056;
+	CmdRogueTournType_RogueTournGetPermanentTalentInfoScRsp = 6057;
+	CmdRogueTournType_RogueTournGetAllArchiveCsReq = 6058;
+	CmdRogueTournType_RogueTournEnterRoomCsReq = 6059;
+	CmdRogueTournType_RogueTournEnableSeasonTalentCsReq = 6060;
+	CmdRogueTournType_RogueTournSettleScRsp = 6061;
+	CmdRogueTournType_RogueTournGetSeasonTalentInfoScRsp = 6062;
+	CmdRogueTournType_RogueTournGetPermanentTalentInfoCsReq = 6063;
+	CmdRogueTournType_RogueTournStartCsReq = 6064;
+	CmdRogueTournType_RogueTournResetPermanentTalentScRsp = 6065;
+	CmdRogueTournType_RogueTournDeleteArchiveScRsp = 6067;
+	CmdRogueTournType_RogueTournDeleteBuildRefCsReq = 6068;
+	CmdRogueTournType_RogueTournEnableSeasonTalentScRsp = 6069;
+	CmdRogueTournType_RogueTournResetPermanentTalentCsReq = 6070;
+	CmdRogueTournType_RogueTournSaveBuildRefScRsp = 6071;
+	CmdRogueTournType_RogueTournQueryCsReq = 6072;
+	CmdRogueTournType_RogueTournGetSettleInfoCsReq = 6073;
+	CmdRogueTournType_RogueTournStartScRsp = 6074;
+	CmdRogueTournType_RogueTournLevelInfoUpdateScNotify = 6076;
+	CmdRogueTournType_RogueTournLeaveScRsp = 6077;
+	CmdRogueTournType_RogueTournTakeExpRewardScRsp = 6078;
+	CmdRogueTournType_RogueTournRenameArchiveCsReq = 6079;
+	CmdRogueTournType_RogueTournExpNotify = 6080;
+	CmdRogueTournType_HOOPLLFAEAB = 6083;
+	CmdRogueTournType_RogueTournTitanUpdateTitanBlessProgressScNotify = 6084;
+	CmdRogueTournType_RogueTournEnterLayerScRsp = 6085;
+	CmdRogueTournType_RogueTournGetMiscRealTimeDataScRsp = 6086;
+	CmdRogueTournType_RogueTournEnablePermanentTalentScRsp = 6088;
+	CmdRogueTournType_RogueTournEnterRoomScRsp = 6089;
+	CmdRogueTournType_KMLIBOEDGGE = 6090;
+	CmdRogueTournType_RogueTournEnterRogueCocoonSceneCsReq = 6091;
+	CmdRogueTournType_RogueTournQueryScRsp = 6092;
+	CmdRogueTournType_RogueTournGetMiscRealTimeDataCsReq = 6094;
+	CmdRogueTournType_RogueTournGetSettleInfoScRsp = 6095;
+	CmdRogueTournType_RogueTournUseSuperRewardKeyScRsp = 6096;
+	CmdRogueTournType_RogueTournBattleFailSettleInfoScNotify = 6098;
+	CmdRogueTournType_RogueTournLeaveRogueCocoonSceneScRsp = 6100;
+}
+
+message DCDMPLJNBJC {
+	uint32 KABCGHCPEBG = 5;
+	bool DOFNEAPHMKH = 8;
+	uint32 NDGKLBDHJKB = 9;
+	uint32 GEPHKCPLAJF = 10;
+}
+
+message DIFGGDIHDEG {
+	int64 time = 1;
+	uint32 NPHAJEKCBKF = 2;
+	int64 BHNFGJOLLLB = 9;
+	string name = 12;
+	OOLJJHMLHBH MPOEFPFPEND = 13;
+}
+
+message DJODDECFHMC {
+	HMAAICNBKCI ENFIKCCMHAI = 7;
+	repeated LEJFIEPMMGG KJFEFFGPNFF = 9;
+	repeated OMJGKNJKHCH EMLLEPOADED = 14;
+}
+
+message DKFJLHHDFKO {
+	AvatarType avatar_type = 3;
+	uint32 id = 6;
+}
+
+message DLEKOLHCNIE {
+	bool is_taken_reward = 4;
+	bool is_unlock = 6;
+	uint32 area_id = 9;
+	bool FJKHIFDJMDB = 10;
+}
+
+message DNCEOOPHIOK {
+	uint32 LJCEOGPOGBE = 6;
+}
+
+message ECMNFOEDOJC {
+	uint32 LJCEOGPOGBE = 7;
+}
+
+message ELHLCFBPAMO {
+	uint32 composition_type = 1;
+	repeated uint32 attribute_list = 2;
+	uint32 level = 8;
+}
+
+message FAICNBKIELL {
+	FBBOKKLGKGL BNLLEJPCIGD = 4;
+	DCDMPLJNBJC AOGOHOCFFNE = 5;
+	BJLNEBBMMOE AOMHPLHONJA = 6;
+	GKHFFKMFMEN JJLFKNPEPFP = 10;
+	JGMDJIENFFH CPOLAHJPGFE = 12;
+	PFLOIHLLMEE PHGJIJELKDB = 14;
+}
+
+message FBBOKKLGKGL {
+	uint32 LFCDPDDGFCB = 2;
+	bool DOFNEAPHMKH = 4;
+	uint32 DIFIEHPCDGO = 11;
+}
+
+message FGGJCLDLMMI {
+	uint32 PLJPIPDFAHA = 1;
+	repeated uint32 OHKHMDEOCLA = 2;
+}
+
+enum FKNGOGLNKIG {
+	FKNGOGLNKIG_NLCDGIPGFDJ = 0;
+	FKNGOGLNKIG_EHNIPLNEEDI = 1;
+	FKNGOGLNKIG_PMKMEAAGKAP = 2;
+	FKNGOGLNKIG_MNBAGHPEFBC = 3;
+}
+
+message GKHFFKMFMEN {
+	uint32 NIOFIOOGKLD = 3;
+	bool DOFNEAPHMKH = 8;
+}
+
+message HGGPKPPBGFP {
+	uint32 OHPELHFNGCI = 11;
+}
+
+message HIAHPMEAGFC {
+	bool JOOJIJFCHMK = 10;
+}
+
+message HMGGOEHMIJO {
+	uint32 FABMHMFNMDB = 5;
+	uint32 HHAEEEOADOJ = 12;
+}
+
+message HMOECPBNAOK {
+	repeated uint32 PINNDKIJHFG = 3;
+	repeated uint32 DPEBCGBEJIG = 5;
+	repeated uint32 IFFMIDABNEE = 6;
+	uint32 JKKIABLFCPE = 11;
+	repeated uint32 DMFAGJOOGJM = 13;
+	repeated uint32 JOAAOEDAPPJ = 14;
+	repeated uint32 MMPPHJOONMI = 15;
+}
+
+enum IDCBNMFDICO {
+	IDCBNMFDICO_NLCDGIPGFDJ = 0;
+	IDCBNMFDICO_LOOAKNHDBLL = 1;
+	IDCBNMFDICO_CIHFGJDCHIA = 2;
+}
+
+enum IIAOGEIADGA {
+	IIAOGEIADGA_NLCDGIPGFDJ = 0;
+	IIAOGEIADGA_JHHAJDKPLJH = 1;
+	IIAOGEIADGA_LOOAKNHDBLL = 2;
+	IIAOGEIADGA_CIHFGJDCHIA = 3;
+}
+
+message IJNFOHJGPBC {
+	IDCBNMFDICO status = 2;
+	uint32 JOJCPKNIJOH = 10;
+	repeated ODNBCBEINNC JEHEILKKDEF = 11;
+	uint32 MDAIAMFJNHM = 12;
+	uint32 layer_index = 13;
+}
+
+message JGAMMPGMCNI {
+	SceneInfo scene = 4;
+	LineupInfo lineup = 9;
+	FHEGNOPNICH JNKLNLKHGBB = 14;
+}
+
+message JGFPIJKOFCC {
+	uint32 NPHAJEKCBKF = 12;
+}
+
+message JGJEICAELEB {
+	uint32 exp = 1;
+	repeated uint32 FKDNANDJLGK = 12;
+}
+
+message JGMDJIENFFH {
+	uint32 GNIFODGCPAA = 2;
+	uint32 JBKHIFHPGHM = 11;
+}
+
+message JHECCCANFGP {
+	uint32 unique_id = 3;
+	uint32 GNCFHIKODKE = 7;
+	uint32 total_count = 10;
+}
+
+message KCDBGKJANIH {
+	uint32 buff_id = 4;
+}
+
+message KGPIEEKIEME {
+	FDBDLBAPDBE JCOBJAMPOAL = 1;
+	uint32 OFNIDAECPCJ = 10;
+}
+
+message KIKEAJJLAMH {
+	HMOECPBNAOK HAMKPLCBEBG = 3;
+	repeated MJMGOBMOPDL HLJOMIMOANL = 4;
+	repeated DLEKOLHCNIE DANNIDIPFAL = 5;
+	JGMDJIENFFH DLDCFHHFMID = 6;
+	MDLPIFCHFPJ DPABCOHLPLH = 9;
+	KGPIEEKIEME HANICMMHJGI = 10;
+	HMGGOEHMIJO HHFAAFOBKME = 11;
+	CJOCDGGCPCN BFNHJIBDMOA = 14;
+	JGJEICAELEB DMFPCFCHHKE = 15;
+}
+
+message KILGONODPIC {
+	uint32 event_id = 15;
+}
+
+message LGCPLLJLHFF {
+	uint32 item_value = 8;
+	repeated KJAMNOGFAMJ buff_list = 15;
+}
+
+message LPADDGPLIKK {
+	repeated BDJLHJDPEEK LONFKFCFDND = 5;
+	uint32 PJOAKLHHCNI = 9;
+	repeated uint32 NMMCOBBKKHA = 10;
+	uint32 AMOABLICEDP = 12;
+	repeated uint32 BIMFEAHDMIK = 14;
+	uint32 MKJDMNAEAED = 15;
+}
+
+message MDLPIFCHFPJ {
+	uint32 INJEKPLHPIF = 2;
+	FDBDLBAPDBE JCOBJAMPOAL = 5;
+}
+
+message MJBODJKDPPD {
+	uint32 KAHMGPGPOII = 4;
+}
+
+message MJMGOBMOPDL {
+	int64 time = 3;
+	repeated DKFJLHHDFKO avatar_list = 5;
+	LGCPLLJLHFF data = 6;
+	int64 end_time = 7;
+	uint32 NPHAJEKCBKF = 8;
+	PFLOIHLLMEE PHGJIJELKDB = 12;
+	HMGGOEHMIJO HHFAAFOBKME = 13;
+	string name = 15;
+}
+
+message NAMCKJLAFCN {
+}
+
+message ODNBCBEINNC {
+	IIAOGEIADGA status = 2;
+	uint32 EEPIDJJJMAH = 3;
+	oneof BHGKHELCPGO {
+		ELHLCFBPAMO FIADMEPDAOG = 4;
+	}
+	uint32 GHEHGIOAGDG = 7;
+	uint32 room_id = 12;
+	uint32 LHLKJIDFLIN = 13;
+}
+
+message OHHKEOGOMCA {
+	map<uint32, bool> PACLGPIDJGL = 1;
+}
+
+message ONPOFJPEBMJ {
+	uint32 BJHMFOAGMBF = 5;
+	bool KENPENNAGLG = 8;
+	RogueTournLevelStatus status = 9;
+	bool EJDMOENBHDP = 10;
+	oneof BHGKHELCPGO {
+		CFOIFHEBCJC FIADMEPDAOG = 12;
+	}
+	FKNGOGLNKIG reason = 13;
+	repeated IJNFOHJGPBC NNFFPJOLDHK = 14;
+}
+
+message OOLJJHMLHBH {
+	uint32 FABMHMFNMDB = 2;
+	repeated uint32 AKEMNAMGDOD = 3;
+	uint32 HHAEEEOADOJ = 5;
+	repeated uint32 LBKFGKGNCCH = 6;
+	repeated uint32 MDHGBNCJNGB = 10;
+	repeated uint32 JHBEJKBCHEN = 12;
+	repeated AAFBNNALHDK KOJMGCBLKKA = 15;
+}
+
+message PALAOPCBAPC {
+	uint32 NPHAJEKCBKF = 5;
+	uint32 retcode = 8;
+}
+
+message PFLOIHLLMEE {
+	CGNGOLJKBMP AMEABNLMMGB = 6;
+	CBOLONJDHHL basic = 14;
+	oneof KKNBOACNCON {
+		NAMCKJLAFCN FBHCKMGOCJJ = 516;
+		CABKLLAKHKO OPDEIFOCJEF = 641;
+		AMOHFCEEBNK HAJEGKBFFAF = 2045;
+	}
+}
+
+message PHHLBGLNBHE {
+	repeated uint32 KEHKLHMEABI = 10;
+}
+
+message RogueTournAreaUpdateScNotify {
+	repeated DLEKOLHCNIE DANNIDIPFAL = 6;
+}
+
+message RogueTournBattleFailSettleInfoScNotify {
+	JGAMMPGMCNI IDCMACCPCBH = 2;
+	FAICNBKIELL BFLLJJBHLDF = 4;
+}
+
+message RogueTournClearArchiveNameScNotify {
+	uint32 NPHAJEKCBKF = 11;
+}
+
+message RogueTournConfirmSettleCsReq {
+	uint32 area_id = 6;
+	uint32 NPHAJEKCBKF = 10;
+	string name = 11;
+}
+
+message RogueTournConfirmSettleScRsp {
+	MJMGOBMOPDL BLPDBPHMCGA = 4;
+	uint32 retcode = 5;
+	JGAMMPGMCNI IDCMACCPCBH = 10;
+	ItemList IIOMCJPCFML = 11;
+	ItemList AELJFOPMDJG = 12;
+}
+
+message RogueTournDeleteArchiveCsReq {
+	uint32 NPHAJEKCBKF = 5;
+}
+
+message RogueTournDeleteArchiveScRsp {
+	uint32 NPHAJEKCBKF = 3;
+	uint32 retcode = 11;
+}
+
+message RogueTournDeleteBuildRefCsReq {
+	repeated uint32 IICKCIKPOKO = 14;
+}
+
+message RogueTournDeleteBuildRefScRsp {
+	uint32 retcode = 2;
+	repeated uint32 GGIGDJPFBBP = 7;
+}
+
+message RogueTournEnablePermanentTalentCsReq {
+	uint32 CKHCLKOALKE = 12;
+}
+
+message RogueTournEnablePermanentTalentScRsp {
+	uint32 retcode = 2;
+	MDLPIFCHFPJ DPABCOHLPLH = 7;
+}
+
+message RogueTournEnableSeasonTalentCsReq {
+	uint32 CKHCLKOALKE = 2;
+}
+
+message RogueTournEnableSeasonTalentScRsp {
+	uint32 retcode = 6;
+	KGPIEEKIEME HANICMMHJGI = 13;
+}
+
+message RogueTournEnterCsReq {
+}
+
+message RogueTournEnterLayerCsReq {
+	uint32 BJHMFOAGMBF = 13;
+	uint32 KHBLMAOPLLN = 14;
+}
+
+message RogueTournEnterLayerScRsp {
+	uint32 retcode = 7;
+	JGAMMPGMCNI IDCMACCPCBH = 9;
+}
+
+message RogueTournEnterRogueCocoonSceneCsReq {
+	repeated AvatarIdentifier avatar_list = 1;
+	uint32 DCNNFJLABPL = 5;
+	uint32 HECCOBFBJFI = 8;
+	uint32 NBLMAGLGCGN = 10;
+	uint32 difficulty = 12;
+}
+
+message RogueTournEnterRogueCocoonSceneScRsp {
+	uint32 retcode = 1;
+	JGAMMPGMCNI IDCMACCPCBH = 5;
+}
+
+message RogueTournEnterRoomCsReq {
+	uint32 KHBLMAOPLLN = 4;
+	uint32 JOJCPKNIJOH = 15;
+}
+
+message RogueTournEnterRoomScRsp {
+	uint32 retcode = 11;
+	JGAMMPGMCNI IDCMACCPCBH = 12;
+}
+
+message RogueTournEnterScRsp {
+	JGAMMPGMCNI IDCMACCPCBH = 4;
+	uint32 retcode = 5;
+	PFLOIHLLMEE PHGJIJELKDB = 12;
+}
+
+message RogueTournExpNotify {
+	uint32 exp = 12;
+}
+
+message RogueTournGetAllArchiveCsReq {
+}
+
+message RogueTournGetAllArchiveScRsp {
+	uint32 retcode = 1;
+	repeated MJMGOBMOPDL MCGGPONOCKC = 3;
+}
+
+message RogueTournGetAllBuildRefCsReq {
+}
+
+message RogueTournGetAllBuildRefScRsp {
+	repeated DIFGGDIHDEG GIOEPGJGMPD = 6;
+	uint32 retcode = 13;
+}
+
+message RogueTournGetArchiveRepositoryCsReq {
+}
+
+message RogueTournGetArchiveRepositoryScRsp {
+	uint32 retcode = 4;
+	repeated uint32 PBPIOEKJJPF = 8;
+	repeated uint32 BDNFDHJBAME = 10;
+}
+
+message RogueTournGetCurRogueCocoonInfoCsReq {
+}
+
+message RogueTournGetCurRogueCocoonInfoScRsp {
+	uint32 DCNNFJLABPL = 1;
+	uint32 retcode = 11;
+	uint32 NBLMAGLGCGN = 12;
+	uint32 difficulty = 14;
+	uint32 HECCOBFBJFI = 15;
+}
+
+message RogueTournGetMiscRealTimeDataCsReq {
+}
+
+message RogueTournGetMiscRealTimeDataScRsp {
+	BJLNEBBMMOE AOMHPLHONJA = 1;
+	uint32 retcode = 2;
+	GKHFFKMFMEN JJLFKNPEPFP = 4;
+	FBBOKKLGKGL BNLLEJPCIGD = 5;
+	JGMDJIENFFH CPOLAHJPGFE = 10;
+	DCDMPLJNBJC AOGOHOCFFNE = 15;
+}
+
+message RogueTournGetPermanentTalentInfoCsReq {
+}
+
+message RogueTournGetPermanentTalentInfoScRsp {
+	MDLPIFCHFPJ DPABCOHLPLH = 7;
+	uint32 retcode = 15;
+}
+
+message RogueTournGetSeasonTalentInfoCsReq {
+}
+
+message RogueTournGetSeasonTalentInfoScRsp {
+	uint32 retcode = 4;
+	KGPIEEKIEME HANICMMHJGI = 11;
+}
+
+message RogueTournGetSettleInfoCsReq {
+	uint32 area_id = 4;
+}
+
+message RogueTournGetSettleInfoScRsp {
+	uint32 retcode = 6;
+	FAICNBKIELL BFLLJJBHLDF = 8;
+}
+
+message RogueTournHandBookNotify {
+	oneof KKNBOACNCON {
+		DNCEOOPHIOK IOOACHNEHAH = 2;
+		KCDBGKJANIH LFCDGLIEHAI = 4;
+		COOIDLLFFIJ CFNAKPADAEB = 5;
+		MJBODJKDPPD ICNOEGEEPOF = 6;
+		ECMNFOEDOJC ODHGPLKCBBG = 10;
+		KILGONODPIC OOOACLEFDGM = 11;
+	}
+}
+
+message RogueTournLeaveCsReq {
+}
+
+message RogueTournLeaveRogueCocoonSceneCsReq {
+}
+
+message RogueTournLeaveRogueCocoonSceneScRsp {
+	uint32 retcode = 4;
+	JGAMMPGMCNI IDCMACCPCBH = 14;
+}
+
+message RogueTournLeaveScRsp {
+	JGAMMPGMCNI IDCMACCPCBH = 4;
+	uint32 retcode = 15;
+}
+
+message RogueTournLevelInfoUpdateScNotify {
+	RogueTournLevelStatus status = 1;
+	uint32 BJHMFOAGMBF = 2;
+	FKNGOGLNKIG reason = 9;
+	repeated IJNFOHJGPBC NNFFPJOLDHK = 11;
+}
+
+enum RogueTournLevelStatus {
+	RogueTournLevelStatus_None = 0;
+	RogueTournLevelStatus_Processing = 1;
+	RogueTournLevelStatus_Finished = 2;
+	RogueTournLevelStatus_Settled = 3;
+}
+
+message RogueTournPersonaRoomCardZoneUpdateScNotify {
+	ODHJEDHKHOD NHNBJLLDOHO = 12;
+}
+
+message RogueTournQueryCsReq {
+}
+
+message RogueTournQueryScRsp {
+	KIKEAJJLAMH LFLCDNGALME = 5;
+	PFLOIHLLMEE PHGJIJELKDB = 7;
+	uint32 retcode = 8;
+}
+
+message RogueTournReEnterRogueCocoonStageCsReq {
+}
+
+message RogueTournReEnterRogueCocoonStageScRsp {
+	SceneBattleInfo battle_info = 10;
+	uint32 retcode = 12;
+}
+
+message RogueTournRenameArchiveCsReq {
+	string name = 1;
+	uint32 NPHAJEKCBKF = 3;
+}
+
+message RogueTournRenameArchiveScRsp {
+	uint32 NPHAJEKCBKF = 3;
+	uint32 retcode = 11;
+	string name = 12;
+}
+
+message RogueTournRenameBuildRefCsReq {
+	string name = 2;
+	uint32 NPHAJEKCBKF = 14;
+}
+
+message RogueTournRenameBuildRefScRsp {
+	string name = 6;
+	uint32 NPHAJEKCBKF = 7;
+	uint32 retcode = 12;
+}
+
+message RogueTournResetPermanentTalentCsReq {
+}
+
+message RogueTournResetPermanentTalentScRsp {
+	uint32 retcode = 8;
+	MDLPIFCHFPJ DPABCOHLPLH = 11;
+}
+
+message RogueTournReviveAvatarCsReq {
+	repeated DKFJLHHDFKO avatar_list = 1;
+	uint32 interacted_prop_entity_id = 9;
+}
+
+message RogueTournReviveAvatarScRsp {
+	uint32 retcode = 13;
+	ItemCostData LNIEFKBMIPD = 15;
+}
+
+message RogueTournReviveCostUpdateScNotify {
+	ItemCostData LNIEFKBMIPD = 9;
+}
+
+message RogueTournSaveBuildRefCsReq {
+	OOLJJHMLHBH MPOEFPFPEND = 8;
+	uint32 NPHAJEKCBKF = 12;
+	string name = 13;
+}
+
+message RogueTournSaveBuildRefScRsp {
+	string name = 8;
+	uint32 NPHAJEKCBKF = 10;
+	uint32 retcode = 11;
+}
+
+message RogueTournSettleCsReq {
+}
+
+message RogueTournSettleScRsp {
+	FAICNBKIELL BFLLJJBHLDF = 3;
+	JGAMMPGMCNI IDCMACCPCBH = 5;
+	uint32 retcode = 14;
+}
+
+message RogueTournStartCsReq {
+	uint32 area_id = 3;
+	bool EJDMOENBHDP = 6;
+	bool KENPENNAGLG = 8;
+	repeated DKFJLHHDFKO avatar_list = 12;
+}
+
+message RogueTournStartScRsp {
+	uint32 retcode = 9;
+	JGAMMPGMCNI IDCMACCPCBH = 12;
+	PFLOIHLLMEE PHGJIJELKDB = 13;
+}
+
+message RogueTournTakeExpRewardCsReq {
+	uint32 FABMHMFNMDB = 5;
+	repeated uint32 HBGAFAFFFAO = 9;
+}
+
+message RogueTournTakeExpRewardScRsp {
+	uint32 exp = 1;
+	ItemList reward = 3;
+	repeated uint32 FKDNANDJLGK = 7;
+	uint32 retcode = 10;
+}
+
+message RogueTournTitanUpdateTitanBlessProgressScNotify {
+	uint32 PLJPIPDFAHA = 1;
+}
+
+message RogueTournTriggerRoomSelectCsReq {
+}
+
+message RogueTournTriggerRoomSelectScRsp {
+	uint32 retcode = 2;
+}
+
+message RogueTournUseSuperRewardKeyCsReq {
+	uint32 count = 1;
+	uint32 cocoon_id = 7;
+	uint32 difficulty = 14;
+}
+
+message RogueTournUseSuperRewardKeyScRsp {
+	LMDPKOELKFL ABEMLCJBIEF = 1;
+	ItemList reward = 5;
+	ItemList drop_data = 8;
+	uint32 retcode = 11;
+}
+
+message RogueTournWeekChallengeUpdateScNotify {
+	CJOCDGGCPCN BFNHJIBDMOA = 11;
+}
