@@ -1,6 +1,8 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Config.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.Enums;
+using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
@@ -61,30 +63,75 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
             if (mazeMap.DimensionId == 0)
                 mazeMap.DimensionId = (uint)SceneInstance.ResolveDimensionId(floorInfo, mapData.ID);
 
+            var currentScene = player.SceneInstance?.FloorId == floorId ? player.SceneInstance : null;
+            mazeMap.ClientGroupMissionInfo = player.MissionManager!.BuildSceneMissionInfo(floorInfo, (int)floorId);
+
             // Real "opened/total" chest counters: the map screen renders these per bucket. Total = the floor's
             // chest props classified through their MazeChest ChestType tags; opened = those whose live or
             // persisted state is an opened state. Official floor 20111001 mid-run ships NORMAL 4/7 ·
             // CHALLENGE 1/2 · PUZZLE 1/5 where the config classifies 7 normal / 2 challenge / 4 puzzle + 1 hidden.
             AppendFloorChestCounts(mazeMap, floorInfo, player, (int)floorId);
 
-            // Prefer runtime loaded groups for current scene to match official behavior.
-            if (player.SceneInstance?.FloorId == floorId)
+            var floorSavedData = currentScene?.BuildClientFloorSavedData()
+                ?? player.SceneData!.FloorSavedData.GetValueOrDefault((int)floorId, []);
+
+            // The scene already owns its loaded server groups; evaluate client groups from their resource
+            // conditions because they have no server entities. Other floors have no runtime group list.
+            var dimensionGroups = floorInfo.DimensionList.FirstOrDefault(x => x.ID == (int)mazeMap.DimensionId)?
+                .GroupIDList.ToHashSet();
+            var missionData = player.MissionManager!.Data;
+            var runningBattleIds = player.MissionManager.GetRunningSubMissionList()
+                .Where(x => x.FinishType == MissionFinishTypeEnum.StageWin)
+                .Select(x => x.ParamInt1).ToHashSet();
+            foreach (var group in floorInfo.Groups.Values)
             {
-                foreach (var groupId in player.SceneInstance.Groups.Distinct())
+                if (currentScene != null && group.LoadSide != GroupLoadSideEnum.Client) continue;
+                if (dimensionGroups != null && !dimensionGroups.Contains(group.Id)) continue;
+                if (group.SystemUnlockCondition is { } unlock)
                 {
-                    mazeMap.MazeGroupList.Add(new MazeGroup
+                    var unlocked = unlock.Operation != OperationEnum.Or;
+                    foreach (var conditionId in unlock.Conditions)
                     {
-                        GroupId = (uint)groupId
-                    });
+                        if (!GameData.GroupSystemUnlockDataData.TryGetValue(conditionId, out var config)) continue;
+                        var matched = player.QuestManager?.UnlockHandler.GetUnlockStatus(config.UnlockID) == true;
+                        if (unlock.Operation == OperationEnum.Or && matched)
+                        {
+                            unlocked = true;
+                            break;
+                        }
+
+                        if ((unlock.Operation == OperationEnum.And && !matched) ||
+                            (unlock.Operation == OperationEnum.Not && matched))
+                        {
+                            unlocked = false;
+                            break;
+                        }
+                    }
+
+                    if (!unlocked) continue;
                 }
+
+                if (group.OwnerMainMissionID != 0 &&
+                    player.MissionManager.GetMainMissionStatus(group.OwnerMainMissionID) != MissionPhaseEnum.Accept)
+                    continue;
+                if (!group.LoadCondition.IsTrue(missionData) ||
+                    group.UnloadCondition.IsTrue(missionData, false) ||
+                    group.ForceUnloadCondition.IsTrue(missionData, false) ||
+                    !group.SavedValueCondition.IsTrue(floorSavedData) ||
+                    (group.RelatedBattleId.Count > 0 && !group.RelatedBattleId.Any(runningBattleIds.Contains)))
+                    continue;
+
+                mazeMap.MazeGroupList.Add(new MazeGroup { GroupId = (uint)group.Id });
             }
-            else
+
+            // Loaded server groups can outlive an unload condition until scene reload (or be force-loaded).
+            // Preserve them alongside conditionally loaded client groups and generated room groups.
+            if (currentScene != null)
             {
-                foreach (var groupInfo in floorInfo.Groups.Values)
-                    mazeMap.MazeGroupList.Add(new MazeGroup
-                    {
-                        GroupId = (uint)groupInfo.Id
-                    });
+                var groupIds = mazeMap.MazeGroupList.Select(x => x.GroupId).ToHashSet();
+                foreach (var groupId in currentScene.Groups)
+                    if (groupIds.Add((uint)groupId))
+                        mazeMap.MazeGroupList.Add(new MazeGroup { GroupId = (uint)groupId });
             }
 
             if (player.MissionEnabled)
@@ -147,9 +194,6 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                 }
             }
 
-            var floorSavedData = player.SceneInstance?.FloorId == floorId
-                ? player.SceneInstance.BuildClientFloorSavedData()
-                : player.SceneData!.FloorSavedData.GetValueOrDefault((int)floorId, []);
             foreach (var (key, value) in floorSavedData)
                 mazeMap.FloorSavedValueMap[key] = value;
 
