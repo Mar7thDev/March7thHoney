@@ -1,10 +1,12 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Config;
+using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Mission.FinishAction;
@@ -1167,19 +1169,35 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public void OnLoadScene(SceneInfo info)
     {
-        var targetSubIds =
-            Player.SceneInstance?.FloorInfo?.Groups.Values.SelectMany(x => x.RelatedMissionId).ToList() ?? [];
+        info.SceneMissionInfo = BuildSceneMissionInfo(Player.SceneInstance?.FloorInfo,
+            Player.SceneInstance?.FloorId ?? 0);
+    }
 
+    public MissionStatusBySceneInfo BuildSceneMissionInfo(FloorInfo? floorInfo, int floorId)
+    {
+        var missionInfo = new MissionStatusBySceneInfo();
+        HashSet<int> targetSubIds = [];
         HashSet<int> mainIds = [];
         HashSet<int> subIds = [];
-        var currentPlane = Player.SceneInstance?.PlaneId ?? 0;
-        var currentFloor = Player.SceneInstance?.FloorId ?? 0;
+
+        // Client groups have no server entities. Their load/unload conditions are the mission IDs
+        // the client needs for spawning and triggering them, even when those missions run on other floors.
+        foreach (var group in floorInfo?.Groups.Values.Where(x => x.LoadSide == GroupLoadSideEnum.Client) ?? [])
+        {
+            targetSubIds.UnionWith(group.RelatedMissionId);
+            foreach (var condition in group.LoadCondition.Conditions.Concat(group.UnloadCondition.Conditions)
+                         .Concat(group.ForceUnloadCondition.Conditions))
+                if (condition.Type == LevelGroupMissionTypeEnum.SubMission)
+                    targetSubIds.Add(condition.ID);
+                else
+                    mainIds.Add(condition.ID);
+        }
 
         void AddSubMissionStatus(SubMissionInfo subMission, int mainMissionId)
         {
             if (!subIds.Add(subMission.ID)) return;
 
-            info.SceneMissionInfo.SubMissionStatusList.Add(new Proto.Mission
+            missionInfo.SubMissionStatusList.Add(new Proto.Mission
             {
                 Id = (uint)subMission.ID,
                 Status = GetSubMissionStatus(subMission.ID).ToProto(),
@@ -1194,41 +1212,35 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             if (targetSubIds.Contains(subMission.ID))
                 AddSubMissionStatus(subMission, mainMission.MainMissionID);
 
-        if (currentFloor != 0)
-            foreach (var mainMission in GameData.MainMissionData.Values)
-            foreach (var subMission in mainMission.MissionInfo.SubMissionList)
-            {
-                if (subMission.LevelFloorID != currentFloor) continue;
-                if (subMission.LevelPlaneID != 0 && currentPlane != 0 && subMission.LevelPlaneID != currentPlane)
-                    continue;
-
-                AddSubMissionStatus(subMission, mainMission.MainMissionID);
-            }
-
+        // Official 4.6 floor 10001001 ships exactly this client-group-derived set (32 subs / 50 mains):
+        // it does NOT enumerate every mission authored on the floor. The running story talk 100030103 is
+        // absent from the entry snapshot and only reaches the client through the mission sync flow.
         foreach (var mainId in mainIds)
             if (GetMainMissionStatus(mainId) == MissionPhaseEnum.Finish)
-                info.SceneMissionInfo.FinishedMainMissionIdList.Add((uint)mainId);
+                missionInfo.FinishedMainMissionIdList.Add((uint)mainId);
             else
-                info.SceneMissionInfo.UnfinishedMainMissionIdList.Add((uint)mainId);
+                missionInfo.UnfinishedMainMissionIdList.Add((uint)mainId);
 
         // Activity-bound main missions: for each ContentPackage whose entrance lives on the
         // floor the player is loading, surface its main missions as "unfinished" so the client
         // treats the activity entry (map icons, in-scene activity NPCs) as live. We keep the
         // regular Mission system untouched - this only affects scene-mission serialization.
-        if (currentFloor != 0)
+        if (floorId != 0)
             foreach (var pkg in GameData.ContentPackageConfigData.Values)
             {
                 if (pkg.MainMissionIDList.Count == 0) continue;
-                if (!pkg.TouchesFloor(currentFloor)) continue;
+                if (!pkg.TouchesFloor(floorId)) continue;
 
                 foreach (var missionId in pkg.MainMissionIDList)
                 {
                     var mid = (uint)missionId;
-                    if (info.SceneMissionInfo.FinishedMainMissionIdList.Contains(mid)) continue;
-                    if (info.SceneMissionInfo.UnfinishedMainMissionIdList.Contains(mid)) continue;
-                    info.SceneMissionInfo.UnfinishedMainMissionIdList.Add(mid);
+                    if (missionInfo.FinishedMainMissionIdList.Contains(mid)) continue;
+                    if (missionInfo.UnfinishedMainMissionIdList.Contains(mid)) continue;
+                    missionInfo.UnfinishedMainMissionIdList.Add(mid);
                 }
             }
+
+        return missionInfo;
     }
 
     #endregion

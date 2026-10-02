@@ -874,6 +874,69 @@ Check("missions enabled: a story-written SceneStateByMainMission still wins",
 player.SceneData.FloorSavedData.Remove(20001001);
 player.MissionManager.Data.EnableMissionOverride = null;
 
+var mapPlayer = new PlayerInstance(60011);
+await mapPlayer.InitializeAsync();
+mapPlayer.MissionManager!.Data.EnableMissionOverride = true;
+mapPlayer.MissionManager.Data.SetMainMissionStatus(1000300, MissionPhaseEnum.Accept);
+var mapScene = new SceneInstance(mapPlayer, GameData.MazePlaneData[10001], 10001001, 1000101);
+// Official 4.6 entry snapshot for floor 10001001 ships exactly these client-group sub missions.
+var officialClientSubIds = new HashSet<uint>
+{
+    200010818, 200011007, 200020103, 200020107, 200020113, 200020122, 200021100, 200021113,
+    201150112, 202030303, 202030331, 202030332, 202030347, 202030349, 204370120, 300030102,
+    300030103, 300030104, 300030202, 300030203, 300030204, 300070101, 300070102, 300070201,
+    300070301, 300070401, 404000501, 404001401, 404001402, 404001803, 800000101, 800000102
+};
+typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.SceneInstance))!.SetValue(mapPlayer, mapScene);
+GetSceneMapInfoScRsp MissionMap() => GetSceneMapInfoScRsp.Parser.ParseFrom(new PacketGetSceneMapInfoScRsp(
+    new GetSceneMapInfoCsReq { SceneIdentifiers = { new SceneIdentifier { FloorId = 10001001 } } }, mapPlayer).Data);
+Check("Asta proximity-trigger group loads while its prerequisite mission is still active",
+    MissionMap().SceneMapInfo.Single().MazeGroupList.Any(group => group.GroupId == 5));
+mapPlayer.MissionManager.Data.SetMainMissionStatus(1000300, MissionPhaseEnum.Finish);
+mapPlayer.MissionManager.Data.SetMainMissionStatus(1000301, MissionPhaseEnum.Accept);
+mapPlayer.MissionManager.Data.SetSubMissionStatus(100030103, MissionPhaseEnum.Accept);
+var missionMap = MissionMap().SceneMapInfo.Single();
+Check("Asta mission map includes client-side NPC and proximity-trigger groups without server entities",
+    !mapScene.Groups.Contains(4) && !mapScene.Groups.Contains(5)
+    && missionMap.MazeGroupList.Any(group => group.GroupId == 4)
+    && missionMap.MazeGroupList.Any(group => group.GroupId == 5));
+Check("current-floor map does not invent unloaded server Book groups",
+    !mapScene.Groups.Contains(143) && !mapScene.Groups.Contains(165)
+    && !missionMap.MazeGroupList.Any(group => group.GroupId is 143 or 165));
+Check("Asta mission map sends the completed prerequisite and active main mission to client groups",
+    missionMap.ClientGroupMissionInfo?.FinishedMainMissionIdList.Contains(1000300) == true
+    && missionMap.ClientGroupMissionInfo.UnfinishedMainMissionIdList.Contains(1000301));
+Check("scene mission status matches the official client-group sub set",
+    missionMap.ClientGroupMissionInfo!.SubMissionStatusList.Select(x => x.Id).ToHashSet()
+        .SetEquals(officialClientSubIds));
+Check("the running story talk mission stays out of the official-style entry snapshot",
+    !missionMap.ClientGroupMissionInfo.SubMissionStatusList.Any(x => x.Id == 100030103)
+    && !mapScene.ToProto().SceneMissionInfo.SubMissionStatusList.Any(x => x.Id == 100030103));
+Check("current-floor map and scene send the same client-group mission snapshot",
+    missionMap.ClientGroupMissionInfo?.Equals(mapScene.ToProto().SceneMissionInfo) == true);
+mapPlayer.MissionManager.Data.SetMainMissionStatus(1000302, MissionPhaseEnum.Finish);
+Check("finishing the authored unload mission removes the proximity-trigger group from map info",
+    !MissionMap().SceneMapInfo.Single().MazeGroupList.Any(group => group.GroupId == 5));
+typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.SceneInstance))!.SetValue(mapPlayer, null);
+var noncurrentMissionMap = MissionMap().SceneMapInfo.Single();
+Check("noncurrent floor still sends its client-group mission state",
+    noncurrentMissionMap.ClientGroupMissionInfo?.FinishedMainMissionIdList.Contains(1000300) == true);
+Check("noncurrent floor respects authored group unload conditions",
+    !noncurrentMissionMap.MazeGroupList.Any(group => group.GroupId == 5));
+
+var hertaEntry = GameData.MapEntranceData.Values.Where(entry => entry.FloorID == 80112001).MinBy(entry => entry.ID)!;
+var hertaScene = new SceneInstance(mapPlayer, GameData.MazePlaneData[hertaEntry.PlaneID], 80112001, hertaEntry.ID);
+mapPlayer.MissionManager.Data.SetMainMissionStatus(1000401, MissionPhaseEnum.Finish);
+var hertaGroup = hertaScene.FloorInfo!.Groups[2];
+Check("Herta group defers its authored mission unload until scene reload",
+    hertaGroup.UnloadCondition.DelayToLevelReload && hertaGroup.UnloadCondition.IsTrue(mapPlayer.MissionManager.Data, false));
+hertaScene.Groups.Add(2);
+typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.SceneInstance))!.SetValue(mapPlayer, hertaScene);
+var hertaMap = GetSceneMapInfoScRsp.Parser.ParseFrom(new PacketGetSceneMapInfoScRsp(
+    new GetSceneMapInfoCsReq { SceneIdentifiers = { new SceneIdentifier { FloorId = 80112001 } } }, mapPlayer).Data);
+Check("current-floor map retains a loaded group during its deferred unload",
+    hertaMap.SceneMapInfo.Single().MazeGroupList.Any(group => group.GroupId == 2));
+
 // Summon-delivered maze buffs (Cyrene 14151 -> 141502) reference the summon entity, keep the authored lifetime,
 // and leave with the summon; the summon's lifetime is owned by the caster's timed maze buff 141501.
 var fieldScene = missionFloor;
