@@ -131,7 +131,7 @@ public partial class SceneInstance
             PlaneId = (uint)PlaneId,
             FloorId = (uint)FloorId,
             EntryId = (uint)EntryId,
-            ClientPosVersion = 1,
+            ClientPosVersion = (uint)ClientPosVersion,
             SceneMissionInfo = new MissionStatusBySceneInfo(),
             FiveDimGameData = new SceneFiveDimGameData
             {
@@ -243,16 +243,28 @@ public partial class SceneInstance
         // unlock section
         if (!ConfigManager.Config.ServerOption.AutoLightSection)
         {
-            Player.SceneData!.UnlockSectionIdList.TryGetValue(FloorId, out var unlockSectionList);
-            if (unlockSectionList != null)
-                foreach (var sectionId in unlockSectionList)
-                    sceneInfo.LightenSectionList.Add((uint)sectionId);
+            if (IsTransientPlane)
+            {
+                // A rogue/raid scene publishes only what this instance revealed, never a previous run's fog.
+                sceneInfo.LightenSectionList.AddRange(RevealedSections.Order().Select(x => (uint)x));
+            }
+            else
+            {
+                Player.SceneData!.UnlockSectionIdList.TryGetValue(FloorId, out var unlockSectionList);
+                if (unlockSectionList != null)
+                    foreach (var sectionId in unlockSectionList)
+                        sceneInfo.LightenSectionList.Add((uint)sectionId);
+            }
         }
         else
         {
             GameData.GetFloorInfo(PlaneId, FloorId, out var floorInfo);
             sceneInfo.LightenSectionList.AddRange(floorInfo.MapSections.Select(x => (uint)x));
         }
+
+        // A Divergent Universe room publishes the run's drafted blessings plus the avatar-global maze buffs.
+        if (GameModeType == GameModeTypeEnum.TournRogue && Player.RogueTournManager?.RunInstance is { } tournRun)
+            sceneInfo.SceneBuffInfoList.AddRange(RogueTourn.RogueTournProtoBuilder.BuildSceneBuffs(tournRun, Player));
 
         return sceneInfo;
     }

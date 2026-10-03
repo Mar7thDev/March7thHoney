@@ -2,11 +2,15 @@
   "Seasons": [
     {
       "TournMode": "Tourn3",
+      "PlanePool": [80702, 80703, 80704],
       "Planes": [
-        { "PlaneIndex": 1, "PlaneID": 80703, "EntranceID": 8070301, "RoomTypes": [3, 2, 6, 1] },
-        { "PlaneIndex": 2, "PlaneID": 80704, "EntranceID": 8070401, "RoomTypes": [8, 6, 4, 11, 1] },
-        { "PlaneIndex": 3, "PlaneID": 80702, "EntranceID": 8070201, "RoomTypes": [9, 6, 10, 1] }
-      ]
+        { "PlaneIndex": 1, "PlaneID": 80703, "EntranceID": 8070301, "RoomTypes": [3, 2, 3, 1], "RoomLevels": [3, 1, 1, 1] },
+        { "PlaneIndex": 2, "PlaneID": 80702, "EntranceID": 8070201, "RoomTypes": [3, 5, 3, 2, 1], "RoomLevels": [4, 2, 4, 2, 1] },
+        { "PlaneIndex": 3, "PlaneID": 80703, "EntranceID": 8070301, "RoomTypes": [3, 6, 10, 1], "RoomLevels": [4, 2, 1, 1] }
+      ],
+      "ClearedRoom": { "Drafts": ["gift"] },
+      "EventPool": [722001, 723501, 724801, 728601],
+      "Score": { "RoomTypes": [1, 2, 3], "PerRoom": 20, "ExpPerScore": 10 }
     }
   ]
 }

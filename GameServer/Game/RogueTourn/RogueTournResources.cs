@@ -12,12 +12,37 @@ public sealed class RogueTournRoomPlanConfig
 
 public sealed class RogueTournSeasonPlan
 {
+    private static readonly RogueTournClearedRoomPlan DefaultClearedRoom = new() { Drafts = ["gift"] };
+
     public string TournMode { get; set; } = "";
     public List<RogueTournPlanePlan> Planes { get; set; } = [];
+
+    // The planes a run draws its layers from, one per layer without replacement; wins over Planes[].PlaneID.
+    // No table binds a layer to a plane: both official 4.6 runs of area 20405 walked different planes.
+    public List<int> PlanePool { get; set; } = [];
+
+    // What a cleared room deals before the room chooser opens; absent = one Persona gift choice.
+    public RogueTournClearedRoomPlan? ClearedRoom { get; set; }
+
+    // The settle-score rule; absent or incomplete = the run scores nothing.
+    public RogueTournScorePlan? Score { get; set; }
+
+    // RogueTournNPC ids an Event room plays, dealt in order and wrapping; absent = Event rooms announce no talk.
+    public List<int> EventPool { get; set; } = [];
 
     public RogueTournPlanePlan? Plane(int index)
     {
         return Planes.FirstOrDefault(plane => plane.PlaneIndex == index);
+    }
+
+    public RogueTournClearedRoomPlan ClearedRoomPlan()
+    {
+        return ClearedRoom is { Drafts.Count: > 0 } ? ClearedRoom : DefaultClearedRoom;
+    }
+
+    public RogueTournScorePlan? ScorePlan()
+    {
+        return Score is { RoomTypes.Count: > 0, PerRoom: > 0, ExpPerScore: > 0 } ? Score : null;
     }
 }
 
@@ -27,7 +52,27 @@ public sealed class RogueTournPlanePlan
     public int PlaneID { get; set; }
     public int EntranceID { get; set; }
     public List<int> RoomTypes { get; set; } = [];
+
+    // The card level each preset-less slot shows (a preset-bearing slot plays its preset's level).
+    public List<int> RoomLevels { get; set; } = [];
     public int AnchorGroup { get; set; }
+}
+
+public sealed class RogueTournClearedRoomPlan
+{
+    // Dealt in order before the chooser: "gift", "gift_core", "miracle". Unknown names are skipped.
+    public List<string> Drafts { get; set; } = [];
+
+    // RogueMiracleGroupID echoed on a miracle offer (the pool itself is the run's TournMode).
+    public int MiracleGroup { get; set; }
+    public int MiracleCount { get; set; }
+}
+
+public sealed class RogueTournScorePlan
+{
+    public List<int> RoomTypes { get; set; } = [];
+    public int PerRoom { get; set; }
+    public int ExpPerScore { get; set; }
 }
 
 public readonly record struct RogueTournRoomSlot(int RoomType, int AreaGroup, int BaseGroup);
@@ -89,12 +134,28 @@ public static class RogueTournResources
         { RogueTournRoomTypeEnum.Adventure, ["SecretChest"] },
         { RogueTournRoomTypeEnum.Respite, ["Revive"] },
         { RogueTournRoomTypeEnum.Reforge, ["Reforge_1", "Reforge_2"] },
-        { RogueTournRoomTypeEnum.Hidden, ["SecretChest", "SecretGamble", "SecretMiracle"] }
+        { RogueTournRoomTypeEnum.Hidden, ["SecretChest", "SecretGamble", "SecretMiracle"] },
+        // Conversion fights to a counted win and owns the block's Convert content; Puman is a combat variant.
+        { RogueTournRoomTypeEnum.Conversion, ["Monster", "Convert"] },
+        { RogueTournRoomTypeEnum.Puman, ["Monster"] }
     };
 
     // RoguePersonaRoomComposition keys; an unknown composition type NREs the client.
     private static readonly HashSet<int> PersonaCompositionTypes =
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 17, 21, 22, 23, 24];
+
+    // RoguePersonaRoomCompType's own room-type → composition mapping, the fallback for a cache without the table.
+    private static readonly Dictionary<RogueTournRoomTypeEnum, int> FallbackCompositions = new()
+    {
+        { RogueTournRoomTypeEnum.Boss, 1 }, { RogueTournRoomTypeEnum.Elite, 2 },
+        { RogueTournRoomTypeEnum.Battle, 3 }, { RogueTournRoomTypeEnum.Encounter, 4 },
+        { RogueTournRoomTypeEnum.Event, 5 }, { RogueTournRoomTypeEnum.Coin, 6 },
+        { RogueTournRoomTypeEnum.Shop, 7 }, { RogueTournRoomTypeEnum.Reward, 8 },
+        { RogueTournRoomTypeEnum.Adventure, 9 }, { RogueTournRoomTypeEnum.Respite, 10 },
+        { RogueTournRoomTypeEnum.Reforge, 21 }, { RogueTournRoomTypeEnum.Hidden, 12 },
+        { RogueTournRoomTypeEnum.Blank, 22 }, { RogueTournRoomTypeEnum.Conversion, 23 },
+        { RogueTournRoomTypeEnum.Puman, 24 }
+    };
 
     private static readonly Lazy<RogueTournRoomPlanConfig?> RoomPlan =
         new(() => ResourceManager.LoadCustomFile<RogueTournRoomPlanConfig>("RogueTourn Room Plan",
@@ -171,6 +232,152 @@ public static class RogueTournResources
         return PersonaCompositionTypes.Contains(compositionType)
             ? compositionType
             : (int)RogueTournRoomTypeEnum.Battle;
+    }
+
+    /// <summary>
+    ///     The composition a room of this type ships: the lowest RoguePersonaRoomCompType id whose label is the type
+    ///     (Hidden owns 12/13/14/15/17), else the restated table, else Battle.
+    /// </summary>
+    public static int CompositionForRoomType(int roomType)
+    {
+        var lowest = 0;
+        foreach (var (id, row) in GameData.RoguePersonaRoomCompTypeData)
+            if (Enum.TryParse<RogueTournRoomTypeEnum>(row.RoomType, out var label) && (int)label == roomType &&
+                (lowest == 0 || id < lowest))
+                lowest = id;
+        if (lowest != 0) return lowest;
+        return FallbackCompositions.GetValueOrDefault((RogueTournRoomTypeEnum)roomType,
+            (int)RogueTournRoomTypeEnum.Battle);
+    }
+
+    // One Persona layer's authored room slots in index order; empty for the older generations.
+    public static List<RoguePersonaLayerRoomExcel> PersonaRooms(int layerId)
+    {
+        return GameData.RoguePersonaLayerRoomData.GetValueOrDefault(layerId) ?? [];
+    }
+
+    /// <summary>The card a Persona preset places: its composition, level and the room type that composition renders as.</summary>
+    public static (int Composition, int Level, int RoomType)? PersonaRoomCard(int presetId)
+    {
+        if (presetId == 0 || !GameData.RoguePersonaRoomPresetData.TryGetValue(presetId, out var preset)) return null;
+        if (!GameData.RoguePersonaRoomCompTypeData.TryGetValue(preset.CompositionType, out var comp)) return null;
+        if (!Enum.TryParse<RogueTournRoomTypeEnum>(comp.RoomType, out var roomType) ||
+            roomType == RogueTournRoomTypeEnum.Unknown) return null;
+        return (preset.CompositionType, preset.Level, (int)roomType);
+    }
+
+    /// <summary>The monster level a room of a layer stamps: the difficulty's LevelList indexed by room, clamped.</summary>
+    public static int DifficultyLevelAt(int difficultyId, int roomIndex)
+    {
+        if (!GameData.RogueTournDifficultyData.TryGetValue(difficultyId, out var difficulty) ||
+            difficulty.LevelList.Count == 0) return 0;
+        return difficulty.LevelList[Math.Clamp(roomIndex - 1, 0, difficulty.LevelList.Count - 1)];
+    }
+
+    #endregion
+
+    #region Draft Pools
+
+    /// <summary>
+    ///     The blessing pool of one generation: every RogueBuffTag the generation's RogueTournBuffGroup rows drop,
+    ///     resolved to its lowest-level buff row, each MazeBuffID once (a buff keys one tag per level, and the
+    ///     official never repeats an id inside one draft). Sorted, so only the window rotation varies.
+    /// </summary>
+    public static List<RogueTournBuffExcel> BuffPool(RogueTournModeEnum mode)
+    {
+        var tags = GameData.RogueBuffGroupData.Values.OfType<RogueTournBuffGroupExcel>()
+            .Where(group => group.TournMode == mode)
+            .SelectMany(group => group.RogueBuffDrop)
+            .ToHashSet();
+        if (tags.Count == 0) return [];
+
+        Dictionary<int, RogueTournBuffExcel> byTag = [];
+        foreach (var buff in GameData.RogueBuffData.Values.OfType<RogueTournBuffExcel>())
+            if (tags.Contains(buff.RogueBuffTag) &&
+                (!byTag.TryGetValue(buff.RogueBuffTag, out var best) || buff.MazeBuffLevel < best.MazeBuffLevel))
+                byTag[buff.RogueBuffTag] = buff;
+
+        HashSet<int> seen = [];
+        List<RogueTournBuffExcel> pool = [];
+        foreach (var tag in tags.OrderBy(tag => tag))
+            if (byTag.TryGetValue(tag, out var buff) && buff.MazeBuffID != 0 && seen.Add(buff.MazeBuffID))
+                pool.Add(buff);
+        return pool;
+    }
+
+    public static RogueTournBuffExcel? BuffRow(int buffId, int level)
+    {
+        return GameData.RogueBuffData.GetValueOrDefault(buffId * 100 + level) as RogueTournBuffExcel;
+    }
+
+    /// <summary>
+    ///     A Persona gift window: ids the run does not hold, in the requested tier band (Core or not), belonging to
+    ///     the run's style (a row naming no style fits every window), and sharing at least one style across the
+    ///     whole window — every official window does, and a mixed one is what blanks the gift card panel.
+    /// </summary>
+    public static List<int> GiftChoices(IReadOnlyCollection<int> held, int styleId, bool core, int count)
+    {
+        if (count <= 0) return [];
+        var pool = GameData.RoguePersonaStyleGiftData.Values
+            .Where(row => !held.Contains(row.GiftID) && row.IsCore == core)
+            .Where(row => styleId == 0 || row.StyleIDList.Count == 0 || row.StyleIDList.Contains(styleId))
+            .Select(row => row.GiftID)
+            .OrderBy(id => id)
+            .ToList();
+        if (pool.Count == 0) return [];
+
+        List<int> window = [];
+        HashSet<int>? common = null;
+        void Add(int id)
+        {
+            window.Add(id);
+            var styles = GiftStyles(id);
+            if (common == null) common = styles;
+            else if (styles != null) common.IntersectWith(styles);
+        }
+
+        Add(pool[Random.Shared.Next(pool.Count)]);
+        while (window.Count < count)
+        {
+            var next = pool.Where(id => !window.Contains(id)).Where(id =>
+            {
+                var styles = GiftStyles(id);
+                return common == null || styles == null || styles.Overlaps(common);
+            }).ToList();
+            if (next.Count == 0) break;
+            Add(next[Random.Shared.Next(next.Count)]);
+        }
+
+        return window;
+    }
+
+    private static HashSet<int>? GiftStyles(int giftId)
+    {
+        var row = GameData.RoguePersonaStyleGiftData.GetValueOrDefault(giftId);
+        return row == null || row.StyleIDList.Count == 0 ? null : [.. row.StyleIDList];
+    }
+
+    /// <summary>
+    ///     A miracle draft: the generation's RogueTournMiracle rows the run does not hold, curses excluded, drawn
+    ///     uniformly without replacement. RogueMiracleGroup keys only classic Simulated Universe miracles.
+    /// </summary>
+    public static List<int> MiracleChoices(RogueTournModeEnum mode, IReadOnlyCollection<int> held, int count)
+    {
+        var pool = GameData.RogueTournMiracleData.Values
+            .Where(row => row.TournMode == mode && !held.Contains(row.MiracleID) &&
+                          row.MiracleCategory != RogueTournMiracleCategoryEnum.Negative)
+            .Select(row => row.MiracleID)
+            .OrderBy(id => id)
+            .ToList();
+        List<int> picks = [];
+        while (picks.Count < count && pool.Count > 0)
+        {
+            var index = Random.Shared.Next(pool.Count);
+            picks.Add(pool[index]);
+            pool.RemoveAt(index);
+        }
+
+        return picks;
     }
 
     #endregion
@@ -417,7 +624,8 @@ public static class RogueTournResources
     public static int RoomMonsterGroup(int planeId, RogueTournRoomTypeEnum roomType, int roomIndex)
     {
         if (roomType is not (RogueTournRoomTypeEnum.Boss or RogueTournRoomTypeEnum.Elite
-            or RogueTournRoomTypeEnum.Battle)) return 0;
+            or RogueTournRoomTypeEnum.Battle or RogueTournRoomTypeEnum.Conversion
+            or RogueTournRoomTypeEnum.Puman)) return 0;
         return RoomBlockFor(planeId, roomIndex)?.Contents.GetValueOrDefault("Monster") ?? 0;
     }
 

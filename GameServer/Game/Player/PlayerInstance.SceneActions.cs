@@ -622,6 +622,13 @@ public partial class PlayerInstance
 
     public void EnterSection(int sectionId)
     {
+        // Section 0 is a real, enterable id. A rogue/raid plane records reveals on the scene, not the player.
+        if (SceneInstance is { IsTransientPlane: true })
+        {
+            SceneInstance.RevealedSections.Add(sectionId);
+            return;
+        }
+
         if (SceneInstance != null)
         {
             SceneData!.UnlockSectionIdList.TryGetValue(SceneInstance.FloorId, out var unlockList);

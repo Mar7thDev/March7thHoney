@@ -86,6 +86,17 @@ public partial class SceneInstance
     public bool PersistsPropState => EntityLoader?.PersistsPropState ?? true;
 
     public GameModeTypeEnum GameModeType { get; set; }
+
+    // The position version this scene carries; the client adopts it (Divergent Universe rooms advance it).
+    public int ClientPosVersion { get; set; } = 1;
+
+    /// <summary>
+    ///     Map sections revealed inside THIS scene. A rogue/raid plane keeps nothing between runs, so its reveals live
+    ///     on the scene instead of the player's persisted record: every run starts with its fog closed again.
+    /// </summary>
+    public HashSet<int> RevealedSections { get; } = [];
+
+    public bool IsTransientPlane => Excel.PlaneType is PlaneTypeEnum.Rogue or PlaneTypeEnum.Raid;
     public List<BaseSceneComponent> Components { get; set; } = [];
 
     public Dictionary<int, EntitySummonUnit> SummonUnit { get; set; } = [];

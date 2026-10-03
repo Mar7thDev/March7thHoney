@@ -918,6 +918,7 @@ public class ResourceManager
                 dialogue.RogueNpcConfig = dialogueInfo;
                 count++;
                 dialogueInfo.Loaded();
+                LoadRogueTournDialogueGraph(dialogue.RogueNPCID, dialogueInfo);
             }
             catch (Exception ex)
             {
@@ -936,6 +937,36 @@ public class ResourceManager
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItems", count.ToString(),
             I18NManager.Translate("Word.DialogueInfo")));
+    }
+
+    /// <summary>
+    ///     Divergent Universe event NPCs (RogueTournNPC, RogueEventTourn* dialogues) are played by a client-side Act
+    ///     graph. The generic LevelGraph model drops the option/event lists the server answers with, so the graph is
+    ///     flattened into <see cref="RogueTournDialogueGraph" /> as well. A missing graph file is a legitimate state.
+    /// </summary>
+    public static void LoadRogueTournDialogueGraph(int npcId, RogueNPCConfigInfo config)
+    {
+        var entry = config.DialogueList.FirstOrDefault();
+        if (entry == null || !entry.DialoguePath.Contains("RogueEventTourn", StringComparison.Ordinal)) return;
+
+        // Some official builds pad their resource paths with trailing whitespace.
+        var file = new FileInfo(ConfigManager.Config.Path.ResourcePath + "/" + entry.DialoguePath.Trim());
+        if (!file.Exists) return;
+        try
+        {
+            var graph = RogueTournDialogueGraph.Parse(npcId, entry.TalkNameID, File.ReadAllText(file.FullName));
+            if (graph == null) return;
+            lock (GameData.RogueTournDialogueData)
+            {
+                GameData.RogueTournDialogueData[npcId] = graph;
+            }
+        }
+        catch (Exception ex)
+        {
+            ResourceCache.IsComplete = false;
+            Logger.Error(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", file.Name,
+                I18NManager.Translate("Word.Error")), ex);
+        }
     }
 
     public static void LoadPerformanceInfo()

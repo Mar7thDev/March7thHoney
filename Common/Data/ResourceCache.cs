@@ -183,6 +183,18 @@ public static class ResourceCache
             return false;
         }
 
+        // Caches built before the Divergent Universe Persona tables / blessing-pool TournMode were loaded. Only
+        // rejected when the raw table is available to rebuild from; scripts/RogueTournCacheUpgrade adds them in place.
+        var hasPersonaLayerRoom = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "RoguePersonaLayerRoom.json")));
+        if (hasPersonaLayerRoom && (GameData.RoguePersonaLayerRoomData.Count == 0 ||
+                                    !GameData.RogueBuffGroupData.Values.OfType<RogueTournBuffGroupExcel>()
+                                        .Any(group => group.TournMode != Enums.TournRogue.RogueTournModeEnum.Permanent)))
+        {
+            Logger.Warn("Resource cache is stale: Divergent Universe Persona tables are missing.");
+            return false;
+        }
+
         if (GameData.EquipmentConfigData.Count == 0)
         {
             Logger.Warn("Resource cache is stale: EquipmentConfigData is missing.");
