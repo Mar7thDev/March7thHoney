@@ -23,6 +23,8 @@ public class LineupManager : BasePlayerManager<LineupData>
             lineupInfo.LineupData = Data;
             lineupInfo.AvatarData = player.AvatarManager!.Data;
         }
+        PadNormalLineups();
+        EnsurePlayableCurLineup();
         RecalculateExtraMpCount();
     }
 
@@ -150,26 +152,72 @@ public class LineupManager : BasePlayerManager<LineupData>
         return GetAvatarsFromTeam(Data.GetCurLineupIndex());
     }
 
+    /// <summary>普通队伍 0..8 按编号在前，额外队伍（键 &gt;= 10）按编号在后。</summary>
     public List<LineupInfo> GetAllLineup()
     {
-        var lineupList = new List<LineupInfo>();
-        foreach (var lineupInfo in Data.Lineups.Values) lineupList.Add(lineupInfo);
-        if (lineupList.Count < GameConstants.MAX_LINEUP_COUNT)
-            for (var i = lineupList.Count; i < GameConstants.MAX_LINEUP_COUNT; i++)
+        PadNormalLineups();
+        return
+        [
+            .. Data.Lineups.Where(x => x.Key < GameConstants.MAX_LINEUP_COUNT).OrderBy(x => x.Key)
+                .Select(x => x.Value),
+            .. Data.Lineups.Where(x => x.Key >= GameConstants.MAX_LINEUP_COUNT).OrderBy(x => x.Key)
+                .Select(x => x.Value)
+        ];
+    }
+
+    /// <summary>
+    ///     按编号补齐普通队伍槽 0..8。旧实现按字典条目数补齐，存档里缺中间编号或带额外队伍时会漏掉某些槽，
+    ///     甚至因编号已存在而抛异常；队伍界面随之只剩一队（yuukisr_go 6bb4fd1 PadNormalLineups）。
+    /// </summary>
+    public void PadNormalLineups()
+    {
+        for (var i = 0; i < GameConstants.MAX_LINEUP_COUNT; i++)
+        {
+            if (Data.Lineups.TryGetValue(i, out var existing))
             {
-                var lineup = new LineupInfo
-                {
-                    Name = "",
-                    LineupType = 0,
-                    BaseAvatars = [],
-                    LineupData = Data,
-                    AvatarData = Player.AvatarManager!.Data
-                };
-                lineupList.Add(lineup);
-                Data.Lineups.Add(i, lineup);
+                existing.BaseAvatars ??= [];
+                continue;
             }
 
-        return lineupList;
+            Data.Lineups[i] = new LineupInfo
+            {
+                Name = "",
+                LineupType = 0,
+                BaseAvatars = [],
+                LineupData = Data,
+                AvatarData = Player.AvatarManager!.Data
+            };
+        }
+    }
+
+    /// <summary>
+    ///     当前普通队伍为空（存档指向从未保存过的槽、或补齐出来的空槽）时，改用编号最小的非空普通队伍，
+    ///     避免以空队伍登录导致客户端建不出队长实体。没有任何非空队伍（新号）时保持不变。
+    /// </summary>
+    public void EnsurePlayableCurLineup()
+    {
+        if (Data.CurExtraLineup != -1) return;
+        if (GetLineup(Data.CurLineup) is { BaseAvatars.Count: > 0 }) return;
+
+        foreach (var (index, lineup) in Data.Lineups.Where(x => x.Key < GameConstants.MAX_LINEUP_COUNT)
+                     .OrderBy(x => x.Key))
+        {
+            if (lineup.BaseAvatars is not { Count: > 0 }) continue;
+            Data.CurLineup = index;
+            return;
+        }
+    }
+
+    /// <summary>MarkPresetLineupCsReq：标记 / 取消常用队伍，只接受普通队伍编号。</summary>
+    public bool SetLineupFavourite(int lineupIndex, bool isFavourite)
+    {
+        if (lineupIndex is < 0 or >= GameConstants.MAX_LINEUP_COUNT) return false;
+        var lineup = GetLineup(lineupIndex);
+        if (lineup == null) return false;
+
+        lineup.IsFavourite = isFavourite;
+        MarkDirty();
+        return true;
     }
 
     #endregion
