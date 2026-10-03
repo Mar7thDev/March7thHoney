@@ -99,6 +99,10 @@ public class ServerOption
     public bool EnableMission { get; set; } = false; // experimental
     public bool EnableQuest { get; set; } = true; // experimental
     public bool AutoLightSection { get; set; } = true;
+
+    // Every login returns the player to the default spawn and abandons the raid/challenge run behind the saved
+    // location (skipped while a story line is active). Off keeps the saved location and resumable runs.
+    public bool ResetLocationOnLogin { get; set; } = false;
     public string Language { get; set; } = "EN";
     public string FallbackLanguage { get; set; } = "EN";
     public string DefaultPermissionRole { get; set; } = CommandRoles.User;
