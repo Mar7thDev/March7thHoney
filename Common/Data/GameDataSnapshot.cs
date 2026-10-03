@@ -3,6 +3,7 @@ using MemoryPack;
 using March7thHoney.Data.Config;
 using March7thHoney.Data.Config.AdventureAbility;
 using March7thHoney.Data.Config.Character;
+using March7thHoney.Data.Config.Rogue;
 using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
@@ -349,6 +350,20 @@ public partial class GridFightRuntimeDataSnapshot
     public Dictionary<int, DailyQuestExcel> DailyQuestData { get; set; } = [];
     public Dictionary<int, DailyMissionDataExcel> DailyMissionDataData { get; set; } = [];
     public Dictionary<int, DailyMissionCountExcel> DailyMissionCountData { get; set; } = [];
+
+    // Appended after the daily tables: an older cache deserializes this as null (see ApplySnapshot).
+    public RogueTournRuntimeDataSnapshot? RogueTournRuntimeData { get; set; }
+}
+
+[MemoryPackable]
+public partial class RogueTournRuntimeDataSnapshot
+{
+    public Dictionary<int, List<RoguePersonaLayerRoomExcel>> RoguePersonaLayerRoomData { get; set; } = [];
+    public Dictionary<int, RoguePersonaRoomPresetExcel> RoguePersonaRoomPresetData { get; set; } = [];
+    public Dictionary<int, RoguePersonaRoomCompTypeExcel> RoguePersonaRoomCompTypeData { get; set; } = [];
+    public Dictionary<int, RoguePersonaStyleGiftExcel> RoguePersonaStyleGiftData { get; set; } = [];
+    public Dictionary<int, RogueTournExpRewardExcel> RogueTournExpRewardData { get; set; } = [];
+    public Dictionary<int, RogueTournDialogueGraph> RogueTournDialogueData { get; set; } = [];
 }
 
 public static partial class GameData
@@ -628,6 +643,15 @@ public static partial class GameData
                 DailyQuestData = GameData.DailyQuestData,
                 DailyMissionDataData = GameData.DailyMissionDataData,
                 DailyMissionCountData = GameData.DailyMissionCountData,
+                RogueTournRuntimeData = new RogueTournRuntimeDataSnapshot
+                {
+                    RoguePersonaLayerRoomData = GameData.RoguePersonaLayerRoomData,
+                    RoguePersonaRoomPresetData = GameData.RoguePersonaRoomPresetData,
+                    RoguePersonaRoomCompTypeData = GameData.RoguePersonaRoomCompTypeData,
+                    RoguePersonaStyleGiftData = GameData.RoguePersonaStyleGiftData,
+                    RogueTournExpRewardData = GameData.RogueTournExpRewardData,
+                    RogueTournDialogueData = GameData.RogueTournDialogueData
+                }
             },
             ActivityRuntimeData = new ActivityRuntimeDataSnapshot
             {
@@ -991,5 +1015,12 @@ public static partial class GameData
         GameData.DailyQuestData = gridFightRuntimeData.DailyQuestData ?? [];
         GameData.DailyMissionDataData = gridFightRuntimeData.DailyMissionDataData ?? [];
         GameData.DailyMissionCountData = gridFightRuntimeData.DailyMissionCountData ?? [];
+        var rogueTournData = gridFightRuntimeData.RogueTournRuntimeData ?? new RogueTournRuntimeDataSnapshot();
+        GameData.RoguePersonaLayerRoomData = rogueTournData.RoguePersonaLayerRoomData ?? [];
+        GameData.RoguePersonaRoomPresetData = rogueTournData.RoguePersonaRoomPresetData ?? [];
+        GameData.RoguePersonaRoomCompTypeData = rogueTournData.RoguePersonaRoomCompTypeData ?? [];
+        GameData.RoguePersonaStyleGiftData = rogueTournData.RoguePersonaStyleGiftData ?? [];
+        GameData.RogueTournExpRewardData = rogueTournData.RogueTournExpRewardData ?? [];
+        GameData.RogueTournDialogueData = rogueTournData.RogueTournDialogueData ?? [];
     }
 }

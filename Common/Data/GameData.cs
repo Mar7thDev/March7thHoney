@@ -1,6 +1,7 @@
 using March7thHoney.Data.Config;
 using March7thHoney.Data.Config.AdventureAbility;
 using March7thHoney.Data.Config.Character;
+using March7thHoney.Data.Config.Rogue;
 using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
@@ -522,6 +523,14 @@ public static partial class GameData
     public static Dictionary<int, RoguePersonaTalentExcel> RoguePersonaTalentData { get; private set; } = [];
     public static Dictionary<int, RoguePersonaStyleExcel> RoguePersonaStyleData { get; private set; } = [];
     public static Dictionary<int, RogueTournKeywordExcel> RogueTournKeywordData { get; private set; } = [];
+    public static Dictionary<int, List<RoguePersonaLayerRoomExcel>> RoguePersonaLayerRoomData { get; private set; } = [];
+    public static Dictionary<int, RoguePersonaRoomPresetExcel> RoguePersonaRoomPresetData { get; private set; } = [];
+    public static Dictionary<int, RoguePersonaRoomCompTypeExcel> RoguePersonaRoomCompTypeData { get; private set; } = [];
+    public static Dictionary<int, RoguePersonaStyleGiftExcel> RoguePersonaStyleGiftData { get; private set; } = [];
+    public static Dictionary<int, RogueTournExpRewardExcel> RogueTournExpRewardData { get; private set; } = [];
+
+    // Divergent Universe event Act graphs keyed by RogueTournNPC id (filled by ResourceManager.LoadDialogueInfo).
+    public static Dictionary<int, RogueTournDialogueGraph> RogueTournDialogueData { get; private set; } = [];
 
     public static List<RogueTournRoomConfig> RogueTournRoomGenData { get; set; } =
         [];
