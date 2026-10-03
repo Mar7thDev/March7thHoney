@@ -38,6 +38,11 @@ using March7thHoney.GameServer.Game.Tutorial;
 using March7thHoney.GameServer.Server;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.GameServer.Server.Packet.Recv.Activity;
+using March7thHoney.GameServer.Game.Pet;
+using March7thHoney.GameServer.Server.Packet.Recv.Lineup;
+using March7thHoney.GameServer.Server.Packet.Recv.Pet;
+using March7thHoney.GameServer.Server.Packet.Recv.RelicPreset;
+using March7thHoney.GameServer.Server.Packet.Send.Item;
 using March7thHoney.GameServer.Server.Packet.Send.Activity;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Chat;
@@ -1760,6 +1765,255 @@ Check("presence handlers are registered for the three requests", new[]
     {
         CmdIds.SocialPlayGetDataCsReq, CmdIds.PetMarbleGetDataCsReq, CmdIds.PetMarbleGetCycleTrialPetsCsReq
     }.All(id => HandlerManager.GetHandler(id) != null));
+// ---- 4.6 pets, relic presets, lineup slots, Trailblazer current path, video keys (yuukisr_go c4f5979/24e7083/6bb4fd1/a532fa0/6a76330) ----
+var blindBoxPetItems = GameData.ItemConfigData.Values.Where(item => PetManager.IsBlindBoxPetItem(item.ID))
+    .Select(item => item.ID).OrderBy(id => id).ToList();
+var gen1PetItems = GameData.PetData.Values.Select(pet => pet.PetItemID).Where(GameData.ItemConfigData.ContainsKey).ToList();
+Check("cache has 4.6 blind box pet items and keeps gen-1 summon pets out of them", blindBoxPetItems.Count >= 2
+    && blindBoxPetItems.All(id => id >= 251501) && gen1PetItems.Count > 0 && gen1PetItems.All(id => !PetManager.IsBlindBoxPetItem(id)));
+
+var petPlayer = new PlayerInstance(60020);
+await petPlayer.InitializeAsync();
+var pets = petPlayer.GetComponent<PetManager>();
+var petOutbound = new LoopbackKcpTransport();
+var petInbound = new LoopbackKcpTransport();
+using (var petServerPeer = new KcpConversation(endpoint, petOutbound, options))
+using (var petClientPeer = new KcpConversation(endpoint, petInbound, options))
+{
+    petOutbound.Peer = petClientPeer;
+    petInbound.Peer = petServerPeer;
+    petOutbound.Start();
+    petInbound.Start();
+    var petConnection = new ProbeConnection(petServerPeer) { Player = petPlayer };
+    petPlayer.Connection = petConnection;
+    async Task<List<(ushort Id, byte[] Body)>> CapturePet(Func<Task> action)
+    {
+        await action();
+        await petPlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var packets = new List<(ushort, byte[])>();
+        while (true)
+        {
+            var received = await petClientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP pet test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            var length = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            if (id == ushort.MaxValue) return packets;
+            packets.Add((id, buffer.AsSpan(12, length).ToArray()));
+        }
+    }
+    Task<List<(ushort Id, byte[] Body)>> Request<TReq>(Handler handler, TReq req) where TReq : IMessage =>
+        CapturePet(() => handler.OnHandle(petConnection, [], req.ToByteArray()));
+    T Last<T>(List<(ushort Id, byte[] Body)> packets, int cmd, MessageParser<T> parser) where T : IMessage<T> =>
+        parser.ParseFrom(packets.Last(p => p.Id == cmd).Body);
+
+    var freshPets = Last(await Request(new HandlerGetPetDataCsReq(), new GetPetDataCsReq()), CmdIds.GetPetDataScRsp,
+        GetPetDataScRsp.Parser);
+    Check("fresh account pet data carries empty-but-present cur_pet and lineup", freshPets.MPJNPINHCJL.Count == 0
+        && freshPets.PLKBLNMOOPH is { LLGIIPALELD: EOGNOEJHAGN.Nlcdgipgfdj } && freshPets.LCFKGCJCHBO is { POJGKJENENA.Count: 0 }
+        && freshPets.UnlockedPetId.Count == 0);
+
+    var petA = blindBoxPetItems[0];
+    var petB = blindBoxPetItems[1];
+    var granted = await CapturePet(async () =>
+    {
+        await petPlayer.InventoryManager!.AddItem(petA, 1, false);
+        await petPlayer.InventoryManager.AddItem(petA, 1, false);
+        await petPlayer.InventoryManager.AddItems([new() { ItemId = petB, Count = 1 }, new() { ItemId = gen1PetItems[0], Count = 1 }], false);
+    });
+    var addedPets = granted.Where(p => p.Id == CmdIds.PetDataChangeScNotify)
+        .SelectMany(p => PetDataChangeScNotify.Parser.ParseFrom(p.Body).DGNGMJMPFGK)
+        .Where(change => change.MMCGBGDJIPNCase == CBHJJCBDJHA.MMCGBGDJIPNOneofCase.AHBNBNFABBO)
+        .Select(change => change.AHBNBNFABBO).ToList();
+    Check("each obtained blind box pet copy is pushed as an add_pet instance, gen-1 pets are not",
+        addedPets.Select(p => (int)p.PetId).OrderBy(x => x).SequenceEqual(new[] { petA, petA, petB }.OrderBy(x => x))
+        && addedPets.Select(p => p.EBAAFDHEPLO).Distinct().Count() == 3);
+    var petMaterialIds = blindBoxPetItems.Concat(gen1PetItems).Select(id => (uint)id).ToHashSet();
+    Check("pet items never ride the PlayerSync material list", granted.Where(p => p.Id == CmdIds.PlayerSyncScNotify)
+        .All(p => PlayerSyncScNotify.Parser.ParseFrom(p.Body).MaterialList.All(m => !petMaterialIds.Contains(m.Tid))));
+    var bag = GetBagScRsp.Parser.ParseFrom(new PacketGetBagScRsp(petPlayer).Data);
+    Check("pet items are kept server-side but left out of GetBagScRsp", bag.MaterialList.All(m => !petMaterialIds.Contains(m.Tid))
+        && petPlayer.InventoryManager.GetItem(petA)?.Count == 2 && petPlayer.InventoryManager.GetItem(gen1PetItems[0])?.Count == 1);
+
+    var petData = Last(await Request(new HandlerGetPetDataCsReq(), new GetPetDataCsReq()), CmdIds.GetPetDataScRsp,
+        GetPetDataScRsp.Parser);
+    var instanceIds = petData.MPJNPINHCJL.Select(p => p.EBAAFDHEPLO).ToList();
+    Check("GetPetData lists one instance per blind box copy with stable ids and summon ref 3",
+        petData.MPJNPINHCJL.Count == 3 && instanceIds.SequenceEqual(addedPets.Select(p => p.EBAAFDHEPLO))
+        && petData.MPJNPINHCJL.All(p => p.PetId >= 251501) && petData.PLKBLNMOOPH.LLGIIPALELD == EOGNOEJHAGN.Lcfkgcjchbo);
+
+    var lineupReq = new SetBlindBoxPetLineupCsReq();
+    for (var i = 0; i < 3; i++) lineupReq.POJGKJENENA.Add(new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[i], Slot = (uint)(i + 1) });
+    var setLineup = await Request(new HandlerSetBlindBoxPetLineupCsReq(), lineupReq);
+    var lineupRsp = Last(setLineup, CmdIds.SetBlindBoxPetLineupScRsp, SetBlindBoxPetLineupScRsp.Parser);
+    var lineupNotify = Last(setLineup, CmdIds.PetDataChangeScNotify, PetDataChangeScNotify.Parser);
+    Check("blind box lineup is stored and announced before the response", lineupRsp.Retcode == 0
+        && lineupRsp.LCFKGCJCHBO.POJGKJENENA.Select(s => s.EBAAFDHEPLO).SequenceEqual(instanceIds)
+        && lineupNotify.DGNGMJMPFGK.Single().DFNCMMIMKHG.POJGKJENENA.Count == 3
+        && setLineup.FindIndex(p => p.Id == CmdIds.PetDataChangeScNotify) < setLineup.FindIndex(p => p.Id == CmdIds.SetBlindBoxPetLineupScRsp)
+        && pets.Data.Lineup.Select(s => s.UniqueId).SequenceEqual(instanceIds));
+
+    var badRequests = new List<SetBlindBoxPetLineupCsReq>
+    {
+        new() { POJGKJENENA = { new EPFJLNKPEPK { EBAAFDHEPLO = 12345, Slot = 1 } } },
+        new() { POJGKJENENA = { new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[0], Slot = 1 }, new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[0], Slot = 2 } } },
+        new() { POJGKJENENA = { new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[0], Slot = 1 }, new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[1], Slot = 1 } } },
+        new() { POJGKJENENA = { new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[0], Slot = 1 }, new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[1], Slot = 2 },
+            new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[2], Slot = 3 }, new EPFJLNKPEPK { EBAAFDHEPLO = instanceIds[2] + 1, Slot = 4 } } }
+    };
+    var badResults = new List<bool>();
+    foreach (var bad in badRequests)
+    {
+        var rejected = await Request(new HandlerSetBlindBoxPetLineupCsReq(), bad);
+        badResults.Add(Last(rejected, CmdIds.SetBlindBoxPetLineupScRsp, SetBlindBoxPetLineupScRsp.Parser).Retcode == (uint)Retcode.RetReqParaInvalid
+            && rejected.All(p => p.Id != CmdIds.PetDataChangeScNotify));
+    }
+    Check("unowned, duplicate-instance, duplicate-slot and over-wide lineups are rejected without changes",
+        badResults.All(x => x) && pets.Data.Lineup.Select(s => s.UniqueId).SequenceEqual(instanceIds));
+
+    var summon = Last(await Request(new HandlerSummonPetCsReq(), new SummonPetCsReq { LLGIIPALELD = EOGNOEJHAGN.Lcfkgcjchbo }),
+        CmdIds.SummonPetScRsp, SummonPetScRsp.Parser);
+    var recall = Last(await Request(new HandlerRecallPetCsReq(), new RecallPetCsReq()), CmdIds.RecallPetScRsp, RecallPetScRsp.Parser);
+    var afterRecall = Last(await Request(new HandlerGetPetDataCsReq(), new GetPetDataCsReq()), CmdIds.GetPetDataScRsp,
+        GetPetDataScRsp.Parser);
+    Check("summon echoes cur_pet, recall answers an empty cur_pet and is remembered",
+        summon.PLKBLNMOOPH.LLGIIPALELD == EOGNOEJHAGN.Lcfkgcjchbo && recall.PLKBLNMOOPH != null
+        && recall.PLKBLNMOOPH.LLGIIPALELD == EOGNOEJHAGN.Nlcdgipgfdj && afterRecall.PLKBLNMOOPH.LLGIIPALELD == EOGNOEJHAGN.Nlcdgipgfdj);
+
+    var pool = Last(await Request(new HandlerBlindBoxGetDataCsReq(), new BlindBoxGetDataCsReq()), CmdIds.BlindBoxGetDataScRsp,
+        BlindBoxGetDataScRsp.Parser);
+    Check("blind box data answers the live pool 1001", pool.CEGOIBGJDBO.Count == 1 && pool.CEGOIBGJDBO[0].PoolId == 1001
+        && pool.CEGOIBGJDBO[0].EndTime > Extensions.GetUnixSec());
+
+    await petPlayer.InventoryManager.RemoveItem(petB, 1);
+    Check("removing a pet copy drops its instance and prunes it from the lineup", pets.Data.Instances.Count == 2
+        && pets.Data.Instances.All(i => i.PetId == petA) && pets.Data.Lineup.Select(s => s.UniqueId).SequenceEqual(instanceIds.Take(2)));
+
+    // relic presets
+    var relicId = GameData.RelicConfigData.Keys.First(id => GameData.ItemConfigData.ContainsKey(id));
+    var relic = await petPlayer.InventoryManager.AddItem(relicId, 1, false);
+    var presetAdd = Last(await Request(new HandlerRelicPresetAddPlanCsReq(), new RelicPresetAddPlanCsReq
+    {
+        AvatarId = 1001, Name = "preset", RelicIds = { (uint)relic!.UniqueId }
+    }), CmdIds.RelicPresetAddPlanScRsp, RelicPresetAddPlanScRsp.Parser);
+    var foreignRelic = Last(await Request(new HandlerRelicPresetAddPlanCsReq(), new RelicPresetAddPlanCsReq
+    {
+        AvatarId = 1001, Name = "foreign", RelicIds = { 987654 }
+    }), CmdIds.RelicPresetAddPlanScRsp, RelicPresetAddPlanScRsp.Parser);
+    var unownedAvatar = Last(await Request(new HandlerRelicPresetAddPlanCsReq(), new RelicPresetAddPlanCsReq
+    {
+        AvatarId = 1999, Name = "nobody", RelicIds = { (uint)relic.UniqueId }
+    }), CmdIds.RelicPresetAddPlanScRsp, RelicPresetAddPlanScRsp.Parser);
+    var emptyUpdate = Last(await Request(new HandlerRelicPresetUpdatePlanCsReq(), new RelicPresetUpdatePlanCsReq
+    {
+        UniqueId = presetAdd.RelicPlan.UniqueId
+    }), CmdIds.RelicPresetUpdatePlanScRsp, RelicPresetUpdatePlanScRsp.Parser);
+    var renamed = Last(await Request(new HandlerRelicPresetUpdatePlanCsReq(), new RelicPresetUpdatePlanCsReq
+    {
+        UniqueId = presetAdd.RelicPlan.UniqueId, Name = "renamed"
+    }), CmdIds.RelicPresetUpdatePlanScRsp, RelicPresetUpdatePlanScRsp.Parser);
+    Check("relic presets accept owned relics and reject unknown relics, unowned avatars and empty updates",
+        presetAdd.Retcode == 0 && presetAdd.RelicPlan.RelicIds.SequenceEqual([(uint)relic.UniqueId])
+        && foreignRelic.Retcode == (uint)Retcode.RetReqParaInvalid && unownedAvatar.Retcode == (uint)Retcode.RetReqParaInvalid
+        && emptyUpdate.Retcode == (uint)Retcode.RetFail && renamed.Retcode == 0 && renamed.Name == "renamed"
+        && petPlayer.InventoryManager.Data.RelicPresetPlans.Count == 1
+        && petPlayer.InventoryManager.Data.RelicPresetPlans.Values.Single().Name == "renamed");
+
+    // lineup favourite
+    var favourite = Last(await Request(new HandlerMarkPresetLineupCsReq(), new MarkPresetLineupCsReq { Index = 2, IsFavourite = true }),
+        CmdIds.SetTeamFavourite, SetTeamFavourite.Parser);
+    var badFavourite = Last(await Request(new HandlerMarkPresetLineupCsReq(), new MarkPresetLineupCsReq { Index = 11, IsFavourite = true }),
+        CmdIds.SetTeamFavourite, SetTeamFavourite.Parser);
+    Check("MarkPresetLineup answers cmd 773 and stores the favourite flag", favourite.Retcode == 0 && favourite.Index == 2
+        && favourite.IsFavourite && petPlayer.LineupManager!.GetLineup(2)!.ToProto().IsFavourite
+        && badFavourite.Retcode == (uint)Retcode.RetLineupNotExist);
+
+    petPlayer.Connection = null;
+    await petOutbound.StopAsync();
+    await petInbound.StopAsync();
+}
+var petRelogin = new PlayerInstance(petPlayer.Data);
+await petRelogin.InitializeAsync();
+var reloginPets = petRelogin.GetComponent<PetManager>().ToGetPetDataProto();
+Check("pet instances and lineup survive a relogin with the same ids",
+    reloginPets.MPJNPINHCJL.Select(p => p.EBAAFDHEPLO).SequenceEqual(pets.Data.Instances.Select(i => i.UniqueId))
+    && reloginPets.LCFKGCJCHBO.POJGKJENENA.Count == 2 && reloginPets.LCFKGCJCHBO.CGBJOAJEMKN == HENPKNCKGGI.Oalpdgkgpbj);
+DatabaseHelper.MarkDirty(petPlayer.Uid);
+DatabaseHelper.Instance!.SaveDatabase();
+await using (var petDb = new SqliteConnection($"Data Source={Path.Combine(scratch, "regression.db")}"))
+{
+    await petDb.OpenAsync();
+    var storedPets = EntityStores.Map[typeof(March7thHoney.Database.Pet.PlayerPetData)].LoadAll(petDb)
+        .OfType<March7thHoney.Database.Pet.PlayerPetData>().Single(x => x.Uid == petPlayer.Uid);
+    var storedLineups = EntityStores.Map[typeof(March7thHoney.Database.Lineup.LineupData)].LoadAll(petDb)
+        .OfType<March7thHoney.Database.Lineup.LineupData>().Single(x => x.Uid == petPlayer.Uid);
+    Check("pet instances, lineup and the lineup favourite flag round-trip through the database",
+        storedPets.Instances.Select(i => i.UniqueId).SequenceEqual(pets.Data.Instances.Select(i => i.UniqueId))
+        && storedPets.Lineup.Count == 2 && storedPets.NextSerial == pets.Data.NextSerial && storedPets.CurPetRefType == 0
+        && storedLineups.Lineups[2].IsFavourite && !storedLineups.Lineups[0].IsFavourite);
+}
+
+// lineup slots: a legacy save with gaps, an extra lineup inserted first and a current index on a missing slot
+var lineupData = petRelogin.LineupManager!.Data;
+var keptLineup = lineupData.Lineups[0];
+var extraLineup = new March7thHoney.Database.Lineup.LineupInfo { Name = "", LineupType = (int)ExtraLineupType.LineupChallenge, BaseAvatars = [] };
+var fifthLineup = new March7thHoney.Database.Lineup.LineupInfo { Name = "five", BaseAvatars = [new() { BaseAvatarId = 1001 }] };
+lineupData.Lineups.Clear();
+lineupData.Lineups[11] = extraLineup;
+lineupData.Lineups[5] = fifthLineup;
+lineupData.Lineups[0] = new March7thHoney.Database.Lineup.LineupInfo { Name = "", BaseAvatars = [] };
+lineupData.CurLineup = 3;
+lineupData.CurExtraLineup = -1;
+var lineupRelogin = new PlayerInstance(petRelogin.Data);
+await lineupRelogin.InitializeAsync();
+var allLineups = GetAllLineupDataScRsp.Parser.ParseFrom(
+    new March7thHoney.GameServer.Server.Packet.Send.Lineup.PacketGetAllLineupDataScRsp(lineupRelogin).Data);
+var normalLineups = allLineups.LineupList.Take(9).ToList();
+Check("legacy lineups are padded to nine slots whose wire index matches the slot",
+    Enumerable.Range(0, 9).All(lineupData.Lineups.ContainsKey) && normalLineups.All(l => l.ExtraLineupType == ExtraLineupType.LineupNone)
+    && normalLineups.Take(9).Select(l => l.Index).SequenceEqual(Enumerable.Range(0, 9).Select(i => (uint)i))
+    && normalLineups[5].Name == "five");
+Check("a current index on an empty slot falls back to the first non-empty lineup",
+    lineupData.CurLineup == 5 && lineupRelogin.LineupManager!.GetCurLineup() == fifthLineup);
+lineupData.Lineups[0] = keptLineup;
+lineupData.CurLineup = 0;
+
+var lineupBytes = MemoryPackSerializer.Serialize(new March7thHoney.Database.Lineup.LineupInfo { Name = "old", Mp = 3, BaseAvatars = [] });
+var legacyLineupBytes = new byte[lineupBytes.Length - 1];
+legacyLineupBytes[0] = (byte)(lineupBytes[0] - 1);
+Array.Copy(lineupBytes, 1, legacyLineupBytes, 1, lineupBytes.Length - 2);
+var legacyLineup = MemoryPackSerializer.Deserialize<March7thHoney.Database.Lineup.LineupInfo>(legacyLineupBytes);
+Check("lineups saved before the favourite flag still deserialize", lineupBytes[0] == 6
+    && legacyLineup is { Name: "old", Mp: 3, IsFavourite: false });
+
+// Trailblazer current path coherence at load
+var pathHero = lineupRelogin.AvatarManager!.GetHero()!;
+lineupRelogin.Data.CurrentGender = Gender.Woman;
+pathHero.AvatarId = 8001;
+var genderFixed = lineupRelogin.AvatarManager.NormalizeHeroCurPath();
+Check("a male current path on a female save is retargeted to the female twin",
+    genderFixed && pathHero.AvatarId == 8002 && lineupRelogin.Data.CurBasicType == 8002 && pathHero.PathInfos.ContainsKey(8002)
+    && !lineupRelogin.AvatarManager.NormalizeHeroCurPath());
+pathHero.AvatarId = 1001;
+lineupRelogin.AvatarManager.NormalizeHeroCurPath();
+var heroAvatarData = GetAvatarDataScRsp.Parser.ParseFrom(new PacketGetAvatarDataScRsp(lineupRelogin).Data);
+Check("a non-path current id falls back to an owned path of the player's gender that the wire announces",
+    pathHero.AvatarId == 8002 && heroAvatarData.AvatarList.Single(a => a.BaseAvatarId == 8001).CurMultiPathAvatarType == 8002
+    && heroAvatarData.AvatarPathDataInfoList.Any(p => p.AvatarId == 8002));
+
+// video keys
+var savedVideoKeys = GameData.VideoKeysConfig;
+GameData.VideoKeysConfig = Newtonsoft.Json.JsonConvert.DeserializeObject<VideoKeysConfig>(
+    File.ReadAllText(Path.Combine(repository, "Config/Custom/VideoKeysConfig.json")))!;
+var videoKeys = GetVideoVersionKeyScRsp.Parser.ParseFrom(
+    new March7thHoney.GameServer.Server.Packet.Send.Player.PacketGetVideoVersionKeyScRsp().Data);
+var video5600 = videoKeys.VideoKeyInfoList.Single(v => v.Id == 5600);
+Check("video keys put video_key on field 6 and ps_field_3 on field 13", video5600.HHCAKADKHAN == 455385195335115081
+    && video5600.IBDIMHPOPOJ == 453193354110313382 && video5600.BOGECOHIINH == 10148726845613043778
+    && videoKeys.ActivityVideoKeyInfoList.Count > 0 && videoKeys.ActivityVideoKeyInfoList.All(v => v.HHCAKADKHAN != 0));
+GameData.VideoKeysConfig = savedVideoKeys;
 
 Console.WriteLine($"Login/scene regression: {checks} checks, {failures.Count} failures. Temporary artifacts: {scratch}");
 Environment.ExitCode = failures.Count == 0 ? 0 : 1;
