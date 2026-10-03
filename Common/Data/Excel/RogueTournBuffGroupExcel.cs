@@ -1,6 +1,9 @@
 using MemoryPack;
 using March7thHoney.Data.Custom;
+using March7thHoney.Enums.TournRogue;
 using March7thHoney.Util;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Excel;
 
@@ -10,6 +13,11 @@ public partial class RogueTournBuffGroupExcel : BaseRogueBuffGroupExcel
 {
     public int RogueBuffGroupID { get; set; }
     public List<int> RogueBuffDrop { get; set; } = [];
+
+    // The Divergent Universe generation this blessing pool belongs to (60 of the 458 4.6 rows carry none).
+    // Appended after the existing members so an older Resource.bin still deserializes (as Permanent).
+    [JsonConverter(typeof(StringEnumConverter))]
+    public RogueTournModeEnum TournMode { get; set; }
 
     public override void Loaded()
     {

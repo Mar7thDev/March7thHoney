@@ -114,6 +114,7 @@ public class ServerOption
     public WatermarkConfig Watermark { get; set; } = new();
     public NetStatusConfig NetStatus { get; set; } = new();
     public ChallengePeakOption ChallengePeak { get; set; } = new();
+    public RogueTournOption RogueTourn { get; set; } = new();
     public AuthOption Auth { get; set; } = new();
     public bool AutoCreateUser { get; set; } = false;
     public LogOption LogOption { get; set; } = new();
@@ -184,6 +185,13 @@ public class NetStatusConfig
                int.TryParse(color.AsSpan(1), System.Globalization.NumberStyles.AllowHexSpecifier,
                    System.Globalization.CultureInfo.InvariantCulture, out rgb);
     }
+}
+
+public class RogueTournOption
+{
+    // RogueTournWeeklyChallenge row the Divergent Universe weekly panel shows. The official rotates it every week
+    // (4.5 reported 105, 4.6 reports 108); a zero/unknown id leaves the panel without a resolvable challenge.
+    public int WeekChallengeId { get; set; } = 108;
 }
 
 public class ChallengePeakOption

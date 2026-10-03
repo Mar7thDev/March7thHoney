@@ -155,8 +155,19 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
 
             if (!ConfigManager.Config.ServerOption.AutoLightSection)
             {
-                player.SceneData!.UnlockSectionIdList.TryGetValue(mapData.FloorID, out var sections);
-                foreach (var section in sections ?? []) mazeMap.LightenSectionList.Add((uint)section);
+                // A rogue/raid floor reports the live scene's reveals; other floors the player's persisted record.
+                if (GameData.MazePlaneData.TryGetValue(mapData.PlaneID, out var mapPlane) &&
+                    mapPlane.PlaneType is PlaneTypeEnum.Rogue or PlaneTypeEnum.Raid)
+                {
+                    if (player.SceneInstance?.FloorId == mapData.FloorID)
+                        mazeMap.LightenSectionList.AddRange(player.SceneInstance.RevealedSections.Order()
+                            .Select(x => (uint)x));
+                }
+                else
+                {
+                    player.SceneData!.UnlockSectionIdList.TryGetValue(mapData.FloorID, out var sections);
+                    foreach (var section in sections ?? []) mazeMap.LightenSectionList.Add((uint)section);
+                }
             }
             else
             {

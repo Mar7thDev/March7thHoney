@@ -1,3 +1,4 @@
+using March7thHoney.Data;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.RogueTourn;
 using March7thHoney.GameServer.Server.Packet.Send.RogueTourn;
@@ -35,7 +36,10 @@ public sealed class HandlerRogueTournStartCsReq : Handler<RogueTournStartCsReq>
             return;
         }
 
-        if (!await manager.EnterRoomScene(run.CurRoom(), false))
+        // The run's opening notifies precede the scene change and the scene itself.
+        await manager.SendStartPrelude();
+        // A new run always builds its scene fresh, even from a previous run's room on the same plane.
+        if (!await manager.EnterRoomScene(run.CurRoom(), true))
         {
             await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournStartScRsp,
                 new RogueTournStartScRsp { Retcode = (uint)Retcode.RetFail }));
@@ -50,20 +54,33 @@ public sealed class HandlerRogueTournStartCsReq : Handler<RogueTournStartCsReq>
             IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player),
             PHGJIJELKDB = RogueTournProtoBuilder.BuildRunInfo(run)
         }));
+        // The run's rooms register in ONE result notify; the room chooser's ids resolve against it.
+        await manager.SendRoomRegistrations();
     }
 }
 
-// Resume path: re-sends the live run.
+// Resume path: re-enters the room the run stands in and re-sends the live run.
 [Opcode(CmdIds.RogueTournEnterCsReq)]
 public sealed class HandlerRogueTournEnterCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        var run = player.RogueTournManager!.RunInstance;
-        var rsp = run == null
-            ? new RogueTournEnterScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }
-            : new RogueTournEnterScRsp { PHGJIJELKDB = RogueTournProtoBuilder.BuildRunInfo(run) };
-        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournEnterScRsp, rsp));
+        var manager = player.RogueTournManager!;
+        var run = manager.RunInstance;
+        if (run == null)
+        {
+            await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournEnterScRsp,
+                new RogueTournEnterScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
+            return;
+        }
+
+        // Without a scene the client has nothing to load and keeps asking before quitting the run.
+        if (!RogueTournEntityLoader.IsTournRoomScene(player)) await manager.EnterRoomScene(run.CurRoom());
+        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournEnterScRsp, new RogueTournEnterScRsp
+        {
+            IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player),
+            PHGJIJELKDB = RogueTournProtoBuilder.BuildRunInfo(run)
+        }));
     }
 }
 
@@ -105,7 +122,7 @@ public sealed class HandlerRogueTournEnterRoomCsReq : Handler<RogueTournEnterRoo
             return;
         }
 
-        await manager.EnterRoomScene(manager.RunInstance!.CurRoom(), false);
+        await manager.EnterRoomScene(manager.RunInstance!.CurRoom());
         await manager.SendLevelNotify();
         await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournEnterRoomScRsp,
             new RogueTournEnterRoomScRsp { IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player) }));
@@ -127,7 +144,7 @@ public sealed class HandlerRogueTournEnterLayerCsReq : PlayerHandler
             return;
         }
 
-        await manager.EnterRoomScene(manager.RunInstance!.CurRoom(), false);
+        await manager.EnterRoomScene(manager.RunInstance!.CurRoom());
         await manager.SendLevelNotify();
         await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournEnterLayerScRsp,
             new RogueTournEnterLayerScRsp { IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player) }));
@@ -135,8 +152,10 @@ public sealed class HandlerRogueTournEnterLayerCsReq : PlayerHandler
 }
 
 /// <summary>
-///     RogueTournTriggerRoomSelectCsReq (6016, obfuscated in 4.5). Fired after every room load and again on the
-///     far side of an opened door; without the acknowledgement the room transition never completes.
+///     RogueTournTriggerRoomSelectCsReq: fired after every room load and again on the far side of an opened door,
+///     answered with RogueTournTriggerRoomSelectScRsp. The Persona style state goes out first, then whatever the
+///     cleared room still owes (gift, then the chooser); the trigger walks the run only when nothing is pending,
+///     finishes the run at its last room, and announces the room's Event talk.
 /// </summary>
 [Opcode(CmdIds.RogueTournTriggerRoomSelectCsReq)]
 public sealed class HandlerRogueTournTriggerRoomSelectCsReq : PlayerHandler
@@ -144,26 +163,46 @@ public sealed class HandlerRogueTournTriggerRoomSelectCsReq : PlayerHandler
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         var manager = player.RogueTournManager!;
-        if (manager.RunInstance == null)
+        var run = manager.RunInstance;
+        if (run == null)
         {
             await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournTriggerRoomSelectScRsp,
                 new RogueTournTriggerRoomSelectScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
             return;
         }
 
-        var (ret, next, moved) = manager.SelectNextRoom();
-        if (ret != Retcode.RetSucc)
+        await manager.SendActionResults(manager.TakeStyleRows());
+        manager.DealClearedRoomAction();
+
+        var moved = false;
+        if (run.Pending == null)
         {
-            await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournTriggerRoomSelectScRsp,
-                new RogueTournTriggerRoomSelectScRsp { Retcode = (uint)ret }));
-            return;
+            var (ret, next, walked) = manager.SelectNextRoom();
+            if (ret != Retcode.RetSucc)
+            {
+                await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournTriggerRoomSelectScRsp,
+                    new RogueTournTriggerRoomSelectScRsp { Retcode = (uint)ret }));
+                return;
+            }
+
+            moved = walked;
+            if (walked && next != null)
+            {
+                await manager.SendActionResults(manager.TakeStyleRows());
+                if (await manager.EnterRoomScene(next))
+                {
+                    await manager.PushSceneChange();
+                    await manager.SendSceneResult();
+                }
+            }
         }
 
-        // Room blocks share one floor, so a room change re-enters the same plane at the next block's anchor.
-        if (moved && next != null) await manager.EnterRoomScene(next, true);
+        // The last room of the last layer: the run finishes and is pushed three times, opening the settle page.
+        if (!moved) await manager.FinishRunIfLastRoom();
 
         await manager.SendLevelNotify();
         await manager.SendPendingNotify();
+        await manager.SendDialogueSnapshot();
         await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournTriggerRoomSelectScRsp,
             new RogueTournTriggerRoomSelectScRsp()));
     }
@@ -240,7 +279,7 @@ public sealed class HandlerRogueTournGetMiscRealTimeDataCsReq : PlayerHandler
     }
 }
 
-// The Cocoon hub is not modelled; an empty body is the reference shape.
+// The official answers {} when the player has no cocoon run.
 [Opcode(CmdIds.RogueTournGetCurRogueCocoonInfoCsReq)]
 public sealed class HandlerRogueTournGetCurRogueCocoonInfoCsReq : PlayerHandler
 {
@@ -248,5 +287,169 @@ public sealed class HandlerRogueTournGetCurRogueCocoonInfoCsReq : PlayerHandler
     {
         await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournGetCurRogueCocoonInfoScRsp,
             new RogueTournGetCurRogueCocoonInfoScRsp()));
+    }
+}
+
+/// <summary>
+///     Boss Rush entry. No cocoon run is modelled, so it must answer a FAILURE: an empty response is success with no
+///     scene, which the client waits on forever. A refused entry releases its UI instead.
+/// </summary>
+[Opcode(CmdIds.RogueTournEnterRogueCocoonSceneCsReq)]
+public sealed class HandlerRogueTournEnterRogueCocoonSceneCsReq : PlayerHandler
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    {
+        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournEnterRogueCocoonSceneScRsp,
+            new RogueTournEnterRogueCocoonSceneScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
+    }
+}
+
+// The settle page, asked after the run was marked Finished: live counters, score/exp and the run snapshot.
+[Opcode(CmdIds.RogueTournGetSettleInfoCsReq)]
+public sealed class HandlerRogueTournGetSettleInfoCsReq : PlayerHandler
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    {
+        var manager = player.RogueTournManager!;
+        var run = manager.RunInstance;
+        if (run == null)
+        {
+            await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournGetSettleInfoScRsp,
+                new RogueTournGetSettleInfoScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
+            return;
+        }
+
+        var (score, gain, total) = manager.SettleScore();
+        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournGetSettleInfoScRsp,
+            new RogueTournGetSettleInfoScRsp
+            {
+                BFLLJJBHLDF = RogueTournProtoBuilder.BuildSettlePayload(run, score, gain, total)
+            }));
+    }
+}
+
+/// <summary>
+///     The client's own settle path: the settle page plus the scene pair. It deliberately does NOT settle the run —
+///     the reward and the archive belong to RogueTournConfirmSettleCsReq, or a confirm would grant twice.
+/// </summary>
+[Opcode(CmdIds.RogueTournSettleCsReq)]
+public sealed class HandlerRogueTournSettleCsReq : PlayerHandler
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    {
+        var manager = player.RogueTournManager!;
+        var run = manager.RunInstance;
+        if (run == null)
+        {
+            await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournSettleScRsp,
+                new RogueTournSettleScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
+            return;
+        }
+
+        var (score, gain, total) = manager.SettleScore();
+        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournSettleScRsp, new RogueTournSettleScRsp
+        {
+            BFLLJJBHLDF = RogueTournProtoBuilder.BuildSettlePayload(run, score, gain, total),
+            IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player)
+        }));
+    }
+}
+
+/// <summary>
+///     The settle confirmation {area_id, name, slot}: the run settles into its archive slot and grants its season
+///     exp, the Settled status is pushed twice, the exp lands, and the player returns to the Divergent Universe map
+///     entrance with the archive row just written.
+/// </summary>
+[Opcode(CmdIds.RogueTournConfirmSettleCsReq)]
+public sealed class HandlerRogueTournConfirmSettleCsReq : Handler<RogueTournConfirmSettleCsReq>
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player,
+        RogueTournConfirmSettleCsReq req)
+    {
+        var manager = player.RogueTournManager!;
+        var slot = manager.SettleRun(req.Name, (int)req.NPHAJEKCBKF);
+        if (slot == 0)
+        {
+            await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournConfirmSettleScRsp,
+                new RogueTournConfirmSettleScRsp { Retcode = (uint)Retcode.RetRogueStatusNotMatch }));
+            return;
+        }
+
+        await manager.SendLevelNotify(false);
+        await manager.SendLevelNotify(false);
+        if (manager.Data.Exp > 0)
+            await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournExpNotify,
+                new RogueTournExpNotify { Exp = (uint)manager.Data.Exp }));
+
+        // The settled run is over: drop it and its lineup, then return to the DU map (the lobby when absent).
+        await manager.LeaveRun();
+        await connection.SendPacket(new PacketSyncServerSceneChangeNotify());
+        var entrance = GameData.MapEntranceData.ContainsKey(RogueTournManager.TournMapEntranceId)
+            ? RogueTournManager.TournMapEntranceId
+            : RogueTournManager.RogueLobbyEntranceId;
+        var (success, _) = await player.TryEnterScene(entrance, 0, false);
+        if (!success)
+        {
+            await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournConfirmSettleScRsp,
+                new RogueTournConfirmSettleScRsp { Retcode = (uint)Retcode.RetFail }));
+            return;
+        }
+
+        var rsp = new RogueTournConfirmSettleScRsp { IDCMACCPCBH = RogueTournProtoBuilder.BuildEnterInfo(player) };
+        if (manager.ArchiveOf(slot) is { } archive) rsp.BLPDBPHMCGA = RogueTournProtoBuilder.BuildArchive(archive);
+        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournConfirmSettleScRsp, rsp));
+    }
+}
+
+// The Divergent Universe level ladder: RogueTournExpReward(MainTournID, Level) pays RewardData items.
+[Opcode(CmdIds.RogueTournTakeExpRewardCsReq)]
+public sealed class HandlerRogueTournTakeExpRewardCsReq : Handler<RogueTournTakeExpRewardCsReq>
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player,
+        RogueTournTakeExpRewardCsReq req)
+    {
+        var manager = player.RogueTournManager!;
+        var (levels, items) = await manager.TakeExpRewards((int)req.FABMHMFNMDB, req.HBGAFAFFFAO.Select(level => (int)level));
+        var rsp = new RogueTournTakeExpRewardScRsp { Exp = (uint)manager.Data.Exp, Reward = new ItemList() };
+        rsp.FKDNANDJLGK.AddRange(levels.Select(level => (uint)level));
+        foreach (var item in items) rsp.Reward.ItemList_.Add(item.ToProto());
+        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueTournTakeExpRewardScRsp, rsp));
+    }
+}
+
+// The Workbench of Creation's state, asked before every use: the bench's function list, each in its fresh state.
+[Opcode(CmdIds.RogueWorkbenchGetInfoCsReq)]
+public sealed class HandlerRogueWorkbenchGetInfoCsReq : PlayerHandler
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    {
+        var rsp = new RogueWorkbenchGetInfoScRsp();
+        if (GameData.RogueTournWorkbenchData.TryGetValue(RogueTournProtoBuilder.DefaultWorkbenchId, out var bench))
+            foreach (var funcId in bench.FuncList)
+                rsp.NJAPFMHHPPA[(uint)funcId] = WorkbenchEntry();
+        player.RogueTournManager?.DiscoverWorkbench(RogueTournProtoBuilder.DefaultWorkbenchId);
+        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueWorkbenchGetInfoScRsp, rsp));
+    }
+
+    // The official's first GetInfo of a run already reports {DMGJDGJMCJL:1, CLNDMEODHJE:1} for every function.
+    public static BCOEGNBGJFC WorkbenchEntry()
+    {
+        return new BCOEGNBGJFC { KDFGAKDCMIK = new LPODFEEGDOB { DMGJDGJMCJL = 1, CLNDMEODHJE = 1 } };
+    }
+}
+
+// One workbench function invoked; the enhancement effect itself is not modelled, only the answer.
+[Opcode(CmdIds.RogueWorkbenchHandleFuncCsReq)]
+public sealed class HandlerRogueWorkbenchHandleFuncCsReq : Handler<RogueWorkbenchHandleFuncCsReq>
+{
+    protected override async Task OnHandle(Connection connection, PlayerInstance player,
+        RogueWorkbenchHandleFuncCsReq req)
+    {
+        await connection.SendPacket(new PacketRogueTourn(CmdIds.RogueWorkbenchHandleFuncScRsp,
+            new RogueWorkbenchHandleFuncScRsp
+            {
+                FuncId = req.FuncId,
+                JNPALDKNHKM = HandlerRogueWorkbenchGetInfoCsReq.WorkbenchEntry()
+            }));
     }
 }

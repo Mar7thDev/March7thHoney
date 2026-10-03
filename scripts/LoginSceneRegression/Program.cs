@@ -408,6 +408,8 @@ var magicStart = await magicPlayer.RogueMagicManager!.StartRun(magicAreaId, 1, [
 Check("RogueMagic area data builds a playable run",
     magicStart.Ret == Retcode.RetSucc && magicStart.Run?.Layers.Count > 0);
 
+await RogueTournRegression.Run(Check, Path.Combine(repository, "Config"));
+
 // Global chat: a second synthetic contact whose messages are relayed to every online player.
 var serverOption = config.ServerOption;
 var globalChatUid = serverOption.GetGlobalChatUid() ?? 0;
