@@ -356,18 +356,24 @@ public sealed class HandlerGetRogueCommonDialogueDataCsReq : PlayerHandler
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
+        // A live Divergent Universe run answers with its Event-room talks (also the reconnect path).
         await connection.SendPacket(new PacketRogueScRsp(CmdIds.GetRogueCommonDialogueDataScRsp,
-            new GetRogueCommonDialogueDataScRsp()));
+            player.RogueTournManager?.GetDialogueData() ?? new GetRogueCommonDialogueDataScRsp()));
     }
 }
 
 [Opcode(CmdIds.SelectRogueCommonDialogueOptionCsReq)]
-public sealed class HandlerSelectRogueCommonDialogueOptionCsReq : PlayerHandler
+public sealed class HandlerSelectRogueCommonDialogueOptionCsReq : Handler<SelectRogueCommonDialogueOptionCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player,
+        SelectRogueCommonDialogueOptionCsReq req)
     {
+        var tourn = player.RogueTournManager;
+        var rsp = tourn == null ? null : await tourn.SelectDialogueOption((int)req.AIAFEKGBFIF, (int)req.HAFOKMHCGFM);
         await connection.SendPacket(new PacketRogueScRsp(CmdIds.SelectRogueCommonDialogueOptionScRsp,
-            new SelectRogueCommonDialogueOptionScRsp()));
+            rsp ?? new SelectRogueCommonDialogueOptionScRsp()));
+        // A pick that ended the talk clears it from the client's set and releases the room after the response.
+        if (rsp != null) await tourn!.FlushDialogueClose();
     }
 }
 

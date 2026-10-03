@@ -20,6 +20,30 @@ public class RogueTournData : BaseDatabaseDataHelper
     public int PersonaStyle { get; set; }
 
     public string? RunInstance { get; set; }
+
+    // Discovery ledger behind the query's handbook arms. Added later: rows written before it load as null.
+    public RogueTournHandbookData? Handbook { get; set; } = new();
+}
+
+/// <summary>
+///     The ids the player has actually met, per handbook family (formulas 31xxxxx, blessings 617xxx, curios 9xxx,
+///     events, workbenches 101-108). The official lists are discoveries, never a dump of the tables.
+/// </summary>
+[MemoryPackable]
+public partial class RogueTournHandbookData
+{
+    public List<int> Formulas { get; set; } = [];
+    public List<int> Buffs { get; set; } = [];
+    public List<int> Miracles { get; set; } = [];
+    public List<int> Events { get; set; } = [];
+    public List<int> Workbenches { get; set; } = [];
+
+    public static bool Discover(List<int> family, int id)
+    {
+        if (id == 0 || family.Contains(id)) return false;
+        family.Add(id);
+        return true;
+    }
 }
 
 [MemoryPackable]
