@@ -30,6 +30,9 @@ public partial class LineupInfo
     public List<LineupAvatarInfo>? BaseAvatars { get; set; }
     [DefaultValue(5)] public int Mp { get; set; } = 5;
 
+    // MarkPresetLineupCsReq 标记的常用队伍。追加在已有成员之后，旧存档反序列化为 false。
+    public bool IsFavourite { get; set; }
+
     [JsonIgnore] [MemoryPackIgnore] public LineupData? LineupData { get; set; }
 
     [JsonIgnore] [MemoryPackIgnore] public AvatarData? AvatarData { get; set; }
@@ -112,6 +115,19 @@ public partial class LineupInfo
         return result;
     }
 
+    /// <summary>
+    ///     队伍在 <see cref="LineupData.Lineups" /> 里的键。旧实现取 Values 中的位置，补齐过空槽或销毁重建过额外队伍后，
+    ///     字典枚举顺序与键不一致，客户端会把队伍放到错误的编号上。
+    /// </summary>
+    public int GetIndex()
+    {
+        if (LineupData?.Lineups == null) return 0;
+        foreach (var (index, lineup) in LineupData.Lineups)
+            if (ReferenceEquals(lineup, this))
+                return index;
+        return 0;
+    }
+
     public bool IsExtraLineup()
     {
         return LineupType != 0;
@@ -128,7 +144,8 @@ public partial class LineupInfo
             ExtraLineupType = (ExtraLineupType)(LineupType == (int)ExtraLineupType.LineupHeliobus
                 ? (int)ExtraLineupType.LineupNone
                 : LineupType),
-            Index = (uint)(LineupData?.Lineups?.Values.ToList().IndexOf(this) ?? 0)
+            Index = (uint)GetIndex(),
+            IsFavourite = IsFavourite
         };
 
         if (LineupType != (int)ExtraLineupType.LineupNone) info.Index = 0;
