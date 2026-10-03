@@ -1735,6 +1735,32 @@ Check("ResetLocationOnLogin abandons the raid run and logs in at the default spa
 Check("reset raid info notify keeps an empty item_list",
     RaidInfoNotify.Parser.ParseFrom(new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
 
+// CommonRogueQuery: the query type is the oneof arm's field number in the active protocol (4.6 moved the
+// function-unlock arm BBEKBJPHEJK from 15 to 1), so the unlock set must follow the arm, not the 4.5 literal.
+var commonQuery = RogueManager.BuildCommonQueryEntries([
+    (uint)CCKJAEDDDCL.BBEKBJPHEJKFieldNumber, (uint)CCKJAEDDDCL.MECOEFEJANEFieldNumber,
+    (uint)CCKJAEDDDCL.ABPOOCOOKCFFieldNumber, (uint)CCKJAEDDDCL.BMGOLFNGHGHFieldNumber]).ToList();
+Check("CommonRogueQuery answers the function-unlock arm by its active field number",
+    commonQuery.Count == 4 && commonQuery[0].BBEKBJPHEJK?.LFCGPOKMJLC.Count == Enum.GetValues<MGJDNGHDIKG>().Length
+    && commonQuery.Skip(1).All(entry => entry.KKNBOACNCONCase == CCKJAEDDDCL.KKNBOACNCONOneofCase.None));
+
+// Data responses whose sub-messages the 4.6 client dereferences ship them present and empty.
+T Present<T>(int cmdId, T rsp) where T : IMessage<T>, new() =>
+    new MessageParser<T>(() => new T()).ParseFrom(
+        new March7thHoney.GameServer.Server.Packet.Send.MiscModule.PacketPresentEmptyScRsp(cmdId, rsp).Data);
+var socialPlay = Present(CmdIds.SocialPlayGetDataScRsp, new SocialPlayGetDataScRsp());
+Check("SocialPlayGetDataScRsp ships its room gate data present",
+    socialPlay.ELDIONMAAHO != null && socialPlay.NDDJFLPBHBL != null && socialPlay.ELDIONMAAHO.KABGCGENKLK != null);
+Check("PetMarbleGetDataScRsp ships its data present",
+    Present(CmdIds.PetMarbleGetDataScRsp, new PetMarbleGetDataScRsp()).BJBJLBIOPKA != null);
+Check("PetMarbleGetCycleTrialPetsScRsp ships its trial pet data present",
+    Present(CmdIds.PetMarbleGetCycleTrialPetsScRsp, new PetMarbleGetCycleTrialPetsScRsp()).ACCGIILHFKL != null);
+if (HandlerManager.handlers.Count == 0) HandlerManager.Init();
+Check("presence handlers are registered for the three requests", new[]
+    {
+        CmdIds.SocialPlayGetDataCsReq, CmdIds.PetMarbleGetDataCsReq, CmdIds.PetMarbleGetCycleTrialPetsCsReq
+    }.All(id => HandlerManager.GetHandler(id) != null));
+
 Console.WriteLine($"Login/scene regression: {checks} checks, {failures.Count} failures. Temporary artifacts: {scratch}");
 Environment.ExitCode = failures.Count == 0 ? 0 : 1;
 
