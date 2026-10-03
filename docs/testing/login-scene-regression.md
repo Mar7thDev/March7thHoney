@@ -51,5 +51,10 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - 主线开始条件：`AcceptMainMissionByCondition` 同时要求 `TakeParam` 与 `BeginParam`；`1010502` 在 `1010403` 完成后、开拓等级 11 时不接取，经验发放升到 13 级后自动接取；空或 `Auto` 的 `BeginParam` 不构成限制。
 - 经典模拟宇宙命令号：祝福强化监听 `1858` 并在 `1849` 回复（`5571/5588` 属于 ChessRogue）；`PickRogueAvatarCsReq`（`1846`）在 `1840` 回显两组角色：请求 #14 特殊角色写入响应 #9，请求 #9 基础角色写入响应 #2。
 - 模拟宇宙大厅图鉴机械臂（`80112001/3/300003`、`300008`，`Prop_Rogue_Gallery`）：无存档时，任务系统关闭或模拟宇宙教程主线 `4030002` 已完成则以 Open 加载，教程主线未完成时保持 Closed。
+- 4.6 盲盒宠物：缓存中盲盒宠物物品（251501 起）与一代召唤宠物（PetConfig 物品）可区分；新号 `GetPetDataScRsp` 带空的 `cur_pet` 与编队；获得盲盒宠物时每一份推送一条 `PetDataChangeScNotify{add_pet}`，一代宠物不成为实例；宠物物品不出现在 `PlayerSyncScNotify` 与 `GetBagScRsp` 的材料列表但仍保存在背包；实例 id 稳定、跨重新登录与数据库往返不变；设置编队先推送通知再回包，未拥有 / 重复实例、重复槽位、超过 3 槽均被拒绝且不改存档；移除宠物后实例与编队引用同步删除；召唤回显 `cur_pet`，收回返回空 `cur_pet` 并被记住；`BlindBoxGetData` 返回池 `1001`。
+- 遗器预设：已拥有角色 + 已拥有遗器才能新建，未知遗器、未拥有角色、不带任何改动的更新被拒绝；改名生效。
+- 队伍槽位：缺编号、额外队伍先插入的旧存档按编号补齐 0..8，下发的 `index` 与槽位编号一致；当前队伍指向空槽时改用编号最小的非空队伍；`MarkPresetLineupCsReq` 以 cmd `773`（`SetTeamFavourite`）回包并保存常用标记，非普通队伍编号返回 `RetLineupNotExist`；加标记前保存的 `LineupInfo` 仍可反序列化。
+- 开拓者当前命途：女性存档上的男性当前命途改为对应女性命途，非命途 id 回落到已拥有的同性别命途，且 `GetAvatarDataScRsp` 的命途列表包含该命途；校正幂等。
+- 视频密钥：`VideoKeyInfo` 的 `video_key` 写入字段 6（`HHCAKADKHAN`）、`ps_field_3` 写入字段 13（`BOGECOHIINH`），以 id `5600` 的官服值核对。
 
 边界：这不是安卓客户端测试，不能据此宣称加载卡死已在实机消失。密钥不匹配会被明确拒绝；让对应客户端成功登录仍需配套的公私钥。本修复不删除或合并历史 Base64 账号。
