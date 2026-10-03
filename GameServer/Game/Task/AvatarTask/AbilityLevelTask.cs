@@ -695,7 +695,10 @@ public class AbilityLevelTask(PlayerInstance player)
         {
             if (targetEntity is not EntityMonster monster) continue;
 
-            if (monster.MonsterData.Rank < MonsterRankEnum.Elite)
+            // A Divergent Universe room is cleared, paid and unlocked by its BATTLE result: its mobs survive the
+            // rank-kill and roll into the fight like an Elite does.
+            if (monster.MonsterData.Rank < MonsterRankEnum.Elite &&
+                monster.Scene.GameModeType != GameModeTypeEnum.TournRogue)
             {
                 await monster.Kill();
 

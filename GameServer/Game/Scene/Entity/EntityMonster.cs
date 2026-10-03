@@ -36,6 +36,9 @@ public class EntityMonster(
     public int CustomLevel { get; set; } = 0;
     public int HardLevelGroup { get; set; } = 0;
 
+    // rogue_game_info.DPCNDADDCAJ (JNBOIFCNBCH); Divergent Universe room mobs stamp 1.
+    public int RogueMonsterKind { get; set; } = 0;
+
     /// <summary>
     ///     Created at runtime by the /spawn GM command. Such monsters live only in memory, never advance
     ///     KillMonster/StageWin missions, and <see cref="CustomLevel" /> is honoured as their battle level.
@@ -142,7 +145,8 @@ public class EntityMonster(
                 {
                     RogueMonsterId = (uint)RogueMonsterId,
                     Level = (uint)CustomLevel,
-                    HardLevelGroup = (uint)HardLevelGroup
+                    HardLevelGroup = (uint)HardLevelGroup,
+                    DPCNDADDCAJ = (JNBOIFCNBCH)RogueMonsterKind
                 }
             };
 
