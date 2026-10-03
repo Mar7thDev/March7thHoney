@@ -3,6 +3,7 @@ using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.DailyActive;
+using March7thHoney.GameServer.Game.Pet;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -145,7 +146,16 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
         }
 
         MarkDirty();
+        if (GameData.ItemConfigData[itemId].ItemMainType == ItemMainTypeEnum.Pet)
+            await NotifyPetItemsChanged();
         return item;
+    }
+
+    /// <summary>宠物材料变化后让宠物实例对账，并给新实例推送 PetDataChangeScNotify（组件注册前为空操作）。</summary>
+    private async ValueTask NotifyPetItemsChanged()
+    {
+        var pets = Player.GetComponentOrDefault<PetManager>();
+        if (pets != null) await pets.OnPetItemsChanged();
     }
 
     public async ValueTask<List<ItemData>> RemoveItems(List<(int itemId, int count, int uniqueId)> items,
@@ -185,6 +195,8 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
                 }
 
                 itemData = item;
+                if (itemConfig.ItemMainType == ItemMainTypeEnum.Pet)
+                    Player.GetComponentOrDefault<PetManager>()?.Reconcile();
                 break;
             case ItemMainTypeEnum.Virtual:
                 switch (itemConfig.ID)

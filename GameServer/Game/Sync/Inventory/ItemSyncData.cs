@@ -26,9 +26,10 @@ public class ItemSyncData(ItemData item) : BaseSyncData
                 else
                     notify.DelRelicList.Add((uint)item.UniqueId);
                 break;
+            // 宠物物品不进背包同步：官服只通过 GetPetDataScRsp / PetDataChangeScNotify 下发宠物实例，
+            // 材料形式的宠物出现在 material_list 里会让 4.6 宠物页 Lua 报 FindPetInstanceByItem。
             case ItemMainTypeEnum.Mission:
             case ItemMainTypeEnum.Material:
-            case ItemMainTypeEnum.Pet:
             case ItemMainTypeEnum.Usable:
                 notify.MaterialList.Add(item.ToMaterialProto());
                 break;

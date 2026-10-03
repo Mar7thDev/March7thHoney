@@ -1,3 +1,5 @@
+using March7thHoney.Data;
+using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -12,6 +14,9 @@ public class PacketGetBagScRsp : BasePacket
 
         player.InventoryManager!.Data.MaterialItems.ForEach(item =>
         {
+            // 宠物物品只以 GetPetDataScRsp 的实例形式下发，见 ItemSyncData。
+            if (GameData.ItemConfigData.TryGetValue(item.ItemId, out var config) &&
+                config.ItemMainType == ItemMainTypeEnum.Pet) return;
             proto.MaterialList.Add(item.ToMaterialProto());
         });
 
