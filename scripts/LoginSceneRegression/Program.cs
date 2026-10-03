@@ -1661,6 +1661,80 @@ Check("relogin mid-trial abandons the run and returns to the return point", tria
     && !relogin.LineupManager.GetCurLineup()!.IsExtraLineup()
     && GetTrialActivityDataScRsp.Parser.ParseFrom(new PacketGetTrialActivityDataScRsp(relogin).Data).ActivityStageId == 0);
 
+// Raid runs (ported from yuukisr_go 0a77679/e776655/24d080e): a run whose raid is missing from this version's
+// tables must never trap the player, and ResetLocationOnLogin abandons the run behind the saved location.
+var raidEntry = GameData.MapEntranceData.Values.OrderBy(e => e.ID).First(e =>
+{
+    if (!GameData.MazePlaneData.TryGetValue(e.PlaneID, out var plane) || plane.PlaneType != PlaneTypeEnum.Raid)
+        return false;
+    GameData.GetFloorInfo(e.PlaneID, e.FloorID, out var floor);
+    return (floor?.GetAnchorInfo(e.StartGroupID, e.StartAnchorID) ??
+            floor?.GetAnchorInfo(floor.StartGroupID, floor.StartAnchorID)) != null;
+}).ID;
+const int MissingRaidId = 99999;
+var knownRaid = GameData.RaidConfigData.Values.OrderBy(r => r.RaidID).First(r => r.HardLevel == 0);
+
+async Task<PlayerInstance> RaidPlayer(int uid, int raidId)
+{
+    var raider = new PlayerInstance(uid);
+    await raider.InitializeAsync();
+    await raider.TryEnterScene(TrialReturnEntry, 0, false);
+    var raidData = raider.RaidManager!.Data;
+    raidData.RaidRecordDatas[raidId] = new Dictionary<int, March7thHoney.Database.Scene.RaidRecord>
+    {
+        [0] = new()
+        {
+            RaidId = raidId, WorldLevel = 0, Status = RaidStatus.Doing, OldEntryId = TrialReturnEntry,
+            OldPos = raider.Data.Pos!, OldRot = raider.Data.Rot!
+        }
+    };
+    raidData.CurRaidId = raidId;
+    raidData.CurRaidWorldLevel = 0;
+    raider.TryPlaceAtEntrance(raidEntry);
+    return raider;
+}
+
+var orphanRaider = await RaidPlayer(60011, MissingRaidId);
+var orphanRelogin = new PlayerInstance(orphanRaider.Data);
+await orphanRelogin.InitializeAsync();
+await orphanRelogin.OnLogin();
+Check("relogin inside a raid missing from the tables abandons it and returns to the entry point",
+    orphanRelogin.RaidManager!.Data.CurRaidId == 0 && !orphanRelogin.RaidManager.Data.RaidRecordDatas.ContainsKey(MissingRaidId)
+    && orphanRelogin.Data.EntryId == TrialReturnEntry && orphanRelogin.SceneInstance?.Excel.PlaneType != PlaneTypeEnum.Raid);
+
+var orphanLeaver = await RaidPlayer(60012, MissingRaidId);
+await orphanLeaver.RaidManager!.LeaveRaid(true);
+Check("leaving a raid missing from the tables returns to the entry point and drops the record",
+    orphanLeaver.RaidManager.Data.CurRaidId == 0 && !orphanLeaver.RaidManager.Data.RaidRecordDatas.ContainsKey(MissingRaidId)
+    && orphanLeaver.Data.EntryId == TrialReturnEntry);
+
+var recordlessLeaver = await RaidPlayer(60013, knownRaid.RaidID);
+recordlessLeaver.RaidManager!.Data.RaidRecordDatas.Clear();
+await recordlessLeaver.RaidManager.LeaveRaid(true);
+Check("leaving a raid whose record is gone releases the player to the default spawn",
+    recordlessLeaver.RaidManager.Data.CurRaidId == 0 && recordlessLeaver.Data.EntryId == PlayerInstance.DefaultSpawnEntryId);
+
+var keptRaider = await RaidPlayer(60014, knownRaid.RaidID);
+var keptRelogin = new PlayerInstance(keptRaider.Data);
+await keptRelogin.InitializeAsync();
+await keptRelogin.OnLogin();
+Check("relogin inside a known raid still resumes it by default",
+    keptRelogin.RaidManager!.Data.CurRaidId == knownRaid.RaidID && keptRelogin.Data.EntryId == raidEntry);
+
+var resetRaider = await RaidPlayer(60015, knownRaid.RaidID);
+config.ServerOption.ResetLocationOnLogin = true;
+var resetRelogin = new PlayerInstance(resetRaider.Data);
+await resetRelogin.InitializeAsync();
+await resetRelogin.OnLogin();
+config.ServerOption.ResetLocationOnLogin = false;
+Check("ResetLocationOnLogin abandons the raid run and logs in at the default spawn",
+    resetRelogin.RaidManager!.Data.CurRaidId == 0 && !resetRelogin.RaidManager.Data.RaidRecordDatas.ContainsKey(knownRaid.RaidID)
+    && resetRelogin.Data.EntryId == PlayerInstance.DefaultSpawnEntryId
+    && resetRelogin.SceneInstance?.EntryId == PlayerInstance.DefaultSpawnEntryId
+    && !resetRelogin.LineupManager!.GetCurLineup()!.IsExtraLineup());
+Check("reset raid info notify keeps an empty item_list",
+    RaidInfoNotify.Parser.ParseFrom(new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
+
 Console.WriteLine($"Login/scene regression: {checks} checks, {failures.Count} failures. Temporary artifacts: {scratch}");
 Environment.ExitCode = failures.Count == 0 ? 0 : 1;
 

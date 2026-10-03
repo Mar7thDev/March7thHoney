@@ -51,5 +51,7 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - 主线开始条件：`AcceptMainMissionByCondition` 同时要求 `TakeParam` 与 `BeginParam`；`1010502` 在 `1010403` 完成后、开拓等级 11 时不接取，经验发放升到 13 级后自动接取；空或 `Auto` 的 `BeginParam` 不构成限制。
 - 经典模拟宇宙命令号：祝福强化监听 `1858` 并在 `1849` 回复（`5571/5588` 属于 ChessRogue）；`PickRogueAvatarCsReq`（`1846`）在 `1840` 回显两组角色：请求 #14 特殊角色写入响应 #9，请求 #9 基础角色写入响应 #2。
 - 模拟宇宙大厅图鉴机械臂（`80112001/3/300003`、`300008`，`Prop_Rogue_Gallery`）：无存档时，任务系统关闭或模拟宇宙教程主线 `4030002` 已完成则以 Open 加载，教程主线未完成时保持 Closed。
+- 临时场景（Raid）运行：存档中进行中的 Raid 已不在当前版本 `RaidConfig` 中时，重新登录放弃该运行、删除记录并回到进入点（`OldEntryId`/`OldPos`），离开该 Raid 同样回到进入点并删除记录；运行记录丢失时离开回到默认出生点 `2000101`；`RaidConfig` 中存在的 Raid 默认仍在登录时恢复。重置用的 `RaidInfoNotify` 保留空 `item_list`。
+- `ServerOption.ResetLocationOnLogin`（默认 `false`，后台设置页可改）：开启后每次登录放弃进行中的 Raid（删除记录）与挑战/星启运行，并把位置重置到默认出生点 `2000101` 再加载场景；剧情线进行中时不生效。
 
 边界：这不是安卓客户端测试，不能据此宣称加载卡死已在实机消失。密钥不匹配会被明确拒绝；让对应客户端成功登录仍需配套的公私钥。本修复不删除或合并历史 Base64 账号。

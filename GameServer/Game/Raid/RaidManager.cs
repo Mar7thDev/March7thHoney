@@ -7,12 +7,15 @@ using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Raid;
 using March7thHoney.Proto;
+using March7thHoney.Util;
 using RaidData = March7thHoney.Database.Scene.RaidData;
 
 namespace March7thHoney.GameServer.Game.Raid;
 
 public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(player)
 {
+    private static readonly Logger Logger = new("Raid");
+
     #region Information
 
     public RaidStatus GetRaidStatus(int raidId, int worldLevel = 0)
@@ -29,18 +32,20 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
     public async ValueTask OnLogin()
     {
         // try resume
-        if (Data.CurRaidId > 0 && Data.RaidRecordDatas.TryGetValue(Data.CurRaidId, out var value))
+        var record = GetCurrentRecord();
+        if (record != null && !GameData.RaidConfigData.ContainsKey(record.RaidId * 100 + record.WorldLevel))
         {
-            if (value.TryGetValue(Data.CurRaidWorldLevel, out var record))
-            {
-                await Player.SendPacket(new PacketRaidInfoNotify(record));
-            }
-            else
-            {
-                Data.CurRaidId = 0;
-                Data.CurRaidWorldLevel = 0;
-                await Player.SendPacket(new PacketRaidInfoNotify());
-            }
+            // The raid no longer exists in this version's tables, so LeaveRaid could never release the player:
+            // abandon the run and return to where it was entered from instead of resuming a dead session.
+            Logger.Warn($"Player {Player.Uid} logged in inside raid {record.RaidId} (world level {record.WorldLevel}) " +
+                        "that has no RaidConfig; abandoning the run.");
+            await AbandonCurrentRun(true);
+            record = null;
+        }
+
+        if (record != null)
+        {
+            await Player.SendPacket(new PacketRaidInfoNotify(record));
         }
         else
         {
@@ -48,6 +53,37 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             Data.CurRaidWorldLevel = 0;
             await Player.SendPacket(new PacketRaidInfoNotify());
         }
+    }
+
+    /// <summary>
+    ///     Login-time abandon for <c>ServerOption.ResetLocationOnLogin</c>: clears the open raid run without loading a
+    ///     scene. The caller relocates the player.
+    /// </summary>
+    public async ValueTask AbandonAtLogin()
+    {
+        if (Data.CurRaidId == 0) return;
+        await AbandonCurrentRun(false);
+    }
+
+    private async ValueTask AbandonCurrentRun(bool placeAtReturnPoint)
+    {
+        var record = GetCurrentRecord();
+        Data.CurRaidId = 0;
+        Data.CurRaidWorldLevel = 0;
+        if (record == null) return;
+
+        await ClearRaid(record.RaidId, record.WorldLevel);
+        if (placeAtReturnPoint &&
+            !Player.TryPlaceAtEntrance(record.OldEntryId, record.OldPos, record.OldRot, PlaneTypeEnum.Raid))
+            Player.TryPlaceAtEntrance(PlayerInstance.DefaultSpawnEntryId);
+    }
+
+    /// <summary>The record of the open raid run, or null when no run is open or its record is gone.</summary>
+    private RaidRecord? GetCurrentRecord()
+    {
+        if (Data.CurRaidId == 0) return null;
+        if (!Data.RaidRecordDatas.TryGetValue(Data.CurRaidId, out var dict)) return null;
+        return dict.GetValueOrDefault(Data.CurRaidWorldLevel);
     }
 
     #endregion
@@ -176,11 +212,10 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
 
     public async ValueTask CheckIfLeaveRaid()
     {
-        if (Data.CurRaidId == 0) return;
+        var record = GetCurrentRecord();
+        if (record == null) return;
 
-        var record = Data.RaidRecordDatas[Data.CurRaidId][Data.CurRaidWorldLevel];
-
-        GameData.RaidConfigData.TryGetValue(Data.CurRaidId * 100 + record.WorldLevel, out var excel);
+        GameData.RaidConfigData.TryGetValue(record.RaidId * 100 + record.WorldLevel, out var excel);
         if (excel == null) return;
         var leave = true;
         foreach (var id in excel.MainMissionIDList)
@@ -197,10 +232,10 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
 
     public async ValueTask FinishRaid()
     {
-        if (Data.CurRaidId == 0) return;
+        var record = GetCurrentRecord();
+        if (record == null) return;
 
-        var record = Data.RaidRecordDatas[Data.CurRaidId][Data.CurRaidWorldLevel];
-        GameData.RaidConfigData.TryGetValue(Data.CurRaidId * 100 + record.WorldLevel, out var config);
+        GameData.RaidConfigData.TryGetValue(record.RaidId * 100 + record.WorldLevel, out var config);
         if (config == null) return;
 
         record.Status = RaidStatus.Finish;
@@ -212,9 +247,21 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
     {
         if (Data.CurRaidId == 0) return;
 
-        var record = Data.RaidRecordDatas[Data.CurRaidId][Data.CurRaidWorldLevel];
-        GameData.RaidConfigData.TryGetValue(Data.CurRaidId * 100 + record.WorldLevel, out var config);
-        if (config == null) return;
+        var record = GetCurrentRecord();
+        if (record == null)
+        {
+            // The open run lost its record, so nothing says where to return: release the player to the default
+            // spawn instead of keeping them on a raid floor whose exit can never succeed.
+            Data.CurRaidId = 0;
+            Data.CurRaidWorldLevel = 0;
+            await ReleaseRaidLineup();
+            await Player.SendPacket(new PacketRaidInfoNotify());
+            await Player.EnterScene(PlayerInstance.DefaultSpawnEntryId, 0, true);
+            return;
+        }
+
+        // A raid missing from this version's tables is left like an unfinished one instead of trapping the player.
+        GameData.RaidConfigData.TryGetValue(record.RaidId * 100 + record.WorldLevel, out var config);
 
         record.PlaneId = Player.Data.PlaneId;
         record.FloorId = Player.Data.FloorId;
@@ -222,39 +269,47 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         record.Pos = Player.Data.Pos!;
         record.Rot = Player.Data.Rot!;
 
-        if (Player.LineupManager!.GetCurLineup()!.IsExtraLineup())
-        {
-            Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
-            await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
-        }
+        await ReleaseRaidLineup();
 
         if (record.Status == RaidStatus.Finish)
         {
             await Player.SendPacket(new PacketRaidInfoNotify());
-            if (config.FinishEntranceID > 0)
-            {
+            if (config?.FinishEntranceID > 0)
                 await Player.EnterScene(config.FinishEntranceID, 0, true);
-            }
             else
-            {
-                await Player.EnterScene(record.OldEntryId, 0, true);
-                await Player.MoveTo(record.OldPos, record.OldRot);
-            }
+                await ReturnToOldSpot(record);
         }
         else
         {
-            await Player.EnterScene(record.OldEntryId, 0, true);
-            await Player.MoveTo(record.OldPos, record.OldRot);
+            await ReturnToOldSpot(record);
 
             // reset raid info
 
             await Player.SendPacket(new PacketRaidInfoNotify());
 
-            if (!save) await ClearRaid(record.RaidId, record.WorldLevel);
+            if (!save || config == null) await ClearRaid(record.RaidId, record.WorldLevel);
         }
 
         Data.CurRaidId = 0;
         Data.CurRaidWorldLevel = 0;
+    }
+
+    private async ValueTask ReleaseRaidLineup()
+    {
+        if (Player.LineupManager!.GetCurLineup()!.IsExtraLineup())
+        {
+            Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
+            await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
+        }
+    }
+
+    private async ValueTask ReturnToOldSpot(RaidRecord record)
+    {
+        // A record without a usable return entrance (legacy save, entrance gone) falls back to the default spawn.
+        if ((await Player.TryEnterScene(record.OldEntryId, 0, true)).Success)
+            await Player.MoveTo(record.OldPos, record.OldRot);
+        else
+            await Player.EnterScene(PlayerInstance.DefaultSpawnEntryId, 0, true);
     }
 
     public async ValueTask ClearRaid(int raidId, int worldLevel)
@@ -262,11 +317,11 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         if (!Data.RaidRecordDatas.TryGetValue(raidId, out var dict)) return;
         if (!dict.TryGetValue(worldLevel, out var record)) return;
 
+        // A raid missing from this version's tables still drops its record; only its missions are unknown.
         GameData.RaidConfigData.TryGetValue(raidId * 100 + worldLevel, out var config);
-        if (config == null) return;
 
         HashSet<int> floorIds = [];
-        foreach (var missionId in config.MainMissionIDList)
+        foreach (var missionId in config?.MainMissionIDList ?? [])
         {
             await Player.MissionManager!.RemoveMainMission(missionId);
 
