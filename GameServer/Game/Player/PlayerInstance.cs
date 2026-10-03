@@ -288,6 +288,8 @@ public partial class PlayerInstance(PlayerData data)
         if (PendingMissionEnabledOverride.HasValue)
             MissionManager!.Data.EnableMissionOverride = PendingMissionEnabledOverride;
 
+        AvatarManager!.NormalizeHeroCurPath();
+
         if (MissionEnabled)
         {
             await MissionManager!.RepairSkippedRogueTutorials();
@@ -433,7 +435,7 @@ public partial class PlayerInstance(PlayerData data)
             await EnterScene(lobbyEntry, 0, false);
         else
             await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos!, Data.Rot!, false);
-        if (SceneInstance == null) await EnterScene(2000101, 0, false);
+        if (SceneInstance == null) await EnterScene(DefaultSpawnEntryId, 0, false);
 
     }
 

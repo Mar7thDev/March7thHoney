@@ -12,7 +12,7 @@ namespace March7thHoney.GameServer.Game.Activity;
 
 public class ActivityManager : BasePlayerManager
 {
-    public const int TrialFallbackEntryId = 2000101;
+    public const int TrialFallbackEntryId = PlayerInstance.DefaultSpawnEntryId;
 
     public ActivityManager(PlayerInstance player) : base(player)
     {
@@ -123,27 +123,7 @@ public class ActivityManager : BasePlayerManager
 
     private bool TryPlaceAtEntrance(int entryId, Position? pos, Position? rot)
     {
-        if (!GameData.MapEntranceData.TryGetValue(entryId, out var entrance)) return false;
-        if (!GameData.MazePlaneData.TryGetValue(entrance.PlaneID, out var plane) ||
-            plane.PlaneType == PlaneTypeEnum.TrialActivity)
-            return false;
-
-        if (pos == null || rot == null)
-        {
-            GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floor);
-            var anchor = floor?.GetAnchorInfo(entrance.StartGroupID, entrance.StartAnchorID) ??
-                         floor?.GetAnchorInfo(floor.StartGroupID, floor.StartAnchorID);
-            if (anchor == null) return false;
-            pos = anchor.ToPositionProto();
-            rot = anchor.ToRotationProto();
-        }
-
-        Player.Data.PlaneId = entrance.PlaneID;
-        Player.Data.FloorId = entrance.FloorID;
-        Player.Data.EntryId = entryId;
-        Player.Data.Pos = pos;
-        Player.Data.Rot = rot;
-        return true;
+        return Player.TryPlaceAtEntrance(entryId, pos, rot, PlaneTypeEnum.TrialActivity);
     }
 
     #endregion

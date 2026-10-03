@@ -1407,6 +1407,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     }
 
     ServerUtils.InitializeHandlers();
+    await MainFixRegression.Run(scratch, serverPeer, Check, SentFrames);
     // The user's login snapshot carried six 1415 rows: one developed avatar plus five empty duplicates.
     // Skin changes must persist and both incremental and full snapshots must select the same owner.
     var skinPlayer = new PlayerInstance(60021);

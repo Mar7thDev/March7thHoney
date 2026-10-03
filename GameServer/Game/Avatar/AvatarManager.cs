@@ -15,6 +15,8 @@ namespace March7thHoney.GameServer.Game.Avatar;
 
 public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData>(player)
 {
+    private static readonly Logger Logger = new("Avatar");
+
     public async ValueTask<AvatarConfigExcel?> AddAvatar(int avatarId, bool sync = true, bool notify = true,
         bool isGacha = false)
     {
@@ -185,6 +187,52 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId == 8001);
     }
 
+    /// <summary>
+    ///     登录前校正开拓者当前命途（yuukisr_go a532fa0）：<c>cur_multi_path_avatar_type</c> 必须是一个开拓者命途变体，
+    ///     且在已设定性别时与玩家性别一致。旧存档可能留下非命途 id 或与性别相反的变体，客户端按它解析队长时
+    ///     找不到对应命途数据，<c>TeamManager._CreateMemberEntity</c> 抛 IndexOutOfRange，登录停在加载界面。
+    ///     只修内存数据并标脏，由下次存档持久化；数据已一致时不做任何改动。返回是否发生了修正。
+    /// </summary>
+    public bool NormalizeHeroCurPath()
+    {
+        var hero = GetHero();
+        if (hero == null) return false;
+
+        var gender = Player.Data.CurrentGender;
+        // 任务模式下性别尚未选择时客户端还没决定主角形象，不按默认性别去改。
+        var genderKnown = gender is Gender.Man or Gender.Woman && (Player.Data.IsGenderSet || !Player.MissionEnabled);
+        var cur = hero.AvatarId;
+
+        if (!IsHeroPath(cur))
+        {
+            // 非命途 id：回落到已拥有的、与性别相符的编号最小的命途；都没有就用该性别的毁灭命途。
+            var owned = hero.PathInfos.Keys.Where(IsHeroPath)
+                .Where(id => !genderKnown || PlayerInstance.NormalizeHeroPathId(id, gender) == id)
+                .OrderBy(id => id).ToList();
+            cur = owned.Count > 0 ? owned[0] : gender == Gender.Man ? 8001 : 8002;
+        }
+        else if (genderKnown)
+        {
+            cur = PlayerInstance.NormalizeHeroPathId(cur, gender);
+        }
+
+        var hasPath = hero.PathInfos.ContainsKey(cur);
+        if (cur == hero.AvatarId && Player.Data.CurBasicType == cur && hasPath) return false;
+        if (!hasPath && !hero.EnsurePathInfo(cur)) return false;
+
+        Logger.Warn($"Player {Player.Uid}: Trailblazer current path {hero.AvatarId} retargeted to {cur}");
+        hero.AvatarId = cur;
+        Player.Data.CurBasicType = cur;
+        MarkDirty();
+        return true;
+    }
+
+    private static bool IsHeroPath(int avatarId)
+    {
+        return GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var config) &&
+               config.BaseAvatarID == 8001;
+    }
+
     public async ValueTask ReforgeRelic(int uniqueId)
     {
         var relic = Player.InventoryManager!.Data.RelicItems.FirstOrDefault(x => x.UniqueId == uniqueId);
@@ -284,9 +332,17 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         ];
     }
 
-    public PFCKBFLDHNI AddRelicPresetPlan(uint avatarId, string name, IEnumerable<uint> relicIds,
+    /// <summary>
+    ///     新建方案。角色必须已拥有、遗器列表非空且每件遗器都在背包里（yuukisr_go c4f5979 同样拒绝空方案），
+    ///     否则返回 null 且不写存档。
+    /// </summary>
+    public PFCKBFLDHNI? AddRelicPresetPlan(uint avatarId, string name, IEnumerable<uint> relicIds,
         RelicPresetPlanSourceType sourceType)
     {
+        var relicIdList = relicIds.ToList();
+        if (avatarId == 0 || GetFormalAvatar((int)avatarId) == null) return null;
+        if (relicIdList.Count == 0 || !OwnsRelics(relicIdList)) return null;
+
         var plans = Player.InventoryManager!.Data.RelicPresetPlans;
         var uniqueId = plans.Count > 0 ? plans.Keys.Max() + 1 : 1;
         var plan = new RelicPresetPlanData
@@ -294,10 +350,11 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
             AvatarId = (int)avatarId,
             Name = name,
             SourceType = (int)sourceType,
-            RelicIds = [.. relicIds.Select(x => (int)x)]
+            RelicIds = [.. relicIdList.Select(x => (int)x)]
         };
 
         plans[uniqueId] = plan;
+        MarkDirty();
         return BuildRelicPresetPlan(uniqueId, plan);
     }
 
@@ -307,6 +364,9 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     public bool UpdateRelicPresetPlan(int uniqueId, HPPOINFLEPJ? relicList, string? name)
     {
         if (!Player.InventoryManager!.Data.RelicPresetPlans.TryGetValue(uniqueId, out var plan)) return false;
+        // 两项都没带的请求没有可改的内容，不当作成功。
+        if (relicList == null && string.IsNullOrEmpty(name)) return false;
+        if (relicList != null && (relicList.RelicIds.Count == 0 || !OwnsRelics(relicList.RelicIds))) return false;
 
         if (relicList != null)
         {
@@ -315,12 +375,22 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         }
 
         if (!string.IsNullOrEmpty(name)) plan.Name = name;
+        MarkDirty();
         return true;
+    }
+
+    private bool OwnsRelics(IEnumerable<uint> relicIds)
+    {
+        var owned = Player.InventoryManager!.Data.RelicItems.Select(x => x.UniqueId).ToHashSet();
+        // 0 视为空槽位，不当作未拥有的遗器。
+        return relicIds.All(id => id == 0 || owned.Contains((int)id));
     }
 
     public bool DeleteRelicPresetPlan(int uniqueId)
     {
-        return Player.InventoryManager!.Data.RelicPresetPlans.Remove(uniqueId);
+        if (!Player.InventoryManager!.Data.RelicPresetPlans.Remove(uniqueId)) return false;
+        MarkDirty();
+        return true;
     }
 
     private static PFCKBFLDHNI BuildRelicPresetPlan(int uniqueId, RelicPresetPlanData plan)

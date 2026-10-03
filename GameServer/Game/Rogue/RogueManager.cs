@@ -32,7 +32,8 @@ public partial class RogueManager : BasePlayerManager
     private const int EliteDraftGroupId = 100003;
     private const int RoomTypeElite = 6;
     private const int RoomTypeBoss = 7;
-    private const uint CommonQueryTypeFunctionUnlock = 15;
+    // Query types follow the oneof wire tag: 4.6 used 1, 4.7 uses 10.
+    private const uint CommonQueryTypeFunctionUnlock = CCKJAEDDDCL.BBEKBJPHEJKFieldNumber;
 
     public RogueManager(PlayerInstance player) : base(player)
     {
@@ -842,7 +843,7 @@ public partial class RogueManager : BasePlayerManager
     public static IEnumerable<CCKJAEDDDCL> BuildCommonQueryEntries(IEnumerable<uint> types)
     {
         // One entry per requested type in request order; types 2/6/9 are per-account progress with no
-        // table source and stay branch-less. Type 15 is the client's only source of rogue function unlocks.
+        // table source and stay branch-less. The function arm is the client's source of rogue function unlocks.
         foreach (var type in types)
         {
             var entry = new CCKJAEDDDCL();

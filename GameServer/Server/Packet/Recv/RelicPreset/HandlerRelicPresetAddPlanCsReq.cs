@@ -10,6 +10,8 @@ public class HandlerRelicPresetAddPlanCsReq : Handler<RelicPresetAddPlanCsReq>
     protected override async Task OnHandle(Connection connection, PlayerInstance player, RelicPresetAddPlanCsReq req)
     {
         var plan = player.AvatarManager!.AddRelicPresetPlan(req.AvatarId, req.Name, req.RelicIds, req.SourceType);
-        await connection.SendPacket(new PacketRelicPresetAddPlanScRsp(plan));
+        await connection.SendPacket(plan != null
+            ? new PacketRelicPresetAddPlanScRsp(plan)
+            : new PacketRelicPresetAddPlanScRsp(Retcode.RetReqParaInvalid));
     }
 }

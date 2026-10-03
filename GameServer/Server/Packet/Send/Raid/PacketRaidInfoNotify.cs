@@ -22,7 +22,7 @@ public class PacketRaidInfoNotify : BasePacket
 
     public PacketRaidInfoNotify() : base(CmdIds.RaidInfoNotify)
     {
-        var proto = new RaidInfoNotify();
+        var proto = new RaidInfoNotify { ItemList = new ItemList() };
 
         SetData(proto);
     }
