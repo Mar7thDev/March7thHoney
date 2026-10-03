@@ -202,9 +202,10 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
 
     public override async ValueTask OnBattleEnd(BattleInstance battle, PVEBattleResultCsReq req)
     {
-        // Calculate score for current stage
+        // Calculate score for current stage. The client may omit the type-1 target list; score it as 0
+        // instead of throwing before the phase settles.
         var stageScore = 0;
-        foreach (var battleTarget in req.Stt.BattleTargetInfo[1].BattleTargetList_)
+        foreach (var battleTarget in GetScoreTargets(req)?.BattleTargetList_ ?? [])
             stageScore += (int)battleTarget.Progress;
 
         // Set score
@@ -237,8 +238,14 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
             default:
                 Boss.CurStatus = (int)ChallengeStatus.ChallengeFailed;
                 await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this));
+                Player.ChallengeManager!.SaveInstance(this);
                 break;
         }
+    }
+
+    private static BattleTargetList? GetScoreTargets(PVEBattleResultCsReq req)
+    {
+        return req.Stt.BattleTargetInfo.TryGetValue(1, out var targets) ? targets : null;
     }
 
     public uint CalculateStars()
@@ -280,7 +287,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
                 true, true);
 
             // Send challenge result data
-            await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, req.Stt.BattleTargetInfo[1]));
+            await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, GetScoreTargets(req)));
             await Player.SendPacket(new PacketChallengeSettleNotify(this));
 
             // Call MissionManager
@@ -301,7 +308,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
         }
         else
         {
-            await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, req.Stt.BattleTargetInfo[1]));
+            await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, GetScoreTargets(req)));
         }
     }
 
