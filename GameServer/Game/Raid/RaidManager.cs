@@ -39,7 +39,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             // abandon the run and return to where it was entered from instead of resuming a dead session.
             Logger.Warn($"Player {Player.Uid} logged in inside raid {record.RaidId} (world level {record.WorldLevel}) " +
                         "that has no RaidConfig; abandoning the run.");
-            await AbandonCurrentRun();
+            await AbandonCurrentRun(true);
             record = null;
         }
 
@@ -65,7 +65,17 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         }
     }
 
-    private async ValueTask AbandonCurrentRun()
+    /// <summary>
+    ///     Login-time abandon for <c>ServerOption.ResetLocationOnLogin</c>: clears the open raid run without loading a
+    ///     scene. The caller relocates the player.
+    /// </summary>
+    public async ValueTask AbandonAtLogin()
+    {
+        if (Data.CurRaidId == 0) return;
+        await AbandonCurrentRun(false);
+    }
+
+    private async ValueTask AbandonCurrentRun(bool placeAtReturnPoint)
     {
         var record = GetCurrentRecord();
         Data.CurRaidId = 0;
@@ -75,7 +85,8 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         if (record == null) return;
 
         await ClearRaid(record.RaidId, record.WorldLevel);
-        if (!Player.TryPlaceAtEntrance(record.OldEntryId, record.OldPos, record.OldRot, PlaneTypeEnum.Raid))
+        if (placeAtReturnPoint &&
+            !Player.TryPlaceAtEntrance(record.OldEntryId, record.OldPos, record.OldRot, PlaneTypeEnum.Raid))
             Player.TryPlaceAtEntrance(PlayerInstance.DefaultSpawnEntryId);
     }
 

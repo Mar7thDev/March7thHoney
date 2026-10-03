@@ -14,5 +14,7 @@ public class HandlerSceneCastSkillCsReq : Handler<SceneCastSkillCsReq>
         await connection.SendPacket(new PacketSceneCastSkillScRsp(res.RetCode, req.CastEntityId, res.Instance,
             res.TriggerBattleInfos ?? []));
         if (res.Instance != null) await player.SceneInstance!.OnEnterStage();
+        // A Divergent Universe room emptied by the cast itself (no battle will report it) still clears the room.
+        else if (player.RogueTournManager != null) await player.RogueTournManager.ClearRoomIfMonstersGone();
     }
 }

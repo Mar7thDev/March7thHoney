@@ -117,6 +117,10 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
 
                 // Set saved technique points (This will be restored if the player resets the challenge)
                 Memory.SavedMp = (uint)Player.LineupManager!.GetCurLineup()!.Mp;
+
+                // Persist the finished run; otherwise a relog restores a replayable last stage.
+                if (Memory.CurStatus == (int)ChallengeStatus.ChallengeFinish)
+                    Player.ChallengeManager!.SaveInstance(this);
                 break;
             case BattleEndStatus.BattleEndQuit:
                 // Reset technique points and move back to start position
@@ -132,6 +136,7 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
 
                 // Send challenge result data
                 await Player.SendPacket(new PacketChallengeSettleNotify(this));
+                Player.ChallengeManager!.SaveInstance(this);
 
                 break;
         }

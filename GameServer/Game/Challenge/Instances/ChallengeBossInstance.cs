@@ -202,20 +202,11 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
 
     public override async ValueTask OnBattleEnd(BattleInstance battle, PVEBattleResultCsReq req)
     {
-        // Calculate score for current stage
-        var stageScore = 0;
-        foreach (var battleTarget in req.Stt.BattleTargetInfo[1].BattleTargetList_)
-            stageScore += (int)battleTarget.Progress;
-
-        // Set score
-        if (Boss.CurrentStage == 1)
-            Boss.ScoreStage1 = (uint)stageScore;
-        else
-            Boss.ScoreStage2 = (uint)stageScore;
-
         switch (req.EndStatus)
         {
             case BattleEndStatus.BattleEndWin:
+                RecordStageScore(req);
+
                 // Get monster count in stage
                 long monsters = Player.SceneInstance!.Entities.Values.OfType<EntityMonster>().Count();
 
@@ -232,13 +223,34 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             case BattleEndStatus.BattleEndLose:
+                RecordStageScore(req);
                 await AdvanceStage(req);
                 break;
             default:
                 Boss.CurStatus = (int)ChallengeStatus.ChallengeFailed;
                 await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this));
+                Player.ChallengeManager!.SaveInstance(this);
                 break;
         }
+    }
+
+    // Only a finished phase (win or turn-limit loss) scores; a quit must not overwrite the phase score.
+    // The client may omit the type-1 target list; score it as 0 instead of throwing before the phase settles.
+    private void RecordStageScore(PVEBattleResultCsReq req)
+    {
+        var stageScore = 0u;
+        foreach (var battleTarget in GetScoreTargets(req)?.BattleTargetList_ ?? [])
+            stageScore += battleTarget.Progress;
+
+        if (Boss.CurrentStage == 1)
+            Boss.ScoreStage1 = stageScore;
+        else
+            Boss.ScoreStage2 = stageScore;
+    }
+
+    private static BattleTargetList? GetScoreTargets(PVEBattleResultCsReq req)
+    {
+        return req.Stt.BattleTargetInfo.TryGetValue(1, out var targets) ? targets : null;
     }
 
     public uint CalculateStars()
@@ -280,7 +292,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
                 true, true);
 
             // Send challenge result data
-            await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, req.Stt.BattleTargetInfo[1]));
+            await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, GetScoreTargets(req)));
             await Player.SendPacket(new PacketChallengeSettleNotify(this));
 
             // Call MissionManager
@@ -301,7 +313,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
         }
         else
         {
-            await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, req.Stt.BattleTargetInfo[1]));
+            await Player.SendPacket(new PacketChallengeBossPhaseSettleNotify(this, GetScoreTargets(req)));
         }
     }
 
