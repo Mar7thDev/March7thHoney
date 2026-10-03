@@ -30,7 +30,8 @@ public static class CommandRoles
                 CommandPermissions.Relic,
                 CommandPermissions.SetLevel,
                 CommandPermissions.UnlockAll,
-                CommandPermissions.Unstuck
+                CommandPermissions.Unstuck,
+                CommandPermissions.Du
             ],
             [Moderator] =
             [
