@@ -104,7 +104,8 @@ public partial class SceneInstance
         return oldValue;
     }
 
-    public async ValueTask SyncLineup(bool notSendPacket = false)
+    public async ValueTask SyncLineup(bool notSendPacket = false,
+        IReadOnlyDictionary<(int AvatarId, AvatarType Type), int>? retainedAvatarIds = null)
     {
         var oldAvatarInfo = AvatarInfo.Values.ToList();
         AvatarInfo.Clear();
@@ -130,10 +131,12 @@ public partial class SceneInstance
                 continue; // avatar already in team
             var avatarInfo = new AvatarSceneInfo(avatar.AvatarInfo, avatar.AvatarType, Player)
             {
-                // assign entity id
-                EntityId = ++LastEntityId
+                EntityId = retainedAvatarIds?.GetValueOrDefault((avatar.AvatarInfo.BaseAvatarId, avatar.AvatarType)) ?? 0
             };
 
+            if (avatarInfo.EntityId <= 0 || Entities.ContainsKey(avatarInfo.EntityId))
+                avatarInfo.EntityId = ++LastEntityId;
+            LastEntityId = Math.Max(LastEntityId, avatarInfo.EntityId);
             AvatarInfo.Add(avatarInfo.EntityId, avatarInfo);
             addAvatar.Add(avatarInfo);
             sendPacket = true;

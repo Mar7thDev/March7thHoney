@@ -196,6 +196,11 @@ public class LevelTask(PlayerInstance player)
     public async ValueTask ApplyMissionPropState(SubMissionData subMission)
     {
         if (Player.SceneInstance == null) return;
+        if (subMission.SubMissionInfo?.ID == 403000222)
+        {
+            await Player.MissionManager!.RefreshRogueGalleryProps();
+            return;
+        }
 
         var (groupId, instId) = ResolveMissionPropTarget(subMission);
         if (groupId == 0 || instId == 0) return;

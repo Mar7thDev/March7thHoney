@@ -35,6 +35,7 @@ public sealed class HandlerGetRogueInfoCsReq : PlayerHandler
     {
         await connection.SendPacket(new PacketRogueScRsp(CmdIds.GetRogueInfoScRsp,
             new GetRogueInfoScRsp { RogueGameInfo = player.RogueManager!.BuildRogueGameInfo() }));
+        await player.RogueManager!.ResumeTutorialVictoryNotification();
     }
 }
 
@@ -279,7 +280,8 @@ public sealed class HandlerHandleRogueCommonPendingActionCsReq : Handler<OFEDNNJ
             rsp.QueuePosition = req.MPLGEEGOAMC;
             rsp.BFNEPPCNOOI = req.MPLGEEGOAMC;
 
-            // The resolved draft clears the room: the official refreshes the exit portal Open before the response.
+            // A resolved tutorial draft enables its picker; only the final encounter opens the room exit.
+            await manager.RefreshTutorialProps();
             await manager.OpenRoomExit();
         }
 
@@ -343,6 +345,13 @@ public sealed class HandlerPickRogueAvatarCsReq : Handler<PickRogueAvatarCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, PickRogueAvatarCsReq req)
     {
+        var ret = await player.RogueManager!.PickTutorialAvatar(req);
+        if (ret is { } code && code != Retcode.RetSucc)
+        {
+            await connection.SendPacket(new PacketRogueScRsp(CmdIds.PickRogueAvatarScRsp,
+                new PickRogueAvatarScRsp { Retcode = (uint)code }));
+            return;
+        }
         var rsp = new PickRogueAvatarScRsp();
         rsp.BFEDFBEKOBI.AddRange(req.DFPPCAJDBFK);
         rsp.NOEPBNMJFGL.AddRange(req.NOEPBNMJFGL);

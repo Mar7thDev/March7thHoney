@@ -67,15 +67,14 @@ public class SceneEntityLoader(SceneInstance scene)
 
     public virtual async ValueTask SyncEntity()
     {
-        var refreshed = false;
         // Empty runtime groups (for example StageItemsHandler) are still loaded groups.
         // Deriving membership only from entities reloads them on every sync and duplicates Groups.
         var oldGroupId = new HashSet<int>(Scene.Groups);
         foreach (var entity in Scene.Entities.Values.Where(entity => !oldGroupId.Contains(entity.GroupId)))
             oldGroupId.Add(entity.GroupId);
 
-        var removeList = new List<BaseGameEntity>();
-        var addList = new List<BaseGameEntity>();
+        var unloadedGroups = new List<int>();
+        var loadedGroups = new List<int>();
 
         foreach (var group in Scene.FloorInfo!.Groups.Values
                      .Where(group => group.LoadSide != GroupLoadSideEnum.Client)
@@ -102,11 +101,10 @@ public class SceneEntityLoader(SceneInstance scene)
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
                         await Scene.RemoveEntity(entity, false);
-                        removeList.Add(entity);
-                        refreshed = true;
                     }
 
                     Scene.Groups.Remove(group.Id);
+                    unloadedGroups.Add(group.Id);
                 }
                 else if (group.OwnerMainMissionID != 0 &&
                          Scene.Player.MissionManager!.GetMainMissionStatus(group.OwnerMainMissionID) !=
@@ -115,11 +113,10 @@ public class SceneEntityLoader(SceneInstance scene)
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
                         await Scene.RemoveEntity(entity, false);
-                        removeList.Add(entity);
-                        refreshed = true;
                     }
 
                     Scene.Groups.Remove(group.Id);
+                    unloadedGroups.Add(group.Id);
                 }
                 else if (!group.SavedValueCondition.IsTrue(
                              Scene.BuildClientFloorSavedData())) // same dimension defaults as the scene snapshot
@@ -127,11 +124,10 @@ public class SceneEntityLoader(SceneInstance scene)
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
                         await Scene.RemoveEntity(entity, false);
-                        removeList.Add(entity);
-                        refreshed = true;
                     }
 
                     Scene.Groups.Remove(group.Id);
+                    unloadedGroups.Add(group.Id);
                 }
                 else if (group.RelatedBattleId.Count > 0 && !Scene.Player.MissionManager!.GetRunningSubMissionList()
                              .Any(x =>
@@ -141,22 +137,20 @@ public class SceneEntityLoader(SceneInstance scene)
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
                         await Scene.RemoveEntity(entity, false);
-                        removeList.Add(entity);
-                        refreshed = true;
                     }
 
                     Scene.Groups.Remove(group.Id);
+                    unloadedGroups.Add(group.Id);
                 }
             }
             else // check if it should be loaded
             {
                 var groupList = await LoadGroup(group);
-                refreshed = groupList != null || refreshed;
-                addList.AddRange(groupList ?? []);
+                if (groupList != null) loadedGroups.Add(group.Id);
             }
 
-        if (refreshed && (addList.Count > 0 || removeList.Count > 0))
-            await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene.Player, addList, removeList));
+        if (loadedGroups.Count > 0 || unloadedGroups.Count > 0)
+            await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene, loadedGroups, unloadedGroups));
     }
 
     public virtual async ValueTask<List<BaseGameEntity>?> LoadGroup(GroupInfo info, bool forceLoad = false)
@@ -266,8 +260,8 @@ public class SceneEntityLoader(SceneInstance scene)
         if (group == null) return null;
         var entities = await LoadGroup(group, true);
 
-        if (sendPacket && entities is { Count: > 0 })
-            await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene.Player, entities));
+        if (sendPacket && entities != null)
+            await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene, [groupId]));
 
         return entities;
     }
@@ -277,21 +271,19 @@ public class SceneEntityLoader(SceneInstance scene)
         var group = Scene.FloorInfo?.Groups.TryGetValue(groupId, out var v1) == true ? v1 : null;
         if (group == null) return;
 
-        var removeList = new List<BaseGameEntity>();
-        var refreshed = false;
+        var refreshed = Scene.Groups.Contains(groupId);
 
         foreach (var entity in Scene.Entities.Values)
             if (entity.GroupId == group.Id)
             {
                 await Scene.RemoveEntity(entity, false);
-                removeList.Add(entity);
                 refreshed = true;
             }
 
         Scene.Groups.Remove(group.Id);
 
         if (refreshed)
-            await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene.Player, removeEntity: removeList));
+            await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene, [], [groupId]));
     }
 
     public virtual async ValueTask<EntityNpc?> LoadNpc(NpcInfo info, GroupInfo group, bool sendPacket = false)
@@ -363,12 +355,11 @@ public class SceneEntityLoader(SceneInstance scene)
                  excel.JsonPath.Contains("RogueEmblem", StringComparison.Ordinal)))
                 prop.State = PropStateEnum.Open;
 
-            // Rogue Index arms (lobby 80112001 group 3, MazeProp 1005): the 4.5 dump strips the ChangePropState
-            // that opens them at the end of the Simulated Universe tutorial, whose main 4030002 is auto-finished.
+            // The gallery unlocks after the final Herta dialogue, before the use-handbook objective
+            // can complete the tutorial. Waiting for main 4030002 to finish creates a circular gate.
             if (prop.State == PropStateEnum.Closed &&
                 excel.JsonPath.Contains("Prop_Rogue_Gallery", StringComparison.Ordinal) &&
-                (!Scene.Player.MissionEnabled ||
-                 Scene.Player.MissionManager!.GetMainMissionStatus(4030002) == MissionPhaseEnum.Finish))
+                Scene.Player.MissionManager!.IsRogueGalleryUnlocked)
                 prop.State = PropStateEnum.Open;
 
             // A spring's checkpoint comes from its configured State when the level export declares one
@@ -384,6 +375,11 @@ public class SceneEntityLoader(SceneInstance scene)
             if (!Scene.Player.MissionEnabled && info.MappingInfoID != 0 && prop.State == PropStateEnum.CheckPointDisable)
                 prop.State = PropStateEnum.CheckPointEnable;
         }
+
+        // Exact lobby identities also cover exports without JsonPath and old saved Closed states.
+        if (Scene.FloorId == 80112001 && group.Id == 3 && info.ID is 300003 or 300008 &&
+            excel.ID == 1005 && Scene.Player.MissionManager!.IsRogueGalleryUnlocked)
+            prop.State = PropStateEnum.Open;
 
         // Missions off: open doors so they don't block the way.
         if (!Scene.Player.MissionEnabled && !hasSavedState && prop.Excel.IsDoor)
@@ -403,9 +399,12 @@ public class SceneEntityLoader(SceneInstance scene)
         if (!hasSavedState && prop.PropInfo.Name.Contains("Case") && prop.State == PropStateEnum.Open)
             await prop.SetState(PropStateEnum.Closed);
 
-        if (prop.PropInfo.PropID == 1003)
+        // The tutorial console (mapping 2219) is an ordinary scene entity too. Returning it before
+        // AddEntity used to leave group 14 loaded but empty, so its RogueStart(area 100) button vanished.
+        if (prop.PropInfo.PropID == 1003 && prop.PropInfo.MappingInfoID == 2220 && !hasSavedState &&
+            (!Scene.Player.MissionEnabled ||
+             Scene.Player.MissionManager!.GetMainMissionStatus(4030002) == MissionPhaseEnum.Finish))
         {
-            if (prop.PropInfo.MappingInfoID != 2220) return prop;
             await prop.SetState(PropStateEnum.Open);
         }
 

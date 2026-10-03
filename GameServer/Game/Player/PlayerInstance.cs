@@ -290,6 +290,7 @@ public partial class PlayerInstance(PlayerData data)
 
         if (MissionEnabled)
         {
+            await MissionManager!.RepairSkippedRogueTutorials();
             await MissionManager!.AcceptMainMissionByCondition();
             // Runs on every load, not just once: a save can stall at any point in the chain, and the
             // pass is a no-op when every accepted main already has a running sub-mission.
@@ -424,6 +425,9 @@ public partial class PlayerInstance(PlayerData data)
                     avatarData.CurrentHp = 2000;
             }
         }
+
+        if (tierceLobbyEntry == null && RogueManager != null)
+            await RogueManager.RestoreLineupAtLogin();
 
         if (tierceLobbyEntry is { } lobbyEntry)
             await EnterScene(lobbyEntry, 0, false);
@@ -577,16 +581,8 @@ public partial class PlayerInstance(PlayerData data)
             await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos, Data.Rot, true);
     }
 
-    public async ValueTask ChangeAvatarSkin(int avatarId, int skinId)
-    {
-        PlayerUnlockData!.Skins.TryGetValue(avatarId, out var skins);
-        if (skins != null && (skins.Contains(skinId) || skinId == 0))
-        {
-            var avatar = AvatarManager!.GetFormalAvatar(avatarId)!;
-            avatar.GetPathInfo(avatarId)!.Skin = skinId;
-            await SendPacket(new PacketPlayerSyncScNotify(avatar));
-        }
-    }
+    public ValueTask<Retcode> ChangeAvatarSkin(int avatarId, int skinId) =>
+        AvatarManager!.ChangeSkin(avatarId, skinId);
 
     public async ValueTask<FormalAvatarInfo> MarkAvatar(int avatarId, bool isMarked, bool sendPacket = true)
     {

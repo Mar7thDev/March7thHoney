@@ -120,6 +120,14 @@ public class LineupManager : BasePlayerManager<LineupData>
             {
                 avatarInfo = Player.AvatarManager!.GetTrialAvatar(avatar.SpecialAvatarId);
                 avatarType = AvatarType.AvatarTrialType;
+                // Trial protagonists can resolve to a different gender/base path than their table row.
+                // Keep saved/replaced lineup slots consistent with the actual trial used in combat.
+                if (avatarInfo != null && avatar.BaseAvatarId != avatarInfo.BaseAvatarId)
+                {
+                    if (lineup.LeaderAvatarId == avatar.BaseAvatarId) lineup.LeaderAvatarId = avatarInfo.BaseAvatarId;
+                    avatar.BaseAvatarId = avatarInfo.BaseAvatarId;
+                    MarkDirty();
+                }
             }
             else if (avatar.AssistUid > 0)
             {

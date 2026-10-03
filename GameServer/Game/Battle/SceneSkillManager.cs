@@ -29,7 +29,6 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
 
         // get entities
         List<BaseGameEntity> targetEntities = []; // enemy
-        BaseGameEntity? attackEntity; // caster
         List<int> addEntityIds = [];
         foreach (var id in req.AssistMonsterEntityIdList)
             if (Player.SceneInstance!.Entities.TryGetValue((int)id, out var v))
@@ -49,24 +48,19 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             }
         }
 
-        var attackedEntity = Player.SceneInstance!.Entities.GetValueOrDefault((int)req.AttackedByEntityId);
-        if (targetEntities.Count == 0 && attackedEntity is EntityMonster directTarget)
-        {
-            targetEntities.Add(directTarget);
-            addEntityIds.Add(directTarget.EntityId);
-            attackEntity = Player.SceneInstance.AvatarInfo.GetValueOrDefault((int)req.CastEntityId)
-                           ?? Player.SceneInstance.AvatarInfo.GetValueOrDefault(Player.SceneInstance.LeaderEntityId)
-                           ?? Player.SceneInstance.AvatarInfo.Values.FirstOrDefault();
-        }
-        else
-        {
-            attackEntity = attackedEntity;
-        }
+        // attacked_by_entity_id identifies the attack source; cast_entity_id correlates the cast.
+        // Official 4.6 seq 9469-9471 reports a monster source with no hit targets and receives only
+        // an ACK. Substituting the leader here starts an unexpected battle during the ramp cinematic.
+        var attackEntity = Player.SceneInstance!.Entities.GetValueOrDefault((int)req.AttackedByEntityId);
 
         if (attackEntity == null)
             return handledDestruct
                 ? new SkillResultData(Retcode.RetSucc)
                 : new SkillResultData(Retcode.RetSceneEntityNotExist);
+
+        if (attackEntity is EntityMonster &&
+            !targetEntities.Any(entity => Player.SceneInstance.AvatarInfo.ContainsKey(entity.EntityId)))
+            return new SkillResultData(Retcode.RetSucc);
 
         await TriggerAttackDetectSummons(targetEntities);
 
@@ -149,6 +143,12 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             // 队友秘技充能类监听 buff(如三月七·巡猎 122401): 数据驱动识别, 队友每开一次秘技给携带者叠 1 层封顶
             await StackTeammateTechniqueBuffs(casterAvatar);
         }
+
+        // An ambush rolls the attacking monster into combat, not the avatar it hit.
+        // Official 4.6 seq 30233-30239 uses the monster id in monster_battle_info.
+        if (attackEntity is EntityMonster attacker && res.Instance != null)
+            return new SkillResultData(Retcode.RetSucc, res.Instance,
+                [new HitMonsterInstance(attacker.EntityId, MonsterBattleType.TriggerBattle)]);
 
         return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
     }
@@ -314,6 +314,17 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
     {
         if (targetEntities.Count == 0)
             return new AbilityLevelResult();
+
+        // A monster projectile can report HIT and LIFETIME_FINISH together when it hits an avatar.
+        // The avatar technique lifetime rule below does not apply to this confirmed ambush.
+        if (attackEntity is EntityMonster monster)
+        {
+            var ambush = await Player.BattleManager!.StartBattle(monster, targetEntities, false);
+            return ambush == null
+                ? new AbilityLevelResult()
+                : new AbilityLevelResult(ambush,
+                    [new HitMonsterInstance(monster.EntityId, MonsterBattleType.TriggerBattle)]);
+        }
 
         // A projectile/field technique that runs out its lifetime (chains / persistent
         // field, e.g. Gilgamesh) reports SCENE_CAST_SKILL_PROJECTILE_LIFETIME_FINISH and must

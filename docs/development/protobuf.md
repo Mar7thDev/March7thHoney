@@ -79,6 +79,10 @@ dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
 
 `LoginSceneRegression` 中有按版本写死的 cmdId 与字段号断言（SceneMapInfo、SyncServerSceneChangeNotify、经典模拟宇宙 18xx 命令），切换活动版本时一并更新。
 
+命令枚举名不一定等于 protobuf 消息类型名。快速升级例如：4.6 的 `KELLLHMHFHL`（376）在 `dumper/Raw/cmdid-registry.txt` 中对应 `EKLIDIDKFHC`，捕获的响应为 `PMEMIDKDAFG`（357，枚举 `MILFFHPMLMN`）；4.7 的 `Raw/packetIds.txt` 和同身份定义分别对应 355/341。处理器绑定当前命令常量并解析真实消息类型；仅按枚举名搜索同名 `message` 会漏掉现有结构。4.6 官服抓包 seq `36813-36829` 可验证请求/响应配对与升级费用，不能将其旧命令号直接用于 4.7。
+
+光锥快速升级的身份为 `EOBJKAMNNPI → AMNBMKEMMFL`。4.6 原始定义重复误标为 `PromoteEquipmentCsReq/ScRsp`；官服 seq `36852/36859/36927` 的原始消息分别可解出目标等级、唯一 ID、经验消耗、突破消耗及突破等级。4.7 已映射为 `EquipmentQuickUpCsReq/ScRsp`（513/517）：`IGOOJKMPMDC` 为目标等级，`KLMIBJIKIBB` 为目标突破，`BOBOKJBAMNB` 为经验材料或光锥狗粮，`IDGEEENIMMK` 为突破材料。按属性身份使用现有活动定义，不改成仅执行突破的 `PromoteEquipmentCsReq`。请求没有处理器时框架自动发送空成功响应，不能用该响应判断升级已执行。
+
 ## 新版本约束
 
 - 自有 Dumper 产物始终放入该版本的 `dumper/Raw/`，不可混入 reference。
