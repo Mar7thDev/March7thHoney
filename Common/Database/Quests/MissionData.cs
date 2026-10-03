@@ -34,6 +34,10 @@ public class MissionData : BaseDatabaseDataHelper
     /// </summary>
     public bool? EnableMissionOverride { get; set; }
 
+    // Tutorials auto-finished by the old skip path already paid their rewards. Replaying their
+    // actual gameplay must not pay those main/sub rewards again. Existing rows default to empty.
+    public List<int> ReplayedRogueTutorialRewardIds { get; set; } = [];
+
     /// <summary>Whether the mission system is live for this player. Get-only, so it is not a DB column.</summary>
     public bool MissionEnabled => EnableMissionOverride ?? ConfigManager.Config.ServerOption.EnableMission;
 

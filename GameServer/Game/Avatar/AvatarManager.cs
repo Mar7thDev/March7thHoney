@@ -23,19 +23,19 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         if (avatarExcel.MaxRank < 6) return null;
 
         GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPathAvatar);
-        if (multiPathAvatar != null && multiPathAvatar.BaseAvatarID != avatarId)
+        var owned = GetFormalAvatar(avatarId);
+        if (owned != null)
         {
-            // Is path
-            foreach (var avatarData in Data.FormalAvatars)
-                if (avatarData.AvatarId == multiPathAvatar.BaseAvatarID)
-                {
-                    // Add path for the character
-                    avatarData.PathInfos.Add(avatarId, new PathInfo(avatarId));
-                    break;
-                }
-
+            // Adding an already owned character must not append an empty row with the same base ID.
+            // A path unlock adds only its missing path and keeps the existing skin and equipment.
+            if (!owned.PathInfos.ContainsKey(avatarId) && owned.EnsurePathInfo(avatarId))
+            {
+                MarkDirty();
+                if (sync) await Player.SendPacket(new PacketPlayerSyncScNotify(owned));
+            }
             return null;
         }
+        if (multiPathAvatar != null && multiPathAvatar.BaseAvatarID != avatarId) return null;
 
         var avatar = new FormalAvatarInfo(multiPathAvatar?.BaseAvatarID ?? avatarId, avatarId, true)
         {
@@ -46,6 +46,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         };
 
         Data.FormalAvatars.Add(avatar);
+        MarkDirty();
 
         if (avatarExcel.Rarity == RarityEnum.CombatPowerAvatarRarityType5 && avatarExcel.AvatarID <= 3000)
             // add development
@@ -68,6 +69,31 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPathAvatar);
         return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId ==
                                                        (multiPathAvatar?.BaseAvatarID ?? avatarId));
+    }
+
+    // Match GetFormalAvatar's first-row lookup on older saves without deleting duplicate stored data.
+    public IEnumerable<FormalAvatarInfo> GetOwnedAvatars() => Data.FormalAvatars.DistinctBy(avatar => avatar.BaseAvatarId);
+
+    public async ValueTask<Retcode> ChangeSkin(int avatarId, int skinId)
+    {
+        var avatar = GetFormalAvatar(avatarId);
+        if (avatar == null) return Retcode.RetAvatarNotExist;
+        var path = avatar.GetPathInfo(avatarId);
+        if (path == null && avatarId == avatar.BaseAvatarId) path = avatar.GetCurPathInfo();
+        if (path == null) return Retcode.RetAvatarNotExist;
+        if (skinId != 0)
+        {
+            if (!GameData.AvatarSkinData.TryGetValue(skinId, out var skin))
+                return Retcode.RetAvatarSkinItemNotExist;
+            if (skin.AvatarID != path.PathId) return Retcode.RetAvatarSkinNotMatchAvatar;
+            if (Player.PlayerUnlockData!.Skins.GetValueOrDefault(skin.AvatarID)?.Contains(skinId) != true)
+                return Retcode.RetAvatarSkinItemNotExist;
+        }
+        if (path.Skin == skinId) return Retcode.RetSucc;
+        path.Skin = skinId;
+        MarkDirty();
+        await Player.SendPacket(new PacketPlayerSyncScNotify(avatar));
+        return Retcode.RetSucc;
     }
 
     public SpecialAvatarInfo? GetTrialAvatar(int avatarId, bool refresh = false)

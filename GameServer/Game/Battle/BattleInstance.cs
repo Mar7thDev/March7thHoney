@@ -290,6 +290,8 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         };
 
         if (MagicInfo != null) proto.BattleRogueMagicInfo = MagicInfo;
+        // The classic Rogue battle envelope includes this empty message (official 4.6 seq 15037).
+        if (MagicInfo?.OOPCPMANCBO?.RogueMode == 1) proto.BattleActionEventId = new EDCFKACPFNB();
 
         if (CustomWaves is { Count: > 0 })
         {

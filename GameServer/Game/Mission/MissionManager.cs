@@ -25,7 +25,7 @@ using MissionData = March7thHoney.Database.Quests.MissionData;
 
 namespace March7thHoney.GameServer.Game.Mission;
 
-public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionData>(player)
+public partial class MissionManager(PlayerInstance player) : BasePlayerManager<MissionData>(player)
 {
     #region Initializer & Properties
 
@@ -85,15 +85,6 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         var list = new List<MissionSync?>();
         foreach (var i in mission.MissionInfo?.StartSubMissionList ?? [])
             list.Add(await AcceptSubMission(i, sendPacket));
-        if (missionId == 4030001 || missionId == 4030002)
-        {
-            // skip  not implemented
-            foreach (var x in mission.MissionInfo?.SubMissionList ?? [])
-                await AcceptSubMission(x.ID);
-            foreach (var x in mission.MissionInfo?.SubMissionList ?? [])
-                await FinishSubMission(x.ID);
-        }
-
         if (missionId == 1000400)
         {
             await Player.AddAvatar(1003);
@@ -110,6 +101,8 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
                          or MissionFinishTypeEnum.MessageSectionFinish))
             await Player.MessageManager!.AddMessageSection(info.ParamInt1);
 
+        foreach (var sync in list)
+            if (sync != null) RefreshSubMissionSync(sync);
         return list;
     }
 
@@ -127,6 +120,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
                     sync.MissionList.AddRange(subMission.MissionList);
         }
 
+        RefreshSubMissionSync(sync);
         return sync;
     }
 
@@ -343,6 +337,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         if (Data.GetSubMissionStatus(missionId) != MissionPhaseEnum.None) return null; // already accepted
 
         Data.SetSubMissionStatus(missionId, MissionPhaseEnum.Accept);
+        if (missionId == 403000222) await RefreshRogueGalleryProps();
 
         var sync = new MissionSync();
         sync.MissionList.Add(new Proto.Mission
@@ -384,6 +379,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         // TODO: Mission Task
         Player.TaskManager?.MissionTaskTrigger.TriggerMissionTask(missionId);
 
+        RefreshSubMissionSync(sync);
         return sync;
     }
 
@@ -412,6 +408,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         var mainSync = await AcceptMainMissionByCondition(false);
         sync.MissionList.AddRange(mainSync.MissionList);
 
+        RefreshSubMissionSync(sync);
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
         if (Player.SceneInstance != null)
         {
@@ -527,13 +524,21 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
             if (canAccept)
             {
                 var s = await AcceptSubMission(nextMission.ID, false, doFinishTypeAction);
-                if (s != null)
-                    sync.MissionList.Add(new Proto.Mission
-                    {
-                        Id = (uint)nextMission.ID,
-                        Status = MissionStatus.MissionDoing
-                    });
+                if (s != null) sync.MissionList.AddRange(s.MissionList);
             }
+        }
+
+        RefreshSubMissionSync(sync);
+    }
+
+    private void RefreshSubMissionSync(MissionSync sync)
+    {
+        // Accepting a successor can enter a scene and finish it (or an earlier successor)
+        // recursively. Publish the current state, not the Doing snapshot created before that work.
+        foreach (var mission in sync.MissionList)
+        {
+            mission.Status = GetSubMissionStatus((int)mission.Id).ToProto();
+            mission.Progress = (uint)GetMissionProgress((int)mission.Id);
         }
     }
 
@@ -573,6 +578,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
 
     public async ValueTask HandleMissionReward(int mainMissionId)
     {
+        if (Data.ReplayedRogueTutorialRewardIds.Contains(mainMissionId)) return;
         GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission);
         if (mainMission == null) return;
         GameData.RewardDataData.TryGetValue(mainMission.RewardID, out var reward);
@@ -612,6 +618,7 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     {
         GameData.SubMissionInfoData.TryGetValue(subMissionId, out var subMission);
         if (subMission == null) return;
+        if (Data.ReplayedRogueTutorialRewardIds.Contains(subMission.MainMissionId)) return;
         GameData.RewardDataData.TryGetValue(subMission.SubMissionInfo?.SubRewardID ?? 0, out var reward);
         var itemList = new List<ItemData>();
 
@@ -665,6 +672,19 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
     public async ValueTask<bool> HandleTalkStr(string talkString)
     {
         if (!Enabled) return false;
+
+        // Tutorial level graphs report their intermediate Auto talks from inside the run. They are
+        // not entry subs and have no predecessor, so arm only the matching reported talk on its floor.
+        if (Player.RogueManager?.RogueInstance is { Status: RogueStatus.Doing } run)
+            foreach (var tutorialId in new[] { 4030001, 4030002 })
+            {
+                if (GetMainMissionStatus(tutorialId) != MissionPhaseEnum.Accept ||
+                    run.AreaId != 100 || run.MapId != (tutorialId == 4030001 ? 1 : 2)) continue;
+                foreach (var sub in GameData.MainMissionData[tutorialId].MissionInfo.SubMissionList)
+                    if (sub.TakeType == SubMissionTakeTypeEnum.Auto && sub.FinishType == MissionFinishTypeEnum.Talk
+                        && sub.ParamStr1 == talkString && sub.LevelFloorID == Player.Data.FloorId)
+                        await AcceptSubMission(sub.ID, false);
+            }
 
         var handled = false;
 
@@ -1051,7 +1071,9 @@ public class MissionManager(PlayerInstance player) : BasePlayerManager<MissionDa
         if (target is not { IsAlive: true }) return false;
 
         if (sendRefresh)
-            await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, groupEntities));
+            await Player.SendPacket(scene.HasClientSceneSnapshotGroup(targetGroupId)
+                ? new PacketSceneGroupRefreshScNotify(Player, groupEntities)
+                : new PacketSceneGroupRefreshScNotify(scene, [targetGroupId]));
 
         return true;
     }

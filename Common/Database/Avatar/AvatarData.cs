@@ -720,14 +720,14 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
                     Rank = (uint)item.Rank
                 });
         }
-        else if (GetCurPathInfo().EquipData != null)
+        else if (GetCurPathInfo().EquipData is { ItemId: > 0 } equipment)
         {
             proto.EquipmentList.Add(new BattleEquipment
             {
-                Id = (uint)GetCurPathInfo().EquipData!.ItemId,
-                Level = (uint)GetCurPathInfo().EquipData!.Level,
-                Promotion = (uint)GetCurPathInfo().EquipData!.Promotion,
-                Rank = (uint)GetCurPathInfo().EquipData!.Rank
+                Id = (uint)equipment.ItemId,
+                Level = (uint)equipment.Level,
+                Promotion = (uint)equipment.Promotion,
+                Rank = (uint)equipment.Rank
             });
         }
 
