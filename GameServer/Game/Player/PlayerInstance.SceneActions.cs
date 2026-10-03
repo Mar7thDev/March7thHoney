@@ -18,6 +18,9 @@ public partial class PlayerInstance
 {
     private static readonly Logger SceneLogger = new("Scene");
 
+    /// <summary>Default spawn entrance: the fallback for unloadable scenes and Raid planes without a raid run.</summary>
+    public const int DefaultSpawnEntryId = 2000101;
+
     #region Scene Actions
 
     public async ValueTask OnMove()
@@ -394,6 +397,39 @@ public partial class PlayerInstance
         return (loaded, loaded && (beforeEntryId != Data.EntryId || beforeStoryLineId != storyLineId));
     }
 
+    /// <summary>
+    ///     Moves the saved location to an entrance without building a scene, for login-time relocation that runs before
+    ///     the login scene load. A null <paramref name="pos" />/<paramref name="rot" /> uses the entrance's start anchor.
+    ///     Returns false, leaving the location untouched, when the entrance, its floor or its anchor is unusable or its
+    ///     plane type is one of <paramref name="rejectPlaneTypes" />.
+    /// </summary>
+    public bool TryPlaceAtEntrance(int entryId, Position? pos = null, Position? rot = null,
+        params PlaneTypeEnum[] rejectPlaneTypes)
+    {
+        if (!GameData.MapEntranceData.TryGetValue(entryId, out var entrance)) return false;
+        if (!GameData.MazePlaneData.TryGetValue(entrance.PlaneID, out var plane) ||
+            rejectPlaneTypes.Contains(plane.PlaneType))
+            return false;
+
+        if (pos == null || rot == null)
+        {
+            GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floor);
+            var anchor = floor?.GetAnchorInfo(entrance.StartGroupID, entrance.StartAnchorID) ??
+                         floor?.GetAnchorInfo(floor.StartGroupID, floor.StartAnchorID);
+            if (anchor == null) return false;
+            pos = anchor.ToPositionProto();
+            rot = anchor.ToRotationProto();
+        }
+
+        Data.PlaneId = entrance.PlaneID;
+        Data.FloorId = entrance.FloorID;
+        Data.EntryId = entryId;
+        Data.Pos = pos;
+        Data.Rot = rot;
+        March7thHoney.Database.DatabaseHelper.MarkDirty(Uid);
+        return true;
+    }
+
     public async ValueTask EnterSceneByEntranceId(int entranceId, int anchorGroupId, int anchorId, bool sendPacket)
     {
         GameData.MapEntranceData.TryGetValue(entranceId, out var entrance);
@@ -470,7 +506,7 @@ public partial class PlayerInstance
         {
             if (plane.PlaneType == PlaneTypeEnum.Raid && RaidManager!.Data.CurRaidId == 0)
             {
-                await EnterScene(2000101, 0, sendPacket);
+                await EnterScene(DefaultSpawnEntryId, 0, sendPacket);
                 return false; // The requested raid was not entered, even if the fallback succeeded.
             }
 
