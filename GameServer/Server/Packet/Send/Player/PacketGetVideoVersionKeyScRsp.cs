@@ -10,27 +10,28 @@ public class PacketGetVideoVersionKeyScRsp : BasePacket
     {
         var proto = new GetVideoVersionKeyScRsp();
 
-        // The response used to carry nothing but the ids, so the client received a list of videos with
-        // no key attached at all.
-        //
-        // TODO(4.6 proto): video_key and ps_field_3 are still unresolved on this proto generation.
-        // The two remaining uint64 fields changed their obfuscated names and field numbers from 4.5,
-        // so they must stay unset until a 4.6 capture or an offset join proves their mapping. Guessing
-        // here can wedge the client UI. IBDIMHPOPOJ and id are the two fields confirmed across versions.
+        // 4.6 VideoKeyInfo: HHCAKADKHAN(6) = video_key, BOGECOHIINH(13) = ps_field_3, IBDIMHPOPOJ(8) unchanged.
+        // Settled by comparing the official 4.5 and 4.6 GetVideoVersionKeyScRsp captures: id 5600 carries the
+        // same three values in both, with videoKey/psField_3 landing on fields 6/13 in 4.6 (yuukisr_go
+        // 6a76330, data/proto/460.nt.txt). Without the key the client cannot decrypt the cutscene videos.
         foreach (var video in GameData.VideoKeysConfig.VideoKeyInfoData)
-            proto.VideoKeyInfoList.Add(new VideoKeyInfo
-            {
-                Id = (uint)video.Id,
-                IBDIMHPOPOJ = video.IBDIMHPOPOJ
-            });
+            proto.VideoKeyInfoList.Add(BuildKey(video.Id, video.VideoKey, video.IBDIMHPOPOJ, video.PsField3));
 
         foreach (var activity in GameData.VideoKeysConfig.ActivityVideoKeyData)
-            proto.ActivityVideoKeyInfoList.Add(new VideoKeyInfo
-            {
-                Id = (uint)activity.Id,
-                IBDIMHPOPOJ = activity.IBDIMHPOPOJ
-            });
+            proto.ActivityVideoKeyInfoList.Add(BuildKey(activity.Id, activity.VideoKey, activity.IBDIMHPOPOJ,
+                activity.PsField3));
 
         SetData(proto);
+    }
+
+    private static VideoKeyInfo BuildKey(int id, ulong videoKey, ulong ibdimhpopoj, ulong psField3)
+    {
+        return new VideoKeyInfo
+        {
+            Id = (uint)id,
+            HHCAKADKHAN = videoKey,
+            IBDIMHPOPOJ = ibdimhpopoj,
+            BOGECOHIINH = psField3
+        };
     }
 }

@@ -55,5 +55,10 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - `ServerOption.ResetLocationOnLogin`（默认 `false`，后台设置页可改）：开启后每次登录放弃进行中的 Raid（删除记录）与挑战/星启运行，并把位置重置到默认出生点 `2000101` 再加载场景；剧情线进行中时不生效。
 - `CommonRogueQueryScRsp`：查询类型即 `CCKJAEDDDCL` oneof 分支的字段号，按当前协议生成代码解析（4.6 的功能解锁分支 `BBEKBJPHEJK` 为 `1`，4.5 为 `15`），解锁集合只挂在该分支上，其余三类保持无分支。
 - `SocialPlayGetDataCsReq`、`PetMarbleGetDataCsReq`、`PetMarbleGetCycleTrialPetsCsReq` 有处理器，回包中所有单值子消息（递归 5 层，oneof 与列表除外）均以空消息下发，而不是未处理请求的空包体。
+- 4.6 盲盒宠物：缓存中盲盒宠物物品（251501 起）与一代召唤宠物（PetConfig 物品）可区分；新号 `GetPetDataScRsp` 带空的 `cur_pet` 与编队；获得盲盒宠物时每一份推送一条 `PetDataChangeScNotify{add_pet}`，一代宠物不成为实例；宠物物品不出现在 `PlayerSyncScNotify` 与 `GetBagScRsp` 的材料列表但仍保存在背包；实例 id 稳定、跨重新登录与数据库往返不变；设置编队先推送通知再回包，未拥有 / 重复实例、重复槽位、超过 3 槽均被拒绝且不改存档；移除宠物后实例与编队引用同步删除；召唤回显 `cur_pet`，收回返回空 `cur_pet` 并被记住；`BlindBoxGetData` 返回池 `1001`。
+- 遗器预设：已拥有角色 + 已拥有遗器才能新建，未知遗器、未拥有角色、不带任何改动的更新被拒绝；改名生效。
+- 队伍槽位：缺编号、额外队伍先插入的旧存档按编号补齐 0..8，下发的 `index` 与槽位编号一致；当前队伍指向空槽时改用编号最小的非空队伍；`MarkPresetLineupCsReq` 以 cmd `773`（`SetTeamFavourite`）回包并保存常用标记，非普通队伍编号返回 `RetLineupNotExist`；加标记前保存的 `LineupInfo` 仍可反序列化。
+- 开拓者当前命途：女性存档上的男性当前命途改为对应女性命途，非命途 id 回落到已拥有的同性别命途，且 `GetAvatarDataScRsp` 的命途列表包含该命途；校正幂等。
+- 视频密钥：`VideoKeyInfo` 的 `video_key` 写入字段 6（`HHCAKADKHAN`）、`ps_field_3` 写入字段 13（`BOGECOHIINH`），以 id `5600` 的官服值核对。
 
 边界：这不是安卓客户端测试，不能据此宣称加载卡死已在实机消失。密钥不匹配会被明确拒绝；让对应客户端成功登录仍需配套的公私钥。本修复不删除或合并历史 Base64 账号。
