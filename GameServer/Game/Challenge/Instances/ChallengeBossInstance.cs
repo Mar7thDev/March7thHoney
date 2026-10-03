@@ -202,21 +202,11 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
 
     public override async ValueTask OnBattleEnd(BattleInstance battle, PVEBattleResultCsReq req)
     {
-        // Calculate score for current stage. The client may omit the type-1 target list; score it as 0
-        // instead of throwing before the phase settles.
-        var stageScore = 0;
-        foreach (var battleTarget in GetScoreTargets(req)?.BattleTargetList_ ?? [])
-            stageScore += (int)battleTarget.Progress;
-
-        // Set score
-        if (Boss.CurrentStage == 1)
-            Boss.ScoreStage1 = (uint)stageScore;
-        else
-            Boss.ScoreStage2 = (uint)stageScore;
-
         switch (req.EndStatus)
         {
             case BattleEndStatus.BattleEndWin:
+                RecordStageScore(req);
+
                 // Get monster count in stage
                 long monsters = Player.SceneInstance!.Entities.Values.OfType<EntityMonster>().Count();
 
@@ -233,6 +223,7 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             case BattleEndStatus.BattleEndLose:
+                RecordStageScore(req);
                 await AdvanceStage(req);
                 break;
             default:
@@ -241,6 +232,20 @@ public class ChallengeBossInstance(PlayerInstance player, ChallengeStateData dat
                 Player.ChallengeManager!.SaveInstance(this);
                 break;
         }
+    }
+
+    // Only a finished phase (win or turn-limit loss) scores; a quit must not overwrite the phase score.
+    // The client may omit the type-1 target list; score it as 0 instead of throwing before the phase settles.
+    private void RecordStageScore(PVEBattleResultCsReq req)
+    {
+        var stageScore = 0u;
+        foreach (var battleTarget in GetScoreTargets(req)?.BattleTargetList_ ?? [])
+            stageScore += battleTarget.Progress;
+
+        if (Boss.CurrentStage == 1)
+            Boss.ScoreStage1 = stageScore;
+        else
+            Boss.ScoreStage2 = stageScore;
     }
 
     private static BattleTargetList? GetScoreTargets(PVEBattleResultCsReq req)

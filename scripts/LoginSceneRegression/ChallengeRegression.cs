@@ -167,6 +167,13 @@ internal static class ChallengeRegression
         await boss.OnBattleEnd(null!, reported);
         check("AS phase settle still sums reported score targets", boss.Data.Boss is { ScoreStage1: 8000 });
 
+        var quit = Result(BattleEndStatus.BattleEndQuit, 0);
+        var partial = new BattleTargetList();
+        partial.BattleTargetList_.Add(new BattleTarget { Id = 1, Progress = 1200 });
+        quit.Stt.BattleTargetInfo.Add(1, partial);
+        await boss.OnBattleEnd(null!, quit);
+        check("AS quit keeps the phase score instead of the partial progress", boss.Data.Boss is { ScoreStage1: 8000 });
+
         await boss.OnBattleEnd(null!, Result(BattleEndStatus.BattleEndNone, 0));
         check("AS failed settle persists the failed state",
             Saved(player)?.Boss is { CurStatus: (uint)ChallengeStatus.ChallengeFailed });
