@@ -305,9 +305,17 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         ];
     }
 
-    public PFCKBFLDHNI AddRelicPresetPlan(uint avatarId, string name, IEnumerable<uint> relicIds,
+    /// <summary>
+    ///     新建方案。角色必须已拥有、遗器列表非空且每件遗器都在背包里（yuukisr_go c4f5979 同样拒绝空方案），
+    ///     否则返回 null 且不写存档。
+    /// </summary>
+    public PFCKBFLDHNI? AddRelicPresetPlan(uint avatarId, string name, IEnumerable<uint> relicIds,
         RelicPresetPlanSourceType sourceType)
     {
+        var relicIdList = relicIds.ToList();
+        if (avatarId == 0 || GetFormalAvatar((int)avatarId) == null) return null;
+        if (relicIdList.Count == 0 || !OwnsRelics(relicIdList)) return null;
+
         var plans = Player.InventoryManager!.Data.RelicPresetPlans;
         var uniqueId = plans.Count > 0 ? plans.Keys.Max() + 1 : 1;
         var plan = new RelicPresetPlanData
@@ -315,7 +323,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
             AvatarId = (int)avatarId,
             Name = name,
             SourceType = (int)sourceType,
-            RelicIds = [.. relicIds.Select(x => (int)x)]
+            RelicIds = [.. relicIdList.Select(x => (int)x)]
         };
 
         plans[uniqueId] = plan;
@@ -328,6 +336,9 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     public bool UpdateRelicPresetPlan(int uniqueId, HPPOINFLEPJ? relicList, string? name)
     {
         if (!Player.InventoryManager!.Data.RelicPresetPlans.TryGetValue(uniqueId, out var plan)) return false;
+        // 两项都没带的请求没有可改的内容，不当作成功。
+        if (relicList == null && string.IsNullOrEmpty(name)) return false;
+        if (relicList != null && (relicList.RelicIds.Count == 0 || !OwnsRelics(relicList.RelicIds))) return false;
 
         if (relicList != null)
         {
@@ -337,6 +348,13 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
 
         if (!string.IsNullOrEmpty(name)) plan.Name = name;
         return true;
+    }
+
+    private bool OwnsRelics(IEnumerable<uint> relicIds)
+    {
+        var owned = Player.InventoryManager!.Data.RelicItems.Select(x => x.UniqueId).ToHashSet();
+        // 0 视为空槽位，不当作未拥有的遗器。
+        return relicIds.All(id => id == 0 || owned.Contains((int)id));
     }
 
     public bool DeleteRelicPresetPlan(int uniqueId)
