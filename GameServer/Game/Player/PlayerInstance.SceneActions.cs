@@ -18,6 +18,7 @@ public partial class PlayerInstance
 {
     private static readonly Logger SceneLogger = new("Scene");
 
+    /// <summary>Default spawn entrance: the fallback for unloadable scenes and Raid planes without a raid run.</summary>
     public const int DefaultSpawnEntryId = 2000101;
 
     #region Scene Actions
@@ -633,6 +634,13 @@ public partial class PlayerInstance
 
     public void EnterSection(int sectionId)
     {
+        // Section 0 is a real, enterable id. A rogue/raid plane records reveals on the scene, not the player.
+        if (SceneInstance is { IsTransientPlane: true })
+        {
+            SceneInstance.RevealedSections.Add(sectionId);
+            return;
+        }
+
         if (SceneInstance != null)
         {
             SceneData!.UnlockSectionIdList.TryGetValue(SceneInstance.FloorId, out var unlockList);

@@ -22,6 +22,7 @@ public class PacketRaidInfoNotify : BasePacket
 
     public PacketRaidInfoNotify() : base(CmdIds.RaidInfoNotify)
     {
+        // The reset shape keeps an empty item_list like the record shape, so the client never sees it null.
         var proto = new RaidInfoNotify { ItemList = new ItemList() };
 
         SetData(proto);

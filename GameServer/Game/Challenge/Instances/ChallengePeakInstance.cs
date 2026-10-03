@@ -178,9 +178,12 @@ public class ChallengePeakInstance : BaseChallengeInstance
         var stars = 0u;
 
         List<uint> finishedIds = [];
+        // The client may omit the type-5 target list; treat its targets as unreported instead of throwing
+        // after CurStatus has already been set to finished.
+        req.Stt.BattleTargetInfo.TryGetValue(5, out var targetList);
         foreach (var targetId in targets)
         {
-            var target = req.Stt.BattleTargetInfo[5].BattleTargetList_.FirstOrDefault(x => x.Id == targetId);
+            var target = targetList?.BattleTargetList_.FirstOrDefault(x => x.Id == targetId);
             if (target == null) continue;
             var excel = GameData.BattleTargetConfigData.GetValueOrDefault(targetId);
             if (excel == null) continue;

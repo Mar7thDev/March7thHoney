@@ -137,18 +137,11 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
 
     public override async ValueTask OnBattleEnd(BattleInstance battle, PVEBattleResultCsReq req)
     {
-        // Calculate score for current stage
-        var stageScore = (int)req.Stt.ChallengeScore - GetTotalScore();
-
-        // Set score
-        if (Story.CurrentStage == 1)
-            Story.ScoreStage1 = (uint)stageScore;
-        else
-            Story.ScoreStage2 = (uint)stageScore;
-
         switch (req.EndStatus)
         {
             case BattleEndStatus.BattleEndWin:
+                RecordStageScore(req.Stt.ChallengeScore);
+
                 // Get monster count in stage
                 long monsters = Player.SceneInstance!.Entities.Values.OfType<EntityMonster>().Count();
 
@@ -165,13 +158,29 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
                 await Player.SendPacket(new PacketSyncLineupNotify(lineup));
                 break;
             case BattleEndStatus.BattleEndLose:
+                RecordStageScore(req.Stt.ChallengeScore);
                 await AdvanceStage();
                 break;
             default:
                 Story.CurStatus = (int)ChallengeStatus.ChallengeFailed;
                 await Player.SendPacket(new PacketChallengeSettleNotify(this));
+                Player.ChallengeManager!.SaveInstance(this);
                 break;
         }
+    }
+
+    // The 10003 score target is seeded with the run total, so the client reports a cumulative score.
+    // Subtract only the other stage: a stage split over several battles already includes its own
+    // earlier score in the seed. Quit/fail results must not overwrite the score.
+    public void RecordStageScore(uint challengeScore)
+    {
+        var otherStageScore = Story.CurrentStage == 1 ? Story.ScoreStage2 : Story.ScoreStage1;
+        var stageScore = challengeScore > otherStageScore ? challengeScore - otherStageScore : 0;
+
+        if (Story.CurrentStage == 1)
+            Story.ScoreStage1 = stageScore;
+        else
+            Story.ScoreStage2 = stageScore;
     }
 
     public uint CalculateStars()
@@ -230,6 +239,9 @@ public class ChallengeStoryInstance(PlayerInstance player, ChallengeStateData da
                 DevelopmentType = (DevelopmentType)8,
                 Params = { { "ChallengeId", (uint)Config.ID } }
             });
+
+            // Persist the finished state and stage-2 score; otherwise a relog restores a replayable stage 2.
+            Player.ChallengeManager.SaveInstance(this);
         }
         else
         {
