@@ -368,6 +368,10 @@ public partial class PlayerInstance(PlayerData data)
         // Silent: the client pulls quest and mission data after the login response.
         await GetComponent<DailyActiveManager>().OnLogin();
 
+        // Before the runs are resurrected and the saved scene is loaded: the operator option drops both.
+        if (ConfigManager.Config.ServerOption.ResetLocationOnLogin)
+            await ResetLocationAtLogin();
+
         ChallengeManager?.ResurrectInstance();
         ChallengeTierceManager?.ResurrectInstance();
 
@@ -429,8 +433,30 @@ public partial class PlayerInstance(PlayerData data)
             await EnterScene(lobbyEntry, 0, false);
         else
             await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos!, Data.Rot!, false);
-        if (SceneInstance == null) await EnterScene(2000101, 0, false);
+        if (SceneInstance == null) await EnterScene(DefaultSpawnEntryId, 0, false);
 
+    }
+
+    /// <summary>
+    ///     <c>ServerOption.ResetLocationOnLogin</c>: abandon the raid and challenge runs behind the saved location and
+    ///     move the saved location to the default spawn, so a login never resumes a run scene. A story line owns its own
+    ///     saved position, so an active one is left untouched.
+    /// </summary>
+    private async ValueTask ResetLocationAtLogin()
+    {
+        if (StoryLineManager?.StoryLineData.CurStoryLineId > 0)
+        {
+            SceneLogger.Info($"Player {Uid}: location reset on login skipped while story line " +
+                             $"{StoryLineManager.StoryLineData.CurStoryLineId} is active.");
+            return;
+        }
+
+        if (RaidManager != null) await RaidManager.AbandonAtLogin();
+        ChallengeManager?.ClearInstance();
+        ChallengeTierceManager?.ClearInstance();
+
+        if (!TryPlaceAtEntrance(DefaultSpawnEntryId))
+            SceneLogger.Warn($"Player {Uid}: location reset on login failed, default spawn {DefaultSpawnEntryId} is unusable.");
     }
 
     public async ValueTask TrySendWelcomeAnnounce()

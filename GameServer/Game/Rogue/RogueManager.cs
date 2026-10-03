@@ -32,7 +32,9 @@ public class RogueManager : BasePlayerManager
     private const int EliteDraftGroupId = 100003;
     private const int RoomTypeElite = 6;
     private const int RoomTypeBoss = 7;
-    private const uint CommonQueryTypeFunctionUnlock = 15;
+    // A query type is the field number of its CCKJAEDDDCL oneof arm, and versions renumber the arms (4.5 put the
+    // function-unlock arm BBEKBJPHEJK at 15, 4.6 at 1), so take it from the generated message, never a literal.
+    private const uint CommonQueryTypeFunctionUnlock = CCKJAEDDDCL.BBEKBJPHEJKFieldNumber;
 
     public RogueManager(PlayerInstance player) : base(player)
     {
@@ -764,8 +766,9 @@ public class RogueManager : BasePlayerManager
 
     public static IEnumerable<CCKJAEDDDCL> BuildCommonQueryEntries(IEnumerable<uint> types)
     {
-        // One entry per requested type in request order; types 2/6/9 are per-account progress with no
-        // table source and stay branch-less. Type 15 is the client's only source of rogue function unlocks.
+        // One entry per requested type in request order; the other three arms are per-account progress with no
+        // table source and stay branch-less. The function-unlock arm is the client's only source of rogue
+        // function unlocks.
         foreach (var type in types)
         {
             var entry = new CCKJAEDDDCL();
