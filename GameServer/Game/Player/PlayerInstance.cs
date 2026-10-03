@@ -269,6 +269,8 @@ public partial class PlayerInstance(PlayerData data)
             path.GetSkillTree()[skill.Key] = Math.Min(skill.Value, config.MaxLevel); // limit skill level
         }
 
+        AvatarManager!.NormalizeHeroCurPath();
+
         foreach (var info in LineupManager!.GetAllLineup().SelectMany(lineupInfo => lineupInfo.BaseAvatars ?? []))
         {
             if (info.SpecialAvatarId > 0 &&
