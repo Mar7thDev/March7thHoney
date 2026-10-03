@@ -1,17 +1,17 @@
+using March7thHoney.GameServer.Game.Pet;
 using March7thHoney.GameServer.Server.Packet.Send.Pet;
 using March7thHoney.Kcp;
-using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Pet;
 
 [Opcode(CmdIds.RecallPetCsReq)]
-public class HandlerRecallPetCsReq : Handler<RecallPetCsReq>
+public class HandlerRecallPetCsReq : PlayerHandler
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, RecallPetCsReq req)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        player.Data.Pet = 0;
+        player.GetComponent<PetManager>().Recall();
 
-        await connection.SendPacket(new PacketRecallPetScRsp(req.SummonedPetId));
+        await connection.SendPacket(new PacketRecallPetScRsp());
         await player.TrainCakeCatchManager!.BroadcastPlayerStateAsync();
     }
 }

@@ -26,6 +26,7 @@ using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.GameServer.Game.Mail;
 using March7thHoney.GameServer.Game.Message;
 using March7thHoney.GameServer.Game.Mission;
+using March7thHoney.GameServer.Game.Pet;
 using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Player.Components;
 using March7thHoney.GameServer.Game.Quest;
@@ -251,6 +252,7 @@ public partial class PlayerInstance(PlayerData data)
         Components.Add(new SwitchHandComponent(this));
         Components.Add(new FiveDimComponent(this));
         Components.Add(new DailyActiveManager(this));
+        Components.Add(new PetManager(this));
 
         if ((int)(ServerPrefsData!.Version * 1000) != GameConstants.GameVersionInt)
         {

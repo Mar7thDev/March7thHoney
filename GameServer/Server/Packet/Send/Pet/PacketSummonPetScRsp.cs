@@ -5,12 +5,11 @@ namespace March7thHoney.GameServer.Server.Packet.Send.Pet;
 
 public class PacketSummonPetScRsp : BasePacket
 {
-    public PacketSummonPetScRsp(int curPetId, uint newPetId) : base(CmdIds.SummonPetScRsp)
+    public PacketSummonPetScRsp(EHDNPMEKPCA curPet) : base(CmdIds.SummonPetScRsp)
     {
         var proto = new SummonPetScRsp
         {
-            CurPetId = (uint)curPetId,
-            SelectPetId = newPetId
+            PLKBLNMOOPH = curPet
         };
 
         SetData(proto);
