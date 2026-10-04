@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("DialogueEvent.json")]
+[ResourceEntity("DialogueEvent.json", OptionalFileNames = "DialogueEvent.json")]
 [MemoryPackable]
 public partial class DialogueEventExcel : ExcelResource
 {

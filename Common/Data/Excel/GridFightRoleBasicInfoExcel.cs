@@ -1,4 +1,5 @@
 using MemoryPack;
+using Newtonsoft.Json;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightRoleBasicInfo.json")]
@@ -16,6 +17,11 @@ public partial class GridFightRoleBasicInfoExcel : ExcelResource
     public List<string> RoleSavedValueList { get; set; } = [];
     public bool IsInPool { get; set; }
     public bool IsInBook { get; set; }
+
+    // Set by the split-table loader. Current clients resolve role skills from
+    // GridFightRoleStar rather than the removed RoleSavedValueList column.
+    [JsonIgnore] public bool UsesNativeSkillOverrides { get; set; }
+    public uint IsFakeAvatar { get; set; }
 
     public override int GetId()
     {

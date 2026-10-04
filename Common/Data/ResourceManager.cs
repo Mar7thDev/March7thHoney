@@ -96,7 +96,13 @@ public class ResourceManager
         // copy modifiers
         foreach (var value in GameData.AdventureAbilityConfigListData.Values)
         foreach (var adventureModifierConfig in value?.GlobalModifiers ?? [])
-            GameData.AdventureModifierData.Add(adventureModifierConfig.Key, adventureModifierConfig.Value);
+        {
+            if (GameData.AdventureModifierData.TryAdd(adventureModifierConfig.Key, adventureModifierConfig.Value)) continue;
+            if (JToken.DeepEquals(JToken.FromObject(GameData.AdventureModifierData[adventureModifierConfig.Key]),
+                    JToken.FromObject(adventureModifierConfig.Value))) continue;
+            ResourceCache.IsComplete = false;
+            Logger.Error($"Conflicting shared adventure modifier: {adventureModifierConfig.Key}");
+        }
     }
 
     private static readonly List<string> MissingExcelFiles = [];
@@ -129,6 +135,7 @@ public class ResourceManager
         }
 
         foreach (var cls in resList) cls.AfterAllDone();
+        GridFightTableCompatibility.Apply(resList);
 
         lock (MissingExcelFiles)
         {
@@ -158,6 +165,9 @@ public class ResourceManager
                     .FirstOrDefault(f => f.Exists);
                 if (file == null)
                 {
+                    if (attribute.OptionalFileNames.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                        .Contains(fileName, StringComparer.Ordinal)) continue;
+                    ResourceCache.IsComplete = false;
                     Logger.Warn(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", fileName,
                         I18NManager.Translate("Word.NotFound")));
                     lock (MissingExcelFiles)
@@ -742,6 +752,8 @@ public class ResourceManager
         var missingCount = 0;
         var missingFiles = new List<string>();
         var adventureAbilityLock = new object();
+        var npcAbilityCatalog = new Lazy<AdventureAbilityResourceCatalog>(() =>
+            new AdventureAbilityResourceCatalog(ConfigManager.Config.Path.ResourcePath));
         var res = Parallel.ForEach(GameData.AdventurePlayerData.Values, adventure =>
         {
             var adventurePath = adventure.PlayerJsonPath.Replace("_Config.json", "_Ability.json")
@@ -785,6 +797,11 @@ public class ResourceManager
 
         var res2 = Parallel.ForEach(GameData.NpcMonsterDataData.Values, adventure =>
         {
+            // The client retains unused development rows whose WhiteBox
+            // character/ability assets are not shipped. Do not derive a skill
+            // filename from an empty path or require those development assets.
+            if (adventure.JsonPath.StartsWith("Config/ConfigCharacter/WhiteBox/", StringComparison.Ordinal)
+                && !File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, adventure.JsonPath))) return;
             var adventurePath = adventure.ConfigEntityPath.Replace("_Entity.json", "_Ability.json")
                 .Replace("_Config.json", "_Ability.json")
                 .Replace("ConfigEntity", "ConfigAdventureAbility");
@@ -793,6 +810,23 @@ public class ResourceManager
             var file = new FileInfo(path);
             if (!file.Exists)
             {
+                // NPC variants and common-only characters have no per-model
+                // ability file. Their character config references shared names.
+                try
+                {
+                    if (npcAbilityCatalog.Value.TryResolve(adventure.JsonPath, out var shared))
+                    {
+                        lock (adventureAbilityLock)
+                            GameData.AdventureAbilityConfigListData.TryAdd(adventure.ID, shared);
+                        Interlocked.Increment(ref count);
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ResourceCache.IsComplete = false;
+                    Logger.Error($"Failed to resolve shared NPC abilities for {adventure.ID} ({adventure.JsonPath}).", ex);
+                }
                 Interlocked.Increment(ref missingCount);
                 lock (missingFiles)
                 {
