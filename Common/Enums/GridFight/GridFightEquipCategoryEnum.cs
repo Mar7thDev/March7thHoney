@@ -16,5 +16,9 @@ public enum GridFightEquipCategoryEnum
     Trash = 11,
     GoldTrash = 12,
     Hack = 13,
-    FateEquip = 14
+    FateEquip = 14,
+    Intrinsic = 15,
+    SpotLightEquip = 16,
+    Food = 17,
+    Trailblaze = 18
 }

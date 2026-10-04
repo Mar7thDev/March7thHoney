@@ -14,6 +14,16 @@ var repository = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../
 ConfigManager.Config.Path.ConfigPath = Path.Combine(repository, "Config");
 ConfigManager.Config.Path.LanguagePath = Path.Combine(repository, "Config/Languages");
 ConfigManager.Config.Path.LogPath = Path.Combine(repository, "tmp/GridFightRegression/Logs");
+var cacheArgument = Array.IndexOf(args, "--cache");
+if (cacheArgument >= 0)
+{
+    var sourceCache = Path.GetFullPath(args[cacheArgument + 1]);
+    var isolated = Path.Combine(Path.GetDirectoryName(sourceCache)!, "GridFightRegression", Guid.NewGuid().ToString("N"));
+    Directory.CreateDirectory(isolated);
+    File.Copy(sourceCache, Path.Combine(isolated, "Resource.bin"));
+    ConfigManager.Config.Path.ConfigPath = isolated;
+    ConfigManager.Config.Path.LogPath = Path.Combine(isolated, "Logs");
+}
 I18NManager.LoadLanguage();
 if (!ResourceCache.LoadCache()) throw new InvalidDataException("Current resource cache failed validation.");
 
@@ -94,6 +104,12 @@ Check("locked free refresh retains slots", shop.RefreshShop(false) && previousSh
 var previousGold = shop.Gold;
 Check("paid refresh unlocks and charges once", shop.RefreshShop(true) && !shop.ShopLocked &&
     shop.Gold == previousGold - catalog.RefreshCost);
+if (catalog.RolePool.Any(role => role.UsesNativeSkillOverrides))
+{
+    BetaTableRegression.Run(catalog, NewRun, Check);
+    Console.WriteLine($"GridFight regression: {checks - failures.Count}/{checks} passed.");
+    return failures.Count == 0 ? 0 : 1;
+}
 var maxStarRole = catalog.RolePool.First(role => role.ID == 1001);
 shop.TryAddRole(maxStarRole.ID, 3, out _);
 var switchGroup = catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(maxStarRole.ID));

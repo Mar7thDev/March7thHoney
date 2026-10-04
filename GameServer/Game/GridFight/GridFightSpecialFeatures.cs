@@ -408,7 +408,7 @@ public static class GridFightSpecialFeatures
                 var rarity = firstParam;
                 var randomStar = basic.BonusTypeParamList.ElementAtOrDefault(1);
                 var roles = GameData.GridFightRoleBasicInfoData.Values
-                    .Where(role => role.IsInPool && role.Rarity == rarity &&
+                    .Where(role => role.SeasonID == CurrentResourceSeason && role.IsFakeAvatar == 0 && role.IsInPool && role.Rarity == rarity &&
                                    GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | randomStar))
                     .OrderBy(role => role.ID)
                     .ToList();
@@ -479,7 +479,7 @@ public static class GridFightSpecialFeatures
                 var rarity = firstParam;
                 var randomStar = reward.BonusTypeParamList.ElementAtOrDefault(1);
                 var roles = GameData.GridFightRoleBasicInfoData.Values
-                    .Where(role => role.IsInPool && role.Rarity == rarity &&
+                    .Where(role => role.SeasonID == CurrentResourceSeason && role.IsFakeAvatar == 0 && role.IsInPool && role.Rarity == rarity &&
                                    GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | randomStar))
                     .OrderBy(role => role.ID)
                     .ToList();
@@ -523,7 +523,7 @@ public static class GridFightSpecialFeatures
             GridFightBonusTypeEnum.SpecificAvatar =>
                 IsValidRoleReward(firstParam, reward.BonusTypeParamList.ElementAtOrDefault(1)),
             GridFightBonusTypeEnum.RandomAvatar =>
-                GameData.GridFightRoleBasicInfoData.Values.Any(role => role.IsInPool && role.Rarity == firstParam &&
+                GameData.GridFightRoleBasicInfoData.Values.Any(role => role.SeasonID == CurrentResourceSeason && role.IsFakeAvatar == 0 && role.IsInPool && role.Rarity == firstParam &&
                     GameData.GridFightRoleStarData.ContainsKey(
                         role.ID << 4 | reward.BonusTypeParamList.ElementAtOrDefault(1))),
             GridFightBonusTypeEnum.Item => IsValidItemReward(firstParam),
@@ -535,6 +535,9 @@ public static class GridFightSpecialFeatures
             _ => false,
         };
     }
+
+    private static uint CurrentResourceSeason =>
+        GameData.GridFightConstValueData.GetValueOrDefault("GridFight_Season_ID")?.AsUInt32() ?? 0;
 
     private static bool IsValidRoleReward(uint roleId, uint star)
     {
@@ -557,7 +560,7 @@ public static class GridFightSpecialFeatures
     {
         if (rarity == 0 || star == 0 || count == 0) return false;
         var roles = GameData.GridFightRoleBasicInfoData.Values
-            .Where(role => role.IsInPool && role.Rarity == rarity &&
+            .Where(role => role.SeasonID == CurrentResourceSeason && role.IsFakeAvatar == 0 && role.IsInPool && role.Rarity == rarity &&
                            GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | star))
             .OrderBy(role => role.ID)
             .ToList();
