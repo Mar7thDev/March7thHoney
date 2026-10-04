@@ -24,6 +24,7 @@
 
 ```powershell
 dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj
+dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj -- --cache <新缓存文件>
 dotnet build March7thHoney.sln --no-restore
 ```
 
@@ -32,3 +33,9 @@ dotnet build March7thHoney.sln --no-restore
 
 下载版资源缓存不能由当前数据模型反序列化（`VideoKeysConfig` 字段布局不匹配），因此保留当前缓存，并使用当前缓存完成验证。
 这些检查验证服务端状态及消息构造；客户端界面、动画和实机战斗尚未验证。下载版注释中的抓包结论未在本次重新抓包核实。
+
+## 4.7 测试服表兼容
+
+检测到新版原生技能布局时，回归进入 `BetaTableRegression`，根据当前表中的角色、阵营和赛季进行检查，不复用旧版角色 ID 断言。覆盖全部传送门开局与消息往返、分表合并、怪物缺失与重复赛季的原子拒绝、旧表保留、跨赛季奖励隔离，以及从开局到最终首领的完整战斗和结算路线。旧版缓存仍执行原有装备、宝钻、投资及选择队列测试。
+
+新版基础表和 GridFightCampSeason 合并后，当前赛季的阵营保留原 ID 索引，其他赛季以 `(SeasonID << 20) | CampID` 的内部键保存，行内 ID 和协议 ID 不变。新版角色通过 GridFightRoleStar 解析技能，缓存保存布局标志；旧缓存缺少这一适配结果且原表可用时自动要求重建。更新程序和缓存前保留备份，回滚时一起恢复。NPC 专属帕姆卡不作为普通角色加载，尚未覆盖其专属战斗行为。

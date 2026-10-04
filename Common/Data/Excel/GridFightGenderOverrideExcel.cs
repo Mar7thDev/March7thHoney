@@ -2,7 +2,7 @@ using MemoryPack;
 
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("GridFightGenderOverride.json")]
+[ResourceEntity("GridFightGenderOverride.json", OptionalFileNames = "GridFightGenderOverride.json")]
 [MemoryPackable]
 public partial class GridFightGenderOverrideExcel : ExcelResource
 {

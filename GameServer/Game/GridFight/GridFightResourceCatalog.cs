@@ -128,7 +128,7 @@ public sealed class GridFightResourceCatalog
     public uint DepositPerInterest => RequireUInt("GridFight_DepositPerInterest");
     public uint MaxInterestGold => RequireUInt("GridFight_GainInterestMax");
     public uint PostBattleHealingSourceId => PostBattleHealingTalentId;
-    public uint FinalBattleTurnHealingSourceId => FinalBattleTurnHealingTalentId;
+    public uint FinalBattleTurnHealingSourceId => CurrentSeason == 2 ? 3011u : FinalBattleTurnHealingTalentId;
     public uint SeasonExpLimit => RequireUInt("GridFight_ExtraSeasonExp_Limit");
     public IReadOnlyList<uint> InitialEquipmentIds => GetUIntList("GridFight_PhainonEquipPreset");
     public uint InitialGold { get; }
@@ -162,7 +162,7 @@ public sealed class GridFightResourceCatalog
             .ToHashSet();
         RolePool = GameData.GridFightRoleBasicInfoData.Values
             .Where(row => row.SeasonID == CurrentSeason && row.IsInPool && !bannedRoles.Contains(row.ID))
-            .Where(row => row.AvatarID is >= 1000 and < 2000 && row.RoleSavedValueList.Count > 0)
+            .Where(IsUsableRole)
             .OrderBy(row => row.ID)
             .ToList();
         RoleSwitchGroups = GameData.GridFightRoleSwitchConfigData.Values
@@ -245,13 +245,14 @@ public sealed class GridFightResourceCatalog
         if (InitialEquipmentIds.Any(id => !GameData.GridFightEquipmentData.ContainsKey(id)))
             errors.Add("initial equipment list references missing equipment");
         if (RolePool.Count == 0) errors.Add("role pool is empty");
-        if (RolePool.Any(row => row.AvatarID is < 1000 or >= 2000 || row.RoleSavedValueList.Count == 0))
+        if (RolePool.Any(row => !IsUsableRole(row)))
             errors.Add("role pool contains an unusable runtime role");
         if (GameData.GridFightFrontSkillData.Count == 0)
             errors.Add("grid fight front skill data is empty");
-        if (RoleModifierSavedValueKeys.Count == 0)
+        var usesLegacySavedValues = RolePool.Any(row => !row.UsesNativeSkillOverrides);
+        if (usesLegacySavedValues && RoleModifierSavedValueKeys.Count == 0)
             errors.Add("grid fight role modifier saved value keys are empty");
-        foreach (var key in RoleModifierSavedValueKeys)
+        foreach (var key in usesLegacySavedValues ? RoleModifierSavedValueKeys : new HashSet<string>())
         {
             var owners = GameData.GridFightRoleBasicInfoData.Values
                 .Where(role => role.RoleSavedValueList.Contains(key, StringComparer.Ordinal))
@@ -325,7 +326,7 @@ public sealed class GridFightResourceCatalog
             .Distinct();
         if (requiredFormationSizes.Any(maxTeammateCount =>
                 GameData.GridFightFormationWaveData.Values.Count(row =>
-                    row.MaxTeammateCount == maxTeammateCount) != 1))
+                    row.ID != 0 && row.MaxTeammateCount == maxTeammateCount) != 1))
             errors.Add("GridFight formation wave table is incomplete");
         ValidateCombatRules(errors);
         foreach (var node in StandardRoute.Where(node => node.NodeType == GridFightNodeTypeEnum.EliteBranch))
@@ -375,6 +376,14 @@ public sealed class GridFightResourceCatalog
                 values[role.RoleSavedValueList[companionIndex]] = layer;
         }
         return values;
+    }
+
+    private static bool IsUsableRole(GridFightRoleBasicInfoExcel row)
+    {
+        return row.IsFakeAvatar == 0 && GameData.AvatarConfigData.ContainsKey((int)row.AvatarID) &&
+               (row.UsesNativeSkillOverrides
+                   ? GameData.GridFightRoleStarData.ContainsKey(row.ID << 4 | 1)
+                   : row.AvatarID is >= 1000 and < 2000 && row.RoleSavedValueList.Count > 0);
     }
 
     private static bool TryResolveRoleSavedValueLayer(GridFightRoleStarExcel roleStar, out uint layer)
@@ -532,7 +541,7 @@ public sealed class GridFightResourceCatalog
 
     public uint GetFinalBattleTurnHealing(uint roundCount)
     {
-        var talent = GameData.GridFightSeasonTalentData[FinalBattleTurnHealingTalentId];
+        var talent = GameData.GridFightSeasonTalentData[FinalBattleTurnHealingSourceId];
         var threshold = GetEffectParameter(talent.EffectParamList, FinalBattleTurnThresholdEffectIndex);
         return roundCount < threshold
             ? GetEffectParameter(talent.EffectParamList, FinalBattleTurnHealingEffectIndex)
@@ -1176,7 +1185,7 @@ public sealed class GridFightResourceCatalog
     private static uint ResolveFormationWaveId(uint maxTeammateCount)
     {
         return GameData.GridFightFormationWaveData.Values
-            .Single(row => row.MaxTeammateCount == maxTeammateCount).ID;
+            .Single(row => row.ID != 0 && row.MaxTeammateCount == maxTeammateCount).ID;
     }
 
     private static IReadOnlyList<GridFightMonsterPlan> BuildBossMonsterPlans(
@@ -1588,7 +1597,7 @@ public sealed class GridFightResourceCatalog
 
     private bool HasFinalBattleTurnHealing()
     {
-        return GameData.GridFightSeasonTalentData.TryGetValue(FinalBattleTurnHealingTalentId, out var row) &&
+        return GameData.GridFightSeasonTalentData.TryGetValue(FinalBattleTurnHealingSourceId, out var row) &&
                row.SeasonID == CurrentSeason &&
                row.EffectParamList.Count > FinalBattleTurnHealingEffectIndex &&
                row.EffectParamList[FinalBattleTurnThresholdEffectIndex].Value > 0 &&

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("RogueDLCBossBp.json")]
+[ResourceEntity("RogueDLCBossBp.json", OptionalFileNames = "RogueDLCBossBp.json")]
 [MemoryPackable]
 public partial class RogueDLCBossBpExcel : ExcelResource
 {
