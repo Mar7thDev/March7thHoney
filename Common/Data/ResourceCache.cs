@@ -37,24 +37,13 @@ public static class ResourceCache
             using var output = new MemoryStream();
             using (var gzip = new GZipStream(output, CompressionLevel.Optimal, leaveOpen: true))
                 gzip.Write(raw, 0, raw.Length);
-            var directory = Path.GetDirectoryName(Path.GetFullPath(CachePath))!;
-            Directory.CreateDirectory(directory);
-            var temporary = Path.Combine(directory, $".Resource.{Guid.NewGuid():N}.tmp");
-            try
-            {
-                File.WriteAllBytes(temporary, output.ToArray());
-                File.Move(temporary, CachePath, overwrite: true);
-            }
-            finally
-            {
-                if (File.Exists(temporary)) File.Delete(temporary);
-            }
+            File.WriteAllBytes(CachePath, output.ToArray());
             Logger.Info(I18NManager.Translate("Server.ServerInfo.GeneratedItem",
                 I18NManager.Translate("Word.Cache")));
         });
     }
 
-    public static bool LoadCache(bool validateAgainstResources = true)
+    public static bool LoadCache()
     {
         GameDataSnapshot? snapshot;
         try
@@ -91,7 +80,7 @@ public static class ResourceCache
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem", I18NManager.Translate("Word.Cache")));
 
-        return ValidateCache(validateAgainstResources);
+        return ValidateLoadedCache();
     }
 
     public static void ClearGameData()
@@ -99,16 +88,14 @@ public static class ResourceCache
         GameData.ApplySnapshot(new GameDataSnapshot());
     }
 
-    private static bool ValidateLoadedCache() => ValidateCache(validateAgainstResources: true);
-
-    private static bool ValidateCache(bool validateAgainstResources)
+    private static bool ValidateLoadedCache()
     {
         var validates45ProdData = GameConstants.IsVersion("4.5.0");
 
         // The split camp table also identifies the native role-skill layout.
         // Older caches have unscoped camps and no native-skill marker; rebuild
         // only when raw resources are present, preserving cache-only deployments.
-        var hasGridFightCampSeason = validateAgainstResources && ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+        var hasGridFightCampSeason = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
             File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "GridFightCampSeason.json")));
         if (hasGridFightCampSeason &&
             (GameData.GridFightCampData.Values.Any(row => row.SeasonID == 0) ||
@@ -122,7 +109,7 @@ public static class ResourceCache
         // 4.5 moved content-package entrances (including the Divergent Universe lobby) into
         // MapEntranceLD.json. Reject an old cache only when the matching raw table is available,
         // so deployments that intentionally ship cache-only resources keep working.
-        var hasMapEntranceLd = validateAgainstResources && ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+        var hasMapEntranceLd = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
             File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "MapEntranceLD.json")));
         if (validates45ProdData && hasMapEntranceLd && GameData.ContentPackageConfigData.Values.Any(package =>
                 (package.InitEntranceID != 0 && !GameData.MapEntranceData.ContainsKey(package.InitEntranceID)) ||
@@ -145,7 +132,7 @@ public static class ResourceCache
         // Caches built before the 4.5 RogueBuffGroup key mapping collapse every classic Simulated Universe group
         // onto id 0, and caches built before the buff/group unions lose the classic RogueBuff subtype, so no
         // blessing draft pool resolves. Only rejected when the raw table is available to rebuild from.
-        var hasRogueBuffGroup = validateAgainstResources && ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+        var hasRogueBuffGroup = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
             File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "RogueBuffGroup.json")));
         if (hasRogueBuffGroup && (GameData.RogueBuffGroupData.ContainsKey(0) ||
                                   !GameData.RogueBuffData.Values.Any(buff => buff is RogueBuffExcel) ||
@@ -189,7 +176,7 @@ public static class ResourceCache
         // Caches built before AvatarDemoConfig.StageType/SPList were modelled deserialize with empty values,
         // which would make every Role Trial stage look like a non-trial row. Like MapEntranceLD above, only
         // reject when the raw table is available to rebuild from.
-        var hasAvatarDemoConfig = validateAgainstResources && ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+        var hasAvatarDemoConfig = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
             File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "AvatarDemoConfig.json")));
         if (hasAvatarDemoConfig && GameData.AvatarDemoConfigData.Count > 0 &&
             GameData.AvatarDemoConfigData.Values.All(stage => string.IsNullOrEmpty(stage.StageType)))
@@ -200,7 +187,7 @@ public static class ResourceCache
 
         // Caches built before the daily-training tables (DailyQuest / DailyMissionData / DailyMissionCount) and
         // the CocoonConfig type columns were loaded. Only rejected when the raw table is available to rebuild from.
-        var hasDailyQuest = validateAgainstResources && ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+        var hasDailyQuest = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
             File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "DailyQuest.json")));
         if (hasDailyQuest && (GameData.DailyQuestData.Count == 0 ||
                               (GameData.CocoonConfigData.Count > 0 &&
@@ -212,7 +199,7 @@ public static class ResourceCache
 
         // Caches built before the Divergent Universe Persona tables / blessing-pool TournMode were loaded. Only
         // rejected when the raw table is available to rebuild from; scripts/RogueTournCacheUpgrade adds them in place.
-        var hasPersonaLayerRoom = validateAgainstResources && ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+        var hasPersonaLayerRoom = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
             File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "RoguePersonaLayerRoom.json")));
         if (hasPersonaLayerRoom && (GameData.RoguePersonaLayerRoomData.Count == 0 ||
                                     !GameData.RogueBuffGroupData.Values.OfType<RogueTournBuffGroupExcel>()

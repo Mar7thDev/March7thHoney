@@ -119,14 +119,17 @@ public class ResourceManager
 
     public static void LoadExcel()
     {
+        var classes = Assembly.GetExecutingAssembly().GetTypes(); // Get all classes in the assembly
         List<ExcelResource> resList = [];
         lock (MissingExcelFiles)
         {
             MissingExcelFiles.Clear();
         }
 
-        foreach (var cls in GetActiveExcelResourceTypes())
+        var loadPaused = ConfigManager.Config.ServerOption.LoadPausedModuleData;
+        foreach (var cls in classes.Where(x => x.IsSubclassOf(typeof(ExcelResource))))
         {
+            if (!loadPaused && IsPausedModuleResource(cls)) continue;
             var res = LoadSingleExcelResource(cls);
             if (res != null) resList.AddRange(res);
         }
@@ -138,13 +141,6 @@ public class ResourceManager
         {
             LogPartialMissingSummary("Excel", MissingExcelFiles.Count, MissingExcelFiles);
         }
-    }
-
-    internal static IEnumerable<Type> GetActiveExcelResourceTypes()
-    {
-        var loadPaused = ConfigManager.Config.ServerOption.LoadPausedModuleData;
-        return Assembly.GetExecutingAssembly().GetTypes().Where(type =>
-            type.IsSubclassOf(typeof(ExcelResource)) && (loadPaused || !IsPausedModuleResource(type)));
     }
 
     public static List<T>? LoadSingleExcel<T>(Type cls) where T : ExcelResource, new()
@@ -184,7 +180,7 @@ public class ResourceManager
 
                 var badRecords = 0;
                 Exception? firstError = null;
-                var json = File.ReadAllText(file.FullName);
+                var json = file.OpenText().ReadToEnd();
                 using (var reader = new JsonTextReader(new StringReader(json)))
                 {
                     reader.Read();
