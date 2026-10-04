@@ -830,6 +830,26 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         return Data.GetMainMissionStatus(missionId);
     }
 
+    /// <summary>
+    ///     Main missions the client must see as never taken even though the server finished them. From season 2 the
+    ///     GridFight console (Prop_Common_GridFightConsole_01) opens the season-2 entrance page only while the GridFight
+    ///     tutorial main mission (GridFight_Tutorial_Main_Mission_Id, the 3.7 introduction) reads as never taken;
+    ///     reported finished, it opens the legacy season-1 page.
+    /// </summary>
+    public static bool IsHiddenFromClient(int mainMissionId)
+    {
+        var constants = GameData.GridFightConstValueData;
+        return constants.TryGetValue("GridFight_Season_ID", out var season) && season.AsUInt32() >= 2 &&
+               constants.TryGetValue("GridFight_Tutorial_Main_Mission_Id", out var tutorial) &&
+               tutorial.AsUInt32() == (uint)mainMissionId;
+    }
+
+    /// <summary>The main mission status reported to the client (see <see cref="IsHiddenFromClient" />).</summary>
+    public MissionPhaseEnum GetClientMainMissionStatus(int missionId)
+    {
+        return IsHiddenFromClient(missionId) ? MissionPhaseEnum.None : GetMainMissionStatus(missionId);
+    }
+
     public MissionPhaseEnum GetSubMissionStatus(int missionId)
     {
         if (IsCompletedActivitySubMission(missionId)) return MissionPhaseEnum.Finish;

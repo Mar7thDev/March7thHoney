@@ -84,10 +84,13 @@ public sealed class GridFightResourceCatalog
         12042, // Jing Yuan, 3-cost variant
     ];
 
-    internal static bool IsRestrictedRole(uint roleId) => OpeningAndShopBannedRoleIds.Contains(roleId);
+    // The seed lists season-1 role ids. Season 2 roles never use these ids, but its role orbs
+    // (101000 + avatar id) do, so the restriction must not leak into other seasons through the orb path.
+    internal static bool IsRestrictedRole(uint roleId) =>
+        GridFightSeasonScope.CurrentSeason <= 1 && OpeningAndShopBannedRoleIds.Contains(roleId);
 
     private static bool IsRestrictedRoleAllowed(uint roleId, IReadOnlySet<uint>? temporarilyUnlockedRoleIds) =>
-        !OpeningAndShopBannedRoleIds.Contains(roleId) ||
+        !IsRestrictedRole(roleId) ||
         temporarilyUnlockedRoleIds?.Contains(roleId) == true;
 
     private static bool IsRestrictedRoleOrbAllowed(uint orbId, IReadOnlySet<uint>? temporarilyUnlockedRoleIds)
@@ -120,7 +123,10 @@ public sealed class GridFightResourceCatalog
     public uint BattleWinExp => RequireUInt("GridFight_GainExpWhenWaveEnd");
     public uint InitialHp => GetUInt("GridFight_InitGlobalPlayerHP");
     public uint InitialPlayerLevel => RequireUInt("GridFight_LotteryShopStartLevel");
-    public uint MaxPlayerLevel => GameData.GridFightPlayerLevelData.Keys.Max();
+    // Season 2 adds a level-11 row that is only reachable through effects; the const caps normal play.
+    public uint MaxPlayerLevel => GetUInt("GridFight_DefaultPlayerLevelMax") is var cap and > 0
+        ? Math.Min(cap, GameData.GridFightPlayerLevelData.Keys.Max())
+        : GameData.GridFightPlayerLevelData.Keys.Max();
     public uint InitialRoleCount => RequireUInt("GridFight_BaseSupplyRoleNum");
     public uint BenchSize => RequireUInt("GridFight_Bench_AvatarNum");
     public uint BenchOverflowSize => RequireUInt("GridFight_Bench_OverFlow_AvatarNum");
@@ -133,6 +139,21 @@ public sealed class GridFightResourceCatalog
     public IReadOnlyList<uint> InitialEquipmentIds => GetUIntList("GridFight_PhainonEquipPreset");
     public uint InitialGold { get; }
     public uint TutorialCompletion { get; }
+
+    // Per tutorial stage (GridFight_TutorialStageList) the final unlock and tutorial task, i.e. a finished stage.
+    public IReadOnlyList<(uint DivisionId, uint Completion, uint TutorialTask)> CompletedTutorialStages { get; }
+
+    // The capture-backed special mechanics (Cyrene, Silver Wolf LV999, season talents 2011/2061/4031,
+    // the 4.5 shop rarity table) describe season 1 only; season 2 reuses some of those IDs for other effects.
+    public bool IsSeasonOne => CurrentSeason == 1;
+
+    // 4.6.51 dumps dropped GridFightRoleBasicInfo.RoleSavedValueList. Season 1 caches still carry it and
+    // use it to select runtime-capable roles; without it the season-2 rules below apply.
+    public bool HasRoleSavedValueLists { get; }
+
+    // Season 2 cost-tier variants (Aha 151112/151122/151132) are upgrade products of the base role and are
+    // never sold or supplied directly, like the season-1 Silver Wolf LV999 tiers.
+    public IReadOnlySet<uint> UpgradeOnlyRoleIds { get; }
 
     private static IReadOnlySet<string> RoleModifierSavedValueKeys => GameData.GridFightRoleSkillModifyData
         .Select(row => row.MultipleValueKey)
@@ -160,9 +181,14 @@ public sealed class GridFightResourceCatalog
             .Where(row => row.ModuleId == ContentModuleId)
             .Select(row => row.RoleId)
             .ToHashSet();
-        RolePool = GameData.GridFightRoleBasicInfoData.Values
-            .Where(row => row.SeasonID == CurrentSeason && row.IsInPool && !bannedRoles.Contains(row.ID))
-            .Where(row => row.AvatarID is >= 1000 and < 2000 && row.RoleSavedValueList.Count > 0)
+        var seasonRoles = GameData.GridFightRoleBasicInfoData.Values
+            .Where(row => row.SeasonID == CurrentSeason)
+            .ToList();
+        HasRoleSavedValueLists = seasonRoles.Any(row => row.RoleSavedValueList.Count > 0);
+        UpgradeOnlyRoleIds = ResolveUpgradeOnlyRoleIds(seasonRoles);
+        RolePool = seasonRoles
+            .Where(row => row.IsInPool && !bannedRoles.Contains(row.ID))
+            .Where(IsRuntimeShopRole)
             .OrderBy(row => row.ID)
             .ToList();
         RoleSwitchGroups = GameData.GridFightRoleSwitchConfigData.Values
@@ -184,8 +210,10 @@ public sealed class GridFightResourceCatalog
                     roleIds);
             })
             .ToList();
+        // 4.6.51 removed GridFightCamp.SeasonID: camps without it are shared by every season.
         CampPool = GameData.GridFightCampData.Values
-            .Where(row => row.SeasonID == CurrentSeason && row.IfRandomEnabled != 0 && row.MonsterList.Count > 0)
+            .Where(row => GridFightSeasonScope.IsCampInSeason(row, CurrentSeason) &&
+                          row.IfRandomEnabled != 0 && row.MonsterList.Count > 0)
             .Where(row => row.MonsterList.All(GameData.GridFightMonsterData.ContainsKey))
             .Where(row => row.MonsterList.Any(id => GameData.GridFightMonsterData[id].MonsterTier >= 5))
             .OrderBy(row => row.ID)
@@ -197,7 +225,7 @@ public sealed class GridFightResourceCatalog
             .Where(code => code != 0)
             .ToHashSet();
         RewardCampPool = GameData.GridFightCampData.Values
-            .Where(row => row.SeasonID == CurrentSeason && row.IfRandomEnabled == 0)
+            .Where(row => GridFightSeasonScope.IsCampInSeason(row, CurrentSeason) && row.IfRandomEnabled == 0)
             .Where(row => rewardCampCodes.Contains(row.InitialRandomCode))
             .Where(row => row.MonsterList.Count > 0 && row.MonsterList.All(GameData.GridFightMonsterData.ContainsKey))
             .OrderBy(row => row.ID)
@@ -222,7 +250,7 @@ public sealed class GridFightResourceCatalog
             .Distinct()
             .Order()
             .ToList();
-        BasicEquipmentPool = GameData.GridFightEquipmentData.Values
+        BasicEquipmentPool = SeasonEquipment
             .Where(row => row.EquipCategory == GridFightEquipCategoryEnum.Basic)
             .Select(row => row.ID)
             .Distinct()
@@ -232,6 +260,13 @@ public sealed class GridFightResourceCatalog
         InitialExcludedRoleIds = GetUIntList("GridFight_InitialExceptRoleIdList").ToHashSet();
         InitialGold = ResolveInitialGold();
         TutorialCompletion = GameData.GridFightTutorialStageNodeData.Max(row => row.Unlock);
+        var tutorialStageIds = GetUIntList("GridFight_TutorialStageList");
+        CompletedTutorialStages = (tutorialStageIds.Count > 0 ? tutorialStageIds : GameData.GridFightTutorialStageData.Keys.Order().ToList())
+            .Select(divisionId => (DivisionId: divisionId,
+                Nodes: GameData.GridFightTutorialStageNodeData.Where(row => row.DivisionID == divisionId).ToList()))
+            .Where(stage => stage.Nodes.Count > 0)
+            .Select(stage => (stage.DivisionId, stage.Nodes.Max(row => row.Unlock), stage.Nodes.Max(row => row.UnlockTutorialTask)))
+            .ToList();
     }
 
     public IReadOnlyList<string> Validate()
@@ -245,13 +280,18 @@ public sealed class GridFightResourceCatalog
         if (InitialEquipmentIds.Any(id => !GameData.GridFightEquipmentData.ContainsKey(id)))
             errors.Add("initial equipment list references missing equipment");
         if (RolePool.Count == 0) errors.Add("role pool is empty");
-        if (RolePool.Any(row => row.AvatarID is < 1000 or >= 2000 || row.RoleSavedValueList.Count == 0))
+        if (RolePool.Any(row => !IsRuntimeShopRole(row)))
             errors.Add("role pool contains an unusable runtime role");
+        if (RolePool.Any(row => row.SeasonID != CurrentSeason))
+            errors.Add("role pool mixes seasons");
+        if (RolePool.Any(row => !GameData.GridFightRoleStarData.ContainsKey(row.ID << 4 | 1u)))
+            errors.Add("role pool contains a role without one-star data");
         if (GameData.GridFightFrontSkillData.Count == 0)
             errors.Add("grid fight front skill data is empty");
-        if (RoleModifierSavedValueKeys.Count == 0)
+        // Cyrene's skill modifiers are keyed by the season-1 RoleSavedValueList column.
+        if (HasRoleSavedValueLists && RoleModifierSavedValueKeys.Count == 0)
             errors.Add("grid fight role modifier saved value keys are empty");
-        foreach (var key in RoleModifierSavedValueKeys)
+        foreach (var key in HasRoleSavedValueLists ? RoleModifierSavedValueKeys : new HashSet<string>())
         {
             var owners = GameData.GridFightRoleBasicInfoData.Values
                 .Where(role => role.RoleSavedValueList.Contains(key, StringComparer.Ordinal))
@@ -267,7 +307,7 @@ public sealed class GridFightResourceCatalog
         }
         if (RolePool.Count(row =>
                 !InitialExcludedRoleIds.Contains(row.ID) &&
-                !OpeningAndShopBannedRoleIds.Contains(row.ID)) < InitialRoleCount)
+                !IsRestrictedRole(row.ID)) < InitialRoleCount)
             errors.Add("initial role pool is too small");
         if (CampPool.Count == 0) errors.Add("monster camp pool is empty");
         if (CampPool.Any(camp => GetCampMonsters(camp.ID, monster => monster.MonsterTier == 2).Count == 0))
@@ -301,7 +341,7 @@ public sealed class GridFightResourceCatalog
         if (!HasEffectParameter(GameData.GridFightTalentData.GetValueOrDefault(PostBattleHealingTalentId),
                 PostBattleHealingEffectIndex))
             errors.Add("post-battle healing talent is incomplete");
-        if (!HasFinalBattleTurnHealing())
+        if (IsSeasonOne && !HasFinalBattleTurnHealing())
             errors.Add("final-battle turn healing talent is incomplete");
         if (!GameData.GridFightDivisionStageData.ContainsKey(HighestDivision.ID))
             errors.Add("highest division has no stage difficulty row");
@@ -323,9 +363,7 @@ public sealed class GridFightResourceCatalog
             .Append(GameData.GridFightRewardRulesConfig.EncounterBattleProfile.MaxActiveMonsterCount)
             .Append(BossFormationMaxTeammateCount)
             .Distinct();
-        if (requiredFormationSizes.Any(maxTeammateCount =>
-                GameData.GridFightFormationWaveData.Values.Count(row =>
-                    row.MaxTeammateCount == maxTeammateCount) != 1))
+        if (requiredFormationSizes.Any(maxTeammateCount => FindFormationWave(maxTeammateCount) == null))
             errors.Add("GridFight formation wave table is incomplete");
         ValidateCombatRules(errors);
         foreach (var node in StandardRoute.Where(node => node.NodeType == GridFightNodeTypeEnum.EliteBranch))
@@ -337,8 +375,15 @@ public sealed class GridFightResourceCatalog
                     !GameData.GridFightPenaltyRuleData.ContainsKey(91000u + node.ChapterId * 100 + 10u + (uint)quality)))
                 errors.Add($"GridFight encounter penalties for chapter {node.ChapterId} are incomplete");
         }
-        if (GameData.GridFightCampData.Values.All(row => row.SeasonID != CurrentSeason))
+        if (!GameData.GridFightCampData.Values.Any(row => GridFightSeasonScope.IsCampInSeason(row, CurrentSeason)))
             errors.Add("current season has no monster camp");
+        if (IsSeasonOne)
+            ValidateSeasonOneSpecialFeatures(errors);
+        return errors;
+    }
+
+    private static void ValidateSeasonOneSpecialFeatures(List<string> errors)
+    {
         if (!GameData.GridFightRoleStarData.ContainsKey(
                 GridFightSpecialFeatures.CyreneRoleId << 4 | 3) ||
             !GameData.GridFightRoleStarData.ContainsKey(
@@ -353,7 +398,6 @@ public sealed class GridFightResourceCatalog
             !GridFightSpecialFeatures.TryResolveBonus(GridFightSpecialFeatures.CyreneInsigniaBonusId, out _) ||
             !GridFightSpecialFeatures.TryResolveBonus(GridFightSpecialFeatures.CyreneHeroBonusId, out _))
             errors.Add("Cyrene special goods rewards are incomplete");
-        return errors;
     }
 
     public IReadOnlyDictionary<string, uint> ResolveRoleSavedValues(uint roleId, uint star)
@@ -431,7 +475,7 @@ public sealed class GridFightResourceCatalog
         }
 
         var chapters = StandardRoute.Select(node => node.ChapterId).ToHashSet();
-        foreach (var rule in rules.TalentRules)
+        foreach (var rule in rules.TalentRules.Where(rule => rule.AppliesToSeason(CurrentSeason)))
         {
             if (!GameData.GridFightTalentData.ContainsKey(rule.TalentId) &&
                 !GameData.GridFightSeasonTalentData.ContainsKey(rule.TalentId))
@@ -532,6 +576,8 @@ public sealed class GridFightResourceCatalog
 
     public uint GetFinalBattleTurnHealing(uint roundCount)
     {
+        // Season 2 reuses talent 2011 for a different effect (two parameters, no healing).
+        if (!IsSeasonOne) return 0;
         var talent = GameData.GridFightSeasonTalentData[FinalBattleTurnHealingTalentId];
         var threshold = GetEffectParameter(talent.EffectParamList, FinalBattleTurnThresholdEffectIndex);
         return roundCount < threshold
@@ -560,17 +606,27 @@ public sealed class GridFightResourceCatalog
             .GoldBonus;
     }
 
+    // Season 2 prices the seven-cost Aha tier (151132, Rarity 5) from the dedicated ShopPrice row 7.
+    private static uint ResolvePriceRarity(GridFightRoleBasicInfoExcel role)
+    {
+        const uint sevenPriceRarity = 7;
+        return GetUIntList("GridFight_SevenPriceRoleIdList").Contains(role.ID) &&
+               GameData.GridFightShopPriceData.ContainsKey(sevenPriceRarity)
+            ? sevenPriceRarity
+            : role.Rarity;
+    }
+
     public uint GetBuyPrice(uint roleId, uint star = 1)
     {
         var role = GameData.GridFightRoleBasicInfoData[roleId];
-        var prices = GameData.GridFightShopPriceData[role.Rarity].BuyGoldList;
+        var prices = GameData.GridFightShopPriceData[ResolvePriceRarity(role)].BuyGoldList;
         return prices[(int)Math.Clamp(star, 1u, (uint)prices.Count) - 1];
     }
 
     public uint GetSellPrice(uint roleId, uint star)
     {
         var role = GameData.GridFightRoleBasicInfoData[roleId];
-        var prices = GameData.GridFightShopPriceData[role.Rarity].SellGoldList;
+        var prices = GameData.GridFightShopPriceData[ResolvePriceRarity(role)].SellGoldList;
         return prices[(int)Math.Clamp(star, 1u, (uint)prices.Count) - 1];
     }
 
@@ -594,6 +650,9 @@ public sealed class GridFightResourceCatalog
 
     public IReadOnlyList<uint> GetShopRarityWeights(uint level)
     {
+        // The hard-coded table is the 4.5 (season 1) client formula; season 2 ships its own weights.
+        if (!IsSeasonOne)
+            return GetPlayerLevel(Math.Clamp(level, 1u, GameData.GridFightPlayerLevelData.Keys.Max())).RarityWeights;
         var resolved = Math.Clamp(level, 1u, 10u);
         return OfficialShopRarityWeights.TryGetValue(resolved, out var weights)
             ? weights
@@ -757,7 +816,7 @@ public sealed class GridFightResourceCatalog
 
         // When the recommendation table lists components, derive matching advanced equipment from recipes.
         if (candidates.Count == 0)
-            candidates = GameData.GridFightCraftConfigData.Values
+            candidates = GridFightSeasonScope.Crafts(CurrentSeason)
                 .Where(recipe => IsAdvanced(recipe.CraftEquipID))
                 .Where(recipe => recipe.CostEquipList.Count > 0 &&
                                  recipe.CostEquipList.All(recommended.Contains))
@@ -768,7 +827,7 @@ public sealed class GridFightResourceCatalog
                 .ToList();
 
         if (candidates.Count == 0)
-            candidates = GameData.GridFightCraftConfigData.Values
+            candidates = GridFightSeasonScope.Crafts(CurrentSeason)
                 .Where(recipe => IsAdvanced(recipe.CraftEquipID))
                 .Where(recipe => recipe.CostEquipList.Any(recommended.Contains))
                 .Select(recipe => recipe.CraftEquipID)
@@ -849,7 +908,7 @@ public sealed class GridFightResourceCatalog
         if (forgeItemId == GridFightSession.SecretCodexForgeItemId &&
             !GameData.GridFightForgeData.ContainsKey(forgeItemId))
         {
-            var emblems = GameData.GridFightEquipmentData.Values
+            var emblems = SeasonEquipment
                 .Where(row => row.EquipCategory == GridFightEquipCategoryEnum.Emblem)
                 .Select(row => row.ID)
                 .Distinct()
@@ -861,7 +920,7 @@ public sealed class GridFightResourceCatalog
             forge.FuncType != GridFightForgeFuncTypeEnum.Equip)
             return [];
         var category = (GridFightEquipCategoryEnum)forge.ParamList.FirstOrDefault();
-        var candidates = GameData.GridFightEquipmentData.Values
+        var candidates = SeasonEquipment
             .Where(row => row.EquipCategory == category)
             .Select(row => row.ID)
             .Distinct()
@@ -872,7 +931,7 @@ public sealed class GridFightResourceCatalog
 
     public uint RollEquipment(GridFightEquipCategoryEnum category, uint excludedEquipmentId)
     {
-        var candidates = GameData.GridFightEquipmentData.Values
+        var candidates = SeasonEquipment
             .Where(equipment => equipment.EquipCategory == category && equipment.ID != excludedEquipmentId)
             .Select(equipment => equipment.ID)
             .Order()
@@ -883,7 +942,7 @@ public sealed class GridFightResourceCatalog
     public IReadOnlyList<uint> RollPepeEmblems(int count)
     {
         if (count <= 0) return [];
-        var candidates = GameData.GridFightEquipmentData.Values
+        var candidates = SeasonEquipment
             .Where(equipment => equipment.EquipCategory == GridFightEquipCategoryEnum.Emblem)
             .Where(equipment => equipment.EquipFunc is GridFightEquipFuncTypeEnum.OriginEmblem or
                 GridFightEquipFuncTypeEnum.ClassEmblem)
@@ -900,7 +959,7 @@ public sealed class GridFightResourceCatalog
             .Where(role => GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | 1u))
             .SelectMany(role => role.TraitList)
             .ToHashSet();
-        var candidates = GameData.GridFightEquipmentData.Values
+        var candidates = SeasonEquipment
             .Where(equipment => equipment.EquipCategory == GridFightEquipCategoryEnum.Emblem)
             .Where(equipment => equipment.EquipFunc is GridFightEquipFuncTypeEnum.OriginEmblem or
                 GridFightEquipFuncTypeEnum.ClassEmblem)
@@ -975,6 +1034,22 @@ public sealed class GridFightResourceCatalog
     public uint RollRewardCampId()
     {
         return RewardCampPool[_random.Next(RewardCampPool.Count)].ID;
+    }
+
+    /// <summary>
+    ///     Season 2 runs carry one partner; the client game flow dereferences its first synced effect on entry and
+    ///     throws without one. Season 1 has no partners. Partner 1 has no effects and is never rolled.
+    /// </summary>
+    public (uint PetPalId, uint EffectId)? RollPetPal()
+    {
+        if (IsSeasonOne) return null;
+        var candidates = GameData.GridFightPetPalData.Values
+            .Where(row => row.EffIDList.Count > 0)
+            .OrderBy(row => row.ID)
+            .ToList();
+        if (candidates.Count == 0) return null;
+        var petPal = candidates[_random.Next(candidates.Count)];
+        return (petPal.ID, petPal.EffIDList[_random.Next(petPal.EffIDList.Count)]);
     }
 
     public GridFightMonsterExcel RollBossMonster(uint campId, GridFightRouteNode bossNode)
@@ -1175,8 +1250,45 @@ public sealed class GridFightResourceCatalog
 
     private static uint ResolveFormationWaveId(uint maxTeammateCount)
     {
+        return FindFormationWave(maxTeammateCount)?.ID ??
+               throw new InvalidDataException($"Missing GridFight formation wave for {maxTeammateCount} monsters");
+    }
+
+    // 4.6.51 added a second MaxTeammateCount=5 row without an ID (0). Battle packets keep using the
+    // numbered wave, so prefer ID == MaxTeammateCount and only fall back to the unnumbered row.
+    private static GridFightFormationWaveExcel? FindFormationWave(uint maxTeammateCount)
+    {
         return GameData.GridFightFormationWaveData.Values
-            .Single(row => row.MaxTeammateCount == maxTeammateCount).ID;
+            .Where(row => row.MaxTeammateCount == maxTeammateCount)
+            .OrderBy(row => row.ID == maxTeammateCount ? 0 : row.ID == 0 ? 2 : 1)
+            .ThenBy(row => row.ID)
+            .FirstOrDefault();
+    }
+
+    private IEnumerable<GridFightEquipmentExcel> SeasonEquipment => GridFightSeasonScope.Equipment(CurrentSeason);
+
+    private bool IsRuntimeShopRole(GridFightRoleBasicInfoExcel role)
+    {
+        if (role.IsFakeAvatar || UpgradeOnlyRoleIds.Contains(role.ID)) return false;
+        // Season 1: roles without saved values (Trailblazer switch forms, Silver Wolf LV999 tiers) are
+        // granted by their own mechanics only.
+        if (HasRoleSavedValueLists)
+            return role.AvatarID is >= 1000 and < 2000 && role.RoleSavedValueList.Count > 0;
+        return role.AvatarID is >= 1000 and < 2000 or >= 8000 and < 9000 &&
+               !GridFightSpecialFeatures.IsSilverWolfLv999Role(role.ID);
+    }
+
+    private static IReadOnlySet<uint> ResolveUpgradeOnlyRoleIds(IReadOnlyList<GridFightRoleBasicInfoExcel> seasonRoles)
+    {
+        var tiered = GetUIntList("GridFight_Aha_No_Star_Role_IDList")
+            .Concat(GetUIntList("GridFight_SevenPriceRoleIdList"))
+            .ToHashSet();
+        return seasonRoles
+            .Where(role => tiered.Contains(role.ID))
+            .GroupBy(role => role.AvatarID)
+            .SelectMany(group => group.OrderBy(role => role.ID).Skip(1))
+            .Select(role => role.ID)
+            .ToHashSet();
     }
 
     private static IReadOnlyList<GridFightMonsterPlan> BuildBossMonsterPlans(

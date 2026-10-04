@@ -36,7 +36,7 @@ public sealed partial class GridFightSession
     {
         var category = GameData.GridFightEquipmentData.GetValueOrDefault(dice.EquipmentId)?.EquipCategory;
         if (category is null or GridFightEquipCategoryEnum.None) return [];
-        var pool = GameData.GridFightEquipmentData.Values
+        var pool = GridFightSeasonScope.Equipment(Season)
             .Where(row => row.EquipCategory == category && !IsDiceEquipment(row.ID) &&
                           row.EquipType != GridFightEquipmentTypeEnum.Implants &&
                           row.DressRule != GridFightEquipDressTypeEnum.DressRuleAllSlotEmpty)

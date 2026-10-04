@@ -9,9 +9,25 @@ using March7thHoney.Internationalization;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 
-// Read the checked-out cache; all gameplay and fixture changes remain in process memory.
+// Usage: GridFightRegression [--cache <Resource.bin>]
+// Reads the checked-out cache (or a copy of --cache); all gameplay and fixture changes remain in process memory.
+// Checks shared by every season run first; the capture-backed season-1 mechanics (Silver Wolf, Fate Diviner,
+// DoT contract) run only when the cache's GridFight_Season_ID is 1.
 var repository = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
-ConfigManager.Config.Path.ConfigPath = Path.Combine(repository, "Config");
+string? Arg(string name)
+{
+    var index = Array.IndexOf(args, name);
+    return index >= 0 && index + 1 < args.Length ? args[index + 1] : null;
+}
+var cacheArgument = Arg("--cache");
+var configPath = Path.Combine(repository, "Config");
+if (cacheArgument != null)
+{
+    configPath = Path.Combine(repository, "tmp/GridFightRegression/Cache");
+    Directory.CreateDirectory(configPath);
+    File.Copy(Path.GetFullPath(cacheArgument, repository), Path.Combine(configPath, "Resource.bin"), true);
+}
+ConfigManager.Config.Path.ConfigPath = configPath;
 ConfigManager.Config.Path.LanguagePath = Path.Combine(repository, "Config/Languages");
 ConfigManager.Config.Path.LogPath = Path.Combine(repository, "tmp/GridFightRegression/Logs");
 I18NManager.LoadLanguage();
@@ -31,6 +47,9 @@ var errors = catalog.Validate();
 Check("GridFight catalog validates against current cache", errors.Count == 0);
 foreach (var error in errors) Console.WriteLine(error);
 if (errors.Count > 0) return 1;
+var season = catalog.CurrentSeason;
+Console.WriteLine($"GridFight season {season}.{catalog.CurrentSubSeason}, role pool {catalog.RolePool.Count}, " +
+                  $"portals {catalog.PortalPool.Count}, augments {catalog.AugmentPool.Count}");
 
 GridFightManager NewRun(uint? portalId = null)
 {
@@ -74,6 +93,18 @@ Check("initial reward cannot be granted twice", openingSession.GrantOfficialInit
     openingSession.Orbs.Count == orbCount);
 Check("stale pending request does not advance state", !openingSession.HandlePending(1, GridFightPendingRequestKind.RoundBegin));
 
+// Test roles: unrestricted current-season shop roles with every star row (season 1 keeps its historical 1001/1004).
+var testRoles = catalog.RolePool
+    .Where(role => openingSession.IsRestrictedRoleUnlockedForRun(role.ID))
+    .Where(role => Enumerable.Range(1, 3).All(star => GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | (uint)star)))
+    .OrderBy(role => role.ID is 1001 or 1004 ? 0 : 1)
+    .ThenBy(role => role.ID)
+    .Select(role => role.ID)
+    .Take(4)
+    .ToArray();
+if (testRoles.Length < 4) throw new InvalidDataException("GridFight role pool has fewer than four test roles.");
+var (roleA, roleB, roleC, roleD) = (testRoles[0], testRoles[1], testRoles[2], testRoles[3]);
+
 foreach (var portalId in catalog.PortalPool)
 {
     var manager = NewRun(portalId);
@@ -94,7 +125,7 @@ Check("locked free refresh retains slots", shop.RefreshShop(false) && previousSh
 var previousGold = shop.Gold;
 Check("paid refresh unlocks and charges once", shop.RefreshShop(true) && !shop.ShopLocked &&
     shop.Gold == previousGold - catalog.RefreshCost);
-var maxStarRole = catalog.RolePool.First(role => role.ID == 1001);
+var maxStarRole = catalog.RolePool.First(role => role.ID == roleA);
 shop.TryAddRole(maxStarRole.ID, 3, out _);
 var switchGroup = catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(maxStarRole.ID));
 var excluded = switchGroup?.RoleIdList.ToHashSet() ?? [maxStarRole.ID];
@@ -109,6 +140,115 @@ var allExcluded = GameData.GridFightRoleBasicInfoData.Keys.ToHashSet();
 Check("fully excluded shop returns empty without throwing", catalog.RollShop(catalog.InitialPlayerLevel,
     excludedRoleIds: allExcluded).Count == 0);
 
+// --- Season separation ----------------------------------------------------------------------------------------
+// From 4.6.51 the role/trait/equipment/forge/craft tables hold several seasons; nothing from another season may
+// reach a run. On a single-season cache these checks still hold trivially.
+bool RoleInSeason(uint roleId) => GridFightSeasonScope.IsRoleInSeason(roleId, season);
+bool ItemInSeason(uint itemId) => GridFightSeasonScope.IsItemInSeason(itemId, season);
+bool RewardInSeason(GridFightRewardEntry reward) => reward.Type switch
+{
+    GridFightBonusTypeEnum.SpecificAvatar => RoleInSeason(reward.ItemId),
+    GridFightBonusTypeEnum.Item => ItemInSeason(reward.ItemId),
+    _ => true,
+};
+var hasOtherSeasonRows = GameData.GridFightRoleBasicInfoData.Values.Any(role => role.SeasonID != season);
+Console.WriteLine($"cache holds other-season GridFight rows: {hasOtherSeasonRows}");
+Check("role pool holds only current-season roles", catalog.RolePool.All(role => role.SeasonID == season));
+Check("role pool excludes upgrade-only cost tiers", catalog.RolePool.All(role => !catalog.UpgradeOnlyRoleIds.Contains(role.ID)));
+Check("portal and augment pools belong to the current season",
+    catalog.PortalPool.All(id => GridFightSeasonScope.IsPortalInSeason(id, season)) &&
+    catalog.AugmentPool.All(id => GridFightSeasonScope.IsAugmentInSeason(id, season)));
+Check("basic equipment pool belongs to the current season", catalog.BasicEquipmentPool.Count > 0 &&
+    catalog.BasicEquipmentPool.All(ItemInSeason));
+var seasonShop = NewRun(101).Session!;
+seasonShop.AdjustGold(100000);
+var shopRolesInSeason = true;
+for (var i = 0; i < 300; i++)
+{
+    seasonShop.RefreshShop(false);
+    shopRolesInSeason &= seasonShop.Shop.All(slot => slot.SpecialGoodsId != 0 || RoleInSeason(slot.RoleId));
+}
+Check("shop rolls only current-season roles", shopRolesInSeason);
+var supplyInSeason = Enumerable.Range(0, 100).All(_ => catalog.RollSupplyOffer(5)
+    .All(offer => RoleInSeason(offer.RoleId) && ItemInSeason(offer.EquipmentId)));
+Check("supply offers stay in the current season", supplyInSeason);
+var orbsChecked = 0;
+var orbsInSeason = true;
+foreach (var orbId in GameData.GridFightOrbData.Keys.Order())
+for (var sample = 0; sample < 8; sample++)
+{
+    if (!GridFightSpecialFeatures.TryResolveOrb(orbId, out var rewards)) break;
+    orbsChecked++;
+    if (rewards.All(RewardInSeason)) continue;
+    orbsInSeason = false;
+    Console.WriteLine($"orb {orbId} opened other-season rewards: " +
+                      string.Join(", ", rewards.Select(reward => $"{reward.Type}:{reward.ItemId}")));
+    break;
+}
+Check($"every resolvable orb opens current-season roles and items ({orbsChecked} samples)", orbsChecked > 0 && orbsInSeason);
+var forgesInSeason = GameData.GridFightForgeData.Keys
+    .Where(id => ItemInSeason(id))
+    .All(id => Enumerable.Range(0, 20).All(_ => catalog.RollForgeEquipment(id).All(ItemInSeason)));
+Check("forge offers stay in the current season", forgesInSeason);
+var categoriesInSeason = Enum.GetValues<GridFightEquipCategoryEnum>()
+    .All(category => Enumerable.Range(0, 20).All(_ => catalog.RollEquipment(category, 0) is var id && (id == 0 || ItemInSeason(id))));
+Check("random equipment by category stays in the current season", categoriesInSeason &&
+    Enumerable.Range(0, 20).All(_ => catalog.RollPepeEmblems(3).All(ItemInSeason)));
+var craftSession = NewRun(101).Session!;
+var basicRecipe = GridFightSeasonScope.Crafts(season)
+    .Where(recipe => recipe.CostEquipList.Count == 2 && recipe.CostEquipList.All(id =>
+        GameData.GridFightEquipmentData.TryGetValue(id, out var item) && item.EquipCategory == GridFightEquipCategoryEnum.Basic))
+    .Where(recipe => GameData.GridFightEquipmentData.ContainsKey(recipe.CraftEquipID))
+    .OrderBy(recipe => recipe.CraftID)
+    .First();
+craftSession.TryAddEquipment(basicRecipe.CostEquipList[0], out var craftLeft);
+craftSession.TryAddEquipment(basicRecipe.CostEquipList[1], out var craftRight);
+var seasonalCraft = craftSession.CraftEquipment(0, [craftLeft.UniqueId, craftRight.UniqueId], 0, 0);
+Check($"basic pair {basicRecipe.CostEquipList[0]}+{basicRecipe.CostEquipList[1]} crafts the current-season item",
+    seasonalCraft.Success && seasonalCraft.AddedEquipment!.EquipmentId == basicRecipe.CraftEquipID &&
+    ItemInSeason(seasonalCraft.AddedEquipment.EquipmentId));
+var systemInfo = opening.BuildSystemInfo();
+var tutorialStages = GameData.GridFightConstValueData.GetValueOrDefault("GridFight_TutorialStageList")?.AsUInt32List() ?? [];
+Check("permanent info reports every tutorial stage as finished", tutorialStages.Count > 0 &&
+    systemInfo.PermanentInfo.ENECKKGPKHI == tutorialStages.Max() &&
+    tutorialStages.All(stage => systemInfo.PermanentInfo.FBJMBJKMAJA.TryGetValue(stage, out var progress) &&
+                                progress.EABKMELHIML == stage && progress.GDAKCOICIDA > 0 &&
+                                (progress.MPJPLKKJNGE > 0 || GameData.GridFightTutorialStageNodeData.All(node => node.UnlockTutorialTask == 0))));
+var handbook = systemInfo.StaticInfo.Handbook;
+Check("handbook lists only current-season roles, items and portals",
+    handbook.RoleInfo.RoleIdList.All(RoleInSeason) &&
+    handbook.EquipInfo.GridFightItemList.All(ItemInSeason) &&
+    handbook.PortalInfo.SeenPortalIdList.All(id => GridFightSeasonScope.IsPortalInSeason(id, season)));
+var avatarOrb = GameData.GridFightOrbData.Values
+    .Select(orb => (Orb: orb, Bonus: GameData.GridFightBasicBonusPoolV2Data.GetValueOrDefault(orb.BonusID)))
+    .Where(entry => entry.Bonus?.BonusType == GridFightBonusTypeEnum.SpecificAvatar)
+    .Select(entry => (entry.Orb.OrbID, AvatarId: entry.Bonus!.BonusTypeParamList.FirstOrDefault()))
+    .FirstOrDefault(entry => GridFightSeasonScope.ResolveRoleId(entry.AvatarId, season) is var id && id != 0 &&
+                             GameData.GridFightRoleBasicInfoData[id].AvatarID == entry.AvatarId);
+Check("avatar orbs resolve to the current season's role for that avatar", avatarOrb.OrbID != 0 &&
+    GridFightSpecialFeatures.TryResolveOrb(avatarOrb.OrbID, out var avatarRewards) &&
+    avatarRewards.All(reward => reward.Type != GridFightBonusTypeEnum.SpecificAvatar ||
+                                RoleInSeason(reward.ItemId) &&
+                                GameData.GridFightRoleBasicInfoData[reward.ItemId].AvatarID == avatarOrb.AvatarId));
+foreach (var tieredRoleId in catalog.UpgradeOnlyRoleIds.Where(id =>
+             GameData.GridFightConstValueData.GetValueOrDefault("GridFight_SevenPriceRoleIdList")?.AsUInt32List().Contains(id) == true))
+    Check($"seven-price role {tieredRoleId} uses ShopPrice row 7",
+        catalog.GetBuyPrice(tieredRoleId) == GameData.GridFightShopPriceData[7].BuyGoldList[0]);
+Check("shop weights come from the current season", catalog.IsSeasonOne ||
+    catalog.GetShopRarityWeights(3).SequenceEqual(GameData.GridFightPlayerLevelData[3].RarityWeights));
+// Season 2 runs carry one partner; the client flow reads its first effect when the run opens. Season 1 has none.
+var partnerRun = NewRun();
+var partnerSession = partnerRun.Session!;
+var partnerSync = partnerRun.BuildCurrentInfo()!.GameInfoList
+    .Where(info => info.OGKMAKNOPOD != null)
+    .SelectMany(info => info.OGKMAKNOPOD.BBEEGMDAMIB)
+    .ToList();
+Check("season 2 run syncs one partner effect; season 1 syncs none", catalog.IsSeasonOne
+    ? partnerSession.PetPalId == 0 && partnerSync.Count == 0
+    : GameData.GridFightPetPalData.TryGetValue(partnerSession.PetPalId, out var partnerRow) &&
+      partnerRow.EffIDList.Contains(partnerSession.PetPalEffectId) && partnerSync.Count == 1 &&
+      partnerSync[0].OKGGFNJJLNG == partnerSession.PetPalId && partnerSync[0].NDAHDHKGNBG == partnerSession.PetPalEffectId);
+
 // Synthetic items isolate dress restrictions from resource balancing changes.
 const uint FreeItem = 990001, UniqueItem = 990002, LeaderItem = 990003, RoleItem = 990004;
 foreach (var (id, rule) in new[] { (FreeItem, GridFightEquipDressTypeEnum.DressRuleNotUnique),
@@ -117,7 +257,7 @@ foreach (var (id, rule) in new[] { (FreeItem, GridFightEquipDressTypeEnum.DressR
              (RoleItem, GridFightEquipDressTypeEnum.DressRuleRoleOnly) })
     GameData.GridFightEquipmentData[id] = new GridFightEquipmentExcel
     {
-        ID = id, DressRule = rule, DressRuleParamList = [1001],
+        ID = id, DressRule = rule, DressRuleParamList = [roleA],
     };
 GridFightRoleState AddRole(GridFightSession session, uint roleId)
 {
@@ -138,16 +278,16 @@ HLHHLIGPNOM Track(uint roleId, uint equipmentId, uint priority = 1)
 var tracksManager = NewRun(101);
 var tracks = tracksManager.Session!;
 tracks.Roles.Clear();
-var firstRole = AddRole(tracks, 1001);
-var secondRole = AddRole(tracks, 1004);
-var request = Track(1001, FreeItem);
+var firstRole = AddRole(tracks, roleA);
+var secondRole = AddRole(tracks, roleB);
+var request = Track(roleA, FreeItem);
 request.MCJMHBIECMN.Add(FreeItem);
 Check("track accepts valid request", tracks.UpdateEquipmentTracks([request], 0) == 0);
 Check("unowned client completion is ignored", tracks.EquipmentTracks.Single().CompletedEquipmentIds.Count == 0);
-Check("invalid batch is atomic", tracks.UpdateEquipmentTracks([Track(1004, FreeItem), Track(0, FreeItem)], 0) != 0 &&
+Check("invalid batch is atomic", tracks.UpdateEquipmentTracks([Track(roleB, FreeItem), Track(0, FreeItem)], 0) != 0 &&
     tracks.EquipmentTracks.Count == 1);
 Check("track cap rejects batch without partial writes", tracks.UpdateEquipmentTracks(
-    [Track(1004, FreeItem), Track(1003, FreeItem), Track(1005, FreeItem)], 0) == GridFightSession.EquipmentTrackMaxRetcode &&
+    [Track(roleB, FreeItem), Track(roleC, FreeItem), Track(roleD, FreeItem)], 0) == GridFightSession.EquipmentTrackMaxRetcode &&
     tracks.EquipmentTracks.Count == 1);
 
 // Recommendation/craft APIs call the automatic dress path, exercised through tracked craft.
@@ -160,7 +300,7 @@ GridFightEquipCraftResult CraftTracked(GridFightSession session, uint itemId, ui
     return session.CraftEquipment(itemId, [left.UniqueId, right.UniqueId],
         GridFightEquipCraftSource.KgridFightEquipCraftSourceTrack, target);
 }
-tracks.UpdateEquipmentTracks([Track(1001, LeaderItem), Track(1004, LeaderItem, 2)], 0);
+tracks.UpdateEquipmentTracks([Track(roleA, LeaderItem), Track(roleB, LeaderItem, 2)], 0);
 secondRole.Position = 1;
 var leaderCraft = CraftTracked(tracks, LeaderItem);
 Check("automatic dress skips ineligible higher-priority role", leaderCraft.Success &&
@@ -181,7 +321,7 @@ foreach (var pair in new[] { (350601u, 350601u), (350601u, 350602u), (350602u, 3
     var manager = NewRun(101);
     var session = manager.Session!;
     session.Roles.Clear();
-    var role = AddRole(session, 1001);
+    var role = AddRole(session, roleA);
     var a = AddEquipment(session, pair.Item1);
     var b = AddEquipment(session, pair.Item2);
     var before = session.MaxActiveRoles;
@@ -198,13 +338,14 @@ foreach (var pair in new[] { (350601u, 350601u), (350601u, 350602u), (350602u, 3
 var diceManager = NewRun(101);
 var diceSession = diceManager.Session!;
 diceSession.Roles.Clear();
-var diceRole = AddRole(diceSession, 1001);
-var otherRole = AddRole(diceSession, 1004);
+var diceRole = AddRole(diceSession, roleA);
+var otherRole = AddRole(diceSession, roleB);
 var dice = AddEquipment(diceSession, 35030404);
 var dress = diceSession.DressEquipment(diceRole.UniqueId, dice.UniqueId);
 var diceSync = diceManager.BuildEquipDressSync(dress);
 var filled = diceSession.GetEquippedEquipment(diceRole).Where(GridFightSession.IsDiceFilledEquipment).ToArray();
 Check("dice creates two locked temporary items", dress.Success && filled.Length == 2 && filled.All(item => item.IsLocked));
+Check("dice fill stays in the current season", filled.All(item => ItemInSeason(item.EquipmentId)));
 Check("dice fill is synchronized", diceSync.ResultList.SelectMany(result => result.UpdateDynamicList)
     .Where(data => data.AddGameItemInfo != null).SelectMany(data => data.AddGameItemInfo.GridFightEquipmentList)
     .Count(item => filled.Any(fill => fill.UniqueId == item.UniqueId)) == 2);
@@ -223,40 +364,46 @@ diceSession.RecycleRole(otherRole.UniqueId);
 Check("selling dice wearer does not leak temporary inventory", diceSession.Equipments.All(item => !GridFightSession.IsDiceFilledEquipment(item)) &&
     diceSession.Equipments.Contains(dice));
 
-var pendingManager = NewRun(101);
-var pendingSession = pendingManager.Session!;
-pendingSession.Roles.Clear();
-pendingSession.TryAddRole(GridFightSpecialFeatures.SilverWolfThreeCostRoleId, 2, out var silverWolfAcquisition);
-var silverWolf = silverWolfAcquisition.AcquiredRoles.Single();
-var blackSwan = AddRole(pendingSession, GridFightSession.BlackSwanRoleId);
-var deployment = pendingSession.UpdatePositions([(silverWolf.UniqueId, 1), (blackSwan.UniqueId, 2)]);
-pendingManager.BuildPositionSync(deployment);
-Check("simultaneous trait activations share one pending queue", deployment.Success &&
-    pendingSession.HeadPlayerPending != null && pendingSession.FateDivinerPending == null);
-Check("pending role cannot be moved, sold or sent into battle", !pendingSession.UpdatePositions([(silverWolf.UniqueId, 14)]).Success &&
-    !pendingSession.RecycleRole(silverWolf.UniqueId).Success && !pendingSession.EnterBattle());
-var head = pendingSession.HeadPlayerPending!;
-Check("invalid enhancement preserves pending state", !pendingSession.ResolveHeadPlayerEnhance(head.QueuePosition, uint.MaxValue).Success &&
-    ReferenceEquals(head, pendingSession.HeadPlayerPending));
-var headResult = pendingSession.ResolveHeadPlayerEnhance(head.QueuePosition, GridFightSpecialFeatures.SilverWolfUpgradeToFourCostOptionId);
-pendingManager.BuildHeadPlayerEnhanceSync(headResult);
-Check("cost upgrade retains entity and advances pending queue", headResult.Success &&
-    silverWolf.RoleId == GridFightSpecialFeatures.SilverWolfFourCostRoleId && silverWolf.Star == 1 && silverWolf.Position == 1);
-Check("queued Fate enhancement follows Head Player", pendingSession.HeadPlayerPending == null &&
-    pendingSession.FateDivinerPending?.QueuePosition > head.QueuePosition);
-var fate = pendingSession.FateDivinerPending!;
-var fateResult = pendingSession.ResolveFateDivinerEnhance(fate.QueuePosition, 6);
-pendingManager.BuildFateDivinerEnhanceSync(fateResult);
-Check("Fate enhancement completes and releases selection", fateResult.Success && !pendingSession.HasPendingSelection);
-Check("duplicate enhancement cannot grant twice", !pendingSession.ResolveFateDivinerEnhance(fate.QueuePosition, 6).Success);
+if (catalog.IsSeasonOne)
+{
+    var pendingManager = NewRun(101);
+    var pendingSession = pendingManager.Session!;
+    pendingSession.Roles.Clear();
+    pendingSession.TryAddRole(GridFightSpecialFeatures.SilverWolfThreeCostRoleId, 2, out var silverWolfAcquisition);
+    var silverWolf = silverWolfAcquisition.AcquiredRoles.Single();
+    var blackSwan = AddRole(pendingSession, GridFightSession.BlackSwanRoleId);
+    var deployment = pendingSession.UpdatePositions([(silverWolf.UniqueId, 1), (blackSwan.UniqueId, 2)]);
+    pendingManager.BuildPositionSync(deployment);
+    Check("simultaneous trait activations share one pending queue", deployment.Success &&
+        pendingSession.HeadPlayerPending != null && pendingSession.FateDivinerPending == null);
+    Check("pending role cannot be moved, sold or sent into battle", !pendingSession.UpdatePositions([(silverWolf.UniqueId, 14)]).Success &&
+        !pendingSession.RecycleRole(silverWolf.UniqueId).Success && !pendingSession.EnterBattle());
+    var head = pendingSession.HeadPlayerPending!;
+    Check("invalid enhancement preserves pending state", !pendingSession.ResolveHeadPlayerEnhance(head.QueuePosition, uint.MaxValue).Success &&
+        ReferenceEquals(head, pendingSession.HeadPlayerPending));
+    var headResult = pendingSession.ResolveHeadPlayerEnhance(head.QueuePosition, GridFightSpecialFeatures.SilverWolfUpgradeToFourCostOptionId);
+    pendingManager.BuildHeadPlayerEnhanceSync(headResult);
+    Check("cost upgrade retains entity and advances pending queue", headResult.Success &&
+        silverWolf.RoleId == GridFightSpecialFeatures.SilverWolfFourCostRoleId && silverWolf.Star == 1 && silverWolf.Position == 1);
+    Check("queued Fate enhancement follows Head Player", pendingSession.HeadPlayerPending == null &&
+        pendingSession.FateDivinerPending?.QueuePosition > head.QueuePosition);
+    var fate = pendingSession.FateDivinerPending!;
+    var fateResult = pendingSession.ResolveFateDivinerEnhance(fate.QueuePosition, 6);
+    pendingManager.BuildFateDivinerEnhanceSync(fateResult);
+    Check("Fate enhancement completes and releases selection", fateResult.Success && !pendingSession.HasPendingSelection);
+    Check("duplicate enhancement cannot grant twice", !pendingSession.ResolveFateDivinerEnhance(fate.QueuePosition, 6).Success);
+}
 
 // A full route exercises battles, supply nodes, encounters and investment selections.
-var routeManager = NewRun(GridFightSession.DotContractPortalId);
+var routePortal = catalog.PortalPool.Contains(GridFightSession.DotContractPortalId)
+    ? GridFightSession.DotContractPortalId
+    : 101u;
+var routeManager = NewRun(routePortal);
 var route = routeManager.Session!;
 route.Roles.Clear();
 route.ActiveInvestmentIds.Add(GridFightSession.PeriodicBenefitsAugmentId);
 route.ActiveInvestmentIds.Add(GridFightSession.GoldFuturesPlusAugmentId);
-var fighter = AddRole(route, 1001);
+var fighter = AddRole(route, roleA);
 fighter.Position = 1;
 const uint PeriodicGoldItem = 990005;
 GameData.GridFightEquipmentData[PeriodicGoldItem] = new GridFightEquipmentExcel
@@ -272,6 +419,7 @@ var futuresSelections = 0;
 var lastFuturesNode = 0;
 var periodicRewardsObserved = 0;
 var finished = false;
+var routeStaysInSeason = true;
 for (var transition = 0; transition < 300 && !finished; transition++)
 {
     var queue = route.PendingQueuePosition;
@@ -295,6 +443,7 @@ for (var transition = 0; transition < 300 && !finished; transition++)
                 result.EffectParamList.Contains(GridFightSession.PeriodicBenefitsAugmentId));
             break;
         case GridFightSessionPhase.SelectingInvestment:
+            routeStaysInSeason &= route.InvestmentOffer.All(id => GridFightSeasonScope.IsAugmentInSeason(id, season));
             if (route.IsGoldFuturesInvestmentPending)
             {
                 var nodeIndex = catalog.StandardRoute.ToList().FindIndex(node =>
@@ -307,6 +456,7 @@ for (var transition = 0; transition < 300 && !finished; transition++)
             routeManager.BuildInvestmentSelectionSync(queue, investment);
             break;
         case GridFightSessionPhase.SelectingSupply:
+            routeStaysInSeason &= route.SupplyOffer.All(offer => RoleInSeason(offer.RoleId));
             var supply = route.SelectSupply(queue, [1]);
             if (!supply.Success) throw new InvalidOperationException("Supply failed.");
             routeManager.BuildSupplySelectionSync(queue, 1, supply);
@@ -327,16 +477,21 @@ for (var transition = 0; transition < 300 && !finished; transition++)
         default:
             throw new InvalidOperationException($"Unexpected route state {route.Phase}.");
     }
+    routeStaysInSeason &= route.Roles.All(role => RoleInSeason(role.RoleId)) &&
+                          route.Shop.All(slot => slot.SpecialGoodsId != 0 || RoleInSeason(slot.RoleId)) &&
+                          route.Equipments.All(item => item.EquipmentId >= 990000 || ItemInSeason(item.EquipmentId));
 }
 Check("full route reaches final boss settlement", finished && battleCount > 10);
+Check("full route keeps roles, shop, items and offers in the current season", routeStaysInSeason);
 Check("periodic benefits are published on node entry", periodicRewardsObserved > 10);
 Check("gold futures offers recur through full route", futuresSelections >= 2);
-Check("DoT threshold grants Black Swan once across repeated settlements", route.Orbs.Count(orb =>
-    orb.OrbItemId == GridFightSession.DotContractBlackSwanOrbId) == 1);
+if (routePortal == GridFightSession.DotContractPortalId)
+    Check("DoT threshold grants Black Swan once across repeated settlements", route.Orbs.Count(orb =>
+        orb.OrbItemId == GridFightSession.DotContractBlackSwanOrbId) == 1);
 
 var abort = NewRun(101).Session!;
 abort.Roles.Clear();
-AddRole(abort, 1001).Position = 1;
+AddRole(abort, roleA).Position = 1;
 var abortGold = abort.Gold;
 var abortSection = abort.SectionId;
 Check("aborted battle returns to preparation without rewards or route advancement", abort.EnterBattle() &&

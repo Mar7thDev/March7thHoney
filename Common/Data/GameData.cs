@@ -251,6 +251,9 @@ public static partial class GameData
     public static Dictionary<uint, GridFightTutorialStageExcel> GridFightTutorialStageData { get; private set; } = [];
     public static List<GridFightTutorialStageNodeExcel> GridFightTutorialStageNodeData { get; private set; } = [];
     public static Dictionary<uint, List<uint>> GridFightSeasonAugmentData { get; private set; } = [];
+    public static Dictionary<uint, List<uint>> GridFightSeasonItemData { get; private set; } = [];
+    public static Dictionary<uint, List<uint>> GridFightSeasonCraftData { get; private set; } = [];
+    public static Dictionary<uint, GridFightPetPalExcel> GridFightPetPalData { get; private set; } = [];
     public static Dictionary<uint, GridFightBonusPoolV2Excel> GridFightBonusPoolV2Data { get; private set; } = [];
 
     #endregion

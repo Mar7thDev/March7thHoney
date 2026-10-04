@@ -333,7 +333,7 @@ public sealed partial class GridFightSession
             GameData.GridFightEquipmentData.ContainsKey(WealthDiamondEquipmentId))
             return WealthDiamondEquipmentId;
         var materialIds = new[] { firstEquipmentId, secondEquipmentId }.Order().ToList();
-        var recipe = GameData.GridFightCraftConfigData.Values
+        var recipe = GridFightSeasonScope.Crafts(GridFightSeasonScope.CurrentSeason)
             .Where(candidate => targetEquipmentId == 0 || candidate.CraftEquipID == targetEquipmentId)
             .OrderBy(candidate => candidate.CraftID)
             .FirstOrDefault(candidate => candidate.CostEquipList.Order().SequenceEqual(materialIds));

@@ -13,5 +13,12 @@ public enum GridFightBonusTypeEnum
     RandomEquipByFunc = 14,
     RandomSameAvatar = 15,
     SpecificAvatarWithRandomEquip = 16,
-    SpecificAvatarWithEquip = 17
+    SpecificAvatarWithEquip = 17,
+    // 4.6.51 names read from the dumped tables; the numbers below are server-side placeholders, not client values.
+    GlobalHp = 18,
+    TrailblazeShopCoin = 19,
+    SpotLightReplaceCnt = 20,
+    ElationGoods = 21,
+    ElationItem = 22,
+    SpotLightFreeRefreshCnt = 23
 }

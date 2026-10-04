@@ -657,6 +657,44 @@ var rogueTournEmblem = await rogueTournLobby.EntityLoader.LoadProp(
     rogueTournLobbyGroup.PropList.Single(prop => prop.ID == 300002), rogueTournLobbyGroup);
 Check("RogueTourn lobby entrance and emblem default open",
     rogueTournEntrance?.State == PropStateEnum.Open && rogueTournEmblem?.State == PropStateEnum.Open);
+// Anomaly Arbitration group 11 (4.7): its floor 30147001 is extracted from the 4.6.51 client and all four
+// levels resolve to that floor with a monster in their maze group.
+if (GameData.ChallengePeakGroupConfigData.ContainsKey(11))
+{
+    var group11Levels = new[] { 1101, 1102, 1103, 1104 }
+        .Select(id => GameData.ChallengePeakConfigData.GetValueOrDefault(id))
+        .ToList();
+    Check("Anomaly Arbitration group 11 levels enter floor 30147001 with a placed monster",
+        GameData.FloorInfoData.TryGetValue("P30147_F30147001", out var peakFloor11) &&
+        group11Levels.All(level => level != null && level.GetMapEntranceId() == 3014701 &&
+                                   peakFloor11.Groups.TryGetValue(level.GetMazeGroupId(), out var mazeGroup) &&
+                                   mazeGroup.MonsterList.Count > 0 &&
+                                   level.ChallengeMonsters.GetValueOrDefault(level.GetMazeGroupId())?.Count > 0) &&
+        GameData.ChallengePeakConfigData[1104].BossExcel != null);
+}
+// 4.7 maps extracted from the 4.6.51 client (absent from the community dump): each floor is cached and a scene
+// can be built at its entrance with its server-side groups.
+foreach (var (planeId, floorId, entryId) in new[] { (20571, 20571001, 2057102), (20572, 20572001, 2057201),
+             (30547, 30547001, 30547001), (40571, 40571001, 40571001), (40571, 40571002, 40571002),
+             (40572, 40572001, 40572001), (40573, 40573001, 40573001) })
+{
+    if (!GameData.MazePlaneData.ContainsKey(planeId)) continue;
+    var built = GameData.FloorInfoData.TryGetValue($"P{planeId}_F{floorId}", out var newFloor) &&
+                newFloor.Groups.Count > 0 &&
+                new SceneInstance(player, GameData.MazePlaneData[planeId], floorId, entryId).FloorInfo == newFloor;
+    Check($"4.7 floor {floorId} is cached and builds a scene", built);
+}
+// Anomaly Arbitration group 10 floor: the RoomStateChange trigger prop's level graph is missing from the
+// 4.7 client and blocks its scene loading; the floor's other props must still be created.
+if (GameData.FloorInfoData.ContainsKey("P30146_F30146001"))
+{
+    var peakFloor = new SceneInstance(player, GameData.MazePlaneData[30146], 30146001, 3014601);
+    var roomStateGroup = peakFloor.FloorInfo!.Groups[16];
+    var defaultGroup = peakFloor.FloorInfo.Groups[1];
+    Check("Anomaly Arbitration floor omits the client-missing RoomStateChange trigger prop",
+        await peakFloor.EntityLoader!.LoadProp(roomStateGroup.PropList.Single(prop => prop.ID == 300001), roomStateGroup) == null &&
+        await peakFloor.EntityLoader.LoadProp(defaultGroup.PropList.Single(prop => prop.ID == 300001), defaultGroup) != null);
+}
 var scene = new SceneInstance(player, GameData.MazePlaneData[10202], 10202001, 102020107);
 var snapshot = scene.BuildClientFloorSavedData();
 Check("Changle Tian restores floor-wide activity defaults without writing player saves",
@@ -1416,6 +1454,93 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
 
     ServerUtils.InitializeHandlers();
     await MainFixRegression.Run(scratch, serverPeer, Check, SentFrames);
+    // 4.7 activity data queries sent at login (obfuscated names, so the generic empty reply skips them): both
+    // must be answered or the client keeps its loading spinner up.
+    var activityQueryReplies = (await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity
+            .HandlerCKMHMAJPJEP().OnHandle(rogueConnection, [], [])))
+        .Concat(await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity
+            .HandlerMGCJKEEOPEC().OnHandle(rogueConnection, [], [])))
+        .ToList();
+    Check("4.7 login activity queries 10795/10215 are answered with 10788/10208 retcode 0",
+        activityQueryReplies.Any(frame => frame.Id == CmdIds.PAMDEKPLLEL && PAMDEKPLLEL.Parser.ParseFrom(frame.Body).Retcode == 0) &&
+        activityQueryReplies.Any(frame => frame.Id == CmdIds.LPLCFFGANFC && LPLCFFGANFC.Parser.ParseFrom(frame.Body).Retcode == 0));
+    // Voracity Invasion: the activity tab builds its world activity from 10668; without it the client loads a nil prefab.
+    var voracityReplies = (await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity.VoracityInvasion
+            .HandlerVoracityInvasionGetDataCsReq().OnHandle(rogueConnection, [], [])))
+        .Concat(await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity.VoracityInvasion
+            .HandlerGetActivityVoracityInvasionDataCsReq().OnHandle(rogueConnection, [], [])))
+        .ToList();
+    Check("Voracity Invasion queries 10275/10675 are answered with 10268/10668 and a current update time",
+        voracityReplies.Any(frame => frame.Id == CmdIds.GetVoracityInvasionDataScRsp &&
+                                     GetVoracityInvasionDataScRsp.Parser.ParseFrom(frame.Body).Retcode == 0) &&
+        voracityReplies.Any(frame => frame.Id == CmdIds.GetActivityVoracityInvasionDataScRsp &&
+                                     GetActivityVoracityInvasionDataScRsp.Parser.ParseFrom(frame.Body) is { Retcode: 0 } progress &&
+                                     Math.Abs(progress.LBEGAHHDKBE - DateTimeOffset.UtcNow.ToUnixTimeSeconds()) < 60));
+    // Player return (循行归程) is not implemented server-side; its modules must stay off the schedule, otherwise the
+    // client falls back to the 3.6 return page whose bundle the 4.7 client no longer ships (black screen).
+    // 1001901 = PlayerReturnPanel, 1018301/1018401 = PlayerReturnConfig 29/30 (ExcelOutput/PlayerReturnConfig.json).
+    int[] playerReturnModules = [1001901, 1018301, 1018401];
+    using var scheduleJson = System.Text.Json.JsonDocument.Parse(
+        File.ReadAllText(Path.Combine(repository, "Config/Custom/ActivityConfig.json")));
+    var scheduledModules = scheduleJson.RootElement.GetProperty("scheduleData").EnumerateArray()
+        .Select(row => row.GetProperty("activityId").GetInt32()).ToHashSet();
+    Check("activity schedule carries no player-return module",
+        scheduledModules.Count > 0 && playerReturnModules.All(id => !scheduledModules.Contains(id)));
+    // GridFight season 2. The map console (Prop_Common_GridFightConsole_01) opens the season-2 page only while the
+    // GridFight tutorial main mission reads as never taken, so the client view hides it although the server keeps
+    // it finished. The overclock unlock quest (GridFight_OC_UnlockQuest) completes when a standard run settles, and
+    // every season-2 run syncs its partner (the client game flow dereferences the first partner effect on entry).
+    var gridFightConstants = GameData.GridFightConstValueData;
+    if (gridFightConstants.TryGetValue("GridFight_Season_ID", out var gridFightSeason) && gridFightSeason.AsUInt32() >= 2)
+    {
+        var tutorialMission = gridFightConstants["GridFight_Tutorial_Main_Mission_Id"].AsUInt32();
+        var missionReplies = (await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Mission
+                .HandlerGetMissionStatusCsReq().OnHandle(rogueConnection, [],
+                    new GetMissionStatusCsReq { MainMissionIdList = { tutorialMission } }.ToByteArray())))
+            .Concat(await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Mission
+                .HandlerGetMainMissionCustomValueCsReq().OnHandle(rogueConnection, [],
+                    new GetMainMissionCustomValueCsReq { MainMissionIdList = { tutorialMission } }.ToByteArray())))
+            .ToList();
+        var missionData = GetMissionDataScRsp.Parser.ParseFrom(new March7thHoney.GameServer.Server.Packet.Send.Mission
+            .PacketGetMissionDataScRsp(roguePlayer).Data);
+        Check("season 2 hides the finished GridFight tutorial main mission from the client only",
+            roguePlayer.MissionManager!.GetMainMissionStatus((int)tutorialMission) == MissionPhaseEnum.Finish &&
+            !missionData.FinishedMainMissionIdList.Contains(tutorialMission) &&
+            missionReplies.Any(frame => frame.Id == CmdIds.GetMissionStatusScRsp &&
+                                        GetMissionStatusScRsp.Parser.ParseFrom(frame.Body) is var status &&
+                                        status.UnfinishedMainMissionIdList.Contains(tutorialMission) &&
+                                        !status.FinishedMainMissionIdList.Contains(tutorialMission)) &&
+            missionReplies.Any(frame => frame.Id == CmdIds.GetMainMissionCustomValueScRsp &&
+                                        GetMainMissionCustomValueScRsp.Parser.ParseFrom(frame.Body).MainMissionList
+                                            .Single().Status == MissionStatus.MissionNone));
+
+        var unlockQuest = (int)gridFightConstants["GridFight_OC_UnlockQuest"].AsUInt32();
+        var questBefore = roguePlayer.QuestManager!.GetQuestStatus(unlockQuest);
+        var season = gridFightSeason.AsUInt32();
+        var division = GameData.GridFightDivisionInfoData.Values.Where(row => row.SeasonID == season).Min(row => row.ID);
+        var startReplies = await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.GridFight
+            .HandlerGridFightStartGamePlayCsReq().OnHandle(rogueConnection, [],
+                new GridFightStartGamePlayCsReq { Season = season, DivisionId = division }.ToByteArray()));
+        var started = startReplies.Where(frame => frame.Id == CmdIds.GridFightStartGamePlayScRsp)
+            .Select(frame => GridFightStartGamePlayScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
+        var partnerEffects = started?.CurrentInfo?.GameInfoList
+            .Where(info => info.OGKMAKNOPOD != null)
+            .SelectMany(info => info.OGKMAKNOPOD.BBEEGMDAMIB)
+            .ToList() ?? [];
+        Check("season 2 run starts with one active partner effect from that partner's effect list",
+            started is { Retcode: 0 } && partnerEffects.Count == 1 && partnerEffects[0].MOCLKEPPIGA &&
+            GameData.GridFightPetPalData.TryGetValue(partnerEffects[0].OKGGFNJJLNG, out var partner) &&
+            partner.EffIDList.Contains(partnerEffects[0].NDAHDHKGNBG));
+        var settleReplies = await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.GridFight
+            .HandlerGridFightQuitSettleCsReq().OnHandle(rogueConnection, [], []));
+        var settled = settleReplies.Where(frame => frame.Id == CmdIds.GridFightSettleNotify)
+            .Select(frame => GridFightSettleNotify.Parser.ParseFrom(frame.Body)).SingleOrDefault();
+        Check("season 2 settle carries the run's partner effect",
+            settled?.FinishInfo?.BBEEGMDAMIB.SequenceEqual(partnerEffects) == true);
+        Check("a settled standard run completes the overclock unlock quest",
+            questBefore == QuestStatus.QuestDoing &&
+            roguePlayer.QuestManager.GetQuestStatus(unlockQuest) is QuestStatus.QuestFinish or QuestStatus.QuestClose);
+    }
     // The user's login snapshot carried six 1415 rows: one developed avatar plus five empty duplicates.
     // Skin changes must persist and both incremental and full snapshots must select the same owner.
     var skinPlayer = new PlayerInstance(60021);
@@ -2872,10 +2997,12 @@ Directory.CreateDirectory(Path.Combine(scratch, "Custom"));
 File.Copy(Path.Combine(repository, "Config/Custom/ActivityConfig.json"), Path.Combine(scratch, "Custom/ActivityConfig.json"));
 var schedule = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig");
 // The Role Trial modules of the captured 4.6 official schedule (ActivityModuleDemo -> AvatarDemoConfig TrialActivity).
+// Modules the 4.7 client moved to another activity (2000603 -> 20016, 2002303 -> 20024, 2002502 -> 20027) keep
+// being scheduled under that activity.
 int[] trialModules = [2000603, 2001101, 2001102, 2001103, 2001104, 2001105, 2001106, 2001107, 2001108, 2001109,
     2002303, 2002502, 2006301, 2006302, 2008201, 2008401, 2008601, 2008701, 2009301];
 Check("activity schedule lists every Role Trial module", schedule != null &&
-    trialModules.All(id => schedule.ScheduleData.Any(row => row.ActivityId == id && row.PanelId is 20011 or 20064 or 20087 or 20091 or 20092 or 20093)));
+    trialModules.All(id => schedule.ScheduleData.Any(row => row.ActivityId == id && row.PanelId is 20011 or 20016 or 20024 or 20027 or 20064 or 20087 or 20091 or 20092 or 20093)));
 
 // Banners.json is parsed row by row and a bad row is only skipped with a warning, so check that every captured 4.6
 // pool survives loading and only references avatars and light cones present in the resource cache.

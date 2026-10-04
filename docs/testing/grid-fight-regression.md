@@ -24,11 +24,39 @@
 
 ```powershell
 dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj
+dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj -- --cache <Resource.bin>
 dotnet build March7thHoney.sln --no-restore
 ```
 
-回归程序读取当前 `Config/Resource.bin`，不初始化玩家数据库，不写回资源缓存；测试状态和额外测试装备仅存在于进程内。
+回归程序默认读取当前 `Config/Resource.bin`；`--cache` 先把指定缓存复制到 `tmp/GridFightRegression/Cache/` 再读取。不初始化玩家数据库，不写回资源缓存；测试状态和额外测试装备仅存在于进程内。
 覆盖全部可选传送门开局与 protobuf 往返、装备追踪、宝钻、骰子、选择队列、20 场战斗的完整路线、周期奖励、重复请求及中止结算。
+赛季由缓存中的 `GridFight_Season_ID` 决定：测试角色取当前赛季角色池；银狼/命运卜者选择队列和持续伤害契约只在赛季 1 运行。
+
+## 赛季 2 与赛季隔离
+
+4.6.51（4.7 测试服）资源把 `GridFight_Season_ID` 改为 2，并且赛季 1、赛季 2 的行同表共存：
+`GridFightRoleBasicInfo`（赛季 2 角色编号为头像 ID × 100 + 2，另有成本档变体）、`GridFightTraitBasicInfo`、
+`GridFightEquipment` / `Consumables` / `Forge`、`GridFightCraftConfig`（同一对基础装备在两季合成出不同物品，如 350201+350201 → 35030101 / 47030101）。
+`GridFightSeasonTalent` 则把同一批 ID（2011–4061）整体改为赛季 2 的天赋。
+
+服务端处理：
+
+- 新加载 `GridFightSeasonItem.json`、`GridFightSeasonCraft.json`（物品/合成 → 赛季），由 `GridFightSeasonScope` 统一判定；没有这两张表的旧缓存视为全部共享。
+- 商店、开局、补给、宝珠/奖励（随机角色、随机装备、指定角色）、锻造、骰子、合成、图鉴只取当前赛季内容；`SpecificAvatar` 与 `101000+ID` 角色宝珠按头像 ID 解析为当前赛季角色。
+- 4.6.51 去掉了 `GridFightCamp.SeasonID` 与 `RoleBasicInfo.RoleSavedValueList`：无赛季的阵营视为共享；缺少 SavedValue 列时角色池改用赛季 2 规则（排除 `IsFakeAvatar` 与阿哈 151112/151122/151132 成本档，七费档按 `ShopPrice` 第 7 行定价）。
+- 赛季 1 专属机制只在赛季 1 生效：昔涟/银狼 LV999 校验、受限角色种子、4.5 商店稀有度表、赛季天赋 2011 终局回合治疗及 3560xxxx 天赋战斗 buff、天赋 4032 的宝珠奖励（`GridFightRewardRules.json` 的 `SeasonIds`）。
+- `GridFightFormationWave` 新增一条省略 ID（0）的 5 人波次，战斗仍使用编号 5 的波次。
+- 赛季 2 每局随机一名伙伴（`GridFightPetPal.json`，跳过无效果的 1 号）及其一条效果，经 `GridFightGameInfo` 的伙伴同步（字段 1984）和结算 `GridFightFinishInfo`（字段 1836）下发；客户端开局流程直接读取第一条伙伴效果，缺失时空引用导致“开始对局”无反应。伙伴效果本身的玩法尚未实现。
+- 对局结算（胜利或退出结算）触发 `GridFightFinishGamePlay` 任务进度，参数 1 为标准博弈、2 为超频博弈；超频博弈由 `GridFight_OC_UnlockQuest`（7302115）解锁。
+- 赛季 2 起向客户端隐藏已完成的 `GridFight_Tutorial_Main_Mission_Id`（8037100）：地图控制台只在该任务“未接取”时打开赛季 2 入口，已完成时打开赛季 1 旧页面；服务端自身仍视其为已完成。覆盖见 `LoginSceneRegression`。
+
+赛季 2 专属玩法（聚光灯、奇美拉、开拓商店、欢愉笑点、阿哈升级等）及其 4.7 协议消息尚未实现：选择 2101–2214 传送门只记录为已选，不触发专属效果。
+
+回归中的赛季隔离检查覆盖：角色池、传送门与投资池、商店 300 次刷新、补给、全部可解析宝珠各 8 次开启、锻造、随机装备、合成、图鉴、骰子填充与完整路线中出现的角色/装备/报价。
+
+缓存组成：`Config/Resource.bin` 由 4.6.51 资源生成，再用 4.6.0 正式服缓存补齐 4.6.51 dump 缺失的表和行（任务、消息、MechCraft 等）；GridFight 表一律以 4.6.51 为准，不从旧缓存补行（旧缓存中的 14 条赛季 1 词缀不再混入）。
+
+验证结果（2026-10-03）：赛季 2 缓存 168/168，4.6.0 赛季 1 缓存 188/188。
 
 下载版资源缓存不能由当前数据模型反序列化（`VideoKeysConfig` 字段布局不匹配），因此保留当前缓存，并使用当前缓存完成验证。
 这些检查验证服务端状态及消息构造；客户端界面、动画和实机战斗尚未验证。下载版注释中的抓包结论未在本次重新抓包核实。

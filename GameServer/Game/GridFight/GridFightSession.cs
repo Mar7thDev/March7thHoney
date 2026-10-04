@@ -238,6 +238,8 @@ public sealed partial class GridFightSession
     public uint DivisionId { get; }
     public bool IsOverlock { get; }
     public uint UniqueId { get; }
+    public uint PetPalId { get; }
+    public uint PetPalEffectId { get; }
     public GridFightSessionPhase Phase { get; private set; } = GridFightSessionPhase.SelectingPortal;
     public uint PendingQueuePosition { get; private set; } = 1;
     public uint ChapterId { get; private set; } = 1;
@@ -419,6 +421,11 @@ public sealed partial class GridFightSession
             .ToList();
         Bosses = CampIds.Zip(bossNodes, catalog.RollBossMonster).ToList();
         AffixIds = catalog.RollAffixIds(divisionId);
+        if (catalog.RollPetPal() is { } petPal)
+        {
+            PetPalId = petPal.PetPalId;
+            PetPalEffectId = petPal.EffectId;
+        }
         PrepareCurrentNode();
     }
 
@@ -886,7 +893,7 @@ public sealed partial class GridFightSession
     {
         var result = new List<GridFightTalentOrbReward>();
         foreach (var rule in GameData.GridFightRewardRulesConfig.TalentRules.Where(rule =>
-                     rule.Trigger == trigger && rule.ChapterIds.Contains(chapterId)))
+                     rule.Trigger == trigger && rule.ChapterIds.Contains(chapterId) && rule.AppliesToSeason(Season)))
         {
             var key = (rule.TalentId, rule.EffectId, rule.Trigger, chapterId);
             if (_triggeredTalentRewards.Contains(key)) continue;
