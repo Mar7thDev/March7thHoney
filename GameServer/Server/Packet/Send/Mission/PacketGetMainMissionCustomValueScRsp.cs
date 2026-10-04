@@ -15,7 +15,7 @@ public class PacketGetMainMissionCustomValueScRsp : BasePacket
             proto.MainMissionList.Add(new MainMission
             {
                 Id = mission,
-                Status = player.MissionManager!.GetMainMissionStatus((int)mission).ToProto()
+                Status = player.MissionManager!.GetClientMainMissionStatus((int)mission).ToProto()
             });
 
         SetData(proto);

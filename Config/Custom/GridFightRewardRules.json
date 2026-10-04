@@ -178,7 +178,8 @@
       "EffectId": 87,
       "Trigger": "PlaneEnter",
       "ChapterIds": [2],
-      "OrbIds": [102, 103]
+      "OrbIds": [102, 103],
+      "SeasonIds": [1]
     }
   ]
 }

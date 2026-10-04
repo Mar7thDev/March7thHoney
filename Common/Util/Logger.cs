@@ -15,6 +15,13 @@ public class Logger(string moduleName)
         lock (Lock)
         {
             var time = DateTime.Now.ToString("HH:mm:ss");
+            // Resource loader warnings stay out of the console and the main log; they are kept in the debug log only.
+            if (level == LoggerLevel.WARN && moduleName is "ResMgr" or "ResCache")
+            {
+                WriteToDebugFile($"[{time}][{moduleName}][{level}] {message}");
+                return;
+            }
+
             var escaped = Markup.Escape(message);
             var moduleEscaped = Markup.Escape(moduleName);
             var levelColor = level switch

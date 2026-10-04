@@ -95,7 +95,7 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 | 账号、鉴权、封锁、令牌、删除及数据库并发 | `dotnet run --project scripts/AuthRegression/AuthRegression.csproj` | 临时 SQLite 与测试配置；预期 `Auth regression failures: 0` |
 | Web 后台、MUIP、命令目标隔离及异步输出 | `dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj` | 独立内存数据与临时目录；预期 `Regression failures: 0` |
 | 登录协议、RSA、场景加载与传送 | `dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c Release` | 临时数据库和本机 HTTP 服务；场景用例读取当前 `Config/Resource.bin` 的副本 |
-| GridFight 玩法与状态同步 | `dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj` | 读取当前 `Config/Resource.bin`，不初始化玩家数据库，不写回缓存 |
+| GridFight 玩法与状态同步 | `dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj` | 读取当前 `Config/Resource.bin`（可用 `--cache` 指定），按缓存的 GridFight 赛季运行；不初始化玩家数据库，不写回缓存 |
 | 每日实训、活跃度档位、每日委托及事件型任务完成条件 | `dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj -c Release` | 临时 SQLite；读取 `Config/Resource.bin` 副本（需含每日实训表，可用 `--cache` 指定）；预期 `failures: 0` |
 
 - 具体覆盖和预期日志见 `docs/testing/` 下对应文档。以进程退出码和最终失败汇总判断结果；模拟异常会产生预期错误日志。

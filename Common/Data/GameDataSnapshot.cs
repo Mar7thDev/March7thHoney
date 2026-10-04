@@ -353,6 +353,13 @@ public partial class GridFightRuntimeDataSnapshot
 
     // Appended after the daily tables: an older cache deserializes this as null (see ApplySnapshot).
     public RogueTournRuntimeDataSnapshot? RogueTournRuntimeData { get; set; }
+
+    // GridFight season ownership (item/craft id -> seasons). Older caches deserialize these as null.
+    public Dictionary<uint, List<uint>>? SeasonItemData { get; set; }
+    public Dictionary<uint, List<uint>>? SeasonCraftData { get; set; }
+
+    // Season 2 partners (GridFightPetPal). Appended later; older caches deserialize this as null.
+    public Dictionary<uint, GridFightPetPalExcel>? PetPalData { get; set; }
 }
 
 [MemoryPackable]
@@ -651,7 +658,10 @@ public static partial class GameData
                     RoguePersonaStyleGiftData = GameData.RoguePersonaStyleGiftData,
                     RogueTournExpRewardData = GameData.RogueTournExpRewardData,
                     RogueTournDialogueData = GameData.RogueTournDialogueData
-                }
+                },
+                SeasonItemData = GameData.GridFightSeasonItemData,
+                SeasonCraftData = GameData.GridFightSeasonCraftData,
+                PetPalData = GameData.GridFightPetPalData
             },
             ActivityRuntimeData = new ActivityRuntimeDataSnapshot
             {
@@ -1015,6 +1025,9 @@ public static partial class GameData
         GameData.DailyQuestData = gridFightRuntimeData.DailyQuestData ?? [];
         GameData.DailyMissionDataData = gridFightRuntimeData.DailyMissionDataData ?? [];
         GameData.DailyMissionCountData = gridFightRuntimeData.DailyMissionCountData ?? [];
+        GameData.GridFightSeasonItemData = gridFightRuntimeData.SeasonItemData ?? [];
+        GameData.GridFightSeasonCraftData = gridFightRuntimeData.SeasonCraftData ?? [];
+        GameData.GridFightPetPalData = gridFightRuntimeData.PetPalData ?? [];
         var rogueTournData = gridFightRuntimeData.RogueTournRuntimeData ?? new RogueTournRuntimeDataSnapshot();
         GameData.RoguePersonaLayerRoomData = rogueTournData.RoguePersonaLayerRoomData ?? [];
         GameData.RoguePersonaRoomPresetData = rogueTournData.RoguePersonaRoomPresetData ?? [];

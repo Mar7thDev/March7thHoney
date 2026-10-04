@@ -70,6 +70,7 @@ public sealed class HandlerGridFightQuitSettleCsReq : Handler<GridFightQuitSettl
         manager.ClearSession();
         await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitSettleScRsp,
             new GridFightQuitSettleScRsp()));
+        await manager.RecordGameFinished(session);
     }
 }
 

@@ -24,12 +24,22 @@ public class SceneEntityLoader(SceneInstance scene)
         (10202001, 208, 300002)  // Noninitial StageItemsHandler capture from the earlier Android fix
     ];
 
+    // Props whose authored InitLevelGraph override does not ship with the client. Creating one makes the
+    // client's async MapObject load throw (NullReferenceException in LevelGraphConfig.FromBinary after
+    // "SyncLoadAsset fail ... DesignerBackup/TriggerEvent.bytes") and the scene never leaves the loading page.
+    // Version-independent: read from the 4.7 beta client while entering Anomaly Arbitration group 10.
+    private static readonly HashSet<(int FloorId, int GroupId, int InstId)> MissingLevelGraphProps =
+    [
+        (30146001, 16, 300001) // RoomStateChange / Prop1 (MazeProp 100, Config/Level/DesignerBackup/TriggerEvent.json)
+    ];
+
     // Restore only the known problematic Reading atmosphere group. Other atmosphere/Hoyo groups
     // and floor-wide activity defaults remain available; those flags alone are not exclusions.
     private bool IsIncompatibleGroup(GroupInfo group) =>
         Is45Prod && Scene.FloorId == 10202001 && group.Id == 169;
 
     private bool IsIncompatibleProp(GroupInfo group, PropInfo info) =>
+        MissingLevelGraphProps.Contains((Scene.FloorId, group.Id, info.ID)) ||
         Is45Prod && IncompatibleProps.Contains((Scene.FloorId, group.Id, info.ID));
 
     private bool IsRogueLobbyConsole(GroupInfo group, PropInfo info, int propId) =>

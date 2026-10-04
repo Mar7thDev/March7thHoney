@@ -107,7 +107,7 @@ public static class GridFightBattleProtoBuilder
         session.ApplyDotContractBattleBuff(battle);
         session.ApplyFateDivinerBattleBuffs(battle);
         session.ApplyAstaDogBattleBuff(battle);
-        AddOfficialGridFightCombatBuffs(battle, session);
+        AddOfficialGridFightCombatBuffs(battle, session, catalog);
 
         proto.MonsterWaveList.Clear();
         foreach (var wavePlan in session.BattlePlan?.Waves ?? [])
@@ -398,9 +398,15 @@ public static class GridFightBattleProtoBuilder
         });
     }
 
-    private static void AddOfficialGridFightCombatBuffs(BattleInstance battle, GridFightSession session)
+    private static void AddOfficialGridFightCombatBuffs(
+        BattleInstance battle,
+        GridFightSession session,
+        GridFightResourceCatalog catalog)
     {
         AddGlobalBuffIfMissing(battle, GridFightBaselineBuffId);
+        // 3560xxxx are the season-1 season-talent battle buffs (talents 2011/4031/2061). Season 2 renumbers
+        // its talents onto the same IDs with other effects, so do not apply them outside season 1.
+        if (!catalog.IsSeasonOne) return;
         AddGlobalBuffIfMissing(battle, FinalBattleTurnHealingBuffId);
         AddGlobalBuffIfMissing(battle, GridFightCombatTalentBuffId);
 
@@ -654,7 +660,10 @@ public static class GridFightBattleProtoBuilder
     {
         if (gender != Gender.Woman) return basic.AvatarID;
         var key = (basic.ID << 4) | star;
-        return GameData.GridFightGenderOverrideData.TryGetValue(key, out var genderOverride)
+        // Season 2 Trailblazer roles (800902) have no row of their own; reuse the season-1 role whose id is
+        // the avatar id (8009 -> 8010).
+        return GameData.GridFightGenderOverrideData.TryGetValue(key, out var genderOverride) ||
+               GameData.GridFightGenderOverrideData.TryGetValue((basic.AvatarID << 4) | star, out genderOverride)
             ? genderOverride.AvatarID
             : basic.AvatarID;
     }

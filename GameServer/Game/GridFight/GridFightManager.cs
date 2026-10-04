@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.GameServer.Game.Player;
@@ -39,6 +40,17 @@ public sealed partial class GridFightManager : BasePlayerManager
         return true;
     }
 
+    /// <summary>
+    ///     Raises GridFightFinishGamePlay for a settled run (Param 1 standard, 2 overclock). Runs settle by victory or
+    ///     by a quit settle, which is also how a lost run leaves its settle page.
+    /// </summary>
+    public async ValueTask RecordGameFinished(GridFightSession session)
+    {
+        if (Player.MissionManager == null || Player.QuestManager == null) return;
+        await Player.MissionManager.TriggerCountEvent(MissionFinishTypeEnum.GridFightFinishGamePlay, 1,
+            session.IsOverlock ? 2 : 1);
+    }
+
     public void ClearSession()
     {
         Session = null;
@@ -56,7 +68,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             EquipInfo = new GridFightHandBookEquipInfo(),
         };
         handbook.MonsterInfo.MonsterIdList.Add(GameData.GridFightCampData.Values
-            .Where(row => row.SeasonID == Catalog.CurrentSeason)
+            .Where(row => GridFightSeasonScope.IsCampInSeason(row, Catalog.CurrentSeason))
             .Select(row => row.ID)
             .Order());
         handbook.RoleInfo.RoleIdList.Add(GameData.GridFightRoleBasicInfoData.Values
@@ -66,13 +78,15 @@ public sealed partial class GridFightManager : BasePlayerManager
         handbook.AugmentInfo.SeenAugmentIdList.Add(Catalog.AugmentPool);
         handbook.AugmentInfo.UnlockedAugmentIdList.Add(Catalog.AugmentPool);
         var portalIds = GameData.GridFightPortalBuffData.Values
-            .Where(row => row.IfInBook)
+            .Where(row => row.IfInBook && GridFightSeasonScope.IsPortalInSeason(row.ID, Catalog.CurrentSeason))
             .Select(row => row.ID)
             .Order()
             .ToList();
         handbook.PortalInfo.SeenPortalIdList.Add(portalIds);
         handbook.PortalInfo.UnlockedPortalIdList.Add(portalIds);
-        handbook.EquipInfo.GridFightItemList.Add(GameData.GridFightEquipmentData.Keys.Order());
+        handbook.EquipInfo.GridFightItemList.Add(GridFightSeasonScope.Equipment(Catalog.CurrentSeason)
+            .Select(row => row.ID)
+            .Order());
 
         var seasonTalent = new GridFightTalentInfo();
         seasonTalent.TalentIdList.Add(GameData.GridFightSeasonTalentData.Values
@@ -81,6 +95,18 @@ public sealed partial class GridFightManager : BasePlayerManager
             .Order());
         var permanentTalent = new GridFightTalentInfo();
         permanentTalent.TalentIdList.Add(GameData.GridFightTalentData.Keys.Order());
+        var permanentInfo = new GridFightPermanentGameInfo { Talent = permanentTalent };
+        // 4.7 clients gate the season entry on the per-stage tutorial progress (FBJMBJKMAJA, keyed by tutorial
+        // division) and the last finished tutorial stage (ENECKKGPKHI, same identity as
+        // GridFightLastTutorialFinishScNotify); tutorial_completion alone keeps showing "finish the tutorial first".
+        foreach (var (divisionId, completion, tutorialTask) in Catalog.CompletedTutorialStages)
+            permanentInfo.FBJMBJKMAJA[divisionId] = new GLHCHCJMFGA
+            {
+                EABKMELHIML = divisionId,
+                GDAKCOICIDA = completion,
+                MPJPLKKJNGE = tutorialTask,
+            };
+        permanentInfo.ENECKKGPKHI = Catalog.CompletedTutorialStages.Select(stage => stage.DivisionId).DefaultIfEmpty().Max();
 
         return new GridFightSystemInfo
         {
@@ -97,10 +123,7 @@ public sealed partial class GridFightManager : BasePlayerManager
                 SubSeason = Catalog.CurrentSubSeason,
                 SeasonTalent = seasonTalent,
             },
-            PermanentInfo = new GridFightPermanentGameInfo
-            {
-                Talent = permanentTalent,
-            },
+            PermanentInfo = permanentInfo,
         };
     }
 
@@ -136,7 +159,26 @@ public sealed partial class GridFightManager : BasePlayerManager
             ContextValueInfo = new GridFightContextValueInfo { ContextValueVersion = 97 },
         });
         current.GameInfoList.Add(new GridFightGameInfo { PrayQuestInfo = new GridFightPrayQuestInfo() });
+        if (session.PetPalId != 0)
+        {
+            var petPal = new FBKIFPOEGGO();
+            petPal.BBEEGMDAMIB.Add(BuildPetPalEffects(session));
+            current.GameInfoList.Add(new GridFightGameInfo { OGKMAKNOPOD = petPal });
+        }
         return current;
+    }
+
+    // Field identities follow the client GridFightPetPalEffectRepository.Sync: OKGGFNJJLNG (8) is the partner,
+    // NDAHDHKGNBG (9) the effect and MOCLKEPPIGA (1) marks it active.
+    private static IEnumerable<LKHAJCACPBH> BuildPetPalEffects(GridFightSession session)
+    {
+        if (session.PetPalId == 0) yield break;
+        yield return new LKHAJCACPBH
+        {
+            OKGGFNJJLNG = session.PetPalId,
+            NDAHDHKGNBG = session.PetPalEffectId,
+            MOCLKEPPIGA = true,
+        };
     }
 
     public GridFightSettleNotify BuildSettleNotify(GridFightSettleReason reason)
@@ -180,6 +222,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             BossInfo = bosses,
         };
         finish.AffixInfoList.Add(session.AffixIds.Select(id => new GridFightAffixInfo { AffixId = id }));
+        finish.BBEEGMDAMIB.Add(BuildPetPalEffects(session));
         finish.GridGameRoleList.Add(session.Roles
             .OrderBy(role => role.Position)
             .ThenBy(role => role.UniqueId)
@@ -1588,7 +1631,9 @@ public sealed partial class GridFightManager : BasePlayerManager
             var settle = BuildSettleNotify(GridFightSettleReason.Victory);
             await Player.SendPacket(new PacketGridFightSyncKeepWinCntNotify(1));
             await Player.SendPacket(new PacketGridFightSettleNotify(settle));
+            var finished = Session!;
             ClearSession();
+            await RecordGameFinished(finished);
         }
     }
 

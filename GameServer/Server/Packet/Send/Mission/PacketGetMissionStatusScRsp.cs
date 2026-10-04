@@ -14,7 +14,7 @@ public class PacketGetMissionStatusScRsp : BasePacket
 
         foreach (var item in req.MainMissionIdList)
         {
-            var status = player.MissionManager!.GetMainMissionStatus((int)item);
+            var status = player.MissionManager!.GetClientMainMissionStatus((int)item);
             if (status == MissionPhaseEnum.Finish)
             {
                 proto.FinishedMainMissionIdList.Add(item);

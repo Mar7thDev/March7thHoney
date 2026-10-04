@@ -17,6 +17,9 @@ public partial class GridFightRoleBasicInfoExcel : ExcelResource
     public bool IsInPool { get; set; }
     public bool IsInBook { get; set; }
 
+    // Season 2 pseudo-roles (604202) that never act as a battle avatar.
+    public bool IsFakeAvatar { get; set; }
+
     public override int GetId()
     {
         return (int)ID;
