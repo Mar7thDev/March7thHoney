@@ -12,6 +12,13 @@ public enum GridFightBonusTypeEnum
     RandomEquipByCategory = 13,
     RandomEquipByFunc = 14,
     RandomSameAvatar = 15,
-    SpecificAvatarWithRandomEquip = 16,
-    SpecificAvatarWithEquip = 17
+    SpecificAvatarWithEquip = 16,
+    SpecificAvatarWithRandomEquip = 17,
+    SpotLightReplaceCnt = 18,
+    Augment = 19,
+    SpotLightFreeRefreshCnt = 20,
+    TrailblazeShopCoin = 21,
+    ElationGoods = 22,
+    GlobalHp = 23,
+    ElationItem = 24
 }

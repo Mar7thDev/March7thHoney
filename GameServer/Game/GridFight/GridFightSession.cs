@@ -693,7 +693,8 @@ public sealed partial class GridFightSession
     public bool TryAddRole(uint roleId, uint star, out GridFightRoleAcquisitionResult acquisition)
     {
         acquisition = GridFightRoleAcquisitionResult.Failed;
-        if (!GameData.GridFightRoleBasicInfoData.ContainsKey(roleId) ||
+        if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var basic) || basic.SeasonID != Season ||
+            basic.IsFakeAvatar != 0 || (basic.UsesNativeSkillOverrides && !GameData.AvatarConfigData.ContainsKey((int)basic.AvatarID)) ||
             !GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | star))
             return false;
 

@@ -6,5 +6,9 @@ public enum GridFightConsumeTypeEnum
     Roll = 1,
     Upgrade = 2,
     Copy = 3,
-    GainRecommendEquip = 4
+    GainRecommendEquip = 4,
+    UpgradeByRefresh = 5,
+    SpotLight = 6,
+    UpgradeChimera = 7,
+    CopyChimera = 8
 }
