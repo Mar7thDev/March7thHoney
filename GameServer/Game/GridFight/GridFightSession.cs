@@ -477,7 +477,11 @@ public sealed partial class GridFightSession
                 when Phase == GridFightSessionPhase.AwaitingSupplyRound:
                 AdvanceRotationHeroPortalRound();
                 PrepareLaborDispatchBossReward();
-                Phase = GridFightSessionPhase.AwaitingBattleReturn;
+                // Season-2 routes (e.g. 2400-2801) put an elite branch right after the supply node; it still needs
+                // its encounter choice or the run cannot start the battle. Season-1 routes follow supply with camps.
+                Phase = CurrentNode.NodeType == GridFightNodeTypeEnum.EliteBranch
+                    ? GridFightSessionPhase.SelectingEncounter
+                    : GridFightSessionPhase.AwaitingBattleReturn;
                 PendingQueuePosition++;
                 return true;
             case GridFightPendingRequestKind.ReturnPreparation
@@ -1347,9 +1351,13 @@ public sealed partial class GridFightSession
     {
         var previousLevel = PlayerLevel;
         PlayerExp += amount;
-        while (GameDataHasNextLevel() && PlayerExp >= _catalog.GetPlayerLevel(PlayerLevel).LevelUpExp)
+        // Season 2 appends a level-11 row reachable only through effects; level 10 has no LevelUpExp, so without
+        // the cap any exp gained at level 10 would roll straight into it.
+        while (PlayerLevel < _catalog.MaxPlayerLevel && GameDataHasNextLevel() &&
+               _catalog.GetPlayerLevel(PlayerLevel).LevelUpExp is var levelUpExp and > 0 &&
+               PlayerExp >= levelUpExp)
         {
-            PlayerExp -= _catalog.GetPlayerLevel(PlayerLevel).LevelUpExp;
+            PlayerExp -= levelUpExp;
             PlayerLevel++;
         }
         if (PlayerLevel != previousLevel)
