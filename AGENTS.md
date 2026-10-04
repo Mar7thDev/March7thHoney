@@ -30,7 +30,7 @@
 | `Proto/Generated/` | 当前活动版本生成的 C# 协议代码 |
 | `Proto/Tool/ProtoOrganizer/` | 协议整理、版本迁移和生成工具 |
 | `Config/` | 自定义 JSON、语言包、资源缓存及本地运行数据；部分内容受版本控制 |
-| `Resources/`、`TurnBasedGameData/` | 本地游戏资源，已被 Git 忽略，干净检出不保证存在 |
+| `Resources/`、`TurnBasedGameData/`、`Config/Resource.bin` | 本地游戏资源和生成缓存，已被 Git 忽略，干净检出不保证存在 |
 | `scripts/` | 独立回归程序、缓存升级工具及 Linux 部署脚本 |
 | `docs/` | 开发、测试、API、入门和运维文档，入口为 `docs/README.md` |
 

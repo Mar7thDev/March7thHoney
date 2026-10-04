@@ -413,6 +413,7 @@ dev/
 
 ## Generated resource cache 
 Config/Resource.cache
+Resource.bin
 
 Config/Json/Meli.json
 Config Live.json
