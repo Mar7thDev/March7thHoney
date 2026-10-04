@@ -247,7 +247,31 @@ Check("season 2 run syncs one partner effect; season 1 syncs none", catalog.IsSe
     ? partnerSession.PetPalId == 0 && partnerSync.Count == 0
     : GameData.GridFightPetPalData.TryGetValue(partnerSession.PetPalId, out var partnerRow) &&
       partnerRow.EffIDList.Contains(partnerSession.PetPalEffectId) && partnerSync.Count == 1 &&
-      partnerSync[0].OKGGFNJJLNG == partnerSession.PetPalId && partnerSync[0].NDAHDHKGNBG == partnerSession.PetPalEffectId);
+      partnerSync[0].NDAHDHKGNBG == partnerSession.PetPalId && partnerSync[0].OKGGFNJJLNG == partnerSession.PetPalEffectId);
+
+// The 4.7 client builds its stage nodes only from the synced route nodes; without them the current node is null.
+var levelInfo = partnerRun.BuildCurrentInfo()!.GameInfoList.Single(info => info.LevelInfo != null).LevelInfo;
+Check("current info syncs every node of a current-season route", GridFightSeasonScope.IsRouteInSeason(catalog.StandardRouteId, season) &&
+    levelInfo.RouteId == catalog.StandardRouteId && levelInfo.OOMMIIKPHBC.Count == catalog.StandardRoute.Count &&
+    levelInfo.OOMMIIKPHBC.Zip(catalog.StandardRoute).All(pair =>
+        pair.First.DCAHJELNJNP == pair.Second.ChapterId && pair.First.SectionId == pair.Second.SectionId &&
+        pair.First.Param.StageId == pair.Second.StageId && pair.First.Param.NodeType == (uint)pair.Second.NodeType &&
+        pair.First.Param.PFEMDGNFHNH == pair.Second.Template.IsAugment &&
+        pair.First.Param.ParamList.SequenceEqual(pair.Second.Parameters)) &&
+    levelInfo.OOMMIIKPHBC.Any(node => node.DCAHJELNJNP == levelInfo.ChapterId && node.SectionId == levelInfo.SectionId));
+
+// The 4.7 client reads consumable updates and removals only through the nested consumable info (field 13).
+var consumableItem = GameData.GridFightConsumablesData.Keys.Order()
+    .First(id => partnerSession.Consumables.All(held => held.ItemId != id));
+var consumableUpdates = new[] { true, false }.Select(_ =>
+        partnerSession.TryAddConsumable(consumableItem, out var consumableChange)
+            ? partnerRun.BuildConsumableSync(consumableChange).ResultList.Single().UpdateDynamicList.Single()
+            : null)
+    .ToList();
+Check("consumable add and stack updates carry the nested consumable info", consumableUpdates.All(update =>
+    (update?.AddGameItemInfo ?? update?.UpdateGameItemInfo)?.UpdateGridFightConsumableList.Single() is { } entry &&
+    entry.MCKHGIEJLHM is { } nested && nested.GroupId == entry.GroupId && nested.ItemId == consumableItem &&
+    nested.Num == entry.Num) && consumableUpdates[0]?.AddGameItemInfo != null && consumableUpdates[1]?.UpdateGameItemInfo != null);
 
 // Synthetic items isolate dress restrictions from resource balancing changes.
 const uint FreeItem = 990001, UniqueItem = 990002, LeaderItem = 990003, RoleItem = 990004;
@@ -483,6 +507,18 @@ for (var transition = 0; transition < 300 && !finished; transition++)
 }
 Check("full route reaches final boss settlement", finished && battleCount > 10);
 Check("full route keeps roles, shop, items and offers in the current season", routeStaysInSeason);
+
+// Season 2 adds an effect-only level 11 after the level-10 cap; normal exp must stop at the cap.
+var levelRun = NewRun(routePortal).Session!;
+levelRun.AdjustGold(10000);
+while (levelRun.BuyExp()) { }
+var boughtLevel = levelRun.PlayerLevel;
+levelRun.Roles.Clear();
+AddRole(levelRun, roleA).Position = 1;
+var cappedBattleWon = levelRun.EnterBattle() &&
+    levelRun.ResolveBattle(true, new GridFightBattleStatistics(100, [], [], [], [], 1, new Dictionary<string, uint>())).Success;
+Check("player level stops at the level cap, also when a battle grants exp",
+    boughtLevel == catalog.MaxPlayerLevel && cappedBattleWon && levelRun.PlayerLevel == catalog.MaxPlayerLevel);
 Check("periodic benefits are published on node entry", periodicRewardsObserved > 10);
 Check("gold futures offers recur through full route", futuresSelections >= 2);
 if (routePortal == GridFightSession.DotContractPortalId)

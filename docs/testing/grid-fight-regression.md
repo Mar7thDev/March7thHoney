@@ -46,9 +46,14 @@ dotnet build March7thHoney.sln --no-restore
 - 4.6.51 去掉了 `GridFightCamp.SeasonID` 与 `RoleBasicInfo.RoleSavedValueList`：无赛季的阵营视为共享；缺少 SavedValue 列时角色池改用赛季 2 规则（排除 `IsFakeAvatar` 与阿哈 151112/151122/151132 成本档，七费档按 `ShopPrice` 第 7 行定价）。
 - 赛季 1 专属机制只在赛季 1 生效：昔涟/银狼 LV999 校验、受限角色种子、4.5 商店稀有度表、赛季天赋 2011 终局回合治疗及 3560xxxx 天赋战斗 buff、天赋 4032 的宝珠奖励（`GridFightRewardRules.json` 的 `SeasonIds`）。
 - `GridFightFormationWave` 新增一条省略 ID（0）的 5 人波次，战斗仍使用编号 5 的波次。
-- 赛季 2 每局随机一名伙伴（`GridFightPetPal.json`，跳过无效果的 1 号）及其一条效果，经 `GridFightGameInfo` 的伙伴同步（字段 1984）和结算 `GridFightFinishInfo`（字段 1836）下发；客户端开局流程直接读取第一条伙伴效果，缺失时空引用导致“开始对局”无反应。伙伴效果本身的玩法尚未实现。
+- 赛季 2 每局随机一名伙伴（`GridFightPetPal.json`，跳过无效果的 1 号）及其一条效果，经 `GridFightGameInfo` 的伙伴同步（字段 1984，条目字段 9 为伙伴、8 为效果）和结算 `GridFightFinishInfo`（字段 1836）下发；客户端开局流程直接读取第一条伙伴效果，缺失时空引用导致“开始对局”无反应。伙伴效果本身的玩法尚未实现。
 - 对局结算（胜利或退出结算）触发 `GridFightFinishGamePlay` 任务进度，参数 1 为标准博弈、2 为超频博弈；超频博弈由 `GridFight_OC_UnlockQuest`（7302115）解锁。
-- 赛季 2 起向客户端隐藏已完成的 `GridFight_Tutorial_Main_Mission_Id`（8037100）：地图控制台只在该任务“未接取”时打开赛季 2 入口，已完成时打开赛季 1 旧页面；服务端自身仍视其为已完成。覆盖见 `LoginSceneRegression`。
+- 地图控制台（`Prop_Common_GridFightConsole_01`）按 `ByCompareMainMissionState(8037100)` 分支，省略的状态取类默认值 `Finish`：`GridFight_Tutorial_Main_Mission_Id` 已完成时打开新入口，否则打开赛季 1 旧页面。服务端如实下发该任务状态，覆盖见 `LoginSceneRegression`。
+- 标准路线按赛季取：`GridFightStageRoute` 无赛季列，赛季 N 的段位路线编号从 N×1000 起（赛季 1 为 1000–1800、1801，23 节点；赛季 2 为 2000–2800、2801，16 节点），1000 以下为教程/首玩路线。
+- 4.6.51 客户端只用 `GridFightLevelInfo` 字段 12 下发的路线节点构建关卡节点（章节 5、小节 1，参数内 2 关卡、7 惩罚规则、8 增益节点、12 基础金币、14 节点类型）；缺失时当前节点为空，进度条显示 0-0、备战页无法出战。
+- 赛季 2 路线中补给节点之后可能紧接精英分支，补给回合开始后进入精英遭遇选择（未经抓包确认，依据为客户端需要遭遇选择才能出战）。
+- 消耗品增删同步必须带嵌套的 `GridFightConsumableInfo`（`GridFightConsumableUpdateInfo` 字段 13），客户端只读该字段。
+- 赛季 2 等级表新增只能由效果达到的 11 级；普通经验（购买、战斗）只升到 `GridFight_DefaultPlayerLevelMax`（10），10 级无升级经验，不能再滚入 11 级。
 
 赛季 2 专属玩法（聚光灯、奇美拉、开拓商店、欢愉笑点、阿哈升级等）及其 4.7 协议消息尚未实现：选择 2101–2214 传送门只记录为已选，不触发专属效果。
 
@@ -56,7 +61,7 @@ dotnet build March7thHoney.sln --no-restore
 
 缓存组成：`Config/Resource.bin` 由 4.6.51 资源生成，再用 4.6.0 正式服缓存补齐 4.6.51 dump 缺失的表和行（任务、消息、MechCraft 等）；GridFight 表一律以 4.6.51 为准，不从旧缓存补行（旧缓存中的 14 条赛季 1 词缀不再混入）。
 
-验证结果（2026-10-03）：赛季 2 缓存 168/168，4.6.0 赛季 1 缓存 188/188。
+验证结果（2026-10-04）：赛季 2 缓存 155/155（赛季 2 路线更短，战斗相关检查随之减少），4.6.0 赛季 1 缓存 191/191。
 
 下载版资源缓存不能由当前数据模型反序列化（`VideoKeysConfig` 字段布局不匹配），因此保留当前缓存，并使用当前缓存完成验证。
 这些检查验证服务端状态及消息构造；客户端界面、动画和实机战斗尚未验证。下载版注释中的抓包结论未在本次重新抓包核实。

@@ -1486,10 +1486,11 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         .Select(row => row.GetProperty("activityId").GetInt32()).ToHashSet();
     Check("activity schedule carries no player-return module",
         scheduledModules.Count > 0 && playerReturnModules.All(id => !scheduledModules.Contains(id)));
-    // GridFight season 2. The map console (Prop_Common_GridFightConsole_01) opens the season-2 page only while the
-    // GridFight tutorial main mission reads as never taken, so the client view hides it although the server keeps
-    // it finished. The overclock unlock quest (GridFight_OC_UnlockQuest) completes when a standard run settles, and
-    // every season-2 run syncs its partner (the client game flow dereferences the first partner effect on entry).
+    // GridFight season 2. The map console (Prop_Common_GridFightConsole_01) raises OpenNewUI only when
+    // ByCompareMainMissionState(GridFight_Tutorial_Main_Mission_Id) holds; its omitted MainMissionState is the class
+    // default Finish, so the finished tutorial main mission must reach the client as finished (hidden, the console
+    // falls back to the season-1 page). The overclock unlock quest (GridFight_OC_UnlockQuest) completes when a
+    // standard run settles, and every season-2 run syncs its partner (the client game flow dereferences the first partner effect on entry).
     var gridFightConstants = GameData.GridFightConstValueData;
     if (gridFightConstants.TryGetValue("GridFight_Season_ID", out var gridFightSeason) && gridFightSeason.AsUInt32() >= 2)
     {
@@ -1503,16 +1504,17 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
             .ToList();
         var missionData = GetMissionDataScRsp.Parser.ParseFrom(new March7thHoney.GameServer.Server.Packet.Send.Mission
             .PacketGetMissionDataScRsp(roguePlayer).Data);
-        Check("season 2 hides the finished GridFight tutorial main mission from the client only",
+        Check("season 2 reports the finished GridFight tutorial main mission as finished to the client",
             roguePlayer.MissionManager!.GetMainMissionStatus((int)tutorialMission) == MissionPhaseEnum.Finish &&
-            !missionData.FinishedMainMissionIdList.Contains(tutorialMission) &&
+            (!roguePlayer.MissionManager.Data.FinishedMainMissionIds.Contains((int)tutorialMission) ||
+             missionData.FinishedMainMissionIdList.Contains(tutorialMission)) &&
             missionReplies.Any(frame => frame.Id == CmdIds.GetMissionStatusScRsp &&
                                         GetMissionStatusScRsp.Parser.ParseFrom(frame.Body) is var status &&
-                                        status.UnfinishedMainMissionIdList.Contains(tutorialMission) &&
-                                        !status.FinishedMainMissionIdList.Contains(tutorialMission)) &&
+                                        status.FinishedMainMissionIdList.Contains(tutorialMission) &&
+                                        !status.UnfinishedMainMissionIdList.Contains(tutorialMission)) &&
             missionReplies.Any(frame => frame.Id == CmdIds.GetMainMissionCustomValueScRsp &&
                                         GetMainMissionCustomValueScRsp.Parser.ParseFrom(frame.Body).MainMissionList
-                                            .Single().Status == MissionStatus.MissionNone));
+                                            .Single().Status == MissionStatus.MissionFinish));
 
         var unlockQuest = (int)gridFightConstants["GridFight_OC_UnlockQuest"].AsUInt32();
         var questBefore = roguePlayer.QuestManager!.GetQuestStatus(unlockQuest);
@@ -1529,8 +1531,8 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
             .ToList() ?? [];
         Check("season 2 run starts with one active partner effect from that partner's effect list",
             started is { Retcode: 0 } && partnerEffects.Count == 1 && partnerEffects[0].MOCLKEPPIGA &&
-            GameData.GridFightPetPalData.TryGetValue(partnerEffects[0].OKGGFNJJLNG, out var partner) &&
-            partner.EffIDList.Contains(partnerEffects[0].NDAHDHKGNBG));
+            GameData.GridFightPetPalData.TryGetValue(partnerEffects[0].NDAHDHKGNBG, out var partner) &&
+            partner.EffIDList.Contains(partnerEffects[0].OKGGFNJJLNG));
         var settleReplies = await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.GridFight
             .HandlerGridFightQuitSettleCsReq().OnHandle(rogueConnection, [], []));
         var settled = settleReplies.Where(frame => frame.Id == CmdIds.GridFightSettleNotify)

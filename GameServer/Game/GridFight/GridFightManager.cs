@@ -168,15 +168,16 @@ public sealed partial class GridFightManager : BasePlayerManager
         return current;
     }
 
-    // Field identities follow the client GridFightPetPalEffectRepository.Sync: OKGGFNJJLNG (8) is the partner,
-    // NDAHDHKGNBG (9) the effect and MOCLKEPPIGA (1) marks it active.
+    // Field identities follow the client GridFightPetPalEffectRepository.Sync, which passes NDAHDHKGNBG (9) to
+    // GridFightPetPalConfig.GetConfig and OKGGFNJJLNG (8) to GridFightPetPalEffectConfig.GetConfig; MOCLKEPPIGA (1)
+    // marks it active. Swapping them leaves the S2 preparation page without a partner and blacks out the start.
     private static IEnumerable<LKHAJCACPBH> BuildPetPalEffects(GridFightSession session)
     {
         if (session.PetPalId == 0) yield break;
         yield return new LKHAJCACPBH
         {
-            OKGGFNJJLNG = session.PetPalId,
-            NDAHDHKGNBG = session.PetPalEffectId,
+            NDAHDHKGNBG = session.PetPalId,
+            OKGGFNJJLNG = session.PetPalEffectId,
             MOCLKEPPIGA = true,
         };
     }
@@ -1920,6 +1921,8 @@ public sealed partial class GridFightManager : BasePlayerManager
         return info;
     }
 
+    // The 4.7 client (GridFightConsumableInfo.SyncUpdate/SyncRemove) reads the item only from the nested
+    // MCKHGIEJLHM (field 13) and throws when it is missing.
     private static GridFightConsumableUpdateInfo BuildConsumableUpdate(GridFightConsumableChange change)
     {
         return new GridFightConsumableUpdateInfo
@@ -1928,6 +1931,12 @@ public sealed partial class GridFightManager : BasePlayerManager
             ItemId = change.Consumable.ItemId,
             ItemStackCount = checked((int)change.StackDelta),
             Num = change.Consumable.Count,
+            MCKHGIEJLHM = new GridFightConsumableInfo
+            {
+                GroupId = change.Consumable.GroupId,
+                ItemId = change.Consumable.ItemId,
+                Num = change.Consumable.Count,
+            },
         };
     }
 
@@ -2073,7 +2082,31 @@ public sealed partial class GridFightManager : BasePlayerManager
             MonsterId = monster.MonsterID,
             RoleStar = 1,
         }));
+        info.OOMMIIKPHBC.Add(Catalog.StandardRoute.Select(BuildRouteNode));
         return info;
+    }
+
+    // From 4.6.51 the client builds its stage nodes (GridFightStageRoute.SyncRouteNodes) only from these synced
+    // nodes; without them the current node is null, the stage line reads 0-0 and the preparation page cannot
+    // start a battle. Field identities follow GridFightStageNode._RefreshCachedFields: param 2 stage, 7 penalty
+    // rule, 8 augment flag (== 1), 12 basic gold, 14 node type; 4 (spotlight) and 11 (bonfire) stay unset.
+    private static BCCIJHPLJOJ BuildRouteNode(GridFightRouteNode node)
+    {
+        var param = new OHMDHKGAEMM
+        {
+            StageId = node.StageId,
+            IFIIOIIKJHO = node.PenaltyBonusRuleId,
+            PFEMDGNFHNH = node.Template.IsAugment,
+            PICMDONCKCO = node.BasicGoldReward,
+            NodeType = (uint)node.NodeType,
+        };
+        param.ParamList.Add(node.Parameters);
+        return new BCCIJHPLJOJ
+        {
+            DCAHJELNJNP = node.ChapterId,
+            SectionId = node.SectionId,
+            Param = param,
+        };
     }
 
     private GridFightLayerInfo BuildLayerInfo()

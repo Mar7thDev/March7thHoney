@@ -1614,10 +1614,16 @@ public sealed class GridFightResourceCatalog
         excluded.UnionWith(GameData.GridFightTutorialStageData.Keys.Select(id => id * 100));
         excluded.Add(GetUInt("GridFight_FirstPlay_StageRouteID"));
 
-        return GameData.GridFightStageRouteData
+        var candidates = GameData.GridFightStageRouteData
             .Where(pair => !excluded.Contains(pair.Key))
             .Where(pair => pair.Value.Values.All(row =>
                 GameData.GridFightNodeTemplateData.ContainsKey(row.NodeTemplateID)))
+            .ToList();
+        // The client draws the route it is sent, so a season-1 route in a season-2 run shows the wrong stages.
+        var seasonRoutes = candidates
+            .Where(pair => GridFightSeasonScope.IsRouteInSeason(pair.Key, CurrentSeason))
+            .ToList();
+        return (seasonRoutes.Count > 0 ? seasonRoutes : candidates)
             .OrderBy(pair => pair.Value.Count)
             .ThenBy(pair => pair.Key)
             .Last().Key;

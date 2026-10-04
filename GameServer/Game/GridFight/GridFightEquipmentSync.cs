@@ -272,6 +272,12 @@ public sealed partial class GridFightManager
             ItemId = change.ItemId,
             ItemStackCount = -1,
             Num = change.RemainingCount,
+            MCKHGIEJLHM = new GridFightConsumableInfo
+            {
+                GroupId = change.GroupId,
+                ItemId = change.ItemId,
+                Num = change.RemainingCount,
+            },
         });
         result.UpdateDynamicList.Add(change.Removed
             ? new GridFightSyncData { RemoveGameItemInfo = items }

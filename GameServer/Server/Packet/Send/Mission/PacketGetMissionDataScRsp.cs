@@ -1,7 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Enums.Mission;
-using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -29,7 +28,7 @@ public class PacketGetMissionDataScRsp : BasePacket
 
         proto.FinishedMainMissionIdList.AddRange(player.MissionManager.Data.FinishedMainMissionIds
             .Concat(player.B51RacingManager?.CompletedMainMissionIDs ?? [])
-            .Where(x => x > 0 && !MissionManager.IsHiddenFromClient(x))
+            .Where(x => x > 0)
             .Select(x => (uint)x)
             .Distinct());
 
