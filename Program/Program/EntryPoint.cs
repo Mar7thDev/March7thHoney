@@ -221,40 +221,7 @@ public class EntryPoint
         {
             try
             {
-                if (File.Exists(ResourceCache.CachePath))
-                {
-                    Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
-                        I18NManager.Translate("Word.Cache")));
-                    if (!ResourceCache.LoadCache())
-                    {
-                        ResourceCache.ClearGameData();
-                        throw new InvalidDataException("Resource cache is invalid. Delete it before restarting to rebuild from Resources.");
-                    }
-                }
-                else
-                {
-                    Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
-                        I18NManager.Translate("Word.GameData")));
-                    ResourceManager.LoadGameData();
-                    loadedFromResources = true;
-
-                    // Finish writing the cache before startup completes.
-                    if (ConfigManager.Config.ServerOption.UseCache && ResourceCache.IsComplete)
-                    {
-                        Logger.Warn(I18NManager.Translate("Server.ServerInfo.WaitingItem",
-                            I18NManager.Translate("Word.Cache")));
-                        await ResourceCache.SaveCache();
-                    }
-                    else if (ConfigManager.Config.ServerOption.UseCache)
-                    {
-                        // A single unparseable record anywhere in the tree clears IsComplete, and the
-                        // cache write was then skipped without a word - every later boot re-read the raw
-                        // Resources tree and the operator had no idea why Resource.bin never appeared.
-                        Logger.Warn(
-                            "Resource cache NOT written: one or more resources failed to load (see the errors above). " +
-                            "Fix them and restart, or the server will re-read the raw resource tree on every boot.");
-                    }
-                }
+                loadedFromResources = await ResourceStartupLoader.LoadAsync();
 
                 // Operator-authored content, not dumped game data: the banner list and the video keys
                 // are the two files a server owner actually edits. Baking them into Resource.bin made
