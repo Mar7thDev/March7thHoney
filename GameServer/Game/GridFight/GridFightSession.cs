@@ -31,7 +31,11 @@ public enum GridFightPendingRequestKind
     ReturnPreparation,
 }
 
-public sealed record GridFightSupplyOfferState(uint RoleId, uint EquipmentId);
+public sealed record GridFightSupplyOfferState(uint RoleId, uint EquipmentId)
+{
+    public uint Star { get; init; } = 1;
+    public IReadOnlyList<uint> ExtraEquipmentIds { get; init; } = [];
+}
 
 public sealed record GridFightSupplySelectionResult(
     bool Success,
@@ -558,6 +562,7 @@ public sealed partial class GridFightSession
         SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount, _temporarilyUnlockedRestrictedRoleIds)
             .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
             .ToList();
+        SupplyOffer = ApplyPetPalSupplyRules(SupplyOffer);
         SupplyRerollCount = 1;
         return true;
     }
@@ -618,8 +623,11 @@ public sealed partial class GridFightSession
         {
             UniqueId = _nextEntityUniqueId++,
             RoleId = selected.RoleId,
+            Star = Math.Max(selected.Star, 1u),
             Position = GetFreeBenchPosition(),
         };
+        // Extra supply equipment (绯绯狐: 2 random emblems) arrives with the season-2 follow-up sync.
+        _petPalPendingEquipment.AddRange(selected.ExtraEquipmentIds.Where(id => id != 0));
         Roles.Add(role);
         RecalculateRoleSwitches();
         var mergeSteps = MergeRoles(role.RoleId);
@@ -821,7 +829,23 @@ public sealed partial class GridFightSession
         foreach (var index in indices)
         {
             var slot = Shop.Single(goods => goods.Index == index);
-            var application = ApplyCyreneSpecialGoods(slot.SpecialGoodsId);
+            GridFightRewardApplication application;
+            if (IsAhaGoods(slot.SpecialGoodsId))
+            {
+                if (Gold < slot.Price) return [];
+                Gold -= slot.Price;
+                application = ApplyAhaSpecialGoods(slot.SpecialGoodsId);
+                if (!application.Success)
+                {
+                    Gold += slot.Price;
+                    return [];
+                }
+                application.GoldChanged = true;
+            }
+            else
+            {
+                application = ApplyCyreneSpecialGoods(slot.SpecialGoodsId);
+            }
             if (!application.Success) return [];
             slot.SoldOut = true;
             results.Add(new GridFightSpecialGoodsPurchaseResult(index, slot.SpecialGoodsId, application));
@@ -1354,7 +1378,7 @@ public sealed partial class GridFightSession
         if (current.LevelUpExp == 0) return false;
 
         Gold -= _catalog.BuyExpCost;
-        AddPlayerExp(_catalog.BuyExpAmount);
+        AddPlayerExp(_catalog.BuyExpAmount + PetPalBuyExpBonus());
         return true;
     }
 
@@ -1557,7 +1581,7 @@ public sealed partial class GridFightSession
             return GridFightBattleSettlementResult.Failed;
         }
 
-        var progressPercent = Math.Min(statistics.ProgressPercent, 100u);
+        var progressPercent = ApplyPetPalGuard(Math.Min(statistics.ProgressPercent, 100u));
         statistics = statistics with { ProgressPercent = progressPercent };
         var isPerfectFinish = progressPercent == 100;
         var penaltyRule = _catalog.GetPenaltyRule(CurrentPenaltyRuleId);
@@ -1730,7 +1754,8 @@ public sealed partial class GridFightSession
         if (chargeGold &&
             (Phase != GridFightSessionPhase.Preparing ||
              (_freeShopRefreshCount == 0 && Gold < _catalog.RefreshCost) ||
-             Shop.Any(slot => slot.SpecialGoodsId != 0 && !slot.SoldOut)))
+             // Cyrene's poem shop must be bought out first; Aha goods are ordinary slots.
+             Shop.Any(slot => slot.SpecialGoodsId != 0 && !IsAhaGoods(slot.SpecialGoodsId) && !slot.SoldOut)))
             return false;
         if (!chargeGold && _shopLocked && Shop.Count > 0) return true;
         if (chargeGold)
@@ -1760,6 +1785,7 @@ public sealed partial class GridFightSession
                 Price = _catalog.GetBuyPrice(roles[index].ID, star),
             });
         }
+        ApplyAhaShopGlance();
         return true;
     }
 
@@ -1804,6 +1830,7 @@ public sealed partial class GridFightSession
         SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount, _temporarilyUnlockedRestrictedRoleIds)
             .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
             .ToList();
+        SupplyOffer = ApplyPetPalSupplyRules(SupplyOffer);
         SupplyRerollCount = 0;
     }
 
