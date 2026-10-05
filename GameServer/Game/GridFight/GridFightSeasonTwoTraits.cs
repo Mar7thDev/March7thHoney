@@ -95,6 +95,12 @@ public sealed partial class GridFightSession
     private readonly List<uint> _rangerRoleIds = [];
     private readonly List<uint> _memberLinkUniqueIds = [];
     private GridFightSeasonTwoPendingState? _seasonTwoPending;
+    private readonly HashSet<uint> _finishedSeasonTwoQueuePositions = [];
+
+    /// <summary>A season-2 prompt at this queue position was already answered (the client resent it).</summary>
+    public bool IsFinishedSeasonTwoPending(uint queuePosition) =>
+        queuePosition != 0 && _finishedSeasonTwoQueuePositions.Contains(queuePosition) &&
+        _seasonTwoPending?.QueuePosition != queuePosition;
 
     public bool IsSeasonTwoRules => !_catalog.IsSeasonOne;
     public IReadOnlyDictionary<uint, uint> TraitTemplateIds => _traitTemplateIds;
@@ -207,10 +213,12 @@ public sealed partial class GridFightSession
         PruneMemberLink();
         if (Phase == GridFightSessionPhase.Preparing)
         {
+            EnsureAhaModifier();
             var aha = AbsorbAhaCopies();
             changes.RemovedRoleIds.AddRange(aha.Absorbed);
             changes.UpdatedRoles.AddRange(aha.Changed);
             GrantTemplateEquipment(changes);
+            GrantPetPalRewards(changes);
             RefreshSeasonTwoShops(changes);
             RefreshClara(changes);
             RefreshChimera(changes);
@@ -349,6 +357,7 @@ public sealed partial class GridFightSession
         var pending = _seasonTwoPending;
         if (pending == null || pending.Kind != kind) return 0;
         _seasonTwoPending = null;
+        _finishedSeasonTwoQueuePositions.Add(pending.QueuePosition);
         if (PendingQueuePosition == pending.QueuePosition) PendingQueuePosition++;
         return pending.QueuePosition;
     }

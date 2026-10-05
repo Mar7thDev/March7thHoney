@@ -131,6 +131,7 @@ public sealed partial class GridFightSession
         foreach (var material in removed) Equipments.Remove(material);
         var added = CreateEquipment(craftedEquipmentId, CraftedEquipmentSource);
         TryAutoEquipCraftedEquipment(added, source, trackId);
+        ApplyPetPalCraftRefund(removed);
         RecalculateRoleSwitches();
         return new GridFightEquipCraftResult(
             true,

@@ -78,7 +78,10 @@ public sealed partial class GridFightManager
                 info.GDAMHENIIDJ = new JADHHGHGMPH
                 {
                     BCDFCFMBCCG = session.JadeRefreshUnlocked,
-                    KPMKFGCFMHC = consumeOneShotFlags && session.TakeJadeAutoOpen(),
+                    // The auto-open flag makes the client insert its own shop action in front of the queue; with a
+                    // server pending action open at the same time the client never closes that prompt, so the flag
+                    // waits until nothing is pending.
+                    KPMKFGCFMHC = consumeOneShotFlags && !HasOpenPendingAction(session) && session.TakeJadeAutoOpen(),
                 };
                 info.GDAMHENIIDJ.OGDKJPDFFAI.Add(session.JadeGoods.Select(good =>
                 {
@@ -119,6 +122,9 @@ public sealed partial class GridFightManager
                 return null;
         }
     }
+
+    private bool HasOpenPendingAction(GridFightSession session) =>
+        session.HasPendingSelection || session.Phase != GridFightSessionPhase.Preparing || BuildPendingAction() != null;
 
     private static GridFightDropEntry BuildSeasonTwoDropEntry(GridFightRewardEntry reward)
     {
@@ -208,6 +214,7 @@ public sealed partial class GridFightManager
             result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         AppendRoleSavedValueUpdates(result, session.RefreshRoleSavedValues());
         AppendSeasonTwoEffectDiffs(result);
+        AppendAhaModifierDiff(result, session);
         if (changes.PendingStarted && BuildPendingAction() is { } pending)
         {
             result.UpdateDynamicList.Add(new GridFightSyncData

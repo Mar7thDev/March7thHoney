@@ -300,6 +300,16 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<
             default:
                 return false;
         }
+        if (sync == null && session.IsFinishedSeasonTwoPending(queue))
+        {
+            // The client kept the prompt open after the answer was accepted; confirm the finish again
+            // instead of failing ("消息获取失败") so it can close.
+            var finish = new GridFightSyncResultData();
+            finish.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = queue });
+            finish.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+            sync = new GridFightSyncUpdateResultScNotify();
+            sync.ResultList.Add(finish);
+        }
         if (sync != null) await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
         await SendResponse(connection, queue, sync != null);
         return true;

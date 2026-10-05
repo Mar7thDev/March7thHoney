@@ -487,8 +487,8 @@ for (var transition = 0; transition < 300 && !finished; transition++)
             Check($"supply at {route.ChapterId}/{route.SectionId}: every card carries a role top drop and its equipment drop",
                 supplyCards is { Count: > 0 } && supplyCards.All(card =>
                     card.OPPFPECOBEF is { DropType: GridFightDropType.Role } top &&
-                    top.ItemId == card.RoleId && top.Param?.RoleStar == 1 &&
-                    card.DHLBEFLOOPM.Count == 1 && card.DHLBEFLOOPM[0].ItemId == card.GridFightItemList.Single()));
+                    top.ItemId == card.RoleId && top.Param?.RoleStar >= 1 && card.GridFightItemList.Count >= 1 &&
+                    card.DHLBEFLOOPM.Select(drop => drop.ItemId).SequenceEqual(card.GridFightItemList)));
             var supply = route.SelectSupply(queue, [1]);
             if (!supply.Success) throw new InvalidOperationException("Supply failed.");
             routeManager.BuildSupplySelectionSync(queue, 1, supply);
@@ -672,6 +672,113 @@ if (!catalog.IsSeasonOne)
                 EffectInfo(chimeraRun, GridFightSession.ChimeraTraitId, GridFightSession.ChimeraEffectId)
                     ?.GIKNCJMJLFE.BCGOAIPKGIK.Count == 1);
         }
+    }
+
+    // Jade's auto-open flag must not arrive together with a server prompt (the client then never closes the prompt).
+    var (mixedRun, mixed) = Board((GridFightSession.JadeRoleId, 1), (GridFightSession.ClaraRoleId, 2));
+    bool? AutoOpen(GridFightSyncUpdateResultScNotify? sync) => sync?.ResultList
+        .SelectMany(result => result.UpdateDynamicList)
+        .Where(data => data.TraitInfo?.TraitEffectInfo?.GDAMHENIIDJ != null)
+        .Select(data => (bool?)data.TraitInfo.TraitEffectInfo.GDAMHENIIDJ.KPMKFGCFMHC)
+        .LastOrDefault();
+    var firstFlush = mixedRun.BuildSeasonTwoFollowUpSync();
+    var claraQueue = mixed.SeasonTwoPending?.QueuePosition ?? 0;
+    Check("S2 黑市主理人: shop auto-open waits while Clara's prompt is open",
+        claraQueue != 0 && AutoOpen(firstFlush) == false);
+    mixed.SelectClaraEnhance(claraQueue, 1001, out _);
+    Check("S2 黑市主理人: shop auto-open follows once the prompt is answered",
+        AutoOpen(mixedRun.BuildSeasonTwoFollowUpSync()) == true);
+    Check("S2 pending: a resent answer for a finished prompt is recognised",
+        mixed.IsFinishedSeasonTwoPending(claraQueue) && !mixed.IsFinishedSeasonTwoPending(claraQueue + 100));
+
+    // 幻乐之主: an Aha on the board puts an Aha good into every shop roll; copies turn into growth.
+    var (ahaRun, aha) = Board((151102, 1));
+    ahaRun.BuildSeasonTwoFollowUpSync();
+    aha.RefreshShop(true);
+    var ahaSlot = aha.Shop.FirstOrDefault(slot => GridFightSession.IsAhaGoods(slot.SpecialGoodsId));
+    var ahaGoldBefore = aha.Gold;
+    Check("S2 幻乐之主: the shop offers an Aha good and it can be bought for its price",
+        ahaSlot != null && aha.BuySpecialGoods([ahaSlot.Index]).Count == 1 && ahaSlot.SoldOut &&
+        aha.RefreshShop(true));
+    AddRole(aha, 151102);
+    ahaRun.BuildSeasonTwoFollowUpSync();
+    Check("S2 幻乐之主: a second Aha becomes 幻月之力 instead of a merge",
+        aha.Roles.Count(role => role.RoleId is 151102 or 151112 or 151122 or 151132) == 1 && aha.AhaGrowth == 1 &&
+        aha.RefreshRoleSavedValues().ContainsKey(GridFightSession.AhaGrowthSavedValueKey) == false);
+    Check("S2 幻乐之主: GetData carries the 7-cost progress modifier",
+        ahaRun.BuildCurrentInfo()!.GameData.GameItemList.Any(item => item.GEKCCCPGBGJ?.GridFightTraitInfo.Count == 2));
+
+    // 本局奇遇: partner effects that change server rules.
+    GridFightSession? RunWithPetPal(uint effectId)
+    {
+        for (var seed = 0; seed < 3000; seed++)
+        {
+            var manager = new GridFightManager(new PlayerInstance(new PlayerData { Uid = 1 }), new Random(seed));
+            if (!manager.Start(catalog.CurrentSeason, catalog.HighestDivision.ID, false)) continue;
+            var session = manager.Session!;
+            if (session.PetPalEffectId != effectId) continue;
+            session.HandlePending(session.PendingQueuePosition, GridFightPendingRequestKind.PortalSelect,
+                session.PortalOffer.First(id => id != GridFightSession.BlueSeaPortalId));
+            session.HandlePending(session.PendingQueuePosition, GridFightPendingRequestKind.RoundBegin);
+            session.GrantOfficialInitialRoundRewards(out _);
+            session.HandlePending(session.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
+            return session.Phase == GridFightSessionPhase.Preparing ? session : null;
+        }
+        return null;
+    }
+    if (RunWithPetPal(109004) is { } fanGifts)
+    {
+        fanGifts.Roles.Clear();
+        AddRole(fanGifts, roleA).Position = 1;
+        var supplied = false;
+        for (var step = 0; step < 40 && !supplied; step++)
+        {
+            switch (fanGifts.Phase)
+            {
+                case GridFightSessionPhase.Preparing:
+                    fanGifts.EnterBattle();
+                    fanGifts.ResolveBattle(true, new GridFightBattleStatistics(100, [], [], [], [], 1, new Dictionary<string, uint>()));
+                    break;
+                case GridFightSessionPhase.SelectingSupply:
+                    var picked = fanGifts.SupplyOffer[0];
+                    supplied = fanGifts.SupplyOffer.All(offer => offer.Star == 2) &&
+                               fanGifts.SelectSupply(fanGifts.PendingQueuePosition, [1]).Success &&
+                               fanGifts.Roles.Any(role => role.RoleId == picked.RoleId && role.Star >= 2);
+                    step = 40;
+                    break;
+                case GridFightSessionPhase.SelectingInvestment:
+                    fanGifts.SelectInvestment(fanGifts.PendingQueuePosition, fanGifts.InvestmentOffer.First());
+                    break;
+                case GridFightSessionPhase.SelectingEncounter:
+                    fanGifts.SelectEncounter(fanGifts.PendingQueuePosition, fanGifts.EncounterOptions.First().EliteBranchId);
+                    break;
+                case GridFightSessionPhase.AwaitingBackToPrepare:
+                    fanGifts.BackToPrepare();
+                    break;
+                default:
+                    fanGifts.HandlePending(fanGifts.PendingQueuePosition, GridFightPendingRequestKind.RoundBegin);
+                    fanGifts.HandlePending(fanGifts.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
+                    break;
+            }
+        }
+        Check("S2 奇遇 绯绯狐 109004: every supply offers 2-star roles and grants them", supplied);
+    }
+    if (RunWithPetPal(102001) is { } guarded)
+    {
+        guarded.Roles.Clear();
+        AddRole(guarded, roleA).Position = 1;
+        var hpBefore = guarded.LineupHp;
+        var lost = guarded.EnterBattle() &&
+                   guarded.ResolveBattle(true, new GridFightBattleStatistics(10, [], [], [], [], 1, new Dictionary<string, uint>()))
+                       is { Success: true, IsPerfectFinish: true };
+        Check("S2 奇遇 汪汪丹 102001: the first failed battle counts as a perfect finish", lost && guarded.LineupHp >= hpBefore);
+    }
+    if (RunWithPetPal(105001) is { } blackHole)
+    {
+        blackHole.RefreshSeasonTwoTraits();
+        Check("S2 奇遇 杨叔 105001: the run starts with 坍缩奇点",
+            blackHole.Equipments.Count(item => item.EquipmentId == 353005) == 1 &&
+            blackHole.RefreshSeasonTwoTraits().AddedEquipments.Count == 0);
     }
 
     // Every season-2 run snapshot (GetData) and battle survives a protobuf round trip with all effects present.

@@ -32,6 +32,7 @@ public sealed class CommandGrid : ICommand
 
         session.AdjustGold(delta);
         await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildGoldSync()));
+        await SendSeasonTwoFollowUp(player, manager);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.UpdateGold", delta.ToString()));
     }
 
@@ -66,6 +67,7 @@ public sealed class CommandGrid : ICommand
 
         await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
             manager.BuildRoleAcquisitionSync(acquisition)));
+        await SendSeasonTwoFollowUp(player, manager);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.AddedRole"));
     }
 
@@ -100,6 +102,7 @@ public sealed class CommandGrid : ICommand
 
         await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
             manager.BuildEquipmentAddedSync(equipment)));
+        await SendSeasonTwoFollowUp(player, manager);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.AddEquipment", equipmentId.ToString()));
     }
 
@@ -133,6 +136,7 @@ public sealed class CommandGrid : ICommand
         }
 
         await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildOrbAddedSync(orb)));
+        await SendSeasonTwoFollowUp(player, manager);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.AddOrb", orbItemId.ToString()));
     }
 
@@ -167,6 +171,7 @@ public sealed class CommandGrid : ICommand
 
         await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
             manager.BuildConsumableSync(change)));
+        await SendSeasonTwoFollowUp(player, manager);
         await arg.SendMsg(I18NManager.Translate("Game.Command.Grid.AddConsumable", consumableId.ToString()));
     }
 
@@ -203,9 +208,22 @@ public sealed class CommandGrid : ICommand
 
         await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
             manager.BuildSectionMoveSync(finishedPendingPosition)));
+        await SendSeasonTwoFollowUp(player, manager);
         await arg.SendMsg(I18NManager.Translate(
             "Game.Command.Grid.EnterSection",
             chapter.ToString(),
             section.ToString()));
+    }
+
+    /// <summary>
+    ///     Season-2 trait state (Tenglong summon, Aha growth, trait prompts...) follows board changes; client
+    ///     requests flush it in GridFightHandler, console commands have to do the same.
+    /// </summary>
+    private static async ValueTask SendSeasonTwoFollowUp(
+        March7thHoney.GameServer.Game.Player.PlayerInstance player,
+        GridFightManager manager)
+    {
+        if (manager.BuildSeasonTwoFollowUpSync() is { } followUp)
+            await player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(followUp));
     }
 }

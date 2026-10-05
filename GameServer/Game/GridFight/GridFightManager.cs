@@ -303,6 +303,12 @@ public sealed partial class GridFightManager : BasePlayerManager
             data.GameItemList.Add(BuildHackConsoleItem(hackConsole));
         if (Session is { FateOption5GameItemUniqueId: > 0 } fateSession)
             data.GameItemList.Add(BuildFateDivinerGameItem(fateSession, true));
+        if (Session != null && BuildAhaModifierItem(Session) is { } ahaModifier)
+        {
+            data.GameItemList.Add(ahaModifier);
+            _sentAhaProgress = string.Join(',', ahaModifier.GEKCCCPGBGJ.GridFightTraitInfo
+                .Select(entry => $"{entry.TraitId}:{entry.Progress}"));
+        }
         return data;
     }
 
@@ -399,16 +405,19 @@ public sealed partial class GridFightManager : BasePlayerManager
                             DropType = GridFightDropType.Role,
                             ItemId = offer.RoleId,
                             Num = 1,
-                            Param = new GridFightDropParam { RoleStar = 1 },
+                            Param = new GridFightDropParam { RoleStar = Math.Max(offer.Star, 1u) },
                         },
                     };
-                    role.GridFightItemList.Add(offer.EquipmentId);
-                    role.DHLBEFLOOPM.Add(new GridFightDropEntry
+                    foreach (var equipmentId in offer.ExtraEquipmentIds.Prepend(offer.EquipmentId).Where(id => id != 0))
                     {
-                        DropType = GridFightDropType.Item,
-                        ItemId = offer.EquipmentId,
-                        Num = 1,
-                    });
+                        role.GridFightItemList.Add(equipmentId);
+                        role.DHLBEFLOOPM.Add(new GridFightDropEntry
+                        {
+                            DropType = GridFightDropType.Item,
+                            ItemId = equipmentId,
+                            Num = 1,
+                        });
+                    }
                     return role;
                 }));
                 break;
