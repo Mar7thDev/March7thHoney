@@ -291,6 +291,8 @@ public static class GridFightBattleProtoBuilder
             if (activeLayer > 0 && !GridFightTraitCompatibility.UsesLayerOnlyWireShape(traitId))
             {
                 PopulateTraitEffects(traitInfo);
+                foreach (var effect in traitInfo.TraitEffectList)
+                    GridFightManager.FillSeasonTwoBattleTraitEffect(session, effect);
                 if (traitId == GridFightSession.FateDivinerTraitId &&
                     traitInfo.TraitEffectList.All(effect => effect.EffectId != GridFightSession.FateDivinerEffectId))
                     traitInfo.TraitEffectList.Add(new BattleGridFightTraitEffectInfo
@@ -307,6 +309,14 @@ public static class GridFightBattleProtoBuilder
         battle.BattleEvents.Clear();
         foreach (var (id, curSp, maxSp) in OfficialBattleEvents)
             battle.BattleEvents.Add(id, new BattleEventInstance(id, curSp, maxSp));
+        if (session.IsSeasonTwoRules)
+        {
+            // GridFightInfo field 23 carries the run's 幻月游戏 sub-trait (same field name as the lobby context value).
+            gridFightInfo.NJBNOFIEDDE = new KJFEHJMAIAA { FMNPBOJGLFI = session.MoonGameSubTraitId };
+            foreach (var buffId in session.GetTrailblazeBattleBuffIds()
+                         .Where(buffId => GameData.MazeBuffData.ContainsKey(buffId)))
+                AddGlobalBuffIfMissing(battle, buffId);
+        }
         proto.BattleGridFightData = gridFightInfo;
         return avatars;
     }

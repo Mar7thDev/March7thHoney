@@ -44,14 +44,20 @@ public sealed partial class GridFightManager
                 !GridFightTraitCompatibility.UsesLayerOnlyWireShape(traitId) &&
                 GameData.GridFightTraitBasicInfoData.TryGetValue(traitId, out var config))
                 trait.TraitEffectList.Add(config.TraitEffectList.Select(effectId =>
-                    new GridFightTraitEffectInfo
-                    {
-                        EffectId = effectId,
-                        ECEMNCJBFOP = traitId == GridFightSession.GalaxyScholarTraitId &&
-                                       effectId == GridFightSession.GalaxyScholarTraitEffectId
-                            ? session.GalaxyScholarDna
-                            : 0,
-                    }));
+                    session.IsSeasonTwoRules
+                        ? BuildGameTraitEffectInfo(traitId, effectId)
+                        : new GridFightTraitEffectInfo
+                        {
+                            EffectId = effectId,
+                            ECEMNCJBFOP = traitId == GridFightSession.GalaxyScholarTraitId &&
+                                           effectId == GridFightSession.GalaxyScholarTraitEffectId
+                                ? session.GalaxyScholarDna
+                                : 0,
+                        }));
+            // 幻月游戏 sub-trait effects are addressed under trait 100302 by their own effect ids.
+            if (trait.Layer > 0 && traitId == GridFightSession.MoonGameTraitId &&
+                session.MoonGameSubTraitId == GridFightSession.MoonGameWishSubTraitId)
+                trait.TraitEffectList.Add(BuildGameTraitEffectInfo(traitId, GridFightSession.MoonGameWishEffectId));
             if (trait.Layer > 0 && traitId == GridFightSession.FateDivinerTraitId &&
                 trait.TraitEffectList.All(effect => effect.EffectId != GridFightSession.FateDivinerEffectId))
                 trait.TraitEffectList.Add(new GridFightTraitEffectInfo { EffectId = GridFightSession.FateDivinerEffectId });

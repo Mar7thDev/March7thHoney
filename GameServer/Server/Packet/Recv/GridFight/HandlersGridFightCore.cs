@@ -10,18 +10,18 @@ using static March7thHoney.GameServer.Server.Packet.Recv.GridFight.GridFightPack
 namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
 [Opcode(CmdIds.GridFightGetDataCsReq)]
-public sealed class HandlerGridFightGetDataCsReq : Handler<GridFightGetDataCsReq>
+public sealed class HandlerGridFightGetDataCsReq : GridFightHandler<GridFightGetDataCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightGetDataCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightGetDataCsReq request)
     {
         await connection.SendPacket(new PacketGridFightGetDataScRsp(player));
     }
 }
 
 [Opcode(CmdIds.GridFightStartGamePlayCsReq)]
-public sealed class HandlerGridFightStartGamePlayCsReq : Handler<GridFightStartGamePlayCsReq>
+public sealed class HandlerGridFightStartGamePlayCsReq : GridFightHandler<GridFightStartGamePlayCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightStartGamePlayCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightStartGamePlayCsReq request)
     {
         var manager = player.GridFightManager!;
         var success = manager.Start(request.Season, request.DivisionId, request.IsOverlock);
@@ -35,9 +35,9 @@ public sealed class HandlerGridFightStartGamePlayCsReq : Handler<GridFightStartG
 }
 
 [Opcode(CmdIds.GridFightResumeGamePlayCsReq)]
-public sealed class HandlerGridFightResumeGamePlayCsReq : Handler<GridFightResumeGamePlayCsReq>
+public sealed class HandlerGridFightResumeGamePlayCsReq : GridFightHandler<GridFightResumeGamePlayCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightResumeGamePlayCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightResumeGamePlayCsReq request)
     {
         var manager = player.GridFightManager!;
         var success = manager.Session?.UniqueId == request.UniqueId;
@@ -50,9 +50,9 @@ public sealed class HandlerGridFightResumeGamePlayCsReq : Handler<GridFightResum
 }
 
 [Opcode(CmdIds.GridFightQuitSettleCsReq)]
-public sealed class HandlerGridFightQuitSettleCsReq : Handler<GridFightQuitSettleCsReq>
+public sealed class HandlerGridFightQuitSettleCsReq : GridFightHandler<GridFightQuitSettleCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightQuitSettleCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightQuitSettleCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -75,9 +75,9 @@ public sealed class HandlerGridFightQuitSettleCsReq : Handler<GridFightQuitSettl
 }
 
 [Opcode(CmdIds.GridFightQuitLeaveGamePlayCsReq)]
-public sealed class HandlerGridFightQuitLeaveGamePlayCsReq : Handler<GridFightQuitLeaveGamePlayCsReq>
+public sealed class HandlerGridFightQuitLeaveGamePlayCsReq : GridFightHandler<GridFightQuitLeaveGamePlayCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightQuitLeaveGamePlayCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightQuitLeaveGamePlayCsReq request)
     {
         await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitLeaveGamePlayScRsp,
             new GridFightQuitLeaveGamePlayScRsp()));
@@ -85,9 +85,9 @@ public sealed class HandlerGridFightQuitLeaveGamePlayCsReq : Handler<GridFightQu
 }
 
 [Opcode(CmdIds.GridFightHandlePendingActionCsReq)]
-public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFightHandlePendingActionCsReq>
+public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<GridFightHandlePendingActionCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightHandlePendingActionCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightHandlePendingActionCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -185,6 +185,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
             await SendResponse(connection, request.QueuePosition, selection.Success);
             return;
         }
+        if (session != null && await TryHandleSeasonTwoPending(connection, manager, session, request)) return;
 
         var beforeIds = session?.Roles.Select(role => role.UniqueId).ToHashSet() ?? [];
         var kind = ResolveKind(request);
@@ -233,6 +234,77 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
         await SendResponse(connection, request.QueuePosition, pendingHandled);
     }
 
+    /// <summary>Season-2 trait prompts (artifacts/gf-season2/re-g*.md); returns false if the request is not one.</summary>
+    private static async Task<bool> TryHandleSeasonTwoPending(
+        Connection connection,
+        GridFightManager manager,
+        GridFightSession session,
+        GridFightHandlePendingActionCsReq request)
+    {
+        var queue = request.QueuePosition;
+        GridFightSyncUpdateResultScNotify? sync = null;
+        switch (request.FGLIODAJFMLCase)
+        {
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.GEPGMIEPBMB:
+            {
+                var finished = session.SelectDanHengTrait(queue, request.GEPGMIEPBMB.KJMFHCDACEK, out var success);
+                if (success)
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.DanHengTraitId, GridFightSession.DanHengChooseTraitEffectId, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.DPKFJEEJABC:
+            {
+                var finished = session.AppointRanger(queue, request.DPKFJEEJABC.RoleId, out var success);
+                if (success)
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.RangerTraitId, GridFightSession.RangerEffectId, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.PFEBKFJOGKO:
+            {
+                var finished = session.SelectClaraEnhance(queue, request.PFEBKFJOGKO.HAFOKMHCGFM, out var success);
+                if (success)
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.ClaraTraitId, GridFightSession.ClaraEffectId, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.JMJOAOCJAAG:
+            {
+                if (request.JMJOAOCJAAG.MLKBOBIEAPL)
+                {
+                    if (session.RerollChimeraGoods(queue)) sync = manager.BuildSeasonTwoPendingRefreshSync();
+                    break;
+                }
+                var good = request.JMJOAOCJAAG.OBPJLMEMFHA < session.ChimeraGoods.Count
+                    ? session.ChimeraGoods[(int)request.JMJOAOCJAAG.OBPJLMEMFHA]
+                    : null;
+                var application = session.SelectChimeraGood(queue, request.JMJOAOCJAAG.OBPJLMEMFHA, out var finished);
+                if (application.Success)
+                    // Gold picked in the chimera dialog has its own fly animation (update_source 48).
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.ChimeraTraitId,
+                        GridFightSession.ChimeraEffectId,
+                        finished,
+                        application,
+                        gainSource: good?.Type == GridFightSession.ChimeraGoodGold
+                            ? GridFightUpdateSrcType.Ldobccjegnf
+                            : null);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.FKEAHOKGDPO:
+                if (session.SetMemberLink(request.FKEAHOKGDPO.MLNHFIKMAMP.ToList()))
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.MemberLinkTraitId, GridFightSession.MemberLinkEffectId, 0);
+                break;
+            default:
+                return false;
+        }
+        if (sync != null) await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+        await SendResponse(connection, queue, sync != null);
+        return true;
+    }
+
     private static Task SendResponse(Connection connection, uint queuePosition, bool success)
     {
         return connection.SendPacket(CreatePacket(CmdIds.GridFightHandlePendingActionScRsp,
@@ -254,9 +326,9 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
 }
 
 [Opcode(CmdIds.GridFightUpdateEliteBranchSelectCsReq)]
-public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : Handler<GridFightUpdateEliteBranchSelectCsReq>
+public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : GridFightHandler<GridFightUpdateEliteBranchSelectCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUpdateEliteBranchSelectCsReq request)
@@ -276,9 +348,9 @@ public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : Handler<GridF
 }
 
 [Opcode(CmdIds.GridFightGetOrbCsReq)]
-public sealed class HandlerGridFightGetOrbCsReq : Handler<GridFightGetOrbCsReq>
+public sealed class HandlerGridFightGetOrbCsReq : GridFightHandler<GridFightGetOrbCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightGetOrbCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightGetOrbCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -319,9 +391,9 @@ public sealed class HandlerGridFightGetOrbCsReq : Handler<GridFightGetOrbCsReq>
 }
 
 [Opcode(CmdIds.GridFightBuyGoodsCsReq)]
-public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsReq>
+public sealed class HandlerGridFightBuyGoodsCsReq : GridFightHandler<GridFightBuyGoodsCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightBuyGoodsCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightBuyGoodsCsReq request)
     {
         var manager = player.GridFightManager!;
         var indices = request.BuyAll
@@ -352,9 +424,9 @@ public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsR
 }
 
 [Opcode(CmdIds.GridFightUseHackOptionCsReq)]
-public sealed class HandlerGridFightUseHackOptionCsReq : Handler<GridFightUseHackOptionCsReq>
+public sealed class HandlerGridFightUseHackOptionCsReq : GridFightHandler<GridFightUseHackOptionCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUseHackOptionCsReq request)
@@ -374,9 +446,9 @@ public sealed class HandlerGridFightUseHackOptionCsReq : Handler<GridFightUseHac
 }
 
 [Opcode(CmdIds.GridFightRefreshShopCsReq)]
-public sealed class HandlerGridFightRefreshShopCsReq : Handler<GridFightRefreshShopCsReq>
+public sealed class HandlerGridFightRefreshShopCsReq : GridFightHandler<GridFightRefreshShopCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightRefreshShopCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightRefreshShopCsReq request)
     {
         var manager = player.GridFightManager!;
         var success = manager.Session?.RefreshShop(true) == true;
@@ -389,9 +461,9 @@ public sealed class HandlerGridFightRefreshShopCsReq : Handler<GridFightRefreshS
 }
 
 [Opcode(CmdIds.GridFightRecycleRoleCsReq)]
-public sealed class HandlerGridFightRecycleRoleCsReq : Handler<GridFightRecycleRoleCsReq>
+public sealed class HandlerGridFightRecycleRoleCsReq : GridFightHandler<GridFightRecycleRoleCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightRecycleRoleCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightRecycleRoleCsReq request)
     {
         var manager = player.GridFightManager!;
         var change = manager.Session?.RecycleRole(request.UniqueId) ?? GridFightSessionChange.Failed;
@@ -406,9 +478,9 @@ public sealed class HandlerGridFightRecycleRoleCsReq : Handler<GridFightRecycleR
 }
 
 [Opcode(CmdIds.GridFightBuyExpCsReq)]
-public sealed class HandlerGridFightBuyExpCsReq : Handler<GridFightBuyExpCsReq>
+public sealed class HandlerGridFightBuyExpCsReq : GridFightHandler<GridFightBuyExpCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightBuyExpCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightBuyExpCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -427,9 +499,9 @@ public sealed class HandlerGridFightBuyExpCsReq : Handler<GridFightBuyExpCsReq>
 }
 
 [Opcode(CmdIds.GridFightUpdatePosCsReq)]
-public sealed class HandlerGridFightUpdatePosCsReq : Handler<GridFightUpdatePosCsReq>
+public sealed class HandlerGridFightUpdatePosCsReq : GridFightHandler<GridFightUpdatePosCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightUpdatePosCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightUpdatePosCsReq request)
     {
         var manager = player.GridFightManager!;
         var updates = request.PosInfoList.Select(info => (info.UniqueId, info.Pos)).ToList();
@@ -447,9 +519,9 @@ public sealed class HandlerGridFightUpdatePosCsReq : Handler<GridFightUpdatePosC
 }
 
 [Opcode(CmdIds.GridFightUseForgeCsReq)]
-public sealed class HandlerGridFightUseForgeCsReq : Handler<GridFightUseForgeCsReq>
+public sealed class HandlerGridFightUseForgeCsReq : GridFightHandler<GridFightUseForgeCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUseForgeCsReq request)
@@ -466,9 +538,9 @@ public sealed class HandlerGridFightUseForgeCsReq : Handler<GridFightUseForgeCsR
 }
 
 [Opcode(CmdIds.GridFightEnterBattleStageCsReq)]
-public sealed class HandlerGridFightEnterBattleStageCsReq : Handler<GridFightEnterBattleStageCsReq>
+public sealed class HandlerGridFightEnterBattleStageCsReq : GridFightHandler<GridFightEnterBattleStageCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightEnterBattleStageCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightEnterBattleStageCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -491,9 +563,9 @@ public sealed class HandlerGridFightEnterBattleStageCsReq : Handler<GridFightEnt
 }
 
 [Opcode(CmdIds.GridFightBackToPrepareCsReq)]
-public sealed class HandlerGridFightBackToPrepareCsReq : Handler<GridFightBackToPrepareCsReq>
+public sealed class HandlerGridFightBackToPrepareCsReq : GridFightHandler<GridFightBackToPrepareCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightBackToPrepareCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightBackToPrepareCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -519,9 +591,9 @@ internal static class GridFightPacketFactory
 }
 
 [Opcode(CmdIds.GridFightLockShopCsReq)]
-public sealed class HandlerGridFightShopLockCsReq : Handler<GridFightLockShopCsReq>
+public sealed class HandlerGridFightShopLockCsReq : GridFightHandler<GridFightLockShopCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightLockShopCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightLockShopCsReq request)
     {
         var manager = player.GridFightManager!;
         var success = manager.Session?.SetShopLocked(request.IsLock) == true;

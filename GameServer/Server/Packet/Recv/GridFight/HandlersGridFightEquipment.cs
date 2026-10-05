@@ -8,9 +8,9 @@ using static March7thHoney.GameServer.Server.Packet.Recv.GridFight.GridFightPack
 namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
 [Opcode(CmdIds.GridFightEquipDressCsReq)]
-public sealed class HandlerGridFightEquipDressCsReq : Handler<GridFightEquipDressCsReq>
+public sealed class HandlerGridFightEquipDressCsReq : GridFightHandler<GridFightEquipDressCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightEquipDressCsReq request)
@@ -30,9 +30,9 @@ public sealed class HandlerGridFightEquipDressCsReq : Handler<GridFightEquipDres
 }
 
 [Opcode(CmdIds.GridFightEquipCraftCsReq)]
-public sealed class HandlerGridFightEquipCraftCsReq : Handler<GridFightEquipCraftCsReq>
+public sealed class HandlerGridFightEquipCraftCsReq : GridFightHandler<GridFightEquipCraftCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightEquipCraftCsReq request)
@@ -56,9 +56,9 @@ public sealed class HandlerGridFightEquipCraftCsReq : Handler<GridFightEquipCraf
 }
 
 [Opcode(CmdIds.GridFightUseConsumableCsReq)]
-public sealed class HandlerGridFightUseConsumableCsReq : Handler<GridFightUseConsumableCsReq>
+public sealed class HandlerGridFightUseConsumableCsReq : GridFightHandler<GridFightUseConsumableCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUseConsumableCsReq request)
@@ -88,9 +88,9 @@ public sealed class HandlerGridFightUseConsumableCsReq : Handler<GridFightUseCon
 }
 
 [Opcode(CmdIds.GridFightUpdateEquipTrackCsReq)]
-public sealed class HandlerGridFightUpdateEquipTrackCsReq : Handler<GridFightUpdateEquipTrackCsReq>
+public sealed class HandlerGridFightUpdateEquipTrackCsReq : GridFightHandler<GridFightUpdateEquipTrackCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUpdateEquipTrackCsReq request)

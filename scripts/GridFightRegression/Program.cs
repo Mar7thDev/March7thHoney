@@ -481,6 +481,14 @@ for (var transition = 0; transition < 300 && !finished; transition++)
             break;
         case GridFightSessionPhase.SelectingSupply:
             routeStaysInSeason &= route.SupplyOffer.All(offer => RoleInSeason(offer.RoleId));
+            // The 4.6.51 client builds every draft card from the top drop (field 13) and NREs
+            // without it, leaving the run stuck on the post-battle settlement.
+            var supplyCards = routeManager.BuildPendingAction()?.SupplyAction?.SupplyRoleInfoList;
+            Check($"supply at {route.ChapterId}/{route.SectionId}: every card carries a role top drop and its equipment drop",
+                supplyCards is { Count: > 0 } && supplyCards.All(card =>
+                    card.OPPFPECOBEF is { DropType: GridFightDropType.Role } top &&
+                    top.ItemId == card.RoleId && top.Param?.RoleStar == 1 &&
+                    card.DHLBEFLOOPM.Count == 1 && card.DHLBEFLOOPM[0].ItemId == card.GridFightItemList.Single()));
             var supply = route.SelectSupply(queue, [1]);
             if (!supply.Success) throw new InvalidOperationException("Supply failed.");
             routeManager.BuildSupplySelectionSync(queue, 1, supply);
@@ -533,6 +541,149 @@ var abortSection = abort.SectionId;
 Check("aborted battle returns to preparation without rewards or route advancement", abort.EnterBattle() &&
     !abort.ResolveBattle(false, GridFightBattleStatistics.Empty).Success && abort.Phase == GridFightSessionPhase.Preparing &&
     abort.Gold == abortGold && abort.SectionId == abortSection);
+
+// --- Season-2 unique / origin trait effects ---------------------------------------------------------------------
+// Wire layouts follow the 4.6.51 client (artifacts/gf-season2/re-g*.md); these checks pin the server-side rules.
+if (!catalog.IsSeasonOne)
+{
+    (GridFightManager Manager, GridFightSession Session) Board(params (uint RoleId, uint Position)[] roles)
+    {
+        var manager = NewRun(101);
+        var session = manager.Session!;
+        session.Roles.Clear();
+        session.AdjustGold(500);
+        foreach (var (roleId, position) in roles) AddRole(session, roleId).Position = position;
+        return (manager, session);
+    }
+    GridFightTraitEffectInfo? EffectInfo(GridFightManager manager, uint traitId, uint effectId) =>
+        manager.BuildCurrentInfo()!.GameInfoList
+            .Where(info => info.TraitInfo != null)
+            .SelectMany(info => info.TraitInfo.GridFightTraitInfo)
+            .Where(trait => trait.TraitId == traitId)
+            .SelectMany(trait => trait.TraitEffectList)
+            .FirstOrDefault(effect => effect.EffectId == effectId);
+
+    // 双龙吟: Dan Heng IL summons a same-star Tenglong in the back area and asks for a trait.
+    var (danHengRun, danHeng) = Board((GridFightSession.DanHengMainRoleId, 1), (roleA, 2));
+    var danHengSync = danHengRun.BuildSeasonTwoFollowUpSync();
+    var sub = danHeng.Roles.FirstOrDefault(role => role.RoleId == GridFightSession.DanHengSubRoleId);
+    Check("S2 双龙吟: Tenglong is summoned in the back area with the main's star",
+        sub != null && sub.Position is >= 5 and <= 13 && sub.Star == 1 && danHeng.DanHengSubUniqueId == sub.UniqueId &&
+        danHengSync!.ResultList.SelectMany(result => result.UpdateDynamicList).Any(data => data.AddRoleInfo?.UniqueId == sub.UniqueId));
+    var danHengPending = danHengRun.BuildPendingAction();
+    Check("S2 双龙吟: trait choice pending action carries the four candidate traits",
+        danHengPending?.GEPGMIEPBMB is { } choose && choose.RoleId == GridFightSession.DanHengMainRoleId &&
+        choose.DAHOEGKELCI.OrderBy(id => id).SequenceEqual(new uint[] { 200402, 200602, 200802, 201002 }));
+    Check("S2 双龙吟: Tenglong cannot be sold or moved to the front",
+        !danHeng.RecycleRole(sub!.UniqueId).Success && !danHeng.UpdatePositions([(sub.UniqueId, 3)]).Success);
+    var finishedChoice = danHeng.SelectDanHengTrait(danHengPending!.QueuePosition, 200402, out var choseTrait);
+    var main = danHeng.Roles.First(role => role.RoleId == GridFightSession.DanHengMainRoleId);
+    Check("S2 双龙吟: the chosen trait goes to Dan Heng IL and the prompt finishes",
+        choseTrait && finishedChoice == danHengPending.QueuePosition && danHeng.SeasonTwoPending == null &&
+        danHeng.ResolveRoleTraitIds(main).Contains(200402u) &&
+        EffectInfo(danHengRun, GridFightSession.DanHengTraitId, GridFightSession.DanHengChooseTraitEffectId)
+            ?.GEPGMIEPBMB.CKHHAPGAAOH.SequenceEqual(new uint[] { 200402 }) == true &&
+        EffectInfo(danHengRun, GridFightSession.DanHengTraitId, GridFightSession.DanHengTwoInOneEffectId)
+            ?.AMOIMOHMBEM is { } twoInOne && twoInOne.CAAKCKEPMEK == main.UniqueId && twoInOne.OKFEMIMJLME == sub.UniqueId);
+    Check("S2 双龙吟: the summon does not use population", danHeng.EnterBattle());
+    danHeng.AbortBattleStart();
+    main.Position = 15;
+    danHengRun.BuildSeasonTwoFollowUpSync();
+    Check("S2 双龙吟: Tenglong leaves with Dan Heng IL", danHeng.Roles.All(role => role.RoleId != GridFightSession.DanHengSubRoleId));
+
+    // 盗火行者: dragging a role onto Phainon turns it into 薪火 (role saved value).
+    var (phainonRun, phainon) = Board((GridFightSession.PhainonRoleId, 1), (roleA, 2));
+    phainonRun.BuildSeasonTwoFollowUpSync();
+    var food = phainon.Roles.First(role => role.RoleId == roleA);
+    var expectedKindling = GridFightSession.GetPhainonKindlingGain(roleA, 1);
+    var consumed = phainon.ConsumeRoleForPhainon(food.UniqueId, out var kindling);
+    Check("S2 盗火行者: consuming a role removes it and stores the kindling in Phainon's saved value",
+        consumed.Success && kindling == expectedKindling && kindling > 0 && phainon.Roles.All(role => role.UniqueId != food.UniqueId) &&
+        phainon.RefreshRoleSavedValues().GetValueOrDefault(GridFightSession.PhainonSavedValueKey) == kindling);
+    Check("S2 盗火行者: Phainon cannot eat himself",
+        !phainon.ConsumeRoleForPhainon(phainon.Roles.First(role => role.RoleId == GridFightSession.PhainonRoleId).UniqueId, out _).Success);
+
+    // 巡海游侠: Mortenax asks to appoint a front role, which then carries trait 300302.
+    var (rangerRun, ranger) = Board((150402, 5), (roleA, 1));
+    var rangerSync = rangerRun.BuildSeasonTwoFollowUpSync();
+    var rangerPending = rangerRun.BuildPendingAction();
+    Check("S2 巡海游侠: appointment prompt lists the front roles",
+        rangerPending?.DPKFJEEJABC?.PNHBEHLICFL.SequenceEqual(new[] { roleA }) == true && rangerSync != null);
+    ranger.AppointRanger(rangerPending!.QueuePosition, roleA, out var appointedRanger);
+    Check("S2 巡海游侠: the appointed role gains the ranger trait",
+        appointedRanger && ranger.ResolveRoleTraitIds(ranger.Roles.First(role => role.RoleId == roleA))
+            .Contains(GridFightSession.RangerTraitId));
+
+    // 黑市主理人: the signature good sits in slot 1 and never sells out.
+    var (jadeRun, jade) = Board((GridFightSession.JadeRoleId, 1));
+    jadeRun.BuildSeasonTwoFollowUpSync();
+    var jadeInfo = EffectInfo(jadeRun, GridFightSession.JadeTraitId, GridFightSession.JadeEffectId)?.GDAMHENIIDJ;
+    Check("S2 黑市主理人: shop has a signature good in slot 1 and rotating goods from slot 2, each with drops",
+        jadeInfo != null && jadeInfo.OGDKJPDFFAI.Any(good => good.SlotId == 1 && good.DNJCAMKKLPB != 0) &&
+        jadeInfo.OGDKJPDFFAI.Where(good => good.DNJCAMKKLPB != 0).All(good => good.NMGIABHIJJB?.DropList.Count > 0));
+    var hpBeforeJade = jade.LineupHp;
+    var goldBeforeJade = jade.Gold;
+    var signature = jade.BuyJadeGood(1);
+    Check("S2 黑市主理人: buying the signature good pays HP, grants gold and keeps the slot",
+        signature.Success && jade.LineupHp == hpBeforeJade - 10 && jade.Gold > goldBeforeJade &&
+        jade.JadeGoods.Any(good => good.SlotId == 1 && good.GoodId != 0));
+
+    // 开拓银轨, 奇兽花园, 梦境交织, 反击, 星核猎手, 机心巧匠: stateful effects round-trip through GetData.
+    var trailRoles = GameData.GridFightRoleBasicInfoData.Values
+        .Where(role => role.SeasonID == season && role.TraitList.Contains(GridFightSession.TrailblazeTraitId) && role.IsInPool)
+        .Select(role => role.ID).Take(2).ToArray();
+    if (trailRoles.Length == 2)
+    {
+        var (trailRun, trail) = Board((trailRoles[0], 1), (trailRoles[1], 2));
+        trailRun.BuildSeasonTwoFollowUpSync();
+        var trailInfo = EffectInfo(trailRun, GridFightSession.TrailblazeTraitId, GridFightSession.TrailblazeEffectId)?.KDBKIPPHMFI;
+        Check("S2 开拓银轨: goods list ends with the refresh good and never contains id 0",
+            trailInfo != null && trailInfo.OGDKJPDFFAI.Count > 1 && trailInfo.OGDKJPDFFAI.All(good => good.DNJCAMKKLPB != 0) &&
+            trailInfo.OGDKJPDFFAI[^1].DNJCAMKKLPB == GridFightSession.TrailblazeRefreshGoodId);
+        trail.EnterBattle();
+        trail.ResolveBattle(true, new GridFightBattleStatistics(100, [], [], [], [], 1, new Dictionary<string, uint>()));
+        Check("S2 开拓银轨: a battle stage grants 开拓力", trail.TrailblazeCoin > 0);
+    }
+    var (claraRun, clara) = Board((GridFightSession.ClaraRoleId, 1));
+    claraRun.BuildSeasonTwoFollowUpSync();
+    var claraPending = claraRun.BuildPendingAction();
+    Check("S2 机心巧匠: Clara's first upgrade offers the three modules",
+        claraPending?.PFEBKFJOGKO?.EGJDILDEAKP.OrderBy(id => id).SequenceEqual(new uint[] { 1001, 2001, 3001 }) == true);
+    clara.SelectClaraEnhance(claraPending!.QueuePosition, 2001, out var enhanced);
+    Check("S2 机心巧匠: the chosen module is recorded and synced",
+        enhanced && EffectInfo(claraRun, GridFightSession.ClaraTraitId, GridFightSession.ClaraEffectId)
+            ?.PFEBKFJOGKO.EMAGFIBLNCJ.Any(entry => entry.IGOHOJEJIGP == 2001 && entry.Num == 1) == true);
+
+    var chimeraRoles = GameData.GridFightRoleBasicInfoData.Values
+        .Where(role => role.SeasonID == season && role.TraitList.Contains(GridFightSession.ChimeraTraitId) && role.IsInPool)
+        .Select(role => role.ID).Distinct().Take(3).ToArray();
+    if (chimeraRoles.Length == 3)
+    {
+        var (chimeraRun, chimera) = Board((chimeraRoles[0], 1), (chimeraRoles[1], 2), (chimeraRoles[2], 3));
+        chimeraRun.BuildSeasonTwoFollowUpSync();
+        var chimeraPending = chimeraRun.BuildPendingAction()?.JMJOAOCJAAG;
+        Check("S2 奇兽花园: first activation grants a free recruit with goods", chimeraPending is { OGDKJPDFFAI.Count: > 0 });
+        var pickIndex = chimera.ChimeraGoods.ToList().FindIndex(good => good.Type == GridFightSession.ChimeraGoodChimera);
+        if (pickIndex >= 0)
+        {
+            chimera.SelectChimeraGood(chimera.SeasonTwoPending!.QueuePosition, (uint)pickIndex, out var finishedChimera);
+            Check("S2 奇兽花园: a recruited chimera appears in the garden",
+                finishedChimera != 0 && chimera.Chimeras.Count == 1 &&
+                EffectInfo(chimeraRun, GridFightSession.ChimeraTraitId, GridFightSession.ChimeraEffectId)
+                    ?.GIKNCJMJLFE.BCGOAIPKGIK.Count == 1);
+        }
+    }
+
+    // Every season-2 run snapshot (GetData) and battle survives a protobuf round trip with all effects present.
+    var everyone = Board((GridFightSession.DanHengMainRoleId, 1), (GridFightSession.PhainonRoleId, 2),
+        (GridFightSession.JadeRoleId, 3), (150402, 5), (GridFightSession.ClaraRoleId, 6));
+    everyone.Manager.BuildSeasonTwoFollowUpSync();
+    var everyoneInfo = everyone.Manager.BuildCurrentInfo()!;
+    Check("S2 GetData with all 5-cost uniques round-trips and carries the context values",
+        GridFightCurrentInfo.Parser.ParseFrom(everyoneInfo.ToByteArray()).Equals(everyoneInfo) &&
+        everyoneInfo.GameInfoList.Any(info => info.ContextValueInfo is { FMNPBOJGLFI: > 0 } context &&
+                                              context.DKMNOPCJDDC.Count == 2 && context.ContextValueVersion != 0));
+}
 
 Console.WriteLine($"GridFight regression: {checks - failures.Count}/{checks} passed.");
 return failures.Count == 0 ? 0 : 1;
