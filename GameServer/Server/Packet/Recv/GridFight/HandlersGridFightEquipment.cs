@@ -65,6 +65,19 @@ public sealed class HandlerGridFightUseConsumableCsReq : GridFightHandler<GridFi
     {
         var manager = player.GridFightManager!;
         var target = request.Target;
+        if (target?.DECONIENEJG != null && manager.Session != null)
+        {
+            // 主角光环 consumable: consume, then open the granted spotlight selection for the target role.
+            var spot = manager.Session.UseSpotLightConsumable(request.GroupId, target.DECONIENEJG.MDNAGANGNKK);
+            if (spot.Success)
+            {
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildConsumableUseSync(spot)));
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSpotLightSync(null, 0)));
+            }
+            await connection.SendPacket(CreatePacket(CmdIds.GridFightUseConsumableScRsp,
+                new GridFightUseConsumableScRsp { Retcode = spot.Success ? 0 : (uint)Retcode.RetFail }));
+            return;
+        }
         var roleUniqueId = target?.RemoveTarget?.RoleUniqueId ??
                            target?.RollTarget?.RoleUniqueId ??
                            target?.CopyTarget?.RoleUniqueId ??

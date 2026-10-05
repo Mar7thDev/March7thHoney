@@ -713,10 +713,43 @@ if (!catalog.IsSeasonOne)
     master.TryAddRole(151132, 3, out var masterAcquisition);
     masterAcquisition.AcquiredRoles.Single().Position = 2;
     masterRun.BuildSeasonTwoFollowUpSync();
-    var masterTrait = GridFightSession.AhaMaxStarTraitId(master.AhaMaxStarOption);
-    Check("S2 幻乐之主: a 3-star 7-cost Aha makes every fielded role join the leading trait",
-        masterTrait != 0 && master.Roles.Where(role => role.Position is >= 1 and <= 13)
-            .All(role => master.ResolveRoleTraitIds(role).Contains(masterTrait)));
+    var ultra = masterRun.BuildPendingAction();
+    var ultraQueue = master.SeasonTwoPending?.QueuePosition ?? 0;
+    var confirmed = master.ConfirmAhaUltra(ultraQueue) == ultraQueue && ultraQueue != 0;
+    Check("S2 幻乐之主: a 3-star 7-cost Aha opens the ultra block and confirming makes everyone join 幻月游戏 and 欢愉",
+        ultra?.OKPMJOCEKBC?.Type == HOIDGPICBOJ.Jphakjkapei && confirmed &&
+        master.Roles.Where(role => role.Position is >= 1 and <= 13).All(role =>
+            master.ResolveRoleTraitIds(role).Contains(GridFightSession.MoonGameTraitId) &&
+            master.ResolveRoleTraitIds(role).Contains(GridFightSession.ElationTraitId)) &&
+        master.GetAhaUltraTraitGrants().Count == 2);
+
+    // 主角光环: route nodes 1-2 / 2-1 carry the spotlight flag; entering one opens a two-card selection.
+    var (spotRun, spot) = Board((roleA, 1), (roleB, 2));
+    var spotNodes = spotRun.BuildCurrentInfo()!.GameInfoList
+        .Where(info => info.LevelInfo != null)
+        .SelectMany(info => info.LevelInfo.OOMMIIKPHBC)
+        .Count(node => node.Param.HPNNLMBHOPF);
+    spot.TryMoveToSection(1, 2, out _);
+    spot.HandlePending(spot.PendingQueuePosition, GridFightPendingRequestKind.RoundBegin);
+    for (var step = 0; step < 6 && spot.Phase != GridFightSessionPhase.Preparing; step++)
+    {
+        if (spot.Phase == GridFightSessionPhase.SelectingInvestment)
+            spot.SelectInvestment(spot.PendingQueuePosition, spot.InvestmentOffer.First());
+        else if (spot.Phase == GridFightSessionPhase.AwaitingBackToPrepare)
+            spot.BackToPrepare();
+        else
+            spot.HandlePending(spot.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
+    }
+    spotRun.BuildSeasonTwoFollowUpSync();
+    var spotPending = spotRun.BuildPendingAction()?.EEKMIAMGHFL;
+    var spotQueue = spot.SeasonTwoPending?.QueuePosition ?? 0;
+    var spotChanges = spotPending == null ? null
+        : spot.SelectSpotLight(spotQueue, spotPending.HPKFKBKOADP[0].IHHNLLAJAGB, roleA, out _);
+    var spotRole = spot.Roles.First(role => role.RoleId == roleA);
+    Check("S2 主角光环: two spotlight nodes, a two-card selection on entry and the crown goes to the chosen role",
+        spotNodes == 2 && spotPending?.HPKFKBKOADP.Count == 2 && spotChanges?.Added.Count == 1 &&
+        spot.GetSpotLightIdForRole(spotRole.UniqueId) == spotPending.HPKFKBKOADP[0].IHHNLLAJAGB &&
+        spotRun.BuildCurrentInfo()!.GameInfoList.Any(info => info.LEGMAJLHBLA?.FNNEPMAPOOF.Count == 1));
 
     // 本局奇遇: partner effects that change server rules.
     GridFightSession? RunWithPetPal(uint effectId)

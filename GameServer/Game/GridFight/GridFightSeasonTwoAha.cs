@@ -24,42 +24,53 @@ public sealed partial class GridFightSession
     ];
 
     private uint _ahaModifierUniqueId;
-    private uint _ahaMaxStarOption;
+    private bool _ahaUltraConfirmed;
+    private bool _ahaUltraIssued;
+    private readonly Dictionary<uint, uint> _ahaUltraItemIds = [];
 
     public uint AhaModifierUniqueId => _ahaModifierUniqueId;
 
-    /// <summary>GridFightAhaMaxStar option: 1 幻月之主 (所有人加入【幻月游戏】), 2 欢愉之主 (所有人加入【欢愉】).</summary>
-    public uint AhaMaxStarOption => _ahaMaxStarOption;
+    /// <summary>星神★阿哈 3星7费 confirmed: everyone joins 幻月游戏 and 欢愉.</summary>
+    public bool AhaUltraConfirmed => _ahaUltraConfirmed;
 
     public bool IsAhaMaxStarReached =>
         IsSeasonTwoRules && Roles.Any(role => role.RoleId == AhaSevenCostRoleId && role.Star >= 3 &&
                                               IsActivePosition(role.Position));
 
-    public static uint AhaMaxStarTraitId(uint option) => option switch
-    {
-        1 => MoonGameTraitId,
-        2 => ElationTraitId,
-        _ => 0,
-    };
-
     /// <summary>
-    ///     达到3星7费后迎来真正的主人: the run's leading trait (GridFightUpgradeAhaRarityModifier._SelectLeadingTrait picks
-    ///     the highest progress/target ratio) decides which option applies until the client prompt is wired.
+    ///     达到3星7费后迎来真正的主人. The client opens GridFightS2MainCharacterUltraBuffPanel for a pending block action
+    ///     (GridFightPendingAction oneof 1240, type 2) showing both GridFightAhaMaxStar rows (幻月之主, 欢愉之主) with a single
+    ///     confirm and no choice, so confirming applies both: every fielded role joins 幻月游戏 and 欢愉.
     /// </summary>
-    private void RefreshAhaMaxStar()
+    private bool TryStartAhaUltraPending(GridFightSeasonTwoChanges changes)
     {
-        if (_ahaMaxStarOption != 0 || !IsAhaMaxStarReached) return;
-        var leading = GetAhaSevenCostProgress()
-            .OrderByDescending(entry => entry.Target == 0 ? 0 : (double)entry.Progress / entry.Target)
-            .First();
-        _ahaMaxStarOption = leading.TraitId == MoonGameTraitId ? 1u : 2u;
+        if (_ahaUltraIssued || !IsAhaMaxStarReached) return false;
+        _ahaUltraIssued = true;
+        StartSeasonTwoPending(GridFightSeasonTwoPendingKind.AhaUltra, AhaTraitId, 0, [], changes);
+        return true;
     }
 
-    public bool SelectAhaMaxStarOption(uint option)
+    /// <summary>HandlePendingAction 230 { type = 2 }.</summary>
+    public uint ConfirmAhaUltra(uint queuePosition)
     {
-        if (!IsAhaMaxStarReached || AhaMaxStarTraitId(option) == 0) return false;
-        _ahaMaxStarOption = option;
-        return true;
+        if (queuePosition == 0 || !MatchesSeasonTwoPending(GridFightSeasonTwoPendingKind.AhaUltra, queuePosition)) return 0;
+        _ahaUltraConfirmed = true;
+        return FinishSeasonTwoPending(GridFightSeasonTwoPendingKind.AhaUltra);
+    }
+
+    /// <summary>Trait-member grants the client must see (GridFightUnlockTraitMember items): (item id, trait, role ids).</summary>
+    public IReadOnlyList<(uint ItemUniqueId, uint TraitId, IReadOnlyList<uint> RoleIds)> GetAhaUltraTraitGrants()
+    {
+        if (!_ahaUltraConfirmed || !IsAhaMaxStarReached) return [];
+        var roleIds = Roles.Where(role => IsActivePosition(role.Position)).Select(role => role.RoleId).Distinct().ToList();
+        var result = new List<(uint, uint, IReadOnlyList<uint>)>();
+        foreach (var traitId in new[] { MoonGameTraitId, ElationTraitId })
+        {
+            if (!_ahaUltraItemIds.TryGetValue(traitId, out var itemId))
+                _ahaUltraItemIds[traitId] = itemId = _nextEntityUniqueId++;
+            result.Add((itemId, traitId, roleIds));
+        }
+        return result;
     }
 
     public static bool IsAhaGoods(uint specialGoodsId) => specialGoodsId > AhaGoodsFirstId;

@@ -11,6 +11,8 @@ public enum GridFightSeasonTwoPendingKind
     ClaraEnhance,
     ChimeraSelect,
     Bonfire,
+    SpotLightSelect,
+    AhaUltra,
 }
 
 public sealed record GridFightSeasonTwoPendingState(
@@ -34,10 +36,12 @@ public sealed class GridFightSeasonTwoChanges
     public bool LineupHpChanged { get; set; }
     public bool ShopChanged { get; set; }
     public bool PendingStarted { get; set; }
+    public GridFightSpotLightChanges SpotLight { get; } = new();
 
     public bool IsEmpty => AddedRoles.Count == 0 && RemovedRoleIds.Count == 0 && UpdatedRoles.Count == 0 &&
                            AddedEquipments.Count == 0 && ConsumableChanges.Count == 0 && RoleAcquisitions.Count == 0 &&
-                           !GoldChanged && !PlayerLevelChanged && !LineupHpChanged && !ShopChanged && !PendingStarted;
+                           !GoldChanged && !PlayerLevelChanged && !LineupHpChanged && !ShopChanged && !PendingStarted &&
+                           SpotLight.Added.Count == 0 && SpotLight.Updated.Count == 0 && SpotLight.Removed.Count == 0;
 
     public void Merge(GridFightRewardApplication application)
     {
@@ -189,8 +193,12 @@ public sealed partial class GridFightSession
             traits.Add(_danHengChosenTraitId);
         // GetAdditionalTraitRoleChooseTraitIDs: role ids in the appointment list carry 300302 while it is active.
         // 星神★阿哈 3星7费: 所有人加入【幻月游戏】/【欢愉】.
-        if (_ahaMaxStarOption != 0 && IsActivePosition(role.Position) && IsAhaMaxStarReached)
-            traits.Add(AhaMaxStarTraitId(_ahaMaxStarOption));
+        if (_ahaUltraConfirmed && IsActivePosition(role.Position) && IsAhaMaxStarReached)
+        {
+            traits.Add(MoonGameTraitId);
+            traits.Add(ElationTraitId);
+        }
+        AddSpotLightGrantedTraitIds(role, traits);
         if (!traits.Contains(RangerTraitId) && IsBaseTraitOnBoard(RangerTraitId) &&
             ResolveRangerRoleIds().Contains(role.RoleId))
             traits.Add(RangerTraitId);
@@ -219,7 +227,7 @@ public sealed partial class GridFightSession
         if (Phase == GridFightSessionPhase.Preparing)
         {
             EnsureAhaModifier();
-            RefreshAhaMaxStar();
+            RefreshSpotLight(changes.SpotLight);
             var aha = AbsorbAhaCopies();
             changes.RemovedRoleIds.AddRange(aha.Absorbed);
             changes.UpdatedRoles.AddRange(aha.Changed);
@@ -321,6 +329,8 @@ public sealed partial class GridFightSession
         if (_seasonTwoPending != null || HasPendingSelection) return;
         // 幕后茶歇 replaces the node itself, so it opens before any trait prompt.
         if (TryStartBonfirePending(changes)) return;
+        if (TryStartAhaUltraPending(changes)) return;
+        if (TryStartSpotLightPending(changes)) return;
         var layers = ResolveTraitLayers();
         if (layers.TryGetValue(DanHengTraitId, out var danHeng) && danHeng.Layer > 0 && _danHengChosenTraitId == 0 &&
             Roles.Any(role => role.RoleId == DanHengMainRoleId && IsActivePosition(role.Position)))
