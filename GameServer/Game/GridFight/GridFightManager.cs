@@ -156,6 +156,8 @@ public sealed partial class GridFightManager : BasePlayerManager
         current.GameInfoList.Add(new GridFightGameInfo { TraitInfo = BuildGameTraitInfo() });
         current.GameInfoList.Add(new GridFightGameInfo());
         current.GameInfoList.Add(new GridFightGameInfo { ContextValueInfo = BuildContextValueInfo(session) });
+        if (session.IsSeasonTwoRules)
+            current.GameInfoList.Add(new GridFightGameInfo { LEGMAJLHBLA = BuildSpotLightState(session) });
         current.GameInfoList.Add(new GridFightGameInfo { PrayQuestInfo = new GridFightPrayQuestInfo() });
         if (session.PetPalId != 0)
         {
@@ -303,6 +305,15 @@ public sealed partial class GridFightManager : BasePlayerManager
             data.GameItemList.Add(BuildHackConsoleItem(hackConsole));
         if (Session is { FateOption5GameItemUniqueId: > 0 } fateSession)
             data.GameItemList.Add(BuildFateDivinerGameItem(fateSession, true));
+        if (Session != null)
+        {
+            _sentSeasonTwoItems.Clear();
+            foreach (var item in BuildSeasonTwoTraitItems(Session).ToList())
+            {
+                data.GameItemList.Add(item);
+                _sentSeasonTwoItems[item.UniqueId] = Google.Protobuf.MessageExtensions.ToByteString(item);
+            }
+        }
         if (Session != null && BuildAhaModifierItem(Session) is { } ahaModifier)
         {
             data.GameItemList.Add(ahaModifier);
@@ -2128,6 +2139,8 @@ public sealed partial class GridFightManager : BasePlayerManager
             NodeType = (uint)node.NodeType,
         };
         param.ParamList.Add(node.Parameters);
+        // 主角光环: param 4 marks the nodes that open a spotlight selection (and number the locked slots).
+        if (session.IsSpotLightNode(node.ChapterId, node.SectionId)) param.HPNNLMBHOPF = true;
         // 幕后茶歇: param 11 marks the node, 15 lists its event, 3 shows the partner on it; the Hex display
         // (param 8 == 1) would win over the bonfire one.
         if (session.FindBonfireNode(node.ChapterId, node.SectionId) is { } bonfire)

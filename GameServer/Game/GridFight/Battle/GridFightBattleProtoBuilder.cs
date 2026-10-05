@@ -450,7 +450,12 @@ public static class GridFightBattleProtoBuilder
                 // Official 4.5 packets encode the number of this role's currently inactive
                 // traits here. Across the supplied captures this rule matches every observed
                 // role entry (632/632), including equipment-added traits.
-                ModeInfo = new GridFightRoleBattleModeInfo { Mode = ResolveRoleBattleMode(session, role) },
+                ModeInfo = new GridFightRoleBattleModeInfo
+                {
+                    Mode = ResolveRoleBattleMode(session, role),
+                    // AvatarSpotLightId: the battle puts the 主角光环 crown on this unit.
+                    IHHNLLAJAGB = session.GetSpotLightIdForRole(role.UniqueId),
+                },
                 StateInfo = new GridFightRoleBattleStateInfo(),
             },
         };

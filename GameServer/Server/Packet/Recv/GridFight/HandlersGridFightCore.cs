@@ -317,6 +317,32 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<
                 }
                 break;
             }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.DKDFDGJGIHM:
+            {
+                // 主角光环 select { spotlight id, role config id }.
+                var changes = session.SelectSpotLight(queue, request.DKDFDGJGIHM.IHHNLLAJAGB, request.DKDFDGJGIHM.RoleId,
+                    out var finished);
+                if (changes != null) sync = manager.BuildSpotLightSync(changes, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.PBEJCFAJLGE:
+                if (session.RerollSpotLight(queue, request.PBEJCFAJLGE.IHHNLLAJAGB, out var paid))
+                    sync = manager.BuildSpotLightSync(new GridFightSpotLightChanges { CountersChanged = !paid }, 0, paid);
+                break;
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.MHBGJCOIMPA:
+            {
+                var finished = session.AbandonSpotLightReplace(queue);
+                if (finished != 0)
+                    sync = manager.BuildSpotLightSync(new GridFightSpotLightChanges { CountersChanged = true }, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.OKPMJOCEKBC:
+            {
+                // 星神★阿哈 3星7费 ultra block: confirm applies both 幻月之主 and 欢愉之主.
+                var finished = session.ConfirmAhaUltra(queue);
+                if (finished != 0) sync = manager.BuildSpotLightSync(null, finished);
+                break;
+            }
             case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.FKEAHOKGDPO:
                 if (session.SetMemberLink(request.FKEAHOKGDPO.MLNHFIKMAMP.ToList()))
                     sync = manager.BuildSeasonTwoSelectionSync(

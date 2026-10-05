@@ -213,7 +213,9 @@ public sealed partial class GridFightManager
         if (changes.ShopChanged)
             result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         AppendRoleSavedValueUpdates(result, session.RefreshRoleSavedValues());
+        AppendSpotLightChanges(result, session, changes.SpotLight);
         AppendSeasonTwoEffectDiffs(result);
+        AppendSeasonTwoItemDiffs(result, session);
         AppendAhaModifierDiff(result, session);
         if (changes.PendingStarted && BuildPendingAction() is { } pending)
         {
@@ -311,6 +313,11 @@ public sealed partial class GridFightManager
                 return action;
             case GridFightSeasonTwoPendingKind.ClaraEnhance:
                 return BuildClaraPendingAction(session, pending, action);
+            case GridFightSeasonTwoPendingKind.SpotLightSelect:
+                return BuildSpotLightPendingAction(session, action);
+            case GridFightSeasonTwoPendingKind.AhaUltra:
+                action.OKPMJOCEKBC = new CHAIHAICBCE { Type = HOIDGPICBOJ.Jphakjkapei };
+                return action;
             case GridFightSeasonTwoPendingKind.Bonfire:
             {
                 var bonfire = new NCEPOLNLNKH

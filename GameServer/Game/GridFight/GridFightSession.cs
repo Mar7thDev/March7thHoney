@@ -1813,7 +1813,8 @@ public sealed partial class GridFightSession
             var value = (ulong)_catalog.GetEnemyDifficultyLevel(DivisionId) +
                         ActiveInvestmentIds.Aggregate(0UL,
                             (sum, id) => sum + _catalog.GetInvestmentDifficultyAdd(DivisionId, id)) +
-                        (BattlePlan?.DifficultyAdd ?? 0);
+                        (BattlePlan?.DifficultyAdd ?? 0) +
+                        SpotLightEnemyDifficulty;
             return (uint)Math.Min(value, uint.MaxValue);
         }
     }

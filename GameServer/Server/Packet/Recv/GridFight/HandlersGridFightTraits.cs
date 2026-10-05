@@ -119,3 +119,46 @@ public sealed class HandlerGridFightEnterBonfireCsReq : GridFightHandler<GridFig
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSeasonTwoPendingRefreshSync()));
     }
 }
+
+/// <summary>GridFightSpotLightEnterCsReq (8508): the HUD re-enters a paused spotlight selection; re-push it.</summary>
+[Opcode(CmdIds.NLMAAHDFLGC)]
+public sealed class HandlerGridFightSpotLightEnterCsReq : GridFightHandler<NLMAAHDFLGC>
+{
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, NLMAAHDFLGC request)
+    {
+        var manager = player.GridFightManager!;
+        var open = manager.Session?.SeasonTwoPending?.Kind == GridFightSeasonTwoPendingKind.SpotLightSelect;
+        if (open) await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSpotLightSync(null, 0)));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightSpotLightEnterScRsp,
+            new GridFightSpotLightEnterScRsp { Retcode = open ? 0 : (uint)Retcode.RetFail }));
+    }
+}
+
+/// <summary>GridFightSpotLightReplaceCsReq (8740 { unique_id }): spend a replace charge and reselect that spotlight.</summary>
+[Opcode(CmdIds.LLIKPBNDNAG)]
+public sealed class HandlerGridFightSpotLightReplaceCsReq : GridFightHandler<LLIKPBNDNAG>
+{
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, LLIKPBNDNAG request)
+    {
+        var manager = player.GridFightManager!;
+        var success = manager.Session?.StartSpotLightReplace(request.UniqueId) == true;
+        if (success)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
+                manager.BuildSpotLightSync(new GridFightSpotLightChanges { CountersChanged = true }, 0)));
+        await connection.SendPacket(CreatePacket(CmdIds.GridFightSpotLightReplaceScRsp,
+            new GridFightSpotLightReplaceScRsp { Retcode = success ? 0 : (uint)Retcode.RetFail }));
+    }
+}
+
+/// <summary>GridFightUpdateSpotLightTrackCsReq (8636): spotlight tracking is UI-only; acknowledge (reply 8727).</summary>
+[Opcode(CmdIds.GridFightUpdateSpotLightTrackCsReq)]
+public sealed class HandlerGridFightUpdateSpotLightTrackCsReq : GridFightHandler<GridFightUpdateSpotLightTrackCsReq>
+{
+    protected override Task OnGridFightHandle(
+        Connection connection,
+        PlayerInstance player,
+        GridFightUpdateSpotLightTrackCsReq request)
+    {
+        return connection.SendPacket(CreatePacket(CmdIds.OCNEDLGLLEA, new OCNEDLGLLEA()));
+    }
+}
