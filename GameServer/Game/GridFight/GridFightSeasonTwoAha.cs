@@ -24,8 +24,43 @@ public sealed partial class GridFightSession
     ];
 
     private uint _ahaModifierUniqueId;
+    private uint _ahaMaxStarOption;
 
     public uint AhaModifierUniqueId => _ahaModifierUniqueId;
+
+    /// <summary>GridFightAhaMaxStar option: 1 幻月之主 (所有人加入【幻月游戏】), 2 欢愉之主 (所有人加入【欢愉】).</summary>
+    public uint AhaMaxStarOption => _ahaMaxStarOption;
+
+    public bool IsAhaMaxStarReached =>
+        IsSeasonTwoRules && Roles.Any(role => role.RoleId == AhaSevenCostRoleId && role.Star >= 3 &&
+                                              IsActivePosition(role.Position));
+
+    public static uint AhaMaxStarTraitId(uint option) => option switch
+    {
+        1 => MoonGameTraitId,
+        2 => ElationTraitId,
+        _ => 0,
+    };
+
+    /// <summary>
+    ///     达到3星7费后迎来真正的主人: the run's leading trait (GridFightUpgradeAhaRarityModifier._SelectLeadingTrait picks
+    ///     the highest progress/target ratio) decides which option applies until the client prompt is wired.
+    /// </summary>
+    private void RefreshAhaMaxStar()
+    {
+        if (_ahaMaxStarOption != 0 || !IsAhaMaxStarReached) return;
+        var leading = GetAhaSevenCostProgress()
+            .OrderByDescending(entry => entry.Target == 0 ? 0 : (double)entry.Progress / entry.Target)
+            .First();
+        _ahaMaxStarOption = leading.TraitId == MoonGameTraitId ? 1u : 2u;
+    }
+
+    public bool SelectAhaMaxStarOption(uint option)
+    {
+        if (!IsAhaMaxStarReached || AhaMaxStarTraitId(option) == 0) return false;
+        _ahaMaxStarOption = option;
+        return true;
+    }
 
     public static bool IsAhaGoods(uint specialGoodsId) => specialGoodsId > AhaGoodsFirstId;
 

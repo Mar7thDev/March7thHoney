@@ -101,3 +101,21 @@ public sealed class HandlerGridFightTraitUpdateCsReq : GridFightHandler<GridFigh
         }
     }
 }
+
+/// <summary>
+///     The client asks to enter a 幕后茶歇 node (8559, sent from Lua). The bonfire pending action is pushed on node
+///     entry already; resend it here. Proto/4.7 has no matching response command, so none is sent.
+/// </summary>
+[Opcode(CmdIds.GridFightEnterBonfireCsReq)]
+public sealed class HandlerGridFightEnterBonfireCsReq : GridFightHandler<GridFightEnterBonfireCsReq>
+{
+    protected override async Task OnGridFightHandle(
+        Connection connection,
+        PlayerInstance player,
+        GridFightEnterBonfireCsReq request)
+    {
+        var manager = player.GridFightManager!;
+        if (manager.Session?.SeasonTwoPending?.Kind == GridFightSeasonTwoPendingKind.Bonfire)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSeasonTwoPendingRefreshSync()));
+    }
+}
