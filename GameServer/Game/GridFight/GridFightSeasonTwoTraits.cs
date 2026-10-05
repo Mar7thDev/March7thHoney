@@ -10,6 +10,7 @@ public enum GridFightSeasonTwoPendingKind
     RangerAppoint,
     ClaraEnhance,
     ChimeraSelect,
+    Bonfire,
 }
 
 public sealed record GridFightSeasonTwoPendingState(
@@ -133,6 +134,7 @@ public sealed partial class GridFightSession
         }
         InitializeSeasonTwoShops();
         InitializeSeasonTwoElation();
+        InitializeBonfireNodes();
     }
 
     /// <summary>Trait layers of the board, counted the same way as GridGameTraitInfo/GridFightTraitInfo.</summary>
@@ -186,6 +188,9 @@ public sealed partial class GridFightSession
         if (_danHengChosenTraitId != 0 && role.RoleId == DanHengMainRoleId && IsBaseTraitOnBoard(DanHengTraitId))
             traits.Add(_danHengChosenTraitId);
         // GetAdditionalTraitRoleChooseTraitIDs: role ids in the appointment list carry 300302 while it is active.
+        // 星神★阿哈 3星7费: 所有人加入【幻月游戏】/【欢愉】.
+        if (_ahaMaxStarOption != 0 && IsActivePosition(role.Position) && IsAhaMaxStarReached)
+            traits.Add(AhaMaxStarTraitId(_ahaMaxStarOption));
         if (!traits.Contains(RangerTraitId) && IsBaseTraitOnBoard(RangerTraitId) &&
             ResolveRangerRoleIds().Contains(role.RoleId))
             traits.Add(RangerTraitId);
@@ -214,6 +219,7 @@ public sealed partial class GridFightSession
         if (Phase == GridFightSessionPhase.Preparing)
         {
             EnsureAhaModifier();
+            RefreshAhaMaxStar();
             var aha = AbsorbAhaCopies();
             changes.RemovedRoleIds.AddRange(aha.Absorbed);
             changes.UpdatedRoles.AddRange(aha.Changed);
@@ -313,6 +319,8 @@ public sealed partial class GridFightSession
     private void IssueSeasonTwoPending(GridFightSeasonTwoChanges changes)
     {
         if (_seasonTwoPending != null || HasPendingSelection) return;
+        // 幕后茶歇 replaces the node itself, so it opens before any trait prompt.
+        if (TryStartBonfirePending(changes)) return;
         var layers = ResolveTraitLayers();
         if (layers.TryGetValue(DanHengTraitId, out var danHeng) && danHeng.Layer > 0 && _danHengChosenTraitId == 0 &&
             Roles.Any(role => role.RoleId == DanHengMainRoleId && IsActivePosition(role.Position)))

@@ -311,6 +311,25 @@ public sealed partial class GridFightManager
                 return action;
             case GridFightSeasonTwoPendingKind.ClaraEnhance:
                 return BuildClaraPendingAction(session, pending, action);
+            case GridFightSeasonTwoPendingKind.Bonfire:
+            {
+                var bonfire = new NCEPOLNLNKH
+                {
+                    Phase = session.BonfireSelected ? KMJMHDPPAKH.Bgenlpcjgjf : KMJMHDPPAKH.Hllkdffmien,
+                    EIFICNFGGHI = session.CurrentNode.BasicGoldReward,
+                };
+                bonfire.KFNMIEMBJGD.Add(session.BonfireOptions.Select(option => new MHCOIBONODA
+                {
+                    IMCOGBJLOFP = option.ShowType,
+                    GOFDNCIPKFH = option.RoleId,
+                    EventId = option.EventId,
+                    HAFOKMHCGFM = option.OptionId,
+                }));
+                // Attribute the bonfire to the partner effect (reason {570 = effect id}).
+                action.Reason = new OEJKAOKHPPL { OKGGFNJJLNG = pending.EffectId };
+                action.IIDBLCFAAPC = bonfire;
+                return action;
+            }
             default:
                 return null;
         }
@@ -355,6 +374,47 @@ public sealed partial class GridFightManager
             finish.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = finishedQueuePosition });
             finish.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
             notify.ResultList.Add(finish);
+        }
+        return notify;
+    }
+
+    /// <summary>After a bonfire choice: the gains, then the same pending action re-sent with phase 2.</summary>
+    public GridFightSyncUpdateResultScNotify BuildBonfireChoiceSync(GridFightRewardApplication gains)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var result = new GridFightSyncResultData();
+        AppendRewardApplication(result, gains);
+        foreach (var acquisition in gains.RoleAcquisitions) AppendAcquiredRoles(result, acquisition);
+        if (BuildPendingAction() is { } pending) result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+        notify.ResultList.Add(result);
+        foreach (var acquisition in gains.RoleAcquisitions)
+            AppendRoleMergeResults(notify, GridFightUpdateSrcType.KgridFightSrcNone, [], acquisition);
+        return notify;
+    }
+
+    /// <summary>Leaving the bonfire: finish it, pay the node gold and continue like a cleared reward node.</summary>
+    public GridFightSyncUpdateResultScNotify BuildBonfireLeaveSync(uint finishedQueuePosition)
+    {
+        var notify = new GridFightSyncUpdateResultScNotify();
+        var finish = new GridFightSyncResultData();
+        finish.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = finishedQueuePosition });
+        finish.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+        notify.ResultList.Add(finish);
+        var next = BuildSync(GridFightUpdateSrcType.KgridFightSrcNone, includeGold: true, includeShop: true, includeRoute: true);
+        notify.ResultList.Add(next.ResultList);
+        if (BuildPendingAction() is { } pending)
+        {
+            var round = new GridFightSyncResultData();
+            round.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                LockInfo = new GridFightLockInfo
+                {
+                    LockType = GridFightLockType.Gameplay,
+                    LockReason = GridFightLockReason.PendingAction,
+                },
+            });
+            round.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+            notify.ResultList.Add(round);
         }
         return notify;
     }

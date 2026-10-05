@@ -292,6 +292,31 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<
                             : null);
                 break;
             }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.IIDBLCFAAPC:
+            {
+                // 幕后茶歇: choose an option / rest, then take the rewards and leave.
+                var bonfire = request.IIDBLCFAAPC;
+                if (bonfire.ECDACDNDHGO != null)
+                {
+                    var finished = session.LeaveBonfire(queue, out _);
+                    if (finished != 0) sync = manager.BuildBonfireLeaveSync(finished);
+                    break;
+                }
+                var choice = bonfire.NCGOOEMOBIC;
+                if (choice == null) break;
+                if (choice.LGAJNMNOAEM)
+                {
+                    if (session.HealAtBonfire(queue))
+                        sync = manager.BuildBonfireChoiceSync(new GridFightRewardApplication { Success = true, LineupHpChanged = true });
+                    break;
+                }
+                if (choice.ALEGIFEHGLH != null)
+                {
+                    var gains = session.SelectBonfireOption(queue, choice.ALEGIFEHGLH.EventId, choice.ALEGIFEHGLH.HAFOKMHCGFM);
+                    if (gains.Success) sync = manager.BuildBonfireChoiceSync(gains);
+                }
+                break;
+            }
             case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.FKEAHOKGDPO:
                 if (session.SetMemberLink(request.FKEAHOKGDPO.MLNHFIKMAMP.ToList()))
                     sync = manager.BuildSeasonTwoSelectionSync(

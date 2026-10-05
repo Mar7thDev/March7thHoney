@@ -708,6 +708,16 @@ if (!catalog.IsSeasonOne)
     Check("S2 幻乐之主: GetData carries the 7-cost progress modifier",
         ahaRun.BuildCurrentInfo()!.GameData.GameItemList.Any(item => item.GEKCCCPGBGJ?.GridFightTraitInfo.Count == 2));
 
+    // 星神★阿哈 3星7费: every fielded role joins the leading trait.
+    var (masterRun, master) = Board((roleA, 1));
+    master.TryAddRole(151132, 3, out var masterAcquisition);
+    masterAcquisition.AcquiredRoles.Single().Position = 2;
+    masterRun.BuildSeasonTwoFollowUpSync();
+    var masterTrait = GridFightSession.AhaMaxStarTraitId(master.AhaMaxStarOption);
+    Check("S2 幻乐之主: a 3-star 7-cost Aha makes every fielded role join the leading trait",
+        masterTrait != 0 && master.Roles.Where(role => role.Position is >= 1 and <= 13)
+            .All(role => master.ResolveRoleTraitIds(role).Contains(masterTrait)));
+
     // 本局奇遇: partner effects that change server rules.
     GridFightSession? RunWithPetPal(uint effectId)
     {
@@ -772,6 +782,31 @@ if (!catalog.IsSeasonOne)
                    guarded.ResolveBattle(true, new GridFightBattleStatistics(10, [], [], [], [], 1, new Dictionary<string, uint>()))
                        is { Success: true, IsPerfectFinish: true };
         Check("S2 奇遇 汪汪丹 102001: the first failed battle counts as a perfect finish", lost && guarded.LineupHp >= hpBefore);
+    }
+    if (RunWithPetPal(104003) is { } coffee && coffee.BonfireNodes.FirstOrDefault() is { } bonfireNode)
+    {
+        coffee.TryMoveToSection(bonfireNode.ChapterId, bonfireNode.SectionId, out _);
+        coffee.HandlePending(coffee.PendingQueuePosition, GridFightPendingRequestKind.RoundBegin);
+        for (var step = 0; step < 6 && coffee.Phase != GridFightSessionPhase.Preparing; step++)
+        {
+            if (coffee.Phase == GridFightSessionPhase.SelectingInvestment)
+                coffee.SelectInvestment(coffee.PendingQueuePosition, coffee.InvestmentOffer.First());
+            else if (coffee.Phase == GridFightSessionPhase.AwaitingBackToPrepare)
+                coffee.BackToPrepare();
+            else
+                coffee.HandlePending(coffee.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
+        }
+        coffee.RefreshSeasonTwoTraits();
+        var bonfirePending = coffee.SeasonTwoPending;
+        var bootsBefore = coffee.Equipments.Count(item => item.EquipmentId == 47030101);
+        var boots = bonfirePending == null ? null : coffee.BonfireOptions.FirstOrDefault(option => option.OptionId == 2);
+        var gained = boots != null && coffee.SelectBonfireOption(bonfirePending!.QueuePosition, boots.EventId, boots.OptionId).Success;
+        var section = coffee.SectionId;
+        var left = gained && coffee.LeaveBonfire(bonfirePending!.QueuePosition, out _) == bonfirePending.QueuePosition;
+        Check("S2 幕后茶歇: the partner's node opens a bonfire, its option pays out and leaving moves on",
+            bonfirePending?.Kind == GridFightSeasonTwoPendingKind.Bonfire && bonfireNode.EventId == 10400301 &&
+            coffee.Equipments.Count(item => item.EquipmentId == 47030101) == bootsBefore + 3 && left &&
+            coffee.SectionId != section && coffee.Phase == GridFightSessionPhase.AwaitingBattleRound);
     }
     if (RunWithPetPal(105001) is { } blackHole)
     {

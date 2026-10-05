@@ -2109,7 +2109,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             MonsterId = monster.MonsterID,
             RoleStar = 1,
         }));
-        info.OOMMIIKPHBC.Add(Catalog.StandardRoute.Select(BuildRouteNode));
+        info.OOMMIIKPHBC.Add(Catalog.StandardRoute.Select(node => BuildRouteNode(node, session)));
         return info;
     }
 
@@ -2117,7 +2117,7 @@ public sealed partial class GridFightManager : BasePlayerManager
     // nodes; without them the current node is null, the stage line reads 0-0 and the preparation page cannot
     // start a battle. Field identities follow GridFightStageNode._RefreshCachedFields: param 2 stage, 7 penalty
     // rule, 8 augment flag (== 1), 12 basic gold, 14 node type; 4 (spotlight) and 11 (bonfire) stay unset.
-    private static BCCIJHPLJOJ BuildRouteNode(GridFightRouteNode node)
+    private static BCCIJHPLJOJ BuildRouteNode(GridFightRouteNode node, GridFightSession session)
     {
         var param = new OHMDHKGAEMM
         {
@@ -2128,6 +2128,15 @@ public sealed partial class GridFightManager : BasePlayerManager
             NodeType = (uint)node.NodeType,
         };
         param.ParamList.Add(node.Parameters);
+        // 幕后茶歇: param 11 marks the node, 15 lists its event, 3 shows the partner on it; the Hex display
+        // (param 8 == 1) would win over the bonfire one.
+        if (session.FindBonfireNode(node.ChapterId, node.SectionId) is { } bonfire)
+        {
+            param.FCNNBODJNIK = true;
+            param.PFEMDGNFHNH = 0;
+            param.HKKLNENEPNE.Add(bonfire.EventId);
+            param.HOEKDPEPLIF.Add(new OEJKAOKHPPL { OKGGFNJJLNG = bonfire.PetPalEffectId });
+        }
         return new BCCIJHPLJOJ
         {
             DCAHJELNJNP = node.ChapterId,
