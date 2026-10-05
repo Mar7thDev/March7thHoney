@@ -288,8 +288,9 @@ public sealed partial class GridFightSession
     {
         var next = new Dictionary<string, uint>(StringComparer.Ordinal);
         foreach (var role in Roles.Where(role => IsActivePosition(role.Position)))
-            foreach (var (key, value) in _catalog.ResolveRoleSavedValues(role.RoleId, role.Star))
+            foreach (var (key, value) in ResolveRoleSavedValues(role, role.RoleId))
                 next[key] = Math.Max(next.GetValueOrDefault(key), value);
+        ApplyAhaSavedValues(next);
 
         var changes = _roleSavedValues.Keys
             .Concat(next.Keys)
@@ -304,7 +305,11 @@ public sealed partial class GridFightSession
 
     public IReadOnlyDictionary<string, uint> ResolveRoleSavedValues(GridFightRoleState role, uint roleId)
     {
-        return _catalog.ResolveRoleSavedValues(roleId, role.Star);
+        var values = _catalog.ResolveRoleSavedValues(roleId, role.Star);
+        if (!IsSeasonTwoRules || roleId != PhainonRoleId) return values;
+        var withSeasonValues = new Dictionary<string, uint>(values, StringComparer.Ordinal);
+        ApplySeasonTwoRoleSavedValues(roleId, withSeasonValues);
+        return withSeasonValues;
     }
 
     public GridFightRoleSwitchUpdate? ConsumeRoleSwitchUpdate()
@@ -427,6 +432,11 @@ public sealed partial class GridFightSession
             PetPalEffectId = petPal.EffectId;
         }
         PrepareCurrentNode();
+        if (IsSeasonTwoRules)
+        {
+            InitializeSeasonTwoTraits();
+            InitializeSeasonTwoOrigins();
+        }
     }
 
     public uint MaxActiveRoles => Math.Min(TeamPopulationLimit,
@@ -1327,7 +1337,8 @@ public sealed partial class GridFightSession
     {
         if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection) return GridFightSessionChange.Failed;
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
-        if (role == null) return GridFightSessionChange.Failed;
+        // The summoned 丹恒•腾荒 cannot be sold (the client refuses locally as well).
+        if (role == null || IsPopulationFreeRole(role)) return GridFightSessionChange.Failed;
         AddGold(_catalog.GetSellPrice(role.RoleId, role.Star));
         DestroyDiceFilledOnRole(role);
         Roles.Remove(role);
@@ -1399,7 +1410,12 @@ public sealed partial class GridFightSession
         if (AstaDogNpc != null) occupied.Add(AstaDogNpc.Position);
         if (occupied.Distinct().Count() != occupied.Count)
             return GridFightSessionChange.Failed;
-        if (rolePositions.Values.Count(IsActivePosition) > MaxActiveRoles) return GridFightSessionChange.Failed;
+        if (CountPopulationRoles(rolePositions.Select(pair => (pair.Key, pair.Value))) > MaxActiveRoles)
+            return GridFightSessionChange.Failed;
+        // TwoInOneSubBlockConstrait: the summoned 丹恒•腾荒 only moves inside the back area.
+        if (updates.Any(update => update.UniqueId == _danHengSubUniqueId && _danHengSubUniqueId != 0 &&
+                                  !IsBackPosition(update.Position)))
+            return GridFightSessionChange.Failed;
 
         var updatedRoles = new List<GridFightRoleState>();
         var updatedForgeItems = new List<GridFightForgeItemState>();
@@ -1475,12 +1491,13 @@ public sealed partial class GridFightSession
                 needsTraitSync));
         }
         _mortenaxBladeBattleEffects = effects;
+        PrepareXianzhouBattleSwaps();
     }
 
     public IReadOnlyList<(uint EquipmentId, uint UniqueId)> GetBattleEquipment(GridFightRoleState role)
     {
         var result = GetEquippedEquipment(role)
-            .Select(item => (item.EquipmentId, item.UniqueId))
+            .Select(item => (ResolveXianzhouBattleEquipment(item.UniqueId, item.EquipmentId), item.UniqueId))
             .ToList();
         var effect = _mortenaxBladeBattleEffects.FirstOrDefault(item => item.RoleUniqueId == role.UniqueId);
         if (effect == null) return result;
@@ -1507,11 +1524,12 @@ public sealed partial class GridFightSession
     public void ClearMortenaxBladeBattleEffects()
     {
         _mortenaxBladeBattleEffects = [];
+        _xianzhouBattleSwaps.Clear();
     }
 
     public bool EnterBattle()
     {
-        var activeRoleCount = Roles.Count(role => IsActivePosition(role.Position));
+        var activeRoleCount = CountPopulationRoles(Roles.Select(role => (role.UniqueId, role.Position)));
         if (Phase != GridFightSessionPhase.Preparing ||
             HasPendingSelection ||
             !IsCombatNode(CurrentNode) ||
@@ -1577,6 +1595,8 @@ public sealed partial class GridFightSession
         ScheduleRoughPepeDrop(battleEndedNormally);
         RecordHeroEntranceBattleResult(isPerfectFinish);
         PrepareGalaxyScholarBattleReward();
+        GrantTrailblazeBattleCoin();
+        GrantMoonGameBattlePower(isPerfectFinish);
         ApplyDotContractBattleStatistics(statistics);
         RecordFateDivinerBattleParticipation();
         var routeAdvanced = AdvanceToNextNode();
@@ -1709,14 +1729,15 @@ public sealed partial class GridFightSession
     {
         if (chargeGold &&
             (Phase != GridFightSessionPhase.Preparing ||
-             Gold < _catalog.RefreshCost ||
+             (_freeShopRefreshCount == 0 && Gold < _catalog.RefreshCost) ||
              Shop.Any(slot => slot.SpecialGoodsId != 0 && !slot.SoldOut)))
             return false;
         if (!chargeGold && _shopLocked && Shop.Count > 0) return true;
         if (chargeGold)
         {
-            Gold -= _catalog.RefreshCost;
+            if (!TryConsumeFreeShopRefresh()) Gold -= _catalog.RefreshCost;
             _shopLocked = false;
+            ApplyAstropolisRefreshBonus();
         }
         Shop.Clear();
         var boostedTraitId = ConceptStockBoostedTraitId;
@@ -1805,12 +1826,14 @@ public sealed partial class GridFightSession
     private List<GridFightRoleMergeStep> MergeRoles(uint roleId)
     {
         var steps = new List<GridFightRoleMergeStep>();
+        // The 3/4/5-cost Aha tiers have no stars; extra copies become growth (AbsorbAhaCopies) instead.
+        if (IsSeasonTwoRules && IsAhaRole(roleId) && roleId != AhaSevenCostRoleId) return steps;
         var switchGroup = _catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(roleId));
         var mergeRoleIds = switchGroup?.RoleIdList.ToHashSet() ?? [roleId];
         var starRoleId = switchGroup?.BaseRoleId ?? roleId;
         while (true)
         {
-            var group = Roles.Where(role => mergeRoleIds.Contains(role.RoleId))
+            var group = Roles.Where(role => mergeRoleIds.Contains(role.RoleId) && !IsPopulationFreeRole(role))
                 .GroupBy(role => role.Star)
                 .OrderBy(grouping => grouping.Key)
                 .FirstOrDefault(grouping => grouping.Count() >= 3 &&

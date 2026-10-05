@@ -4,7 +4,8 @@ namespace March7thHoney.GameServer.Game.GridFight;
 
 public sealed partial class GridFightSession
 {
-    public bool HasPendingSelection => EquipmentRecommendation != null || HeadPlayerPending != null || FateDivinerPending != null;
+    public bool HasPendingSelection => EquipmentRecommendation != null || HeadPlayerPending != null || FateDivinerPending != null ||
+                                       SeasonTwoPending != null;
 
     public (bool TraitActivated, bool PendingStarted) PrepareNextHeadPlayerEnhancement() =>
         RefreshHeadPlayerAfterRoleStateChange();

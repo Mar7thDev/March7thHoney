@@ -131,6 +131,7 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         var session = Session;
         if (session == null) return null;
+        ResetSeasonTwoSentEffects();
         var current = new GridFightCurrentInfo
         {
             GameData = BuildGameData(),
@@ -154,10 +155,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         current.GameInfoList.Add(new GridFightGameInfo { AugmentInfo = augmentInfo });
         current.GameInfoList.Add(new GridFightGameInfo { TraitInfo = BuildGameTraitInfo() });
         current.GameInfoList.Add(new GridFightGameInfo());
-        current.GameInfoList.Add(new GridFightGameInfo
-        {
-            ContextValueInfo = new GridFightContextValueInfo { ContextValueVersion = 97 },
-        });
+        current.GameInfoList.Add(new GridFightGameInfo { ContextValueInfo = BuildContextValueInfo(session) });
         current.GameInfoList.Add(new GridFightGameInfo { PrayQuestInfo = new GridFightPrayQuestInfo() });
         if (session.PetPalId != 0)
         {
@@ -347,6 +345,7 @@ public sealed partial class GridFightManager : BasePlayerManager
                 TraitEffectSelectEnhanceAction = action,
             };
         }
+        if (BuildSeasonTwoPendingAction(session) is { } seasonTwoPending) return seasonTwoPending;
         var pending = new GridFightPendingAction { QueuePosition = session.PendingQueuePosition };
         switch (session.Phase)
         {
@@ -389,8 +388,27 @@ public sealed partial class GridFightManager : BasePlayerManager
                 };
                 pending.SupplyAction.SupplyRoleInfoList.Add(session.SupplyOffer.Select(offer =>
                 {
-                    var role = new GridFightSupplyRoleInfo { RoleId = offer.RoleId };
+                    // The 4.6.51 client builds each draft card from field 13 (top drop, must be a
+                    // Role/RoleWithEquip entry) and reads equipment from the field 6 drop list;
+                    // a missing top drop NREs in GridFightBonusDropData.Create and the run hangs.
+                    var role = new GridFightSupplyRoleInfo
+                    {
+                        RoleId = offer.RoleId,
+                        OPPFPECOBEF = new GridFightDropEntry
+                        {
+                            DropType = GridFightDropType.Role,
+                            ItemId = offer.RoleId,
+                            Num = 1,
+                            Param = new GridFightDropParam { RoleStar = 1 },
+                        },
+                    };
                     role.GridFightItemList.Add(offer.EquipmentId);
+                    role.DHLBEFLOOPM.Add(new GridFightDropEntry
+                    {
+                        DropType = GridFightDropType.Item,
+                        ItemId = offer.EquipmentId,
+                        Num = 1,
+                    });
                     return role;
                 }));
                 break;
@@ -1899,7 +1917,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var session = Session!;
         var info = new GridFightGameShopInfo
         {
-            RefreshCost = Catalog.RefreshCost,
+            RefreshCost = Session?.EffectiveShopRefreshCost ?? Catalog.RefreshCost,
             RarityWeightInfo = BuildRarityWeights(),
         };
         info.RolePoolList.Add(Catalog.RolePool.Select(role => role.ID));
@@ -2018,7 +2036,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var info = new GridFightShopSyncInfo
         {
             ABGEKPJHHIA = session.ShopLocked,
-            RefreshCost = Catalog.RefreshCost,
+            RefreshCost = Session?.EffectiveShopRefreshCost ?? Catalog.RefreshCost,
             RarityWeightInfo = BuildRarityWeights(),
         };
         info.GoodsList.Add(session.Shop.Select(BuildShopGoods));

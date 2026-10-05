@@ -27,9 +27,9 @@ public sealed class HandlerGridFightFinishTutorialCsReq : PlayerHandler
 }
 
 [Opcode(CmdIds.GridFightTrackTraitCsReq)]
-public sealed class HandlerGridFightTraitTrackCsReq : Handler<GridFightTrackTraitCsReq>
+public sealed class HandlerGridFightTraitTrackCsReq : GridFightHandler<GridFightTrackTraitCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightTrackTraitCsReq request)

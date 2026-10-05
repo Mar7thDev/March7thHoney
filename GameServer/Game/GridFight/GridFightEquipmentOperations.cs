@@ -75,7 +75,7 @@ public sealed partial class GridFightSession
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == roleUniqueId);
         var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
         if (role == null || equipment == null || equipment.IsLocked ||
-            role.EquippedEquipmentUniqueIds.Contains(equipmentUniqueId))
+            role.EquippedEquipmentUniqueIds.Contains(equipmentUniqueId) || IsEquipmentOnAha(equipmentUniqueId))
             return GridFightEquipDressResult.Failed;
         var previousWearer = FindEquipmentWearer(equipmentUniqueId);
         if (!CanDress(role, equipment)) return GridFightEquipDressResult.Failed;
@@ -219,6 +219,7 @@ public sealed partial class GridFightSession
                 if (traitId != 0) result.Add(traitId);
             }
         }
+        AddSeasonTwoGrantedTraitIds(role, result);
         return result.Order().ToList();
     }
 
