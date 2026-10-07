@@ -245,7 +245,7 @@ public sealed partial class GridFightSession
 
     private bool CanModifyEquipment()
     {
-        return Phase == GridFightSessionPhase.Preparing && !HasPendingSelection;
+        return Phase == GridFightSessionPhase.Preparing && !HasBlockingPendingSelection;
     }
 
     private GridFightRoleState? FindEquipmentWearer(uint equipmentUniqueId)

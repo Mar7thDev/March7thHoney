@@ -123,6 +123,20 @@ public sealed partial class GridFightManager
         }
     }
 
+    /// <summary>
+    ///     Lock sent together with a pending action. The client refuses every board drag while the gameplay lock is
+    ///     set (GridFightPlayer.Blocked, PlayerBlockConstrait and the Lua drag handlers), which includes dragging a
+    ///     role onto the 主角光环 stage, so that selection is sent unlocked.
+    /// </summary>
+    private GridFightLockInfo BuildPendingLockInfo() =>
+        Session?.IsSpotLightSelecting == true
+            ? new GridFightLockInfo()
+            : new GridFightLockInfo
+            {
+                LockType = GridFightLockType.Gameplay,
+                LockReason = GridFightLockReason.PendingAction,
+            };
+
     private bool HasOpenPendingAction(GridFightSession session) =>
         session.HasPendingSelection || session.Phase != GridFightSessionPhase.Preparing || BuildPendingAction() != null;
 
@@ -219,14 +233,7 @@ public sealed partial class GridFightManager
         AppendAhaModifierDiff(result, session);
         if (changes.PendingStarted && BuildPendingAction() is { } pending)
         {
-            result.UpdateDynamicList.Add(new GridFightSyncData
-            {
-                LockInfo = new GridFightLockInfo
-                {
-                    LockType = GridFightLockType.Gameplay,
-                    LockReason = GridFightLockReason.PendingAction,
-                },
-            });
+            result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = BuildPendingLockInfo() });
             result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
         }
         if (result.UpdateDynamicList.Count > 0) notify.ResultList.Add(result);
@@ -414,11 +421,7 @@ public sealed partial class GridFightManager
             var round = new GridFightSyncResultData();
             round.UpdateDynamicList.Add(new GridFightSyncData
             {
-                LockInfo = new GridFightLockInfo
-                {
-                    LockType = GridFightLockType.Gameplay,
-                    LockReason = GridFightLockReason.PendingAction,
-                },
+                LockInfo = BuildPendingLockInfo(),
             });
             round.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
             notify.ResultList.Add(round);

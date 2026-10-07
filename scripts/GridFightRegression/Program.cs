@@ -740,9 +740,21 @@ if (!catalog.IsSeasonOne)
         else
             spot.HandlePending(spot.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
     }
-    spotRun.BuildSeasonTwoFollowUpSync();
+    var spotOpenSync = spotRun.BuildSeasonTwoFollowUpSync();
     var spotPending = spotRun.BuildPendingAction()?.EEKMIAMGHFL;
     var spotQueue = spot.SeasonTwoPending?.QueuePosition ?? 0;
+    // The role is chosen by dragging it onto the spotlight stage; the client refuses board drags under the gameplay
+    // lock, so the selection must stay unlocked and the server must accept team edits while it is open.
+    var spotLocks = spotOpenSync?.ResultList.SelectMany(result => result.UpdateDynamicList)
+        .Where(data => data.LockInfo != null).Select(data => data.LockInfo).ToList() ?? [];
+    var spotBasicLock = spotRun.BuildCurrentInfo()!.GameInfoList.First(info => info.BasicInfo != null).BasicInfo.LockInfo;
+    var spotRoleB = spot.Roles.First(role => role.RoleId == roleB);
+    var spotMoved = spot.UpdatePositions([(spotRoleB.UniqueId, 5)]).Success;
+    var spotBattleBlocked = !spot.EnterBattle();
+    Check("S2 主角光环: the open selection sends no gameplay lock and still allows moving roles, but not entering battle",
+        spotPending != null && spotLocks.Count > 0 && spotLocks.All(info => info.LockType == GridFightLockType.None) &&
+        spotBasicLock?.LockType != GridFightLockType.Gameplay && spotMoved && spotRoleB.Position == 5 &&
+        spotBattleBlocked);
     var spotChanges = spotPending == null ? null
         : spot.SelectSpotLight(spotQueue, spotPending.HPKFKBKOADP[0].IHHNLLAJAGB, roleA, out _);
     var spotRole = spot.Roles.First(role => role.RoleId == roleA);

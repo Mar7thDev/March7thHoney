@@ -144,7 +144,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         current.ContextData.InitialEquipmentIdList.Add(Catalog.InitialEquipmentIds);
         var pending = BuildPendingAction();
         if (pending != null) current.PendingAction = pending;
-        current.GameInfoList.Add(BuildBasicInfo(pending != null));
+        current.GameInfoList.Add(BuildBasicInfo(pending != null && !session.IsSpotLightSelecting));
         current.GameInfoList.Add(new GridFightGameInfo { TeamInfo = BuildTeamInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { ItemsInfo = BuildItemsInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { ShopInfo = BuildShopInfo() });
@@ -612,11 +612,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             var pendingResult = new GridFightSyncResultData();
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData
             {
-                LockInfo = new GridFightLockInfo
-                {
-                    LockType = GridFightLockType.Gameplay,
-                    LockReason = GridFightLockReason.PendingAction,
-                },
+                LockInfo = BuildPendingLockInfo(),
             });
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
             notify.ResultList.Add(pendingResult);
@@ -1110,11 +1106,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         result.EffectParamList.Add(headPlayer.EffectId);
         result.UpdateDynamicList.Add(new GridFightSyncData
         {
-            LockInfo = new GridFightLockInfo
-            {
-                LockType = GridFightLockType.Gameplay,
-                LockReason = GridFightLockReason.PendingAction,
-            },
+            LockInfo = BuildPendingLockInfo(),
         });
         if (BuildPendingAction() is { } pending)
             result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
@@ -1188,11 +1180,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var pendingResult = new GridFightSyncResultData();
         pendingResult.UpdateDynamicList.Add(new GridFightSyncData
         {
-            LockInfo = new GridFightLockInfo
-            {
-                LockType = GridFightLockType.Gameplay,
-                LockReason = GridFightLockReason.PendingAction,
-            },
+            LockInfo = BuildPendingLockInfo(),
         });
         if (BuildPendingAction() is { } pending)
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
@@ -1218,11 +1206,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             var pendingResult = new GridFightSyncResultData();
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData
             {
-                LockInfo = new GridFightLockInfo
-                {
-                    LockType = GridFightLockType.Gameplay,
-                    LockReason = GridFightLockReason.PendingAction,
-                },
+                LockInfo = BuildPendingLockInfo(),
             });
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
             notify.ResultList.Add(pendingResult);
@@ -1331,11 +1315,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             var pendingResult = new GridFightSyncResultData();
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData
             {
-                LockInfo = new GridFightLockInfo
-                {
-                    LockType = GridFightLockType.Gameplay,
-                    LockReason = GridFightLockReason.PendingAction,
-                },
+                LockInfo = BuildPendingLockInfo(),
             });
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
             notify.ResultList.Add(pendingResult);

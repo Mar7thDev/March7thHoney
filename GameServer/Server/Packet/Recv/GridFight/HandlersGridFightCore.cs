@@ -635,6 +635,10 @@ public sealed class HandlerGridFightBackToPrepareCsReq : GridFightHandler<GridFi
         // ReturnPreparation. Re-sending the same pending here can reset/close the divination UI.
         if (success && session?.FateDivinerPending == null)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildPreparationSync()));
+        // Node-entry prompts (主角光环, 幕后茶歇) must be queued before the response: pushed after it they arrive while
+        // the preparation page plays its entrance (shop refresh...), and the page pauses the spotlight panel again.
+        if (success && manager.BuildSeasonTwoFollowUpSync() is { } entry)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(entry));
 
         // 4.5v3 cmd 8680 (LFDIMJCMNDJ) is the empty BackToPrepare response seen in captures.
         await connection.SendPacket(CreatePacket(CmdIds.LFDIMJCMNDJ, new LFDIMJCMNDJ()));
