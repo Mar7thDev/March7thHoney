@@ -716,13 +716,17 @@ if (!catalog.IsSeasonOne)
     Check("S2 幻乐之主: the shop offers an Aha good and it can be bought for its price",
         ahaSlot != null && aha.BuySpecialGoods([ahaSlot.Index]).Count == 1 && ahaSlot.SoldOut &&
         aha.RefreshShop(true));
-    AddRole(aha, 151102);
-    ahaRun.BuildSeasonTwoFollowUpSync();
+    // The rolled Aha good is random and some hand out Aha copies (346 星神降临, 349 球球了！), so the copy rule runs on
+    // its own board.
+    var (ahaCopyRun, ahaCopy) = Board((151102, 1));
+    ahaCopyRun.BuildSeasonTwoFollowUpSync();
+    AddRole(ahaCopy, 151102);
+    ahaCopyRun.BuildSeasonTwoFollowUpSync();
     Check("S2 幻乐之主: a second Aha becomes 幻月之力 instead of a merge",
-        aha.Roles.Count(role => role.RoleId is 151102 or 151112 or 151122 or 151132) == 1 && aha.AhaGrowth == 1 &&
-        aha.RefreshRoleSavedValues().ContainsKey(GridFightSession.AhaGrowthSavedValueKey) == false);
+        ahaCopy.Roles.Count(role => role.RoleId is 151102 or 151112 or 151122 or 151132) == 1 && ahaCopy.AhaGrowth == 1 &&
+        ahaCopy.RefreshRoleSavedValues().ContainsKey(GridFightSession.AhaGrowthSavedValueKey) == false);
     Check("S2 幻乐之主: GetData carries the 7-cost progress modifier",
-        ahaRun.BuildCurrentInfo()!.GameData.GameItemList.Any(item => item.GEKCCCPGBGJ?.GridFightTraitInfo.Count == 2));
+        ahaCopyRun.BuildCurrentInfo()!.GameData.GameItemList.Any(item => item.GEKCCCPGBGJ?.GridFightTraitInfo.Count == 2));
 
     // 星神★阿哈 3星7费: every fielded role joins the leading trait.
     var (masterRun, master) = Board((roleA, 1));
