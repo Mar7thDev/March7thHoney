@@ -1323,7 +1323,7 @@ public sealed partial class GridFightSession
 
     public GridFightRoleAcquisitionResult BuyGoods(IReadOnlyList<uint> indices)
     {
-        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection || indices.Count == 0 || indices.Distinct().Count() != indices.Count)
+        if (Phase != GridFightSessionPhase.Preparing || HasBlockingPendingSelection || indices.Count == 0 || indices.Distinct().Count() != indices.Count)
             return GridFightRoleAcquisitionResult.Failed;
         var slots = indices.Select(index => Shop.FirstOrDefault(slot => slot.Index == index)).ToList();
         if (slots.Any(slot => slot == null || slot.SoldOut || slot.SpecialGoodsId != 0))
@@ -1359,7 +1359,7 @@ public sealed partial class GridFightSession
 
     public GridFightSessionChange RecycleRole(uint uniqueId)
     {
-        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection) return GridFightSessionChange.Failed;
+        if (Phase != GridFightSessionPhase.Preparing || HasBlockingPendingSelection) return GridFightSessionChange.Failed;
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
         // The summoned 丹恒•腾荒 cannot be sold (the client refuses locally as well).
         if (role == null || IsPopulationFreeRole(role)) return GridFightSessionChange.Failed;
@@ -1401,7 +1401,7 @@ public sealed partial class GridFightSession
 
     public GridFightSessionChange UpdatePositions(IReadOnlyList<(uint UniqueId, uint Position)> updates)
     {
-        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection || updates.Count == 0 ||
+        if (Phase != GridFightSessionPhase.Preparing || HasBlockingPendingSelection || updates.Count == 0 ||
             updates.Select(update => update.UniqueId).Distinct().Count() != updates.Count)
             return GridFightSessionChange.Failed;
         var rolesById = Roles.ToDictionary(role => role.UniqueId);
