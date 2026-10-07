@@ -105,6 +105,22 @@ var testRoles = catalog.RolePool
 if (testRoles.Length < 4) throw new InvalidDataException("GridFight role pool has fewer than four test roles.");
 var (roleA, roleB, roleC, roleD) = (testRoles[0], testRoles[1], testRoles[2], testRoles[3]);
 
+// Battle-entry maze skills are sent as MazeBuffs; a skill id without a MazeBuff row (e.g. 121002 Guinaifen) makes the
+// client NRE while the battle loads, so every role star must resolve to nothing or to an existing MazeBuff.
+var invalidEntryBuffs = GameData.GridFightRoleStarData.Values
+    .Select(star => new GridFightRoleState { RoleId = star.ID, Star = star.Star })
+    .Where(role => March7thHoney.GameServer.Game.GridFight.Battle.GridFightBattleProtoBuilder
+                       .TryResolveEntryMazeSkill(role, out var buffId) &&
+                   !GameData.MazeBuffData.ContainsKey(buffId * 10 + 1))
+    .Select(role => $"{role.RoleId}/{role.Star}")
+    .ToList();
+Check($"battle-entry maze buffs exist for every role star (invalid: {string.Join(", ", invalidEntryBuffs)})",
+    invalidEntryBuffs.Count == 0);
+if (GameData.GridFightRoleStarData.ContainsKey(121002u << 4 | 1))
+    Check("battle-entry maze buff: Guinaifen's overridden skill 121002 is not sent",
+        !March7thHoney.GameServer.Game.GridFight.Battle.GridFightBattleProtoBuilder.TryResolveEntryMazeSkill(
+            new GridFightRoleState { RoleId = 121002, Star = 1 }, out _));
+
 foreach (var portalId in catalog.PortalPool)
 {
     var manager = NewRun(portalId);
