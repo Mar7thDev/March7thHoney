@@ -2107,7 +2107,7 @@ public sealed partial class GridFightManager : BasePlayerManager
     // From 4.6.51 the client builds its stage nodes (GridFightStageRoute.SyncRouteNodes) only from these synced
     // nodes; without them the current node is null, the stage line reads 0-0 and the preparation page cannot
     // start a battle. Field identities follow GridFightStageNode._RefreshCachedFields: param 2 stage, 7 penalty
-    // rule, 8 augment flag (== 1), 12 basic gold, 14 node type; 4 (spotlight) and 11 (bonfire) stay unset.
+    // rule, 8 augment flag (== 1), 12 basic gold, 14 node type; 4 (spotlight) and 11 (bonfire) are season-two only.
     private static BCCIJHPLJOJ BuildRouteNode(GridFightRouteNode node, GridFightSession session)
     {
         var param = new OHMDHKGAEMM
@@ -2119,8 +2119,9 @@ public sealed partial class GridFightManager : BasePlayerManager
             NodeType = (uint)node.NodeType,
         };
         param.ParamList.Add(node.Parameters);
-        // 主角光环: param 4 marks the nodes that open a spotlight selection (and number the locked slots).
-        if (session.IsSpotLightNode(node.ChapterId, node.SectionId)) param.HPNNLMBHOPF = true;
+        // 主角光环: param 4 marks the nodes whose spotlight selection is still due (and numbers the locked slots);
+        // while the current node has it, the battle button asks for the selection instead of starting the battle.
+        if (session.IsSpotLightNodePending(node.ChapterId, node.SectionId)) param.HPNNLMBHOPF = true;
         // 幕后茶歇: param 11 marks the node, 15 lists its event, 3 shows the partner on it; the Hex display
         // (param 8 == 1) would win over the bonfire one.
         if (session.FindBonfireNode(node.ChapterId, node.SectionId) is { } bonfire)

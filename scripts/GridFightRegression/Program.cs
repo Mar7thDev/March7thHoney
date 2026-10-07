@@ -782,6 +782,21 @@ if (!catalog.IsSeasonOne)
         spotNodes == 2 && spotPending?.HPKFKBKOADP.Count == 2 && spotChanges?.Added.Count == 1 &&
         spot.GetSpotLightIdForRole(spotRole.UniqueId) == spotPending.HPKFKBKOADP[0].IHHNLLAJAGB &&
         spotRun.BuildCurrentInfo()!.GameInfoList.Any(info => info.LEGMAJLHBLA?.FNNEPMAPOOF.Count == 1));
+    // While the current node has HasSpotLight the S2 battle button sends 8508 instead of starting the battle, so the
+    // finished selection must clear the flag on 1-2 (route node update 1779 and GetData) and keep it on 2-1.
+    var spotRouteUpdates = spotChanges == null ? []
+        : spotRun.BuildSpotLightSync(spotChanges, 0).ResultList.SelectMany(result => result.UpdateDynamicList)
+            .Where(data => data.KBHOBGHKIBA != null).Select(data => data.KBHOBGHKIBA.DBIIPEEDBHI).ToList();
+    var spotRouteAfter = spotRun.BuildCurrentInfo()!.GameInfoList
+        .Where(info => info.LevelInfo != null)
+        .SelectMany(info => info.LevelInfo.OOMMIIKPHBC)
+        .ToList();
+    Check("S2 主角光环: a finished selection clears the node's spotlight flag so the battle button starts the battle",
+        spotRouteUpdates.Count == 1 && spotRouteUpdates[0].DCAHJELNJNP == 1 && spotRouteUpdates[0].SectionId == 2 &&
+        !spotRouteUpdates[0].Param.HPNNLMBHOPF &&
+        spotRouteAfter.Single(node => node.DCAHJELNJNP == 1 && node.SectionId == 2).Param.HPNNLMBHOPF == false &&
+        spotRouteAfter.Single(node => node.DCAHJELNJNP == 2 && node.SectionId == 1).Param.HPNNLMBHOPF &&
+        spot.ResolveStaleSpotLightNode() == null && spot.EnterBattle());
 
     // 本局奇遇: partner effects that change server rules.
     GridFightSession? RunWithPetPal(uint effectId)
