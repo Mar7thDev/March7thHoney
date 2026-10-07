@@ -72,11 +72,19 @@ public sealed partial class GridFightManager
         }
     }
 
-    private static void AppendSpotLightChanges(
+    private void AppendSpotLightChanges(
         GridFightSyncResultData result,
         GridFightSession session,
         GridFightSpotLightChanges changes)
     {
+        // SyncData 1779 -> GridFightStage.UpdateRouteNode: refreshes the node's HasSpotLight (route param 4).
+        foreach (var (chapterId, sectionId) in changes.RouteNodes)
+            if (Catalog.StandardRoute.FirstOrDefault(node => node.ChapterId == chapterId && node.SectionId == sectionId) is
+                { } routeNode)
+                result.UpdateDynamicList.Add(new GridFightSyncData
+                {
+                    KBHOBGHKIBA = new BAAGMMIDHDB { DBIIPEEDBHI = BuildRouteNode(routeNode, session) },
+                });
         foreach (var entry in changes.Added)
             result.UpdateDynamicList.Add(new GridFightSyncData { PHNKDPMDONM = BuildSpotLightEntry(entry) });
         foreach (var entry in changes.Updated)

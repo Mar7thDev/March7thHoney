@@ -120,7 +120,10 @@ public sealed class HandlerGridFightEnterBonfireCsReq : GridFightHandler<GridFig
     }
 }
 
-/// <summary>GridFightSpotLightEnterCsReq (8508): the HUD re-enters a paused spotlight selection; re-push it.</summary>
+/// <summary>
+///     GridFightSpotLightEnterCsReq (8508): sent by the HUD and by the battle button while the current node still has
+///     HasSpotLight. Re-push an open selection; with none open or queued, settle the node so the client clears the flag.
+/// </summary>
 [Opcode(CmdIds.NLMAAHDFLGC)]
 public sealed class HandlerGridFightSpotLightEnterCsReq : GridFightHandler<NLMAAHDFLGC>
 {
@@ -128,9 +131,11 @@ public sealed class HandlerGridFightSpotLightEnterCsReq : GridFightHandler<NLMAA
     {
         var manager = player.GridFightManager!;
         var open = manager.Session?.SeasonTwoPending?.Kind == GridFightSeasonTwoPendingKind.SpotLightSelect;
-        if (open) await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSpotLightSync(null, 0)));
+        var settled = open ? null : manager.Session?.ResolveStaleSpotLightNode();
+        if (open || settled != null)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSpotLightSync(settled, 0)));
         await connection.SendPacket(CreatePacket(CmdIds.GridFightSpotLightEnterScRsp,
-            new GridFightSpotLightEnterScRsp { Retcode = open ? 0 : (uint)Retcode.RetFail }));
+            new GridFightSpotLightEnterScRsp { Retcode = open || settled != null ? 0 : (uint)Retcode.RetFail }));
     }
 }
 

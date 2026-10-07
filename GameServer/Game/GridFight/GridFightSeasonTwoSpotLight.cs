@@ -16,6 +16,9 @@ public sealed class GridFightSpotLightChanges
     public List<GridFightSpotLightState> Updated { get; } = [];
     public List<GridFightSpotLightState> Removed { get; } = [];
     public bool CountersChanged { get; set; }
+
+    /// <summary>Spotlight nodes whose route param 4 changed (SyncData 1779 route node update).</summary>
+    public List<(uint ChapterId, uint SectionId)> RouteNodes { get; } = [];
 }
 
 /// <summary>
@@ -45,6 +48,7 @@ public sealed partial class GridFightSession
 
     private readonly List<GridFightSpotLightState> _spotLights = [];
     private readonly HashSet<(uint ChapterId, uint SectionId)> _spotLightNodesVisited = [];
+    private readonly HashSet<(uint ChapterId, uint SectionId)> _spotLightNodesDone = [];
     private readonly List<uint> _spotLightCandidates = [];
     private readonly Dictionary<uint, uint> _spotLightTraitItemIds = [];
     private uint _spotLightRerollsLeft;
@@ -69,6 +73,30 @@ public sealed partial class GridFightSession
 
     public bool IsSpotLightNode(uint chapterId, uint sectionId) =>
         IsSeasonTwoRules && SpotLightNodes.Contains((chapterId, sectionId));
+
+    /// <summary>
+    ///     Route param 4 (HasSpotLight) while the node's selection is still due. The S2 preparation panel's battle button
+    ///     sends GridFightSpotLightEnterCsReq (8508) instead of starting the battle while the current node has it
+    ///     (GridFightPreparationS2SeasonPanel.try_handle_start_battle), so it must be cleared once the node is done.
+    /// </summary>
+    public bool IsSpotLightNodePending(uint chapterId, uint sectionId) =>
+        IsSpotLightNode(chapterId, sectionId) && !_spotLightNodesDone.Contains((chapterId, sectionId));
+
+    /// <summary>The current spotlight node is done once no selection for it is queued or open.</summary>
+    private void ResolveSpotLightNode(GridFightSpotLightChanges changes)
+    {
+        if (!IsSpotLightNode(ChapterId, SectionId) || _spotLightPendingSelections > 0 || IsSpotLightSelecting) return;
+        if (_spotLightNodesDone.Add((ChapterId, SectionId))) changes.RouteNodes.Add((ChapterId, SectionId));
+    }
+
+    /// <summary>8508 without an open selection: settle the current node so the battle button starts the battle.</summary>
+    public GridFightSpotLightChanges? ResolveStaleSpotLightNode()
+    {
+        if (Phase != GridFightSessionPhase.Preparing || !IsSpotLightNodePending(ChapterId, SectionId)) return null;
+        var changes = new GridFightSpotLightChanges();
+        ResolveSpotLightNode(changes);
+        return changes.RouteNodes.Count == 0 ? null : changes;
+    }
 
     public uint GetSpotLightIdForRole(uint roleUniqueId) =>
         _spotLights.FirstOrDefault(entry => entry.RoleUniqueId == roleUniqueId && !entry.IsLoss)?.SpotLightId ?? 0;
@@ -112,6 +140,8 @@ public sealed partial class GridFightSession
         var unlocked = SpotLightNodes.Count(node => _spotLightNodesVisited.Contains(node));
         if (_spotLights.Count(entry => !entry.IsLoss) + _spotLightPendingSelections < Math.Min(unlocked, SpotLightNormalSlots))
             _spotLightPendingSelections++;
+        else
+            ResolveSpotLightNode(spotChanges);
     }
 
     private bool TryStartSpotLightPending(GridFightSeasonTwoChanges changes)
@@ -190,6 +220,7 @@ public sealed partial class GridFightSession
         _spotLightTargetUniqueId = 0;
         _spotLightGrantRoleId = 0;
         finished = FinishSeasonTwoPending(GridFightSeasonTwoPendingKind.SpotLightSelect);
+        ResolveSpotLightNode(changes);
         return changes;
     }
 
