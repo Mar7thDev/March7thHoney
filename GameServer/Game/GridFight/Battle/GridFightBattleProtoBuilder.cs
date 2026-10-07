@@ -534,7 +534,7 @@ public static class GridFightBattleProtoBuilder
             : 1;
     }
 
-    private static bool TryResolveEntryMazeSkill(GridFightRoleState role, out int mazeSkillId)
+    public static bool TryResolveEntryMazeSkill(GridFightRoleState role, out int mazeSkillId)
     {
         mazeSkillId = 0;
 
@@ -556,7 +556,10 @@ public static class GridFightBattleProtoBuilder
             roleStar.SkillOverrideSrc.Contains(0))
             mazeSkillId = adventure.MazeSkillIdList.FirstOrDefault(id => roleStar.SkillOverrideSrc.Contains((uint)id));
         if (mazeSkillId == 0) mazeSkillId = adventure.MazeSkillIdList[0];
-        return mazeSkillId != 0;
+        // A maze skill id is only a valid battle-entry buff when a MazeBuff row exists for it (MazeBuffData is keyed
+        // ID * 10 + level). Overridden skills such as 121002 (Guinaifen), 110302, 140302 have none, and the client
+        // NREs sorting MazeBuffData while the battle loads (black screen).
+        return mazeSkillId != 0 && GameData.MazeBuffData.ContainsKey(mazeSkillId * 10 + 1);
     }
 
     public static List<AvatarLineupData> BuildBattleAvatars(BattleInstance battle, GridFightSession session)
