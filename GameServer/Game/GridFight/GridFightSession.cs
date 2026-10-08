@@ -1556,6 +1556,7 @@ public sealed partial class GridFightSession
         var activeRoleCount = CountPopulationRoles(Roles.Select(role => (role.UniqueId, role.Position)));
         if (Phase != GridFightSessionPhase.Preparing ||
             HasPendingSelection ||
+            IsSpotLightSelectionDue ||
             !IsCombatNode(CurrentNode) ||
             BattlePlan == null ||
             activeRoleCount == 0 ||

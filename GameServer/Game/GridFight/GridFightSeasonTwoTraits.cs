@@ -330,7 +330,7 @@ public sealed partial class GridFightSession
         // 幕后茶歇 replaces the node itself, so it opens before any trait prompt.
         if (TryStartBonfirePending(changes)) return;
         if (TryStartAhaUltraPending(changes)) return;
-        if (TryStartSpotLightPending(changes)) return;
+        // 主角光环 is not pushed here: the client opens it itself through 8508 (see StartSpotLightFromEnter).
         var layers = ResolveTraitLayers();
         if (layers.TryGetValue(DanHengTraitId, out var danHeng) && danHeng.Layer > 0 && _danHengChosenTraitId == 0 &&
             Roles.Any(role => role.RoleId == DanHengMainRoleId && IsActivePosition(role.Position)))

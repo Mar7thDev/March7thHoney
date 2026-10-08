@@ -635,8 +635,8 @@ public sealed class HandlerGridFightBackToPrepareCsReq : GridFightHandler<GridFi
         // ReturnPreparation. Re-sending the same pending here can reset/close the divination UI.
         if (success && session?.FateDivinerPending == null)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildPreparationSync()));
-        // Node-entry prompts (主角光环, 幕后茶歇) must be queued before the response: pushed after it they arrive while
-        // the preparation page plays its entrance (shop refresh...), and the page pauses the spotlight panel again.
+        // Node-entry prompts (幕后茶歇) are queued before the response. 主角光环 is not one of them: the client asks for it
+        // with 8508 once its entrance queue has played the spotlight hint.
         if (success && manager.BuildSeasonTwoFollowUpSync() is { } entry)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(entry));
 

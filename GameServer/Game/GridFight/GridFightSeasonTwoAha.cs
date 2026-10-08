@@ -6,8 +6,8 @@ namespace March7thHoney.GameServer.Game.GridFight;
 
 /// <summary>
 ///     幻乐之主 (Aha) shop influence and 7-cost progress. "星神★阿哈将持续投下瞥视，对商店施加影响": while an Aha is on the
-///     board, each shop roll turns one slot into an Aha special good (GridFightSpecialGoods group 2, the upgraded group 3
-///     once Aha reaches 5 cost). How often the client's server does this is not known; one slot per roll is a guess.
+///     board, a shop roll may turn one slot into an Aha special good (GridFightSpecialGoods group 2, the upgraded group 3
+///     once Aha reaches 5 cost). How often the official server does this is not known; see AhaShopGlanceChance.
 ///     Only goods whose effect maps onto existing server state are offered.
 /// </summary>
 public sealed partial class GridFightSession
@@ -92,9 +92,30 @@ public sealed partial class GridFightSession
             _ahaModifierUniqueId = _nextEntityUniqueId++;
     }
 
+    /// <summary>
+    ///     Chance that a shop roll gets an Aha good, by the highest Aha tier on the board. The client only says "可能"; the
+    ///     official numbers are server-side, so 3-cost 20% / 4-cost 30% / 5- and 7-cost 40% is a chosen value.
+    /// </summary>
+    public double AhaShopGlanceChance
+    {
+        get
+        {
+            var ahaIds = Roles.Where(role => IsAhaRole(role.RoleId) && IsActivePosition(role.Position))
+                .Select(role => role.RoleId).ToList();
+            if (ahaIds.Count == 0) return 0;
+            return ahaIds.Max() switch
+            {
+                AhaThreeCostRoleId => 0.2,
+                AhaFourCostRoleId => 0.3,
+                _ => 0.4,
+            };
+        }
+    }
+
     private void ApplyAhaShopGlance()
     {
         if (!IsSeasonTwoRules || !IsAhaOnBoard || Shop.Count == 0) return;
+        if (Random.Shared.NextDouble() >= AhaShopGlanceChance) return;
         var upgraded = Roles.Any(role => role.RoleId is AhaFiveCostRoleId or AhaSevenCostRoleId);
         var group = upgraded ? AhaGoodsUpgradedGroup : AhaGoodsBaseGroup;
         var pool = GridFightSeasonTwoTables.AhaGoods
