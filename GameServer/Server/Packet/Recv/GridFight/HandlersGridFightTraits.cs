@@ -70,7 +70,10 @@ public sealed class HandlerGridFightTraitUpdateCsReq : GridFightHandler<GridFigh
             case GridFightTraitUpdateCsReq.NEBNJDMFELOOneofCase.KDBKIPPHMFI:
             {
                 var purchase = session.BuyTrailblazeGood(request.KDBKIPPHMFI.Pos);
-                return purchase.Success ? manager.BuildSeasonTwoSelectionSync(traitId, effectId, 0, purchase) : null;
+                if (!purchase.Success) return null;
+                var sync = manager.BuildSeasonTwoSelectionSync(traitId, effectId, 0, purchase);
+                manager.AppendPamKingUnlock(sync);
+                return sync;
             }
             case GridFightTraitUpdateCsReq.NEBNJDMFELOOneofCase.MCCMPFENGCD:
             {

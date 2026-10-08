@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.Enums.GridFight;
+using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;
 
@@ -21,6 +22,9 @@ public sealed partial class GridFightSession
     public const uint TrailblazeTraitId = 100502;
     public const uint TrailblazeEffectId = 1005021;
     public const uint TrailblazeRefreshGoodId = 999;
+    public const uint PamKingRoleId = 604202;
+    /// <summary>帕姆王 "累计消耗解锁": the client's own default when no modifier is synced (no table carries it).</summary>
+    public const uint PamKingCostedThreshold = 500;
     public const uint AstropolisTraitId = 100602;
     public const uint AstropolisEffectId = 1006021;
     private const int TrailblazeGoodsCount = 5;
@@ -34,6 +38,10 @@ public sealed partial class GridFightSession
     private readonly Dictionary<uint, uint> _trailblazeBought = [];
     private (uint ChapterId, uint SectionId) _trailblazeGoodsNode;
     private bool _trailblazeActivated;
+    private uint _trailblazeCostedCoin;
+    private uint _pamKingModifierUniqueId;
+    private bool _pamKingUnlocked;
+    private GridFightRewardApplication? _pendingPamKingUnlock;
     private (uint ChapterId, uint SectionId) _astropolisNode;
     private uint _freeShopRefreshCount;
 
@@ -42,6 +50,18 @@ public sealed partial class GridFightSession
     public uint TrailblazeCoin => _trailblazeCoin;
     public IReadOnlyList<GridFightTrailblazeGoodState> TrailblazeGoods => _trailblazeGoods;
     public IReadOnlyDictionary<uint, uint> TrailblazeBought => _trailblazeBought;
+    /// <summary>开拓力 spent in the Trailblaze shop this run (帕姆王 progress).</summary>
+    public uint TrailblazeCostedCoin => _trailblazeCostedCoin;
+    public uint PamKingModifierUniqueId => _pamKingModifierUniqueId;
+    public bool PamKingUnlocked => _pamKingUnlocked;
+
+    /// <summary>Returns and clears the 帕姆王 grant made by the last Trailblaze purchase.</summary>
+    public GridFightRewardApplication? TakePamKingUnlock()
+    {
+        var unlock = _pendingPamKingUnlock;
+        _pendingPamKingUnlock = null;
+        return unlock;
+    }
     public uint FreeShopRefreshCount => _freeShopRefreshCount;
     public uint EffectiveShopRefreshCost => _freeShopRefreshCount > 0 ? 0 : _catalog.RefreshCost;
 
@@ -245,6 +265,7 @@ public sealed partial class GridFightSession
             // 星穹列车，跃迁！(101) is the base train every later MazeBuff good upgrades (FatherGoodID chain).
             _trailblazeActivated = true;
             _trailblazeBought[101] = 1;
+            _pamKingModifierUniqueId = _nextEntityUniqueId++;
         }
         if (_trailblazeGoods.Count > 0 && _trailblazeGoodsNode == (ChapterId, SectionId)) return;
         RollTrailblazeGoods(state.Layer);
@@ -312,6 +333,7 @@ public sealed partial class GridFightSession
         {
             case "RefreshGoods":
                 RollTrailblazeGoods(layer);
+                AddTrailblazeCostedCoin(good.Cost);
                 return new GridFightRewardApplication { Success = true };
             case "TrailFuel":
                 _trailblazeCoin += row.Params.FirstOrDefault();
@@ -338,7 +360,24 @@ public sealed partial class GridFightSession
             return failed;
         }
         if (row.Type != "Property") _trailblazeGoods.RemoveAt((int)index);
+        AddTrailblazeCostedCoin(good.Cost);
         return application;
+    }
+
+    /// <summary>
+    ///     帕姆王 "累计消耗解锁": every 开拓力 spent in the shop counts; reaching the threshold grants 帕姆王 (604202) once.
+    ///     The client shows CostedCoin / CostedThreshold from the GridFightGameItemInfo oneof 1466 modifier and plays the
+    ///     unlock for a result with update source 42 whose params[1] is that modifier's UID. Whether refreshes count and
+    ///     whether the role comes as 1 star are guesses.
+    /// </summary>
+    private void AddTrailblazeCostedCoin(uint cost)
+    {
+        _trailblazeCostedCoin += cost;
+        if (_pamKingUnlocked || _trailblazeCostedCoin < PamKingCostedThreshold) return;
+        var unlock = ApplyRewards([new GridFightRewardEntry(GridFightBonusTypeEnum.SpecificAvatar, PamKingRoleId, 1, 1)]);
+        if (!unlock.Success) return;
+        _pamKingUnlocked = true;
+        _pendingPamKingUnlock = unlock;
     }
 
     /// <summary>每个战斗阶段后积攒【开拓力】: layer param 1 per finished battle (20/45/75/125/225).</summary>
@@ -391,5 +430,59 @@ public sealed partial class GridFightSession
     private void ApplyAstropolisRefreshBonus()
     {
         if (ResolveAstropolisTier() >= 1) AddPlayerExp(1);
+    }
+}
+
+public sealed partial class GridFightManager
+{
+    private string _sentPamKingProgress = "";
+
+    /// <summary>
+    ///     帕姆王 progress modifier (GridFightGameItemInfo oneof 1466, client HKAKBNNKOID): CONKAFGLHFE field 6 is
+    ///     CostedCoin, field 7 CostedThreshold (WriteTo tags 0x30/0x38). GridFightTrailblazePurchaseBonus reads them through
+    ///     GridFightModifierInfo.GetModifier; without it the bar stays at 0/500.
+    /// </summary>
+    private GridFightGameItemInfo? BuildPamKingModifierItem(GridFightSession session)
+    {
+        if (session.PamKingModifierUniqueId == 0) return null;
+        return new GridFightGameItemInfo
+        {
+            UniqueId = session.PamKingModifierUniqueId,
+            Descriptor_ = BuildGameItemDescriptor(GridFightGameItemCategory.HackConsole, GridFightSession.TrailblazeTraitId),
+            ONKMJAGNECC = new CONKAFGLHFE
+            {
+                IANFMIJBKAF = session.TrailblazeCostedCoin,
+                PLAIPMBIHGJ = GridFightSession.PamKingCostedThreshold,
+            },
+        };
+    }
+
+    private void AppendPamKingModifierDiff(GridFightSyncResultData result, GridFightSession session)
+    {
+        if (BuildPamKingModifierItem(session) is not { } item) return;
+        var key = $"{item.UniqueId}:{item.ONKMJAGNECC.IANFMIJBKAF}";
+        if (key == _sentPamKingProgress) return;
+        _sentPamKingProgress = key;
+        result.UpdateDynamicList.Add(new GridFightSyncData { GameDataItemInfo = item });
+    }
+
+    /// <summary>Adds the 帕姆王 unlock (update source 42, params [trait, modifier UID]) after a Trailblaze purchase.</summary>
+    public void AppendPamKingUnlock(GridFightSyncUpdateResultScNotify notify)
+    {
+        if (Session is not { } session || session.TakePamKingUnlock() is not { } unlock) return;
+        var source = GridFightUpdateSrcType.Hlhfimghhno;
+        uint[] parameters = [GridFightSession.TrailblazeTraitId, session.PamKingModifierUniqueId];
+        var result = new GridFightSyncResultData { UpdateSource = source };
+        result.EffectParamList.Add(parameters);
+        if (BuildPamKingModifierItem(session) is { } item)
+        {
+            result.UpdateDynamicList.Add(new GridFightSyncData { GameDataItemInfo = item });
+            _sentPamKingProgress = $"{item.UniqueId}:{item.ONKMJAGNECC.IANFMIJBKAF}";
+        }
+        AppendRewardApplication(result, unlock);
+        foreach (var acquisition in unlock.RoleAcquisitions) AppendAcquiredRoles(result, acquisition);
+        notify.ResultList.Add(result);
+        foreach (var acquisition in unlock.RoleAcquisitions)
+            AppendRoleMergeResults(notify, source, parameters, acquisition);
     }
 }
