@@ -707,10 +707,19 @@ if (!catalog.IsSeasonOne)
     Check("S2 pending: a resent answer for a finished prompt is recognised",
         mixed.IsFinishedSeasonTwoPending(claraQueue) && !mixed.IsFinishedSeasonTwoPending(claraQueue + 100));
 
-    // 幻乐之主: an Aha on the board puts an Aha good into every shop roll; copies turn into growth.
+    // 幻乐之主: an Aha on the board may put an Aha good into a shop roll (3-cost 20%); copies turn into growth.
     var (ahaRun, aha) = Board((151102, 1));
     ahaRun.BuildSeasonTwoFollowUpSync();
-    aha.RefreshShop(true);
+    var ahaRolls = 0;
+    for (var roll = 0; roll < 400; roll++)
+    {
+        aha.RefreshShop(false);
+        if (aha.Shop.Any(slot => GridFightSession.IsAhaGoods(slot.SpecialGoodsId))) ahaRolls++;
+    }
+    Check("S2 幻乐之主: a 3-cost Aha glances at about one shop roll in five, not every roll",
+        aha.AhaShopGlanceChance == 0.2 && ahaRolls is >= 40 and <= 120);
+    for (var roll = 0; roll < 100 && !aha.Shop.Any(slot => GridFightSession.IsAhaGoods(slot.SpecialGoodsId)); roll++)
+        aha.RefreshShop(false);
     var ahaSlot = aha.Shop.FirstOrDefault(slot => GridFightSession.IsAhaGoods(slot.SpecialGoodsId));
     var ahaGoldBefore = aha.Gold;
     Check("S2 幻乐之主: the shop offers an Aha good and it can be bought for its price",
@@ -760,8 +769,21 @@ if (!catalog.IsSeasonOne)
         else
             spot.HandlePending(spot.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
     }
-    var spotOpenSync = spotRun.BuildSeasonTwoFollowUpSync();
+    // The client asks for the selection itself (8508 from the "选择主角" battle button after its spotlight hint), so
+    // node entry must not push it, and the battle stays closed until it is made.
+    var spotEntrySync = spotRun.BuildSeasonTwoFollowUpSync();
+    var spotNodeFlagged = spotRun.BuildCurrentInfo()!.GameInfoList.Where(info => info.LevelInfo != null)
+        .SelectMany(info => info.LevelInfo.OOMMIIKPHBC)
+        .Single(node => node.DCAHJELNJNP == 1 && node.SectionId == 2).Param.HPNNLMBHOPF;
+    Check("S2 主角光环: entering the node pushes no selection, keeps the node flag and keeps the battle closed",
+        spot.SeasonTwoPending == null && spotNodeFlagged && spot.IsSpotLightSelectionDue && !spot.EnterBattle() &&
+        spotEntrySync?.ResultList.SelectMany(result => result.UpdateDynamicList).All(data => data.PendingAction == null) != false);
+    var spotEntered = spot.StartSpotLightFromEnter();
+    var spotOpenSync = spotRun.BuildSpotLightSync(null, 0);
     var spotPending = spotRun.BuildPendingAction()?.EEKMIAMGHFL;
+    Check("S2 主角光环: 8508 opens the node selection",
+        spotEntered && spot.IsSpotLightSelecting && spotPending != null &&
+        spotOpenSync.ResultList.SelectMany(result => result.UpdateDynamicList).Any(data => data.PendingAction?.EEKMIAMGHFL != null));
     var spotQueue = spot.SeasonTwoPending?.QueuePosition ?? 0;
     // The role is chosen by dragging it onto the spotlight stage; the client refuses board drags under the gameplay
     // lock, so the selection must stay unlocked and the server must accept team edits while it is open.
@@ -772,7 +794,7 @@ if (!catalog.IsSeasonOne)
     var spotMoved = spot.UpdatePositions([(spotRoleB.UniqueId, 5)]).Success;
     var spotBattleBlocked = !spot.EnterBattle();
     Check("S2 主角光环: the open selection sends no gameplay lock and still allows moving roles, but not entering battle",
-        spotPending != null && spotLocks.Count > 0 && spotLocks.All(info => info.LockType == GridFightLockType.None) &&
+        spotPending != null && spotLocks.All(info => info.LockType == GridFightLockType.None) &&
         spotBasicLock?.LockType != GridFightLockType.Gameplay && spotMoved && spotRoleB.Position == 5 &&
         spotBattleBlocked);
     var spotChanges = spotPending == null ? null

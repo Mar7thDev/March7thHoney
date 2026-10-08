@@ -144,6 +144,22 @@ public sealed partial class GridFightSession
             ResolveSpotLightNode(spotChanges);
     }
 
+    /// <summary>A node selection is due and must be made before the node's battle.</summary>
+    public bool IsSpotLightSelectionDue => _spotLightPendingSelections > 0;
+
+    /// <summary>
+    ///     GridFightSpotLightEnterCsReq (8508). The client drives the node selection: once the preparation page's entrance
+    ///     queue is done it plays the spotlight hint and turns the battle button into "选择主角"
+    ///     (GridFightPreparationActionFlowManager._try_queue_spotlight_hint -> start_spotlight_hint), and that button sends
+    ///     8508 (try_handle_start_battle -> start_select). Pushing the selection earlier leaves the queued hint to replay
+    ///     after the selection and turn the button back into "选择主角".
+    /// </summary>
+    public bool StartSpotLightFromEnter()
+    {
+        if (Phase != GridFightSessionPhase.Preparing || _seasonTwoPending != null || HasPendingSelection) return false;
+        return TryStartSpotLightPending(new GridFightSeasonTwoChanges());
+    }
+
     private bool TryStartSpotLightPending(GridFightSeasonTwoChanges changes)
     {
         if (_spotLightPendingSelections == 0) return false;
