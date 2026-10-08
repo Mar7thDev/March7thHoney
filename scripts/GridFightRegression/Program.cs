@@ -659,6 +659,45 @@ if (!catalog.IsSeasonOne)
         trail.EnterBattle();
         trail.ResolveBattle(true, new GridFightBattleStatistics(100, [], [], [], [], 1, new Dictionary<string, uint>()));
         Check("S2 开拓银轨: a battle stage grants 开拓力", trail.TrailblazeCoin > 0);
+
+        // 帕姆王 "累计消耗解锁": spending 开拓力 fills CostedCoin of the oneof 1466 modifier; 500 grants 604202 once.
+        var (pamRun, pam) = Board((trailRoles[0], 1), (trailRoles[1], 2));
+        pamRun.BuildSeasonTwoFollowUpSync();
+        var pamStart = pamRun.BuildCurrentInfo()!.GameData.GameItemList
+            .FirstOrDefault(item => item.ONKMJAGNECC != null)?.ONKMJAGNECC;
+        Check("S2 帕姆王: GetData carries the progress modifier at 0/500",
+            pamStart != null && pamStart.IANFMIJBKAF == 0 && pamStart.PLAIPMBIHGJ == GridFightSession.PamKingCostedThreshold &&
+            pam.PamKingModifierUniqueId != 0);
+        typeof(GridFightSession).GetField("_trailblazeCoin", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance)!.SetValue(pam, 2000u);
+        var pamFirstCost = pam.TrailblazeGoods[^1].Cost;
+        var pamFirstBuy = pam.BuyTrailblazeGood((uint)pam.TrailblazeGoods.Count - 1).Success;
+        var pamDiff = pamRun.BuildSeasonTwoFollowUpSync()?.ResultList.SelectMany(result => result.UpdateDynamicList)
+            .Select(data => data.GameDataItemInfo?.ONKMJAGNECC).LastOrDefault(info => info != null);
+        Check("S2 帕姆王: a Trailblaze purchase counts its cost and syncs the modifier",
+            pamFirstBuy && pam.TrailblazeCostedCoin == pamFirstCost && pamDiff?.IANFMIJBKAF == pamFirstCost);
+        GridFightSyncUpdateResultScNotify? pamUnlock = null;
+        for (var buy = 0; buy < 1000 && pamUnlock == null; buy++)
+        {
+            if (!pam.BuyTrailblazeGood((uint)pam.TrailblazeGoods.Count - 1).Success) break;
+            var notify = new GridFightSyncUpdateResultScNotify();
+            pamRun.AppendPamKingUnlock(notify);
+            if (notify.ResultList.Count > 0) pamUnlock = notify;
+        }
+        var pamResult = pamUnlock?.ResultList[0];
+        Check("S2 帕姆王: reaching 500 grants 帕姆王 with update source 42 and the modifier UID as params[1]",
+            pam.TrailblazeCostedCoin >= GridFightSession.PamKingCostedThreshold && pam.PamKingUnlocked &&
+            pam.Roles.Any(role => role.RoleId == GridFightSession.PamKingRoleId) &&
+            pamResult?.UpdateSource == GridFightUpdateSrcType.Hlhfimghhno &&
+            pamResult.EffectParamList.SequenceEqual(new[] { GridFightSession.TrailblazeTraitId, pam.PamKingModifierUniqueId }) &&
+            pamResult.UpdateDynamicList.Any(data => data.AddRoleInfo?.Id == GridFightSession.PamKingRoleId) &&
+            pamResult.UpdateDynamicList.Any(data => data.GameDataItemInfo?.ONKMJAGNECC?.IANFMIJBKAF >= GridFightSession.PamKingCostedThreshold));
+        var pamCount = pam.Roles.Count(role => role.RoleId == GridFightSession.PamKingRoleId);
+        pam.BuyTrailblazeGood((uint)pam.TrailblazeGoods.Count - 1);
+        var pamAgain = new GridFightSyncUpdateResultScNotify();
+        pamRun.AppendPamKingUnlock(pamAgain);
+        Check("S2 帕姆王: the unlock is granted only once",
+            pamAgain.ResultList.Count == 0 && pam.Roles.Count(role => role.RoleId == GridFightSession.PamKingRoleId) == pamCount);
     }
     var (claraRun, clara) = Board((GridFightSession.ClaraRoleId, 1));
     claraRun.BuildSeasonTwoFollowUpSync();

@@ -231,6 +231,7 @@ public sealed partial class GridFightManager
         AppendSeasonTwoEffectDiffs(result);
         AppendSeasonTwoItemDiffs(result, session);
         AppendAhaModifierDiff(result, session);
+        AppendPamKingModifierDiff(result, session);
         if (changes.PendingStarted && BuildPendingAction() is { } pending)
         {
             result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = BuildPendingLockInfo() });

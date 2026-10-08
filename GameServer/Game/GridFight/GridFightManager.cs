@@ -320,6 +320,11 @@ public sealed partial class GridFightManager : BasePlayerManager
             _sentAhaProgress = string.Join(',', ahaModifier.GEKCCCPGBGJ.GridFightTraitInfo
                 .Select(entry => $"{entry.TraitId}:{entry.Progress}"));
         }
+        if (Session != null && BuildPamKingModifierItem(Session) is { } pamKingModifier)
+        {
+            data.GameItemList.Add(pamKingModifier);
+            _sentPamKingProgress = $"{pamKingModifier.UniqueId}:{pamKingModifier.ONKMJAGNECC.IANFMIJBKAF}";
+        }
         return data;
     }
 
