@@ -91,6 +91,7 @@
   "Game.Command.Give.Desc": "Give items to the player. Avatar IDs can be entered here, but traces, levels, and eidolons cannot be set.",
   "Game.Command.Give.GiveItem": "Gave @{0} {1} of item {2}",
   "Game.Command.Give.ItemNotFound": "Item not found!",
+  "Game.Command.Give.ExRankMaterialFull": "This ExRank material is already owned (stack limit: 1); no duplicate was granted.",
   "Game.Command.Give.Usage": "Usage: /give <ItemID> [x<count=1>] [l<level=1, 1-80>] [r<rank=1, 1-5>]",
   "Game.Command.GiveAll.Desc": "Give the player all items of the specified type.\navatar means characters, equipment means Light Cones, material means stackable materials, relic means relics, unlock means chat bubbles, phone wallpapers, avatars, train means Trailblazer's room contents, pet means pets, path means Paths for multi-Path characters.\nFor avatar: new characters start at l1 / r0 unless given; characters you already own only change the level or Eidolon you specify (r applies to every owned Path).",
   "Game.Command.GiveAll.GiveAllItems": "Gave all {0}, {1} each",

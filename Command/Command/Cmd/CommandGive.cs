@@ -42,7 +42,13 @@ public class CommandGive : ICommand
             return;
         }
 
-        await player.InventoryManager!.AddItem(arg.GetInt(0), amount, rank: rank, level: level);
+        amount = player.InventoryManager!.GetAvailableGrantCount(arg.GetInt(0), amount);
+        if (amount == 0 && AvatarExRankMaterials.IsMaterial(arg.GetInt(0)))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Give.ExRankMaterialFull"));
+            return;
+        }
+        await player.InventoryManager.AddItem(arg.GetInt(0), amount, rank: rank, level: level);
 
         await arg.SendMsg(I18NManager.Translate("Game.Command.Give.GiveItem", player.Uid.ToString(), amount.ToString(),
             itemData.Name ?? itemData.ID.ToString()));

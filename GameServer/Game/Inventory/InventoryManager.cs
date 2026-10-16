@@ -15,13 +15,24 @@ namespace March7thHoney.GameServer.Game.Inventory;
 
 public partial class InventoryManager(PlayerInstance player) : BasePlayerManager<InventoryData>(player)
 {
+    public int GetAvailableGrantCount(int itemId, int requested)
+    {
+        if (!AvatarExRankMaterials.IsMaterial(itemId)) return requested;
+        var owned = Math.Max(0, Data.MaterialItems.Find(item => item.ItemId == itemId)?.Count ?? 0);
+        return Math.Min(Math.Max(requested, 0), Math.Max(0, GameData.ItemConfigData[itemId].PileLimit - owned));
+    }
+
     public async ValueTask AddItem(ItemData itemData, bool notify = true)
     {
-        await PutItem(itemData.ItemId, itemData.Count,
+        var grantedCount = GetAvailableGrantCount(itemData.ItemId, itemData.Count);
+        if (AvatarExRankMaterials.IsMaterial(itemData.ItemId) && grantedCount == 0) return;
+        var storedItem = await PutItem(itemData.ItemId, grantedCount,
             itemData.Rank, itemData.Promotion,
             itemData.Level, itemData.Exp, itemData.TotalExp,
             itemData.MainAffix, itemData.SubAffixes,
             itemData.ReforgeSubAffixes, itemData.UniqueId);
+        itemData.Locked = storedItem.Locked;
+        if (AvatarExRankMaterials.IsMaterial(itemData.ItemId)) itemData.Count = storedItem.Count;
 
         await Player.SendPacket(new PacketPlayerSyncScNotify(itemData));
         if (notify) await Player.SendPacket(new PacketScenePlaneEventScNotify(itemData));
@@ -30,14 +41,23 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
     public async ValueTask AddItems(List<ItemData> items, bool notify = true)
     {
         var syncItems = new List<ItemData>();
+        var notifiedItems = new List<ItemData>();
         foreach (var item in items)
         {
-            var i = await AddItem(item.ItemId, item.Count, false, sync: false, returnRaw: true);
-            if (i != null) syncItems.Add(i);
+            var grantedCount = GetAvailableGrantCount(item.ItemId, item.Count);
+            var i = await AddItem(item.ItemId, grantedCount, false, sync: false, returnRaw: true);
+            if (i != null)
+            {
+                syncItems.Add(i);
+                var granted = item.Clone();
+                if (AvatarExRankMaterials.IsMaterial(item.ItemId)) granted.Count = grantedCount;
+                notifiedItems.Add(granted);
+            }
         }
 
+        if (syncItems.Count == 0) return;
         await Player.SendPacket(new PacketPlayerSyncScNotify(syncItems));
-        if (notify) await Player.SendPacket(new PacketScenePlaneEventScNotify(items));
+        if (notify) await Player.SendPacket(new PacketScenePlaneEventScNotify(notifiedItems));
     }
 
     public async ValueTask<ItemData?> AddItem(int itemId, int count, bool notify = true, int rank = 1, int level = 1,
@@ -45,6 +65,8 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
     {
         GameData.ItemConfigData.TryGetValue(itemId, out var itemConfig);
         if (itemConfig == null) return null;
+        count = GetAvailableGrantCount(itemId, count);
+        if (AvatarExRankMaterials.IsMaterial(itemId) && count == 0) return null;
 
         ItemData? itemData = null;
 
@@ -91,6 +113,9 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
         int exp = 0, int totalExp = 0, int mainAffix = 0, List<ItemSubAffix>? subAffixes = null,
         List<ItemSubAffix>? regorgeSubAffixes = null, int uniqueId = 0)
     {
+        count = GetAvailableGrantCount(itemId, count);
+        if (AvatarExRankMaterials.IsMaterial(itemId) && count == 0)
+            return Data.MaterialItems.Find(item => item.ItemId == itemId) ?? new ItemData { ItemId = itemId, Count = 0 };
         if (promotion == 0 && level > 10) promotion = GameData.GetMinPromotionForLevel(level);
         var item = new ItemData
         {

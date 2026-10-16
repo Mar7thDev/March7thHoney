@@ -69,12 +69,20 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     public FormalAvatarInfo? GetFormalAvatar(int avatarId)
     {
         GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPathAvatar);
-        return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId ==
-                                                       (multiPathAvatar?.BaseAvatarID ?? avatarId));
+        var avatar = Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId ==
+                                                     (multiPathAvatar?.BaseAvatarID ?? avatarId));
+        return avatar == null ? null : BindExRankState(avatar);
     }
 
     // Match GetFormalAvatar's first-row lookup on older saves without deleting duplicate stored data.
-    public IEnumerable<FormalAvatarInfo> GetOwnedAvatars() => Data.FormalAvatars.DistinctBy(avatar => avatar.BaseAvatarId);
+    public IEnumerable<FormalAvatarInfo> GetOwnedAvatars() => Data.FormalAvatars
+        .DistinctBy(avatar => avatar.BaseAvatarId).Select(BindExRankState);
+
+    private FormalAvatarInfo BindExRankState(FormalAvatarInfo avatar)
+    {
+        avatar.ActivatedExRankIds = Data.ExRankIds.GetValueOrDefault(avatar.BaseAvatarId) ?? [];
+        return avatar;
+    }
 
     public async ValueTask<Retcode> ChangeSkin(int avatarId, int skinId)
     {
