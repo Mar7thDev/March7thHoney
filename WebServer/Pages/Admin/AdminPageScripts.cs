@@ -16,6 +16,7 @@ public static partial class AdminPageScripts
             AccountsModule(),
             IdentityBlocksModule(),
             SessionsModule(),
+            GridFightModule(),
             MailModule(),
             AnnounceModule(),
             AccessModule(),
@@ -68,7 +69,7 @@ public static partial class AdminPageScripts
       const modules = [];
       const moduleGroups = [
         { id: "overview", modules: ["overview"] },
-        { id: "players", modules: ["accounts", "blocks", "sessions", "mail", "announce"] },
+        { id: "players", modules: ["accounts", "blocks", "sessions", "gridfight", "mail", "announce"] },
         { id: "server", modules: ["commands", "access", "settings", "hotfix"] },
         { id: "ops", modules: ["logs", "maintenance", "handbook"] }
       ];

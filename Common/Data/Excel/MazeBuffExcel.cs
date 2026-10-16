@@ -3,7 +3,8 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("MazeBuff.json,AvatarMazeBuff.json,AvatarMazeBuffLD.json,GridFightTraitMazebuffS2.json,GridFightSpotLightMazebuff.json", true)]
+[ResourceEntity("MazeBuff.json,AvatarMazeBuff.json,AvatarMazeBuffLD.json,GridFightTraitMazebuffS2.json,GridFightSpotLightMazebuff.json", true,
+    OptionalFileNames = "GridFightTraitMazebuffS2.json,GridFightSpotLightMazebuff.json")]
 [MemoryPackable]
 public partial class MazeBuffExcel : ExcelResource
 {

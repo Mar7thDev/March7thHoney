@@ -77,6 +77,8 @@ namespace March7thHoney.WebServer;
 [JsonSerializable(typeof(AdminResult<SessionsData>))]
 [JsonSerializable(typeof(AdminResult<KickAllData>))]
 [JsonSerializable(typeof(AdminResult<PlayerDetailData>))]
+[JsonSerializable(typeof(AdminResult<GridFightStatusData>))]
+[JsonSerializable(typeof(AdminResult<GridFightCatalogData>))]
 [JsonSerializable(typeof(AdminResult<MailboxData>))]
 [JsonSerializable(typeof(AdminResult<MailSendData>))]
 [JsonSerializable(typeof(AdminResult<AnnounceSendData>))]

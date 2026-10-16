@@ -100,3 +100,37 @@ public sealed record RateLimitData(List<RateLimitEntry> entries, int count, int 
 public sealed record ClearedData(int cleared);
 
 public sealed record AdminKeyRotateData(string admin_key, int revoked_sessions);
+
+// GET /admin/api/gridfight/{uid} — live snapshot of an online player's Currency War run
+public sealed record GridFightStatusData(int uid, bool online, string nickname, GridFightRunData? run);
+
+public sealed record GridFightRunData(
+    uint season, uint division, uint chapter, uint section, string phase, uint portal_id,
+    uint gold, uint level, uint exp, uint max_level, uint hp, uint max_hp, uint free_refresh, uint win_streak,
+    uint max_active, uint trailblaze_coin, uint trailblaze_spent, List<uint> investments,
+    List<GridFightRoleBrief> roles, List<GridFightTraitBrief> traits, List<GridFightEquipmentBrief> equipments,
+    List<GridFightConsumableBrief> consumables);
+
+public sealed record GridFightRoleBrief(
+    uint unique_id, uint role_id, uint avatar_id, uint cost, uint star, uint position, bool on_board, List<uint> equipment_ids);
+
+public sealed record GridFightTraitBrief(uint trait_id, uint layer, int members);
+
+public sealed record GridFightEquipmentBrief(uint unique_id, uint equipment_id, string category, bool equipped);
+
+public sealed record GridFightConsumableBrief(uint item_id, uint count);
+
+// GET /admin/api/gridfight/catalog — pickers for the Currency War panel
+public sealed record GridFightCatalogData(
+    uint season, List<GridFightCatalogRole> roles, List<GridFightCatalogAugment> augments, List<uint> traits,
+    List<GridFightCatalogEquipment> equipments, List<uint> consumables, GridFightNameTable names);
+
+public sealed record GridFightCatalogRole(uint id, uint avatar_id, uint cost, List<uint> traits);
+
+public sealed record GridFightCatalogAugment(uint id, string quality, uint category);
+
+public sealed record GridFightCatalogEquipment(uint id, string category);
+
+public sealed record GridFightNameTable(
+    Dictionary<string, string> augments, Dictionary<string, string> traits, Dictionary<string, string> portals,
+    Dictionary<string, string> items, Dictionary<string, string> avatars);
