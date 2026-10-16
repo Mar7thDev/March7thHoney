@@ -1,0 +1,1808 @@
+[
+  {
+    "ID": 110000001,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000001",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000001",
+    "ParamList": [
+      {
+        "Value": 0.2
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 690640974,
+      "Hash64": 969986799970153121
+    },
+    "BuffDesc": {
+      "Hash": 618296760,
+      "Hash64": 10522838566968734305
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000002,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000002",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000001",
+    "ParamList": [
+      {
+        "Value": 0.4
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 267153471,
+      "Hash64": 15059087299553625273
+    },
+    "BuffDesc": {
+      "Hash": 759459261,
+      "Hash64": 757874777487685292
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000003,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000003",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000001",
+    "ParamList": [
+      {
+        "Value": 0.8
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 408315972,
+      "Hash64": 3423446890916176644
+    },
+    "BuffDesc": {
+      "Hash": 900621762,
+      "Hash64": 595248884871056175
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000004,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000004",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000004",
+    "ParamList": [
+      {
+        "Value": 5
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -15171531,
+      "Hash64": 16135133462215473536
+    },
+    "BuffDesc": {
+      "Hash": -87515745,
+      "Hash64": 9210807931334453427
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000005,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000005",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000004",
+    "ParamList": [
+      {
+        "Value": 10
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 125990970,
+      "Hash64": 4007680152398969970
+    },
+    "BuffDesc": {
+      "Hash": 53646756,
+      "Hash64": 12133063340233189416
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000006,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000006",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000004",
+    "ParamList": [
+      {
+        "Value": 20
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -297496533,
+      "Hash64": 15367805759484131503
+    },
+    "BuffDesc": {
+      "Hash": 194809257,
+      "Hash64": 9090197510638882564
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000007,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000007",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000007",
+    "ParamList": [
+      {
+        "Value": 0.03
+      },
+      {
+        "Value": 99
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -156334032,
+      "Hash64": 17664422010687963274
+    },
+    "BuffDesc": {
+      "Hash": 335971758,
+      "Hash64": 17743442399489595400
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000008,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000008",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000007",
+    "ParamList": [
+      {
+        "Value": 0.06
+      },
+      {
+        "Value": 99
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1678778481,
+      "Hash64": 6262229404810790901
+    },
+    "BuffDesc": {
+      "Hash": 1606434267,
+      "Hash64": 15547017223563253477
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000009,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000009",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000007",
+    "ParamList": [
+      {
+        "Value": 0.12
+      },
+      {
+        "Value": 99
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1819940982,
+      "Hash64": 2535330475861010733
+    },
+    "BuffDesc": {
+      "Hash": 1747596768,
+      "Hash64": 13577074653045780862
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000010,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000010",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000010",
+    "ParamList": [
+      {
+        "Value": 0.3
+      },
+      {
+        "Value": 15
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 549478504,
+      "Hash64": 12617220706819624275
+    },
+    "BuffDesc": {
+      "Hash": 477134290,
+      "Hash64": 6614365762903587794
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000011,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000011",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000010",
+    "ParamList": [
+      {
+        "Value": 0.4
+      },
+      {
+        "Value": 30
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 690641005,
+      "Hash64": 5418208664702538778
+    },
+    "BuffDesc": {
+      "Hash": 618296791,
+      "Hash64": 13171580281464114246
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000012,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000012",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000010",
+    "ParamList": [
+      {
+        "Value": 0.6
+      },
+      {
+        "Value": 60
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 267153502,
+      "Hash64": 2084308534627875144
+    },
+    "BuffDesc": {
+      "Hash": 759459292,
+      "Hash64": 13885770899205848923
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000013,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000013",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100202_110000013",
+    "ParamList": [
+      {
+        "Value": 1
+      },
+      {
+        "Value": 20
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 408316003,
+      "Hash64": 17627945965218568240
+    },
+    "BuffDesc": {
+      "Hash": 900621793,
+      "Hash64": 16388774458903755728
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000021,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000021",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100502_110000021",
+    "ParamList": [
+      {
+        "Value": 300
+      },
+      {
+        "Value": 2.5
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 690640908,
+      "Hash64": 12378585797569438285
+    },
+    "BuffDesc": {
+      "Hash": 618296694,
+      "Hash64": 13896814766359409717
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000022,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000022",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100502_110000022",
+    "ParamList": [
+      {
+        "Value": 300
+      },
+      {
+        "Value": 2
+      },
+      {
+        "Value": 0.025
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 267153405,
+      "Hash64": 14710823270638889468
+    },
+    "BuffDesc": {
+      "Hash": 759459195,
+      "Hash64": 17008946374669108191
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000023,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000023",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100502_110000023",
+    "ParamList": [
+      {
+        "Value": 2
+      },
+      {
+        "Value": 1
+      },
+      {
+        "Value": 0.3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 408315906,
+      "Hash64": 208044452329044419
+    },
+    "BuffDesc": {
+      "Hash": 900621696,
+      "Hash64": 5540358008994530745
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000024,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000024",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100502_110000024",
+    "ParamList": [
+      {
+        "Value": 5
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -15171597,
+      "Hash64": 11537746702246471988
+    },
+    "BuffDesc": {
+      "Hash": -87515811,
+      "Hash64": 4659667239422984442
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000025,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000025",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100502_110000025",
+    "ParamList": [
+      {
+        "Value": 300
+      },
+      {
+        "Value": 3.5
+      },
+      {
+        "Value": 0.025
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 125990904,
+      "Hash64": 13277686217791565071
+    },
+    "BuffDesc": {
+      "Hash": 53646690,
+      "Hash64": 2634747645529122305
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000026,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000026",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100502_110000026",
+    "ParamList": [
+      {
+        "Value": 999
+      },
+      {
+        "Value": 50
+      },
+      {
+        "Value": 0.05
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -297496599,
+      "Hash64": 14030744984161106913
+    },
+    "BuffDesc": {
+      "Hash": 194809191,
+      "Hash64": 7815077302314172106
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000031,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000031",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000031",
+    "ParamList": [
+      {
+        "Value": 0.4
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 690640939,
+      "Hash64": 7686125973144431372
+    },
+    "BuffDesc": {
+      "Hash": 618296725,
+      "Hash64": 13302212680565120131
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000032,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000032",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000032",
+    "ParamList": [
+      {
+        "Value": 0.8
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 267153436,
+      "Hash64": 13981703203793989530
+    },
+    "BuffDesc": {
+      "Hash": 759459226,
+      "Hash64": 3379213730203315121
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000033,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000033",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000033",
+    "ParamList": [
+      {
+        "Value": 1.2
+      },
+      {
+        "Value": 1.5
+      },
+      {
+        "Value": 1.5
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 408315937,
+      "Hash64": 11303824935071756202
+    },
+    "BuffDesc": {
+      "Hash": 900621727,
+      "Hash64": 12424747543378050792
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000034,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000034",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000034",
+    "ParamList": [
+      {
+        "Value": 0.6
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -15171566,
+      "Hash64": 7404839756136231716
+    },
+    "BuffDesc": {
+      "Hash": -87515780,
+      "Hash64": 13962760973745292605
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000035,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000035",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000035",
+    "ParamList": [
+      {
+        "Value": 0.02
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 125990935,
+      "Hash64": 4137905934562108752
+    },
+    "BuffDesc": {
+      "Hash": 53646721,
+      "Hash64": 13658752712830264971
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000036,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000036",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000036",
+    "ParamList": [
+      {
+        "Value": 6
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -297496568,
+      "Hash64": 11653904096078871149
+    },
+    "BuffDesc": {
+      "Hash": 194809222,
+      "Hash64": 1845441413342048095
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000037,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000037",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000037",
+    "ParamList": [
+      {
+        "Value": 6
+      },
+      {
+        "Value": 0.2
+      },
+      {
+        "Value": 2
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -156334067,
+      "Hash64": 6090535565220073114
+    },
+    "BuffDesc": {
+      "Hash": 335971723,
+      "Hash64": 3979108831795900910
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000038,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000038",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000038",
+    "ParamList": [
+      {
+        "Value": 12
+      },
+      {
+        "Value": 0.35
+      },
+      {
+        "Value": 2
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1678778446,
+      "Hash64": 5147250966611523308
+    },
+    "BuffDesc": {
+      "Hash": 1606434232,
+      "Hash64": 5441434222984464464
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000039,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000039",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000039",
+    "ParamList": [
+      {
+        "Value": 24
+      },
+      {
+        "Value": 0.5
+      },
+      {
+        "Value": 2
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1819940947,
+      "Hash64": 12029984247872279283
+    },
+    "BuffDesc": {
+      "Hash": 1747596733,
+      "Hash64": 3236533828448816729
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000040,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000040",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000040",
+    "ParamList": [],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 549478605,
+      "Hash64": 10136277845721095514
+    },
+    "BuffDesc": {
+      "Hash": 477134127,
+      "Hash64": 10437198141356057000
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000041,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000041",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000041",
+    "ParamList": [
+      {
+        "Value": 0.08
+      },
+      {
+        "Value": 3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 690641106,
+      "Hash64": 11558091553246436164
+    },
+    "BuffDesc": {
+      "Hash": 618296628,
+      "Hash64": 3687993450812438507
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000042,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000042",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000042",
+    "ParamList": [],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 267153603,
+      "Hash64": 8768284999302785773
+    },
+    "BuffDesc": {
+      "Hash": 759459129,
+      "Hash64": 6563059825927684994
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000043,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000043",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000043",
+    "ParamList": [
+      {
+        "Value": 0.12
+      },
+      {
+        "Value": 0.3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 408316104,
+      "Hash64": 114196949888086182
+    },
+    "BuffDesc": {
+      "Hash": 900621630,
+      "Hash64": 16173941589930886011
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000044,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000044",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000044",
+    "ParamList": [
+      {
+        "Value": 160
+      },
+      {
+        "Value": 2
+      },
+      {
+        "Value": 0.12
+      },
+      {
+        "Value": 0.3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -15171399,
+      "Hash64": 1143633071778213304
+    },
+    "BuffDesc": {
+      "Hash": -87515877,
+      "Hash64": 4131332708124718655
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000045,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000045",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000045",
+    "ParamList": [
+      {
+        "Value": 240
+      },
+      {
+        "Value": 3
+      },
+      {
+        "Value": 0.12
+      },
+      {
+        "Value": 0.3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 125991102,
+      "Hash64": 2327941944711243167
+    },
+    "BuffDesc": {
+      "Hash": 53646624,
+      "Hash64": 15583301190754356232
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000046,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000046",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000046",
+    "ParamList": [
+      {
+        "Value": 400
+      },
+      {
+        "Value": 4
+      },
+      {
+        "Value": 0.12
+      },
+      {
+        "Value": 0.3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -297496401,
+      "Hash64": 11455650086763688232
+    },
+    "BuffDesc": {
+      "Hash": 194809125,
+      "Hash64": 2448993011050469795
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000047,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000047",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000047",
+    "ParamList": [
+      {
+        "Value": 1
+      },
+      {
+        "Value": 1
+      },
+      {
+        "Value": 2
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -156333900,
+      "Hash64": 14063798723449586531
+    },
+    "BuffDesc": {
+      "Hash": 335971626,
+      "Hash64": 8399917473339916192
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000048,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000048",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000048",
+    "ParamList": [
+      {
+        "Value": 1
+      },
+      {
+        "Value": 1
+      },
+      {
+        "Value": 2
+      },
+      {
+        "Value": 200
+      },
+      {
+        "Value": 0.5
+      },
+      {
+        "Value": 0.2
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1678778613,
+      "Hash64": 15926450706097348039
+    },
+    "BuffDesc": {
+      "Hash": 1606434135,
+      "Hash64": 12771528388244208941
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000049,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000049",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000049",
+    "ParamList": [
+      {
+        "Value": 200
+      },
+      {
+        "Value": 0.05
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1819941114,
+      "Hash64": 950674768257628795
+    },
+    "BuffDesc": {
+      "Hash": 1747596636,
+      "Hash64": 10762695642277847211
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000050,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000050",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000050",
+    "ParamList": [
+      {
+        "Value": 0.3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 549478636,
+      "Hash64": 1251996933598838345
+    },
+    "BuffDesc": {
+      "Hash": 477134158,
+      "Hash64": 10288929755320920948
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000051,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000051",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000051",
+    "ParamList": [
+      {
+        "Value": 0.3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 690641137,
+      "Hash64": 14539748683770380011
+    },
+    "BuffDesc": {
+      "Hash": 618296659,
+      "Hash64": 18146579681751791346
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000027,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 1,
+    "LvMax": 1,
+    "ModifierName": "ADV_StageAbility_110000027",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_100502_110000027",
+    "ParamList": [
+      {
+        "Value": 200
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -156334098,
+      "Hash64": 16843351172687598472
+    },
+    "BuffDesc": {
+      "Hash": 335971692,
+      "Hash64": 982859012184506140
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000031,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000031",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000031",
+    "ParamList": [
+      {
+        "Value": 4
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 287356412,
+      "Hash64": 6988762304661523140
+    },
+    "BuffDesc": {
+      "Hash": -2110586630,
+      "Hash64": 7842430018139656299
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000032,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000032",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000032",
+    "ParamList": [
+      {
+        "Value": 8
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 670437963,
+      "Hash64": 17138488124949988862
+    },
+    "BuffDesc": {
+      "Hash": -806624715,
+      "Hash64": 13187944584087947168
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000033,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000033",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000033",
+    "ParamList": [
+      {
+        "Value": 12
+      },
+      {
+        "Value": 15
+      },
+      {
+        "Value": 15
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1974399878,
+      "Hash64": 524630695992491379
+    },
+    "BuffDesc": {
+      "Hash": 497337200,
+      "Hash64": 12249485765522280145
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000034,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000034",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000034",
+    "ParamList": [
+      {
+        "Value": 6
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -1581255507,
+      "Hash64": 4311238873703758885
+    },
+    "BuffDesc": {
+      "Hash": 315768747,
+      "Hash64": 5032480512804960220
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000035,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000035",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000035",
+    "ParamList": [
+      {
+        "Value": 0.2
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -277293592,
+      "Hash64": 5540384589017400991
+    },
+    "BuffDesc": {
+      "Hash": 1619730662,
+      "Hash64": 92531711711132521
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000036,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000036",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000036",
+    "ParamList": [
+      {
+        "Value": 12
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 105787959,
+      "Hash64": 18009888487197533874
+    },
+    "BuffDesc": {
+      "Hash": -1371274719,
+      "Hash64": 12061086870060179184
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000037,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000037",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000037",
+    "ParamList": [
+      {
+        "Value": 12
+      },
+      {
+        "Value": 2
+      },
+      {
+        "Value": 4
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1409749874,
+      "Hash64": 7597775630901555950
+    },
+    "BuffDesc": {
+      "Hash": -67312804,
+      "Hash64": 5969983500680065239
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000038,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000038",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000038",
+    "ParamList": [
+      {
+        "Value": 24
+      },
+      {
+        "Value": 3.5
+      },
+      {
+        "Value": 4
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 112694505,
+      "Hash64": 4229550796641386744
+    },
+    "BuffDesc": {
+      "Hash": 2009718759,
+      "Hash64": 12867171846033341613
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000039,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000039",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000039",
+    "ParamList": [
+      {
+        "Value": 36
+      },
+      {
+        "Value": 5
+      },
+      {
+        "Value": 4
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1416656420,
+      "Hash64": 9289544190301028357
+    },
+    "BuffDesc": {
+      "Hash": -981286622,
+      "Hash64": 9724229794957952100
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000040,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000040",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000040",
+    "ParamList": [],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -1016605336,
+      "Hash64": 3717678570829456766
+    },
+    "BuffDesc": {
+      "Hash": 880418654,
+      "Hash64": 2621377054275862293
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000041,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000041",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000041",
+    "ParamList": [
+      {
+        "Value": 0.8
+      },
+      {
+        "Value": 6
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 287356579,
+      "Hash64": 3280951533317984967
+    },
+    "BuffDesc": {
+      "Hash": -2110586727,
+      "Hash64": 465360931809218483
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000042,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000042",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000042",
+    "ParamList": [],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 670438130,
+      "Hash64": 13474451133989261086
+    },
+    "BuffDesc": {
+      "Hash": -806624812,
+      "Hash64": 17033575187491640025
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000043,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000043",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000043",
+    "ParamList": [
+      {
+        "Value": 0.24
+      },
+      {
+        "Value": 3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1974400045,
+      "Hash64": 3878186390689036623
+    },
+    "BuffDesc": {
+      "Hash": 497337103,
+      "Hash64": 5163350899603258380
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000044,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000044",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000044",
+    "ParamList": [
+      {
+        "Value": 240
+      },
+      {
+        "Value": 4
+      },
+      {
+        "Value": 0.24
+      },
+      {
+        "Value": 3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -1581255340,
+      "Hash64": 6294622449204114538
+    },
+    "BuffDesc": {
+      "Hash": 315768650,
+      "Hash64": 13275882976108314090
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000045,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000045",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000045",
+    "ParamList": [
+      {
+        "Value": 480
+      },
+      {
+        "Value": 6
+      },
+      {
+        "Value": 0.24
+      },
+      {
+        "Value": 3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -277293425,
+      "Hash64": 18314495612095353644
+    },
+    "BuffDesc": {
+      "Hash": 1619730565,
+      "Hash64": 10999075281210188941
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000046,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000046",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000046",
+    "ParamList": [
+      {
+        "Value": 720
+      },
+      {
+        "Value": 8
+      },
+      {
+        "Value": 0.24
+      },
+      {
+        "Value": 3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 105788126,
+      "Hash64": 10793960734680100281
+    },
+    "BuffDesc": {
+      "Hash": -1371274816,
+      "Hash64": 14171992977289054653
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000047,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000047",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000047",
+    "ParamList": [
+      {
+        "Value": 1
+      },
+      {
+        "Value": 2
+      },
+      {
+        "Value": 4
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1409750041,
+      "Hash64": 13895222545915863658
+    },
+    "BuffDesc": {
+      "Hash": -67312901,
+      "Hash64": 5585123852032261767
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000048,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000048",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000048",
+    "ParamList": [
+      {
+        "Value": 1
+      },
+      {
+        "Value": 2
+      },
+      {
+        "Value": 4
+      },
+      {
+        "Value": 400
+      },
+      {
+        "Value": 0.5
+      },
+      {
+        "Value": 0.4
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 112694672,
+      "Hash64": 3861774775235866649
+    },
+    "BuffDesc": {
+      "Hash": 2009718662,
+      "Hash64": 5911258148556724546
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000049,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000049",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000049",
+    "ParamList": [
+      {
+        "Value": 400
+      },
+      {
+        "Value": 0.5
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 1416656587,
+      "Hash64": 6978863791129123561
+    },
+    "BuffDesc": {
+      "Hash": -981286719,
+      "Hash64": 4710733461397342085
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000050,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000050",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000050",
+    "ParamList": [
+      {
+        "Value": 0.6
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": -1016605305,
+      "Hash64": 2755711521261932620
+    },
+    "BuffDesc": {
+      "Hash": 880418685,
+      "Hash64": 18254255631055638205
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  },
+  {
+    "ID": 110000051,
+    "BuffSeries": 1,
+    "BuffRarity": 1,
+    "Lv": 2,
+    "LvMax": 2,
+    "ModifierName": "ADV_StageAbility_110000051",
+    "InBattleBindingType": "StageAbilityBeforeCharacterBorn",
+    "InBattleBindingKey": "StageAbility_GridFight_Origin_300502_110000051",
+    "ParamList": [
+      {
+        "Value": 0.3
+      }
+    ],
+    "BuffIcon": "SpriteOutput/AvatarProfessionTattoo/Profession/BgPathsKnight.png",
+    "BuffName": {
+      "Hash": 287356610,
+      "Hash64": 4763010977446418778
+    },
+    "BuffDesc": {
+      "Hash": -2110586696,
+      "Hash64": 15836215305814464212
+    },
+    "BuffEffect": "",
+    "MazeBuffType": "Level"
+  }
+]
