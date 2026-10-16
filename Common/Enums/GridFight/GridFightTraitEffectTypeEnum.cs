@@ -35,5 +35,6 @@ public enum GridFightTraitEffectTypeEnum
     ClaraEnhance = 29,
     ChooseTraitByManual = 30,
     DanHengTwoInOne = 31,
-    AhaUnique = 32
+    AhaUnique = 32,
+    BandRoleChoose = 33
 }

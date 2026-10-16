@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 
 namespace March7thHoney.Data.Excel;
 
-[ResourceEntity("RogueWolfGunMiracleTarget.json")]
+[ResourceEntity("RogueWolfGunMiracleTarget.json", OptionalFileNames = "RogueWolfGunMiracleTarget.json")]
 [MemoryPackable]
 public partial class RogueWolfGunMiracleTargetExcel : ExcelResource
 {

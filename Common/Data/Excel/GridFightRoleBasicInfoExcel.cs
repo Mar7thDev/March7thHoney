@@ -1,4 +1,5 @@
 using MemoryPack;
+using Newtonsoft.Json;
 namespace March7thHoney.Data.Excel;
 
 [ResourceEntity("GridFightRoleBasicInfo.json")]
@@ -19,6 +20,11 @@ public partial class GridFightRoleBasicInfoExcel : ExcelResource
 
     // Season 2 pseudo-roles (604202) that never act as a battle avatar.
     public bool IsFakeAvatar { get; set; }
+
+    // Set by the split-table loader (4.7 beta GridFightCampSeason). Current clients resolve role skills
+    // from GridFightRoleStar rather than the removed RoleSavedValueList column. Appended after
+    // IsFakeAvatar so existing season-2 caches keep their MemoryPack layout.
+    [JsonIgnore] public bool UsesNativeSkillOverrides { get; set; }
 
     public override int GetId()
     {

@@ -125,6 +125,13 @@ Check("locked free refresh retains slots", shop.RefreshShop(false) && previousSh
 var previousGold = shop.Gold;
 Check("paid refresh unlocks and charges once", shop.RefreshShop(true) && !shop.ShopLocked &&
     shop.Gold == previousGold - catalog.RefreshCost);
+// Split-table (4.7 beta GridFightCampSeason) caches resolve role skills natively; run their own checks.
+if (catalog.RolePool.Any(role => role.UsesNativeSkillOverrides))
+{
+    BetaTableRegression.Run(catalog, NewRun, Check);
+    Console.WriteLine($"GridFight regression: {checks - failures.Count}/{checks} passed.");
+    return failures.Count == 0 ? 0 : 1;
+}
 var maxStarRole = catalog.RolePool.First(role => role.ID == roleA);
 shop.TryAddRole(maxStarRole.ID, 3, out _);
 var switchGroup = catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(maxStarRole.ID));
