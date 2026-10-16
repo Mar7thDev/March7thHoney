@@ -45,7 +45,9 @@ public sealed partial class GridFightSession
         _catalog.OffFieldInitialCount +
         EffectiveWealthDiamondBonus +
         LizhiBenchBonus +
-        (PepeNpc == null ? 0u : 1u));
+        (PepeNpc == null ? 0u : 1u) +
+        (uint)OwlbertNpcs.Count +
+        DanHengSubBackCellBonus);
 
     // GridFightSyncData uses this value during Pepe's pre-initial-supply effect. The battle
     // snapshot still keeps MaxActiveRoles as the normal player-role deployment cap and counts

@@ -1,4 +1,8 @@
+using Google.Protobuf;
+using MemoryPack;
 using March7thHoney.Data;
+using March7thHoney.Database;
+using March7thHoney.Database.GridFight;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Battle;
@@ -6,13 +10,17 @@ using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Proto;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.GridFight;
 
 public sealed partial class GridFightManager : BasePlayerManager
 {
+    private static readonly Logger Logger = new("GridFight");
+
     private uint _nextSessionUniqueId = 1;
     private readonly Lazy<GridFightResourceCatalog> _catalog;
+    private readonly GridFightData? _data;
     private GridFightDamageSttInfo _lastBattleDamageStatistics = new();
 
     public GridFightResourceCatalog Catalog => _catalog.Value;
@@ -27,6 +35,10 @@ public sealed partial class GridFightManager : BasePlayerManager
             if (errors.Count > 0) throw new InvalidDataException(string.Join("; ", errors));
             return catalog;
         });
+        // Isolated tools build managers without a database; their runs simply stay in memory.
+        _data = DatabaseHelper.Instance?.GetInstanceOrCreateNew<GridFightData>(player.Uid);
+        if (_data != null) _nextSessionUniqueId = Math.Max(_nextSessionUniqueId, _data.NextSessionUniqueId);
+        RestoreRun();
     }
 
     public bool Start(uint season, uint divisionId, bool isOverlock)
@@ -36,8 +48,83 @@ public sealed partial class GridFightManager : BasePlayerManager
             division.SeasonID != season)
             return false;
         Session = new GridFightSession(Catalog, season, divisionId, isOverlock, _nextSessionUniqueId++);
+        HasSettledSession = false;
         _lastBattleDamageStatistics = new GridFightDamageSttInfo();
+        Persist();
         return true;
+    }
+
+    /// <summary>
+    ///     Writes the live run to <see cref="GridFightData" />. Called after every GridFight request, battle settlement,
+    ///     console command and on logout, always on the thread that mutated the run; the database flush only copies the
+    ///     resulting string.
+    /// </summary>
+    public void Persist()
+    {
+        if (_data == null) return;
+        try
+        {
+            var session = Session;
+            if (session == null)
+            {
+                _data.RunInstance = null;
+            }
+            else
+            {
+                var snapshot = session.CaptureSnapshot();
+                snapshot.LastBattleDamageStatistics = _lastBattleDamageStatistics.ToByteArray();
+                _data.RunInstance = Convert.ToBase64String(MemoryPackSerializer.Serialize(snapshot));
+            }
+            _data.NextSessionUniqueId = _nextSessionUniqueId;
+            DatabaseHelper.MarkDirty(Player.Uid);
+        }
+        catch (Exception e)
+        {
+            // Keep the previous blob: a failed capture must never break the request that triggered it.
+            Logger.Error($"Saving the GridFight run of uid {Player.Uid} failed", e);
+        }
+    }
+
+    private void RestoreRun()
+    {
+        if (_data == null || string.IsNullOrEmpty(_data.RunInstance)) return;
+        try
+        {
+            var snapshot = MemoryPackSerializer.Deserialize<GridFightRunSnapshot>(Convert.FromBase64String(_data.RunInstance)) ??
+                           throw new InvalidDataException("Empty GridFight snapshot.");
+            var session = GridFightSession.Restore(Catalog, snapshot);
+            var statistics = new GridFightDamageSttInfo();
+            if (snapshot.LastBattleDamageStatistics.Length > 0)
+                statistics.MergeFrom(snapshot.LastBattleDamageStatistics);
+            Session = session;
+            _lastBattleDamageStatistics = statistics;
+            _nextSessionUniqueId = Math.Max(_nextSessionUniqueId, session.UniqueId + 1);
+        }
+        catch (Exception e)
+        {
+            // A blob that no longer fits this build or resource cache is dropped instead of crashing the login.
+            Logger.Warn($"Dropping the saved GridFight run of uid {Player.Uid}: {e.Message}");
+            Session = null;
+            _data.RunInstance = null;
+            DatabaseHelper.MarkDirty(Player.Uid);
+            return;
+        }
+
+        if (Session is { Phase: GridFightSessionPhase.InBattle } inBattle)
+        {
+            // The battle died with the previous connection or process. Settle it like BATTLE_END_QUIT; the client
+            // receives the unlocked state through its next GetData, so no sync is sent here.
+            var settlement = inBattle.ResolveBattle(false, GridFightBattleStatistics.Empty);
+            inBattle.ClearMortenaxBladeBattleEffects();
+            // A lost battle can end the run (squad HP 0, or the last node). Its settle page can no longer be shown,
+            // so the run is closed here like EndBattle would after its settle notify.
+            if (settlement.Success && (settlement.Defeated || !settlement.RouteAdvanced))
+            {
+                Logger.Info($"The saved GridFight run of uid {Player.Uid} ended with its interrupted battle.");
+                ClearSession(settled: true);
+            }
+            Persist();
+        }
     }
 
     /// <summary>
@@ -51,10 +138,18 @@ public sealed partial class GridFightManager : BasePlayerManager
             session.IsOverlock ? 2 : 1);
     }
 
-    public void ClearSession()
+    /// <summary>
+    ///     True after a run was settled by the server itself (victory or defeat) until the next run starts; a quit-settle
+    ///     request the settle page sends afterwards is then answered instead of failed.
+    /// </summary>
+    public bool HasSettledSession { get; private set; }
+
+    public void ClearSession(bool settled = false)
     {
         Session = null;
+        HasSettledSession = settled;
         _lastBattleDamageStatistics = new GridFightDamageSttInfo();
+        Persist();
     }
 
     public GridFightSystemInfo BuildSystemInfo()
@@ -87,6 +182,15 @@ public sealed partial class GridFightManager : BasePlayerManager
         handbook.EquipInfo.GridFightItemList.Add(GridFightSeasonScope.Equipment(Catalog.CurrentSeason)
             .Select(row => row.ID)
             .Order());
+        // 主角光环图鉴: the only 4.7 handbook addition with two id lists (seen/unlocked, like augments and portals);
+        // the single-list LLBMKOILIDN/ODKODPBCDKD remain unidentified (likely the PetPal pages).
+        if (Catalog.CurrentSeason >= 2)
+        {
+            var spotLightIds = GridFightSeasonTwoTables.SpotLights.Select(row => row.Id).Order().ToList();
+            handbook.KJIJEGAHLGB = new GNIIDINFPDO();
+            handbook.KJIJEGAHLGB.JHGCJKCHNCO.Add(spotLightIds);
+            handbook.KJIJEGAHLGB.MOOIOOBHGKB.Add(spotLightIds);
+        }
 
         var seasonTalent = new GridFightTalentInfo();
         seasonTalent.TalentIdList.Add(GameData.GridFightSeasonTalentData.Values
@@ -131,6 +235,8 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         var session = Session;
         if (session == null) return null;
+        ResetSeasonTwoSentEffects();
+        ObserveRoleCapacity(session);
         var current = new GridFightCurrentInfo
         {
             GameData = BuildGameData(),
@@ -143,7 +249,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         current.ContextData.InitialEquipmentIdList.Add(Catalog.InitialEquipmentIds);
         var pending = BuildPendingAction();
         if (pending != null) current.PendingAction = pending;
-        current.GameInfoList.Add(BuildBasicInfo(pending != null));
+        current.GameInfoList.Add(BuildBasicInfo(pending != null && !session.IsSpotLightSelecting));
         current.GameInfoList.Add(new GridFightGameInfo { TeamInfo = BuildTeamInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { ItemsInfo = BuildItemsInfo() });
         current.GameInfoList.Add(new GridFightGameInfo { ShopInfo = BuildShopInfo() });
@@ -154,10 +260,9 @@ public sealed partial class GridFightManager : BasePlayerManager
         current.GameInfoList.Add(new GridFightGameInfo { AugmentInfo = augmentInfo });
         current.GameInfoList.Add(new GridFightGameInfo { TraitInfo = BuildGameTraitInfo() });
         current.GameInfoList.Add(new GridFightGameInfo());
-        current.GameInfoList.Add(new GridFightGameInfo
-        {
-            ContextValueInfo = new GridFightContextValueInfo { ContextValueVersion = 97 },
-        });
+        current.GameInfoList.Add(new GridFightGameInfo { ContextValueInfo = BuildContextValueInfo(session) });
+        if (session.IsSeasonTwoRules)
+            current.GameInfoList.Add(new GridFightGameInfo { LEGMAJLHBLA = BuildSpotLightState(session) });
         current.GameInfoList.Add(new GridFightGameInfo { PrayQuestInfo = new GridFightPrayQuestInfo() });
         if (session.PetPalId != 0)
         {
@@ -168,15 +273,16 @@ public sealed partial class GridFightManager : BasePlayerManager
         return current;
     }
 
-    // Field identities follow the client GridFightPetPalEffectRepository.Sync: OKGGFNJJLNG (8) is the partner,
-    // NDAHDHKGNBG (9) the effect and MOCLKEPPIGA (1) marks it active.
+    // Field identities follow the client GridFightPetPalEffectRepository.Sync, which passes NDAHDHKGNBG (9) to
+    // GridFightPetPalConfig.GetConfig and OKGGFNJJLNG (8) to GridFightPetPalEffectConfig.GetConfig; MOCLKEPPIGA (1)
+    // marks it active. Swapping them leaves the S2 preparation page without a partner and blacks out the start.
     private static IEnumerable<LKHAJCACPBH> BuildPetPalEffects(GridFightSession session)
     {
         if (session.PetPalId == 0) yield break;
         yield return new LKHAJCACPBH
         {
-            OKGGFNJJLNG = session.PetPalId,
-            NDAHDHKGNBG = session.PetPalEffectId,
+            NDAHDHKGNBG = session.PetPalId,
+            OKGGFNJJLNG = session.PetPalEffectId,
             MOCLKEPPIGA = true,
         };
     }
@@ -232,6 +338,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         if (session.AstaDogNpc != null)
             finish.GridGameNpcList.Add(BuildPepeNpc(session.AstaDogNpc));
         finish.GridGameNpcList.Add(session.LizhiNpcs.Select(BuildPepeNpc));
+        finish.GridGameNpcList.Add(session.OwlbertNpcs.Select(BuildPepeNpc));
         finish.GridFightEquipmentList.Add(session.Equipments
             .OrderBy(equipment => equipment.UniqueId)
             .Select(BuildEquipment));
@@ -248,7 +355,11 @@ public sealed partial class GridFightManager : BasePlayerManager
 
         return new GridFightSettleNotify
         {
-            DivisionId = session.DivisionId,
+            // Field 1 becomes the player's division on the client (_OnGridFightSettleNotify ->
+            // GridFightDivisionInfo.Sync). Every division is unlocked here (the system info reports the highest one),
+            // so it must stay the highest: the played difficulty would lock every harder one until the next login.
+            // The played difficulty is in finish_info.basic.division_id.
+            DivisionId = Catalog.HighestDivision.ID,
             HighestDivisionId = Catalog.HighestDivision.ID,
             SeasonExp = Catalog.SeasonExpLimit,
             FinishInfo = finish,
@@ -304,6 +415,26 @@ public sealed partial class GridFightManager : BasePlayerManager
             data.GameItemList.Add(BuildHackConsoleItem(hackConsole));
         if (Session is { FateOption5GameItemUniqueId: > 0 } fateSession)
             data.GameItemList.Add(BuildFateDivinerGameItem(fateSession, true));
+        if (Session != null)
+        {
+            _sentSeasonTwoItems.Clear();
+            foreach (var item in BuildSeasonTwoTraitItems(Session).ToList())
+            {
+                data.GameItemList.Add(item);
+                _sentSeasonTwoItems[item.UniqueId] = Google.Protobuf.MessageExtensions.ToByteString(item);
+            }
+        }
+        if (Session != null && BuildAhaModifierItem(Session) is { } ahaModifier)
+        {
+            data.GameItemList.Add(ahaModifier);
+            _sentAhaProgress = string.Join(',', ahaModifier.GEKCCCPGBGJ.GridFightTraitInfo
+                .Select(entry => $"{entry.TraitId}:{entry.Progress}"));
+        }
+        if (Session != null && BuildPamKingModifierItem(Session) is { } pamKingModifier)
+        {
+            data.GameItemList.Add(pamKingModifier);
+            _sentPamKingProgress = $"{pamKingModifier.UniqueId}:{pamKingModifier.ONKMJAGNECC.IANFMIJBKAF}";
+        }
         return data;
     }
 
@@ -346,13 +477,16 @@ public sealed partial class GridFightManager : BasePlayerManager
                 TraitEffectSelectEnhanceAction = action,
             };
         }
+        if (BuildSeasonTwoPendingAction(session) is { } seasonTwoPending) return seasonTwoPending;
         var pending = new GridFightPendingAction { QueuePosition = session.PendingQueuePosition };
         switch (session.Phase)
         {
             case GridFightSessionPhase.SelectingPortal:
+                // Same shape as the investment offer: the free allowance stays fixed, reroll_count counts uses.
                 pending.PortalAction = new GridFightPortalBuffActionInfo
                 {
-                    FreeRerollCount = 1,
+                    FreeRerollCount = GridFightSession.PortalFreeRerollCount,
+                    RerollCount = session.PortalRerollCount,
                 };
                 pending.PortalAction.PortalIdList.Add(session.PortalOffer);
                 break;
@@ -375,7 +509,7 @@ public sealed partial class GridFightManager : BasePlayerManager
                         : new GridFightPendingAugmentInfo
                         {
                             AugmentId = augmentId,
-                            FreeRerollCount = 1,
+                            FreeRerollCount = session.InvestmentFreeRerollCount,
                             RerollCount = session.IsInvestmentRerolled(augmentId) ? 1u : 0u,
                         }));
                 break;
@@ -388,8 +522,30 @@ public sealed partial class GridFightManager : BasePlayerManager
                 };
                 pending.SupplyAction.SupplyRoleInfoList.Add(session.SupplyOffer.Select(offer =>
                 {
-                    var role = new GridFightSupplyRoleInfo { RoleId = offer.RoleId };
-                    role.GridFightItemList.Add(offer.EquipmentId);
+                    // The 4.6.51 client builds each draft card from field 13 (top drop, must be a
+                    // Role/RoleWithEquip entry) and reads equipment from the field 6 drop list;
+                    // a missing top drop NREs in GridFightBonusDropData.Create and the run hangs.
+                    var role = new GridFightSupplyRoleInfo
+                    {
+                        RoleId = offer.RoleId,
+                        OPPFPECOBEF = new GridFightDropEntry
+                        {
+                            DropType = GridFightDropType.Role,
+                            ItemId = offer.RoleId,
+                            Num = 1,
+                            Param = new GridFightDropParam { RoleStar = Math.Max(offer.Star, 1u) },
+                        },
+                    };
+                    foreach (var equipmentId in offer.ExtraEquipmentIds.Prepend(offer.EquipmentId).Where(id => id != 0))
+                    {
+                        role.GridFightItemList.Add(equipmentId);
+                        role.DHLBEFLOOPM.Add(new GridFightDropEntry
+                        {
+                            DropType = GridFightDropType.Item,
+                            ItemId = equipmentId,
+                            Num = 1,
+                        });
+                    }
                     return role;
                 }));
                 break;
@@ -454,6 +610,8 @@ public sealed partial class GridFightManager : BasePlayerManager
         if (change != null) AppendSessionChanges(result, change);
         notify.ResultList.Add(result);
         AppendMarketVitalitySavedValueResults(notify);
+        AppendEconomyEffects(notify);
+        AppendOwlbertArrivals(notify);
         AppendRoleDerivedStateResult(notify, source);
         return notify;
     }
@@ -573,11 +731,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             var pendingResult = new GridFightSyncResultData();
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData
             {
-                LockInfo = new GridFightLockInfo
-                {
-                    LockType = GridFightLockType.Gameplay,
-                    LockReason = GridFightLockReason.PendingAction,
-                },
+                LockInfo = BuildPendingLockInfo(),
             });
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
             notify.ResultList.Add(pendingResult);
@@ -609,6 +763,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcBuyGoods);
         AppendUnlockEffects(notify, acquisition);
         AppendTwinPrimesResults(notify);
+        AppendEconomyEffects(notify);
 
         var shopResult = new GridFightSyncResultData
         {
@@ -635,6 +790,14 @@ public sealed partial class GridFightManager : BasePlayerManager
         refreshResult.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = session.Gold });
         refreshResult.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         notify.ResultList.Add(refreshResult);
+        AppendAugmentEffectResults(notify, session.TakePortalRefreshEffects());
+        AppendEconomyEffects(notify);
+        refreshResult.UpdateDynamicList.Add(new GridFightSyncData { PlayerLevel = new GridFightPlayerLevelSyncInfo
+        {
+            Level = session.PlayerLevel, Exp = session.PlayerExp, MaxLevel = Catalog.MaxPlayerLevel,
+        } });
+        refreshResult.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
+        AppendProcurementRefreshSync(notify);
         notify.ResultList.Add(new GridFightSyncResultData());
         return notify;
     }
@@ -826,8 +989,14 @@ public sealed partial class GridFightManager : BasePlayerManager
                     MaxLevel = Catalog.MaxPlayerLevel,
                 },
             });
-        if (application.PlayerLevelChanged)
+        // 财富宝钻 raises the team size (1583 -> GridFightPlayer.UpdateMaxRoleNum) and unlocks one more back cell
+        // (833 -> UpdateMaxBackRoleNum); without both the client keeps the old cap until a level-up and never shows the cell.
+        var addsCrown = application.AddedEquipments.Any(equipment =>
+            equipment.EquipmentId == GridFightSession.WealthDiamondEquipmentId);
+        if (application.PlayerLevelChanged || addsCrown)
             result.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
+        if (addsCrown)
+            result.UpdateDynamicList.Add(new GridFightSyncData { JLOCMDIDPCI = session.OffFieldMaxCount });
         if (application.LineupHpChanged)
             result.UpdateDynamicList.Add(new GridFightSyncData
             {
@@ -1071,11 +1240,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         result.EffectParamList.Add(headPlayer.EffectId);
         result.UpdateDynamicList.Add(new GridFightSyncData
         {
-            LockInfo = new GridFightLockInfo
-            {
-                LockType = GridFightLockType.Gameplay,
-                LockReason = GridFightLockReason.PendingAction,
-            },
+            LockInfo = BuildPendingLockInfo(),
         });
         if (BuildPendingAction() is { } pending)
             result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
@@ -1097,6 +1262,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         AppendJoyContractInitialResults(notify);
         AppendDotContractInitialResults(notify);
         AppendP0PortalInitialResults(notify);
+        AppendAugmentEffectResults(notify, session.TakePortalOpeningEffects());
 
         var portalResult = new GridFightSyncResultData
         {
@@ -1149,11 +1315,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var pendingResult = new GridFightSyncResultData();
         pendingResult.UpdateDynamicList.Add(new GridFightSyncData
         {
-            LockInfo = new GridFightLockInfo
-            {
-                LockType = GridFightLockType.Gameplay,
-                LockReason = GridFightLockReason.PendingAction,
-            },
+            LockInfo = BuildPendingLockInfo(),
         });
         if (BuildPendingAction() is { } pending)
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
@@ -1179,11 +1341,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             var pendingResult = new GridFightSyncResultData();
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData
             {
-                LockInfo = new GridFightLockInfo
-                {
-                    LockType = GridFightLockType.Gameplay,
-                    LockReason = GridFightLockReason.PendingAction,
-                },
+                LockInfo = BuildPendingLockInfo(),
             });
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
             notify.ResultList.Add(pendingResult);
@@ -1233,6 +1391,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         AppendLaborDispatchBossReward(notify);
         AppendGalaxyScholarRoundBeginResult(notify);
         AppendRoundBeginInvestmentRewards(notify);
+        AppendPepeCameoResults(notify);
         AppendPepeDropResult(notify);
         AppendTalentOrbRewards(notify, talentRewards);
         AppendRotationHeroRoundBeginResult(notify);
@@ -1292,11 +1451,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             var pendingResult = new GridFightSyncResultData();
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData
             {
-                LockInfo = new GridFightLockInfo
-                {
-                    LockType = GridFightLockType.Gameplay,
-                    LockReason = GridFightLockReason.PendingAction,
-                },
+                LockInfo = BuildPendingLockInfo(),
             });
             pendingResult.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
             notify.ResultList.Add(pendingResult);
@@ -1315,6 +1470,11 @@ public sealed partial class GridFightManager : BasePlayerManager
             AppendInvestmentItemReward(notify, itemReward);
         AppendSpecialInvestmentSelectionResults(notify, augmentId);
         AppendP0InvestmentSelectionResults(notify, augmentId);
+        AppendAugmentEffectResults(notify, Session.TakeAugmentSelectionEffects());
+        AppendOwlbertArrivals(notify);
+        AppendEconomyEffects(notify);
+        if (augmentId is GridFightSession.PrismaticProcurementAugmentId or GridFightSession.GoldProcurementAugmentId)
+            AppendProcurementRefreshSync(notify);
 
         if (Session.TakeGoldFuturesChildSelection(augmentId))
         {
@@ -1350,6 +1510,18 @@ public sealed partial class GridFightManager : BasePlayerManager
                 },
             });
             notify.ResultList.Add(selectionResult);
+        }
+        foreach (var bonusId in Session.TakeForesightBonusAugments())
+        {
+            AppendSpecialInvestmentSelectionResults(notify, bonusId);
+            AppendP0InvestmentSelectionResults(notify, bonusId);
+            var bonusResult = new GridFightSyncResultData { UpdateSource = GridFightUpdateSrcType.KgridFightSrcAugment };
+            bonusResult.EffectParamList.Add(augmentId);
+            bonusResult.UpdateDynamicList.Add(new GridFightSyncData
+            {
+                AddAugmentInfo = new GridFightGameAugmentAdd { UpdateAugmentInfo = BuildInvestment(bonusId) },
+            });
+            notify.ResultList.Add(bonusResult);
         }
         notify.ResultList.Add(BuildPendingAdvanceSync(finishedQueuePosition).ResultList);
         return notify;
@@ -1528,34 +1700,64 @@ public sealed partial class GridFightManager : BasePlayerManager
         return notify;
     }
 
+    /// <summary>
+    ///     QuitBattleCsReq cleared a GridFight battle without a PVEBattleResultCsReq. The battle was already sent
+    ///     to the client together with the gameplay lock, so settle it like BATTLE_END_QUIT (a lost battle, with the
+    ///     same packets as a retired PVEBattleResultCsReq). Returns false when the context is stale or already settled.
+    /// </summary>
+    public async ValueTask<bool> QuitBattle(GridFightSession context)
+    {
+        var session = Session;
+        if (session == null || !ReferenceEquals(session, context) || session.Phase != GridFightSessionPhase.InBattle)
+            return false;
+        await SettleBattle(session, null, false, GridFightBattleStatistics.Empty);
+        Persist();
+        return true;
+    }
+
+    private async ValueTask SendFailedBattleCleanup(GridFightSession session)
+    {
+        // Every official GridFight battle releases the gameplay lock when leaving battle,
+        // including an abnormal/failed settlement. Keep the Mortenax trait cleanup behind it.
+        var cleanup = new GridFightSyncUpdateResultScNotify();
+        cleanup.ResultList.Add(BuildBattleUnlockResult());
+        var completeMortenaxTraitLifecycle = session.HasMortenaxBladeTraitEffectSync;
+        if (completeMortenaxTraitLifecycle)
+            cleanup.ResultList.Add(BuildMortenaxBladeTraitEffectResult().ResultList);
+        await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(cleanup));
+        if (completeMortenaxTraitLifecycle)
+            session.CompleteMortenaxBladeTraitEffectSync();
+        session.ClearMortenaxBladeBattleEffects();
+    }
+
     public async ValueTask EndBattle(BattleInstance battle, PVEBattleResultCsReq request)
     {
         var session = Session;
         if (session == null) return;
-        var battleEndedNormally = request.EndStatus == BattleEndStatus.BattleEndWin;
+        await SettleBattle(session, battle, request.EndStatus == BattleEndStatus.BattleEndWin, ReadBattleStatistics(request));
+    }
+
+    private async ValueTask SettleBattle(
+        GridFightSession session,
+        BattleInstance? battle,
+        bool battleEndedNormally,
+        GridFightBattleStatistics statistics)
+    {
         var chapterId = session.ChapterId;
         var sectionId = session.SectionId;
         var previousLevel = session.PlayerLevel;
         var previousExp = session.PlayerExp;
         var previousMaxExp = Catalog.GetPlayerLevel(previousLevel).LevelUpExp;
-        var statistics = ReadBattleStatistics(request);
         var settlement = session.ResolveBattle(battleEndedNormally, statistics);
         if (!settlement.Success)
         {
-            // Every official GridFight battle releases the gameplay lock when leaving battle,
-            // including an abnormal/failed settlement. Keep the Mortenax trait cleanup behind it.
-            var cleanup = new GridFightSyncUpdateResultScNotify();
-            cleanup.ResultList.Add(BuildBattleUnlockResult());
-            var completeMortenaxTraitLifecycleOnFailure = session.HasMortenaxBladeTraitEffectSync;
-            if (completeMortenaxTraitLifecycleOnFailure)
-                cleanup.ResultList.Add(BuildMortenaxBladeTraitEffectResult().ResultList);
-            await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(cleanup));
-            if (completeMortenaxTraitLifecycleOnFailure)
-                session.CompleteMortenaxBladeTraitEffectSync();
-            session.ClearMortenaxBladeBattleEffects();
+            await SendFailedBattleCleanup(session);
             return;
         }
-        var damageStatistics = BuildDamageStatistics(battle, settlement.Statistics);
+        // Without a battle instance (QuitBattleCsReq) there are no uploaded statistics to break down.
+        var damageStatistics = battle == null
+            ? new GridFightDamageSttInfo()
+            : BuildDamageStatistics(battle, settlement.Statistics);
         _lastBattleDamageStatistics = damageStatistics.Clone();
 
         var settlementSync = BuildBattleSettlementSync(
@@ -1624,7 +1826,16 @@ public sealed partial class GridFightManager : BasePlayerManager
         };
         endNotify.HpModifyList.Add(settlement.HpChanges.Select(BuildHpModifyInfo));
         await Player.SendPacket(new PacketGridFightEndBattleStageNotify(endNotify));
-        if (settlement.RouteAdvanced)
+        if (settlement.Defeated)
+        {
+            // Squad HP reached 0: the run is over (same packet order as the victory settle).
+            var settle = BuildSettleNotify(GridFightSettleReason.Defeat);
+            await Player.SendPacket(new PacketGridFightSyncKeepWinCntNotify(session.KeepWinCount));
+            await Player.SendPacket(new PacketGridFightSettleNotify(settle));
+            ClearSession(settled: true);
+            await RecordGameFinished(session);
+        }
+        else if (settlement.RouteAdvanced)
             await Player.SendPacket(new PacketGridFightSyncUpdateResultScNotify(BuildBattleEndRouteSync()));
         else
         {
@@ -1632,7 +1843,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             await Player.SendPacket(new PacketGridFightSyncKeepWinCntNotify(1));
             await Player.SendPacket(new PacketGridFightSettleNotify(settle));
             var finished = Session!;
-            ClearSession();
+            ClearSession(settled: true);
             await RecordGameFinished(finished);
         }
     }
@@ -1872,6 +2083,9 @@ public sealed partial class GridFightManager : BasePlayerManager
             lockInfo.LockType = GridFightLockType.Gameplay;
             lockInfo.LockReason = GridFightLockReason.PendingAction;
         }
+        // Field meanings follow the 4.6.51 client (GridFightPlayer.SetData): 1 MaxHP, 3 PlayerLevelLimit, 4 MaxBackRoleNum,
+        // 5 KeepWinCnt, 6 MaxBenchRoleNum, 7 Level, 11 RoleMaxNum. The client has no field for the interest deposit or
+        // the bench overflow size.
         var basic = new GridFightGameBasicInfo
         {
             LineupHp = session.LineupHp,
@@ -1881,11 +2095,11 @@ public sealed partial class GridFightManager : BasePlayerManager
             LevelExp = session.PlayerExp,
             MaxAvatarCount = Catalog.BenchSize,
             BuyExpCost = Catalog.BuyExpCost,
-            MaxInterestGold = Catalog.MaxInterestGold,
+            MaxInterestGold = session.CurrentMaxInterestGold,
             OffFieldMaxCount = session.OffFieldMaxCount,
             MaxActiveRoleCount = session.MaxActiveRoles,
-            DepositPerInterest = Catalog.DepositPerInterest,
-            BenchOverflowSize = Catalog.BenchOverflowSize,
+            MaxPlayerLevel = Catalog.MaxPlayerLevel,
+            KeepWinCount = session.KeepWinCount,
             CurrentTaskInfo = new GridFightSyncCurrentTaskInfo(),
             LockInfo = lockInfo,
         };
@@ -1898,7 +2112,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var session = Session!;
         var info = new GridFightGameShopInfo
         {
-            RefreshCost = Catalog.RefreshCost,
+            RefreshCost = session.CurrentRefreshCost,
             RarityWeightInfo = BuildRarityWeights(),
         };
         info.RolePoolList.Add(Catalog.RolePool.Select(role => role.ID));
@@ -1920,6 +2134,8 @@ public sealed partial class GridFightManager : BasePlayerManager
         return info;
     }
 
+    // The 4.7 client (GridFightConsumableInfo.SyncUpdate/SyncRemove) reads the item only from the nested
+    // MCKHGIEJLHM (field 13) and throws when it is missing.
     private static GridFightConsumableUpdateInfo BuildConsumableUpdate(GridFightConsumableChange change)
     {
         return new GridFightConsumableUpdateInfo
@@ -1928,6 +2144,12 @@ public sealed partial class GridFightManager : BasePlayerManager
             ItemId = change.Consumable.ItemId,
             ItemStackCount = checked((int)change.StackDelta),
             Num = change.Consumable.Count,
+            MCKHGIEJLHM = new GridFightConsumableInfo
+            {
+                GroupId = change.Consumable.GroupId,
+                ItemId = change.Consumable.ItemId,
+                Num = change.Consumable.Count,
+            },
         };
     }
 
@@ -2009,7 +2231,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var info = new GridFightShopSyncInfo
         {
             ABGEKPJHHIA = session.ShopLocked,
-            RefreshCost = Catalog.RefreshCost,
+            RefreshCost = session.CurrentRefreshCost,
             RarityWeightInfo = BuildRarityWeights(),
         };
         info.GoodsList.Add(session.Shop.Select(BuildShopGoods));
@@ -2073,7 +2295,43 @@ public sealed partial class GridFightManager : BasePlayerManager
             MonsterId = monster.MonsterID,
             RoleStar = 1,
         }));
+        info.OOMMIIKPHBC.Add(Catalog.StandardRoute.Select(node => BuildRouteNode(node, session)));
         return info;
+    }
+
+    // From 4.6.51 the client builds its stage nodes (GridFightStageRoute.SyncRouteNodes) only from these synced
+    // nodes; without them the current node is null, the stage line reads 0-0 and the preparation page cannot
+    // start a battle. Field identities follow GridFightStageNode._RefreshCachedFields: param 2 stage, 7 penalty
+    // rule, 8 augment flag (== 1), 12 basic gold, 14 node type; 4 (spotlight) and 11 (bonfire) are season-two only.
+    private static BCCIJHPLJOJ BuildRouteNode(GridFightRouteNode node, GridFightSession session)
+    {
+        var param = new OHMDHKGAEMM
+        {
+            StageId = node.StageId,
+            IFIIOIIKJHO = node.PenaltyBonusRuleId,
+            PFEMDGNFHNH = node.Template.IsAugment,
+            PICMDONCKCO = node.BasicGoldReward,
+            NodeType = (uint)node.NodeType,
+        };
+        param.ParamList.Add(node.Parameters);
+        // 主角光环: param 4 marks the nodes whose spotlight selection is still due (and numbers the locked slots);
+        // while the current node has it, the battle button asks for the selection instead of starting the battle.
+        if (session.IsSpotLightNodePending(node.ChapterId, node.SectionId)) param.HPNNLMBHOPF = true;
+        // 幕后茶歇: param 11 marks the node, 15 lists its event, 3 shows the partner on it; the Hex display
+        // (param 8 == 1) would win over the bonfire one.
+        if (session.FindBonfireNode(node.ChapterId, node.SectionId) is { } bonfire)
+        {
+            param.FCNNBODJNIK = true;
+            param.PFEMDGNFHNH = 0;
+            param.HKKLNENEPNE.Add(bonfire.EventId);
+            param.HOEKDPEPLIF.Add(new OEJKAOKHPPL { OKGGFNJJLNG = bonfire.PetPalEffectId });
+        }
+        return new BCCIJHPLJOJ
+        {
+            DCAHJELNJNP = node.ChapterId,
+            SectionId = node.SectionId,
+            Param = param,
+        };
     }
 
     private GridFightLayerInfo BuildLayerInfo()
@@ -2102,7 +2360,7 @@ public sealed partial class GridFightManager : BasePlayerManager
                 PenaltyRuleId = plan.PenaltyRuleId,
             };
             if (option != null)
-                encounter.DropInfo = BuildEncounterDropInfo(option.Quality, session.ChapterId);
+                encounter.DropInfo = BuildEncounterDropInfo(option);
             foreach (var wavePlan in plan.Waves)
             {
                 var wave = new GridFightMonsterWaveInfo { WaveId = wavePlan.WaveId };
@@ -2118,30 +2376,17 @@ public sealed partial class GridFightManager : BasePlayerManager
         return new GridFightLayerInfo { Data = data };
     }
 
-    private static GridFightDropInfo BuildEncounterDropInfo(uint quality, uint chapterId)
+    private static GridFightDropInfo BuildEncounterDropInfo(GridFightEncounterOptionState option)
     {
-        var entry = quality switch
-        {
-            1 => new GridFightDropEntry
-            {
-                DropType = GridFightDropType.Coin,
-                Num = chapterId + 1,
-            },
-            2 => new GridFightDropEntry
-            {
-                DropType = GridFightDropType.Refresh,
-                Num = 4,
-            },
-            4 => new GridFightDropEntry
-            {
-                DropType = GridFightDropType.Item,
-                ItemId = 350701,
-                Num = 1,
-            },
-            _ => null,
-        };
         var result = new GridFightDropInfo();
-        if (entry != null) result.DropList.Add(entry);
+        foreach (var drop in option.Rewards ?? [])
+            result.DropList.Add(new GridFightDropEntry
+            {
+                DropType = drop.Type,
+                ItemId = drop.ItemId,
+                Num = drop.Num,
+                Param = drop.Type == GridFightDropType.Role ? new GridFightDropParam { RoleStar = 1 } : null,
+            });
         return result;
     }
 
@@ -2154,6 +2399,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         if (Session.AstaDogNpc != null)
             team.GridGameNpcList.Add(BuildPepeNpc(Session.AstaDogNpc));
         team.GridGameNpcList.Add(Session.LizhiNpcs.Select(BuildPepeNpc));
+        team.GridGameNpcList.Add(Session.OwlbertNpcs.Select(BuildPepeNpc));
         team.ForgeItemList.Add(Session.ForgeItems.Select(BuildForgeItem));
         return team;
     }
@@ -2176,6 +2422,9 @@ public sealed partial class GridFightManager : BasePlayerManager
         PopulateRolePropertyScales(info.ConvertPropertyToFixpoint, Session?.HasCyreneCombatEnhancement == true);
         Session?.ApplyInvestmentPropertyScales(info.ConvertPropertyToFixpoint);
         Session?.ApplyFateDivinerPropertyScales(info.ConvertPropertyToFixpoint, roleId);
+        Session?.ApplySpotLightPropertyScales(info.ConvertPropertyToFixpoint, role.UniqueId);
+        Session?.ApplyPermanentRolePropertyScales(info.ConvertPropertyToFixpoint, role);
+        Session?.ApplyTrailblazeProperties(info.ConvertPropertyToFixpoint);
         if (Session != null)
             foreach (var (key, value) in Session.ResolveRoleSavedValues(role, roleId))
                 info.GridFightValueInitComponent[key] = value;

@@ -49,6 +49,14 @@ public static class GridFightSeasonScope
         season == 0 ||
         GameData.GridFightSeasonAugmentData.GetValueOrDefault(season)?.Contains(augmentId) == true;
 
+    /// <summary>
+    /// GridFightStageRoute has no season column: each season numbers its division routes from season * 1000
+    /// (S1 1000-1800 and 1801, 23 nodes; S2 2000-2800 and 2801, 16 nodes); ids below 1000 are tutorial and
+    /// first-play routes.
+    /// </summary>
+    public static bool IsRouteInSeason(uint routeId, uint season) =>
+        season == 0 || routeId / 1000 == season;
+
     public static IEnumerable<GridFightEquipmentExcel> Equipment(uint season) =>
         GameData.GridFightEquipmentData.Values.Where(row => IsItemInSeason(row.ID, season));
 

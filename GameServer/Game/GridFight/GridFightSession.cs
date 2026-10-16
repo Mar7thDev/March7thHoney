@@ -21,6 +21,8 @@ public enum GridFightSessionPhase
     AwaitingSupplyRound,
     AwaitingBattleReturn,
     AwaitingBackToPrepare,
+    /// <summary>Squad HP reached 0; the run only waits for its defeat settle.</summary>
+    Defeated,
 }
 
 public enum GridFightPendingRequestKind
@@ -31,7 +33,11 @@ public enum GridFightPendingRequestKind
     ReturnPreparation,
 }
 
-public sealed record GridFightSupplyOfferState(uint RoleId, uint EquipmentId);
+public sealed record GridFightSupplyOfferState(uint RoleId, uint EquipmentId)
+{
+    public uint Star { get; init; } = 1;
+    public IReadOnlyList<uint> ExtraEquipmentIds { get; init; } = [];
+}
 
 public sealed record GridFightSupplySelectionResult(
     bool Success,
@@ -49,6 +55,8 @@ public sealed class GridFightRoleState
     public uint Star { get; set; } = 1;
     public uint Position { get; set; }
     public List<uint> EquippedEquipmentUniqueIds { get; } = [];
+    public bool HasPowerGrowth { get; set; }
+    public Dictionary<uint, uint> PermanentPropertyBonuses { get; } = [];
 }
 
 public sealed class GridFightEquipmentState
@@ -160,6 +168,8 @@ public enum GridFightHpChangeKind
     ThresholdPenalty,
     TalentHealing,
     FinalBattleTurnHealing,
+    AugmentHealing,
+    AugmentDamage,
 }
 
 public sealed record GridFightHpChange(
@@ -194,6 +204,9 @@ public sealed record GridFightBattleSettlementResult(
     public static GridFightBattleSettlementResult Failed { get; } = new(
         false, false, 0, 0, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, [],
         GridFightBattleStatistics.Empty, [], []);
+
+    /// <summary>The squad HP reached 0: the run ends with a defeat settle instead of moving on.</summary>
+    public bool Defeated { get; init; }
 }
 
 public sealed partial class GridFightSession
@@ -223,6 +236,8 @@ public sealed partial class GridFightSession
     private bool _silverWolfHackUnlocked;
     private uint? _traitEffectSelectEnhanceQueuePosition;
     private readonly HashSet<uint> _rerolledInvestmentIds = [];
+    // Offers replaced by a reroll must not come back into another slot of the same investment choice.
+    private readonly HashSet<uint> _rerolledAwayInvestmentIds = [];
     private readonly HashSet<uint> _temporarilyUnlockedRestrictedRoleIds = [];
     private readonly HashSet<(uint TalentId, uint EffectId, GridFightTalentRewardTrigger Trigger, uint ChapterId)>
         _triggeredTalentRewards = [];
@@ -248,7 +263,11 @@ public sealed partial class GridFightSession
     public uint PlayerLevel { get; private set; }
     public uint PlayerExp { get; private set; }
     public uint LineupHp { get; private set; }
-    public uint MaxLineupHp { get; }
+    public uint MaxLineupHp { get; private set; }
+    // Free shop refreshes (investments, portals and season-2 traits share _freeShopRefreshCount);
+    // consumed before gold and shown as a zero refresh cost.
+    public uint FreeRefreshCount => _freeShopRefreshCount;
+    public uint CurrentRefreshCost => EffectiveShopRefreshCost;
     public uint KeepWinCount { get; private set; }
     public uint BattlesFinished { get; private set; }
     public uint SelectedPortalId { get; private set; }
@@ -258,6 +277,8 @@ public sealed partial class GridFightSession
     public IReadOnlyList<GridFightMonsterExcel> Bosses { get; }
     public IReadOnlyList<uint> AffixIds { get; }
     public IReadOnlyList<uint> PortalOffer { get; private set; }
+    public const uint PortalFreeRerollCount = 1;
+    public uint PortalRerollCount { get; private set; }
     public IReadOnlyList<uint> InvestmentOffer { get; private set; } = [];
     public IReadOnlyList<GridFightSupplyOfferState> SupplyOffer { get; private set; } = [];
     public List<uint> ActiveInvestmentIds { get; } = [];
@@ -288,8 +309,12 @@ public sealed partial class GridFightSession
     {
         var next = new Dictionary<string, uint>(StringComparer.Ordinal);
         foreach (var role in Roles.Where(role => IsActivePosition(role.Position)))
-            foreach (var (key, value) in _catalog.ResolveRoleSavedValues(role.RoleId, role.Star))
+            foreach (var (key, value) in ResolveRoleSavedValues(role, role.RoleId))
                 next[key] = Math.Max(next.GetValueOrDefault(key), value);
+        // Growth the battle reported for avatars whose table rows list no saved-value key (e.g. 飞霄's 军衔).
+        foreach (var (key, value) in _reportedRoleSavedValues)
+            next.TryAdd(key, value);
+        ApplyAhaSavedValues(next);
 
         var changes = _roleSavedValues.Keys
             .Concat(next.Keys)
@@ -304,7 +329,12 @@ public sealed partial class GridFightSession
 
     public IReadOnlyDictionary<string, uint> ResolveRoleSavedValues(GridFightRoleState role, uint roleId)
     {
-        return _catalog.ResolveRoleSavedValues(roleId, role.Star);
+        var values = OverlayReportedRoleSavedValues(_catalog.ResolveRoleSavedValues(roleId, role.Star));
+        if (!IsSeasonTwoRules || (roleId != PhainonRoleId && !IsAhaRole(roleId))) return values;
+        var withSeasonValues = new Dictionary<string, uint>(values, StringComparer.Ordinal);
+        ApplySeasonTwoRoleSavedValues(roleId, withSeasonValues);
+        if (IsAhaRole(roleId)) withSeasonValues[AhaGrowthSavedValueKey] = _ahaGrowth;
+        return withSeasonValues;
     }
 
     public GridFightRoleSwitchUpdate? ConsumeRoleSwitchUpdate()
@@ -427,6 +457,11 @@ public sealed partial class GridFightSession
             PetPalEffectId = petPal.EffectId;
         }
         PrepareCurrentNode();
+        if (IsSeasonTwoRules)
+        {
+            InitializeSeasonTwoTraits();
+            InitializeSeasonTwoOrigins();
+        }
     }
 
     public uint MaxActiveRoles => Math.Min(TeamPopulationLimit,
@@ -438,8 +473,9 @@ public sealed partial class GridFightSession
         switch (kind)
         {
             case GridFightPendingRequestKind.PortalReroll
-                when Phase == GridFightSessionPhase.SelectingPortal:
+                when Phase == GridFightSessionPhase.SelectingPortal && PortalRerollCount < PortalFreeRerollCount:
                 PortalOffer = _catalog.RollPortalOffer(3);
+                PortalRerollCount++;
                 return true;
             case GridFightPendingRequestKind.PortalSelect
                 when Phase == GridFightSessionPhase.SelectingPortal && PortalOffer.Contains(portalId):
@@ -477,8 +513,10 @@ public sealed partial class GridFightSession
                 when Phase == GridFightSessionPhase.AwaitingSupplyRound:
                 AdvanceRotationHeroPortalRound();
                 PrepareLaborDispatchBossReward();
-                Phase = GridFightSessionPhase.AwaitingBattleReturn;
                 PendingQueuePosition++;
+                // The node after a supply pick can itself be an elite branch (season-2 routes 2400-2801), an
+                // investment node or the point where gold futures is due; resolve it like any other round begin.
+                EnterCurrentNodePostRoundPhase();
                 return true;
             case GridFightPendingRequestKind.ReturnPreparation
                 when Phase == GridFightSessionPhase.AwaitingBattleReturn:
@@ -491,25 +529,29 @@ public sealed partial class GridFightSession
         }
     }
 
-    public bool IsInvestmentRerolled(uint augmentId) => _rerolledInvestmentIds.Contains(augmentId);
+    public bool IsInvestmentRerolled(uint augmentId) => _bonusInvestmentSource != 0
+        ? _bonusInvestmentRerolls == 0 : _rerolledInvestmentIds.Contains(augmentId);
 
     public bool RerollInvestment(uint queuePosition, uint augmentId)
     {
         if (Phase != GridFightSessionPhase.SelectingInvestment ||
             queuePosition != PendingQueuePosition ||
             _goldFuturesInvestmentPending ||
-            _rerolledInvestmentIds.Contains(augmentId))
+            (_bonusInvestmentSource == 0 && IsForesightActive) ||
+            IsInvestmentRerolled(augmentId))
             return false;
         var index = InvestmentOffer.ToList().IndexOf(augmentId);
         if (index < 0) return false;
         var quality = GameData.GridFightAugmentData[augmentId].Quality;
-        var excluded = InvestmentOffer.Concat(ActiveInvestmentIds).ToHashSet();
+        var excluded = InvestmentOffer.Concat(ActiveInvestmentIds).Concat(_rerolledAwayInvestmentIds).ToHashSet();
         var replacement = _catalog.RollInvestmentOffer(ChapterId, quality, 1, excluded).SingleOrDefault();
         if (replacement == 0) return false;
         var offer = InvestmentOffer.ToList();
         offer[index] = replacement;
         InvestmentOffer = offer;
         _rerolledInvestmentIds.Add(replacement);
+        _rerolledAwayInvestmentIds.Add(augmentId);
+        if (_bonusInvestmentSource != 0) _bonusInvestmentRerolls--;
         return true;
     }
 
@@ -520,11 +562,17 @@ public sealed partial class GridFightSession
             !InvestmentOffer.Contains(augmentId))
             return false;
         var isGoldFuturesChild = _goldFuturesInvestmentPending;
+        var isBonusChild = _bonusInvestmentSource != 0;
+        var bonusReturnPhase = _bonusInvestmentReturnPhase;
+        _bonusInvestmentSource = 0;
+        OnForesightInvestmentSelected(augmentId);
         if (!ActiveInvestmentIds.Contains(augmentId)) ActiveInvestmentIds.Add(augmentId);
         PrepareInvestmentSelectionReward(augmentId);
         OnP0InvestmentSelected(augmentId);
+        ApplyAugmentSelectionEffects(augmentId);
+        OnPortalInvestmentSelected();
         InvestmentOffer = [];
-        _rerolledInvestmentIds.Clear();
+        ResetInvestmentRerolls();
         _goldFuturesInvestmentPending = false;
         if (isGoldFuturesChild) _lastGoldFuturesChildSelection = augmentId;
         PendingQueuePosition++;
@@ -532,6 +580,12 @@ public sealed partial class GridFightSession
             EnterCurrentNodePostRoundPhase();
         else
             Phase = GridFightSessionPhase.AwaitingBattleReturn;
+        if (isBonusChild)
+        {
+            if (bonusReturnPhase == GridFightSessionPhase.SelectingInvestment) EnterCurrentNodePostRoundPhase();
+            else Phase = bonusReturnPhase;
+        }
+        TryBeginBonusInvestment(Phase);
         return true;
     }
 
@@ -544,6 +598,7 @@ public sealed partial class GridFightSession
         SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount, _temporarilyUnlockedRestrictedRoleIds)
             .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
             .ToList();
+        SupplyOffer = ApplyPetPalSupplyRules(SupplyOffer);
         SupplyRerollCount = 1;
         return true;
     }
@@ -554,7 +609,7 @@ public sealed partial class GridFightSession
             queuePosition != PendingQueuePosition ||
             _encounterRerollCount != 0)
             return false;
-        EncounterOptions = _catalog.RollEncounterOptions(CurrentNode, CampIds, DivisionId);
+        EncounterOptions = RollEncounterOptionsWithRewards();
         _encounterRerollCount = 1;
         return EncounterOptions.Count == 2;
     }
@@ -604,8 +659,11 @@ public sealed partial class GridFightSession
         {
             UniqueId = _nextEntityUniqueId++,
             RoleId = selected.RoleId,
+            Star = Math.Max(selected.Star, 1u),
             Position = GetFreeBenchPosition(),
         };
+        // Extra supply equipment (绯绯狐: 2 random emblems) arrives with the season-2 follow-up sync.
+        _petPalPendingEquipment.AddRange(selected.ExtraEquipmentIds.Where(id => id != 0));
         Roles.Add(role);
         RecalculateRoleSwitches();
         var mergeSteps = MergeRoles(role.RoleId);
@@ -808,7 +866,26 @@ public sealed partial class GridFightSession
         foreach (var index in indices)
         {
             var slot = Shop.Single(goods => goods.Index == index);
-            var application = ApplyCyreneSpecialGoods(slot.SpecialGoodsId);
+            // An earlier Aha good of the same request may have refilled the shop with roles already.
+            if (slot.SpecialGoodsId == 0 || slot.SoldOut) continue;
+            GridFightRewardApplication application;
+            if (IsAhaGoods(slot.SpecialGoodsId))
+            {
+                if (Gold < slot.Price) return [];
+                Gold -= slot.Price;
+                application = ApplyAhaSpecialGoods(slot.SpecialGoodsId);
+                if (!application.Success)
+                {
+                    Gold += slot.Price;
+                    return [];
+                }
+                application.GoldChanged = true;
+                if (slot.Price > 0) _spentGoldThisNode = true;
+            }
+            else
+            {
+                application = ApplyCyreneSpecialGoods(slot.SpecialGoodsId);
+            }
             if (!application.Success) return [];
             slot.SoldOut = true;
             results.Add(new GridFightSpecialGoodsPurchaseResult(index, slot.SpecialGoodsId, application));
@@ -973,7 +1050,10 @@ public sealed partial class GridFightSession
                 Star = slot.Star,
                 Price = slot.Price,
                 SoldOut = slot.SoldOut,
-            }).ToList());
+            }).ToList(),
+            _spentGoldThisNode,
+            new Dictionary<uint, uint>(_investmentNodeCounters),
+            _economyEffects.ToList());
     }
 
     private void RestoreRewardState(GridFightRewardStateSnapshot snapshot)
@@ -1008,6 +1088,11 @@ public sealed partial class GridFightSession
         ForgeItems.AddRange(snapshot.ForgeItems);
         Shop.Clear();
         Shop.AddRange(snapshot.Shop);
+        _spentGoldThisNode = snapshot.SpentGoldThisNode;
+        _investmentNodeCounters.Clear();
+        foreach (var (id, count) in snapshot.InvestmentCounters) _investmentNodeCounters[id] = count;
+        _economyEffects.Clear();
+        _economyEffects.AddRange(snapshot.EconomyEffects);
         RecalculateRoleSwitches(false);
     }
 
@@ -1021,6 +1106,9 @@ public sealed partial class GridFightSession
             Position = role.Position,
         };
         clone.EquippedEquipmentUniqueIds.AddRange(role.EquippedEquipmentUniqueIds);
+        clone.HasPowerGrowth = role.HasPowerGrowth;
+        foreach (var (property, bonus) in role.PermanentPropertyBonuses)
+            clone.PermanentPropertyBonuses[property] = bonus;
         return clone;
     }
 
@@ -1047,7 +1135,10 @@ public sealed partial class GridFightSession
         IReadOnlyList<GridFightOrbState> Orbs,
         IReadOnlyList<GridFightConsumableState> Consumables,
         IReadOnlyList<GridFightForgeItemState> ForgeItems,
-        IReadOnlyList<GridFightShopSlot> Shop);
+        IReadOnlyList<GridFightShopSlot> Shop,
+        bool SpentGoldThisNode,
+        IReadOnlyDictionary<uint, uint> InvestmentCounters,
+        IReadOnlyList<GridFightAugmentEffectResult> EconomyEffects);
 
     public GridFightTraitEnhanceActivationResult ActivateSilverWolfHackConsole(
         uint queuePosition,
@@ -1187,6 +1278,22 @@ public sealed partial class GridFightSession
                             return new GridFightRewardApplication();
                         application.ConsumableChanges.Add(change);
                     }
+                    else if (GameData.GridFightForgeData.TryGetValue(reward.ItemId, out var hireForge) &&
+                             hireForge.FuncType == GridFightForgeFuncTypeEnum.Role)
+                    {
+                        // 聘用书 (99992-99996, FuncType Role, params [cost, star]). Its 4-pick prompt
+                        // (GridFightForgeRoleActionInfo) has unconfirmed fields and no capture, so the book is
+                        // redeemed on receipt for a random role of that cost and star instead of a choice.
+                        var hireCost = hireForge.ParamList.ElementAtOrDefault(0);
+                        var hireStar = Math.Max(1u, hireForge.ParamList.ElementAtOrDefault(1));
+                        for (var index = 0u; index < reward.Count; index++)
+                        {
+                            var hired = _catalog.RollRolesByCost(hireCost, 1, _temporarilyUnlockedRestrictedRoleIds).FirstOrDefault();
+                            if (hired == null || !TryAddRole(hired.ID, hireStar, out var hireAcquisition))
+                                return new GridFightRewardApplication();
+                            application.RoleAcquisitions.Add(hireAcquisition);
+                        }
+                    }
                     else if (GameData.GridFightForgeData.ContainsKey(reward.ItemId))
                     {
                         for (var index = 0u; index < reward.Count; index++)
@@ -1207,6 +1314,10 @@ public sealed partial class GridFightSession
                         if (!TryAddOrb(reward.ItemId, out var orb)) return new GridFightRewardApplication();
                         application.AddedOrbs.Add(orb);
                     }
+                    break;
+                case GridFightBonusTypeEnum.SpotLightReplaceCnt:
+                case GridFightBonusTypeEnum.SpotLightFreeRefreshCnt:
+                    AddSpotLightCharges(reward.Type, reward.Count);
                     break;
                 default:
                     return new GridFightRewardApplication();
@@ -1234,7 +1345,9 @@ public sealed partial class GridFightSession
 
     public GridFightForgeUseResult UseForge(uint uniqueId, uint targetIndex)
     {
-        if (Phase != GridFightSessionPhase.Preparing)
+        // Round-begin rewards (e.g. a 遭遇 进阶武装箱) arrive while the client already shows the board but has not sent
+        // GridFightBackToPrepareCsReq yet; opening a box only adds an item, so allow it in that window too.
+        if (Phase is not (GridFightSessionPhase.Preparing or GridFightSessionPhase.AwaitingBackToPrepare))
             return GridFightForgeUseResult.Failed;
         var forgeItem = ForgeItems.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
         if (forgeItem == null ||
@@ -1276,7 +1389,7 @@ public sealed partial class GridFightSession
         SectionId = sectionId;
         InvestmentOffer = [];
         SupplyOffer = [];
-        _rerolledInvestmentIds.Clear();
+        ResetInvestmentRerolls();
         SupplyRerollCount = 0;
         PrepareCurrentNode();
         RefreshShop(false);
@@ -1286,7 +1399,7 @@ public sealed partial class GridFightSession
 
     public GridFightRoleAcquisitionResult BuyGoods(IReadOnlyList<uint> indices)
     {
-        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection || indices.Count == 0 || indices.Distinct().Count() != indices.Count)
+        if (Phase != GridFightSessionPhase.Preparing || HasBlockingPendingSelection || indices.Count == 0 || indices.Distinct().Count() != indices.Count)
             return GridFightRoleAcquisitionResult.Failed;
         var slots = indices.Select(index => Shop.FirstOrDefault(slot => slot.Index == index)).ToList();
         if (slots.Any(slot => slot == null || slot.SoldOut || slot.SpecialGoodsId != 0))
@@ -1294,7 +1407,7 @@ public sealed partial class GridFightSession
         var cost = slots.OfType<GridFightShopSlot>().Aggregate(0UL, (sum, slot) => sum + slot.Price);
         if (cost > Gold) return GridFightRoleAcquisitionResult.Failed;
 
-        Gold -= (uint)cost;
+        SpendGold((uint)cost);
         PrepareTwinPrimesRewards(slots.OfType<GridFightShopSlot>().Select(slot => slot.RoleId));
         var acquiredRoles = new List<GridFightRoleState>();
         var mergeSteps = new List<GridFightRoleMergeStep>();
@@ -1305,13 +1418,14 @@ public sealed partial class GridFightSession
             {
                 UniqueId = _nextEntityUniqueId++,
                 RoleId = slot.RoleId,
-                Star = slot.Star,
+                Star = PurchaseStar(slot),
                 Position = GetFreeBenchPosition(),
             };
             Roles.Add(role);
             acquiredRoles.Add(role);
             mergeSteps.AddRange(MergeRoles(role.RoleId));
         }
+        OnEconomyPurchase(slots.OfType<GridFightShopSlot>());
         RecalculateRoleSwitches();
         return FinalizeRoleAcquisition(new GridFightRoleAcquisitionResult(
             true,
@@ -1322,9 +1436,10 @@ public sealed partial class GridFightSession
 
     public GridFightSessionChange RecycleRole(uint uniqueId)
     {
-        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection) return GridFightSessionChange.Failed;
+        if (Phase != GridFightSessionPhase.Preparing || HasBlockingPendingSelection) return GridFightSessionChange.Failed;
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
-        if (role == null) return GridFightSessionChange.Failed;
+        // The summoned 丹恒•腾荒 cannot be sold (the client refuses locally as well).
+        if (role == null || IsPopulationFreeRole(role)) return GridFightSessionChange.Failed;
         AddGold(_catalog.GetSellPrice(role.RoleId, role.Star));
         DestroyDiceFilledOnRole(role);
         Roles.Remove(role);
@@ -1335,12 +1450,13 @@ public sealed partial class GridFightSession
 
     public bool BuyExp()
     {
-        if (Phase != GridFightSessionPhase.Preparing || Gold < _catalog.BuyExpCost) return false;
+        if (Phase != GridFightSessionPhase.Preparing || Gold < CurrentBuyExpCost) return false;
         var current = _catalog.GetPlayerLevel(PlayerLevel);
         if (current.LevelUpExp == 0) return false;
 
-        Gold -= _catalog.BuyExpCost;
-        AddPlayerExp(_catalog.BuyExpAmount);
+        SpendGold(CurrentBuyExpCost);
+        AddPlayerExp(_catalog.BuyExpAmount + PetPalBuyExpBonus());
+        PromoteShopRoleAfterBuyingExp();
         return true;
     }
 
@@ -1348,18 +1464,25 @@ public sealed partial class GridFightSession
     {
         var previousLevel = PlayerLevel;
         PlayerExp += amount;
-        while (GameDataHasNextLevel() && PlayerExp >= _catalog.GetPlayerLevel(PlayerLevel).LevelUpExp)
+        // Season 2 appends a level-11 row reachable only through effects; level 10 has no LevelUpExp, so without
+        // the cap any exp gained at level 10 would roll straight into it.
+        while (PlayerLevel < _catalog.MaxPlayerLevel && GameDataHasNextLevel() &&
+               _catalog.GetPlayerLevel(PlayerLevel).LevelUpExp is var levelUpExp and > 0 &&
+               PlayerExp >= levelUpExp)
         {
-            PlayerExp -= _catalog.GetPlayerLevel(PlayerLevel).LevelUpExp;
+            PlayerExp -= levelUpExp;
             PlayerLevel++;
         }
         if (PlayerLevel != previousLevel)
+        {
             QueueMarketVitalitySavedValue(109);
+            OnEconomyLevelChanged();
+        }
     }
 
     public GridFightSessionChange UpdatePositions(IReadOnlyList<(uint UniqueId, uint Position)> updates)
     {
-        if (Phase != GridFightSessionPhase.Preparing || HasPendingSelection || updates.Count == 0 ||
+        if (Phase != GridFightSessionPhase.Preparing || HasBlockingPendingSelection || updates.Count == 0 ||
             updates.Select(update => update.UniqueId).Distinct().Count() != updates.Count)
             return GridFightSessionChange.Failed;
         var rolesById = Roles.ToDictionary(role => role.UniqueId);
@@ -1375,7 +1498,8 @@ public sealed partial class GridFightSession
                 rolesById.ContainsKey(update.UniqueId) && !IsValidPosition(update.Position) ||
                 forgeItemsById.ContainsKey(update.UniqueId) && !IsBenchPosition(update.Position) ||
                 PepeNpc != null && update.Position == PepeNpc.Position ||
-                AstaDogNpc != null && update.Position == AstaDogNpc.Position))
+                AstaDogNpc != null && update.Position == AstaDogNpc.Position ||
+                update.Position != 0 && OwlbertNpcs.Any(npc => npc.Position == update.Position)))
             return GridFightSessionChange.Failed;
 
         var rolePositions = Roles.ToDictionary(role => role.UniqueId, role => role.Position);
@@ -1390,9 +1514,15 @@ public sealed partial class GridFightSession
             .ToList();
         if (PepeNpc != null) occupied.Add(PepeNpc.Position);
         if (AstaDogNpc != null) occupied.Add(AstaDogNpc.Position);
+        occupied.AddRange(OwlbertNpcs.Where(npc => npc.Position != 0).Select(npc => npc.Position));
         if (occupied.Distinct().Count() != occupied.Count)
             return GridFightSessionChange.Failed;
-        if (rolePositions.Values.Count(IsActivePosition) > MaxActiveRoles) return GridFightSessionChange.Failed;
+        if (CountPopulationRoles(rolePositions.Select(pair => (pair.Key, pair.Value))) > MaxActiveRoles)
+            return GridFightSessionChange.Failed;
+        // TwoInOneSubBlockConstrait: the summoned 丹恒•腾荒 only moves inside the back area.
+        if (updates.Any(update => update.UniqueId == _danHengSubUniqueId && _danHengSubUniqueId != 0 &&
+                                  !IsBackPosition(update.Position)))
+            return GridFightSessionChange.Failed;
 
         var updatedRoles = new List<GridFightRoleState>();
         var updatedForgeItems = new List<GridFightForgeItemState>();
@@ -1468,13 +1598,15 @@ public sealed partial class GridFightSession
                 needsTraitSync));
         }
         _mortenaxBladeBattleEffects = effects;
+        PrepareXianzhouBattleSwaps();
     }
 
     public IReadOnlyList<(uint EquipmentId, uint UniqueId)> GetBattleEquipment(GridFightRoleState role)
     {
         var result = GetEquippedEquipment(role)
-            .Select(item => (item.EquipmentId, item.UniqueId))
+            .Select(item => (EquipmentId: ResolveXianzhouBattleEquipment(item.UniqueId, item.EquipmentId), item.UniqueId))
             .ToList();
+        ApplyNanoModification(role, result);
         var effect = _mortenaxBladeBattleEffects.FirstOrDefault(item => item.RoleUniqueId == role.UniqueId);
         if (effect == null) return result;
 
@@ -1500,18 +1632,21 @@ public sealed partial class GridFightSession
     public void ClearMortenaxBladeBattleEffects()
     {
         _mortenaxBladeBattleEffects = [];
+        _xianzhouBattleSwaps.Clear();
     }
 
     public bool EnterBattle()
     {
-        var activeRoleCount = Roles.Count(role => IsActivePosition(role.Position));
+        var activeRoleCount = CountPopulationRoles(Roles.Select(role => (role.UniqueId, role.Position)));
         if (Phase != GridFightSessionPhase.Preparing ||
             HasPendingSelection ||
+            IsSpotLightSelectionDue ||
             !IsCombatNode(CurrentNode) ||
             BattlePlan == null ||
             activeRoleCount == 0 ||
             activeRoleCount > MaxActiveRoles)
             return false;
+        RecordSpotLightBattleParticipants();
         Phase = GridFightSessionPhase.InBattle;
         return true;
     }
@@ -1521,18 +1656,13 @@ public sealed partial class GridFightSession
         GridFightBattleStatistics statistics)
     {
         if (Phase != GridFightSessionPhase.InBattle) return GridFightBattleSettlementResult.Failed;
+        // Retiring (or losing) the battle settles it as a lost battle at the progress reached so far; returning to
+        // the same node's preparation would let the team be rebuilt and the battle replayed without a penalty.
         if (!battleEndedNormally)
-        {
-            BattlesFinished++;
-            KeepWinCount = 0;
-            RecordHeroEntranceBattleResult(false);
-            // Keep battle-only Mortenax state alive until the manager sends the official
-            // post-battle TraitEffectUpdate. The manager clears it immediately afterward.
-            Phase = GridFightSessionPhase.Preparing;
-            return GridFightBattleSettlementResult.Failed;
-        }
+            statistics = statistics with { ProgressPercent = Math.Min(statistics.ProgressPercent, 99u) };
 
-        var progressPercent = Math.Min(statistics.ProgressPercent, 100u);
+        RecordReportedRoleSavedValues(statistics);
+        var progressPercent = ApplyPetPalGuard(Math.Min(statistics.ProgressPercent, 100u));
         statistics = statistics with { ProgressPercent = progressPercent };
         var isPerfectFinish = progressPercent == 100;
         var penaltyRule = _catalog.GetPenaltyRule(CurrentPenaltyRuleId);
@@ -1552,7 +1682,7 @@ public sealed partial class GridFightSession
 
         var settlementBalance = Gold;
         var basicGold = CurrentNode.BasicGoldReward;
-        var interestGold = _catalog.CalculateInterest(settlementBalance);
+        var interestGold = CalculateInvestmentInterest(settlementBalance);
         var keepWinGold = _catalog.GetVictoryGoldBonus(KeepWinCount);
         var goldAfterBasic = AddGold(basicGold);
         var goldAfterInterest = AddGold(interestGold);
@@ -1564,19 +1694,33 @@ public sealed partial class GridFightSession
         IReadOnlyList<GridFightOrbState> addedBattleOrbs = nodeType == GridFightNodeTypeEnum.Monster && battlePlan != null
             ? AddKilledMonsterOrbs(battlePlan, statistics.KilledMonsters)
             : [];
+        addedBattleOrbs = [.. addedBattleOrbs, .. RollLootOrbsOnKills(statistics.KilledMonsters)];
         IReadOnlyList<GridFightTalentOrbReward> talentRewards = nodeType == GridFightNodeTypeEnum.Boss
             ? TakeTalentOrbRewards(GridFightTalentRewardTrigger.BossClear, chapterId)
             : [];
         ScheduleRoughPepeDrop(battleEndedNormally);
         RecordHeroEntranceBattleResult(isPerfectFinish);
         PrepareGalaxyScholarBattleReward();
+        GrantTrailblazeBattleCoin();
+        GrantMoonGameBattlePower(isPerfectFinish);
         ApplyDotContractBattleStatistics(statistics);
         RecordFateDivinerBattleParticipation();
-        var routeAdvanced = AdvanceToNextNode();
+        if (nodeType is GridFightNodeTypeEnum.Monster or GridFightNodeTypeEnum.CampMonster or
+            GridFightNodeTypeEnum.EliteBranch or GridFightNodeTypeEnum.Boss)
+            OnPepeCameoBattleCleared(isPerfectFinish);
+        if (nodeType == GridFightNodeTypeEnum.EliteBranch &&
+            (isPerfectFinish || progressPercent >= penaltyRule.ThresholdPosition))
+            GrantEncounterReward(battlePlan);
+        var defeated = LineupHp == 0;
+        var routeAdvanced = !defeated && AdvanceToNextNode();
         BattlesFinished++;
         LastBattleStatistics = statistics;
         ApplyDiceEquipmentRefills();
-        if (routeAdvanced)
+        if (defeated)
+        {
+            Phase = GridFightSessionPhase.Defeated;
+        }
+        else if (routeAdvanced)
         {
             Phase = GridFightSessionPhase.AwaitingBattleRound;
             PendingQueuePosition++;
@@ -1605,7 +1749,10 @@ public sealed partial class GridFightSession
             hpChanges,
             statistics,
             addedBattleOrbs,
-            talentRewards);
+            talentRewards)
+        {
+            Defeated = defeated,
+        };
     }
 
     private IReadOnlyList<GridFightOrbState> AddKilledMonsterOrbs(
@@ -1651,11 +1798,14 @@ public sealed partial class GridFightSession
             ApplyHpLoss(GridFightHpChangeKind.BasicPenalty, basicPenalty),
             ApplyHpLoss(GridFightHpChangeKind.ProgressPenalty, progressPenalty),
             ApplyHpLoss(GridFightHpChangeKind.ThresholdPenalty, thresholdPenalty),
-            ApplyHpHealing(
-                GridFightHpChangeKind.TalentHealing,
-                _catalog.GetPostBattleHealing(),
-                _catalog.PostBattleHealingSourceId),
         ];
+        // A squad brought to 0 HP is out of the run; the post-battle heals (长线作战 +2 after every node battle) must not
+        // bring it back, or no amount of lost battles could ever end the run.
+        if (LineupHp == 0) return changes;
+        changes.Add(ApplyHpHealing(
+            GridFightHpChangeKind.TalentHealing,
+            _catalog.GetPostBattleHealing(),
+            _catalog.PostBattleHealingSourceId));
         var finalBattleHealing = isFinalBoss ? _catalog.GetFinalBattleTurnHealing(roundCount) : 0;
         if (finalBattleHealing > 0)
             changes.Add(ApplyHpHealing(
@@ -1702,18 +1852,25 @@ public sealed partial class GridFightSession
     {
         if (chargeGold &&
             (Phase != GridFightSessionPhase.Preparing ||
-             Gold < _catalog.RefreshCost ||
-             Shop.Any(slot => slot.SpecialGoodsId != 0 && !slot.SoldOut)))
+             Gold < CurrentRefreshCost ||
+             // Cyrene's poem shop must be bought out first; Aha goods are ordinary slots.
+             Shop.Any(slot => slot.SpecialGoodsId != 0 && !IsAhaGoods(slot.SpecialGoodsId) && !slot.SoldOut)))
             return false;
         if (!chargeGold && _shopLocked && Shop.Count > 0) return true;
         if (chargeGold)
         {
-            Gold -= _catalog.RefreshCost;
+            var paidWithGold = !TryConsumeFreeShopRefresh();
+            if (paidWithGold) SpendGold(BaseRefreshCost);
             _shopLocked = false;
+            ApplyAstropolisRefreshBonus();
+            OnPortalShopRefreshed(paidWithGold);
+            OnSpotLightShopRefreshed();
+            if (paidWithGold && ActiveInvestmentIds.Contains(301601)) AddPlayerExp(2);
         }
+        var procurementRoles = chargeGold ? RollProcurementShop() : null;
         Shop.Clear();
         var boostedTraitId = ConceptStockBoostedTraitId;
-        var roles = _catalog.RollShop(
+        var roles = procurementRoles ?? _catalog.RollShop(
             PlayerLevel,
             _silverWolfCurrentRoleId == 0 ? GridFightSpecialFeatures.SilverWolfThreeCostRoleId : _silverWolfCurrentRoleId,
             HasRotationPortal ? GetEffectiveShopRarityWeights(_catalog.GetShopRarityWeights(PlayerLevel)) : null,
@@ -1732,6 +1889,7 @@ public sealed partial class GridFightSession
                 Price = _catalog.GetBuyPrice(roles[index].ID, star),
             });
         }
+        if (procurementRoles == null) ApplyAhaShopGlance();
         return true;
     }
 
@@ -1757,18 +1915,37 @@ public sealed partial class GridFightSession
         get
         {
             var value = (ulong)_catalog.GetEnemyDifficultyLevel(DivisionId) +
-                        ActiveInvestmentIds.Aggregate(0UL,
+                        ActiveInvestmentIds.Where(id => !_difficultyExemptInvestmentIds.Contains(id)).Aggregate(0UL,
                             (sum, id) => sum + _catalog.GetInvestmentDifficultyAdd(DivisionId, id)) +
-                        (BattlePlan?.DifficultyAdd ?? 0);
+                        (BattlePlan?.DifficultyAdd ?? 0) +
+                        SpotLightEnemyDifficulty;
             return (uint)Math.Min(value, uint.MaxValue);
         }
     }
 
     private void PrepareInvestmentOffer()
     {
+        if (RollForesightInvestmentOffer() is { } foresightOffer)
+        {
+            InvestmentOffer = foresightOffer;
+            ResetInvestmentRerolls();
+            return;
+        }
         var quality = _catalog.RollInvestmentQuality(ChapterId, InvestmentOfferCount, ActiveInvestmentIds);
-        InvestmentOffer = _catalog.RollInvestmentOffer(ChapterId, quality, InvestmentOfferCount, ActiveInvestmentIds);
+        if (ResolvePortalInvestmentQuality(++_ordinaryInvestmentOffers) is { } forced &&
+            _catalog.RollInvestmentOffer(ChapterId, forced, InvestmentOfferCount, ActiveInvestmentIds).Count == InvestmentOfferCount)
+            quality = forced;
+        if (quality != GridFightAugmentQualityEnum.None) quality = ApplyInvestmentUpgrade(quality);
+        InvestmentOffer = quality == GridFightAugmentQualityEnum.None
+            ? []
+            : _catalog.RollInvestmentOffer(ChapterId, quality, InvestmentOfferCount, ActiveInvestmentIds);
+        ResetInvestmentRerolls();
+    }
+
+    private void ResetInvestmentRerolls()
+    {
         _rerolledInvestmentIds.Clear();
+        _rerolledAwayInvestmentIds.Clear();
     }
 
     private void PrepareSupplyOffer()
@@ -1776,6 +1953,7 @@ public sealed partial class GridFightSession
         SupplyOffer = _catalog.RollSupplyOffer(SupplyOfferCount, _temporarilyUnlockedRestrictedRoleIds)
             .Select(offer => new GridFightSupplyOfferState(offer.RoleId, offer.EquipmentId))
             .ToList();
+        SupplyOffer = ApplyPetPalSupplyRules(SupplyOffer);
         SupplyRerollCount = 0;
     }
 
@@ -1784,7 +1962,7 @@ public sealed partial class GridFightSession
         if (_initialRolesMaterialized) return;
         _initialRolesMaterialized = true;
         var conceptRoleIds = RollConceptStockInitialRoleIds();
-        var roleIds = conceptRoleIds ?? _catalog.RollInitialRoles(OfficialInitialRoleCount, _temporarilyUnlockedRestrictedRoleIds).Select(role => role.ID).ToList();
+        var roleIds = conceptRoleIds ?? RollTalentReserveInitialRoleIds() ?? _catalog.RollInitialRoles(OfficialInitialRoleCount, _temporarilyUnlockedRestrictedRoleIds).Select(role => role.ID).ToList();
         foreach (var roleId in roleIds)
             Roles.Add(new GridFightRoleState
             {
@@ -1798,12 +1976,14 @@ public sealed partial class GridFightSession
     private List<GridFightRoleMergeStep> MergeRoles(uint roleId)
     {
         var steps = new List<GridFightRoleMergeStep>();
+        // The 3/4/5-cost Aha tiers have no stars; extra copies become growth (AbsorbAhaCopies) instead.
+        if (IsSeasonTwoRules && IsAhaRole(roleId) && roleId != AhaSevenCostRoleId) return steps;
         var switchGroup = _catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(roleId));
         var mergeRoleIds = switchGroup?.RoleIdList.ToHashSet() ?? [roleId];
         var starRoleId = switchGroup?.BaseRoleId ?? roleId;
         while (true)
         {
-            var group = Roles.Where(role => mergeRoleIds.Contains(role.RoleId))
+            var group = Roles.Where(role => mergeRoleIds.Contains(role.RoleId) && !IsPopulationFreeRole(role))
                 .GroupBy(role => role.Star)
                 .OrderBy(grouping => grouping.Key)
                 .FirstOrDefault(grouping => grouping.Count() >= 3 &&
@@ -1842,9 +2022,15 @@ public sealed partial class GridFightSession
                 Position = ResolveHeroEntranceMergedPosition(merge, retained.Position),
             };
             mergedRole.EquippedEquipmentUniqueIds.AddRange(retained.EquippedEquipmentUniqueIds);
+            mergedRole.HasPowerGrowth = merge.Any(role => role.HasPowerGrowth);
+            foreach (var role in merge)
+                foreach (var (property, bonus) in role.PermanentPropertyBonuses)
+                    mergedRole.PermanentPropertyBonuses[property] =
+                        mergedRole.PermanentPropertyBonuses.GetValueOrDefault(property) + bonus;
             Roles.Add(mergedRole);
             var removedUniqueIds = merge.Select(role => role.UniqueId).ToList();
             RebindHeroEntranceAfterMerge(removedUniqueIds, mergedRole);
+            RebindSpotLightsAfterMerge(removedUniqueIds, mergedRole);
             steps.Add(new GridFightRoleMergeStep(
                 removedUniqueIds,
                 mergedRole));
@@ -1936,10 +2122,14 @@ public sealed partial class GridFightSession
     {
         var next = _catalog.GetNextNode(ChapterId, SectionId);
         if (next == null) return false;
+        var previousNode = CurrentNode;
         ChapterId = next.ChapterId;
         SectionId = next.SectionId;
         PrepareCurrentNode();
         OnInvestmentNodeEntered();
+        OnAugmentEffectNodeEntered(previousNode);
+        OnPepeCameoNodeEntered();
+        OnSpotLightNodeEntered();
         RefreshShop(false);
         return true;
     }
@@ -1951,7 +2141,7 @@ public sealed partial class GridFightSession
         _encounterRerollCount = 0;
         if (CurrentNode.NodeType == GridFightNodeTypeEnum.EliteBranch)
         {
-            EncounterOptions = _catalog.RollEncounterOptions(CurrentNode, CampIds, DivisionId);
+            EncounterOptions = RollEncounterOptionsWithRewards();
             return;
         }
         BattlePlan = _catalog.RollBattlePlan(

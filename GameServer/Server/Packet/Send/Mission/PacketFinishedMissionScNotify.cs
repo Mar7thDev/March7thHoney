@@ -1,4 +1,3 @@
-using March7thHoney.GameServer.Game.Mission;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -10,7 +9,7 @@ public class PacketFinishedMissionScNotify : BasePacket
     {
         var proto = new FinishedMissionScNotify();
         proto.FinishedMainMissionIdList.AddRange(missionIds
-            .Where(x => x > 0 && !MissionManager.IsHiddenFromClient(x))
+            .Where(x => x > 0)
             .Select(x => (uint)x)
             .Distinct());
         SetData(proto);

@@ -289,7 +289,7 @@ public sealed partial class GridFightManager
             {
                 ShopInfo = new GridFightShopSyncInfo
                 {
-                    RefreshCost = Catalog.RefreshCost,
+                    RefreshCost = Session?.EffectiveShopRefreshCost ?? Catalog.RefreshCost,
                     RarityWeightInfo = BuildRarityWeights(),
                 },
             });
