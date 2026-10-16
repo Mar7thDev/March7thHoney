@@ -7,7 +7,8 @@ public sealed record GridFightInvestmentItemReward(
     uint EffectId,
     GridFightEquipmentState? Equipment = null,
     GridFightForgeItemState? ForgeItem = null,
-    uint? GoldValue = null);
+    uint? GoldValue = null,
+    GridFightConsumableChange? Consumable = null);
 
 public sealed record GridFightLaborNpcRemoval(
     GridFightNpcState Npc,
@@ -32,7 +33,7 @@ public sealed partial class GridFightSession
 
     public const uint RawDiamondEquipmentId = 350601;
     public const uint BlueDiamondEquipmentId = 350602;
-    public const uint LuckyTokenEquipmentId = 350107;
+    public const uint LuckyTokenConsumableId = 350107;  // GridFightConsumables row, not an equipment
     public const uint SimpleArmamentBoxForgeId = 99999;
     public const uint AugmentEquipmentSource = 1;
     public const uint NpcEquipmentSource = 4;
@@ -59,6 +60,9 @@ public sealed partial class GridFightSession
         _investmentSelectionRewards.Clear();
         switch (augmentId)
         {
+            case PrismaticProcurementAugmentId:
+                _investmentNodeCounters[augmentId] = 0;
+                break;
             case DiamondAfterNodesAugmentId:
                 _investmentNodeCounters[augmentId] = 0;
                 break;
@@ -168,9 +172,10 @@ public sealed partial class GridFightSession
         if (ActiveInvestmentIds.Contains(LuckyTokenSilverAugmentId) &&
             _investmentNodeCounters.GetValueOrDefault(LuckyTokenSilverAugmentId) < 3)
         {
-            var count = ++_investmentNodeCounters[LuckyTokenSilverAugmentId];
-            if (count == 3 && TryAddEquipment(LuckyTokenEquipmentId, out var token, AugmentEquipmentSource))
-                _roundBeginInvestmentRewards.Add(new(LuckyTokenSilverAugmentId, 104, token));
+            var count = _investmentNodeCounters.GetValueOrDefault(LuckyTokenSilverAugmentId) + 1;
+            _investmentNodeCounters[LuckyTokenSilverAugmentId] = count;
+            if (count == 3 && TryAddConsumable(LuckyTokenConsumableId, out var token))
+                _roundBeginInvestmentRewards.Add(new(LuckyTokenSilverAugmentId, 104, Consumable: token));
         }
 
         if (ActiveInvestmentIds.Contains(UpstreamPrismaticAugmentId))
@@ -243,7 +248,7 @@ public sealed partial class GridFightSession
 
     public void ApplyInvestmentPropertyScales(IDictionary<uint, uint> properties)
     {
-        var upstream = UpstreamStrengthBonusFixpoint;
+        var upstream = UpstreamStrengthBonusFixpoint + SpotLightStrengthBonusFixpoint;
         if (upstream != 0)
         {
             properties.TryGetValue(1027, out var front);

@@ -1,4 +1,5 @@
 using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -13,5 +14,7 @@ public class HandlerPlayerHeartBeatCsReq : Handler<PlayerHeartBeatCsReq>
             await connection.SendPacket(new PacketPlayerHeartBeatScRsp((long)req.ClientTimeMs, player.Data));
 
         await player.OnHeartBeat();
+        if (player.GridFightManager?.BuildOwlbertGoldTick() is { } gold)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(gold));
     }
 }

@@ -426,6 +426,11 @@ public static class GridFightSpecialFeatures
                 if (!CanMaterializeOrb(firstParam)) return false;
                 result.Add(new GridFightRewardEntry(GridFightBonusTypeEnum.Orb, firstParam, multiplier));
                 return true;
+            case GridFightBonusTypeEnum.SpotLightReplaceCnt:
+            case GridFightBonusTypeEnum.SpotLightFreeRefreshCnt:
+                // 主角光环 charges (e.g. 幻月游戏 orb 123156 -> bonus 23156: 1 replace + 8 free spotlight rerolls).
+                result.Add(new GridFightRewardEntry(basic.BonusType, 0, multiplier));
+                return true;
             case GridFightBonusTypeEnum.RandomEquipByCategory:
                 var category = (GridFightEquipCategoryEnum)firstParam;
                 if (category == GridFightEquipCategoryEnum.None) return false;

@@ -184,8 +184,14 @@ public sealed partial class GridFightSession
                 return Give(new GridFightRewardEntry(GridFightBonusTypeEnum.Gold, 0,
                     Random.Shared.NextDouble() < 0.5 ? Math.Max(Param(0), 1) : Param(1)));
             case 332: // 回点血！
-            case 333: // 多回点血！ (the max-HP part is not modelled)
                 return Give(new GridFightRewardEntry(GridFightBonusTypeEnum.GlobalHp, 0, Param(0)));
+            case 333: // 多回点血！: 获得#1点小队生命值和生命上限
+            {
+                MaxLineupHp = (uint)Math.Min(uint.MaxValue, (ulong)MaxLineupHp + Param(0));
+                var heal = Give(new GridFightRewardEntry(GridFightBonusTypeEnum.GlobalHp, 0, Param(0)));
+                heal.LineupHpChanged = true;
+                return heal;
+            }
             case 337: // 我5费呢？！
                 return Give([.. RolesOfRarity(5).Where(id => !IsAhaRole(id)).Select(id => Role(id))]);
             case 346: // 星神降临
@@ -203,23 +209,28 @@ public sealed partial class GridFightSession
         }
     }
 
+    /// <summary>
+    ///     三费/四费/五费专场: "立即刷新商店，使其充满N费角色" refreshes the whole shop, including the slot of the good being
+    ///     bought, from the same pool an ordinary refresh uses (roles already at 3★ stay out of it).
+    /// </summary>
     private void RefillShopWithRarity(uint rarity)
     {
+        var excluded = GetMaxStarExcludedRoleIds();
         var candidates = _catalog.RolePool
-            .Where(role => role.Rarity == rarity && IsRestrictedRoleUnlockedForRun(role.ID))
+            .Where(role => role.Rarity == rarity && IsRestrictedRoleUnlockedForRun(role.ID) && !excluded.Contains(role.ID))
             .Select(role => role.ID)
             .ToList();
         if (candidates.Count == 0) return;
         for (var index = 0; index < Shop.Count; index++)
         {
-            var slot = Shop[index];
-            if (slot.SpecialGoodsId != 0 && !slot.SoldOut) continue;
             var roleId = candidates[Random.Shared.Next(candidates.Count)];
+            var star = ResolveMarketVitalityStar(roleId);
             Shop[index] = new GridFightShopSlot
             {
-                Index = slot.Index,
+                Index = Shop[index].Index,
                 RoleId = roleId,
-                Price = _catalog.GetBuyPrice(roleId, 1),
+                Star = star,
+                Price = _catalog.GetBuyPrice(roleId, star),
             };
         }
     }

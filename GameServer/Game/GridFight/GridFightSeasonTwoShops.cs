@@ -22,6 +22,8 @@ public sealed partial class GridFightSession
     public const uint TrailblazeTraitId = 100502;
     public const uint TrailblazeEffectId = 1005021;
     public const uint TrailblazeRefreshGoodId = 999;
+    /// <summary>星穹列车，前进IV! — has no price; the train evolves into it at the top layer.</summary>
+    private const uint TrailblazeFinalTrainGoodId = 400;
     public const uint PamKingRoleId = 604202;
     /// <summary>帕姆王 "累计消耗解锁": the client's own default when no modifier is synced (no table carries it).</summary>
     public const uint PamKingCostedThreshold = 500;
@@ -63,7 +65,7 @@ public sealed partial class GridFightSession
         return unlock;
     }
     public uint FreeShopRefreshCount => _freeShopRefreshCount;
-    public uint EffectiveShopRefreshCost => _freeShopRefreshCount > 0 ? 0 : _catalog.RefreshCost;
+    public uint EffectiveShopRefreshCost => _freeShopRefreshCount > 0 ? 0 : BaseRefreshCost;
 
     /// <summary>Returns and clears the "auto-open the Jade shop" flag (JADHHGHGMPH field 14).</summary>
     public bool TakeJadeAutoOpen()
@@ -188,7 +190,11 @@ public sealed partial class GridFightSession
             return failed;
         }
         if (paysHp) application.LineupHpChanged = true;
-        else application.GoldChanged = true;
+        else
+        {
+            application.GoldChanged = true;
+            if (row.CostParam > 0) _spentGoldThisNode = true;
+        }
 
         var index = _jadeGoods.IndexOf(good);
         _jadeGoods[index] = slotId == JadeSpecialSlotId
@@ -205,8 +211,8 @@ public sealed partial class GridFightSession
             return false;
         if (!TryConsumeFreeShopRefresh())
         {
-            if (Gold < _catalog.RefreshCost) return false;
-            Gold -= _catalog.RefreshCost;
+            if (Gold < BaseRefreshCost) return false;
+            SpendGold(BaseRefreshCost);
             goldChanged = true;
         }
         RollJadeGoods(Math.Clamp(ResolveJadeStar(), 1u, 3u));
@@ -267,25 +273,30 @@ public sealed partial class GridFightSession
             _trailblazeBought[101] = 1;
             _pamKingModifierUniqueId = _nextEntityUniqueId++;
         }
+        // Layer 10 (tier 5) "列车进化！": the train evolves to 前进IV (400, a good without a price).
+        if (ResolveTrailblazeTier(state.Layer) >= 5 && _trailblazeBought.TryAdd(TrailblazeFinalTrainGoodId, 1))
+            changes.ShopChanged = true;
         if (_trailblazeGoods.Count > 0 && _trailblazeGoodsNode == (ChapterId, SectionId)) return;
         RollTrailblazeGoods(state.Layer);
         changes.ShopChanged = true;
     }
 
+    private uint ResolveTrailblazeTier(uint layer) =>
+        (uint)GetTraitEffectLayerParams(TrailblazeEffectId, layer).FirstOrDefault();
+
     /// <summary>
-    ///     Layer params [tier, coin per battle, ?, 999]. Goods of the hundreds group up to tier + 1 are offered
-    ///     (guess: the table has no tier column); MazeBuff upgrades follow their FatherGoodID chain and are sold
-    ///     once, Property goods repeat. The refresh good (999) is always appended.
+    ///     Layer params [tier, coin per battle, ?, 999]. The client keeps goods by list index and only redraws the
+    ///     indexes whose good changed, so the list always has the same shape: TrailblazeGoodsCount distinct goods, then
+    ///     the refresh good (999). The tier gating is a guess (the table has no tier column) that follows the layer
+    ///     texts: tier 1 train upgrades, level-I properties and 15-cost roles; tier 2 "商品变得更好" (level II, the
+    ///     员工投影仪, 前进III); tier 3 "出现羁绊专属改件" (the 353201-353206 implants, level III); tier 4 level IV and
+    ///     the 完美投影仪; tier 5 the 100-cost roles.
     /// </summary>
     private void RollTrailblazeGoods(uint layer)
     {
         _trailblazeGoods.Clear();
         _trailblazeGoodsNode = (ChapterId, SectionId);
-        var tier = (uint)GetTraitEffectLayerParams(TrailblazeEffectId, layer).FirstOrDefault();
-        var pool = GridFightSeasonTwoTables.TrailblazeGoods
-            .Where(row => row.Id != TrailblazeRefreshGoodId && row.Cost > 0 && row.Id / 100 <= tier + 1 &&
-                          IsTrailblazeGoodAvailable(row))
-            .ToList();
+        var pool = GetTrailblazeGoodPool(ResolveTrailblazeTier(layer), new HashSet<uint>());
         for (var index = 0; index < TrailblazeGoodsCount && pool.Count > 0; index++)
         {
             var row = pool[Random.Shared.Next(pool.Count)];
@@ -296,12 +307,40 @@ public sealed partial class GridFightSession
         if (refresh != null) _trailblazeGoods.Add(new GridFightTrailblazeGoodState(refresh.Id, Math.Max(refresh.Cost, 1)));
     }
 
+    private List<GridFightTrailblazeGoodsRow> GetTrailblazeGoodPool(uint tier, IReadOnlySet<uint> excludedGoodIds) =>
+        GridFightSeasonTwoTables.TrailblazeGoods
+            .Where(row => row.Id != TrailblazeRefreshGoodId && row.Cost > 0 && !excludedGoodIds.Contains(row.Id) &&
+                          GetTrailblazeGoodTier(row) <= tier && IsTrailblazeGoodAvailable(row))
+            .ToList();
+
+    private static uint GetTrailblazeGoodTier(GridFightTrailblazeGoodsRow row) => row.Id switch
+    {
+        201 or 203 or 204 or 205 => 1, // 前进II and the three train enhancements
+        301 => 2, // 前进III
+        >= 303 and <= 308 => 3, // 羁绊专属改件
+        401 => 2, // 开拓·员工投影仪
+        413 => 4, // 开拓·完美投影仪
+        402 or 403 or 414 or 418 or 422 => 1, // property I
+        404 or 405 or 415 or 419 or 423 => 2, // property II
+        406 or 407 or 416 or 420 or 424 => 3, // property III
+        408 or 409 or 410 or 411 or 412 or 417 or 421 => 4, // property IV
+        _ when row.Type == "Role" => row.Cost switch
+        {
+            <= 15 => 1,
+            <= 35 => 2,
+            <= 50 => 3,
+            <= 75 => 4,
+            _ => 5,
+        },
+        _ => 5,
+    };
+
     private bool IsTrailblazeGoodAvailable(GridFightTrailblazeGoodsRow row)
     {
         switch (row.Type)
         {
             case "MazeBuff":
-                if (_trailblazeBought.ContainsKey(row.Id)) return false;
+                if (_trailblazeBought.ContainsKey(row.Id) || IsTrailblazeTrainSuperseded(row.Id)) return false;
                 return row.FatherGoodId == 0 || _trailblazeBought.ContainsKey(row.FatherGoodId);
             case "TrailFuel":
                 // +30/+60 开拓力 for 1 开拓力 would be a free loop; how fuel is really priced is unknown.
@@ -316,12 +355,47 @@ public sealed partial class GridFightSession
         }
     }
 
+    /// <summary>True when a bought train good already descends from this one (e.g. 前进III once 前进IV is reached).</summary>
+    private bool IsTrailblazeTrainSuperseded(uint goodId)
+    {
+        foreach (var boughtId in _trailblazeBought.Keys)
+        {
+            var current = GridFightSeasonTwoTables.TrailblazeGoods.FirstOrDefault(row => row.Id == boughtId);
+            for (var depth = 0; current is { FatherGoodId: not 0 } && depth < 8; depth++)
+            {
+                if (current.FatherGoodId == goodId) return true;
+                current = GridFightSeasonTwoTables.TrailblazeGoods.FirstOrDefault(row => row.Id == current.FatherGoodId);
+            }
+        }
+        return false;
+    }
+
+    /// <summary>
+    ///     Restocks the slot of a bought good in place with another good of the current tier (one not on display), so
+    ///     the indexes of the other goods and of the refresh good never move. The client cannot show an empty slot: a
+    ///     good id of 0 makes its goods list hold null, which its indicator and the next sync dereference.
+    /// </summary>
+    private void RestockTrailblazeSlot(int index, uint layer)
+    {
+        var displayed = _trailblazeGoods.Select(good => good.GoodId).ToHashSet();
+        var pool = GetTrailblazeGoodPool(ResolveTrailblazeTier(layer), displayed);
+        if (pool.Count == 0)
+        {
+            _trailblazeGoods.RemoveAt(index);
+            return;
+        }
+        var row = pool[Random.Shared.Next(pool.Count)];
+        _trailblazeGoods[index] = new GridFightTrailblazeGoodState(row.Id, row.Cost);
+    }
+
     /// <summary>Trailblaze BuyGood: TraitUpdate 367 { pos = 0-based index into the last goods list }.</summary>
     public GridFightRewardApplication BuyTrailblazeGood(uint index)
     {
         var failed = new GridFightRewardApplication();
         var layer = ResolveTraitLayer(TrailblazeTraitId);
-        if (Phase != GridFightSessionPhase.Preparing || layer == 0 || index >= _trailblazeGoods.Count) return failed;
+        if (Phase != GridFightSessionPhase.Preparing || HasBlockingPendingSelection || layer == 0 ||
+            index >= _trailblazeGoods.Count)
+            return failed;
         var good = _trailblazeGoods[(int)index];
         var row = GridFightSeasonTwoTables.TrailblazeGoods.FirstOrDefault(entry => entry.Id == good.GoodId);
         if (row == null || _trailblazeCoin < good.Cost) return failed;
@@ -342,7 +416,7 @@ public sealed partial class GridFightSession
             case "MazeBuff":
             case "Property":
                 _trailblazeBought[row.Id] = _trailblazeBought.GetValueOrDefault(row.Id) + 1;
-                application = new GridFightRewardApplication { Success = true };
+                application = new GridFightRewardApplication { Success = true, RolePropertiesChanged = row.Type == "Property" };
                 break;
             case "Role":
                 var star = row.Params.ElementAtOrDefault(1) is var roleStar and > 0 ? roleStar : 1u;
@@ -359,7 +433,7 @@ public sealed partial class GridFightSession
             RestoreSeasonTwoRewardState(snapshot);
             return failed;
         }
-        if (row.Type != "Property") _trailblazeGoods.RemoveAt((int)index);
+        RestockTrailblazeSlot((int)index, layer);
         AddTrailblazeCostedCoin(good.Cost);
         return application;
     }
@@ -400,6 +474,20 @@ public sealed partial class GridFightSession
             .Where(row => bought.All(other => other.FatherGoodId != row.Id))
             .Select(row => (int)row.Params[0])
             .ToList();
+    }
+
+    public void ApplyTrailblazeProperties(IDictionary<uint, uint> properties)
+    {
+        if (!IsSeasonTwoRules) return;
+        foreach (var row in GridFightSeasonTwoTables.TrailblazeGoods
+                     .Where(row => row.Type == "Property" && row.Params.Length >= 2))
+        {
+            var count = _trailblazeBought.GetValueOrDefault(row.Id);
+            if (count == 0) continue;
+            var key = row.Params[0];
+            properties[key] = (uint)Math.Min(uint.MaxValue,
+                (ulong)(properties.TryGetValue(key, out var current) ? current : 0u) + (ulong)row.Params[1] * count);
+        }
     }
 
     // ---------------------------------------------------------------- 千星商会

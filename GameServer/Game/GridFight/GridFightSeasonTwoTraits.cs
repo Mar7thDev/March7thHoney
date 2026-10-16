@@ -241,6 +241,16 @@ public sealed partial class GridFightSession
         return changes;
     }
 
+    /// <summary>
+    ///     The summoned 丹恒•腾荒 never uses population (client GridFightTeam.IsRoleUsePopulation) and brings its own back
+    ///     cell, like the Pepe/Asta NPCs: the client only unlocks back cells from the server's MaxBackRoleNum, so without
+    ///     it the summon took a cell from the population and, with all cells full, landed in a locked one (invisible).
+    /// </summary>
+    private uint DanHengSubBackCellBonus => IsSeasonTwoRules && _danHengSubUniqueId != 0 ? 1u : 0u;
+
+    /// <summary>Back positions 5..(4 + OffFieldMaxCount) are the unlocked cells (Pepe/Asta sit in the cell their +1 opens).</summary>
+    private uint LastUnlockedBackPosition(uint extraCells = 0) => 4u + Math.Min(9u, OffFieldMaxCount + extraCells);
+
     private void RefreshDanHengSub(GridFightSeasonTwoChanges changes)
     {
         var main = Roles
@@ -254,25 +264,47 @@ public sealed partial class GridFightSession
         if (main == null)
         {
             if (sub == null) return;
+            var vacated = sub.Position;
             Roles.Remove(sub);
-            _danHengSubUniqueId = 0;
+            _danHengSubUniqueId = 0; // the summon's back cell closes from here on
             changes.RemovedRoleIds.Add(sub.UniqueId);
+            // Whoever stands in the cell that just locked moves into the summon's old cell.
+            var last = LastUnlockedBackPosition();
+            if (IsBackPosition(vacated) && vacated <= last &&
+                Roles.FirstOrDefault(role => IsBackPosition(role.Position) && role.Position > last) is { } stranded)
+            {
+                stranded.Position = vacated;
+                changes.UpdatedRoles.Add(stranded);
+            }
             RecalculateRoleSwitches();
             return;
         }
         if (sub != null)
         {
-            if (sub.Star == main.Star) return;
-            sub.Star = main.Star;
-            // A star change re-sends the role; equipment beyond the star-based cap goes back to the bag.
-            var cap = (int)Math.Clamp(sub.Star, 1u, 3u);
-            if (sub.EquippedEquipmentUniqueIds.Count > cap)
-                sub.EquippedEquipmentUniqueIds.RemoveRange(cap, sub.EquippedEquipmentUniqueIds.Count - cap);
-            changes.UpdatedRoles.Add(sub);
+            var changed = false;
+            // A summon placed by an older build may sit in a locked back cell.
+            var last = LastUnlockedBackPosition();
+            if (sub.Position > last && GetFreeBackPosition(last) is var free and > 0)
+            {
+                sub.Position = free;
+                changed = true;
+            }
+            if (sub.Star != main.Star)
+            {
+                sub.Star = main.Star;
+                // A star change re-sends the role; equipment beyond the star-based cap goes back to the bag.
+                var cap = (int)Math.Clamp(sub.Star, 1u, 3u);
+                if (sub.EquippedEquipmentUniqueIds.Count > cap)
+                    sub.EquippedEquipmentUniqueIds.RemoveRange(cap, sub.EquippedEquipmentUniqueIds.Count - cap);
+                changed = true;
+            }
+            if (changed) changes.UpdatedRoles.Add(sub);
             return;
         }
-        // GridFightTwoInOneEffect: the summoned 丹恒•腾荒 has the main's star and must stay in the back area.
-        var position = GetFreeBackPosition();
+        // GridFightTwoInOneEffect: the summoned 丹恒•腾荒 has the main's star and must stay in the back area, inside the
+        // unlocked cells including the one it brings.
+        var position = GetFreeBackPosition(LastUnlockedBackPosition(extraCells: 1));
+        if (position == 0) position = GetFreeBackPosition();
         if (position == 0) return;
         var summoned = new GridFightRoleState
         {
@@ -287,12 +319,13 @@ public sealed partial class GridFightSession
         RecalculateRoleSwitches();
     }
 
-    private uint GetFreeBackPosition()
+    private uint GetFreeBackPosition(uint lastPosition = 13)
     {
-        for (var position = 5u; position <= 13; position++)
+        for (var position = 5u; position <= lastPosition; position++)
             if (Roles.All(role => role.Position != position) &&
                 PepeNpc?.Position != position && AstaDogNpc?.Position != position &&
-                LizhiNpcs.All(npc => npc.Position != position))
+                LizhiNpcs.All(npc => npc.Position != position) &&
+                OwlbertNpcs.All(npc => npc.Position != position))
                 return position;
         return 0;
     }
@@ -466,7 +499,12 @@ public sealed partial class GridFightSession
                       .OrderByDescending(entry => entry.Star)
                       .FirstOrDefault();
         if (row == null) return 0;
-        return ChrysosHeirRoleIds.Contains(roleId) ? row.SpecialSavedValueAdd : row.SavedValueAdd;
+        if (!ChrysosHeirRoleIds.Contains(roleId)) return row.SavedValueAdd;
+        // 盗火行者: 黄金裔被转化时额外获得30% (MazeBuff 130020201 #14 = TraitBasicInfo 300202 BaseDescParamList[0] = 0.3).
+        // The table's Special column is <= ceil(1.3x) everywhere except (4,3) 1000, (5,3) 6330 and (5,4) 33550
+        // (1.39x/1.89x/2.05x, beta data slips); clamp those to the documented bonus. 3★ 5-cost: 3355 -> 4362.
+        var withBonus = (uint)Math.Min(uint.MaxValue, ((ulong)row.SavedValueAdd * 13 + 9) / 10);
+        return Math.Min(row.SpecialSavedValueAdd, withBonus);
     }
 
     /// <summary>

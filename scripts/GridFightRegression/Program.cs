@@ -1,6 +1,9 @@
 using Google.Protobuf;
+using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
+using March7thHoney.Database;
+using March7thHoney.Database.GridFight;
 using March7thHoney.Database.Player;
 using March7thHoney.Enums.GridFight;
 using March7thHoney.GameServer.Game.GridFight;
@@ -131,6 +134,27 @@ foreach (var portalId in catalog.PortalPool)
         GridFightCurrentInfo.Parser.ParseFrom(bytes).Equals(snapshot));
 }
 
+// Investment environment: one free reroll, reported back as reroll_count; a second reroll is refused.
+{
+    var rerollManager = new GridFightManager(new PlayerInstance(new PlayerData { Uid = 1 }), new Random(7));
+    rerollManager.Start(catalog.CurrentSeason, catalog.HighestDivision.ID, false);
+    var rerollSession = rerollManager.Session!;
+    var queue = rerollSession.PendingQueuePosition;
+    var firstReroll = rerollSession.HandlePending(queue, GridFightPendingRequestKind.PortalReroll);
+    var afterFirst = rerollSession.PortalOffer.ToArray();
+    var pendingAfterReroll = rerollManager.BuildCurrentInfo()!.PendingAction.PortalAction;
+    Check("portal reroll: first free reroll accepted and reported",
+        firstReroll && rerollSession.PortalRerollCount == 1 &&
+        pendingAfterReroll.FreeRerollCount == 1 && pendingAfterReroll.RerollCount == 1);
+    Check("portal reroll: second reroll refused and offer kept",
+        !rerollSession.HandlePending(queue, GridFightPendingRequestKind.PortalReroll) &&
+        rerollSession.PortalOffer.SequenceEqual(afterFirst) &&
+        rerollSession.HandlePending(queue, GridFightPendingRequestKind.PortalSelect, afterFirst.First(id => id != GridFightSession.BlueSeaPortalId)));
+}
+
+Check("investment quality roll tolerates an exhausted pool",
+    catalog.RollInvestmentQuality(1, 3, catalog.AugmentPool) == GridFightAugmentQualityEnum.None);
+
 var shopManager = NewRun(101);
 var shop = shopManager.Session!;
 shop.AdjustGold(1000);
@@ -224,6 +248,17 @@ Check($"basic pair {basicRecipe.CostEquipList[0]}+{basicRecipe.CostEquipList[1]}
     seasonalCraft.Success && seasonalCraft.AddedEquipment!.EquipmentId == basicRecipe.CraftEquipID &&
     ItemInSeason(seasonalCraft.AddedEquipment.EquipmentId));
 var systemInfo = opening.BuildSystemInfo();
+if (season == 2)
+{
+    var seasonModule = GameData.GridFightSeasonModuleData.Values.Single(row =>
+        row.SeasonID == season && row.SubSeasonID == catalog.CurrentSubSeason).ActivityModuleID;
+    Check("S2 visibility uses the current season module instead of an unrelated ban-table module",
+        catalog.ContentModuleId == seasonModule);
+    var clientView = GridFightCurrentInfo.Parser.ParseFrom(opening.BuildCurrentInfo()!.ToByteArray());
+    var modules = clientView.GameInfoList.Single(info => info.BasicInfo != null).BasicInfo.ModuleIdList;
+    Check("S2 current-info wire carries the season module for client trait role filtering",
+        modules.SequenceEqual(new[] { seasonModule }));
+}
 var tutorialStages = GameData.GridFightConstValueData.GetValueOrDefault("GridFight_TutorialStageList")?.AsUInt32List() ?? [];
 Check("permanent info reports every tutorial stage as finished", tutorialStages.Count > 0 &&
     systemInfo.PermanentInfo.ENECKKGPKHI == tutorialStages.Max() &&
@@ -235,6 +270,11 @@ Check("handbook lists only current-season roles, items and portals",
     handbook.RoleInfo.RoleIdList.All(RoleInSeason) &&
     handbook.EquipInfo.GridFightItemList.All(ItemInSeason) &&
     handbook.PortalInfo.SeenPortalIdList.All(id => GridFightSeasonScope.IsPortalInSeason(id, season)));
+if (season >= 2)
+    Check("S2 handbook unlocks every 主角光环",
+        handbook.KJIJEGAHLGB is { } spotLightBook &&
+        spotLightBook.JHGCJKCHNCO.Count == GridFightSeasonTwoTables.SpotLights.Length &&
+        spotLightBook.MOOIOOBHGKB.Count == GridFightSeasonTwoTables.SpotLights.Length);
 var avatarOrb = GameData.GridFightOrbData.Values
     .Select(orb => (Orb: orb, Bonus: GameData.GridFightBasicBonusPoolV2Data.GetValueOrDefault(orb.BonusID)))
     .Where(entry => entry.Bonus?.BonusType == GridFightBonusTypeEnum.SpecificAvatar)
@@ -309,6 +349,53 @@ GridFightEquipmentState AddEquipment(GridFightSession session, uint equipmentId)
     if (!session.TryAddEquipment(equipmentId, out var equipment)) throw new InvalidOperationException("Cannot add equipment.");
     return equipment;
 }
+
+// Implants (Pom-Pom modules, Express components, hack/Fate items): a role has one implant slot, so a second implant
+// replaces the worn one, which goes back to the bag instead of staying on the role invisibly.
+const uint ImplantA = 990011, ImplantB = 990012;
+foreach (var id in new[] { ImplantA, ImplantB })
+    GameData.GridFightEquipmentData[id] = new GridFightEquipmentExcel
+    {
+        ID = id, EquipType = GridFightEquipmentTypeEnum.Implants,
+        DressRule = GridFightEquipDressTypeEnum.DressRuleRoleOnly, DressRuleParamList = [roleA],
+    };
+var implantSession = NewRun(101).Session!;
+implantSession.Roles.Clear();
+var implantRole = AddRole(implantSession, roleA);
+implantRole.Position = 1;
+var oldImplant = AddEquipment(implantSession, ImplantA);
+var newImplant = AddEquipment(implantSession, ImplantB);
+var firstImplantDress = implantSession.DressEquipment(implantRole.UniqueId, oldImplant.UniqueId);
+var implantSwap = implantSession.DressEquipment(implantRole.UniqueId, newImplant.UniqueId);
+Check("a second implant replaces the worn one, which returns to the bag",
+    firstImplantDress.Success && implantSwap.Success && implantSwap.RemovedEquipments.Count == 0 &&
+    implantRole.EquippedEquipmentUniqueIds.SequenceEqual([newImplant.UniqueId]) &&
+    implantSession.Equipments.Contains(oldImplant));
+var benchImplantRole = AddRole(implantSession, roleA);
+benchImplantRole.Position = 14;
+Check("implants cannot be dressed on a bench role",
+    !implantSession.DressEquipment(benchImplantRole.UniqueId, oldImplant.UniqueId).Success);
+
+// Copy consumables with a trait parameter (350113/350114 开拓·员工/完美投影仪 [3|5, 1, 100502]) only copy that trait's members.
+const uint TraitProjector = 990101;
+var roleATraits = GameData.GridFightRoleBasicInfoData[roleA].TraitList;
+var foreignTrait = GameData.GridFightRoleBasicInfoData.Values.SelectMany(row => row.TraitList)
+    .First(trait => !roleATraits.Contains(trait));
+GameData.GridFightConsumablesData[TraitProjector] = new GridFightConsumablesExcel
+{
+    ID = TraitProjector, ConsumableRule = GridFightConsumeTypeEnum.Copy, IfConsume = true,
+    ConsumableParamList = [5, 1, foreignTrait],
+};
+var copySession = NewRun(101).Session!;
+copySession.Roles.Clear();
+var copySource = AddRole(copySession, roleA);
+copySession.TryAddConsumable(TraitProjector, out var projector);
+Check("a trait projector refuses a role outside its trait",
+    !copySession.UseConsumable(projector.Consumable.GroupId, copySource.UniqueId, 0).Success);
+GameData.GridFightConsumablesData[TraitProjector].ConsumableParamList = [5, 1, roleATraits[0]];
+Check("a trait projector copies a member of its trait",
+    copySession.UseConsumable(projector.Consumable.GroupId, copySource.UniqueId, 0).Success &&
+    copySession.Roles.Count(role => role.RoleId == roleA) == 2);
 HLHHLIGPNOM Track(uint roleId, uint equipmentId, uint priority = 1)
 {
     var update = new HLHHLIGPNOM { BGFFICLCKHE = roleId, BJDOINAHDLN = true, Priority = priority };
@@ -443,6 +530,10 @@ var route = routeManager.Session!;
 route.Roles.Clear();
 route.ActiveInvestmentIds.Add(GridFightSession.PeriodicBenefitsAugmentId);
 route.ActiveInvestmentIds.Add(GridFightSession.GoldFuturesPlusAugmentId);
+var luckyTokenInPool = catalog.AugmentPool.Contains(GridFightSession.LuckyTokenSilverAugmentId);
+if (luckyTokenInPool) route.ActiveInvestmentIds.Add(GridFightSession.LuckyTokenSilverAugmentId);
+var investmentNodesOffered = new HashSet<(uint, uint)>();
+var investmentRerollChecked = false;
 var fighter = AddRole(route, roleA);
 fighter.Position = 1;
 const uint PeriodicGoldItem = 990005;
@@ -460,8 +551,12 @@ var lastFuturesNode = 0;
 var periodicRewardsObserved = 0;
 var finished = false;
 var routeStaysInSeason = true;
+var routeSnapshotDifferences = new List<string>();
 for (var transition = 0; transition < 300 && !finished; transition++)
 {
+    // Every state the route passes through must survive the save a request ends with.
+    if (SnapshotProbe.CompareSessions(route, SnapshotProbe.RoundTrip(routeManager.Catalog, route)) is { } routeDifference)
+        routeSnapshotDifferences.Add($"{route.Phase} at {route.ChapterId}/{route.SectionId}: {routeDifference}");
     var queue = route.PendingQueuePosition;
     switch (route.Phase)
     {
@@ -490,6 +585,26 @@ for (var transition = 0; transition < 300 && !finished; transition++)
                     node.ChapterId == route.ChapterId && node.SectionId == route.SectionId);
                 Check($"gold futures selection {++futuresSelections}: waits at least four nodes", nodeIndex - lastFuturesNode >= 4);
                 lastFuturesNode = nodeIndex;
+            }
+            else
+            {
+                investmentNodesOffered.Add((route.ChapterId, route.SectionId));
+                if (!investmentRerollChecked)
+                {
+                    investmentRerollChecked = true;
+                    var rerolledAway = new List<uint>();
+                    var rerollsOk = true;
+                    foreach (var slot in route.InvestmentOffer.ToArray())
+                    {
+                        rerollsOk &= route.RerollInvestment(queue, slot);
+                        rerolledAway.Add(slot);
+                        rerollsOk &= !route.InvestmentOffer.Any(rerolledAway.Contains);
+                    }
+                    var replaced = route.InvestmentOffer.First();
+                    Check("investment reroll: replaced offers never return, each slot rerolls once",
+                        rerollsOk && !route.RerollInvestment(queue, replaced) &&
+                        route.InvestmentOffer.Distinct().Count() == route.InvestmentOffer.Count);
+                }
             }
             var investment = route.InvestmentOffer.First();
             if (!route.SelectInvestment(queue, investment)) throw new InvalidOperationException("Investment failed.");
@@ -530,7 +645,206 @@ for (var transition = 0; transition < 300 && !finished; transition++)
                           route.Equipments.All(item => item.EquipmentId >= 990000 || ItemInSeason(item.EquipmentId));
 }
 Check("full route reaches final boss settlement", finished && battleCount > 10);
+foreach (var difference in routeSnapshotDifferences.Take(5)) Console.WriteLine(difference);
+Check("full route: the run saved before every step restores field for field", routeSnapshotDifferences.Count == 0);
+var routeNodes = catalog.StandardRoute.ToList();
+var augmentNodes = routeNodes.Where(node => node.Template.IsAugment != 0)
+    .Select(node => (node.ChapterId, node.SectionId)).ToHashSet();
+var augmentAfterSupply = routeNodes.Skip(1).Where((node, index) =>
+    node.Template.IsAugment != 0 && routeNodes[index].NodeType == GridFightNodeTypeEnum.Supply).Count();
+Console.WriteLine($"route: {augmentNodes.Count} investment nodes, {augmentAfterSupply} directly after a supply node");
+Check("every investment node offers an investment, including nodes right after supply",
+    investmentRerollChecked && augmentNodes.SetEquals(investmentNodesOffered));
+if (luckyTokenInPool)
+    Check("lucky token (silver) grants its consumable (350107) during the route",
+        route.Consumables.Any(item => item.ItemId == GridFightSession.LuckyTokenConsumableId && item.Count >= 1));
 Check("full route keeps roles, shop, items and offers in the current season", routeStaysInSeason);
+
+// 遭遇: every option card carries a reward rolled from its tier, and clearing it pays exactly that card.
+var eliteNode = catalog.StandardRoute.FirstOrDefault(node => node.NodeType == GridFightNodeTypeEnum.EliteBranch);
+if (eliteNode != null)
+{
+    GridFightSession EncounterRun(bool freeUpgrade)
+    {
+        var run = NewRun(routePortal).Session!;
+        run.Roles.Clear();
+        AddRole(run, roleA).Position = 1;
+        if (freeUpgrade) run.ActiveInvestmentIds.Add(GridFightSession.FreeUpgradeAugmentId);
+        run.TryMoveToSection(eliteNode.ChapterId, eliteNode.SectionId, out _);
+        run.HandlePending(run.PendingQueuePosition, GridFightPendingRequestKind.RoundBegin);
+        return run;
+    }
+
+    var encounterRun = EncounterRun(false);
+    if (encounterRun.Phase == GridFightSessionPhase.SelectingEncounter && encounterRun.EncounterOptions.Count == 2)
+    {
+        Check("encounter: both option cards carry a reward",
+            encounterRun.EncounterOptions.All(option => option.Rewards is { Count: > 0 }));
+        var option = encounterRun.EncounterOptions[0];
+        encounterRun.SelectEncounter(encounterRun.PendingQueuePosition, option.EliteBranchId);
+        encounterRun.HandlePending(encounterRun.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
+        if (encounterRun.Phase == GridFightSessionPhase.AwaitingBackToPrepare) encounterRun.BackToPrepare();
+        var refreshBefore = encounterRun.FreeRefreshCount;
+        var rolesBefore = encounterRun.Roles.Count;
+        var itemsBefore = encounterRun.Equipments.Count + encounterRun.ForgeItems.Count + encounterRun.Consumables.Count;
+        var encounterWon = encounterRun.EnterBattle() && encounterRun.ResolveBattle(true,
+            new GridFightBattleStatistics(100, [], [], [], [], 1, new Dictionary<string, uint>())).Success;
+        var paid = encounterRun.TakeAugmentNodeEffects();
+        var drop = option.Rewards![0];
+        var matches = drop.Type switch
+        {
+            GridFightDropType.Refresh => encounterRun.FreeRefreshCount == refreshBefore + drop.Num,
+            GridFightDropType.Role => encounterRun.Roles.Count > rolesBefore,
+            GridFightDropType.Item => encounterRun.Equipments.Count + encounterRun.ForgeItems.Count + encounterRun.Consumables.Count > itemsBefore,
+            _ => paid.Any(effect => effect.Application.GoldChanged || effect.Application.PlayerExpChanged || effect.Application.PlayerLevelChanged),
+        };
+        Check($"encounter: clearing quality {option.Quality} pays its card reward ({drop.Type} {drop.ItemId}x{drop.Num})",
+            encounterWon && paid.Count == 1 && paid[0].Application.Success && matches);
+    }
+    else Console.WriteLine($"encounter reward check skipped (phase {encounterRun.Phase})");
+
+    var upgradedRun = EncounterRun(true);
+    var topOption = upgradedRun.EncounterOptions.OrderByDescending(option => option.Quality).FirstOrDefault();
+    if (topOption != null)
+        Check("免费升舱: a tier-4 encounter carries an extra reward, lower tiers roll from the next tier",
+            topOption.Quality < 4 ? topOption.Rewards is { Count: > 0 } : topOption.Rewards is { Count: 2 });
+}
+
+// 奇巧零食 (350119, UpgradeChimera): raises a role-exclusive chimera by one star and is consumed.
+var exclusiveChimera = GridFightSeasonTwoTables.Chimera.FirstOrDefault(row => row.RoleId != 0 &&
+    GridFightSeasonTwoTables.Chimera.Where(other => other.Id == row.Id).Max(other => other.Star) > 1);
+if (exclusiveChimera != null && GameData.GridFightConsumablesData.ContainsKey(350119))
+{
+    var snackRun = NewRun(routePortal).Session!;
+    var chimeras = (List<GridFightChimeraState>)typeof(GridFightSession)
+        .GetField("_chimeras", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.GetValue(snackRun)!;
+    var pet = new GridFightChimeraState { UniqueId = 9001, ChimeraId = exclusiveChimera.Id };
+    chimeras.Add(pet);
+    snackRun.TryAddConsumable(350119, out var snack);
+    var snackGroup = snackRun.Consumables.First(item => item.ItemId == 350119).GroupId;
+    var snackUsed = snackRun.UseConsumable(snackGroup, 0, 0, pet.UniqueId).Success;
+    Check("奇巧零食: upgrades the chosen role-exclusive chimera by one star and is consumed",
+        snackUsed && pet.Star == 2 && snackRun.Consumables.All(item => item.ItemId != 350119 || item.Count == 0) &&
+        !snackRun.UseConsumable(snackGroup, 0, 0, pet.UniqueId).Success);
+}
+
+// 主角光环 follows a star-up merge, and 刷新视界 (100100) grants a refresh after a battle and stacks strength per refresh.
+{
+    var mergeRun = NewRun(routePortal).Session!;
+    mergeRun.Roles.Clear();
+    var bound = AddRole(mergeRun, roleA);
+    bound.Position = 1;
+    var spotLights = (List<GridFightSpotLightState>)typeof(GridFightSession)
+        .GetField("_spotLights", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.GetValue(mergeRun)!;
+    var crown = new GridFightSpotLightState
+    {
+        UniqueId = 9100, SpotLightId = GridFightSession.RefreshVisionSpotLightId, RoleId = roleA, RoleUniqueId = bound.UniqueId,
+    };
+    spotLights.Add(crown);
+    mergeRun.TryAddRole(roleA, 1, out _);
+    mergeRun.TryAddRole(roleA, 1, out _);
+    var merged = mergeRun.Roles.FirstOrDefault(role => role.RoleId == roleA && role.Star == 2);
+    Check("主角光环: a star-up merge moves the crown to the merged unit instead of losing it",
+        merged != null && crown.RoleUniqueId == merged.UniqueId && !crown.IsLoss &&
+        mergeRun.GetSpotLightIdForRole(merged.UniqueId) == GridFightSession.RefreshVisionSpotLightId);
+
+    if (merged != null)
+    {
+        merged.Position = 1;
+        var refreshBefore = mergeRun.FreeRefreshCount;
+        var visionBattle = mergeRun.EnterBattle() && mergeRun.ResolveBattle(true,
+            new GridFightBattleStatistics(100, [], [], [], [], 1, new Dictionary<string, uint>())).Success;
+        var visionRefresh = mergeRun.FreeRefreshCount == refreshBefore + 1;
+        for (var step = 0; step < 10 && mergeRun.Phase != GridFightSessionPhase.Preparing; step++)
+        {
+            if (mergeRun.Phase == GridFightSessionPhase.SelectingInvestment)
+                mergeRun.SelectInvestment(mergeRun.PendingQueuePosition, mergeRun.InvestmentOffer.First());
+            else if (mergeRun.Phase == GridFightSessionPhase.SelectingSupply)
+                mergeRun.SelectSupply(mergeRun.PendingQueuePosition, [1]);
+            else if (mergeRun.Phase == GridFightSessionPhase.SelectingEncounter)
+                mergeRun.SelectEncounter(mergeRun.PendingQueuePosition, mergeRun.EncounterOptions.First().EliteBranchId);
+            else if (mergeRun.Phase == GridFightSessionPhase.AwaitingBackToPrepare)
+                mergeRun.BackToPrepare();
+            else if (!mergeRun.HandlePending(mergeRun.PendingQueuePosition, GridFightPendingRequestKind.RoundBegin))
+                mergeRun.HandlePending(mergeRun.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
+        }
+        mergeRun.AdjustGold(100);
+        var refreshed = mergeRun.RefreshShop(true) && mergeRun.RefreshShop(true);
+        Check("刷新视界: a battle with the crowned unit grants 1 free refresh and each refresh adds 1.5% strength",
+            visionBattle && visionRefresh && refreshed && mergeRun.SpotLightStrengthBonusFixpoint == 30);
+    }
+}
+
+// 主角光环 charges: the 幻月游戏 golden orb bonus (23156) pays 1 重选主角 and 8 free spotlight rerolls.
+if (GridFightSpecialFeatures.TryResolveBonus(23156, out var chargeRewards))
+{
+    var chargeRun = NewRun(routePortal).Session!;
+    var applyRewards = typeof(GridFightSession).GetMethod("ApplyRewards",
+        System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+    var charged = (GridFightRewardApplication)applyRewards.Invoke(chargeRun, [chargeRewards.Where(reward => reward.Type is
+        GridFightBonusTypeEnum.SpotLightReplaceCnt or GridFightBonusTypeEnum.SpotLightFreeRefreshCnt).ToList(), 0u, 0u])!;
+    Check("主角光环: bonus 23156 grants 1 replace and 8 free spotlight rerolls",
+        charged.Success && chargeRun.SpotLightReplaceTotal == 1 && chargeRun.SpotLightFreeRefreshTotal == 8);
+}
+else Check("主角光环: bonus 23156 resolves", false);
+
+// Battle-reported role growth (飞霄 军衔, GP_Avatar_S2_Feixiao_00) survives into the next sync and battle.
+{
+    var rankRun = NewRun(routePortal).Session!;
+    rankRun.Roles.Clear();
+    AddRole(rankRun, roleA).Position = 1;
+    var rankBattle = rankRun.EnterBattle() && rankRun.ResolveBattle(true, new GridFightBattleStatistics(100, [], [], [], [], 1,
+        new Dictionary<string, uint> { ["GP_Avatar_S2_Feixiao_00"] = 4, ["SomeOtherKey"] = 9 })).Success;
+    rankRun.RefreshRoleSavedValues();
+    Check("role saved values: battle-reported 军衔 growth is kept for the next battle",
+        rankBattle && rankRun.RoleSavedValues.GetValueOrDefault("GP_Avatar_S2_Feixiao_00") == 4 &&
+        !rankRun.RoleSavedValues.ContainsKey("SomeOtherKey"));
+}
+
+// 聘用书 (role forge) is redeemed for a role of its cost; 爆晶矿 drops loot orbs on kills.
+{
+    var hireRun = NewRun(routePortal).Session!;
+    hireRun.Roles.Clear();
+    hireRun.ActiveInvestmentIds.Add(203302); // 专家招募+: 2x 5费聘用书 + 12 gold
+    typeof(GridFightSession).GetMethod("ApplyAugmentSelectionEffects",
+        System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.Invoke(hireRun, [203302u]);
+    var hireEffects = hireRun.TakeAugmentSelectionEffects();
+    var hiredRoles = hireEffects.SelectMany(effect => effect.Application.RoleAcquisitions).SelectMany(result => result.AcquiredRoles).ToList();
+    Check("专家招募+: two 5费聘用书 become two 5-cost roles",
+        hiredRoles.Count == 2 && hiredRoles.All(role => GameData.GridFightRoleBasicInfoData[role.RoleId].Rarity == 5));
+
+    var lootRun = NewRun(routePortal).Session!;
+    lootRun.Roles.Clear();
+    AddRole(lootRun, roleA).Position = 1;
+    lootRun.ActiveInvestmentIds.Add(301501);
+    var orbsBefore = lootRun.Orbs.Count;
+    var kills = Enumerable.Range(1, 20).Select(index => new GridFightKilledMonsterInstance(1, (uint)index, 0)).ToList();
+    var lootBattle = lootRun.EnterBattle() && lootRun.ResolveBattle(true,
+        new GridFightBattleStatistics(100, [], [], [], kills, 1, new Dictionary<string, uint>())).Success;
+    Check("爆晶矿·彩: kills drop loot orbs (121006-121008)",
+        lootBattle && lootRun.Orbs.Count > orbsBefore &&
+        lootRun.Orbs.Skip(orbsBefore).All(orb => orb.OrbItemId is 121006 or 121007 or 121008));
+}
+
+// 佩佩客串: Pepe arrives on pick, wears an advanced item per perfect clear and leaves after 5 nodes with it unlocked.
+var cameoRun = NewRun(routePortal).Session!;
+cameoRun.Roles.Clear();
+AddRole(cameoRun, roleA).Position = 1;
+cameoRun.ActiveInvestmentIds.Add(GridFightSession.PepeCameoAugmentId);
+typeof(GridFightSession).GetMethod("ApplyAugmentSelectionEffects", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
+    .Invoke(cameoRun, [GridFightSession.PepeCameoAugmentId]);
+var cameoArrived = cameoRun.PepeNpc != null;
+var cameoBattle = cameoRun.EnterBattle() && cameoRun.ResolveBattle(true,
+    new GridFightBattleStatistics(100, [], [], [], [], 1, new Dictionary<string, uint>())).Success;
+var cameoWorn = cameoRun.PepeNpc?.EquippedEquipmentUniqueIds.ToList() ?? [];
+var cameoEvents = cameoRun.TakePepeCameoEvents();
+var invoke = typeof(GridFightSession).GetMethod("OnPepeCameoNodeEntered", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+for (var node = 0; node < 6 && cameoRun.PepeNpc != null; node++) invoke.Invoke(cameoRun, []);
+var cameoLeft = cameoRun.PepeNpc == null && cameoRun.TakePepeCameoEvents().Any(cameo => cameo.Kind == GridFightPepeCameoEventKind.Leave);
+Check("佩佩客串: Pepe arrives, wears a locked advanced item after a perfect clear and leaves it unlocked",
+    cameoArrived && cameoBattle && cameoWorn.Count == 1 &&
+    cameoEvents.Select(cameo => cameo.Kind).SequenceEqual([GridFightPepeCameoEventKind.Arrive, GridFightPepeCameoEventKind.Equip]) &&
+    cameoLeft && cameoRun.Equipments.Any(item => item.UniqueId == cameoWorn[0] && !item.IsLocked));
 
 // Season 2 adds an effect-only level 11 after the level-10 cap; normal exp must stop at the cap.
 var levelRun = NewRun(routePortal).Session!;
@@ -549,14 +863,389 @@ if (routePortal == GridFightSession.DotContractPortalId)
     Check("DoT threshold grants Black Swan once across repeated settlements", route.Orbs.Count(orb =>
         orb.OrbItemId == GridFightSession.DotContractBlackSwanOrbId) == 1);
 
-var abort = NewRun(101).Session!;
-abort.Roles.Clear();
-AddRole(abort, roleA).Position = 1;
-var abortGold = abort.Gold;
-var abortSection = abort.SectionId;
-Check("aborted battle returns to preparation without rewards or route advancement", abort.EnterBattle() &&
-    !abort.ResolveBattle(false, GridFightBattleStatistics.Empty).Success && abort.Phase == GridFightSessionPhase.Preparing &&
-    abort.Gold == abortGold && abort.SectionId == abortSection);
+// ---- Data-driven investment effects (GridFightAugmentEffects)
+{
+    var grantTables = GridFightSession.AugmentSelectionGrants
+        .Select(pair => (pair.Key, pair.Value))
+        .Concat(GridFightSession.AugmentRecurringEffects.SelectMany(pair => pair.Value.Select(effect => (pair.Key, effect.Grant))))
+        .ToList();
+    Check("augment effects: every configured investment is in the current pool",
+        grantTables.All(entry => catalog.AugmentPool.Contains(entry.Key)));
+    var invalidGrantItems = grantTables.SelectMany(entry => entry.Item2.Items.Select(item => (entry.Key, item.ItemId)))
+        .Where(pair => !(GameData.GridFightEquipmentData.ContainsKey(pair.ItemId) ||
+                         GameData.GridFightConsumablesData.ContainsKey(pair.ItemId) ||
+                         GameData.GridFightForgeData.ContainsKey(pair.ItemId)) || !ItemInSeason(pair.ItemId))
+        .Distinct().ToList();
+    Check($"augment effects: every granted item exists and belongs to the current season{(invalidGrantItems.Count == 0 ? "" : " (invalid: " + string.Join(", ", invalidGrantItems.Select(pair => $"{pair.Key}->{pair.ItemId}")) + ")")}",
+        invalidGrantItems.Count == 0);
+
+    var applySelection = typeof(GridFightSession).GetMethod("ApplyAugmentSelectionEffects",
+        System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!;
+    GridFightAugmentEffectResult Select(GridFightSession target, uint augmentId)
+    {
+        target.ActiveInvestmentIds.Add(augmentId);
+        applySelection.Invoke(target, [augmentId]);
+        return target.TakeAugmentSelectionEffects().Single();
+    }
+
+    var effectSession = NewRun(101).Session!;
+    effectSession.Roles.Clear();
+    var rolesBefore = effectSession.Roles.Count;
+    var twoCost = Select(effectSession, 100401); // 二费援军: 4 random 2-cost roles
+    var addedRoleIds = twoCost.Application.RoleAcquisitions.SelectMany(acquisition => acquisition.AcquiredRoles)
+        .Select(role => role.RoleId).ToList();
+    Check("二费援军 grants four 2-cost roles of the current season",
+        addedRoleIds.Count == 4 && addedRoleIds.All(id => GameData.GridFightRoleBasicInfoData[id].Rarity == 2 && RoleInSeason(id)) &&
+        effectSession.Roles.Count >= rolesBefore + 1);
+
+    var hpBefore = (effectSession.LineupHp, effectSession.MaxLineupHp);
+    var health = Select(effectSession, 103301); // 健康充值: +30 HP and +30 max HP
+    Check("健康充值 raises lineup HP and max HP by 30",
+        health.Application.LineupHpChanged && effectSession.MaxLineupHp == hpBefore.MaxLineupHp + 30 &&
+        effectSession.LineupHp == Math.Min(hpBefore.LineupHp + 30, effectSession.MaxLineupHp));
+
+    Select(effectSession, 100301); // 免费午餐: 11 free refreshes
+    var goldBeforeRefresh = effectSession.Gold;
+    Check("免费午餐 shows a free refresh and refreshing does not spend gold",
+        effectSession.FreeRefreshCount == 11 && effectSession.CurrentRefreshCost == 0 &&
+        effectSession.RefreshShop(true) && effectSession.Gold == goldBeforeRefresh && effectSession.FreeRefreshCount == 10);
+
+    var forgeBefore = effectSession.ForgeItems.Count;
+    var goldBeforeTrade = effectSession.Gold;
+    var trade = Select(effectSession, 101402); // 军火贸易+: armament box 99999 and 8 gold
+    Check("军火贸易+ grants its armament box and 8 gold",
+        trade.Application.AddedForgeItems.Count == 1 && effectSession.ForgeItems.Count == forgeBefore + 1 &&
+        effectSession.Gold == goldBeforeTrade + 8);
+
+    // The selection sync carries the effect next to the augment add.
+    var effectManager = NewRun(101);
+    var syncSession = effectManager.Session!;
+    syncSession.ActiveInvestmentIds.Add(101402);
+    applySelection.Invoke(syncSession, [101402u]);
+    var selectionSync = effectManager.BuildInvestmentSelectionSync(syncSession.PendingQueuePosition, 101402);
+    Check("investment selection sync carries the effect rewards",
+        selectionSync.ResultList.Any(result => result.EffectParamList.FirstOrDefault() == 101402 &&
+            result.UpdateDynamicList.Any(data => data.AddForgeItemInfo != null) &&
+            result.UpdateDynamicList.Any(data => data.ItemValue == syncSession.Gold)));
+
+    // Node triggers: 长期主义 pays on the next 3 node entries only, 人才激励+ pays once after 3 nodes.
+    var nodeManager = NewRun(101);
+    var nodeSession = nodeManager.Session!;
+    nodeSession.Roles.Clear();
+    AddRole(nodeSession, roleA).Position = 1;
+    nodeSession.ActiveInvestmentIds.Add(201301);
+    nodeSession.ActiveInvestmentIds.Add(101602);
+    var nodeEffects = new List<uint>();
+    var nodesEntered = 0;
+    for (var step = 0; step < 200 && nodesEntered < 5; step++)
+    {
+        var queue = nodeSession.PendingQueuePosition;
+        switch (nodeSession.Phase)
+        {
+            case GridFightSessionPhase.Preparing:
+                if (!nodeSession.EnterBattle()) throw new InvalidOperationException("Cannot battle in node test.");
+                if (nodeSession.ResolveBattle(true, new GridFightBattleStatistics(100, [], [], [], [], 1,
+                        new Dictionary<string, uint>())).RouteAdvanced) nodesEntered++;
+                break;
+            case GridFightSessionPhase.AwaitingBattleRound:
+            case GridFightSessionPhase.AwaitingSupplyRound:
+                nodeSession.HandlePending(queue, GridFightPendingRequestKind.RoundBegin);
+                nodeEffects.AddRange(nodeManager.BuildBattleRoundSync(queue, []).ResultList
+                    .Where(result => result.UpdateSource == GridFightUpdateSrcType.KgridFightSrcAugment)
+                    .Select(result => result.EffectParamList.FirstOrDefault()));
+                break;
+            case GridFightSessionPhase.SelectingInvestment:
+                nodeSession.SelectInvestment(queue, nodeSession.InvestmentOffer.First());
+                break;
+            case GridFightSessionPhase.SelectingSupply:
+                if (nodeSession.SelectSupply(queue, [1]).Success) nodesEntered++;
+                break;
+            case GridFightSessionPhase.SelectingEncounter:
+                nodeSession.SelectEncounter(queue, nodeSession.EncounterOptions.First().EliteBranchId);
+                break;
+            case GridFightSessionPhase.AwaitingBattleReturn:
+                nodeSession.HandlePending(queue, GridFightPendingRequestKind.ReturnPreparation);
+                break;
+            case GridFightSessionPhase.AwaitingBackToPrepare:
+                nodeSession.BackToPrepare();
+                break;
+            default:
+                throw new InvalidOperationException($"Unexpected node test state {nodeSession.Phase}.");
+        }
+    }
+    Check("长期主义 pays on exactly the next three node entries",
+        nodesEntered >= 4 && nodeEffects.Count(id => id == 201301) == 3);
+    Check("人才激励+ pays its projector once after three nodes",
+        nodeEffects.Count(id => id == 101602) == 1 &&
+        nodeSession.Consumables.Any(item => item.ItemId == 350105));
+}
+
+// ---- Season-2-only investments (GridFightSeason2AugmentEffects)
+if (season == 2)
+{
+    const System.Reflection.BindingFlags Private = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+    var applySelection = typeof(GridFightSession).GetMethod("ApplyAugmentSelectionEffects", Private)!;
+    IReadOnlyList<GridFightAugmentEffectResult> Pick(GridFightSession target, uint augmentId)
+    {
+        target.ActiveInvestmentIds.Add(augmentId);
+        applySelection.Invoke(target, [augmentId]);
+        return target.TakeAugmentSelectionEffects();
+    }
+    IEnumerable<GridFightRoleState> Acquired(IEnumerable<GridFightAugmentEffectResult> effects) =>
+        effects.SelectMany(effect => effect.Application.RoleAcquisitions).SelectMany(acquisition => acquisition.AcquiredRoles);
+
+    var setRun = NewRun(101).Session!;
+    setRun.Roles.Clear();
+    var prismaticSet = Pick(setRun, 311501); // 仙舟舰队星徽套组(彩): emblem + 桂乃芬 + 星航履
+    var setItems = prismaticSet.SelectMany(effect => effect.Application.AddedEquipments).Select(item => item.EquipmentId).ToList();
+    Check("prismatic emblem set grants the season-2 emblem, the featured role and its equipment",
+        setItems.Contains(355100102) && setItems.Contains(47030108) &&
+        Acquired(prismaticSet).Any(role => GameData.GridFightRoleBasicInfoData[role.RoleId].AvatarID == 1210 && RoleInSeason(role.RoleId)));
+
+    var budgetRun = NewRun(101).Session!;
+    budgetRun.Roles.Clear();
+    var budgetRoles = Acquired(Pick(budgetRun, 204802)).ToList(); // 人才大礼包+: 18 gold incl. one 4-cost
+    var budgetCost = budgetRoles.Sum(role => (int)GameData.GridFightRoleBasicInfoData[role.RoleId].Rarity);
+    Check("人才大礼包+ hands out roles worth 18 gold including a 4-cost",
+        budgetCost == 18 && budgetRoles.Any(role => GameData.GridFightRoleBasicInfoData[role.RoleId].Rarity == 4));
+
+    var moonRun = NewRun(101).Session!;
+    moonRun.Roles.Clear();
+    var moonMembers = catalog.GetRolesByTrait(100302).Select(role => role.ID).ToHashSet();
+    var firstHalf = Acquired(Pick(moonRun, GridFightSession.MoonGatheringAugmentId)).Select(role => role.RoleId).ToHashSet();
+    var take = typeof(GridFightSession).GetMethod("TakeMoonGatheringSecondHalf", Private)!;
+    var secondHalf = ((IReadOnlyList<uint>)take.Invoke(moonRun, [])!).ToHashSet();
+    Check("幻月集结 splits the 幻月游戏 members into two halves that together cover the trait",
+        moonMembers.Count > 1 && firstHalf.Count == (moonMembers.Count + 1) / 2 &&
+        firstHalf.Union(secondHalf).ToHashSet().SetEquals(moonMembers) && !firstHalf.Overlaps(secondHalf));
+
+    var upgradeRun = NewRun(GridFightSession.SilverEraPortalId).Session!; // all offers silver unless upgraded
+    Pick(upgradeRun, GridFightSession.InvestmentUpgradeAugmentId);
+    typeof(GridFightSession).GetMethod("PrepareInvestmentOffer", Private)!.Invoke(upgradeRun, []);
+    var upgradedOffer = upgradeRun.InvestmentOffer.Select(id => GameData.GridFightAugmentData[id].Quality).Distinct().ToList();
+    typeof(GridFightSession).GetMethod("PrepareInvestmentOffer", Private)!.Invoke(upgradeRun, []);
+    var nextOffer = upgradeRun.InvestmentOffer.Select(id => GameData.GridFightAugmentData[id].Quality).Distinct().ToList();
+    Check("投资升级 raises only the next offer by one quality (silver era -> gold, then silver again)",
+        upgradedOffer.SequenceEqual([GridFightAugmentQualityEnum.Gold]) && nextOffer.SequenceEqual([GridFightAugmentQualityEnum.Silver]));
+
+    var foresightRun = NewRun(101).Session!;
+    var goldBefore = foresightRun.Gold;
+    var foresightEffects = Pick(foresightRun, GridFightSession.ForesightAugmentId);
+    var foresightBonus = foresightRun.TakeForesightBonusAugments();
+    typeof(GridFightSession).GetMethod("PrepareInvestmentOffer", Private)!.Invoke(foresightRun, []);
+    var foresightOffer = foresightRun.InvestmentOffer.ToList();
+    Check("远见 grants 15 gold and one random gold investment",
+        foresightRun.Gold == goldBefore + 15 && foresightBonus.Count == 1 &&
+        GameData.GridFightAugmentData[foresightBonus[0]].Quality == GridFightAugmentQualityEnum.Gold &&
+        foresightRun.ActiveInvestmentIds.Contains(foresightBonus[0]) && foresightEffects.Count > 0);
+    Check("远见 turns later investment nodes into a single prismatic pick",
+        foresightOffer.Count == 1 && GameData.GridFightAugmentData[foresightOffer[0]].Quality == GridFightAugmentQualityEnum.Prismatic &&
+        foresightRun.IsForesightActive);
+
+    // /grid console command entry points.
+    var commandRun = NewRun(101).Session!;
+    var commandHp = commandRun.LineupHp;
+    var commandRefresh = commandRun.FreeRefreshCount;
+    var commandLoss = commandRun.ApplyCommandGrant(new GridFightAugmentGrant { HpLoss = 5 });
+    var commandRefreshGrant = commandRun.ApplyCommandGrant(new GridFightAugmentGrant { FreeRefresh = 2 });
+    var commandAugment = commandRun.TryGrantInvestmentByCommand(GridFightSession.ForesightAugmentId);
+    var commandAugmentTwice = commandRun.TryGrantInvestmentByCommand(GridFightSession.ForesightAugmentId);
+    var commandInfo = commandRun.DescribeForCommand();
+    Check("/grid commands: hp loss, free refresh and a granted investment apply once and show in info",
+        commandLoss.Application.Success && commandRun.LineupHp == commandHp - 5 &&
+        commandRefreshGrant.Application.Success && commandRun.FreeRefreshCount == commandRefresh + 2 &&
+        commandAugment && !commandAugmentTwice && commandRun.TakeForesightBonusAugments().Count == 1 &&
+        commandInfo.Contains(GridFightSession.ForesightAugmentId.ToString()) &&
+        !commandRun.TryGrantInvestmentByCommand(1));
+
+    Check("分批扩招 has both its node and boss triggers",
+        GridFightSession.AugmentRecurringEffects[305101].Select(effect => effect.Trigger).OrderBy(trigger => trigger)
+            .SequenceEqual(new[] { GridFightAugmentTrigger.AfterNodes, GridFightAugmentTrigger.BossNode }.OrderBy(trigger => trigger)));
+}
+
+// ---- Investment environment (portal) effects (GridFightPortalEffects)
+{
+    const System.Reflection.BindingFlags Private = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+    void Invoke(GridFightSession target, string method) => typeof(GridFightSession).GetMethod(method, Private)!.Invoke(target, []);
+
+    if (catalog.PortalPool.Contains(131u))
+    {
+        var red = NewRun(131u).Session!;
+        Check("红钻贵族 opens with the red diamond and a simple armament box",
+            red.Equipments.Any(item => item.EquipmentId == 350601) &&
+            red.ForgeItems.Any(item => item.ForgeItemId == GridFightSession.SimpleArmamentBoxForgeId));
+    }
+    if (catalog.PortalPool.Contains(GridFightSession.TalentReservePortalId))
+    {
+        var reserve = NewRun(GridFightSession.TalentReservePortalId).Session!;
+        Check("人才储备 replaces the opening roles with three 3-cost roles",
+            reserve.Roles.Count == 3 && reserve.Roles.All(role => GameData.GridFightRoleBasicInfoData[role.RoleId].Rarity == 3));
+    }
+    foreach (var (portalId, expected, label) in new[]
+             {
+                 (GridFightSession.PrismaticEraPortalId, GridFightAugmentQualityEnum.Prismatic, "彩虹时代"),
+                 (GridFightSession.FirstPrizePortalId, GridFightAugmentQualityEnum.Prismatic, "头彩"),
+             })
+    {
+        if (!catalog.PortalPool.Contains(portalId)) continue;
+        var run = NewRun(portalId).Session!;
+        Invoke(run, "PrepareInvestmentOffer");
+        Check($"{label} makes the first investment offer {expected}",
+            run.InvestmentOffer.Count == 3 &&
+            run.InvestmentOffer.All(id => GameData.GridFightAugmentData[id].Quality == expected));
+    }
+    if (catalog.PortalPool.Contains(GridFightSession.SecondHandMarketPortalId))
+    {
+        var market = NewRun(GridFightSession.SecondHandMarketPortalId).Session!;
+        market.AdjustGold(1000);
+        for (var i = 0; i < 19; i++) market.RefreshShop(true);
+        var before20 = market.TakePortalRefreshEffects().Count;
+        var goldBefore = market.Gold;
+        market.RefreshShop(true);
+        var effects = market.TakePortalRefreshEffects();
+        Check("二手市场 pays 30 gold and a projector on the 20th refresh only",
+            before20 == 0 && effects.Count == 1 && market.Gold == goldBefore - catalog.RefreshCost + 30 &&
+            market.Consumables.Any(item => item.ItemId == 350105));
+    }
+    if (catalog.PortalPool.Contains(GridFightSession.LongTermBullPortalId))
+    {
+        var bull = NewRun(GridFightSession.LongTermBullPortalId).Session!;
+        bull.AdjustGold(1000);
+        for (var i = 0; i < 30; i++) bull.RefreshShop(true);
+        var bullEffects = bull.TakePortalRefreshEffects();
+        Check("长线利好 pays 20 gold after 30 paid refreshes and then refreshes cost 1 gold",
+            bullEffects.Count == 1 && bullEffects[0].ShopChanged && bull.CurrentRefreshCost == Math.Min(1u, catalog.RefreshCost));
+    }
+    var invitationPortals = catalog.PortalPool.Where(id => id is >= 2101 and <= 2119).ToList();
+    var invitationOk = invitationPortals.All(id =>
+    {
+        var run = NewRun(id).Session!;
+        return run.InvitationPortalEquipment is { } emblem &&
+               GameData.GridFightEquipmentData[emblem.EquipmentId].EquipCategory == GridFightEquipCategoryEnum.Emblem &&
+               ItemInSeason(emblem.EquipmentId);
+    });
+    if (invitationPortals.Count > 0)
+        Check($"season-2 invitations ({invitationPortals.Count}) each open with their season emblem", invitationOk);
+    var conceptPortals = catalog.PortalPool.Where(id => id is >= 2201 and <= 2214).ToList();
+    var conceptOk = conceptPortals.All(id =>
+    {
+        var run = NewRun(id).Session!;
+        var config = run.ConceptStockConfig!;
+        var featured = new[] { config.FirstRoleId, config.SecondRoleId }
+            .Select(avatarId => GridFightSeasonScope.ResolveRoleId(avatarId, season)).ToList();
+        return featured.All(roleId => roleId != 0 && run.Roles.Any(role => role.RoleId == roleId)) &&
+               run.ConceptStockInitialEquipment?.EquipmentId == config.InitialEquipmentId &&
+               run.ConceptStockBoostedTraitId == config.TraitId &&
+               run.Roles.All(role => RoleInSeason(role.RoleId));
+    });
+    if (conceptPortals.Count > 0)
+        Check($"season-2 concept stocks ({conceptPortals.Count}) open with their featured roles and equipment", conceptOk);
+    if (catalog.PortalPool.Contains(GridFightSession.StrategyMasterPortalId))
+    {
+        var master = NewRun(GridFightSession.StrategyMasterPortalId).Session!;
+        master.ActiveInvestmentIds.AddRange([catalog.AugmentPool[0], catalog.AugmentPool[1]]);
+        var goldBefore = master.Gold;
+        Invoke(master, "OnPortalInvestmentSelected");
+        Check("策略大师 pays 2 gold per owned investment", master.Gold == goldBefore + 4 &&
+            master.TakeAugmentSelectionEffects().Single().IsPortal);
+    }
+}
+
+// Runs moved to the first camp node whose penalty rule costs HP (the opening nodes cost none).
+(GridFightManager Manager, GridFightSession Session) PenalizedRun()
+{
+    var manager = NewRun(101);
+    MoveToPenalizedNode(manager.Session!);
+    return (manager, manager.Session!);
+}
+
+void MoveToPenalizedNode(GridFightSession session)
+{
+    var node = catalog.StandardRoute.First(candidate => candidate.NodeType == GridFightNodeTypeEnum.CampMonster &&
+        catalog.GetPenaltyRule(candidate.PenaltyBonusRuleId).ProgressPenaltyCoefficient > 0);
+    if (!session.TryMoveToSection(node.ChapterId, node.SectionId, out _)) throw new InvalidOperationException("Cannot move.");
+    for (var step = 0; step < 20 && session.Phase != GridFightSessionPhase.Preparing; step++)
+    {
+        var queue = session.PendingQueuePosition;
+        var advanced = session.Phase switch
+        {
+            GridFightSessionPhase.AwaitingBattleRound or GridFightSessionPhase.AwaitingSupplyRound =>
+                session.HandlePending(queue, GridFightPendingRequestKind.RoundBegin),
+            GridFightSessionPhase.SelectingInvestment => session.SelectInvestment(queue, session.InvestmentOffer.First()),
+            GridFightSessionPhase.SelectingSupply => session.SelectSupply(queue, [1]).Success,
+            GridFightSessionPhase.SelectingEncounter =>
+                session.SelectEncounter(queue, session.EncounterOptions.First().EliteBranchId),
+            GridFightSessionPhase.AwaitingBattleReturn => session.HandlePending(queue, GridFightPendingRequestKind.ReturnPreparation),
+            GridFightSessionPhase.AwaitingBackToPrepare => session.BackToPrepare(),
+            _ => false,
+        };
+        if (!advanced) throw new InvalidOperationException($"Cannot reach preparation from {session.Phase}.");
+    }
+    session.Roles.Clear();
+    AddRole(session, roleA).Position = 1;
+}
+
+// Retiring a battle settles it as a lost one: the penalties apply and the run moves on instead of returning to the same
+// preparation, where the team could be rebuilt and the battle replayed for free.
+var retire = PenalizedRun().Session;
+var retireNode = (retire.ChapterId, retire.SectionId);
+var retired = retire.EnterBattle() ? retire.ResolveBattle(false, GridFightBattleStatistics.Empty) : GridFightBattleSettlementResult.Failed;
+Check("retired battle settles as a loss and does not return to the same preparation",
+    retired.Success && !retired.IsPerfectFinish && retired.ProgressPercent < 100 &&
+    retired.HpChanges.Any(change => change.Kind == GridFightHpChangeKind.ProgressPenalty && change.Amount > 0) &&
+    retire.Phase != GridFightSessionPhase.Preparing && (retire.ChapterId, retire.SectionId) != retireNode &&
+    !retire.ResolveBattle(false, GridFightBattleStatistics.Empty).Success);
+
+// Squad HP 0 ends the run: the post-battle heal (长线作战 +2) must not revive it.
+var (doomedRun, doomed) = PenalizedRun();
+typeof(GridFightSession).GetProperty(nameof(GridFightSession.LineupHp))!.SetValue(doomed, 1u);
+var doomedBattle = doomed.EnterBattle()
+    ? doomed.ResolveBattle(true, new GridFightBattleStatistics(0, [], [], [], [], 1, new Dictionary<string, uint>()))
+    : GridFightBattleSettlementResult.Failed;
+Check("a lost battle at 1 HP defeats the run without a revive heal",
+    doomedBattle.Success && doomedBattle.Defeated && !doomedBattle.RouteAdvanced && doomed.LineupHp == 0 && doomedBattle.LineupHpAfter == 0 &&
+    doomedBattle.HpChanges.All(change => change.Kind != GridFightHpChangeKind.TalentHealing) &&
+    doomed.Phase == GridFightSessionPhase.Defeated && !doomed.EnterBattle() && !doomed.BuyExp() && !doomed.RefreshShop(true));
+Check("a defeat settles with reason Defeat",
+    doomedRun.BuildSettleNotify(GridFightSettleReason.Defeat).FinishInfo.Reason == GridFightSettleReason.Defeat);
+
+// The settle's division_id becomes the player's division on the client; it must not drop to the played difficulty.
+var easiestDivision = GameData.GridFightDivisionInfoData.Values
+    .Where(row => row.SeasonID == catalog.CurrentSeason)
+    .OrderBy(row => row.Progress).ThenBy(row => row.ID).First();
+var easyRun = new GridFightManager(new PlayerInstance(new PlayerData { Uid = 1 }), new Random(1));
+easyRun.Start(catalog.CurrentSeason, easiestDivision.ID, false);
+var easySettle = easyRun.BuildSettleNotify(GridFightSettleReason.Quit);
+Check("settle keeps the unlocked division and reports the played one in the finish info",
+    easySettle.DivisionId == catalog.HighestDivision.ID && easySettle.FinishInfo.Basic.DivisionId == easiestDivision.ID);
+
+// QuitBattleCsReq clears a GridFight battle without PVEBattleResultCsReq; it settles like a retired battle.
+var (quitManager, quit) = PenalizedRun();
+var quitNode = (quit.ChapterId, quit.SectionId);
+var quitBattlesFinished = quit.BattlesFinished;
+var quitEntered = quit.EnterBattle();
+quit.PrepareMortenaxBladeBattleEffects();
+var quitSettled = quitManager.QuitBattle(quit).AsTask().GetAwaiter().GetResult();
+Check("QuitBattle settles a GridFight battle as a lost one and moves on",
+    quitEntered && quitSettled && quit.Phase is not (GridFightSessionPhase.InBattle or GridFightSessionPhase.Preparing) &&
+    (quit.ChapterId, quit.SectionId) != quitNode && quit.KeepWinCount == 0 &&
+    quit.BattlesFinished == quitBattlesFinished + 1 && quit.MortenaxBladeBattleEffects.Count == 0);
+Check("QuitBattle is ignored when repeated or after settlement",
+    !quitManager.QuitBattle(quit).AsTask().GetAwaiter().GetResult() &&
+    quit.BattlesFinished == quitBattlesFinished + 1);
+var (staleQuitManager, staleQuit) = PenalizedRun();
+Check("QuitBattle ignores a stale session context",
+    staleQuit.EnterBattle() && !staleQuitManager.QuitBattle(NewRun(101).Session!).AsTask().GetAwaiter().GetResult() &&
+    staleQuit.Phase == GridFightSessionPhase.InBattle);
+staleQuit.AbortBattleStart();
+Check("battle can be entered again after an ignored QuitBattle",
+    staleQuit.Phase == GridFightSessionPhase.Preparing && staleQuit.EnterBattle());
+var (doomedQuitManager, doomedQuit) = PenalizedRun();
+typeof(GridFightSession).GetProperty(nameof(GridFightSession.LineupHp))!.SetValue(doomedQuit, 1u);
+var doomedQuitSettled = doomedQuit.EnterBattle() &&
+                        doomedQuitManager.QuitBattle(doomedQuit).AsTask().GetAwaiter().GetResult();
+Check("QuitBattle at 1 HP ends the run",
+    doomedQuitSettled && doomedQuitManager.Session == null && doomedQuitManager.HasSettledSession);
 
 // --- Season-2 unique / origin trait effects ---------------------------------------------------------------------
 // Wire layouts follow the 4.6.51 client (artifacts/gf-season2/re-g*.md); these checks pin the server-side rules.
@@ -607,6 +1296,43 @@ if (!catalog.IsSeasonOne)
     danHengRun.BuildSeasonTwoFollowUpSync();
     Check("S2 双龙吟: Tenglong leaves with Dan Heng IL", danHeng.Roles.All(role => role.RoleId != GridFightSession.DanHengSubRoleId));
 
+    // The summon brings its own back cell: with every unlocked back cell taken it still lands in an unlocked one, and
+    // the client hears about the extra cell (833) before the summon's add-role entry.
+    var fillers = catalog.RolePool.Select(role => role.ID)
+        .Where(id => id != GridFightSession.DanHengMainRoleId && GameData.GridFightRoleBasicInfoData[id].Rarity <= 4)
+        .Take(6).ToArray();
+    var (cellRun, cell) = Board([(GridFightSession.DanHengMainRoleId, 1), .. fillers.Select((id, index) => (id, (uint)(5 + index)))]);
+    cellRun.BuildCurrentInfo();
+    var backCellsBefore = cell.OffFieldMaxCount;
+    var cellSync = cellRun.BuildSeasonTwoFollowUpSync()!.ResultList.SelectMany(result => result.UpdateDynamicList).ToList();
+    var cellSub = cell.Roles.FirstOrDefault(role => role.RoleId == GridFightSession.DanHengSubRoleId);
+    var cellIndex = cellSync.FindIndex(data => data.JLOCMDIDPCI == backCellsBefore + 1);
+    var subIndex = cellSync.FindIndex(data => data.AddRoleInfo?.UniqueId == cellSub?.UniqueId);
+    Check("S2 双龙吟: with the back cells full the summon opens its own cell and stands inside the unlocked cells",
+        cellSub != null && cell.OffFieldMaxCount == backCellsBefore + 1 && cellSub.Position <= 4 + cell.OffFieldMaxCount &&
+        cellIndex >= 0 && subIndex > cellIndex);
+    cell.Roles.First(role => role.RoleId == GridFightSession.DanHengMainRoleId).Position = 15;
+    var closeSync = cellRun.BuildSeasonTwoFollowUpSync()!.ResultList.SelectMany(result => result.UpdateDynamicList).ToList();
+    Check("S2 双龙吟: the summon's cell closes again when it leaves",
+        cell.OffFieldMaxCount == backCellsBefore && closeSync.Any(data => data.JLOCMDIDPCI == backCellsBefore) &&
+        cell.Roles.All(role => role.RoleId != GridFightSession.DanHengSubRoleId));
+    Check("S2 双龙吟: 丹恒•腾荒 is never in the role pool (shop, 我5费呢？！, supply)",
+        catalog.RolePool.All(role => role.ID != GridFightSession.DanHengSubRoleId));
+
+    // 财富宝钻 from any source: the next sync raises the team size and opens a back cell without a level-up.
+    var (crownRun, crown) = Board((roleA, 1));
+    crownRun.BuildCurrentInfo();
+    var (rolesBefore, cellsBefore) = (crown.MaxActiveRoles, crown.OffFieldMaxCount);
+    crown.TryAddEquipment(GridFightSession.WealthDiamondEquipmentId, out _);
+    var crownSync = crownRun.BuildSeasonTwoFollowUpSync()?.ResultList.SelectMany(result => result.UpdateDynamicList).ToList() ?? [];
+    Check("S2 财富宝钻: the team size and the back cells reach the client at once",
+        crown.MaxActiveRoles == rolesBefore + 1 && crown.OffFieldMaxCount == cellsBefore + 1 &&
+        crownSync.Any(data => data.MaxActiveRoleCount == rolesBefore + 1) && crownSync.Any(data => data.JLOCMDIDPCI == cellsBefore + 1));
+    var crownBasic = crownRun.BuildCurrentInfo()!.GameInfoList.First(info => info.BasicInfo != null).BasicInfo;
+    Check("S2 re-entry snapshot: field 11 carries the team size and field 7 the level (client GridFightPlayer.SetData)",
+        crownBasic.MaxActiveRoleCount == crown.MaxActiveRoles && crownBasic.PlayerLevel == crown.PlayerLevel &&
+        crownBasic.KeepWinCount == crown.KeepWinCount && crownBasic.MaxLineupHp == crown.MaxLineupHp);
+
     // 盗火行者: dragging a role onto Phainon turns it into 薪火 (role saved value).
     var (phainonRun, phainon) = Board((GridFightSession.PhainonRoleId, 1), (roleA, 2));
     phainonRun.BuildSeasonTwoFollowUpSync();
@@ -616,6 +1342,16 @@ if (!catalog.IsSeasonOne)
     Check("S2 盗火行者: consuming a role removes it and stores the kindling in Phainon's saved value",
         consumed.Success && kindling == expectedKindling && kindling > 0 && phainon.Roles.All(role => role.UniqueId != food.UniqueId) &&
         phainon.RefreshRoleSavedValues().GetValueOrDefault(GridFightSession.PhainonSavedValueKey) == kindling);
+    var phainonRole = phainon.Roles.First(role => role.RoleId == GridFightSession.PhainonRoleId);
+    var phainonBattleRole = March7thHoney.GameServer.Game.GridFight.Battle.GridFightBattleProtoBuilder
+        .BuildRoleInfo(phainon, phainonRole, Gender.Man);
+    Check("S2 盗火行者: the battle role info carries Phainon's 薪火 in the role-scoped custom values (field 14)",
+        phainonBattleRole.BABNHPDGNGB.GetValueOrDefault(GridFightSession.PhainonSavedValueKey) == kindling);
+    if (GameData.GridFightRoleBasicInfoData.GetValueOrDefault(140202u)?.Rarity == 5 &&
+        GameData.GridFightRoleBasicInfoData.GetValueOrDefault(110702u)?.Rarity == 5)
+        Check("S2 盗火行者: a 3★ 5-cost gives 3355 薪火 and a 黄金裔 30% more (Clara 3355, Aglaea 4362)",
+            GridFightSession.GetPhainonKindlingGain(110702, 3) == 3355 &&
+            GridFightSession.GetPhainonKindlingGain(140202, 3) == 4362);
     Check("S2 盗火行者: Phainon cannot eat himself",
         !phainon.ConsumeRoleForPhainon(phainon.Roles.First(role => role.RoleId == GridFightSession.PhainonRoleId).UniqueId, out _).Success);
 
@@ -698,6 +1434,34 @@ if (!catalog.IsSeasonOne)
         pamRun.AppendPamKingUnlock(pamAgain);
         Check("S2 帕姆王: the unlock is granted only once",
             pamAgain.ResultList.Count == 0 && pam.Roles.Count(role => role.RoleId == GridFightSession.PamKingRoleId) == pamCount);
+
+        // The client keeps Trailblaze goods by list index and redraws only the indexes that changed, so the shop keeps
+        // one shape: five distinct goods, then the refresh good at index 5 — also at the lowest layer, after a
+        // purchase (restocked in place) and after a refresh.
+        var (shapeRun, shape) = Board((trailRoles[0], 1), (trailRoles[1], 2));
+        shapeRun.BuildSeasonTwoFollowUpSync();
+        typeof(GridFightSession).GetField("_trailblazeCoin", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance)!.SetValue(shape, 5000u);
+        bool HasShopShape(GridFightSession session) =>
+            session.TrailblazeGoods.Count == 6 &&
+            session.TrailblazeGoods[5].GoodId == GridFightSession.TrailblazeRefreshGoodId &&
+            session.TrailblazeGoods.Take(5).Select(good => good.GoodId).Distinct().Count() == 5 &&
+            session.TrailblazeGoods.All(good => good.GoodId != 0);
+        var shapeAtStart = HasShopShape(shape);
+        var shapeRefreshes = new HashSet<string>();
+        var shapeKeptOnBuy = true;
+        for (var round = 0; round < 6; round++)
+        {
+            var bought = shape.TrailblazeGoods[0].GoodId;
+            shapeKeptOnBuy &= shape.BuyTrailblazeGood(0).Success && HasShopShape(shape) &&
+                              (bought is 201 or 203 or 204 or 205 ? shape.TrailblazeGoods.Take(5).All(good => good.GoodId != bought) : true);
+            shapeKeptOnBuy &= shape.BuyTrailblazeGood(5).Success && HasShopShape(shape);
+            shapeRefreshes.Add(string.Join(',', shape.TrailblazeGoods.Take(5).Select(good => good.GoodId).Order()));
+        }
+        Check("S2 开拓银轨: the shop keeps five goods and the refresh good at index 5 through purchases and refreshes",
+            shapeAtStart && shapeKeptOnBuy);
+        Check("S2 开拓银轨: refreshing at the lowest layer offers different goods, not one reshuffled set",
+            shapeRefreshes.Count > 1);
     }
     var (claraRun, clara) = Board((GridFightSession.ClaraRoleId, 1));
     claraRun.BuildSeasonTwoFollowUpSync();
@@ -773,6 +1537,38 @@ if (!catalog.IsSeasonOne)
     Check("S2 幻乐之主: a second Aha becomes 幻月之力 instead of a merge",
         ahaCopy.Roles.Count(role => role.RoleId is 151102 or 151112 or 151122 or 151132) == 1 && ahaCopy.AhaGrowth == 1 &&
         ahaCopy.RefreshRoleSavedValues().ContainsKey(GridFightSession.AhaGrowthSavedValueKey) == false);
+
+    // Aha goods placed directly into the shop (the glance itself is random).
+    GridFightSession AhaGoodsBoard(uint goodsId, out uint index)
+    {
+        var (_, session) = Board((151102, 1));
+        session.AdjustGold(100);
+        var slot = session.Shop[0];
+        session.Shop[0] = new GridFightShopSlot { Index = slot.Index, SpecialGoodsId = goodsId, Price = 1 };
+        index = slot.Index;
+        return session;
+    }
+    // 多回点血！(333): "获得#1点小队生命值和生命上限" raises the cap as well as the HP.
+    var moreHp = AhaGoodsBoard(333, out var moreHpIndex);
+    var (maxHpBefore, moreHpBefore) = (moreHp.MaxLineupHp, moreHp.LineupHp);
+    var moreHpBought = moreHp.BuySpecialGoods([moreHpIndex]);
+    Check("S2 幻乐之主: 多回点血！ raises max squad HP and heals by the same amount",
+        moreHpBought.Count == 1 && moreHp.MaxLineupHp == maxHpBefore + 15 &&
+        moreHp.LineupHp == Math.Min(moreHp.MaxLineupHp, moreHpBefore + 15) && moreHpBought[0].Application.LineupHpChanged);
+    // 五费专场(341): the whole shop, the bought slot included, refills with 5-cost roles; 3★ roles stay out of it.
+    var fiveCost = AhaGoodsBoard(341, out var fiveCostIndex);
+    var fiveCostRoles = catalog.RolePool.Where(role => role.Rarity == 5 && fiveCost.IsRestrictedRoleUnlockedForRun(role.ID))
+        .Select(role => role.ID).ToList();
+    if (fiveCostRoles.Count >= 2)
+    {
+        var maxed = AddRole(fiveCost, fiveCostRoles[0]);
+        maxed.Star = 3;
+        var refilled = fiveCost.BuySpecialGoods([fiveCostIndex]).Count == 1;
+        Check("S2 幻乐之主: 五费专场 refills every shop slot with 5-cost roles and leaves out 3-star roles",
+            refilled && fiveCost.Shop.Count == catalog.ShopSize && fiveCost.Shop.All(slot =>
+                slot.SpecialGoodsId == 0 && !slot.SoldOut && slot.RoleId != fiveCostRoles[0] &&
+                GameData.GridFightRoleBasicInfoData[slot.RoleId].Rarity == 5));
+    }
     Check("S2 幻乐之主: GetData carries the 7-cost progress modifier",
         ahaCopyRun.BuildCurrentInfo()!.GameData.GameItemList.Any(item => item.GEKCCCPGBGJ?.GridFightTraitInfo.Count == 2));
 
@@ -858,6 +1654,39 @@ if (!catalog.IsSeasonOne)
         spotRouteAfter.Single(node => node.DCAHJELNJNP == 1 && node.SectionId == 2).Param.HPNNLMBHOPF == false &&
         spotRouteAfter.Single(node => node.DCAHJELNJNP == 2 && node.SectionId == 1).Param.HPNNLMBHOPF &&
         spot.ResolveStaleSpotLightNode() == null && spot.EnterBattle());
+
+    // 意志传承 (110002): the bound unit becomes a random role one cost higher, keeping slot, star and the crown.
+    var (willRun, will) = Board((roleA, 1), (roleB, 2));
+    will.TryMoveToSection(1, 2, out _);
+    will.HandlePending(will.PendingQueuePosition, GridFightPendingRequestKind.RoundBegin);
+    for (var step = 0; step < 6 && will.Phase != GridFightSessionPhase.Preparing; step++)
+    {
+        if (will.Phase == GridFightSessionPhase.SelectingInvestment)
+            will.SelectInvestment(will.PendingQueuePosition, will.InvestmentOffer.First());
+        else if (will.Phase == GridFightSessionPhase.AwaitingBackToPrepare)
+            will.BackToPrepare();
+        else
+            will.HandlePending(will.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
+    }
+    willRun.BuildSeasonTwoFollowUpSync();
+    will.StartSpotLightFromEnter();
+    var willCandidates = (List<uint>)typeof(GridFightSession)
+        .GetField("_spotLightCandidates", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
+        .GetValue(will)!;
+    if (willCandidates.Count > 0) willCandidates[0] = GridFightSession.WillInheritanceSpotLightId;
+    var willUnit = will.Roles.First(role => role.RoleId == roleA);
+    var (willUnique, willStar, willPos) = (willUnit.UniqueId, willUnit.Star, willUnit.Position);
+    var willCost = GameData.GridFightRoleBasicInfoData[roleA].Rarity;
+    var willChanges = will.SelectSpotLight(will.SeasonTwoPending?.QueuePosition ?? 0,
+        GridFightSession.WillInheritanceSpotLightId, roleA, out _);
+    var willSync = willChanges == null ? []
+        : willRun.BuildSpotLightSync(willChanges, 0).ResultList.SelectMany(result => result.UpdateDynamicList).ToList();
+    Check("S2 主角光环 意志传承: the unit becomes a same-star role one cost higher and keeps the crown",
+        willCost < 5 && willChanges?.UpdatedRoles.Count == 1 && willUnit.UniqueId == willUnique &&
+        willUnit.Star == willStar && willUnit.Position == willPos && willUnit.RoleId != roleA &&
+        GameData.GridFightRoleBasicInfoData[willUnit.RoleId].Rarity == willCost + 1 &&
+        will.GetSpotLightIdForRole(willUnique) == GridFightSession.WillInheritanceSpotLightId &&
+        willSync.Any(data => data.UpdateRoleInfo?.Id == willUnit.RoleId));
 
     // 本局奇遇: partner effects that change server rules.
     GridFightSession? RunWithPetPal(uint effectId)
@@ -966,6 +1795,204 @@ if (!catalog.IsSeasonOne)
         GridFightCurrentInfo.Parser.ParseFrom(everyoneInfo.ToByteArray()).Equals(everyoneInfo) &&
         everyoneInfo.GameInfoList.Any(info => info.ContextValueInfo is { FMNPBOJGLFI: > 0 } context &&
                                               context.DKMNOPCJDDC.Count == 2 && context.ContextValueVersion != 0));
+}
+
+// --- Run persistence: every saved field, a full route played on restored copies --------------------------------
+ThreeEffectsRegression.Run(NewRun, catalog, Check);
+EconomyEffectsRegression.Run(NewRun, catalog, Check);
+BattleEffectsRegression.Run(NewRun, catalog, Check);
+ElationUiRegression.Run(NewRun, catalog, Check);
+OwlbertRegression.Run(NewRun, catalog, Check);
+SpotLightEffectsRegression.Run(NewRun, catalog, Check);
+
+var persistBase = NewRun(101);
+var persistCatalog = persistBase.Catalog;
+var persistSession = persistBase.Session!;
+persistSession.Roles.Clear();
+AddRole(persistSession, roleA).Position = 1;
+var persistBytes = SnapshotProbe.Serialize(persistSession);
+var fieldFailures = new List<string>();
+foreach (var field in SnapshotProbe.PersistedFields)
+{
+    // Restore rejects a snapshot of another season by design (checked below).
+    if (field.Name == "<Season>k__BackingField") continue;
+    var probe = GridFightSession.Restore(persistCatalog, MemoryPackSerializer.Deserialize<GridFightRunSnapshot>(persistBytes)!);
+    var sample = SnapshotProbe.Sample(field.FieldType);
+    field.SetValue(probe, sample);
+    try
+    {
+        var restoredValue = field.GetValue(SnapshotProbe.RoundTrip(persistCatalog, probe));
+        if (SnapshotProbe.Difference(sample, restoredValue, field.Name,
+                new Dictionary<object, object>(ReferenceEqualityComparer.Instance)) is { } difference)
+            fieldFailures.Add(difference);
+    }
+    catch (Exception e)
+    {
+        fieldFailures.Add($"{field.Name}: {e.GetType().Name}: {e.Message}");
+    }
+}
+foreach (var failure in fieldFailures) Console.WriteLine(failure);
+Check($"each of the {SnapshotProbe.PersistedFields.Count} saved session fields survives a save and restore " +
+      $"({GridFightSession.PersistenceTransientFields.Count} notification buffers excluded)", fieldFailures.Count == 0);
+var otherSeason = persistSession.CaptureSnapshot();
+otherSeason.Season++;
+var otherSeasonRejected = false;
+try
+{
+    GridFightSession.Restore(persistCatalog, otherSeason);
+}
+catch (InvalidDataException)
+{
+    otherSeasonRejected = true;
+}
+Check("a run saved for another season is rejected instead of restored", otherSeasonRejected);
+
+// A whole route played on a copy restored before every step (and between battle start and settlement).
+var replayManager = NewRun(routePortal);
+var replay = replayManager.Session!;
+replay.Roles.Clear();
+AddRole(replay, roleA).Position = 1;
+var sessionProperty = typeof(GridFightManager).GetProperty(nameof(GridFightManager.Session))!;
+GridFightSession Reload(GridFightSession session)
+{
+    var restored = SnapshotProbe.RoundTrip(replayManager.Catalog, session);
+    sessionProperty.SetValue(replayManager, restored);
+    return restored;
+}
+var replayBattles = 0;
+var replayFinished = false;
+var replayStuck = "";
+for (var step = 0; step < 300 && !replayFinished && replayStuck.Length == 0; step++)
+{
+    replay = Reload(replay);
+    var queue = replay.PendingQueuePosition;
+    var advanced = true;
+    switch (replay.Phase)
+    {
+        case GridFightSessionPhase.Preparing:
+            advanced = replay.EnterBattle();
+            if (!advanced) break;
+            replay = Reload(replay);
+            var settlement = replay.ResolveBattle(true,
+                new GridFightBattleStatistics(100, [], [], [], [], 1, new Dictionary<string, uint>()));
+            advanced = settlement.Success;
+            replayBattles++;
+            replayFinished = settlement.Success && !settlement.RouteAdvanced;
+            break;
+        case GridFightSessionPhase.AwaitingBattleRound:
+        case GridFightSessionPhase.AwaitingSupplyRound:
+            advanced = replay.HandlePending(queue, GridFightPendingRequestKind.RoundBegin);
+            replayManager.BuildBattleRoundSync(queue, []);
+            break;
+        case GridFightSessionPhase.SelectingInvestment:
+            var investment = replay.InvestmentOffer.First();
+            advanced = replay.SelectInvestment(queue, investment);
+            replayManager.BuildInvestmentSelectionSync(queue, investment);
+            break;
+        case GridFightSessionPhase.SelectingSupply:
+            var supply = replay.SelectSupply(queue, [1]);
+            advanced = supply.Success;
+            replayManager.BuildSupplySelectionSync(queue, 1, supply);
+            break;
+        case GridFightSessionPhase.SelectingEncounter:
+            advanced = replay.SelectEncounter(queue, replay.EncounterOptions.First().EliteBranchId);
+            break;
+        case GridFightSessionPhase.AwaitingBattleReturn:
+            advanced = replay.HandlePending(queue, GridFightPendingRequestKind.ReturnPreparation);
+            break;
+        case GridFightSessionPhase.AwaitingBackToPrepare:
+            advanced = replay.BackToPrepare();
+            replayManager.BuildPreparationSync();
+            break;
+        default:
+            advanced = false;
+            break;
+    }
+    if (!advanced) replayStuck = $"{replay.Phase} at {replay.ChapterId}/{replay.SectionId}";
+}
+if (replayStuck.Length > 0) Console.WriteLine($"restored route stuck: {replayStuck}");
+Check("a run restored before every step still plays the full route to the final boss",
+    replayFinished && replayBattles > 10 && replayStuck.Length == 0);
+
+// --- Saved runs on a temporary database: re-login, restart, mid-battle disconnect, unusable blobs ---------------
+// Runs last: once DatabaseHelper is initialised every GridFightManager attaches to it.
+var databaseScratch = Path.Combine(Path.GetTempPath(), "m7h-gridfight-regression-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(databaseScratch);
+ConfigManager.Config.Path.DatabasePath = databaseScratch;
+ConfigManager.Config.Database.DatabaseType = "sqlite";
+ConfigManager.Config.Database.DatabaseName = "gridfight-regression.db";
+new DatabaseHelper().Initialize(startSaveThread: false);
+const int PersistUid = 70101;
+GridFightManager Login() => new(new PlayerInstance(new PlayerData { Uid = PersistUid }) { Uid = PersistUid });
+
+var firstLogin = Login();
+var startedFresh = firstLogin.Session == null &&
+                   firstLogin.Start(catalog.CurrentSeason, catalog.HighestDivision.ID, false);
+var live = firstLogin.Session!;
+live.HandlePending(live.PendingQueuePosition, GridFightPendingRequestKind.PortalSelect,
+    live.PortalOffer.First(id => id != GridFightSession.BlueSeaPortalId));
+live.HandlePending(live.PendingQueuePosition, GridFightPendingRequestKind.RoundBegin);
+live.GrantOfficialInitialRoundRewards(out _);
+live.HandlePending(live.PendingQueuePosition, GridFightPendingRequestKind.ReturnPreparation);
+live.Roles.Clear();
+AddRole(live, roleA).Position = 1;
+live.AdjustGold(7);
+firstLogin.Persist();
+var secondLogin = Login();
+Check("re-login on the same server restores the open run field for field",
+    startedFresh && live.Phase == GridFightSessionPhase.Preparing && secondLogin.Session is { } relogged &&
+    !ReferenceEquals(relogged, live) && SnapshotProbe.CompareSessions(live, relogged) == null);
+
+var fighting = secondLogin.Session!;
+var battlesBeforeRestart = fighting.BattlesFinished;
+var nodeBeforeRestart = (fighting.ChapterId, fighting.SectionId);
+var enteredBeforeRestart = fighting.EnterBattle();
+secondLogin.Persist();
+// Restart: flush to SQLite, forget every cached row and load the database again.
+DatabaseHelper.Instance!.SaveUidData(PersistUid);
+DatabaseHelper.UidInstanceMap.Clear();
+new DatabaseHelper().Initialize(startSaveThread: false);
+var afterRestart = Login();
+var restartedUniqueId = afterRestart.Session?.UniqueId ?? 0;
+Check("a restart reloads the run from the database and settles the battle left open like a quit",
+    enteredBeforeRestart && afterRestart.Session is { } restarted &&
+    restarted.Phase is not (GridFightSessionPhase.InBattle or GridFightSessionPhase.Preparing) &&
+    restarted.UniqueId == fighting.UniqueId && restarted.BattlesFinished == battlesBeforeRestart + 1 &&
+    (restarted.ChapterId, restarted.SectionId) != nodeBeforeRestart && restarted.KeepWinCount == 0);
+
+var stored = DatabaseHelper.Instance.GetInstance<GridFightData>(PersistUid)!;
+afterRestart.ClearSession();
+var clearedOnLeave = stored.RunInstance == null;
+afterRestart.Start(catalog.CurrentSeason, catalog.HighestDivision.ID, false);
+Check("leaving a run clears its saved copy and the next run gets a new id",
+    clearedOnLeave && stored.RunInstance != null && afterRestart.Session!.UniqueId > restartedUniqueId);
+
+// A battle left open at 1 HP is lost at the restart; the run is over and is not reloaded half-settled.
+var doomedRestart = afterRestart.Session!;
+MoveToPenalizedNode(doomedRestart);
+typeof(GridFightSession).GetProperty(nameof(GridFightSession.LineupHp))!.SetValue(doomedRestart, 1u);
+var doomedRestartEntered = doomedRestart.EnterBattle();
+afterRestart.Persist();
+DatabaseHelper.Instance!.SaveUidData(PersistUid);
+DatabaseHelper.UidInstanceMap.Clear();
+new DatabaseHelper().Initialize(startSaveThread: false);
+var afterDefeatRestart = Login();
+Check("a restart that loses the open battle at 1 HP closes the run",
+    doomedRestartEntered && afterDefeatRestart.Session == null && afterDefeatRestart.HasSettledSession &&
+    DatabaseHelper.Instance.GetInstance<GridFightData>(PersistUid)!.RunInstance == null);
+stored = DatabaseHelper.Instance.GetInstance<GridFightData>(PersistUid)!;
+stored.RunInstance = "not a saved run";
+var corruptLogin = Login();
+Check("an unreadable saved run is dropped at login instead of failing it",
+    corruptLogin.Session == null && stored.RunInstance == null);
+Microsoft.Data.Sqlite.SqliteConnection.ClearAllPools();
+try
+{
+    Directory.Delete(databaseScratch, true);
+}
+catch (IOException)
+{
+    Console.WriteLine($"Temporary database left at {databaseScratch}");
 }
 
 Console.WriteLine($"GridFight regression: {checks - failures.Count}/{checks} passed.");

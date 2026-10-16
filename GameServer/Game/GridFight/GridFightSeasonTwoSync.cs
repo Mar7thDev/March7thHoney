@@ -237,8 +237,42 @@ public sealed partial class GridFightManager
             result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = BuildPendingLockInfo() });
             result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
         }
+        AppendRoleCapacityDiff(result, session);
         if (result.UpdateDynamicList.Count > 0) notify.ResultList.Add(result);
         return notify.ResultList.Count == 0 ? null : notify;
+    }
+
+    private uint _observedMaxActiveRoles;
+    private uint _observedOffFieldMaxCount;
+
+    private void ObserveRoleCapacity(GridFightSession session)
+    {
+        _observedMaxActiveRoles = session.MaxActiveRoles;
+        _observedOffFieldMaxCount = session.OffFieldMaxCount;
+    }
+
+    /// <summary>
+    ///     Population cap (1583 -> GridFightPlayer.UpdateMaxRoleNum) and unlocked back cells (833 -> UpdateMaxBackRoleNum)
+    ///     whenever they changed since the client last got them (a crown from any reward, the 双龙吟 summon's own cell...).
+    ///     Growth goes first so a cell exists before a role is put into it; shrinking goes last, after the roles left it.
+    ///     Re-sending a value the client already has is a no-op there.
+    /// </summary>
+    private void AppendRoleCapacityDiff(GridFightSyncResultData result, GridFightSession session)
+    {
+        var maxRoles = session.MaxActiveRoles;
+        var backCells = session.OffFieldMaxCount;
+        if (backCells != _observedOffFieldMaxCount)
+            Put(new GridFightSyncData { JLOCMDIDPCI = backCells }, backCells > _observedOffFieldMaxCount);
+        if (maxRoles != _observedMaxActiveRoles)
+            Put(new GridFightSyncData { MaxActiveRoleCount = maxRoles }, maxRoles > _observedMaxActiveRoles);
+        _observedMaxActiveRoles = maxRoles;
+        _observedOffFieldMaxCount = backCells;
+
+        void Put(GridFightSyncData data, bool grows)
+        {
+            if (grows) result.UpdateDynamicList.Insert(0, data);
+            else result.UpdateDynamicList.Add(data);
+        }
     }
 
     private void AppendPlayerLevel(GridFightSyncResultData result, GridFightSession session)
@@ -451,6 +485,10 @@ public sealed partial class GridFightManager
         {
             ContextValueVersion = session.ElationTemplateId != 0 ? session.ElationTemplateId : 97,
         };
+        if (session.ActiveInvestmentIds.Contains(GridFightSession.PrismaticProcurementAugmentId))
+            info.ContextValueMap[GridFightSession.ProcurementSavedValueKey] = session.ProcurementRefreshCount;
+        if (session.ActiveInvestmentIds.Contains(GridFightSession.GoldProcurementAugmentId))
+            info.ContextValueMap[GridFightSession.GoldProcurementSavedValueKey] = session.GoldProcurementRefreshCount;
         if (!session.IsSeasonTwoRules) return info;
         foreach (var (traitId, templateId) in session.TraitTemplateIds) info.DKMNOPCJDDC[traitId] = templateId;
         info.FMNPBOJGLFI = session.MoonGameSubTraitId;

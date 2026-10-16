@@ -451,7 +451,10 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         Player.BattleInstance = null;
 
         if (battle.GridFightContext != null && Player.GridFightManager != null)
+        {
             await Player.GridFightManager.EndBattle(battle, req);
+            Player.GridFightManager.Persist();
+        }
 
         // A fight made only of /spawn monsters reuses real group/instance/stage IDs; it must not finish missions.
         if (!battle.IsGmSpawnedEncounter)

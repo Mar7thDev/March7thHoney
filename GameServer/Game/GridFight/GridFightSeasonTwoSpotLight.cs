@@ -1,3 +1,6 @@
+using March7thHoney.Data;
+using March7thHoney.Enums.GridFight;
+
 namespace March7thHoney.GameServer.Game.GridFight;
 
 public sealed class GridFightSpotLightState
@@ -15,6 +18,7 @@ public sealed class GridFightSpotLightChanges
     public List<GridFightSpotLightState> Added { get; } = [];
     public List<GridFightSpotLightState> Updated { get; } = [];
     public List<GridFightSpotLightState> Removed { get; } = [];
+    public List<GridFightRoleState> UpdatedRoles { get; } = [];
     public bool CountersChanged { get; set; }
 
     /// <summary>Spotlight nodes whose route param 4 changed (SyncData 1779 route node update).</summary>
@@ -35,6 +39,7 @@ public sealed partial class GridFightSession
     private const uint SpotLightRerollsPerSelection = 2;
     private const int SpotLightNormalSlots = 2;
     private const uint SpotLightConsumableId = 350111;
+    public const uint WillInheritanceSpotLightId = 110002; // 意志传承
     private static readonly (uint ChapterId, uint SectionId)[] SpotLightNodes = [(1, 2), (2, 1)];
 
     /// <summary>Spotlights that make their role a member of a Spotlight-type trait (matched by name/description).</summary>
@@ -118,6 +123,34 @@ public sealed partial class GridFightSession
         return result;
     }
 
+    private readonly List<GridFightSpotLightState> _spotLightsRebound = [];
+    private bool _spotLightCountersDirty;
+
+    /// <summary>重选主角 (SpotLightReplaceCnt) and free spotlight rerolls (SpotLightFreeRefreshCnt) from rewards.</summary>
+    private void AddSpotLightCharges(GridFightBonusTypeEnum type, uint count)
+    {
+        if (type == GridFightBonusTypeEnum.SpotLightReplaceCnt)
+            _spotLightReplaceTotal = (uint)Math.Min(uint.MaxValue, (ulong)_spotLightReplaceTotal + count);
+        else
+            _spotLightFreeRefreshTotal = (uint)Math.Min(uint.MaxValue, (ulong)_spotLightFreeRefreshTotal + count);
+        _spotLightCountersDirty = true;
+    }
+
+    /// <summary>
+    ///     A star-up merge replaces its three copies with a new unit; the 主角光环 bound to any of them moves to the merged
+    ///     unit instead of turning into 已失效. The new binding reaches the client as a spotlight update (SyncData 1651).
+    /// </summary>
+    private void RebindSpotLightsAfterMerge(IReadOnlyCollection<uint> removedRoleUniqueIds, GridFightRoleState mergedRole)
+    {
+        foreach (var entry in _spotLights.Where(entry => removedRoleUniqueIds.Contains(entry.RoleUniqueId)))
+        {
+            entry.RoleUniqueId = mergedRole.UniqueId;
+            entry.RoleId = mergedRole.RoleId;
+            entry.IsLoss = false;
+            if (!_spotLightsRebound.Contains(entry)) _spotLightsRebound.Add(entry);
+        }
+    }
+
     private void AddSpotLightGrantedTraitIds(GridFightRoleState role, HashSet<uint> traits)
     {
         foreach (var entry in _spotLights)
@@ -129,6 +162,11 @@ public sealed partial class GridFightSession
     /// <summary>On entering a spotlight node, queue a selection while a normal slot is free.</summary>
     private void RefreshSpotLight(GridFightSpotLightChanges spotChanges)
     {
+        foreach (var entry in _spotLightsRebound)
+            if (!spotChanges.Updated.Contains(entry)) spotChanges.Updated.Add(entry);
+        _spotLightsRebound.Clear();
+        if (_spotLightCountersDirty) spotChanges.CountersChanged = true;
+        _spotLightCountersDirty = false;
         foreach (var entry in _spotLights)
         {
             var lost = Roles.All(role => role.UniqueId != entry.RoleUniqueId);
@@ -214,6 +252,11 @@ public sealed partial class GridFightSession
         if (other != null) return null; // one spotlight per role (OldSpotLightReplaceHint)
         if (replaced != null)
         {
+            if (replaced.SpotLightId == HardBattleTreasureSpotLightId)
+            {
+                var previousRole = Roles.FirstOrDefault(entry => entry.UniqueId == replaced.RoleUniqueId);
+                if (previousRole != null && previousRole != role) changes.UpdatedRoles.Add(previousRole);
+            }
             replaced.SpotLightId = spotLightId;
             replaced.RoleId = role.RoleId;
             replaced.RoleUniqueId = role.UniqueId;
@@ -232,12 +275,35 @@ public sealed partial class GridFightSession
             _spotLights.Add(entry);
             changes.Added.Add(entry);
         }
+        ApplySpotLightSelectionEffect(spotLightId, role, changes);
+        if (spotLightId == HardBattleTreasureSpotLightId || replaced != null)
+            if (!changes.UpdatedRoles.Contains(role)) changes.UpdatedRoles.Add(role);
         _spotLightCandidates.Clear();
         _spotLightTargetUniqueId = 0;
         _spotLightGrantRoleId = 0;
         finished = FinishSeasonTwoPending(GridFightSeasonTwoPendingKind.SpotLightSelect);
         ResolveSpotLightNode(changes);
         return changes;
+    }
+
+    /// <summary>
+    ///     Lobby effects that happen when a spotlight is bound. 意志传承 (110002): "该角色变为更高1费的同星级角色，主角光环改为
+    ///     这名新角色拥有" — the unit keeps its slot, star and equipment and takes a random role one cost higher (a 5-cost
+    ///     role has nothing higher and stays). The role id is changed in place like the Aha cost upgrade.
+    /// </summary>
+    private void ApplySpotLightSelectionEffect(uint spotLightId, GridFightRoleState role, GridFightSpotLightChanges changes)
+    {
+        if (spotLightId != WillInheritanceSpotLightId ||
+            !GameData.GridFightRoleBasicInfoData.TryGetValue(role.RoleId, out var current))
+            return;
+        var next = _catalog.RollRolesByCost(current.Rarity + 1, 1, _temporarilyUnlockedRestrictedRoleIds)
+            .FirstOrDefault(candidate => candidate.ID != role.RoleId);
+        if (next == null) return;
+        role.RoleId = next.ID;
+        foreach (var entry in _spotLights.Where(entry => entry.RoleUniqueId == role.UniqueId))
+            entry.RoleId = next.ID;
+        RecalculateRoleSwitches();
+        changes.UpdatedRoles.Add(role);
     }
 
     /// <summary>HandlePendingAction 1930 { spotlight id of the card }: rerolls that card.</summary>
@@ -255,7 +321,7 @@ public sealed partial class GridFightSession
         if (cost == 0) _spotLightFreeRefreshUsed++;
         else
         {
-            Gold -= cost;
+            SpendGold(cost);
             goldChanged = true;
         }
         _spotLightRerollsLeft--;

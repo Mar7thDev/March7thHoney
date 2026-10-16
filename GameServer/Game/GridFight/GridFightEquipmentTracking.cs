@@ -121,13 +121,13 @@ public sealed partial class GridFightSession
         }
     }
 
+    // A role holds one implant; auto-dress never replaces one (a manual dress does).
     private bool CanAutoEquip(GridFightRoleState role, GridFightEquipmentState equipment) =>
         !equipment.IsLocked && FindEquipmentWearer(equipment.UniqueId) == null &&
         CanDress(role, equipment) &&
-        (GameData.GridFightEquipmentData[equipment.EquipmentId].EquipType == GridFightEquipmentTypeEnum.Implants ||
-         GetEquippedEquipment(role).Count(item =>
-             GameData.GridFightEquipmentData[item.EquipmentId].EquipType != GridFightEquipmentTypeEnum.Implants) <
-         NormalEquipmentSlotCount);
+        (IsImplant(equipment.EquipmentId)
+            ? GetEquippedEquipment(role).All(item => !IsImplant(item.EquipmentId))
+            : GetEquippedEquipment(role).Count(item => !IsImplant(item.EquipmentId)) < NormalEquipmentSlotCount);
 
     private void AutoEquipTrackedEquipment(GridFightRoleState role, GridFightEquipmentState equipment)
     {

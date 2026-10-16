@@ -488,6 +488,7 @@ public partial class PlayerInstance(PlayerData data)
     public void OnLogoutAsync()
     {
         B51RacingManager?.ClearRace();
+        GridFightManager?.Persist();
     }
 
     public async ValueTask SendPacket(BasePacket packet)

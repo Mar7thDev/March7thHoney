@@ -162,7 +162,8 @@ public static class GridFightBattleProtoBuilder
             PenaltyBonusRuleId = session.CurrentPenaltyRuleId,
             EnemyDifficultyLevel = session.EffectiveEnemyDifficultyLevel,
             Season = session.Season,
-            DivisionId = session.DivisionId,
+            // Battle-only division supplies HP/ATK base multipliers; lobby rank and rewards remain S2.
+            DivisionId = catalog.GetBattleDivisionId(session.DivisionId),
             ActiveRoleCount = (uint)activeRoles.Count + (session.PepeNpc == null ? 0u : 1u) +
                               (session.AstaDogNpc == null ? 0u : 1u) + (uint)session.LizhiNpcs.Count,
             IsOverlock = session.IsOverlock,
@@ -313,9 +314,14 @@ public static class GridFightBattleProtoBuilder
         {
             // GridFightInfo field 23 carries the run's 幻月游戏 sub-trait (same field name as the lobby context value).
             gridFightInfo.NJBNOFIEDDE = new KJFEHJMAIAA { FMNPBOJGLFI = session.MoonGameSubTraitId };
+            // MazeBuffData is keyed by ID * 10 + Lv. A buff the client has no MazeBuff row for blacks out the battle
+            // load, so a train good is only sent once its row exists in the resource data.
             foreach (var buffId in session.GetTrailblazeBattleBuffIds()
-                         .Where(buffId => GameData.MazeBuffData.ContainsKey(buffId)))
+                         .Where(buffId => GameData.MazeBuffData.ContainsKey(buffId * 10 + 1)))
                 AddGlobalBuffIfMissing(battle, buffId);
+            foreach (var buff in session.GetSeasonTwoBattleEffectBuffs())
+                if (battle.Buffs.All(existing => existing.BuffID != buff.BuffID))
+                    battle.Buffs.Add(buff);
         }
         proto.BattleGridFightData = gridFightInfo;
         return avatars;
@@ -464,12 +470,21 @@ public static class GridFightBattleProtoBuilder
             session.HasCyreneCombatEnhancement);
         session.ApplyInvestmentPropertyScales(result.ConvertPropertyToFixpoint);
         session.ApplyFateDivinerPropertyScales(result.ConvertPropertyToFixpoint, role.RoleId);
+        session.ApplySpotLightPropertyScales(result.ConvertPropertyToFixpoint, role.UniqueId);
+        session.ApplyPermanentRolePropertyScales(result.ConvertPropertyToFixpoint, role);
+        session.ApplyTrailblazeProperties(result.ConvertPropertyToFixpoint);
         result.RoleEquipmentList.Add(session.GetBattleEquipment(role).Select(equipment =>
             new BattleGridFightEquipInfo
             {
                 GridFightEquipmentId = equipment.EquipmentId,
                 UniqueId = equipment.UniqueId,
             }));
+        // 4.7 battles read role-scoped GridFight custom values (SetDynamicValueByGridFightCustomProperty with a target ->
+        // GridFightManager._GetOrBindRoleCustomValueLookup) only from GridFightRoleInfo field 14, without falling back to
+        // GridFightInfo.role_saved_values; without it Phainon's 薪火 (GP_Avatar_S2_Phainon_00) gives no DMG amp.
+        if (session.IsSeasonTwoRules)
+            foreach (var (key, value) in session.ResolveRoleSavedValues(role, role.RoleId))
+                result.BABNHPDGNGB[key] = value;
         return result;
     }
 

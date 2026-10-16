@@ -150,6 +150,20 @@ public sealed partial class GridFightSession
     private static uint GetChimeraMaxStar(uint chimeraId) =>
         GridFightSeasonTwoTables.Chimera.Where(row => row.Id == chimeraId).Select(row => row.Star).DefaultIfEmpty(1u).Max();
 
+    /// <summary>
+    ///     奇巧零食 (350119, UpgradeChimera): "选择1个角色专属奇美拉，使其提升1星". Only role-exclusive chimeras below their
+    ///     max star qualify; the chimera snapshot reaches the client through the post-request trait sync.
+    /// </summary>
+    public bool UpgradeChimeraByConsumable(uint chimeraUniqueId)
+    {
+        var chimera = _chimeras.FirstOrDefault(entry => entry.UniqueId == chimeraUniqueId);
+        if (chimera == null || ResolveChimeraRoleId(chimera.ChimeraId) == 0 ||
+            chimera.Star >= GetChimeraMaxStar(chimera.ChimeraId))
+            return false;
+        chimera.Star++;
+        return true;
+    }
+
     public uint ResolveChimeraRoleId(uint chimeraId) =>
         GridFightSeasonTwoTables.Chimera.FirstOrDefault(row => row.Id == chimeraId)?.RoleId ?? 0;
 

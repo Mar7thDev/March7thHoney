@@ -84,10 +84,12 @@ public sealed class HandlerGridFightUseConsumableCsReq : GridFightHandler<GridFi
                            target?.RecommendTarget?.RoleUniqueId ?? 0;
         var equipmentUniqueId = target?.RollTarget?.EquipmentUniqueId ??
                                 target?.UpgradeTarget?.EquipmentUniqueId ?? 0;
+        var chimeraUniqueId = target?.CEBGLMPKPDC?.FJLIFIIJGPH ?? 0;
         var result = manager.Session?.UseConsumable(
                          request.GroupId,
                          roleUniqueId,
-                         equipmentUniqueId) ??
+                         equipmentUniqueId,
+                         chimeraUniqueId) ??
                      GridFightConsumableUseResult.Failed;
         if (result.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(

@@ -1,3 +1,5 @@
+using March7thHoney.Data;
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data.Custom;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -14,7 +16,27 @@ public sealed class HandlerGridFightGetDataCsReq : GridFightHandler<GridFightGet
 {
     protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightGetDataCsReq request)
     {
+        await FinishTutorialStageQuests(player);
         await connection.SendPacket(new PacketGridFightGetDataScRsp(player));
+    }
+
+    /// <summary>
+    ///     GetData reports every tutorial stage as finished (GridFightManager.BuildSystemInfo), but the stage reward
+    ///     quests 7303101/7303102 (FinishType GridFightDivisionStageFinish) were never completed, and the resident
+    ///     map entry keeps the "start" button on the tutorial page until they are. Finish them to match.
+    /// </summary>
+    private static async ValueTask FinishTutorialStageQuests(PlayerInstance player)
+    {
+        if (player.QuestManager is not { } quests || player.GridFightManager is not { } manager) return;
+        var finishedStages = manager.Catalog.CompletedTutorialStages.Select(stage => (int)stage.DivisionId).ToHashSet();
+        foreach (var quest in GameData.QuestDataData.Values)
+        {
+            if (!GameData.FinishWayData.TryGetValue(quest.FinishWayID, out var finishWay) ||
+                finishWay.FinishType != MissionFinishTypeEnum.GridFightDivisionStageFinish ||
+                !finishedStages.Contains(finishWay.ParamInt1))
+                continue;
+            await quests.FinishQuest(quest.QuestID);
+        }
     }
 }
 
@@ -58,8 +80,12 @@ public sealed class HandlerGridFightQuitSettleCsReq : GridFightHandler<GridFight
         var session = manager.Session;
         if (session == null)
         {
+            // A run the server already settled (victory, or squad HP reached 0) has nothing left to settle.
             await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitSettleScRsp,
-                new GridFightQuitSettleScRsp { Retcode = (uint)Retcode.RetFail }));
+                new GridFightQuitSettleScRsp
+                {
+                    Retcode = manager.HasSettledSession ? 0 : (uint)Retcode.RetFail,
+                }));
             return;
         }
 
