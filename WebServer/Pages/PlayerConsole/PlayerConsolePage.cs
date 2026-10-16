@@ -59,6 +59,10 @@ public static class PlayerConsolePage
             <button id="login-toggle" class="btn ghost small" type="button">Show</button>
           </div>
         </label>
+        <label class="remember">
+          <input id="login-remember" type="checkbox">
+          <span data-i18n="login.remember">Remember UID and password</span>
+        </label>
         <button class="btn primary block" type="submit" data-i18n="login.submit">Sign in</button>
         <p id="login-message" class="message" role="status" aria-live="polite"></p>
       </form>

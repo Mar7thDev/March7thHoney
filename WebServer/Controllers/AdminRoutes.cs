@@ -46,6 +46,7 @@ public static partial class AdminRoutes
         MapAnnounceRoutes(app);
         MapAccessRoutes(app);
         MapCommandRoutes(app);
+        MapGridFightRoutes(app);
         MapSettingsRoutes(app);
         MapHotfixRoutes(app);
         MapLogRoutes(app);
