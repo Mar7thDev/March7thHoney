@@ -30,7 +30,7 @@
 | `Proto/Generated/` | 当前活动版本生成的 C# 协议代码 |
 | `Proto/Tool/ProtoOrganizer/` | 协议整理、版本迁移和生成工具 |
 | `Config/` | 自定义 JSON、语言包、资源缓存及本地运行数据；部分内容受版本控制 |
-| `Resources/`、`TurnBasedGameData/` | 本地游戏资源，已被 Git 忽略，干净检出不保证存在 |
+| `Resources/`、`TurnBasedGameData/`、`Config/Resource.bin` | 本地游戏资源和生成缓存，已被 Git 忽略，干净检出不保证存在 |
 | `scripts/` | 独立回归程序、缓存升级工具及 Linux 部署脚本 |
 | `docs/` | 开发、测试、API、入门和运维文档，入口为 `docs/README.md` |
 
@@ -96,6 +96,7 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 | Web 后台、MUIP、命令目标隔离及异步输出 | `dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj` | 独立内存数据与临时目录；预期 `Regression failures: 0` |
 | 登录协议、RSA、场景加载与传送 | `dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c Release` | 临时数据库和本机 HTTP 服务；场景用例读取当前 `Config/Resource.bin` 的副本 |
 | GridFight 玩法与状态同步 | `dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj` | 读取当前 `Config/Resource.bin`（可用 `--cache` 指定），按缓存的 GridFight 赛季运行；不初始化玩家数据库，不写回缓存 |
+| 原始资源、枚举兼容及共享能力解析 | `dotnet run --project scripts/ResourceRegression/ResourceRegression.csproj -c Release -- <资源目录> <新报告目录>` | 隔离进程直接加载资源；可用 `--cache-out <新文件>` 验证并导出快照；预期 `failures: 0, loader issues: 0` |
 | 每日实训、活跃度档位、每日委托及事件型任务完成条件 | `dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj -c Release` | 临时 SQLite；读取 `Config/Resource.bin` 副本（需含每日实训表，可用 `--cache` 指定）；预期 `failures: 0` |
 
 - 具体覆盖和预期日志见 `docs/testing/` 下对应文档。以进程退出码和最终失败汇总判断结果；模拟异常会产生预期错误日志。
