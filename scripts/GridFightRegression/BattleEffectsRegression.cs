@@ -10,6 +10,13 @@ static class BattleEffectsRegression
         Action<string, bool> check)
     {
         if (catalog.CurrentSeason != 2) return;
+        // These rows come from GridFightTraitMazebuffS2/GridFightSpotLightMazebuff, which older resource folders
+        // lack; such caches cannot exercise the battle effects (the server then sends no buff for them).
+        if (!GameData.MazeBuffData.ContainsKey(GridFightSession.BlackHoleGravityBuffId * 10 + 1))
+        {
+            Console.WriteLine("SKIP S2 battle effect buffs: the cache has no GridFightTraitMazebuffS2/GridFightSpotLightMazebuff rows.");
+            return;
+        }
         check("S2 separate MazeBuff tables: black hole is registered with its stage ability",
             GameData.MazeBuffData.TryGetValue(GridFightSession.BlackHoleGravityBuffId * 10 + 1, out var gravity) &&
             gravity.InBattleBindingKey == "StageAbility_GridFight_SpotLight_131000002");
