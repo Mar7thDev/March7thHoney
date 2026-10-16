@@ -18,6 +18,9 @@ public class AvatarData : BaseDatabaseDataHelper
     public List<FormalAvatarInfo> FormalAvatars { get; set; } = [];
     public List<SpecialAvatarInfo> TrialAvatars { get; set; } = [];
 
+    // Separate generated database column: never extend the historical FormalAvatars MemoryPack blob.
+    public Dictionary<int, List<int>> ExRankIds { get; set; } = [];
+
     public List<int> AssistAvatars { get; set; } = [];
 
     public List<int> DisplayAvatars { get; set; } = [];
@@ -89,6 +92,18 @@ public abstract class BaseAvatarInfo
 [MemoryPackable]
 public partial class FormalAvatarInfo : BaseAvatarInfo
 {
+    [MemoryPackIgnore]
+    public IReadOnlyList<int> ActivatedExRankIds { get; set; } = [];
+
+    public IEnumerable<uint> GetActivatedExRanks(int pathId, int? ownerUid = null)
+    {
+        var ids = ownerUid.HasValue
+            ? DatabaseHelper.Instance?.GetInstance<AvatarData>(ownerUid.Value)?.ExRankIds.GetValueOrDefault(BaseAvatarId) ?? []
+            : ActivatedExRankIds;
+        return ids.Where(id => AvatarExRankMaterials.Definitions.TryGetValue(id, out var definition) &&
+                               definition.AvatarId == pathId).Distinct().Order().Select(id => (uint)id);
+    }
+
     [MemoryPackConstructor]
     public FormalAvatarInfo()
     {
@@ -238,7 +253,7 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
     {
         var isBattle = collection.LineupInfo.LineupType != 0;
 
-        return new BattleAvatar
+        var proto = new BattleAvatar
         {
             Id = (uint)avatarId,
             AvatarType = avatarType,
@@ -251,6 +266,10 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
             WorldLevel = (uint)collection.PlayerData.WorldLevel,
             EnhancedId = (uint)pathInfo.EnhanceId
         };
+        // GridFight maintains its own character progression, not the account's activated eidolons.
+        if (avatarType != AvatarType.AvatarGridFightType)
+            proto.IGDEHGIKFJA.AddRange(GetActivatedExRanks(avatarId, collection.PlayerData.Uid));
+        return proto;
     }
 
     private static bool IsUpgradableType(AvatarType avatarType) =>
@@ -536,6 +555,7 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
                 DressedSkinId = (uint)pathInfo.Skin,
                 UnkEnhancedId = (uint)pathInfo.EnhanceId
             };
+            proto.IGDEHGIKFJA.AddRange(GetActivatedExRanks(pathInfo.PathId));
 
             foreach (var skill in pathInfo.GetSkillTree())
             {
@@ -578,6 +598,7 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
             Pos = (uint)pos,
             DressedSkinId = (uint)GetCurPathInfo().Skin
         };
+        proto.ExRankIdList.AddRange(GetActivatedExRanks(AvatarId, collection.PlayerData.Uid));
 
         var inventory = collection.InventoryData;
         foreach (var item in GetCurPathInfo().Relic)

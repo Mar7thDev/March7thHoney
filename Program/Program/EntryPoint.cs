@@ -278,6 +278,9 @@ public class EntryPoint
                     ResourceManager.LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen");
                 if (rogueMapGen != null) GameData.RogueMapGenData = rogueMapGen;
 
+                // ExRank (奇缘星魂) materials are an operator overlay, so they must also load on a cache boot.
+                AvatarExRankMaterials.Apply();
+
                 // These runtime room/dice definitions were added after the checked-in 4.6 cache was built.
                 // They are operator-authored JSON rather than dumped tables, so a cache boot must overlay the
                 // current files just like banners, video keys and RogueMapGen do above.

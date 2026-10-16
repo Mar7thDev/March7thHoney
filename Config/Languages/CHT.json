@@ -91,6 +91,7 @@
   "Game.Command.Give.Desc": "給予玩家物品，此處可輸入角色ID，但無法設置行跡、等級及星魂",
   "Game.Command.Give.GiveItem": "給予 @{0} {1} 個物品 {2}",
   "Game.Command.Give.ItemNotFound": "未找到物品!",
+  "Game.Command.Give.ExRankMaterialFull": "已持有該奇緣星魂素材（堆疊上限1個），未重複發放。",
   "Game.Command.Give.Usage": "用法：/give <物品ID> [x<數量=1>] [l<等級=1, 1-80>] [r<疊影=1, 1-5>]",
   "Game.Command.GiveAll.Desc": "給予玩家全部指定類型的物品\navatar意為角色，equipment意為光錐，material意為可堆疊材料，relic意為遺器，unlock意為氣泡、手機壁紙、頭像，train意為開拓者房間內容，pet意為寵物，path意為多命途角色命途\navatar：新角色預設 l1 / r0；已擁有的角色只修改你指定的等級或星魂（r 會作用於該角色已擁有的全部命途）。",
   "Game.Command.GiveAll.GiveAllItems": "已給予所有 {0}, 各 {1} 個",
