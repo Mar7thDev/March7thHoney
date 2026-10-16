@@ -39,6 +39,23 @@ public sealed partial class GridFightSession
             [1013] = new(1013, 2003, 1013, 1405, 350204), // 群攻: 赫塔 / 那刻夏 / 幸运星
             [1014] = new(1014, 2007, 1507, 1308, 350203), // 减益: 千冶·刃 / 黄泉 / 和平手枪
             [1016] = new(1016, 2011, 1213, 1306, 350202), // 战技点: 丹恒·饮月 / 花火 / 折叠小刀(packet)
+            // Season 2 (4.6.51): trait = GridFightPortalBuff.EffectParamList[1]; featured avatars and equipment
+            // come from GridFightCombinationBonus[EffectParamList[0]] (season 1's 40001 gives the same 1220/1305/350201
+            // as entry 1001). Avatar ids are resolved to the running season's role ids.
+            [2201] = new(2201, 100102, 1221, 1222, 350202), // 仙舟舰队概念股 (bonus 42001)
+            [2202] = new(2202, 100202, 1405, 1404, 350201), // 奇兽花园概念股 (bonus 42002)
+            [2203] = new(2203, 100302, 1505, 1503, 350202), // 幻月游戏概念股 (bonus 42003)
+            [2204] = new(2204, 100502, 1004, 1313, 350208), // 开拓银轨概念股 (bonus 42004)
+            [2205] = new(2205, 100602, 1112, 1503, 350201), // 千星商会概念股 (bonus 42005)
+            [2206] = new(2206, 200102, 1220, 1112, 350201), // 追击概念股 (bonus 42006)
+            [2207] = new(2207, 200202, 1210, 1307, 350203), // 持续伤害概念股 (bonus 42007)
+            [2208] = new(2208, 200302, 1401, 1222, 350204), // 群攻概念股 (bonus 42008)
+            [2209] = new(2209, 200402, 1405, 1313, 350202), // 连击概念股 (bonus 42009)
+            [2210] = new(2210, 200502, 1310, 1225, 350207), // 击破概念股 (bonus 42010)
+            [2211] = new(2211, 200602, 1204, 1413, 350202), // 召唤概念股 (bonus 42011)
+            [2212] = new(2212, 200702, 1306, 1501, 350208), // 欢愉概念股 (bonus 42012)
+            [2213] = new(2213, 200802, 1221, 1208, 350206), // 反击概念股 (bonus 42013)
+            [2214] = new(2214, 200902, 1505, 1217, 350208), // 能量概念股 (bonus 42014)
         };
 
     private GridFightEquipmentState? _conceptStockInitialEquipment;
@@ -65,6 +82,7 @@ public sealed partial class GridFightSession
         if (config == null) return null;
 
         var featured = new[] { config.FirstRoleId, config.SecondRoleId }
+            .Select(avatarId => GridFightSeasonScope.ResolveRoleId(avatarId, Season))
             .Where(roleId => GameData.GridFightRoleBasicInfoData.ContainsKey(roleId) &&
                              GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | 1u))
             .ToList();

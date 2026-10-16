@@ -8,9 +8,9 @@ using static March7thHoney.GameServer.Server.Packet.Recv.GridFight.GridFightPack
 namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
 [Opcode(CmdIds.GridFightEquipDressCsReq)]
-public sealed class HandlerGridFightEquipDressCsReq : Handler<GridFightEquipDressCsReq>
+public sealed class HandlerGridFightEquipDressCsReq : GridFightHandler<GridFightEquipDressCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightEquipDressCsReq request)
@@ -30,9 +30,9 @@ public sealed class HandlerGridFightEquipDressCsReq : Handler<GridFightEquipDres
 }
 
 [Opcode(CmdIds.GridFightEquipCraftCsReq)]
-public sealed class HandlerGridFightEquipCraftCsReq : Handler<GridFightEquipCraftCsReq>
+public sealed class HandlerGridFightEquipCraftCsReq : GridFightHandler<GridFightEquipCraftCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightEquipCraftCsReq request)
@@ -56,25 +56,40 @@ public sealed class HandlerGridFightEquipCraftCsReq : Handler<GridFightEquipCraf
 }
 
 [Opcode(CmdIds.GridFightUseConsumableCsReq)]
-public sealed class HandlerGridFightUseConsumableCsReq : Handler<GridFightUseConsumableCsReq>
+public sealed class HandlerGridFightUseConsumableCsReq : GridFightHandler<GridFightUseConsumableCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUseConsumableCsReq request)
     {
         var manager = player.GridFightManager!;
         var target = request.Target;
+        if (target?.DECONIENEJG != null && manager.Session != null)
+        {
+            // 主角光环 consumable: consume, then open the granted spotlight selection for the target role.
+            var spot = manager.Session.UseSpotLightConsumable(request.GroupId, target.DECONIENEJG.MDNAGANGNKK);
+            if (spot.Success)
+            {
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildConsumableUseSync(spot)));
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildSpotLightSync(null, 0)));
+            }
+            await connection.SendPacket(CreatePacket(CmdIds.GridFightUseConsumableScRsp,
+                new GridFightUseConsumableScRsp { Retcode = spot.Success ? 0 : (uint)Retcode.RetFail }));
+            return;
+        }
         var roleUniqueId = target?.RemoveTarget?.RoleUniqueId ??
                            target?.RollTarget?.RoleUniqueId ??
                            target?.CopyTarget?.RoleUniqueId ??
                            target?.RecommendTarget?.RoleUniqueId ?? 0;
         var equipmentUniqueId = target?.RollTarget?.EquipmentUniqueId ??
                                 target?.UpgradeTarget?.EquipmentUniqueId ?? 0;
+        var chimeraUniqueId = target?.CEBGLMPKPDC?.FJLIFIIJGPH ?? 0;
         var result = manager.Session?.UseConsumable(
                          request.GroupId,
                          roleUniqueId,
-                         equipmentUniqueId) ??
+                         equipmentUniqueId,
+                         chimeraUniqueId) ??
                      GridFightConsumableUseResult.Failed;
         if (result.Success)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(
@@ -88,9 +103,9 @@ public sealed class HandlerGridFightUseConsumableCsReq : Handler<GridFightUseCon
 }
 
 [Opcode(CmdIds.GridFightUpdateEquipTrackCsReq)]
-public sealed class HandlerGridFightUpdateEquipTrackCsReq : Handler<GridFightUpdateEquipTrackCsReq>
+public sealed class HandlerGridFightUpdateEquipTrackCsReq : GridFightHandler<GridFightUpdateEquipTrackCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUpdateEquipTrackCsReq request)
