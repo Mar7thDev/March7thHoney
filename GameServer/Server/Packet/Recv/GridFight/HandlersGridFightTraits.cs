@@ -16,9 +16,23 @@ public abstract class GridFightHandler<TReq> : Handler<TReq> where TReq : IMessa
 {
     protected sealed override async Task OnHandle(Connection connection, PlayerInstance player, TReq req)
     {
-        await OnGridFightHandle(connection, player, req);
-        if (player.GridFightManager?.BuildSeasonTwoFollowUpSync() is { } followUp)
-            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(followUp));
+        var previousSession = player.GridFightManager?.Session;
+        var previousInterestCap = previousSession?.CurrentMaxInterestGold;
+        try
+        {
+            if (player.GridFightManager?.BuildOwlbertGoldTick() is { } gold)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(gold));
+            await OnGridFightHandle(connection, player, req);
+            if (player.GridFightManager?.BuildSeasonTwoFollowUpSync() is { } followUp)
+                await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(followUp));
+            if (player.GridFightManager?.BuildInterestDisplayRefresh(previousSession, previousInterestCap) is { } refresh)
+                await connection.SendPacket(CreatePacket(CmdIds.GridFightGetDataScRsp, refresh));
+        }
+        finally
+        {
+            // Whatever the request changed (even when it failed half-way) is the state the run continues from.
+            player.GridFightManager?.Persist();
+        }
     }
 
     protected abstract Task OnGridFightHandle(Connection connection, PlayerInstance player, TReq req);

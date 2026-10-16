@@ -2,6 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
 using March7thHoney.Enums.GridFight;
+using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;
 
@@ -47,7 +48,11 @@ public sealed record GridFightEncounterOptionState(
     uint EliteBranchId,
     uint EncounterId,
     uint Quality,
-    GridFightBattlePlan BattlePlan);
+    GridFightBattlePlan BattlePlan,
+    IReadOnlyList<GridFightEncounterDrop>? Rewards = null);
+
+/// <summary>One 遭遇 reward as shown on the option card and paid on clear (see GridFightEncounterRewards).</summary>
+public sealed record GridFightEncounterDrop(GridFightDropType Type, uint ItemId, uint Num);
 
 public sealed record GridFightRoleSwitchGroup(
     uint BaseRoleId,
@@ -113,6 +118,22 @@ public sealed class GridFightResourceCatalog
     public IReadOnlyList<GridFightCampExcel> CampPool { get; }
     public IReadOnlyList<GridFightCampExcel> RewardCampPool { get; }
     public IReadOnlyList<uint> PortalPool { get; }
+
+    /// <summary>
+    ///     4.6.51 client data bug: SpecificAvatar basic bonuses 1503 / 1505 have no BonusTypeParam, and the portal card
+    ///     builds its preview role from that field (GridFightPortalData.BuildBonusData -> GridFightRoleConfig ctor NRE).
+    ///     The exception aborts GridFightPortalBuffSelectPage setup, so the other cards cannot be picked either
+    ///     (seen with 2205 千星商会概念股; 2203 and 2214 reference the same rows). Such portals are kept out of the offer.
+    /// </summary>
+    private static bool HasClientBrokenShowBonus(uint portalId)
+    {
+        if (!GameData.GridFightPortalBuffData.TryGetValue(portalId, out var portal)) return false;
+        return portal.ShowBonusIDList
+            .Where(GameData.GridFightCombinationBonusData.ContainsKey)
+            .SelectMany(bonusId => GameData.GridFightCombinationBonusData[bonusId].CombinationBonusList)
+            .Select(id => GameData.GridFightBasicBonusPoolV2Data.GetValueOrDefault(id))
+            .Any(basic => basic is { BonusType: GridFightBonusTypeEnum.SpecificAvatar, BonusTypeParam: 0 });
+    }
     public IReadOnlyList<uint> AugmentPool { get; }
     public IReadOnlyList<uint> BasicEquipmentPool { get; }
     public IReadOnlySet<uint> InitialExcludedRoleIds { get; }
@@ -186,9 +207,13 @@ public sealed class GridFightResourceCatalog
             .ToList();
         HasRoleSavedValueLists = seasonRoles.Any(row => row.RoleSavedValueList.Count > 0);
         UpgradeOnlyRoleIds = ResolveUpgradeOnlyRoleIds(seasonRoles);
+        InitialExcludedRoleIds = GetUIntList("GridFight_InitialExceptRoleIdList").ToHashSet();
         RolePool = seasonRoles
             .Where(row => row.IsInPool && !bannedRoles.Contains(row.ID))
             .Where(IsRuntimeShopRole)
+            // Season 2: GridFight_InitialExceptRoleIdList seeds the client's GridFightTeam._ExceptedRoleIDs. 丹恒•腾荒
+            // (141402) only exists as the 双龙吟 summon, so it is never sold or handed out (e.g. Aha 我5费呢？！).
+            .Where(row => IsSeasonOne || !InitialExcludedRoleIds.Contains(row.ID))
             .OrderBy(row => row.ID)
             .ToList();
         RoleSwitchGroups = GameData.GridFightRoleSwitchConfigData.Values
@@ -237,6 +262,7 @@ public sealed class GridFightResourceCatalog
             .ToHashSet();
         PortalPool = GameData.GridFightSeasonPortalData.GetValueOrDefault(CurrentSeason, [])
             .Where(id => !bannedPortals.Contains(id))
+            .Where(id => !HasClientBrokenShowBonus(id))
             .Distinct()
             .Order()
             .ToList();
@@ -257,7 +283,6 @@ public sealed class GridFightResourceCatalog
             .Order()
             .ToList();
 
-        InitialExcludedRoleIds = GetUIntList("GridFight_InitialExceptRoleIdList").ToHashSet();
         InitialGold = ResolveInitialGold();
         TutorialCompletion = GameData.GridFightTutorialStageNodeData.Max(row => row.Unlock);
         var tutorialStageIds = GetUIntList("GridFight_TutorialStageList");
@@ -555,8 +580,14 @@ public sealed class GridFightResourceCatalog
 
     public uint GetEnemyDifficultyLevel(uint divisionId)
     {
+        // S1 A8 Wealth Creator 50: GridFightDivisionStage 10950 (4.4+).
+        // Keep the current S2 rank/route, but benchmark its highest rank's enemies against this row.
+        if (CurrentSeason == 2 && divisionId == HighestDivision.ID) return 120;
         return GameData.GridFightDivisionStageData[divisionId].EnemyDifficultyLevel;
     }
+
+    public uint GetBattleDivisionId(uint divisionId) =>
+        CurrentSeason == 2 && divisionId == HighestDivision.ID ? 10950u : divisionId;
 
     public uint GetInitialLineupHp(uint divisionId)
     {
@@ -792,6 +823,52 @@ public sealed class GridFightResourceCatalog
         return result;
     }
 
+    /// <summary>
+    /// Random roles of one base cost (Rarity), with replacement, for investment grants such as
+    /// "获得4个随机3费角色". Uses the same season and restricted-role filters as the shop.
+    /// </summary>
+    public IReadOnlyList<GridFightRoleBasicInfoExcel> RollRolesByCost(
+        uint cost,
+        int count,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null)
+    {
+        var candidates = RolePool.Where(role =>
+                role.Rarity == cost &&
+                IsRestrictedRoleAllowed(role.ID, temporarilyUnlockedRoleIds))
+            .ToList();
+        if (candidates.Count == 0 || count <= 0) return [];
+        var result = new List<GridFightRoleBasicInfoExcel>(count);
+        for (var index = 0; index < count; index++)
+            result.Add(candidates[_random.Next(candidates.Count)]);
+        return result;
+    }
+
+    public int NextRandom(int minInclusive, int maxExclusive) => _random.Next(minInclusive, maxExclusive);
+
+    /// <summary>Distinct current-season shop roles carrying a trait (e.g. "获得3个随机欢愉角色").</summary>
+    public IReadOnlyList<GridFightRoleBasicInfoExcel> GetRolesByTrait(
+        uint traitId,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null) =>
+        RolePool.Where(role => role.TraitList.Contains(traitId) && IsRestrictedRoleAllowed(role.ID, temporarilyUnlockedRoleIds))
+            .GroupBy(role => role.ID)
+            .Select(group => group.First())
+            .OrderBy(role => role.ID)
+            .ToList();
+
+    public IReadOnlyList<GridFightRoleBasicInfoExcel> RollRolesByTrait(
+        uint traitId,
+        int count,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null) =>
+        TakeRandomDistinct(GetRolesByTrait(traitId, temporarilyUnlockedRoleIds).ToList(), count);
+
+    public IReadOnlyList<GridFightRoleBasicInfoExcel> GetRolesByCost(
+        uint cost,
+        IReadOnlySet<uint>? temporarilyUnlockedRoleIds = null) =>
+        RolePool.Where(role => role.Rarity == cost && IsRestrictedRoleAllowed(role.ID, temporarilyUnlockedRoleIds))
+            .GroupBy(role => role.ID)
+            .Select(group => group.First())
+            .ToList();
+
     public uint RollMortenaxBladeTemporaryEquipment(uint roleId, string frontBackType)
     {
         if (!GameData.GridFightRoleRecommendEquipData.TryGetValue(roleId, out var rows)) return 0;
@@ -868,7 +945,9 @@ public sealed class GridFightResourceCatalog
             .Where(quality => quality != GridFightAugmentQualityEnum.None)
             .Where(quality => GetInvestmentCandidates(chapterId, quality).Count(id => !excluded.Contains(id)) >= count)
             .ToList();
-        return qualities[_random.Next(qualities.Count)];
+        return qualities.Count == 0
+            ? GridFightAugmentQualityEnum.None
+            : qualities[_random.Next(qualities.Count)];
     }
 
     public IReadOnlyList<uint> RollInvestmentOffer(
@@ -1164,7 +1243,7 @@ public sealed class GridFightResourceCatalog
                 .Where(rule => rule.ID is >= 1 and <= 4)
                 .OrderBy(rule => rule.Quality)
                 .ToList();
-        ruleIds = ruleIds.Where(rule => rule.Quality is 1 or 2 or 4).ToList();
+        ruleIds = ruleIds.Where(rule => rule.Quality is >= 1 and <= 4).ToList();
         var rules = TakeRandomDistinct(ruleIds, 2).OrderBy(rule => rule.Quality).ToList();
         var result = new List<GridFightEncounterOptionState>(rules.Count);
         var campId = activeCampIds[_random.Next(activeCampIds.Count)];
@@ -1597,6 +1676,10 @@ public sealed class GridFightResourceCatalog
 
     private uint ResolveContentModuleId()
     {
+        // The S2 dump still ships S1 ban/switch tables for module 7110501. Their largest ID is
+        // not the active S2 module: client trait/role visibility must use the season module.
+        if (CurrentSeason == 2) return ActivityModuleId;
+
         var moduleIds = GameData.GridFightModuleBanRoleData.Select(row => row.ModuleId)
             .Concat(GameData.GridFightModuleBanPortalData.Select(row => row.ModuleId))
             .Concat(GameData.GridFightModuleBanAugmentData.Select(row => row.ModuleId))

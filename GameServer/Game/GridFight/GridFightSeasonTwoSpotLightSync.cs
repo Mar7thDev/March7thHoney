@@ -85,6 +85,8 @@ public sealed partial class GridFightManager
                 {
                     KBHOBGHKIBA = new BAAGMMIDHDB { DBIIPEEDBHI = BuildRouteNode(routeNode, session) },
                 });
+        foreach (var role in changes.UpdatedRoles)
+            result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
         foreach (var entry in changes.Added)
             result.UpdateDynamicList.Add(new GridFightSyncData { PHNKDPMDONM = BuildSpotLightEntry(entry) });
         foreach (var entry in changes.Updated)
@@ -143,7 +145,10 @@ public sealed partial class GridFightManager
         AppendSeasonTwoItemDiffs(result, session);
         AppendSeasonTwoEffectDiffs(result);
         if (finishedQueuePosition == 0 && BuildPendingAction() is { } pending)
+        {
+            result.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = BuildPendingLockInfo() });
             result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
+        }
         notify.ResultList.Add(result);
         if (finishedQueuePosition != 0)
         {

@@ -208,6 +208,7 @@ public sealed partial class GridFightSession
             keeper.RoleId = target;
             changed.Add(keeper);
         }
+        if (absorbed.Count > 0 && !changed.Contains(keeper)) changed.Add(keeper);
         if (absorbed.Count > 0 || changed.Count > 0) RecalculateRoleSwitches();
         return (changed, absorbed);
     }
@@ -313,7 +314,10 @@ public sealed partial class GridFightManager
         {
             NHLBAOGCIAN = slot.PresetEquipmentId,
             IsUnlock = index < unlocked,
-            ACAPGLCONJH = slot.EquipmentUniqueId,
+            // Both fields identify equipment configs. The slot is empty on the client when its
+            // current config is zero; an inventory unique id cannot resolve to an equipment icon.
+            ACAPGLCONJH = session.Equipments.FirstOrDefault(item => item.UniqueId == slot.EquipmentUniqueId)
+                ?.EquipmentId ?? slot.PresetEquipmentId,
             Pos = (uint)index,
         }));
         return info;
@@ -331,8 +335,8 @@ public sealed partial class GridFightManager
 
     private static void FillClaraBattleTraitEffect(GridFightSession session, BattleGridFightTraitEffectInfo effect)
     {
-        // Clara has no battle member (her enhancement BuffIDs are not in the local MazeBuff table, and unknown
-        // MazeBuffs abort level start), so only the Elation equipment bar is sent here.
+        // Clara's enhancements are separate stage-ability MazeBuffs (GetSeasonTwoBattleEffectBuffs).
+        // This trait member carries only the Elation equipment bar.
         if (effect.EffectId != GridFightSession.ElationEffectId) return;
         effect.IFDICIIOHHI = new BFMDDFLMAKD();
         effect.IFDICIIOHHI.GridFightEquipmentList.Add(session.GetElationBattleEquipment().Select(entry =>
