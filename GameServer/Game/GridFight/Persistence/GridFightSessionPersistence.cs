@@ -804,6 +804,7 @@ public sealed partial class GridFightSession
         EquipmentId = equipment.EquipmentId,
         Source = equipment.Source,
         IsLocked = equipment.IsLocked,
+        IsTemporary = equipment.IsTemporary,
     };
 
     private static GridFightOrbSnapshot CaptureOrb(GridFightOrbState orb) => new()
@@ -938,6 +939,7 @@ public sealed partial class GridFightSession
             EquipmentId = equipment.EquipmentId,
             Source = equipment.Source,
             IsLocked = equipment.IsLocked,
+            IsTemporary = equipment.IsTemporary,
         };
         pool[equipment.UniqueId] = state;
         return state;

@@ -75,8 +75,6 @@ public sealed partial class GridFightSession
 
     public static bool IsAhaGoods(uint specialGoodsId) => specialGoodsId > AhaGoodsFirstId;
 
-    private bool IsAhaOnBoard => Roles.Any(role => IsAhaRole(role.RoleId) && IsActivePosition(role.Position));
-
     private static uint AhaGoodsBaseId(GridFightAhaGoodsRow row) => row.LowerGoodId != 0 ? row.LowerGoodId : row.Id;
 
     /// <summary>7-cost leading-trait progress: (trait, target total stars, current total stars).</summary>
@@ -94,7 +92,8 @@ public sealed partial class GridFightSession
 
     /// <summary>
     ///     Chance that a shop roll gets an Aha good, by the highest Aha tier on the board. The client only says "可能"; the
-    ///     official numbers are server-side, so 3-cost 20% / 4-cost 30% / 5- and 7-cost 40% is a chosen value.
+    ///     official numbers are server-side, so 3-cost 20% / 4-cost 30% / 5- and 7-cost 40% is a chosen value. 欢愉 says
+    ///     "商店中也有概率出现阿哈道具" on its own, so an active 欢愉 bond without an Aha uses the 3-cost chance.
     /// </summary>
     public double AhaShopGlanceChance
     {
@@ -102,7 +101,7 @@ public sealed partial class GridFightSession
         {
             var ahaIds = Roles.Where(role => IsAhaRole(role.RoleId) && IsActivePosition(role.Position))
                 .Select(role => role.RoleId).ToList();
-            if (ahaIds.Count == 0) return 0;
+            if (ahaIds.Count == 0) return ResolveTraitLayer(ElationTraitId) > 0 ? 0.2 : 0;
             return ahaIds.Max() switch
             {
                 AhaThreeCostRoleId => 0.2,
@@ -114,8 +113,9 @@ public sealed partial class GridFightSession
 
     private void ApplyAhaShopGlance()
     {
-        if (!IsSeasonTwoRules || !IsAhaOnBoard || Shop.Count == 0) return;
-        if (Random.Shared.NextDouble() >= AhaShopGlanceChance) return;
+        if (!IsSeasonTwoRules || Shop.Count == 0) return;
+        var chance = AhaShopGlanceChance;
+        if (chance <= 0 || Random.Shared.NextDouble() >= chance) return;
         var upgraded = Roles.Any(role => role.RoleId is AhaFiveCostRoleId or AhaSevenCostRoleId);
         var group = upgraded ? AhaGoodsUpgradedGroup : AhaGoodsBaseGroup;
         var pool = GridFightSeasonTwoTables.AhaGoods
@@ -199,7 +199,10 @@ public sealed partial class GridFightSession
             case 349: // 球球了！: 3 星【星神★阿哈】
                 return Give(Role(AhaSevenCostRoleId, 3));
             case 347: // 开拓之旅 (only the 开拓力 part)
-                return Give(new GridFightRewardEntry(GridFightBonusTypeEnum.TrailblazeShopCoin, 0, Param(0)));
+                // 哈基维利 (447): the 4.6.53 client describes 200 开拓力 while the 4.6.51/4.6.52 tables still say 1000 (player
+                // report 2026-10-17); hand out what the player is shown until a 4.6.53 table confirms it.
+                return Give(new GridFightRewardEntry(GridFightBonusTypeEnum.TrailblazeShopCoin, 0,
+                    row.Id == 447 ? 200u : Param(0)));
             case 353: // 邀月入局
                 return Give(Item(MoonGameEmblemId));
             case 354: // 欢愉加席

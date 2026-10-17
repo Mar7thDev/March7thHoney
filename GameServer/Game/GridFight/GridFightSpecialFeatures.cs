@@ -212,9 +212,22 @@ public static class GridFightSpecialFeatures
                GameData.GridFightBasicOrbRewardsConfig.OrbRewards.ContainsKey(orbItemId);
     }
 
+    /// <summary>
+    ///     Orbs whose BonusID has no row in any shipped bonus table (GridFightOrb 121006/121007/121008 -> bonus
+    ///     21006-21008, the 爆裂矿石 kill drops): they open like the generic orb of the same colour. The real contents are
+    ///     server-side; before this they could be granted but every open failed with "消息获取失败".
+    /// </summary>
+    private static readonly Dictionary<uint, uint> OrbRecipeAliases = new()
+    {
+        [121006] = 199, // white: 2 gold
+        [121007] = 204, // blue
+        [121008] = 305, // gold
+    };
+
     public static bool TryResolveOrb(uint orbItemId, out IReadOnlyList<GridFightRewardEntry> rewards)
     {
         rewards = [];
+        if (OrbRecipeAliases.TryGetValue(orbItemId, out var alias)) return TryResolveOrb(alias, out rewards);
 
         // Capture-confirmed 4.4 Currency War semantics. Put these before cached custom data:
         // older Resource.bin snapshots contain the pre-4.4 definition for 103 (350101 x1),

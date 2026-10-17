@@ -61,18 +61,14 @@ public sealed partial class GridFightManager
         if (Session == null) return notify;
         var result = new GridFightSyncResultData();
         AppendRewardApplication(result, effect.Application);
-        foreach (var acquisition in effect.Application.RoleAcquisitions)
-            AppendAcquiredRoles(result, acquisition);
+        AppendLeadingAcquiredRoles(result, effect.Application.RoleAcquisitions);
         if (effect.ShopChanged)
             result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         if (effect.WinStreakChanged)
             result.UpdateDynamicList.Add(new GridFightSyncData { KeepWinCount = Session.KeepWinCount });
         notify.ResultList.Add(result);
-        foreach (var acquisition in effect.Application.RoleAcquisitions)
-        {
-            AppendRoleMergeResults(notify, GridFightUpdateSrcType.KgridFightSrcNone, [], acquisition);
-            AppendUnlockEffects(notify, acquisition);
-        }
+        AppendRoleAcquisitionMerges(notify, GridFightUpdateSrcType.KgridFightSrcNone, [], effect.Application.RoleAcquisitions,
+            unlockEffects: true);
         if (effect.Application.RoleAcquisitions.Count > 0)
             AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcNone);
         return notify;

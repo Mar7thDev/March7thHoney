@@ -29,6 +29,7 @@ public sealed class GridFightSeasonTwoChanges
     public List<uint> RemovedRoleIds { get; } = [];
     public List<GridFightRoleState> UpdatedRoles { get; } = [];
     public List<GridFightEquipmentState> AddedEquipments { get; } = [];
+    public List<GridFightEquipmentState> RemovedEquipments { get; } = [];
     public List<GridFightConsumableChange> ConsumableChanges { get; } = [];
     public List<GridFightRoleAcquisitionResult> RoleAcquisitions { get; } = [];
     public bool GoldChanged { get; set; }
@@ -39,7 +40,8 @@ public sealed class GridFightSeasonTwoChanges
     public GridFightSpotLightChanges SpotLight { get; } = new();
 
     public bool IsEmpty => AddedRoles.Count == 0 && RemovedRoleIds.Count == 0 && UpdatedRoles.Count == 0 &&
-                           AddedEquipments.Count == 0 && ConsumableChanges.Count == 0 && RoleAcquisitions.Count == 0 &&
+                           AddedEquipments.Count == 0 && RemovedEquipments.Count == 0 && ConsumableChanges.Count == 0 &&
+                           RoleAcquisitions.Count == 0 &&
                            !GoldChanged && !PlayerLevelChanged && !LineupHpChanged && !ShopChanged && !PendingStarted &&
                            SpotLight.Added.Count == 0 && SpotLight.Updated.Count == 0 && SpotLight.Removed.Count == 0;
 
@@ -82,13 +84,19 @@ public sealed partial class GridFightSession
     public const uint CounterKingEffectId = 2008021;
     private const uint TraitEquipmentSource = 3;
 
-    // Amphoreus Chrysos heirs of the season-2 pool. The client resolves this set from an encrypted
-    // ConstValueCommon key that the 4.6.51 data does not ship, so the list follows the lore (盗火行者:
-    // 黄金裔额外转化30%); the Special column of GridFightPhanionUniqueTrait is ~1.3x the normal one.
-    private static readonly HashSet<uint> ChrysosHeirRoleIds =
+    // Amphoreus Chrysos heirs of the season-2 pool (盗火行者: 黄金裔额外转化30%). 4.6.52 ships the client's list as
+    // GridFightTraitConstValueS2 GridFight_PhanionEffectSpecialRoleIDList; caches built from 4.6.51 data lack it and
+    // fall back to the list that followed the lore (it missed 141302).
+    private static readonly HashSet<uint> FallbackChrysosHeirRoleIds =
     [
         140202, 140302, 140402, 140502, 140602, 140702, 140802, 140902, 141002, 141202, 141402, 141502,
     ];
+
+    private static IReadOnlySet<uint> ChrysosHeirRoleIds =>
+        GameData.GridFightConstValueData.GetValueOrDefault("GridFight_PhanionEffectSpecialRoleIDList")?.AsUInt32List() is
+            { Count: > 0 } ids
+            ? ids.ToHashSet()
+            : FallbackChrysosHeirRoleIds;
 
     private readonly Dictionary<uint, uint> _traitTemplateIds = [];
     private readonly Dictionary<uint, List<uint>> _templateEquipmentUniqueIds = [];
@@ -231,6 +239,8 @@ public sealed partial class GridFightSession
             var aha = AbsorbAhaCopies();
             changes.RemovedRoleIds.AddRange(aha.Absorbed);
             changes.UpdatedRoles.AddRange(aha.Changed);
+            if (aha.Merges.Count > 0)
+                changes.RoleAcquisitions.Add(new GridFightRoleAcquisitionResult(true, [], aha.Merges, GetFinalMergedRoles(aha.Merges)));
             GrantTemplateEquipment(changes);
             GrantPetPalRewards(changes);
             RefreshSeasonTwoShops(changes);
@@ -335,24 +345,55 @@ public sealed partial class GridFightSession
         var layers = ResolveTraitLayers();
         foreach (var (traitId, templateId) in _traitTemplateIds)
         {
-            var layer = layers.TryGetValue(traitId, out var state) ? state.Layer : 0;
-            if (layer == 0) continue;
-            var effectId = traitId == StellaronHunterTraitId ? StellaronHunterEffectId : GoldenHotelEffectId;
-            var unlocked = (int)GetTraitEffectLayerParams(effectId, layer).FirstOrDefault();
             var template = GridFightSeasonTwoTables.TraitEquipTemplates
                 .FirstOrDefault(row => row.TraitId == traitId && row.TemplateId == templateId);
             if (template == null) continue;
             if (!_templateEquipmentUniqueIds.TryGetValue(traitId, out var granted))
                 _templateEquipmentUniqueIds[traitId] = granted = [];
+            var layer = layers.TryGetValue(traitId, out var state) ? state.Layer : 0;
+            var effectId = traitId == StellaronHunterTraitId ? StellaronHunterEffectId : GoldenHotelEffectId;
+            // GetTraitEffectLayerParams falls back to the lowest row, so an inactive bond is handled here.
+            var unlocked = layer == 0 ? 0 : Math.Min((int)GetTraitEffectLayerParams(effectId, layer).FirstOrDefault(),
+                template.EquipList.Length);
+            // 星核猎手 "按羁绊等级解锁并分配" its Script Equipment: the pieces follow the bond level and leave when it drops
+            // (they used to stay as ordinary items for good). 大饭店 meal components still stay once handed out.
+            var bondBound = traitId == StellaronHunterTraitId;
+            if (bondBound)
+            {
+                foreach (var equipment in Equipments.Where(item => granted.Contains(item.UniqueId)))
+                    equipment.IsTemporary = true; // runs saved before the flag existed
+                while (granted.Count > unlocked)
+                {
+                    var uniqueId = granted[^1];
+                    granted.RemoveAt(granted.Count - 1);
+                    RemoveTemporaryEquipment(uniqueId, changes);
+                }
+            }
+            if (layer == 0) continue;
             // GridFightTemplateEquipTraitEffect.IsEquipExtraDescActive: the idx-th template item unlocks with the
-            // idx-th layer threshold; items stay with the player once handed out.
-            for (var index = granted.Count; index < Math.Min(unlocked, template.EquipList.Length); index++)
+            // idx-th layer threshold.
+            for (var index = granted.Count; index < unlocked; index++)
             {
                 if (!TryAddEquipment(template.EquipList[index], out var equipment, TraitEquipmentSource)) break;
+                equipment.IsTemporary = bondBound;
                 granted.Add(equipment.UniqueId);
                 changes.AddedEquipments.Add(equipment);
             }
         }
+    }
+
+    private void RemoveTemporaryEquipment(uint uniqueId, GridFightSeasonTwoChanges changes)
+    {
+        var equipment = Equipments.FirstOrDefault(item => item.UniqueId == uniqueId);
+        if (equipment == null) return;
+        if (FindEquipmentWearer(uniqueId) is { } wearer)
+        {
+            wearer.EquippedEquipmentUniqueIds.Remove(uniqueId);
+            if (!changes.UpdatedRoles.Contains(wearer)) changes.UpdatedRoles.Add(wearer);
+        }
+        Equipments.Remove(equipment);
+        changes.AddedEquipments.Remove(equipment);
+        changes.RemovedEquipments.Add(equipment);
     }
 
     // ---------------------------------------------------------------- pending prompts

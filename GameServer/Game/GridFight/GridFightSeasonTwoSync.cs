@@ -191,8 +191,9 @@ public sealed partial class GridFightManager
             result.UpdateDynamicList.Add(new GridFightSyncData { RemoveRoleUniqueId = uniqueId });
         foreach (var role in changes.UpdatedRoles)
             result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
-        foreach (var acquisition in changes.RoleAcquisitions)
-            AppendAcquiredRoles(result, acquisition);
+        AppendLeadingAcquiredRoles(result, changes.RoleAcquisitions);
+        foreach (var equipment in changes.RemovedEquipments)
+            result.UpdateDynamicList.Add(new GridFightSyncData { RemoveGameItemInfo = BuildEquipmentItems([equipment]) });
         if (changes.AddedEquipments.Count > 0)
         {
             var items = new GridFightGameItemSyncInfo();
@@ -239,6 +240,9 @@ public sealed partial class GridFightManager
         }
         AppendRoleCapacityDiff(result, session);
         if (result.UpdateDynamicList.Count > 0) notify.ResultList.Add(result);
+        // Roles gained here run through the same merge pipeline (TryAddRole); without their merge steps the client
+        // kept the merged-away copies and never saw the upgraded role.
+        AppendRoleAcquisitionMerges(notify, GridFightUpdateSrcType.KgridFightSrcNone, [], changes.RoleAcquisitions);
         return notify.ResultList.Count == 0 ? null : notify;
     }
 
@@ -406,17 +410,14 @@ public sealed partial class GridFightManager
                 RemoveGameItemInfo = BuildEquipmentItems([removedEquipment]),
             });
         if (application != null) AppendRewardApplication(result, application);
-        if (application != null)
-            foreach (var acquisition in application.RoleAcquisitions)
-                AppendAcquiredRoles(result, acquisition);
+        if (application != null) AppendLeadingAcquiredRoles(result, application.RoleAcquisitions);
         if (change != null) AppendSessionChanges(result, change);
         if (includeShop) result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
         AppendRoleSavedValueUpdates(result, Session.RefreshRoleSavedValues());
         AppendSeasonTwoEffectDiffs(result);
         notify.ResultList.Add(result);
         if (application != null)
-            foreach (var acquisition in application.RoleAcquisitions)
-                AppendRoleMergeResults(notify, result.UpdateSource, [traitId, effectId], acquisition);
+            AppendRoleAcquisitionMerges(notify, result.UpdateSource, [traitId, effectId], application.RoleAcquisitions);
         if (finishedQueuePosition != 0)
         {
             var finish = new GridFightSyncResultData();
@@ -433,11 +434,10 @@ public sealed partial class GridFightManager
         var notify = new GridFightSyncUpdateResultScNotify();
         var result = new GridFightSyncResultData();
         AppendRewardApplication(result, gains);
-        foreach (var acquisition in gains.RoleAcquisitions) AppendAcquiredRoles(result, acquisition);
+        AppendLeadingAcquiredRoles(result, gains.RoleAcquisitions);
         if (BuildPendingAction() is { } pending) result.UpdateDynamicList.Add(new GridFightSyncData { PendingAction = pending });
         notify.ResultList.Add(result);
-        foreach (var acquisition in gains.RoleAcquisitions)
-            AppendRoleMergeResults(notify, GridFightUpdateSrcType.KgridFightSrcNone, [], acquisition);
+        AppendRoleAcquisitionMerges(notify, GridFightUpdateSrcType.KgridFightSrcNone, [], gains.RoleAcquisitions);
         return notify;
     }
 

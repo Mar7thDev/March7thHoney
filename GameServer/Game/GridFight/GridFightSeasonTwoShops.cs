@@ -568,9 +568,8 @@ public sealed partial class GridFightManager
             _sentPamKingProgress = $"{item.UniqueId}:{item.ONKMJAGNECC.IANFMIJBKAF}";
         }
         AppendRewardApplication(result, unlock);
-        foreach (var acquisition in unlock.RoleAcquisitions) AppendAcquiredRoles(result, acquisition);
+        AppendLeadingAcquiredRoles(result, unlock.RoleAcquisitions);
         notify.ResultList.Add(result);
-        foreach (var acquisition in unlock.RoleAcquisitions)
-            AppendRoleMergeResults(notify, source, parameters, acquisition);
+        AppendRoleAcquisitionMerges(notify, source, parameters, unlock.RoleAcquisitions);
     }
 }

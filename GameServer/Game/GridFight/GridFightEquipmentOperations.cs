@@ -131,7 +131,7 @@ public sealed partial class GridFightSession
             .Select(uniqueId => Equipments.FirstOrDefault(equipment => equipment.UniqueId == uniqueId))
             .ToList();
         if (materials.Any(equipment => equipment == null) ||
-            materials.Any(equipment => equipment!.IsLocked || FindEquipmentWearer(equipment.UniqueId) != null))
+            materials.Any(equipment => equipment!.IsRestricted || FindEquipmentWearer(equipment.UniqueId) != null))
             return GridFightEquipCraftResult.Failed;
         var craftedEquipmentId = ResolveCraftedEquipmentId(
             materials[0]!.EquipmentId, materials[1]!.EquipmentId, targetEquipmentId);
@@ -321,9 +321,10 @@ public sealed partial class GridFightSession
         ICollection<GridFightEquipmentState> added)
     {
         var newlyEquipped = Equipments.First(equipment => equipment.UniqueId == newlyEquippedUniqueId);
+        if (newlyEquipped.IsRestricted) return false;
         var craftCandidates = GetEquippedEquipment(role)
             .Where(equipment => equipment.UniqueId != newlyEquippedUniqueId)
-            .Where(equipment => !equipment.IsLocked)
+            .Where(equipment => !equipment.IsRestricted)
             .Where(equipment => GameData.GridFightEquipmentData[equipment.EquipmentId].EquipType !=
                                 GridFightEquipmentTypeEnum.Implants)
             .ToList();
@@ -387,14 +388,14 @@ public sealed partial class GridFightSession
         if (equipmentUniqueId != 0)
         {
             var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
-            if (equipment == null || equipment.IsLocked || FindEquipmentWearer(equipmentUniqueId) != null) return false;
+            if (equipment == null || equipment.IsRestricted || FindEquipmentWearer(equipmentUniqueId) != null) return false;
             return RollOneEquipment(equipment, removed, added);
         }
 
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == roleUniqueId);
         if (role == null) return false;
         var replacements = GetEquippedEquipment(role)
-            .Where(equipment => !equipment.IsLocked)
+            .Where(equipment => !equipment.IsRestricted)
             .Select(equipment =>
             {
                 var config = GameData.GridFightEquipmentData[equipment.EquipmentId];
@@ -424,7 +425,7 @@ public sealed partial class GridFightSession
         ICollection<GridFightEquipmentState> removed,
         ICollection<GridFightEquipmentState> added)
     {
-        if (equipment.IsLocked) return false;
+        if (equipment.IsRestricted) return false;
         var config = GameData.GridFightEquipmentData[equipment.EquipmentId];
         if (config.EquipType == GridFightEquipmentTypeEnum.Implants) return false;
         var replacementId = _catalog.RollEquipment(config.EquipCategory, equipment.EquipmentId);
@@ -442,7 +443,7 @@ public sealed partial class GridFightSession
         ICollection<GridFightRoleState> updatedRoles)
     {
         var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
-        if (equipment == null || equipment.IsLocked ||
+        if (equipment == null || equipment.IsRestricted ||
             !GameData.GridFightEquipUpgradeData.TryGetValue(equipment.EquipmentId, out var upgrade) ||
             !GameData.GridFightEquipmentData.ContainsKey(upgrade.UpgradeID))
             return false;

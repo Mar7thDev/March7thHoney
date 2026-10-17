@@ -257,11 +257,22 @@ static class EconomyEffectsRegression
             check("白银投资: selection immediately opens a silver choice with 3 rerolls", selected &&
                 run.Phase == GridFightSessionPhase.SelectingInvestment && run.InvestmentFreeRerollCount == 3 &&
                 run.InvestmentOffer.Count == 3 && run.InvestmentOffer.All(id => GameData.GridFightAugmentData[id].Quality == GridFightAugmentQualityEnum.Silver));
+            // The client keeps refreshes per card (MaxRollTimes/RollTimes): each card gets its own three.
+            run.RerollInvestment(run.PendingQueuePosition, run.InvestmentOffer[0]);
+            var wire = manager.BuildPendingAction()!.InvestmentAction.PendingInvestmentList;
+            check("白银投资: a refresh counts on that card only and never exceeds its allowance on the wire",
+                wire.Count == 3 && wire[0].RerollCount == 1 && wire.Skip(1).All(card => card.RerollCount == 0) &&
+                wire.All(card => card.FreeRerollCount == 3 && card.RerollCount <= card.FreeRerollCount));
             var restored = SnapshotProbe.RoundTrip(catalog, run);
             var refreshed = true;
-            for (var index = 0; index < 3; index++) refreshed &= restored.RerollInvestment(restored.PendingQueuePosition, restored.InvestmentOffer[0]);
-            check("白银投资: exactly three rerolls across save/restore", refreshed && restored.InvestmentFreeRerollCount == 0 &&
+            for (var index = 0; index < 2; index++) refreshed &= restored.RerollInvestment(restored.PendingQueuePosition, restored.InvestmentOffer[0]);
+            check("白银投资: a card refreshes exactly three times across save/restore", refreshed &&
+                restored.GetInvestmentRerollCount(restored.InvestmentOffer[0]) == 3 &&
                 !restored.RerollInvestment(restored.PendingQueuePosition, restored.InvestmentOffer[0]));
+            var others = true;
+            for (var index = 0; index < 3; index++) others &= restored.RerollInvestment(restored.PendingQueuePosition, restored.InvestmentOffer[1]);
+            check("白银投资: refreshing a card a second time works on every card (used to share one pool of 3)", others &&
+                restored.GetInvestmentRerollCount(restored.InvestmentOffer[1]) == 3 && restored.RerollInvestment(restored.PendingQueuePosition, restored.InvestmentOffer[2]));
             restored.SelectInvestment(restored.PendingQueuePosition, restored.InvestmentOffer[0]);
             check("白银投资: child selection resumes the original flow", restored.Phase == GridFightSessionPhase.AwaitingBattleReturn);
             for (var index = 0; index < 3; index++) Call(restored, "OnEconomyNodeEntered");
