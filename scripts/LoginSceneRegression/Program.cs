@@ -1636,6 +1636,19 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
             relogSnapshot.AvatarList.Count(avatar => avatar.BaseAvatarId == 1415) == 1 && skinAvatar.Level == 21 &&
             skinPath.Skin == 1141501 && skinPath.EquipId == skinCone.UniqueId && skinPath.Relic[1] == skinRelic.UniqueId);
     }
+    // 奇缘星魂 apply in 货币战争 too: GridFight builds its battle avatar from the owned avatar, and it used to drop the
+    // activated ExRank there.
+    AvatarExRankMaterials.ApplyDocument(Newtonsoft.Json.Linq.JObject.Parse(
+        File.ReadAllText(Path.Combine(repository, "Config", "Custom", "AvatarExRankMaterials.json"))));
+    var exRankPlayer = new PlayerInstance(60031);
+    await exRankPlayer.InitializeAsync();
+    await exRankPlayer.AddAvatar(1308, false, false);
+    exRankPlayer.AvatarManager!.Data.ExRankIds[1308] = [130801];
+    var exRankAvatar = exRankPlayer.AvatarManager.GetFormalAvatar(1308)!;
+    var exRankCollection = new March7thHoney.Database.Avatar.PlayerDataCollection(exRankPlayer.Data, exRankPlayer.InventoryManager!.Data, new());
+    Check("an activated ExRank reaches GridFight battle avatars as well as ordinary ones",
+        exRankAvatar.ToBattleProto(exRankCollection, 1308, AvatarType.AvatarGridFightType).IGDEHGIKFJA.Contains(130801u) &&
+        exRankAvatar.ToBattleProto(exRankCollection, 1308, AvatarType.AvatarFormalType).IGDEHGIKFJA.Contains(130801u));
     var repeatSkinFrames = await DressSkin();
     Check("repeated dress request is ACK-only and preserves equipped items",
         repeatSkinFrames.Select(frame => frame.Id).SequenceEqual(new[] { (ushort)CmdIds.DressAvatarSkinScRsp }) &&
