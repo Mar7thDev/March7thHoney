@@ -9,9 +9,9 @@ namespace March7thHoney.Data.Excel;
 [MemoryPackable]
 public partial class UpgradeAvatarEquipmentExcel : ExcelResource
 {
-    [JsonProperty("ELADHEIOONA")] public uint EquipmentId { get; set; }
+    [JsonProperty("NBFOFKGNNIO")] public uint EquipmentId { get; set; }
 
-    [JsonProperty("FJIFJPGEJID")]
+    [JsonProperty("LKLNGCCIMEM")]
     [JsonConverter(typeof(StringEnumConverter))]
     public AvatarBaseTypeEnum BaseType { get; set; }
 
