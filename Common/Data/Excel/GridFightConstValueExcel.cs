@@ -26,15 +26,18 @@ public partial class GridFightDynamicValue
     }
 }
 
-// accepts both the baked {Type, Value} wrapper and the flat {IntValue} spelling
+// accepts the baked {Type, Value} wrapper, the flat {IntValue} spelling and (4.6.52+ exports) the bare JSON value
 public class GridFightDynamicValueConverter : JsonConverter<GridFightDynamicValue>
 {
+    private static readonly HashSet<string> FlatKeys =
+        ["IntValue", "DoubleValue", "BoolValue", "StringValue", "ArrayValue", "MapValue"];
+
     public override bool CanWrite => false;
 
     public override GridFightDynamicValue ReadJson(JsonReader reader, Type objectType,
         GridFightDynamicValue? existingValue, bool hasExistingValue, JsonSerializer serializer)
     {
-        return JToken.ReadFrom(reader) is JObject obj ? Read(obj) : new GridFightDynamicValue();
+        return Read(JToken.ReadFrom(reader));
     }
 
     public override void WriteJson(JsonWriter writer, GridFightDynamicValue? value, JsonSerializer serializer)
@@ -42,11 +45,32 @@ public class GridFightDynamicValueConverter : JsonConverter<GridFightDynamicValu
         throw new NotSupportedException();
     }
 
+    private static GridFightDynamicValue Read(JToken token)
+    {
+        return token switch
+        {
+            JObject obj => Read(obj),
+            JArray array => new GridFightDynamicValue { ArrayValue = array.Select(Read).ToList() },
+            { Type: JTokenType.Integer } => new GridFightDynamicValue { IntValue = token.Value<long>() },
+            { Type: JTokenType.Float } => new GridFightDynamicValue { DoubleValue = token.Value<double>() },
+            { Type: JTokenType.Boolean } => new GridFightDynamicValue { BoolValue = token.Value<bool>() },
+            { Type: JTokenType.String } => new GridFightDynamicValue { StringValue = token.Value<string>() },
+            _ => new GridFightDynamicValue(),
+        };
+    }
+
     private static GridFightDynamicValue Read(JObject obj)
     {
-        return obj["Type"]?.Value<string>() is { } type && obj.TryGetValue("Value", out var payload)
-            ? ReadWrapped(type, payload)
-            : ReadFlat(obj);
+        if (obj["Type"]?.Value<string>() is { } type && obj.TryGetValue("Value", out var payload))
+            return ReadWrapped(type, payload);
+        // An empty object is an omitted default in the older exports; any key outside the flat spelling makes it a
+        // bare map ({"ExtraHealAddedRatio": 0.1}).
+        if (obj.Count == 0 || obj.Properties().All(property => FlatKeys.Contains(property.Name)))
+            return ReadFlat(obj);
+        return new GridFightDynamicValue
+        {
+            MapValue = obj.Properties().ToDictionary(property => property.Name, property => Read(property.Value)),
+        };
     }
 
     private static GridFightDynamicValue ReadWrapped(string type, JToken payload)
@@ -105,7 +129,8 @@ public class GridFightDynamicValueConverter : JsonConverter<GridFightDynamicValu
     }
 }
 
-[ResourceEntity("GridFightConstCommon.json,GridFightConstValueCommonV2.json", true)]
+[ResourceEntity("GridFightConstCommon.json,GridFightConstValueCommonV2.json,GridFightTraitConstValueS2.json", true,
+    OptionalFileNames = "GridFightTraitConstValueS2.json")]
 [MemoryPackable]
 public partial class GridFightConstValueExcel : ExcelResource
 {
