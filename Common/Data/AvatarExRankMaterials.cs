@@ -1,4 +1,7 @@
 using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Numerics;
+using March7thHoney.Enums.Item;
 using March7thHoney.Data.Excel;
 using March7thHoney.Util;
 using Newtonsoft.Json.Linq;
@@ -28,7 +31,16 @@ public static class AvatarExRankMaterials
             Logger.Warn($"{path} not found; ExRank materials are disabled.");
             return;
         }
-        ApplyDocument(JObject.Parse(File.ReadAllText(path)));
+        try
+        {
+            ApplyDocument(JObject.Parse(File.ReadAllText(path)));
+            Logger.Info($"Loaded {_materialIds.Count} ExRank materials and {Definitions.Count} ExRank definitions.");
+        }
+        catch (Exception error)
+        {
+            // The staged document is applied only after full validation, so a bad file leaves ExRank disabled.
+            Logger.Error($"Invalid {path}; ExRank materials are disabled.", error);
+        }
     }
 
     public static void ApplyDocument(JObject document)
@@ -47,9 +59,19 @@ public static class AvatarExRankMaterials
             // Only the *name* of the new client subtype has been exported, not its numeric enum value.
             // Use existing generic-material storage internally; keep the exact original subtype in JSON.
             // Item sync transmits item ID/count, not this internal subtype. Do not guess a wire enum.
-            var storageRow = (JObject)material.DeepClone();
-            storageRow["ItemSubType"] = "Material";
-            var item = storageRow.ToObject<ItemConfigExcel>() ?? throw new InvalidDataException("Invalid ExRank item");
+            // Built field by field: JToken.ToObject would need the generic SafeStringEnumConverter
+            // instantiations, which the NativeAOT build does not contain on a cache boot.
+            var nameHash = material["ItemName"]?["Hash64"] ?? material["ItemName"]?["Hash"];
+            var item = new ItemConfigExcel
+            {
+                ID = material.Value<int>("ID"),
+                ItemName = new HashName
+                    { Hash = nameHash == null ? BigInteger.Zero : BigInteger.Parse(nameHash.ToString(), CultureInfo.InvariantCulture) },
+                ItemMainType = ItemMainTypeEnum.Material,
+                ItemSubType = ItemSubTypeEnum.Material,
+                Rarity = ItemRarityEnum.SuperRare,
+                PileLimit = 1
+            };
             item.Name = names.Value<string>(item.ID.ToString());
             if (item.ID <= 0 || string.IsNullOrWhiteSpace(item.Name) || !stagedItems.TryAdd(item.ID, item))
                 throw new InvalidDataException("Invalid or duplicate ExRank item ID/name");
@@ -61,7 +83,7 @@ public static class AvatarExRankMaterials
             var cost = rank["PKBNJLOLPBM"] as JObject ?? throw new InvalidDataException("Missing ExRank cost");
             var materialId = cost.Value<int>("ItemID");
             var count = cost.Value<int>("ItemNum");
-            var abilityKeys = rank["NNFEGHLLEPH"]?.ToObject<string[]>() ?? [];
+            var abilityKeys = (rank["NNFEGHLLEPH"] as JArray)?.Select(key => key.Type == JTokenType.String ? key.Value<string>() ?? "" : "").ToArray() ?? [];
             if (id <= 0 || avatarId <= 0 || count != 1 || !stagedItems.ContainsKey(materialId) ||
                 abilityKeys.Length == 0 || abilityKeys.Any(string.IsNullOrWhiteSpace) ||
                 !stagedRanks.TryAdd(id, new AvatarExRankDefinition(id, avatarId, materialId, count,
