@@ -510,7 +510,7 @@ public sealed partial class GridFightManager : BasePlayerManager
                         {
                             AugmentId = augmentId,
                             FreeRerollCount = session.InvestmentFreeRerollCount,
-                            RerollCount = session.IsInvestmentRerolled(augmentId) ? 1u : 0u,
+                            RerollCount = Math.Min(session.GetInvestmentRerollCount(augmentId), session.InvestmentFreeRerollCount),
                         }));
                 break;
             case GridFightSessionPhase.SelectingSupply:
@@ -816,17 +816,13 @@ public sealed partial class GridFightManager : BasePlayerManager
             result.EffectParamList.Add(purchase.SpecialGoodsId);
             result.EffectParamList.Add(purchase.GoodsIndex);
             AppendRewardApplication(result, purchase.Application);
-            foreach (var acquisition in purchase.Application.RoleAcquisitions)
-                AppendAcquiredRoles(result, acquisition);
+            AppendLeadingAcquiredRoles(result, purchase.Application.RoleAcquisitions);
             notify.ResultList.Add(result);
-            foreach (var acquisition in purchase.Application.RoleAcquisitions)
-            {
-                AppendRoleMergeResults(
-                    notify,
-                    GridFightUpdateSrcType.KgridFightSrcSpecialGoods,
-                    [purchase.SpecialGoodsId, purchase.GoodsIndex],
-                    acquisition);
-            }
+            AppendRoleAcquisitionMerges(
+                notify,
+                GridFightUpdateSrcType.KgridFightSrcSpecialGoods,
+                [purchase.SpecialGoodsId, purchase.GoodsIndex],
+                purchase.Application.RoleAcquisitions);
         }
 
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcSpecialGoods);
@@ -858,17 +854,13 @@ public sealed partial class GridFightManager : BasePlayerManager
             RemoveOrbUniqueId = application.SourceUniqueId,
         });
         AppendRewardApplication(result, application);
-        foreach (var acquisition in application.RoleAcquisitions)
-            AppendAcquiredRoles(result, acquisition);
+        AppendLeadingAcquiredRoles(result, application.RoleAcquisitions);
         notify.ResultList.Add(result);
-        foreach (var acquisition in application.RoleAcquisitions)
-        {
-            AppendRoleMergeResults(
-                notify,
-                GridFightUpdateSrcType.KgridFightSrcUseOrb,
-                [application.SourceUniqueId, application.SourceItemId],
-                acquisition);
-        }
+        AppendRoleAcquisitionMerges(
+            notify,
+            GridFightUpdateSrcType.KgridFightSrcUseOrb,
+            [application.SourceUniqueId, application.SourceItemId],
+            application.RoleAcquisitions);
         AppendRoleDerivedStateResult(notify, GridFightUpdateSrcType.KgridFightSrcUseOrb);
         foreach (var acquisition in application.RoleAcquisitions)
             AppendUnlockEffects(notify, acquisition);
@@ -1032,8 +1024,15 @@ public sealed partial class GridFightManager : BasePlayerManager
         foreach (var forgeItem in application.AddedForgeItems)
             result.UpdateDynamicList.Add(new GridFightSyncData { AddForgeItemInfo = BuildForgeItem(forgeItem) });
         if (application.RolePropertiesChanged)
-            foreach (var role in session.Roles)
+        {
+            // Roles this reward created reach the client later (AddRoleInfo, merge steps) with their current state.
+            var notYetSent = application.RoleAcquisitions
+                .SelectMany(acquisition => acquisition.AcquiredRoles.Concat(acquisition.MergeSteps.Select(step => step.AddedRole)))
+                .Select(role => role.UniqueId)
+                .ToHashSet();
+            foreach (var role in session.Roles.Where(role => !notYetSent.Contains(role.UniqueId)))
                 result.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+        }
         AppendPendingTrackedAutoEquipRoles(result);
     }
 
@@ -1141,6 +1140,54 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         foreach (var role in acquisition.AcquiredRoles)
             result.UpdateDynamicList.Add(new GridFightSyncData { AddRoleInfo = BuildRole(role) });
+    }
+
+    /// <summary>
+    ///     Number of acquisitions whose new roles can share the leading result: everything up to and including the
+    ///     first one that merged. A role granted after a merge may sit in the bench cell that merge just emptied, so
+    ///     the client must get it after that merge (see <see cref="AppendRoleAcquisitionMerges" />); otherwise it
+    ///     lands on a cell that is still taken there, the cell looks empty and every move into it is refused.
+    /// </summary>
+    private static int CountLeadingAcquisitions(IReadOnlyList<GridFightRoleAcquisitionResult> acquisitions)
+    {
+        var index = 0;
+        while (index < acquisitions.Count && acquisitions[index].MergeSteps.Count == 0) index++;
+        return Math.Min(index + 1, acquisitions.Count);
+    }
+
+    /// <summary>The new roles of the leading acquisitions, for the result that carries the reward source.</summary>
+    private void AppendLeadingAcquiredRoles(
+        GridFightSyncResultData result,
+        IReadOnlyList<GridFightRoleAcquisitionResult> acquisitions)
+    {
+        foreach (var acquisition in acquisitions.Take(CountLeadingAcquisitions(acquisitions)))
+            AppendAcquiredRoles(result, acquisition);
+    }
+
+    /// <summary>
+    ///     After the leading result: every acquisition's merges in the order the session applied them, each later
+    ///     acquisition's new roles right before its own merges.
+    /// </summary>
+    private void AppendRoleAcquisitionMerges(
+        GridFightSyncUpdateResultScNotify notify,
+        GridFightUpdateSrcType acquisitionSource,
+        IReadOnlyList<uint> effectParameters,
+        IReadOnlyList<GridFightRoleAcquisitionResult> acquisitions,
+        bool unlockEffects = false)
+    {
+        var leading = CountLeadingAcquisitions(acquisitions);
+        for (var index = 0; index < acquisitions.Count; index++)
+        {
+            var acquisition = acquisitions[index];
+            if (index >= leading && acquisition.AcquiredRoles.Count > 0)
+            {
+                var added = new GridFightSyncResultData();
+                AppendAcquiredRoles(added, acquisition);
+                notify.ResultList.Add(added);
+            }
+            AppendRoleMergeResults(notify, acquisitionSource, effectParameters, acquisition);
+            if (unlockEffects) AppendUnlockEffects(notify, acquisition);
+        }
     }
 
     private void AppendRoleMergeSteps(
@@ -1710,7 +1757,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         var session = Session;
         if (session == null || !ReferenceEquals(session, context) || session.Phase != GridFightSessionPhase.InBattle)
             return false;
-        await SettleBattle(session, null, false, GridFightBattleStatistics.Empty);
+        await SettleBattle(session, null, false, GridFightBattleStatistics.Empty, retreated: true);
         Persist();
         return true;
     }
@@ -1734,24 +1781,50 @@ public sealed partial class GridFightManager : BasePlayerManager
     {
         var session = Session;
         if (session == null) return;
-        await SettleBattle(session, battle, request.EndStatus == BattleEndStatus.BattleEndWin, ReadBattleStatistics(request));
+        var reported = request.Stt?.GridFightStatistics?.ODMCMPIDJNH.ToList() ?? [];
+        // No capture shows this list yet; log it so the next real one can confirm what it carries.
+        if (reported.Count > 0)
+            Logger.Debug($"GridFight battle of uid {Player.Uid} reported in-battle drops: " +
+                         string.Join(", ", reported.Select(drop => $"{drop.DropType}:{drop.ItemId}x{drop.Num}")));
+        var reportedOrbs = reported.Where(drop => drop.DropType == GridFightDropType.Orb)
+            .Select(drop => new GridFightRewardEntry(Enums.GridFight.GridFightBonusTypeEnum.Orb, drop.ItemId, drop.Num))
+            .ToList();
+        await SettleBattle(session, battle, request.EndStatus == BattleEndStatus.BattleEndWin, ReadBattleStatistics(request),
+            retreated: request.EndStatus == BattleEndStatus.BattleEndQuit, reportedDrops: reportedOrbs);
     }
 
     private async ValueTask SettleBattle(
         GridFightSession session,
         BattleInstance? battle,
         bool battleEndedNormally,
-        GridFightBattleStatistics statistics)
+        GridFightBattleStatistics statistics,
+        bool retreated = false,
+        IReadOnlyList<GridFightRewardEntry>? reportedDrops = null)
     {
         var chapterId = session.ChapterId;
         var sectionId = session.SectionId;
         var previousLevel = session.PlayerLevel;
         var previousExp = session.PlayerExp;
         var previousMaxExp = Catalog.GetPlayerLevel(previousLevel).LevelUpExp;
-        var settlement = session.ResolveBattle(battleEndedNormally, statistics);
+        var settlement = session.ResolveBattle(battleEndedNormally, statistics, reportedDrops);
         if (!settlement.Success)
         {
             await SendFailedBattleCleanup(session);
+            return;
+        }
+        if (retreated)
+        {
+            // 撤退 leaves Currency Wars altogether: right after BATTLE_END_QUIT the client sends
+            // GridFightQuitLeaveGamePlayCsReq and walks back to the overworld (2026-10-06 log), and it reloads the run
+            // through GetData when it comes back. The battle still counts as lost (no free replay), but its settle
+            // page, the route sync and the settle notify must not reach a client that is leaving: they blacked it out.
+            _lastBattleDamageStatistics = new GridFightDamageSttInfo();
+            await SendFailedBattleCleanup(session);
+            if (settlement.Defeated || !settlement.RouteAdvanced)
+            {
+                ClearSession(settled: true);
+                await RecordGameFinished(session);
+            }
             return;
         }
         // Without a battle instance (QuitBattleCsReq) there are no uploaded statistics to break down.
@@ -2171,7 +2244,8 @@ public sealed partial class GridFightManager : BasePlayerManager
             UniqueId = equipment.UniqueId,
             GridFightEquipmentId = equipment.EquipmentId,
             Source = equipment.Source,
-            IODIJBEHEGF = equipment.IsLocked,
+            // Client GridFightEquipmentInfo.IsTemporary: no roll, "cannot operate temporary equipment".
+            IODIJBEHEGF = equipment.IsRestricted,
         };
     }
 

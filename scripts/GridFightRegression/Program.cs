@@ -165,13 +165,10 @@ Check("locked free refresh retains slots", shop.RefreshShop(false) && previousSh
 var previousGold = shop.Gold;
 Check("paid refresh unlocks and charges once", shop.RefreshShop(true) && !shop.ShopLocked &&
     shop.Gold == previousGold - catalog.RefreshCost);
-// Split-table (4.7 beta GridFightCampSeason) caches resolve role skills natively; run their own checks.
+// Split-table (GridFightCampSeason, 4.6.52+ and 4.7 beta) caches resolve role skills natively; they get their own
+// checks and then the full suite, which holds for them as well.
 if (catalog.RolePool.Any(role => role.UsesNativeSkillOverrides))
-{
     BetaTableRegression.Run(catalog, NewRun, Check);
-    Console.WriteLine($"GridFight regression: {checks - failures.Count}/{checks} passed.");
-    return failures.Count == 0 ? 0 : 1;
-}
 var maxStarRole = catalog.RolePool.First(role => role.ID == roleA);
 shop.TryAddRole(maxStarRole.ID, 3, out _);
 var switchGroup = catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(maxStarRole.ID));
@@ -831,6 +828,24 @@ else Check("主角光环: bonus 23156 resolves", false);
     Check("爆晶矿·彩: kills drop loot orbs (121006-121008)",
         lootBattle && lootRun.Orbs.Count > orbsBefore &&
         lootRun.Orbs.Skip(orbsBefore).All(orb => orb.OrbItemId is 121006 or 121007 or 121008));
+    // Their bonus rows (21006-21008) are not shipped; opening them used to fail ("消息获取失败") and block "open all".
+    Check("爆晶矿: every loot orb opens and \"open all\" takes them",
+        new uint[] { 121006, 121007, 121008 }.All(id => GridFightSpecialFeatures.TryResolveOrb(id, out var opened) && opened.Count > 0) &&
+        lootRun.OpenOrbs([], true).Count > 0 && lootRun.Orbs.All(orb => orb.OrbItemId is not (121006 or 121007 or 121008)));
+
+    // Trotters spawned inside a battle (season talent 4061, Trotter Virus) drop orbs that only the client knows about;
+    // it reports them in GridFightBattleResultStatistics field 5.
+    var trotterRun = NewRun(routePortal).Session!;
+    trotterRun.Roles.Clear();
+    AddRole(trotterRun, roleA).Position = 1;
+    var trotterOrbs = trotterRun.Orbs.Count;
+    var trotterKills = new List<GridFightKilledMonsterInstance> { new(1, 1, 0), new(1, 2, 0) };
+    var trotterBattle = trotterRun.EnterBattle() && trotterRun.ResolveBattle(true,
+        new GridFightBattleStatistics(100, [], [], [], trotterKills, 1, new Dictionary<string, uint>()),
+        [new(GridFightBonusTypeEnum.Orb, 199, 5), new(GridFightBonusTypeEnum.Orb, 999999, 1)]).Success;
+    Check("in-battle trotter orbs are granted: openable ones only, at most one per kill",
+        trotterBattle && trotterRun.Orbs.Count - trotterOrbs == 2 &&
+        trotterRun.Orbs.Skip(trotterOrbs).All(orb => orb.OrbItemId == 199));
 }
 
 // 佩佩客串: Pepe arrives on pick, wears an advanced item per perfect clear and leaves after 5 nodes with it unlocked.
@@ -1562,6 +1577,15 @@ if (!catalog.IsSeasonOne)
     Check("S2 幻乐之主: 多回点血！ raises max squad HP and heals by the same amount",
         moreHpBought.Count == 1 && moreHp.MaxLineupHp == maxHpBefore + 15 &&
         moreHp.LineupHp == Math.Min(moreHp.MaxLineupHp, moreHpBefore + 15) && moreHpBought[0].Application.LineupHpChanged);
+    // 开拓之旅 (347) hands out its table value; 哈基维利 (447) the 200 the 4.6.53 client shows.
+    uint TrailblazePowerOf(uint goodsId)
+    {
+        var board = AhaGoodsBoard(goodsId, out var index);
+        var before = board.TrailblazeCoin;
+        return board.BuySpecialGoods([index]).Count == 1 ? board.TrailblazeCoin - before : 0;
+    }
+    Check("S2 幻乐之主: 开拓之旅 grants 1000 开拓力 and 哈基维利 the 200 its description shows",
+        TrailblazePowerOf(347) == 1000 && TrailblazePowerOf(447) == 200);
     // 五费专场(341): the whole shop, the bought slot included, refills with 5-cost roles; 3★ roles stay out of it.
     var fiveCost = AhaGoodsBoard(341, out var fiveCostIndex);
     var fiveCostRoles = catalog.RolePool.Where(role => role.Rarity == 5 && fiveCost.IsRestrictedRoleUnlockedForRun(role.ID))
@@ -1811,6 +1835,8 @@ BattleEffectsRegression.Run(NewRun, catalog, Check);
 ElationUiRegression.Run(NewRun, catalog, Check);
 OwlbertRegression.Run(NewRun, catalog, Check);
 SpotLightEffectsRegression.Run(NewRun, catalog, Check);
+SyncOrderRegression.Run(NewRun, catalog, Check);
+TraitEquipmentRegression.Run(NewRun, catalog, Check);
 
 var persistBase = NewRun(101);
 var persistCatalog = persistBase.Catalog;

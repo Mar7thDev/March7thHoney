@@ -176,32 +176,49 @@ public sealed partial class GridFightSession
     /// <summary>
     ///     获取星神★阿哈可积攒【幻月之力】: the 3/4/5-cost Aha tiers have no stars (GridFight_Aha_No_Star_Role_IDList), so
     ///     every further copy is absorbed into growth instead of being merged, and growth raises the cost tier on the same
-    ///     unique id. Returns the roles whose id changed and the unique ids of absorbed copies.
+    ///     unique id. The 7-cost tier has stars ("达到3星7费"): once an Aha is 7-cost, every other copy becomes a 1★ 7-cost
+    ///     copy and merges like any role. Returns the roles whose id changed, the unique ids of absorbed copies and the
+    ///     merges of 7-cost copies.
     /// </summary>
-    public (IReadOnlyList<GridFightRoleState> Changed, IReadOnlyList<uint> Absorbed) AbsorbAhaCopies()
+    public (IReadOnlyList<GridFightRoleState> Changed, IReadOnlyList<uint> Absorbed, IReadOnlyList<GridFightRoleMergeStep> Merges)
+        AbsorbAhaCopies()
     {
-        if (!IsSeasonTwoRules) return ([], []);
+        if (!IsSeasonTwoRules) return ([], [], []);
         var ahas = Roles.Where(role => IsAhaRole(role.RoleId)).ToList();
-        if (ahas.Count == 0) return ([], []);
+        if (ahas.Count == 0) return ([], [], []);
+        var changed = new List<GridFightRoleState>();
+        if (ahas.Any(role => role.RoleId == AhaSevenCostRoleId))
+        {
+            // Before, a copy stayed 3-cost on the bench and only turned 7-cost on its own once it was fielded as the
+            // tier keeper; those copies never merged (a perfect projector later merged them all at once).
+            foreach (var copy in ahas.Where(role => role.RoleId != AhaSevenCostRoleId))
+            {
+                copy.RoleId = AhaSevenCostRoleId;
+                copy.Star = 1;
+                changed.Add(copy);
+            }
+            var merges = MergeRoles(AhaSevenCostRoleId);
+            if (changed.Count > 0 || merges.Count > 0) RecalculateRoleSwitches();
+            return (changed, [], merges);
+        }
+
         var keeper = ahas.OrderByDescending(role => IsActivePosition(role.Position))
             .ThenByDescending(role => role.RoleId)
             .ThenBy(role => role.UniqueId)
             .First();
         var absorbed = new List<uint>();
-        if (keeper.RoleId != AhaSevenCostRoleId)
-            foreach (var copy in ahas.Where(role => role != keeper && role.RoleId != AhaSevenCostRoleId))
+        foreach (var copy in ahas.Where(role => role != keeper))
+        {
+            DestroyDiceFilledOnRole(copy);
+            Roles.Remove(copy);
+            absorbed.Add(copy.UniqueId);
+            _ahaGrowth += copy.RoleId switch
             {
-                DestroyDiceFilledOnRole(copy);
-                Roles.Remove(copy);
-                absorbed.Add(copy.UniqueId);
-                _ahaGrowth += copy.RoleId switch
-                {
-                    AhaFiveCostRoleId => 3,
-                    AhaFourCostRoleId => 2,
-                    _ => 1,
-                };
-            }
-        var changed = new List<GridFightRoleState>();
+                AhaFiveCostRoleId => 3,
+                AhaFourCostRoleId => 2,
+                _ => 1,
+            };
+        }
         var target = ResolveAhaTier(keeper.RoleId);
         if (target != keeper.RoleId)
         {
@@ -210,7 +227,7 @@ public sealed partial class GridFightSession
         }
         if (absorbed.Count > 0 && !changed.Contains(keeper)) changed.Add(keeper);
         if (absorbed.Count > 0 || changed.Count > 0) RecalculateRoleSwitches();
-        return (changed, absorbed);
+        return (changed, absorbed, []);
     }
 
     private uint ResolveAhaTier(uint current)
@@ -256,7 +273,7 @@ public sealed partial class GridFightSession
         var failed = new GridFightRewardApplication();
         if (Phase != GridFightSessionPhase.Preparing) return failed;
         var equipment = Equipments.FirstOrDefault(item => item.UniqueId == uniqueId);
-        if (equipment == null || equipment.IsLocked || FindEquipmentWearer(uniqueId) != null || IsEquipmentOnAha(uniqueId))
+        if (equipment == null || equipment.IsRestricted || FindEquipmentWearer(uniqueId) != null || IsEquipmentOnAha(uniqueId))
             return failed;
         var unlocked = (int)Math.Min(ResolveElationUnlockedSlots(), (uint)_elationSlots.Count);
         for (var index = 0; index < unlocked; index++)

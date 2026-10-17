@@ -65,6 +65,15 @@ public sealed class GridFightEquipmentState
     public uint EquipmentId { get; init; }
     public uint Source { get; init; }
     public bool IsLocked { get; set; }
+
+    /// <summary>
+    ///     Bond-granted equipment (星核猎手 Script Equipment): wearable, but it leaves when the bond level drops and cannot
+    ///     be crafted, rerolled, upgraded or consumed like an owned item. The client shows it as temporary.
+    /// </summary>
+    public bool IsTemporary { get; set; }
+
+    /// <summary>Held by an NPC (IsLocked) or bond-granted (IsTemporary): not an ordinary item of the player.</summary>
+    public bool IsRestricted => IsLocked || IsTemporary;
 }
 
 public sealed class GridFightOrbState
@@ -235,7 +244,8 @@ public sealed partial class GridFightSession
     private bool _cyrenePoemShopUnlocked;
     private bool _silverWolfHackUnlocked;
     private uint? _traitEffectSelectEnhanceQueuePosition;
-    private readonly HashSet<uint> _rerolledInvestmentIds = [];
+    // One entry per reroll used on the card that now shows this id (the client counts refreshes per card).
+    private readonly List<uint> _rerolledInvestmentIds = [];
     // Offers replaced by a reroll must not come back into another slot of the same investment choice.
     private readonly HashSet<uint> _rerolledAwayInvestmentIds = [];
     private readonly HashSet<uint> _temporarilyUnlockedRestrictedRoleIds = [];
@@ -529,8 +539,10 @@ public sealed partial class GridFightSession
         }
     }
 
-    public bool IsInvestmentRerolled(uint augmentId) => _bonusInvestmentSource != 0
-        ? _bonusInvestmentRerolls == 0 : _rerolledInvestmentIds.Contains(augmentId);
+    /// <summary>Refreshes already used on the card that currently offers this augment (client RollTimes).</summary>
+    public uint GetInvestmentRerollCount(uint augmentId) => (uint)_rerolledInvestmentIds.Count(id => id == augmentId);
+
+    public bool IsInvestmentRerolled(uint augmentId) => GetInvestmentRerollCount(augmentId) >= InvestmentFreeRerollCount;
 
     public bool RerollInvestment(uint queuePosition, uint augmentId)
     {
@@ -549,9 +561,11 @@ public sealed partial class GridFightSession
         var offer = InvestmentOffer.ToList();
         offer[index] = replacement;
         InvestmentOffer = offer;
-        _rerolledInvestmentIds.Add(replacement);
+        // The card keeps its count under its new augment id.
+        var used = GetInvestmentRerollCount(augmentId) + 1;
+        _rerolledInvestmentIds.RemoveAll(id => id == augmentId);
+        for (var count = 0u; count < used; count++) _rerolledInvestmentIds.Add(replacement);
         _rerolledAwayInvestmentIds.Add(augmentId);
-        if (_bonusInvestmentSource != 0) _bonusInvestmentRerolls--;
         return true;
     }
 
@@ -759,7 +773,8 @@ public sealed partial class GridFightSession
     {
         acquisition = GridFightRoleAcquisitionResult.Failed;
         if (!GameData.GridFightRoleBasicInfoData.TryGetValue(roleId, out var basic) || basic.SeasonID != Season ||
-            (basic.UsesNativeSkillOverrides && !GameData.AvatarConfigData.ContainsKey((int)basic.AvatarID)) ||
+            // Fake avatars (帕姆王 604202, a 开拓银轨 reward) have no AvatarConfig row in any layout.
+            (basic.UsesNativeSkillOverrides && !basic.IsFakeAvatar && !GameData.AvatarConfigData.ContainsKey((int)basic.AvatarID)) ||
             !GameData.GridFightRoleStarData.ContainsKey(roleId << 4 | star))
             return false;
 
@@ -909,9 +924,11 @@ public sealed partial class GridFightSession
         var resolved = new List<(GridFightOrbState Orb, IReadOnlyList<GridFightRewardEntry> Rewards)>();
         foreach (var orb in selected)
         {
-            if (!TryResolveOrbRewardsForCurrentRun(orb.OrbItemId, out var rewards)) return [];
-            resolved.Add((orb, rewards));
+            if (TryResolveOrbRewardsForCurrentRun(orb.OrbItemId, out var rewards)) resolved.Add((orb, rewards));
+            // "Open all" leaves an orb the server cannot open in the bag instead of refusing the whole batch.
+            else if (!takeAll) return [];
         }
+        if (resolved.Count == 0) return [];
 
         var snapshot = CaptureRewardState();
         try
@@ -1023,6 +1040,7 @@ public sealed partial class GridFightSession
                 EquipmentId = equipment.EquipmentId,
                 Source = equipment.Source,
                 IsLocked = equipment.IsLocked,
+                IsTemporary = equipment.IsTemporary,
             }).ToList(),
             Orbs.Select(orb => new GridFightOrbState
             {
@@ -1651,9 +1669,14 @@ public sealed partial class GridFightSession
         return true;
     }
 
+    /// <param name="reportedDrops">
+    ///     Drops the client created inside the battle (GridFightBattleResultStatistics field 5), e.g. Trotters spawned by
+    ///     season talent 4061 or a Trotter Virus. The planned reward-node drops are not part of it.
+    /// </param>
     public GridFightBattleSettlementResult ResolveBattle(
         bool battleEndedNormally,
-        GridFightBattleStatistics statistics)
+        GridFightBattleStatistics statistics,
+        IReadOnlyList<GridFightRewardEntry>? reportedDrops = null)
     {
         if (Phase != GridFightSessionPhase.InBattle) return GridFightBattleSettlementResult.Failed;
         // Retiring (or losing) the battle settles it as a lost battle at the progress reached so far; returning to
@@ -1695,6 +1718,7 @@ public sealed partial class GridFightSession
             ? AddKilledMonsterOrbs(battlePlan, statistics.KilledMonsters)
             : [];
         addedBattleOrbs = [.. addedBattleOrbs, .. RollLootOrbsOnKills(statistics.KilledMonsters)];
+        addedBattleOrbs = [.. addedBattleOrbs, .. AddReportedBattleOrbs(reportedDrops ?? [], statistics.KilledMonsters, addedBattleOrbs)];
         IReadOnlyList<GridFightTalentOrbReward> talentRewards = nodeType == GridFightNodeTypeEnum.Boss
             ? TakeTalentOrbRewards(GridFightTalentRewardTrigger.BossClear, chapterId)
             : [];
@@ -1753,6 +1777,35 @@ public sealed partial class GridFightSession
         {
             Defeated = defeated,
         };
+    }
+
+    /// <summary>
+    ///     Orbs the battle dropped on its own (Trotters outside the planned reward-node drops). The client showed them
+    ///     dropping, but the server never granted them. Only orbs the server can open are taken, at most one per killed
+    ///     enemy, and orbs this battle already granted through its plan count against the report.
+    /// </summary>
+    private IReadOnlyList<GridFightOrbState> AddReportedBattleOrbs(
+        IReadOnlyList<GridFightRewardEntry> reportedDrops,
+        IReadOnlyList<GridFightKilledMonsterInstance> killedMonsters,
+        IReadOnlyList<GridFightOrbState> alreadyGranted)
+    {
+        var budget = killedMonsters.Select(killed => (killed.WaveIndex, killed.MonsterIndex)).Distinct().Count();
+        var granted = alreadyGranted.GroupBy(orb => orb.OrbItemId).ToDictionary(group => group.Key, group => group.Count());
+        var result = new List<GridFightOrbState>();
+        foreach (var drop in reportedDrops.Where(drop => drop.Type == GridFightBonusTypeEnum.Orb))
+        {
+            if (!GridFightSpecialFeatures.TryResolveOrb(drop.ItemId, out _)) continue;
+            for (var index = 0u; index < drop.Count && result.Count < budget; index++)
+            {
+                if (granted.TryGetValue(drop.ItemId, out var planned) && planned > 0)
+                {
+                    granted[drop.ItemId] = planned - 1;
+                    continue;
+                }
+                if (TryAddOrb(drop.ItemId, out var orb)) result.Add(orb);
+            }
+        }
+        return result;
     }
 
     private IReadOnlyList<GridFightOrbState> AddKilledMonsterOrbs(

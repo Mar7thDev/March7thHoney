@@ -269,6 +269,8 @@ public partial class GridFightEquipmentSnapshot
     public uint EquipmentId { get; set; }
     public uint Source { get; set; }
     public bool IsLocked { get; set; }
+    // Appended: older snapshots read as permanent items.
+    public bool IsTemporary { get; set; }
 }
 
 [MemoryPackable]
