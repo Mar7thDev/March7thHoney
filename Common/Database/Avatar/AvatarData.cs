@@ -266,9 +266,9 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
             WorldLevel = (uint)collection.PlayerData.WorldLevel,
             EnhancedId = (uint)pathInfo.EnhanceId
         };
-        // GridFight maintains its own character progression, not the account's activated eidolons.
-        if (avatarType != AvatarType.AvatarGridFightType)
-            proto.IGDEHGIKFJA.AddRange(GetActivatedExRanks(avatarId, collection.PlayerData.Uid));
+        // Activated 奇缘星魂 also apply in 货币战争 (GridFight builds this proto from the owned avatar); they used to be
+        // left out there.
+        proto.IGDEHGIKFJA.AddRange(GetActivatedExRanks(avatarId, collection.PlayerData.Uid));
         return proto;
     }
 
