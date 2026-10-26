@@ -419,3 +419,10 @@ Config Live.json
 
 ## Proto: huge regenerable il2cpp dump (≈119MB) — keep out of git, available locally per version
 Proto/**/dump.cs
+
+# Generated protocol output and extracted migration archives
+/Proto/Generated/
+/Proto/4.4/
+/Proto/4.5/
+/Proto/4.5v3/*
+!/Proto/4.5v3/translations.txt

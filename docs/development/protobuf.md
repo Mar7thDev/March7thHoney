@@ -2,7 +2,7 @@
 
 Source: [`Proto/`](../../Proto/)
 
-按游戏版本保存、按 `Cmd*Type` 分组的 protobuf 定义。仓库可以同时保留多个版本，但只有一个版本会生成到 `Proto/Generated` 并参与构建。
+按游戏版本保存、按 `Cmd*Type` 分组的 protobuf 定义。活动版本为 `Proto.csproj` 中的 `ActiveProtocolVersion`（当前 4.6）。构建使用固定的 `Google.Protobuf.Tools` 3.33.1（protoc 33.1），将活动分组定义自动生成到被 Git 忽略的 `Proto/obj/<configuration>/<framework>/protobuf/4.6/`，不再提交生成的 C#。
 
 ## 目录
 
@@ -18,7 +18,9 @@ Proto/
     reference/                 可选的外部 reference，只在对应版本真实存在时保存
     compat-types.txt           进门阶段暂从上一版本保留的 API 类型
     cmdid-aliases.txt          旧服务端命令名到当前 cmdid 名的兼容别名
-  Generated/                   活动版本生成的 C#，由 Proto.csproj 编译
+  Archives/                    非活动版本的无损压缩参考（迁移前解压）
+  Build/                       MSBuild 自动生成目标
+  obj/.../protobuf/4.6/        构建中间产物，不提交
   Tool/ProtoOrganizer/         版本迁移、分组、cmdid 和 C# 生成工具
 ```
 
@@ -26,7 +28,9 @@ Proto/
 
 资源提取与 Honey 资源缓存是两个边界：Mar7thDumper 仍执行包括原始资源导出在内的完整流程；ProtoOrganizer 只消费 proto/cmdid 产物，不会写 `Config/Resource.bin` 或切换 Honey 的资源目录。
 
-## 生成 4.5 活动版本
+## 历史迁移示例：生成 4.5
+
+下面保留历史命令供迁移参考，不是当前构建命令。先按 [压缩参考说明](../../Proto/Archives/README.md) 解压 4.4、4.5；普通 4.6 构建不需要解压。`--cs-out Proto/Generated` 仅用于手动检查临时输出，项目不会编译该目录。切换活动版本时还须更新 `ActiveProtocolVersion`。
 
 ```sh
 dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
@@ -55,4 +59,12 @@ dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
 - 自有 Dumper 产物始终放入该版本的 `dumper/Raw/`，不可混入 reference。
 - `reference/` 只保存同一游戏版本的参考定义，未更新时保持不存在或保持旧版本目录，不得伪造新版本 reference。
 - 兼容类型和命令别名必须放在对应版本清单中，禁止把旧 cmdid 数值覆盖到新版本。
-- 切换活动版本后必须重新生成 `Proto/Generated`、`KcpSharp/CmdIds.cs`，并执行 `dotnet build March7thHoney.sln`。
+- 切换活动版本后必须同步 `ActiveProtocolVersion`、活动分组定义和 `KcpSharp/CmdIds.cs`，并执行 `dotnet build March7thHoney.sln`，由构建重新生成 C#。
+
+## 自动生成与空间说明
+
+首次构建需要 NuGet 还原编译器包；生成在编译前自动执行。未修改输入的增量构建不会重复生成；定义新增、修改或删除以及输出文件丢失都会触发重新生成。
+可运行 `python3 scripts/test-proto-generation.py` 验证增量、缺失输出、输入变化和带空格路径。
+编译器按构建主机选择，与目标 RID 无关。Apple Silicon 使用包内 macOS x64 编译器，需要 Rosetta；也可用 `-p:ProtocolCompiler=/path/to/protoc` 指定版本严格为 33.1 的兼容编译器。
+
+这减少的是构建前检出体积。构建时 C# 和二进制仍会生成；Git 历史保留以前的文件，因此完整克隆的历史体积不会因本次普通提交而消失。`Config/Resource.bin` 未更改。
