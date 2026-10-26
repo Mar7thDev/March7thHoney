@@ -1,0 +1,58 @@
+<Project>
+  <!-- Keep compiler and runtime versions together in Proto.csproj. The NuGet package
+       supplies host tools only; it is not copied to server output or published. -->
+  <Target Name="PrepareProtocolGeneration">
+    <PropertyGroup>
+      <ProtocolSourceDirectory>$(MSBuildProjectDirectory)/$(ActiveProtocolVersion)</ProtocolSourceDirectory>
+      <ProtocolGeneratedDirectory>$(IntermediateOutputPath)protobuf/$(ActiveProtocolVersion)</ProtocolGeneratedDirectory>
+      <ProtocolInputManifest>$(IntermediateOutputPath)protobuf-inputs.txt</ProtocolInputManifest>
+      <ProtocolArguments>$(IntermediateOutputPath)protobuf-arguments.rsp</ProtocolArguments>
+      <ProtocolStamp>$(ProtocolGeneratedDirectory)/generation.stamp</ProtocolStamp>
+      <_ProtocolHostArchitecture>$([System.Runtime.InteropServices.RuntimeInformation]::ProcessArchitecture)</_ProtocolHostArchitecture>
+      <_ProtocolHostPlatform Condition="$([MSBuild]::IsOSPlatform('Windows'))">windows_x64</_ProtocolHostPlatform>
+      <_ProtocolHostPlatform Condition="$([MSBuild]::IsOSPlatform('Windows')) and '$(_ProtocolHostArchitecture)' == 'X86'">windows_x86</_ProtocolHostPlatform>
+      <_ProtocolHostPlatform Condition="$([MSBuild]::IsOSPlatform('Linux'))">linux_x64</_ProtocolHostPlatform>
+      <_ProtocolHostPlatform Condition="$([MSBuild]::IsOSPlatform('Linux')) and '$(_ProtocolHostArchitecture)' == 'Arm64'">linux_aarch64</_ProtocolHostPlatform>
+      <_ProtocolHostPlatform Condition="$([MSBuild]::IsOSPlatform('Linux')) and '$(_ProtocolHostArchitecture)' == 'X86'">linux_x86</_ProtocolHostPlatform>
+      <!-- Google.Protobuf.Tools 3.33.1 ships an x64 macOS tool (Rosetta on Apple Silicon). -->
+      <_ProtocolHostPlatform Condition="$([MSBuild]::IsOSPlatform('OSX'))">macosx_x64</_ProtocolHostPlatform>
+      <_ProtocolExecutableSuffix Condition="$([MSBuild]::IsOSPlatform('Windows'))">.exe</_ProtocolExecutableSuffix>
+      <ProtocolCompiler Condition="'$(ProtocolCompiler)' == ''">$(PkgGoogle_Protobuf_Tools)/tools/$(_ProtocolHostPlatform)/protoc$(_ProtocolExecutableSuffix)</ProtocolCompiler>
+    </PropertyGroup>
+    <ItemGroup>
+      <ProtocolSchema Include="$(ProtocolSourceDirectory)/*.proto" />
+      <ProtocolGeneratedFile Include="@(ProtocolSchema->'$(ProtocolGeneratedDirectory)/%(Filename).cs')" />
+    </ItemGroup>
+    <Error Condition="'@(ProtocolSchema)' == ''" Text="No active protocol schemas found in $(ProtocolSourceDirectory)." />
+    <Error Condition="!Exists('$(ProtocolCompiler)')" Text="protoc not found at $(ProtocolCompiler). Restore packages, or set ProtocolCompiler to a protoc 33.1 executable for this host." />
+    <MakeDir Directories="$(IntermediateOutputPath)" />
+    <!-- Changes to the set of inputs (including removals) invalidate generation. -->
+    <WriteLinesToFile File="$(ProtocolInputManifest)" Lines="@(ProtocolSchema);$(ProtocolCompiler)" Overwrite="true" WriteOnlyWhenDifferent="true" />
+  </Target>
+
+  <Target Name="GenerateProtocolSources" DependsOnTargets="PrepareProtocolGeneration"
+          Inputs="@(ProtocolSchema);$(ProtocolInputManifest);$(ProtocolCompiler);$(MSBuildProjectFullPath);$(MSBuildThisFileFullPath)"
+          Outputs="@(ProtocolGeneratedFile);$(ProtocolStamp)">
+    <Message Importance="high" Text="Generating $(ActiveProtocolVersion) protocol C# with pinned protoc into $(ProtocolGeneratedDirectory)" />
+    <!-- A complete regeneration also removes obsolete generated classes. -->
+    <RemoveDir Directories="$(ProtocolGeneratedDirectory)" />
+    <MakeDir Directories="$(ProtocolGeneratedDirectory)" />
+    <!-- protoc response files use one literal argument per line; avoids Windows command-length limits. -->
+    <WriteLinesToFile File="$(ProtocolArguments)" Lines="@(ProtocolSchema->'%(FullPath)')" Overwrite="true" />
+    <Exec Command="test -x &quot;$(ProtocolCompiler)&quot; || chmod +x &quot;$(ProtocolCompiler)&quot;" Condition="!$([MSBuild]::IsOSPlatform('Windows'))" />
+    <Exec Command="&quot;$(ProtocolCompiler)&quot; --version" ConsoleToMSBuild="true" StandardOutputImportance="low">
+      <Output TaskParameter="ConsoleOutput" PropertyName="_ProtocolCompilerVersion" />
+    </Exec>
+    <Error Condition="'$(_ProtocolCompilerVersion)' != 'libprotoc 33.1'" Text="Expected protoc 33.1, got '$(_ProtocolCompilerVersion)'. Use the pinned package or a matching ProtocolCompiler override." />
+    <Exec Command="&quot;$(ProtocolCompiler)&quot; --proto_path=&quot;$(ProtocolSourceDirectory)&quot; --csharp_out=&quot;$(ProtocolGeneratedDirectory)&quot; @&quot;$(ProtocolArguments)&quot;" />
+    <Touch Files="$(ProtocolStamp)" AlwaysCreate="true" />
+  </Target>
+
+  <!-- Item inclusion runs even when the generation target is up to date. -->
+  <Target Name="IncludeProtocolSources" BeforeTargets="CoreCompile" DependsOnTargets="GenerateProtocolSources">
+    <ItemGroup>
+      <Compile Include="@(ProtocolGeneratedFile)" />
+      <FileWrites Include="@(ProtocolGeneratedFile);$(ProtocolStamp);$(ProtocolInputManifest);$(ProtocolArguments)" />
+    </ItemGroup>
+  </Target>
+</Project>

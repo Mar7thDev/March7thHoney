@@ -10,14 +10,16 @@
          (Proto/<version>/), the Raw dumps, the curated ProtoFile/ library, and the ProtoOrganizer
          tool all live under Proto/ but must NOT be swept into this assembly. -->
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <ActiveProtocolVersion>4.7</ActiveProtocolVersion>
+    <!-- MSBuild checks removed schemas and missing generated outputs. -->
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Generated/**/*.cs" />
+    <PackageReference Include="Google.Protobuf" Version="3.33.1" />
+    <PackageReference Include="Google.Protobuf.Tools" Version="3.33.1" PrivateAssets="all" GeneratePathProperty="true" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.33.1" />
-  </ItemGroup>
+  <Import Project="Build/GenerateProtobuf.targets" />
 
 </Project>

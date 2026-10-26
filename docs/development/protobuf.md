@@ -2,7 +2,7 @@
 
 Source: [`Proto/`](../../Proto/)
 
-按游戏版本保存、按 `Cmd*Type` 分组的 protobuf 定义。仓库可以同时保留多个版本，但只有一个版本会生成到 `Proto/Generated` 并参与构建。
+按游戏版本保存、按 `Cmd*Type` 分组的 protobuf 定义。当前活动版本为 **4.7**，`Proto.csproj` 在构建时把该版本的顶层 `*.proto` 自动生成为 `obj/<configuration>/<framework>/protobuf/4.7/` 中的 C#，再编译；不再跟踪生成的 C#。
 
 ## 目录
 
@@ -18,7 +18,9 @@ Proto/
     reference/                 可选的外部 reference，只在对应版本真实存在时保存
     compat-types.txt           进门阶段暂从上一版本保留的 API 类型
     cmdid-aliases.txt          旧服务端命令名到当前 cmdid 名的兼容别名
-  Generated/                   活动版本生成的 C#，由 Proto.csproj 编译
+  Build/                       MSBuild 自动生成目标
+  Archives/                    旧版协议无损 ZIP（迁移时按需恢复）
+  obj/.../protobuf/4.7/        活动 C#，构建时生成且 Git 忽略
   Tool/ProtoOrganizer/         版本迁移、分组、cmdid 和 C# 生成工具
 ```
 
@@ -26,7 +28,9 @@ Proto/
 
 资源提取与 Honey 资源缓存是两个边界：Mar7thDumper 仍执行包括原始资源导出在内的完整流程；ProtoOrganizer 只消费 proto/cmdid 产物，不会写 `Config/Resource.bin` 或切换 Honey 的资源目录。
 
-## 生成 4.5 活动版本
+## 历史 4.5 迁移示例（不是本分支的活动版本）
+
+先按 [归档说明](../../Proto/Archives/README.md) 解压 4.4 和 4.5；生成到 `Proto/Generated` 仅供工具检查，服务器构建不会编译这个旧路径。不要用本示例替换当前命令号或活动版本。
 
 ```sh
 dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
@@ -50,6 +54,20 @@ dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
 
 `protoc` 默认从 `Google.Protobuf.Tools` NuGet 缓存按当前系统自动定位，也可用 `--protoc <path>` 覆盖。
 
+## 自动生成与验证
+
+```sh
+dotnet restore March7thHoney.sln
+dotnet build March7thHoney.sln -c Release --no-restore
+python3 scripts/test-proto-generation.py
+```
+
+NuGet 固定 `Google.Protobuf.Tools 3.33.1`（protoc 33.1），与现有 `Google.Protobuf 3.33.1` 运行时一致。首次构建需要还原此工具包；工具不会进入服务器发布产物。Linux、Windows 使用宿主平台工具，交叉发布不改变宿主选择。该版本 macOS 工具为 x64，Apple Silicon 需要 Rosetta；也可用 `-p:ProtocolCompiler=<path>` 指向版本严格匹配的 protoc 33.1。
+
+目标检测 schema 的新增、删除、修改和缺失的生成文件；无变化时跳过生成。`dotnet clean` 后再次构建会恢复全部生成代码。修改分组定义，不手改 `obj/`。
+
+构建前的检出体积明显减少，但构建时生成代码和 NuGet 缓存仍占空间。此改动不删除旧 Git 历史；完整克隆仍可能下载历史大文件。
+
 ## 4.7 活动版本
 
 4.7 的原始定义来自 [DemiurgeCSharp](https://github.com/Mar7thDev/DemiurgeCSharp) 对客户端 `GameAssembly.dll` + `global-metadata.dat` 的静态 dump（`demiurge proto`），不再依赖运行时 dumper。
@@ -67,7 +85,7 @@ Proto/4.7/
 
 迁移的依据是混淆身份在版本间稳定：类型的混淆名、属性名和 `XxxFieldNumber` 常量名每个版本都相同，变化的只有字段号、cmdId 和 backing field 名。Demiurge 因此按属性名给字段命名，4.6 已审定的类型名、字段名和枚举成员名按混淆身份逐个搬到 4.7 的字段号上。字段身份按证据强弱逐级匹配：4.6 手工钉死的字段与原样保留的混淆名 → 4.4/4.5 Mar7thDumper 常量名与同版本可读定义按字段号的对应 → 4.6 master 同字段号 → 4.6 自动 overrides → 4.6 dumper raw（原名或 `nt.txt` 译名）。`nt.txt` 来自按存储槽位匹配，相邻同类型字段会互换（SceneInfo 的 `world_id` / `leader_entity_id`、`lighten_section_list` / `opened_chests_list` 即此类），只用来识别身份，不单独决定名称。
 
-维护 4.7 定义时修改 `Raw/StarRail.proto`，再生成：
+维护 4.7 定义时修改 `Raw/StarRail.proto`，再用下列命令重建分组定义和命令号。`--cs-out Proto/Generated` 是可选的工具校验输出，已经忽略且不参与服务器编译；随后必须正常构建，让 MSBuild 从活动分组定义自动生成到 `obj/`：
 
 ```sh
 dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
@@ -88,4 +106,4 @@ dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
 - 自有 Dumper 产物始终放入该版本的 `dumper/Raw/`，不可混入 reference。
 - `reference/` 只保存同一游戏版本的参考定义，未更新时保持不存在或保持旧版本目录，不得伪造新版本 reference。
 - 兼容类型和命令别名必须放在对应版本清单中，禁止把旧 cmdid 数值覆盖到新版本。
-- 切换活动版本后必须重新生成 `Proto/Generated`、`KcpSharp/CmdIds.cs`，并执行 `dotnet build March7thHoney.sln`。
+- 切换活动版本后同步更新 `Proto.csproj` 的 `ActiveProtocolVersion`、分组定义和 `KcpSharp/CmdIds.cs`，再执行 `dotnet build March7thHoney.sln` 与生成回归。
