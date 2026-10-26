@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <AssemblyName>March7thHoney.Proto</AssemblyName>
     <RootNamespace>March7thHoney.Proto</RootNamespace>
+    <ActiveProtocolVersion>4.6</ActiveProtocolVersion>
+    <!-- MSBuild owns schema freshness, including deleted inputs and missing outputs. -->
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     <!-- Only the generated C# for the ACTIVE game version is compiled. The grouped .proto sources
          (Proto/<version>/), the Raw dumps, the curated ProtoFile/ library, and the ProtoOrganizer
          tool all live under Proto/ but must NOT be swept into this assembly. -->
@@ -13,11 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Generated/**/*.cs" />
+    <PackageReference Include="Google.Protobuf" Version="3.33.1" />
+    <PackageReference Include="Google.Protobuf.Tools" Version="3.33.1" PrivateAssets="all" GeneratePathProperty="true" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.33.1" />
-  </ItemGroup>
+  <Import Project="Build/GenerateProtobuf.targets" />
 
 </Project>

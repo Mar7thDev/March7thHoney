@@ -27,7 +27,7 @@
 | `SourceGen/` | 包处理器、命令、任务、数据库及 MemoryPack 注册代码生成 |
 | `KcpSharp/` | KCP 传输及活动协议命令号 `CmdIds.cs` |
 | `Proto/<version>/` | 各游戏版本的协议来源、分组定义和兼容清单 |
-| `Proto/Generated/` | 当前活动版本生成的 C# 协议代码 |
+| `Proto/obj/<configuration>/<framework>/protobuf/<version>/` | 构建时生成的活动协议 C#，不纳入 Git |
 | `Proto/Tool/ProtoOrganizer/` | 协议整理、版本迁移和生成工具 |
 | `Config/` | 自定义 JSON、语言包、资源缓存及本地运行数据；部分内容受版本控制 |
 | `Resources/`、`TurnBasedGameData/` | 本地游戏资源，已被 Git 忽略，干净检出不保证存在 |
@@ -76,8 +76,9 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 ## 协议与资源约束
 
 - 协议流程见 `docs/development/protobuf.md`。执行其中的版本示例前，核对当前活动协议、版本目录和兼容清单，不直接照抄旧版本号。
-- `Proto.csproj` 只编译 `Proto/Generated/**/*.cs`。协议修复应落到对应版本的定义、翻译映射、兼容清单或生成工具，再重新生成，避免只改生成的 C#。
-- 切换活动协议时同步生成 `Proto/Generated/` 与 `KcpSharp/CmdIds.cs`，完成整个解决方案构建。不能用旧版本命令号覆盖新版本，也不能仅依据同型字段猜测协议映射。
+- `Proto.csproj` 按 `ActiveProtocolVersion`（当前为 4.6）自动生成并编译 `obj/` 下的协议 C#。协议修复应落到对应版本的定义、翻译映射、兼容清单或生成工具，再重新生成，避免只改生成的 C#。
+- 切换活动协议时同步更新 `Proto.csproj` 的 `ActiveProtocolVersion`、活动分组定义与 `KcpSharp/CmdIds.cs`，由构建重新生成 C#，完成整个解决方案构建。不能用旧版本命令号覆盖新版本，也不能仅依据同型字段猜测协议映射。
+- 旧版协议保存在 `Proto/Archives/` 的无损 ZIP 中；迁移前按其中 README 解压，勿覆盖本地修改。`Proto/4.5v3/translations.txt` 因回归程序直接使用而继续保留。
 - Dumper 原始产物保留在对应版本的 `dumper/Raw/`；`reference/` 只能存放确实存在的同版本参考定义。
 - `GameServer.csproj` 存在显式排除的协议处理器。重新启用前应解决其协议依据和兼容性问题，不直接删除排除项来恢复编译。
 - 协议生成与资源缓存更新是独立流程；运行 ProtoOrganizer 不代表 `Config/Resource.bin` 已更新。
