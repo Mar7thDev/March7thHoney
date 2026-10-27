@@ -12,6 +12,8 @@
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.33.1" />
     <PackageReference Include="MailKit" Version="4.16.0" />
+    <!-- Override MimeKit's transitive minimum with the patched .NET 10 PKCS package. -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
     <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
     <PackageReference Include="Spectre.Console" Version="0.54.0" />
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.0" />

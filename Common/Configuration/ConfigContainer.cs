@@ -64,6 +64,12 @@ public class GameServerConfig
     public int EnvType { get; set; } = 2;
     public bool UsePacketEncryption { get; set; } = true;
 
+    // Registered connections include active and unauthenticated handshakes. Nonpositive values use safe defaults.
+    public int MaxConnections { get; set; } = 4096;
+    public int MaxPendingConnections { get; set; } = 256;
+    // Only simultaneous not-yet-active connections count here, not all players behind a NAT.
+    public int MaxPendingConnectionsPerIp { get; set; } = 16;
+
     public string GetDisplayAddress()
     {
         return PublicAddress + ":" + Port;

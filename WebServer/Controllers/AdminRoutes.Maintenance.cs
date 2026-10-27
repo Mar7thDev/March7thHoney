@@ -172,7 +172,7 @@ public static partial class AdminRoutes
         var newKey = Guid.NewGuid().ToString();
         ConfigManager.Config.MuipServer.AdminKey = newKey;
         ConfigManager.SaveConfig();
-        var revoked = AdminSessionManager.RevokeOthers(GetAdminToken(ctx));
+        var revoked = AdminSessionManager.RevokeOthers(GetAdminToken(ctx)) + MuipManager.RevokeAdminSessions();
 
         return Success(new AdminKeyRotateData(newKey, revoked));
     }
