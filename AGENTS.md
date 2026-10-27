@@ -90,6 +90,8 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 
 现有回归是 `scripts/` 下的独立可执行项目，未包含在主解决方案中。`dotnet build March7thHoney.sln` 或单独执行 `dotnet test` 不能替代这些回归；使用 `dotnet run --project` 运行。首次运行允许其自行还原依赖，不随意加 `--no-restore`。
 
+统一的无私有资源安全回归入口为 `python3 scripts/verify-security.py`（包括完整构建）。真实资源套件默认明确标记 SKIP；提供匹配缓存后使用 `--with-resources`，不能将跳过视为通过。详见 `docs/testing/security-regression.md`。
+
 按改动选择相关命令；涉及多个模块或公共行为时组合执行：
 
 | 改动范围 | 回归命令 | 前提与说明 |

@@ -14,6 +14,7 @@ using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Response;
+using March7thHoney.WebServer.Handler;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.X509;
@@ -35,6 +36,37 @@ public static class MuipManager
     public static string RsaPrivateKey { get; private set; } = "";
 
     public static ConcurrentDictionary<string, MuipSession> Sessions { get; } = [];
+    private static readonly object SessionAdmissionLock = new();
+    private const int MaxSessions = 1024;
+    private const int MaxSessionsPerClient = 32;
+    // Expiration must not depend on the creator ever using the ID again. The static timer is retained
+    // for the server lifetime; admission also prunes synchronously before checking capacity.
+    private static readonly Timer SessionCleanupTimer = new(_ => CleanupExpiredSessions(), null,
+        TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(1));
+
+    internal static string GetAdminKeyFingerprint() => Convert.ToHexString(
+        SHA256.HashData(Encoding.UTF8.GetBytes(ConfigManager.Config.MuipServer.AdminKey ?? "")));
+
+    private static bool IsCurrent(MuipSession session) =>
+        session.ExpireTimeStamp > DateTimeOffset.UtcNow.ToUnixTimeSeconds() &&
+        (!session.IsAdmin || (AdminSessionManager.IsEnabled && string.Equals(session.AdminKeyFingerprint,
+            GetAdminKeyFingerprint(), StringComparison.Ordinal)));
+
+    private static void CleanupExpiredSessions()
+    {
+        foreach (var (id, session) in Sessions)
+            if (!IsCurrent(session))
+                Sessions.TryRemove(id, out _);
+    }
+
+    public static int RevokeAdminSessions()
+    {
+        var revoked = 0;
+        foreach (var (id, session) in Sessions)
+            if (session.IsAdmin && Sessions.TryRemove(id, out _))
+                revoked++;
+        return revoked;
+    }
 
     /// <summary>
     ///     Supplies the registered command list to the admin console. Wired by the entry point because the
@@ -46,32 +78,35 @@ public static class MuipManager
     public static event ServerInformationDelegate? OnGetServerInformation;
     public static event GetPlayerStatusDelegate? OnGetPlayerStatus;
 
-    public static CreateSessionResponse CreateSession(string keyType)
+    public static CreateSessionResponse CreateSession(string keyType, string? clientKey = null)
     {
-        if (ConfigManager.Config.MuipServer.AdminKey == "")
-            return new CreateSessionResponse(1, "This function is not enabled in this server!", null);
-        var session = new MuipSession
+        lock (SessionAdmissionLock)
         {
-            SessionId = Guid.NewGuid().ToString(),
-            RsaPublicKey = GetRsaKeyPair().Item1,
-            ExpireTimeStamp = DateTime.Now.AddMinutes(15).ToUnixSec(),
-            IsAdmin = true
-        };
+            if (!AdminSessionManager.IsEnabled)
+                return new CreateSessionResponse(1, "This function is not enabled in this server!", null);
+            CleanupExpiredSessions();
+            if (Sessions.Count >= MaxSessions || (!string.IsNullOrWhiteSpace(clientKey) &&
+                Sessions.Values.Count(session => session.ClientKey == clientKey) >= MaxSessionsPerClient))
+                return new CreateSessionResponse(2, "Too many sessions. Try again later.", null);
 
-        if (keyType == "PEM")
-            // convert to PEM
-            session.RsaPublicKey = XMLToPEM_Pub(session.RsaPublicKey);
-
-        Sessions.TryAdd(session.SessionId, session);
-
-        var data = new CreateSessionData
-        {
-            RsaPublicKey = session.RsaPublicKey,
-            SessionId = session.SessionId,
-            ExpireTimeStamp = session.ExpireTimeStamp
-        };
-
-        return new CreateSessionResponse(0, "Created!", data);
+            var session = new MuipSession
+            {
+                SessionId = Guid.NewGuid().ToString(),
+                RsaPublicKey = GetRsaKeyPair().Item1,
+                ExpireTimeStamp = DateTimeOffset.UtcNow.AddMinutes(15).ToUnixTimeSeconds(),
+                IsAdmin = true,
+                ClientKey = clientKey
+            };
+            if (keyType == "PEM")
+                session.RsaPublicKey = XMLToPEM_Pub(session.RsaPublicKey);
+            Sessions.TryAdd(session.SessionId, session);
+            return new CreateSessionResponse(0, "Created!", new CreateSessionData
+            {
+                RsaPublicKey = session.RsaPublicKey,
+                SessionId = session.SessionId,
+                ExpireTimeStamp = session.ExpireTimeStamp
+            });
+        }
     }
 
     public static AuthAdminKeyResponse AuthAdmin(string sessionId, string key)
@@ -79,14 +114,16 @@ public static class MuipManager
         if (Sessions.TryGetValue(sessionId, out var value))
         {
             var session = value;
-            if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
+            if (!IsCurrent(session))
             {
                 Sessions.TryRemove(sessionId, out _);
                 return new AuthAdminKeyResponse(1, "Session has expired!", null);
             }
 
             var keyStr = DecodeWithRsaFallback(key);
-            if (keyStr != ConfigManager.Config.MuipServer.AdminKey)
+            if (!CryptographicOperations.FixedTimeEquals(
+                    SHA256.HashData(Encoding.UTF8.GetBytes(keyStr)),
+                    SHA256.HashData(Encoding.UTF8.GetBytes(ConfigManager.Config.MuipServer.AdminKey))))
                 return new AuthAdminKeyResponse(2, "Admin key is invalid!", null);
 
             session.IsAuthorized = true;
@@ -108,7 +145,7 @@ public static class MuipManager
         if (Sessions.TryGetValue(sessionId, out var value))
         {
             var session = value;
-            if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
+            if (!IsCurrent(session))
             {
                 Sessions.TryRemove(sessionId, out _);
                 return null;
@@ -130,7 +167,7 @@ public static class MuipManager
         if (Sessions.TryGetValue(sessionId, out var value))
         {
             var session = value;
-            if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
+            if (!IsCurrent(session))
             {
                 Sessions.TryRemove(sessionId, out _);
                 return new ExecuteCommandResponse(1, "Session has expired!");
@@ -172,7 +209,7 @@ public static class MuipManager
         if (Sessions.TryGetValue(sessionId, out var value))
         {
             var session = value;
-            if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
+            if (!IsCurrent(session))
             {
                 Sessions.TryRemove(sessionId, out _);
                 return new ServerInformationResponse(1, "Session has expired!");
@@ -232,7 +269,7 @@ public static class MuipManager
         if (Sessions.TryGetValue(sessionId, out var value))
         {
             var session = value;
-            if (session.ExpireTimeStamp < DateTime.Now.ToUnixSec())
+            if (!IsCurrent(session))
             {
                 Sessions.TryRemove(sessionId, out _);
                 return new PlayerInformationResponse(1, "Session has expired!");

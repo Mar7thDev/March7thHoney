@@ -12,7 +12,8 @@ public static class MuipServerRoutes
     public static void MapMuipServerRoutes(this IEndpointRouteBuilder app)
     {
         app.MapPost("/muip/create_session",
-            ([FromBody] CreateSessionRequestBody req) => Results.Json(MuipManager.CreateSession(req.key_type)));
+            ([FromBody] CreateSessionRequestBody req, HttpContext ctx) =>
+                Results.Json(MuipManager.CreateSession(req.key_type, ctx.Connection.RemoteIpAddress?.ToString())));
 
         app.MapPost("/muip/auth_admin",
             ([FromBody] AuthAdminKeyRequestBody req) => Results.Json(MuipManager.AuthAdmin(req.session_id, req.admin_key)));

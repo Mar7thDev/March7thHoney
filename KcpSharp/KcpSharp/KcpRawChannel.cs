@@ -102,6 +102,9 @@ public sealed class KcpRawChannel : IKcpConversation, IKcpExceptionProducer<KcpR
     /// <inheritdoc />
     public ValueTask InputPakcetAsync(UdpReceiveResult packet, CancellationToken cancellationToken = default)
     {
+        // A conversation ID routes packets; it does not authenticate their source. Bind ingress to the
+        // endpoint established at channel creation before accepting data, ACKs or keepalive/window updates.
+        if (!_remoteEndPoint.Equals(packet.RemoteEndPoint)) return default;
         ReadOnlySpan<byte> span = packet.Buffer.AsSpan();
         var overhead = _id.HasValue ? KcpGlobalVars.CONVID_LENGTH : 0;
         if (span.Length < overhead || span.Length > _mtu) return default;

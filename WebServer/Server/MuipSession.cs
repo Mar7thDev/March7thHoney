@@ -10,5 +10,8 @@ public class MuipSession
 
     public bool IsAdmin { get; set; } = false;
     public bool IsAuthorized { get; set; } = false;
+    // Internal-only credential binding; never send the administrator key or its fingerprint to clients.
+    internal string AdminKeyFingerprint { get; } = MuipManager.GetAdminKeyFingerprint();
+    internal string? ClientKey { get; init; }
     public AccountData? Account { get; set; } = null;
 }
