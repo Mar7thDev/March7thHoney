@@ -495,6 +495,8 @@ public partial class PlayerInstance(PlayerData data)
 
     public void OnLogoutAsync()
     {
+        Data.LastActiveTime = Extensions.GetUnixSec();
+        DatabaseHelper.MarkDirty(Uid);
         B51RacingManager?.ClearRace();
         GridFightManager?.Persist();
     }

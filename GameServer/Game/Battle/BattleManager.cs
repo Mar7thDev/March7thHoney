@@ -4,6 +4,7 @@ using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
@@ -474,6 +475,12 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         // A fight made only of /spawn monsters reuses real group/instance/stage IDs; it must not finish missions.
         if (!battle.IsGmSpawnedEncounter)
             battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
+        // Support reward: a won Calyx, Stagnant Shadow or raid stage credits the support's owner.
+        if (!battle.IsGmSpawnedEncounter && req.EndStatus == BattleEndStatus.BattleEndWin &&
+            battle.GridFightContext == null &&
+            (battle.CocoonId != 0 || battle.MappingInfoId > 0 || Player.RaidManager?.Data.CurRaidId > 0))
+            await AssistRewardService.CreditBattle(Player, req,
+                battle.Lineup.BaseAvatars?.Where(slot => slot.AssistUid != 0).Select(slot => slot.AssistUid) ?? []);
         if (!battle.IsGmSpawnedEncounter && req.EndStatus == BattleEndStatus.BattleEndWin &&
             req.Stt.BattleAvatarList.Any(avatar =>
                 avatar.AvatarType is AvatarType.AvatarAssistType or AvatarType.AvatarReturnAssistType))
