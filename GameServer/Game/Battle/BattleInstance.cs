@@ -437,6 +437,16 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
             });
         }
 
+        // An invaded stage also carries the ally buff "Aha's Big Help" (official: stage 30125121 ships 3034003 and
+        // 3034013). Progress is not tracked, so the top tier is used, as the Go server does.
+        var allyBuffId = VoracityInvasionAllyBuff.TopBuffId;
+        if (allyBuffId != 0 && Stages.Any(stage => stage.InvasionMazeBuffID != 0) &&
+            Buffs.All(buff => buff.BuffID != allyBuffId))
+            Buffs.Add(new MazeBuff(allyBuffId, 1, -1)
+            {
+                WaveFlag = -1
+            });
+
         // global buff
         foreach (var buff in GameData.AvatarGlobalBuffConfigData.Values)
             if (Player.AvatarManager!.GetFormalAvatar(buff.AvatarID) != null)
