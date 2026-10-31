@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using System.Collections.Concurrent;
 using March7thHoney.Data;
 using March7thHoney.Data.Config;
@@ -191,6 +192,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         if (Player.SceneInstance == null || Player.InventoryManager == null) return false;
 
         var handled = false;
+        var destroyed = 0;
 
         HashSet<int> hitEntityIds = [(int)req.AttackedByEntityId];
         foreach (var id in req.AssistMonsterEntityIdList)
@@ -206,6 +208,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             if (entity is not EntityProp prop) continue;
             if (prop.Excel.PropType != PropTypeEnum.PROP_DESTRUCT) continue;
             handled = true;
+            destroyed++;
 
             if (prop.Excel.IsMpRecover)
             {
@@ -252,6 +255,8 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 Player.SetScenePropData(Player.SceneInstance.FloorId, prop.GroupId, prop.PropInfo.ID, PropStateEnum.Open);
         }
 
+        if (destroyed > 0)
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.PropDestruct, destroyed);
         return handled;
     }
 

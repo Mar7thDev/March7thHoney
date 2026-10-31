@@ -2,6 +2,7 @@ using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.DailyActive;
 using March7thHoney.Internationalization;
+using March7thHoney.Proto;
 
 namespace March7thHoney.Command.Command.Cmd;
 
@@ -38,6 +39,55 @@ public class CommandDaily : ICommand
         await player.SendPacket(new PacketDailyActiveInfoNotify(daily));
         await arg.SendMsg(I18NManager.Translate("Game.Command.Daily.Reset", daily.Data.Nonce.ToString(),
             string.Join(",", ids)));
+    }
+
+    [CommandMethod("0 finish")]
+    public async ValueTask Finish(CommandArg arg)
+    {
+        var player = await GetPlayer(arg);
+        if (player == null) return;
+
+        var daily = player.GetComponent<DailyActiveManager>();
+        await daily.EnsureToday();
+        List<int> targets;
+        if (arg.BasicArgs.Any(a => a.Equals("all", StringComparison.OrdinalIgnoreCase)))
+        {
+            targets = [.. daily.QuestIds];
+        }
+        else
+        {
+            targets = [];
+            foreach (var value in arg.BasicArgs)
+            {
+                if (!int.TryParse(value, out var id))
+                {
+                    await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.InvalidArguments"));
+                    return;
+                }
+
+                targets.Add(id);
+            }
+        }
+
+        if (targets.Count == 0 || player.QuestManager == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Daily.FinishNone"));
+            return;
+        }
+
+        List<int> finished = [];
+        foreach (var id in targets.Distinct())
+        {
+            var before = player.QuestManager.GetQuestStatus(id);
+            if (before is QuestStatus.QuestFinish or QuestStatus.QuestClose) continue;
+            await player.QuestManager.FinishQuest(id);
+            if (player.QuestManager.GetQuestStatus(id) is QuestStatus.QuestFinish or QuestStatus.QuestClose)
+                finished.Add(id);
+        }
+
+        await arg.SendMsg(finished.Count == 0
+            ? I18NManager.Translate("Game.Command.Daily.FinishNone")
+            : I18NManager.Translate("Game.Command.Daily.Finished", string.Join(",", finished)));
     }
 
     [CommandMethod("0 mission")]

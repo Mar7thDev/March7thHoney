@@ -474,6 +474,10 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         // A fight made only of /spawn monsters reuses real group/instance/stage IDs; it must not finish missions.
         if (!battle.IsGmSpawnedEncounter)
             battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
+        if (!battle.IsGmSpawnedEncounter && req.EndStatus == BattleEndStatus.BattleEndWin &&
+            req.Stt.BattleAvatarList.Any(avatar =>
+                avatar.AvatarType is AvatarType.AvatarAssistType or AvatarType.AvatarReturnAssistType))
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.WinBattleWithAssistAvatarCnt);
         await battle.TriggerOnBattleEnd();
 
         // Only a won trial battle clears the trial. The clear notifies and the return scene go out before the
