@@ -42,6 +42,19 @@ public class SceneEntityLoader(SceneInstance scene)
         MissingLevelGraphProps.Contains((Scene.FloorId, group.Id, info.ID)) ||
         Is45Prod && IncompatibleProps.Contains((Scene.FloorId, group.Id, info.ID));
 
+    // The Astral Express boarding prop stays Closed until main 1000401 finishes.
+    private const int StarTrainArrivalMain = 1000401;
+
+    // Simulated Universe lobby. Inert server groups on this plane are client scenery.
+    private const int SuLobbyPlaneId = 80112;
+
+    private bool DropInertServerGroups() =>
+        Scene.PlaneId == SuLobbyPlaneId || Scene.Excel.PlaneType == PlaneTypeEnum.Raid;
+
+    private bool RejectGroup(GroupInfo group) =>
+        group.OnlyEditorBackupProps() || group.OrphanedMissionGroup() ||
+        DropInertServerGroups() && group.InertServerGroup();
+
     private bool IsRogueLobbyConsole(GroupInfo group, PropInfo info, int propId) =>
         // The 4.6 cache identifies these two lobby consoles by their authored scene identities even when
         // MazeProp.JsonPath is absent. Keep the fallback exact so unrelated Rogue doors/chests stay closed.
@@ -71,6 +84,9 @@ public class SceneEntityLoader(SceneInstance scene)
                  where !@group.GroupName.Contains("TrainVisitor")
                  where !@group.GroupName.Contains("TrainVisiter")
                  select @group) await LoadGroup(group);
+
+        if (Scene.Excel.PlaneType == PlaneTypeEnum.Rogue)
+            await Scene.ReapplyFinishedRoguePropUnlocks();
 
         Scene.IsLoaded = true;
     }
@@ -106,7 +122,7 @@ public class SceneEntityLoader(SceneInstance scene)
                 var unload = !group.UnloadCondition.DelayToLevelReload &&
                              group.UnloadCondition.IsTrue(Scene.Player.MissionManager!.Data, false);
 
-                if (forceUnload || unload || IsIncompatibleGroup(group))
+                if (forceUnload || unload || IsIncompatibleGroup(group) || RejectGroup(group))
                 {
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
@@ -168,7 +184,7 @@ public class SceneEntityLoader(SceneInstance scene)
         if (!LoadGroups.Contains(info.Id)) return null; // check if group should be loaded in this dimension
         var missionData = Scene.Player.MissionManager!.Data; // get mission data
         if (info.LoadSide == GroupLoadSideEnum.Client) return null; // check if group should be loaded on client side
-        if (IsIncompatibleGroup(info)) return null;
+        if (RejectGroup(info) || IsIncompatibleGroup(info)) return null;
         if (info.GroupName.Contains("TrainVisitor")) return null; // certain group name
         if (info.GroupName.Contains("DeployPuzzle_Repeat_Area")) return null;
         if (info.GroupName.Contains("TrainVisiter")) return null;
@@ -282,18 +298,27 @@ public class SceneEntityLoader(SceneInstance scene)
         if (group == null) return;
 
         var refreshed = Scene.Groups.Contains(groupId);
+        var removed = new List<BaseGameEntity>();
 
         foreach (var entity in Scene.Entities.Values)
             if (entity.GroupId == group.Id)
             {
-                await Scene.RemoveEntity(entity, false);
+                removed.Add(entity);
                 refreshed = true;
             }
+
+        foreach (var entity in removed)
+            await Scene.RemoveEntity(entity, false);
 
         Scene.Groups.Remove(group.Id);
 
         if (refreshed)
             await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene, [], [groupId]));
+
+        // A client-side group is not in the scene's server group list, so a group-level UNLOAD leaves
+        // its entities on screen. Delete them explicitly. Server groups keep the group-UNLOAD shape.
+        if (group.LoadSide != GroupLoadSideEnum.Server && removed.Count > 0)
+            await Scene.Player.SendPacket(new PacketSceneGroupRefreshScNotify(Scene.Player, null, removed));
     }
 
     public virtual async ValueTask<EntityNpc?> LoadNpc(NpcInfo info, GroupInfo group, bool sendPacket = false)
@@ -314,6 +339,7 @@ public class SceneEntityLoader(SceneInstance scene)
         bool sendPacket = false)
     {
         if (info.IsClientOnly || info.IsDelete || IsIncompatibleGroup(group)) return null;
+        if (Scene.MonsterStaysDefeated(group, info)) return null;
 
         GameData.NpcMonsterDataData.TryGetValue(info.NPCMonsterID, out var excel);
         if (excel == null) return null;
@@ -339,7 +365,8 @@ public class SceneEntityLoader(SceneInstance scene)
 
         // load from database
         var propData = PersistsPropState ? Scene.Player.GetScenePropData(Scene.FloorId, group.Id, info.ID) : null;
-        var hasSavedState = propData != null && Scene.Excel.PlaneType != PlaneTypeEnum.Raid; // raid is not saved
+        var hasSavedState = propData != null && Scene.Excel.PlaneType != PlaneTypeEnum.Raid && // raid is not saved
+                            ScenePropRules.SavedStateAllowed(excel, propData.State);
         if (hasSavedState)
         {
             prop.State = propData!.State;
@@ -351,6 +378,20 @@ public class SceneEntityLoader(SceneInstance scene)
             else
                 // elevator
                 prop.State = prop.Excel.PropType == PropTypeEnum.PROP_ELEVATOR ? PropStateEnum.Elevator1 : info.State;
+
+            // The Express stays off the prologue platform until main 1000401 finishes. Missions off
+            // keeps the docked train (the same Open the lite scene ships).
+            if (group.GroupName.Contains("StarTrain", StringComparison.Ordinal))
+            {
+                var arrived = !Scene.Player.MissionEnabled ||
+                              Scene.Player.MissionManager!.GetMainMissionStatus(StarTrainArrivalMain) ==
+                              MissionPhaseEnum.Finish;
+                prop.State = arrived ? PropStateEnum.Open : info.State;
+            }
+
+            // Authored Locked with a Closed branch and no Locked branch never arms an interact button.
+            if (prop.State == PropStateEnum.Locked && info.GraphHasRealClosedBranch && !info.GraphHasLockedBranch)
+                prop.State = PropStateEnum.Closed;
         }
 
         if (!hasSavedState)
