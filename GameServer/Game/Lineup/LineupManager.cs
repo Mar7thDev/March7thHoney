@@ -454,7 +454,8 @@ public class LineupManager : BasePlayerManager<LineupData>
         if (lineup == null) return;
         var trial = Player.AvatarManager!.GetTrialAvatar(specialAvatarId);
         if (trial == null) return;
-        if (lineup.BaseAvatars!.Any(a => a.SpecialAvatarId == trial.SpecialAvatarId)) return; // already joined
+        var members = lineup.BaseAvatars ??= [];
+        if (members.Any(a => a.SpecialAvatarId == trial.SpecialAvatarId)) return; // already joined
         trial.CheckLevel(Player.Data.WorldLevel);
 
         var slot = new LineupAvatarInfo
@@ -462,18 +463,18 @@ public class LineupManager : BasePlayerManager<LineupData>
         // A Trailblazer-path trial replaces the hero in their own slot. Appending it shifted the
         // party and opened the fight on the wrong character.
         var hero = IsTrailblazerPath(trial.AvatarId)
-            ? lineup.BaseAvatars.FindIndex(IsOwnedTrailblazer)
+            ? members.FindIndex(IsOwnedTrailblazer)
             : -1;
         if (hero >= 0)
         {
-            var wasLeader = lineup.LeaderAvatarId == lineup.BaseAvatars[hero].BaseAvatarId;
-            lineup.BaseAvatars[hero] = slot;
+            var wasLeader = lineup.LeaderAvatarId == members[hero].BaseAvatarId;
+            members[hero] = slot;
             if (wasLeader) lineup.LeaderAvatarId = trial.BaseAvatarId;
         }
         else
         {
-            if (lineup.BaseAvatars.Count >= 4) lineup.BaseAvatars.RemoveAt(lineup.BaseAvatars.Count - 1);
-            lineup.BaseAvatars.Add(slot);
+            if (members.Count >= 4) members.RemoveAt(members.Count - 1);
+            members.Add(slot);
         }
 
         lineup.IsVirtual = true;
