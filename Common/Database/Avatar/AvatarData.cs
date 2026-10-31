@@ -632,9 +632,18 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
 
     public void CheckLevel(int worldLevel)
     {
-        if (!GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + worldLevel, out var specialAvatar))
-            if (!GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + 1, out specialAvatar))
-                return;
+        // Rows are keyed by SpecialAvatarID*10+WorldLevel. AvatarId is the path (8004) and misses
+        // story trials such as 1008004.
+        SpecialAvatarExcel? specialAvatar = null;
+        if (SpecialAvatarId != 0)
+            GameData.SpecialAvatarData.TryGetValue(SpecialAvatarId * 10 + worldLevel, out specialAvatar);
+        if (specialAvatar == null)
+            GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + worldLevel, out specialAvatar);
+        if (specialAvatar == null && SpecialAvatarId != 0)
+            GameData.SpecialAvatarData.TryGetValue(SpecialAvatarId * 10 + 1, out specialAvatar);
+        if (specialAvatar == null &&
+            !GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + 1, out specialAvatar))
+            return;
 
         Level = specialAvatar.Level;
         Promotion = specialAvatar.Promotion;
@@ -701,12 +710,27 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
             EnhancedId = (uint)GetCurPathInfo().EnhanceId
         };
 
-        foreach (var skill in GetCurPathInfo().GetSkillTree())
-            proto.SkilltreeList.Add(new AvatarSkillTree
-            {
-                PointId = (uint)skill.Key,
-                Level = (uint)skill.Value
-            });
+        // A config-owned trial has no saved traces. MaxWithInLevel grants every node its
+        // promotion and level allow; without that the story fight runs the bare kit.
+        var maxed = StoryTrialTables.MaxedSkillTree(AvatarId, Promotion, Level);
+        if (maxed.Count > 0)
+        {
+            foreach (var (pointId, level) in maxed)
+                proto.SkilltreeList.Add(new AvatarSkillTree
+                {
+                    PointId = (uint)pointId,
+                    Level = (uint)level
+                });
+        }
+        else
+        {
+            foreach (var skill in GetCurPathInfo().GetSkillTree())
+                proto.SkilltreeList.Add(new AvatarSkillTree
+                {
+                    PointId = (uint)skill.Key,
+                    Level = (uint)skill.Value
+                });
+        }
 
         foreach (var relic in GetCurPathInfo().Relic)
         {

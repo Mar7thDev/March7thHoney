@@ -1,10 +1,12 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Config.AdventureAbility;
+using March7thHoney.Data.Excel;
 using March7thHoney.Data.Config.Task;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Lineup;
 using March7thHoney.Enums.Avatar;
+using March7thHoney.Enums.Quest;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -457,16 +459,113 @@ public class LineupManager : BasePlayerManager<LineupData>
         if (trial == null) return;
         if (lineup.BaseAvatars!.Any(a => a.SpecialAvatarId == trial.SpecialAvatarId)) return; // already joined
         trial.CheckLevel(Player.Data.WorldLevel);
-        if (lineup.BaseAvatars!.Count >= 4) lineup.BaseAvatars.RemoveAt(lineup.BaseAvatars.Count - 1);
-        lineup.BaseAvatars.Add(new LineupAvatarInfo
-            { BaseAvatarId = trial.BaseAvatarId, SpecialAvatarId = trial.SpecialAvatarId });
+
+        var slot = new LineupAvatarInfo
+            { BaseAvatarId = trial.BaseAvatarId, SpecialAvatarId = trial.SpecialAvatarId };
+        // A Trailblazer-path trial replaces the hero in their own slot. Appending it shifted the
+        // party and opened the fight on the wrong character.
+        var hero = IsTrailblazerPath(trial.AvatarId)
+            ? lineup.BaseAvatars.FindIndex(IsOwnedTrailblazer)
+            : -1;
+        if (hero >= 0)
+        {
+            var wasLeader = lineup.LeaderAvatarId == lineup.BaseAvatars[hero].BaseAvatarId;
+            lineup.BaseAvatars[hero] = slot;
+            if (wasLeader) lineup.LeaderAvatarId = trial.BaseAvatarId;
+        }
+        else
+        {
+            if (lineup.BaseAvatars.Count >= 4) lineup.BaseAvatars.RemoveAt(lineup.BaseAvatars.Count - 1);
+            lineup.BaseAvatars.Add(slot);
+        }
+
+        lineup.IsVirtual = true;
+        if (lineup.PlaneId == 0) lineup.PlaneId = Player.Data.PlaneId;
         MarkDirty();
 
-        if (sendPacket)
+        if (!sendPacket) return;
+
+        await Player.SendPacket(new PacketVirtualLineupTrialAvatarChangeScNotify(lineup.PlaneId,
+            [trial.SpecialAvatarId], [], true));
+        Player.SceneInstance?.SyncLineup();
+        await Player.SendPacket(new PacketSyncLineupNotify(lineup));
+    }
+
+    /// <summary>
+    ///     A bare CreateTrialPlayer beat names no avatar. The next Trailblazer path gated by this
+    ///     mission (or its NextTrackMainMission) is granted when that path has a story-trial row
+    ///     (1000000 + path id).
+    /// </summary>
+    public async ValueTask GrantBareStoryTrial(SubMissionData subMission)
+    {
+        var specialId = ResolveStoryTrialAvatar(subMission);
+        if (specialId != 0)
+            await AddTrialAvatarToCurTeam(specialId);
+    }
+
+    /// <summary>
+    ///     Fixed-level trials resolve SceneEnterStage at world level 0. IsUseWorldLevel trials keep
+    ///     the player's world level. Without the raw flag table this stays the player's world level.
+    /// </summary>
+    public int StageResolveWorldLevel()
+    {
+        if (!StoryTrialTables.HasSpecialAvatarFlags) return Player.Data.WorldLevel;
+        foreach (var slot in GetCurLineup()?.BaseAvatars ?? [])
         {
-            Player.SceneInstance?.SyncLineup();
-            await Player.SendPacket(new PacketSyncLineupNotify(lineup));
+            if (slot.SpecialAvatarId == 0) continue;
+            if (StoryTrialTables.SpecialUsesWorldLevel(slot.SpecialAvatarId)) continue;
+            return 0;
         }
+
+        return Player.Data.WorldLevel;
+    }
+
+    private int ResolveStoryTrialAvatar(SubMissionData subMission)
+    {
+        if (subMission.MainMissionId == 0) return 0;
+        HashSet<int> chain = [subMission.MainMissionId];
+        if (GameData.MainMissionData.TryGetValue(subMission.MainMissionId, out var main) &&
+            main.NextTrackMainMission != 0)
+            chain.Add(main.NextTrackMainMission);
+
+        foreach (var path in GameData.MultiplePathAvatarConfigData.Values.OrderBy(path => path.AvatarID))
+        {
+            if (path.BaseAvatarID != 8001 || path.UnlockConditions.Count == 0) continue;
+            if (PlayerInstance.NormalizeHeroPathId(path.AvatarID, Player.Data.CurrentGender) != path.AvatarID)
+                continue;
+            if (!UnlockConditionInChain(path.UnlockConditions, chain)) continue;
+            var specialId = 1_000_000 + path.AvatarID;
+            // Rows are keyed SpecialAvatarID*10+WorldLevel; any world level counts.
+            if (Enumerable.Range(0, 10).Any(level => GameData.SpecialAvatarData.ContainsKey(specialId * 10 + level)))
+                return specialId;
+        }
+
+        return 0;
+    }
+
+    private static bool UnlockConditionInChain(List<Condition> conditions, HashSet<int> chain)
+    {
+        foreach (var condition in conditions)
+        {
+            if (!int.TryParse(condition.Param, out var id) || id == 0) continue;
+            if (condition.Type == ConditionTypeEnum.FinishMainMission && chain.Contains(id)) return true;
+            if (condition.Type == ConditionTypeEnum.FinishSubMission &&
+                GameData.SubMissionInfoData.TryGetValue(id, out var sub) && chain.Contains(sub.MainMissionId))
+                return true;
+        }
+
+        return false;
+    }
+
+    private static bool IsTrailblazerPath(int avatarId)
+    {
+        return GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var path) &&
+               path.BaseAvatarID == 8001;
+    }
+
+    private static bool IsOwnedTrailblazer(LineupAvatarInfo slot)
+    {
+        return slot.SpecialAvatarId == 0 && (slot.BaseAvatarId is 8001 or 8002 || IsTrailblazerPath(slot.BaseAvatarId));
     }
 
     public async ValueTask RemoveTrialAvatarFromCurTeam(int specialAvatarId, bool sendPacket = true)
@@ -474,6 +573,15 @@ public class LineupManager : BasePlayerManager<LineupData>
         var lineup = GetCurLineup();
         if (lineup == null) return;
         if (lineup.BaseAvatars!.RemoveAll(a => a.SpecialAvatarId == specialAvatarId) == 0) return;
+
+        var planeId = lineup.PlaneId != 0 ? lineup.PlaneId : Player.Data.PlaneId;
+        var wasVirtual = lineup.IsVirtual;
+        var lastTrial = !lineup.BaseAvatars.Any(avatar => avatar.SpecialAvatarId != 0);
+        if (lastTrial && wasVirtual)
+        {
+            lineup.IsVirtual = false;
+            lineup.PlaneId = 0;
+        }
 
         // a virtual lineup only exists to host trial avatars; tear it down once the last one leaves,
         // even when the caller suppresses packets, so the saved state never keeps an empty extra lineup
@@ -486,6 +594,12 @@ public class LineupManager : BasePlayerManager<LineupData>
 
         MarkDirty();
         if (!sendPacket) return;
+
+        if (wasVirtual)
+            await Player.SendPacket(new PacketVirtualLineupTrialAvatarChangeScNotify(planeId, [],
+                [specialAvatarId], false));
+        if (lastTrial && wasVirtual && planeId != 0)
+            await Player.SendPacket(new PacketVirtualLineupDestroyNotify(planeId));
 
         if (tornDown)
         {
