@@ -360,6 +360,9 @@ public partial class GridFightRuntimeDataSnapshot
 
     // Season 2 partners (GridFightPetPal). Appended later; older caches deserialize this as null.
     public Dictionary<uint, GridFightPetPalExcel>? PetPalData { get; set; }
+
+    // Event-quest windows. Older caches deserialize this as null; the mission scan reloads the JSON.
+    public Dictionary<int, MainMissionScheduleExcel>? MainMissionScheduleData { get; set; }
 }
 
 [MemoryPackable]
@@ -661,7 +664,8 @@ public static partial class GameData
                 },
                 SeasonItemData = GameData.GridFightSeasonItemData,
                 SeasonCraftData = GameData.GridFightSeasonCraftData,
-                PetPalData = GameData.GridFightPetPalData
+                PetPalData = GameData.GridFightPetPalData,
+                MainMissionScheduleData = GameData.MainMissionScheduleData
             },
             ActivityRuntimeData = new ActivityRuntimeDataSnapshot
             {
@@ -1028,6 +1032,7 @@ public static partial class GameData
         GameData.GridFightSeasonItemData = gridFightRuntimeData.SeasonItemData ?? [];
         GameData.GridFightSeasonCraftData = gridFightRuntimeData.SeasonCraftData ?? [];
         GameData.GridFightPetPalData = gridFightRuntimeData.PetPalData ?? [];
+        GameData.MainMissionScheduleData = gridFightRuntimeData.MainMissionScheduleData ?? [];
         var rogueTournData = gridFightRuntimeData.RogueTournRuntimeData ?? new RogueTournRuntimeDataSnapshot();
         GameData.RoguePersonaLayerRoomData = rogueTournData.RoguePersonaLayerRoomData ?? [];
         GameData.RoguePersonaRoomPresetData = rogueTournData.RoguePersonaRoomPresetData ?? [];
