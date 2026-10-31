@@ -1,3 +1,4 @@
+using March7thHoney.Database.Player;
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
@@ -217,7 +218,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                     var player = DatabaseHelper.Instance!.GetInstance<AvatarData>(avatar.AssistUid);
                     if (player != null)
                     {
-                        avatarInstance = player.FormalAvatars.Find(item => item.BaseAvatarId == avatar.BaseAvatarId);
+                        avatarInstance = player.FindByAnyId(avatar.BaseAvatarId);
                         avatarType = AvatarType.AvatarAssistType;
                     }
                 }
@@ -238,7 +239,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
 
                 if (avatarInstance == null) continue;
 
-                avatars.Add(new AvatarLineupData(avatarInstance, avatarType));
+                avatars.Add(new AvatarLineupData(avatarInstance, avatarType, AssistUid: avatar.AssistUid));
             }
 
             return avatars;
@@ -273,9 +274,25 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         }
 
         foreach (var avatar in GetBattleAvatars())
-            result.Add(avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+            result.Add(ToBattleAvatar(avatar, collection));
 
         return result;
+    }
+
+    /// <summary>
+    ///     A support character fights with its owner's light cone and relics; the borrower's inventory would drop
+    ///     them or pick an unrelated item with a colliding unique id.
+    /// </summary>
+    private BattleAvatar ToBattleAvatar(AvatarLineupData avatar, PlayerDataCollection own)
+    {
+        if (avatar.AssistUid == 0) return avatar.AvatarInfo.ToBattleProto(own, avatar.AvatarType);
+
+        var owner = PlayerData.GetPlayerByUid(avatar.AssistUid);
+        var ownerInventory = DatabaseHelper.Instance?.GetInstance<InventoryData>(avatar.AssistUid) ?? new InventoryData();
+        var collection = owner != null ? new PlayerDataCollection(owner, ownerInventory, Lineup) : own;
+        var proto = avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType);
+        proto.AssistUid = (uint)avatar.AssistUid;
+        return proto;
     }
 
     public SceneBattleInfo ToProto()
@@ -385,9 +402,9 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         else
         {
             avatars = GetBattleAvatars();
+            var own = new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup);
             foreach (var avatar in avatars)
-                proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(
-                    new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup), avatar.AvatarType));
+                proto.BattleAvatarList.Add(ToBattleAvatar(avatar, own));
         }
 
         System.Threading.Tasks.Task.Run(async () =>

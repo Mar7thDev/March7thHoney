@@ -14,6 +14,14 @@ namespace March7thHoney.Database.Avatar;
 [DbTable("Avatar")]
 public class AvatarData : BaseDatabaseDataHelper
 {
+    /// <summary>An owned avatar by base id or any of its path ids (8001 or 8008 both find the Trailblazer).</summary>
+    public FormalAvatarInfo? FindByAnyId(int id)
+    {
+        if (id == 0) return null;
+        return FormalAvatars.Find(avatar => avatar.BaseAvatarId == id) ??
+               FormalAvatars.Find(avatar => avatar.AvatarId == id || avatar.PathInfos.ContainsKey(id));
+    }
+
     public List<OldAvatarInfo> Avatars { get; set; } = [];
     public List<FormalAvatarInfo> FormalAvatars { get; set; } = [];
     public List<SpecialAvatarInfo> TrialAvatars { get; set; } = [];
@@ -603,14 +611,15 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
         var inventory = collection.InventoryData;
         foreach (var item in GetCurPathInfo().Relic)
         {
-            var relic = inventory.RelicItems.Find(x => x.UniqueId == item.Value)!;
-            proto.RelicList.Add(relic.ToDisplayRelicProto());
+            // A dangling relic id must not take the whole profile/support response down with it.
+            var relic = inventory.RelicItems.Find(x => x.UniqueId == item.Value);
+            if (relic != null) proto.RelicList.Add(relic.ToDisplayRelicProto());
         }
 
         if (GetCurPathInfo().EquipId != 0)
         {
-            var equip = inventory.EquipmentItems.Find(x => x.UniqueId == GetCurPathInfo().EquipId)!;
-            proto.Equipment = equip.ToDisplayEquipmentProto();
+            var equip = inventory.EquipmentItems.Find(x => x.UniqueId == GetCurPathInfo().EquipId);
+            if (equip != null) proto.Equipment = equip.ToDisplayEquipmentProto();
         }
 
         foreach (var skill in GetCurPathInfo().GetSkillTree())

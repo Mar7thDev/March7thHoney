@@ -168,14 +168,18 @@ public partial class LineupInfo
 
                 if (avatar.AssistUid != 0) // assist avatar
                 {
-                    var assistPlayer = DatabaseHelper.Instance?.GetInstance<AvatarData>(avatar.AssistUid);
-                    if (assistPlayer != null)
-                    {
-                        var lineupAvatar = assistPlayer.FormalAvatars
-                            ?.Find(item => item.BaseAvatarId == avatar.BaseAvatarId)
-                            ?.ToLineupInfo(BaseAvatars.IndexOf(avatar), this, AvatarType.AvatarAssistType);
-                        if (lineupAvatar != null) info.AvatarList.Add(lineupAvatar); // assist avatar may not work
-                    }
+                    // A support always joins at full HP/energy and is identified by its path id.
+                    var support = DatabaseHelper.Instance?.GetInstance<AvatarData>(avatar.AssistUid)
+                        ?.FindByAnyId(avatar.BaseAvatarId);
+                    if (support != null)
+                        info.AvatarList.Add(new LineupAvatar
+                        {
+                            Id = (uint)support.AvatarId,
+                            Slot = (uint)BaseAvatars.IndexOf(avatar),
+                            AvatarType = AvatarType.AvatarAssistType,
+                            Hp = 10000,
+                            SpBar = new SpBarInfo { CurSp = 10000, MaxSp = 10000 }
+                        });
                 }
                 else if (avatar.SpecialAvatarId != 0) // special avatar
                 {

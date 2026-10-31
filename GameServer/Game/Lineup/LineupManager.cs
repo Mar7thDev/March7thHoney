@@ -1,3 +1,5 @@
+using March7thHoney.GameServer.Game.Friend;
+using March7thHoney.GameServer.Server.Packet.Send.Friend;
 using March7thHoney.Data;
 using March7thHoney.Data.Config.AdventureAbility;
 using March7thHoney.Data.Excel;
@@ -138,12 +140,7 @@ public class LineupManager : BasePlayerManager<LineupData>
                 var avatarStorage = DatabaseHelper.Instance?.GetInstance<AvatarData>(avatar.AssistUid);
                 avatarType = AvatarType.AvatarAssistType;
                 if (avatarStorage == null) continue;
-                foreach (var avatarData in avatarStorage.FormalAvatars.Where(avatarData =>
-                             avatarData.AvatarId == avatar.BaseAvatarId))
-                {
-                    avatarInfo = avatarData;
-                    break;
-                }
+                avatarInfo = avatarStorage.FindByAnyId(avatar.BaseAvatarId);
             }
             else
             {
@@ -673,8 +670,39 @@ public class LineupManager : BasePlayerManager<LineupData>
         await Player.SendPacket(new PacketSyncLineupNotify(lineup));
     }
 
+    /// <summary>Puts the support into the current normal lineup: replaces an existing support slot, else fills the
+    ///     first free slot, else the last one. Story, raid and other extra lineups take no support.</summary>
+    public bool SetAssistSlot(int ownerUid, int ownerBaseAvatarId)
+    {
+        var lineup = GetCurLineup();
+        if (lineup?.BaseAvatars == null || lineup.LineupType != 0 || lineup.IsVirtual) return false;
+
+        var slot = new LineupAvatarInfo { BaseAvatarId = ownerBaseAvatarId, AssistUid = ownerUid };
+        var existing = lineup.BaseAvatars.FindIndex(avatar => avatar.AssistUid != 0);
+        if (existing >= 0)
+            lineup.BaseAvatars[existing] = slot;
+        else if (lineup.BaseAvatars.Count < 4)
+            lineup.BaseAvatars.Add(slot);
+        else
+            lineup.BaseAvatars[^1] = slot;
+
+        if (lineup.BaseAvatars.All(avatar => avatar.BaseAvatarId != lineup.LeaderAvatarId || avatar.AssistUid != 0))
+            lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault(avatar => avatar.AssistUid == 0)?.BaseAvatarId ??
+                                    lineup.LeaderAvatarId;
+        MarkDirty();
+        return true;
+    }
+
+    public void ClearAssistSlots()
+    {
+        foreach (var lineup in Data.Lineups.Values)
+            if (lineup.BaseAvatars?.RemoveAll(avatar => avatar.AssistUid != 0) > 0)
+                MarkDirty();
+    }
+
     public async ValueTask ReplaceLineup(ReplaceLineupCsReq req)
     {
+        var hadAssist = GetCurLineup()?.BaseAvatars?.Any(avatar => avatar.AssistUid != 0) == true;
         if (req.ExtraLineupType != ExtraLineupType.LineupNone)
         {
             Data.CurExtraLineup = (int)req.ExtraLineupType + 10;
@@ -690,8 +718,36 @@ public class LineupManager : BasePlayerManager<LineupData>
             lineup = Data.Lineups[(int)req.Index];
         lineup.BaseAvatars = [];
         var index = lineup.LineupType == 0 ? (int)req.Index : Data.GetCurLineupIndex();
-        foreach (var avatar in req.LineupSlotList) await AddAvatar(index, (int)avatar.Id, false);
-        lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault()?.BaseAvatarId ?? 0;
+        foreach (var avatar in req.LineupSlotList.OrderBy(slot => slot.Slot))
+        {
+            if (avatar.Id == 0) continue;
+            if (avatar.AssistUid == 0 || avatar.AssistUid == Player.Uid)
+            {
+                await AddAvatar(index, (int)avatar.Id, false);
+                continue;
+            }
+
+            // A support slot keeps the owner's avatar instead of swapping in (or dropping for) the player's own copy.
+            var ownerAvatars = DatabaseHelper.Instance?.GetInstance<AvatarData>((int)avatar.AssistUid);
+            var support = ownerAvatars?.FindByAnyId((int)avatar.Id);
+            if (support == null || !ownerAvatars!.AssistAvatars.Contains(support.BaseAvatarId) ||
+                lineup.LineupType != 0 || lineup.BaseAvatars.Any(slot => slot.AssistUid != 0))
+                continue;
+            lineup.BaseAvatars.Add(new LineupAvatarInfo
+                { BaseAvatarId = support.BaseAvatarId, AssistUid = (int)avatar.AssistUid });
+        }
+
+        lineup.LeaderAvatarId = lineup.BaseAvatars.FirstOrDefault(slot => slot.AssistUid == 0)?.BaseAvatarId ??
+                                lineup.BaseAvatars.FirstOrDefault()?.BaseAvatarId ?? 0;
+
+        // The client rebuilds its support member from CurAssistChangedNotify, which must precede the lineup sync.
+        var assistSlot = lineup.BaseAvatars.FirstOrDefault(slot => slot.AssistUid != 0);
+        if (assistSlot != null)
+            await Player.SendPacket(new PacketCurAssistChangedNotify(
+                FriendManager.BuildAssistInfo(assistSlot.AssistUid, assistSlot.BaseAvatarId) ??
+                new PlayerAssistInfo()));
+        else if (hadAssist)
+            await Player.SendPacket(new PacketCurAssistChangedNotify(new PlayerAssistInfo()));
 
         if (index == Data.GetCurLineupIndex())
         {
@@ -731,4 +787,5 @@ public class LineupManager : BasePlayerManager<LineupData>
     #endregion
 }
 
-public record AvatarLineupData(BaseAvatarInfo AvatarInfo, AvatarType AvatarType, int? BattleAvatarId = null);
+public record AvatarLineupData(BaseAvatarInfo AvatarInfo, AvatarType AvatarType, int? BattleAvatarId = null,
+    int AssistUid = 0);
