@@ -2,6 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.Player;
@@ -389,6 +390,12 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 }
                 // Spend stamina
                 if (battle.StaminaCost > 0) await Player.SpendStamina(battle.StaminaCost);
+                // A won calyx pays 50 Trailblaze EXP after the stamina and before the drops (official wire). Only
+                // the calyx value is measured; Cavern / Echo of War / Stagnant Shadow pay nothing here.
+                if (battle.CocoonId > 0 &&
+                    GameData.CocoonConfigData.TryGetValue(battle.CocoonId * 100 + battle.WorldLevel,
+                        out var calyx) && calyx.CocoonType == CocoonTypeEnum.TYPE_NORMAL)
+                    await Player.InventoryManager!.AddItem(22, CalyxClearExp);
                 break;
             case BattleEndStatus.BattleEndLose:
                 // Set avatar hp to 20% if the player's party is downed
@@ -532,6 +539,8 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
     ///     A leader who fell in the fight hands the lead to the first living member, as the official server
     ///     does before the lineup sync. Otherwise the overworld keeps a downed leader.
     /// </summary>
+    private const int CalyxClearExp = 50;
+
     private async ValueTask RepointDeadLeader(Database.Lineup.LineupInfo lineup)
     {
         var avatars = lineup.BaseAvatars ?? [];

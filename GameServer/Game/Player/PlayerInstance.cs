@@ -40,6 +40,7 @@ using March7thHoney.GameServer.Game.TrainCakeCatch;
 using March7thHoney.GameServer.Game.TrainParty;
 using March7thHoney.GameServer.Game.Task;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Send.DailyActive;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -688,6 +689,11 @@ public partial class PlayerInstance(PlayerData data)
     public async ValueTask OnLevelUp()
     {
         if (MissionEnabled) await MissionManager!.AcceptMainMissionByCondition();
+
+        // Reaching DailyQuest.MinLevel fills today's daily training at once instead of on the next login.
+        var daily = GetComponentOrDefault<DailyActiveManager>();
+        if (daily != null && await daily.EnsureToday())
+            await SendPacket(new PacketDailyActiveInfoNotify(daily));
     }
 
     public void OnLevelChange()
