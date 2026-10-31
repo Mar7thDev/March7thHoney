@@ -4,6 +4,7 @@ using March7thHoney.Data.Config.Scene;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Inventory;
+using MissionCustomValueRecord = March7thHoney.Database.Quests.MissionCustomValueRecord;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
@@ -61,6 +62,9 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     {
         if (Player.B51RacingManager?.IsCompletedMainMission(missionId) == true) return [];
         if (!Enabled) return [];
+        // A Prepared main is a real accept for a direct caller (GM, or the promotion pass).
+        if (Data.GetMainMissionStatus(missionId) == MissionPhaseEnum.Prepared)
+            Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None);
         if (Data.GetMainMissionStatus(missionId) != MissionPhaseEnum.None) return []; // already accepted
         // Get entry sub mission
         GameData.MainMissionData.TryGetValue(missionId, out var mission);
@@ -109,18 +113,57 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     public async ValueTask<MissionSync> AcceptMainMissionByCondition(bool sendPacket = true)
     {
         var sync = new MissionSync();
+        if (!Enabled) return sync;
+
+        foreach (var mainId in Data.PreparedMainMissionIds?.ToList() ?? [])
+        {
+            if (!GameData.MainMissionData.TryGetValue(mainId, out var prepared))
+            {
+                Data.SetMainMissionStatus(mainId, MissionPhaseEnum.None);
+                continue;
+            }
+
+            var scheduled = IsMainMissionScheduled(mainId);
+            if (scheduled && prepared.IsEqual(Data) && prepared.IsBeginSatisfied(Data))
+            {
+                foreach (var accepted in await AcceptMainMission(mainId, sendPacket))
+                    MissionSyncBuilder.Merge(sync, accepted);
+                continue;
+            }
+
+            if (!scheduled || !IsPreparedEligible(prepared))
+                Data.SetMainMissionStatus(mainId, MissionPhaseEnum.None);
+        }
+
         foreach (var nextMission in GameData.MainMissionData.Values)
         {
-            if (!nextMission.IsEqual(Data) || !nextMission.IsBeginSatisfied(Data)) continue;
             if (Data.GetMainMissionStatus(nextMission.MainMissionID) != MissionPhaseEnum.None)
-                continue; // already accepted
-            var res = await AcceptMainMission(nextMission.MainMissionID, sendPacket);
-            foreach (var subMission in res)
-                if (subMission != null)
-                    sync.MissionList.AddRange(subMission.MissionList);
+                continue;
+            if (!IsMainMissionScheduled(nextMission.MainMissionID)) continue;
+
+            var take = nextMission.IsEqual(Data);
+            var begin = nextMission.IsBeginSatisfied(Data);
+            if (take && begin)
+            {
+                foreach (var accepted in await AcceptMainMission(nextMission.MainMissionID, sendPacket))
+                    MissionSyncBuilder.Merge(sync, accepted);
+                continue;
+            }
+
+            if (IsPreparedEligible(nextMission))
+                AcceptPrepared(nextMission, sync);
         }
 
         RefreshSubMissionSync(sync);
+        if (sendPacket && sync.MissionList.Any(mission => mission.Status == MissionStatus.MissionPrepared))
+        {
+            var preparedSync = new MissionSync();
+            foreach (var mission in sync.MissionList)
+                if (mission.Status == MissionStatus.MissionPrepared)
+                    preparedSync.MissionList.Add(mission);
+            await Player.SendPacket(new PacketPlayerSyncScNotify(preparedSync));
+        }
+
         return sync;
     }
 
@@ -146,6 +189,8 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
                  mission.SubMissionIds.Where(id => !IsCompletedActivitySubMission(id))) Data.SetSubMissionStatus(subMission, MissionPhaseEnum.None); // reset
 
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.None); // reset
+        MissionSyncBuilder.NoteRemovedMain(sync, missionId);
+        MissionSyncBuilder.Finalize(sync);
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
 
         return await AcceptMainMission(missionId, sendPacket);
@@ -174,6 +219,10 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     {
         var report = new MissionRepairReport();
         if (!Enabled) return report;
+
+        await NormalizeFinishedMainSubs(sendPacket);
+        await CleanupUnavailableScheduledMissions(sendPacket);
+        RepairMissingFloorSavedValues();
 
         // Closing one main accepts its successors, and a successor can itself land stalled, so keep
         // sweeping. `handled` makes every main a one-shot, which is what bounds the loop.
@@ -319,6 +368,8 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             });
         }
 
+        MissionSyncBuilder.NoteRemovedMain(sync, missionId);
+        MissionSyncBuilder.Finalize(sync);
         if (sendPacket) await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
     }
 
@@ -340,11 +391,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         if (missionId == 403000222) await RefreshRogueGalleryProps();
 
         var sync = new MissionSync();
-        sync.MissionList.Add(new Proto.Mission
-        {
-            Id = (uint)missionId,
-            Status = MissionStatus.MissionDoing
-        });
+        MissionSyncBuilder.NoteAcceptedSub(sync, missionId);
 
         if (sendPacket)
         {
@@ -406,7 +453,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
                 }
 
         var mainSync = await AcceptMainMissionByCondition(false);
-        sync.MissionList.AddRange(mainSync.MissionList);
+        MissionSyncBuilder.Merge(sync, mainSync);
 
         RefreshSubMissionSync(sync);
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
@@ -433,7 +480,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         }
 
         await Player.RaidManager!.CheckIfLeaveRaid();
-
+        await GrantUnlockedStoryPaths();
     }
 
     public async ValueTask FinishSubMission(int missionId)
@@ -524,7 +571,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             if (canAccept)
             {
                 var s = await AcceptSubMission(nextMission.ID, false, doFinishTypeAction);
-                if (s != null) sync.MissionList.AddRange(s.MissionList);
+                MissionSyncBuilder.Merge(sync, s);
             }
         }
 
@@ -535,11 +582,15 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     {
         // Accepting a successor can enter a scene and finish it (or an earlier successor)
         // recursively. Publish the current state, not the Doing snapshot created before that work.
+        // Prepared openers are not stored as running subs; refreshing them would publish MissionNone.
         foreach (var mission in sync.MissionList)
         {
+            if (mission.Status == MissionStatus.MissionPrepared) continue;
             mission.Status = GetSubMissionStatus((int)mission.Id).ToProto();
             mission.Progress = (uint)GetMissionProgress((int)mission.Id);
         }
+
+        MissionSyncBuilder.Finalize(sync);
     }
 
     // Hardcoded story-mission side effects (Heliobus lineup swap / HeartDial script unlocks).
@@ -723,54 +774,115 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         GameData.MainMissionData.TryGetValue(mainMissionId, out var mainMission);
         if (mainMission == null) return;
 
+        var sync = new MissionSync();
         foreach (var mission in mainMission.MissionInfo?.SubMissionList ?? [])
-            if (mission.TakeType == SubMissionTakeTypeEnum.CustomValue)
+            if (mission.TakeType == SubMissionTakeTypeEnum.CustomValue &&
+                GetSubMissionStatus(mission.ID) == MissionPhaseEnum.None)
             {
-                var accept = false;
-                List<List<int>> list = [mission.TakeParamIntList ?? []];
-                if (mission.TakeParamIntList?.Count > 5)
+                var accept = CustomValueStrGateSatisfied(mission, values);
+                if (!accept)
                 {
-                    // every 3 as group
-                    var group = mission.TakeParamIntList.Count / 3;
-                    list = [];
-                    for (var i = 0; i < group; i++)
+                    List<List<int>> list = [mission.TakeParamIntList ?? []];
+                    if (mission.TakeParamIntList?.Count > 5)
                     {
-                        var customValue = mission.TakeParamIntList.GetRange(i * 3, 3);
-                        list.Add(customValue);
-                    }
-                }
-
-                foreach (var customValues in list)
-                {
-                    var thisAccept = true;
-                    var matched = 0;
-
-                    // The groups are alternatives, so each one restarts at request index 0, and the
-                    // index advances per config slot — not only on a match. Sharing one cursor across
-                    // groups made the second group of a >5-entry list read request indices 3-5.
-                    for (var index = 0; index < customValues.Count; index++)
-                    {
-                        var customValue = customValues[index];
-                        if (customValue == 0 && index == 0) continue; // skip 0
-                        var valueInst = values.Find(x => x.Index == index);
-                        if (valueInst == null) continue; // a missing request entry does not fail the group
-                        if (valueInst.CustomValue != customValue)
+                        // every 3 as group
+                        var group = mission.TakeParamIntList.Count / 3;
+                        list = [];
+                        for (var i = 0; i < group; i++)
                         {
-                            thisAccept = false;
-                            break;
+                            var customValue = mission.TakeParamIntList.GetRange(i * 3, 3);
+                            list.Add(customValue);
+                        }
+                    }
+
+                    foreach (var customValues in list)
+                    {
+                        var thisAccept = true;
+                        var matched = 0;
+
+                        // The groups are alternatives, so each one restarts at request index 0, and the
+                        // index advances per config slot — not only on a match. Sharing one cursor across
+                        // groups made the second group of a >5-entry list read request indices 3-5.
+                        for (var index = 0; index < customValues.Count; index++)
+                        {
+                            var customValue = customValues[index];
+                            if (customValue == 0 && index == 0) continue; // skip 0
+                            var valueInst = values.Find(x => x.Index == index);
+                            if (valueInst == null) continue; // a missing request entry does not fail the group
+                            if (valueInst.CustomValue != customValue)
+                            {
+                                thisAccept = false;
+                                break;
+                            }
+
+                            matched++;
                         }
 
-                        matched++;
+                        // A group that matched nothing must not accept: `values` is raw client input, so a
+                        // request carrying a single unrelated index would otherwise leave thisAccept true
+                        // and open every CustomValue-gated sub of the client-chosen main mission.
+                        if (thisAccept && matched > 0) accept = true; // accept if any group is satisfied
                     }
-
-                    // A group that matched nothing must not accept: `values` is raw client input, so a
-                    // request carrying a single unrelated index would otherwise leave thisAccept true
-                    // and open every CustomValue-gated sub of the client-chosen main mission.
-                    if (thisAccept && matched > 0) accept = true; // accept if any group is satisfied
                 }
 
-                if (accept) await AcceptSubMission(mission.ID);
+                if (!accept) continue;
+                MissionSyncBuilder.Merge(sync, await AcceptSubMission(mission.ID, false));
             }
+
+        if (values.Count > 0)
+        {
+            UpsertCustomValues(mainMissionId, values);
+            MissionSyncBuilder.AttachCustomValues(sync, mainMissionId, Data.MainMissionCustomValues[mainMissionId]);
+        }
+
+        RefreshSubMissionSync(sync);
+        if (sync.MissionList.Count > 0 || sync.NLPKLNDCMOC.Count > 0)
+            await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
+    }
+
+    /// <summary>
+    ///     TakeParamStrList triples [name, value, prereqSub] are alternatives. A triple matches when the
+    ///     request carries that name at that value and the prerequisite sub is finished.
+    /// </summary>
+    private bool CustomValueStrGateSatisfied(SubMissionInfo mission, List<MissionCustomValue> values)
+    {
+        var gates = mission.TakeParamStrList;
+        for (var i = 0; i + 2 < gates.Count; i += 3)
+        {
+            if (!uint.TryParse(gates[i + 1], out var expected)) continue;
+            var reported = values.Find(value => value.BGDFHBAANLB == gates[i]);
+            if (reported == null || reported.CustomValue != expected) continue;
+            if (uint.TryParse(gates[i + 2], out var prerequisite) && prerequisite != 0 &&
+                GetSubMissionStatus((int)prerequisite) != MissionPhaseEnum.Finish)
+                continue;
+            return true;
+        }
+
+        return false;
+    }
+
+    private void UpsertCustomValues(int mainMissionId, List<MissionCustomValue> values)
+    {
+        if (!Data.MainMissionCustomValues.TryGetValue(mainMissionId, out var existing))
+        {
+            existing = [];
+            Data.MainMissionCustomValues[mainMissionId] = existing;
+        }
+
+        foreach (var incoming in values)
+        {
+            var name = incoming.BGDFHBAANLB ?? "";
+            var index = existing.FindIndex(record =>
+                (name.Length > 0 && record.Key == name) || (name.Length == 0 && record.Index == incoming.Index));
+            var record = new MissionCustomValueRecord
+            {
+                Index = incoming.Index,
+                CustomValue = incoming.CustomValue,
+                Key = name
+            };
+            if (index >= 0) existing[index] = record;
+            else existing.Add(record);
+        }
     }
 
     public async ValueTask AddMissionProgress(int missionId, int progress)
@@ -951,10 +1063,14 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             }
         }
 
-        return mainMission.MissionInfo.SubMissionList
+        var finished = mainMission.MissionInfo.SubMissionList
             .Where(x => GetSubMissionStatus(x.ID) == MissionPhaseEnum.Finish)
             .Select(x => x.ID)
             .LastOrDefault();
+        if (finished != 0) return finished;
+        if (GetMainMissionStatus(mainMissionId) == MissionPhaseEnum.Prepared)
+            return PreparedAnchorSubMissionId(mainMissionId);
+        return 0;
     }
 
     /// <summary>

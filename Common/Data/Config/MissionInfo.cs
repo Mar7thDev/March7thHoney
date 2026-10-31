@@ -43,6 +43,12 @@ public partial class SubMissionInfo
     public int Progress { get; set; }
     public List<int>? GroupIDList { get; set; } = [];
     public int SubRewardID { get; set; }
+
+    /// <summary>
+    ///     CustomValue take gate written as name/value/prerequisite triples. Appended so older
+    ///     cached mission graphs restore it empty.
+    /// </summary>
+    public List<string> TakeParamStrList { get; set; } = [];
 }
 
 [MemoryPackable]
