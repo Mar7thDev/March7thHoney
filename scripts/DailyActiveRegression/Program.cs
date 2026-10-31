@@ -271,6 +271,36 @@ Check("a won crimson calyx finishes the crimson farm-type daily",
 await events.MissionManager.HandleAllFinishType(Battle(events, 1201, BattleEndStatus.BattleEndWin));
 Check("a won Cavern of Corrosion finishes AnyCocoonFinish [3]", eventQuests.GetQuestStatus(2100102) == QuestStatus.QuestFinish);
 
+// Stagnant Shadow 2100101: cocoon battles also carry a MappingInfoId, so only a won non-cocoon battle counts.
+eventQuests.ResetQuestState(2100101, QuestStatus.QuestDoing);
+await events.MissionManager.HandleAllFinishType(Battle(events, 1001, BattleEndStatus.BattleEndWin));
+await events.MissionManager.HandleAllFinishType(Battle(events, 0, BattleEndStatus.BattleEndLose));
+Check("AnyFarmElementFinish ignores won calyxes and lost farm-element battles",
+    eventQuests.GetQuestStatus(2100101) == QuestStatus.QuestDoing);
+await events.MissionManager.HandleAllFinishType(Battle(events, 0, BattleEndStatus.BattleEndWin));
+Check("a won farm-element battle finishes AnyFarmElementFinish", eventQuests.GetQuestStatus(2100101) == QuestStatus.QuestFinish);
+
+// Count events with no earlier trigger: techniques 2100117 (x2), destructibles 2100125 (x3), SU rooms 2100126,
+// support characters 2100128.
+foreach (var id in new[] { 2100117, 2100125, 2100126, 2100128 }) eventQuests.ResetQuestState(id, QuestStatus.QuestDoing);
+await events.MissionManager.TriggerCountEvent(MissionFinishTypeEnum.UseMazeSkill);
+Check("one technique cast is half of UseMazeSkill x2", eventQuests.GetQuestStatus(2100117) == QuestStatus.QuestDoing);
+await events.MissionManager.TriggerCountEvent(MissionFinishTypeEnum.UseMazeSkill);
+await events.MissionManager.TriggerCountEvent(MissionFinishTypeEnum.PropDestruct, 3);
+await events.MissionManager.TriggerCountEvent(MissionFinishTypeEnum.RogueExploreRoomFinishCnt);
+await events.MissionManager.TriggerCountEvent(MissionFinishTypeEnum.WinBattleWithAssistAvatarCnt);
+Check("technique, destructible, SU room and support-character events finish their dailies",
+    new[] { 2100117, 2100125, 2100126, 2100128 }.All(id => eventQuests.GetQuestStatus(id) == QuestStatus.QuestFinish));
+
+// "Consume 120 Trailblaze Power" 2100139 counts the stamina actually spent, not one per spend.
+eventQuests.ResetQuestState(2100139, QuestStatus.QuestDoing);
+events.Data.Stamina = 240;
+await events.SpendStamina(60);
+Check("spending 60 Trailblaze Power is half of daily 2100139",
+    eventQuests.GetQuestStatus(2100139) == QuestStatus.QuestDoing && eventQuests.GetQuestProgress(2100139) == 60);
+await events.SpendStamina(60);
+Check("spending 120 Trailblaze Power finishes daily 2100139", eventQuests.GetQuestStatus(2100139) == QuestStatus.QuestFinish);
+
 // --- Daily mission counters ------------------------------------------------------------------------------------------
 var eventDaily = events.GetComponent<DailyActiveManager>();
 await eventDaily.EnsureToday(false);

@@ -11,9 +11,10 @@ public class MissionHandlerUseItem : MissionFinishTypeHandler
 {
     public override async ValueTask HandleMissionFinishType(PlayerInstance player, SubMissionInfo info, object? arg)
     {
+        // The event carries the consumed amount (e.g. 120 Trailblaze Power for one count of item 11).
         if (arg is ItemData item)
             if (info.ParamInt1 == item.ItemId)
-                await player.MissionManager!.AddMissionProgress(info.ID, 1);
+                await player.MissionManager!.AddMissionProgress(info.ID, Math.Max(item.Count, 1));
 
         if (player.MissionManager!.GetMissionProgress(info.ID) >= info.Progress)
             await player.MissionManager!.FinishSubMission(info.ID);
@@ -25,6 +26,6 @@ public class MissionHandlerUseItem : MissionFinishTypeHandler
         // this type wont be used in quest
         if (arg is ItemData item)
             if (excel.ParamInt1 == item.ItemId)
-                await player.QuestManager!.AddQuestProgress(quest.QuestID, 1);
+                await player.QuestManager!.AddQuestProgress(quest.QuestID, Math.Max(item.Count, 1));
     }
 }

@@ -1,3 +1,5 @@
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
@@ -663,6 +665,10 @@ public partial class PlayerInstance(PlayerData data)
     {
         Data.Stamina -= staminaCost;
         await SendPacket(new PacketStaminaInfoScNotify(this));
+        // Spent Trailblaze Power counts as using item 11 ("Consume 120 Trailblaze Power").
+        if (staminaCost > 0 && MissionManager != null)
+            await MissionManager.HandleFinishType(MissionFinishTypeEnum.UseItem,
+                new ItemData { ItemId = 11, Count = staminaCost });
     }
 
     public void OnAddExp()

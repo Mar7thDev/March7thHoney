@@ -484,6 +484,7 @@ public partial class RogueManager : BasePlayerManager
         {
             room.Status = RogueRoomStatus.Finish;
             await Player.SendPacket(new PacketSyncRogueMapRoomScNotify(inst));
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueExploreRoomFinishCnt);
         }
         SaveRun();
 
