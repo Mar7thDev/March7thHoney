@@ -21,6 +21,12 @@ public class MissionData : BaseDatabaseDataHelper
 
     public List<int> RunningMainMissionIds { get; set; } = [];
 
+    /// <summary>
+    ///     Mains whose story chain has queued them but whose level gate has not opened yet.
+    ///     Existing rows leave this empty.
+    /// </summary>
+    public List<int> PreparedMainMissionIds { get; set; } = [];
+
     public Dictionary<int, int> SubMissionProgressDict { get; set; } = [];
 
     public Dictionary<int, List<MissionCustomValueRecord>> MainMissionCustomValues { get; set; } = [];
@@ -45,6 +51,7 @@ public class MissionData : BaseDatabaseDataHelper
     {
         if (FinishedMainMissionIds.Contains(missionId)) return MissionPhaseEnum.Finish;
         if (RunningMainMissionIds.Contains(missionId)) return MissionPhaseEnum.Accept;
+        if (PreparedMainMissionIds?.Contains(missionId) == true) return MissionPhaseEnum.Prepared;
         return MissionPhaseEnum.None;
     }
 
@@ -57,20 +64,30 @@ public class MissionData : BaseDatabaseDataHelper
 
     public void SetMainMissionStatus(int missionId, MissionPhaseEnum phase)
     {
+        PreparedMainMissionIds ??= [];
         if (phase == MissionPhaseEnum.Finish)
         {
             FinishedMainMissionIds.SafeAdd(missionId);
             RunningMainMissionIds.Remove(missionId);
+            PreparedMainMissionIds.Remove(missionId);
         }
         else if (phase == MissionPhaseEnum.Accept)
         {
             FinishedMainMissionIds.Remove(missionId);
             RunningMainMissionIds.SafeAdd(missionId);
+            PreparedMainMissionIds.Remove(missionId);
+        }
+        else if (phase == MissionPhaseEnum.Prepared)
+        {
+            FinishedMainMissionIds.Remove(missionId);
+            RunningMainMissionIds.Remove(missionId);
+            PreparedMainMissionIds.SafeAdd(missionId);
         }
         else
         {
             FinishedMainMissionIds.Remove(missionId);
             RunningMainMissionIds.Remove(missionId);
+            PreparedMainMissionIds.Remove(missionId);
         }
     }
 
