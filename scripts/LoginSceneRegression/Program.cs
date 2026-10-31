@@ -1332,9 +1332,11 @@ gatedPlayer.Data.Level = 11;
 gatedPlayer.Data.Exp = 0;
 gatedMissions.SetMainMissionStatus(1010403, MissionPhaseEnum.Finish);
 await gatedPlayer.MissionManager.AcceptMainMissionByCondition(false);
-Check("BeginParam PlayerLevel 13 keeps 1010502 unaccepted at level 11 although its take gate is met",
+// The chain is reached and only a PlayerLevel gate is unmet, so the main is Prepared: listed locked, no sub running.
+Check("BeginParam PlayerLevel 13 keeps 1010502 Prepared, not accepted, at level 11 although its take gate is met",
     levelGatedExcel.IsEqual(gatedMissions) && !levelGatedExcel.IsBeginSatisfied(gatedMissions) &&
-    gatedMissions.GetMainMissionStatus(LevelGatedMain) == MissionPhaseEnum.None);
+    gatedMissions.GetMainMissionStatus(LevelGatedMain) == MissionPhaseEnum.Prepared &&
+    levelGatedExcel.SubMissionIds.All(id => gatedMissions.GetSubMissionStatus(id) == MissionPhaseEnum.None));
 var expToLevel13 = GameData.PlayerLevelConfigData[13].PlayerExp - GameData.PlayerLevelConfigData[11].PlayerExp;
 await gatedPlayer.InventoryManager!.AddItem(22, expToLevel13);
 Check("reaching level 13 through an exp grant accepts the level-gated main",
@@ -3554,12 +3556,18 @@ lineupData.Lineups[0] = keptLineup;
 lineupData.CurLineup = 0;
 
 var lineupBytes = MemoryPackSerializer.Serialize(new March7thHoney.Database.Lineup.LineupInfo { Name = "old", Mp = 3, BaseAvatars = [] });
-var legacyLineupBytes = new byte[lineupBytes.Length - 1];
-legacyLineupBytes[0] = (byte)(lineupBytes[0] - 1);
-Array.Copy(lineupBytes, 1, legacyLineupBytes, 1, lineupBytes.Length - 2);
-var legacyLineup = MemoryPackSerializer.Deserialize<March7thHoney.Database.Lineup.LineupInfo>(legacyLineupBytes);
-Check("lineups saved before the favourite flag still deserialize", lineupBytes[0] == 6
-    && legacyLineup is { Name: "old", Mp: 3, IsFavourite: false });
+// Trailing members: IsFavourite (bool), IsVirtual (bool), PlaneId (int).
+March7thHoney.Database.Lineup.LineupInfo? LegacyLineup(int droppedMembers, int droppedBytes)
+{
+    var legacy = new byte[lineupBytes.Length - droppedBytes];
+    legacy[0] = (byte)(lineupBytes[0] - droppedMembers);
+    Array.Copy(lineupBytes, 1, legacy, 1, legacy.Length - 1);
+    return MemoryPackSerializer.Deserialize<March7thHoney.Database.Lineup.LineupInfo>(legacy);
+}
+Check("lineups saved before the favourite flag still deserialize", lineupBytes[0] == 8
+    && LegacyLineup(3, 6) is { Name: "old", Mp: 3, IsFavourite: false, IsVirtual: false, PlaneId: 0 });
+Check("lineups saved before the virtual-lineup fields still deserialize",
+    LegacyLineup(2, 5) is { Name: "old", Mp: 3, IsFavourite: false, IsVirtual: false, PlaneId: 0 });
 
 // Trailblazer current path coherence at load
 var pathHero = lineupRelogin.AvatarManager!.GetHero()!;
