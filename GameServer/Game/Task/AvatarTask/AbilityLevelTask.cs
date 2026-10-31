@@ -39,7 +39,7 @@ public class AbilityLevelTask(PlayerInstance player)
         if (selector is TargetAlias target)
             return target.Alias switch
             {
-                "Caster" or "ModifierOwnerEntity" => [casterEntity],
+                "Caster" or "ModifierOwnerEntity" or "CasterSummoner" => [casterEntity],
                 "ParamEntity" or "ParamEntityList" or "AllEnemy" or "AbilityTargetEntity" => targetEntities,
                 "AdvTeamMembers" => Player.SceneInstance!.AvatarInfo.Values.ToList().OfType<BaseGameEntity>().ToList(),
                 "AdvLocalPlayer" => Player.SceneInstance!.AvatarInfo.Values
@@ -554,6 +554,11 @@ public class AbilityLevelTask(PlayerInstance player)
             };
 
             await Player.SceneInstance!.AddSummonUnitEntity(unit);
+
+            // The unit's own OnCreate tasks (e.g. Silver Wolf LV.999 technique summon 15061 adds buff 150601).
+            if (excel.ConfigInfo?.OnCreate is { Count: > 0 } onCreate)
+                await TriggerTasks(param.AdventureAbility, onCreate, param.CasterEntity, [param.CasterEntity],
+                    param.Request);
         }
 
         return new AbilityLevelResult();
@@ -613,7 +618,23 @@ public class AbilityLevelTask(PlayerInstance player)
     public async ValueTask<object> DestroySummonUnit(AbilityLevelParam param)
     {
         if (param.Act is DestroySummonUnit destroySummonUnit)
-            await Player.SceneInstance!.RemoveSummonUnitById(destroySummonUnit.SummonUnit.SummonUnitID); // TODO
+        {
+            var summonUnitId = destroySummonUnit.SummonUnit.SummonUnitID;
+            var unit = Player.SceneInstance!.Entities.Values.OfType<EntitySummonUnit>()
+                .FirstOrDefault(entity => entity.SummonUnitId == summonUnitId);
+            var summoner = unit != null &&
+                           Player.SceneInstance.Entities.TryGetValue(unit.CreateAvatarEntityId, out var owner)
+                ? owner
+                : param.CasterEntity;
+
+            await Player.SceneInstance.RemoveSummonUnitById(summonUnitId); // TODO
+
+            // The unit's OnDestroy runs against its summoner. Removing first keeps an OnDestroy that names the
+            // same unit from recursing.
+            if (unit != null && GameData.SummonUnitDataData.TryGetValue(summonUnitId, out var excel) &&
+                excel.ConfigInfo?.OnDestroy is { Count: > 0 } onDestroy)
+                await TriggerTasks(param.AdventureAbility, onDestroy, summoner, [summoner], param.Request);
+        }
 
         return new AbilityLevelResult();
     }
