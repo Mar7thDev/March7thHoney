@@ -113,9 +113,9 @@ public partial class FloorInfo
                     prop.CommonConsole = true;
                 }
 
-                // Clear for garbage collection
+                // ValueSource is raw JSON and is not cached. InitLevelGraph stays: group filters and the
+                // rogue tutorial matcher read the path after the cache round-trip.
                 prop.ValueSource = null;
-                prop.InitLevelGraph = null;
             }
 
         Loaded = true;

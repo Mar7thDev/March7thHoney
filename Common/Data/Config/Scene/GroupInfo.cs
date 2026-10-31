@@ -56,18 +56,50 @@ public partial class GroupInfo
     // resource flag was retained; raw resources normalize an omitted flag to false in Load().
     public bool? IsHoyoGroup { get; set; }
 
+    /// <summary>
+    ///     Authored refresh binding. A non-zero id is a loading mechanism, so the group is neither an
+    ///     orphaned mission group nor an inert server group. Null identifies caches created before
+    ///     this was retained; those groups are never classified as inert.
+    /// </summary>
+    public int? GroupRefreshID { get; set; }
+
+    /// <summary>
+    ///     Hidden chest a pad-puzzle group's ValueSource "Chest" names, stored only when the group's level
+    ///     graph actually runs ChangePropState. Zero means there is nothing to reveal.
+    /// </summary>
+    [JsonIgnore] public int ChestRevealGroupId { get; set; }
+
+    [JsonIgnore] public int ChestRevealInstId { get; set; }
+
     public void Load()
     {
         IsHoyoGroup ??= false;
+        GroupRefreshID ??= 0;
         foreach (var prop in PropList) prop.Load(this);
 
         foreach (var source in ValueSource?.Values ?? [])
-            if (source["Key"]?.ToString() == "FSV")
+        {
+            var key = source["Key"]?.ToString();
+            if (key == "FSV")
             {
                 var value = source["Value"];
                 if (value != null)
                     ControlFloorSavedValue.Add(value.ToString());
             }
+            else if (key == "Chest" && ChestRevealGroupId == 0)
+            {
+                var parts = source["Value"]?.ToString().Split(',');
+                if (parts is { Length: 2 } &&
+                    int.TryParse(parts[0].Trim(), out var chestGroup) &&
+                    int.TryParse(parts[1].Trim(), out var chestInst) &&
+                    chestGroup > 0 && chestInst > 0 &&
+                    GraphContainsChangePropState(LevelGraphConfig))
+                {
+                    ChestRevealGroupId = chestGroup;
+                    ChestRevealInstId = chestInst;
+                }
+            }
+        }
 
         foreach (var info in LevelGraphConfig?.OnInitSequece ?? [])
         foreach (var configInfo in info.TaskList)
@@ -89,6 +121,98 @@ public partial class GroupInfo
                 var missionId = (int)v;
                 RelatedMissionId.Add(missionId);
             }
+    }
+
+    /// <summary>
+    ///     The group's only shippable content is props whose overridden level graph lives under
+    ///     Config/Level/DesignerBackup. Registering the group makes the client instantiate that prop and
+    ///     abort scene entry. Any NPC, monster, or ordinary prop keeps the group.
+    /// </summary>
+    public bool OnlyEditorBackupProps()
+    {
+        if (NPCList.Any(npc => !npc.IsDelete && !npc.IsClientOnly && npc.LoadOnInitial)) return false;
+        if (MonsterList.Any(monster => !monster.IsDelete && !monster.IsClientOnly)) return false;
+
+        var props = PropList.Where(ShippableProp).ToList();
+        if (props.Count == 0) return false;
+        return props.All(prop => prop.HasEditorOnlyLevelGraph());
+    }
+
+    /// <summary>
+    ///     Server mission content with no load mechanism of its own. Shipping it arms leftover interact
+    ///     buttons whose performances target props the scene no longer has.
+    /// </summary>
+    public bool OrphanedMissionGroup()
+    {
+        return InertServerGroup() && HasMissionGraphProps();
+    }
+
+    /// <summary>
+    ///     Server group the official engine never loads: LoadOnInitial is absent and no gate can admit it
+    ///     later. Callers apply this on raid planes and the Simulated Universe lobby only.
+    /// </summary>
+    public bool InertServerGroup()
+    {
+        if (LoadSide != GroupLoadSideEnum.Server || LoadOnInitial || OwnerMainMissionID != 0 ||
+            GroupRefreshID is null or not 0)
+            return false;
+        if (LoadCondition.Conditions.Count > 0 || UnloadCondition.Conditions.Count > 0 ||
+            ForceUnloadCondition.Conditions.Count > 0 || SavedValueCondition.Conditions.Count > 0 ||
+            (SystemUnlockCondition?.Conditions.Count ?? 0) > 0)
+            return false;
+        return true;
+    }
+
+    /// <summary>
+    ///     Mission fight rather than an ordinary overworld encounter: the kill stays dead across the daily reset.
+    /// </summary>
+    public bool IsMissionFight()
+    {
+        if (OwnerMainMissionID != 0 || Category == GroupCategoryEnum.Mission) return true;
+        if (string.Equals(GroupName.Trim(), "SubMission", StringComparison.OrdinalIgnoreCase)) return true;
+        return LevelGraph.Replace('\\', '/').EndsWith("/Maze_Group_OpenTreasure_WhenMonsterDie.json",
+            StringComparison.Ordinal);
+    }
+
+    public bool OpensTreasureOnMonsterDie()
+    {
+        if (LevelGraph.Contains("Maze_Group_OpenTreasure_WhenMonsterDie", StringComparison.Ordinal)) return true;
+        return PropList.Any(prop =>
+            prop.InitLevelGraph?.Contains("Maze_GroupProp_OpenTreasure_WhenMonsterDie", StringComparison.Ordinal) ==
+            true);
+    }
+
+    private bool HasMissionGraphProps()
+    {
+        return PropList.Where(ShippableProp).Any(prop =>
+            prop.InitLevelGraph?.StartsWith("Config/Level/Mission/", StringComparison.Ordinal) == true);
+    }
+
+    private static bool ShippableProp(PropInfo prop)
+    {
+        if (prop.IsDelete && prop.MappingInfoID != 0) return prop.LoadOnInitial;
+        return !prop.IsDelete && prop.LoadOnInitial;
+    }
+
+    private static bool GraphContainsChangePropState(LevelGraphConfigInfo? graph)
+    {
+        if (graph == null) return false;
+        return graph.OnInitSequece.SelectMany(sequence => sequence.TaskList)
+            .Concat(graph.OnStartSequece.SelectMany(sequence => sequence.TaskList))
+            .Any(TaskContainsChangePropState);
+    }
+
+    private static bool TaskContainsChangePropState(TaskConfigInfo task)
+    {
+        if (task.Type.Contains("ChangePropState", StringComparison.Ordinal)) return true;
+        return task switch
+        {
+            PropStateExecute execute => execute.Execute.Any(TaskContainsChangePropState),
+            PropSetupUITrigger trigger => trigger.ButtonCallback.Any(TaskContainsChangePropState),
+            PredicateTaskList predicate => predicate.SuccessTaskList.Concat(predicate.FailedTaskList)
+                .Any(TaskContainsChangePropState),
+            _ => false
+        };
     }
 }
 
