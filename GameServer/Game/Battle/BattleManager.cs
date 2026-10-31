@@ -2,6 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
@@ -413,7 +414,10 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 BaseAvatarInfo? avatarInstance = Player.AvatarManager!.GetFormalAvatar((int)avatar.Id);
                 var prop = avatar.AvatarStatus;
                 var curHp = (int)Math.Max(Math.Round(prop.LeftHp / prop.MaxHp * 10000), minimumHp);
-                var curSp = (int)prop.LeftSp * 100;
+                // The client reports energy units (e.g. 45 of 120); stored SP is a 0..10000 ratio.
+                var curSp = prop.MaxSp > 0
+                    ? (int)Math.Round(prop.LeftSp / prop.MaxSp * 10000)
+                    : (int)(prop.LeftSp * 100);
                 if (avatarInstance == null)
                 {
                     avatarInstance = Player.AvatarManager!.GetTrialAvatar((int)avatar.Id);
@@ -427,6 +431,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 }
             }
 
+            if (!lineup.IsExtraLineup()) await RepointDeadLeader(lineup);
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
 
@@ -522,5 +527,29 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         stage = null;
         return false;
+    }
+    /// <summary>
+    ///     A leader who fell in the fight hands the lead to the first living member, as the official server
+    ///     does before the lineup sync. Otherwise the overworld keeps a downed leader.
+    /// </summary>
+    private async ValueTask RepointDeadLeader(Database.Lineup.LineupInfo lineup)
+    {
+        var avatars = lineup.BaseAvatars ?? [];
+        bool Alive(int baseAvatarId) =>
+            (Player.AvatarManager!.GetFormalAvatar(baseAvatarId) as BaseAvatarInfo ??
+             Player.AvatarManager.GetTrialAvatar(baseAvatarId))?.GetCurHp(false) > 0;
+
+        if (avatars.Count == 0 || Alive(lineup.LeaderAvatarId)) return;
+        var next = avatars.FirstOrDefault(slot => Alive(slot.BaseAvatarId));
+        if (next == null || next.BaseAvatarId == lineup.LeaderAvatarId) return;
+
+        lineup.LeaderAvatarId = next.BaseAvatarId;
+        if (Player.SceneInstance != null)
+        {
+            await Player.SceneInstance.SyncLineup(true);
+            await Player.SceneInstance.OnChangeLeader(next.BaseAvatarId);
+        }
+
+        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.TeamLeaderChange);
     }
 }
