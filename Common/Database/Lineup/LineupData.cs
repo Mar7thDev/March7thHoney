@@ -33,6 +33,10 @@ public partial class LineupInfo
     // MarkPresetLineupCsReq 标记的常用队伍。追加在已有成员之后，旧存档反序列化为 false。
     public bool IsFavourite { get; set; }
 
+    // Story/raid trials advertise a virtual lineup. Appended so older lineup blobs keep the defaults.
+    public bool IsVirtual { get; set; }
+    public int PlaneId { get; set; }
+
     [JsonIgnore] [MemoryPackIgnore] public LineupData? LineupData { get; set; }
 
     [JsonIgnore] [MemoryPackIgnore] public AvatarData? AvatarData { get; set; }
@@ -145,7 +149,9 @@ public partial class LineupInfo
                 ? (int)ExtraLineupType.LineupNone
                 : LineupType),
             Index = (uint)GetIndex(),
-            IsFavourite = IsFavourite
+            IsFavourite = IsFavourite,
+            IsVirtual = IsVirtual,
+            PlaneId = (uint)PlaneId
         };
 
         if (LineupType != (int)ExtraLineupType.LineupNone) info.Index = 0;

@@ -183,10 +183,13 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             return;
         }
 
+        // Fixed-level trials resolve the stage at world level 0. World-level-scaled story
+        // trials (IsUseWorldLevel) keep the player's own world level.
+        var resolveLevel = Player.LineupManager!.StageResolveWorldLevel();
         GameData.StageConfigData.TryGetValue(eventId, out var stageConfig);
         if (stageConfig == null)
         {
-            GameData.StageConfigData.TryGetValue(eventId * 10 + Player.Data.WorldLevel, out stageConfig);
+            GameData.StageConfigData.TryGetValue(eventId * 10 + resolveLevel, out stageConfig);
             if (stageConfig == null)
             {
                 await Player.SendPacket(new PacketSceneEnterStageScRsp());
