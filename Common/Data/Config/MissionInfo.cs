@@ -49,6 +49,11 @@ public partial class SubMissionInfo
     ///     cached mission graphs restore it empty.
     /// </summary>
     public List<string> TakeParamStrList { get; set; } = [];
+
+    // Waypoint the sub points at when it is not a PropState target (ParamInt1/ParamInt2).
+    public int WayPointFloorID { get; set; }
+    public int WayPointGroupID { get; set; }
+    public int WayPointEntityID { get; set; }
 }
 
 [MemoryPackable]

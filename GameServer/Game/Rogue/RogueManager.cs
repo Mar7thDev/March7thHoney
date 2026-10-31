@@ -345,7 +345,8 @@ public partial class RogueManager : BasePlayerManager
             .ToList();
         if (doors.Count == 0) return false;
 
-        foreach (var door in doors) door.State = PropStateEnum.Open;
+        foreach (var door in doors)
+            door.State = ScenePropRules.RogueDoorOpenState(door.Excel, PropStateEnum.Open);
         await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, doors.Cast<BaseGameEntity>().ToList(),
             null, SceneGroupRefreshType.Afibfmafncc));
         return true;
