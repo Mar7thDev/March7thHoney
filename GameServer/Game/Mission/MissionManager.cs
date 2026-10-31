@@ -505,6 +505,12 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
 
         await TriggerNextSubMissions(mainMission, sync);
 
+        // Raid domain portals: a kill opens them before the sync, any other clearing sub right after the
+        // finish notify (official order).
+        var killSub = subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.KillMonster;
+        if (killSub && Player.SceneInstance != null)
+            await Player.SceneInstance.OpenRaidDomainPortals(missionId, true);
+
         await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
         if (Player.SceneInstance != null)
         {
@@ -515,6 +521,8 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         }
 
         await Player.SendPacket(new PacketStartFinishSubMissionScNotify(missionId));
+        if (!killSub && Player.SceneInstance != null)
+            await Player.SceneInstance.OpenRaidDomainPortals(missionId, true);
 
         if (mainMission.MissionInfo != null)
             await HandleFinishAction(mainMission.MissionInfo, missionId);

@@ -61,6 +61,14 @@ public partial class PropInfo : PositionInfo
 
     [JsonIgnore] public int DeathMarkInstId { get; set; }
 
+    /// <summary>
+    ///     Fog gate a hub console names (ValueSource key "...FogDoor..."). The gate runs CustomStateNN, so the
+    ///     console must not open it; captured only so a save the old fan-out broke can be repaired.
+    /// </summary>
+    [JsonIgnore] public int FogDoorGroupId { get; set; }
+
+    [JsonIgnore] public int FogDoorInstId { get; set; }
+
     public bool HasEditorOnlyLevelGraph()
     {
         return IsOverrideInitLevelGraph &&
@@ -113,6 +121,22 @@ public partial class PropInfo : PositionInfo
             // RotateBridge names the rotating bridge part, a BridgeState machine, not a door.
             // Opening it writes Open, a state the part does not have, and the rotate cutscene freezes.
             else if (key.ToString().Contains("RotateBridge"))
+            {
+            }
+            // A fog gate (CustomState01..05) and the BridgeController consoles are not doors: opening them with
+            // the console left the gate red and the consoles dead (floor 20132001, main 1011301).
+            else if (key.ToString().Contains("FogDoor"))
+            {
+                var parts = value.ToString().Split(',');
+                if (parts.Length >= 2 &&
+                    int.TryParse(parts[0], out var fogGroup) &&
+                    int.TryParse(parts[1], out var fogInst))
+                {
+                    FogDoorGroupId = fogGroup;
+                    FogDoorInstId = fogInst;
+                }
+            }
+            else if (key.ToString().Contains("BridgeController"))
             {
             }
             else if (key.ToString().Contains("Door") ||
