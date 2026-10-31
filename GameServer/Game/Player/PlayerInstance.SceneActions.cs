@@ -462,6 +462,7 @@ public partial class PlayerInstance
             return;
         }
 
+        await MissionManager!.HandleFinishType(MissionFinishTypeEnum.EnterMapByEntrance, entrance);
         await LoadScene(entrance.PlaneID, entrance.FloorID, entranceId, anchor.ToPositionProto(),
             anchor.ToRotationProto(), sendPacket);
     }

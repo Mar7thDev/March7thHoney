@@ -303,10 +303,11 @@ public class LevelTask(PlayerInstance player)
     {
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatar)
             await Player.LineupManager!.AddAvatarToCurTeam(subMission.SubMissionInfo.ParamInt1);
-
-        if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatarList)
+        else if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatarList)
             foreach (var x in subMission.SubMissionInfo.ParamIntList ?? [])
                 await Player.LineupManager!.AddAvatarToCurTeam(x);
+        else if (Player.MissionManager != null)
+            await Player.MissionManager.GrantStoryTrialAvatarForSub(subMission.MissionId);
 
         return null;
     }
