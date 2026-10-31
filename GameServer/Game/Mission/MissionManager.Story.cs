@@ -1,79 +1,12 @@
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
-using March7thHoney.Database;
-using March7thHoney.Database.Lineup;
-using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Quest;
-using March7thHoney.GameServer.Server.Packet.Send.Avatar;
-using March7thHoney.GameServer.Server.Packet.Send.Lineup;
-using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.Mission;
 
 public partial class MissionManager
 {
-    /// <summary>Grants multi-path variants whose FinishMainMission / FinishSubMission gates just became true.</summary>
-    public async ValueTask GrantUnlockedStoryPaths()
-    {
-        if (Player.AvatarManager == null) return;
-        foreach (var path in GameData.MultiplePathAvatarConfigData.Values.OrderBy(path => path.AvatarID))
-        {
-            if (path.UnlockConditions.Count == 0) continue;
-            if (path.BaseAvatarID == 8001 && !HeroPathMatchesGender(path)) continue;
-            var owner = Player.AvatarManager.GetFormalAvatar(path.BaseAvatarID);
-            if (owner == null || owner.PathInfos.ContainsKey(path.AvatarID)) continue;
-            if (!UnlockConditionsMet(path.UnlockConditions)) continue;
-
-            await Player.AvatarManager.AddAvatar(path.AvatarID);
-            if (!owner.PathInfos.ContainsKey(path.AvatarID)) continue;
-            await Player.SendPacket(new PacketAddMultiPathAvatarScNotify(path.AvatarID));
-        }
-    }
-
-    /// <summary>
-    ///     Trial a bare CreateTrialPlayer beat grants: the Trailblazer path the mission chain is about
-    ///     to unlock, as special avatar 1000000 + path id, replacing the Trailblazer in the lineup.
-    /// </summary>
-    public async ValueTask GrantStoryTrialAvatarForSub(int subId)
-    {
-        var specialId = ResolveStoryTrialSpecialAvatar(subId);
-        if (specialId == 0 || Player.AvatarManager == null || Player.LineupManager == null) return;
-
-        var trial = Player.AvatarManager.GetTrialAvatar(specialId)
-                    ?? Player.AvatarManager.GetTrialAvatarByWorldLevel(specialId, Player.Data.WorldLevel);
-        if (trial == null) return;
-        trial.CheckLevel(Player.Data.WorldLevel);
-
-        var lineup = Player.LineupManager.GetCurLineup();
-        if (lineup?.BaseAvatars == null)
-        {
-            await Player.LineupManager.AddTrialAvatarToCurTeam(specialId);
-            return;
-        }
-
-        if (lineup.BaseAvatars.Any(avatar => avatar.SpecialAvatarId == trial.SpecialAvatarId)) return;
-
-        var member = new LineupAvatarInfo
-        {
-            BaseAvatarId = trial.BaseAvatarId,
-            SpecialAvatarId = trial.SpecialAvatarId
-        };
-        var slot = lineup.BaseAvatars.FindIndex(avatar => avatar.BaseAvatarId is >= 8001 and <= 8010);
-        if (slot >= 0)
-            lineup.BaseAvatars[slot] = member;
-        else
-        {
-            if (lineup.BaseAvatars.Count >= 4)
-                lineup.BaseAvatars.RemoveAt(lineup.BaseAvatars.Count - 1);
-            lineup.BaseAvatars.Add(member);
-        }
-
-        DatabaseHelper.MarkDirty(Player.Uid);
-        if (Player.SceneInstance != null) await Player.SceneInstance.SyncLineup();
-        await Player.SendPacket(new PacketSyncLineupNotify(lineup));
-    }
-
     public async ValueTask<StoryStep> AdvanceStory(bool strict)
     {
         var (mainId, phase) = StoryFrontier();
@@ -248,72 +181,6 @@ public partial class MissionManager
         if (!GameData.MainMissionData.TryGetValue(mainId, out var main)) return [];
         return main.SubMissionIds.Where(id => GetSubMissionStatus(id) == MissionPhaseEnum.Accept).OrderBy(id => id)
             .ToList();
-    }
-
-    private int ResolveStoryTrialSpecialAvatar(int subId)
-    {
-        if (!GameData.SubMissionInfoData.TryGetValue(subId, out var sub)) return 0;
-        var chain = new HashSet<int> { sub.MainMissionId };
-        if (GameData.MainMissionData.TryGetValue(sub.MainMissionId, out var main) && main.NextTrackMainMission > 0)
-            chain.Add(main.NextTrackMainMission);
-
-        foreach (var path in GameData.MultiplePathAvatarConfigData.Values)
-        {
-            if (path.BaseAvatarID != 8001 || path.UnlockConditions.Count == 0 || !HeroPathMatchesGender(path))
-                continue;
-            if (!UnlockConditionsInChain(path.UnlockConditions, chain)) continue;
-            var specialId = 1_000_000 + path.AvatarID;
-            if (GameData.SpecialAvatarData.Keys.Any(key => key / 10 == specialId))
-                return specialId;
-        }
-
-        return 0;
-    }
-
-    private bool HeroPathMatchesGender(MultiplePathAvatarConfigExcel path)
-    {
-        if (path.Gender == GenderTypeEnum.GENDER_NONE) return true;
-        return Player.Data.CurrentGender switch
-        {
-            Gender.Man => path.Gender == GenderTypeEnum.GENDER_MAN,
-            Gender.Woman => path.Gender == GenderTypeEnum.GENDER_WOMAN,
-            _ => true
-        };
-    }
-
-    private bool UnlockConditionsMet(List<Condition> conditions)
-    {
-        foreach (var condition in conditions)
-        {
-            if (!int.TryParse(condition.Param, out var value) || value == 0) return false;
-            var met = condition.Type switch
-            {
-                ConditionTypeEnum.FinishMainMission => GetMainMissionStatus(value) == MissionPhaseEnum.Finish,
-                ConditionTypeEnum.FinishSubMission => GetSubMissionStatus(value) == MissionPhaseEnum.Finish,
-                _ => false
-            };
-            if (!met) return false;
-        }
-
-        return conditions.Count > 0;
-    }
-
-    private static bool UnlockConditionsInChain(List<Condition> conditions, HashSet<int> chain)
-    {
-        foreach (var condition in conditions)
-        {
-            if (!int.TryParse(condition.Param, out var value) || value == 0) continue;
-            switch (condition.Type)
-            {
-                case ConditionTypeEnum.FinishMainMission when chain.Contains(value):
-                    return true;
-                case ConditionTypeEnum.FinishSubMission
-                    when GameData.SubMissionInfoData.TryGetValue(value, out var sub) && chain.Contains(sub.MainMissionId):
-                    return true;
-            }
-        }
-
-        return false;
     }
 
     private static bool IsMainType(int mainId)

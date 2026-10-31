@@ -480,7 +480,6 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         }
 
         await Player.RaidManager!.CheckIfLeaveRaid();
-        await GrantUnlockedStoryPaths();
     }
 
     public async ValueTask FinishSubMission(int missionId)
