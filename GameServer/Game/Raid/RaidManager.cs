@@ -58,7 +58,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             if (Player.StoryLineManager?.StoryLineData.CurStoryLineId is not > 0 &&
                 GameData.MazePlaneData.GetValueOrDefault(Player.Data.PlaneId)?.PlaneType == PlaneTypeEnum.Raid)
             {
-                await ReleaseRaidLineup();
+                await ReleaseRaidLineup(Player.Data.PlaneId);
                 Player.TryPlaceAtEntrance(PlayerInstance.DefaultSpawnEntryId);
             }
             await Player.SendPacket(new PacketRaidInfoNotify());
@@ -81,7 +81,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         Data.CurRaidId = 0;
         Data.CurRaidWorldLevel = 0;
         MarkDirty();
-        await ReleaseRaidLineup();
+        await ReleaseRaidLineup(record?.PlaneId ?? Player.Data.PlaneId);
         if (record == null) return;
 
         await ClearRaid(record.RaidId, record.WorldLevel);
@@ -224,6 +224,11 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
 
     public async ValueTask CheckIfLeaveRaid()
     {
+        // FinishMainMission already calls here. Story path variants unlock at that moment
+        // (AddMultiPathAvatarScNotify) without the mission manager owning the avatar rows.
+        if (Player.AvatarManager != null)
+            await Player.AvatarManager.GrantUnlockedStoryPaths(true);
+
         var record = GetCurrentRecord();
         if (record == null) return;
 
@@ -266,7 +271,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             // spawn instead of keeping them on a raid floor whose exit can never succeed.
             Data.CurRaidId = 0;
             Data.CurRaidWorldLevel = 0;
-            await ReleaseRaidLineup();
+            await ReleaseRaidLineup(Player.Data.PlaneId);
             MarkDirty();
             await Player.SendPacket(new PacketRaidInfoNotify());
             await Player.EnterScene(PlayerInstance.DefaultSpawnEntryId, 0, true);
@@ -282,7 +287,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         record.Pos = Player.Data.Pos!;
         record.Rot = Player.Data.Rot!;
 
-        await ReleaseRaidLineup();
+        await ReleaseRaidLineup(record.PlaneId);
 
         if (record.Status == RaidStatus.Finish)
         {
@@ -308,13 +313,24 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         MarkDirty();
     }
 
-    private async ValueTask ReleaseRaidLineup()
+    private async ValueTask ReleaseRaidLineup(int planeId)
     {
-        if (Player.LineupManager!.GetCurLineup()?.IsExtraLineup() == true)
+        if (Player.LineupManager!.GetCurLineup()?.IsExtraLineup() != true) return;
+
+        var lineup = Player.LineupManager.GetCurLineup()!;
+        if (lineup.IsVirtual)
         {
-            Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
-            await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
+            lineup.IsVirtual = false;
+            lineup.PlaneId = 0;
         }
+
+        Player.LineupManager.SetExtraLineup(ExtraLineupType.LineupNone, []);
+        // The client keeps the raid's virtual team until this notify. The restored lineup follows it.
+        if (planeId != 0)
+            await Player.SendPacket(new PacketVirtualLineupDestroyNotify(planeId));
+        var restored = Player.LineupManager.GetCurLineup();
+        if (restored != null)
+            await Player.SendPacket(new PacketSyncLineupNotify(restored));
     }
 
     private async ValueTask ReturnToOldSpot(RaidRecord record)
