@@ -1,3 +1,4 @@
+using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -10,6 +11,7 @@ public class HandlerSceneCastSkillCostMpCsReq : Handler<SceneCastSkillCostMpCsRe
     protected override async Task OnHandle(Connection connection, PlayerInstance player, SceneCastSkillCostMpCsReq req)
     {
         await player.LineupManager!.CostMp(1, req.CastEntityId);
+        await player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.UseMazeSkill);
         await connection.SendPacket(new PacketSceneCastSkillCostMpScRsp((int)req.CastEntityId));
     }
 }

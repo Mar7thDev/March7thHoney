@@ -25,7 +25,7 @@ namespace March7thHoney.Data;
 /// </remarks>
 public static class PropInteractGraphLoader
 {
-    private static readonly ConcurrentDictionary<string, List<LinkTemplate>> TemplateCache = new();
+    private static readonly ConcurrentDictionary<string, GraphParse> TemplateCache = new();
 
     public static void Populate(GroupInfo group, string resourcePath)
     {
@@ -33,10 +33,13 @@ public static class PropInteractGraphLoader
         {
             if (string.IsNullOrEmpty(prop.InitLevelGraph)) continue;
 
-            var templates = TemplateCache.GetOrAdd(prop.InitLevelGraph, path => ParseGraph(resourcePath, path));
-            if (templates.Count == 0) continue;
+            var parsed = TemplateCache.GetOrAdd(prop.InitLevelGraph, path => ParseGraph(resourcePath, path));
+            prop.GraphHasOpenBranch = parsed.HasOpen;
+            prop.GraphHasLockedBranch = parsed.HasLocked;
+            prop.GraphHasRealClosedBranch = parsed.HasRealClosed;
+            if (parsed.Links.Count == 0) continue;
 
-            foreach (var template in templates)
+            foreach (var template in parsed.Links)
             {
                 if (!TryResolve(template.Target, prop, group.Id, out var groupId, out var instId)) continue;
                 if (groupId == group.Id && instId == prop.ID) continue; // self-link: UI re-open, not a state change
@@ -93,9 +96,9 @@ public static class PropInteractGraphLoader
         return true;
     }
 
-    private static List<LinkTemplate> ParseGraph(string resourcePath, string graphPath)
+    private static GraphParse ParseGraph(string resourcePath, string graphPath)
     {
-        var result = new List<LinkTemplate>();
+        var result = new GraphParse();
         try
         {
             var file = new FileInfo(Path.Combine(resourcePath, graphPath));
@@ -113,7 +116,7 @@ public static class PropInteractGraphLoader
         return result;
     }
 
-    private static void Walk(JArray? tasks, List<GuardTemplate> guards, List<LinkTemplate> result)
+    private static void Walk(JArray? tasks, List<GuardTemplate> guards, GraphParse result)
     {
         if (tasks == null) return;
         foreach (var token in tasks)
@@ -126,6 +129,15 @@ public static class PropInteractGraphLoader
                 {
                     var nextGuards = guards;
                     var stateName = task["State"]?.ToString();
+                    // An absent State is the zero enum (Closed). An unknown name is not a Closed branch.
+                    if (string.IsNullOrEmpty(stateName) ||
+                        stateName.Equals("Closed", StringComparison.OrdinalIgnoreCase))
+                        result.HasRealClosed = true;
+                    else if (stateName.Equals("Locked", StringComparison.OrdinalIgnoreCase))
+                        result.HasLocked = true;
+                    else if (stateName.Equals("Open", StringComparison.OrdinalIgnoreCase))
+                        result.HasOpen = true;
+
                     if (!string.IsNullOrEmpty(stateName) && Enum.TryParse<PropStateEnum>(stateName, out var state))
                         nextGuards = [.. guards, new GuardTemplate(ReadTarget(task["TargetType"] as JObject), state)];
                     Walk(task["Execute"] as JArray, nextGuards, result);
@@ -135,7 +147,7 @@ public static class PropInteractGraphLoader
                 {
                     var interactId = task["InteractID"]?["FixedValue"]?["Value"]?.Value<int>() ?? 0;
                     if (interactId == 0) break;
-                    result.Add(new LinkTemplate(ReadTarget(task["TargetType"] as JObject), interactId, guards));
+                    result.Links.Add(new LinkTemplate(ReadTarget(task["TargetType"] as JObject), interactId, guards));
                     break;
                 }
                 case "PropSetupUITrigger":
@@ -164,4 +176,12 @@ public static class PropInteractGraphLoader
     private sealed record GuardTemplate(TargetRef Target, PropStateEnum State);
 
     private sealed record LinkTemplate(TargetRef Target, int InteractId, List<GuardTemplate> Guards);
+
+    private sealed class GraphParse
+    {
+        public List<LinkTemplate> Links { get; } = [];
+        public bool HasOpen { get; set; }
+        public bool HasLocked { get; set; }
+        public bool HasRealClosed { get; set; }
+    }
 }

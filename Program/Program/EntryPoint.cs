@@ -280,6 +280,8 @@ public class EntryPoint
 
                 // ExRank (奇缘星魂) materials are an operator overlay, so they must also load on a cache boot.
                 AvatarExRankMaterials.Apply();
+                // Story-trial skill limits and IsUseWorldLevel live on the raw excel rows, not in Resource.bin.
+                StoryTrialTables.Load();
 
                 // These runtime room/dice definitions were added after the checked-in 4.6 cache was built.
                 // They are operator-authored JSON rather than dumped tables, so a cache boot must overlay the

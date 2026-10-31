@@ -5,6 +5,8 @@ using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Friend;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
+using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Quest;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -188,6 +190,66 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         avatar.GetCurPathInfo().GetSkillTree();
         Data.TrialAvatars.Add(avatar);
         return avatar;
+    }
+
+    /// <summary>
+    ///     Grants multi-path variants whose unlock missions are already finished. Login passes
+    ///     <paramref name="notify" /> false because the avatar payload carries the paths; a mission
+    ///     finish passes true so the client receives AddMultiPathAvatarScNotify immediately.
+    /// </summary>
+    public async ValueTask GrantUnlockedStoryPaths(bool notify)
+    {
+        if (Player.MissionManager == null) return;
+
+        List<int> granted = [];
+        HashSet<FormalAvatarInfo> owners = [];
+        foreach (var config in GameData.MultiplePathAvatarConfigData.Values.OrderBy(config => config.AvatarID))
+        {
+            if (config.UnlockConditions.Count == 0) continue;
+            if (config.BaseAvatarID == 8001 &&
+                PlayerInstance.NormalizeHeroPathId(config.AvatarID, Player.Data.CurrentGender) != config.AvatarID)
+                continue;
+
+            var owner = GetFormalAvatar(config.BaseAvatarID);
+            if (owner == null || owner.PathInfos.ContainsKey(config.AvatarID)) continue;
+            if (!UnlockConditionsFinished(config.UnlockConditions)) continue;
+            if (!owner.EnsurePathInfo(config.AvatarID)) continue;
+
+            granted.Add(config.AvatarID);
+            owners.Add(owner);
+        }
+
+        if (granted.Count == 0) return;
+        MarkDirty();
+        if (!notify) return;
+
+        foreach (var avatarId in granted)
+            await Player.SendPacket(new PacketAddMultiPathAvatarScNotify(avatarId));
+        foreach (var owner in owners)
+            await Player.SendPacket(new PacketPlayerSyncScNotify(owner));
+    }
+
+    private bool UnlockConditionsFinished(List<Condition> conditions)
+    {
+        foreach (var condition in conditions)
+        {
+            if (!int.TryParse(condition.Param, out var id)) return false;
+            switch (condition.Type)
+            {
+                case ConditionTypeEnum.FinishMainMission:
+                    if (id == 0 || Player.MissionManager!.GetMainMissionStatus(id) != MissionPhaseEnum.Finish)
+                        return false;
+                    break;
+                case ConditionTypeEnum.FinishSubMission:
+                    if (id == 0 || Player.MissionManager!.GetSubMissionStatus(id) != MissionPhaseEnum.Finish)
+                        return false;
+                    break;
+                default:
+                    return false;
+            }
+        }
+
+        return true;
     }
 
     public FormalAvatarInfo? GetHero()

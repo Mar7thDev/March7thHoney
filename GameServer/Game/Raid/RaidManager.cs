@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Database.Inventory;
 using March7thHoney.Database;
 using March7thHoney.Database.Scene;
 using March7thHoney.Enums.Mission;
@@ -58,7 +59,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             if (Player.StoryLineManager?.StoryLineData.CurStoryLineId is not > 0 &&
                 GameData.MazePlaneData.GetValueOrDefault(Player.Data.PlaneId)?.PlaneType == PlaneTypeEnum.Raid)
             {
-                await ReleaseRaidLineup();
+                await ReleaseRaidLineup(Player.Data.PlaneId);
                 Player.TryPlaceAtEntrance(PlayerInstance.DefaultSpawnEntryId);
             }
             await Player.SendPacket(new PacketRaidInfoNotify());
@@ -81,7 +82,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         Data.CurRaidId = 0;
         Data.CurRaidWorldLevel = 0;
         MarkDirty();
-        await ReleaseRaidLineup();
+        await ReleaseRaidLineup(record?.PlaneId ?? Player.Data.PlaneId);
         if (record == null) return;
 
         await ClearRaid(record.RaidId, record.WorldLevel);
@@ -117,23 +118,24 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             await ClearRaid(raidId, worldLevel);
         dict.TryGetValue(worldLevel, out var record);
 
-        Data.CurRaidId = excel.RaidID;
-        Data.CurRaidWorldLevel = worldLevel;
-
         if (record == null)
         {
             // first enter
-            var entranceId = 0;
+            if (excel.MainMissionIDList.Count == 0) return null;
             var firstMission = excel.MainMissionIDList[0];
-            var subMissionId =
-                GameData.MainMissionData[firstMission].MissionInfo!.StartSubMissionList[0]; // get the first sub mission
-            var subMission = GameData.SubMissionInfoData[subMissionId];
+            if (!GameData.MainMissionData.TryGetValue(firstMission, out var firstMain) ||
+                firstMain.MissionInfo?.StartSubMissionList.FirstOrDefault() is not { } subMissionId ||
+                !GameData.SubMissionInfoData.TryGetValue(subMissionId, out var subMission) ||
+                subMission.SubMissionInfo == null)
+                return null;
 
-            entranceId =
-                int.Parse(subMission.SubMissionInfo!.LevelFloorID.ToString()
-                    .Replace("00", "0")); // get entrance id  ( need to find a better way to do it )
+            var entranceId = ResolveRaidEntrance(subMission.SubMissionInfo.LevelFloorID);
+            if (entranceId == 0) return null;
 
-            if (!GameData.MapEntranceData.ContainsKey(entranceId)) entranceId = subMission.SubMissionInfo!.LevelFloorID;
+            // Only mark the run open once there is somewhere to enter; a failed lookup used to leave
+            // CurRaidId set and lock the player out of raids for the session.
+            Data.CurRaidId = excel.RaidID;
+            Data.CurRaidWorldLevel = worldLevel;
 
             if (avatarList?.Count > 0)
             {
@@ -212,6 +214,8 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         else
         {
             // just resume
+            Data.CurRaidId = excel.RaidID;
+            Data.CurRaidWorldLevel = worldLevel;
             record.Status = RaidStatus.Doing;
             Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupHeliobus,
                 record.Lineup.Select(x => x.SpecialAvatarId > 0 ? x.SpecialAvatarId : x.BaseAvatarId).ToList());
@@ -224,8 +228,15 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
 
     public async ValueTask CheckIfLeaveRaid()
     {
+        // FinishMainMission already calls here. Story path variants unlock at that moment
+        // (AddMultiPathAvatarScNotify) without the mission manager owning the avatar rows.
+        if (Player.AvatarManager != null)
+            await Player.AvatarManager.GrantUnlockedStoryPaths(true);
+
         var record = GetCurrentRecord();
         if (record == null) return;
+        // A repeated FinishMainMission must not finish (and pay) the run twice.
+        if (record.Status == RaidStatus.Finish) return;
 
         GameData.RaidConfigData.TryGetValue(record.RaidId * 100 + record.WorldLevel, out var excel);
         if (excel == null) return;
@@ -251,8 +262,32 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         if (config == null) return;
 
         record.Status = RaidStatus.Finish;
+        record.FinishTimeStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        MarkDirty();
 
-        await Player.SendPacket(new PacketRaidInfoNotify(record));
+        List<ItemData> rewards = [];
+        foreach (var rewardId in config.RewardList ?? [])
+            rewards.AddRange(await Player.InventoryManager!.HandleReward(rewardId));
+
+        await Player.SendPacket(new PacketRaidInfoNotify(record, rewards));
+    }
+
+    /// <summary>
+    ///     The raid floor's own map entrance: prefer one with no mission gate, else the lowest id. Falls back to
+    ///     the old floor-id guess for tables without one.
+    /// </summary>
+    private static int ResolveRaidEntrance(int floorId)
+    {
+        var entrances = GameData.MapEntranceData.Values.Where(entrance => entrance.FloorID == floorId)
+            .OrderBy(entrance => entrance.ID).ToList();
+        var open = entrances.FirstOrDefault(entrance =>
+            entrance.FinishMainMissionList.Count == 0 && entrance.FinishSubMissionList.Count == 0);
+        if ((open ?? entrances.FirstOrDefault()) is { } found) return found.ID;
+
+        if (int.TryParse(floorId.ToString().Replace("00", "0"), out var guessed) &&
+            GameData.MapEntranceData.ContainsKey(guessed))
+            return guessed;
+        return GameData.MapEntranceData.ContainsKey(floorId) ? floorId : 0;
     }
 
     public async ValueTask LeaveRaid(bool save)
@@ -266,7 +301,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
             // spawn instead of keeping them on a raid floor whose exit can never succeed.
             Data.CurRaidId = 0;
             Data.CurRaidWorldLevel = 0;
-            await ReleaseRaidLineup();
+            await ReleaseRaidLineup(Player.Data.PlaneId);
             MarkDirty();
             await Player.SendPacket(new PacketRaidInfoNotify());
             await Player.EnterScene(PlayerInstance.DefaultSpawnEntryId, 0, true);
@@ -282,10 +317,13 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         record.Pos = Player.Data.Pos!;
         record.Rot = Player.Data.Rot!;
 
-        await ReleaseRaidLineup();
+        await ReleaseRaidLineup(record.PlaneId);
 
         if (record.Status == RaidStatus.Finish)
         {
+            // Official: the raid's own mains are removed when a finished run is left.
+            foreach (var mainId in config?.MainMissionIDList ?? [])
+                await Player.MissionManager!.RemoveMainMission(mainId);
             await Player.SendPacket(new PacketRaidInfoNotify());
             if (config?.FinishEntranceID is not > 0 ||
                 !(await Player.TryEnterScene(config.FinishEntranceID, 0, true)).Success)
@@ -308,13 +346,24 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         MarkDirty();
     }
 
-    private async ValueTask ReleaseRaidLineup()
+    private async ValueTask ReleaseRaidLineup(int planeId)
     {
-        if (Player.LineupManager!.GetCurLineup()?.IsExtraLineup() == true)
+        if (Player.LineupManager!.GetCurLineup()?.IsExtraLineup() != true) return;
+
+        var lineup = Player.LineupManager.GetCurLineup()!;
+        if (lineup.IsVirtual)
         {
-            Player.LineupManager!.SetExtraLineup(ExtraLineupType.LineupNone, []);
-            await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
+            lineup.IsVirtual = false;
+            lineup.PlaneId = 0;
         }
+
+        Player.LineupManager.SetExtraLineup(ExtraLineupType.LineupNone, []);
+        // The client keeps the raid's virtual team until this notify. The restored lineup follows it.
+        if (planeId != 0)
+            await Player.SendPacket(new PacketVirtualLineupDestroyNotify(planeId));
+        var restored = Player.LineupManager.GetCurLineup();
+        if (restored != null)
+            await Player.SendPacket(new PacketSyncLineupNotify(restored));
     }
 
     private async ValueTask ReturnToOldSpot(RaidRecord record)

@@ -83,9 +83,16 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
             var runningBattleIds = player.MissionManager.GetRunningSubMissionList()
                 .Where(x => x.FinishType == MissionFinishTypeEnum.StageWin)
                 .Select(x => x.ParamInt1).ToHashSet();
+            var dropInert = mapData.PlaneID == 80112 ||
+                            GameData.MazePlaneData.TryGetValue(mapData.PlaneID, out var inertPlane) &&
+                            inertPlane.PlaneType == PlaneTypeEnum.Raid;
             foreach (var group in floorInfo.Groups.Values)
             {
                 if (currentScene != null && group.LoadSide != GroupLoadSideEnum.Client) continue;
+                if (group.OnlyEditorBackupProps() || group.OrphanedMissionGroup()) continue;
+                // Non-current floors have no live group list, so inert server groups would otherwise
+                // pass the empty-condition checks and ship on the map.
+                if (currentScene == null && dropInert && group.InertServerGroup()) continue;
                 if (dimensionGroups != null && !dimensionGroups.Contains(group.Id)) continue;
                 if (group.SystemUnlockCondition is { } unlock)
                 {
