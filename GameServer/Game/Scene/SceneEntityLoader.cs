@@ -87,6 +87,9 @@ public class SceneEntityLoader(SceneInstance scene)
 
         if (Scene.Excel.PlaneType == PlaneTypeEnum.Rogue)
             await Scene.ReapplyFinishedRoguePropUnlocks();
+        await Scene.RepairFanOutFogDoors();
+        if (Scene.Excel.PlaneType == PlaneTypeEnum.Raid)
+            await Scene.ReopenFinishedRaidPortals();
 
         Scene.IsLoaded = true;
     }

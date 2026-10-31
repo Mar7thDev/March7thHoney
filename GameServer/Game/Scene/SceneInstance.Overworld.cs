@@ -144,6 +144,58 @@ public partial class SceneInstance
         }
     }
 
+    /// <summary>
+    ///     The old console fan-out wrote Open into fog gates whose hub sub is still running. Put such a gate back
+    ///     to its authored state so the hub's CustomState selector can drive it again.
+    /// </summary>
+    public async ValueTask RepairFanOutFogDoors()
+    {
+        if (Player.MissionManager == null) return;
+        foreach (var sub in Player.MissionManager.GetRunningSubMissionList())
+        {
+            if (sub.FinishType != MissionFinishTypeEnum.PropState || sub.ParamInt1 == 0 || sub.ParamInt2 == 0) continue;
+            var hub = FindProp(sub.ParamInt1, sub.ParamInt2);
+            if (hub == null || hub.PropInfo.FogDoorGroupId == 0) continue;
+
+            var door = FindProp(hub.PropInfo.FogDoorGroupId, hub.PropInfo.FogDoorInstId);
+            if (door == null || door.State == door.PropInfo.State) continue;
+            if (door.State is not (PropStateEnum.Open or PropStateEnum.Closed)) continue;
+            await door.SetState(door.PropInfo.State, false);
+        }
+    }
+
+    /// <summary>
+    ///     Raid domain portals (RoguePortal props) arm their prompt only when Open. The sub that clears a domain
+    ///     opens its group's portals, in descending instance order like the official server.
+    /// </summary>
+    public async ValueTask OpenRaidDomainPortals(int subMissionId, bool sendPacket)
+    {
+        if (Excel.PlaneType != PlaneTypeEnum.Raid) return;
+        if (!GameData.SubMissionInfoData.TryGetValue(subMissionId, out var sub) || sub.SubMissionInfo == null) return;
+        var info = sub.SubMissionInfo;
+        if (info.LevelFloorID != 0 && info.LevelFloorID != FloorId) return;
+        if (info.WayPointFloorID != 0 && info.WayPointFloorID != FloorId) return;
+
+        var groupId = info.FinishType == MissionFinishTypeEnum.KillMonster && info.ParamInt1 != 0
+            ? info.ParamInt1
+            : info.WayPointGroupID;
+        if (groupId == 0) return;
+
+        foreach (var portal in GetEntitiesInGroup<EntityProp>(groupId)
+                     .Where(prop => prop.State != PropStateEnum.Open &&
+                                    prop.Excel.JsonPath.Contains("RoguePortal", StringComparison.Ordinal))
+                     .OrderByDescending(prop => prop.InstId))
+            await portal.SetState(PropStateEnum.Open, sendPacket);
+    }
+
+    /// <summary>A rebuilt raid floor reopens the portals of domains already cleared.</summary>
+    public async ValueTask ReopenFinishedRaidPortals()
+    {
+        if (Excel.PlaneType != PlaneTypeEnum.Raid || Player.MissionManager == null) return;
+        foreach (var subId in Player.MissionManager.Data.FinishedSubMissionIds.ToList())
+            await OpenRaidDomainPortals(subId, false);
+    }
+
     private async ValueTask OpenDeathMarkedProps(int groupId, int instId)
     {
         var marker = $"{groupId},{instId}";
