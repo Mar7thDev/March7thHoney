@@ -43,6 +43,11 @@ public partial class SubMissionInfo
     public int Progress { get; set; }
     public List<int>? GroupIDList { get; set; } = [];
     public int SubRewardID { get; set; }
+
+    // Waypoint the sub points at when it is not a PropState target (ParamInt1/ParamInt2).
+    public int WayPointFloorID { get; set; }
+    public int WayPointGroupID { get; set; }
+    public int WayPointEntityID { get; set; }
 }
 
 [MemoryPackable]

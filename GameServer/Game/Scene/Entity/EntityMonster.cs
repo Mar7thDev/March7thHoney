@@ -185,7 +185,16 @@ public class EntityMonster(
         // call mission handler; a GM-spawned copy borrows a real monster's group/instance and must not count as it
         if (!IsGmSpawned)
             await Scene.Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.KillMonster, this);
-        if (removeFromScene) await Scene.RemoveEntity(this);
+        if (removeFromScene)
+        {
+            if (!IsGmSpawned && Scene.FloorInfo?.Groups.TryGetValue(GroupId, out var group) == true)
+            {
+                Scene.NoteMonsterDefeated(group, InstId);
+                await Scene.UnlockTreasureOnMonsterDie(group);
+            }
+
+            await Scene.RemoveEntity(this);
+        }
         return dropItems;
     }
 }
