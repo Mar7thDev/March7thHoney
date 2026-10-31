@@ -6,12 +6,14 @@ namespace March7thHoney.GameServer.Server.Packet.Send.PamSkin;
 
 public class PacketSelectPamSkinScRsp : BasePacket
 {
-    public PacketSelectPamSkinScRsp(PlayerInstance player, int prevSkinId) : base(CmdIds.SelectPamSkinScRsp)
+    public PacketSelectPamSkinScRsp(PlayerInstance player, int setSkinId, Retcode retcode = Retcode.RetSucc)
+        : base(CmdIds.SelectPamSkinScRsp)
     {
         var proto = new SelectPamSkinScRsp
         {
             CurSkin = (uint)player.Data.CurrentPamSkin,
-            SetSkin = (uint)prevSkinId
+            SetSkin = (uint)setSkinId,
+            Retcode = (uint)retcode
         };
 
         SetData(proto);

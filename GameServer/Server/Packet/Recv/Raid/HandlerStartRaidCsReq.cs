@@ -18,8 +18,10 @@ public class HandlerStartRaidCsReq : Handler<StartRaidCsReq>
             return;
         }
 
-        var record = await player.RaidManager!.EnterRaid((int)req.RaidId, (int)req.WorldLevel,
-            req.AvatarList.Select(x => (int)x).ToList(),
+        // The 4.6+ client sends the team as avatar_identifier_list; avatar_list is the older shape.
+        var avatars = req.AvatarIdentifierList.Select(x => (int)x.Id).Where(id => id > 0).ToList();
+        if (avatars.Count == 0) avatars = req.AvatarList.Select(x => (int)x).ToList();
+        var record = await player.RaidManager!.EnterRaid((int)req.RaidId, (int)req.WorldLevel, avatars,
             req.IsSave == 1);
 
         if (record == null)

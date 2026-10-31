@@ -242,6 +242,25 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var hasBoss = groupConfig.BossLevelID > 0;
         var bossStars = hasBoss ? 3 : 0;
         var bossHardStars = hasBoss ? 3 : 0;
+        var bossColorEarned = hasBoss;
+
+        // Real-progress mode pays only what the records earned; the default mode keeps the optimistic values.
+        if (RequiresKnightClears)
+        {
+            var data = Player.ChallengeManager!.ChallengeData;
+            var passedLevels = groupConfig.PreLevelIDList
+                .Select(id => data.PeakLevelDatas.GetValueOrDefault(id))
+                .Where(level => level?.HasRecord == true)
+                .ToList();
+            passedMobs = passedLevels.Count;
+            mobStars = passedLevels.Sum(level => level!.FinishedTargetList.Count);
+
+            data.PeakBossLevelDatas.TryGetValue((groupConfig.BossLevelID << 2) | 0, out var easyRec);
+            data.PeakBossLevelDatas.TryGetValue((groupConfig.BossLevelID << 2) | 1, out var hardRec);
+            bossStars = easyRec?.HasRecord == true ? easyRec.FinishedTargetList.Count : 0;
+            bossHardStars = hardRec?.HasRecord == true ? 3 : 0;
+            bossColorEarned = hasBoss && (easyRec?.HasRecord == true || hardRec?.HasRecord == true);
+        }
 
         if (!Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenList))
         {
@@ -266,7 +285,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
                 "MOB_STAR_REWARD" => mobStars >= entry.TypeValue,
                 "BOSS_STAR_REWARD" => bossStars >= entry.TypeValue,
                 "BOSS_STAR_LIMIT_REWARD" => bossHardStars >= entry.TypeValue,
-                "BOSS_COLOR_TARGET_REWARD" => hasBoss,
+                "BOSS_COLOR_TARGET_REWARD" => bossColorEarned,
                 _ => false
             };
             if (!passed) continue;

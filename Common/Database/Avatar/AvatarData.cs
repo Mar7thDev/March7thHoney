@@ -14,6 +14,14 @@ namespace March7thHoney.Database.Avatar;
 [DbTable("Avatar")]
 public class AvatarData : BaseDatabaseDataHelper
 {
+    /// <summary>An owned avatar by base id or any of its path ids (8001 or 8008 both find the Trailblazer).</summary>
+    public FormalAvatarInfo? FindByAnyId(int id)
+    {
+        if (id == 0) return null;
+        return FormalAvatars.Find(avatar => avatar.BaseAvatarId == id) ??
+               FormalAvatars.Find(avatar => avatar.AvatarId == id || avatar.PathInfos.ContainsKey(id));
+    }
+
     public List<OldAvatarInfo> Avatars { get; set; } = [];
     public List<FormalAvatarInfo> FormalAvatars { get; set; } = [];
     public List<SpecialAvatarInfo> TrialAvatars { get; set; } = [];
@@ -603,14 +611,15 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
         var inventory = collection.InventoryData;
         foreach (var item in GetCurPathInfo().Relic)
         {
-            var relic = inventory.RelicItems.Find(x => x.UniqueId == item.Value)!;
-            proto.RelicList.Add(relic.ToDisplayRelicProto());
+            // A dangling relic id must not take the whole profile/support response down with it.
+            var relic = inventory.RelicItems.Find(x => x.UniqueId == item.Value);
+            if (relic != null) proto.RelicList.Add(relic.ToDisplayRelicProto());
         }
 
         if (GetCurPathInfo().EquipId != 0)
         {
-            var equip = inventory.EquipmentItems.Find(x => x.UniqueId == GetCurPathInfo().EquipId)!;
-            proto.Equipment = equip.ToDisplayEquipmentProto();
+            var equip = inventory.EquipmentItems.Find(x => x.UniqueId == GetCurPathInfo().EquipId);
+            if (equip != null) proto.Equipment = equip.ToDisplayEquipmentProto();
         }
 
         foreach (var skill in GetCurPathInfo().GetSkillTree())
@@ -632,9 +641,18 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
 
     public void CheckLevel(int worldLevel)
     {
-        if (!GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + worldLevel, out var specialAvatar))
-            if (!GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + 1, out specialAvatar))
-                return;
+        // Rows are keyed by SpecialAvatarID*10+WorldLevel. AvatarId is the path (8004) and misses
+        // story trials such as 1008004.
+        SpecialAvatarExcel? specialAvatar = null;
+        if (SpecialAvatarId != 0)
+            GameData.SpecialAvatarData.TryGetValue(SpecialAvatarId * 10 + worldLevel, out specialAvatar);
+        if (specialAvatar == null)
+            GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + worldLevel, out specialAvatar);
+        if (specialAvatar == null && SpecialAvatarId != 0)
+            GameData.SpecialAvatarData.TryGetValue(SpecialAvatarId * 10 + 1, out specialAvatar);
+        if (specialAvatar == null &&
+            !GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + 1, out specialAvatar))
+            return;
 
         Level = specialAvatar.Level;
         Promotion = specialAvatar.Promotion;
@@ -701,12 +719,27 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
             EnhancedId = (uint)GetCurPathInfo().EnhanceId
         };
 
-        foreach (var skill in GetCurPathInfo().GetSkillTree())
-            proto.SkilltreeList.Add(new AvatarSkillTree
-            {
-                PointId = (uint)skill.Key,
-                Level = (uint)skill.Value
-            });
+        // A config-owned trial has no saved traces. MaxWithInLevel grants every node its
+        // promotion and level allow; without that the story fight runs the bare kit.
+        var maxed = StoryTrialTables.MaxedSkillTree(AvatarId, Promotion, Level);
+        if (maxed.Count > 0)
+        {
+            foreach (var (pointId, level) in maxed)
+                proto.SkilltreeList.Add(new AvatarSkillTree
+                {
+                    PointId = (uint)pointId,
+                    Level = (uint)level
+                });
+        }
+        else
+        {
+            foreach (var skill in GetCurPathInfo().GetSkillTree())
+                proto.SkilltreeList.Add(new AvatarSkillTree
+                {
+                    PointId = (uint)skill.Key,
+                    Level = (uint)skill.Value
+                });
+        }
 
         foreach (var relic in GetCurPathInfo().Relic)
         {

@@ -8,6 +8,9 @@ namespace March7thHoney.Database.Activity;
 public class ActivityData : BaseDatabaseDataHelper
 {
     public TrialActivityData TrialActivityData { get; set; } = new();
+
+    // "Lab Assistants In Position" material slots. A new column; existing rows load it empty.
+    public MaterialSubmitData MaterialSubmitData { get; set; } = new();
 }
 
 [MemoryPackable]
@@ -34,6 +37,13 @@ public partial class TrialActivityData
 
         return proto;
     }
+}
+
+[MemoryPackable]
+public partial class MaterialSubmitData
+{
+    public List<int> Submitted { get; set; } = [];
+    public List<int> Taken { get; set; } = [];
 }
 
 [MemoryPackable]

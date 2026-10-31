@@ -404,6 +404,7 @@ public static partial class GameData
     #region Mission
 
     public static Dictionary<int, MainMissionExcel> MainMissionData { get; private set; } = [];
+    public static Dictionary<int, MainMissionScheduleExcel> MainMissionScheduleData { get; private set; } = [];
     public static Dictionary<int, SubMissionExcel> SubMissionData { get; private set; } = [];
     public static ConcurrentDictionary<int, SubMissionData> SubMissionInfoData { get; private set; } = [];
     public static Dictionary<int, RewardDataExcel> RewardDataData { get; private set; } = [];

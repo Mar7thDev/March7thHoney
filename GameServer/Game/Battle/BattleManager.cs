@@ -2,6 +2,9 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Item;
+using March7thHoney.Enums.Mission;
+using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
@@ -183,10 +186,13 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             return;
         }
 
+        // Fixed-level trials resolve the stage at world level 0. World-level-scaled story
+        // trials (IsUseWorldLevel) keep the player's own world level.
+        var resolveLevel = Player.LineupManager!.StageResolveWorldLevel();
         GameData.StageConfigData.TryGetValue(eventId, out var stageConfig);
         if (stageConfig == null)
         {
-            GameData.StageConfigData.TryGetValue(eventId * 10 + Player.Data.WorldLevel, out stageConfig);
+            GameData.StageConfigData.TryGetValue(eventId * 10 + resolveLevel, out stageConfig);
             if (stageConfig == null)
             {
                 await Player.SendPacket(new PacketSceneEnterStageScRsp());
@@ -385,6 +391,12 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 }
                 // Spend stamina
                 if (battle.StaminaCost > 0) await Player.SpendStamina(battle.StaminaCost);
+                // A won calyx pays 50 Trailblaze EXP after the stamina and before the drops (official wire). Only
+                // the calyx value is measured; Cavern / Echo of War / Stagnant Shadow pay nothing here.
+                if (battle.CocoonId > 0 &&
+                    GameData.CocoonConfigData.TryGetValue(battle.CocoonId * 100 + battle.WorldLevel,
+                        out var calyx) && calyx.CocoonType == CocoonTypeEnum.TYPE_NORMAL)
+                    await Player.InventoryManager!.AddItem(22, CalyxClearExp);
                 break;
             case BattleEndStatus.BattleEndLose:
                 // Set avatar hp to 20% if the player's party is downed
@@ -410,7 +422,10 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 BaseAvatarInfo? avatarInstance = Player.AvatarManager!.GetFormalAvatar((int)avatar.Id);
                 var prop = avatar.AvatarStatus;
                 var curHp = (int)Math.Max(Math.Round(prop.LeftHp / prop.MaxHp * 10000), minimumHp);
-                var curSp = (int)prop.LeftSp * 100;
+                // The client reports energy units (e.g. 45 of 120); stored SP is a 0..10000 ratio.
+                var curSp = prop.MaxSp > 0
+                    ? (int)Math.Round(prop.LeftSp / prop.MaxSp * 10000)
+                    : (int)(prop.LeftSp * 100);
                 if (avatarInstance == null)
                 {
                     avatarInstance = Player.AvatarManager!.GetTrialAvatar((int)avatar.Id);
@@ -424,6 +439,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 }
             }
 
+            if (!lineup.IsExtraLineup()) await RepointDeadLeader(lineup);
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
         }
 
@@ -459,6 +475,16 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
         // A fight made only of /spawn monsters reuses real group/instance/stage IDs; it must not finish missions.
         if (!battle.IsGmSpawnedEncounter)
             battle.OnBattleEnd += Player.MissionManager!.OnBattleFinish;
+        // Support reward: a won Calyx, Stagnant Shadow or raid stage credits the support's owner.
+        if (!battle.IsGmSpawnedEncounter && req.EndStatus == BattleEndStatus.BattleEndWin &&
+            battle.GridFightContext == null &&
+            (battle.CocoonId != 0 || battle.MappingInfoId > 0 || Player.RaidManager?.Data.CurRaidId > 0))
+            await AssistRewardService.CreditBattle(Player, req,
+                battle.Lineup.BaseAvatars?.Where(slot => slot.AssistUid != 0).Select(slot => slot.AssistUid) ?? []);
+        if (!battle.IsGmSpawnedEncounter && req.EndStatus == BattleEndStatus.BattleEndWin &&
+            req.Stt.BattleAvatarList.Any(avatar =>
+                avatar.AvatarType is AvatarType.AvatarAssistType or AvatarType.AvatarReturnAssistType))
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.WinBattleWithAssistAvatarCnt);
         await battle.TriggerOnBattleEnd();
 
         // Only a won trial battle clears the trial. The clear notifies and the return scene go out before the
@@ -519,5 +545,31 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
 
         stage = null;
         return false;
+    }
+    /// <summary>
+    ///     A leader who fell in the fight hands the lead to the first living member, as the official server
+    ///     does before the lineup sync. Otherwise the overworld keeps a downed leader.
+    /// </summary>
+    private const int CalyxClearExp = 50;
+
+    private async ValueTask RepointDeadLeader(Database.Lineup.LineupInfo lineup)
+    {
+        var avatars = lineup.BaseAvatars ?? [];
+        bool Alive(int baseAvatarId) =>
+            (Player.AvatarManager!.GetFormalAvatar(baseAvatarId) as BaseAvatarInfo ??
+             Player.AvatarManager.GetTrialAvatar(baseAvatarId))?.GetCurHp(false) > 0;
+
+        if (avatars.Count == 0 || Alive(lineup.LeaderAvatarId)) return;
+        var next = avatars.FirstOrDefault(slot => Alive(slot.BaseAvatarId));
+        if (next == null || next.BaseAvatarId == lineup.LeaderAvatarId) return;
+
+        lineup.LeaderAvatarId = next.BaseAvatarId;
+        if (Player.SceneInstance != null)
+        {
+            await Player.SceneInstance.SyncLineup(true);
+            await Player.SceneInstance.OnChangeLeader(next.BaseAvatarId);
+        }
+
+        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.TeamLeaderChange);
     }
 }

@@ -41,6 +41,48 @@ public partial class PropInfo : PositionInfo
     /// </summary>
     [JsonIgnore] public List<PropInteractLink> InteractLinks { get; set; } = [];
 
+    /// <summary>The prop replaces MazeProp.JsonPath with <see cref="InitLevelGraph" />.</summary>
+    public bool IsOverrideInitLevelGraph { get; set; }
+
+    /// <summary>The prop's own graph has a PropStateExecute branch for Open.</summary>
+    [JsonIgnore] public bool GraphHasOpenBranch { get; set; }
+
+    /// <summary>The prop's own graph has a PropStateExecute branch for Locked.</summary>
+    [JsonIgnore] public bool GraphHasLockedBranch { get; set; }
+
+    /// <summary>
+    ///     The prop's own graph has a real Closed branch: the State field is absent or literally Closed.
+    ///     Unknown state names are not a Closed branch.
+    /// </summary>
+    [JsonIgnore] public bool GraphHasRealClosedBranch { get; set; }
+
+    /// <summary>ValueSource key "怪物死亡标记" target, captured before the raw JSON is dropped.</summary>
+    [JsonIgnore] public int DeathMarkGroupId { get; set; }
+
+    [JsonIgnore] public int DeathMarkInstId { get; set; }
+
+    /// <summary>
+    ///     Fog gate a hub console names (ValueSource key "...FogDoor..."). The gate runs CustomStateNN, so the
+    ///     console must not open it; captured only so a save the old fan-out broke can be repaired.
+    /// </summary>
+    [JsonIgnore] public int FogDoorGroupId { get; set; }
+
+    [JsonIgnore] public int FogDoorInstId { get; set; }
+
+    public bool HasEditorOnlyLevelGraph()
+    {
+        return IsOverrideInitLevelGraph &&
+               InitLevelGraph?.Contains("/DesignerBackup/", StringComparison.Ordinal) == true;
+    }
+
+    /// <summary>
+    ///     The prop's interact button is armed only from Open. A Closed landing has no press branch.
+    /// </summary>
+    public bool ArmsOnlyFromOpen()
+    {
+        return GraphHasOpenBranch && !GraphHasRealClosedBranch;
+    }
+
     public void Load(GroupInfo info)
     {
         if (ValueSource == null) return;
@@ -64,6 +106,38 @@ public partial class PropInfo : PositionInfo
                 }
 
                 list.Add(ID);
+            }
+            else if (key.ToString() == "怪物死亡标记")
+            {
+                var parts = value.ToString().Split(',');
+                if (parts.Length >= 2 &&
+                    int.TryParse(parts[0], out var markGroup) &&
+                    int.TryParse(parts[1], out var markInst))
+                {
+                    DeathMarkGroupId = markGroup;
+                    DeathMarkInstId = markInst;
+                }
+            }
+            // RotateBridge names the rotating bridge part, a BridgeState machine, not a door.
+            // Opening it writes Open, a state the part does not have, and the rotate cutscene freezes.
+            else if (key.ToString().Contains("RotateBridge"))
+            {
+            }
+            // A fog gate (CustomState01..05) and the BridgeController consoles are not doors: opening them with
+            // the console left the gate red and the consoles dead (floor 20132001, main 1011301).
+            else if (key.ToString().Contains("FogDoor"))
+            {
+                var parts = value.ToString().Split(',');
+                if (parts.Length >= 2 &&
+                    int.TryParse(parts[0], out var fogGroup) &&
+                    int.TryParse(parts[1], out var fogInst))
+                {
+                    FogDoorGroupId = fogGroup;
+                    FogDoorInstId = fogInst;
+                }
+            }
+            else if (key.ToString().Contains("BridgeController"))
+            {
             }
             else if (key.ToString().Contains("Door") ||
                      key.ToString().Contains("Bridge") ||

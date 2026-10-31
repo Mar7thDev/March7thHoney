@@ -1,12 +1,13 @@
+using March7thHoney.GameServer.Server.Packet.Send.Friend;
 using March7thHoney.Kcp;
 
 namespace March7thHoney.GameServer.Server.Packet.Recv.Friend;
 
 [Opcode(CmdIds.GetCurAssistCsReq)]
-public class HandlerGetCurAssistCsReq : Handler
+public class HandlerGetCurAssistCsReq : PlayerHandler
 {
-    public override async Task OnHandle(Connection connection, byte[] header, byte[] data)
+    protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
-        await connection.SendPacket(CmdIds.GetCurAssistScRsp);
+        await connection.SendPacket(new PacketGetCurAssistScRsp(player.FriendManager!.CurrentAssistInfo()));
     }
 }
