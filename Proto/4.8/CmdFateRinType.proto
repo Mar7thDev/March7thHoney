@@ -1,0 +1,134 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AIKICHNEPKE {
+	uint32 level = 7;
+}
+
+enum CmdFateRinType {
+	CmdFateRinType_NLCDGIPGFDJ = 0;
+	CmdFateRinType_OHFKBKOJHFP = 9862;
+	CmdFateRinType_FateRinGetDataCsReq = 9864;
+	CmdFateRinType_StartFateRinStoryFightCsReq = 9866;
+	CmdFateRinType_PFKFKEPDIIH = 9871;
+	CmdFateRinType_DEMPDDGLJFF = 9876;
+	CmdFateRinType_OCELCPOJKKC = 9878;
+	CmdFateRinType_FateRinStartHouguMapFightCsReq = 9880;
+	CmdFateRinType_IAJLPFICPMO = 9881;
+	CmdFateRinType_IMPOAADNAPH = 9882;
+	CmdFateRinType_FateRinGetDataScRsp = 9887;
+	CmdFateRinType_BCCBFBOENAP = 9888;
+	CmdFateRinType_FateRinStartChallengeFightScRsp = 9892;
+	CmdFateRinType_FateRinStartHouguMapFightScRsp = 9893;
+	CmdFateRinType_FateRinStartChallengeFightCsReq = 9894;
+	CmdFateRinType_AIJJAFEJOLM = 9895;
+	CmdFateRinType_KILPONLFLHM = 9896;
+	CmdFateRinType_GJFCCDNCACD = 9897;
+	CmdFateRinType_HDDKKEHFOPD = 9898;
+	CmdFateRinType_FateRinStartStoryFightScRsp = 9900;
+}
+
+message DNNNCIPMPKH {
+	ItemList reward = 4;
+	repeated uint32 EDCIGEJLFFH = 8;
+	uint32 NFAOAGIFKEG = 9;
+}
+
+message EILMEGELLLJ {
+	repeated uint32 PDABDEJBPEL = 15;
+}
+
+message FNHBHPDJACF {
+	uint32 NFAOAGIFKEG = 6;
+	uint32 retcode = 15;
+}
+
+message FateRinGetDataCsReq {
+}
+
+message FateRinGetDataScRsp {
+	repeated GCJCLFOLBPP LDEJLFKJBCL = 3;
+	repeated uint32 HINFJMIMBIN = 5;
+	uint32 level = 7;
+	repeated uint32 PDABDEJBPEL = 8;
+	uint32 retcode = 9;
+	repeated KDANACKPJIP HBDMBLAPEMH = 10;
+	uint32 ILLHHMHBJCG = 11;
+	uint32 NFAOAGIFKEG = 13;
+}
+
+message FateRinStartChallengeFightCsReq {
+	repeated uint32 EPJCGCAMFDP = 1;
+	uint32 LCICMEPLFGE = 13;
+}
+
+message FateRinStartChallengeFightScRsp {
+	uint32 retcode = 1;
+	SceneBattleInfo battle_info = 2;
+}
+
+message FateRinStartHouguMapFightCsReq {
+	uint32 CCOOCEEAKFI = 5;
+	bool JBIFGIHHMNO = 9;
+}
+
+message FateRinStartHouguMapFightScRsp {
+	SceneBattleInfo battle_info = 2;
+	uint32 retcode = 15;
+}
+
+message FateRinStartStoryFightScRsp {
+	uint32 retcode = 9;
+	SceneBattleInfo battle_info = 11;
+}
+
+message GCJCLFOLBPP {
+	repeated uint32 OPBNNKHNAEL = 3;
+	uint32 NKDDBPGDAEE = 11;
+	repeated uint32 CKGPHNNDACN = 13;
+	repeated uint32 HPOOCCHJNEN = 15;
+}
+
+message GHCLLIAGDEP {
+	uint32 NKDDBPGDAEE = 3;
+}
+
+message GOELKOBOCDI {
+	repeated GCJCLFOLBPP LDEJLFKJBCL = 11;
+}
+
+message KDANACKPJIP {
+	uint32 JBGENFIKGGF = 5;
+	uint32 JHMNIGAGOCK = 8;
+	uint32 CCOOCEEAKFI = 15;
+}
+
+message KDMOONKPLPI {
+	uint32 ILLHHMHBJCG = 2;
+	uint32 retcode = 7;
+}
+
+message KNLJDBNOPKD {
+	GCJCLFOLBPP PNJMDOFOEEE = 8;
+}
+
+message OCOEKDNDEGJ {
+	uint32 PPMJKDBNHCA = 4;
+}
+
+message PMEHLELAFJI {
+	uint32 retcode = 6;
+	repeated GCJCLFOLBPP LDEJLFKJBCL = 8;
+}
+
+message PPGFKFIAAHL {
+	KDANACKPJIP NMFGECJBPLJ = 4;
+	BattleEndStatus end_status = 8;
+}
+
+message StartFateRinStoryFightCsReq {
+	uint32 CCOOCEEAKFI = 5;
+}

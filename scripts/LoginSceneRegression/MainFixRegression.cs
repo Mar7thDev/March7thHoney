@@ -43,12 +43,13 @@ internal static class MainFixRegression
             return EntityStores.Map[typeof(T)].LoadAll(db).OfType<T>().Single(data => data.Uid == player.Uid);
         }
 
-        // Actual 4.7 oneof field number is 10, not the 4.6 value 1 or former hard-coded 15.
-        var query = new CommonRogueQueryCsReq { AGFFNBFBHDL = { 15, 10, 13, 10, 999 } };
+        // The 4.8 function-unlock arm is oneof field 15 (4.7 used 10, 4.6 used 1); 3 and 6 are the other two arms.
+        var query = new CommonRogueQueryCsReq { AGFFNBFBHDL = { 3, 15, 6, 15, 999 } };
         var queryReply = Response(await Request(new HandlerCommonRogueQueryCsReq(), query),
             CmdIds.CommonRogueQueryScRsp, CommonRogueQueryScRsp.Parser);
-        check("4.7 CommonRogueQuery uses field 10 and preserves requested order and duplicates",
-            CCKJAEDDDCL.BBEKBJPHEJKFieldNumber == 10 && queryReply.LFLCDNGALME.Count == 5 &&
+        check("CommonRogueQuery uses the active unlock field 15 and preserves requested order and duplicates",
+            CCKJAEDDDCL.BBEKBJPHEJKFieldNumber == 15 && CCKJAEDDDCL.MECOEFEJANEFieldNumber == 3 &&
+            CCKJAEDDDCL.BMGOLFNGHGHFieldNumber == 6 && queryReply.LFLCDNGALME.Count == 5 &&
             queryReply.LFLCDNGALME[1].BBEKBJPHEJK?.LFCGPOKMJLC.Count == Enum.GetValues<MGJDNGHDIKG>().Length &&
             queryReply.LFLCDNGALME[3].BBEKBJPHEJK?.LFCGPOKMJLC.Count == Enum.GetValues<MGJDNGHDIKG>().Length &&
             new[] { 0, 2, 4 }.All(index => queryReply.LFLCDNGALME[index].KKNBOACNCONCase == CCKJAEDDDCL.KKNBOACNCONOneofCase.None));
@@ -107,8 +108,8 @@ internal static class MainFixRegression
         DatabaseHelper.Instance!.SaveDatabase();
         var favourite = Response(await Request(new HandlerMarkPresetLineupCsReq(), new MarkPresetLineupCsReq { Index = 5, IsFavourite = true }),
             CmdIds.SetTeamFavourite, SetTeamFavourite.Parser);
-        check("favourite team answers current 4.7 commands 762 to 780 and marks the correct team",
-            CmdIds.MarkPresetLineupCsReq == 762 && CmdIds.SetTeamFavourite == 780 && favourite.Retcode == 0 &&
+        check("favourite team answers the active commands 779 to 721 and marks the correct team",
+            CmdIds.MarkPresetLineupCsReq == 779 && CmdIds.SetTeamFavourite == 721 && favourite.Retcode == 0 &&
             favourite.Index == 5 && favourite.IsFavourite && fifth.ToProto().IsFavourite);
         DatabaseHelper.Instance.SaveDatabase();
         check("favourite flag and repaired team indexes survive SQLite storage", (await Stored<LineupData>()).Lineups[5].IsFavourite &&

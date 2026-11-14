@@ -1,0 +1,226 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdTreasureDungeonType {
+	CmdTreasureDungeonType_NLCDGIPGFDJ = 0;
+	CmdTreasureDungeonType_OpenTreasureDungeonGridScRsp = 4404;
+	CmdTreasureDungeonType_GetTreasureDungeonActivityDataCsReq = 4408;
+	CmdTreasureDungeonType_EnterTreasureDungeonScRsp = 4412;
+	CmdTreasureDungeonType_InteractTreasureDungeonGridCsReq = 4422;
+	CmdTreasureDungeonType_EnterTreasureDungeonCsReq = 4443;
+	CmdTreasureDungeonType_UseTreasureDungeonItemScRsp = 4445;
+	CmdTreasureDungeonType_InteractTreasureDungeonGridScRsp = 4453;
+	CmdTreasureDungeonType_TreasureDungeonFinishScNotify = 4454;
+	CmdTreasureDungeonType_UseTreasureDungeonItemCsReq = 4456;
+	CmdTreasureDungeonType_QuitTreasureDungeonScRsp = 4465;
+	CmdTreasureDungeonType_OpenTreasureDungeonGridCsReq = 4469;
+	CmdTreasureDungeonType_GetTreasureDungeonActivityDataScRsp = 4481;
+	CmdTreasureDungeonType_TreasureDungeonDataScNotify = 4483;
+	CmdTreasureDungeonType_QuitTreasureDungeonCsReq = 4485;
+	CmdTreasureDungeonType_FightTreasureDungeonMonsterCsReq = 4488;
+	CmdTreasureDungeonType_FightTreasureDungeonMonsterScRsp = 4500;
+}
+
+message DCMCLHJINBD {
+	uint32 attack_add = 1;
+	uint32 NKMNCCFFBAB = 2;
+	uint32 MIAFMBHCMOG = 3;
+	uint32 EICEKDBENKM = 7;
+	uint32 defence_add = 8;
+	bool has_passed = 11;
+	bool is_entered = 12;
+}
+
+message ENGHACADBKI {
+	uint32 LDMHLKGILOD = 1;
+	TreasureDungeonRecordType type = 4;
+	uint32 FMIFPFAHFBL = 6;
+	uint32 EGKLFMCHLCO = 12;
+	uint32 FFKDFODDBDN = 13;
+}
+
+message EnterTreasureDungeonCsReq {
+	repeated IOKGDDDHHPD avatar_list = 8;
+	uint32 EICEKDBENKM = 15;
+}
+
+message EnterTreasureDungeonScRsp {
+	uint32 retcode = 1;
+	PPONNIHFJAP IMHNGDFGJJA = 6;
+}
+
+message FFMOAGPPHGP {
+	uint32 avatar_id = 2;
+	SpBarInfo sp_bar = 4;
+	uint32 KHJKDLNAMIP = 9;
+	uint32 avatar_type = 10;
+	uint32 hp = 14;
+}
+
+message FightTreasureDungeonMonsterCsReq {
+	uint32 GDNEHLEOMOM = 1;
+	repeated IOKGDDDHHPD avatar_list = 5;
+	uint32 EICEKDBENKM = 7;
+}
+
+message FightTreasureDungeonMonsterScRsp {
+	uint32 retcode = 3;
+	SceneBattleInfo battle_info = 13;
+}
+
+message GetTreasureDungeonActivityDataCsReq {
+}
+
+message GetTreasureDungeonActivityDataScRsp {
+	repeated DCMCLHJINBD NFEJLHOCFMC = 10;
+	uint32 retcode = 14;
+}
+
+message IHBMPCIIGJD {
+	bool DBMFBJCHNKN = 4;
+	bool can_interact = 5;
+	bool BBBINMPJCGI = 6;
+	uint32 GDNEHLEOMOM = 9;
+	bool is_locked = 12;
+	uint32 OHCCEFIALGL = 13;
+	uint32 EILBAOLILAM = 14;
+	repeated KMCCCOKIOFD buff_list = 1685;
+}
+
+message IOKGDDDHHPD {
+	uint32 avatar_id = 8;
+	AvatarType avatar_type = 14;
+}
+
+message InteractTreasureDungeonGridCsReq {
+	uint32 GDNEHLEOMOM = 5;
+	uint32 EICEKDBENKM = 11;
+	uint32 param = 13;
+}
+
+message InteractTreasureDungeonGridScRsp {
+	uint32 retcode = 10;
+	PPONNIHFJAP IMHNGDFGJJA = 14;
+}
+
+message JDLIPNFGEID {
+	uint32 avatar_id = 3;
+	uint32 avatar_type = 13;
+}
+
+message JGNNOJEEBLP {
+	uint32 MODPKCCOAJL = 3;
+	uint32 buff_id = 14;
+}
+
+message KMCCCOKIOFD {
+	uint32 EGKLFMCHLCO = 4;
+	uint32 FBNBPPHOGLI = 6;
+	uint32 buff_id = 9;
+	uint32 JBGENFIKGGF = 12;
+	uint32 GDNEHLEOMOM = 13;
+}
+
+message NPPFFMBNGBP {
+	uint32 item_id = 5;
+	uint32 item_count = 6;
+}
+
+message OpenTreasureDungeonGridCsReq {
+	uint32 GDNEHLEOMOM = 1;
+	uint32 EICEKDBENKM = 15;
+}
+
+message OpenTreasureDungeonGridScRsp {
+	uint32 retcode = 4;
+	PPONNIHFJAP IMHNGDFGJJA = 9;
+}
+
+message PPONNIHFJAP {
+	repeated ENGHACADBKI HFLOPHNBKGN = 1;
+	repeated IHBMPCIIGJD IEDKELDFHLP = 3;
+	uint32 map_id = 4;
+	uint32 DIPLENNGJII = 5;
+	uint32 EICEKDBENKM = 7;
+	uint32 attack_add = 10;
+	uint32 MIAFMBHCMOG = 12;
+	uint32 defence_add = 14;
+	uint32 KJNKBKLCGHJ = 15;
+	repeated FFMOAGPPHGP PBNEHHOBBFC = 322;
+	repeated JDLIPNFGEID FDOILGLIFIB = 604;
+	bool IGJCGAGHDPP = 709;
+	repeated FFMOAGPPHGP avatar_list = 876;
+	repeated NPPFFMBNGBP item_list = 1062;
+	repeated JGNNOJEEBLP buff_list = 1164;
+	bool MNEIFMEDFGC = 1249;
+	uint32 HCEGFNHMMOD = 1587;
+	bool NBNPGEAMFJP = 1828;
+}
+
+message QuitTreasureDungeonCsReq {
+	uint32 EICEKDBENKM = 2;
+	bool KEAAGAIAHLA = 14;
+}
+
+message QuitTreasureDungeonScRsp {
+	uint32 retcode = 3;
+}
+
+message TreasureDungeonDataScNotify {
+	PPONNIHFJAP IMHNGDFGJJA = 9;
+}
+
+message TreasureDungeonFinishScNotify {
+	uint32 DEHGKCLNNAP = 1;
+	uint32 EICEKDBENKM = 5;
+	uint32 MIAFMBHCMOG = 8;
+	map<uint32, uint32> IMALNDJDDNO = 9;
+	bool is_win = 10;
+	map<uint32, uint32> NLMHKDPJEFO = 12;
+	uint32 DJCNKLMCABG = 13;
+}
+
+enum TreasureDungeonRecordType {
+	TreasureDungeonRecordType_TreasureDungeonRecordNone = 0;
+	TreasureDungeonRecordType_TreasureDungeonRecordAddHp = 1;
+	TreasureDungeonRecordType_TreasureDungeonRecordSubHp = 2;
+	TreasureDungeonRecordType_TreasureDungeonRecordSubHpNoExplore = 3;
+	TreasureDungeonRecordType_TreasureDungeonRecordAddAttack = 5;
+	TreasureDungeonRecordType_TreasureDungeonRecordAddDefence = 6;
+	TreasureDungeonRecordType_TreasureDungeonRecordAddExplore = 9;
+	TreasureDungeonRecordType_TreasureDungeonRecordSubExplore = 10;
+	TreasureDungeonRecordType_TreasureDungeonRecordAddExploreOverflow = 11;
+	TreasureDungeonRecordType_TreasureDungeonRecordSummon = 15;
+	TreasureDungeonRecordType_TreasureDungeonRecordKill = 16;
+	TreasureDungeonRecordType_TreasureDungeonRecordAddTrialAvatar = 20;
+	TreasureDungeonRecordType_TreasureDungeonRecordAddBuff = 24;
+	TreasureDungeonRecordType_TreasureDungeonRecordUnlockDoor = 25;
+	TreasureDungeonRecordType_TreasureDungeonRecordEnemyEnhance = 27;
+	TreasureDungeonRecordType_TreasureDungeonRecordEnemyWeaken = 28;
+	TreasureDungeonRecordType_TreasureDungeonRecordEnemyAuraRemove = 29;
+	TreasureDungeonRecordType_TreasureDungeonRecordSpecialMonsterRun = 30;
+	TreasureDungeonRecordType_TreasureDungeonRecordSpecialMonsterKill = 31;
+	TreasureDungeonRecordType_TreasureDungeonRecordBattleBuffTriggerSuccess = 33;
+	TreasureDungeonRecordType_TreasureDungeonRecordBattleBuffTriggerFail = 34;
+	TreasureDungeonRecordType_TreasureDungeonRecordBattleBuffAddExplore = 35;
+	TreasureDungeonRecordType_TreasureDungeonRecordBattleBuffOpenGrid = 36;
+	TreasureDungeonRecordType_TreasureDungeonRecordBattleBuffAddItem = 37;
+	TreasureDungeonRecordType_TreasureDungeonRecordAvatarDead = 40;
+	TreasureDungeonRecordType_TreasureDungeonRecordTrialAvatarDead = 41;
+	TreasureDungeonRecordType_TreasureDungeonRecordAllAvatarDead = 42;
+	TreasureDungeonRecordType_TreasureDungeonRecordOpenItemChest = 43;
+}
+
+message UseTreasureDungeonItemCsReq {
+	uint32 item_id = 7;
+	uint32 EICEKDBENKM = 14;
+	uint32 GDNEHLEOMOM = 15;
+}
+
+message UseTreasureDungeonItemScRsp {
+	uint32 retcode = 1;
+	PPONNIHFJAP IMHNGDFGJJA = 8;
+}

@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ChangeEraFlipperDataCsReq {
+	KKFMGCNDHGH data = 12;
+}
+
+message ChangeEraFlipperDataScRsp {
+	KKFMGCNDHGH data = 9;
+	uint32 retcode = 12;
+}
+
+enum CmdEraFlipperType {
+	CmdEraFlipperType_NLCDGIPGFDJ = 0;
+	CmdEraFlipperType_ResetEraFlipperDataScRsp = 6558;
+	CmdEraFlipperType_GetEraFlipperDataCsReq = 6561;
+	CmdEraFlipperType_GetEraFlipperDataScRsp = 6562;
+	CmdEraFlipperType_EraFlipperDataChangeScNotify = 6564;
+	CmdEraFlipperType_ResetEraFlipperDataCsReq = 6568;
+	CmdEraFlipperType_ChangeEraFlipperDataScRsp = 6569;
+	CmdEraFlipperType_EnterEraFlipperDataCsReq = 6570;
+	CmdEraFlipperType_ChangeEraFlipperDataCsReq = 6572;
+	CmdEraFlipperType_EnterEraFlipperDataScRsp = 6573;
+}
+
+message EnterEraFlipperDataCsReq {
+	uint32 region_id = 10;
+	uint32 state = 13;
+}
+
+message EnterEraFlipperDataScRsp {
+	uint32 retcode = 5;
+	uint32 region_id = 10;
+}
+
+message EraFlipperDataChangeScNotify {
+	uint32 DAGNPMDMCIN = 6;
+	KKFMGCNDHGH data = 11;
+}
+
+message GetEraFlipperDataCsReq {
+}
+
+message GetEraFlipperDataScRsp {
+	KKFMGCNDHGH data = 6;
+	uint32 retcode = 12;
+}
+
+message HKLDDAAECLN {
+	uint32 state = 3;
+	uint32 region_id = 8;
+}
+
+message KKFMGCNDHGH {
+	repeated HKLDDAAECLN DMDKAOOLABF = 5;
+}
+
+message ResetEraFlipperDataCsReq {
+	bool CJEILDIOIOE = 15;
+}
+
+message ResetEraFlipperDataScRsp {
+	KKFMGCNDHGH data = 1;
+	uint32 retcode = 6;
+	bool CJEILDIOIOE = 11;
+}

@@ -345,25 +345,27 @@ try
         videoRsp.VideoKeyInfoList.Select(x => x.Id).SequenceEqual(GameData.VideoKeysConfig.VideoKeyInfoData.Select(x => (uint)x.Id)) &&
         videoRsp.ActivityVideoKeyInfoList.Select(x => x.Id).SequenceEqual(GameData.VideoKeysConfig.ActivityVideoKeyData.Select(x => (uint)x.Id)));
     var openingVideoFields = UIntFields(videoRsp.VideoKeyInfoList.Single(x => x.Id == 8).ToByteArray());
-    Check("opening video 8 carries the captured decryption key at the active 4.7 wire tag",
+    // VideoKeyInfo on the 4.8 wire: HHCAKADKHAN (video_key) 10, IBDIMHPOPOJ 9, BOGECOHIINH 12 (4.7 had it on 7).
+    Check("opening video 8 carries the captured decryption key at the active wire tag",
         openingVideoFields.GetValueOrDefault(10) == 70220919 &&
-        !openingVideoFields.ContainsKey(7) && !openingVideoFields.ContainsKey(9));
+        !openingVideoFields.ContainsKey(12) && !openingVideoFields.ContainsKey(9));
     var modernVideoFields = UIntFields(videoRsp.VideoKeyInfoList.Single(x => x.Id == 5600).ToByteArray());
     Check("modern story video preserves all three captured uint64 fields without swapping or truncation",
         modernVideoFields.GetValueOrDefault(10) == 455385195335115081UL &&
         modernVideoFields.GetValueOrDefault(9) == 453193354110313382UL &&
-        modernVideoFields.GetValueOrDefault(7) == 10148726845613043778UL);
+        modernVideoFields.GetValueOrDefault(12) == 10148726845613043778UL);
     var activityVideoFields = UIntFields(videoRsp.ActivityVideoKeyInfoList.Single(x => x.Id == 1806).ToByteArray());
     Check("activity video carries its captured key and third field independently of story videos",
         activityVideoFields.GetValueOrDefault(10) == 452999623148752523UL &&
-        activityVideoFields.GetValueOrDefault(7) == 12506515817811705491UL);
+        activityVideoFields.GetValueOrDefault(12) == 12506515817811705491UL);
 }
 finally
 {
     GameData.VideoKeysConfig = cachedVideoKeys;
 }
 var successFields = UIntFields(new SceneMapInfo { FloorId = 10202001 }.ToByteArray());
-var sceneMapFloorTag = applies45ProdCompatibility ? 14 : 11;
+// SceneMapInfo on the 4.8 wire: floor_id 14, retcode 3 (4.7 had floor_id on 11; 4.5 PROD uses 14 and 6).
+var sceneMapFloorTag = 14;
 var sceneMapRetcodeTag = applies45ProdCompatibility ? 6 : 3;
 Check("active SceneMapInfo writes floor_id to its verified wire field",
     successFields.GetValueOrDefault(sceneMapFloorTag) == 10202001 && !successFields.ContainsKey(sceneMapRetcodeTag));
@@ -386,7 +388,7 @@ Check("forced 4.5 field mappings override inferred older field meanings",
 var boundaryPacket = new PacketSyncServerSceneChangeNotify();
 Check("active scene boundary uses the generated cmdid and an empty protobuf payload",
     boundaryPacket.CmdId == CmdIds.SyncServerSceneChangeNotify && boundaryPacket.Data.Length == 0 &&
-    (applies45ProdCompatibility || CmdIds.SyncServerSceneChangeNotify == 1433));
+    (applies45ProdCompatibility || CmdIds.SyncServerSceneChangeNotify == 1471));
 
 var player = new PlayerInstance(60001);
 await player.InitializeAsync();
@@ -1463,7 +1465,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         .Concat(await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity
             .HandlerMGCJKEEOPEC().OnHandle(rogueConnection, [], [])))
         .ToList();
-    Check("4.7 login activity queries 10795/10215 are answered with 10788/10208 retcode 0",
+    Check("login activity queries CKMHMAJPJEP/MGCJKEEOPEC are answered with PAMDEKPLLEL/LPLCFFGANFC retcode 0",
         activityQueryReplies.Any(frame => frame.Id == CmdIds.PAMDEKPLLEL && PAMDEKPLLEL.Parser.ParseFrom(frame.Body).Retcode == 0) &&
         activityQueryReplies.Any(frame => frame.Id == CmdIds.LPLCFFGANFC && LPLCFFGANFC.Parser.ParseFrom(frame.Body).Retcode == 0));
     // Voracity Invasion: the activity tab builds its world activity from 10668; without it the client loads a nil prefab.
@@ -1472,7 +1474,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         .Concat(await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity.VoracityInvasion
             .HandlerGetActivityVoracityInvasionDataCsReq().OnHandle(rogueConnection, [], [])))
         .ToList();
-    Check("Voracity Invasion queries 10275/10675 are answered with 10268/10668 and a current update time",
+    Check("Voracity Invasion queries are answered with their responses and a current update time",
         voracityReplies.Any(frame => frame.Id == CmdIds.GetVoracityInvasionDataScRsp &&
                                      GetVoracityInvasionDataScRsp.Parser.ParseFrom(frame.Body).Retcode == 0) &&
         voracityReplies.Any(frame => frame.Id == CmdIds.GetActivityVoracityInvasionDataScRsp &&
@@ -1744,11 +1746,12 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     fortPlayer.Connection = null;
 
     // Official 4.6 seq 36813/36822/36827 pair quick-up request EKLIDIDKFHC with PMEMIDKDAFG.
-    // 4.7 keeps those identities, but moves commands 376/357 to 355/341 and reshuffles field numbers.
+    // Later versions keep those identities but move the commands (4.7: 355/341, 4.8: 332/395) and reshuffle
+    // the field numbers.
     Check("quick avatar-up binds the active version's request and response commands and scalar fields",
-        CmdIds.KELLLHMHFHL == 355 && CmdIds.MILFFHPMLMN == 341 &&
-        EKLIDIDKFHC.IGOOJKMPMDCFieldNumber == 7 && EKLIDIDKFHC.KLMIBJIKIBBFieldNumber == 3 &&
-        EKLIDIDKFHC.BaseAvatarIdFieldNumber == 11 && PMEMIDKDAFG.ReturnItemListFieldNumber == 6 && PMEMIDKDAFG.RetcodeFieldNumber == 10);
+        CmdIds.KELLLHMHFHL == 332 && CmdIds.MILFFHPMLMN == 395 &&
+        EKLIDIDKFHC.IGOOJKMPMDCFieldNumber == 10 && EKLIDIDKFHC.KLMIBJIKIBBFieldNumber == 12 &&
+        EKLIDIDKFHC.BaseAvatarIdFieldNumber == 9 && PMEMIDKDAFG.ReturnItemListFieldNumber == 12 && PMEMIDKDAFG.RetcodeFieldNumber == 15);
     March7thHoney.GameServer.Server.Packet.HandlerManager.Init();
     var quickHandler = March7thHoney.GameServer.Server.Packet.HandlerManager.GetHandler(CmdIds.KELLLHMHFHL);
     Check("quick-up request dispatches through the generated opcode registry",
@@ -1889,10 +1892,10 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         quickEquipmentHandler != null);
     if (quickEquipmentHandler != null)
     {
-        Check("equipment quick-up binds 4.7 commands and fields from the stable EOBJKAMNNPI identity",
-            CmdIds.EquipmentQuickUpCsReq == 513 && CmdIds.EquipmentQuickUpScRsp == 517 &&
-            EquipmentQuickUpCsReq.IGOOJKMPMDCFieldNumber == 10 && EquipmentQuickUpCsReq.KLMIBJIKIBBFieldNumber == 1 &&
-            EquipmentQuickUpCsReq.BOBOKJBAMNBFieldNumber == 6 && EquipmentQuickUpCsReq.IDGEEENIMMKFieldNumber == 8);
+        Check("equipment quick-up binds the active commands and fields from the stable EOBJKAMNNPI identity",
+            CmdIds.EquipmentQuickUpCsReq == 548 && CmdIds.EquipmentQuickUpScRsp == 529 &&
+            EquipmentQuickUpCsReq.IGOOJKMPMDCFieldNumber == 14 && EquipmentQuickUpCsReq.KLMIBJIKIBBFieldNumber == 1 &&
+            EquipmentQuickUpCsReq.BOBOKJBAMNBFieldNumber == 3 && EquipmentQuickUpCsReq.IDGEEENIMMKFieldNumber == 11);
         var equipmentPlayer = new PlayerInstance(60019);
         await equipmentPlayer.InitializeAsync();
         var equipmentInventory = equipmentPlayer.InventoryManager!;
@@ -2985,22 +2988,22 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Finish);
     talkPlayer.Connection = null;
 
-    // Classic Simulated Universe command pairs (4.7 Proto/4.7/Raw/packetIds.txt): enhance 1823/1828, pick 1848/1875.
+    // Classic Simulated Universe command pairs (Proto/4.8/Raw/packetIds.txt): enhance 1819/1875, pick 1804/1888.
     int OpcodeOf(Type handler) => handler.GetCustomAttribute<Opcode>()!.CmdId;
     Check("classic Simulated Universe enhance and pick handlers listen on the 18xx command ids",
-        OpcodeOf(typeof(HandlerEnhanceRogueBuffCsReq)) == 1823 && CmdIds.RogueEnhanceRogueBuffScRsp == 1828 &&
-        OpcodeOf(typeof(HandlerPickRogueAvatarCsReq)) == 1848 && CmdIds.PickRogueAvatarScRsp == 1875);
+        OpcodeOf(typeof(HandlerEnhanceRogueBuffCsReq)) == 1819 && CmdIds.RogueEnhanceRogueBuffScRsp == 1875 &&
+        OpcodeOf(typeof(HandlerPickRogueAvatarCsReq)) == 1804 && CmdIds.PickRogueAvatarScRsp == 1888);
     var enhanceFrames = await SentFrames(() => new HandlerEnhanceRogueBuffCsReq().OnHandle(rogueConnection, [], []));
-    Check("classic Simulated Universe enhance answers on 1828", enhanceFrames.Select(frame => frame.Id)
+    Check("classic Simulated Universe enhance answers on 1875", enhanceFrames.Select(frame => frame.Id)
         .SequenceEqual(new[] { (ushort)CmdIds.RogueEnhanceRogueBuffScRsp }));
     var pickAvatarRequest = new PickRogueAvatarCsReq { PropEntityId = 4194339, DFPPCAJDBFK = { 4000005 }, NOEPBNMJFGL = { 1001 } };
     var pickAvatarFrames = await SentFrames(() => new HandlerPickRogueAvatarCsReq()
         .OnHandle(rogueConnection, [], pickAvatarRequest.ToByteArray()));
     var pickAvatarRsp = pickAvatarFrames.Where(frame => frame.Id == CmdIds.PickRogueAvatarScRsp)
         .Select(frame => PickRogueAvatarScRsp.Parser.ParseFrom(frame.Body)).SingleOrDefault();
-    Check("PickRogueAvatar echoes special ids (req #1) in rsp #15 and base ids (req #7) in rsp #7",
-        PickRogueAvatarCsReq.DFPPCAJDBFKFieldNumber == 1 && PickRogueAvatarCsReq.NOEPBNMJFGLFieldNumber == 7 &&
-        PickRogueAvatarScRsp.BFEDFBEKOBIFieldNumber == 15 && PickRogueAvatarScRsp.NOEPBNMJFGLFieldNumber == 7 &&
+    Check("PickRogueAvatar echoes special ids (req #9) in rsp #14 and base ids (req #14) in rsp #12",
+        PickRogueAvatarCsReq.DFPPCAJDBFKFieldNumber == 9 && PickRogueAvatarCsReq.NOEPBNMJFGLFieldNumber == 14 &&
+        PickRogueAvatarScRsp.BFEDFBEKOBIFieldNumber == 14 && PickRogueAvatarScRsp.NOEPBNMJFGLFieldNumber == 12 &&
         pickAvatarRsp is { Retcode: 0 } && pickAvatarRsp.BFEDFBEKOBI.SequenceEqual(new uint[] { 4000005 }) &&
         pickAvatarRsp.NOEPBNMJFGL.SequenceEqual(new uint[] { 1001 }));
     roguePlayer.Connection = null;
@@ -3315,7 +3318,7 @@ Check("reset raid info notify keeps an empty item_list",
     RaidInfoNotify.Parser.ParseFrom(new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
 
 // CommonRogueQuery: the query type is the oneof arm's field number in the active protocol (4.6 moved the
-// function-unlock arm BBEKBJPHEJK from 15 to 1, 4.7 to 10 and dropped ABPOOCOOKCF), so the unlock set must follow
+// function-unlock arm BBEKBJPHEJK from 15 to 1, 4.7 to 10, 4.8 back to 15, and dropped ABPOOCOOKCF), so the unlock set must follow
 // the arm, not a literal.
 var commonQuery = RogueManager.BuildCommonQueryEntries([
     (uint)CCKJAEDDDCL.BBEKBJPHEJKFieldNumber, (uint)CCKJAEDDDCL.MECOEFEJANEFieldNumber,

@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdTrackPhotoActivityType {
+	CmdTrackPhotoActivityType_NLCDGIPGFDJ = 0;
+	CmdTrackPhotoActivityType_StartTrackPhotoStageCsReq = 7551;
+	CmdTrackPhotoActivityType_QuitTrackPhotoStageCsReq = 7553;
+	CmdTrackPhotoActivityType_GetTrackPhotoActivityDataScRsp = 7554;
+	CmdTrackPhotoActivityType_SettleTrackPhotoStageScRsp = 7555;
+	CmdTrackPhotoActivityType_GetTrackPhotoActivityDataCsReq = 7556;
+	CmdTrackPhotoActivityType_SettleTrackPhotoStageCsReq = 7558;
+	CmdTrackPhotoActivityType_StartTrackPhotoStageScRsp = 7559;
+	CmdTrackPhotoActivityType_QuitTrackPhotoStageScRsp = 7560;
+}
+
+message GetTrackPhotoActivityDataCsReq {
+}
+
+message GetTrackPhotoActivityDataScRsp {
+	repeated IFBJJJOBGHB PEDCKGNNPAJ = 8;
+	uint32 retcode = 15;
+}
+
+message IFBJJJOBGHB {
+	uint32 max_score = 4;
+	uint32 stage_id = 11;
+}
+
+message PNICDFFMDDB {
+	bool ADGCOJLMGAH = 4;
+	uint32 entity_id = 10;
+}
+
+message QuitTrackPhotoStageCsReq {
+	uint32 stage_id = 7;
+}
+
+message QuitTrackPhotoStageScRsp {
+	uint32 retcode = 3;
+}
+
+message SettleTrackPhotoStageCsReq {
+	uint32 stage_id = 4;
+	uint32 cost_time = 5;
+	repeated PNICDFFMDDB PIGLHELGMIJ = 7;
+}
+
+message SettleTrackPhotoStageScRsp {
+	uint32 score_id = 5;
+	repeated PNICDFFMDDB PIGLHELGMIJ = 9;
+	uint32 stage_id = 11;
+	uint32 retcode = 14;
+}
+
+message StartTrackPhotoStageCsReq {
+	uint32 stage_id = 7;
+	bool LCPPNDPKHPH = 15;
+}
+
+message StartTrackPhotoStageScRsp {
+	uint32 retcode = 7;
+	uint32 trans_no = 15;
+}

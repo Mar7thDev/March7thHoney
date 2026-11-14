@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message AOMMAFEOBOA {
+	bool has_passed = 3;
+	uint32 id = 12;
+}
+
+enum CmdTarotBookType {
+	CmdTarotBookType_NLCDGIPGFDJ = 0;
+	CmdTarotBookType_TarotBookMultiOpenPackAndUnlockStoryCsReq = 8141;
+	CmdTarotBookType_TarotBookSyncDataScNotify = 8142;
+	CmdTarotBookType_TarotBookUnlockInteractionCsReq = 8143;
+	CmdTarotBookType_TarotBookModifyEnergyScNotify = 8145;
+	CmdTarotBookType_TarotBookGetDataCsReq = 8146;
+	CmdTarotBookType_TarotBookMultiOpenPackAndUnlockStoryScRsp = 8147;
+	CmdTarotBookType_TarotBookFinishInteractionScRsp = 8148;
+	CmdTarotBookType_TarotBookUnlockInteractionScRsp = 8150;
+	CmdTarotBookType_TarotBookFinishInteractionCsReq = 8151;
+	CmdTarotBookType_TarotBookOpenPackScRsp = 8152;
+	CmdTarotBookType_TarotBookUnlockStoryCsReq = 8154;
+	CmdTarotBookType_TarotBookUnlockStoryScRsp = 8155;
+	CmdTarotBookType_TarotBookFinishStoryScRsp = 8156;
+	CmdTarotBookType_TarotBookFinishStoryCsReq = 8157;
+	CmdTarotBookType_TarotBookOpenPackCsReq = 8158;
+	CmdTarotBookType_TarotBookGetDataScRsp = 8159;
+}
+
+message GMBGLBHEFDI {
+	repeated uint32 HKFDNIFACFH = 5;
+	repeated uint32 FPPJGGJCJIH = 13;
+}
+
+message LIONJNJEBBF {
+	uint32 id = 8;
+	uint32 level = 12;
+}
+
+message OHCFIOOIKND {
+	repeated LIONJNJEBBF LNFCBCDNFDL = 9;
+	repeated AOMMAFEOBOA ILKLAJBGKKI = 13;
+}
+
+message TarotBookFinishInteractionCsReq {
+	uint32 INJAGFDOFEJ = 13;
+}
+
+message TarotBookFinishInteractionScRsp {
+	uint32 retcode = 7;
+	uint32 INJAGFDOFEJ = 15;
+}
+
+message TarotBookFinishStoryCsReq {
+	uint32 LNAHJENGELA = 7;
+}
+
+message TarotBookFinishStoryScRsp {
+	uint32 retcode = 5;
+	OHCFIOOIKND BBEMIGELGJC = 10;
+	uint32 LNAHJENGELA = 14;
+}
+
+message TarotBookGetDataCsReq {
+}
+
+message TarotBookGetDataScRsp {
+	map<uint32, uint32> IJOJMJOMELA = 1;
+	uint32 LOCEBOCJGEC = 2;
+	uint32 retcode = 4;
+	uint32 energy_info = 5;
+	OHCFIOOIKND BBEMIGELGJC = 7;
+	map<uint32, uint32> IMNNLHCAKML = 9;
+	uint32 HBLKMBHGLNO = 10;
+	GMBGLBHEFDI interaction = 14;
+}
+
+message TarotBookModifyEnergyScNotify {
+	uint32 sub_mission_id = 3;
+	uint32 energy_info = 14;
+}
+
+message TarotBookMultiOpenPackAndUnlockStoryCsReq {
+}
+
+message TarotBookMultiOpenPackAndUnlockStoryScRsp {
+	uint32 LOCEBOCJGEC = 2;
+	uint32 energy_info = 3;
+	uint32 retcode = 6;
+	map<uint32, uint32> IJOJMJOMELA = 7;
+	repeated uint32 LNOAAOAFJJE = 8;
+	uint32 HBLKMBHGLNO = 11;
+	map<uint32, uint32> IMNNLHCAKML = 13;
+	OHCFIOOIKND BBEMIGELGJC = 14;
+}
+
+message TarotBookOpenPackCsReq {
+}
+
+message TarotBookOpenPackScRsp {
+	uint32 energy_info = 6;
+	map<uint32, uint32> KMNLFHLINFB = 7;
+	uint32 HBLKMBHGLNO = 10;
+	map<uint32, uint32> NLAANGNGAIA = 12;
+	uint32 retcode = 13;
+	uint32 LOCEBOCJGEC = 15;
+}
+
+message TarotBookSyncDataScNotify {
+	uint32 energy_info = 2;
+	map<uint32, uint32> IMNNLHCAKML = 3;
+	map<uint32, uint32> IJOJMJOMELA = 9;
+	uint32 HBLKMBHGLNO = 10;
+	uint32 LOCEBOCJGEC = 11;
+	OHCFIOOIKND BBEMIGELGJC = 14;
+}
+
+message TarotBookUnlockInteractionCsReq {
+	repeated uint32 FEEGJLAMKLJ = 13;
+}
+
+message TarotBookUnlockInteractionScRsp {
+	repeated uint32 CLNOMEFFHKG = 7;
+	uint32 retcode = 11;
+}
+
+message TarotBookUnlockStoryCsReq {
+	repeated uint32 OCFCIANNKKI = 11;
+}
+
+message TarotBookUnlockStoryScRsp {
+	LIONJNJEBBF CLLIKPONHOC = 2;
+	repeated uint32 BHFHFONGHML = 4;
+	uint32 retcode = 5;
+	map<uint32, uint32> IJOJMJOMELA = 8;
+	map<uint32, uint32> IMNNLHCAKML = 13;
+}
