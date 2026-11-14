@@ -10,7 +10,7 @@
          (Proto/<version>/), the Raw dumps, the curated ProtoFile/ library, and the ProtoOrganizer
          tool all live under Proto/ but must NOT be swept into this assembly. -->
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <ActiveProtocolVersion>4.7</ActiveProtocolVersion>
+    <ActiveProtocolVersion>4.8</ActiveProtocolVersion>
     <!-- MSBuild checks removed schemas and missing generated outputs. -->
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>

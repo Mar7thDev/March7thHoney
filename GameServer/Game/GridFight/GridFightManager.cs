@@ -200,9 +200,11 @@ public sealed partial class GridFightManager : BasePlayerManager
         var permanentTalent = new GridFightTalentInfo();
         permanentTalent.TalentIdList.Add(GameData.GridFightTalentData.Keys.Order());
         var permanentInfo = new GridFightPermanentGameInfo { Talent = permanentTalent };
-        // 4.7 clients gate the season entry on the per-stage tutorial progress (FBJMBJKMAJA, keyed by tutorial
-        // division) and the last finished tutorial stage (ENECKKGPKHI, same identity as
-        // GridFightLastTutorialFinishScNotify); tutorial_completion alone keeps showing "finish the tutorial first".
+        // Clients gate the season entry on the per-stage tutorial progress (FBJMBJKMAJA, keyed by tutorial
+        // division); tutorial_completion alone keeps showing "finish the tutorial first". 4.7 also carried the
+        // last finished tutorial stage (ENECKKGPKHI). The 4.8 client dropped that field together with
+        // GridFightLastTutorialFinishScNotify and added a bool (PMFHAPIFFPO) whose meaning is not identified,
+        // so it stays unset.
         foreach (var (divisionId, completion, tutorialTask) in Catalog.CompletedTutorialStages)
             permanentInfo.FBJMBJKMAJA[divisionId] = new GLHCHCJMFGA
             {
@@ -210,7 +212,6 @@ public sealed partial class GridFightManager : BasePlayerManager
                 GDAKCOICIDA = completion,
                 MPJPLKKJNGE = tutorialTask,
             };
-        permanentInfo.ENECKKGPKHI = Catalog.CompletedTutorialStages.Select(stage => stage.DivisionId).DefaultIfEmpty().Max();
 
         return new GridFightSystemInfo
         {

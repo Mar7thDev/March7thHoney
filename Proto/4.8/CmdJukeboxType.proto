@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdJukeboxType {
+	CmdJukeboxType_NLCDGIPGFDJ = 0;
+	CmdJukeboxType_JDOHJBCOMKN = 3107;
+	CmdJukeboxType_UnlockBackGroundMusicScRsp = 3133;
+	CmdJukeboxType_PlayBackGroundMusicScRsp = 3142;
+	CmdJukeboxType_GetJukeboxDataScRsp = 3154;
+	CmdJukeboxType_UnlockBackGroundMusicCsReq = 3173;
+	CmdJukeboxType_GetJukeboxDataCsReq = 3183;
+	CmdJukeboxType_CKILMDLNFAP = 3191;
+	CmdJukeboxType_PlayBackGroundMusicCsReq = 3196;
+}
+
+message EGDFPDHNOKO {
+	uint32 JKFCKJNHLHI = 6;
+	uint32 retcode = 15;
+}
+
+message FKLMGEFILDI {
+	uint32 JKFCKJNHLHI = 4;
+}
+
+message GetJukeboxDataCsReq {
+}
+
+message GetJukeboxDataScRsp {
+	MNCBEDBDDHL GFFOBALDBPM = 10;
+	repeated LHHGCDLCJDA IOKAJIBHLMP = 11;
+	uint32 retcode = 12;
+}
+
+message LHHGCDLCJDA {
+	bool BIMDKNLMICG = 4;
+	uint32 group_id = 6;
+	uint32 id = 14;
+}
+
+message PlayBackGroundMusicCsReq {
+	MNCBEDBDDHL IKJNIKIGFLF = 13;
+}
+
+message PlayBackGroundMusicScRsp {
+	uint32 retcode = 3;
+	MNCBEDBDDHL GFFOBALDBPM = 15;
+}
+
+message UnlockBackGroundMusicCsReq {
+	repeated uint32 CHODMKMCLLL = 15;
+}
+
+message UnlockBackGroundMusicScRsp {
+	repeated uint32 BPFGBEBPEDP = 5;
+	uint32 retcode = 10;
+	repeated LHHGCDLCJDA IOKAJIBHLMP = 12;
+}

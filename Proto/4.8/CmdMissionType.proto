@@ -1,0 +1,202 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AcceptMainMissionCsReq {
+	uint32 main_mission_id = 11;
+}
+
+message AcceptMainMissionScRsp {
+	uint32 main_mission_id = 9;
+	uint32 retcode = 14;
+}
+
+message CPFCAJBHOIB {
+	repeated uint32 FKOABFGMHJI = 9;
+}
+
+enum CmdMissionType {
+	CmdMissionType_NLCDGIPGFDJ = 0;
+	CmdMissionType_UpdateMainMissionCustomValueCsReq = 1201;
+	CmdMissionType_LINJAMBKGBI = 1202;
+	CmdMissionType_MissionSyncTaskScRsp = 1207;
+	CmdMissionType_AcceptMainMissionScRsp = 1209;
+	CmdMissionType_FinishCosumeItemMissionScRsp = 1212;
+	CmdMissionType_UpdateTrackMainMissionCsReq = 1213;
+	CmdMissionType_TeleportToMissionResetPointCsReq = 1215;
+	CmdMissionType_StartFinishMainMissionScNotify = 1221;
+	CmdMissionType_SyncTaskCsReq = 1233;
+	CmdMissionType_TeleportToMissionResetPointScRsp = 1236;
+	CmdMissionType_UpdateTrackMainMissionScRsp = 1237;
+	CmdMissionType_StarPerformanceRelayScRsp = 1238;
+	CmdMissionType_FinishTalkMissionScRsp = 1242;
+	CmdMissionType_FinishCosumeItemMissionCsReq = 1243;
+	CmdMissionType_UpdateMainMissionCustomValueScRsp = 1244;
+	CmdMissionType_GetMissionStatusCsReq = 1253;
+	CmdMissionType_GetMissionDataScRsp = 1254;
+	CmdMissionType_GetMissionStatusScRsp = 1256;
+	CmdMissionType_GetMainMissionCustomValueCsReq = 1259;
+	CmdMissionType_FinishedMissionScNotify = 1263;
+	CmdMissionType_StarPerformanceRelayCsReq = 1264;
+	CmdMissionType_MissionRewardScNotify = 1273;
+	CmdMissionType_SubMissionRewardScNotify = 1275;
+	CmdMissionType_AcceptMainMissionCsReq = 1277;
+	CmdMissionType_StartFinishSubMissionScNotify = 1279;
+	CmdMissionType_MissionGroupWarnScNotify = 1281;
+	CmdMissionType_GetMainMissionCustomValueScRsp = 1282;
+	CmdMissionType_GetMissionDataCsReq = 1283;
+	CmdMissionType_FinishTalkMissionCsReq = 1296;
+}
+
+message FinishCosumeItemMissionCsReq {
+	uint32 sub_mission_id = 9;
+	ItemList item_list = 15;
+}
+
+message FinishCosumeItemMissionScRsp {
+	uint32 retcode = 6;
+	uint32 sub_mission_id = 15;
+}
+
+message FinishTalkMissionCsReq {
+	repeated MissionCustomValue custom_value_list = 2;
+	uint32 sub_mission_id = 8;
+	string talk_str = 14;
+}
+
+message FinishTalkMissionScRsp {
+	string talk_str = 5;
+	repeated MissionCustomValue custom_value_list = 8;
+	uint32 retcode = 13;
+	uint32 sub_mission_id = 14;
+}
+
+message FinishedMissionScNotify {
+	repeated uint32 finished_main_mission_id_list = 9;
+}
+
+message GetMainMissionCustomValueCsReq {
+	repeated uint32 main_mission_id_list = 11;
+}
+
+message GetMainMissionCustomValueScRsp {
+	repeated MainMission main_mission_list = 5;
+	uint32 retcode = 11;
+}
+
+message GetMissionDataCsReq {
+}
+
+message GetMissionDataScRsp {
+	repeated uint32 OLKALABEDOA = 2;
+	uint32 GKFPKBGJBGN = 3;
+	uint32 retcode = 7;
+	repeated Mission mission_list = 9;
+	repeated uint32 KBDGNGMPFEH = 10;
+	repeated uint32 finished_main_mission_id_list = 11;
+	uint32 track_mission_id = 13;
+	repeated MainMission main_mission_list = 15;
+}
+
+message GetMissionStatusCsReq {
+	repeated uint32 main_mission_id_list = 1;
+	repeated uint32 sub_mission_id_list = 13;
+}
+
+message GetMissionStatusScRsp {
+	repeated MainMissionCustomValue main_mission_mcv_list = 3;
+	repeated uint32 unfinished_main_mission_id_list = 4;
+	repeated uint32 curversion_finished_main_mission_id_list = 5;
+	repeated uint32 disabled_main_mission_id_list = 6;
+	repeated uint32 finished_main_mission_id_list = 7;
+	uint32 retcode = 8;
+	repeated Mission sub_mission_status_list = 13;
+}
+
+message MainMission {
+	repeated MissionCustomValue custom_value_list = 8;
+	uint32 id = 10;
+	MissionStatus status = 15;
+}
+
+message MissionGroupWarnScNotify {
+	repeated uint32 OIKJKMJCHEG = 11;
+}
+
+message MissionRewardScNotify {
+	uint32 sub_mission_id = 5;
+	uint32 main_mission_id = 11;
+	ItemList reward = 14;
+}
+
+message MissionSyncTaskScRsp {
+	uint32 retcode = 4;
+	string key = 12;
+}
+
+message StarPerformanceRelayCsReq {
+	uint32 performance_id = 5;
+	uint32 performance_type = 14;
+}
+
+message StarPerformanceRelayScRsp {
+	uint32 retcode = 5;
+}
+
+message StartFinishMainMissionScNotify {
+	uint32 main_mission_id = 5;
+}
+
+message StartFinishSubMissionScNotify {
+	uint32 sub_mission_id = 11;
+}
+
+message SubMissionRewardScNotify {
+	uint32 sub_mission_id = 12;
+	ItemList reward = 13;
+}
+
+message SyncTaskCsReq {
+	string AFBDHEMJEPP = 10;
+}
+
+message TeleportToMissionResetPointCsReq {
+}
+
+message TeleportToMissionResetPointScRsp {
+	uint32 retcode = 1;
+	uint32 client_pos_version = 4;
+	MotionInfo motion = 6;
+}
+
+enum TrackMainMissionUpdateReasonId {
+	TrackMainMissionUpdateReasonId_DJAOKMDALMI = 0;
+	TrackMainMissionUpdateReasonId_FEFMPGIAGBP = 1;
+	TrackMainMissionUpdateReasonId_OGIADPFFHEF = 2;
+	TrackMainMissionUpdateReasonId_OJBIMIOEABG = 3;
+}
+
+message UpdateMainMissionCustomValueCsReq {
+	uint32 main_mission_id = 11;
+	uint32 value = 12;
+	string BGDFHBAANLB = 15;
+}
+
+message UpdateMainMissionCustomValueScRsp {
+	MainMission HKDDMGGDCIP = 11;
+	uint32 retcode = 15;
+}
+
+message UpdateTrackMainMissionCsReq {
+	uint32 track_mission_id = 1;
+	uint32 JFONDEBDIOO = 3;
+	TrackMainMissionUpdateReasonId POPNCNIBNMJ = 15;
+}
+
+message UpdateTrackMainMissionScRsp {
+	uint32 track_mission_id = 3;
+	uint32 retcode = 6;
+	uint32 prev_track_mission_id = 14;
+}

@@ -1,0 +1,247 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AFEDHCKDDFA {
+	bool AAGAFBJHOKK = 8;
+	uint32 id = 9;
+	NAOCMAOJECF type = 12;
+}
+
+message ANHJKLLEKKB {
+	uint32 type = 8;
+	int32 value = 10;
+}
+
+message BNJAIHINJIK {
+	HINIJKGDDBI FBECMPGLPKK = 3;
+	uint32 OBGKOOAPCEM = 4;
+	PJOHABIOPPI GMMPIDODKKD = 9;
+	uint32 GNAHDKMEDEP = 10;
+	GEFEDOAOKNO IPDLBJHAJOO = 11;
+	uint32 ODPELJAIPHL = 15;
+}
+
+enum CmdHipplenType {
+	CmdHipplenType_NLCDGIPGFDJ = 0;
+	CmdHipplenType_GetHipplenDataScRsp = 9001;
+	CmdHipplenType_HipplenCycleResultScNotify = 9004;
+	CmdHipplenType_SetHipplenAgendaCsReq = 9007;
+	CmdHipplenType_SetHipplenOutfitCsReq = 9009;
+	CmdHipplenType_GetHipplenInheritCsReq = 9011;
+	CmdHipplenType_SettleHipplenWorkCsReq = 9013;
+	CmdHipplenType_SetHipplenAgendaScRsp = 9015;
+	CmdHipplenType_GetHipplenDataCsReq = 9016;
+	CmdHipplenType_HipplenAgendaResultScNotify = 9022;
+	CmdHipplenType_SettleHipplenWorkScRsp = 9027;
+	CmdHipplenType_TakeHipplenEndingRewardCsReq = 9028;
+	CmdHipplenType_OpenHipplenCycleScRsp = 9030;
+	CmdHipplenType_HipplenChangeScNotify = 9032;
+	CmdHipplenType_OpenHipplenCycleCsReq = 9036;
+	CmdHipplenType_HipplenTraitUnlockScNotify = 9042;
+	CmdHipplenType_SetHipplenOutfitScRsp = 9043;
+	CmdHipplenType_GetHipplenInheritScRsp = 9044;
+	CmdHipplenType_TakeHipplenEndingRewardScRsp = 9047;
+}
+
+message DMLACLLDCCE {
+	uint32 GNAHDKMEDEP = 5;
+	uint32 MNCFOGJECMF = 6;
+	int32 CBPGJAFAHFC = 7;
+	uint32 AJAFEEAOBLC = 9;
+}
+
+message DPGGADJHCBG {
+	uint32 IMIBAAPJGEJ = 3;
+}
+
+message ELOFLNEAHPD {
+	repeated uint32 grid_fight_trait_info = 5;
+	repeated ENIDJAFECBD BPFJDLHFEKG = 6;
+}
+
+message ENIDJAFECBD {
+	bool is_taken_reward = 3;
+	uint32 BKFICFMMGIN = 4;
+}
+
+message FCOBIMJMLIF {
+	uint32 type = 1;
+	uint32 value = 3;
+}
+
+message FEDNIHCAHGP {
+	repeated uint32 FCOKODHGEKO = 7;
+	repeated uint32 GEMHKFCFCCC = 12;
+}
+
+message GCNJGJMPLHM {
+}
+
+message GEFEDOAOKNO {
+	repeated FCOBIMJMLIF MONKDLNMMBK = 9;
+}
+
+message GetHipplenDataCsReq {
+}
+
+message GetHipplenDataScRsp {
+	uint32 JFLAEGMBMAK = 3;
+	ELOFLNEAHPD ACOLLHOFKGL = 4;
+	BNJAIHINJIK HIGHKDBJNIM = 8;
+	bool HPKECDINMCE = 9;
+	FEDNIHCAHGP KJDEEJNBLHK = 10;
+	uint32 retcode = 15;
+}
+
+message GetHipplenInheritCsReq {
+}
+
+message GetHipplenInheritScRsp {
+	repeated uint32 grid_fight_trait_info = 7;
+	uint32 retcode = 15;
+}
+
+message HBMGNLFKMMK {
+	uint32 MNCFOGJECMF = 15;
+}
+
+message HGDHJFGCEJF {
+	oneof KKNBOACNCON {
+		DPGGADJHCBG MDFCELGPPHM = 3;
+		NOPCFDDLPNN HNLMBGIBEBN = 11;
+	}
+}
+
+message HINIJKGDDBI {
+	repeated uint32 grid_fight_trait_info = 8;
+}
+
+message HipplenAgendaResultScNotify {
+	LKFFMLJMGOB FEJPEALIKHE = 3;
+	BNJAIHINJIK HIGHKDBJNIM = 4;
+	repeated uint32 grid_fight_trait_info = 6;
+	repeated AFEDHCKDDFA NEMFNENACNB = 7;
+	bool CPFFAGAHJMH = 9;
+	GEFEDOAOKNO JMKHOIMEFFM = 14;
+	repeated uint32 GPDEDJIHMGB = 15;
+}
+
+message HipplenChangeScNotify {
+	repeated HGDHJFGCEJF DGNGMJMPFGK = 2;
+}
+
+message HipplenCycleResultScNotify {
+	uint32 JFLAEGMBMAK = 2;
+	repeated JHBOOCGAKCM FJFJMOGILBM = 5;
+	repeated JHBOOCGAKCM IHLCDDOMPKD = 7;
+	uint32 BKFICFMMGIN = 9;
+	GEFEDOAOKNO GNBKDCHLDGL = 10;
+	repeated uint32 FCOKODHGEKO = 11;
+	repeated uint32 grid_fight_trait_info = 15;
+}
+
+message HipplenTraitUnlockScNotify {
+	repeated uint32 grid_fight_trait_info = 15;
+}
+
+message JHBOOCGAKCM {
+	uint32 LDMHLKGILOD = 1;
+	uint32 FFKDFODDBDN = 11;
+}
+
+message LKFFMLJMGOB {
+	int32 CBPGJAFAHFC = 4;
+	uint32 AJAFEEAOBLC = 6;
+	uint32 MNCFOGJECMF = 15;
+}
+
+message LODMLDKMPPL {
+	uint32 id = 1;
+}
+
+enum NAOCMAOJECF {
+	NAOCMAOJECF_NLCDGIPGFDJ = 0;
+	NAOCMAOJECF_CNMBIADBFNG = 1;
+	NAOCMAOJECF_ENCBGPOIFCM = 2;
+	NAOCMAOJECF_ECKIMBNDOME = 3;
+	NAOCMAOJECF_LONKNKFDPII = 4;
+	NAOCMAOJECF_MLLNOGKNHNL = 5;
+}
+
+message NOPCFDDLPNN {
+	uint32 BKFICFMMGIN = 8;
+}
+
+message OHHHCKCFPIG {
+	repeated uint32 DPOKBJGLKNN = 3;
+}
+
+message OpenHipplenCycleCsReq {
+	uint32 trait_id = 5;
+}
+
+message OpenHipplenCycleScRsp {
+	uint32 retcode = 5;
+	BNJAIHINJIK HIGHKDBJNIM = 11;
+	uint32 JFLAEGMBMAK = 13;
+}
+
+message PJOHABIOPPI {
+	AFEDHCKDDFA LAJOGEKPHOP = 3;
+	uint32 DOHNBOCBOGJ = 5;
+	uint32 MBHJONMGDOO = 7;
+	repeated uint32 OGDLPFOJMHI = 11;
+	repeated AFEDHCKDDFA NEMFNENACNB = 14;
+	uint32 JEEELNEHDCD = 15;
+}
+
+message SetHipplenAgendaCsReq {
+	repeated uint32 NIEBGNHGDIH = 1;
+}
+
+message SetHipplenAgendaScRsp {
+	repeated AFEDHCKDDFA NEMFNENACNB = 5;
+	uint32 retcode = 12;
+}
+
+message SetHipplenOutfitCsReq {
+	uint32 IMIBAAPJGEJ = 11;
+}
+
+message SetHipplenOutfitScRsp {
+	uint32 retcode = 7;
+	repeated uint32 GEMHKFCFCCC = 9;
+}
+
+message SettleHipplenWorkCsReq {
+	oneof NEBNJDMFELO {
+		OHHHCKCFPIG ECKIMBNDOME = 2;
+		HBMGNLFKMMK HBGCOIAGDIG = 10;
+		LODMLDKMPPL ENCBGPOIFCM = 11;
+		GCNJGJMPLHM MLLNOGKNHNL = 13;
+	}
+}
+
+message SettleHipplenWorkScRsp {
+	GEFEDOAOKNO IPDLBJHAJOO = 3;
+	oneof MEJDDIPIEKK {
+		DMLACLLDCCE HBGCOIAGDIG = 5;
+		LKFFMLJMGOB LONKNKFDPII = 13;
+	}
+	repeated AFEDHCKDDFA NEMFNENACNB = 7;
+	uint32 retcode = 12;
+	repeated ANHJKLLEKKB BNIFMIPPIMA = 14;
+}
+
+message TakeHipplenEndingRewardCsReq {
+	uint32 BKFICFMMGIN = 14;
+}
+
+message TakeHipplenEndingRewardScRsp {
+	ItemList reward_list = 2;
+	uint32 retcode = 7;
+	uint32 BKFICFMMGIN = 14;
+}

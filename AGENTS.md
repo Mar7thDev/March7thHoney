@@ -27,7 +27,7 @@
 | `SourceGen/` | 包处理器、命令、任务、数据库及 MemoryPack 注册代码生成 |
 | `KcpSharp/` | KCP 传输及活动协议命令号 `CmdIds.cs` |
 | `Proto/<version>/` | 各游戏版本的协议来源、分组定义和兼容清单 |
-| `Proto/obj/<configuration>/<framework>/protobuf/4.7/` | 构建时自动生成的活动 C# 协议代码，不纳入版本控制 |
+| `Proto/obj/<configuration>/<framework>/protobuf/4.8/` | 构建时自动生成的活动 C# 协议代码，不纳入版本控制 |
 | `Proto/Archives/` | 旧版协议的无损压缩归档；迁移时按文档解压 |
 | `Proto/Tool/ProtoOrganizer/` | 协议整理、版本迁移和生成工具 |
 | `Config/` | 自定义 JSON、语言包、资源缓存及本地运行数据；部分内容受版本控制 |
@@ -77,8 +77,8 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 ## 协议与资源约束
 
 - 协议流程见 `docs/development/protobuf.md`。执行其中的版本示例前，核对当前活动协议、版本目录和兼容清单，不直接照抄旧版本号。
-- `Proto.csproj` 固定 `ActiveProtocolVersion=4.7`，使用 `Google.Protobuf.Tools 3.33.1` 的 protoc 33.1 自动生成到 `obj/` 并编译。协议修复应落到活动版本的定义、翻译映射、兼容清单或生成工具，再构建，避免只改生成的 C#。
-- 旧版协议已移到 `Proto/Archives/`，运行依赖旧路径的迁移命令前先按归档说明解压；`Proto/4.5v3/translations.txt` 作为登录回归输入仍保留。
+- `Proto.csproj` 固定 `ActiveProtocolVersion=4.8`，使用 `Google.Protobuf.Tools 3.33.1` 的 protoc 33.1 自动生成到 `obj/` 并编译。协议修复应落到活动版本的定义、翻译映射、兼容清单或生成工具，再构建，避免只改生成的 C#。
+- 4.6 及更早的协议已移到 `Proto/Archives/`，运行依赖旧路径的迁移命令前先按归档说明解压；`Proto/4.5v3/translations.txt` 作为登录回归输入仍保留。`Proto/4.7` 是 4.8 的名称来源，仍留在工作树里。
 - 切换活动协议时同步更新 `ActiveProtocolVersion`、对应分组定义与 `KcpSharp/CmdIds.cs`，完成整个解决方案构建和协议生成回归。不能用旧版本命令号覆盖新版本，也不能仅依据同型字段猜测协议映射。
 - Dumper 原始产物保留在对应版本的 `dumper/Raw/`；`reference/` 只能存放确实存在的同版本参考定义。
 - `GameServer.csproj` 存在显式排除的协议处理器。重新启用前应解决其协议依据和兼容性问题，不直接删除排除项来恢复编译。

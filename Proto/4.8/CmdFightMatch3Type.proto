@@ -1,0 +1,351 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum ABLCCPHIOMI {
+	ABLCCPHIOMI_KFIKMPOPBFD = 0;
+	ABLCCPHIOMI_MCOJHEKMHIL = 1;
+	ABLCCPHIOMI_GJGNJHPOFOL = 2;
+	ABLCCPHIOMI_JONELAAFDEA = 3;
+	ABLCCPHIOMI_DMBKGPBNBPO = 4;
+	ABLCCPHIOMI_NGBOPLGBCNK = 5;
+}
+
+enum AMDMKHKOHNF {
+	AMDMKHKOHNF_CCLMEHJMPGC = 0;
+	AMDMKHKOHNF_FDEAJLPGEOJ = 1;
+	AMDMKHKOHNF_KNHNJMABEBB = 2;
+	AMDMKHKOHNF_EGLAFFEKPHG = 3;
+	AMDMKHKOHNF_LMBDFFBHDOK = 4;
+	AMDMKHKOHNF_DPFACDOOILN = 5;
+}
+
+message BEOGFNDKCIL {
+	uint32 PIFNIJHPLJC = 1;
+}
+
+message BGEJHKFILME {
+}
+
+message BHMEPBAGOFF {
+	uint64 FIKHCEBOPMI = 2;
+	int32 HIJJDGBOMDL = 5;
+	AMDMKHKOHNF cur_state = 7;
+	IPGIJFNAFLC KNBGBCEBLDF = 10;
+	uint32 NAOKGNGBHAO = 11;
+	repeated KLGJDILNNDH BFCGOELLNIP = 13;
+	uint32 PBEPLKMNAKF = 14;
+}
+
+message CDPEFGCIGFB {
+}
+
+enum CKGOFMFNIPP {
+	CKGOFMFNIPP_HGBBGFBCCJJ = 0;
+	CKGOFMFNIPP_MLJFKFACNND = 1;
+	CKGOFMFNIPP_NNAMMGLFFCG = 2;
+	CKGOFMFNIPP_OBLIOOOLFEE = 3;
+	CKGOFMFNIPP_FAIALBOJMFN = 4;
+	CKGOFMFNIPP_BMJKLMCDPLG = 5;
+}
+
+enum CmdFightMatch3Type {
+	CmdFightMatch3Type_NHGDFLDLJLJ = 0;
+	CmdFightMatch3Type_FightMatch3SoloDataScRsp = 30104;
+	CmdFightMatch3Type_FightMatch3SwapScRsp = 30107;
+	CmdFightMatch3Type_FightMatch3ChatScNotify = 30108;
+	CmdFightMatch3Type_FightMatch3UseItemScRsp = 30112;
+	CmdFightMatch3Type_FightMatch3RoyaleRankUpdateNotify = 30115;
+	CmdFightMatch3Type_FightMatch3RoyaleDataScRsp = 30119;
+	CmdFightMatch3Type_FightMatch3SoloDataUpdateNotify = 30122;
+	CmdFightMatch3Type_EDHOJDAAGJL = 30126;
+	CmdFightMatch3Type_CFIDMGINPBI = 30133;
+	CmdFightMatch3Type_FightMatch3TurnStartScNotify = 30142;
+	CmdFightMatch3Type_AEMOIILIOIF = 30143;
+	CmdFightMatch3Type_LAEHKICDGPJ = 30145;
+	CmdFightMatch3Type_FightMatch3SoloSwapNotify = 30153;
+	CmdFightMatch3Type_FightMatch3DataScRsp = 30154;
+	CmdFightMatch3Type_FightMatch3SoloUseItemNotify = 30156;
+	CmdFightMatch3Type_MOHONNNIKGF = 30165;
+	CmdFightMatch3Type_JAMEPLPKJBB = 30169;
+	CmdFightMatch3Type_FightMatch3TurnEndScNotify = 30173;
+	CmdFightMatch3Type_FightMatch3RoyaleDataUpdateNotify = 30175;
+	CmdFightMatch3Type_FightMatch3ChatScRsp = 30178;
+	CmdFightMatch3Type_FightMatch3ForceUpdateNotify = 30181;
+	CmdFightMatch3Type_HBHIODOPENH = 30183;
+	CmdFightMatch3Type_FightMatch3SoloPreTurnEndScRsp = 30185;
+	CmdFightMatch3Type_GBPLKHLHFDB = 30188;
+	CmdFightMatch3Type_FightMatch3OpponentDataScNotify = 30191;
+	CmdFightMatch3Type_FightMatch3StartCountDownScNotify = 30196;
+	CmdFightMatch3Type_FightMatch3SoloAnimEndScRsp = 30200;
+}
+
+message DFLIHGGNBDB {
+	uint32 EDIGEANPBNL = 4;
+	uint32 row = 6;
+}
+
+enum DIKCFAICOHB {
+	DIKCFAICOHB_EJDLGGAGBEA = 0;
+	DIKCFAICOHB_PINPGFJKDPH = 1;
+	DIKCFAICOHB_EMPKDJGKDBI = 2;
+	DIKCFAICOHB_AOIOAKGHGHG = 3;
+	DIKCFAICOHB_ECEHHJJGFED = 4;
+	DIKCFAICOHB_GHBHAPNLJEJ = 5;
+}
+
+message DLBGONGJBNC {
+	uint32 PNGHFKLCNBE = 4;
+	uint32 ODFEDCPLNEM = 6;
+	uint32 DGGCFDKJDPO = 9;
+	uint32 FMEHKPKHGJA = 15;
+}
+
+message EEFDJLPDCFO {
+	uint32 PBEPLKMNAKF = 1;
+	uint32 DPJLMFBADMM = 10;
+	uint32 EMLBKOKEAOH = 11;
+}
+
+enum FDICBBEGKEO {
+	FDICBBEGKEO_NLCDGIPGFDJ = 0;
+	FDICBBEGKEO_EHNBEPDHBKC = 1;
+	FDICBBEGKEO_CBLMHGEJLMP = 2;
+	FDICBBEGKEO_NHEMIPGKGCJ = 3;
+}
+
+message FHAPLEMDKGN {
+}
+
+enum FNCFIHAFGGN {
+	FNCFIHAFGGN_NLCDGIPGFDJ = 0;
+	FNCFIHAFGGN_HBHCKEGINEN = 1;
+	FNCFIHAFGGN_DDJCFCLNCIM = 2;
+}
+
+message FOJDKLCHCKG {
+	uint32 NAOKGNGBHAO = 1;
+	int32 HIJJDGBOMDL = 3;
+	repeated LPHCHEJEMPD BFCGOELLNIP = 5;
+	IFFKDFPJECM cur_state = 6;
+	uint64 FIKHCEBOPMI = 11;
+	IPGIJFNAFLC KNBGBCEBLDF = 13;
+}
+
+message FightMatch3ChatScNotify {
+	uint32 OBJCJGPIHAD = 6;
+	uint32 PIFNIJHPLJC = 8;
+}
+
+message FightMatch3ChatScRsp {
+	uint32 retcode = 1;
+	uint32 PIFNIJHPLJC = 6;
+}
+
+message FightMatch3DataScRsp {
+	uint32 retcode = 2;
+	JECNOELJLKO data = 10;
+	repeated LMLNNHKJEIP DFLEOIGPLNM = 11;
+}
+
+message FightMatch3ForceUpdateNotify {
+	JECNOELJLKO data = 12;
+}
+
+message FightMatch3OpponentDataScNotify {
+	uint32 hp = 4;
+	NHHJAONHDDG state = 6;
+	uint32 score = 7;
+	repeated DLBGONGJBNC KJPFENPNFBP = 10;
+	uint32 BPBMJBIDIIC = 12;
+	uint32 IFOCJCOCDBH = 14;
+}
+
+message FightMatch3RoyaleDataScRsp {
+	repeated LMLNNHKJEIP DFLEOIGPLNM = 2;
+	FOJDKLCHCKG KHEFAHCPHBL = 11;
+	uint32 retcode = 14;
+}
+
+message FightMatch3RoyaleDataUpdateNotify {
+	FOJDKLCHCKG KHEFAHCPHBL = 12;
+	DIKCFAICOHB reason = 14;
+}
+
+message FightMatch3RoyaleRankUpdateNotify {
+	repeated LPHCHEJEMPD BFCGOELLNIP = 9;
+	uint32 NAOKGNGBHAO = 12;
+}
+
+message FightMatch3SoloAnimEndScRsp {
+	uint32 retcode = 7;
+}
+
+message FightMatch3SoloDataScRsp {
+	BHMEPBAGOFF data = 3;
+	uint32 retcode = 4;
+	repeated LMLNNHKJEIP DFLEOIGPLNM = 6;
+}
+
+message FightMatch3SoloDataUpdateNotify {
+	CKGOFMFNIPP reason = 9;
+	BHMEPBAGOFF data = 15;
+}
+
+message FightMatch3SoloPreTurnEndScRsp {
+	uint32 retcode = 4;
+}
+
+message FightMatch3SoloSwapNotify {
+	IPGIJFNAFLC LLCPOHADBKB = 7;
+	OKIPFIENKIF PBAPICNDIDN = 15;
+}
+
+message FightMatch3SoloUseItemNotify {
+	IPGIJFNAFLC LLCPOHADBKB = 8;
+	PKBDAKMLDMC PBAPICNDIDN = 9;
+}
+
+message FightMatch3StartCountDownScNotify {
+	JECNOELJLKO data = 1;
+}
+
+message FightMatch3SwapScRsp {
+	IPGIJFNAFLC IHBOHKKCGCP = 1;
+	uint32 EAFFACCBAAA = 3;
+	uint32 retcode = 5;
+	bool BDCNNNNLLHJ = 10;
+}
+
+message FightMatch3TurnEndScNotify {
+	JECNOELJLKO ENJMGOJPNOE = 5;
+	JECNOELJLKO JMIOMLJDCNN = 13;
+}
+
+message FightMatch3TurnStartScNotify {
+	JECNOELJLKO EHIELLKLPCK = 13;
+}
+
+message FightMatch3UseItemScRsp {
+	uint32 retcode = 1;
+	uint32 LLAADJHJMBH = 12;
+	IPGIJFNAFLC LLCPOHADBKB = 14;
+}
+
+message GMGABLBKJMC {
+	FDICBBEGKEO buff_type = 4;
+	uint32 param = 13;
+}
+
+enum IFFKDFPJECM {
+	IFFKDFPJECM_KFDDOBPEJMF = 0;
+	IFFKDFPJECM_DOJNFGNKFGP = 1;
+	IFFKDFPJECM_BBCFLEDLBBB = 2;
+	IFFKDFPJECM_GOIMMOHGCIH = 3;
+	IFFKDFPJECM_ADJOCBGIJHP = 4;
+}
+
+message IPGIJFNAFLC {
+	repeated uint32 MNCPGDNOIAM = 1;
+	NHHJAONHDDG LHNIIOHNIFL = 2;
+	uint32 score_id = 3;
+	uint32 IGDOFKLAILH = 4;
+	uint32 cur_hp = 5;
+	repeated DLBGONGJBNC item_list = 7;
+	uint32 energy_info = 8;
+	repeated MNOOMFIAFPF op_list = 9;
+	uint32 LIKMIMCFPKC = 10;
+	uint32 DJJODJAAIGA = 11;
+	repeated GMGABLBKJMC buff_list = 12;
+	LAJGLHCCNED JDFPKAMFHAP = 13;
+	uint32 FHEFKOGAMHK = 14;
+	uint32 JJJBLAJDEDC = 15;
+}
+
+message JBILGCPCJOD {
+	NHHJAONHDDG state = 2;
+	uint32 IFOCJCOCDBH = 4;
+	uint32 OPHFDHGBLPJ = 5;
+	uint32 DHJANOFGDNP = 7;
+	repeated DLBGONGJBNC item_list = 8;
+	uint32 rank = 9;
+	bool BKFONKNLCHP = 10;
+	uint32 hp = 11;
+	uint32 score_id = 13;
+}
+
+message JECNOELJLKO {
+	uint32 BPBMJBIDIIC = 1;
+	repeated JBILGCPCJOD BFCGOELLNIP = 2;
+	IPGIJFNAFLC KNBGBCEBLDF = 3;
+	PFPHJFEGDAA cur_state = 6;
+	int32 HIJJDGBOMDL = 8;
+	uint64 FIKHCEBOPMI = 10;
+	repeated uint32 LPOPKEGOLHB = 12;
+}
+
+message JFJDMGOMJOF {
+	ABLCCPHIOMI JNIEIKOKBGK = 4;
+	IPGIJFNAFLC KGOCFEINBIN = 7;
+}
+
+message KLGJDILNNDH {
+	repeated DLBGONGJBNC item_list = 1;
+	uint32 FHEFKOGAMHK = 2;
+	bool OCLBMMNNMFC = 4;
+	uint32 energy_info = 5;
+	uint32 DHJANOFGDNP = 6;
+	LAJGLHCCNED JDFPKAMFHAP = 7;
+	uint32 score_id = 8;
+	uint32 OPHFDHGBLPJ = 11;
+	uint32 IGDOFKLAILH = 12;
+	bool ANMLAPADELO = 13;
+	NHHJAONHDDG LHNIIOHNIFL = 14;
+}
+
+message LPHCHEJEMPD {
+	uint32 score_id = 4;
+	NHHJAONHDDG state = 5;
+	uint32 rank = 9;
+	uint32 DHJANOFGDNP = 13;
+}
+
+message MNOOMFIAFPF {
+	FNCFIHAFGGN op_type = 6;
+	uint32 MPKCANFHCHG = 7;
+}
+
+enum NHHJAONHDDG {
+	NHHJAONHDDG_LCNJHOKLMPN = 0;
+	NHHJAONHDDG_OFGBFHHIFAM = 1;
+	NHHJAONHDDG_JJBEPKLOLCP = 2;
+	NHHJAONHDDG_OPCKNBHNBOA = 3;
+}
+
+message OKIPFIENKIF {
+	DFLIHGGNBDB OPMGDNNAEJF = 4;
+	repeated JFJDMGOMJOF DGKLOCJHKNH = 5;
+	uint32 EAFFACCBAAA = 6;
+	DFLIHGGNBDB GGCMCDDGEIB = 9;
+}
+
+enum PFPHJFEGDAA {
+	PFPHJFEGDAA_HGFFCFFBGDB = 0;
+	PFPHJFEGDAA_FOFLFMBMOMA = 1;
+	PFPHJFEGDAA_DHHGMKAOALN = 2;
+	PFPHJFEGDAA_CGKCEONNAGM = 3;
+	PFPHJFEGDAA_MJLCFPEKNPA = 4;
+	PFPHJFEGDAA_NAIHAJOLEID = 5;
+}
+
+message PKBDAKMLDMC {
+	repeated JFJDMGOMJOF DGKLOCJHKNH = 2;
+	repeated DFLIHGGNBDB GNABNEDKPHH = 9;
+	uint32 use_item_id = 11;
+	uint32 MMLNAMPFAKA = 15;
+}
+
+message PLHPJCKDEDI {
+}

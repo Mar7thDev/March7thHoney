@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdElationActivityType {
+	CmdElationActivityType_NLCDGIPGFDJ = 0;
+	CmdElationActivityType_ElationActivityBattleEndScNotify = 9101;
+	CmdElationActivityType_GetElationActivityDataScRsp = 9104;
+	CmdElationActivityType_EnterElationActivityStageScRsp = 9105;
+	CmdElationActivityType_GetElationActivityDataCsReq = 9106;
+	CmdElationActivityType_EnterElationActivityStageCsReq = 9108;
+}
+
+message ElationActivityAvatar {
+	AvatarType avatar_type = 8;
+	uint32 avatar_id = 10;
+}
+
+message ElationActivityBattleEndScNotify {
+	ElationActivityLevelData level_data = 9;
+	uint32 perfect_wave = 11;
+	uint32 level_id = 13;
+	uint32 JCFMCEPKEHA = 14;
+	uint32 JIGFPIOBAHB = 15;
+}
+
+message ElationActivityLevelData {
+	uint32 level_id = 6;
+	uint32 BOEINFJIILE = 8;
+	uint32 CHPCJIBGKFK = 9;
+	uint32 FFGFINDLMCF = 11;
+	bool is_perfect = 14;
+}
+
+message EnterElationActivityStageCsReq {
+	repeated ElationActivityAvatar fixed_avatar_list = 5;
+	repeated ElationActivityAvatar player_selected_avatar_list = 11;
+	uint32 level_id = 12;
+}
+
+message EnterElationActivityStageScRsp {
+	SceneBattleInfo battle_info = 4;
+	uint32 retcode = 11;
+	uint32 level_id = 15;
+}
+
+message GetElationActivityDataCsReq {
+}
+
+message GetElationActivityDataScRsp {
+	uint32 retcode = 3;
+	repeated ElationActivityLevelData level_data_list = 7;
+}

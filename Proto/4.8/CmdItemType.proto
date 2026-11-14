@@ -1,0 +1,496 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AddEquipmentScRsp {
+	uint32 KAJCFPKEGBP = 3;
+}
+
+message AddRelicFilterPlanCsReq {
+	bool is_marked = 1;
+	uint32 GFEENEDNJGF = 2;
+	string name = 5;
+	BNAILMNNGIF settings = 7;
+	KJDLIPEIAAK icon = 9;
+}
+
+message AddRelicFilterPlanScRsp {
+	GABKFNAJIDD relic_plan = 10;
+	uint32 retcode = 14;
+}
+
+message BKGPJOBNMKJ {
+	uint64 expire_time = 5;
+	uint32 tid = 10;
+	uint32 num = 13;
+}
+
+message BNAILMNNGIF {
+	uint32 AGPFHDNOBEN = 1;
+	repeated uint32 DCFGIEJAILL = 2;
+	repeated uint32 KLKADPNPNHI = 3;
+	repeated uint32 NBINKKOFKED = 4;
+	repeated uint32 PLJEJGCEKGL = 5;
+	repeated uint32 HBLKPAJPPEC = 6;
+	bool IHABNJLBNBL = 7;
+	uint32 MNNLNOJNPBP = 8;
+	repeated uint32 BOPGCJOMKGE = 9;
+	repeated uint32 CLNIFBCKJPE = 10;
+	repeated uint32 MPBDKLFAPCH = 11;
+}
+
+message BatchRankUpEquipmentCsReq {
+	repeated FBNBEIKABGE switch_list = 6;
+}
+
+message BatchRankUpEquipmentScRsp {
+	uint32 retcode = 15;
+}
+
+message CancelMarkItemNotify {
+	uint32 item_id = 5;
+}
+
+enum CmdItemType {
+	CmdItemType_NLCDGIPGFDJ = 0;
+	CmdItemType_SetTurnFoodSwitchScRsp = 501;
+	CmdItemType_MarkItemCsReq = 502;
+	CmdItemType_ExpUpRelicScRsp = 504;
+	CmdItemType_UseItemCsReq = 507;
+	CmdItemType_ExpUpEquipmentCsReq = 508;
+	CmdItemType_DestroyItemScRsp = 509;
+	CmdItemType_ComposeItemScRsp = 512;
+	CmdItemType_CancelMarkItemNotify = 513;
+	CmdItemType_GetRelicFilterPlanCsReq = 514;
+	CmdItemType_GetRecyleTimeCsReq = 515;
+	CmdItemType_RelicReforgeScRsp = 517;
+	CmdItemType_MarkRelicFilterPlanScRsp = 518;
+	CmdItemType_ComposeSelectedRelicScRsp = 519;
+	CmdItemType_RelicCraftScRsp = 520;
+	CmdItemType_ComposeLimitNumUpdateScNotify = 521;
+	CmdItemType_SellItemCsReq = 522;
+	CmdItemType_MarkItemScRsp = 524;
+	CmdItemType_BatchRankUpEquipmentScRsp = 525;
+	CmdItemType_RankUpEquipmentCsReq = 526;
+	CmdItemType_EquipmentQuickUpScRsp = 529;
+	CmdItemType_ModifyRelicFilterPlanCsReq = 532;
+	CmdItemType_LockEquipmentScRsp = 533;
+	CmdItemType_GetRecyleTimeScRsp = 536;
+	CmdItemType_SyncTurnFoodNotify = 537;
+	CmdItemType_DiscardRelicScRsp = 538;
+	CmdItemType_RelicReforgeConfirmCsReq = 541;
+	CmdItemType_PromoteEquipmentScRsp = 542;
+	CmdItemType_ComposeItemCsReq = 543;
+	CmdItemType_GeneralVirtualItemDataNotify = 544;
+	CmdItemType_ExchangeHcoinCsReq = 545;
+	CmdItemType_GetRelicFilterPlanScRsp = 546;
+	CmdItemType_EquipmentQuickUpCsReq = 548;
+	CmdItemType_SellItemScRsp = 553;
+	CmdItemType_GetBagScRsp = 554;
+	CmdItemType_RechargeSuccNotify = 556;
+	CmdItemType_BatchRankUpEquipmentCsReq = 557;
+	CmdItemType_GetMarkItemListCsReq = 559;
+	CmdItemType_RelicFilterPlanClearNameScNotify = 560;
+	CmdItemType_RelicReforgeConfirmScRsp = 562;
+	CmdItemType_SetTurnFoodSwitchCsReq = 563;
+	CmdItemType_DiscardRelicCsReq = 564;
+	CmdItemType_ComposeSelectedRelicCsReq = 565;
+	CmdItemType_AddRelicFilterPlanScRsp = 567;
+	CmdItemType_ExpUpRelicCsReq = 569;
+	CmdItemType_LockEquipmentCsReq = 573;
+	CmdItemType_AddEquipmentScRsp = 575;
+	CmdItemType_DestroyItemCsReq = 577;
+	CmdItemType_RankUpEquipmentScRsp = 578;
+	CmdItemType_ComposeLimitNumCompleteScNotify = 579;
+	CmdItemType_AddRelicFilterPlanCsReq = 580;
+	CmdItemType_ExpUpEquipmentScRsp = 581;
+	CmdItemType_GetMarkItemListScRsp = 582;
+	CmdItemType_GetBagCsReq = 583;
+	CmdItemType_MarkRelicFilterPlanCsReq = 584;
+	CmdItemType_ExchangeHcoinScRsp = 585;
+	CmdItemType_DeleteRelicFilterPlanScRsp = 586;
+	CmdItemType_RelicReforgeCsReq = 587;
+	CmdItemType_LockRelicCsReq = 588;
+	CmdItemType_DeleteRelicFilterPlanCsReq = 590;
+	CmdItemType_UseItemScRsp = 591;
+	CmdItemType_ModifyRelicFilterPlanScRsp = 595;
+	CmdItemType_PromoteEquipmentCsReq = 596;
+	CmdItemType_RelicCraftCsReq = 599;
+	CmdItemType_LockRelicScRsp = 600;
+}
+
+message ComposeItemCsReq {
+	uint32 count = 9;
+	uint32 compose_id = 11;
+	ItemCostData compose_item_list = 12;
+	ItemCostData convert_item_list = 15;
+}
+
+message ComposeItemScRsp {
+	uint32 compose_id = 2;
+	uint32 count = 10;
+	uint32 retcode = 11;
+	ItemList return_item_list = 13;
+}
+
+message ComposeLimitNumCompleteScNotify {
+	repeated DPGAHDIJJDL MGLCGPMNHBB = 5;
+}
+
+message ComposeLimitNumUpdateScNotify {
+	DPGAHDIJJDL PLJFOAPFELP = 13;
+}
+
+message ComposeSelectedRelicCsReq {
+	ItemCostData wr_item_list = 1;
+	uint32 compose_id = 3;
+	ItemCostData compose_item_list = 6;
+	uint32 main_affix_id = 9;
+	repeated uint32 sub_affix_id_list = 10;
+	uint32 compose_relic_id = 11;
+	uint32 count = 13;
+}
+
+message ComposeSelectedRelicScRsp {
+	uint32 retcode = 4;
+	uint32 compose_id = 7;
+	ItemList return_item_list = 14;
+}
+
+message DPGAHDIJJDL {
+	uint32 DJLNCCEIDNO = 4;
+	uint32 KAHMGPGPOII = 15;
+}
+
+message DeleteRelicFilterPlanCsReq {
+	bool NPPKABBJCMI = 5;
+	repeated uint32 GGIGDJPFBBP = 11;
+}
+
+message DeleteRelicFilterPlanScRsp {
+	repeated uint32 GGIGDJPFBBP = 3;
+	bool NPPKABBJCMI = 8;
+	uint32 retcode = 14;
+}
+
+message DestroyItemCsReq {
+	uint32 item_id = 1;
+	uint32 item_count = 12;
+	uint32 ADOIMNBAGKC = 13;
+}
+
+message DestroyItemScRsp {
+	uint32 retcode = 1;
+	uint32 ADOIMNBAGKC = 3;
+}
+
+message DiscardRelicCsReq {
+	RelicDiscardType IFEEJKMACHF = 1;
+	uint64 KDGCPMGOPPJ = 12;
+	repeated uint32 relic_ids = 13;
+	bool DKPCAIGPHNO = 14;
+}
+
+message DiscardRelicScRsp {
+	uint32 retcode = 1;
+	RelicDiscardType IFEEJKMACHF = 4;
+	bool DKPCAIGPHNO = 6;
+	repeated uint32 relic_ids = 13;
+}
+
+message EquipmentQuickUpCsReq {
+	uint32 KLMIBJIKIBB = 1;
+	ItemCostData BOBOKJBAMNB = 3;
+	uint32 equipment_unique_id = 4;
+	ItemCostData IDGEEENIMMK = 11;
+	uint32 IGOOJKMPMDC = 14;
+}
+
+message EquipmentQuickUpScRsp {
+	repeated PileItem return_item_list = 4;
+	uint32 retcode = 15;
+}
+
+message ExchangeHcoinCsReq {
+	uint32 num = 12;
+}
+
+message ExchangeHcoinScRsp {
+	uint32 retcode = 4;
+	uint32 num = 9;
+}
+
+message ExpUpEquipmentCsReq {
+	uint32 equipment_unique_id = 2;
+	ItemCostData cost_data = 3;
+}
+
+message ExpUpEquipmentScRsp {
+	repeated PileItem return_item_list = 7;
+	uint32 retcode = 12;
+}
+
+message ExpUpRelicCsReq {
+	ItemCostData cost_data = 1;
+	uint32 relic_unique_id = 9;
+}
+
+message ExpUpRelicScRsp {
+	uint32 retcode = 3;
+	repeated PileItem return_item_list = 6;
+}
+
+message FBNBEIKABGE {
+	ItemCostData cost_data = 1;
+	uint32 equipment_unique_id = 15;
+}
+
+message GABKFNAJIDD {
+	int64 BNCALAMGIOC = 1;
+	string name = 2;
+	uint32 NPHAJEKCBKF = 6;
+	bool is_marked = 7;
+	uint32 GFEENEDNJGF = 10;
+	KJDLIPEIAAK icon = 11;
+	BNAILMNNGIF settings = 15;
+}
+
+message GeneralVirtualItemDataNotify {
+	bool EBLPGLFJNEL = 2;
+	repeated PileItem FCNBHBHMFMC = 12;
+}
+
+message GetBagCsReq {
+}
+
+message GetBagScRsp {
+	repeated Equipment equipment_list = 1;
+	repeated uint32 CAMEGAGKPGL = 2;
+	repeated OCKCHBDFGNL FFEGBHJLBNH = 3;
+	repeated PileItem PLBLHEKEIJO = 5;
+	repeated WaitDelResource wait_del_resource_list = 7;
+	repeated uint32 KOFNOJCMEFA = 8;
+	repeated BKGPJOBNMKJ NAJFMIIFIEC = 9;
+	repeated TurnFoodSwitch EOJBFLHBNMB = 10;
+	repeated Material material_list = 11;
+	repeated Relic relic_list = 12;
+	uint32 retcode = 14;
+	repeated BKGPJOBNMKJ CNDODPICGHI = 15;
+	repeated PileItem sync_fiat_items_list = 938;
+	repeated NLLLAAEJOBP update_platform_bound_gifts_list = 941;
+}
+
+message GetMarkItemListCsReq {
+}
+
+message GetMarkItemListScRsp {
+	uint32 retcode = 4;
+	repeated uint32 PEPKCBILIFO = 7;
+}
+
+message GetRecyleTimeCsReq {
+	repeated uint32 CNGBPNHLGHB = 15;
+}
+
+message GetRecyleTimeScRsp {
+	repeated BKGPJOBNMKJ NAJFMIIFIEC = 2;
+	uint32 retcode = 9;
+}
+
+message GetRelicFilterPlanCsReq {
+}
+
+message GetRelicFilterPlanScRsp {
+	uint32 retcode = 8;
+	repeated GABKFNAJIDD JCKBEEKBPHF = 15;
+}
+
+message KJDLIPEIAAK {
+	bool IFONLBKJGFE = 7;
+	uint32 OLELCDKLPDK = 13;
+}
+
+message LockEquipmentCsReq {
+	bool is_locked = 3;
+	repeated uint32 LDBMBPBGFHK = 7;
+}
+
+message LockEquipmentScRsp {
+	uint32 retcode = 2;
+}
+
+message LockRelicCsReq {
+	bool is_locked = 2;
+	bool NPPKABBJCMI = 7;
+	repeated uint32 relic_ids = 12;
+}
+
+message LockRelicScRsp {
+	uint32 retcode = 3;
+}
+
+message MarkItemCsReq {
+	uint32 item_id = 10;
+	bool ABDJKPCGDHO = 13;
+}
+
+message MarkItemScRsp {
+	uint32 retcode = 8;
+	uint32 item_id = 10;
+	bool ABDJKPCGDHO = 14;
+}
+
+message MarkRelicFilterPlanCsReq {
+	bool NPPKABBJCMI = 3;
+	bool BIJJOJNJHDO = 7;
+	repeated uint32 GGIGDJPFBBP = 11;
+}
+
+message MarkRelicFilterPlanScRsp {
+	bool NPPKABBJCMI = 3;
+	uint32 retcode = 6;
+	repeated uint32 GGIGDJPFBBP = 13;
+	bool BIJJOJNJHDO = 14;
+}
+
+message ModifyRelicFilterPlanCsReq {
+	oneof KKNBOACNCON {
+		KJDLIPEIAAK MJPKBIGCFOM = 9;
+		BNAILMNNGIF LJKNDCIOOCG = 10;
+		string name = 14;
+	}
+	uint32 NPHAJEKCBKF = 13;
+}
+
+message ModifyRelicFilterPlanScRsp {
+	uint32 retcode = 3;
+	uint32 NPHAJEKCBKF = 6;
+	oneof KKNBOACNCON {
+		KJDLIPEIAAK MJPKBIGCFOM = 10;
+		BNAILMNNGIF LJKNDCIOOCG = 11;
+		string name = 15;
+	}
+	int64 BNCALAMGIOC = 13;
+}
+
+message OCKCHBDFGNL {
+	uint64 time = 2;
+	repeated NKDNFDCFNCP HJMDNLBNPNA = 4;
+}
+
+message PromoteEquipmentCsReq {
+	ItemCostData FJDENCJEIAL = 1;
+	uint32 FANHGFFLIID = 5;
+}
+
+message PromoteEquipmentScRsp {
+	uint32 PLDKENJLKME = 4;
+}
+
+message RankUpEquipmentCsReq {
+	uint32 equipment_unique_id = 3;
+	ItemCostData cost_data = 14;
+}
+
+message RankUpEquipmentScRsp {
+	uint32 retcode = 12;
+}
+
+message RechargeSuccNotify {
+	string product_id = 5;
+	string price_tier = 6;
+	ItemList item_list = 8;
+	uint64 month_card_out_date_time = 12;
+}
+
+message RelicCraftCsReq {
+	uint32 GFCILBNJLEK = 2;
+	uint32 main_affix_i_d = 8;
+	repeated KVP BPNFCLMHFAO = 14;
+}
+
+message RelicCraftScRsp {
+	uint32 retcode = 4;
+	ItemList BDDFMKEDLKD = 6;
+	ItemList APHAJPPMPOA = 11;
+}
+
+enum RelicDiscardType {
+	RelicDiscardType_Single = 0;
+	RelicDiscardType_Batch = 1;
+	RelicDiscardType_Smart = 2;
+}
+
+message RelicFilterPlanClearNameScNotify {
+	uint32 NPHAJEKCBKF = 3;
+}
+
+message RelicReforgeConfirmCsReq {
+	bool is_cancel = 8;
+	uint32 relic_unique_id = 14;
+}
+
+message RelicReforgeConfirmScRsp {
+	uint32 PLDKENJLKME = 6;
+}
+
+message RelicReforgeCsReq {
+	uint32 relic_unique_id = 9;
+	uint32 reforge_block_sub_affix_id = 13;
+}
+
+message RelicReforgeScRsp {
+	uint32 PLDKENJLKME = 12;
+}
+
+message SellItemCsReq {
+	bool HNLKAEBKKBL = 1;
+	ItemCostData cost_data = 2;
+}
+
+message SellItemScRsp {
+	uint32 retcode = 2;
+	ItemList return_item_list = 5;
+}
+
+message SetTurnFoodSwitchCsReq {
+	TurnFoodSwitch KLAJGAKAFCP = 2;
+	bool is_open = 4;
+}
+
+message SetTurnFoodSwitchScRsp {
+	bool is_open = 2;
+	uint32 retcode = 4;
+	TurnFoodSwitch KLAJGAKAFCP = 14;
+}
+
+message SyncTurnFoodNotify {
+	repeated TurnFoodSwitch EOJBFLHBNMB = 2;
+	repeated uint32 CAMEGAGKPGL = 13;
+}
+
+enum TurnFoodSwitch {
+	TurnFoodSwitch_None = 0;
+	TurnFoodSwitch_Attack = 1;
+	TurnFoodSwitch_Define = 2;
+}
+
+message UseItemCsReq {
+	uint32 use_item_id = 1;
+	uint32 use_item_count = 2;
+	bool DGEKFCHEAPO = 4;
+	uint32 base_avatar_id = 7;
+	AvatarType KANPPCMBJHG = 8;
+	uint32 optional_reward_id = 15;
+}
+
+message UseItemScRsp {
+	uint32 use_item_count = 4;
+	uint64 month_card_out_date_time = 5;
+	ItemList return_data = 8;
+	uint32 use_item_id = 9;
+	uint32 retcode = 10;
+	uint32 formula_id = 11;
+}

@@ -131,7 +131,7 @@ More details: [Native Linux Setup](docs/getting-started/native-linux.md).
 dotnet build Program/Program.csproj -c Release
 ```
 
-The build generates the active 4.7 protocol C# from checked-in schemas using pinned
+The build generates the active 4.8 protocol C# from checked-in schemas using pinned
 `Google.Protobuf.Tools` 3.33.1. Generated files live under `Proto/obj/` and are not
 tracked. Old protocol references are stored in lossless [archives](Proto/Archives/README.md);
 extract only when doing version migration. See the [protocol guide](docs/development/protobuf.md)

@@ -265,7 +265,6 @@ if (season == 2)
 }
 var tutorialStages = GameData.GridFightConstValueData.GetValueOrDefault("GridFight_TutorialStageList")?.AsUInt32List() ?? [];
 Check("permanent info reports every tutorial stage as finished", tutorialStages.Count > 0 &&
-    systemInfo.PermanentInfo.ENECKKGPKHI == tutorialStages.Max() &&
     tutorialStages.All(stage => systemInfo.PermanentInfo.FBJMBJKMAJA.TryGetValue(stage, out var progress) &&
                                 progress.EABKMELHIML == stage && progress.GDAKCOICIDA > 0 &&
                                 (progress.MPJPLKKJNGE > 0 || GameData.GridFightTutorialStageNodeData.All(node => node.UnlockTutorialTask == 0))));

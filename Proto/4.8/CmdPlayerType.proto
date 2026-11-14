@@ -1,0 +1,804 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AFDOMLOABJB {
+	uint32 PLDKENJLKME = 3;
+}
+
+enum ALGMICKCABI {
+	ALGMICKCABI_FLANKPMJBMH = 0;
+	ALGMICKCABI_LMHJFBBDLNH = 1;
+}
+
+message AceAntiCheaterCsReq {
+	string GIFOENLDCHO = 10;
+	uint32 NMELIDCDKAK = 11;
+}
+
+message AceAntiCheaterScRsp {
+	uint32 retcode = 15;
+}
+
+message AnnounceData {
+	uint32 config_id = 1;
+	bool has_recommand = 3;
+	int64 end_time = 5;
+	uint32 banner_frequency = 6;
+	int64 begin_time = 8;
+	bool BBEBEKFGMAD = 9;
+	string banner_text = 13;
+	string emergency_text = 15;
+}
+
+message AntiAddictScNotify {
+	string level = 2;
+	uint32 msg_type = 3;
+	string msg = 6;
+}
+
+message BlackInfo {
+	int64 begin_time = 1;
+	int64 end_time = 2;
+	uint32 limit_level = 3;
+	uint32 ban_type = 4;
+}
+
+message CMCJFJEBBCO {
+	string LEMBPAGGMEM = 1;
+	int32 BLNDDBDIDNJ = 2;
+	int32 HDMMKJIKCOJ = 3;
+	int32 LMMHAGLDACM = 4;
+	int32 MBPELIOJBDG = 5;
+}
+
+message ClientDownloadData {
+	uint32 version = 1;
+	int64 time = 2;
+	bytes data = 3;
+	uint32 channel_id = 4;
+}
+
+message ClientDownloadDataScNotify {
+	ClientDownloadData download_data = 1;
+}
+
+message ClientObjDownloadData {
+	bytes sc_info = 1;
+	ClientDownloadData client_obj_download_data = 2;
+	repeated ClientDownloadData dyn_code = 3;
+}
+
+message ClientObjDownloadDataScNotify {
+	ClientObjDownloadData data = 6;
+}
+
+message ClientObjUploadCsReq {
+	ALGMICKCABI content_type = 3;
+	uint32 EOHFCODKKMD = 8;
+	bytes sc_data = 10;
+}
+
+message ClientObjUploadScRsp {
+	uint32 retcode = 5;
+	ClientObjDownloadData data = 14;
+}
+
+enum CmdPlayerType {
+	CmdPlayerType_NLCDGIPGFDJ = 0;
+	CmdPlayerType_SetPlayerInfoCsReq = 1;
+	CmdPlayerType_GetAuthkeyCsReq = 4;
+	CmdPlayerType_LLGMMAPJDLI = 5;
+	CmdPlayerType_UpdateFeatureSwitchScNotify = 6;
+	CmdPlayerType_EnterStageScRsp = 8;
+	CmdPlayerType_PlayerForceSyncGameStateFinishCsReq = 10;
+	CmdPlayerType_ReserveStaminaExchangeScRsp = 11;
+	CmdPlayerType_ExchangeStaminaCsReq = 12;
+	CmdPlayerType_GetBasicInfoScRsp = 14;
+	CmdPlayerType_PlayerHeartBeatScRsp = 18;
+	CmdPlayerType_GetLevelRewardScRsp = 19;
+	CmdPlayerType_SetRedPointStatusScNotify = 20;
+	CmdPlayerType_ServerAnnounceNotify = 21;
+	CmdPlayerType_AntiAddictScNotify = 22;
+	CmdPlayerType_ABAKFMHMHPD = 23;
+	CmdPlayerType_PlayerLoginFinishCsReq = 25;
+	CmdPlayerType_PlayerSqueezedScNotify = 26;
+	CmdPlayerType_GetVideoVersionKeyCsReq = 29;
+	CmdPlayerType_AceAntiCheaterCsReq = 32;
+	CmdPlayerType_PlayerGetTokenScRsp = 33;
+	CmdPlayerType_SetLanguageCsReq = 36;
+	CmdPlayerType_SetGenderCsReq = 37;
+	CmdPlayerType_QueryProductInfoCsReq = 38;
+	CmdPlayerType_ClientObjUploadScRsp = 39;
+	CmdPlayerType_ONNNLNCMMGJ = 42;
+	CmdPlayerType_SetPlayerInfoScRsp = 44;
+	CmdPlayerType_GetLevelRewardTakenListCsReq = 45;
+	CmdPlayerType_DailyRefreshNotify = 46;
+	CmdPlayerType_PlayerLoginFinishScRsp = 48;
+	CmdPlayerType_SetNicknameCsReq = 53;
+	CmdPlayerType_PlayerLoginScRsp = 54;
+	CmdPlayerType_ClientObjUploadCsReq = 55;
+	CmdPlayerType_SetNicknameScRsp = 56;
+	CmdPlayerType_GetSecretKeyInfoScRsp = 57;
+	CmdPlayerType_GateServerScNotify = 60;
+	CmdPlayerType_GetSecretKeyInfoCsReq = 62;
+	CmdPlayerType_SetGenderScRsp = 63;
+	CmdPlayerType_GetLevelRewardCsReq = 65;
+	CmdPlayerType_StaminaInfoScNotify = 66;
+	CmdPlayerType_SetGameplayBirthdayScRsp = 67;
+	CmdPlayerType_GetBasicInfoCsReq = 68;
+	CmdPlayerType_ExchangeStaminaScRsp = 69;
+	CmdPlayerType_UpdatePlayWithPsnOnlySettingCsReq = 70;
+	CmdPlayerType_ReserveStaminaExchangeCsReq = 71;
+	CmdPlayerType_UpdatePlayerSettingScRsp = 72;
+	CmdPlayerType_PlayerGetTokenCsReq = 73;
+	CmdPlayerType_PlayerForceSyncGameStateFinishScRsp = 76;
+	CmdPlayerType_EnterStageCsReq = 78;
+	CmdPlayerType_SetLanguageScRsp = 79;
+	CmdPlayerType_SetGameplayBirthdayCsReq = 80;
+	CmdPlayerType_PlayerLoginCsReq = 83;
+	CmdPlayerType_PlayerHeartBeatCsReq = 84;
+	CmdPlayerType_GetLevelRewardTakenListScRsp = 85;
+	CmdPlayerType_RetcodeNotify = 86;
+	CmdPlayerType_FeatureSwitchClosedScNotify = 87;
+	CmdPlayerType_GetAuthkeyScRsp = 88;
+	CmdPlayerType_MonthCardRewardNotify = 90;
+	CmdPlayerType_GmTalkScNotify = 91;
+	CmdPlayerType_UpdatePlayerSettingCsReq = 92;
+	CmdPlayerType_MCFLGBJENJD = 93;
+	CmdPlayerType_ClientObjDownloadDataScNotify = 94;
+	CmdPlayerType_AceAntiCheaterScRsp = 95;
+	CmdPlayerType_PlayerLogoutCsReq = 96;
+	CmdPlayerType_ClientDownloadDataScNotify = 97;
+	CmdPlayerType_QueryProductInfoScRsp = 98;
+	CmdPlayerType_GetVideoVersionKeyScRsp = 99;
+	CmdPlayerType_RegionStopScNotify = 100;
+}
+
+message DailyRefreshNotify {
+	uint32 MDIIJKBHBBI = 12;
+}
+
+message EAFHBODFEKM {
+	oneof GBGKEJPFEIL {
+		GLNJKGOGKKL DLDGBIBHDKM = 1152;
+		GLNJKGOGKKL BDHBFFEOPFG = 1671;
+		bool CNMAFMEKADJ = 1883;
+	}
+}
+
+message EMFKFGCBJBP {
+}
+
+message EnterStageCsReq {
+	string stop_desc = 5;
+}
+
+message EnterStageScRsp {
+	string CCPKFOKOLJB = 2;
+	uint32 retcode = 13;
+}
+
+message ExchangeStaminaCsReq {
+}
+
+message ExchangeStaminaScRsp {
+	repeated ItemCost item_cost_list = 4;
+	uint32 retcode = 5;
+	uint32 stamina_add = 10;
+	uint32 exchange_times = 11;
+	int64 last_recover_time = 14;
+}
+
+message FeatureSwitchClosedScNotify {
+	FeatureSwitchType FMGLEBCIBHG = 12;
+}
+
+enum FeatureSwitchType {
+	FeatureSwitchType_FeatureSwitchNone = 0;
+	FeatureSwitchType_FeatureSwitchShop = 1;
+	FeatureSwitchType_FeatureSwitchLineupName = 2;
+	FeatureSwitchType_FeatureSwitchRechargeShop = 3;
+	FeatureSwitchType_FeatureSwitchNickname = 4;
+	FeatureSwitchType_FeatureSwitchSignature = 5;
+	FeatureSwitchType_FeatureSwitchBattlepass = 6;
+	FeatureSwitchType_FeatureSwitchPunkLord = 7;
+	FeatureSwitchType_FeatureSwitchMonthcardDaily = 8;
+	FeatureSwitchType_FeatureSwitchPictureShare = 9;
+	FeatureSwitchType_FeatureSwitchRogue = 10;
+	FeatureSwitchType_FeatureSwitchChallenge = 11;
+	FeatureSwitchType_FeatureSwitchCocoon = 12;
+	FeatureSwitchType_FeatureSwitchRaid = 13;
+	FeatureSwitchType_FeatureSwitchMazePlaneEvent = 14;
+	FeatureSwitchType_FeatureSwitchActivityPanel = 15;
+	FeatureSwitchType_FeatureSwitchMailbox = 16;
+	FeatureSwitchType_FeatureSwitchQuest = 17;
+	FeatureSwitchType_FeatureSwitchGacha = 18;
+	FeatureSwitchType_FeatureSwitchChat = 19;
+	FeatureSwitchType_FeatureSwitchModifyFriendAlias = 20;
+	FeatureSwitchType_FeatureSwitchUseItem = 21;
+	FeatureSwitchType_FeatureSwitchActivitySchedule = 22;
+	FeatureSwitchType_FeatureSwitchFarmElement = 23;
+	FeatureSwitchType_FeatureSwitchAchievementLevel = 24;
+	FeatureSwitchType_FeatureSwitchDailyActiveLevel = 25;
+	FeatureSwitchType_FeatureSwitchPlayerReturn = 26;
+	FeatureSwitchType_FeatureSwitchFirstSetNickname = 27;
+	FeatureSwitchType_FeatureSwitchMainMissionReward = 28;
+	FeatureSwitchType_FeatureSwitchSubMissionReward = 29;
+	FeatureSwitchType_FeatureSwitchPamMission = 30;
+	FeatureSwitchType_FeatureSwitchDestroyItem = 32;
+	FeatureSwitchType_FeatureSwitchConsumeItemTurn = 33;
+	FeatureSwitchType_FeatureSwitchRogueModifier = 34;
+	FeatureSwitchType_FeatureSwitchChessRogue = 35;
+	FeatureSwitchType_FeatureSwitchChessRogueBoard = 36;
+	FeatureSwitchType_FeatureSwitchRollShop = 37;
+	FeatureSwitchType_FeatureSwitchH5Return = 38;
+	FeatureSwitchType_FeatureSwitchOffering = 39;
+	FeatureSwitchType_FeatureSwitchServerRedPoint = 40;
+	FeatureSwitchType_FeatureSwitchMonopolyOptionRatio = 41;
+	FeatureSwitchType_FeatureSwitchMonopolyGetRaffleTicket = 42;
+	FeatureSwitchType_FeatureSwitchMonopolyTakeRaffleReward = 43;
+	FeatureSwitchType_FeatureSwitchChallengeRecommendLineup = 44;
+	FeatureSwitchType_FeatureSwitchPsnMemberShipCheck = 45;
+	FeatureSwitchType_FeatureSwitchPlayerBoardDevelopment = 46;
+	FeatureSwitchType_FeatureSwitchPvp = 47;
+	FeatureSwitchType_FeatureSwitchRogueMode = 48;
+	FeatureSwitchType_FeatureSwitchRogueTournUgc = 49;
+	FeatureSwitchType_FeatureSwitchRelicFilterPlanName = 50;
+	FeatureSwitchType_FeatureSwitchMazeItemUseBuffDrop = 51;
+	FeatureSwitchType_FeatureSwitchRedDot = 52;
+	FeatureSwitchType_FeatureSwitchGameStateService = 53;
+	FeatureSwitchType_FeatureSwitchBenefitIndex = 54;
+	FeatureSwitchType_FeatureSwitchRogueTournBuildRef = 55;
+	FeatureSwitchType_FeatureSwitchPreAvatarSetGrowthTarget = 56;
+	FeatureSwitchType_FeatureSwitchImportRelicFilterPlan = 58;
+	FeatureSwitchType_FeatureSwitchGachaDecideItem = 59;
+	FeatureSwitchType_FeatureSwitchItemSync = 60;
+	FeatureSwitchType_FeatureSwitchRechargeBenefit = 61;
+	FeatureSwitchType_FeatureSwitchRechargeGift = 62;
+	FeatureSwitchType_FeatureSwitchRogueTournBuildRefShareCode = 63;
+	FeatureSwitchType_FeatureSwitchGachaAvatarToast = 64;
+	FeatureSwitchType_FeatureSwitchRogueTournBuildRefShareCodeRename = 65;
+	FeatureSwitchType_FeatureSwitchRelicSmartDiscard = 66;
+	FeatureSwitchType_FeatureSwitchPlanetfesSocial = 67;
+	FeatureSwitchType_FeatureSwitchRelicReforge = 68;
+	FeatureSwitchType_FeatureSwitchRelicCompose = 69;
+	FeatureSwitchType_FeatureSwitchRelicDecompose = 70;
+	FeatureSwitchType_FeatureSwitchRogueTournCocoon = 71;
+	FeatureSwitchType_FeatureSwitchItemCompose = 72;
+	FeatureSwitchType_FeatureSwitchGrowMaterialAutoComplete = 73;
+	FeatureSwitchType_FeatureSwitchSkipPerformance = 74;
+	FeatureSwitchType_FeatureSwitchFate = 75;
+	FeatureSwitchType_FeatureSwitchFateAvatarHandbook = 76;
+	FeatureSwitchType_FeatureSwitchElfRestaurant = 77;
+	FeatureSwitchType_FeatureSwitchBattleTimeoutLegal = 78;
+	FeatureSwitchType_FeatureSwitchHipplen = 79;
+	FeatureSwitchType_FeatureSwitchHipplenEffect = 80;
+	FeatureSwitchType_FeatureSwitchReplayPerformance = 81;
+	FeatureSwitchType_FeatureSwitchGridFightRef = 82;
+	FeatureSwitchType_FeatureSwitchRelicBox = 83;
+	FeatureSwitchType_FeatureSwitchGridFightStartGamePlay = 84;
+	FeatureSwitchType_FeatureSwitchGridFightBanAugment = 85;
+	FeatureSwitchType_FeatureSwitchGridFightBanPortalBuff = 86;
+	FeatureSwitchType_FeatureSwitchBanGotoPage = 87;
+	FeatureSwitchType_FeatureSwitchReportSensitiveWordCheck = 88;
+	FeatureSwitchType_FeatureSwitchAvatarSkinId = 89;
+	FeatureSwitchType_FeatureSwitchAiPam = 90;
+	FeatureSwitchType_FeatureSwitchBattleCheckPass = 91;
+	FeatureSwitchType_FeatureSwitchIdleLiveCustomTitle = 92;
+	FeatureSwitchType_FeatureSwitchGridFightFormationName = 93;
+	FeatureSwitchType_FeatureSwitchSocialPlay = 94;
+	FeatureSwitchType_FeatureSwitchRelicPresetPlanName = 95;
+	FeatureSwitchType_FeatureSwitchOutfitPreview = 96;
+	FeatureSwitchType_FeatureSwitchRogueProcessorQueueCutting = 97;
+	FeatureSwitchType_FeatureSwitchChooseDelivery = 98;
+	FeatureSwitchType_FeatureSwitchUnlockContentPackage = 99;
+	EFJLHDDBCKK = 100;
+	MIKHGHEBBHJ = 101;
+	FeatureSwitchType_FeatureSwitchAcceleratePerformance = 102;
+	BLOHGFCFEEL_NFNEBINBIBO = 104;
+	BLOHGFCFEEL_PGOLFCJDGII = 105;
+	BLOHGFCFEEL_CIHMEJDKEHK = 106;
+	BLOHGFCFEEL_MGENIBAMDPC = 107;
+	BLOHGFCFEEL_OLOKBGLMBNF = 108;
+	GLKNKEIKKEA = 109;
+	BLOHGFCFEEL_MNCHBPDNAFC = 110;
+}
+
+enum GGHJCJPPEFE {
+	GGHJCJPPEFE_FLLKANIACDA = 0;
+	GGHJCJPPEFE_EODFDECMNNP = 1;
+	GGHJCJPPEFE_BOECOEHDKMA = 2;
+	GGHJCJPPEFE_EBFFCLNNOCL = 3;
+	GGHJCJPPEFE_FOGKJPIPDII = 4;
+	GGHJCJPPEFE_MDKPBPIHFDE = 5;
+}
+
+message GLNJKGOGKKL {
+	repeated string ODAHKGONNHJ = 7;
+}
+
+message GateServerScNotify {
+	string OKLNPLEDKDE = 5;
+}
+
+enum Gender {
+	Gender_None = 0;
+	Gender_Man = 1;
+	Gender_Woman = 2;
+}
+
+message GetAuthkeyCsReq {
+	uint32 sign_type = 1;
+	uint32 authkey_ver = 2;
+	string auth_appid = 15;
+}
+
+message GetAuthkeyScRsp {
+	uint32 sign_type = 2;
+	uint32 retcode = 7;
+	uint32 authkey_ver = 9;
+	string auth_appid = 10;
+	string authkey = 11;
+}
+
+message GetBasicInfoCsReq {
+}
+
+message GetBasicInfoScRsp {
+	uint32 cur_day = 1;
+	uint32 gameplay_birthday = 2;
+	int64 next_recover_time = 6;
+	int64 last_set_nickname_time = 7;
+	uint32 gender = 8;
+	uint32 exchange_times = 9;
+	uint32 week_cocoon_finished_count = 10;
+	uint32 retcode = 12;
+	PlayerSettingInfo player_setting_info = 14;
+	bool is_gender_set = 15;
+}
+
+message GetLevelRewardCsReq {
+	uint32 level = 1;
+	uint32 interacted_prop_entity_id = 9;
+}
+
+message GetLevelRewardScRsp {
+	ItemList reward = 9;
+	uint32 level = 11;
+	uint32 retcode = 15;
+}
+
+message GetLevelRewardTakenListCsReq {
+}
+
+message GetLevelRewardTakenListScRsp {
+	repeated uint32 level_reward_taken_list = 1;
+	uint32 retcode = 12;
+}
+
+message GetSecretKeyInfoCsReq {
+	bytes CILHEPFKKNI = 1;
+}
+
+message GetSecretKeyInfoScRsp {
+	repeated SecretKeyInfo secret_info = 5;
+	bytes secret_rsp = 12;
+	uint32 retcode = 13;
+}
+
+message GetVideoVersionKeyCsReq {
+}
+
+message GetVideoVersionKeyScRsp {
+	repeated VideoKeyInfo activity_video_key_info_list = 2;
+	repeated VideoKeyInfo video_key_info_list = 5;
+	uint32 retcode = 14;
+}
+
+message GmTalkScNotify {
+	string DBKOHLFBPNI = 14;
+}
+
+message HBJLNKAFNAD {
+	repeated uint32 switch_list = 1;
+}
+
+message HDOKNMGIDMB {
+	FeatureSwitchType type = 1;
+	repeated HBJLNKAFNAD BGNKLMIMBPI = 2;
+	bool KPCPABKPAKL = 3;
+}
+
+message IBCDDGKNICG {
+	GLNJKGOGKKL black_list = 9;
+	bool CNMAFMEKADJ = 11;
+}
+
+message IDAIHHGGPIJ {
+	uint32 retcode = 7;
+}
+
+message LFCHHMGGMPC {
+	uint32 EHNJDIDABHD = 4;
+	uint32 content_id = 6;
+	uint32 BMFJFFBPADD = 7;
+	uint32 show_type = 12;
+}
+
+message LFKKOMBKJIP {
+	string tag = 1;
+	string value = 2;
+}
+
+message LJFJOGEEGPJ {
+	bool MBIAIMKHNDB = 11;
+}
+
+enum LanguageType {
+	LANGUAGE_NONE = 0;
+	LANGUAGE_SC = 1;
+	LANGUAGE_TC = 2;
+	LANGUAGE_EN = 3;
+	LANGUAGE_KR = 4;
+	LANGUAGE_JP = 5;
+	LANGUAGE_FR = 6;
+	LANGUAGE_DE = 7;
+	LANGUAGE_ES = 8;
+	LANGUAGE_PT = 9;
+	LANGUAGE_RU = 10;
+	LANGUAGE_TH = 11;
+	LANGUAGE_VI = 12;
+	LANGUAGE_ID = 13;
+}
+
+message MEPHKJFAJPP {
+	string NLONGNHNECG = 1;
+	string BHNHGPCGKMA = 2;
+	string CKACNADCDFP = 3;
+	string EIDOKHKEOPP = 4;
+	string HELMPDCKLEO = 5;
+	string DFBLOBNLHCC = 6;
+	string GLEEJNEJACP = 7;
+}
+
+message MonthCardRewardNotify {
+	ItemList reward = 8;
+}
+
+message PNOLLIAKGDB {
+	uint32 JHJKCJKDHIB = 7;
+	bool BELKCBAGMFC = 9;
+	bool MLPGDPGIFCJ = 15;
+}
+
+message PlayerForceSyncGameStateFinishCsReq {
+}
+
+message PlayerForceSyncGameStateFinishScRsp {
+	uint32 retcode = 5;
+	repeated string PKLFOJBALKK = 6;
+	repeated string HBBIHGLHKDM = 8;
+	repeated string EHMGEMMNPLA = 15;
+}
+
+message PlayerGetTokenCsReq {
+	uint32 channel_id = 1;
+	uint32 account_ip = 2;
+	string EKLOGGLELCG = 4;
+	string account_uid = 5;
+	uint32 sign_type = 7;
+	uint32 account_ip_port = 8;
+	uint32 platform = 10;
+	string token = 12;
+	uint32 uid = 15;
+}
+
+message PlayerGetTokenScRsp {
+	uint32 uid = 1;
+	string stop_desc = 2;
+	uint32 retcode = 5;
+	BlackInfo black_info = 8;
+	string authkey = 10;
+	uint64 secret_key_seed = 14;
+}
+
+message PlayerHeartBeatCsReq {
+	uint64 client_time_ms = 3;
+	uint32 EOHFCODKKMD = 8;
+	LFKKOMBKJIP sc_data = 10;
+}
+
+message PlayerHeartBeatScRsp {
+	uint32 retcode = 3;
+	uint64 server_time_ms = 6;
+	uint64 client_time_ms = 9;
+	ClientDownloadData download_data = 14;
+}
+
+message PlayerLoginCsReq {
+	string JHOKMNLHBMA = 1;
+	uint64 login_random = 2;
+	string LFLCDNGALME = 3;
+	string BJCIBNBGBMP = 4;
+	uint32 client_res_version = 5;
+	string BAOGDOFPPLN = 6;
+	string IHMJHLLCLDE = 7;
+	PlatformType platform = 8;
+	string NIBMFCFBHEP = 9;
+	string BDGDPMALNIF = 10;
+	string GDMJPJCKBBE = 11;
+	uint32 JMMHHFLEEPG = 12;
+	LanguageType HOFEMNAIIHB = 13;
+	string signature = 14;
+	string LDCIBPHDAKI = 15;
+	string IJKOMIKFKEK = 302;
+	string JKGAKDALFPE = 314;
+	MEPHKJFAJPP HNPMEDIEJFC = 510;
+	string DJONELMIFEE = 881;
+	string LPBHJODECNE = 1212;
+	CMCJFJEBBCO EONDGECNAIH = 1382;
+	bool ACJKHHBJKHE = 1421;
+	uint32 KPFGILOFIDI = 1497;
+	bool MENBLJOGJMH = 1571;
+	string MGNLIGIKKPP = 1900;
+	uint32 FKFFBEMEIEP = 1904;
+	string IDIFIEPMLKA = 1978;
+	uint32 channel_id = 2000;
+}
+
+message PlayerLoginFinishCsReq {
+}
+
+message PlayerLoginFinishScRsp {
+	uint32 retcode = 10;
+}
+
+message PlayerLoginScRsp {
+	int32 cur_timezone = 1;
+	bool KDNPPNHLNOA = 2;
+	bool KCDAHNNCKPP = 5;
+	uint32 stamina = 6;
+	string GIOAPOKHAOF = 8;
+	PlayerBasicInfo basic_info = 9;
+	string DKEPKHPOLHC = 12;
+	uint64 login_random = 13;
+	uint64 server_timestamp_ms = 14;
+	uint32 retcode = 15;
+}
+
+message PlayerLogoutCsReq {
+}
+
+message PlayerSettingInfo {
+	bool FDHEPCKLCAM = 1;
+	bool AACOEHCFNDB = 2;
+	bool DGCNHMIHFJB = 3;
+	bool MAKOLELFLFH = 5;
+	bool NJAKOMDMFJD = 6;
+	bool IOJEAOCOBBF = 7;
+	bool DCJECFMMIBC = 8;
+	bool PFBHGAHAFMD = 9;
+	bool GNFDDPEMMFN = 10;
+	bool BOMGNMDOGLM = 11;
+	PNOLLIAKGDB OJPAODIHAJE = 13;
+	bool LNGHIJGFDKP = 517;
+	bool BBEEBBIDJHE = 652;
+	repeated KVP OKAHMFOINPM = 1053;
+	LJFJOGEEGPJ ANKIDJJINEI = 1144;
+	bool HGPFFGKNPFB = 1305;
+	JPGACKPLGCD CMFCOOEEECB = 1405;
+	bool GOKFNGFFMOB = 1805;
+}
+
+message PlayerSqueezedScNotify {
+	BlackInfo black_info = 2;
+	GGHJCJPPEFE kick_type = 14;
+}
+
+message Product {
+	uint32 max_buy_times = 2;
+	uint32 gift_version = 3;
+	string price_tier = 4;
+	ProductGiftType gift_type = 5;
+	int64 begin_time = 7;
+	string product_id = 8;
+	int64 end_time = 9;
+	uint32 buy_times = 10;
+	bool double_reward = 12;
+}
+
+enum ProductGiftType {
+	ProductGiftType_ProductGiftNone = 0;
+	ProductGiftType_ProductGiftCoin = 1;
+	ProductGiftType_ProductGiftMonthCard = 2;
+	ProductGiftType_ProductGiftBp68 = 3;
+	ProductGiftType_ProductGiftBp128 = 4;
+	ProductGiftType_ProductGiftBp68Upgrade128 = 5;
+	ProductGiftType_ProductGiftPointCard = 6;
+	ProductGiftType_ProductGiftPsPreOrder1 = 7;
+	ProductGiftType_ProductGiftPsPreOrder2 = 8;
+	ProductGiftType_ProductGiftGooglePoints100 = 9;
+	ProductGiftType_ProductGiftGooglePoints150 = 10;
+	ProductGiftType_ProductGiftPsPointCard030 = 11;
+	ProductGiftType_ProductGiftPsPointCard050 = 12;
+	ProductGiftType_ProductGiftPsPointCard100 = 13;
+	ProductGiftType_ProductGiftPsnPlus = 14;
+	ProductGiftType_ProductGiftSingle6 = 15;
+	ProductGiftType_ProductGiftDailyLogin30 = 16;
+	ProductGiftType_ProductGiftAppleGiftCard = 17;
+	ProductGiftType_ProductGiftFtcUpGachaTicket1 = 18;
+	ProductGiftType_ProductGiftFtcUpGachaTicket10 = 19;
+	ProductGiftType_ProductGiftFtcNormalGachaTicket1 = 20;
+	ProductGiftType_ProductGiftFtcNormalGachaTicket10 = 21;
+	ProductGiftType_ProductGiftTicket10 = 22;
+	ProductGiftType_ProductGiftPlayerHeadDecor = 23;
+	ProductGiftType_ProductGiftReturnSign = 24;
+	ProductGiftType_ProductGiftExtraValueTicket1 = 25;
+	IMBPFFMCJDF_LDDPELNENIC = 26;
+	IMBPFFMCJDF_JMPLJGHMGOD = 101;
+	IMBPFFMCJDF_DIFOELGDPNL = 102;
+	IKHBEILLMAH = 103;
+}
+
+message QueryProductInfoCsReq {
+}
+
+message QueryProductInfoScRsp {
+	uint32 BEBFNDIGKFK = 6;
+	repeated Product product_list = 8;
+	uint64 month_card_out_date_time = 12;
+	uint32 BFFHEKCGLMA = 13;
+	uint32 retcode = 14;
+}
+
+message RegionStopScNotify {
+}
+
+message ReserveStaminaExchangeCsReq {
+	uint32 num = 13;
+}
+
+message ReserveStaminaExchangeScRsp {
+	uint32 num = 1;
+	uint32 retcode = 12;
+}
+
+message RetcodeNotify {
+	uint32 retcode = 5;
+	repeated uint32 FLFBHONGDAD = 14;
+}
+
+message SecretKeyInfo {
+	SecretKeyType type = 1;
+	string secret_key = 10;
+}
+
+enum SecretKeyType {
+	SECRET_KEY_NONE = 0;
+	SECRET_KEY_SERVER_CHECK = 1;
+	SECRET_KEY_VIDEO = 2;
+	SECRET_KEY_BATTLE_TIME = 3;
+}
+
+message ServerAnnounceNotify {
+	repeated AnnounceData announce_data_list = 12;
+}
+
+message SetGameplayBirthdayCsReq {
+	uint32 birthday = 4;
+}
+
+message SetGameplayBirthdayScRsp {
+	uint32 birthday = 1;
+	uint32 retcode = 10;
+}
+
+message SetGenderCsReq {
+	Gender gender = 6;
+}
+
+message SetGenderScRsp {
+	uint32 retcode = 8;
+	MultiPathAvatarType cur_avatar_path = 15;
+}
+
+message SetLanguageCsReq {
+	LanguageType HOFEMNAIIHB = 7;
+}
+
+message SetLanguageScRsp {
+	uint32 retcode = 8;
+	LanguageType HOFEMNAIIHB = 11;
+}
+
+message SetNicknameCsReq {
+	string nickname = 4;
+	bool is_modify = 11;
+}
+
+message SetNicknameScRsp {
+	int64 set_time = 6;
+	uint32 retcode = 9;
+	bool is_modify = 14;
+}
+
+message SetPlayerInfoCsReq {
+	string nickname = 1;
+	Gender gender = 8;
+	bool is_modify = 14;
+}
+
+message SetPlayerInfoScRsp {
+	bool is_modify = 2;
+	uint32 retcode = 6;
+	MultiPathAvatarType cur_avatar_path = 12;
+	int64 set_time = 15;
+}
+
+message SetRedPointStatusScNotify {
+	uint32 BMFJFFBPADD = 3;
+	uint32 uid = 9;
+	repeated LFCHHMGGMPC BKAKIJOACPO = 10;
+	uint32 show_type = 12;
+	uint32 content_id = 14;
+}
+
+message StaminaInfoScNotify {
+	int64 EHJCPBJNEOO = 8;
+	uint32 stamina = 10;
+	uint32 reserve_stamina = 11;
+	int64 next_recover_time = 15;
+}
+
+message UpdateFeatureSwitchScNotify {
+	repeated HDOKNMGIDMB switch_info_list = 8;
+}
+
+message UpdatePlayWithPsnOnlySettingCsReq {
+	oneof JNLIJAABGFF {
+		IBCDDGKNICG ICKNLCPNHCD = 1102;
+		EAFHBODFEKM LOMPGELJCLM = 1768;
+	}
+}
+
+message UpdatePlayerSetting {
+	oneof BKAGLMFNKKA {
+		bool NJAKOMDMFJD = 1;
+		bool MAKOLELFLFH = 2;
+		PNOLLIAKGDB OJPAODIHAJE = 3;
+		bool AACOEHCFNDB = 4;
+		bool IOJEAOCOBBF = 8;
+		bool FDHEPCKLCAM = 9;
+		bool DCJECFMMIBC = 10;
+		bool PFBHGAHAFMD = 12;
+		bool GNFDDPEMMFN = 13;
+		bool DGCNHMIHFJB = 14;
+		bool LNGHIJGFDKP = 135;
+		JPGACKPLGCD CMFCOOEEECB = 382;
+		bool HGPFFGKNPFB = 463;
+		bool BBEEBBIDJHE = 649;
+		KVP EGLOIFDIDPK = 900;
+		LJFJOGEEGPJ ANKIDJJINEI = 981;
+		bool BOMGNMDOGLM = 1600;
+		bool GOKFNGFFMOB = 1720;
+	}
+}
+
+message UpdatePlayerSettingCsReq {
+	UpdatePlayerSetting player_setting = 1;
+}
+
+message UpdatePlayerSettingScRsp {
+	uint32 retcode = 8;
+	UpdatePlayerSetting player_setting = 10;
+}
+
+message VideoKeyInfo {
+	uint64 IBDIMHPOPOJ = 9;
+	uint64 HHCAKADKHAN = 10;
+	uint64 BOGECOHIINH = 12;
+	uint32 id = 15;
+}

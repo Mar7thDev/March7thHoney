@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AHBLKPAJDPI {
+	uint32 HEMOHFJJMJG = 4;
+	uint32 LBMGKCMHKLN = 5;
+	uint32 CHILKFNAINA = 10;
+}
+
+message BHJEBMOOJED {
+	bool NEBMGALCMFL = 4;
+	ItemList KJPFENPNFBP = 6;
+}
+
+message BlindBoxGetDataCsReq {
+}
+
+message BlindBoxGetDataScRsp {
+	repeated MFCCCIMGMFL CEGOIBGJDBO = 10;
+	uint32 retcode = 13;
+	uint32 CANDEKPIMCC = 15;
+}
+
+message BlindBoxOpenBoxCsReq {
+	uint32 ANMILKKMMIM = 1;
+	uint32 NMMCOAFMDKF = 3;
+	uint32 CANDEKPIMCC = 9;
+	AHBLKPAJDPI BBPMLKCBLKB = 13;
+	uint32 pool_id = 14;
+	uint32 MFLLLJHBDAI = 15;
+}
+
+message BlindBoxOpenBoxScRsp {
+	uint32 retcode = 2;
+	uint32 MFLLLJHBDAI = 6;
+	uint32 pool_id = 7;
+	uint32 PJFDGJCHBPJ = 8;
+	uint32 ANMILKKMMIM = 10;
+	repeated BHJEBMOOJED IONFCNANEKK = 15;
+}
+
+enum CmdBlindBoxType {
+	CmdBlindBoxType_NLCDGIPGFDJ = 0;
+	CmdBlindBoxType_BlindBoxGetDataScRsp = 10038;
+	CmdBlindBoxType_BlindBoxGetDataCsReq = 10051;
+	CmdBlindBoxType_BlindBoxOpenBoxCsReq = 10053;
+	CmdBlindBoxType_BlindBoxOpenBoxScRsp = 10054;
+}
+
+message MFCCCIMGMFL {
+	int64 JPLIJJFCAOO = 1;
+	string GOJBGCEEEHK = 5;
+	uint32 pool_id = 6;
+	repeated uint32 POONFMJAFDH = 14;
+	int64 end_time = 15;
+}

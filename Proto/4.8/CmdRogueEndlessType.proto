@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AJNOEKPLPCL {
+	uint32 cur_layer = 2;
+	uint32 PKKDALHLCLA = 4;
+	uint32 IEOGEFBLNEL = 6;
+	uint32 ICKJKIENKFI = 7;
+	bool MJIPOJPBKNB = 9;
+	uint32 DNAPFBANFHJ = 10;
+	uint32 FMCPHDJEIDC = 14;
+}
+
+message BBCOLCHCEFP {
+	repeated uint32 unfinished_story_line_id_list = 5;
+	APNCCNFJBKO JPKACKNNHCA = 6;
+	uint32 PJKMDLCCHHD = 7;
+	GMIJHCONFIH HAJJBOFCFOO = 9;
+	uint32 map_id = 10;
+	uint32 KNDHMNBIIDF = 11;
+	RogueStatus status = 13;
+	repeated uint32 NOEPBNMJFGL = 14;
+}
+
+message CAEFBGAFKHD {
+	AvatarType avatar_type = 6;
+	uint32 avatar_id = 7;
+}
+
+enum CmdRogueEndlessType {
+	CmdRogueEndlessType_MOLJCEFGPLL = 0;
+	CmdRogueEndlessType_RogueEndlessActivityBattleEndScNotify = 6001;
+	CmdRogueEndlessType_TakeRogueEndlessActivityAllBonusRewardScRsp = 6002;
+	CmdRogueEndlessType_TakeRogueEndlessActivityPointRewardScRsp = 6003;
+	CmdRogueEndlessType_GetRogueEndlessActivityDataScRsp = 6004;
+	CmdRogueEndlessType_EnterRogueEndlessActivityStageScRsp = 6005;
+	CmdRogueEndlessType_GetRogueEndlessActivityDataCsReq = 6006;
+	CmdRogueEndlessType_EnterRogueEndlessActivityStageCsReq = 6008;
+	CmdRogueEndlessType_TakeRogueEndlessActivityPointRewardCsReq = 6009;
+	CmdRogueEndlessType_TakeRogueEndlessActivityAllBonusRewardCsReq = 6010;
+}
+
+message EnterRogueEndlessActivityStageCsReq {
+	repeated CAEFBGAFKHD avatar_list = 14;
+	uint32 MPMMCPMNLID = 15;
+}
+
+message EnterRogueEndlessActivityStageScRsp {
+	uint32 retcode = 8;
+	SceneBattleInfo battle_info = 11;
+}
+
+message GetRogueEndlessActivityDataCsReq {
+}
+
+message GetRogueEndlessActivityDataScRsp {
+	uint32 IAHEDAAPNEO = 2;
+	repeated HGFJAHILCAA data = 3;
+	uint32 CHIAFOOAIBK = 7;
+	uint32 retcode = 8;
+	repeated uint32 IEPPNGMCKJH = 12;
+}
+
+message HGFJAHILCAA {
+	AJNOEKPLPCL PMKGMLELPPI = 7;
+	uint32 area_id = 10;
+	BBCOLCHCEFP BHHHNHMMDMH = 11;
+}
+
+message RogueEndlessActivityBattleEndScNotify {
+	AJNOEKPLPCL PMKGMLELPPI = 10;
+}
+
+message TakeRogueEndlessActivityAllBonusRewardCsReq {
+}
+
+message TakeRogueEndlessActivityAllBonusRewardScRsp {
+	repeated uint32 IEPPNGMCKJH = 2;
+	uint32 CHIAFOOAIBK = 3;
+	uint32 retcode = 5;
+	ItemList reward = 15;
+}
+
+message TakeRogueEndlessActivityPointRewardCsReq {
+	uint32 level = 1;
+	bool LEFJBFMDEGK = 14;
+}
+
+message TakeRogueEndlessActivityPointRewardScRsp {
+	uint32 CHIAFOOAIBK = 1;
+	repeated uint32 IEPPNGMCKJH = 3;
+	uint32 level = 6;
+	ItemList reward = 12;
+	uint32 retcode = 14;
+}
