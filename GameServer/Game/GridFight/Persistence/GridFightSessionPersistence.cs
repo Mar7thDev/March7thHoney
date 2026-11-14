@@ -421,7 +421,8 @@ public sealed partial class GridFightSession
 
     /// <summary>
     ///     Rebuilds a run from its snapshot. Throws <see cref="InvalidDataException" /> when the snapshot does not fit the
-    ///     loaded resources (other season, missing monster), so the caller can drop the run instead of corrupting it.
+    ///     loaded resources (other season, missing role or monster), so the caller can drop the run instead of
+    ///     corrupting it.
     /// </summary>
     public static GridFightSession Restore(GridFightResourceCatalog catalog, GridFightRunSnapshot snapshot)
     {
@@ -432,6 +433,13 @@ public sealed partial class GridFightSession
                 $"GridFight snapshot season {snapshot.Season} does not match the loaded season {catalog.CurrentSeason}.");
         if (!Enum.IsDefined(typeof(GridFightSessionPhase), snapshot.Phase))
             throw new InvalidDataException($"Unknown GridFight phase {snapshot.Phase}.");
+        // A run saved under other tables can hold a role the loaded ones no longer have (OSBETAWin4.7.51 removed the
+        // 3-cost 星神★阿哈 151102); every later lookup of such a role or shop slot would throw.
+        var missingRoleId = snapshot.Roles.Select(role => role.RoleId)
+            .Concat(snapshot.Shop.Select(slot => slot.RoleId))
+            .FirstOrDefault(roleId => roleId != 0 && !GameData.GridFightRoleBasicInfoData.ContainsKey(roleId));
+        if (missingRoleId != 0)
+            throw new InvalidDataException($"GridFight role {missingRoleId} is missing from the loaded resources.");
         return new GridFightSession(catalog, snapshot);
     }
 

@@ -230,6 +230,52 @@ for (var sample = 0; sample < 8; sample++)
     break;
 }
 Check($"every resolvable orb opens current-season roles and items ({orbsChecked} samples)", orbsChecked > 0 && orbsInSeason);
+// Random role rewards leave out the roles a season-2 run never hands out on their own, the same list the shop pool
+// leaves out: GridFight_InitialExceptRoleIdList (丹恒•腾荒 141402 is only the 双龙吟 summon, the Aha tiers above the
+// sold one are upgrade products). Before, a random 5-cost reward could be a 7-cost Aha or the summon.
+var neverGranted = catalog.IsSeasonOne ? new HashSet<uint>() : catalog.InitialExcludedRoleIds.ToHashSet();
+if (!catalog.IsSeasonOne)
+{
+    Check("upgrade-only cost tiers are on the list of roles that are never handed out",
+        catalog.UpgradeOnlyRoleIds.All(neverGranted.Contains));
+    var leakedRoles = new SortedSet<uint>();
+    var randomRoleDraws = 0;
+    foreach (var row in GameData.GridFightBasicBonusPoolV2Data.Values
+                 .Where(row => row.BonusType == GridFightBonusTypeEnum.RandomAvatar).OrderBy(row => row.BonusID))
+    for (var sample = 0; sample < 80; sample++)
+    {
+        if (!GridFightSpecialFeatures.TryResolveBonus(row.BonusID, out var rewards)) break;
+        randomRoleDraws++;
+        leakedRoles.UnionWith(rewards.Select(reward => reward.ItemId).Where(neverGranted.Contains));
+    }
+    Check($"random role rewards never hand out a role of GridFight_InitialExceptRoleIdList ({randomRoleDraws} draws)" +
+          (leakedRoles.Count == 0 ? "" : $" (handed out: {string.Join(", ", leakedRoles)})"),
+        randomRoleDraws > 0 && leakedRoles.Count == 0);
+}
+// OSBETAWin4.7.51 adds BonusType AllAvatarByRarity (BasicBonusPoolV2 116-130, [rarity, star] like the RandomAvatar
+// rows before them); older caches have no such row.
+var allByRarityRows = GameData.GridFightBasicBonusPoolV2Data.Values
+    .Where(row => row.BonusType == GridFightBonusTypeEnum.AllAvatarByRarity)
+    .OrderBy(row => row.BonusID)
+    .ToList();
+if (allByRarityRows.Count > 0)
+{
+    var wrongRows = allByRarityRows.Where(row =>
+    {
+        var (rarity, star) = (row.BonusTypeParamList[0], row.BonusTypeParamList[1]);
+        var expected = GameData.GridFightRoleBasicInfoData.Values
+            .Where(role => role.SeasonID == season && role.IsInPool && role.Rarity == rarity &&
+                           !neverGranted.Contains(role.ID) &&
+                           GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | star))
+            .Select(role => role.ID).Order().ToList();
+        var resolved = GridFightSpecialFeatures.TryResolveBonus(row.BonusID, out var rewards);
+        return resolved != expected.Count > 0 || !rewards.All(reward =>
+                   reward.Type == GridFightBonusTypeEnum.SpecificAvatar && reward.RoleStar == star && reward.Count == 1) ||
+               !rewards.Select(reward => reward.ItemId).Order().SequenceEqual(expected);
+    }).Select(row => row.BonusID).ToList();
+    Check($"AllAvatarByRarity: each of the {allByRarityRows.Count} rows hands out every pool role of its rarity at its star" +
+          (wrongRows.Count == 0 ? "" : $" (wrong: {string.Join(", ", wrongRows)})"), wrongRows.Count == 0);
+}
 var forgesInSeason = GameData.GridFightForgeData.Keys
     .Where(id => ItemInSeason(id))
     .All(id => Enumerable.Range(0, 20).All(_ => catalog.RollForgeEquipment(id).All(ItemInSeason)));
@@ -890,8 +936,16 @@ if (routePortal == GridFightSession.DotContractPortalId)
         .Select(pair => (pair.Key, pair.Value))
         .Concat(GridFightSession.AugmentRecurringEffects.SelectMany(pair => pair.Value.Select(effect => (pair.Key, effect.Grant))))
         .ToList();
-    Check("augment effects: every configured investment is in the current pool",
-        grantTables.All(entry => catalog.AugmentPool.Contains(entry.Key)));
+    // The effect tables are shared by both seasons, so an entry has to be an investment of some season's list
+    // rather than of the running one: OSBETAWin4.7.51 moved 103601 (经验就是财富) out of season 2 and kept it in
+    // season 1. What a run can offer is still decided by the running season's pool alone.
+    var listedAugments = GameData.GridFightSeasonAugmentData.Values.SelectMany(ids => ids).ToHashSet();
+    var unlistedGrants = grantTables.Select(entry => entry.Key).Where(id => !listedAugments.Contains(id))
+        .Distinct().Order().ToList();
+    Check($"augment effects: every configured investment is in a season's investment list{(unlistedGrants.Count == 0 ? "" : " (missing: " + string.Join(", ", unlistedGrants) + ")")}",
+        unlistedGrants.Count == 0);
+    Check("augment effects: investments are only offered from the running season's list",
+        catalog.AugmentPool.All(GameData.GridFightSeasonAugmentData[season].Contains));
     var invalidGrantItems = grantTables.SelectMany(entry => entry.Item2.Items.Select(item => (entry.Key, item.ItemId)))
         .Where(pair => !(GameData.GridFightEquipmentData.ContainsKey(pair.ItemId) ||
                          GameData.GridFightConsumablesData.ContainsKey(pair.ItemId) ||
@@ -1531,8 +1585,25 @@ if (!catalog.IsSeasonOne)
     Check("S2 pending: a resent answer for a finished prompt is recognised",
         mixed.IsFinishedSeasonTwoPending(claraQueue) && !mixed.IsFinishedSeasonTwoPending(claraQueue + 100));
 
-    // 幻乐之主: an Aha on the board may put an Aha good into a shop roll (3-cost 20%); copies turn into growth.
-    var (ahaRun, aha) = Board((151102, 1));
+    // 幻乐之主: an Aha on the board may put an Aha good into a shop roll; copies turn into growth. Which role ids are
+    // Aha's cost tiers, and what the tier the shop sells costs, comes from the tables: 3-cost 151102 below 151112 /
+    // 151122 / 151132 in 4.6.5x, 4-cost 151112 below 151122 / 151132 from OSBETAWin4.7.51 (151102 was removed).
+    var ahaTiers = catalog.AhaGrowthRoleIds;
+    var ahaSevenId = catalog.AhaSevenCostRoleId;
+    Check("S2 幻乐之主: the tables name the star-less Aha tiers in cost order and one seven-price tier",
+        ahaTiers.Count >= 2 && ahaSevenId != 0 &&
+        ahaTiers.Append(ahaSevenId).Select(id => GameData.GridFightRoleBasicInfoData[id].AvatarID).Distinct().Count() == 1 &&
+        ahaTiers.Zip(ahaTiers.Skip(1), (lower, higher) => GameData.GridFightRoleBasicInfoData[lower].Rarity <
+                                                          GameData.GridFightRoleBasicInfoData[higher].Rarity).All(ordered => ordered));
+    var ahaBaseId = ahaTiers[0];
+    var ahaBaseCost = GameData.GridFightRoleBasicInfoData[ahaBaseId].Rarity;
+    Check("S2 幻乐之主: only the cheapest Aha tier is sold; the tiers above it are upgrade products",
+        catalog.RolePool.Count(role => role.AvatarID == GameData.GridFightRoleBasicInfoData[ahaBaseId].AvatarID) == 1 &&
+        catalog.RolePool.Any(role => role.ID == ahaBaseId) &&
+        ahaTiers.Skip(1).Append(ahaSevenId).All(catalog.UpgradeOnlyRoleIds.Contains));
+    bool IsAhaTier(uint roleId) => roleId == ahaSevenId || ahaTiers.Contains(roleId);
+    var ahaChance = GridFightSession.AhaGlanceChanceForCost(ahaBaseCost);
+    var (ahaRun, aha) = Board((ahaBaseId, 1));
     ahaRun.BuildSeasonTwoFollowUpSync();
     var ahaRolls = 0;
     for (var roll = 0; roll < 400; roll++)
@@ -1540,8 +1611,8 @@ if (!catalog.IsSeasonOne)
         aha.RefreshShop(false);
         if (aha.Shop.Any(slot => GridFightSession.IsAhaGoods(slot.SpecialGoodsId))) ahaRolls++;
     }
-    Check("S2 幻乐之主: a 3-cost Aha glances at about one shop roll in five, not every roll",
-        aha.AhaShopGlanceChance == 0.2 && ahaRolls is >= 40 and <= 120);
+    Check($"S2 幻乐之主: a {ahaBaseCost}-cost Aha glances at about {ahaChance:P0} of the shop rolls, not every roll",
+        aha.AhaShopGlanceChance == ahaChance && ahaRolls >= 400 * ahaChance / 2 && ahaRolls <= 400 * ahaChance * 3 / 2);
     for (var roll = 0; roll < 100 && !aha.Shop.Any(slot => GridFightSession.IsAhaGoods(slot.SpecialGoodsId)); roll++)
         aha.RefreshShop(false);
     var ahaSlot = aha.Shop.FirstOrDefault(slot => GridFightSession.IsAhaGoods(slot.SpecialGoodsId));
@@ -1549,20 +1620,70 @@ if (!catalog.IsSeasonOne)
     Check("S2 幻乐之主: the shop offers an Aha good and it can be bought for its price",
         ahaSlot != null && aha.BuySpecialGoods([ahaSlot.Index]).Count == 1 && ahaSlot.SoldOut &&
         aha.RefreshShop(true));
-    // The rolled Aha good is random and some hand out Aha copies (346 星神降临, 349 球球了！), so the copy rule runs on
-    // its own board.
-    var (ahaCopyRun, ahaCopy) = Board((151102, 1));
+    // The rolled Aha good is random and 346 星神降临 hands out an Aha copy, so the copy rule runs on its own board.
+    var (ahaCopyRun, ahaCopy) = Board((ahaBaseId, 1));
     ahaCopyRun.BuildSeasonTwoFollowUpSync();
-    AddRole(ahaCopy, 151102);
+    AddRole(ahaCopy, ahaBaseId);
     ahaCopyRun.BuildSeasonTwoFollowUpSync();
     Check("S2 幻乐之主: a second Aha becomes 幻月之力 instead of a merge",
-        ahaCopy.Roles.Count(role => role.RoleId is 151102 or 151112 or 151122 or 151132) == 1 && ahaCopy.AhaGrowth == 1 &&
+        ahaCopy.Roles.Count(role => IsAhaTier(role.RoleId)) == 1 && ahaCopy.AhaGrowth == 1 &&
         ahaCopy.RefreshRoleSavedValues().ContainsKey(GridFightSession.AhaGrowthSavedValueKey) == false);
+
+    // Growth steps. 4.7.51 (two star-less tiers): the client's GridFightAhaRarity turns the 4-cost form into the
+    // 5-cost form at growth 5 and ends the bar there. 4.6.5x (three tiers): 4-cost at 3 and 5-cost at 6, the
+    // server's earlier even spread below that client's 7-cost growth of 9.
+    {
+        var (growthRun, growth) = Board((ahaBaseId, 1));
+        growthRun.BuildSeasonTwoFollowUpSync();
+        var tierByGrowth = new Dictionary<uint, uint>();
+        for (var copy = 0; copy < 8; copy++)
+        {
+            AddRole(growth, ahaBaseId);
+            growthRun.BuildSeasonTwoFollowUpSync();
+            tierByGrowth[growth.AhaGrowth] = growth.Roles.Single(role => IsAhaTier(role.RoleId)).RoleId;
+        }
+        var (sevenGrowth, maxGrowth) = growth.AhaGrowthRule;
+        if (ahaTiers.Count == 2)
+            Check("S2 幻乐之主: 4.7.51 tiers stay 4-cost below growth 5, turn 5-cost at 5 and stop growing there",
+                sevenGrowth == 5 && maxGrowth == 5 && growth.AhaGrowth == 5 &&
+                Enumerable.Range(1, 4).All(step => tierByGrowth[(uint)step] == ahaTiers[0]) && tierByGrowth[5] == ahaTiers[1]);
+        else
+            Check("S2 幻乐之主: 4.6.5x tiers turn 4-cost at growth 3 and 5-cost at growth 6",
+                sevenGrowth == 9 && maxGrowth == 0 && growth.AhaGrowth == 8 &&
+                tierByGrowth[2] == ahaTiers[0] && tierByGrowth[3] == ahaTiers[1] && tierByGrowth[5] == ahaTiers[1] &&
+                tierByGrowth[6] == ahaTiers[2]);
+        // 7-cost: enough growth on the last star-less tier plus 10 欢愉 stars (trait 300602 BaseDescParamList [10, 12]).
+        var topTier = growth.Roles.Single(role => IsAhaTier(role.RoleId));
+        var stillStarless = topTier.RoleId == ahaTiers[^1];
+        var elationMates = catalog.RolePool
+            .Where(role => role.TraitList.Contains(GridFightSession.ElationTraitId) && !IsAhaTier(role.ID) &&
+                           growth.IsRestrictedRoleUnlockedForRun(role.ID) &&
+                           GameData.GridFightRoleStarData.ContainsKey(role.ID << 4 | 3))
+            .Select(role => role.ID).Take(3).ToList();
+        if (elationMates.Count == 3)
+        {
+            for (var index = 0; index < elationMates.Count; index++)
+            {
+                growth.TryAddRole(elationMates[index], 3, out var mate);
+                mate.AcquiredRoles.Single().Position = (uint)index + 2;
+            }
+            while (growth.AhaGrowth < sevenGrowth)
+            {
+                AddRole(growth, ahaBaseId);
+                growthRun.BuildSeasonTwoFollowUpSync();
+            }
+            growthRun.BuildSeasonTwoFollowUpSync();
+            Check("S2 幻乐之主: the last star-less tier turns 7-cost once growth and 10 欢愉 stars are reached",
+                stillStarless && topTier.RoleId == ahaSevenId &&
+                growth.GetAhaSevenCostProgress().Any(entry => entry.TraitId == GridFightSession.ElationTraitId &&
+                                                              entry.Progress >= entry.Target));
+        }
+    }
 
     // Aha goods placed directly into the shop (the glance itself is random).
     GridFightSession AhaGoodsBoard(uint goodsId, out uint index)
     {
-        var (_, session) = Board((151102, 1));
+        var (_, session) = Board((ahaBaseId, 1));
         session.AdjustGold(100);
         var slot = session.Shop[0];
         session.Shop[0] = new GridFightShopSlot { Index = slot.Index, SpecialGoodsId = goodsId, Price = 1 };
@@ -1576,15 +1697,18 @@ if (!catalog.IsSeasonOne)
     Check("S2 幻乐之主: 多回点血！ raises max squad HP and heals by the same amount",
         moreHpBought.Count == 1 && moreHp.MaxLineupHp == maxHpBefore + 15 &&
         moreHp.LineupHp == Math.Min(moreHp.MaxLineupHp, moreHpBefore + 15) && moreHpBought[0].Application.LineupHpChanged);
-    // 开拓之旅 (347) hands out its table value; 哈基维利 (447) the 200 the 4.6.53 client shows.
+    // 开拓之旅 (347) and its upgraded row 哈基维利 (447) hand out their GridFightSpecialGoods value (150 / 500 in the
+    // OSBETAWin4.7.51 table the server carries; 4.6.5x had 1000 with a 200 override for 447).
     uint TrailblazePowerOf(uint goodsId)
     {
         var board = AhaGoodsBoard(goodsId, out var index);
         var before = board.TrailblazeCoin;
         return board.BuySpecialGoods([index]).Count == 1 ? board.TrailblazeCoin - before : 0;
     }
-    Check("S2 幻乐之主: 开拓之旅 grants 1000 开拓力 and 哈基维利 the 200 its description shows",
-        TrailblazePowerOf(347) == 1000 && TrailblazePowerOf(447) == 200);
+    uint AhaGoodsParam(uint goodsId) => (uint)GridFightSeasonTwoTables.AhaGoods.Single(row => row.Id == goodsId).Params[0];
+    Check($"S2 幻乐之主: 开拓之旅 grants {AhaGoodsParam(347)} 开拓力 and 哈基维利 {AhaGoodsParam(447)}, their table values",
+        AhaGoodsParam(347) > 0 && AhaGoodsParam(447) > 0 &&
+        TrailblazePowerOf(347) == AhaGoodsParam(347) && TrailblazePowerOf(447) == AhaGoodsParam(447));
     // 五费专场(341): the whole shop, the bought slot included, refills with 5-cost roles; 3★ roles stay out of it.
     var fiveCost = AhaGoodsBoard(341, out var fiveCostIndex);
     var fiveCostRoles = catalog.RolePool.Where(role => role.Rarity == 5 && fiveCost.IsRestrictedRoleUnlockedForRun(role.ID))
@@ -1604,7 +1728,7 @@ if (!catalog.IsSeasonOne)
 
     // 星神★阿哈 3星7费: every fielded role joins the leading trait.
     var (masterRun, master) = Board((roleA, 1));
-    master.TryAddRole(151132, 3, out var masterAcquisition);
+    master.TryAddRole(ahaSevenId, 3, out var masterAcquisition);
     masterAcquisition.AcquiredRoles.Single().Position = 2;
     masterRun.BuildSeasonTwoFollowUpSync();
     var ultra = masterRun.BuildPendingAction();
@@ -1878,6 +2002,19 @@ catch (InvalidDataException)
     otherSeasonRejected = true;
 }
 Check("a run saved for another season is rejected instead of restored", otherSeasonRejected);
+// A run saved under other tables: OSBETAWin4.7.51 removed the 3-cost Aha 151102 that a 4.6.5x run can still hold.
+var missingRole = persistSession.CaptureSnapshot();
+missingRole.Roles[0].RoleId = GameData.GridFightRoleBasicInfoData.Keys.Max() + 1;
+var missingRoleRejected = false;
+try
+{
+    GridFightSession.Restore(persistCatalog, missingRole);
+}
+catch (InvalidDataException)
+{
+    missingRoleRejected = true;
+}
+Check("a run holding a role the loaded tables do not have is rejected instead of restored", missingRoleRejected);
 
 // A whole route played on a copy restored before every step (and between battle start and settlement).
 var replayManager = NewRun(routePortal);
