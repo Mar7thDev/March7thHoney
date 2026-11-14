@@ -83,7 +83,7 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 - Dumper 原始产物保留在对应版本的 `dumper/Raw/`；`reference/` 只能存放确实存在的同版本参考定义。
 - `GameServer.csproj` 存在显式排除的协议处理器。重新启用前应解决其协议依据和兼容性问题，不直接删除排除项来恢复编译。
 - 协议生成与资源缓存更新是独立流程；运行 ProtoOrganizer 不代表 `Config/Resource.bin` 已更新。
-- 排查资源或存档问题时优先使用副本和隔离环境，保留原始数据。缓存升级参考 `docs/operations/scene-cache-upgrade.md`，输出到新文件，验证并备份后再替换；保留程序与缓存配套回滚能力。
+- 排查资源或存档问题时优先使用副本和隔离环境，保留原始数据。缓存升级参考 `docs/operations/scene-cache-upgrade.md`，只有客户端时的重建流程参考 `docs/operations/resource-cache-from-client-export.md`；输出到新文件，验证并备份后再替换，保留程序与缓存配套回滚能力。
 - `Config.json`、玩家数据库、日志、令牌和本地资源不应混入开发提交。以 `.gitignore` 和 `git ls-files` 核对边界，不将整个 `Config/` 视为可丢弃目录。
 
 ## 测试规范

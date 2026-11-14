@@ -31,6 +31,7 @@ March7thHoney 的文档按用途集中维护在此目录。仓库根目录的 `R
 
 - [账号清理与设备 / IP 封锁](operations/account-security.zh-CN.md)
 - [场景缓存元数据升级](operations/scene-cache-upgrade.md)
+- [从客户端导出重建资源缓存](operations/resource-cache-from-client-export.md)
 
 ## 测试
 
