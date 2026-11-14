@@ -12,7 +12,12 @@ public class IdentityBlockData : BaseDatabaseDataHelper
     public long ExpireAt { get; set; }
 
     public AccountBanStatus GetStatus() => new(
-        ExpireAt <= 0 || ExpireAt > Util.Extensions.GetUnixSec(), 0, Reason, ExpireAt, CreatedAt, true);
+        (ExpireAt <= 0 || ExpireAt > Util.Extensions.GetUnixSec()) &&
+        AccountBanHelper.ParseIdentityKeys(IdentityKey).Count == 1, 0, Reason, ExpireAt, CreatedAt, true)
+    {
+        RuleId = Uid,
+        IdentityKey = this.IdentityKey
+    };
 }
 
 // Keeps retired UIDs reserved and prevents delayed game writes from recreating deleted data.

@@ -17,6 +17,10 @@ public readonly record struct AccountBanStatus(
 {
     public static AccountBanStatus Inactive => new(false, 0, string.Empty, 0, 0, false);
 
+    public int? RuleId { get; init; }
+    public string? IdentityKey { get; init; }
+    public bool KnownDeviceMatched { get; init; }
+
     public bool IsPermanent => IsActive && ExpireAt <= 0;
 
     public long RemainingSeconds => IsPermanent ? 0 : Math.Max(0, ExpireAt - Extensions.GetUnixSec());
@@ -42,6 +46,17 @@ public static class AccountBanHelper
 {
     private const int MaxStoredIdentityKeys = 32;
     private static readonly char[] IdentitySeparators = [','];
+    private static readonly Logger Logger = new("Auth");
+    // These values are shared by clients and must never identify one device, including in old records.
+    private static readonly HashSet<string> IgnoredDeviceValues = new(StringComparer.Ordinal)
+    {
+        "null", "undefined", "unknown", "none", "n/a", "{}", "[]",
+        "testdevicefp", "asd9123cfa767", "38d7ecd67b187",
+        "0", "00000000", "0000000000000000", "00000000000000000000000000000000",
+        "00000000-0000-0000-0000-000000000000", "00:00:00:00:00:00"
+    };
+    private static readonly HashSet<string> IgnoredDeviceKeys = IgnoredDeviceValues
+        .Select(value => "device:" + HashIdentity(value)).ToHashSet(StringComparer.Ordinal);
 
     public static IReadOnlyCollection<string> BuildIdentityKeys(IEnumerable<string?> deviceValues, string? ipAddress)
     {
@@ -97,50 +112,45 @@ public static class AccountBanHelper
     }
 
     public static bool TryGetActiveBan(AccountData account, IEnumerable<string>? identityKeys,
-        out AccountBanStatus status)
+        out AccountBanStatus status, string stage = "authentication")
     {
         status = account.GetBanStatus();
         if (status.IsActive)
+        {
+            LogRejection(stage, account.Uid, status, identityKeys);
             return true;
+        }
 
         // A client cannot evade a device block by omitting its ID on the next token exchange.
         if (IdentityBlockHelper.TryGetActiveBan(ParseIdentityKeys(account.KnownIdentityKeys)
                 .Where(IsDeviceIdentityKey), out status))
-            return true;
-
-        return TryFindActiveBanByIdentityKeys(identityKeys, account.Uid, out status);
-    }
-
-    public static bool TryFindActiveBanByIdentityKeys(IEnumerable<string>? identityKeys, int? excludeUid,
-        out AccountBanStatus status)
-    {
-        status = AccountBanStatus.Inactive;
-        var currentKeys = NormalizeIdentityKeys(identityKeys).ToHashSet(StringComparer.Ordinal);
-        if (IdentityBlockHelper.TryGetActiveBan(currentKeys, out status))
-            return true;
-        if (currentKeys.Count == 0)
-            return false;
-
-        var accounts = DatabaseHelper.GetAllInstanceFromMap<AccountData>() ??
-                       DatabaseHelper.GetAllInstance<AccountData>() ?? [];
-        foreach (var account in accounts.GroupBy(account => account.Uid).Select(group => group.First()))
         {
-            if (excludeUid.HasValue && account.Uid == excludeUid.Value)
-                continue;
+            status = status with { KnownDeviceMatched = true };
+            LogRejection(stage, account.Uid, status, identityKeys);
+            return true;
+        }
 
-            var accountBan = account.GetBanStatus(identityMatched: true);
-            if (!accountBan.IsActive)
-                continue;
-
-            var knownKeys = ParseIdentityKeys(account.KnownIdentityKeys);
-            if (!knownKeys.Any(currentKeys.Contains))
-                continue;
-
-            status = accountBan;
+        // Account bans apply only to their UID. Broader restrictions require an independent rule.
+        if (IdentityBlockHelper.TryGetActiveBan(identityKeys, out status))
+        {
+            LogRejection(stage, account.Uid, status, identityKeys);
             return true;
         }
 
         return false;
+    }
+
+    public static void LogRejection(string stage, int? uid, AccountBanStatus status,
+        IEnumerable<string>? identityKeys = null)
+    {
+        var source = !status.IdentityMatched ? "account_ban" :
+            status.IdentityKey?.StartsWith("ip:", StringComparison.Ordinal) == true ? "ip_block" : "device_block";
+        var match = !status.IdentityMatched ? "uid" : status.KnownDeviceMatched ? "known_device" : "current";
+        var remote = (identityKeys as LoginIdentityContext)?.IpAddress ?? "unknown";
+        Logger.Warn($"Authentication rejected. stage={stage.Replace('\r', ' ').Replace('\n', ' ')} " +
+                    $"uid={uid?.ToString() ?? "unknown"} remote={remote} source={source} match={match} " +
+                    $"rule_id={status.RuleId?.ToString() ?? "none"} identity_key={status.IdentityKey ?? "none"} " +
+                    $"expire_at={status.ExpireAt}");
     }
 
     public static bool TryFindAccountByIdentityKeys(IEnumerable<string>? identityKeys, string? mode,
@@ -213,7 +223,7 @@ public static class AccountBanHelper
         };
     }
 
-    private static IEnumerable<string> NormalizeIdentityKeys(IEnumerable<string>? identityKeys)
+    internal static IEnumerable<string> NormalizeIdentityKeys(IEnumerable<string>? identityKeys)
     {
         return (identityKeys ?? [])
             .Where(IsIdentityKey)
@@ -223,6 +233,7 @@ public static class AccountBanHelper
     private static bool IsIdentityKey(string? key)
     {
         if (!IsDeviceIdentityKey(key) && !IsIpIdentityKey(key)) return false;
+        if (IgnoredDeviceKeys.Contains(key!)) return false;
         var hash = key![(key!.IndexOf(':') + 1)..];
         Span<byte> buffer = stackalloc byte[32];
         return Convert.TryFromBase64String(hash, buffer, out var written) && written == 32;
@@ -250,7 +261,7 @@ public static class AccountBanHelper
             return null;
 
         var lowered = value.ToLowerInvariant();
-        return lowered is "null" or "undefined" or "unknown" or "{}" or "[]" ? null : lowered;
+        return IgnoredDeviceValues.Contains(lowered) ? null : lowered;
     }
 
     public static string? NormalizeIpAddress(string? ipAddress)

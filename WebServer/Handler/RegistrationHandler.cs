@@ -25,9 +25,6 @@ public class RegistrationHandler
             return limited;
         }
 
-        if (AccountBanHelper.TryFindActiveBanByIdentityKeys(identityKeys, null, out var banStatus))
-            return Error(banStatus.FormatLoginMessage(), -203);
-
         if (antiAbuse.RequireRegistrationIdentity &&
             !identityKeys.Any(key => key.StartsWith("device:", StringComparison.Ordinal)))
         {

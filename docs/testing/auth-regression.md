@@ -10,6 +10,8 @@ dotnet run --project scripts/AuthRegression/AuthRegression.csproj
 
 预期最终输出 `Auth regression failures: 0`。模拟游戏会话没有真实 KCP 传输，断开测试会产生预期的发送失败日志。
 
+封禁回归还覆盖：账号封禁仅影响自身 UID；共享 PC 设备或公网 IP 的其他账号仍可通过密码登录、令牌验证、Combo 换票与注册；被封禁 UID 更换设备仍被拒绝；独立设备 / IP 规则继续拦截，包括省略设备 ID 的历史设备检查；公共占位指纹及旧哈希被过滤；拒绝日志能区分账号封禁与独立规则，且不包含密码、令牌或原始设备值。这些检查使用合成账号与临时数据库，不替代 PC / Android 客户端实机验证。
+
 ```powershell
 dotnet run --project scripts/AuthRegression/AuthRegression.csproj -- --serve
 ```
