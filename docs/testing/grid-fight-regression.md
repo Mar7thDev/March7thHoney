@@ -110,6 +110,23 @@ dotnet build March7thHoney.sln --no-restore
 
 新版基础表和 GridFightCampSeason 合并后，当前赛季的阵营保留原 ID 索引，其他赛季以 `(SeasonID << 20) | CampID` 的内部键保存，行内 ID 和协议 ID 不变。新版角色通过 GridFightRoleStar 解析技能，缓存保存布局标志；旧缓存缺少这一适配结果且原表可用时自动要求重建。更新程序和缓存前保留备份，回滚时一起恢复。假角色（如第二赛季帕姆王 604202）不进入商店卡池，但仍可由奖励发放；第二赛季不沿用被复用的天赋 2011 做终局回合治疗。
 
+### OSBETAWin4.7.51 的 GridFight 表适配（2026-11-14）
+
+数据来源是 `artifacts/resources-4.7.51/` 下的导出表和补缺缓存（见 [从客户端导出重建资源缓存](../operations/resource-cache-from-client-export.md)），对照现有 4.6.52 缓存逐表比对。该客户端的 TextMap 不含第二赛季文本（第二赛季羁绊的 102 个文本键全部缺失），所以下面凡是写“无法确认”的地方都没有描述文本可查。
+
+- 阿哈分档改为读表：角色表删除了 3 费的 `151102`；`GridFight_Aha_No_Star_Role_IDList` 为 `151112`、`151122`，`GridFight_SevenPriceRoleIdList` 为 `151132`，`GridFight_InitialExceptRoleIdList` 不再包含 `151112`，即 4 费的 `151112` 成为商店出售的基础形态。服务端由这两张常量表得到分档（`GridFightResourceCatalog.AhaGrowthRoleIds`、`AhaSevenCostRoleId`），不再写死角色 ID，4.6.5x 的三档布局仍按原规则运行。
+- 阿哈成长档位：4.7.51 客户端 `GridFightAhaRarity` 中 `_GetFormRarity` 为成长值小于 5 显示 4 费、否则 5 费，`_SevenCostGrowthLevel` 与 `MaxGrowthLevel` 都是 5。两档布局据此在成长 5 升为 5 费、成长值封顶 5，7 费仍要求 5 费形态加羁绊 `300602` 的星级条件（参数 `[10, 12]` 未变）。每个副本提供多少成长值在服务端配置里，表中没有，沿用“最低档副本 1 点”。商店瞥视概率是按费用自定的 20% / 30% / 40%，新表下带阿哈时最低为 4 费的 30%。
+- 阿哈商品：`GridFightSeasonTwoTables.AhaGoods` 按 4.7.51 的 `GridFightSpecialGoods`（GroupID 2、3）重新生成，103 行变为 122 行，多项价格和参数变化。开拓之旅（347）与哈基维利（447）按表发放 150 和 500 开拓力，去掉此前对 447 的 200 覆盖。“球球了！”（349/449）的参数由空变为 `[1]`，同时新增 466 `[1, 3, 151132]`，349 现在发什么无法确认，不再投放。新增的 307、314、326、335、338 和 458–466 效果在服务端配置里，未实现，不投放。
+- 投资：第二赛季投资列表由 307 项变为 298 项。103601、204001、204101、304001、304101、304201、304301 只保留在第一赛季列表，效果配置保留；212001、312001（`355100600` 星徽套组）整行删除，已从 `EmblemSetAugments` 移除。效果表两个赛季共用，回归断言由“已配置的投资都在当前池”改为“都在某个赛季的投资列表里”，并新增“投资只从当前赛季列表发出”。
+- 新奖励类型 `AllAvatarByRarity`：`GridFightBasicBonusPoolV2` 116–130，参数为 `[稀有度, 星级]`，与相邻的 RandomAvatar 101–115 布局一致，实现为发放该稀有度角色池中的全部角色。表内没有任何组合奖励或晶矿指向这 15 行，由什么触发无法确认。
+- 新羁绊效果类型 `GainOtherRoleTrait`：羁绊 `400502`（类型 Spotlight，效果 `4005021`）能加载，但授予它的聚光灯在 `GridFightSpotLight` 表里，导出不含该表，未实现。
+- 其余羁绊变化都按表生效：欢愉 `200702` 最高档由 4 人改为 5 人；仙舟舰队 `1001021` 第 4 档的替换数量由 2 改为 3，各档新增的第 3、4 个参数 `[3, 6]` 含义无法确认，未使用；`101202` 新增效果 `1012022`（TraitEffectByJson）。
+- 传送门：第二赛季新增 149–152 和 1015，进入传送门池并通过开局与消息往返检查，效果在服务端配置里，未实现。邀请函 2101–2119 的参数由星徽组号改为星徽物品 ID，解析结果不变。
+- 仍按 4.6.51 内容写死的表：TraitEquipTemplate、PhanionUniqueTrait、ClaraEnhance、ChimeraInfo、TrailblazeGoods、JadeUniqueTrait、ElationGoods、聚光灯、营火和伙伴效果的源表都不在 4.7.51 导出里，无法核对；`GFTraitElationTemplate` 272 行无变化。聚光灯适配名单中的 `151102` 改为 `151112`，并改按 AvatarID 匹配，使任何一档阿哈都算在内；4.7.51 的名单是否已更新无法确认。
+- 存档：恢复时若棋盘、备战席角色或商店卡的角色不在已加载的角色表中（例如 4.6.52 缓存下存有 `151102` 的对局），丢弃该局，不再在后续查表时抛异常。
+- 随机角色奖励池：`RandomAvatar`（以及新的 `AllAvatarByRarity`）此前只按 `IsInPool`、费用和星级行取角色，两个版本的表里丹恒•腾荒 `141402`（只作为双龙吟的召唤物存在）和阿哈的升级形态（4.7.51 为 `151122`、`151132`，4.6.52 还包括 `151112`）都满足条件，随机 5 费奖励可能直接发出它们。现在与商店卡池一样排除 `GridFight_InitialExceptRoleIdList` 中的角色（第一赛季不变）。回归对每个 RandomAvatar 奖励行各抽 80 次：修复前抽到 `141402`、`151122`、`151132`，修复后为 0；另检查升级形态都在该名单内。
+- 验证：4.7.51 缓存 GridFightRegression 557/557，4.6.52 缓存 551/551（原 543 项加 8 项新增检查），`dotnet build March7thHoney.sln -c Release --no-restore` 通过。均未经客户端实机验证。
+
 ### 玩家反馈修复与 4.6.52 资源（2026-10-17）
 
 - 多角色奖励的同步顺序：人才大礼包、晶矿、阿哈商品等一次发放多名角色时，后发的角色可能落在前一次合成刚空出的备战格。原先同步先下发全部 `AddRoleInfo` 再下发合成，客户端收到时该格仍被占用，格子显示为空但服务端仍有角色，拖入即返回 “消息获取失败”。现在每个获取结果的新角色紧接其合成之后下发；赛季 2 后续同步此前完全不下发获取结果的合成步骤，已补上。`AppendRewardApplication` 的属性刷新也不再提前更新本次奖励尚未下发的角色。`SyncOrderRegression` 以客户端棋盘模型按顺序回放同步，旧顺序会报 “role added on taken cell”。
@@ -144,7 +161,7 @@ dotnet build March7thHoney.sln --no-restore
 ### 对局存档与战斗中退出（2026-10-07）
 
 - 进行中的对局此前只在内存中：每次登录都会新建 `PlayerInstance`，重进游戏即丢失对局。现在对局快照（`GridFightRunSnapshot`，MemoryPack，Base64）存入新表 `GridFight` 的 `RunInstance`，下一局编号存于 `NextSessionUniqueId`；新表随启动自动建表，重置账号时随其他玩法数据删除。
-- 保存时机：每个币战请求结束（`GridFightHandler<T>`，失败也保存）、战斗结算、`QuitBattleCsReq`、`/grid` 指令和下线；登录时由 `GridFightManager` 恢复。快照与当前赛季不符、引用的怪物已不在资源中或无法解析时丢弃该局并记录警告，不影响登录。
+- 保存时机：每个币战请求结束（`GridFightHandler<T>`，失败也保存）、战斗结算、`QuitBattleCsReq`、`/grid` 指令和下线；登录时由 `GridFightManager` 恢复。快照与当前赛季不符、引用的角色或怪物已不在资源中或无法解析时丢弃该局并记录警告，不影响登录。
 - 恢复时若对局仍处于战斗中（断线或重启时战斗未结算），按 `BATTLE_END_QUIT` 结算为失败：连胜清零、战斗计数 +1，不发金币经验、不推进路线；客户端随后通过 GetData 拿到解锁后的完整状态。
 - `QuitBattleCsReq` 清除币战战斗时同样按失败结算并下发解锁同步（与 `PVEBattleResultCsReq` 的 `BATTLE_END_QUIT` 一致），此前对局会卡在战斗阶段、再也无法出战。2026-10-06/07 的日志中客户端未发送过该请求，退出都走 `PVEBattleResultCsReq`。
 - 快照只追加成员，不重排或删除。会话中 15 个仅用于下一次同步的通知缓冲（`GridFightSession.PersistenceTransientFields`）不保存，其状态变化已写入其余字段。

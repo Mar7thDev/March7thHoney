@@ -22,12 +22,14 @@ public sealed partial class GridFightSession
     /// trait (355000000 + trait, the same item the matching invitation portal grants); the avatar is resolved
     /// to the running season's role. 0 = no equipment (gold sets, or prismatic rows whose equipment id has no
     /// GridFightEquipment row in the 4.6.51 dump: 35030108, 35030210, 47030100, 35030810, 35030504).
+    /// The 355100600 sets (212001 gold, 312001 prismatic, avatar 1112) are gone: OSBETAWin4.7.51 deleted both
+    /// GridFightAugment rows and has no invitation portal for that group either.
     /// </summary>
     // A property, not a field: the effect tables in another partial file read it during static initialization.
     private static (uint AugmentId, uint EmblemGroup, uint AvatarId, uint EquipmentId)[] EmblemSetAugments =>
     [
         (211501, 355100100, 1210, 0), (211601, 355100200, 1405, 0), (211701, 355100300, 1501, 0),
-        (211801, 355100400, 1225, 0), (211901, 355100500, 1004, 0), (212001, 355100600, 1112, 0),
+        (211801, 355100400, 1225, 0), (211901, 355100500, 1004, 0),
         (212101, 355100800, 1310, 0), (212201, 355100900, 1412, 0), (212301, 355101000, 1307, 0),
         (212401, 355101220, 1404, 0), (221201, 355200100, 1112, 0), (221301, 355200200, 1210, 0),
         (221401, 355200300, 1004, 0), (221501, 355200420, 1405, 0), (221601, 355200500, 1225, 0),
@@ -35,7 +37,7 @@ public sealed partial class GridFightSession
         (222001, 355200900, 1505, 0), (222101, 355201000, 1222, 0), (222201, 355201100, 1503, 0),
         (311501, 355100100, 1210, 47030108), (311601, 355100200, 1405, 35030204),
         (311701, 355100300, 1501, 35030204), (311801, 355100400, 1225, 35030708),
-        (311901, 355100500, 1004, 35030204), (312001, 355100600, 1112, 35030304),
+        (311901, 355100500, 1004, 35030204),
         (312101, 355100800, 1310, 35030708), (312201, 355100900, 1412, 0),
         (312301, 355101000, 1307, 0), (312401, 355101220, 1404, 0),
         (321201, 355200100, 1112, 35030304), (321301, 355200200, 1210, 47030108),

@@ -217,14 +217,21 @@ public sealed partial class GridFightSession
             _spotLightCandidates.Add(id);
     }
 
-    /// <summary>Weighted toward spotlights whose SuitableAvatarList has a fielded role (guess); overclock keeps OC rows.</summary>
+    /// <summary>
+    ///     Weighted toward spotlights whose SuitableAvatarList has a fielded role (guess); overclock keeps OC rows.
+    ///     The list names avatars by a role id, so it is compared by AvatarID: 星神★阿哈 is listed with one cost tier
+    ///     (151112 here; the 4.6.51 table named the 3-cost 151102 that OSBETAWin4.7.51 removed, and the 4.7.51
+    ///     GridFightSpotLight table itself is not in the export) and must match on every tier.
+    /// </summary>
     private uint RollSpotLight()
     {
         var owned = _spotLights.Select(entry => entry.SpotLightId).Concat(_spotLightCandidates).ToHashSet();
-        var board = Roles.Where(role => IsActivePosition(role.Position)).Select(role => role.RoleId).ToHashSet();
+        static uint AvatarOf(uint roleId) => GameData.GridFightRoleBasicInfoData.GetValueOrDefault(roleId)?.AvatarID ?? 0;
+        var board = Roles.Where(role => IsActivePosition(role.Position)).Select(role => AvatarOf(role.RoleId))
+            .Where(avatarId => avatarId != 0).ToHashSet();
         var pool = GridFightSeasonTwoTables.SpotLights
             .Where(row => !owned.Contains(row.Id) && (!IsOverlock || row.IsOcEffective))
-            .Select(row => (row.Id, Weight: row.SuitableAvatars.Any(board.Contains) ? 3 : 1))
+            .Select(row => (row.Id, Weight: row.SuitableAvatars.Any(id => board.Contains(AvatarOf(id))) ? 3 : 1))
             .ToList();
         if (pool.Count == 0) return 0;
         var roll = Random.Shared.Next(pool.Sum(entry => entry.Weight));

@@ -172,9 +172,16 @@ public sealed class GridFightResourceCatalog
     // use it to select runtime-capable roles; without it the season-2 rules below apply.
     public bool HasRoleSavedValueLists { get; }
 
-    // Season 2 cost-tier variants (Aha 151112/151122/151132) are upgrade products of the base role and are
-    // never sold or supplied directly, like the season-1 Silver Wolf LV999 tiers.
+    // Season 2 cost-tier variants (Aha: 151112/151122/151132 after base 151102 in 4.6.5x, 151122/151132 after
+    // base 151112 from 4.7.51) are upgrade products of the base role and are never sold or supplied directly,
+    // like the season-1 Silver Wolf LV999 tiers.
     public IReadOnlySet<uint> UpgradeOnlyRoleIds { get; }
+
+    // 星神★阿哈's cost tiers, read from the tables instead of fixed IDs: the star-less tiers of
+    // GridFight_Aha_No_Star_Role_IDList in cost order (the first one is the role the shop sells) and the starred
+    // tier of GridFight_SevenPriceRoleIdList. Empty / 0 when the season has no such role.
+    public IReadOnlyList<uint> AhaGrowthRoleIds { get; }
+    public uint AhaSevenCostRoleId { get; }
 
     private static IReadOnlySet<string> RoleModifierSavedValueKeys => GameData.GridFightRoleSkillModifyData
         .Select(row => row.MultipleValueKey)
@@ -207,6 +214,20 @@ public sealed class GridFightResourceCatalog
             .ToList();
         HasRoleSavedValueLists = seasonRoles.Any(row => row.RoleSavedValueList.Count > 0);
         UpgradeOnlyRoleIds = ResolveUpgradeOnlyRoleIds(seasonRoles);
+        var starlessTiers = GetUIntList("GridFight_Aha_No_Star_Role_IDList").ToHashSet();
+        AhaGrowthRoleIds = seasonRoles
+            .Where(row => starlessTiers.Contains(row.ID))
+            .OrderBy(row => row.Rarity)
+            .ThenBy(row => row.ID)
+            .Select(row => row.ID)
+            .ToList();
+        var tierAvatars = seasonRoles.Where(row => starlessTiers.Contains(row.ID)).Select(row => row.AvatarID).ToHashSet();
+        var sevenPriceRoles = GetUIntList("GridFight_SevenPriceRoleIdList").ToHashSet();
+        AhaSevenCostRoleId = seasonRoles
+            .Where(row => sevenPriceRoles.Contains(row.ID) && tierAvatars.Contains(row.AvatarID))
+            .Select(row => row.ID)
+            .Order()
+            .FirstOrDefault();
         InitialExcludedRoleIds = GetUIntList("GridFight_InitialExceptRoleIdList").ToHashSet();
         RolePool = seasonRoles
             .Where(row => row.IsInPool && !bannedRoles.Contains(row.ID))

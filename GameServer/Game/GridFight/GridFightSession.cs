@@ -2029,7 +2029,7 @@ public sealed partial class GridFightSession
     private List<GridFightRoleMergeStep> MergeRoles(uint roleId)
     {
         var steps = new List<GridFightRoleMergeStep>();
-        // The 3/4/5-cost Aha tiers have no stars; extra copies become growth (AbsorbAhaCopies) instead.
+        // The Aha tiers below 7-cost have no stars; extra copies become growth (AbsorbAhaCopies) instead.
         if (IsSeasonTwoRules && IsAhaRole(roleId) && roleId != AhaSevenCostRoleId) return steps;
         var switchGroup = _catalog.RoleSwitchGroups.FirstOrDefault(group => group.RoleIdList.Contains(roleId));
         var mergeRoleIds = switchGroup?.RoleIdList.ToHashSet() ?? [roleId];

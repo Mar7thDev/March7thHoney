@@ -145,6 +145,9 @@ static class SnapshotProbe
         foreach (var field in type.GetFields(InstanceFields))
             if (IsEmpty(field.GetValue(instance)))
                 field.SetValue(instance, Sample(field.FieldType));
+        // Restore refuses board roles and shop slots whose role is not in the loaded tables, so these two carry a real one.
+        if (instance is GridFightRoleState role) role.RoleId = GameData.GridFightRoleBasicInfoData.Keys.Min();
+        if (instance is GridFightShopSlot slot) slot.RoleId = GameData.GridFightRoleBasicInfoData.Keys.Min();
         return instance;
     }
 
