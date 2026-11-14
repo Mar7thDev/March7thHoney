@@ -19,8 +19,11 @@ public static class AccountHelper
         {
             var auth = ConfigManager.Config.ServerOption.Auth;
             if (!auth.EnableRegistration) throw new InvalidOperationException("Registration is disabled");
-            if (AccountBanHelper.TryFindActiveBanByIdentityKeys(identityKeys, null, out var ban))
+            if (IdentityBlockHelper.TryGetActiveBan(identityKeys, out var ban))
+            {
+                AccountBanHelper.LogRejection("public_registration", null, ban, identityKeys);
                 throw new InvalidOperationException(ban.FormatLoginMessage());
+            }
             if (auth.AntiAbuse.RequireRegistrationIdentity && !identityKeys.Any(k => k.StartsWith("device:")))
                 throw new InvalidOperationException("Registration requires a device ID");
             if (auth.AntiAbuse.LimitRegistrationPerIdentity && AccountBanHelper.TryFindAccountByIdentityKeys(

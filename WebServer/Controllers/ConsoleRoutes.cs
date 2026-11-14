@@ -320,7 +320,7 @@ public static class ConsoleRoutes
     private static bool TryRejectBan(AccountData account, out IResult error)
     {
         error = default!;
-        if (!AccountBanHelper.TryGetActiveBan(account, null, out var banStatus))
+        if (!AccountBanHelper.TryGetActiveBan(account, null, out var banStatus, "player_console"))
             return true;
 
         PlayerConsoleSessionManager.RevokeForUid(account.Uid);
