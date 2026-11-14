@@ -82,8 +82,14 @@ public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainD
 
         if (Data.Areas.Count == 0)
         {
+            // Copies: DefaultAreas is static, and a player's build steps and DIY slots are written into these objects.
             foreach (var area in DefaultAreas)
-                Data.Areas[area.AreaId] = area;
+                Data.Areas[area.AreaId] = new TrainAreaInfo
+                {
+                    AreaId = area.AreaId,
+                    StepList = [.. area.StepList],
+                    DynamicInfo = new Dictionary<int, int>(area.DynamicInfo)
+                };
             changed = true;
         }
 

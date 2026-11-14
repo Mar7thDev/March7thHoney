@@ -1458,6 +1458,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
 
     ServerUtils.InitializeHandlers();
     await MainFixRegression.Run(scratch, serverPeer, Check, SentFrames);
+    await SharedConfigRegression.Run(Check);
     // 4.7 activity data queries sent at login (obfuscated names, so the generic empty reply skips them): both
     // must be answered or the client keeps its loading spinner up.
     var activityQueryReplies = (await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity
