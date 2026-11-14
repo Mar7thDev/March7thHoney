@@ -24,7 +24,7 @@ public static class IdentityBlockHelper
 
     public static bool TryGetActiveBan(IEnumerable<string>? keys, out AccountBanStatus status)
     {
-        foreach (var key in keys ?? [])
+        foreach (var key in AccountBanHelper.NormalizeIdentityKeys(keys))
             if (Blocks.TryGetValue(key, out var block) && block.GetStatus() is { IsActive: true } active)
             {
                 status = active;

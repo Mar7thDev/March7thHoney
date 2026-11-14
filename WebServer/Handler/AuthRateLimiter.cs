@@ -85,6 +85,7 @@ public static class AuthRateLimiter
         result = default!;
         if (IdentityBlockHelper.TryGetActiveBan(identityKeys, out var block))
         {
+            AccountBanHelper.LogRejection($"{action}:{context.Request.Path}", null, block, identityKeys);
             result = Results.Json(new StatusResult(-203, block.FormatLoginMessage()));
             return true;
         }

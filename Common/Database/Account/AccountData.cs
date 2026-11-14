@@ -168,7 +168,8 @@ public class AccountData : BaseDatabaseDataHelper
                 LastIp = observed.IpAddress;
                 KnownIpAddresses = (KnownIpAddresses ?? []).Where(ip => ip != LastIp).Append(LastIp).TakeLast(16).ToList();
             }
-            KnownDeviceIds = (KnownDeviceIds ?? []).Except(observed.Devices, StringComparer.Ordinal)
+            KnownDeviceIds = (KnownDeviceIds ?? []).Select(AccountBanHelper.NormalizeDeviceValue).OfType<string>()
+                .Except(observed.Devices, StringComparer.Ordinal)
                 .Concat(observed.Devices).TakeLast(16).ToList();
         }
         if (persist) PersistAuthState();
