@@ -130,7 +130,7 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
             {
                 SectionId = sectionId,
                 Status = MessageSectionStatus.MessageSectionDoing,
-                ToChooseItemId = itemConfig.NextItemIDList
+                ToChooseItemId = [.. itemConfig.NextItemIDList]
             });
             Data.Groups.Add(groupId, group);
         }
@@ -145,7 +145,7 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
                 {
                     SectionId = sectionId,
                     Status = MessageSectionStatus.MessageSectionDoing,
-                    ToChooseItemId = itemConfig.NextItemIDList
+                    ToChooseItemId = [.. itemConfig.NextItemIDList]
                 });
 
                 if (itemConfig.NextItemIDList.Count == 1)
@@ -157,6 +157,7 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
             }
         }
 
+        MarkDirty();
         // sync
         if (sendPacket)
         {
@@ -171,12 +172,13 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
         if (sectionConfig == null) return;
         var groupId = sectionConfig.GroupID;
         if (!Data.Groups.TryGetValue(groupId, out var group)) return;
-        var section = group.Sections.First(m => m.SectionId == sectionId);
-        if (section.Status != MessageSectionStatus.MessageSectionDoing) return;
+        var section = group.Sections.Find(m => m.SectionId == sectionId);
+        if (section?.Status != MessageSectionStatus.MessageSectionDoing) return;
         section.Status = MessageSectionStatus.MessageSectionFinish;
         if (group.Sections.All(m => m.Status == MessageSectionStatus.MessageSectionFinish))
             group.Status = MessageGroupStatus.MessageGroupFinish;
 
+        MarkDirty();
         // sync
         if (sendPacket)
         {
@@ -191,32 +193,46 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
 
     public async ValueTask FinishMessageItem(int itemId, bool sendPacket = true, bool trusted = false)
     {
-        GameData.MessageItemConfigData.TryGetValue(itemId, out var itemConfig);
-        if (itemConfig == null) return;
-        var groupId = itemConfig.GroupID;
-        var sectionId = itemConfig.SectionID;
-        if (!Data.Groups.TryGetValue(groupId, out var group)) return;
-        var section = group.Sections.First(m => m.SectionId == sectionId);
-        if (section.Status != MessageSectionStatus.MessageSectionDoing) return;
-        // Reject client ids that aren't currently offered — stops arbitrary message-flow advancement.
-        // Internal auto-advance passes trusted:true (it may legitimately chain across sections).
-        if (!trusted && !section.ToChooseItemId.Contains(itemId)) return;
-        section.ToChooseItemId.Clear();
-        section.Items.Add(new MessageItemData
+        MessageGroupData? changedGroup = null;
+        MessageSectionData? changedSection = null;
+        // A single offered follow-up is consumed automatically; the visited set stops a config chain that loops.
+        var visited = new HashSet<int>();
+        while (visited.Add(itemId) && GameData.MessageItemConfigData.TryGetValue(itemId, out var itemConfig) &&
+               Data.Groups.TryGetValue(itemConfig.GroupID, out var group))
         {
-            ItemId = itemId
-        });
-        section.ToChooseItemId.AddRange(itemConfig.NextItemIDList);
+            var section = group.Sections.Find(m => m.SectionId == itemConfig.SectionID);
+            if (section?.Status != MessageSectionStatus.MessageSectionDoing) break;
+            // Reject client ids that aren't currently offered — stops arbitrary message-flow advancement.
+            // Internal auto-advance passes trusted:true (it may legitimately chain across sections).
+            if (!trusted && !section.ToChooseItemId.Contains(itemId)) break;
 
-        group.RefreshTime = Extensions.GetUnixSec();
+            changedGroup ??= group;
+            changedSection ??= section;
+            section.Items.Add(new MessageItemData
+            {
+                ItemId = itemId
+            });
+            // A copy: NextItemIDList belongs to the shared config, not to this player's section.
+            section.ToChooseItemId = [.. itemConfig.NextItemIDList];
+            group.RefreshTime = Extensions.GetUnixSec();
 
-        if (section.ToChooseItemId.Count == 1) // if only one item, auto finish
-            await FinishMessageItem(section.ToChooseItemId[0], false, true);
+            if (section.ToChooseItemId.Count != 1) break; // only a single item is finished automatically
+            itemId = section.ToChooseItemId[0];
+            if (visited.Contains(itemId))
+            {
+                section.ToChooseItemId.Clear();
+                break;
+            }
 
+            trusted = true;
+        }
+
+        if (changedGroup == null || changedSection == null) return;
+        MarkDirty();
         if (sendPacket)
         {
             // sync
-            var notify = new PacketPlayerSyncScNotify(group, section);
+            var notify = new PacketPlayerSyncScNotify(changedGroup, changedSection);
             await Player.SendPacket(notify);
         }
     }
