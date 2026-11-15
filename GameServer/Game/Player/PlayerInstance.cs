@@ -29,6 +29,8 @@ using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.GameServer.Game.Mail;
 using March7thHoney.GameServer.Game.Message;
 using March7thHoney.GameServer.Game.Mission;
+using March7thHoney.GameServer.Game.Activity.DiceyDungeon;
+using March7thHoney.GameServer.Game.Activity.RealityShow;
 using March7thHoney.GameServer.Game.Pet;
 using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Player.Components;
@@ -260,6 +262,8 @@ public partial class PlayerInstance(PlayerData data)
         Components.Add(new ActivityBangbooManager(this));
         Components.Add(new DailyActiveManager(this));
         Components.Add(new PetManager(this));
+        Components.Add(new DiceyDungeonManager(this));
+        Components.Add(new RealityShowManager(this));
 
         if ((int)(ServerPrefsData!.Version * 1000) != GameConstants.GameVersionInt)
         {

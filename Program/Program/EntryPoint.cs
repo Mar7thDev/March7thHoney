@@ -293,6 +293,21 @@ public class EntryPoint
                 // current files just like banners, video keys and RogueMapGen do above.
                 if (!loadedFromResources)
                 {
+                    // ChallengePeak.json pins each season's map; seasons it leaves out are derived from the
+                    // floors in the cache. Re-read it so pinning a new season only needs a restart.
+                    var peakOverrides = ResourceManager.LoadCustomFile<ChallengePeakOverrideConfig>(
+                        "ChallengePeak Override", "ChallengePeak");
+                    if (peakOverrides != null)
+                    {
+                        GameData.ChallengePeakOverrideConfig = peakOverrides;
+                        ResourceManager.ApplyChallengePeakOverrides();
+                    }
+
+                    // The DiceyDungeon tables are not part of Resource.bin either.
+                    GameData.DiceyDungeonConfig =
+                        ResourceManager.LoadCustomFile<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon") ??
+                        new DiceyDungeonConfig();
+
                     ResourceManager.LoadRogueMagicRoomData();
                     ResourceManager.LoadChessRogueRoomData();
                     ResourceManager.LoadChessRogueDiceSurfaceEffectData();

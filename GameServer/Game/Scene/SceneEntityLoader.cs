@@ -135,10 +135,9 @@ public class SceneEntityLoader(SceneInstance scene)
                     Scene.Groups.Remove(group.Id);
                     unloadedGroups.Add(group.Id);
                 }
-                else if (group.OwnerMainMissionID != 0 &&
-                         Scene.Player.MissionManager!.GetMainMissionStatus(group.OwnerMainMissionID) !=
-                         MissionPhaseEnum.Accept) // condition: Owner Main Mission ID
+                else if (!Scene.Player.MissionManager!.IsGroupOwnerMissionActive(Scene.FloorId, group))
                 {
+                    // condition: Owner Main Mission ID
                     foreach (var entity in Scene.Entities.Values.Where(entity => entity.GroupId == group.Id))
                     {
                         await Scene.RemoveEntity(entity, false);
@@ -221,9 +220,8 @@ public class SceneEntityLoader(SceneInstance scene)
             if (!result) return null;
         }
 
-        if (!(info.OwnerMainMissionID == 0 || // condition: Owner Main Mission ID
-              Scene.Player.MissionManager!.GetMainMissionStatus(info.OwnerMainMissionID) ==
-              MissionPhaseEnum.Accept)) return null; // check if main mission is accepted
+        // condition: Owner Main Mission ID (in progress, or an activity's standing entrance group)
+        if (!Scene.Player.MissionManager!.IsGroupOwnerMissionActive(Scene.FloorId, info)) return null;
 
         if ((!info.LoadCondition.IsTrue(missionData) ||
              info.UnloadCondition.IsTrue(missionData,

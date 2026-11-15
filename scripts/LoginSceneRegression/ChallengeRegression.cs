@@ -308,6 +308,10 @@ internal static class ChallengeRegression
         var colourFrame = await Win(normal, false, zeroCycle);
         check("Peak normal king 0-cycle win (colour medal at settlement) grants the colour frame, not gold",
             colourFrame.HeadFrameId == colour);
+        check("Peak head frames expire at a timestamp the client can read, not long.MaxValue",
+            colourFrame.HeadFrameExpireTime == PlayerHeadFrameInfo.NoSeasonExpireTime &&
+            colourFrame.HeadFrameExpireTime > DateTimeOffset.UtcNow.ToUnixTimeSeconds() &&
+            colourFrame.HeadFrameExpireTime < 1L << 53);
         check("Peak 3-target normal win after the colour medal keeps the colour frame without re-sending it",
             ReferenceEquals(await Win(normal, false, allTargets), colourFrame) && colourFrame.HeadFrameId == colour);
         // The client only offers the display switch while a head-frame item is in the bag.

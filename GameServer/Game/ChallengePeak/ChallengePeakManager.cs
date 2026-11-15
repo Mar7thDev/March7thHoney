@@ -4,6 +4,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Challenge;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Lineup;
+using March7thHoney.Database.Player;
 using March7thHoney.GameServer.Game.Challenge.Instances;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
@@ -469,8 +470,8 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var frameId = ChallengePeakMedal.GetHeadFrameItemId(groupConfig.RewardGroupID, rank);
         if (frameId == 0) return;
 
-        // 服务端没有赛季结束时间, 沿用永久有效(官方为当期有效); 物品同时进背包, 客户端才提供展示开关
-        await HeadFrameService.Grant(Player, frameId, long.MaxValue);
+        // 服务端没有赛季结束时间, 用远期有效期代替"当期有效"; 物品同时进背包, 客户端才提供展示开关
+        await HeadFrameService.Grant(Player, frameId, PlayerHeadFrameInfo.NoSeasonExpireTime);
     }
 
     public async ValueTask<Retcode> StartChallenge(int levelId, uint buffId, List<int> avatarIdList)

@@ -132,7 +132,7 @@ dotnet run --project Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj -- \
 
 切换活动版本时把 `Proto.csproj` 的 `ActiveProtocolVersion` 改为 `4.8`。
 
-4.7 -> 4.8 的变化（详见 `migration-report.txt`）：2717 个 cmdId 中 2685 个换号，4040 条消息字段重新编号，新增 63 条消息与 4 个枚举（均为混淆名，含两组新命令目录 `MFNJLCNMBON`、`LDJDDDDPLLH`），26 条消息形状变化，集中在 GridFight。需要服务端跟进的有三处：
+4.7 -> 4.8 的变化（详见 `migration-report.txt`）：2717 个 cmdId 中 2685 个换号，4040 条消息字段重新编号，新增 63 条消息与 4 个枚举（均为混淆名，含两组新命令目录：`MFNJLCNMBON` 对应邦布联动 `RPG.Client.ActivityBangboo`，`LDJDDDDPLLH` 对应骰子收容 `RPG.Client.DiceyDungeon`，后者的消息与字段对照见 [骰子收容](dicey-dungeon.md)），26 条消息形状变化，集中在 GridFight。需要服务端跟进的有三处：
 
 - 踢出类型枚举的混淆名由 `JNFDGPDHENJ` 变为 `GGHJCJPPEFE`，成员与数值不变。
 - `GridFightSyncData` 承载 `GridFightGameItemInfo` 的 oneof 成员由属性 `GOOCHGKBIPN` 换成 `JDGIAMABEME`，按 `overrides-manual.txt` 的证据沿用 `game_data_item_info`，尚未经客户端实机确认。

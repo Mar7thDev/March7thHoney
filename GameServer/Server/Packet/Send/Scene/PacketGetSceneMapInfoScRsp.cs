@@ -118,9 +118,7 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                     if (!unlocked) continue;
                 }
 
-                if (group.OwnerMainMissionID != 0 &&
-                    player.MissionManager.GetMainMissionStatus(group.OwnerMainMissionID) != MissionPhaseEnum.Accept)
-                    continue;
+                if (!player.MissionManager.IsGroupOwnerMissionActive((int)floorId, group)) continue;
                 if (!group.LoadCondition.IsTrue(missionData) ||
                     group.UnloadCondition.IsTrue(missionData, false) ||
                     group.ForceUnloadCondition.IsTrue(missionData, false) ||

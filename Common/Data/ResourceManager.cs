@@ -68,6 +68,10 @@ public class ResourceManager
         GameData.QueryProductInfoConfig =
             LoadCustomFile<QueryProductInfoConfig>("QueryProductInfo", "QueryProductInfoConfig") ??
             new QueryProductInfoConfig();
+        GameData.DiceyDungeonConfig =
+            LoadCustomFile<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon") ?? new DiceyDungeonConfig();
+        GameData.RealityShowConfig =
+            LoadCustomFile<RealityShowConfig>("RealityShow", "RealityShow") ?? new RealityShowConfig();
         GameData.SceneRainbowGroupPropertyData =
             LoadCustomFile<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property",
                 "SceneRainbowGroupProperty") ?? new SceneRainbowGroupPropertyConfig();
@@ -85,13 +89,15 @@ public class ResourceManager
             new GridFightRuntimeConfig();
         GameData.GridFightBasicOrbRewardsConfig.RewardRules = GameData.GridFightRewardRulesConfig;
         GameData.GridFightBasicOrbRewardsConfig.RuntimeConfig = GameData.GridFightRuntimeConfig;
-        ApplyChallengePeakOverrides();
         LoadRogueMagicRoomData();
 
         LoadChessRogueRoomData();
         LoadChessRogueDiceSurfaceEffectData();
 
         Task.WaitAll(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
+
+        // After the floors: seasons missing from ChallengePeak.json are derived from their placeholder groups.
+        ApplyChallengePeakOverrides();
 
         // copy modifiers
         foreach (var value in GameData.AdventureAbilityConfigListData.Values)
@@ -715,7 +721,27 @@ public class ResourceManager
 
     public static void ApplyChallengePeakOverrides()
     {
-        foreach (var group in GameData.ChallengePeakOverrideConfig.ChallengePeak)
+        // Idempotent: a cache boot applies the cached overrides first and the operator's file again afterwards,
+        // so clear what an earlier pass left on the rows before applying the current set.
+        foreach (var level in GameData.ChallengePeakConfigData.Values)
+        {
+            level.OverrideMapEntranceId = 0;
+            level.OverrideMazeGroupId = 0;
+            level.OverrideNpcMonsterId = 0;
+        }
+
+        // Seasons ChallengePeak.json leaves out get their map from the resources (needs the floors loaded).
+        GameData.ChallengePeakDerivedGroups = [];
+        if (!GameData.FloorInfoData.IsEmpty)
+            foreach (var derived in ChallengePeakMapResolver.Derive(GameData.ChallengePeakOverrideConfig.ChallengePeak))
+            {
+                Logger.Info($"ChallengePeak season {derived.GroupId} has no entry in ChallengePeak.json; derived from the " +
+                            $"resources: map entrance {derived.MapEntranceId} (floor {derived.FloorId}), knight group " +
+                            $"{derived.KnightMazeGroupId}, king group {derived.KingMazeGroupId}.");
+                GameData.ChallengePeakDerivedGroups.Add(ChallengePeakMapResolver.ToOverride(derived));
+            }
+
+        foreach (var group in GameData.ChallengePeakGroups)
         {
             if (GameData.ChallengePeakGroupConfigData.TryGetValue(group.GroupId, out var groupExcel))
             {
@@ -737,9 +763,10 @@ public class ResourceManager
                 levelExcel.OverrideNpcMonsterId = stage.Value.NpcMonsterId > 0
                     ? stage.Value.NpcMonsterId
                     : group.NpcMonsterIdDefault;
-                levelExcel.RebuildChallengeMonsters();
             }
         }
+
+        foreach (var level in GameData.ChallengePeakConfigData.Values) level.RebuildChallengeMonsters();
 
         GameData.SyncCurrentChallengePeakGroupId();
     }
