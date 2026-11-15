@@ -1,0 +1,132 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ArchiveWolfBroGameCsReq {
+	MotionInfo motion = 9;
+	uint32 id = 14;
+}
+
+message ArchiveWolfBroGameScRsp {
+	GGHOBPBFFOB game_data = 2;
+	uint32 retcode = 6;
+}
+
+enum CmdWolfBroType {
+	CmdWolfBroType_NLCDGIPGFDJ = 0;
+	CmdWolfBroType_WolfBroGamePickupBulletCsReq = 6510;
+	CmdWolfBroType_GetWolfBroGameDataScRsp = 6511;
+	CmdWolfBroType_WolfBroGameExplodeMonsterScRsp = 6515;
+	CmdWolfBroType_NCJOMMAINOC = 6516;
+	CmdWolfBroType_QuitWolfBroGameScRsp = 6524;
+	CmdWolfBroType_WolfBroGameActivateBulletCsReq = 6525;
+	CmdWolfBroType_HPHNFDIPEIE = 6526;
+	CmdWolfBroType_RestoreWolfBroGameArchiveCsReq = 6530;
+	CmdWolfBroType_WolfBroGameUseBulletScRsp = 6532;
+	CmdWolfBroType_QuitWolfBroGameCsReq = 6534;
+	CmdWolfBroType_RestoreWolfBroGameArchiveScRsp = 6535;
+	CmdWolfBroType_GetWolfBroGameDataCsReq = 6537;
+	CmdWolfBroType_StartWolfBroGameScRsp = 6538;
+	CmdWolfBroType_WolfBroGamePickupBulletScRsp = 6541;
+	CmdWolfBroType_StartWolfBroGameCsReq = 6542;
+	CmdWolfBroType_WolfBroGameActivateBulletScRsp = 6544;
+	CmdWolfBroType_WolfBroGameDataChangeScNotify = 6545;
+	CmdWolfBroType_ArchiveWolfBroGameCsReq = 6548;
+	CmdWolfBroType_ArchiveWolfBroGameScRsp = 6550;
+}
+
+message GGHOBPBFFOB {
+	uint32 id = 3;
+	bool is_bullet_activated = 4;
+	uint32 CHCOPKAKBNO = 6;
+	string uuid = 9;
+	KDFPANILFOH BBEMIGELGJC = 12;
+	repeated Vector PAOEJKABFEP = 14;
+}
+
+message GetWolfBroGameDataCsReq {
+	uint32 id = 10;
+}
+
+message GetWolfBroGameDataScRsp {
+	uint32 retcode = 5;
+	GGHOBPBFFOB game_data = 8;
+}
+
+message KDFPANILFOH {
+	uint32 CHCOPKAKBNO = 4;
+	bool is_bullet_activated = 7;
+	repeated Vector PAOEJKABFEP = 11;
+	MotionInfo motion = 14;
+}
+
+message LBMFCJLHNAA {
+	repeated uint32 assist_monster_entity_id_list = 3;
+}
+
+message OKEFGCNNEKI {
+	Vector GGDCDJDBCCN = 10;
+	repeated uint32 assist_monster_entity_id_list = 13;
+}
+
+message QuitWolfBroGameCsReq {
+	uint32 id = 13;
+}
+
+message QuitWolfBroGameScRsp {
+	GGHOBPBFFOB game_data = 7;
+	uint32 retcode = 8;
+}
+
+message RestoreWolfBroGameArchiveCsReq {
+	uint32 id = 1;
+}
+
+message RestoreWolfBroGameArchiveScRsp {
+	GGHOBPBFFOB game_data = 6;
+	uint32 retcode = 14;
+}
+
+message StartWolfBroGameCsReq {
+	uint32 id = 5;
+	GroupStateInfo IDANCEPOOEI = 8;
+	MotionInfo motion = 15;
+}
+
+message StartWolfBroGameScRsp {
+	GGHOBPBFFOB game_data = 2;
+	uint32 retcode = 14;
+}
+
+message WolfBroGameActivateBulletCsReq {
+	uint32 DAKENPDMDDJ = 3;
+	uint32 group_id = 13;
+}
+
+message WolfBroGameActivateBulletScRsp {
+	uint32 retcode = 8;
+}
+
+message WolfBroGameDataChangeScNotify {
+	GGHOBPBFFOB game_data = 11;
+}
+
+message WolfBroGameExplodeMonsterScRsp {
+	uint32 retcode = 9;
+}
+
+message WolfBroGamePickupBulletCsReq {
+	Vector GGDCDJDBCCN = 1;
+}
+
+message WolfBroGamePickupBulletScRsp {
+	uint32 retcode = 1;
+	GGHOBPBFFOB game_data = 12;
+}
+
+message WolfBroGameUseBulletScRsp {
+	GGHOBPBFFOB game_data = 2;
+	uint32 retcode = 12;
+}

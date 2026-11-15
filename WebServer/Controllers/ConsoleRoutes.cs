@@ -80,12 +80,13 @@ public static class ConsoleRoutes
         if (AuthRateLimiter.TryReject(ctx, AuthRateLimitAction.Login, identityKeys, uidText, out var limited))
             return limited;
 
-        if (!TryResolveCredentials(ctx, uidText, Text(body, "password"), out var account, out var error))
+        if (!TryResolveCredentials(ctx, uidText, Text(body, "password"), out var account,
+                out var credentialFingerprint, out var error))
             return error;
         if (!TryRejectBan(account, out var banned))
             return banned;
 
-        var session = PlayerConsoleSessionManager.Create(account);
+        var session = PlayerConsoleSessionManager.Create(account, credentialFingerprint);
         return Results.Json(new ConsoleEnvelope<ConsoleLoginData>(0, "OK",
             new ConsoleLoginData(session.Token, BuildPlayerData(account, session.ExpiresAt.ToUnixTimeSeconds()))));
     }
@@ -267,9 +268,14 @@ public static class ConsoleRoutes
     }
 
     private static bool TryResolveCredentials(HttpContext ctx, string uidText, string password,
-        out AccountData account, out IResult error)
+        out AccountData account, out IResult error) =>
+        TryResolveCredentials(ctx, uidText, password, out account, out _, out error);
+
+    private static bool TryResolveCredentials(HttpContext ctx, string uidText, string password,
+        out AccountData account, out string credentialFingerprint, out IResult error)
     {
         account = null!;
+        credentialFingerprint = "";
         error = default!;
 
         if (!int.TryParse(uidText, out var uid))
@@ -285,6 +291,7 @@ public static class ConsoleRoutes
             return false;
         }
 
+        credentialFingerprint = PlayerConsoleSessionManager.GetCredentialFingerprint(resolved);
         // Always verify the password when the account has one set, regardless of the RSA-login flag —
         // command execution must not be password-bypassable.
         if (resolved.HasPassword() && (string.IsNullOrEmpty(password) || !resolved.VerifyPassword(password)))
@@ -299,6 +306,13 @@ public static class ConsoleRoutes
             return false;
         }
 
+        if (!string.Equals(credentialFingerprint, PlayerConsoleSessionManager.GetCredentialFingerprint(resolved),
+                StringComparison.Ordinal))
+        {
+            error = ConsoleJson(1, "Credentials changed. Please sign in again.", null, 401);
+            return false;
+        }
+
         account = resolved;
         return true;
     }
@@ -306,7 +320,7 @@ public static class ConsoleRoutes
     private static bool TryRejectBan(AccountData account, out IResult error)
     {
         error = default!;
-        if (!AccountBanHelper.TryGetActiveBan(account, null, out var banStatus))
+        if (!AccountBanHelper.TryGetActiveBan(account, null, out var banStatus, "player_console"))
             return true;
 
         PlayerConsoleSessionManager.RevokeForUid(account.Uid);

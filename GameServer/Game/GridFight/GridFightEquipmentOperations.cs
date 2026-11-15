@@ -75,10 +75,20 @@ public sealed partial class GridFightSession
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == roleUniqueId);
         var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
         if (role == null || equipment == null || equipment.IsLocked ||
-            role.EquippedEquipmentUniqueIds.Contains(equipmentUniqueId))
+            role.EquippedEquipmentUniqueIds.Contains(equipmentUniqueId) || IsEquipmentOnAha(equipmentUniqueId))
             return GridFightEquipDressResult.Failed;
         var previousWearer = FindEquipmentWearer(equipmentUniqueId);
         if (!CanDress(role, equipment)) return GridFightEquipDressResult.Failed;
+
+        // A role has a single implant slot (client GridFightEquipComponent.HackEquip shows the first Implants item and
+        // no dress constraint limits implants), so a newly dressed implant replaces the worn one. The replaced implant
+        // only leaves the role's list and stays in Equipments, i.e. it goes back to the bag (the client's UpdateEquips
+        // returns an item the role update no longer lists); a second worn implant would be invisible yet still be
+        // applied in battle.
+        List<GridFightEquipmentState> replacedImplants = IsImplant(equipment.EquipmentId)
+            ? GetEquippedEquipment(role).Where(candidate => IsImplant(candidate.EquipmentId)).ToList()
+            : [];
+        if (replacedImplants.Any(candidate => candidate.IsLocked)) return GridFightEquipDressResult.Failed;
 
         var previousMaxActiveRoles = MaxActiveRoles;
         var updatedRoles = new List<GridFightRoleState>();
@@ -88,6 +98,8 @@ public sealed partial class GridFightSession
             if (IsDiceEquipment(equipment.EquipmentId)) DestroyDiceFilledOnRole(previousWearer);
             updatedRoles.Add(previousWearer);
         }
+        foreach (var replaced in replacedImplants)
+            role.EquippedEquipmentUniqueIds.Remove(replaced.UniqueId);
         role.EquippedEquipmentUniqueIds.Add(equipmentUniqueId);
         if (!updatedRoles.Contains(role)) updatedRoles.Add(role);
 
@@ -119,7 +131,7 @@ public sealed partial class GridFightSession
             .Select(uniqueId => Equipments.FirstOrDefault(equipment => equipment.UniqueId == uniqueId))
             .ToList();
         if (materials.Any(equipment => equipment == null) ||
-            materials.Any(equipment => equipment!.IsLocked || FindEquipmentWearer(equipment.UniqueId) != null))
+            materials.Any(equipment => equipment!.IsRestricted || FindEquipmentWearer(equipment.UniqueId) != null))
             return GridFightEquipCraftResult.Failed;
         var craftedEquipmentId = ResolveCraftedEquipmentId(
             materials[0]!.EquipmentId, materials[1]!.EquipmentId, targetEquipmentId);
@@ -131,6 +143,7 @@ public sealed partial class GridFightSession
         foreach (var material in removed) Equipments.Remove(material);
         var added = CreateEquipment(craftedEquipmentId, CraftedEquipmentSource);
         TryAutoEquipCraftedEquipment(added, source, trackId);
+        ApplyPetPalCraftRefund(removed);
         RecalculateRoleSwitches();
         return new GridFightEquipCraftResult(
             true,
@@ -141,15 +154,16 @@ public sealed partial class GridFightSession
 
     public GridFightConsumableUseResult UseConsumable(
         uint groupId,
-        uint itemId,
         uint roleUniqueId,
-        uint equipmentUniqueId)
+        uint equipmentUniqueId,
+        uint chimeraUniqueId = 0)
     {
-        if (!CanModifyEquipment() ||
-            !GameData.GridFightConsumablesData.TryGetValue(itemId, out var config))
+        // The group id is the stack's unique id; since 4.7 the request no longer repeats the item id.
+        var consumable = Consumables.FirstOrDefault(item => item.GroupId == groupId);
+        if (!CanModifyEquipment() || consumable == null || consumable.Count == 0 ||
+            !GameData.GridFightConsumablesData.TryGetValue(consumable.ItemId, out var config))
             return GridFightConsumableUseResult.Failed;
-        var consumable = Consumables.FirstOrDefault(item => item.GroupId == groupId && item.ItemId == itemId);
-        if (consumable == null || consumable.Count == 0) return GridFightConsumableUseResult.Failed;
+        var itemId = consumable.ItemId;
 
         var previousMaxActiveRoles = MaxActiveRoles;
         var removed = new List<GridFightEquipmentState>();
@@ -162,6 +176,8 @@ public sealed partial class GridFightSession
             GridFightConsumeTypeEnum.Remove => RemoveEquipmentFromRole(roleUniqueId, updatedRoles),
             GridFightConsumeTypeEnum.Roll => RollEquipment(roleUniqueId, equipmentUniqueId, removed, added, updatedRoles),
             GridFightConsumeTypeEnum.Upgrade => UpgradeEquipment(equipmentUniqueId, removed, added, updatedRoles),
+            // 奇巧零食 (350119): target oneof 1338 { chimera unique id }.
+            GridFightConsumeTypeEnum.UpgradeChimera => UpgradeChimeraByConsumable(chimeraUniqueId),
             GridFightConsumeTypeEnum.Copy => CopyRole(roleUniqueId, config.ConsumableParamList, out acquisition),
             GridFightConsumeTypeEnum.GainRecommendEquip => StartEquipmentRecommendation(
                 roleUniqueId,
@@ -219,6 +235,7 @@ public sealed partial class GridFightSession
                 if (traitId != 0) result.Add(traitId);
             }
         }
+        AddSeasonTwoGrantedTraitIds(role, result);
         return result.Order().ToList();
     }
 
@@ -243,7 +260,7 @@ public sealed partial class GridFightSession
 
     private bool CanModifyEquipment()
     {
-        return Phase == GridFightSessionPhase.Preparing && !HasPendingSelection;
+        return Phase == GridFightSessionPhase.Preparing && !HasBlockingPendingSelection;
     }
 
     private GridFightRoleState? FindEquipmentWearer(uint equipmentUniqueId)
@@ -251,9 +268,17 @@ public sealed partial class GridFightSession
         return Roles.FirstOrDefault(role => role.EquippedEquipmentUniqueIds.Contains(equipmentUniqueId));
     }
 
+    private static bool IsImplant(uint equipmentId) =>
+        GameData.GridFightEquipmentData.TryGetValue(equipmentId, out var config) &&
+        config.EquipType == GridFightEquipmentTypeEnum.Implants;
+
     private bool CanDress(GridFightRoleState role, GridFightEquipmentState equipment)
     {
         if (!GameData.GridFightEquipmentData.TryGetValue(equipment.EquipmentId, out var config)) return false;
+        // Client constraint BCBCBPPHCBC: implants cannot be dressed on a role standing on the bench.
+        if (config.EquipType == GridFightEquipmentTypeEnum.Implants &&
+            role.Position >= 14 && role.Position <= 13 + _catalog.BenchSize)
+            return false;
         var equipped = GetEquippedEquipment(role)
             .Where(candidate => candidate.UniqueId != equipment.UniqueId)
             .ToList();
@@ -296,9 +321,10 @@ public sealed partial class GridFightSession
         ICollection<GridFightEquipmentState> added)
     {
         var newlyEquipped = Equipments.First(equipment => equipment.UniqueId == newlyEquippedUniqueId);
+        if (newlyEquipped.IsRestricted) return false;
         var craftCandidates = GetEquippedEquipment(role)
             .Where(equipment => equipment.UniqueId != newlyEquippedUniqueId)
-            .Where(equipment => !equipment.IsLocked)
+            .Where(equipment => !equipment.IsRestricted)
             .Where(equipment => GameData.GridFightEquipmentData[equipment.EquipmentId].EquipType !=
                                 GridFightEquipmentTypeEnum.Implants)
             .ToList();
@@ -333,7 +359,7 @@ public sealed partial class GridFightSession
             GameData.GridFightEquipmentData.ContainsKey(WealthDiamondEquipmentId))
             return WealthDiamondEquipmentId;
         var materialIds = new[] { firstEquipmentId, secondEquipmentId }.Order().ToList();
-        var recipe = GameData.GridFightCraftConfigData.Values
+        var recipe = GridFightSeasonScope.Crafts(GridFightSeasonScope.CurrentSeason)
             .Where(candidate => targetEquipmentId == 0 || candidate.CraftEquipID == targetEquipmentId)
             .OrderBy(candidate => candidate.CraftID)
             .FirstOrDefault(candidate => candidate.CostEquipList.Order().SequenceEqual(materialIds));
@@ -362,14 +388,14 @@ public sealed partial class GridFightSession
         if (equipmentUniqueId != 0)
         {
             var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
-            if (equipment == null || equipment.IsLocked || FindEquipmentWearer(equipmentUniqueId) != null) return false;
+            if (equipment == null || equipment.IsRestricted || FindEquipmentWearer(equipmentUniqueId) != null) return false;
             return RollOneEquipment(equipment, removed, added);
         }
 
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == roleUniqueId);
         if (role == null) return false;
         var replacements = GetEquippedEquipment(role)
-            .Where(equipment => !equipment.IsLocked)
+            .Where(equipment => !equipment.IsRestricted)
             .Select(equipment =>
             {
                 var config = GameData.GridFightEquipmentData[equipment.EquipmentId];
@@ -399,7 +425,7 @@ public sealed partial class GridFightSession
         ICollection<GridFightEquipmentState> removed,
         ICollection<GridFightEquipmentState> added)
     {
-        if (equipment.IsLocked) return false;
+        if (equipment.IsRestricted) return false;
         var config = GameData.GridFightEquipmentData[equipment.EquipmentId];
         if (config.EquipType == GridFightEquipmentTypeEnum.Implants) return false;
         var replacementId = _catalog.RollEquipment(config.EquipCategory, equipment.EquipmentId);
@@ -417,7 +443,7 @@ public sealed partial class GridFightSession
         ICollection<GridFightRoleState> updatedRoles)
     {
         var equipment = Equipments.FirstOrDefault(candidate => candidate.UniqueId == equipmentUniqueId);
-        if (equipment == null || equipment.IsLocked ||
+        if (equipment == null || equipment.IsRestricted ||
             !GameData.GridFightEquipUpgradeData.TryGetValue(equipment.EquipmentId, out var upgrade) ||
             !GameData.GridFightEquipmentData.ContainsKey(upgrade.UpgradeID))
             return false;
@@ -444,6 +470,11 @@ public sealed partial class GridFightSession
         if (sourceRole == null || parameters.Count < 2 ||
             !GameData.GridFightRoleBasicInfoData.TryGetValue(sourceRole.RoleId, out var roleConfig) ||
             roleConfig.Rarity > parameters[0] || parameters[1] != 1 || GetFreeBenchPosition() == 0)
+            return false;
+        // ConsumableParamList[2] is a required trait: 350113/350114 开拓·员工/完美投影仪 are [3|5, 1, 100502] and only copy
+        // 开拓银轨 members. The client does not check it, so the server must.
+        var requiredTraitId = parameters.Count > 2 ? parameters[2] : 0u;
+        if (requiredTraitId != 0 && !ResolveRoleTraitIds(sourceRole).Contains(requiredTraitId))
             return false;
         var acquired = new List<GridFightRoleState>();
         var mergeSteps = new List<GridFightRoleMergeStep>();

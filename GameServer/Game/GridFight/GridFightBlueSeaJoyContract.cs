@@ -62,6 +62,7 @@ public sealed partial class GridFightSession
         InitializeConceptStockPortal();
         InitializeP0PortalRewards();
         MaterializeInitialRoles();
+        ApplyPortalOpeningEffects();
 
         Gold = (uint)Math.Min(uint.MaxValue, (ulong)Gold + OfficialInitialGold);
         Phase = GridFightSessionPhase.AwaitingInitialRound;

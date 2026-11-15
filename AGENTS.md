@@ -27,10 +27,11 @@
 | `SourceGen/` | 包处理器、命令、任务、数据库及 MemoryPack 注册代码生成 |
 | `KcpSharp/` | KCP 传输及活动协议命令号 `CmdIds.cs` |
 | `Proto/<version>/` | 各游戏版本的协议来源、分组定义和兼容清单 |
-| `Proto/obj/<configuration>/<framework>/protobuf/<version>/` | 构建时生成的活动协议 C#，不纳入 Git |
+| `Proto/obj/<configuration>/<framework>/protobuf/4.8/` | 构建时自动生成的活动 C# 协议代码，不纳入版本控制 |
+| `Proto/Archives/` | 旧版协议的无损压缩归档；迁移时按文档解压 |
 | `Proto/Tool/ProtoOrganizer/` | 协议整理、版本迁移和生成工具 |
 | `Config/` | 自定义 JSON、语言包、资源缓存及本地运行数据；部分内容受版本控制 |
-| `Resources/`、`TurnBasedGameData/` | 本地游戏资源，已被 Git 忽略，干净检出不保证存在 |
+| `Resources/`、`TurnBasedGameData/`、`Config/Resource.bin` | 本地游戏资源和生成缓存，已被 Git 忽略，干净检出不保证存在 |
 | `scripts/` | 独立回归程序、缓存升级工具及 Linux 部署脚本 |
 | `docs/` | 开发、测试、API、入门和运维文档，入口为 `docs/README.md` |
 
@@ -76,18 +77,20 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 ## 协议与资源约束
 
 - 协议流程见 `docs/development/protobuf.md`。执行其中的版本示例前，核对当前活动协议、版本目录和兼容清单，不直接照抄旧版本号。
-- `Proto.csproj` 按 `ActiveProtocolVersion`（当前为 4.6）自动生成并编译 `obj/` 下的协议 C#。协议修复应落到对应版本的定义、翻译映射、兼容清单或生成工具，再重新生成，避免只改生成的 C#。
-- 切换活动协议时同步更新 `Proto.csproj` 的 `ActiveProtocolVersion`、活动分组定义与 `KcpSharp/CmdIds.cs`，由构建重新生成 C#，完成整个解决方案构建。不能用旧版本命令号覆盖新版本，也不能仅依据同型字段猜测协议映射。
-- 旧版协议保存在 `Proto/Archives/` 的无损 ZIP 中；迁移前按其中 README 解压，勿覆盖本地修改。`Proto/4.5v3/translations.txt` 因回归程序直接使用而继续保留。
+- `Proto.csproj` 固定 `ActiveProtocolVersion=4.8`，使用 `Google.Protobuf.Tools 3.33.1` 的 protoc 33.1 自动生成到 `obj/` 并编译。协议修复应落到活动版本的定义、翻译映射、兼容清单或生成工具，再构建，避免只改生成的 C#。
+- 4.6 及更早的协议已移到 `Proto/Archives/`，运行依赖旧路径的迁移命令前先按归档说明解压；`Proto/4.5v3/translations.txt` 作为登录回归输入仍保留。`Proto/4.7` 是 4.8 的名称来源，仍留在工作树里。
+- 切换活动协议时同步更新 `ActiveProtocolVersion`、对应分组定义与 `KcpSharp/CmdIds.cs`，完成整个解决方案构建和协议生成回归。不能用旧版本命令号覆盖新版本，也不能仅依据同型字段猜测协议映射。
 - Dumper 原始产物保留在对应版本的 `dumper/Raw/`；`reference/` 只能存放确实存在的同版本参考定义。
 - `GameServer.csproj` 存在显式排除的协议处理器。重新启用前应解决其协议依据和兼容性问题，不直接删除排除项来恢复编译。
 - 协议生成与资源缓存更新是独立流程；运行 ProtoOrganizer 不代表 `Config/Resource.bin` 已更新。
-- 排查资源或存档问题时优先使用副本和隔离环境，保留原始数据。缓存升级参考 `docs/operations/scene-cache-upgrade.md`，输出到新文件，验证并备份后再替换；保留程序与缓存配套回滚能力。
+- 排查资源或存档问题时优先使用副本和隔离环境，保留原始数据。缓存升级参考 `docs/operations/scene-cache-upgrade.md`，只有客户端时的重建流程参考 `docs/operations/resource-cache-from-client-export.md`；输出到新文件，验证并备份后再替换，保留程序与缓存配套回滚能力。
 - `Config.json`、玩家数据库、日志、令牌和本地资源不应混入开发提交。以 `.gitignore` 和 `git ls-files` 核对边界，不将整个 `Config/` 视为可丢弃目录。
 
 ## 测试规范
 
 现有回归是 `scripts/` 下的独立可执行项目，未包含在主解决方案中。`dotnet build March7thHoney.sln` 或单独执行 `dotnet test` 不能替代这些回归；使用 `dotnet run --project` 运行。首次运行允许其自行还原依赖，不随意加 `--no-restore`。
+
+统一的无私有资源安全回归入口为 `python3 scripts/verify-security.py`（包括完整构建）。真实资源套件默认明确标记 SKIP；提供匹配缓存后使用 `--with-resources`，不能将跳过视为通过。详见 `docs/testing/security-regression.md`。
 
 按改动选择相关命令；涉及多个模块或公共行为时组合执行：
 
@@ -96,7 +99,8 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 | 账号、鉴权、封锁、令牌、删除及数据库并发 | `dotnet run --project scripts/AuthRegression/AuthRegression.csproj` | 临时 SQLite 与测试配置；预期 `Auth regression failures: 0` |
 | Web 后台、MUIP、命令目标隔离及异步输出 | `dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj` | 独立内存数据与临时目录；预期 `Regression failures: 0` |
 | 登录协议、RSA、场景加载与传送 | `dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c Release` | 临时数据库和本机 HTTP 服务；场景用例读取当前 `Config/Resource.bin` 的副本 |
-| GridFight 玩法与状态同步 | `dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj` | 读取当前 `Config/Resource.bin`，不初始化玩家数据库，不写回缓存 |
+| GridFight 玩法与状态同步 | `dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj` | 读取当前 `Config/Resource.bin`（可用 `--cache` 指定），按缓存的 GridFight 赛季运行；不初始化玩家数据库，不写回缓存 |
+| 原始资源、枚举兼容及共享能力解析 | `dotnet run --project scripts/ResourceRegression/ResourceRegression.csproj -c Release -- <资源目录> <新报告目录>` | 隔离进程直接加载资源；可用 `--cache-out <新文件>` 验证并导出快照；预期 `failures: 0, loader issues: 0` |
 | 每日实训、活跃度档位、每日委托及事件型任务完成条件 | `dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj -c Release` | 临时 SQLite；读取 `Config/Resource.bin` 副本（需含每日实训表，可用 `--cache` 指定）；预期 `failures: 0` |
 
 - 具体覆盖和预期日志见 `docs/testing/` 下对应文档。以进程退出码和最终失败汇总判断结果；模拟异常会产生预期错误日志。
@@ -110,7 +114,7 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 ## 交付检查
 
 1. 查看最终差异，确认只有任务相关修改，没有运行数据、凭据或无关生成产物。
-2. 对 Git 可见的修改运行 `git diff --check`，并执行与改动范围匹配的构建和回归。
+2. 协议构建流程修改还应执行 `python3 scripts/test-proto-generation.py`（Windows 可用 `python`），验证增量、缺失输出和增删 schema。对 Git 可见的修改运行 `git diff --check`，并执行与改动范围匹配的构建和回归。
 3. 涉及协议生成、配置或接口行为时，检查源码、生成结果和文档是否一致。
 4. 清理本次启动的测试服务，说明修改位置、验证结果及剩余限制。
 

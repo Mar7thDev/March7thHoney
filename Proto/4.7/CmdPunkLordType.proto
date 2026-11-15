@@ -1,0 +1,255 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message CDCCPHILOCC {
+	uint32 uid = 1;
+	uint32 monster_id = 2;
+}
+
+message CJDIAHDLCNJ {
+	uint32 uid = 1;
+	uint32 damage_hp = 2;
+	bool is_final_hit = 3;
+	uint32 over_kill_damage_hp = 4;
+	string battle_replay_key = 5;
+	repeated GOFFDNPBHIK avatar_list = 6;
+	uint32 assist_score = 7;
+	uint32 damage_score = 8;
+	uint32 final_hit_score = 9;
+}
+
+enum CmdPunkLordType {
+	CmdPunkLordType_NLCDGIPGFDJ = 0;
+	CmdPunkLordType_SharePunkLordMonsterCsReq = 3205;
+	CmdPunkLordType_GetKilledPunkLordMonsterDataCsReq = 3215;
+	CmdPunkLordType_SummonPunkLordMonsterScRsp = 3218;
+	CmdPunkLordType_GetPunkLordMonsterDataScRsp = 3219;
+	CmdPunkLordType_GetKilledPunkLordMonsterDataScRsp = 3223;
+	CmdPunkLordType_StartPunkLordRaidCsReq = 3231;
+	CmdPunkLordType_TakePunkLordPointRewardCsReq = 3235;
+	CmdPunkLordType_PunkLordMonsterInfoScNotify = 3247;
+	CmdPunkLordType_GetPunkLordDataCsReq = 3248;
+	CmdPunkLordType_PunkLordDataChangeNotify = 3251;
+	CmdPunkLordType_GetPunkLordBattleRecordCsReq = 3254;
+	CmdPunkLordType_SummonPunkLordMonsterCsReq = 3259;
+	CmdPunkLordType_TakeKilledPunkLordMonsterScoreCsReq = 3262;
+	CmdPunkLordType_PunkLordMonsterKilledNotify = 3263;
+	CmdPunkLordType_SharePunkLordMonsterScRsp = 3271;
+	CmdPunkLordType_GetPunkLordMonsterDataCsReq = 3274;
+	CmdPunkLordType_GetPunkLordDataScRsp = 3275;
+	CmdPunkLordType_TakeKilledPunkLordMonsterScoreScRsp = 3280;
+	CmdPunkLordType_PunkLordBattleResultScNotify = 3282;
+	CmdPunkLordType_StartPunkLordRaidScRsp = 3287;
+	CmdPunkLordType_GetPunkLordBattleRecordScRsp = 3289;
+	CmdPunkLordType_PunkLordRaidTimeOutScNotify = 3292;
+	CmdPunkLordType_TakePunkLordPointRewardScRsp = 3298;
+}
+
+message FGFGINEFBBK {
+	int64 create_time = 3;
+	uint32 config_id = 4;
+	uint32 monster_id = 6;
+	bool APCMAIJPPEH = 8;
+	uint32 FJKDAFHKPGC = 9;
+	uint32 world_level = 12;
+}
+
+message GMDHIALLILJ {
+	repeated CJDIAHDLCNJ GAIKBNPIFLM = 1;
+}
+
+message GOFFDNPBHIK {
+	uint32 avatar_id = 1;
+	uint32 avatar_level = 2;
+}
+
+message GetKilledPunkLordMonsterDataCsReq {
+}
+
+message GetKilledPunkLordMonsterDataScRsp {
+	repeated CDCCPHILOCC BLLLCPONFBE = 6;
+	repeated FGFGINEFBBK CPPDAIMLDGB = 9;
+	uint32 retcode = 11;
+}
+
+message GetPunkLordBattleRecordCsReq {
+	CDCCPHILOCC KHOLBEGBFOM = 3;
+}
+
+message GetPunkLordBattleRecordScRsp {
+	repeated TryDownLoadReplay HLCIMLHMEKI = 1;
+	uint32 retcode = 2;
+	CDCCPHILOCC KHOLBEGBFOM = 7;
+	repeated CJDIAHDLCNJ GAIKBNPIFLM = 13;
+}
+
+message GetPunkLordDataCsReq {
+}
+
+message GetPunkLordDataScRsp {
+	uint32 KCBPBMOJOKJ = 1;
+	repeated uint32 IEPPNGMCKJH = 3;
+	uint32 LCAFKPGBDOL = 4;
+	int64 NEOGLPEGBHE = 7;
+	uint32 GIIIFDGFJPG = 8;
+	uint32 BPCOIOLGEMK = 10;
+	uint32 retcode = 11;
+	uint32 MGBHJPPJHEA = 15;
+}
+
+message GetPunkLordMonsterDataCsReq {
+}
+
+message GetPunkLordMonsterDataScRsp {
+	repeated JEIAEAEGEBJ PBLBBDBDLEK = 5;
+	uint32 retcode = 15;
+}
+
+message JEIAEAEGEBJ {
+	PunkLordMonsterBasicInfo basic_info = 1;
+	GMDHIALLILJ FDJHMFAGEOA = 6;
+	PunkLordAttackerStatus HCEENPENFGI = 7;
+	uint32 HDHIFJNJOBK = 8;
+}
+
+enum PAKHPLAHGBN {
+	PAKHPLAHGBN_NLCDGIPGFDJ = 0;
+	PAKHPLAHGBN_FIOLLIOEAJC = 1;
+	PAKHPLAHGBN_CJMELLLIEDE = 2;
+	PAKHPLAHGBN_COGCFDFAKON = 3;
+}
+
+enum PunkLordAttackerStatus {
+	PunkLordAttackerStatus_None = 0;
+	PunkLordAttackerStatus_Attacked = 1;
+	PunkLordAttackerStatus_Attacking = 2;
+	PunkLordAttackerStatus_AttackedAndAttacking = 3;
+}
+
+message PunkLordBattleResultScNotify {
+	CJDIAHDLCNJ FDJHMFAGEOA = 1;
+	uint32 final_hit_score = 2;
+	uint32 assist_score = 6;
+	uint32 damage_score = 7;
+	PunkLordMonsterBasicInfo ONICJOAOEMA = 10;
+}
+
+message PunkLordDataChangeNotify {
+	uint32 GIIIFDGFJPG = 3;
+	uint32 MGBHJPPJHEA = 12;
+	uint32 BPCOIOLGEMK = 15;
+}
+
+message PunkLordMonsterBasicInfo {
+	uint32 uid = 1;
+	uint32 monster_id = 2;
+	uint32 config_id = 3;
+	uint32 world_level = 4;
+	int64 create_time = 5;
+	uint32 left_hp = 6;
+	uint32 attacker_num = 7;
+	PunkLordShareType share_type = 8;
+	bool APCMAIJPPEH = 9;
+}
+
+message PunkLordMonsterInfoScNotify {
+	CJDIAHDLCNJ FDJHMFAGEOA = 6;
+	PunkLordMonsterBasicInfo basic_info = 7;
+	repeated uint32 FNMGMNABAJG = 9;
+	PAKHPLAHGBN reason = 15;
+}
+
+message PunkLordMonsterKilledNotify {
+	FGFGINEFBBK PEBMDFAGJAM = 11;
+}
+
+message PunkLordRaidTimeOutScNotify {
+	PunkLordMonsterBasicInfo ONICJOAOEMA = 1;
+}
+
+enum PunkLordShareType {
+	PunkLordShareType_None = 0;
+	PunkLordShareType_Friend = 1;
+	PunkLordShareType_All = 2;
+}
+
+message ReplayInfo {
+	uint64 LMFBCHEHOLO = 1;
+	PBIEFHKNAFA replay_type = 2;
+	uint32 stage_id = 3;
+	uint32 uid = 4;
+	string nickname = 5;
+	uint32 head_icon = 6;
+	string replay_name = 7;
+	uint64 create_time = 8;
+	uint32 KLIFGJOILEE = 9;
+	uint32 PBNIENNCNOP = 10;
+}
+
+message SharePunkLordMonsterCsReq {
+	uint32 monster_id = 12;
+	PunkLordShareType share_type = 13;
+	uint32 uid = 14;
+}
+
+message SharePunkLordMonsterScRsp {
+	uint32 retcode = 3;
+	uint32 monster_id = 10;
+	PunkLordShareType share_type = 11;
+	uint32 uid = 15;
+}
+
+message StartPunkLordRaidCsReq {
+	uint32 uid = 2;
+	uint32 monster_id = 8;
+	bool IDMPMEOCJIK = 9;
+}
+
+message StartPunkLordRaidScRsp {
+	bool IDMPMEOCJIK = 1;
+	uint32 retcode = 3;
+	repeated uint32 FNMGMNABAJG = 7;
+	JEIAEAEGEBJ ONICJOAOEMA = 9;
+	int64 PEAMKPJKIEL = 12;
+	RaidSceneData scene = 15;
+}
+
+message SummonPunkLordMonsterCsReq {
+}
+
+message SummonPunkLordMonsterScRsp {
+	uint32 retcode = 1;
+	JEIAEAEGEBJ ONICJOAOEMA = 14;
+}
+
+message TakeKilledPunkLordMonsterScoreCsReq {
+	CDCCPHILOCC HMOKDPHFBFM = 2;
+	bool EKNOELBGANH = 8;
+}
+
+message TakeKilledPunkLordMonsterScoreScRsp {
+	uint32 score_id = 1;
+	bool LOMGNMFAPGE = 5;
+	repeated CDCCPHILOCC DFJFJNPCIPA = 9;
+	uint32 retcode = 10;
+}
+
+message TakePunkLordPointRewardCsReq {
+	uint32 level = 9;
+	bool LEFJBFMDEGK = 14;
+}
+
+message TakePunkLordPointRewardScRsp {
+	uint32 retcode = 2;
+	uint32 level = 9;
+	bool LEFJBFMDEGK = 10;
+	ItemList reward = 15;
+}
+
+message TryDownLoadReplay {
+	string battle_replay_key = 1;
+	ReplayInfo replay_info = 2;
+}

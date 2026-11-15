@@ -12,7 +12,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Friend;
 
-public class FriendManager(PlayerInstance player) : BasePlayerManager(player)
+public partial class FriendManager(PlayerInstance player) : BasePlayerManager(player)
 {
     public FriendData FriendData { get; set; } =
         DatabaseHelper.Instance!.GetInstanceOrCreateNew<FriendData>(player.Uid);

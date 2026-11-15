@@ -122,6 +122,20 @@ public partial class SceneInstance
         return name is "SceneStateByMainMission" or "WorldStateByMainMission";
     }
 
+    // Initial snapshots and LOADED notifications must describe the same complete group.
+    public SceneEntityGroupInfo BuildEntityGroupInfo(int groupId)
+    {
+        var group = new SceneEntityGroupInfo { GroupId = (uint)groupId, State = 1 };
+        var properties = FloorInfo?.Groups.GetValueOrDefault(groupId)?.GroupPropertyMap;
+        var saved = Player.SceneData!.GroupPropertyData.GetValueOrDefault(FloorId, [])
+            .GetValueOrDefault(groupId, []);
+        foreach (var property in properties?.Values.Where(value => value.Side != GroupPropertySideEnum.ClientOnly) ?? [])
+            group.BANBECDCDHG[property.Name] = saved.GetValueOrDefault(property.Name, property.DefaultValue);
+        group.EntityList.AddRange(Entities.Values.Where(entity => entity.GroupId == groupId)
+            .Select(entity => entity.ToProto()));
+        return group;
+    }
+
     public SceneInfo ToProto()
     {
         SceneInfo sceneInfo = new()
@@ -173,55 +187,9 @@ public partial class SceneInstance
 
         sceneInfo.EntityGroupList.Add(playerGroupInfo);
 
-        List<SceneEntityGroupInfo> groups = []; // other groups
-
-        // add entities to groups
-        foreach (var entity in Entities)
-        {
-            if (entity.Value.GroupId == 0) continue;
-            if (groups.FindIndex(x => x.GroupId == entity.Value.GroupId) == -1)
-            {
-                var property = FloorInfo?.Groups.GetValueOrDefault(entity.Value.GroupId)?.GroupPropertyMap ?? [];
-
-                Dictionary<string, int> resProperty = [];
-                var savedProp = Player.SceneData!.GroupPropertyData.GetValueOrDefault(FloorId, [])
-                    .GetValueOrDefault(entity.Value.GroupId, []);
-
-                foreach (var info in property.Values.Where(x => x.Side != GroupPropertySideEnum.ClientOnly))
-                    resProperty.Add(info.Name, savedProp.GetValueOrDefault(info.Name, info.DefaultValue));
-
-                groups.Add(new SceneEntityGroupInfo
-                {
-                    GroupId = (uint)entity.Value.GroupId,
-                    BANBECDCDHG = { resProperty },
-                    State = 1
-                });
-            }
-
-            groups[groups.FindIndex(x => x.GroupId == entity.Value.GroupId)].EntityList.Add(entity.Value.ToProto());
-        }
-
-        foreach (var groupId in Groups) // Add for empty group
-            if (groups.FindIndex(x => x.GroupId == groupId) == -1)
-            {
-                var property = FloorInfo?.Groups.GetValueOrDefault(groupId)?.GroupPropertyMap ?? [];
-
-                Dictionary<string, int> resProperty = [];
-                var savedProp = Player.SceneData!.GroupPropertyData.GetValueOrDefault(FloorId, [])
-                    .GetValueOrDefault(groupId, []);
-
-                foreach (var info in property.Values.Where(x => x.Side != GroupPropertySideEnum.ClientOnly))
-                    resProperty.Add(info.Name, savedProp.GetValueOrDefault(info.Name, info.DefaultValue));
-
-                groups.Add(new SceneEntityGroupInfo
-                {
-                    GroupId = (uint)groupId,
-                    BANBECDCDHG = { resProperty },
-                    State = 1
-                });
-            }
-
-        foreach (var group in groups) sceneInfo.EntityGroupList.Add(group);
+        foreach (var groupId in Entities.Values.Select(entity => entity.GroupId).Concat(Groups)
+                     .Where(groupId => groupId != 0).Distinct())
+            sceneInfo.EntityGroupList.Add(BuildEntityGroupInfo(groupId));
 
         // custom save data and floor saved data
         Player.SceneData!.CustomSaveData.TryGetValue(EntryId, out var data);

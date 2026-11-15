@@ -109,12 +109,14 @@ public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
             ? await player.TrainCakeCatchManager!.AttachToSocialPlayRoomAsync(roomOwnerUid)
             : await player.TrainCakeCatchManager!.EnterSocialPlayRoomAsync(roomOwnerUid);
 
+        // 4.7 dropped the LABNNEGJNHO room-snapshot member of this notify's oneof; LMFMBJCNALJ is the
+        // one member left that carries the same POBLGKIGINE snapshot.
         var roomSnapshotPacket = new BasePacket(CmdIds.SocialPlayGameplayOperationScNotify);
         roomSnapshotPacket.SetData(new SocialPlayGameplayOperationScNotify
         {
             RoomOwnerUid = roomOwnerUid,
             OpUid = (uint)player.Uid,
-            LABNNEGJNHO = roomData
+            LMFMBJCNALJ = roomData
         });
         player.TrainCakeCatchManager.UpdateCurrentRoomSceneContext();
         await connection.SendPacket(roomSnapshotPacket);

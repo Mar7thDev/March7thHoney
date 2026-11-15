@@ -10,7 +10,8 @@ namespace March7thHoney.Data.Excel;
                 "ItemConfigAvatarRank.json,ItemConfigAvatarRankLD.json," +
                 "ItemConfigBook.json,ItemConfigDisk.json," +
                 "ItemConfigEquipment.json,ItemConfigRelic.json,ItemPlayerCard.json," +
-                "ItemConfigTrainDynamic.json,ItemConfigAvatarSkin.json", true)]
+                "ItemConfigTrainDynamic.json,ItemConfigAvatarSkin.json", true,
+                OptionalFileNames = "ItemConfigTrainDynamic.json")]
 [MemoryPackable]
 public partial class ItemConfigExcel : ExcelResource
 {

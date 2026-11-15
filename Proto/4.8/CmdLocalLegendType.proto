@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ACIHMMBKMIM {
+	uint32 avatar_id = 5;
+	AvatarType avatar_type = 9;
+}
+
+enum CmdLocalLegendType {
+	CmdLocalLegendType_NLCDGIPGFDJ = 0;
+	CmdLocalLegendType_GetLocalLegendDataCsReq = 6586;
+	CmdLocalLegendType_GetLocalLegendDataScRsp = 6587;
+	CmdLocalLegendType_LocalLegendDataChangeNotify = 6593;
+	CmdLocalLegendType_EnterLocalLegendLevelScRsp = 6594;
+	CmdLocalLegendType_EnterLocalLegendLevelCsReq = 6597;
+}
+
+message EnterLocalLegendLevelCsReq {
+	uint32 group_id = 10;
+	repeated ACIHMMBKMIM avatar_list = 12;
+	uint32 DBKHHCGGKNN = 14;
+}
+
+message EnterLocalLegendLevelScRsp {
+	uint32 retcode = 1;
+	uint32 DBKHHCGGKNN = 3;
+	uint32 group_id = 8;
+	SceneBattleInfo battle_info = 12;
+}
+
+message GetLocalLegendDataCsReq {
+}
+
+message GetLocalLegendDataScRsp {
+	uint32 retcode = 6;
+	repeated JJEFLBCLBFN level_data_list = 9;
+}
+
+message JJEFLBCLBFN {
+	uint32 group_id = 8;
+	uint32 FFGFINDLMCF = 9;
+	uint32 DBKHHCGGKNN = 14;
+}
+
+message LocalLegendDataChangeNotify {
+	JJEFLBCLBFN level_data = 1;
+}

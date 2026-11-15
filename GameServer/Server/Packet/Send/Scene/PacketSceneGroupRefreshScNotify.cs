@@ -11,11 +11,11 @@ public class PacketSceneGroupRefreshScNotify : BasePacket
 {
     public PacketSceneGroupRefreshScNotify(PlayerInstance player, List<BaseGameEntity>? addEntity = null,
         List<BaseGameEntity>? removeEntity = null,
-        SceneGroupRefreshType refreshType = SceneGroupRefreshType.Loaded)
+        SceneGroupRefreshType refreshType = SceneGroupRefreshType.Afibfmafncc)
         : base(CmdIds.SceneGroupRefreshScNotify)
     {
-        // Live traces use AFIBFMAFNCC for packets that include entity deletion.
-        if (refreshType == SceneGroupRefreshType.Loaded && removeEntity is { Count: > 0 })
+        // Entity deltas update an existing group. LOADED requires the full-group overload below.
+        if (refreshType == SceneGroupRefreshType.Loaded)
             refreshType = SceneGroupRefreshType.Afibfmafncc;
 
         var proto = new SceneGroupRefreshScNotify
@@ -68,9 +68,39 @@ public class PacketSceneGroupRefreshScNotify : BasePacket
 
     public PacketSceneGroupRefreshScNotify(PlayerInstance player, BaseGameEntity? addEntity = null,
         BaseGameEntity? removeEntity = null,
-        SceneGroupRefreshType refreshType = SceneGroupRefreshType.Loaded) :
+        SceneGroupRefreshType refreshType = SceneGroupRefreshType.Afibfmafncc) :
         this(player, addEntity == null ? [] : [addEntity], removeEntity == null ? [] : [removeEntity], refreshType)
     {
+    }
+
+    public PacketSceneGroupRefreshScNotify(SceneInstance scene, List<int> loadedGroupIds,
+        List<int>? unloadedGroupIds = null) : base(CmdIds.SceneGroupRefreshScNotify)
+    {
+        var proto = new SceneGroupRefreshScNotify
+        {
+            FloorId = (uint)scene.FloorId,
+            DimensionId = (uint)scene.ResolveDimensionId()
+        };
+        foreach (var groupId in unloadedGroupIds?.Distinct() ?? [])
+        {
+            proto.GroupRefreshList.Add(new GroupRefreshInfo
+            {
+                GroupId = (uint)groupId,
+                RefreshType = SceneGroupRefreshType.Unload
+            });
+            scene.ClientSceneSnapshotGroupIds.Remove(groupId);
+        }
+        foreach (var groupId in loadedGroupIds.Distinct())
+        {
+            proto.GroupRefreshList.Add(new GroupRefreshInfo
+            {
+                GroupId = (uint)groupId,
+                RefreshType = SceneGroupRefreshType.Loaded,
+                GroupInfo = scene.BuildEntityGroupInfo(groupId)
+            });
+            scene.ClientSceneSnapshotGroupIds.Add(groupId);
+        }
+        SetData(proto);
     }
 
     public PacketSceneGroupRefreshScNotify(SceneInstance scene, List<GroupPropertyRefreshData> refreshDataList) : base(
@@ -99,7 +129,7 @@ public class PacketSceneGroupRefreshScNotify : BasePacket
             var group = new GroupRefreshInfo
             {
                 GroupId = (uint)groupId,
-                RefreshType = SceneGroupRefreshType.Loaded
+                RefreshType = SceneGroupRefreshType.Afibfmafncc
             };
 
             foreach (var data in dataList)

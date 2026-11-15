@@ -1,0 +1,126 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message ABEBEOKFKFF {
+	uint32 cnt = 4;
+	EJEGHJPAMPI type = 6;
+}
+
+message BADOONPCDLO {
+	uint32 time = 5;
+	bool AJGOLAKNGPA = 9;
+	uint32 level_id = 15;
+}
+
+message BDEOLCNPBPP {
+	uint32 cnt = 4;
+	uint32 id = 11;
+}
+
+message COIMBCBMNIE {
+	uint32 level_id = 1;
+	repeated HANMCLKOCBO BEDHEKAGAPE = 12;
+}
+
+enum CmdParkourType {
+	CmdParkourType_NLCDGIPGFDJ = 0;
+	CmdParkourType_ParkourGetRankingInfoCsReq = 8384;
+	CmdParkourType_ParkourEndLevelScRsp = 8386;
+	CmdParkourType_ParkourEndLevelCsReq = 8387;
+	CmdParkourType_ParkourGetDataScRsp = 8388;
+	CmdParkourType_ParkourStartLevelScRsp = 8389;
+	CmdParkourType_ParkourGetDataCsReq = 8395;
+	CmdParkourType_ParkourStartLevelCsReq = 8396;
+	CmdParkourType_ParkourGetRankingInfoScRsp = 8400;
+}
+
+enum EJEGHJPAMPI {
+	EJEGHJPAMPI_BACKHOLLHDC = 0;
+	EJEGHJPAMPI_HAAFIJPEJOO = 1;
+	EJEGHJPAMPI_FPPDHDLGACM = 2;
+}
+
+message HANMCLKOCBO {
+	uint32 LJJGFIPLDLI = 3;
+	uint32 id = 7;
+	uint32 time = 15;
+}
+
+message IJJFBFPCBCI {
+	uint32 BLEFGKAGDEN = 2;
+	uint32 IEOJFKHKBEP = 5;
+	uint32 ICBKCJKHNBP = 12;
+	uint32 KBFHFLODGIA = 13;
+}
+
+enum OHFECKKADEK {
+	OHFECKKADEK_NLCDGIPGFDJ = 0;
+	OHFECKKADEK_CIHFGJDCHIA = 1;
+	OHFECKKADEK_INCLHHDFCEL = 2;
+}
+
+message OIHEIIDJOLI {
+	uint32 GPHNIOGICJP = 1;
+	uint32 GOMFPKDIIKA = 2;
+	uint32 FPIDONGEKFO = 3;
+	uint32 PLOEMBOCIGE = 5;
+	uint32 DHJEALPGPJK = 7;
+	uint32 NCMMFCJGDKA = 8;
+	uint32 MGPMDJOMMOK = 10;
+	repeated BDEOLCNPBPP OECOCOPOOHO = 11;
+	uint32 GBOLMEOHEOB = 12;
+	uint32 BAPPKHBKOAG = 13;
+	uint32 GCAFHJIAMIL = 15;
+}
+
+message ParkourEndLevelCsReq {
+	uint32 rank = 2;
+	OHFECKKADEK end_reason = 5;
+	uint32 KMGMFCJIAPI = 6;
+	OIHEIIDJOLI PKMAFFMMMAE = 7;
+	repeated IJJFBFPCBCI FENPLCNDKBJ = 8;
+	uint32 time = 9;
+	uint32 CEKKJHBNEOD = 10;
+	uint32 level_id = 11;
+	repeated ABEBEOKFKFF IDLJKFOKBJD = 12;
+	uint32 total_time = 13;
+}
+
+message ParkourEndLevelScRsp {
+	OHFECKKADEK end_reason = 2;
+	uint32 retcode = 3;
+	uint32 level_id = 5;
+	BADOONPCDLO ENKCCEACJKL = 8;
+	bool ADJLGNBJAOC = 10;
+	bool AJGOLAKNGPA = 11;
+	uint32 time = 15;
+}
+
+message ParkourGetDataCsReq {
+}
+
+message ParkourGetDataScRsp {
+	uint32 retcode = 7;
+	repeated BADOONPCDLO CGIPFMLDPNA = 8;
+}
+
+message ParkourGetRankingInfoCsReq {
+}
+
+message ParkourGetRankingInfoScRsp {
+	uint32 retcode = 1;
+	repeated COIMBCBMNIE JNMFKJHCOEG = 8;
+	COIMBCBMNIE LGFNFABAAGA = 12;
+}
+
+message ParkourStartLevelCsReq {
+	uint32 CEKKJHBNEOD = 2;
+	uint32 level_id = 13;
+}
+
+message ParkourStartLevelScRsp {
+	uint32 retcode = 11;
+	uint32 CEKKJHBNEOD = 12;
+	uint32 level_id = 13;
+}

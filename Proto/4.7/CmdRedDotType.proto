@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdRedDotType {
+	CmdRedDotType_NLCDGIPGFDJ = 0;
+	CmdRedDotType_EJDAHCIBGOF = 5930;
+	CmdRedDotType_GetSingleRedDotParamGroupScRsp = 5935;
+	CmdRedDotType_GetAllRedDotDataScRsp = 5938;
+	CmdRedDotType_GetAllRedDotDataCsReq = 5942;
+	CmdRedDotType_KABNELBBNKH = 5948;
+	CmdRedDotType_UpdateRedDotDataScRsp = 5950;
+}
+
+message FHNAEJBKINH {
+	repeated uint32 KCNPFIGHDAL = 2;
+}
+
+message GFOAMKNHBFE {
+	map<uint32, FHNAEJBKINH> BANBCCBOEBJ = 1;
+	uint32 FDEAKDCDGML = 4;
+	uint32 panel_id = 11;
+}
+
+message GetAllRedDotDataCsReq {
+}
+
+message GetAllRedDotDataScRsp {
+	repeated GFOAMKNHBFE KGONOBEAGAI = 3;
+	uint32 retcode = 12;
+}
+
+message GetSingleRedDotParamGroupScRsp {
+	uint32 retcode = 3;
+	uint32 FDEAKDCDGML = 4;
+	FHNAEJBKINH BKNKFNHIPAK = 8;
+	uint32 LNLDJDODOIL = 11;
+	uint32 group_id = 14;
+}
+
+message ILDOMDOFEPK {
+	uint32 group_id = 4;
+	uint32 FDEAKDCDGML = 7;
+	uint32 panel_id = 13;
+}
+
+enum KFMHMJLPHOG {
+	KFMHMJLPHOG_LFGOKFCPBOG = 0;
+	KFMHMJLPHOG_PFNPBLMEOJB = 1;
+	KFMHMJLPHOG_CBHMACJNEJG = 2;
+}
+
+message NNCEFFFGNEN {
+	uint32 FDEAKDCDGML = 4;
+	uint32 panel_id = 5;
+	KFMHMJLPHOG BICLKAPMFGP = 12;
+	repeated uint32 switch_list = 13;
+	uint32 group_id = 14;
+}
+
+message UpdateRedDotDataScRsp {
+	uint32 group_id = 3;
+	uint32 LNLDJDODOIL = 6;
+	uint32 FDEAKDCDGML = 12;
+	uint32 retcode = 15;
+}

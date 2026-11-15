@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdSwitchHandType {
+	CmdSwitchHandType_NLCDGIPGFDJ = 0;
+	CmdSwitchHandType_SwitchHandStartCsReq = 8104;
+	CmdSwitchHandType_GetSwitchHandResetHandPosCsReq = 8105;
+	CmdSwitchHandType_GetSwitchHandUpdateScRsp = 8106;
+	CmdSwitchHandType_SwitchHandUpdateCsReq = 8107;
+	CmdSwitchHandType_GetSwitchHandDataScRsp = 8108;
+	CmdSwitchHandType_SwitchHandFinishScRsp = 8109;
+	CmdSwitchHandType_GetSwitchHandResetHandPosScRsp = 8111;
+	CmdSwitchHandType_SwitchHandCoinUpdateScRsp = 8112;
+	CmdSwitchHandType_SwitchHandCoinUpdateCsReq = 8113;
+	CmdSwitchHandType_SwitchHandDataCsReq = 8115;
+	CmdSwitchHandType_SwitchHandFinishCsReq = 8116;
+	CmdSwitchHandType_SwitchHandResetGameCsReq = 8118;
+	CmdSwitchHandType_GetSwitchHandResetGameScRsp = 8119;
+	CmdSwitchHandType_SwitchHandStartScRsp = 8120;
+}
+
+enum DDNJKAMIHHI {
+	DDNJKAMIHHI_NLCDGIPGFDJ = 0;
+	DDNJKAMIHHI_LJHJNDHCHJF = 1;
+	DDNJKAMIHHI_HOKACNFCJAI = 2;
+}
+
+message ENHOPAHGCMA {
+	uint32 config_id = 7;
+	uint32 LNGJODEPCDN = 10;
+	MotionInfo IFPFJIIFALA = 11;
+	uint32 EKHEAFBKDFP = 12;
+	bytes DNOBAJNIGAC = 13;
+}
+
+message GetSwitchHandDataScRsp {
+	uint32 retcode = 3;
+	uint32 MHKAPGBGFNO = 7;
+	uint32 EBNGHIMCAPK = 10;
+	repeated ENHOPAHGCMA BEADAHPGGAF = 11;
+}
+
+message GetSwitchHandResetGameScRsp {
+	uint32 retcode = 2;
+	ENHOPAHGCMA BEADAHPGGAF = 10;
+}
+
+message GetSwitchHandResetHandPosCsReq {
+	uint32 config_id = 5;
+	MotionInfo IFPFJIIFALA = 15;
+}
+
+message GetSwitchHandResetHandPosScRsp {
+	ENHOPAHGCMA BEADAHPGGAF = 5;
+	uint32 retcode = 8;
+}
+
+message GetSwitchHandUpdateScRsp {
+	ENHOPAHGCMA BDEDDAHODII = 2;
+	uint32 retcode = 5;
+	OENDLKLJHPF NCADGIPIALO = 11;
+}
+
+message OENDLKLJHPF {
+	uint32 LKJHCMMPBDL = 1;
+	DDNJKAMIHHI op_type = 6;
+	uint32 group_id = 7;
+	uint32 IIIMCOINAOG = 15;
+}
+
+message SwitchHandCoinUpdateCsReq {
+	uint32 LNGJODEPCDN = 2;
+}
+
+message SwitchHandCoinUpdateScRsp {
+	uint32 retcode = 9;
+	uint32 LNGJODEPCDN = 14;
+}
+
+message SwitchHandDataCsReq {
+	uint32 NOBLDDEFEKI = 7;
+}
+
+message SwitchHandFinishCsReq {
+}
+
+message SwitchHandFinishScRsp {
+	uint32 retcode = 13;
+	ENHOPAHGCMA BDEDDAHODII = 15;
+}
+
+message SwitchHandResetGameCsReq {
+	ENHOPAHGCMA JCELIFCHCEF = 12;
+}
+
+message SwitchHandStartCsReq {
+	uint32 config_id = 14;
+}
+
+message SwitchHandStartScRsp {
+	uint32 config_id = 8;
+	uint32 retcode = 13;
+}
+
+message SwitchHandUpdateCsReq {
+	OENDLKLJHPF NCADGIPIALO = 8;
+	ENHOPAHGCMA IINKHPOJOGP = 10;
+}

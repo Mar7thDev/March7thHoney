@@ -312,6 +312,8 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
 
     private async Task HandlePacket(ushort opcode, byte[] header, byte[] payload)
     {
+        // Scoped to this request: everything sent while handling it echoes its packet id (see PacketHead).
+        PacketHead.RequestPacketId.Value = PacketHead.ReadPacketId(header);
         if (Player != null && DatabaseHelper.IsUidDeleted(Player.Uid))
         {
             Stop();

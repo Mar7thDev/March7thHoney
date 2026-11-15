@@ -40,6 +40,10 @@ public partial class SummonUnitConfigInfo
     //public SummonUnitGatherConfig GatherConfig { get; set; }
     //public GOFKFHJBFHP DynamicValues { get; set; }
 
+    // Lifecycle tasks, appended after TriggerConfig for MemoryPack; caches built before them restore null.
+    public List<TaskConfigInfo>? OnCreate { get; set; } = [];
+    public List<TaskConfigInfo>? OnDestroy { get; set; } = [];
+
 
     public static SummonUnitConfigInfo LoadFromJsonObject(JObject obj)
     {
@@ -63,6 +67,10 @@ public partial class SummonUnitConfigInfo
 
         if (obj.TryGetValue(nameof(TriggerConfig), out value))
             info.TriggerConfig = SummonUnitTriggerConfigInfo.LoadFromJsonObject((value as JObject)!);
+        if (obj.TryGetValue(nameof(OnCreate), out value) && value is JArray onCreate)
+            info.OnCreate = onCreate.OfType<JObject>().Select(TaskConfigInfo.LoadFromJsonObject).ToList();
+        if (obj.TryGetValue(nameof(OnDestroy), out value) && value is JArray onDestroy)
+            info.OnDestroy = onDestroy.OfType<JObject>().Select(TaskConfigInfo.LoadFromJsonObject).ToList();
         return info;
     }
 }

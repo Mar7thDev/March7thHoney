@@ -14,7 +14,9 @@ public class PacketGetBasicInfoScRsp : BasePacket
             CurDay = 1,
             NextRecoverTime = player.Data.NextStaminaRecover / 1000,
             GameplayBirthday = (uint)player.Data.Birthday,
-            PlayerSettingInfo = player.Data.PrivacySettings.ToSettingProto(),
+            // PlayerModule._CmdGetBasicInfoScRsp reads a flag out of a nested setting sub-message without a null
+            // check; the official capture ships those nested messages present and empty.
+            PlayerSettingInfo = ProtoPresence.FillEmptySubMessages(player.Data.PrivacySettings.ToSettingProto()),
             Gender = (uint)player.Data.CurrentGender
         };
 

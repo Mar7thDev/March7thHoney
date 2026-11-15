@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message CBHJJCBDJHA {
+	oneof MMCGBGDJIPN {
+		CMBGLKEMOGF DFNCMMIMKHG = 4;
+		JGDOHOFOFOF DOENIOKJJPM = 5;
+		EHDNPMEKPCA GJALNEHICDE = 6;
+		uint32 JOBJAFEKODB = 7;
+		uint32 ABOIMMOLEOD = 10;
+		JGDOHOFOFOF AHBNBNFABBO = 13;
+		uint64 BADMFBDDGPE = 15;
+	}
+}
+
+message CMBGLKEMOGF {
+	HENPKNCKGGI CGBJOAJEMKN = 4;
+	repeated EPFJLNKPEPK POJGKJENENA = 5;
+}
+
+enum CmdPetType {
+	CmdPetType_NLCDGIPGFDJ = 0;
+	CmdPetType_GetPetDataScRsp = 7604;
+	CmdPetType_SetBlindBoxPetLineupCsReq = 7605;
+	CmdPetType_RecallPetScRsp = 7607;
+	CmdPetType_SwitchBlindBoxPetChromaScRsp = 7609;
+	CmdPetType_SummonPetCsReq = 7611;
+	CmdPetType_GetPetDataCsReq = 7612;
+	CmdPetType_RecycleBlindBoxPetScRsp = 7613;
+	CmdPetType_SummonPetScRsp = 7615;
+	CmdPetType_RecallPetCsReq = 7616;
+	CmdPetType_SwitchBlindBoxPetChromaCsReq = 7619;
+	CmdPetType_SetBlindBoxPetLineupScRsp = 7620;
+	CmdPetType_PetDataChangeScNotify = 7622;
+	CmdPetType_RecycleBlindBoxPetCsReq = 7623;
+}
+
+message EHDNPMEKPCA {
+	oneof HGEOKHHJAIE {
+		uint32 ODNGMIJLKKA = 1;
+		uint64 EBAAFDHEPLO = 15;
+	}
+	EOGNOEJHAGN LLGIIPALELD = 4;
+}
+
+enum EOGNOEJHAGN {
+	EOGNOEJHAGN_NLCDGIPGFDJ = 0;
+	EOGNOEJHAGN_OJHOIBAFDPB = 1;
+	EOGNOEJHAGN_HDPMMLGEKKD = 2;
+	EOGNOEJHAGN_LCFKGCJCHBO = 3;
+}
+
+message EPFJLNKPEPK {
+	uint32 slot = 6;
+	uint64 EBAAFDHEPLO = 10;
+}
+
+message GetPetDataCsReq {
+}
+
+message GetPetDataScRsp {
+	bool NHCAOLGBGIF = 1;
+	CMBGLKEMOGF LCFKGCJCHBO = 6;
+	repeated JGDOHOFOFOF MPJNPINHCJL = 7;
+	uint32 retcode = 8;
+	EHDNPMEKPCA PLKBLNMOOPH = 9;
+	repeated uint32 unlocked_pet_id = 15;
+}
+
+enum HENPKNCKGGI {
+	HENPKNCKGGI_CDCCIOFMCGN = 0;
+	HENPKNCKGGI_PGCAJPIGHHP = 1;
+	HENPKNCKGGI_OALPDGKGPBJ = 2;
+}
+
+message JGDOHOFOFOF {
+	uint32 pet_id = 1;
+	uint64 EBAAFDHEPLO = 6;
+	bool IEBIKNPNPNO = 9;
+	uint32 HEOHMOFNOIH = 10;
+}
+
+message PetDataChangeScNotify {
+	repeated CBHJJCBDJHA DGNGMJMPFGK = 7;
+}
+
+message RecallPetCsReq {
+}
+
+message RecallPetScRsp {
+	uint32 retcode = 11;
+	EHDNPMEKPCA PLKBLNMOOPH = 13;
+}
+
+message RecycleBlindBoxPetCsReq {
+	repeated uint64 AMLGIHGPKPF = 13;
+}
+
+message RecycleBlindBoxPetScRsp {
+	uint32 retcode = 5;
+	ItemList KKPHMOIGOMA = 10;
+	repeated uint64 KHCNPBLGHOM = 13;
+}
+
+message SetBlindBoxPetLineupCsReq {
+	HENPKNCKGGI CGBJOAJEMKN = 3;
+	repeated EPFJLNKPEPK POJGKJENENA = 5;
+}
+
+message SetBlindBoxPetLineupScRsp {
+	CMBGLKEMOGF LCFKGCJCHBO = 3;
+	bool NHCAOLGBGIF = 9;
+	uint32 retcode = 13;
+}
+
+message SummonPetCsReq {
+	oneof HGEOKHHJAIE {
+		uint32 summoned_pet_id = 2;
+		uint64 EBAAFDHEPLO = 3;
+	}
+	EOGNOEJHAGN LLGIIPALELD = 14;
+}
+
+message SummonPetScRsp {
+	EHDNPMEKPCA PLKBLNMOOPH = 4;
+	uint32 retcode = 9;
+}
+
+message SwitchBlindBoxPetChromaCsReq {
+	bool IEBIKNPNPNO = 2;
+	uint64 EBAAFDHEPLO = 8;
+}
+
+message SwitchBlindBoxPetChromaScRsp {
+	JGDOHOFOFOF ENGJIMIHCHJ = 2;
+	uint32 retcode = 15;
+}

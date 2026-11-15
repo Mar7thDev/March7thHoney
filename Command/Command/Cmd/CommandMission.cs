@@ -342,6 +342,86 @@ public class CommandMission : ICommand
             await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.StartSuccess", displayName));
     }
 
+    [CommandMethod("0 next")]
+    public async ValueTask AdvanceStory(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        if (!await RequireMissionSystem(arg)) return;
+
+        var strict = arg.BasicArgs.Contains("--strict");
+        var count = 1;
+        var countArg = arg.BasicArgs.FirstOrDefault(value => value != "--strict");
+        if (countArg != null && (!int.TryParse(countArg, out count) || count is < 1 or > 10))
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.NextInvalidCount"));
+            return;
+        }
+
+        var player = arg.Target.Player!;
+        var output = new StringBuilder();
+        for (var beat = 0; beat < count; beat++)
+        {
+            var step = await player.MissionManager!.AdvanceStory(strict);
+            output.AppendLine(step.ToString());
+            if (!step.Mutated) break;
+        }
+
+        output.Append(I18NManager.Translate("Game.Command.Mission.NextDone", player.Data.Level.ToString(),
+            player.Data.Exp.ToString()));
+        await arg.SendMsg(output.ToString());
+    }
+
+    [CommandMethod("0 rollback")]
+    public async ValueTask RollbackStory(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        if (!await RequireMissionSystem(arg)) return;
+
+        var (anchor, predecessor, error) = await arg.Target.Player!.MissionManager!.RollbackStory();
+        if (error != null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.RollbackFailed", error));
+            return;
+        }
+
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.RollbackDone", anchor.ToString(),
+            predecessor.ToString()));
+    }
+
+    [CommandMethod("0 status")]
+    public async ValueTask StoryStatus(CommandArg arg)
+    {
+        if (arg.Target == null)
+        {
+            await arg.SendMsg(I18NManager.Translate("Game.Command.Notice.PlayerNotFound"));
+            return;
+        }
+
+        if (!await RequireMissionSystem(arg)) return;
+
+        var player = arg.Target.Player!;
+        var mission = player.MissionManager!;
+        var (frontier, phase) = mission.StoryFrontier();
+        var running = GameData.MainMissionData.TryGetValue(frontier, out var main)
+            ? main.SubMissionIds.Where(id => mission.GetSubMissionStatus(id) == MissionPhaseEnum.Accept).ToList()
+            : [];
+        await arg.SendMsg(I18NManager.Translate("Game.Command.Mission.StatusSummary",
+            player.Data.Level.ToString(), player.Data.Exp.ToString(), player.Data.WorldLevel.ToString(),
+            frontier.ToString(), phase.ToString(), mission.DescribeGates(frontier),
+            running.Count == 0 ? "-" : string.Join(", ", running),
+            mission.StoryPredecessor(frontier).ToString()));
+    }
+
     private static bool TryReadMissionId(CommandArg arg, out int missionId)
     {
         missionId = 0;

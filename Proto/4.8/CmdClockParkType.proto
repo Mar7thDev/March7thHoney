@@ -1,0 +1,254 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AIGEDICFHCE {
+	uint32 IMGLLIBJAPC = 3;
+	bool is_win = 12;
+}
+
+message AJNKADCOKOL {
+	bool is_win = 7;
+	uint32 IMGLLIBJAPC = 8;
+}
+
+message CAMLFNCBFHI {
+	repeated uint32 avatar_id_list = 8;
+}
+
+message CNOAGGFCDAL {
+}
+
+message ClockParkBattleEndScNotify {
+	uint32 retcode = 12;
+	uint32 JGPHDBDHKKO = 13;
+}
+
+message ClockParkBuffList {
+	repeated FAMLGHGHIOD buff_list = 1;
+}
+
+message ClockParkFinishScriptScNotify {
+	GIPBHLBFDAH NLEOMLNOKCC = 3;
+}
+
+message ClockParkGetInfoCsReq {
+}
+
+message ClockParkGetInfoScRsp {
+	uint32 LNKAKGOCAOF = 1;
+	uint32 progress = 2;
+	repeated DEGFFGKMFJJ DCGDHFJLHCN = 8;
+	repeated uint32 HPEKLHNPDAJ = 9;
+	uint32 retcode = 10;
+	uint32 CDGICHDIIHH = 11;
+}
+
+message ClockParkGetOngoingScriptInfoCsReq {
+}
+
+message ClockParkGetOngoingScriptInfoScRsp {
+	uint32 retcode = 2;
+	uint32 GIGAEFCKIAK = 3;
+	repeated uint32 FKNBOIIMFLD = 4;
+	MDDIKNGBPPL HGDLJDAFHLI = 5;
+	uint32 INDJEOAJJEN = 6;
+	ClockParkBuffList HABJHGPFGEB = 7;
+	uint32 NGBJMEHDKHN = 8;
+	string IMJFLCKFJGF = 9;
+	uint32 script_id = 10;
+	LOBFOKCKPKB JOFJEIFLGBP = 12;
+	uint32 JIPPMKBDJJC = 13;
+	uint32 DCAHJELNJNP = 14;
+}
+
+message ClockParkHandleWaitOperationCsReq {
+	oneof LIMEOJAMBPK {
+		uint32 GIGAEFCKIAK = 1;
+		NKOCCGLHOML IKNEKEJEGLM = 2;
+		MOEMKBLCKKO MLHNHAFPLKD = 6;
+		AJNKADCOKOL ACIOPOIJNEF = 7;
+		CAMLFNCBFHI KBOGLMPLNAI = 8;
+		KJAIAGDNPGC JFAJEBGKPEH = 11;
+		IGJLLHMJKPC EJLKEGLKGDN = 12;
+		AIGEDICFHCE DIKEDLHGDJJ = 15;
+	}
+	uint32 JGPHDBDHKKO = 4;
+	uint32 script_id = 5;
+}
+
+message ClockParkHandleWaitOperationScRsp {
+	uint32 retcode = 4;
+	ClockParkPlayStatus LNPGHCLDOKG = 7;
+	SceneBattleInfo battle_info = 8;
+	uint32 IGBHCBNKEBO = 9;
+	uint32 DMNECEKOLAJ = 11;
+	uint32 JGPHDBDHKKO = 12;
+}
+
+enum ClockParkPlayStatus {
+	ClockParkPlayStatus_ClockParkPlayNone = 0;
+	ClockParkPlayStatus_ClockParkPlayNormalDeath = 1;
+	ClockParkPlayStatus_ClockParkPlayNormalPass = 2;
+	ClockParkPlayStatus_ClockParkPlayFinishScript = 5;
+}
+
+message ClockParkQuitScriptCsReq {
+	uint32 CNHLAAHDPGA = 12;
+	bool MHICFGAPPNB = 14;
+}
+
+message ClockParkQuitScriptScRsp {
+	uint32 retcode = 13;
+}
+
+message ClockParkStartScriptCsReq {
+	repeated uint32 BDGMNPIJDDL = 7;
+	uint32 script_id = 14;
+}
+
+message ClockParkStartScriptScRsp {
+	uint32 script_id = 8;
+	uint32 retcode = 10;
+}
+
+message ClockParkUnlockTalentCsReq {
+	uint32 CKHCLKOALKE = 7;
+}
+
+message ClockParkUnlockTalentScRsp {
+	uint32 retcode = 3;
+	uint32 CKHCLKOALKE = 4;
+}
+
+message ClockParkUseBuffCsReq {
+	uint64 ONIAFLNBNPN = 2;
+	uint32 CNHLAAHDPGA = 9;
+	uint32 JGPHDBDHKKO = 15;
+}
+
+message ClockParkUseBuffScRsp {
+	uint32 CNHLAAHDPGA = 6;
+	uint32 retcode = 7;
+	ClockParkBuffList HABJHGPFGEB = 10;
+	uint32 JGPHDBDHKKO = 12;
+	oneof BAHFDOOAGPP {
+		IIMHLPBEDDH CENIOBBIJMF = 1360;
+		LOBFOKCKPKB JOFJEIFLGBP = 1565;
+	}
+}
+
+enum CmdClockParkType {
+	CmdClockParkType_NLCDGIPGFDJ = 0;
+	CmdClockParkType_ClockParkGetInfoScRsp = 7201;
+	CmdClockParkType_ClockParkGetOngoingScriptInfoScRsp = 7204;
+	CmdClockParkType_ClockParkFinishScriptScNotify = 7206;
+	CmdClockParkType_ClockParkUnlockTalentCsReq = 7207;
+	CmdClockParkType_ClockParkQuitScriptCsReq = 7209;
+	CmdClockParkType_ClockParkStartScriptCsReq = 7213;
+	CmdClockParkType_ClockParkUnlockTalentScRsp = 7215;
+	CmdClockParkType_ClockParkGetInfoCsReq = 7216;
+	CmdClockParkType_ClockParkGetOngoingScriptInfoCsReq = 7222;
+	CmdClockParkType_ClockParkStartScriptScRsp = 7227;
+	CmdClockParkType_ClockParkHandleWaitOperationScRsp = 7230;
+	CmdClockParkType_ClockParkUseBuffScRsp = 7232;
+	CmdClockParkType_ClockParkHandleWaitOperationCsReq = 7236;
+	CmdClockParkType_ClockParkBattleEndScNotify = 7242;
+	CmdClockParkType_ClockParkQuitScriptScRsp = 7243;
+	CmdClockParkType_ClockParkUseBuffCsReq = 7247;
+}
+
+message DEGFFGKMFJJ {
+	repeated uint32 CFJOGMJIHOE = 5;
+	uint32 script_id = 11;
+}
+
+message FAMLGHGHIOD {
+	uint32 NOJLMNMPKDP = 3;
+	uint32 buff_id = 5;
+	uint64 unique_id = 6;
+}
+
+message FFDLJDAGEML {
+	IIMHLPBEDDH CENIOBBIJMF = 5;
+}
+
+message FOFGKMONJHJ {
+	bool OEKKAJJEGAK = 7;
+}
+
+message GIPBHLBFDAH {
+	uint32 progress = 1;
+	uint32 NGBJMEHDKHN = 2;
+	uint32 DCAHJELNJNP = 3;
+	bool DMNEACGEHEC = 6;
+	bool HGPKMHFPMBJ = 8;
+	ItemList reward = 11;
+	uint32 script_id = 12;
+}
+
+message IEFICANECDH {
+	IIMHLPBEDDH CENIOBBIJMF = 1;
+	uint32 gacha_random = 13;
+	uint32 NDNHCFBFPMH = 15;
+}
+
+message IGJLLHMJKPC {
+	uint32 gacha_random = 4;
+	bool IMKGOKGKDPH = 13;
+}
+
+message IIMHLPBEDDH {
+	repeated uint32 KCNEKEGGAGG = 3;
+	repeated NIJHCCNMEGA LONFKFCFDND = 4;
+}
+
+message KJAIAGDNPGC {
+	IIMHLPBEDDH CENIOBBIJMF = 5;
+}
+
+message KOCBHDOKFNF {
+	IIMHLPBEDDH CENIOBBIJMF = 4;
+}
+
+message LOBFOKCKPKB {
+	int32 PNOIJPDMCPG = 6;
+	int32 AKKLILNJCPL = 7;
+	int32 JEKOHIHJFMK = 10;
+}
+
+message MDDIKNGBPPL {
+	oneof EEFKMMOBNOJ {
+		PEGDBKDLJDJ FDNLIPKGBLM = 1;
+		FFDLJDAGEML DLNGPBMGMKM = 3;
+		CNOAGGFCDAL ICPMABKBLCD = 4;
+		NIKCDPGKKLF ABIPNABIDPE = 7;
+		KOCBHDOKFNF BPMEBJHDOFC = 8;
+		IEFICANECDH HGHBDACDJKP = 9;
+		bool ALFNNIIMBLM = 13;
+		FOFGKMONJHJ BELJJJLLCBK = 14;
+	}
+	uint32 JGPHDBDHKKO = 6;
+}
+
+message MOEMKBLCKKO {
+}
+
+message NIJHCCNMEGA {
+	uint32 card_id = 3;
+	uint32 NPCBECNBIJK = 14;
+	repeated uint32 KCNEKEGGAGG = 15;
+}
+
+message NIKCDPGKKLF {
+	IIMHLPBEDDH CENIOBBIJMF = 8;
+}
+
+message NKOCCGLHOML {
+}
+
+message PEGDBKDLJDJ {
+	IIMHLPBEDDH CENIOBBIJMF = 10;
+}

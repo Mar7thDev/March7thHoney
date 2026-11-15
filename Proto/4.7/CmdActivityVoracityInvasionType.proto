@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdActivityVoracityInvasionType {
+	CmdActivityVoracityInvasionType_NLCDGIPGFDJ = 0;
+	CmdActivityVoracityInvasionType_SyncActivityVoracityInvasionDataScNotify = 10664;
+	CmdActivityVoracityInvasionType_GetActivityVoracityInvasionDataScRsp = 10668;
+	CmdActivityVoracityInvasionType_JHMLDIGIOKD = 10675;
+}
+
+message GMHGNOPOONF {
+}
+
+message GetActivityVoracityInvasionDataScRsp {
+	uint64 LOPGJCDNLJF = 3;
+	int64 LBEGAHHDKBE = 8;
+	double JKFLIHPNDHE = 12;
+	uint32 score = 14;
+	uint32 retcode = 15;
+}
+
+message SyncActivityVoracityInvasionDataScNotify {
+	int64 LBEGAHHDKBE = 2;
+	uint32 score = 9;
+	uint64 LOPGJCDNLJF = 14;
+	double JKFLIHPNDHE = 15;
+}

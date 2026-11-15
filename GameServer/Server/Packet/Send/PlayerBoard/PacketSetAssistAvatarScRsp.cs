@@ -1,15 +1,16 @@
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
-using Google.Protobuf.Collections;
 
 namespace March7thHoney.GameServer.Server.Packet.Send.PlayerBoard;
 
 public class PacketSetAssistAvatarScRsp : BasePacket
 {
-    public PacketSetAssistAvatarScRsp(RepeatedField<uint> avatarId) : base(CmdIds.SetAssistAvatarScRsp)
+    public PacketSetAssistAvatarScRsp(IReadOnlyList<uint> avatarIds, Retcode retcode = Retcode.RetSucc)
+        : base(CmdIds.SetAssistAvatarScRsp)
     {
-        var proto = new SetAssistAvatarScRsp();
-        proto.AvatarIdList.AddRange(avatarId);
+        var proto = new SetAssistAvatarScRsp { Retcode = (uint)retcode };
+        proto.AvatarIdList.AddRange(avatarIds);
+        if (avatarIds.Count > 0) proto.AvatarId = avatarIds[0];
 
         SetData(proto);
     }

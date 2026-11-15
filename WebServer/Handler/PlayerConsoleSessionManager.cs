@@ -1,49 +1,54 @@
 using System.Collections.Concurrent;
+using System.Globalization;
 using March7thHoney.Database.Account;
-using March7thHoney.Util;
 using March7thHoney.Util.Security;
 
 namespace March7thHoney.WebServer.Handler;
 
 /// <summary>
-///     Short-lived sessions for the player self-service console (/player). A session is bound to one account
-///     uid, so the page sends the password once instead of attaching it to every command — the launcher's older
-///     uid+password calls keep working next to this, see <see cref="Controllers.ConsoleRoutes" />.
+/// Short-lived player console sessions. The credential fingerprint binds a token to the password
+/// version used at sign-in, so every password change path revokes it without a database migration.
 /// </summary>
 public static class PlayerConsoleSessionManager
 {
-    private static readonly ConcurrentDictionary<string, PlayerConsoleSession> Sessions = [];
+    private static readonly ConcurrentDictionary<string, StoredSession> Sessions = [];
     private static readonly TimeSpan SessionLifetime = TimeSpan.FromHours(2);
 
-    public static PlayerConsoleSession Create(AccountData account)
+    public static PlayerConsoleSession Create(AccountData account) => Create(account, GetCredentialFingerprint(account));
+
+    // Login supplies the fingerprint captured before password verification. A concurrent password
+    // change must not issue a new token bound to credentials that were never actually verified.
+    internal static PlayerConsoleSession Create(AccountData account, string verifiedCredentialFingerprint)
     {
         CleanupExpiredSessions();
-
-        var session = new PlayerConsoleSession(
-            AuthSecurity.GenerateSessionToken(),
-            account.Uid,
+        var session = new PlayerConsoleSession(AuthSecurity.GenerateSessionToken(), account.Uid,
             DateTimeOffset.UtcNow.Add(SessionLifetime));
-
-        Sessions[session.Token] = session;
+        Sessions[session.Token] = new StoredSession(session, verifiedCredentialFingerprint);
         return session;
     }
 
-    /// <summary>Resolve a token to a live session and its account; expired or unknown tokens fail.</summary>
+    internal static string GetCredentialFingerprint(AccountData account) => AuthSecurity.HashToken(
+        string.Join("\n", account.PasswordSalt ?? "", account.PasswordHash ?? "",
+            account.PasswordIterations.ToString(CultureInfo.InvariantCulture)));
+
+    /// <summary>Unknown, expired, deleted-account and changed-password sessions all fail closed.</summary>
     public static bool TryResolve(string? token, out PlayerConsoleSession session, out AccountData account)
     {
+        CleanupExpiredSessions();
         session = default;
         account = null!;
-
-        if (!TryGetSession(token, out session))
+        if (string.IsNullOrWhiteSpace(token) || !Sessions.TryGetValue(token, out var stored))
             return false;
 
-        var resolved = AccountData.GetAccountByUid(session.Uid);
-        if (resolved == null)
+        var resolved = AccountData.GetAccountByUid(stored.Session.Uid);
+        if (stored.Session.ExpiresAt <= DateTimeOffset.UtcNow || resolved == null ||
+            !string.Equals(stored.CredentialFingerprint, GetCredentialFingerprint(resolved), StringComparison.Ordinal))
         {
-            Sessions.TryRemove(session.Token, out _);
+            Sessions.TryRemove(token, out _);
             return false;
         }
 
+        session = stored.Session;
         account = resolved;
         return true;
     }
@@ -54,46 +59,21 @@ public static class PlayerConsoleSessionManager
             Sessions.TryRemove(token, out _);
     }
 
-    /// <summary>Drop every session of one account — used after a self-reset so stale state cannot be reused.</summary>
     public static void RevokeForUid(int uid)
     {
-        foreach (var (token, session) in Sessions)
-        {
-            if (session.Uid == uid)
+        foreach (var (token, stored) in Sessions)
+            if (stored.Session.Uid == uid)
                 Sessions.TryRemove(token, out _);
-        }
-    }
-
-    private static bool TryGetSession(string? token, out PlayerConsoleSession session)
-    {
-        CleanupExpiredSessions();
-        session = default;
-
-        if (string.IsNullOrWhiteSpace(token))
-            return false;
-
-        if (!Sessions.TryGetValue(token, out var existing))
-            return false;
-
-        if (existing.ExpiresAt <= DateTimeOffset.UtcNow)
-        {
-            Sessions.TryRemove(token, out _);
-            return false;
-        }
-
-        session = existing;
-        return true;
     }
 
     private static void CleanupExpiredSessions()
     {
         var now = DateTimeOffset.UtcNow;
-        foreach (var (token, session) in Sessions)
-        {
-            if (session.ExpiresAt <= now)
+        foreach (var (token, stored) in Sessions)
+            if (stored.Session.ExpiresAt <= now)
                 Sessions.TryRemove(token, out _);
-        }
     }
 
+    private readonly record struct StoredSession(PlayerConsoleSession Session, string CredentialFingerprint);
     public readonly record struct PlayerConsoleSession(string Token, int Uid, DateTimeOffset ExpiresAt);
 }

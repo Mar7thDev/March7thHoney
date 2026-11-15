@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdSummonActivityType {
+	CmdSummonActivityType_NLCDGIPGFDJ = 0;
+	CmdSummonActivityType_SummonActivityBattleEndScNotify = 7561;
+	CmdSummonActivityType_GetSummonActivityDataScRsp = 7564;
+	CmdSummonActivityType_EnterSummonActivityStageScRsp = 7565;
+	CmdSummonActivityType_GetSummonActivityDataCsReq = 7566;
+	CmdSummonActivityType_EnterSummonActivityStageCsReq = 7568;
+}
+
+message EnterSummonActivityStageCsReq {
+	OOAJJMEGIFO NLJCJIGLGHE = 7;
+	repeated OOAJJMEGIFO avatar_list = 12;
+	uint32 group_id = 14;
+	uint32 DBKHHCGGKNN = 15;
+}
+
+message EnterSummonActivityStageScRsp {
+	SceneBattleInfo battle_info = 3;
+	uint32 retcode = 4;
+	uint32 DBKHHCGGKNN = 6;
+	uint32 group_id = 7;
+}
+
+message GetSummonActivityDataCsReq {
+}
+
+message GetSummonActivityDataScRsp {
+	repeated ILHFAFGOJAC IDLCLMMAIHP = 2;
+	uint32 retcode = 13;
+}
+
+message ILHFAFGOJAC {
+	uint32 group_id = 6;
+	uint32 star = 7;
+	uint32 difficulty_level = 12;
+}
+
+message OOAJJMEGIFO {
+	uint32 avatar_id = 4;
+	AvatarType avatar_type = 7;
+}
+
+message SummonActivityBattleEndScNotify {
+	uint32 star = 3;
+	uint32 round = 12;
+	uint32 group_id = 13;
+	uint32 difficulty_level = 14;
+}

@@ -106,3 +106,7 @@
       }
   }
   ```
+
+## Session safety
+
+Sessions expire after 15 minutes. Changing or disabling the admin key invalidates existing administrator sessions; clients must create and authenticate a new session. Expired sessions are pruned every minute and before admission. The creation endpoint allows at most 1024 unexpired sessions globally and 32 per HTTP source address; overflow returns a nonzero `code`. Reuse a valid session rather than continuously creating new IDs.

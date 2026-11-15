@@ -133,13 +133,37 @@ public class March7thHoneyListener
         long convId;
         lock (ConnectionsLock)
         {
-            // Held across take-number + register so two concurrent handshakes can't compute the same "next available" id.
+            var create = CreateConnection;
+            var multiplex = Multiplex;
+            if (create == null || multiplex == null) return;
+            var config = ConfigManager.Config.GameServer;
+            // Check limits and duplicates under the same lock as allocation/registration. Rejected
+            // unauthenticated handshakes allocate no KCP queues and do not evict existing players.
+            if (!KcpAdmissionPolicy.CanAccept(Connections.Values, rcv.RemoteEndPoint,
+                    config.MaxConnections, config.MaxPendingConnections, config.MaxPendingConnectionsPerIp,
+                    static c => c.RemoteEndPoint, static c => c.State == SessionStateEnum.ACTIVE))
+                return;
+
             convId = Connections.GetNextAvailableIndex();
-            var convo = Multiplex?.CreateConversation(convId, rcv.RemoteEndPoint, ConvOpt);
-            if (convo == null || CreateConnection == null) return;
-            con = CreateConnection(convo, rcv.RemoteEndPoint);
-            if (con.ConversationId.HasValue)
-                Connections[con.ConversationId.Value] = con;
+            var convo = multiplex.CreateConversation(convId, rcv.RemoteEndPoint, ConvOpt);
+            if (convo == null) return;
+            try
+            {
+                con = create(convo, rcv.RemoteEndPoint);
+                if (con.ConversationId != convId)
+                {
+                    multiplex.UnregisterConversation(convId);
+                    convo.Dispose();
+                    return;
+                }
+                Connections.Add(con.ConversationId.Value, con);
+            }
+            catch
+            {
+                multiplex.UnregisterConversation(convId);
+                convo.Dispose();
+                throw;
+            }
         }
 
         Logger.Info($"Accepting game handshake from {rcv.RemoteEndPoint}. conv_id={convId} enet={enet}");

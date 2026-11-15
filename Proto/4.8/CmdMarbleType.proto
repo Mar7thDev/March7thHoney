@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdMarbleType {
+	CmdMarbleType_NLCDGIPGFDJ = 0;
+	CmdMarbleType_MarbleUpdateShownSealCsReq = 8275;
+	CmdMarbleType_MarbleGetDataCsReq = 8276;
+	CmdMarbleType_MarbleUpdateShownSealScRsp = 8281;
+	CmdMarbleType_MarbleLevelFinishScRsp = 8282;
+	CmdMarbleType_MarbleShopBuyCsReq = 8284;
+	CmdMarbleType_MarbleShopBuyScRsp = 8285;
+	CmdMarbleType_MarblePvpDataUpdateScNotify = 8286;
+	CmdMarbleType_MarbleUnlockSealScNotify = 8287;
+	CmdMarbleType_MarbleLevelFinishCsReq = 8288;
+	CmdMarbleType_MarbleGetDataScRsp = 8289;
+}
+
+message MarbleGetDataCsReq {
+}
+
+message MarbleGetDataScRsp {
+	uint32 retcode = 7;
+	repeated uint32 IKGIIIJLLBL = 9;
+	repeated uint32 KJJCIMANKOA = 12;
+	repeated uint32 LHDIMCDHCEO = 14;
+	int32 score_id = 15;
+}
+
+message MarbleLevelFinishCsReq {
+	uint32 match_id = 9;
+	repeated uint32 EGCLLKDHIAE = 10;
+}
+
+message MarbleLevelFinishScRsp {
+	uint32 match_id = 4;
+	uint32 retcode = 8;
+}
+
+message MarblePvpDataUpdateScNotify {
+	int32 score_id = 15;
+}
+
+message MarbleShopBuyCsReq {
+	repeated uint32 EGCLLKDHIAE = 3;
+}
+
+message MarbleShopBuyScRsp {
+	repeated uint32 EGCLLKDHIAE = 4;
+	uint32 retcode = 7;
+}
+
+message MarbleUnlockSealScNotify {
+	repeated uint32 EGCLLKDHIAE = 15;
+}
+
+message MarbleUpdateShownSealCsReq {
+	repeated uint32 GFADCIHMDNN = 10;
+}
+
+message MarbleUpdateShownSealScRsp {
+	repeated uint32 GFADCIHMDNN = 4;
+	uint32 retcode = 14;
+}

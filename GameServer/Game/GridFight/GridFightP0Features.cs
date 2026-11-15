@@ -183,7 +183,7 @@ public sealed partial class GridFightSession
             ActiveInvestmentIds);
         if (offer.Count == 0) return false;
         InvestmentOffer = offer;
-        _rerolledInvestmentIds.Clear();
+        ResetInvestmentRerolls();
         _goldFuturesPendingReady = false;
         _goldFuturesNodeCount = 0;
         _goldFuturesInvestmentPending = true;
@@ -193,6 +193,7 @@ public sealed partial class GridFightSession
 
     private void EnterCurrentNodePostRoundPhase()
     {
+        if (TryBeginBonusInvestment(GridFightSessionPhase.SelectingInvestment)) return;
         if (TryBeginGoldFuturesInvestment()) return;
         if (CurrentNode.NodeType == GridFightNodeTypeEnum.Supply)
         {
@@ -206,7 +207,11 @@ public sealed partial class GridFightSession
         else if (CurrentNode.Template.IsAugment != 0)
         {
             PrepareInvestmentOffer();
-            Phase = GridFightSessionPhase.SelectingInvestment;
+            // Every remaining augment may already be owned late in a run; skip the choice instead of
+            // publishing an empty offer that the client can never resolve.
+            Phase = InvestmentOffer.Count == 0
+                ? GridFightSessionPhase.AwaitingBattleReturn
+                : GridFightSessionPhase.SelectingInvestment;
         }
         else
         {

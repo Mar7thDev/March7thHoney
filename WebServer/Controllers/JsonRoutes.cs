@@ -39,8 +39,9 @@ public static class JsonRoutes
             if (acc == null)
                 return Results.Text("uid not found on server", "text/plain", null, 400);
 
-            if (ConfigManager.Config.WebSecurity.EnableRsaLoginDecrypt &&
-                (string.IsNullOrEmpty(password) || !acc.VerifyPassword(password)))
+            // Save import always requires credentials. RSA only controls login transport decryption,
+            // not permission to overwrite a save. Accounts without a password must set one first.
+            if (string.IsNullOrEmpty(password) || !acc.VerifyPassword(password))
                 return Results.Text("Invalid password for this uid.", "text/plain", null, 401);
 
             Connection? con = null;

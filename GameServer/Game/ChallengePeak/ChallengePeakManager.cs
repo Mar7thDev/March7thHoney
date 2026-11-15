@@ -4,6 +4,7 @@ using March7thHoney.Database;
 using March7thHoney.Database.Challenge;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Database.Lineup;
+using March7thHoney.Database.Player;
 using March7thHoney.GameServer.Game.Challenge.Instances;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.ChallengePeak;
@@ -148,7 +149,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var bossProto = new Proto.ChallengePeakBoss
         {
             // 颜色勋章沿用结算口径: 普通零轮或绝境通关。
-            HardModeHasPassed = !realProgress || hardRec?.HasRecord == true || easyRec is { HasRecord: true, RoundCnt: 0 },
+            HardModeHasPassed = !realProgress || ChallengePeakMedal.HasColorMedal(easyRec, hardRec),
             EasyMode = new ChallengePeakBossClearance { HasPassed = !realProgress || easyRec?.HasRecord == true },
             HardMode = new ChallengePeakBossClearance { HasPassed = !realProgress || hardRec?.HasRecord == true }
         };
@@ -241,7 +242,21 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var mobStars = passedMobs * 3;
         var hasBoss = groupConfig.BossLevelID > 0;
         var bossStars = hasBoss ? 3 : 0;
-        var bossHardStars = hasBoss ? 3 : 0;
+
+        // Real-progress mode pays only what the records earned; the default mode keeps the optimistic values.
+        if (RequiresKnightClears)
+        {
+            var data = Player.ChallengeManager!.ChallengeData;
+            var passedLevels = groupConfig.PreLevelIDList
+                .Select(id => data.PeakLevelDatas.GetValueOrDefault(id))
+                .Where(level => level?.HasRecord == true)
+                .ToList();
+            passedMobs = passedLevels.Count;
+            mobStars = passedLevels.Sum(level => level!.FinishedTargetList.Count);
+
+            data.PeakBossLevelDatas.TryGetValue((groupConfig.BossLevelID << 2) | 0, out var easyRec);
+            bossStars = easyRec?.HasRecord == true ? easyRec.FinishedTargetList.Count : 0;
+        }
 
         if (!Player.ChallengeManager!.ChallengeData.PeakTakenRewardIds.TryGetValue(groupId, out var takenList))
         {
@@ -260,13 +275,12 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
             if (!requested.Contains(entry.ID)) continue;
             if (takenList.Contains(entry.ID)) continue;
 
+            // 限时头像框(BOSS_STAR_LIMIT_REWARD / BOSS_COLOR_TARGET_REWARD)客户端不可领取, 只在王棋结算时按战绩发放
             var passed = entry.RewardType switch
             {
                 "MOB_PASS_REWARD" => passedMobs >= entry.TypeValue,
                 "MOB_STAR_REWARD" => mobStars >= entry.TypeValue,
                 "BOSS_STAR_REWARD" => bossStars >= entry.TypeValue,
-                "BOSS_STAR_LIMIT_REWARD" => bossHardStars >= entry.TypeValue,
-                "BOSS_COLOR_TARGET_REWARD" => hasBoss,
                 _ => false
             };
             if (!passed) continue;
@@ -406,17 +420,7 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
                 mirror.BuffId = data.BuffId;
             }
 
-            // set head frame
-            if (isHard)
-            {
-                await Player.SetPlayerHeadFrameId(GameConstants.CHALLENGE_PEAK_ULTRA_FRAME_ID, long.MaxValue);
-            }
-            else
-            {
-                var targetFrameId = (uint)targetIds.Count + 226000;
-                if (Player.Data.HeadFrame.HeadFrameId < targetFrameId)
-                    await Player.SetPlayerHeadFrameId(targetFrameId, long.MaxValue);
-            }
+            await GrantBossHeadFrame((int)peak.CurrentPeakGroupId, (int)peak.CurrentPeakLevelId);
         }
         else
         {
@@ -449,6 +453,25 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         await Player.SendPacket(
             new PacketChallengePeakGroupDataUpdateScNotify(
                 GetChallengePeakInfo((int)peak.CurrentPeakGroupId, disableHardMode)));
+    }
+
+    // 限时头像框按王棋最佳战绩的勋章档位从 ChallengePeakReward 读取; 只升不降, 同档不重复下发
+    private async ValueTask GrantBossHeadFrame(int groupId, int bossLevelId)
+    {
+        if (!GameData.ChallengePeakGroupConfigData.TryGetValue(groupId, out var groupConfig)) return;
+
+        var bossDatas = Player.ChallengeManager!.ChallengeData.PeakBossLevelDatas;
+        bossDatas.TryGetValue(bossLevelId << 2, out var easyRec);
+        bossDatas.TryGetValue((bossLevelId << 2) | 1, out var hardRec);
+
+        var rank = ChallengePeakMedal.GetBossRank(easyRec, hardRec);
+        if (rank <= ChallengePeakMedal.GetHeadFrameRank(Player.Data.HeadFrame.HeadFrameId)) return;
+
+        var frameId = ChallengePeakMedal.GetHeadFrameItemId(groupConfig.RewardGroupID, rank);
+        if (frameId == 0) return;
+
+        // 服务端没有赛季结束时间, 用远期有效期代替"当期有效"; 物品同时进背包, 客户端才提供展示开关
+        await HeadFrameService.Grant(Player, frameId, PlayerHeadFrameInfo.NoSeasonExpireTime);
     }
 
     public async ValueTask<Retcode> StartChallenge(int levelId, uint buffId, List<int> avatarIdList)

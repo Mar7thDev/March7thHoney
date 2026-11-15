@@ -21,4 +21,4 @@ dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj 
 - 每日委托：`FinishTodayDailyMissionCnt` 在完成每日委托后达成，同一委托同一周期只计一次；跨日当日计数清零、累计计数保留。开启任务系统的玩家：未满足解锁任务时不发放，强制发放按 `DailyMissionCount.DailyCount` 补足，同日重复发放不追加；完成委托计入计数，跨日后已完成委托恢复为可接取并重新发放。
 - 每日实训数据写入独立的 `DailyActive` 表。
 
-边界：这不是客户端测试。面板显示、领取动画、任务追踪以及 `DailyActiveInfoNotify` 与 `GetDailyActiveInfoScRsp` 的客户端取值需要实机验证；`ExcellentEnterBattleAndWin`、`ItemCompose`、`UseMazeSkill`、`PropDestruct`、`WinBattleWithAssistAvatarCnt`、`TakePictureCnt`、`RogueExploreRoomFinishCnt`、`UseItemWithType` 等实训条件尚未实现，入选后无法完成；2100156 的货币战争子任务（`GridFightFinishGamePlay`）同样未实现，只能通过差分宇宙子任务完成。
+边界：这不是客户端测试。面板显示、领取动画、任务追踪以及 `DailyActiveInfoNotify` 与 `GetDailyActiveInfoScRsp` 的客户端取值需要实机验证；`UseMazeSkill`（秘技施放）、`PropDestruct`（可破坏物）、`WinBattleWithAssistAvatarCnt`（携带支援角色获胜）、`RogueExploreRoomFinishCnt`（模拟宇宙房间）已接入计数事件，`AnyFarmElementFinish` 只计凝滞虚影胜利（排除花萼），`UseItem` 按实际消耗数量计（消耗开拓力计为物品 11）；`ExcellentEnterBattleAndWin`、`ItemCompose`、`TakePictureCnt`、`UseItemWithType` 等实训条件尚未实现，入选后无法完成；2100156 的货币战争子任务（`GridFightFinishGamePlay`）同样未实现，只能通过差分宇宙子任务完成。

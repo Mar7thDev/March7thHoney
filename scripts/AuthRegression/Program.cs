@@ -388,6 +388,9 @@ using (var response = await noRedirect.GetAsync("/login-platform/register.html")
 auth.ExternalRegistrationUrl = "";
 auth.EnableRegistration = true;
 
+// Account bans must not propagate to other UIDs through a shared PC fingerprint or network.
+await BanRegression.Run(client, admin, Password, Check);
+
 Console.WriteLine($"Auth regression failures: {failures.Count}");
 if (serve && failures.Count == 0)
 {

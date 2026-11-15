@@ -4,6 +4,7 @@ using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
 
 namespace March7thHoney.GameServer.Game.Rogue;
 
@@ -11,6 +12,22 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
 {
     // Room props belong to one run: a portal opened or a chest used in an earlier run must not carry over.
     public override bool PersistsPropState => false;
+
+    private bool BelongsToActiveRoom(int groupId)
+    {
+        var room = player.RogueManager?.GetActiveRoomExcel(Scene.EntryId);
+        return room == null || groupId == room.GroupID || room.GroupWithContent.ContainsKey(groupId);
+    }
+
+    public override ValueTask<List<BaseGameEntity>?> LoadGroup(GroupInfo info, bool forceLoad = false)
+    {
+        // One floor contains multiple room templates. RogueRoom selects both the main prop group and
+        // its content groups; loading every floor group stacks other rooms' Closed barriers on ours.
+        // Apply this even to forced loads and mission reconciliation, which also walk the whole floor.
+        return BelongsToActiveRoom(info.Id)
+            ? base.LoadGroup(info, forceLoad)
+            : ValueTask.FromResult<List<BaseGameEntity>?>(null);
+    }
 
     public override async ValueTask LoadEntity()
     {
@@ -36,8 +53,12 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
         var roomExcel = manager?.GetActiveRoomExcel(Scene.EntryId);
         if (manager == null || roomExcel == null) return await base.LoadMonster(info, group, sendPacket);
 
+        if (manager.RogueInstance is { IsWin: true } run && run.GetCurrentRoom()?.Status == Proto.RogueRoomStatus.Finish)
+            return null; // A completed room awaiting settlement must not respawn its encounters on relogin.
+
         // In a live room only the room's own groups spawn, each swapped to a drawn RogueMonster.
         if (info.IsClientOnly || info.IsDelete) return null;
+        if (manager.IsDefeatedTutorialMonster(Scene.FloorId, group.Id, info.ID)) return null;
         var content = roomExcel.GroupWithContent.GetValueOrDefault(group.Id);
         if (content == 0) return null;
 
@@ -60,19 +81,32 @@ public class RogueEntityLoader(SceneInstance scene, PlayerInstance player) : Sce
 
     public override async ValueTask<EntityProp?> LoadProp(PropInfo info, GroupInfo group, bool sendPacket = false)
     {
-        var prop = await base.LoadProp(info, group, sendPacket);
-        if (prop?.Excel.PropType != PropTypeEnum.PROP_ROGUE_DOOR) return prop;
-
+        if (!BelongsToActiveRoom(group.Id)) return null;
+        // Apply run-specific state before the first entity packet, including late group loads/relogin.
+        var prop = await base.LoadProp(info, group, false);
+        if (prop == null) return null;
         var manager = player.RogueManager;
         var roomExcel = manager?.GetActiveRoomExcel(Scene.EntryId);
-        if (manager == null || roomExcel == null || group.Id != roomExcel.GroupID) return prop;
-
-        // The official room ships its exit portal Closed with the destination attached
-        // (rogue_game_info{room_id, site}); RogueManager.OpenRoomExit opens it once the room is cleared.
-        prop.State = PropStateEnum.Closed;
-        prop.RogueDoorTarget = ResolveDoorTarget(manager.GetRoomExitTargets(), group, info.ID);
+        if (manager != null && roomExcel != null)
+        {
+            if (prop.Excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR && group.Id == roomExcel.GroupID)
+            {
+                // The official room ships its exit portal Closed with the destination attached
+                // (rogue_game_info{room_id, site}); OpenRoomExit opens it once the room is cleared.
+                prop.State = PropStateEnum.Closed;
+                prop.RogueDoorTarget = ResolveDoorTarget(manager.GetRoomExitTargets(), group, info.ID);
+            }
+            if (manager.GetTutorialPropState(Scene.FloorId, group.Id, info) is { } state)
+                prop.State = state;
+        }
+        if (sendPacket) await player.SendPacket(new PacketSceneGroupRefreshScNotify(player, prop));
         return prop;
     }
+
+    public override ValueTask<EntityNpc?> LoadNpc(NpcInfo info, GroupInfo group, bool sendPacket = false) =>
+        BelongsToActiveRoom(group.Id)
+            ? base.LoadNpc(info, group, sendPacket)
+            : ValueTask.FromResult<EntityNpc?>(null);
 
     // Doors are paired with next sites in ascending inst id / site id order; a surplus door leads to the last
     // site. Official captures only cover single-door rooms, so the pairing itself is unverified.

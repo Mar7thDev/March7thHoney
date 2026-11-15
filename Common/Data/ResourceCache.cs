@@ -92,6 +92,20 @@ public static class ResourceCache
     {
         var validates45ProdData = GameConstants.IsVersion("4.5.0");
 
+        // The split camp table also identifies the native role-skill layout.
+        // Older caches have unscoped camps and no native-skill marker; rebuild
+        // only when raw resources are present, preserving cache-only deployments.
+        var hasGridFightCampSeason = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "GridFightCampSeason.json")));
+        if (hasGridFightCampSeason &&
+            (GameData.GridFightCampData.Values.Any(row => row.SeasonID == 0) ||
+             GameData.GridFightRoleBasicInfoData.Values.Any(row =>
+                 row.RoleSavedValueList.Count == 0 && !row.UsesNativeSkillOverrides)))
+        {
+            Logger.Warn("Resource cache is stale: GridFight split season tables and native role skills require a rebuild.");
+            return false;
+        }
+
         // 4.5 moved content-package entrances (including the Divergent Universe lobby) into
         // MapEntranceLD.json. Reject an old cache only when the matching raw table is available,
         // so deployments that intentionally ship cache-only resources keep working.

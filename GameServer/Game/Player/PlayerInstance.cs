@@ -1,3 +1,5 @@
+using March7thHoney.Database.Inventory;
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.Avatar;
@@ -8,6 +10,7 @@ using March7thHoney.Database.Scene;
 using March7thHoney.Database.Tutorial;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Activity;
+using March7thHoney.GameServer.Game.Activity.ActivityBangboo;
 using March7thHoney.GameServer.Game.Activity.ExpeditionBattle;
 using March7thHoney.GameServer.Game.Activity.FinalityBattle;
 using March7thHoney.GameServer.Game.Activity.MechCraft;
@@ -26,6 +29,8 @@ using March7thHoney.GameServer.Game.Lineup;
 using March7thHoney.GameServer.Game.Mail;
 using March7thHoney.GameServer.Game.Message;
 using March7thHoney.GameServer.Game.Mission;
+using March7thHoney.GameServer.Game.Activity.DiceyDungeon;
+using March7thHoney.GameServer.Game.Activity.RealityShow;
 using March7thHoney.GameServer.Game.Pet;
 using March7thHoney.GameServer.Game.DailyActive;
 using March7thHoney.GameServer.Game.Player.Components;
@@ -33,13 +38,16 @@ using March7thHoney.GameServer.Game.Quest;
 using March7thHoney.GameServer.Game.Raid;
 using March7thHoney.GameServer.Game.Rogue;
 using March7thHoney.GameServer.Game.Scene;
+using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.GameServer.Game.Shop;
 using March7thHoney.GameServer.Game.Sync.Player;
 using March7thHoney.GameServer.Game.TrainCakeCatch;
 using March7thHoney.GameServer.Game.TrainParty;
 using March7thHoney.GameServer.Game.Task;
 using March7thHoney.GameServer.Server;
+using March7thHoney.GameServer.Server.Packet.Send.DailyActive;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
@@ -251,8 +259,11 @@ public partial class PlayerInstance(PlayerData data)
     {
         Components.Add(new SwitchHandComponent(this));
         Components.Add(new FiveDimComponent(this));
+        Components.Add(new ActivityBangbooManager(this));
         Components.Add(new DailyActiveManager(this));
         Components.Add(new PetManager(this));
+        Components.Add(new DiceyDungeonManager(this));
+        Components.Add(new RealityShowManager(this));
 
         if ((int)(ServerPrefsData!.Version * 1000) != GameConstants.GameVersionInt)
         {
@@ -270,8 +281,6 @@ public partial class PlayerInstance(PlayerData data)
             if (config == null) continue;
             path.GetSkillTree()[skill.Key] = Math.Min(skill.Value, config.MaxLevel); // limit skill level
         }
-
-        AvatarManager!.NormalizeHeroCurPath();
 
         foreach (var info in LineupManager!.GetAllLineup().SelectMany(lineupInfo => lineupInfo.BaseAvatars ?? []))
         {
@@ -292,8 +301,11 @@ public partial class PlayerInstance(PlayerData data)
         if (PendingMissionEnabledOverride.HasValue)
             MissionManager!.Data.EnableMissionOverride = PendingMissionEnabledOverride;
 
+        AvatarManager!.NormalizeHeroCurPath();
+
         if (MissionEnabled)
         {
+            await MissionManager!.RepairSkippedRogueTutorials();
             await MissionManager!.AcceptMainMissionByCondition();
             // Runs on every load, not just once: a save can stall at any point in the chain, and the
             // pass is a no-op when every accepted main already has a running sub-mission.
@@ -363,6 +375,10 @@ public partial class PlayerInstance(PlayerData data)
 
     public async ValueTask OnLogin()
     {
+        if (AvatarManager != null)
+            await AvatarManager.GrantUnlockedStoryPaths(false);
+        await HeadFrameService.RepairOwnedItem(this);
+
         CalyxOverrideManager?.ResetLineupOverride();
         await SendPacket(new PacketStaminaInfoScNotify(this));
 
@@ -433,6 +449,9 @@ public partial class PlayerInstance(PlayerData data)
             }
         }
 
+        if (tierceLobbyEntry == null && RogueManager != null)
+            await RogueManager.RestoreLineupAtLogin();
+
         if (tierceLobbyEntry is { } lobbyEntry)
             await EnterScene(lobbyEntry, 0, false);
         else
@@ -483,7 +502,10 @@ public partial class PlayerInstance(PlayerData data)
 
     public void OnLogoutAsync()
     {
+        Data.LastActiveTime = Extensions.GetUnixSec();
+        DatabaseHelper.MarkDirty(Uid);
         B51RacingManager?.ClearRace();
+        GridFightManager?.Persist();
     }
 
     public async ValueTask SendPacket(BasePacket packet)
@@ -545,8 +567,6 @@ public partial class PlayerInstance(PlayerData data)
             avatar.SetCurSp(0, LineupManager!.GetCurLineup()!.IsExtraLineup());
             // Save new skill tree
             avatar.CheckPathSkillTree();
-            await SendPacket(new PacketAvatarPathChangedNotify(8001, (MultiPathAvatarType)id));
-            await SendPacket(new PacketPlayerSyncScNotify(AvatarManager!.GetHero()!));
         }
         else
         {
@@ -556,21 +576,48 @@ public partial class PlayerInstance(PlayerData data)
             avatar.SetCurSp(0, LineupManager!.GetCurLineup()!.IsExtraLineup());
             // Save new skill tree
             avatar.CheckPathSkillTree();
+        }
+
+        // The field actor is built from the current path. Rebuild it before the path notify,
+        // or the world keeps the previous model.
+        await RefreshAvatarActor(baseAvatarId);
+
+        if (baseAvatarId == 8001)
+        {
+            await SendPacket(new PacketAvatarPathChangedNotify(8001, (MultiPathAvatarType)id));
+            await SendPacket(new PacketPlayerSyncScNotify(AvatarManager!.GetHero()!));
+        }
+        else
+        {
             await SendPacket(new PacketAvatarPathChangedNotify((uint)baseAvatarId, (MultiPathAvatarType)type));
             await SendPacket(new PacketPlayerSyncScNotify(avatar));
         }
 
-        // check if avatar is in scene
-        if (SceneInstance != null)
-        {
-            var avatarScene =
-                SceneInstance.AvatarInfo.Values.FirstOrDefault(x => x.AvatarInfo.BaseAvatarId == baseAvatarId);
-            if (avatarScene == null) return id;
-
-            await avatarScene.ClearAllBuff();
-        }
-
         return id;
+    }
+
+    private async ValueTask RefreshAvatarActor(int baseAvatarId)
+    {
+        if (SceneInstance == null) return;
+        var existing = SceneInstance.AvatarInfo.Values.FirstOrDefault(x => x.AvatarInfo.BaseAvatarId == baseAvatarId);
+        if (existing == null) return;
+
+        await existing.ClearAllBuff();
+        SceneInstance.AvatarInfo.Remove(existing.EntityId);
+        SceneInstance.Entities.Remove(existing.EntityId);
+        await existing.OnDestroyInstance();
+
+        var fresh = new AvatarSceneInfo(existing.AvatarInfo, existing.AvatarType, this)
+        {
+            EntityId = ++SceneInstance.LastEntityId
+        };
+        SceneInstance.AvatarInfo[fresh.EntityId] = fresh;
+        SceneInstance.Entities[fresh.EntityId] = fresh;
+        if (SceneInstance.LeaderEntityId == existing.EntityId)
+            SceneInstance.LeaderEntityId = fresh.EntityId;
+
+        await SendPacket(new PacketSceneGroupRefreshScNotify(this,
+            new List<BaseGameEntity> { fresh }, new List<BaseGameEntity> { existing }));
     }
 
     public async ValueTask SetHeroGender(Gender gender)
@@ -607,16 +654,8 @@ public partial class PlayerInstance(PlayerData data)
             await LoadScene(Data.PlaneId, Data.FloorId, Data.EntryId, Data.Pos, Data.Rot, true);
     }
 
-    public async ValueTask ChangeAvatarSkin(int avatarId, int skinId)
-    {
-        PlayerUnlockData!.Skins.TryGetValue(avatarId, out var skins);
-        if (skins != null && (skins.Contains(skinId) || skinId == 0))
-        {
-            var avatar = AvatarManager!.GetFormalAvatar(avatarId)!;
-            avatar.GetPathInfo(avatarId)!.Skin = skinId;
-            await SendPacket(new PacketPlayerSyncScNotify(avatar));
-        }
-    }
+    public ValueTask<Retcode> ChangeAvatarSkin(int avatarId, int skinId) =>
+        AvatarManager!.ChangeSkin(avatarId, skinId);
 
     public async ValueTask<FormalAvatarInfo> MarkAvatar(int avatarId, bool isMarked, bool sendPacket = true)
     {
@@ -635,6 +674,10 @@ public partial class PlayerInstance(PlayerData data)
     {
         Data.Stamina -= staminaCost;
         await SendPacket(new PacketStaminaInfoScNotify(this));
+        // Spent Trailblaze Power counts as using item 11 ("Consume 120 Trailblaze Power").
+        if (staminaCost > 0 && MissionManager != null)
+            await MissionManager.HandleFinishType(MissionFinishTypeEnum.UseItem,
+                new ItemData { ItemId = 11, Count = staminaCost });
     }
 
     public void OnAddExp()
@@ -661,6 +704,11 @@ public partial class PlayerInstance(PlayerData data)
     public async ValueTask OnLevelUp()
     {
         if (MissionEnabled) await MissionManager!.AcceptMainMissionByCondition();
+
+        // Reaching DailyQuest.MinLevel fills today's daily training at once instead of on the next login.
+        var daily = GetComponentOrDefault<DailyActiveManager>();
+        if (daily != null && await daily.EnsureToday())
+            await SendPacket(new PacketDailyActiveInfoNotify(daily));
     }
 
     public void OnLevelChange()

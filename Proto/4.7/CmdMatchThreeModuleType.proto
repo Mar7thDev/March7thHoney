@@ -1,0 +1,180 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ALNGMGOJDOA {
+	map<uint32, uint32> GMONIMLFKFC = 5;
+	repeated HPIEHAMDJAP MJNNNJPDKDI = 7;
+	map<uint32, uint32> AEOMEFEMBJI = 10;
+	repeated MLHLIMIJHDD DBINCLPHEFN = 15;
+}
+
+enum CmdMatchThreeModuleType {
+	CmdMatchThreeModuleType_NLCDGIPGFDJ = 0;
+	CmdMatchThreeModuleType_MatchThreeV2SetBirdPosCsReq = 7410;
+	CmdMatchThreeModuleType_MatchThreeV2BattleItemLevelUpCsReq = 7411;
+	CmdMatchThreeModuleType_MatchThreeRoyaleFinishScNotify = 7416;
+	CmdMatchThreeModuleType_IDOCIKIILOL = 7424;
+	CmdMatchThreeModuleType_MatchThreeV2ScNotify = 7425;
+	CmdMatchThreeModuleType_MatchThreeV2LevelEndCsReq = 7426;
+	CmdMatchThreeModuleType_MatchThreeSyncDataScNotify = 7430;
+	CmdMatchThreeModuleType_MatchThreeV2LevelEndScRsp = 7432;
+	CmdMatchThreeModuleType_MatchThreeSetBirdPosScRsp = 7434;
+	CmdMatchThreeModuleType_MatchThreeSetBirdPosCsReq = 7435;
+	CmdMatchThreeModuleType_FJDEJHJABEH = 7437;
+	CmdMatchThreeModuleType_MatchThreeGetDataDataScRsp = 7438;
+	CmdMatchThreeModuleType_MatchThreeV2SetBirdPosScRsp = 7441;
+	CmdMatchThreeModuleType_MatchThreeGetDataCsReq = 7442;
+	CmdMatchThreeModuleType_MatchThreeV2PvpFinishScNotify = 7444;
+	CmdMatchThreeModuleType_MatchThreeV2BattleItemLevelUpScRsp = 7445;
+	CmdMatchThreeModuleType_MatchThreeLevelEndCsReq = 7448;
+	CmdMatchThreeModuleType_MatchThreeLevelEndScRsp = 7450;
+}
+
+message DHFGMHFEHEB {
+	JKEBEAKOHJJ BJBJLBIOPKA = 5;
+	uint32 retcode = 15;
+}
+
+message HDKJPKPEJFO {
+	uint32 level_id = 4;
+	repeated uint32 GKCABEGBOCG = 13;
+}
+
+message HPIEHAMDJAP {
+	uint32 KKHPKMAHDMK = 2;
+	uint32 level_id = 10;
+}
+
+message JKEBEAKOHJJ {
+	repeated KVP KIOIBLGKFCJ = 2;
+	repeated KVP BFCMLMLIHHM = 3;
+	uint32 JNAOKJKFLHL = 5;
+	repeated KVP GOBIPJPDBFG = 7;
+	repeated HDKJPKPEJFO NKHIIMHCLCD = 8;
+	uint32 EECIJBLGLNG = 11;
+	repeated KPCHPLEJCKC DBINCLPHEFN = 12;
+}
+
+message KPCHPLEJCKC {
+	uint32 count = 2;
+	uint32 LALGADHLMCB = 7;
+	uint32 HBONKLEOEEI = 9;
+	uint32 pos = 12;
+}
+
+message MLHLIMIJHDD {
+	uint32 pos = 10;
+	uint32 count = 11;
+	uint32 LALGADHLMCB = 14;
+	uint32 HBONKLEOEEI = 15;
+}
+
+message MatchThreeGetDataCsReq {
+}
+
+message MatchThreeGetDataDataScRsp {
+	ALNGMGOJDOA GJFKKFFJDAH = 11;
+	uint32 retcode = 15;
+}
+
+message MatchThreeLevelEndCsReq {
+	uint32 LALGADHLMCB = 1;
+	string uuid = 2;
+	uint32 level_id = 5;
+	uint32 HBONKLEOEEI = 8;
+	uint32 KKHPKMAHDMK = 11;
+	map<uint32, uint32> GMONIMLFKFC = 12;
+}
+
+message MatchThreeLevelEndScRsp {
+	uint32 KKHPKMAHDMK = 3;
+	uint32 level_id = 6;
+	uint32 retcode = 15;
+}
+
+message MatchThreeRoyaleFinishScNotify {
+	uint32 BCAKPNCHIIJ = 1;
+	int32 OJNGBIBGHBL = 9;
+	FightGameMode game_mode = 12;
+	LAJGLHCCNED JDFPKAMFHAP = 13;
+	NPPEMMILLCO reason = 15;
+}
+
+message MatchThreeSetBirdPosCsReq {
+	uint32 HBONKLEOEEI = 3;
+	uint32 pos = 9;
+}
+
+message MatchThreeSetBirdPosScRsp {
+	uint32 pos = 2;
+	uint32 HBONKLEOEEI = 8;
+	uint32 retcode = 14;
+}
+
+message MatchThreeSyncDataScNotify {
+	ALNGMGOJDOA GJFKKFFJDAH = 4;
+}
+
+message MatchThreeV2BattleItemLevelUpCsReq {
+	uint32 FMEHKPKHGJA = 6;
+	uint32 IGOOJKMPMDC = 13;
+}
+
+message MatchThreeV2BattleItemLevelUpScRsp {
+	uint32 IGOOJKMPMDC = 8;
+	uint32 retcode = 10;
+	uint32 FMEHKPKHGJA = 13;
+}
+
+message MatchThreeV2LevelEndCsReq {
+	uint32 GFBAHEODFNA = 3;
+	uint32 EOHGLCJAMKN = 5;
+	repeated KVP MONKDLNMMBK = 7;
+	uint32 level_id = 9;
+	string uuid = 10;
+	uint32 HBONKLEOEEI = 11;
+	uint32 JGIFDFLDBPB = 13;
+	repeated uint32 EEDLBJGGLKD = 15;
+}
+
+message MatchThreeV2LevelEndScRsp {
+	uint32 JNAOKJKFLHL = 1;
+	uint32 level_id = 2;
+	KPCHPLEJCKC IEGCHPIHPJN = 3;
+	uint32 AFLCNNAJAGB = 6;
+	uint32 retcode = 7;
+	repeated ItemList DOBNEFKPMPB = 8;
+	HDKJPKPEJFO OEIBHLMDJKA = 10;
+	ItemList DBDIGIEPMBB = 11;
+}
+
+message MatchThreeV2PvpFinishScNotify {
+	uint32 OJNGBIBGHBL = 5;
+	FightGameMode game_mode = 9;
+	uint32 BCAKPNCHIIJ = 10;
+	LAJGLHCCNED JDFPKAMFHAP = 13;
+	NPPEMMILLCO reason = 14;
+	JKEBEAKOHJJ BJBJLBIOPKA = 15;
+}
+
+message MatchThreeV2ScNotify {
+	JKEBEAKOHJJ BJBJLBIOPKA = 1;
+}
+
+message MatchThreeV2SetBirdPosCsReq {
+	uint32 pos = 1;
+	uint32 HBONKLEOEEI = 6;
+}
+
+message MatchThreeV2SetBirdPosScRsp {
+	uint32 LIDGCJIKIEG = 3;
+	uint32 HBONKLEOEEI = 4;
+	uint32 retcode = 5;
+	uint32 pos = 12;
+}
+
+message PBDKDFCOAPB {
+}

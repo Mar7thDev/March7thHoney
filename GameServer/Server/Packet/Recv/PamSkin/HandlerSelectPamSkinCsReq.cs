@@ -10,10 +10,11 @@ public class HandlerSelectPamSkinCsReq : Handler<SelectPamSkinCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, SelectPamSkinCsReq req)
     {
-        // Check if the skin is valid
-        if (GameData.PamSkinConfigData.ContainsKey((int)req.PamSkin)) player.Data.CurrentPamSkin = (int)req.PamSkin;
-        var prevSkinId = player.Data.CurrentPamSkin;
+        // set_skin echoes the request and cur_skin is the skin actually worn; an unknown skin is refused.
+        var known = GameData.PamSkinConfigData.ContainsKey((int)req.PamSkin);
+        if (known) player.Data.CurrentPamSkin = (int)req.PamSkin;
 
-        await connection.SendPacket(new PacketSelectPamSkinScRsp(player, prevSkinId));
+        await connection.SendPacket(new PacketSelectPamSkinScRsp(player, (int)req.PamSkin,
+            known ? Retcode.RetSucc : Retcode.RetFail));
     }
 }

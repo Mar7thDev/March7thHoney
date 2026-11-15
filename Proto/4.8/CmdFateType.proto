@@ -1,0 +1,526 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AFANKKDMIHC {
+	KAOPGJBGEBF MGMPDHKJFIM = 11;
+}
+
+message AFKJKLJJLKN {
+	uint32 PJLEJKEOFII = 12;
+}
+
+message AGPKFBLGDIH {
+	uint32 trait_id = 9;
+	repeated ActiveTraitSourceList KBGAPHFIPJF = 15;
+}
+
+message AHOMAAHPCIG {
+	repeated uint32 EKJDLEFFGHD = 2;
+	repeated uint32 DAPJMJMGCFC = 7;
+}
+
+message ANJBJLDMDFN {
+	uint32 unique_id = 12;
+}
+
+message ANNFOAGBJBP {
+	repeated MJLJMCCGNEE BLFMGKPNPGG = 12;
+}
+
+message ActiveTraitSourceList {
+	FJKMGCKMNNA source = 5;
+	uint32 cnt = 13;
+}
+
+message BDJEGABKNHN {
+	map<uint32, uint32> ICAOKNPHKGN = 2;
+	repeated uint32 PPHEKHLLFHC = 15;
+}
+
+message BFBCEOICLAB {
+	uint32 area_id = 3;
+	JIMNPPNNHEL EFLLPHLDBPC = 4;
+	repeated KLMNGOJKEIN FELMAMPGMAE = 5;
+	repeated KAOPGJBGEBF LNNGKPAJKLP = 6;
+	uint32 GBMBGHAPDMG = 7;
+	NBBHDPCPHNN MHALEIHFKLG = 8;
+	uint32 difficulty = 9;
+	KCLHMJHIDOB LMLDELGBJOO = 10;
+	EMFDLPNOGOH status = 11;
+	ENJDEFHFKPI IEMEKMDDIOI = 12;
+	PJFDAOKIKOJ CCOPDLOKAAE = 13;
+	JFKAOMCJIKK FMIGOKIDKJL = 14;
+	ANNFOAGBJBP CMCBGGKLBCF = 963;
+	IBGFKJMMICI GODPEHNPPCO = 1435;
+}
+
+message BGNIMFMFKLH {
+	map<uint32, double> OPEMKBPFFDN = 3;
+	FJKMGCKMNNA source = 13;
+}
+
+message CLNABFMHFFH {
+	bool BKFONKNLCHP = 11;
+	uint32 avatar_id = 15;
+}
+
+enum CmdFateType {
+	CmdFateType_NLCDGIPGFDJ = 0;
+	CmdFateType_FateQueryScRsp = 5951;
+	CmdFateType_FateShopBuyGoodsScRsp = 5954;
+	CmdFateType_FateSyncActionResultScNotify = 5956;
+	CmdFateType_FateBattleStartCsReq = 5957;
+	CmdFateType_FateShopRefreshGoodsCsReq = 5959;
+	CmdFateType_FateTakeExpRewardScRsp = 5960;
+	CmdFateType_FateStartCsReq = 5961;
+	CmdFateType_FateChangeLineupCsReq = 5963;
+	CmdFateType_FateBattleStartScRsp = 5965;
+	CmdFateType_FateQueryCsReq = 5966;
+	CmdFateType_FateSyncPendingActionScNotify = 5971;
+	CmdFateType_FateShopBuyGoodsCsReq = 5972;
+	CmdFateType_FateShopLockGoodsCsReq = 5973;
+	CmdFateType_FateChangeLineupScRsp = 5977;
+	CmdFateType_FateShopLeaveScRsp = 5978;
+	CmdFateType_FateShopSellBuffScRsp = 5980;
+	CmdFateType_FateHandlePendingActionScRsp = 5982;
+	CmdFateType_FateTakeExpRewardCsReq = 5983;
+	CmdFateType_FateSettleScNotify = 5985;
+	CmdFateType_FateShopSellBuffCsReq = 5986;
+	CmdFateType_FateSettleCsReq = 5990;
+	CmdFateType_FateShopLockGoodsScRsp = 5991;
+	CmdFateType_FateShopLeaveCsReq = 5992;
+	CmdFateType_FateShopRefreshGoodsScRsp = 5993;
+	CmdFateType_FateStartScRsp = 5994;
+	CmdFateType_FateSettleScRsp = 5995;
+	CmdFateType_FateHandlePendingActionCsReq = 5997;
+}
+
+message DACCNAFGHFJ {
+	KCLHMJHIDOB AKGJOPBLPNE = 6;
+}
+
+message DAFHOKGICNG {
+	repeated uint32 PDABDEJBPEL = 6;
+}
+
+message DBKNLPMGFFH {
+	uint32 gold = 11;
+}
+
+message DDLHODCINBI {
+	oneof MMCGBGDJIPN {
+		DBKNLPMGFFH MFFLKLAJBDF = 1;
+		KAJLLLAAKOG OKDKHJFHJND = 2;
+		MMPPKFJEOGK BJEDONKMCFE = 3;
+		MAFJLIIKIIF NKPAELIHJAD = 4;
+		FLIPLAHLMKM JGKDIFDIMKN = 5;
+		DACCNAFGHFJ EKKABKCCLGJ = 6;
+		KGJGEEEKNNC MILPEAKHKEL = 7;
+		JFLOHLLMOJK HENLCGACIOK = 8;
+		DOBHOCKGHBI PLFLNBLMMHI = 9;
+		AFANKKDMIHC GIGFDPNIMGD = 11;
+		OPPNDJOCBEA GAEFNAJACEH = 12;
+		LMOPAFOIJNF JGNMFHFCIFN = 13;
+		AHOMAAHPCIG CCOHJLKNFON = 14;
+		ANJBJLDMDFN MLPFDMIILBD = 15;
+		LHJBIHJBNHI PLDLCJPGCIB = 209;
+		BDJEGABKNHN FEINKBBJNHP = 1067;
+		ELEMFBMOMMM HNFLLMLLNFI = 1083;
+		PIKIDDEEDII CMHLMLEGNGM = 1532;
+		KGOBMEOAEBL JKHGEJCJOEB = 1630;
+		HACIGDEEMCJ CCEGFKEBEMI = 1676;
+		PANAGPMIIIH GGGLMGKKFFM = 1987;
+	}
+}
+
+message DOBHOCKGHBI {
+	uint32 JIMBJHLMHLO = 6;
+}
+
+message EJCCCIGMHOM {
+	repeated uint32 GMGOHBLFMAN = 1;
+	GCECAGOELDP BDIBPIMAPOC = 3;
+	repeated uint32 NKHIIMHCLCD = 4;
+	HIJCLODMBPO GJFKKFFJDAH = 6;
+}
+
+message ELEMFBMOMMM {
+	BGNIMFMFKLH ECMBBBAPAJC = 3;
+}
+
+enum EMFDLPNOGOH {
+	EMFDLPNOGOH_NLCDGIPGFDJ = 0;
+	EMFDLPNOGOH_NGPHFLBNHKB = 1;
+	EMFDLPNOGOH_KBAENNGPMPH = 2;
+	EMFDLPNOGOH_GKHJMGPHDBK = 3;
+	EMFDLPNOGOH_CHGJLDDJJAH = 4;
+	EMFDLPNOGOH_FBKMDMLBNII = 5;
+	EMFDLPNOGOH_MADBILBKOAO = 6;
+}
+
+message ENJDEFHFKPI {
+	repeated uint32 BAHMHMDOMPB = 11;
+}
+
+message FJKMGCKMNNA {
+	uint32 BNEFLBPCPOI = 1;
+	MOHNIMLCODA source_type = 5;
+}
+
+message FLIPLAHLMKM {
+	repeated MJLJMCCGNEE BLFMGKPNPGG = 11;
+}
+
+message FateBattleStartCsReq {
+}
+
+message FateBattleStartScRsp {
+	SceneBattleInfo battle_info = 7;
+	uint32 retcode = 10;
+}
+
+message FateBuffData {
+	uint32 buff_id = 8;
+	uint32 cnt = 13;
+}
+
+message FateChangeLineupCsReq {
+	repeated KPNHGDGLICN avatar_list = 14;
+}
+
+message FateChangeLineupScRsp {
+	uint32 retcode = 6;
+}
+
+message FateHandlePendingActionCsReq {
+	oneof DMNECEKOLAJ {
+		GHAJMKCEEPJ NPBKAADBHHC = 3;
+		AFKJKLJJLKN HNPBCGILAJP = 7;
+	}
+	uint32 queue_position = 4;
+}
+
+message FateHandlePendingActionScRsp {
+	uint32 retcode = 14;
+}
+
+enum FateMasterStatusType {
+	FateMasterStatusType_None = 0;
+	FateMasterStatusType_Alive = 1;
+	FateMasterStatusType_Dead = 2;
+	FateMasterStatusType_Banned = 3;
+}
+
+message FateQueryCsReq {
+}
+
+message FateQueryScRsp {
+	uint32 retcode = 5;
+	EJCCCIGMHOM LFLCDNGALME = 10;
+	BFBCEOICLAB OEIBHLMDJKA = 14;
+}
+
+message FateSettleCsReq {
+}
+
+message FateSettleScNotify {
+	HJFCEEBAGMF LNBBPPKLBFA = 7;
+	uint32 score_id = 9;
+	ItemList reward = 11;
+}
+
+message FateSettleScRsp {
+	uint32 retcode = 15;
+}
+
+message FateShopBuyGoodsCsReq {
+	uint32 COCLMANMAAI = 14;
+}
+
+message FateShopBuyGoodsScRsp {
+	uint32 COCLMANMAAI = 1;
+	uint32 retcode = 14;
+}
+
+message FateShopLeaveCsReq {
+}
+
+message FateShopLeaveScRsp {
+	uint32 retcode = 5;
+}
+
+message FateShopLockGoodsCsReq {
+	bool is_locked = 13;
+}
+
+message FateShopLockGoodsScRsp {
+	bool is_locked = 2;
+	uint32 retcode = 15;
+}
+
+message FateShopRefreshGoodsCsReq {
+}
+
+message FateShopRefreshGoodsScRsp {
+	uint32 retcode = 3;
+	bool PNMNPFGCFBJ = 4;
+	repeated JDAIOFEPGCC OGDKJPDFFAI = 10;
+}
+
+message FateShopSellBuffCsReq {
+	uint32 JDIFHPAFPID = 2;
+	uint32 PCJOBDNLEAI = 8;
+	bool PMCPIECGEHH = 14;
+}
+
+message FateShopSellBuffScRsp {
+	uint32 PCJOBDNLEAI = 3;
+	bool PMCPIECGEHH = 7;
+	uint32 retcode = 12;
+	uint32 JDIFHPAFPID = 13;
+}
+
+message FateStartCsReq {
+	uint32 area_id = 4;
+	repeated KPNHGDGLICN avatar_list = 6;
+	uint32 difficulty = 15;
+}
+
+message FateStartScRsp {
+	uint32 retcode = 4;
+	BFBCEOICLAB OEIBHLMDJKA = 13;
+}
+
+message FateSyncActionResultScNotify {
+	repeated DDLHODCINBI CLGGKLNPLCK = 15;
+}
+
+message FateSyncPendingActionScNotify {
+	JFKAOMCJIKK FMIGOKIDKJL = 5;
+}
+
+message FateTakeExpRewardCsReq {
+}
+
+message FateTakeExpRewardScRsp {
+	uint32 retcode = 4;
+	repeated uint32 HPJMJEAJKAC = 6;
+	repeated uint32 HKEFKHJOEPJ = 9;
+	ItemList reward = 14;
+}
+
+message GCECAGOELDP {
+	uint32 exp = 4;
+	repeated uint32 NPDOKAJOOKD = 10;
+	repeated uint32 CFIKMGKPOFH = 14;
+}
+
+message GHAJMKCEEPJ {
+	bool MLKBOBIEAPL = 1;
+	uint32 NOILILELKFB = 15;
+}
+
+message GKJEMHKOMJC {
+	uint32 rank = 2;
+	uint32 avatar_id = 5;
+	repeated JOGCCINEHFJ CFFCNEDGCJJ = 7;
+	int32 max_hp = 8;
+	int32 hp = 11;
+	FateMasterStatusType status = 13;
+}
+
+message HACIGDEEMCJ {
+	FJKMGCKMNNA JDFKEJDDGFC = 1;
+}
+
+message HDHLHNEACHP {
+	AvatarType avatar_type = 4;
+	uint32 id = 7;
+	bool is_upgraded = 14;
+	uint32 level = 15;
+}
+
+message HIJCLODMBPO {
+	repeated HJFCEEBAGMF BJJDJFJMGDI = 3;
+	map<uint32, HJHMNDBJPND> BDJECEJAKIJ = 4;
+	HJHMNDBJPND OAFLJGCKIAJ = 12;
+	HJHMNDBJPND PIDFDPIDJMN = 13;
+}
+
+message HJFCEEBAGMF {
+	map<uint32, uint32> DBIFAJIBGAC = 1;
+	uint32 IDNHBBMLNJK = 3;
+	uint32 difficulty = 4;
+	uint32 BKPDKFLDLDD = 7;
+	repeated HDHLHNEACHP avatar_list = 8;
+	repeated uint32 FELMAMPGMAE = 9;
+	repeated uint32 LNNGKPAJKLP = 10;
+	uint32 level_id = 12;
+	map<uint32, uint32> LANHCGFHCDB = 14;
+	uint32 OKOICDENGFK = 15;
+	map<uint32, uint32> DHBPGMPMPOL = 1478;
+}
+
+message HJHMNDBJPND {
+	uint32 KAENLKDNOMF = 6;
+	uint32 total_count = 11;
+	repeated uint32 DKJEDBHLOPP = 12;
+	map<uint32, uint32> LJDLJKCMIIC = 14;
+}
+
+message IBGFKJMMICI {
+	repeated BGNIMFMFKLH OPOIDPJFFPK = 11;
+}
+
+message IMIHIMCHHIP {
+	uint32 item_value = 1;
+	uint32 OIDJFIFJDHL = 5;
+}
+
+message JCMKKEKMHNC {
+	repeated KMLOMKCMGHD LGFJPBJOBPC = 6;
+}
+
+message JDAIOFEPGCC {
+	uint32 KDKPDJNMMCM = 4;
+	bool GDOBLPPEGKD = 5;
+	uint32 cnt = 6;
+	uint32 buff_id = 12;
+}
+
+message JFKAOMCJIKK {
+	uint32 queue_position = 4;
+	KFAIFLHPEIE GJDKHBPHNCG = 6;
+}
+
+message JFLOHLLMOJK {
+	uint32 MNCBFLEFJCK = 3;
+	uint32 KCBLNMMHOKG = 9;
+}
+
+message JIMNPPNNHEL {
+	uint32 MNCBFLEFJCK = 4;
+	repeated JDAIOFEPGCC OGDKJPDFFAI = 5;
+	bool ONDCOEBNAPJ = 6;
+	uint32 item_value = 9;
+	repeated IMIHIMCHHIP AALLBBCJGIA = 11;
+	bool PNMNPFGCFBJ = 13;
+	uint32 KCBLNMMHOKG = 15;
+}
+
+message JOGCCINEHFJ {
+	repeated uint32 monster_list = 4;
+	uint32 unique_id = 5;
+	bool DIHFBELJFIA = 7;
+	uint32 affix_id = 10;
+	bool FNIAOAOBKBA = 15;
+}
+
+message KAJLLLAAKOG {
+	repeated uint32 CJBINCOKFPO = 6;
+	repeated AGPKFBLGDIH BFNINELCBCN = 13;
+}
+
+message KAOPGJBGEBF {
+	uint32 DAMIHCPPJAB = 5;
+	int32 value = 9;
+	uint32 unique_id = 12;
+}
+
+message KCLHMJHIDOB {
+	uint32 BKPDKFLDLDD = 8;
+	uint32 IDNHBBMLNJK = 13;
+}
+
+message KFAIFLHPEIE {
+	oneof MMCGBGDJIPN {
+		DAFHOKGICNG HNPBCGILAJP = 11;
+		JCMKKEKMHNC NPBKAADBHHC = 13;
+	}
+}
+
+message KGJGEEEKNNC {
+	JIMNPPNNHEL EFLLPHLDBPC = 3;
+}
+
+message KGOBMEOAEBL {
+	bool ONDCOEBNAPJ = 8;
+}
+
+message KLMNGOJKEIN {
+	uint32 MELNKMALHJO = 2;
+	uint32 unique_id = 9;
+}
+
+message KMLOMKCMGHD {
+	uint32 DAMIHCPPJAB = 1;
+	uint32 JCNDBKGBLLJ = 2;
+}
+
+message LEGBKMIIJOA {
+	uint32 ECPMGBGLLNN = 1;
+	bool JMCMPFPDEHG = 4;
+	uint32 avatar_id = 5;
+	uint32 JGLNALONLDO = 7;
+	bool MEHPJMPDNNA = 8;
+	uint32 DIIDBKIJEAF = 9;
+	uint32 GCIFCLINGFN = 11;
+	double FJDFOPNAFPP = 15;
+}
+
+message LHJBIHJBNHI {
+	GKJEMHKOMJC GJPGBBHCAFC = 11;
+}
+
+message LMOPAFOIJNF {
+	repeated FateBuffData FCKIOLPLANI = 9;
+	repeated uint32 PDKAMAGEFEK = 14;
+}
+
+message MAFJLIIKIIF {
+	KLMNGOJKEIN MAIBAOAOGID = 15;
+}
+
+message MJLJMCCGNEE {
+	CLNABFMHFFH KPEHHGEKNHA = 9;
+	CLNABFMHFFH LJEAFPOHNCD = 11;
+}
+
+message MMPPKFJEOGK {
+	EMFDLPNOGOH EGBFNFCEPHD = 10;
+}
+
+message NBBHDPCPHNN {
+	repeated FateBuffData buff_list = 1;
+	uint32 JIMBJHLMHLO = 2;
+	repeated uint32 MHLNGFBOIDP = 3;
+	repeated AGPKFBLGDIH ICCMJHJLPCD = 7;
+	map<uint32, uint32> buff_amplification_map = 8;
+	repeated uint32 NGOMJIFBBBP = 14;
+}
+
+message OPPNDJOCBEA {
+	uint32 NCDBCLLAHPP = 2;
+	uint32 JJDEEHAMHGF = 4;
+	uint32 LKPNNOGPJOI = 6;
+	repeated LEGBKMIIJOA MIKKAEJNLAL = 7;
+	bool NEEDLFJJFPL = 11;
+	repeated GKJEMHKOMJC OCAMBKNKKGO = 12;
+	repeated uint32 EAOCKLDEOGH = 13;
+	uint32 GCNMKIHOFGG = 15;
+}
+
+message PANAGPMIIIH {
+	repeated uint32 NGOMJIFBBBP = 10;
+}
+
+message PIKIDDEEDII {
+	repeated uint32 BAHMHMDOMPB = 12;
+}
+
+message PJFDAOKIKOJ {
+	repeated GKJEMHKOMJC OCAMBKNKKGO = 7;
+}

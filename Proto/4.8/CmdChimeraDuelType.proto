@@ -1,0 +1,434 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BBDLCOJKGMI {
+	GLLDHGHJLOA PHLAMKCLLKP = 3;
+}
+
+enum BDEJGKKACMA {
+	BDEJGKKACMA_NLCDGIPGFDJ = 0;
+	BDEJGKKACMA_hp = 1;
+	BDEJGKKACMA_COJOIFPPCIJ = 2;
+}
+
+message CJHOCMLPMJD {
+	repeated uint32 AJFJLCKPNAM = 15;
+}
+
+message ChimeraDuelChangeLineupCsReq {
+	repeated uint32 AJFJLCKPNAM = 4;
+	uint32 GIECFFNDLEB = 10;
+	uint32 ALJOJIDAAPC = 13;
+}
+
+message ChimeraDuelChangeLineupScRsp {
+	uint32 retcode = 1;
+	repeated uint32 AJFJLCKPNAM = 7;
+}
+
+message ChimeraDuelEndGameCsReq {
+}
+
+message ChimeraDuelEndGameScRsp {
+	EBPBMFBFEJA CECFDNCDBEI = 9;
+	uint32 retcode = 14;
+}
+
+message ChimeraDuelEndRoundBattleStageCsReq {
+	uint32 MILMHPODLBB = 1;
+	DIIKFKNEHHG NONPIMDDJNN = 4;
+	IDGMALDABBE stt = 15;
+}
+
+message ChimeraDuelEndRoundBattleStageScRsp {
+	uint32 retcode = 3;
+	DIIKFKNEHHG NONPIMDDJNN = 13;
+	oneof KKNBOACNCON {
+		EBPBMFBFEJA CECFDNCDBEI = 660;
+		LCEDDGELBMJ CFDIKLBINHK = 2041;
+	}
+}
+
+message ChimeraDuelEndRoundShopStageCsReq {
+}
+
+message ChimeraDuelEndRoundShopStageScRsp {
+	LCEDDGELBMJ CFDIKLBINHK = 6;
+	uint32 retcode = 13;
+}
+
+message ChimeraDuelFinishMasterChallengeCsReq {
+	uint32 IPINHNFCIOE = 6;
+}
+
+message ChimeraDuelFinishMasterChallengeScRsp {
+	uint32 IPINHNFCIOE = 3;
+	uint32 retcode = 4;
+}
+
+message ChimeraDuelGetDataCsReq {
+}
+
+message ChimeraDuelGetDataScRsp {
+	uint32 retcode = 8;
+	LCEDDGELBMJ CFDIKLBINHK = 9;
+	PCBOLEAFMDN COFPFIDNONN = 12;
+}
+
+message ChimeraDuelGetFriendListCsReq {
+}
+
+message ChimeraDuelGetFriendListScRsp {
+	repeated MPPHIOJNKGB friend_list = 13;
+	uint32 retcode = 14;
+}
+
+message ChimeraDuelPlayerRankData {
+	uint32 rank = 2;
+	uint32 score_id = 10;
+}
+
+message ChimeraDuelSaveFriendPvpLineupCsReq {
+	uint32 slot = 11;
+}
+
+message ChimeraDuelSaveFriendPvpLineupScRsp {
+	PNCNGIAMLCA lineup = 1;
+	uint32 slot = 6;
+	uint32 retcode = 10;
+}
+
+message ChimeraDuelSelectGameCsReq {
+	uint32 FGLEKNDHMKN = 15;
+}
+
+message ChimeraDuelSelectGameScRsp {
+	uint32 retcode = 6;
+	uint32 FGLEKNDHMKN = 13;
+}
+
+message ChimeraDuelSellChimeraCsReq {
+	uint32 NDJGKJMPPHJ = 10;
+	repeated uint32 AJFJLCKPNAM = 13;
+}
+
+message ChimeraDuelSellChimeraScRsp {
+	uint32 NDJGKJMPPHJ = 4;
+	uint32 retcode = 8;
+	repeated uint32 AJFJLCKPNAM = 11;
+}
+
+message ChimeraDuelSetFriendDefendLineupCsReq {
+	uint32 slot = 13;
+}
+
+message ChimeraDuelSetFriendDefendLineupScRsp {
+	uint32 slot = 4;
+	uint32 retcode = 10;
+}
+
+message ChimeraDuelShopBuyChimeraCsReq {
+	uint32 KODOOHHPIKN = 5;
+	repeated uint32 FMMICIHEOCM = 11;
+	uint32 GCKFOOIEHHA = 14;
+}
+
+message ChimeraDuelShopBuyChimeraScRsp {
+	uint32 retcode = 7;
+}
+
+message ChimeraDuelShopBuyItemCsReq {
+	uint32 JHINLPCKMPK = 4;
+	uint32 AGBAIFPNKII = 11;
+}
+
+message ChimeraDuelShopBuyItemScRsp {
+	uint32 retcode = 14;
+}
+
+message ChimeraDuelShopLockCsReq {
+	oneof KKNBOACNCON {
+		uint32 NDJGKJMPPHJ = 4;
+		uint32 AGBAIFPNKII = 6;
+	}
+	bool is_locked = 13;
+}
+
+message ChimeraDuelShopLockScRsp {
+	uint32 retcode = 7;
+	bool is_locked = 11;
+	oneof KKNBOACNCON {
+		uint32 AGBAIFPNKII = 12;
+		uint32 NDJGKJMPPHJ = 14;
+	}
+}
+
+message ChimeraDuelShopRefreshCsReq {
+}
+
+message ChimeraDuelShopRefreshScRsp {
+	uint32 retcode = 4;
+}
+
+message ChimeraDuelStartGameCsReq {
+	uint32 IPINHNFCIOE = 3;
+}
+
+message ChimeraDuelStartGameScRsp {
+	LCEDDGELBMJ CFDIKLBINHK = 5;
+	uint32 retcode = 10;
+}
+
+message ChimeraDuelSyncChangeScNotify {
+	repeated LGEDKNLBCAN DGNGMJMPFGK = 8;
+}
+
+message ChimeraDuelUnlockMasterCsReq {
+	uint32 IPINHNFCIOE = 8;
+}
+
+message ChimeraDuelUnlockMasterScRsp {
+	uint32 IPINHNFCIOE = 6;
+	uint32 retcode = 8;
+}
+
+enum CmdChimeraDuelType {
+	CmdChimeraDuelType_NLCDGIPGFDJ = 0;
+	CmdChimeraDuelType_ChimeraDuelGetDataScRsp = 9211;
+	CmdChimeraDuelType_ChimeraDuelFinishMasterChallengeCsReq = 9212;
+	CmdChimeraDuelType_ChimeraDuelEndRoundShopStageScRsp = 9214;
+	CmdChimeraDuelType_ChimeraDuelShopRefreshCsReq = 9216;
+	CmdChimeraDuelType_ChimeraDuelUnlockMasterCsReq = 9217;
+	CmdChimeraDuelType_ChimeraDuelEndGameCsReq = 9219;
+	CmdChimeraDuelType_ChimeraDuelSellChimeraScRsp = 9220;
+	CmdChimeraDuelType_ChimeraDuelStartGameCsReq = 9223;
+	CmdChimeraDuelType_ChimeraDuelUnlockMasterScRsp = 9225;
+	CmdChimeraDuelType_ChimeraDuelGetDataCsReq = 9226;
+	CmdChimeraDuelType_ChimeraDuelSaveFriendPvpLineupCsReq = 9229;
+	CmdChimeraDuelType_ChimeraDuelSetFriendDefendLineupCsReq = 9230;
+	CmdChimeraDuelType_ChimeraDuelShopRefreshScRsp = 9231;
+	CmdChimeraDuelType_ChimeraDuelEndRoundShopStageCsReq = 9232;
+	CmdChimeraDuelType_ChimeraDuelShopBuyChimeraCsReq = 9233;
+	CmdChimeraDuelType_ChimeraDuelSelectGameCsReq = 9234;
+	CmdChimeraDuelType_ChimeraDuelStartGameScRsp = 9237;
+	CmdChimeraDuelType_ChimeraDuelShopBuyItemScRsp = 9238;
+	CmdChimeraDuelType_ChimeraDuelEndRoundBattleStageScRsp = 9240;
+	CmdChimeraDuelType_ChimeraDuelShopLockScRsp = 9242;
+	CmdChimeraDuelType_ChimeraDuelSellChimeraCsReq = 9243;
+	CmdChimeraDuelType_ChimeraDuelSelectGameScRsp = 9244;
+	CmdChimeraDuelType_ChimeraDuelChangeLineupScRsp = 9245;
+	CmdChimeraDuelType_ChimeraDuelEndRoundBattleStageCsReq = 9246;
+	CmdChimeraDuelType_ChimeraDuelFinishMasterChallengeScRsp = 9247;
+	CmdChimeraDuelType_ChimeraDuelGetFriendListCsReq = 9249;
+	CmdChimeraDuelType_ChimeraDuelSyncChangeScNotify = 9250;
+	CmdChimeraDuelType_ChimeraDuelShopBuyChimeraScRsp = 9251;
+	CmdChimeraDuelType_ChimeraDuelShopBuyItemCsReq = 9252;
+	CmdChimeraDuelType_ChimeraDuelEndGameScRsp = 9253;
+	CmdChimeraDuelType_ChimeraDuelChangeLineupCsReq = 9255;
+	CmdChimeraDuelType_ChimeraDuelGetFriendListScRsp = 9256;
+	CmdChimeraDuelType_ChimeraDuelShopLockCsReq = 9257;
+	CmdChimeraDuelType_ChimeraDuelSaveFriendPvpLineupScRsp = 9259;
+	CmdChimeraDuelType_ChimeraDuelSetFriendDefendLineupScRsp = 9260;
+}
+
+enum DIIKFKNEHHG {
+	DIIKFKNEHHG_NLCDGIPGFDJ = 0;
+	DIIKFKNEHHG_EHNIPLNEEDI = 1;
+	DIIKFKNEHHG_FAODKNDLNPF = 2;
+	DIIKFKNEHHG_EEOOMIBEMNH = 3;
+}
+
+message DMOJMNKOILL {
+	bool is_locked = 5;
+	uint32 AGBAIFPNKII = 11;
+	uint32 item_id = 13;
+	bool IFIGFODOPBB = 15;
+}
+
+message EBPBMFBFEJA {
+	LCEDDGELBMJ CFDIKLBINHK = 1;
+	uint32 FGLEKNDHMKN = 9;
+	ChimeraDuelPlayerRankData AAIMONALOPD = 10;
+	bool ENFKEAEGPBJ = 14;
+}
+
+message FJJHCDGNDPD {
+	repeated uint32 JJOJFFAOEDI = 7;
+	repeated uint32 ACCKECIHCGJ = 13;
+}
+
+message FLOPNJFNAOG {
+	bool NBHLDBBBPPA = 2;
+	POACIACEJJN JOOEEKMDAEO = 8;
+}
+
+message GIEPFAIPADI {
+	repeated uint32 FMMICIHEOCM = 7;
+}
+
+message GLLDHGHJLOA {
+	uint32 rank = 2;
+	uint32 IPINHNFCIOE = 3;
+	repeated uint32 AJFJLCKPNAM = 4;
+	repeated NHDGNBKBNDB BCGOAIPKGIK = 6;
+	uint32 hp = 7;
+	string nickname = 8;
+	uint32 KIMKENNLHEH = 10;
+	uint32 head_icon = 12;
+	uint32 uid = 14;
+}
+
+message HNAOOMKGFCB {
+	PDHFFPOJNJG source_type = 4;
+	uint32 BHCCDFFBAAM = 11;
+	uint32 LLMHAEAPGON = 14;
+}
+
+message IDGMALDABBE {
+	uint32 cost_time = 3;
+	repeated KELKOMPBONA EECAHBHNDHC = 8;
+	repeated KELKOMPBONA IIFPJKNCLGF = 11;
+	uint32 total_damage = 13;
+	NDLBFFKAGBN NMPGPDMHKAM = 15;
+}
+
+message JJKOHCPBGAL {
+	uint32 FLIEDGKFNOL = 6;
+	GIEPFAIPADI LHEOBNDKGHD = 13;
+	HNAOOMKGFCB source = 14;
+	oneof BHNPKLCNDNG {
+		BDEJGKKACMA LLCOEPJFGPE = 162;
+		FJJHCDGNDPD IAECKEDODEF = 1059;
+		uint32 BNCCMEGJONF = 1424;
+	}
+}
+
+message JJNHIKIGKJC {
+	uint32 unique_id = 2;
+	uint32 item_id = 7;
+}
+
+message KELKOMPBONA {
+	uint32 MBNBFBNKLGH = 1;
+	uint32 DKHCOHKFKFA = 2;
+	int32 hp = 3;
+	uint32 EBMJGPMHDMK = 4;
+	int32 atk = 6;
+	uint32 level = 8;
+	uint32 FGECDDFBFOJ = 9;
+	uint32 unique_id = 10;
+	uint32 exp = 11;
+	uint32 DIECMLHJCFE = 12;
+	KPEPGHLKNFG status = 13;
+	uint32 grid_fight_equipment_id = 14;
+	uint32 index = 15;
+}
+
+message KGHDDIBDABP {
+	bool is_locked = 1;
+	uint32 FGECDDFBFOJ = 3;
+	uint32 grid_fight_equipment_id = 5;
+	uint32 IPAOBKONIFL = 9;
+	uint32 NDJGKJMPPHJ = 14;
+}
+
+enum KPEPGHLKNFG {
+	KPEPGHLKNFG_LCNJHOKLMPN = 0;
+	KPEPGHLKNFG_JJBEPKLOLCP = 1;
+	KPEPGHLKNFG_DOGMHOAOJFD = 2;
+}
+
+message LCEDDGELBMJ {
+	repeated NHDGNBKBNDB BCGOAIPKGIK = 1;
+	uint32 KIMKENNLHEH = 2;
+	uint32 BAJHKGJPFED = 3;
+	repeated uint32 HGKDHJHKFBP = 6;
+	uint32 IPINHNFCIOE = 7;
+	uint32 IDNHBBMLNJK = 10;
+	uint32 hp = 11;
+	uint32 NMPABPJHGPE = 12;
+	uint32 JGPHDBDHKKO = 15;
+	oneof PAPIIIMEKDD {
+		POACIACEJJN HKFFIGBBFAE = 72;
+		BBDLCOJKGMI PJCKOBNPFCB = 1095;
+	}
+}
+
+message LGEDKNLBCAN {
+	oneof MMCGBGDJIPN {
+		JJKOHCPBGAL ALPKKNKAFBG = 4;
+		uint32 CIFFLEBCFGK = 5;
+		CJHOCMLPMJD FICFIOENBEN = 6;
+		MAFDLBFIJMB BHPPAPONGOE = 7;
+		NHDGNBKBNDB PFOBPLCGGGI = 8;
+		uint32 NGBAKCIGBMN = 9;
+		uint32 KBPJKIEBBON = 10;
+		uint32 PBCGHKNGBFC = 11;
+		uint32 GCKFOOIEHHA = 12;
+		uint32 HFOKEKMCOBP = 13;
+		FLOPNJFNAOG KJHMPBOIGGE = 14;
+	}
+}
+
+message MAFDLBFIJMB {
+	PNCNGIAMLCA lineup = 5;
+	uint32 slot = 15;
+}
+
+message MPPHIOJNKGB {
+	uint32 uid = 8;
+	uint32 score_id = 14;
+	PNCNGIAMLCA lineup = 15;
+}
+
+message NDLBFFKAGBN {
+	uint32 total_auto_turns = 2;
+	uint32 ODIBDCLGKBE = 8;
+	uint32 total_turns = 9;
+	uint32 MHDBNNKHBBL = 10;
+	uint32 LPLLIICLCHB = 13;
+	uint32 BPHNEOLCKAD = 14;
+}
+
+message NHDGNBKBNDB {
+	uint32 FGECDDFBFOJ = 2;
+	uint32 LLEOGLLHCLK = 3;
+	uint32 exp = 4;
+	int32 GIFJODBPLPJ = 5;
+	JJNHIKIGKJC equip = 8;
+	int32 OEEIPJDNMOK = 14;
+	uint32 unique_id = 15;
+}
+
+message PCBOLEAFMDN {
+	repeated uint32 FOLMLBOLGEM = 1;
+	ChimeraDuelPlayerRankData AAIMONALOPD = 6;
+	uint32 FGLEKNDHMKN = 7;
+	repeated uint32 HAKLMIAENCF = 9;
+	uint32 NGBAKCIGBMN = 10;
+	uint32 CIFFLEBCFGK = 11;
+	repeated MAFDLBFIJMB GNJGPFDKLBH = 12;
+	uint32 DEFHFAGLMLC = 14;
+	repeated uint32 PGGOOINMOLF = 15;
+}
+
+enum PDHFFPOJNJG {
+	PDHFFPOJNJG_NLCDGIPGFDJ = 0;
+	PDHFFPOJNJG_GIKNCJMJLFE = 1;
+	PDHFFPOJNJG_PAGPNOKLNOM = 2;
+	PDHFFPOJNJG_LPIINKCPJPO = 3;
+	PDHFFPOJNJG_DIMIFCJPHME = 4;
+	PDHFFPOJNJG_AJGOEJHKOKE = 5;
+}
+
+message PNCNGIAMLCA {
+	repeated NHDGNBKBNDB BCGOAIPKGIK = 4;
+	uint32 IPINHNFCIOE = 7;
+	repeated uint32 AJFJLCKPNAM = 15;
+}
+
+message POACIACEJJN {
+	repeated DMOJMNKOILL LCJFDCHINHL = 3;
+	repeated KGHDDIBDABP DKCMMMPNEME = 10;
+}

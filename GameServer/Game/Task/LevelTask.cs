@@ -196,6 +196,11 @@ public class LevelTask(PlayerInstance player)
     public async ValueTask ApplyMissionPropState(SubMissionData subMission)
     {
         if (Player.SceneInstance == null) return;
+        if (subMission.SubMissionInfo?.ID == 403000222)
+        {
+            await Player.MissionManager!.RefreshRogueGalleryProps();
+            return;
+        }
 
         var (groupId, instId) = ResolveMissionPropTarget(subMission);
         if (groupId == 0 || instId == 0) return;
@@ -296,13 +301,22 @@ public class LevelTask(PlayerInstance player)
     public async ValueTask<object?> CreateTrialPlayer(TaskConfigInfo act, SubMissionData subMission,
         GroupInfo? group = null)
     {
+        // ParamInt1 is only an avatar id for these finish types. A bare CreateTrialPlayer
+        // beat (StageWin 20133003 on the Cocolia chain) must not grant that number as a trial.
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatar)
+        {
             await Player.LineupManager!.AddAvatarToCurTeam(subMission.SubMissionInfo.ParamInt1);
+            return null;
+        }
 
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatarList)
+        {
             foreach (var x in subMission.SubMissionInfo.ParamIntList ?? [])
                 await Player.LineupManager!.AddAvatarToCurTeam(x);
+            return null;
+        }
 
+        await Player.LineupManager!.GrantBareStoryTrial(subMission);
         return null;
     }
 

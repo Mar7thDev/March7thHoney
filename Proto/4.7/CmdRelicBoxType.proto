@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum BDFGBPHEPDI {
+	BDFGBPHEPDI_PDKLDMNAJBO = 0;
+	BDFGBPHEPDI_KCCEHPABIKB = 1;
+	BDFGBPHEPDI_IEGNMOODDAK = 2;
+}
+
+message BEBNHPCBMPF {
+	uint32 avatar_id = 1;
+	JBOAAPIDOIC NOAJIGHLIIC = 4;
+}
+
+enum CmdRelicBoxType {
+	CmdRelicBoxType_NLCDGIPGFDJ = 0;
+	CmdRelicBoxType_RelicBoxRegularScNotify = 8951;
+	CmdRelicBoxType_SetRelicBoxCustomCsReq = 8954;
+	CmdRelicBoxType_ConfirmRelicBoxCsReq = 8955;
+	CmdRelicBoxType_GetRelicBoxDataScRsp = 8958;
+	CmdRelicBoxType_SetRelicBoxTargetScRsp = 8959;
+	CmdRelicBoxType_ReportRelicBoxActionScRsp = 8960;
+	CmdRelicBoxType_ConfirmRelicBoxScRsp = 8961;
+	CmdRelicBoxType_OpenRelicBoxScRsp = 8962;
+	CmdRelicBoxType_OpenRelicBoxCsReq = 8963;
+	CmdRelicBoxType_GetRelicBoxDataCsReq = 8965;
+	CmdRelicBoxType_SetRelicBoxTargetCsReq = 8966;
+	CmdRelicBoxType_ReportRelicBoxActionCsReq = 8969;
+	CmdRelicBoxType_SetRelicBoxCustomScRsp = 8970;
+}
+
+message ConfirmRelicBoxCsReq {
+	bool BBNIFADMHHO = 8;
+}
+
+message ConfirmRelicBoxScRsp {
+	uint32 HMBNJLNBLIF = 1;
+	repeated uint32 OAJFAFIDKPI = 10;
+	uint32 retcode = 12;
+	bool BBNIFADMHHO = 14;
+}
+
+message DPJCBHKGFOK {
+	repeated Relic relics = 14;
+}
+
+message GetRelicBoxDataCsReq {
+}
+
+message GetRelicBoxDataScRsp {
+	uint32 retcode = 1;
+	repeated uint32 OAJFAFIDKPI = 6;
+	PNGBDDIBCDD NJFEFOFPKPF = 7;
+	BDFGBPHEPDI state = 8;
+	repeated BEBNHPCBMPF EBDIOJPDJIH = 9;
+	HGABLJFOKDG target = 13;
+	DPJCBHKGFOK AHNPPGMFOKN = 14;
+	uint32 MFLMHFLMCPO = 15;
+}
+
+message HGABLJFOKDG {
+	uint32 avatar_id = 7;
+	JBOAAPIDOIC NOAJIGHLIIC = 8;
+	JFIIIHFBLPA HDHKAHJBFKD = 14;
+}
+
+message JBOAAPIDOIC {
+	uint32 IPILHKHCLJH = 1;
+	uint32 FLFOCHJFLOE = 5;
+}
+
+enum JFIIIHFBLPA {
+	JFIIIHFBLPA_NEODNIFGDJC = 0;
+	JFIIIHFBLPA_BPKKHFFJGGI = 1;
+}
+
+message OpenRelicBoxCsReq {
+	HGABLJFOKDG target = 10;
+}
+
+message OpenRelicBoxScRsp {
+	uint32 retcode = 2;
+	uint32 GNLAAIDFOJF = 3;
+	PNGBDDIBCDD LCMADDIMION = 14;
+}
+
+message PNGBDDIBCDD {
+	uint32 level = 4;
+	repeated RelicAffix sub_affix_list = 8;
+	uint32 type = 9;
+	uint32 main_affix_id = 11;
+	uint32 exp = 14;
+	uint32 tid = 15;
+}
+
+message RelicBoxRegularScNotify {
+	DPJCBHKGFOK AHNPPGMFOKN = 14;
+}
+
+message ReportRelicBoxActionCsReq {
+	oneof MKKDALGEAKK {
+		uint32 KCGLKFKHPIC = 2;
+	}
+}
+
+message ReportRelicBoxActionScRsp {
+	uint32 retcode = 7;
+	BDFGBPHEPDI state = 14;
+}
+
+message SetRelicBoxCustomCsReq {
+	BEBNHPCBMPF EBDIOJPDJIH = 7;
+	repeated BEBNHPCBMPF JKKFJHKHFPL = 13;
+}
+
+message SetRelicBoxCustomScRsp {
+	uint32 retcode = 12;
+}
+
+message SetRelicBoxTargetCsReq {
+	HGABLJFOKDG target = 10;
+}
+
+message SetRelicBoxTargetScRsp {
+	uint32 retcode = 2;
+	HGABLJFOKDG target = 9;
+}

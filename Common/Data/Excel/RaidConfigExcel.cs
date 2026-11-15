@@ -23,6 +23,9 @@ public partial class RaidConfigExcel : ExcelResource
     public bool LockCaptain { get; set; }
     public int LockCaptainAvatarID { get; set; }
 
+    // Finish rewards. Appended for MemoryPack; caches built before it restore null.
+    public List<int>? RewardList { get; set; } = [];
+
     public override int GetId()
     {
         return RaidID * 100 + HardLevel;

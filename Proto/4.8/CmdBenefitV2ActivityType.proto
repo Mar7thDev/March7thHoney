@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ANKFJAABBFK {
+	uint32 JALHKMEOOPN = 4;
+	uint32 group_id = 7;
+}
+
+enum CmdBenefitV2ActivityType {
+	CmdBenefitV2ActivityType_NLCDGIPGFDJ = 0;
+	CmdBenefitV2ActivityType_NIJIGHHGKIO = 9821;
+	CmdBenefitV2ActivityType_DGDFAKFHKFA = 9824;
+	CmdBenefitV2ActivityType_DIPCCGHFJAA = 9825;
+	CmdBenefitV2ActivityType_NDGINIGLHFG = 9826;
+	CmdBenefitV2ActivityType_MOHCJNIMHJM = 9828;
+	CmdBenefitV2ActivityType_JGAJJBNCIKK = 9829;
+}
+
+message EOAJKNKDAOD {
+	repeated HBFODNLIBFI DJNDMMIKFHN = 5;
+	uint32 group_id = 7;
+}
+
+message FMDGFHPOAIO {
+	uint32 JALHKMEOOPN = 11;
+	uint32 group_id = 15;
+}
+
+message HBFODNLIBFI {
+	uint32 JENKDACFCDO = 2;
+	bool AHDCGHABALN = 5;
+	uint32 ECGDECADBDO = 13;
+	uint32 JALHKMEOOPN = 15;
+}
+
+message HBOCFEEEEII {
+	uint32 JALHKMEOOPN = 2;
+	uint32 retcode = 11;
+	ItemList item_list = 14;
+	uint32 group_id = 15;
+}
+
+message ILFJIIDEEBI {
+}
+
+message IMFBPGDPEOI {
+	uint32 ECGDECADBDO = 2;
+	uint32 JALHKMEOOPN = 4;
+	uint32 retcode = 6;
+	uint32 JENKDACFCDO = 7;
+	uint32 group_id = 15;
+}
+
+message PAGLMEAGPPC {
+	repeated EOAJKNKDAOD AJKOKAJABFG = 2;
+	uint32 retcode = 5;
+}

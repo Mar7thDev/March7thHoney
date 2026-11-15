@@ -1,0 +1,177 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message CEDCMIMKJHK {
+	bool is_open = 4;
+	uint32 avatar_id = 13;
+}
+
+message CEINLELLFLF {
+	uint32 ACDPGFLDFHK = 4;
+	repeated AvatarIdentifier avatar_list = 11;
+}
+
+enum CmdPlayerReturnType {
+	CmdPlayerReturnType_NLCDGIPGFDJ = 0;
+	CmdPlayerReturnType_PlayerReturnTakeCustomRelicScRsp = 4504;
+	CmdPlayerReturnType_PlayerReturnTakeRewardCsReq = 4507;
+	CmdPlayerReturnType_PlayerReturnForceFinishScNotify = 4508;
+	CmdPlayerReturnType_PlayerReturnTakeExtraHcoinScNotify = 4512;
+	CmdPlayerReturnType_TakeReturnExtraHcoinRewardCsReq = 4522;
+	CmdPlayerReturnType_PlayerReturnInfoQueryCsReq = 4526;
+	CmdPlayerReturnType_PlayerReturnTakePointRewardScRsp = 4533;
+	CmdPlayerReturnType_PlayerReturnPointChangeScNotify = 4542;
+	CmdPlayerReturnType_PlayerReturnTakeRelicScRsp = 4543;
+	CmdPlayerReturnType_HIJOOLDBOGH = 4545;
+	CmdPlayerReturnType_TakeReturnExtraHcoinRewardScRsp = 4553;
+	CmdPlayerReturnType_PlayerReturnSignCsReq = 4554;
+	CmdPlayerReturnType_PlayerReturnExtraHcoinProgressScNotify = 4556;
+	CmdPlayerReturnType_PlayerReturnTakeCustomRelicCsReq = 4569;
+	CmdPlayerReturnType_PlayerReturnTakePointRewardCsReq = 4573;
+	CmdPlayerReturnType_PlayerReturnInfoQueryScRsp = 4578;
+	CmdPlayerReturnType_PlayerReturnTakeRelicCsReq = 4581;
+	CmdPlayerReturnType_PlayerReturnStartScNotify = 4583;
+	CmdPlayerReturnType_PIFENBGEGLG = 4585;
+	CmdPlayerReturnType_PlayerReturnTakeRewardScRsp = 4591;
+	CmdPlayerReturnType_PlayerReturnSignScRsp = 4596;
+}
+
+message IBKDHOIDKJA {
+	uint32 PDHOMKKMEME = 1;
+	uint32 world_level = 2;
+	int64 start_time = 3;
+	repeated uint32 ELKOPDBOMAD = 5;
+	uint32 MODFNPMCAAN = 6;
+	bool is_taken_reward = 7;
+	PJIMOBKFDNP status = 8;
+	uint32 KAMECNCKNAB = 9;
+	repeated PileItem NLMEEHNNOCP = 10;
+	uint32 MNMJCNOLIII = 11;
+	repeated uint32 KCHPDJINNLH = 12;
+	bool HHFIEKHFNFP = 13;
+	repeated uint32 KMMNJBAEMAB = 14;
+	int64 finish_time = 15;
+	bool NFFOAHMFCMD = 104;
+	uint32 CLALLJOACNF = 532;
+	uint32 HBPKGODMJNK = 1256;
+	uint32 ACDPGFLDFHK = 1533;
+	CEDCMIMKJHK BIHNCKPBBOA = 1620;
+	uint32 CFCNIPLEKON = 1724;
+	bool OCPLGILCPPN = 1809;
+}
+
+message KEHOGIENDKC {
+	uint32 DACCGMCONBP = 4;
+	MMLAPDEBFJM authkey_ver = 6;
+	uint32 AIBJEFAPGMN = 12;
+}
+
+message KFFEEDHEOOH {
+	uint32 retcode = 4;
+	uint32 ACDPGFLDFHK = 14;
+}
+
+enum MMLAPDEBFJM {
+	MMLAPDEBFJM_NLCDGIPGFDJ = 0;
+	MMLAPDEBFJM_reward = 1;
+	MMLAPDEBFJM_IEIKAPNDPCI = 2;
+}
+
+enum PJIMOBKFDNP {
+	PJIMOBKFDNP_OPIIMBHECNJ = 0;
+	PJIMOBKFDNP_FIKAGKIKFIJ = 1;
+	PJIMOBKFDNP_NDBNMMJCAIC = 2;
+}
+
+message PlayerReturnExtraHcoinProgressScNotify {
+	uint32 HBPKGODMJNK = 3;
+}
+
+message PlayerReturnForceFinishScNotify {
+	IBKDHOIDKJA NAJPHJOFGBB = 15;
+}
+
+message PlayerReturnInfoQueryCsReq {
+}
+
+message PlayerReturnInfoQueryScRsp {
+	IBKDHOIDKJA NAJPHJOFGBB = 1;
+	uint32 retcode = 7;
+	uint32 HDGPODMDLBL = 15;
+}
+
+message PlayerReturnPointChangeScNotify {
+	uint32 MNMJCNOLIII = 12;
+}
+
+message PlayerReturnSignCsReq {
+	repeated KEHOGIENDKC AALGEFBLHEA = 2;
+}
+
+message PlayerReturnSignScRsp {
+	repeated ItemList GPFMEDKPEAJ = 7;
+	uint32 retcode = 9;
+	repeated KEHOGIENDKC AALGEFBLHEA = 13;
+}
+
+message PlayerReturnStartScNotify {
+	uint32 PKOKBHDLFNM = 1;
+}
+
+message PlayerReturnTakeCustomRelicCsReq {
+	uint32 avatar_id = 1;
+}
+
+message PlayerReturnTakeCustomRelicScRsp {
+	repeated Relic relic_list = 3;
+	uint32 avatar_id = 6;
+	uint32 retcode = 9;
+}
+
+message PlayerReturnTakeExtraHcoinScNotify {
+	uint32 LHGKNPENJDO = 9;
+	uint32 ONAEMDLNJDA = 11;
+	bool EAJKAIKEHOL = 15;
+}
+
+message PlayerReturnTakePointRewardCsReq {
+	uint32 DACCGMCONBP = 1;
+	uint32 GMKKBFHOMCM = 10;
+}
+
+message PlayerReturnTakePointRewardScRsp {
+	uint32 DACCGMCONBP = 4;
+	uint32 GMKKBFHOMCM = 8;
+	uint32 retcode = 9;
+	ItemList JNJPKNPCMIB = 15;
+}
+
+message PlayerReturnTakeRelicCsReq {
+	uint32 avatar_id = 4;
+}
+
+message PlayerReturnTakeRelicScRsp {
+	uint32 avatar_id = 5;
+	uint32 retcode = 8;
+	ItemList item_list = 11;
+}
+
+message PlayerReturnTakeRewardCsReq {
+}
+
+message PlayerReturnTakeRewardScRsp {
+	ItemList GPFMEDKPEAJ = 8;
+	uint32 retcode = 14;
+}
+
+message TakeReturnExtraHcoinRewardCsReq {
+}
+
+message TakeReturnExtraHcoinRewardScRsp {
+	uint32 retcode = 2;
+	ItemList reward = 11;
+	uint32 CFCNIPLEKON = 13;
+}

@@ -34,7 +34,7 @@ public partial class InventoryManager
                     if (useConfig.PreviewHPRecoveryPercent != 0)
                     {
                         avatar.SetCurHp(
-                            Math.Min(Math.Max(avatar.CurrentHp + (int)(useConfig.PreviewHPRecoveryPercent * 10000), 0),
+                            Math.Min(Math.Max(avatar.GetCurHp(extraLineup) + (int)(useConfig.PreviewHPRecoveryPercent * 10000), 0),
                                 10000), extraLineup);
 
                         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager.GetCurLineup()!));
@@ -43,7 +43,7 @@ public partial class InventoryManager
                     if (useConfig.PreviewHPRecoveryValue != 0)
                     {
                         avatar.SetCurHp(
-                            Math.Min(Math.Max(avatar.CurrentHp + (int)useConfig.PreviewHPRecoveryValue, 0), 10000),
+                            Math.Min(Math.Max(avatar.GetCurHp(extraLineup) + (int)useConfig.PreviewHPRecoveryValue, 0), 10000),
                             extraLineup);
 
                         await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager.GetCurLineup()!));
@@ -52,7 +52,7 @@ public partial class InventoryManager
                     if (useConfig.PreviewPowerPercent != 0)
                     {
                         avatar.SetCurSp(
-                            Math.Min(Math.Max(avatar.CurrentHp + (int)(useConfig.PreviewPowerPercent * 10000), 0),
+                            Math.Min(Math.Max(avatar.GetCurSp(extraLineup) + (int)(useConfig.PreviewPowerPercent * 10000), 0),
                                 10000),
                             extraLineup);
 

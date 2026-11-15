@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdPhoneType {
+	CmdPhoneType_NLCDGIPGFDJ = 0;
+	CmdPhoneType_UnlockChatBubbleScNotify = 5105;
+	CmdPhoneType_SelectPhoneCaseCsReq = 5106;
+	CmdPhoneType_UnlockPhoneThemeScNotify = 5118;
+	CmdPhoneType_GetPhoneDataScRsp = 5119;
+	CmdPhoneType_UnlockPhoneCaseScNotify = 5127;
+	CmdPhoneType_SelectChatBubbleCsReq = 5131;
+	CmdPhoneType_SelectPhoneThemeScRsp = 5159;
+	CmdPhoneType_SelectPhoneCaseScRsp = 5170;
+	CmdPhoneType_SelectPhoneThemeCsReq = 5171;
+	CmdPhoneType_GetPhoneDataCsReq = 5174;
+	CmdPhoneType_SelectChatBubbleScRsp = 5187;
+}
+
+message GetPhoneDataCsReq {
+}
+
+message GetPhoneDataScRsp {
+	repeated uint32 owned_chat_bubbles = 1;
+	repeated uint32 owned_phone_cases = 2;
+	uint32 cur_chat_bubble = 4;
+	uint32 retcode = 6;
+	uint32 cur_phone_case = 7;
+	repeated uint32 owned_phone_themes = 10;
+	uint32 cur_phone_theme = 11;
+}
+
+message SelectChatBubbleCsReq {
+	uint32 bubble_id = 14;
+}
+
+message SelectChatBubbleScRsp {
+	uint32 cur_chat_bubble = 2;
+	uint32 NGJMMMBJFHD = 7;
+	uint32 retcode = 9;
+}
+
+message SelectPhoneCaseCsReq {
+	uint32 phone_case_id = 12;
+}
+
+message SelectPhoneCaseScRsp {
+	uint32 retcode = 6;
+	uint32 NAMPHKPIOBA = 10;
+	uint32 cur_phone_case = 15;
+}
+
+message SelectPhoneThemeCsReq {
+	uint32 theme_id = 1;
+}
+
+message SelectPhoneThemeScRsp {
+	uint32 cur_phone_theme = 4;
+	uint32 retcode = 9;
+	uint32 NNOHELHPJOM = 12;
+}
+
+message UnlockChatBubbleScNotify {
+	uint32 bubble_id = 8;
+}
+
+message UnlockPhoneCaseScNotify {
+	uint32 phone_case_id = 14;
+}
+
+message UnlockPhoneThemeScNotify {
+	uint32 theme_id = 9;
+}

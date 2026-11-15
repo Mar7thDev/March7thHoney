@@ -68,6 +68,10 @@ public class ResourceManager
         GameData.QueryProductInfoConfig =
             LoadCustomFile<QueryProductInfoConfig>("QueryProductInfo", "QueryProductInfoConfig") ??
             new QueryProductInfoConfig();
+        GameData.DiceyDungeonConfig =
+            LoadCustomFile<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon") ?? new DiceyDungeonConfig();
+        GameData.RealityShowConfig =
+            LoadCustomFile<RealityShowConfig>("RealityShow", "RealityShow") ?? new RealityShowConfig();
         GameData.SceneRainbowGroupPropertyData =
             LoadCustomFile<SceneRainbowGroupPropertyConfig>("Scene Rainbow Group Property",
                 "SceneRainbowGroupProperty") ?? new SceneRainbowGroupPropertyConfig();
@@ -85,7 +89,6 @@ public class ResourceManager
             new GridFightRuntimeConfig();
         GameData.GridFightBasicOrbRewardsConfig.RewardRules = GameData.GridFightRewardRulesConfig;
         GameData.GridFightBasicOrbRewardsConfig.RuntimeConfig = GameData.GridFightRuntimeConfig;
-        ApplyChallengePeakOverrides();
         LoadRogueMagicRoomData();
 
         LoadChessRogueRoomData();
@@ -93,10 +96,19 @@ public class ResourceManager
 
         Task.WaitAll(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10);
 
+        // After the floors: seasons missing from ChallengePeak.json are derived from their placeholder groups.
+        ApplyChallengePeakOverrides();
+
         // copy modifiers
         foreach (var value in GameData.AdventureAbilityConfigListData.Values)
         foreach (var adventureModifierConfig in value?.GlobalModifiers ?? [])
-            GameData.AdventureModifierData.Add(adventureModifierConfig.Key, adventureModifierConfig.Value);
+        {
+            if (GameData.AdventureModifierData.TryAdd(adventureModifierConfig.Key, adventureModifierConfig.Value)) continue;
+            if (JToken.DeepEquals(JToken.FromObject(GameData.AdventureModifierData[adventureModifierConfig.Key]),
+                    JToken.FromObject(adventureModifierConfig.Value))) continue;
+            ResourceCache.IsComplete = false;
+            Logger.Error($"Conflicting shared adventure modifier: {adventureModifierConfig.Key}");
+        }
     }
 
     private static readonly List<string> MissingExcelFiles = [];
@@ -129,6 +141,7 @@ public class ResourceManager
         }
 
         foreach (var cls in resList) cls.AfterAllDone();
+        GridFightTableCompatibility.Apply(resList);
 
         lock (MissingExcelFiles)
         {
@@ -158,6 +171,9 @@ public class ResourceManager
                     .FirstOrDefault(f => f.Exists);
                 if (file == null)
                 {
+                    if (attribute.OptionalFileNames.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                        .Contains(fileName, StringComparer.Ordinal)) continue;
+                    ResourceCache.IsComplete = false;
                     Logger.Warn(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", fileName,
                         I18NManager.Translate("Word.NotFound")));
                     lock (MissingExcelFiles)
@@ -705,7 +721,27 @@ public class ResourceManager
 
     public static void ApplyChallengePeakOverrides()
     {
-        foreach (var group in GameData.ChallengePeakOverrideConfig.ChallengePeak)
+        // Idempotent: a cache boot applies the cached overrides first and the operator's file again afterwards,
+        // so clear what an earlier pass left on the rows before applying the current set.
+        foreach (var level in GameData.ChallengePeakConfigData.Values)
+        {
+            level.OverrideMapEntranceId = 0;
+            level.OverrideMazeGroupId = 0;
+            level.OverrideNpcMonsterId = 0;
+        }
+
+        // Seasons ChallengePeak.json leaves out get their map from the resources (needs the floors loaded).
+        GameData.ChallengePeakDerivedGroups = [];
+        if (!GameData.FloorInfoData.IsEmpty)
+            foreach (var derived in ChallengePeakMapResolver.Derive(GameData.ChallengePeakOverrideConfig.ChallengePeak))
+            {
+                Logger.Info($"ChallengePeak season {derived.GroupId} has no entry in ChallengePeak.json; derived from the " +
+                            $"resources: map entrance {derived.MapEntranceId} (floor {derived.FloorId}), knight group " +
+                            $"{derived.KnightMazeGroupId}, king group {derived.KingMazeGroupId}.");
+                GameData.ChallengePeakDerivedGroups.Add(ChallengePeakMapResolver.ToOverride(derived));
+            }
+
+        foreach (var group in GameData.ChallengePeakGroups)
         {
             if (GameData.ChallengePeakGroupConfigData.TryGetValue(group.GroupId, out var groupExcel))
             {
@@ -727,9 +763,10 @@ public class ResourceManager
                 levelExcel.OverrideNpcMonsterId = stage.Value.NpcMonsterId > 0
                     ? stage.Value.NpcMonsterId
                     : group.NpcMonsterIdDefault;
-                levelExcel.RebuildChallengeMonsters();
             }
         }
+
+        foreach (var level in GameData.ChallengePeakConfigData.Values) level.RebuildChallengeMonsters();
 
         GameData.SyncCurrentChallengePeakGroupId();
     }
@@ -742,6 +779,8 @@ public class ResourceManager
         var missingCount = 0;
         var missingFiles = new List<string>();
         var adventureAbilityLock = new object();
+        var npcAbilityCatalog = new Lazy<AdventureAbilityResourceCatalog>(() =>
+            new AdventureAbilityResourceCatalog(ConfigManager.Config.Path.ResourcePath));
         var res = Parallel.ForEach(GameData.AdventurePlayerData.Values, adventure =>
         {
             var adventurePath = adventure.PlayerJsonPath.Replace("_Config.json", "_Ability.json")
@@ -785,6 +824,11 @@ public class ResourceManager
 
         var res2 = Parallel.ForEach(GameData.NpcMonsterDataData.Values, adventure =>
         {
+            // The client retains unused development rows whose WhiteBox
+            // character/ability assets are not shipped. Do not derive a skill
+            // filename from an empty path or require those development assets.
+            if (adventure.JsonPath.StartsWith("Config/ConfigCharacter/WhiteBox/", StringComparison.Ordinal)
+                && !File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, adventure.JsonPath))) return;
             var adventurePath = adventure.ConfigEntityPath.Replace("_Entity.json", "_Ability.json")
                 .Replace("_Config.json", "_Ability.json")
                 .Replace("ConfigEntity", "ConfigAdventureAbility");
@@ -793,6 +837,23 @@ public class ResourceManager
             var file = new FileInfo(path);
             if (!file.Exists)
             {
+                // NPC variants and common-only characters have no per-model
+                // ability file. Their character config references shared names.
+                try
+                {
+                    if (npcAbilityCatalog.Value.TryResolve(adventure.JsonPath, out var shared))
+                    {
+                        lock (adventureAbilityLock)
+                            GameData.AdventureAbilityConfigListData.TryAdd(adventure.ID, shared);
+                        Interlocked.Increment(ref count);
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ResourceCache.IsComplete = false;
+                    Logger.Error($"Failed to resolve shared NPC abilities for {adventure.ID} ({adventure.JsonPath}).", ex);
+                }
                 Interlocked.Increment(ref missingCount);
                 lock (missingFiles)
                 {

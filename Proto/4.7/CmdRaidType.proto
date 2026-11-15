@@ -1,0 +1,182 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ChallengeRaidNotify {
+	KBONOPFLPDJ GCBDMEPBNHN = 14;
+}
+
+enum CmdRaidType {
+	CmdRaidType_NLCDGIPGFDJ = 0;
+	CmdRaidType_RaidKickByServer = 2209;
+	CmdRaidType_SetClientRaidTargetCountScRsp = 2210;
+	CmdRaidType_ChallengeRaidNotify = 2211;
+	CmdRaidType_DelSaveRaidScNotify = 2215;
+	CmdRaidType_GetAllSaveRaidScRsp = 2216;
+	CmdRaidType_TakeChallengeRaidRewardCsReq = 2224;
+	CmdRaidType_GetSaveRaidScRsp = 2225;
+	CmdRaidType_GetRaidInfoScRsp = 2226;
+	CmdRaidType_RaidInfoNotify = 2230;
+	CmdRaidType_SetClientRaidTargetCountCsReq = 2232;
+	CmdRaidType_GetChallengeRaidInfoScRsp = 2234;
+	CmdRaidType_GDJCOFKGJCG = 2235;
+	CmdRaidType_TakeChallengeRaidRewardScRsp = 2237;
+	CmdRaidType_StartRaidScRsp = 2238;
+	CmdRaidType_GetSaveRaidCsReq = 2241;
+	CmdRaidType_StartRaidCsReq = 2242;
+	CmdRaidType_GetAllSaveRaidCsReq = 2244;
+	CmdRaidType_GetRaidInfoCsReq = 2245;
+	CmdRaidType_LeaveRaidCsReq = 2248;
+	CmdRaidType_LeaveRaidScRsp = 2250;
+}
+
+message DelSaveRaidScNotify {
+	uint32 world_level = 5;
+	uint32 raid_id = 10;
+}
+
+message FinishedRaidInfo {
+	uint32 raid_id = 1;
+	repeated uint32 NGKBFPFOOPK = 2;
+	uint32 world_level = 5;
+}
+
+enum GMFMPPKAEHE {
+	GMFMPPKAEHE_NLCDGIPGFDJ = 0;
+	GMFMPPKAEHE_HNADCAHHKIJ = 1;
+}
+
+message GetAllSaveRaidCsReq {
+}
+
+message GetAllSaveRaidScRsp {
+	uint32 retcode = 3;
+	repeated RaidData raid_data_list = 12;
+}
+
+message GetChallengeRaidInfoScRsp {
+	repeated KBONOPFLPDJ DBOADIFANMH = 3;
+	repeated uint32 ICCCHCCDKND = 8;
+	uint32 retcode = 9;
+}
+
+message GetRaidInfoCsReq {
+}
+
+message GetRaidInfoScRsp {
+	repeated KBONOPFLPDJ challenge_raid_list = 3;
+	uint32 retcode = 5;
+	repeated FinishedRaidInfo finished_raid_info_list = 7;
+	repeated uint32 challenge_taken_reward_id_list = 10;
+}
+
+message GetSaveRaidCsReq {
+	uint32 raid_id = 3;
+	uint32 world_level = 7;
+}
+
+message GetSaveRaidScRsp {
+	uint32 retcode = 6;
+	uint32 raid_id = 7;
+	repeated RaidTargetInfo raid_target_info = 10;
+	uint32 world_level = 12;
+	bool is_save = 15;
+}
+
+message KBONOPFLPDJ {
+	uint32 max_score = 9;
+	uint32 raid_id = 12;
+}
+
+message LeaveRaidCsReq {
+	bool is_save = 12;
+	uint32 raid_id = 14;
+}
+
+message LeaveRaidScRsp {
+	uint32 world_level = 5;
+	uint32 raid_id = 11;
+	uint32 retcode = 12;
+}
+
+enum MJPGDJIGLKO {
+	MJPGDJIGLKO_NLCDGIPGFDJ = 0;
+	MJPGDJIGLKO_BMOOGBNPEAA = 1;
+	MJPGDJIGLKO_CIHFGJDCHIA = 2;
+}
+
+message OICLHALJIEH {
+}
+
+message RaidData {
+	uint32 raid_id = 10;
+	uint32 world_level = 12;
+	repeated RaidTargetInfo raid_target_info = 13;
+}
+
+message RaidInfoNotify {
+	uint32 raid_id = 5;
+	RaidStatus status = 6;
+	ItemList item_list = 10;
+	uint64 raid_finish_time = 12;
+	repeated RaidTargetInfo raid_target_info = 13;
+	uint32 world_level = 14;
+}
+
+message RaidKickByServer {
+	uint32 raid_id = 2;
+	GMFMPPKAEHE reason = 3;
+	LineupInfo lineup = 8;
+	uint32 world_level = 9;
+	SceneInfo scene = 15;
+}
+
+enum RaidStatus {
+	RAID_STATUS_NONE = 0;
+	RAID_STATUS_DOING = 1;
+	RAID_STATUS_FINISH = 2;
+	RAID_STATUS_FAILED = 3;
+}
+
+message RaidTargetInfo {
+	MJPGDJIGLKO KCEEHIOCBPC = 9;
+	uint32 KKCKMCDGCGK = 11;
+	uint32 LCILPGIDEAC = 13;
+}
+
+message SetClientRaidTargetCountCsReq {
+	uint32 KJKGHIEKNID = 12;
+	uint32 progress = 13;
+}
+
+message SetClientRaidTargetCountScRsp {
+	uint32 KJKGHIEKNID = 1;
+	uint32 progress = 4;
+	uint32 retcode = 6;
+}
+
+message StartRaidCsReq {
+	uint32 raid_id = 3;
+	repeated uint32 avatar_list = 5;
+	repeated AvatarIdentifier avatar_identifier_list = 7;
+	uint32 is_save = 8;
+	uint32 world_level = 10;
+	uint32 prop_entity_id = 15;
+}
+
+message StartRaidScRsp {
+	RaidSceneData scene = 2;
+	uint32 retcode = 10;
+}
+
+message TakeChallengeRaidRewardCsReq {
+	uint32 HEJANCCDGAP = 13;
+}
+
+message TakeChallengeRaidRewardScRsp {
+	uint32 retcode = 6;
+	uint32 HEJANCCDGAP = 14;
+	ItemList reward = 15;
+}

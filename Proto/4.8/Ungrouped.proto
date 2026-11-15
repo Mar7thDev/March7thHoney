@@ -1,0 +1,850 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AAOAEMOHCEP {
+	uint32 OHMBEPHEBDJ = 7;
+	uint32 progress = 14;
+}
+
+message ABCMHMIHJBO {
+	repeated uint32 EEJKJMCMJBA = 2;
+	repeated uint32 IEKHMACAFMK = 3;
+	JDKBCJPLNHF IFDOJGKJEBN = 4;
+	repeated uint32 ICHOFAHCIIF = 6;
+	bool GILOPNKGNAA = 8;
+	repeated MJMPBCBGJHH LOBHIIILPCH = 11;
+	repeated IHNJGNPKKOA AAHPCIOOLHB = 15;
+}
+
+message AFAIGBNOCJB {
+	FOEPMKFEJMK info = 7;
+}
+
+message ALCDADKLNKO {
+	uint32 cnt = 1;
+	uint32 FLOJJNMCLBF = 7;
+}
+
+message BACPIBIJPPH {
+	uint32 retcode = 11;
+}
+
+message BGCOEFMFEHA {
+	uint32 JKCOAIGJMMM = 5;
+	ABCMHMIHJBO FJCAKOIDONG = 9;
+}
+
+message BMJHNDBOPLC {
+}
+
+message BNMEGDLCIKO {
+	uint32 CIGGAEJNEFM = 6;
+}
+
+message BOBEICIPCNK {
+	string OJHNAJCAKNB = 10;
+	uint32 IJAPHCOHMIN = 11;
+	uint32 JKCOAIGJMMM = 14;
+	JDKBCJPLNHF IFDOJGKJEBN = 15;
+}
+
+message BPMFHIHNEHH {
+	uint32 retcode = 4;
+	ItemList ENGHMIAMPLG = 10;
+	FOEPMKFEJMK info = 11;
+}
+
+message BlindBoxTradeChangeScNotify {
+	repeated OIJOHMLIEII DGNGMJMPFGK = 9;
+}
+
+message CAFIDFIIEKE {
+	uint32 retcode = 2;
+	repeated JGLCNFPHNEA EGHDBEFINIA = 9;
+}
+
+message CAGDONKMOGB {
+	oneof MMCGBGDJIPN {
+		FKDJGPFCDJK FADGOOJBAKE = 6;
+		NPFMFIKIDAC CEMIOADEMHA = 9;
+		bool GILOPNKGNAA = 10;
+		IHNJGNPKKOA BPJABGNNHDO = 14;
+	}
+}
+
+message CBMLONMBLNE {
+	uint32 level_id = 1;
+	CEJHJMLPJOO AGALHBCPNOO = 3;
+	GGKEDBCAADJ FFCBOJAACMD = 5;
+	JBHAMLBKJNJ JKADHKCCMAK = 15;
+}
+
+message CCLIGKFAHJI {
+}
+
+message CDLFFHOHAIH {
+	uint64 FIEOPKNBHKJ = 11;
+}
+
+message CEAPCHBBOFN {
+	uint32 uid = 11;
+	bool MBIAIMKHNDB = 13;
+}
+
+enum CEJHJMLPJOO {
+	CEJHJMLPJOO_JNFDPFGJBDK = 0;
+	CEJHJMLPJOO_IPMLAAFFDKD = 1;
+	CEJHJMLPJOO_AJLGKJIFADM = 2;
+	CEJHJMLPJOO_MAOEEIOBDIP = 3;
+}
+
+message CFIIJJEGKHC {
+	uint32 CNEJKLABHDG = 2;
+	repeated uint32 OEOPMBHFBBP = 10;
+	double LIHEPONEGOB = 12;
+	uint32 uid = 15;
+}
+
+message CGCIGGBIGAL {
+	uint32 HAGDKKBAAKK = 8;
+	uint32 MNIBAEDPCHA = 11;
+}
+
+message CGHKNHAJBGL {
+	GGKEDBCAADJ FFCBOJAACMD = 3;
+	JBHAMLBKJNJ JKADHKCCMAK = 9;
+	CEJHJMLPJOO AGALHBCPNOO = 15;
+}
+
+message CHNMJPLALEC {
+	uint64 MJNENEAAOAE = 4;
+	uint32 retcode = 5;
+}
+
+message CIDKLLMAIGP {
+	uint32 HOGEMAHFFEF = 4;
+	string NLMEEEKBPKO = 5;
+	uint32 retcode = 8;
+}
+
+message CJIFMPGCOOC {
+	oneof OLAFHJFACAD {
+		DLDPJEILCDB AALLJKILLKM = 13;
+	}
+}
+
+message CKMHMAJPJEP {
+}
+
+message CMHFBLDNPGB {
+	bool is_new_record = 7;
+	uint32 LENMCGCGBOA = 10;
+	uint32 retcode = 15;
+}
+
+message CNIPIIKMAHN {
+	repeated uint32 LJLGNHLBJAE = 1;
+}
+
+message CPCHHBHCGOO {
+}
+
+message DCNIDBKPPCK {
+	uint32 retcode = 3;
+	repeated NMEGIPHFFDA order_list = 11;
+	repeated uint64 IKJOGIDIBPK = 15;
+}
+
+message DJBKKNNBHKF {
+	repeated NGBNJKJIDLJ IJKIBLJEGGE = 15;
+}
+
+message DLDDOMMLPBK {
+}
+
+message DLDPJEILCDB {
+	string BLBAIBEBIAL = 1;
+	string KMGONPNDONA = 2;
+	string HJAMPKPCKEB = 3;
+	string DHPIFLNBLNM = 4;
+	string FFCDKLBFKJM = 5;
+	string DNDHBFOKAEA = 6;
+	string KNAKEKLCFDH = 7;
+	string PFDNBIDFDMH = 8;
+	string GECJPIMLHIM = 9;
+	string ACLHGDDNNLK = 10;
+	string CAGPHEEGOAC = 11;
+	string JHKJKKGLAHE = 12;
+	string ACMLHNNMBBN = 13;
+	string EFGMHCEIJGO = 14;
+	string DALMLLPIFNP = 15;
+	string GOOLPABLPBF = 876;
+	string LOKOLODKAAM = 1664;
+}
+
+message DNHFLGJJKHN {
+	repeated uint64 IKJOGIDIBPK = 4;
+	repeated NMEGIPHFFDA order_list = 8;
+}
+
+message DONCOCHMEBC {
+	repeated uint32 NKOBNEDMNAP = 7;
+}
+
+message DPOGMNFCMNN {
+	repeated NMEGIPHFFDA order_list = 3;
+	uint32 retcode = 10;
+}
+
+message DrawScRsp {
+	uint32 retcode = 6;
+	repeated uint32 NFJFFLEMKDA = 8;
+	uint32 pool_id = 11;
+	uint32 HEBDHMNNMDH = 12;
+	repeated KVP BMIMOFNJEGD = 13;
+	uint32 NCGGMMBJPPE = 14;
+}
+
+message EBHKOMEILOJ {
+	uint32 JKCOAIGJMMM = 5;
+	uint32 HPKEGPGPPOK = 6;
+	ItemList ENGHMIAMPLG = 7;
+	uint32 IJAPHCOHMIN = 9;
+}
+
+message EEJOPBDAHNJ {
+	uint32 JKCOAIGJMMM = 1;
+}
+
+message EIEOFMBKAHM {
+}
+
+message FAKNKCAOHON {
+	uint64 FIEOPKNBHKJ = 8;
+}
+
+message FDFNDGOOCGJ {
+}
+
+enum FDHNDGJCOAC {
+	FDHNDGJCOAC_NLCDGIPGFDJ = 0;
+	FDHNDGJCOAC_CIHFGJDCHIA = 1;
+	FDHNDGJCOAC_INCLHHDFCEL = 2;
+	FDHNDGJCOAC_PMKMEAAGKAP = 3;
+	FDHNDGJCOAC_BNENFDBMAPO = 4;
+}
+
+message FFPHBNAGJNP {
+	IHFFJHNEFMF IDCGICECPHO = 7;
+}
+
+message FHJMEFOOOAB {
+}
+
+message FKDJGPFCDJK {
+	repeated uint32 LNMPJKPEHAE = 7;
+}
+
+message FKHNFMFIKGL {
+	uint32 retcode = 1;
+	LFIKNHJBDBJ NEMJKLMIJOL = 10;
+}
+
+message FOEPMKFEJMK {
+	uint32 CLGMOPPOGGC = 2;
+	uint32 available_count = 4;
+	uint32 LNLDJDODOIL = 9;
+	repeated AAOAEMOHCEP OMNDNGDEEGL = 11;
+}
+
+message GGKEDBCAADJ {
+	uint32 AHDOAEJDBDD = 2;
+	uint32 coin = 10;
+	repeated LJJPJCBAHLM OLOMEEDGJKD = 12;
+}
+
+enum GMOOOFDJAIE {
+	GMOOOFDJAIE_PJAAADFOKKC = 0;
+	GMOOOFDJAIE_IBKBMBMFHDD = 1;
+	GMOOOFDJAIE_AIFFHDMPLBP = 2;
+}
+
+message GNBOBLNFEHI {
+	uint64 FIEOPKNBHKJ = 10;
+}
+
+message GOPAMMODIJI {
+	uint32 JKCOAIGJMMM = 8;
+	HBBPNKMJFBF NBNKLEBNPFA = 12;
+}
+
+message HAEANONLFND {
+	uint32 EHLNBHANHMN = 3;
+	uint32 FLOJJNMCLBF = 5;
+}
+
+message HAHEOGIBNHL {
+	uint32 retcode = 5;
+	uint64 MJNENEAAOAE = 15;
+}
+
+message HAIEHHIHIGC {
+	double FMBFAPOCIDF = 2;
+	uint32 NKIIHODEFBP = 13;
+}
+
+message HBBPNKMJFBF {
+	uint32 JCLIFKACIJD = 2;
+	MHLHDALAFMJ DPLODKBIJDI = 4;
+	repeated uint32 KIIIDKADAIN = 5;
+	uint32 ILHPFNCIOJN = 7;
+	uint32 FHHOPLLDPAP = 8;
+	repeated uint32 BAFLDOEHBJK = 10;
+	repeated uint32 JHLGHLBDMLH = 11;
+	uint32 OMIIAOCIIPA = 12;
+	uint32 IJAPHCOHMIN = 13;
+	MHLHDALAFMJ CACADJOIHHI = 15;
+}
+
+message HBHPDMLDLBL {
+	bool IAJAOMAKAHA = 3;
+	uint32 CBGODLHCLPK = 7;
+}
+
+message HEAJOABAAGF {
+	uint32 pool_id = 1;
+	uint32 NCGGMMBJPPE = 2;
+	ILCKOEGMGHF BBPMLKCBLKB = 14;
+}
+
+message HJLMNPJFEMI {
+	oneof GDGHJLMKLAO {
+		MHLHDALAFMJ DPLODKBIJDI = 6;
+		MHLHDALAFMJ CACADJOIHHI = 14;
+	}
+	uint32 JKCOAIGJMMM = 7;
+}
+
+message HKIFIOMLLCE {
+	repeated uint32 OEDLOIPDGKG = 5;
+	uint32 IJAPHCOHMIN = 14;
+}
+
+message IAKKHBENIOL {
+	uint32 retcode = 7;
+}
+
+message ICOCIJEBKKD {
+	uint32 NLONGNHNECG = 14;
+	uint32 KLGKHAOMFGC = 15;
+}
+
+message IDMPBCFCKMA {
+	uint32 retcode = 5;
+	repeated JJJOADIAEOH HHFCPIEHMOA = 11;
+}
+
+message IFMNCFKBEGL {
+	LFIKNHJBDBJ NEMJKLMIJOL = 3;
+	repeated KPNHGDGLICN KHBJOAHCCCE = 8;
+	uint32 retcode = 9;
+	SceneBattleInfo battle_info = 13;
+	uint32 challenge_id = 15;
+}
+
+message IHFFJHNEFMF {
+	uint32 PIIKPCFHGFI = 2;
+	uint32 LGJGNFBJKIH = 4;
+	uint32 AKOMOPODGNJ = 5;
+	repeated MMPEJCJEEHO AECMCJCCMFO = 7;
+	uint32 LALKFADHJJL = 9;
+	uint32 NFAMKCMMJBG = 10;
+	uint32 HPEODGIDKAN = 11;
+	uint32 IBJNHACMKLE = 13;
+	uint32 CPFCKNMOKDL = 14;
+}
+
+message IHNJGNPKKOA {
+	uint32 CBGODLHCLPK = 4;
+	bool BNBCGFOBIPH = 12;
+	bool IAJAOMAKAHA = 13;
+}
+
+message ILBLJAFMBBK {
+	uint64 FIEOPKNBHKJ = 15;
+}
+
+message ILCKOEGMGHF {
+	uint32 FBDENECLHIH = 2;
+	uint32 HEMOHFJJMJG = 11;
+}
+
+message IMDEBPDKCAJ {
+	uint64 MJNENEAAOAE = 7;
+	uint32 retcode = 15;
+}
+
+message IMPHFFIJDKP {
+	oneof GPJHBOKGHGO {
+		bool ANBKDJKHCBI = 2;
+		bool ALPKKNKAFBG = 13;
+	}
+}
+
+message IOOHJLNKKKD {
+	uint32 challenge_id = 8;
+}
+
+message IPMDPMECLCP {
+	uint32 retcode = 8;
+	JJJOADIAEOH info = 9;
+}
+
+message JBHAMLBKJNJ {
+	uint32 cost_time = 7;
+	uint32 IILPDGGBHKG = 8;
+	uint32 AHOFEKHKMCP = 10;
+	repeated JPBKMEJJDEL EMFIOHCCOGO = 12;
+	repeated ALCDADKLNKO EAMOADLJIOK = 13;
+	uint32 GPKPGJKINCE = 14;
+}
+
+message JBPOKKNFOKM {
+	repeated CFIIJJEGKHC MJCCFIINAJC = 5;
+	uint32 challenge_id = 6;
+	uint32 retcode = 15;
+}
+
+message JDCCDGMJMII {
+	uint32 GJHFNCIEFGJ = 2;
+	IHFFJHNEFMF IDCGICECPHO = 5;
+	repeated uint32 OEDLOIPDGKG = 6;
+	int32 JCAEANLAGMB = 10;
+	DJBKKNNBHKF GAIENNLBCMM = 12;
+}
+
+message JDKBCJPLNHF {
+	uint32 IKJPIFBFEAG = 1;
+	JDCCDGMJMII BBEMIGELGJC = 4;
+	uint32 OHIDKMKBIGJ = 14;
+}
+
+message JDNHIMDLIHH {
+}
+
+message JGLCNFPHNEA {
+	int64 end_time = 1;
+	uint32 pool_id = 4;
+	uint32 DBGOJOCGMKN = 8;
+	int64 begin_time = 12;
+	repeated KVP BMIMOFNJEGD = 13;
+	repeated uint32 GPEOLHOKDNC = 15;
+}
+
+message JJJOADIAEOH {
+	bool is_open = 6;
+	uint32 avatar_id = 9;
+	uint32 skill_id = 15;
+}
+
+message JLBJPLGJBFF {
+}
+
+message JLMKPMCDOKC {
+	uint32 CLGMOPPOGGC = 9;
+}
+
+message JPBKMEJJDEL {
+	uint32 IMHNADLKBHH = 1;
+	uint32 coin = 4;
+	int64 OJLBIJAJMMJ = 6;
+	uint32 FEOOGCGICKA = 7;
+	uint32 EBEFHAFLFFA = 9;
+	repeated HAEANONLFND GOPHGNNGJIC = 13;
+	uint32 KINCCGNDOJN = 15;
+}
+
+message KBGCPGGAHJK {
+	uint32 skill_id = 2;
+	bool is_open = 6;
+	uint32 avatar_id = 7;
+}
+
+message KKNAAFIBLLH {
+}
+
+message KMAEFBHJFDM {
+	uint32 KFGFGMFAMDA = 3;
+	uint32 GHMHMKINNEJ = 7;
+}
+
+message KPNDLNCAECC {
+	oneof IJGHNHPEHDP {
+		MMPJELLKDHH ANBKDJKHCBI = 4;
+		bool NBNMHLIFCMF = 8;
+		KMAEFBHJFDM ALPKKNKAFBG = 9;
+		bool POJDOCAKCJM = 11;
+	}
+}
+
+message LCIKABPABHK {
+	HBBPNKMJFBF NBNKLEBNPFA = 10;
+	repeated OGDOODOGIOF IADLNIOADDN = 11;
+}
+
+message LFIKNHJBDBJ {
+	uint32 challenge_id = 2;
+	repeated KPNHGDGLICN KHBJOAHCCCE = 4;
+	bool LMINNGCDDOK = 6;
+	uint32 CNEJKLABHDG = 8;
+	double LIHEPONEGOB = 9;
+	uint32 MNIBAEDPCHA = 12;
+	uint32 HAGDKKBAAKK = 14;
+}
+
+message LHDOHPHPABA {
+	uint32 JKCOAIGJMMM = 15;
+}
+
+message LIEHHGLAEHG {
+	repeated CAGDONKMOGB DGNGMJMPFGK = 14;
+}
+
+message LJJPJCBAHLM {
+	uint32 FLOJJNMCLBF = 3;
+	uint32 BCKKBPBFMNG = 11;
+}
+
+message LNAAACICHPG {
+	uint32 pet_id = 3;
+	uint32 NDMHOKEGOAP = 11;
+	uint64 ONMDDKGCEHK = 14;
+}
+
+message LPJFNJAJIGM {
+	uint64 ONMDDKGCEHK = 3;
+	uint64 FIEOPKNBHKJ = 11;
+}
+
+message LPLCFFGANFC {
+	uint32 DCPEFPPGCAA = 1;
+	uint32 FADDHEIHGOO = 3;
+	uint32 retcode = 4;
+	uint32 LOPOLKEKKLB = 5;
+	uint32 FNIAAEAFGDE = 7;
+	uint32 LENMCGCGBOA = 9;
+	repeated ICOCIJEBKKD HLOMPMOHJHO = 10;
+	repeated uint32 BCFDEEIPJGN = 11;
+	repeated uint32 HNOCFELOAFJ = 15;
+}
+
+message MBCCKEIJAGF {
+	MPAJNPPLKMP FFCBOJAACMD = 3;
+	JDCCDGMJMII BBEMIGELGJC = 5;
+	uint32 IJAPHCOHMIN = 7;
+	FDHNDGJCOAC PKKMAAIJEOD = 13;
+	string OJHNAJCAKNB = 15;
+}
+
+message MDOHKDNNDPI {
+}
+
+message MECNLNGKDHA {
+	uint32 level_id = 11;
+}
+
+message MENCBJMOEML {
+	uint64 FIEOPKNBHKJ = 13;
+}
+
+message MGCJKEEOPEC {
+}
+
+message MGJEKPCMNDD {
+	uint32 CBGODLHCLPK = 14;
+}
+
+message MHJNBHCDPHK {
+	IHNJGNPKKOA AMFEFIDDMDA = 4;
+	uint32 JKCOAIGJMMM = 15;
+}
+
+message MHLHDALAFMJ {
+	bool MNBMPEIABNJ = 3;
+	repeated uint32 GGBGEJIIKFN = 7;
+	uint32 LBDOBLGKANH = 8;
+}
+
+message MIECIEKKIMJ {
+	uint32 retcode = 7;
+	repeated CEAPCHBBOFN CAFBDEDFBOL = 12;
+}
+
+message MJMPBCBGJHH {
+	uint32 EMMGMLIBHGP = 8;
+	uint32 IKJPIFBFEAG = 11;
+}
+
+message MKGODFLGEAM {
+	uint32 uid = 1;
+	uint32 head_icon = 5;
+	string LLKGDLAFODJ = 7;
+	uint32 level = 8;
+	bool AGABADPIGGK = 12;
+}
+
+message MLNNHJKKMNC {
+}
+
+message MMPEJCJEEHO {
+	uint32 HCDEOKNIGKG = 5;
+	uint32 FFPMBJPCAGG = 6;
+	uint32 BDCOFIOCJFO = 9;
+}
+
+message MMPJELLKDHH {
+	uint32 LJCEOGPOGBE = 14;
+}
+
+message MNGELOJBJGC {
+	uint32 FMACGJBHLPF = 2;
+	repeated NMEGIPHFFDA order_list = 9;
+	uint32 retcode = 10;
+}
+
+message MPAJNPPLKMP {
+	uint32 CPFCKNMOKDL = 1;
+	uint32 HPEODGIDKAN = 2;
+	uint32 BJPIBINDNLF = 5;
+	uint32 ACGMHLIGFBA = 7;
+	uint32 LALKFADHJJL = 8;
+	uint32 CBBALOIKCPC = 10;
+	uint32 CBIBKFKHLMI = 11;
+	uint32 IBJNHACMKLE = 12;
+	uint32 FPOCOJHBLPI = 14;
+	uint32 BEKNMJFKHHN = 15;
+	repeated MMPEJCJEEHO CLICEAKBDJK = 173;
+	repeated uint32 IBAGICECKBG = 178;
+	repeated MMPEJCJEEHO AECMCJCCMFO = 251;
+	repeated KVP FFFLHAFFCJF = 674;
+	uint32 EJCLFCEKFDB = 778;
+	uint32 JMHAFKMFLII = 900;
+	repeated MMPEJCJEEHO FDNLKGOOHHF = 1078;
+	uint32 PIIKPCFHGFI = 1219;
+	repeated MMPEJCJEEHO FLLNGJGFFAF = 1596;
+	uint32 LGJGNFBJKIH = 2036;
+}
+
+message NBIBDLLLCLH {
+	uint32 retcode = 4;
+	repeated uint32 BCFDEEIPJGN = 8;
+	repeated ICOCIJEBKKD IODGBCBMCHL = 11;
+	uint32 FNIAAEAFGDE = 12;
+}
+
+message NEPFEJKFFGB {
+}
+
+message NGBNJKJIDLJ {
+	uint32 BDCOFIOCJFO = 2;
+	uint32 ICIIDHLHNEK = 3;
+	GMOOOFDJAIE MIPCILCJBMP = 5;
+	string ICEPLFPKAHC = 7;
+	int64 EFJHBDICDCH = 8;
+	int32 LOJCINOAHIP = 9;
+	int32 KLGADLINLED = 11;
+	int64 AMEFCHBNODB = 12;
+}
+
+message NIIFNPFEKIG {
+	IHNJGNPKKOA AMFEFIDDMDA = 2;
+	uint32 JKCOAIGJMMM = 12;
+}
+
+message NKEMNFGCBLO {
+	uint32 challenge_id = 12;
+}
+
+message NLBAOLFBEGB {
+	repeated PPELMHMMCHP LLLOIIKOCEN = 2;
+	bool BDFJNHAICLH = 3;
+	uint32 retcode = 15;
+}
+
+message NLJOCMODADF {
+	uint32 LENMCGCGBOA = 2;
+	uint32 retcode = 4;
+	repeated ICOCIJEBKKD HLOMPMOHJHO = 8;
+	uint32 LOPOLKEKKLB = 14;
+}
+
+message NMEGIPHFFDA {
+	LNAAACICHPG AMGLECMANAH = 3;
+	MKGODFLGEAM EFKJFADLLIA = 4;
+	LNAAACICHPG DAMCKNHKDOA = 7;
+	OHAPBJANBDE NDHBAFMMFBC = 8;
+	PEHEBABHPBH LFOIKMFLNKJ = 9;
+	uint64 FIEOPKNBHKJ = 10;
+	uint64 DCKKGALHFNO = 11;
+	MKGODFLGEAM DFAACJDIFBL = 13;
+	uint64 expire_time = 14;
+	uint64 KDBMGCMEOFL = 15;
+}
+
+message NMNFJDBNBPG {
+	uint32 CCBNBBGBKCE = 1;
+	uint32 BDCOFIOCJFO = 2;
+	HBBPNKMJFBF NBNKLEBNPFA = 5;
+	uint32 JKCOAIGJMMM = 6;
+	uint32 IJAPHCOHMIN = 10;
+	bool NIMINCMIMEE = 12;
+	bool EKFDEEHCKDH = 13;
+	uint32 CDMFHNGEFCN = 15;
+}
+
+message NOEGOMIJDAH {
+	oneof LIEBPEOAEEG {
+		HAIEHHIHIGC OEFFDKDCIMC = 2;
+		CGCIGGBIGAL BCLOOPGAIKJ = 9;
+	}
+	uint32 challenge_id = 3;
+}
+
+message NOJMGKOMJHP {
+	uint32 ILHPFNCIOJN = 3;
+	uint32 CDMFHNGEFCN = 9;
+	repeated uint32 KIIIDKADAIN = 10;
+	uint32 IJAPHCOHMIN = 13;
+	repeated uint32 JHLGHLBDMLH = 14;
+}
+
+message NPFMFIKIDAC {
+	repeated uint32 LNMPJKPEHAE = 12;
+}
+
+message OAOONIMHKLA {
+	uint32 retcode = 9;
+}
+
+message OBJJEHIKFJC {
+	LCIKABPABHK FJCAKOIDONG = 5;
+	uint32 JKCOAIGJMMM = 14;
+}
+
+message OGDOODOGIOF {
+	uint32 GKALFLHFPKC = 1;
+	bool HCOFMFKFMDK = 2;
+	uint32 BDCOFIOCJFO = 8;
+	uint32 IJAPHCOHMIN = 11;
+}
+
+enum OHAPBJANBDE {
+	OHAPBJANBDE_KPJGDHLENIP = 0;
+	OHAPBJANBDE_IHIPBAHHLKF = 1;
+	OHAPBJANBDE_LMJCPMFPHLK = 2;
+	OHAPBJANBDE_OJPLDOMGBHI = 3;
+}
+
+message OHCCEANPCIL {
+	uint32 IJAPHCOHMIN = 2;
+	uint32 CDMFHNGEFCN = 11;
+	HBBPNKMJFBF NBNKLEBNPFA = 12;
+	uint32 JKCOAIGJMMM = 15;
+}
+
+message OHFEIJJDJIE {
+	uint32 challenge_id = 6;
+	bool LAJAGHBKIJH = 8;
+	repeated KPNHGDGLICN avatar_list = 13;
+}
+
+message OIJOHMLIEII {
+	oneof MMCGBGDJIPN {
+		DNHFLGJJKHN EPHIIBNCCJG = 3;
+	}
+}
+
+message OKCAJHKCJDE {
+	uint32 JDFJJOKDIKC = 8;
+	uint32 OBLOEMJOFEE = 11;
+	uint64 AFFLDMFBGEH = 13;
+}
+
+message OMEAEOLPGGM {
+	repeated FOEPMKFEJMK HNFFFDEGOEB = 1;
+	uint32 retcode = 15;
+}
+
+message PAMDEKPLLEL {
+	repeated LFIKNHJBDBJ OGDEMOAKJOK = 5;
+	uint32 retcode = 6;
+}
+
+message PBLPDPEOBCB {
+	repeated uint32 BCFDEEIPJGN = 1;
+	uint32 FNIAAEAFGDE = 13;
+	repeated ICOCIJEBKKD IODGBCBMCHL = 14;
+}
+
+message PEFBGOANFHP {
+	uint32 LENMCGCGBOA = 7;
+	uint32 retcode = 8;
+	uint32 level_id = 9;
+}
+
+enum PEHEBABHPBH {
+	PEHEBABHPBH_OJPLDOMGBHI = 0;
+	PEHEBABHPBH_IHNMFIICECF = 1;
+	PEHEBABHPBH_HNHAMKCGBGE = 2;
+	PEHEBABHPBH_KMGLHHFPLCF = 3;
+}
+
+message PHIMNIFMBMI {
+	uint64 MJNENEAAOAE = 6;
+	uint32 retcode = 8;
+}
+
+message PIEGCFMAEOO {
+	uint32 IJAPHCOHMIN = 2;
+	uint32 CDMFHNGEFCN = 3;
+	bool EKFDEEHCKDH = 6;
+	uint32 GNGBGCHGJPD = 7;
+	uint32 BJKGNCLCKBG = 10;
+	uint32 LALKFADHJJL = 12;
+	uint32 BOILBFJANKL = 14;
+}
+
+message PIGILFCALBA {
+	string NLMEEEKBPKO = 1;
+	uint32 HOGEMAHFFEF = 7;
+	uint32 retcode = 8;
+}
+
+message PPELMHMMCHP {
+	uint32 KLOJONBEJKJ = 3;
+	uint64 ONMDDKGCEHK = 5;
+}
+
+message PPHGPJDEHDA {
+	uint32 JKCOAIGJMMM = 4;
+	uint32 CIGGAEJNEFM = 13;
+}
+
+message PPOPABLIHNI {
+	uint32 count = 8;
+	uint32 offset = 10;
+}
+
+message PublishPrivateOrderCsReq {
+	uint32 JFPABCLOALC = 7;
+	uint32 JDFJJOKDIKC = 8;
+	uint64 AFFLDMFBGEH = 10;
+}
+
+message PublishPrivateOrderRsp {
+	uint32 retcode = 4;
+	uint32 JFPABCLOALC = 12;
+}

@@ -143,8 +143,8 @@ public class RogueTournEntityLoader : SceneEntityLoader
 
         // The area group's door is the room's exit marker: it ships shut until the room is cleared.
         if (_filtered && prop != null && prop.Excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR &&
-            prop.State != DoorOpen)
-            prop.State = DoorShut;
+            prop.State != ScenePropRules.RogueDoorOpenState(prop.Excel, DoorOpen))
+            prop.State = ScenePropRules.RogueDoorOpenState(prop.Excel, DoorShut);
 
         return prop;
     }
@@ -157,10 +157,12 @@ public class RogueTournEntityLoader : SceneEntityLoader
     {
         List<EntityProp> opened = [];
         foreach (var door in scene.Entities.Values.OfType<EntityProp>()
-                     .Where(prop => prop.Excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR && prop.State != DoorOpen)
+                     .Where(prop => prop.Excel.PropType == PropTypeEnum.PROP_ROGUE_DOOR)
                      .ToList())
         {
-            await door.SetState(DoorOpen, sendPacket);
+            var open = ScenePropRules.RogueDoorOpenState(door.Excel, DoorOpen);
+            if (door.State == open) continue;
+            await door.SetState(open, sendPacket);
             opened.Add(door);
         }
 

@@ -1,0 +1,659 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AAIMICLLCKE {
+	NCFKHDIKCNI NNJCNEMGEAJ = 4;
+	uint32 JKAGCGKCHJG = 6;
+}
+
+message AIMNHEHKIMI {
+	uint32 DJMPADMMPAN = 1;
+	uint32 OAEFICOLFIG = 2;
+	uint32 HMHEDCCLDGB = 8;
+	NCFKHDIKCNI BAGMMONIIGK = 11;
+	uint32 AFOHLIOKLAA = 12;
+}
+
+message BAGAOALHAJI {
+	repeated EKEOBMOKEFD skill_list = 5;
+}
+
+message BEJOPEHPABO {
+	NCFKHDIKCNI HFNNNGHBHGG = 1;
+	NCFKHDIKCNI HMCIEDENFMK = 2;
+	repeated uint32 LGBOJJFEGFI = 10;
+	NCFKHDIKCNI DCPDNBALDOA = 12;
+}
+
+message BLDIHADJKJF {
+	uint32 JKAGCGKCHJG = 6;
+	NCFKHDIKCNI NNJCNEMGEAJ = 13;
+}
+
+message BMGHLHHJEGE {
+	bool is_disappeared_once = 6;
+	uint32 event_type = 8;
+}
+
+message CANOCBHNHLJ {
+	uint32 CNGMMDKCBND = 11;
+}
+
+message CHBCJNLOLMB {
+	repeated KICPDGKGGHO LDCJONHGDAN = 6;
+}
+
+message CPHOIPHAPDJ {
+	uint32 avatar_id = 1;
+	uint32 level = 4;
+	uint32 PLEEMBMPICA = 6;
+	uint32 role_star = 10;
+}
+
+enum CmdPlanetFesType {
+	CmdPlanetFesType_NLCDGIPGFDJ = 0;
+	CmdPlanetFesType_PlanetFesStartMiniGameScRsp = 8201;
+	CmdPlanetFesType_PlanetFesSetCustomKeyValueCsReq = 8202;
+	CmdPlanetFesType_PlanetFesChooseAvatarEventOptionCsReq = 8203;
+	CmdPlanetFesType_PlanetFesUpgradeFesLevelScRsp = 8204;
+	CmdPlanetFesType_PlanetFesGetAvatarStatCsReq = 8205;
+	CmdPlanetFesType_PlanetFesBusinessDayRefreshEventCsReq = 8206;
+	CmdPlanetFesType_PlanetFesGameBingoFlipScRsp = 8207;
+	CmdPlanetFesType_PlanetFesGetBusinessDayInfoScRsp = 8208;
+	CmdPlanetFesType_PlanetFesGetBusinessDayInfoCsReq = 8209;
+	CmdPlanetFesType_PlanetFesDoGachaCsReq = 8210;
+	CmdPlanetFesType_PlanetFesClientStatusCsReq = 8211;
+	CmdPlanetFesType_PlanetFesGetFriendRankingInfoListScRsp = 8212;
+	CmdPlanetFesType_PlanetFesTakeRegionPhaseRewardCsReq = 8213;
+	CmdPlanetFesType_PlanetFesSkillLevelUpCsReq = 8214;
+	CmdPlanetFesType_PlanetFesTakeQuestRewardScRsp = 8215;
+	CmdPlanetFesType_PlanetFesTakeQuestRewardCsReq = 8216;
+	CmdPlanetFesType_PlanetFesTakeRegionPhaseRewardScRsp = 8217;
+	CmdPlanetFesType_PlanetFesDealAvatarEventOptionItemCsReq = 8218;
+	CmdPlanetFesType_PlanetFesBonusEventInteractCsReq = 8219;
+	CmdPlanetFesType_PlanetFesBonusEventInteractScRsp = 8220;
+	CmdPlanetFesType_PlanetFesUseItemScRsp = 8221;
+	CmdPlanetFesType_PlanetFesDeliverPamCargoCsReq = 8222;
+	CmdPlanetFesType_PlanetFesSkillLevelUpScRsp = 8223;
+	CmdPlanetFesType_PlanetFesBuyLandCsReq = 8224;
+	CmdPlanetFesType_PlanetFesAvatarLevelUpCsReq = 8225;
+	CmdPlanetFesType_PlanetFesCollectAllIncomeCsReq = 8226;
+	CmdPlanetFesType_PlanetFesDealAvatarEventOptionItemScRsp = 8227;
+	CmdPlanetFesType_PlanetFesSetCustomKeyValueScRsp = 8228;
+	CmdPlanetFesType_PlanetFesChooseAvatarEventOptionScRsp = 8229;
+	CmdPlanetFesType_PlanetFesCollectIncomeScRsp = 8230;
+	CmdPlanetFesType_PlanetFesBusinessDayRefreshEventScRsp = 8231;
+	CmdPlanetFesType_PlanetFesCollectAllIncomeScRsp = 8232;
+	CmdPlanetFesType_PlanetFesGetAvatarStatScRsp = 8233;
+	CmdPlanetFesType_PlanetFesSetAvatarWorkScRsp = 8234;
+	CmdPlanetFesType_PlanetFesSetAvatarWorkCsReq = 8235;
+	CmdPlanetFesType_PlanetFesUpgradeFesLevelCsReq = 8236;
+	CmdPlanetFesType_PlanetFesBuyLandScRsp = 8237;
+	CmdPlanetFesType_GetPlanetFesDataScRsp = 8238;
+	CmdPlanetFesType_PlanetFesFriendRankingInfoChangeScNotify = 8239;
+	CmdPlanetFesType_PlanetFesStartMiniGameCsReq = 8240;
+	CmdPlanetFesType_PlanetFesDoGachaScRsp = 8241;
+	CmdPlanetFesType_GetPlanetFesDataCsReq = 8242;
+	CmdPlanetFesType_PlanetFesUseItemCsReq = 8243;
+	CmdPlanetFesType_PlanetFesAvatarLevelUpScRsp = 8244;
+	CmdPlanetFesType_PlanetFesClientStatusScRsp = 8245;
+	CmdPlanetFesType_PlanetFesDeliverPamCargoScRsp = 8246;
+	CmdPlanetFesType_PlanetFesGameBingoFlipCsReq = 8247;
+	CmdPlanetFesType_PlanetFesSyncChangeScNotify = 8248;
+	CmdPlanetFesType_PlanetFesGetFriendRankingInfoListCsReq = 8249;
+	CmdPlanetFesType_PlanetFesCollectIncomeCsReq = 8250;
+}
+
+message DAGGFIOGHGE {
+	NCFKHDIKCNI GAMNCJJJPEN = 3;
+	NCFKHDIKCNI EJPENDJNLIH = 4;
+	uint32 FNABEJNJBKN = 9;
+	int64 MGHNNENOOGB = 15;
+}
+
+message ECIDGEBFJHP {
+	PLPDNKNJBAA BOLCNGAKAMG = 2;
+}
+
+message EKEOBMOKEFD {
+	uint32 skill_id = 4;
+	uint32 level = 13;
+}
+
+message EKPBGMKJGDL {
+	IPMLDNLACFO HLBCFJLLKBL = 1;
+	uint32 MGBCAPIIKLM = 2;
+	uint32 avatar_id = 10;
+	uint32 BEMDNEMABCC = 14;
+}
+
+message EPKGFJDJMHM {
+	oneof KKNBOACNCON {
+		KICPDGKGGHO KMKNPALADDC = 1;
+		PCONBOGEDFD MDFJJFCDLCK = 2;
+		PlanetFesUnlockChange KONHPICIELO = 3;
+		AAIMICLLCKE FBMJJGFJFMA = 4;
+		JHACFFJIPHK NPNDMLGFEFI = 5;
+		IHHONELJHJG JCJLAAFLGHC = 6;
+		CPHOIPHAPDJ BFPNBEPPPLL = 7;
+		CPHOIPHAPDJ LPGHOGLGEKH = 8;
+		BEJOPEHPABO HFCPPGPPMPB = 9;
+		JHACFFJIPHK LIHDHBNHDKM = 10;
+		DAGGFIOGHGE JLHJHFMMAPG = 11;
+		KICPDGKGGHO ELMMNHBECNI = 12;
+		DAGGFIOGHGE DLNEGFMNCPI = 13;
+		BEJOPEHPABO FKFPLMFLNPI = 14;
+		IHHONELJHJG LMOLELDIKMA = 15;
+		CANOCBHNHLJ BPKMBMPJAON = 110;
+		IMHOJPDMOJI HGGBFCEFLKO = 278;
+		EKEOBMOKEFD LNPGIMBEMOE = 598;
+		MAOINJAJOEC KJOAEEGIGDI = 659;
+		MCCHABOPEFJ CGMBBDHDMEO = 892;
+		IEDPDDJAAIH JOGCFKGJMJB = 913;
+		FLCJMPNDMMH KMCJFDEDEAA = 1059;
+		KICPDGKGGHO EOPILJCMLLA = 1133;
+		HGJHBCBIONE KGHOJJKNCBP = 1269;
+		PEMCOFDFCAC JDLEEFDFJGA = 1274;
+		GMODJEECPPJ DBDLIIPGEOE = 1523;
+		ECIDGEBFJHP ODOHJNABBAM = 1807;
+		DFEPHMALKDK OAHOCFKEMCM = 2027;
+	}
+}
+
+message FLCJMPNDMMH {
+	NCFKHDIKCNI FHGFEKEAJFF = 1;
+	repeated GLECNCOBKCJ FIHPPANOOFL = 2;
+	uint32 MAGBFEHEOOI = 3;
+	NCFKHDIKCNI BFEOOJBNFBG = 4;
+	map<uint32, uint32> ODICAOCLJKO = 5;
+	uint32 LAAAPJAIKAF = 6;
+	uint32 BPBADPAACOL = 8;
+	uint32 NFCMAEIGKHK = 13;
+	NCFKHDIKCNI FDGKBOIEHBD = 14;
+	uint32 HBMGKJAAPFI = 15;
+}
+
+enum GJJEOANEDDO {
+	GJJEOANEDDO_NLCDGIPGFDJ = 0;
+	GJJEOANEDDO_GHDEPAGOKBE = 1;
+	GJJEOANEDDO_GGEKFBGIJID = 2;
+}
+
+message GLECNCOBKCJ {
+	uint32 avatar_id = 4;
+	NCFKHDIKCNI NFDJOCBMLCI = 6;
+	uint32 PKJHFPFOABL = 7;
+	uint32 LKBHAFLMOLA = 9;
+}
+
+message GNMCIEPEBPK {
+	repeated FMKMEFMOJGJ item_list = 11;
+	map<uint32, uint32> NDMLPIGABGE = 12;
+	NCFKHDIKCNI item_value = 13;
+}
+
+message GetPlanetFesDataCsReq {
+}
+
+message GetPlanetFesDataScRsp {
+	BAGAOALHAJI skill_info = 1;
+	PHCPOIHAPGP COGGJELNFCN = 2;
+	repeated KVP custom_value_list = 3;
+	PLOFKJDKEPN FEOONKKLCHA = 4;
+	KCMJJLJCHHP NJFGGOOMGCD = 6;
+	OBEHBNOCLMM LCPEDLCOMFE = 7;
+	CHBCJNLOLMB OPJLJOPBGOJ = 8;
+	uint32 retcode = 10;
+	BLDIHADJKJF OEIBHLMDJKA = 11;
+	NOLLHKIMDOC CCFGCCMEFCI = 12;
+	JMBNHAFHIHM IEKDOJDPMEB = 13;
+	KNECKDAOKOA OCHNMGMDHME = 14;
+	PPAIELAKIJD BBEKBJPHEJK = 15;
+}
+
+message HBONEFMPKKO {
+	uint32 MMFGAJNCAOA = 6;
+	uint32 progress = 8;
+}
+
+message HGJHBCBIONE {
+	GJJEOANEDDO GMKICMIMAAB = 6;
+	OJHHACMHFKA GLOAGDBEKDP = 8;
+}
+
+message IEDAMBICKBB {
+	oneof KKNBOACNCON {
+		int64 KHCGOMAJDGL = 8;
+	}
+}
+
+message IHHONELJHJG {
+	uint32 item_id = 6;
+	uint32 DCPDNBALDOA = 11;
+	uint32 HFNNNGHBHGG = 13;
+}
+
+message IKMLLJNNKJB {
+	repeated FMKMEFMOJGJ item_list = 9;
+	repeated AIMNHEHKIMI transfer_item_list = 10;
+}
+
+message IMHOJPDMOJI {
+	uint32 HBJIJHHMEGO = 10;
+}
+
+message IPMLDNLACFO {
+	AIMNHEHKIMI PIENFNCGFMB = 8;
+	FMKMEFMOJGJ item = 14;
+}
+
+message JHACFFJIPHK {
+	PlanetFesQuestState status = 1;
+	uint32 progress = 4;
+	oneof JCPHPAHKPDD {
+		NCFKHDIKCNI KNOCPAJCPJC = 7;
+		uint32 MCNLMNOKAFF = 9;
+	}
+	uint32 quest_id = 10;
+	uint32 DPCHGMMCKNN = 13;
+}
+
+message JMBNHAFHIHM {
+	repeated DAGGFIOGHGE GOIJOOCHJDP = 1;
+}
+
+message KCMJJLJCHHP {
+	bool has_passed = 3;
+	uint32 CINEILEIEJK = 6;
+	uint32 DDOIGECMKKA = 8;
+	bool CANDCMOCAFH = 9;
+	uint32 NEDCJCBPEJM = 11;
+	int64 NACEMPJFKAH = 13;
+}
+
+message KICPDGKGGHO {
+	uint32 config_id = 2;
+	repeated IEDAMBICKBB KABJOHKOEFN = 7;
+	uint64 unique_id = 9;
+	OBEBKODGODB source = 11;
+}
+
+message KNECKDAOKOA {
+	NCFKHDIKCNI item_value = 3;
+	repeated FMKMEFMOJGJ item_list = 12;
+	NCFKHDIKCNI GJPLOMMEBGM = 14;
+}
+
+message LEJNBBLNNDM {
+	EPKGFJDJMHM detail = 6;
+	OBEBKODGODB source = 15;
+}
+
+message MAOINJAJOEC {
+	uint32 uid = 1;
+	NCFKHDIKCNI gold = 2;
+	uint32 PPOAGPGEAFH = 4;
+	uint32 business_day = 5;
+	uint32 EMJPFPHBKMG = 7;
+	uint32 LBICJMAMFGN = 10;
+	uint32 JKAGCGKCHJG = 14;
+}
+
+message MCCHABOPEFJ {
+	MOFKNBAKKDI GHKFKGMOHDO = 6;
+}
+
+message MOFKNBAKKDI {
+	NCFKHDIKCNI FDGKBOIEHBD = 1;
+	bool CANDCMOCAFH = 2;
+	uint32 business_day = 3;
+	bool has_passed = 4;
+	repeated OJHHACMHFKA CKACALMICBH = 5;
+	map<uint32, uint32> FLKNHFMNDCE = 6;
+	int64 start_time = 8;
+}
+
+message NDPJHJOAOJE {
+	IKMLLJNNKJB HMMBBENHIFE = 7;
+	repeated uint32 EPBJNIFHBLE = 10;
+}
+
+message NGHCOJCMJOK {
+	repeated EKPBGMKJGDL HAINMHKIOMJ = 2;
+	repeated uint32 BNCOJCEGBPG = 6;
+	NCFKHDIKCNI OPOIDCHIMEK = 11;
+	repeated IPMLDNLACFO FAJLFDNKFGJ = 14;
+}
+
+message NOLLHKIMDOC {
+	int64 GLDGCHLDMJE = 1;
+	repeated uint32 IJMHPOEPILG = 6;
+	uint32 JOADLJIDGND = 12;
+}
+
+message OBEBKODGODB {
+	uint32 EPFHBGNGBBK = 3;
+	uint32 BNEFLBPCPOI = 11;
+	uint32 EMPDMDNDLHE = 15;
+}
+
+message OBEHBNOCLMM {
+	repeated uint32 HPMNIKJGBPD = 5;
+	uint32 CNGMMDKCBND = 9;
+}
+
+message OHABCOEGDEH {
+	NCFKHDIKCNI EJNBHKGOEKI = 1;
+	NCFKHDIKCNI FDGKBOIEHBD = 5;
+	uint32 NMLFCGHPGEL = 6;
+	repeated GLECNCOBKCJ FIHPPANOOFL = 8;
+	bool CANDCMOCAFH = 11;
+	uint32 business_day = 14;
+}
+
+message PBAPKAGHGFB {
+	repeated uint32 GOEJBENHBHE = 7;
+}
+
+message PCONBOGEDFD {
+	uint32 PKCIADAEICG = 10;
+	uint32 EDBPMKPHLDK = 11;
+}
+
+message PEMCOFDFCAC {
+	NCFKHDIKCNI EFOJBKPJLIO = 1;
+}
+
+message PHCPOIHAPGP {
+	repeated CPHOIPHAPDJ avatar_list = 11;
+}
+
+message PHFGDCMBDBA {
+	uint32 avatar_id = 8;
+	uint32 FNABEJNJBKN = 10;
+}
+
+message PLOFKJDKEPN {
+	repeated JHACFFJIPHK quest_list = 6;
+	PCONBOGEDFD DFBGAOAJLIC = 11;
+}
+
+message PLPDNKNJBAA {
+	repeated BMGHLHHJEGE ENDPGFBABBB = 1;
+	repeated OHABCOEGDEH HBGPLDACACI = 3;
+	repeated uint32 KCENCAAPMLK = 5;
+	MOFKNBAKKDI HOCBDMPEMDH = 9;
+	uint32 CINEILEIEJK = 10;
+	uint32 NEDCJCBPEJM = 12;
+}
+
+message PPAIELAKIJD {
+	repeated uint32 BJNOHKFONFP = 2;
+	repeated HBONEFMPKKO KFOFAKDPGJC = 14;
+}
+
+message PlanetFesAvatarLevelUpCsReq {
+	uint32 IGOOJKMPMDC = 3;
+	uint32 avatar_id = 12;
+}
+
+message PlanetFesAvatarLevelUpScRsp {
+	uint32 IGOOJKMPMDC = 6;
+	uint32 retcode = 7;
+	uint32 avatar_id = 8;
+	GNMCIEPEBPK reward = 10;
+	uint32 KPGNEABOECG = 15;
+}
+
+message PlanetFesBonusEventInteractCsReq {
+	uint32 event_type = 7;
+	uint32 JCBNLGDOMMF = 10;
+}
+
+message PlanetFesBonusEventInteractScRsp {
+	OJHHACMHFKA GLOAGDBEKDP = 5;
+	GNMCIEPEBPK reward = 13;
+	uint32 event_type = 14;
+	uint32 retcode = 15;
+}
+
+message PlanetFesBusinessDayRefreshEventCsReq {
+	uint32 business_day = 1;
+	bool CEIONHPDNDP = 11;
+	uint32 event_type = 14;
+}
+
+message PlanetFesBusinessDayRefreshEventScRsp {
+	OJHHACMHFKA GLOAGDBEKDP = 3;
+	uint32 retcode = 5;
+}
+
+message PlanetFesBuyLandCsReq {
+	uint32 FNABEJNJBKN = 10;
+}
+
+message PlanetFesBuyLandScRsp {
+	uint32 retcode = 2;
+}
+
+message PlanetFesChooseAvatarEventOptionCsReq {
+	uint32 MABNCDEBPDK = 12;
+}
+
+message PlanetFesChooseAvatarEventOptionScRsp {
+	uint32 DNLAFCPNPOE = 2;
+	OJHHACMHFKA GLOAGDBEKDP = 6;
+	GNMCIEPEBPK reward = 8;
+	uint32 HHGAHEBNAIL = 11;
+	uint32 IIBJDCKHAKE = 12;
+	uint32 retcode = 15;
+}
+
+message PlanetFesClientStatusCsReq {
+	bool is_active = 14;
+}
+
+message PlanetFesClientStatusScRsp {
+	uint32 retcode = 10;
+}
+
+message PlanetFesCollectAllIncomeCsReq {
+}
+
+message PlanetFesCollectAllIncomeScRsp {
+	NCFKHDIKCNI GALBOLNODBB = 3;
+	uint32 retcode = 14;
+}
+
+message PlanetFesCollectIncomeCsReq {
+	uint32 FNABEJNJBKN = 5;
+}
+
+message PlanetFesCollectIncomeScRsp {
+	uint32 retcode = 12;
+}
+
+message PlanetFesDealAvatarEventOptionItemCsReq {
+	uint32 HLLIBEEKFII = 1;
+	bool MLKBOBIEAPL = 15;
+}
+
+message PlanetFesDealAvatarEventOptionItemScRsp {
+	uint32 retcode = 1;
+	bool MLKBOBIEAPL = 4;
+	GNMCIEPEBPK reward = 7;
+	uint32 IIBJDCKHAKE = 9;
+	OJHHACMHFKA GLOAGDBEKDP = 11;
+	uint32 DNLAFCPNPOE = 12;
+}
+
+message PlanetFesDeliverPamCargoCsReq {
+	uint32 avatar_id = 6;
+	uint32 JADCEPFHHDK = 8;
+}
+
+message PlanetFesDeliverPamCargoScRsp {
+	GNMCIEPEBPK FFMILOLELNJ = 2;
+	uint32 avatar_id = 9;
+	uint32 retcode = 12;
+	OJHHACMHFKA GLOAGDBEKDP = 14;
+}
+
+message PlanetFesDoGachaCsReq {
+	uint32 gacha_count = 3;
+	uint32 simulate_magic = 8;
+	uint32 gacha_id = 10;
+}
+
+message PlanetFesDoGachaScRsp {
+	repeated FMKMEFMOJGJ LGPDNIGJEKP = 1;
+	uint32 gacha_id = 9;
+	uint32 retcode = 10;
+	oneof BNJPPHJNKHF {
+		NDPJHJOAOJE FFBDKNIHNEL = 13;
+		NGHCOJCMJOK EHLPJELJJOO = 15;
+	}
+}
+
+message PlanetFesFriendRankingInfoChangeScNotify {
+	repeated MAOINJAJOEC MLPHLIHFGKG = 9;
+}
+
+message PlanetFesGameBingoFlipCsReq {
+	uint32 LKFIGBGPEJB = 5;
+}
+
+message PlanetFesGameBingoFlipScRsp {
+	GNMCIEPEBPK reward = 1;
+	uint32 retcode = 6;
+	uint32 LKFIGBGPEJB = 8;
+	bool BDEFAFFDBCC = 13;
+}
+
+message PlanetFesGetAvatarStatCsReq {
+}
+
+message PlanetFesGetAvatarStatScRsp {
+	uint32 retcode = 4;
+	repeated GLECNCOBKCJ FIHPPANOOFL = 13;
+}
+
+message PlanetFesGetBusinessDayInfoCsReq {
+	bool EFILMAOHOBK = 3;
+}
+
+message PlanetFesGetBusinessDayInfoScRsp {
+	PLPDNKNJBAA BOLCNGAKAMG = 9;
+	int64 NACEMPJFKAH = 12;
+	uint32 retcode = 15;
+}
+
+message PlanetFesGetFriendRankingInfoListCsReq {
+}
+
+message PlanetFesGetFriendRankingInfoListScRsp {
+	MAOINJAJOEC PONAOKBNIAM = 4;
+	uint32 retcode = 14;
+}
+
+enum PlanetFesQuestState {
+	PlanetFesQuestState_PlanetFesQuestNone = 0;
+	PlanetFesQuestState_PlanetFesQuestDoing = 1;
+	PlanetFesQuestState_PlanetFesQuestFinish = 2;
+	PlanetFesQuestState_PlanetFesQuestClose = 3;
+}
+
+message PlanetFesSetAvatarWorkCsReq {
+	repeated PHFGDCMBDBA NEMFNENACNB = 3;
+}
+
+message PlanetFesSetAvatarWorkScRsp {
+	uint32 retcode = 15;
+}
+
+message PlanetFesSetCustomKeyValueCsReq {
+	uint32 key = 8;
+	uint32 value = 15;
+}
+
+message PlanetFesSetCustomKeyValueScRsp {
+	uint32 value = 9;
+	uint32 retcode = 10;
+	uint32 key = 12;
+}
+
+message PlanetFesSkillLevelUpCsReq {
+	uint32 skill_id = 3;
+	uint32 IGOOJKMPMDC = 15;
+}
+
+message PlanetFesSkillLevelUpScRsp {
+	uint32 skill_id = 4;
+	uint32 retcode = 10;
+	FMKMEFMOJGJ item_cost = 12;
+	uint32 skill_level = 15;
+}
+
+message PlanetFesStartMiniGameCsReq {
+	uint32 DLFHABGGHFF = 2;
+	uint32 ratio = 8;
+}
+
+message PlanetFesStartMiniGameScRsp {
+	PGPHEKKPBLD CFDIKLBINHK = 2;
+	oneof JIOMPHMGALF {
+		PBAPKAGHGFB HMMBBENHIFE = 8;
+	}
+	GNMCIEPEBPK reward = 14;
+	uint32 retcode = 15;
+}
+
+message PlanetFesSyncChangeScNotify {
+	repeated LEJNBBLNNDM DGNGMJMPFGK = 4;
+}
+
+message PlanetFesTakeQuestRewardCsReq {
+	uint32 quest_id = 3;
+}
+
+message PlanetFesTakeQuestRewardScRsp {
+	IKMLLJNNKJB JMBFMMPAAAO = 10;
+	uint32 quest_id = 11;
+	uint32 retcode = 15;
+}
+
+message PlanetFesTakeRegionPhaseRewardCsReq {
+	uint32 BKPDKFLDLDD = 13;
+}
+
+message PlanetFesTakeRegionPhaseRewardScRsp {
+	uint32 retcode = 3;
+	ItemList reward_list = 4;
+	uint32 BKPDKFLDLDD = 13;
+}
+
+message PlanetFesUnlockChange {
+	bool has_passed = 4;
+	HBONEFMPKKO BBEKBJPHEJK = 5;
+}
+
+message PlanetFesUpgradeFesLevelCsReq {
+	uint32 IGOOJKMPMDC = 12;
+}
+
+message PlanetFesUpgradeFesLevelScRsp {
+	uint32 retcode = 14;
+}
+
+message PlanetFesUseItemCsReq {
+	uint32 JMOOBDBKFMD = 1;
+	uint32 item_id = 12;
+}
+
+message PlanetFesUseItemScRsp {
+	GNMCIEPEBPK reward = 12;
+	uint32 retcode = 15;
+}

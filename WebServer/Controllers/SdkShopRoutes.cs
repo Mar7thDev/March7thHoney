@@ -1,15 +1,11 @@
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
-using March7thHoney.Configuration;
 using March7thHoney.Data;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
-using March7thHoney.Database.Inventory;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
-using March7thHoney.GameServer.Server.Packet.Send.Player;
-using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 using March7thHoney.Util;
@@ -22,7 +18,6 @@ namespace March7thHoney.WebServer.Controllers;
 // Emulates the SDK shop endpoints so a recharge click grants the tier instead of opening a payment page.
 public static class SdkShopRoutes
 {
-    private const int OneiricShardItemId = 3; // Mcoin
     private const int PayAbortedRetcode = -1;
 
     private static readonly Logger Logger = new("SdkShop");
@@ -38,8 +33,6 @@ public static class SdkShopRoutes
         "if(document.body){c();}else{document.addEventListener('DOMContentLoaded',c);}" +
         "setTimeout(c,50);setTimeout(c,250);setTimeout(c,1000);})();</script>" +
         "</head><body></body></html>";
-
-    private static ConfigContainer Config => ConfigManager.Config;
 
     private static Task Json(HttpContext ctx, string content)
     {
@@ -136,24 +129,10 @@ public static class SdkShopRoutes
     {
         var request = await SdkRequest.Read(ctx);
 
-        if (!Config.ServerOption.EnableFakeRecharge)
-        {
-            Logger.Info("createOrder ignored, fake recharge is disabled");
-            await Json(ctx, PayAborted());
-            return;
-        }
-
         var product = ResolveProduct(request);
         if (product == null)
         {
             Logger.Warn($"createOrder did not match any recharge tier. {request.Describe()}");
-            await Json(ctx, PayAborted());
-            return;
-        }
-
-        if (product.GiftType != (int)ProductGiftType.ProductGiftCoin)
-        {
-            Logger.Warn($"createOrder for unsupported gift type {product.GiftType}, product={product.ProductID}");
             await Json(ctx, PayAborted());
             return;
         }
@@ -166,23 +145,15 @@ public static class SdkShopRoutes
             return;
         }
 
-        await GrantRecharge(player, product);
+        var result = await RechargeService.Purchase(player, product);
+        if (result != RechargeResult.Granted)
+        {
+            Logger.Info($"createOrder refused ({result}), gift type {product.GiftType}, product={product.ProductID}");
+            await Json(ctx, PayAborted());
+            return;
+        }
+
         await Json(ctx, CreatedOrder(NextOrderNumber()));
-    }
-
-    private static async Task GrantRecharge(PlayerInstance player, RechargeConfigExcel product)
-    {
-        List<ItemData> rewards = [new() { ItemId = OneiricShardItemId, Count = product.FirstCharge }];
-        if (product.NormalCharge > 0)
-            rewards.Add(new ItemData { ItemId = OneiricShardItemId, Count = product.NormalCharge });
-
-        var total = rewards.Sum(x => x.Count);
-        await player.InventoryManager!.AddItem(OneiricShardItemId, total, notify: false, sync: false);
-        await player.SendPacket(new PacketPlayerSyncScNotify(player.ToProto()));
-        await player.SendPacket(new PacketRechargeSuccNotify(product.ProductID, rewards,
-            MonthCardService.GetMonthCardOutDateTime(player.Data)));
-
-        Logger.Info($"Fake recharge granted. uid={player.Uid} product={product.ProductID} amount={total}");
     }
 
     private static RechargeConfigExcel? ResolveProduct(SdkRequest request)

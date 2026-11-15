@@ -23,6 +23,14 @@ public sealed partial class GridFightManager
             result.UpdateDynamicList.Add(new GridFightSyncData { AddForgeItemInfo = BuildForgeItem(reward.ForgeItem) });
         if (reward.GoldValue.HasValue)
             result.UpdateDynamicList.Add(new GridFightSyncData { ItemValue = reward.GoldValue.Value });
+        if (reward.Consumable != null)
+        {
+            var items = new GridFightGameItemSyncInfo();
+            items.UpdateGridFightConsumableList.Add(BuildConsumableUpdate(reward.Consumable));
+            result.UpdateDynamicList.Add(reward.Consumable.IsNew
+                ? new GridFightSyncData { AddGameItemInfo = items }
+                : new GridFightSyncData { UpdateGameItemInfo = items });
+        }
         AppendPendingTrackedAutoEquipRoles(result);
         notify.ResultList.Add(result);
     }
@@ -52,6 +60,17 @@ public sealed partial class GridFightManager
 
         foreach (var reward in session.TakeRoundBeginInvestmentRewards())
             AppendInvestmentItemReward(notify, reward);
+        AppendAugmentEffectResults(notify, session.TakeAugmentNodeEffects());
+        AppendEconomyEffects(notify);
+        foreach (var uniqueId in session.TakePowerGrowthRoleUpdates())
+        {
+            var role = session.Roles.FirstOrDefault(entry => entry.UniqueId == uniqueId);
+            if (role == null) continue;
+            var growth = new GridFightSyncResultData { UpdateSource = GridFightUpdateSrcType.KgridFightSrcSelectPortalBuff };
+            growth.EffectParamList.Add(GridFightSession.PowerGrowthPortalId);
+            growth.UpdateDynamicList.Add(new GridFightSyncData { UpdateRoleInfo = BuildRole(role) });
+            notify.ResultList.Add(growth);
+        }
 
         foreach (var saved in session.TakeRoundBeginSavedValueUpdates())
         {
@@ -127,6 +146,34 @@ public sealed partial class GridFightManager
         var final = NewAugmentResult(augmentId, 109);
         final.UpdateDynamicList.Add(new GridFightSyncData { MaxActiveRoleCount = session.MaxActiveRoles });
         notify.ResultList.Add(final);
+    }
+
+    /// <summary>Syncs data-driven investment effects (GridFightAugmentEffects) with the same payloads as orb rewards.</summary>
+    private void AppendAugmentEffectResults(
+        GridFightSyncUpdateResultScNotify notify,
+        IReadOnlyList<GridFightAugmentEffectResult> effects)
+    {
+        if (Session == null) return;
+        foreach (var effect in effects)
+        {
+            var application = effect.Application;
+            var source = effect.IsPortal
+                ? GridFightUpdateSrcType.KgridFightSrcSelectPortalBuff
+                : GridFightUpdateSrcType.KgridFightSrcAugment;
+            var result = new GridFightSyncResultData { UpdateSource = source };
+            result.EffectParamList.Add(effect.AugmentId);
+            AppendRewardApplication(result, application);
+            AppendLeadingAcquiredRoles(result, application.RoleAcquisitions);
+            if (effect.ShopChanged)
+                result.UpdateDynamicList.Add(new GridFightSyncData { ShopInfo = BuildShopSyncInfo() });
+            if (effect.WinStreakChanged)
+                result.UpdateDynamicList.Add(new GridFightSyncData { KeepWinCount = Session.KeepWinCount });
+            AppendPendingTrackedAutoEquipRoles(result);
+            notify.ResultList.Add(result);
+            AppendRoleAcquisitionMerges(notify, source, [effect.AugmentId], application.RoleAcquisitions, unlockEffects: true);
+            if (application.RoleAcquisitions.Count > 0)
+                AppendRoleDerivedStateResult(notify, source);
+        }
     }
 
     private static GridFightSyncResultData NewAugmentResult(uint augmentId, uint effectId)

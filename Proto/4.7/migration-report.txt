@@ -1,0 +1,348 @@
+// 4.6 -> 4.7 migration report: how each 4.6 type/field name was carried onto the 4.7 dump, what is new,
+// what 4.7 removed, and where the evidence channels disagreed. Regenerated with Proto/4.7/Raw.
+  ReviveRogueAvatarScRsp: candidates ['AJAOJOEAGML', 'OKMIJLHMGCD'], 4.6 body fits ['AJAOJOEAGML'] -> AJAOJOEAGML
+  GetRogueBuffEnhanceInfoScRsp: candidates ['AJNDMBCDEOL', 'GBDPDGAHPNK'], 4.6 body fits ['AJNDMBCDEOL'] -> AJNDMBCDEOL
+  PromoteEquipmentScRsp: candidates ['AMNBMKEMMFL', 'EEFFCJHHLNG'], 4.6 body fits ['EEFFCJHHLNG'] -> EEFFCJHHLNG
+  PickRogueAvatarScRsp: candidates ['BHLEHMNFHPJ', 'DJHNHHCMKMF'], 4.6 body fits ['BHLEHMNFHPJ'] -> BHLEHMNFHPJ
+  GetRogueBuffEnhanceInfoCsReq: candidates ['CGMBIHBHLFK', 'FOAGKOAJEMD'], 4.6 body fits ['CGMBIHBHLFK', 'FOAGKOAJEMD'] -> CGMBIHBHLFK
+  EnhanceRogueBuffCsReq: candidates ['CINMCBDCBMJ', 'PBILBBMINBI'], 4.6 body fits ['PBILBBMINBI'] -> PBILBBMINBI
+  DressRelicAvatarScRsp: candidates ['EBCEGDPGHLE', 'OLLEOCLINLN'], 4.6 body fits ['OLLEOCLINLN'] -> OLLEOCLINLN
+  PromoteEquipmentCsReq: candidates ['ECNNCBDHHBC', 'EOBJKAMNNPI'], 4.6 body fits ['ECNNCBDHHBC'] -> ECNNCBDHHBC
+  PickRogueAvatarCsReq: candidates ['EKFCDGNOAIN', 'BEAFKDMJNLO'], 4.6 body fits ['EKFCDGNOAIN'] -> EKFCDGNOAIN
+  JoinLineupScRsp: candidates ['HKNCBEOKDCK', 'JHICJLAIPLD'], 4.6 body fits ['HKNCBEOKDCK'] -> HKNCBEOKDCK
+  EnhanceRogueBuffScRsp: candidates ['JDKJBGGHDBM', 'NAHANHPHGGF'], 4.6 body fits ['JDKJBGGHDBM'] -> JDKJBGGHDBM
+  BuyRogueShopMiracleCsReq: candidates ['MKNBFMJGKBM', 'OMAOGCPKDNB'], 4.6 body fits ['MKNBFMJGKBM'] -> MKNBFMJGKBM
+  GetMonopolyFriendRankingListCsReq: candidates ['MMLLDKHEDCJ', 'BBEPMABCBGF'], 4.6 body fits ['MMLLDKHEDCJ'] -> MMLLDKHEDCJ
+  ReviveRogueAvatarCsReq: candidates ['PDNOJMFCDDG', 'LOINLLCCNBD'], 4.6 body fits ['PDNOJMFCDDG'] -> PDNOJMFCDDG
+  GetFiveDimMiniGameDataCsReq: candidates ['PFPDFEPNLHL', 'JAIGKNCMOLK'], 4.6 body fits ['PFPDFEPNLHL'] -> PFPDFEPNLHL
+  DisplayAvatarData: candidates ['HKLDDAAECLN', 'BMJPAPIDKKM'], 4.6 body fits ['HKLDDAAECLN'] -> HKLDDAAECLN
+  DoGachaScRsp: candidates ['IAOPGJEOHOM', 'NILCAHCBKAI'], 4.6 body fits ['IAOPGJEOHOM'] -> IAOPGJEOHOM
+  4.7 manual: BMJPAPIDKKM = DisplayAvatarData
+# 4.6 types: 5184, carried to 4.7: 5171, not in 4.7: 13
+  dropped 4.6 type IPGCHDECCNB (referenced by server code: False)
+  dropped 4.6 type LFOCLBEMIEM (referenced by server code: False)
+  dropped 4.6 type UpgradeBlindBoxPetChromaCsReq (referenced by server code: False)
+  dropped 4.6 type UpgradeBlindBoxPetChromaScRsp (referenced by server code: False)
+  dropped 4.6 type BMJPAPIDKKM (referenced by server code: False)
+  dropped 4.6 type EmbeddedAttribute (referenced by server code: False)
+  dropped 4.6 type RefSafetyRulesAttribute (referenced by server code: False)
+  dropped 4.6 type BlindBoxResetPoolPositionCsReq (referenced by server code: False)
+  dropped 4.6 type BlindBoxResetPoolPositionScRsp (referenced by server code: False)
+  dropped 4.6 type GGLMGBPOCOP (referenced by server code: False)
+  dropped 4.6 type HLJINHODOPP (referenced by server code: False)
+  dropped 4.6 type IOPNJIOPAFI (referenced by server code: False)
+  dropped 4.6 type MMBIBKFEFNG (referenced by server code: False)
+  new command enum IFMMFGFCDLK -> CmdActivityVoracityInvasionType (3 ids: SyncActivityVoracityInvasionDataScNotify, GetActivityVoracityInvasionDataScRsp...)
+  new command enum CAAGFEEMPFC -> CmdB51RacingType (19 ids: B51RacingReplacePartScRsp, B51RacingSetDriverCsReq, B51RacingStartCycleCsReq, B51RacingSelectDevelopPartCsReq...)
+  new command enum PIHNINOCKCM -> CmdB51RacingChallengeType (6 ids: B51RacingChallengeStartMatchCsReq, B51RacingChallengeUpdateCarScRsp, B51RacingChallengeEndMatchScRsp, B51RacingChallengeUpdateCarCsReq...)
+  new command enum APLPBLOMALB -> CmdBadgeType (3 ids: GetBadgeInfoScRsp, BadgeInfoScNotify...)
+  new command enum LFCHJINBBOM -> CmdBlindBoxType (4 ids: BlindBoxGetDataScRsp, BlindBoxOpenBoxCsReq, BlindBoxGetDataCsReq, BlindBoxOpenBoxScRsp...)
+  new command enum CAKCHOOGJAD -> CmdExpeditionBattleType (9 ids: ExpeditionBattleEndScNotify, ExpeditionBattleSettleScNotify, GetExpeditionBattleDataScRsp, ExpeditionBattleStartCsReq...)
+  new command enum BHNBNJCNFJB -> CmdFinalityBattleType (5 ids: FinalityBattleGetDataCsReq, FinalityBattleGetDataScRsp, StartFinalityBattleLevelCsReq, FinalityBattleSettleScNotify...)
+  new command enum NOLCLEHAOKM -> CmdPetMarbleType (9 ids: PetMarbleGetCycleTrialPetsCsReq, PetMarbleLevelBeginScRsp, PetMarbleGetDataScRsp, PetMarbleGetCycleTrialPetsScRsp...)
+  new command enum CCMKDHLEIGE -> CmdPetParkDiyType (2 ids: PetParkDiyCsReq, PetParkDiyScRsp...)
+  new command enum IMKBEFMJGGJ -> CmdSocialPlayType (19 ids: SocialPlayQueryRecentVisitorsScRsp, SocialPlaySettingInfoScNotify, SocialPlayPreCheckEnterRoomCsReq, SocialPlayQueryRecentVisitorsCsReq...)
+  new command enum ADBEHIMDINE -> CmdVoracityInvasionType (3 ids: VoracityInvasionChangeScNotify, GetVoracityInvasionDataScRsp, VoracityInvasionGetDataCsReq...)
+# final names: 5408; new 4.7 types with recovered names: 25; 4.6 obf names upgraded to recovered real names: 45
+  upgrade KJPLKPNPFBE: KJPLKPNPFBE -> TakeRewardCsReq
+  upgrade BILENDACAMP: BILENDACAMP -> ChimeraGetDataCsReq
+  upgrade IHBOLKMEEMG: IHBOLKMEEMG -> ChimeraFinishRoundCsReq
+  upgrade JHICHKBDMIC: JHICHKBDMIC -> ChimeraRoundWorkStartCsReq
+  upgrade IAOMNBIBCNP: IAOMNBIBCNP -> SettleElfRestaurantPlayCsReq
+  upgrade KFLIEGJGOBO: KFLIEGJGOBO -> SetElfRestaurantPlayRecipeCsReq
+  upgrade IDFMIDPCJAC: IDFMIDPCJAC -> IdleLiveUpgradeSlotCsReq
+  upgrade HGDEGLENMPM: HGDEGLENMPM -> IdleLiveGetFriendDungeonInfoCsReq
+  upgrade LDCEDOGDNDC: LDCEDOGDNDC -> LimaoNewsFinishEmployeeCheckCsReq
+  upgrade NFBHBDICGOG: NFBHBDICGOG -> LimaoNewsReportEmployeeCheckRefreshCsReq
+  upgrade IBPHNIBGMPH: IBPHNIBGMPH -> LimaoNewsSubmitPostCsReq
+  upgrade OFNBDEKJMON: OFNBDEKJMON -> LimaoNewsSubmitIssueCsReq
+  upgrade HOALCJNIJJC: HOALCJNIJJC -> LimaoNewsFinishClientEventCsReq
+  upgrade KELNHIOMCNF: KELNHIOMCNF -> LimaoNewsCompleteOfficeSurveyListCsReq
+  upgrade DGFHEGJKHFO: DGFHEGJKHFO -> LimaoNewsTrackSurveyCsReq
+  upgrade OLNDMBMBNDC: OLNDMBMBNDC -> LimaoNewsFinishClientMessageCsReq
+  upgrade HBOOIEJHKOD: HBOOIEJHKOD -> LimaoNewsFinishClientReplyCsReq
+  upgrade JGHOCEGBDCC: JGHOCEGBDCC -> LimaoNewsSetMainPageFlagCsReq
+  upgrade PDPKFDOJOFK: PDPKFDOJOFK -> LimaoNewsStartWorkCsReq
+  upgrade JABBBMCMKAI: JABBBMCMKAI -> LimaoNewsFinishPlanPhaseCsReq
+  upgrade ELJDDNGDGCH: ELJDDNGDGCH -> DeployRotatorCsReq
+  upgrade EEOOKOOABJD: EEOOKOOABJD -> RemoveRotatorCsReq
+  upgrade JPDGPEOBBNJ: JPDGPEOBBNJ -> MatchThreeGetDataCsReq
+  upgrade JAIGKNCMOLK: JAIGKNCMOLK -> ChenLingGameBoyChangeSettingsCsReq
+  upgrade LIFMGAFOBPC: LIFMGAFOBPC -> SyncTaskCsReq
+  upgrade IAFJANHGCLL: IAFJANHGCLL -> MonopolyGuessBuyInformationCsReq
+  upgrade KEKFNKDLDOM: KEKFNKDLDOM -> UpdatePlayWithPsnOnlySettingCsReq
+  upgrade LNKEEAKFEHM: LNKEEAKFEHM -> PrepareRogueAdventureRoomCsReq
+  upgrade EDBOGEKADGP: EDBOGEKADGP -> StopRogueAdventureRoomCsReq
+  upgrade CEDCDDPHBOG: CEDCDDPHBOG -> GetRogueAdventureRoomInfoCsReq
+  upgrade JLJNNPIAKGH: JLJNNPIAKGH -> UpdateRogueAdventureRoomScoreCsReq
+  upgrade MJEPCLPMKKI: MJEPCLPMKKI -> RogueNpcDisappearCsReq
+  upgrade BIHACLHMAKO: BIHACLHMAKO -> FinishRogueCommonDialogueCsReq
+  upgrade EBADAHNBIIH: EBADAHNBIIH -> CounterRecoverCsReq
+  upgrade NNAHGDGNOEK: NNAHGDGNOEK -> NewSupplementVisitorCsReq
+  upgrade CAAGFEEMPFC: CAAGFEEMPFC -> CmdB51RacingType
+  upgrade PIHNINOCKCM: PIHNINOCKCM -> CmdB51RacingChallengeType
+  upgrade APLPBLOMALB: APLPBLOMALB -> CmdBadgeType
+  upgrade LFCHJINBBOM: LFCHJINBBOM -> CmdBlindBoxType
+  upgrade CAKCHOOGJAD: CAKCHOOGJAD -> CmdExpeditionBattleType
+  upgrade BHNBNJCNFJB: BHNBNJCNFJB -> CmdFinalityBattleType
+  upgrade NOLCLEHAOKM: NOLCLEHAOKM -> CmdPetMarbleType
+  upgrade CCMKDHLEIGE: CCMKDHLEIGE -> CmdPetParkDiyType
+  upgrade IMKBEFMJGGJ: IMKBEFMJGGJ -> CmdSocialPlayType
+  upgrade ADBEHIMDINE: ADBEHIMDINE -> CmdVoracityInvasionType
+  kept obf ICBEPDGBHMM (server code uses it; 4.7 dump calls it InteractChargerCsReq)
+  kept obf IHGLPGLPDFF (server code uses it; 4.7 dump calls it FightGiveUpCsReq)
+  kept obf EMHALMBFHKG (server code uses it; 4.7 dump calls it TakeQuestRewardCsReq)
+# fields: {'matched': 13412, 'new field': 178, 'new-type field via nt': 145, 'const channel disagrees': 18, '4.6 field gone': 53, 'new-type field via const': 9, 'matched, type changed': 3, 'enum member carried': 2228, 'enum member by value': 78}
+  MCHAMBDHPEN: new field #12 skill_info (repeated OELHAMANGBN)
+  BattleAvatar: new field #20 IGDEHGIKFJA (repeated uint32)
+  ALIMNHEENPP: new field #4 LNGPEJNADAH (repeated BDNAPDDNGFL)
+  DBCBMJKOBPJ: new field #18 FFMMNDGMKMO (repeated PIOGCEBHNBF)
+  AvatarBattleInfo: new field #66 BHFPPGKLCCE (repeated uint32)
+  AvatarBattleInfo: new field #67 LKLNGCCIMEM (uint32)
+  AvatarBattleInfo: new field #68 MMMLNOPAAOP (double)
+  HDKEPPDIDIH: new field #11 IGDEHGIKFJA (repeated uint32)
+  BattleGridFightTraitEffectInfo: new field #106 FLDEMEJEODJ (MOGMLBIJMEH)
+  BattleGridFightTraitEffectInfo: new field #107 IFDICIIOHHI (BFMDDFLMAKD)
+  BattleGridFightTraitEffectInfo: new field #108 GIKNCJMJLFE (BDIIMNDEADO)
+  BattleGridFightTraitEffectInfo: new field #109 MCCMPFENGCD (GHCEOIMHKJI)
+  BattleGridFightTraitEffectInfo: new field #110 KDBKIPPHMFI (LFNNCOMFBMD)
+  GridFightTraitMemberInfo: 4.4/4.5 call #4 'grid_update_src', 4.6 carried 'update_source'
+  GridFightTraitInfo: new field #8 ADONFGKMCMM (uint32)
+  GridFightRoleBattleModeInfo: new field #2 IHHNLLAJAGB (uint32)
+  GridFightRoleBattleStateInfo: new field #2 EJIEPKFMIGC (uint32)
+  GridFightRoleInfo: new field #13 EMFAOCLIONC (bool)
+  GridFightRoleInfo: new field #14 BABNHPDGNGB (map<string,uint32>)
+  GridFightInfo: new field #23 NJBNOFIEDDE (KJFEHJMAIAA)
+  GBJMLKNLEPD: new field #6 MFOHGCNOMLB (IHDKFBDLNGL)
+  JPHFANMNHJP: new field #2 EEOBGNFGKFN (uint32)
+  KEIDHKJDDJF: new field #3 end_time (int64)
+  KEIDHKJDDJF: 4.6 field gone: EKCLGFIPDKL (uint32, was #3)
+  KEIDHKJDDJF: 4.6 field gone: NFGFFPCCPFJ (repeated KVP, was #11)
+  HGLDJBNCABP: new field #3 LEEDAHHKCPE (int64)
+  VectorSnapshot: new field #1 X (sint32)
+  VectorSnapshot: new field #2 Y (sint32)
+  VectorSnapshot: new field #3 Z (sint32)
+  VectorSnapshot: 4.6 field gone: x (sint32, was #1)
+  VectorSnapshot: 4.6 field gone: y (sint32, was #2)
+  VectorSnapshot: 4.6 field gone: z (sint32, was #3)
+  GetActivityHotDataScRsp: new field #12 LMGCFHBPAGO (repeated NEGCAHDLGMI)
+  AvatarPathData: new field #8 IGDEHGIKFJA (repeated uint32)
+  B51RacingEndMatchCsReq: 4.4/4.5 call #6 'random_seed', 4.6 carried 'session_id'
+  B51RacingChallengeEndMatchCsReq: 4.4/4.5 call #13 'random_seed', 4.6 carried 'session_id'
+  BHJEBMOOJED: new field #3 NEBMGALCMFL (bool)
+  NLBAOLFBEGB: new field #4 BDFJNHAICLH (bool)
+  CakeRaceFinishPveCsReq: 4.4/4.5 call #8 'score_id', 4.6 carried 'score'
+  ItemList: new field #7 ItemList_ (repeated Item)
+  ItemList: 4.6 field gone: item_list (repeated Item, was #2)
+  GridFightMonsterBattleInfo: new field #13 LNGPEJNADAH (repeated BDNAPDDNGFL)
+  SceneBattleInfo: new field #1777 FFMMNDGMKMO (repeated PIOGCEBHNBF)
+  KKFMGCNDHGH: type change DMDKAOOLABF: 4.6 repeated DisplayAvatarData -> 4.7 repeated HKLDDAAECLN (#1, was #6)
+  FightFestUpdateCoinNotify: 4.4/4.5 call #11 'item_value', 4.6 carried 'coin'
+  FightMatch3OpponentDataScNotify: 4.4/4.5 call #12 'score_id', 4.6 carried 'score'
+  DisplayAvatarDetailInfo: new field #4 ex_rank_id_list (repeated uint32)
+  GridFightGameInfo: new field #1658 LEGMAJLHBLA (GNOBLNOCEHA)
+  GridFightGameInfo: new field #1984 OGKMAKNOPOD (FBKIFPOEGGO)
+  GridFightCurrentInfo: new field #2 HHHHDNAKEGE (MNJAPPADDIC)
+  GridFightCurrentInfo: new field #8 MPJPLKKJNGE (uint32)
+  GridFightGameBasicInfo: 4.4/4.5 call #9 'grid_fight_cur_level_exp', 4.6 carried 'level_exp'
+  GridFightGameBasicInfo: 4.4/4.5 call #10 'grid_fight_lineup_hp', 4.6 carried 'lineup_hp'
+  GridGameRoleInfo: new field #10 BABNHPDGNGB (map<string,uint32>)
+  GridGameForgeItemInfo: new field #8 source (uint32)
+  GridFightTraitEffectInfo: new field #104 AMOIMOHMBEM (GGHAADPCOAA)
+  GridFightTraitEffectInfo: new field #125 CPGCCCAKACO (MAKPILEOKNC)
+  GridFightTraitEffectInfo: new field #375 IJBCFCMIJNK (uint32)
+  GridFightTraitEffectInfo: new field #664 GIKNCJMJLFE (CGNAHGDKAFC)
+  GridFightTraitEffectInfo: new field #766 GDAMHENIIDJ (JADHHGHGMPH)
+  GridFightTraitEffectInfo: new field #960 GEPGMIEPBMB (LCMAKEBBBDL)
+  GridFightTraitEffectInfo: new field #1028 KDBKIPPHMFI (GGFHGKGJOOB)
+  GridFightTraitEffectInfo: new field #1325 PFEBKFJOGKO (JBGJFECBCCL)
+  GridFightTraitEffectInfo: new field #1358 NMHCBKFEOMM (DFJMFJHEHLN)
+  GridFightTraitEffectInfo: new field #1403 MCCMPFENGCD (MCEDNANGIJJ)
+  GridFightTraitEffectInfo: new field #1672 DPKFJEEJABC (IKGOIPNFDBB)
+  GridFightTraitEffectInfo: new field #1915 IFDICIIOHHI (HDCJJFDLHIO)
+  GridFightTraitEffectInfo: new field #1988 FLDEMEJEODJ (CLKKNDMGLPP)
+  GridFightPrayQuestInfo: 4.6 field gone: completed_quest_id_list (repeated uint32, was #4)
+  GridFightConsumableInfo: new field #4 source (uint32)
+  GridFightConsumableInfo: new field #1545 EFAKDFMPKCE (HODMAGEMEJD)
+  GridFightEquipmentInfo: new field #8 MCGHFJCBBMK (uint32)
+  GridFightEquipmentInfo: new field #9 HLHGALNKHAL (bool)
+  GridFightEquipmentInfo: new field #14 KGGHEHCBMGA (bool)
+  GridFightShopGoodsInfo: new field #2 source (FKGIEPHGACD)
+  GridFightShopGoodsInfo: new field #859 IFDICIIOHHI (CHDNPFMOKKI)
+  GridFightSupplyRoleInfo: new field #6 DHLBEFLOOPM (repeated BCCONKJHDJL)
+  GridFightSupplyRoleInfo: new field #13 OPPFPECOBEF (BCCONKJHDJL)
+  GridFightLevelInfo: new field #12 OOMMIIKPHBC (repeated BCCIJHPLJOJ)
+  GridFightLevelInfo: new field #15 ANJBLBEOJND (KOMPNJAMLPM)
+  GridFightContextValueInfo: new field #8 DKMNOPCJDDC (map<uint32,uint32>)
+  GridFightContextValueInfo: new field #11 FMNPBOJGLFI (uint32)
+  GridFightGameItemInfo: new field #61 PKKEMDFHBCD (EBBKABIIOJB)
+  GridFightGameItemInfo: new field #138 OACLADDIPNO (MNMNOBGOFJD)
+  GridFightGameItemInfo: new field #201 LAMPKAPPPPE (MDBELHLNMEO)
+  GridFightGameItemInfo: new field #308 IJNOAEIAGEP (KJJGLJEHPJE)
+  GridFightGameItemInfo: new field #330 ALEIDFMKMHD (EHALAAICMKI)
+  GridFightGameItemInfo: new field #358 GLLNPIHFOFP (ILEPGGBNADM)
+  GridFightGameItemInfo: new field #448 GEKCCCPGBGJ (IDEDIHLMEHL)
+  GridFightGameItemInfo: new field #587 GBIBJIIDAKM (IFGCHHHMFNE)
+  GridFightGameItemInfo: new field #606 FEBKDLAFODG (DNHFCHGALDA)
+  GridFightGameItemInfo: new field #610 FOJGMIIPKNO (IDGNEKJDCMJ)
+  GridFightGameItemInfo: new field #637 KJJFBPOJCPJ (AEFKMCGKCBJ)
+  GridFightGameItemInfo: new field #891 AOCBIJJLGML (DFOFPKEOPEH)
+  GridFightGameItemInfo: new field #972 CJJGFHCBONB (NCPKKIAJKHJ)
+  GridFightGameItemInfo: new field #1025 PPIIBIANJEC (DOMKCMJFAID)
+  GridFightGameItemInfo: new field #1041 EPKCCOPBDDA (HLBNJJNHCIE)
+  GridFightGameItemInfo: new field #1239 KCPCJHHEBCH (CDEFMKKDEHH)
+  GridFightGameItemInfo: new field #1291 BLKNIKDBHHK (KCLMHIOBNLA)
+  GridFightGameItemInfo: new field #1294 PGOEHADDMAF (ACPJGBNCGHP)
+  GridFightGameItemInfo: new field #1348 POPELGJEIFP (ICJOOGHDGDC)
+  GridFightGameItemInfo: new field #1466 ONKMJAGNECC (CONKAFGLHFE)
+  GridFightGameItemInfo: new field #1472 FGELIOCIHKK (MMKFIDNBEBI)
+  GridFightGameItemInfo: new field #1657 DDCOCJIEBLL (EDJFEKPHLFN)
+  GridFightGameItemInfo: new field #1789 LKKIMPILMNC (PEGMFOHNNFL)
+  GridFightGameItemInfo: new field #1791 LOLMNJLLNKO (HPAJCFPNKAJ)
+  GridFightGameItemInfo: new field #1805 EPPKKHMNHBN (JABJGAJAMPN)
+  GridFightGameItemInfo: new field #1844 POKDMODKGPA (NAEGCNHKCAB)
+  GridFightGameItemInfo: 4.6 field gone: HAGAEFMEHBA (LFOCLBEMIEM, was #161)
+  GridFightGameItemInfo: 4.6 field gone: FCPGFBADIAL (IPGCHDECCNB, was #1909)
+  LHMLIGPHOKP: new field #9 additional_properties (map<uint32,uint32>)
+  HEHOBDGMMJM: new field #9 GLJPGNPPAFP (bool)
+  GridFightHackStateInfo: new field #2 AMIFDFAHMDM (uint32)
+  GridFightConsumableUpdateInfo: new field #11 EFAKDFMPKCE (HODMAGEMEJD)
+  GridFightConsumableUpdateInfo: new field #13 MCKHGIEJLHM (LALKBPJANIH)
+  GridFightLineupHpSyncInfo: 4.4/4.5 call #15 'grid_fight_lineup_hp', 4.6 carried 'current_hp'
+  HJCAJKHNCDH: 4.6 field gone: MLAGBPIANKG (uint32, was #8)
+  GridFightSyncData: new field #166 OHHBBOGFDON (FMBACDOFCAL)
+  GridFightSyncData: new field #400 FMNPBOJGLFI (uint32)
+  GridFightSyncData: new field #429 POLBMPCKFDO (FFECECBAEEH)
+  GridFightSyncData: new field #725 KKHHIEKJAGE (LAIKGBIIFIH)
+  GridFightSyncData: new field #811 DPJKDMKADCD (CPOHGANENDF)
+  GridFightSyncData: new field #1147 NHILDPKAAHO (NNJDFDOFCCL)
+  GridFightSyncData: new field #1433 PHNKDPMDONM (FMBACDOFCAL)
+  GridFightSyncData: new field #1452 CEDMLOEDPEH (KOMPNJAMLPM)
+  GridFightSyncData: new field #1651 DEHEDLNDGND (FMBACDOFCAL)
+  GridFightSyncData: new field #1779 KBHOBGHKIBA (BAAGMMIDHDB)
+  GridFightSyncData: new field #1827 JNIGCDNHHLK (EMOGKOKPCAC)
+  GridFightSyncData: 4.4/4.5 call #1884 'grid_fight_lineup_hp', 4.6 carried 'lineup_hp'
+  GridFightSyncResultData: 4.4/4.5 call #15 'grid_update_src', 4.6 carried 'update_source'
+  GridFightConsumableTargetInfo: new field #53 DECONIENEJG (ABNBACCKMDL)
+  GridFightConsumableTargetInfo: new field #1338 CEBGLMPKPDC (DFIIJBMPKIE)
+  GridFightConsumableTargetInfo: new field #1702 GGDGOBFGDBD (IGLKPANBNBN)
+  GridFightUseConsumableCsReq: 4.4/4.5 call #14 'param', 4.6 carried 'target'
+  GridFightUseConsumableCsReq: 4.6 field gone: item_id (uint32, was #4)
+  GridFightGetOrbCsReq: 4.4/4.5 call #9 'is_get_all', 4.6 carried 'take_all'
+  GridFightLockShopCsReq: 4.4/4.5 call #4 'is_locked', 4.6 carried 'is_lock'
+  GridFightPendingAction: new field #2 reason (OEJKAOKHPPL)
+  GridFightPendingAction: new field #154 JACEOLDFKDD (OEGLNPAMFNH)
+  GridFightPendingAction: new field #166 DPKFJEEJABC (EEODAFPJLFE)
+  GridFightPendingAction: new field #379 EJHBPFJOBKB (FCPHBDPJCLK)
+  GridFightPendingAction: new field #648 PLJBPFHFAHL (ELBEHADNLBB)
+  GridFightPendingAction: new field #1075 DPBFGOMKGMB (HFCFMFONGIE)
+  GridFightPendingAction: new field #1125 PFEBKFJOGKO (FOCOJIDPAGO)
+  GridFightPendingAction: new field #1190 FMHPKKDEHNC (HADBACOKEJN)
+  GridFightPendingAction: new field #1240 OKPMJOCEKBC (CHAIHAICBCE)
+  GridFightPendingAction: new field #1592 GEPGMIEPBMB (AKDPLDPGGKF)
+  GridFightPendingAction: new field #1817 EEKMIAMGHFL (BDLBHJGNCFM)
+  GridFightPendingAction: new field #1853 JMJOAOCJAAG (MMFBHOGIAML)
+  GridFightPendingAction: new field #1920 IIDBLCFAAPC (NCEPOLNLNKH)
+  GridFightPendingAction: new field #1923 FKEAHOKGDPO (IPGOPLALEJG)
+  GridFightPendingAction: new field #2044 KDGAJCHDFOK (BMBBPPJKALE)
+  GridFightHandlePendingActionCsReq: new field #230 OKPMJOCEKBC (DKMMDJAOBHG)
+  GridFightHandlePendingActionCsReq: new field #258 JACEOLDFKDD (JGHCHCCMCBM)
+  GridFightHandlePendingActionCsReq: new field #263 DKDFDGJGIHM (NIJPHAAONFB)
+  GridFightHandlePendingActionCsReq: new field #916 PLJBPFHFAHL (PFGCMKIJBBH)
+  GridFightHandlePendingActionCsReq: new field #944 MHBGJCOIMPA (LPHPNIEAMLL)
+  GridFightHandlePendingActionCsReq: new field #1111 KDGAJCHDFOK (MGHGMNKNJAE)
+  GridFightHandlePendingActionCsReq: new field #1142 GEPGMIEPBMB (IBLPDLHBAMO)
+  GridFightHandlePendingActionCsReq: new field #1216 DPKFJEEJABC (PDDMLHPGOOL)
+  GridFightHandlePendingActionCsReq: new field #1221 EJHBPFJOBKB (BKAKHDGJLFO)
+  GridFightHandlePendingActionCsReq: new field #1370 JMJOAOCJAAG (HBKDINBIIGK)
+  GridFightHandlePendingActionCsReq: new field #1651 PFEBKFJOGKO (BGABEIOCONI)
+  GridFightHandlePendingActionCsReq: new field #1659 IIDBLCFAAPC (CAMIICJDOBO)
+  GridFightHandlePendingActionCsReq: new field #1765 FKEAHOKGDPO (PGGJPHKJJON)
+  GridFightHandlePendingActionCsReq: new field #1804 DPBFGOMKGMB (LPAENEHIBJP)
+  GridFightHandlePendingActionCsReq: new field #1840 ENMJFJGIOEM (EFDODBOLHGK)
+  GridFightHandlePendingActionCsReq: new field #1841 FMHPKKDEHNC (DPMFDKPNHDA)
+  GridFightHandlePendingActionCsReq: new field #1930 PBEJCFAJLGE (GHMKAOJPAPO)
+  GridFightStartGamePlayCsReq: new field #3 MPJPLKKJNGE (uint32)
+  GridFightEndBattleStageNotify: new field #623 reason (OEJKAOKHPPL)
+  GridFightTraitUpdateCsReq: new field #30 GDAMHENIIDJ (OEPOFNDAMMB)
+  GridFightTraitUpdateCsReq: new field #367 KDBKIPPHMFI (KDGHLGHJDMC)
+  GridFightTraitUpdateCsReq: new field #441 IJBCFCMIJNK (KMPNJFLNBJG)
+  GridFightTraitUpdateCsReq: new field #1278 MCCMPFENGCD (NMDCNICFKGF)
+  GridFightTraitUpdateCsReq: new field #1595 IFDICIIOHHI (CGLCHFIKLPJ)
+  GridFightTraitUpdateCsReq: new field #1698 FLDEMEJEODJ (JNKMLCAKGND)
+  GridFightTraitUpdateCsReq: new field #1946 GEPGMIEPBMB (MFKKOIFLDCH)
+  GridFightTraitUpdateCsReq: new field #1975 DPKFJEEJABC (ODPMEJGOOMB)
+  GridFightFinishInfo: new field #728 IBBKKFGEEPH (repeated AFCBKJEFKPG)
+  GridFightFinishInfo: new field #1410 FNNEPMAPOOF (repeated FMBACDOFCAL)
+  GridFightFinishInfo: new field #1836 BBEEGMDAMIB (repeated LKHAJCACPBH)
+  GridFightPermanentGameInfo: new field #6 FBJMBJKMAJA (map<uint32,GLHCHCJMFGA>)
+  GridFightPermanentGameInfo: new field #11 ENECKKGPKHI (uint32)
+  GridFightHandBookRoleInfo: 4.4/4.5 call #3 'grid_fight_avatar_list', 4.6 carried 'role_id_list'
+  GridFightHandBookInfo: new field #5 EECJFCNKKMB (LLBMKOILIDN)
+  GridFightHandBookInfo: new field #6 KJIJEGAHLGB (GNIIDINFPDO)
+  GridFightHandBookInfo: new field #7 NNIJIFGJJJA (ODKODPBCDKD)
+  GridFightSeasonHandBookNotify: new field #113 PGCBJOHMGNK (LLBMKOILIDN)
+  GridFightSeasonHandBookNotify: new field #1683 JAKIKEAGHAM (GNIIDINFPDO)
+  GridFightSeasonHandBookNotify: new field #1744 IJIEAHHOEBG (ODKODPBCDKD)
+  UpdateGameFormationScRsp: new field #7 retcode (uint32)
+  UpdateGameFormationScRsp: new field #15 EFBDADNLCGL (HENDEHGPKMF)
+  UpdateGameFormationScRsp: 4.6 field gone: slot_id (uint32, was #1)
+  UpdateGameFormationScRsp: 4.6 field gone: name (string, was #7)
+  UpdateGameFormationScRsp: 4.6 field gone: MILBDIPBJGP (string, was #8)
+  UpdateGameFormationScRsp: 4.6 field gone: KFPMJKCOJAJ (string, was #10)
+  UpdateGameFormationScRsp: 4.6 field gone: KLLEKHPJGLE (bool, was #11)
+  UpdateGameFormationScRsp: 4.6 field gone: JLFIAFKGCOJ (bytes, was #12)
+  GetMapRotationDataScRsp: new field #4 BGEMGEBEHKO (FHEGNOPNICH)
+  GetMapRotationDataScRsp: 4.6 field gone: EGAGKNADAHJ (repeated ChargerInfo, was #3)
+  GetMapRotationDataScRsp: 4.6 field gone: CEDGGDFMILP (repeated RotaterData, was #4)
+  GetMapRotationDataScRsp: 4.6 field gone: BHABAIFPOOA (bool, was #5)
+  GetMapRotationDataScRsp: 4.6 field gone: JPPMEKJGJFD (uint32, was #10)
+  GetMapRotationDataScRsp: 4.6 field gone: energy_info (RotaterEnergyInfo, was #12)
+  GetMapRotationDataScRsp: 4.6 field gone: COOOMDKGODF (RotateMapInfo, was #13)
+  GetMapRotationDataScRsp: 4.6 field gone: region_id (int32, was #15)
+  UpdateMapRotationDataScNotify: new field #15 BGEMGEBEHKO (FHEGNOPNICH)
+  UpdateMapRotationDataScNotify: 4.6 field gone: EGAGKNADAHJ (repeated ChargerInfo, was #1)
+  UpdateMapRotationDataScNotify: 4.6 field gone: COOOMDKGODF (RotateMapInfo, was #3)
+  UpdateMapRotationDataScNotify: 4.6 field gone: CEDGGDFMILP (repeated RotaterData, was #4)
+  UpdateMapRotationDataScNotify: 4.6 field gone: energy_info (RotaterEnergyInfo, was #5)
+  UpdateMapRotationDataScNotify: 4.6 field gone: BHABAIFPOOA (bool, was #8)
+  UpdateMapRotationDataScNotify: 4.6 field gone: region_id (int32, was #11)
+  UpdateMapRotationDataScNotify: 4.6 field gone: JPPMEKJGJFD (uint32, was #12)
+  DHFGMHFEHEB: new field #5 BJBJLBIOPKA (JKEBEAKOHJJ)
+  DHFGMHFEHEB: 4.6 field gone: IMCGJPMBPPJ (uint32, was #1)
+  DHFGMHFEHEB: 4.6 field gone: HFPGDCJMNIK (HDIOKENOFNJ, was #2)
+  DHFGMHFEHEB: 4.6 field gone: MMFKMEGECOI (uint32, was #3)
+  DHFGMHFEHEB: 4.6 field gone: CMBJOLCGMAI (repeated ONNMLLIEENI, was #4)
+  DHFGMHFEHEB: 4.6 field gone: JIDBIMNMLJP (uint32, was #5)
+  DHFGMHFEHEB: 4.6 field gone: HCENDLKKHOC (uint32, was #8)
+  DHFGMHFEHEB: 4.6 field gone: FBNEKMPIAKD (uint32, was #9)
+  DHFGMHFEHEB: 4.6 field gone: JCOAGOJEAPB (repeated GADFFIFFNHM, was #10)
+  DHFGMHFEHEB: 4.6 field gone: PIGPKIDNMDH (uint32, was #11)
+  DHFGMHFEHEB: 4.6 field gone: lineup (GCFGCHAMNOL, was #12)
+  DHFGMHFEHEB: 4.6 field gone: ICBIMKIEOEP (repeated uint32, was #13)
+  DHFGMHFEHEB: 4.6 field gone: IOMEILDMBNE (uint32, was #14)
+  DHFGMHFEHEB: 4.6 field gone: finish_work_cnt (uint32, was #15)
+  DHFGMHFEHEB: 4.6 field gone: KCCACINBEEA (uint32, was #287)
+  DHFGMHFEHEB: 4.6 field gone: GGPKMPBBENP (uint32, was #593)
+  DHFGMHFEHEB: 4.6 field gone: NMPCJAOIOHJ (uint32, was #1221)
+  DHFGMHFEHEB: 4.6 field gone: ENMLPFBMPNI (uint32, was #1386)
+  GetNpcStatusScRsp: new field #2 IGECEKJICBO (repeated uint32)
+  GetNpcStatusScRsp: new field #7 BNGBJPNOLAL (repeated uint32)
+  GetMonopolyFriendRankingListScRsp: type change PONAOKBNIAM: 4.6 GetMonopolyFriendRankingListCsReq -> 4.7 BBEPMABCBGF (#3, was #7)
+  GetMonopolyFriendRankingListScRsp: type change BEDHEKAGAPE: 4.6 repeated GetMonopolyFriendRankingListCsReq -> 4.7 repeated BBEPMABCBGF (#12, was #3)
+  GetPetDataScRsp: new field #1 NHCAOLGBGIF (bool)
+  SetBlindBoxPetLineupScRsp: new field #9 NHCAOLGBGIF (bool)
+  COPLCPBANMD: new field #14 GNKMHIBPDEM (bool)
+  LJFJOGEEGPJ: 4.6 field gone: DADLAHHIJDH (bool, was #4)
+  GateServer: new field #43 MAPKNOIKBLO (string)
+  GateServer: new field #1116 GDKPMIECPLM (string)
+  SceneFiveDimGameData: new field #9 BGEMGEBEHKO (FHEGNOPNICH)
+  HCIIHNAFNAB: 4.4/4.5 call #8 'equipment_list', 4.6 carried 'update_equipments_list'
+  CCKJAEDDDCL: 4.6 field gone: ABPOOCOOKCF (GANFMBPEJPF, was #12)
+  RogueMagicScepterDressInUnitCsReq: 4.4/4.5 call #14 'dice_slot_id', 4.6 carried 'slot_id'
+  SocialPlayGameplayOperationScNotify: new field #461 OEGCDMDMGOH (MNCBEDBDDHL)
+  SocialPlayGameplayOperationScNotify: 4.6 field gone: LABNNEGJNHO (POBLGKIGINE, was #293)
+  SocialPlayGameplayOperationScNotify: 4.6 field gone: ACAMPJBCALH (PFNJCDINMLA, was #63)
+  StrongChallengeActivityBattleEndScNotify: 4.4/4.5 call #1 'score_id', 4.6 carried 'score'
+  EBGAMBKHDBO: 4.6 field gone: IAJHCHOJHNN (repeated uint32, was #14)
+# wrote 5408 defs, 3132 translations, 2690 packet ids

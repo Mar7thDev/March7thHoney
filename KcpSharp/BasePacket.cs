@@ -26,15 +26,18 @@ public class BasePacket(ushort cmdId)
         SetData(Convert.FromBase64String(base64));
     }
 
-    public byte[] BuildPacket()
+    /// <param name="head">Serialized packet head (see <see cref="PacketHead" />); none when null.</param>
+    public byte[] BuildPacket(byte[]? head = null)
     {
         using MemoryStream? ms = new();
         using BinaryWriter? bw = new(ms);
 
+        head ??= [];
         bw.WriteUInt32BE(HEADER_CONST);
         bw.WriteUInt16BE(CmdId);
-        bw.WriteUInt16BE(0);
+        bw.WriteUInt16BE((ushort)head.Length);
         bw.WriteUInt32BE((uint)Data.Length);
+        if (head.Length > 0) bw.Write(head);
         if (Data.Length > 0) bw.Write(Data);
         bw.WriteUInt32BE(TAIL_CONST);
 

@@ -53,7 +53,7 @@ public static class ServerExchangeRoutes
                     clientIp ?? ctx.Connection.RemoteIpAddress?.ToString());
                 if (clientIp != null && AccountBanHelper.NormalizeIpAddress(clientIp) == null)
                     return Results.Text("Invalid client IP", "text/plain", null, 400);
-                if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
+                if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus, "validate_account_token"))
                 {
                     account.ClearLoginTokens();
                     return Results.Text(banStatus.FormatLoginMessage(), "text/plain", null, 403);
