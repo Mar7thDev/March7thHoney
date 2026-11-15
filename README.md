@@ -81,7 +81,7 @@ Detailed implementation progress: [Gameplay Implementation Tree](docs/developmen
 ## Quick Start
 
 ```bash
-git clone --recurse-submodules https://github.com/Mar7thLover/March7thHoney.git
+git clone https://github.com/Mar7thLover/March7thHoney.git
 cd March7thHoney
 dotnet restore
 dotnet run --project Program/Program.csproj
@@ -112,7 +112,6 @@ To update later:
 
 ```bash
 git pull --ff-only
-git submodule update --init --recursive
 dotnet run --project Program/Program.csproj
 ```
 
