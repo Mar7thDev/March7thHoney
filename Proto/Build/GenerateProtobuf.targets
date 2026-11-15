@@ -1,6 +1,6 @@
 <Project>
-  <!-- Keep compiler and runtime versions together in Proto.csproj. The NuGet package
-       supplies host tools only; it is not copied to server output or published. -->
+  <!-- Keep compiler and runtime versions together in Directory.Packages.props. The NuGet
+       package supplies host tools only; it is not copied to server output or published. -->
   <Target Name="PrepareProtocolGeneration">
     <PropertyGroup>
       <ProtocolSourceDirectory>$(MSBuildProjectDirectory)/$(ActiveProtocolVersion)</ProtocolSourceDirectory>

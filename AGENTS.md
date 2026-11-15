@@ -34,10 +34,12 @@
 | `Resources/`、`TurnBasedGameData/`、`Config/Resource.bin` | 本地游戏资源和生成缓存，已被 Git 忽略，干净检出不保证存在 |
 | `scripts/` | 独立回归程序、缓存升级工具及 Linux 部署脚本 |
 | `docs/` | 开发、测试、API、入门和运维文档，入口为 `docs/README.md` |
+| `global.json`、`Directory.Build.props`、`Directory.Packages.props` | 仓库级构建配置：SDK 版本下限、所有项目共用的默认属性和集中管理的 NuGet 包版本 |
+| `.editorconfig`、`.gitattributes` | 编辑器格式约定，以及换行符和二进制文件的 Git 处理规则 |
 
 ## 环境、构建与启动
 
-需要 .NET SDK 10 和 Git。以下命令均从仓库根目录执行；Linux 路径区分大小写，使用 `Program`。
+需要 .NET SDK 10（`global.json` 要求 10.0.100 及以上的 10.0 版本）和 Git。以下命令均从仓库根目录执行；Linux 路径区分大小写，使用 `Program`。
 
 ```sh
 dotnet restore March7thHoney.sln
@@ -73,11 +75,13 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 - 保持 AOT 兼容：新增 Web JSON 请求/响应类型时检查 `WebServer/WebJsonContext.cs` 及相关序列化上下文；修改生成规则应改 `SourceGen/` 源码，不手改 `obj/` 里的生成文件。
 - 面向用户的命令文案沿用 `I18NManager` 与 `Config/Languages/`，页面文案遵循所属页面的国际化机制。API 或配置行为变化应同步相关文档。
 - 跨平台文件操作使用合适的路径 API，避免硬编码开发机绝对路径；保留原有文件编码和换行风格。
+- NuGet 包版本只写在 `Directory.Packages.props`，项目文件中的 `PackageReference` 不带 `Version`。`Nullable` 和 `ImplicitUsings` 由 `Directory.Build.props` 统一开启，新项目无需重复声明。
+- `.editorconfig` 约束新增和修改的代码，不作为重排既有文件的理由。
 
 ## 协议与资源约束
 
 - 协议流程见 `docs/development/protobuf.md`。执行其中的版本示例前，核对当前活动协议、版本目录和兼容清单，不直接照抄旧版本号。
-- `Proto.csproj` 固定 `ActiveProtocolVersion=4.8`，使用 `Google.Protobuf.Tools 3.33.1` 的 protoc 33.1 自动生成到 `obj/` 并编译。协议修复应落到活动版本的定义、翻译映射、兼容清单或生成工具，再构建，避免只改生成的 C#。
+- `Proto.csproj` 固定 `ActiveProtocolVersion=4.8`，使用 `Directory.Packages.props` 中固定的 `Google.Protobuf.Tools 3.33.1`（protoc 33.1）自动生成到 `obj/` 并编译。协议修复应落到活动版本的定义、翻译映射、兼容清单或生成工具，再构建，避免只改生成的 C#。
 - 4.6 及更早的协议已移到 `Proto/Archives/`，运行依赖旧路径的迁移命令前先按归档说明解压；`Proto/4.5v3/translations.txt` 作为登录回归输入仍保留。`Proto/4.7` 是 4.8 的名称来源，仍留在工作树里。
 - 切换活动协议时同步更新 `ActiveProtocolVersion`、对应分组定义与 `KcpSharp/CmdIds.cs`，完成整个解决方案构建和协议生成回归。不能用旧版本命令号覆盖新版本，也不能仅依据同型字段猜测协议映射。
 - Dumper 原始产物保留在对应版本的 `dumper/Raw/`；`reference/` 只能存放确实存在的同版本参考定义。
