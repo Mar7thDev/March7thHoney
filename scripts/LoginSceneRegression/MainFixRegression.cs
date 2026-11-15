@@ -3,12 +3,17 @@ using March7thHoney.Data;
 using March7thHoney.Database;
 using March7thHoney.Database.Generated;
 using March7thHoney.Database.Lineup;
+using March7thHoney.Database.Player;
 using March7thHoney.Database.Scene;
+using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet;
 using March7thHoney.GameServer.Server.Packet.Recv.Lineup;
 using March7thHoney.GameServer.Server.Packet.Recv.PetMarble;
+using March7thHoney.GameServer.Server.Packet.Recv.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.GameServer.Server.Packet.Send.PlayerBoard;
 using March7thHoney.GameServer.Server.Packet.Recv.Raid;
 using March7thHoney.GameServer.Server.Packet.Recv.RelicPreset;
 using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
@@ -279,7 +284,110 @@ internal static class MainFixRegression
         check("reset raid notify carries an empty item list", RaidInfoNotify.Parser.ParseFrom(
             new March7thHoney.GameServer.Server.Packet.Send.Raid.PacketRaidInfoNotify().Data).ItemList != null);
         player.Connection = null;
+
+        await HeadFrameDisplay(scratch, peer, check, capture);
     }
+
+    /// <summary>
+    ///     Head-frame display switch. UpdatePlayerSetting oneof 1600 and PlayerSettingInfo field 11 both mean "hidden"
+    ///     (the client sets IsDisplayHeadFrame to the negated value), and the client only offers the switch when a
+    ///     HeadIconFrame item is in the bag. Hiding blanks the frame for other players, not on the player's own board.
+    /// </summary>
+    private static async Task HeadFrameDisplay(string scratch, KcpConversation peer, Action<string, bool> check,
+        Func<Func<Task>, Task<List<(ushort Id, byte[] Body)>>> capture)
+    {
+        var frames = GameData.ItemConfigData.Values.Where(item => item.ItemSubType == ItemSubTypeEnum.HeadIconFrame)
+            .Select(item => (uint)item.ID).Order().Take(2).ToList();
+        check("cache carries at least two head-frame items", frames.Count == 2);
+        if (frames.Count < 2) return;
+
+        var player = new PlayerInstance(60028);
+        await player.InitializeAsync();
+        var connection = new ProbeConnection(peer) { Player = player };
+        player.Connection = connection;
+        var bag = player.InventoryManager!;
+        int Owned(uint id) => bag.GetItem((int)id)?.Count ?? 0;
+        uint SeenByOthers() => player.Data.ToSimpleProto(FriendOnlineStatus.Online).HeadFrameInfo?.HeadFrameItemId ?? 0;
+        uint SeenInDetail() => player.Data.ToDetailProto().HeadFrameInfo?.HeadFrameItemId ?? 0;
+        uint OwnBoard() => GetPlayerBoardDataScRsp.Parser.ParseFrom(new PacketGetPlayerBoardDataScRsp(player).Data)
+            .HeadFrameInfo?.HeadFrameItemId ?? 0;
+        bool HiddenAtLogin() => GetBasicInfoScRsp.Parser.ParseFrom(new PacketGetBasicInfoScRsp(player).Data)
+            .PlayerSettingInfo?.BOMGNMDOGLM == true;
+        async Task<UpdatePlayerSettingScRsp> Setting(UpdatePlayerSetting setting)
+        {
+            var sent = await capture(() => new HandlerUpdatePlayerSettingCsReq().OnHandle(connection, [],
+                new UpdatePlayerSettingCsReq { PlayerSetting = setting }.ToByteArray()));
+            return UpdatePlayerSettingScRsp.Parser.ParseFrom(
+                sent.Single(frame => frame.Id == CmdIds.UpdatePlayerSettingScRsp).Body);
+        }
+
+        var granted = await capture(async () => await HeadFrameService.Grant(player, frames[0], long.MaxValue));
+        check("granting a head frame puts one item in the bag and syncs it to the client",
+            Owned(frames[0]) == 1 && granted.Any(frame => frame.Id == CmdIds.PlayerSyncScNotify &&
+                PlayerSyncScNotify.Parser.ParseFrom(frame.Body).MaterialList.Any(item => item.Tid == frames[0])));
+        await capture(async () => await HeadFrameService.Grant(player, frames[0], long.MaxValue));
+        check("granting the same head frame again does not add a second item", Owned(frames[0]) == 1);
+        check("a head frame is shown by default: login setting, other players and the own board",
+            !player.Data.PrivacySettings.HideHeadFrame && !HiddenAtLogin() && SeenByOthers() == frames[0] &&
+            SeenInDetail() == frames[0] && OwnBoard() == frames[0]);
+
+        var hide = await Setting(new UpdatePlayerSetting { BOMGNMDOGLM = true });
+        check("hiding the head frame echoes oneof 1600 and is sent back at login",
+            hide.PlayerSetting?.BKAGLMFNKKACase == UpdatePlayerSetting.BKAGLMFNKKAOneofCase.BOMGNMDOGLM &&
+            hide.PlayerSetting.BOMGNMDOGLM && player.Data.PrivacySettings.HideHeadFrame && HiddenAtLogin());
+        check("a hidden head frame is blanked for other players but stays worn and on the own board",
+            SeenByOthers() == 0 && SeenInDetail() == 0 && OwnBoard() == frames[0] &&
+            player.Data.HeadFrame.HeadFrameId == frames[0] && Owned(frames[0]) == 1);
+        await Setting(new UpdatePlayerSetting { NJAKOMDMFJD = true });
+        check("another player setting leaves the head-frame switch alone", player.Data.PrivacySettings.HideHeadFrame);
+        await capture(async () => await HeadFrameService.Grant(player, frames[1], long.MaxValue));
+        check("a head frame granted while hidden is worn but stays hidden",
+            player.Data.PrivacySettings.HideHeadFrame && SeenByOthers() == 0 && OwnBoard() == frames[1] &&
+            Owned(frames[1]) == 1);
+
+        DatabaseHelper.Instance!.SaveDatabase();
+        await using (var db = new SqliteConnection($"Data Source={Path.Combine(scratch, "regression.db")}"))
+        {
+            await db.OpenAsync();
+            var stored = EntityStores.Map[typeof(PlayerData)].LoadAll(db).OfType<PlayerData>()
+                .Single(data => data.Uid == player.Uid);
+            check("the hidden head-frame switch survives SQLite storage", stored.PrivacySettings.HideHeadFrame);
+        }
+
+        var show = await Setting(new UpdatePlayerSetting { BOMGNMDOGLM = false });
+        check("showing the head frame again restores it for other players",
+            show.PlayerSetting?.BKAGLMFNKKACase == UpdatePlayerSetting.BKAGLMFNKKAOneofCase.BOMGNMDOGLM &&
+            !player.Data.PrivacySettings.HideHeadFrame && !HiddenAtLogin() && SeenByOthers() == frames[1]);
+
+        var oldBlob = MemoryPackSerializer.Serialize(new PreHeadFramePrivacySettings
+            { DisplayActiveState = false, DisplayCollection = false });
+        check("a privacy-settings blob saved before the switch loads with the head frame shown",
+            MemoryPackSerializer.Deserialize<PrivacySettingsPb>(oldBlob) is
+            {
+                HideHeadFrame: false, DisplayChallengeLineup: true, DisplayActiveState: false,
+                DisplayRecentlyState: true, DisplayBattleRecord: true, DisplayCollection: false
+            });
+
+        // Old saves wore a frame without owning the item; login adds it so the client offers the switch.
+        player.Data.HeadFrame = new PlayerHeadFrameInfo { HeadFrameId = frames[0], HeadFrameExpireTime = long.MaxValue };
+        bag.Data.MaterialItems.RemoveAll(item => item.ItemId == frames[0]);
+        await capture(async () => await player.OnLogin());
+        check("login puts the worn head frame of an old save into the bag", Owned(frames[0]) == 1);
+        await capture(async () => await player.OnLogin());
+        check("a second login does not add the worn head frame twice", Owned(frames[0]) == 1);
+        player.Connection = null;
+    }
+}
+
+// Independent copy of the five-member privacy contract saved before the head-frame switch existed.
+[MemoryPackable]
+internal partial class PreHeadFramePrivacySettings
+{
+    public bool DisplayChallengeLineup { get; set; } = true;
+    public bool DisplayActiveState { get; set; } = true;
+    public bool DisplayRecentlyState { get; set; } = true;
+    public bool DisplayBattleRecord { get; set; } = true;
+    public bool DisplayCollection { get; set; } = true;
 }
 
 // Independent copy of the old five-member wire contract; does not derive its fixture from the new model.
