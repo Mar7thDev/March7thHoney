@@ -117,7 +117,7 @@ public class PlayerData : BaseDatabaseDataHelper
             LastActiveTime = LastActiveTime,
             ChatBubbleId = (uint)ChatBubble,
             PersonalCard = (uint)PersonalCard,
-            HeadFrameInfo = HeadFrame.ToProto(),
+            HeadFrameInfo = ToPublicHeadFrameProto(),
             Gender = (uint)CurrentGender
         };
 
@@ -173,7 +173,7 @@ public class PlayerData : BaseDatabaseDataHelper
             Uid = (uint)Uid,
             WorldLevel = (uint)WorldLevel,
             RecordInfo = new PlayerRecordInfo(),
-            HeadFrameInfo = HeadFrame.ToProto()
+            HeadFrameInfo = ToPublicHeadFrameProto()
         };
 
         var avatarInfo = DatabaseHelper.Instance!.GetInstance<AvatarData>(Uid);
@@ -224,6 +224,13 @@ public class PlayerData : BaseDatabaseDataHelper
         return info;
     }
 
+    /// <summary>
+    ///     其他玩家看到的头像框: 隐藏时下发空头像框。客户端 PlayerBoardInfo.CreateByPlayerDetailInfo 只按
+    ///     HeadFrameInfo.IsValid(物品 ID 非 0 且未过期)决定是否显示; 自己的资料卡始终收到真实头像框, 由本地设置决定显示。
+    /// </summary>
+    public HeadFrameInfo ToPublicHeadFrameProto() =>
+        PrivacySettings.HideHeadFrame ? new HeadFrameInfo() : HeadFrame.ToProto();
+
     public CJLCPMDGIBO ToPlayerOutfitProto() =>
         new() { EAKOLIJOEPA = { PlayerOutfitList.Select(x => (uint)x) } };
 }
@@ -253,13 +260,18 @@ public partial class PrivacySettingsPb
     public bool DisplayBattleRecord { get; set; } = true;
     public bool DisplayCollection { get; set; } = true;
 
+    // 隐藏头像框(默认展示)。客户端 PlayerSettingData.IsDisplayHeadFrame = !该值:
+    // 登录读 PlayerSettingInfo 字段 11, 切换发 UpdatePlayerSetting oneof 字段 1600。新成员只能追加在末尾(MemoryPack)。
+    public bool HideHeadFrame { get; set; }
+
     public PlayerSettingInfo ToSettingProto()
     {
         return new PlayerSettingInfo
         {
             // TODO 4.3: PlayerSettingInfo 字段在 4.3 重排，DisplayActiveState/RecentlyState/BattleRecord 暂未映射
             GNFDDPEMMFN = DisplayChallengeLineup,
-            FDHEPCKLCAM = DisplayCollection
+            FDHEPCKLCAM = DisplayCollection,
+            BOMGNMDOGLM = HideHeadFrame
         };
     }
 }

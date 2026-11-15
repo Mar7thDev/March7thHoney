@@ -310,6 +310,9 @@ internal static class ChallengeRegression
             colourFrame.HeadFrameId == colour);
         check("Peak 3-target normal win after the colour medal keeps the colour frame without re-sending it",
             ReferenceEquals(await Win(normal, false, allTargets), colourFrame) && colourFrame.HeadFrameId == colour);
+        // The client only offers the display switch while a head-frame item is in the bag.
+        check("Peak bag holds each head frame the normal player was given, once",
+            frames.All(id => normal.InventoryManager!.GetItem((int)id)?.Count == 1));
 
         // Hard difficulty: any hard (jue jing) win is the colour medal, granted once.
         var hardPlayer = await NewPlayer(60406);
@@ -320,14 +323,19 @@ internal static class ChallengeRegression
         check("Peak normal 1-target king win after hard keeps the colour frame",
             (await Win(hardPlayer, false, oneTarget)).HeadFrameId == colour);
 
-        // Claiming rewards never hands the head-frame rows out as items (the client cannot claim them either).
+        bool OnlyColourInBag(PlayerInstance player) =>
+            player.InventoryManager!.GetItem((int)colour)?.Count == 1 &&
+            new[] { bronze, silver, gold }.All(id => player.InventoryManager.GetItem((int)id) == null);
+        check("Peak bag holds the hard player's colour frame once and no lower tier", OnlyColourInBag(hardPlayer));
+
+        // Claiming rewards never hands the head-frame rows out again (the client cannot claim them either).
         var frameRows = line.Where(row => row.RewardType is "BOSS_STAR_LIMIT_REWARD" or "BOSS_COLOR_TARGET_REWARD")
             .Select(row => (uint)row.ID).ToHashSet();
         var claimed = await hardPlayer.ChallengePeakManager!.TakeRewards(groupId, frameRows) ?? [];
         var claimedAll = await hardPlayer.ChallengePeakManager.TakeRewards(groupId, []) ?? [];
         check("Peak reward claims skip the head-frame rows and add no frame item",
             claimed.Count == 0 && claimedAll.All(rewardGroup => !frameRows.Contains(rewardGroup.RewardId)) &&
-            frames.All(id => hardPlayer.InventoryManager!.GetItem((int)id) == null));
+            OnlyColourInBag(hardPlayer));
 
         // A save holding the id the old "226000 + targets" formula wrote for a 0-target win is not a valid frame.
         var legacy = await NewPlayer(60407);

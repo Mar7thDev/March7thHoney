@@ -373,6 +373,7 @@ public partial class PlayerInstance(PlayerData data)
     {
         if (AvatarManager != null)
             await AvatarManager.GrantUnlockedStoryPaths(false);
+        await HeadFrameService.RepairOwnedItem(this);
 
         CalyxOverrideManager?.ResetLineupOverride();
         await SendPacket(new PacketStaminaInfoScNotify(this));

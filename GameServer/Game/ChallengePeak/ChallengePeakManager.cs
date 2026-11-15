@@ -469,8 +469,8 @@ public class ChallengePeakManager(PlayerInstance player) : BasePlayerManager(pla
         var frameId = ChallengePeakMedal.GetHeadFrameItemId(groupConfig.RewardGroupID, rank);
         if (frameId == 0) return;
 
-        // 服务端没有赛季结束时间, 沿用永久有效(官方为当期有效)
-        await Player.SetPlayerHeadFrameId(frameId, long.MaxValue);
+        // 服务端没有赛季结束时间, 沿用永久有效(官方为当期有效); 物品同时进背包, 客户端才提供展示开关
+        await HeadFrameService.Grant(Player, frameId, long.MaxValue);
     }
 
     public async ValueTask<Retcode> StartChallenge(int levelId, uint buffId, List<int> avatarIdList)
