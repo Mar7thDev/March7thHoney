@@ -77,7 +77,7 @@ March7thHoneyは、.NET 10をベースとしたサーバープロジェクトで
 ## クイックスタート
 
 ```bash
-git clone --recurse-submodules https://github.com/Mar7thLover/March7thHoney.git
+git clone https://github.com/Mar7thLover/March7thHoney.git
 cd March7thHoney
 dotnet restore
 dotnet run --project program

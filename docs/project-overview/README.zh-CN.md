@@ -77,7 +77,7 @@ March7thHoney 是一个基于 .NET 10 的服务器项目。
 ## 快速启动
 
 ```bash
-git clone --recurse-submodules https://github.com/Mar7thLover/March7thHoney.git
+git clone https://github.com/Mar7thLover/March7thHoney.git
 cd March7thHoney
 dotnet restore
 dotnet run --project program
