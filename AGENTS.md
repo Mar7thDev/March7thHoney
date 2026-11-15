@@ -35,6 +35,7 @@
 | `docs/` | 开发、测试、API、入门和运维文档，入口为 `docs/README.md` |
 | `global.json`、`Directory.Build.props`、`Directory.Packages.props` | 仓库级构建配置：SDK 版本下限、所有项目共用的默认属性和集中管理的 NuGet 包版本 |
 | `.editorconfig`、`.gitattributes` | 编辑器格式约定，以及换行符和二进制文件的 Git 处理规则 |
+| `.github/workflows/ci.yml` | CI：告警视为错误的 Release 构建和无私有资源回归；推送到 `main` 或版本 tag 时另外发布三个平台的自包含产物 |
 
 ## 环境、构建与启动
 
