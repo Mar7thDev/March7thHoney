@@ -16,13 +16,9 @@ def main():
         # The project takes its SDK, shared defaults and package versions from the repository root.
         for name in ('global.json', 'Directory.Build.props', 'Directory.Packages.props'):
             shutil.copy2(source.parent / name, Path(directory) / name)
-        # Keep this test scoped to the active version; never alter the real checkout.
-        import xml.etree.ElementTree as ET
-        version = ET.parse(source / 'Proto.csproj').findtext('.//ActiveProtocolVersion')
-        schemas = project / version
-        schemas.mkdir()
-        for path in (source / version).glob('*.proto'):
-            shutil.copy2(path, schemas / path.name)
+        # Work on a copy of the schema; never alter the real checkout.
+        for path in source.glob('*.proto'):
+            shutil.copy2(path, project / path.name)
         command = ['dotnet', 'msbuild', 'Proto.csproj', '-t:GenerateProtocolSources',
                    '-p:Configuration=Release', '-v:minimal', '-m:1']
 
@@ -35,9 +31,9 @@ def main():
             return result.stdout
 
         generate('-restore')
-        output = project / 'obj' / 'Release' / 'net10.0' / 'protobuf' / version
+        output = project / 'obj' / 'Release' / 'net10.0' / 'protobuf'
         baseline = {p.name: p.read_bytes() for p in output.glob('*.cs')}
-        assert len(baseline) == len(list(schemas.glob('*.proto')))
+        assert len(baseline) == len(list(project.glob('*.proto')))
         stamp = output / 'generation.stamp'
         timestamp = stamp.stat().st_mtime_ns
         generate()
@@ -50,7 +46,7 @@ def main():
         assert missing.read_bytes() == baseline[missing.name]
         print('PASS: missing generated output is repaired')
 
-        probe = schemas / 'RepositorySlimmingProbe.proto'
+        probe = project / 'RepositorySlimmingProbe.proto'
         probe.write_text('syntax = "proto3"; package slimming_test; '
                          'message RepositorySlimmingProbe { int32 value = 1; }\n')
         generate()
@@ -67,7 +63,7 @@ def main():
 
         # Cross-targeting must still invoke the compiler for the build host.
         generate('-p:RuntimeIdentifier=win-x64')
-        cross = project / 'obj' / 'Release' / 'net10.0' / 'win-x64' / 'protobuf' / version
+        cross = project / 'obj' / 'Release' / 'net10.0' / 'win-x64' / 'protobuf'
         assert {p.name: p.read_bytes() for p in cross.glob('*.cs')} == baseline
         print('PASS: target runtime does not change host compiler selection')
 

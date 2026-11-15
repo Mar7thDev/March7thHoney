@@ -121,7 +121,7 @@ public sealed class HandlerGridFightTraitUpdateCsReq : GridFightHandler<GridFigh
 
 /// <summary>
 ///     The client asks to enter a 幕后茶歇 node (8559, sent from Lua). The bonfire pending action is pushed on node
-///     entry already; resend it here. Proto/4.7 has no matching response command, so none is sent.
+///     entry already; resend it here. The 4.7 protocol has no matching response command, so none is sent.
 /// </summary>
 [Opcode(CmdIds.GridFightEnterBonfireCsReq)]
 public sealed class HandlerGridFightEnterBonfireCsReq : GridFightHandler<GridFightEnterBonfireCsReq>

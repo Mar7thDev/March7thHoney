@@ -12,7 +12,3 @@
 *.ico   binary
 *.bin   binary
 *.ec2b  binary
-
-# Dumper output is machine-written: collapse it in diffs and leave it out of language statistics.
-Proto/*/Raw/**         linguist-generated
-Proto/*/dumper/Raw/**  linguist-generated

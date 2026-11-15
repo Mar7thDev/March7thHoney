@@ -25,11 +25,10 @@
 | `Command/Command/Cmd/` | 游戏与管理命令实现 |
 | `Common/` | 共享配置、资源模型、数据库实体、枚举、国际化和工具 |
 | `SourceGen/` | 包处理器、命令、任务、数据库及 MemoryPack 注册代码生成 |
-| `KcpSharp/` | KCP 传输及活动协议命令号 `CmdIds.cs` |
-| `Proto/<version>/` | 各游戏版本的协议来源、分组定义和兼容清单 |
-| `Proto/obj/<configuration>/<framework>/protobuf/4.8/` | 构建时自动生成的活动 C# 协议代码，不纳入版本控制 |
-| `Proto/Archives/` | 旧版协议的无损压缩归档；迁移时按文档解压 |
-| `Proto/Tool/ProtoOrganizer/` | 协议整理、版本迁移和生成工具 |
+| `KcpSharp/` | KCP 传输及由工具生成的协议命令号 `CmdIds.cs` |
+| `Proto/StarRail.proto` | 当前版本的全部协议定义，构建直接编译；旁边的 `overrides-manual.txt` 和 `cmdid-aliases.txt` 是人工审定清单 |
+| `Proto/obj/<configuration>/<framework>/protobuf/` | 构建时自动生成的 C# 协议代码，不纳入版本控制 |
+| `Proto/Tool/ProtoOrganizer/` | 向新版本搬运协议名称、生成命令号常量的工具 |
 | `Config/` | 自定义 JSON、语言包、资源缓存及本地运行数据；部分内容受版本控制 |
 | `Resources/`、`TurnBasedGameData/`、`Config/Resource.bin` | 本地游戏资源和生成缓存，已被 Git 忽略，干净检出不保证存在 |
 | `scripts/` | 独立回归程序、缓存升级工具及 Linux 部署脚本 |
@@ -80,11 +79,11 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 
 ## 协议与资源约束
 
-- 协议流程见 `docs/development/protobuf.md`。执行其中的版本示例前，核对当前活动协议、版本目录和兼容清单，不直接照抄旧版本号。
-- `Proto.csproj` 固定 `ActiveProtocolVersion=4.8`，使用 `Directory.Packages.props` 中固定的 `Google.Protobuf.Tools 3.33.1`（protoc 33.1）自动生成到 `obj/` 并编译。协议修复应落到活动版本的定义、翻译映射、兼容清单或生成工具，再构建，避免只改生成的 C#。
-- 4.6 及更早的协议已移到 `Proto/Archives/`，运行依赖旧路径的迁移命令前先按归档说明解压；`Proto/4.5v3/translations.txt` 作为登录回归输入仍保留。`Proto/4.7` 是 4.8 的名称来源，仍留在工作树里。
-- 切换活动协议时同步更新 `ActiveProtocolVersion`、对应分组定义与 `KcpSharp/CmdIds.cs`，完成整个解决方案构建和协议生成回归。不能用旧版本命令号覆盖新版本，也不能仅依据同型字段猜测协议映射。
-- Dumper 原始产物保留在对应版本的 `dumper/Raw/`；`reference/` 只能存放确实存在的同版本参考定义。
+- 协议流程见 `docs/development/protobuf.md`。`main` 只保存当前游戏版本的协议，旧版本的协议在各自的版本分支上。
+- `Proto.csproj` 使用 `Directory.Packages.props` 中固定的 `Google.Protobuf.Tools 3.33.1`（protoc 33.1），把 `Proto/StarRail.proto` 自动生成到 `obj/` 并编译。协议修复应落到 `StarRail.proto`、`overrides-manual.txt`、`cmdid-aliases.txt` 或生成工具，再构建，避免只改生成的 C#。
+- 在 `StarRail.proto` 里只做改名，保留类型前的 `// Obf:` 和 `// CmdID:` 注释；字段的增删、编号和类型必须来自客户端 dump。
+- 升级到新版本客户端时用 ProtoOrganizer 的 `carry` 搬运名称、用 `cmdids` 重新生成 `KcpSharp/CmdIds.cs`，完成整个解决方案构建和协议生成回归。不能用旧版本命令号覆盖新版本，也不能仅依据同型字段猜测协议映射。
+- Dumper 原始产物和搬运报告是中间产物，不进仓库。
 - `GameServer.csproj` 存在显式排除的协议处理器。重新启用前应解决其协议依据和兼容性问题，不直接删除排除项来恢复编译。
 - 协议生成与资源缓存更新是独立流程；运行 ProtoOrganizer 不代表 `Config/Resource.bin` 已更新。
 - 排查资源或存档问题时优先使用副本和隔离环境，保留原始数据。缓存升级参考 `docs/operations/scene-cache-upgrade.md`，只有客户端时的重建流程参考 `docs/operations/resource-cache-from-client-export.md`；输出到新文件，验证并备份后再替换，保留程序与缓存配套回滚能力。

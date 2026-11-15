@@ -4,11 +4,9 @@
     <TargetFramework>net10.0</TargetFramework>
     <AssemblyName>March7thHoney.Proto</AssemblyName>
     <RootNamespace>March7thHoney.Proto</RootNamespace>
-    <!-- Only the generated C# for the ACTIVE game version is compiled. The grouped .proto sources
-         (Proto/<version>/), the Raw dumps, the curated ProtoFile/ library, and the ProtoOrganizer
-         tool all live under Proto/ but must NOT be swept into this assembly. -->
+    <!-- Only the C# generated from StarRail.proto is compiled. The ProtoOrganizer tool lives under
+         Proto/Tool as a project of its own and must not be swept into this assembly. -->
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <ActiveProtocolVersion>4.8</ActiveProtocolVersion>
     <!-- MSBuild checks removed schemas and missing generated outputs. -->
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>

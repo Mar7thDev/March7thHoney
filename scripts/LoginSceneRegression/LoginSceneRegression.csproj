@@ -6,6 +6,5 @@
   <ItemGroup>
     <ProjectReference Include="../../WebServer/WebServer.csproj" />
     <ProjectReference Include="../../Command/Command.csproj" />
-    <ProjectReference Include="../../Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj" />
   </ItemGroup>
 </Project>

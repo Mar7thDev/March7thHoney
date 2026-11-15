@@ -1,0 +1,14 @@
+// Hand-checked decisions for the dump StarRail.proto currently describes (4.8), each with its evidence.
+// They take priority over carried names and are read by the ProtoOrganizer carry command.
+// OBF = TypeName, or OBF.PROPERTY = field_name for a property the client renamed, which the carry
+// cannot follow because it moves names by property identity.
+// An entry whose type or property is gone from the next dump has to be removed before that carry;
+// the name it gave is already part of StarRail.proto.
+
+// GridFightSyncData's oneof lost GOOCHGKBIPN (4.7 game_data_item_info, field 1384) and gained
+// JDGIAMABEME (field 840). The other 66 members of the oneof all keep their property names. In the
+// 4.7 and the 4.8 dump alike the oneof has exactly one member of type GridFightGameItemInfo
+// (NJKFOJJDGGG), and that type is used in only one other place, the repeated KLCKAOJAMNH list. The
+// member that carries a game item was renamed, so it keeps its 4.7 name. Not checked against a live
+// client.
+KFNCAIHIHCM.JDGIAMABEME = game_data_item_info
