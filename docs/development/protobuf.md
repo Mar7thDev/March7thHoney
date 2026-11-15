@@ -62,7 +62,7 @@ dotnet build March7thHoney.sln -c Release --no-restore
 python3 scripts/test-proto-generation.py
 ```
 
-NuGet 固定 `Google.Protobuf.Tools 3.33.1`（protoc 33.1），与现有 `Google.Protobuf 3.33.1` 运行时一致。首次构建需要还原此工具包；工具不会进入服务器发布产物。Linux、Windows 使用宿主平台工具，交叉发布不改变宿主选择。该版本 macOS 工具为 x64，Apple Silicon 需要 Rosetta；也可用 `-p:ProtocolCompiler=<path>` 指向版本严格匹配的 protoc 33.1。
+NuGet 固定 `Google.Protobuf.Tools 3.33.1`（protoc 33.1），与现有 `Google.Protobuf 3.33.1` 运行时一致；两个版本都在仓库根目录的 `Directory.Packages.props` 中声明。首次构建需要还原此工具包；工具不会进入服务器发布产物。Linux、Windows 使用宿主平台工具，交叉发布不改变宿主选择。该版本 macOS 工具为 x64，Apple Silicon 需要 Rosetta；也可用 `-p:ProtocolCompiler=<path>` 指向版本严格匹配的 protoc 33.1。
 
 目标检测 schema 的新增、删除、修改和缺失的生成文件；无变化时跳过生成。`dotnet clean` 后再次构建会恢复全部生成代码。修改分组定义，不手改 `obj/`。
 
