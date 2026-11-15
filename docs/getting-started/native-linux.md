@@ -11,7 +11,7 @@ Install the server dependencies once:
 ```bash
 sudo apt-get update
 sudo apt-get install -y git
-git clone --recurse-submodules <repo-url> March7thHoney
+git clone <repo-url> March7thHoney
 cd March7thHoney
 bash scripts/setup-debian.sh
 ```
@@ -75,7 +75,6 @@ From the checkout:
 
 ```bash
 git pull --ff-only
-git submodule update --init --recursive
 dotnet run --project Program/Program.csproj
 ```
 
