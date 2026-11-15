@@ -1,5 +1,6 @@
 using March7thHoney.Data;
 using March7thHoney.GameServer.Game.Challenge.Instances;
+using March7thHoney.GameServer.Game.ChallengePeak;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -27,7 +28,7 @@ public class PacketChallengePeakSettleScNotify : BasePacket
         if (inst.IsWin && isBoss && peak.IsHard)
         {
             // 绝境王棋通关：客户端按红色绝境模板渲染钻石+三星，不下发普通目标列表
-            proto.HardModeHasPassed = true;
+            proto.HardModeHasPassed = ChallengePeakMedal.IsColorMedalClear(true, peak.RoundCnt);
         }
         else
         {
@@ -38,7 +39,7 @@ public class PacketChallengePeakSettleScNotify : BasePacket
                 var maxParam = inst.Config.NormalTargetList
                     .Select(t => GameData.BattleTargetConfigData.GetValueOrDefault(t)?.TargetParam ?? 0)
                     .DefaultIfEmpty(0).Max();
-                var isDiamond = peak.RoundCnt == 0;
+                var isDiamond = ChallengePeakMedal.IsColorMedalClear(false, peak.RoundCnt);
                 proto.TurnLeft = (uint)Math.Max(0, maxParam - (int)peak.RoundCnt);
                 proto.IsBossTargetBetter = isDiamond;
                 proto.HardModeHasPassed = isDiamond;
