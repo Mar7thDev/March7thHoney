@@ -10,6 +10,7 @@ using March7thHoney.Database.Scene;
 using March7thHoney.Database.Tutorial;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Activity;
+using March7thHoney.GameServer.Game.Activity.ActivityBangboo;
 using March7thHoney.GameServer.Game.Activity.ExpeditionBattle;
 using March7thHoney.GameServer.Game.Activity.FinalityBattle;
 using March7thHoney.GameServer.Game.Activity.MechCraft;
@@ -256,6 +257,7 @@ public partial class PlayerInstance(PlayerData data)
     {
         Components.Add(new SwitchHandComponent(this));
         Components.Add(new FiveDimComponent(this));
+        Components.Add(new ActivityBangbooManager(this));
         Components.Add(new DailyActiveManager(this));
         Components.Add(new PetManager(this));
 

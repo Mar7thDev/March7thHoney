@@ -277,6 +277,11 @@ public class EntryPoint
                 var rogueMapGen =
                     ResourceManager.LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen");
                 if (rogueMapGen != null) GameData.RogueMapGenData = rogueMapGen;
+                // Planarcadia Reverie (ActivityBangboo) stages, holes and Bangboo, decoded from client tables the
+                // resource export does not produce; never part of Resource.bin, so read on either boot path.
+                GameData.ActivityBangbooConfig =
+                    ResourceManager.LoadCustomFile<ActivityBangbooConfig>("ActivityBangboo", "ActivityBangboo") ??
+                    new ActivityBangbooConfig();
 
                 // ExRank (奇缘星魂) materials are an operator overlay, so they must also load on a cache boot.
                 AvatarExRankMaterials.Apply();

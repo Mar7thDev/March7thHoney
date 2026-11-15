@@ -26,6 +26,7 @@ March7thHoney 的文档按用途集中维护在此目录。仓库根目录的 `R
 - [玩家组件架构](development/player-components.md)
 - [任务系统](development/mission-system.md)
 - [枚举命名约定](development/enum-conventions.md)
+- [Planarcadia Reverie（ActivityBangboo）邦布联动活动](development/activity-bangboo.md)
 
 ## 运维
 
