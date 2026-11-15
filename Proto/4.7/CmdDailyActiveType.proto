@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdDailyActiveType {
+	CmdDailyActiveType_NLCDGIPGFDJ = 0;
+	CmdDailyActiveType_DailyActiveInfoNotify = 3305;
+	CmdDailyActiveType_TakeApRewardScRsp = 3319;
+	CmdDailyActiveType_GetDailyActiveInfoCsReq = 3331;
+	CmdDailyActiveType_TakeAllApRewardScRsp = 3359;
+	CmdDailyActiveType_TakeAllApRewardCsReq = 3371;
+	CmdDailyActiveType_TakeApRewardCsReq = 3374;
+	CmdDailyActiveType_GetDailyActiveInfoScRsp = 3387;
+}
+
+message DailyActiveInfoNotify {
+	repeated DailyActivityInfo daily_active_level_list = 2;
+	repeated uint32 daily_active_quest_id_list = 4;
+	uint32 daily_active_point = 10;
+}
+
+message DailyActivityInfo {
+	uint32 level = 4;
+	uint32 daily_active_point = 12;
+	uint32 world_level = 13;
+	bool is_has_taken = 14;
+}
+
+message GetDailyActiveInfoCsReq {
+}
+
+message GetDailyActiveInfoScRsp {
+	repeated uint32 daily_active_quest_id_list = 2;
+	uint32 retcode = 4;
+	uint32 daily_active_point = 11;
+	repeated DailyActivityInfo daily_active_level_list = 12;
+}
+
+message TakeAllApRewardCsReq {
+}
+
+message TakeAllApRewardScRsp {
+	ItemList reward = 4;
+	uint32 retcode = 6;
+	repeated uint32 take_reward_level_list = 10;
+}
+
+message TakeApRewardCsReq {
+	uint32 level = 1;
+}
+
+message TakeApRewardScRsp {
+	uint32 retcode = 2;
+	ItemList reward = 8;
+	uint32 level = 15;
+}

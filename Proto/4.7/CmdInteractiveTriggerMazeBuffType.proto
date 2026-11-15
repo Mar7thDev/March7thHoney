@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdInteractiveTriggerMazeBuffType {
+	CmdInteractiveTriggerMazeBuffType_NLCDGIPGFDJ = 0;
+	CmdInteractiveTriggerMazeBuffType_GDINFMFDOPD = 9473;
+	CmdInteractiveTriggerMazeBuffType_DLDAICAFMPP = 9476;
+}
+
+message DCABOALFJAP {
+	uint32 OHMBEPHEBDJ = 11;
+}
+
+message NMEKJABIGGH {
+	uint32 retcode = 4;
+	uint32 OHMBEPHEBDJ = 11;
+}

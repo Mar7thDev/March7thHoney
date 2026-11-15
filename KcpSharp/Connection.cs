@@ -170,8 +170,9 @@ public class March7thHoneyConnection
         // DO NOT REMOVE (unless we find a way to validate code before sending to client which I don't think we can)
         if (BannedPackets.Contains(packet.CmdId)) return;
         LogPacket("Send", packet.CmdId, packet.Data);
-        // Header
-        var packetBytes = packet.BuildPacket();
+        // Header: a reply sent while a request is handled carries that request's packet id.
+        var requestPacketId = PacketHead.RequestPacketId.Value;
+        var packetBytes = packet.BuildPacket(requestPacketId != 0 ? PacketHead.Encode(requestPacketId) : null);
 
         await SendPacket(packetBytes, packet.CmdId);
 

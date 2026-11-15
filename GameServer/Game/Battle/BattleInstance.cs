@@ -1,3 +1,4 @@
+using March7thHoney.Database.Player;
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
@@ -5,6 +6,7 @@ using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Activity.FinalityBattle;
+using March7thHoney.GameServer.Game.Activity.RealityShow;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.GridFight;
@@ -110,6 +112,10 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
     public GridFightSession? GridFightContext { get; set; }
     public CalyxOverrideContext? CalyxOverride { get; set; }
     public FinalityBattleContext? FinalityContext { get; set; }
+    public RealityShowBattleContext? RealityShowContext { get; set; }
+
+    /// <summary>An activity battle fought with its own team: the result must not touch the player's lineups.</summary>
+    public bool HasActivityLineup => FinalityContext != null || RealityShowContext != null;
 
     public delegate ValueTask OnBattleEndDelegate(BattleInstance battle, PVEBattleResultCsReq req);
 
@@ -217,7 +223,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                     var player = DatabaseHelper.Instance!.GetInstance<AvatarData>(avatar.AssistUid);
                     if (player != null)
                     {
-                        avatarInstance = player.FormalAvatars.Find(item => item.BaseAvatarId == avatar.BaseAvatarId);
+                        avatarInstance = player.FindByAnyId(avatar.BaseAvatarId);
                         avatarType = AvatarType.AvatarAssistType;
                     }
                 }
@@ -238,7 +244,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
 
                 if (avatarInstance == null) continue;
 
-                avatars.Add(new AvatarLineupData(avatarInstance, avatarType));
+                avatars.Add(new AvatarLineupData(avatarInstance, avatarType, AssistUid: avatar.AssistUid));
             }
 
             return avatars;
@@ -273,9 +279,25 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         }
 
         foreach (var avatar in GetBattleAvatars())
-            result.Add(avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType));
+            result.Add(ToBattleAvatar(avatar, collection));
 
         return result;
+    }
+
+    /// <summary>
+    ///     A support character fights with its owner's light cone and relics; the borrower's inventory would drop
+    ///     them or pick an unrelated item with a colliding unique id.
+    /// </summary>
+    private BattleAvatar ToBattleAvatar(AvatarLineupData avatar, PlayerDataCollection own)
+    {
+        if (avatar.AssistUid == 0) return avatar.AvatarInfo.ToBattleProto(own, avatar.AvatarType);
+
+        var owner = PlayerData.GetPlayerByUid(avatar.AssistUid);
+        var ownerInventory = DatabaseHelper.Instance?.GetInstance<InventoryData>(avatar.AssistUid) ?? new InventoryData();
+        var collection = owner != null ? new PlayerDataCollection(owner, ownerInventory, Lineup) : own;
+        var proto = avatar.AvatarInfo.ToBattleProto(collection, avatar.AvatarType);
+        proto.AssistUid = (uint)avatar.AssistUid;
+        return proto;
     }
 
     public SceneBattleInfo ToProto()
@@ -290,6 +312,8 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         };
 
         if (MagicInfo != null) proto.BattleRogueMagicInfo = MagicInfo;
+        // The classic Rogue battle envelope includes this empty message (official 4.6 seq 15037).
+        if (MagicInfo?.OOPCPMANCBO?.RogueMode == 1) proto.BattleActionEventId = new EDCFKACPFNB();
 
         if (CustomWaves is { Count: > 0 })
         {
@@ -365,7 +389,8 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                 Player.GridFightManager!.Catalog,
                 proto);
         }
-        else if ((CalyxOverride?.LineupOverride ?? FinalityContext?.LineupOverride) is { Count: > 0 } lineupOverride)
+        else if ((CalyxOverride?.LineupOverride ?? FinalityContext?.LineupOverride ??
+                  RealityShowContext?.LineupOverride) is { Count: > 0 } lineupOverride)
         {
             avatars = [.. lineupOverride];
             var collection = new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup);
@@ -383,9 +408,9 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         else
         {
             avatars = GetBattleAvatars();
+            var own = new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup);
             foreach (var avatar in avatars)
-                proto.BattleAvatarList.Add(avatar.AvatarInfo.ToBattleProto(
-                    new PlayerDataCollection(Player.Data, Player.InventoryManager!.Data, Lineup), avatar.AvatarType));
+                proto.BattleAvatarList.Add(ToBattleAvatar(avatar, own));
         }
 
         System.Threading.Tasks.Task.Run(async () =>
@@ -434,6 +459,16 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
                 WaveFlag = -1
             });
         }
+
+        // An invaded stage also carries the ally buff "Aha's Big Help" (official: stage 30125121 ships 3034003 and
+        // 3034013). Progress is not tracked, so the top tier is used, as the Go server does.
+        var allyBuffId = VoracityInvasionAllyBuff.TopBuffId;
+        if (allyBuffId != 0 && Stages.Any(stage => stage.InvasionMazeBuffID != 0) &&
+            Buffs.All(buff => buff.BuffID != allyBuffId))
+            Buffs.Add(new MazeBuff(allyBuffId, 1, -1)
+            {
+                WaveFlag = -1
+            });
 
         // global buff
         foreach (var buff in GameData.AvatarGlobalBuffConfigData.Values)

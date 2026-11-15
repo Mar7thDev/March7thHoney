@@ -93,6 +93,8 @@ public static class PlayerConsoleStyles
     .field > span { color: var(--muted); font-size: 12px; font-weight: 600; }
     .input-row { display: flex; align-items: center; gap: 8px; }
     .input-row > input { flex: 1; min-width: 0; }
+    .remember { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; cursor: pointer; user-select: none; }
+    .remember input { width: 16px; height: 16px; cursor: pointer; }
 
     .btn {
       display: inline-flex;

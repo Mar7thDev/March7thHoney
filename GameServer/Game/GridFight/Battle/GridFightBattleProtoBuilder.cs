@@ -107,7 +107,7 @@ public static class GridFightBattleProtoBuilder
         session.ApplyDotContractBattleBuff(battle);
         session.ApplyFateDivinerBattleBuffs(battle);
         session.ApplyAstaDogBattleBuff(battle);
-        AddOfficialGridFightCombatBuffs(battle, session);
+        AddOfficialGridFightCombatBuffs(battle, session, catalog);
 
         proto.MonsterWaveList.Clear();
         foreach (var wavePlan in session.BattlePlan?.Waves ?? [])
@@ -162,7 +162,8 @@ public static class GridFightBattleProtoBuilder
             PenaltyBonusRuleId = session.CurrentPenaltyRuleId,
             EnemyDifficultyLevel = session.EffectiveEnemyDifficultyLevel,
             Season = session.Season,
-            DivisionId = session.DivisionId,
+            // Battle-only division supplies HP/ATK base multipliers; lobby rank and rewards remain S2.
+            DivisionId = catalog.GetBattleDivisionId(session.DivisionId),
             ActiveRoleCount = (uint)activeRoles.Count + (session.PepeNpc == null ? 0u : 1u) +
                               (session.AstaDogNpc == null ? 0u : 1u) + (uint)session.LizhiNpcs.Count,
             IsOverlock = session.IsOverlock,
@@ -291,6 +292,8 @@ public static class GridFightBattleProtoBuilder
             if (activeLayer > 0 && !GridFightTraitCompatibility.UsesLayerOnlyWireShape(traitId))
             {
                 PopulateTraitEffects(traitInfo);
+                foreach (var effect in traitInfo.TraitEffectList)
+                    GridFightManager.FillSeasonTwoBattleTraitEffect(session, effect);
                 if (traitId == GridFightSession.FateDivinerTraitId &&
                     traitInfo.TraitEffectList.All(effect => effect.EffectId != GridFightSession.FateDivinerEffectId))
                     traitInfo.TraitEffectList.Add(new BattleGridFightTraitEffectInfo
@@ -307,6 +310,19 @@ public static class GridFightBattleProtoBuilder
         battle.BattleEvents.Clear();
         foreach (var (id, curSp, maxSp) in OfficialBattleEvents)
             battle.BattleEvents.Add(id, new BattleEventInstance(id, curSp, maxSp));
+        if (session.IsSeasonTwoRules)
+        {
+            // GridFightInfo field 23 carries the run's 幻月游戏 sub-trait (same field name as the lobby context value).
+            gridFightInfo.NJBNOFIEDDE = new KJFEHJMAIAA { FMNPBOJGLFI = session.MoonGameSubTraitId };
+            // MazeBuffData is keyed by ID * 10 + Lv. A buff the client has no MazeBuff row for blacks out the battle
+            // load, so a train good is only sent once its row exists in the resource data.
+            foreach (var buffId in session.GetTrailblazeBattleBuffIds()
+                         .Where(buffId => GameData.MazeBuffData.ContainsKey(buffId * 10 + 1)))
+                AddGlobalBuffIfMissing(battle, buffId);
+            foreach (var buff in session.GetSeasonTwoBattleEffectBuffs())
+                if (battle.Buffs.All(existing => existing.BuffID != buff.BuffID))
+                    battle.Buffs.Add(buff);
+        }
         proto.BattleGridFightData = gridFightInfo;
         return avatars;
     }
@@ -398,9 +414,15 @@ public static class GridFightBattleProtoBuilder
         });
     }
 
-    private static void AddOfficialGridFightCombatBuffs(BattleInstance battle, GridFightSession session)
+    private static void AddOfficialGridFightCombatBuffs(
+        BattleInstance battle,
+        GridFightSession session,
+        GridFightResourceCatalog catalog)
     {
         AddGlobalBuffIfMissing(battle, GridFightBaselineBuffId);
+        // 3560xxxx are the season-1 season-talent battle buffs (talents 2011/4031/2061). Season 2 renumbers
+        // its talents onto the same IDs with other effects, so do not apply them outside season 1.
+        if (!catalog.IsSeasonOne) return;
         AddGlobalBuffIfMissing(battle, FinalBattleTurnHealingBuffId);
         AddGlobalBuffIfMissing(battle, GridFightCombatTalentBuffId);
 
@@ -434,7 +456,12 @@ public static class GridFightBattleProtoBuilder
                 // Official 4.5 packets encode the number of this role's currently inactive
                 // traits here. Across the supplied captures this rule matches every observed
                 // role entry (632/632), including equipment-added traits.
-                ModeInfo = new GridFightRoleBattleModeInfo { Mode = ResolveRoleBattleMode(session, role) },
+                ModeInfo = new GridFightRoleBattleModeInfo
+                {
+                    Mode = ResolveRoleBattleMode(session, role),
+                    // AvatarSpotLightId: the battle puts the 主角光环 crown on this unit.
+                    IHHNLLAJAGB = session.GetSpotLightIdForRole(role.UniqueId),
+                },
                 StateInfo = new GridFightRoleBattleStateInfo(),
             },
         };
@@ -443,12 +470,21 @@ public static class GridFightBattleProtoBuilder
             session.HasCyreneCombatEnhancement);
         session.ApplyInvestmentPropertyScales(result.ConvertPropertyToFixpoint);
         session.ApplyFateDivinerPropertyScales(result.ConvertPropertyToFixpoint, role.RoleId);
+        session.ApplySpotLightPropertyScales(result.ConvertPropertyToFixpoint, role.UniqueId);
+        session.ApplyPermanentRolePropertyScales(result.ConvertPropertyToFixpoint, role);
+        session.ApplyTrailblazeProperties(result.ConvertPropertyToFixpoint);
         result.RoleEquipmentList.Add(session.GetBattleEquipment(role).Select(equipment =>
             new BattleGridFightEquipInfo
             {
                 GridFightEquipmentId = equipment.EquipmentId,
                 UniqueId = equipment.UniqueId,
             }));
+        // 4.7 battles read role-scoped GridFight custom values (SetDynamicValueByGridFightCustomProperty with a target ->
+        // GridFightManager._GetOrBindRoleCustomValueLookup) only from GridFightRoleInfo field 14, without falling back to
+        // GridFightInfo.role_saved_values; without it Phainon's 薪火 (GP_Avatar_S2_Phainon_00) gives no DMG amp.
+        if (session.IsSeasonTwoRules)
+            foreach (var (key, value) in session.ResolveRoleSavedValues(role, role.RoleId))
+                result.BABNHPDGNGB[key] = value;
         return result;
     }
 
@@ -513,7 +549,7 @@ public static class GridFightBattleProtoBuilder
             : 1;
     }
 
-    private static bool TryResolveEntryMazeSkill(GridFightRoleState role, out int mazeSkillId)
+    public static bool TryResolveEntryMazeSkill(GridFightRoleState role, out int mazeSkillId)
     {
         mazeSkillId = 0;
 
@@ -535,7 +571,10 @@ public static class GridFightBattleProtoBuilder
             roleStar.SkillOverrideSrc.Contains(0))
             mazeSkillId = adventure.MazeSkillIdList.FirstOrDefault(id => roleStar.SkillOverrideSrc.Contains((uint)id));
         if (mazeSkillId == 0) mazeSkillId = adventure.MazeSkillIdList[0];
-        return mazeSkillId != 0;
+        // A maze skill id is only a valid battle-entry buff when a MazeBuff row exists for it (MazeBuffData is keyed
+        // ID * 10 + level). Overridden skills such as 121002 (Guinaifen), 110302, 140302 have none, and the client
+        // NREs sorting MazeBuffData while the battle loads (black screen).
+        return mazeSkillId != 0 && GameData.MazeBuffData.ContainsKey(mazeSkillId * 10 + 1);
     }
 
     public static List<AvatarLineupData> BuildBattleAvatars(BattleInstance battle, GridFightSession session)
@@ -654,7 +693,10 @@ public static class GridFightBattleProtoBuilder
     {
         if (gender != Gender.Woman) return basic.AvatarID;
         var key = (basic.ID << 4) | star;
-        return GameData.GridFightGenderOverrideData.TryGetValue(key, out var genderOverride)
+        // Season 2 Trailblazer roles (800902) have no row of their own; reuse the season-1 role whose id is
+        // the avatar id (8009 -> 8010).
+        return GameData.GridFightGenderOverrideData.TryGetValue(key, out var genderOverride) ||
+               GameData.GridFightGenderOverrideData.TryGetValue((basic.AvatarID << 4) | star, out genderOverride)
             ? genderOverride.AvatarID
             : basic.AvatarID;
     }

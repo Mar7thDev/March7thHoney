@@ -1,0 +1,216 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message BBHANDBNKEJ {
+	uint32 JIDBIMNMLJP = 1;
+	GCFGCHAMNOL lineup = 2;
+	HDIOKENOFNJ retcode = 3;
+	repeated uint32 ICBIMKIEOEP = 4;
+	uint32 IOMEILDMBNE = 5;
+	uint32 PIGPKIDNMDH = 6;
+	repeated GADFFIFFNHM JCOAGOJEAPB = 7;
+	uint32 avatar_id = 8;
+	uint32 finish_work_cnt = 9;
+	uint32 MMFKMEGECOI = 10;
+	uint32 FBNEKMPIAKD = 12;
+	uint32 is_taken_reward = 13;
+	repeated ONNMLLIEENI CMBJOLCGMAI = 14;
+	uint32 HCENDLKKHOC = 15;
+	uint32 NMPCJAOIOHJ = 467;
+	uint32 KCCACINBEEA = 542;
+	uint32 GGPKMPBBENP = 1257;
+	uint32 ENMLPFBMPNI = 1749;
+}
+
+message COCHLLCNDJF {
+	repeated EDKJELMPONH CDGNAJDAGKE = 15;
+}
+
+message ChimeraDoFinalRoundCsReq {
+	repeated DEJGMBKPHEC FJLPLIGMPHB = 2;
+	HFBJNFJHKPO stt = 5;
+	uint32 NMPCJAOIOHJ = 6;
+	bool CJEILDIOIOE = 7;
+	repeated uint32 PKKGGLIGKKN = 14;
+	GCFGCHAMNOL lineup = 15;
+}
+
+message ChimeraDoFinalRoundScRsp {
+	uint32 index = 2;
+	uint32 retcode = 3;
+	uint32 NMPCJAOIOHJ = 5;
+	uint32 finish_work_cnt = 6;
+	uint32 HCENDLKKHOC = 7;
+	uint32 ENMLPFBMPNI = 8;
+	repeated ONNMLLIEENI CMBJOLCGMAI = 9;
+	bool CJEILDIOIOE = 10;
+	uint32 GGPKMPBBENP = 13;
+	repeated GADFFIFFNHM DKMKPFDNEBL = 14;
+}
+
+message ChimeraFinishEndlessRoundCsReq {
+	GCFGCHAMNOL lineup = 2;
+	repeated DEJGMBKPHEC FJLPLIGMPHB = 3;
+	uint32 NMPCJAOIOHJ = 9;
+	bool CJEILDIOIOE = 11;
+	repeated uint32 PKKGGLIGKKN = 12;
+	HFBJNFJHKPO stt = 13;
+}
+
+message ChimeraFinishEndlessRoundScRsp {
+	uint32 MMFKMEGECOI = 2;
+	uint32 EBDOCKLLKMI = 3;
+	uint32 NMPCJAOIOHJ = 4;
+	uint32 IOMEILDMBNE = 9;
+	uint32 PIGPKIDNMDH = 10;
+	bool CJEILDIOIOE = 11;
+	uint32 retcode = 13;
+	repeated GADFFIFFNHM DKMKPFDNEBL = 15;
+}
+
+message ChimeraFinishRound {
+	uint32 GGPKMPBBENP = 2;
+	ChimeraRoundWorkEndReason end_reason = 3;
+	uint32 IMCGJPMBPPJ = 4;
+	repeated ONNMLLIEENI CMBJOLCGMAI = 5;
+	HDIOKENOFNJ HFPGDCJMNIK = 6;
+	uint32 JIDBIMNMLJP = 7;
+	repeated uint32 ICBIMKIEOEP = 8;
+	uint32 HCENDLKKHOC = 10;
+	uint32 finish_work_cnt = 11;
+	repeated GADFFIFFNHM PKIAPMIAJHA = 12;
+	map<uint32, NPDKAGOCOLG> GCLAIOIINGF = 13;
+	map<uint32, COCHLLCNDJF> GMHEMNIKFMO = 14;
+	uint32 retcode = 15;
+}
+
+message ChimeraFinishRoundCsReq {
+	map<uint32, uint32> JEJBODAGOIJ = 2;
+	map<uint32, COCHLLCNDJF> DLFJEJINBBC = 4;
+	HFBJNFJHKPO stt = 5;
+	ChimeraRoundWorkEndReason end_reason = 6;
+	GCFGCHAMNOL lineup = 8;
+	uint32 EPJBFAEPFNI = 9;
+	repeated DEJGMBKPHEC FJLPLIGMPHB = 10;
+	repeated uint32 PKKGGLIGKKN = 13;
+}
+
+message ChimeraGetDataCsReq {
+}
+
+message ChimeraQuitEndlessCsReq {
+}
+
+message ChimeraQuitEndlessScRsp {
+	uint32 retcode = 15;
+}
+
+enum ChimeraRoundWorkEndReason {
+	ChimeraRoundWorkEndReason_ChimeraRoundWorkEndNone = 0;
+	ChimeraRoundWorkEndReason_ChimeraRoundWorkEndSucc = 1;
+	ChimeraRoundWorkEndReason_ChimeraRoundWorkEndFail = 2;
+	ChimeraRoundWorkEndReason_ChimeraRoundWorkEndLeave = 3;
+}
+
+message ChimeraRoundWorkStartCsReq {
+	repeated DEJGMBKPHEC FJLPLIGMPHB = 4;
+	GCFGCHAMNOL lineup = 6;
+	uint32 FHCKFMDKPPO = 7;
+	uint32 DCOONCCIKGL = 15;
+}
+
+message ChimeraRoundWorkStartScRsp {
+	uint32 retcode = 8;
+}
+
+message ChimeraSetLineupScRsp {
+	GCFGCHAMNOL lineup = 12;
+	uint32 retcode = 14;
+}
+
+message ChimeraStartEndlessCsReq {
+}
+
+message ChimeraStartEndlessScRsp {
+	uint32 retcode = 5;
+}
+
+enum CmdChimeraType {
+	CmdChimeraType_NLCDGIPGFDJ = 0;
+	CmdChimeraType_ChimeraRoundWorkStartScRsp = 8161;
+	CmdChimeraType_GBMFPFHNLBA = 8164;
+	CmdChimeraType_ChimeraQuitEndlessCsReq = 8165;
+	CmdChimeraType_ChimeraStartEndlessScRsp = 8166;
+	CmdChimeraType_ChimeraStartEndlessCsReq = 8167;
+	CmdChimeraType_JAABEHANIAB = 8168;
+	CmdChimeraType_ChimeraFinishRound = 8169;
+	CmdChimeraType_ChimeraRoundWorkStartCsReq = 8170;
+	CmdChimeraType_ChimeraQuitEndlessScRsp = 8171;
+	CmdChimeraType_ChimeraFinishEndlessRoundScRsp = 8172;
+	CmdChimeraType_ChimeraFinishEndlessRoundCsReq = 8173;
+	CmdChimeraType_ChimeraGetDataCsReq = 8175;
+	CmdChimeraType_ChimeraFinishRoundCsReq = 8176;
+	CmdChimeraType_ChimeraDoFinalRoundCsReq = 8178;
+	CmdChimeraType_ChimeraDoFinalRoundScRsp = 8179;
+	CmdChimeraType_ChimeraSetLineupScRsp = 8180;
+}
+
+message DEJGMBKPHEC {
+	uint32 EBMJGPMHDMK = 4;
+	uint32 MBNBFBNKLGH = 5;
+	uint32 DKHCOHKFKFA = 8;
+	uint32 FGECDDFBFOJ = 9;
+	int32 attack = 11;
+	int32 hp = 13;
+	uint32 index = 14;
+	uint32 DIECMLHJCFE = 15;
+}
+
+message EDKJELMPONH {
+	uint32 HEFFPONLEGO = 5;
+	uint32 progress = 7;
+}
+
+message EIALJHKFNKG {
+	GCFGCHAMNOL lineup = 8;
+}
+
+message GADFFIFFNHM {
+	COCHLLCNDJF CDGNAJDAGKE = 5;
+	bool AMHAJDNFBGC = 6;
+	int32 hp = 7;
+	uint32 id = 9;
+	repeated uint32 IIELAJFFDPB = 10;
+	int32 atk = 14;
+}
+
+message GCFGCHAMNOL {
+	uint32 CMEKNAJONPH = 3;
+	repeated uint32 PGFFGKDOPGM = 4;
+}
+
+enum HDIOKENOFNJ {
+	HDIOKENOFNJ_EEGFMMCGCNH = 0;
+	HDIOKENOFNJ_GOBLPKACBAE = 1;
+	HDIOKENOFNJ_AHEJBANCCEK = 2;
+	HDIOKENOFNJ_KBBPMFKGFCP = 3;
+}
+
+message HFBJNFJHKPO {
+	uint32 total_auto_turns = 1;
+	uint32 cost_time = 7;
+	uint32 total_damage = 9;
+	uint32 BPHNEOLCKAD = 10;
+	uint32 total_turns = 12;
+	uint32 LPLLIICLCHB = 14;
+}
+
+message NPDKAGOCOLG {
+	repeated uint32 EACEBOMJKJH = 7;
+}
+
+message ONNMLLIEENI {
+	uint32 finish_work_cnt = 9;
+	uint32 IDBDBICPBBG = 10;
+}

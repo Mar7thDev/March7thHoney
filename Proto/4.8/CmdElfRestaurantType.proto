@@ -1,0 +1,372 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ACAKOLCGDLL {
+	uint32 MDIIJKBHBBI = 2;
+	uint32 KKCKMCDGCGK = 4;
+	uint32 NPGFNBPFMKI = 5;
+	repeated NOHPJFOGFLM NMJIOGGNLEO = 8;
+	bool GPPHKPEHKIM = 9;
+}
+
+message AGFGGFBNOJC {
+	uint32 AMMPOLONOBC = 4;
+	uint32 level = 5;
+}
+
+message BAEDIBFGLDE {
+	repeated FHCIIMGMIML DLCGPENPMNK = 8;
+	repeated GHFEKEGEFAC JJHMEHGELNO = 10;
+	LABMFHEEPBI AJFHKPNGPDB = 13;
+}
+
+message BMJDDOLALFI {
+	uint32 ENBEGMDIFKN = 2;
+	uint32 count = 8;
+}
+
+message CDCMOFFKCPI {
+	uint32 BIOFDPICHLC = 2;
+	uint32 GLABGHEAGMI = 8;
+	uint32 event_id = 13;
+}
+
+message CEKMLMOCLHF {
+	uint32 IHAOMLEPHOM = 3;
+	ItemList KKDJMIMHNAE = 12;
+	uint32 LOPNADHJKBF = 13;
+	map<uint32, ItemList> JOCFFLKPNOL = 14;
+}
+
+message CLBNCPOFNPB {
+	uint32 MCGHFJCBBMK = 2;
+	uint32 AOOLKNMJLNI = 4;
+	uint32 GELLJOJMEFP = 5;
+}
+
+enum CmdElfRestaurantType {
+	CmdElfRestaurantType_NLCDGIPGFDJ = 0;
+	CmdElfRestaurantType_GetElfRestaurantDataScRsp = 2551;
+	CmdElfRestaurantType_ElfRestaurantPlantSeedScRsp = 2554;
+	CmdElfRestaurantType_ElfRestaurantUpgradeRecipeLevelCsReq = 2556;
+	CmdElfRestaurantType_ElfRestaurantRecycleSeedCsReq = 2559;
+	CmdElfRestaurantType_ElfRestaurantFinishTradeOrderCsReq = 2560;
+	CmdElfRestaurantType_EnterElfRestaurantNextDayCsReq = 2561;
+	CmdElfRestaurantType_ElfRestaurantBuyFieldCsReq = 2563;
+	CmdElfRestaurantType_ElfRestaurantDataChangeNotify = 2565;
+	CmdElfRestaurantType_GetElfRestaurantDataCsReq = 2566;
+	CmdElfRestaurantType_ElfRestaurantTakeVillagerRewardScRsp = 2569;
+	CmdElfRestaurantType_SetElfRestaurantPlayRecipeScRsp = 2570;
+	CmdElfRestaurantType_ElfRestaurantUpgradeRecipeLevelScRsp = 2571;
+	CmdElfRestaurantType_ElfRestaurantPlantSeedCsReq = 2572;
+	CmdElfRestaurantType_LCFDIHFAGHA = 2573;
+	CmdElfRestaurantType_ElfRestaurantFinishTradeOrderScRsp = 2574;
+	CmdElfRestaurantType_ElfRestaurantBuyFieldScRsp = 2577;
+	CmdElfRestaurantType_ElfRestaurantUpgradeEmployeeLevelScRsp = 2578;
+	CmdElfRestaurantType_ElfRestaurantHarvestCropScRsp = 2580;
+	CmdElfRestaurantType_ElfRestaurantUpgradeFacilityLevelScRsp = 2582;
+	CmdElfRestaurantType_ElfRestaurantBuyShopItemScRsp = 2583;
+	CmdElfRestaurantType_ElfRestaurantTakeVillagerRewardCsReq = 2584;
+	CmdElfRestaurantType_ElfRestaurantBuyShopItemCsReq = 2585;
+	CmdElfRestaurantType_ElfRestaurantHarvestCropCsReq = 2586;
+	CmdElfRestaurantType_ElfRestaurantClientStatusScRsp = 2589;
+	CmdElfRestaurantType_SettleElfRestaurantPlayCsReq = 2590;
+	CmdElfRestaurantType_HPKGGLPLHMD = 2591;
+	CmdElfRestaurantType_ElfRestaurantUpgradeEmployeeLevelCsReq = 2592;
+	CmdElfRestaurantType_ElfRestaurantRecycleSeedScRsp = 2593;
+	CmdElfRestaurantType_EnterElfRestaurantNextDayScRsp = 2594;
+	CmdElfRestaurantType_SettleElfRestaurantPlayScRsp = 2595;
+	CmdElfRestaurantType_ElfRestaurantUpgradeFacilityLevelCsReq = 2597;
+	CmdElfRestaurantType_SetElfRestaurantPlayRecipeCsReq = 2599;
+	CmdElfRestaurantType_ElfRestaurantClientStatusCsReq = 2600;
+}
+
+message ECGKEKKAHGN {
+	uint32 IHAOMLEPHOM = 4;
+	uint32 LOPNADHJKBF = 8;
+	ItemList FEANLLOCFBA = 9;
+}
+
+message ElfRestaurantBuyFieldCsReq {
+	uint32 LOPNADHJKBF = 8;
+}
+
+message ElfRestaurantBuyFieldScRsp {
+	uint32 PLDKENJLKME = 1;
+	ItemCostData FKMFHAAJMMF = 3;
+}
+
+message ElfRestaurantBuyShopItemCsReq {
+	uint32 ICAILDEHHBN = 1;
+	uint32 ICNCMMEEJKM = 3;
+}
+
+message ElfRestaurantBuyShopItemScRsp {
+	uint32 ICNCMMEEJKM = 9;
+	ItemList GLAPKNMCIBI = 12;
+	uint32 retcode = 13;
+	ItemCostData FKMFHAAJMMF = 15;
+}
+
+message ElfRestaurantClientStatusCsReq {
+	bool is_active = 13;
+}
+
+message ElfRestaurantClientStatusScRsp {
+	uint32 retcode = 11;
+}
+
+message ElfRestaurantDataChangeNotify {
+	repeated HGMJFBCFJFN DGNGMJMPFGK = 15;
+}
+
+message ElfRestaurantFinishTradeOrderCsReq {
+	uint32 BFADNHJAJBJ = 7;
+}
+
+message ElfRestaurantFinishTradeOrderScRsp {
+	uint32 BFADNHJAJBJ = 3;
+	ItemList GLAPKNMCIBI = 8;
+	ItemCostData FKMFHAAJMMF = 11;
+	uint32 retcode = 13;
+}
+
+message ElfRestaurantHarvestCropCsReq {
+	repeated KPLHHLEGGCD FMCGHNLBIKP = 1;
+}
+
+message ElfRestaurantHarvestCropScRsp {
+	uint32 retcode = 7;
+	repeated CEKMLMOCLHF LGPOMBCJPKL = 8;
+}
+
+message ElfRestaurantPlantSeedCsReq {
+	uint32 BLNHCIBKJOM = 5;
+	repeated KPLHHLEGGCD FMCGHNLBIKP = 15;
+}
+
+message ElfRestaurantPlantSeedScRsp {
+	repeated NKEGPAOCGCJ FPEBFLJMEJL = 4;
+	uint32 retcode = 13;
+}
+
+message ElfRestaurantRecycleSeedCsReq {
+	repeated KPLHHLEGGCD FMCGHNLBIKP = 1;
+}
+
+message ElfRestaurantRecycleSeedScRsp {
+	uint32 retcode = 3;
+	repeated ECGKEKKAHGN HDAMNMCDHLH = 9;
+}
+
+message ElfRestaurantTakeVillagerRewardCsReq {
+}
+
+message ElfRestaurantTakeVillagerRewardScRsp {
+	repeated PLOHACFCDKF DJOBNPIAEJP = 8;
+	uint32 retcode = 9;
+}
+
+message ElfRestaurantUpgradeEmployeeLevelCsReq {
+	uint32 AMMPOLONOBC = 4;
+	uint32 IGOOJKMPMDC = 10;
+}
+
+message ElfRestaurantUpgradeEmployeeLevelScRsp {
+	uint32 retcode = 8;
+	ItemCostData FKMFHAAJMMF = 11;
+}
+
+message ElfRestaurantUpgradeFacilityLevelCsReq {
+	uint32 OMFGAABELHE = 5;
+	uint32 IGOOJKMPMDC = 15;
+}
+
+message ElfRestaurantUpgradeFacilityLevelScRsp {
+	uint32 retcode = 6;
+}
+
+message ElfRestaurantUpgradeRecipeLevelCsReq {
+	uint32 IGOOJKMPMDC = 4;
+	uint32 AOOLKNMJLNI = 10;
+}
+
+message ElfRestaurantUpgradeRecipeLevelScRsp {
+	uint32 retcode = 3;
+}
+
+message EnterElfRestaurantNextDayCsReq {
+}
+
+message EnterElfRestaurantNextDayScRsp {
+	uint32 retcode = 9;
+}
+
+message FHCIIMGMIML {
+	uint32 AOOLKNMJLNI = 3;
+	uint32 level = 11;
+}
+
+message FJEBMHIBJPL {
+	uint32 BBMELNJBGAL = 3;
+	uint32 CAOFLNHBOLK = 10;
+}
+
+message GHFEKEGEFAC {
+	uint32 level = 7;
+	uint32 OMFGAABELHE = 15;
+}
+
+message GetElfRestaurantDataCsReq {
+}
+
+message GetElfRestaurantDataScRsp {
+	IILBDJMKELG MILCHKIIEJE = 1;
+	uint32 retcode = 2;
+	OMPLEKGNLBC FFKCMKJFFCM = 3;
+	ICABANFEIHJ AHCEIMGNBNM = 6;
+	ACAKOLCGDLL IBHKOKEEMOI = 11;
+	BAEDIBFGLDE OENLJGEBCGA = 13;
+}
+
+message HGMJFBCFJFN {
+	oneof ENDDAHPBCKJ {
+		LGFLGGDMAGD HMGKHCNMDDJ = 1;
+		AGFGGFBNOJC NEFHJPJALGO = 2;
+		FHCIIMGMIML MOCNALBMLLI = 3;
+		bool PCKLCAEDJPC = 4;
+		uint32 FDLGKNFIPMG = 5;
+		uint32 KMHMAKDFKLB = 6;
+		OBDBODNJACD LEMCGNHLOOI = 8;
+		uint32 EDGOIFOOBMH = 9;
+		GHFEKEGEFAC HINKDPMAICB = 11;
+		LABMFHEEPBI HGPMMEHONLD = 12;
+		ACAKOLCGDLL JNBFIBDKLGB = 13;
+		MOOGIHHBHFG MFAJAPGACPA = 14;
+	}
+}
+
+message ICABANFEIHJ {
+	repeated LGFLGGDMAGD NILEKCAGIMK = 5;
+	repeated MOOGIHHBHFG LCJFDCHINHL = 8;
+}
+
+message IILBDJMKELG {
+	repeated AGFGGFBNOJC FGJHNNPOGGF = 10;
+}
+
+message JPLJJHFFODO {
+	uint32 num = 4;
+	uint32 event_type = 9;
+}
+
+message KFCKFOFONGI {
+	uint32 KINCCGNDOJN = 1;
+	repeated KHEOAGDIHCC MEDLNEJHOEF = 6;
+	bool DPLFIIPIACN = 12;
+	bool FACNFJFMPNK = 14;
+}
+
+message KHEOAGDIHCC {
+	uint32 AOOLKNMJLNI = 8;
+}
+
+message KPLHHLEGGCD {
+	uint32 IHAOMLEPHOM = 2;
+	uint32 LOPNADHJKBF = 7;
+}
+
+message LABMFHEEPBI {
+	uint64 FEKHNEKHAAK = 3;
+	uint32 DFELFGNJGDP = 4;
+	repeated BMJDDOLALFI ELJEBPIOKDD = 5;
+	repeated uint32 FFEILKDLABH = 6;
+	repeated uint32 JEENJPHNBLI = 8;
+	uint32 JFBOMKNCNIE = 9;
+	repeated CLBNCPOFNPB FGJIAMOOIIG = 15;
+}
+
+message LGFLGGDMAGD {
+	uint32 BFADNHJAJBJ = 9;
+	uint32 BEIJKGPGFFE = 14;
+}
+
+message LNCAAKDIMBL {
+	bool FKLNFMAHKGD = 1;
+	uint32 AOOLKNMJLNI = 2;
+	bool PLIEODDEEHG = 5;
+	repeated KVP DBOBKAAGPJH = 6;
+	uint32 IFGMFCOGNJF = 7;
+	uint32 BIOFDPICHLC = 11;
+	uint32 IHHKFADNADN = 13;
+	uint32 ADGNNEOEAFO = 14;
+}
+
+message MOOGIHHBHFG {
+	uint32 BEIJKGPGFFE = 1;
+	uint32 LMGFEGDNCHP = 11;
+	uint32 ICNCMMEEJKM = 13;
+}
+
+message NKEGPAOCGCJ {
+	uint32 IHAOMLEPHOM = 7;
+	ItemCostData FKMFHAAJMMF = 8;
+	uint32 LOPNADHJKBF = 12;
+}
+
+message NOHPJFOGFLM {
+	uint32 progress = 7;
+	uint32 JJIJBJDKNAE = 13;
+}
+
+message OBDBODNJACD {
+	bool JFAPNIECBKO = 3;
+	uint32 IHAOMLEPHOM = 5;
+	uint32 BLNHCIBKJOM = 7;
+	uint32 LIHAHPDCIKL = 9;
+	uint32 LOPNADHJKBF = 12;
+	bool MEBMAMHHGMD = 13;
+}
+
+message OMPLEKGNLBC {
+	repeated uint32 KPMKNBNOAFP = 8;
+	repeated OBDBODNJACD FMCGHNLBIKP = 11;
+	bool PCKLCAEDJPC = 12;
+}
+
+message PLOHACFCDKF {
+	uint32 MMMADINMHFB = 5;
+	uint32 OCJKDCPANJM = 11;
+	ItemList reward_list = 12;
+	uint32 progress = 13;
+}
+
+message SetElfRestaurantPlayRecipeCsReq {
+	repeated uint32 COBAKMLAOJC = 13;
+}
+
+message SetElfRestaurantPlayRecipeScRsp {
+	uint32 retcode = 11;
+}
+
+message SettleElfRestaurantPlayCsReq {
+	repeated FJEBMHIBJPL MFIIBGCFABF = 1;
+	uint32 FEKHNEKHAAK = 2;
+	repeated JPLJJHFFODO MGFHEBIDAOL = 4;
+	uint32 PLOEMBOCIGE = 5;
+	uint32 HFIBLHAFONM = 6;
+	repeated KFCKFOFONGI PNBHFPMPGHN = 8;
+	uint32 IFDKCGENNCP = 9;
+	uint32 cost_time = 10;
+	uint32 OFMDJAMJNGN = 12;
+	repeated CDCMOFFKCPI PIGMDKOGADE = 13;
+	uint32 GKOONGBHOMM = 14;
+	repeated LNCAAKDIMBL CMODBLCAEJF = 15;
+}
+
+message SettleElfRestaurantPlayScRsp {
+	uint32 retcode = 11;
+}

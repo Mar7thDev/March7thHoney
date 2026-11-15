@@ -413,6 +413,7 @@ dev/
 
 ## Generated resource cache 
 Config/Resource.cache
+Resource.bin
 
 Config/Json/Meli.json
 Config Live.json
@@ -420,9 +421,10 @@ Config Live.json
 ## Proto: huge regenerable il2cpp dump (≈119MB) — keep out of git, available locally per version
 Proto/**/dump.cs
 
-# Generated protocol output and extracted migration archives
+# Protocol C# is generated during builds; legacy schemas are optional archive extracts.
 /Proto/Generated/
 /Proto/4.4/
 /Proto/4.5/
 /Proto/4.5v3/*
 !/Proto/4.5v3/translations.txt
+/Proto/4.6/

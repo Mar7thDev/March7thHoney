@@ -5,6 +5,8 @@ using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Friend;
 using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
+using March7thHoney.Enums.Mission;
+using March7thHoney.Enums.Quest;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
@@ -25,19 +27,19 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         if (avatarExcel.MaxRank < 6) return null;
 
         GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPathAvatar);
-        if (multiPathAvatar != null && multiPathAvatar.BaseAvatarID != avatarId)
+        var owned = GetFormalAvatar(avatarId);
+        if (owned != null)
         {
-            // Is path
-            foreach (var avatarData in Data.FormalAvatars)
-                if (avatarData.AvatarId == multiPathAvatar.BaseAvatarID)
-                {
-                    // Add path for the character
-                    avatarData.PathInfos.Add(avatarId, new PathInfo(avatarId));
-                    break;
-                }
-
+            // Adding an already owned character must not append an empty row with the same base ID.
+            // A path unlock adds only its missing path and keeps the existing skin and equipment.
+            if (!owned.PathInfos.ContainsKey(avatarId) && owned.EnsurePathInfo(avatarId))
+            {
+                MarkDirty();
+                if (sync) await Player.SendPacket(new PacketPlayerSyncScNotify(owned));
+            }
             return null;
         }
+        if (multiPathAvatar != null && multiPathAvatar.BaseAvatarID != avatarId) return null;
 
         var avatar = new FormalAvatarInfo(multiPathAvatar?.BaseAvatarID ?? avatarId, avatarId, true)
         {
@@ -48,6 +50,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         };
 
         Data.FormalAvatars.Add(avatar);
+        MarkDirty();
 
         if (avatarExcel.Rarity == RarityEnum.CombatPowerAvatarRarityType5 && avatarExcel.AvatarID <= 3000)
             // add development
@@ -68,8 +71,41 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     public FormalAvatarInfo? GetFormalAvatar(int avatarId)
     {
         GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var multiPathAvatar);
-        return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId ==
-                                                       (multiPathAvatar?.BaseAvatarID ?? avatarId));
+        var avatar = Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId ==
+                                                     (multiPathAvatar?.BaseAvatarID ?? avatarId));
+        return avatar == null ? null : BindExRankState(avatar);
+    }
+
+    // Match GetFormalAvatar's first-row lookup on older saves without deleting duplicate stored data.
+    public IEnumerable<FormalAvatarInfo> GetOwnedAvatars() => Data.FormalAvatars
+        .DistinctBy(avatar => avatar.BaseAvatarId).Select(BindExRankState);
+
+    private FormalAvatarInfo BindExRankState(FormalAvatarInfo avatar)
+    {
+        avatar.ActivatedExRankIds = Data.ExRankIds.GetValueOrDefault(avatar.BaseAvatarId) ?? [];
+        return avatar;
+    }
+
+    public async ValueTask<Retcode> ChangeSkin(int avatarId, int skinId)
+    {
+        var avatar = GetFormalAvatar(avatarId);
+        if (avatar == null) return Retcode.RetAvatarNotExist;
+        var path = avatar.GetPathInfo(avatarId);
+        if (path == null && avatarId == avatar.BaseAvatarId) path = avatar.GetCurPathInfo();
+        if (path == null) return Retcode.RetAvatarNotExist;
+        if (skinId != 0)
+        {
+            if (!GameData.AvatarSkinData.TryGetValue(skinId, out var skin))
+                return Retcode.RetAvatarSkinItemNotExist;
+            if (skin.AvatarID != path.PathId) return Retcode.RetAvatarSkinNotMatchAvatar;
+            if (Player.PlayerUnlockData!.Skins.GetValueOrDefault(skin.AvatarID)?.Contains(skinId) != true)
+                return Retcode.RetAvatarSkinItemNotExist;
+        }
+        if (path.Skin == skinId) return Retcode.RetSucc;
+        path.Skin = skinId;
+        MarkDirty();
+        await Player.SendPacket(new PacketPlayerSyncScNotify(avatar));
+        return Retcode.RetSucc;
     }
 
     public SpecialAvatarInfo? GetTrialAvatar(int avatarId, bool refresh = false)
@@ -156,6 +192,66 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         return avatar;
     }
 
+    /// <summary>
+    ///     Grants multi-path variants whose unlock missions are already finished. Login passes
+    ///     <paramref name="notify" /> false because the avatar payload carries the paths; a mission
+    ///     finish passes true so the client receives AddMultiPathAvatarScNotify immediately.
+    /// </summary>
+    public async ValueTask GrantUnlockedStoryPaths(bool notify)
+    {
+        if (Player.MissionManager == null) return;
+
+        List<int> granted = [];
+        HashSet<FormalAvatarInfo> owners = [];
+        foreach (var config in GameData.MultiplePathAvatarConfigData.Values.OrderBy(config => config.AvatarID))
+        {
+            if (config.UnlockConditions.Count == 0) continue;
+            if (config.BaseAvatarID == 8001 &&
+                PlayerInstance.NormalizeHeroPathId(config.AvatarID, Player.Data.CurrentGender) != config.AvatarID)
+                continue;
+
+            var owner = GetFormalAvatar(config.BaseAvatarID);
+            if (owner == null || owner.PathInfos.ContainsKey(config.AvatarID)) continue;
+            if (!UnlockConditionsFinished(config.UnlockConditions)) continue;
+            if (!owner.EnsurePathInfo(config.AvatarID)) continue;
+
+            granted.Add(config.AvatarID);
+            owners.Add(owner);
+        }
+
+        if (granted.Count == 0) return;
+        MarkDirty();
+        if (!notify) return;
+
+        foreach (var avatarId in granted)
+            await Player.SendPacket(new PacketAddMultiPathAvatarScNotify(avatarId));
+        foreach (var owner in owners)
+            await Player.SendPacket(new PacketPlayerSyncScNotify(owner));
+    }
+
+    private bool UnlockConditionsFinished(List<Condition> conditions)
+    {
+        foreach (var condition in conditions)
+        {
+            if (!int.TryParse(condition.Param, out var id)) return false;
+            switch (condition.Type)
+            {
+                case ConditionTypeEnum.FinishMainMission:
+                    if (id == 0 || Player.MissionManager!.GetMainMissionStatus(id) != MissionPhaseEnum.Finish)
+                        return false;
+                    break;
+                case ConditionTypeEnum.FinishSubMission:
+                    if (id == 0 || Player.MissionManager!.GetSubMissionStatus(id) != MissionPhaseEnum.Finish)
+                        return false;
+                    break;
+                default:
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
     public FormalAvatarInfo? GetHero()
     {
         return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId == 8001);
@@ -190,8 +286,9 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
             cur = PlayerInstance.NormalizeHeroPathId(cur, gender);
         }
 
-        if (cur == hero.AvatarId) return false;
-        if (!hero.PathInfos.ContainsKey(cur) && !hero.EnsurePathInfo(cur)) return false;
+        var hasPath = hero.PathInfos.ContainsKey(cur);
+        if (cur == hero.AvatarId && Player.Data.CurBasicType == cur && hasPath) return false;
+        if (!hasPath && !hero.EnsurePathInfo(cur)) return false;
 
         Logger.Warn($"Player {Player.Uid}: Trailblazer current path {hero.AvatarId} retargeted to {cur}");
         hero.AvatarId = cur;
@@ -327,6 +424,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         };
 
         plans[uniqueId] = plan;
+        MarkDirty();
         return BuildRelicPresetPlan(uniqueId, plan);
     }
 
@@ -347,6 +445,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         }
 
         if (!string.IsNullOrEmpty(name)) plan.Name = name;
+        MarkDirty();
         return true;
     }
 
@@ -359,7 +458,9 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
 
     public bool DeleteRelicPresetPlan(int uniqueId)
     {
-        return Player.InventoryManager!.Data.RelicPresetPlans.Remove(uniqueId);
+        if (!Player.InventoryManager!.Data.RelicPresetPlans.Remove(uniqueId)) return false;
+        MarkDirty();
+        return true;
     }
 
     private static PFCKBFLDHNI BuildRelicPresetPlan(int uniqueId, RelicPresetPlanData plan)

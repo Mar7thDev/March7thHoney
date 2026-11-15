@@ -1,0 +1,776 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AddBlacklistCsReq {
+	uint32 uid = 2;
+}
+
+message AddBlacklistScRsp {
+	uint32 retcode = 4;
+	PlayerSimpleInfo black_info = 5;
+}
+
+message ApplyFriendCsReq {
+	FriendApplySource source = 4;
+	uint32 uid = 9;
+}
+
+message ApplyFriendScRsp {
+	uint32 uid = 3;
+	uint32 retcode = 4;
+}
+
+message BGPIHMLLNGM {
+	OIMLMDHOHAP MHAIBAMJGIM = 1;
+	GLILLENEIJK ENDLJENKBMF = 5;
+	NMFEHEHPGAB HJFHOEAAGGC = 7;
+	FKCNEPIJJAO BFGELCKJJPN = 15;
+}
+
+message BMKNANGPDGH {
+	uint32 battle_round_cnt = 1;
+	uint32 EMOHLJHPOPC = 6;
+	repeated ONKDAPOKGAC avatar_list = 8;
+	uint32 last_level_percent = 10;
+	uint32 passed_level = 11;
+}
+
+enum BattleRecordType {
+	BattleRecordType_BattleRecordNone = 0;
+	BattleRecordType_BattleRecordChallenge = 1;
+	BattleRecordType_BattleRecordRogue = 2;
+}
+
+message CFNEMEIDMID {
+	uint32 area_id = 3;
+	uint32 HOLPMKOHACH = 14;
+}
+
+message CJNDCNIJBEI {
+	repeated uint32 finished_target_list = 10;
+	repeated ONKDAPOKGAC avatar_list = 11;
+}
+
+message ChallengePeakBossFriendLineupRecommendation {
+	uint32 buff_id = 2;
+	repeated ONKDAPOKGAC avatar_list = 4;
+	bool is_hard_mode = 9;
+	repeated uint32 finished_target_list = 10;
+	bool hard_mode_has_passed = 11;
+}
+
+enum CmdFriendType {
+	CmdFriendType_NLCDGIPGFDJ = 0;
+	CmdFriendType_GetFriendDevelopmentInfoScRsp = 2901;
+	CmdFriendType_GetFriendRecommendListInfoScRsp = 2904;
+	CmdFriendType_GetFriendApplyListInfoCsReq = 2905;
+	CmdFriendType_SyncApplyFriendScNotify = 2906;
+	CmdFriendType_SyncAddBlacklistScNotify = 2908;
+	CmdFriendType_GetPlatformPlayerInfoScRsp = 2912;
+	CmdFriendType_ReportPlayerScRsp = 2915;
+	CmdFriendType_GetFriendDevelopmentInfoCsReq = 2916;
+	CmdFriendType_ApplyFriendScRsp = 2918;
+	CmdFriendType_GetFriendListInfoScRsp = 2919;
+	CmdFriendType_SetFriendMarkScRsp = 2920;
+	CmdFriendType_TakeAssistRewardCsReq = 2922;
+	CmdFriendType_DeleteBlacklistCsReq = 2923;
+	CmdFriendType_HandleFriendScRsp = 2927;
+	CmdFriendType_DeleteBlacklistScRsp = 2928;
+	CmdFriendType_SetForbidOtherApplyFriendScRsp = 2929;
+	CmdFriendType_GetFriendRecommendLineupDetailScRsp = 2930;
+	CmdFriendType_GetPlayerDetailInfoCsReq = 2931;
+	CmdFriendType_DeleteFriendCsReq = 2935;
+	CmdFriendType_GetFriendRecommendLineupDetailCsReq = 2936;
+	CmdFriendType_GetFriendAssistListScRsp = 2939;
+	CmdFriendType_GetFriendLoginInfoCsReq = 2943;
+	CmdFriendType_GetAssistHistoryScRsp = 2944;
+	CmdFriendType_GetFriendBattleRecordDetailScRsp = 2945;
+	CmdFriendType_SetFriendMarkCsReq = 2946;
+	CmdFriendType_SyncDeleteFriendScNotify = 2947;
+	CmdFriendType_AddBlacklistCsReq = 2948;
+	CmdFriendType_JFCPNIBEGEL = 2949;
+	CmdFriendType_GetCurAssistScRsp = 2950;
+	CmdFriendType_SetAssistCsReq = 2951;
+	CmdFriendType_SyncHandleFriendScNotify = 2952;
+	CmdFriendType_GetFriendLoginInfoScRsp = 2953;
+	CmdFriendType_SetAssistScRsp = 2954;
+	CmdFriendType_SetFriendRemarkNameScRsp = 2957;
+	CmdFriendType_ApplyFriendCsReq = 2959;
+	CmdFriendType_SetForbidOtherApplyFriendCsReq = 2960;
+	CmdFriendType_GetAssistListCsReq = 2962;
+	CmdFriendType_SearchPlayerScRsp = 2963;
+	CmdFriendType_CurAssistChangedNotify = 2966;
+	CmdFriendType_SearchPlayerCsReq = 2967;
+	CmdFriendType_GetAssistHistoryCsReq = 2968;
+	CmdFriendType_HandleFriendCsReq = 2970;
+	CmdFriendType_GetFriendApplyListInfoScRsp = 2971;
+	CmdFriendType_GetFriendListInfoCsReq = 2974;
+	CmdFriendType_AddBlacklistScRsp = 2975;
+	CmdFriendType_GetFriendAssistListCsReq = 2978;
+	CmdFriendType_GetAssistListScRsp = 2980;
+	CmdFriendType_NewAssistHistoryNotify = 2981;
+	CmdFriendType_ReportPlayerCsReq = 2982;
+	CmdFriendType_GetFriendRecommendLineupScRsp = 2984;
+	CmdFriendType_GetFriendRecommendLineupCsReq = 2985;
+	CmdFriendType_GetPlayerDetailInfoScRsp = 2987;
+	CmdFriendType_GetCurAssistCsReq = 2989;
+	CmdFriendType_GetPlatformPlayerInfoCsReq = 2990;
+	CmdFriendType_GetFriendRecommendListInfoCsReq = 2992;
+	CmdFriendType_SetFriendRemarkNameCsReq = 2994;
+	CmdFriendType_GetFriendBattleRecordDetailCsReq = 2995;
+	CmdFriendType_DeleteFriendScRsp = 2998;
+}
+
+message CurAssistChangedNotify {
+	PlayerAssistInfo ODHMGPNECFO = 3;
+}
+
+message DBFHOCOBPMK {
+	uint32 group_id = 7;
+	repeated PlayerChallengePeakRecordMobData HDCHFBKDCEB = 11;
+	PlayerChallengePeakRecordBossData CDFFIGJLGMM = 12;
+}
+
+message DeleteBlacklistCsReq {
+	uint32 uid = 8;
+}
+
+message DeleteBlacklistScRsp {
+	uint32 retcode = 8;
+	uint32 uid = 11;
+}
+
+message DeleteFriendCsReq {
+	uint32 LMHDOMCMGNL = 7;
+	uint32 uid = 8;
+}
+
+message DeleteFriendScRsp {
+	uint32 retcode = 5;
+	uint32 uid = 12;
+}
+
+enum DevelopmentType {
+	DevelopmentType_DevelopmentNone = 0;
+	DevelopmentType_DevelopmentRogueCosmos = 1;
+	DevelopmentType_DevelopmentRogueChess = 2;
+	DevelopmentType_DevelopmentRogueChessNous = 3;
+	DevelopmentType_DevelopmentMemoryChallenge = 4;
+	DevelopmentType_DevelopmentStoryChallenge = 5;
+	DevelopmentType_DevelopmentUnlockAvatar = 6;
+	DevelopmentType_DevelopmentUnlockEquipment = 7;
+	DevelopmentType_DevelopmentActivityStart = 8;
+	DevelopmentType_DevelopmentActivityEnd = 9;
+	DevelopmentType_DevelopmentBossChallenge = 10;
+	DevelopmentType_DevelopmentRogueTourn = 11;
+	DevelopmentType_DevelopmentRogueTournWeek = 12;
+	DevelopmentType_DevelopmentRogueMagic = 13;
+	DevelopmentType_DevelopmentChallengePeak = 14;
+	DevelopmentType_DevelopmentRogueTournDivision = 15;
+	DevelopmentType_DevelopmentGridFightDivision = 16;
+	DevelopmentType_DevelopmentGridFightGameplay = 17;
+	DevelopmentType_DevelopmentGridFightGameplayOcMode = 18;
+}
+
+message DisplayAvatarDetailInfo {
+	uint32 enhanced_id = 1;
+	repeated AvatarSkillTree skilltree_list = 2;
+	uint32 dressed_skin_id = 3;
+	repeated uint32 ex_rank_id_list = 4;
+	repeated DisplayRelicInfo relic_list = 5;
+	uint32 promotion = 6;
+	uint32 pos = 7;
+	DisplayEquipmentInfo equipment = 8;
+	uint32 rank = 9;
+	uint32 level = 10;
+	uint32 avatar_type = 12;
+	uint32 exp = 14;
+	uint32 avatar_id = 15;
+}
+
+message DisplayEquipmentInfo {
+	uint32 level = 1;
+	uint32 exp = 4;
+	uint32 promotion = 8;
+	uint32 tid = 11;
+	uint32 rank = 12;
+}
+
+message DisplayRelicInfo {
+	uint32 level = 1;
+	uint32 exp = 3;
+	repeated RelicAffix sub_affix_list = 4;
+	uint32 tid = 9;
+	uint32 main_affix_id = 12;
+	uint32 type = 15;
+}
+
+message EDEGAHHANMF {
+	uint32 MBHJNPEILCL = 2;
+	uint32 LCDDMLIMAGA = 4;
+	uint32 OPENPJJLADD = 5;
+	uint32 PLKAGMLBCDG = 7;
+	uint32 IGENPDKHDMC = 15;
+}
+
+message EJAKBKOEEPC {
+	JMOCDMHFEJG BHDKLAJPMBJ = 1;
+}
+
+message ENEHBCOCEGB {
+	uint32 retcode = 1;
+	repeated KAODLPJMEFE OILHLECGBCH = 5;
+	ItemList reward = 11;
+}
+
+message FKCNEPIJJAO {
+	uint32 DCOKLHPBAJO = 8;
+	uint32 JNCCOGCHNMB = 11;
+	uint32 FEFLAJIODHB = 13;
+	uint32 area_id = 14;
+}
+
+message FPDCINMDJCE {
+	oneof KJFEKHDEBIK {
+		OJJJDPNOKHG NHKCFOALAPD = 1;
+		CJNDCNIJBEI BNAFKMMLGFE = 2;
+		FriendChallengeLineup NHMOPCHJEHN = 4;
+		ChallengePeakBossFriendLineupRecommendation KCNAHJCMNJI = 5;
+		MJMGDLJAJCM LMHIOKFMDNE = 13;
+		OFFMDBMMNFM KPPDEMBPEDO = 373;
+	}
+	PlayerSimpleInfo player_info = 12;
+	string remark_name = 15;
+}
+
+message FriendApplyInfo {
+	PlayerSimpleInfo player_info = 1;
+	int64 apply_time = 5;
+}
+
+enum FriendApplySource {
+	FriendApplySource_None = 0;
+	FriendApplySource_Search = 1;
+	FriendApplySource_Recommend = 2;
+	FriendApplySource_Assist = 3;
+	FriendApplySource_RecommendAssist = 4;
+	FriendApplySource_PsnFriend = 5;
+	FriendApplySource_AssistReward = 6;
+	FriendApplySource_SocialPlay = 7;
+	FriendApplySource_Roaming = 8;
+	FriendApplySource_DiceCombatV2 = 9;
+	FriendApplySource_RecentVisitor = 10;
+	HPEKGMDHFLO_JNLIOGAONMA = 11;
+}
+
+message FriendChallengeClearanceInfo {
+	PlayerChallengeTierceRecord MEGBIPBAFBP = 2;
+	uint32 group_id = 8;
+	uint32 LMPPDGOFOMF = 14;
+	oneof EDKOHAAMONH {
+		ChallengeStoryStatistics challenge_story = 458;
+		ChallengeBossStatistics challenge_boss = 1487;
+		ChallengeStatistics challenge_default = 1733;
+	}
+}
+
+message FriendChallengeLineup {
+	repeated ChallengeLineupList lineup_list = 4;
+	uint32 score_id = 6;
+	PlayerSimpleInfo player_info = 7;
+	uint32 buff_one = 8;
+	uint32 EEJCPNAEKLJ = 9;
+	string remark_name = 12;
+	uint32 buff_two = 15;
+}
+
+message FriendGridFightRecord {
+	uint32 division_id = 9;
+}
+
+message FriendRecommendInfo {
+	PlayerSimpleInfo player_info = 5;
+	bool JINLAHLMDLN = 15;
+}
+
+message FriendSimpleInfo {
+	bool is_marked = 3;
+	int64 create_time = 7;
+	PAEFDELFKJK MBOIHJLIJDG = 8;
+	string remark_name = 10;
+	PlayingState playing_state = 11;
+	PlayerSimpleInfo player_info = 15;
+}
+
+message GLILLENEIJK {
+	uint32 GNIFODGCPAA = 6;
+	uint32 FFFNGBKHOEA = 9;
+}
+
+message GetAssistHistoryCsReq {
+}
+
+message GetAssistHistoryScRsp {
+	uint32 retcode = 5;
+	uint32 OFEKHCHHOFD = 6;
+	uint32 EFONJLMDFIH = 11;
+	uint32 LLIPLPNDIMC = 13;
+}
+
+message GetAssistListCsReq {
+	bool LKBAENBKJCE = 9;
+	bool DDNKHDIKAEL = 15;
+}
+
+message GetAssistListScRsp {
+	repeated PlayerAssistInfo assist_list = 5;
+	uint32 retcode = 6;
+}
+
+message GetCurAssistCsReq {
+}
+
+message GetCurAssistScRsp {
+	uint32 retcode = 8;
+	PlayerAssistInfo ODHMGPNECFO = 15;
+}
+
+message GetFriendApplyListInfoCsReq {
+}
+
+message GetFriendApplyListInfoScRsp {
+	repeated FriendApplyInfo receive_apply_list = 1;
+	repeated uint32 send_apply_list = 3;
+	uint32 retcode = 6;
+}
+
+message GetFriendAssistListCsReq {
+	repeated uint32 HHFPJHMEIJK = 4;
+	bool DDNKHDIKAEL = 6;
+	PIDAHABFLBL HFOLAOIKOLB = 7;
+	repeated uint32 EEJGCFBJKAK = 10;
+	uint32 target_side = 15;
+}
+
+message GetFriendAssistListScRsp {
+	repeated PlayerAssistInfo assist_list = 3;
+	uint32 target_side = 12;
+	uint32 retcode = 14;
+}
+
+message GetFriendBattleRecordDetailCsReq {
+	uint32 uid = 6;
+}
+
+message GetFriendBattleRecordDetailScRsp {
+	repeated DBFHOCOBPMK LGIBJLFBFCG = 1;
+	uint32 retcode = 6;
+	uint32 uid = 8;
+	repeated FriendChallengeClearanceInfo EPNLMHPCDKL = 12;
+	HBJDMDKKMFI BAMDEHAICDA = 14;
+	BGPIHMLLNGM HCIEFEHCENO = 15;
+}
+
+message GetFriendDevelopmentInfoCsReq {
+	uint32 uid = 3;
+}
+
+message GetFriendDevelopmentInfoScRsp {
+	uint32 retcode = 1;
+	repeated NJMOBNILIHI EMBPENNEIJH = 5;
+	uint32 uid = 15;
+}
+
+message GetFriendListInfoCsReq {
+}
+
+message GetFriendListInfoScRsp {
+	uint32 retcode = 3;
+	repeated PlayerSimpleInfo black_list = 5;
+	repeated FriendSimpleInfo friend_list = 11;
+}
+
+message GetFriendLoginInfoCsReq {
+}
+
+message GetFriendLoginInfoScRsp {
+	repeated uint32 _black_uid_list = 6;
+	uint32 retcode = 9;
+	repeated uint32 _friend_uid_list = 12;
+	bool is_allow_other_apply = 13;
+	bool show_red_dot_flag = 14;
+}
+
+message GetFriendRecommendLineupCsReq {
+	JFNJKAPPNOF type = 12;
+	uint32 key = 15;
+}
+
+message GetFriendRecommendLineupDetailCsReq {
+	JFNJKAPPNOF type = 7;
+	uint32 key = 9;
+	uint32 uid = 12;
+}
+
+message GetFriendRecommendLineupDetailScRsp {
+	uint32 retcode = 3;
+	repeated DisplayAvatarDetailInfo KNHHAJDNGJG = 11;
+	JFNJKAPPNOF type = 12;
+	uint32 uid = 14;
+	uint32 key = 15;
+}
+
+message GetFriendRecommendLineupScRsp {
+	uint32 key = 4;
+	bool ALDBIIIGLOM = 5;
+	JFNJKAPPNOF type = 6;
+	repeated FPDCINMDJCE MGKCKHIIICL = 9;
+	uint32 retcode = 10;
+}
+
+message GetFriendRecommendListInfoCsReq {
+	bool DDNKHDIKAEL = 11;
+}
+
+message GetFriendRecommendListInfoScRsp {
+	uint32 retcode = 1;
+	repeated FriendRecommendInfo friend_recommend_list = 15;
+}
+
+message GetPlatformPlayerInfoCsReq {
+	PlatformType platform = 3;
+	repeated string EPIBJAMIJFI = 7;
+}
+
+message GetPlatformPlayerInfoScRsp {
+	repeated PlayerSimpleInfo friend_recommend_list = 6;
+	uint32 retcode = 9;
+}
+
+message GetPlayerDetailInfoCsReq {
+	uint32 uid = 9;
+}
+
+message GetPlayerDetailInfoScRsp {
+	PlayerDetailInfo detail_info = 2;
+	uint32 retcode = 10;
+}
+
+message HBJDMDKKMFI {
+	uint32 division_id = 4;
+}
+
+message HHJANNIGCKM {
+	bool EGLLMGLLHDL = 1;
+	repeated uint32 finished_target_list = 11;
+}
+
+message HandleFriendCsReq {
+	bool is_accept = 3;
+	uint32 uid = 7;
+}
+
+message HandleFriendScRsp {
+	bool is_accept = 1;
+	uint32 uid = 7;
+	uint32 retcode = 8;
+	FriendSimpleInfo friend_info = 14;
+}
+
+message ICMGDJBDFEA {
+	uint32 FBOGDAHNDKA = 1;
+	uint32 group_id = 3;
+	uint32 max_level = 6;
+	HHJANNIGCKM NCKJLAEJNDP = 12;
+	uint32 LMPPDGOFOMF = 15;
+}
+
+message IENCCMEAIAJ {
+	uint32 GNIFODGCPAA = 4;
+}
+
+message JBKJGBMMKFI {
+	uint32 peak_id = 11;
+}
+
+enum JFNJKAPPNOF {
+	JFNJKAPPNOF_NLCDGIPGFDJ = 0;
+	JFNJKAPPNOF_OCDLPDDMCLP = 1;
+	JFNJKAPPNOF_JHOEBNNMKHB = 2;
+	JFNJKAPPNOF_KMDNDLKKDLH = 3;
+	JFNJKAPPNOF_DJKDPGDLLFM = 4;
+	JFNJKAPPNOF_IGDNEOELFKC = 5;
+	JFNJKAPPNOF_HCBNCEDBABL = 6;
+}
+
+message JMOCDMHFEJG {
+	PIBFIDOEPAP KGBHIKKLJMK = 14;
+}
+
+message KGBAFBEMICB {
+	uint32 AACGBEBGDPE = 1;
+	bool MNDCIBFEJOP = 12;
+}
+
+message KHFEGOFPHHC {
+	uint32 area_id = 3;
+}
+
+message LJJIEAPLOOI {
+	uint32 division_id = 11;
+}
+
+message MJMGDLJAJCM {
+	repeated OKFKPPNGCOD DNIGKDKIPPJ = 4;
+}
+
+message MOOGABJBJAG {
+	uint32 challenge_id = 3;
+}
+
+message NJMOBNILIHI {
+	DevelopmentType NELHEHHFCCM = 1;
+	int64 time = 4;
+	oneof NNMAOMHPNBK {
+		uint32 KAJCFPKEGBP = 39;
+		JBKJGBMMKFI AGKKAFEFGOB = 130;
+		IENCCMEAIAJ IMILIFMDLBI = 610;
+		CFNEMEIDMID IIBJEGJMOKJ = 712;
+		uint32 avatar_id = 828;
+		KHFEGOFPHHC DCODKLADIJM = 860;
+		uint32 panel_id = 1079;
+		KGBAFBEMICB DHKCMBFCALH = 1198;
+		LJJIEAPLOOI BNNDODHIKCE = 1458;
+		MOOGABJBJAG ELJOEBBHDPB = 1906;
+	}
+}
+
+message NMFEHEHPGAB {
+	uint32 MBDKAJBEPPF = 9;
+	uint32 area_id = 11;
+	uint32 MGCACGFLKEK = 12;
+}
+
+message NewAssistHistoryNotify {
+	uint32 OFEKHCHHOFD = 11;
+}
+
+message OFFMDBMMNFM {
+	repeated BMKNANGPDGH lineup_list = 4;
+}
+
+message OHKDPNBGPOA {
+	bool PFBHGAHAFMD = 1;
+	bool IOJEAOCOBBF = 5;
+	bool DCJECFMMIBC = 7;
+	bool MAKOLELFLFH = 12;
+	bool GNFDDPEMMFN = 14;
+}
+
+message OIMLMDHOHAP {
+	uint32 APANPLBMONN = 2;
+	uint32 KPHJDOPBMEN = 3;
+	uint32 area_id = 4;
+	uint32 IELFOBFPDPA = 6;
+}
+
+message OJJJDPNOKHG {
+	repeated ChallengeLineupList lineup_list = 1;
+	repeated uint32 finished_target_list = 2;
+	repeated uint32 AOLIEDBCNBN = 5;
+}
+
+message OKFKPPNGCOD {
+	repeated ONKDAPOKGAC avatar_list = 1;
+	repeated uint32 finished_target_list = 9;
+	uint32 peak_id = 15;
+}
+
+message ONKDAPOKGAC {
+	AvatarType avatar_type = 1;
+	uint32 id = 2;
+	uint32 level = 3;
+	uint32 index = 4;
+	uint32 skin_id = 5;
+}
+
+message PAEFDELFKJK {
+	FriendGridFightRecord BAMDEHAICDA = 4;
+	BattleRecordType display_type = 6;
+	ICMGDJBDFEA AMLDHBMIGEN = 9;
+	EJAKBKOEEPC KBLKLGDCOMF = 15;
+}
+
+message PIBFIDOEPAP {
+	uint32 FFFNGBKHOEA = 6;
+	uint32 GNIFODGCPAA = 8;
+}
+
+enum PIDAHABFLBL {
+	PIDAHABFLBL_ONGOHDOKEIE = 0;
+	PIDAHABFLBL_FJBENKPGBPP = 1;
+	PIDAHABFLBL_IBNPGEDFIMO = 2;
+}
+
+message PlayerAssistInfo {
+	DisplayAvatarDetailInfo player_info = 3;
+	PlayerSimpleInfo assist_avatar = 14;
+}
+
+message PlayerChallengePeakRecordBossData {
+	uint32 DJFGDMIDEHJ = 3;
+	repeated uint32 MCJNLLBBDHN = 4;
+	bool CFLDOMPACKI = 7;
+	uint32 peak_id = 8;
+	uint32 buff_id = 9;
+	ChallengeLineupList lineup = 10;
+	uint32 best_cycle_count = 11;
+	bool HAMDKIHGKGO = 15;
+}
+
+message PlayerChallengePeakRecordMobData {
+	ChallengeLineupList lineup = 3;
+	uint32 peak_id = 6;
+	repeated uint32 MCJNLLBBDHN = 12;
+	uint32 cycles_used = 13;
+}
+
+message PlayerDetailInfo {
+	bool is_banned = 1;
+	PlatformType platform = 2;
+	uint32 uid = 3;
+	string DJONELMIFEE = 4;
+	uint32 GEJFMBBHNLN = 5;
+	string signature = 6;
+	repeated DisplayAvatarDetailInfo display_avatar_list = 7;
+	uint32 HCGMAGDFAAO = 8;
+	string IJKOMIKFKEK = 9;
+	bool HIEAPDNNNEI = 10;
+	string nickname = 11;
+	uint32 world_level = 12;
+	uint32 level = 13;
+	PlayerRecordInfo record_info = 14;
+	uint32 head_icon = 15;
+	OIIPJFDNPAH AIHNDIAFGPM = 110;
+	uint32 KINOEHKMFML = 527;
+	CJLCPMDGIBO DHKFCDAGHDM = 910;
+	repeated DisplayAvatarDetailInfo assist_avatar_list = 915;
+	uint32 gender = 1041;
+	HeadFrameInfo head_frame_info = 1630;
+	OHKDPNBGPOA BOKLABGLEFL = 1710;
+}
+
+message PlayerRecordInfo {
+	uint32 MHOIJFEBAPA = 2;
+	uint32 KCBINJNIBNO = 3;
+	uint32 NECKJBHEKHE = 4;
+	EDEGAHHANMF EOGGPDHKKBJ = 5;
+	uint32 DIOIIFAHAKK = 8;
+	uint32 ALGEOLGNFBL = 9;
+	uint32 PPFDDFAHLED = 11;
+	uint32 JJKIKOBAJLF = 13;
+	uint32 MIMECEAFDNK = 15;
+}
+
+enum PlayingState {
+	PlayingState_None = 0;
+	PlayingState_PlayingRogueCosmos = 1;
+	PlayingState_PlayingRogueChess = 2;
+	PlayingState_PlayingRogueChessNous = 3;
+	PlayingState_PlayingChallengeMemory = 4;
+	PlayingState_PlayingChallengeStory = 5;
+	PlayingState_PlayingChallengeBoss = 6;
+	PlayingState_PlayingRogueTourn = 7;
+	PlayingState_PlayingRogueMagic = 8;
+	PlayingState_PlayingChallengePeak = 9;
+	PlayingState_PlayingGridFight = 10;
+}
+
+message ReportPlayerCsReq {
+	string IMNOJNCGGNI = 1;
+	uint32 OLLBLNAGMPC = 4;
+	uint32 uid = 7;
+}
+
+message ReportPlayerScRsp {
+	uint32 retcode = 12;
+}
+
+message SearchPlayerCsReq {
+	bool DDNKHDIKAEL = 1;
+	repeated uint32 uid_list = 8;
+}
+
+message SearchPlayerScRsp {
+	repeated uint32 result_uid_list = 3;
+	repeated PlayerSimpleInfo simple_info_list = 13;
+	uint32 retcode = 14;
+}
+
+message SetAssistCsReq {
+	uint32 uid = 8;
+	uint32 avatar_id = 10;
+}
+
+message SetAssistScRsp {
+	uint32 uid = 5;
+	uint32 retcode = 8;
+	uint32 avatar_id = 13;
+}
+
+message SetForbidOtherApplyFriendCsReq {
+	bool PBNJDHFCHHC = 1;
+}
+
+message SetForbidOtherApplyFriendScRsp {
+	uint32 retcode = 3;
+	bool PBNJDHFCHHC = 13;
+}
+
+message SetFriendMarkCsReq {
+	uint32 reason = 7;
+	bool BIJJOJNJHDO = 9;
+	uint32 uid = 11;
+}
+
+message SetFriendMarkScRsp {
+	bool BIJJOJNJHDO = 8;
+	uint32 uid = 9;
+	uint32 retcode = 10;
+}
+
+message SetFriendRemarkNameCsReq {
+	uint32 uid = 7;
+	string remark_name = 8;
+	uint32 reason = 15;
+}
+
+message SetFriendRemarkNameScRsp {
+	uint32 uid = 6;
+	string remark_name = 8;
+	uint32 retcode = 12;
+}
+
+message SyncAddBlacklistScNotify {
+	uint32 uid = 14;
+}
+
+message SyncApplyFriendScNotify {
+	FriendApplyInfo friend_apply_info = 9;
+}
+
+message SyncDeleteFriendScNotify {
+	uint32 uid = 12;
+}
+
+message SyncHandleFriendScNotify {
+	uint32 uid = 11;
+	bool is_accept = 13;
+	FriendSimpleInfo friend_info = 15;
+}
+
+message TakeAssistRewardCsReq {
+}

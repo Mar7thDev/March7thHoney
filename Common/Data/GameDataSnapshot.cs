@@ -289,6 +289,7 @@ public partial class ActivityRuntimeDataSnapshot
     public Dictionary<string, GridFightDynamicValue> ConstValueClientData { get; set; } = [];
     public MechCraftRuntimeDataSnapshot? MechCraftData { get; set; } = new();
     public B51RacingResourceCatalog? B51RacingData { get; set; } = new();
+    public Dictionary<int, TrainPartyRewardConfigExcel> TrainPartyRewardConfigData { get; set; } = [];
 }
 
 [MemoryPackable]
@@ -353,6 +354,16 @@ public partial class GridFightRuntimeDataSnapshot
 
     // Appended after the daily tables: an older cache deserializes this as null (see ApplySnapshot).
     public RogueTournRuntimeDataSnapshot? RogueTournRuntimeData { get; set; }
+
+    // GridFight season ownership (item/craft id -> seasons). Older caches deserialize these as null.
+    public Dictionary<uint, List<uint>>? SeasonItemData { get; set; }
+    public Dictionary<uint, List<uint>>? SeasonCraftData { get; set; }
+
+    // Season 2 partners (GridFightPetPal). Appended later; older caches deserialize this as null.
+    public Dictionary<uint, GridFightPetPalExcel>? PetPalData { get; set; }
+
+    // Event-quest windows. Older caches deserialize this as null; the mission scan reloads the JSON.
+    public Dictionary<int, MainMissionScheduleExcel>? MainMissionScheduleData { get; set; }
 }
 
 [MemoryPackable]
@@ -651,7 +662,11 @@ public static partial class GameData
                     RoguePersonaStyleGiftData = GameData.RoguePersonaStyleGiftData,
                     RogueTournExpRewardData = GameData.RogueTournExpRewardData,
                     RogueTournDialogueData = GameData.RogueTournDialogueData
-                }
+                },
+                SeasonItemData = GameData.GridFightSeasonItemData,
+                SeasonCraftData = GameData.GridFightSeasonCraftData,
+                PetPalData = GameData.GridFightPetPalData,
+                MainMissionScheduleData = GameData.MainMissionScheduleData
             },
             ActivityRuntimeData = new ActivityRuntimeDataSnapshot
             {
@@ -667,6 +682,7 @@ public static partial class GameData
                 ExpeditionBattleFunTitleData = GameData.ExpeditionBattleFunTitleData,
                 ConstValueClientData = GameData.ConstValueClientData,
                 B51RacingData = GameData.B51RacingData,
+                TrainPartyRewardConfigData = GameData.TrainPartyRewardConfigData,
                 MechCraftData = new MechCraftRuntimeDataSnapshot
                 {
                     MechCraftOrderData = GameData.MechCraftOrderData,
@@ -981,6 +997,8 @@ public static partial class GameData
         GameData.ExpeditionBattleFunTitleData = activityRuntimeData.ExpeditionBattleFunTitleData;
         GameData.ConstValueClientData = activityRuntimeData.ConstValueClientData;
         GameData.B51RacingData = activityRuntimeData.B51RacingData ?? new B51RacingResourceCatalog();
+        // Null when read from a cache written before this member existed.
+        GameData.TrainPartyRewardConfigData = activityRuntimeData.TrainPartyRewardConfigData ?? [];
         var mechCraftData = activityRuntimeData.MechCraftData ?? new MechCraftRuntimeDataSnapshot();
         GameData.MechCraftOrderData = mechCraftData.MechCraftOrderData;
         GameData.MechCraftExamData = mechCraftData.MechCraftExamData;
@@ -1015,6 +1033,10 @@ public static partial class GameData
         GameData.DailyQuestData = gridFightRuntimeData.DailyQuestData ?? [];
         GameData.DailyMissionDataData = gridFightRuntimeData.DailyMissionDataData ?? [];
         GameData.DailyMissionCountData = gridFightRuntimeData.DailyMissionCountData ?? [];
+        GameData.GridFightSeasonItemData = gridFightRuntimeData.SeasonItemData ?? [];
+        GameData.GridFightSeasonCraftData = gridFightRuntimeData.SeasonCraftData ?? [];
+        GameData.GridFightPetPalData = gridFightRuntimeData.PetPalData ?? [];
+        GameData.MainMissionScheduleData = gridFightRuntimeData.MainMissionScheduleData ?? [];
         var rogueTournData = gridFightRuntimeData.RogueTournRuntimeData ?? new RogueTournRuntimeDataSnapshot();
         GameData.RoguePersonaLayerRoomData = rogueTournData.RoguePersonaLayerRoomData ?? [];
         GameData.RoguePersonaRoomPresetData = rogueTournData.RoguePersonaRoomPresetData ?? [];

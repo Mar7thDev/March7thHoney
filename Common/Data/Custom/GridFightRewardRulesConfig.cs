@@ -72,4 +72,11 @@ public partial class GridFightTalentRewardRule
 
     public List<uint> ChapterIds { get; set; } = [];
     public List<uint> OrbIds { get; set; } = [];
+
+    // Seasons whose talent table defines TalentId with this meaning; empty means every season.
+    // Season talents (2011-4061) are renumbered per season, permanent GridFightTalent rows are not.
+    // Caches written before this member existed deserialize it as null.
+    public List<uint>? SeasonIds { get; set; } = [];
+
+    public bool AppliesToSeason(uint season) => SeasonIds is not { Count: > 0 } || SeasonIds.Contains(season);
 }

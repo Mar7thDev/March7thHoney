@@ -1,0 +1,468 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ABOFJEIMLLJ {
+	uint32 level = 2;
+	uint32 buff_id = 3;
+}
+
+message AEFFOCFJNBF {
+	ItemCostData cost_data = 2;
+	uint32 buff_id = 15;
+}
+
+message AGEHGBKOBEF {
+	HNKAOFDGLIE CFDIKLBINHK = 169;
+	EDOIEMCFFCA LFLCDNGALME = 395;
+}
+
+message ALBLEFHHJIC {
+	uint32 id = 5;
+	AvatarType avatar_type = 7;
+	uint32 level = 13;
+	uint32 slot = 14;
+}
+
+message CAJEBOPPMCJ {
+	uint32 area_id = 2;
+	RogueAreaStatus area_status = 5;
+	bool ALAJJMKOMML = 6;
+	uint32 map_id = 9;
+	RogueStatus NHDLEFAAPOB = 11;
+	uint32 KNDHMNBIIDF = 15;
+}
+
+message CDDIJCBEAHJ {
+	repeated uint32 CEMOJMBHLDD = 3;
+}
+
+message CFMHEMGEANC {
+	repeated ABOFJEIMLLJ CHCMEKAFKAF = 14;
+}
+
+message CGNNMPIKBBB {
+	uint32 LJNGPCKPJLF = 2;
+	int64 begin_time = 10;
+	int64 end_time = 14;
+}
+
+message CIFCAIEDOLK {
+	uint32 unlock_aeon_enhance_num = 3;
+	uint32 JPPAGGPJOMO = 10;
+}
+
+enum CmdRogueType {
+	CmdRogueType_NLCDGIPGFDJ = 0;
+	CmdRogueType_EnterRogueMapRoomScRsp = 1801;
+	CmdRogueType_SyncRogueExploreWinScNotify = 1802;
+	CmdRogueType_FinishAeonDialogueGroupCsReq = 1803;
+	CmdRogueType_PickRogueAvatarCsReq = 1804;
+	CmdRogueType_LeaveRogueCsReq = 1807;
+	CmdRogueType_QuitRogueCsReq = 1809;
+	CmdRogueType_ExchangeRogueRewardKeyScRsp = 1818;
+	CmdRogueType_SimulatedRogueEnhanceRogueBuffCsReq = 1819;
+	CmdRogueType_SyncRogueAreaUnlockScNotify = 1820;
+	CmdRogueType_ReviveRogueAvatarCsReq = 1822;
+	CmdRogueType_SyncRogueSeasonFinishScNotify = 1824;
+	CmdRogueType_GetRogueAeonInfoScRsp = 1827;
+	CmdRogueType_SyncRogueVirtualItemInfoScNotify = 1828;
+	CmdRogueType_SyncRogueGetItemScNotify = 1831;
+	CmdRogueType_EnterRogueScRsp = 1833;
+	CmdRogueType_SyncRogueStatusScNotify = 1834;
+	CmdRogueType_GetRogueTalentInfoScRsp = 1835;
+	CmdRogueType_SyncRogueMapRoomScNotify = 1838;
+	CmdRogueType_StartRogueScRsp = 1842;
+	CmdRogueType_HPJBLIFMOJB = 1844;
+	CmdRogueType_TakeRogueAeonLevelRewardCsReq = 1847;
+	CmdRogueType_GetRogueTalentInfoCsReq = 1852;
+	CmdRogueType_ReviveRogueAvatarScRsp = 1853;
+	CmdRogueType_GetRogueInfoScRsp = 1854;
+	CmdRogueType_EnableRogueTalentCsReq = 1858;
+	CmdRogueType_QuitRogueScRsp = 1859;
+	CmdRogueType_EnableRogueTalentScRsp = 1861;
+	CmdRogueType_EnterRogueMapRoomCsReq = 1863;
+	CmdRogueType_GetRogueInitialScoreScRsp = 1864;
+	CmdRogueType_GetRogueBuffEnhanceInfoScRsp = 1865;
+	CmdRogueType_SyncRogueFinishScNotify = 1869;
+	CmdRogueType_TakeRogueAeonLevelRewardScRsp = 1871;
+	CmdRogueType_EnterRogueCsReq = 1873;
+	CmdRogueType_FinishAeonDialogueGroupScRsp = 1874;
+	CmdRogueType_RogueEnhanceRogueBuffScRsp = 1875;
+	CmdRogueType_SyncRogueReviveInfoScNotify = 1877;
+	CmdRogueType_GetRogueInfoCsReq = 1883;
+	CmdRogueType_ExchangeRogueRewardKeyCsReq = 1884;
+	CmdRogueType_GetRogueBuffEnhanceInfoCsReq = 1885;
+	CmdRogueType_OpenRogueChestScRsp = 1886;
+	CmdRogueType_PickRogueAvatarScRsp = 1888;
+	CmdRogueType_GetRogueAeonInfoCsReq = 1889;
+	CmdRogueType_OpenRogueChestCsReq = 1890;
+	CmdRogueType_LeaveRogueScRsp = 1891;
+	CmdRogueType_StartRogueCsReq = 1896;
+	CmdRogueType_SyncRogueAeonScNotify = 1899;
+}
+
+message DNDMLICBKEF {
+	uint32 area_id = 2;
+	uint32 HPKMGKPPELC = 4;
+	uint32 ANHDBMOPGDC = 5;
+	repeated PAIJCBOKIFO LLNICHDDIAN = 7;
+	uint32 map_id = 8;
+}
+
+message EDOIEMCFFCA {
+	GFGHGCIMKGA AEFMMOHKCHJ = 2;
+	CGNNMPIKBBB HHFAAFOBKME = 5;
+	MBCBDJNKFEB NIKDPODBIEF = 10;
+	GOIEJOCFKEE ACLKMFCDMED = 14;
+}
+
+message EFDAIBDBFEA {
+	uint32 total_count = 1;
+	uint32 NPHAJEKCBKF = 8;
+	uint32 LJCEOGPOGBE = 9;
+	uint32 DGGCFDKJDPO = 14;
+}
+
+message ENOBKLGCHOD {
+	KCMFAIBMOHB MFEODNJNGDP = 5;
+	repeated uint32 unfinished_story_line_id_list = 8;
+	repeated uint32 NOEPBNMJFGL = 9;
+}
+
+message EnableRogueTalentCsReq {
+	uint32 CKHCLKOALKE = 6;
+}
+
+message EnableRogueTalentScRsp {
+	uint32 retcode = 14;
+	FDBDLBAPDBE JCOBJAMPOAL = 15;
+}
+
+message EnterRogueCsReq {
+	uint32 area_id = 10;
+}
+
+message EnterRogueMapRoomCsReq {
+	uint32 room_id = 8;
+	uint32 MAJKFIMPOOF = 14;
+}
+
+message EnterRogueMapRoomScRsp {
+	SceneInfo scene = 5;
+	LineupInfo lineup = 6;
+	uint32 retcode = 8;
+	FHEGNOPNICH JNKLNLKHGBB = 9;
+	uint32 ANHDBMOPGDC = 12;
+}
+
+message EnterRogueScRsp {
+	SceneInfo scene = 1;
+	AGEHGBKOBEF rogue_game_info = 7;
+	FHEGNOPNICH JNKLNLKHGBB = 8;
+	uint32 retcode = 10;
+	LineupInfo lineup = 14;
+}
+
+message ExchangeRogueRewardKeyCsReq {
+	uint32 count = 4;
+}
+
+message ExchangeRogueRewardKeyScRsp {
+	uint32 count = 2;
+	uint32 retcode = 6;
+}
+
+message FLCPJJMHAGO {
+	uint32 AFEMBLFCCCH = 1;
+	uint32 max_level = 3;
+	uint32 exp = 11;
+	uint32 level = 12;
+}
+
+message FinishAeonDialogueGroupCsReq {
+	uint32 AFEMBLFCCCH = 13;
+}
+
+message FinishAeonDialogueGroupScRsp {
+	FLCPJJMHAGO AEFMMOHKCHJ = 9;
+	ItemList reward = 13;
+	uint32 retcode = 14;
+}
+
+message GAOBHBLFPEC {
+	uint32 DBHOIDLKMAB = 2;
+	uint32 OFHBBKOKANF = 3;
+	uint32 GBIEAMKLONK = 6;
+	uint32 LKHAIEIDAJL = 7;
+}
+
+message GFGHGCIMKGA {
+	repeated uint32 OPAEGCBNACJ = 2;
+	uint32 unlock_aeon_enhance_num = 11;
+}
+
+message GKHGFCBMLBL {
+	KCOEJJKGNIG record_info = 2;
+	ItemList LHPNJLBPACA = 3;
+	uint32 GMIIMAHLIJF = 7;
+	uint32 GHCBFCIGIBF = 8;
+	uint32 score_id = 10;
+	uint32 GEBGGMAGDJB = 11;
+	bool is_win = 13;
+	uint32 MHPHDCFKMLF = 14;
+	uint32 HEOMALBNJLL = 496;
+	uint32 area_id = 1445;
+}
+
+message GOIEJOCFKEE {
+	repeated CAJEBOPPMCJ OJGOAOPLMLB = 14;
+}
+
+message GetRogueAeonInfoCsReq {
+}
+
+message GetRogueAeonInfoScRsp {
+	uint32 retcode = 2;
+	repeated FLCPJJMHAGO JHEHAIBMNNF = 7;
+}
+
+message GetRogueBuffEnhanceInfoCsReq {
+}
+
+message GetRogueBuffEnhanceInfoScRsp {
+	uint32 PLDKENJLKME = 2;
+	HFGBCEKGFHK retcode = 11;
+}
+
+message GetRogueInfoCsReq {
+}
+
+message GetRogueInfoScRsp {
+	uint32 retcode = 2;
+	AGEHGBKOBEF rogue_game_info = 6;
+}
+
+message GetRogueInitialScoreScRsp {
+	uint32 retcode = 2;
+}
+
+message GetRogueTalentInfoCsReq {
+}
+
+message GetRogueTalentInfoScRsp {
+	uint32 retcode = 5;
+	FDBDLBAPDBE JCOBJAMPOAL = 13;
+}
+
+message HFGBCEKGFHK {
+	repeated AEFFOCFJNBF EMAGFIBLNCJ = 2;
+}
+
+message HIKOBOMBMPB {
+	OEDNNHAOHAB DNPCCFFFBHN = 2;
+}
+
+message HNKAOFDGLIE {
+	CDDIJCBEAHJ IELPCHGLFCA = 1;
+	CFMHEMGEANC HABJHGPFGEB = 2;
+	ENOBKLGCHOD EIOHFJMFOKF = 3;
+	CIFCAIEDOLK AEFMMOHKCHJ = 6;
+	RogueStatus status = 8;
+	DNDMLICBKEF COOOMDKGODF = 9;
+	HIKOBOMBMPB DNPCCFFFBHN = 10;
+	AGEOGDOGDMM DHEKLJDBNNP = 12;
+	bool ILOFGCAFHAH = 14;
+	INHBMHCJJCN FMIGOKIDKJL = 15;
+}
+
+message JIBBEEAIDIC {
+	uint32 unlock_aeon_enhance_num = 3;
+	repeated uint32 OPAEGCBNACJ = 5;
+	uint32 JPPAGGPJOMO = 11;
+}
+
+message KCMFAIBMOHB {
+	ItemCostData LNIEFKBMIPD = 14;
+}
+
+message KCOEJJKGNIG {
+	repeated ALBLEFHHJIC avatar_list = 2;
+	repeated ABOFJEIMLLJ buff_list = 9;
+	repeated uint32 MAJGMMCOCIG = 15;
+}
+
+message KLFPHOOPELB {
+}
+
+message LeaveRogueCsReq {
+}
+
+message LeaveRogueScRsp {
+	SceneInfo scene = 3;
+	LineupInfo lineup = 4;
+	FHEGNOPNICH JNKLNLKHGBB = 6;
+	uint32 retcode = 13;
+}
+
+message MBCBDJNKFEB {
+	uint32 CICAENDEDFE = 4;
+	uint32 GEBGGMAGDJB = 9;
+	uint32 PDGBEJHNHHE = 15;
+}
+
+message OEDNNHAOHAB {
+	repeated EFDAIBDBFEA MAJGMMCOCIG = 10;
+}
+
+message OpenRogueChestCsReq {
+	uint32 interacted_prop_entity_id = 2;
+	bool FDEKKOKBDIC = 10;
+}
+
+message OpenRogueChestScRsp {
+	uint32 retcode = 2;
+	LMDPKOELKFL ABEMLCJBIEF = 5;
+	ItemList reward = 9;
+	ItemList drop_data = 15;
+}
+
+message PAIJCBOKIFO {
+	uint32 PGACMFLCDID = 2;
+	uint32 MAJKFIMPOOF = 4;
+	RogueRoomStatus CAGDNHCOCKM = 10;
+	uint32 room_id = 12;
+	RogueRoomStatus FCHHPCIDNGM = 13;
+}
+
+message PickRogueAvatarCsReq {
+	repeated uint32 DFPPCAJDBFK = 9;
+	uint32 prop_entity_id = 10;
+	repeated uint32 NOEPBNMJFGL = 14;
+}
+
+message PickRogueAvatarScRsp {
+	uint32 retcode = 1;
+	repeated uint32 NOEPBNMJFGL = 12;
+	repeated uint32 BFEDFBEKOBI = 14;
+}
+
+message QuitRogueCsReq {
+	uint32 area_id = 10;
+}
+
+message QuitRogueScRsp {
+	uint32 retcode = 8;
+	AGEHGBKOBEF rogue_game_info = 12;
+}
+
+message ReviveRogueAvatarCsReq {
+	repeated uint32 NOEPBNMJFGL = 11;
+	uint32 interacted_prop_entity_id = 15;
+}
+
+message ReviveRogueAvatarScRsp {
+	uint32 PLDKENJLKME = 5;
+	KCMFAIBMOHB PHNAANFIFGB = 8;
+}
+
+enum RogueAreaStatus {
+	RogueAreaStatus_Lock = 0;
+	RogueAreaStatus_Unlock = 1;
+	RogueAreaStatus_FirstPass = 2;
+	RogueAreaStatus_Close = 3;
+}
+
+message RogueEnhanceRogueBuffScRsp {
+	ABOFJEIMLLJ CNEFDJCKAPL = 4;
+	uint32 retcode = 5;
+	bool KGKEJAKKLDP = 8;
+}
+
+enum RogueRoomStatus {
+	RogueRoomStatus_None = 0;
+	RogueRoomStatus_Lock = 1;
+	RogueRoomStatus_Unlock = 2;
+	RogueRoomStatus_Play = 3;
+	RogueRoomStatus_Finish = 4;
+}
+
+message SimulatedRogueEnhanceRogueBuffCsReq {
+	uint32 maze_buff_id = 8;
+}
+
+message StartRogueCsReq {
+	uint32 AFEMBLFCCCH = 1;
+	repeated uint32 unfinished_story_line_id_list = 4;
+	repeated uint32 NOEPBNMJFGL = 6;
+	uint32 area_id = 12;
+	repeated uint32 JKPIPNMGGOA = 13;
+}
+
+message StartRogueScRsp {
+	SceneInfo scene = 2;
+	LineupInfo lineup = 3;
+	uint32 retcode = 9;
+	AGEHGBKOBEF rogue_game_info = 11;
+	FHEGNOPNICH JNKLNLKHGBB = 14;
+}
+
+message SyncRogueAeonScNotify {
+	JIBBEEAIDIC BGDGIIOKHGF = 5;
+}
+
+message SyncRogueAreaUnlockScNotify {
+	uint32 area_id = 11;
+}
+
+message SyncRogueExploreWinScNotify {
+	bool ILOFGCAFHAH = 5;
+}
+
+message SyncRogueFinishScNotify {
+	GKHGFCBMLBL NLEOMLNOKCC = 4;
+}
+
+message SyncRogueGetItemScNotify {
+	ItemList get_item_list = 3;
+	ItemList IIDEAGLAMCC = 10;
+}
+
+message SyncRogueMapRoomScNotify {
+	PAIJCBOKIFO HNEANMNJHDB = 1;
+	uint32 map_id = 12;
+}
+
+message SyncRogueReviveInfoScNotify {
+	KCMFAIBMOHB MFEODNJNGDP = 7;
+}
+
+message SyncRogueSeasonFinishScNotify {
+	GKHGFCBMLBL NLEOMLNOKCC = 2;
+	LineupInfo lineup = 12;
+	SceneInfo scene = 14;
+	bool FALJMPELHIO = 15;
+}
+
+message SyncRogueStatusScNotify {
+	RogueStatus status = 8;
+	bool AOBCKABCHGO = 11;
+}
+
+message SyncRogueVirtualItemInfoScNotify {
+	GAOBHBLFPEC NIKDPODBIEF = 8;
+}
+
+message TakeRogueAeonLevelRewardCsReq {
+	uint32 level = 3;
+	uint32 AFEMBLFCCCH = 11;
+}
+
+message TakeRogueAeonLevelRewardScRsp {
+	uint32 level = 4;
+	uint32 retcode = 10;
+	uint32 AFEMBLFCCCH = 12;
+	ItemList ENGHMIAMPLG = 15;
+}

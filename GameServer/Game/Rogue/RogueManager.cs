@@ -18,7 +18,7 @@ using MemoryPack;
 
 namespace March7thHoney.GameServer.Game.Rogue;
 
-public class RogueManager : BasePlayerManager
+public partial class RogueManager : BasePlayerManager
 {
     public const int RogueEntranceId = 801120102;
 
@@ -33,7 +33,7 @@ public class RogueManager : BasePlayerManager
     private const int RoomTypeElite = 6;
     private const int RoomTypeBoss = 7;
     // A query type is the field number of its CCKJAEDDDCL oneof arm, and versions renumber the arms (4.5 put the
-    // function-unlock arm BBEKBJPHEJK at 15, 4.6 at 1), so take it from the generated message, never a literal.
+    // function-unlock arm BBEKBJPHEJK at 15, 4.6 at 1, 4.7 at 10), so take it from the generated message, never a literal.
     private const uint CommonQueryTypeFunctionUnlock = CCKJAEDDDCL.BBEKBJPHEJKFieldNumber;
 
     public RogueManager(PlayerInstance player) : base(player)
@@ -67,6 +67,30 @@ public class RogueManager : BasePlayerManager
         catch
         {
             inst = null;
+        }
+
+        // Earlier builds marked the single-room tutorial won after its first encounter. Keep its real
+        // task progress and selected blessings when recovering that unfinished run.
+        if (inst is { Status: RogueStatus.Doing, IsWin: true } && IsFirstTutorial(inst) &&
+            Player.MissionManager!.GetMainMissionStatus(4030001) == MissionPhaseEnum.Accept &&
+            !IsTutorialGroupDefeated(inst, 10))
+        {
+            inst.IsWin = false;
+            RogueInstance = inst;
+            SaveRun();
+            return;
+        }
+
+        // A tutorial victory still needs Quit/Leave for its mission settlement. Older builds left
+        // a tutorial room in Play and omitted the victory notify; keep that saved win available to settle.
+        if (inst is { Status: RogueStatus.Doing, IsWin: true } && HasPendingTutorialSettlement(inst) &&
+            inst.GetCurrentRoom() is { } tutorialRoom)
+        {
+            tutorialRoom.Status = RogueRoomStatus.Finish;
+            inst.ExploreWin = true;
+            RogueInstance = inst;
+            SaveRun();
+            return;
         }
 
         // A run that already won but was never left is dropped: resuming it strands the client on a finished run.
@@ -116,18 +140,22 @@ public class RogueManager : BasePlayerManager
         }
 
         SaveRun();
+        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.RogueEnterRoomWithLevel, inst);
         return Retcode.RetSucc;
     }
 
     public async ValueTask<(Retcode Ret, RogueRoomData? Room)> EnterRoom(int siteId)
     {
-        if (RogueInstance == null) return (Retcode.RetRogueStatusNotMatch, null);
+        if (RogueInstance == null || IsTutorial(RogueInstance) &&
+            (!IsTutorialRoomCleared(RogueInstance) || RogueInstance.BuffSelect?.HasSelection == true))
+            return (Retcode.RetRogueStatusNotMatch, null);
 
         var room = RogueInstance.EnterRoom(siteId);
         if (room == null) return (Retcode.RetRogueStatusNotMatch, null);
         if (!await EnterRoomScene(room)) return (Retcode.RetFail, null);
 
         SaveRun();
+        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.RogueEnterRoomWithLevel, RogueInstance);
         return (Retcode.RetSucc, room);
     }
 
@@ -167,6 +195,8 @@ public class RogueManager : BasePlayerManager
 
         RogueData.FinishCnt++;
         SaveRun();
+        if (inst.IsWin)
+            await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.RoguePassAreaProgress, inst);
         await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueFinishCnt);
         return inst;
     }
@@ -212,6 +242,32 @@ public class RogueManager : BasePlayerManager
         if (tier == 0) tier = Math.Max(1, area.Difficulty);
         var mapId = area.AreaProgress * 100 + tier;
         return GameData.RogueMapData.ContainsKey(mapId) ? mapId : area.MapId;
+    }
+
+    /// <summary>Restore an unfinished room's saved roster after the generic login extra-lineup cleanup.</summary>
+    public async ValueTask<bool> RestoreLineupAtLogin()
+    {
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst ||
+            inst.IsWin && !(HasPendingTutorialSettlement(inst) && inst.GetCurrentRoom()?.Status == RogueRoomStatus.Finish) ||
+            inst.BaseAvatarIds.Count == 0 || GetActiveRoomExcel(Player.Data.EntryId) == null) return false;
+
+        var lineupManager = Player.LineupManager!;
+        var lineup = lineupManager.GetExtraLineup(ExtraLineupType.LineupRogue);
+        if (lineup?.BaseAvatars == null || !lineup.BaseAvatars
+                .Select(slot => slot.SpecialAvatarId > 0 ? slot.SpecialAvatarId : slot.BaseAvatarId)
+                .SequenceEqual(inst.BaseAvatarIds))
+        {
+            lineupManager.SetExtraLineup(ExtraLineupType.LineupRogue, inst.BaseAvatarIds);
+            lineup = lineupManager.GetExtraLineup(ExtraLineupType.LineupRogue);
+            if (lineup?.BaseAvatars is not { Count: > 0 }) return false;
+            lineup.Mp = 3;
+        }
+
+        // Unlike a fresh run, resuming must retain the trial/formal avatars' saved HP and energy.
+        await lineupManager.SetExtraLineup(ExtraLineupType.LineupRogue, false);
+        lineupManager.RecalculateExtraMpCount();
+        DatabaseHelper.MarkDirty(Player.Uid);
+        return true;
     }
 
     private async ValueTask<bool> ActivateRogueLineup(List<int> avatarIds)
@@ -277,7 +333,8 @@ public class RogueManager : BasePlayerManager
     /// </summary>
     public async ValueTask<bool> OpenRoomExit()
     {
-        if (RogueInstance is not { Status: RogueStatus.Doing } inst || inst.BuffSelect?.HasSelection == true)
+        if (RogueInstance is not { Status: RogueStatus.Doing } inst || inst.BuffSelect?.HasSelection == true ||
+            IsTutorial(inst) && !IsTutorialRoomCleared(inst))
             return false;
         var scene = Player.SceneInstance;
         var roomExcel = scene == null ? null : GetActiveRoomExcel(scene.EntryId);
@@ -288,7 +345,8 @@ public class RogueManager : BasePlayerManager
             .ToList();
         if (doors.Count == 0) return false;
 
-        foreach (var door in doors) door.State = PropStateEnum.Open;
+        foreach (var door in doors)
+            door.State = ScenePropRules.RogueDoorOpenState(door.Excel, PropStateEnum.Open);
         await Player.SendPacket(new PacketSceneGroupRefreshScNotify(Player, doors.Cast<BaseGameEntity>().ToList(),
             null, SceneGroupRefreshType.Afibfmafncc));
         return true;
@@ -345,6 +403,13 @@ public class RogueManager : BasePlayerManager
         // Tourn, chess and magic rooms are Rogue planes too; their loaders retag the scene, so only claim RogueExplore.
         if (Player.SceneInstance.GameModeType != GameModeTypeEnum.RogueExplore) return;
 
+        // Despite its generated name, battle_rogue_magic_info also identifies classic Rogue.
+        // Official 4.6 tutorial battle seq 15037 carries mode 1 in this shared envelope.
+        battle.MagicInfo = new BattleRogueMagicInfo
+        {
+            OOPCPMANCBO = new IJLEFNJPFKP { RogueMode = 1 }
+        };
+
         foreach (var buff in inst.Buffs.Values)
         {
             battle.Buffs.Add(new MazeBuff(buff.BuffId, buff.Level, -1) { WaveFlag = -1 });
@@ -378,15 +443,22 @@ public class RogueManager : BasePlayerManager
         var room = inst.GetCurrentRoom();
         if (room == null) return;
 
+        await RefreshTutorialProps(afterBattle: true);
+
         // The official win flow sends an empty plane event before the draft to mark the battle plane settled.
         await Player.SendPacket(new PacketScenePlaneEventScNotify(new ItemList()));
 
-        // The final room still drafts after each battle; only the boss room ends without one.
-        if (room.NextSiteIds.Count == 0) inst.IsWin = true;
+        // Tutorial room 100 is classified as a normal room but contains three encounters and a boss.
+        // Its actual boss victory ends exploration without a draft (official 4.6 seq 15464-15465).
+        var tutorialBossWin = IsFirstTutorial(inst) && battle.EntityMonsters.Any(monster =>
+            monster is { GroupId: 10, InstId: 200001, IsAlive: false });
+        if (room.NextSiteIds.Count == 0 && (!IsTutorial(inst) || IsTutorialRoomCleared(inst)))
+            inst.IsWin = true;
 
         var coinGained = false;
-        if (room.RoomType == RoomTypeBoss)
+        if (room.RoomType == RoomTypeBoss || tutorialBossWin)
         {
+            inst.BuffSelect = null;
             inst.ExploreWin = true;
         }
         else
@@ -407,6 +479,13 @@ public class RogueManager : BasePlayerManager
             }
         }
 
+        await FinishTutorialRoom(inst);
+        if (inst is { IsWin: true, ExploreWin: true } && room.Status != RogueRoomStatus.Finish)
+        {
+            room.Status = RogueRoomStatus.Finish;
+            await Player.SendPacket(new PacketSyncRogueMapRoomScNotify(inst));
+            await Player.MissionManager!.TriggerCountEvent(MissionFinishTypeEnum.RogueExploreRoomFinishCnt);
+        }
         SaveRun();
 
         if (inst.BuffSelect?.HasSelection == true)
@@ -766,7 +845,7 @@ public class RogueManager : BasePlayerManager
 
     public static IEnumerable<CCKJAEDDDCL> BuildCommonQueryEntries(IEnumerable<uint> types)
     {
-        // One entry per requested type in request order; the other three arms are per-account progress with no
+        // One entry per requested type in request order; the other arms are per-account progress with no
         // table source and stay branch-less. The function-unlock arm is the client's only source of rogue
         // function unlocks.
         foreach (var type in types)

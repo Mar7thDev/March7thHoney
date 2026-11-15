@@ -18,6 +18,13 @@ public sealed class Args
     public List<string> CmdIdsOutPaths { get; } = new();
     public List<string> RewriteProtoPaths { get; } = new();
     public List<string> CompileRewritePaths { get; } = new();
+    public string? CarryDumpPath;
+    public string? CarryPrevDumpPath;
+    public string? CarryPrevMasterPath;
+    public string? CarryOutDir;
+    public string? CarryReportPath;
+    public string? CarryOverridesPath;
+    public string? CarryLabel;
     public bool Active;
     public bool ReportOnly;
     public bool Compile;
@@ -45,6 +52,13 @@ public sealed class Args
                 case "--cmdids-out": o.CmdIdsOutPaths.Add(a[++i]); break;
                 case "--rewrite-proto": o.RewriteProtoPaths.Add(a[++i]); break;
                 case "--compile-rewrite": o.CompileRewritePaths.Add(a[++i]); break;
+                case "--carry-dump": o.CarryDumpPath = a[++i]; break;
+                case "--carry-prev-dump": o.CarryPrevDumpPath = a[++i]; break;
+                case "--carry-prev-master": o.CarryPrevMasterPath = a[++i]; break;
+                case "--carry-out": o.CarryOutDir = a[++i]; break;
+                case "--carry-report": o.CarryReportPath = a[++i]; break;
+                case "--carry-overrides": o.CarryOverridesPath = a[++i]; break;
+                case "--carry-label": o.CarryLabel = a[++i]; break;
                 case "--active": o.Active = true; break;
                 case "--report": o.ReportOnly = true; break;
                 case "--compile": o.Compile = true; break;

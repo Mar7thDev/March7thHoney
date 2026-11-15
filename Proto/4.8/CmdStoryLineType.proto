@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum ChangeStoryLineAction {
+	ChangeStoryLineAction_None = 0;
+	ChangeStoryLineAction_FinishAction = 1;
+	ChangeStoryLineAction_Client = 2;
+	ChangeStoryLineAction_CustomOP = 3;
+	ChangeStoryLineAction_Raid = 4;
+	ChangeStoryLineAction_HKFKAFPAJCO = 5;
+}
+
+message ChangeStoryLineFinishScNotify {
+	uint32 ONBMNAMBIGE = 5;
+	bool HBFDGEPBLNP = 9;
+	uint32 cur_story_line_id = 12;
+	ChangeStoryLineAction action = 13;
+}
+
+enum CmdStoryLineType {
+	CmdStoryLineType_NLCDGIPGFDJ = 0;
+	CmdStoryLineType_StoryLineTrialAvatarChangeScNotify = 6207;
+	CmdStoryLineType_ChangeStoryLineFinishScNotify = 6233;
+	CmdStoryLineType_GetStoryLineInfoScRsp = 6254;
+	CmdStoryLineType_GetStoryLineInfoCsReq = 6283;
+	CmdStoryLineType_StoryLineInfoScNotify = 6296;
+}
+
+message GetStoryLineInfoCsReq {
+}
+
+message GetStoryLineInfoScRsp {
+	repeated uint32 trial_avatar_id_list = 2;
+	repeated uint32 unfinished_story_line_id_list = 3;
+	uint32 cur_story_line_id = 9;
+	uint32 retcode = 13;
+}
+
+message StoryLineInfoScNotify {
+	uint32 FDFLHKEDPGC = 5;
+	repeated uint32 unfinished_story_line_id_list = 6;
+	repeated uint32 trial_avatar_id_list = 10;
+	uint32 cur_story_line_id = 13;
+}
+
+message StoryLineTrialAvatarChangeScNotify {
+	repeated uint32 ILIDIIGALKD = 3;
+	bool OLPNMKAPDLP = 4;
+	repeated uint32 EDBMIFNEHHH = 12;
+}

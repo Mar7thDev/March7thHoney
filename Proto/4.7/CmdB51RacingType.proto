@@ -1,0 +1,196 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message B51RacingAgendaInfo {
+	B51RacingDevelopmentInfo development = 2;
+	uint32 day = 11;
+	B51RacingMatchInfo match = 12;
+}
+
+message B51RacingCarDisplay {
+	uint32 driver_id = 5;
+	repeated uint32 equipped_part_id_list = 6;
+	uint32 paint_id = 9;
+	uint32 car_num = 14;
+}
+
+message B51RacingCarLiveryCsReq {
+	B51RacingCarLivery livery = 5;
+}
+
+message B51RacingCarLiveryScRsp {
+	uint32 retcode = 8;
+	B51RacingCarLivery livery = 11;
+}
+
+message B51RacingChallengeData {
+	repeated KVP track_best_time_list = 2;
+	uint32 driver_id = 3;
+	B51RacingChallengeCarData car = 7;
+}
+
+message B51RacingCycleData {
+	repeated B51RacingPreMatchTrackInfo pre_match_track_info_list = 2;
+	uint32 cycle_id = 3;
+	uint32 driver_id = 5;
+	uint32 car_id = 6;
+	B51RacingAgendaInfo agenda = 7;
+	B51RacingCarLivery livery = 9;
+	B51RacingStatInfo stat_info = 11;
+	B51RacingPartInfo part_info = 14;
+	uint32 finished_match_num = 15;
+}
+
+message B51RacingDevelopmentInfo {
+	repeated uint32 active_action_id_list = 7;
+	uint32 finished_action_num = 11;
+	repeated uint32 active_part_id_list = 15;
+}
+
+message B51RacingDriverUnlockScNotify {
+	repeated uint32 driver_id_list = 15;
+}
+
+message B51RacingEndMatchCsReq {
+	uint32 track_id = 2;
+	uint32 session_id = 6;
+	uint32 rank = 10;
+	B51RacingMatchResultType result_type = 11;
+	uint32 finish_time_ms = 13;
+	B51RacingMatchStats stats = 15;
+}
+
+message B51RacingEndMatchScRsp {
+	uint32 finished_match_num = 2;
+	bool is_cycle_finished = 3;
+	uint32 retcode = 4;
+	uint32 added_team_point = 6;
+	B51RacingAgendaInfo agenda = 9;
+}
+
+message B51RacingGetDataCsReq {
+}
+
+message B51RacingGetDataScRsp {
+	B51RacingChallengeData challenge = 3;
+	uint32 last_cycle_id = 8;
+	B51RacingCarDisplay car_display = 11;
+	B51RacingCycleData cycle = 12;
+	uint32 retcode = 14;
+	repeated uint32 unlocked_driver_id_list = 15;
+}
+
+message B51RacingMatchInfo {
+	uint32 session_id = 1;
+	uint32 match_id = 6;
+	uint64 start_time_ms = 11;
+	uint32 track_id = 13;
+}
+
+message B51RacingMissionChangeAgendaScNotify {
+	B51RacingAgendaInfo agenda = 8;
+	repeated uint32 unlocked_driver_id_list = 10;
+}
+
+message B51RacingPartInfo {
+	uint32 equipped_decal_id = 9;
+	repeated uint32 equipped_part_id_list = 13;
+	repeated uint32 developed_part_id_list = 14;
+}
+
+message B51RacingPreMatchTrackInfo {
+	uint32 match_id = 4;
+	uint32 track_id = 11;
+	uint32 day = 12;
+}
+
+message B51RacingReplacePartScRsp {
+	B51RacingPartInfo part_info = 9;
+	uint32 retcode = 14;
+}
+
+message B51RacingSelectDevelopActionCsReq {
+	uint32 action_id = 3;
+}
+
+message B51RacingSelectDevelopActionScRsp {
+	uint32 remaining_action_count = 3;
+	uint32 retcode = 6;
+	B51RacingStatInfo stat_info = 7;
+	B51RacingPartInfo part_info = 8;
+	B51RacingAgendaInfo agenda = 10;
+	bool is_development_finished = 13;
+}
+
+message B51RacingSelectDevelopPartCsReq {
+	uint32 part_id = 13;
+}
+
+message B51RacingSelectDevelopPartScRsp {
+	uint32 retcode = 5;
+	uint32 remaining_select_count = 7;
+	B51RacingStatInfo stat_info = 8;
+	B51RacingPartInfo part_info = 10;
+	B51RacingAgendaInfo agenda = 14;
+}
+
+message B51RacingSetDriverCsReq {
+	uint32 driver_id = 12;
+}
+
+message B51RacingSetDriverScRsp {
+	uint32 driver_id = 4;
+	uint32 retcode = 7;
+}
+
+message B51RacingStartCycleCsReq {
+	uint32 cycle_id = 8;
+	uint32 car_id = 13;
+	B51RacingCarLivery livery = 15;
+}
+
+message B51RacingStartCycleScRsp {
+	B51RacingCycleData cycle = 3;
+	uint32 retcode = 12;
+}
+
+message B51RacingStartMatchCsReq {
+	uint32 match_id = 7;
+	uint32 track_id = 11;
+}
+
+message B51RacingStartMatchScRsp {
+	B51RacingMatchInfo match = 6;
+	uint32 retcode = 12;
+}
+
+message B51RacingStatInfo {
+	repeated KVP stat_value_list = 4;
+	repeated KVP target_stat_tier_list = 14;
+}
+
+enum CmdB51RacingType {
+	CmdB51RacingType_NLCDGIPGFDJ = 0;
+	CmdB51RacingType_B51RacingReplacePartScRsp = 9981;
+	CmdB51RacingType_B51RacingSetDriverCsReq = 9983;
+	CmdB51RacingType_B51RacingStartCycleCsReq = 9984;
+	CmdB51RacingType_B51RacingSelectDevelopPartCsReq = 9985;
+	CmdB51RacingType_B51RacingStartMatchScRsp = 9986;
+	CmdB51RacingType_B51RacingStartMatchCsReq = 9987;
+	CmdB51RacingType_B51RacingGetDataScRsp = 9988;
+	CmdB51RacingType_B51RacingCarLiveryScRsp = 9989;
+	CmdB51RacingType_B51RacingDriverUnlockScNotify = 9990;
+	CmdB51RacingType_B51RacingSelectDevelopPartScRsp = 9991;
+	CmdB51RacingType_B51RacingEndMatchScRsp = 9992;
+	CmdB51RacingType_B51RacingEndMatchCsReq = 9993;
+	CmdB51RacingType_B51RacingMissionChangeAgendaScNotify = 9994;
+	CmdB51RacingType_B51RacingGetDataCsReq = 9995;
+	CmdB51RacingType_B51RacingCarLiveryCsReq = 9996;
+	CmdB51RacingType_B51RacingSetDriverScRsp = 9997;
+	CmdB51RacingType_B51RacingSelectDevelopActionCsReq = 9998;
+	CmdB51RacingType_B51RacingSelectDevelopActionScRsp = 9999;
+	CmdB51RacingType_B51RacingStartCycleScRsp = 10000;
+}

@@ -257,6 +257,32 @@
           "maze_group_id": 7
         }
       }
+    },
+    {
+      "group_id": 11,
+      "npc_monster_id_default": 8015030,
+      "stages": {
+        "1101": {
+          "npc_monster_id": 5034010,
+          "map_entrance_id": 3014701,
+          "maze_group_id": 7
+        },
+        "1102": {
+          "npc_monster_id": 5014030,
+          "map_entrance_id": 3014701,
+          "maze_group_id": 7
+        },
+        "1103": {
+          "npc_monster_id": 4063010,
+          "map_entrance_id": 3014701,
+          "maze_group_id": 7
+        },
+        "1104": {
+          "npc_monster_id": 8015030,
+          "map_entrance_id": 3014701,
+          "maze_group_id": 8
+        }
+      }
     }
   ]
 }

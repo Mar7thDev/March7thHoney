@@ -1,0 +1,177 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message AddItemRsp {
+	oneof FJIANHMABAB {
+		uint32 CLEKAKLPNBP = 2;
+		uint32 avatar_id = 4;
+	}
+	int64 unlock_time = 10;
+	ItemList reward = 11;
+}
+
+message BLBHACNKKFC {
+	bool is_friend = 4;
+	uint32 LEHIGGFKPMN = 5;
+	int32 GALOHJONKCG = 6;
+	uint32 EECIJBLGLNG = 12;
+	bool is_win = 13;
+}
+
+message BPNGPLHJHBE {
+	uint32 retcode = 3;
+}
+
+message BuyShopGoodCsReq {
+	uint32 KDMNGCLJDOM = 6;
+	uint32 MCDNNFACGPE = 7;
+}
+
+message BuyShopGoodScRsp {
+	uint32 retcode = 3;
+	repeated NJEBDKOJNGA OPNFOBJOPCB = 10;
+}
+
+message CMKMOIGANHN {
+	uint32 FPJMKDNDENK = 2;
+	uint32 stage_id = 6;
+}
+
+enum CmdDiceCombatType {
+	CmdDiceCombatType_NLCDGIPGFDJ = 0;
+	CmdDiceCombatType_AGEOJALCOOC = 9263;
+	CmdDiceCombatType_V2FinishPveStageScRsp = 9267;
+	CmdDiceCombatType_BuyShopGoodScRsp = 9268;
+	CmdDiceCombatType_JNPCPMEDCML = 9269;
+	CmdDiceCombatType_GetSystemDataRsp = 9273;
+	CmdDiceCombatType_V2FinishPveStageCsReq = 9274;
+	CmdDiceCombatType_BuyShopGoodCsReq = 9275;
+	CmdDiceCombatType_DiceCombatUpgradeAvatarCsReq = 9276;
+	CmdDiceCombatType_GetDiceCombatShopDataCsReq = 9277;
+	CmdDiceCombatType_AddItemRsp = 9282;
+	CmdDiceCombatType_DiceCombatFinishPveStageCsReq = 9284;
+	CmdDiceCombatType_DiceCombatMainPageRollDiceCsReq = 9286;
+	CmdDiceCombatType_ModifyAvatarDiceRsp = 9289;
+	CmdDiceCombatType_NPANIDLBFNM = 9291;
+	CmdDiceCombatType_FinishPveStageScRsp = 9292;
+	CmdDiceCombatType_UpgradeAvatarRsp = 9294;
+	CmdDiceCombatType_GetShopDataScRsp = 9295;
+	CmdDiceCombatType_GetDiceCombatSystemDataCsReq = 9297;
+	CmdDiceCombatType_DiceCombatModifyAvatarDiceCsReq = 9300;
+}
+
+message DDKNIMHHNPA {
+	uint32 total_score = 1;
+	repeated LPGJPLMHKFL JDGMEHCPGLL = 7;
+	uint32 stage_id = 9;
+	bool is_win = 11;
+	repeated EHMEPOMCGNG LMPLLJFMFEC = 12;
+}
+
+message DiceCombatFinishPveStageCsReq {
+	uint32 IMKHIDEBGEB = 1;
+	bool is_win = 4;
+	bool AINKFEINNAK = 6;
+	uint32 MPDHNFNCIEA = 13;
+}
+
+message DiceCombatMainPageRollDiceCsReq {
+}
+
+message DiceCombatModifyAvatarDiceCsReq {
+	uint32 avatar_id = 9;
+	uint32 LLPCNBJIMCN = 11;
+}
+
+message DiceCombatUpgradeAvatarCsReq {
+	uint32 KOEOEHIMOEI = 4;
+}
+
+message EHMEPOMCGNG {
+	uint32 DBLJFJAAPAN = 1;
+	repeated uint32 KBHCLLJLFHH = 2;
+}
+
+message FLDKOELBPGA {
+	uint32 item_id = 2;
+	ItemCostData cost = 3;
+	uint32 KDMNGCLJDOM = 8;
+	bool DOFNEAPHMKH = 14;
+}
+
+message FinishPveStageScRsp {
+	bool is_win = 9;
+	uint32 retcode = 10;
+	uint32 MPDHNFNCIEA = 11;
+	ItemList reward = 15;
+}
+
+message GetDiceCombatShopDataCsReq {
+}
+
+message GetDiceCombatSystemDataCsReq {
+}
+
+message GetShopDataScRsp {
+	repeated NJEBDKOJNGA OPNFOBJOPCB = 9;
+	uint32 retcode = 11;
+}
+
+message GetSystemDataRsp {
+	PDEIEDGCOBA DGFNLDBFLAJ = 4;
+	uint32 retcode = 7;
+	repeated DiceCombatAvatar avatar_list = 11;
+	repeated PKENAGKIECB KCNEKEGGAGG = 14;
+	repeated uint32 OHFIIBEIPJE = 15;
+}
+
+message LPGJPLMHKFL {
+	uint32 MDKFLGDEJCN = 1;
+	repeated uint32 NJIFEDNDMFO = 2;
+	uint32 DHJANOFGDNP = 3;
+}
+
+message ModifyAvatarDiceRsp {
+	DiceCombatAvatar avatar = 1;
+	uint32 retcode = 13;
+}
+
+message NJEBDKOJNGA {
+	repeated FLDKOELBPGA CNFFGBMPCHD = 11;
+	uint32 shop_id = 13;
+}
+
+message PDEIEDGCOBA {
+	repeated CMKMOIGANHN LNPPFHHACPF = 1;
+	repeated uint32 GNNBMNHOIFG = 2;
+}
+
+message PKENAGKIECB {
+	uint32 CLEKAKLPNBP = 1;
+	int64 unlock_time = 10;
+}
+
+message UpgradeAvatarRsp {
+	DiceCombatAvatar avatar = 1;
+	uint32 retcode = 12;
+}
+
+message V2FinishPveStageCsReq {
+	bool is_win = 2;
+	bool AINKFEINNAK = 3;
+	uint32 AELAEGOOBMB = 4;
+	uint32 EOILKCCLEIF = 5;
+	uint32 FGBIJPLPOBI = 8;
+	uint32 MPDHNFNCIEA = 11;
+	uint32 KGHBJELHOBA = 15;
+}
+
+message V2FinishPveStageScRsp {
+	uint32 retcode = 1;
+	uint32 MPDHNFNCIEA = 8;
+	ItemList reward = 13;
+	bool is_win = 15;
+}

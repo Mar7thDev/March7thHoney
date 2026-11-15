@@ -23,7 +23,11 @@ public class PacketGetMissionDataScRsp : BasePacket
             TrackMissionId = (uint)trackMissionId
         };
 
-        var anchorSubMissionId = player.MissionManager.GetTrackMissionAnchorSubMissionId(trackMissionId);
+        var preparedMainIds = player.MissionManager.Data.PreparedMainMissionIds ?? [];
+        // With nothing tracked, official still sends the anchor of a Prepared frontier main, without a
+        // track id, so the client can point at the locked quest it selects locally.
+        var anchorMainId = trackMissionId > 0 ? trackMissionId : preparedMainIds.FirstOrDefault();
+        var anchorSubMissionId = player.MissionManager.GetTrackMissionAnchorSubMissionId(anchorMainId);
         if (anchorSubMissionId > 0) proto.GKFPKBGJBGN = (uint)anchorSubMissionId;
 
         proto.FinishedMainMissionIdList.AddRange(player.MissionManager.Data.FinishedMainMissionIds
@@ -40,6 +44,20 @@ public class PacketGetMissionDataScRsp : BasePacket
                     Status = MissionStatus.MissionDoing
                 });
 
+        // Prepared mains ride the same list, and their opener subs ride mission_list as Prepared: the
+        // client builds a quest row from its subs, so a main without one shows no locked entry.
+        var preparedSubIds = new List<int>();
+        foreach (var mission in preparedMainIds)
+        {
+            if (!GameData.MainMissionData.TryGetValue(mission, out var preparedMain)) continue;
+            proto.MainMissionList.Add(new MainMission
+            {
+                Id = (uint)mission,
+                Status = MissionStatus.MissionPrepared
+            });
+            preparedSubIds.AddRange(preparedMain.MissionInfo?.StartSubMissionList.Where(id => id > 0) ?? []);
+        }
+
         foreach (var mission in GameData.SubMissionInfoData.Keys.Concat(GameData.SubMissionData.Keys)
                      .Concat(MechCraftResourceCatalog.BlockingSubMissionIDs)
                      .Append(MechCraftResourceCatalog.TutorialSubMissionID).Where(id => id > 0).Distinct())
@@ -54,6 +72,13 @@ public class PacketGetMissionDataScRsp : BasePacket
                     Progress = (uint)player.MissionManager!.GetMissionProgress(mission)
                 });
         }
+
+        foreach (var mission in preparedSubIds.Distinct())
+            proto.MissionList.Add(new Proto.Mission
+            {
+                Id = (uint)mission,
+                Status = MissionStatus.MissionPrepared
+            });
 
         SetData(proto);
     }

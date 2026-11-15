@@ -14,9 +14,20 @@ namespace March7thHoney.Database.Avatar;
 [DbTable("Avatar")]
 public class AvatarData : BaseDatabaseDataHelper
 {
+    /// <summary>An owned avatar by base id or any of its path ids (8001 or 8008 both find the Trailblazer).</summary>
+    public FormalAvatarInfo? FindByAnyId(int id)
+    {
+        if (id == 0) return null;
+        return FormalAvatars.Find(avatar => avatar.BaseAvatarId == id) ??
+               FormalAvatars.Find(avatar => avatar.AvatarId == id || avatar.PathInfos.ContainsKey(id));
+    }
+
     public List<OldAvatarInfo> Avatars { get; set; } = [];
     public List<FormalAvatarInfo> FormalAvatars { get; set; } = [];
     public List<SpecialAvatarInfo> TrialAvatars { get; set; } = [];
+
+    // Separate generated database column: never extend the historical FormalAvatars MemoryPack blob.
+    public Dictionary<int, List<int>> ExRankIds { get; set; } = [];
 
     public List<int> AssistAvatars { get; set; } = [];
 
@@ -89,6 +100,18 @@ public abstract class BaseAvatarInfo
 [MemoryPackable]
 public partial class FormalAvatarInfo : BaseAvatarInfo
 {
+    [MemoryPackIgnore]
+    public IReadOnlyList<int> ActivatedExRankIds { get; set; } = [];
+
+    public IEnumerable<uint> GetActivatedExRanks(int pathId, int? ownerUid = null)
+    {
+        var ids = ownerUid.HasValue
+            ? DatabaseHelper.Instance?.GetInstance<AvatarData>(ownerUid.Value)?.ExRankIds.GetValueOrDefault(BaseAvatarId) ?? []
+            : ActivatedExRankIds;
+        return ids.Where(id => AvatarExRankMaterials.Definitions.TryGetValue(id, out var definition) &&
+                               definition.AvatarId == pathId).Distinct().Order().Select(id => (uint)id);
+    }
+
     [MemoryPackConstructor]
     public FormalAvatarInfo()
     {
@@ -238,7 +261,7 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
     {
         var isBattle = collection.LineupInfo.LineupType != 0;
 
-        return new BattleAvatar
+        var proto = new BattleAvatar
         {
             Id = (uint)avatarId,
             AvatarType = avatarType,
@@ -251,6 +274,10 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
             WorldLevel = (uint)collection.PlayerData.WorldLevel,
             EnhancedId = (uint)pathInfo.EnhanceId
         };
+        // Activated 奇缘星魂 also apply in 货币战争 (GridFight builds this proto from the owned avatar); they used to be
+        // left out there.
+        proto.IGDEHGIKFJA.AddRange(GetActivatedExRanks(avatarId, collection.PlayerData.Uid));
+        return proto;
     }
 
     private static bool IsUpgradableType(AvatarType avatarType) =>
@@ -536,6 +563,7 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
                 DressedSkinId = (uint)pathInfo.Skin,
                 UnkEnhancedId = (uint)pathInfo.EnhanceId
             };
+            proto.IGDEHGIKFJA.AddRange(GetActivatedExRanks(pathInfo.PathId));
 
             foreach (var skill in pathInfo.GetSkillTree())
             {
@@ -578,18 +606,20 @@ public partial class FormalAvatarInfo : BaseAvatarInfo
             Pos = (uint)pos,
             DressedSkinId = (uint)GetCurPathInfo().Skin
         };
+        proto.ExRankIdList.AddRange(GetActivatedExRanks(AvatarId, collection.PlayerData.Uid));
 
         var inventory = collection.InventoryData;
         foreach (var item in GetCurPathInfo().Relic)
         {
-            var relic = inventory.RelicItems.Find(x => x.UniqueId == item.Value)!;
-            proto.RelicList.Add(relic.ToDisplayRelicProto());
+            // A dangling relic id must not take the whole profile/support response down with it.
+            var relic = inventory.RelicItems.Find(x => x.UniqueId == item.Value);
+            if (relic != null) proto.RelicList.Add(relic.ToDisplayRelicProto());
         }
 
         if (GetCurPathInfo().EquipId != 0)
         {
-            var equip = inventory.EquipmentItems.Find(x => x.UniqueId == GetCurPathInfo().EquipId)!;
-            proto.Equipment = equip.ToDisplayEquipmentProto();
+            var equip = inventory.EquipmentItems.Find(x => x.UniqueId == GetCurPathInfo().EquipId);
+            if (equip != null) proto.Equipment = equip.ToDisplayEquipmentProto();
         }
 
         foreach (var skill in GetCurPathInfo().GetSkillTree())
@@ -611,9 +641,18 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
 
     public void CheckLevel(int worldLevel)
     {
-        if (!GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + worldLevel, out var specialAvatar))
-            if (!GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + 1, out specialAvatar))
-                return;
+        // Rows are keyed by SpecialAvatarID*10+WorldLevel. AvatarId is the path (8004) and misses
+        // story trials such as 1008004.
+        SpecialAvatarExcel? specialAvatar = null;
+        if (SpecialAvatarId != 0)
+            GameData.SpecialAvatarData.TryGetValue(SpecialAvatarId * 10 + worldLevel, out specialAvatar);
+        if (specialAvatar == null)
+            GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + worldLevel, out specialAvatar);
+        if (specialAvatar == null && SpecialAvatarId != 0)
+            GameData.SpecialAvatarData.TryGetValue(SpecialAvatarId * 10 + 1, out specialAvatar);
+        if (specialAvatar == null &&
+            !GameData.SpecialAvatarData.TryGetValue(AvatarId * 10 + 1, out specialAvatar))
+            return;
 
         Level = specialAvatar.Level;
         Promotion = specialAvatar.Promotion;
@@ -680,12 +719,27 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
             EnhancedId = (uint)GetCurPathInfo().EnhanceId
         };
 
-        foreach (var skill in GetCurPathInfo().GetSkillTree())
-            proto.SkilltreeList.Add(new AvatarSkillTree
-            {
-                PointId = (uint)skill.Key,
-                Level = (uint)skill.Value
-            });
+        // A config-owned trial has no saved traces. MaxWithInLevel grants every node its
+        // promotion and level allow; without that the story fight runs the bare kit.
+        var maxed = StoryTrialTables.MaxedSkillTree(AvatarId, Promotion, Level);
+        if (maxed.Count > 0)
+        {
+            foreach (var (pointId, level) in maxed)
+                proto.SkilltreeList.Add(new AvatarSkillTree
+                {
+                    PointId = (uint)pointId,
+                    Level = (uint)level
+                });
+        }
+        else
+        {
+            foreach (var skill in GetCurPathInfo().GetSkillTree())
+                proto.SkilltreeList.Add(new AvatarSkillTree
+                {
+                    PointId = (uint)skill.Key,
+                    Level = (uint)skill.Value
+                });
+        }
 
         foreach (var relic in GetCurPathInfo().Relic)
         {
@@ -720,14 +774,14 @@ public partial class SpecialAvatarInfo : BaseAvatarInfo
                     Rank = (uint)item.Rank
                 });
         }
-        else if (GetCurPathInfo().EquipData != null)
+        else if (GetCurPathInfo().EquipData is { ItemId: > 0 } equipment)
         {
             proto.EquipmentList.Add(new BattleEquipment
             {
-                Id = (uint)GetCurPathInfo().EquipData!.ItemId,
-                Level = (uint)GetCurPathInfo().EquipData!.Level,
-                Promotion = (uint)GetCurPathInfo().EquipData!.Promotion,
-                Rank = (uint)GetCurPathInfo().EquipData!.Rank
+                Id = (uint)equipment.ItemId,
+                Level = (uint)equipment.Level,
+                Promotion = (uint)equipment.Promotion,
+                Rank = (uint)equipment.Rank
             });
         }
 

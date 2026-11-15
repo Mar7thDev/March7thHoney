@@ -1,4 +1,3 @@
-using JNFDGPDHENJ = March7thHoney.Proto.PlayerSqueezedScNotify.Types.AAFEHKFADDH.Types.JNFDGPDHENJ;
 using March7thHoney.Kcp;
 using March7thHoney.Proto;
 
@@ -10,12 +9,12 @@ public class PacketPlayerSqueezedScNotify : BasePacket
     {
         var proto = new PlayerSqueezedScNotify
         {
-            KickType = (JNFDGPDHENJ)0
+            KickType = (GGHJCJPPEFE)0
         };
         SetData(proto);
     }
 
-    public PacketPlayerSqueezedScNotify(JNFDGPDHENJ type, BlackInfo? info = null) : base(CmdIds.PlayerSqueezedScNotify)
+    public PacketPlayerSqueezedScNotify(GGHJCJPPEFE type, BlackInfo? info = null) : base(CmdIds.PlayerSqueezedScNotify)
     {
         var proto = new PlayerSqueezedScNotify
         {

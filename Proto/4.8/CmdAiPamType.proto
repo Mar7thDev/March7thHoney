@@ -1,0 +1,283 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message ABMNFJJDDOE {
+	uint32 ILBJLIENCLB = 1;
+	repeated BJNCNELEOMO MPMNLICFHMC = 2;
+}
+
+message AiPamAskSettlementScNotify {
+	MDGIOENHBEJ EIADGIMDNMO = 11;
+}
+
+message AiPamMotionScNotify {
+	repeated string BLCCBDPODFM = 7;
+}
+
+message AiPamResponseFeedbackCommentCsReq {
+	string IMNOJNCGGNI = 1;
+	uint32 OLLBLNAGMPC = 10;
+}
+
+message AiPamResponseFeedbackCommentScRsp {
+	uint32 retcode = 11;
+}
+
+message AiPamResponseFeedbackCsReq {
+	FKNKNLGMACL role = 2;
+	bool NMMJBGFDNAI = 7;
+	bool IAJAOMAKAHA = 9;
+}
+
+message AiPamResponseFeedbackScRsp {
+	bool NMMJBGFDNAI = 1;
+	bool IAJAOMAKAHA = 10;
+	FKNKNLGMACL role = 11;
+	uint32 retcode = 14;
+}
+
+message AiPamSendMsgCsReq {
+	bool GFIJJLNOOOM = 2;
+	bool CLDBFBNOLNP = 5;
+	bool LOODCBCFNMJ = 6;
+	FKNKNLGMACL role = 9;
+	MessageChatData content = 13;
+}
+
+message AiPamSendMsgScRsp {
+	FKNKNLGMACL role = 2;
+	uint32 retcode = 9;
+}
+
+message BALHBDBHHON {
+	GOECDMPJMCM OAMKPPGDDIM = 1;
+}
+
+message BJNCNELEOMO {
+	uint32 item_id = 1;
+	uint32 item_count = 2;
+}
+
+message BKHLGPCDLGL {
+	uint32 retcode = 2;
+}
+
+enum CmdAiPamType {
+	CmdAiPamType_JCDCNPPCNEO = 0;
+	CmdAiPamType_AiPamSendMsgScRsp = 9501;
+	CmdAiPamType_GetAiPamChatInfoCsReq = 9504;
+	CmdAiPamType_PFFAMBOFBBJ = 9506;
+	CmdAiPamType_GetAiPamChatHistoryScRsp = 9507;
+	CmdAiPamType_AiPamResponseFeedbackScRsp = 9509;
+	CmdAiPamType_RecvAiPamChatEventScNotify = 9511;
+	CmdAiPamType_GetAiPamNextQuestionScRsp = 9513;
+	CmdAiPamType_GetAiPamNextQuestionCsReq = 9515;
+	CmdAiPamType_AiPamSendMsgCsReq = 9516;
+	CmdAiPamType_EFAJNIOONGI = 9521;
+	CmdAiPamType_AiPamResponseFeedbackCommentScRsp = 9523;
+	CmdAiPamType_UpdateAiPamSettingsCsReq = 9528;
+	CmdAiPamType_AiPamResponseFeedbackCsReq = 9530;
+	CmdAiPamType_AiPamMotionScNotify = 9532;
+	CmdAiPamType_AiPamAskSettlementScNotify = 9535;
+	CmdAiPamType_GetAiPamChatInfoScRsp = 9536;
+	CmdAiPamType_OIJHPHDNJFD = 9540;
+	CmdAiPamType_TriggerAiPamSpeakCsReq = 9541;
+	CmdAiPamType_TriggerAiPamSpeakScRsp = 9542;
+	CmdAiPamType_AiPamResponseFeedbackCommentCsReq = 9543;
+	CmdAiPamType_GetAiPamChatHistoryCsReq = 9544;
+	CmdAiPamType_GGCFEOOGKPE = 9545;
+	CmdAiPamType_UpdateAiPamSettingsScRsp = 9547;
+}
+
+message DEHDGGEDJHI {
+	ChatMessageData stop_desc = 1;
+}
+
+message DNPDLODGAHA {
+	uint32 avatar_id = 1;
+	HJNPOBAMKKF FLFNBPLNNBL = 2;
+	HJNPOBAMKKF LLMDKAHFIIJ = 3;
+}
+
+message DOPJFJCLIAH {
+	bool LJOEMLOJDDP = 1;
+	bool JLNEBLAKKOB = 2;
+}
+
+message DPKPGPPHHBM {
+	uint32 avatar_id = 1;
+	repeated PLHPNBIMIOK MDLGEIGFFEG = 2;
+}
+
+message EIICHLNCAKK {
+	uint32 avatar_id = 1;
+	repeated ABMNFJJDDOE CNIMHMAPDII = 2;
+	uint32 HPJAAOPDIOL = 3;
+	uint32 JFCLHPFCMHP = 4;
+}
+
+message FAIFDBLLGKK {
+	KDNCOBMFFEB event_type = 1;
+	string ACFENKABBKK = 2;
+	uint32 JKIHICLOPKM = 3;
+	FKNKNLGMACL role = 4;
+	oneof FCIDKEAOIBG {
+		DEHDGGEDJHI stop_desc = 11;
+		DOPJFJCLIAH LMJCPMFPHLK = 12;
+		BALHBDBHHON FHDMHKOMEFO = 13;
+		IAGGIFBOFDF FIFCCCJOLNE = 14;
+	}
+}
+
+enum FKNKNLGMACL {
+	FKNKNLGMACL_NLCDGIPGFDJ = 0;
+	FKNKNLGMACL_LMBIMAOBGPO = 1;
+	FKNKNLGMACL_NPDOGNAPCEE = 2;
+}
+
+enum GOECDMPJMCM {
+	GOECDMPJMCM_NLCDGIPGFDJ = 0;
+	GOECDMPJMCM_IKKJHNHKFOG = 1;
+	GOECDMPJMCM_FFBIEEHPKND = 2;
+	GOECDMPJMCM_JFNMPEJEIOH = 3;
+}
+
+message GetAiPamChatHistoryCsReq {
+	uint32 target_side = 10;
+}
+
+message GetAiPamChatHistoryScRsp {
+	uint32 target_side = 8;
+	repeated ChatMessageData JPCMGNGNONJ = 11;
+	uint32 retcode = 13;
+}
+
+message GetAiPamChatInfoCsReq {
+}
+
+message GetAiPamChatInfoScRsp {
+	uint32 retcode = 1;
+	uint32 JKIHICLOPKM = 2;
+	bool AGANFJKBFMA = 6;
+	repeated FAIFDBLLGKK BJLHDBPPILI = 11;
+	bool LOCNGFLCENG = 12;
+	string ACFENKABBKK = 13;
+	bool OKCIPPLKGCD = 15;
+}
+
+message GetAiPamNextQuestionCsReq {
+	FKNKNLGMACL role = 2;
+}
+
+message GetAiPamNextQuestionScRsp {
+	FKNKNLGMACL role = 2;
+	uint32 retcode = 6;
+	repeated NEKAOLPJKEE KDOHKGKBFCH = 13;
+}
+
+message HGGMNLNJPHG {
+	uint32 retcode = 12;
+}
+
+message IAGGIFBOFDF {
+}
+
+message IJJKHFPLLIF {
+	uint32 avatar_id = 1;
+	repeated LJEMPEHADKJ HGAIDOLJKDL = 2;
+	repeated LJEMPEHADKJ FLOKEJHHPPO = 3;
+}
+
+message IOFKKOEJFHI {
+	PJCMNENIEHH game_mode = 1;
+	repeated JOLHIMGJGBO lineup_list = 2;
+}
+
+message JFCPFBLKJAB {
+	oneof PONFIKAJHFD {
+		IJJKHFPLLIF lineup = 10;
+		DNPDLODGAHA LCMADDIMION = 11;
+		DPKPGPPHHBM PAGPNOKLNOM = 12;
+		EIICHLNCAKK BEGAIBBJHHD = 13;
+		IOFKKOEJFHI HCAAHIGINOM = 14;
+	}
+}
+
+enum KDNCOBMFFEB {
+	KDNCOBMFFEB_NLCDGIPGFDJ = 0;
+	KDNCOBMFFEB_BDOEMDGHHEP = 1;
+	KDNCOBMFFEB_stop_desc = 2;
+	KDNCOBMFFEB_LMJCPMFPHLK = 3;
+	KDNCOBMFFEB_FHDMHKOMEFO = 4;
+	KDNCOBMFFEB_FCKIHKAIIIJ = 5;
+}
+
+message KIIKHMMDHKP {
+	repeated NGBBCMBMOLI MIEFCFLJLAH = 2;
+}
+
+message KKNGAGGAJKC {
+	string EDMBJCBKBIM = 1;
+	string OIBPLFNJOEM = 2;
+	string DMHFFKNLILH = 3;
+}
+
+message LHNMDFOPMKN {
+	string BLDMFDKDJDM = 1;
+	JFCPFBLKJAB return_data = 8;
+}
+
+message LJEMPEHADKJ {
+	repeated uint32 avatar_id_list = 1;
+}
+
+message MDGIOENHBEJ {
+	string title = 1;
+	string OAPACMJOIKC = 2;
+	uint32 ENHLKLFLCKG = 3;
+	KKNGAGGAJKC tag = 4;
+}
+
+message NEKAOLPJKEE {
+	string POLADDGLAEH = 1;
+}
+
+message NGBBCMBMOLI {
+	uint32 avatar_id = 1;
+	bool CLFMFEHJKEJ = 2;
+	bool GGPIFKGAPPB = 3;
+	bool AOOEIHOPALH = 4;
+	bool LIEKGCNNIHA = 5;
+}
+
+message PLHPNBIMIOK {
+	uint32 KAJCFPKEGBP = 1;
+	uint32 JHFFAALHEAI = 2;
+}
+
+message RecvAiPamChatEventScNotify {
+	FAIFDBLLGKK OOOACLEFDGM = 4;
+}
+
+message TriggerAiPamSpeakCsReq {
+	FKNKNLGMACL role = 5;
+	uint32 JMPPMNAONHM = 8;
+}
+
+message TriggerAiPamSpeakScRsp {
+	uint32 retcode = 3;
+	FKNKNLGMACL role = 5;
+	uint32 JMPPMNAONHM = 9;
+}
+
+message UpdateAiPamSettingsCsReq {
+	bool LOCNGFLCENG = 15;
+}
+
+message UpdateAiPamSettingsScRsp {
+	bool LOCNGFLCENG = 6;
+	uint32 retcode = 11;
+}

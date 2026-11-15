@@ -864,6 +864,9 @@ public sealed partial class KcpConversation : IKcpConversation, IKcpExceptionPro
     /// <inheritdoc />
     public ValueTask InputPakcetAsync(UdpReceiveResult packet, CancellationToken cancellationToken = default)
     {
+        // A conversation ID routes packets; it does not authenticate their source. Bind ingress to the
+        // endpoint established at channel creation before accepting data, ACKs or keepalive/window updates.
+        if (!_remoteEndPoint.Equals(packet.RemoteEndPoint)) return default;
         if (cancellationToken.IsCancellationRequested) return new ValueTask(Task.FromCanceled(cancellationToken));
         int packetHeaderSize = _id.HasValue
             ? KcpGlobalVars.HEADER_LENGTH_WITH_CONVID

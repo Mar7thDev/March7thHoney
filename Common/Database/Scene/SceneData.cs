@@ -52,6 +52,12 @@ public class SceneData : BaseDatabaseDataHelper
     /// </summary>
     public Dictionary<int, List<int>> EnteredSceneData { get; set; } = []; // Dictionary<PlaneId, List<FloorId>>
 
+    /// <summary>
+    ///     Overworld monsters this player has killed. Ordinary marks expire at the daily reset; permanent marks
+    ///     (chest guardians, trotters, mission fights) do not. Appended as its own column.
+    /// </summary>
+    public List<DefeatedMonsterRecord> DefeatedMonsters { get; set; } = [];
+
     public int GetFloorSavedValue(int floorId, string key)
     {
         if (FloorSavedData.TryGetValue(floorId, out var data) && data.TryGetValue(key, out var value)) return value;
@@ -126,6 +132,17 @@ public partial class ScenePropTimelineData
             TimelineByteValue = ByteString.FromBase64(ByteValue)
         };
     }
+}
+
+[MemoryPackable]
+public partial class DefeatedMonsterRecord
+{
+    public int FloorId { get; set; }
+    public int DimensionId { get; set; }
+    public int GroupId { get; set; }
+    public int InstId { get; set; }
+    public bool Permanent { get; set; }
+    public int DayKey { get; set; }
 }
 
 [MemoryPackable]

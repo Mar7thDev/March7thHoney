@@ -36,7 +36,7 @@ public static partial class PlayerConsoleScripts
 
       const config = window.M7_CONSOLE_CONFIG || {};
       const I18N = window.M7_CONSOLE_I18N || {};
-      const STORAGE = { lang: "m7-console-lang", tab: "m7-console-tab", history: "m7-console-history" };
+      const STORAGE = { lang: "m7-console-lang", tab: "m7-console-tab", history: "m7-console-history", login: "m7-console-login" };
       const TOKEN_KEY = "m7-console-token";
 
       const state = {
@@ -530,6 +530,7 @@ public static partial class PlayerConsoleScripts
         els.loginUid = $("#login-uid");
         els.loginPassword = $("#login-password");
         els.loginToggle = $("#login-toggle");
+        els.loginRemember = $("#login-remember");
         els.loginMessage = $("#login-message");
         els.app = $("#app");
         els.tabs = $("#tabs");
@@ -647,6 +648,9 @@ public static partial class PlayerConsoleScripts
           state.token = payload.data.token;
           state.player = payload.data.player;
           writeSession(TOKEN_KEY, state.token);
+          writeStorage(STORAGE.login, els.loginRemember.checked
+            ? JSON.stringify({ uid, password: els.loginPassword.value })
+            : null);
           els.loginPassword.value = "";
           setLoginMessage("", "");
           await enterWorkspace();
@@ -691,6 +695,7 @@ public static partial class PlayerConsoleScripts
         state.player = null;
         state.catalog = [];
         writeSession(TOKEN_KEY, null);
+        fillRememberedLogin();
         els.app.classList.add("hidden");
         els.loginView.classList.remove("hidden");
         setLoginMessage(expired ? t("login.session_expired") : "", expired ? "bad" : "");
@@ -700,6 +705,16 @@ public static partial class PlayerConsoleScripts
       function setLoginMessage(text, kind) {
         els.loginMessage.textContent = text;
         els.loginMessage.className = `message ${kind || ""}`;
+      }
+
+      // Saved credentials are only written after a successful sign-in with "remember" ticked.
+      function fillRememberedLogin() {
+        let saved = null;
+        try { saved = JSON.parse(readStorage(STORAGE.login) || "null"); } catch { saved = null; }
+        if (!saved || typeof saved.uid !== "string") return;
+        els.loginUid.value = saved.uid;
+        els.loginPassword.value = typeof saved.password === "string" ? saved.password : "";
+        els.loginRemember.checked = true;
       }
 
       // ---------------------------------------------------------------- init
@@ -723,6 +738,7 @@ public static partial class PlayerConsoleScripts
           });
         });
         on(document, "[data-lang]", "click", event => setLanguage(event.currentTarget.dataset.lang));
+        fillRememberedLogin();
 
         if (state.token) restoreSession();
         else setTimeout(() => els.loginUid.focus(), 50);

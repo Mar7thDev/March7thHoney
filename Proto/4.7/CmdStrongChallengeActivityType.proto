@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+enum CmdStrongChallengeActivityType {
+	CmdStrongChallengeActivityType_NLCDGIPGFDJ = 0;
+	CmdStrongChallengeActivityType_StrongChallengeActivityBattleEndScNotify = 6605;
+	CmdStrongChallengeActivityType_GetStrongChallengeActivityDataScRsp = 6619;
+	CmdStrongChallengeActivityType_EnterStrongChallengeActivityStageCsReq = 6631;
+	CmdStrongChallengeActivityType_GetStrongChallengeActivityDataCsReq = 6674;
+	CmdStrongChallengeActivityType_EnterStrongChallengeActivityStageScRsp = 6687;
+}
+
+message DKOPOIIBDGJ {
+	map<uint32, MKGHJJCPBLP> MBDBADFENPL = 4;
+}
+
+message EnterStrongChallengeActivityStageCsReq {
+	repeated StrongChallengeAvatar avatar_list = 1;
+	uint32 stage_id = 4;
+	repeated uint32 buff_list = 5;
+}
+
+message EnterStrongChallengeActivityStageScRsp {
+	uint32 retcode = 9;
+	uint32 stage_id = 10;
+	SceneBattleInfo battle_info = 15;
+}
+
+message GetStrongChallengeActivityDataCsReq {
+}
+
+message GetStrongChallengeActivityDataScRsp {
+	uint32 retcode = 4;
+	DKOPOIIBDGJ OCLJEAKLFBH = 14;
+}
+
+message MKGHJJCPBLP {
+	NAFMBLMMAAG LMDGHCEHJCG = 9;
+	uint32 max_score = 10;
+	uint32 panel_id = 12;
+	uint32 CNBCDMMBCKI = 13;
+	uint32 stage_id = 14;
+}
+
+message NAFMBLMMAAG {
+	repeated uint32 buff_list = 1;
+	repeated StrongChallengeAvatar avatar_list = 9;
+}
+
+message StrongChallengeActivityBattleEndScNotify {
+	uint32 score = 1;
+	uint32 IMPIAHHCOLI = 2;
+	uint32 BMAHOGKMPDJ = 3;
+	uint32 damage_score = 4;
+	uint32 total_damage = 5;
+	BattleEndStatus JPPKLEIPKAN = 6;
+	uint32 IMCJFGIPIFI = 13;
+	uint32 stage_id = 14;
+}
+
+message StrongChallengeAvatar {
+	AvatarType avatar_type = 5;
+	uint32 avatar_id = 13;
+}

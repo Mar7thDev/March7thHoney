@@ -1,0 +1,190 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message BGOMIHEFHPA {
+	bool BNBCGFOBIPH = 1;
+	uint32 DNNCAGJIOAP = 2;
+	uint32 MDAIPFLCNAJ = 3;
+	bool KGEJAOIMOBK = 7;
+	uint32 CBGODLHCLPK = 10;
+	uint32 GAIJNEMFDBP = 12;
+	repeated BLODLKIBCIE GEFLCFHPNJH = 13;
+	uint32 HGBLLINAMLN = 14;
+}
+
+message BLODLKIBCIE {
+	uint32 ELAENNLBEDD = 2;
+	repeated BLODLKIBCIE LEGEGIHKLFK = 8;
+	uint32 BOGIJENAEHJ = 15;
+}
+
+enum CmdHeliobusType {
+	CmdHeliobusType_NLCDGIPGFDJ = 0;
+	CmdHeliobusType_HeliobusEnterBattleCsReq = 5804;
+	CmdHeliobusType_HeliobusSnsPostCsReq = 5805;
+	CmdHeliobusType_HeliobusSnsCommentCsReq = 5806;
+	CmdHeliobusType_HeliobusChallengeUpdateScNotify = 5815;
+	CmdHeliobusType_HeliobusSnsLikeScRsp = 5818;
+	CmdHeliobusType_HeliobusActivityDataScRsp = 5819;
+	CmdHeliobusType_HeliobusLineupUpdateScNotify = 5823;
+	CmdHeliobusType_HeliobusSnsUpdateScNotify = 5827;
+	CmdHeliobusType_HeliobusSnsReadCsReq = 5831;
+	CmdHeliobusType_HeliobusUpgradeLevelCsReq = 5835;
+	CmdHeliobusType_HeliobusUnlockSkillScNotify = 5847;
+	CmdHeliobusType_HeliobusSelectSkillCsReq = 5848;
+	CmdHeliobusType_HeliobusInfoChangedScNotify = 5852;
+	CmdHeliobusType_HeliobusStartRaidCsReq = 5857;
+	CmdHeliobusType_HeliobusSnsLikeCsReq = 5859;
+	CmdHeliobusType_HeliobusSnsCommentScRsp = 5870;
+	CmdHeliobusType_HeliobusSnsPostScRsp = 5871;
+	CmdHeliobusType_HeliobusActivityDataCsReq = 5874;
+	CmdHeliobusType_HeliobusSelectSkillScRsp = 5875;
+	CmdHeliobusType_HeliobusStartRaidScRsp = 5882;
+	CmdHeliobusType_HeliobusSnsReadScRsp = 5887;
+	CmdHeliobusType_HeliobusEnterBattleScRsp = 5894;
+	CmdHeliobusType_HeliobusUpgradeLevelScRsp = 5898;
+}
+
+message HeliobusActivityDataCsReq {
+}
+
+message HeliobusActivityDataScRsp {
+	uint32 level = 2;
+	repeated HeliobusChallengeLineup DJKMBPEFCKL = 5;
+	uint32 OMMNAFNIKPH = 7;
+	uint32 retcode = 8;
+	uint32 phase = 9;
+	uint32 IMGDMDDKHDL = 10;
+	repeated HeliobusChallengeData challenge_list = 11;
+	ONBLLGHELOB skill_info = 12;
+	uint32 AFMLOAPAAPM = 13;
+	repeated BGOMIHEFHPA AAHPCIOOLHB = 15;
+}
+
+message HeliobusChallengeData {
+	uint32 challenge_id = 2;
+	bool DBPNANBMGFE = 9;
+	uint32 star = 13;
+}
+
+message HeliobusChallengeLineup {
+	uint32 group_id = 5;
+	repeated uint32 avatar_id_list = 10;
+	uint32 skill_id = 15;
+}
+
+message HeliobusChallengeUpdateScNotify {
+	HeliobusChallengeData OCDLPDDMCLP = 13;
+}
+
+message HeliobusEnterBattleCsReq {
+	repeated uint32 avatar_id_list = 2;
+	uint32 event_id = 6;
+	uint32 skill_id = 15;
+}
+
+message HeliobusEnterBattleScRsp {
+	uint32 event_id = 2;
+	uint32 retcode = 7;
+	SceneBattleInfo battle_info = 13;
+}
+
+message HeliobusInfoChangedScNotify {
+	uint32 IMGDMDDKHDL = 2;
+	uint32 phase = 6;
+	uint32 OMMNAFNIKPH = 10;
+	repeated BGOMIHEFHPA KGKLBGOADCE = 12;
+}
+
+message HeliobusLineupUpdateScNotify {
+	HeliobusChallengeLineup lineup = 7;
+}
+
+message HeliobusSelectSkillCsReq {
+	uint32 HACFLGOPALO = 11;
+}
+
+message HeliobusSelectSkillScRsp {
+	uint32 skill_id = 1;
+	uint32 retcode = 5;
+}
+
+message HeliobusSnsCommentCsReq {
+	uint32 JKGKPABHDCH = 7;
+	uint32 CBGODLHCLPK = 12;
+	uint32 BOGIJENAEHJ = 13;
+}
+
+message HeliobusSnsCommentScRsp {
+	uint32 retcode = 1;
+	BGOMIHEFHPA AMFEFIDDMDA = 14;
+}
+
+message HeliobusSnsLikeCsReq {
+	uint32 CBGODLHCLPK = 12;
+}
+
+message HeliobusSnsLikeScRsp {
+	uint32 CBGODLHCLPK = 1;
+	bool KGEJAOIMOBK = 6;
+	uint32 retcode = 15;
+}
+
+message HeliobusSnsPostCsReq {
+	uint32 MDAIPFLCNAJ = 2;
+	uint32 DNNCAGJIOAP = 8;
+	uint32 CBGODLHCLPK = 10;
+}
+
+message HeliobusSnsPostScRsp {
+	uint32 retcode = 9;
+	BGOMIHEFHPA AMFEFIDDMDA = 14;
+}
+
+message HeliobusSnsReadCsReq {
+	uint32 CBGODLHCLPK = 13;
+}
+
+message HeliobusSnsReadScRsp {
+	uint32 CBGODLHCLPK = 6;
+	uint32 retcode = 11;
+}
+
+message HeliobusSnsUpdateScNotify {
+	repeated BGOMIHEFHPA KGKLBGOADCE = 14;
+}
+
+message HeliobusStartRaidCsReq {
+	uint32 raid_id = 2;
+	uint32 skill_id = 4;
+	uint32 prop_entity_id = 6;
+	bool is_save = 7;
+	uint32 DNOAEPDPHKK = 10;
+	repeated uint32 avatar_list = 12;
+}
+
+message HeliobusStartRaidScRsp {
+	uint32 retcode = 1;
+	RaidSceneData scene = 5;
+}
+
+message HeliobusUnlockSkillScNotify {
+	uint32 skill_id = 7;
+	uint32 ENGEPMPCJPC = 9;
+}
+
+message HeliobusUpgradeLevelCsReq {
+}
+
+message HeliobusUpgradeLevelScRsp {
+	uint32 level = 2;
+	uint32 retcode = 15;
+}
+
+message ONBLLGHELOB {
+	repeated uint32 NGONANKBKMF = 1;
+	uint32 ENGEPMPCJPC = 7;
+}

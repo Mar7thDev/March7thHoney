@@ -6,6 +6,9 @@ using March7thHoney.ProtoOrganizer;
 
 var opts = Args.Parse(args);
 
+if (opts.CarryDumpPath != null)
+    return DumpCarryMode.Run(opts);
+
 if (opts.RewriteProtoPaths.Count > 0)
     return ProtoRewriteMode.Run(opts);
 

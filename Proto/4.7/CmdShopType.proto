@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message BuyGoodsCsReq {
+	uint32 item_id = 3;
+	uint32 goods_id = 5;
+	uint32 interacted_prop_entity_id = 6;
+	repeated uint32 ALHBEKKLJKK = 8;
+	uint32 goods_num = 12;
+	uint32 shop_id = 14;
+}
+
+message BuyGoodsScRsp {
+	uint32 goods_buy_times = 1;
+	uint32 shop_id = 6;
+	uint32 retcode = 10;
+	uint32 goods_id = 12;
+	ItemList return_item_list = 14;
+}
+
+message CityShopInfoScNotify {
+	uint32 level = 4;
+	uint32 exp = 12;
+	uint32 shop_id = 13;
+	uint64 taken_level_reward = 15;
+}
+
+enum CmdShopType {
+	CmdShopType_NLCDGIPGFDJ = 0;
+	CmdShopType_TakeCityShopRewardCsReq = 1505;
+	CmdShopType_GetShopListScRsp = 1519;
+	CmdShopType_BuyGoodsCsReq = 1531;
+	CmdShopType_CityShopInfoScNotify = 1559;
+	CmdShopType_TakeCityShopRewardScRsp = 1571;
+	CmdShopType_GetShopListCsReq = 1574;
+	CmdShopType_BuyGoodsScRsp = 1587;
+}
+
+message GetShopListCsReq {
+	uint32 shop_type = 10;
+}
+
+message GetShopListScRsp {
+	repeated Shop shop_list = 3;
+	uint32 retcode = 4;
+	uint32 shop_type = 12;
+}
+
+message Goods {
+	uint32 buy_times = 1;
+	uint32 item_id = 2;
+	uint32 goods_id = 4;
+	int64 begin_time = 7;
+	int64 end_time = 9;
+}
+
+message Shop {
+	int64 end_time = 3;
+	uint32 city_level = 4;
+	int64 begin_time = 5;
+	uint32 city_exp = 6;
+	repeated Goods goods_list = 7;
+	uint32 shop_id = 14;
+	uint64 city_taken_level_reward = 15;
+}
+
+message TakeCityShopRewardCsReq {
+	uint32 level = 3;
+	uint32 shop_id = 10;
+}
+
+message TakeCityShopRewardScRsp {
+	ItemList reward = 6;
+	uint32 shop_id = 8;
+	uint32 level = 10;
+	uint32 retcode = 15;
+}

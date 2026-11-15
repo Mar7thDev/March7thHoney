@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdPlotType {
+	CmdPlotType_NLCDGIPGFDJ = 0;
+	CmdPlotType_FinishPlotScRsp = 1154;
+	CmdPlotType_FinishPlotCsReq = 1183;
+}
+
+message FinishPlotCsReq {
+	uint32 CAMCBJPOMLC = 4;
+}
+
+message FinishPlotScRsp {
+	uint32 CAMCBJPOMLC = 5;
+	uint32 retcode = 6;
+}

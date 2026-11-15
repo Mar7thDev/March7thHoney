@@ -101,10 +101,9 @@ public class ChallengeMemoryInstance(PlayerInstance player, ChallengeStateData d
         switch (req.EndStatus)
         {
             case BattleEndStatus.BattleEndWin:
-                // Check if any avatar in the lineup has died
-                foreach (var avatar in battle.Lineup.AvatarData!.FormalAvatars)
-                    if (avatar.CurrentHp <= 0)
-                        Memory.DeadAvatarNum++;
+                // Count the fight's own casualties. Every owned avatar's overworld HP missed challenge deaths
+                // (they land in the extra-lineup pool) and counted unrelated overworld ones.
+                Memory.DeadAvatarNum += (uint)req.Stt.BattleAvatarList.Count(avatar => avatar.AvatarStatus.LeftHp <= 0);
 
                 // Get monster count in stage
                 long monsters = Player.SceneInstance!.Entities.Values.OfType<EntityMonster>().Count();

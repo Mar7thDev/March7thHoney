@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+enum CmdVoracityInvasionType {
+	CmdVoracityInvasionType_NLCDGIPGFDJ = 0;
+	CmdVoracityInvasionType_VoracityInvasionGetDataCsReq = 10266;
+	CmdVoracityInvasionType_VoracityInvasionChangeScNotify = 10278;
+	CmdVoracityInvasionType_GetVoracityInvasionDataScRsp = 10279;
+}
+
+message EBGAMBKHDBO {
+	uint32 type = 1;
+	oneof AELHFLGJMJN {
+		ECGOMGJIBEP GGBGEJIIKFN = 1189;
+		bool NLIHHAKFEDB = 1685;
+	}
+}
+
+message ECGOMGJIBEP {
+	repeated uint32 IAJHCHOJHNN = 11;
+}
+
+message GetVoracityInvasionDataScRsp {
+	repeated EBGAMBKHDBO LLBNGIGLEMN = 3;
+	uint32 retcode = 5;
+}
+
+message VoracityInvasionChangeScNotify {
+	bool GHAMIKJEAFO = 4;
+	uint32 type = 13;
+	uint32 id = 14;
+}
+
+message VoracityInvasionGetDataCsReq {
+}

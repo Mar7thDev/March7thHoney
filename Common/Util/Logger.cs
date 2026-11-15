@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Threading.Channels;
 using March7thHoney.Internationalization;
 using Spectre.Console;
 
@@ -9,40 +10,33 @@ public class Logger(string moduleName)
     private static FileInfo? _logFile;
     private static FileInfo? _debugLogFile;
     private static readonly object Lock = new();
+    private static readonly Channel<ConsoleLogEntry> ConsoleLog = CreateConsoleLog();
+    private static int _consolePending; // queued or being written
+    private static volatile bool _consoleDirect;
+
+    private readonly record struct ConsoleLogEntry(string Time, string Module, LoggerLevel Level, string Message);
 
     public void Log(string message, LoggerLevel level)
     {
         lock (Lock)
         {
             var time = DateTime.Now.ToString("HH:mm:ss");
-            var escaped = Markup.Escape(message);
-            var moduleEscaped = Markup.Escape(moduleName);
-            var levelColor = level switch
+            // Resource loader warnings stay out of the console and the main log; they are kept in the debug log only.
+            if (level == LoggerLevel.WARN && moduleName is "ResMgr" or "ResCache")
             {
-                LoggerLevel.INFO => "#7AA8DD",
-                LoggerLevel.WARN => "#F6C177",
-                LoggerLevel.ERROR => "#EB6F92",
-                LoggerLevel.FATAL => "#C73E1D",
-                LoggerLevel.DEBUG => "#9CCFD8",
-                _ => "#9992C7"
-            };
-
-            try
-            {
-                if (!Console.IsOutputRedirected)
-                {
-                    var colored = $"[grey70][[{time}]][/] [#60BAEE][[{moduleEscaped}]][/] [{levelColor}]{level}[/] {escaped}";
-                    var plain = $"[{time}] [{moduleName}] {level} {message}";
-                    IConsole.WriteExternalLine(() => AnsiConsole.MarkupLine(colored), plain);
-                }
-                else
-                {
-                    Console.WriteLine($"[{time}][{moduleName}] {message}");
-                }
+                WriteToDebugFile($"[{time}][{moduleName}][{level}] {message}");
+                return;
             }
-            catch
+
+            var entry = new ConsoleLogEntry(time, moduleName, level, message);
+            if (_consoleDirect)
             {
-                Console.WriteLine($"[{time}][{moduleName}] {message}");
+                WriteConsole(entry);
+            }
+            else
+            {
+                Interlocked.Increment(ref _consolePending);
+                if (!ConsoleLog.Writer.TryWrite(entry)) Interlocked.Decrement(ref _consolePending);
             }
 
             var logMessage = $"[{time}][{moduleName}][{level}] {message}";
@@ -63,6 +57,73 @@ public class Logger(string moduleName)
             }
 
             WriteToFile(logMessage);
+        }
+    }
+
+    private static Channel<ConsoleLogEntry> CreateConsoleLog()
+    {
+        // A paused Windows console or a full stdout pipe must not block request handlers: lines are queued and
+        // written by one background reader. The file logs and the log subscribers get every entry even when the
+        // display falls behind and the oldest queued lines are dropped.
+        var queue = Channel.CreateBounded<ConsoleLogEntry>(new BoundedChannelOptions(512)
+        {
+            SingleReader = true,
+            FullMode = BoundedChannelFullMode.DropOldest
+        }, _ => Interlocked.Decrement(ref _consolePending));
+        _ = Task.Run(async () =>
+        {
+            await foreach (var entry in queue.Reader.ReadAllAsync())
+            {
+                WriteConsole(entry);
+                Interlocked.Decrement(ref _consolePending);
+            }
+        });
+        // The reader ends with the process. At exit, give the queued lines (the details of an unhandled exception
+        // are the usual case) a moment to appear, then write directly so later shutdown messages are not lost.
+        AppDomain.CurrentDomain.ProcessExit += (_, _) =>
+        {
+            var waited = Stopwatch.StartNew();
+            while (Volatile.Read(ref _consolePending) > 0 && waited.ElapsedMilliseconds < 2000) Thread.Sleep(10);
+            _consoleDirect = true;
+        };
+        return queue;
+    }
+
+    private static void WriteConsole(ConsoleLogEntry entry)
+    {
+        var redirected = $"[{entry.Time}][{entry.Module}] {entry.Message}";
+        try
+        {
+            if (Console.IsOutputRedirected)
+            {
+                Console.WriteLine(redirected);
+                return;
+            }
+
+            var levelColor = entry.Level switch
+            {
+                LoggerLevel.INFO => "#7AA8DD",
+                LoggerLevel.WARN => "#F6C177",
+                LoggerLevel.ERROR => "#EB6F92",
+                LoggerLevel.FATAL => "#C73E1D",
+                LoggerLevel.DEBUG => "#9CCFD8",
+                _ => "#9992C7"
+            };
+            var colored = $"[grey70][[{entry.Time}]][/] [#60BAEE][[{Markup.Escape(entry.Module)}]][/] " +
+                          $"[{levelColor}]{entry.Level}[/] {Markup.Escape(entry.Message)}";
+            var plain = $"[{entry.Time}] [{entry.Module}] {entry.Level} {entry.Message}";
+            IConsole.WriteExternalLine(() => AnsiConsole.MarkupLine(colored), plain);
+        }
+        catch
+        {
+            try
+            {
+                Console.WriteLine(redirected);
+            }
+            catch
+            {
+                // A detached or closed terminal must not stop the reader; the file log already has the entry.
+            }
         }
     }
 

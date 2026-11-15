@@ -1,0 +1,193 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+message AABJNONNLML {
+	repeated uint32 FKGLNIAHGOA = 1;
+	uint32 HADIHNKDBAD = 4;
+	uint32 index = 11;
+	uint32 KDIDDHIDNCG = 14;
+}
+
+message BGAIEEIKOKK {
+	bool has_passed = 2;
+	uint32 star_num = 6;
+	uint32 total_score = 7;
+	uint32 level_id = 9;
+}
+
+message ChenLingFesBusinessDayEndCsReq {
+	uint32 HPHHKJHGMPJ = 2;
+	double happy_progress = 3;
+	repeated AABJNONNLML FBNBEMECJIJ = 4;
+	repeated HDLMAPACKNH PJGODPMGMEO = 5;
+	repeated PGEDFOBAEBC MNLCAOLGEMM = 6;
+	repeated NPNAEPOKPNE GOKMDCOJPHC = 7;
+	repeated LECPPIEIENH BAOPBDDEBKP = 8;
+	uint32 EJEOGKPEIBF = 9;
+	uint32 COJGECEMCFN = 10;
+	uint32 DBODBBOMJAD = 11;
+	uint32 OCLLAPEHDDH = 12;
+	repeated EDHOBLLOBNP HDNGJJILDCE = 13;
+	uint32 business_day = 14;
+	repeated PGIEBMKMECE MBFLDKEDBHN = 15;
+	uint32 fever_cnt_today = 432;
+	uint32 fever = 872;
+	uint32 play_time = 1523;
+	uint32 business_time = 1947;
+}
+
+message ChenLingFesBusinessDayEndScRsp {
+	oneof FBLHECDEHEF {
+		MOJFFDOILBN GAAHAOGLNPJ = 3;
+		DMHADFNOIGP EHIHHFMGNHH = 4;
+	}
+	uint32 business_day = 6;
+	string FGGCAOAPGPA = 9;
+	uint32 FGKPIDLKALL = 10;
+	uint32 retcode = 11;
+}
+
+message ChenLingFesLevelEndCsReq {
+	uint32 level_id = 13;
+}
+
+message ChenLingFesLevelEndScRsp {
+	uint32 level_id = 1;
+	DMHADFNOIGP level_data = 9;
+	uint32 retcode = 13;
+}
+
+message ChenLingFesLevelLeaveCsReq {
+	uint32 level_id = 5;
+}
+
+message ChenLingFesLevelLeaveScRsp {
+	uint32 retcode = 6;
+	uint32 level_id = 12;
+}
+
+message ChenLingFesLevelResumeCsReq {
+	uint32 level_id = 1;
+}
+
+message ChenLingFesLevelResumeScRsp {
+	uint32 retcode = 6;
+	uint32 FGKPIDLKALL = 11;
+	uint32 level_id = 13;
+}
+
+message ChenLingFesLevelStartCsReq {
+	uint32 level_id = 13;
+}
+
+message ChenLingFesLevelStartScRsp {
+	uint32 retcode = 1;
+	uint32 level_id = 5;
+	string FGGCAOAPGPA = 10;
+	uint32 FGKPIDLKALL = 11;
+	string NLMEEEKBPKO = 13;
+}
+
+message ChenLingFesRaidKickedNotify {
+	uint32 GKJJGKADNLE = 8;
+}
+
+enum CmdChenLingFesType {
+	CmdChenLingFesType_NLCDGIPGFDJ = 0;
+	CmdChenLingFesType_ChenLingFesLevelEndScRsp = 9911;
+	CmdChenLingFesType_ChenLingFesLevelResumeScRsp = 9924;
+	CmdChenLingFesType_ChenLingFesBusinessDayEndScRsp = 9926;
+	CmdChenLingFesType_ChenLingFesLevelLeaveCsReq = 9930;
+	CmdChenLingFesType_ChenLingFesRaidKickedNotify = 9932;
+	CmdChenLingFesType_ChenLingFesLevelResumeCsReq = 9934;
+	CmdChenLingFesType_ChenLingFesLevelLeaveScRsp = 9935;
+	CmdChenLingFesType_ChenLingFesLevelEndCsReq = 9937;
+	CmdChenLingFesType_GetChenLingFesDataScRsp = 9938;
+	CmdChenLingFesType_GetChenLingFesDataCsReq = 9942;
+	CmdChenLingFesType_ChenLingFesBusinessDayEndCsReq = 9945;
+	CmdChenLingFesType_ChenLingFesLevelStartCsReq = 9948;
+	CmdChenLingFesType_ChenLingFesLevelStartScRsp = 9950;
+}
+
+message DMHADFNOIGP {
+	bool is_success = 3;
+	repeated MOJFFDOILBN JOJJKJFHMBI = 8;
+}
+
+message EDHOBLLOBNP {
+	uint32 index = 9;
+	repeated uint32 OBGMKBIOMKB = 10;
+	uint32 JJPMDBCPJBA = 11;
+	repeated uint32 NELBBCIGIGF = 13;
+}
+
+message GetChenLingFesDataCsReq {
+}
+
+message GetChenLingFesDataScRsp {
+	repeated BGAIEEIKOKK PNDPCELOGHG = 10;
+	OFGLEOIIJBD LAEDNIBCNKF = 11;
+	uint32 retcode = 15;
+}
+
+message HDLMAPACKNH {
+	uint32 GOCFOJJIAHL = 1;
+	uint32 DIDBBOCNHBJ = 14;
+}
+
+message LECPPIEIENH {
+	repeated uint32 FKGLNIAHGOA = 2;
+	uint32 index = 3;
+	uint32 JJPMDBCPJBA = 4;
+	uint32 KDIDDHIDNCG = 7;
+}
+
+message MOJFFDOILBN {
+	repeated uint32 MNOOFEPDHOO = 3;
+	uint32 star_num = 6;
+	uint32 score_id = 11;
+	repeated uint32 EMPIEBNCANN = 12;
+	uint32 phase_index = 13;
+}
+
+message NPNAEPOKPNE {
+	OPOCANGAEHJ coord = 3;
+	repeated float LIAMHNFAPNL = 10;
+}
+
+message OFGLEOIIJBD {
+	string NLMEEEKBPKO = 1;
+	repeated NPNAEPOKPNE GOKMDCOJPHC = 3;
+	uint32 FGKPIDLKALL = 4;
+	string FGGCAOAPGPA = 5;
+	uint32 level_id = 6;
+	repeated uint32 FJDJCHFDIFL = 7;
+	uint32 business_day = 8;
+	uint32 fever = 9;
+	uint32 PGOFHKLBPKC = 10;
+	uint32 PLCPOONCFDG = 11;
+	uint32 HHINBDNIFBE = 12;
+	repeated MOJFFDOILBN JOJJKJFHMBI = 13;
+	repeated PGIEBMKMECE MBFLDKEDBHN = 14;
+	uint32 HGIICMLANJJ = 15;
+}
+
+message OPOCANGAEHJ {
+	uint32 y = 7;
+	uint32 x = 13;
+}
+
+message PGEDFOBAEBC {
+	uint32 FCFLEFOKLFD = 5;
+	uint32 OMFGAABELHE = 8;
+	uint32 PLFMKDOCPLP = 14;
+}
+
+message PGIEBMKMECE {
+	OPOCANGAEHJ IBLECIJAGBK = 1;
+	uint32 direction = 4;
+	uint32 score_id = 6;
+	uint32 OMFGAABELHE = 8;
+	repeated float CDMKBCHLPAB = 14;
+}

@@ -228,6 +228,11 @@ public partial class PlayerInstance
                 await MissionManager!.OnPlayerInteractWithProp();
             }
 
+        // Pad-puzzle groups reveal the hidden chest their ValueSource names on a real interaction, before
+        // the PropState gate that waits on that chest is checked.
+        if (SceneInstance.FloorInfo?.Groups.TryGetValue(prop.GroupId, out var interactedGroup) == true)
+            await SceneInstance.RevealAuthoredChest(interactedGroup);
+
         // for mission
         await MissionManager!.OnPlayerInteractWithProp();
 
@@ -462,6 +467,7 @@ public partial class PlayerInstance
             return;
         }
 
+        await MissionManager!.HandleFinishType(MissionFinishTypeEnum.EnterMapByEntrance, entrance);
         await LoadScene(entrance.PlaneID, entrance.FloorID, entranceId, anchor.ToPositionProto(),
             anchor.ToRotationProto(), sendPacket);
     }
@@ -516,13 +522,25 @@ public partial class PlayerInstance
             if (planeId != Data.PlaneId || floorId != Data.FloorId || entryId != Data.EntryId || SceneInstance == null ||
                 !mapTp)
             {
-                if (SceneInstance != null)
-                    await SceneInstance.OnDestroy();
-                SceneInstance instance = new(this, plane, floorId, entryId);
+                var previousScene = SceneInstance;
+                // Rogue rooms on the same floor reuse client actors (official 4.6 seq 28808/29174).
+                // Reserve the old entity range before loading props, then restore the actor IDs.
+                Dictionary<(int AvatarId, AvatarType Type), int>? retainedAvatarIds = null;
+                var previousLastEntityId = 0;
+                if (!sendPacket && previousScene != null && previousScene.PlaneId == planeId &&
+                    previousScene.FloorId == floorId && previousScene.EntryId == entryId &&
+                    RogueManager?.GetActiveRoomExcel(entryId) != null)
+                {
+                    retainedAvatarIds = previousScene.AvatarInfo.Values.ToDictionary(
+                        avatar => (avatar.AvatarInfo.BaseAvatarId, avatar.AvatarType), avatar => avatar.EntityId);
+                    previousLastEntityId = previousScene.LastEntityId;
+                }
+                if (previousScene != null) await previousScene.OnDestroy();
+                SceneInstance instance = new(this, plane, floorId, entryId) { LastEntityId = previousLastEntityId };
                 SceneInstance = instance;
                 await instance.LoadEntitiesAsync();
 
-                await instance.SyncLineup(true);
+                await instance.SyncLineup(true, retainedAvatarIds);
                 Data.PlaneId = planeId;
                 Data.FloorId = floorId;
                 Data.EntryId = entryId;

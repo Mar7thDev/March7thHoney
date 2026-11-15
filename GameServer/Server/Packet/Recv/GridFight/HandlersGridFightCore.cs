@@ -1,3 +1,5 @@
+using March7thHoney.Data;
+using March7thHoney.Enums.Mission;
 using March7thHoney.Data.Custom;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -10,18 +12,38 @@ using static March7thHoney.GameServer.Server.Packet.Recv.GridFight.GridFightPack
 namespace March7thHoney.GameServer.Server.Packet.Recv.GridFight;
 
 [Opcode(CmdIds.GridFightGetDataCsReq)]
-public sealed class HandlerGridFightGetDataCsReq : Handler<GridFightGetDataCsReq>
+public sealed class HandlerGridFightGetDataCsReq : GridFightHandler<GridFightGetDataCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightGetDataCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightGetDataCsReq request)
     {
+        await FinishTutorialStageQuests(player);
         await connection.SendPacket(new PacketGridFightGetDataScRsp(player));
+    }
+
+    /// <summary>
+    ///     GetData reports every tutorial stage as finished (GridFightManager.BuildSystemInfo), but the stage reward
+    ///     quests 7303101/7303102 (FinishType GridFightDivisionStageFinish) were never completed, and the resident
+    ///     map entry keeps the "start" button on the tutorial page until they are. Finish them to match.
+    /// </summary>
+    private static async ValueTask FinishTutorialStageQuests(PlayerInstance player)
+    {
+        if (player.QuestManager is not { } quests || player.GridFightManager is not { } manager) return;
+        var finishedStages = manager.Catalog.CompletedTutorialStages.Select(stage => (int)stage.DivisionId).ToHashSet();
+        foreach (var quest in GameData.QuestDataData.Values)
+        {
+            if (!GameData.FinishWayData.TryGetValue(quest.FinishWayID, out var finishWay) ||
+                finishWay.FinishType != MissionFinishTypeEnum.GridFightDivisionStageFinish ||
+                !finishedStages.Contains(finishWay.ParamInt1))
+                continue;
+            await quests.FinishQuest(quest.QuestID);
+        }
     }
 }
 
 [Opcode(CmdIds.GridFightStartGamePlayCsReq)]
-public sealed class HandlerGridFightStartGamePlayCsReq : Handler<GridFightStartGamePlayCsReq>
+public sealed class HandlerGridFightStartGamePlayCsReq : GridFightHandler<GridFightStartGamePlayCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightStartGamePlayCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightStartGamePlayCsReq request)
     {
         var manager = player.GridFightManager!;
         var success = manager.Start(request.Season, request.DivisionId, request.IsOverlock);
@@ -35,9 +57,9 @@ public sealed class HandlerGridFightStartGamePlayCsReq : Handler<GridFightStartG
 }
 
 [Opcode(CmdIds.GridFightResumeGamePlayCsReq)]
-public sealed class HandlerGridFightResumeGamePlayCsReq : Handler<GridFightResumeGamePlayCsReq>
+public sealed class HandlerGridFightResumeGamePlayCsReq : GridFightHandler<GridFightResumeGamePlayCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightResumeGamePlayCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightResumeGamePlayCsReq request)
     {
         var manager = player.GridFightManager!;
         var success = manager.Session?.UniqueId == request.UniqueId;
@@ -50,16 +72,20 @@ public sealed class HandlerGridFightResumeGamePlayCsReq : Handler<GridFightResum
 }
 
 [Opcode(CmdIds.GridFightQuitSettleCsReq)]
-public sealed class HandlerGridFightQuitSettleCsReq : Handler<GridFightQuitSettleCsReq>
+public sealed class HandlerGridFightQuitSettleCsReq : GridFightHandler<GridFightQuitSettleCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightQuitSettleCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightQuitSettleCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
         if (session == null)
         {
+            // A run the server already settled (victory, or squad HP reached 0) has nothing left to settle.
             await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitSettleScRsp,
-                new GridFightQuitSettleScRsp { Retcode = (uint)Retcode.RetFail }));
+                new GridFightQuitSettleScRsp
+                {
+                    Retcode = manager.HasSettledSession ? 0 : (uint)Retcode.RetFail,
+                }));
             return;
         }
 
@@ -70,13 +96,14 @@ public sealed class HandlerGridFightQuitSettleCsReq : Handler<GridFightQuitSettl
         manager.ClearSession();
         await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitSettleScRsp,
             new GridFightQuitSettleScRsp()));
+        await manager.RecordGameFinished(session);
     }
 }
 
 [Opcode(CmdIds.GridFightQuitLeaveGamePlayCsReq)]
-public sealed class HandlerGridFightQuitLeaveGamePlayCsReq : Handler<GridFightQuitLeaveGamePlayCsReq>
+public sealed class HandlerGridFightQuitLeaveGamePlayCsReq : GridFightHandler<GridFightQuitLeaveGamePlayCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightQuitLeaveGamePlayCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightQuitLeaveGamePlayCsReq request)
     {
         await connection.SendPacket(CreatePacket(CmdIds.GridFightQuitLeaveGamePlayScRsp,
             new GridFightQuitLeaveGamePlayScRsp()));
@@ -84,9 +111,9 @@ public sealed class HandlerGridFightQuitLeaveGamePlayCsReq : Handler<GridFightQu
 }
 
 [Opcode(CmdIds.GridFightHandlePendingActionCsReq)]
-public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFightHandlePendingActionCsReq>
+public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<GridFightHandlePendingActionCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightHandlePendingActionCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightHandlePendingActionCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -184,6 +211,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
             await SendResponse(connection, request.QueuePosition, selection.Success);
             return;
         }
+        if (session != null && await TryHandleSeasonTwoPending(connection, manager, session, request)) return;
 
         var beforeIds = session?.Roles.Select(role => role.UniqueId).ToHashSet() ?? [];
         var kind = ResolveKind(request);
@@ -232,6 +260,138 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
         await SendResponse(connection, request.QueuePosition, pendingHandled);
     }
 
+    /// <summary>Season-2 trait prompts (artifacts/gf-season2/re-g*.md); returns false if the request is not one.</summary>
+    private static async Task<bool> TryHandleSeasonTwoPending(
+        Connection connection,
+        GridFightManager manager,
+        GridFightSession session,
+        GridFightHandlePendingActionCsReq request)
+    {
+        var queue = request.QueuePosition;
+        GridFightSyncUpdateResultScNotify? sync = null;
+        switch (request.FGLIODAJFMLCase)
+        {
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.GEPGMIEPBMB:
+            {
+                var finished = session.SelectDanHengTrait(queue, request.GEPGMIEPBMB.KJMFHCDACEK, out var success);
+                if (success)
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.DanHengTraitId, GridFightSession.DanHengChooseTraitEffectId, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.DPKFJEEJABC:
+            {
+                var finished = session.AppointRanger(queue, request.DPKFJEEJABC.RoleId, out var success);
+                if (success)
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.RangerTraitId, GridFightSession.RangerEffectId, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.PFEBKFJOGKO:
+            {
+                var finished = session.SelectClaraEnhance(queue, request.PFEBKFJOGKO.HAFOKMHCGFM, out var success);
+                if (success)
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.ClaraTraitId, GridFightSession.ClaraEffectId, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.JMJOAOCJAAG:
+            {
+                if (request.JMJOAOCJAAG.MLKBOBIEAPL)
+                {
+                    if (session.RerollChimeraGoods(queue)) sync = manager.BuildSeasonTwoPendingRefreshSync();
+                    break;
+                }
+                var good = request.JMJOAOCJAAG.OBPJLMEMFHA < session.ChimeraGoods.Count
+                    ? session.ChimeraGoods[(int)request.JMJOAOCJAAG.OBPJLMEMFHA]
+                    : null;
+                var application = session.SelectChimeraGood(queue, request.JMJOAOCJAAG.OBPJLMEMFHA, out var finished);
+                if (application.Success)
+                    // Gold picked in the chimera dialog has its own fly animation (update_source 48).
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.ChimeraTraitId,
+                        GridFightSession.ChimeraEffectId,
+                        finished,
+                        application,
+                        gainSource: good?.Type == GridFightSession.ChimeraGoodGold
+                            ? GridFightUpdateSrcType.Ldobccjegnf
+                            : null);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.IIDBLCFAAPC:
+            {
+                // 幕后茶歇: choose an option / rest, then take the rewards and leave.
+                var bonfire = request.IIDBLCFAAPC;
+                if (bonfire.ECDACDNDHGO != null)
+                {
+                    var finished = session.LeaveBonfire(queue, out _);
+                    if (finished != 0) sync = manager.BuildBonfireLeaveSync(finished);
+                    break;
+                }
+                var choice = bonfire.NCGOOEMOBIC;
+                if (choice == null) break;
+                if (choice.LGAJNMNOAEM)
+                {
+                    if (session.HealAtBonfire(queue))
+                        sync = manager.BuildBonfireChoiceSync(new GridFightRewardApplication { Success = true, LineupHpChanged = true });
+                    break;
+                }
+                if (choice.ALEGIFEHGLH != null)
+                {
+                    var gains = session.SelectBonfireOption(queue, choice.ALEGIFEHGLH.EventId, choice.ALEGIFEHGLH.HAFOKMHCGFM);
+                    if (gains.Success) sync = manager.BuildBonfireChoiceSync(gains);
+                }
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.DKDFDGJGIHM:
+            {
+                // 主角光环 select { spotlight id, role config id }.
+                var changes = session.SelectSpotLight(queue, request.DKDFDGJGIHM.IHHNLLAJAGB, request.DKDFDGJGIHM.RoleId,
+                    out var finished);
+                if (changes != null) sync = manager.BuildSpotLightSync(changes, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.PBEJCFAJLGE:
+                if (session.RerollSpotLight(queue, request.PBEJCFAJLGE.IHHNLLAJAGB, out var paid))
+                    sync = manager.BuildSpotLightSync(new GridFightSpotLightChanges { CountersChanged = !paid }, 0, paid);
+                break;
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.MHBGJCOIMPA:
+            {
+                var finished = session.AbandonSpotLightReplace(queue);
+                if (finished != 0)
+                    sync = manager.BuildSpotLightSync(new GridFightSpotLightChanges { CountersChanged = true }, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.OKPMJOCEKBC:
+            {
+                // 星神★阿哈 3星7费 ultra block: confirm applies both 幻月之主 and 欢愉之主.
+                var finished = session.ConfirmAhaUltra(queue);
+                if (finished != 0) sync = manager.BuildSpotLightSync(null, finished);
+                break;
+            }
+            case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.FKEAHOKGDPO:
+                if (session.SetMemberLink(request.FKEAHOKGDPO.MLNHFIKMAMP.ToList()))
+                    sync = manager.BuildSeasonTwoSelectionSync(
+                        GridFightSession.MemberLinkTraitId, GridFightSession.MemberLinkEffectId, 0);
+                break;
+            default:
+                return false;
+        }
+        if (sync == null && session.IsFinishedSeasonTwoPending(queue))
+        {
+            // The client kept the prompt open after the answer was accepted; confirm the finish again
+            // instead of failing ("消息获取失败") so it can close.
+            var finish = new GridFightSyncResultData();
+            finish.UpdateDynamicList.Add(new GridFightSyncData { FinishPendingActionPos = queue });
+            finish.UpdateDynamicList.Add(new GridFightSyncData { LockInfo = new GridFightLockInfo() });
+            sync = new GridFightSyncUpdateResultScNotify();
+            sync.ResultList.Add(finish);
+        }
+        if (sync != null) await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(sync));
+        await SendResponse(connection, queue, sync != null);
+        return true;
+    }
+
     private static Task SendResponse(Connection connection, uint queuePosition, bool success)
     {
         return connection.SendPacket(CreatePacket(CmdIds.GridFightHandlePendingActionScRsp,
@@ -253,9 +413,9 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : Handler<GridFight
 }
 
 [Opcode(CmdIds.GridFightUpdateEliteBranchSelectCsReq)]
-public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : Handler<GridFightUpdateEliteBranchSelectCsReq>
+public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : GridFightHandler<GridFightUpdateEliteBranchSelectCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUpdateEliteBranchSelectCsReq request)
@@ -275,9 +435,9 @@ public sealed class HandlerGridFightUpdateEliteBranchSelectCsReq : Handler<GridF
 }
 
 [Opcode(CmdIds.GridFightGetOrbCsReq)]
-public sealed class HandlerGridFightGetOrbCsReq : Handler<GridFightGetOrbCsReq>
+public sealed class HandlerGridFightGetOrbCsReq : GridFightHandler<GridFightGetOrbCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightGetOrbCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightGetOrbCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -318,9 +478,9 @@ public sealed class HandlerGridFightGetOrbCsReq : Handler<GridFightGetOrbCsReq>
 }
 
 [Opcode(CmdIds.GridFightBuyGoodsCsReq)]
-public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsReq>
+public sealed class HandlerGridFightBuyGoodsCsReq : GridFightHandler<GridFightBuyGoodsCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightBuyGoodsCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightBuyGoodsCsReq request)
     {
         var manager = player.GridFightManager!;
         var indices = request.BuyAll
@@ -351,9 +511,9 @@ public sealed class HandlerGridFightBuyGoodsCsReq : Handler<GridFightBuyGoodsCsR
 }
 
 [Opcode(CmdIds.GridFightUseHackOptionCsReq)]
-public sealed class HandlerGridFightUseHackOptionCsReq : Handler<GridFightUseHackOptionCsReq>
+public sealed class HandlerGridFightUseHackOptionCsReq : GridFightHandler<GridFightUseHackOptionCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUseHackOptionCsReq request)
@@ -373,9 +533,9 @@ public sealed class HandlerGridFightUseHackOptionCsReq : Handler<GridFightUseHac
 }
 
 [Opcode(CmdIds.GridFightRefreshShopCsReq)]
-public sealed class HandlerGridFightRefreshShopCsReq : Handler<GridFightRefreshShopCsReq>
+public sealed class HandlerGridFightRefreshShopCsReq : GridFightHandler<GridFightRefreshShopCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightRefreshShopCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightRefreshShopCsReq request)
     {
         var manager = player.GridFightManager!;
         var success = manager.Session?.RefreshShop(true) == true;
@@ -388,9 +548,9 @@ public sealed class HandlerGridFightRefreshShopCsReq : Handler<GridFightRefreshS
 }
 
 [Opcode(CmdIds.GridFightRecycleRoleCsReq)]
-public sealed class HandlerGridFightRecycleRoleCsReq : Handler<GridFightRecycleRoleCsReq>
+public sealed class HandlerGridFightRecycleRoleCsReq : GridFightHandler<GridFightRecycleRoleCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightRecycleRoleCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightRecycleRoleCsReq request)
     {
         var manager = player.GridFightManager!;
         var change = manager.Session?.RecycleRole(request.UniqueId) ?? GridFightSessionChange.Failed;
@@ -405,9 +565,9 @@ public sealed class HandlerGridFightRecycleRoleCsReq : Handler<GridFightRecycleR
 }
 
 [Opcode(CmdIds.GridFightBuyExpCsReq)]
-public sealed class HandlerGridFightBuyExpCsReq : Handler<GridFightBuyExpCsReq>
+public sealed class HandlerGridFightBuyExpCsReq : GridFightHandler<GridFightBuyExpCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightBuyExpCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightBuyExpCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -426,9 +586,9 @@ public sealed class HandlerGridFightBuyExpCsReq : Handler<GridFightBuyExpCsReq>
 }
 
 [Opcode(CmdIds.GridFightUpdatePosCsReq)]
-public sealed class HandlerGridFightUpdatePosCsReq : Handler<GridFightUpdatePosCsReq>
+public sealed class HandlerGridFightUpdatePosCsReq : GridFightHandler<GridFightUpdatePosCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightUpdatePosCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightUpdatePosCsReq request)
     {
         var manager = player.GridFightManager!;
         var updates = request.PosInfoList.Select(info => (info.UniqueId, info.Pos)).ToList();
@@ -446,9 +606,9 @@ public sealed class HandlerGridFightUpdatePosCsReq : Handler<GridFightUpdatePosC
 }
 
 [Opcode(CmdIds.GridFightUseForgeCsReq)]
-public sealed class HandlerGridFightUseForgeCsReq : Handler<GridFightUseForgeCsReq>
+public sealed class HandlerGridFightUseForgeCsReq : GridFightHandler<GridFightUseForgeCsReq>
 {
-    protected override async Task OnHandle(
+    protected override async Task OnGridFightHandle(
         Connection connection,
         PlayerInstance player,
         GridFightUseForgeCsReq request)
@@ -465,9 +625,9 @@ public sealed class HandlerGridFightUseForgeCsReq : Handler<GridFightUseForgeCsR
 }
 
 [Opcode(CmdIds.GridFightEnterBattleStageCsReq)]
-public sealed class HandlerGridFightEnterBattleStageCsReq : Handler<GridFightEnterBattleStageCsReq>
+public sealed class HandlerGridFightEnterBattleStageCsReq : GridFightHandler<GridFightEnterBattleStageCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightEnterBattleStageCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightEnterBattleStageCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -490,9 +650,9 @@ public sealed class HandlerGridFightEnterBattleStageCsReq : Handler<GridFightEnt
 }
 
 [Opcode(CmdIds.GridFightBackToPrepareCsReq)]
-public sealed class HandlerGridFightBackToPrepareCsReq : Handler<GridFightBackToPrepareCsReq>
+public sealed class HandlerGridFightBackToPrepareCsReq : GridFightHandler<GridFightBackToPrepareCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightBackToPrepareCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightBackToPrepareCsReq request)
     {
         var manager = player.GridFightManager!;
         var session = manager.Session;
@@ -501,6 +661,10 @@ public sealed class HandlerGridFightBackToPrepareCsReq : Handler<GridFightBackTo
         // ReturnPreparation. Re-sending the same pending here can reset/close the divination UI.
         if (success && session?.FateDivinerPending == null)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildPreparationSync()));
+        // Node-entry prompts (幕后茶歇) are queued before the response. 主角光环 is not one of them: the client asks for it
+        // with 8508 once its entrance queue has played the spotlight hint.
+        if (success && manager.BuildSeasonTwoFollowUpSync() is { } entry)
+            await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(entry));
 
         // 4.5v3 cmd 8680 (LFDIMJCMNDJ) is the empty BackToPrepare response seen in captures.
         await connection.SendPacket(CreatePacket(CmdIds.LFDIMJCMNDJ, new LFDIMJCMNDJ()));
@@ -518,9 +682,9 @@ internal static class GridFightPacketFactory
 }
 
 [Opcode(CmdIds.GridFightLockShopCsReq)]
-public sealed class HandlerGridFightShopLockCsReq : Handler<GridFightLockShopCsReq>
+public sealed class HandlerGridFightShopLockCsReq : GridFightHandler<GridFightLockShopCsReq>
 {
-    protected override async Task OnHandle(Connection connection, PlayerInstance player, GridFightLockShopCsReq request)
+    protected override async Task OnGridFightHandle(Connection connection, PlayerInstance player, GridFightLockShopCsReq request)
     {
         var manager = player.GridFightManager!;
         var success = manager.Session?.SetShopLocked(request.IsLock) == true;

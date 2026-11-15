@@ -592,7 +592,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             {
                 RoomOwnerUid = roomOwnerUid,
                 OpUid = (uint)uid,
-                LABNNEGJNHO = BuildRoomSnapshotForPlayer(roomOwnerUid, (uint)uid)
+                LMFMBJCNALJ = BuildRoomSnapshotForPlayer(roomOwnerUid, (uint)uid)
             });
             await target.SendPacket(packet);
         }
@@ -1094,7 +1094,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             {
                 RoomOwnerUid = roomOwnerUid,
                 OpUid = (uint)uid,
-                LABNNEGJNHO = BuildRoomSnapshotForPlayer(roomOwnerUid, (uint)uid)
+                LMFMBJCNALJ = BuildRoomSnapshotForPlayer(roomOwnerUid, (uint)uid)
             });
             await target.SendPacket(snapshotPacket);
         }

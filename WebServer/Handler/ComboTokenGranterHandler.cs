@@ -62,10 +62,7 @@ public class ComboTokenGranterHandler
             return Results.Json(res);
         }
 
-        if (account.GetBanStatus().IsActive)
-            account.AddKnownIdentityKeys(identityKeys);
-
-        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
+        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure, "combo_login"))
         {
             Logger.Warn($"Combo login blocked. uid={uid} retcode={failure.Retcode}");
             res.retcode = failure.Retcode;

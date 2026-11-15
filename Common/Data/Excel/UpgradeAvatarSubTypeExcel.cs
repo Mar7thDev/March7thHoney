@@ -9,10 +9,10 @@ namespace March7thHoney.Data.Excel;
 [MemoryPackable]
 public partial class UpgradeAvatarSubTypeExcel : ExcelResource
 {
-    [JsonProperty("DJPCAIKIONP")]
+    [JsonProperty("ACCJKGEKHKP")]
     public uint AvatarId { get; set; }
 
-    [JsonProperty("COACLFEBBDA")]
+    [JsonProperty("AMAPBCEEKFP")]
     [JsonConverter(typeof(StringEnumConverter))]
     public UpgradeAvatarSubRelicTypeEnum SubType { get; set; }
 

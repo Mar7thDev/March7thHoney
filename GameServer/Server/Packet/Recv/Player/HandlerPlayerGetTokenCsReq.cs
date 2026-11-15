@@ -33,6 +33,7 @@ public class HandlerPlayerGetTokenCsReq : Handler
         var connectionIdentity = AccountBanHelper.BuildIdentityKeys([], connection.RemoteEndPoint.Address.ToString());
         if (IdentityBlockHelper.TryGetActiveBan(connectionIdentity, out var networkBan))
         {
+            AccountBanHelper.LogRejection("player_get_token", requestedUid, networkBan, connectionIdentity);
             await connection.SendPacket(new PacketPlayerGetTokenScRsp(0, Retcode.RetNotInWhiteList,
                 AccountBanHelper.ToBlackInfo(networkBan), networkBan.FormatLoginMessage()));
             return;
@@ -61,10 +62,7 @@ public class HandlerPlayerGetTokenCsReq : Handler
 
             var identityKeys = AccountBanHelper.BuildIdentityKeys([],
                 connection.RemoteEndPoint.Address.ToString());
-            if (account.GetBanStatus().IsActive)
-                account.AddKnownIdentityKeys(identityKeys);
-
-            if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
+            if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus, "player_get_token"))
             {
                 account.ClearLoginTokens();
                 await connection.SendPacket(new PacketPlayerGetTokenScRsp(

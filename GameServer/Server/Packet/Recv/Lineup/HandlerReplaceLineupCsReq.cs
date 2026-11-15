@@ -8,12 +8,8 @@ public class HandlerReplaceLineupCsReq : Handler<ReplaceLineupCsReq>
 {
     protected override async Task OnHandle(Connection connection, PlayerInstance player, ReplaceLineupCsReq req)
     {
-        var avatarIds = req.LineupSlotList
-            .OrderBy(x => x.Slot)
-            .Select(x => (int)x.Id)
-            .Where(x => x > 0)
-            .ToList();
-        await player.LineupManager!.ReplaceLineup((int)req.Index, avatarIds, req.ExtraLineupType);
+        // The slot list carries assist_uid for a support character; the full overload keeps it.
+        await player.LineupManager!.ReplaceLineup(req);
         await connection.SendPacket(CmdIds.JoinLineupScRsp);
     }
 }

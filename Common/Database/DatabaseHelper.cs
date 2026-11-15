@@ -239,6 +239,42 @@ public class DatabaseHelper
         }
     }
 
+    /// <summary>Persist a small same-UID change as one transaction, restoring memory if any write fails.</summary>
+    public static void UpdateInstancesAtomically(int uid, Action mutate, Action rollback,
+        params BaseDatabaseDataHelper[] instances)
+    {
+        lock (PersistenceLock)
+        {
+            if (!UidInstanceMap.TryGetValue(uid, out var list))
+                throw new InvalidOperationException("Database UID is not loaded");
+            lock (list)
+            {
+                if (list.OfType<DeletedAccountData>().Any() || instances.Length == 0 ||
+                    instances.Select(instance => instance.GetType()).Distinct().Count() != instances.Length ||
+                    instances.Any(instance => instance.Uid != uid ||
+                        !ReferenceEquals(list.FirstOrDefault(row => row.GetType() == instance.GetType()), instance) ||
+                        !EntityStores.Map.ContainsKey(instance.GetType())))
+                    throw new InvalidOperationException("Database instance is unavailable");
+
+                using var conn = Open();
+                Exec(conn, "BEGIN");
+                try
+                {
+                    mutate();
+                    foreach (var instance in instances) EntityStores.Map[instance.GetType()].Update(conn, instance);
+                    Exec(conn, "COMMIT");
+                }
+                catch
+                {
+                    try { Exec(conn, "ROLLBACK"); }
+                    catch (Exception error) { logger.Error("Transaction rollback failed", error); }
+                    finally { rollback(); }
+                    throw;
+                }
+            }
+        }
+    }
+
     public static void SaveDatabaseType<T>(T instance) where T : BaseDatabaseDataHelper
     {
         lock (PersistenceLock)

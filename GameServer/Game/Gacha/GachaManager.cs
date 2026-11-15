@@ -5,6 +5,7 @@ using March7thHoney.Database.Inventory;
 using March7thHoney.Enums;
 using March7thHoney.Enums.Item;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Proto;
 using GachaInfo = March7thHoney.Database.Gacha.GachaInfo;
@@ -162,12 +163,14 @@ public class GachaManager : BasePlayerManager<GachaData>
 
         var gachaItems = new List<GachaItem>();
         var syncItems = new List<ItemData>();
+        var duplicateAvatarNotifies = new List<(int AvatarId, ItemList Reward)>();
         if (removedCostItem != null) syncItems.Add(removedCostItem);
         // get rarity of item
         foreach (var item in items)
         {
             var dirt = 0;
             var star = 0;
+            var duplicateAvatar = false;
             var rarity = GetRarity(item);
 
             Data.GachaHistory.Add(new GachaInfo
@@ -185,6 +188,7 @@ public class GachaManager : BasePlayerManager<GachaData>
                     var avatar = Player.AvatarManager?.GetFormalAvatar(item);
                     if (avatar != null)
                     {
+                        duplicateAvatar = true;
                         star += 40;
                         var rankUpItemId = item + 10000;
                         var rankUpItem = Player.InventoryManager!.GetItem(rankUpItemId);
@@ -217,6 +221,7 @@ public class GachaManager : BasePlayerManager<GachaData>
                     var avatar = Player.AvatarManager?.GetFormalAvatar(item);
                     if (avatar != null)
                     {
+                        duplicateAvatar = true;
                         star += 8;
                         var rankUpItemId = item + 10000;
                         var rankUpItem = Player.InventoryManager!.GetItem(rankUpItemId);
@@ -304,20 +309,36 @@ public class GachaManager : BasePlayerManager<GachaData>
                         oldItem.Count = it.Count;
                 }
 
-                tokenItem.ItemList_.Add(new Item
+                var payout = new Item
                 {
                     ItemId = 252,
                     Num = (uint)star
-                });
+                };
+                // Official: a duplicate avatar's 252 payout rides transfer_item_list beside the eidolon,
+                // with token_item absent. Light cones keep it in token_item.
+                if (duplicateAvatar)
+                {
+                    gachaItem.TransferItemList ??= new ItemList();
+                    gachaItem.TransferItemList.ItemList_.Add(payout);
+                }
+                else
+                {
+                    tokenItem.ItemList_.Add(payout);
+                }
             }
 
-            gachaItem.TokenItem = tokenItem;
+            // A pull that pays nothing leaves token_item absent.
+            if (tokenItem.ItemList_.Count > 0) gachaItem.TokenItem = tokenItem;
 
             gachaItem.TransferItemList ??= new ItemList();
+            if (duplicateAvatar) duplicateAvatarNotifies.Add((item, gachaItem.TransferItemList));
 
             gachaItems.Add(gachaItem);
         }
 
+        // Official order: AddAvatarScNotify (duplicates too, carrying the eidolon and payout) -> sync -> rsp.
+        foreach (var (avatarId, reward) in duplicateAvatarNotifies)
+            await Player.SendPacket(new PacketAddAvatarScNotify(avatarId, true, false, reward));
         await Player.SendPacket(new PacketPlayerSyncScNotify(syncItems));
         var proto = new DoGachaScRsp
         {

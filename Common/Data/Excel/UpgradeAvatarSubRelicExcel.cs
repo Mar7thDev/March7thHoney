@@ -10,23 +10,23 @@ namespace March7thHoney.Data.Excel;
 [MemoryPackable]
 public partial class UpgradeAvatarSubRelicExcel : ExcelResource
 {
-    [JsonProperty("GOBEGPKDLLF")]
+    [JsonProperty("FAONKFODAHF")]
     public uint RelicLevel { get; set; }
 
-    [JsonProperty("COACLFEBBDA")]
+    [JsonProperty("AMAPBCEEKFP")]
     [JsonConverter(typeof(StringEnumConverter))]
     public UpgradeAvatarSubRelicTypeEnum SubType { get; set; }
 
-    [JsonProperty("JLLLGAGBEMF")]
+    [JsonProperty("GMNJOHLBFDA")]
     [JsonConverter(typeof(StringEnumConverter))]
     public RarityEnum Rarity { get; set; }
 
 
-    [JsonProperty("GEEKCAGBGMN")]
+    [JsonProperty("EMLJEDBDDDM")]
     [JsonConverter(typeof(StringEnumConverter))]
     public RelicTypeEnum Type { get; set; }
 
-    [JsonProperty("PINMGEKOAKM")]
+    [JsonProperty("HHBEAPOCLPC")]
     public List<UpgradeAvatarSubAffixInfo> SubAffixes { get; set; } = [];
 
     public override int GetId()
@@ -46,10 +46,10 @@ public partial class UpgradeAvatarSubRelicExcel : ExcelResource
 [MemoryPackable]
 public partial class UpgradeAvatarSubAffixInfo
 {
-    [JsonProperty("KHADHNNCFLH")]
+    [JsonProperty("EAFFHGKLALP")]
     public uint AffixCount { get; set; }
 
-    [JsonProperty("LKOEFDPJGKD")]
+    [JsonProperty("FODBMMCKAEN")]
     [JsonConverter(typeof(StringEnumConverter))]
     public AvatarPropertyTypeEnum AffixProperty { get; set; }
 }

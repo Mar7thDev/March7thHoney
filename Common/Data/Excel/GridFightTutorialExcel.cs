@@ -25,6 +25,9 @@ public partial class GridFightTutorialStageNodeExcel : ExcelResource
     public uint SectionID { get; set; }
     public uint Unlock { get; set; }
 
+    // Tutorial task reached at this node; the 4.7 permanent info reports the last one per tutorial stage.
+    public uint UnlockTutorialTask { get; set; }
+
     public override int GetId() => HashCode.Combine(DivisionID, ChapterID, SectionID, Unlock);
 
     public override void Loaded()

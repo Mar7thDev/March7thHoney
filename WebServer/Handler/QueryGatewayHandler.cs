@@ -252,7 +252,7 @@ internal class QueryGatewayHandler
         if (int.TryParse(accountUid, out var uid))
         {
             var account = AccountData.GetAccountByUid(uid);
-            if (account != null && AccountBanHelper.TryGetActiveBan(account, [], out var banStatus))
+            if (account != null && AccountBanHelper.TryGetActiveBan(account, [], out var banStatus, "query_gateway"))
                 return banStatus.FormatLoginMessage();
 
             if (account != null && !account.CanLogin())

@@ -1,0 +1,278 @@
+syntax = "proto3";
+
+option csharp_namespace = "March7thHoney.Proto";
+
+import "Common.proto";
+
+message BAEFMEJJIBI {
+	GBAEPOLFFMG pos = 4;
+	uint32 CEAMLKCMMGD = 7;
+}
+
+message BuyNpcStuffCsReq {
+	uint32 CEAMLKCMMGD = 12;
+}
+
+message BuyNpcStuffScRsp {
+	uint32 retcode = 7;
+	uint32 CEAMLKCMMGD = 9;
+}
+
+message CDNPKGOKEPK {
+	uint32 ELAENEOBAJD = 3;
+	repeated FFEEHEBBLCI PMIFFBHOOOO = 12;
+	repeated uint32 MNBMDLBDCBB = 13;
+}
+
+enum CmdMuseumType {
+	CmdMuseumType_NLCDGIPGFDJ = 0;
+	CmdMuseumType_MuseumRandomEventQueryCsReq = 4304;
+	CmdMuseumType_SetStuffToAreaCsReq = 4305;
+	CmdMuseumType_SyncGetStuffScNotify = 4306;
+	CmdMuseumType_SyncMuseumFundsChangedScNotify = 4308;
+	CmdMuseumType_RemoveStuffFromAreaScRsp = 4318;
+	CmdMuseumType_GetMuseumInfoScRsp = 4319;
+	CmdMuseumType_SyncMuseumTargetStartNotify = 4323;
+	CmdMuseumType_FinishCurTurnCsReq = 4327;
+	CmdMuseumType_SyncMuseumTargetMissionFinishNotify = 4328;
+	CmdMuseumType_BuyNpcStuffCsReq = 4331;
+	CmdMuseumType_UpgradeAreaCsReq = 4335;
+	CmdMuseumType_UpgradeAreaStatCsReq = 4347;
+	CmdMuseumType_UpgradeAreaStatScRsp = 4348;
+	CmdMuseumType_FinishCurTurnScRsp = 4352;
+	CmdMuseumType_MuseumRandomEventSelectCsReq = 4357;
+	CmdMuseumType_RemoveStuffFromAreaCsReq = 4359;
+	CmdMuseumType_TakeCollectRewardRsp = 4362;
+	CmdMuseumType_TakeCollectRewardCsReq = 4363;
+	CmdMuseumType_SyncMuseumTargetRewardNotify = 4367;
+	CmdMuseumType_SyncGetExhibitScNotify = 4370;
+	CmdMuseumType_SetStuffToAreaScRsp = 4371;
+	CmdMuseumType_GetMuseumInfoCsReq = 4374;
+	CmdMuseumType_SyncMuseumInfoChangedScNotify = 4375;
+	CmdMuseumType_MuseumRandomEventSelectScRsp = 4382;
+	CmdMuseumType_BuyNpcStuffScRsp = 4387;
+	CmdMuseumType_SyncMuseumRandomEventStartScNotify = 4392;
+	CmdMuseumType_MuseumRandomEventQueryScRsp = 4394;
+	CmdMuseumType_UpgradeAreaScRsp = 4398;
+}
+
+message FCCDKHNGIPH {
+	uint32 MLDLNLGBMHN = 1;
+	uint32 level = 3;
+	repeated BAEFMEJJIBI DHIOHIOPCGP = 10;
+	uint32 area_id = 12;
+	uint32 FJPJFHPNKBH = 13;
+	uint32 PELHCNILCBP = 15;
+}
+
+message FEHHKDIIENA {
+	uint32 PIKEPJNDJPE = 8;
+	uint32 CEAMLKCMMGD = 10;
+}
+
+message FFEEHEBBLCI {
+	repeated uint32 DAHOMKDLEGI = 1;
+	uint32 OMILGFHKGBC = 4;
+	uint32 event_id = 5;
+	uint32 JGPIOFGPBGE = 6;
+	uint32 PKDANDJFAON = 7;
+	uint32 JJBKGGDAGIM = 8;
+	MuseumRandomEventState state = 10;
+}
+
+message FGFJNANBJJI {
+	uint32 CLLLEMMKDMB = 3;
+	bool is_finish = 13;
+}
+
+message FinishCurTurnCsReq {
+	uint32 IDFANGELPEE = 3;
+}
+
+message FinishCurTurnScRsp {
+	uint32 retcode = 6;
+}
+
+enum GBAEPOLFFMG {
+	GBAEPOLFFMG_NLCDGIPGFDJ = 0;
+	GBAEPOLFFMG_FBLHLHCGMKO = 1;
+	GBAEPOLFFMG_GNEIJHBGCHG = 2;
+	GBAEPOLFFMG_JNKMJKBDGPL = 3;
+}
+
+message GetMuseumInfoCsReq {
+}
+
+message GetMuseumInfoScRsp {
+	uint32 retcode = 1;
+	uint32 cur_fund = 2;
+	uint32 KAADGPOLIEN = 3;
+	KPCNNOGGIDO target = 5;
+	uint32 exp = 6;
+	repeated FEHHKDIIENA DHIOHIOPCGP = 7;
+	repeated uint32 BILNKFBKOBC = 8;
+	uint32 NEHFEBHDGIK = 9;
+	uint32 EKGPINKBLED = 10;
+	repeated uint32 ONJEOMGPGLJ = 11;
+	uint32 level = 12;
+	CDNPKGOKEPK PKJCHLDHKBL = 13;
+	repeated FCCDKHNGIPH area_list = 14;
+	uint32 ONCBJHBKBLB = 15;
+}
+
+enum GetStuffType {
+	GetStuffType_Unknow = 0;
+	GetStuffType_MissionReward = 1;
+	GetStuffType_EventBuyStuff = 2;
+	GetStuffType_MarketBuyStuff = 3;
+	GetStuffType_QuestReward = 4;
+	GetStuffType_Initial = 5;
+	GetStuffType_PhaseFinishReward = 6;
+}
+
+message KPCNNOGGIDO {
+	uint32 MGLEKDEAJBB = 8;
+	uint32 MJOKDHMJBEH = 9;
+	uint32 MLBMDLBKEEM = 10;
+	uint32 KFGLDLFBFFB = 12;
+	repeated FGFJNANBJJI CBEFDHFFNLN = 13;
+	uint32 CLPAAFFFBKK = 14;
+}
+
+message MuseumRandomEventQueryCsReq {
+}
+
+message MuseumRandomEventQueryScRsp {
+	CDNPKGOKEPK info = 3;
+	uint32 retcode = 5;
+}
+
+message MuseumRandomEventSelectCsReq {
+	uint32 JGPIOFGPBGE = 14;
+	uint32 event_id = 15;
+}
+
+message MuseumRandomEventSelectScRsp {
+	uint32 event_id = 5;
+	uint32 retcode = 7;
+	uint32 JGPIOFGPBGE = 14;
+}
+
+enum MuseumRandomEventState {
+	MuseumRandomEventState_None = 0;
+	MuseumRandomEventState_Start = 1;
+	MuseumRandomEventState_Processing = 2;
+	MuseumRandomEventState_Finish = 3;
+}
+
+message RemoveStuffFromAreaCsReq {
+	uint32 CEAMLKCMMGD = 7;
+}
+
+message RemoveStuffFromAreaScRsp {
+	uint32 retcode = 1;
+	uint32 CEAMLKCMMGD = 7;
+}
+
+message SetStuffToAreaCsReq {
+	uint32 CEAMLKCMMGD = 4;
+	uint32 PIKEPJNDJPE = 8;
+	GBAEPOLFFMG pos = 14;
+}
+
+message SetStuffToAreaScRsp {
+	uint32 CEAMLKCMMGD = 1;
+	uint32 retcode = 2;
+	GBAEPOLFFMG pos = 10;
+	uint32 PIKEPJNDJPE = 15;
+}
+
+enum StatType {
+	StatType_None = 0;
+	StatType_Art = 1;
+	StatType_Culture = 2;
+	StatType_Popular = 3;
+}
+
+message SyncGetExhibitScNotify {
+	uint32 MMNBPCGIONF = 15;
+}
+
+message SyncGetStuffScNotify {
+	GetStuffType BAPBMHCHCIC = 4;
+	uint32 CEAMLKCMMGD = 5;
+}
+
+message SyncMuseumFundsChangedScNotify {
+	uint32 cur_fund = 14;
+}
+
+message SyncMuseumInfoChangedScNotify {
+	uint32 KAADGPOLIEN = 1;
+	uint32 cur_fund = 2;
+	repeated FCCDKHNGIPH area_list = 4;
+	uint32 level = 5;
+	repeated uint32 ONJEOMGPGLJ = 6;
+	uint32 NEHFEBHDGIK = 7;
+	uint32 ONCBJHBKBLB = 8;
+	CDNPKGOKEPK PKJCHLDHKBL = 10;
+	uint32 EKGPINKBLED = 11;
+	KPCNNOGGIDO target = 12;
+	repeated uint32 BILNKFBKOBC = 13;
+	uint32 exp = 14;
+	repeated FEHHKDIIENA DHIOHIOPCGP = 15;
+}
+
+message SyncMuseumRandomEventStartScNotify {
+	FFEEHEBBLCI info = 10;
+}
+
+message SyncMuseumTargetMissionFinishNotify {
+	uint32 KFGLDLFBFFB = 2;
+	repeated uint32 CLLLEMMKDMB = 5;
+	bool MAOMPIDOMIJ = 13;
+}
+
+message SyncMuseumTargetRewardNotify {
+	uint32 KFGLDLFBFFB = 3;
+	uint32 item_count = 9;
+	uint32 item_id = 14;
+}
+
+message SyncMuseumTargetStartNotify {
+	uint32 KFGLDLFBFFB = 6;
+}
+
+message TakeCollectRewardCsReq {
+	uint32 item_id = 8;
+}
+
+message TakeCollectRewardRsp {
+	uint32 retcode = 7;
+	uint32 item_id = 13;
+	ItemList reward = 14;
+}
+
+message UpgradeAreaCsReq {
+	uint32 level = 1;
+	uint32 area_id = 8;
+}
+
+message UpgradeAreaScRsp {
+	uint32 retcode = 1;
+	uint32 area_id = 6;
+	uint32 level = 12;
+}
+
+message UpgradeAreaStatCsReq {
+	StatType GNBKDCHLDGL = 7;
+	uint32 area_id = 11;
+	uint32 level = 12;
+}
+
+message UpgradeAreaStatScRsp {
+	StatType GNBKDCHLDGL = 4;
+	uint32 area_id = 7;
+	uint32 level = 11;
+	uint32 retcode = 13;
+}

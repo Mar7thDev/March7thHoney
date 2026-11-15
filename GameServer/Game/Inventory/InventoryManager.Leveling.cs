@@ -539,8 +539,67 @@ public partial class InventoryManager
         return [.. list.Values];
     }
 
+    private readonly object _exRankActivationGate = new();
+    private static readonly Logger ExRankLogger = new("AvatarExRank");
+
+    /// <summary>
+    /// Client CmdID 400 carries only an ExRank config ID (field 5). Resolve owner and cost server-side.
+    /// Normal rank/enhancement and the historical avatar MemoryPack blob are left unchanged.
+    /// </summary>
+    public async ValueTask<Retcode> ActivateExRank(int exRankId)
+    {
+        ItemData material;
+        March7thHoney.Database.Avatar.FormalAvatarInfo owned;
+        lock (_exRankActivationGate)
+        {
+            if (!AvatarExRankMaterials.Definitions.TryGetValue(exRankId, out var definition))
+                return Retcode.RetAvatarRankNotMatch;
+            var manager = Player.AvatarManager!;
+            owned = manager.GetFormalAvatar(definition.AvatarId)!;
+            if (owned == null || owned.GetPathInfo(definition.AvatarId) == null)
+                return Retcode.RetAvatarNotExist;
+            var ranks = manager.Data.ExRankIds;
+            var hadEntry = ranks.TryGetValue(owned.BaseAvatarId, out var previousIds);
+            if (previousIds?.Contains(exRankId) == true) return Retcode.RetAvatarRankReachMax;
+
+            material = Data.MaterialItems.Find(item => item.ItemId == definition.MaterialId)!;
+            if (material == null || material.Count < definition.MaterialCount) return Retcode.RetItemCostNotEnough;
+            var previousCount = material.Count;
+            var previousIndex = Data.MaterialItems.IndexOf(material);
+            var activated = new List<int>(previousIds ?? []) { exRankId };
+            try
+            {
+                DatabaseHelper.UpdateInstancesAtomically(Player.Uid, () =>
+                {
+                    material.Count -= definition.MaterialCount;
+                    if (material.Count == 0) Data.MaterialItems.Remove(material);
+                    ranks[owned.BaseAvatarId] = activated;
+                }, () =>
+                {
+                    material.Count = previousCount;
+                    if (!Data.MaterialItems.Contains(material)) Data.MaterialItems.Insert(previousIndex, material);
+                    if (hadEntry) ranks[owned.BaseAvatarId] = previousIds!;
+                    else ranks.Remove(owned.BaseAvatarId);
+                }, Data, manager.Data);
+            }
+            catch (Exception error)
+            {
+                ExRankLogger.Error($"Could not activate ExRank {exRankId} for UID {Player.Uid}", error);
+                return Retcode.RetSystemBusy;
+            }
+            // Bind the newly committed sidecar before building PlayerSync's path field 8.
+            owned = manager.GetFormalAvatar(definition.AvatarId)!;
+        }
+        // One notify contains both the consumed material (including zero) and activated avatar path.
+        await Player.SendPacket(new PacketPlayerSyncScNotify(new ItemSyncData(material), new AvatarSyncData(owned)));
+        return Retcode.RetSucc;
+    }
+
     public async ValueTask RankUpAvatar(int avatarId, ItemCostData costData)
     {
+        // ExRank materials must never be consumed through the ordinary star-rank protocol.
+        if (costData.ItemList.Any(cost => cost.PileItem != null && AvatarExRankMaterials.IsMaterial((int)cost.PileItem.ItemId)))
+            return;
         foreach (var cost in costData.ItemList) await RemoveItem((int)cost.PileItem.ItemId, (int)cost.PileItem.ItemNum);
         var baseAvatarId = avatarId;
         GameData.MultiplePathAvatarConfigData.TryGetValue(baseAvatarId, out var avatar);

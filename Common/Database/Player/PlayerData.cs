@@ -117,7 +117,7 @@ public class PlayerData : BaseDatabaseDataHelper
             LastActiveTime = LastActiveTime,
             ChatBubbleId = (uint)ChatBubble,
             PersonalCard = (uint)PersonalCard,
-            HeadFrameInfo = HeadFrame.ToProto(),
+            HeadFrameInfo = ToPublicHeadFrameProto(),
             Gender = (uint)CurrentGender
         };
 
@@ -147,8 +147,7 @@ public class PlayerData : BaseDatabaseDataHelper
             return info;
         }
 
-        foreach (var avatar in instance.AssistAvatars.Select(
-                     assist => instance.FormalAvatars.Find(x => x.AvatarId == assist)))
+        foreach (var avatar in instance.AssistAvatars.Select(instance.FindByAnyId))
             if (avatar != null)
                 info.AssistSimpleInfoList.Add(new AssistSimpleInfo
                 {
@@ -174,7 +173,7 @@ public class PlayerData : BaseDatabaseDataHelper
             Uid = (uint)Uid,
             WorldLevel = (uint)WorldLevel,
             RecordInfo = new PlayerRecordInfo(),
-            HeadFrameInfo = HeadFrame.ToProto()
+            HeadFrameInfo = ToPublicHeadFrameProto()
         };
 
         var avatarInfo = DatabaseHelper.Instance!.GetInstance<AvatarData>(Uid);
@@ -210,8 +209,7 @@ public class PlayerData : BaseDatabaseDataHelper
         };
 
         var pos = 0;
-        foreach (var avatar in avatarInfo.AssistAvatars.Select(assist =>
-                     avatarInfo.FormalAvatars.Find(x => x.BaseAvatarId == assist)))
+        foreach (var avatar in avatarInfo.AssistAvatars.Select(avatarInfo.FindByAnyId))
             if (avatar != null)
                 info.AssistAvatarList.Add(avatar.ToDetailProto(pos++,
                     new PlayerDataCollection(this, inventoryInfo, new LineupInfo())));
@@ -226,6 +224,13 @@ public class PlayerData : BaseDatabaseDataHelper
         return info;
     }
 
+    /// <summary>
+    ///     其他玩家看到的头像框: 隐藏时下发空头像框。客户端 PlayerBoardInfo.CreateByPlayerDetailInfo 只按
+    ///     HeadFrameInfo.IsValid(物品 ID 非 0 且未过期)决定是否显示; 自己的资料卡始终收到真实头像框, 由本地设置决定显示。
+    /// </summary>
+    public HeadFrameInfo ToPublicHeadFrameProto() =>
+        PrivacySettings.HideHeadFrame ? new HeadFrameInfo() : HeadFrame.ToProto();
+
     public CJLCPMDGIBO ToPlayerOutfitProto() =>
         new() { EAKOLIJOEPA = { PlayerOutfitList.Select(x => (uint)x) } };
 }
@@ -233,6 +238,13 @@ public class PlayerData : BaseDatabaseDataHelper
 [MemoryPackable]
 public partial class PlayerHeadFrameInfo
 {
+    /// <summary>
+    ///     头像框有效期(秒级时间戳), 用于服务端没有赛季结束时间时代替"当期有效": 2099-12-31 12:00:00 UTC。
+    ///     客户端把它当时间戳显示("限时头像框在#1前有效"), 且 xLua 只接受 2^53 以内的整数,
+    ///     long.MaxValue 会让 HeadIconModifyPanel 抛 "beyond double int limits", 整个页面切换失败。
+    /// </summary>
+    public const long NoSeasonExpireTime = 4102401600;
+
     public long HeadFrameExpireTime { get; set; }
     public uint HeadFrameId { get; set; }
 
@@ -240,7 +252,8 @@ public partial class PlayerHeadFrameInfo
     {
         return new HeadFrameInfo
         {
-            HeadFrameExpireTime = HeadFrameExpireTime,
+            // 旧存档写的是 long.MaxValue, 下发时收进客户端能表示的范围
+            HeadFrameExpireTime = Math.Min(HeadFrameExpireTime, NoSeasonExpireTime),
             HeadFrameItemId = HeadFrameId
         };
     }
@@ -255,13 +268,18 @@ public partial class PrivacySettingsPb
     public bool DisplayBattleRecord { get; set; } = true;
     public bool DisplayCollection { get; set; } = true;
 
+    // 隐藏头像框(默认展示)。客户端 PlayerSettingData.IsDisplayHeadFrame = !该值:
+    // 登录读 PlayerSettingInfo 字段 11, 切换发 UpdatePlayerSetting oneof 字段 1600。新成员只能追加在末尾(MemoryPack)。
+    public bool HideHeadFrame { get; set; }
+
     public PlayerSettingInfo ToSettingProto()
     {
         return new PlayerSettingInfo
         {
             // TODO 4.3: PlayerSettingInfo 字段在 4.3 重排，DisplayActiveState/RecentlyState/BattleRecord 暂未映射
             GNFDDPEMMFN = DisplayChallengeLineup,
-            FDHEPCKLCAM = DisplayCollection
+            FDHEPCKLCAM = DisplayCollection,
+            BOMGNMDOGLM = HideHeadFrame
         };
     }
 }

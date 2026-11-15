@@ -277,12 +277,37 @@ public class EntryPoint
                 var rogueMapGen =
                     ResourceManager.LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen");
                 if (rogueMapGen != null) GameData.RogueMapGenData = rogueMapGen;
+                // Planarcadia Reverie (ActivityBangboo) stages, holes and Bangboo, decoded from client tables the
+                // resource export does not produce; never part of Resource.bin, so read on either boot path.
+                GameData.ActivityBangbooConfig =
+                    ResourceManager.LoadCustomFile<ActivityBangbooConfig>("ActivityBangboo", "ActivityBangboo") ??
+                    new ActivityBangbooConfig();
+
+                // ExRank (奇缘星魂) materials are an operator overlay, so they must also load on a cache boot.
+                AvatarExRankMaterials.Apply();
+                // Story-trial skill limits and IsUseWorldLevel live on the raw excel rows, not in Resource.bin.
+                StoryTrialTables.Load();
 
                 // These runtime room/dice definitions were added after the checked-in 4.6 cache was built.
                 // They are operator-authored JSON rather than dumped tables, so a cache boot must overlay the
                 // current files just like banners, video keys and RogueMapGen do above.
                 if (!loadedFromResources)
                 {
+                    // ChallengePeak.json pins each season's map; seasons it leaves out are derived from the
+                    // floors in the cache. Re-read it so pinning a new season only needs a restart.
+                    var peakOverrides = ResourceManager.LoadCustomFile<ChallengePeakOverrideConfig>(
+                        "ChallengePeak Override", "ChallengePeak");
+                    if (peakOverrides != null)
+                    {
+                        GameData.ChallengePeakOverrideConfig = peakOverrides;
+                        ResourceManager.ApplyChallengePeakOverrides();
+                    }
+
+                    // The DiceyDungeon tables are not part of Resource.bin either.
+                    GameData.DiceyDungeonConfig =
+                        ResourceManager.LoadCustomFile<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon") ??
+                        new DiceyDungeonConfig();
+
                     ResourceManager.LoadRogueMagicRoomData();
                     ResourceManager.LoadChessRogueRoomData();
                     ResourceManager.LoadChessRogueDiceSurfaceEffectData();

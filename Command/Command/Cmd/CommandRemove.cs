@@ -60,6 +60,7 @@ public class CommandRemove : ICommand
 
         UnequipAvatarItems(player.InventoryManager!.Data.EquipmentItems, player.InventoryManager.Data.RelicItems, avatar);
         player.AvatarManager.Data.FormalAvatars.Remove(avatar);
+        player.AvatarManager.Data.ExRankIds.Remove(avatar.BaseAvatarId);
         player.AvatarManager.Data.AssistAvatars.RemoveAll(x => x == avatar.BaseAvatarId || x == avatar.AvatarId);
         player.AvatarManager.Data.DisplayAvatars.RemoveAll(x => x == avatar.BaseAvatarId || x == avatar.AvatarId);
 

@@ -21,10 +21,7 @@ public class TokenLoginHandler
         if (!isDispatchToken && !isComboToken)
             return Results.Json(LoginResJson.Error(-201, "Game account cache information error"));
 
-        if (account.GetBanStatus().IsActive)
-            account.AddKnownIdentityKeys(identityKeys);
-
-        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
+        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure, "shield_verify"))
             return Results.Json(LoginResJson.Error(failure.Retcode, failure.Message));
 
         account.AddKnownIdentityKeys(identityKeys);
@@ -53,10 +50,7 @@ public class TokenLoginHandler
         if (!isDispatchToken && !isComboToken)
             return BuildJson(PassportLoginResJson.Error(-201, "Game account cache information error"));
 
-        if (account.GetBanStatus().IsActive)
-            account.AddKnownIdentityKeys(identityKeys);
-
-        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure))
+        if (!LoginSessionFactory.CanAuthenticate(account, identityKeys, out var failure, "passport_verify"))
             return BuildJson(PassportLoginResJson.Error(failure.Retcode, failure.Message));
 
         account.AddKnownIdentityKeys(identityKeys);

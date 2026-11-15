@@ -51,10 +51,7 @@ internal static class LoginSessionFactory
         if (!canonicalAccount.HasPassword() || !canonicalAccount.VerifyPassword(normalizedPassword))
             return false;
 
-        if (canonicalAccount.GetBanStatus().IsActive)
-            canonicalAccount.AddKnownIdentityKeys(identityKeys);
-
-        if (!CanAuthenticate(canonicalAccount, identityKeys, out failure))
+        if (!CanAuthenticate(canonicalAccount, identityKeys, out failure, "password_login"))
             return false;
 
         var username = canonicalAccount.Username ?? normalizedAccount;
@@ -76,11 +73,11 @@ internal static class LoginSessionFactory
     }
 
     public static bool CanAuthenticate(AccountData account, IReadOnlyCollection<string> identityKeys,
-        out LoginFailure failure)
+        out LoginFailure failure, string stage = "authentication")
     {
         failure = LoginFailure.InvalidCredentials();
 
-        if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus))
+        if (AccountBanHelper.TryGetActiveBan(account, identityKeys, out var banStatus, stage))
         {
             account.ClearLoginTokens();
             failure = LoginFailure.Banned(banStatus);

@@ -47,6 +47,8 @@
     <TrimmerRootAssembly Include="MimeKit" />
     <TrimmerRootAssembly Include="BouncyCastle.Cryptography" />
     <TrimmerRootAssembly Include="Spectre.Console" />
+    <!-- Custom JSON configs (Banners, ActivityConfig, VideoKeys, room gen...) are read via Newtonsoft reflection. -->
+    <TrimmerRootAssembly Include="March7thHoney.Common" />
   </ItemGroup>
 
   <!-- The in-process IIS shim is dead weight for a self-hosted Kestrel server; drop it from publish. -->

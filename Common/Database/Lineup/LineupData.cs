@@ -33,6 +33,10 @@ public partial class LineupInfo
     // MarkPresetLineupCsReq 标记的常用队伍。追加在已有成员之后，旧存档反序列化为 false。
     public bool IsFavourite { get; set; }
 
+    // Story/raid trials advertise a virtual lineup. Appended so older lineup blobs keep the defaults.
+    public bool IsVirtual { get; set; }
+    public int PlaneId { get; set; }
+
     [JsonIgnore] [MemoryPackIgnore] public LineupData? LineupData { get; set; }
 
     [JsonIgnore] [MemoryPackIgnore] public AvatarData? AvatarData { get; set; }
@@ -145,7 +149,9 @@ public partial class LineupInfo
                 ? (int)ExtraLineupType.LineupNone
                 : LineupType),
             Index = (uint)GetIndex(),
-            IsFavourite = IsFavourite
+            IsFavourite = IsFavourite,
+            IsVirtual = IsVirtual,
+            PlaneId = (uint)PlaneId
         };
 
         if (LineupType != (int)ExtraLineupType.LineupNone) info.Index = 0;
@@ -162,14 +168,18 @@ public partial class LineupInfo
 
                 if (avatar.AssistUid != 0) // assist avatar
                 {
-                    var assistPlayer = DatabaseHelper.Instance?.GetInstance<AvatarData>(avatar.AssistUid);
-                    if (assistPlayer != null)
-                    {
-                        var lineupAvatar = assistPlayer.FormalAvatars
-                            ?.Find(item => item.BaseAvatarId == avatar.BaseAvatarId)
-                            ?.ToLineupInfo(BaseAvatars.IndexOf(avatar), this, AvatarType.AvatarAssistType);
-                        if (lineupAvatar != null) info.AvatarList.Add(lineupAvatar); // assist avatar may not work
-                    }
+                    // A support always joins at full HP/energy and is identified by its path id.
+                    var support = DatabaseHelper.Instance?.GetInstance<AvatarData>(avatar.AssistUid)
+                        ?.FindByAnyId(avatar.BaseAvatarId);
+                    if (support != null)
+                        info.AvatarList.Add(new LineupAvatar
+                        {
+                            Id = (uint)support.AvatarId,
+                            Slot = (uint)BaseAvatars.IndexOf(avatar),
+                            AvatarType = AvatarType.AvatarAssistType,
+                            Hp = 10000,
+                            SpBar = new SpBarInfo { CurSp = 10000, MaxSp = 10000 }
+                        });
                 }
                 else if (avatar.SpecialAvatarId != 0) // special avatar
                 {
