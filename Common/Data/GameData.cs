@@ -24,6 +24,16 @@ public static partial class GameData
 
     #endregion
 
+    #region ActivityBangboo
+
+    /// <summary>
+    ///     Planarcadia Reverie (ActivityBangboo) tables from Config/Custom/ActivityBangboo.json. Read on every boot
+    ///     like the other operator files and kept out of Resource.bin.
+    /// </summary>
+    public static ActivityBangbooConfig ActivityBangbooConfig { get; set; } = new();
+
+    #endregion
+
     #region VideoKeys
 
     public static VideoKeysConfig VideoKeysConfig { get; set; } = new();

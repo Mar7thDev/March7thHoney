@@ -797,6 +797,14 @@ public enum MissionFinishTypeEnum
     GridFightSettleWinWithTraitLayerAndRoleRarityNum = 370063,
     FinalityBattleLevelFinish = 370070,
     FinalityBattleHardLevelPerfectFinishCnt = 370071,
+    BangbooLevelFinish = 480500,
+    BangbooReadPost = 480501,
+    BangbooDeployCount = 480502,
+    BangbooMaxDeployCountInLevel = 480503,
+    BangbooFinishNpcGroupPerformance = 480504,
+    BangbooTacticsKillCount = 480505,
+    BangbooMaxEnergyAtWin = 480506,
+    BangbooMaxSimultaneousIdCount = 480507,
     ExpeditionBattlePassStageCnt = 430011,
     LeaveRegion = 5
 }
