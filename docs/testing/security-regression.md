@@ -6,7 +6,7 @@
 python3 scripts/verify-security.py
 ```
 
-该入口执行完整 Release 构建、Auth/Web 鉴权与会话安全回归、KCP 来源绑定与握手容量回归、协议生成回归，并校验当前版本两个 `CmdIds.cs` 副本一致。测试只使用临时数据库、内存资源和回归程序自己的隔离配置；不部署生产服务。
+该入口执行完整 Release 构建、Auth/Web 鉴权与会话安全回归、KCP 来源绑定与握手容量回归、协议生成回归，并校验 `KcpSharp/CmdIds.cs` 与 `Proto/StarRail.proto` 记录的命令号一致。测试只使用临时数据库、内存资源和回归程序自己的隔离配置；不部署生产服务。
 
 默认明确跳过依赖真实游戏资源的 LoginScene、GridFight、DailyActive 回归。拥有匹配版本的 `Config/Resource.bin` 时可使用 `--with-resources`；指定后文件缺失会失败，不会把跳过报告为通过。客户端实机、Windows/macOS、NativeAOT 和真实业务数据升级仍须单独验收。
 

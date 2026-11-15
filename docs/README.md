@@ -22,7 +22,7 @@ March7thHoney 的文档按用途集中维护在此目录。仓库根目录的 `R
 
 - 玩法实现进度：[English](development/gameplay-implementation.md) | [简中](development/gameplay-implementation.zh-CN.md) | [繁中](development/gameplay-implementation.zh-TW.md) | [日本語](development/gameplay-implementation.ja-JP.md)
 - [多语言玩法名称映射](development/gameplay-name-map.md)
-- [Protobuf 版本与生成结构](development/protobuf.md)
+- [协议定义与生成](development/protobuf.md)
 - [玩家组件架构](development/player-components.md)
 - [任务系统](development/mission-system.md)
 - [骰子收容（DiceyDungeon）活动](development/dicey-dungeon.md)

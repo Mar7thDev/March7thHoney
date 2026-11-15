@@ -3,8 +3,8 @@
        package supplies host tools only; it is not copied to server output or published. -->
   <Target Name="PrepareProtocolGeneration">
     <PropertyGroup>
-      <ProtocolSourceDirectory>$(MSBuildProjectDirectory)/$(ActiveProtocolVersion)</ProtocolSourceDirectory>
-      <ProtocolGeneratedDirectory>$(IntermediateOutputPath)protobuf/$(ActiveProtocolVersion)</ProtocolGeneratedDirectory>
+      <ProtocolSourceDirectory>$(MSBuildProjectDirectory)</ProtocolSourceDirectory>
+      <ProtocolGeneratedDirectory>$(IntermediateOutputPath)protobuf</ProtocolGeneratedDirectory>
       <ProtocolInputManifest>$(IntermediateOutputPath)protobuf-inputs.txt</ProtocolInputManifest>
       <ProtocolArguments>$(IntermediateOutputPath)protobuf-arguments.rsp</ProtocolArguments>
       <ProtocolStamp>$(ProtocolGeneratedDirectory)/generation.stamp</ProtocolStamp>
@@ -23,7 +23,7 @@
       <ProtocolSchema Include="$(ProtocolSourceDirectory)/*.proto" />
       <ProtocolGeneratedFile Include="@(ProtocolSchema->'$(ProtocolGeneratedDirectory)/%(Filename).cs')" />
     </ItemGroup>
-    <Error Condition="'@(ProtocolSchema)' == ''" Text="No active protocol schemas found in $(ProtocolSourceDirectory)." />
+    <Error Condition="'@(ProtocolSchema)' == ''" Text="No protocol schema found in $(ProtocolSourceDirectory)." />
     <Error Condition="!Exists('$(ProtocolCompiler)')" Text="protoc not found at $(ProtocolCompiler). Restore packages, or set ProtocolCompiler to a protoc 33.1 executable for this host." />
     <MakeDir Directories="$(IntermediateOutputPath)" />
     <!-- Changes to the set of inputs (including removals) invalidate generation. -->
@@ -33,7 +33,7 @@
   <Target Name="GenerateProtocolSources" DependsOnTargets="PrepareProtocolGeneration"
           Inputs="@(ProtocolSchema);$(ProtocolInputManifest);$(ProtocolCompiler);$(MSBuildProjectFullPath);$(MSBuildThisFileFullPath)"
           Outputs="@(ProtocolGeneratedFile);$(ProtocolStamp)">
-    <Message Importance="high" Text="Generating $(ActiveProtocolVersion) protocol C# with pinned protoc into $(ProtocolGeneratedDirectory)" />
+    <Message Importance="high" Text="Generating protocol C# with pinned protoc into $(ProtocolGeneratedDirectory)" />
     <!-- A complete regeneration also removes obsolete generated classes. -->
     <RemoveDir Directories="$(ProtocolGeneratedDirectory)" />
     <MakeDir Directories="$(ProtocolGeneratedDirectory)" />

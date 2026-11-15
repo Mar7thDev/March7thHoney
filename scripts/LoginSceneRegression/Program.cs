@@ -56,7 +56,6 @@ using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
-using March7thHoney.ProtoOrganizer;
 using March7thHoney.Kcp;
 using March7thHoney.Kcp.KcpSharp;
 using Google.Protobuf;
@@ -378,17 +377,6 @@ Check("active SceneMapInfo writes an independent retcode field",
     errorFields.GetValueOrDefault(sceneMapFloorTag) == 10202001 &&
     errorFields.GetValueOrDefault(sceneMapRetcodeTag) == 2);
 
-// Explicit field corrections must also survive a full same-seed regeneration, not just protoc.
-TypeDef Definition(string name, string fields) => new()
-{
-    Name = name, Kind = DefKind.Message, Refs = [], Body = $"message {name} {{\n{fields}\n}}"
-};
-var rawMap = Definition("HEACNLOGGPH", "    uint32 JFFKLDOPFOJ = 14;\n    uint32 BPKNKCKFEIF = 6;");
-var oldMap = Definition("SceneMapInfo", "    uint32 retcode = 14;\n    uint32 floor_id = 6;");
-var translations = Translations.Load(Path.Combine(repository, "Proto/4.5v3/translations.txt"));
-var migratedMap = SameSeedMigrator.Apply([rawMap], [rawMap], [oldMap], translations).Definitions.Single().Body;
-Check("forced 4.5 field mappings override inferred older field meanings",
-    migratedMap.Contains("floor_id = 14;") && migratedMap.Contains("retcode = 6;"));
 var boundaryPacket = new PacketSyncServerSceneChangeNotify();
 Check("active scene boundary uses the generated cmdid and an empty protobuf payload",
     boundaryPacket.CmdId == CmdIds.SyncServerSceneChangeNotify && boundaryPacket.Data.Length == 0 &&
@@ -3034,7 +3022,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         talkPlayer.MissionManager.GetSubMissionStatus(TalkGateSub) == MissionPhaseEnum.Finish);
     talkPlayer.Connection = null;
 
-    // Classic Simulated Universe command pairs (Proto/4.8/Raw/packetIds.txt): enhance 1819/1875, pick 1804/1888.
+    // Classic Simulated Universe command pairs (the CmdID comments in Proto/StarRail.proto): enhance 1819/1875, pick 1804/1888.
     int OpcodeOf(Type handler) => handler.GetCustomAttribute<Opcode>()!.CmdId;
     Check("classic Simulated Universe enhance and pick handlers listen on the 18xx command ids",
         OpcodeOf(typeof(HandlerEnhanceRogueBuffCsReq)) == 1819 && CmdIds.RogueEnhanceRogueBuffScRsp == 1875 &&

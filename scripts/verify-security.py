@@ -10,7 +10,6 @@ import argparse
 import shutil
 import subprocess
 import sys
-import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -28,10 +27,9 @@ def main():
                         help='Require Config/Resource.bin and run LoginScene/GridFight/DailyActive suites')
     parser.add_argument('--skip-build', action='store_true', help='Use a previously verified solution build')
     args = parser.parse_args()
-    version = ET.parse(ROOT / 'Proto/Proto.csproj').findtext('.//ActiveProtocolVersion')
-    if (ROOT / 'KcpSharp/CmdIds.cs').read_bytes() != (ROOT / 'Proto' / version / 'CmdIds.cs').read_bytes():
-        raise RuntimeError('Active protocol CmdIds.cs copies differ')
-    print('PASS: active protocol command IDs match')
+    run(['dotnet', 'run', '--project', 'Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj', '-c', 'Release',
+         '--', 'cmdids', '--check'])
+    print('PASS: command IDs match the protocol schema')
     if not args.skip_build:
         run(['dotnet', 'build', 'March7thHoney.sln', '-c', 'Release', '-m:1', '-p:UseSharedCompilation=false'])
     for name in ['AuthRegression', 'WebServerRegression', 'KcpSecurityRegression', 'KcpAdmissionRegression']:
