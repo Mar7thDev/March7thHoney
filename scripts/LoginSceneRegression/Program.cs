@@ -28,6 +28,10 @@ using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Command;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.GameServer.Game.Mission;
+using March7thHoney.Database.DiceyDungeon;
+using March7thHoney.GameServer.Server.Packet.Recv.DiceyDungeon;
+using March7thHoney.GameServer.Game.Activity.DiceyDungeon;
 using March7thHoney.GameServer.Game.ChessRogue;
 using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.Rogue;
@@ -673,6 +677,45 @@ if (GameData.ChallengePeakGroupConfigData.ContainsKey(11))
                                    mazeGroup.MonsterList.Count > 0 &&
                                    level.ChallengeMonsters.GetValueOrDefault(level.GetMazeGroupId())?.Count > 0) &&
         GameData.ChallengePeakConfigData[1104].BossExcel != null);
+}
+// Anomaly Arbitration group 12 (OSBETAWin4.7.51) has no entry in ChallengePeak.json: its map is derived from the
+// placeholder monsters of the newest free challenge floor, P30148_F30148001 (entrance 3014801, Contents groups
+// 19/20/21 standing on one spot), with the knight stages in group 19 and the king in group 20.
+if (GameData.ChallengePeakGroupConfigData.ContainsKey(12))
+{
+    int[] group12Ids = [1201, 1202, 1203, 1204];
+    var group12Levels = group12Ids.Select(id => GameData.ChallengePeakConfigData.GetValueOrDefault(id)).ToList();
+    Check("Anomaly Arbitration group 12 is derived from the resources and is the current season",
+        GameData.ChallengePeakOverrideConfig.ChallengePeak.All(g => g.GroupId != 12)
+        && GameData.ChallengePeakDerivedGroups.Any(g => g.GroupId == 12)
+        && GameData.IsChallengePeakGroupAvailable(12) && GameData.GetCurrentChallengePeakGroupId() == 12
+        && GameData.ChallengePeakGroupConfigData[12].MapEntranceID == 3014801);
+    Check("Anomaly Arbitration group 12 knights fight in group 19 and the king in group 20 of floor 30148001",
+        GameData.FloorInfoData.TryGetValue("P30148_F30148001", out var peakFloor12)
+        && group12Levels.All(level => level != null && level.GetMapEntranceId() == 3014801
+            && level.GetMazeGroupId() == (level.ID == 1204 ? 20 : 19)
+            && peakFloor12.Groups.TryGetValue(level.GetMazeGroupId(), out var mazeGroup) && mazeGroup.MonsterList.Count > 0
+            && level.ChallengeMonsters.GetValueOrDefault(level.GetMazeGroupId()) is { Count: > 0 } spawned
+            && spawned.All(m => GameData.NpcMonsterDataData.ContainsKey(m.NpcMonsterId)))
+        && GameData.ChallengePeakConfigData[1204].BossExcel != null);
+    Check("Anomaly Arbitration group 12 floor builds a scene at its entrance",
+        GameData.MazePlaneData.ContainsKey(30148)
+        && new SceneInstance(player, GameData.MazePlaneData[30148], 30148001, 3014801).FloorInfo == peakFloor12);
+
+    // The rule is checked against the hand-written seasons: with 9-12 unpinned it gives back their entries.
+    var derivedAgain = ChallengePeakMapResolver.Derive(
+            GameData.ChallengePeakOverrideConfig.ChallengePeak.Where(g => g.GroupId < 9))
+        .ToDictionary(d => d.GroupId, d => (d.MapEntranceId, d.KnightMazeGroupId, d.KingMazeGroupId));
+    var pinnedSeasons = GameData.ChallengePeakOverrideConfig.ChallengePeak.Where(g => g.GroupId is >= 9 and <= 11)
+        .ToDictionary(g => g.GroupId, g =>
+        {
+            var boss = GameData.ChallengePeakGroupConfigData[g.GroupId].BossLevelID.ToString();
+            var knight = g.Stages.First(s => s.Key != boss).Value;
+            return (knight.MapEntranceId, knight.MazeGroupId, g.Stages[boss].MazeGroupId);
+        });
+    Check("deriving seasons 9-12 from the resources reproduces the pinned maps of seasons 9, 10 and 11",
+        pinnedSeasons.Count == 3 && pinnedSeasons.All(kv => derivedAgain.GetValueOrDefault(kv.Key) == kv.Value)
+        && derivedAgain.GetValueOrDefault(12) == (3014801, 19, 20));
 }
 // 4.7 maps extracted from the 4.6.51 client (absent from the community dump): each floor is cached and a scene
 // can be built at its entrance with its server-side groups.
@@ -1460,10 +1503,11 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     await MainFixRegression.Run(scratch, serverPeer, Check, SentFrames);
     await SharedConfigRegression.Run(Check);
     await ActivityBangbooRegression.Run(repository, scratch, serverPeer, Check, SentFrames);
+    await RealityShowRegression.Run(repository, scratch, serverPeer, Check, SentFrames);
     // 4.7 activity data queries sent at login (obfuscated names, so the generic empty reply skips them): both
     // must be answered or the client keeps its loading spinner up.
-    var activityQueryReplies = (await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity
-            .HandlerCKMHMAJPJEP().OnHandle(rogueConnection, [], [])))
+    var activityQueryReplies = (await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.RealityShow
+            .HandlerRealityShowGetDataCsReq().OnHandle(rogueConnection, [], [])))
         .Concat(await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Activity
             .HandlerMGCJKEEOPEC().OnHandle(rogueConnection, [], [])))
         .ToList();
@@ -3026,12 +3070,15 @@ int[] trialModules = [2000603, 2001101, 2001102, 2001103, 2001104, 2001105, 2001
 Check("activity schedule lists every Role Trial module", schedule != null &&
     trialModules.All(id => schedule.ScheduleData.Any(row => row.ActivityId == id && row.PanelId is 20011 or 20016 or 20024 or 20027 or 20064 or 20087 or 20091 or 20092 or 20093)));
 
-// Banners.json is parsed row by row and a bad row is only skipped with a warning, so check that every captured 4.6
-// pool survives loading and only references avatars and light cones present in the resource cache.
+// Banners.json is parsed row by row and a bad row is only skipped with a warning, so check that every pool survives
+// loading and only references avatars and light cones present in the resource cache. The OSBETAWin4.7.51 client only
+// knows the pools in its GachaBasicInfo (1001, 4001, 2001/2002, 3001/3002): GachaModule._CmdGetGachaInfoScRsp looks
+// every gacha_id up there and throws on the first unknown one, which dropped the whole list, so only the standard
+// pool is configured.
 File.Copy(Path.Combine(repository, "Config/Custom/Banners.json"), Path.Combine(scratch, "Custom/Banners.json"));
 var banners = ResourceManager.LoadBanners();
-int[] bannerIds = [1001, 2139, 2140, 2141, 3139, 3140, 3141, 5001, 5002, 5003, 5004, 6001, 6002, 6003, 6004];
-Check("banner config loads every captured 4.6 pool with known rate-up items",
+int[] bannerIds = [1001];
+Check("banner config loads only pools the 4.7.51 client knows, with known rate-up items",
     banners.Banners.Select(b => b.GachaId).Order().SequenceEqual(bannerIds) &&
     banners.Banners.All(b => b.RateUpItems5.Concat(b.RateUpItems4).Concat(b.PrizeItems)
         .All(id => GameData.AvatarConfigData.ContainsKey(id) || GameData.EquipmentConfigData.ContainsKey(id))));
@@ -3345,6 +3392,43 @@ Check("presence handlers are registered for the three requests", new[]
     {
         CmdIds.SocialPlayGetDataCsReq, CmdIds.PetMarbleGetDataCsReq, CmdIds.PetMarbleGetCycleTrialPetsCsReq
     }.All(id => HandlerManager.GetHandler(id) != null));
+
+// 4.7.51 login: these data requests had no handler, so the generic empty body left the sub-message each client
+// module hands to its Sync/Update method null (OSBETAWin4.7.51 Player.log, one NullReferenceException per request).
+var alley = Present(CmdIds.GetAlleyInfoScRsp, new GetAlleyInfoScRsp());
+Check("GetAlleyInfoScRsp ships its logistics map data present",
+    alley.NFJKAILEFAD != null && alley.HAMAOOBGMLO != null && alley.EEAACLBJODA != null);
+var elfRestaurant = Present(CmdIds.GetElfRestaurantDataScRsp, new GetElfRestaurantDataScRsp());
+Check("GetElfRestaurantDataScRsp ships its farm data present",
+    elfRestaurant.FFKCMKJFFCM != null && elfRestaurant.MILCHKIIEJE != null && elfRestaurant.AHCEIMGNBNM != null
+    && elfRestaurant.IBHKOKEEMOI != null && elfRestaurant.OENLJGEBCGA != null);
+var chimeraDuel = Present(CmdIds.ChimeraDuelGetDataScRsp, new ChimeraDuelGetDataScRsp());
+Check("ChimeraDuelGetDataScRsp ships its player data present",
+    chimeraDuel.COFPFIDNONN != null && chimeraDuel.CFDIKLBINHK != null);
+var fate = Present(CmdIds.FateQueryScRsp, new FateQueryScRsp());
+Check("FateQueryScRsp ships its area info present", fate.LFLCDNGALME != null && fate.OEIBHLMDJKA != null);
+Check("GetEvolveBuildQueryInfoScRsp ships its game info present",
+    Present(CmdIds.GetEvolveBuildQueryInfoScRsp, new GetEvolveBuildQueryInfoScRsp()).CFDIKLBINHK != null);
+var chenLing = Present(CmdIds.ChenLingGetDataScRsp,
+    new ChenLingGetDataScRsp { DJOLGKGKCHE = new FDDNKPJEMJE { StageId = 1, IsUnlock = true } });
+Check("ChenLingGetDataScRsp keeps the captured stage progress and fills the battle data",
+    chenLing.DJOLGKGKCHE is { StageId: 1, IsUnlock: true } && chenLing.KFAIGIIPLOF != null);
+Check("GetFantasticStoryActivityDataScRsp keeps the captured activity data",
+    Present(CmdIds.GetFantasticStoryActivityDataScRsp,
+        new GetFantasticStoryActivityDataScRsp { ONIEMLICONB = new GCFDJCPFOGG { OFHBPNGDEGO = 1 } })
+        .ONIEMLICONB?.OFHBPNGDEGO == 1);
+await TrainPartyBuildRegression.Run(Check);
+var drinkMaker = GetDrinkMakerDataScRsp.Parser.ParseFrom(
+    new March7thHoney.GameServer.Server.Packet.Send.DrinkMaker.PacketGetDrinkMakerDataScRsp().Data);
+Check("GetDrinkMakerDataScRsp names a guest sequence and chat instead of 0",
+    drinkMaker.EMIAIOMOLPO == 112 && drinkMaker.FGBELHJAKCC == 11201 && drinkMaker.Day == 5
+    && drinkMaker.LMOGDPMLKFH != null && drinkMaker.CJKAGEDKAFL.Count == 12 && drinkMaker.ONFNEDNFOLL.Count == 6);
+Check("4.7.51 login data handlers are registered", new[]
+    {
+        CmdIds.GetAlleyInfoCsReq, CmdIds.GetElfRestaurantDataCsReq, CmdIds.ChimeraDuelGetDataCsReq,
+        CmdIds.FateQueryCsReq, CmdIds.GetEvolveBuildQueryInfoCsReq, CmdIds.ChenLingGetDataCsReq,
+        CmdIds.GetFantasticStoryActivityDataCsReq, CmdIds.GetDrinkMakerDataCsReq, CmdIds.TrainPartyGetDataCsReq
+    }.All(id => HandlerManager.GetHandler(id) != null));
 // ---- 4.6 pets, relic presets, lineup slots, Trailblazer current path, video keys (yuukisr_go c4f5979/24e7083/6bb4fd1/a532fa0/6a76330) ----
 var blindBoxPetItems = GameData.ItemConfigData.Values.Where(item => PetManager.IsBlindBoxPetItem(item.ID))
     .Select(item => item.ID).OrderBy(id => id).ToList();
@@ -3354,6 +3438,11 @@ Check("cache has 4.6 blind box pet items and keeps gen-1 summon pets out of them
 
 var petPlayer = new PlayerInstance(60020);
 await petPlayer.InitializeAsync();
+// PlayerModule._CmdGetBasicInfoScRsp reads a flag from a nested setting message without a null check.
+var basicSettings = GetBasicInfoScRsp.Parser.ParseFrom(
+    new March7thHoney.GameServer.Server.Packet.Send.Player.PacketGetBasicInfoScRsp(petPlayer).Data).PlayerSettingInfo;
+Check("GetBasicInfoScRsp ships the nested setting messages present",
+    basicSettings is { OJPAODIHAJE: not null, ANKIDJJINEI: not null, CMFCOOEEECB: not null });
 var pets = petPlayer.GetComponent<PetManager>();
 var petOutbound = new LoopbackKcpTransport();
 var petInbound = new LoopbackKcpTransport();
@@ -3600,6 +3689,460 @@ Check("video keys put video_key on HHCAKADKHAN and ps_field_3 on BOGECOHIINH", v
     && video5600.IBDIMHPOPOJ == 453193354110313382 && video5600.BOGECOHIINH == 10148726845613043778
     && videoKeys.ActivityVideoKeyInfoList.Count > 0 && videoKeys.ActivityVideoKeyInfoList.All(v => v.HHCAKADKHAN != 0));
 GameData.VideoKeysConfig = savedVideoKeys;
+
+// ---- Express Supply Pass: only a recharge-shop purchase (RechargeConfig gift type 2) switches it on ----
+var cardProduct = GameData.RechargeConfigData.GetValueOrDefault("rpgglbmonthcardtier5");
+var coinProduct = GameData.RechargeConfigData.GetValueOrDefault("rpgglbcoin60tier1");
+Check("cache has the month card and 60-shard recharge products",
+    cardProduct is { GiftType: (int)ProductGiftType.ProductGiftMonthCard }
+    && coinProduct is { GiftType: (int)ProductGiftType.ProductGiftCoin, FirstCharge: 60 });
+var cardPlayer = new PlayerInstance(60030);
+await cardPlayer.InitializeAsync();
+var savedMonthCard = config.ServerOption.EnableMonthCard;
+var savedFakeRecharge = config.ServerOption.EnableFakeRecharge;
+config.ServerOption.EnableMonthCard = true;
+config.ServerOption.EnableFakeRecharge = true;
+var cardOutbound = new LoopbackKcpTransport();
+var cardInbound = new LoopbackKcpTransport();
+using (var cardServerPeer = new KcpConversation(endpoint, cardOutbound, options))
+using (var cardClientPeer = new KcpConversation(endpoint, cardInbound, options))
+{
+    cardOutbound.Peer = cardClientPeer;
+    cardInbound.Peer = cardServerPeer;
+    cardOutbound.Start();
+    cardInbound.Start();
+    var cardConnection = new ProbeConnection(cardServerPeer) { Player = cardPlayer };
+    cardPlayer.Connection = cardConnection;
+    async Task<List<(ushort Id, byte[] Body)>> CaptureCard(Func<Task> action)
+    {
+        await action();
+        await cardPlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var packets = new List<(ushort, byte[])>();
+        while (true)
+        {
+            var received = await cardClientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP month card test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            var length = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            if (id == ushort.MaxValue) return packets;
+            packets.Add((id, buffer.AsSpan(12, length).ToArray()));
+        }
+    }
+
+    var cardData = cardPlayer.Data;
+    var now = ServerTimeProvider.GetServerUnixSec(cardData);
+    var products = QueryProductInfoScRsp.Parser.ParseFrom(
+        new March7thHoney.GameServer.Server.Packet.Send.Player.PacketQueryProductInfoScRsp(cardData).Data);
+    Check("a fresh account has no supply pass and querying the shop does not switch one on",
+        products.MonthCardOutDateTime == 0 && cardData.MonthCardExpireTime == 0
+        && !MonthCardService.TryClaimDailyReward(cardData, out _));
+    Check("the recharge shop lists the supply pass product",
+        products.ProductList.Any(p => p.GiftType == ProductGiftType.ProductGiftMonthCard && p.PriceTier == "rpgglbmonthcardtier5"));
+
+    var jadeBefore = cardData.Hcoin;
+    var shardsBefore = cardData.Mcoin;
+    RechargeResult firstResult = default;
+    var firstBuy = await CaptureCard(async () => firstResult = await RechargeService.Purchase(cardPlayer, cardProduct!));
+    var succ = RechargeSuccNotify.Parser.ParseFrom(firstBuy.Last(p => p.Id == CmdIds.RechargeSuccNotify).Body);
+    var daily = MonthCardRewardNotify.Parser.ParseFrom(firstBuy.Single(p => p.Id == CmdIds.MonthCardRewardNotify).Body);
+    var firstOutDate = cardData.MonthCardExpireTime;
+    Check("buying the supply pass opens 30 days and announces the expiry with 300 Oneiric Shards",
+        firstResult == RechargeResult.Granted && firstOutDate >= now + 30 * 86400 && firstOutDate <= now + 30 * 86400 + 60
+        && (long)succ.MonthCardOutDateTime == firstOutDate && succ.ProductId == "rpgglbmonthcardtier5"
+        && succ.ItemList.ItemList_.Single() is { ItemId: 3, Num: 300 } && cardData.Mcoin == shardsBefore + 300);
+    Check("the day of purchase pays its 90 Stellar Jade once",
+        daily.Reward.ItemList_.Single() is { ItemId: 1, Num: 90 } && cardData.Hcoin == jadeBefore + 90
+        && !MonthCardService.TryClaimDailyReward(cardData, out _));
+
+    RechargeResult secondResult = default;
+    var secondBuy = await CaptureCard(async () => secondResult = await RechargeService.Purchase(cardPlayer, cardProduct!));
+    Check("a second pass stacks 30 more days without a second daily reward on the same day",
+        secondResult == RechargeResult.Granted && cardData.MonthCardExpireTime == firstOutDate + 30 * 86400
+        && secondBuy.All(p => p.Id != CmdIds.MonthCardRewardNotify) && cardData.Hcoin == jadeBefore + 90);
+
+    for (var i = 0; i < 4; i++) await RechargeService.Purchase(cardPlayer, cardProduct!);
+    var fullOutDate = cardData.MonthCardExpireTime;
+    var refused = await RechargeService.Purchase(cardPlayer, cardProduct!);
+    Check("the pass stops at 180 days and a further purchase is refused without changes",
+        MonthCardService.GetRemainingDays(cardData) == 180 && refused == RechargeResult.MonthCardLimit
+        && cardData.MonthCardExpireTime == fullOutDate && cardData.Mcoin == shardsBefore + 6 * 300);
+
+    var shardsBeforeCoin = cardData.Mcoin;
+    var coinResult = await RechargeService.Purchase(cardPlayer, coinProduct!);
+    Check("Oneiric Shard tiers still grant their shards", coinResult == RechargeResult.Granted
+        && cardData.Mcoin == shardsBeforeCoin + coinProduct!.FirstCharge + coinProduct.NormalCharge);
+
+    config.ServerOption.EnableMonthCard = false;
+    var disabledProducts = QueryProductInfoScRsp.Parser.ParseFrom(
+        new March7thHoney.GameServer.Server.Packet.Send.Player.PacketQueryProductInfoScRsp(cardData).Data);
+    Check("with the supply pass disabled it is neither listed, active nor purchasable",
+        disabledProducts.MonthCardOutDateTime == 0
+        && disabledProducts.ProductList.All(p => p.GiftType != ProductGiftType.ProductGiftMonthCard)
+        && await RechargeService.Purchase(cardPlayer, cardProduct!) == RechargeResult.Disabled
+        && cardData.MonthCardExpireTime == fullOutDate);
+    config.ServerOption.EnableMonthCard = true;
+
+    cardData.MonthCardExpireTime = now - 10;
+    cardData.LastMonthCardRewardDate = 0;
+    Check("an expired pass pays nothing and reports its past expiry",
+        !MonthCardService.TryClaimDailyReward(cardData, out _) && MonthCardService.GetMonthCardOutDateTime(cardData) == now - 10
+        && MonthCardService.GetRemainingDays(cardData) == 0);
+}
+config.ServerOption.EnableMonthCard = savedMonthCard;
+config.ServerOption.EnableFakeRecharge = savedFakeRecharge;
+
+// ---- Containment Starts With a Roll (DiceyDungeon, 4.8 command group LDJDDDDPLLH 10643-10659) ----
+File.Copy(Path.Combine(repository, "Config/Custom/DiceyDungeon.json"), Path.Combine(scratch, "Custom/DiceyDungeon.json"));
+GameData.DiceyDungeonConfig = ResourceManager.LoadCustomFile<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon")!;
+var dice = GameData.DiceyDungeonConfig;
+Check("DiceyDungeon config has five levels whose nodes chain from one first node to the last",
+    dice.Levels.Count == 5 && dice.Nodes.Count == 29 && dice.Avatars.Count == 4
+    && dice.Levels.All(level =>
+    {
+        var chain = new List<int>();
+        for (var n = dice.GetFirstNode(level.Id); n != null; n = dice.GetNextNode(n.Id)) chain.Add(n.Id);
+        return chain.Count == dice.Nodes.Count(n => n.LevelId == level.Id) && chain.Count > 0;
+    })
+    && dice.GetLevel(5) is { IsChallenge: true, ChallengeAvatarIds.Count: 4 } && dice.GetMonster(501)?.Hp > 0
+    && dice.Avatars.All(a => a.InitialHp > 0 && a.StoryInitialSkillIds.Count > 0));
+Check("DiceyDungeon is scheduled on panel 50140 and every request has a handler",
+    schedule!.ScheduleData.Any(row => row.ActivityId == 5014001 && row.PanelId == 50140)
+    && new[] { CmdIds.DLDDOMMLPBK, CmdIds.NOJMGKOMJHP, CmdIds.PIEGCFMAEOO, CmdIds.KPNDLNCAECC, CmdIds.IMPHFFIJDKP,
+        CmdIds.MDOHKDNNDPI }.All(id => HandlerManager.GetHandler(id) != null)
+    && MissionManager.FinishTypeHandlers.ContainsKey(MissionFinishTypeEnum.DiceyDungeonNodeFinish)
+    && MissionManager.FinishTypeHandlers.ContainsKey(MissionFinishTypeEnum.DiceyDungeonLevelFinish));
+
+var dicePlayer = new PlayerInstance(60040);
+await dicePlayer.InitializeAsync();
+
+// The activity's standing entrance NPC (ACTIVITY_ENTRANCE icon 2589) sits in floor 20581001 group 159, a
+// client group owned by the hidden main mission 8048209. The panel's "go" button looks that icon up in the
+// floor's map data and silently does nothing when the group is missing, so the map has to list the group
+// once its owner reads as finished - which is every mission while missions are disabled.
+if (GameData.FloorInfoData.TryGetValue("P20581_F20581001", out var diceFloor)
+    && diceFloor.Groups.TryGetValue(159, out var diceEntranceGroup)
+    && GameData.ContentPackageConfigData.TryGetValue(150137, out var dicePackage))
+{
+    HashSet<uint> DiceMapGroups() => GetSceneMapInfoScRsp.Parser.ParseFrom(new PacketGetSceneMapInfoScRsp(
+            new GetSceneMapInfoCsReq { SceneIdentifiers = { new SceneIdentifier { FloorId = 20581001 } } },
+            dicePlayer).Data).SceneMapInfo.Single().MazeGroupList.Select(group => group.GroupId).ToHashSet();
+
+    Check("DiceyDungeon's standing entrance group is the after-guide entrance's start group, owned by its hub mission",
+        diceEntranceGroup.OwnerMainMissionID == 8048209 && GameData.MapEntranceData[2058105].StartGroupID == 159
+        && dicePackage.TryGetStandingEntrance(out var diceHubFloor, out var diceHubGroup, out var diceHubMission)
+        && diceHubFloor == 20581001 && diceHubGroup == 159 && diceHubMission == 8048209
+        && GameData.MainMissionData[8048209].MissionInfo.StartSubMissionList.SequenceEqual([804820901])
+        && GameData.MainMissionData[8048209].MissionInfo.FinishSubMissionList.SequenceEqual([804820902]));
+
+    // A cache boot reloads Config/Custom/ActivityConfig.json over the snapshot stored in Resource.bin; the
+    // regression loads the cache only, so apply the same schedule here.
+    var cachedSchedule = GameData.ActivityConfig;
+    GameData.ActivityConfig = schedule!;
+    var missionsOffGroups = DiceMapGroups();
+    Check("with missions disabled the map lists the DiceyDungeon entrance group but not the guide's mission group",
+        !dicePlayer.MissionEnabled && missionsOffGroups.Contains(159) && !missionsOffGroups.Contains(157));
+
+    // The client copies the scene's finished / unfinished main mission lists into MainMissionData.IsFinish,
+    // which the panel's guide condition (FinishMainMission:8048208) reads. Once GetMissionStatusScRsp has
+    // called the guide finished, the scene info must not call it unfinished again, or the button falls back
+    // to the guide goto and does nothing. The hub mission 8048209 is never asked about and stays open.
+    var diceSceneBefore = dicePlayer.MissionManager!.BuildSceneMissionInfo(diceFloor, 20581001);
+    var diceStatus = GetMissionStatusScRsp.Parser.ParseFrom(new March7thHoney.GameServer.Server.Packet.Send.Mission.PacketGetMissionStatusScRsp(
+        new GetMissionStatusCsReq
+        {
+            MainMissionIdList = { 8048208, 8048209 }, SubMissionIdList = { 804820801, 804820901, 804820902 }
+        }, dicePlayer).Data);
+    var diceSceneAfter = dicePlayer.MissionManager.BuildSceneMissionInfo(diceFloor, 20581001);
+    Check("scene mission info keeps the DiceyDungeon guide finished once GetMissionStatus reported it, and keeps the hub mission open",
+        diceSceneBefore.UnfinishedMainMissionIdList.Contains(8048209u)
+        && diceStatus.FinishedMainMissionIdList.Contains(8048208u)
+        && diceSceneAfter.FinishedMainMissionIdList.Contains(8048208u)
+        && !diceSceneAfter.UnfinishedMainMissionIdList.Contains(8048208u)
+        && diceSceneAfter.UnfinishedMainMissionIdList.Contains(8048209u)
+        && !diceSceneAfter.FinishedMainMissionIdList.Contains(8048209u));
+    // The client activates a mission-owned group from a doing sub-mission whose config lists the group. In the
+    // hub mission that is the last step, 804820902 (GroupIDList [159] in the client's MissionInfo partial);
+    // 804820901 before it only waits for the guide. Wherever the client learns mission state, the last step
+    // has to read as doing, the first as finished, and the hub itself must never be reported finished.
+    Check("the DiceyDungeon hub mission stays open with its last step doing in scene info and GetMissionStatus",
+        diceSceneAfter.SubMissionStatusList.Count(m => m.Id == 804820902 && m.Status == MissionStatus.MissionDoing) == 1
+        && diceSceneAfter.SubMissionStatusList.Count(m => m.Id == 804820901 && m.Status == MissionStatus.MissionFinish) == 1
+        && diceSceneBefore.SubMissionStatusList.Any(m => m.Id == 804820902 && m.Status == MissionStatus.MissionDoing)
+        && diceStatus.UnfinishedMainMissionIdList.Contains(8048209u)
+        && !diceStatus.FinishedMainMissionIdList.Contains(8048209u)
+        && diceStatus.SubMissionStatusList.Single(m => m.Id == 804820902).Status == MissionStatus.MissionDoing
+        && diceStatus.SubMissionStatusList.Single(m => m.Id == 804820901).Status == MissionStatus.MissionFinish
+        && diceStatus.SubMissionStatusList.Single(m => m.Id == 804820801).Status == MissionStatus.MissionFinish
+        && !dicePlayer.MissionManager.BuildSceneMissionInfo(null, 20572001).SubMissionStatusList.Any(m => m.Id is 804820901 or 804820902));
+
+    GameData.ActivityConfig = new ActivityConfig
+    {
+        ScheduleData = { new March7thHoney.Data.Custom.ActivityScheduleData { ActivityId = 1, EndTime = long.MaxValue } }
+    };
+    var unscheduledGroups = DiceMapGroups();
+    var unscheduledScene = dicePlayer.MissionManager.BuildSceneMissionInfo(diceFloor, 20581001);
+    GameData.ActivityConfig = schedule;
+    Check("the entrance group and its doing sub-mission are not sent while the activity is outside its schedule",
+        !unscheduledGroups.Contains(159) && !unscheduledScene.SubMissionStatusList.Any(m => m.Id is 804820901 or 804820902));
+
+    dicePlayer.MissionManager!.Data.EnableMissionOverride = true;
+    var notReachedGroups = DiceMapGroups();
+    dicePlayer.MissionManager.Data.SetMainMissionStatus(8048209, MissionPhaseEnum.Accept);
+    var runningGroups = DiceMapGroups();
+    dicePlayer.MissionManager.Data.SetMainMissionStatus(8048209, MissionPhaseEnum.Finish);
+    var closedGroups = DiceMapGroups();
+    dicePlayer.MissionManager.Data.SetMainMissionStatus(8048209, MissionPhaseEnum.None);
+    dicePlayer.MissionManager.Data.EnableMissionOverride = null;
+    GameData.ActivityConfig = cachedSchedule;
+    Check("with missions enabled the entrance group is absent before its hub mission, and listed while it runs or after it was closed",
+        !notReachedGroups.Contains(159) && runningGroups.Contains(159) && closedGroups.Contains(159));
+}
+else
+{
+    Check("resource cache carries floor 20581001 group 159 and content package 150137 (DiceyDungeon entrance)", false);
+}
+var diceOutbound = new LoopbackKcpTransport();
+var diceInbound = new LoopbackKcpTransport();
+using (var diceServerPeer = new KcpConversation(endpoint, diceOutbound, options))
+using (var diceClientPeer = new KcpConversation(endpoint, diceInbound, options))
+{
+    diceOutbound.Peer = diceClientPeer;
+    diceInbound.Peer = diceServerPeer;
+    diceOutbound.Start();
+    diceInbound.Start();
+    var diceConnection = new ProbeConnection(diceServerPeer) { Player = dicePlayer };
+    dicePlayer.Connection = diceConnection;
+    async Task<List<(ushort Id, byte[] Body)>> DiceRequest(Handler handler, IMessage req)
+    {
+        await handler.OnHandle(diceConnection, [], req.ToByteArray());
+        await dicePlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var packets = new List<(ushort, byte[])>();
+        while (true)
+        {
+            var received = await diceClientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP DiceyDungeon test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            var length = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            if (id == ushort.MaxValue) return packets;
+            packets.Add((id, buffer.AsSpan(12, length).ToArray()));
+        }
+    }
+    T DiceLast<T>(List<(ushort Id, byte[] Body)> packets, int cmd, MessageParser<T> parser) where T : IMessage<T> =>
+        parser.ParseFrom(packets.Last(p => p.Id == cmd).Body);
+    async Task<LCIKABPABHK> GetDice() => DiceLast(await DiceRequest(new HandlerDiceyDungeonGetDataCsReq(),
+        new DLDDOMMLPBK()), CmdIds.OBJJEHIKFJC, OBJJEHIKFJC.Parser).FJCAKOIDONG;
+    async Task<OHCCEANPCIL> Enter(uint level, uint node, uint avatar, uint[]? skills = null, uint[]? miracles = null)
+    {
+        var req = new NOJMGKOMJHP { IJAPHCOHMIN = level, CDMFHNGEFCN = node, ILHPFNCIOJN = avatar };
+        req.JHLGHLBDMLH.AddRange(skills ?? []);
+        req.KIIIDKADAIN.AddRange(miracles ?? []);
+        return DiceLast(await DiceRequest(new HandlerDiceyDungeonEnterNodeCsReq(), req), CmdIds.OHCCEANPCIL,
+            OHCCEANPCIL.Parser);
+    }
+    async Task<NMNFJDBNBPG> Finish(uint level, uint node, bool win, uint hp, uint enemyHp = 0) =>
+        DiceLast(await DiceRequest(new HandlerDiceyDungeonFinishNodeCsReq(), new PIEGCFMAEOO
+        {
+            IJAPHCOHMIN = level, CDMFHNGEFCN = node, EKFDEEHCKDH = win, GNGBGCHGJPD = hp, BOILBFJANKL = enemyHp,
+            BJKGNCLCKBG = 3, LALKFADHJJL = 30
+        }), CmdIds.NMNFJDBNBPG, NMNFJDBNBPG.Parser);
+    async Task<GOPAMMODIJI> Select(KPNDLNCAECC req) =>
+        DiceLast(await DiceRequest(new HandlerDiceyDungeonSelectRewardCsReq(), req), CmdIds.GOPAMMODIJI,
+            GOPAMMODIJI.Parser);
+    KPNDLNCAECC PickSkill(uint skill, uint replaced = 0) =>
+        new() { ALPKKNKAFBG = new KMAEFBHJFDM { GHMHMKINNEJ = skill, KFGFGMFAMDA = replaced } };
+    KPNDLNCAECC PickMiracle(uint miracle) => new() { ANBKDJKHCBI = new MMPJELLKDHH { LJCEOGPOGBE = miracle } };
+    KPNDLNCAECC GiveUp() => new() { POJDOCAKCJM = true };
+    const uint Fail = (uint)Retcode.RetFail;
+
+    var fresh = await GetDice();
+    Check("a fresh DiceyDungeon account has no run and all five levels unfinished",
+        fresh.NBNKLEBNPFA == null && fresh.IADLNIOADDN.Select(l => l.IJAPHCOHMIN).SequenceEqual(new uint[] { 1, 2, 3, 4, 5 })
+        && fresh.IADLNIOADDN.All(l => !l.HCOFMFKFMDK && l.BDCOFIOCJFO == 0));
+    Check("a locked level and a node out of order are refused",
+        (await Enter(2, 201, 3)).JKCOAIGJMMM == Fail && (await Enter(1, 102, 1)).JKCOAIGJMMM == Fail);
+
+    var entered = await Enter(1, 101, 1, [999]);
+    Check("entering the first node starts a story run with the level's avatar, HP and story skills",
+        entered is { JKCOAIGJMMM: 0, IJAPHCOHMIN: 1, CDMFHNGEFCN: 101 }
+        && entered.NBNKLEBNPFA is { IJAPHCOHMIN: 1, FHHOPLLDPAP: 101, ILHPFNCIOJN: 1, OMIIAOCIIPA: 1000, JCLIFKACIJD: 1 }
+        && entered.NBNKLEBNPFA.JHLGHLBDMLH.SequenceEqual(new uint[] { 101, 102, 103 })
+        && entered.NBNKLEBNPFA.KIIIDKADAIN.Count == 0 && entered.NBNKLEBNPFA.DPLODKBIJDI == null);
+    Check("the next node cannot be entered before the current one is won", (await Enter(1, 102, 1)).JKCOAIGJMMM == Fail);
+
+    var lost = await Finish(1, 101, false, 0);
+    var retried = await Enter(1, 101, 1);
+    Check("a story loss keeps the run on the node so it can be retried",
+        lost is { JKCOAIGJMMM: 0, EKFDEEHCKDH: false, NIMINCMIMEE: false }
+        && lost.NBNKLEBNPFA is { FHHOPLLDPAP: 101, OMIIAOCIIPA: 1000 } && lost.NBNKLEBNPFA.BAFLDOEHBJK.Count == 0
+        && retried is { JKCOAIGJMMM: 0 } && retried.NBNKLEBNPFA.JCLIFKACIJD == 2);
+
+    var won101 = await Finish(1, 101, true, 800);
+    Check("winning node 101 keeps the HP left and offers its fixed skill choice without reroll or recovery yet",
+        won101 is { JKCOAIGJMMM: 0, EKFDEEHCKDH: true, NIMINCMIMEE: false, CCBNBBGBKCE: 101 }
+        && won101.NBNKLEBNPFA is { OMIIAOCIIPA: 800 } && won101.NBNKLEBNPFA.BAFLDOEHBJK.SequenceEqual(new uint[] { 101 })
+        && won101.NBNKLEBNPFA.DPLODKBIJDI is { MNBMPEIABNJ: false, LBDOBLGKANH: 0 }
+        && won101.NBNKLEBNPFA.DPLODKBIJDI.GGBGEJIIKFN.SequenceEqual(new uint[] { 105, 108, 106 })
+        && won101.NBNKLEBNPFA.CACADJOIHHI == null);
+    var noReroll = DiceLast(await DiceRequest(new HandlerDiceyDungeonRerollRewardCsReq(),
+        new IMPHFFIJDKP { ALPKKNKAFBG = true }), CmdIds.HJLMNPJFEMI, HJLMNPJFEMI.Parser);
+    Check("a pending reward blocks the next node and cannot be rerolled before node 103 is cleared",
+        (await Enter(1, 102, 1)).JKCOAIGJMMM == Fail && noReroll.JKCOAIGJMMM == Fail
+        && (await Select(PickSkill(999))).JKCOAIGJMMM == Fail);
+    var took105 = await Select(PickSkill(105));
+    Check("taking a skill adds it to a free slot and clears the choice",
+        took105.JKCOAIGJMMM == 0 && took105.NBNKLEBNPFA.JHLGHLBDMLH.SequenceEqual(new uint[] { 101, 102, 103, 105 })
+        && took105.NBNKLEBNPFA.DPLODKBIJDI == null && (await Select(PickSkill(108))).JKCOAIGJMMM == Fail);
+
+    await Enter(1, 102, 1);
+    await Finish(1, 102, true, 700);
+    var took104 = await Select(PickSkill(104));
+    await Enter(1, 103, 1);
+    var won103 = await Finish(1, 103, true, 500);
+    Check("the elite node 103 offers its fixed skill and miracle choices with reroll and recovery unlocked",
+        took104.NBNKLEBNPFA.JHLGHLBDMLH.Count == 5
+        && won103.NBNKLEBNPFA.DPLODKBIJDI is { MNBMPEIABNJ: true, LBDOBLGKANH: 1 }
+        && won103.NBNKLEBNPFA.DPLODKBIJDI.GGBGEJIIKFN.SequenceEqual(new uint[] { 1011 })
+        && won103.NBNKLEBNPFA.CACADJOIHHI is { LBDOBLGKANH: 1 }
+        && won103.NBNKLEBNPFA.CACADJOIHHI.GGBGEJIIKFN.SequenceEqual(new uint[] { 122, 124, 125 }));
+    Check("the miracle waits for the skill, and a full skill bar needs a replacement",
+        (await Select(PickMiracle(122))).JKCOAIGJMMM == Fail && (await Select(PickSkill(1011))).JKCOAIGJMMM == Fail);
+    var replaced = await Select(PickSkill(1011, 101));
+    var rerolled = DiceLast(await DiceRequest(new HandlerDiceyDungeonRerollRewardCsReq(),
+        new IMPHFFIJDKP { ANBKDJKHCBI = true }), CmdIds.HJLMNPJFEMI, HJLMNPJFEMI.Parser);
+    Check("a replacement swaps the slot and a miracle reroll draws from the avatar's pool once",
+        replaced.NBNKLEBNPFA.JHLGHLBDMLH.SequenceEqual(new uint[] { 1011, 102, 103, 105, 104 })
+        && rerolled is { JKCOAIGJMMM: 0, CACADJOIHHI.LBDOBLGKANH: 0 } && rerolled.CACADJOIHHI.GGBGEJIIKFN.Count > 0
+        && rerolled.CACADJOIHHI.GGBGEJIIKFN.All(id => id is 121 or 123)
+        && DiceLast(await DiceRequest(new HandlerDiceyDungeonRerollRewardCsReq(), new IMPHFFIJDKP { ANBKDJKHCBI = true }),
+            CmdIds.HJLMNPJFEMI, HJLMNPJFEMI.Parser).JKCOAIGJMMM == Fail);
+    var gaveUp = await Select(GiveUp());
+    Check("giving the miracle up recovers 100 HP", gaveUp.NBNKLEBNPFA is { OMIIAOCIIPA: 600, CACADJOIHHI: null }
+        && gaveUp.NBNKLEBNPFA.KIIIDKADAIN.Count == 0);
+
+    foreach (var node in new uint[] { 104, 105, 106 })
+    {
+        await Enter(1, node, 1);
+        var won = await Finish(1, node, true, 600);
+        if (won.NBNKLEBNPFA?.DPLODKBIJDI is { } skillChoice) await Select(GiveUp());
+        if (node == 105) Check("the elite node 105 draws three miracles from avatar 1's pool",
+            won.NBNKLEBNPFA.CACADJOIHHI?.GGBGEJIIKFN is { Count: 3 } drawn && drawn.All(id => id is >= 121 and <= 125));
+        var current = (await GetDice()).NBNKLEBNPFA;
+        if (current?.CACADJOIHHI is { } miracleChoice) await Select(PickMiracle(miracleChoice.GGBGEJIIKFN[0]));
+    }
+
+    await Enter(1, 107, 1);
+    var cleared = await Finish(1, 107, true, 600);
+    var afterLevel = await GetDice();
+    Check("winning the boss node settles level 1 and clears the run",
+        cleared is { JKCOAIGJMMM: 0, NIMINCMIMEE: true, CCBNBBGBKCE: 107, NBNKLEBNPFA: null }
+        && afterLevel.NBNKLEBNPFA == null && afterLevel.IADLNIOADDN.First(l => l.IJAPHCOHMIN == 1) is { HCOFMFKFMDK: true, GKALFLHFPKC: 107 });
+
+    var level2 = await Enter(2, 201, 0);
+    var restart = await Enter(1, 101, 1);
+    Check("level 2 unlocks with its own avatar, and starting another level drops the run in progress",
+        level2.NBNKLEBNPFA is { ILHPFNCIOJN: 3, IJAPHCOHMIN: 2 } && restart.NBNKLEBNPFA is { IJAPHCOHMIN: 1, FHHOPLLDPAP: 101 }
+        && restart.NBNKLEBNPFA.JCLIFKACIJD > level2.NBNKLEBNPFA.JCLIFKACIJD);
+
+    var diceData = dicePlayer.GetComponent<DiceyDungeonManager>().Data;
+    foreach (var id in new[] { 2, 3, 4 }) diceData.Levels[id] = new() { LevelId = id, IsFinished = true };
+    Check("the challenge level takes only its listed avatars and their challenge loadout",
+        (await Enter(5, 501, 9)).JKCOAIGJMMM == Fail && (await Enter(5, 501, 1, [101])).JKCOAIGJMMM == Fail
+        && (await Enter(5, 501, 1, [1011], [121, 122, 123, 124])).JKCOAIGJMMM == Fail);
+    var challenge = await Enter(5, 501, 1, [1011, 102], [121, 122]);
+    var settled = await Finish(5, 501, false, 0, 1500);
+    Check("a challenge attempt always settles and scores the share of boss HP dealt (70% -> 2 stars)",
+        challenge.NBNKLEBNPFA is { ILHPFNCIOJN: 1 } && challenge.NBNKLEBNPFA.KIIIDKADAIN.SequenceEqual(new uint[] { 121, 122 })
+        && settled is { JKCOAIGJMMM: 0, NIMINCMIMEE: true, BDCOFIOCJFO: 2, NBNKLEBNPFA: null }
+        && (await GetDice()).IADLNIOADDN.First(l => l.IJAPHCOHMIN == 5) is { HCOFMFKFMDK: true, BDCOFIOCJFO: 2 });
+    await Enter(5, 501, 3, [3011]);
+    var better = await Finish(5, 501, true, 100);
+    Check("a challenge win scores three stars and keeps the best result",
+        better.BDCOFIOCJFO == 3 && diceData.Levels[5].Star == 3 && diceData.Run.LevelId == 0);
+
+    // The 4.8 activities await their replies through the client's PendingRspEntry, which completes only on a reply
+    // whose packet head carries the request's packet id (head field 1); the live client timed out on 10646 / 10604
+    // after 300 s while the head stayed empty. Feed a raw frame through the connection's receive path.
+    diceConnection.State = SessionStateEnum.ACTIVE;
+    var processFrame = typeof(Connection).GetMethod("ProcessMessageAsync", BindingFlags.Instance | BindingFlags.NonPublic)!;
+    byte[] RawFrame(ushort cmd, byte[] head, byte[] body)
+    {
+        var frame = new byte[12 + head.Length + body.Length + 4];
+        BinaryPrimitives.WriteUInt32BigEndian(frame, 0x9D74C714);
+        BinaryPrimitives.WriteUInt16BigEndian(frame.AsSpan(4), cmd);
+        BinaryPrimitives.WriteUInt16BigEndian(frame.AsSpan(6), (ushort)head.Length);
+        BinaryPrimitives.WriteUInt32BigEndian(frame.AsSpan(8), (uint)body.Length);
+        head.CopyTo(frame.AsSpan(12));
+        body.CopyTo(frame.AsSpan(12 + head.Length));
+        BinaryPrimitives.WriteUInt32BigEndian(frame.AsSpan(12 + head.Length + body.Length), 0xD7A152C8);
+        return frame;
+    }
+    async Task<List<(ushort Id, byte[] Head, byte[] Body)>> RawExchange(byte[] frame)
+    {
+        await (Task)processFrame.Invoke(diceConnection, [new Memory<byte>(frame)])!;
+        await dicePlayer.SendPacket(new BasePacket(ushort.MaxValue));
+        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        var buffer = new byte[March7thHoneyConnection.MaxPacketBytes];
+        var packets = new List<(ushort, byte[], byte[])>();
+        while (true)
+        {
+            var received = await diceClientPeer.ReceiveAsync(buffer, timeout.Token);
+            if (received.TransportClosed || received.BytesReceived < 16)
+                throw new InvalidDataException("KCP packet head test did not receive a complete game packet.");
+            var id = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(4));
+            if (id == ushort.MaxValue) return packets;
+            var headLength = BinaryPrimitives.ReadUInt16BigEndian(buffer.AsSpan(6));
+            var bodyLength = (int)BinaryPrimitives.ReadUInt32BigEndian(buffer.AsSpan(8));
+            packets.Add((id, buffer.AsSpan(12, headLength).ToArray(), buffer.AsSpan(12 + headLength, bodyLength).ToArray()));
+        }
+    }
+    var echoed = await RawExchange(RawFrame((ushort)CmdIds.DLDDOMMLPBK, PacketHead.Encode(300), []));
+    var unheaded = await RawExchange(RawFrame((ushort)CmdIds.DLDDOMMLPBK, [], []));
+    var echoedReply = echoed.Single(p => p.Id == CmdIds.OBJJEHIKFJC);
+    Check("a reply carries its request's packet id in the head, and a request without one gets no head",
+        PacketHead.ReadPacketId(echoedReply.Head) == 300 && OBJJEHIKFJC.Parser.ParseFrom(echoedReply.Body).FJCAKOIDONG != null
+        && unheaded.Single(p => p.Id == CmdIds.OBJJEHIKFJC).Head.Length == 0
+        && PacketHead.ReadPacketId([0x10, 0x05, 0x08, 0xAC, 0x02]) == 300 && PacketHead.ReadPacketId([0x08]) == 0
+        && PacketHead.RequestPacketId.Value == 0);
+
+    var ack = DiceLast(await DiceRequest(new HandlerDiceyDungeonUnknownCsReq(), new MDOHKDNNDPI()), CmdIds.LHDOHPHPABA,
+        LHDOHPHPABA.Parser);
+    Check("the unidentified empty DiceyDungeon request is acknowledged", ack.JKCOAIGJMMM == 0);
+
+    var runBytes = MemoryPackSerializer.Serialize(new DiceyDungeonRunData
+    {
+        LevelId = 1, SkillIds = [101], PendingSkill = new() { RewardIds = [105], LeftRerollTime = 1 }
+    });
+    Check("a DiceyDungeon run round-trips through MemoryPack",
+        MemoryPackSerializer.Deserialize<DiceyDungeonRunData>(runBytes) is { LevelId: 1, PendingSkill.LeftRerollTime: 1 } back
+        && back.PendingSkill.RewardIds.SequenceEqual([105]));
+
+    // Quest progress: node and level finish quests count the ids in ParamIntList. A fresh player: on a cache that
+    // types these FinishWay rows, the run above (node 104, level 1) already completed both auto-unlocked quests.
+    if (GameData.QuestDataData.TryGetValue(6051241, out var nodeQuest) && GameData.QuestDataData.TryGetValue(6051242, out var levelQuest))
+    {
+        var diceQuestPlayer = new PlayerInstance(60041);
+        await diceQuestPlayer.InitializeAsync();
+        await diceQuestPlayer.QuestManager!.AcceptQuest(6051241);
+        await diceQuestPlayer.QuestManager.AcceptQuest(6051242);
+        var nodeWay = new FinishWayExcel { ID = 6051241, FinishType = MissionFinishTypeEnum.DiceyDungeonNodeFinish, ParamIntList = [104], Progress = 1 };
+        var levelWay = new FinishWayExcel { ID = 6051242, FinishType = MissionFinishTypeEnum.DiceyDungeonLevelFinish, ParamIntList = [1], Progress = 1 };
+        var nodeHandler = MissionManager.FinishTypeHandlers[MissionFinishTypeEnum.DiceyDungeonNodeFinish];
+        var levelHandler = MissionManager.FinishTypeHandlers[MissionFinishTypeEnum.DiceyDungeonLevelFinish];
+        await nodeHandler.HandleQuestFinishType(diceQuestPlayer, nodeQuest, nodeWay, 103);
+        await levelHandler.HandleQuestFinishType(diceQuestPlayer, levelQuest, levelWay, 2);
+        var untouched = diceQuestPlayer.QuestManager.GetQuestProgress(6051241) == 0 && diceQuestPlayer.QuestManager.GetQuestProgress(6051242) == 0;
+        await nodeHandler.HandleQuestFinishType(diceQuestPlayer, nodeQuest, nodeWay, 104);
+        await levelHandler.HandleQuestFinishType(diceQuestPlayer, levelQuest, levelWay, 1);
+        Check("DiceyDungeon node / level quests count only their listed node and level",
+            untouched && diceQuestPlayer.QuestManager.GetQuestProgress(6051241) == 1 && diceQuestPlayer.QuestManager.GetQuestProgress(6051242) == 1);
+    }
+}
 
 Console.WriteLine($"Login/scene regression: {checks} checks, {failures.Count} failures. Temporary artifacts: {scratch}");
 Environment.ExitCode = failures.Count == 0 ? 0 : 1;

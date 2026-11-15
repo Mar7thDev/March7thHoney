@@ -191,11 +191,18 @@ public partial class ItemData
 
     public Material ToMaterialProto()
     {
-        return new Material
+        var material = new Material
         {
             Tid = (uint)ItemId,
             Num = (uint)Count
         };
+
+        // Head frames are recyclable timed items (ItemRecycle): the client stores expire_time as their expiry and
+        // reports a frame sent with 0 as expired. They share the worn frame's expiry.
+        if (GameData.ItemConfigData.GetValueOrDefault(ItemId)?.ItemSubType == ItemSubTypeEnum.HeadIconFrame)
+            material.ExpireTime = (ulong)March7thHoney.Database.Player.PlayerHeadFrameInfo.NoSeasonExpireTime;
+
+        return material;
     }
 
     public Relic ToRelicProto()

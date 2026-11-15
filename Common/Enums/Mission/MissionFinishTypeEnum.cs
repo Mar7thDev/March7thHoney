@@ -806,5 +806,10 @@ public enum MissionFinishTypeEnum
     BangbooMaxEnergyAtWin = 480506,
     BangbooMaxSimultaneousIdCount = 480507,
     ExpeditionBattlePassStageCnt = 430011,
+    DiceyDungeonNodeFinish = 480600,
+    DiceyDungeonLevelFinish = 480601,
+    RealityShowBuffNum = 470011,
+    RealityShowResult = 470012,
+    RealityShowAllResult = 470013,
     LeaveRegion = 5
 }

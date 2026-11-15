@@ -13,6 +13,7 @@ using March7thHoney.GameServer.Server.Packet.Recv.Lineup;
 using March7thHoney.GameServer.Server.Packet.Recv.PetMarble;
 using March7thHoney.GameServer.Server.Packet.Recv.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Player;
+using March7thHoney.GameServer.Server.Packet.Send.Item;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerBoard;
 using March7thHoney.GameServer.Server.Packet.Recv.Raid;
 using March7thHoney.GameServer.Server.Packet.Recv.RelicPreset;
@@ -330,6 +331,22 @@ internal static class MainFixRegression
         check("a head frame is shown by default: login setting, other players and the own board",
             !player.Data.PrivacySettings.HideHeadFrame && !HiddenAtLogin() && SeenByOthers() == frames[0] &&
             SeenInDetail() == frames[0] && OwnBoard() == frames[0]);
+
+        // The client reads the expiry as a seconds timestamp through xLua, which rejects integers past 2^53
+        // ("beyond double int limits" aborted the head-icon page); it also expires a frame item sent with 0.
+        var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        const long luaIntegerLimit = 1L << 53;
+        bool Readable(long seconds) => seconds > now && seconds <= luaIntegerLimit &&
+                                       seconds <= DateTimeOffset.MaxValue.ToUnixTimeSeconds();
+        var boardExpiry = GetPlayerBoardDataScRsp.Parser.ParseFrom(new PacketGetPlayerBoardDataScRsp(player).Data)
+            .HeadFrameInfo.HeadFrameExpireTime;
+        check("a frame stored with the old long.MaxValue expiry reaches the client as a readable future timestamp",
+            player.Data.HeadFrame.HeadFrameExpireTime == long.MaxValue && Readable(boardExpiry) &&
+            player.Data.ToSimpleProto(FriendOnlineStatus.Online).HeadFrameInfo.HeadFrameExpireTime == boardExpiry);
+        var bagList = GetBagScRsp.Parser.ParseFrom(new PacketGetBagScRsp(player).Data).MaterialList;
+        check("the head-frame item in the bag carries the frame's expiry while other materials keep none",
+            bagList.Single(item => item.Tid == frames[0]).ExpireTime == (ulong)boardExpiry &&
+            bagList.Where(item => item.Tid != frames[0] && !frames.Contains(item.Tid)).All(item => item.ExpireTime == 0));
 
         var hide = await Setting(new UpdatePlayerSetting { BOMGNMDOGLM = true });
         check("hiding the head frame echoes oneof 1600 and is sent back at login",

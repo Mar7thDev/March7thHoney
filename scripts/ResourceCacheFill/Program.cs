@@ -108,6 +108,13 @@ static bool IsGridFight(System.Reflection.PropertyInfo property)
     // The season membership lists in the GridFight group hold nothing but ids.
     return inGridFightGroup && types.All(type => type.IsPrimitive || type.IsGenericType || type == typeof(string));
 }
+// Phone message tables also come from the resources alone. The client resolves every contact, group and section
+// the server names from its own tables (MessageModule._InitSection throws on an unknown section), so a base row the
+// client dropped describes a chat it cannot show: the OSBETAWin4.7.51 fill carried 156 groups over from 4.6.52, and
+// the six of them under 4.7.51 contacts aborted the client's whole GetNpcMessageGroupScRsp handling.
+static bool IsMessage(System.Reflection.PropertyInfo property) =>
+    property.DeclaringType == typeof(GameDataSnapshot) && property.Name is "MessageContactsConfigData"
+        or "MessageGroupConfigData" or "MessageSectionConfigData" or "MessageItemConfigData";
 static int Size(Type type, object? value) => value == null ? 0 : MemoryPackSerializer.Serialize(type, value).Length;
 static bool IsDefault(Type type, object? value)
 {
@@ -144,20 +151,21 @@ void Fill(object target, object source, string prefix)
         }
 
         var gridFight = IsGridFight(property);
-        var note = gridFight ? "resources only (GridFight)" : "";
+        var resourcesOnly = gridFight || IsMessage(property);
+        var note = gridFight ? "resources only (GridFight)" : resourcesOnly ? "resources only (Message)" : "";
 
         if (freshValue is IDictionary freshMap && baseValue is IDictionary baseMap)
         {
             var before = freshMap.Count;
             var added = 0;
-            if (!gridFight)
+            if (!resourcesOnly)
                 foreach (DictionaryEntry entry in baseMap)
                 {
                     if (freshMap.Contains(entry.Key)) continue;
                     freshMap.Add(entry.Key, entry.Value);
                     added++;
                 }
-            var dropped = gridFight ? baseMap.Keys.Cast<object>().Count(key => !freshMap.Contains(key)) : 0;
+            var dropped = resourcesOnly ? baseMap.Keys.Cast<object>().Count(key => !freshMap.Contains(key)) : 0;
             if (dropped > 0) note += $"; {dropped} base row(s) not carried";
             if (added > 0) { filledRows += added; filledMembers++; }
             rows.Add((name, "rows", before.ToString(), baseMap.Count.ToString(), added.ToString(), note));
@@ -167,7 +175,7 @@ void Fill(object target, object source, string prefix)
         if (freshValue is HashSet<int> freshSet && baseValue is HashSet<int> baseSet)
         {
             var before = freshSet.Count;
-            if (!gridFight) freshSet.UnionWith(baseSet);
+            if (!resourcesOnly) freshSet.UnionWith(baseSet);
             var added = freshSet.Count - before;
             if (added > 0) { filledRows += added; filledMembers++; }
             rows.Add((name, "set", before.ToString(), baseSet.Count.ToString(), added.ToString(), note));
@@ -177,7 +185,7 @@ void Fill(object target, object source, string prefix)
         if (freshValue is IList freshList && baseValue is IList baseList)
         {
             // A list has no key to merge on: it is taken whole, and only when the resources gave nothing.
-            var take = !gridFight && freshList.Count == 0 && baseList.Count > 0;
+            var take = !resourcesOnly && freshList.Count == 0 && baseList.Count > 0;
             if (take) { property.SetValue(target, baseValue); filledRows += baseList.Count; filledMembers++; }
             rows.Add((name, "list", freshList.Count.ToString(), baseList.Count.ToString(),
                 take ? baseList.Count.ToString() : "0", take ? "taken whole from the base" : note));
@@ -186,7 +194,7 @@ void Fill(object target, object source, string prefix)
 
         // Single objects, scalars and collections absent on one side: taken from the base only when the
         // resources left them at their default.
-        var takeObject = !gridFight && IsDefault(type, freshValue) && !IsDefault(type, baseValue);
+        var takeObject = !resourcesOnly && IsDefault(type, freshValue) && !IsDefault(type, baseValue);
         var shownFresh = type.IsValueType ? $"{freshValue ?? "null"}" : $"{Size(type, freshValue)} B";
         var shownBase = type.IsValueType ? $"{baseValue ?? "null"}" : $"{Size(type, baseValue)} B";
         if (takeObject) { property.SetValue(target, baseValue); filledMembers++; }

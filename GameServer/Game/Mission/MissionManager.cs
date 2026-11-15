@@ -1381,11 +1381,36 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
                     var mid = (uint)missionId;
                     if (missionInfo.FinishedMainMissionIdList.Contains(mid)) continue;
                     if (missionInfo.UnfinishedMainMissionIdList.Contains(mid)) continue;
+
+                    // The client copies this list into MainMissionData.IsFinish, the flag its
+                    // FinishMainMission conditions read. A mission it has already been told is finished
+                    // (GetMissionStatusScRsp) is one such condition - an activity's guide mission, which
+                    // decides whether the panel's button runs the guide or enters the activity. Calling it
+                    // unfinished here sends the button back to a guide that has nothing left to run, so
+                    // keep that answer; only missions the client never asked about are held open.
+                    if (_mainMissionsReportedFinished.Contains(missionId) &&
+                        GetMainMissionStatus(missionId) == MissionPhaseEnum.Finish)
+                    {
+                        missionInfo.FinishedMainMissionIdList.Add(mid);
+                        continue;
+                    }
+
                     missionInfo.UnfinishedMainMissionIdList.Add(mid);
                 }
             }
 
+        AddStandingEntranceMissions(missionInfo, floorId, subIds);
+
         return missionInfo;
+    }
+
+    // Main missions this session's GetMissionStatusScRsp reported as finished. Not persisted: the client
+    // asks again after every login.
+    private readonly HashSet<int> _mainMissionsReportedFinished = [];
+
+    public void NoteMainMissionsReportedFinished(IEnumerable<uint> mainMissionIds)
+    {
+        foreach (var id in mainMissionIds) _mainMissionsReportedFinished.Add((int)id);
     }
 
     #endregion

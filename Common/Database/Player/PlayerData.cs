@@ -238,6 +238,13 @@ public class PlayerData : BaseDatabaseDataHelper
 [MemoryPackable]
 public partial class PlayerHeadFrameInfo
 {
+    /// <summary>
+    ///     头像框有效期(秒级时间戳), 用于服务端没有赛季结束时间时代替"当期有效": 2099-12-31 12:00:00 UTC。
+    ///     客户端把它当时间戳显示("限时头像框在#1前有效"), 且 xLua 只接受 2^53 以内的整数,
+    ///     long.MaxValue 会让 HeadIconModifyPanel 抛 "beyond double int limits", 整个页面切换失败。
+    /// </summary>
+    public const long NoSeasonExpireTime = 4102401600;
+
     public long HeadFrameExpireTime { get; set; }
     public uint HeadFrameId { get; set; }
 
@@ -245,7 +252,8 @@ public partial class PlayerHeadFrameInfo
     {
         return new HeadFrameInfo
         {
-            HeadFrameExpireTime = HeadFrameExpireTime,
+            // 旧存档写的是 long.MaxValue, 下发时收进客户端能表示的范围
+            HeadFrameExpireTime = Math.Min(HeadFrameExpireTime, NoSeasonExpireTime),
             HeadFrameItemId = HeadFrameId
         };
     }

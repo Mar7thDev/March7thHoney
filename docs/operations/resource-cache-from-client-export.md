@@ -36,6 +36,7 @@ dotnet run --project scripts/ResourceCacheFill/ResourceCacheFill.csproj -c Relea
 - 导出里存在但解析失败的表会让工具直接报错退出：这是加载器需要修的问题（例如新枚举成员），不能用旧缓存盖过去。缺失文件只产生告警，记入报告。
 - 字典按键补行：导出有的行以导出为准，导出没有而旧缓存有的行补入。列表没有键，只在导出为空时整表取旧缓存。单个对象和数值只在导出保持默认值时取旧缓存。
 - GridFight 的表一律只用导出，不从旧缓存补行，旧缓存多出的行数在报告里列出。`GridFightRuntimeDataSnapshot` 里因 MemoryPack 成员上限寄放的 Rogue、Daily、MainMissionSchedule 表不受此限。
+- 手机短信的四张表（`MessageContactsConfigData`、`MessageGroupConfigData`、`MessageSectionConfigData`、`MessageItemConfigData`）同样只用导出。客户端按自己的表解析服务端发来的联系人、短信组和段落，查不到段落时 `MessageModule._InitSection` 会抛空引用，整个 `GetNpcMessageGroupScRsp` 的处理随之中断，所以旧缓存里客户端已经删掉的行不能补进来。
 - 输出必须是不存在的新文件；写入后重新读取并核对每个集合的条数。
 - `fill-report.txt` 列出加载告警、每个成员的导出行数 / 旧缓存行数 / 补入行数，以及补缺前后「起止子任务未注册」的主线任务数量。
 
@@ -54,8 +55,9 @@ dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj 
 - 导出：索引 144 867 个资源，内置名单命名 130 581 个，补名收敛后 134 450 个，写出 133 541 个 JSON，其中楼层 710 个；仍有 10 417 个资源没有路径。
 - 解不出的表 22 张：`MechCraft*` 21 张和 `PetConfig`（dumper 报 `UnknownFieldType`，行类型无法识别），`DecideAvatarOrder` 在客户端里是空表。`LocalPlayer_Pearl_00`、`Nihilux_10`、`Ellen_00`、`Astra_00` 等 10 个新角色的迷宫技能文件不在索引里。
 - 加载器改动：`GridFightBonusTypeEnum.AllAvatarByRarity = 25`、`GridFightTraitEffectTypeEnum.GainOtherRoleTrait = 34` 是新表用到的新成员，数值与客户端一致；其余成员不动。
-- 补缺：从 4.6.52 缓存补入 59 个成员共 7 304 行（MechCraft、宠物、消息、奖励、子任务、57 个楼层等）。起止子任务未注册的主线任务由 179 个降到 18 个：1054800–1054804、3050321、4010263–4010265、4011900、5000514、8048117–8048121、8048208、8048209。
+- 补缺：从 4.6.52 缓存补入 55 个成员共 3 113 行（MechCraft、宠物、奖励、子任务、57 个楼层等）。第一版缓存还补入了短信四张表的 4 191 行（156 个短信组、156 个段落、3 873 条消息、6 个联系人），其中挂在 4.7.51 联系人下的 6 个组（15046、15047、20189、20190、20238、20239）被当作已完成短信发给客户端，客户端不认识这些段落，短信列表整体处理失败；改为只用导出后重新生成。起止子任务未注册的主线任务由 179 个降到 18 个：1054800–1054804、3050321、4010263–4010265、4011900、5000514、8048117–8048121、8048208、8048209。
 - 楼层路径：最初的名单没有按位面推导楼层路径，最新一期虚构叙事 `20294` 的楼层 `P30148_F30148002` 因此没有导出，`LoginSceneRegression` 报「PF 20294 starts on stage 1」失败。加入这类候选后多导出 13 个楼层和它们引用的组，该项通过。
 - GridFight：新表把阿哈的角色 ID 由 `151102` 改为 `151112` / `151122` / `151132`，并调整了投资列表等内容，服务端第二赛季的适配见 [GridFight 对比与回归](../testing/grid-fight-regression.md)。
-- 新缓存上的回归：GridFightRegression 557/557，LoginSceneRegression 698/0，DailyActiveRegression 76/0。
+- 新缓存上的回归：GridFightRegression 557/557，LoginSceneRegression 717/0，DailyActiveRegression 76/0。
+- 加入 `RealityShowBuffNum` / `RealityShowResult` / `RealityShowAllResult`（470011–470013）后用同一导出目录与 4.6.52 基础缓存重新生成（`Resource.4.7.51.realityshow.bin`）：补缺结果不变（55 个成员 3 113 行，主线 179 → 18），FinishWay 中类型为 `Unknown` 的行由 712 降到 650，成名之路、骰子收容等活动任务的行有了正确类型。骰子收容的任务因此会在关卡流程中真实推进，`LoginSceneRegression` 里对应的处理器检查改用新账号。新缓存上 GridFightRegression 557/557、DailyActiveRegression 76/0，LoginSceneRegression 仅剩并行开发中的 TrainParty 一项失败（旧缓存同样失败）。替换前的缓存备份为 `Resource.bin.backup-20261114-before-realityshow.bin`。
 - 缓存要用与程序同一版本的代码生成：场景、任务等加载器新增字段后，旧程序生成的缓存里这些字段是默认值。本次的缓存、报告和替换前的 4.6.52 缓存都留在生成机器的 `artifacts/resources-4.7.51/` 下，不随仓库分发。均未经客户端实机验证。
