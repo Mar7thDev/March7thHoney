@@ -34,7 +34,7 @@ public class EntryPoint
 
     public static async Task Main(string[] args)
     {
-        var publicMode = PublicModeSwitch.Enabled;
+        var limitedMode = LimitedModeSwitch.Enabled;
         IConsole.InitConsole();
         IConsole.RedrawInput(IConsole.Input);
         // Capture log output from the very first line so the admin console's log viewer has the boot history.
@@ -122,7 +122,7 @@ public class EntryPoint
         // Load the config
         try
         {
-            ConfigManager.LoadConfig(publicMode);
+            ConfigManager.LoadConfig(limitedMode);
         }
         catch (Exception e)
         {
@@ -151,12 +151,12 @@ public class EntryPoint
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Language")));
         ConfigManager.Logger.Info(
             I18NManager.Translate("Server.ServerInfo.CurrentVersion", GameConstants.GAME_VERSION));
-        if (publicMode)
+        if (limitedMode)
         {
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.PublicModeEnabled"));
+            Logger.Warn(I18NManager.Translate("Server.ServerInfo.LimitedModeEnabled"));
             if (!await OnlineActivationManager.ValidateAsync(GameConstants.GAME_VERSION))
             {
-                Logger.Warn(I18NManager.Translate("Server.ServerInfo.PublicModeValidationFailed"));
+                Logger.Warn(I18NManager.Translate("Server.ServerInfo.LimitedModeValidationFailed"));
                 if (!Console.IsInputRedirected)
                 {
                     Console.WriteLine();

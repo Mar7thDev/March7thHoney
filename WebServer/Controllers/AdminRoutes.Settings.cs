@@ -19,7 +19,7 @@ public static partial class AdminRoutes
         if (!IsAuthorized(ctx, out var unauthorized))
             return unauthorized;
 
-        return Success(new SettingsData(AdminSettingsRegistry.Snapshot(), ConfigManager.IsPublicMode));
+        return Success(new SettingsData(AdminSettingsRegistry.Snapshot(), ConfigManager.IsLimitedMode));
     }
 
     private static IResult UpdateSettings(HttpContext ctx, AdminSettingsRequest? request)
