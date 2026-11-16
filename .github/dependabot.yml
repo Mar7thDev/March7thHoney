@@ -11,14 +11,6 @@ updates:
       # The pair is upgraded by hand, together with the version Proto/Build/GenerateProtobuf.targets expects.
       - dependency-name: Google.Protobuf
       - dependency-name: Google.Protobuf.Tools
-      # MailKit 5 changes the send API and depends on MimeKit.Core instead of MimeKit, which the
-      # NativeAOT publish roots by assembly name. Mail sending has no regression coverage, so the
-      # move to 5 is made deliberately.
-      - dependency-name: MailKit
-        update-types: ["version-update:semver-major"]
-      # No regression connects to a MySQL server, so a major version is taken only with a manual test.
-      - dependency-name: MySqlConnector
-        update-types: ["version-update:semver-major"]
       # The source generators must not reference a compiler newer than the one in the oldest
       # supported SDK, or that SDK refuses to load them (CS9057).
       - dependency-name: Microsoft.CodeAnalysis.CSharp
