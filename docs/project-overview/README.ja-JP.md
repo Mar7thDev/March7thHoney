@@ -1,15 +1,31 @@
+<div align="center">
+
 # March7thHoney
 
-<p align="center">
+**C# と .NET 10 で書かれた、実際に遊べるゲームサーバー。<br />クローンして、コマンド一つで起動し、ログインするだけ。**
+
+<p>
+  <a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI" /></a>
+  <a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?style=flat&logo=github&color=f5c542" alt="Stars" /></a>
+  <a href="https://github.com/Mar7thDev/March7thHoney/commits/main"><img src="https://img.shields.io/github/last-commit/Mar7thDev/March7thHoney?color=2ea44f" alt="Last commit" /></a>
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-2ea44f" alt="Platform" />
-  <img src="https://img.shields.io/badge/Status-Active%20Development-f39c12" alt="Status" />
-  <img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-0a7ea4" alt="Platform" />
+  <a href="../../LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License" /></a>
+  <a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white" alt="Discord" /></a>
 </p>
+
+[クイックスタート](#クイックスタート) · [機能](#機能) · [ドキュメント](../README.md) · [コントリビューション](../../CONTRIBUTING.md) · [Discord](https://discord.gg/CyreneEchoes)
 
 [English](../../README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | 日本語
 
-March7thHoney は C# と .NET 10 で書かれたゲームサーバーです。Windows、Linux、macOS で動作し、現在も活発に開発されています。
+</div>
+
+| | |
+|---|---|
+| **最初から最後まで遊べる** | ショップ、跳躍、戦闘、オープンワールド、エンドゲームの各チャレンジモードが実際のクライアントで動作します。任務は拡充中です。 |
+| **運用を前提にした作り** | SQLite または MySQL、Web 管理画面、MUIP API、systemd に対応した Linux 構成を備えています。Windows、Linux、macOS の `x64` と `arm64` に対応します。 |
+| **実行時にリフレクションを使わない** | パケットハンドラー、コマンド、データベースストアは Roslyn ソースジェネレーターが登録するため、NativeAOT でも発行できます。 |
+| **変更のたびに検証** | 警告をエラーとして扱うビルドと、アカウント、Web サーバー、KCP、ソースジェネレーターの回帰スイートが CI で実行されます。ログイン、シーン、各ゲームモードには実リソースを使う回帰スイートが別にあります。 |
 
 このページ以外のドキュメントは英語と簡体字中国語で提供されています。以下のリンクは英語版を指します。
 
@@ -115,6 +131,12 @@ CI は `main` の自己完結型ビルドをワークフローの成果物とし
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/OrihaWeave/DanhengServer-OpenSource)
 - [KcpSharp](https://github.com/yigolden-oss/KcpSharp)
+
+<a href="https://github.com/Mar7thDev/March7thHoney/graphs/contributors"><img src="https://contrib.rocks/image?repo=Mar7thDev/March7thHoney" alt="コントリビューター" /></a>
+
+## Star の推移
+
+<a href="https://www.star-history.com/#Mar7thDev/March7thHoney&Date"><img src="https://api.star-history.com/svg?repos=Mar7thDev/March7thHoney&type=Date" alt="Star History Chart" width="100%" /></a>
 
 ## ライセンス
 

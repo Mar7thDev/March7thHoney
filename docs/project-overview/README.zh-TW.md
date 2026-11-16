@@ -1,15 +1,31 @@
+<div align="center">
+
 # March7thHoney
 
-<p align="center">
+**以 C# 與 .NET 10 編寫、可以實際遊玩的遊戲伺服端。<br />複製儲存庫，一條命令啟動，然後登入。**
+
+<p>
+  <a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI" /></a>
+  <a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?style=flat&logo=github&color=f5c542" alt="Stars" /></a>
+  <a href="https://github.com/Mar7thDev/March7thHoney/commits/main"><img src="https://img.shields.io/github/last-commit/Mar7thDev/March7thHoney?color=2ea44f" alt="Last commit" /></a>
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-2ea44f" alt="Platform" />
-  <img src="https://img.shields.io/badge/Status-Active%20Development-f39c12" alt="Status" />
-  <img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-0a7ea4" alt="Platform" />
+  <a href="../../LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License" /></a>
+  <a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white" alt="Discord" /></a>
 </p>
+
+[快速開始](#快速開始) · [功能](#功能) · [文件](../README.zh-CN.md) · [參與貢獻](../../CONTRIBUTING.zh-CN.md) · [Discord](https://discord.gg/CyreneEchoes)
 
 [English](../../README.md) | [简体中文](README.zh-CN.md) | 繁體中文 | [日本語](README.ja-JP.md)
 
-March7thHoney 是一個以 C# 與 .NET 10 編寫的遊戲伺服端，可在 Windows、Linux 與 macOS 上執行，目前處於活躍開發中。
+</div>
+
+| | |
+|---|---|
+| **從頭到尾可玩** | 商店、躍遷、戰鬥、大世界與各個終局挑戰玩法都能搭配真實用戶端運作，任務仍在補全。 |
+| **為實際部署而做** | 支援 SQLite 或 MySQL，內建網頁後台、MUIP API 與可接入 systemd 的 Linux 部署方式。支援 Windows、Linux、macOS 的 `x64` 與 `arm64`。 |
+| **執行時不靠反射** | 封包處理器、命令與資料庫存取由 Roslyn 原始碼產生器註冊，因此伺服端也能以 NativeAOT 發佈。 |
+| **每次變更都有檢查** | 警告視為錯誤的建置，以及帳號、Web 服務、KCP 與原始碼產生器的回歸套件在 CI 中執行；登入、場景與各玩法另有需要真實資源的回歸套件。 |
 
 除本頁外，其餘文件提供英文與簡體中文版本；下方連結指向簡體中文版本。
 
@@ -115,6 +131,12 @@ CI 會把 `main` 的自包含建置發佈為工作流程產物：
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/OrihaWeave/DanhengServer-OpenSource)
 - [KcpSharp](https://github.com/yigolden-oss/KcpSharp)
+
+<a href="https://github.com/Mar7thDev/March7thHoney/graphs/contributors"><img src="https://contrib.rocks/image?repo=Mar7thDev/March7thHoney" alt="貢獻者" /></a>
+
+## Star 趨勢
+
+<a href="https://www.star-history.com/#Mar7thDev/March7thHoney&Date"><img src="https://api.star-history.com/svg?repos=Mar7thDev/March7thHoney&type=Date" alt="Star History Chart" width="100%" /></a>
 
 ## 授權
 
