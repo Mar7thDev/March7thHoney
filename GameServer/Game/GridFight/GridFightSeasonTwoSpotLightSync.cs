@@ -4,7 +4,7 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Game.GridFight;
 
 /// <summary>
-///     Protocol side of the Spotlight (主角光环) and the trait-member grants (artifacts/gf-season2/re-g6-spotlight.md).
+///     Protocol side of the Spotlight (主角光环) and the trait-member grants.
 /// </summary>
 public sealed partial class GridFightManager
 {

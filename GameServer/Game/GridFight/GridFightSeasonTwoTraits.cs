@@ -58,7 +58,7 @@ public sealed class GridFightSeasonTwoChanges
 
 /// <summary>
 ///     Season-2 (4.6.51 client) unique/origin trait effects. Wire layouts come from disassembling the client's
-///     GridFight*TraitEffect.OnUpdate / request senders (artifacts/gf-season2/re-g*.md); rules the client does not
+///     GridFight*TraitEffect.OnUpdate / request senders; rules the client does not
 ///     encode (pools, triggers) follow the trait descriptions and are marked as such.
 /// </summary>
 public sealed partial class GridFightSession
