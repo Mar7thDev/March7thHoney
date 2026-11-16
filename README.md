@@ -36,7 +36,7 @@ The full list is in the [gameplay implementation tree](docs/development/gameplay
 You need the .NET SDK 10 (10.0.100 or later) and Git, on Windows, Linux or macOS (`x64` or `arm64`).
 
 ```bash
-git clone https://github.com/Mar7thLover/March7thHoney.git
+git clone https://github.com/Mar7thDev/March7thHoney.git
 cd March7thHoney
 dotnet run --project Program/Program.csproj
 ```
@@ -101,19 +101,23 @@ and the conventions for commits and pull requests. Report vulnerabilities privat
 
 ### Collaborators
 
-- [Mar7thLover](https://github.com/Mar7thLover)
-- [Cyrup](https://github.com/March7thHoney)
+- [Mar7thLover](https://github.com/OrihaWeave)
+- Cyrup
 - [Melioli](https://github.com/Melioli)
 
 ### Contributors
 
 - [Yuki](https://github.com/Yuki8859)
 - [Cyt](https://github.com/qinfyy)
+- [Glzd001](https://github.com/Glzd001)
+- [blamefire159-debug](https://github.com/blamefire159-debug)
+- [AzureXuanVerse](https://github.com/AzureXuanVerse)
 
 ### Projects
 
 - [LunarCore](https://github.com/Melledy/LunarCore)
-- [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
+- [DanhengServer](https://github.com/OrihaWeave/DanhengServer-OpenSource)
+- [KcpSharp](https://github.com/yigolden-oss/KcpSharp)
 
 ## License
 

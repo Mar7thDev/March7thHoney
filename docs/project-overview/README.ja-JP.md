@@ -37,7 +37,7 @@ March7thHoney は C# と .NET 10 で書かれたゲームサーバーです。Wi
 .NET SDK 10（10.0.100 以降）と Git が必要です。Windows、Linux、macOS（`x64` または `arm64`）に対応しています。
 
 ```bash
-git clone https://github.com/Mar7thLover/March7thHoney.git
+git clone https://github.com/Mar7thDev/March7thHoney.git
 cd March7thHoney
 dotnet run --project Program/Program.csproj
 ```
@@ -95,19 +95,23 @@ CI は `main` の自己完結型ビルドをワークフローの成果物とし
 
 ### コラボレーター
 
-- [Mar7thLover](https://github.com/Mar7thLover)
-- [Cyrup](https://github.com/March7thHoney)
+- [Mar7thLover](https://github.com/OrihaWeave)
+- Cyrup
 - [Melioli](https://github.com/Melioli)
 
 ### コントリビューター
 
 - [Yuki](https://github.com/Yuki8859)
 - [Cyt](https://github.com/qinfyy)
+- [Glzd001](https://github.com/Glzd001)
+- [blamefire159-debug](https://github.com/blamefire159-debug)
+- [AzureXuanVerse](https://github.com/AzureXuanVerse)
 
 ### 関連プロジェクト
 
 - [LunarCore](https://github.com/Melledy/LunarCore)
-- [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
+- [DanhengServer](https://github.com/OrihaWeave/DanhengServer-OpenSource)
+- [KcpSharp](https://github.com/yigolden-oss/KcpSharp)
 
 ## ライセンス
 
