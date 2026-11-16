@@ -70,9 +70,10 @@ public static class GridFightSeasonScope
 
     /// <summary>
     /// Roles that are never handed out on their own, as GridFightResourceCatalog.RolePool treats them for the
-    /// shop: from season 2 on GridFight_InitialExceptRoleIdList seeds the client's GridFightTeam._ExceptedRoleIDs
-    /// (丹恒•腾荒 141402 exists only as the 双龙吟 summon; the 星神★阿哈 tiers above the sold one are upgrade
-    /// products). Season 1 keeps its capture-backed pools and applies the list to the opening roles only.
+    /// shop: from season 2 on GridFight_InitialExceptRoleIdList seeds the client's GridFightTeam._ExceptedRoleIDs.
+    /// Tenglong (丹恒•腾荒, 141402) exists only as the Dan Heng trait (双龙吟) summon, and the Aha (星神★阿哈) tiers
+    /// above the sold one are upgrade products. Season 1 keeps its capture-backed pools and applies the list to
+    /// the opening roles only.
     /// </summary>
     public static HashSet<uint> RewardExcludedRoleIds(uint season) =>
         season == 1

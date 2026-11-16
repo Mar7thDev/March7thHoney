@@ -21,8 +21,9 @@ public class InventoryData : BaseDatabaseDataHelper
     public int NextUniqueId { get; set; } = 100;
 
     /// <summary>
-    ///     4.5 的遗器预设（智能装配保存下来的方案），键为方案 unique id。
-    ///     与旧的 <see cref="RelicPlans" />（2.3 的 RelicSmartWear 方案）是两套并存的协议，互不共用。
+    ///     The 4.5 relic presets: plans saved from smart equip (智能装配), keyed by the plan's unique id.
+    ///     They belong to a different protocol from the older <see cref="RelicPlans" /> (the 2.3 RelicSmartWear plans);
+    ///     the two exist side by side and share no data.
     /// </summary>
     public Dictionary<int, RelicPresetPlanData> RelicPresetPlans { get; set; } = [];
 }
@@ -409,7 +410,8 @@ public partial class RelicPresetPlanData
     public string Name { get; set; } = "";
 
     /// <summary>
-    ///     <see cref="March7thHoney.Proto.RelicPresetPlanSourceType" />：方案来自智能装配、自定义还是大数据推荐。
+    ///     <see cref="March7thHoney.Proto.RelicPresetPlanSourceType" />: whether the plan came from smart equip, a
+    ///     custom setup or the big-data recommendation.
     /// </summary>
     public int SourceType { get; set; }
 

@@ -10,7 +10,7 @@ public sealed class GridFightElationSlotState
 }
 
 /// <summary>
-///     Season-2 机心巧匠 (Clara, 3005021), 幻乐之主 (Aha, 300602) and 欢愉 (Elation laugh points, 2007021).
+///     Season-2 Clara (机心巧匠, 3005021), Aha (幻乐之主, 300602) and Elation laugh points (欢愉, 2007021).
 ///     Layouts: artifacts/gf-season2/re-g3-clara-aha.md. Upgrade cadence, option pools and Aha growth thresholds are
 ///     server-side JSON the client never sees; they follow the trait descriptions and are marked as guesses.
 /// </summary>
@@ -73,21 +73,23 @@ public sealed partial class GridFightSession
         _elationSlots.AddRange(template.PreEquipList.Select(id => new GridFightElationSlotState { PresetEquipmentId = id }));
     }
 
-    // ---------------------------------------------------------------- 机心巧匠
+    // ---------------------------------------------------------------- Clara
 
     private void RefreshClara(GridFightSeasonTwoChanges changes)
     {
         var fielded = ResolveTraitLayer(ClaraTraitId) > 0;
         if (fielded && !_claraFielded)
         {
-            // 克拉拉上场时立即进行首次强化改装 (only the first time she is fielded).
+            // Trait text: Clara gets her first upgrade as soon as she is fielded ("克拉拉上场时立即进行首次强化改装"); this
+            // happens only the first time she is fielded.
             _claraFielded = true;
             _claraPendingUpgrades++;
             _claraNode = (ChapterId, SectionId);
         }
         if (!fielded || _claraNode == (ChapterId, SectionId)) return;
         _claraNode = (ChapterId, SectionId);
-        // 每进入#2[i]个新节点改装一次，前#3[i]次改装仅需进入1个新节点。
+        // Trait text: one upgrade per #2[i] new nodes entered; the first #3[i] upgrades need only 1 new node each
+        // ("每进入#2[i]个新节点改装一次，前#3[i]次改装仅需进入1个新节点。").
         _claraNodesSinceUpgrade++;
         var interval = _claraUpgradeCount < ClaraEarlyUpgrades ? 1u : 2u;
         if (_claraNodesSinceUpgrade < interval) return;
@@ -153,7 +155,8 @@ public sealed partial class GridFightSession
         if (enhanceId == 0) return 0;
 
         AddClaraEnhance(enhanceId);
-        // Picking a 响指指令 variant (3005/3006/3007) advances the 3001 -> 3004 chain (GridFightClaraLinkRelation).
+        // Picking a snap-command variant (响指指令, 3005/3006/3007) advances the 3001 -> 3004 chain
+        // (GridFightClaraLinkRelation).
         if (ClaraSummonChainTriggers.Contains(enhanceId))
         {
             var next = ClaraSummonChain.FirstOrDefault(id => ClaraOwned(id) == 0);
@@ -173,12 +176,15 @@ public sealed partial class GridFightSession
         else _claraEnhancements[index] = (enhanceId, _claraEnhancements[index].Num + 1);
     }
 
-    // ---------------------------------------------------------------- 幻乐之主
+    // ---------------------------------------------------------------- Aha
 
     private IReadOnlyList<uint> AhaGrowthRoleIds => _catalog.AhaGrowthRoleIds;
     private uint AhaSevenCostRoleId => _catalog.AhaSevenCostRoleId;
 
-    /// <summary>The Aha tier the shop sells and 星神降临 hands out: the cheapest star-less tier; 0 without an Aha.</summary>
+    /// <summary>
+    ///     The Aha tier the shop sells and the Aha special good 346 (星神降临) hands out: the cheapest star-less tier; 0
+    ///     without an Aha.
+    /// </summary>
     public uint AhaBaseRoleId => AhaGrowthRoleIds.Count > 0 ? AhaGrowthRoleIds[0] : 0;
 
     private bool IsAhaRole(uint roleId) =>
@@ -202,12 +208,13 @@ public sealed partial class GridFightSession
         roleId == AhaSevenCostRoleId ? 7 : GameData.GridFightRoleBasicInfoData.GetValueOrDefault(roleId)?.Rarity ?? 0;
 
     /// <summary>
-    ///     获取星神★阿哈可积攒【幻月之力】: the star-less Aha tiers (GridFight_Aha_No_Star_Role_IDList) never merge, so every
-    ///     further copy is absorbed into growth, and growth raises the cost tier on the same unique id. The 7-cost tier has
-    ///     stars ("达到3星7费"): once an Aha is 7-cost, every other copy becomes a 1★ 7-cost copy and merges like any role.
-    ///     A copy of the cheapest tier is worth 1 growth and each tier above it one more (server-side value, not in the
-    ///     client tables; with the 4.7.51 tables only the cheapest tier can be bought, so this is 1 per copy). Returns the
-    ///     roles whose id changed, the unique ids of absorbed copies and the merges of 7-cost copies.
+    ///     Aha growth (幻月之力; "获取星神★阿哈可积攒【幻月之力】"): the star-less Aha tiers
+    ///     (GridFight_Aha_No_Star_Role_IDList) never merge, so every further copy is absorbed into growth, and growth
+    ///     raises the cost tier on the same unique id. The 7-cost tier has stars ("达到3星7费"): once an Aha is 7-cost,
+    ///     every other copy becomes a 1★ 7-cost copy and merges like any role. A copy of the cheapest tier is worth 1
+    ///     growth and each tier above it one more (server-side value, not in the client tables; with the 4.7.51 tables
+    ///     only the cheapest tier can be bought, so this is 1 per copy). Returns the roles whose id changed, the unique
+    ///     ids of absorbed copies and the merges of 7-cost copies.
     /// </summary>
     public (IReadOnlyList<GridFightRoleState> Changed, IReadOnlyList<uint> Absorbed, IReadOnlyList<GridFightRoleMergeStep> Merges)
         AbsorbAhaCopies()
@@ -275,7 +282,10 @@ public sealed partial class GridFightSession
         return tiers[reached];
     }
 
-    /// <summary>达到5费后，提升欢愉或幻月游戏队员的总星级: trait 300602 desc params [10, 12] (assignment is a guess).</summary>
+    /// <summary>
+    ///     7-cost condition "达到5费后，提升欢愉或幻月游戏队员的总星级" (after reaching 5 cost, raise the total stars of Elation
+    ///     or Moon Game members): trait 300602 desc params [10, 12] (assignment is a guess).
+    /// </summary>
     private bool HasAhaSevenCostCondition() =>
         GetTraitTotalStars(ElationTraitId) >= 10 || GetTraitTotalStars(MoonGameTraitId) >= 12;
 
@@ -287,7 +297,7 @@ public sealed partial class GridFightSession
         if (IsSeasonTwoRules && _ahaGrowth > 0) values[AhaGrowthSavedValueKey] = _ahaGrowth;
     }
 
-    // ---------------------------------------------------------------- 欢愉 (阿哈装备栏)
+    // ---------------------------------------------------------------- Elation (Aha's equipment bar, 阿哈装备栏)
 
     public uint ResolveElationUnlockedSlots()
     {

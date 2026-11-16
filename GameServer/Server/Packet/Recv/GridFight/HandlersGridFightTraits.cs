@@ -71,7 +71,7 @@ public sealed class HandlerGridFightTraitUpdateCsReq : GridFightHandler<GridFigh
         {
             case GridFightTraitUpdateCsReq.NEBNJDMFELOOneofCase.GDAMHENIIDJ:
             {
-                // 黑市主理人: buy a slot or refresh the rotating goods.
+                // Jade's shop (黑市主理人): buy a slot or refresh the rotating goods.
                 if (request.GDAMHENIIDJ.AHAIBDAJAIB)
                 {
                     if (!session.RefreshJadeGoods(out var goldChanged)) return null;
@@ -107,7 +107,7 @@ public sealed class HandlerGridFightTraitUpdateCsReq : GridFightHandler<GridFigh
             case GridFightTraitUpdateCsReq.NEBNJDMFELOOneofCase.IFDICIIOHHI
                 when request.IFDICIIOHHI.HCDIBHEDDEC != null:
             {
-                // 欢愉: drag equipment onto Aha. (Aha consumables, HJJPILGEFKK, are not implemented.)
+                // Elation (欢愉): drag equipment onto Aha. (Aha consumables, HJJPILGEFKK, are not implemented.)
                 var dress = session.DressElationEquipment(request.IFDICIIOHHI.HCDIBHEDDEC.AMIFDFAHMDM, out var consumed);
                 return dress.Success
                     ? manager.BuildSeasonTwoSelectionSync(traitId, effectId, 0, dress, removedEquipment: consumed)
@@ -120,8 +120,8 @@ public sealed class HandlerGridFightTraitUpdateCsReq : GridFightHandler<GridFigh
 }
 
 /// <summary>
-///     The client asks to enter a 幕后茶歇 node (8559, sent from Lua). The bonfire pending action is pushed on node
-///     entry already; resend it here. The 4.7 protocol has no matching response command, so none is sent.
+///     The client asks to enter a bonfire (幕后茶歇) node (8559, sent from Lua). The bonfire pending action is pushed on
+///     node entry already; resend it here. The 4.7 protocol has no matching response command, so none is sent.
 /// </summary>
 [Opcode(CmdIds.GridFightEnterBonfireCsReq)]
 public sealed class HandlerGridFightEnterBonfireCsReq : GridFightHandler<GridFightEnterBonfireCsReq>

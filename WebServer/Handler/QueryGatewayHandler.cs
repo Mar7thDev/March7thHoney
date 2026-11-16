@@ -45,8 +45,9 @@ internal class QueryGatewayHandler
         if (!string.IsNullOrWhiteSpace(accessVerificationMessage))
             gateServer.LoginWhiteMsg = accessVerificationMessage;
 
-        // 4.4: GateServer 旧的 Unk1/Unk2/MdkResVersion/IfixVersion 字段已移除；msg 改名为 LoginWhiteMsg。
-        // 4.4 客户端需要这些 bool 标志才能正常进门；唯独 UseTcp 必须保持关闭 (星铁私服走 KCP，UseTcp=true 才是 TCP)。
+        // 4.4: the old GateServer fields Unk1/Unk2/MdkResVersion/IfixVersion were removed, and msg was renamed to
+        // LoginWhiteMsg. The 4.4 client needs these bool flags to get past the gateway; only UseTcp must stay off
+        // (private servers speak KCP, and UseTcp=true selects TCP).
         gateServer.EnableDesignDataBundleVersionUpdate = true;
         gateServer.EnableVideoBundleVersionUpdate = true;
         gateServer.WatermarkEnable = true;
@@ -62,7 +63,7 @@ internal class QueryGatewayHandler
         gateServer.NetworkDiagnostic = true;
         gateServer.NNFLHCGDGJM = true;
         gateServer.FMLPNNMJDIC = true;
-        // gateServer.UseTcp 保持默认 false = KCP
+        // gateServer.UseTcp stays at its default: false = KCP
 
         // Divergent Universe awaits this BuildRef fetch before it sends RogueTournStartCsReq.
         // Host the empty community-build catalogue locally so starting a run has no CDN dependency.

@@ -182,8 +182,8 @@ public sealed partial class GridFightManager : BasePlayerManager
         handbook.EquipInfo.GridFightItemList.Add(GridFightSeasonScope.Equipment(Catalog.CurrentSeason)
             .Select(row => row.ID)
             .Order());
-        // 主角光环图鉴: the only 4.7 handbook addition with two id lists (seen/unlocked, like augments and portals);
-        // the single-list LLBMKOILIDN/ODKODPBCDKD remain unidentified (likely the PetPal pages).
+        // Spotlight handbook (主角光环图鉴): the only 4.7 handbook addition with two id lists (seen/unlocked, like
+        // augments and portals); the single-list LLBMKOILIDN/ODKODPBCDKD remain unidentified (likely the PetPal pages).
         if (Catalog.CurrentSeason >= 2)
         {
             var spotLightIds = GridFightSeasonTwoTables.SpotLights.Select(row => row.Id).Order().ToList();
@@ -982,8 +982,9 @@ public sealed partial class GridFightManager : BasePlayerManager
                     MaxLevel = Catalog.MaxPlayerLevel,
                 },
             });
-        // 财富宝钻 raises the team size (1583 -> GridFightPlayer.UpdateMaxRoleNum) and unlocks one more back cell
-        // (833 -> UpdateMaxBackRoleNum); without both the client keeps the old cap until a level-up and never shows the cell.
+        // A Wealth Diamond (财富宝钻) raises the team size (1583 -> GridFightPlayer.UpdateMaxRoleNum) and unlocks one more
+        // back cell (833 -> UpdateMaxBackRoleNum); without both the client keeps the old cap until a level-up and never
+        // shows the cell.
         var addsCrown = application.AddedEquipments.Any(equipment =>
             equipment.EquipmentId == GridFightSession.WealthDiamondEquipmentId);
         if (application.PlayerLevelChanged || addsCrown)
@@ -1815,7 +1816,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         }
         if (retreated)
         {
-            // 撤退 leaves Currency Wars altogether: right after BATTLE_END_QUIT the client sends
+            // Retreating (撤退) leaves Currency Wars altogether: right after BATTLE_END_QUIT the client sends
             // GridFightQuitLeaveGamePlayCsReq and walks back to the overworld (2026-10-06 log), and it reloads the run
             // through GetData when it comes back. The battle still counts as lost (no free replay), but its settle
             // page, the route sync and the settle notify must not reach a client that is leaving: they blacked it out.
@@ -2389,10 +2390,10 @@ public sealed partial class GridFightManager : BasePlayerManager
             NodeType = (uint)node.NodeType,
         };
         param.ParamList.Add(node.Parameters);
-        // 主角光环: param 4 marks the nodes whose spotlight selection is still due (and numbers the locked slots);
-        // while the current node has it, the battle button asks for the selection instead of starting the battle.
+        // Spotlight (主角光环): param 4 marks the nodes whose spotlight selection is still due (and numbers the locked
+        // slots); while the current node has it, the battle button asks for the selection instead of starting the battle.
         if (session.IsSpotLightNodePending(node.ChapterId, node.SectionId)) param.HPNNLMBHOPF = true;
-        // 幕后茶歇: param 11 marks the node, 15 lists its event, 3 shows the partner on it; the Hex display
+        // Bonfire (幕后茶歇): param 11 marks the node, 15 lists its event, 3 shows the partner on it; the Hex display
         // (param 8 == 1) would win over the bonfire one.
         if (session.FindBonfireNode(node.ChapterId, node.SectionId) is { } bonfire)
         {

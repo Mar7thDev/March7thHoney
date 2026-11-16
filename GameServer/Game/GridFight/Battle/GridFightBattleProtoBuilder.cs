@@ -312,7 +312,8 @@ public static class GridFightBattleProtoBuilder
             battle.BattleEvents.Add(id, new BattleEventInstance(id, curSp, maxSp));
         if (session.IsSeasonTwoRules)
         {
-            // GridFightInfo field 23 carries the run's 幻月游戏 sub-trait (same field name as the lobby context value).
+            // GridFightInfo field 23 carries the run's MoonGame (幻月游戏) sub-trait (same field name as the lobby
+            // context value).
             gridFightInfo.NJBNOFIEDDE = new KJFEHJMAIAA { FMNPBOJGLFI = session.MoonGameSubTraitId };
             // MazeBuffData is keyed by ID * 10 + Lv. A buff the client has no MazeBuff row for blacks out the battle
             // load, so a train good is only sent once its row exists in the resource data.
@@ -459,7 +460,7 @@ public static class GridFightBattleProtoBuilder
                 ModeInfo = new GridFightRoleBattleModeInfo
                 {
                     Mode = ResolveRoleBattleMode(session, role),
-                    // AvatarSpotLightId: the battle puts the 主角光环 crown on this unit.
+                    // AvatarSpotLightId: the battle puts the spotlight (主角光环) crown on this unit.
                     IHHNLLAJAGB = session.GetSpotLightIdForRole(role.UniqueId),
                 },
                 StateInfo = new GridFightRoleBattleStateInfo(),
@@ -481,7 +482,7 @@ public static class GridFightBattleProtoBuilder
             }));
         // 4.7 battles read role-scoped GridFight custom values (SetDynamicValueByGridFightCustomProperty with a target ->
         // GridFightManager._GetOrBindRoleCustomValueLookup) only from GridFightRoleInfo field 14, without falling back to
-        // GridFightInfo.role_saved_values; without it Phainon's 薪火 (GP_Avatar_S2_Phainon_00) gives no DMG amp.
+        // GridFightInfo.role_saved_values; without it Phainon's kindling (薪火, GP_Avatar_S2_Phainon_00) gives no DMG amp.
         if (session.IsSeasonTwoRules)
             foreach (var (key, value) in session.ResolveRoleSavedValues(role, role.RoleId))
                 result.BABNHPDGNGB[key] = value;

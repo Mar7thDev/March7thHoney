@@ -5,8 +5,8 @@ namespace March7thHoney.GameServer.Game.GridFight;
 
 /// <summary>
 /// Season-2-only investments (4.6.51). These have no public text: descriptions were read from the in-game
-/// 投资策略图鉴 and matched to GridFightAugment rows by handbook order and EffectParamList, e.g. 分批扩招 =
-/// 305101 [3, 2] "获得3个随机4费角色。进入2个新节点后，再获得3个…进入首领节点时，再获得3个".
+/// investment handbook (投资策略图鉴) and matched to GridFightAugment rows by handbook order and EffectParamList, e.g.
+/// Batch Recruitment (分批扩招) = 305101 [3, 2] "获得3个随机4费角色。进入2个新节点后，再获得3个…进入首领节点时，再获得3个".
 /// Spotlight / Chimera / Trailblaze mechanics (换角开演, 刷新连锁, 片场解散, 奇美成长记, 全速开拓) are not
 /// implemented server-side, and pure battle effects are executed by the client.
 /// </summary>
@@ -18,8 +18,8 @@ public sealed partial class GridFightSession
     private const uint InternProjectorConsumableId = 350108; // 实习生投影仪（1费复制）
 
     /// <summary>
-    /// 星徽套组: (augment, emblem group, avatar, equipment). The emblem is the season-2 emblem of the group's
-    /// trait (355000000 + trait, the same item the matching invitation portal grants); the avatar is resolved
+    /// Emblem sets (星徽套组): (augment, emblem group, avatar, equipment). The emblem is the season-2 emblem of the
+    /// group's trait (355000000 + trait, the same item the matching invitation portal grants); the avatar is resolved
     /// to the running season's role. 0 = no equipment (gold sets, or prismatic rows whose equipment id has no
     /// GridFightEquipment row in the 4.6.51 dump: 35030108, 35030210, 47030100, 35030810, 35030504).
     /// The 355100600 sets (212001 gold, 312001 prismatic, avatar 1112) are gone: OSBETAWin4.7.51 deleted both
@@ -155,7 +155,10 @@ public sealed partial class GridFightSession
         return result;
     }
 
-    /// <summary>投资升级: the next ordinary investment offer is one quality higher (Silver → Gold → Prismatic).</summary>
+    /// <summary>
+    /// Investment Upgrade (投资升级): the next ordinary investment offer is one quality higher (Silver → Gold →
+    /// Prismatic).
+    /// </summary>
     private GridFightAugmentQualityEnum ApplyInvestmentUpgrade(GridFightAugmentQualityEnum quality)
     {
         if (!_investmentUpgradePending) return quality;
@@ -171,7 +174,10 @@ public sealed partial class GridFightSession
         return upgraded;
     }
 
-    /// <summary>人才大礼包: one role of the guaranteed cost, then random roles until the 1-star cost budget is spent.</summary>
+    /// <summary>
+    /// Talent Gift Pack (人才大礼包): one role of the guaranteed cost, then random roles until the 1-star cost budget is
+    /// spent.
+    /// </summary>
     private IReadOnlyList<uint> RollRoleBudget(GridFightAugmentRoleBudget budget)
     {
         var result = new List<uint>();

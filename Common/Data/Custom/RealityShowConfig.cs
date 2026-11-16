@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 namespace March7thHoney.Data.Custom;
 
 /// <summary>
-///     Interastral Peace Gala: Road to Fame (星际和平盛典：成名之路, client module ActivityRealityShow, panel 50143,
-///     challenge modules 5014301-5014305, stage type RealityShowActivity). The challenge rows come from the
+///     Interastral Peace Gala: Road to Fame (星际和平盛典：成名之路): client module ActivityRealityShow, panel 50143,
+///     challenge modules 5014301-5014305, stage type RealityShowActivity. The challenge rows come from the
 ///     ExcelOutput table ActivityRealityShowConfig, which the resource export does not name, so
 ///     Config/Custom/RealityShow.json carries them, decoded from the OSBETAWin4.7.51 DesignData
 ///     (see docs/development/reality-show.md). Loaded from Config/Custom on every boot and not stored in Resource.bin.

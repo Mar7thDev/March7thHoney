@@ -176,7 +176,10 @@ public partial class InventoryManager(PlayerInstance player) : BasePlayerManager
         return item;
     }
 
-    /// <summary>宠物材料变化后让宠物实例对账，并给新实例推送 PetDataChangeScNotify（组件注册前为空操作）。</summary>
+    /// <summary>
+    ///     After pet materials change, has the pet instances reconciled and PetDataChangeScNotify pushed for the new
+    ///     instances (a no-op before the component is registered).
+    /// </summary>
     private async ValueTask NotifyPetItemsChanged()
     {
         var pets = Player.GetComponentOrDefault<PetManager>();

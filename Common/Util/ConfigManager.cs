@@ -154,10 +154,11 @@ public static class ConfigManager
     {
         var file = new FileInfo(HotfixFilePath);
 
-        // 生成客户端真实格式的版本 key：{CN|OS}{BETA|PROD}{Win|Android|iOS}{版本号}
-        // 只取 GAME_VERSION 的大版本号（x.y）作为版本序列，正式服是 x.y.0，测试服是 x.y.51~x.y.55。
-        // 旧写法把 GAME_VERSION 的末位当成"是不是测试版"的开关，写 4.4.5 时生成的是 4.4 这一列的 key，
-        // 和注释声称的"4.4.5 = 客户端 4.5.0"对不上，真正的 4.5.0 客户端反而查不到自己的 hotfix。
+        // Generate the version keys in the format the client really sends:
+        // {CN|OS}{BETA|PROD}{Win|Android|iOS}{version number}.
+        // Only the major.minor part (x.y) of GAME_VERSION selects the version line: production is x.y.0 and beta is
+        // x.y.51 to x.y.55. The last component of GAME_VERSION is ignored and must not be read as a beta switch: a
+        // client only looks up the keys of its own x.y line.
         var verList = new List<string>();
         string[] regions = ["CN", "OS"];
         string[] platforms = ["Win", "Android", "iOS"];

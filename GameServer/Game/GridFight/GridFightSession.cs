@@ -1299,7 +1299,7 @@ public sealed partial class GridFightSession
                     else if (GameData.GridFightForgeData.TryGetValue(reward.ItemId, out var hireForge) &&
                              hireForge.FuncType == GridFightForgeFuncTypeEnum.Role)
                     {
-                        // 聘用书 (99992-99996, FuncType Role, params [cost, star]). Its 4-pick prompt
+                        // Hiring book (聘用书, 99992-99996, FuncType Role, params [cost, star]). Its 4-pick prompt
                         // (GridFightForgeRoleActionInfo) has unconfirmed fields and no capture, so the book is
                         // redeemed on receipt for a random role of that cost and star instead of a choice.
                         var hireCost = hireForge.ParamList.ElementAtOrDefault(0);
@@ -1456,7 +1456,7 @@ public sealed partial class GridFightSession
     {
         if (Phase != GridFightSessionPhase.Preparing || HasBlockingPendingSelection) return GridFightSessionChange.Failed;
         var role = Roles.FirstOrDefault(candidate => candidate.UniqueId == uniqueId);
-        // The summoned 丹恒•腾荒 cannot be sold (the client refuses locally as well).
+        // The summoned Dan Heng • Permansor Terrae (丹恒•腾荒) cannot be sold (the client refuses locally as well).
         if (role == null || IsPopulationFreeRole(role)) return GridFightSessionChange.Failed;
         AddGold(_catalog.GetSellPrice(role.RoleId, role.Star));
         DestroyDiceFilledOnRole(role);
@@ -1537,7 +1537,7 @@ public sealed partial class GridFightSession
             return GridFightSessionChange.Failed;
         if (CountPopulationRoles(rolePositions.Select(pair => (pair.Key, pair.Value))) > MaxActiveRoles)
             return GridFightSessionChange.Failed;
-        // TwoInOneSubBlockConstrait: the summoned 丹恒•腾荒 only moves inside the back area.
+        // TwoInOneSubBlockConstrait: the summoned Dan Heng • Permansor Terrae only moves inside the back area.
         if (updates.Any(update => update.UniqueId == _danHengSubUniqueId && _danHengSubUniqueId != 0 &&
                                   !IsBackPosition(update.Position)))
             return GridFightSessionChange.Failed;

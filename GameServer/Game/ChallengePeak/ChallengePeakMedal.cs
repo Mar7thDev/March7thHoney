@@ -6,16 +6,18 @@ using March7thHoney.Enums.Item;
 namespace March7thHoney.GameServer.Game.ChallengePeak;
 
 /// <summary>
-///     王棋勋章档位与对应的限时头像框。
+///     Medal ranks of the King boss (王棋) and the limited-time head frame that goes with each rank.
 ///     <para>
-///         档位与客户端 <c>RPG.Client.ChallengePeakBoss.CalculateRank(bool, int)</c> 同口径: 达成颜色目标为彩钻,
-///         否则完成 1/2/3 个普通目标为铜/银/金, 0 个为无。颜色目标就是下发给客户端的 hard_mode_has_passed
-///         (结算与总览都由 <see cref="IsColorMedalClear" /> 判定)。
+///         Ranks follow the client's <c>RPG.Client.ChallengePeakBoss.CalculateRank(bool, int)</c>: reaching the color
+///         target gives the color medal (彩钻); otherwise 1/2/3 finished normal targets give bronze/silver/gold and 0
+///         gives none. The color target is the hard_mode_has_passed flag sent to the client (settlement and the
+///         overview both decide it with <see cref="IsColorMedalClear" />).
 ///     </para>
 ///     <para>
-///         头像框从 ChallengePeakReward 读取: BOSS_STAR_LIMIT_REWARD(TypeValue = 档位)与 BOSS_COLOR_TARGET_REWARD(彩钻)
-///         → RewardData → 子类型为 HeadIconFrame 的物品。客户端 <c>ChallengePeakReward._CheckRewardCanTake</c>
-///         对这两类恒返回 false, 它们只能由服务端按战绩发放, 不走领奖请求。
+///         Head frames are read from ChallengePeakReward: BOSS_STAR_LIMIT_REWARD (TypeValue = rank) and
+///         BOSS_COLOR_TARGET_REWARD (color medal) → RewardData → the item whose subtype is HeadIconFrame. The client's
+///         <c>ChallengePeakReward._CheckRewardCanTake</c> always returns false for these two types, so they can only
+///         be granted by the server according to the record and never through a reward-claim request.
 ///     </para>
 /// </summary>
 public static class ChallengePeakMedal
@@ -28,13 +30,16 @@ public static class ChallengePeakMedal
         return rewardType is StarFrameRewardType or ColorFrameRewardType;
     }
 
-    /// <summary>颜色目标: 绝境通关, 或普通 0 轮通关(官服抓包: 普通 0 轮下发 hard_mode_has_passed, 3 轮不下发)。</summary>
+    /// <summary>
+    ///     Color target: a hard-mode (绝境) clear, or a normal clear in 0 cycles (official capture: a 0-cycle normal
+    ///     clear sends hard_mode_has_passed, a 3-cycle one does not).
+    /// </summary>
     public static bool IsColorMedalClear(bool isHard, uint roundCnt)
     {
         return isHard || roundCnt == 0;
     }
 
-    /// <summary>按最佳战绩判定是否已达成颜色目标(两个难度各自的记录)。</summary>
+    /// <summary>Whether the color target has been reached, judged from each difficulty's own best record.</summary>
     public static bool HasColorMedal(ChallengePeakBossLevelData? easyRec, ChallengePeakBossLevelData? hardRec)
     {
         return (hardRec?.HasRecord == true && IsColorMedalClear(true, hardRec.RoundCnt)) ||
@@ -49,7 +54,10 @@ public static class ChallengePeakMedal
             : ChallengePeakRankEnum.None;
     }
 
-    /// <summary>王棋最佳战绩对应的勋章档位: 颜色目标优先, 否则取普通难度最佳记录完成的目标数。</summary>
+    /// <summary>
+    ///     Medal rank for the King boss best records: the color target takes priority; otherwise the number of targets
+    ///     finished in the normal-difficulty best record.
+    /// </summary>
     public static ChallengePeakRankEnum GetBossRank(ChallengePeakBossLevelData? easyRec,
         ChallengePeakBossLevelData? hardRec)
     {
@@ -57,7 +65,7 @@ public static class ChallengePeakMedal
         return CalculateRank(HasColorMedal(easyRec, hardRec), easyTargets);
     }
 
-    /// <summary>该奖励组里某档位对应的头像框物品, 配置缺失时为 0。</summary>
+    /// <summary>The head frame item for a rank in this reward group, or 0 when the config has none.</summary>
     public static uint GetHeadFrameItemId(int rewardGroupId, ChallengePeakRankEnum rank)
     {
         if (rank == ChallengePeakRankEnum.None ||
@@ -70,7 +78,10 @@ public static class ChallengePeakMedal
         return row == null ? 0 : GetHeadFrameItemOfReward(row.RewardID);
     }
 
-    /// <summary>头像框物品属于哪一档; 不是异相仲裁头像框(含旧版拼出的无效 ID)时为 None。</summary>
+    /// <summary>
+    ///     The rank a head frame item belongs to; None when it is not a Challenge Peak (异相仲裁) head frame, which
+    ///     includes the invalid IDs that older versions composed.
+    /// </summary>
     public static ChallengePeakRankEnum GetHeadFrameRank(uint itemId)
     {
         if (itemId == 0) return ChallengePeakRankEnum.None;

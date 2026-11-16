@@ -274,7 +274,8 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         }
         else
         {
-            // 末关通关: 保活实例(对齐单关重打)供「重新挑战」用, 清理交给 Leave()/重开内部
+            // Final node cleared: keep the instance alive, as a single-stage replay does, so the retry button
+            // (重新挑战) can use it; cleanup is left to Leave() and to the restart itself.
             IsPassed = true;
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForAllStage(this));
             await Player.SendPacket(PacketChallengeTierceSyncNotify.ForMedal((uint)PreConfig.GroupID));

@@ -67,7 +67,7 @@ public sealed class HandlerGridFightUseConsumableCsReq : GridFightHandler<GridFi
         var target = request.Target;
         if (target?.DECONIENEJG != null && manager.Session != null)
         {
-            // 主角光环 consumable: consume, then open the granted spotlight selection for the target role.
+            // Spotlight (主角光环) consumable: consume, then open the granted spotlight selection for the target role.
             var spot = manager.Session.UseSpotLightConsumable(request.GroupId, target.DECONIENEJG.MDNAGANGNKK);
             if (spot.Success)
             {

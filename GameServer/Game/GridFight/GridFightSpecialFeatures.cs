@@ -213,9 +213,10 @@ public static class GridFightSpecialFeatures
     }
 
     /// <summary>
-    ///     Orbs whose BonusID has no row in any shipped bonus table (GridFightOrb 121006/121007/121008 -> bonus
-    ///     21006-21008, the 爆裂矿石 kill drops): they open like the generic orb of the same colour. The real contents are
-    ///     server-side; before this they could be granted but every open failed with "消息获取失败".
+    ///     Orbs whose BonusID has no row in any shipped bonus table: GridFightOrb 121006/121007/121008 -> bonus
+    ///     21006-21008, the kill drops of the loot orb augments (爆晶矿). They open like the generic orb of the same
+    ///     colour. The real contents are server-side; without the alias such an orb can be granted but every open fails
+    ///     with "消息获取失败".
     /// </summary>
     private static readonly Dictionary<uint, uint> OrbRecipeAliases = new()
     {
@@ -443,7 +444,8 @@ public static class GridFightSpecialFeatures
                 return true;
             case GridFightBonusTypeEnum.SpotLightReplaceCnt:
             case GridFightBonusTypeEnum.SpotLightFreeRefreshCnt:
-                // 主角光环 charges (e.g. 幻月游戏 orb 123156 -> bonus 23156: 1 replace + 8 free spotlight rerolls).
+                // Spotlight (主角光环) charges, e.g. the MoonGame (幻月游戏) orb 123156 -> bonus 23156: 1 replace + 8 free
+                // spotlight rerolls.
                 result.Add(new GridFightRewardEntry(basic.BonusType, 0, multiplier));
                 return true;
             case GridFightBonusTypeEnum.RandomEquipByCategory:
@@ -603,7 +605,7 @@ public static class GridFightSpecialFeatures
 
     // Random role rewards draw only from the running season; 4.6.51 tables hold both seasons' roles. They also leave
     // out the roles a run never hands out on their own (GridFightSeasonScope.RewardExcludedRoleIds), which IsInPool
-    // does not tell apart: a random 5-cost reward could otherwise be 丹恒•腾荒 or a 5-/7-cost 星神★阿哈.
+    // does not tell apart: a random 5-cost reward could otherwise be Tenglong (丹恒•腾荒) or a 5-/7-cost Aha (星神★阿哈).
     private static List<GridFightRoleBasicInfoExcel> RandomAvatarPool(uint rarity, uint star)
     {
         var season = GridFightSeasonScope.CurrentSeason;
