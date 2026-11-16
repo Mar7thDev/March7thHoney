@@ -33,6 +33,7 @@ The project overview is the [README](../README.md), also available in
 
 - [Account clean-up and device or IP blocks](operations/account-security.md)
 - [Account migration](operations/account-migration.md)
+- [Limited-mode builds and activation](operations/limited-mode.md)
 - [Upgrading scene cache metadata](operations/scene-cache-upgrade.md)
 - [Rebuilding the resource cache from a client export](operations/resource-cache-from-client-export.md)
 

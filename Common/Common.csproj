@@ -6,6 +6,24 @@
     <AssemblyName>March7thHoney.Common</AssemblyName>
   </PropertyGroup>
 
+  <!--
+    Limited-mode builds: -p:LimitedMode=true compiles the server with its embedded configuration and the
+    startup activation gate (see docs/operations/limited-mode.md). The three Activation* properties name the
+    service such a build is activated against; whoever distributes their own builds overrides them.
+  -->
+  <PropertyGroup>
+    <DefineConstants Condition="'$(LimitedMode)' == 'true'">$(DefineConstants);LIMITED_MODE</DefineConstants>
+    <ActivationServerUrl Condition="'$(ActivationServerUrl)' == ''">https://cyrene.hoyotoon.com</ActivationServerUrl>
+    <ActivationPublicKey Condition="'$(ActivationPublicKey)' == ''">MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE0B8BahOmnSrpcrz64ReTq75XAiTrrs+PrHBtQp7ImtYnnj/Pvkly2EEbeqTLml9eq238gUwUOcfuIOHw78wujg==</ActivationPublicKey>
+    <ActivationHelpUrl Condition="'$(ActivationHelpUrl)' == ''">discord.gg/CyreneEchoes</ActivationHelpUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyMetadata Include="ActivationServerUrl" Value="$(ActivationServerUrl)" />
+    <AssemblyMetadata Include="ActivationPublicKey" Value="$(ActivationPublicKey)" />
+    <AssemblyMetadata Include="ActivationHelpUrl" Value="$(ActivationHelpUrl)" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="EastAsianWidth" />
     <PackageReference Include="Google.Protobuf" />

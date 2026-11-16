@@ -10,28 +10,22 @@ using March7thHoney.Internationalization;
 
 namespace March7thHoney.Util.License;
 
-// Startup online activation gate with interactive authorization.
+// Startup activation gate of a limited-mode build, with interactive authorization.
 //
-// First run (no saved token): the server requests a device code from cyrene-web,
+// First run (no saved token): the server requests a device code from the activation service,
 // prints the verification URL + user code (and opens the browser), then polls
 // until the operator signs in and approves. The returned launcher token is saved
 // to Config/activation.token. Every run then calls /api/server/activate, which
 // binds the token to this machine's HWID and returns an ECDSA P-256 signature we
-// verify with the embedded public key — so a forged/MITM'd response is useless.
-// This is a deterrent gate, not an unbreakable lock.
+// verify with the public key built into the server, so a forged or intercepted response is useless.
+// This is a deterrent gate, not an unbreakable lock. The service and its key come from ActivationSettings.
 public static class OnlineActivationManager
 {
     private static readonly Logger Logger = new("Activation");
 
-    private const string BaseUrl = "https://cyrene.hoyotoon.com";
-    private const string ActivateEndpoint = BaseUrl + "/api/server/activate";
-    private const string DeviceCodeEndpoint = BaseUrl + "/api/launcher/device/code";
-    private const string DeviceTokenEndpoint = BaseUrl + "/api/launcher/device/token";
-    private const string HelpUrl = "discord.gg/CyreneEchoes";
-
-    // ECDSA P-256 public key (SubjectPublicKeyInfo DER, base64); pairs with cyrene.hoyotoon.com ACTIVATION_SIGN_SK.
-    private const string SignPublicKeyB64 =
-        "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE0B8BahOmnSrpcrz64ReTq75XAiTrrs+PrHBtQp7ImtYnnj/Pvkly2EEbeqTLml9eq238gUwUOcfuIOHw78wujg==";
+    private static string ActivateEndpoint => ActivationSettings.ServerUrl + "/api/server/activate";
+    private static string DeviceCodeEndpoint => ActivationSettings.ServerUrl + "/api/launcher/device/code";
+    private static string DeviceTokenEndpoint => ActivationSettings.ServerUrl + "/api/launcher/device/token";
 
     private static readonly byte[] Magic = "M7HACT01"u8.ToArray();
 
@@ -39,6 +33,9 @@ public static class OnlineActivationManager
     {
         try
         {
+            if (!ActivationSettings.IsConfigured)
+                return Fail("this build names no activation service (ActivationServerUrl / ActivationPublicKey)");
+
             // Launcher-managed: CyreneLauncher injects its login token (and device id) via env; use them directly, never the browser flow.
             var launcherMode = !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("M7H_LAUNCHER_MODE"));
             var deviceIdOverride = Environment.GetEnvironmentVariable("M7H_DEVICE_ID");
@@ -240,7 +237,7 @@ public static class OnlineActivationManager
     private static bool Fail(string reason)
     {
         Logger.Error(I18NManager.Translate("Server.ServerInfo.ActivationFailed", reason));
-        Logger.Error(I18NManager.Translate("Server.ServerInfo.LicenseInvalid", HelpUrl));
+        Logger.Error(I18NManager.Translate("Server.ServerInfo.LicenseInvalid", ActivationSettings.HelpUrl));
         return false;
     }
 
@@ -364,7 +361,7 @@ public static class OnlineActivationManager
         BinaryPrimitives.WriteInt64LittleEndian(msg[o..], exp);
 
         using var ecdsa = ECDsa.Create();
-        ecdsa.ImportSubjectPublicKeyInfo(Convert.FromBase64String(SignPublicKeyB64), out _);
+        ecdsa.ImportSubjectPublicKeyInfo(Convert.FromBase64String(ActivationSettings.PublicKey), out _);
         return ecdsa.VerifyData(msg, sig, HashAlgorithmName.SHA256,
             DSASignatureFormat.IeeeP1363FixedFieldConcatenation);
     }
