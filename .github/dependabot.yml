@@ -6,7 +6,21 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # The protocol build refuses any protoc other than 33.1, and the runtime moves with the tools.
+      # The pair is upgraded by hand, together with the version Proto/Build/GenerateProtobuf.targets expects.
+      - dependency-name: Google.Protobuf
+      - dependency-name: Google.Protobuf.Tools
+      # MailKit 5 changes the send API and depends on MimeKit.Core instead of MimeKit, which the
+      # NativeAOT publish roots by assembly name. Mail sending has no regression coverage, so the
+      # move to 5 is made deliberately.
+      - dependency-name: MailKit
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    # One pull request for all actions instead of one for each.
+    groups:
+      actions:
+        patterns: ["*"]
