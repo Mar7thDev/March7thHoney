@@ -276,7 +276,8 @@ public partial class PrivacySettingsPb
     {
         return new PlayerSettingInfo
         {
-            // TODO 4.3: PlayerSettingInfo 字段在 4.3 重排，DisplayActiveState/RecentlyState/BattleRecord 暂未映射
+            // TODO: DisplayActiveState, DisplayRecentlyState and DisplayBattleRecord are not sent. Their fields
+            // have not been identified since 4.3 renumbered PlayerSettingInfo.
             GNFDDPEMMFN = DisplayChallengeLineup,
             FDHEPCKLCAM = DisplayCollection,
             BOMGNMDOGLM = HideHeadFrame

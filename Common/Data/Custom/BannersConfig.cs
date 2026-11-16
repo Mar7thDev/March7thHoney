@@ -91,9 +91,8 @@ public partial class BannerConfig
             info.EndTime = EndTime;
         }
 
-        // TODO 4.3: 4.2 的新手池抽数/上限字段 FJIBOAGDNDG(tag13)/OKFNNHNLBOO(tag14) 在 4.3
-        // proto 整体重排后已无对应 tag，且剩余混淆字段语义不明，暂不下发新手池进度计数。
-        // 抽卡不在登录路径，不影响主流程。
+        // TODO: the newbie banner's pull count and limit are not sent. The fields that carried them were lost
+        // when 4.3 renumbered this message and have not been identified in the current protocol.
         _ = gachaPullCount;
         _ = gachaPullLimit;
 
@@ -101,7 +100,7 @@ public partial class BannerConfig
         {
             info.GachaCeiling = new GachaCeiling
             {
-                IsClaimed = true, // TODO: Implement this
+                IsClaimed = true, // TODO: not tracked; always reported as claimed
                 AvatarList = { goldAvatar.Select(id => new GachaCeilingAvatar { AvatarId = (uint)id }) }
             };
         }

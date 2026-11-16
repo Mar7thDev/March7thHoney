@@ -481,7 +481,7 @@ public static class DispatchRoutes
     private static IResult GetConfig()
     {
         return Json(
-            "{\"retcode\":0,\"message\":\"OK\",\"data\":{\"protocol\":true,\"qr_enabled\":false,\"log_level\":\"INFO\",\"announce_url\":\"\",\"push_alias_type\":0,\"disable_ysdk_guard\":true,\"enable_announce_pic_popup\":false,\"app_name\":\"崩�??RPG\",\"qr_enabled_apps\":{\"bbs\":false,\"cloud\":false},\"qr_app_icons\":{\"app\":\"\",\"bbs\":\"\",\"cloud\":\"\"},\"qr_cloud_display_name\":\"\",\"enable_user_center\":true,\"functional_switch_configs\":{}}}");
+            "{\"retcode\":0,\"message\":\"OK\",\"data\":{\"protocol\":true,\"qr_enabled\":false,\"log_level\":\"INFO\",\"announce_url\":\"\",\"push_alias_type\":0,\"disable_ysdk_guard\":true,\"enable_announce_pic_popup\":false,\"app_name\":\"崩坏RPG\",\"qr_enabled_apps\":{\"bbs\":false,\"cloud\":false},\"qr_app_icons\":{\"app\":\"\",\"bbs\":\"\",\"cloud\":\"\"},\"qr_cloud_display_name\":\"\",\"enable_user_center\":true,\"functional_switch_configs\":{}}}");
     }
 
     private static IResult RedDot()
@@ -507,7 +507,7 @@ public static class DispatchRoutes
         var tp = new ThirdpartyLoginConfig("TK_GAME_TOKEN", gameTokenExpiresIn);
         var data = new LoadConfigData(
             24, "hkrpg_global", "PC", "I_IDENTITY", false, "",
-            "S_NORMAL", "崩�??RPG", !Config.ServerOption.Auth.EnableRegistration, false,
+            "S_NORMAL", "崩坏RPG", !Config.ServerOption.Auth.EnableRegistration, false,
             ["fb", "tw", "gl", "ap"], false, false, [], false,
             new ThirdpartyLoginConfigs(tp, tp, tp, tp), false, false,
             [], false, false);

@@ -345,8 +345,8 @@ public class GachaManager : BasePlayerManager<GachaData>
             GachaId = (uint)bannerId,
             GachaNum = (uint)times
         };
-        // TODO 4.3: 4.2 的 DoGachaScRsp 新手池抽数/上限字段 (FJIBOAGDNDG/OKFNNHNLBOO) 在 4.3
-        // proto 重排后无法可靠对应，暂不下发新手池进度计数 (pity 状态仍持久化于 GachaData)。
+        // TODO: the newbie banner's pull count and limit are not sent, see BannersConfig. The pity state itself
+        // is still persisted in GachaData.
         proto.GachaItemList.AddRange(gachaItems);
         return proto;
     }
@@ -376,8 +376,8 @@ public class GachaManager : BasePlayerManager<GachaData>
                 newbieLimit));
         }
 
-        // TODO 4.3: 4.2 的角色活动 decide-item / featured pool 下发结构 (NMBAAOBBJMI / OEIEJHBCOOM)
-        // 在 4.3 GetGachaInfoScRsp 重排后无对应字段，暂不下发自选池信息。
+        // TODO: the items chosen for a character event banner are not sent. GetGachaInfoScRsp lost their
+        // fields when 4.3 renumbered it and they have not been identified in the current protocol.
 
         return proto;
     }

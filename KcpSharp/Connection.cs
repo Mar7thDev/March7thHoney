@@ -42,7 +42,6 @@ public class March7thHoneyConnection
     public long? ConversationId => Conversation.ConversationId;
 
     public SessionStateEnum State { get; set; } = SessionStateEnum.INACTIVE;
-    //public PlayerInstance? Player { get; set; }
 
     public virtual void Start()
     {
@@ -52,8 +51,6 @@ public class March7thHoneyConnection
 
     public virtual void Stop()
     {
-        //Player?.OnLogoutAsync();
-        //Listener.UnregisterConnection(this);
         Conversation.Dispose();
         try
         {

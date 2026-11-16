@@ -86,7 +86,7 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
 
                     if (accept2) acceptQuest = await AcceptQuest(quest.QuestID, false);
                     break;
-                case QuestUnlockTypeEnum.ManualUnlock: // idk what this is
+                case QuestUnlockTypeEnum.ManualUnlock: // what triggers this is not known
                     break;
                 case QuestUnlockTypeEnum.BattlePassWeekly:
                 case QuestUnlockTypeEnum.CakeCatchNotFinish:
