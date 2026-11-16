@@ -32,7 +32,8 @@ def main():
     print('PASS: command IDs match the protocol schema')
     if not args.skip_build:
         run(['dotnet', 'build', 'March7thHoney.sln', '-c', 'Release', '-m:1', '-p:UseSharedCompilation=false'])
-    for name in ['AuthRegression', 'WebServerRegression', 'KcpSecurityRegression', 'KcpAdmissionRegression']:
+    for name in ['AuthRegression', 'WebServerRegression', 'KcpSecurityRegression', 'KcpAdmissionRegression',
+                 'SourceGenRegression']:
         project = f'scripts/{name}/{name}.csproj'
         run(['dotnet', 'build', project, '-c', 'Release', '-m:1', '-p:UseSharedCompilation=false'])
         run(['dotnet', 'run', '--project', project, '-c', 'Release', '--no-build', '--no-restore'])
