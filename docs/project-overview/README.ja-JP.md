@@ -95,7 +95,7 @@ CI は `main` の自己完結型ビルドをワークフローの成果物とし
 
 ### コラボレーター
 
-- [Mar7thLover](https://github.com/OrihaWeave)
+- [Oriha](https://github.com/OrihaWeave)
 - Cyrup
 - [Melioli](https://github.com/Melioli)
 

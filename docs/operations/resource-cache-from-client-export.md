@@ -6,7 +6,7 @@ This guide is for operators who have only the game client, without complete raw 
 
 ## Overview and prerequisites
 
-Without complete raw resources of the same version, only a client, use the `res` command of [DemiurgeCSharp](https://github.com/Mar7thDev/DemiurgeCSharp) to export the client's DesignData, then fill the parts missing from the export with the existing cache to obtain a new `Resource.bin`. The whole process runs in an isolated directory: it does not read the player database, does not write to `Config/` and does not overwrite the existing cache. Put the export directory under `artifacts/`, which Git already ignores.
+Without complete raw resources of the same version, only a client, use the `res` command of DemiurgeCSharp, a separate tool that dumps the client statically, to export the client's DesignData, then fill the parts missing from the export with the existing cache to obtain a new `Resource.bin`. The whole process runs in an isolated directory: it does not read the player database, does not write to `Config/` and does not overwrite the existing cache. Put the export directory under `artifacts/`, which Git already ignores.
 
 When the raw resources are complete, this process is not needed: generate the cache directly with `--cache-out` as described in [Raw resource loading regression](../testing/resource-regression.md).
 

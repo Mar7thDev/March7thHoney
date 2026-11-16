@@ -17,6 +17,7 @@
 ## 开发
 
 - [贡献指南](../CONTRIBUTING.zh-CN.md)
+- [项目协作规范（AGENTS.md 的译本）](AGENTS.zh-CN.md)
 - [玩法实现进度](development/gameplay-implementation.zh-CN.md)
 - [玩法名称映射](development/gameplay-name-map.zh-CN.md)
 - [协议定义与生成](development/protobuf.zh-CN.md)

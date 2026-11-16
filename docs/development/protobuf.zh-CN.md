@@ -60,7 +60,7 @@ dotnet run --project Proto/Tool/ProtoOrganizer -c Release -- cmdids
 
 名称能跨版本沿用，依据是混淆身份在版本间稳定：类型的混淆名、属性名和枚举成员名每个版本都相同，变化的只有字段号和 cmdId。同一混淆种子的新客户端按下面的步骤更新，命令都从仓库根目录执行。
 
-1. 用 [DemiurgeCSharp](https://github.com/Mar7thDev/DemiurgeCSharp) 对新客户端的 `GameAssembly.dll` 和 `global-metadata.dat` 做静态 dump（`demiurge proto`），得到新版本的原始定义。同时准备好当前版本的原始 dump：重新导出，或从版本分支取（4.8 的在 `4.8` 分支的 `Proto/4.8/dumper/Raw/StarRail.proto`）。
+1. 用 DemiurgeCSharp（一个独立的客户端静态导出工具）对新客户端的 `GameAssembly.dll` 和 `global-metadata.dat` 做静态 dump（`demiurge proto`），得到新版本的原始定义。同时准备好当前版本的原始 dump：重新导出，或从版本分支取（4.8 的在 `4.8` 分支的 `Proto/4.8/dumper/Raw/StarRail.proto`）。
 2. 把当前文件里审定过的名称搬到新 dump 上，结果写回 `Proto/StarRail.proto`：
 
    ```sh

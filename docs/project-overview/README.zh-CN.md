@@ -93,7 +93,7 @@ CI 会把 `main` 的自包含构建发布为工作流产物：
 
 ### 协作者
 
-- [Mar7thLover](https://github.com/OrihaWeave)
+- [Oriha](https://github.com/OrihaWeave)
 - Cyrup
 - [Melioli](https://github.com/Melioli)
 
