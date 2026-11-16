@@ -16,7 +16,7 @@
     <PackageVersion Include="EastAsianWidth" Version="1.2.0" />
     <!-- The runtime and the protoc tools move together; the protocol build expects protoc 33.1. -->
     <PackageVersion Include="Google.Protobuf" Version="3.33.1" />
-    <PackageVersion Include="Google.Protobuf.Tools" Version="3.33.1" />
+    <PackageVersion Include="Google.Protobuf.Tools" Version="3.36.2" />
     <PackageVersion Include="MailKit" Version="4.16.0" />
     <PackageVersion Include="MemoryPack" Version="1.21.4" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
