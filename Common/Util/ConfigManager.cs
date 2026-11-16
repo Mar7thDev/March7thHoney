@@ -12,15 +12,15 @@ public static class ConfigManager
     private static readonly object HotfixDataLock = new();
     private static readonly string ConfigFilePath = "Config.json";
     private static string HotfixFilePath => Config.Path.ConfigPath + "/Hotfix.json";
-    public static bool IsPublicMode { get; private set; }
+    public static bool IsLimitedMode { get; private set; }
     public static ConfigContainer Config { get; private set; } = new();
     public static HotfixContainer Hotfix { get; private set; } = new();
 
-    public static void LoadConfig(bool publicMode = false)
+    public static void LoadConfig(bool limitedMode = false)
     {
-        IsPublicMode = publicMode;
-        if (IsPublicMode)
-            LoadPublicConfigData();
+        IsLimitedMode = limitedMode;
+        if (IsLimitedMode)
+            LoadLimitedConfigData();
         else
             LoadConfigData();
         if (Config.ServerOption.NetStatus is { Enabled: true } netStatus && !netStatus.TryGetColor(out _))
@@ -30,7 +30,7 @@ public static class ConfigManager
 
     public static void SaveConfig()
     {
-        if (IsPublicMode) return;
+        if (IsLimitedMode) return;
         SaveData(Config, ConfigFilePath);
     }
 
@@ -145,9 +145,9 @@ public static class ConfigManager
         SaveData(Config, ConfigFilePath);
     }
 
-    private static void LoadPublicConfigData()
+    private static void LoadLimitedConfigData()
     {
-        Config = PublicConfigProvider.Create();
+        Config = LimitedConfigProvider.Create();
     }
 
     private static void LoadHotfixData()

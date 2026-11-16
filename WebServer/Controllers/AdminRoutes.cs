@@ -125,7 +125,7 @@ public static partial class AdminRoutes
             option.Auth.Email.Enabled,
             option.ServerTime.EnableFakeServerTime,
             option.ServerTime.FixedDate,
-            ConfigManager.IsPublicMode);
+            ConfigManager.IsLimitedMode);
 
         var roleBreakdown = accounts
             .GroupBy(account => account.role)

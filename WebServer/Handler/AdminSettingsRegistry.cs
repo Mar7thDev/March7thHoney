@@ -77,7 +77,7 @@ public static class AdminSettingsRegistry
             try
             {
                 ConfigManager.SaveConfig();
-                persisted = !ConfigManager.IsPublicMode;
+                persisted = !ConfigManager.IsLimitedMode;
             }
             catch (Exception ex)
             {

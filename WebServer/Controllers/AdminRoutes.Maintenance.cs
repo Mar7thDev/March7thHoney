@@ -72,7 +72,7 @@ public static partial class AdminRoutes
             process.Threads.Count,
             March7thHoneyListener.GetSnapshot().Count,
             AdminSessionManager.ActiveSessionCount,
-            ConfigManager.IsPublicMode,
+            ConfigManager.IsLimitedMode,
             HandbookRoutes.GetLanguages(),
             GC.CollectionCount(2),
             Math.Round(GC.GetTotalMemory(false) / 1024d / 1024d, 1)));
