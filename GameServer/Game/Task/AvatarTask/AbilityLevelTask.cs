@@ -177,14 +177,16 @@ public class AbilityLevelTask(PlayerInstance player)
         return new AbilityLevelResult(instance, battleInfos);
     }
 
-    // 官服秘技随机奖励(如欢愉「燃起来了!」): 客户端在 cast 请求里回传 roll 结果 _result, 服务端据此选择加哪支 maze buff
+    // Random technique rewards on the official server (e.g. the Elation (欢愉) technique "燃起来了!"): the client sends
+    // its roll result _result back in the cast request, and the server uses it to choose which maze buff to add.
     public ValueTask<object> AdvByCompareDynamicValue(AbilityLevelParam param)
     {
         if (param.Act is not Data.Config.Task.AdvByCompareDynamicValue cmp)
             return ValueTask.FromResult<object>(true);
 
         var dv = param.Request?.DynamicValues.FirstOrDefault(x => x.Key == cmp.DynamicKey);
-        // 请求未带该键或对比值是动态表达式(本服务端不求值)时, 保持原默认放行行为
+        // When the request lacks the key, or the compare value is a dynamic expression (which this server does not
+        // evaluate), keep the default of letting the predicate pass.
         if (dv == null || cmp.CompareValue.IsDynamic)
             return ValueTask.FromResult<object>(!cmp.Inverse);
 
@@ -210,7 +212,8 @@ public class AbilityLevelTask(PlayerInstance player)
 
         if (param.Act is AdventureTriggerAttack adventureTriggerAttack)
         {
-            // 解析命中目标：优先用 AttackTargetType 求值，缺失时回落到客户端在请求里报告的命中怪物
+            // Resolve the hit targets: evaluate AttackTargetType when it is set, otherwise fall back to the hit
+            // monsters the client reported in the request.
             List<BaseGameEntity> target;
             if (!string.IsNullOrEmpty(adventureTriggerAttack.AttackTargetType.Type))
             {
@@ -254,10 +257,12 @@ public class AbilityLevelTask(PlayerInstance player)
                 if (result.BattleInfos != null) battleInfos.AddRange(result.BattleInfos);
             }
 
-            // attack-detect 场域：把召唤物对应 trigger 的 maze buff 下发给被攻击的敌人（如吉尔伽美什 150901，随敌人带进战斗）
+            // Attack-detect field: deliver the maze buff of the summon unit's matching trigger to the attacked enemies
+            // (e.g. Gilgamesh 150901, which the enemy carries into battle).
             if (detectSummon != null && detectTrigger != null && Player.SceneInstance != null)
             {
-                // 记下经 attack-detect 投放的 buff，供 backfill 排除（避免同一 buff 又被加到施法者，如 150901 致冻）
+                // Record the buffs delivered through attack-detect so the backfill can exclude them; otherwise the same
+                // buff would also be added to the caster (e.g. 150901 would freeze it).
                 foreach (var task in detectTrigger.OnTriggerEnter)
                     if (task is AddMazeBuff addMazeBuff)
                         SummonAttackDetectBuffs.Add(addMazeBuff.ID);
@@ -269,11 +274,12 @@ public class AbilityLevelTask(PlayerInstance player)
                         detectTrigger.TriggerName, detectIds);
             }
 
-            // 开战判定：
-            // - TriggerBattle: true（旧式 ability 显式声明）
-            // - EnterBattleSelectTargetType 非空（新式，如 Evanescia 的 AllHitTarget）
-            // - 普攻（SkillIndex == 0）命中怪物：开放世界进入战斗的核心机制，
-            //   官方依赖客户端在请求里报告 assistMonsterEntityIdList 而非 ability 配置驱动
+            // A battle starts when any of these holds:
+            // - TriggerBattle: true (declared explicitly by old-style abilities)
+            // - EnterBattleSelectTargetType is non-empty (new style, e.g. Evanescia's AllHitTarget)
+            // - a normal attack (SkillIndex == 0) hit a monster: the core way of entering battle in the open world,
+            //   which the official server drives from the assistMonsterEntityIdList the client reports in the
+            //   request, not from the ability config
             var hasHitMonster = target.OfType<EntityMonster>().Any(x => x.IsAlive);
             var shouldTriggerBattle = adventureTriggerAttack.TriggerBattle
                                       || !string.IsNullOrEmpty(adventureTriggerAttack.EnterBattleSelectTargetType)
@@ -341,8 +347,8 @@ public class AbilityLevelTask(PlayerInstance player)
         }
     }
 
-    // 停云秘技（技能 120207）：立即为施法者恢复 50 点能量。唯一使用 AdventureModifyTeamPlayerSP 的角色。
-    // 引擎 SP 为「能量 ×100」，满能量归一化为 10000，故 50 点 = 5000。
+    // Tingyun's technique (skill 120207) immediately restores 50 energy to the caster; she is the only avatar that uses
+    // AdventureModifyTeamPlayerSP. Engine SP is energy x100 with full energy normalized to 10000, so 50 energy = 5000.
     private const int TechniqueSpRecoverFallback = 5000;
 
     public async ValueTask<object> AdventureModifyTeamPlayerSP(AbilityLevelParam param)
@@ -350,7 +356,8 @@ public class AbilityLevelTask(PlayerInstance player)
         if (param.Act is not Data.Config.Task.AdventureModifyTeamPlayerSP modifySp)
             return new AbilityLevelResult();
 
-        // 解析作用目标（停云秘技为 Caster 自身）；缺失求值器时回落到施法者
+        // Resolve the targets (the Caster itself for Tingyun's technique); fall back to the caster when the evaluator
+        // is missing.
         List<BaseGameEntity> targets;
         var methodName = modifySp.SpecifyTargetType.Type.Replace("RPG.GameCore.", "");
         var method = GetOrCreateExecuteTask(methodName);
@@ -361,8 +368,9 @@ public class AbilityLevelTask(PlayerInstance player)
         else
             targets = [param.CasterEntity];
 
-        // 客户端下发的是动态表达式（PostfixExpr），本服务端无表达式求值；非动态时直接使用，
-        // 否则回落到停云秘技固定恢复值。
+        // The value from the client data is a dynamic expression (PostfixExpr), and this server has no expression
+        // evaluator. A non-dynamic value is used directly; otherwise fall back to the fixed recovery of Tingyun's
+        // technique.
         var recover = modifySp.ModifyValue.GetValue() * 100;
         if (recover <= 0) recover = TechniqueSpRecoverFallback;
 
@@ -377,7 +385,8 @@ public class AbilityLevelTask(PlayerInstance player)
             changed = true;
         }
 
-        // 同步队伍能量，使覆盖世界 UI 立即生效；下一次进战由 ToBattleProto 读取已更新的 SP 带入战斗
+        // Sync the lineup's energy so the overworld UI updates immediately; the next battle picks up the updated SP
+        // through ToBattleProto.
         if (changed && lineup != null)
             await Player.SendPacket(new PacketSyncLineupNotify(lineup));
 
@@ -527,16 +536,21 @@ public class AbilityLevelTask(PlayerInstance player)
 
             const int summonLifeTimeMs = 45 * 1000;
 
-            // 官方下发的 FollowField 召唤体 LifeTimeMs 为 -1(如昔涟 14151): 资源未写召唤时长, 生命周期归属于施法者
-            // maze buff 的 modifier(OnCreate 创建 / OnDestroy 销毁)。该 buff 有限时长时由过期清理 → RemoveModifier →
-            // DestroySummonUnit 回收, 不再套 45s 兜底, 否则重复施放刷新 buff 后召唤体先于 buff 消失并带走投放给敌人的 buff。
-            // 无此归属或 buff 永久的召唤体仍用 45s 兜底, 避免常驻。
+            // The official server sends FollowField summon units with LifeTimeMs = -1 (e.g. Cyrene 14151): the
+            // resources give no summon duration, and the lifetime belongs to the modifier of the caster's maze buff
+            // (created in OnCreate, destroyed in OnDestroy). When that buff has a finite duration the unit is
+            // reclaimed through buff expiry → RemoveModifier → DestroySummonUnit and the 45s fallback is not applied;
+            // with it, a recast that refreshes the buff would leave the unit disappearing before the buff and taking
+            // the buffs it delivered to enemies with it. Units with no such owner, or whose buff is permanent, keep
+            // the 45s fallback so they do not stay forever.
             var lifeTimeMs = param.CasterEntity is AvatarSceneInfo avatarCaster &&
                              IsDestroyedByTimedMazeBuff(avatarCaster, excel.ID)
                 ? -1
                 : summonLifeTimeMs;
 
-            // 领域型召唤绑施法者(客户端才做领域检测上报 RefreshTrigger); 排除攻击侦测型(走服务端攻击侦测, 绑了会被客户端 OnTriggerExit 误删 buff, 如吉尔 150901)
+            // Field-type summon units attach to the caster; only then does the client run field detection and report
+            // RefreshTrigger. Attack-detect units are excluded: they go through server-side attack detection, and
+            // attaching them would let the client's OnTriggerExit remove their buff by mistake (e.g. Gilgamesh 150901).
             var attachPoint = excel.ConfigInfo?.AttachPoint;
             var attachToCaster = attachPoint == "Origin"
                                  || (string.IsNullOrEmpty(attachPoint) && !IsAttackDetectSummon(param.AdventureAbility, excel.ID));
@@ -564,7 +578,9 @@ public class AbilityLevelTask(PlayerInstance player)
         return new AbilityLevelResult();
     }
 
-    // 召唤体是否被某角色技能用作攻击侦测(SummonUnitTriggerAttackDetectConfig); 此类走服务端攻击侦测, 不绑施法者以免客户端领域触发的 OnTriggerExit 误删其 buff
+    // Whether an ability of the avatar uses the summon unit for attack detection (SummonUnitTriggerAttackDetectConfig).
+    // Such units go through server-side attack detection and are not attached to the caster, so that an OnTriggerExit
+    // from the client's field trigger cannot remove their buff by mistake.
     private static bool IsAttackDetectSummon(AdventureAbilityConfigListInfo abilities, int summonUnitId)
     {
         return abilities.AbilityList.Any(a =>
@@ -586,7 +602,8 @@ public class AbilityLevelTask(PlayerInstance player)
         return false;
     }
 
-    // 施法者身上是否有未过期、有限时长的 maze buff, 其 modifier 的 OnDestroy 会销毁该召唤体
+    // Whether the caster holds an unexpired maze buff with a finite duration whose modifier destroys this summon unit
+    // in OnDestroy.
     private static bool IsDestroyedByTimedMazeBuff(AvatarSceneInfo caster, int summonUnitId)
     {
         foreach (var buff in caster.BuffList)
@@ -691,7 +708,8 @@ public class AbilityLevelTask(PlayerInstance player)
     public async ValueTask<object> AdvModifyMaxMazeMP(AbilityLevelParam param)
     {
         await ValueTask.CompletedTask;
-        // 以编队重算为准，避免与 ToProto/发包路径不一致
+        // The lineup recalculation is authoritative, which keeps this consistent with the ToProto / packet-sending
+        // path.
         if (param.Act is AdvModifyMaxMazeMP)
             Player.LineupManager!.RecalculateExtraMpCount();
         return new AbilityLevelResult();

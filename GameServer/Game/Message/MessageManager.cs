@@ -65,9 +65,10 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
             }
             else if (stubFinishUnseen)
             {
-                // EnableMission=false 时整个任务系统停掉，玩家永远走不到手机消息流程，
-                // 但部分客户端解锁（如忘却之庭通过帕姆消息推进 4010105/4010134）会以
-                // 消息组完成态作为门控。把未见过的组按"全部已完成"返回，对齐 stub 语义。
+                // With EnableMission=false the whole mission system is off and the player never reaches the phone
+                // message flow, but some client unlocks (e.g. Forgotten Hall, advanced by Pom-Pom's messages
+                // 4010105/4010134) are gated on a message group being finished. Unseen groups are therefore returned
+                // as fully finished, in line with the stub semantics.
                 var stub = new MessageGroup
                 {
                     Id = (uint)item.ID,

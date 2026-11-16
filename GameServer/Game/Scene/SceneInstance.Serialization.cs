@@ -77,7 +77,8 @@ public partial class SceneInstance
                ?? 0;
     }
 
-    // 客户端不会自己套用资源里的楼层存档默认值, 缺省即 0, 关卡图会走错分支
+    // The client does not apply the floor saved-value defaults from the resources by itself: a value that is not sent
+    // is 0, and the level graph then takes the wrong branch.
     private IEnumerable<(string Name, int DefaultValue)> ResolveFloorSavedValueDefaults()
     {
         var dimension = FloorInfo?.DimensionList.Find(x => x.ID == ResolveDimensionId());

@@ -389,8 +389,9 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
                 if (!TryGetOpcodeByName(rspName, out var rspOpcode)) return;
 
                 // get proto class
-                // cmdid 别名（cmdid-aliases.txt）让 LogMap 里的名字可能不是 proto 里真实存在的消息名，
-                // 找不到就放弃兜底应答 —— 这里再抛异常会直接把接收循环带下去。
+                // Because of the cmdid aliases (cmdid-aliases.txt), a name in LogMap may not be a message that really
+                // exists in the proto. If a type is not found, give up on the fallback reply: another exception thrown
+                // here would take down the receive loop.
                 var protoTypes = AppDomain.CurrentDomain.GetAssemblies()
                     .SingleOrDefault(assembly => assembly.GetName().Name == "March7thHoney.Proto")!.GetTypes();
                 var typ = protoTypes.FirstOrDefault(t => t.Name == rspName); //get the type using the packet name
@@ -431,7 +432,8 @@ public class Connection(KcpConversation conversation, IPEndPoint remote) : March
         }
 
         // No handler found
-        // 教程请求收到任何响应都会让客户端弹出本不该出现的教程界面，与 csproj 排除这三个 handler 同源。
+        // Any response to a tutorial request makes the client pop up a tutorial screen that should not appear. The
+        // csproj excludes these three handlers for the same reason.
         if (opcode == CmdIds.GetTutorialCsReq || opcode == CmdIds.GetTutorialGuideCsReq ||
             opcode == CmdIds.UnlockTutorialCsReq) return;
 

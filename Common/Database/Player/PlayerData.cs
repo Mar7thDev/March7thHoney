@@ -225,8 +225,10 @@ public class PlayerData : BaseDatabaseDataHelper
     }
 
     /// <summary>
-    ///     其他玩家看到的头像框: 隐藏时下发空头像框。客户端 PlayerBoardInfo.CreateByPlayerDetailInfo 只按
-    ///     HeadFrameInfo.IsValid(物品 ID 非 0 且未过期)决定是否显示; 自己的资料卡始终收到真实头像框, 由本地设置决定显示。
+    ///     The head frame other players see: an empty one when the player hides it. The client's
+    ///     PlayerBoardInfo.CreateByPlayerDetailInfo decides whether to show a frame from HeadFrameInfo.IsValid alone
+    ///     (item ID non-zero and not expired). The player's own profile card always receives the real head frame and
+    ///     shows it according to the local setting.
     /// </summary>
     public HeadFrameInfo ToPublicHeadFrameProto() =>
         PrivacySettings.HideHeadFrame ? new HeadFrameInfo() : HeadFrame.ToProto();
@@ -239,9 +241,10 @@ public class PlayerData : BaseDatabaseDataHelper
 public partial class PlayerHeadFrameInfo
 {
     /// <summary>
-    ///     头像框有效期(秒级时间戳), 用于服务端没有赛季结束时间时代替"当期有效": 2099-12-31 12:00:00 UTC。
-    ///     客户端把它当时间戳显示("限时头像框在#1前有效"), 且 xLua 只接受 2^53 以内的整数,
-    ///     long.MaxValue 会让 HeadIconModifyPanel 抛 "beyond double int limits", 整个页面切换失败。
+    ///     Head frame expiry (timestamp in seconds) used in place of "valid for the current season" when the server has
+    ///     no season end time: 2099-12-31 12:00:00 UTC. The client displays the value as a timestamp
+    ///     ("限时头像框在#1前有效"), and xLua only accepts integers up to 2^53: long.MaxValue makes HeadIconModifyPanel
+    ///     throw "beyond double int limits", and the whole page fails to switch.
     /// </summary>
     public const long NoSeasonExpireTime = 4102401600;
 
@@ -252,7 +255,7 @@ public partial class PlayerHeadFrameInfo
     {
         return new HeadFrameInfo
         {
-            // 旧存档写的是 long.MaxValue, 下发时收进客户端能表示的范围
+            // Older saves stored long.MaxValue; clamp it into the range the client can represent before sending.
             HeadFrameExpireTime = Math.Min(HeadFrameExpireTime, NoSeasonExpireTime),
             HeadFrameItemId = HeadFrameId
         };
@@ -268,8 +271,9 @@ public partial class PrivacySettingsPb
     public bool DisplayBattleRecord { get; set; } = true;
     public bool DisplayCollection { get; set; } = true;
 
-    // 隐藏头像框(默认展示)。客户端 PlayerSettingData.IsDisplayHeadFrame = !该值:
-    // 登录读 PlayerSettingInfo 字段 11, 切换发 UpdatePlayerSetting oneof 字段 1600。新成员只能追加在末尾(MemoryPack)。
+    // Hides the head frame (shown by default). The client's PlayerSettingData.IsDisplayHeadFrame is the negation of
+    // this value: login reads it from PlayerSettingInfo field 11, and a toggle sends UpdatePlayerSetting oneof field
+    // 1600. New members may only be appended at the end (MemoryPack).
     public bool HideHeadFrame { get; set; }
 
     public PlayerSettingInfo ToSettingProto()

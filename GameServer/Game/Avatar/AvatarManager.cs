@@ -258,10 +258,12 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     }
 
     /// <summary>
-    ///     登录前校正开拓者当前命途（yuukisr_go a532fa0）：<c>cur_multi_path_avatar_type</c> 必须是一个开拓者命途变体，
-    ///     且在已设定性别时与玩家性别一致。旧存档可能留下非命途 id 或与性别相反的变体，客户端按它解析队长时
-    ///     找不到对应命途数据，<c>TeamManager._CreateMemberEntity</c> 抛 IndexOutOfRange，登录停在加载界面。
-    ///     只修内存数据并标脏，由下次存档持久化；数据已一致时不做任何改动。返回是否发生了修正。
+    ///     Corrects the Trailblazer's current path before login (yuukisr_go a532fa0): <c>cur_multi_path_avatar_type</c>
+    ///     must be a Trailblazer path variant and, once the gender is known, must match the player's gender. Old saves
+    ///     can hold a non-path id or a variant of the opposite gender; the client resolves the team leader from it,
+    ///     finds no path data, <c>TeamManager._CreateMemberEntity</c> throws IndexOutOfRange and login hangs on the
+    ///     loading screen. Only the in-memory data is fixed and marked dirty, to be persisted by the next save; data
+    ///     that is already consistent is left untouched. Returns whether a correction was made.
     /// </summary>
     public bool NormalizeHeroCurPath()
     {
@@ -269,13 +271,15 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         if (hero == null) return false;
 
         var gender = Player.Data.CurrentGender;
-        // 任务模式下性别尚未选择时客户端还没决定主角形象，不按默认性别去改。
+        // With missions enabled and no gender chosen yet, the client has not decided the protagonist's look, so the
+        // default gender must not drive a correction.
         var genderKnown = gender is Gender.Man or Gender.Woman && (Player.Data.IsGenderSet || !Player.MissionEnabled);
         var cur = hero.AvatarId;
 
         if (!IsHeroPath(cur))
         {
-            // 非命途 id：回落到已拥有的、与性别相符的编号最小的命途；都没有就用该性别的毁灭命途。
+            // Not a path id: fall back to the lowest-numbered owned path that matches the gender (when known); if there
+            // is none, use that gender's Destruction path.
             var owned = hero.PathInfos.Keys.Where(IsHeroPath)
                 .Where(id => !genderKnown || PlayerInstance.NormalizeHeroPathId(id, gender) == id)
                 .OrderBy(id => id).ToList();
@@ -389,8 +393,9 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         Player.InventoryManager!.Data.RelicPlans[uniqueId] = new RelicPlanData();
     }
 
-    // ---- 遗器预设（4.5 智能装配保存下来的方案）----
-    // 4.5 客户端的智能装配走的是 RelicPreset 这套协议，和上面 2.3 时代的 RelicSmartWear 方案是两套东西。
+    // ---- Relic presets (plans saved from the 4.5 smart equip feature) ----
+    // Smart equip (智能装配) in the 4.5 client uses the RelicPreset protocol, which is separate from the 2.3-era
+    // RelicSmartWear plans above.
 
     public List<PFCKBFLDHNI> GetRelicPresetPlans(int avatarId)
     {
@@ -403,8 +408,8 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     }
 
     /// <summary>
-    ///     新建方案。角色必须已拥有、遗器列表非空且每件遗器都在背包里（yuukisr_go c4f5979 同样拒绝空方案），
-    ///     否则返回 null 且不写存档。
+    ///     Creates a plan. The avatar must be owned, the relic list non-empty and every relic in the inventory
+    ///     (yuukisr_go c4f5979 also rejects empty plans); otherwise returns null and saves nothing.
     /// </summary>
     public PFCKBFLDHNI? AddRelicPresetPlan(uint avatarId, string name, IEnumerable<uint> relicIds,
         RelicPresetPlanSourceType sourceType)
@@ -429,12 +434,13 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     }
 
     /// <summary>
-    ///     一次请求要么改名要么换遗器（4.6 dump 里这两个字段是 oneof），请求带了什么就改什么。
+    ///     A request either renames the plan or replaces its relics (the two fields are a oneof in the 4.6 dump);
+    ///     whichever one the request carries is applied.
     /// </summary>
     public bool UpdateRelicPresetPlan(int uniqueId, HPPOINFLEPJ? relicList, string? name)
     {
         if (!Player.InventoryManager!.Data.RelicPresetPlans.TryGetValue(uniqueId, out var plan)) return false;
-        // 两项都没带的请求没有可改的内容，不当作成功。
+        // A request carrying neither has nothing to change and is not reported as success.
         if (relicList == null && string.IsNullOrEmpty(name)) return false;
         if (relicList != null && (relicList.RelicIds.Count == 0 || !OwnsRelics(relicList.RelicIds))) return false;
 
@@ -452,7 +458,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
     private bool OwnsRelics(IEnumerable<uint> relicIds)
     {
         var owned = Player.InventoryManager!.Data.RelicItems.Select(x => x.UniqueId).ToHashSet();
-        // 0 视为空槽位，不当作未拥有的遗器。
+        // 0 is an empty slot, not an unowned relic.
         return relicIds.All(id => id == 0 || owned.Contains((int)id));
     }
 

@@ -434,7 +434,7 @@ public sealed partial class GridFightSession
         if (!Enum.IsDefined(typeof(GridFightSessionPhase), snapshot.Phase))
             throw new InvalidDataException($"Unknown GridFight phase {snapshot.Phase}.");
         // A run saved under other tables can hold a role the loaded ones no longer have (OSBETAWin4.7.51 removed the
-        // 3-cost 星神★阿哈 151102); every later lookup of such a role or shop slot would throw.
+        // 3-cost "星神★阿哈" 151102); every later lookup of such a role or shop slot would throw.
         var missingRoleId = snapshot.Roles.Select(role => role.RoleId)
             .Concat(snapshot.Shop.Select(slot => slot.RoleId))
             .FirstOrDefault(roleId => roleId != 0 && !GameData.GridFightRoleBasicInfoData.ContainsKey(roleId));
@@ -784,7 +784,7 @@ public sealed partial class GridFightSession
                 s.SeasonTwoPending.EffectId,
                 s.SeasonTwoPending.Options.ToList());
         foreach (var position in s.FinishedSeasonTwoQueuePositions) _finishedSeasonTwoQueuePositions.Add(position);
-        // Blobs from before the 帕姆王 modifier: an active train still needs one for its progress bar.
+        // Blobs from before the "帕姆王" modifier: an active train still needs one for its progress bar.
         if (_trailblazeActivated && _pamKingModifierUniqueId == 0) _pamKingModifierUniqueId = _nextEntityUniqueId++;
         // Older builds recorded these investments but never created their NPC/rewards.
         foreach (var augmentId in ActiveInvestmentIds)

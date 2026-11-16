@@ -320,7 +320,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<
             }
             case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.IIDBLCFAAPC:
             {
-                // 幕后茶歇: choose an option / rest, then take the rewards and leave.
+                // Bonfire node (幕后茶歇): choose an option / rest, then take the rewards and leave.
                 var bonfire = request.IIDBLCFAAPC;
                 if (bonfire.ECDACDNDHGO != null)
                 {
@@ -345,7 +345,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<
             }
             case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.DKDFDGJGIHM:
             {
-                // 主角光环 select { spotlight id, role config id }.
+                // Spotlight (主角光环) select { spotlight id, role config id }.
                 var changes = session.SelectSpotLight(queue, request.DKDFDGJGIHM.IHHNLLAJAGB, request.DKDFDGJGIHM.RoleId,
                     out var finished);
                 if (changes != null) sync = manager.BuildSpotLightSync(changes, finished);
@@ -364,7 +364,8 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<
             }
             case GridFightHandlePendingActionCsReq.FGLIODAJFMLOneofCase.OKPMJOCEKBC:
             {
-                // 星神★阿哈 3星7费 ultra block: confirm applies both 幻月之主 and 欢愉之主.
+                // Ultra block of the 3-star 7-cost Aha (星神★阿哈): the confirm applies both GridFightAhaMaxStar rows
+                // (幻月之主, 欢愉之主).
                 var finished = session.ConfirmAhaUltra(queue);
                 if (finished != 0) sync = manager.BuildSpotLightSync(null, finished);
                 break;
@@ -661,8 +662,8 @@ public sealed class HandlerGridFightBackToPrepareCsReq : GridFightHandler<GridFi
         // ReturnPreparation. Re-sending the same pending here can reset/close the divination UI.
         if (success && session?.FateDivinerPending == null)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(manager.BuildPreparationSync()));
-        // Node-entry prompts (幕后茶歇) are queued before the response. 主角光环 is not one of them: the client asks for it
-        // with 8508 once its entrance queue has played the spotlight hint.
+        // Node-entry prompts (幕后茶歇) are queued before the response. Spotlight (主角光环) is not one of them: the client
+        // asks for it with 8508 once its entrance queue has played the spotlight hint.
         if (success && manager.BuildSeasonTwoFollowUpSync() is { } entry)
             await connection.SendPacket(new PacketGridFightSyncUpdateResultScNotify(entry));
 

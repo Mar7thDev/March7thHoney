@@ -5,7 +5,7 @@ using March7thHoney.Proto;
 namespace March7thHoney.GameServer.Game.GridFight;
 
 /// <summary>
-///     幻乐之主 (Aha) shop influence and 7-cost progress. "星神★阿哈将持续投下瞥视，对商店施加影响": while an Aha is on the
+///     Aha trait (幻乐之主) shop influence and 7-cost progress. "星神★阿哈将持续投下瞥视，对商店施加影响": while an Aha is on the
 ///     board, a shop roll may turn one slot into an Aha special good (GridFightSpecialGoods group 2, the upgraded group 3
 ///     once Aha reaches 5 cost). How often the official server does this is not known; see AhaShopGlanceChance.
 ///     Only goods whose effect maps onto existing server state are offered.
@@ -18,7 +18,7 @@ public sealed partial class GridFightSession
     private const uint MoonGameEmblemId = 355100302;
     private const uint ElationEmblemId = 355200702;
 
-    // 349 (球球了！) is no longer offered: 4.6.5x described it as a 3★ 星神★阿哈 without parameters, OSBETAWin4.7.51
+    // 349 (球球了！) is not offered: 4.6.5x described it as a 3★ Aha (星神★阿哈) without parameters, OSBETAWin4.7.51
     // gives it EffectParamList [1] and adds 466 ([1, 3, 151132], cost 30) next to it. What 349 hands out now is in
     // the server JSON and the season-2 texts are not in that client's TextMap, so it cannot be confirmed. The rows
     // new in 4.7.51 (307, 314, 326, 335, 338 and 458-466) are not offered for the same reason.
@@ -34,7 +34,7 @@ public sealed partial class GridFightSession
 
     public uint AhaModifierUniqueId => _ahaModifierUniqueId;
 
-    /// <summary>星神★阿哈 3星7费 confirmed: everyone joins 幻月游戏 and 欢愉.</summary>
+    /// <summary>The 3★ 7-cost Aha prompt was confirmed: every fielded role joins MoonGame and Elation.</summary>
     public bool AhaUltraConfirmed => _ahaUltraConfirmed;
 
     public bool IsAhaMaxStarReached =>
@@ -42,9 +42,10 @@ public sealed partial class GridFightSession
                                               IsActivePosition(role.Position));
 
     /// <summary>
-    ///     达到3星7费后迎来真正的主人. The client opens GridFightS2MainCharacterUltraBuffPanel for a pending block action
-    ///     (GridFightPendingAction oneof 1240, type 2) showing both GridFightAhaMaxStar rows (幻月之主, 欢愉之主) with a single
-    ///     confirm and no choice, so confirming applies both: every fielded role joins 幻月游戏 and 欢愉.
+    ///     "达到3星7费后迎来真正的主人": for a fielded 3★ 7-cost Aha the client opens GridFightS2MainCharacterUltraBuffPanel
+    ///     for a pending block action (GridFightPendingAction oneof 1240, type 2) showing both GridFightAhaMaxStar rows
+    ///     (幻月之主, 欢愉之主) with a single confirm and no choice, so confirming applies both: every fielded role joins
+    ///     MoonGame (幻月游戏) and Elation (欢愉).
     /// </summary>
     private bool TryStartAhaUltraPending(GridFightSeasonTwoChanges changes)
     {
@@ -97,8 +98,8 @@ public sealed partial class GridFightSession
     /// <summary>
     ///     Chance that a shop roll gets an Aha good, by the highest Aha cost on the board. The client only says "可能"; the
     ///     official numbers are server-side, so 3-cost 20% / 4-cost 30% / 5- and 7-cost 40% is a chosen value (the 4.7.51
-    ///     tables start Aha at 4-cost, so their lowest chance with an Aha is 30%). 欢愉 says "商店中也有概率出现阿哈道具" on
-    ///     its own, so an active 欢愉 bond without an Aha uses the 20% step.
+    ///     tables start Aha at 4-cost, so their lowest chance with an Aha is 30%). The Elation trait text says
+    ///     "商店中也有概率出现阿哈道具" on its own, so an active Elation bond without an Aha uses the 20% step.
     /// </summary>
     public double AhaShopGlanceChance
     {
@@ -217,8 +218,8 @@ public sealed partial class GridFightSession
     }
 
     /// <summary>
-    ///     三费/四费/五费专场: "立即刷新商店，使其充满N费角色" refreshes the whole shop, including the slot of the good being
-    ///     bought, from the same pool an ordinary refresh uses (roles already at 3★ stay out of it).
+    ///     Aha goods 303/342/341 (三费/四费/五费专场): "立即刷新商店，使其充满N费角色" refreshes the whole shop, including the
+    ///     slot of the good being bought, from the same pool an ordinary refresh uses (roles already at 3★ stay out of it).
     /// </summary>
     private void RefillShopWithRarity(uint rarity)
     {

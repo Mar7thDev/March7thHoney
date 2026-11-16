@@ -87,8 +87,9 @@ public class March7thHoneyConnection
         }
         catch
         {
-            // 这里是正常控制流：DisableLogDetailPacket 为 true 时上面会主动 throw 走到这一支。
-            // 写日志失败（典型场景：磁盘写满）绝不能把游戏服务器进程带崩，所以整段再包一层保护。
+            // This is normal control flow: when DisableLogDetailPacket is true, the code above throws on purpose to get
+            // here. A failure to write the log (typically a full disk) must never bring down the game server process,
+            // so the whole branch is wrapped in another try.
             try
             {
                 var output = $"{sendOrRecv}: {LogMap.GetValueOrDefault(opcode, "UnknownPacket")}({opcode})";
@@ -105,7 +106,7 @@ public class March7thHoneyConnection
             }
             catch
             {
-                // 有意吞掉：丢一条包日志远好过整个服务器进程 abort。
+                // Swallowed on purpose: losing one packet log entry is far better than aborting the server process.
             }
         }
     }

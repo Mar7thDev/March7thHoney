@@ -27,7 +27,8 @@ public class PacketChallengePeakSettleScNotify : BasePacket
 
         if (inst.IsWin && isBoss && peak.IsHard)
         {
-            // 绝境王棋通关：客户端按红色绝境模板渲染钻石+三星，不下发普通目标列表
+            // King boss (王棋) cleared in hard mode (绝境): the client renders the diamond and three stars from the
+            // red hard-mode template, so the normal target list is not sent.
             proto.HardModeHasPassed = ChallengePeakMedal.IsColorMedalClear(true, peak.RoundCnt);
         }
         else
@@ -35,7 +36,9 @@ public class PacketChallengePeakSettleScNotify : BasePacket
             proto.FinishedTargetList.AddRange(targetIdList);
             if (inst.IsWin && isBoss)
             {
-                // 普通王棋：仅0轮通关达成颜色目标→钻石；其余按完成目标数显示铜/银/金, turnLeft=最大轮次−已用
+                // King boss on normal: only a clear in 0 cycles meets the color target and shows the diamond; any
+                // other clear shows bronze / silver / gold by the number of finished targets. turnLeft is the
+                // largest cycle limit among the normal targets minus the cycles used.
                 var maxParam = inst.Config.NormalTargetList
                     .Select(t => GameData.BattleTargetConfigData.GetValueOrDefault(t)?.TargetParam ?? 0)
                     .DefaultIfEmpty(0).Max();

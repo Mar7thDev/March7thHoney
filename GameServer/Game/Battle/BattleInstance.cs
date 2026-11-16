@@ -445,7 +445,7 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
             });
         }
 
-        // 贪饕侵蚀：档位与对应 buff 由 StageInvasionConfig/StageInvasionBuff 决定
+        // Voracity Invasion (贪饕侵蚀): the tier and its buff are determined by StageInvasionConfig/StageInvasionBuff.
         foreach (var stage in Stages)
         {
             if (stage.InvasionMazeBuffID == 0) continue;

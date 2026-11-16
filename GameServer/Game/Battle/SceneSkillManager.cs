@@ -110,7 +110,8 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         // from receiving stray summon/listener buffs.
         if (req.SkillIndex == 1 && attackEntity is AvatarSceneInfo casterAvatar)
         {
-            // 多命途角色按当前命途 id 查秘技 buff (8005/1224), owner 仍用基础 id 解析槽位
+            // Multi-path avatars look up technique buffs by their current path id (8005/1224); the owner still uses the
+            // base id so the slot resolves.
             var pathAvatarId = casterAvatar.AvatarInfo.AvatarId;
             var candidates = GameData.MazeBuffData
                 .Where(kvp => kvp.Key / 10 / 100 == pathAvatarId
@@ -125,7 +126,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             var detectBuffs = Player.TaskManager!.AbilityLevelTask.SummonAttackDetectBuffs;
             candidates = candidates.Where(c => !detectBuffs.Contains(c.BuffId)).ToList();
 
-            // 敌方时停效果只能由领域触发器投放, 禁止回填到施法者
+            // Enemy time-stop effects may only be delivered by a field trigger; never backfill them onto the caster.
             candidates = candidates.Where(c =>
                 !GameData.AdventureModifierData.TryGetValue(c.Excel.ModifierName, out var modifier)
                 || !modifier.BehaviorFlagList.Contains("TimeLock", StringComparer.OrdinalIgnoreCase)).ToList();
@@ -141,7 +142,8 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                     await casterAvatar.AddBuff(new SceneBuff(primary.BuffId, primary.Excel.Lv, casterAvatar.AvatarInfo.BaseAvatarId));
             }
 
-            // 队友秘技充能类监听 buff(如三月七·巡猎 122401): 数据驱动识别, 队友每开一次秘技给携带者叠 1 层封顶
+            // Listener buffs charged by teammates' techniques (e.g. March 7th (The Hunt) 122401) are identified from
+            // data: each technique a teammate uses adds one stack to the holder, up to the cap.
             await StackTeammateTechniqueBuffs(casterAvatar);
         }
 
@@ -370,10 +372,12 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         return null;
     }
 
-    // 某角色"队友秘技自叠充能"buff 的缓存: avatarId -> [(buffId, 最大层级)], 数据驱动, 仅命中带监听器的角色(当前唯三月七 122401)
+    // Cache of each avatar's buffs that stack themselves when a teammate uses a technique: avatarId -> [(buffId, max
+    // level)]. Data-driven; only avatars with such a listener have entries (currently just March 7th, 122401).
     private static readonly ConcurrentDictionary<int, List<(int BuffId, int MaxLv)>> TechniqueListenerCache = new();
 
-    // 队友(非施法者本人)开秘技后, 给场上携带"队友秘技自叠"监听 buff 的角色叠层(封顶), 复用 SceneBuff->ApplyBuff->战斗 通路
+    // After a technique is used, adds one stack (capped) to every avatar on the field other than the caster that has
+    // such a teammate-technique listener buff. Reuses the SceneBuff -> ApplyBuff -> battle path.
     private async ValueTask StackTeammateTechniqueBuffs(AvatarSceneInfo caster)
     {
         foreach (var owner in Player.SceneInstance!.AvatarInfo.Values)
@@ -394,7 +398,8 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         }
     }
 
-    // 数据驱动: 角色的 CharacterAbility maze buff, 其 modifier 的 OnAfterLocalPlayerUseSkill 会自加同一 buff = "队友秘技自叠充能"
+    // Data-driven: a CharacterAbility maze buff of the avatar whose modifier adds that same buff again in
+    // OnAfterLocalPlayerUseSkill is one that stacks itself on teammates' techniques.
     private static List<(int BuffId, int MaxLv)> GetTeammateTechniqueListenerBuffs(int avatarId)
     {
         return TechniqueListenerCache.GetOrAdd(avatarId, id =>
@@ -416,7 +421,8 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         });
     }
 
-    // 递归判断任务列表(含 PredicateTaskList 成功/失败分支)里是否有对该 buffId 的 AddMazeBuff
+    // Recursively checks whether the task list, including the success/failure branches of a PredicateTaskList, contains
+    // an AddMazeBuff for this buffId.
     private static bool TaskListAddsMazeBuff(List<TaskConfigInfo> tasks, int buffId)
     {
         foreach (var task in tasks)

@@ -176,7 +176,7 @@ public sealed partial class GridFightSession
             GridFightConsumeTypeEnum.Remove => RemoveEquipmentFromRole(roleUniqueId, updatedRoles),
             GridFightConsumeTypeEnum.Roll => RollEquipment(roleUniqueId, equipmentUniqueId, removed, added, updatedRoles),
             GridFightConsumeTypeEnum.Upgrade => UpgradeEquipment(equipmentUniqueId, removed, added, updatedRoles),
-            // 奇巧零食 (350119): target oneof 1338 { chimera unique id }.
+            // The chimera star-up consumable (奇巧零食, 350119): target oneof 1338 { chimera unique id }.
             GridFightConsumeTypeEnum.UpgradeChimera => UpgradeChimeraByConsumable(chimeraUniqueId),
             GridFightConsumeTypeEnum.Copy => CopyRole(roleUniqueId, config.ConsumableParamList, out acquisition),
             GridFightConsumeTypeEnum.GainRecommendEquip => StartEquipmentRecommendation(
@@ -471,8 +471,9 @@ public sealed partial class GridFightSession
             !GameData.GridFightRoleBasicInfoData.TryGetValue(sourceRole.RoleId, out var roleConfig) ||
             roleConfig.Rarity > parameters[0] || parameters[1] != 1 || GetFreeBenchPosition() == 0)
             return false;
-        // ConsumableParamList[2] is a required trait: 350113/350114 开拓·员工/完美投影仪 are [3|5, 1, 100502] and only copy
-        // 开拓银轨 members. The client does not check it, so the server must.
+        // ConsumableParamList[2] is a required trait: the Trailblaze Employee/Perfect Projectors
+        // (开拓·员工/完美投影仪, 350113/350114) are [3|5, 1, 100502] and only copy members of the Trailblaze trait
+        // (开拓银轨). The client does not check it, so the server must.
         var requiredTraitId = parameters.Count > 2 ? parameters[2] : 0u;
         if (requiredTraitId != 0 && !ResolveRoleTraitIds(sourceRole).Contains(requiredTraitId))
             return false;

@@ -51,7 +51,7 @@ public sealed record GridFightEncounterOptionState(
     GridFightBattlePlan BattlePlan,
     IReadOnlyList<GridFightEncounterDrop>? Rewards = null);
 
-/// <summary>One 遭遇 reward as shown on the option card and paid on clear (see GridFightEncounterRewards).</summary>
+/// <summary>One encounter (遭遇) reward as shown on the option card and paid on clear (see GridFightEncounterRewards).</summary>
 public sealed record GridFightEncounterDrop(GridFightDropType Type, uint ItemId, uint Num);
 
 public sealed record GridFightRoleSwitchGroup(
@@ -177,7 +177,7 @@ public sealed class GridFightResourceCatalog
     // like the season-1 Silver Wolf LV999 tiers.
     public IReadOnlySet<uint> UpgradeOnlyRoleIds { get; }
 
-    // 星神★阿哈's cost tiers, read from the tables instead of fixed IDs: the star-less tiers of
+    // Cost tiers of Aha (星神★阿哈), read from the tables instead of fixed IDs: the star-less tiers of
     // GridFight_Aha_No_Star_Role_IDList in cost order (the first one is the role the shop sells) and the starred
     // tier of GridFight_SevenPriceRoleIdList. Empty / 0 when the season has no such role.
     public IReadOnlyList<uint> AhaGrowthRoleIds { get; }
@@ -232,8 +232,9 @@ public sealed class GridFightResourceCatalog
         RolePool = seasonRoles
             .Where(row => row.IsInPool && !bannedRoles.Contains(row.ID))
             .Where(IsRuntimeShopRole)
-            // Season 2: GridFight_InitialExceptRoleIdList seeds the client's GridFightTeam._ExceptedRoleIDs. 丹恒•腾荒
-            // (141402) only exists as the 双龙吟 summon, so it is never sold or handed out (e.g. Aha 我5费呢？！).
+            // Season 2: GridFight_InitialExceptRoleIdList seeds the client's GridFightTeam._ExceptedRoleIDs. Tenglong
+            // (丹恒•腾荒, 141402) only exists as the Dan Heng trait (双龙吟) summon, so it is never sold or handed out
+            // (e.g. by the Aha good 我5费呢？！).
             .Where(row => IsSeasonOne || !InitialExcludedRoleIds.Contains(row.ID))
             .OrderBy(row => row.ID)
             .ToList();
