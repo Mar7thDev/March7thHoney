@@ -28,6 +28,7 @@ def main():
     parser.add_argument('--skip-build', action='store_true', help='Use a previously verified solution build')
     args = parser.parse_args()
     run([sys.executable, 'scripts/check-comments.py'])
+    run([sys.executable, 'scripts/check-docs.py'])
     run(['dotnet', 'run', '--project', 'Proto/Tool/ProtoOrganizer/ProtoOrganizer.csproj', '-c', 'Release',
          '--', 'cmdids', '--check'])
     print('PASS: command IDs match the protocol schema')
