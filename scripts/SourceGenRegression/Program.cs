@@ -1,4 +1,5 @@
 using March7thHoney.SourceGen;
+using March7thHoney.SourceGen.Database;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
@@ -10,6 +11,8 @@ using Microsoft.CodeAnalysis.CSharp;
 //
 // --update rewrites the expectations from the current generators; review the diff before committing.
 // Each case is a directory under Cases/ with an Input.cs and the files the generator must emit.
+// Beyond the emitted text it checks that an unrelated edit reuses the previous output and that
+// duplicate declarations are reported as errors.
 
 var update = args.Contains("--update");
 var casesRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../Cases"));
@@ -97,11 +100,97 @@ static string FirstDifference(string expected, string actual)
     return "";
 }
 
-RunCase("Handlers", new HandlerRegistryGenerator());
-RunCase("Missions", new MissionHandlerRegistryGenerator());
-RunCase("Commands", new CommandRegistryGenerator());
-RunCase("MemoryPack", new MemoryPackRegistrarGenerator());
-RunCase("Database", new DatabaseStoreGenerator());
+// A second declaration for a key that can hold one is an error at the duplicate, not a silent overwrite.
+void ExpectDuplicateError(string caseName, IIncrementalGenerator generator, string duplicate, string id)
+{
+    var input = File.ReadAllText(Path.Combine(casesRoot, caseName, "Input.cs"));
+    var compilation = Compile(caseName, input)
+        .AddSyntaxTrees(CSharpSyntaxTree.ParseText(duplicate, parseOptions, path: "Duplicate.cs"));
+    CSharpGeneratorDriver.Create(generator)
+        .RunGeneratorsAndUpdateCompilation(compilation, out _, out var diagnostics);
+    Check($"{caseName}: a duplicate is reported as {id} where it is declared",
+        diagnostics is [{ Severity: DiagnosticSeverity.Error } diagnostic] && diagnostic.Id == id &&
+        diagnostic.Location.GetLineSpan().Path == "Duplicate.cs",
+        string.Join("; ", diagnostics));
+}
+
+// An edit that does not touch what a generator reads must not make it produce its output again.
+void ExpectReuse(string caseName, IIncrementalGenerator generator)
+{
+    const string unrelated = """
+        namespace Sample.Unrelated
+        {
+            public class Later : System.Exception;
+
+            public abstract class LaterBase;
+        }
+        """;
+    var compilation = Compile(caseName, File.ReadAllText(Path.Combine(casesRoot, caseName, "Input.cs")));
+    GeneratorDriver driver = CSharpGeneratorDriver.Create(
+        [generator.AsSourceGenerator()],
+        parseOptions: parseOptions,
+        driverOptions: new GeneratorDriverOptions(IncrementalGeneratorOutputKind.None, trackIncrementalGeneratorSteps: true));
+    driver = driver.RunGenerators(compilation);
+    driver = driver.RunGenerators(
+        compilation.AddSyntaxTrees(CSharpSyntaxTree.ParseText(unrelated, parseOptions, path: "Unrelated.cs")));
+
+    var result = driver.GetRunResult().Results.Single();
+    // "Model" is the name each generator gives the step that holds everything its output is written from.
+    var models = result.TrackedSteps.TryGetValue("Model", out var steps)
+        ? steps.SelectMany(step => step.Outputs).Select(o => o.Reason).ToList()
+        : [];
+    Check($"{caseName}: the model is unchanged by an unrelated edit",
+        models.Count > 0 && models.All(r => r is IncrementalStepRunReason.Unchanged or IncrementalStepRunReason.Cached),
+        string.Join(", ", models));
+    var outputs = result.TrackedOutputSteps.Values.SelectMany(s => s).SelectMany(step => step.Outputs)
+        .Select(o => o.Reason).ToList();
+    Check($"{caseName}: the output is reused after an unrelated edit",
+        outputs.Count > 0 && outputs.All(r => r == IncrementalStepRunReason.Cached),
+        string.Join(", ", outputs));
+}
+
+(string Name, Func<IIncrementalGenerator> Create)[] cases =
+[
+    ("Handlers", () => new HandlerRegistryGenerator()),
+    ("Missions", () => new MissionHandlerRegistryGenerator()),
+    ("Commands", () => new CommandRegistryGenerator()),
+    ("MemoryPack", () => new MemoryPackRegistrarGenerator()),
+    ("Database", () => new DatabaseStoreGenerator()),
+];
+
+foreach (var (name, create) in cases) RunCase(name, create());
+
+if (!update)
+{
+    foreach (var (name, create) in cases) ExpectReuse(name, create());
+
+    ExpectDuplicateError("Handlers", new HandlerRegistryGenerator(), """
+        namespace Sample.Handlers
+        {
+            [March7thHoney.GameServer.Server.Packet.Opcode(Ids.Ping)]
+            public class HandlerPingAgain : March7thHoney.GameServer.Server.Packet.Handler;
+        }
+        """, "M7H001");
+    ExpectDuplicateError("Missions", new MissionHandlerRegistryGenerator(), """
+        using March7thHoney.Enums.Mission;
+        using March7thHoney.GameServer.Game.Mission.FinishType;
+
+        namespace Sample.Missions
+        {
+            [MissionFinishType(MissionFinishTypeEnum.Talk)]
+            public class TalkAgainHandler : MissionFinishTypeHandler;
+        }
+        """, "M7H002");
+    ExpectDuplicateError("Database", new DatabaseStoreGenerator(), """
+        namespace Sample.Other
+        {
+            public class ComplexEntity : March7thHoney.Database.BaseDatabaseDataHelper
+            {
+                public int Value { get; set; }
+            }
+        }
+        """, "M7H003");
+}
 
 Console.WriteLine($"SourceGen regression checks: {checks}, failures: {failures}");
 return failures == 0 ? 0 : 1;

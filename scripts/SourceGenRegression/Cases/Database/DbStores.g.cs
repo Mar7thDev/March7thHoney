@@ -5,32 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Globalization;
+using Google.Protobuf;
 using MemoryPack;
 
 namespace March7thHoney.Database.Generated;
-
-internal static class DbSchema
-{
-    public static void EnsureColumns(DbConnection c, string table, (string Name, string Sql)[] cols)
-    {
-        var existing = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        using (var cmd = c.CreateCommand())
-        {
-            cmd.CommandText = "select * from \"" + table + "\" limit 0";
-            using var rd = cmd.ExecuteReader();
-            for (var i = 0; i < rd.FieldCount; i++) existing.Add(rd.GetName(i));
-        }
-
-        foreach (var (name, sql) in cols)
-        {
-            if (existing.Contains(name)) continue;
-            using var alter = c.CreateCommand();
-            alter.CommandText = "alter table \"" + table + "\" add column \"" + name + "\" " + sql;
-            alter.ExecuteNonQuery();
-            global::March7thHoney.Database.DatabaseHelper.logger.Info($"Table {table}: added missing column {name}");
-        }
-    }
-}
 
 internal sealed class ComplexEntityRow
 {
@@ -694,8 +672,6 @@ internal static class ScalarEntityStore
         Blob = e.Blob,
     };
 }
-
-public sealed record EntityStore(global::System.Type Type, string Table, global::System.Action<DbConnection> EnsureTable, global::System.Func<DbConnection, List<global::March7thHoney.Database.BaseDatabaseDataHelper>> LoadAll, global::System.Action<DbConnection, global::March7thHoney.Database.BaseDatabaseDataHelper> Insert, global::System.Action<DbConnection, global::March7thHoney.Database.BaseDatabaseDataHelper> Update, global::System.Action<DbConnection, int> Delete);
 
 public static class EntityStores
 {
