@@ -361,7 +361,8 @@ public class EntryPoint
             foreach (var con in March7thHoneyListener.GetSnapshot())
                 if ((con as Connection)!.Player != null && (con as Connection)!.Player!.Uid == uid)
                 {
-                    // TODO 4.3: ChallengeManager 暂停
+                    // TODO: a player in a challenge is not reported as such; that check was suspended during the 4.3
+                    // migration.
                     if ((con as Connection)!.Player!.RaidManager?.Data.CurRaidId != 0)
                     {
                         status = PlayerStatusEnum.Raid;

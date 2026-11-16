@@ -28,5 +28,6 @@ public abstract partial class BaseRogueBuffExcel : ExcelResource
         return MazeBuffID * 100 + MazeBuffLevel;
     }
 
-    // TODO 4.3: HJGFDIKDIHO 在 4.3 中已消失或更名，RogueBuff 不在登录路径，暂时移除
+    // TODO: the conversion to its protobuf message was removed with the 4.3 protocol, where that message
+    // disappeared or was renamed; its current counterpart has not been identified.
 }
