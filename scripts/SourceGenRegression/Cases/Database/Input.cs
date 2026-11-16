@@ -1,8 +1,7 @@
-// The stores call IMessage.ToByteArray(), an extension the generated file does not import itself.
-global using Google.Protobuf;
-
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using Google.Protobuf;
 using Google.Protobuf.Reflection;
 using March7thHoney.Database;
 
@@ -32,6 +31,23 @@ namespace March7thHoney.Database
     public static class DatabaseHelper
     {
         public static Logger logger = new();
+    }
+
+    // The two hand-written types of Common/Database that every generated store uses.
+    public sealed record EntityStore(
+        Type Type,
+        string Table,
+        Action<DbConnection> EnsureTable,
+        Func<DbConnection, List<BaseDatabaseDataHelper>> LoadAll,
+        Action<DbConnection, BaseDatabaseDataHelper> Insert,
+        Action<DbConnection, BaseDatabaseDataHelper> Update,
+        Action<DbConnection, int> Delete);
+
+    internal static class DbSchema
+    {
+        public static void EnsureColumns(DbConnection connection, string table, (string Name, string Sql)[] columns)
+        {
+        }
     }
 }
 
