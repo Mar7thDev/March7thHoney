@@ -37,7 +37,7 @@ March7thHoney 是一個以 C# 與 .NET 10 編寫的遊戲伺服端，可在 Wind
 需要 .NET SDK 10（10.0.100 或更新）與 Git，支援 Windows、Linux、macOS（`x64` 或 `arm64`）。
 
 ```bash
-git clone https://github.com/Mar7thLover/March7thHoney.git
+git clone https://github.com/Mar7thDev/March7thHoney.git
 cd March7thHoney
 dotnet run --project Program/Program.csproj
 ```
@@ -95,19 +95,23 @@ CI 會把 `main` 的自包含建置發佈為工作流程產物：
 
 ### 協作者
 
-- [Mar7thLover](https://github.com/Mar7thLover)
-- [Cyrup](https://github.com/March7thHoney)
+- [Mar7thLover](https://github.com/OrihaWeave)
+- Cyrup
 - [Melioli](https://github.com/Melioli)
 
 ### 貢獻者
 
 - [Yuki](https://github.com/Yuki8859)
 - [Cyt](https://github.com/qinfyy)
+- [Glzd001](https://github.com/Glzd001)
+- [blamefire159-debug](https://github.com/blamefire159-debug)
+- [AzureXuanVerse](https://github.com/AzureXuanVerse)
 
 ### 相關專案
 
 - [LunarCore](https://github.com/Melledy/LunarCore)
-- [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
+- [DanhengServer](https://github.com/OrihaWeave/DanhengServer-OpenSource)
+- [KcpSharp](https://github.com/yigolden-oss/KcpSharp)
 
 ## 授權
 
