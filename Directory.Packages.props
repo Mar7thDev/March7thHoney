@@ -17,7 +17,7 @@
     <!-- The runtime and the protoc tools move together; the protocol build expects protoc 33.1. -->
     <PackageVersion Include="Google.Protobuf" Version="3.33.1" />
     <PackageVersion Include="Google.Protobuf.Tools" Version="3.33.1" />
-    <PackageVersion Include="MailKit" Version="4.16.0" />
+    <PackageVersion Include="MailKit" Version="4.18.2" />
     <PackageVersion Include="MemoryPack" Version="1.22.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
     <PackageVersion Include="Microsoft.Data.Sqlite" Version="9.0.0" />
