@@ -1,29 +1,51 @@
 <div align="center">
 
-# March7thHoney
-
-**A playable game server in C# on .NET 10.<br />Clone it, run one command, and log in.**
-
-<p>
-  <a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Mar7thDev/March7thHoney/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white&style=for-the-badge&labelColor=1f2328&color=ff8fb1" alt="CI" /></a>
-  <a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?logo=github&logoColor=white&style=for-the-badge&labelColor=1f2328&color=ff8fb1" alt="Stars" /></a>
-  <img src="https://img.shields.io/badge/.NET-10-ff8fb1?logo=dotnet&logoColor=white&style=for-the-badge&labelColor=1f2328" alt=".NET 10" />
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-ff8fb1?style=for-the-badge&labelColor=1f2328" alt="License" /></a>
-  <a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-ff8fb1?logo=discord&logoColor=white&style=for-the-badge&labelColor=1f2328" alt="Discord" /></a>
-</p>
+<a href="https://github.com/Mar7thDev/March7thHoney"><img src="docs/assets/banner.svg" alt="March7thHoney" width="100%" /></a>
 
 [Quick start](#quick-start) · [Features](#features) · [Documentation](docs/README.md) · [Contributing](CONTRIBUTING.md) · [Discord](https://discord.gg/CyreneEchoes)
+
+<a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Mar7thDev/March7thHoney/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white&style=for-the-badge&labelColor=161b33&color=ff8fb1" alt="CI" /></a>
+<a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?logo=github&logoColor=white&style=for-the-badge&labelColor=161b33&color=ff8fb1" alt="Stars" /></a>
+<a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-7fd8ff?logo=discord&logoColor=white&style=for-the-badge&labelColor=161b33" alt="Discord" /></a>
 
 English | [简体中文](docs/project-overview/README.zh-CN.md) | [繁體中文](docs/project-overview/README.zh-TW.md) | [日本語](docs/project-overview/README.ja-JP.md)
 
 </div>
 
-| | |
-|---|---|
-| **Playable end to end** | Shops, warps, battles, the open world and the endgame challenge modes work against a real client; missions are being filled in. |
-| **Built to be run** | SQLite or MySQL, a web admin panel, the MUIP API and a systemd-ready Linux setup. Windows, Linux and macOS on `x64` and `arm64`. |
-| **No reflection at run time** | Packet handlers, commands and database stores are registered by Roslyn source generators, so the server also publishes with NativeAOT. |
-| **Checked on every change** | A warnings-as-errors build and the regression suites for accounts, the web server, KCP and the source generators run in CI; more suites cover login, scenes and game modes against real resources. |
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🎮 Playable end to end
+
+Shops, warps, battles, the open world and the endgame challenge modes work against a real client; missions are being filled in.
+
+</td>
+<td width="50%" valign="top">
+
+### 🚀 Built to be run
+
+SQLite or MySQL, a web admin panel, the MUIP API and a systemd-ready Linux setup. Windows, Linux and macOS on `x64` and `arm64`.
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### ⚡ No reflection at run time
+
+Packet handlers, commands and database stores are registered by Roslyn source generators, so the server also publishes with NativeAOT.
+
+</td>
+<td width="50%" valign="top">
+
+### ✅ Checked on every change
+
+A warnings-as-errors build and the regression suites for accounts, the web server, KCP and the source generators run in CI; more suites cover login, scenes and game modes against real resources.
+
+</td>
+</tr>
+</table>
 
 ## Features
 
