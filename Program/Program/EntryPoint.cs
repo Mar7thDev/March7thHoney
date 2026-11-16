@@ -308,6 +308,11 @@ public class EntryPoint
                         ResourceManager.LoadCustomFile<DiceyDungeonConfig>("DiceyDungeon", "DiceyDungeon") ??
                         new DiceyDungeonConfig();
 
+                    // RealityShow.json is not part of Resource.bin either; without it no Road to Fame challenge can start.
+                    GameData.RealityShowConfig =
+                        ResourceManager.LoadCustomFile<RealityShowConfig>("RealityShow", "RealityShow") ??
+                        new RealityShowConfig();
+
                     ResourceManager.LoadRogueMagicRoomData();
                     ResourceManager.LoadChessRogueRoomData();
                     ResourceManager.LoadChessRogueDiceSurfaceEffectData();
