@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" />
     <PackageReference Include="Google.Protobuf.Tools" />
+    <PackageReference Include="MemoryPack" />
   </ItemGroup>
 
   <ItemGroup>
