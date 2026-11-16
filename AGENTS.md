@@ -1,0 +1,131 @@
+# Repository guidelines
+
+English | [简体中文](AGENTS.zh-CN.md)
+
+This file gives contributors and automated coding assistants the layout of March7thHoney, its development conventions and the commands that verify a change. It applies to the whole repository. Where a subdirectory has a more specific `AGENTS.md`, follow both. Version examples in the documentation can lag behind the code; the current source, project files and resources decide what the behaviour actually is.
+
+## Working principles
+
+- Before changing anything, read the implementation involved, its callers and its documentation, and be clear about the expected behaviour, what the change affects and what has to stay compatible.
+- Run `git status --short` before you start and keep the changes already in the working tree. Keep a change focused: no unrelated refactoring and no repository-wide reformatting.
+- Keep confirmed behaviour, implementation assumptions and things still to be verified apart. Clear up an uncertainty that affects an interface, data compatibility or the scope of the request before implementing.
+- A commit message summarises the problem solved, the change in behaviour and how it was verified, so that the commit can be reviewed on its own. Git identity, branches and push targets depend on the contributor's environment and workflow and are not fixed here.
+- A change that involves data migration, replacing configuration or deployment states its prerequisites and how to back up and roll back.
+- When handing work over, list the checks that were actually run and what they did not cover, and distinguish between a successful build, passing server-side regressions and verification on a real client.
+
+## Project layout
+
+The project is mostly C# on .NET 10 and its solution is `March7thHoney.sln`; only the Roslyn source generator project `SourceGen` targets `netstandard2.0`.
+
+| Path | Responsibility |
+| --- | --- |
+| `Program/Program/EntryPoint.cs` | Entry point: coordinates configuration, resources, the database, network services and shutdown |
+| `GameServer/Game/` | Managers and components for players, scenes, battles, missions and each game mode |
+| `GameServer/Server/Packet/Recv/` | Client request handlers, one directory per feature |
+| `GameServer/Server/Packet/Send/` | Server response and notify packets |
+| `WebServer/` | HTTP services, login and authentication, MUIP, the admin and player console pages |
+| `Command/Command/Cmd/` | In-game and administrative commands |
+| `Common/` | Shared configuration, resource models, database entities, enums, internationalisation and utilities |
+| `SourceGen/` | Generates the registration code for packet handlers, commands, missions, the database and MemoryPack; see `docs/development/source-generators.md` |
+| `KcpSharp/` | KCP transport, and the tool-generated protocol command IDs in `CmdIds.cs` |
+| `Proto/StarRail.proto` | Every protocol definition of the current version, compiled directly by the build; `overrides-manual.txt` and `cmdid-aliases.txt` next to it are hand-reviewed lists |
+| `Proto/obj/<configuration>/<framework>/protobuf/` | C# protocol code generated at build time, not under version control |
+| `Proto/Tool/ProtoOrganizer/` | The tool that carries protocol names to a new version and generates the command ID constants |
+| `Config/` | Custom JSON, language packs, the resource cache and local runtime data; part of it is under version control |
+| `Resources/`, `TurnBasedGameData/`, `Config/Resource.bin` | Local game resources and the generated cache; ignored by Git, so a clean checkout may not have them |
+| `scripts/` | Standalone regression programs, cache upgrade tools and Linux deployment scripts |
+| `docs/` | Development, testing, API, getting-started and operations documentation; the indexes are `docs/README.md` (English) and `docs/README.zh-CN.md` |
+| `CONTRIBUTING.md`, `SECURITY.md` | The contribution process and how to report a vulnerability; each has a `.zh-CN.md` translation |
+| `global.json`, `Directory.Build.props`, `Directory.Packages.props` | Repository-level build configuration: the minimum SDK version, default properties shared by every project and centrally managed NuGet package versions |
+| `.editorconfig`, `.gitattributes` | Editor formatting conventions, and how Git handles line endings and binary files |
+| `.github/workflows/ci.yml` | CI: a Release build with warnings as errors and the regressions that need no private resources; a push to `main` or a version tag also publishes self-contained builds for three platforms |
+
+## Environment, build and run
+
+You need the .NET SDK 10 (`global.json` requires a 10.0 version at or above 10.0.100) and Git. Run every command below from the repository root. Paths are case-sensitive on Linux: use `Program`.
+
+```sh
+dotnet restore March7thHoney.sln
+dotnet build Program/Program.csproj -c Release --no-restore
+```
+
+After changing a shared project, the source generators or the protocol, verify the whole solution:
+
+```sh
+dotnet build March7thHoney.sln -c Release --no-restore
+```
+
+To start the full server, first make sure the local configuration and the matching resources are in place, then run:
+
+```sh
+dotnet run --project Program/Program.csproj
+```
+
+The full server initialises its runtime configuration, logs and database. For everyday regression prefer the isolated test programs described below. The repository root also has `Start.bat`, `Start.sh` and `Start.command`; deployment steps are in `docs/getting-started/native-linux.md`.
+
+NativeAOT publishing uses the project-defined `-p:DoAot=true`. Do not pass `-p:PublishAot=true` globally: it would wrongly apply to the `netstandard2.0` source generators. Run a publish for the platform concerned only when a change touches publishing or AOT compatibility.
+
+## Development conventions
+
+- Write comments and XML documentation in English. They explain reasons, constraints and the protocol evidence; they do not narrate how the code was changed, and commented-out code is not kept. A `TODO` says what is missing and why. An in-game proper noun may carry its original Chinese name in parentheses once, after the English name, and a trailing name that labels the data next to an ID may stay in its original language. `python3 scripts/check-comments.py` checks file encoding; with `--base <commit>` it also checks the language of newly added comments.
+- Follow the C# style around the code you change: usually four-space indentation, file-scoped namespaces and PascalCase type and method names. Keep nullable checks; do not add `!` or turn a check off just to silence a warning.
+- Extend player features through the existing managers or components instead of piling more into `PlayerInstance`. For a new component, check the initialisation and registration flow; see `docs/development/player-components.md`.
+- Request handlers keep using `[Opcode(CmdIds.XxxCsReq)]` and the base class of the neighbouring handlers; response packets go into the matching `Send` directory. Changes to game state belong in the manager of the game mode that owns them; keep a clear boundary between assembling protocol messages and business logic.
+- Commands keep using `[CommandInfo]`, `[CommandDefault]` and the related declarations, and the existing permission checks; for mission handlers see `docs/development/mission-system.md`. Do not build a reflection scan that bypasses source-generated registration.
+- New enums in `Common/Enums/` end in `Enum` and follow the namespace convention in `docs/development/enum-conventions.md`.
+- Use the existing asynchronous call chain and await what has to be awaited. Avoid `.Result`, `.Wait()` and background tasks without lifetime management in request handling.
+- For rewards, purchases, settlement and account operations, validate input and permissions first, then commit state. Check repeated requests, failure paths and concurrent operations so that nothing is granted twice or written partially.
+- When changing save data, the database or MemoryPack resource models, verify compatibility with old data; new data working is not enough to call an upgrade safe.
+- Stay AOT compatible: when adding a web JSON request or response type, check `WebServer/WebJsonContext.cs` and the related serialisation contexts; to change what is generated, change the source in `SourceGen/` rather than the generated files under `obj/`.
+- User-facing command text goes through `I18NManager` and `Config/Languages/`; page text follows the internationalisation mechanism of its page. When API or configuration behaviour changes, update the related documentation.
+- English is the authoritative language of the documentation (`name.md`), with a Simplified Chinese translation next to it (`name.zh-CN.md`); update both in the same change. Only the project README is also kept in Traditional Chinese and Japanese. A new document is listed in `docs/README.md` and `docs/README.zh-CN.md`; `python3 scripts/check-docs.py` checks links, translations and the indexes. This file follows the same rule: its translation is `AGENTS.zh-CN.md`.
+- Use the appropriate path APIs for cross-platform file operations and avoid hard-coded absolute paths of a development machine; keep a file's existing encoding and line endings.
+- NuGet package versions are written only in `Directory.Packages.props`; a `PackageReference` in a project file has no `Version`. `Nullable` and `ImplicitUsings` are turned on for every project by `Directory.Build.props`, so a new project does not declare them again.
+- `.editorconfig` governs new and changed code; it is not a reason to reformat existing files.
+
+## Protocol and resource constraints
+
+- The protocol workflow is in `docs/development/protobuf.md`. `main` holds the protocol of the current game version only; the protocols of older versions are on their version branches.
+- `Proto.csproj` uses `Google.Protobuf.Tools 3.33.1` (protoc 33.1), pinned in `Directory.Packages.props`, to generate C# from `Proto/StarRail.proto` into `obj/` and compile it. A protocol fix goes into `StarRail.proto`, `overrides-manual.txt`, `cmdid-aliases.txt` or the generation tool, followed by a build; do not change only the generated C#.
+- In `StarRail.proto` only rename, and keep the `// Obf:` and `// CmdID:` comments before each type. Added or removed fields, field numbers and field types must come from a client dump.
+- When moving to a new client version, carry names with ProtoOrganizer's `carry`, regenerate `KcpSharp/CmdIds.cs` with `cmdids`, then build the whole solution and run the protocol generation regression. Never overwrite a new version's command IDs with those of an old version, and never guess a protocol mapping from fields that merely have the same shape.
+- Raw dumper output and carry reports are intermediate products and stay out of the repository.
+- `GameServer.csproj` explicitly excludes some protocol handlers. Before re-enabling one, resolve its protocol evidence and compatibility problems; do not simply delete the exclusion to make it compile again.
+- Protocol generation and resource cache updates are separate workflows: running ProtoOrganizer does not mean `Config/Resource.bin` has been updated.
+- When investigating resource or save data problems, work on copies in an isolated environment and keep the original data. For cache upgrades see `docs/operations/scene-cache-upgrade.md`; for rebuilding with only a client see `docs/operations/resource-cache-from-client-export.md`. Write to a new file, verify and back up before replacing, and keep the ability to roll the program and its cache back together.
+- `Config.json`, player databases, logs, tokens and local resources do not belong in a development commit. Check the boundary with `.gitignore` and `git ls-files`; do not treat the whole of `Config/` as disposable.
+
+## Testing
+
+The existing regressions are standalone executable projects under `scripts/` and are not part of the main solution. `dotnet build March7thHoney.sln` or a bare `dotnet test` does not replace them; run them with `dotnet run --project`. Let the first run restore its own dependencies, and do not add `--no-restore` casually.
+
+The single entry point for the security regressions that need no private resources is `python3 scripts/verify-security.py` (it includes the full build). Suites that need real resources are explicitly marked SKIP by default; with a matching cache use `--with-resources`. A skipped suite is not a passed one. See `docs/testing/security-regression.md`.
+
+Choose the commands that match the change; combine them when several modules or shared behaviour are involved:
+
+| Scope of change | Regression command | Prerequisites and notes |
+| --- | --- | --- |
+| Accounts, authentication, blocks, tokens, deletion and database concurrency | `dotnet run --project scripts/AuthRegression/AuthRegression.csproj` | Temporary SQLite and test configuration; expect `Auth regression failures: 0` |
+| Web admin, MUIP, command target isolation and asynchronous output | `dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj` | Its own in-memory data and temporary directory; expect `Regression failures: 0` |
+| Login protocol, RSA, scene loading and teleport | `dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c Release` | Temporary database and a local HTTP service; the scene cases read a copy of the current `Config/Resource.bin` |
+| GridFight gameplay and state sync | `dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj` | Reads the current `Config/Resource.bin` (or the one given with `--cache`) and runs the GridFight season of that cache; does not initialise a player database and does not write the cache back |
+| Raw resources, enum compatibility and shared ability parsing | `dotnet run --project scripts/ResourceRegression/ResourceRegression.csproj -c Release -- <resource directory> <new report directory>` | Loads the resources directly in an isolated process; `--cache-out <new file>` verifies and exports a snapshot; expect `failures: 0, loader issues: 0` |
+| Source generator output, incremental caching and diagnostics | `dotnet run --project scripts/SourceGenRegression/SourceGenRegression.csproj -c Release` | Needs no resources; after an intended change of output append `-- --update` to rewrite the expected files, and review the difference; expect `failures: 0` |
+| Daily training, activity tiers, daily missions and event-driven mission completion conditions | `dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj -c Release` | Temporary SQLite; reads a copy of `Config/Resource.bin` (it must contain the daily training tables; `--cache` selects another cache); expect `failures: 0` |
+
+- What each suite covers and the logs to expect are in the matching document under `docs/testing/`. Judge the result by the process exit code and the final failure summary; simulated failures produce error logs that are expected.
+- For a behaviour fix, first add a check that reproduces the problem to the matching regression program, verifying the external result, the state change or the message content. Depending on the problem, cover repeated requests, invalid input, empty data and compatibility paths.
+- Pure documentation, comment or low-impact formatting changes only need their content, paths and diff checked; they need no new tests and no run of the full server.
+- When resources, the SDK or another prerequisite is missing, record the obstacle plainly. Do not fabricate resources, do not fall back to a real player database, and do not report a check that was not run as passed.
+- When a web page needs interactive verification, append `-- --serve` to the `AuthRegression` or `WebServerRegression` command. The local address and the test credentials are in the matching testing document; stop the test process you started when you are done.
+- A change to page interaction verifies the affected flows, the success and failure feedback and the permission boundaries, and records the test environment and the steps to reproduce.
+- Server-side regressions do not replace testing on a real client: conclusions about entering scenes, UI, animation, battles and the like need actual evidence from a client.
+
+## Before handing over
+
+1. Review the final diff and confirm it contains only changes related to the task: no runtime data, credentials or unrelated generated output.
+2. A change to the protocol build also runs `python3 scripts/test-proto-generation.py` (`python` on Windows), which verifies incremental builds, missing outputs and added or removed schemas. Run `git diff --check` on the changes visible to Git, and run the builds and regressions that match the scope of the change.
+3. When protocol generation, configuration or interface behaviour is involved, check that the source, the generated output and the documentation agree.
+4. Stop the test services you started, and state where the changes are, how they were verified and what limitations remain.
+
+This file is under version control. Update it, together with `AGENTS.zh-CN.md`, when the project layout, the development workflow or the test entry points change.

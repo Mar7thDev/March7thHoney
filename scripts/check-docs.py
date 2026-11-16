@@ -18,8 +18,6 @@ LINK = re.compile(r'\[[^\]]*\]\(([^)\s]+)\)')
 TRANSLATION = re.compile(r'\.(zh-CN|zh-TW|ja-JP)\.md$')
 README_TRANSLATIONS = 'docs/project-overview/'
 CJK = re.compile('[' + chr(0x3400) + '-' + chr(0x9FFF) + ']')
-# Instructions for contributors and coding assistants, kept in the maintainers' working language.
-CHINESE_ORIGINALS = {'AGENTS.md'}
 
 
 def tracked_markdown():
@@ -57,7 +55,7 @@ def main():
             problems.append(f'{path}: translation without an English original')
 
     for path in files:
-        if TRANSLATION.search(path) or path in CHINESE_ORIGINALS:
+        if TRANSLATION.search(path):
             continue
         prose = re.sub(r'```.*?```', '', Path(path).read_text(encoding='utf-8'), flags=re.S)
         prose = '\n'.join(line for line in prose.split('\n') if not line.lstrip().startswith('|'))
