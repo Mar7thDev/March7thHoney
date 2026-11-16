@@ -95,7 +95,7 @@ CI 會把 `main` 的自包含建置發佈為工作流程產物：
 
 ### 協作者
 
-- [Mar7thLover](https://github.com/OrihaWeave)
+- [Oriha](https://github.com/OrihaWeave)
 - Cyrup
 - [Melioli](https://github.com/Melioli)
 

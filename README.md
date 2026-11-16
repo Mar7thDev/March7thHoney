@@ -101,7 +101,7 @@ and the conventions for commits and pull requests. Report vulnerabilities privat
 
 ### Collaborators
 
-- [Mar7thLover](https://github.com/OrihaWeave)
+- [Oriha](https://github.com/OrihaWeave)
 - Cyrup
 - [Melioli](https://github.com/Melioli)
 

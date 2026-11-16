@@ -6,7 +6,7 @@
 
 ## 概述与前提
 
-没有同版本的完整原始资源、只有客户端时，用 [DemiurgeCSharp](https://github.com/Mar7thDev/DemiurgeCSharp) 的 `res` 命令导出客户端 DesignData，再用现有缓存补齐导出缺失的部分，得到新的 `Resource.bin`。全程在隔离目录进行：不读取玩家数据库，不写入 `Config/`，不覆盖现有缓存。导出目录放在已被 Git 忽略的 `artifacts/` 下。
+没有同版本的完整原始资源、只有客户端时，用 DemiurgeCSharp（一个独立的客户端静态导出工具）的 `res` 命令导出客户端 DesignData，再用现有缓存补齐导出缺失的部分，得到新的 `Resource.bin`。全程在隔离目录进行：不读取玩家数据库，不写入 `Config/`，不覆盖现有缓存。导出目录放在已被 Git 忽略的 `artifacts/` 下。
 
 原始资源完整时不需要这个流程，按 [原始资源加载回归](../testing/resource-regression.zh-CN.md) 的 `--cache-out` 直接生成。
 

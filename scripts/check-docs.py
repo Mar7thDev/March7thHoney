@@ -17,6 +17,8 @@ from pathlib import Path
 LINK = re.compile(r'\[[^\]]*\]\(([^)\s]+)\)')
 TRANSLATION = re.compile(r'\.(zh-CN|zh-TW|ja-JP)\.md$')
 README_TRANSLATIONS = 'docs/project-overview/'
+# AGENTS.md has to sit in the repository root for the tools that read it; its translation is kept under docs/.
+ORIGINALS_ELSEWHERE = {'docs/AGENTS.zh-CN.md': 'AGENTS.md'}
 CJK = re.compile('[' + chr(0x3400) + '-' + chr(0x9FFF) + ']')
 
 
@@ -51,7 +53,7 @@ def main():
             continue
         if match.group(1) != 'zh-CN':
             problems.append(f'{path}: only the project README is kept in {match.group(1)}')
-        elif not Path(TRANSLATION.sub('.md', path)).exists():
+        elif not Path(ORIGINALS_ELSEWHERE.get(path, TRANSLATION.sub('.md', path))).exists():
             problems.append(f'{path}: translation without an English original')
 
     for path in files:

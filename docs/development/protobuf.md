@@ -60,7 +60,7 @@ A command enum name is not necessarily the protobuf message type name: handlers 
 
 Names can be carried across versions because obfuscated identities are stable between versions: a type's obfuscated name, property names and enum member names are the same in every version; only field numbers and cmdIds change. For a new client with the same obfuscation seed, update as follows, running every command from the repository root.
 
-1. Use [DemiurgeCSharp](https://github.com/Mar7thDev/DemiurgeCSharp) to make a static dump (`demiurge proto`) of the new client's `GameAssembly.dll` and `global-metadata.dat`, which gives the raw definitions of the new version. Also have the raw dump of the current version ready: export it again, or take it from the version branch (for 4.8 it is `Proto/4.8/dumper/Raw/StarRail.proto` on the `4.8` branch).
+1. Use DemiurgeCSharp, a separate tool that dumps the client statically, to make a static dump (`demiurge proto`) of the new client's `GameAssembly.dll` and `global-metadata.dat`, which gives the raw definitions of the new version. Also have the raw dump of the current version ready: export it again, or take it from the version branch (for 4.8 it is `Proto/4.8/dumper/Raw/StarRail.proto` on the `4.8` branch).
 2. Carry the reviewed names from the current file onto the new dump and write the result back to `Proto/StarRail.proto`:
 
    ```sh
