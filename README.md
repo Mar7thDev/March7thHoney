@@ -4,31 +4,15 @@
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-2ea44f" alt="Platform" />
   <img src="https://img.shields.io/badge/Status-Active%20Development-f39c12" alt="Status" />
-  <img src="https://img.shields.io/badge/License-GPLv3-blue" alt="License" />
+  <img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License" />
 </p>
 
-March7thHoney is a server project built with .NET 10.
-The project is actively developed, with regular feature updates and fixes.
+English | [简体中文](docs/project-overview/README.zh-CN.md) | [繁體中文](docs/project-overview/README.zh-TW.md) | [日本語](docs/project-overview/README.ja-JP.md)
 
-[EN](README.md) | [简中](docs/project-overview/README.zh-CN.md) | [繁中](docs/project-overview/README.zh-TW.md) | [JP](docs/project-overview/README.ja-JP.md)
+March7thHoney is a game server written in C# on .NET 10. It runs on Windows, Linux and macOS and is under
+active development.
 
-## Table of Contents
-
-- [Feature Progress](#feature-progress)
-- [Gameplay Implementation Tree](docs/development/gameplay-implementation.md)
-- [Muip API Entry](#muip-api-entry)
-- [Roadmap](#roadmap)
-- [Repository Layout](#repository-layout)
-- [Requirements](#requirements)
-- [Quick Start](#quick-start)
-- [Native Linux Server](#native-linux-server)
-- [Build](#build)
-- [CI Artifacts](#ci-artifacts)
-- [Notes](#notes)
-- [Troubleshooting](#troubleshooting)
-- [Credits](#credits)
-
-## Feature Progress
+## Features
 
 | Module | Status | Notes |
 |---|---|---|
@@ -45,13 +29,57 @@ The project is actively developed, with regular feature updates and fixes.
 | Currency War | In progress | Basic gameplay flow available |
 | Achievement system | Stable | Most achievements supported |
 
-Detailed implementation progress: [Gameplay Implementation Tree](docs/development/gameplay-implementation.md) | [简中](docs/development/gameplay-implementation.zh-CN.md) | [繁中](docs/development/gameplay-implementation.zh-TW.md) | [JP](docs/development/gameplay-implementation.ja-JP.md)
+The full list is in the [gameplay implementation tree](docs/development/gameplay-implementation.md).
 
-## Muip API Entry
+## Quick start
 
-- Documentation index: [docs/](docs/README.md)
-- Muip API docs: [English](docs/api/muip-api.md) | [简中](docs/api/muip-api.zh-CN.md) | [繁中](docs/api/muip-api.zh-TW.md) | [日本語](docs/api/muip-api.ja-JP.md)
+You need the .NET SDK 10 (10.0.100 or later) and Git, on Windows, Linux or macOS (`x64` or `arm64`).
 
+```bash
+git clone https://github.com/Mar7thLover/March7thHoney.git
+cd March7thHoney
+dotnet run --project Program/Program.csproj
+```
+
+The repository does not contain game resources. The server reads them from a local resource cache; see
+[rebuilding the resource cache from a client export](docs/operations/resource-cache-from-client-export.md).
+
+For a Linux server, including a systemd service and updates, follow the
+[native Linux guide](docs/getting-started/native-linux.md).
+
+## Build
+
+```bash
+dotnet build Program/Program.csproj -c Release
+```
+
+The build generates the protocol C# from the checked-in schema, `Proto/StarRail.proto`, using pinned
+`Google.Protobuf.Tools` 3.33.1. Generated files live under `Proto/obj/` and are not tracked. Each game version
+keeps its protocol on its own version branch. See the [protocol guide](docs/development/protobuf.md) for
+updating the schema and for platform requirements.
+
+CI publishes self-contained builds of `main` as workflow artifacts:
+
+| Runtime | Artifact name |
+|---|---|
+| `win-x64` | `March7thHoney-win-x64` |
+| `linux-x64` | `March7thHoney-linux-x64` |
+| `linux-arm64` | `March7thHoney-linux-arm64` |
+
+## Documentation
+
+The [documentation index](docs/README.md) lists everything. Starting points:
+
+- Running a server: [native Linux guide](docs/getting-started/native-linux.md), [account security](docs/operations/account-security.md)
+- APIs: [MUIP API](docs/api/muip-api.md), [web account API](docs/api/web-account-api.md)
+- Working on the code: [contributing guide](CONTRIBUTING.md), [protocol](docs/development/protobuf.md), [source generators](docs/development/source-generators.md)
+- Regression suites: [security gate](docs/testing/security-regression.md) and the other documents under `docs/testing/`
+
+## Contributing
+
+Changes are welcome. Read the [contributing guide](CONTRIBUTING.md) for the build, the regression suites to run
+and the conventions for commits and pull requests. Report vulnerabilities privately as described in the
+[security policy](SECURITY.md).
 
 ## Roadmap
 
@@ -62,99 +90,11 @@ Detailed implementation progress: [Gameplay Implementation Tree](docs/developmen
 5. Continue fixing UI and state-sync issues.
 6. Add more configurable server options.
 
-## Repository Layout
-
-- `Program/` startup entry and orchestration
-- `GameServer/` gameplay logic, packet handlers, runtime managers
-- `WebServer/` dispatch/http side services
-- `Command/` command implementations
-- `Common/` shared data models, config, enums, and database entities
-- `Config/` runtime resources and custom data
-- [`docs/`](docs/README.md) categorized project documentation
-
-## Requirements
-
-- .NET SDK 10
-- Git
-- Windows, Linux, or macOS (`x64` / `arm64`)
-
-## Quick Start
-
-```bash
-git clone https://github.com/Mar7thLover/March7thHoney.git
-cd March7thHoney
-dotnet restore
-dotnet run --project Program/Program.csproj
-```
-
-## Native Linux Server
-
-On Linux you can run from source the same way as Windows. The project path is
-case-sensitive on Linux, so use `Program`, not `program`:
-
-```bash
-dotnet run --project Program/Program.csproj
-```
-
-Or use the root launcher:
-
-```bash
-bash Start.sh
-```
-
-On a fresh Debian server, install prerequisites once:
-
-```bash
-bash scripts/setup-debian.sh
-```
-
-To update later:
-
-```bash
-git pull --ff-only
-dotnet run --project Program/Program.csproj
-```
-
-Optional systemd service setup:
-
-```bash
-sudo bash scripts/install-systemd-service.sh
-sudo systemctl start march7thhoney
-```
-
-More details: [Native Linux Setup](docs/getting-started/native-linux.md).
-
-## Build
-
-```bash
-dotnet build Program/Program.csproj -c Release
-```
-
-The build generates the protocol C# from the checked-in schema, `Proto/StarRail.proto`,
-using pinned `Google.Protobuf.Tools` 3.33.1. Generated files live under `Proto/obj/` and
-are not tracked. Each game version keeps its protocol on its own version branch. See the
-[protocol guide](docs/development/protobuf.md) for updating the schema and for platform
-requirements.
-
-## CI Artifacts
-
-Workflow publishes self-contained builds for:
-
-| Runtime | Artifact Name |
-|---|---|
-| `win-x64` | `March7thHoney-win-x64` |
-| `linux-x64` | `March7thHoney-linux-x64` |
-| `linux-arm64` | `March7thHoney-linux-arm64` |
-
-## Notes
-
-- If behavior looks inconsistent after updating commits, clear runtime cache/data and retest with a fresh account state first.
-- Some modules are still under refactor, so packet behavior may change before docs fully catch up.
-
 ## Troubleshooting
 
-- Check server logs under your configured log path.
-- `/scene reload` can solve most of the problem.
+- Check the server logs under your configured log path.
+- `/scene reload` solves most scene problems.
+- If behavior looks inconsistent after updating, clear the runtime cache and data and retest with a fresh account.
 - Community support: <https://discord.gg/CyreneEchoes>
 
 ## Credits
@@ -174,3 +114,7 @@ Workflow publishes self-contained builds for:
 
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/Mar7thLover/DanhengServer-OpenSource)
+
+## License
+
+March7thHoney is licensed under the [GNU Affero General Public License v3.0](LICENSE).

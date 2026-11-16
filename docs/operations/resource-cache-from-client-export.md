@@ -1,63 +1,69 @@
-# 从客户端导出重建资源缓存
+# Rebuilding the Resource Cache from a Client Export
 
-没有同版本的完整原始资源、只有客户端时，用 [DemiurgeCSharp](https://github.com/Mar7thDev/DemiurgeCSharp) 的 `res` 命令导出客户端 DesignData，再用现有缓存补齐导出缺失的部分，得到新的 `Resource.bin`。全程在隔离目录进行：不读取玩家数据库，不写入 `Config/`，不覆盖现有缓存。导出目录放在已被 Git 忽略的 `artifacts/` 下。
+English | [简体中文](resource-cache-from-client-export.zh-CN.md)
 
-原始资源完整时不需要这个流程，按 [原始资源加载回归](../testing/resource-regression.md) 的 `--cache-out` 直接生成。
+This guide is for operators who have only the game client, without complete raw resources of the same version, and need a new `Resource.bin`. It exports the client's DesignData, fills the parts the export lacks from the existing cache, and verifies the result before it replaces anything.
 
-## 1. 导出
+## Overview and prerequisites
 
-```powershell
-demiurge res all --game <客户端根目录> --out artifacts/<名称>/Resources --reports artifacts/<名称>/reports
-```
+Without complete raw resources of the same version, only a client, use the `res` command of [DemiurgeCSharp](https://github.com/Mar7thDev/DemiurgeCSharp) to export the client's DesignData, then fill the parts missing from the export with the existing cache to obtain a new `Resource.bin`. The whole process runs in an isolated directory: it does not read the player database, does not write to `Config/` and does not overwrite the existing cache. Put the export directory under `artifacts/`, which Git already ignores.
 
-客户端根目录是含 `GameAssembly.dll` 的那一层。`reports/` 里每个资源块一份 TSV，状态列为 `ok`、`partial`、`fail`、`empty`、`noroot`。
+When the raw resources are complete, this process is not needed: generate the cache directly with `--cache-out` as described in [Raw resource loading regression](../testing/resource-regression.md).
 
-## 2. 补充路径名单
-
-客户端的资源索引只保存路径哈希，dumper 要拿到路径才能给资源命名，内置名单不含新版本的路径，这些资源会被当成无名资源跳过。[`scripts/ResourceNameHarvest/`](../../scripts/ResourceNameHarvest/) 从已有导出里收集候选路径：导出文件里引用到的所有资源路径、服务端加载的全部表名、任务表里每个主线任务的 `MissionInfo` 路径、`MazePlane` 里每个位面列出的楼层文件路径（没有任何文件引用楼层路径，只能按 `P<位面>_F<楼层>` 推出；楼层文件再引用它的各个组）。dumper 对候选逐个求哈希，只采用索引里真实存在的，所以猜错没有代价。
+## 1. Export
 
 ```powershell
-demiurge res keys --game <客户端根目录> > artifacts/<名称>/names/keys-0.tsv
-dotnet run --project scripts/ResourceNameHarvest/ResourceNameHarvest.csproj -c Release -- artifacts/<名称>/names/keys-0.tsv artifacts/<名称>/Resources artifacts/<名称>/names/paths-1.txt
-demiurge res extract --game <客户端根目录> --out artifacts/<名称>/Resources --reports artifacts/<名称>/reports --namemap artifacts/<名称>/names/paths-1.txt
-demiurge res keys --game <客户端根目录> --namemap artifacts/<名称>/names/paths-1.txt > artifacts/<名称>/names/keys-1.tsv
+demiurge res all --game <client-root> --out artifacts/<name>/Resources --reports artifacts/<name>/reports
 ```
 
-新导出的文件会引用更多路径，所以用新的 `keys` 列表再收集、再导出，直到 `keys` 报告的命名数量不再增加。`--namemap` 会替换内置名单，工具因此把已命名的路径一并写回名单。
+The client root is the directory that contains `GameAssembly.dll`. `reports/` holds one TSV per resource block; the status column is one of `ok`, `partial`, `fail`, `empty`, `noroot`.
 
-## 3. 构建并补缺
+## 2. Supplement the path list
 
-[`scripts/ResourceCacheFill/`](../../scripts/ResourceCacheFill/) 用生产加载器在隔离进程里加载导出目录，再从现有缓存补齐：
+The client's resource index stores only path hashes. The dumper needs the path to name a resource, and its built-in list does not contain the paths of a new version, so those resources are skipped as unnamed. [`scripts/ResourceNameHarvest/`](../../scripts/ResourceNameHarvest/) collects candidate paths from an existing export: every resource path referenced in the exported files, all table names the server loads, the `MissionInfo` path of every main mission in the mission table, and the floor file path of every floor listed for each plane in `MazePlane` (no file references floor paths, so they can only be derived as `P<plane>_F<floor>`; a floor file in turn references its groups). The dumper hashes each candidate and uses only those that actually exist in the index, so a wrong guess costs nothing.
 
 ```powershell
-dotnet run --project scripts/ResourceCacheFill/ResourceCacheFill.csproj -c Release -- artifacts/<名称>/Resources Config/Resource.bin artifacts/<名称>/Resource.new.bin artifacts/<名称>/fill-report
+demiurge res keys --game <client-root> > artifacts/<name>/names/keys-0.tsv
+dotnet run --project scripts/ResourceNameHarvest/ResourceNameHarvest.csproj -c Release -- artifacts/<name>/names/keys-0.tsv artifacts/<name>/Resources artifacts/<name>/names/paths-1.txt
+demiurge res extract --game <client-root> --out artifacts/<name>/Resources --reports artifacts/<name>/reports --namemap artifacts/<name>/names/paths-1.txt
+demiurge res keys --game <client-root> --namemap artifacts/<name>/names/paths-1.txt > artifacts/<name>/names/keys-1.tsv
 ```
 
-- 导出里存在但解析失败的表会让工具直接报错退出：这是加载器需要修的问题（例如新枚举成员），不能用旧缓存盖过去。缺失文件只产生告警，记入报告。
-- 字典按键补行：导出有的行以导出为准，导出没有而旧缓存有的行补入。列表没有键，只在导出为空时整表取旧缓存。单个对象和数值只在导出保持默认值时取旧缓存。
-- GridFight 的表一律只用导出，不从旧缓存补行，旧缓存多出的行数在报告里列出。`GridFightRuntimeDataSnapshot` 里因 MemoryPack 成员上限寄放的 Rogue、Daily、MainMissionSchedule 表不受此限。
-- 手机短信的四张表（`MessageContactsConfigData`、`MessageGroupConfigData`、`MessageSectionConfigData`、`MessageItemConfigData`）同样只用导出。客户端按自己的表解析服务端发来的联系人、短信组和段落，查不到段落时 `MessageModule._InitSection` 会抛空引用，整个 `GetNpcMessageGroupScRsp` 的处理随之中断，所以旧缓存里客户端已经删掉的行不能补进来。
-- 输出必须是不存在的新文件；写入后重新读取并核对每个集合的条数。
-- `fill-report.txt` 列出加载告警、每个成员的导出行数 / 旧缓存行数 / 补入行数，以及补缺前后「起止子任务未注册」的主线任务数量。
+Newly exported files reference more paths, so collect again with the new `keys` list and export again, until the number of named resources reported by `keys` stops increasing. `--namemap` replaces the built-in list, so the tool also writes the already named paths back into the list.
 
-## 4. 验证、替换与回滚
+## 3. Build and fill gaps
+
+[`scripts/ResourceCacheFill/`](../../scripts/ResourceCacheFill/) loads the export directory with the production loader in an isolated process, then fills gaps from the existing cache:
 
 ```powershell
-dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj -- --cache artifacts/<名称>/Resource.new.bin
-dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c Release -- --resource-cache artifacts/<名称>/Resource.new.bin
-dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj -c Release -- --cache artifacts/<名称>/Resource.new.bin
+dotnet run --project scripts/ResourceCacheFill/ResourceCacheFill.csproj -c Release -- artifacts/<name>/Resources Config/Resource.bin artifacts/<name>/Resource.new.bin artifacts/<name>/fill-report
 ```
 
-回归通过后备份现有 `Config/Resource.bin`，再把新文件复制过去。回滚时把备份复制回来；枚举取值变化过的版本需要程序和缓存一起恢复。
+- A table that exists in the export but fails to parse makes the tool exit with an error: that is a loader problem to fix (for example a new enum member), not something to cover with the old cache. A missing file only produces a warning, recorded in the report.
+- Dictionaries are filled row by row by key: rows present in the export come from the export; rows absent from the export but present in the old cache are added. Lists have no key, so a list is taken whole from the old cache only when the export's list is empty. A single object or numeric value is taken from the old cache only when the export leaves it at its default value.
+- GridFight tables always use only the export, with no rows filled from the old cache; the number of extra rows in the old cache is listed in the report. The Rogue, Daily and MainMissionSchedule tables that are lodged in `GridFightRuntimeDataSnapshot` because of the MemoryPack member limit are not subject to this rule.
+- The four phone message tables (`MessageContactsConfigData`, `MessageGroupConfigData`, `MessageSectionConfigData`, `MessageItemConfigData`) also use only the export. The client resolves the contacts, message groups and sections sent by the server against its own tables; when a section cannot be found, `MessageModule._InitSection` throws a null reference and the handling of the whole `GetNpcMessageGroupScRsp` stops. Rows that the client has already deleted must therefore not be filled in from the old cache.
+- The output must be a new file that does not exist yet; after writing, the tool reads it back and checks the row count of every collection.
+- `fill-report.txt` lists the load warnings, the export row count / old cache row count / filled row count of every member, and the number of main missions whose start or end sub-missions are not registered, before and after filling.
 
-## OSBETAWin4.7.51 的结果（2026-11-14）
+## 4. Verify, replace and roll back
 
-- 导出：索引 144 867 个资源，内置名单命名 130 581 个，补名收敛后 134 450 个，写出 133 541 个 JSON，其中楼层 710 个；仍有 10 417 个资源没有路径。
-- 解不出的表 22 张：`MechCraft*` 21 张和 `PetConfig`（dumper 报 `UnknownFieldType`，行类型无法识别），`DecideAvatarOrder` 在客户端里是空表。`LocalPlayer_Pearl_00`、`Nihilux_10`、`Ellen_00`、`Astra_00` 等 10 个新角色的迷宫技能文件不在索引里。
-- 加载器改动：`GridFightBonusTypeEnum.AllAvatarByRarity = 25`、`GridFightTraitEffectTypeEnum.GainOtherRoleTrait = 34` 是新表用到的新成员，数值与客户端一致；其余成员不动。
-- 补缺：从 4.6.52 缓存补入 55 个成员共 3 113 行（MechCraft、宠物、奖励、子任务、57 个楼层等）。第一版缓存还补入了短信四张表的 4 191 行（156 个短信组、156 个段落、3 873 条消息、6 个联系人），其中挂在 4.7.51 联系人下的 6 个组（15046、15047、20189、20190、20238、20239）被当作已完成短信发给客户端，客户端不认识这些段落，短信列表整体处理失败；改为只用导出后重新生成。起止子任务未注册的主线任务由 179 个降到 18 个：1054800–1054804、3050321、4010263–4010265、4011900、5000514、8048117–8048121、8048208、8048209。
-- 楼层路径：最初的名单没有按位面推导楼层路径，最新一期虚构叙事 `20294` 的楼层 `P30148_F30148002` 因此没有导出，`LoginSceneRegression` 报「PF 20294 starts on stage 1」失败。加入这类候选后多导出 13 个楼层和它们引用的组，该项通过。
-- GridFight：新表把阿哈的角色 ID 由 `151102` 改为 `151112` / `151122` / `151132`，并调整了投资列表等内容，服务端第二赛季的适配见 [GridFight 对比与回归](../testing/grid-fight-regression.md)。
-- 新缓存上的回归：GridFightRegression 557/557，LoginSceneRegression 717/0，DailyActiveRegression 76/0。
-- 加入 `RealityShowBuffNum` / `RealityShowResult` / `RealityShowAllResult`（470011–470013）后用同一导出目录与 4.6.52 基础缓存重新生成（`Resource.4.7.51.realityshow.bin`）：补缺结果不变（55 个成员 3 113 行，主线 179 → 18），FinishWay 中类型为 `Unknown` 的行由 712 降到 650，成名之路、骰子收容等活动任务的行有了正确类型。骰子收容的任务因此会在关卡流程中真实推进，`LoginSceneRegression` 里对应的处理器检查改用新账号。新缓存上 GridFightRegression 557/557、DailyActiveRegression 76/0，LoginSceneRegression 仅剩并行开发中的 TrainParty 一项失败（旧缓存同样失败）。替换前的缓存备份为 `Resource.bin.backup-20261114-before-realityshow.bin`。
-- 缓存要用与程序同一版本的代码生成：场景、任务等加载器新增字段后，旧程序生成的缓存里这些字段是默认值。本次的缓存、报告和替换前的 4.6.52 缓存都留在生成机器的 `artifacts/resources-4.7.51/` 下，不随仓库分发。均未经客户端实机验证。
+```powershell
+dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj -- --cache artifacts/<name>/Resource.new.bin
+dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c Release -- --resource-cache artifacts/<name>/Resource.new.bin
+dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj -c Release -- --cache artifacts/<name>/Resource.new.bin
+```
+
+After the regressions pass, back up the existing `Config/Resource.bin`, then copy the new file over it. To roll back, copy the backup back; for a version in which enum values changed, restore the program and the cache together.
+
+## Results for OSBETAWin4.7.51 (2026-11-14)
+
+- Export: the index has 144 867 resources; the built-in list named 130 581, and 134 450 after name supplementation converged; 133 541 JSON files were written, 710 of them floors; 10 417 resources still have no path.
+- 22 tables could not be decoded: 21 `MechCraft*` tables and `PetConfig` (the dumper reports `UnknownFieldType`; the row type cannot be identified); `DecideAvatarOrder` is an empty table in the client. The maze skill files of 10 new characters, such as `LocalPlayer_Pearl_00`, `Nihilux_10`, `Ellen_00` and `Astra_00`, are not in the index.
+- Loader changes: `GridFightBonusTypeEnum.AllAvatarByRarity = 25` and `GridFightTraitEffectTypeEnum.GainOtherRoleTrait = 34` are new members used by the new tables, with values matching the client; no other members changed.
+- Filling: 3 113 rows in 55 members were filled from the 4.6.52 cache (MechCraft, pets, rewards, sub-missions, 57 floors and more). The first version of the cache also filled 4 191 rows of the four message tables (156 message groups, 156 sections, 3 873 messages, 6 contacts). Of these, 6 groups under 4.7.51 contacts (15046, 15047, 20189, 20190, 20238, 20239) were sent to the client as completed messages; the client did not recognize their sections, and handling of the whole message list failed. The cache was regenerated with these tables taken only from the export. Main missions whose start or end sub-missions are not registered went down from 179 to 18: 1054800–1054804, 3050321, 4010263–4010265, 4011900, 5000514, 8048117–8048121, 8048208, 8048209.
+- Floor paths: the initial list did not derive floor paths from planes, so the floor `P30148_F30148002` of the latest Pure Fiction period `20294` was not exported, and `LoginSceneRegression` failed with "PF 20294 starts on stage 1". After adding such candidates, 13 more floors and the groups they reference were exported, and that check passed.
+- GridFight: the new tables change Aha's character ID from `151102` to `151112` / `151122` / `151132` and adjust the investment list and other content; for the server's adaptation to the second season, see [GridFight comparison and regression](../testing/grid-fight-regression.md).
+- Regressions on the new cache: GridFightRegression 557/557, LoginSceneRegression 717/0, DailyActiveRegression 76/0.
+- After adding `RealityShowBuffNum` / `RealityShowResult` / `RealityShowAllResult` (470011–470013), the cache was regenerated from the same export directory and the 4.6.52 base cache (`Resource.4.7.51.realityshow.bin`). The filling result is unchanged (3 113 rows in 55 members, main missions 179 → 18). FinishWay rows of type `Unknown` went down from 712 to 650, and mission rows of activities such as Road to Fame and Containment Starts With a Roll now have the correct type. The Containment Starts With a Roll missions therefore really advance during the stage flow, and the corresponding handler check in `LoginSceneRegression` now uses a new account. On the new cache: GridFightRegression 557/557, DailyActiveRegression 76/0; LoginSceneRegression has only one failure left, TrainParty, which was under parallel development (the old cache fails it as well). The backup of the cache before replacement is `Resource.bin.backup-20261114-before-realityshow.bin`.
+- Generate the cache with code of the same version as the program: after the scene, mission and other loaders gain fields, those fields hold default values in a cache generated by an old program. The cache, reports and the replaced 4.6.52 cache from this run remain under `artifacts/resources-4.7.51/` on the machine that generated them and are not distributed with the repository. None of this has been verified on a real client.

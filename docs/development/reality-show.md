@@ -1,35 +1,39 @@
-# 星际和平盛典：成名之路（RealityShow）
+# Galactic Gala of Peace: Road to Fame (RealityShow)
 
-4.8（OSBETAWin4.7.51 客户端）新增的挑战活动，客户端模块 `RPG.Client.ActivityRealityShow`，面板 `50143`，五个挑战各占一个活动模块 `5014301`–`5014305`，关卡类型 `RealityShowActivity`（`StageType` 40）。每个挑战分两场战斗，均在客户端运行：
+English | [简体中文](reality-show.zh-CN.md)
 
-- 预热阶段（StageID1，无限波次 `_StageInfiniteGroup`，限定回合）：尽量多地破除特殊护盾。破盾数按 `BuffUpNumList` 门槛换算成增益档位（0–3）。
-- 决赛阶段（StageID2，单个 BOSS，9999 条生命条，限定回合）：携带预热获得的前 N 档增益，按击穿的生命条数评级 C / B / A / S / SS（`ActivityRealityShowHPPunctured` = 0 / 100 / 300 / 600 / 1200），生命条相同时消耗行动值少者更优。
+This document describes the server side of the RealityShow challenge event added in 4.8: its configuration, its unnamed protocol, the battle statistics it settles from, and its event missions. Read it before changing the event or re-exporting its challenge table.
 
-服务端负责：挑战记录（预热结果、增益档位、决赛最佳成绩、上次阵容）、开战与结算、重置预热、好友排行和活动任务。
+## Overview
 
-实现位置：
+A challenge event added in 4.8 (client OSBETAWin4.7.51). Client module `RPG.Client.ActivityRealityShow`, panel `50143`; each of the five challenges has its own activity module `5014301`–`5014305`; stage type `RealityShowActivity` (`StageType` 40). Each challenge consists of two battles, both run on the client:
 
-| 内容 | 路径 |
+- Warm-up stage (StageID1, endless waves `_StageInfiniteGroup`, limited turns): break as many special shields as possible. The number of shields broken is converted into a buff level (0–3) using the `BuffUpNumList` thresholds.
+- Final stage (StageID2, a single boss with 9999 HP bars, limited turns): the team carries the first N buff levels earned in the warm-up and is rated C / B / A / S / SS by the number of HP bars broken (`ActivityRealityShowHPPunctured` = 0 / 100 / 300 / 600 / 1200); with equal HP bars, the one that consumed less action value is better.
+
+The server handles: the challenge record (warm-up result, buff level, best final result, last lineup), starting and settling battles, resetting the warm-up, the friend ranking, and event missions.
+
+| Content | Path |
 | --- | --- |
-| 玩法逻辑（玩家组件） | `GameServer/Game/Activity/RealityShow/RealityShowManager.cs` |
-| 请求处理器 | `GameServer/Server/Packet/Recv/RealityShow/HandlerRealityShow.cs` |
-| 响应包 | `GameServer/Server/Packet/Send/RealityShow/PacketRealityShow.cs` |
-| 存档表 `PlayerRealityShow` | `Common/Database/RealityShow/PlayerRealityShowData.cs` |
-| 配置 | `Config/Custom/RealityShow.json`，模型 `Common/Data/Custom/RealityShowConfig.cs` |
-| 活动任务 | `GameServer/Game/Mission/FinishType/Handler/MissionHandlerRealityShow.cs` |
-| 战斗接入 | `BattleInstance.RealityShowContext`（阵容覆盖），`BattleManager.EndBattle`（活动阵容不回写血量、不传送） |
-| 排期 | `Config/Custom/ActivityConfig.json` 中 `5014301`–`5014305` / 面板 `50143` |
-| 回归 | `scripts/LoginSceneRegression/RealityShowRegression.cs` |
+| Gameplay logic (player component) | `GameServer/Game/Activity/RealityShow/RealityShowManager.cs` |
+| Request handlers | `GameServer/Server/Packet/Recv/RealityShow/HandlerRealityShow.cs` |
+| Responses | `GameServer/Server/Packet/Send/RealityShow/PacketRealityShow.cs` |
+| Save table `PlayerRealityShow` | `Common/Database/RealityShow/PlayerRealityShowData.cs` |
+| Configuration | `Config/Custom/RealityShow.json`, model `Common/Data/Custom/RealityShowConfig.cs` |
+| Event missions | `GameServer/Game/Mission/FinishType/Handler/MissionHandlerRealityShow.cs` |
+| Battle integration | `BattleInstance.RealityShowContext` (lineup override), `BattleManager.EndBattle` (event lineups do not write back HP and do not teleport) |
+| Schedule | `5014301`–`5014305` / panel `50143` in `Config/Custom/ActivityConfig.json` |
+| Regression | `scripts/LoginSceneRegression/RealityShowRegression.cs` |
 
-## 配置
+## Configuration
 
-挑战表 `ExcelOutput/ActivityRealityShowConfig`（资源 `39e08083a365604a`，行类型 `ActivityRealityShowConfigRow`）不在社区名单里，资源导出会跳过它。`Config/Custom/RealityShow.json` 用 Demiurge 按名称解码得到：
+The challenge table `ExcelOutput/ActivityRealityShowConfig` (resource `39e08083a365604a`, row type `ActivityRealityShowConfigRow`) is not in the community name list, so the resource export skips it. `Config/Custom/RealityShow.json` is obtained by decoding it by name with Demiurge:
 
 ```sh
-demiurge res decode --game <客户端根目录> --namemap <含 BakedConfig/ExcelOutput/ActivityRealityShowConfig.bytes 的文件> ExcelOutput/ActivityRealityShowConfig.json
+demiurge res decode --game <client root> --namemap <file containing BakedConfig/ExcelOutput/ActivityRealityShowConfig.bytes> ExcelOutput/ActivityRealityShowConfig.json
 ```
 
-| 挑战 | 模块 | 预热 Stage | 决赛 Stage | BOSS | 增益 | 门槛 |
+| Challenge | Module | Warm-up Stage | Final Stage | Boss | Buffs | Thresholds |
 | --- | --- | --- | --- | --- | --- | --- |
 | 1 | 5014301 | 4320046 | 4320146 | 5034013 | 3250010–3250012 | 5 / 15 / 24 |
 | 2 | 5014302 | 4320036 | 4320136 | 4035012 | 3250007–3250009 | 5 / 15 / 24 |
@@ -37,55 +41,55 @@ demiurge res decode --game <客户端根目录> --namemap <含 BakedConfig/Excel
 | 4 | 5014304 | 4320016 | 4320116 | 3024034 | 3250001–3250003 | 5 / 15 / 24 |
 | 5 | 5014305 | 4320056 | 4320156 | 5014025 | 3250013–3250015 | 4 / 12 / 20 |
 
-`StageConfig` 中 43200x0–43200x6、43201x0–43201x6 是按世界等级的七个变体，但客户端 `BattleResultProcess._IsRealityShowFirstStage` 和 `RealityShowHelper.GetBattleAreaIDByStageID` 只认配置表里的确切 StageID（界面显示的等级 95 也来自它），因此服务端直接使用配置里的 StageID，不按世界等级换算。预热阶段的护盾 BUFF 由关卡自身的 `_BindingMazeBuff` 绑定；决赛增益由服务端按档位放进 `SceneBattleInfo.buff_list`。
+In `StageConfig`, 43200x0–43200x6 and 43201x0–43201x6 are seven variants by world level, but the client's `BattleResultProcess._IsRealityShowFirstStage` and `RealityShowHelper.GetBattleAreaIDByStageID` only recognise the exact StageIDs in the configuration table (the level 95 shown in the UI also comes from it). The server therefore uses the StageIDs from the configuration directly and does not map them by world level. The warm-up shield buffs are bound by the stage's own `_BindingMazeBuff`; the final-stage buffs are put into `SceneBattleInfo.buff_list` by the server according to the buff level.
 
-另一张 `ExcelOutput/RealityShowFriend`（`01de9b0a29982f5b`，NPC 好友排行）只由客户端使用。
+Another table, `ExcelOutput/RealityShowFriend` (`01de9b0a29982f5b`, NPC friend ranking), is used only by the client.
 
-## 协议
+## Protocol
 
-命令目录 10785–10799 整组未命名，消息与字段保持混淆名。含义来自客户端代码：发请求的是网络服务 `LDFEDNEMOCD`，数据服务 `LBBBMBMCADE`（接口 `MINAKLCBJMO`），挑战数据模型 `MJCMGOEMKCC` 的自动属性保留了真实名（`<ShieldBreakCount>k__BackingField` 等），按属性声明顺序与 getter 顺序、存储偏移对应得到字段含义。
+The command directory 10785–10799 is unnamed as a whole; messages and fields keep their obfuscated names. The meanings come from the client code: requests are sent by the network service `LDFEDNEMOCD`; the data service is `LBBBMBMCADE` (interface `MINAKLCBJMO`); the auto-properties of the challenge data model `MJCMGOEMKCC` keep their real names (`<ShieldBreakCount>k__BackingField` and others), and matching property declaration order with getter order and storage offsets gives the field meanings.
 
-| cmdId | 消息 | 方向 | 字段 |
+| cmdId | Message | Direction | Fields |
 | --- | --- | --- | --- |
-| 10786 | `CKMHMAJPJEP` | 请求：获取数据（登录时发送） | 无 |
-| 10799 | `PAMDEKPLLEL` | 响应 | `OGDEMOAKJOK` 挑战列表（`LFIKNHJBDBJ`），retcode |
-| 10798 | `OHFEIJJDJIE` | 请求：开始挑战 | `challenge_id`，`LAJAGHBKIJH` IsFirstStage（预热），`avatar_list` 阵容（`KPNHGDGLICN {avatar_type, id}`） |
-| 10792 | `IFMNCFKBEGL` | 响应 | `challenge_id`，retcode，`NEMJKLMIJOL` 挑战数据，`KHBJOAHCCCE` 阵容，`battle_info` 战斗 |
-| 10794 | `IOOHJLNKKKD` | 请求：重置预热（`RealityShowChallengeViewModel._OnResetFirstStage`） | `challenge_id` |
-| 10795 | `FKHNFMFIKGL` | 响应 | retcode，`NEMJKLMIJOL` 重置后的挑战数据 |
-| 10797 | `NKEMNFGCBLO` | 请求：好友排行（客户端不等待回复） | `challenge_id` |
-| 10796 | `JBPOKKNFOKM` | 响应（客户端按推送订阅，按挑战 ID 匹配） | `MJCCFIINAJC` 排行项（`CFIIJJEGKHC`），`challenge_id`，retcode |
-| 10785 | `NOEGOMIJDAH` | 通知：结算 | `challenge_id`；oneof：`BCLOOPGAIKJ`(9) 预热结果，`OEFFDKDCIMC`(2) 决赛结果 |
+| 10786 | `CKMHMAJPJEP` | Request: get data (sent at login) | none |
+| 10799 | `PAMDEKPLLEL` | Response | `OGDEMOAKJOK` challenge list (`LFIKNHJBDBJ`), retcode |
+| 10798 | `OHFEIJJDJIE` | Request: start challenge | `challenge_id`, `LAJAGHBKIJH` IsFirstStage (warm-up), `avatar_list` lineup (`KPNHGDGLICN {avatar_type, id}`) |
+| 10792 | `IFMNCFKBEGL` | Response | `challenge_id`, retcode, `NEMJKLMIJOL` challenge data, `KHBJOAHCCCE` lineup, `battle_info` battle |
+| 10794 | `IOOHJLNKKKD` | Request: reset warm-up (`RealityShowChallengeViewModel._OnResetFirstStage`) | `challenge_id` |
+| 10795 | `FKHNFMFIKGL` | Response | retcode, `NEMJKLMIJOL` challenge data after the reset |
+| 10797 | `NKEMNFGCBLO` | Request: friend ranking (the client does not wait for the reply) | `challenge_id` |
+| 10796 | `JBPOKKNFOKM` | Response (the client subscribes to it as a push and matches it by challenge ID) | `MJCCFIINAJC` ranking entries (`CFIIJJEGKHC`), `challenge_id`, retcode |
+| 10785 | `NOEGOMIJDAH` | Notification: settlement | `challenge_id`; oneof: `BCLOOPGAIKJ`(9) warm-up result, `OEFFDKDCIMC`(2) final result |
 
-挑战数据 `LFIKNHJBDBJ`：`challenge_id`，`KHBJOAHCCCE` 上次阵容，`LMINNGCDDOK` IsFirstStageFinished，`MNIBAEDPCHA` ShieldBreakCount，`HAGDKKBAAKK` BuffLv，`CNEJKLABHDG` MaxHpBarBreakCount，`LIHEPONEGOB` ConsumedActionValue（double）。
+Challenge data `LFIKNHJBDBJ`: `challenge_id`, `KHBJOAHCCCE` last lineup, `LMINNGCDDOK` IsFirstStageFinished, `MNIBAEDPCHA` ShieldBreakCount, `HAGDKKBAAKK` BuffLv, `CNEJKLABHDG` MaxHpBarBreakCount, `LIHEPONEGOB` ConsumedActionValue (double).
 
-预热结果 `CGCIGGBIGAL`：`HAGDKKBAAKK` BuffLv，`MNIBAEDPCHA` ShieldBreakCount（客户端直接覆盖，并置 IsFirstStageFinished）。决赛结果 `HAIEHHIHIGC`：`NKIIHODEFBP` HpBarBreakCount，`FMBFAPOCIDF` ConsumedActionValue（double）；客户端用 `MJCMGOEMKCC.HOAHFAPHDND` 自行判断新纪录：生命条为 0 不算；生命条更多为新纪录；相同时消耗行动值（`UINumberUtils.DelayInt`）更少为新纪录。
+Warm-up result `CGCIGGBIGAL`: `HAGDKKBAAKK` BuffLv, `MNIBAEDPCHA` ShieldBreakCount (the client overwrites its values directly and sets IsFirstStageFinished). Final result `HAIEHHIHIGC`: `NKIIHODEFBP` HpBarBreakCount, `FMBFAPOCIDF` ConsumedActionValue (double). The client decides on its own whether this is a new record, in `MJCMGOEMKCC.HOAHFAPHDND`: 0 HP bars does not count; more HP bars is a new record; with equal HP bars, less consumed action value (`UINumberUtils.DelayInt`) is a new record.
 
-好友排行项 `CFIIJJEGKHC`：`uid`，`CNEJKLABHDG` 最佳生命条，`LIHEPONEGOB` 消耗行动值，`OEOPMBHFBBP` 出战角色。
+Friend ranking entry `CFIIJJEGKHC`: `uid`, `CNEJKLABHDG` best HP bars, `LIHEPONEGOB` consumed action value, `OEOPMBHFBBP` characters fielded.
 
-阵容：试用角色用 `AvatarTrialType` + SpecialAvatar ID（必须在该挑战的 `SpecialAvatarList` 中），自有角色用 `AvatarFormalType` 或 `AvatarUpgradeAvailableType`（替换同名试用角色）+ 角色 ID。实测客户端请求为 `{challengeId: 2, LAJAGHBKIJH: true, avatarList: [1407, 1413, 1415, 1409] × AvatarUpgradeAvailableType}`。
+Lineup: trial characters use `AvatarTrialType` + SpecialAvatar ID (which must be in the challenge's `SpecialAvatarList`); owned characters use `AvatarFormalType` or `AvatarUpgradeAvailableType` (which replaces the trial character with the same name) + character ID. An observed client request: `{challengeId: 2, LAJAGHBKIJH: true, avatarList: [1407, 1413, 1415, 1409] × AvatarUpgradeAvailableType}`.
 
-开始挑战响应成功时，客户端（`CCFKBJDAMNJ.HCJDPFKJOHE`）先用 `NEMJKLMIJOL` 和 `KHBJOAHCCCE` 更新挑战，再把 `battle_info` 交给 `AdventureModule.CreateBattleServerCheckResult` 进入战斗；retcode 非 0 时走通用的进战错误提示。
+When the start-challenge response succeeds, the client (`CCFKBJDAMNJ.HCJDPFKJOHE`) first updates the challenge from `NEMJKLMIJOL` and `KHBJOAHCCCE`, then passes `battle_info` to `AdventureModule.CreateBattleServerCheckResult` to enter the battle; with a non-zero retcode it shows the generic enter-battle error.
 
-## 战斗统计
+## Battle statistics
 
-客户端子模式 `KKCDPIJCADB`（`ActivitySubModeType.RealityShowActivity` = 10）在 `GenStatistics` 中把计数写入 `BattleStatistics.MHPDKEDHELL`（37，`GBJMLKNLEPD`）的 `MFOHGCNOMLB`（6，`IHDKFBDLNGL`）：
+The client sub-mode `KKCDPIJCADB` (`ActivitySubModeType.RealityShowActivity` = 10) writes its counters in `GenStatistics` into `MFOHGCNOMLB` (6, `IHDKFBDLNGL`) of `BattleStatistics.MHPDKEDHELL` (37, `GBJMLKNLEPD`):
 
-| 字段 | 含义 |
+| Field | Meaning |
 | --- | --- |
-| `MNIBAEDPCHA`(1) | 破除特殊护盾数（预热，触发 `ActivityRealityShowShieldBreakCountUpdate`） |
-| `KMBPEBAFDLF`(2) | 击穿生命条数（决赛，触发 `ActivityRealityShowHpBarBreakCountUpdate`） |
-| `LGIFBIOJKFH`(3) | BOSS 战事件 `BattleEventAbility_RealityShow_Boss_ReportLeftDelay` 上报的剩余行动值，服务端不使用 |
+| `MNIBAEDPCHA`(1) | Special shields broken (warm-up; triggers `ActivityRealityShowShieldBreakCountUpdate`) |
+| `KMBPEBAFDLF`(2) | HP bars broken (final; triggers `ActivityRealityShowHpBarBreakCountUpdate`) |
+| `LGIFBIOJKFH`(3) | Remaining action value reported by the boss battle event `BattleEventAbility_RealityShow_Boss_ReportLeftDelay`; not used by the server |
 
-服务端在 `PVEBattleResultCsReq` 胜利时结算：预热记录破盾数与档位；决赛取击穿生命条数，消耗行动值取 `Stt.total_delay_cumulate`。结算通知在 `PVEBattleResultScRsp` 之前发出，客户端结算界面读取它。失败或退出不结算。
+The server settles on a won `PVEBattleResultCsReq`: the warm-up records the shields broken and the buff level; the final takes the HP bars broken, with the consumed action value taken from `Stt.total_delay_cumulate`. The settlement notification is sent before `PVEBattleResultScRsp`, and the client's settlement screen reads it. A loss or quitting does not settle.
 
-## 活动任务
+## Event missions
 
-FinishWay 类型取客户端 `MissionFinishType` 的值：`RealityShowBuffNum` = 470011、`RealityShowResult` = 470012、`RealityShowAllResult` = 470013（4.7.51 没有 FinishWay 使用）。任务 6091001–6091028：`ParamInt1` 挑战 ID，`ParamInt2` 档位（BuffNum 为增益档位，Result 为评级 1 B / 2 A / 3 S / 4 SS），达到或超过即完成。
+The FinishWay types take the values of the client's `MissionFinishType`: `RealityShowBuffNum` = 470011, `RealityShowResult` = 470012, `RealityShowAllResult` = 470013 (no FinishWay uses it in 4.7.51). Missions 6091001–6091028: `ParamInt1` is the challenge ID, `ParamInt2` the level (the buff level for BuffNum; the rating for Result: 1 B / 2 A / 3 S / 4 SS); reaching or exceeding it finishes the mission.
 
-在加入这三个枚举成员之前生成的 `Resource.bin` 里，这些 FinishWay 行的类型是 `Unknown`，任务不会推进，需要用当前代码重建资源缓存（流程见 [从客户端导出重建资源缓存](../operations/resource-cache-from-client-export.md)）。回归在内存中设置类型，新旧缓存都能通过。
+In a `Resource.bin` generated before these three enum members were added, these FinishWay rows have type `Unknown` and the missions do not progress; the resource cache has to be rebuilt with the current code (see [Rebuilding the resource cache from a client export](../operations/resource-cache-from-client-export.md)). The regression sets the types in memory, so it passes with both old and new caches.
 
-## 未覆盖
+## Not covered
 
-- 未经客户端实机验证：开战后的战斗表现、结算界面、决赛增益生效情况、徽章与限时奖励领取。
-- `RealityShowAllResult` 没有对应 FinishWay，未实现处理器。
+- Not verified on a real client: battle behaviour after starting, the settlement screen, whether the final-stage buffs take effect, badge and time-limited reward claiming.
+- `RealityShowAllResult` has no matching FinishWay; no handler is implemented for it.

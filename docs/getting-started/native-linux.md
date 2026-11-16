@@ -1,5 +1,7 @@
 # Native Linux Setup
 
+English | [简体中文](native-linux.zh-CN.md)
+
 This is the simple deployment path: one checkout, one server process, no Docker,
 and no split dispatch/game node setup. After .NET is installed, Linux can run it
 directly from source just like Windows.
@@ -145,7 +147,7 @@ Expose the HTTP dispatch/gateway port from `Config.json`:
 ```json
 "HttpServer": {
   "BindAddress": "0.0.0.0",
-  "PublicAddress": "hsr.hoyotoon.com",
+  "PublicAddress": "example.com",
   "Port": 21000,
   "UseSSL": false
 }
@@ -156,7 +158,7 @@ Expose the UDP game port from `Config.json`:
 ```json
 "GameServer": {
   "BindAddress": "0.0.0.0",
-  "PublicAddress": "hsr.hoyotoon.com",
+  "PublicAddress": "example.com",
   "Port": 23300
 }
 ```

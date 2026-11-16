@@ -1,69 +1,73 @@
-# 源生成器
+# Source Generators
+
+English | [简体中文](source-generators.zh-CN.md)
+
+This document describes the Roslyn source generators in `SourceGen/`: what each one reads and generates, the database mapping rules, the diagnostics they report, and how to change and test them. Read it before adding a type they register or changing a generator.
 
 Source: [`SourceGen/`](../../SourceGen/)
 
-`SourceGen` 是一组 Roslyn 增量源生成器，以分析器的形式被 `Common`、`GameServer`、`Command` 引用。它们在编译期把"按特性或基类找出一批类型再注册"这类原本要靠反射完成的工作写成普通 C#，服务器因此能在 NativeAOT 下运行。
+`SourceGen` is a set of Roslyn incremental source generators, referenced as analyzers by `Common`, `GameServer` and `Command`. At compile time they turn work that would otherwise need reflection, "find a set of types by attribute or base class and register them", into ordinary C#, which is what lets the server run under NativeAOT.
 
-## 生成器一览
+## Generators
 
-| 生成器 | 读取 | 生成 | 使用方 |
+| Generator | Reads | Generates | Used by |
 | --- | --- | --- | --- |
-| `HandlerRegistryGenerator` | 带 `[Opcode(cmdId)]` 的非抽象类 | `GeneratedHandlerRegistry.Build()`：cmdId 到处理器实例的字典 | `HandlerManager` |
-| `CommandRegistryGenerator` | 带 `[CommandInfo]` 的非抽象类，及其 `[CommandMethod]`、`[CommandDefault]` 方法 | `GeneratedCommandRegistry.Build()`：命令特性、实例和各方法的调用委托 | `CommandManager` |
-| `MissionHandlerRegistryGenerator` | 带 `[MissionFinishAction]`、`[MissionFinishType]` 的非抽象类 | `GeneratedMissionHandlers.Register()`：填充 `MissionManager` 的两张处理器表 | `ServerUtils` |
-| `MemoryPackRegistrarGenerator` | 程序集内的 `[MemoryPackable]` 类和结构 | 模块初始化器 `MemoryPackRegistrar`：提前运行各类型的静态构造函数，注册其 formatter | 程序集加载时自动执行 |
-| `DatabaseStoreGenerator` | `BaseDatabaseDataHelper` 的非抽象子类 | `DbStores.g.cs`：每个实体的行类型和建表、读取、插入、更新、删除代码，`EntityStores.Map`，以及 BLOB 列所需 formatter 的注册 | `DatabaseHelper` |
+| `HandlerRegistryGenerator` | Non-abstract classes with `[Opcode(cmdId)]` | `GeneratedHandlerRegistry.Build()`: a dictionary from cmdId to handler instance | `HandlerManager` |
+| `CommandRegistryGenerator` | Non-abstract classes with `[CommandInfo]`, and their `[CommandMethod]` and `[CommandDefault]` methods | `GeneratedCommandRegistry.Build()`: command attributes, instances and an invocation delegate for each method | `CommandManager` |
+| `MissionHandlerRegistryGenerator` | Non-abstract classes with `[MissionFinishAction]` or `[MissionFinishType]` | `GeneratedMissionHandlers.Register()`: fills the two handler tables of `MissionManager` | `ServerUtils` |
+| `MemoryPackRegistrarGenerator` | `[MemoryPackable]` classes and structs in the assembly | Module initializer `MemoryPackRegistrar`: runs each type's static constructor early, which registers its formatter | Runs automatically when the assembly loads |
+| `DatabaseStoreGenerator` | Non-abstract subclasses of `BaseDatabaseDataHelper` | `DbStores.g.cs`: a row type for each entity and the code to create its table, read, insert, update and delete, `EntityStores.Map`, and registration of the formatters needed by BLOB columns | `DatabaseHelper` |
 
-新增处理器、命令、任务处理器或数据库实体时只需按约定声明类型，不需要另外登记。抽象类不会被注册。
+To add a handler, command, mission handler or database entity, declare the type following the convention; no separate registration is needed. Abstract classes are not registered.
 
-## 数据库实体的映射规则
+## Database entity mapping rules
 
-- 可读写的实例属性各对应一列；`[DbIgnore]` 的属性、只读属性和静态属性不存储。基类的属性排在前面，`Uid` 是主键。
-- 表名默认取类名，可用 `[DbTable("name")]` 指定。
-- 数值、`bool`、`string`、枚举和 `byte[]` 按数据库原生类型存储（枚举存为整数）。
-- 其他类型用 MemoryPack 序列化为 BLOB；实现 `Google.Protobuf.IMessage` 的类型用 protobuf 序列化为 BLOB。
-- 实体新增属性后，已有的表会在启动时自动补上对应的列（`DbSchema.EnsureColumns`）；删除或改类型不会自动迁移。
-- 实体必须声明在定义 `BaseDatabaseDataHelper` 的程序集（`Common`）里，`DatabaseHelper` 只使用该程序集的 `EntityStores.Map`。
+- Each readable and writable instance property maps to a column; properties marked `[DbIgnore]`, read-only properties and static properties are not stored. Base class properties come first, and `Uid` is the primary key.
+- The table name defaults to the class name and can be set with `[DbTable("name")]`.
+- Numbers, `bool`, `string`, enums and `byte[]` are stored as native database types (enums as integers).
+- Other types are serialized to a BLOB with MemoryPack; types implementing `Google.Protobuf.IMessage` are serialized to a BLOB with protobuf.
+- When an entity gains a property, existing tables get the matching column added automatically at startup (`DbSchema.EnsureColumns`); removing a property or changing its type is not migrated automatically.
+- Entities must be declared in the assembly that defines `BaseDatabaseDataHelper` (`Common`); `DatabaseHelper` only uses that assembly's `EntityStores.Map`.
 
-## 诊断
+## Diagnostics
 
-| ID | 含义 |
+| ID | Meaning |
 | --- | --- |
-| `M7H001` | 两个处理器声明了同一个 cmdId |
-| `M7H002` | 两个任务处理器注册了同一个枚举值 |
-| `M7H003` | 两个数据库实体的类名相同（类名决定生成的 store 名） |
+| `M7H001` | Two handlers declare the same cmdId |
+| `M7H002` | Two mission handlers register the same enum value |
+| `M7H003` | Two database entities have the same class name (the class name determines the generated store name) |
 
-三者都是错误，报在重复的那个声明上。
+All three are errors, reported on the duplicate declaration.
 
-## 查看生成结果
+## Inspecting the generated code
 
-生成的文件默认只存在于编译器内存里。需要查看时让编译器把它们写到磁盘：
+By default the generated files exist only in the compiler's memory. To inspect them, have the compiler write them to disk:
 
 ```sh
 dotnet build Common/Common.csproj -c Release --no-incremental \
-  -p:EmitCompilerGeneratedFiles=true -p:CompilerGeneratedFilesOutputPath=<输出目录>
+  -p:EmitCompilerGeneratedFiles=true -p:CompilerGeneratedFilesOutputPath=<output directory>
 ```
 
-不要手改这些文件，改动应落在 `SourceGen/` 的源码里。
+Do not edit these files by hand; changes belong in the source under `SourceGen/`.
 
-## 修改生成器
+## Changing a generator
 
-- 每个生成器先把语法和符号读成模型，再从模型写出代码。模型只包含字符串、数字和 `EquatableArray<T>`，按值比较：增量管线靠比较模型决定是否重新生成，模型里放进符号、语法节点或普通数组都会让每次编辑触发重新生成。
-- 写代码用 `CodeWriter`，缩进随打开的块自动变化，行尾固定为 `\n`。
-- 生成的代码中的类型名一律带 `global::`，所需的 `using` 由生成的文件自己声明，不依赖使用方项目的全局 using。
-- 生成器项目的目标框架是 `netstandard2.0`，不能使用需要新运行时的 API。
+- Each generator first reads syntax and symbols into a model, then writes code from the model. The model contains only strings, numbers and `EquatableArray<T>`, compared by value: the incremental pipeline decides whether to regenerate by comparing models, and putting symbols, syntax nodes or plain arrays into a model makes every edit trigger regeneration.
+- Code is written with `CodeWriter`; indentation follows the open blocks automatically, and line endings are always `\n`.
+- Type names in generated code are always prefixed with `global::`, and the generated file declares the `using` directives it needs itself instead of relying on the consuming project's global usings.
+- The generator project targets `netstandard2.0` and cannot use APIs that need a newer runtime.
 
-改完后运行回归：
+After a change, run the regression:
 
 ```sh
 dotnet run --project scripts/SourceGenRegression/SourceGenRegression.csproj -c Release
 ```
 
-它对每个生成器跑一份样例输入（`scripts/SourceGenRegression/Cases/<名称>/Input.cs`），检查：
+It runs a sample input for each generator (`scripts/SourceGenRegression/Cases/<name>/Input.cs`) and checks that:
 
-- 输入和生成的代码都能通过编译；
-- 生成的文件与同目录下的期望文件逐字符一致；
-- 无关的编辑不会让生成器重新产出结果；
-- 重复声明会报出对应的诊断。
+- the input and the generated code both compile;
+- the generated files match the expected files in the same directory character by character;
+- unrelated edits do not make the generator produce output again;
+- duplicate declarations report the corresponding diagnostic.
 
-预期最后一行为 `SourceGen regression checks: <数量>, failures: 0`。有意改变输出时追加 `-- --update` 重写期望文件，并在提交前逐行审查期望文件的差异。该回归不需要游戏资源，已包含在 `scripts/verify-security.py` 中。
+The expected last line is `SourceGen regression checks: <count>, failures: 0`. When the output changes on purpose, append `-- --update` to rewrite the expected files, and review the diff of the expected files line by line before committing. The regression needs no game resources and is included in `scripts/verify-security.py`.

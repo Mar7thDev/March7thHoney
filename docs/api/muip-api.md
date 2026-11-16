@@ -1,13 +1,6 @@
-<div align="center">
-<table>
-<tr>
-<td valign="center"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1fa-1f1f8.png" width="16"/> English</td>
-<td valign="center"><a href="muip-api.zh-CN.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1e8-1f1f3.png?raw=true" width="16"/> 简中</a></td>
-<td valign="center"><a href="muip-api.zh-TW.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1f9-1f1fc.png?raw=true" width="16"/> 繁中</a></td>
-<td valign="center"><a href="muip-api.ja-JP.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1ef-1f1f5.png" width="16"/> 日本語</a></td>
-</tr>
-</table>
-</div>
+# MUIP API
+
+English | [简体中文](muip-api.zh-CN.md)
 
 ## 💡API Help
 
@@ -109,4 +102,4 @@
 
 ## Session safety
 
-Sessions expire after 15 minutes. Changing or disabling the admin key invalidates existing administrator sessions; clients must create and authenticate a new session. Expired sessions are pruned every minute and before admission. The creation endpoint allows at most 1024 unexpired sessions globally and 32 per HTTP source address; overflow returns a nonzero `code`. Reuse a valid session rather than continuously creating new IDs.
+Sessions expire after 15 minutes. Changing or disabling the admin key invalidates existing administrator sessions; clients must create and authenticate a new session. Rotating the key from the admin panel actively clears these sessions. Expired sessions are pruned every minute and before admission. The creation endpoint allows at most 1024 unexpired sessions globally and 32 per HTTP source address; overflow returns a nonzero `code`. Reuse a valid session rather than continuously creating new IDs.

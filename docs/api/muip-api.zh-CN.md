@@ -1,17 +1,6 @@
-<div align="center">
-<table>
-<tr>
-<td valign="center"><a href="muip-api.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1fa-1f1f8.png" width="16"/> English</a></td>
-<td valign="center"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1e8-1f1f3.png?raw=true" width="16"/> 简中</td>
-<td valign="center"><a href="muip-api.zh-TW.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1f9-1f1fc.png?raw=true" width="16"/> 繁中</a></td>
-<td valign="center"><a href="muip-api.ja-JP.md"><img src="https://github.com/twitter/twemoji/blob/master/assets/72x72/1f1ef-1f1f5.png" width="16"/> 日本語</a></td>
-</tr>
-</table>
-</div>
+# MUIP API
 
-## 会话安全约束
-
-会话有效期为 15 分钟。管理密钥变更（含禁用）会使旧管理会话失效，客户端必须重新创建并认证；后台轮换密钥会主动清除这些会话。过期会话每分钟清理，新建时也会清理。创建接口总上限 1024 个未过期会话，同一 HTTP 来源上限 32 个；超过上限返回非零 `code`，客户端应复用仍有效的会话而不是不断创建。
+[English](muip-api.md) | 简体中文
 
 ## 💡API帮助
 
@@ -110,3 +99,7 @@
       }
   }
   ```
+
+## 会话安全约束
+
+会话有效期为 15 分钟。管理密钥变更（含禁用）会使旧管理会话失效，客户端必须重新创建并认证；后台轮换密钥会主动清除这些会话。过期会话每分钟清理，新建时也会清理。创建接口总上限 1024 个未过期会话，同一 HTTP 来源上限 32 个；超过上限返回非零 `code`，客户端应复用仍有效的会话而不是不断创建。
