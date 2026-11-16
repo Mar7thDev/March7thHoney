@@ -26,7 +26,7 @@
     <PackageVersion Include="Spectre.Console" Version="0.57.2" />
     <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.5" />
     <PackageVersion Include="System.Diagnostics.PerformanceCounter" Version="9.0.0" />
-    <PackageVersion Include="System.Management" Version="10.0.0" />
+    <PackageVersion Include="System.Management" Version="11.0.0" />
     <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
   </ItemGroup>
 
