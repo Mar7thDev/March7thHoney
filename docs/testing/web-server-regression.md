@@ -1,32 +1,60 @@
-# Web 后台回归
+# Web admin regression
 
-测试项目：[`scripts/WebServerRegression/`](../../scripts/WebServerRegression/)
+English | [简体中文](web-server-regression.zh-CN.md)
 
-运行后台回归检查：
+`WebServerRegression` checks the web admin, MUIP, command target isolation and asynchronous command output. Run it after changing `WebServer/`, the admin or player console pages, MUIP or how commands reach a target.
+
+Project: [`scripts/WebServerRegression/`](../../scripts/WebServerRegression/)
+
+## How to run
+
+From the repository root:
 
 ```powershell
 dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj
 ```
 
-检查无目标命令、目标隔离、异步输出和异常、并发请求、MUIP GET/POST、登录保护及维护接口内存数据；同时验证 `query_gateway` 下发差分宇宙 BuildRef 地址与请求头，以及两个精确 BuildRef JSON 路由；`/language` 对后台控制台返回仅限玩家，玩家自助控制台可固定自身语言并以新语言回复。测试会打印维护接口耗时；异常测试会打印一条预期的错误日志，最终以 `Regression failures: 0` 为通过。
-
-测试使用独立内存数据和临时目录，不加载项目的 `Config.json` 或玩家数据库。模拟连接和命令仅在测试进程内注册。
-
-需要验证浏览器页面时：
+To check the pages in a browser, add `--serve`:
 
 ```powershell
 dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- --serve
 ```
 
-打开 `http://127.0.0.1:21000/admin/index.html`，使用测试密钥 `local-web-regression-only` 登录，完成后按 Ctrl+C 停止。此模式只启动回环地址上的测试后台；配置及存库操作不用于验证。
+Open `http://127.0.0.1:21000/admin/index.html` and sign in with the test key `local-web-regression-only`. Stop it with Ctrl+C when you are done. This mode only starts a test admin on the loopback address; do not use it to verify configuration or database writes.
 
-## 凭据撤销与 MUIP 生命周期
+## Prerequisites
 
-安全回归还检查：
+None beyond the .NET SDK. The regression uses its own in-memory data and a temporary directory, and does not load the project's `Config.json` or any player database. Simulated connections and commands are registered only inside the test process.
 
-- `/sr-tools` 在 RSA 登录解密开启或关闭时，都拒绝空密码／错误密码；正确密码仍进入正常在线状态检查。
-- 玩家控制台令牌绑定签发时的密码版本；管理改密及邮件找回密码之后，旧令牌不能继续使用，新登录仍可用。此机制不依赖数据库新增字段。
-- MUIP 会话绑定创建时的管理密钥版本；配置变更后，认证、命令、服务器信息和玩家信息接口均拒绝旧会话。后台轮换密钥也会主动清除 MUIP 管理会话。
-- 匿名 MUIP 会话达到容量上限时拒绝新增；已过期且被遗弃的会话会在新建时清理，服务也每分钟主动清理一次。总上限 1024，每个 HTTP 来源最多 32 个尚未过期会话；内部短期命令桥接不使用匿名创建接口。
+## What it covers
 
-这些用例仅使用临时账号、临时数据库和回环 HTTP，不接触真实玩家存档。根 `/sr-tools` 导入不再允许仅凭 UID 操作，即使关闭 RSA 解密；没有密码的旧账号需要先设置密码。
+### Commands and admin
+
+- Commands without a target, target isolation, asynchronous output and exceptions, concurrent requests.
+- `/language` answers the admin console that it is player-only; the player self-service console can pin its own language and replies in the new language.
+- Login protection and the in-memory data of the maintenance endpoints.
+
+### MUIP and gateway
+
+- MUIP GET and POST.
+- `query_gateway` hands out the Divergent Universe BuildRef address and request headers; the two exact BuildRef JSON routes.
+
+### Credential revocation and MUIP session lifecycle
+
+- `/sr-tools` rejects an empty or wrong password whether RSA login decryption is on or off; a correct password still goes on to the normal online-status check.
+- Player console tokens are bound to the password version at issue time. After an admin password change or an e-mail password reset the old token stops working, and a new login still works. This needs no new database column.
+- MUIP sessions are bound to the admin key version at creation time. After a configuration change, the authentication, command, server-info and player-info endpoints all reject old sessions. Rotating the key from the admin page also clears MUIP admin sessions.
+- Anonymous MUIP session creation is refused at capacity. Expired, abandoned sessions are cleaned up on creation, and the service also cleans them up every minute. The total limit is 1024, with at most 32 unexpired sessions per HTTP source. The internal short-lived command bridge does not use the anonymous creation endpoint.
+- Root `/sr-tools` import no longer accepts a UID alone, even with RSA decryption off; old accounts without a password must set one first.
+
+These cases use only temporary accounts, a temporary database and loopback HTTP, and never touch real player saves.
+
+## Expected result
+
+The run ends with:
+
+```text
+Regression failures: 0
+```
+
+The regression prints how long the maintenance endpoints take. The exception test prints one expected error log.

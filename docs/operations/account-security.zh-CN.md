@@ -1,5 +1,9 @@
 # 账号清理与设备 / IP 封锁
 
+[English](account-security.md) | 简体中文
+
+本指南面向需要批量删除账号、封锁设备或 IP，或者在反向代理后、以 Dispatch 与 GameServer 分离方式部署服务器的管理员，同时说明升级后的认证行为以及这些功能背后的管理接口。
+
 后台入口为 `/admin/index.html`，使用管理密钥登录。
 
 ## 批量删除
@@ -62,4 +66,4 @@ Dispatch 与 GameServer 分开运行时，两端必须设置一致且非空的 `
 
 封锁已有哈希时，以 `identity_key` 替换 `value`，两者不能同时提供。API 同样验证类型、地址格式和时长；重复封锁同一规范化标识会更新该规则。
 
-隔离回归测试及浏览器测试夹具见 [账号安全回归](../testing/auth-regression.md)。
+隔离回归测试及浏览器测试夹具见 [账号安全回归](../testing/auth-regression.zh-CN.md)。
