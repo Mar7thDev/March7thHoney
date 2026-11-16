@@ -1,16 +1,31 @@
+<div align="center">
+
 # March7thHoney
 
-<p align="center">
+**A playable game server in C# on .NET 10.<br />Clone it, run one command, and log in.**
+
+<p>
+  <a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI" /></a>
+  <a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?style=flat&logo=github&color=f5c542" alt="Stars" /></a>
+  <a href="https://github.com/Mar7thDev/March7thHoney/commits/main"><img src="https://img.shields.io/github/last-commit/Mar7thDev/March7thHoney?color=2ea44f" alt="Last commit" /></a>
   <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-2ea44f" alt="Platform" />
-  <img src="https://img.shields.io/badge/Status-Active%20Development-f39c12" alt="Status" />
-  <img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-0a7ea4" alt="Platform" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License" /></a>
+  <a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white" alt="Discord" /></a>
 </p>
+
+[Quick start](#quick-start) · [Features](#features) · [Documentation](docs/README.md) · [Contributing](CONTRIBUTING.md) · [Discord](https://discord.gg/CyreneEchoes)
 
 English | [简体中文](docs/project-overview/README.zh-CN.md) | [繁體中文](docs/project-overview/README.zh-TW.md) | [日本語](docs/project-overview/README.ja-JP.md)
 
-March7thHoney is a game server written in C# on .NET 10. It runs on Windows, Linux and macOS and is under
-active development.
+</div>
+
+| | |
+|---|---|
+| **Playable end to end** | Shops, warps, battles, the open world and the endgame challenge modes work against a real client; missions are being filled in. |
+| **Built to be run** | SQLite or MySQL, a web admin panel, the MUIP API and a systemd-ready Linux setup. Windows, Linux and macOS on `x64` and `arm64`. |
+| **No reflection at run time** | Packet handlers, commands and database stores are registered by Roslyn source generators, so the server also publishes with NativeAOT. |
+| **Checked on every change** | A warnings-as-errors build and the regression suites for accounts, the web server, KCP and the source generators run in CI; more suites cover login, scenes and game modes against real resources. |
 
 ## Features
 
@@ -121,6 +136,12 @@ and the conventions for commits and pull requests. Report vulnerabilities privat
 - [LunarCore](https://github.com/Melledy/LunarCore)
 - [DanhengServer](https://github.com/OrihaWeave/DanhengServer-OpenSource)
 - [KcpSharp](https://github.com/yigolden-oss/KcpSharp)
+
+<a href="https://github.com/Mar7thDev/March7thHoney/graphs/contributors"><img src="https://contrib.rocks/image?repo=Mar7thDev/March7thHoney" alt="Contributors" /></a>
+
+## Star history
+
+<a href="https://www.star-history.com/#Mar7thDev/March7thHoney&Date"><img src="https://api.star-history.com/svg?repos=Mar7thDev/March7thHoney&type=Date" alt="Star History Chart" width="100%" /></a>
 
 ## License
 
