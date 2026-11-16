@@ -1,4 +1,5 @@
 using System.Net;
+using MailKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using March7thHoney.Database.Account;

@@ -25,7 +25,7 @@
     <TrimmerRootAssembly Include="Newtonsoft.Json" />
     <TrimmerRootAssembly Include="System.Management" />
     <TrimmerRootAssembly Include="MailKit" />
-    <TrimmerRootAssembly Include="MimeKit" />
+    <TrimmerRootAssembly Include="MimeKit.Core" />
     <TrimmerRootAssembly Include="BouncyCastle.Cryptography" />
     <TrimmerRootAssembly Include="Spectre.Console" />
     <!-- Custom JSON configs (Banners, ActivityConfig, VideoKeys, room gen...) are read via Newtonsoft reflection. -->
