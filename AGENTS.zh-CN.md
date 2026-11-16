@@ -1,5 +1,7 @@
 # 项目协作规范
 
+[English](AGENTS.md) | 简体中文
+
 本文件为 March7thHoney 的贡献者和自动化开发助手提供项目结构、开发约定与验证入口，适用于整个仓库。子目录存在更具体的 `AGENTS.md` 时，结合其说明开展工作。文档中的版本示例可能落后于代码，实际行为以当前源码、项目文件和资源为准。
 
 ## 协作原则
@@ -76,7 +78,7 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 - 修改存档、数据库或 MemoryPack 资源模型时验证旧数据兼容性，不能仅凭新数据可用就认定升级安全。
 - 保持 AOT 兼容：新增 Web JSON 请求/响应类型时检查 `WebServer/WebJsonContext.cs` 及相关序列化上下文；修改生成规则应改 `SourceGen/` 源码，不手改 `obj/` 里的生成文件。
 - 面向用户的命令文案沿用 `I18NManager` 与 `Config/Languages/`，页面文案遵循所属页面的国际化机制。API 或配置行为变化应同步相关文档。
-- 文档以英文为权威版本（`name.md`），旁边是简体中文译本（`name.zh-CN.md`），两者在同一项改动里一起更新；只有项目 README 保留繁中和日文版本。新文档要列进 `docs/README.md` 和 `docs/README.zh-CN.md`，`python3 scripts/check-docs.py` 检查链接、译本和索引。本文件是例外，以中文维护。
+- 文档以英文为权威版本（`name.md`），旁边是简体中文译本（`name.zh-CN.md`），两者在同一项改动里一起更新；只有项目 README 保留繁中和日文版本。新文档要列进 `docs/README.md` 和 `docs/README.zh-CN.md`，`python3 scripts/check-docs.py` 检查链接、译本和索引。本文件同样遵循这一约定，英文版是 `AGENTS.md`，本文是它的译本。
 - 跨平台文件操作使用合适的路径 API，避免硬编码开发机绝对路径；保留原有文件编码和换行风格。
 - NuGet 包版本只写在 `Directory.Packages.props`，项目文件中的 `PackageReference` 不带 `Version`。`Nullable` 和 `ImplicitUsings` 由 `Directory.Build.props` 统一开启，新项目无需重复声明。
 - `.editorconfig` 约束新增和修改的代码，不作为重排既有文件的理由。
@@ -126,4 +128,4 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 3. 涉及协议生成、配置或接口行为时，检查源码、生成结果和文档是否一致。
 4. 清理本次启动的测试服务，说明修改位置、验证结果及剩余限制。
 
-本文件纳入版本控制，项目结构、开发流程或测试入口变化时应同步更新。
+本文件纳入版本控制，项目结构、开发流程或测试入口变化时应与 `AGENTS.md` 一起同步更新。
