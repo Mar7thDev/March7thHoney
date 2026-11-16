@@ -1,29 +1,51 @@
 <div align="center">
 
-# March7thHoney
-
-**C# と .NET 10 で書かれた、実際に遊べるゲームサーバー。<br />クローンして、コマンド一つで起動し、ログインするだけ。**
-
-<p>
-  <a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Mar7thDev/March7thHoney/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white&style=for-the-badge&labelColor=1f2328&color=ff8fb1" alt="CI" /></a>
-  <a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?logo=github&logoColor=white&style=for-the-badge&labelColor=1f2328&color=ff8fb1" alt="Stars" /></a>
-  <img src="https://img.shields.io/badge/.NET-10-ff8fb1?logo=dotnet&logoColor=white&style=for-the-badge&labelColor=1f2328" alt=".NET 10" />
-  <a href="../../LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-ff8fb1?style=for-the-badge&labelColor=1f2328" alt="License" /></a>
-  <a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-ff8fb1?logo=discord&logoColor=white&style=for-the-badge&labelColor=1f2328" alt="Discord" /></a>
-</p>
+<a href="https://github.com/Mar7thDev/March7thHoney"><img src="../assets/banner.svg" alt="March7thHoney" width="100%" /></a>
 
 [クイックスタート](#クイックスタート) · [機能](#機能) · [ドキュメント](../README.md) · [コントリビューション](../../CONTRIBUTING.md) · [Discord](https://discord.gg/CyreneEchoes)
+
+<a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Mar7thDev/March7thHoney/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white&style=for-the-badge&labelColor=161b33&color=ff8fb1" alt="CI" /></a>
+<a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?logo=github&logoColor=white&style=for-the-badge&labelColor=161b33&color=ff8fb1" alt="Stars" /></a>
+<a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-7fd8ff?logo=discord&logoColor=white&style=for-the-badge&labelColor=161b33" alt="Discord" /></a>
 
 [English](../../README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | 日本語
 
 </div>
 
-| | |
-|---|---|
-| **最初から最後まで遊べる** | ショップ、跳躍、戦闘、オープンワールド、エンドゲームの各チャレンジモードが実際のクライアントで動作します。任務は拡充中です。 |
-| **運用を前提にした作り** | SQLite または MySQL、Web 管理画面、MUIP API、systemd に対応した Linux 構成を備えています。Windows、Linux、macOS の `x64` と `arm64` に対応します。 |
-| **実行時にリフレクションを使わない** | パケットハンドラー、コマンド、データベースストアは Roslyn ソースジェネレーターが登録するため、NativeAOT でも発行できます。 |
-| **変更のたびに検証** | 警告をエラーとして扱うビルドと、アカウント、Web サーバー、KCP、ソースジェネレーターの回帰スイートが CI で実行されます。ログイン、シーン、各ゲームモードには実リソースを使う回帰スイートが別にあります。 |
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🎮 最初から最後まで遊べる
+
+ショップ、跳躍、戦闘、オープンワールド、エンドゲームの各チャレンジモードが実際のクライアントで動作します。任務は拡充中です。
+
+</td>
+<td width="50%" valign="top">
+
+### 🚀 運用を前提にした作り
+
+SQLite または MySQL、Web 管理画面、MUIP API、systemd に対応した Linux 構成を備えています。Windows、Linux、macOS の `x64` と `arm64` に対応します。
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### ⚡ 実行時にリフレクションを使わない
+
+パケットハンドラー、コマンド、データベースストアは Roslyn ソースジェネレーターが登録するため、NativeAOT でも発行できます。
+
+</td>
+<td width="50%" valign="top">
+
+### ✅ 変更のたびに検証
+
+警告をエラーとして扱うビルドと、アカウント、Web サーバー、KCP、ソースジェネレーターの回帰スイートが CI で実行されます。ログイン、シーン、各ゲームモードには実リソースを使う回帰スイートが別にあります。
+
+</td>
+</tr>
+</table>
 
 このページ以外のドキュメントは英語と簡体字中国語で提供されています。以下のリンクは英語版を指します。
 

@@ -1,29 +1,51 @@
 <div align="center">
 
-# March7thHoney
-
-**以 C# 與 .NET 10 編寫、可以實際遊玩的遊戲伺服端。<br />複製儲存庫，一條命令啟動，然後登入。**
-
-<p>
-  <a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Mar7thDev/March7thHoney/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white&style=for-the-badge&labelColor=1f2328&color=ff8fb1" alt="CI" /></a>
-  <a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?logo=github&logoColor=white&style=for-the-badge&labelColor=1f2328&color=ff8fb1" alt="Stars" /></a>
-  <img src="https://img.shields.io/badge/.NET-10-ff8fb1?logo=dotnet&logoColor=white&style=for-the-badge&labelColor=1f2328" alt=".NET 10" />
-  <a href="../../LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-ff8fb1?style=for-the-badge&labelColor=1f2328" alt="License" /></a>
-  <a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-ff8fb1?logo=discord&logoColor=white&style=for-the-badge&labelColor=1f2328" alt="Discord" /></a>
-</p>
+<a href="https://github.com/Mar7thDev/March7thHoney"><img src="../assets/banner.svg" alt="March7thHoney" width="100%" /></a>
 
 [快速開始](#快速開始) · [功能](#功能) · [文件](../README.zh-CN.md) · [參與貢獻](../../CONTRIBUTING.zh-CN.md) · [Discord](https://discord.gg/CyreneEchoes)
+
+<a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Mar7thDev/March7thHoney/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white&style=for-the-badge&labelColor=161b33&color=ff8fb1" alt="CI" /></a>
+<a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?logo=github&logoColor=white&style=for-the-badge&labelColor=161b33&color=ff8fb1" alt="Stars" /></a>
+<a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-7fd8ff?logo=discord&logoColor=white&style=for-the-badge&labelColor=161b33" alt="Discord" /></a>
 
 [English](../../README.md) | [简体中文](README.zh-CN.md) | 繁體中文 | [日本語](README.ja-JP.md)
 
 </div>
 
-| | |
-|---|---|
-| **從頭到尾可玩** | 商店、躍遷、戰鬥、大世界與各個終局挑戰玩法都能搭配真實用戶端運作，任務仍在補全。 |
-| **為實際部署而做** | 支援 SQLite 或 MySQL，內建網頁後台、MUIP API 與可接入 systemd 的 Linux 部署方式。支援 Windows、Linux、macOS 的 `x64` 與 `arm64`。 |
-| **執行時不靠反射** | 封包處理器、命令與資料庫存取由 Roslyn 原始碼產生器註冊，因此伺服端也能以 NativeAOT 發佈。 |
-| **每次變更都有檢查** | 警告視為錯誤的建置，以及帳號、Web 服務、KCP 與原始碼產生器的回歸套件在 CI 中執行；登入、場景與各玩法另有需要真實資源的回歸套件。 |
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🎮 從頭到尾可玩
+
+商店、躍遷、戰鬥、大世界與各個終局挑戰玩法都能搭配真實用戶端運作，任務仍在補全。
+
+</td>
+<td width="50%" valign="top">
+
+### 🚀 為實際部署而做
+
+支援 SQLite 或 MySQL，內建網頁後台、MUIP API 與可接入 systemd 的 Linux 部署方式。支援 Windows、Linux、macOS 的 `x64` 與 `arm64`。
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### ⚡ 執行時不靠反射
+
+封包處理器、命令與資料庫存取由 Roslyn 原始碼產生器註冊，因此伺服端也能以 NativeAOT 發佈。
+
+</td>
+<td width="50%" valign="top">
+
+### ✅ 每次變更都有檢查
+
+警告視為錯誤的建置，以及帳號、Web 服務、KCP 與原始碼產生器的回歸套件在 CI 中執行；登入、場景與各玩法另有需要真實資源的回歸套件。
+
+</td>
+</tr>
+</table>
 
 除本頁外，其餘文件提供英文與簡體中文版本；下方連結指向簡體中文版本。
 
