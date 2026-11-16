@@ -16,6 +16,12 @@ updates:
       # move to 5 is made deliberately.
       - dependency-name: MailKit
         update-types: ["version-update:semver-major"]
+      # No regression connects to a MySQL server, so a major version is taken only with a manual test.
+      - dependency-name: MySqlConnector
+        update-types: ["version-update:semver-major"]
+      # The source generators must not reference a compiler newer than the one in the oldest
+      # supported SDK, or that SDK refuses to load them (CS9057).
+      - dependency-name: Microsoft.CodeAnalysis.CSharp
   - package-ecosystem: github-actions
     directory: /
     schedule:
