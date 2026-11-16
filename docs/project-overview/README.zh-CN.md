@@ -104,6 +104,9 @@ CI 会把 `main` 的自包含构建发布为工作流产物：
 - [Glzd001](https://github.com/Glzd001)
 - [blamefire159-debug](https://github.com/blamefire159-debug)
 - [AzureXuanVerse](https://github.com/AzureXuanVerse)
+- [AcheronWife](https://github.com/AcheronWife)
+- [Yuuki](https://github.com/akbaryahya)
+- [ShuaiyuMiao](https://github.com/ShuaiyuMiao)
 
 ### 相关项目
 

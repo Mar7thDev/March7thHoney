@@ -106,6 +106,9 @@ CI は `main` の自己完結型ビルドをワークフローの成果物とし
 - [Glzd001](https://github.com/Glzd001)
 - [blamefire159-debug](https://github.com/blamefire159-debug)
 - [AzureXuanVerse](https://github.com/AzureXuanVerse)
+- [AcheronWife](https://github.com/AcheronWife)
+- [Yuuki](https://github.com/akbaryahya)
+- [ShuaiyuMiao](https://github.com/ShuaiyuMiao)
 
 ### 関連プロジェクト
 
