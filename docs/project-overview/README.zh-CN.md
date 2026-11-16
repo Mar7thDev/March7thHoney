@@ -5,13 +5,11 @@
 **用 C# 和 .NET 10 编写、可以实际游玩的游戏服务端。<br />克隆仓库，一条命令启动，然后登录。**
 
 <p>
-  <a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI" /></a>
-  <a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?style=flat&logo=github&color=f5c542" alt="Stars" /></a>
-  <a href="https://github.com/Mar7thDev/March7thHoney/commits/main"><img src="https://img.shields.io/github/last-commit/Mar7thDev/March7thHoney?color=2ea44f" alt="Last commit" /></a>
-  <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-0a7ea4" alt="Platform" />
-  <a href="../../LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-blue" alt="License" /></a>
-  <a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/Mar7thDev/March7thHoney/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Mar7thDev/March7thHoney/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white&style=for-the-badge&labelColor=1f2328&color=ff8fb1" alt="CI" /></a>
+  <a href="https://github.com/Mar7thDev/March7thHoney/stargazers"><img src="https://img.shields.io/github/stars/Mar7thDev/March7thHoney?logo=github&logoColor=white&style=for-the-badge&labelColor=1f2328&color=ff8fb1" alt="Stars" /></a>
+  <img src="https://img.shields.io/badge/.NET-10-ff8fb1?logo=dotnet&logoColor=white&style=for-the-badge&labelColor=1f2328" alt=".NET 10" />
+  <a href="../../LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-ff8fb1?style=for-the-badge&labelColor=1f2328" alt="License" /></a>
+  <a href="https://discord.gg/CyreneEchoes"><img src="https://img.shields.io/badge/Discord-Join-ff8fb1?logo=discord&logoColor=white&style=for-the-badge&labelColor=1f2328" alt="Discord" /></a>
 </p>
 
 [快速开始](#快速开始) · [功能](#功能) · [文档](../README.zh-CN.md) · [参与贡献](../../CONTRIBUTING.zh-CN.md) · [Discord](https://discord.gg/CyreneEchoes)
