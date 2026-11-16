@@ -1,6 +1,6 @@
 # Repository guidelines
 
-English | [简体中文](docs/AGENTS.zh-CN.md)
+English | [简体中文](AGENTS.zh-CN.md)
 
 This file gives contributors and automated coding assistants the layout of March7thHoney, its development conventions and the commands that verify a change. It applies to the whole repository. Where a subdirectory has a more specific `AGENTS.md`, follow both. Version examples in the documentation can lag behind the code; the current source, project files and resources decide what the behaviour actually is.
 
@@ -78,7 +78,7 @@ NativeAOT publishing uses the project-defined `-p:DoAot=true`. Do not pass `-p:P
 - When changing save data, the database or MemoryPack resource models, verify compatibility with old data; new data working is not enough to call an upgrade safe.
 - Stay AOT compatible: when adding a web JSON request or response type, check `WebServer/WebJsonContext.cs` and the related serialisation contexts; to change what is generated, change the source in `SourceGen/` rather than the generated files under `obj/`.
 - User-facing command text goes through `I18NManager` and `Config/Languages/`; page text follows the internationalisation mechanism of its page. When API or configuration behaviour changes, update the related documentation.
-- English is the authoritative language of the documentation (`name.md`), with a Simplified Chinese translation next to it (`name.zh-CN.md`); update both in the same change. Only the project README is also kept in Traditional Chinese and Japanese. A new document is listed in `docs/README.md` and `docs/README.zh-CN.md`; `python3 scripts/check-docs.py` checks links, translations and the indexes. This file follows the same rule, except that its translation is kept under `docs/`, as `docs/AGENTS.zh-CN.md`.
+- English is the authoritative language of the documentation (`name.md`), with a Simplified Chinese translation next to it (`name.zh-CN.md`); update both in the same change. Only the project README is also kept in Traditional Chinese and Japanese. A new document is listed in `docs/README.md` and `docs/README.zh-CN.md`; `python3 scripts/check-docs.py` checks links, translations and the indexes. This file follows the same rule: its translation is `AGENTS.zh-CN.md`.
 - Use the appropriate path APIs for cross-platform file operations and avoid hard-coded absolute paths of a development machine; keep a file's existing encoding and line endings.
 - NuGet package versions are written only in `Directory.Packages.props`; a `PackageReference` in a project file has no `Version`. `Nullable` and `ImplicitUsings` are turned on for every project by `Directory.Build.props`, so a new project does not declare them again.
 - `.editorconfig` governs new and changed code; it is not a reason to reformat existing files.
@@ -128,4 +128,4 @@ Choose the commands that match the change; combine them when several modules or 
 3. When protocol generation, configuration or interface behaviour is involved, check that the source, the generated output and the documentation agree.
 4. Stop the test services you started, and state where the changes are, how they were verified and what limitations remain.
 
-This file is under version control. Update it, together with `docs/AGENTS.zh-CN.md`, when the project layout, the development workflow or the test entry points change.
+This file is under version control. Update it, together with `AGENTS.zh-CN.md`, when the project layout, the development workflow or the test entry points change.
