@@ -58,7 +58,7 @@ jobs:
           global-json-file: global.json
       - name: Publish a self-contained build
         run: dotnet publish Program/Program.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o publish
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: March7thHoney-${{ matrix.rid }}
           path: publish
