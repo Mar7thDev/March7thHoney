@@ -106,6 +106,9 @@ CI 會把 `main` 的自包含建置發佈為工作流程產物：
 - [Glzd001](https://github.com/Glzd001)
 - [blamefire159-debug](https://github.com/blamefire159-debug)
 - [AzureXuanVerse](https://github.com/AzureXuanVerse)
+- [AcheronWife](https://github.com/AcheronWife)
+- [Yuuki](https://github.com/akbaryahya)
+- [ShuaiyuMiao](https://github.com/ShuaiyuMiao)
 
 ### 相關專案
 
