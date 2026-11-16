@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="BouncyCastle.Cryptography" Version="2.6.2" />
+    <PackageVersion Include="BouncyCastle.Cryptography" Version="2.7.0" />
     <PackageVersion Include="EastAsianWidth" Version="1.2.0" />
     <!-- The runtime and the protoc tools move together; the protocol build expects protoc 33.1. -->
     <PackageVersion Include="Google.Protobuf" Version="3.33.1" />
