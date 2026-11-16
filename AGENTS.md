@@ -32,7 +32,8 @@
 | `Config/` | 自定义 JSON、语言包、资源缓存及本地运行数据；部分内容受版本控制 |
 | `Resources/`、`TurnBasedGameData/`、`Config/Resource.bin` | 本地游戏资源和生成缓存，已被 Git 忽略，干净检出不保证存在 |
 | `scripts/` | 独立回归程序、缓存升级工具及 Linux 部署脚本 |
-| `docs/` | 开发、测试、API、入门和运维文档，入口为 `docs/README.md` |
+| `docs/` | 开发、测试、API、入门和运维文档，入口为 `docs/README.md`（英文）和 `docs/README.zh-CN.md` |
+| `CONTRIBUTING.md`、`SECURITY.md` | 面向贡献者的流程说明和漏洞报告方式，各有 `.zh-CN.md` 译本 |
 | `global.json`、`Directory.Build.props`、`Directory.Packages.props` | 仓库级构建配置：SDK 版本下限、所有项目共用的默认属性和集中管理的 NuGet 包版本 |
 | `.editorconfig`、`.gitattributes` | 编辑器格式约定，以及换行符和二进制文件的 Git 处理规则 |
 | `.github/workflows/ci.yml` | CI：告警视为错误的 Release 构建和无私有资源回归；推送到 `main` 或版本 tag 时另外发布三个平台的自包含产物 |
@@ -75,6 +76,7 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 - 修改存档、数据库或 MemoryPack 资源模型时验证旧数据兼容性，不能仅凭新数据可用就认定升级安全。
 - 保持 AOT 兼容：新增 Web JSON 请求/响应类型时检查 `WebServer/WebJsonContext.cs` 及相关序列化上下文；修改生成规则应改 `SourceGen/` 源码，不手改 `obj/` 里的生成文件。
 - 面向用户的命令文案沿用 `I18NManager` 与 `Config/Languages/`，页面文案遵循所属页面的国际化机制。API 或配置行为变化应同步相关文档。
+- 文档以英文为权威版本（`name.md`），旁边是简体中文译本（`name.zh-CN.md`），两者在同一项改动里一起更新；只有项目 README 保留繁中和日文版本。新文档要列进 `docs/README.md` 和 `docs/README.zh-CN.md`，`python3 scripts/check-docs.py` 检查链接、译本和索引。本文件是例外，以中文维护。
 - 跨平台文件操作使用合适的路径 API，避免硬编码开发机绝对路径；保留原有文件编码和换行风格。
 - NuGet 包版本只写在 `Directory.Packages.props`，项目文件中的 `PackageReference` 不带 `Version`。`Nullable` 和 `ImplicitUsings` 由 `Directory.Build.props` 统一开启，新项目无需重复声明。
 - `.editorconfig` 约束新增和修改的代码，不作为重排既有文件的理由。
