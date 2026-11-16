@@ -15,7 +15,7 @@ public sealed record GridFightChimeraGood(uint Type, uint Param);
 
 /// <summary>
 ///     Season-2 origin traits with lobby state: Chimera (奇兽花园, 1002021), MoonGame (幻月游戏, 1003021) and the
-///     battle-only Xianzhou (仙舟舰队) equipment upgrade (1001021). Layouts: artifacts/gf-season2/re-g4-origins-a.md.
+///     battle-only Xianzhou (仙舟舰队) equipment upgrade (1001021).
 /// </summary>
 public sealed partial class GridFightSession
 {

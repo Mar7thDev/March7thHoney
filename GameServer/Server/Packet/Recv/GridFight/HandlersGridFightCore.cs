@@ -260,7 +260,7 @@ public sealed class HandlerGridFightHandlePendingActionCsReq : GridFightHandler<
         await SendResponse(connection, request.QueuePosition, pendingHandled);
     }
 
-    /// <summary>Season-2 trait prompts (artifacts/gf-season2/re-g*.md); returns false if the request is not one.</summary>
+    /// <summary>Season-2 trait prompts; returns false if the request is not one.</summary>
     private static async Task<bool> TryHandleSeasonTwoPending(
         Connection connection,
         GridFightManager manager,

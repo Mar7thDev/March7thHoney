@@ -26,7 +26,7 @@ public sealed class GridFightSpotLightChanges
 }
 
 /// <summary>
-///     Spotlight (主角光环). Layout and flow: artifacts/gf-season2/re-g6-spotlight.md. The client marks spotlight nodes
+///     Spotlight (主角光环). The client marks spotlight nodes
 ///     only through route param 4; which nodes the official server flags, the candidate weighting and the reroll price are
 ///     not in the client and follow the spec's guesses (1-2 and 2-1, two candidates, 2 gold, 2 rerolls). Per-spotlight
 ///     lobby/battle effects live in server JSON that is not shipped; the bound role gets the crown in battle and

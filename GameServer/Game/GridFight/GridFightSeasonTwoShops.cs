@@ -11,7 +11,6 @@ public sealed record GridFightTrailblazeGoodState(uint GoodId, uint Cost);
 /// <summary>
 ///     Season-2 shop-like traits: Jade (黑市主理人, 3004021), Trailblaze (开拓银轨, 1005021) and Astropolis
 ///     (千星商会, 1006021), plus the free shop refreshes several of them hand out.
-///     Wire layout: artifacts/gf-season2/re-g1-shops.md.
 ///     Pools, unlocks and node triggers are not encoded in the client and follow the trait descriptions (marked where
 ///     guessed).
 /// </summary>

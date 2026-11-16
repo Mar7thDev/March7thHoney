@@ -11,7 +11,7 @@ public sealed class GridFightElationSlotState
 
 /// <summary>
 ///     Season-2 Clara (机心巧匠, 3005021), Aha (幻乐之主, 300602) and Elation laugh points (欢愉, 2007021).
-///     Layouts: artifacts/gf-season2/re-g3-clara-aha.md. Upgrade cadence, option pools and Aha growth thresholds are
+///     Upgrade cadence, option pools and Aha growth thresholds are
 ///     server-side JSON the client never sees; they follow the trait descriptions and are marked as guesses.
 /// </summary>
 public sealed partial class GridFightSession

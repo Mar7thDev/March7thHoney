@@ -1327,7 +1327,7 @@ Check("QuitBattle at 1 HP ends the run",
     doomedQuitSettled && doomedQuitManager.Session == null && doomedQuitManager.HasSettledSession);
 
 // --- Season-2 unique / origin trait effects ---------------------------------------------------------------------
-// Wire layouts follow the 4.6.51 client (artifacts/gf-season2/re-g*.md); these checks pin the server-side rules.
+// Wire layouts follow the 4.6.51 client; these checks pin the server-side rules.
 if (!catalog.IsSeasonOne)
 {
     (GridFightManager Manager, GridFightSession Session) Board(params (uint RoleId, uint Position)[] roles)

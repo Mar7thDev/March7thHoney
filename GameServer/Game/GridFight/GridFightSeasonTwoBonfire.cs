@@ -10,7 +10,7 @@ public sealed record GridFightBonfireOption(uint ShowType, uint RoleId, uint Eve
 
 /// <summary>
 ///     Bonfire (幕后茶歇) reward node used by many partner (本局奇遇) effects ("第X位面的最后的奖励节点将替换为幕后茶歇").
-///     Layout and flow: artifacts/gf-season2/re-g7-bonfire-petpal.md. Option effects live in server JSON that is not
+///     Option effects live in server JSON that is not
 ///     shipped; options whose table params name a reward (HP-cost coffees, items, projectors, copies) are applied,
 ///     rule-changing options are accepted without effect.
 /// </summary>
