@@ -98,6 +98,10 @@ CI 會把 `main` 的自包含建置發佈為工作流程產物：
 | `linux-x64` | `March7thHoney-linux-x64` |
 | `linux-arm64` | `March7thHoney-linux-arm64` |
 
+publish 輸出會帶上 `Config/` 中納入版本控制的預設設定，其中包括 `Config/Security/` 下的登入 RSA 金鑰對。伺服器從工作目錄讀取 `Config/`，缺少 `Config/Security/LoginRsaPrivateKey.pem` 時會拒絕所有加密登入。這對金鑰是公開的測試材料，與 CyreneLauncher 共用（啟動器預設用其中的公鑰加密），因此在別人能存取的伺服器上起不到保護作用。資源快取不在其中。
+
+[Releases](https://github.com/Mar7thDev/March7thHoney/releases) 提供 `win-x64.zip`，即 CyreneLauncher 下載的 Windows 套件：NativeAOT 編譯的[受限模式建置](../operations/limited-mode.zh-CN.md)，附帶資源快取。
+
 ## 文件
 
 [文件索引](../README.zh-CN.md)列出了全部文件。常用入口：

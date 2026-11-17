@@ -101,6 +101,16 @@ CI publishes self-contained builds of `main` as workflow artifacts:
 | `linux-x64` | `March7thHoney-linux-x64` |
 | `linux-arm64` | `March7thHoney-linux-arm64` |
 
+A publish carries the configuration defaults tracked in `Config/`, including the login RSA key pair in
+`Config/Security/`. The server reads `Config/` from its working directory and rejects every encrypted login when
+`Config/Security/LoginRsaPrivateKey.pem` is missing. The pair is public test material shared with CyreneLauncher,
+which encrypts with its public half by default, so it protects nothing on a server that others can reach. The
+resource cache is not included.
+
+[Releases](https://github.com/Mar7thDev/March7thHoney/releases) carry `win-x64.zip`, the Windows package that
+CyreneLauncher downloads: a NativeAOT [limited-mode build](docs/operations/limited-mode.md) together with its
+resource cache.
+
 ## Documentation
 
 The [documentation index](docs/README.md) lists everything. Starting points:
