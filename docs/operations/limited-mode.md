@@ -36,10 +36,7 @@ and belong to this project's own service. Anyone who distributes limited-mode bu
 service URL and key.
 
 The publish output already holds the configuration defaults from `Config/`, among them the login RSA key pair.
-The `win-x64.zip` package on the Releases page, which CyreneLauncher downloads, is such a build published with
-`-r win-x64 -p:DoAot=true`, with `Config/Resource.bin` added and the debug symbols left out. The launcher unpacks
-it over its server folder, so an update replaces the shipped files and keeps `Config/Database/` and
-`Config/activation.token`.
+The packages on this repository's Releases page are not limited-mode builds.
 
 ## What the activation service has to provide
 

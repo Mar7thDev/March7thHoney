@@ -98,7 +98,7 @@ CI 会把 `main` 的自包含构建发布为工作流产物：
 
 publish 输出会带上 `Config/` 中纳入版本控制的默认配置，其中包括 `Config/Security/` 下的登录 RSA 密钥对。服务器从工作目录读取 `Config/`，缺少 `Config/Security/LoginRsaPrivateKey.pem` 时会拒绝所有加密登录。这对密钥是公开的测试材料，与 CyreneLauncher 共用（启动器默认用其中的公钥加密），因此在别人能访问的服务器上起不到保护作用。资源缓存不在其中。
 
-[Releases](https://github.com/Mar7thDev/March7thHoney/releases) 提供 `win-x64.zip`，即 CyreneLauncher 下载的 Windows 包：NativeAOT 编译的[受限模式构建](../operations/limited-mode.zh-CN.md)，附带资源缓存。
+[Releases](https://github.com/Mar7thDev/March7thHoney/releases) 提供 `win-x64.zip`，即 CyreneLauncher 下载的 Windows 包：CI 为发布标签构建的自包含 `win-x64` 版本，另加 `Config/Resource.bin`。启动器把它解压覆盖到自己的服务端目录，因此更新时会保留 `Config.json` 和 `Config/Database/`。
 
 ## 文档
 
