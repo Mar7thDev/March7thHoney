@@ -100,7 +100,7 @@ CI は `main` の自己完結型ビルドをワークフローの成果物とし
 
 publish の出力には、`Config/` でバージョン管理されている既定の設定が含まれます。`Config/Security/` のログイン用 RSA 鍵ペアもその一つです。サーバーは作業ディレクトリから `Config/` を読み込み、`Config/Security/LoginRsaPrivateKey.pem` がないと暗号化されたログインをすべて拒否します。この鍵ペアは CyreneLauncher と共有する公開のテスト用素材で（ランチャーは既定でその公開鍵で暗号化します）、他人がアクセスできるサーバーでは何も保護しません。リソースキャッシュは含まれません。
 
-[Releases](https://github.com/Mar7thDev/March7thHoney/releases) には CyreneLauncher がダウンロードする Windows パッケージ `win-x64.zip` があります。NativeAOT でビルドした[制限モードのビルド](../operations/limited-mode.md)にリソースキャッシュを同梱したものです。
+[Releases](https://github.com/Mar7thDev/March7thHoney/releases) には CyreneLauncher がダウンロードする Windows パッケージ `win-x64.zip` があります。CI がリリースタグに対して公開する自己完結型の `win-x64` ビルドに `Config/Resource.bin` を加えたものです。ランチャーはこれをサーバーフォルダーに上書き展開するため、更新しても `Config.json` と `Config/Database/` は残ります。
 
 ## ドキュメント
 

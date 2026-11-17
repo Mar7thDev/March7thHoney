@@ -108,8 +108,9 @@ which encrypts with its public half by default, so it protects nothing on a serv
 resource cache is not included.
 
 [Releases](https://github.com/Mar7thDev/March7thHoney/releases) carry `win-x64.zip`, the Windows package that
-CyreneLauncher downloads: a NativeAOT [limited-mode build](docs/operations/limited-mode.md) together with its
-resource cache.
+CyreneLauncher downloads: the self-contained `win-x64` build that CI publishes for the release tag, with
+`Config/Resource.bin` added. The launcher unpacks it over its server folder, so an update keeps `Config.json` and
+`Config/Database/`.
 
 ## Documentation
 

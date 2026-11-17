@@ -28,7 +28,7 @@ dotnet publish Program/Program.csproj -c Release -p:LimitedMode=true \
 
 这三个激活参数会编译进 `March7thHoney.Common`，运行时无法修改：如果运营者可以替换公钥，签名校验就失去了意义。默认值写在 `Common/Common.csproj` 里，属于本项目自己的服务。分发分叉版本的受限模式构建时，需要设置自己的服务地址和公钥。
 
-publish 输出已经带有 `Config/` 中的默认配置，其中包括登录 RSA 密钥对。Releases 页面上供 CyreneLauncher 下载的 `win-x64.zip` 就是这样一个构建，发布时加上 `-r win-x64 -p:DoAot=true`，再补入 `Config/Resource.bin` 并去掉调试符号。启动器把它解压覆盖到自己的服务端目录，因此更新会替换随包的文件，并保留 `Config/Database/` 和 `Config/activation.token`。
+publish 输出已经带有 `Config/` 中的默认配置，其中包括登录 RSA 密钥对。本仓库 Releases 页面上的发布包不是受限模式构建。
 
 ## 激活服务需要提供什么
 
