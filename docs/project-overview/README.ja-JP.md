@@ -98,6 +98,10 @@ CI は `main` の自己完結型ビルドをワークフローの成果物とし
 | `linux-x64` | `March7thHoney-linux-x64` |
 | `linux-arm64` | `March7thHoney-linux-arm64` |
 
+publish の出力には、`Config/` でバージョン管理されている既定の設定が含まれます。`Config/Security/` のログイン用 RSA 鍵ペアもその一つです。サーバーは作業ディレクトリから `Config/` を読み込み、`Config/Security/LoginRsaPrivateKey.pem` がないと暗号化されたログインをすべて拒否します。この鍵ペアは CyreneLauncher と共有する公開のテスト用素材で（ランチャーは既定でその公開鍵で暗号化します）、他人がアクセスできるサーバーでは何も保護しません。リソースキャッシュは含まれません。
+
+[Releases](https://github.com/Mar7thDev/March7thHoney/releases) には CyreneLauncher がダウンロードする Windows パッケージ `win-x64.zip` があります。NativeAOT でビルドした[制限モードのビルド](../operations/limited-mode.md)にリソースキャッシュを同梱したものです。
+
 ## ドキュメント
 
 [ドキュメント索引](../README.md)にすべての文書が載っています。主な入口：

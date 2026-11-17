@@ -96,6 +96,10 @@ CI 会把 `main` 的自包含构建发布为工作流产物：
 | `linux-x64` | `March7thHoney-linux-x64` |
 | `linux-arm64` | `March7thHoney-linux-arm64` |
 
+publish 输出会带上 `Config/` 中纳入版本控制的默认配置，其中包括 `Config/Security/` 下的登录 RSA 密钥对。服务器从工作目录读取 `Config/`，缺少 `Config/Security/LoginRsaPrivateKey.pem` 时会拒绝所有加密登录。这对密钥是公开的测试材料，与 CyreneLauncher 共用（启动器默认用其中的公钥加密），因此在别人能访问的服务器上起不到保护作用。资源缓存不在其中。
+
+[Releases](https://github.com/Mar7thDev/March7thHoney/releases) 提供 `win-x64.zip`，即 CyreneLauncher 下载的 Windows 包：NativeAOT 编译的[受限模式构建](../operations/limited-mode.zh-CN.md)，附带资源缓存。
+
 ## 文档
 
 [文档索引](../README.zh-CN.md)列出了全部文档。常用入口：

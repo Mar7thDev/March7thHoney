@@ -41,6 +41,24 @@
 	  <Content Include="March7thHoney.ico" />
   </ItemGroup>
 
+  <!--
+    A publish carries the configuration defaults tracked in Config/: the server reads Config/ relative to its
+    working directory, and without Config/Security/LoginRsaPrivateKey.pem it rejects every encrypted login.
+    The key pair is the one the CyreneLauncher proxy and its hook DLL encrypt with by default; a public server
+    replaces it. Runtime data (Config.json, Database/, Logs/) and the untracked resource cache are not copied.
+  -->
+  <ItemGroup>
+    <ServerConfigDefault Include="..\Config\ClientSecretKey.ec2b;..\Config\RogueMagicRoomGen.json" TargetFolder="Config" />
+    <ServerConfigDefault Include="..\Config\Custom\*.json" TargetFolder="Config\Custom" />
+    <ServerConfigDefault Include="..\Config\Json\*.json" TargetFolder="Config\Json" />
+    <ServerConfigDefault Include="..\Config\Languages\*.json" TargetFolder="Config\Languages" />
+    <ServerConfigDefault Include="..\Config\Security\*.pem" TargetFolder="Config\Security" />
+    <None Include="@(ServerConfigDefault)"
+          Link="%(TargetFolder)\%(Filename)%(Extension)"
+          CopyToOutputDirectory="Never"
+          CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <ItemGroup>
     <AssemblyMetadata Include="BuildUtc" Value="$([System.DateTime]::UtcNow.ToString(&quot;yyyy-MM-ddTHH:mm:ssZ&quot;))" />
   </ItemGroup>
