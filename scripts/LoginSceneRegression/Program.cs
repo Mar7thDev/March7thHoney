@@ -2152,7 +2152,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     var ambushAvatar = ambushScene.AvatarInfo.Values.First();
     var ambushConnection = new ProbeConnection(serverPeer) { Player = ambushPlayer };
     ambushPlayer.Connection = ambushConnection;
-    async Task<(SceneCastSkillScRsp Response, List<(ushort Id, byte[] Body)> Frames)> CastAmbush(SceneCastSkillCsReq request)
+    async Task<(SceneCastSkillScRsp Response, List<(ushort Id, byte[] Body)> Frames)> CastSceneSkill(SceneCastSkillCsReq request)
     {
         var frames = await SentFrames(async () => await new March7thHoney.GameServer.Server.Packet.Recv.Scene.HandlerSceneCastSkillCsReq()
             .OnHandle(ambushConnection, [], request.ToByteArray()));
@@ -2165,7 +2165,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         TargetMotion = new MotionInfo { Pos = new Vector { X = -71464, Y = 10273, Z = -122029 } }
     };
     missedAttack.SkillExtraTags.Add(SkillExtraTag.SceneCastSkillProjectileHit);
-    var miss = await CastAmbush(missedAttack);
+    var miss = await CastSceneSkill(missedAttack);
     Check("ramp monster projectile without a hit target only ACKs and leaves the scene outside battle",
         miss.Response.Retcode == 0 && miss.Response.CastEntityId == 98 && miss.Response.BattleInfo == null &&
         miss.Response.MonsterBattleInfo.Count == 0 && ambushPlayer.BattleInstance == null &&
@@ -2174,20 +2174,20 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     var invalidTargetAttack = missedAttack.Clone();
     invalidTargetAttack.CastEntityId = (uint)ambushAvatar.EntityId; // sequence number can collide with an entity id
     invalidTargetAttack.AssistMonsterEntityIdList.Add(uint.MaxValue);
-    var invalidTarget = await CastAmbush(invalidTargetAttack);
+    var invalidTarget = await CastSceneSkill(invalidTargetAttack);
     Check("unknown projectile targets and a cast-id collision cannot reinterpret a monster as an avatar attack",
         invalidTarget.Response.BattleInfo == null && invalidTarget.Response.MonsterBattleInfo.Count == 0 &&
         ambushPlayer.BattleInstance == null);
     ambushPlayer.BattleInstance = null;
     var missingSourceAttack = missedAttack.Clone();
     missingSourceAttack.AttackedByEntityId = uint.MaxValue;
-    var missingSource = await CastAmbush(missingSourceAttack);
+    var missingSource = await CastSceneSkill(missingSourceAttack);
     Check("an unknown attack source is rejected without substituting the leader avatar",
         missingSource.Response.Retcode == (uint)Retcode.RetSceneEntityNotExist && ambushPlayer.BattleInstance == null);
     var avatarAttack = new SceneCastSkillCsReq { AttackedByEntityId = (uint)ambushAvatar.EntityId, CastEntityId = 99 };
     avatarAttack.AssistMonsterEntityIdList.Add((uint)rampMonster.EntityId);
     avatarAttack.SkillExtraTags.Add(SkillExtraTag.SceneCastSkillProjectileHit);
-    var avatarHit = await CastAmbush(avatarAttack);
+    var avatarHit = await CastSceneSkill(avatarAttack);
     Check("a real avatar attack still starts the ramp monster's configured battle",
         avatarHit.Response.BattleInfo?.StageId == 200020080 && ambushPlayer.BattleInstance != null &&
         avatarHit.Response.MonsterBattleInfo.Any(x => x.TargetMonsterEntityId == rampMonster.EntityId));
@@ -2198,13 +2198,13 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     landedAttack.CastEntityId = 100;
     landedAttack.AssistMonsterEntityIdList.Add((uint)ambushAvatar.EntityId);
     landedAttack.SkillExtraTags.Add(SkillExtraTag.SceneCastSkillProjectileLifetimeFinish);
-    var landed = await CastAmbush(landedAttack);
+    var landed = await CastSceneSkill(landedAttack);
     Check("a monster hit on an avatar starts an ambush and identifies the monster rather than the avatar",
         landed.Response.BattleInfo != null && ambushPlayer.BattleInstance?.Buffs.Any(x => x.BuffID == GameConstants.AMBUSH_BUFF_ID) == true &&
         landed.Response.MonsterBattleInfo.Count == 1 &&
         landed.Response.MonsterBattleInfo[0].TargetMonsterEntityId == rampMonster.EntityId);
     var firstAmbush = ambushPlayer.BattleInstance;
-    var repeatedHit = await CastAmbush(landedAttack);
+    var repeatedHit = await CastSceneSkill(landedAttack);
     Check("a repeated monster hit reuses the active battle",
         firstAmbush != null && ReferenceEquals(firstAmbush, ambushPlayer.BattleInstance) &&
         repeatedHit.Response.BattleInfo?.BattleId == landed.Response.BattleInfo?.BattleId);
@@ -2213,7 +2213,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     GameData.AdventureAbilityConfigListData.Remove(monsterAbilityId, out var monsterAbility);
     try
     {
-        var abilitylessHit = await CastAmbush(landedAttack);
+        var abilitylessHit = await CastSceneSkill(landedAttack);
         Check("a monster with no exported ability still ambushes only a reported avatar target",
             abilitylessHit.Response.BattleInfo != null && abilitylessHit.Response.MonsterBattleInfo.Count == 1 &&
             abilitylessHit.Response.MonsterBattleInfo[0].TargetMonsterEntityId == rampMonster.EntityId);
@@ -2224,6 +2224,73 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         ambushPlayer.BattleInstance = null;
         ambushPlayer.Connection = null;
     }
+
+    int[] collabLineup = [1015, 1514, 1515];
+    if (collabLineup.All(GameData.AvatarConfigData.ContainsKey))
+    {
+        foreach (var avatarId in collabLineup) await ambushPlayer.AddAvatar(avatarId, false, false);
+        await ambushPlayer.LineupManager!.ReplaceLineup(ambushPlayer.LineupManager.Data.GetCurLineupIndex(), [.. collabLineup]);
+        await ambushScene.SyncLineup(true);
+        ambushPlayer.Connection = ambushConnection;
+
+        var archer = ambushScene.AvatarInfo.Values.Single(avatar => avatar.AvatarInfo.AvatarId == 1015);
+        var archerCast = new SceneCastSkillCsReq
+        {
+            CastEntityId = 102,
+            AttackedByEntityId = (uint)archer.EntityId,
+            SkillIndex = 1,
+            MazeAbilityStr = "LocalPlayer_Archer_MazeSkill",
+            SkillExtraTags = { SkillExtraTag.SceneCastSkillProjectileHit },
+            HitTargetEntityIdList = { (uint)rampMonster.EntityId }
+        };
+        var archerMiss = archerCast.Clone();
+        archerMiss.CastEntityId = 101;
+        archerMiss.SkillExtraTags[0] = SkillExtraTag.SceneCastSkillProjectileLifetimeFinish;
+        var archerMissResponse = (await CastSceneSkill(archerMiss)).Response;
+        Check("Archer's projectile expiration without an impact leaves no battle or pending opening buff",
+            archerMissResponse.Retcode == 0 && archerMissResponse.BattleInfo == null &&
+            archerMissResponse.MonsterBattleInfo.Count == 0 && archer.BuffList.All(buff => buff.BuffId != 101501));
+
+        var archerHit = (await CastSceneSkill(archerCast)).Response;
+        Check("Archer's technique enters the target's battle on a direct projectile hit and applies its opening buff once",
+            archerHit.BattleInfo?.StageId == 200020080 && archerHit.BattleInfo.BuffList.Count(buff => buff.Id == 101501) == 1 &&
+            archerHit.MonsterBattleInfo.Count == 1 && archerHit.MonsterBattleInfo[0].TargetMonsterEntityId == rampMonster.EntityId);
+        ambushPlayer.BattleInstance = null;
+
+        archerCast.CastEntityId++;
+        archerCast.AssistMonsterEntityIdList.Add((uint)rampMonster.EntityId);
+        archerCast.SkillExtraTags.Add(SkillExtraTag.SceneCastSkillProjectileLifetimeFinish);
+        archerHit = (await CastSceneSkill(archerCast)).Response;
+        Check("Archer's hit and lifetime callbacks report one battle target when both tags are present",
+            archerHit.BattleInfo?.StageId == 200020080 && archerHit.BattleInfo.BuffList.Count(buff => buff.Id == 101501) == 1 &&
+            archerHit.MonsterBattleInfo.Count == 1 && archerHit.MonsterBattleInfo[0].TargetMonsterEntityId == rampMonster.EntityId);
+        ambushPlayer.BattleInstance = null;
+
+        foreach (var (avatarId, name) in new[] { (1514, "Ellen"), (1515, "Astra") })
+        {
+            var attacker = ambushScene.AvatarInfo.Values.Single(avatar => avatar.AvatarInfo.AvatarId == avatarId);
+            var ordinaryAttack = new SceneCastSkillCsReq
+            {
+                CastEntityId = (uint)avatarId,
+                AttackedByEntityId = (uint)attacker.EntityId,
+                AssistMonsterEntityIdList = { (uint)rampMonster.EntityId },
+                SkillExtraTags = { SkillExtraTag.SceneCastSkillProjectileHit, SkillExtraTag.SceneCastSkillProjectileLifetimeFinish }
+            };
+            var entry = (await CastSceneSkill(ordinaryAttack)).Response;
+            Check($"{name}'s normal attack enters battle even if the hit also ends the projectile",
+                entry.BattleInfo?.StageId == 200020080 &&
+                entry.BattleInfo.BattleAvatarList.Select(avatar => (int)avatar.Id).SequenceEqual(collabLineup) &&
+                entry.MonsterBattleInfo.Count == 1 && entry.MonsterBattleInfo[0].TargetMonsterEntityId == rampMonster.EntityId);
+            ambushPlayer.BattleInstance = null;
+        }
+
+        ambushPlayer.Connection = null;
+    }
+    else
+    {
+        Console.WriteLine("SKIP Archer, Ellen and Astra scene casts require their avatar rows in the resource cache.");
+    }
+
     // Official seq 14891-14971: Herta's talk unlocks tutorial main 4030001, then area 100
     // starts directly with story avatars. It must never auto-complete on acceptance.
     var tutorialFlowPlayer = new PlayerInstance(60013);
