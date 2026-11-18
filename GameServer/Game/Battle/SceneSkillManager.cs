@@ -27,40 +27,37 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
     {
         Player.TaskManager!.AbilityLevelTask.SummonAttackDetectBuffs.Clear();
         var handledDestruct = await HandleDestructPropDrops(req);
-
-        // get entities
-        List<BaseGameEntity> targetEntities = []; // enemy
-        List<int> addEntityIds = [];
-        foreach (var id in req.AssistMonsterEntityIdList)
-            if (Player.SceneInstance!.Entities.TryGetValue((int)id, out var v))
-            {
-                targetEntities.Add(v);
-                addEntityIds.Add((int)id);
-            }
-
-        foreach (var info in req.AssistMonsterEntityInfo)
-        foreach (var id in info.EntityIdList)
-        {
-            if (addEntityIds.Contains((int)id)) continue;
-            if (Player.SceneInstance!.Entities.TryGetValue((int)id, out var v))
-            {
-                targetEntities.Add(v);
-                addEntityIds.Add((int)id);
-            }
-        }
+        if (Player.SceneInstance is not { } scene)
+            return new SkillResultData(Retcode.RetSceneEntityNotExist);
 
         // attacked_by_entity_id identifies the attack source; cast_entity_id correlates the cast.
         // Official 4.6 seq 9469-9471 reports a monster source with no hit targets and receives only
         // an ACK. Substituting the leader here starts an unexpected battle during the ramp cinematic.
-        var attackEntity = Player.SceneInstance!.Entities.GetValueOrDefault((int)req.AttackedByEntityId);
+        var attackEntity = scene.Entities.GetValueOrDefault((int)req.AttackedByEntityId);
 
         if (attackEntity == null)
             return handledDestruct
                 ? new SkillResultData(Retcode.RetSucc)
                 : new SkillResultData(Retcode.RetSceneEntityNotExist);
 
+        List<BaseGameEntity> targetEntities = [];
+        HashSet<int> targetIds = [];
+        var assistIds = req.AssistMonsterEntityIdList.Concat(req.AssistMonsterEntityInfo.SelectMany(info => info.EntityIdList));
+        foreach (var id in assistIds)
+            if (scene.Entities.TryGetValue((int)id, out var target) && targetIds.Add(target.EntityId))
+                targetEntities.Add(target);
+
+        // A projectile impact can report its monster through hit_target_entity_id_list alone.
+        if (attackEntity is AvatarSceneInfo && req.SkillExtraTags.Contains(SkillExtraTag.SceneCastSkillProjectileHit) &&
+            targetEntities.All(entity => entity is not EntityMonster { IsAlive: true }))
+        {
+            foreach (var id in req.HitTargetEntityIdList)
+                if (scene.Entities.GetValueOrDefault((int)id) is EntityMonster target && targetIds.Add(target.EntityId))
+                    targetEntities.Add(target);
+        }
+
         if (attackEntity is EntityMonster &&
-            !targetEntities.Any(entity => Player.SceneInstance.AvatarInfo.ContainsKey(entity.EntityId)))
+            !targetEntities.Any(entity => scene.AvatarInfo.ContainsKey(entity.EntityId)))
             return new SkillResultData(Retcode.RetSucc);
 
         await TriggerAttackDetectSummons(targetEntities);
@@ -97,7 +94,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         }
 
         // check if avatar execute
-        if (attackEntity is AvatarSceneInfo) await Player.SceneInstance!.OnUseSkill(req);
+        if (attackEntity is AvatarSceneInfo) await scene.OnUseSkill(req);
 
         // backfill character maze buffs for techniques whose ability JSON spawns
         // a summon unit instead of calling AddMazeBuff (e.g. Dahlia 1321 -> 132101,
@@ -131,15 +128,19 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                 !GameData.AdventureModifierData.TryGetValue(c.Excel.ModifierName, out var modifier)
                 || !modifier.BehaviorFlagList.Contains("TimeLock", StringComparer.OrdinalIgnoreCase)).ToList();
 
-            var alreadyApplied = candidates.Any(c =>
-                casterAvatar.BuffList.Any(b => b.BuffId == c.BuffId));
+            // Attack techniques can apply their opening buff to the hit monster in the OnBattle task.
+            var casterId = casterAvatar.AvatarInfo.BaseAvatarId;
+            var enemyBuffs = targetEntities.OfType<EntityMonster>().SelectMany(monster => monster.BuffList);
+            var alreadyApplied = candidates.Any(c => casterAvatar.BuffList.Any(b => b.BuffId == c.BuffId) ||
+                enemyBuffs.Any(b => b.BuffId == c.BuffId && b.OwnerAvatarId == casterId));
 
             if (!alreadyApplied)
             {
                 var primary = candidates.FirstOrDefault(c =>
-                    c.Excel.UseType is "SummonUnit" or "AddBattleBuff" or "TriggerBattle");
+                    c.Excel.UseType is "SummonUnit" or "AddBattleBuff" ||
+                    (res.Instance != null && c.Excel.UseType == "TriggerBattle"));
                 if (primary.BuffId != 0)
-                    await casterAvatar.AddBuff(new SceneBuff(primary.BuffId, primary.Excel.Lv, casterAvatar.AvatarInfo.BaseAvatarId));
+                    await casterAvatar.AddBuff(new SceneBuff(primary.BuffId, primary.Excel.Lv, casterId));
             }
 
             // Listener buffs charged by teammates' techniques (e.g. March 7th (The Hunt) 122401) are identified from
@@ -153,7 +154,8 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             return new SkillResultData(Retcode.RetSucc, res.Instance,
                 [new HitMonsterInstance(attacker.EntityId, MonsterBattleType.TriggerBattle)]);
 
-        return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos);
+        // Projectile hit and lifetime callbacks can report the same monster in one cast.
+        return new SkillResultData(Retcode.RetSucc, res.Instance, res.BattleInfos?.DistinctBy(hit => hit.MonsterId).ToList());
     }
 
     private async ValueTask TriggerAttackDetectSummons(List<BaseGameEntity> targetEntities)
@@ -333,14 +335,9 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
                     [new HitMonsterInstance(monster.EntityId, MonsterBattleType.TriggerBattle)]);
         }
 
-        // A projectile/field technique that runs out its lifetime (chains / persistent
-        // field, e.g. Gilgamesh) reports SCENE_CAST_SKILL_PROJECTILE_LIFETIME_FINISH and must
-        // NOT start an open-world battle: the client predicts a summon, not combat, and
-        // rejects an unexpected battle with "技能使用失败". An attack that actually connected
-        // (normal atk, or an attack technique like Himeko) reports only ..._HIT and still
-        // engages. Splitting on this client tag keeps attack vs summon techniques correct
-        // without an ability JSON and without hard-coding any avatar id.
-        if (req.SkillExtraTags.Contains(SkillExtraTag.SceneCastSkillProjectileLifetimeFinish))
+        // A technique ending its projectile lifetime can be a persistent-field cast. A normal attack
+        // can report both HIT and LIFETIME_FINISH and still enters battle when it hits a live monster.
+        if (req.SkillIndex != 0 && req.SkillExtraTags.Contains(SkillExtraTag.SceneCastSkillProjectileLifetimeFinish))
             return new AbilityLevelResult();
 
         var battleInfos = new List<HitMonsterInstance>();
