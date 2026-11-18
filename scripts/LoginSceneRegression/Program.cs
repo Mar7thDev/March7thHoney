@@ -1732,6 +1732,57 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
         pathOwner.AvatarId == currentPathId && pathOwner.PathInfos.ContainsKey(extraPathId));
     skinPlayer.Connection = null;
 
+    const int ahaAvatarId = 1511;
+    const int starLottoSkinId = 1151101;
+    if (GameData.AvatarConfigData.ContainsKey(ahaAvatarId))
+    {
+        var ahaPlayer = new PlayerInstance(60042);
+        await ahaPlayer.InitializeAsync();
+        await ahaPlayer.AddAvatar(ahaAvatarId, false, false);
+        var ahaConnection = new ProbeConnection(serverPeer) { Player = ahaPlayer };
+        ahaPlayer.Connection = ahaConnection;
+
+        async Task<(int Unlocks, int Owned)> GiveAllSkins()
+        {
+            var frames = await SentFrames(() => giveall.GiveAllSkin(new CommandArg("skin", giveSender, ahaConnection)).AsTask());
+            var unlocked = frames.Count(frame => frame.Id == CmdIds.UnlockAvatarSkinScNotify &&
+                UnlockAvatarSkinScNotify.Parser.ParseFrom(frame.Body).SkinId == starLottoSkinId);
+            var avatarData = GetAvatarDataScRsp.Parser.ParseFrom(frames.Single(frame => frame.Id == CmdIds.GetAvatarDataScRsp).Body);
+            return (unlocked, avatarData.SkinList.Count(id => id == starLottoSkinId));
+        }
+
+        Check("giveall skin grants Aha's Star Lotto and syncs the unlock", await GiveAllSkins() == (1, 1));
+        Check("repeating giveall skin keeps one Star Lotto unlock without sending the unlock again", await GiveAllSkins() == (0, 1));
+        var ahaDress = await SentFrames(() => new March7thHoney.GameServer.Server.Packet.Recv.Avatar.HandlerDressAvatarSkinCsReq()
+            .OnHandle(ahaConnection, [], new DressAvatarSkinCsReq { AvatarId = ahaAvatarId, SkinId = starLottoSkinId }.ToByteArray()));
+        Check("Aha can equip the Star Lotto skin granted by giveall skin",
+            DressAvatarSkinScRsp.Parser.ParseFrom(ahaDress.Single(frame => frame.Id == CmdIds.DressAvatarSkinScRsp).Body).PLDKENJLKME == 0 &&
+            ahaPlayer.AvatarManager?.GetFormalAvatar(ahaAvatarId)?.GetCurPathInfo().Skin == starLottoSkinId);
+
+        DatabaseHelper.Instance.SaveDatabase();
+        await using var ahaDb = new SqliteConnection($"Data Source={Path.Combine(scratch, "regression.db")}");
+        await ahaDb.OpenAsync();
+        var savedUnlocks = EntityStores.Map[typeof(PlayerUnlockData)].LoadAll(ahaDb)
+            .OfType<PlayerUnlockData>().Single(data => data.Uid == ahaPlayer.Uid);
+        var ahaRecords = DatabaseHelper.UidInstanceMap[ahaPlayer.Uid];
+        ahaRecords.RemoveAll(record => record is PlayerUnlockData);
+        ahaRecords.Add(savedUnlocks);
+        ahaPlayer.Connection = null;
+        var ahaRelogin = new PlayerInstance(ahaPlayer.Data);
+        await ahaRelogin.InitializeAsync();
+        ahaRelogin.Connection = new ProbeConnection(serverPeer) { Player = ahaRelogin };
+        await SentFrames(() => ahaRelogin.OnLogin().AsTask());
+        var ahaSnapshot = GetAvatarDataScRsp.Parser.ParseFrom(new PacketGetAvatarDataScRsp(ahaRelogin).Data);
+        Check("Star Lotto survives reading the unlocks from SQLite and logging in again",
+            savedUnlocks.Skins.GetValueOrDefault(ahaAvatarId)?.Count(id => id == starLottoSkinId) == 1 &&
+            ahaSnapshot.SkinList.Count(id => id == starLottoSkinId) == 1);
+        ahaRelogin.Connection = null;
+    }
+    else
+    {
+        Console.WriteLine("SKIP Star Lotto grant requires Aha's avatar row in the resource cache.");
+    }
+
     // Official 4.6 seq 20633-20654: leaving Qlipoth Fort finishes the EnterFloor gate
     // before reporting the dialogue's successors. A delayed Doing snapshot sends the client back inside.
     var fortPlayer = new PlayerInstance(60018);
