@@ -21,5 +21,6 @@ public enum GridFightBonusTypeEnum
     ElationGoods = 21,
     ElationItem = 22,
     SpotLightFreeRefreshCnt = 23,
-    Augment = 24
+    Augment = 24,
+    AllAvatarByRarity = 25
 }

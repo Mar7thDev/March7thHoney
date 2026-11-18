@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.IO.Compression;
 using System.Text.Json;
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.Enums;
 using March7thHoney.Enums.GridFight;
 using March7thHoney.Internationalization;
@@ -71,6 +72,20 @@ ResourceCache.IsComplete = true;
 File.WriteAllText(Path.Combine(fixture, "ExcelOutput/Optional.json"), "[{\"Value\":\"invalid integer\"}]");
 ResourceManager.LoadSingleExcelResource(typeof(OptionalFixture));
 Check("existing invalid optional table still reports a parse failure", issues.Any(x => x.Level == "ERROR") && !ResourceCache.IsComplete);
+issues.Clear();
+
+ResourceCache.IsComplete = true;
+File.WriteAllText(Path.Combine(fixture, "ExcelOutput/GridFightBasicBonusPoolV2.json"),
+    """[{"BonusID":116,"BonusType":"AllAvatarByRarity","BonusTypeParamList":[1,1]}]""");
+File.WriteAllText(Path.Combine(fixture, "ExcelOutput/GridFightTraitEffect.json"),
+    """[{"ID":4005021,"TraitEffectType":"GainOtherRoleTrait"}]""");
+ResourceManager.LoadSingleExcelResource(typeof(GridFightBasicBonusPoolV2Excel));
+ResourceManager.LoadSingleExcelResource(typeof(GridFightTraitEffectExcel));
+Check("4.7.0 GridFight reward and trait effect rows load by name", ResourceCache.IsComplete &&
+    (int?)GameData.GridFightBasicBonusPoolV2Data.GetValueOrDefault(116)?.BonusType == 25 &&
+    (int?)GameData.GridFightTraitEffectData.GetValueOrDefault(4005021)?.TraitEffectType == 34);
+GameData.GridFightBasicBonusPoolV2Data.Clear();
+GameData.GridFightTraitEffectData.Clear();
 issues.Clear();
 
 var abilityDirectory = Path.Combine(fixture, "Config", "ConfigAdventureAbility");

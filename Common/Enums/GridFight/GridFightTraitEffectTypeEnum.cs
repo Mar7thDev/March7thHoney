@@ -36,5 +36,6 @@ public enum GridFightTraitEffectTypeEnum
     ChooseTraitByManual = 30,
     DanHengTwoInOne = 31,
     AhaUnique = 32,
-    BandRoleChoose = 33
+    BandRoleChoose = 33,
+    GainOtherRoleTrait = 34
 }
