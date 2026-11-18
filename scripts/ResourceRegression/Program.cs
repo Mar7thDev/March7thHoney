@@ -82,8 +82,8 @@ File.WriteAllText(Path.Combine(fixture, "ExcelOutput/GridFightTraitEffect.json")
 ResourceManager.LoadSingleExcelResource(typeof(GridFightBasicBonusPoolV2Excel));
 ResourceManager.LoadSingleExcelResource(typeof(GridFightTraitEffectExcel));
 Check("4.7.0 GridFight reward and trait effect rows load by name", ResourceCache.IsComplete &&
-    (int?)GameData.GridFightBasicBonusPoolV2Data.GetValueOrDefault(116)?.BonusType == 25 &&
-    (int?)GameData.GridFightTraitEffectData.GetValueOrDefault(4005021)?.TraitEffectType == 34);
+    (int?)GameData.GridFightBasicBonusPoolV2Data.GetValueOrDefault(116u)?.BonusType == 25 &&
+    (int?)GameData.GridFightTraitEffectData.GetValueOrDefault(4005021u)?.TraitEffectType == 34);
 GameData.GridFightBasicBonusPoolV2Data.Clear();
 GameData.GridFightTraitEffectData.Clear();
 issues.Clear();
