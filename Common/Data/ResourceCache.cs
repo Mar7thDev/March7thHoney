@@ -80,7 +80,9 @@ public static class ResourceCache
 
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem", I18NManager.Translate("Word.Cache")));
 
-        return ValidateLoadedCache();
+        var valid = ValidateLoadedCache();
+        if (valid) ResourceManager.AddStarLottoSkin();
+        return valid;
     }
 
     public static void ClearGameData()
