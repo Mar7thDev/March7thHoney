@@ -63,11 +63,8 @@ public class ChallengeTierceInstance : BaseChallengeInstance
         if (CurStageIndex == 0) return PreConfig.ChallengeMonsters1;
         if (CurStageIndex == 1) return PreConfig.ChallengeMonsters2;
 
-        // Node 3 reads from Tierce config. Some Tierce entries (e.g. AS 30185 → MazeGroupID=6)
-        // declare a group that the actual floor doesn't expose — the boss spot lives in a
-        // different group on disk. Fallback: scan the floor for any group containing the
-        // configured monster spot (by ConfigList[0]) and remap the dictionary key. This stays
-        // version-agnostic since the lookup is driven entirely by the Excel ConfigList.
+        // Some Tierce groups are absent from the floor (e.g. AS 30185, group 6). For node 3,
+        // find the actual group by the first configured monster spot rather than a version-specific ID.
         var declared = Config.MazeGroupID;
         var floor = ActiveScene?.FloorInfo ?? Player.SceneInstance?.FloorInfo;
         if (floor != null && Config.ChallengeMonsters.TryGetValue(declared, out var monsters)

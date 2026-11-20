@@ -72,14 +72,9 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
 
         Data.SetMainMissionStatus(missionId, MissionPhaseEnum.Accept);
 
-        // A "Gap" row with no MissionInfo wiring is a display-only transition entry (e.g. the
-        // Trailblaze chain 1054400/1054402/1054403 and the beat missions 1054407/1054408/1054409):
-        // it has no start subs and no finish gate, so FinishSubMission can never close it and every
-        // successor whose TakeParam is MultiSequence on it stalls forever. Auto-finish it on accept
-        // so the chain cascades the way the official server advances it — FinishMainMission re-runs
-        // AcceptMainMissionByCondition, which picks up the next stage in the same pass.
-        // Deliberately restricted to Gap: a Main-type mission with a missing MissionInfo is playable
-        // content (or a resource-dump gap) and must never be silently skipped.
+        // Unwired Gap rows have no start subs or finish gate (e.g. 1054400/1054402/1054403 and 1054407/1054408/1054409).
+        // Finish on accept so MultiSequence successors can advance in the same pass, as on the official server.
+        // Never skip Main rows: missing MissionInfo can mean an incomplete resource dump.
         if (mission.IsDisplayOnlyGap)
         {
             await FinishMainMission(missionId);
@@ -315,12 +310,8 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
     {
         var gate = main.MissionInfo.FinishSubMissionList;
 
-        // Neither sub-missions nor a finish gate: there is no objective to run and no condition that
-        // could ever close it. Besides the display-only Gap rows, the 4.5.0 tree has eight Branch rows in
-        // that shape (4010146, 4010241-4010246, 4011800). Closing them skips nothing, because there is
-        // nothing there. Deliberately limited to Branch/Gap: on a Main-type row - and on Unknown, which
-        // is what a Resource.bin predating the Type column restores to - an empty graph means a truncated
-        // dump, and auto-closing that would silently eat playable content.
+        // Only empty Branch/Gap rows have nothing to run (4.5.0 examples: 4010146, 4010241–4010246, 4011800).
+        // For Main or Unknown (including caches predating Type), an empty graph can mean an incomplete dump.
         var empty = main.MissionInfo.SubMissionList.Count == 0 && gate.Count == 0 &&
                     main.Type is MainMissionTypeEnum.Branch or MainMissionTypeEnum.Gap;
 
@@ -1365,10 +1356,8 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
             else
                 missionInfo.UnfinishedMainMissionIdList.Add((uint)mainId);
 
-        // Activity-bound main missions: for each ContentPackage whose entrance lives on the
-        // floor the player is loading, surface its main missions as "unfinished" so the client
-        // treats the activity entry (map icons, in-scene activity NPCs) as live. We keep the
-        // regular Mission system untouched - this only affects scene-mission serialization.
+        // Report activities on this floor as unfinished so map icons and entrance NPCs stay active.
+        // This changes the scene snapshot, not mission state.
         if (floorId != 0)
             foreach (var pkg in GameData.ContentPackageConfigData.Values)
             {
@@ -1381,12 +1370,9 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
                     if (missionInfo.FinishedMainMissionIdList.Contains(mid)) continue;
                     if (missionInfo.UnfinishedMainMissionIdList.Contains(mid)) continue;
 
-                    // The client copies this list into MainMissionData.IsFinish, the flag its
-                    // FinishMainMission conditions read. A mission it has already been told is finished
-                    // (GetMissionStatusScRsp) is one such condition - an activity's guide mission, which
-                    // decides whether the panel's button runs the guide or enters the activity. Calling it
-                    // unfinished here sends the button back to a guide that has nothing left to run, so
-                    // keep that answer; only missions the client never asked about are held open.
+                    // Scene snapshots overwrite MainMissionData.IsFinish. Keep finishes already sent in
+                    // GetMissionStatusScRsp so the activity button enters the activity instead of replaying a finished guide.
+                    // Hold open only missions the client has not asked about.
                     if (_mainMissionsReportedFinished.Contains(missionId) &&
                         GetMainMissionStatus(missionId) == MissionPhaseEnum.Finish)
                     {

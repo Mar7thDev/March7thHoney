@@ -154,11 +154,9 @@ public static class ConfigManager
     {
         var file = new FileInfo(HotfixFilePath);
 
-        // Generate the version keys in the format the client really sends:
-        // {CN|OS}{BETA|PROD}{Win|Android|iOS}{version number}.
-        // Only the major.minor part (x.y) of GAME_VERSION selects the version line: production is x.y.0 and beta is
-        // x.y.51 to x.y.55. The last component of GAME_VERSION is ignored and must not be read as a beta switch: a
-        // client only looks up the keys of its own x.y line.
+        // Client keys use {CN|OS}{BETA|PROD}{Win|Android|iOS}{version}.
+        // GAME_VERSION's major.minor selects the client's line: production x.y.0, beta x.y.51–55.
+        // Its last component is not a beta switch.
         var verList = new List<string>();
         string[] regions = ["CN", "OS"];
         string[] platforms = ["Win", "Android", "iOS"];

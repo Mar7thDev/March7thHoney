@@ -3,10 +3,8 @@ using March7thHoney.Data.Excel;
 
 namespace March7thHoney.GameServer.Game.TrainParty;
 
-// Read-only view of the party-car build tables. An area (TrainPartyAreaConfig) has a goal (TrainPartyAreaGoalConfig)
-// whose StepGroupList selects the TrainPartyStepConfig rows of that area; finishing a step costs its CoinCost and
-// unlocks its StaticPropIDList, the static props the client shows in the room. The area's FirstStep is built first;
-// the client keeps it out of the blueprint list and the other steps become buildable once it is finished.
+// An area's goal selects step rows via StepGroupList. Each finished step costs CoinCost and unlocks
+// its StaticPropIDList. The client hides FirstStep from blueprints; finishing it opens the other steps.
 public static class TrainPartyBuildCatalog
 {
     public static IEnumerable<TrainPartyAreaConfigExcel> Areas =>
