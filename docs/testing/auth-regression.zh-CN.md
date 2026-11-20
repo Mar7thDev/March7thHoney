@@ -49,6 +49,11 @@ dotnet run --project scripts/AuthRegression/AuthRegression.csproj -- --serve
 - 公共占位指纹及其旧哈希会被过滤。
 - 拒绝日志能区分账号封禁与独立规则，且不包含密码、令牌或原始设备值。
 
+### 账号邮件链接
+
+- `Email.PublicBaseUrl` 为空或不是绝对 http(s) 地址时，拒绝发送密码重置邮件。
+- 设置后，即使请求带有伪造的 `Host` 头，重置链接也只使用该地址。
+
 ### 网站游戏账号接口
 
 - 开关与密钥；代理转发后的来源地址。

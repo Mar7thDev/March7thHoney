@@ -352,7 +352,7 @@ public static class DispatchRoutes
                 FirstNonEmpty(req.account, req.username, req.email), out var limited))
             return limited;
 
-        return await new AccountRecoveryHandler().SendVerificationEmail(req, ctx.Request);
+        return await new AccountRecoveryHandler().SendVerificationEmail(req);
     }
 
     private static IResult VerifyEmail(string? uid, string? token)
@@ -368,7 +368,7 @@ public static class DispatchRoutes
                 FirstNonEmpty(req.account, req.username, req.email), out var limited))
             return limited;
 
-        return await new AccountRecoveryHandler().ForgotPassword(req, ctx.Request);
+        return await new AccountRecoveryHandler().ForgotPassword(req);
     }
 
     private static IResult ResetPassword(HttpContext ctx, ResetPasswordReqJson? req)

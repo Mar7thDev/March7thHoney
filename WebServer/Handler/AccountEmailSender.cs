@@ -4,7 +4,6 @@ using MailKit.Net.Smtp;
 using MailKit.Security;
 using March7thHoney.Database.Account;
 using March7thHoney.Util;
-using Microsoft.AspNetCore.Http;
 using MimeKit;
 
 namespace March7thHoney.WebServer.Handler;
@@ -13,12 +12,14 @@ internal static class AccountEmailSender
 {
     private static readonly Logger Logger = new("AccountEmail");
 
-    public static async Task<bool> SendVerificationEmailAsync(AccountData account, string token, HttpRequest request)
+    public static async Task<bool> SendVerificationEmailAsync(AccountData account, string token)
     {
         var auth = ConfigManager.Config.ServerOption.Auth;
-        var link = BuildLink(request, "/account/email/verify",
+        if (!IsEnabled()) return false;
+        var link = BuildLink("/account/email/verify",
             ("uid", account.Uid.ToString()),
             ("token", token));
+        if (link == null) return false;
 
         var minutes = Math.Max(auth.EmailVerificationTokenExpireMinutes, 1);
         var subject = FormatTemplate(auth.Email.VerificationSubject, account, link, minutes);
@@ -27,12 +28,14 @@ internal static class AccountEmailSender
         return await SendAsync(account.Email, subject, body, htmlBody);
     }
 
-    public static async Task<bool> SendPasswordResetEmailAsync(AccountData account, string token, HttpRequest request)
+    public static async Task<bool> SendPasswordResetEmailAsync(AccountData account, string token)
     {
         var auth = ConfigManager.Config.ServerOption.Auth;
-        var link = BuildLink(request, "/login-platform/reset-password.html",
+        if (!IsEnabled()) return false;
+        var link = BuildLink("/login-platform/reset-password.html",
             ("uid", account.Uid.ToString()),
             ("token", token));
+        if (link == null) return false;
 
         var minutes = Math.Max(auth.PasswordResetTokenExpireMinutes, 1);
         var subject = FormatTemplate(auth.Email.PasswordResetSubject, account, link, minutes);
@@ -43,14 +46,7 @@ internal static class AccountEmailSender
 
     private static async Task<bool> SendAsync(string? to, string subject, string plainBody, string htmlBody)
     {
-        var email = ConfigManager.Config.ServerOption.Auth.Email;
-        var smtp = email.Smtp;
-
-        if (!email.Enabled)
-        {
-            Logger.Warn("Email sending is disabled. Configure ServerOption.Auth.Email to send verification and reset emails.");
-            return false;
-        }
+        var smtp = ConfigManager.Config.ServerOption.Auth.Email.Smtp;
 
         if (string.IsNullOrWhiteSpace(to) ||
             string.IsNullOrWhiteSpace(smtp.Host) ||
@@ -104,12 +100,41 @@ internal static class AccountEmailSender
         return port == 465 ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls;
     }
 
-    private static string BuildLink(HttpRequest request, string path, params (string Key, string Value)[] query)
+    private static bool IsEnabled()
     {
-        var configuredBase = ConfigManager.Config.ServerOption.Auth.Email.PublicBaseUrl;
-        var baseUrl = !string.IsNullOrWhiteSpace(configuredBase)
-            ? configuredBase.TrimEnd('/')
-            : $"{request.Scheme}://{request.Host}{request.PathBase}".TrimEnd('/');
+        if (ConfigManager.Config.ServerOption.Auth.Email.Enabled) return true;
+        Logger.Warn("Email sending is disabled. Configure ServerOption.Auth.Email to send verification and reset emails.");
+        return false;
+    }
+
+    /// <summary>
+    ///     Returns the configured public base URL for account links, or null when it is missing or not an
+    ///     absolute http(s) URL. Links carry account tokens, so they are never built from the request Host.
+    /// </summary>
+    public static string? ResolvePublicBaseUrl(string? configured)
+    {
+        var value = configured?.Trim();
+        if (string.IsNullOrEmpty(value) ||
+            !Uri.TryCreate(value, UriKind.Absolute, out var uri) ||
+            uri.Scheme is not ("http" or "https") ||
+            string.IsNullOrEmpty(uri.Host) ||
+            !string.IsNullOrEmpty(uri.UserInfo) ||
+            !string.IsNullOrEmpty(uri.Query) ||
+            !string.IsNullOrEmpty(uri.Fragment))
+            return null;
+
+        return value.TrimEnd('/');
+    }
+
+    private static string? BuildLink(string path, params (string Key, string Value)[] query)
+    {
+        var baseUrl = ResolvePublicBaseUrl(ConfigManager.Config.ServerOption.Auth.Email.PublicBaseUrl);
+        if (baseUrl == null)
+        {
+            Logger.Error("ServerOption.Auth.Email.PublicBaseUrl must be the server's public http(s) address " +
+                         "(for example https://sr.example.com). Refusing to send account emails until it is set.");
+            return null;
+        }
 
         var queryString = string.Join("&",
             query.Select(item => $"{Uri.EscapeDataString(item.Key)}={Uri.EscapeDataString(item.Value)}"));

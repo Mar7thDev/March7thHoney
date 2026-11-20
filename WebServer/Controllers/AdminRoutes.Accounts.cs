@@ -132,7 +132,7 @@ public static partial class AdminRoutes
         var emailChanged = !string.Equals(previousNormalizedEmail, account.NormalizedEmail, StringComparison.OrdinalIgnoreCase);
         var changedFromVerifiedToUnverified = previousEmailVerified && !account.IsEmailVerified;
         if (!account.IsEmailVerified && (emailChanged || changedFromVerifiedToUnverified))
-            emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, ctx.Request);
+            emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account);
 
         return Success(new AccountEmailWrap(ToAccountSummary(account), emailSent));
     }
@@ -172,7 +172,7 @@ public static partial class AdminRoutes
         if (string.IsNullOrWhiteSpace(account.Email))
             return Error("Account does not have an email address");
 
-        var emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account, ctx.Request,
+        var emailSent = await AccountRecoveryHandler.SendVerificationEmailForAccount(account,
             markUnverified: true);
         return Success(new AccountEmailWrap(ToAccountSummary(account), emailSent));
     }
