@@ -550,6 +550,16 @@ Check("explicit giveall level applies without touching Eidolons", ownedMarch.Lev
     && newAvatar?.Level == 80 && ownedMarch.PathInfos.Values.All(path => path.Rank == 6)
     && ownedMarch.Promotion == GameData.GetMinPromotionForLevel(80));
 
+var relicCountBefore = givePlayer.InventoryManager!.Data.RelicItems.Count;
+foreach (var raw in new[] { $"61011 1 x{CommandRelic.MaxAmount + 1}", "61011 1 x2000000000", "61011 1 x0", "61011 1 x-5" })
+{
+    giveSender.Messages.Clear();
+    await new CommandRelic().GiveRelic(new CommandArg(raw, giveSender, giveTarget));
+    Check($"/relic {raw} is refused without creating relics",
+        giveSender.Messages.Single() == I18NManager.Translate("Game.Command.Notice.InvalidArguments")
+        && givePlayer.InventoryManager.Data.RelicItems.Count == relicCountBefore);
+}
+
 // /language: per-player pin persisted on PlayerData, used by command replies and chat notices.
 var languageCommand = new CommandLanguage();
 var languageTarget = new ProbeConnection { Player = givePlayer };
