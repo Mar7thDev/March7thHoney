@@ -14,7 +14,6 @@ using March7thHoney.Kcp;
 using March7thHoney.Program.Generator;
 using March7thHoney.Program.Handbook;
 using March7thHoney.Util;
-using March7thHoney.Util.License;
 using March7thHoney.WebServer;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Server;
@@ -34,7 +33,6 @@ public class EntryPoint
 
     public static async Task Main(string[] args)
     {
-        var limitedMode = LimitedModeSwitch.Enabled;
         IConsole.InitConsole();
         IConsole.RedrawInput(IConsole.Input);
         // Capture log output from the very first line so the admin console's log viewer has the boot history.
@@ -122,7 +120,7 @@ public class EntryPoint
         // Load the config
         try
         {
-            ConfigManager.LoadConfig(limitedMode);
+            ConfigManager.LoadConfig();
         }
         catch (Exception e)
         {
@@ -151,23 +149,6 @@ public class EntryPoint
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Language")));
         ConfigManager.Logger.Info(
             I18NManager.Translate("Server.ServerInfo.CurrentVersion", GameConstants.GAME_VERSION));
-        if (limitedMode)
-        {
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.LimitedModeEnabled"));
-            if (!await OnlineActivationManager.ValidateAsync(GameConstants.GAME_VERSION))
-            {
-                Logger.Warn(I18NManager.Translate("Server.ServerInfo.LimitedModeValidationFailed"));
-                if (!Console.IsInputRedirected)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Press Enter to close...");
-                    Console.ReadLine();
-                }
-
-                return;
-            }
-        }
-
         // Initialize the database
         Task databaseInitTask;
         try
