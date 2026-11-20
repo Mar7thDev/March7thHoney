@@ -187,6 +187,17 @@ public static class ResourceCache
             return false;
         }
 
+        // Caches built before ItemComposeConfig.FormulaType/RelicList/SpecialMaterialCost were modelled: without them
+        // relic and special-material synthesis would be rejected. Only rejected when the raw table is available.
+        var hasItemComposeConfig = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>
+            File.Exists(Path.Combine(ConfigManager.Config.Path.ResourcePath, dir, "ItemComposeConfig.json")));
+        if (hasItemComposeConfig && GameData.ItemComposeConfigData.Count > 0 &&
+            GameData.ItemComposeConfigData.Values.All(compose => string.IsNullOrEmpty(compose.FormulaType)))
+        {
+            Logger.Warn("Resource cache is stale: ItemComposeConfig formula columns are missing.");
+            return false;
+        }
+
         // Caches built before the daily-training tables (DailyQuest / DailyMissionData / DailyMissionCount) and
         // the CocoonConfig type columns were loaded. Only rejected when the raw table is available to rebuild from.
         var hasDailyQuest = ConfigManager.Config.Path.ExcelOutputDirs.Any(dir =>

@@ -3,21 +3,40 @@ using March7thHoney.Database.Inventory;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Player;
+using March7thHoney.Proto;
+using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Shop;
 
 public class ShopService(PlayerInstance player) : BasePlayerManager(player)
 {
-    public async ValueTask<List<ItemData>> BuyItem(int shopId, int goodsId, int count)
+    /// <summary>Upper bound on one purchase of an item without a pile limit.</summary>
+    private const int DefaultMaxBuyCount = 9999;
+
+    public async ValueTask<(Retcode retcode, List<ItemData> items)> BuyItem(int shopId, int goodsId, long count)
     {
         GameData.ShopConfigData.TryGetValue(shopId, out var shopConfig);
-        if (shopConfig == null) return [];
+        if (shopConfig == null) return (Retcode.RetFail, []);
         var goods = shopConfig.Goods.Find(g => g.GoodsID == goodsId);
-        if (goods == null) return [];
+        if (goods == null) return (Retcode.RetFail, []);
         GameData.ItemConfigData.TryGetValue(goods.ItemID, out var itemConfig);
-        if (itemConfig == null) return [];
+        if (itemConfig == null) return (Retcode.RetItemConfigNotExist, []);
 
-        foreach (var cost in goods.CostList) await Player.InventoryManager!.RemoveItem(cost.Key, cost.Value * count);
+        var inventory = Player.InventoryManager!;
+        var (maxCount, limitRetcode) = itemConfig.ItemMainType switch
+        {
+            ItemMainTypeEnum.Equipment => (GameConstants.INVENTORY_MAX_EQUIPMENT - inventory.Data.EquipmentItems.Count,
+                Retcode.RetEquipmentExceedLimit),
+            ItemMainTypeEnum.Relic => (GameConstants.INVENTORY_MAX_RELIC - inventory.Data.RelicItems.Count,
+                Retcode.RetRelicExceedLimit),
+            _ => (itemConfig.PileLimit > 0 ? itemConfig.PileLimit : DefaultMaxBuyCount, Retcode.RetFail)
+        };
+        if (count < 1) return (Retcode.RetFail, []);
+        if (count > maxCount) return (limitRetcode, []);
+
+        var costs = goods.CostList.Where(cost => cost.Value != 0).Select(cost => (cost.Key, (long)cost.Value * count));
+        if (!await inventory.TryRemoveItems(costs)) return (Retcode.RetItemNotEnough, []);
+
         var items = new List<ItemData>();
         if (itemConfig.ItemMainType is ItemMainTypeEnum.Equipment or ItemMainTypeEnum.Relic)
         {
@@ -29,7 +48,7 @@ public class ShopService(PlayerInstance player) : BasePlayerManager(player)
         }
         else
         {
-            var item = await Player.InventoryManager!.AddItem(itemConfig.ID, count, false);
+            var item = await Player.InventoryManager!.AddItem(itemConfig.ID, (int)count, false);
             if (item != null)
             {
                 if (GameData.ItemUseDataData.TryGetValue(item.ItemId, out var useData) && useData.IsAutoUse)
@@ -44,8 +63,9 @@ public class ShopService(PlayerInstance player) : BasePlayerManager(player)
             }
         }
 
-        await Player.MissionManager!.HandleFinishType(MissionFinishTypeEnum.BuyShopGoods, goods);
+        if (Player.MissionManager != null)
+            await Player.MissionManager.HandleFinishType(MissionFinishTypeEnum.BuyShopGoods, goods);
 
-        return items;
+        return (Retcode.RetSucc, items);
     }
 }
