@@ -23,6 +23,7 @@ English | [简体中文](muip-api.zh-CN.md)
 - (2) Authorization Interface: http://127.0.0.1:8080/muip/auth_admin (supports POST)
   - -Required parameter 1: SessionId (obtained after requesting the Create Session Interface)
   - -Required parameter 2: admin_key (configured in config.json's MuipServer.AdminKey and encrypted under rsaPublicKey [obtained from Create Session Interface] using RSA [pacs#1])
+  - -A wrong key deletes the session; create a new one before retrying. Wrong keys share the admin page login's per-client limit: after 8 failures within 15 minutes the client is refused with code 3 for 15 minutes.
   - -Response example:
   ```json
   {

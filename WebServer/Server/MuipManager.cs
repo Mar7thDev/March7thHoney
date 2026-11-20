@@ -109,7 +109,7 @@ public static class MuipManager
         }
     }
 
-    public static AuthAdminKeyResponse AuthAdmin(string sessionId, string key)
+    public static AuthAdminKeyResponse AuthAdmin(string sessionId, string key, string? clientKey = null)
     {
         if (Sessions.TryGetValue(sessionId, out var value))
         {
@@ -120,11 +120,17 @@ public static class MuipManager
                 return new AuthAdminKeyResponse(1, "Session has expired!", null);
             }
 
+            // A wrong key consumes the session so every guess costs a new one, on top of the shared
+            // per-client failure counter.
             var keyStr = DecodeWithRsaFallback(key);
-            if (!CryptographicOperations.FixedTimeEquals(
-                    SHA256.HashData(Encoding.UTF8.GetBytes(keyStr)),
-                    SHA256.HashData(Encoding.UTF8.GetBytes(ConfigManager.Config.MuipServer.AdminKey))))
-                return new AuthAdminKeyResponse(2, "Admin key is invalid!", null);
+            if (!AdminSessionManager.TryVerifyAdminKey(keyStr, clientKey ?? session.ClientKey, out var failure,
+                    out var blocked))
+            {
+                Sessions.TryRemove(sessionId, out _);
+                return blocked
+                    ? new AuthAdminKeyResponse(3, failure, null)
+                    : new AuthAdminKeyResponse(2, "Admin key is invalid!", null);
+            }
 
             session.IsAuthorized = true;
 
