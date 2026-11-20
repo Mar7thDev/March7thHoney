@@ -1,4 +1,5 @@
 using System.Text.Json;
+using March7thHoney.Command;
 using March7thHoney.Configuration;
 using March7thHoney.Enums;
 using March7thHoney.Internationalization;
@@ -19,7 +20,40 @@ public static class ConfigManager
         LoadConfigData();
         if (Config.ServerOption.NetStatus is { Enabled: true } netStatus && !netStatus.TryGetColor(out _))
             Logger.Warn("ServerOption.NetStatus requires a non-negative LatencyMs and a #RRGGBB Color; signal override is disabled.");
+        WarnIfDefaultPermissionsTooBroad();
         LoadHotfixData();
+    }
+
+    /// <summary>
+    ///     Entries of <c>ServerOption.DefaultPermissions</c> that grant a permission the built-in User role does not
+    ///     have (for example <c>*</c>, <c>command.*</c>, <c>command.account</c> or <c>command.others</c>).
+    /// </summary>
+    public static List<string> GetPrivilegedDefaultPermissions()
+    {
+        var roles = CommandRoles.DefaultRoles();
+        var userPermissions = CommandRoles.GetPermissions(CommandRoles.User, CommandRoles.User, roles);
+        var privileged = CommandPermissions.KnownPermissions()
+            .Concat(CommandRoles.GetPermissions(CommandRoles.Developer, CommandRoles.User, roles))
+            .Where(permission => permission is not (CommandPermissions.All or CommandPermissions.AllCommands) &&
+                                 !userPermissions.Contains(permission))
+            .ToList();
+
+        return Config.ServerOption.DefaultPermissions
+            .Where(granted => granted == CommandPermissions.All ||
+                              privileged.Any(permission => CommandPermissions.Allows(granted, permission)))
+            .OrderBy(granted => granted, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    public static void WarnIfDefaultPermissionsTooBroad()
+    {
+        var privileged = GetPrivilegedDefaultPermissions();
+        if (privileged.Count == 0) return;
+
+        Logger.Warn(
+            $"ServerOption.DefaultPermissions grants every account [{string.Join(", ", privileged)}]. Any registered " +
+            "player can use these, including taking over or deleting other accounts. Remove them and grant them " +
+            "through PermissionRoles instead.");
     }
 
     public static void SaveConfig()

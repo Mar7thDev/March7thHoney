@@ -80,7 +80,7 @@ public static class ConsoleRoutes
         if (AuthRateLimiter.TryReject(ctx, AuthRateLimitAction.Login, identityKeys, uidText, out var limited))
             return limited;
 
-        if (!TryResolveCredentials(ctx, uidText, Text(body, "password"), out var account,
+        if (!TryResolveCredentials(ctx, uidText, Text(body, "password"), true, out var account,
                 out var credentialFingerprint, out var error))
             return error;
         if (!TryRejectBan(account, out var banned))
@@ -253,8 +253,8 @@ public static class ConsoleRoutes
             expiresAt = session.ExpiresAt.ToUnixTimeSeconds();
         }
         // A password-authenticated call has no session behind it, so nothing to report an expiry for.
-        else if (!TryResolveCredentials(ctx, Text(body, "username", "uid"), Text(body, "password"), out account,
-                     out error))
+        else if (!TryResolveCredentials(ctx, Text(body, "username", "uid"), Text(body, "password"), false,
+                     out account, out _, out error))
         {
             return false;
         }
@@ -267,11 +267,7 @@ public static class ConsoleRoutes
         return true;
     }
 
-    private static bool TryResolveCredentials(HttpContext ctx, string uidText, string password,
-        out AccountData account, out IResult error) =>
-        TryResolveCredentials(ctx, uidText, password, out account, out _, out error);
-
-    private static bool TryResolveCredentials(HttpContext ctx, string uidText, string password,
+    private static bool TryResolveCredentials(HttpContext ctx, string uidText, string password, bool attemptCounted,
         out AccountData account, out string credentialFingerprint, out IResult error)
     {
         account = null!;
@@ -292,17 +288,10 @@ public static class ConsoleRoutes
         }
 
         credentialFingerprint = PlayerConsoleSessionManager.GetCredentialFingerprint(resolved);
-        // Always verify the password when the account has one set, regardless of the RSA-login flag —
-        // command execution must not be password-bypassable.
-        if (resolved.HasPassword() && (string.IsNullOrEmpty(password) || !resolved.VerifyPassword(password)))
+        if (!WebCredentialVerifier.TryVerify(ctx, resolved, password, "player_console", out var failure,
+                attemptCounted))
         {
-            // Count the miss so the uid+password body cannot be used as an unthrottled password oracle;
-            // a correct password never reaches this branch, so honest callers are never counted.
-            var identityKeys = AccountBanHelper.BuildIdentityKeys([], ctx.Connection.RemoteIpAddress?.ToString());
-            if (AuthRateLimiter.TryReject(ctx, AuthRateLimitAction.Login, identityKeys, uidText, out var limited))
-                error = limited;
-            else
-                error = ConsoleJson(1, "Invalid password for this uid.", null, 401);
+            error = failure.Response ?? ConsoleJson(1, failure.Message, null, failure.StatusCode);
             return false;
         }
 
