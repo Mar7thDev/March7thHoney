@@ -8,7 +8,6 @@ public static partial class AdminPageScripts
       // ============================================================ settings
       const settingsState = {
         fields: [],
-        limitedMode: false,
         group: "server",
         edits: {},
         errors: {},
@@ -22,7 +21,6 @@ public static partial class AdminPageScripts
           if (!settingsState.fields.length || force) {
             const data = await api("/admin/api/settings");
             settingsState.fields = data.fields || [];
-            settingsState.limitedMode = Boolean(data.limited_mode);
             settingsState.edits = {};
             settingsState.errors = {};
           }
@@ -68,7 +66,6 @@ public static partial class AdminPageScripts
           <button class="btn primary small" type="button" id="settings-save" ${editCount ? "" : "disabled"}>${t("settings.save_all")}</button>`);
 
         root.innerHTML = String(html`
-          ${settingsState.limitedMode ? html`<div class="notice warn">${t("settings.limited_mode_notice")}</div>` : ""}
           ${settingsState.restartRequired ? html`<div class="notice warn">${t("settings.restart_notice")}</div>` : ""}
           <div class="settings-layout">
             <nav class="settings-nav" aria-label="${t("nav.settings")}">
