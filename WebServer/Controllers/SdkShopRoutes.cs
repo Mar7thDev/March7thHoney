@@ -130,7 +130,7 @@ public static class SdkShopRoutes
     {
         var request = await SdkRequest.Read(ctx);
 
-        var player = ResolvePlayer(request);
+        var player = await ResolvePlayer(ctx, request);
         if (player?.InventoryManager == null)
         {
             Logger.Warn($"createOrder has no authenticated online player. {request.Describe()}");
@@ -174,21 +174,40 @@ public static class SdkShopRoutes
     }
 
     // The credited uid must come with a combo or dispatch token this server issued to that same account.
-    private static PlayerInstance? ResolvePlayer(SdkRequest request)
+    private static async ValueTask<PlayerInstance?> ResolvePlayer(HttpContext ctx, SdkRequest request)
     {
         var rawUid = request.ComboTokenHeader.GetValueOrDefault("oi") ??
                      request.Find("open_id", "openId", "account_id", "accountId", "uid", "account_uid", "role_id");
         var token = request.ComboTokenHeader.GetValueOrDefault("ct") ?? request.Find("combo_token", "token");
         if (!int.TryParse(rawUid, out var uid) || string.IsNullOrEmpty(token)) return null;
 
-        var account = AccountData.GetAccountByUid(uid);
-        if (account == null || !account.ValidateGameToken(token))
+        if (!await IsAccountToken(ctx, uid, token))
         {
             Logger.Warn($"createOrder rejected an invalid token. uid={uid} token_len={token.Length}");
             return null;
         }
 
         return Listener.GetActiveConnection(uid)?.Player;
+    }
+
+    // Same split as PlayerGetToken: a game server without local accounts asks its dispatch server.
+    private static async ValueTask<bool> IsAccountToken(HttpContext ctx, int uid, string token)
+    {
+        var serverConfig = ConfigManager.Config.ServerOption.ServerConfig;
+        if (serverConfig.RunDispatch || string.IsNullOrEmpty(serverConfig.FromDispatchBaseUrl))
+            return AccountData.GetAccountByUid(uid)?.ValidateGameToken(token) == true;
+
+        var headers = new Dictionary<string, string>();
+        if (!string.IsNullOrWhiteSpace(serverConfig.ServerExchangeSecret))
+            headers["X-March7thHoney-Server-Secret"] = serverConfig.ServerExchangeSecret;
+
+        var form = new Dictionary<string, string> { ["accountUid"] = uid.ToString(), ["token"] = token };
+        var clientIp = ctx.Connection.RemoteIpAddress?.ToString();
+        if (clientIp != null) form["clientIp"] = clientIp;
+
+        var (status, body) = await HttpNetwork.SendPostFormRequest(
+            $"{serverConfig.FromDispatchBaseUrl}/validate_account_token", form, headers);
+        return status == 200 && int.TryParse(body, out var validatedUid) && validatedUid == uid;
     }
 
     // Shape recovered from the SDK's own cached price-tier payload; price is in minor units.
