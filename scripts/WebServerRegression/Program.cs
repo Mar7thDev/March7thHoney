@@ -244,6 +244,44 @@ webTarget.Player!.Data.LanguagePin = null;
 using (var forged = await ConsolePost("/player/exec", new { command = "/help" }, "not-a-real-token"))
     Check("console rejects a forged token", forged.RootElement.GetProperty("retcode").GetInt32() != 0);
 
+// /json export and import stay inside Config/Json for a User-role player.
+async Task<string> ConsoleOutput(string command)
+{
+    using var result = await ConsolePost("/player/exec", new { command }, consoleToken);
+    return result.RootElement.GetProperty("output").GetString() ?? "";
+}
+var jsonDir = Path.Combine(scratch, "Config", "Json");
+var escapeName = "m7h-json-escape-" + Guid.NewGuid().ToString("N");
+var relativeEscape = Path.GetFullPath(Path.Combine(jsonDir, "../..", escapeName + ".json"));
+var absoluteEscape = Path.Combine(scratch, escapeName);
+Check("json export rejects a relative traversal name",
+    (await ConsoleOutput($"/json export ../../{escapeName}")).Contains(
+        I18NManager.Translate("Game.Command.Json.InvalidFileName", $"../../{escapeName}")) &&
+    !File.Exists(relativeEscape));
+Check("json export rejects an absolute name",
+    (await ConsoleOutput($"/json export {absoluteEscape} true")).Contains(
+        I18NManager.Translate("Game.Command.Json.InvalidFileName", absoluteEscape)) &&
+    !File.Exists(absoluteEscape + ".json"));
+Check("json export accepts a plain name",
+    (await ConsoleOutput("/json export regression-plain")).Contains(
+        I18NManager.Translate("Game.Command.Json.ExportSuccess", "regression-plain.json")) &&
+    File.Exists(Path.Combine(jsonDir, "regression-plain.json")));
+var originalName = webTarget.Player!.Data.Name;
+webTarget.Player!.Data.Name = $"../../{escapeName}";
+await ConsoleOutput("/json export");
+webTarget.Player!.Data.Name = originalName;
+Check("json export keeps a default name with separators inside Config/Json",
+    Directory.GetFiles(Path.GetDirectoryName(jsonDir)!, "*", SearchOption.AllDirectories)
+        .Concat(Directory.GetFiles(scratch, "*.json", SearchOption.TopDirectoryOnly))
+        .Where(f => f.Contains(escapeName))
+        .All(f => Path.GetDirectoryName(f) == jsonDir) &&
+    !File.Exists(relativeEscape));
+var outsideJson = Path.Combine(scratch, "outside.json");
+await File.WriteAllTextAsync(outsideJson, "{}");
+Check("json import refuses a path outside Config/Json",
+    (await ConsoleOutput($"/json {outsideJson}")) ==
+    I18NManager.Translate("Game.Command.Json.PathOutsideJsonDirectory", outsideJson));
+
 using (var page = await consoleClient.GetAsync("/player/index.html"))
 {
     var body = await page.Content.ReadAsStringAsync();

@@ -32,6 +32,7 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 
 - Commands without a target, target isolation, asynchronous output and exceptions, concurrent requests.
 - `/language` answers the admin console that it is player-only; the player self-service console can pin its own language and replies in the new language.
+- `/json export` from a User-role player refuses traversal and absolute names and keeps a default name built from the player name inside `Config/Json`; `/json <path>` refuses to import a file outside `Config/Json`.
 - Login protection and the in-memory data of the maintenance endpoints.
 
 ### MUIP and gateway
