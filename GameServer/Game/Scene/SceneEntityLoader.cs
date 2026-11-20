@@ -414,10 +414,8 @@ public class SceneEntityLoader(SceneInstance scene)
                 Scene.Player.MissionManager!.IsRogueGalleryUnlocked)
                 prop.State = PropStateEnum.Open;
 
-            // A spring's checkpoint comes from its configured State when the level export declares one
-            // (CheckPointDisable keeps it hidden until a mission or the player enables it - official 20002001
-            // sends 300006/8 and 300021/300022/300007/7) and defaults to CheckPointEnable otherwise. Healing stays
-            // PropType-based, so a disabled spring still heals on proximity.
+            // Keep configured CheckPointDisable (e.g. official 20002001: 300006/8 and 300021/300022/300007/7);
+            // default unspecified checkpoint state to enabled. Proximity healing still uses PropType.
             if (excel.PropType == PropTypeEnum.PROP_SPRING &&
                 prop.State is not (PropStateEnum.CheckPointDisable or PropStateEnum.CheckPointEnable))
                 prop.State = PropStateEnum.CheckPointEnable;

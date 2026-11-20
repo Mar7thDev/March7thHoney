@@ -200,11 +200,9 @@ public sealed partial class GridFightManager : BasePlayerManager
         var permanentTalent = new GridFightTalentInfo();
         permanentTalent.TalentIdList.Add(GameData.GridFightTalentData.Keys.Order());
         var permanentInfo = new GridFightPermanentGameInfo { Talent = permanentTalent };
-        // Clients gate the season entry on the per-stage tutorial progress (FBJMBJKMAJA, keyed by tutorial
-        // division); tutorial_completion alone keeps showing "finish the tutorial first". 4.7 also carried the
-        // last finished tutorial stage (ENECKKGPKHI). The 4.8 client dropped that field together with
-        // GridFightLastTutorialFinishScNotify and added a bool (PMFHAPIFFPO) whose meaning is not identified,
-        // so it stays unset.
+        // Season entry requires FBJMBJKMAJA progress per tutorial division, not tutorial_completion alone.
+        // 4.8 dropped the last completed stage (ENECKKGPKHI) and GridFightLastTutorialFinishScNotify.
+        // Leave the new bool PMFHAPIFFPO unset; its meaning is unknown.
         foreach (var (divisionId, completion, tutorialTask) in Catalog.CompletedTutorialStages)
             permanentInfo.FBJMBJKMAJA[divisionId] = new GLHCHCJMFGA
             {
@@ -2375,10 +2373,9 @@ public sealed partial class GridFightManager : BasePlayerManager
         return info;
     }
 
-    // From 4.6.51 the client builds its stage nodes (GridFightStageRoute.SyncRouteNodes) only from these synced
-    // nodes; without them the current node is null, the stage line reads 0-0 and the preparation page cannot
-    // start a battle. Field identities follow GridFightStageNode._RefreshCachedFields: param 2 stage, 7 penalty
-    // rule, 8 augment flag (== 1), 12 basic gold, 14 node type; 4 (spotlight) and 11 (bonfire) are season-two only.
+    // Since 4.6.51, GridFightStageRoute.SyncRouteNodes requires server nodes to show the stage and allow battle.
+    // GridFightStageNode._RefreshCachedFields: params 2 stage, 7 penalty rule, 8 augment (=1), 12 gold, 14 type;
+    // 4 spotlight and 11 bonfire are season-two only.
     private static BCCIJHPLJOJ BuildRouteNode(GridFightRouteNode node, GridFightSession session)
     {
         var param = new OHMDHKGAEMM

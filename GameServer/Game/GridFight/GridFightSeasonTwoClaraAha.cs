@@ -30,14 +30,11 @@ public sealed partial class GridFightSession
 
     public const uint AhaTraitId = 300602;
     public const string AhaGrowthSavedValueKey = "GP_Avatar_S2_Aha_00";
-    // The role ids of Aha's cost tiers come from the tables (GridFightResourceCatalog.AhaGrowthRoleIds /
-    // AhaSevenCostRoleId); only the growth steps are fixed here, per table layout:
-    //  - OSBETAWin4.7.51 (two star-less tiers, 4- and 5-cost; the 3-cost 151102 is gone): the client's
-    //    GridFightAhaRarity shows the 5-cost form from growth 5 (_GetFormRarity: growth < 5 ? 4 : 5), asks growth 5
-    //    for the 7-cost tier (_SevenCostGrowthLevel) and ends the growth bar at 5 (MaxGrowthLevel).
-    //  - 4.6.5x (three star-less tiers, 3/4/5-cost): that client asked growth 9 for the 7-cost tier; the 4/5-cost
-    //    steps live in server JSON that is not shipped and were spread evenly below it (guess).
-    // How much growth one absorbed copy is worth is server-side in both versions (see AbsorbAhaCopies).
+    // Role IDs come from GridFightResourceCatalog; growth per absorbed copy is server-side.
+    // OSBETAWin4.7.51 client GridFightAhaRarity confirms two star-less tiers (4/5 cost, no 151102):
+    // the 5-cost form, 7-cost threshold and growth-bar cap all use growth 5.
+    // 4.6.5x had three tiers (3/4/5 cost) and a confirmed 7-cost threshold of 9. The intermediate
+    // thresholds are estimates because that version's server JSON is unavailable.
     private static readonly uint[] AhaLegacyTierGrowth = [0, 3, 6];
     private const uint AhaLegacySevenCostGrowth = 9;
     private static readonly uint[] AhaTierGrowth = [0, 5];

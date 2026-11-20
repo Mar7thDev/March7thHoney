@@ -3,16 +3,14 @@ using March7thHoney.SourceGen.Database;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 
-// Runs each source generator on a small input and compares what it emits with the checked-in
-// expectation, so a change to a generator shows up as a reviewed diff of generated code.
+// Compares each generator's output with checked-in expectations for reviewable diffs.
 //
 //   dotnet run --project scripts/SourceGenRegression/SourceGenRegression.csproj -c Release
 //   dotnet run --project scripts/SourceGenRegression/SourceGenRegression.csproj -c Release -- --update
 //
 // --update rewrites the expectations from the current generators; review the diff before committing.
 // Each case is a directory under Cases/ with an Input.cs and the files the generator must emit.
-// Beyond the emitted text it checks that an unrelated edit reuses the previous output and that
-// duplicate declarations are reported as errors.
+// Also checks output reuse after unrelated edits and errors for duplicate declarations.
 
 var update = args.Contains("--update");
 var casesRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../Cases"));

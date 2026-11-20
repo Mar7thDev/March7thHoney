@@ -293,11 +293,8 @@ public partial class ChallengeTierceManager(PlayerInstance player) : BasePlayerM
         DatabaseHelper.MarkDirty(Player.Uid);
     }
 
-    // Tierce (星启模式) relogin workaround. Restoring a Tierce pre-battle scene on login leaves
-    // the scene/boss correct but the client never re-attaches the challenge UI. So if the player
-    // disconnected mid-Tierce, abandon the in-progress run and hand OnLogin the matching mode's
-    // lobby entrance to respawn at instead. Returns null when there is no in-progress Tierce run,
-    // which leaves every other mode's relogin path completely untouched.
+    // The client restores a Tierce (星启模式) scene on relogin but not its challenge UI.
+    // Discard an in-progress run and return its mode's lobby; null leaves other modes alone.
     public int? ConsumeReloginRedirect()
     {
         if (CurrentInstance == null) return null;

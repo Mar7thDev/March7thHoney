@@ -10,7 +10,6 @@ public class CommandReload : ICommand
     [CommandMethod("0 banner")]
     public async ValueTask ReloadBanner(CommandArg arg)
     {
-        // Reload the banners
         GameData.BannersConfig = ResourceManager.LoadBanners();
         await arg.SendMsg(I18NManager.Translate("Game.Command.Reload.ConfigReloaded",
             I18NManager.Translate("Word.Banner")));
@@ -19,7 +18,6 @@ public class CommandReload : ICommand
     [CommandMethod("0 activity")]
     public async ValueTask ReloadActivity(CommandArg arg)
     {
-        // Reload the activities
         GameData.ActivityConfig = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig") ??
                                   new ActivityConfig();
         await arg.SendMsg(I18NManager.Translate("Game.Command.Reload.ConfigReloaded",
@@ -29,7 +27,6 @@ public class CommandReload : ICommand
     [CommandMethod("0 videokey")]
     public async ValueTask ReloadVideoKey(CommandArg arg)
     {
-        // Reload the videokeys
         GameData.VideoKeysConfig = ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
                                    new VideoKeysConfig();
         await arg.SendMsg(I18NManager.Translate("Game.Command.Reload.ConfigReloaded",

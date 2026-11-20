@@ -274,12 +274,8 @@ public class AbilityLevelTask(PlayerInstance player)
                         detectTrigger.TriggerName, detectIds);
             }
 
-            // A battle starts when any of these holds:
-            // - TriggerBattle: true (declared explicitly by old-style abilities)
-            // - EnterBattleSelectTargetType is non-empty (new style, e.g. Evanescia's AllHitTarget)
-            // - a normal attack (SkillIndex == 0) hit a monster: the core way of entering battle in the open world,
-            //   which the official server drives from the assistMonsterEntityIdList the client reports in the
-            //   request, not from the ability config
+            // Normal attacks also start battles on live hits. The official server gets these targets from
+            // assistMonsterEntityIdList rather than the ability config.
             var hasHitMonster = target.OfType<EntityMonster>().Any(x => x.IsAlive);
             var shouldTriggerBattle = adventureTriggerAttack.TriggerBattle
                                       || !string.IsNullOrEmpty(adventureTriggerAttack.EnterBattleSelectTargetType)
@@ -536,13 +532,9 @@ public class AbilityLevelTask(PlayerInstance player)
 
             const int summonLifeTimeMs = 45 * 1000;
 
-            // The official server sends FollowField summon units with LifeTimeMs = -1 (e.g. Cyrene 14151): the
-            // resources give no summon duration, and the lifetime belongs to the modifier of the caster's maze buff
-            // (created in OnCreate, destroyed in OnDestroy). When that buff has a finite duration the unit is
-            // reclaimed through buff expiry → RemoveModifier → DestroySummonUnit and the 45s fallback is not applied;
-            // with it, a recast that refreshes the buff would leave the unit disappearing before the buff and taking
-            // the buffs it delivered to enemies with it. Units with no such owner, or whose buff is permanent, keep
-            // the 45s fallback so they do not stay forever.
+            // Official FollowField summons tied to timed maze buffs use LifeTimeMs = -1 (e.g. Cyrene 14151).
+            // Buff expiry removes the modifier and destroys the summon. A fixed timer could cut short
+            // a refreshed buff and its effects on enemies. Keep the 45s fallback for unowned or permanent buffs.
             var lifeTimeMs = param.CasterEntity is AvatarSceneInfo avatarCaster &&
                              IsDestroyedByTimedMazeBuff(avatarCaster, excel.ID)
                 ? -1
