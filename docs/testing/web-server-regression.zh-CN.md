@@ -48,6 +48,7 @@ dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- -
 - 匿名 MUIP 会话达到容量上限时拒绝新建。已过期且被遗弃的会话在新建时清理，服务也每分钟主动清理一次。总上限为 1024，每个 HTTP 来源最多 32 个尚未过期的会话。内部短期命令桥接不使用匿名创建接口。
 - `/muip/auth_admin` 收到错误密钥时删除该 MUIP 会话，并计入与后台登录相同的按客户端失败计数。同一客户端错误 8 次后，即使密钥正确也会被拒绝（code 3），MUIP 与后台登录都如此，其他客户端不受影响。
 - 根 `/sr-tools` 导入不再允许仅凭 UID 操作，即使关闭了 RSA 解密；没有密码的旧账号需要先设置密码。
+- SDK `createOrder` 只给出示了自身 combo 或 dispatch 令牌（通过 `x-rpc-combo_token` 或请求参数）的在线玩家入账：缺少令牌、伪造令牌、使用其他账号的令牌或完全不带 UID 时，玩家的月卡状态保持不变；不再回退到唯一在线玩家。
 - 无密码账号会被控制台登录、会话、命令目录、命令执行与自助重置拒绝，也会被 `/sr-tools` 与 `/sr-tools-export` 拒绝。
 - `/sr-tools-export` 拒绝缺失或错误的密码，接受 `POST` 请求体中的凭据，对旧的查询字符串 `GET` 返回 405。
 - 控制台、`/sr-tools` 或 `/sr-tools-export` 上的错误密码触发登录限流后，三者都会拒绝正确密码。两个 sr-tools 路由同样执行 IP 封锁与账号封禁。

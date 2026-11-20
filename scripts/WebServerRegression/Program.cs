@@ -7,10 +7,13 @@ using System.Text;
 using System.Text.Json;
 using March7thHoney.Command;
 using March7thHoney.Command.Command;
+using March7thHoney.Data;
+using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
 using March7thHoney.Database.Friend;
 using March7thHoney.Database.Player;
+using March7thHoney.GameServer.Game.Inventory;
 using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
@@ -147,6 +150,48 @@ var webTarget = new TestConnection(fixtureUid);
 connections.Add(1, terminalTarget);
 connections.Add(2, webTarget);
 manager.Target = terminalTarget;
+
+// createOrder grants paid products: an unproven caller must leave the online player's supply pass untouched.
+async Task<int?> CreateOrder(string query, string? comboHeader = null)
+{
+    using var request = new HttpRequestMessage(HttpMethod.Post, "/mdk/luckycat/luckycat/createOrder" + query);
+    if (comboHeader != null) request.Headers.TryAddWithoutValidation("x-rpc-combo_token", comboHeader);
+    using var response = await client.SendAsync(request);
+    if (!response.IsSuccessStatusCode) return null;
+    using var json = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
+    return json.RootElement.GetProperty("retcode").GetInt32();
+}
+var shopPlayer = webTarget.Player!;
+typeof(PlayerInstance).GetProperty(nameof(PlayerInstance.InventoryManager))!
+    .SetValue(shopPlayer, new InventoryManager(shopPlayer));
+const string shopProduct = "regression-supply-pass";
+GameData.RechargeConfigData[shopProduct] = new RechargeConfigExcel
+    { ProductID = shopProduct, GiftType = (int)ProductGiftType.ProductGiftMonthCard };
+config.ServerOption.EnableMonthCard = true;
+var otherToken = AccountHelper.CreateAccount("shop-other", "shop-other@example.invalid", "shop-other-only", 10001, null)
+    .GenerateComboToken();
+var fixtureToken = AccountData.GetAccountByUid(fixtureUid)!.GenerateComboToken();
+async Task<bool> OrderRefused(string query, string? comboHeader = null)
+{
+    var before = shopPlayer.Data.MonthCardExpireTime;
+    return await CreateOrder(query, comboHeader) == -1 && shopPlayer.Data.MonthCardExpireTime == before;
+}
+var product = $"&product_id={shopProduct}";
+Check("createOrder rejects a uid without a token", await OrderRefused($"?uid={fixtureUid}{product}"));
+connections.Remove(1);
+Check("createOrder does not fall back to the only online player", await OrderRefused($"?x=1{product}"));
+connections.Add(1, terminalTarget);
+Check("createOrder rejects another account's token",
+    await OrderRefused($"?uid={fixtureUid}&combo_token={otherToken}{product}"));
+Check("createOrder rejects a forged combo token header",
+    await OrderRefused($"?x=1{product}", $"ai=11;ci=1;oi={fixtureUid};ct=forged;bi=hkrpg_global"));
+Check("createOrder rejects a header token for a different uid",
+    await OrderRefused($"?x=1{product}", $"ai=11;ci=1;oi={fixtureUid};ct={otherToken};bi=hkrpg_global"));
+var beforeGrant = shopPlayer.Data.MonthCardExpireTime;
+await CreateOrder($"?x=1{product}", $"ai=11;ci=1;oi={fixtureUid};ct={fixtureToken};bi=hkrpg_global");
+Check("createOrder credits the player whose combo token is presented",
+    shopPlayer.Data.MonthCardExpireTime > beforeGrant);
+GameData.RechargeConfigData.Remove(shopProduct);
 
 var luaRoot = Path.Combine(scratch, "Lua");
 Directory.CreateDirectory(Path.Combine(luaRoot, "nested"));
