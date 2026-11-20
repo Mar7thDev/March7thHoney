@@ -84,11 +84,11 @@ public static class JsonRoutes
 
     private static async Task<IResult> DownloadFreedata(HttpContext ctx)
     {
-        JsonNode? body;
+        JsonObject? body;
         try
         {
             using var reader = new StreamReader(ctx.Request.Body, Encoding.UTF8);
-            body = JsonNode.Parse(await reader.ReadToEndAsync());
+            body = JsonNode.Parse(await reader.ReadToEndAsync()) as JsonObject;
         }
         catch (Exception)
         {

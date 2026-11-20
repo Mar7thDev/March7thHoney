@@ -196,6 +196,13 @@ internal static class SecuritySessionChecks
         }
 
         AuthRateLimiter.ClearAll(false);
+        foreach (var malformed in new[] { "[]", "42", "\"text\"", "{" })
+        {
+            using var content = new StringContent(malformed, System.Text.Encoding.UTF8, "application/json");
+            using var response = await client.PostAsync("/sr-tools-export", content);
+            check($"sr-tools-export answers a non-object body ({malformed}) with 400",
+                response.StatusCode == HttpStatusCode.BadRequest);
+        }
         check("sr-tools-export rejects a missing password",
             (await Post("/sr-tools-export", new { username = fixtureUid.ToString() })).Status == HttpStatusCode.Unauthorized);
         check("sr-tools-export rejects a wrong password",
