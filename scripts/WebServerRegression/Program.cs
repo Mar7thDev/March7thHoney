@@ -9,7 +9,9 @@ using March7thHoney.Command;
 using March7thHoney.Command.Command;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
+using March7thHoney.Database.Friend;
 using March7thHoney.Database.Player;
+using March7thHoney.GameServer.Game.Friend;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
@@ -297,6 +299,48 @@ for (var i = 0; i < 3; i++)
 await SecuritySessionChecks.Run(client, fixtureUid, fixturePassword, Check);
 Check("temporary command sessions are removed", MuipManager.Sessions.Count == 0);
 await app.StopAsync();
+// Private chat: only mutual friends may message each other, blocks are honoured, and history stays bounded.
+FriendManager ChatFixture(int uid) =>
+    new(new PlayerInstance(new PlayerData { Uid = uid, Name = $"Chat {uid}" }) { Uid = uid });
+var alice = ChatFixture(20001);
+var bob = ChatFixture(20002);
+var mallory = ChatFixture(20003);
+alice.FriendData.FriendDetailList[bob.Player.Uid] = new FriendDetailData();
+bob.FriendData.FriendDetailList[alice.Player.Uid] = new FriendDetailData();
+// Mallory still lists Alice as a friend, but Alice has blocked her.
+mallory.FriendData.FriendDetailList[alice.Player.Uid] = new FriendDetailData();
+alice.FriendData.BlackList.Add(mallory.Player.Uid);
+bool NoChat(FriendManager a, FriendManager b) =>
+    !a.FriendData.ChatHistory.ContainsKey(b.Player.Uid) && !b.FriendData.ChatHistory.ContainsKey(a.Player.Uid);
+Check("private message to a non-friend is rejected and not stored",
+    await mallory.SendMessage(bob.Player.Uid, "hi") == Retcode.RetFriendIsNotFriend && NoChat(mallory, bob));
+Check("private message from a blocked sender is rejected and not stored",
+    await mallory.SendMessage(alice.Player.Uid, "hi") == Retcode.RetFriendInTargetBlacklist && NoChat(mallory, alice));
+Check("private message to a blocked player is rejected",
+    await alice.SendMessage(mallory.Player.Uid, "hi") == Retcode.RetFriendInBlacklist && NoChat(alice, mallory));
+Check("private message to oneself is rejected",
+    await bob.SendMessage(bob.Player.Uid, "hi") == Retcode.RetFriendIsNotFriend
+    && !bob.FriendData.ChatHistory.ContainsKey(bob.Player.Uid));
+Check("private message to an offline friend is stored for both sides",
+    await bob.SendMessage(alice.Player.Uid, "hello") == Retcode.RetSucc
+    && alice.FriendData.ChatHistory[bob.Player.Uid].MessageList.Single().Message == "hello"
+    && bob.FriendData.ChatHistory[alice.Player.Uid].MessageList.Single().Message == "hello");
+var tooManyTargets = Enumerable.Range(30001, FriendManager.MaxMessageTargets).Select(uid => (uint)uid)
+    .Append((uint)alice.Player.Uid).ToList();
+Check("a request with too many targets is rejected without delivering",
+    await bob.SendMessage(tooManyTargets, "spam") == Retcode.RetFriendTargetNumberLimit
+    && alice.FriendData.ChatHistory[bob.Player.Uid].MessageList.Count == 1);
+Check("a mixed request delivers to friends and reports the rejection",
+    await bob.SendMessage([(uint)mallory.Player.Uid, (uint)alice.Player.Uid], "mixed") == Retcode.RetFriendIsNotFriend
+    && alice.FriendData.ChatHistory[bob.Player.Uid].MessageList.Last().Message == "mixed" && NoChat(bob, mallory));
+for (var i = 0; i < FriendManager.MaxConversationHistory + 5; i++)
+    await bob.SendMessage(alice.Player.Uid, $"flood {i}");
+Check("private chat history is trimmed per conversation on both sides", new[]
+{
+    alice.FriendData.ChatHistory[bob.Player.Uid].MessageList, bob.FriendData.ChatHistory[alice.Player.Uid].MessageList
+}.All(list => list.Count == FriendManager.MaxConversationHistory
+              && list.Last().Message == $"flood {FriendManager.MaxConversationHistory + 4}"));
+
 Console.WriteLine($"Regression failures: {failures.Count}");
 Environment.ExitCode = failures.Count == 0 ? 0 : 1;
 

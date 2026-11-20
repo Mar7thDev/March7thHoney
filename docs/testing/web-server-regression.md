@@ -47,6 +47,12 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 - Anonymous MUIP session creation is refused at capacity. Expired, abandoned sessions are cleaned up on creation, and the service also cleans them up every minute. The total limit is 1024, with at most 32 unexpired sessions per HTTP source. The internal short-lived command bridge does not use the anonymous creation endpoint.
 - Root `/sr-tools` import no longer accepts a UID alone, even with RSA decryption off; old accounts without a password must set one first.
 
+### Private chat
+
+- A private message is delivered and stored only between mutual friends: messages to a non-friend, to oneself, to a player one has blocked, or from a sender the target has blocked are rejected and stored on neither side.
+- A request naming more than `FriendManager.MaxMessageTargets` recipients is rejected without delivering anything; a mixed request still delivers to friends and reports the first rejection.
+- Each stored conversation, including an offline friend's, keeps at most `FriendManager.MaxConversationHistory` messages.
+
 These cases use only temporary accounts, a temporary database and loopback HTTP, and never touch real player saves.
 
 ## Expected result

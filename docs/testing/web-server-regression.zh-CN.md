@@ -47,6 +47,12 @@ dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- -
 - 匿名 MUIP 会话达到容量上限时拒绝新建。已过期且被遗弃的会话在新建时清理，服务也每分钟主动清理一次。总上限为 1024，每个 HTTP 来源最多 32 个尚未过期的会话。内部短期命令桥接不使用匿名创建接口。
 - 根 `/sr-tools` 导入不再允许仅凭 UID 操作，即使关闭了 RSA 解密；没有密码的旧账号需要先设置密码。
 
+### 私聊
+
+- 私聊消息只在互为好友的玩家之间投递和保存：发给非好友、发给自己、发给自己拉黑的玩家，或被对方拉黑的发送者发出的消息都会被拒绝，双方都不保存。
+- 一次请求的接收者超过 `FriendManager.MaxMessageTargets` 时整体拒绝，不投递任何消息；混合请求仍投递给好友，并返回第一个拒绝原因。
+- 每段保存的对话（包括离线好友的）最多保留 `FriendManager.MaxConversationHistory` 条消息。
+
 这些用例只使用临时账号、临时数据库和回环 HTTP，不接触真实玩家存档。
 
 ## 预期结果
