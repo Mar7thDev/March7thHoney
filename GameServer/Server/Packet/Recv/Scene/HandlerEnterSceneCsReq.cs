@@ -20,6 +20,12 @@ public class HandlerEnterSceneCsReq : Handler<EnterSceneCsReq>
         var isSocialPlayEnter = roomOwnerUid != 0 && socialTeleportReason is 2 or 3 or 4 or 5;
         var isOwnerSocialEnter = isSocialPlayEnter && roomOwnerUid == (uint)player.Uid;
         var isJoinedSocialEnter = isSocialPlayEnter && roomOwnerUid != (uint)player.Uid;
+        if (isJoinedSocialEnter && player.TrainCakeCatchManager?.IsValidRoomOwner(roomOwnerUid) != true)
+        {
+            await connection.SendPacket(new PacketEnterSceneScRsp(Retcode.RetFriendPlayerNotFound));
+            return;
+        }
+
         var previousRoomOwnerUid = player.TrainCakeCatchManager?.CurrentRoomOwnerUid;
         var socialSceneContext = isSocialPlayEnter
             ? player.TrainCakeCatchManager?.GetRoomSceneContext(roomOwnerUid)

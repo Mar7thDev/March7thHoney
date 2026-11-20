@@ -40,6 +40,7 @@ dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c
 - 数值标签：`SceneMapInfo.floor_id=14`、`retcode=6`。失败返回码独立编码；强制字段映射优先于旧版本推断；同时合并原始名与语义名作用域。
 - `CommonRogueQueryScRsp`：查询类型即 `CCKJAEDDDCL` oneof 分支的字段号，按当前生成的协议代码读取。功能解锁分支 `CCKJAEDDDCL.BBEKBJPHEJKFieldNumber` 在 4.5 为 `15`、4.6 为 `1`、4.7 为 `10`、4.8 为 `15`。只有该分支带解锁集合，保持请求顺序与重复项；其余三类查询保持无分支，不臆造状态。
 - `SocialPlayGetDataCsReq`、`PetMarbleGetDataCsReq`、`PetMarbleGetCycleTrialPetsCsReq` 有处理器，经源生成的 opcode 表注册。回包中所有单值子消息（递归 5 层，oneof 与列表除外）都以空消息下发，而不是未处理请求的空包体，避免客户端收到 null。补齐时不选择 oneof、不添加列表项。
+- 社交玩法房主（`MainFixRegression.cs` 中的 `SocialPlayRoomOwner`）：`SocialPlayPreCheckEnterRoomCsReq` 与社交玩法 `EnterSceneCsReq` 指定无账号的 uid 时返回 `RET_FRIEND_PLAYER_NOT_FOUND`，不留下待进入或当前房间，也不为该 uid 保存 `TrainCakeCatchData` 行或添加 `UidInstanceMap` 条目。对已存在的离线账号预检成功，使用未保存的默认房间视图。
 
 ### 场景加载与楼层状态
 

@@ -168,7 +168,8 @@ public class DatabaseHelper
 
     public T? GetInstance<T>(int uid) where T : class
     {
-        var list = UidInstanceMap.GetOrAdd(uid, static _ => []);
+        // A read must not add a map entry: callers look up uids taken from client packets.
+        if (!UidInstanceMap.TryGetValue(uid, out var list)) return null;
         lock (list) return list.OfType<T>().FirstOrDefault();
     }
 
