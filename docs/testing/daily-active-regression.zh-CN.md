@@ -44,6 +44,7 @@ dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj 
 - 领取实训任务奖励会发放物品 23 并计入当日活跃度；`GetItem(23)` 返回当前值。
 - 未知档位返回 4101，重复领取返回 4102，活跃度不足返回 4103。
 - 一键领取按档位升序处理并合并奖励；重复一键领取不发放任何奖励。
+- `TakeQuestOptionalReward` 收到非 0 的可选奖励 ID（无关的奖励 ID 或直接的物品 ID）时返回 `RetReqParaInvalid`，不发放任何奖励，任务保持已完成；ID 为 0 时只发放该任务的 `RewardID`，且只发放一次。
 
 ### 跨日
 

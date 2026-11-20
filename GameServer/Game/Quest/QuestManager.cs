@@ -258,6 +258,10 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
         GameData.QuestDataData.TryGetValue(questId, out var questExcel);
         if (questExcel == null) return (Retcode.RetFail, rewards);
 
+        // QuestData defines no per-quest optional reward choices, so the only grant a quest allows is its
+        // configured RewardID; a client-chosen id would otherwise let any reward package or item be claimed.
+        if (optionalRewardId != 0) return (Retcode.RetReqParaInvalid, rewards);
+
         if (!Data.Quests.TryGetValue(questId, out var questInfo))
         {
             if (ConfigManager.Config.ServerOption.EnableQuest) return (Retcode.RetQuestNotAccept, rewards);
@@ -273,20 +277,6 @@ public class QuestManager(PlayerInstance player) : BasePlayerManager<QuestData>(
         if (questExcel.RewardID != 0)
         {
             await AppendGrantedRewardForRsp(questExcel.RewardID, rewards);
-        }
-
-        if (optionalRewardId != 0)
-        {
-            // In most quest packets this id is a RewardID, not a direct ItemID.
-            if (GameData.RewardDataData.ContainsKey(optionalRewardId))
-            {
-                await AppendGrantedRewardForRsp(optionalRewardId, rewards);
-            }
-            else
-            {
-                var optionalReward = await Player.InventoryManager!.AddItem(optionalRewardId, 1, false);
-                if (optionalReward != null) rewards.Add(optionalReward);
-            }
         }
 
         await Player.SendPacket(new PacketPlayerSyncScNotify(questInfo));

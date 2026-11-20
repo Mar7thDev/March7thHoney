@@ -73,6 +73,7 @@ Without game resources (all run by `scripts/verify-security.py`):
 | Web admin, MUIP, command isolation | `dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj` |
 | KCP endpoint binding and admission | `dotnet run --project scripts/KcpSecurityRegression/KcpSecurityRegression.csproj` and `scripts/KcpAdmissionRegression/KcpAdmissionRegression.csproj` |
 | Source generators | `dotnet run --project scripts/SourceGenRegression/SourceGenRegression.csproj -c Release` |
+| Inventory costs, shop, synthesis | `dotnet run --project scripts/InventoryRegression/InventoryRegression.csproj -c Release` |
 | Protocol build | `python3 scripts/test-proto-generation.py` |
 
 With a resource cache (`Config/Resource.bin`):

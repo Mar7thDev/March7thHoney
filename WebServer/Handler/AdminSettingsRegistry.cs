@@ -174,7 +174,15 @@ public static class AdminSettingsRegistry
 
         // --- email ---
         yield return Bool("Email.Enabled", "email", () => email.Enabled, v => email.Enabled = v);
-        yield return Str("Email.PublicBaseUrl", "email", () => email.PublicBaseUrl, v => email.PublicBaseUrl = v, 0, 512);
+        yield return new SettingDef("Email.PublicBaseUrl", "email", "string", () => email.PublicBaseUrl, value =>
+        {
+            var trimmed = value.Trim();
+            if (trimmed.Length > 512) return "at most 512 characters";
+            if (trimmed.Length > 0 && AccountEmailSender.ResolvePublicBaseUrl(trimmed) == null)
+                return "must be an absolute http(s) URL without a query, e.g. https://sr.example.com";
+            email.PublicBaseUrl = trimmed;
+            return null;
+        }, false, null, null);
         yield return Str("Email.LogoUrl", "email", () => email.LogoUrl, v => email.LogoUrl = v, 0, 2048);
         yield return Str("Email.Smtp.Host", "email", () => smtp.Host, v => smtp.Host = v, 0, 253);
         yield return Int("Email.Smtp.Port", "email", () => smtp.Port, v => smtp.Port = v, 1, 65535);

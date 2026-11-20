@@ -43,6 +43,16 @@ This behaviour change needs no database change. Back up the program and configur
 - A first-time user can no longer set the password of an account that has none; an administrator must set it. Automatic account creation also cannot skip an enabled email verification requirement; when email verification is required, submit a real email address through the official registration page.
 - Ordinary device models, device names and app IDs are no longer treated as unique device identifiers.
 - On startup the database adds new fields and tables automatically; no manual migration is needed. The changes take effect after updating the program and restarting.
+- The player console (`/player/*`, `/console/*`), `/sr-tools` and `/sr-tools-export` check UID and password through one shared verifier. Accounts without a password are refused, a client under a login rate-limit block or an IP/device block is refused before the password is checked, every wrong password counts towards the login limit, and banned accounts are refused.
+- `/sr-tools-export` is now `POST` with a JSON body `{"username":"<uid>","password":"<password>"}`. The old `GET ?uid=&password=` form returns 405, so the password no longer ends up in URLs, proxy logs or browser history. Update any script or tool that downloaded the export with `GET`.
+
+### DefaultPermissions
+
+`ServerOption.DefaultPermissions` is added to every account on top of its role. Its built-in default is now empty; it used to be `["*"]`, which made every registered player an administrator (including `command.account` and `command.others`).
+
+- **Existing installations keep their value.** `Config.json` is read and written back on startup, so a file created by an older version still contains `"DefaultPermissions": ["*"]` and still grants everything. On startup, and when the value is changed from the admin page, the server logs a warning if it contains `*` or any permission the built-in User role does not have (for example `command.*`, `command.account`, `command.others`).
+- **Migration:** back up `Config.json`, set `"DefaultPermissions": []` (or only low-risk permissions), and give operators their privileges through `PermissionRoles` / account roles. Restart, or change it from the admin access page, which takes effect immediately.
+- **Rollback:** restoring the backup, or setting `"DefaultPermissions": ["*"]` again, restores the old behaviour; the startup warning then reappears. Rolling the program back to an older version does not change an existing `Config.json`; a file first created by the new version keeps `[]` under the old program too.
 
 ## Reverse proxies and split deployments
 

@@ -111,6 +111,7 @@ NativeAOT 发布使用项目定义的 `-p:DoAot=true`，不要全局传入 `-p:P
 | GridFight 玩法与状态同步 | `dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj` | 读取当前 `Config/Resource.bin`（可用 `--cache` 指定），按缓存的 GridFight 赛季运行；不初始化玩家数据库，不写回缓存 |
 | 原始资源、枚举兼容及共享能力解析 | `dotnet run --project scripts/ResourceRegression/ResourceRegression.csproj -c Release -- <资源目录> <新报告目录>` | 隔离进程直接加载资源；可用 `--cache-out <新文件>` 验证并导出快照；预期 `failures: 0, loader issues: 0` |
 | 源生成器的输出、增量缓存与诊断 | `dotnet run --project scripts/SourceGenRegression/SourceGenRegression.csproj -c Release` | 不需要资源；有意改变输出时追加 `-- --update` 重写期望文件并审查差异；预期 `failures: 0` |
+| 物品移除、商店购买、合成与使用物品 | `dotnet run --project scripts/InventoryRegression/InventoryRegression.csproj -c Release` | 不需要资源（合成测试数据）；临时 SQLite；预期 `failures: 0` |
 | 每日实训、活跃度档位、每日委托及事件型任务完成条件 | `dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj -c Release` | 临时 SQLite；读取 `Config/Resource.bin` 副本（需含每日实训表，可用 `--cache` 指定）；预期 `failures: 0` |
 
 - 具体覆盖和预期日志见 `docs/testing/` 下对应文档。以进程退出码和最终失败汇总判断结果；模拟异常会产生预期错误日志。

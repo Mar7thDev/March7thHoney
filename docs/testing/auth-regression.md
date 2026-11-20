@@ -49,6 +49,11 @@ None beyond the .NET SDK. The regression creates a fresh temporary SQLite databa
 - Public placeholder fingerprints and their old hashes are filtered out.
 - Rejection logs distinguish an account ban from an independent rule and contain no password, token or raw device value.
 
+### Account email links
+
+- Password reset emails are refused while `Email.PublicBaseUrl` is empty or not an absolute http(s) URL.
+- With it set, the reset link uses that address even when the request carries a forged `Host` header.
+
 ### Website game-account API
 
 - On/off switch and secret key; the source address after proxy forwarding.

@@ -47,7 +47,24 @@ public static class AdminSessionManager
         CleanupExpiredSessions();
 
         session = default;
+        if (!TryVerifyAdminKey(adminKey, clientKey, out message, out _))
+            return false;
+
+        session = new AdminSession(AuthSecurity.GenerateSessionToken(), DateTimeOffset.UtcNow.Add(SessionLifetime));
+        Sessions[session.Token] = session;
+        message = "OK";
+        return true;
+    }
+
+    /// <summary>
+    ///     Checks an admin key against the configured one through the per-client failure counter shared by
+    ///     every admin key login path (admin page and MUIP).
+    /// </summary>
+    public static bool TryVerifyAdminKey(string? adminKey, string? clientKey, out string message, out bool blocked)
+    {
+        CleanupExpiredLoginFailures();
         message = "Admin key is invalid";
+        blocked = false;
 
         if (!IsEnabled)
         {
@@ -66,6 +83,7 @@ public static class AdminSessionManager
                 {
                     var remaining = (int)Math.Ceiling((failureState.BlockedUntil - now).TotalMinutes);
                     message = $"Too many failed attempts. Try again in {Math.Max(remaining, 1)} minutes";
+                    blocked = true;
                     return false;
                 }
             }
@@ -101,8 +119,6 @@ public static class AdminSessionManager
                 failureState.BlockedUntil = DateTimeOffset.MinValue;
             }
 
-        session = new AdminSession(AuthSecurity.GenerateSessionToken(), now.Add(SessionLifetime));
-        Sessions[session.Token] = session;
         message = "OK";
         return true;
     }
@@ -161,6 +177,12 @@ public static class AdminSessionManager
                 Sessions.TryRemove(token, out _);
         }
 
+        CleanupExpiredLoginFailures();
+    }
+
+    private static void CleanupExpiredLoginFailures()
+    {
+        var now = DateTimeOffset.UtcNow;
         foreach (var (key, state) in LoginFailures)
         {
             lock (state)

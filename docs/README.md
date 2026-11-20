@@ -44,4 +44,5 @@ The project overview is the [README](../README.md), also available in
 - [Login and scene regression](testing/login-scene-regression.md)
 - [GridFight regression](testing/grid-fight-regression.md)
 - [Daily training regression](testing/daily-active-regression.md)
+- [Inventory cost regression](testing/inventory-regression.md)
 - [Raw resource regression](testing/resource-regression.md)
