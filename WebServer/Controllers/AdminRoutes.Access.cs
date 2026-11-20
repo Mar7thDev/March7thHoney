@@ -146,6 +146,7 @@ public static partial class AdminRoutes
 
         ConfigManager.Config.ServerOption.DefaultPermissions = permissions;
         ConfigManager.SaveConfig();
+        ConfigManager.WarnIfDefaultPermissionsTooBroad();
         ResyncAccountPermissions();
 
         return Success(BuildAccessData());

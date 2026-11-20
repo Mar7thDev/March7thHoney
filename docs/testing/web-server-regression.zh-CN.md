@@ -46,6 +46,10 @@ dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- -
 - MUIP 会话绑定创建时的管理密钥版本。配置变更后，认证、命令、服务器信息和玩家信息接口都拒绝旧会话。在后台轮换密钥也会清除 MUIP 管理会话。
 - 匿名 MUIP 会话达到容量上限时拒绝新建。已过期且被遗弃的会话在新建时清理，服务也每分钟主动清理一次。总上限为 1024，每个 HTTP 来源最多 32 个尚未过期的会话。内部短期命令桥接不使用匿名创建接口。
 - 根 `/sr-tools` 导入不再允许仅凭 UID 操作，即使关闭了 RSA 解密；没有密码的旧账号需要先设置密码。
+- 无密码账号会被控制台登录、会话、命令目录、命令执行与自助重置拒绝，也会被 `/sr-tools` 与 `/sr-tools-export` 拒绝。
+- `/sr-tools-export` 拒绝缺失或错误的密码，接受 `POST` 请求体中的凭据，对旧的查询字符串 `GET` 返回 405。
+- 控制台、`/sr-tools` 或 `/sr-tools-export` 上的错误密码触发登录限流后，三者都会拒绝正确密码。两个 sr-tools 路由同样执行 IP 封锁与账号封禁。
+- `DefaultPermissions` 默认为空；默认角色账号没有 `*`、`command.*`、`command.account` 或 `command.others`；启动警告会标出 `*` 与高权限条目，但不会标出 User 角色已有的权限。测试夹具不再自行清空 `DefaultPermissions`，因此控制台权限检查在默认配置下运行。
 
 这些用例只使用临时账号、临时数据库和回环 HTTP，不接触真实玩家存档。
 
