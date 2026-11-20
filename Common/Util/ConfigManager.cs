@@ -2,7 +2,6 @@ using System.Text.Json;
 using March7thHoney.Configuration;
 using March7thHoney.Enums;
 using March7thHoney.Internationalization;
-using March7thHoney.Util.License;
 
 namespace March7thHoney.Util;
 
@@ -12,17 +11,12 @@ public static class ConfigManager
     private static readonly object HotfixDataLock = new();
     private static readonly string ConfigFilePath = "Config.json";
     private static string HotfixFilePath => Config.Path.ConfigPath + "/Hotfix.json";
-    public static bool IsLimitedMode { get; private set; }
     public static ConfigContainer Config { get; private set; } = new();
     public static HotfixContainer Hotfix { get; private set; } = new();
 
-    public static void LoadConfig(bool limitedMode = false)
+    public static void LoadConfig()
     {
-        IsLimitedMode = limitedMode;
-        if (IsLimitedMode)
-            LoadLimitedConfigData();
-        else
-            LoadConfigData();
+        LoadConfigData();
         if (Config.ServerOption.NetStatus is { Enabled: true } netStatus && !netStatus.TryGetColor(out _))
             Logger.Warn("ServerOption.NetStatus requires a non-negative LatencyMs and a #RRGGBB Color; signal override is disabled.");
         LoadHotfixData();
@@ -30,7 +24,6 @@ public static class ConfigManager
 
     public static void SaveConfig()
     {
-        if (IsLimitedMode) return;
         SaveData(Config, ConfigFilePath);
     }
 
@@ -143,11 +136,6 @@ public static class ConfigManager
         }
 
         SaveData(Config, ConfigFilePath);
-    }
-
-    private static void LoadLimitedConfigData()
-    {
-        Config = LimitedConfigProvider.Create();
     }
 
     private static void LoadHotfixData()
