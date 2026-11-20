@@ -5,6 +5,7 @@ using March7thHoney.Database.Generated;
 using March7thHoney.Database.Lineup;
 using March7thHoney.Database.Player;
 using March7thHoney.Database.Scene;
+using March7thHoney.Database.TrainCakeCatch;
 using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Scene;
 using March7thHoney.GameServer.Game.Player;
@@ -18,6 +19,7 @@ using March7thHoney.GameServer.Server.Packet.Send.PlayerBoard;
 using March7thHoney.GameServer.Server.Packet.Recv.Raid;
 using March7thHoney.GameServer.Server.Packet.Recv.RelicPreset;
 using March7thHoney.GameServer.Server.Packet.Recv.Rogue;
+using March7thHoney.GameServer.Server.Packet.Recv.Scene;
 using March7thHoney.GameServer.Server.Packet.Recv.TrainCakeCatch;
 using March7thHoney.GameServer.Server.Packet.Send.Avatar;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
@@ -72,6 +74,7 @@ internal static class MainFixRegression
         check("4.7 minigame data handlers return present nested data through real KCP requests",
             social.Retcode == 0 && social.ELDIONMAAHO != null && social.NDDJFLPBHBL != null && social.AKDPEJABLPI.Count == 0 &&
             marble.Retcode == 0 && marble.BJBJLBIOPKA != null && cycle.Retcode == 0 && cycle.ACCGIILHFKL != null);
+        await SocialPlayRoomOwner(scratch, player, check, Request, Response);
         var branchless = ProtoPresence.FillEmptySubMessages(new CCKJAEDDDCL());
         check("empty-message presence helper leaves oneof choices unset",
             branchless.KKNBOACNCONCase == CCKJAEDDDCL.KKNBOACNCONOneofCase.None);
@@ -294,6 +297,52 @@ internal static class MainFixRegression
     ///     (the client sets IsDisplayHeadFrame to the negated value), and the client only offers the switch when a
     ///     HeadIconFrame item is in the bag. Hiding blanks the frame for other players, not on the player's own board.
     /// </summary>
+    // Room owner uids come from the client, so naming an unknown uid must neither save nor cache a record for it.
+    private static async Task SocialPlayRoomOwner(string scratch, PlayerInstance player, Action<string, bool> check,
+        Func<Handler, IMessage, Task<List<(ushort Id, byte[] Body)>>> request,
+        Func<List<(ushort Id, byte[] Body)>, int, MessageParser<SocialPlayPreCheckEnterRoomScRsp>, SocialPlayPreCheckEnterRoomScRsp> response)
+    {
+        async Task<bool> HasStoredCakeData(int uid)
+        {
+            await using var db = new SqliteConnection($"Data Source={Path.Combine(scratch, "regression.db")}");
+            await db.OpenAsync();
+            return EntityStores.Map[typeof(TrainCakeCatchData)].LoadAll(db).Any(data => data.Uid == uid);
+        }
+
+        async Task<SocialPlayPreCheckEnterRoomScRsp> PreCheck(uint ownerUid) =>
+            response(await request(new HandlerPreCheckEnterRoomReq(), new SocialPlayPreCheckEnterRoomCsReq { TeleportId = ownerUid }),
+                CmdIds.SocialPlayPreCheckEnterRoomScRsp, SocialPlayPreCheckEnterRoomScRsp.Parser);
+
+        var manager = player.TrainCakeCatchManager!;
+        var rejected = true;
+        foreach (var unknownUid in new uint[] { 1_999_999_001, 3_900_000_001 })
+        {
+            var reply = await PreCheck(unknownUid);
+            rejected &= reply.Retcode == (uint)Retcode.RetFriendPlayerNotFound && manager.PendingRoomOwnerUid == null &&
+                        !DatabaseHelper.UidInstanceMap.ContainsKey(unchecked((int)unknownUid)) &&
+                        !await HasStoredCakeData(unchecked((int)unknownUid));
+        }
+        check("social-play pre-check rejects an unknown room owner uid without saving or caching a record for it", rejected);
+
+        var enterFrames = await request(new HandlerEnterSceneCsReq(), new EnterSceneCsReq
+        {
+            SceneIdentifier = new SceneIdentifier { TeleportInfo = new TeleportInfo { TeleportId = 1_999_999_002, Reason = 2 } }
+        });
+        var enter = EnterSceneScRsp.Parser.ParseFrom(enterFrames.Single(frame => frame.Id == CmdIds.EnterSceneScRsp).Body);
+        check("social-play EnterScene rejects an unknown room owner uid without joining or caching a room",
+            enter.Retcode == (uint)Retcode.RetFriendPlayerNotFound && manager.CurrentRoomOwnerUid == null &&
+            manager.PendingRoomOwnerUid == null && !DatabaseHelper.UidInstanceMap.ContainsKey(1_999_999_002));
+
+        const int offlineOwnerUid = 60_097;
+        DatabaseHelper.SaveInstance(new PlayerData { Uid = offlineOwnerUid, Name = "offline owner" });
+        var offline = await PreCheck(offlineOwnerUid);
+        check("social-play pre-check for an offline account reads an unsaved default room view",
+            offline.Retcode == 0 && offline.CMHKFNFKGOI > 0 && manager.PendingRoomOwnerUid == offlineOwnerUid &&
+            DatabaseHelper.Instance!.GetInstance<TrainCakeCatchData>(offlineOwnerUid) == null &&
+            !await HasStoredCakeData(offlineOwnerUid));
+        manager.LeaveSocialPlayRoom();
+    }
+
     private static async Task HeadFrameDisplay(string scratch, KcpConversation peer, Action<string, bool> check,
         Func<Func<Task>, Task<List<(ushort Id, byte[] Body)>>> capture)
     {
