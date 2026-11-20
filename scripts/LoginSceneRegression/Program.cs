@@ -578,6 +578,30 @@ Check("explicit giveall level applies without touching Eidolons", ownedMarch.Lev
     && newAvatar?.Level == 80 && ownedMarch.PathInfos.Values.All(path => path.Rank == 6)
     && ownedMarch.Promotion == GameData.GetMinPromotionForLevel(80));
 
+// Offering rewards: a level repeated in one claim pays once, and a later claim of it is refused.
+const int ProbeOfferingId = 990001;
+const int ProbeOfferingRewardId = 99000101;
+GameData.OfferingTypeConfigData[ProbeOfferingId] = new OfferingTypeConfigExcel { ID = ProbeOfferingId, MaxLevel = 2 };
+GameData.OfferingLevelConfigData[ProbeOfferingId] = new()
+{
+    [1] = new OfferingLevelConfigExcel { TypeID = ProbeOfferingId, Level = 1, RewardID = ProbeOfferingRewardId }
+};
+GameData.RewardDataData[ProbeOfferingRewardId] = new RewardDataExcel { RewardID = ProbeOfferingRewardId, Hcoin = 10 };
+givePlayer.OfferingManager!.Data.Offerings[ProbeOfferingId] = new March7thHoney.Database.Inventory.OfferingTypeData
+    { OfferingId = ProbeOfferingId, State = OfferingState.Open, Level = 1 };
+var offeringHcoinBefore = givePlayer.Data.Hcoin;
+var duplicateOfferingClaim = await givePlayer.OfferingManager.TakeOfferingReward(ProbeOfferingId, [1, 1, 1]);
+Check("offering claim with a repeated level grants its reward once", duplicateOfferingClaim.Item1 == Retcode.RetSucc
+    && givePlayer.Data.Hcoin == offeringHcoinBefore + 10
+    && duplicateOfferingClaim.data!.TakenReward.SequenceEqual([1]));
+var repeatedOfferingClaim = await givePlayer.OfferingManager.TakeOfferingReward(ProbeOfferingId, [1]);
+Check("offering level already taken is refused without granting",
+    repeatedOfferingClaim.Item1 == Retcode.RetOfferingLevelNotUnlock && givePlayer.Data.Hcoin == offeringHcoinBefore + 10);
+givePlayer.OfferingManager.Data.Offerings.Remove(ProbeOfferingId);
+GameData.OfferingTypeConfigData.Remove(ProbeOfferingId);
+GameData.OfferingLevelConfigData.Remove(ProbeOfferingId);
+GameData.RewardDataData.Remove(ProbeOfferingRewardId);
+
 var relicCountBefore = givePlayer.InventoryManager!.Data.RelicItems.Count;
 foreach (var raw in new[] { $"61011 1 x{CommandRelic.MaxAmount + 1}", "61011 1 x2000000000", "61011 1 x0", "61011 1 x-5" })
 {
