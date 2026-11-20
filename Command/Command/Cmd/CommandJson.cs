@@ -62,19 +62,19 @@ public class CommandJson : ICommand
         if (input.Equals("export", StringComparison.OrdinalIgnoreCase))
         {
             bool geshihua = false;
-            string outputFileName = $"freesr-data_{player.Data.Name}_{player.Data.Uid}_{DateTime.Now:yyMMddHHmmss}.json";
+            string? customName = null;
             if (arg.Args.Count == 2)
             {
                 bool bushigeshihua = bool.TryParse(arg.Args[1], out geshihua);
                 if (!bushigeshihua)
                 {
-                    outputFileName = arg.Args[1] + ".json";
+                    customName = arg.Args[1];
                     geshihua = true;
                 }
             }
             else if (arg.Args.Count == 3)
             {
-                outputFileName = arg.Args[1] + ".json";
+                customName = arg.Args[1];
                 bool bushigeshihua = bool.TryParse(arg.Args[2], out geshihua);
                 if (!bushigeshihua)
                 {
@@ -82,16 +82,32 @@ public class CommandJson : ICommand
                 }
             }
 
-            string outputjson = await FreesrShared.ExportPlayerDataAsync(player.Uid, geshihua);
+            if (customName != null && !IsPlainFileName(customName))
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Json.InvalidFileName", customName));
+                return;
+            }
+
+            string outputFileName = customName != null
+                ? customName + ".json"
+                : $"freesr-data_{SanitizeFileName(player.Data.Name ?? "")}_{player.Data.Uid}_{DateTime.Now:yyMMddHHmmss}.json";
             var dir = GetJsonDirectories(createIfMissing: true)[0];
-            string combinedPath = Path.Combine(dir.FullName, outputFileName);
+            string combinedPath = Path.GetFullPath(Path.Combine(dir.FullName, outputFileName));
+            if (!IsUnderDirectory(dir, combinedPath))
+            {
+                await arg.SendMsg(I18NManager.Translate("Game.Command.Json.InvalidFileName", outputFileName));
+                return;
+            }
+
+            string outputjson = await FreesrShared.ExportPlayerDataAsync(player.Uid, geshihua);
             await File.WriteAllTextAsync(combinedPath, outputjson, Encoding.UTF8);
 
             await arg.SendMsg(I18NManager.Translate("Game.Command.Json.ExportSuccess", outputFileName));
             return;
         }
 
-        var selectedPath = ResolveInputPath(input, out var pathError);
+        // Only the server terminal and the admin console may import from outside Config/Json.
+        var selectedPath = ResolveInputPath(input, arg.Sender.IsConsole, out var pathError);
         if (selectedPath == null)
         {
             if (!string.IsNullOrWhiteSpace(pathError))
@@ -129,7 +145,7 @@ public class CommandJson : ICommand
         });
     }
 
-    private static string? ResolveInputPath(string input, out string? error)
+    private static string? ResolveInputPath(string input, bool allowOutsideJsonDirectory, out string? error)
     {
         error = null;
         input = input.Trim();
@@ -154,12 +170,25 @@ public class CommandJson : ICommand
             return files[choice - 1].FullName;
         }
 
+        var jsonDirs = GetJsonDirectories(createIfMissing: true);
         var looksLikePath = input.Contains('/') || input.Contains('\\') || Path.IsPathRooted(input);
         if (looksLikePath)
-            return Path.GetFullPath(input);
+        {
+            var fullPath = Path.GetFullPath(input);
+            if (allowOutsideJsonDirectory || jsonDirs.Any(dir => IsUnderDirectory(dir, fullPath)))
+                return fullPath;
+
+            error = I18NManager.Translate("Game.Command.Json.PathOutsideJsonDirectory", input);
+            return null;
+        }
+
+        if (!IsPlainFileName(input))
+        {
+            error = I18NManager.Translate("Game.Command.Json.InvalidFileName", input);
+            return null;
+        }
 
         // Treat as filename under configured json directories.
-        var jsonDirs = GetJsonDirectories(createIfMissing: true);
         var fileName = input.EndsWith(".json", StringComparison.OrdinalIgnoreCase) ? input : input + ".json";
         foreach (var jsonDir in jsonDirs)
         {
@@ -171,6 +200,32 @@ public class CommandJson : ICommand
 
         // Fallback to primary directory.
         return Path.Combine(jsonDirs[0].FullName, fileName);
+    }
+
+    /// <summary>
+    ///     A single path segment: no directory separators, drive or volume prefix, "." / ".." or invalid characters,
+    ///     so joining it to a directory can never leave that directory.
+    /// </summary>
+    private static bool IsPlainFileName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name) || name == "." || name == "..") return false;
+        if (name.IndexOfAny(['/', '\\', ':']) >= 0 || name.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0) return false;
+        return !Path.IsPathRooted(name) && Path.GetFileName(name) == name;
+    }
+
+    private static string SanitizeFileName(string name)
+    {
+        var invalid = Path.GetInvalidFileNameChars();
+        var chars = name.Select(c => c is '/' or '\\' or ':' || invalid.Contains(c) ? '_' : c).ToArray();
+        var sanitized = new string(chars).Replace("..", "_");
+        return string.IsNullOrWhiteSpace(sanitized) ? "player" : sanitized;
+    }
+
+    private static bool IsUnderDirectory(DirectoryInfo directory, string fullPath)
+    {
+        var root = Path.TrimEndingDirectorySeparator(directory.FullName) + Path.DirectorySeparatorChar;
+        var comparison = OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+        return Path.GetFullPath(fullPath).StartsWith(root, comparison);
     }
 
     private static List<FileInfo> GetJsonFiles()
