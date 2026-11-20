@@ -17,6 +17,7 @@
 ## 开发
 
 - [贡献指南](../CONTRIBUTING.zh-CN.md)
+- [安全模型（威胁模型）](../SECURITY_MODEL.zh-CN.md)
 - [玩法实现进度](development/gameplay-implementation.zh-CN.md)
 - [玩法名称映射](development/gameplay-name-map.zh-CN.md)
 - [协议定义与生成](development/protobuf.zh-CN.md)

@@ -19,6 +19,7 @@ The project overview is the [README](../README.md), also available in
 ## Development
 
 - [Contributing guide](../CONTRIBUTING.md)
+- [Security model (threat model)](../SECURITY_MODEL.md)
 - [Gameplay implementation progress](development/gameplay-implementation.md)
 - [Gameplay name mapping](development/gameplay-name-map.md)
 - [Protocol definition and generation](development/protobuf.md)
