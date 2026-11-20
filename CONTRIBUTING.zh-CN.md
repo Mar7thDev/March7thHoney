@@ -64,6 +64,7 @@ python3 scripts/check-docs.py
 | Web 后台、MUIP、命令隔离 | `dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj` |
 | KCP 来源绑定与握手准入 | `dotnet run --project scripts/KcpSecurityRegression/KcpSecurityRegression.csproj` 和 `scripts/KcpAdmissionRegression/KcpAdmissionRegression.csproj` |
 | 源生成器 | `dotnet run --project scripts/SourceGenRegression/SourceGenRegression.csproj -c Release` |
+| 背包消耗、商店、合成 | `dotnet run --project scripts/InventoryRegression/InventoryRegression.csproj -c Release` |
 | 协议构建 | `python3 scripts/test-proto-generation.py` |
 
 需要资源缓存（`Config/Resource.bin`）：

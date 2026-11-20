@@ -42,4 +42,5 @@
 - [登录与场景回归](testing/login-scene-regression.zh-CN.md)
 - [GridFight 回归](testing/grid-fight-regression.zh-CN.md)
 - [每日实训回归](testing/daily-active-regression.zh-CN.md)
+- [背包消耗回归](testing/inventory-regression.zh-CN.md)
 - [原始资源加载回归](testing/resource-regression.zh-CN.md)
