@@ -133,6 +133,24 @@ internal static class SecuritySessionChecks
                 finally { timer.Change(TimeSpan.FromMinutes(1), TimeSpan.FromMinutes(1)); }
             }
 
+            const string bruteForceClient = "muip-brute-force-regression-client";
+            var wrongKeyId = MuipManager.CreateSession("XML", bruteForceClient).Data!.SessionId;
+            check("MUIP wrong key is refused", MuipManager.AuthAdmin(wrongKeyId, "not-the-admin-key").Code == 2);
+            check("MUIP wrong key consumes the session", !MuipManager.Sessions.ContainsKey(wrongKeyId));
+            for (var i = 0; i < 8; i++)
+                MuipManager.AuthAdmin(MuipManager.CreateSession("XML", bruteForceClient).Data!.SessionId,
+                    "not-the-admin-key", bruteForceClient);
+            var blockedId = MuipManager.CreateSession("XML", bruteForceClient).Data!.SessionId;
+            var blocked = MuipManager.AuthAdmin(blockedId, originalKey, bruteForceClient);
+            check("MUIP refuses the correct key after repeated failures", blocked.Code == 3 &&
+                MuipManager.GetSession(blockedId)?.IsAuthorized != true);
+            var blockedAdmin = AdminSessionManager.TryCreateSession(originalKey, bruteForceClient, out _, out _);
+            check("MUIP failures share the admin page failure counter", !blockedAdmin);
+            var otherClientId = MuipManager.CreateSession("XML", "muip-other-regression-client").Data!.SessionId;
+            check("MUIP failure block is per client",
+                MuipManager.AuthAdmin(otherClientId, originalKey, "muip-other-regression-client").Code == 0);
+            MuipManager.Sessions.Clear();
+
             var enabledSessionId = MuipManager.CreateSession("XML").Data!.SessionId;
             MuipManager.AuthAdmin(enabledSessionId, originalKey);
             config.MuipServer.AdminKey = "";
