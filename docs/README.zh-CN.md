@@ -31,7 +31,6 @@
 
 - [账号清理与设备、IP 封锁](operations/account-security.zh-CN.md)
 - [账号迁移](operations/account-migration.zh-CN.md)
-- [受限模式构建与激活](operations/limited-mode.zh-CN.md)
 - [场景缓存元数据升级](operations/scene-cache-upgrade.zh-CN.md)
 - [从客户端导出重建资源缓存](operations/resource-cache-from-client-export.zh-CN.md)
 

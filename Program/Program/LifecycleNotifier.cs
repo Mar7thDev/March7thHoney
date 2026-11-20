@@ -50,7 +50,7 @@ internal static class LifecycleNotifier
     private static bool TryGetConfig(out LifecycleNotificationConfig config)
     {
         config = ConfigManager.Config.LifecycleNotification!;
-        if (!OperatingSystem.IsLinux() || ConfigManager.IsLimitedMode || config is not { Enabled: true })
+        if (!OperatingSystem.IsLinux() || config is not { Enabled: true })
             return false;
         if (config.ControlApiPort is < 1 or > 65535 ||
             config.ControlApiToken is not { Length: >= 32 } ||
