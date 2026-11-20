@@ -46,6 +46,7 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 - MUIP sessions are bound to the admin key version at creation time. After a configuration change, the authentication, command, server-info and player-info endpoints all reject old sessions. Rotating the key from the admin page also clears MUIP admin sessions.
 - Anonymous MUIP session creation is refused at capacity. Expired, abandoned sessions are cleaned up on creation, and the service also cleans them up every minute. The total limit is 1024, with at most 32 unexpired sessions per HTTP source. The internal short-lived command bridge does not use the anonymous creation endpoint.
 - Root `/sr-tools` import no longer accepts a UID alone, even with RSA decryption off; old accounts without a password must set one first.
+- SDK `createOrder` only credits the online player whose combo or dispatch token is presented (in `x-rpc-combo_token` or the request): a missing, forged or other account's token, or no uid at all, leaves the player's supply pass untouched; there is no fallback to the only online player.
 
 These cases use only temporary accounts, a temporary database and loopback HTTP, and never touch real player saves.
 

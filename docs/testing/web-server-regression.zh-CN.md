@@ -46,6 +46,7 @@ dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- -
 - MUIP 会话绑定创建时的管理密钥版本。配置变更后，认证、命令、服务器信息和玩家信息接口都拒绝旧会话。在后台轮换密钥也会清除 MUIP 管理会话。
 - 匿名 MUIP 会话达到容量上限时拒绝新建。已过期且被遗弃的会话在新建时清理，服务也每分钟主动清理一次。总上限为 1024，每个 HTTP 来源最多 32 个尚未过期的会话。内部短期命令桥接不使用匿名创建接口。
 - 根 `/sr-tools` 导入不再允许仅凭 UID 操作，即使关闭了 RSA 解密；没有密码的旧账号需要先设置密码。
+- SDK `createOrder` 只给出示了自身 combo 或 dispatch 令牌（通过 `x-rpc-combo_token` 或请求参数）的在线玩家入账：缺少令牌、伪造令牌、使用其他账号的令牌或完全不带 UID 时，玩家的月卡状态保持不变；不再回退到唯一在线玩家。
 
 这些用例只使用临时账号、临时数据库和回环 HTTP，不接触真实玩家存档。
 
