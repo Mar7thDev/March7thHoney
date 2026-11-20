@@ -43,7 +43,7 @@ public static class ResourceCache
         });
     }
 
-    public static bool LoadCache()
+    public static bool LoadCache(string? resourceVersion = null)
     {
         GameDataSnapshot? snapshot;
         try
@@ -81,7 +81,7 @@ public static class ResourceCache
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadedItem", I18NManager.Translate("Word.Cache")));
 
         var valid = ValidateLoadedCache();
-        if (valid) ResourceManager.AddStarLottoSkin();
+        if (valid) ResourceManager.ApplyResourceCompatibility(resourceVersion);
         return valid;
     }
 

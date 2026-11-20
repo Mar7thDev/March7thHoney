@@ -228,7 +228,7 @@ public class EntryPoint
                 {
                     Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem",
                         I18NManager.Translate("Word.Cache")));
-                    if (!ResourceCache.LoadCache())
+                    if (!ResourceCache.LoadCache(ConfigManager.Config.Path.ResourceVersion))
                     {
                         ResourceCache.ClearGameData();
                         throw new InvalidDataException("Resource cache is invalid. Delete it before restarting to rebuild from Resources.");
@@ -254,6 +254,9 @@ public class EntryPoint
                             "Resource cache NOT written: one or more resources failed to load (see the errors above). " +
                             "Fix them and restart, or the server will re-read the raw resource tree on every boot.");
                     }
+
+                    // Keep version-specific runtime overlays out of newly generated caches.
+                    ResourceManager.ApplyResourceCompatibility(ConfigManager.Config.Path.ResourceVersion);
                 }
 
                 ResourceManager.LoadMissionInfoOverrides();

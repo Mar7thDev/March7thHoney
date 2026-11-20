@@ -3,6 +3,8 @@ using System.Collections.Concurrent;
 using System.IO.Compression;
 using System.Text;
 using March7thHoney.Data;
+using March7thHoney.Data.Excel;
+using March7thHoney.Enums.Item;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
 using MemoryPack;
@@ -10,9 +12,12 @@ using MemoryPack;
 // Builds a resource cache from raw resources that are known to be incomplete (a client export that lacks
 // tables or files) and completes it from an existing cache. Offline only: no database, no network, nothing
 // written under Config/, and neither the base cache nor an existing output file is ever overwritten.
+if (args is ["--self-test"]) return RunCompatibilityRegression();
+
 if (args.Length != 4)
 {
     Console.Error.WriteLine("Usage: ResourceCacheFill <resource directory> <base cache> <new output file> <new report directory>");
+    Console.Error.WriteLine("       ResourceCacheFill --self-test");
     return 2;
 }
 var repository = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "../../../../../"));
@@ -157,16 +162,12 @@ void Fill(object target, object source, string prefix)
         if (freshValue is IDictionary freshMap && baseValue is IDictionary baseMap)
         {
             var before = freshMap.Count;
-            var added = 0;
-            if (!resourcesOnly)
-                foreach (DictionaryEntry entry in baseMap)
-                {
-                    if (freshMap.Contains(entry.Key)) continue;
-                    freshMap.Add(entry.Key, entry.Value);
-                    added++;
-                }
-            var dropped = resourcesOnly ? baseMap.Keys.Cast<object>().Count(key => !freshMap.Contains(key)) : 0;
-            if (dropped > 0) note += $"; {dropped} base row(s) not carried";
+            var (added, dropped) = FillDictionary(property.Name, freshMap, baseMap, resourcesOnly);
+            if (dropped > 0)
+            {
+                if (!resourcesOnly) note = "version-scoped compatibility";
+                note += $"; {dropped} base row(s) not carried";
+            }
             if (added > 0) { filledRows += added; filledMembers++; }
             rows.Add((name, "rows", before.ToString(), baseMap.Count.ToString(), added.ToString(), note));
             continue;
@@ -243,3 +244,77 @@ Console.WriteLine($"Loader warnings: {warnings.Count}; filled {filledRows} row(s
 Console.WriteLine($"Main missions with unregistered sub-missions: {truncatedFresh.Count} -> {truncatedMerged.Count}.");
 Console.WriteLine($"Output: {outputPath} ({new FileInfo(outputPath).Length} bytes). Report: {Path.Combine(reportRoot, "fill-report.txt")}");
 return 0;
+
+static (int Added, int Dropped) FillDictionary(string memberName, IDictionary freshMap, IDictionary baseMap,
+    bool resourcesOnly)
+{
+    int added = 0, dropped = 0;
+    foreach (DictionaryEntry entry in baseMap)
+    {
+        if (freshMap.Contains(entry.Key)) continue;
+        // A donor cache does not prove the origin of version-scoped compatibility rows.
+        if (resourcesOnly || (entry.Key is int id && ResourceManager.IsVersionScopedCompatibilityRow(memberName, id)))
+        {
+            dropped++;
+            continue;
+        }
+        freshMap.Add(entry.Key, entry.Value);
+        added++;
+    }
+    return (added, dropped);
+}
+
+static int RunCompatibilityRegression()
+{
+    const int avatarId = 1511, skinId = 1151101;
+    var failures = 0;
+    void Check(bool result, string name)
+    {
+        if (result) return;
+        failures++;
+        Console.Error.WriteLine($"FAIL: {name}");
+    }
+
+    foreach (var member in new[] { nameof(GameDataSnapshot.AvatarSkinData), nameof(GameDataSnapshot.ItemConfigData) })
+    {
+        var donor = new Dictionary<int, string> { [skinId] = "unverified", [skinId + 1] = "unrelated" };
+        var fresh = new Dictionary<int, string>();
+        Check(FillDictionary(member, fresh, donor, false) == (1, 1) &&
+              !fresh.ContainsKey(skinId) && fresh.GetValueOrDefault(skinId + 1) == "unrelated",
+            $"{member}: no compatibility carry-over; neighboring keys still fill");
+        fresh = new() { [skinId] = "authoritative" };
+        Check(FillDictionary(member, fresh, donor, false) == (1, 0) && fresh[skinId] == "authoritative",
+            $"{member}: preserve the native row");
+    }
+
+    var unrelated = new Dictionary<int, string>();
+    Check(FillDictionary(nameof(GameDataSnapshot.AvatarConfigData), unrelated,
+              new Dictionary<int, string> { [skinId] = "unrelated" }, false) == (1, 0),
+        "the same numerical key is not restricted in other tables");
+
+    GameData.AvatarConfigData[avatarId] = new AvatarConfigExcel { AvatarID = avatarId };
+    ResourceManager.ApplyResourceCompatibility(null);
+    ResourceManager.ApplyResourceCompatibility("4.7.0");
+    Check(!GameData.AvatarSkinData.ContainsKey(skinId) && !GameData.ItemConfigData.ContainsKey(skinId),
+        "unknown or unrelated export does not synthesize rows");
+
+    var conflict = new AvatarSkinExcel { ID = skinId, AvatarID = avatarId + 1 };
+    GameData.AvatarSkinData[skinId] = conflict;
+    ResourceManager.ApplyResourceCompatibility("4.7.51");
+    Check(ReferenceEquals(GameData.AvatarSkinData[skinId], conflict) && !GameData.ItemConfigData.ContainsKey(skinId),
+        "conflicting skin preserves its row and blocks the paired insert");
+    GameData.AvatarSkinData.Remove(skinId);
+
+    var native = new AvatarSkinExcel { ID = skinId, AvatarID = avatarId };
+    GameData.AvatarSkinData[skinId] = native;
+    ResourceManager.ApplyResourceCompatibility("4.7.51");
+    Check(ReferenceEquals(GameData.AvatarSkinData[skinId], native) &&
+          GameData.ItemConfigData.TryGetValue(skinId, out var item) && item.ItemSubType == ItemSubTypeEnum.AvatarSkin,
+        "known export fills the missing item without replacing the native skin");
+    ResourceManager.ApplyResourceCompatibility("4.7.51");
+    Check(GameData.AvatarSkinData.Count == 1 && GameData.ItemConfigData.Count == 1,
+        "the overlay is idempotent");
+
+    Console.WriteLine($"Resource compatibility regression failures: {failures}");
+    return failures == 0 ? 0 : 1;
+}
