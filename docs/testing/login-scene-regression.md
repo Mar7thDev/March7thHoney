@@ -167,6 +167,7 @@ Code: `scripts/LoginSceneRegression/ChallengeRegression.cs`.
 
 ### Social features and commands
 
+- Friend requests: accepting or refusing a uid that never applied changes neither player; a received apply with no matching sent apply is not accepted and is dropped; a real apply can only be refused by its recipient, and accepting it makes both players friends and clears both apply lists.
 - Global chat: the default contact uid `98` is shown next to the command bot, online and pinned, and friend requests to it are rejected; its profile is found by exact uid. Messages are forwarded from that contact to every recipient (including the sender) as `[nickname / uid]: content` and do not go into the command bot conversation. Empty messages are ignored; over-long messages and rate limiting reply only to the sender and are not forwarded; the sliding window counts each sender separately. Each player's history is trimmed to `MaxHistory`, with a welcome message at the end. If the uid collides with the command bot or the feature is off, the contact disappears and nothing is forwarded.
 - `/language`: the console cannot pin a language. Aliases are case-insensitive and only languages with a file in `Config/Languages` are accepted. After pinning, replies use the new language, and `PlayerCommandSender` uses the pinned language; `auto` clears it and replies follow the client language again. The pinned value is written to the `Player` table; old tables get a nullable `LanguagePin` column automatically and read as not pinned.
 

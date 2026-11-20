@@ -32,6 +32,7 @@ dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- -
 
 - 无目标命令、目标隔离、异步输出和异常、并发请求。
 - `/language` 对后台控制台回复仅限玩家使用；玩家自助控制台可以固定自身语言，并以新语言回复。
+- User 角色玩家执行 `/json export` 时拒绝路径穿越和绝对路径名称，由玩家名生成的默认文件名也留在 `Config/Json` 内；`/json <路径>` 拒绝导入 `Config/Json` 之外的文件。
 - 登录保护及维护接口的内存数据。
 
 ### MUIP 与网关
