@@ -42,9 +42,6 @@ config.HttpServer.UseSSL = false;
 config.HttpServer.SendHotfix = false;
 config.ServerOption.ServerConfig.RunGateway = true;
 config.MuipServer.AdminKey = "local-web-regression-only";
-// The shipped Config.json grants "*" to everyone; clear it here so the fixture account really is limited
-// to its role and the self-service console's permission gating is exercised rather than short-circuited.
-config.ServerOption.DefaultPermissions = [];
 // The console fixture needs a real account row, so the scratch database gets its tables created.
 // No save thread: the run is throwaway and must not linger.
 new DatabaseHelper().Initialize(startSaveThread: false);

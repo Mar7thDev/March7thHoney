@@ -48,6 +48,10 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 - Anonymous MUIP session creation is refused at capacity. Expired, abandoned sessions are cleaned up on creation, and the service also cleans them up every minute. The total limit is 1024, with at most 32 unexpired sessions per HTTP source. The internal short-lived command bridge does not use the anonymous creation endpoint.
 - A wrong key at `/muip/auth_admin` deletes that MUIP session and counts against the same per-client failure counter as the admin page login. After 8 wrong keys from one client the correct key is refused (code 3) for that client, on both MUIP and the admin page, while other clients are unaffected.
 - Root `/sr-tools` import no longer accepts a UID alone, even with RSA decryption off; old accounts without a password must set one first.
+- A passwordless account is refused by console login, session, catalog, command execution and self-reset, and by `/sr-tools` and `/sr-tools-export`.
+- `/sr-tools-export` rejects a missing or wrong password, accepts credentials in the `POST` body, and answers the old query-string `GET` with 405.
+- Once wrong passwords on the console, `/sr-tools` or `/sr-tools-export` trigger the login rate limit, the correct password is refused on all three. An IP block and an account ban are also enforced on both sr-tools routes.
+- `DefaultPermissions` defaults to empty, a default-role account has no `*`, `command.*`, `command.account` or `command.others`, and the startup warning flags `*` and high-privilege entries but not User-role permissions. The fixture no longer clears `DefaultPermissions` itself, so the console permission checks run under the default configuration.
 
 ### Private chat
 
