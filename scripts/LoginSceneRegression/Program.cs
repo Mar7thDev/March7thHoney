@@ -456,6 +456,32 @@ Check("player detail lookup resolves the global contact, not the first system en
     == serverOption.GlobalChat.Name);
 Check("friend requests to system contacts are rejected", await player.FriendManager.AddFriend(globalChatUid)
     == Retcode.RetFriendAlreadyIsFriend && !player.FriendManager.FriendData.SendApplyList.Contains(globalChatUid));
+// HandleFriendCsReq carries a client-chosen uid: only an apply recorded on both sides may be accepted or refused.
+bool IsFriendOf(PlayerInstance a, PlayerInstance b) => a.FriendManager!.FriendData.FriendDetailList.ContainsKey(b.Uid);
+Check("accepting a friend request that was never sent is rejected",
+    await player.FriendManager.ConfirmAddFriend(roguePlayer.Uid) == null
+    && !IsFriendOf(player, roguePlayer) && !IsFriendOf(roguePlayer, player));
+player.FriendManager.FriendData.ReceiveApplyList.Add(roguePlayer.Uid);
+Check("a one-sided received apply cannot be accepted and is dropped",
+    await player.FriendManager.ConfirmAddFriend(roguePlayer.Uid) == null
+    && !IsFriendOf(player, roguePlayer) && !IsFriendOf(roguePlayer, player)
+    && !player.FriendManager.FriendData.ReceiveApplyList.Contains(roguePlayer.Uid));
+var magicApply = await magicPlayer.FriendManager!.AddFriend(player.Uid);
+await chessPlayer.FriendManager!.RefuseAddFriend(magicPlayer.Uid);
+Check("a friend request can only be refused by its recipient", magicApply == Retcode.RetSucc
+    && magicPlayer.FriendManager.FriendData.SendApplyList.Contains(player.Uid)
+    && player.FriendManager.FriendData.ReceiveApplyList.Contains(magicPlayer.Uid));
+await player.FriendManager.RefuseAddFriend(magicPlayer.Uid);
+Check("refusing a real friend request clears both sides",
+    !magicPlayer.FriendManager.FriendData.SendApplyList.Contains(player.Uid)
+    && !player.FriendManager.FriendData.ReceiveApplyList.Contains(magicPlayer.Uid) && !IsFriendOf(player, magicPlayer));
+Check("a real friend request can be accepted",
+    await roguePlayer.FriendManager!.AddFriend(player.Uid) == Retcode.RetSucc
+    && await player.FriendManager.ConfirmAddFriend(roguePlayer.Uid) != null
+    && IsFriendOf(player, roguePlayer) && IsFriendOf(roguePlayer, player)
+    && !roguePlayer.FriendManager.FriendData.SendApplyList.Contains(player.Uid)
+    && !player.FriendManager.FriendData.ReceiveApplyList.Contains(roguePlayer.Uid));
+await player.FriendManager.RemoveFriend(roguePlayer.Uid);
 List<FriendChatData> GlobalHistory(PlayerInstance p) =>
     p.FriendManager!.FriendData.ChatHistory.GetValueOrDefault(globalChatUid)?.MessageList ?? [];
 var chatClock = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);

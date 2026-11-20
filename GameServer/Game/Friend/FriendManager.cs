@@ -54,6 +54,7 @@ public partial class FriendManager(PlayerInstance player) : BasePlayerManager(pl
         if (target == null || targetData == null) return null;
         if (target.FriendDetailList.ContainsKey(Player.Uid)) return null;
         if (target.BlackList.Contains(Player.Uid)) return null;
+        if (!HasPendingApplyFrom(targetUid, target)) return null;
 
         FriendData.ReceiveApplyList.Remove(targetUid);
         FriendData.FriendDetailList.Add(targetUid, new FriendDetailData());
@@ -71,7 +72,7 @@ public partial class FriendManager(PlayerInstance player) : BasePlayerManager(pl
     public async ValueTask RefuseAddFriend(int targetUid)
     {
         var target = DatabaseHelper.Instance!.GetInstance<FriendData>(targetUid);
-        if (target == null) return;
+        if (target == null || !HasPendingApplyFrom(targetUid, target)) return;
 
         FriendData.ReceiveApplyList.Remove(targetUid);
         target.SendApplyList.Remove(Player.Uid);
@@ -81,6 +82,19 @@ public partial class FriendManager(PlayerInstance player) : BasePlayerManager(pl
             await targetPlayer.SendPacket(new PacketSyncHandleFriendScNotify((uint)Player.Uid, false, Player.Data));
 
         DatabaseHelper.MarkDirty(targetUid);
+    }
+
+    /// <summary>
+    ///     The uid in a HandleFriendCsReq comes from the client, so only an apply recorded on both sides may be handled.
+    ///     A one-sided leftover entry in this player's received list is dropped, since it can never be accepted.
+    /// </summary>
+    private bool HasPendingApplyFrom(int targetUid, FriendData target)
+    {
+        if (!FriendData.ReceiveApplyList.Contains(targetUid)) return false;
+        if (target.SendApplyList.Contains(Player.Uid)) return true;
+
+        FriendData.ReceiveApplyList.Remove(targetUid);
+        return false;
     }
 
     public async ValueTask<PlayerData?> AddBlackList(int targetUid)
