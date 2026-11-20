@@ -49,6 +49,12 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 - A wrong key at `/muip/auth_admin` deletes that MUIP session and counts against the same per-client failure counter as the admin page login. After 8 wrong keys from one client the correct key is refused (code 3) for that client, on both MUIP and the admin page, while other clients are unaffected.
 - Root `/sr-tools` import no longer accepts a UID alone, even with RSA decryption off; old accounts without a password must set one first.
 
+### Private chat
+
+- A private message is delivered and stored only between mutual friends: messages to a non-friend, to oneself, to a player one has blocked, or from a sender the target has blocked are rejected and stored on neither side.
+- A request naming more than `FriendManager.MaxMessageTargets` recipients is rejected without delivering anything; a mixed request still delivers to friends and reports the first rejection.
+- Each stored conversation, including an offline friend's, keeps at most `FriendManager.MaxConversationHistory` messages.
+
 These cases use only temporary accounts, a temporary database and loopback HTTP, and never touch real player saves.
 
 ## Expected result

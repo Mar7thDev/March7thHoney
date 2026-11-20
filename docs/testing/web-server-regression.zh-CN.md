@@ -49,6 +49,12 @@ dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- -
 - `/muip/auth_admin` 收到错误密钥时删除该 MUIP 会话，并计入与后台登录相同的按客户端失败计数。同一客户端错误 8 次后，即使密钥正确也会被拒绝（code 3），MUIP 与后台登录都如此，其他客户端不受影响。
 - 根 `/sr-tools` 导入不再允许仅凭 UID 操作，即使关闭了 RSA 解密；没有密码的旧账号需要先设置密码。
 
+### 私聊
+
+- 私聊消息只在互为好友的玩家之间投递和保存：发给非好友、发给自己、发给自己拉黑的玩家，或被对方拉黑的发送者发出的消息都会被拒绝，双方都不保存。
+- 一次请求的接收者超过 `FriendManager.MaxMessageTargets` 时整体拒绝，不投递任何消息；混合请求仍投递给好友，并返回第一个拒绝原因。
+- 每段保存的对话（包括离线好友的）最多保留 `FriendManager.MaxConversationHistory` 条消息。
+
 这些用例只使用临时账号、临时数据库和回环 HTTP，不接触真实玩家存档。
 
 ## 预期结果
