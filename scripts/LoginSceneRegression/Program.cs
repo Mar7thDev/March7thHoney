@@ -255,7 +255,9 @@ var cacheSource = OptionValue("--resource-cache") ?? Path.Combine(repository, "C
 File.Copy(cacheSource, Path.Combine(scratch, "Resource.bin"), overwrite: true);
 var rawResourcePath = config.Path.ResourcePath;
 config.Path.ResourcePath = Path.Combine(scratch, "no-raw-resource-json");
-var loadedCache = ResourceCache.LoadCache();
+var versionOption = Array.IndexOf(args, "--resource-version");
+var resourceVersion = versionOption >= 0 && versionOption + 1 < args.Length ? args[versionOption + 1] : null;
+var loadedCache = ResourceCache.LoadCache(resourceVersion);
 Check("upgraded cache loads without the raw Resources tree", loadedCache);
 if (!loadedCache) throw new InvalidOperationException("The checked-out 4.5 resource cache could not be loaded.");
 config.Path.ResourcePath = rawResourcePath;
@@ -1734,7 +1736,9 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
 
     const int ahaAvatarId = 1511;
     const int starLottoSkinId = 1151101;
-    if (GameData.AvatarConfigData.ContainsKey(ahaAvatarId))
+    if (GameData.AvatarConfigData.ContainsKey(ahaAvatarId) &&
+        (resourceVersion == "4.7.51" || (GameData.AvatarSkinData.ContainsKey(starLottoSkinId) &&
+                                         GameData.ItemConfigData.ContainsKey(starLottoSkinId))))
     {
         var ahaPlayer = new PlayerInstance(60042);
         await ahaPlayer.InitializeAsync();
@@ -1780,7 +1784,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     }
     else
     {
-        Console.WriteLine("SKIP Star Lotto grant requires Aha's avatar row in the resource cache.");
+        Console.WriteLine("SKIP Star Lotto grant requires Aha and native Star Lotto rows, or a verified 4.7.51 cache (--resource-version 4.7.51).");
     }
 
     // Official 4.6 seq 20633-20654: leaving Qlipoth Fort finishes the EnterFloor gate
