@@ -44,6 +44,7 @@ Options:
 - Claiming a daily training reward grants item 23 and adds to the day's activity; `GetItem(23)` returns the current value.
 - Unknown tier: 4101; repeated claim: 4102; not enough activity: 4103.
 - Claim-all goes through the tiers in ascending order and merges the rewards; a repeated claim-all grants nothing.
+- `TakeQuestOptionalReward` rejects a non-zero optional reward id (an unrelated reward id or a raw item id) with `RetReqParaInvalid`, grants nothing and leaves the quest finished; with id 0 it pays only the quest's `RewardID`, once.
 
 ### Day rollover
 
