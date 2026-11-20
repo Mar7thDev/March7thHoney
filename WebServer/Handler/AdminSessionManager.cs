@@ -62,6 +62,7 @@ public static class AdminSessionManager
     /// </summary>
     public static bool TryVerifyAdminKey(string? adminKey, string? clientKey, out string message, out bool blocked)
     {
+        CleanupExpiredLoginFailures();
         message = "Admin key is invalid";
         blocked = false;
 
@@ -176,6 +177,12 @@ public static class AdminSessionManager
                 Sessions.TryRemove(token, out _);
         }
 
+        CleanupExpiredLoginFailures();
+    }
+
+    private static void CleanupExpiredLoginFailures()
+    {
+        var now = DateTimeOffset.UtcNow;
         foreach (var (key, state) in LoginFailures)
         {
             lock (state)
