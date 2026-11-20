@@ -15,8 +15,15 @@ public partial class InventoryManager
         if (itemConfig == null) return (Retcode.RetItemNotExist, null);
         var dataId = itemConfig.ID;
 
+        GameData.ItemUseBuffDataData.TryGetValue(dataId, out var useConfig);
+        if (useConfig != null && baseAvatarId > 0 && Player.AvatarManager?.GetFormalAvatar(baseAvatarId) == null)
+            return (Retcode.RetAvatarNotExist, null);
+
+        // The used items are paid before any effect or reward; this also bounds count by what the player holds.
+        if (!await TryRemoveItems([(itemId, count)])) return (Retcode.RetItemNotEnough, null);
+
         List<ItemData> resItemDatas = [];
-        if (GameData.ItemUseBuffDataData.TryGetValue(dataId, out var useConfig))
+        if (useConfig != null)
         {
             for (var i = 0; i < count; i++) // do count times
             {
@@ -102,9 +109,6 @@ public partial class InventoryManager
         if (GameData.ItemUseDataData.TryGetValue(dataId, out var useData))
             foreach (var rewardId in useData.UseParam)
                 resItemDatas.AddRange(await HandleReward(rewardId, true));
-
-        // remove item
-        await RemoveItem(itemId, count);
 
         return (Retcode.RetSucc, resItemDatas);
     }
