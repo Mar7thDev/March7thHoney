@@ -40,6 +40,7 @@ Most checks live in `scripts/LoginSceneRegression/Program.cs`. `MainFixRegressio
 - Numeric tags: `SceneMapInfo.floor_id=14`, `retcode=6`. Failure return codes are encoded on their own; forced field mappings take precedence over inference from older versions; original and semantic name scopes are merged.
 - `CommonRogueQueryScRsp`: the query type is the field number of the `CCKJAEDDDCL` oneof branch, read from the current generated protocol code. The feature-unlock branch `CCKJAEDDDCL.BBEKBJPHEJKFieldNumber` is `15` in 4.5, `1` in 4.6, `10` in 4.7 and `15` in 4.8. Only that branch carries the unlock set, in request order and with duplicates; the other three query types stay without a branch, and no state is invented for them.
 - `SocialPlayGetDataCsReq`, `PetMarbleGetDataCsReq` and `PetMarbleGetCycleTrialPetsCsReq` have handlers, registered through the source-generated opcode table. Every singular sub-message in their responses (recursively, 5 levels, excluding oneofs and lists) is sent as an empty message instead of the empty body of an unhandled request, so the client never receives null. No oneof is chosen and no list item is added.
+- Social-play room owner (`SocialPlayRoomOwner` in `MainFixRegression.cs`): `SocialPlayPreCheckEnterRoomCsReq` and a social-play `EnterSceneCsReq` naming a uid with no account return `RET_FRIEND_PLAYER_NOT_FOUND`, leave no pending or current room, and neither save a `TrainCakeCatchData` row nor add a `UidInstanceMap` entry for that uid. A pre-check for an existing offline account succeeds with an unsaved default room view.
 
 ### Scene loading and floor state
 
@@ -167,6 +168,7 @@ Code: `scripts/LoginSceneRegression/ChallengeRegression.cs`.
 
 ### Social features and commands
 
+- Friend requests: accepting or refusing a uid that never applied changes neither player; a received apply with no matching sent apply is not accepted and is dropped; a real apply can only be refused by its recipient, and accepting it makes both players friends and clears both apply lists.
 - Global chat: the default contact uid `98` is shown next to the command bot, online and pinned, and friend requests to it are rejected; its profile is found by exact uid. Messages are forwarded from that contact to every recipient (including the sender) as `[nickname / uid]: content` and do not go into the command bot conversation. Empty messages are ignored; over-long messages and rate limiting reply only to the sender and are not forwarded; the sliding window counts each sender separately. Each player's history is trimmed to `MaxHistory`, with a welcome message at the end. If the uid collides with the command bot or the feature is off, the contact disappears and nothing is forwarded.
 - `/language`: the console cannot pin a language. Aliases are case-insensitive and only languages with a file in `Config/Languages` are accepted. After pinning, replies use the new language, and `PlayerCommandSender` uses the pinned language; `auto` clears it and replies follow the client language again. The pinned value is written to the `Player` table; old tables get a nullable `LanguagePin` column automatically and read as not pinned.
 

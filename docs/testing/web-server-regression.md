@@ -32,6 +32,7 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 
 - Commands without a target, target isolation, asynchronous output and exceptions, concurrent requests.
 - `/language` answers the admin console that it is player-only; the player self-service console can pin its own language and replies in the new language.
+- `/json export` from a User-role player refuses traversal and absolute names and keeps a default name built from the player name inside `Config/Json`; `/json <path>` refuses to import a file outside `Config/Json`.
 - Login protection and the in-memory data of the maintenance endpoints.
 
 ### MUIP and gateway
@@ -45,8 +46,19 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 - Player console tokens are bound to the password version at issue time. After an admin password change or an e-mail password reset the old token stops working, and a new login still works. This needs no new database column.
 - MUIP sessions are bound to the admin key version at creation time. After a configuration change, the authentication, command, server-info and player-info endpoints all reject old sessions. Rotating the key from the admin page also clears MUIP admin sessions.
 - Anonymous MUIP session creation is refused at capacity. Expired, abandoned sessions are cleaned up on creation, and the service also cleans them up every minute. The total limit is 1024, with at most 32 unexpired sessions per HTTP source. The internal short-lived command bridge does not use the anonymous creation endpoint.
+- A wrong key at `/muip/auth_admin` deletes that MUIP session and counts against the same per-client failure counter as the admin page login. After 8 wrong keys from one client the correct key is refused (code 3) for that client, on both MUIP and the admin page, while other clients are unaffected.
 - Root `/sr-tools` import no longer accepts a UID alone, even with RSA decryption off; old accounts without a password must set one first.
 - SDK `createOrder` only credits the online player whose combo or dispatch token is presented (in `x-rpc-combo_token` or the request): a missing, forged or other account's token, or no uid at all, leaves the player's supply pass untouched; there is no fallback to the only online player.
+- A passwordless account is refused by console login, session, catalog, command execution and self-reset, and by `/sr-tools` and `/sr-tools-export`.
+- `/sr-tools-export` rejects a missing or wrong password, accepts credentials in the `POST` body, and answers the old query-string `GET` with 405.
+- Once wrong passwords on the console, `/sr-tools` or `/sr-tools-export` trigger the login rate limit, the correct password is refused on all three. An IP block and an account ban are also enforced on both sr-tools routes.
+- `DefaultPermissions` defaults to empty, a default-role account has no `*`, `command.*`, `command.account` or `command.others`, and the startup warning flags `*` and high-privilege entries but not User-role permissions. The fixture no longer clears `DefaultPermissions` itself, so the console permission checks run under the default configuration.
+
+### Private chat
+
+- A private message is delivered and stored only between mutual friends: messages to a non-friend, to oneself, to a player one has blocked, or from a sender the target has blocked are rejected and stored on neither side.
+- A request naming more than `FriendManager.MaxMessageTargets` recipients is rejected without delivering anything; a mixed request still delivers to friends and reports the first rejection.
+- Each stored conversation, including an offline friend's, keeps at most `FriendManager.MaxConversationHistory` messages.
 
 These cases use only temporary accounts, a temporary database and loopback HTTP, and never touch real player saves.
 

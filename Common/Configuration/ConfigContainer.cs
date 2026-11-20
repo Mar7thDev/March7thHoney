@@ -79,6 +79,8 @@ public class GameServerConfig
 public class PathConfig
 {
     public string ResourcePath { get; set; } = "Resources";
+    // Set only after identifying the raw resource or cache source. Null applies no version-specific repairs.
+    public string? ResourceVersion { get; set; }
     public List<string> ExcelOutputDirs { get; set; } = ["ExcelOutput", "ExcelOutputGameCore"];
     public string ConfigPath { get; set; } = "Config";
     public string DatabasePath { get; set; } = "Config/Database";
@@ -113,7 +115,9 @@ public class ServerOption
     public string FallbackLanguage { get; set; } = "EN";
     public string DefaultPermissionRole { get; set; } = CommandRoles.User;
     public Dictionary<string, HashSet<string>> PermissionRoles { get; set; } = CommandRoles.DefaultRoles();
-    public HashSet<string> DefaultPermissions { get; set; } = ["*"];
+    // Granted to every account on top of its role. Keep it to low-risk permissions: anything here is
+    // available to every registered player.
+    public HashSet<string> DefaultPermissions { get; set; } = [];
     public ServerAnnounce ServerAnnounce { get; set; } = new();
     public ServerProfile ServerProfile { get; set; } = new();
     public GlobalChatConfig GlobalChat { get; set; } = new();

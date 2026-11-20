@@ -23,6 +23,7 @@
 - (2)授权接口: http://127.0.0.1:8080/muip/auth_admin (支持POST)
   - -必传参数1：SessionId (在创建会话接口请求后获得)
   - -必传参数2：admin_key (在config.json的MuipServer.AdminKey配置，并且经过rsaPublicKey[创建会话接口获取]下RSA[pacs#1]加密)
+  - -密钥错误时会删除该会话，重试前需重新创建会话。错误密钥与后台登录共用按客户端的失败限制：15 分钟内失败 8 次后，该客户端在 15 分钟内会收到 code 3 并被拒绝。
   - -返回示例：
   ```json
   {

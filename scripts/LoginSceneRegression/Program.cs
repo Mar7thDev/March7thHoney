@@ -255,7 +255,9 @@ var cacheSource = OptionValue("--resource-cache") ?? Path.Combine(repository, "C
 File.Copy(cacheSource, Path.Combine(scratch, "Resource.bin"), overwrite: true);
 var rawResourcePath = config.Path.ResourcePath;
 config.Path.ResourcePath = Path.Combine(scratch, "no-raw-resource-json");
-var loadedCache = ResourceCache.LoadCache();
+var versionOption = Array.IndexOf(args, "--resource-version");
+var resourceVersion = versionOption >= 0 && versionOption + 1 < args.Length ? args[versionOption + 1] : null;
+var loadedCache = ResourceCache.LoadCache(resourceVersion);
 Check("upgraded cache loads without the raw Resources tree", loadedCache);
 if (!loadedCache) throw new InvalidOperationException("The checked-out 4.5 resource cache could not be loaded.");
 config.Path.ResourcePath = rawResourcePath;
@@ -456,6 +458,32 @@ Check("player detail lookup resolves the global contact, not the first system en
     == serverOption.GlobalChat.Name);
 Check("friend requests to system contacts are rejected", await player.FriendManager.AddFriend(globalChatUid)
     == Retcode.RetFriendAlreadyIsFriend && !player.FriendManager.FriendData.SendApplyList.Contains(globalChatUid));
+// HandleFriendCsReq carries a client-chosen uid: only an apply recorded on both sides may be accepted or refused.
+bool IsFriendOf(PlayerInstance a, PlayerInstance b) => a.FriendManager!.FriendData.FriendDetailList.ContainsKey(b.Uid);
+Check("accepting a friend request that was never sent is rejected",
+    await player.FriendManager.ConfirmAddFriend(roguePlayer.Uid) == null
+    && !IsFriendOf(player, roguePlayer) && !IsFriendOf(roguePlayer, player));
+player.FriendManager.FriendData.ReceiveApplyList.Add(roguePlayer.Uid);
+Check("a one-sided received apply cannot be accepted and is dropped",
+    await player.FriendManager.ConfirmAddFriend(roguePlayer.Uid) == null
+    && !IsFriendOf(player, roguePlayer) && !IsFriendOf(roguePlayer, player)
+    && !player.FriendManager.FriendData.ReceiveApplyList.Contains(roguePlayer.Uid));
+var magicApply = await magicPlayer.FriendManager!.AddFriend(player.Uid);
+await chessPlayer.FriendManager!.RefuseAddFriend(magicPlayer.Uid);
+Check("a friend request can only be refused by its recipient", magicApply == Retcode.RetSucc
+    && magicPlayer.FriendManager.FriendData.SendApplyList.Contains(player.Uid)
+    && player.FriendManager.FriendData.ReceiveApplyList.Contains(magicPlayer.Uid));
+await player.FriendManager.RefuseAddFriend(magicPlayer.Uid);
+Check("refusing a real friend request clears both sides",
+    !magicPlayer.FriendManager.FriendData.SendApplyList.Contains(player.Uid)
+    && !player.FriendManager.FriendData.ReceiveApplyList.Contains(magicPlayer.Uid) && !IsFriendOf(player, magicPlayer));
+Check("a real friend request can be accepted",
+    await roguePlayer.FriendManager!.AddFriend(player.Uid) == Retcode.RetSucc
+    && await player.FriendManager.ConfirmAddFriend(roguePlayer.Uid) != null
+    && IsFriendOf(player, roguePlayer) && IsFriendOf(roguePlayer, player)
+    && !roguePlayer.FriendManager.FriendData.SendApplyList.Contains(player.Uid)
+    && !player.FriendManager.FriendData.ReceiveApplyList.Contains(roguePlayer.Uid));
+await player.FriendManager.RemoveFriend(roguePlayer.Uid);
 List<FriendChatData> GlobalHistory(PlayerInstance p) =>
     p.FriendManager!.FriendData.ChatHistory.GetValueOrDefault(globalChatUid)?.MessageList ?? [];
 var chatClock = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -549,6 +577,16 @@ await giveall.GiveAllAvatar(new CommandArg("avatar l80", giveSender, giveTarget)
 Check("explicit giveall level applies without touching Eidolons", ownedMarch.Level == 80 && ownedHero.Level == 80
     && newAvatar?.Level == 80 && ownedMarch.PathInfos.Values.All(path => path.Rank == 6)
     && ownedMarch.Promotion == GameData.GetMinPromotionForLevel(80));
+
+var relicCountBefore = givePlayer.InventoryManager!.Data.RelicItems.Count;
+foreach (var raw in new[] { $"61011 1 x{CommandRelic.MaxAmount + 1}", "61011 1 x2000000000", "61011 1 x0", "61011 1 x-5" })
+{
+    giveSender.Messages.Clear();
+    await new CommandRelic().GiveRelic(new CommandArg(raw, giveSender, giveTarget));
+    Check($"/relic {raw} is refused without creating relics",
+        giveSender.Messages.Single() == I18NManager.Translate("Game.Command.Notice.InvalidArguments")
+        && givePlayer.InventoryManager.Data.RelicItems.Count == relicCountBefore);
+}
 
 // /language: per-player pin persisted on PlayerData, used by command replies and chat notices.
 var languageCommand = new CommandLanguage();
@@ -1734,7 +1772,9 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
 
     const int ahaAvatarId = 1511;
     const int starLottoSkinId = 1151101;
-    if (GameData.AvatarConfigData.ContainsKey(ahaAvatarId))
+    if (GameData.AvatarConfigData.ContainsKey(ahaAvatarId) &&
+        (resourceVersion == "4.7.51" || (GameData.AvatarSkinData.ContainsKey(starLottoSkinId) &&
+                                         GameData.ItemConfigData.ContainsKey(starLottoSkinId))))
     {
         var ahaPlayer = new PlayerInstance(60042);
         await ahaPlayer.InitializeAsync();
@@ -1780,7 +1820,7 @@ using (var clientPeer = new KcpConversation(endpoint, inbound, options))
     }
     else
     {
-        Console.WriteLine("SKIP Star Lotto grant requires Aha's avatar row in the resource cache.");
+        Console.WriteLine("SKIP Star Lotto grant requires Aha and native Star Lotto rows, or a verified 4.7.51 cache (--resource-version 4.7.51).");
     }
 
     // Official 4.6 seq 20633-20654: leaving Qlipoth Fort finishes the EnterFloor gate

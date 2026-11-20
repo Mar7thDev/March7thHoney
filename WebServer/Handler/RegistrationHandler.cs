@@ -66,7 +66,7 @@ public class RegistrationHandler
         if (account != null && ConfigManager.Config.ServerOption.Auth.SendVerificationEmailOnRegister)
         {
             var verificationToken = account.GenerateEmailVerificationToken();
-            emailSent = await AccountEmailSender.SendVerificationEmailAsync(account, verificationToken, request);
+            emailSent = await AccountEmailSender.SendVerificationEmailAsync(account, verificationToken);
         }
 
         if (account != null && !account.CanLogin())

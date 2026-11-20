@@ -87,7 +87,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
         EnsureDefaults(Data, Player.Uid);
     }
 
-    private void EnsureDefaults(TrainCakeCatchData target, int targetUid)
+    private void EnsureDefaults(TrainCakeCatchData target, int? dirtyUid)
     {
         var changed = false;
         var nowUnixSec = Extensions.GetUnixSec();
@@ -127,8 +127,27 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
 
         changed |= SyncCollectedCreatures(target);
 
-        if (changed)
-            DatabaseHelper.MarkDirty(targetUid);
+        if (changed && dirtyUid is { } uid)
+            DatabaseHelper.MarkDirty(uid);
+    }
+
+    /// <summary>
+    ///     Whether <paramref name="ownerUid" /> can own a social-play room: the caller, an online player
+    ///     or an existing account. Room owner uids come straight from client packets.
+    /// </summary>
+    public bool IsValidRoomOwner(uint ownerUid)
+    {
+        if (ownerUid == 0 || ownerUid == (uint)Player.Uid)
+            return true;
+        if (ownerUid > int.MaxValue)
+            return false;
+
+        var uid = (int)ownerUid;
+        if (Listener.GetActiveConnection(uid)?.Player != null)
+            return true;
+
+        return !DatabaseHelper.IsUidDeleted(uid)
+               && DatabaseHelper.Instance?.GetInstance<PlayerData>(uid) != null;
     }
 
     public uint GetGameplayType(uint roomOwnerUid, uint roomPlayerUid)
@@ -141,7 +160,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
     public long GetRoomRefreshTime(uint? roomOwnerUid = null)
     {
         var view = ResolveRoomView(roomOwnerUid);
-        EnsureDefaults(view.Data, (int)view.OwnerUid);
+        EnsureDefaults(view.Data, view.Persisted ? (int)view.OwnerUid : null);
         return view.Data.RefreshTime;
     }
 
@@ -432,7 +451,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
     public POBLGKIGINE BuildSocialPlayRoomData(uint roomOwnerUid, uint roomPlayerUid)
     {
         var view = ResolveRoomView(roomOwnerUid);
-        EnsureDefaults(view.Data, (int)view.OwnerUid);
+        EnsureDefaults(view.Data, view.Persisted ? (int)view.OwnerUid : null);
         var gameplayType = GetGameplayType(roomOwnerUid, roomPlayerUid);
         var snapshot = new POBLGKIGINE();
         snapshot.RoomOwnerUid = roomOwnerUid;
@@ -1003,21 +1022,24 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
         return unlockedPerformanceIds.OrderBy(x => x).ToList();
     }
 
-    private (uint OwnerUid, TrainCakeCatchData Data) ResolveRoomView(uint? requestedOwnerUid)
+    private (uint OwnerUid, TrainCakeCatchData Data, bool Persisted) ResolveRoomView(uint? requestedOwnerUid)
     {
         var ownerUid = requestedOwnerUid.GetValueOrDefault((uint)Player.Uid);
         if (ownerUid == 0)
             ownerUid = (uint)Player.Uid;
 
         if (ownerUid == (uint)Player.Uid)
-            return (ownerUid, Data);
+            return (ownerUid, Data, true);
 
         var activeOwner = Listener.GetActiveConnection((int)ownerUid)?.Player?.TrainCakeCatchManager;
         if (activeOwner != null)
-            return (ownerUid, activeOwner.Data);
+            return (ownerUid, activeOwner.Data, true);
 
-        var data = DatabaseHelper.Instance!.GetInstanceOrCreateNew<TrainCakeCatchData>((int)ownerUid);
-        return (ownerUid, data);
+        // Another player's record is only read here; an owner without one gets an unsaved default view.
+        var data = DatabaseHelper.Instance!.GetInstance<TrainCakeCatchData>((int)ownerUid);
+        return data != null
+            ? (ownerUid, data, true)
+            : (ownerUid, new TrainCakeCatchData { Uid = (int)ownerUid }, false);
     }
 
     private async System.Threading.Tasks.Task NotifyRoomJoinAsync(uint roomOwnerUid, List<int> existingMembers)

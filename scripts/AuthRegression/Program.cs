@@ -391,6 +391,9 @@ auth.EnableRegistration = true;
 // Account bans must not propagate to other UIDs through a shared PC fingerprint or network.
 await BanRegression.Run(client, admin, Password, Check);
 
+// Reset and verification links must never point at the Host header of the request.
+await EmailLinkRegression.Run(client, Password, Check);
+
 Console.WriteLine($"Auth regression failures: {failures.Count}");
 if (serve && failures.Count == 0)
 {

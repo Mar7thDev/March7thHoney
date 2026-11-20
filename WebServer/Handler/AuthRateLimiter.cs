@@ -79,16 +79,40 @@ public static class AuthRateLimiter
         }
     }
 
+    /// <summary>
+    ///     Like <see cref="TryReject" />, but only reports an identity block or an active rate-limit block; it does
+    ///     not count this request. Lets a caller refuse a blocked client before checking a password and count only
+    ///     the misses.
+    /// </summary>
+    public static bool TryRejectBlocked(HttpContext context, AuthRateLimitAction action,
+        IEnumerable<string>? identityKeys, string? accountIdentifier, out IResult result)
+    {
+        if (TryRejectIdentityBlock(context, action, identityKeys, out result))
+            return true;
+        if (!GetRule(action).Enabled)
+            return false;
+
+        var now = Extensions.GetUnixSec();
+        var blockedFor = 0L;
+        lock (SyncRoot)
+        {
+            foreach (var attemptKey in BuildAttemptKeys(context, action, identityKeys, accountIdentifier))
+                if (AttemptIndex.TryGetValue(attemptKey, out var attempt) && attempt.BlockedUntil > now)
+                    blockedFor = Math.Max(blockedFor, attempt.BlockedUntil - now);
+        }
+
+        if (blockedFor <= 0)
+            return false;
+
+        result = BlockedResult(blockedFor);
+        return true;
+    }
+
     public static bool TryReject(HttpContext context, AuthRateLimitAction action,
         IEnumerable<string>? identityKeys, string? accountIdentifier, out IResult result)
     {
-        result = default!;
-        if (IdentityBlockHelper.TryGetActiveBan(identityKeys, out var block))
-        {
-            AccountBanHelper.LogRejection($"{action}:{context.Request.Path}", null, block, identityKeys);
-            result = Results.Json(new StatusResult(-203, block.FormatLoginMessage()));
+        if (TryRejectIdentityBlock(context, action, identityKeys, out result))
             return true;
-        }
         var rule = GetRule(action);
         if (!rule.Enabled)
             return false;
@@ -149,6 +173,18 @@ public static class AuthRateLimiter
         }
 
         result = BlockedResult(blockedFor);
+        return true;
+    }
+
+    private static bool TryRejectIdentityBlock(HttpContext context, AuthRateLimitAction action,
+        IEnumerable<string>? identityKeys, out IResult result)
+    {
+        result = default!;
+        if (!IdentityBlockHelper.TryGetActiveBan(identityKeys, out var block))
+            return false;
+
+        AccountBanHelper.LogRejection($"{action}:{context.Request.Path}", null, block, identityKeys);
+        result = Results.Json(new StatusResult(-203, block.FormatLoginMessage()));
         return true;
     }
 
