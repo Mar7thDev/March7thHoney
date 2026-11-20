@@ -14,19 +14,18 @@ public class AccountRecoveryHandler
     private const string PasswordResetRequiresVerifiedEmailMessage =
         "Please verify your email before requesting a password reset.";
 
-    public async Task<IResult> SendVerificationEmail(SendVerificationEmailReqJson req, HttpRequest request)
+    public async Task<IResult> SendVerificationEmail(SendVerificationEmailReqJson req)
     {
         var account = ResolveAccount(req.account, req.username, req.email);
         if (account is { IsEmailVerified: false })
         {
-            await SendVerificationEmailForAccount(account, request);
+            await SendVerificationEmailForAccount(account);
         }
 
         return Ok(VerificationSentMessage);
     }
 
-    public static async Task<bool> SendVerificationEmailForAccount(AccountData account, HttpRequest request,
-        bool markUnverified = false)
+    public static async Task<bool> SendVerificationEmailForAccount(AccountData account, bool markUnverified = false)
     {
         if (string.IsNullOrWhiteSpace(account.Email))
             return false;
@@ -38,7 +37,7 @@ public class AccountRecoveryHandler
         }
 
         var token = account.GenerateEmailVerificationToken();
-        return await AccountEmailSender.SendVerificationEmailAsync(account, token, request);
+        return await AccountEmailSender.SendVerificationEmailAsync(account, token);
     }
 
     public IResult VerifyEmail(string? uid, string? token)
@@ -54,7 +53,7 @@ public class AccountRecoveryHandler
         return VerificationPage("Email verified", "You can return to the game login screen.");
     }
 
-    public async Task<IResult> ForgotPassword(ForgotPasswordReqJson req, HttpRequest request)
+    public async Task<IResult> ForgotPassword(ForgotPasswordReqJson req)
     {
         var username = (req.username ?? req.account ?? string.Empty).Trim();
         var email = (req.email ?? string.Empty).Trim();
@@ -77,7 +76,7 @@ public class AccountRecoveryHandler
         if (accountEmailMatches)
         {
             var token = account!.GeneratePasswordResetToken();
-            await AccountEmailSender.SendPasswordResetEmailAsync(account, token, request);
+            await AccountEmailSender.SendPasswordResetEmailAsync(account, token);
         }
 
         return Ok(ResetSentMessage);
