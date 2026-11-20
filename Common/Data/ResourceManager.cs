@@ -8,7 +8,6 @@ using March7thHoney.Data.Config.SummonUnit;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
 using March7thHoney.Enums;
-using March7thHoney.Enums.Item;
 using March7thHoney.Enums.Rogue;
 using March7thHoney.Enums.RogueMagic;
 using March7thHoney.Enums.TournRogue;
@@ -143,7 +142,6 @@ public class ResourceManager
 
         foreach (var cls in resList) cls.AfterAllDone();
         GridFightTableCompatibility.Apply(resList);
-        AddStarLottoSkin();
 
         lock (MissingExcelFiles)
         {
@@ -151,27 +149,12 @@ public class ResourceManager
         }
     }
 
-    internal static void AddStarLottoSkin()
-    {
-        // The 4.7 release maps Star Lotto to Aeon ★ Aha, but the 4.7.51 export omits both rows.
-        const int avatarId = 1511;
-        const int skinId = 1151101;
-        if (!GameData.AvatarConfigData.ContainsKey(avatarId)) return;
-        if (GameData.AvatarSkinData.TryGetValue(skinId, out var skin) && skin.AvatarID != avatarId) return;
-        if (GameData.ItemConfigData.TryGetValue(skinId, out var item) &&
-            (item.ItemMainType != ItemMainTypeEnum.Usable || item.ItemSubType != ItemSubTypeEnum.AvatarSkin)) return;
+    /// <summary>Apply the runtime overlay for an explicitly identified resource source, not the server version.</summary>
+    public static void ApplyResourceCompatibility(string? resourceVersion) => ResourceCompatibility.Apply(resourceVersion);
 
-        GameData.AvatarSkinData.TryAdd(skinId, new AvatarSkinExcel { ID = skinId, AvatarID = avatarId });
-        GameData.ItemConfigData.TryAdd(skinId, new ItemConfigExcel
-        {
-            ID = skinId,
-            ItemName = new HashName { Hash = 18_050_157_886_040_598_656UL },
-            ItemMainType = ItemMainTypeEnum.Usable,
-            ItemSubType = ItemSubTypeEnum.AvatarSkin,
-            Rarity = ItemRarityEnum.SuperRare,
-            PileLimit = 1
-        });
-    }
+    /// <summary>True for donor-cache keys whose original provenance is not recoverable from the row alone.</summary>
+    public static bool IsVersionScopedCompatibilityRow(string memberName, int id) =>
+        ResourceCompatibility.ContainsOverlayKey(memberName, id);
 
     public static List<T>? LoadSingleExcel<T>(Type cls) where T : ExcelResource, new()
     {

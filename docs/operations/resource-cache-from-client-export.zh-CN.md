@@ -43,6 +43,7 @@ dotnet run --project scripts/ResourceCacheFill/ResourceCacheFill.csproj -c Relea
 - 字典按键补行：导出有的行以导出为准，导出没有而旧缓存有的行补入。列表没有键，只在导出为空时整表取旧缓存。单个对象和数值只在导出保持默认值时取旧缓存。
 - GridFight 的表一律只用导出，不从旧缓存补行，旧缓存多出的行数在报告里列出。`GridFightRuntimeDataSnapshot` 里因 MemoryPack 成员上限寄放的 Rogue、Daily、MainMissionSchedule 表不受此限。
 - 手机短信的四张表（`MessageContactsConfigData`、`MessageGroupConfigData`、`MessageSectionConfigData`、`MessageItemConfigData`）同样只用导出。客户端按自己的表解析服务端发来的联系人、短信组和段落，查不到段落时 `MessageModule._InitSection` 会抛空引用，整个 `GetNpcMessageGroupScRsp` 的处理随之中断，所以旧缓存里客户端已经删掉的行不能补进来。
+- 不从旧缓存补入按版本启用的兼容条目，也不向新缓存写入合成数据。原始导出已有的正式条目保留。若确认导出或缓存来自 4.7.51 且缺少 Star Lotto，在服务端配置中将 `Path.ResourceVersion` 设为 `"4.7.51"`。服务端只在内存中补缺；来源不明时不填该选项。不会改写旧缓存或玩家存档。
 - 输出必须是不存在的新文件；写入后工具重新读取并核对每个集合的条数。
 - `fill-report.txt` 列出加载告警、每个成员的导出行数 / 旧缓存行数 / 补入行数，以及补缺前后「起止子任务未注册」的主线任务数量。
 
@@ -53,6 +54,8 @@ dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj -- -
 dotnet run --project scripts/LoginSceneRegression/LoginSceneRegression.csproj -c Release -- --resource-cache artifacts/<名称>/Resource.new.bin
 dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj -c Release -- --cache artifacts/<名称>/Resource.new.bin
 ```
+
+如果缓存由已确认的 4.7.51 导出生成，在 LoginSceneRegression 命令末尾加上 `--resource-version 4.7.51` 以验证 Star Lotto 运行时补缺。也可以运行 `dotnet run --project scripts/ResourceCacheFill/ResourceCacheFill.csproj -c Release -- --self-test`，无需缓存即可执行兼容性回归。
 
 回归通过后备份现有 `Config/Resource.bin`，再把新文件复制过去。回滚时把备份复制回来；枚举取值变化过的版本需要程序和缓存一起恢复。
 
@@ -66,5 +69,5 @@ dotnet run --project scripts/DailyActiveRegression/DailyActiveRegression.csproj 
 - GridFight：新表把阿哈的角色 ID 由 `151102` 改为 `151112` / `151122` / `151132`，并调整了投资列表等内容，服务端第二赛季的适配见 [GridFight 对比与回归](../testing/grid-fight-regression.zh-CN.md)。
 - 新缓存上的回归：GridFightRegression 557/557，LoginSceneRegression 717/0，DailyActiveRegression 76/0。
 - 加入 `RealityShowBuffNum` / `RealityShowResult` / `RealityShowAllResult`（470011–470013）后，用同一导出目录与 4.6.52 基础缓存重新生成（`Resource.4.7.51.realityshow.bin`）：补缺结果不变（55 个成员 3 113 行，主线 179 → 18）。FinishWay 中类型为 `Unknown` 的行由 712 降到 650，成名之路、骰子收容等活动任务的行有了正确类型。骰子收容的任务因此会在关卡流程中真实推进，`LoginSceneRegression` 里对应的处理器检查改用新账号。新缓存上 GridFightRegression 557/557、DailyActiveRegression 76/0；LoginSceneRegression 仅剩一项失败，即当时并行开发中的 TrainParty（旧缓存同样失败）。替换前的缓存备份为 `Resource.bin.backup-20261114-before-realityshow.bin`。
-- 该测试服资源包的 `ExcelOutputGameCore/AvatarSkin.json` 和 `ExcelOutput/ItemConfigAvatarSkin.json` 均完整解出 8 行，均缺少皮肤 `1151101`。当前配置的国服和国际服 4.7.51 下载清单及索引与本机副本逐字节一致。星神★阿哈的 Star Lotto（皮肤 `1151101`，角色 `1511`）收录于 4.7 正式服表。只要资源包含阿哈角色，服务端在加载原始表或缓存时会补齐缺失的 Star Lotto 条目，供 `/giveall skin` 发放。客户端仍需要对应的资源才能显示该皮肤。[皮肤公告](https://www.hoyolab.com/article/47252512)、[正式服皮肤表](https://github.com/DimbreathBot/TurnBasedGameData/blob/main/ExcelOutput/AvatarSkin.json)、[正式服皮肤物品表](https://github.com/DimbreathBot/TurnBasedGameData/blob/main/ExcelOutput/ItemConfigAvatarSkin.json)。
+- 该测试服资源包的 `ExcelOutputGameCore/AvatarSkin.json` 和 `ExcelOutput/ItemConfigAvatarSkin.json` 均完整解出 8 行，均缺少皮肤 `1151101`。当前配置的国服和国际服 4.7.51 下载清单及索引与本机副本逐字节一致。星神★阿哈的 Star Lotto（皮肤 `1151101`，角色 `1511`）收录于 4.7 正式服表。启用 4.7.51 运行时兼容数据后，如果资源包含阿哈角色，服务端会补齐缺失的 Star Lotto 条目，供 `/giveall skin` 发放。客户端仍需要对应的资源才能显示该皮肤。[皮肤公告](https://www.hoyolab.com/article/47252512)、[正式服皮肤表](https://github.com/DimbreathBot/TurnBasedGameData/blob/main/ExcelOutput/AvatarSkin.json)、[正式服皮肤物品表](https://github.com/DimbreathBot/TurnBasedGameData/blob/main/ExcelOutput/ItemConfigAvatarSkin.json)。
 - 缓存要用与程序同一版本的代码生成：场景、任务等加载器新增字段后，旧程序生成的缓存里这些字段是默认值。本次的缓存、报告和替换前的 4.6.52 缓存都留在生成机器的 `artifacts/resources-4.7.51/` 下，不随仓库分发。均未经客户端实机验证。
