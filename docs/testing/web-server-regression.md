@@ -45,6 +45,7 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 - Player console tokens are bound to the password version at issue time. After an admin password change or an e-mail password reset the old token stops working, and a new login still works. This needs no new database column.
 - MUIP sessions are bound to the admin key version at creation time. After a configuration change, the authentication, command, server-info and player-info endpoints all reject old sessions. Rotating the key from the admin page also clears MUIP admin sessions.
 - Anonymous MUIP session creation is refused at capacity. Expired, abandoned sessions are cleaned up on creation, and the service also cleans them up every minute. The total limit is 1024, with at most 32 unexpired sessions per HTTP source. The internal short-lived command bridge does not use the anonymous creation endpoint.
+- A wrong key at `/muip/auth_admin` deletes that MUIP session and counts against the same per-client failure counter as the admin page login. After 8 wrong keys from one client the correct key is refused (code 3) for that client, on both MUIP and the admin page, while other clients are unaffected.
 - Root `/sr-tools` import no longer accepts a UID alone, even with RSA decryption off; old accounts without a password must set one first.
 
 These cases use only temporary accounts, a temporary database and loopback HTTP, and never touch real player saves.
