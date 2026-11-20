@@ -264,9 +264,7 @@ public static partial class HandbookGenerator
         {
             var resolved = TryGetNameFromTextMap(avatar.AvatarName.Hash, map, fallback, out var name);
 
-            // Legacy AvatarConfig dumps carry old 32-bit name hashes that no longer resolve against the
-            // current 64-bit TextMap (e.g. 1001 March 7th -> [-531793651]). The character's inventory item
-            // shares the avatar id and keeps a valid name hash, so fall back to it.
+            // Legacy 32-bit name hashes may not resolve in the current TextMap; the item with the same ID has a newer hash.
             if (!resolved && GameData.ItemConfigData.TryGetValue(avatar.AvatarID, out var item))
                 resolved = TryGetNameFromTextMap(item.ItemName.Hash, map, fallback, out name);
 

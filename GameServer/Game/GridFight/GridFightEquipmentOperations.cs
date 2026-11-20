@@ -80,11 +80,8 @@ public sealed partial class GridFightSession
         var previousWearer = FindEquipmentWearer(equipmentUniqueId);
         if (!CanDress(role, equipment)) return GridFightEquipDressResult.Failed;
 
-        // A role has a single implant slot (client GridFightEquipComponent.HackEquip shows the first Implants item and
-        // no dress constraint limits implants), so a newly dressed implant replaces the worn one. The replaced implant
-        // only leaves the role's list and stays in Equipments, i.e. it goes back to the bag (the client's UpdateEquips
-        // returns an item the role update no longer lists); a second worn implant would be invisible yet still be
-        // applied in battle.
+        // GridFightEquipComponent.HackEquip shows only the first implant, but dress constraints allow more.
+        // Replace it so hidden implants cannot affect battle; UpdateEquips returns it to the bag.
         List<GridFightEquipmentState> replacedImplants = IsImplant(equipment.EquipmentId)
             ? GetEquippedEquipment(role).Where(candidate => IsImplant(candidate.EquipmentId)).ToList()
             : [];

@@ -250,22 +250,15 @@ public class EntryPoint
                     }
                     else if (ConfigManager.Config.ServerOption.UseCache)
                     {
-                        // A single unparseable record anywhere in the tree clears IsComplete, and the
-                        // cache write was then skipped without a word - every later boot re-read the raw
-                        // Resources tree and the operator had no idea why Resource.bin never appeared.
                         Logger.Warn(
                             "Resource cache NOT written: one or more resources failed to load (see the errors above). " +
                             "Fix them and restart, or the server will re-read the raw resource tree on every boot.");
                     }
                 }
 
-                // Operator-authored content, not dumped game data: the banner list and the video keys
-                // are the two files a server owner actually edits. Baking them into Resource.bin made
-                // those edits invisible until the whole resource cache was regenerated - which needs the
-                // raw Resources tree most deployments do not ship. Re-read them after the cache branch so
-                // a change only needs a restart (or the matching /reload subcommand).
                 ResourceManager.LoadMissionInfoOverrides();
                 ResourceManager.ReportTruncatedMissionGraphs();
+                // Load operator edits on either boot path so they don't require a cache rebuild.
                 GameData.BannersConfig = ResourceManager.LoadBanners();
                 GameData.VideoKeysConfig =
                     ResourceManager.LoadCustomFile<VideoKeysConfig>("VideoKeys", "VideoKeysConfig") ??
@@ -274,9 +267,7 @@ public class EntryPoint
                 // cached copy only when the file is missing or unreadable.
                 var activityConfig = ResourceManager.LoadCustomFile<ActivityConfig>("Activity", "ActivityConfig");
                 if (activityConfig != null) GameData.ActivityConfig = activityConfig;
-                // RogueMapGen is operator-side compatibility data rather than a dumped Excel table.
-                // Reload it after either cache path so new Rogue room pools do not require replacing
-                // an otherwise valid Resource.bin.
+                // Read the operator's Rogue room pools even when booting from Resource.bin.
                 var rogueMapGen =
                     ResourceManager.LoadCustomFile<Dictionary<int, List<int>>>("Rogue Map", "RogueMapGen");
                 if (rogueMapGen != null) GameData.RogueMapGenData = rogueMapGen;
@@ -291,9 +282,7 @@ public class EntryPoint
                 // Story-trial skill limits and IsUseWorldLevel live on the raw excel rows, not in Resource.bin.
                 StoryTrialTables.Load();
 
-                // These runtime room/dice definitions were added after the checked-in 4.6 cache was built.
-                // They are operator-authored JSON rather than dumped tables, so a cache boot must overlay the
-                // current files just like banners, video keys and RogueMapGen do above.
+                // Use current room and dice definitions even with the older 4.6 cache.
                 if (!loadedFromResources)
                 {
                     // ChallengePeak.json pins each season's map; seasons it leaves out are derived from the

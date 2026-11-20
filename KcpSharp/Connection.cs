@@ -87,9 +87,7 @@ public class March7thHoneyConnection
         }
         catch
         {
-            // This is normal control flow: when DisableLogDetailPacket is true, the code above throws on purpose to get
-            // here. A failure to write the log (typically a full disk) must never bring down the game server process,
-            // so the whole branch is wrapped in another try.
+            // DisableLogDetailPacket deliberately uses this fallback; log write failures must not stop the server.
             try
             {
                 var output = $"{sendOrRecv}: {LogMap.GetValueOrDefault(opcode, "UnknownPacket")}({opcode})";
@@ -143,9 +141,7 @@ public class March7thHoneyConnection
         }
         catch (Exception e)
         {
-            // Never swallow this silently. A dropped response is invisible to the client, which simply
-            // keeps waiting — the classic symptom is a black screen with the loading bar frozen after a
-            // teleport into a dense floor, where the scene notify exceeds MaxPacketBytes.
+            // A dropped scene notification can leave the client stuck on the teleport loading screen.
             var name = cmdId != 0 ? LogMap.GetValueOrDefault(cmdId, cmdId.ToString()) : "<raw>";
             if (packet.Length > MaxPacketBytes)
                 Logger.Error(
@@ -158,7 +154,6 @@ public class March7thHoneyConnection
 
     public async Task SendPacket(BasePacket packet)
     {
-        // Test
         if (packet.CmdId <= 0)
         {
             Logger.Debug("Tried to send packet with missing cmd id!");

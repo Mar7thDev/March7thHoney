@@ -9,27 +9,21 @@ using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.TrainParty;
 
-// Party-car build state, checked against the OSBETAWin4.7.51 client (RPG.Client.TrainParty.TrainPartyBuildManager
-// and TrainPartyGameInstance). Several generated field names are carried over from older versions and no longer
-// describe the field:
-// * TrainPartyData.unlock_area_num (11) is the current gameplay turn, a TrainPartyProgress ID that
-//   TrainPartyGameInstance._SetCurTurnID looks up and throws on when absent. HCJJPLKELGC (15) is the running board;
-//   absent, the client just clears its board state.
-// * TrainPartyArea: step_id_list (12) holds the unlocked static prop IDs, which are what the room shows;
-//   static_prop_id_list (8) the finished step IDs; verify_step_id_list (13) the step blueprints (the client skips the
-//   area's FirstStep there); area_step_info (1) the current goal with every step's state (0 locked, 1 buildable,
-//   3 finished); progress (5) the 0-100 completion, >= 100 meaning complete.
-// * TrainPartyInfo: cur_fund (2), star_num (4), JJGKIPDGOGP (9) the highest build level taken, CMCNNJKJNPK (11) the
-//   exhibit display wall, MHABCMLHCGD (13) the owned DIY props, area_list (14) the unlocked areas, BHEJCEJHLIB (15)
-//   the build level. TrainPartyTakeBuildLevelAwardScRsp.FPHFHCGNNGM (12) is the new highest level taken; the client
-//   offers a reward while that is below the build level.
-// * TrainPartyBuildStartStepScRsp only updates the fund; build results reach the client through
-//   TrainPartyBuildingUpdateNotify.
-// * The party-car scenes read the build through floor saved values (group load conditions, build-item bindings):
-//   Progress_<Room> and Build_<Room>_Finished per area, Progress_PartyTrainGlobal for the whole car, and the Build_Has*
-//   item flags. The server owns them; no client config sets them.
-//
-// The board minigame is simulated by TrainPartyGameplayRun; see the note on that class before changing that flow.
+// Field mappings verified in OSBETAWin4.7.51 (TrainPartyBuildManager and TrainPartyGameInstance);
+// some generated names describe older versions:
+// * TrainPartyData: unlock_area_num (11) is the current TrainPartyProgress turn ID; _SetCurTurnID
+//   requires a matching row. HCJJPLKELGC (15) holds the running board; absent means clear it.
+// * TrainPartyArea: step_id_list (12) is unlocked static props, static_prop_id_list (8) finished steps,
+//   verify_step_id_list (13) blueprints excluding FirstStep, area_step_info (1) the current goal and
+//   step states (0 locked, 1 buildable, 3 finished), and progress (5) completion (>= 100 is complete).
+// * TrainPartyInfo: cur_fund (2), star_num (4), JJGKIPDGOGP (9) highest claimed build level,
+//   CMCNNJKJNPK (11) exhibits, MHABCMLHCGD (13) owned DIY props, area_list (14) unlocked areas,
+//   BHEJCEJHLIB (15) build level. TrainPartyTakeBuildLevelAwardScRsp.FPHFHCGNNGM (12) updates
+//   the claimed level; the client offers a reward while that level is below the build level.
+// * TrainPartyBuildStartStepScRsp updates only funds; TrainPartyBuildingUpdateNotify sends results.
+// * The server owns the floor values used by group conditions and item bindings: Progress_<Room>,
+//   Build_<Room>_Finished, Progress_PartyTrainGlobal and Build_Has*.
+// See TrainPartyGameplayRun for the board simulation's limits.
 public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainData>(player)
 {
     // Areas layout version; see TrainData.AreaDataVersion.
@@ -248,10 +242,9 @@ public class TrainPartyManager(PlayerInstance player) : BasePlayerManager<TrainD
 
     private const string GlobalProgressValue = "Progress_PartyTrainGlobal";
 
-    // The build state as floor saved values of every party-car floor (the floors declaring Progress_PartyTrainGlobal).
-    // Rooms are named by the area's block, which matches Progress_<Room> and, ignoring case, Build_<Room>_Finished.
-    // Values whose item or room cannot be told from the tables (the Build_Has* flags, Build_ExRoom_Finished) are set
-    // once the whole car is complete. Empty when the resource cache lacks the area blocks.
+    // Emit floor values for floors declaring Progress_PartyTrainGlobal. Area blocks match Progress_<Room>
+    // and, case-insensitively, Build_<Room>_Finished. Set unmapped Build_Has* and Build_ExRoom_Finished
+    // only on full completion; return nothing if the cache lacks the area blocks.
     public Dictionary<int, Dictionary<string, int>> BuildFloorSavedValues()
     {
         EnsureDefaults();

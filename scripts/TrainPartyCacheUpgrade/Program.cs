@@ -45,7 +45,7 @@ var activity = snapshot.ActivityRuntimeData ?? throw new InvalidDataException("C
 var areas = snapshot.TrainPartyAreaConfigData;
 if (areas.Count == 0) throw new InvalidDataException("Cache has no TrainPartyAreaConfig rows.");
 
-// A cache written before these members existed reads them back as null.
+// Older caches deserialize these members as null.
 foreach (var area in areas.Values)
 {
     area.ShowBlockList ??= [];
@@ -75,7 +75,7 @@ foreach (var row in ReadExcel<TrainPartyRewardConfigExcel>("TrainPartyRewardConf
     rewards.TryAdd(row.Level, row);
 }
 
-// Everything the cache carried before must round-trip unchanged once the additions are taken away again.
+// Removing the additions must restore the original serialized cache.
 var added = areas.Values.ToDictionary(area => area, area => (area.ShowBlockList, area.ProgressBonusList));
 foreach (var area in areas.Values)
 {

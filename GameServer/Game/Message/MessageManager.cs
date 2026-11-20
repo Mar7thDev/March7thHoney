@@ -65,10 +65,8 @@ public class MessageManager(PlayerInstance player) : BasePlayerManager<MessageDa
             }
             else if (stubFinishUnseen)
             {
-                // With EnableMission=false the whole mission system is off and the player never reaches the phone
-                // message flow, but some client unlocks (e.g. Forgotten Hall, advanced by Pom-Pom's messages
-                // 4010105/4010134) are gated on a message group being finished. Unseen groups are therefore returned
-                // as fully finished, in line with the stub semantics.
+                // Without missions, unseen message groups are unreachable. Report them as finished for client
+                // unlock checks such as Forgotten Hall (Pom-Pom messages 4010105/4010134).
                 var stub = new MessageGroup
                 {
                     Id = (uint)item.ID,

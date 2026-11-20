@@ -6,16 +6,9 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace March7thHoney.SourceGen;
 
 /// <summary>
-///     Emits a module initializer that registers a MemoryPack formatter for every <c>[MemoryPackable]</c>
-///     type of the assembly before anything is serialized.
-///     <para>
-///         MemoryPack's collection formatters ask <c>MemoryPackFormatterProvider</c> for the formatter of
-///         their element type when they deserialize. A type registers its own formatter only in its static
-///         constructor, which has not run if the type was never used directly, and the provider then falls
-///         back to creating a formatter by reflection. That fallback throws under NativeAOT (dynamic code
-///         generation) although it works under the JIT. Running every static constructor up front means the
-///         fallback is never reached.
-///     </para>
+///     Registers assembly-visible, non-generic <c>[MemoryPackable]</c> types at module initialization.
+///     Running their static constructors prevents collection deserialization from using MemoryPack's
+///     reflection fallback, which fails under NativeAOT.
 /// </summary>
 [Generator]
 public sealed class MemoryPackRegistrarGenerator : IIncrementalGenerator
@@ -30,9 +23,8 @@ public sealed class MemoryPackRegistrarGenerator : IIncrementalGenerator
                 static (ctx, _) =>
                 {
                     var type = (INamedTypeSymbol)ctx.TargetSymbol;
-                    // A static constructor can be run for a closed class or struct (an abstract union base
-                    // included) and only for one the registrar can name: a private or protected nested type
-                    // is out of its reach, and already registers itself when it is serialized directly.
+                    // Include abstract union bases, but skip types the registrar cannot name.
+                    // Inaccessible nested types register themselves when serialized directly.
                     if (type.IsGenericType || type.IsStatic) return null;
                     if (type.TypeKind is not (TypeKind.Class or TypeKind.Struct)) return null;
                     return IsVisibleInAssembly(type) ? type.FullName() : null;

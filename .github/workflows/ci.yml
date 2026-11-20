@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          # A pull request is checked out as its merge commit; the first parent is the base branch.
+          # PR checkouts use the merge commit; its first parent is the base branch.
           fetch-depth: 2
       - uses: actions/setup-dotnet@v6
         with:
@@ -38,7 +38,7 @@ jobs:
         run: >-
           dotnet build March7thHoney.sln -c Release
           -warnaserror "-warnnotaserror:NU1901;NU1902;NU1903;NU1904"
-      # The suites that need private game resources report SKIP here; they are run locally.
+      # Suites needing private game resources report SKIP here and run locally.
       - name: Run the resource-independent regressions
         run: python3 scripts/verify-security.py --skip-build
 

@@ -7,9 +7,8 @@ using Microsoft.CodeAnalysis.CSharp;
 namespace March7thHoney.SourceGen;
 
 /// <summary>
-///     Emits <c>GeneratedCommandRegistry</c>: for every <c>[CommandInfo]</c> class its attribute, an
-///     instance, and a delegate for each <c>[CommandMethod]</c> and for the <c>[CommandDefault]</c> method.
-///     <c>CommandManager</c> finds and invokes commands through it, without reflection.
+///     Emits <c>GeneratedCommandRegistry</c> with command attributes, instances and method delegates
+///     for reflection-free dispatch by <c>CommandManager</c>.
 /// </summary>
 [Generator]
 public sealed class CommandRegistryGenerator : IIncrementalGenerator
@@ -61,8 +60,7 @@ public sealed class CommandRegistryGenerator : IIncrementalGenerator
     }
 
     /// <summary>
-    ///     The arguments that rebuild the attribute through its constructor with aliases, whichever of the
-    ///     two constructors the source used.
+    ///     Normalizes either attribute constructor to the overload with aliases.
     /// </summary>
     private static string InfoArguments(AttributeData info)
     {

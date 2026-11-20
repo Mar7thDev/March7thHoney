@@ -1,9 +1,8 @@
 namespace March7thHoney.WebServer.Pages;
 
 /// <summary>
-///     UI strings for the admin console, keyed by language tag. The page picks the language from the
-///     server setting (CHS/CHT -> zh-CN) unless the operator chose one explicitly; missing keys fall back to
-///     English and then to the key itself so a forgotten translation never breaks the page.
+///     Admin UI strings. Explicit language choice overrides the server setting (CHS/CHT -> zh-CN).
+///     Missing translations fall back to English, then the key.
 /// </summary>
 public static class AdminPageI18n
 {

@@ -15,11 +15,8 @@ public static class GridFightBattleProtoBuilder
     private const int RewardBattleTalentBuffId = 35602061;
     private const int GridFightCombatTalentBuffId = 35604031;
 
-    // 4.5 GridFight affix -> battle MazeBuff compatibility. The bundled Resource.bin still
-    // contains several 4.4 RuleParamList mappings, while official 4.5 packets use the IDs below.
-    // Packet captures directly confirm the mappings used by the supplied runs. The 200x and missing
-    // 402x members follow the same contiguous 4.5 numbering observed around their confirmed peers;
-    // they are kept here because the bundled 4.4 resource points at stale IDs or no ID at all.
+    // Override stale or missing 4.4 RuleParamList IDs in Resource.bin with 4.5 battle MazeBuff IDs.
+    // Official captures confirm used mappings; remaining 200x/402x IDs follow adjacent numbering.
     private static readonly IReadOnlyDictionary<uint, int> GridFight45AffixBuffs =
         new Dictionary<uint, int>
         {
@@ -303,10 +300,8 @@ public static class GridFightBattleProtoBuilder
             }
             gridFightInfo.GridFightTraitInfo.Add(traitInfo);
         }
-        // GridFight uses a fixed group of event controllers. Role-star/trait BEIDs are resource-side
-        // implementation details and are not sent as BattleEvent entries by the official server.
-        // Sending those dynamic 62xxx entries leaves the client's GridFight trait controller absent,
-        // so damage-producing traits such as DoT (2008) report zero or severely reduced damage.
+        // Use the official fixed battle controllers. Sending resource-side 62xxx role/trait BEIDs
+        // omits the trait controller and reduces damage for effects such as DoT (2008).
         battle.BattleEvents.Clear();
         foreach (var (id, curSp, maxSp) in OfficialBattleEvents)
             battle.BattleEvents.Add(id, new BattleEventInstance(id, curSp, maxSp));
@@ -554,10 +549,8 @@ public static class GridFightBattleProtoBuilder
     {
         mazeSkillId = 0;
 
-        // Official 4.5 GridFight captures never attach an entry maze buff to Asta,
-        // including when she is a one-star foreground role. 100902 is an override
-        // skill rather than a valid battle-entry MazeBuff; sending it makes the
-        // client dereference a missing MazeBuffData record while the level starts.
+        // Official 4.5 captures omit Asta's entry buff even at one-star foreground.
+        // 100902 is an override skill, not a MazeBuffData entry; sending it breaks battle load.
         if (role.RoleId == 1009) return false;
 
         if (!GameData.GridFightRoleBasicInfoData.TryGetValue(role.RoleId, out var basic)) return false;

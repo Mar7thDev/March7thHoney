@@ -2043,12 +2043,9 @@ public sealed partial class GridFightSession
                     GameData.GridFightRoleStarData.ContainsKey(starRoleId << 4 | (grouping.Key + 1)));
             if (group == null) return steps;
 
-            // Official GridFight merge packets do not anchor the upgrade on the newly acquired
-            // third copy. The upgraded role keeps the state of an existing deployed copy: its
-            // board position is preserved and equipment remains attached to the upgraded entity.
-            // Prefer foreground -> background -> bench, then an equipped copy, then the oldest
-            // entity. This also keeps chained 1->2->3 star merges on the deployed copy whenever
-            // one participates in the next merge.
+            // Official merges retain an existing deployed copy's position and gear, not the third copy's.
+            // Prefer foreground, background, then bench; prefer gear and then age within a position.
+            // This keeps chained 1→2→3-star upgrades on the deployed copy when it participates.
             var candidates = group.ToList();
             var retained = candidates
                 .OrderBy(GetMergePositionPriority)
@@ -2114,10 +2111,8 @@ public sealed partial class GridFightSession
     {
         if (!acquisition.Success) return acquisition;
 
-        // Restricted roles are only filtered from shop/crystal/supply sources. Once any other
-        // source successfully grants one (GM, investment, portal, equipment effect, etc.), the
-        // role is temporarily unlocked for the rest of this GridFight run. Shop/supply/orb paths
-        // also pass through here, but they can only reach it after the role was already unlocked.
+        // Grants outside shop/crystal/supply unlock restricted roles for the run. Those three sources
+        // also reach this path, but only for roles already unlocked.
         foreach (var role in acquisition.AcquiredRoles)
             UnlockRestrictedRoleForRun(role.RoleId);
 
