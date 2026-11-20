@@ -221,7 +221,7 @@
   "Game.Command.Raid.Desc": "管理玩家的任务临时场景",
   "Game.Command.Raid.Leaved": "已离开临时场景!",
   "Game.Command.Raid.Usage": "用法：/raid leave\n\n用法：/raid reset <RaidID> <Level>",
-  "Game.Command.Relic.Desc": "管理玩家的遗器\n主词条可选，副词条可选，但至少存在其中之一\n等级限制：1≤等级≤9999",
+  "Game.Command.Relic.Desc": "管理玩家的遗器\n主词条可选，副词条可选，但至少存在其中之一\n等级限制：1≤等级≤9999\n数量限制：1≤数量≤100",
   "Game.Command.Relic.InvalidMainAffixId": "主词条ID无效",
   "Game.Command.Relic.InvalidSubAffixId": "副词条ID无效",
   "Game.Command.Relic.RelicGiven": "给予玩家 @{0} {1} 个遗器 {2}, 主词条 {3}",
