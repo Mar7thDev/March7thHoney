@@ -71,7 +71,7 @@ public class DatabaseHelper
                 _connString = MySqlConnectionString(db, db.MySqlDatabase);
                 break;
             default:
-                logger.Error("Unsupported database type");
+                logger.Error(I18NManager.Translate("Server.Log.DatabaseTypeUnsupported"));
                 return;
         }
 
@@ -143,7 +143,7 @@ public class DatabaseHelper
         }
         catch (Exception e)
         {
-            logger.Error("WarmupFormatters failed", e);
+            logger.Debug("WarmupFormatters failed", e);
         }
     }
 
@@ -283,7 +283,7 @@ public class DatabaseHelper
                 catch
                 {
                     try { Exec(conn, "ROLLBACK"); }
-                    catch (Exception error) { logger.Error("Transaction rollback failed", error); }
+                    catch (Exception error) { logger.Error(I18NManager.Translate("Server.Log.DatabaseRollbackFailed"), error); }
                     finally { rollback(); }
                     throw;
                 }
@@ -303,7 +303,7 @@ public class DatabaseHelper
             }
             catch (Exception e)
             {
-                logger.Error("An error occurred while saving the database", e);
+                logger.Error(I18NManager.Translate("Server.Log.DatabaseSaveFailed"), e);
             }
         }
     }
@@ -384,7 +384,7 @@ public class DatabaseHelper
             }
             catch (Exception e)
             {
-                logger.Error("An error occurred while saving the database", e);
+                logger.Error(I18NManager.Translate("Server.Log.DatabaseSaveFailed"), e);
                 // Roll back so the pooled connection isn't returned mid-transaction.
                 if (conn != null)
                     try { Exec(conn, "ROLLBACK"); }
@@ -425,7 +425,7 @@ public class DatabaseHelper
             }
             catch (Exception e)
             {
-                logger.Error($"An error occurred while saving gameplay data for uid {uid}", e);
+                logger.Error(I18NManager.Translate("Server.Log.PlayerSaveFailed", uid.ToString()), e);
             }
         }
     }
@@ -500,7 +500,7 @@ public class DatabaseHelper
 
     public void UpgradeDatabase()
     {
-        logger.Info("Upgrading database...");
+        logger.Info(I18NManager.Translate("Server.Log.DatabaseUpgrading"));
         foreach (var instance in GetAllInstance<MissionData>() ?? []) instance.MoveFromOld();
     }
 }

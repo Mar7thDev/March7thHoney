@@ -289,12 +289,12 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         if (report.Changed) MarkDirty();
 
         if (report.Resumed.Count > 0 || report.Closed.Count > 0)
-            Logger.Info($"Repaired stalled mission state for uid {Player.Uid}: " +
+            Logger.Debug($"Repaired stalled mission state for uid {Player.Uid}: " +
                         $"resumed [{string.Join(", ", report.Resumed)}], closed [{string.Join(", ", report.Closed)}]" +
                         (report.RetrackedTo > 0 ? $", tracking -> {report.RetrackedTo}" : ""));
 
         if (report.Stalled.Count > 0)
-            Logger.Warn($"uid {Player.Uid} has {report.Stalled.Count} accepted main mission(s) with no " +
+            Logger.Debug($"uid {Player.Uid} has {report.Stalled.Count} accepted main mission(s) with no " +
                         $"runnable sub-mission left: [{string.Join(", ", report.Stalled)}]. Their sub-mission " +
                         "graph is missing or their gate is unreachable, so they block every successor - " +
                         "restore the graph (Config/Custom/MissionInfoOverride.json or a resource rebuild), " +

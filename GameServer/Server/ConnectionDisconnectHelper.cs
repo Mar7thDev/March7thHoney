@@ -52,11 +52,11 @@ public static class ConnectionDisconnectHelper
             if (completedTask == sendTask)
                 await sendTask;
             else
-                Logger.Warn($"Timed out sending disconnect packet to {connection.RemoteEndPoint}.");
+                Logger.Debug($"Timed out sending disconnect packet to {connection.RemoteEndPoint}.");
         }
         catch (Exception ex)
         {
-            Logger.Warn($"Failed to send disconnect packet to {connection.RemoteEndPoint}.", ex);
+            Logger.Debug($"Failed to send disconnect packet to {connection.RemoteEndPoint}.", ex);
         }
         finally
         {
@@ -73,11 +73,11 @@ public static class ConnectionDisconnectHelper
             if (completedTask == stopTask)
                 await stopTask;
             else
-                Logger.Warn($"Timed out stopping connection {connection.RemoteEndPoint}.");
+                Logger.Debug($"Timed out stopping connection {connection.RemoteEndPoint}.");
         }
         catch (Exception ex)
         {
-            Logger.Warn($"Failed to stop connection {connection.RemoteEndPoint}.", ex);
+            Logger.Debug($"Failed to stop connection {connection.RemoteEndPoint}.", ex);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Data.Common;
+using March7thHoney.Internationalization;
 
 namespace March7thHoney.Database;
 
@@ -22,7 +23,7 @@ internal static class DbSchema
             using var alter = connection.CreateCommand();
             alter.CommandText = "alter table \"" + table + "\" add column \"" + name + "\" " + sql;
             alter.ExecuteNonQuery();
-            DatabaseHelper.logger.Info($"Table {table}: added missing column {name}");
+            DatabaseHelper.logger.Info(I18NManager.Translate("Server.Log.DatabaseColumnAdded", table, name));
         }
     }
 }

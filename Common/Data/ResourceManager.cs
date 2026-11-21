@@ -35,7 +35,7 @@ public class ResourceManager
         var summary = I18NManager.Translate("Server.ServerInfo.PartialConfigMissing", itemName, missingCount.ToString(),
             examplePath);
 
-        Logger.Warn(summary);
+        Logger.Debug(summary);
         Logger.WriteToFile($"[{DateTime.Now:HH:mm:ss}] [ResMgr] WARN {summary}");
         foreach (var file in missingFiles) Logger.WriteToFile(file);
     }
@@ -106,7 +106,7 @@ public class ResourceManager
             if (JToken.DeepEquals(JToken.FromObject(GameData.AdventureModifierData[adventureModifierConfig.Key]),
                     JToken.FromObject(adventureModifierConfig.Value))) continue;
             ResourceCache.IsComplete = false;
-            Logger.Error($"Conflicting shared adventure modifier: {adventureModifierConfig.Key}");
+            Logger.Debug($"Conflicting shared adventure modifier: {adventureModifierConfig.Key}");
         }
     }
 
@@ -172,7 +172,7 @@ public class ResourceManager
                     if (attribute.OptionalFileNames.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
                         .Contains(fileName, StringComparer.Ordinal)) continue;
                     ResourceCache.IsComplete = false;
-                    Logger.Warn(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", fileName,
+                    Logger.Debug(I18NManager.Translate("Server.ServerInfo.FailedToReadItem", fileName,
                         I18NManager.Translate("Word.NotFound")));
                     lock (MissingExcelFiles)
                     {
@@ -356,7 +356,7 @@ public class ResourceManager
         });
 
         if (missingGroupInfos)
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
+            Logger.Debug(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.FloorGroupInfo"),
                 ResourcePaths.Resource("Config/LevelOutput/SharedRuntimeGroup"),
                 I18NManager.Translate("Word.FloorGroupMissingResult")));
@@ -506,7 +506,7 @@ public class ResourceManager
         if (broken.Count == 0) return;
 
         broken.Sort();
-        Logger.Warn($"{broken.Count} main missions reference sub-missions that are not registered and can " +
+        Logger.Debug($"{broken.Count} main missions reference sub-missions that are not registered and can " +
                     "therefore never be completed - their successors will never appear in the mission log. " +
                     "Restore their SubMissionList via Config/Custom/MissionInfoOverride.json or a " +
                     $"MissionInfo_<id>.partial.json. Affected: {string.Join(", ", broken.Take(20))}" +
@@ -565,7 +565,7 @@ public class ResourceManager
             }
             catch (Exception ex)
             {
-                Logger.Warn($"Skipping a banner entry in {file.Name}: {ex.Message}");
+                Logger.Warn(I18NManager.Translate("Server.Log.BannerEntryInvalid", file.Name, ex.Message));
                 continue;
             }
 
@@ -573,9 +573,7 @@ public class ResourceManager
 
             if (banner.GachaType == GachaTypeEnum.Unknown)
             {
-                Logger.Warn($"Banner {banner.GachaId} in {file.Name} has no usable gachaType; skipped. " +
-                            "Valid values: Newbie, Normal, AvatarUp, WeaponUp, " +
-                            "CollaborationAvatarUp, CollaborationWeaponUp.");
+                Logger.Warn(I18NManager.Translate("Server.Log.BannerTypeInvalid", banner.GachaId.ToString(), file.Name));
                 continue;
             }
 
@@ -583,10 +581,8 @@ public class ResourceManager
             // common reason a freshly added event banner "does not show up". Say so instead of silently
             // handing the client a banner it will never render.
             if (!banner.IsActiveAt(now))
-                Logger.Warn(
-                    $"Banner {banner.GachaId} ({banner.GachaType}) is outside its time window " +
-                    $"(beginTime {banner.BeginTime}, endTime {banner.EndTime}, now {now}) and will not be " +
-                    "shown by the client.");
+                Logger.Warn(I18NManager.Translate("Server.Log.BannerOutOfWindow", banner.GachaId.ToString(),
+                    banner.BeginTime.ToString(), banner.EndTime.ToString(), now.ToString()));
 
             config.Banners.Add(banner);
         }
@@ -718,7 +714,7 @@ public class ResourceManager
                 catch (Exception ex)
                 {
                     ResourceCache.IsComplete = false;
-                    Logger.Error($"Failed to resolve shared NPC abilities for {adventure.ID} ({adventure.JsonPath}).", ex);
+                    Logger.Debug($"Failed to resolve shared NPC abilities for {adventure.ID} ({adventure.JsonPath}).", ex);
                 }
                 Interlocked.Increment(ref missingCount);
                 lock (missingFiles)
@@ -930,7 +926,7 @@ public class ResourceManager
         }
 
         if (count < boardList.Count)
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
+            Logger.Debug(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.RogueChestMapInfo"),
                 ResourcePaths.Resource("Config/Gameplays/RogueDLC"),
                 I18NManager.Translate("Word.RogueChestMap")));
@@ -996,7 +992,7 @@ public class ResourceManager
         });
 
         if (count < GameData.AdventurePlayerData.Count)
-            Logger.Warn(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
+            Logger.Debug(I18NManager.Translate("Server.ServerInfo.ConfigMissing",
                 I18NManager.Translate("Word.LocalPlayerCharacterInfo"),
                 ResourcePaths.Resource("Config/ConfigCharacter"),
                 I18NManager.Translate("Word.LocalPlayerCharacter")));

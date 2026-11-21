@@ -37,7 +37,7 @@ dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj -- -
 
 - A missing optional table still loads; a missing required table still warns and prevents a complete cache; a parse error in an optional table that does exist still fails.
 - The report directory holds the load logs, `audit.json` and the isolated test fixtures. The fixtures deliberately trigger missing files and parse errors.
-- `Logger` writes ResMgr/ResCache warnings only to the debug log, so the regression reads them back from `loader-debug.log` in the report directory and counts them in `loader issues` and in the `Warnings` of `audit.json`.
+- ResMgr/ResCache log per-file resource misses and loader diagnostics at debug level, which reaches only the debug log, so the regression reads them back from `loader-debug.log` in the report directory and counts them in `loader issues` and in the `Warnings` of `audit.json`. Their operator-facing warnings arrive through `OnLogEntry` like any other warning.
 - The final production load must produce no warning or error.
 - The full production load and the snapshot round trip.
 

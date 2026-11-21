@@ -201,7 +201,7 @@ public partial class MissionManager
         }
 
         if (sync.MissionList.Count == 0) return;
-        Logger.Info($"Closed stale sub-missions of finished mains for uid {Player.Uid}: {sync.MissionList.Count}");
+        Logger.Debug($"Closed stale sub-missions of finished mains for uid {Player.Uid}: {sync.MissionList.Count}");
         MarkDirty();
         if (sendPacket) await Player.SendPacket(new PacketPlayerSyncScNotify(sync));
     }
@@ -229,7 +229,7 @@ public partial class MissionManager
             }
 
             if (touched) continue;
-            Logger.Info($"Removed scheduled mission {mainId} (module {row.ActivityModuleID} is dark) for uid {Player.Uid}");
+            Logger.Debug($"Removed scheduled mission {mainId} (module {row.ActivityModuleID} is dark) for uid {Player.Uid}");
             await RemoveMainMission(mainId, sendPacket);
         }
     }

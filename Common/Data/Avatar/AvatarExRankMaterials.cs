@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Numerics;
 using March7thHoney.Enums.Item;
 using March7thHoney.Data.Excel;
+using March7thHoney.Internationalization;
 using March7thHoney.Util;
 using Newtonsoft.Json.Linq;
 
@@ -28,18 +29,18 @@ public static class AvatarExRankMaterials
         var path = Path.Combine(ConfigManager.Config.Path.ConfigPath, "Custom", "AvatarExRankMaterials.json");
         if (!File.Exists(path))
         {
-            Logger.Warn($"{path} not found; ExRank materials are disabled.");
+            Logger.Warn(I18NManager.Translate("Server.Log.ExRankConfigMissing", path));
             return;
         }
         try
         {
             ApplyDocument(JObject.Parse(File.ReadAllText(path)));
-            Logger.Info($"Loaded {_materialIds.Count} ExRank materials and {Definitions.Count} ExRank definitions.");
+            Logger.Debug($"Loaded {_materialIds.Count} ExRank materials and {Definitions.Count} ExRank definitions.");
         }
         catch (Exception error)
         {
             // The staged document is applied only after full validation, so a bad file leaves ExRank disabled.
-            Logger.Error($"Invalid {path}; ExRank materials are disabled.", error);
+            Logger.Error(I18NManager.Translate("Server.Log.ExRankConfigInvalid", path), error);
         }
     }
 

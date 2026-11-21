@@ -54,7 +54,7 @@ public partial class AvatarManager
         if (cur == hero.AvatarId && Player.Data.CurBasicType == cur && hasPath) return false;
         if (!hasPath && !hero.EnsurePathInfo(cur)) return false;
 
-        Logger.Warn($"Player {Player.Uid}: Trailblazer current path {hero.AvatarId} retargeted to {cur}");
+        Logger.Debug($"Player {Player.Uid}: Trailblazer current path {hero.AvatarId} retargeted to {cur}");
         hero.AvatarId = cur;
         Player.Data.CurBasicType = cur;
         MarkDirty();

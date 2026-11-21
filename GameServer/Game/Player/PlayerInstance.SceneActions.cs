@@ -156,7 +156,7 @@ public partial class PlayerInstance
         // with no way to tell what happened — report it instead.
         if (floorInfo == null)
         {
-            SceneLogger.Warn($"EnterScene({entryId}) aborted: no floor data for P{entrance.PlaneID}_F{entrance.FloorID}.");
+            SceneLogger.Debug($"EnterScene({entryId}) aborted: no floor data for P{entrance.PlaneID}_F{entrance.FloorID}.");
             return (false, false);
         }
 
@@ -181,7 +181,7 @@ public partial class PlayerInstance
         var anchor = ResolveAnchor(floorInfo, startGroup, startAnchor, true);
         if (anchor == null)
         {
-            SceneLogger.Warn($"EnterScene({entryId}) aborted: no usable anchor on P{entrance.PlaneID}_F{entrance.FloorID} " +
+            SceneLogger.Debug($"EnterScene({entryId}) aborted: no usable anchor on P{entrance.PlaneID}_F{entrance.FloorID} " +
                         $"(group {startGroup}, anchor {startAnchor}).");
             return (false, false);
         }
@@ -247,7 +247,7 @@ public partial class PlayerInstance
         GameData.GetFloorInfo(entrance.PlaneID, entrance.FloorID, out var floorInfo);
         if (floorInfo == null)
         {
-            SceneLogger.Warn(
+            SceneLogger.Debug(
                 $"EnterSceneByEntranceId({entranceId}) aborted: no floor data for P{entrance.PlaneID}_F{entrance.FloorID}.");
             return;
         }
@@ -264,7 +264,7 @@ public partial class PlayerInstance
         var anchor = ResolveAnchor(floorInfo, startGroup, startAnchor, true);
         if (anchor == null)
         {
-            SceneLogger.Warn($"EnterSceneByEntranceId({entranceId}) aborted: no usable anchor on " +
+            SceneLogger.Debug($"EnterSceneByEntranceId({entranceId}) aborted: no usable anchor on " +
                         $"P{entrance.PlaneID}_F{entrance.FloorID} (group {startGroup}, anchor {startAnchor}).");
             return;
         }

@@ -94,6 +94,7 @@ public class EntryPoint
         {
             Logger.Error(
                 I18NManager.Translate("Server.ServerInfo.FailedToLoadItem", I18NManager.Translate("Word.Language")), e);
+            ConfigManager.LogStartupNotices();
             WaitForEnterIfInteractive();
             return StartupFailedExitCode;
         }
@@ -104,6 +105,7 @@ public class EntryPoint
         Logger.Info(I18NManager.Translate("Server.ServerInfo.LoadingItem", I18NManager.Translate("Word.Language")));
         ConfigManager.Logger.Info(
             I18NManager.Translate("Server.ServerInfo.CurrentVersion", GameConstants.GAME_VERSION));
+        ConfigManager.LogStartupNotices();
         // Initialize the database
         Task databaseInitTask;
         try
@@ -314,7 +316,7 @@ public class EntryPoint
         var notificationTask = LifecycleNotifier.NotifyMaintenanceAsync();
         // Stopping a live connection on shutdown can throw (disposed CancellationTokenSource race); never let it skip the save.
         try { March7thHoneyListener.GetSnapshot().ForEach(x => x.Stop()); }
-        catch (Exception e) { Logger.Error("Cleanup: failed to stop connections", e); }
+        catch (Exception e) { Logger.Error(I18NManager.Translate("Server.Log.StopConnectionsFailed"), e); }
         DatabaseHelper.SaveDatabase();
         notificationTask.GetAwaiter().GetResult();
     }

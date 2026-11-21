@@ -6,6 +6,7 @@ using March7thHoney.Database.Account;
 using March7thHoney.Database.Player;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
+using March7thHoney.Internationalization;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Handler;
 using March7thHoney.WebServer.Http;
@@ -176,7 +177,7 @@ public static class ConsoleRoutes
         }
         catch (Exception ex)
         {
-            Logger.Error("Console command execution failed", ex);
+            Logger.Error(I18NManager.Translate("Server.Log.ConsoleCommandFailed"), ex);
             return ConsoleJson(1, "Internal server error.", null, 500);
         }
     }
@@ -201,7 +202,7 @@ public static class ConsoleRoutes
         }
         catch (Exception ex)
         {
-            Logger.Error("Console self-reset failed", ex);
+            Logger.Error(I18NManager.Translate("Server.Log.ConsoleSelfResetFailed"), ex);
             return ConsoleJson(1, "Internal server error.", null, 500);
         }
     }

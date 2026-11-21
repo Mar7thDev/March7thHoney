@@ -1,4 +1,5 @@
 using March7thHoney.Data;
+using March7thHoney.Internationalization;
 using March7thHoney.Util;
 using MemoryPack;
 using Newtonsoft.Json;
@@ -61,7 +62,7 @@ public partial class MainMissionScheduleExcel : ExcelResource
         }
         catch (Exception ex)
         {
-            Logger.Warn("MainMissionSchedule.json could not be loaded; event quests follow their gates only.", ex);
+            Logger.Warn(I18NManager.Translate("Server.Log.MissionScheduleUnavailable"), ex);
         }
     }
 

@@ -256,14 +256,14 @@ public class CommandManager
         }
         catch (Exception e)
         {
-            Logger.Error($"Command {commandName}.{methodName} failed", e);
+            Logger.Error(I18NManager.Translate("Server.Log.CommandFailed", $"{commandName}.{methodName}"), e);
             try
             {
                 await sender.SendMsg(I18NManager.Translate("Game.Command.Notice.InternalError"));
             }
             catch (Exception sendException)
             {
-                Logger.Warn($"Failed to send command error message for {commandName}.{methodName}", sendException);
+                Logger.Debug($"Failed to send command error message for {commandName}.{methodName}", sendException);
             }
         }
     }

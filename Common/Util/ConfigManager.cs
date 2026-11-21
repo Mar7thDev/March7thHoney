@@ -15,13 +15,43 @@ public static class ConfigManager
     public static ConfigContainer Config { get; private set; } = new();
     public static HotfixContainer Hotfix { get; private set; } = new();
 
+    // Set when LoadConfig created Config.json; its admin key is printed by LogStartupNotices.
+    private static bool _configGenerated;
+
     public static void LoadConfig()
     {
         LoadConfigData();
-        if (Config.ServerOption.NetStatus is { Enabled: true } netStatus && !netStatus.TryGetColor(out _))
-            Logger.Warn("ServerOption.NetStatus requires a non-negative LatencyMs and a #RRGGBB Color; signal override is disabled.");
-        WarnIfDefaultPermissionsTooBroad();
         LoadHotfixData();
+    }
+
+    /// <summary>
+    ///     Prints what the owner has to know about the loaded configuration. Called once the language pack is loaded,
+    ///     since <see cref="LoadConfig" /> runs before it; also called when loading the language fails, so a freshly
+    ///     generated admin key is never lost.
+    /// </summary>
+    public static void LogStartupNotices()
+    {
+        if (_configGenerated)
+        {
+            _configGenerated = false;
+            Logger.Info(TranslateOr("Server.Log.ConfigGenerated", $"Generated {ConfigFilePath}.", ConfigFilePath));
+            Logger.Info(TranslateOr("Server.Log.ConfigLanguage", $"Current language: {Config.ServerOption.Language}",
+                Config.ServerOption.Language));
+            Logger.Info(TranslateOr("Server.Log.MuipAdminKey", $"Muipserver Admin key: {Config.MuipServer.AdminKey}",
+                Config.MuipServer.AdminKey));
+        }
+
+        if (Config.ServerOption.NetStatus is { Enabled: true } netStatus && !netStatus.TryGetColor(out _))
+            Logger.Warn(TranslateOr("Server.Log.NetStatusInvalid",
+                "ServerOption.NetStatus requires a non-negative LatencyMs and a #RRGGBB Color; signal override is disabled."));
+        WarnIfDefaultPermissionsTooBroad();
+    }
+
+    // Falls back to English when the language pack is unavailable, so the line keeps its information.
+    private static string TranslateOr(string key, string english, params string[] args)
+    {
+        var text = I18NManager.Translate(key, args);
+        return text == key ? english : text;
     }
 
     /// <summary>
@@ -50,10 +80,11 @@ public static class ConfigManager
         var privileged = GetPrivilegedDefaultPermissions();
         if (privileged.Count == 0) return;
 
-        Logger.Warn(
-            $"ServerOption.DefaultPermissions grants every account [{string.Join(", ", privileged)}]. Any registered " +
-            "player can use these, including taking over or deleting other accounts. Remove them and grant them " +
-            "through PermissionRoles instead.");
+        var list = string.Join(", ", privileged);
+        Logger.Warn(TranslateOr("Server.Log.DefaultPermissionsTooBroad",
+            $"ServerOption.DefaultPermissions grants every account [{list}]. Any registered player can use these, " +
+            "including taking over or deleting other accounts. Remove them and grant them through PermissionRoles instead.",
+            list));
     }
 
     public static void SaveConfig()
@@ -157,8 +188,7 @@ public static class ConfigManager
                 }
             };
 
-            Logger.Info("Current Language is " + Config.ServerOption.Language);
-            Logger.Info("Muipserver Admin key: " + Config.MuipServer.AdminKey);
+            _configGenerated = true;
             SaveData(Config, ConfigFilePath);
         }
 

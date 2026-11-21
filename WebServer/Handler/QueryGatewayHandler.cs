@@ -91,7 +91,7 @@ internal class QueryGatewayHandler
             SetEmptyHotfix(gateServer);
         }
 
-        Logger.Info("Client request: query_gateway");
+        Logger.Debug("Client request: query_gateway");
 
         var bytes = gateServer.ToByteArray();
         Data = Convert.ToBase64String(bytes);
@@ -150,21 +150,21 @@ internal class QueryGatewayHandler
 
                     if (HasHotfixUrl(remoteGateServer)) return remoteGateServer;
 
-                    Logger.Warn($"Remote hotfix returned no URL for {version} (retcode={remoteGateServer.Retcode})");
+                    Logger.Warn(I18NManager.Translate("Server.Log.RemoteHotfixFailed", version, $"retcode {remoteGateServer.Retcode}"));
                 }
                 catch (Exception ex)
                 {
-                    Logger.Warn($"Failed to parse remote hotfix response: {ex.Message}");
+                    Logger.Warn(I18NManager.Translate("Server.Log.RemoteHotfixFailed", version, ex.Message));
                 }
             }
             else
             {
-                Logger.Warn($"Remote hotfix request failed with status: {statusCode}");
+                Logger.Warn(I18NManager.Translate("Server.Log.RemoteHotfixFailed", version, $"HTTP {statusCode}"));
             }
         }
         catch (Exception ex)
         {
-            Logger.Warn($"Remote hotfix fetch failed: {ex.Message}");
+            Logger.Warn(I18NManager.Translate("Server.Log.RemoteHotfixFailed", version, ex.Message));
         }
 
         return null;
@@ -193,11 +193,11 @@ internal class QueryGatewayHandler
                 IfixUrl = remoteGateServer.IfixUrl
             });
             if (changedCount > 0)
-                Logger.Info($"Saved remote hotfix for versions: {string.Join(", ", versions)}");
+                Logger.Info(I18NManager.Translate("Server.Log.RemoteHotfixSaved", string.Join(", ", versions)));
         }
         catch (Exception ex)
         {
-            Logger.Warn($"Failed to persist remote hotfix for {version}: {ex.Message}");
+            Logger.Warn(I18NManager.Translate("Server.Log.RemoteHotfixSaveFailed", version, ex.Message));
         }
     }
 
@@ -215,7 +215,7 @@ internal class QueryGatewayHandler
         }
         else
         {
-            Logger.Warn($"No local hotfix found for version: {req.version}");
+            Logger.Warn(I18NManager.Translate("Server.Log.LocalHotfixMissing", req.version));
         }
     }
 
@@ -278,7 +278,7 @@ internal class QueryGatewayHandler
 
             if (statusCode != 200 || string.IsNullOrWhiteSpace(response))
             {
-                Logger.Warn($"Remote dispatch request failed with status: {statusCode}, use fallback gateway");
+                Logger.Warn(I18NManager.Translate("Server.Log.RemoteDispatchFallback", $"HTTP {statusCode}"));
                 return fallback;
             }
 
@@ -286,7 +286,7 @@ internal class QueryGatewayHandler
             var region = SelectPreferredRegion(dispatch, version);
             if (region == null || string.IsNullOrWhiteSpace(region.DispatchUrl))
             {
-                Logger.Warn("Remote dispatch returned no usable gateway, use fallback gateway");
+                Logger.Warn(I18NManager.Translate("Server.Log.RemoteDispatchFallback", "no usable gateway"));
                 return fallback;
             }
 
@@ -295,7 +295,7 @@ internal class QueryGatewayHandler
         }
         catch (Exception ex)
         {
-            Logger.Warn($"Remote dispatch lookup failed: {ex.Message}; use fallback gateway");
+            Logger.Warn(I18NManager.Translate("Server.Log.RemoteDispatchFallback", ex.Message));
             return fallback;
         }
     }

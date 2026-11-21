@@ -43,9 +43,7 @@ public static class GameDataStartup
             {
                 // A single unparseable record anywhere in the tree clears IsComplete; say why no cache appears, or
                 // every later boot re-reads the raw tree without the operator knowing.
-                Logger.Warn(
-                    "Resource cache NOT written: one or more resources failed to load (see the errors above). " +
-                    "Fix them and restart, or the server will re-read the raw resource tree on every boot.");
+                Logger.Warn(I18NManager.Translate("Server.Log.CacheNotWritten"));
             }
 
             // Keep version-specific runtime overlays out of newly generated caches.

@@ -39,7 +39,7 @@ internal static class UnhandledRequestResponder
         {
             // A type that fails to load (trimmed publish) must not take down the receive loop; the fallback
             // replies are disabled instead.
-            Logger.Warn($"Proto type map unavailable, fallback replies disabled: {e.Message}");
+            Logger.Debug($"Proto type map unavailable, fallback replies disabled: {e.Message}");
             return new Dictionary<string, Type>(StringComparer.Ordinal);
         }
     });

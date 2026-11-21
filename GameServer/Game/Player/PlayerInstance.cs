@@ -408,7 +408,7 @@ public partial class PlayerInstance(PlayerData data)
     {
         if (StoryLineManager?.StoryLineData.CurStoryLineId > 0)
         {
-            SceneLogger.Info($"Player {Uid}: location reset on login skipped while story line " +
+            SceneLogger.Debug($"Player {Uid}: location reset on login skipped while story line " +
                              $"{StoryLineManager.StoryLineData.CurStoryLineId} is active.");
             return;
         }
@@ -418,7 +418,7 @@ public partial class PlayerInstance(PlayerData data)
         ChallengeTierceManager?.ClearInstance();
 
         if (!TryPlaceAtEntrance(DefaultSpawnEntryId))
-            SceneLogger.Warn($"Player {Uid}: location reset on login failed, default spawn {DefaultSpawnEntryId} is unusable.");
+            SceneLogger.Debug($"Player {Uid}: location reset on login failed, default spawn {DefaultSpawnEntryId} is unusable.");
     }
 
     public async ValueTask TrySendWelcomeAnnounce()

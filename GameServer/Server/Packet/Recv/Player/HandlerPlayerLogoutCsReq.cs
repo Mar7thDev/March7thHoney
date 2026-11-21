@@ -11,7 +11,7 @@ public class HandlerPlayerLogoutCsReq : PlayerHandler
     protected override async Task OnHandle(Connection connection, PlayerInstance player)
     {
         var uid = player?.Uid.ToString() ?? "<none>";
-        _logger.Info($"Player logout requested. remote={connection.RemoteEndPoint} uid={uid}");
+        _logger.Debug($"Player logout requested. remote={connection.RemoteEndPoint} uid={uid}");
 
         // TODO: the connection is closed without March7thHoneyListener.SendDisconnectPacket. That call was dropped while
         // the server ran over TCP; decide whether a KCP client should get the disconnect packet again.

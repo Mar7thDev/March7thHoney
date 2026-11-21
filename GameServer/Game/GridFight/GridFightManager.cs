@@ -10,6 +10,7 @@ using March7thHoney.GameServer.Game.GridFight.Battle;
 using March7thHoney.GameServer.Game.GridFight.Persistence;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
+using March7thHoney.Internationalization;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 
@@ -82,7 +83,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         catch (Exception e)
         {
             // Keep the previous blob: a failed capture must never break the request that triggered it.
-            Logger.Error($"Saving the GridFight run of uid {Player.Uid} failed", e);
+            Logger.Error(I18NManager.Translate("Server.Log.GridFightSaveFailed", Player.Uid.ToString()), e);
         }
     }
 
@@ -104,7 +105,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         catch (Exception e)
         {
             // A blob that no longer fits this build or resource cache is dropped instead of crashing the login.
-            Logger.Warn($"Dropping the saved GridFight run of uid {Player.Uid}: {e.Message}");
+            Logger.Warn(I18NManager.Translate("Server.Log.GridFightRunDropped", Player.Uid.ToString(), e.Message));
             Session = null;
             _data.RunInstance = null;
             DatabaseHelper.MarkDirty(Player.Uid);
@@ -121,7 +122,7 @@ public sealed partial class GridFightManager : BasePlayerManager
             // so the run is closed here like EndBattle would after its settle notify.
             if (settlement.Success && (settlement.Defeated || !settlement.RouteAdvanced))
             {
-                Logger.Info($"The saved GridFight run of uid {Player.Uid} ended with its interrupted battle.");
+                Logger.Debug($"The saved GridFight run of uid {Player.Uid} ended with its interrupted battle.");
                 ClearSession(settled: true);
             }
             Persist();

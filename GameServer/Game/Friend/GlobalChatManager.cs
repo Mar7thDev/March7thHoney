@@ -89,7 +89,7 @@ public static class GlobalChatManager
         foreach (var recipient in recipients.Prepend(sender).DistinctBy(player => player.Uid))
             await DeliverAsync(recipient, globalUid, relay, sendTime, maxHistory);
 
-        Logger.Info($"{sender.Uid}: {text}");
+        Logger.Debug($"{sender.Uid}: {text}");
         QueueWebhook(relay);
         return GlobalChatRelayResultEnum.Relayed;
     }
@@ -161,7 +161,7 @@ public static class GlobalChatManager
         catch (Exception e)
         {
             // One broken session must not stop the relay to everyone else.
-            Logger.Warn($"Failed to deliver a global chat message to {recipient.Uid}", e);
+            Logger.Debug($"Failed to deliver a global chat message to {recipient.Uid}", e);
         }
     }
 
@@ -178,7 +178,7 @@ public static class GlobalChatManager
         if (!Uri.TryCreate(url.Trim(), UriKind.Absolute, out var uri) || (uri.Scheme != Uri.UriSchemeHttps &&
                                                                          uri.Scheme != Uri.UriSchemeHttp))
         {
-            Logger.Warn("GlobalChat.Webhook is not an absolute http(s) URL; the message was not forwarded.");
+            Logger.Warn(I18NManager.Translate("Server.Log.GlobalChatWebhookInvalid"));
             return;
         }
 
@@ -201,11 +201,11 @@ public static class GlobalChatManager
             using var body = new StringContent(payload, Encoding.UTF8, "application/json");
             using var response = await WebhookClient.PostAsync(uri, body).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
-                Logger.Warn($"Global chat webhook rejected the message: HTTP {(int)response.StatusCode}");
+                Logger.Warn(I18NManager.Translate("Server.Log.GlobalChatWebhookRejected", ((int)response.StatusCode).ToString()));
         }
         catch (Exception e)
         {
-            Logger.Warn("Global chat webhook request failed", e);
+            Logger.Warn(I18NManager.Translate("Server.Log.GlobalChatWebhookFailed"), e);
         }
     }
 }

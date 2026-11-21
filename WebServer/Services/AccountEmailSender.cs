@@ -3,6 +3,7 @@ using MailKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using March7thHoney.Database.Account;
+using March7thHoney.Internationalization;
 using March7thHoney.Util;
 using MimeKit;
 
@@ -52,13 +53,13 @@ internal static class AccountEmailSender
             string.IsNullOrWhiteSpace(smtp.Host) ||
             string.IsNullOrWhiteSpace(smtp.FromAddress))
         {
-            Logger.Warn("Email sending is not configured completely. Host, FromAddress, and recipient are required.");
+            Logger.Warn(I18NManager.Translate("Server.Log.EmailConfigIncomplete"));
             return false;
         }
 
         if (!string.IsNullOrWhiteSpace(smtp.Username) && string.IsNullOrWhiteSpace(smtp.Password))
         {
-            Logger.Warn("Email sending is not configured completely. SMTP password is required when SMTP username is set.");
+            Logger.Warn(I18NManager.Translate("Server.Log.EmailPasswordMissing"));
             return false;
         }
 
@@ -87,7 +88,7 @@ internal static class AccountEmailSender
         }
         catch (Exception ex)
         {
-            Logger.Warn($"Failed to send email to {to}: {ex.Message}");
+            Logger.Warn(I18NManager.Translate("Server.Log.EmailSendFailed", to, ex.Message));
             return false;
         }
     }
@@ -103,7 +104,7 @@ internal static class AccountEmailSender
     private static bool IsEnabled()
     {
         if (ConfigManager.Config.ServerOption.Auth.Email.Enabled) return true;
-        Logger.Warn("Email sending is disabled. Configure ServerOption.Auth.Email to send verification and reset emails.");
+        Logger.Warn(I18NManager.Translate("Server.Log.EmailDisabled"));
         return false;
     }
 
@@ -131,8 +132,7 @@ internal static class AccountEmailSender
         var baseUrl = ResolvePublicBaseUrl(ConfigManager.Config.ServerOption.Auth.Email.PublicBaseUrl);
         if (baseUrl == null)
         {
-            Logger.Error("ServerOption.Auth.Email.PublicBaseUrl must be the server's public http(s) address " +
-                         "(for example https://sr.example.com). Refusing to send account emails until it is set.");
+            Logger.Error(I18NManager.Translate("Server.Log.EmailPublicBaseUrlInvalid"));
             return null;
         }
 

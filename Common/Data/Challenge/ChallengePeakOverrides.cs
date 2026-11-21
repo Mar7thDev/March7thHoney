@@ -1,3 +1,5 @@
+using March7thHoney.Util;
+
 namespace March7thHoney.Data.Challenge;
 
 /// <summary>
@@ -11,6 +13,8 @@ namespace March7thHoney.Data.Challenge;
 /// </remarks>
 public static class ChallengePeakOverrides
 {
+    private static readonly Logger Logger = new("ChallengePeak");
+
     public static void Apply()
     {
         foreach (var level in GameData.ChallengePeakConfigData.Values)
@@ -24,7 +28,7 @@ public static class ChallengePeakOverrides
         if (!GameData.FloorInfoData.IsEmpty)
             foreach (var derived in ChallengePeakMapResolver.Derive(GameData.ChallengePeakOverrideConfig.ChallengePeak))
             {
-                ResourceManager.Logger.Info(
+                Logger.Debug(
                     $"ChallengePeak season {derived.GroupId} has no entry in ChallengePeak.json; derived from the " +
                     $"resources: map entrance {derived.MapEntranceId} (floor {derived.FloorId}), knight group " +
                     $"{derived.KnightMazeGroupId}, king group {derived.KingMazeGroupId}.");

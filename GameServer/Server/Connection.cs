@@ -4,6 +4,7 @@ using March7thHoney.Database;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.ClientLua;
 using March7thHoney.GameServer.Server.Packet;
+using March7thHoney.Internationalization;
 using March7thHoney.Kcp;
 using March7thHoney.Kcp.KcpSharp;
 using March7thHoney.Util;
@@ -29,7 +30,7 @@ public class Connection : March7thHoneyConnection
 
     public override async void Start()
     {
-        Logger.Info($"New connection from {RemoteEndPoint}.");
+        Logger.Debug($"New connection from {RemoteEndPoint}.");
         State = SessionStateEnum.WAITING_FOR_TOKEN;
         await ReceiveLoop();
     }
@@ -78,7 +79,7 @@ public class Connection : March7thHoneyConnection
                     // So we don't need to check for result.TransportClosed.
                     if (!Conversation.TryReceive(buffer, out result))
                     {
-                        Logger.Error("Failed to receive packet");
+                        Logger.Debug("Failed to receive packet");
                         break;
                     }
 
@@ -86,7 +87,7 @@ public class Connection : March7thHoneyConnection
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error("Packet parse error", ex);
+                    Logger.Debug("Packet parse error", ex);
                 }
                 finally
                 {
@@ -96,7 +97,7 @@ public class Connection : March7thHoneyConnection
         }
         catch (Exception ex)
         {
-            Logger.Error("Connection receive loop crashed", ex);
+            Logger.Error(I18NManager.Translate("Server.Log.ConnectionCrashed", RemoteEndPoint.ToString()), ex);
         }
 
         Stop();
@@ -122,11 +123,11 @@ public class Connection : March7thHoneyConnection
                 await HandlePacket(frame.CmdId, frame.Head, frame.Body);
             }
 
-            if (error != null) Logger.Error(error);
+            if (error != null) Logger.Debug(error);
         }
         catch (Exception e)
         {
-            Logger.Error(e.Message, e);
+            Logger.Debug(e.Message, e);
         }
     }
 
@@ -170,7 +171,7 @@ public class Connection : March7thHoneyConnection
         }
         catch (Exception e)
         {
-            Logger.Error("An error occured ", e);
+            Logger.Error(I18NManager.Translate("Server.Log.PacketHandlerFailed", LogMap.GetValueOrDefault(opcode, opcode.ToString())), e);
             await UnhandledRequestResponder.SendRetFailAsync(this, opcode, payload);
         }
     }

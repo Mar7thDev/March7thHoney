@@ -39,7 +39,7 @@ public class RaidManager(PlayerInstance player) : BasePlayerManager<RaidData>(pl
         {
             // The raid no longer exists in this version's tables, so LeaveRaid could never release the player:
             // abandon the run and return to where it was entered from instead of resuming a dead session.
-            Logger.Warn($"Player {Player.Uid} logged in inside raid {record.RaidId} (world level {record.WorldLevel}) " +
+            Logger.Debug($"Player {Player.Uid} logged in inside raid {record.RaidId} (world level {record.WorldLevel}) " +
                         "that has no RaidConfig; abandoning the run.");
             await AbandonCurrentRun(true);
             record = null;

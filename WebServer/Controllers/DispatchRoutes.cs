@@ -190,7 +190,7 @@ public static class DispatchRoutes
             });
         }
 
-        Logger.Info("Client request: query_dispatch");
+        Logger.Debug("Client request: query_dispatch");
 
         var bytes = data.ToByteArray();
         var b64 = Convert.ToBase64String(bytes);

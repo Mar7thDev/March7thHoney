@@ -24,7 +24,7 @@ public class Crypto
         }
         catch (Exception e)
         {
-            Logger.Error("Crypto error.", e);
+            Logger.Debug("Crypto error.", e);
         }
     }
 
@@ -71,7 +71,7 @@ public class Crypto
         }
         catch (Exception ex)
         {
-            Logger.Error($"An error occurred while loading the Client Secret Key：{ex}");
+            Logger.Error(I18NManager.Translate("Server.Log.ClientSecretKeyLoadFailed"), ex);
             return null;
         }
     }

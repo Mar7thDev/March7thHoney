@@ -29,8 +29,8 @@ config.Path.LogPath = reportRoot;
 config.ServerOption.Language = "EN";
 config.ServerOption.UseCache = false;
 Logger.SetLogFile(new FileInfo(Path.Combine(reportRoot, "loader.log")));
-// Logger keeps ResMgr/ResCache warnings out of the console, the main log and OnLogEntry: they only reach the debug
-// log, so they are read back from there.
+// Per-file resource misses and loader diagnostics are logged by ResMgr/ResCache at debug level, so they only reach
+// the debug log and are read back from there; operator-facing warnings arrive through OnLogEntry.
 var debugLog = new FileInfo(Path.Combine(reportRoot, "loader-debug.log"));
 Logger.SetDebugLogFile(debugLog);
 var warningsRead = 0;
@@ -39,8 +39,8 @@ List<string> NewLoaderWarnings()
     debugLog.Refresh();
     if (!debugLog.Exists) return [];
     var warnings = File.ReadAllLines(debugLog.FullName)
-        .Where(line => line.Contains("][ResMgr][WARN] ", StringComparison.Ordinal) ||
-                       line.Contains("][ResCache][WARN] ", StringComparison.Ordinal))
+        .Where(line => line.Contains("][ResMgr][DEBUG] ", StringComparison.Ordinal) ||
+                       line.Contains("][ResCache][DEBUG] ", StringComparison.Ordinal))
         .ToList();
     var fresh = warnings.Skip(warningsRead).ToList();
     warningsRead = warnings.Count;

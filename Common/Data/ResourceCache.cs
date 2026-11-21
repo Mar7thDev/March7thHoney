@@ -100,7 +100,7 @@ public static class ResourceCache
     ///     deployments that intentionally ship a cache without the raw resources keep working.
     /// </param>
     /// <param name="IsStale">True when the loaded data shows the cache predates the change.</param>
-    /// <param name="Reason">What is missing, logged after "Resource cache is stale: ".</param>
+    /// <param name="Reason">What is missing; logged through the Server.Log.CacheStale language key.</param>
     private sealed record StaleCacheRule(string? RawTable, Func<bool> IsStale, string Reason);
 
     // Checked in order; the first stale rule rejects the cache.
@@ -169,7 +169,7 @@ public static class ResourceCache
             if (rule.RawTable != null && ResourcePaths.FindExcel(rule.RawTable) == null) continue;
             if (!rule.IsStale()) continue;
 
-            Logger.Warn($"Resource cache is stale: {rule.Reason}");
+            Logger.Warn(I18NManager.Translate("Server.Log.CacheStale", rule.Reason.TrimEnd('.')));
             return false;
         }
 

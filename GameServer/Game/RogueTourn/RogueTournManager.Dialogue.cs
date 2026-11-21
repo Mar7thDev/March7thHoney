@@ -45,7 +45,7 @@ public partial class RogueTournManager
             return dialogue;
         }
 
-        Logger.Warn($"Event room {room.RoomId} found no usable dialogue in the authored pool");
+        Logger.Debug($"Event room {room.RoomId} found no usable dialogue in the authored pool");
         return null;
     }
 

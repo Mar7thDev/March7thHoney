@@ -136,7 +136,7 @@ public partial class RogueTournManager
             .ToList();
         if (pool.Count == 0)
         {
-            Logger.Info($"Blessing draft skipped: the {(RogueTournModeEnum)run.TournMode} pool has nothing left");
+            Logger.Debug($"Blessing draft skipped: the {(RogueTournModeEnum)run.TournMode} pool has nothing left");
             return;
         }
 
@@ -201,7 +201,7 @@ public partial class RogueTournManager
                     policy.MiracleCount > 0 ? policy.MiracleCount : MiracleChoiceCount);
                 break;
             default:
-                Logger.Warn($"Unknown cleared-room draft '{name}' in the room plan, skipped");
+                Logger.Debug($"Unknown cleared-room draft '{name}' in the room plan, skipped");
                 return false;
         }
 
@@ -248,7 +248,7 @@ public partial class RogueTournManager
 
         if (targets.Count == 0)
         {
-            Logger.Info($"Room chooser has no candidate (layer {run.CurLayerIndex})");
+            Logger.Debug($"Room chooser has no candidate (layer {run.CurLayerIndex})");
             return;
         }
 

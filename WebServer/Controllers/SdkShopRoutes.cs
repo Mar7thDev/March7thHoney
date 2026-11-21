@@ -133,7 +133,7 @@ public static class SdkShopRoutes
         var player = await ResolvePlayer(ctx, request);
         if (player?.InventoryManager == null)
         {
-            Logger.Warn($"createOrder has no authenticated online player. {request.Describe()}");
+            Logger.Debug($"createOrder has no authenticated online player. {request.Describe()}");
             await Json(ctx, PayAborted());
             return;
         }
@@ -141,7 +141,7 @@ public static class SdkShopRoutes
         var product = ResolveProduct(request);
         if (product == null)
         {
-            Logger.Warn($"createOrder did not match any recharge tier. {request.Describe()}");
+            Logger.Debug($"createOrder did not match any recharge tier. {request.Describe()}");
             await Json(ctx, PayAborted());
             return;
         }
@@ -149,7 +149,7 @@ public static class SdkShopRoutes
         var result = await RechargeService.Purchase(player, product);
         if (result != RechargeResult.Granted)
         {
-            Logger.Info($"createOrder refused ({result}), gift type {product.GiftType}, product={product.ProductID}");
+            Logger.Debug($"createOrder refused ({result}), gift type {product.GiftType}, product={product.ProductID}");
             await Json(ctx, PayAborted());
             return;
         }
@@ -183,7 +183,7 @@ public static class SdkShopRoutes
 
         if (!await IsAccountToken(ctx, uid, token))
         {
-            Logger.Warn($"createOrder rejected an invalid token. uid={uid} token_len={token.Length}");
+            Logger.Debug($"createOrder rejected an invalid token. uid={uid} token_len={token.Length}");
             return null;
         }
 

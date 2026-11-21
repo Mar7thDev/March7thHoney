@@ -8,6 +8,7 @@ using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Inventory;
 using March7thHoney.GameServer.Game.Sync;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
+using March7thHoney.Internationalization;
 using March7thHoney.Proto;
 using March7thHoney.Util;
 
@@ -326,7 +327,7 @@ public partial class AvatarManager
             }
             catch (Exception error)
             {
-                ExRankLogger.Error($"Could not activate ExRank {exRankId} for UID {Player.Uid}", error);
+                ExRankLogger.Error(I18NManager.Translate("Server.Log.ExRankActivateFailed", exRankId.ToString(), Player.Uid.ToString()), error);
                 return Retcode.RetSystemBusy;
             }
             // Bind the newly committed sidecar before building PlayerSync's path field 8.

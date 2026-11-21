@@ -48,7 +48,7 @@ public static class RechargeService
         await player.SendPacket(new PacketRechargeSuccNotify(product.ProductID, rewards,
             MonthCardService.GetMonthCardOutDateTime(player.Data)));
 
-        Logger.Info($"Recharge granted. uid={player.Uid} product={product.ProductID} shards={total}");
+        Logger.Debug($"Recharge granted. uid={player.Uid} product={product.ProductID} shards={total}");
         return RechargeResult.Granted;
     }
 
@@ -59,7 +59,7 @@ public static class RechargeService
         if (!ConfigManager.Config.ServerOption.EnableMonthCard) return RechargeResult.Disabled;
         if (!MonthCardService.TryExtend(player.Data, out var outDateTime))
         {
-            Logger.Warn($"Supply pass purchase refused, {MonthCardService.GetRemainingDays(player.Data)} day(s) left. " +
+            Logger.Debug($"Supply pass purchase refused, {MonthCardService.GetRemainingDays(player.Data)} day(s) left. " +
                         $"uid={player.Uid} product={product.ProductID}");
             return RechargeResult.MonthCardLimit;
         }
@@ -77,7 +77,7 @@ public static class RechargeService
             await player.SendPacket(new PacketMonthCardRewardNotify([daily]));
         }
 
-        Logger.Info($"Supply pass granted. uid={player.Uid} product={product.ProductID} " +
+        Logger.Debug($"Supply pass granted. uid={player.Uid} product={product.ProductID} " +
                     $"until={DateTimeOffset.FromUnixTimeSeconds(outDateTime):u}");
         return RechargeResult.Granted;
     }

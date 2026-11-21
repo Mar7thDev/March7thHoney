@@ -86,7 +86,7 @@ public class March7thHoneyListener
         if (removed)
         {
             Multiplex?.UnregisterConversation(convId);
-            Logger.Info($"Connection with {con.RemoteEndPoint} has been closed");
+            Logger.Debug($"Connection with {con.RemoteEndPoint} has been closed");
         }
     }
 
@@ -108,7 +108,7 @@ public class March7thHoneyListener
                 case HandshakeConnectCodeAlt:
                     if (con != null)
                     {
-                        Logger.Info($"Duplicate handshake from {con.RemoteEndPoint}");
+                        Logger.Debug($"Duplicate handshake from {con.RemoteEndPoint}");
                         return;
                     }
 
@@ -117,20 +117,20 @@ public class March7thHoneyListener
                 case HandshakeDisconnectCode:
                     if (con == null)
                     {
-                        Logger.Info($"Inexistent connection asked for disconnect from {rcv.RemoteEndPoint}");
+                        Logger.Debug($"Inexistent connection asked for disconnect from {rcv.RemoteEndPoint}");
                         return;
                     }
 
                     await SendDisconnectPacket(con, ClientDisconnectReasonCode);
                     break;
                 default:
-                    Logger.Error($"Invalid handshake code received {code}");
+                    Logger.Debug($"Invalid handshake code received {code}");
                     return;
             }
         }
         catch (Exception ex)
         {
-            Logger.Error($"Failed to handle handshake: {ex}");
+            Logger.Debug($"Failed to handle handshake: {ex}");
         }
     }
 
@@ -177,7 +177,7 @@ public class March7thHoneyListener
             }
         }
 
-        Logger.Info($"Accepting game handshake from {rcv.RemoteEndPoint}. conv_id={convId} enet={enet}");
+        Logger.Debug($"Accepting game handshake from {rcv.RemoteEndPoint}. conv_id={convId} enet={enet}");
         await SendHandshakeResponse(con, enet);
     }
 

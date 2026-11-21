@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Net;
+using March7thHoney.Internationalization;
 using March7thHoney.Kcp.KcpSharp;
 using March7thHoney.Util;
 
@@ -48,7 +49,7 @@ public class March7thHoneyConnection
     /// </summary>
     public virtual void Start()
     {
-        Logger.Info($"New connection from {RemoteEndPoint}.");
+        Logger.Debug($"New connection from {RemoteEndPoint}.");
         State = SessionStateEnum.WAITING_FOR_TOKEN;
     }
 
@@ -151,11 +152,10 @@ public class March7thHoneyConnection
             // A dropped scene notification can leave the client stuck on the teleport loading screen.
             var name = cmdId != 0 ? LogMap.GetValueOrDefault(cmdId, cmdId.ToString()) : "<raw>";
             if (packet.Length > MaxPacketBytes)
-                Logger.Error(
-                    $"Dropped {name} ({packet.Length} bytes): over the {MaxPacketBytes}-byte KCP message limit. " +
-                    "The client will wait forever for this response.", e);
+                Logger.Error(I18NManager.Translate("Server.Log.PacketTooLarge", name, packet.Length.ToString(),
+                    MaxPacketBytes.ToString()), e);
             else
-                Logger.Error($"Failed to send {name} ({packet.Length} bytes)", e);
+                Logger.Debug($"Failed to send {name} ({packet.Length} bytes)", e);
         }
     }
 

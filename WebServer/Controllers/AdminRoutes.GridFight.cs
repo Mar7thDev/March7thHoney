@@ -129,7 +129,7 @@ public static partial class AdminRoutes
         }
         catch (Exception ex)
         {
-            GridFightLogger.Warn($"Failed to read {path}: {ex.Message}");
+            GridFightLogger.Debug($"Failed to read {path}: {ex.Message}");
         }
 
         return _gridFightNames = empty;

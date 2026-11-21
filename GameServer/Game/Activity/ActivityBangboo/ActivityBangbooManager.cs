@@ -116,7 +116,7 @@ public class ActivityBangbooManager(PlayerInstance player) : BasePlayerComponent
             }
             catch (InvalidProtocolBufferException e)
             {
-                Logger.Warn($"uid {Player.Uid}: the saved Infinity archive of hole {run.HoleId} does not parse; sent without it.", e);
+                Logger.Debug($"uid {Player.Uid}: the saved Infinity archive of hole {run.HoleId} does not parse; sent without it.", e);
             }
 
         return proto;

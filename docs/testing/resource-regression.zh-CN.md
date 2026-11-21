@@ -37,7 +37,7 @@ dotnet run --project scripts/GridFightRegression/GridFightRegression.csproj -- -
 
 - 可选表缺失仍可加载；必需表缺失仍会告警并禁止生成完整缓存；已存在的可选表解析出错仍判定失败。
 - 报告目录保存加载日志、`audit.json` 和隔离测试夹具。夹具故意触发缺文件和解析错误。
-- `Logger` 只把 ResMgr/ResCache 的告警写入调试日志，因此回归从报告目录的 `loader-debug.log` 读回这些告警，并计入 `loader issues` 和 `audit.json` 的 `Warnings`。
+- ResMgr/ResCache 以调试级别记录单个资源文件缺失和加载诊断，这些只写入调试日志，因此回归从报告目录的 `loader-debug.log` 读回它们，并计入 `loader issues` 和 `audit.json` 的 `Warnings`。面向服主的告警与其他告警一样经由 `OnLogEntry` 送达。
 - 最终的生产资源加载阶段不得产生任何警告或错误。
 - 完整的生产加载和快照往返。
 

@@ -12,6 +12,7 @@ using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
 using March7thHoney.GameServer.Server;
+using March7thHoney.Internationalization;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Response;
 using March7thHoney.WebServer.Services;
@@ -241,7 +242,7 @@ public static class MuipManager
         if (handler == null)
             return new CommandResult(5, "Command handler is not initialized!", "");
 
-        logger.Info($"SessionId: {session.SessionId}, UID: {targetUid}, ExecuteCommand: {command}");
+        logger.Info(I18NManager.Translate("Server.Log.MuipCommand", session.SessionId, targetUid.ToString(), command));
         var output = new StringBuilder();
         var sender = new MuipCommandSender(session, msg =>
         {
