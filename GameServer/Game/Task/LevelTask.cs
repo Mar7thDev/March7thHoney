@@ -7,6 +7,7 @@ using March7thHoney.Data.Excel;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Scene;
 using March7thHoney.Enums.Task;
+using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene.Entity;
 using March7thHoney.Proto;
@@ -390,29 +391,8 @@ public class LevelTask(PlayerInstance player)
 
         if (subMission.SubMissionInfo?.FinishType == MissionFinishTypeEnum.GetTrialAvatarList)
         {
-            List<int> list = [.. subMission.SubMissionInfo.ParamIntList ?? []];
-
-            if (list.Count > 0)
-            {
-                if (Player.Data.CurrentGender == Gender.Man)
-                {
-                    foreach (var avatar in subMission.SubMissionInfo?.ParamIntList ?? [])
-                        if (avatar > 10000) // else is Base Avatar
-                            if (avatar.ToString().EndsWith("8002") ||
-                                avatar.ToString().EndsWith("8004") ||
-                                avatar.ToString().EndsWith("8006"))
-                                list.Remove(avatar);
-                }
-                else
-                {
-                    foreach (var avatar in subMission.SubMissionInfo?.ParamIntList ?? [])
-                        if (avatar > 10000) // else is Base Avatar
-                            if (avatar.ToString().EndsWith("8001") ||
-                                avatar.ToString().EndsWith("8003") ||
-                                avatar.ToString().EndsWith("8005"))
-                                list.Remove(avatar);
-                }
-            }
+            var list = TrailblazerAvatar.ExcludeOppositeGenderTrials(subMission.SubMissionInfo.ParamIntList ?? [],
+                Player.Data.CurrentGender, TrailblazerAvatar.AvatarIdFromTrialDigits);
 
             foreach (var x in list)
                 await Player.LineupManager!.AddAvatarToCurTeam(x);

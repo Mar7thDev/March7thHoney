@@ -9,6 +9,7 @@ using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Lineup;
 using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Quest;
+using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
@@ -361,8 +362,9 @@ public class LineupManager : BasePlayerManager<LineupData>
             {
                 // Fall back to the male Trailblazer only when avatarId is not a valid avatar, so that the female
                 // Trailblazer and other Trailblazer paths are not forced to 8001.
-                if (baseAvatarId > 8000 && !GameData.AvatarConfigData.ContainsKey(baseAvatarId))
-                    baseAvatarId = 8001;
+                if (baseAvatarId >= TrailblazerAvatar.BaseAvatarId &&
+                    !GameData.AvatarConfigData.ContainsKey(baseAvatarId))
+                    baseAvatarId = TrailblazerAvatar.BaseAvatarId;
             }
 
             lineup = new LineupInfo
@@ -397,8 +399,9 @@ public class LineupManager : BasePlayerManager<LineupData>
             {
                 // Fall back to the male Trailblazer only when avatarId is not a valid avatar, so that the female
                 // Trailblazer and other Trailblazer paths are not forced to 8001.
-                if (baseAvatarId > 8000 && !GameData.AvatarConfigData.ContainsKey(baseAvatarId))
-                    baseAvatarId = 8001;
+                if (baseAvatarId >= TrailblazerAvatar.BaseAvatarId &&
+                    !GameData.AvatarConfigData.ContainsKey(baseAvatarId))
+                    baseAvatarId = TrailblazerAvatar.BaseAvatarId;
             }
 
             lineup.BaseAvatars?.Add(new LineupAvatarInfo
@@ -480,7 +483,7 @@ public class LineupManager : BasePlayerManager<LineupData>
             { BaseAvatarId = trial.BaseAvatarId, SpecialAvatarId = trial.SpecialAvatarId };
         // A Trailblazer-path trial replaces the hero in their own slot. Appending it shifted the
         // party and opened the fight on the wrong character.
-        var hero = IsTrailblazerPath(trial.AvatarId)
+        var hero = TrailblazerAvatar.IsPath(trial.AvatarId)
             ? members.FindIndex(IsOwnedTrailblazer)
             : -1;
         if (hero >= 0)
@@ -546,8 +549,8 @@ public class LineupManager : BasePlayerManager<LineupData>
 
         foreach (var path in GameData.MultiplePathAvatarConfigData.Values.OrderBy(path => path.AvatarID))
         {
-            if (path.BaseAvatarID != 8001 || path.UnlockConditions.Count == 0) continue;
-            if (PlayerInstance.NormalizeHeroPathId(path.AvatarID, Player.Data.CurrentGender) != path.AvatarID)
+            if (path.BaseAvatarID != TrailblazerAvatar.BaseAvatarId || path.UnlockConditions.Count == 0) continue;
+            if (TrailblazerAvatar.NormalizePathId(path.AvatarID, Player.Data.CurrentGender) != path.AvatarID)
                 continue;
             if (!UnlockConditionInChain(path.UnlockConditions, chain)) continue;
             var specialId = 1_000_000 + path.AvatarID;
@@ -573,15 +576,11 @@ public class LineupManager : BasePlayerManager<LineupData>
         return false;
     }
 
-    private static bool IsTrailblazerPath(int avatarId)
-    {
-        return GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var path) &&
-               path.BaseAvatarID == 8001;
-    }
-
     private static bool IsOwnedTrailblazer(LineupAvatarInfo slot)
     {
-        return slot.SpecialAvatarId == 0 && (slot.BaseAvatarId is 8001 or 8002 || IsTrailblazerPath(slot.BaseAvatarId));
+        return slot.SpecialAvatarId == 0 &&
+               (slot.BaseAvatarId is TrailblazerAvatar.MaleDestructionId or TrailblazerAvatar.FemaleDestructionId ||
+                TrailblazerAvatar.IsPath(slot.BaseAvatarId));
     }
 
     public async ValueTask RemoveTrialAvatarFromCurTeam(int specialAvatarId, bool sendPacket = true)

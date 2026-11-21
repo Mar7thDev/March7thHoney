@@ -8,6 +8,7 @@ using March7thHoney.Enums.Avatar;
 using March7thHoney.GameServer.Game.Activity.FinalityBattle;
 using March7thHoney.GameServer.Game.Activity.RealityShow;
 using March7thHoney.Enums.Scene;
+using March7thHoney.GameServer.Game.Avatar;
 using March7thHoney.GameServer.Game.Calyx;
 using March7thHoney.GameServer.Game.GridFight;
 using March7thHoney.GameServer.Game.GridFight.Battle;
@@ -175,20 +176,11 @@ public class BattleInstance(PlayerInstance player, LineupInfo lineup, List<Stage
         // if college excel is not null
         if (CollegeConfigExcel is { TrialAvatarList.Count: > 0 }) list = [.. CollegeConfigExcel.TrialAvatarList];
 
-        if (list.Count > 0)
-        {
-            List<int> tempList = [.. list];
-            if (Player.Data.CurrentGender == Gender.Man)
-                foreach (var avatar in tempList.Where(avatar =>
-                             GameData.SpecialAvatarData.TryGetValue(avatar * 10 + 0, out var specialAvatarExcel) &&
-                             specialAvatarExcel.AvatarID is 8002 or 8004 or 8006))
-                    list.Remove(avatar);
-            else
-                foreach (var avatar in tempList.Where(avatar =>
-                             GameData.SpecialAvatarData.TryGetValue(avatar * 10 + 0, out var specialAvatarExcel) &&
-                             specialAvatarExcel.AvatarID is 8001 or 8003 or 8005))
-                    list.Remove(avatar);
-        }
+        // Stage trial lists hold special avatar IDs; the avatar comes from the world-level-0 row.
+        list = TrailblazerAvatar.ExcludeOppositeGenderTrials(list, Player.Data.CurrentGender,
+            avatar => GameData.SpecialAvatarData.TryGetValue(avatar * 10 + 0, out var specialAvatarExcel)
+                ? specialAvatarExcel.AvatarID
+                : 0);
 
         if (list.Count > 0) // if list is not empty
         {

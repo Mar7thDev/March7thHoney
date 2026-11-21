@@ -206,8 +206,8 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         foreach (var config in GameData.MultiplePathAvatarConfigData.Values.OrderBy(config => config.AvatarID))
         {
             if (config.UnlockConditions.Count == 0) continue;
-            if (config.BaseAvatarID == 8001 &&
-                PlayerInstance.NormalizeHeroPathId(config.AvatarID, Player.Data.CurrentGender) != config.AvatarID)
+            if (config.BaseAvatarID == TrailblazerAvatar.BaseAvatarId &&
+                TrailblazerAvatar.NormalizePathId(config.AvatarID, Player.Data.CurrentGender) != config.AvatarID)
                 continue;
 
             var owner = GetFormalAvatar(config.BaseAvatarID);
@@ -254,7 +254,7 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
 
     public FormalAvatarInfo? GetHero()
     {
-        return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId == 8001);
+        return Data.FormalAvatars.Find(avatar => avatar.BaseAvatarId == TrailblazerAvatar.BaseAvatarId);
     }
 
     /// <summary>
@@ -276,18 +276,20 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         var genderKnown = gender is Gender.Man or Gender.Woman && (Player.Data.IsGenderSet || !Player.MissionEnabled);
         var cur = hero.AvatarId;
 
-        if (!IsHeroPath(cur))
+        if (!TrailblazerAvatar.IsPath(cur))
         {
             // Not a path id: fall back to the lowest-numbered owned path that matches the gender (when known); if there
             // is none, use that gender's Destruction path.
-            var owned = hero.PathInfos.Keys.Where(IsHeroPath)
-                .Where(id => !genderKnown || PlayerInstance.NormalizeHeroPathId(id, gender) == id)
+            var owned = hero.PathInfos.Keys.Where(TrailblazerAvatar.IsPath)
+                .Where(id => !genderKnown || TrailblazerAvatar.NormalizePathId(id, gender) == id)
                 .OrderBy(id => id).ToList();
-            cur = owned.Count > 0 ? owned[0] : gender == Gender.Man ? 8001 : 8002;
+            cur = owned.Count > 0
+                ? owned[0]
+                : gender == Gender.Man ? TrailblazerAvatar.MaleDestructionId : TrailblazerAvatar.FemaleDestructionId;
         }
         else if (genderKnown)
         {
-            cur = PlayerInstance.NormalizeHeroPathId(cur, gender);
+            cur = TrailblazerAvatar.NormalizePathId(cur, gender);
         }
 
         var hasPath = hero.PathInfos.ContainsKey(cur);
@@ -299,12 +301,6 @@ public class AvatarManager(PlayerInstance player) : BasePlayerManager<AvatarData
         Player.Data.CurBasicType = cur;
         MarkDirty();
         return true;
-    }
-
-    private static bool IsHeroPath(int avatarId)
-    {
-        return GameData.MultiplePathAvatarConfigData.TryGetValue(avatarId, out var config) &&
-               config.BaseAvatarID == 8001;
     }
 
     public async ValueTask ReforgeRelic(int uniqueId)

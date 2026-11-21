@@ -346,8 +346,8 @@ public partial class PlayerInstance(PlayerData data)
         // AvatarManager.AddAvatar first looks up BaseAvatarID (= 8001) in FormalAvatars and then attaches the PathInfo,
         // so the base 8001 must be added before the 8002 path. Otherwise FormalAvatars holds no Trailblazer at all, and
         // a lineup referencing 8001 or 8002 finds nothing and ToProto throws on null.
-        await AddAvatar(8001);
-        await AddAvatar(8002);
+        await AddAvatar(TrailblazerAvatar.MaleDestructionId);
+        await AddAvatar(TrailblazerAvatar.FemaleDestructionId);
         await AddAvatar(1001);
         if (MissionEnabled)
         {
@@ -355,14 +355,14 @@ public partial class PlayerInstance(PlayerData data)
         }
         else
         {
-            await LineupManager!.AddAvatarToCurTeam(8001);
+            await LineupManager!.AddAvatarToCurTeam(TrailblazerAvatar.BaseAvatarId);
             Data.CurrentGender = Gender.Woman;
-            Data.CurBasicType = 8002;
+            Data.CurBasicType = TrailblazerAvatar.FemaleDestructionId;
             // FormalAvatar.AvatarId decides the path and gender the client shows (CurMultiPathAvatarType). AddAvatar
             // creates the avatar with AvatarId=8001 (male), so it must be switched to 8002 for the female Trailblazer
             // to show.
             var hero = AvatarManager!.GetHero();
-            if (hero != null) hero.AvatarId = 8002;
+            if (hero != null) hero.AvatarId = TrailblazerAvatar.FemaleDestructionId;
         }
     }
 
@@ -532,20 +532,6 @@ public partial class PlayerInstance(PlayerData data)
     }
 
     /// <summary>
-    ///     Maps a Trailblazer path variant to the player's gender: variants pair as male (odd) / female (even = odd + 1).
-    ///     Ids without a matching config entry, and players without a gender, are returned unchanged.
-    /// </summary>
-    public static int NormalizeHeroPathId(int pathId, Gender gender)
-    {
-        if (gender is not (Gender.Man or Gender.Woman)) return pathId;
-        var maleId = pathId % 2 == 0 ? pathId - 1 : pathId;
-        var id = gender == Gender.Woman ? maleId + 1 : maleId;
-        return GameData.MultiplePathAvatarConfigData.TryGetValue(id, out var excel) && excel.BaseAvatarID == 8001
-            ? id
-            : pathId;
-    }
-
-    /// <summary>
     ///     Switches a multi-path character to <paramref name="type" /> (any variant of the path; Trailblazer ids are
     ///     normalized to the player's gender). Returns the avatar id actually stored, or 0 when the path does not
     ///     belong to that character.
@@ -559,9 +545,9 @@ public partial class PlayerInstance(PlayerData data)
 
         FormalAvatarInfo avatar;
         int id;
-        if (baseAvatarId == 8001)
+        if (baseAvatarId == TrailblazerAvatar.BaseAvatarId)
         {
-            id = NormalizeHeroPathId((int)type, Data.CurrentGender);
+            id = TrailblazerAvatar.NormalizePathId((int)type, Data.CurrentGender);
             avatar = owner;
             if (Data.CurBasicType == id && avatar.AvatarId == id) return id; // CurBasicType can desync from the hero record (e.g. stale seed data); check both
             Data.CurBasicType = id;
@@ -585,9 +571,9 @@ public partial class PlayerInstance(PlayerData data)
         // or the world keeps the previous model.
         await RefreshAvatarActor(baseAvatarId);
 
-        if (baseAvatarId == 8001)
+        if (baseAvatarId == TrailblazerAvatar.BaseAvatarId)
         {
-            await SendPacket(new PacketAvatarPathChangedNotify(8001, (MultiPathAvatarType)id));
+            await SendPacket(new PacketAvatarPathChangedNotify(TrailblazerAvatar.BaseAvatarId, (MultiPathAvatarType)id));
             await SendPacket(new PacketPlayerSyncScNotify(AvatarManager!.GetHero()!));
         }
         else
@@ -629,10 +615,12 @@ public partial class PlayerInstance(PlayerData data)
 
         // Keep the current Path; hero ids pair as male(odd)/female(even) per Path.
         var pathBase = Data.CurBasicType;
-        if (pathBase is < 8001 or > 8010) pathBase = 8001;
+        if (pathBase is < TrailblazerAvatar.BaseAvatarId or > TrailblazerAvatar.LastPathId)
+            pathBase = TrailblazerAvatar.BaseAvatarId;
         if (pathBase % 2 == 0) pathBase -= 1;
         var newId = pathBase + (gender == Gender.Woman ? 1 : 0);
-        if (!GameData.MultiplePathAvatarConfigData.ContainsKey(newId)) newId = gender == Gender.Woman ? 8002 : 8001;
+        if (!GameData.MultiplePathAvatarConfigData.ContainsKey(newId))
+            newId = gender == Gender.Woman ? TrailblazerAvatar.FemaleDestructionId : TrailblazerAvatar.MaleDestructionId;
 
         Data.CurrentGender = gender;
         Data.IsGenderSet = true;
@@ -646,7 +634,8 @@ public partial class PlayerInstance(PlayerData data)
             hero.CheckPathSkillTree();
             hero.SetCurSp(0, LineupManager!.GetCurLineup()?.IsExtraLineup() ?? false);
 
-            await SendPacket(new PacketAvatarPathChangedNotify(8001, (MultiPathAvatarType)newId));
+            await SendPacket(new PacketAvatarPathChangedNotify(TrailblazerAvatar.BaseAvatarId,
+                (MultiPathAvatarType)newId));
             await SendPacket(new PacketPlayerSyncScNotify(hero));
         }
 
