@@ -57,7 +57,7 @@ public sealed partial class GridFightSession
         return baseTable;
     }
 
-    private static IReadOnlyDictionary<uint, GridFightAugmentGrant> BuildSeason2SelectionGrants()
+    private static IReadOnlyDictionary<uint, GridFightAugmentGrant> BuildSeasonTwoSelectionGrants()
     {
         var table = new Dictionary<uint, GridFightAugmentGrant>
         {
@@ -98,7 +98,7 @@ public sealed partial class GridFightSession
         return table;
     }
 
-    private static IReadOnlyDictionary<uint, GridFightAugmentRecurring[]> BuildSeason2RecurringEffects() =>
+    private static IReadOnlyDictionary<uint, GridFightAugmentRecurring[]> BuildSeasonTwoRecurringEffects() =>
         new Dictionary<uint, GridFightAugmentRecurring[]>
         {
             [304701] = [new(GridFightAugmentTrigger.ChapterStart, 0, G with { BasicEquipment = 1 })],  // 装备变现
@@ -119,7 +119,7 @@ public sealed partial class GridFightSession
     private readonly List<uint> _moonGatheringSecondHalf = [];
     private bool _investmentUpgradePending;
 
-    private void ApplySeason2SelectionSpecials(uint augmentId)
+    private void ApplySeasonTwoSelectionSpecials(uint augmentId)
     {
         switch (augmentId)
         {

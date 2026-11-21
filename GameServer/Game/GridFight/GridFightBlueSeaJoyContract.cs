@@ -61,7 +61,7 @@ public sealed partial class GridFightSession
         InitializeDotContractPortal();
         InitializeRotationHeroPortal();
         InitializeConceptStockPortal();
-        InitializeP0PortalRewards();
+        InitializePortalRewards();
         MaterializeInitialRoles();
         ApplyPortalOpeningEffects();
 

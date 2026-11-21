@@ -4,7 +4,7 @@ namespace March7thHoney.GameServer.Game.GridFight;
 
 public sealed partial class GridFightManager
 {
-    private void AppendP0PortalInitialResults(GridFightSyncUpdateResultScNotify notify)
+    private void AppendPortalInitialResults(GridFightSyncUpdateResultScNotify notify)
     {
         var session = Session;
         if (session == null) return;
@@ -63,7 +63,7 @@ public sealed partial class GridFightManager
         AppendMarketVitalitySavedValueResults(notify);
     }
 
-    private void AppendP0InvestmentSelectionResults(GridFightSyncUpdateResultScNotify notify, uint augmentId)
+    private void AppendInvestmentSelectionResults(GridFightSyncUpdateResultScNotify notify, uint augmentId)
     {
         var session = Session;
         if (session == null) return;

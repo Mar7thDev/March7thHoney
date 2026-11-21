@@ -4,6 +4,7 @@ using MemoryPack;
 using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.GameServer.Game.GridFight;
+using March7thHoney.GameServer.Game.GridFight.Persistence;
 
 /// <summary>
 ///     Reflection helpers for the run persistence checks: they see every GridFightSession field, so a field that is

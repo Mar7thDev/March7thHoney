@@ -7,6 +7,7 @@ using March7thHoney.Enums.Avatar;
 using March7thHoney.Enums.Mission;
 using March7thHoney.GameServer.Game.Battle;
 using March7thHoney.GameServer.Game.GridFight.Battle;
+using March7thHoney.GameServer.Game.GridFight.Persistence;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server.Packet.Send.GridFight;
 using March7thHoney.Proto;
@@ -1308,7 +1309,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         AppendPepePortalInitialResults(notify);
         AppendJoyContractInitialResults(notify);
         AppendDotContractInitialResults(notify);
-        AppendP0PortalInitialResults(notify);
+        AppendPortalInitialResults(notify);
         AppendAugmentEffectResults(notify, session.TakePortalOpeningEffects());
 
         var portalResult = new GridFightSyncResultData
@@ -1516,7 +1517,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         foreach (var itemReward in Session.TakeInvestmentSelectionRewards())
             AppendInvestmentItemReward(notify, itemReward);
         AppendSpecialInvestmentSelectionResults(notify, augmentId);
-        AppendP0InvestmentSelectionResults(notify, augmentId);
+        AppendInvestmentSelectionResults(notify, augmentId);
         AppendAugmentEffectResults(notify, Session.TakeAugmentSelectionEffects());
         AppendOwlbertArrivals(notify);
         AppendEconomyEffects(notify);
@@ -1561,7 +1562,7 @@ public sealed partial class GridFightManager : BasePlayerManager
         foreach (var bonusId in Session.TakeForesightBonusAugments())
         {
             AppendSpecialInvestmentSelectionResults(notify, bonusId);
-            AppendP0InvestmentSelectionResults(notify, bonusId);
+            AppendInvestmentSelectionResults(notify, bonusId);
             var bonusResult = new GridFightSyncResultData { UpdateSource = GridFightUpdateSrcType.KgridFightSrcAugment };
             bonusResult.EffectParamList.Add(augmentId);
             bonusResult.UpdateDynamicList.Add(new GridFightSyncData

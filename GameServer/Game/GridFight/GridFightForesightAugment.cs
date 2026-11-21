@@ -23,7 +23,7 @@ public partial class GridFightSession
         ActiveInvestmentIds.Add(bonus);
         _foresightBonusAugments.Add(bonus);
         PrepareInvestmentSelectionReward(bonus);
-        OnP0InvestmentSelected(bonus);
+        OnRewardInvestmentSelected(bonus);
         ApplyAugmentSelectionEffects(bonus);
     }
 

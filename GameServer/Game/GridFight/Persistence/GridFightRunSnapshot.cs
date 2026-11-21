@@ -1,6 +1,6 @@
 using MemoryPack;
 
-namespace March7thHoney.GameServer.Game.GridFight;
+namespace March7thHoney.GameServer.Game.GridFight.Persistence;
 
 // Persisted form of a live GridFight run (GridFightData.RunInstance, Base64 MemoryPack).
 // MemoryPack reads members by declaration order: only ever append members, never reorder or remove them.

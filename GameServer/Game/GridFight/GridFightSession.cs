@@ -583,7 +583,7 @@ public sealed partial class GridFightSession
         OnForesightInvestmentSelected(augmentId);
         if (!ActiveInvestmentIds.Contains(augmentId)) ActiveInvestmentIds.Add(augmentId);
         PrepareInvestmentSelectionReward(augmentId);
-        OnP0InvestmentSelected(augmentId);
+        OnRewardInvestmentSelected(augmentId);
         ApplyAugmentSelectionEffects(augmentId);
         OnPortalInvestmentSelected();
         InvestmentOffer = [];

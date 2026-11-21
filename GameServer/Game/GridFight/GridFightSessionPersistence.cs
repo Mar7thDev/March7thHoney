@@ -2,6 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Data.Custom;
 using March7thHoney.Data.Excel;
 using March7thHoney.Enums.GridFight;
+using March7thHoney.GameServer.Game.GridFight.Persistence;
 using March7thHoney.Proto;
 
 namespace March7thHoney.GameServer.Game.GridFight;

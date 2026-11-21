@@ -7,6 +7,7 @@ using March7thHoney.Database.GridFight;
 using March7thHoney.Database.Player;
 using March7thHoney.Enums.GridFight;
 using March7thHoney.GameServer.Game.GridFight;
+using March7thHoney.GameServer.Game.GridFight.Persistence;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.Internationalization;
 using March7thHoney.Proto;
@@ -1059,7 +1060,7 @@ if (routePortal == GridFightSession.DotContractPortalId)
         nodeSession.Consumables.Any(item => item.ItemId == 350105));
 }
 
-// ---- Season-2-only investments (GridFightSeason2AugmentEffects)
+// ---- Season-2-only investments (GridFightSeasonTwoAugmentEffects)
 if (season == 2)
 {
     const System.Reflection.BindingFlags Private = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;

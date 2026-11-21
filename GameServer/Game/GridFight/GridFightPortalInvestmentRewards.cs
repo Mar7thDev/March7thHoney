@@ -6,7 +6,7 @@ namespace March7thHoney.GameServer.Game.GridFight;
 public sealed record GridFightTwinPrimesReward(uint EffectId, uint ExpAmount);
 
 /// <summary>
-/// 4.5 packet-backed Currency War P0 features. Keep battle-side random mechanics (notably
+/// 4.5 packet-backed Currency War portal and investment rewards. Keep battle-side random mechanics (notably
 /// Skill Point trait lottery probabilities) client-authored; this class only materializes
 /// persistent run state and server-owned shop/reward decisions seen on the wire.
 /// </summary>
@@ -49,7 +49,7 @@ public sealed partial class GridFightSession
         return true;
     }
 
-    private void InitializeP0PortalRewards()
+    private void InitializePortalRewards()
     {
         if (SelectedPortalId == GunpowderPortalId && _gunpowderInitialForgeItems.Count == 0)
         {
@@ -134,7 +134,7 @@ public sealed partial class GridFightSession
         return result;
     }
 
-    private void OnP0InvestmentSelected(uint augmentId)
+    private void OnRewardInvestmentSelected(uint augmentId)
     {
         switch (augmentId)
         {
@@ -157,7 +157,7 @@ public sealed partial class GridFightSession
         }
     }
 
-    private void OnP0NodeEntered()
+    private void OnRewardInvestmentNodeEntered()
     {
         if (ActiveInvestmentIds.Contains(PeriodicBenefitsAugmentId))
         {
