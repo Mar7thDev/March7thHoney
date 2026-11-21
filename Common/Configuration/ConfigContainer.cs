@@ -256,20 +256,25 @@ public class WebAccountApiOption
     public List<string> AllowedAddresses { get; set; } = ["127.0.0.1", "::1"];
 }
 
+/// <summary>
+///     Registration, login and email rate limits and the one-account-per-device/IP rule. All are off by default so a
+///     self-hosted server lets its players register and sign in freely; a public server turns them on here or on the
+///     admin settings page.
+/// </summary>
 public class AntiAbuseOption
 {
-    public bool RateLimitEnabled { get; set; } = true;
+    public bool RateLimitEnabled { get; set; } = false;
     public int RateLimitMaxRequests { get; set; } = 10;
     public int RateLimitWindowSeconds { get; set; } = 60;
     public int RateLimitBlockSeconds { get; set; } = 900;
-    public bool LimitRegistrationPerIdentity { get; set; } = true;
+    public bool LimitRegistrationPerIdentity { get; set; } = false;
     public string RegistrationIdentityMode { get; set; } = "DeviceOrIp";
     public bool RequireRegistrationIdentity { get; set; } = false;
-    public bool LoginRateLimitEnabled { get; set; } = true;
+    public bool LoginRateLimitEnabled { get; set; } = false;
     public int LoginRateLimitMaxRequests { get; set; } = 8;
     public int LoginRateLimitWindowSeconds { get; set; } = 900;
     public int LoginRateLimitBlockSeconds { get; set; } = 900;
-    public bool EmailRateLimitEnabled { get; set; } = true;
+    public bool EmailRateLimitEnabled { get; set; } = false;
     public int EmailRateLimitMaxRequests { get; set; } = 3;
     public int EmailRateLimitWindowSeconds { get; set; } = 3600;
     public int EmailRateLimitBlockSeconds { get; set; } = 900;

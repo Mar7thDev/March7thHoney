@@ -46,6 +46,13 @@ This behaviour change needs no database change. Back up the program and configur
 - The player console (`/player/*`, `/console/*`), `/sr-tools` and `/sr-tools-export` check UID and password through one shared verifier. Accounts without a password are refused, a client under a login rate-limit block or an IP/device block is refused before the password is checked, every wrong password counts towards the login limit, and banned accounts are refused.
 - `/sr-tools-export` is now `POST` with a JSON body `{"username":"<uid>","password":"<password>"}`. The old `GET ?uid=&password=` form returns 405, so the password no longer ends up in URLs, proxy logs or browser history. Update any script or tool that downloaded the export with `GET`.
 
+### Anti-abuse limits
+
+The switches under `ServerOption.Auth.AntiAbuse` (`RateLimitEnabled`, `LimitRegistrationPerIdentity`, `LoginRateLimitEnabled`, `EmailRateLimitEnabled`; `RequireRegistrationIdentity` already was) are off by default, so a self-hosted server lets its players register and sign in without throttling. A public server turns the ones it needs on in `Config.json` or on the admin page under **Settings → antiabuse**; the limits, windows and block durations keep their values.
+
+- **Existing installations keep their value.** `Config.json` is written back on startup, so a file created by an older version still has these switches on.
+- **Rollback:** set the switches to `true` again; nothing else depends on them.
+
 ### DefaultPermissions
 
 `ServerOption.DefaultPermissions` is added to every account on top of its role. Its built-in default is now empty; it used to be `["*"]`, which made every registered player an administrator (including `command.account` and `command.others`).

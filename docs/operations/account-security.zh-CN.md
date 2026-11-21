@@ -46,6 +46,13 @@ IP 封锁会影响同一公网出口的其他玩家。设备 ID 由客户端提�
 - 玩家控制台（`/player/*`、`/console/*`）、`/sr-tools` 与 `/sr-tools-export` 通过同一个共享校验器检查 UID 和密码。没有密码的账号被拒绝；处于登录限流封锁或 IP / 设备封锁中的客户端在检查密码之前即被拒绝；每次错误密码都计入登录限流；被封禁的账号被拒绝。
 - `/sr-tools-export` 改为 `POST`，使用 JSON 请求体 `{"username":"<uid>","password":"<password>"}`。旧的 `GET ?uid=&password=` 形式返回 405，密码不再出现在 URL、代理日志或浏览器历史中。用 `GET` 下载导出数据的脚本或工具需要相应更新。
 
+### 防滥用限制
+
+`ServerOption.Auth.AntiAbuse` 下的开关（`RateLimitEnabled`、`LimitRegistrationPerIdentity`、`LoginRateLimitEnabled`、`EmailRateLimitEnabled`；`RequireRegistrationIdentity` 原本就是关闭的）默认关闭，自建服务器的玩家注册和登录不受限流。公开服务器在 `Config.json` 或后台 **设置 → antiabuse** 中打开需要的开关；次数、时间窗口和封锁时长保持原值。
+
+- **已有安装保留原值。** `Config.json` 会在启动时写回，因此旧版本生成的文件中这些开关仍是打开的。
+- **回退：** 把开关重新设为 `true` 即可，没有其他依赖。
+
 ### DefaultPermissions
 
 `ServerOption.DefaultPermissions` 会在角色权限之上授予每个账号。其内置默认值现为空；以前为 `["*"]`，使每个注册玩家都成为管理员（包括 `command.account` 与 `command.others`）。
