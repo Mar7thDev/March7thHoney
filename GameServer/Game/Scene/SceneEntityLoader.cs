@@ -198,7 +198,7 @@ public class SceneEntityLoader(SceneInstance scene)
             {
                 GameData.GroupSystemUnlockDataData.TryGetValue(conditionId, out var unlockExcel);
                 if (unlockExcel == null) continue;
-                var part = Scene.Player.QuestManager?.UnlockHandler.GetUnlockStatus(unlockExcel.UnlockID) ??
+                var part = Scene.Player.QuestManager?.FuncUnlockChecker.GetUnlockStatus(unlockExcel.UnlockID) ??
                            false; // check if unlock condition is met
                 if (info.SystemUnlockCondition.Operation == OperationEnum.Or && part)
                 {

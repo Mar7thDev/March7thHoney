@@ -2,7 +2,7 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.GameServer.Game.Player;
 
-namespace March7thHoney.GameServer.Game.Task;
+namespace March7thHoney.GameServer.Game.LevelTasks;
 
 public class PerformanceTrigger(PlayerInstance player)
 {

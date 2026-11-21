@@ -1,11 +1,11 @@
 using March7thHoney.Data;
 using March7thHoney.Enums.Mission;
 using March7thHoney.Enums.Quest;
-using March7thHoney.GameServer.Game.Player;
 
-namespace March7thHoney.GameServer.Game.Quest;
+namespace March7thHoney.GameServer.Game.Player;
 
-public class UnlockHandler(PlayerInstance player)
+/// <summary>Evaluates the conditions of a FuncUnlockData entry against the player's progress.</summary>
+public class FuncUnlockChecker(PlayerInstance player)
 {
     public PlayerInstance Player { get; } = player;
 

@@ -67,7 +67,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             }
             else if (prop.Excel.IsHpRecover)
             {
-                Player.LineupManager!.GetCurLineup()!.Heal(2000, false);
+                Player.LineupManager!.GetCurLineup()!.Heal(GameConstants.PROP_HP_RECOVER, false);
                 await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager!.GetCurLineup()!));
             }
             else if (prop.PropInfo.Name == "SpeedDestruct")
@@ -400,7 +400,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
                 break;
             case BattleEndStatus.BattleEndLose:
                 // Set avatar hp to 20% if the player's party is downed
-                minimumHp = 2000;
+                minimumHp = GameConstants.REVIVE_HP;
                 teleportToAnchor = true;
                 break;
             default:
@@ -421,7 +421,7 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             {
                 BaseAvatarInfo? avatarInstance = Player.AvatarManager!.GetFormalAvatar((int)avatar.Id);
                 var prop = avatar.AvatarStatus;
-                var curHp = (int)Math.Max(Math.Round(prop.LeftHp / prop.MaxHp * 10000), minimumHp);
+                var curHp = (int)Math.Max(Math.Round(prop.LeftHp / prop.MaxHp * GameConstants.FULL_HP), minimumHp);
                 // The client reports energy units (e.g. 45 of 120); stored SP is a 0..10000 ratio.
                 var curSp = prop.MaxSp > 0
                     ? (int)Math.Round(prop.LeftSp / prop.MaxSp * 10000)

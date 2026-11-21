@@ -11,7 +11,7 @@ public class HandlerBuyGoodsCsReq : Handler<BuyGoodsCsReq>
     {
         var (retcode, items) = req.ShopId > int.MaxValue || req.GoodsId > int.MaxValue
             ? (Retcode.RetFail, [])
-            : await player.ShopService!.BuyItem((int)req.ShopId, (int)req.GoodsId, req.GoodsNum);
+            : await player.ShopManager!.BuyItem((int)req.ShopId, (int)req.GoodsId, req.GoodsNum);
 
         await connection.SendPacket(new PacketBuyGoodsScRsp(req, items, retcode));
     }

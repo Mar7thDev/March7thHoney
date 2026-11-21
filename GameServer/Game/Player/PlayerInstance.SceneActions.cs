@@ -31,7 +31,7 @@ public partial class PlayerInstance
             var isInRange = prop != null;
 
             if (isInRange)
-                if (LineupManager?.GetCurLineup()?.Heal(10000, true) == true)
+                if (LineupManager?.GetCurLineup()?.Heal(GameConstants.FULL_HP, true) == true)
                     await SendPacket(new PacketSyncLineupNotify(LineupManager.GetCurLineup()!));
 
             // Waypoint unlock is independent of the spring heal: Space Anchors / Calyx checkpoints far from any

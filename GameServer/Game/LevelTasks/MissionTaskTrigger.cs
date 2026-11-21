@@ -3,7 +3,7 @@ using March7thHoney.Data.Config;
 using March7thHoney.Data.Excel;
 using March7thHoney.GameServer.Game.Player;
 
-namespace March7thHoney.GameServer.Game.Task;
+namespace March7thHoney.GameServer.Game.LevelTasks;
 
 public class MissionTaskTrigger(PlayerInstance player)
 {

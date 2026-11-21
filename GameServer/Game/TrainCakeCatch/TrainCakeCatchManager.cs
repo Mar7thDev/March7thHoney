@@ -1038,7 +1038,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
             : (ownerUid, new TrainCakeCatchData { Uid = (int)ownerUid }, false);
     }
 
-    private async System.Threading.Tasks.Task NotifyRoomJoinAsync(uint roomOwnerUid, List<int> existingMembers)
+    private async Task NotifyRoomJoinAsync(uint roomOwnerUid, List<int> existingMembers)
     {
         var recipientUids = new HashSet<int>(existingMembers.Where(uid => uid != Player.Uid));
         if (roomOwnerUid != (uint)Player.Uid)
@@ -1077,7 +1077,7 @@ public class TrainCakeCatchManager(PlayerInstance player) : BasePlayerManager<Tr
         }
     }
 
-    private async System.Threading.Tasks.Task NotifyRoomLeaveAsync(uint roomOwnerUid, List<int> remainingMembers,
+    private async Task NotifyRoomLeaveAsync(uint roomOwnerUid, List<int> remainingMembers,
         uint? nextRoomOwnerUid = null)
     {
         if (remainingMembers.Count == 0)

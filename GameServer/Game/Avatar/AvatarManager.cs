@@ -48,7 +48,7 @@ public partial class AvatarManager(PlayerInstance player) : BasePlayerManager<Av
         {
             Level = 1,
             Timestamp = Extensions.GetUnixSec(),
-            CurrentHp = 10000,
+            CurrentHp = GameConstants.FULL_HP,
             CurrentSp = 0
         };
 

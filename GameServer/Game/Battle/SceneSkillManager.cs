@@ -10,7 +10,7 @@ using March7thHoney.GameServer.Game.Drop;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Game.Scene;
 using March7thHoney.GameServer.Game.Scene.Entity;
-using March7thHoney.GameServer.Game.Task.AvatarTask;
+using March7thHoney.GameServer.Game.LevelTasks.AvatarTask;
 using March7thHoney.GameServer.Server.Packet.Send.Lineup;
 using March7thHoney.GameServer.Server.Packet.Send.Scene;
 using March7thHoney.Proto;
@@ -221,7 +221,7 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
             }
             else if (prop.Excel.IsHpRecover)
             {
-                Player.LineupManager!.GetCurLineup()!.Heal(2000, false);
+                Player.LineupManager!.GetCurLineup()!.Heal(GameConstants.PROP_HP_RECOVER, false);
                 await Player.SendPacket(new PacketSyncLineupNotify(Player.LineupManager.GetCurLineup()!));
             }
 

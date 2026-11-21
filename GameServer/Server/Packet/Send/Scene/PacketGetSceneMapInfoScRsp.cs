@@ -98,7 +98,7 @@ public class PacketGetSceneMapInfoScRsp : BasePacket
                     foreach (var conditionId in unlock.Conditions)
                     {
                         if (!GameData.GroupSystemUnlockDataData.TryGetValue(conditionId, out var config)) continue;
-                        var matched = player.QuestManager?.UnlockHandler.GetUnlockStatus(config.UnlockID) == true;
+                        var matched = player.QuestManager?.FuncUnlockChecker.GetUnlockStatus(config.UnlockID) == true;
                         if (unlock.Operation == OperationEnum.Or && matched)
                         {
                             unlocked = true;

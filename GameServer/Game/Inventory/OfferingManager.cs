@@ -24,7 +24,7 @@ public class OfferingManager(PlayerInstance player) : BasePlayerManager<Offering
             State = OfferingState.Lock
         };
 
-        if (Player.QuestManager!.UnlockHandler.GetUnlockStatus(unlockId)) data.State = OfferingState.Open;
+        if (Player.QuestManager!.FuncUnlockChecker.GetUnlockStatus(unlockId)) data.State = OfferingState.Open;
 
         Data.Offerings[offeringId] = data;
 
@@ -39,7 +39,7 @@ public class OfferingManager(PlayerInstance player) : BasePlayerManager<Offering
             var gameData = GameData.OfferingTypeConfigData.GetValueOrDefault(offering.OfferingId); // create a new one
             if (gameData == null) continue;
 
-            if (Player.QuestManager!.UnlockHandler.GetUnlockStatus(gameData.UnlockID) &&
+            if (Player.QuestManager!.FuncUnlockChecker.GetUnlockStatus(gameData.UnlockID) &&
                 offering.State != OfferingState.Open)
             {
                 offering.State = OfferingState.Open;
@@ -47,7 +47,7 @@ public class OfferingManager(PlayerInstance player) : BasePlayerManager<Offering
                 continue;
             }
 
-            if (Player.QuestManager!.UnlockHandler.GetUnlockStatus(gameData.UnlockID) ||
+            if (Player.QuestManager!.FuncUnlockChecker.GetUnlockStatus(gameData.UnlockID) ||
                 offering.State == OfferingState.Lock) continue;
 
             offering.State = OfferingState.Lock;

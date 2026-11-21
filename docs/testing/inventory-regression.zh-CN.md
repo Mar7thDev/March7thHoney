@@ -2,7 +2,7 @@
 
 [English](inventory-regression.md) | 简体中文
 
-`InventoryRegression` 检查物品移除、商店购买、物品与遗器合成以及使用物品在发放任何东西之前校验数量和余额。修改 `InventoryManager` 的移除逻辑、`ShopService`、合成或使用物品后运行。
+`InventoryRegression` 检查物品移除、商店购买、物品与遗器合成以及使用物品在发放任何东西之前校验数量和余额。修改 `InventoryManager` 的移除逻辑、`ShopManager`、合成或使用物品后运行。
 
 项目：[`scripts/InventoryRegression/`](../../scripts/InventoryRegression/)
 

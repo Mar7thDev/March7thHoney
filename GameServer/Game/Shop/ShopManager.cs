@@ -8,7 +8,7 @@ using March7thHoney.Util;
 
 namespace March7thHoney.GameServer.Game.Shop;
 
-public class ShopService(PlayerInstance player) : BasePlayerManager(player)
+public class ShopManager(PlayerInstance player) : BasePlayerManager(player)
 {
     /// <summary>Upper bound on one purchase of an item without a pile limit.</summary>
     private const int DefaultMaxBuyCount = 9999;
