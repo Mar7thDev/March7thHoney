@@ -227,41 +227,8 @@ public class EntryPoint
 
         CommandExecutor.OnRunCommand += (sender, e) => { CommandManager.HandleCommand(e, sender); };
 
-        MuipManager.OnExecuteCommand += CommandManager.HandleCommandAsync;
+        MuipManager.CommandHandler = CommandManager.HandleCommandAsync;
         MuipManager.CommandCatalogProvider = CommandManager.BuildCatalog;
-        MuipManager.OnGetServerInformation += x =>
-        {
-            foreach (var (_, player) in Listener.GetPlayerConnections())
-                x.Add(player.Uid, player.Data);
-        };
-        MuipManager.OnGetPlayerStatus += (int uid, out PlayerStatusEnum status, out PlayerSubStatusEnum subStatus) =>
-        {
-            subStatus = PlayerSubStatusEnum.None;
-            foreach (var (_, player) in Listener.GetPlayerConnections())
-                if (player.Uid == uid)
-                {
-                    // TODO: a player in a challenge is not reported as such; that check was suspended during the 4.3
-                    // migration.
-                    if (player.RaidManager?.Data.CurRaidId != 0)
-                    {
-                        status = PlayerStatusEnum.Raid;
-                    }
-                    else if (player.StoryLineManager?.StoryLineData.CurStoryLineId != 0)
-                    {
-                        status = PlayerStatusEnum.StoryLine;
-                    }
-                    else
-                    {
-                        status = PlayerStatusEnum.Explore;
-                    }
-
-                    if (player.BattleInstance != null) subStatus = PlayerSubStatusEnum.Battle;
-
-                    return;
-                }
-
-            status = PlayerStatusEnum.Offline;
-        };
 
         // Generate handbooks only when this startup reads raw resources.
         if (loadedFromResources)

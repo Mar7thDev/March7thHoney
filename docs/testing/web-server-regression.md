@@ -37,7 +37,8 @@ None beyond the .NET SDK. The regression uses its own in-memory data and a tempo
 
 ### MUIP and gateway
 
-- MUIP GET and POST.
+- MUIP GET and POST; only one command handler can be registered.
+- MUIP server information lists the online players; player information reports an online player whose login initialisation has not run as exploring, and an offline player as offline.
 - `query_gateway` hands out the Divergent Universe BuildRef address and request headers; the two exact BuildRef JSON routes.
 
 ### Credential revocation and MUIP session lifecycle

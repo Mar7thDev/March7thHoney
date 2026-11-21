@@ -12,6 +12,7 @@ using March7thHoney.Database.Lineup;
 using March7thHoney.Database.Player;
 using March7thHoney.Database.Quests;
 using March7thHoney.Enums;
+using March7thHoney.GameServer.Server;
 using March7thHoney.Util;
 using March7thHoney.WebServer.Response;
 using March7thHoney.WebServer.Handler;
@@ -25,12 +26,8 @@ public static class MuipManager
 {
     public delegate Task ExecuteCommandDelegate(string message, MuipCommandSender sender);
 
-    public delegate void GetPlayerStatusDelegate(int uid, out PlayerStatusEnum status,
-        out PlayerSubStatusEnum subStatus);
-
-    public delegate void ServerInformationDelegate(Dictionary<int, PlayerData> resultData);
-
     private static readonly Logger logger = Logger.GetByClassName();
+    private static ExecuteCommandDelegate? _commandHandler;
 
     public static string RsaPublicKey { get; private set; } = "";
     public static string RsaPrivateKey { get; private set; } = "";
@@ -74,9 +71,21 @@ public static class MuipManager
     /// </summary>
     public static Func<IReadOnlyList<CommandCatalogEntry>>? CommandCatalogProvider { get; set; }
 
-    public static event ExecuteCommandDelegate? OnExecuteCommand;
-    public static event ServerInformationDelegate? OnGetServerInformation;
-    public static event GetPlayerStatusDelegate? OnGetPlayerStatus;
+    /// <summary>
+    ///     Runs decoded commands, wired by the entry point for the same reason as <see cref="CommandCatalogProvider" />.
+    ///     It holds exactly one handler: a combined delegate (for example from a second <c>+=</c>) is refused, because
+    ///     it would run every command once per registration.
+    /// </summary>
+    public static ExecuteCommandDelegate? CommandHandler
+    {
+        get => _commandHandler;
+        set
+        {
+            if (value is { HasSingleTarget: false })
+                throw new ArgumentException("MUIP accepts a single command handler.", nameof(value));
+            _commandHandler = value;
+        }
+    }
 
     public static CreateSessionResponse CreateSession(string keyType, string? clientKey = null)
     {
@@ -186,8 +195,8 @@ public static class MuipManager
             if (string.IsNullOrWhiteSpace(commandStr))
                 return new ExecuteCommandResponse(3, "Wrong encrypted key");
 
-            var handlers = OnExecuteCommand;
-            if (handlers == null)
+            var handler = CommandHandler;
+            if (handler == null)
                 return new ExecuteCommandResponse(5, "Command handler is not initialized!");
 
             logger.Info($"SessionId: {sessionId}, UID: {targetUid}, ExecuteCommand: {commandStr}");
@@ -197,8 +206,7 @@ public static class MuipManager
                 lock (output) output.Append(msg).Append("\r\n");
             }) { SenderUid = targetUid };
 
-            foreach (ExecuteCommandDelegate handler in handlers.GetInvocationList())
-                await handler(commandStr, sender).ConfigureAwait(false);
+            await handler(commandStr, sender).ConfigureAwait(false);
 
             return new ExecuteCommandResponse(0, "Success", new ExecuteCommandData
             {
@@ -247,8 +255,10 @@ public static class MuipManager
                 availableMemory = GetAvailableMemoryMacOS();
             }
 
-            var result = new Dictionary<int, PlayerData>();
-            OnGetServerInformation?.Invoke(result);
+            // One entry per uid, even while the listener still holds an old connection of a reconnecting player.
+            var onlinePlayers = new Dictionary<int, PlayerData>();
+            foreach (var (_, player) in Listener.GetPlayerConnections())
+                onlinePlayers.TryAdd(player.Uid, player.Data);
 
             return new ServerInformationResponse(0, "Success", new ServerInformationData
             {
@@ -256,7 +266,7 @@ public static class MuipManager
                 MaxMemory = totalMemory,
                 ProgramUsedMemory = currentProcessMemory / 1024 / 1024,
                 UsedMemory = totalMemory - availableMemory,
-                OnlinePlayers = result.Values.Select(x => new SimplePlayerInformationData
+                OnlinePlayers = onlinePlayers.Values.Select(x => new SimplePlayerInformationData
                 {
                     Name = x.Name ?? "",
                     HeadIconId = x.HeadIcon,
@@ -285,10 +295,8 @@ public static class MuipManager
             var player = DatabaseHelper.Instance?.GetInstance<PlayerData>(uid);
             if (player == null) return new PlayerInformationResponse(2, "Player not exist!");
 
-            var status = PlayerStatusEnum.Offline;
-            var subStatus = PlayerSubStatusEnum.None;
-
-            OnGetPlayerStatus?.Invoke(player.Uid, out status, out subStatus);
+            var (status, subStatus) = Listener.GetPlayerConnection(player.Uid)?.Player?.GetOnlineStatus() ??
+                                      (PlayerStatusEnum.Offline, PlayerSubStatusEnum.None);
 
             var avatarData = DatabaseHelper.Instance!.GetInstance<AvatarData>(player.Uid)!;
             var lineupData = DatabaseHelper.Instance!.GetInstance<LineupData>(player.Uid)!;

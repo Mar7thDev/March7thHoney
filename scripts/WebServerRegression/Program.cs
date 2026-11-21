@@ -11,10 +11,14 @@ using March7thHoney.Data;
 using March7thHoney.Data.Excel;
 using March7thHoney.Database;
 using March7thHoney.Database.Account;
+using March7thHoney.Database.Avatar;
 using March7thHoney.Database.Friend;
+using March7thHoney.Database.Lineup;
 using March7thHoney.Database.Player;
-using March7thHoney.GameServer.Game.Inventory;
+using March7thHoney.Database.Quests;
+using March7thHoney.Enums;
 using March7thHoney.GameServer.Game.Friend;
+using March7thHoney.GameServer.Game.Inventory;
 using March7thHoney.GameServer.Game.Player;
 using March7thHoney.GameServer.Server;
 using March7thHoney.Internationalization;
@@ -51,7 +55,7 @@ new DatabaseHelper().Initialize(startSaveThread: false);
 I18NManager.LoadLanguage();
 var manager = new CommandManager();
 manager.RegisterCommands();
-MuipManager.OnExecuteCommand += manager.HandleCommandAsync;
+MuipManager.CommandHandler = manager.HandleCommandAsync;
 MuipManager.CommandCatalogProvider = manager.BuildCatalog;
 
 // A fixture player for the self-service console at /player: default role, so the page shows both the
@@ -233,6 +237,30 @@ Check("admin console cannot pin a language", await Execute("/language en", fixtu
 manager.HandleCommand("/regression-probe", new ConsoleCommandSender(new Logger("Regression")));
 Check("terminal retains its selected target", probe.LastTarget == terminalTarget && probe.LastExplicit);
 
+// MUIP status reads the live listener. The fixture players never ran login, so their raid and story-line
+// managers are missing; that must read as plain exploring, not as an active mode.
+const int offlineUid = 10004;
+foreach (var uid in new[] { fixtureUid, offlineUid })
+{
+    var database = DatabaseHelper.Instance;
+    if (database == null) break;
+    database.GetInstanceOrCreateNew<PlayerData>(uid);
+    database.GetInstanceOrCreateNew<AvatarData>(uid);
+    database.GetInstanceOrCreateNew<LineupData>(uid);
+    database.GetInstanceOrCreateNew<MissionData>(uid);
+}
+var infoSession = new MuipSession { SessionId = "regression-info", IsAdmin = true, IsAuthorized = true, ExpireTimeStamp = DateTime.Now.AddMinutes(1).ToUnixSec() };
+MuipManager.Sessions[infoSession.SessionId] = infoSession;
+var serverInfo = MuipManager.GetInformation(infoSession.SessionId);
+Check("MUIP server info lists the online players", serverInfo is { Code: 0, Data: { } serverData } &&
+    serverData.OnlinePlayers.Select(player => player.Uid).Order().SequenceEqual([10001, fixtureUid]));
+var onlineInfo = MuipManager.GetPlayerInformation(infoSession.SessionId, fixtureUid);
+Check("MUIP player info reports an idle online player as exploring", onlineInfo is
+    { Code: 0, Data: { PlayerStatus: PlayerStatusEnum.Explore, PlayerSubStatus: PlayerSubStatusEnum.None } });
+var offlineInfo = MuipManager.GetPlayerInformation(infoSession.SessionId, offlineUid);
+Check("MUIP player info reports an offline player", offlineInfo is { Code: 0, Data.PlayerStatus: PlayerStatusEnum.Offline });
+MuipManager.Sessions.TryRemove(infoSession.SessionId, out _);
+
 // --- player self-service console (/player) ------------------------------------------------------------
 // A separate client: the admin bearer on `client` must never stand in for a console session.
 using var consoleClient = new HttpClient { BaseAddress = new Uri(address), Timeout = TimeSpan.FromSeconds(60) };
@@ -353,9 +381,19 @@ foreach (var method in new[] { HttpMethod.Get, HttpMethod.Post })
     var output = Encoding.UTF8.GetString(Convert.FromBase64String(json.RootElement.GetProperty("data").GetProperty("message").GetString()!));
     Check($"MUIP {method} awaits output", output.Replace("\r\n", "\n").TrimEnd() == "before\nafter");
 }
-MuipManager.OnExecuteCommand -= manager.HandleCommandAsync;
+MuipManager.CommandHandler = null;
 Check("missing command handler reports failure", (await MuipManager.ExecuteCommandAsync(muipSession.SessionId, "/help", 0)).Code != 0);
-MuipManager.OnExecuteCommand += manager.HandleCommandAsync;
+MuipManager.CommandHandler = manager.HandleCommandAsync;
+var secondHandlerRefused = false;
+try
+{
+    MuipManager.CommandHandler += manager.HandleCommandAsync;
+}
+catch (ArgumentException)
+{
+    secondHandlerRefused = true;
+}
+Check("MUIP refuses a second command handler", secondHandlerRefused && MuipManager.CommandHandler is { HasSingleTarget: true });
 MuipManager.Sessions.TryRemove(muipSession.SessionId, out _);
 
 var playerSession = new MuipSession { SessionId = "regression-player", IsAdmin = false, IsAuthorized = true, ExpireTimeStamp = DateTime.Now.AddMinutes(1).ToUnixSec() };

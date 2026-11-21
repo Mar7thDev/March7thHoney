@@ -37,7 +37,8 @@ dotnet run --project scripts/WebServerRegression/WebServerRegression.csproj -- -
 
 ### MUIP 与网关
 
-- MUIP GET 与 POST。
+- MUIP GET 与 POST；命令处理器只能注册一个。
+- MUIP 服务器信息列出在线玩家；玩家信息把尚未完成登录初始化的在线玩家报告为探索，把离线玩家报告为离线。
 - `query_gateway` 下发差分宇宙 BuildRef 地址与请求头；两个精确的 BuildRef JSON 路由。
 
 ### 凭据撤销与 MUIP 会话生命周期
