@@ -21,8 +21,6 @@ namespace March7thHoney.GameServer.Game.Battle;
 public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player)
 {
     private const int SpeedDestructEventId = 10003;
-    private const int SpeedDestructBuffId = 2041101;
-    private const int SpeedDestructBuffDurationSec = 15;
 
     public async ValueTask<SkillResultData> OnCast(SceneCastSkillCsReq req)
     {
@@ -274,10 +272,10 @@ public class SceneSkillManager(PlayerInstance player) : BasePlayerManager(player
         if (casterEntity is not AvatarSceneInfo casterAvatar) return;
 
         await casterAvatar.AddBuff(new SceneBuff(
-            SpeedDestructBuffId,
+            SceneCompatRules.SpeedDestructBuffId,
             1,
             casterAvatar.AvatarInfo.BaseAvatarId,
-            SpeedDestructBuffDurationSec));
+            SceneCompatRules.SpeedDestructBuffDurationSec));
     }
 
     private List<ItemData> BuildPlaneEventRewards(int eventId)

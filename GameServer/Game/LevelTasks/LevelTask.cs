@@ -197,7 +197,7 @@ public class LevelTask(PlayerInstance player)
     public async ValueTask ApplyMissionPropState(SubMissionData subMission)
     {
         if (Player.SceneInstance == null) return;
-        if (subMission.SubMissionInfo?.ID == 403000222)
+        if (subMission.SubMissionInfo?.ID == SceneCompatRules.RogueGalleryUnlockSubMission)
         {
             await Player.MissionManager!.RefreshRogueGalleryProps();
             return;

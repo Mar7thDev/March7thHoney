@@ -144,7 +144,7 @@ public partial class SceneInstance
                         await Player.MissionManager!.OnPlayerInteractWithProp();
                     }
 
-                if (prop.Excel.ID == 104039)
+                if (SceneCompatRules.IsGroupStateConsole(prop.Excel.ID))
                 {
                     foreach (var p in GetEntitiesInGroup<EntityProp>(prop.GroupId))
                         await p.SetState(newState);

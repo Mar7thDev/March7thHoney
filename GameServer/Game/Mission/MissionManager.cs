@@ -379,7 +379,7 @@ public partial class MissionManager(PlayerInstance player) : BasePlayerManager<M
         if (Data.GetSubMissionStatus(missionId) != MissionPhaseEnum.None) return null; // already accepted
 
         Data.SetSubMissionStatus(missionId, MissionPhaseEnum.Accept);
-        if (missionId == 403000222) await RefreshRogueGalleryProps();
+        if (missionId == SceneCompatRules.RogueGalleryUnlockSubMission) await RefreshRogueGalleryProps();
 
         var sync = new MissionSync();
         MissionSyncBuilder.NoteAcceptedSub(sync, missionId);

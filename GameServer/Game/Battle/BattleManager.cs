@@ -73,7 +73,8 @@ public class BattleManager(PlayerInstance player) : BasePlayerManager(player)
             else if (prop.PropInfo.Name == "SpeedDestruct")
             {
                 var avatar = Player.SceneInstance!.AvatarInfo.Values.ToList().RandomElement();
-                await avatar.AddBuff(new SceneBuff(2041101, 1, -1, 15));
+                await avatar.AddBuff(new SceneBuff(SceneCompatRules.SpeedDestructBuffId, 1, -1,
+                    SceneCompatRules.SpeedDestructBuffDurationSec));
             }
             else
             {
