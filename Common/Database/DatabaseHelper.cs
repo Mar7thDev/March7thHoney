@@ -68,8 +68,7 @@ public class DatabaseHelper
                 _mysql = true;
                 var db = config.Database;
                 EnsureMySqlDatabase(db);
-                _connString =
-                    $"Server={db.MySqlHost};Port={db.MySqlPort};Database={db.MySqlDatabase};Uid={db.MySqlUser};Pwd={db.MySqlPassword};";
+                _connString = MySqlConnectionString(db, db.MySqlDatabase);
                 break;
             default:
                 logger.Error("Unsupported database type");
@@ -148,10 +147,23 @@ public class DatabaseHelper
         }
     }
 
+    /// <summary>The server connection, on <paramref name="database" /> or on none for server-level commands.</summary>
+    private static string MySqlConnectionString(DatabaseConfig db, string? database)
+    {
+        var builder = new MySqlConnectionStringBuilder
+        {
+            Server = db.MySqlHost,
+            Port = (uint)db.MySqlPort,
+            UserID = db.MySqlUser,
+            Password = db.MySqlPassword
+        };
+        if (database != null) builder.Database = database;
+        return builder.ConnectionString;
+    }
+
     private static void EnsureMySqlDatabase(DatabaseConfig db)
     {
-        using var conn = new MySqlConnection(
-            $"Server={db.MySqlHost};Port={db.MySqlPort};Uid={db.MySqlUser};Pwd={db.MySqlPassword};");
+        using var conn = new MySqlConnection(MySqlConnectionString(db, null));
         conn.Open();
         using var cmd = conn.CreateCommand();
         cmd.CommandText = $"CREATE DATABASE IF NOT EXISTS `{db.MySqlDatabase}`";
@@ -224,8 +236,9 @@ public class DatabaseHelper
         lock (list) return list.OfType<DeletedAccountData>().Any();
     }
 
+    // An entity without a generated store is treated as player data, the safe side for account deletion.
     private static bool IsPlayerData(BaseDatabaseDataHelper instance) =>
-        instance is not (IdentityBlockData or AuthAttemptData or DeletedAccountData);
+        !EntityStores.Map.TryGetValue(instance.GetType(), out var store) || store.IsPlayerData;
 
     public static void UpdateInstanceStrict<T>(T previous, T replacement) where T : BaseDatabaseDataHelper
     {

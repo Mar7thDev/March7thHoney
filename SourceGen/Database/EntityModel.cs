@@ -50,6 +50,7 @@ internal sealed record Column(
     bool Nullable);
 
 /// <summary>One concrete subclass of <c>BaseDatabaseDataHelper</c> and the table it is stored in.</summary>
+/// <param name="IsPlayerData">False when the class or a base class carries <c>[NotPlayerData]</c>.</param>
 /// <param name="FormatterRegistrations">
 ///     Expressions that create the MemoryPack formatters its columns need registered ahead of time.
 /// </param>
@@ -59,4 +60,5 @@ internal sealed record Entity(
     string Table,
     EquatableArray<Column> Columns,
     EquatableArray<string> FormatterRegistrations,
+    bool IsPlayerData,
     SourceLocation? Location);

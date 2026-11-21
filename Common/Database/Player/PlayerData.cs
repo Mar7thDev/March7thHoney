@@ -12,17 +12,28 @@ namespace March7thHoney.Database.Player;
 [DbTable("Player")]
 public class PlayerData : BaseDatabaseDataHelper
 {
+    // New-player defaults: the female Destruction Trailblazer (8002), her head icon, and the starter phone,
+    // chat, card, music and Pam cosmetics.
+    public const int DefaultBasicType = 8002;
+    public const int DefaultHeadIcon = 208002;
+    public const int DefaultPhoneTheme = 221000;
+    public const int DefaultChatBubble = 220000;
+    public const int DefaultPersonalCard = 253000;
+    public const int DefaultPhoneCase = 254000;
+    public const int DefaultBgm = 210007;
+    public const int DefaultPamSkin = 252000;
+
     public string? Name { get; set; } = "";
     public string? Signature { get; set; } = "";
     public int Birthday { get; set; } = 0;
-    public int CurBasicType { get; set; } = 8002;
-    public int HeadIcon { get; set; } = 208002;
-    public int PhoneTheme { get; set; } = 221000;
-    public int ChatBubble { get; set; } = 220000;
-    public int PersonalCard { get; set; } = 253000;
-    public int PhoneCase { get; set; } = 254000;
-    public int CurrentBgm { get; set; } = 210007;
-    public int CurrentPamSkin { get; set; } = 252000;
+    public int CurBasicType { get; set; } = DefaultBasicType;
+    public int HeadIcon { get; set; } = DefaultHeadIcon;
+    public int PhoneTheme { get; set; } = DefaultPhoneTheme;
+    public int ChatBubble { get; set; } = DefaultChatBubble;
+    public int PersonalCard { get; set; } = DefaultPersonalCard;
+    public int PhoneCase { get; set; } = DefaultPhoneCase;
+    public int CurrentBgm { get; set; } = DefaultBgm;
+    public int CurrentPamSkin { get; set; } = DefaultPamSkin;
     public bool IsGenderSet { get; set; } = false;
     public Gender CurrentGender { get; set; } = Gender.Woman;
     public int Level { get; set; } = 1;
@@ -39,7 +50,7 @@ public class PlayerData : BaseDatabaseDataHelper
     public int Pet { get; set; } = 0;
     public int CurMusicLevel { get; set; }
 
-    public int Stamina { get; set; } = 300;
+    public int Stamina { get; set; } = GameConstants.MAX_STAMINA;
     public double StaminaReserve { get; set; } = 0;
     public long NextStaminaRecover { get; set; } = 0;
 
@@ -103,7 +114,7 @@ public class PlayerData : BaseDatabaseDataHelper
     public PlayerSimpleInfo ToSimpleProto(FriendOnlineStatus status)
     {
         if (!GameData.ChatBubbleConfigData.ContainsKey(ChatBubble)) // to avoid npe
-            ChatBubble = 220000;
+            ChatBubble = DefaultChatBubble;
 
         var info = new PlayerSimpleInfo
         {

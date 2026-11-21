@@ -21,6 +21,9 @@ namespace March7thHoney.Database
     [AttributeUsage(AttributeTargets.Property)]
     public sealed class DbIgnoreAttribute : Attribute;
 
+    [AttributeUsage(AttributeTargets.Class)]
+    public sealed class NotPlayerDataAttribute : Attribute;
+
     public sealed class Logger
     {
         public void Info(string message)
@@ -41,7 +44,8 @@ namespace March7thHoney.Database
         Func<DbConnection, List<BaseDatabaseDataHelper>> LoadAll,
         Action<DbConnection, BaseDatabaseDataHelper> Insert,
         Action<DbConnection, BaseDatabaseDataHelper> Update,
-        Action<DbConnection, int> Delete);
+        Action<DbConnection, int> Delete,
+        bool IsPlayerData);
 
     internal static class DbSchema
     {
@@ -123,6 +127,15 @@ namespace Sample.Entities
     {
         public int Extra { get; set; }
     }
+
+    // Not player save data; the marker also covers subclasses.
+    [NotPlayerData]
+    public class AuditEntity : BaseDatabaseDataHelper
+    {
+        public long At { get; set; }
+    }
+
+    public class DerivedAuditEntity : AuditEntity;
 
     // An abstract entity cannot be constructed and gets no store.
     public abstract class SharedEntity : BaseDatabaseDataHelper

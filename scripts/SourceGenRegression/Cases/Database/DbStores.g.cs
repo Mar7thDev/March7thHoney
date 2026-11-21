@@ -10,6 +10,104 @@ using MemoryPack;
 
 namespace March7thHoney.Database.Generated;
 
+internal sealed class AuditEntityRow
+{
+    public int Uid { get; set; }
+    public long At { get; set; }
+}
+
+internal static class AuditEntityStore
+{
+    public const string Table = "AuditEntity";
+
+    public static void EnsureTable(DbConnection c)
+    {
+        using (var cmd = c.CreateCommand())
+        {
+            cmd.CommandText = "create table if not exists \"AuditEntity\" (\"Uid\" INTEGER PRIMARY KEY, \"At\" INTEGER)";
+            cmd.ExecuteNonQuery();
+        }
+
+        DbSchema.EnsureColumns(c, Table, new[]
+        {
+            ("Uid", "INTEGER"),
+            ("At", "INTEGER"),
+        });
+    }
+
+    public static List<global::Sample.Entities.AuditEntity> LoadAll(DbConnection c)
+    {
+        var list = new List<global::Sample.Entities.AuditEntity>();
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "select \"Uid\", \"At\" from \"AuditEntity\"";
+        using var rd = cmd.ExecuteReader();
+        while (rd.Read())
+        {
+            var r = new AuditEntityRow
+            {
+                Uid = rd.IsDBNull(0) ? default(int) : Convert.ToInt32(rd.GetValue(0), CultureInfo.InvariantCulture),
+                At = rd.IsDBNull(1) ? default(long) : Convert.ToInt64(rd.GetValue(1), CultureInfo.InvariantCulture),
+            };
+            list.Add(ToEntity(r));
+        }
+        return list;
+    }
+
+    private static void Bind(DbCommand cmd, AuditEntityRow row)
+    {
+        DbParameter p;
+        p = cmd.CreateParameter();
+        p.ParameterName = "@Uid";
+        p.Value = ((object?)row.Uid) ?? DBNull.Value;
+        cmd.Parameters.Add(p);
+        p = cmd.CreateParameter();
+        p.ParameterName = "@At";
+        p.Value = ((object?)row.At) ?? DBNull.Value;
+        cmd.Parameters.Add(p);
+    }
+
+    public static void Insert(DbConnection c, global::Sample.Entities.AuditEntity e)
+    {
+        var row = ToRow(e);
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "insert into \"AuditEntity\" (\"Uid\", \"At\") values (@Uid, @At)";
+        Bind(cmd, row);
+        cmd.ExecuteNonQuery();
+    }
+
+    public static void Update(DbConnection c, global::Sample.Entities.AuditEntity e)
+    {
+        var row = ToRow(e);
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "update \"AuditEntity\" set \"At\"=@At where \"Uid\"=@Uid";
+        Bind(cmd, row);
+        cmd.ExecuteNonQuery();
+    }
+
+    public static void Delete(DbConnection c, int uid)
+    {
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "delete from \"AuditEntity\" where \"Uid\"=@Uid";
+        var p = cmd.CreateParameter();
+        p.ParameterName = "@Uid";
+        p.Value = uid;
+        cmd.Parameters.Add(p);
+        cmd.ExecuteNonQuery();
+    }
+
+    private static global::Sample.Entities.AuditEntity ToEntity(AuditEntityRow r) => new global::Sample.Entities.AuditEntity
+    {
+        Uid = r.Uid,
+        At = r.At,
+    };
+
+    private static AuditEntityRow ToRow(global::Sample.Entities.AuditEntity e) => new AuditEntityRow
+    {
+        Uid = e.Uid,
+        At = e.At,
+    };
+}
+
 internal sealed class ComplexEntityRow
 {
     public int Uid { get; set; }
@@ -159,6 +257,104 @@ internal static class ComplexEntityStore
         SpareLoadout = e.SpareLoadout is null ? null : MemoryPackSerializer.Serialize(e.SpareLoadout),
         Message = e.Message?.ToByteArray(),
         SpareMessage = e.SpareMessage?.ToByteArray(),
+    };
+}
+
+internal sealed class DerivedAuditEntityRow
+{
+    public int Uid { get; set; }
+    public long At { get; set; }
+}
+
+internal static class DerivedAuditEntityStore
+{
+    public const string Table = "DerivedAuditEntity";
+
+    public static void EnsureTable(DbConnection c)
+    {
+        using (var cmd = c.CreateCommand())
+        {
+            cmd.CommandText = "create table if not exists \"DerivedAuditEntity\" (\"Uid\" INTEGER PRIMARY KEY, \"At\" INTEGER)";
+            cmd.ExecuteNonQuery();
+        }
+
+        DbSchema.EnsureColumns(c, Table, new[]
+        {
+            ("Uid", "INTEGER"),
+            ("At", "INTEGER"),
+        });
+    }
+
+    public static List<global::Sample.Entities.DerivedAuditEntity> LoadAll(DbConnection c)
+    {
+        var list = new List<global::Sample.Entities.DerivedAuditEntity>();
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "select \"Uid\", \"At\" from \"DerivedAuditEntity\"";
+        using var rd = cmd.ExecuteReader();
+        while (rd.Read())
+        {
+            var r = new DerivedAuditEntityRow
+            {
+                Uid = rd.IsDBNull(0) ? default(int) : Convert.ToInt32(rd.GetValue(0), CultureInfo.InvariantCulture),
+                At = rd.IsDBNull(1) ? default(long) : Convert.ToInt64(rd.GetValue(1), CultureInfo.InvariantCulture),
+            };
+            list.Add(ToEntity(r));
+        }
+        return list;
+    }
+
+    private static void Bind(DbCommand cmd, DerivedAuditEntityRow row)
+    {
+        DbParameter p;
+        p = cmd.CreateParameter();
+        p.ParameterName = "@Uid";
+        p.Value = ((object?)row.Uid) ?? DBNull.Value;
+        cmd.Parameters.Add(p);
+        p = cmd.CreateParameter();
+        p.ParameterName = "@At";
+        p.Value = ((object?)row.At) ?? DBNull.Value;
+        cmd.Parameters.Add(p);
+    }
+
+    public static void Insert(DbConnection c, global::Sample.Entities.DerivedAuditEntity e)
+    {
+        var row = ToRow(e);
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "insert into \"DerivedAuditEntity\" (\"Uid\", \"At\") values (@Uid, @At)";
+        Bind(cmd, row);
+        cmd.ExecuteNonQuery();
+    }
+
+    public static void Update(DbConnection c, global::Sample.Entities.DerivedAuditEntity e)
+    {
+        var row = ToRow(e);
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "update \"DerivedAuditEntity\" set \"At\"=@At where \"Uid\"=@Uid";
+        Bind(cmd, row);
+        cmd.ExecuteNonQuery();
+    }
+
+    public static void Delete(DbConnection c, int uid)
+    {
+        using var cmd = c.CreateCommand();
+        cmd.CommandText = "delete from \"DerivedAuditEntity\" where \"Uid\"=@Uid";
+        var p = cmd.CreateParameter();
+        p.ParameterName = "@Uid";
+        p.Value = uid;
+        cmd.Parameters.Add(p);
+        cmd.ExecuteNonQuery();
+    }
+
+    private static global::Sample.Entities.DerivedAuditEntity ToEntity(DerivedAuditEntityRow r) => new global::Sample.Entities.DerivedAuditEntity
+    {
+        Uid = r.Uid,
+        At = r.At,
+    };
+
+    private static DerivedAuditEntityRow ToRow(global::Sample.Entities.DerivedAuditEntity e) => new DerivedAuditEntityRow
+    {
+        Uid = e.Uid,
+        At = e.At,
     };
 }
 
@@ -677,24 +873,36 @@ public static class EntityStores
 {
     public static readonly global::System.Collections.Generic.Dictionary<global::System.Type, EntityStore> Map = new()
     {
+        [typeof(global::Sample.Entities.AuditEntity)] = new EntityStore(
+            typeof(global::Sample.Entities.AuditEntity), AuditEntityStore.Table, AuditEntityStore.EnsureTable,
+            c => { var r = new List<global::March7thHoney.Database.BaseDatabaseDataHelper>(); foreach (var x in AuditEntityStore.LoadAll(c)) r.Add(x); return r; },
+            (c, e) => AuditEntityStore.Insert(c, (global::Sample.Entities.AuditEntity)e),
+            (c, e) => AuditEntityStore.Update(c, (global::Sample.Entities.AuditEntity)e),
+            AuditEntityStore.Delete, false),
         [typeof(global::Sample.Entities.ComplexEntity)] = new EntityStore(
             typeof(global::Sample.Entities.ComplexEntity), ComplexEntityStore.Table, ComplexEntityStore.EnsureTable,
             c => { var r = new List<global::March7thHoney.Database.BaseDatabaseDataHelper>(); foreach (var x in ComplexEntityStore.LoadAll(c)) r.Add(x); return r; },
             (c, e) => ComplexEntityStore.Insert(c, (global::Sample.Entities.ComplexEntity)e),
             (c, e) => ComplexEntityStore.Update(c, (global::Sample.Entities.ComplexEntity)e),
-            ComplexEntityStore.Delete),
+            ComplexEntityStore.Delete, true),
+        [typeof(global::Sample.Entities.DerivedAuditEntity)] = new EntityStore(
+            typeof(global::Sample.Entities.DerivedAuditEntity), DerivedAuditEntityStore.Table, DerivedAuditEntityStore.EnsureTable,
+            c => { var r = new List<global::March7thHoney.Database.BaseDatabaseDataHelper>(); foreach (var x in DerivedAuditEntityStore.LoadAll(c)) r.Add(x); return r; },
+            (c, e) => DerivedAuditEntityStore.Insert(c, (global::Sample.Entities.DerivedAuditEntity)e),
+            (c, e) => DerivedAuditEntityStore.Update(c, (global::Sample.Entities.DerivedAuditEntity)e),
+            DerivedAuditEntityStore.Delete, false),
         [typeof(global::Sample.Entities.DerivedEntity)] = new EntityStore(
             typeof(global::Sample.Entities.DerivedEntity), DerivedEntityStore.Table, DerivedEntityStore.EnsureTable,
             c => { var r = new List<global::March7thHoney.Database.BaseDatabaseDataHelper>(); foreach (var x in DerivedEntityStore.LoadAll(c)) r.Add(x); return r; },
             (c, e) => DerivedEntityStore.Insert(c, (global::Sample.Entities.DerivedEntity)e),
             (c, e) => DerivedEntityStore.Update(c, (global::Sample.Entities.DerivedEntity)e),
-            DerivedEntityStore.Delete),
+            DerivedEntityStore.Delete, true),
         [typeof(global::Sample.Entities.ScalarEntity)] = new EntityStore(
             typeof(global::Sample.Entities.ScalarEntity), ScalarEntityStore.Table, ScalarEntityStore.EnsureTable,
             c => { var r = new List<global::March7thHoney.Database.BaseDatabaseDataHelper>(); foreach (var x in ScalarEntityStore.LoadAll(c)) r.Add(x); return r; },
             (c, e) => ScalarEntityStore.Insert(c, (global::Sample.Entities.ScalarEntity)e),
             (c, e) => ScalarEntityStore.Update(c, (global::Sample.Entities.ScalarEntity)e),
-            ScalarEntityStore.Delete),
+            ScalarEntityStore.Delete, true),
     };
 }
 
