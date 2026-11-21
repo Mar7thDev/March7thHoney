@@ -11,11 +11,15 @@ using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
 
-namespace March7thHoney.GameServer.Game.Calyx;
+namespace March7thHoney.GameServer.Game.Freesr;
 
+/// <summary>
+///     FreeSR JSON import and export of a player's avatars, relics and light cones, shared by the <c>/json</c> command
+///     and the web JSON routes. Imported battle settings are cached for the Calyx override.
+/// </summary>
 public static class FreesrShared
 {
-    public static readonly string[] JsonDirectoryRelativePaths =
+    private static readonly string[] JsonDirectoryRelativePaths =
     [
         "Config/Json"
     ];

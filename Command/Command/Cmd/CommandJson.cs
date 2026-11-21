@@ -1,5 +1,5 @@
 using March7thHoney.Database;
-using March7thHoney.GameServer.Game.Calyx;
+using March7thHoney.GameServer.Game.Freesr;
 using March7thHoney.GameServer.Server.Packet.Send.PlayerSync;
 using March7thHoney.Internationalization;
 using March7thHoney.Util;
@@ -10,25 +10,6 @@ namespace March7thHoney.Command.Command.Cmd;
 [CommandInfo("json", "Game.Command.Json.Desc", "Game.Command.Json.Usage", permission: CommandPermissions.Json)]
 public class CommandJson : ICommand
 {
-    private static readonly string[] JsonDirectoryRelativePaths =
-    [
-        "Config/Json"
-    ];
-
-    private static List<DirectoryInfo> GetJsonDirectories(bool createIfMissing = false)
-    {
-        var dirs = new List<DirectoryInfo>(JsonDirectoryRelativePaths.Length);
-        foreach (var relativePath in JsonDirectoryRelativePaths)
-        {
-            var dir = new DirectoryInfo(Path.GetFullPath(relativePath));
-            if (createIfMissing && !dir.Exists && relativePath.Equals("Config/Json", StringComparison.OrdinalIgnoreCase))
-                dir.Create();
-            dirs.Add(dir);
-        }
-
-        return dirs;
-    }
-
     [CommandDefault]
     public async ValueTask Import(CommandArg arg)
     {
@@ -91,7 +72,7 @@ public class CommandJson : ICommand
             string outputFileName = customName != null
                 ? customName + ".json"
                 : $"freesr-data_{SanitizeFileName(player.Data.Name ?? "")}_{player.Data.Uid}_{DateTime.Now:yyMMddHHmmss}.json";
-            var dir = GetJsonDirectories(createIfMissing: true)[0];
+            var dir = FreesrShared.GetJsonDirectories(createIfMissing: true)[0];
             string combinedPath = Path.GetFullPath(Path.Combine(dir.FullName, outputFileName));
             if (!IsUnderDirectory(dir, combinedPath))
             {
@@ -154,7 +135,7 @@ public class CommandJson : ICommand
 
         if (int.TryParse(input, out var choice))
         {
-            var files = GetJsonFiles().OrderBy(f => f.LastWriteTimeUtc).ToList();
+            var files = FreesrShared.GetJsonFiles().OrderBy(f => f.LastWriteTimeUtc).ToList();
             if (files.Count == 0)
             {
                 error = I18NManager.Translate("Game.Command.Json.NoFileFoundWithHint");
@@ -170,7 +151,7 @@ public class CommandJson : ICommand
             return files[choice - 1].FullName;
         }
 
-        var jsonDirs = GetJsonDirectories(createIfMissing: true);
+        var jsonDirs = FreesrShared.GetJsonDirectories(createIfMissing: true);
         var looksLikePath = input.Contains('/') || input.Contains('\\') || Path.IsPathRooted(input);
         if (looksLikePath)
         {
@@ -228,29 +209,13 @@ public class CommandJson : ICommand
         return Path.GetFullPath(fullPath).StartsWith(root, comparison);
     }
 
-    private static List<FileInfo> GetJsonFiles()
-    {
-        var dirs = GetJsonDirectories(createIfMissing: true);
-        try
-        {
-            return dirs
-                .Where(x => x.Exists)
-                .SelectMany(x => x.GetFiles("*.json", SearchOption.TopDirectoryOnly))
-                .DistinctBy(x => x.FullName)
-                .ToList();
-        }
-        catch
-        {
-            return [];
-        }
-    }
 
     private static async ValueTask ShowFileList(CommandArg arg)
     {
-        var files = GetJsonFiles().OrderBy(f => f.LastWriteTimeUtc).ToList();
+        var files = FreesrShared.GetJsonFiles().OrderBy(f => f.LastWriteTimeUtc).ToList();
         if (files.Count == 0)
         {
-            var searched = GetJsonDirectories(createIfMissing: true).Select(x => x.FullName).ToList();
+            var searched = FreesrShared.GetJsonDirectories(createIfMissing: true).Select(x => x.FullName).ToList();
             await arg.SendMsg(I18NManager.Translate("Game.Command.Json.NoFileFound"));
             if (searched.Count > 0)
             {
